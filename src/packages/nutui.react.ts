@@ -31,6 +31,7 @@ import AnimatingNumbers from './animatingnumbers'
 import Tag from './tag'
 import Badge from './badge'
 import Signature from './signature'
+import Barrage from './barrage'
 
 export {
   Avatar,
@@ -66,4 +67,5 @@ export {
   Tag,
   Badge,
   Signature,
+  Barrage,
 }

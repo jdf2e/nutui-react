@@ -457,6 +457,16 @@
           "sort": 1,
           "show": true,
           "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Barrage",
+          "type": "component",
+          "cName": "弹幕",
+          "desc": "用于话语和词组的轮播展示，适用于视频中或其他类似需求中。",
+          "sort": 2,
+          "show": true,
+          "author": "swag~jun"
         }
       ]
     }
