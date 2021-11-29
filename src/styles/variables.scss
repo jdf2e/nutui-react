@@ -255,8 +255,13 @@ $checkbox-label-color: #1d1e1e;
 $checkbox-label-disable-color: #999;
 
 //radio
-$radio-label-color: #1d1e1e;
-$radio-label-disable-color: #999;
+$radio-label-font-color: #1d1e1e !default;
+$radio-label-font-active-color: #f0250f !default;
+$radio-label-disable-color: #999 !default;
+$radio-icon-disable-color: #d6d6d6 !default;
+
+$radio-label-button-border-color: #f0250f !default;
+$radio-label-button-background: rgba(240, 37, 15, 0.05) !default;
 
 // signature
 $signature-border-color: #dadada;
