@@ -442,6 +442,16 @@
           "sort": 7,
           "show": true,
           "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Radio",
+          "type": "component",
+          "cName": "单选按钮",
+          "desc": "用于在一组备选项中进行单选",
+          "sort": 6,
+          "show": true,
+          "author": "oasis"
         }
       ]
     },
