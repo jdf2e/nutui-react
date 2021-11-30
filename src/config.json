@@ -425,16 +425,6 @@
         },
         {
           "version": "1.0.0",
-          "name": "Popover",
-          "type": "component",
-          "cName": "气泡弹出框",
-          "desc": "点击或在元素上悬停鼠标，弹出气泡卡片浮层。",
-          "sort": 4,
-          "show": true,
-          "author": "lzz"
-        },
-        {
-          "version": "1.0.0",
           "name": "AnimatingNumbers",
           "type": "component",
           "cName": "数字动画",
