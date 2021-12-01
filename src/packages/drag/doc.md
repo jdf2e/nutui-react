@@ -40,12 +40,12 @@
 ## 限制拖拽边界
 
 ```tsx
-// const right = () => {
-//   return document.documentElement.clientWidth - 300 - 9
-// }
-// const bottom = () => {
-//   return document.documentElement.clientHeight - 559
-// }
+const right = () => {
+  return document.documentElement.clientWidth - 300 - 9
+}
+const bottom = () => {
+  return document.documentElement.clientHeight - 559
+}
 <Drag boundary={{ top: 361, left: 9, bottom: bottom(), right: right() }}>
   <div class="touch-dom">拖动我</div>
 </Drag>
