@@ -1,10 +1,14 @@
-# Drag 组件
+# Drag 拖拽
 
 ### 介绍
 
 实现可拖拽的任意元素
 
 ### 安装
+
+```javascript
+import { Drag } from '@nutui/nutui-react'
+```
 
 ## 代码演示
 
