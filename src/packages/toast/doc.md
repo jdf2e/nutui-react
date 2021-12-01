@@ -7,7 +7,7 @@
 ### 安装
 
 ```javascript
-import { Toast } from '@nutui/nutui'
+import { Toast } from '@nutui/nutui-react';
 ```
 
 ## 代码演示
