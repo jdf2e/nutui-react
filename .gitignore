@@ -9,7 +9,11 @@ yarn.lock
 package-lock.json
 /cache
 /src/nutui.ts
+/src/nutui.react.ts
 /src/nutui.*.ts
+/src/packages/nutui.ts
+/src/packages/nutui.react.ts
+/src/packages/nutui.*.ts
 /tsc/test
 
 
