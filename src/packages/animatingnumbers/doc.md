@@ -16,14 +16,14 @@ import { AnimatingNumbers } from '@nutui/nutui-react'
 ### AnimatingNumbers.CountUp-基础用法
 
 ```jsx
-<AnimatingNumbers.CountUp endNumer="678.94" />
+<AnimatingNumbers.CountUp endNumber="678.94" />
 ```
 
 ### AnimatingNumbers.CountUp-自定义样式，动态修改数据（需要指定最大位数）
 
 ```jsx
 const AnimatingNumbersDemo = () => {
-  const [endNumer, setEndNumer] = useState('1570.99')
+  const [endNumber, setEndNumer] = useState('1570.99')
   useEffect(() => {
     setInterval(() => {
       setEndNumer(`${Math.floor(Math.random() * 999999)}.${Math.floor(Math.random() * 89 + 10)}`)
@@ -31,7 +31,7 @@ const AnimatingNumbersDemo = () => {
   }, [])
   return (
     <AnimatingNumbers.CountUp
-      endNumer={endNumer}
+      endNumer={endNumber}
       easeSpeed={1.2}
       maxLen={6}
       className="custom-coutup"
