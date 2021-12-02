@@ -27,9 +27,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
   const b = bem('countup')
   const countupRef = useRef<HTMLDivElement>(null)
   const timerRef = useRef(0)
-  const numbers = Array.from({ length: 10 }).map((item, index) => {
-    return index
-  })
+  const numbers = Array.from({ length: 10 }, (v, i) => i)
 
   const getShowNumber = () => {
     const splitArr = endNumber.split('.')
