@@ -114,7 +114,10 @@ export const NoticeBar: FunctionComponent<
       initScrollWrap(text)
     }
     return () => {
+      //销毁事件
       clearInterval(timer)
+      startRoll()
+      startRollEasy()
     }
   }, [])
 
