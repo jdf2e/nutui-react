@@ -7,121 +7,105 @@
 ### 安装
 
 ``` ts
-import { createApp } from 'vue';
-//vue
-import { Radio,RadioGroup } from '@nutui/nutui';
-//taro
-import { Radio,RadioGroup } from '@nutui/nutui-taro';
-
-const app = createApp();
-app.use(Radio);
-app.use(RadioGroup);
+import { Radio,RadioGroup } from '@nutui/nutui-react';
 ```
+
 ## 基本用法
 
-通过 **v-model** 绑定值当前选项的 **label** 。并且必须 **nut-radiogroup** 和 **nut-radio** 相结合进行使用
+通过 **value** 绑定值当前选项的 **label** 。并且必须 **RadioGroup** 和 **Radio** 相结合进行使用
 
-```html
-<nut-radiogroup v-model="radioVal">
-  <nut-radio label="1">选项1</nut-radio>
-  <nut-radio disabled label="2">选项2</nut-radio>
-  <nut-radio label="3">选项3</nut-radio>
-</nut-radiogroup>
-<nut-radiogroup v-model="radioVal" text-position="left">
-  <nut-radio label="1">选项1</nut-radio>
-  <nut-radio disabled label="2">选项2</nut-radio>
-  <nut-radio label="3">选项3</nut-radio>
-</nut-radiogroup>
-<nut-radiogroup v-model="radioVal">
-  <nut-radio shape="button" label="1">选项1</nut-radio>
-  <nut-radio disabled shape="button" label="2">选项2</nut-radio>
-  <nut-radio shape="button" label="3">选项3</nut-radio>
-</nut-radiogroup>
-```
-```ts
-setup() {
-  return {
-    radioVal:"1",
-  };
+```tsx
+const RadioGroupLast = () => {
+  const [radioVal] = useState('1')
+  return <>
+    <RadioGroup value={radioVal}>
+      <Radio label="1">选项1</Radio>
+      <Radio disabled label="2">选项2</Radio>
+      <Radio label="3">选项3</Radio>
+    </RadioGroup>
+    <RadioGroup value={radioVal} textPosition="left">
+      <Radio label="1">选项1</Radio>
+      <Radio disabled label="2">选项2</Radio>
+      <Radio label="3">选项3</Radio>
+    </RadioGroup>
+    <RadioGroup value={radioVal}>
+      <Radio shape="button" label="1">选项1</Radio>
+      <Radio disabled shape="button" label="2">选项2</Radio>
+      <Radio shape="button" label="3">选项3</Radio>
+    </RadioGroup>
+  </>
 }
 ```
+
 ## 水平使用
 
-```html
-<nut-radiogroup v-model="radioVal" direction="horizontal">
-  <nut-radio label="1">选项1</nut-radio>
-  <nut-radio disabled label="2">选项2</nut-radio>
-  <nut-radio label="3">选项3</nut-radio>
-</nut-radiogroup>
-<nut-radiogroup v-model="radioVal" text-position="left" direction="horizontal">
-  <nut-radio label="1">选项1</nut-radio>
-  <nut-radio disabled label="2">选项2</nut-radio>
-  <nut-radio label="3">选项3</nut-radio>
-</nut-radiogroup>
-<nut-radiogroup v-model="radioVal" direction="horizontal">
-  <nut-radio shape="button" label="1">选项1</nut-radio>
-  <nut-radio disabled shape="button" label="2">选项2</nut-radio>
-  <nut-radio shape="button" label="3">选项3</nut-radio>
-</nut-radiogroup>
-```
-```ts
-setup() {
-  return {
-    radioVal:"1",
-  };
+```tsx
+const RadioGroupLast = () => {
+  const [radioVal] = useState('1')
+  return <>
+    <RadioGroup value={radioVal} direction="horizontal">
+      <Radio label="1">选项1</Radio>
+      <Radio disabled label="2">选项2</Radio>
+      <Radio label="3">选项3</Radio>
+    </RadioGroup>
+    <RadioGroup value={radioVal} textPosition="left" direction="horizontal">
+      <Radio label="1">选项1</Radio>
+      <Radio disabled label="2">选项2</Radio>
+      <Radio label="3">选项3</Radio>
+    </RadioGroup>
+    <RadioGroup value={radioVal} direction="horizontal">
+      <Radio shape="button" label="1">选项1</Radio>
+      <Radio disabled shape="button" label="2">选项2</Radio>
+      <Radio shape="button" label="3">选项3</Radio>
+    </RadioGroup>
+  </>
 }
 ```
+
 ## 自定义尺寸
 
-```html
-<nut-radiogroup v-model="radioVal">
-  <nut-radio :label="1" icon-size="12">自定义尺寸12</nut-radio>
-  <nut-radio :label="2" icon-size="12">自定义尺寸12</nut-radio>
-</nut-radiogroup>
-```
-```ts
-setup() {
-  return {
-    radioVal:"1",
-  };
+```tsx
+const RadioGroupLast = () => {
+  const [radioVal] = useState('1')
+  return <>
+    <RadioGroup value={radioVal}>
+      <Radio label="1" iconSize="12">自定义尺寸12</Radio>
+      <Radio label="2" iconSize="12">自定义尺寸12</Radio>
+    </RadioGroup>
+  </>
 }
 ```
 
 ## 自定义图标
 
-建议 `icon-name` `icon-active-name` 一起修改
+建议 `iconName` `iconActiveName` 一起修改
 
-```html
-<nut-radiogroup v-model="radioVal">
-  <nut-radio :label="1" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
-  <nut-radio :label="2" icon-name="checklist" icon-active-name="checklist">自定义图标</nut-radio>
-</nut-radiogroup>
-```
-```ts
-setup() {
-  return {
-    radioVal:"1",
-  };
+```tsx
+const RadioGroupLast = () => {
+  const [radioVal] = useState('1')
+  return <>
+    <RadioGroup value={radioVal}>
+      <Radio label="1" iconName="checklist" iconActiveName="checklist">自定义图标</Radio>
+      <Radio label="2" iconName="checklist" iconActiveName="checklist">自定义图标</Radio>
+    </RadioGroup>
+  </>
 }
 ```
 
 ## 触发 change 事件
 
-```html
-<nut-radiogroup v-model="radioVal" @change="handleChange">
-  <nut-radio :label="1" >触发事件</nut-radio>
-  <nut-radio :label="2" >触发事件</nut-radio>
-</nut-radiogroup>
-```
-```ts
-setup() {
-  const handleChange = (value: any) => {
-    console.log(value)
+```tsx
+const RadioGroupLast = () => {
+  const [radioVal] = useState('1')
+  const handleChange = (v) => {
+    console.log(v)
   }
-  return {
-    radioVal:"1",
-    handleChange
-  };
+  return <>
+    <RadioGroup value={radioVal} onChange={handleChange}>
+      <Radio label="1">触发事件</Radio>
+      <Radio label="2">触发事件</Radio>
+    </RadioGroup>
+  </>
 }
 ```
 
@@ -132,9 +116,9 @@ setup() {
 | 字段             | 说明                                                         | 类型                    | 默认值            |
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
 | disabled         | 是否禁用选择                                                 | Boolean                 | `false`           |
-| icon-size        | [图标尺寸](#/icon)                                           | String、Number          | `18`              |
-| icon-name        | [图标名称](#/icon)，选中前(建议和`icon-active-name`一起修改) | String                  | `'check-normal'`  |
-| icon-active-name | [图标名称](#/icon)，选中后(建议和`icon-name`一起修改)        | String                  | `'check-checked'` |
+| iconSize        | [图标尺寸](#/icon)                                           | String、Number          | `18`              |
+| iconName        | [图标名称](#/icon)，选中前(建议和`iconActiveName`一起修改) | String                  | `'check-normal'`  |
+| iconActiveName | [图标名称](#/icon)，选中后(建议和`iconName`一起修改)        | String                  | `'check-checked'` |
 | label            | 单选框标识                                                   | String、Number、Boolean | -                 |
 | shape            | 形状，可选值为 button、round                                 | String                  | round             |
 
@@ -142,8 +126,8 @@ setup() {
 
 | 字段          | 说明                                          | 类型                    | 默认值     |
 |---------------|-----------------------------------------------|-------------------------|------------|
-| v-model       | 当前选中项的标识符，与label值一致时呈选中状态 | String、Number、Boolean | -          |
-| text-position | 文本所在的位置，可选值：`left`,`right`        | String                  | `right`    |
+| value       | 当前选中项的标识符，与label值一致时呈选中状态 | String、Number、Boolean | -          |
+| textPosition | 文本所在的位置，可选值：`left`,`right`        | String                  | `right`    |
 | direction     | 使用横纵方向 可选值 horizontal、vertical      | String                  | `vertical` |
 
 ## RadioGroup Event

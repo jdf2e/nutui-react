@@ -17,7 +17,7 @@ const PriceDemo = () => {
     <div className="demo">
       <h2>基本用法</h2>
       <Cell>
-        <Price price={0} needSymbol={false} thousands={true} />
+        <Price price={1010} needSymbol={false} thousands={true} />
       </Cell>
       <h2>有人民币符号，无千位分隔</h2>
       <Cell>
