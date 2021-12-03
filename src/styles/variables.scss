@@ -197,6 +197,13 @@ $notify-padding: 12px 0;
 $notify-font-size: 14px;
 $notify-height: 44px;
 
+// NoticeBar
+$noticeBar-font-size: 14px !default;
+$noticeBar-height: 40px !default;
+$noticeBar-line-height: 24px !default;
+$noticeBar-left-icon-width: 16px !default;
+$noticeBar-right-icon-width: 16px !default;
+
 $notify-base-background-color: linear-gradient(
   135deg,
   rgba(250, 44, 25, 1) 0%,

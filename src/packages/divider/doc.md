@@ -7,7 +7,7 @@
 ### 安装
 
 ```js
-import { Divider } from '@nutui/nutui'
+import { Divider } from '@nutui/nutui-react';
 ```
 
 ## 代码演示

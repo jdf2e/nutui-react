@@ -7,11 +7,8 @@
 ### 安装
 
 ```javascript
-import { createApp } from 'vue'
-import { Input } from '@nutui/nutui'
+import { Input } from '@nutui/nutui-react';
 
-const app = createApp()
-app.use(Input)
 ```
 
 ## 代码演示
