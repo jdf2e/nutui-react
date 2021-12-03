@@ -4,7 +4,7 @@ import bem from '@/utils/bem'
 
 export interface CountUpProps {
   maxLen: number
-  endNumer: string
+  endNumber: string
   delaySpeed?: number
   easeSpeed: number
   thousands: boolean
@@ -13,26 +13,24 @@ export interface CountUpProps {
 }
 const defaultProps = {
   maxLen: 0,
-  endNumer: '',
+  endNumber: '',
   delaySpeed: 300,
   easeSpeed: 1,
   thousands: false,
   className: '',
 } as CountUpProps
 export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
-  const { maxLen, endNumer, delaySpeed, easeSpeed, className, thousands, ...reset } = {
+  const { maxLen, endNumber, delaySpeed, easeSpeed, className, thousands, ...reset } = {
     ...defaultProps,
     ...props,
   }
   const b = bem('countup')
   const countupRef = useRef<HTMLDivElement>(null)
   const timerRef = useRef(0)
-  const numbers = Array.from({ length: 10 }).map((item, index) => {
-    return index
-  })
+  const numbers = Array.from({ length: 10 }, (v, i) => i)
 
   const getShowNumber = () => {
-    const splitArr = endNumer.split('.')
+    const splitArr = endNumber.split('.')
     const intNumber =
       maxLen && splitArr[0].length < maxLen
         ? (Array(maxLen).join('0') + splitArr[0]).slice(-maxLen)
@@ -49,10 +47,12 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     if (countupRef.current) {
       const numberItems = countupRef.current.querySelectorAll('.nut-countup__number')
       const numberFilterArr: Array<string> = numerArr.filter((item: any) => !isNaN(item))
-      for (let [index] of Object.entries(numberItems)) {
+      for (let index in numberItems) {
+        if (!Object.prototype.hasOwnProperty.call(numberItems, index)) continue
         const elem = numberItems[Number(index)] as HTMLElement
         const idx = Number(numberFilterArr[Number(index)])
         if ((idx || idx == 0) && elem) {
+          // 计算规则：父元素和实际列表高度的百分比，分割成20等份
           const transform = `translate(0, -${(idx == 0 ? 10 : idx) * 5}%)`
           elem.style.transform = transform
           elem.style.webkitTransform = transform
