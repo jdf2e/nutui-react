@@ -120,7 +120,6 @@ export const Drag: FunctionComponent<Partial<DragProps> & React.HTMLAttributes<H
         target.style.left = `${xPum.current}px`
       }
       if (props.direction != 'x') {
-        console.log(`${yPum.current}px`, '`${yPum.current}px`')
         target.style.top = `${yPum.current}px`
       }
     }
