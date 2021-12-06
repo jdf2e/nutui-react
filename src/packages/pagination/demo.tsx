@@ -5,7 +5,7 @@ const PaginationDemo = () => {
   const [currentPage1, setCurrent1] = useState(1)
   const [currentPage2, setCurrent2] = useState(1)
   const [currentPage3, setCurrent3] = useState(1)
-  const [currentPage4, setCurrent4] = useState(1)
+  const [currentPage4, setCurrent4] = useState(3)
   const pageChange1 = (v: any) => {
     let c = v
     setCurrent1(c)

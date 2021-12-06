@@ -89,19 +89,19 @@ const PaginationDemo = () => {
     
 ### Props
     
-| 参数           | 说明                     | 类型                        | 默认值            |
-| -------------- | ------------------------ | --------------------------- | ----------------- |
-| modelValue     | 当前页码                 | Number                      | -                 |
-| defaultValue   | 当前页码                 | Number                      | 1                 |
-| mode           | 显示模式,可选值为：multi，simple | String                      | multi             |
-| prevText       | 上一页按钮文字           | String \| React.ReactNode   | 上一页            |
-| nextText       | 下一页按钮文字           | String \| React.ReactNode | 下一页            |
-| pageCount      | 总页数                   | String \| Number            | 传入/根据页数计算 |
-| totalItems     | 总记录数                 | String \| Number            | 0                 |
-| itemsPerPage   | 每页记录数               | String \| Number            | 10                |
-| showPageSize   | 显示的页码个数           | String \| Number            | 5                 |
-| forceEllipses  | 是否显示省略号           | Boolean                     | false             |
-| pageNodeRender | 用于自定义页码的结构     | (page) => React.ReactNode   |                   |
+| 参数           | 说明                             | 类型                      | 默认值            |
+| -------------- | -------------------------------- | ------------------------- | ----------------- |
+| modelValue     | 当前页码                         | Number                    | -                 |
+| defaultValue   | 当前页码                         | Number                    | 1                 |
+| mode           | 显示模式,可选值为：multi，simple | String                    | multi             |
+| prevText       | 自定义上一页按钮内容             | String \| React.ReactNode | 上一页            |
+| nextText       | 自定义下一页按钮内容             | String \| React.ReactNode | 下一页            |
+| pageCount      | 总页数                           | String \| Number          | 传入/根据页数计算 |
+| totalItems     | 总记录数                         | String \| Number          | 0                 |
+| itemsPerPage   | 每页记录数                       | String \| Number          | 10                |
+| showPageSize   | 显示的页码个数                   | String \| Number          | 5                 |
+| forceEllipses  | 是否显示省略号                   | Boolean                   | false             |
+| pageNodeRender | 用于自定义页码的结构             | (page) => React.ReactNode | -                 |
     
 ### Events
     
