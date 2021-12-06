@@ -1,10 +1,14 @@
-# Elevator 组件
+# Elevator 电梯楼层
 
 ### 介绍
 
 用于列表快速定位以及索引的显示
 
 ### 安装
+
+```javascript
+import { Elevator } from '@nutui/nutui-react'
+```
 
 ## 代码演示
 
@@ -69,9 +73,7 @@ const clickItem = (key: string, item: any) => {
 const clickIndex = (key: string) => {
   console.log(key)
 }
-```
 
-```tsx
 <Elevator
   indexList={dataList}
   height="260"
@@ -193,9 +195,7 @@ const clickItem = (key: string, item: any) => {
 const clickIndex = (key: string) => {
   console.log(key)
 }
-```
 
-```tsx
 <Elevator
   indexList={dataList2}
   height="220"

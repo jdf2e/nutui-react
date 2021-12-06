@@ -7,11 +7,9 @@
 ### 安装
 
 ```javascript
-import { createApp } from 'vue'
-import { TextArea } from '@nutui/nutui'
 
-const app = createApp()
-app.use(TextArea)
+import { TextArea } from '@nutui/nutui-react';
+
 ```
 
 ## 代码演示

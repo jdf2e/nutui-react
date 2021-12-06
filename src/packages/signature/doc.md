@@ -6,6 +6,10 @@
 
 ### 安装
 
+```javascript
+import { Signature } from '@nutui/nutui-react'
+```
+
 ## 代码演示
 
 ### 基础用法
