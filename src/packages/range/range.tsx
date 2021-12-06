@@ -11,6 +11,7 @@ import './range.scss'
 import bem from '@/utils/bem'
 import { useTouch } from '../../utils/useTouch'
 import { useRect } from '../../utils/useRect'
+import Toast from '../toast'
 
 type SliderValue = number | number[]
 export interface RangeProps {
@@ -75,6 +76,11 @@ export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes
 
     useEffect(() => {
       if (modelValue) {
+        if (!range && (modelValue < min || modelValue > max)) {
+          SetInitValue(0)
+          Toast.text(`${modelValue}不在该区间内`)
+          return
+        }
         SetInitValue(modelValue)
       }
     }, [modelValue])
@@ -183,7 +189,7 @@ export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes
 
       const rect = useRect(root.current)
       const delta = touch.deltaX
-      const total = rect?.width
+      const total = rect.width
       const diff = (delta / total) * scope()
 
       if (isRange(startValue)) {
@@ -192,8 +198,6 @@ export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes
         currentValue = startValue + diff
       }
       updateValue(currentValue)
-      //   event.stopPropagation()
-      //   event.preventDefault()
     }
 
     const onTouchEnd = (event: TouchEvent) => {
