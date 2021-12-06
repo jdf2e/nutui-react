@@ -14,7 +14,7 @@ import { Notify } from '@nutui/nutui-react';
 ### 基础用法
 
 ```tsx
- <Cell 
+ <Cell title="基础用法"
  click={(event: React.MouseEvent) => { 
     baseNotify('基础用法')
  }}
