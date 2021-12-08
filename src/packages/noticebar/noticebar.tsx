@@ -97,7 +97,7 @@ export const NoticeBar: FunctionComponent<
   useEffect(() => {
     if (direction === 'vertical') {
       if (children) {
-        let arr: string[] = []
+        let arr: string[] | any = []
         React.Children.map(children, (child) => {
           arr.push((child as any).props.children)
         })
