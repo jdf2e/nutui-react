@@ -2,13 +2,12 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import Icon from '../icon'
 import './pagination.scss'
 import bem from '@/utils/bem'
-
 export interface PaginationProps {
   defaultValue: number
   modelValue: number
-  mode: string
-  prevText: string | React.ReactNode
-  nextText: string | React.ReactNode
+  mode: 'multi' | 'simple'
+  prevText: React.ReactNode
+  nextText: React.ReactNode
   pageCount: string | number
   totalItems: string | number
   itemsPerPage: string | number
@@ -17,6 +16,8 @@ export interface PaginationProps {
   pageNodeRender: (page: any) => React.ReactNode
   onChange: (currPage: number) => void
   updatecurrent: (currPage: number) => void
+  style?: React.CSSProperties
+  className?: string
 }
 
 const defaultProps = {
@@ -29,6 +30,7 @@ const defaultProps = {
   itemsPerPage: '10',
   showPageSize: '5',
   forceEllipses: false,
+  className: '',
   pageNodeRender: (item: any) => {
     return item.text
   },
@@ -51,18 +53,19 @@ export const Pagination: FunctionComponent<
     forceEllipses,
     pageNodeRender,
     defaultValue,
+    className,
+    style,
     ...rest
   } = props
 
-  let _pages: any = []
   const [currentPage, setCurrent] = useState(1)
-  const [pages, setPages] = useState(_pages)
+  const [pages, setPages] = useState<any>([])
   const [countRef, setCountRef] = useState(Number(pageCount))
-
+  const paginationBem = bem('pagination')
   //计算页面的数量
   const computedCountRef = () => {
     const num = Number(pageCount) || Math.ceil(Number(totalItems) / Number(itemsPerPage))
-    return Math.max(1, num)
+    return isNaN(num) ? 1 : Math.max(1, num)
   }
 
   //生成pages数组，用来遍历
@@ -103,7 +106,7 @@ export const Pagination: FunctionComponent<
     return items
   }
   //点击选择page
-  const select = (curPage: number, isSelect: boolean) => {
+  const selectPage = (curPage: number, isSelect: boolean) => {
     if (curPage > countRef || curPage < 1) return
     // 是否传入modelValue
     if (!('modelValue' in props)) {
@@ -141,24 +144,23 @@ export const Pagination: FunctionComponent<
     }
   }
   return (
-    <div className="nut-pagination">
+    <div className={`${paginationBem('')} ${className}`} style={style}>
       <div
-        className={`nut-pagination-prev ${mode == 'multi' ? '' : 'simple-border'} ${
+        className={`${paginationBem('prev')}  ${mode == 'multi' ? '' : 'simple-border'} ${
           currentPage == 1 ? 'disabled' : ''
         }`}
-        onClick={(e) => select(Number(currentPage) - 1, true)}
-        {...rest}
+        onClick={(e) => selectPage(Number(currentPage) - 1, true)}
       >
         {prevText}
       </div>
       {mode == 'multi' ? (
-        <div className="nut-pagination-contain">
+        <div className={`${paginationBem('contain')}`}>
           {pages.map((item: any, index: number) => {
             return (
               <div
                 key={index + 'pagination'}
-                className={`nut-pagination-item ${item.active ? 'active' : ''}`}
-                onClick={(e) => (!item.active ? select(item.number, true) : '')}
+                className={`${paginationBem('item')} ${item.active ? 'active' : ''}`}
+                onClick={(e) => (!item.active ? selectPage(item.number, true) : '')}
               >
                 {pageNodeRender ? pageNodeRender(item) : item.text}
               </div>
@@ -169,8 +171,8 @@ export const Pagination: FunctionComponent<
         ''
       )}
       {mode == 'simple' ? (
-        <div className="nut-pagination-contain">
-          <div className="nut-pagination-simple">
+        <div className={`${paginationBem('contain')}`}>
+          <div className={`${paginationBem('simple')}`}>
             {currentPage}/{countRef}
           </div>
         </div>
@@ -178,8 +180,8 @@ export const Pagination: FunctionComponent<
         ''
       )}
       <div
-        className={`nut-pagination-next ${Number(currentPage) >= countRef ? 'disabled' : ''}`}
-        onClick={(e) => select(Number(currentPage) + 1, true)}
+        className={`${paginationBem('next')}  ${Number(currentPage) >= countRef ? 'disabled' : ''}`}
+        onClick={(e) => selectPage(Number(currentPage) + 1, true)}
       >
         {nextText}
       </div>

@@ -2,18 +2,18 @@
   display: flex;
   font-size: $pagination-font-size;
   color: $pagination-color;
-  &-contain {
+  &__contain {
     display: flex;
   }
-  &-simple {
+  &__simple {
     height: 39px;
     width: 124px;
     line-height: 39px;
     text-align: center;
   }
-  &-prev,
-  &-item,
-  &-next {
+  &__prev,
+  &__item,
+  &__next {
     height: 39px;
     min-width: 39px;
     flex-shrink: 0;
@@ -26,12 +26,12 @@
     border: $pagination-item-border-width solid $pagination-item-border-color;
     cursor: pointer;
   }
-  &-prev,
-  &-item {
+  &__prev,
+  &__item {
     border-right: none;
   }
-  &-prev,
-  &-next {
+  &__prev,
+  &__next {
     padding: $pagination-prev-next-padding;
   }
   .simple-border {
