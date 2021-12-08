@@ -95,16 +95,14 @@ export const NoticeBar: FunctionComponent<
   const [index, setIndex] = useState<number>(0)
 
   useEffect(() => {
-    if (direction == 'vertical') {
+    if (direction === 'vertical') {
       if (children) {
-        let arr: any = []
+        let arr: string[] = []
         React.Children.map(children, (child) => {
           arr.push((child as any).props.children)
         })
-        // SetScrollList([].concat(arr))
         scrollList.current = [].concat(arr)
       } else {
-        // SetScrollList([].concat(list))
         scrollList.current = [].concat(list)
       }
       setTimeout(() => {
@@ -121,8 +119,8 @@ export const NoticeBar: FunctionComponent<
     }
   }, [])
 
-  const cloneChild = (listItem: any, listIndex: any) => {
-    return React.Children.map(children, function (child: any, index) {
+  const cloneChild = (listItem: string, listIndex: number) => {
+    return React.Children.map(children, function (child: any, index: number) {
       if (child && index == listIndex) {
         return React.cloneElement(child, {
           key: listIndex,
@@ -143,7 +141,7 @@ export const NoticeBar: FunctionComponent<
   }, [list])
 
   const initScrollWrap = (value: string) => {
-    if (showNoticeBar == false) {
+    if (showNoticeBar === false) {
       return
     }
     setTimeout(() => {
@@ -236,7 +234,7 @@ export const NoticeBar: FunctionComponent<
   }
 
   const iconShow = () => {
-    if (leftIcon == 'close') {
+    if (leftIcon === 'close') {
       return false
     } else {
       return true
@@ -301,13 +299,13 @@ export const NoticeBar: FunctionComponent<
           {children ? (
             <div className="horseLamp_list" style={horseLampStyle}>
                
-              {scrollList.current.map((item: any, index: any) => {
+              {scrollList.current.map((item: string, index: number) => {
                 return cloneChild(item, index)
               })}
             </div>
           ) : (
             <ul className="horseLamp_list" style={horseLampStyle}>
-              {scrollList.current.map((item: any, index: any) => {
+              {scrollList.current.map((item: string, index: number) => {
                 return (
                   <li
                     className="horseLamp_list_item"
