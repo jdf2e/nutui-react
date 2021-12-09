@@ -54,7 +54,6 @@ export const Pagination: FunctionComponent<
     pageNodeRender,
     defaultValue,
     className,
-    style,
     ...rest
   } = props
 
