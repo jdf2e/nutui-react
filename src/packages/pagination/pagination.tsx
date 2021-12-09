@@ -144,7 +144,7 @@ export const Pagination: FunctionComponent<
     }
   }
   return (
-    <div className={`${paginationBem('')} ${className}`} style={style}>
+    <div className={`${paginationBem('')} ${className}`} {...rest}>
       <div
         className={`${paginationBem('prev')}  ${mode == 'multi' ? '' : 'simple-border'} ${
           currentPage == 1 ? 'disabled' : ''
