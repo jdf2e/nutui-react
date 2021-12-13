@@ -7,7 +7,7 @@
 ### 安装
 
 ``` javascript
-import { Tag } from '@nutui/nutui';
+import { Tag } from '@nutui/nutui-react';
 ```
 
 ## 代码实例
