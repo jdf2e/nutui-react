@@ -7,7 +7,7 @@
 ### 安装
 
 ``` javascript
-import { Badge } from '@nutui/nutui';
+import { Badge } from '@nutui/nutui-react';
 ```
 
 ## 代码实例
