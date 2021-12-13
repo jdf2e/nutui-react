@@ -7,7 +7,7 @@
     "allowJs": false,
     "declaration": true,
     "emitDeclarationOnly": true,
-    "declarationDir": "./dist/dts",
+    "declarationDir": "./dist/types",
     "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,

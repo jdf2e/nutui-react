@@ -4,7 +4,7 @@
   "main": "dist/nutui.react.umd.js",
   "module": "dist/nutui.react.es.js",
   "style": "dist/style.css",
-  "typings": "dist/dts/src/packages/nutui.react.d.ts",
+  "typings": "dist/types/src/packages/nutui.react.d.ts",
   "keywords": [
     "nutui",
     "nutui2",
