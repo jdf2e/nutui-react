@@ -125,7 +125,7 @@ const AddressDemo = () => {
     },
   ])
 
-  const showAddress = (tag) => {
+  const showAddress = (tag: string) => {
     setShowPopup({
       ...showPopup,
       [tag]: !(showPopup as any)[tag],

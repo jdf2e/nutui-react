@@ -3,14 +3,18 @@ import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 import Elevator from '@/packages/elevator'
 import './address.scss'
+import { RegionData } from './address'
 
-interface RegionData {
-  name: string
-  [key: string]: any
-}
 interface CustomRegionData {
   title: string
   list: any[]
+}
+
+interface MapRef {
+  province: React.RefObject<HTMLDivElement>
+  city: React.RefObject<HTMLDivElement>
+  country: React.RefObject<HTMLDivElement>
+  town: React.RefObject<HTMLDivElement>
 }
 
 export interface AddressProps {
@@ -20,8 +24,12 @@ export interface AddressProps {
   country: RegionData[]
   town: RegionData[]
   height: string | number
-  handleChange?: (cal: any) => void
-  onNextArea?: (cal: any) => void
+  onNextArea?: (cal: {
+    next: string
+    value: string | RegionData
+    custom: string
+    selectedRegion: {}
+  }) => void
 
   onClose?: () => void
 }
@@ -48,15 +56,15 @@ export const CustomRender: FunctionComponent<
   const [tabIndex, setTabIndex] = useState(0)
   const [tabName, setTabName] = useState<string[]>(['province', 'city', 'country', 'town'])
 
-  const provinceRef = useRef<HTMLDivElement>(null)
-  const cityRef = useRef<HTMLDivElement>(null)
-  const countryRef = useRef<HTMLDivElement>(null)
-  const townRef = useRef<HTMLDivElement>(null)
+  const provinceRef = useRef(null)
+  const cityRef = useRef(null)
+  const countryRef = useRef(null)
+  const townRef = useRef(null)
 
-  const regionLine = useRef<HTMLDivElement>(null)
+  const regionLine = useRef(null)
 
   const isCustom2 = () => {
-    return type == 'custom2'
+    return type === 'custom2'
   }
 
   const transformData = (data: RegionData[]) => {
@@ -82,7 +90,7 @@ export const CustomRender: FunctionComponent<
       if (index <= -1) {
         newData.push({
           title: item.title,
-          list: [].concat(item as any),
+          list: ([] as RegionData[]).concat(item),
         })
       } else {
         newData[index] = {
@@ -95,7 +103,12 @@ export const CustomRender: FunctionComponent<
     return newData
   }
 
-  const [regionList, setRegionList] = useState({
+  const [regionList, setRegionList] = useState<{
+    province: RegionData[] | CustomRegionData[]
+    city: RegionData[] | CustomRegionData[]
+    country: RegionData[] | CustomRegionData[]
+    town: RegionData[] | CustomRegionData[]
+  }>({
     province: isCustom2() ? transformData(province) : province,
     city: isCustom2() ? transformData(city) : city,
     country: isCustom2() ? transformData(country) : country,
@@ -103,12 +116,21 @@ export const CustomRender: FunctionComponent<
   })
 
   //已选择的 省、市、县、镇
-  const [selectedRegion, setSelectedRegion] = useState({
-    province: {},
-    city: {},
-    country: {},
-    town: {},
+  const [selectedRegion, setSelectedRegion] = useState<{
+    province: RegionData
+    city: RegionData
+    country: RegionData
+    town: RegionData
+  }>({
+    province: {
+      name: '',
+    },
+    city: { name: '' },
+    country: { name: '' },
+    town: { name: '' },
   })
+
+  type SelectedRegionType = keyof typeof selectedRegion
 
   const [lineDistance, setLineDistance] = useState(20)
 
@@ -129,15 +151,17 @@ export const CustomRender: FunctionComponent<
     country: countryRef,
     town: townRef,
   }
-  // 移动下面的红线
-  const lineAnimation = (index: any) => {
-    setTimeout(() => {
-      const name = tabName[index]
 
-      const refD = mapRef as any
+  type MapRefType = keyof typeof mapRef
+  // 移动下面的红线
+  const lineAnimation = (index: string | number) => {
+    setTimeout(() => {
+      const name: MapRefType = tabName[index as number] as MapRefType
+
+      const refD: MapRef = mapRef
 
       if (name && refD[name] && refD[name].current) {
-        const distance = refD[name].current.offsetLeft
+        const distance = (refD[name as MapRefType] as any).current.offsetLeft
         setLineDistance(distance ? distance : 20)
       }
     }, 0)
@@ -200,55 +224,58 @@ export const CustomRender: FunctionComponent<
     nextAreaList(item)
   }
 
-  useEffect(() => {
-    setPrivateType(type)
-  }, [type])
-
   return (
     <div className={b('custom')}>
       <div className={b('region-tab')}>
-        {Object.keys(selectedRegion).map((key, index) => {
+        {Object.keys(selectedRegion).map((key: string | SelectedRegionType, index) => {
           return (
             <div
-              className={`${b('tab-item')} ${index == tabIndex ? 'active' : ''}`}
+              className={`${b('tab-item')} ${index === tabIndex ? 'active' : ''}`}
               key={index}
-              ref={(mapRef as any)[key]}
-              onClick={() => changeRegionTab((selectedRegion as any)[key], index)}
+              ref={mapRef[key as SelectedRegionType]}
+              onClick={() => changeRegionTab(selectedRegion[key as SelectedRegionType], index)}
             >
-              <div>{getTabName((selectedRegion as any)[key], index)}</div>
+              <div>{getTabName(selectedRegion[key as SelectedRegionType], index)}</div>
             </div>
           )
         })}
         <div className={b('tab-line')} ref={regionLine} style={{ left: lineDistance + 'px' }}></div>
       </div>
 
-      {privateType == 'custom' && (
+      {privateType === 'custom' && (
         <div className={b('region-con')}>
           <ul className={b('region-group')}>
-            {(regionList as any)[tabName[tabIndex]].map((item: any, index: number) => {
-              return (
-                <li key={index} className={b('region-item')} onClick={(e) => nextAreaList(item)}>
-                  {(selectedRegion as any)[tabName[tabIndex]].id == item.id && (
-                    <Icon
-                      className={b('region-item--icon')}
-                      name="Check"
-                      color="#FA2C19"
-                      size="13px"
-                    ></Icon>
-                  )}
-                  {item.name}
-                </li>
-              )
-            })}
+            {regionList[tabName[tabIndex] as SelectedRegionType].map(
+              (item: RegionData | CustomRegionData, index: number) => {
+                return (
+                  <li
+                    key={index}
+                    className={b('region-item')}
+                    onClick={(e) => nextAreaList(item as RegionData)}
+                  >
+                    {selectedRegion[tabName[tabIndex] as SelectedRegionType].id ===
+                      (item as RegionData).id && (
+                      <Icon
+                        className={b('region-item--icon')}
+                        name="Check"
+                        color="#FA2C19"
+                        size="13px"
+                      ></Icon>
+                    )}
+                    {(item as RegionData).name}
+                  </li>
+                )
+              }
+            )}
           </ul>
         </div>
       )}
 
-      {privateType == 'custom2' && (
+      {privateType === 'custom2' && (
         <div className={b('elevator-group')}>
           <Elevator
             height={height}
-            indexList={(regionList as any)[tabName[tabIndex]]}
+            indexList={regionList[tabName[tabIndex] as SelectedRegionType]}
             clickItem={handleElevatorItem}
           ></Elevator>
         </div>

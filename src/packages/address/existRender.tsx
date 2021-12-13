@@ -2,35 +2,18 @@ import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 import './address.scss'
-
-interface RegionData {
-  name: string
-  [key: string]: any
-}
-interface CustomRegionData {
-  title: string
-  list: any[]
-}
-interface AddressList {
-  id?: string | number
-  provinceName: string
-  cityName: string
-  countyName: string
-  townName: string
-  addressDetail: string
-  selectedAddress: boolean
-}
+import { AddressList } from './address'
 
 export interface ExistRenderProps {
   type: string
-  existAddress: object[]
+  existAddress: AddressList[] | []
   defaultIcon: string
   selectedIcon: string
   isShowCustomAddress: Boolean
   customAndExistTitle: string
-  onSelected?: (prevExistAdd: any, item: any, copyExistAdd: any) => void
-  onClose?: (cal: any) => void
-  onSwitchModule?: (cal: any) => void
+  onSelected?: (prevExistAdd: AddressList, item: AddressList, copyExistAdd: AddressList[]) => void
+  onClose?: (cal: { closeWay: string }) => void
+  onSwitchModule?: (cal: { type: string }) => void
 }
 
 const defaultProps = {
@@ -60,12 +43,19 @@ export const ExistRender: FunctionComponent<
   } = { ...defaultProps, ...props }
   const b = bem('address')
   // 选择现有地址
-  const selectedExist = (item: RegionData) => {
+  const selectedExist = (item: AddressList) => {
     const copyExistAdd = existAddress as AddressList[]
-    let prevExistAdd = {}
+    let prevExistAdd: AddressList = {
+      provinceName: '',
+      cityName: '',
+      countyName: '',
+      townName: '',
+      addressDetail: '',
+      selectedAddress: false,
+    }
 
-    copyExistAdd.forEach((list, index) => {
-      if (list && (list as AddressList).selectedAddress) {
+    copyExistAdd.forEach((list: AddressList, index) => {
+      if (list && list.selectedAddress) {
         prevExistAdd = list
       }
       ;(list as AddressList).selectedAddress = false
@@ -78,7 +68,7 @@ export const ExistRender: FunctionComponent<
 
   // 选择其他地址
   const switchModule = () => {
-    onSwitchModule && onSwitchModule({ type: type == 'exist' ? 'custom' : 'exist' })
+    onSwitchModule && onSwitchModule({ type: type === 'exist' ? 'custom' : 'exist' })
   }
 
   useEffect(() => {}, [existAddress])
@@ -87,7 +77,7 @@ export const ExistRender: FunctionComponent<
     <div className={b('exist')}>
       <div className={b('exist-group')}>
         <ul className={b('exist-ul')}>
-          {existAddress.map((item: any, index: number) => {
+          {existAddress.map((item: AddressList, index: number) => {
             return (
               <li className={b('exist-item')} key={index} onClick={() => selectedExist(item)}>
                 <Icon
