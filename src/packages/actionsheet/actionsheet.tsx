@@ -52,6 +52,7 @@ export const ActionSheet: FunctionComponent<
     visible,
     className,
     style,
+    ...rest
   } = { ...defaultProps, ...props }
 
   const [isShow, setIsShow] = useState(false)
@@ -86,7 +87,7 @@ export const ActionSheet: FunctionComponent<
         cancel && cancel()
       }}
     >
-      <div className={`${b()} ${className}`} style={style}>
+      <div className={`${b()} ${className}`} style={style} {...rest}>
         {title && <div className={b('title')}>{title}</div>}
         {description && <div className={`${b('item')} desc`}>{description}</div>}
         {menuItems.length ? (
