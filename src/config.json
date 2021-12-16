@@ -462,6 +462,16 @@
           "sort": 6,
           "show": true,
           "author": "oasis"
+        },
+        {
+          "version": "1.0.0",
+          "name": "ShortPassword",
+          "type": "component",
+          "cName": "短密码",
+          "desc": "",
+          "sort": 10,
+          "show": true,
+          "author": "Drjingfubo"
         }
       ]
     },

@@ -1,0 +1,186 @@
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import bem from '@/utils/bem'
+import Popup from '@/packages/popup'
+import Icon from '@/packages/icon'
+import './shortpassword.scss'
+
+export interface ShortPasswordProps {
+  title: string
+  desc: string
+  tips: string
+  visible: boolean
+  modelValue: string | number
+  errorMsg: string
+  noButton: boolean
+  closeOnClickOverlay: boolean
+  length: string | number
+  change: (value: string | number) => void
+  onOk: (value: string | number) => void
+  onCancel: () => void
+  onClose: () => void
+  onTips: () => void
+  complete: (value: string | number) => void
+}
+const defaultProps = {
+  title: '请输入密码',
+  desc: '您使用了虚拟资产，请进行验证',
+  tips: '忘记密码',
+  visible: false,
+  modelValue: '',
+  errorMsg: '',
+  noButton: true,
+  closeOnClickOverlay: true,
+  length: 6, // 1~6
+  change: (value: number | string) => {},
+  onOk: (value: number | string) => {},
+  onCancel: () => {},
+  onClose: () => {},
+  onTips: () => {},
+  complete: (value: number | string) => {},
+} as ShortPasswordProps
+export const ShortPassword: FunctionComponent<
+  Partial<ShortPasswordProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
+  const {
+    title,
+    desc,
+    tips,
+    visible,
+    modelValue,
+    errorMsg,
+    noButton,
+    closeOnClickOverlay,
+    length,
+    change,
+    onOk,
+    onTips,
+    onCancel,
+    onClose,
+    complete,
+  } = props
+  const b = bem('shortpassword')
+  const textInput = useRef<HTMLInputElement>(null)
+  const range = (val: number) => {
+    return Math.min(Math.max(4, val), 6)
+  }
+  const [innerVisible, setInnerVisible] = useState<boolean | undefined>(visible)
+  const [comLen, setComLen] = useState<number>(range(Number(length)))
+  const [inputValue, setInputValue] = useState<number | string>('')
+  useEffect(() => {
+    setInnerVisible(visible)
+  }, [visible])
+  useEffect(() => {
+    if (modelValue) {
+      setInputValue(modelValue)
+    }
+  }, [modelValue])
+  const changeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let inputValue = e.target.value
+    if (String(inputValue).length > comLen) {
+      inputValue = inputValue.slice(0, comLen)
+    }
+    setInputValue(inputValue)
+    if (String(inputValue).length === comLen) {
+      complete && complete(inputValue)
+    }
+    change && change(inputValue)
+  }
+  const systemStyle = () => {
+    let u = navigator.userAgent
+    let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1 //g
+    let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) //ios终端
+    if (isIOS) {
+      return {
+        paddingRight: '1200px',
+      }
+    }
+    if (isAndroid) {
+      return {
+        opacity: 0,
+        zIndex: 10,
+      }
+    }
+  }
+  const focus = () => {
+    if (textInput.current) {
+      textInput.current.focus()
+    }
+  }
+  const sure = () => {
+    onOk && onOk(inputValue)
+  }
+
+  return (
+    <div>
+      <Popup
+        style={{
+          padding: '32px 24px 28px 24px',
+          borderRadius: '12px',
+          textAlign: 'center',
+        }}
+        visible={innerVisible}
+        closeable={true}
+        close-on-click-overlay={closeOnClickOverlay}
+        onClickOverlay={onClose}
+        click-close-icon={onClose}
+      >
+        <div className={b('')}>
+          <div className={b('title')}>{title}</div>
+          <div className={b('subtitle')}>{desc}</div>
+
+          <div className={b('input')}>
+            <input
+              ref={textInput}
+              className={b('input-real')}
+              type="number"
+              style={systemStyle()}
+              maxLength={6}
+              value={inputValue}
+              onChange={(e) => changeValue(e)}
+            />
+            <div className={b('input-site')}></div>
+            <div className={b('input-fake')} onClick={() => focus()}>
+              {[...new Array(comLen).keys()].map((item, index) => {
+                return (
+                  <div className={b('input-fake__li')} key={index}>
+                    {String(inputValue).length > index ? (
+                      <div className={b('input-fake__li__icon')}></div>
+                    ) : (
+                      ''
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+          <div className={b('message')}>
+            <div className={b('message__error')}>{errorMsg}</div>
+            {tips ? (
+              <div className={b('message__forget')}>
+                <Icon className="icon" size="11px" name="tips"></Icon>
+                <div onClick={onTips}>{tips}</div>
+              </div>
+            ) : (
+              ''
+            )}
+          </div>
+          {!noButton ? (
+            <div className={b('footer')}>
+              <div className={b('footer__cancel')} onClick={onCancel}>
+                取消
+              </div>
+              <div className={b('footer__sure')} onClick={() => sure()}>
+                确认
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
+        </div>
+      </Popup>
+    </div>
+  )
+}
+
+ShortPassword.defaultProps = defaultProps
+ShortPassword.displayName = 'NutShortPassword'
