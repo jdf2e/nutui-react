@@ -7,7 +7,7 @@
 ### 安装
 
 ``` javascript
-import { Icon } from '@nutui/nutui';
+import { Icon } from '@nutui/nutui-react';
 ```
 
 ## 代码演示
