@@ -322,5 +322,23 @@ $pagination-disable-background-color: #f7f8fa !default;
 $pagination-item-border-width: 1px !default;
 $pagination-item-border-radius: 2px !default;
 $pagination-prev-next-padding: 0 11px !default;
+
+// dialog
+$dialog-min-height: 156px !default;
+$dialog-padding: 28px 24px 16px 24px !default;
+$dialog-header-height: 20px !default;
+$dialog-header-color: rgba(38, 38, 38, 1) !default;
+$dialog-content-margin: 20px 0 !default;
+$dialog-content-max-height: 268px !default;
+$dialog-content-line-height: 16px !default;
+$dialog-mask-z-index: 1050 !default;
+$dialog-mask-background-color: rgba($black, 0.7) !default;
+$dialog-outer-z-index: 2000 !default;
+$dialog-outer-bordder-radius: 20px !default;
+$dialog-vertical-footer-ok-margin-top: 10px !default;
+$dialog-footer-button-min-width: 100px !default;
+$dialog-footer-cancel-margin-right: 20px !default;
+$dialog-footer-ok-max-width: 128px !default;
+
 @import './mixins/index';
 @import './animation/index';

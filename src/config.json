@@ -302,6 +302,16 @@
           "sort": 11,
           "show": true,
           "author": "vickyYE"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Dialog",
+          "type": "component",
+          "cName": "对话框",
+          "desc": "对话框",
+          "sort": 12,
+          "show": true,
+          "author": "yangjinjun3"
         }
       ]
     },
