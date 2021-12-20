@@ -135,6 +135,7 @@ const selected = (item: any, event: MouseEvent) => {
 ### Prop
 | 字段           | 说明                       | 类型    | 默认值                       |
 |:---------------|:---------------------------|:--------|:-----------------------------|
+| fixednavClass        | 自定义类名                   | String | fixednav                        |
 | visible        | 是否打开                   | Boolean | false                        |
 | navList       | 悬浮列表内容数据           | Array   | []                           |
 | activeText    | 收起列表按钮文案           | String  | 收起导航                     |
