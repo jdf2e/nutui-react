@@ -4,16 +4,17 @@ import Cell from '@/packages/cell'
 
 interface CalBack {
   next: string
-  value: string
+  value: string | RegionData
   custom: string
+  selectedRegion: {}
 }
 interface RegionData {
-  name: string
+  name?: string
   [key: string]: any
 }
 interface CalResult {
   type: string
-  data: AddressResult
+  data: {}
 }
 interface AddressList {
   id?: string | number
@@ -23,6 +24,8 @@ interface AddressList {
   townName: string
   addressDetail: string
   selectedAddress: boolean
+  name?: string
+  phone?: string
 }
 interface AddressResult extends AddressList {
   addressIdStr: string
@@ -143,11 +146,11 @@ const AddressDemo = () => {
     }
   }
 
-  const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => {
+  const selected = (prevExistAdd: AddressList, nowExistAdd: AddressList, arr: AddressList[]) => {
     console.log('选择')
   }
 
-  const switchModule = (val: CalResult) => {
+  const switchModule = (val: { type: string }) => {
     if (val.type == 'custom') {
       console.log('点击了“选择其他地址”按钮')
     } else {
@@ -155,15 +158,15 @@ const AddressDemo = () => {
     }
   }
 
-  const closeMask = (val: CalResult) => {
+  const closeMask = (val: { closeWay: string }) => {
     console.log('关闭弹层', val)
   }
 
   const close1 = (val: CalResult) => {
-    if (val.data.addressStr) {
+    if ((val.data as AddressResult).addressStr) {
       setText({
         ...text,
-        one: val.data.addressStr,
+        one: (val.data as AddressResult).addressStr,
       })
     }
 
@@ -175,7 +178,8 @@ const AddressDemo = () => {
 
   const close2 = (val: CalResult) => {
     if (val.type == 'exist') {
-      const { provinceName, cityName, countyName, townName, addressDetail } = val.data
+      const { provinceName, cityName, countyName, townName, addressDetail } =
+        val.data as AddressResult
       if (provinceName) {
         setText({
           ...text,
@@ -183,10 +187,10 @@ const AddressDemo = () => {
         })
       }
     } else {
-      if (val.data.addressStr) {
+      if ((val.data as AddressResult).addressStr) {
         setText({
           ...text,
-          two: val.data.addressStr,
+          two: (val.data as AddressResult).addressStr,
         })
       }
     }
@@ -199,7 +203,8 @@ const AddressDemo = () => {
 
   const close3 = (val: CalResult) => {
     if (val.type == 'exist') {
-      const { provinceName, cityName, countyName, townName, addressDetail } = val.data
+      const { provinceName, cityName, countyName, townName, addressDetail } =
+        val.data as AddressResult
       if (provinceName) {
         setText({
           ...text,
@@ -207,10 +212,10 @@ const AddressDemo = () => {
         })
       }
     } else {
-      if (val.data.addressStr) {
+      if ((val.data as AddressResult).addressStr) {
         setText({
           ...text,
-          three: val.data.addressStr,
+          three: (val.data as AddressResult).addressStr,
         })
       }
     }
@@ -223,7 +228,8 @@ const AddressDemo = () => {
 
   const close4 = (val: CalResult) => {
     if (val.type == 'exist') {
-      const { provinceName, cityName, countyName, townName, addressDetail } = val.data
+      const { provinceName, cityName, countyName, townName, addressDetail } =
+        val.data as AddressResult
       if (provinceName) {
         setText({
           ...text,
@@ -231,10 +237,10 @@ const AddressDemo = () => {
         })
       }
     } else {
-      if (val.data.addressStr) {
+      if ((val.data as AddressResult).addressStr) {
         setText({
           ...text,
-          four: val.data.addressStr,
+          four: (val.data as AddressResult).addressStr,
         })
       }
     }
@@ -246,10 +252,10 @@ const AddressDemo = () => {
   }
 
   const close5 = (val: CalResult) => {
-    if (val.data.addressStr) {
+    if ((val.data as AddressResult).addressStr) {
       setText({
         ...text,
-        five: val.data.addressStr,
+        five: (val.data as AddressResult).addressStr,
       })
     }
 
@@ -281,7 +287,7 @@ const AddressDemo = () => {
           town={town}
           customAddressTitle="请选择所在地区"
           onChange={(cal) => onChange(cal, 'normal')}
-          close={close1}
+          onClose={close1}
         ></Address>
 
         <Address
@@ -293,7 +299,7 @@ const AddressDemo = () => {
           town={town}
           height="270px"
           onChange={(cal) => onChange(cal, 'normal2')}
-          close={close5}
+          onClose={close5}
           customAddressTitle="请选择所在地区"
         ></Address>
 
@@ -302,9 +308,9 @@ const AddressDemo = () => {
           type="exist"
           existAddress={existAddress}
           onChange={(cal) => onChange(cal, 'exist')}
-          close={close2}
+          onClose={close2}
           isShowCustomAddress={false}
-          selected={selected}
+          onSelected={selected}
           existAddressTitle="配送至"
         ></Address>
 
@@ -313,9 +319,9 @@ const AddressDemo = () => {
           type="exist"
           existAddress={existAddress}
           onChange={(cal) => onChange(cal, 'customImg')}
-          close={close3}
+          onClose={close3}
           isShowCustomAddress={false}
-          selected={selected}
+          onSelected={selected}
           defaultIcon={icon.defaultIcon}
           selectedIcon={icon.selectedIcon}
           closeBtnIcon={icon.closeBtnIcon}
@@ -331,8 +337,8 @@ const AddressDemo = () => {
           town={town}
           backBtnIcon={icon.backBtnIcon}
           onChange={(cal) => onChange(cal, 'other')}
-          close={close4}
-          selected={selected}
+          onClose={close4}
+          onSelected={selected}
           customAndExistTitle="选择其他地址"
           switchModule={switchModule}
           closeMask={closeMask}
