@@ -10,14 +10,16 @@ const TagDemo = () => {
   return (
     <>
       <div className="demo">
-        <CellGroup title="基础用法">
+        <h2>基础用法</h2>
+        <CellGroup>
           <Cell title="primary类型" extra={<Tag type="primary">标签</Tag>}></Cell>
           <Cell title="success类型" extra={<Tag type="success">标签</Tag>}></Cell>
           <Cell title="danger类型" extra={<Tag type="danger">标签</Tag>}></Cell>
           <Cell title="warning类型" extra={<Tag type="warning">标签</Tag>}></Cell>
         </CellGroup>
 
-        <CellGroup title="样式风格">
+        <h2>样式风格</h2>
+        <CellGroup>
           <Cell title="空心样式" extra={<Tag plain>标签</Tag>}></Cell>
           <Cell
             title="圆角样式"
@@ -45,7 +47,8 @@ const TagDemo = () => {
           ></Cell>
         </CellGroup>
 
-        <CellGroup title="自定义">
+        <h2>自定义</h2>
+        <CellGroup>
           <Cell title="背景颜色" extra={<Tag color="#FA685D">标签</Tag>}></Cell>
           <Cell
             title="文字颜色"
