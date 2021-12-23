@@ -1,4 +1,4 @@
-#  Dialog组件
+#  Dialog 对话框
 
 ### 介绍
 

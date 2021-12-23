@@ -1,10 +1,25 @@
 import React, { ForwardRefRenderFunction, HTMLAttributes, forwardRef } from 'react'
 import classNames from 'classnames'
-import Button from '../button'
+import Button from '@/packages/button'
 import './dialog.scss'
 import { DialogWrapper } from './DialogWrapper'
 import confirm from './Confirm'
 import { DialogProps, DialogReturnProps, DialogComponent, ConfirmProps } from './config'
+
+const defaultProps = {
+  okText: '确定',
+  cancelText: '取消',
+  mask: true,
+  closeOnClickOverlay: true,
+  noFooter: false,
+  noOkBtn: false,
+  noCancelBtn: false,
+  okBtnDisabled: false,
+  cancelAutoClose: true,
+  textAlign: 'center',
+  footerDirection: 'horizontal',
+  lockScroll: false,
+} as DialogProps
 
 const BaseDialog: ForwardRefRenderFunction<
   unknown,
@@ -74,7 +89,6 @@ export const Dialog: DialogComponent = forwardRef(BaseDialog) as DialogComponent
 Dialog.confirm = (props: ConfirmProps): DialogReturnProps => {
   return confirm(props)
 }
-
 ;['alert'].forEach((type) => {
   ;(Dialog as any)[type] = (props: ConfirmProps) => {
     return confirm({
@@ -85,19 +99,6 @@ Dialog.confirm = (props: ConfirmProps): DialogReturnProps => {
   }
 })
 
-Dialog.defaultProps = {
-  okText: '确定',
-  cancelText: '取消',
-  mask: true,
-  closeOnClickOverlay: true,
-  noFooter: false,
-  noOkBtn: false,
-  noCancelBtn: false,
-  okBtnDisabled: false,
-  cancelAutoClose: true,
-  textAlign: 'center',
-  footerDirection: 'horizontal',
-  lockScroll: false,
-}
+Dialog.defaultProps = defaultProps
 
 Dialog.displayName = 'NutDialog'
