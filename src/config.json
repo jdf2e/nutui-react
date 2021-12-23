@@ -285,6 +285,16 @@
         },
         {
           "version": "1.0.0",
+          "name": "ActionSheet",
+          "type": "component",
+          "cName": "动作面板",
+          "desc": "从底部弹出的动作菜单面板。",
+          "sort": 11,
+          "show": true,
+          "author": "dsj"
+        },
+        {
+          "version": "1.0.0",
           "name": "NoticeBar",
           "type": "component",
           "cName": "通告栏",
@@ -497,6 +507,16 @@
           "sort": 2,
           "show": true,
           "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Address",
+          "type": "component",
+          "cName": "地址组件",
+          "desc": "地址组件",
+          "sort": 3,
+          "show": true,
+          "author": "yangxiaolu"
         }
       ]
     }
