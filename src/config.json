@@ -320,7 +320,7 @@
           "cName": "折叠面板子组件",
           "desc": "折叠面板的子组件",
           "sort": 13,
-          "show": true,
+          "show": false,
           "author": "zhenyulei"
         }
       ]
