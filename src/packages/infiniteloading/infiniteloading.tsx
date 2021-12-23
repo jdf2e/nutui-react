@@ -90,18 +90,14 @@ export const Infiniteloading: FunctionComponent<
 
   useEffect(() => {
     const element = scroller.current as HTMLDivElement
-    element.addEventListener('touchmove', preventDefault, { passive: false })
+    element.addEventListener('touchmove', touchMove, { passive: false })
 
     return () => {
-      element.removeEventListener('touchmove', preventDefault, {
+      element.removeEventListener('touchmove', touchMove, {
         passive: false,
       } as EventListenerOptions)
     }
   }, [])
-
-  const preventDefault = (event: TouchEvent) => {
-    event.preventDefault()
-  }
 
   const getStyle = () => {
     return {
@@ -147,9 +143,10 @@ export const Infiniteloading: FunctionComponent<
     }
   }
 
-  const touchMove = (event: React.TouchEvent<HTMLDivElement>) => {
+  const touchMove = (event: any) => {
     distance.current = event.touches[0].pageY - y.current
     if (distance.current > 0 && isTouching.current) {
+      event.preventDefault()
       if (distance.current >= refreshMaxH.current) {
         distance.current = refreshMaxH.current
         ;(refreshTop.current as HTMLDivElement).style.height = `${distance.current}px`
@@ -158,6 +155,7 @@ export const Infiniteloading: FunctionComponent<
       }
     } else {
       distance.current = 0
+      ;(refreshTop.current as HTMLDivElement).style.height = `${distance.current}px`
       isTouching.current = false
     }
   }
@@ -165,6 +163,7 @@ export const Infiniteloading: FunctionComponent<
   const touchEnd = () => {
     if (distance.current < refreshMaxH.current) {
       distance.current = 0
+      ;(refreshTop.current as HTMLDivElement).style.height = `${distance.current}px`
     } else {
       refresh && refresh(refreshDone)
     }
@@ -223,9 +222,9 @@ export const Infiniteloading: FunctionComponent<
     <div
       className={classes}
       ref={scroller}
-      onTouchStart={(event) => touchStart(event)}
-      onTouchMove={(event) => touchMove(event)}
-      onTouchEnd={() => touchEnd()}
+      onTouchStart={touchStart}
+      onTouchMove={touchMove}
+      onTouchEnd={touchEnd}
       {...restProps}
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>

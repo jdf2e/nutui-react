@@ -265,16 +265,6 @@
         },
         {
           "version": "1.0.0",
-          "name": "Notify",
-          "type": "component",
-          "cName": "消息通知",
-          "desc": "在页面顶部展示消息提示",
-          "sort": 8,
-          "show": false,
-          "author": "vickyYE"
-        },
-        {
-          "version": "1.0.0",
           "name": "CircleProgress",
           "type": "component",
           "cName": "进度条",
@@ -292,6 +282,36 @@
           "show": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008"
+        },
+        {
+          "version": "1.0.0",
+          "name": "ActionSheet",
+          "type": "component",
+          "cName": "动作面板",
+          "desc": "从底部弹出的动作菜单面板。",
+          "sort": 11,
+          "show": true,
+          "author": "dsj"
+        },
+        {
+          "version": "1.0.0",
+          "name": "NoticeBar",
+          "type": "component",
+          "cName": "通告栏",
+          "desc": "用于循环播放展示一组消息通知。",
+          "sort": 11,
+          "show": true,
+          "author": "vickyYe"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Notify",
+          "type": "component",
+          "cName": "消息通知",
+          "desc": "在页面顶部展示消息提示",
+          "sort": 11,
+          "show": true,
+          "author": "vickyYE"
         }
       ]
     },
@@ -347,6 +367,16 @@
           "sort": 5,
           "show": true,
           "author": "Ymm0008"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Pagination",
+          "type": "component",
+          "cName": "分页组件",
+          "desc": "当数据量较多时，采用分页的形式分隔长列表。",
+          "sort": 6,
+          "show": true,
+          "author": "lkjh3214"
         }
       ]
     },
@@ -467,6 +497,16 @@
           "sort": 2,
           "show": true,
           "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Address",
+          "type": "component",
+          "cName": "地址组件",
+          "desc": "地址组件",
+          "sort": 3,
+          "show": true,
+          "author": "yangxiaolu"
         }
       ]
     }

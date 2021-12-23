@@ -1,19 +1,25 @@
 import React, { FunctionComponent, useState, useEffect, MouseEvent, HTMLProps } from 'react'
 import { Icon } from '../icon/icon'
-import { Overlay } from '../overlay/overlay'
+import bem from '@/utils/bem'
 import classNames from 'classnames'
+import { Overlay } from '../overlay/overlay'
 
 import './fixednav.scss'
 
+type Direction = 'right' | 'left'
+type Position = {
+  top?: string
+  bottom?: string
+}
 export interface FixedNavProps {
-  prefixCls: string
+  fixednavClass: string
   visible: boolean
   overlay: boolean
   navList: Array<object>
   activeText: string
   unActiveText: string
-  position: object
-  type: string
+  position: Position
+  type: Direction
   change: Function
   selected: Function
   slotList: HTMLProps<HTMLElement>
@@ -21,22 +27,21 @@ export interface FixedNavProps {
 }
 
 const defaultProps = {
-  prefixCls: 'nut-fixednav',
+  fixednavClass: 'nut-fixednav',
   activeText: '收起导航',
   unActiveText: '快速导航',
+  type: 'right',
   position: {
     top: 'auto',
     bottom: 'auto',
   },
-  type: 'right',
 } as FixedNavProps
 
 export const FixedNav: FunctionComponent<
   Partial<FixedNavProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
-    prefixCls,
-    children,
+    fixednavClass,
     overlay,
     visible,
     navList,
@@ -48,30 +53,42 @@ export const FixedNav: FunctionComponent<
     type,
     slotList,
     slotBtn,
+    ...rest
   } = { ...defaultProps, ...props }
 
-  const selectCb = (event: MouseEvent, item: any) => {
+  const b = bem('fixednav')
+
+  const classes = classNames(
+    {
+      active: visible,
+    },
+    type,
+    fixednavClass,
+    b('')
+  )
+
+  const onSelectCb = (event: MouseEvent, item: any): void => {
     selected(item, event)
   }
 
-  const updateValue = (value: boolean = !visible) => {
+  const onUpdateValue = (value: boolean = !visible): void => {
     change(value)
   }
 
-  const [classNames, setClassNames] = useState('')
+  // const [classNames, setClassNames] = useState('')
 
-  const classes = () => {
-    return `${prefixCls} ${type} ${visible ? 'active' : ''}`
-  }
+  // const classes = () => {
+  //   return `${fixednavClass} ${type} ${visible ? 'active' : ''}`
+  // }
 
-  useEffect(() => {
-    setClassNames(classes())
-  }, [visible])
+  // useEffect(() => {
+  //   setClassNames(classes())
+  // }, [visible])
 
   return (
-    <div className={`${classNames}`} style={position}>
+    <div className={classes} style={position} {...rest}>
       {overlay && (
-        <Overlay visible={visible} zIndex={200} onClick={() => updateValue(false)}></Overlay>
+        <Overlay visible={visible} zIndex={200} onClick={() => onUpdateValue(false)}></Overlay>
       )}
       <div className="list">
         {slotList ? (
@@ -82,7 +99,7 @@ export const FixedNav: FunctionComponent<
               return (
                 <div
                   className="nut-fixednav__list-item"
-                  onClick={(event) => selectCb(event, item)}
+                  onClick={(event) => onSelectCb(event, item)}
                   key={item.id || index}
                 >
                   <img src={item.icon} />
@@ -95,7 +112,7 @@ export const FixedNav: FunctionComponent<
         )}
       </div>
 
-      <div className="nut-fixednav__btn" onClick={() => updateValue()}>
+      <div className="nut-fixednav__btn" onClick={() => onUpdateValue()}>
         {slotBtn ? (
           slotBtn
         ) : (

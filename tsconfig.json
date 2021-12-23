@@ -7,7 +7,7 @@
     "allowJs": false,
     "declaration": true,
     "emitDeclarationOnly": true,
-    "declarationDir": "./dist/dts",
+    "declarationDir": "./dist/types",
     "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
@@ -25,5 +25,5 @@
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"],
-  "exclude": ["./node_modules/*"]
+  "exclude": ["./node_modules/*", "src/sites/*"]
 }

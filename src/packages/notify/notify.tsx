@@ -1,40 +1,85 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
-import './notify.scss'
+import * as React from 'react'
+import Notification, { NotificationProps } from './Notification'
+import classNames from 'classnames'
 
-export interface NotifyProps {
+let messageInstance: any = null
+interface INotifyProps {
   id: string
-  color: string
+  color?: string
   msg: string
   duration: number
-  className: string
-  background: string
+  className?: string
+  background?: string
   type: string
-  visible: boolean
   onClick: () => void
-  onClose: () => void
-  unmount: () => void
+  onClosed: () => void
 }
-const defaultProps = {
-  color: '',
+
+const options: INotifyProps = {
   msg: '',
-  duration: 3000,
-  className: '',
-  background: '',
+  id: '',
+  duration: 3000, //时长
   type: 'danger',
-  visible: false,
-} as NotifyProps
-export const Notify: FunctionComponent<
-  Partial<NotifyProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
-  const { children, id, color, msg, duration, className, background, type, visible } = {
-    ...defaultProps,
-    ...props,
+  className: '',
+  onClosed: () => {},
+  onClick: () => {},
+}
+
+function getInstance(props: NotificationProps, callback: (notification: any) => void) {
+  if (messageInstance) {
+    messageInstance.destroy()
+    messageInstance = null
   }
 
-  let timer: null | number = null
-  useEffect(() => {}, [])
-  return <div className="nut-notify">{children ? children : msg}</div>
+  Notification.newInstance(props, (notification: any) => {
+    return callback && callback(notification)
+  })
 }
 
-Notify.defaultProps = defaultProps
-Notify.displayName = 'NutNotify'
+function notice(opts: any) {
+  function close() {
+    if (messageInstance) {
+      messageInstance.destroy()
+      messageInstance = null
+    }
+  }
+  opts = { ...options, ...opts }
+  getInstance(opts, (notification: any) => {
+    messageInstance = notification
+  })
+}
+const errorMsg = (msg: any) => {
+  if (!msg) {
+    console.warn('[NutUI Notify]: msg不能为空')
+    return
+  }
+}
+
+export default {
+  text(msg: string | React.ReactNode, option = {}) {
+    errorMsg(msg)
+    return notice({ msg, type: 'base', ...option })
+  },
+  success(msg: string | React.ReactNode, option = {}) {
+    errorMsg(msg)
+    return notice({ msg, type: 'success', ...option })
+  },
+  primary(msg: string | React.ReactNode, option = {}) {
+    errorMsg(msg)
+    return notice({ msg, type: 'primary', ...option })
+  },
+  danger(msg: string | React.ReactNode, option = {}) {
+    errorMsg(msg)
+    return notice({ msg, type: 'danger', ...option })
+  },
+  warn(msg: string | React.ReactNode, option = {}) {
+    errorMsg(msg)
+    return notice({ msg, type: 'warning', ...option })
+  },
+  hide() {
+    if (messageInstance) {
+      messageInstance.destroy()
+      messageInstance = null
+    }
+  },
+}
