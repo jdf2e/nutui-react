@@ -7,7 +7,7 @@
 ### 安装
 
 ``` javascript
-import { Popover } from '@nutui/nutui';
+import { Popover } from '@nutui/nutui-react';
 ```
 
 ### 代码实例
