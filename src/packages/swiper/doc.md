@@ -1,93 +1,184 @@
-# Steps 步骤条
+# Swiper 轮播
 
 ### 介绍
 
-拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。
+常用于一组图片或卡片轮播，当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现。
 
 ### 安装
 
 ```javascript
-import { Steps } from '@nutui/nutui';
+import { Swiper,SwiperItem } from '@nutui/nutui-react';
 ```
 
 ## 代码演示
 
-### 基本用法
+### 基础用法
 
-```tsx
-<Steps current={1}>
-  <Step activeIndex={1} title="步骤一">1</Step>
-  <Step activeIndex={2} title="步骤二">2</Step>
-  <Step activeIndex={3} title="步骤三">3</Step>
-</Steps>
+`autoPlay` 自动轮播的时长
+`initPage` 初始索引值
+`paginationVisible` 是否显示分页指示器
+`paginationColor` 指示器颜色自定义
+`onChange` 当卡片发生变化
+
+```html
+<Swiper
+  height={height}
+  paginationColor={"#426543"}
+  autoPlay="3000"
+  initPage={initPage1}
+  paginationVisible={true}
+  onChange={onChange}
+>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+  </Swiperitem>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+  </Swiperitem>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+  </Swiperitem>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+  </Swiperitem>
+</Swiper>
+```
+``` javascript
+import React, { useState } from 'react'
+import { Swiper,SwiperItem } from '@nutui/nutui-react';
+
+const SwiperDemo = () => {
+  const [initPage1, setInitPage1] = useState(0)
+  const onChange = (e) => {
+    // do something
+  }
+}
 ```
 
-### 标题和描述信息
+### 自定义大小
 
-```tsx
-<Steps current={2}>
-  <Step activeIndex={1} title="步骤一" content="步骤描述">1</Step>
-  <Step activeIndex={2} title="步骤二" content="步骤描述">2</Step>
-  <Step activeIndex={3} title="步骤三" content="步骤描述">3</Step>
-</Steps>
+`width` 自定义轮播大小
+
+```html
+<Swiper
+  width={300}
+  initPage={initPage2}
+  loop={false}
+>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+  </Swiperitem>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+  </Swiperitem>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+  </Swiperitem>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+  </Swiperitem>
+</Swiper>
 ```
+### 自定义分页指示器
 
-### 自定义图标
+`pageContent` 表示自定义指示器
 
-```tsx
-<Steps current={1}>
-  <Step activeIndex={1} title="已完成" icon="service">1</Step>
-  <Step activeIndex={2} title="进行中" icon="people">2</Step> 
-  <Step activeIndex={3} title="未开始" icon="location2">3</Step>
-</Steps>
+```html
+<Swiper
+  initPage={initPage3}
+  loop={true}
+  onChange={onChange3}
+  pageContent={<div className="page"> {current}/4 </div>}
+>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+  </Swiperitem>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+  </Swiperitem>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+  </Swiperitem>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+  </Swiperitem>
+</Swiper>
 ```
+``` javascript
+import React, { useState } from 'react'
+import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
-### 竖向步骤条
-
-```tsx
-<Steps direction="vertical" current={2}>
-  <Step activeIndex={1} title="已完成" content="您的订单已经打包完成，商品已发出">1</Step>
-  <Step activeIndex={2} title="进行中" content="您的订单正在配送途中">2</Step>
-  <Step activeIndex={3} title="未开始" content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦">3</Step>
-</Steps>
+const SwiperDemo = () => {
+  const [initPage3, setInitPage3] = useState(0)
+  const [current, setCurrent] = useState(1)
+  const onChange3 = (e) => {
+    setCurrent(e + 1)
+  }
+}
 ```
+### 垂直方向
 
-### 点状步骤和垂直方向
-```tsx
-<Steps direction="vertical" progressDot current={2}>
-  <Step activeIndex={1} title="已完成" content="您的订单已经打包完成，商品已发出">1</Step>
-  <Step activeIndex={2} title="进行中" content="您的订单正在配送途中">2</Step>
-  <Step activeIndex={3} title="未开始" renderContent={() => (
-        <>
-            <p>收货地址为：</p>
-            <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
-        </>
-  )}>3</Step>
-</Steps>
+`direction` 自定义轮播方向
+
+
+```html
+<Swiper
+  loop={true}
+  initPage={initPage4}
+  direction="vertical"
+  autoPlay="3000"
+  height="150"
+  paginationVisible={true}
+>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+  </Swiperitem>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+  </Swiperitem>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+  </Swiperitem>
+  <Swiperitem >
+    <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+  </Swiperitem>
+</Swiper>
 ```
-
 
 ## API
 
 ### Props
 
-#### Steps
+| 参数              | 说明                                   | 类型                      | 默认值            |
+| ----------------- | -------------------------------------- | ------------------------- | ----------------- |
+| width             | 轮播卡片的宽度                         | Number \| String          | window.innerWidth |
+| height            | 轮播卡片的高度                         | String \| Number          | 0                 |
+| direction         | 轮播方向,可选值`horizontal`,`vertical` | String                    | 'horizontal'      |
+| paginationVisible | 分页指示器是否展示                     | Boolean                   | false             |
+| paginationColor   | 分页指示器选中的颜色                   | String                    | '#fff'            |
+| loop              | 是否循环轮播                           | Boolean                   | true              |
+| duration          | 动画时长（单位是ms）                   | Number \| String          | 500               |
+| autoPlay          | 自动轮播时长，0表示不会自动轮播        | Number \| String          | 0                 |
+| initPage          | 初始化索引值                           | Number \| String          | 0                 |
+| touchable         | 是否可触摸滑动                         | Boolean                   | true              |
+| pageContent       | 自定义指示器                           | String \| React.ReactNode | -                 |
+| isPreventDefault  | 滑动过程中是否禁用默认事件             | Boolean                   | true              |
+| isStopPropagation | 滑动过程中是否禁止冒泡                 | Boolean                   | true              |
 
-| 参数                   | 说明                                                        | 类型           | 默认值      |
-| ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| direction	             | 	显示方向，`horizontal`,`vertical`  | String        | 'horizontal'  | 
-| current	               | 	当前所在的步骤           | Number        | 0      |
-| progressDot            |  点状步骤条     | Boolean | false         |
+
+
+### Events
+
+| 事件名   | 说明             | 回调参数        |
+| -------- | ---------------- | --------------- |
+| onChange | 卡片切换后的回调 | 当前索引值index |
 
 
 
-#### nut-step
+### API
 
-| 参数           | 说明                   | 类型     | 默认值      |
-| ---------------- | ---------------------- | ------------ | ----------- |
-| title            | 流程步骤的标题         | String | '' |
-| content          | 流程步骤的描述性文字       | String | '' |
-| icon          | 图标       | String | '' |
-| size          | 图标尺寸大小       | String | '' |
-| activeIndex          | 流程步骤的索引       | Number | 0 |
-| renderContent         | 流程步骤的描述性文字的html结构      | React.ReactNode | - |
+| 事件名 | 说明           | 参数         |
+| ------ | -------------- | ------------ |
+| prev   | 切换到上一页   | -            |
+| next   | 切换到下一页   | -            |
+| to     | 切换到指定轮播 | index:number |

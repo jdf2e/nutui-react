@@ -1,28 +1,41 @@
-import React, { useState, FunctionComponent, useEffect, useRef } from 'react'
+import React, {
+  useState,
+  FunctionComponent,
+  useEffect,
+  useRef,
+  TouchEvent,
+  forwardRef,
+  useMemo,
+} from 'react'
 import { DataContext } from './UserContext'
 import bem from '@/utils/bem'
 import classNames from 'classnames'
 import './swiper.scss'
 
+export type SwiperRef = {
+  to: (index: number) => void
+  next: () => void
+  prev: () => void
+}
 interface SwiperProps {
   width: number | string
   height: number | string
   duration: number | string
   initPage: number | string
   autoPlay: number | string
-  direction: string
+  direction: 'horizontal' | 'vertical'
   paginationColor: string
   paginationVisible: boolean
   loop: boolean
   touchable: boolean
   isPreventDefault: boolean
   isStopPropagation: boolean
+  className?: string
+  style?: React.CSSProperties
+  pageContent?: React.ReactNode
+  onChange?: (currPage: number) => void
 }
-interface IStyle {
-  width?: string
-  height?: string
-  transform?: string
-}
+
 const defaultProps = {
   width: window.innerWidth,
   height: 0,
@@ -36,50 +49,92 @@ const defaultProps = {
   touchable: true,
   isPreventDefault: true,
   isStopPropagation: true,
+  className: '',
 } as SwiperProps
 
+type Parent = {
+  propSwiper: SwiperProps
+  size?: number | string
+}
+
 const DISTANCE = 5
-
-export const Swiper: FunctionComponent<
-  Partial<SwiperProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+export const Swiper = React.forwardRef<
+  SwiperRef,
+  Partial<SwiperProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+>((props, ref) => {
   const propSwiper = { ...defaultProps, ...props }
-  const container = useRef(null)
-  const { children, direction } = propSwiper
+  const {
+    children,
+    direction,
+    className,
+    pageContent,
+    onChange,
+    initPage,
+    paginationColor,
+    paginationVisible,
+    touchable,
+    isPreventDefault,
+    isStopPropagation,
+    autoPlay,
+    ...rest
+  } = propSwiper
+  const container = useRef<any>(null)
+  const innerRef = useRef<any>(null)
+  const _swiper = useRef<any>({
+    moving: false,
+    autoplayTimer: null,
+    width: 0,
+    height: 0,
+    offset: 0,
+    size: 0,
+  })
 
-  let autoplayTimer = 0 as number | undefined
+  const childsRefs: any = []
+
   const isVertical = direction === 'vertical'
 
-  const size = props[isVertical ? 'height' : 'width']
-
-  const parent = {
-    propSwiper,
-    size,
-    // relation
-  }
-  let [contentStyle, setContentStyle] = useState({} as any)
   let [rect, setRect] = useState(null as DOMRect | null)
   let [active, setActive] = useState(0)
   let [width, setWidth] = useState(0)
-  let [height, setheight] = useState(0)
+  let [height, setHeight] = useState(0)
   let [offset, setOffset] = useState(0)
-  let [startX, setStartX] = useState(0)
-  let [startY, setStartY] = useState(0)
-  let [deltaX, setDeltaX] = useState(0)
-  let [deltaY, setDeltaY] = useState(0)
-  let [offsetX, setOffsetX] = useState(0)
-  let [offsetY, setOffsetY] = useState(0)
-  let [stateDirection, setStateDirection] = useState('')
+  let [ready, setReady] = useState(false)
 
-  let moving = false
+  let size = isVertical ? height : width
+  let [touch, setTouch] = useState({
+    startX: 0,
+    startY: 0,
+    deltaX: 0,
+    deltaY: 0,
+    offsetX: 0,
+    offsetY: 0,
+    stateDirection: '',
+    delta: 0,
+    touchTime: 0,
+  })
+
+  const [childs, setChilds] = useState([])
+  let [touchTime, setTouchTime] = useState<any>('')
+
   let childCount = (children as any[]).length
-
-  const delTa = isVertical ? deltaY : deltaX
-
-  const isCorrectDirection = stateDirection === props.direction
-
-  const trackSize = childCount * Number(size)
-
+  for (let i = 0; i < childCount; i++) {
+    childsRefs.push(useRef<any>(null))
+  }
+  let trackSize = childCount * Number(size)
+  const getChildren = () => {
+    const childs: any = []
+    React.Children.toArray(children).forEach((child: any, index) => {
+      if (child.type && child.type.displayName === 'NutSwiperitem') {
+        childs.push(React.cloneElement(child, { ref: childsRefs[index], key: 'item_' + index }))
+      }
+    })
+    return childs
+  }
+  // 父组件参数传入子组件item
+  const parent: Parent = {
+    propSwiper,
+    size,
+  }
   const minOffset = (() => {
     if (rect) {
       const base = isVertical ? rect.height : rect.width
@@ -87,65 +142,52 @@ export const Swiper: FunctionComponent<
     }
     return 0
   })()
-
-  const activePagination = (active + childCount) % childCount
-
-  const touchReset = () => {
-    startX = 0
-    startY = 0
-    deltaX = 0
-    deltaY = 0
-    offsetX = 0
-    offsetY = 0
-    stateDirection = ''
-  }
-  const touchStart = ((e: TouchEvent) => {
-    touchReset()
-    startX = e.touches[0].clientX
-    startY = e.touches[0].clientY
-  }) as EventListener
-
-  const touchMove = ((e: TouchEvent) => {
-    deltaX = e.touches[0].clientX - startX
-    deltaY = e.touches[0].clientY - startY
-    offsetX = Math.abs(deltaX)
-    offsetY = Math.abs(deltaY)
-    if (!stateDirection) {
-      stateDirection = getDirection(offsetX, offsetY)
-    }
-  }) as EventListener
-
-  const resettPosition = () => {
-    moving = true
-
-    // if (state.active <= -1) {
-    //   move({ pace: childCount.value });
-    // }
-    // if (state.active >= childCount.value) {
-    //   move({ pace: -childCount.value });
-    // }
-  }
-
+  // 清除定时器
   const stopAutoPlay = () => {
-    clearTimeout(autoplayTimer)
+    clearTimeout(_swiper.current.autoplayTimer)
+    _swiper.current.autoplayTimer = null
   }
+  // 定时轮播
   const autoplay = () => {
     if (propSwiper.autoPlay <= 0 || childCount <= 1) return
     stopAutoPlay()
-
-    autoplayTimer = setTimeout(() => {
+    _swiper.current.autoplayTimer = setTimeout(() => {
       next()
       autoplay()
-      console.log('setTimeout')
     }, Number(propSwiper.autoPlay))
   }
+  // 重置首尾位置信息
+  const resettPosition = () => {
+    _swiper.current.moving = true
+    if (active <= -1) {
+      move({ pace: childCount })
+    }
+    if (active >= childCount) {
+      move({ pace: -childCount })
+    }
+  }
+
+  // 上一页
+  const prev = () => {
+    resettPosition()
+    touchReset()
+    requestFrame(() => {
+      requestFrame(() => {
+        _swiper.current.moving = false
+        move({
+          pace: -1,
+          isEmit: true,
+        })
+      })
+    })
+  }
+  // 下一页
   const next = () => {
     resettPosition()
     touchReset()
-
     requestFrame(() => {
       requestFrame(() => {
-        moving = false
+        _swiper.current.moving = false
         move({
           pace: 1,
           isEmit: true,
@@ -153,231 +195,277 @@ export const Swiper: FunctionComponent<
       })
     })
   }
-  const move = ({ pace = 0, offset = 0, isEmit = false }) => {
+  // 前往指定页
+  const to = (index: number) => {
+    resettPosition()
+    touchReset()
+
+    requestFrame(() => {
+      requestFrame(() => {
+        _swiper.current.moving = false
+        let targetIndex
+        if (props.loop && childCount === index) {
+          targetIndex = active === 0 ? 0 : index
+        } else {
+          targetIndex = index % childCount
+        }
+        move({
+          pace: targetIndex - active,
+          isEmit: true,
+        })
+      })
+    })
+  }
+
+  // 切换方法
+  const move = ({ pace = 0, offset = 0, isEmit = false, movingStatus = false }) => {
     if (childCount <= 1) return
-
     const targetActive = getActive(pace)
+    // 父级容器偏移量
     const targetOffset = getOffset(targetActive, offset)
-
+    // 如果循环，调整开头结尾图片位置
     if (props.loop) {
       if (Array.isArray(children) && children[0] && targetOffset !== minOffset) {
         const rightBound = targetOffset < minOffset
-        console.log(children[0])
-        // children[0].setOffset(
-        //   rightBound ? trackSize : 0
-        // );
+        childsRefs[0].current.changeOffset(rightBound ? trackSize : 0)
       }
       if (Array.isArray(children) && children[childCount - 1] && targetOffset !== 0) {
         const leftBound = targetOffset > 0
-        console.log(children[childCount - 1])
-
-        // children[childCount - 1].setOffset(
-        //   leftBound ? -trackSize : 0
-        // );
+        childsRefs[childCount - 1].current.changeOffset(leftBound ? -trackSize : 0)
       }
+    }
+    if (isEmit && active !== targetActive) {
+      props.onChange && props.onChange((targetActive + childCount) % childCount)
     }
     active = targetActive
     offset = targetOffset
-    if (isEmit && active !== active) {
-      // props.change(activePagination.value)
-      console.log('change', activePagination)
-      // emit('change', activePagination.value);
-    }
+    setActive(targetActive)
+    setOffset(targetOffset)
 
-    getStyle()
+    getStyle(targetOffset)
   }
+  // 确定当前active 元素
   const getActive = (pace: number) => {
     if (pace) {
+      let _active = active + pace
       if (props.loop) {
-        return range(active + pace, -1, childCount)
+        return range(_active, -1, childCount)
       }
-      return range(active + pace, 0, childCount - 1)
+      return range(_active, 0, childCount - 1)
     }
     return active
   }
-
+  // 计算位移
   const getOffset = (active: number, offset = 0) => {
     let currentPosition = active * Number(size)
     if (!props.loop) {
       currentPosition = Math.min(currentPosition, -minOffset)
     }
-
     let targetOffset = offset - currentPosition
     if (!props.loop) {
       targetOffset = range(targetOffset, minOffset, 0)
     }
-
     return targetOffset
   }
-  const computedminOffset = () => {
-    if (rect) {
-      const base = isVertical ? rect.height : rect.width
-      return base - Number(size) * childCount
-    }
-    return 0
-  }
+  // 浏览器 帧 事件
   const requestFrame = (fn: FrameRequestCallback) => {
     window.requestAnimationFrame.call(window, fn)
   }
+  // 取值 方法
   const range = (num: number, min: number, max: number) => {
     return Math.min(Math.max(num, min), max)
   }
-  // state.startX = 0;
-  // state.startY = 0;
-  // state.deltaX = 0;
-  // state.deltaY = 0;
-  // state.offsetX = 0;
-  // state.offsetY = 0;
-  // state.direction = '';
 
   const getDirection = (x: number, y: number) => {
     if (x > y && x > DISTANCE) return 'horizontal'
     if (y > x && y > DISTANCE) return 'vertical'
     return ''
   }
+  // 重置 全部位移信息
+  const touchReset = () => {
+    touch.startX = 0
+    touch.startY = 0
+    touch.deltaX = 0
+    touch.deltaY = 0
+    touch.offsetX = 0
+    touch.offsetY = 0
+    touch.delta = 0
+    touch.stateDirection = ''
+    touch.touchTime = 0
+  }
+
+  // 触摸事件开始
+  const touchStart = (e: TouchEvent) => {
+    touchReset()
+    touch.startX = e.touches[0].clientX
+    touch.startY = e.touches[0].clientY
+  }
+
+  // 触摸事件移动
+  const touchMove = (e: TouchEvent) => {
+    touch.deltaX = e.touches[0].clientX - touch.startX
+    touch.deltaY = e.touches[0].clientY - touch.startY
+    touch.offsetX = Math.abs(touch.deltaX)
+    touch.offsetY = Math.abs(touch.deltaY)
+    touch.delta = isVertical ? touch.deltaY : touch.deltaX
+    if (!touch.stateDirection) {
+      touch.stateDirection = getDirection(touch.offsetX, touch.offsetY)
+    }
+  }
   const b = bem('swiper')
   const classes = classNames(b(''))
   const contentClass = classNames({
-    [`${b('')}-inner`]: true,
-    [`${b('')}-vertical`]: isVertical,
+    [`${b('inner')}`]: true,
+    [`${b('vertical')}`]: isVertical,
   })
-  const getStyle = () => {
-    setContentStyle({
-      transitionDuration: `${moving ? 0 : props.duration}ms`,
-      transform: `translate${isVertical ? 'Y' : 'X'}(${offset}px)`,
-      [isVertical ? 'height' : 'width']: `${Number(size) * childCount}px`,
-      [isVertical ? 'width' : 'height']: `${isVertical ? width : height}px`,
-    })
+  const getStyle = (moveOffset = offset) => {
+    let target = innerRef.current
+    target.style.transform = `translate3D${
+      !isVertical ? `(${moveOffset}px,0,0)` : `(0,${moveOffset}px,0)`
+    }`
+    target.style.transitionDuration = `${_swiper.current.moving ? 0 : props.duration}ms`
+    target.style[isVertical ? 'height' : 'width'] = `${Number(size) * childCount}px`
+    target.style[isVertical ? 'width' : 'height'] = `${isVertical ? width : height}px`
   }
+
   const onTouchStart = (e: TouchEvent) => {
     if (props.isPreventDefault) e.preventDefault()
     if (props.isStopPropagation) e.stopPropagation()
     if (!props.touchable) return
-    // touch.start(e);
-    // state.touchTime = Date.now();
-    // stopAutoPlay();
-    // resettPosition();
+    touchStart(e)
+    touch.touchTime = Date.now()
+    stopAutoPlay()
+    resettPosition()
   }
 
   const onTouchMove = (e: TouchEvent) => {
-    // if (props.touchable && state.moving) {
-    //   touch.move(e);
-    //   if (isCorrectDirection.value) {
-    //     move({
-    //       offset: delTa.value
-    //     });
-    //   }
-    // }
+    if (props.touchable && _swiper.current.moving) {
+      touchMove(e)
+      if (touch.stateDirection === props.direction) {
+        move({
+          offset: touch.delta,
+        })
+      }
+    }
+  }
+  const onTouchEnd = (e: TouchEvent) => {
+    if (!props.touchable || !_swiper.current.moving) return
+    const speed = touch.delta / (Date.now() - touch.touchTime)
+    const isShouldMove = Math.abs(speed) > 0.3 || Math.abs(touch.delta) > +(size / 2).toFixed(2)
+    let pace = 0
+    _swiper.current.moving = false
+    if (isShouldMove && touch.stateDirection === props.direction) {
+      const offset = isVertical ? touch.offsetY : touch.offsetX
+      if (props.loop) {
+        pace = offset > 0 ? (touch.delta > 0 ? -1 : 1) : 0
+      } else {
+        pace = -Math[touch.delta > 0 ? 'ceil' : 'floor'](touch.delta / size)
+      }
+      move({
+        pace,
+        isEmit: true,
+      })
+    } else if (touch.delta) {
+      move({ pace: 0 })
+    } else {
+      getStyle()
+    }
+    autoplay()
   }
 
-  const onTouchEnd = (e: TouchEvent) => {
-    // if (!props.touchable || !state.moving) return;
-    // const speed = delTa.value / (Date.now() - state.touchTime);
-    // const isShouldMove =
-    //   Math.abs(speed) > 0.3 ||
-    //   Math.abs(delTa.value) > +(size.value / 2).toFixed(2);
-    // if (isShouldMove && isCorrectDirection.value) {
-    //   let pace = 0;
-    //   const offset = isVertical.value
-    //     ? touch.state.offsetY
-    //     : touch.state.offsetX;
-    //   if (props.loop) {
-    //     pace = offset > 0 ? (delTa.value > 0 ? -1 : 1) : 0;
-    //   } else {
-    //     pace = -Math[delTa.value > 0 ? 'ceil' : 'floor'](
-    //       delTa.value / size.value
-    //     );
-    //   }
-    //   move({
-    //     pace,
-    //     isEmit: true
-    //   });
-    // } else if (delTa.value) {
-    //   move({ pace: 0 });
-    // }
-    // state.moving = false;
-    // getStyle();
-    // autoplay();
-  }
+  useEffect(() => {
+    _swiper.current.activePagination = (active + childCount) % childCount
+  }, [active])
 
   const init = (active: number = +propSwiper.initPage) => {
-    stopAutoPlay()
-    rect = (container as any).current.getBoundingClientRect()
-    active = Math.min(childCount - 1, active)
-    width = propSwiper.width ? +propSwiper.width : (rect as DOMRect).width
-    height = propSwiper.height ? +propSwiper.height : (rect as DOMRect).height
-    active = active
-    // state.offset = getOffset(state.active);
-    moving = true
-    getStyle()
-
-    // autoplay();
-  }
-  function renderTrackInner() {
-    const b = bem('swiper-item')
-    const classes = classNames(b(''))
-    // const style = () => {
-    //   const style: IStyle = {};
-    //   if (parent?.size) {
-    //     style[
-    //       direction === 'horizontal' ? 'width' : 'height'
-    //     ] = `${parent?.size}px`;
-    //   }
-    //   if (offset) {
-    //     style['transform'] = `translate${direction === 'horizontal' ? 'X' : 'Y'}( ${offset} px )`;
-    //   }
-    //   return style;
-    // }
-    // if (loop) {
-    //   return (
-    //     <div className="adm-swiper-track-inner">
-    //       {React.Children.map(validChildren, (child, index) => {
-    //         return (
-    //           <div
-    //             className="adm-swiper-slide"
-    //             style={{
-    //               [isVertical ? 'y' : 'x']: position.to((position) => {
-    //                 let finalPosition = -position + index * 100
-    //                 const totalWidth = count * 100
-    //                 const flagWidth = totalWidth / 2
-    //                 finalPosition = modulus(finalPosition + flagWidth, totalWidth) - flagWidth
-    //                 return `${finalPosition}%`
-    //               }),
-    //               left: `-${index * 100}%`,
-    //             }}
-    //           >
-    //             {child}
-    //           </div>
-    //         )
-    //       })}
-    //     </div>
-    //   )
-    // }
+    let rect = container.current.getBoundingClientRect()
+    let _active = Math.max(Math.min(childCount - 1, active), 0)
+    let _width = propSwiper.width ? +propSwiper.width : rect.width
+    let _height = propSwiper.height ? +propSwiper.height : rect.height
+    size = isVertical ? _height : _width
+    trackSize = childCount * Number(size)
+    let targetOffset = getOffset(_active)
+    _swiper.current.moving = true
+    if (ready) {
+      _swiper.current.moving = false
+    }
+    setRect(rect)
+    setActive(_active)
+    setWidth(_width)
+    setHeight(_height)
+    setOffset(targetOffset)
+    setReady(true)
   }
   useEffect(() => {
-    console.log('====', children)
-    init()
-  }, [])
+    if (ready) {
+      getStyle()
+    }
+  }, [isVertical, width, height, offset, ready])
+  useEffect(() => {
+    if (ready) {
+      stopAutoPlay()
+      autoplay()
+    }
+    return () => {
+      setReady(false)
+    }
+  }, [ready])
 
+  useEffect(() => {
+    setChilds(getChildren())
+  }, [children])
+  useEffect(() => {
+    init()
+  }, [propSwiper.initPage])
+  useEffect(() => {
+    let target = container.current
+    target.addEventListener('touchstart', onTouchStart, false)
+    target.addEventListener('touchmove', onTouchMove, false)
+    target.addEventListener('touchend', onTouchEnd, false)
+    return () => {
+      target.removeEventListener('touchstart', onTouchStart, false)
+      target.removeEventListener('touchmove', onTouchMove, false)
+      target.removeEventListener('touchend', onTouchEnd, false)
+    }
+  })
+  React.useImperativeHandle(ref, () => ({
+    to,
+    next,
+    prev,
+  }))
   return (
     <DataContext.Provider value={parent}>
-      <div
-        className={classes}
-        ref={container}
-        onTouchStart={(e) => onTouchStart}
-        onTouchMove={(e) => onTouchMove}
-        onTouchEnd={(e) => onTouchEnd}
-        onTouchCancel={(e) => onTouchEnd}
-      >
-        <div className={contentClass} style={contentStyle}>
-          {React.Children.map(children, (child, index) => {
-            return <div className={b('') + '-slide'}>{child}</div>
-          })}
+      <div className={`${classes} ${className}`} ref={container} {...rest}>
+        <div className={contentClass} ref={innerRef}>
+          {childs}
         </div>
+        {propSwiper.paginationVisible && !('pageContent' in propSwiper) ? (
+          <div
+            className={classNames({
+              [`${b('pagination')}`]: true,
+              [`${b('pagination-vertical')}`]: isVertical,
+            })}
+          >
+            {childs.map((item, index) => {
+              return (
+                <i
+                  style={{
+                    backgroundColor:
+                      (active + childCount) % childCount === index
+                        ? propSwiper.paginationColor
+                        : '#ddd',
+                  }}
+                  key={index}
+                />
+              )
+            })}
+          </div>
+        ) : (
+          <div>{pageContent}</div>
+        )}
       </div>
     </DataContext.Provider>
   )
-}
-
+})
 Swiper.defaultProps = defaultProps
 Swiper.displayName = 'NutSwiper'
