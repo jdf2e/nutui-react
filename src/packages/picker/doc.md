@@ -1,4 +1,4 @@
-#  Picker组件
+#  Picker选择器
 
 ### 介绍
 
@@ -6,7 +6,7 @@
 
 ### 安装
 ``` javascript
-import { Picker } from '@nutui/nutui';
+import { Picker } from '@nutui/nutui-react';
 ```
 
 

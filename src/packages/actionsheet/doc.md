@@ -7,7 +7,7 @@
 ### 安装
 
 ``` javascript
-import { ActionSheet } from '@nutui/nutui';
+import { ActionSheet } from '@nutui/nutui-react';
 ```
 ## 代码示例
 

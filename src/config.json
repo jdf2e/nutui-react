@@ -312,6 +312,16 @@
           "sort": 11,
           "show": true,
           "author": "vickyYE"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Switch",
+          "type": "component",
+          "cName": "开关",
+          "desc": "用来打开或关闭选项。",
+          "sort": 11,
+          "show": true,
+          "author": "dsj"
         }
       ]
     },
