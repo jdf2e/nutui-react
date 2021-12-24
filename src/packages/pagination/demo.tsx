@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Pagination } from './pagination'
+import Pagination from '@/packages/pagination'
 import Icon from '@/packages/icon'
 const PaginationDemo = () => {
   const [currentPage1, setCurrent1] = useState(1)
