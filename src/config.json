@@ -472,6 +472,16 @@
           "sort": 6,
           "show": true,
           "author": "oasis"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Calendar",
+          "type": "component",
+          "cName": "日历",
+          "desc": "日历，可平铺/弹窗展示",
+          "sort": 10,
+          "show": true,
+          "author": "szg2008"
         }
       ]
     },

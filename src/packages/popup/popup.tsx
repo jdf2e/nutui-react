@@ -139,7 +139,6 @@ export const Popup: FunctionComponent<Partial<PopupProps> & React.HTMLAttributes
     }
 
     const close = () => {
-      console.log('close', innerVisible, visible)
       if (innerVisible) {
         setInnerVisible(false)
         if (destroyOnClose) {
@@ -176,7 +175,6 @@ export const Popup: FunctionComponent<Partial<PopupProps> & React.HTMLAttributes
     }
 
     useEffect(() => {
-      console.log('popup', visible)
       visible && open()
       !visible && close()
     }, [visible])
