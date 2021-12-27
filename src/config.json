@@ -312,6 +312,16 @@
           "sort": 11,
           "show": true,
           "author": "vickyYE"
+        },
+        {
+          "version": "1.0.0",
+          "name": "CollapseItem",
+          "type": "component",
+          "cName": "折叠面板子组件",
+          "desc": "折叠面板的子组件",
+          "sort": 13,
+          "show": false,
+          "author": "zhenyulei"
         }
       ]
     },
