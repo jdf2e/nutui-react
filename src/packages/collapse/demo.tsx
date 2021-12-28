@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Collapse } from './collapse'
-import { CollapseItem } from './collapseItem'
+import CollapseItem from '../collapseitem'
 const CollapseDemo = () => {
   const [currIndex, setCurrIndex] = useState(2)
   const [domData, setDomData] = useState([
