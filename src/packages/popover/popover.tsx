@@ -15,6 +15,8 @@ export interface PopoverProps {
   theme: string
   location: string
   visible: boolean
+  className: string
+  style?: CSSProperties
   onClick: (e: MouseEvent) => void
 }
 export function findDOMNode<T = HTMLElement>(node: React.ReactInstance | HTMLElement): T {
@@ -35,10 +37,11 @@ const defaultProps = {
   theme: 'light',
   location: 'bottom',
   visible: false,
+  className: '',
   onClick: (e: MouseEvent) => {},
 } as PopoverProps
 export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
-  const { children, list, theme, location, visible, onClick } = {
+  const { children, list, theme, location, visible, className, style, onClick, ...reset } = {
     ...defaultProps,
     ...props,
   }
@@ -126,7 +129,7 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
     }
   }
   return (
-    <div className={`${classes}`}>
+    <div className={`${classes} ${className}`} style={{ ...style }} {...reset}>
       <Trigger forwardedRef={goodItem}>
         <div onClick={(e) => handleClick(e)}>
           {Array.isArray(children) ? children[0] : children}
