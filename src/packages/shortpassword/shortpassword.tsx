@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { CSSProperties, FunctionComponent, useEffect, useRef, useState } from 'react'
 import bem from '@/utils/bem'
 import Popup from '@/packages/popup'
 import Icon from '@/packages/icon'
@@ -14,6 +14,8 @@ export interface ShortPasswordProps {
   noButton: boolean
   closeOnClickOverlay: boolean
   length: string | number
+  className: string
+  style?: CSSProperties
   change: (value: string | number) => void
   onOk: (value: string | number) => void
   onCancel: () => void
@@ -31,6 +33,7 @@ const defaultProps = {
   noButton: true,
   closeOnClickOverlay: true,
   length: 6, // 1~6
+  className: '',
   change: (value: number | string) => {},
   onOk: (value: number | string) => {},
   onCancel: () => {},
@@ -51,12 +54,15 @@ export const ShortPassword: FunctionComponent<
     noButton,
     closeOnClickOverlay,
     length,
+    style,
+    className,
     change,
     onOk,
     onTips,
     onCancel,
     onClose,
     complete,
+    ...reset
   } = props
   const b = bem('shortpassword')
   const textInput = useRef<HTMLInputElement>(null)
@@ -122,9 +128,9 @@ export const ShortPassword: FunctionComponent<
         closeable={true}
         close-on-click-overlay={closeOnClickOverlay}
         onClickOverlay={onClose}
-        click-close-icon={onClose}
+        onClickCloseIcon={onClose}
       >
-        <div className={b('')}>
+        <div className={`${b()} ${className}`} style={{ ...style }} {...reset}>
           <div className={b('title')}>{title}</div>
           <div className={b('subtitle')}>{desc}</div>
 
@@ -145,9 +151,7 @@ export const ShortPassword: FunctionComponent<
                   <div className={b('input-fake__li')} key={index}>
                     {String(inputValue).length > index ? (
                       <div className={b('input-fake__li__icon')}></div>
-                    ) : (
-                      ''
-                    )}
+                    ) : null}
                   </div>
                 )
               })}
@@ -160,9 +164,7 @@ export const ShortPassword: FunctionComponent<
                 <Icon className="icon" size="11px" name="tips"></Icon>
                 <div onClick={onTips}>{tips}</div>
               </div>
-            ) : (
-              ''
-            )}
+            ) : null}
           </div>
           {!noButton ? (
             <div className={b('footer')}>
@@ -173,9 +175,7 @@ export const ShortPassword: FunctionComponent<
                 确认
               </div>
             </div>
-          ) : (
-            ''
-          )}
+          ) : null}
         </div>
       </Popup>
     </div>

@@ -5,7 +5,7 @@
 短密码输入框，可用于输入密码、短信验证码等
 
 ### 安装
-import { ShortPassword组件 } from '@nutui/nutui-react';
+import { ShortPassword } from '@nutui/nutui-react';
 
 
 ## 代码演示
@@ -89,10 +89,10 @@ const ShortPassword = () => {
 | title                  | 标题                | String         | 请输入密码                   |
 | desc                   | 密码框描述          | String         | 您使用了虚拟资产，请进行验证 |
 | tips                   | 提示语              | String         | 忘记密码                     |
-| close-on-click-overlay | 是否点击遮罩关闭    | Boolean        | true                         |
-| no-button              | 是否隐藏底部按钮    | Boolean        | true                         |
+| closeOnClickOverlay | 是否点击遮罩关闭    | Boolean        | true                         |
+| noButton              | 是否隐藏底部按钮    | Boolean        | true                         |
 | length                 | 密码长度，取值为4~6 | String｜Number | 6                            |
-| error-msg              | 错误信息提示        | String         | ''                           |
+| errorMsg              | 错误信息提示        | String         | ''                           |
 
 ### Events
 

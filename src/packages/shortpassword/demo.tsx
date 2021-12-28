@@ -44,6 +44,8 @@ const ShortPasswordDemo = () => {
         visible={visible2}
         onClose={() => setVisible2(false)}
         noButton={false}
+        onOk={() => setVisible2(false)}
+        onCancel={() => setVisible2(false)}
       ></ShortPassword>
       <h2>自定义密码长度4</h2>
       <Cell
