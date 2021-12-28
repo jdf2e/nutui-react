@@ -124,7 +124,7 @@ export const Swiper = React.forwardRef<
   const getChildren = () => {
     const childs: any = []
     React.Children.toArray(children).forEach((child: any, index) => {
-      if (child.type && child.type.displayName === 'NutSwiperitem') {
+      if (child.type && child.type.displayName === 'NutSwiperItem') {
         childs.push(React.cloneElement(child, { ref: childsRefs[index], key: 'item_' + index }))
       }
     })

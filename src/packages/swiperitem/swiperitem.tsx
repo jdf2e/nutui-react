@@ -10,7 +10,7 @@ import bem from '@/utils/bem'
 import classNames from 'classnames'
 import './swiperitem.scss'
 
-interface SwiperitemProps {
+interface SwiperItemProps {
   direction?: string
   size?: 0
 }
@@ -23,14 +23,14 @@ interface IStyle {
 
 const defaultProps = {
   direction: 'horizontal',
-} as SwiperitemProps
+} as SwiperItemProps
 
-export const Swiperitem = React.forwardRef<
+export const SwiperItem = React.forwardRef<
   HTMLDivElement,
-  Partial<SwiperitemProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<SwiperItemProps> & React.HTMLAttributes<HTMLDivElement>
 >((props, ref) => {
-  const propSteps = { ...defaultProps, ...props }
-  const { children, direction, size } = propSteps
+  const _props = { ...defaultProps, ...props }
+  const { children, direction, size } = _props
   const parent: any = useContext(DataContext)
   const [offset, setOffset] = useState(0)
   const b = bem('swiper-item')
@@ -62,5 +62,5 @@ export const Swiperitem = React.forwardRef<
     </div>
   )
 })
-Swiperitem.defaultProps = defaultProps
-Swiperitem.displayName = 'NutSwiperitem'
+SwiperItem.defaultProps = defaultProps
+SwiperItem.displayName = 'NutSwiperItem'

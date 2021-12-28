@@ -1,2 +1,2 @@
-import { Swiperitem } from './swiperitem'
-export default Swiperitem
+import { SwiperItem } from './swiperitem'
+export default SwiperItem

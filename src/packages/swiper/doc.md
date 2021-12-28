@@ -29,18 +29,18 @@ import { Swiper,SwiperItem } from '@nutui/nutui-react';
   paginationVisible={true}
   onChange={onChange}
 >
-  <Swiperitem >
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-  </Swiperitem>
-  <Swiperitem >
+  </SwiperItem>
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-  </Swiperitem>
-  <Swiperitem >
+  </SwiperItem>
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-  </Swiperitem>
-  <Swiperitem >
+  </SwiperItem>
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-  </Swiperitem>
+  </SwiperItem>
 </Swiper>
 ```
 ``` javascript
@@ -65,18 +65,18 @@ const SwiperDemo = () => {
   initPage={initPage2}
   loop={false}
 >
-  <Swiperitem >
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-  </Swiperitem>
-  <Swiperitem >
+  </SwiperItem>
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-  </Swiperitem>
-  <Swiperitem >
+  </SwiperItem>
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-  </Swiperitem>
-  <Swiperitem >
+  </SwiperItem>
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-  </Swiperitem>
+  </SwiperItem>
 </Swiper>
 ```
 ### 自定义分页指示器
@@ -90,18 +90,18 @@ const SwiperDemo = () => {
   onChange={onChange3}
   pageContent={<div className="page"> {current}/4 </div>}
 >
-  <Swiperitem >
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-  </Swiperitem>
-  <Swiperitem >
+  </SwiperItem>
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-  </Swiperitem>
-  <Swiperitem >
+  </SwiperItem>
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-  </Swiperitem>
-  <Swiperitem >
+  </SwiperItem>
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-  </Swiperitem>
+  </SwiperItem>
 </Swiper>
 ```
 ``` javascript
@@ -130,18 +130,18 @@ const SwiperDemo = () => {
   height="150"
   paginationVisible={true}
 >
-  <Swiperitem >
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-  </Swiperitem>
-  <Swiperitem >
+  </SwiperItem>
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-  </Swiperitem>
-  <Swiperitem >
+  </SwiperItem>
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-  </Swiperitem>
-  <Swiperitem >
+  </SwiperItem>
+  <SwiperItem >
     <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-  </Swiperitem>
+  </SwiperItem>
 </Swiper>
 ```
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Swiperitem from '@/packages/swiperitem'
+import SwiperItem from '@/packages/swiperitem'
 import Swiper from '@/packages/swiper'
 import '@/packages/swiper/demo.scss'
 
@@ -41,9 +41,9 @@ const SwiperDemo = () => {
         >
           {list.map((item) => {
             return (
-              <Swiperitem key={item}>
+              <SwiperItem key={item}>
                 <img src={item} alt="" />
-              </Swiperitem>
+              </SwiperItem>
             )
           })}
         </Swiper>
@@ -53,9 +53,9 @@ const SwiperDemo = () => {
         <Swiper initPage={initPage2} width="300" loop={false}>
           {list.map((item) => {
             return (
-              <Swiperitem key={item}>
+              <SwiperItem key={item}>
                 <img src={item} alt="" />
-              </Swiperitem>
+              </SwiperItem>
             )
           })}
         </Swiper>
@@ -70,9 +70,9 @@ const SwiperDemo = () => {
         >
           {list.map((item) => {
             return (
-              <Swiperitem key={item}>
+              <SwiperItem key={item}>
                 <img src={item} alt="" />
-              </Swiperitem>
+              </SwiperItem>
             )
           })}
         </Swiper>
@@ -89,9 +89,9 @@ const SwiperDemo = () => {
         >
           {list.map((item) => {
             return (
-              <Swiperitem key={item}>
+              <SwiperItem key={item}>
                 <img src={item} alt="" />
-              </Swiperitem>
+              </SwiperItem>
             )
           })}
         </Swiper>
