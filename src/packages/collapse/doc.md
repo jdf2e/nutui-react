@@ -34,8 +34,7 @@
 
 ```jsx
 import React, { useState } from 'react'
-import { Collapse } from './collapse'
-import { CollapseItem } from './collapseItem'
+import { Collapse ,CollapseItem} from 'nutui-react'
 const CollapseDemo = () => {
   const changeEnv = (isOpen: boolean, name: string) => {
     console.log(isOpen, name)
@@ -123,8 +122,7 @@ const CollapseDemo = () => {
 
 ```jsx
 import React, { useState } from 'react'
-import { Collapse } from './collapse'
-import { CollapseItem } from './collapseItem'
+import { Collapse ,CollapseItem} from 'nutui-react'
 const CollapseDemo = () => {
   const [currIndex, setCurrIndex] = useState(2)
   const [domData, setDomData] = useState([

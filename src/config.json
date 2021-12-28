@@ -285,6 +285,16 @@
         },
         {
           "version": "1.0.0",
+          "name": "ActionSheet",
+          "type": "component",
+          "cName": "动作面板",
+          "desc": "从底部弹出的动作菜单面板。",
+          "sort": 11,
+          "show": true,
+          "author": "dsj"
+        },
+        {
+          "version": "1.0.0",
           "name": "NoticeBar",
           "type": "component",
           "cName": "通告栏",
@@ -302,6 +312,16 @@
           "sort": 11,
           "show": true,
           "author": "vickyYE"
+        },
+        {
+          "version": "1.0.0",
+          "name": "CollapseItem",
+          "type": "component",
+          "cName": "折叠面板子组件",
+          "desc": "折叠面板的子组件",
+          "sort": 13,
+          "show": false,
+          "author": "zhenyulei"
         }
       ]
     },
@@ -472,6 +492,15 @@
           "sort": 10,
           "show": true,
           "author": "Drjingfubo"
+        },
+        {
+          "name": "Calendar",
+          "type": "component",
+          "cName": "日历",
+          "desc": "日历，可平铺/弹窗展示",
+          "sort": 10,
+          "show": true,
+          "author": "szg2008"
         }
       ]
     },
@@ -497,6 +526,16 @@
           "sort": 2,
           "show": true,
           "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Address",
+          "type": "component",
+          "cName": "地址组件",
+          "desc": "地址组件",
+          "sort": 3,
+          "show": true,
+          "author": "yangxiaolu"
         }
       ]
     }
