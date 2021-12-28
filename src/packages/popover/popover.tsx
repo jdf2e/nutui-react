@@ -63,37 +63,43 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
   const getStyle = () => {
     const style: CSSProperties = {}
     if (location == 'top') {
-      style.bottom = elHeight + 20 + 'px'
-      style.left = 0 + 'px'
+      style.bottom = elHeight + 20
+      style.left = 0
     } else if (location == 'right') {
-      style.top = 0 + 'px'
-      style.right = -elWidth - 20 + 'px'
+      style.top = 0
+      style.right = -elWidth - 20
     } else if (location == 'left') {
-      style.top = 0 + 'px'
-      style.left = -elWidth - 20 + 'px'
+      style.top = 0
+      style.left = -elWidth - 20
     } else {
-      style.top = elHeight + 20 + 'px'
-      style.left = 0 + 'px'
+      style.top = elHeight + 20
+      style.left = 0
     }
-    console.log(style)
+    style.top = style.top + 'px'
+    style.left = style.left + 'px'
+    style.bottom = style.bottom + 'px'
+    style.right = style.right + 'px'
     return style
-    // })
   }
   const getArrowStyle = () => {
     const style: CSSProperties = {}
     if (location == 'top') {
-      style.bottom = -20 + 'px'
-      style.left = elWidth / 2 + 'px'
+      style.bottom = -20
+      style.left = elWidth / 2
     } else if (location == 'right') {
-      style.top = 20 + 'px'
-      style.left = -20 + 'px'
+      style.top = 20
+      style.left = -20
     } else if (location == 'left') {
-      style.top = 20 + 'px'
-      style.right = -20 + 'px'
+      style.top = 20
+      style.right = -20
     } else {
-      style.left = elWidth / 2 + 'px'
-      style.top = -20 + 'px'
+      style.left = elWidth / 2
+      style.top = -20
     }
+    style.top = style.top + 'px'
+    style.left = style.left + 'px'
+    style.bottom = style.bottom + 'px'
+    style.right = style.right + 'px'
     return style
   }
 
@@ -139,9 +145,7 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
                 )
               })}
             </div>
-          ) : (
-            ''
-          )}
+          ) : null}
         </div>
       </Trigger>
     </div>
