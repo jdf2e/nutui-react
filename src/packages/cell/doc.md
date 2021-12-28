@@ -1,4 +1,4 @@
-# Cell 组件
+# Cell 单元格
 
 ### 介绍
 
@@ -6,7 +6,10 @@
 
 ### 安装
 
-import { Cell,CellGroup } from '@nutui/nutui';
+
+```javascript
+import { Cell, CellGroup } from '@nutui/nutui-react'
+```
 
 ## 代码演示
 
@@ -19,9 +22,11 @@ const testClick = (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent
 
 <Cell title="我是标题" desc="描述文字"></Cell>
 <Cell title="我是标题" subTitle="副标题描述" desc="描述文字"></Cell>
-<Cell title="点击测试" click="{(event:" React.MouseEvent<HTMLDivElement, globalThis.MouseEvent
-  >) => testClick(event) } ></Cell
->
+<Cell
+    title="点击测试"
+    click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) =>
+    testClick(event)}
+></Cell>
 ```
 
 ### 直接使用插槽

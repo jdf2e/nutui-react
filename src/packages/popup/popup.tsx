@@ -129,7 +129,7 @@ export const Popup: FunctionComponent<Partial<PopupProps> & React.HTMLAttributes
         // if(zIndex !== undefined) {
         //   _zIndex = +zIndex;
         // }
-        setInnerVisible(visible)
+        setInnerVisible(true)
         setIndex(++_zIndex)
       }
       if (destroyOnClose) {
@@ -140,7 +140,7 @@ export const Popup: FunctionComponent<Partial<PopupProps> & React.HTMLAttributes
 
     const close = () => {
       if (innerVisible) {
-        setInnerVisible(!visible)
+        setInnerVisible(false)
         if (destroyOnClose) {
           setTimeout(() => {
             setShowChildren(false)
@@ -176,6 +176,7 @@ export const Popup: FunctionComponent<Partial<PopupProps> & React.HTMLAttributes
 
     useEffect(() => {
       visible && open()
+      !visible && close()
     }, [visible])
 
     useEffect(() => {

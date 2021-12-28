@@ -7,7 +7,7 @@
 ### 安装
 
 ``` javascript
-import { Button } from '@nutui/nutui';
+import { Button } from '@nutui/nutui-react';
 ```
 
 ## 代码演示

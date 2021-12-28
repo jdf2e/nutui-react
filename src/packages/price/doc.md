@@ -1,17 +1,22 @@
-# Price 组件
+# Price 商品价格
 
 ### 介绍
 
-基于 xxxxxxx
+用来对商品价格数值的小数点前后部分应用不同样式，还支持人民币符号、千位分隔符、设置小数点位数等功能。
 
 ### 安装
+
+```javascript
+import { Price } from '@nutui/nutui-react'
+```
+
 
 ## 代码演示
 
 ### 基本用法
 
 ```tsx
-<Price price={0} needSymbol={false} thousands={true} />
+<Price price={1010} needSymbol={false} thousands={true} />
 ```
 
 ### 有人民币符号，无千位分隔

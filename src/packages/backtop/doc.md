@@ -7,7 +7,7 @@
 ### 安装
 
 ```javascript
-import { BackTop } from '@nutui/nutui'
+import { BackTop } from '@nutui/nutui-react';
 ```
 
 ## 代码演示

@@ -6,6 +6,10 @@
 
 ### 安装
 
+```javascript
+import { Signature } from '@nutui/nutui-react'
+```
+
 ## 代码演示
 
 ### 基础用法
@@ -23,7 +27,7 @@ const clear = () => {
     img.remove()
   }
 }
-Signature confirm={confirm} clear={clear}></Signature>
+<Signature confirm={confirm} clear={clear}></Signature>
 <p className="demo-tips demo1" style={demoStyles}>
     Tips: 点击确认按钮,下方显示签名图片
 </p>
