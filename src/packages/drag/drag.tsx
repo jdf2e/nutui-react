@@ -147,9 +147,6 @@ export const Drag: FunctionComponent<Partial<DragProps> & React.HTMLAttributes<H
         })
       }
     }
-    if (props.direction !== 'x') {
-      target.style.top = `${yPum.current}px`
-    }
   }
   const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     const target = e.currentTarget as HTMLElement

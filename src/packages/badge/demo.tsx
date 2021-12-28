@@ -7,7 +7,8 @@ const BadgeDemo = () => {
   return (
     <>
       <div className="demo">
-        <CellGroup title="默认用法">
+        <h2>默认用法</h2>
+        <CellGroup>
           <Cell>
             <Badge value={8}>
               <Avatar icon="my" shape="square"></Avatar>
@@ -24,7 +25,8 @@ const BadgeDemo = () => {
           </Cell>
         </CellGroup>
 
-        <CellGroup title="最大值">
+        <h2>最大值</h2>
+        <CellGroup>
           <Cell>
             <Badge value={200} max={9}>
               <Avatar icon="my" shape="square"></Avatar>
@@ -38,7 +40,8 @@ const BadgeDemo = () => {
           </Cell>
         </CellGroup>
 
-        <CellGroup title="自定义颜色">
+        <h2>自定义颜色</h2>
+        <CellGroup>
           <Cell>
             <Badge
               value={8}
@@ -67,7 +70,8 @@ const BadgeDemo = () => {
           </Cell>
         </CellGroup>
 
-        <CellGroup title="自定义徽标内容">
+        <h2>自定义徽标内容</h2>
+        <CellGroup>
           <Cell>
             <Badge icons="checklist">
               <Avatar icon="my" shape="square"></Avatar>
@@ -81,7 +85,8 @@ const BadgeDemo = () => {
           </Cell>
         </CellGroup>
 
-        <CellGroup title="自定义位置">
+        <h2>自定义位置</h2>
+        <CellGroup>
           <Cell>
             <Badge value={8} top="5" right="5">
               <Avatar icon="my" shape="square"></Avatar>
@@ -95,7 +100,8 @@ const BadgeDemo = () => {
           </Cell>
         </CellGroup>
 
-        <CellGroup title="独立展示">
+        <h2>独立展示</h2>
+        <CellGroup>
           <Cell>
             <Badge value={8}></Badge>
             <Badge value={76}></Badge>
