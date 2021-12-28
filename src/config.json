@@ -315,6 +315,16 @@
         },
         {
           "version": "1.0.0",
+          "name": "Dialog",
+          "type": "component",
+          "cName": "对话框",
+          "desc": "对话框",
+          "sort": 12,
+          "show": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "1.0.0",
           "name": "Switch",
           "type": "component",
           "cName": "开关",

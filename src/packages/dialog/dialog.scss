@@ -1,0 +1,128 @@
+.nut-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: $dialog-width;
+  min-height: $dialog-min-height;
+  padding: $dialog-padding;
+  box-sizing: border-box;
+
+  &__header {
+    display: block;
+    text-align: center;
+    height: $dialog-header-height;
+    font-size: $font-size-3;
+    color: $dialog-header-color;
+    @include oneline-ellipsis();
+  }
+  &__content {
+    width: 100%;
+    overflow: auto;
+    flex: 1;
+    margin: $dialog-content-margin;
+    max-height: $dialog-content-max-height;
+    line-height: $dialog-content-line-height;
+    font-size: $font-size-1;
+    color: $text-color;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: pre-wrap;
+  }
+  &__footer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+
+    &.vertical {
+      flex-direction: column;
+
+      .nut-button {
+        min-width: 100%;
+        margin: 0;
+        &.nut-dialog__footer-cancel {
+          border: 0;
+        }
+        &.nut-dialog__footer-ok {
+          margin-top: $dialog-vertical-footer-ok-margin-top;
+        }
+      }
+    }
+
+    .nut-button {
+      min-width: $dialog-footer-button-min-width;
+    }
+
+    &-cancel.nut-dialog__footer-cancel {
+      margin-right: $dialog-footer-cancel-margin-right;
+    }
+    &-ok {
+      max-width: $dialog-footer-ok-max-width;
+    }
+  }
+}
+
+.nut-dialog__mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: $dialog-mask-background-color;
+  z-index: $dialog-mask-z-index;
+}
+
+.nut-dialog__wrap {
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $dialog-mask-z-index;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+
+.nut-dialog__outer {
+  position: fixed;
+  max-height: 100%;
+  overflow-y: auto;
+  background-color: $white;
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+  -webkit-overflow-scrolling: touch;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: $dialog-outer-bordder-radius;
+  z-index: $dialog-outer-z-index;
+  animation-duration: 0.3s;
+}
+
+.fadeDialog-enter,
+.fadeDialog-appear {
+  opacity: 0;
+}
+
+.fadeDialog-enter-active,
+.fadeDialog-appear-active {
+  opacity: 1;
+  transition: opacity 1s cubic-bezier(0.3, 1.3, 0.3, 1);
+}
+
+.fadeDialog-exit {
+  opacity: 1;
+}
+
+.fadeDialog-exit-active {
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.3, 1.3, 0.3, 1);
+}
+
+.nut-overflow-hidden {
+  overflow: hidden !important;
+}
