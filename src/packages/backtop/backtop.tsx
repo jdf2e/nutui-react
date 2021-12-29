@@ -6,7 +6,7 @@ import React, {
   useRef,
   CSSProperties,
 } from 'react'
-import './backtop.scss'
+
 import Icon from '../icon'
 import classNames from 'classnames'
 declare const window: any

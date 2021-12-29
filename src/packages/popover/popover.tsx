@@ -8,7 +8,6 @@ import React, {
 } from 'react'
 import Trigger from './Trigger'
 import ReactDOM from 'react-dom'
-import './popover.scss'
 import Icon from '@/packages/icon'
 export interface PopoverProps {
   list: Array<any>

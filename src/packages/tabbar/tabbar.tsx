@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactComponentElement, useState } from 'react'
-import './tabbar.scss'
+
 import bem from '@/utils/bem'
-import { TabbarItem } from '../tabbaritem/tabbarItem'
+import TabbarItem from '@/packages/tabbaritem'
 
 export interface TabbarProps {
   visible: number | string

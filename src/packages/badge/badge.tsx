@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react'
-import './badge.scss'
+
 import Icon from '@/packages/icon'
 export interface BadgeProps {
   value: any

@@ -3,6 +3,7 @@ import config from './package.json'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import mdPlugin, { Mode } from 'vite-plugin-markdown'
 import path from 'path'
+const atImport = require('postcss-import')
 const resolve = path.resolve
 
 // https://vitejs.dev/config/
@@ -14,6 +15,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
+        charset: false,
         // example : additionalData: `@import "./src/design/styles/variables";`
         // dont need include file extend .scss
         additionalData: `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`,
@@ -21,6 +23,7 @@ export default defineConfig({
     },
     postcss: {
       plugins: [
+        atImport({ path: path.join(__dirname, 'src`') }),
         require('autoprefixer')({
           overrideBrowserslist: [
             '> 0.5%',
@@ -37,11 +40,9 @@ export default defineConfig({
   build: {
     target: 'es2015',
     outDir: './dist/1x/',
-    // assetsDir: config.version,
     cssCodeSplit: true,
     rollupOptions: {
       input: {
-        // doc: resolve(__dirname, 'demo.html'),
         mobile: resolve(__dirname, 'demo.html'),
       },
       output: {

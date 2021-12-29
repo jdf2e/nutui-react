@@ -1,11 +1,12 @@
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import mdPlugin, { Mode } from 'vite-plugin-markdown'
+const atImport = require('postcss-import')
 import path from 'path'
 const resolve = path.resolve
-
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/react/',
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
@@ -15,6 +16,9 @@ export default defineConfig({
         // example : additionalData: `@import "./src/design/styles/variables";`
         // dont need include file extend .scss
         additionalData: `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`,
+      },
+      postcss: {
+        plugins: [atImport({ path: path.join(__dirname, 'src`') })],
       },
     },
   },

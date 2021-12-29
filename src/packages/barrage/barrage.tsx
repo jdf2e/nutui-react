@@ -1,7 +1,6 @@
 import React, { ForwardRefRenderFunction, useEffect, useRef, useImperativeHandle } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import './barrage.scss'
 
 export interface BarrageProps {
   className: string

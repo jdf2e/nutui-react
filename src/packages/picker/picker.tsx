@@ -6,7 +6,6 @@ import React, {
   useImperativeHandle,
   ForwardRefRenderFunction,
 } from 'react'
-import './picker.scss'
 import Popup from '@/packages/popup'
 import PickerSlot from './pickerSlot'
 import bem from '@/utils/bem'

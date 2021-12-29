@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useRef, useEffect, useState } from 'react'
-import './elevator.scss'
 import bem from '@/utils/bem'
 
 export interface ElevatorProps {

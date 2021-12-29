@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState, memo } from 'react'
-import './collapse.scss'
+
 import bem from '@/utils/bem'
 
 export interface CollapseProps {

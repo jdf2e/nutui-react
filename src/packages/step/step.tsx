@@ -3,7 +3,6 @@ import { DataContext } from '@/packages/steps/UserContext'
 import bem from '@/utils/bem'
 import classNames from 'classnames'
 import Icon from '@/packages/icon'
-import './step.scss'
 
 export interface StepProps {
   title: string

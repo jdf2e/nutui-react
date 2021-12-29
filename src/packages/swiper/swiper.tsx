@@ -10,7 +10,6 @@ import React, {
 import { DataContext } from './UserContext'
 import bem from '@/utils/bem'
 import classNames from 'classnames'
-import './swiper.scss'
 
 export type SwiperRef = {
   to: (index: number) => void

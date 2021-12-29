@@ -8,7 +8,6 @@ import Icon from '@/packages/icon'
 import { Upload, UploadOptions } from './upload'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import './uploader.scss'
 
 export interface UploaderProps {
   url: string

@@ -1,63 +1,19 @@
 {
-  "versions": [
-    {
-      "name": "1.x",
-      "link": "/1x/"
-    },
-    {
-      "name": "2.x",
-      "link": "/"
-    },
-    {
-      "name": "3.x",
-      "link": "/3x/"
-    },
-    {
-      "name": "nutui-jdl",
-      "link": "/jdl/"
-    },
-    {
-      "name": "nutui-react",
-      "link": "https://github.com/jdf2e/nutui/tree/nutui-react"
-    }
-  ],
-  "header": [
-    {
-      "name": "guide",
-      "cName": "指南",
-      "path": "/intro"
-    },
-    {
-      "name": "intro",
-      "cName": "组件",
-      "path": "/intro"
-    },
-    {
-      "name": "example",
-      "cName": "示例",
-      "path": "/"
-    },
-    {
-      "name": "resource",
-      "cName": "资源",
-      "path": "/resource"
-    }
-  ],
   "docs": {
     "name": "指南",
     "packages": [
       {
-        "name": "intro",
+        "name": "intro-react",
         "cName": "介绍",
         "show": true
       },
       {
-        "name": "start",
+        "name": "start-react",
         "cName": "快速上手",
         "show": true
       },
       {
-        "name": "theme",
+        "name": "theme-react",
         "cName": "主题定制",
         "show": true
       },
@@ -72,7 +28,7 @@
         "show": true
       },
       {
-        "name": "https://github.com/jdf2e/nutui/releases",
+        "name": "https://github.com/jdf2e/nutui-react/releases",
         "cName": "更新日志",
         "show": true,
         "isLink": true
@@ -84,7 +40,7 @@
       "name": "基础组件",
       "packages": [
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Avatar",
           "type": "component",
           "cName": "头像",
@@ -94,7 +50,7 @@
           "author": "junjun"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Button",
           "type": "component",
           "cName": "按钮",
@@ -104,7 +60,7 @@
           "author": ""
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Cell",
           "type": "component",
           "cName": "列表组件",
@@ -114,7 +70,18 @@
           "author": "songsong"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
+          "name": "CellGroup",
+          "type": "component",
+          "cName": "列表组件",
+          "desc": "列表项，可组成列表",
+          "sort": 2,
+          "show": false,
+          "exportEmpty": true,
+          "author": "songsong"
+        },
+        {
+          "version": "0.1.0",
           "name": "Icon",
           "type": "component",
           "cName": "图标组件",
@@ -124,7 +91,7 @@
           "author": "oasis-cloud"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Price",
           "type": "component",
           "cName": "价格",
@@ -134,7 +101,7 @@
           "author": "songsong"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Overlay",
           "type": "component",
           "cName": "遮罩层",
@@ -144,7 +111,7 @@
           "author": "junjun"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Divider",
           "type": "component",
           "cName": "分割线",
@@ -159,7 +126,7 @@
       "name": "布局组件",
       "packages": [
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Layout",
           "type": "component",
           "cName": "布局",
@@ -169,23 +136,25 @@
           "author": "yushuang24"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Row",
           "type": "component",
           "cName": "行",
           "desc": "布局组件中的行",
           "sort": 2,
-          "show": true,
+          "show": false,
+          "exportEmpty": true,
           "author": "yushuang24"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Col",
           "type": "component",
           "cName": "列",
           "desc": "布局组件中的列",
           "sort": 3,
-          "show": true,
+          "show": false,
+          "exportEmpty": true,
           "author": "yushuang24"
         }
       ]
@@ -194,7 +163,7 @@
       "name": "操作反馈",
       "packages": [
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Drag",
           "type": "component",
           "cName": "拖拽",
@@ -204,7 +173,7 @@
           "author": "songsong"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Collapse",
           "type": "component",
           "cName": "折叠面板",
@@ -214,7 +183,7 @@
           "author": "zhenyulei"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Toast",
           "type": "component",
           "cName": "吐司",
@@ -224,7 +193,7 @@
           "author": "VickyYe"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "BackTop",
           "type": "component",
           "cName": "返回顶部",
@@ -234,7 +203,7 @@
           "author": "vickyYe"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Range",
           "type": "component",
           "cName": "区间选择器",
@@ -244,7 +213,7 @@
           "author": "vickyYe"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Infiniteloading",
           "type": "component",
           "cName": "滚动加载",
@@ -254,7 +223,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Steps",
           "type": "component",
           "cName": "步骤条",
@@ -264,17 +233,28 @@
           "author": "swag~jun"
         },
         {
-          "version": "1.0.0",
+          "version": "3.0.0",
+          "name": "Step",
+          "sort": 17,
+          "cName": "步骤条子组件",
+          "type": "component",
+          "show": false,
+          "exportEmpty": true,
+          "desc": "步骤条子组件",
+          "author": "swag~jun"
+        },
+        {
+          "version": "0.1.0",
           "name": "CircleProgress",
           "type": "component",
-          "cName": "进度条",
+          "cName": "环形进度条",
           "desc": "展示操作或任务的当前进度。",
           "sort": 7,
           "show": true,
           "author": "swag~jun"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Popup",
           "sort": 9,
           "cName": "弹出层",
@@ -284,7 +264,7 @@
           "author": "szg2008"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "ActionSheet",
           "type": "component",
           "cName": "动作面板",
@@ -294,7 +274,7 @@
           "author": "dsj"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "NoticeBar",
           "type": "component",
           "cName": "通告栏",
@@ -304,7 +284,7 @@
           "author": "vickyYe"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Notify",
           "type": "component",
           "cName": "消息通知",
@@ -314,7 +294,7 @@
           "author": "vickyYE"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Dialog",
           "type": "component",
           "cName": "对话框",
@@ -324,7 +304,7 @@
           "author": "yangjinjun3"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Switch",
           "type": "component",
           "cName": "开关",
@@ -334,13 +314,14 @@
           "author": "dsj"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "CollapseItem",
           "type": "component",
           "cName": "折叠面板子组件",
           "desc": "折叠面板的子组件",
           "sort": 13,
           "show": false,
+          "exportEmpty": true,
           "author": "zhenyulei"
         },
         {
@@ -369,7 +350,7 @@
       "name": "导航组件",
       "packages": [
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "NavBar",
           "type": "component",
           "cName": "导航组件",
@@ -379,7 +360,7 @@
           "author": "dsj"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Tabbar",
           "type": "component",
           "cName": "标签栏组件",
@@ -389,7 +370,18 @@
           "author": "dsj"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
+          "name": "TabbarItem",
+          "sort": 2,
+          "cName": "标签栏子组件",
+          "type": "component",
+          "show": false,
+          "exportEmpty": true,
+          "desc": "标签栏子组件",
+          "author": "dsj"
+        },
+        {
+          "version": "0.1.0",
           "name": "InputNumber",
           "type": "component",
           "cName": "数字输入框",
@@ -399,7 +391,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Elevator",
           "type": "component",
           "cName": "电梯楼层",
@@ -409,7 +401,7 @@
           "author": "songsong"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "FixedNav",
           "type": "component",
           "cName": "悬浮导航",
@@ -419,10 +411,10 @@
           "author": "Ymm0008"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Pagination",
           "type": "component",
-          "cName": "分页组件",
+          "cName": "分页",
           "desc": "当数据量较多时，采用分页的形式分隔长列表。",
           "sort": 6,
           "show": true,
@@ -434,7 +426,7 @@
       "name": "数据录入",
       "packages": [
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Rate",
           "type": "component",
           "cName": "评分",
@@ -444,7 +436,7 @@
           "author": "dsj"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Uploader",
           "type": "component",
           "cName": "上传",
@@ -454,7 +446,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Input",
           "type": "component",
           "cName": "输入框",
@@ -464,7 +456,7 @@
           "author": "VickyYe"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "TextArea",
           "type": "component",
           "cName": "文本域",
@@ -474,8 +466,8 @@
           "author": "VickyYe"
         },
         {
-          "version": "1.0.0",
-          "name": "CheckBox",
+          "version": "0.1.0",
+          "name": "Checkbox",
           "type": "component",
           "cName": "复选按钮",
           "desc": "多选按钮用于选择。",
@@ -484,7 +476,18 @@
           "author": "oasis"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
+          "name": "CheckboxGroup",
+          "type": "component",
+          "cName": "多选按钮组",
+          "desc": "多选按钮组",
+          "sort": 11,
+          "show": false,
+          "exportEmpty": true,
+          "author": "oasis"
+        },
+        {
+          "version": "0.1.0",
           "name": "Tag",
           "type": "component",
           "cName": "标签",
@@ -494,7 +497,17 @@
           "author": "lzz"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
+          "name": "Popover",
+          "type": "component",
+          "cName": "气泡弹出框",
+          "desc": "气泡弹出框",
+          "sort": 19,
+          "show": true,
+          "author": "lzz"
+        },
+        {
+          "version": "0.1.0",
           "name": "Badge",
           "type": "component",
           "cName": "徽标",
@@ -504,7 +517,7 @@
           "author": "lzz"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "AnimatingNumbers",
           "type": "component",
           "cName": "数字动画",
@@ -514,7 +527,7 @@
           "author": "songsong"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Radio",
           "type": "component",
           "cName": "单选按钮",
@@ -524,17 +537,18 @@
           "author": "oasis"
         },
         {
-          "version": "1.0.0",
-          "name": "Picker",
+          "version": "0.1.0",
+          "name": "RadioGroup",
           "type": "component",
-          "cName": "选择器",
-          "desc": "提供多个选项集合供用户选择其中一项。",
+          "cName": "单选按钮组",
+          "desc": "单选按钮组",
           "sort": 10,
-          "show": true,
-          "author": "dsj"
+          "exportEmpty": true,
+          "show": false,
+          "author": "oasis"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "ShortPassword",
           "type": "component",
           "cName": "短密码",
@@ -551,6 +565,26 @@
           "sort": 10,
           "show": true,
           "author": "szg2008"
+        },
+        {
+          "name": "CalendarItem",
+          "type": "component",
+          "cName": "日历",
+          "desc": "日历，可平铺/弹窗展示",
+          "sort": 10,
+          "show": false,
+          "exportEmpty": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Picker",
+          "type": "component",
+          "cName": "选择器",
+          "desc": "提供多个选项集合供用户选择其中一项。",
+          "sort": 10,
+          "show": true,
+          "author": "dsj"
         }
       ]
     },
@@ -558,7 +592,7 @@
       "name": "特色组件",
       "packages": [
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Signature",
           "type": "component",
           "cName": "签字",
@@ -568,7 +602,7 @@
           "author": "songsong"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Barrage",
           "type": "component",
           "cName": "弹幕",
@@ -578,7 +612,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "1.0.0",
+          "version": "0.1.0",
           "name": "Address",
           "type": "component",
           "cName": "地址组件",

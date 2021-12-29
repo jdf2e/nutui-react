@@ -2,7 +2,6 @@ import React, { useState, FunctionComponent } from 'react'
 import { DataContext } from './UserContext'
 import bem from '@/utils/bem'
 import classNames from 'classnames'
-import './steps.scss'
 
 export interface StepsProps {
   current: number

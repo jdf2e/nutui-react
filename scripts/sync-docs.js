@@ -12,7 +12,7 @@ const tmp = '/tmp'
 const repo = 'nutui-docs'
 const base = process.cwd()
 const components = path.join(base, 'src/packages')
-const dest_docs = path.join(tmp, `${repo}/src/doc_react/docs`)
+const dest_docs = path.join(tmp, `${repo}/src/docs_react/docs`)
 
 async function sync_docs() {
   const rm_dest_result = await rm(path.join(tmp, repo), {
