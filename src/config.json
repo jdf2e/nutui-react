@@ -342,6 +342,26 @@
           "sort": 13,
           "show": false,
           "author": "zhenyulei"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Swiper",
+          "type": "component",
+          "cName": "轮播",
+          "desc": "轮播组件",
+          "sort": 14,
+          "show": true,
+          "author": "liukun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "SwiperItem",
+          "type": "component",
+          "cName": "轮播子组件",
+          "desc": "轮播子组件",
+          "sort": 14,
+          "show": false,
+          "author": "liukun"
         }
       ]
     },
