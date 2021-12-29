@@ -43,6 +43,8 @@
   },
   "dependencies": {
     "@bem-react/classname": "^1.5.10",
+    "@react-spring/web": "^9.3.2",
+    "@use-gesture/react": "^10.2.4",
     "classnames": "^2.3.1"
   },
   "devDependencies": {
