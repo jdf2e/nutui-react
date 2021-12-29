@@ -1,8 +1,9 @@
 .nut-drag {
   position: fixed;
-  display: inline-block;
+  display: inline-flex;
   z-index: 9997 !important;
   width: fit-content;
   height: fit-content;
   touch-action: none;
+  user-select: none;
 }
