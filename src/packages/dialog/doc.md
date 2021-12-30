@@ -101,6 +101,6 @@ return <>
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| onOk  | 确定按钮回调 | (e?: MouseEvent) => Promise<any> | void |
+| onOk  | 确定按钮回调 | (e?: MouseEvent) => Promise | void |
 | onCancel  | 取消按钮回调 | () => void |
 | onClosed  | 关闭回调，任何情况关闭弹窗都会触发 | Function |
