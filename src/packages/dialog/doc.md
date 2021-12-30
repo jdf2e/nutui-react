@@ -8,7 +8,9 @@
 
 ### 安装
 
-`import { Dialog } from 'nutui-react'`
+```js
+import { Dialog } from '@nutui/nutui-react'
+```
 
 
 ## 代码演示
