@@ -2,7 +2,7 @@ import React, { CSSProperties, FunctionComponent, useEffect, useState } from 're
 
 import bem from '@/utils/bem'
 import { formatNumber } from './util'
-import Icon from '../icon'
+import Icon from '@/packages/icon'
 import classNames from 'classnames'
 
 export interface InputProps {

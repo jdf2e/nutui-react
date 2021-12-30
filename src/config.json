@@ -342,6 +342,7 @@
           "desc": "轮播子组件",
           "sort": 14,
           "show": false,
+          "exportEmpty": true,
           "author": "liukun"
         }
       ]
