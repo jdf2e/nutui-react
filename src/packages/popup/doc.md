@@ -1,11 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2021-12-01 09:41:23
- * @LastEditTime: 2021-12-28 09:50:26
- * @LastEditors: your name
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /nutui-react/src/packages/popup/doc.md
--->
 # Popup 弹出层
 
 ### 介绍
