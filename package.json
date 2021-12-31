@@ -1,6 +1,6 @@
 {
-  "name": "@test/nutui-react",
-  "version": "0.1.0-beta.1",
+  "name": "@nutui/nutui-react",
+  "version": "1.0.0",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -39,6 +39,7 @@
     "add": "node scripts/createComponentMode.js",
     "generate:types": "tsc && npm run replace:types",
     "generate:file": "node scripts/generate-nutui.js",
+    "generate:loader-style": "node scripts/generate-loader-style.js",
     "replace:scss": "node scripts/replace-scss.js",
     "replace:types": "node scripts/replace-types.js",
     "generate:themes": "node scripts/generate-themes.js",
@@ -47,9 +48,9 @@
     "build:css": "npm run generate:themes && vite build --config vite.config.build.css.ts && npm run build:replace",
     "build:replace": "npm run replace:scss",
     "build:esm": "npx rollup -c rollup.config.es.js",
-    "build": "npm run checked && vite build --config vite.config.build.ts && npm run build:esm && npm run build:css && npm run generate:types ",
+    "build": "npm run checked && vite build --config vite.config.build.ts && npm run build:esm && npm run build:css && npm run generate:types && npm run generate:loader-style",
     "build:site": "npm run checked && vite build --config vite.config.build.site.ts",
-    "publish:beta": "npm publish --tag=beta",
+    "publish:beta": "npm publish --tag beta",
     "prepare": "husky install"
   },
   "lint-staged": {
