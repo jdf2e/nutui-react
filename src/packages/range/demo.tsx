@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Range } from './range'
 import { Cell } from '../cell/cell'
-import './custom.scss'
+
 import Toast from '../toast'
 
 const RangeDemo = () => {

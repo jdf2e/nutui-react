@@ -2,7 +2,6 @@ import React, { CSSProperties, FunctionComponent, useEffect, useRef, useState } 
 import bem from '@/utils/bem'
 import Popup from '@/packages/popup'
 import Icon from '@/packages/icon'
-import './shortpassword.scss'
 
 export interface ShortPasswordProps {
   title: string

@@ -4,8 +4,6 @@ import bem from '@/utils/bem'
 import classNames from 'classnames'
 import { Overlay } from '../overlay/overlay'
 
-import './fixednav.scss'
-
 type Direction = 'right' | 'left'
 type Position = {
   top?: string

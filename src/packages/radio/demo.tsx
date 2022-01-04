@@ -16,14 +16,16 @@ const RadioDemo = () => {
   return (
     <>
       <div className="demo full">
-        <CellGroup title="基本用法">
+        <h2>基本用法</h2>
+        <CellGroup>
           <Cell>
             <Radio checked={checked1} value="1">
               选项1
             </Radio>
           </Cell>
         </CellGroup>
-        <CellGroup title="基本用法">
+        <h2>基本用法</h2>
+        <CellGroup>
           <Cell>
             <RadioGroup value={'1'}>
               <Radio value="1">选项1</Radio>
@@ -56,7 +58,8 @@ const RadioDemo = () => {
             </RadioGroup>
           </Cell>
         </CellGroup>
-        <CellGroup title="水平使用">
+        <h2>水平使用</h2>
+        <CellGroup>
           <Cell>
             <RadioGroup value="1" direction="horizontal">
               <Radio value="1">选项1</Radio>
@@ -85,7 +88,8 @@ const RadioDemo = () => {
             </RadioGroup>
           </Cell>
         </CellGroup>
-        <CellGroup title="自定义尺寸">
+        <h2>自定义尺寸</h2>
+        <CellGroup>
           <Cell>
             <RadioGroup value="2">
               <Radio value="1" iconSize="24">
@@ -97,7 +101,8 @@ const RadioDemo = () => {
             </RadioGroup>
           </Cell>
         </CellGroup>
-        <CellGroup title="Radio自定义图标">
+        <h2>Radio自定义图标</h2>
+        <CellGroup>
           <Cell>
             <RadioGroup value="1">
               <Radio value="1" iconName="checklist" icon-active-name="checklist">
@@ -109,7 +114,8 @@ const RadioDemo = () => {
             </RadioGroup>
           </Cell>
         </CellGroup>
-        <CellGroup title="触发事件">
+        <h2>触发事件</h2>
+        <CellGroup>
           <Cell>
             <RadioGroup value={radioVal} onChange={handleChange}>
               <Radio value={1}>触发事件</Radio>

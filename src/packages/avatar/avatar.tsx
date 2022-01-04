@@ -1,7 +1,6 @@
 import React, { FunctionComponent, MouseEventHandler } from 'react'
 import Icon from '@/packages/icon'
 import classNames from 'classnames'
-import './avatar.scss'
 
 export interface AvatarProps {
   size: AvatarSize

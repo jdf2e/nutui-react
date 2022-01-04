@@ -1,14 +1,6 @@
-import React, {
-  FunctionComponent,
-  useLayoutEffect,
-  useEffect,
-  useState,
-  useRef,
-  CSSProperties,
-} from 'react'
-import './backtop.scss'
-import Icon from '../icon'
-import classNames from 'classnames'
+import React, { FunctionComponent, useEffect, useState, CSSProperties } from 'react'
+
+import Icon from '@/packages/icon'
 declare const window: any
 export interface BackTopProps {
   className?: string

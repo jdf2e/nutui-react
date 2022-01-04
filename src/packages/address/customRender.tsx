@@ -2,7 +2,6 @@ import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 import Elevator from '@/packages/elevator'
-import './address.scss'
 import { RegionData } from './address'
 
 interface CustomRegionData {

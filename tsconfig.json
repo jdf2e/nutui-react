@@ -6,8 +6,8 @@
     "types": ["vite/client"],
     "allowJs": false,
     "declaration": true,
+    "declarationDir": "./dist/esm/types",
     "emitDeclarationOnly": true,
-    "declarationDir": "./dist/types",
     "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
@@ -19,11 +19,10 @@
     "isolatedModules": true,
     "jsx": "react",
     "lib": ["esnext", "dom"],
-    "outDir": "./tsc/test",
     "paths": {
       "@/*": ["src/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"],
-  "exclude": ["./node_modules/*", "src/sites/*"]
+  "exclude": ["./node_modules/*", "src/sites/*", "src/**/demo.tsx"]
 }

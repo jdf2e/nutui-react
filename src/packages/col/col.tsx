@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useEffect, useState, CSSProperties, useContext } from 'react'
 import { DataContext } from '@/packages/row/UserContext'
-import './col.scss'
 
 export interface ColProps {
   span: string | number

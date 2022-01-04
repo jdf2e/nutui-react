@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import bem from '@/utils/bem'
 import classNames from 'classnames'
-import './circleprogress.scss'
 
 export interface CircleProgressProps {
   strokeInnerWidth: string | number

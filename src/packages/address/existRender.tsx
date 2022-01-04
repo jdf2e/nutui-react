@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
-import './address.scss'
 import { AddressList } from './address'
 
 export interface ExistRenderProps {

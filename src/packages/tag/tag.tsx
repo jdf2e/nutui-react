@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react'
-import './tag.scss'
+
 import classNames from 'classnames'
 import Icon from '@/packages/icon'
 export interface TagProps {

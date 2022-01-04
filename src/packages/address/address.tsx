@@ -4,7 +4,6 @@ import Popup from '@/packages/popup'
 import bem from '@/utils/bem'
 import { ExistRender } from './existRender'
 import { CustomRender } from './customRender'
-import './address.scss'
 
 export interface RegionData {
   name?: string

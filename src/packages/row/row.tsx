@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react'
 import { DataContext } from './UserContext'
-import './row.scss'
 
 export interface RowProps {
   type: string

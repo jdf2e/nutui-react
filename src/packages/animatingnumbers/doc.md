@@ -1,4 +1,4 @@
-# AnimatingNumbers 组件
+# AnimatingNumbers 数字动画
 
 ### 介绍
 

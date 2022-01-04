@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import './divider.scss'
 import bem from '@/utils/bem'
 import classNames from 'classnames'
 

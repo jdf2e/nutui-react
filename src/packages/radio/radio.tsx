@@ -1,8 +1,8 @@
 import React, { FunctionComponent, MouseEventHandler, useContext, useEffect, useState } from 'react'
 import Icon from '../icon'
-import './radio.scss'
+
 import RadioContext from './context'
-import { RadioGroup } from '@/packages/radio/radiogroup'
+import RadioGroup from '@/packages/radiogroup'
 
 type Shape = 'button' | 'round'
 type Position = 'right' | 'left'

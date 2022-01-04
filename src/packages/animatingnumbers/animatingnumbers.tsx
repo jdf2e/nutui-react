@@ -1,5 +1,4 @@
 import React, { FunctionComponent, Component } from 'react'
-import './animatingnumbers.scss'
 
 import { CountUp } from './countup'
 

@@ -1,7 +1,6 @@
 import React, { ForwardRefRenderFunction, HTMLAttributes, forwardRef } from 'react'
 import classNames from 'classnames'
 import Button from '@/packages/button'
-import './dialog.scss'
 import { DialogWrapper } from './DialogWrapper'
 import confirm from './Confirm'
 import { DialogProps, DialogReturnProps, DialogComponent, ConfirmProps } from './config'
