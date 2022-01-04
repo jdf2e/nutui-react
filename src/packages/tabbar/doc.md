@@ -1,4 +1,4 @@
-#  Tabbar组件
+#  Tabbar 标签栏
 
 ### 介绍
 

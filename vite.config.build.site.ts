@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import config from './package.json'
 import reactRefresh from '@vitejs/plugin-react-refresh'
-import mdPlugin, { Mode } from 'vite-plugin-markdown'
 import path from 'path'
 const atImport = require('postcss-import')
 const resolve = path.resolve
@@ -36,7 +35,7 @@ export default defineConfig({
       ],
     },
   },
-  plugins: [reactRefresh(), mdPlugin({ mode: [Mode.HTML] })],
+  plugins: [reactRefresh()],
   build: {
     target: 'es2015',
     outDir: './dist/1x/',

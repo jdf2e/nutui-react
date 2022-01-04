@@ -3,8 +3,10 @@ const config = require('../src/config.json')
 const path = require('path')
 const fs = require('fs-extra')
 let importStr = ``
+let importMarkdownStr = ``
 let importScssStr = `\n`
 const packages = []
+const mds = []
 
 config.nav.map((item) => {
   item.packages.forEach((element) => {
@@ -13,6 +15,10 @@ config.nav.map((item) => {
       importStr += `import ${name} from '@/packages/${name.toLowerCase()}';\n`
       importScssStr += `import '@/packages/${name.toLowerCase()}/${name.toLowerCase()}.scss';\n`
       packages.push(name)
+    }
+    if (show) {
+      importMarkdownStr += `import ${name} from '@/packages/${name.toLowerCase()}/doc.md?raw';\n`
+      mds.push(name)
     }
   })
 })
@@ -40,3 +46,12 @@ fs.outputFile(
     if (error) throw error
   }
 )
+
+let mdFileStr = `${importMarkdownStr}
+export const routers = [${mds.map((m) => `'${m}'`)}]
+export const raws = {${mds.join(',')}}
+`
+
+fs.outputFile(path.resolve(__dirname, '../src/sites/doc/docs.ts'), mdFileStr, 'utf8', (error) => {
+  if (error) throw error
+})

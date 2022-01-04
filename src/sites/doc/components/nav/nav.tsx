@@ -17,13 +17,9 @@ const Nav = () => {
                 {cn.packages.map((cp: any) => {
                   if (!cp.show) return null
                   return (
-                    <NavLink
-                      key={'navlink' + cp.name}
-                      activeClassName="selected"
-                      to={cp.name.toLowerCase()}
-                    >
+                    <NavLink key={'navlink' + cp.name} activeClassName="selected" to={cp.name}>
                       <li>
-                        {cp.name.toLowerCase()}&nbsp;&nbsp;<b>{cp.cName}</b>
+                        {cp.name}&nbsp;&nbsp;<b>{cp.cName}</b>
                       </li>
                     </NavLink>
                   )

@@ -1,6 +1,6 @@
 {
-  "name": "@test/nutui-react",
-  "version": "0.1.0-beta.1",
+  "name": "@nutui/nutui-react",
+  "version": "0.1.0",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -39,6 +39,7 @@
     "add": "node scripts/createComponentMode.js",
     "generate:types": "tsc && npm run replace:types",
     "generate:file": "node scripts/generate-nutui.js",
+    "generate:loader-style": "node scripts/generate-loader-style.js",
     "replace:scss": "node scripts/replace-scss.js",
     "replace:types": "node scripts/replace-types.js",
     "generate:themes": "node scripts/generate-themes.js",
@@ -47,9 +48,9 @@
     "build:css": "npm run generate:themes && vite build --config vite.config.build.css.ts && npm run build:replace",
     "build:replace": "npm run replace:scss",
     "build:esm": "npx rollup -c rollup.config.es.js",
-    "build": "npm run checked && vite build --config vite.config.build.ts && npm run build:esm && npm run build:css && npm run generate:types ",
+    "build": "npm run checked && vite build --config vite.config.build.ts && npm run build:esm && npm run build:css && npm run generate:types && npm run generate:loader-style",
     "build:site": "npm run checked && vite build --config vite.config.build.site.ts",
-    "publish:beta": "npm publish --tag=beta",
+    "publish:beta": "npm publish --tag beta",
     "prepare": "husky install"
   },
   "lint-staged": {
@@ -87,6 +88,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.7",
+    "@types/react-syntax-highlighter": "^13.5.2",
     "@types/react-transition-group": "^4.4.4",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
@@ -114,11 +116,15 @@
     "prettier": "2.3.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "react-markdown": "^7.1.2",
+    "react-syntax-highlighter": "^15.4.5",
+    "remark-directive": "^2.0.1",
+    "remark-gfm": "^3.0.1",
     "sass": "^1.45.0",
     "shelljs": "^0.8.4",
     "typescript": "^4.1.2",
+    "unist-util-visit": "^4.1.0",
     "vinyl-fs": "^3.0.3",
-    "vite": "^2.1.5",
-    "vite-plugin-markdown": "^2.0.2"
+    "vite": "^2.1.5"
   }
 }
