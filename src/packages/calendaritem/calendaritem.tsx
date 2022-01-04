@@ -1,9 +1,8 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
 import bem from '@/utils/bem'
 import classNames from 'classnames'
-import './calendaritem.scss'
 import Utils from '@/utils/date'
-import requestAniFrame from '../../utils/raf'
+import requestAniFrame from '@/utils/raf'
 
 type InputDate = string | string[]
 

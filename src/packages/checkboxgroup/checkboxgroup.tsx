@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useEffect, useImperativeHandle, useState } from 'react'
-import '../checkbox/checkbox.scss'
 import bem from '@/utils/bem'
 
 export interface CheckBoxGroupProps {

@@ -1,8 +1,8 @@
 import React, { CSSProperties, FunctionComponent, useEffect, useState } from 'react'
-import './input.scss'
+
 import bem from '@/utils/bem'
 import { formatNumber } from './util'
-import Icon from '../icon'
+import Icon from '@/packages/icon'
 import classNames from 'classnames'
 
 export interface InputProps {

@@ -1,8 +1,9 @@
-#  Address组件
+#  Address 地址
 
 ### 介绍
 
-按需加载请加载对应依赖组件 Icon Popup Elevator
+地址选择
+
 
 ### 安装
 ``` javascript

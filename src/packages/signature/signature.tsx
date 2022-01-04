@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useRef, useState, useEffect } from 'react'
-import './signature.scss'
+
 import { Button } from '../button/button'
 import bem from '@/utils/bem'
 

@@ -12,7 +12,7 @@ import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import './popup.scss'
+
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 
 interface PopupProps extends OverlayProps {

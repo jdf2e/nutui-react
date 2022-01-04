@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import bem from '@/utils/bem'
 import Icon from '../icon/index'
-import './toast.scss'
+
 import classNames from 'classnames'
 export interface NotificationProps {
   id?: string

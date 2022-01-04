@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react'
 import Popup from '@/packages/popup'
 import CalendarItem from '@/packages/calendaritem'
 import Utils from '@/utils/date'
-import './calendar.scss'
 
 export interface CalendarProps {
   type?: string

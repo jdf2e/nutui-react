@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import Cell from '@/packages/cell'
 import { Barrage } from './barrage'
 import Button from '@/packages/button'
-import './demo.scss'
+import './demo.scss?module'
 
 interface barrageRefState {
   add: (word: string) => void
@@ -21,8 +21,8 @@ const BarrageDemo = () => {
     <>
       <div className="demo">
         <h2>基础用法</h2>
-        <Cell>
-          <Barrage ref={barrageRef} barrageList={list}></Barrage>
+        <Cell className={'barrage-demo-wrap'}>
+          <Barrage className={'barrage-demo'} ref={barrageRef} barrageList={list}></Barrage>
         </Cell>
         <div className="test" style={{ textAlign: 'center' }}>
           <Button type="danger" onClick={addBarrage}>

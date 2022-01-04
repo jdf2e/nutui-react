@@ -7,7 +7,7 @@ import React, {
   MouseEvent,
   CSSProperties,
 } from 'react'
-import './noticebar.scss'
+
 import { number } from 'prop-types'
 import Icon from '../icon'
 import bem from '@/utils/bem'

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
 import bem from '@/utils/bem'
 import classNames from 'classnames'
 import Icon from '@/packages/icon'
-import './infiniteloading.scss'
 
 export interface InfiniteloadingProps {
   hasMore: boolean

@@ -1,7 +1,6 @@
 import React, { FunctionComponent, MouseEventHandler, useEffect, useRef, useState } from 'react'
 import bem from '@/utils/bem'
 import classNames from 'classnames'
-import './overlay.scss'
 
 export interface OverlayProps {
   zIndex: number

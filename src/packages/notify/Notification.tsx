@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import bem from '@/utils/bem'
-import './notify.scss'
+
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 export interface NotificationProps {

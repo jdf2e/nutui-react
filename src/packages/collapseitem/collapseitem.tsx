@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState, useCallback } from 'react'
-import './collapseItem.scss'
+
 import bem from '@/utils/bem'
 import Icon from '../icon'
 

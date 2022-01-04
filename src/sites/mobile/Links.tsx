@@ -12,13 +12,15 @@ const Links = () => {
         <ol key={nav.name}>
           <li>{nav.name}</li>
           <ul>
-            {nav.packages.map((com) => (
-              <li key={com.name}>
-                <Link key={com.name} to={`${com.name}`}>
-                  {com.name}
-                </Link>
-              </li>
-            ))}
+            {nav.packages.map((com) =>
+              com.show ? (
+                <li key={com.name}>
+                  <Link key={com.name} to={`${com.name}`}>
+                    {com.name}
+                  </Link>
+                </li>
+              ) : null
+            )}
           </ul>
         </ol>
       ))}

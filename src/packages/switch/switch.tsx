@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
-import './switch.scss'
+
 import bem from '@/utils/bem'
 
 export interface SwitchProps {

@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
 import Popup from '@/packages/popup'
-import './actionsheet.scss'
 import bem from '@/utils/bem'
 
 export type ItemType<T> = { [key: string]: T }

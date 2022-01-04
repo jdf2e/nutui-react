@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect } from 'react'
-import './tabbaritem.scss'
+
 import bem from '@/utils/bem'
 import Icon from '../icon'
 

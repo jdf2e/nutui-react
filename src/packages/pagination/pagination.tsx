@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import Icon from '../icon'
-import './pagination.scss'
+
 import bem from '@/utils/bem'
 export interface PaginationProps {
   defaultValue: number

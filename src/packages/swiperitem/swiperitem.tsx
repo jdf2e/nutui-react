@@ -8,7 +8,6 @@ import React, {
 import { DataContext } from '@/packages/swiper/UserContext'
 import bem from '@/utils/bem'
 import classNames from 'classnames'
-import './swiperitem.scss'
 
 interface SwiperItemProps {
   direction?: string

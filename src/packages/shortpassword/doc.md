@@ -1,18 +1,20 @@
-#  ShortPassword组件
+#  ShortPassword 短密码
 
 ### 介绍
 
 短密码输入框，可用于输入密码、短信验证码等
 
 ### 安装
-import { ShortPassword } from '@nutui/nutui-react';
+```js
+import { Shortpassword } from '@nutui/nutui-react';
+```
 
 
 ## 代码演示
 
 ### 基础用法
 ```tsx
-const ShortPassword = () => {
+const Shortpassword = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
   cosnt change = (value)=>{
@@ -20,7 +22,7 @@ const ShortPassword = () => {
   }
   return 
     <>
-        <ShortPassword visible={visible} modelValue={value} onClose={()=>setVisible(false)} change={(value)=>change(value)}></ShortPassword>
+        <Shortpassword visible={visible} modelValue={value} onClose={()=>setVisible(false)} change={(value)=>change(value)}></Shortpassword>
     </>
 }
 
@@ -28,7 +30,7 @@ const ShortPassword = () => {
 
 ### 显示按钮组
 ```tsx
-const ShortPassword = () => {
+const Shortpassword = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
   cosnt change = (value)=>{
@@ -36,7 +38,7 @@ const ShortPassword = () => {
   }
   return
      <>
-        <ShortPassword visible={visible} modelValue={value} onClose={()=>setVisible(false)} change={(value)=>change(value)} noButton={false}></ShortPassword>
+        <Shortpassword visible={visible} modelValue={value} onClose={()=>setVisible(false)} change={(value)=>change(value)} noButton={false}></Shortpassword>
     </>
 }
 
@@ -44,7 +46,7 @@ const ShortPassword = () => {
 
 ### 自定义密码长度4
 ```tsx
-const ShortPassword = () => {
+const Shortpassword = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
   cosnt change = (value)=>{
@@ -52,14 +54,14 @@ const ShortPassword = () => {
   }
   return 
     <>
-        <ShortPassword visible={visible} modelValue={value} onClose={()=>setVisible(false)} change={(value)=>change(value)} length={4}></ShortPassword>
+        <Shortpassword visible={visible} modelValue={value} onClose={()=>setVisible(false)} change={(value)=>change(value)} length={4}></Shortpassword>
     </>
 }
 
 ```
 ### 忘记密码提示语事件回调
 ```tsx
-const ShortPassword = () => {
+const Shortpassword = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
    const onTips = ()=>{
@@ -70,7 +72,7 @@ const ShortPassword = () => {
   }
   return 
     <>
-        <ShortPassword visible={visible} modelValue={value} onClose={()=>setVisible(false)} change={(value)=>change(value)} onTips={()=>onTips()}></ShortPassword>
+        <Shortpassword visible={visible} modelValue={value} onClose={()=>setVisible(false)} change={(value)=>change(value)} onTips={()=>onTips()}></Shortpassword>
     </>
 }
 

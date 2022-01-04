@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import './rate.scss'
+
 import bem from '@/utils/bem'
 import Icon from '../icon'
 

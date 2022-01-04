@@ -1,4 +1,4 @@
-# BackTop 组件
+# BackTop 返回顶部
 
 ### 介绍
 

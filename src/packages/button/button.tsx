@@ -1,5 +1,4 @@
 import React, { CSSProperties, FunctionComponent, useEffect, useState } from 'react'
-import './button.scss'
 import Icon from '@/packages/icon'
 export interface ButtonProps {
   className: string
