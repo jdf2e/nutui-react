@@ -41,14 +41,8 @@ export const Drag: FunctionComponent<Partial<DragProps> & React.HTMLAttributes<H
     x: 0,
     y: 0,
   }))
-  const screen = useRef({
-    clientWidth: 0,
-    clientHeight: 0,
-  })
-  const element = useRef({
-    offsetWidth: 0,
-    offsetHeight: 0,
-  })
+
+  const middleLine = useRef(0)
 
   const getInfo = () => {
     const el = myDrag.current
@@ -56,20 +50,13 @@ export const Drag: FunctionComponent<Partial<DragProps> & React.HTMLAttributes<H
       const { offsetWidth, offsetHeight, offsetTop, offsetLeft } = el
       const { clientWidth, clientHeight } = document.documentElement
       const { top, left, bottom, right } = boundary
-      element.current = {
-        offsetWidth: offsetWidth,
-        offsetHeight: offsetHeight,
-      }
-      screen.current = {
-        clientWidth: clientWidth,
-        clientHeight: clientHeight,
-      }
       setBoundaryState({
         top: -offsetTop + top,
         left: -offsetLeft + left,
         bottom: clientHeight - offsetHeight - offsetTop - bottom,
         right: clientWidth - offsetWidth - offsetLeft - right,
       })
+      middleLine.current = clientWidth - offsetWidth - offsetLeft - (clientWidth - offsetWidth) / 2
     }
   }
 
@@ -78,18 +65,13 @@ export const Drag: FunctionComponent<Partial<DragProps> & React.HTMLAttributes<H
       api.start({ x, y, immediate: down })
       if (last) {
         if (props.direction != 'y' && props.attract) {
-          if (x < (screen.current.clientWidth - element.current.offsetWidth) / 2) {
-            console.log(x)
-            window.requestAnimationFrame(() => {
-              api.start({ x: boundaryState.left, y, immediate: down })
-            })
+          if (x < middleLine.current) {
+            api.start({ x: boundaryState.left, y, immediate: down })
           } else {
-            window.requestAnimationFrame(() => {
-              api.start({
-                x: screen.current.clientWidth - element.current.offsetWidth + boundaryState.left,
-                y,
-                immediate: down,
-              })
+            api.start({
+              x: boundaryState.right,
+              y,
+              immediate: down,
             })
           }
         }
