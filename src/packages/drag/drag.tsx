@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-import './drag.scss'
 import bem from '@/utils/bem'
 import { useDrag } from '@use-gesture/react'
 import { useSpring, animated } from '@react-spring/web'
