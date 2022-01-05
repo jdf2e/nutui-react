@@ -101,6 +101,7 @@ export const Radio: FunctionComponent<
     )
   }
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
+    if (disabledStatement) return
     setCheckedStatement(!checkedStatement)
     props.onChange && props.onChange(e)
     context && context.onChange(valueStatement)
