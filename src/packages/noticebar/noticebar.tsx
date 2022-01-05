@@ -9,7 +9,7 @@ import React, {
 } from 'react'
 
 import { number } from 'prop-types'
-import Icon from '../icon'
+import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 import classNames from 'classnames'
 

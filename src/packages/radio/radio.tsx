@@ -1,5 +1,5 @@
 import React, { FunctionComponent, MouseEventHandler, useContext, useEffect, useState } from 'react'
-import Icon from '../icon'
+import Icon from '@/packages/icon'
 
 import RadioContext from './context'
 import RadioGroup from '@/packages/radiogroup'

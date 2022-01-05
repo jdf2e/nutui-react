@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import Icon from '../icon'
+import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 
 import classNames from 'classnames'
