@@ -22,7 +22,7 @@ function myRemarkPlugin() {
 
         data.hName = 'div'
         data.hProperties = {
-          class: 'demo',
+          class: 'nutui-react--demo-wrapper',
         }
       }
     })
@@ -46,6 +46,7 @@ const App = () => {
                       remarkPlugins={[remarkGfm, remarkDirective, myRemarkPlugin]}
                       components={{
                         code({ node, inline, className, children, ...props }) {
+                          console.log('props', node)
                           const match = /language-(\w+)/.exec(className || '')
                           return !inline && match ? (
                             <Demoblock text={String(children).replace(/\n$/, '')}>

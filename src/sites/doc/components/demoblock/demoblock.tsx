@@ -3,12 +3,10 @@ interface A {
   text: string
 }
 const DemoBlock: React.FunctionComponent<A> = (props) => {
-  console.log(props.children)
   return (
     <>
       {props.children}
-      {props.text}
-      xxxx
+      <div className="nutui-react--demo-button">{props.text}</div>
     </>
   )
 }

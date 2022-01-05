@@ -16,7 +16,8 @@ import { Button } from '@nutui/nutui-react';
 
 按钮支持 `default`、`primary`、`info`、`warning`、`danger`、`success` 六种类型，默认为 `default`。
 
-```html
+:::demo
+```tsx
 <Button type="primary">主要按钮</Button>
 <Button type="info">信息按钮</Button>
 <Button type="default">默认按钮</Button>
@@ -24,6 +25,7 @@ import { Button } from '@nutui/nutui-react';
 <Button type="warning">警告按钮</Button>
 <Button type="success">成功按钮</Button>
 ```
+:::
 
 ### 朴素按钮
 
