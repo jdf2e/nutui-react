@@ -23,6 +23,12 @@ ReactDOM.render(
     const onlineUrl = `https://codehouse.jd.com/?source=share&type=react&mainJs=${sourceMainReactJs}&appValue=${sourceReactJs}&scssValue=`
     setOnlineUrl(onlineUrl)
   }, [])
+  const copyCode = () => {
+    const sourceValue = props.text
+    copyCodeHtml(sourceValue, () => {
+      alert('复制成功')
+    })
+  }
   return (
     <>
       {props.children}
@@ -35,7 +41,7 @@ ReactDOM.render(
             />
             <div className="online-tips">在线调试</div>
           </a>
-          <div className="list">
+          <div className="list" onClick={copyCode}>
             <img
               className="online-icon"
               src="https://img10.360buyimg.com/imagetools/jfs/t1/142615/10/25537/3671/61c31e6eE3ba7fb90/d1953e2b47e40e86.png"
