@@ -19,7 +19,7 @@ const CellDemo = () => {
             testClick(event)
           }
         ></Cell>
-        <h2>直接使用插槽(slot)</h2>
+        <h2>直接使用</h2>
         <Cell title="我是标题" desc="描述文字">
           <div>自定义内容</div>
         </Cell>
