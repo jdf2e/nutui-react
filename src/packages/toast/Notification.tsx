@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import bem from '@/utils/bem'
-import Icon from '../icon/index'
+import Icon from '@/packages/icon'
 
 import classNames from 'classnames'
 export interface NotificationProps {
