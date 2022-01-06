@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import './price.scss'
+
 import bem from '@/utils/bem'
 
 export interface PriceProps {

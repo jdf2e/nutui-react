@@ -1,0 +1,104 @@
+@import '../popup/popup.scss';
+.nut-picker {
+  background-color: #fff;
+  width: 100%;
+}
+.nut-picker__control {
+  display: flex;
+  height: 56px;
+  font-size: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+
+  .nut-picker__cancel-btn {
+    color: #fa2c19;
+  }
+  .nut-picker__title {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+.nut-picker__panel {
+  height: 178px;
+  display: flex;
+}
+.nut-picker-list {
+  flex: 1;
+  position: relative;
+  height: 178px;
+  overflow: hidden;
+  text-align: center;
+  .nut-picker-list-panel {
+    transform-style: preserve-3d;
+  }
+  .nut-picker-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    //background-image: linear-gradient(180deg,hsla(0,0%,100%,.9),hsla(0,0%,100%,.6)),linear-gradient(0deg,hsla(0,0%,100%,.9),hsla(0,0%,100%,.6));
+    background-position: top, bottom;
+    background-size: 100% 78px;
+    background-repeat: no-repeat;
+    z-index: 3;
+  }
+  .nut-picker-indicator {
+    position: absolute;
+    top: 78px;
+    width: 100%;
+    height: 34px;
+    border-top: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+    z-index: 3;
+  }
+
+  .nut-picker-content,
+  .nut-picker-roller {
+    position: absolute;
+    top: 78px;
+    width: 100%;
+    height: 36px;
+  }
+  .nut-picker-content {
+    background: #fff;
+    z-index: 2;
+    overflow: hidden;
+  }
+  .nut-picker-item,
+  .nut-picker-roller-item {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 36px;
+    line-height: 36px;
+    color: #262626;
+    font-size: 12px;
+    text-align: center;
+  }
+  .nut-picker-item {
+    font-size: 15px;
+    background: #fff;
+  }
+  .nut-picker-roller {
+    z-index: 1;
+    transform-style: preserve-3d;
+    .nut-picker-roller-item {
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      color: #262626;
+    }
+    .nut-picker-roller-item-hidden {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+}
+.nut-picker-placeholder {
+  height: 1px;
+}

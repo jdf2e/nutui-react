@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import Icon from '../icon'
-import { CheckboxGroup } from '@/packages/checkboxgroup/checkboxgroup'
-import './checkbox.scss'
+import Icon from '@/packages/icon'
+import CheckboxGroup from '@/packages/checkboxgroup'
+
 import bem from '@/utils/bem'
 
 export interface CheckBoxProps {

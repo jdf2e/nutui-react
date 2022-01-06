@@ -145,7 +145,7 @@
     }
 
     em {
-      color: $nutui-doc-green;
+      color: $nutui-doc-red;
       font-size: 14px;
       font-family: $nutui-doc-code-font-family;
       font-style: normal;
@@ -210,6 +210,7 @@
     padding: 16px;
     background-color: #fff4f0;
     border-left: 6px solid #fa192c;
+    border-radius: 3px;
     p {
       color: #1a1a1a;
     }

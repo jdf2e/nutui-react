@@ -1,6 +1,5 @@
 import React, { FunctionComponent, ReactHTML } from 'react'
 import bem from '@/utils/bem'
-import './icon.scss'
 
 interface IconProps {
   name: string

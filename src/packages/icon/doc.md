@@ -1,4 +1,4 @@
-# Icon 图标组件
+# Icon 图标
 
 ### 介绍
 
@@ -7,7 +7,7 @@
 ### 安装
 
 ``` javascript
-import { Icon } from '@nutui/nutui';
+import { Icon } from '@nutui/nutui-react';
 ```
 
 ## 代码演示

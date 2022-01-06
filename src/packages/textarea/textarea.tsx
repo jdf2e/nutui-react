@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState, CSSProperties } from 'react'
-import './textarea.scss'
+
 import bem from '@/utils/bem'
 
 export interface TextAreaProps {

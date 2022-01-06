@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useImperativeHandle, useState } from 'react'
-import RadioContext from './context'
-import './radiogroup.scss'
+import RadioContext from '../radio/context'
+
 import bem from '@/utils/bem'
 
 type Position = 'left' | 'right'

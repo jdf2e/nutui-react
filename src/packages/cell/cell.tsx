@@ -1,8 +1,8 @@
 import React, { FunctionComponent, CSSProperties, ReactNode } from 'react'
 import { useHistory } from 'react-router-dom'
-import './cell.scss'
+
 import bem from '@/utils/bem'
-import { Icon } from '../icon/icon'
+import Icon from '@/packages/icon'
 
 export interface CellProps {
   title: string

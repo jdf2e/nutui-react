@@ -1,3 +1,5 @@
+@import '../icon/icon.scss';
+@import '../overlay/overlay.scss';
 .nut-fixednav {
   position: fixed;
   z-index: $fixednav-index;
@@ -126,4 +128,7 @@
       }
     }
   }
+}
+.nut-drag .nut-fixednav {
+  position: inherit;
 }

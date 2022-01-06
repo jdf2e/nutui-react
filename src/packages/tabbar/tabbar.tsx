@@ -1,7 +1,6 @@
 import React, { FunctionComponent, ReactComponentElement, useState } from 'react'
-import './tabbar.scss'
+
 import bem from '@/utils/bem'
-import { TabbarItem } from '../tabbaritem/tabbarItem'
 
 export interface TabbarProps {
   visible: number | string
@@ -62,7 +61,5 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
     </div>
   )
 }
-//@ts-ignore  todo...
-Tabbar.TabbarItem = TabbarItem
 Tabbar.defaultProps = defaultProps
 Tabbar.displayName = 'NutTabbar'

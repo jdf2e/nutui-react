@@ -7,7 +7,7 @@
 ### 安装
 
 ``` ts
-import { Checkbox,CheckBoxGroup,Icon } from '@nutui/nutui';
+import { Checkbox, CheckBoxGroup } from '@nutui/nutui-react';
 
 ```
 

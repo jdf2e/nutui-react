@@ -7,11 +7,11 @@ import React, {
   ReactNode,
   CSSProperties,
 } from 'react'
-import './range.scss'
+
 import bem from '@/utils/bem'
 import { useTouch } from '../../utils/useTouch'
 import { useRect } from '../../utils/useRect'
-import Toast from '../toast'
+import Toast from '@/packages/toast'
 
 type SliderValue = number | number[]
 export interface RangeProps {

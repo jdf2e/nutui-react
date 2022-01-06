@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
-import Icon from '../icon'
+import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
-import './navbar.scss'
+
 import classNames from 'classnames'
 
 export interface NavBarProps {

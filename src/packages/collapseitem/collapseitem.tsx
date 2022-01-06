@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState, useCallback } from 'react'
-import './collapse.scss'
+
 import bem from '@/utils/bem'
-import Icon from '../icon'
+import Icon from '@/packages/icon'
 
 export interface CollapseItemProps {
   title: string

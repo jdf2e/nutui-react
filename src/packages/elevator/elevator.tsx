@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useRef, useEffect, useState } from 'react'
-import './elevator.scss'
 import bem from '@/utils/bem'
 
 export interface ElevatorProps {
@@ -111,12 +110,8 @@ export const Elevator: FunctionComponent<
     state.current.anchorIndex = +index
     setCurrentIndex((currentIndex) => currentIndex + index)
     scrollTo(index)
-
     const target = e.currentTarget as HTMLElement
-
-    target.removeEventListener('touchmove', () => touchMove(e), false)
     target.removeEventListener('touchend', touchEnd, false)
-    target.addEventListener('touchmove', () => touchMove(e), false)
     target.addEventListener('touchend', touchEnd, false)
   }
 
@@ -176,7 +171,11 @@ export const Elevator: FunctionComponent<
       {indexList.length && scrollStart ? (
         <div className={b('code', { current: true })}> {indexList[currentIndex][acceptKey]}</div>
       ) : null}
-      <div className={b('bars')} onTouchStart={(event) => touchStart(event)}>
+      <div
+        className={b('bars')}
+        onTouchStart={(event) => touchStart(event)}
+        onTouchMove={(event) => touchMove(event)}
+      >
         <div className={b('bars__inner')}>
           {indexList.map((item: any, index: number) => {
             return (

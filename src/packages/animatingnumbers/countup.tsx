@@ -1,5 +1,5 @@
 import React, { CSSProperties, FunctionComponent, useEffect, useRef, useState } from 'react'
-import './countup.scss'
+
 import bem from '@/utils/bem'
 
 export interface CountUpProps {

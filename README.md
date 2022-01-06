@@ -1,14 +1,33 @@
-# NutUI-React
+<p align="center">
+    <img alt="logo" src="https://img11.360buyimg.com/imagetools/jfs/t1/211965/25/7152/22022/61b16785E433119bb/aa41d7a9f7e823f3.png" width="150" style="margin-bottom: 10px;">
+</p>
 
- 
-京东风格的轻量级移动端 React 组件库
-    
-![NutUI](https://img14.360buyimg.com/imagetools/s200x200_jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png)
+<p align="center">京东风格的轻量级移动端 React 组件库</p>
 
+<p align="center">
+    <a href="http://makeapullrequest.com">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome">
+  </a>
+    <a href="https://github.com/jdf2e/nutui-react">
+    <img src="https://coveralls.io/repos/github/jdf2e/nutui/badge.svg?branch=master" alt="Coverage Status" />
+    </a>
+    <a href="https://github.com/jdf2e/nutui-react">
+    <img src="https://img.shields.io/travis/jdf2e/nutui.svg?style=flat-square">
+    </a>  
+    <a href="https://github.com/jdf2e/nutui-react">
+    <img src="https://img.shields.io/github/contributors/jdf2e/nutui-react" alt="GitHub contributors">
+    </a>
+    <a href="https://github.com/jdf2e/nutui-react">
+    <img src="https://img.shields.io/github/commit-activity/w/jdf2e/nutui-react" alt="GitHub commit activity">
+    </a>
+    <a href="https://github.com/jdf2e/nutui-react">
+    <img src="https://img.shields.io/github/issues-closed/jdf2e/nutui-react" alt="GitHub closed issues">
+    </a>  
+</p>
 
 ## 背景
 
-随着 nutui 的用户群体，越来越多，react 版本的呼声越来越高，我们接下来，会将部分的精力投入到 react 技术栈开发中
+随着 NutUI 的用户越来越多，在 NutUI 的交流群里对 React 版本的呼声也越来越高，我们积极响应社区的期待，于 2021 年年中开始规划并启动 React 版的开发，经过近半年的开发和打磨，将在 2022 年元旦前隆重推出 NutUI-React 元旦版。
 
 
 

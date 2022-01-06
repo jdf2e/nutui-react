@@ -1,4 +1,4 @@
-#  Tabbar组件
+#  Tabbar 标签栏
 
 ### 介绍
 
@@ -7,7 +7,7 @@
 ### 安装
 
 ```javascript
-import { Tabbar } from '@nutui/nutui-react';
+import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 ```
 
 ## 代码演示

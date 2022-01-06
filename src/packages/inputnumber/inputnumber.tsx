@@ -2,7 +2,6 @@ import React, { useState, useEffect, FunctionComponent, ChangeEvent, FocusEvent 
 import Icon from '@/packages/icon'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import './inputnumber.scss'
 
 export interface InputNumberProps {
   disabled: boolean
