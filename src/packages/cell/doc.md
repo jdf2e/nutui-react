@@ -39,7 +39,7 @@ const App = () => {
 export default App;
 ```
 :::
-### 直接使用插槽
+### 直接使用
 
 ```tsx
 import  React from "react";
