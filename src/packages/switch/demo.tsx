@@ -16,6 +16,7 @@ const SwitchDemo = () => {
     <>
       <div className="demo">
         <h2>基础用法</h2>
+        <Switch checked={true}></Switch>
         <h2>禁用状态</h2>
         <Switch checked={true} disable></Switch>
         <h2>change事件</h2>

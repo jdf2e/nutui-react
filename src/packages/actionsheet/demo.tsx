@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { ActionSheet, ItemType } from './actionsheet'
 import Cell from '@/packages/cell'
 interface Item {

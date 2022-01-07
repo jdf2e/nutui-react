@@ -54,12 +54,7 @@ export const ActionSheet: FunctionComponent<
     ...rest
   } = { ...defaultProps, ...props }
 
-  const [isShow, setIsShow] = useState(false)
   const b = bem('actionsheet')
-
-  useEffect(() => {
-    setIsShow(visible)
-  }, [visible])
 
   const isHighlight = (item: ItemType<string | boolean>) => {
     return props.chooseTagValue && props.chooseTagValue === item[props.optionTag || 'name']
