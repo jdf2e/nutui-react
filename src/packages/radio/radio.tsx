@@ -1,5 +1,5 @@
 import React, { FunctionComponent, MouseEventHandler, useContext, useEffect, useState } from 'react'
-import Icon from '../icon'
+import Icon from '@/packages/icon'
 
 import RadioContext from './context'
 import RadioGroup from '@/packages/radiogroup'
@@ -101,6 +101,7 @@ export const Radio: FunctionComponent<
     )
   }
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
+    if (disabledStatement) return
     setCheckedStatement(!checkedStatement)
     props.onChange && props.onChange(e)
     context && context.onChange(valueStatement)

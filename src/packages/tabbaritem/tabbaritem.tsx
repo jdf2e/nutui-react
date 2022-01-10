@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect } from 'react'
 
 import bem from '@/utils/bem'
-import Icon from '../icon'
+import Icon from '@/packages/icon'
 
 export interface TabbarItemProps {
   tabTitle: string

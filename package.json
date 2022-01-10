@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -37,27 +37,26 @@
   ],
   "scripts": {
     "add": "node scripts/createComponentMode.js",
-    "generate:types": "tsc && npm run replace:types",
     "generate:file": "node scripts/generate-nutui.js",
-    "generate:loader-style": "node scripts/generate-loader-style.js",
-    "replace:scss": "node scripts/replace-scss.js",
-    "replace:types": "node scripts/replace-types.js",
     "generate:themes": "node scripts/generate-themes.js",
     "checked": "npm run generate:file && tsc",
     "dev": "npm run checked && vite --open --force",
-    "build:css": "npm run generate:themes && vite build --config vite.config.build.css.ts && npm run build:replace",
+    "replace:scss": "node scripts/replace-scss-alias.js",
+    "replace:types": "node scripts/replace-types-alias.js",
+    "build:types": "tsc && npm run replace:types",
+    "build:loader-style": "node scripts/generate-loader-style.js",
+    "build:component:css": "node scripts/build-component-css.js",
+    "build:css": "npm run generate:themes && vite build --config vite.config.build.css.ts && npm run build:replace ",
     "build:replace": "npm run replace:scss",
-    "build:esm": "npx rollup -c rollup.config.es.js",
-    "build": "npm run checked && vite build --config vite.config.build.ts && npm run build:esm && npm run build:css && npm run generate:types && npm run generate:loader-style",
+    "build:es": "npx rollup -c rollup.config.es.js",
+    "build": "npm run checked && vite build --config vite.config.build.ts && npm run build:es && npm run build:css && npm run build:loader-style && npm run build:types ",
     "build:site": "npm run checked && vite build --config vite.config.build.site.ts",
     "publish:beta": "npm publish --tag beta",
     "prepare": "husky install"
   },
   "lint-staged": {
     "*.md": "prettier --write",
-    "*.{ts,tsx,js,scss}": "prettier --write",
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "*.{ts,tsx,js,vue,scss}": "prettier --write"
   },
   "dependencies": {
     "@babel/runtime": "^7.16.5",
@@ -109,6 +108,7 @@
     "husky": "^6.0.0",
     "inquirer": "^8.0.0",
     "lint-staged": "^11.0.0",
+    "lzutf8": "^0.6.0",
     "map-stream": "0.0.7",
     "marked": "^2.0.3",
     "postcss-import": "^14.0.2",

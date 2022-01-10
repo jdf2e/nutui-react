@@ -7,7 +7,7 @@
 ### 安装
 
 ```javascript
-import { Tabbar } from '@nutui/nutui-react';
+import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 ```
 
 ## 代码演示

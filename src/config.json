@@ -164,26 +164,6 @@
       "packages": [
         {
           "version": "0.1.0",
-          "name": "Drag",
-          "type": "component",
-          "cName": "拖拽",
-          "desc": "实现可拖拽的任意元素",
-          "sort": 1,
-          "show": true,
-          "author": "songsong"
-        },
-        {
-          "version": "0.1.0",
-          "name": "Collapse",
-          "type": "component",
-          "cName": "折叠面板",
-          "desc": "折叠面板，可进行内容折叠展开操作，可以多面板配合使用。",
-          "sort": 2,
-          "show": true,
-          "author": "zhenyulei"
-        },
-        {
-          "version": "0.1.0",
           "name": "Toast",
           "type": "component",
           "cName": "吐司",
@@ -194,64 +174,13 @@
         },
         {
           "version": "0.1.0",
-          "name": "BackTop",
+          "name": "Dialog",
           "type": "component",
-          "cName": "返回顶部",
-          "desc": "提供较长的页面快捷返回顶部功能。",
-          "sort": 2,
+          "cName": "对话框",
+          "desc": "模态对话框",
+          "sort": 12,
           "show": true,
-          "author": "vickyYe"
-        },
-        {
-          "version": "0.1.0",
-          "name": "Range",
-          "type": "component",
-          "cName": "区间选择器",
-          "desc": "滑动输入条，用于在给定的范围内选择一个值。",
-          "sort": 3,
-          "show": true,
-          "author": "vickyYe"
-        },
-        {
-          "version": "0.1.0",
-          "name": "Infiniteloading",
-          "type": "component",
-          "cName": "滚动加载",
-          "desc": "列表滚动到底部自动加载更多数据。",
-          "sort": 5,
-          "show": true,
-          "author": "swag~jun"
-        },
-        {
-          "version": "0.1.0",
-          "name": "Steps",
-          "type": "component",
-          "cName": "步骤条",
-          "desc": "拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。",
-          "sort": 7,
-          "show": true,
-          "author": "swag~jun"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Step",
-          "sort": 17,
-          "cName": "步骤条子组件",
-          "type": "component",
-          "show": false,
-          "exportEmpty": true,
-          "desc": "步骤条子组件",
-          "author": "swag~jun"
-        },
-        {
-          "version": "0.1.0",
-          "name": "CircleProgress",
-          "type": "component",
-          "cName": "环形进度条",
-          "desc": "展示操作或任务的当前进度。",
-          "sort": 7,
-          "show": true,
-          "author": "swag~jun"
+          "author": "yangjinjun3"
         },
         {
           "version": "0.1.0",
@@ -272,6 +201,77 @@
           "sort": 11,
           "show": true,
           "author": "dsj"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Picker",
+          "type": "component",
+          "cName": "选择器",
+          "desc": "提供多个选项集合供用户选择其中一项。",
+          "sort": 10,
+          "show": true,
+          "author": "dsj"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Infiniteloading",
+          "type": "component",
+          "cName": "滚动加载",
+          "desc": "列表滚动到底部自动加载更多数据。",
+          "sort": 5,
+          "show": true,
+          "author": "swag~jun"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Popover",
+          "type": "component",
+          "cName": "气泡弹出框",
+          "desc": "气泡弹出框",
+          "sort": 19,
+          "show": true,
+          "author": "lzz"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Collapse",
+          "type": "component",
+          "cName": "折叠面板",
+          "desc": "折叠面板，可进行内容折叠展开操作，可以多面板配合使用。",
+          "sort": 2,
+          "show": true,
+          "author": "zhenyulei"
+        },
+        {
+          "version": "0.1.0",
+          "name": "CollapseItem",
+          "type": "component",
+          "cName": "折叠面板子组件",
+          "desc": "折叠面板的子组件",
+          "sort": 13,
+          "show": false,
+          "exportEmpty": true,
+          "author": "zhenyulei"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Range",
+          "type": "component",
+          "cName": "区间选择器",
+          "desc": "滑动输入条，用于在给定的范围内选择一个值。",
+          "sort": 3,
+          "show": true,
+          "author": "vickyYe"
+        },
+        {
+          "version": "0.1.0",
+          "name": "CircleProgress",
+          "type": "component",
+          "cName": "环形进度条",
+          "desc": "展示操作或任务的当前进度。",
+          "sort": 7,
+          "show": true,
+          "author": "swag~jun"
         },
         {
           "version": "0.1.0",
@@ -295,16 +295,6 @@
         },
         {
           "version": "0.1.0",
-          "name": "Dialog",
-          "type": "component",
-          "cName": "对话框",
-          "desc": "模态对话框",
-          "sort": 12,
-          "show": true,
-          "author": "yangjinjun3"
-        },
-        {
-          "version": "0.1.0",
           "name": "Switch",
           "type": "component",
           "cName": "开关",
@@ -312,38 +302,6 @@
           "sort": 11,
           "show": true,
           "author": "dsj"
-        },
-        {
-          "version": "0.1.0",
-          "name": "CollapseItem",
-          "type": "component",
-          "cName": "折叠面板子组件",
-          "desc": "折叠面板的子组件",
-          "sort": 13,
-          "show": false,
-          "exportEmpty": true,
-          "author": "zhenyulei"
-        },
-        {
-          "version": "1.0.0",
-          "name": "Swiper",
-          "type": "component",
-          "cName": "轮播",
-          "desc": "轮播组件",
-          "sort": 14,
-          "show": true,
-          "author": "liukun"
-        },
-        {
-          "version": "1.0.0",
-          "name": "SwiperItem",
-          "type": "component",
-          "cName": "轮播子组件",
-          "desc": "轮播子组件",
-          "sort": 14,
-          "show": false,
-          "exportEmpty": true,
-          "author": "liukun"
         }
       ]
     },
@@ -383,16 +341,6 @@
         },
         {
           "version": "0.1.0",
-          "name": "InputNumber",
-          "type": "component",
-          "cName": "数字输入框",
-          "desc": "通过点击按钮控制数字增减。",
-          "sort": 3,
-          "show": true,
-          "author": "swag~jun"
-        },
-        {
-          "version": "0.1.0",
           "name": "Elevator",
           "type": "component",
           "cName": "电梯楼层",
@@ -420,6 +368,58 @@
           "sort": 6,
           "show": true,
           "author": "lkjh3214"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Steps",
+          "type": "component",
+          "cName": "步骤条",
+          "desc": "拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。",
+          "sort": 7,
+          "show": true,
+          "author": "swag~jun"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Step",
+          "sort": 17,
+          "cName": "步骤条子组件",
+          "type": "component",
+          "show": false,
+          "exportEmpty": true,
+          "desc": "步骤条子组件",
+          "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Swiper",
+          "type": "component",
+          "cName": "轮播",
+          "desc": "轮播组件",
+          "sort": 14,
+          "show": true,
+          "author": "liukun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "SwiperItem",
+          "type": "component",
+          "cName": "轮播子组件",
+          "desc": "轮播子组件",
+          "sort": 14,
+          "show": false,
+          "exportEmpty": true,
+          "author": "liukun"
+        },
+        {
+          "version": "0.1.0",
+          "name": "BackTop",
+          "type": "component",
+          "cName": "返回顶部",
+          "desc": "提供较长的页面快捷返回顶部功能。",
+          "sort": 2,
+          "show": true,
+          "author": "vickyYe"
         }
       ]
     },
@@ -435,16 +435,6 @@
           "sort": 1,
           "show": true,
           "author": "dsj"
-        },
-        {
-          "version": "0.1.0",
-          "name": "Uploader",
-          "type": "component",
-          "cName": "上传",
-          "desc": "用于将本地的图片或文件上传至服务器。",
-          "sort": 1,
-          "show": true,
-          "author": "swag~jun"
         },
         {
           "version": "0.1.0",
@@ -465,6 +455,47 @@
           "sort": 2,
           "show": true,
           "author": "VickyYe"
+        },
+        {
+          "version": "0.1.0",
+          "name": "InputNumber",
+          "type": "component",
+          "cName": "数字输入框",
+          "desc": "通过点击按钮控制数字增减。",
+          "sort": 3,
+          "show": true,
+          "author": "swag~jun"
+        },
+        {
+          "version": "0.1.0",
+          "name": "ShortPassword",
+          "type": "component",
+          "cName": "短密码",
+          "desc": "短密码输入框",
+          "sort": 10,
+          "show": true,
+          "author": "Drjingfubo"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Radio",
+          "type": "component",
+          "cName": "单选按钮",
+          "desc": "用于在一组备选项中进行单选",
+          "sort": 6,
+          "show": true,
+          "author": "oasis"
+        },
+        {
+          "version": "0.1.0",
+          "name": "RadioGroup",
+          "type": "component",
+          "cName": "单选按钮组",
+          "desc": "单选按钮组",
+          "sort": 10,
+          "exportEmpty": true,
+          "show": false,
+          "author": "oasis"
         },
         {
           "version": "0.1.0",
@@ -499,16 +530,6 @@
         },
         {
           "version": "0.1.0",
-          "name": "Popover",
-          "type": "component",
-          "cName": "气泡弹出框",
-          "desc": "气泡弹出框",
-          "sort": 19,
-          "show": true,
-          "author": "lzz"
-        },
-        {
-          "version": "0.1.0",
           "name": "Badge",
           "type": "component",
           "cName": "徽标",
@@ -519,44 +540,13 @@
         },
         {
           "version": "0.1.0",
-          "name": "AnimatingNumbers",
+          "name": "Uploader",
           "type": "component",
-          "cName": "数字动画",
-          "desc": "带特效的数字",
-          "sort": 7,
+          "cName": "上传",
+          "desc": "用于将本地的图片或文件上传至服务器。",
+          "sort": 1,
           "show": true,
-          "author": "songsong"
-        },
-        {
-          "version": "0.1.0",
-          "name": "Radio",
-          "type": "component",
-          "cName": "单选按钮",
-          "desc": "用于在一组备选项中进行单选",
-          "sort": 6,
-          "show": true,
-          "author": "oasis"
-        },
-        {
-          "version": "0.1.0",
-          "name": "RadioGroup",
-          "type": "component",
-          "cName": "单选按钮组",
-          "desc": "单选按钮组",
-          "sort": 10,
-          "exportEmpty": true,
-          "show": false,
-          "author": "oasis"
-        },
-        {
-          "version": "0.1.0",
-          "name": "ShortPassword",
-          "type": "component",
-          "cName": "短密码",
-          "desc": "短密码输入框",
-          "sort": 10,
-          "show": true,
-          "author": "Drjingfubo"
+          "author": "swag~jun"
         },
         {
           "name": "Calendar",
@@ -576,16 +566,6 @@
           "show": false,
           "exportEmpty": true,
           "author": "szg2008"
-        },
-        {
-          "version": "1.0.0",
-          "name": "Picker",
-          "type": "component",
-          "cName": "选择器",
-          "desc": "提供多个选项集合供用户选择其中一项。",
-          "sort": 10,
-          "show": true,
-          "author": "dsj"
         }
       ]
     },
@@ -594,13 +574,13 @@
       "packages": [
         {
           "version": "0.1.0",
-          "name": "Signature",
+          "name": "Address",
           "type": "component",
-          "cName": "签名",
-          "desc": "基于Canvas的签名组件",
-          "sort": 1,
+          "cName": "地址",
+          "desc": "地址组件",
+          "sort": 3,
           "show": true,
-          "author": "songsong"
+          "author": "yangxiaolu"
         },
         {
           "version": "0.1.0",
@@ -614,13 +594,33 @@
         },
         {
           "version": "0.1.0",
-          "name": "Address",
+          "name": "Signature",
           "type": "component",
-          "cName": "地址",
-          "desc": "地址组件",
-          "sort": 3,
+          "cName": "签名",
+          "desc": "基于Canvas的签名组件",
+          "sort": 1,
           "show": true,
-          "author": "yangxiaolu"
+          "author": "songsong"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Drag",
+          "type": "component",
+          "cName": "拖拽",
+          "desc": "实现可拖拽的任意元素",
+          "sort": 1,
+          "show": true,
+          "author": "songsong"
+        },
+        {
+          "version": "0.1.0",
+          "name": "AnimatingNumbers",
+          "type": "component",
+          "cName": "数字动画",
+          "desc": "带特效的数字",
+          "sort": 7,
+          "show": true,
+          "author": "songsong"
         }
       ]
     }
