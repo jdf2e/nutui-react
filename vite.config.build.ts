@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
-import path from 'path'
-import config from './package.json'
+
+const path = require('path')
+const config = require('./package.json')
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
