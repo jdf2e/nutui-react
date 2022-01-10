@@ -2,10 +2,9 @@ const config = require('../src/config.json')
 const path = require('path')
 const fs = require('fs-extra')
 const glob = require('glob')
-const componetsScss = glob.sync('./src/packages/**/*.scss')
+const componentsScss = glob.sync('./src/packages/**/*.scss')
 let tasks = []
-componetsScss.map((cs) => {
-  console.log(cs)
+componentsScss.map((cs) => {
   if (cs.indexOf('demo.scss') > -1) return
   tasks.push(
     fs
@@ -23,18 +22,6 @@ config.nav.map((item) => {
   item.packages.forEach((element) => {
     let folderName = element.name.toLowerCase()
     fileStr += `@import '../../packages/${folderName}/${folderName}.scss';\n`
-
-    // tasks.push(
-    //   fs
-    //     .copy(
-    //       path.resolve(__dirname, `../src/packages/${folderName}/${folderName}.scss`),
-    //       path.resolve(__dirname, `../dist/packages/${folderName}/${folderName}.scss`)
-    //     )
-    //     .then((success) => {
-    //       fileStr += `@import '@/packages/${folderName}/${folderName}.scss';\n`
-    //     })
-    //     .catch((error) => {})
-    // )
   })
 })
 

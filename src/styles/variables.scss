@@ -346,6 +346,6 @@ $dialog-vertical-footer-ok-margin-top: 10px !default;
 $dialog-footer-button-min-width: 100px !default;
 $dialog-footer-cancel-margin-right: 20px !default;
 $dialog-footer-ok-max-width: 128px !default;
-
-@import './mixins/index';
-@import './animation/index';
+// 在组件中import
+//@import './mixins/index';
+//@import './animation/index';
