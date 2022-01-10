@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
-import config from './package.json'
 import reactRefresh from '@vitejs/plugin-react-refresh'
-import path from 'path'
+
+const path = require('path')
+const config = require('./package.json')
 const atImport = require('postcss-import')
 const resolve = path.resolve
 

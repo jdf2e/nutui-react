@@ -1,4 +1,6 @@
 @import '../button/button.scss';
+@import '../../styles/mixins/index';
+
 .nut-dialog {
   display: flex;
   flex-direction: column;
@@ -16,6 +18,7 @@
     color: $dialog-header-color;
     @include oneline-ellipsis();
   }
+
   &__content {
     width: 100%;
     overflow: auto;
@@ -29,6 +32,7 @@
     word-break: break-all;
     white-space: pre-wrap;
   }
+
   &__footer {
     display: flex;
     align-items: center;
@@ -41,9 +45,11 @@
       .nut-button {
         min-width: 100%;
         margin: 0;
+
         &.nut-dialog__footer-cancel {
           border: 0;
         }
+
         &.nut-dialog__footer-ok {
           margin-top: $dialog-vertical-footer-ok-margin-top;
         }
@@ -57,6 +63,7 @@
     &-cancel.nut-dialog__footer-cancel {
       margin-right: $dialog-footer-cancel-margin-right;
     }
+
     &-ok {
       max-width: $dialog-footer-ok-max-width;
     }
