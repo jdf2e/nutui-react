@@ -6,7 +6,7 @@
 
 ### 安装
 
-``` javascript
+``` ts
 import { Uploader } from '@nutui/nutui-react';
 ```
 
@@ -14,71 +14,195 @@ import { Uploader } from '@nutui/nutui-react';
 
 ### 基本用法
 
+:::demo
 ``` tsx
-<Uploader url="http://服务器地址"></Uploader>
+import React, { useState } from "react";
+import { Uploader } from '@nutui/nutui-react';
+
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  const onStart = () => {
+    console.log('start 触发')
+  }
+  return (
+    <>
+      <h2>基础用法</h2>
+      <Uploader url={uploadUrl} start={onStart}></Uploader>
+    </>
+  )
+}
+export default App;
 ```
 
 
 ### 自定义上传样式
 
 ``` tsx
-<Uploader url="http://服务器地址">
-  <Button type="primary" icon="uploader">上传文件</Button>
-</Uploader>
+import React, { useState } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  return (
+    <>
+      <h2>自定义上传样式</h2>
+      <Uploader url={uploadUrl}>
+        <Button type="primary" icon="uploader">
+          上传文件
+        </Button>
+      </Uploader>
+    </>
+  )
+}
+export default App;
 ```
 
 ### 直接调起摄像头（移动端生效）
     
 ``` tsx
-<Uploader url="http://服务器地址" capture></Uploader>
+import React, { useState } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  return (
+    <>
+      <h2>直接调起摄像头（移动端生效）</h2>
+      <Uploader capture url={uploadUrl}></Uploader>
+    </>
+  )
+}
+export default App;
 ```
+
+### 上传状态
+    
+``` tsx
+import React, { useState } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  const onDelete = (file: FileItem, fileList: FileItem[]) => {
+    console.log('delete 事件触发', file, fileList)
+  }
+  return (
+    <>
+      <h2>上传状态</h2>
+      <Uploader url={uploadUrl} multiple removeImage={onDelete}></Uploader>
+    </>
+  )
+}
+export default App;
+```
+
+
 ### 限制上传数量5个
 
 ``` tsx
-<Uploader url="http://服务器地址" multiple maximum="5"></Uploader>
+import React, { useState } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  return (
+    <>
+      <h2>限制上传数量5个</h2>
+      <Uploader url={uploadUrl} multiple maximum="5"></Uploader>
+    </>
+  )
+}
+export default App;
 ```
 ### 限制上传大小（每个文件最大不超过 50kb，也可以在beforeupload中自行处理）
 
 ``` tsx
-<Uploader url="http://服务器地址" multiple maximize={1024 * 50} beforeUpload={beforeUpload} oversize={onOversize}></Uploader>
+import React, { useState } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  const onOversize = (files: File[]) => {
+    console.log('oversize 触发 文件大小不能超过 50kb', files)
+  }
+  return (
+    <>
+      <h2>限制上传大小（每个文件最大不超过 50kb）</h2>
+      <Uploader url={uploadUrl} multiple maximize={1024 * 50} oversize={onOversize}></Uploader>
+    </>
+  )
+}
+export default App;
 ```
 
-``` javascript
-const formData = {
-    custom: 'test'
-};
-const onOversize = (files: File[]) => {
-    console.log('oversize 触发 文件大小不能超过 50kb', files);
-};
-const beforeUpload = (files: File[]) => {
-    //自定义处理
-    return files;
-}
-```
 
 ### 自定义 FormData headers
 
 ``` tsx
-<Uploader url="http://服务器地址" data={formData} headers={formData} withCredentials={true}></Uploader>
+import React, { useState } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  const formData = {
+    custom: 'test',
+  }
+  return (
+    <>
+      <h2>自定义 FormData headers</h2>
+      <Uploader
+        url={uploadUrl}
+        data={formData}
+        headers={formData}
+        withCredentials={true}
+      ></Uploader>
+    </>
+  )
+}
+export default App;
 ```
 
-``` javascript
-const formData = {
-    custom: 'test'
-};
-const onOversize = (files: File[]) => {
-    console.log('oversize 触发 文件大小不能超过 50kb', files);
-};
-const beforeUpload = (files: File[]) => {
-    //自定义处理
-    return files;
+### 手动上传
+
+``` tsx
+import React, { useState, useRef } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  const uploadRef = useRef(null)
+  const submitUpload = () => {
+    uploadRef.current.submit()
+  }
+  return (
+    <>
+      <h2>手动上传</h2>
+      <Uploader url={uploadUrl} maximum="5" autoUpload={false} ref={uploadRef}></Uploader>
+      <br />
+      <Button type="success" size="small" onClick={submitUpload}>
+        执行上传
+      </Button>
+    </>
+  )
 }
+export default App;
 ```
 
 ### 禁用状态
 
 ``` tsx
-<Uploader disabled></Uploader>
+import React, { useState } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <h2>禁用状态</h2>
+      <Uploader disabled></Uploader>
+    </>
+  )
+}
+export default App;
 ```
 
 ### Prop
