@@ -1,2 +1,2 @@
-import { TabbarItem } from './tabbaritem'
+import { TabbarItem } from './tabbarItem'
 export default TabbarItem
