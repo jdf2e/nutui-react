@@ -90,7 +90,7 @@ const StepsDemo = () => {
             </Step>
           </Steps>
         </div>
-        <h2>竖向步骤条</h2>
+        <h2>点状步骤和垂直方向</h2>
         <div className="steps-wrapper" style={{ height: '300px', padding: '15px 40px' }}>
           <Steps direction="vertical" progressDot current={2}>
             <Step activeIndex={1} title="已完成" content="您的订单已经打包完成，商品已发出">
