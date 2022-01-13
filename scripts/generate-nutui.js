@@ -47,6 +47,15 @@ fs.outputFile(
   }
 )
 
+fs.outputFile(
+  path.resolve(__dirname, '../src/packages/nutui.react.scss.ts'),
+  importScssStr,
+  'utf8',
+  (error) => {
+    if (error) throw error
+  }
+)
+
 let mdFileStr = `${importMarkdownStr}
 export const routers = [${mds.map((m) => `'${m}'`)}]
 export const raws = {${mds.join(',')}}
