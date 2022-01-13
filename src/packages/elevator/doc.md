@@ -14,7 +14,13 @@ import { Elevator } from '@nutui/nutui-react'
 
 ### 基础用法
 
+:::demo
+
 ```tsx
+import  React from "react";
+import { Elevator } from '@nutui/nutui-react';
+
+const App = () => {
 const dataList = [
   {
     title: 'A',
@@ -73,20 +79,31 @@ const clickItem = (key: string, item: any) => {
 const clickIndex = (key: string) => {
   console.log(key)
 }
-
+return (
 <Elevator
   indexList={dataList}
   height="260"
   clickItem={(key: string, item: any) => clickItem(key, item)}
   clickIndex={(key: string) => clickIndex(key)}
 ></Elevator>
+ );
+};
+export default App;
 ```
+
+:::
 
 ### 自定义索引
 
 ## API
 
+:::demo
+
 ```tsx
+import  React from "react";
+import { Elevator } from '@nutui/nutui-react';
+
+const App = () => {
 const dataList = [
   {
     num: '一',
@@ -195,15 +212,20 @@ const clickItem = (key: string, item: any) => {
 const clickIndex = (key: string) => {
   console.log(key)
 }
-
+return (
 <Elevator
-  indexList={dataList2}
+  indexList={dataList}
   height="220"
   acceptKey="num"
   clickItem={(key: string, item: any) => clickItem(key, item)}
   clickIndex={(key: string) => clickIndex(key)}
 ></Elevator>
+ );
+};
+export default App;
 ```
+
+:::
 
 ### Props
 

@@ -10,42 +10,97 @@
 import { Price } from '@nutui/nutui-react'
 ```
 
-
 ## 代码演示
 
 ### 基本用法
 
+:::demo
+
 ```tsx
-<Price price={1010} needSymbol={false} thousands={true} />
+import  React from "react"
+import { Price, Cell } from '@nutui/nutui-react'
+
+const App = () => {
+  return (
+    <Cell>
+        <Price price={1010} needSymbol={false} thousands={true} />
+    </Cell>
+  );
+};
+export default App;
 ```
+
+:::
 
 ### 有人民币符号，无千位分隔
 
+:::demo
+
 ```tsx
-<Price price={10010.01} needSymbol={true} thousands={false} />
+import  React from "react"
+import { Price, Cell } from '@nutui/nutui-react'
+
+const App = () => {
+  return (
+    <Cell>
+        <Price price={10010.01} needSymbol={true} thousands={false} />
+    </Cell>
+  );
+};
+export default App;
 ```
+
+:::
 
 ### 带人民币符号，有千位分隔，保留小数点后三位
 
+:::demo
+
 ```tsx
-<Price price={15213.1221} decimalDigits={3} needSymbol={true} thousands={true} />
+import  React from "react"
+import { Price, Cell } from '@nutui/nutui-react'
+
+const App = () => {
+  return (
+    <Cell>
+        <Price price={15213.1221} decimalDigits={3} needSymbol={true} thousands={true} />
+    </Cell>
+  );
+};
+export default App;
 ```
+
+:::
 
 ### 异步随机变更
 
-```tsx
-const [price, setPrice] = useState(Math.random() * 10000000)
-useEffect(() => {
-const timer = setInterval(() => {
-    setPrice(Math.random() * 10000000)
-}, 1000)
-return () => {
-    clearInterval(timer)
-}
-}, [])
+:::demo
 
-<Price price={price} decimal-digits={3} need-symbol={true} thousands={true} />
+```tsx
+import React, { useState, useEffect } from 'react'
+import { Price, Cell } from '@nutui/nutui-react'
+
+const App = () => {
+  const [price, setPrice] = useState(Math.random() * 10000000)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setPrice(Math.random() * 10000000)
+    }, 1000)
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
+  return (
+    <Cell>
+      <Price price={price} decimalDigits={3} needSymbol={true} thousands={true} />
+    </Cell>
+  );
+};
+export default App;
 ```
+
+:::
 
 ## API
 
