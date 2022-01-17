@@ -3,5 +3,5 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import '@/sites/assets/styles/reset.scss'
 
-import('../../packages/nutui.react')
+import('../../packages/nutui.react.scss')
 ReactDOM.render(<App />, document.querySelector('#app'))

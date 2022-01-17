@@ -15,58 +15,118 @@ import { Cell, CellGroup } from '@nutui/nutui-react'
 
 ### 基本用法
 
+:::demo
 ```tsx
-const testClick = (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
+import  React from "react";
+import { Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const testClick = (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
     console.log('点击事件')
 }
-
-<Cell title="我是标题" desc="描述文字"></Cell>
-<Cell title="我是标题" subTitle="副标题描述" desc="描述文字"></Cell>
-<Cell
-    title="点击测试"
-    click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) =>
-    testClick(event)}
-></Cell>
+  return (
+    <>
+    <Cell title="我是标题" desc="描述文字"></Cell>
+    <Cell title="我是标题" subTitle="副标题描述" desc="描述文字"></Cell>
+    <Cell
+        title="点击测试"
+        click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) =>
+        testClick(event)}
+    ></Cell>
+    </>
+  );
+};
+export default App;
 ```
-
-### 直接使用插槽
+:::
+### 直接使用
 
 ```tsx
-<Cell title="我是标题" desc="描述文字">
-  <div>自定义内容</div>
-</Cell>
+import  React from "react";
+import { Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+    <Cell title="我是标题" desc="描述文字">
+      <div>自定义内容</div>
+    </Cell>
+    </>
+  );
+};
+export default App;
 ```
 
 ### 链接 | 分组用法
 
+:::demo
 ```tsx
-<CellGroup title="链接 | 分组用法">
-  <Cell title="链接" isLink={true}></Cell>
-  <Cell title="URL 跳转" desc="https://jd.com" isLink={true} url="https://jd.com"></Cell>
-  <Cell title="路由跳转 ’/‘ " to="/"></Cell>
-</CellGroup>
+import  React from "react";
+import { CellGroup,Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+    <CellGroup title="链接 | 分组用法">
+      <Cell title="链接" isLink={true}></Cell>
+      <Cell title="URL 跳转" desc="https://m.jd.com/" isLink={true} url="https://m.jd.com/"></Cell>
+      <Cell title="路由跳转 ’/‘ " to="/"></Cell>
+    </CellGroup>
+    </>
+  );
+};
+export default App;
 ```
+:::
 
 ### 自定义右侧箭头区域
 
+:::demo
 ```tsx
-<CellGroup title="自定义右侧箭头区域">
-  <Cell title="Switch" extra={<Switch checked={true}></Switch>}></Cell>
-</CellGroup>
-```
+import  React from "react";
+import { CellGroup,Cell,Switch } from '@nutui/nutui-react';
 
+const App = () => {
+  return (
+    <CellGroup title="自定义右侧箭头区域">
+      <Cell title="Switch" extra={<Switch checked={true}></Switch>}></Cell>
+    </CellGroup>
+  );
+};
+export default App;
+```
+:::
 ### 单元格展示图标
 
+:::demo
 ```tsx
-<Cell title="姓名" icon="my" desc="张三" isLink={true}></Cell>
-```
+import  React from "react";
+import { Cell } from '@nutui/nutui-react';
 
+const App = () => {
+  return (
+    <Cell title="姓名" icon="my" desc="张三" isLink={true}></Cell>
+  );
+};
+export default App;
+```
+:::
 ### 只展示 desc ，可通过 desc-text-align 调整内容位置
 
+:::demo
 ```tsx
-<Cell descTextAlign="left" desc="张三"></Cell>
-```
+import  React from "react";
+import { Cell } from '@nutui/nutui-react';
 
+const App = () => {
+  return (
+    <Cell descTextAlign="left" desc="张三"></Cell>
+  );
+};
+export default App;
+
+```
+:::
 ## API
 
 ### Prop

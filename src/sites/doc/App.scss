@@ -57,3 +57,12 @@
     }
   }
 }
+.nutui-react--demo-button {
+  display: none;
+}
+
+.nutui-react--demo-wrapper {
+  .nutui-react--demo-button {
+    display: block;
+  }
+}

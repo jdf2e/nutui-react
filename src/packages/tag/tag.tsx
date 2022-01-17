@@ -1,13 +1,6 @@
-import React, {
-  CSSProperties,
-  FunctionComponent,
-  MouseEventHandler,
-  useEffect,
-  useState,
-} from 'react'
-
-import classNames from 'classnames'
+import React, { CSSProperties, FunctionComponent, useEffect, useState } from 'react'
 import Icon from '@/packages/icon'
+
 export interface TagProps {
   type: TagType
   color: string

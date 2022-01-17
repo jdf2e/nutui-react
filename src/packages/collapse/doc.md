@@ -16,114 +16,151 @@
 
 ### 基础用法
 
+:::demo
 ```jsx
-<Collapse activeName={['1', '2']} icon="arrow-down" iconSize="16" iconColor="#999">
-  <CollapseItem title="标题1" name="1">
-    京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-  </CollapseItem>
-  <CollapseItem title="标题2" name="2">
-    京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-  </CollapseItem>
-  <CollapseItem title="标题3" name="3" disabled>
-    京东“厂直优品计划”首推“政府优品馆”
-  </CollapseItem>
-</Collapse>
-```
+import  React from "react";
+import { Collapse,CollapseItem } from '@nutui/nutui-react';
 
+const App = () => {
+  return (
+    <>
+    <Collapse activeName={['1', '2']} icon="arrow-down" iconSize="16" iconColor="#999">
+      <CollapseItem title="标题1" name="1">
+        京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+      </CollapseItem>
+      <CollapseItem title="标题2" name="2">
+        京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+      </CollapseItem>
+      <CollapseItem title="标题3" name="3" disabled>
+        京东“厂直优品计划”首推“政府优品馆”
+      </CollapseItem>
+    </Collapse>
+    </>
+  );
+};
+export default App;
+```
+:::
 ### 无icon样式，绑定点击事件
 
-```jsx
+:::demo
+```tsx
 import React, { useState } from 'react'
-import { Collapse ,CollapseItem} from 'nutui-react'
-const CollapseDemo = () => {
+import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+const App = () => {
   const changeEnv = (isOpen: boolean, name: string) => {
     console.log(isOpen, name)
   }
   return (  
-  <>
   <Collapse activeName={['1', '2']} change={(isOpen, name) => changeEnv(isOpen, name)}>
-  <CollapseItem title="标题1" name="1">
-    京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-  </CollapseItem>
-  <CollapseItem title="标题2" name="2">
-    京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-  </CollapseItem>
-  <CollapseItem title="标题3" name="3">
-    京东“厂直优品计划”首推“政府优品馆”
-  </CollapseItem>
-</Collapse>
-  
-  </>)
-
+    <CollapseItem title="标题1" name="1">
+      京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+    </CollapseItem>
+    <CollapseItem title="标题2" name="2">
+      京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+    </CollapseItem>
+    <CollapseItem title="标题3" name="3">
+      京东“厂直优品计划”首推“政府优品馆”
+    </CollapseItem>
+  </Collapse>
+  )
+}
+export default App;
 ```
+:::
 
 ### 手风琴模式
 
-```jsx
-<Collapse activeName={['1']} accordion={true} icon="arrow-down">
-  <CollapseItem title="标题1" name="1" subTitle={'文本内容'}>
-    京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-  </CollapseItem>
-  <CollapseItem title="标题2" name="2">
-    京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-  </CollapseItem>
-  <CollapseItem title="标题3" name="3">
-    京东“厂直优品计划”首推“政府优品馆”
-  </CollapseItem>
-</Collapse>
+:::demo
+```tsx
+import React from 'react'
+import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+const App = () => {
+  return (  
+  <Collapse activeName={['1']} accordion={true} icon="arrow-down">
+    <CollapseItem title="标题1" name="1" subTitle={'文本内容'}>
+      京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+    </CollapseItem>
+    <CollapseItem title="标题2" name="2">
+      京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+    </CollapseItem>
+    <CollapseItem title="标题3" name="3">
+      京东“厂直优品计划”首推“政府优品馆”
+    </CollapseItem>
+  </Collapse>
+  )
+}
+export default App;
 ```
-
+:::
 ### 自定义折叠图标
 
+:::demo
 ```jsx
-<Collapse activeName={['1']} accordion={true} icon="arrow-right2" rotate={90}>
-  <CollapseItem title="标题1" name="1" icon="arrow-down">
-    京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-  </CollapseItem>
-  <CollapseItem title="标题2" name="2" icon="arrow-down">
-    京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-  </CollapseItem>
-  <CollapseItem title="标题3" name="3" icon="arrow-down">
-    京东“厂直优品计划”首推“政府优品馆”
-  </CollapseItem>
-</Collapse>
+import React from 'react'
+import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+const App = () => {
+  return (  
+  <Collapse activeName={['1']} accordion={true} icon="arrow-right2" rotate={90}>
+    <CollapseItem title="标题1" name="1" icon="arrow-down">
+      京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+    </CollapseItem>
+    <CollapseItem title="标题2" name="2" icon="arrow-down">
+      京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+    </CollapseItem>
+    <CollapseItem title="标题3" name="3" icon="arrow-down">
+      京东“厂直优品计划”首推“政府优品馆”
+    </CollapseItem>
+  </Collapse>
+  )
+}
+export default App;
 ```
-
+:::
 ### 自定义title图标
 
+:::demo
 ```jsx
-<Collapse activeName={['1']} accordion={true} icon="arrow-down">
-  <CollapseItem
-    title="标题1"
-    name="1"
-    titleIcon="checked"
-    titleIconSize="16"
-    titleIconColor="red"
-    titleIconPosition="left"
-  >
-    京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-  </CollapseItem>
-  <CollapseItem
-    title="标题2"
-    name="2"
-    titleIcon={'heart-fill'}
-    titleIconColor={'red'}
-    titleIconPosition={'right'}
-  >
-    京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-  </CollapseItem>
-  <CollapseItem title="标题3" name="3" icon="arrow-down">
-    京东“厂直优品计划”首推“政府优品馆”
-  </CollapseItem>
-</Collapse>
+import React from 'react'
+import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+const App = () => {
+  return (  
+    <Collapse activeName={['1']} accordion={true} icon="arrow-down">
+      <CollapseItem
+        title="标题1"
+        name="1"
+        titleIcon="checked"
+        titleIconSize="16"
+        titleIconColor="red"
+        titleIconPosition="left"
+      >
+        京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+      </CollapseItem>
+      <CollapseItem
+        title="标题2"
+        name="2"
+        titleIcon={'heart-fill'}
+        titleIconColor={'red'}
+        titleIconPosition={'right'}
+      >
+        京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+      </CollapseItem>
+      <CollapseItem title="标题3" name="3" icon="arrow-down">
+        京东“厂直优品计划”首推“政府优品馆”
+      </CollapseItem>
+    </Collapse>
+  )
+}
+export default App;
 ```
-
+:::
 ### 动态改变数据
 
+:::demo
 ```jsx
 import React, { useState } from 'react'
-import { Collapse ,CollapseItem} from 'nutui-react'
-const CollapseDemo = () => {
+import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+const App = () => {
   const [currIndex, setCurrIndex] = useState(2)
   const [domData, setDomData] = useState([
     {
@@ -180,7 +217,10 @@ const CollapseDemo = () => {
     <button onClick={() => changeData()}>点击我</button>
     </>
   )
+}
+  export default App;
 ```
+:::
 
 
 ## API

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Tabbar, TabbarProps } from './tabbar'
-//@ts-ignore todo..
-const { TabbarItem } = Tabbar
+import { Tabbar } from './tabbar'
+import TabbarItem from '../TabbarItem'
+
 const TabbarDemo = () => {
   return (
     <>

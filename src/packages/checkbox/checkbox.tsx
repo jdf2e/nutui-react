@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import Icon from '../icon'
+import Icon from '@/packages/icon'
 import CheckboxGroup from '@/packages/checkboxgroup'
 
 import bem from '@/utils/bem'

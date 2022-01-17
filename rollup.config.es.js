@@ -20,7 +20,13 @@ config.nav.map((item) => {
 export default {
   input: entries,
   external: (id, parent) =>
-    /^react/.test(id) || /^react\-dom/.test(id) || (/^\@\/packages\/\w+$/.test(id) && !!parent),
+    /^react/.test(id) ||
+    /^react\-dom/.test(id) ||
+    /^classnames/.test(id) ||
+    /^\@use-gesture/.test(id) ||
+    /^\@react-spring/.test(id) ||
+    /^\@bem-react/.test(id) ||
+    (/^\@\/packages\/\w+$/.test(id) && !!parent),
   output: {
     format: 'esm',
     dir: './dist/esm',

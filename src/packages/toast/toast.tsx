@@ -1,7 +1,6 @@
 import * as React from 'react'
-import Icon from '../icon/index'
 import Notification, { NotificationProps } from './Notification'
-import classNames from 'classnames'
+
 let messageInstance: any = null
 interface IToastOptions {
   id: string

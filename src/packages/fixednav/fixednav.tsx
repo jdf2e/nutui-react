@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useState, useEffect, MouseEvent, HTMLProps } from 'react'
-import { Icon } from '../icon/icon'
+import Icon from '@/packages/icon'
+import Overlay from '@/packages/overlay'
 import bem from '@/utils/bem'
 import classNames from 'classnames'
-import { Overlay } from '../overlay/overlay'
 
 type Direction = 'right' | 'left'
 type Position = {

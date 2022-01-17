@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useRef, useState, useEffect } from 'react'
 
-import { Button } from '../button/button'
+import Button from '@/packages/button'
 import bem from '@/utils/bem'
 
 export interface SignatureProps {
