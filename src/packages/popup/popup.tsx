@@ -1,11 +1,4 @@
-import React, {
-  FunctionComponent,
-  useState,
-  useEffect,
-  MouseEventHandler,
-  MouseEvent,
-  EventHandler,
-} from 'react'
+import React, { FunctionComponent, useState, useEffect, MouseEventHandler, MouseEvent } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
 import Icon from '@/packages/icon'
@@ -78,6 +71,7 @@ export const Popup: FunctionComponent<Partial<PopupProps> & React.HTMLAttributes
       round,
       position,
       popClass,
+      className,
       destroyOnClose,
       onOpen,
       onClose,
@@ -115,6 +109,7 @@ export const Popup: FunctionComponent<Partial<PopupProps> & React.HTMLAttributes
         ['round']: round,
         [`popup-${position}`]: true,
         [`${popClass}`]: true,
+        [`${className}`]: true,
       },
       b('')
     )
