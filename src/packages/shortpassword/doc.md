@@ -33,7 +33,7 @@ const App = () => {
         }}
       ></Cell>
         <ShortPassword
-        visible={visible1}
+        visible={visible}
         modelValue={value}
         onClose={() => setVisible(false)}
         change={(value) => change(value)}
