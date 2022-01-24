@@ -55,9 +55,9 @@ const App = () => {
         activeText="基础用法"
         overlay={true}
         position={{ top: '70px' }}
-        change={change}
+        onChange={change}
         visible={visible}
-        selected={selected}
+        onSelected={selected}
       >
       </FixedNav>
     </>
@@ -111,8 +111,8 @@ const App = () => {
         visible={visible}
         activeText={"左侧收起"}
         unActiveText={"左侧展开"}
-        change={change}
-        selected={selected}
+        onChange={change}
+        onSelected={selected}
       >
       </FixedNav>
     </>
@@ -166,8 +166,8 @@ const App = () => {
         position={{ top: '210px' }}
         overlay={false}
         visible={visible}
-        change={change}
-        selected={selected}
+        onChange={change}
+        onSelected={selected}
       >
       </FixedNav>
     </>
@@ -219,8 +219,8 @@ const App = () => {
         position={{ top: '280px' }}
         type={"left"}
         visible={visible}
-        change={change}
-        selected={selected}
+        onChange={change}
+        onSelected={selected}
         slotList={
           <ul className="nut-fixednav__list" slot={"list"}>
             <li className="nut-fixednav__list-item">1</li>
@@ -288,8 +288,8 @@ const App = () => {
           navList={navList}
           unActiveText="支持拖拽"
           visible={visible} 
-          change={change}
-          selected={selected}>
+          onChange={change}
+          onSelected={selected}>
         </FixedNav>
       </Drag>
     </>
