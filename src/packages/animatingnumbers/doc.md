@@ -6,7 +6,6 @@
 
 ### 安装
 
-
 ```javascript
 import { AnimatingNumbers } from '@nutui/nutui-react'
 ```
@@ -15,14 +14,32 @@ import { AnimatingNumbers } from '@nutui/nutui-react'
 
 ### AnimatingNumbers.CountUp-基础用法
 
-```jsx
-<AnimatingNumbers.CountUp endNumber="678.94" />
+:::demo
+
+```tsx
+import  React from "react";
+import { AnimatingNumbers } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <AnimatingNumbers.CountUp endNumber="678.94" />
+ );
+};
+export default App;
 ```
+
+:::
 
 ### AnimatingNumbers.CountUp-自定义样式，动态修改数据（需要指定最大位数）
 
-```jsx
-const AnimatingNumbersDemo = () => {
+:::demo
+
+```tsx
+import React, { useEffect, useState } from 'react'
+import { AnimatingNumbers } from '@nutui/nutui-react'
+
+const App = () => {
+  
   const [endNumber, setEndNumer] = useState('1570.99')
   useEffect(() => {
     setInterval(() => {
@@ -30,15 +47,18 @@ const AnimatingNumbersDemo = () => {
     }, 30000)
   }, [])
   return (
-    <AnimatingNumbers.CountUp
-      endNumer={endNumber}
-      easeSpeed={1.2}
-      maxLen={6}
-      className="custom-coutup"
-    />
-  )
-}
+   <AnimatingNumbers.CountUp
+          endNumber={endNumber}
+          easeSpeed={1.2}
+          maxLen={6}
+          className="custom-coutup"
+        />
+ );
+};
+export default App;
 ```
+
+:::
 
 ## API
 
