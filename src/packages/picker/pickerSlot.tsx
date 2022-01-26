@@ -46,9 +46,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<unknown, Partial<IPickerSlotP
         }, 10)
       }
     },
-    getIndex: () => {
-      return keyIndex
-    },
   }))
 
   useEffect(() => {
@@ -59,15 +56,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<unknown, Partial<IPickerSlotP
     touchParams.transformY = 0
     modifyStatus()
   }, [defaultValue])
-
-  const updateTransform = (value: any) => {
-    if (value) {
-      touchParams.transformY = 0
-      timer = setTimeout(() => {
-        modifyStatus(false, value)
-      }, 10)
-    }
-  }
 
   const isHidden = (index: number) => {
     if (index >= currIndex + 8 || index <= currIndex - 8) {

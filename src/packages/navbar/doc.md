@@ -7,7 +7,7 @@
 
 ### 安装
 
-```javascript
+```ts
 import { NavBar } from '@nutui/nutui-react';
 ```
 
@@ -15,8 +15,15 @@ import { NavBar } from '@nutui/nutui-react';
 
 ### 基本用法
 
+:::demo
 ```tsx
-   <NavBar
+import  React from "react";
+import { NavBar } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+    <NavBar
       title="订单详情"
       icon="share"
       leftShow={true}
@@ -24,6 +31,22 @@ import { NavBar } from '@nutui/nutui-react';
       onClickBack={(e) => alert('返回')}
       onClickIcon={(e) => alert('icon')}
     ></NavBar>
+    </>
+  );
+};  
+export default App;
+
+```
+:::
+
+:::demo
+```tsx
+import  React from "react";
+import { NavBar } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
     <NavBar
       title="浏览记录"
       desc="清空"
@@ -32,6 +55,22 @@ import { NavBar } from '@nutui/nutui-react';
       onClickBack={(e) => alert('返回')}
       onClickClear={(e) => alert('清空')}
     ></NavBar>
+    </>
+  );
+};  
+export default App;
+
+```
+:::
+
+:::demo
+```tsx
+import  React from "react";
+import { NavBar } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
     <NavBar
       title="购物车"
       icon="more"
@@ -42,9 +81,13 @@ import { NavBar } from '@nutui/nutui-react';
       onClickClear={(e) => alert('编辑')}
       onClickIcon={(e) => alert('icon')}
     ></NavBar>
+    </>
+  );
+};  
+export default App;
 
 ```
-
+:::
 
 ### Prop  
 
@@ -52,9 +95,9 @@ import { NavBar } from '@nutui/nutui-react';
 |-----------------|------------------------------------------------------------------------------------------------|---------|---------|
 | title           | 标题名称                                                                                       | String  | -       |
 | desc            | 右侧描述                                                                                       | String  | -       |
-| left-show        | 是否展示左侧箭头                                                                              | Boolean | false   |
+| leftShow        | 是否展示左侧箭头                                                                              | Boolean | false   |
 | icon            | 左侧 [图标名称](#/icon) 或图片链接                                                             | String  | -       |
-| tit-icon         | 标题带icon                                                         | String  | -       |                                          
+| titIcon         | 标题带icon                                                         | String  | -       |                                          
 
 ### Event
 | 名称  | 说明     | 回调参数    |

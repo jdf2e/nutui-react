@@ -6,56 +6,178 @@
 
 ### 安装
 
-```javascript
+```ts
 import { Rate } from '@nutui/nutui-react';
 ```
 
 ## 代码演示
 
 ### 基础用法  
-``` tsx
-<Rate modelValue={3}></Rate>
-``` 
+
+:::demo
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+    <Rate modelValue={3}></Rate>
+    </>
+  );
+};  
+export default App;
+
+```
+:::
         
 ### 半星  
-``` tsx
- <Rate allowHalf modelValue="3.5"></Rate>
-``` 
 
+:::demo
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+    <Rate allowHalf modelValue="3.5"></Rate>
+    </>
+  );
+};  
+export default App;
+
+```
+:::
 ### 自定义 icon   
-``` tsx
-<Rate checkedIcon="heart-fill1" uncheckedIcon="heart" modelValue="3"></Rate>
-``` 
 
+:::demo
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+    <Rate checkedIcon="heart-fill1" uncheckedIcon="heart" modelValue="3"></Rate>
+    </>
+  );
+};  
+export default App;
+
+```
+:::
 ### 自定义数量  
-``` tsx
-<Rate count="6" modelValue="3"></Rate>
-``` 
 
+:::demo
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+    <Rate count="6" modelValue="3"></Rate>
+    </>
+  );
+};  
+export default App;
+
+```
+:::
 ### 自定义颜色 
-``` tsx 
-<Rate activeColor="#FFC800" modelValue="3"></Rate>
-``` 
 
+:::demo
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+    <Rate activeColor="#FFC800" modelValue="3"></Rate>
+    </>
+  );
+};  
+export default App;
+
+```
+:::
 ### 禁用状态  
-``` tsx
-<Rate disabled modelValue="3"></Rate>
-``` 
 
+:::demo
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+    <Rate disabled modelValue="3"></Rate>
+    </>
+  );
+};  
+export default App;
+
+```
+:::
 ### 只读状态  
-``` tsx
-<Rate modelValue="3" readonly></Rate>
-``` 
 
+:::demo
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+    <Rate modelValue="3" readonly></Rate>
+    </>
+  );
+};  
+export default App;
+
+```
+:::
 ### 绑定事件  
-``` tsx
-<Rate modelValue="3" change={() => onChange}></Rate>
-``` 
-### 自定义尺寸 35px  
-``` tsx
-<Rate modelValue="3" iconSize="35"></Rate>
-``` 
 
+:::demo
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  const onChange = (val: any) => {
+    alert(val)
+  }
+  return ( 
+    <>   
+    <Rate modelValue="3" change={onChange}></Rate>
+    </>
+  );
+};  
+export default App;
+
+```
+:::
+### 自定义尺寸 35px  
+
+:::demo
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+    <Rate modelValue="3" iconSize="35"></Rate>
+    </>
+  );
+};  
+export default App;
+
+```
+:::
 
 ## API
 
