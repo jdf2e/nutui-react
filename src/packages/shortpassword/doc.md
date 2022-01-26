@@ -6,75 +6,139 @@
 
 ### 安装
 ```js
-import { Shortpassword } from '@nutui/nutui-react';
+import { ShortPassword } from '@nutui/nutui-react';
 ```
 
 
 ## 代码演示
 
 ### 基础用法
+:::demo
 ```tsx
-const Shortpassword = () => {
+import React, { useState } from "react";
+import { Cell,ShortPassword } from '@nutui/nutui-react';
+const App = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
-  cosnt change = (value)=>{
+  const change = (value)=>{
      setValue(value)
   }
-  return 
-    <>
-        <Shortpassword visible={visible} modelValue={value} onClose={()=>setVisible(false)} change={(value)=>change(value)}></Shortpassword>
-    </>
+  return (
+     <>
+       <Cell
+        title="基础用法"
+        isLink
+        onClick={() => {
+          setVisible(true)
+        }}
+      ></Cell>
+        <ShortPassword
+        visible={visible}
+        modelValue={value}
+        onClose={() => setVisible(false)}
+        change={(value) => change(value)}
+      ></ShortPassword>
+     </>
+  )
 }
+export default App;
 
 ```
 
 ### 显示按钮组
 ```tsx
-const Shortpassword = () => {
+import React, { useState } from "react";
+import { Cell,ShortPassword } from '@nutui/nutui-react';
+const App = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
-  cosnt change = (value)=>{
+  const change = (value)=>{
      setValue(value)
   }
-  return
+  return (
      <>
-        <Shortpassword visible={visible} modelValue={value} onClose={()=>setVisible(false)} change={(value)=>change(value)} noButton={false}></Shortpassword>
-    </>
+       <Cell
+        title="显示按钮组"
+        isLink
+        onClick={() => {
+          setVisible(true)
+        }}
+      ></Cell>
+        <ShortPassword
+        visible={visible}
+        onClose={() => setVisible(false)}
+        noButton={false}
+        onOk={() => setVisible(false)}
+        onCancel={() => setVisible(false)}
+      ></ShortPassword>
+     </>
+  )
 }
+export default App;
 
 ```
 
 ### 自定义密码长度4
 ```tsx
-const Shortpassword = () => {
+import React, { useState } from "react";
+import { Cell,ShortPassword } from '@nutui/nutui-react';
+const App = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
-  cosnt change = (value)=>{
+  const change = (value)=>{
      setValue(value)
   }
-  return 
-    <>
-        <Shortpassword visible={visible} modelValue={value} onClose={()=>setVisible(false)} change={(value)=>change(value)} length={4}></Shortpassword>
-    </>
+  return (
+     <>
+       <Cell
+        title="自定义密码长度4"
+        isLink
+        onClick={() => {
+          setVisible(true)
+        }}
+      ></Cell>
+        <ShortPassword
+        visible={visible}
+        onClose={() => setVisible(false)}
+        length={4}
+      ></ShortPassword>
+     </>
+  )
 }
+export default App;
 
 ```
 ### 忘记密码提示语事件回调
 ```tsx
-const Shortpassword = () => {
+import React, { useState } from "react";
+import { Cell,ShortPassword,Toast } from '@nutui/nutui-react';
+const App = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
-   const onTips = ()=>{
-    Toast.text('执行忘记密码提示语')
-  }
-  cosnt change = (value)=>{
+  const change = (value)=>{
      setValue(value)
   }
-  return 
-    <>
-        <Shortpassword visible={visible} modelValue={value} onClose={()=>setVisible(false)} change={(value)=>change(value)} onTips={()=>onTips()}></Shortpassword>
-    </>
+   const onTips = () => {
+    Toast.text('执行忘记密码提示语')
+  }
+  return (
+     <>
+       <Cell
+        title="忘记密码提示语事件回调"
+        isLink
+        onClick={() => {
+          setVisible(true)
+        }}
+      ></Cell>
+       <ShortPassword
+        visible={visible}
+        onClose={() => setVisible(false)}
+        onTips={() => onTips()}
+      ></ShortPassword>
+     </>
+  )
 }
+export default App;
 
 ```
 
