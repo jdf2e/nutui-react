@@ -6,7 +6,6 @@
 
 ### 安装
 
-
 ```javascript
 import { Cell, CellGroup } from '@nutui/nutui-react'
 ```
@@ -16,6 +15,7 @@ import { Cell, CellGroup } from '@nutui/nutui-react'
 ### 基本用法
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Cell } from '@nutui/nutui-react';
@@ -38,8 +38,12 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
+
 ### 直接使用
+
+:::demo
 
 ```tsx
 import  React from "react";
@@ -57,9 +61,12 @@ const App = () => {
 export default App;
 ```
 
+:::
+
 ### 链接 | 分组用法
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { CellGroup,Cell } from '@nutui/nutui-react';
@@ -77,11 +84,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 自定义右侧箭头区域
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { CellGroup,Cell,Switch } from '@nutui/nutui-react';
@@ -95,10 +104,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
+
 ### 单元格展示图标
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Cell } from '@nutui/nutui-react';
@@ -110,10 +122,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
+
 ### 只展示 desc ，可通过 desc-text-align 调整内容位置
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Cell } from '@nutui/nutui-react';
@@ -124,9 +139,10 @@ const App = () => {
   );
 };
 export default App;
-
 ```
+
 :::
+
 ## API
 
 ### Prop

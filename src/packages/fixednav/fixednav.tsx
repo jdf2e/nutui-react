@@ -18,8 +18,8 @@ export interface FixedNavProps {
   unActiveText: string
   position: Position
   type: Direction
-  change: Function
-  selected: Function
+  onChange: (v: any) => void
+  onSelected: Function
   slotList: HTMLProps<HTMLElement>
   slotBtn: HTMLProps<HTMLElement>
 }
@@ -46,8 +46,8 @@ export const FixedNav: FunctionComponent<
     activeText,
     unActiveText,
     position,
-    change,
-    selected,
+    onChange,
+    onSelected,
     type,
     slotList,
     slotBtn,
@@ -66,11 +66,11 @@ export const FixedNav: FunctionComponent<
   )
 
   const onSelectCb = (event: MouseEvent, item: any): void => {
-    selected(item, event)
+    onSelected(item, event)
   }
 
   const onUpdateValue = (value: boolean = !visible): void => {
-    change(value)
+    onChange(value)
   }
 
   // const [classNames, setClassNames] = useState('')

@@ -59,7 +59,7 @@ const InputNumberDemo = () => {
         <Cell>
           <InputNumber modelValue={inputState.val5} readonly />
         </Cell>
-        <h2>支持小数</h2>
+        <h2>支持小数点</h2>
         <Cell>
           <InputNumber modelValue={inputState.val6} step="0.1" decimalPlaces="1" readonly />
         </Cell>
