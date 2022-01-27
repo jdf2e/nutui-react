@@ -223,6 +223,40 @@ export const CustomRender: FunctionComponent<
     nextAreaList(item)
   }
 
+  useEffect(() => {
+    const { province } = { ...defaultProps, ...props }
+    setRegionList({
+      ...regionList,
+      province: isCustom2() ? transformData(province) : province,
+    })
+  }, [province])
+
+  useEffect(() => {
+    const { city } = { ...defaultProps, ...props }
+
+    setRegionList({
+      ...regionList,
+      city: isCustom2() ? transformData(city) : city,
+    })
+  }, [city])
+
+  useEffect(() => {
+    const { country } = { ...defaultProps, ...props }
+
+    setRegionList({
+      ...regionList,
+      country: isCustom2() ? transformData(country) : country,
+    })
+  }, [country])
+
+  useEffect(() => {
+    const { town } = { ...defaultProps, ...props }
+    setRegionList({
+      ...regionList,
+      town: isCustom2() ? transformData(town) : town,
+    })
+  }, [town])
+
   return (
     <div className={b('custom')}>
       <div className={b('region-tab')}>
