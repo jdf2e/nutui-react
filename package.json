@@ -4,7 +4,7 @@
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
-  "typings": "dist/esm/types/src/packages/nutui.react.d.ts",
+  "typings": "dist/types/nutui.react.d.ts",
   "sideEffects": [
     "*.scss",
     "dist/esm/**/style/*",
