@@ -172,6 +172,8 @@ export const Address: FunctionComponent<
         [tabName[i]]: {},
       })
     }
+
+    console.log(selectedRegion)
   }
   // 关闭
   const closeFun = () => {

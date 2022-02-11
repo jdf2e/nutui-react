@@ -29,21 +29,11 @@ const App = () => {
       { id: 5, name: '浙江', title: 'Z' },
   ])
 
-  const [city, setCity] = useState([
-      { id: 7, name: '朝阳区', title: 'C' },
-      { id: 8, name: '崇文区', title: 'C' },
-      { id: 9, name: '昌平区', title: 'C' },
-      { id: 6, name: '石景山区', title: 'S' },
-      { id: 3, name: '八里庄街道', title: 'B' },
-      { id: 9, name: '北苑', title: 'B' },
-  ])
+  const [city, setCity] = useState([])
 
-  const [country, setCountry] = useState([
-      { id: 3, name: '八里庄街道', title: 'B' },
-      { id: 9, name: '北苑', title: 'B' },
-      { id: 4, name: '常营乡', title: 'C' },
-  ])
+  const [country, setCountry] = useState([])
   const [town, setTown] = useState([])
+
   const [address, setAddress] = useState({
     province: province,
     city: city,
@@ -52,11 +42,30 @@ const App = () => {
   })
 
   const onChange = (cal) => {
-      const name = address[cal.next]
-
-      if (name.length < 1) {
-        setNormal(false)
+    const name = address[cal.next]
+    setTimeout(()=>{
+      switch (cal.next){
+        case 'city':
+          setCity([
+            { id: 7, name: '朝阳区', title: 'C' },
+            { id: 8, name: '崇文区', title: 'C' },
+            { id: 9, name: '昌平区', title: 'C' },
+            { id: 6, name: '石景山区', title: 'S' },
+            { id: 3, name: '八里庄街道', title: 'B' },
+            { id: 9, name: '北苑', title: 'B' },
+          ])
+          break;
+        case 'country':
+          setCountry([
+            { id: 3, name: '八里庄街道', title: 'B' },
+            { id: 9, name: '北苑', title: 'B' },
+            { id: 4, name: '常营乡', title: 'C' },
+          ])
+          break;
+        default:
+          setNormal(false)
       }
+    },200)
   }
   const close = (val) => {
       console.log(val)
@@ -104,20 +113,9 @@ const App = () => {
       { id: 5, name: '浙江', title: 'Z' },
   ])
 
-  const [city, setCity] = useState([
-      { id: 7, name: '朝阳区', title: 'C' },
-      { id: 8, name: '崇文区', title: 'C' },
-      { id: 9, name: '昌平区', title: 'C' },
-      { id: 6, name: '石景山区', title: 'S' },
-      { id: 3, name: '八里庄街道', title: 'B' },
-      { id: 9, name: '北苑', title: 'B' },
-  ])
+  const [city, setCity] = useState([])
 
-  const [country, setCountry] = useState([
-      { id: 3, name: '八里庄街道', title: 'B' },
-      { id: 9, name: '北苑', title: 'B' },
-      { id: 4, name: '常营乡', title: 'C' },
-  ])
+  const [country, setCountry] = useState([])
   const [town, setTown] = useState([])
   const [address, setAddress] = useState({
     province: province,
@@ -127,10 +125,29 @@ const App = () => {
   })
 
   const onChange = (cal) => {
-      const name = address[cal.next]
-      if (name.length < 1) {
-        setNormal2(false)
+    setTimeout(()=>{
+      switch (cal.next){
+        case 'city':
+          setCity([
+            { id: 7, name: '朝阳区', title: 'C' },
+            { id: 8, name: '崇文区', title: 'C' },
+            { id: 9, name: '昌平区', title: 'C' },
+            { id: 6, name: '石景山区', title: 'S' },
+            { id: 3, name: '八里庄街道', title: 'B' },
+            { id: 9, name: '北苑', title: 'B' },
+          ])
+          break;
+        case 'country':
+          setCountry([
+            { id: 3, name: '八里庄街道', title: 'B' },
+            { id: 9, name: '北苑', title: 'B' },
+            { id: 4, name: '常营乡', title: 'C' },
+          ])
+          break;
+        default:
+          setNormal2(false)
       }
+    },200)
   }
   const close = (val) => {
       setNormal2(false)
@@ -360,20 +377,9 @@ const App = () => {
       { id: 5, name: '浙江', title: 'Z' },
   ])
 
-  const [city, setCity] = useState([
-      { id: 7, name: '朝阳区', title: 'C' },
-      { id: 8, name: '崇文区', title: 'C' },
-      { id: 9, name: '昌平区', title: 'C' },
-      { id: 6, name: '石景山区', title: 'S' },
-      { id: 3, name: '八里庄街道', title: 'B' },
-      { id: 9, name: '北苑', title: 'B' },
-  ])
+  const [city, setCity] = useState([])
 
-  const [country, setCountry] = useState([
-      { id: 3, name: '八里庄街道', title: 'B' },
-      { id: 9, name: '北苑', title: 'B' },
-      { id: 4, name: '常营乡', title: 'C' },
-  ])
+  const [country, setCountry] = useState([])
   const [town, setTown] = useState([])
   const [address, setAddress] = useState({
     province: province,
@@ -422,10 +428,30 @@ const App = () => {
   }
 
   const onChange = (cal) => {
-      const name = address[cal.next]
-      if (name.length < 1) {
-        setOther(false)
+     
+    setTimeout(()=>{
+      switch (cal.next){
+        case 'city':
+          setCity([
+            { id: 7, name: '朝阳区', title: 'C' },
+            { id: 8, name: '崇文区', title: 'C' },
+            { id: 9, name: '昌平区', title: 'C' },
+            { id: 6, name: '石景山区', title: 'S' },
+            { id: 3, name: '八里庄街道', title: 'B' },
+            { id: 9, name: '北苑', title: 'B' },
+          ])
+          break;
+        case 'country':
+          setCountry([
+            { id: 3, name: '八里庄街道', title: 'B' },
+            { id: 9, name: '北苑', title: 'B' },
+            { id: 4, name: '常营乡', title: 'C' },
+          ])
+          break;
+        default:
+          setOther(false)
       }
+    },200)
   }
   const close = (val) => {
       setOther(false)
