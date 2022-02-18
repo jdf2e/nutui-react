@@ -11,373 +11,499 @@ import { Address } from '@nutui/nutui-react';
 ```
 
 ## 代码示例
-
 ### 选择自定义地址
 
+:::demo
 ```tsx
-const [normal,setNormal] = useState(false)
-const [province, setProvince] = useState([
-    { id: 1, name: '北京', title: 'B' },
-    { id: 2, name: '广西', title: 'G' },
-    { id: 3, name: '江西', title: 'J' },
-    { id: 4, name: '四川', title: 'S' },
-    { id: 5, name: '浙江', title: 'Z' },
-])
+import  React,{useState} from "react";
+import { Address, Cell ,Popup} from '@nutui/nutui-react';
 
-const [city, setCity] = useState([
-    { id: 7, name: '朝阳区', title: 'C' },
-    { id: 8, name: '崇文区', title: 'C' },
-    { id: 9, name: '昌平区', title: 'C' },
-    { id: 6, name: '石景山区', title: 'S' },
-    { id: 3, name: '八里庄街道', title: 'B' },
-    { id: 9, name: '北苑', title: 'B' },
-])
+const App = () => {
+  const [text, setText] = useState('请选择地址')
+  const [normal,setNormal] = useState(false)
+  const [province, setProvince] = useState([
+      { id: 1, name: '北京', title: 'B' },
+      { id: 2, name: '广西', title: 'G' },
+      { id: 3, name: '江西', title: 'J' },
+      { id: 4, name: '四川', title: 'S' },
+      { id: 5, name: '浙江', title: 'Z' },
+  ])
 
-const [country, setCountry] = useState([
-    { id: 3, name: '八里庄街道', title: 'B' },
-    { id: 9, name: '北苑', title: 'B' },
-    { id: 4, name: '常营乡', title: 'C' },
-])
+  const [city, setCity] = useState([])
 
-const onChange = (cal) => {
+  const [country, setCountry] = useState([])
+  const [town, setTown] = useState([])
+
+  const [address, setAddress] = useState({
+    province: province,
+    city: city,
+    country: country,
+    town: town,
+  })
+
+  const onChange = (cal) => {
     const name = address[cal.next]
-    if (name.length < 1) {
+    setTimeout(()=>{
+      switch (cal.next){
+        case 'city':
+          setCity([
+            { id: 7, name: '朝阳区', title: 'C' },
+            { id: 8, name: '崇文区', title: 'C' },
+            { id: 9, name: '昌平区', title: 'C' },
+            { id: 6, name: '石景山区', title: 'S' },
+            { id: 3, name: '八里庄街道', title: 'B' },
+            { id: 9, name: '北苑', title: 'B' },
+          ])
+          break;
+        case 'country':
+          setCountry([
+            { id: 3, name: '八里庄街道', title: 'B' },
+            { id: 9, name: '北苑', title: 'B' },
+            { id: 4, name: '常营乡', title: 'C' },
+          ])
+          break;
+        default:
+          setNormal(false)
+      }
+    },200)
+  }
+  const close = (val) => {
+      console.log(val)
       setNormal(false)
-    }
-}
-const close = (val) => {
-    console.log(val)
-    setNormal(false)
-}
-```
 
-``` tsx
-<Address
-    modelValue={normal}
-    province={province}
-    city={city}
-    country={country}
-    town={town}
-    customAddressTitle="请选择所在地区"
-    onChange={onChange}
-    close={close}
-></Address>
+      if ((val.data as AddressResult).addressStr) {
+        setText((val.data as AddressResult).addressStr,)
+      }
+  }
+  return (
+    <>
+      <Cell title={`选择地址`} desc={text}  onClick={()=>setNormal(true)}></Cell>
+      <Address
+          modelValue={normal}
+          province={province}
+          city={city}
+          country={country}
+          town={town}
+          customAddressTitle="请选择所在地区"
+          onChange={onChange}
+          onClose={close}
+      ></Address>
+    </>
+  );
+};
+export default App;
 ```
-
+:::
 ### 选择自定义地址2
 
+:::demo
 ```tsx
-const [normal2,setNormal2] = useState(false)
-const [province, setProvince] = useState([
-    { id: 1, name: '北京', title: 'B' },
-    { id: 2, name: '广西', title: 'G' },
-    { id: 3, name: '江西', title: 'J' },
-    { id: 4, name: '四川', title: 'S' },
-    { id: 5, name: '浙江', title: 'Z' },
-])
 
-const [city, setCity] = useState([
-    { id: 7, name: '朝阳区', title: 'C' },
-    { id: 8, name: '崇文区', title: 'C' },
-    { id: 9, name: '昌平区', title: 'C' },
-    { id: 6, name: '石景山区', title: 'S' },
-    { id: 3, name: '八里庄街道', title: 'B' },
-    { id: 9, name: '北苑', title: 'B' },
-])
+import  React,{useState} from "react";
+import { Address, Cell ,Popup} from '@nutui/nutui-react';
 
-const [country, setCountry] = useState([
-    { id: 3, name: '八里庄街道', title: 'B' },
-    { id: 9, name: '北苑', title: 'B' },
-    { id: 4, name: '常营乡', title: 'C' },
-])
+const App = () => {
+  const [text, setText] = useState('请选择地址')
+  const [normal2,setNormal2] = useState(false)
+  const [province, setProvince] = useState([
+      { id: 1, name: '北京', title: 'B' },
+      { id: 2, name: '广西', title: 'G' },
+      { id: 3, name: '江西', title: 'J' },
+      { id: 4, name: '四川', title: 'S' },
+      { id: 5, name: '浙江', title: 'Z' },
+  ])
 
-const onChange = (cal) => {
-    const name = address[cal.next]
-    if (name.length < 1) {
+  const [city, setCity] = useState([])
+
+  const [country, setCountry] = useState([])
+  const [town, setTown] = useState([])
+  const [address, setAddress] = useState({
+    province: province,
+    city: city,
+    country: country,
+    town: town,
+  })
+
+  const onChange = (cal) => {
+    setTimeout(()=>{
+      switch (cal.next){
+        case 'city':
+          setCity([
+            { id: 7, name: '朝阳区', title: 'C' },
+            { id: 8, name: '崇文区', title: 'C' },
+            { id: 9, name: '昌平区', title: 'C' },
+            { id: 6, name: '石景山区', title: 'S' },
+            { id: 3, name: '八里庄街道', title: 'B' },
+            { id: 9, name: '北苑', title: 'B' },
+          ])
+          break;
+        case 'country':
+          setCountry([
+            { id: 3, name: '八里庄街道', title: 'B' },
+            { id: 9, name: '北苑', title: 'B' },
+            { id: 4, name: '常营乡', title: 'C' },
+          ])
+          break;
+        default:
+          setNormal2(false)
+      }
+    },200)
+  }
+  const close = (val) => {
       setNormal2(false)
-    }
-}
-const close = (val) => {
-    console.log(val)
-    setNormal2(false)
-}
-```
+      if ((val.data as AddressResult).addressStr) {
+        setText((val.data as AddressResult).addressStr,)
+      }
+  }
+  return (
+    <>
+      <Cell title={`选择地址`} desc={text}  onClick={()=>setNormal2(true)}></Cell>
+      <Address
+          modelValue={normal2}
+          type="custom2"
+          province={province}
+          city={city}
+          country={country}
+          town={town}
+          height="270px"
+          onChange={onChange}
+          onClose={close}
+          customAddressTitle="请选择所在地区"
+      ></Address>
+    </>
+  );
+};
+export default App;
 
-``` tsx
-<Address
-    modelValue={normal2}
-    type="custom2"
-    province={province}
-    city={city}
-    country={country}
-    town={town}
-    height="270px"
-    onChange={onChange}
-    close={close}
-    customAddressTitle="请选择所在地区"
-></Address>
 ```
-
+:::
 ### 选择已有地址
 
+
+:::demo
 ```tsx
-const [exist,setExist] = useState(false)
-const [existAddress, setExistAddress] = useState([
-    {
-      id: 1,
-      addressDetail: '',
-      cityName: '次渠镇',
-      countyName: '通州区',
-      provinceName: '北京市',
-      selectedAddress: true,
-      townName: '',
-      name: '探探鱼',
-      phone: '182****1718',
-    },
-    {
-      id: 2,
-      addressDetail: '',
-      cityName: '钓鱼岛全区',
-      countyName: '',
-      provinceName: '钓鱼岛',
-      selectedAddress: false,
-      townName: '',
-      name: '探探鱼',
-      phone: '182****1718',
-    },
-    {
-      id: 3,
-      addressDetail: '京东大厦',
-      cityName: '大兴区',
-      countyName: '科创十一街18号院',
-      provinceName: '北京市',
-      selectedAddress: false,
-      townName: '',
-      name: '探探鱼',
-      phone: '182****1718',
-    },
-  ])
+import  React,{useState} from "react";
+import { Address, Cell ,Popup} from '@nutui/nutui-react';
+const App = () => {
+  const [text, setText] = useState('请选择地址')
+  const [exist,setExist] = useState(false)
+  const [existAddress, setExistAddress] = useState([
+      {
+        id: 1,
+        addressDetail: '',
+        cityName: '次渠镇',
+        countyName: '通州区',
+        provinceName: '北京市',
+        selectedAddress: true,
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718',
+      },
+      {
+        id: 2,
+        addressDetail: '',
+        cityName: '钓鱼岛全区',
+        countyName: '',
+        provinceName: '钓鱼岛',
+        selectedAddress: false,
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718',
+      },
+      {
+        id: 3,
+        addressDetail: '京东大厦',
+        cityName: '大兴区',
+        countyName: '科创十一街18号院',
+        provinceName: '北京市',
+        selectedAddress: false,
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718',
+      },
+    ])
 
-const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => {
-    console.log(prevExistAdd,nowExistAdd)
-}
+  const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => {
+      console.log(prevExistAdd,nowExistAdd)
+  }
 
-const onChange = (cal) => {
-    const name = address[cal.next]
-    if (name.length < 1) {
+  const onChange = (cal) => {
+      const name = address[cal.next]
+      if (name.length < 1) {
+        setExist(false)
+      }
+  }
+  const close = (val) => {
+      const { provinceName, cityName, countyName, townName, addressDetail } = val.data as AddressResult
+      if (provinceName) {
+        setText(provinceName + cityName + countyName + townName + addressDetail)
+      }
       setExist(false)
-    }
-}
-const close = (val) => {
-    console.log(val)
-    setExist(false)
-}
-```
+  }
+  return (
+    <>
+      <Cell title={`选择地址`} desc={text}  onClick={()=>setExist(true)}></Cell>
+      <Address
+          modelValue={exist}
+          type="exist"
+          existAddress={existAddress}
+          onChange={onChange}
+          onClose={close}
+          isShowCustomAddress={false}
+          onSelected={selected}
+          existAddressTitle="配送至"
+      ></Address>
+    </>
+  );
+};
+export default App;
 
-``` tsx
-<Address
-    modelValue={exist}
-    type="exist"
-    existAddress={existAddress}
-    onChange={onChange}
-    close={close}
-    isShowCustomAddress={false}
-    selected={selected}
-    existAddressTitle="配送至"
-></Address>
 ```
-
+:::
 ### 自定义图标
 
+:::demo
 ```tsx
-const [customImg,setCustomImg] = useState(false)
-const [icon, setIcon] = useState({
-    selectedIcon: 'heart-fill',
-    defaultIcon: 'heart1',
-    closeBtnIcon: 'close',
-    backBtnIcon: 'left',
-})
+import  React,{useState} from "react";
+import { Address, Cell ,Popup} from '@nutui/nutui-react';
+const App = () => {
+  const [text, setText] = useState('请选择地址')
+  const [customImg,setCustomImg] = useState(false)
+  const [icon, setIcon] = useState({
+      selectedIcon: 'heart-fill',
+      defaultIcon: 'heart1',
+      closeBtnIcon: 'close',
+      backBtnIcon: 'left',
+  })
 
-const [existAddress, setExistAddress] = useState([
-    {
-      id: 1,
-      addressDetail: '',
-      cityName: '次渠镇',
-      countyName: '通州区',
-      provinceName: '北京市',
-      selectedAddress: true,
-      townName: '',
-      name: '探探鱼',
-      phone: '182****1718',
-    },
-    {
-      id: 2,
-      addressDetail: '',
-      cityName: '钓鱼岛全区',
-      countyName: '',
-      provinceName: '钓鱼岛',
-      selectedAddress: false,
-      townName: '',
-      name: '探探鱼',
-      phone: '182****1718',
-    },
-    {
-      id: 3,
-      addressDetail: '京东大厦',
-      cityName: '大兴区',
-      countyName: '科创十一街18号院',
-      provinceName: '北京市',
-      selectedAddress: false,
-      townName: '',
-      name: '探探鱼',
-      phone: '182****1718',
-    },
-  ])
+  const [existAddress, setExistAddress] = useState([
+      {
+        id: 1,
+        addressDetail: '',
+        cityName: '次渠镇',
+        countyName: '通州区',
+        provinceName: '北京市',
+        selectedAddress: true,
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718',
+      },
+      {
+        id: 2,
+        addressDetail: '',
+        cityName: '钓鱼岛全区',
+        countyName: '',
+        provinceName: '钓鱼岛',
+        selectedAddress: false,
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718',
+      },
+      {
+        id: 3,
+        addressDetail: '京东大厦',
+        cityName: '大兴区',
+        countyName: '科创十一街18号院',
+        provinceName: '北京市',
+        selectedAddress: false,
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718',
+      },
+    ])
 
-const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => {
-    console.log(prevExistAdd,nowExistAdd)
-}
+  const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => {
+      console.log(prevExistAdd,nowExistAdd)
+      
+  }
 
-const onChange = (cal) => {
-    const name = address[cal.next]
-    if (name.length < 1) {
+  const onChange = (cal) => {
+      const name = address[cal.next]
+      if (name.length < 1) {
+        setCustomImg(false)
+      }
+  }
+  const close = (val) => {
+      console.log(val)
       setCustomImg(false)
-    }
-}
-const close = (val) => {
-    console.log(val)
-    setCustomImg(false)
-}
-```
+      const { provinceName, cityName, countyName, townName, addressDetail } =  val.data as AddressResult
+      if (provinceName) {
+          setText(provinceName + cityName + countyName + townName + addressDetail)
+        }
+  }
+  return (
+    <>
+      <Cell title={`选择地址`} desc={text}  onClick={()=>setCustomImg(true)}></Cell>
+      <Address
+          modelValue={customImg}
+          type="exist"
+          existAddress={existAddress}
+          onChange={onChange}
+          onClose={close}
+          isShowCustomAddress={false}
+          onSelected={selected}
+          defaultIcon={icon.defaultIcon}
+          selectedIcon={icon.selectedIcon}
+          closeBtnIcon={icon.closeBtnIcon}
+      ></Address>
+    </>
+  );
+};
+export default App;
 
-``` tsx
-<Address
-    modelValue={customImg}
-    type="exist"
-    existAddress={existAddress}
-    onChange={onChange}
-    close={close}
-    isShowCustomAddress={false}
-    selected={selected}
-    defaultIcon={icon.defaultIcon}
-    selectedIcon={icon.selectedIcon}
-    closeBtnIcon={icon.closeBtnIcon}
-></Address>
 ```
+:::
 
 ### 自定义地址与已有地址切换
 
+:::demo
 ```tsx
-const [other,setOther] = useState(false)
-const [icon, setIcon] = useState({
-    selectedIcon: 'heart-fill',
-    defaultIcon: 'heart1',
-    closeBtnIcon: 'close',
-    backBtnIcon: 'left',
-})
-const [province, setProvince] = useState([
-    { id: 1, name: '北京', title: 'B' },
-    { id: 2, name: '广西', title: 'G' },
-    { id: 3, name: '江西', title: 'J' },
-    { id: 4, name: '四川', title: 'S' },
-    { id: 5, name: '浙江', title: 'Z' },
-])
-
-const [city, setCity] = useState([
-    { id: 7, name: '朝阳区', title: 'C' },
-    { id: 8, name: '崇文区', title: 'C' },
-    { id: 9, name: '昌平区', title: 'C' },
-    { id: 6, name: '石景山区', title: 'S' },
-    { id: 3, name: '八里庄街道', title: 'B' },
-    { id: 9, name: '北苑', title: 'B' },
-])
-
-const [country, setCountry] = useState([
-    { id: 3, name: '八里庄街道', title: 'B' },
-    { id: 9, name: '北苑', title: 'B' },
-    { id: 4, name: '常营乡', title: 'C' },
-])
-const [existAddress, setExistAddress] = useState([
-    {
-      id: 1,
-      addressDetail: '',
-      cityName: '次渠镇',
-      countyName: '通州区',
-      provinceName: '北京市',
-      selectedAddress: true,
-      townName: '',
-      name: '探探鱼',
-      phone: '182****1718',
-    },
-    {
-      id: 2,
-      addressDetail: '',
-      cityName: '钓鱼岛全区',
-      countyName: '',
-      provinceName: '钓鱼岛',
-      selectedAddress: false,
-      townName: '',
-      name: '探探鱼',
-      phone: '182****1718',
-    },
-    {
-      id: 3,
-      addressDetail: '京东大厦',
-      cityName: '大兴区',
-      countyName: '科创十一街18号院',
-      provinceName: '北京市',
-      selectedAddress: false,
-      townName: '',
-      name: '探探鱼',
-      phone: '182****1718',
-    },
+import  React,{useState} from "react";
+import { Address, Cell ,Popup} from '@nutui/nutui-react';
+const App = () => {
+  const [text, setText] = useState('请选择地址')
+  const [other,setOther] = useState(false)
+  const [icon, setIcon] = useState({
+      selectedIcon: 'heart-fill',
+      defaultIcon: 'heart1',
+      closeBtnIcon: 'close',
+      backBtnIcon: 'left',
+  })
+  const [province, setProvince] = useState([
+      { id: 1, name: '北京', title: 'B' },
+      { id: 2, name: '广西', title: 'G' },
+      { id: 3, name: '江西', title: 'J' },
+      { id: 4, name: '四川', title: 'S' },
+      { id: 5, name: '浙江', title: 'Z' },
   ])
 
-const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => {
-    console.log(prevExistAdd,nowExistAdd)
-}
+  const [city, setCity] = useState([])
 
-const onChange = (cal) => {
-    const name = address[cal.next]
-    if (name.length < 1) {
+  const [country, setCountry] = useState([])
+  const [town, setTown] = useState([])
+  const [address, setAddress] = useState({
+    province: province,
+    city: city,
+    country: country,
+    town: town,
+  })
+  const [existAddress, setExistAddress] = useState([
+      {
+        id: 1,
+        addressDetail: '',
+        cityName: '次渠镇',
+        countyName: '通州区',
+        provinceName: '北京市',
+        selectedAddress: true,
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718',
+      },
+      {
+        id: 2,
+        addressDetail: '',
+        cityName: '钓鱼岛全区',
+        countyName: '',
+        provinceName: '钓鱼岛',
+        selectedAddress: false,
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718',
+      },
+      {
+        id: 3,
+        addressDetail: '京东大厦',
+        cityName: '大兴区',
+        countyName: '科创十一街18号院',
+        provinceName: '北京市',
+        selectedAddress: false,
+        townName: '',
+        name: '探探鱼',
+        phone: '182****1718',
+      },
+    ])
+
+  const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => {
+      console.log(prevExistAdd,nowExistAdd)
+  }
+
+  const onChange = (cal) => {
+     
+    setTimeout(()=>{
+      switch (cal.next){
+        case 'city':
+          setCity([
+            { id: 7, name: '朝阳区', title: 'C' },
+            { id: 8, name: '崇文区', title: 'C' },
+            { id: 9, name: '昌平区', title: 'C' },
+            { id: 6, name: '石景山区', title: 'S' },
+            { id: 3, name: '八里庄街道', title: 'B' },
+            { id: 9, name: '北苑', title: 'B' },
+          ])
+          break;
+        case 'country':
+          setCountry([
+            { id: 3, name: '八里庄街道', title: 'B' },
+            { id: 9, name: '北苑', title: 'B' },
+            { id: 4, name: '常营乡', title: 'C' },
+          ])
+          break;
+        default:
+          setOther(false)
+      }
+    },200)
+  }
+  const close = (val) => {
       setOther(false)
-    }
-}
-const close = (val) => {
-    console.log(val)
-    setOther(false)
-}
-const switchModule = (val) => {
-    if (val.type == 'custom') {
-      console.log('点击了“选择其他地址”按钮')
-    } else {
-      console.log('点击了自定义地址左上角的返回按钮')
-    }
-}
+      if (val.type == 'exist') {
+        const { provinceName, cityName, countyName, townName, addressDetail } = val.data as AddressResult
+        if (provinceName) {
+          setText(provinceName + cityName + countyName + townName + addressDetail)
+        }
+      } else {
+        if ((val.data as AddressResult).addressStr) {
+          setText((val.data as AddressResult).addressStr)
+        }
+      }
+  }
+  const switchModule = (val) => {
+      if (val.type == 'custom') {
+        console.log('点击了“选择其他地址”按钮')
+      } else {
+        console.log('点击了自定义地址左上角的返回按钮')
+      }
+  }
 
-const closeMask = (val) => {
-    console.log('关闭弹层', val)
-}
-```
+  const closeMask = (val) => {
+      console.log('关闭弹层', val)
+  }
+  return (
+    <>
+      <Cell title={`选择地址`} desc={text}  onClick={()=>setOther(true)}></Cell>
+      <Address
+          modelValue={other}
+          type="exist"
+          existAddress={existAddress}
+          province={province}
+          city={city}
+          country={country}
+          town={town}
+          backBtnIcon={icon.backBtnIcon}
+          onChange={onChange}
+          onClose={close}
+          onSelected={selected}
+          customAndExistTitle="选择其他地址"
+          switchModule={switchModule}
+          closeMask={closeMask}
+      ></Address>
+    </>
+  );
+};
+export default App;
 
-``` tsx
-<Address
-    modelValue={other}
-    type="exist"
-    existAddress={existAddress}
-    province={province}
-    city={city}
-    country={country}
-    town={town}
-    backBtnIcon={icon.backBtnIcon}
-    onChange={onChange}
-    close={close}
-    selected={selected}
-    customAndExistTitle="选择其他地址"
-    switchModule={switchModule}
-    closeMask={closeMask}
-></Address>
 ```
+:::
+
 
 # API
 

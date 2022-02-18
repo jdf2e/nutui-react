@@ -19,13 +19,7 @@ const SwiperDemo = () => {
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
-  const onChange = (e: number) => {
-    // console.log(e)
-  }
-  const btn = (e: any) => {
-    ;(swiperRef.current as any).next()
-    // setInitPage((v:any)=>v-1);
-  }
+  const onChange = (e: number) => {}
   return (
     <div className="demo padding">
       <h2>基本用法</h2>

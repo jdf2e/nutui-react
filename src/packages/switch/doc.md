@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```ts
 import { Switch } from '@nutui/nutui-react';
 ```
 
@@ -14,37 +14,72 @@ import { Switch } from '@nutui/nutui-react';
 
 ### 基础用法
 
-``` tsx
-<Switch checked={true}></Switch>
+:::demo
+```tsx
+import  React from "react";
+import { Switch } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+    <Switch checked={true}></Switch>
+    </>
+  );
+};  
+export default App;
+
 ```
+:::
 
 
 ### 禁用状态
 
-``` tsx
-<Switch checked={true} disable></Switch>
+:::demo
+```tsx
+import  React from "react";
+import { Switch } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+    <Switch checked={true} disable></Switch>
+    </>
+  );
+};  
+export default App;
+
 ```
+:::
 
 ### change事件
 
-``` tsx
-<Switch change={() => change}></Switch>
-```
-``` javascript
-const change = (value: boolean, event: Event) => {
+:::demo
+```tsx
+import  React from "react";
+import { Switch } from '@nutui/nutui-react';
+
+const App = () => {
+  const change = (value: boolean, event: Event) => {
     alert(`触发了change事件，开关状态：${value}`)
   }
-```
+  return ( 
+    <>   
+    <Switch change={(value, event) => change(value, event)}></Switch>
+    </>
+  );
+};  
+export default App;
 
+```
+:::
 ### 异步控制
 
-``` tsx
-<Switch
-  checked={checkedAsync}
-  change={(value, event) => changeAsync(value, event)}
-></Switch>
-```
-``` javascript
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Switch } from '@nutui/nutui-react';
+
+const App = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
   
   const changeAsync = (value: boolean, event: Event) => {
@@ -53,17 +88,56 @@ const change = (value: boolean, event: Event) => {
       setCheckedAsync(value)
     }, 2000)
   }
+  return ( 
+    <>   
+    <Switch
+      checked={checkedAsync}
+      isAsync={true}
+      change={(value, event) => changeAsync(value, event)}
+    ></Switch>
+    </>
+  );
+};  
+export default App;
+
 ```
+:::
 ### 自定义颜色
 
-``` tsx
-<Switch activeColor="blue"></Switch>
+:::demo
+```tsx
+import  React from "react";
+import { Switch } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+    <Switch activeColor="blue"></Switch>
+    </>
+  );
+};  
+export default App;
+
 ```
+:::
 ### 支持文字
 
-``` tsx
-<Switch activeText="开" inactiveText="关"></Switch>
+:::demo
+```tsx
+import  React from "react";
+import { Switch } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+    <Switch activeText="开" inactiveText="关"></Switch>
+    </>
+  );
+};  
+export default App;
+
 ```
+:::
 
 
 

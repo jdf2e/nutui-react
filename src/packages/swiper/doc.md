@@ -20,130 +20,162 @@ import { Swiper,SwiperItem } from '@nutui/nutui-react';
 `paginationColor` 指示器颜色自定义
 `onChange` 当卡片发生变化
 
-```html
-<Swiper
-  height={height}
-  paginationColor={"#426543"}
-  autoPlay="3000"
-  initPage={initPage1}
-  paginationVisible={true}
-  onChange={onChange}
->
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-  </SwiperItem>
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-  </SwiperItem>
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-  </SwiperItem>
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-  </SwiperItem>
-</Swiper>
-```
-``` javascript
+:::demo
+``` tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
-const SwiperDemo = () => {
+const App = () => {
   const [initPage1, setInitPage1] = useState(0)
+  const [height, setHeight] = useState<any>(150)
   const onChange = (e) => {
     // do something
   }
+  return (
+    <Swiper
+      height={height}
+      paginationColor={"#426543"}
+      autoPlay="3000"
+      initPage={initPage1}
+      paginationVisible={true}
+      onChange={onChange}
+    >
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+      </SwiperItem>
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+      </SwiperItem>
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+      </SwiperItem>
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+      </SwiperItem>
+    </Swiper>
+  )
 }
+export default App;
 ```
-
+:::
 ### 自定义大小
 
 `width` 自定义轮播大小
+:::demo
+``` tsx
+import React, { useState } from 'react'
+import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
-```html
-<Swiper
-  width={300}
-  initPage={initPage2}
-  loop={false}
->
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-  </SwiperItem>
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-  </SwiperItem>
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-  </SwiperItem>
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-  </SwiperItem>
-</Swiper>
+const App = () => {
+  const [initPage2, setInitPage2] = useState(0)
+  return (
+    <Swiper
+      width={300}
+      initPage={initPage2}
+      loop={false}
+    >
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+      </SwiperItem>
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+      </SwiperItem>
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+      </SwiperItem>
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+      </SwiperItem>
+    </Swiper>
+  )
+}
+export default App;
 ```
+:::
+
 ### 自定义分页指示器
 
 `pageContent` 表示自定义指示器
 
-```html
-<Swiper
-  initPage={initPage3}
-  loop={true}
-  onChange={onChange3}
-  pageContent={<div className="page"> {current}/4 </div>}
->
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-  </SwiperItem>
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-  </SwiperItem>
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-  </SwiperItem>
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-  </SwiperItem>
-</Swiper>
-```
-``` javascript
+:::demo
+``` tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
-const SwiperDemo = () => {
+const App = () => {
   const [initPage3, setInitPage3] = useState(0)
   const [current, setCurrent] = useState(1)
   const onChange3 = (e) => {
     setCurrent(e + 1)
   }
+  return (
+    <Swiper
+      initPage={initPage3}
+      loop={true}
+      onChange={onChange3}
+      pageContent={<div className="page"> {current}/4 </div>}
+    >
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+      </SwiperItem>
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+      </SwiperItem>
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+      </SwiperItem>
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+      </SwiperItem>
+    </Swiper>
+  )
 }
+export default App;
 ```
+:::
+
 ### 垂直方向
 
 `direction` 自定义轮播方向
 
+:::demo
+``` tsx
+import React, { useState } from 'react'
+import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
-```html
-<Swiper
-  loop={true}
-  initPage={initPage4}
-  direction="vertical"
-  autoPlay="3000"
-  height="150"
-  paginationVisible={true}
->
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-  </SwiperItem>
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-  </SwiperItem>
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-  </SwiperItem>
-  <SwiperItem >
-    <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-  </SwiperItem>
-</Swiper>
+const App = () => {
+  const [initPage4, setInitPage4] = useState(0)
+  const [current, setCurrent] = useState(1)
+  const onChange3 = (e) => {
+    setCurrent(e + 1)
+  }
+  return (
+    <Swiper
+      loop={true}
+      initPage={initPage4}
+      direction="vertical"
+      autoPlay="3000"
+      height="150"
+      paginationVisible={true}
+    >
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+      </SwiperItem>
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+      </SwiperItem>
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+      </SwiperItem>
+      <SwiperItem >
+        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+      </SwiperItem>
+    </Swiper>
+  )
+}
+export default App;
 ```
+:::
 
 ## API
 

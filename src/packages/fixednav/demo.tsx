@@ -34,35 +34,35 @@ const FixedNavDemo = () => {
   const [visible4, setVisible4] = useState(false)
   const [visible5, setVisible5] = useState(false)
 
-  const change1 = (value: boolean) => {
+  const change1 = (value: any) => {
     setVisible1(value)
   }
   const selected1 = (item: any, event: MouseEvent) => {
     console.log(item, event)
   }
 
-  const change2 = (value: boolean) => {
+  const change2 = (value) => {
     setVisible2(value)
   }
   const selected2 = (item: any, event: MouseEvent) => {
     console.log(item, event)
   }
 
-  const change3 = (value: boolean) => {
+  const change3 = (value) => {
     setVisible3(value)
   }
   const selected3 = (item: any, event: MouseEvent) => {
     console.log(item, event)
   }
 
-  const change4 = (value: boolean) => {
+  const change4 = (value) => {
     setVisible4(value)
   }
   const selected4 = (item: any, event: MouseEvent) => {
     console.log(item, event)
   }
 
-  const change5 = (value: boolean) => {
+  const change5 = (value) => {
     setVisible5(value)
   }
   const selected5 = (item: any, event: MouseEvent) => {
@@ -77,9 +77,9 @@ const FixedNavDemo = () => {
           activeText="基础用法"
           overlay={true}
           position={{ top: '70px' }}
-          change={change1}
+          onChange={change1}
           visible={visible1}
-          selected={selected1}
+          onSelected={selected1}
         />
         <FixedNav
           navList={navList}
@@ -88,23 +88,23 @@ const FixedNavDemo = () => {
           visible={visible2}
           activeText={'左侧收起'}
           unActiveText={'左侧展开'}
-          change={change2}
-          selected={selected2}
+          onChange={change2}
+          onSelected={selected2}
         />
         <FixedNav
           navList={navList}
           position={{ top: '210px' }}
           overlay={false}
           visible={visible3}
-          change={change3}
-          selected={selected3}
+          onChange={change3}
+          onSelected={selected3}
         />
         <FixedNav
           position={{ top: '280px' }}
           type={'left'}
           visible={visible4}
-          change={change4}
-          selected={selected4}
+          onChange={change4}
+          onSelected={selected4}
           slotList={
             <ul className="nut-fixednav__list" slot={'list'}>
               <li className="nut-fixednav__list-item">1</li>
@@ -129,8 +129,8 @@ const FixedNavDemo = () => {
             navList={navList}
             unActiveText="支持拖拽"
             visible={visible5}
-            change={change5}
-            selected={selected5}
+            onChange={change5}
+            onSelected={selected5}
           />
         </Drag>
       </div>
