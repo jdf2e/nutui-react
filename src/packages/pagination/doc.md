@@ -92,7 +92,7 @@ export default App;
 :::demo
 ``` tsx
 import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react';
+import { Pagination,Icon } from '@nutui/nutui-react';
 
 const App = () => {
   const [currentPage4, setCurrentPage4] = useState(1)
