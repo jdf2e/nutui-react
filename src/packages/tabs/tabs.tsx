@@ -1,0 +1,180 @@
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import './tabs.scss'
+import bem from '@/utils/bem'
+import classNames from 'classnames'
+import Icon from '@/packages/icon'
+class Title {
+  title: string = ''
+  paneKey: string = ''
+  disabled: boolean = false
+  index: number = 0
+  constructor() {}
+}
+export type TabsSize = 'large' | 'normal' | 'small'
+export interface TabsProps {
+  value: string | number
+  color: string
+  background: string
+  direction: string
+  type: string
+  titleScroll: boolean
+  ellipsis: boolean
+  animatedTime: number | string
+  titleGutter: number | string
+  size: TabsSize
+  titleNode: () => JSX.Element[]
+  onChange: (t: Title) => void
+  onClick: (t: Title) => void
+}
+const defaultProps = {
+  value: 0,
+  color: '',
+  background: '',
+  direction: 'horizontal',
+  type: 'line',
+  titleScroll: false,
+  ellipsis: true,
+  animatedTime: 300,
+  titleGutter: 0,
+  size: 'normal',
+} as TabsProps
+const pxCheck = (value: string | number): string => {
+  return isNaN(Number(value)) ? String(value) : `${value}px`
+}
+export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
+  const {
+    value,
+    color,
+    background,
+    direction,
+    type,
+    titleScroll,
+    ellipsis,
+    animatedTime,
+    titleGutter,
+    size,
+    titleNode,
+    children,
+    onClick,
+    onChange,
+  } = { ...defaultProps, ...props }
+
+  const [currentItem, setCurrentItem] = useState<Title>({ index: 0 } as Title)
+  const titles = useRef<Title[]>([])
+
+  useEffect(() => {
+    let currentIndex = 0
+    titles.current = []
+    React.Children.forEach(children, (child, idx) => {
+      if (!React.isValidElement(child)) {
+        return null
+      }
+      let title = new Title()
+      if (child.props?.title || child.props?.['paneKey']) {
+        title.title = child.props?.title
+        title.paneKey = child.props?.['paneKey'] || idx
+        title.disabled = child.props?.disabled
+        title.index = idx
+        if (title.paneKey === value) {
+          currentIndex = idx
+        }
+      }
+      titles.current.push(title)
+    })
+    setCurrentItem(titles.current[currentIndex])
+  }, [children])
+
+  const b = bem('tabs')
+  const classes = classNames(direction, b(''))
+  const classesTitle = classNames(
+    {
+      [type]: type,
+      scrollable: titleScroll,
+      [size]: size,
+    },
+    `${b('')}__titles`
+  )
+
+  const titleStyle = {
+    marginLeft: pxCheck(titleGutter),
+    marginRight: pxCheck(titleGutter),
+  }
+
+  const tabsActiveStyle = {
+    color: type == 'smile' ? color : '',
+    background: type == 'line' ? color : '',
+  }
+
+  const index = titles.current.findIndex((t) => t.paneKey == value)
+
+  const contentStyle = {
+    transform:
+      direction == 'horizontal'
+        ? `translate3d(-${index * 100}%, 0, 0)`
+        : `translate3d( 0,-${index * 100}%, 0)`,
+    transitionDuration: `${animatedTime}ms`,
+  }
+
+  const tabChange = (item: Title, index: number) => {
+    onClick && onClick(item)
+    if (item.disabled) {
+      return
+    }
+    setCurrentItem(item)
+    onChange && onChange(item)
+  }
+
+  return (
+    <div className={classes}>
+      <div className={classesTitle} style={{ background: background }}>
+        {!!titleNode && typeof titleNode === 'function'
+          ? titleNode()
+          : titles.current.map((item, index) => {
+              return (
+                <div
+                  style={titleStyle}
+                  onClick={(e) => tabChange(item, index)}
+                  className={classNames(
+                    { active: item.paneKey == value, disabled: item.disabled },
+                    `${b('')}__titles-item`
+                  )}
+                  key={item.paneKey}
+                >
+                  {type == 'line' && (
+                    <div className={`${b('')}__titles-item__line`} style={tabsActiveStyle}></div>
+                  )}
+                  {type == 'smile' && (
+                    <div className={`${b('')}__titles-item__smile`} style={tabsActiveStyle}>
+                      <Icon color={color} name="joy-smile" />
+                    </div>
+                  )}
+                  <div
+                    className={classNames(
+                      { ellipsis: ellipsis && !titleScroll && direction == 'horizontal' },
+                      `${b('')}__titles-item__text`
+                    )}
+                  >
+                    {item.title}
+                  </div>
+                </div>
+              )
+            })}
+      </div>
+      <div className={b('') + '__content'} style={contentStyle}>
+        {React.Children.map(children, (child, idx) => {
+          if (!React.isValidElement(child)) {
+            return null
+          }
+          const childProps = {
+            ...child.props,
+            activeKey: value,
+          }
+          return React.cloneElement(child, childProps)
+        })}
+      </div>
+    </div>
+  )
+}
+
+Tabs.defaultProps = defaultProps
+Tabs.displayName = 'NutTabs'
