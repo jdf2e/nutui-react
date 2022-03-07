@@ -33,10 +33,11 @@ const App = () => {
 }
 export default App;
 ```
-
+:::
 
 ### 自定义上传样式
 
+:::demo
 ``` tsx
 import React, { useState } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -56,9 +57,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 直接调起摄像头（移动端生效）
-    
+
+:::demo
 ``` tsx
 import React, { useState } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -74,9 +77,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 上传状态
-    
+
+:::demo
 ``` tsx
 import React, { useState } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -95,10 +100,12 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 
 ### 限制上传数量5个
 
+:::demo
 ``` tsx
 import React, { useState } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -114,8 +121,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
+
 ### 限制上传大小（每个文件最大不超过 50kb，也可以在beforeupload中自行处理）
 
+:::demo
 ``` tsx
 import React, { useState } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -134,10 +144,12 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 
 ### 自定义 FormData headers
 
+:::demo
 ``` tsx
 import React, { useState } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -161,9 +173,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 手动上传
 
+:::demo
 ``` tsx
 import React, { useState, useRef } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -187,9 +201,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 禁用状态
 
+:::demo
 ``` tsx
 import React, { useState } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -204,6 +220,7 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### Prop
 

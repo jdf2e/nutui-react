@@ -63,11 +63,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
   })
 
   const repeatLines = (num: number) => {
-    let items = []
-    for (let i = 0; i < num; i++) {
-      items.push(i)
-    }
-    return items
+    return Array.from({ length: num }, (v, i) => i)
   }
 
   const getStyle = () => {
@@ -84,7 +80,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
       ) : (
         <div className={classes} {...restProps}>
           <div className="skeleton-animation"></div>
-          <div className="content">
+          <div className="nut-skeleton-content">
             {avatar && (
               <Avatar
                 className={avatarClass}
@@ -98,12 +94,12 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
                 style={{ width: `${width}px`, height: `${height}px` }}
               ></div>
             ) : (
-              <div className="content-line">
-                {title && <div className="title"></div>}
+              <div className="skeleton-content-line">
+                {title && <div className="skeleton-title"></div>}
                 {repeatLines(row).map((item, index) => {
                   return (
                     <div
-                      className={`${blockClass} lines`}
+                      className={`${blockClass} skeleton-lines`}
                       key={index}
                       style={{ width: `${width}px`, height: `${height}px` }}
                     ></div>

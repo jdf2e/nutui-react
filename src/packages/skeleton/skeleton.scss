@@ -3,7 +3,7 @@
   position: relative;
   overflow: hidden;
   vertical-align: middle;
-  .content {
+  .nut-skeleton-content {
     display: flex;
     .avatarClass {
       margin-right: 20px;
@@ -18,7 +18,7 @@
       margin-top: 10px;
     }
 
-    .lines {
+    .skeleton-lines {
       &:last-child {
         width: 70% !important;
       }
@@ -27,10 +27,10 @@
       border-radius: 10px;
     }
 
-    .content-line {
+    .skeleton-content-line {
       display: flex;
       flex-direction: column;
-      .title {
+      .skeleton-title {
         width: 30%;
         height: 15px;
         background: #efefef;

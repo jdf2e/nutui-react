@@ -34,9 +34,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 修改形状类型
 
+:::demo
 ``` tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
@@ -51,9 +53,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 修改背景色
 
+:::demo
 ``` tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
@@ -70,9 +74,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 修改背景icon
 
+:::demo
 ``` tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
@@ -85,9 +91,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 设置头像的文本内容
 
+:::demo
 ``` tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
@@ -100,9 +108,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 点击头像触发事件
 
+:::demo
 ``` tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
@@ -119,7 +129,7 @@ const App = () => {
 }
 export default App;
 ```
-
+:::
 
 ### Prop
 

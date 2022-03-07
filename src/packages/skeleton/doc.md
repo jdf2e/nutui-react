@@ -28,9 +28,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 传入多行
 
+:::demo
 ```tsx
 import React from "react";
 import { Skeleton } from '@nutui/nutui-react';
@@ -44,9 +46,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 显示头像
 
+:::demo
 ```tsx
 import React from "react";
 import { Skeleton } from '@nutui/nutui-react';
@@ -60,9 +64,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 标题段落圆角风格
 
+:::demo
 ```tsx
 import React from "react";
 import { Skeleton } from '@nutui/nutui-react';
@@ -76,9 +82,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 显示子组件
 
+:::demo
 ```tsx
 import React, { useState } from 'react'
 import { Skeleton, Switch, Avatar } from '@nutui/nutui-react';
@@ -136,6 +144,7 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 
 
