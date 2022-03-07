@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-import './datepicker.scss'
 import Picker from '@/packages/picker'
 
 interface IResValue {
@@ -19,8 +18,8 @@ export interface DatePickerProps {
   minuteStep: number
   minDate: Date
   maxDate: Date
-  className: ''
-  style: {}
+  className: string
+  style: React.CSSProperties
   onCloseDatePicker: () => void
   onConfirmDatePicker: (list: any[]) => void
 }
@@ -87,7 +86,7 @@ export const DatePicker: FunctionComponent<
   }
 
   function getMonthEndDay(year: number, month: number): number {
-    return 32 - new Date(year, month - 1, 32).getDate()
+    return new Date(year, month, 0).getDate()
   }
   const getBoundary = (type: string, value: Date) => {
     const boundary = type === 'min' ? minDate : maxDate
@@ -166,24 +165,31 @@ export const DatePicker: FunctionComponent<
       },
     ]
 
+    let start = 0
+    let end = 0
     switch (type) {
       case 'date':
-        result = result.slice(0, 3)
+        start = 0
+        end = 3
         break
       case 'datetime':
-        result = result.slice(0, 5)
+        start = 0
+        end = 5
         break
       case 'time':
-        result = result.slice(3, 6)
+        start = 3
+        end = 6
         break
       case 'month-day':
-        result = result.slice(1, 3)
+        start = 1
+        end = 3
         break
       case 'datehour':
-        result = result.slice(0, 4)
+        start = 0
+        end = 4
         break
     }
-    return result
+    return result.slice(start, end)
   }
 
   const initDefault = () => {
@@ -196,17 +202,18 @@ export const DatePicker: FunctionComponent<
         modelValue.getMinutes(),
         modelValue.getSeconds(),
       ]
+      let [year, month, day, hour, minute, seconds] = formatDate
 
-      const day = Math.min(formatDate[2], getMonthEndDay(formatDate[0], formatDate[1]))
+      day = Math.min(day, getMonthEndDay(year, month))
       let val: (string | number)[] = formatDate
       if (isShowChinese) {
         val = [
-          formatDate[0] + zhCNType.year,
-          formatDate[1] + zhCNType.month,
+          year + zhCNType.year,
+          month + zhCNType.month,
           day + zhCNType.day,
-          formatDate[3] + zhCNType.hour,
-          formatDate[4] + zhCNType.minute,
-          formatDate[5] + zhCNType.seconds,
+          hour + zhCNType.hour,
+          minute + zhCNType.minute,
+          seconds + zhCNType.seconds,
         ]
       }
       if (type === 'date') {
@@ -287,20 +294,29 @@ export const DatePicker: FunctionComponent<
 
   const getDateIndex = (type: string, date?: Date) => {
     const curDate = date || currentDate
-    if (type === 'year') {
-      return curDate.getFullYear()
-    } else if (type === 'month') {
-      return curDate.getMonth() + 1
-    } else if (type === 'day') {
-      return curDate.getDate()
-    } else if (type === 'hour') {
-      return curDate.getHours()
-    } else if (type === 'minute') {
-      return curDate.getMinutes()
-    } else if (type === 'seconds') {
-      return curDate.getSeconds()
+
+    switch (type) {
+      case 'year':
+        return curDate.getFullYear()
+        break
+      case 'month':
+        return curDate.getMonth()
+        break
+      case 'day':
+        return curDate.getDate()
+        break
+      case 'hour':
+        return curDate.getHours()
+        break
+      case 'minute':
+        return curDate.getMinutes()
+        break
+      case 'seconds':
+        return curDate.getSeconds()
+        break
+      default:
+        return 0
     }
-    return 0
   }
 
   const columns = (date?: Date) => {
@@ -320,16 +336,12 @@ export const DatePicker: FunctionComponent<
     setShow(visible)
   }, [visible])
 
-  useEffect(() => {}, [defaultValue])
-
   return (
     <div className={`nut-datepicker ${className ? className : ''}`} style={style} {...rest}>
       <Picker
         isVisible={show}
         listData={listData}
-        onClose={() => {
-          onCloseDatePicker()
-        }}
+        onClose={onCloseDatePicker}
         defaultValueData={defaultValue}
         onConfirm={(list: any[]) => onConfirmDatePicker && onConfirmDatePicker(list)}
         onChoose={(index: number, value: IResValue | string, list: any[]) =>

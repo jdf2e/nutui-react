@@ -1,4 +1,4 @@
-#  Datepicker 日期选择器
+#  DatePicker 日期选择器
 
 ### 介绍
     
@@ -7,7 +7,7 @@
 ### 安装
     
 ```javascript
-import { DatePicker } from '@nutui/nutui';å
+import { DatePicker } from '@nutui/nutui';
 ```
     
 ## 代码演示
@@ -15,7 +15,7 @@ import { DatePicker } from '@nutui/nutui';å
 ### 日期选择-每列不显示中文
 :::demo
 ```tsx
-import  React, { useState, useRef  } from "react";
+import  React, { useState  } from "react";
 import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -41,7 +41,7 @@ export default App;
 ### 日期选择-限制开始结束时间
 :::demo
 ```tsx
-import  React, { useState, useRef  } from "react";
+import  React, { useState  } from "react";
 import { DatePicker, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -71,7 +71,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React, { useState, useRef  } from "react";
+import  React, { useState  } from "react";
 import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -101,13 +101,13 @@ export default App;
 ### 时间选择-12小时制
 :::demo
 ```tsx
-import  React, { useState, useRef  } from "react";
+import  React, { useState  } from "react";
 import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const minDate = new Date(2020, 0, 1)
   const maxDate = new Date(2025, 10, 1)
-  const [show3, setShow4] = useState(false)
+  const [show4, setShow4] = useState(false)
   const desc4 = '0时-0分-0秒'
   return ( 
     <>   
@@ -131,7 +131,7 @@ export default App;
 ### 时间选择-分钟数递增步长设置
 :::demo
 ```tsx
-import  React, { useState, useRef  } from "react";
+import  React, { useState  } from "react";
 import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
