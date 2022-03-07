@@ -28,8 +28,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
+
 ### 环形进度条自定义样式
 
+:::demo
 ```tsx
 import React from "react";
 import { CircleProgress } from '@nutui/nutui-react';
@@ -49,8 +52,10 @@ const App = () => {
 }
 export default App;
 ```
-### 环形进度条自定义内容
+:::
 
+### 环形进度条自定义内容
+:::demo
 ```tsx
 import React from "react";
 import { CircleProgress } from '@nutui/nutui-react';
@@ -72,8 +77,10 @@ const App = () => {
 }
 export default App;
 ```
-### 动态改变环形进度条的进度
+:::
 
+### 动态改变环形进度条的进度
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Button, CircleProgress } from '@nutui/nutui-react';
@@ -137,6 +144,7 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 
 ## Prop

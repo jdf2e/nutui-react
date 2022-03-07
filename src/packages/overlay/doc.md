@@ -39,9 +39,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 嵌套内容
 
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -85,6 +87,7 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ## API
 
