@@ -164,6 +164,13 @@ const InternalPickerSlot: ForwardRefRenderFunction<unknown, Partial<IPickerSlotP
           return true
         }
       })
+    } else if (value && !value.value) {
+      listData.some((item, idx) => {
+        if (item == value) {
+          index = idx
+          return true
+        }
+      })
     } else {
       index = listData.indexOf(defaultValue)
     }
