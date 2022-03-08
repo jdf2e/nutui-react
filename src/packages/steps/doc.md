@@ -53,9 +53,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 标题和描述信息
 
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Steps, Step, Button } from '@nutui/nutui-react';
@@ -96,9 +98,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 自定义图标
 
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Steps, Step, Button } from '@nutui/nutui-react';
@@ -138,9 +142,10 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 竖向步骤条
-
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Steps, Step, Button } from '@nutui/nutui-react';
@@ -184,8 +189,10 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 点状步骤和垂直方向
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Steps, Step, Button } from '@nutui/nutui-react';
@@ -234,6 +241,7 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 
 ## API

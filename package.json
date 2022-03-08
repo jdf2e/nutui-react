@@ -1,10 +1,10 @@
 {
   "name": "@nutui/nutui-react",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
-  "typings": "dist/esm/types/src/packages/nutui.react.d.ts",
+  "typings": "dist/types/nutui.react.d.ts",
   "sideEffects": [
     "*.scss",
     "dist/esm/**/style/*",

@@ -566,6 +566,24 @@
           "show": false,
           "exportEmpty": true,
           "author": "szg2008"
+        },
+        {
+          "name": "DatePicker",
+          "type": "component",
+          "cName": "日期选择器",
+          "desc": "时间选择器，支持日期、年月、时分等维度，通常与弹出层组件配合使用。",
+          "sort": 15,
+          "show": true,
+          "author": "dsj"
+        },
+        {
+          "name": "Skeleton",
+          "type": "component",
+          "cName": "骨架屏",
+          "desc": "在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果。",
+          "sort": 15,
+          "show": true,
+          "author": "swag~jun"
         }
       ]
     },
