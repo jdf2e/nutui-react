@@ -27,7 +27,7 @@ const App = () => {
   return (
     <>
       <h2>基础用法</h2>
-      <Uploader url={uploadUrl} start={onStart}></Uploader>
+      <Uploader url={uploadUrl} start={onStart} />
     </>
   )
 }
@@ -71,7 +71,7 @@ const App = () => {
   return (
     <>
       <h2>直接调起摄像头（移动端生效）</h2>
-      <Uploader capture url={uploadUrl}></Uploader>
+      <Uploader capture url={uploadUrl} />
     </>
   )
 }
@@ -94,7 +94,7 @@ const App = () => {
   return (
     <>
       <h2>上传状态</h2>
-      <Uploader url={uploadUrl} multiple removeImage={onDelete}></Uploader>
+      <Uploader url={uploadUrl} multiple removeImage={onDelete} />
     </>
   )
 }
@@ -115,7 +115,7 @@ const App = () => {
   return (
     <>
       <h2>限制上传数量5个</h2>
-      <Uploader url={uploadUrl} multiple maximum="5"></Uploader>
+      <Uploader url={uploadUrl} multiple maximum="5" />
     </>
   )
 }
@@ -138,7 +138,7 @@ const App = () => {
   return (
     <>
       <h2>限制上传大小（每个文件最大不超过 50kb）</h2>
-      <Uploader url={uploadUrl} multiple maximize={1024 * 50} oversize={onOversize}></Uploader>
+      <Uploader url={uploadUrl} multiple maximize={1024 * 50} oversize={onOversize} />
     </>
   )
 }
@@ -166,8 +166,8 @@ const App = () => {
         url={uploadUrl}
         data={formData}
         headers={formData}
-        withCredentials={true}
-      ></Uploader>
+        withCredentials
+       />
     </>
   )
 }
@@ -191,7 +191,7 @@ const App = () => {
   return (
     <>
       <h2>手动上传</h2>
-      <Uploader url={uploadUrl} maximum="5" autoUpload={false} ref={uploadRef}></Uploader>
+      <Uploader url={uploadUrl} maximum="5" autoUpload={false} ref={uploadRef} />
       <br />
       <Button type="success" size="small" onClick={submitUpload}>
         执行上传
@@ -214,7 +214,7 @@ const App = () => {
   return (
     <>
       <h2>禁用状态</h2>
-      <Uploader disabled></Uploader>
+      <Uploader disabled />
     </>
   )
 }

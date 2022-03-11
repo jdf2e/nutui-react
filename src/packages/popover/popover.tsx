@@ -1,14 +1,8 @@
-import React, {
-  CSSProperties,
-  FunctionComponent,
-  MouseEventHandler,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
-import Trigger from './Trigger'
+import React, { CSSProperties, FunctionComponent, useEffect, useRef, useState } from 'react'
 import ReactDOM from 'react-dom'
+import Trigger from './Trigger'
 import Icon from '@/packages/icon'
+
 export interface PopoverProps {
   list: Array<any>
   theme: string
@@ -45,7 +39,7 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
     ...props,
   }
   const goodItem = useRef(null)
-  let aa = goodItem.current && findDOMNode(goodItem.current)
+  const aa = goodItem.current && findDOMNode(goodItem.current)
   setTimeout(() => {
     if (aa) {
       setElWidth((getEleAttr(aa) as any).width)
@@ -77,10 +71,10 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
       style.top = elHeight + 20
       style.left = 0
     }
-    style.top = style.top + 'px'
-    style.left = style.left + 'px'
-    style.bottom = style.bottom + 'px'
-    style.right = style.right + 'px'
+    style.top += 'px'
+    style.left += 'px'
+    style.bottom += 'px'
+    style.right += 'px'
     return style
   }
   const getArrowStyle = () => {
@@ -98,10 +92,10 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
       style.left = elWidth / 2
       style.top = -20
     }
-    style.top = style.top + 'px'
-    style.left = style.left + 'px'
-    style.bottom = style.bottom + 'px'
-    style.right = style.right + 'px'
+    style.top += 'px'
+    style.left += 'px'
+    style.bottom += 'px'
+    style.right += 'px'
     return style
   }
 
@@ -141,7 +135,7 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
               {list.map((item) => {
                 return (
                   <div key={item.name} className={`title-item ${item.disabled ? 'disabled' : ''}`}>
-                    {item.icon ? <Icon className="item-img" name={item.icon}></Icon> : ''}
+                    {item.icon ? <Icon className="item-img" name={item.icon} /> : ''}
                     <div className="title-name">{item.name}</div>
                   </div>
                 )

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import { useState } from 'react'
 
 const MIN_DISTANCE = 10
 
@@ -42,8 +42,8 @@ export function useTouch() {
 
   const move = ((event: TouchEvent) => {
     const touch = event.touches[0]
-    let dX = touch.clientX - startX
-    let dY = touch.clientY - startY
+    const dX = touch.clientX - startX
+    const dY = touch.clientY - startY
     SetDeltaX(dX)
     SetDeltaY(dY)
     SetOffsetX(Math.abs(dX))

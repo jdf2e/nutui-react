@@ -22,7 +22,7 @@ import { Skeleton } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Skeleton width={250} height={15} animated></Skeleton>
+      <Skeleton width={250} height={15} animated />
     </>
   )
 }
@@ -40,7 +40,7 @@ import { Skeleton } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Skeleton width={250} height={15} row={3} title animated></Skeleton>
+      <Skeleton width={250} height={15} row={3} title animated />
     </>
   )
 }
@@ -58,7 +58,7 @@ import { Skeleton } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Skeleton width={250} height={15} row={3} title animated avatar></Skeleton>
+      <Skeleton width={250} height={15} row={3} title animated avatar />
     </>
   )
 }
@@ -76,7 +76,7 @@ import { Skeleton } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Skeleton width={250} height={15} animated round></Skeleton>
+      <Skeleton width={250} height={15} animated round />
     </>
   )
 }
@@ -123,7 +123,7 @@ const App = () => {
   return (
     <>
       <div className="content">
-        <Switch size="15px" change={(value, event) => changeStatus(value, event)} className={NutSwitchStyle}></Switch>
+        <Switch size="15px" change={(value, event) => changeStatus(value, event)} className={NutSwitchStyle} />
         <Skeleton width={250} height={15} title animated avatar row={3} loading={checked}>
           <div className="container" style={{ display: 'flex' }}>
             <Avatar

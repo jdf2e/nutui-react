@@ -2,8 +2,6 @@ import React, { FunctionComponent } from 'react'
 import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 
-import classNames from 'classnames'
-
 export interface NavBarProps {
   title: string
   desc: string
@@ -49,7 +47,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
         <i
           className={['nut-icon', 'nutui-iconfont', `${b('back')}`].join(' ')}
           onClick={(e) => onClickBack(e)}
-        ></i>
+        />
       )}
       <div className={`${b('title')}`} onClick={(e) => onClickTitle(e)}>
         {title}

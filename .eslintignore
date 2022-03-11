@@ -1,1 +1,7 @@
-/src/packages/**/*.md
+src/sites
+scripts
+node_modules
+dist
+.idea
+.husky
+iconfont.js

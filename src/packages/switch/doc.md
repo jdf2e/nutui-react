@@ -22,7 +22,7 @@ import { Switch } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Switch checked={true}></Switch>
+    <Switch checked />
     </>
   );
 };  
@@ -42,7 +42,7 @@ import { Switch } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Switch checked={true} disable></Switch>
+    <Switch checked disable />
     </>
   );
 };  
@@ -64,7 +64,7 @@ const App = () => {
   }
   return ( 
     <>   
-    <Switch change={(value, event) => change(value, event)}></Switch>
+    <Switch change={(value, event) => change(value, event)} />
     </>
   );
 };  
@@ -92,9 +92,9 @@ const App = () => {
     <>   
     <Switch
       checked={checkedAsync}
-      isAsync={true}
+      isAsync
       change={(value, event) => changeAsync(value, event)}
-    ></Switch>
+     />
     </>
   );
 };  
@@ -112,7 +112,7 @@ import { Switch } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Switch activeColor="blue"></Switch>
+    <Switch activeColor="blue" />
     </>
   );
 };  
@@ -130,7 +130,7 @@ import { Switch } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Switch activeText="开" inactiveText="关"></Switch>
+    <Switch activeText="开" inactiveText="关" />
     </>
   );
 };  

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, FunctionComponent, ChangeEvent, FocusEvent } from 'react'
-import Icon from '@/packages/icon'
 import classNames from 'classnames'
+import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 
 export interface InputNumberProps {
@@ -120,7 +120,7 @@ export const InputNumber: FunctionComponent<
   const reduceNumber = (e: MouseEvent) => {
     reduce && reduce(e)
     if (reduceAllow()) {
-      let output_value = Number(inputValue) - Number(step)
+      const output_value = Number(inputValue) - Number(step)
       emitChange(output_value, e)
     } else {
       overlimit && overlimit(e)

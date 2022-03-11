@@ -10,7 +10,7 @@ function ConfirmDialog(props: ConfirmProps) {
 // 如果是消息提示型弹出框，那么只有确认按钮
 export const normalizeConfig = (_config: ConfirmProps): ConfirmProps => {
   if (_config.isNotice) {
-    let icon = _config.icon
+    let { icon } = _config
     if (!icon && icon !== null) {
       switch (_config.noticeType) {
         case 'alert':

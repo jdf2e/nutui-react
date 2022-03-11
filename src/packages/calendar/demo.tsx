@@ -70,7 +70,7 @@ const CalendarDemo = () => {
           title="选择单个日期"
           desc={date ? `${date} ${dateWeek}` : '请选择'}
           onClick={openSwitch}
-        ></Cell>
+        />
         <Calendar
           visible={isVisible}
           defaultValue={date}
@@ -78,12 +78,12 @@ const CalendarDemo = () => {
           endDate="2029-11-11"
           onClose={closeSwitch}
           onChoose={setChooseValue}
-        ></Calendar>
+        />
         <Cell
           title="选择日期区间"
           desc={date1 ? `${date1[0]}至${date1[1]}` : '请选择'}
           onClick={openSwitch1}
-        ></Cell>
+        />
         <Calendar
           visible={isVisible1}
           defaultValue={date1}
@@ -92,18 +92,18 @@ const CalendarDemo = () => {
           endDate="2021-01-08"
           onClose={closeSwitch1}
           onChoose={setChooseValue1}
-        ></Calendar>
+        />
         <h2>自定义日历-自动回填</h2>
-        <Cell title="选择日期" desc={date3 ? `${date3}` : '请选择'} onClick={openSwitch3}></Cell>
+        <Cell title="选择日期" desc={date3 ? `${date3}` : '请选择'} onClick={openSwitch3} />
         <Calendar
           visible={isVisible3}
           defaultValue={date3}
           startDate=""
           endDate=""
-          isAutoBackFill={true}
+          isAutoBackFill
           onClose={closeSwitch3}
           onChoose={setChooseValue3}
-        ></Calendar>
+        />
         <h2>平铺展示</h2>
         <div
           className="test-calendar-wrapper"
@@ -112,9 +112,9 @@ const CalendarDemo = () => {
           <Calendar
             poppable={false}
             defaultValue={date2}
-            isAutoBackFill={true}
+            isAutoBackFill
             onChoose={setChooseValue2}
-          ></Calendar>
+          />
         </div>
       </div>
     </>

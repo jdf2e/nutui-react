@@ -21,44 +21,34 @@ const CheckBoxDemo = () => {
         >
           基本用法-左右
         </h2>
-        <Cell className={'nut-cell'}>
-          <Checkbox textPosition={'left'} label={'复选框'} checked={checked}></Checkbox>
+        <Cell className="nut-cell">
+          <Checkbox textPosition="left" label="复选框" checked={checked} />
         </Cell>
-        <Cell className={'nut-cell'}>
-          <Checkbox textPosition={'right'} label={'复选框'} checked={false}></Checkbox>
+        <Cell className="nut-cell">
+          <Checkbox textPosition="right" label="复选框" checked={false} />
         </Cell>
         <h2>禁用状态</h2>
-        <Cell className={'nut-cell'}>
-          <Checkbox
-            textPosition={'right'}
-            label={'未选时禁用状态'}
-            checked={false}
-            disabled={true}
-          ></Checkbox>
+        <Cell className="nut-cell">
+          <Checkbox textPosition="right" label="未选时禁用状态" checked={false} disabled />
         </Cell>
-        <Cell className={'nut-cell'}>
-          <Checkbox
-            textPosition={'right'}
-            label={'选中时禁用状态'}
-            checked={true}
-            disabled={true}
-          ></Checkbox>
+        <Cell className="nut-cell">
+          <Checkbox textPosition="right" label="选中时禁用状态" checked disabled />
         </Cell>
         <h2>自定义尺寸</h2>
-        <Cell className={'nut-cell'}>
-          <Checkbox label={'自定义尺寸25'} iconSize={25}></Checkbox>
+        <Cell className="nut-cell">
+          <Checkbox label="自定义尺寸25" iconSize={25} />
         </Cell>
-        <Cell className={'nut-cell'}>
-          <Checkbox label={'自定义尺寸10'} iconSize={10}></Checkbox>
+        <Cell className="nut-cell">
+          <Checkbox label="自定义尺寸10" iconSize={10} />
         </Cell>
         <h2>自定义图标</h2>
-        <Cell className={'nut-cell'}>
-          <Checkbox checked={false} iconName="checklist" iconActiveName={'checklist'}>
+        <Cell className="nut-cell">
+          <Checkbox checked={false} iconName="checklist" iconActiveName="checklist">
             自定义图标
           </Checkbox>
         </Cell>
         <h2>点击触发change事件</h2>
-        <Cell className={'nut-cell'}>
+        <Cell className="nut-cell">
           <Checkbox
             checked={false}
             onChange={(state, label) => {

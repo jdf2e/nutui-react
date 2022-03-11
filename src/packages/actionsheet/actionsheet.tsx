@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect } from 'react'
+import React, { FunctionComponent } from 'react'
 import Popup from '@/packages/popup'
 import bem from '@/utils/bem'
 

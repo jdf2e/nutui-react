@@ -95,14 +95,12 @@ export const TextArea: FunctionComponent<
 
   return (
     <div
-      className={`${textareaBem()} ${disabled ? textareaBem('disabled') : ''} ${
-        className ? className : ''
-      }`}
+      className={`${textareaBem()} ${disabled ? textareaBem('disabled') : ''} ${className || ''}`}
     >
       <textarea
         className={textareaBem('textarea')}
         style={{
-          textAlign: textAlign,
+          textAlign,
           resize: `${autosize ? 'vertical' : 'none'}` as any,
           ...style,
         }}

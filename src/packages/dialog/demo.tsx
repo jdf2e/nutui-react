@@ -18,7 +18,7 @@ const DialogDemo = () => {
               content: '支持函数调用和组件调用两种方式。',
             })
           }}
-        ></Cell>
+        />
         <Cell
           title="无标题弹框"
           onClick={() => {
@@ -26,7 +26,7 @@ const DialogDemo = () => {
               content: '无标题弹框',
             })
           }}
-        ></Cell>
+        />
         <Cell
           title="提示弹框"
           onClick={() => {
@@ -36,7 +36,7 @@ const DialogDemo = () => {
               noCancelBtn: true,
             })
           }}
-        ></Cell>
+        />
         <Cell
           title="底部按钮 垂直调用"
           onClick={() => {
@@ -46,9 +46,9 @@ const DialogDemo = () => {
               footerDirection: 'vertical',
             })
           }}
-        ></Cell>
+        />
         <h2>组件调用</h2>
-        <Cell title="基础弹框" onClick={() => setVisible1(true)}></Cell>
+        <Cell title="基础弹框" onClick={() => setVisible1(true)} />
         <Dialog
           title="组件调用"
           visible={visible1}
@@ -57,11 +57,11 @@ const DialogDemo = () => {
         >
           如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
         </Dialog>
-        <Cell title="底部按钮 垂直调用" onClick={() => setVisible2(true)}></Cell>
+        <Cell title="底部按钮 垂直调用" onClick={() => setVisible2(true)} />
         <Dialog
           title="组件调用"
           visible={visible2}
-          lockScroll={true}
+          lockScroll
           footerDirection="vertical"
           onOk={() => setVisible2(false)}
           onCancel={() => setVisible2(false)}

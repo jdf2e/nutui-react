@@ -60,9 +60,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<unknown, Partial<IPickerSlotP
   const isHidden = (index: number) => {
     if (index >= currIndex + 8 || index <= currIndex - 8) {
       return true
-    } else {
-      return false
     }
+    return false
   }
 
   const setTransform = (translateY = 0, type: string, time = 1000, deg: string) => {
@@ -146,8 +145,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<unknown, Partial<IPickerSlotP
 
     let moveTime = lastTime - touchParams.startTime
     if (moveTime <= 300) {
-      move = move * 2
-      moveTime = moveTime + 1000
+      move *= 2
+      moveTime += 1000
       setMove(move, 'end', moveTime)
     } else {
       setMove(move, 'end', moveTime)
@@ -226,11 +225,11 @@ const InternalPickerSlot: ForwardRefRenderFunction<unknown, Partial<IPickerSlotP
             )
           })}
 
-          {listData?.length === 1 && <div className="nut-picker-placeholder"></div>}
+          {listData?.length === 1 && <div className="nut-picker-placeholder" />}
         </div>
       </div>
-      <div className="nut-picker-mask"></div>
-      <div className="nut-picker-indicator"></div>
+      <div className="nut-picker-mask" />
+      <div className="nut-picker-indicator" />
     </div>
   )
 }

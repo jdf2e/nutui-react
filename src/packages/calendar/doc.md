@@ -63,9 +63,9 @@ import { Calendar } from '@nutui/nutui-react';
 <Calendar
     poppable={ false }
     defaultValue={ date2 }
-    isAutoBackFill={ true }
+    isAutoBackFill
     onChoose={ setChooseValue2 }
-></Calendar>
+ />
 </div>
 ```
 

@@ -1,6 +1,7 @@
-import React, { useState, useEffect, MutableRefObject, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import Picker from './picker'
 import Cell from '@/packages/cell'
+
 interface pickerRefState {
   updateChooseValue: (index: number, value: string, cacheValueData: any[]) => void
 }
@@ -143,16 +144,16 @@ const PickerDemo = () => {
   ])
 
   const setChooseValueCustmer = (chooseData: any[]) => {
-    var str = chooseData.map((item) => item.value).join('-')
+    const str = chooseData.map((item) => item.value).join('-')
     setCityCustmer(str)
     console.log('多级联动用法选中项：', str)
   }
 
   const closeUpdateChooseValueCustmer = (chooseData: any[], ref: any) => {
-    //此处模拟查询API，如果数据缓存了不需要再重新请求
+    // 此处模拟查询API，如果数据缓存了不需要再重新请求
     setTimeout(() => {
-      let { label, value } = chooseData[0]
-      var resItems = APIData.find((item) => item.label == label)
+      const { label, value } = chooseData[0]
+      const resItems = APIData.find((item) => item.label == label)
       if (resItems && resItems.array.length) {
         setCustmerCityData((data) => {
           const result = [...data]
@@ -170,10 +171,10 @@ const PickerDemo = () => {
   const updateChooseValueCustmer = (index: number, resValue: IResValue, cacheValueData: any[]) => {
     // 本demo为二级联动，所以限制只有首列变动的时候触发事件
     if (index === 0) {
-      //此处模拟查询API，如果数据缓存了不需要再重新请求
-      let { label, value } = resValue
+      // 此处模拟查询API，如果数据缓存了不需要再重新请求
+      const { label, value } = resValue
       setTimeout(() => {
-        var resItems = APIData.find((item) => item.label == label)
+        const resItems = APIData.find((item) => item.label == label)
         if (resItems && resItems.array.length) {
           let cityData: any[] = []
           setCustmerCityData((data) => {
@@ -194,7 +195,7 @@ const PickerDemo = () => {
     <>
       <div className="demo">
         <h2>基础用法</h2>
-        <Cell isLink={true} onClick={() => setIsVisible1(!isVisible1)}>
+        <Cell isLink onClick={() => setIsVisible1(!isVisible1)}>
           <span>
             <label>基础用法</label>
           </span>
@@ -205,9 +206,9 @@ const PickerDemo = () => {
           onClose={() => setIsVisible1(false)}
           defaultValueData={[]}
           ref={pickerRef1}
-        ></Picker>
+        />
         <h2>多列用法</h2>
-        <Cell isLink={true} onClick={() => setIsVisible2(!isVisible2)}>
+        <Cell isLink onClick={() => setIsVisible2(!isVisible2)}>
           <span>
             <label>多列用法</label>
           </span>
@@ -219,9 +220,9 @@ const PickerDemo = () => {
           defaultValueData={['周四', '下午']}
           onConfirm={(list: any[]) => console.log('多列用法选中项：', list)}
           ref={pickerRef2}
-        ></Picker>
+        />
         <h2>多级联动</h2>
-        <Cell isLink={true} onClick={() => setIsVisible3(!isVisible3)}>
+        <Cell isLink onClick={() => setIsVisible3(!isVisible3)}>
           <span>
             <label>
               多级联动
@@ -240,7 +241,7 @@ const PickerDemo = () => {
           }
           onCloseUpdate={(list: any[]) => closeUpdateChooseValueCustmer(list, pickerRef3)}
           ref={pickerRef3}
-        ></Picker>
+        />
       </div>
     </>
   )

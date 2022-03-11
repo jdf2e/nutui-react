@@ -15,7 +15,7 @@ import { NoticeBar } from '@nutui/nutui-react';
 ### 基本用法
 
 ```tsx
-<NoticeBar text={text} background={`rgba(251, 248, 220, 1)`} color={`#D9500B`}></NoticeBar>
+<NoticeBar text={text} background="rgba(251, 248, 220, 1)" color="#D9500B" />
 ```
 ```javascript
 const text = '华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！'
@@ -27,18 +27,18 @@ const text = '华为畅享9新品即将上市，活动期间0元预约可参与�
 <NoticeBar
     text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
     scrollable={false}
-    background={`rgba(251, 248, 220, 1)`}
-    color={`#D9500B`}
-></NoticeBar>
+    background="rgba(251, 248, 220, 1)"
+    color="#D9500B"
+ />
 ```
 
 ### 通告栏模式--关闭模式
 ```tsx
 <NoticeBar
-    closeMode={true}
+    closeMode
     click={hello}
-    background={`rgba(251, 248, 220, 1)`}
-    color={`#D9500B`}
+    background="rgba(251, 248, 220, 1)"
+    color="#D9500B"
 >
     华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI
     WATCH等好礼，更多产品信息请持续关注！
@@ -53,11 +53,9 @@ const hello = () => {
 ### 通告栏模式--链接模式
 ```tsx
 <NoticeBar
-    leftIcon={
-    'https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png'
-    }
-    background={`rgba(251, 248, 220, 1)`}
-    color={`#D9500B`}
+    leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+    background="rgba(251, 248, 220, 1)"
+    color="#D9500B"
 >
     <a href="https://www.jd.com">京东商城</a>
 </NoticeBar>
@@ -75,10 +73,10 @@ const hello = () => {
     click={(item) => {
         go(item)
     }}
-    closeMode={true}
-    background={`rgba(251, 248, 220, 1)`}
-    color={`#D9500B`}
- ></NoticeBar>
+    closeMode
+    background="rgba(251, 248, 220, 1)"
+    color="#D9500B"
+  />
 ```
 ```javascript
 
@@ -98,8 +96,8 @@ const go = (item: any) => {
     list={horseLamp2}
     speed={10}
     standTime={2000}
-    complexAm={true}
-></NoticeBar>
+    complexAm
+ />
 ```
 ```javascript
 const horseLamp2 = ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
@@ -134,13 +132,13 @@ const  horseLamp3 = ['惊喜红包免费领1', '爆款准点秒2', '买超值优
 
 ```tsx
  <NoticeBar
-    className={'custom'}
+    className="custom"
     direction="vertical"
     list={horseLamp4}
     speed={10}
     standTime={1000}
-    rightIcon={<Icon name={'fabulous'} size="16" color="#f0250f" />}
-></NoticeBar>
+    rightIcon={<Icon name="fabulous" size="16" color="#f0250f" />}
+ />
 ```
 ```javascript
 const horseLamp4 = ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']

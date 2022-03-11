@@ -20,7 +20,7 @@ import { Pagination } from '@nutui/nutui-react';
 const App = () => {
   const [currentPage1, setCurrentPage1] = useState(1)
   const pageChange1 = (v: any) => {
-    let c = v
+    const c = v
     setCurrentPage1(c)
   }
   return (
@@ -45,7 +45,7 @@ import { Pagination } from '@nutui/nutui-react';
 const App = () => {
   const [currentPage2, setCurrentPage2] = useState(1)
   const pageChange2 = (v: any) => {
-    let c = v
+    const c = v
     setCurrentPage2(c)
   }
   return (
@@ -71,7 +71,7 @@ import { Pagination } from '@nutui/nutui-react';
 const App = () => {
   const [currentPage3, setCurrentPage3] = useState(1)
   const pageChange3 = (v: any) => {
-    let c = v
+    const c = v
     setCurrentPage3(c)
   }
   return (
@@ -97,7 +97,7 @@ import { Pagination,Icon } from '@nutui/nutui-react';
 const App = () => {
   const [currentPage4, setCurrentPage4] = useState(1)
   const pageChange4 = (v: any) => {
-    let c = v
+    const c = v
     setCurrentPage4(c)
   }
   const pageNodeRender = (page: any) => {

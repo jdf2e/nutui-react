@@ -4,7 +4,7 @@ import reactRefresh from '@vitejs/plugin-react-refresh'
 const atImport = require('postcss-import')
 const path = require('path')
 
-const resolve = path.resolve
+const { resolve } = path
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/react/',

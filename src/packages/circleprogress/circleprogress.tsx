@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
-import bem from '@/utils/bem'
 import classNames from 'classnames'
+import bem from '@/utils/bem'
 
 export interface CircleProgressProps {
   strokeInnerWidth: string | number
@@ -35,7 +35,7 @@ export const CircleProgress: FunctionComponent<
   const classes = classNames(className, b(''))
   const option = () => {
     // 所有进度条的可配置项
-    let baseOption = {
+    const baseOption = {
       radius: 50,
       strokeOutWidth: 10,
       backColor: '#d9d9d9',
@@ -49,7 +49,7 @@ export const CircleProgress: FunctionComponent<
     // 圆心位置自动生成
     baseOption.cy = baseOption.cx = baseOption.radius + baseOption.strokeOutWidth
     baseOption.size = (baseOption.radius + baseOption.strokeOutWidth) * 2
-    baseOption.startPosition = 'rotate(-90,' + baseOption.cx + ',' + baseOption.cy + ')'
+    baseOption.startPosition = `rotate(-90,${baseOption.cx},${baseOption.cy})`
     return baseOption
   }
   const styles: React.CSSProperties = {
@@ -58,8 +58,8 @@ export const CircleProgress: FunctionComponent<
     ...style,
   }
   const arcLength = () => {
-    let circleLength = Math.floor(2 * Math.PI * option().radius)
-    let progressLength = ((progress as number) / 100) * circleLength
+    const circleLength = Math.floor(2 * Math.PI * option().radius)
+    const progressLength = ((progress as number) / 100) * circleLength
     return `${progressLength},${circleLength}`
   }
   return (

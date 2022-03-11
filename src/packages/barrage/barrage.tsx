@@ -61,7 +61,7 @@ const InternalBarrage: ForwardRefRenderFunction<unknown, Partial<BarrageProps>> 
 
   const play = () => {
     const _index = loop ? index.current % barrageList.length : index.current
-    let el = document.createElement(`div`)
+    const el = document.createElement(`div`)
     el.innerHTML = barrageList[_index] as string
     el.classList.add('barrage-item')
     ;(barrageContainer.current as HTMLDivElement).appendChild(el)
@@ -71,8 +71,8 @@ const InternalBarrage: ForwardRefRenderFunction<unknown, Partial<BarrageProps>> 
     console.log(el.offsetWidth, el.offsetHeight)
     el.classList.add('move')
     el.style.animationDuration = `${speeds}ms`
-    el.style.top = (_index % rows) * (height + top) + 20 + 'px'
-    el.style.width = width + 20 + 'px'
+    el.style.top = `${(_index % rows) * (height + top) + 20}px`
+    el.style.width = `${width + 20}px`
     el.style.setProperty('--move-distance', `-${barrageCWidth.current}px`)
     el.dataset.index = `${_index}`
     el.addEventListener('animationend', () => {
@@ -83,7 +83,7 @@ const InternalBarrage: ForwardRefRenderFunction<unknown, Partial<BarrageProps>> 
 
   return (
     <div className={classes} ref={barrageBody} {...restProps}>
-      <div ref={barrageContainer} className="bContainer"></div>
+      <div ref={barrageContainer} className="bContainer" />
     </div>
   )
 }

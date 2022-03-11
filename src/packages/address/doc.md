@@ -35,10 +35,10 @@ const App = () => {
   const [town, setTown] = useState([])
 
   const [address, setAddress] = useState({
-    province: province,
-    city: city,
-    country: country,
-    town: town,
+    province,
+    city,
+    country,
+    town,
   })
 
   const onChange = (cal) => {
@@ -77,7 +77,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title={`选择地址`} desc={text}  onClick={()=>setNormal(true)}></Cell>
+      <Cell title="选择地址" desc={text}  onClick={()=>setNormal(true)} />
       <Address
           modelValue={normal}
           province={province}
@@ -87,7 +87,7 @@ const App = () => {
           customAddressTitle="请选择所在地区"
           onChange={onChange}
           onClose={close}
-      ></Address>
+       />
     </>
   );
 };
@@ -118,10 +118,10 @@ const App = () => {
   const [country, setCountry] = useState([])
   const [town, setTown] = useState([])
   const [address, setAddress] = useState({
-    province: province,
-    city: city,
-    country: country,
-    town: town,
+    province,
+    city,
+    country,
+    town,
   })
 
   const onChange = (cal) => {
@@ -157,7 +157,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title={`选择地址`} desc={text}  onClick={()=>setNormal2(true)}></Cell>
+      <Cell title="选择地址" desc={text}  onClick={()=>setNormal2(true)} />
       <Address
           modelValue={normal2}
           type="custom2"
@@ -169,7 +169,7 @@ const App = () => {
           onChange={onChange}
           onClose={close}
           customAddressTitle="请选择所在地区"
-      ></Address>
+       />
     </>
   );
 };
@@ -184,6 +184,7 @@ export default App;
 ```tsx
 import  React,{useState} from "react";
 import { Address, Cell ,Popup} from '@nutui/nutui-react';
+
 const App = () => {
   const [text, setText] = useState('请选择地址')
   const [exist,setExist] = useState(false)
@@ -242,7 +243,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title={`选择地址`} desc={text}  onClick={()=>setExist(true)}></Cell>
+      <Cell title="选择地址" desc={text}  onClick={()=>setExist(true)} />
       <Address
           modelValue={exist}
           type="exist"
@@ -252,7 +253,7 @@ const App = () => {
           isShowCustomAddress={false}
           onSelected={selected}
           existAddressTitle="配送至"
-      ></Address>
+       />
     </>
   );
 };
@@ -266,6 +267,7 @@ export default App;
 ```tsx
 import  React,{useState} from "react";
 import { Address, Cell ,Popup} from '@nutui/nutui-react';
+
 const App = () => {
   const [text, setText] = useState('请选择地址')
   const [customImg,setCustomImg] = useState(false)
@@ -333,7 +335,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title={`选择地址`} desc={text}  onClick={()=>setCustomImg(true)}></Cell>
+      <Cell title="选择地址" desc={text}  onClick={()=>setCustomImg(true)} />
       <Address
           modelValue={customImg}
           type="exist"
@@ -345,7 +347,7 @@ const App = () => {
           defaultIcon={icon.defaultIcon}
           selectedIcon={icon.selectedIcon}
           closeBtnIcon={icon.closeBtnIcon}
-      ></Address>
+       />
     </>
   );
 };
@@ -360,6 +362,7 @@ export default App;
 ```tsx
 import  React,{useState} from "react";
 import { Address, Cell ,Popup} from '@nutui/nutui-react';
+
 const App = () => {
   const [text, setText] = useState('请选择地址')
   const [other,setOther] = useState(false)
@@ -382,10 +385,10 @@ const App = () => {
   const [country, setCountry] = useState([])
   const [town, setTown] = useState([])
   const [address, setAddress] = useState({
-    province: province,
-    city: city,
-    country: country,
-    town: town,
+    province,
+    city,
+    country,
+    town,
   })
   const [existAddress, setExistAddress] = useState([
       {
@@ -460,11 +463,9 @@ const App = () => {
         if (provinceName) {
           setText(provinceName + cityName + countyName + townName + addressDetail)
         }
-      } else {
-        if ((val.data as AddressResult).addressStr) {
+      } else if ((val.data as AddressResult).addressStr) {
           setText((val.data as AddressResult).addressStr)
         }
-      }
   }
   const switchModule = (val) => {
       if (val.type == 'custom') {
@@ -479,7 +480,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title={`选择地址`} desc={text}  onClick={()=>setOther(true)}></Cell>
+      <Cell title="选择地址" desc={text}  onClick={()=>setOther(true)} />
       <Address
           modelValue={other}
           type="exist"
@@ -495,7 +496,7 @@ const App = () => {
           customAndExistTitle="选择其他地址"
           switchModule={switchModule}
           closeMask={closeMask}
-      ></Address>
+       />
     </>
   );
 };

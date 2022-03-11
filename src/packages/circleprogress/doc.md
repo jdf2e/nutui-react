@@ -22,7 +22,7 @@ import { CircleProgress } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <CircleProgress progress={10}></CircleProgress>
+      <CircleProgress progress={10} />
     </>
   )
 }
@@ -46,7 +46,7 @@ const progressOption = {
 const App = () => {
   return (
     <>
-      <CircleProgress progress={50} progressOption={progressOption}></CircleProgress>
+      <CircleProgress progress={50} progressOption={progressOption} />
     </>
   )
 }
@@ -69,7 +69,7 @@ const progressOption = {
 const App = () => {
   return (
     <>
-      <CircleProgress progress={50} isAuto={true}>
+      <CircleProgress progress={50} isAuto>
         <div>自定义</div>
       </CircleProgress>
     </>
@@ -129,7 +129,7 @@ const App = () => {
           progress={percent}
           progressOption={progressOption}
           strokeInnerWidth={strokeInnerWidth}
-        ></CircleProgress>
+         />
       </div>
       <div className="demo__btn" style={demoBtnStyle}>
         <Button type="primary" onClick={setReduceVal} style={{ marginRight: '10px' }}>

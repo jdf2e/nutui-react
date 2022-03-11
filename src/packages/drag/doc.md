@@ -34,7 +34,7 @@ const App = () => {
   }
   return (
     <Drag>
-        <div class="touch-dom" style={btnStyle}>触摸移动</div>
+        <div className="touch-dom" style={btnStyle}>触摸移动</div>
     </Drag>
  );
 };
@@ -63,10 +63,10 @@ const App = () => {
   }
   return (
     <>
-    <Drag direction={'x'} style={{ top: '200px', left: '8px' }}>
+    <Drag direction="x" style={{ top: '200px', left: '8px' }}>
         <span style={btnStyle}>只能X轴拖拽</span>
       </Drag>
-      <Drag direction={'y'} style={{ top: '200px', right: '50px' }}>
+      <Drag direction="y" style={{ top: '200px', right: '50px' }}>
         <span style={btnStyle}>只能Y轴拖拽</span>
       </Drag>
     </>
@@ -96,8 +96,8 @@ const App = () => {
     background: 'linear-gradient(135deg,#fa2c19 0,#fa6419 100%)',
   }
   return (
-    <Drag direction={'x'} attract={true}>
-      <div class="touch-dom" style={btnStyle}>拖动我</div>
+    <Drag direction="x" attract>
+      <div className="touch-dom" style={btnStyle}>拖动我</div>
     </Drag>
  );
 };
@@ -142,7 +142,7 @@ const App = () => {
           height: '200px',
           border: '1px solid red',
         }}
-      ></div>
+       />
       <Drag
         boundary={{ top: 1, left: 9, bottom: bottom(), right: right() }}
         style={{ top: '40px', left: '50px' }}

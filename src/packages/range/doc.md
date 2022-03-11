@@ -15,7 +15,7 @@ import { Range } from '@nutui/nutui-react';
 ### 基础用法
 
 ```jsx
-<Range modelValue={40}></Range>
+<Range modelValue={40} />
 ```
 
 ### 双滑块
@@ -27,7 +27,7 @@ import { Range } from '@nutui/nutui-react';
   change={(value) => {
     change(value)
   }}
-></Range>
+ />
 ```
 
 ### 指定范围
@@ -40,7 +40,7 @@ import { Range } from '@nutui/nutui-react';
   change={(value) => {
     change(value)
   }}
-></Range>
+ />
 ```
 
 ### 设置步长
@@ -52,7 +52,7 @@ import { Range } from '@nutui/nutui-react';
   change={(value: any) => {
     change(value, 'value1')
   }}
-></Range>
+ />
 ```
 
 ### 隐藏范围
@@ -60,11 +60,11 @@ import { Range } from '@nutui/nutui-react';
 ```jsx
 <Range
   modelValue={30}
-  hiddenRange={true}
+  hiddenRange
   change={(value: any) => {
     change(value)
   }}
-></Range>
+ />
 ```
 
 ### 隐藏标签
@@ -72,11 +72,11 @@ import { Range } from '@nutui/nutui-react';
 ```jsx
 <Range
   modelValue={20}
-  hiddenTag={true}
+  hiddenTag
   change={(value: any) => {
     change(value)
   }}
-></Range>
+ />
 ```
 
 ### 禁用
@@ -88,7 +88,7 @@ import { Range } from '@nutui/nutui-react';
   change={(value: any) => {
     change(value)
   }}
-></Range>
+ />
 ```
 
 ### 自定义样式
@@ -102,7 +102,7 @@ import { Range } from '@nutui/nutui-react';
   change={(value: number) => {
     change(value)
   }}
-></Range>
+ />
 ```
 
 ### 自定义按钮
@@ -114,14 +114,14 @@ import { Range } from '@nutui/nutui-react';
   change={(value: number) => {
     change(value, 'value2')
   }}
-></Range>
+ />
 ```
 
 ```js
 const [value1, SetValue1] = useState(40)
 const [value2, SetValue2] = useState(60)
 const change = (value: number, name?: string) => {
-  Toast.text('当前值：' + value)
+  Toast.text(`当前值：${  value}`)
   switch (name) {
     case 'value1':
       SetValue1(value)

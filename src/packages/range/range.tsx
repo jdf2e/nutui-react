@@ -1,12 +1,4 @@
-import React, {
-  FunctionComponent,
-  useEffect,
-  useState,
-  useRef,
-  useLayoutEffect,
-  ReactNode,
-  CSSProperties,
-} from 'react'
+import React, { FunctionComponent, useEffect, useState, useRef, CSSProperties } from 'react'
 
 import bem from '@/utils/bem'
 import { useTouch } from '../../utils/useTouch'
@@ -105,7 +97,7 @@ export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes
     }
 
     const calcMainAxis = () => {
-      let modelVal = initValue || initValue === 0 ? initValue : modelValue
+      const modelVal = initValue || initValue === 0 ? initValue : modelValue
       if (isRange(modelVal)) {
         return `${((modelVal[1] - modelVal[0]) * 100) / scope()}%`
       }
@@ -113,7 +105,7 @@ export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes
     }
 
     const calcOffset = () => {
-      let modelVal = initValue || initValue === 0 ? initValue : modelValue
+      const modelVal = initValue || initValue === 0 ? initValue : modelValue
       if (isRange(modelVal)) {
         return `${((modelVal[0] - Number(min)) * 100) / scope()}%`
       }
@@ -150,7 +142,7 @@ export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes
       } else {
         value = format(value)
       }
-      let modelVal = initValue || initValue === 0 ? initValue : modelValue
+      const modelVal = initValue || initValue === 0 ? initValue : modelValue
 
       if (!isSameValue(value, modelVal)) {
         SetInitValue(value)
@@ -212,13 +204,13 @@ export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes
     }
 
     const curValue = (idx?: number) => {
-      let modelVal = initValue || initValue === 0 ? initValue : modelValue
+      const modelVal = initValue || initValue === 0 ? initValue : modelValue
       const value = typeof idx === 'number' ? modelVal[idx] : modelVal
       return value
     }
 
     return (
-      <div className={`nut-range-container ${className ? className : ''}`}>
+      <div className={`nut-range-container ${className || ''}`}>
         {!hiddenRange ? <div className="min">{+min}</div> : null}
         <div
           ref={root}
@@ -262,9 +254,7 @@ export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes
                       e.stopPropagation()
                     }}
                   >
-                    {button ? (
-                      button
-                    ) : (
+                    {button || (
                       <div className="nut-range-button" style={buttonStyle()}>
                         {!hiddenTag ? <div className="number">{curValue(index)}</div> : null}
                       </div>
@@ -297,9 +287,7 @@ export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes
                   e.stopPropagation()
                 }}
               >
-                {button ? (
-                  button
-                ) : (
+                {button || (
                   <div className="nut-range-button" style={buttonStyle()}>
                     {!hiddenTag ? <div className="number">{curValue()}</div> : null}
                   </div>

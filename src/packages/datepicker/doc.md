@@ -23,14 +23,14 @@ const App = () => {
    const desc1 = '2020-1-1'
   return ( 
     <>   
-    <Cell title="日期选择" desc={desc1} onClick={() => setShow1(true)}></Cell>
+    <Cell title="日期选择" desc={desc1} onClick={() => setShow1(true)} />
     <DatePicker
       title="日期选择"
       visible={show1}
       onCloseDatePicker={() => setShow1(false)}
       onConfirmDatePicker={(list) => setDesc1(list.join('-'))}
       isShowChinese={false}
-    ></DatePicker>
+     />
     </>
   );
 };  
@@ -51,7 +51,7 @@ const App = () => {
   const desc2 = '2020-1-1'
   return ( 
     <>   
-    <Cell title="日期选择" desc={desc2} onClick={() => setShow2(true)}></Cell>
+    <Cell title="日期选择" desc={desc2} onClick={() => setShow2(true)} />
      <DatePicker
         title="日期选择"
         minDate={minDate}
@@ -59,7 +59,7 @@ const App = () => {
         visible={show2}
         onCloseDatePicker={() => setShow2(false)}
         onConfirmDatePicker={(list) => setDesc2(list.join('-'))}
-      ></DatePicker>
+       />
     </>
   );
 };  
@@ -81,7 +81,7 @@ const App = () => {
   const desc3 = '2020年-1月-1日-0时-0分'
   return ( 
     <>   
-    <Cell title="日期时间选择" desc={desc3} onClick={() => setShow3(true)}></Cell>
+    <Cell title="日期时间选择" desc={desc3} onClick={() => setShow3(true)} />
     <DatePicker
       title="日期时间选择"
       minDate={minDate}
@@ -90,7 +90,7 @@ const App = () => {
       type="datetime"
       onCloseDatePicker={() => setShow3(false)}
       onConfirmDatePicker={(list) => setDesc3(list.join('-'))}
-    ></DatePicker>
+     />
     </>
   );
 };  
@@ -111,7 +111,7 @@ const App = () => {
   const desc4 = '0时-0分-0秒'
   return ( 
     <>   
-    <Cell title="时间选择" desc={desc4} onClick={() => setShow4(true)}></Cell>
+    <Cell title="时间选择" desc={desc4} onClick={() => setShow4(true)} />
     <DatePicker
       title="时间选择"
       type="time"
@@ -120,7 +120,7 @@ const App = () => {
       visible={show4}
       onCloseDatePicker={() => setShow4(false)}
       onConfirmDatePicker={(list) => setDesc4(list.join('-'))}
-    ></DatePicker>
+     />
     </>
   );
 };  
@@ -141,7 +141,7 @@ const App = () => {
   const desc5 = '0时-0分-0秒'
   return ( 
     <>   
-    <Cell title="时间选择" desc={desc5} onClick={() => setShow5(true)}></Cell>
+    <Cell title="时间选择" desc={desc5} onClick={() => setShow5(true)} />
     <DatePicker
       title="时间选择"
       type="time"
@@ -151,7 +151,7 @@ const App = () => {
       minuteStep={5}
       onCloseDatePicker={() => setShow5(false)}
       onConfirmDatePicker={(list) => setDesc5(list.join('-'))}
-    ></DatePicker>
+     />
     </>
   );
 };  

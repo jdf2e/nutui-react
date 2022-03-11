@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { ActionSheet, ItemType } from './actionsheet'
 import Cell from '@/packages/cell'
+
 interface Item {
   name: string
   subname?: string
@@ -67,19 +68,19 @@ const ActionSheetDemo = () => {
     <>
       <div className="demo">
         <h2>基本用法</h2>
-        <Cell isLink={true} onClick={() => setIsVisible1(!isVisible1)}>
+        <Cell isLink onClick={() => setIsVisible1(!isVisible1)}>
           <span>
             <label>基础用法</label>
           </span>
           <div className="selected-option">{val1}</div>
         </Cell>
-        <Cell isLink={true} onClick={() => setIsVisible2(!isVisible2)}>
+        <Cell isLink onClick={() => setIsVisible2(!isVisible2)}>
           <span>
             <label>展示取消按钮</label>
           </span>
           <div className="selected-option">{val2}</div>
         </Cell>
-        <Cell isLink={true} onClick={() => setIsVisible3(!isVisible3)}>
+        <Cell isLink onClick={() => setIsVisible3(!isVisible3)}>
           <span>
             <label>展示描述信息</label>
           </span>
@@ -87,7 +88,7 @@ const ActionSheetDemo = () => {
         </Cell>
         <h2>选项状态</h2>
 
-        <Cell isLink={true} onClick={() => setIsVisible4(!isVisible4)}>
+        <Cell isLink onClick={() => setIsVisible4(!isVisible4)}>
           <span>
             <label>选项状态</label>
           </span>
@@ -99,7 +100,7 @@ const ActionSheetDemo = () => {
           menuItems={menuItemsOne}
           choose={chooseItem}
           cancel={() => setIsVisible1(false)}
-        ></ActionSheet>
+        />
         {/* demo(带取消按钮） */}
         <ActionSheet
           visible={isVisible2}
@@ -107,7 +108,7 @@ const ActionSheetDemo = () => {
           menuItems={menuItemsOne}
           choose={chooseItemTwo}
           cancel={() => setIsVisible2(false)}
-        ></ActionSheet>
+        />
         {/* 展示描述信息 */}
         <ActionSheet
           visible={isVisible3}
@@ -116,7 +117,7 @@ const ActionSheetDemo = () => {
           choose={chooseItemThree}
           cancelTxt="取消"
           cancel={() => setIsVisible3(false)}
-        ></ActionSheet>
+        />
         {/* demo 选项状态 */}
         <ActionSheet
           visible={isVisible4}
@@ -127,7 +128,7 @@ const ActionSheetDemo = () => {
           choose={() => {
             setIsVisible4(false)
           }}
-        ></ActionSheet>
+        />
       </div>
     </>
   )
