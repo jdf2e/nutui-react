@@ -1,17 +1,24 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import './tabs.scss'
-import bem from '@/utils/bem'
 import classNames from 'classnames'
+import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
+
 class Title {
-  title: string = ''
-  paneKey: string = ''
-  disabled: boolean = false
-  index: number = 0
+  title = ''
+
+  paneKey = ''
+
+  disabled = false
+
+  index = 0
+
+  // eslint-disable-next-line no-useless-constructor
   constructor() {}
 }
 export type TabsSize = 'large' | 'normal' | 'small'
 export interface TabsProps {
+  className: string
+  style: React.CSSProperties
   value: string | number
   color: string
   background: string
@@ -39,7 +46,7 @@ const defaultProps = {
   size: 'normal',
 } as TabsProps
 const pxCheck = (value: string | number): string => {
-  return isNaN(Number(value)) ? String(value) : `${value}px`
+  return Number.isNaN(Number(value)) ? String(value) : `${value}px`
 }
 export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
   const {
@@ -57,6 +64,8 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
     children,
     onClick,
     onChange,
+    className,
+    ...rest
   } = { ...defaultProps, ...props }
 
   const [currentItem, setCurrentItem] = useState<Title>({ index: 0 } as Title)
@@ -65,14 +74,15 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
   useEffect(() => {
     let currentIndex = 0
     titles.current = []
+    // eslint-disable-next-line consistent-return
     React.Children.forEach(children, (child, idx) => {
       if (!React.isValidElement(child)) {
         return null
       }
-      let title = new Title()
-      if (child.props?.title || child.props?.['paneKey']) {
+      const title = new Title()
+      if (child.props?.title || child.props?.paneKey) {
         title.title = child.props?.title
-        title.paneKey = child.props?.['paneKey'] || idx
+        title.paneKey = child.props?.paneKey || idx
         title.disabled = child.props?.disabled
         title.index = idx
         if (title.paneKey === value) {
@@ -85,7 +95,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
   }, [children])
 
   const b = bem('tabs')
-  const classes = classNames(direction, b(''))
+  const classes = classNames(direction, b(''), className)
   const classesTitle = classNames(
     {
       [type]: type,
@@ -101,15 +111,15 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
   }
 
   const tabsActiveStyle = {
-    color: type == 'smile' ? color : '',
-    background: type == 'line' ? color : '',
+    color: type === 'smile' ? color : '',
+    background: type === 'line' ? color : '',
   }
 
-  const index = titles.current.findIndex((t) => t.paneKey == value)
+  const index = titles.current.findIndex((t) => t.paneKey === value)
 
   const contentStyle = {
     transform:
-      direction == 'horizontal'
+      direction === 'horizontal'
         ? `translate3d(-${index * 100}%, 0, 0)`
         : `translate3d( 0,-${index * 100}%, 0)`,
     transitionDuration: `${animatedTime}ms`,
@@ -125,8 +135,8 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
   }
 
   return (
-    <div className={classes}>
-      <div className={classesTitle} style={{ background: background }}>
+    <div className={classes} {...rest}>
+      <div className={classesTitle} style={{ background }}>
         {!!titleNode && typeof titleNode === 'function'
           ? titleNode()
           : titles.current.map((item, index) => {
@@ -135,22 +145,22 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
                   style={titleStyle}
                   onClick={(e) => tabChange(item, index)}
                   className={classNames(
-                    { active: item.paneKey == value, disabled: item.disabled },
+                    { active: item.paneKey === value, disabled: item.disabled },
                     `${b('')}__titles-item`
                   )}
                   key={item.paneKey}
                 >
-                  {type == 'line' && (
-                    <div className={`${b('')}__titles-item__line`} style={tabsActiveStyle}></div>
+                  {type === 'line' && (
+                    <div className={`${b('')}__titles-item__line`} style={tabsActiveStyle} />
                   )}
-                  {type == 'smile' && (
+                  {type === 'smile' && (
                     <div className={`${b('')}__titles-item__smile`} style={tabsActiveStyle}>
                       <Icon color={color} name="joy-smile" />
                     </div>
                   )}
                   <div
                     className={classNames(
-                      { ellipsis: ellipsis && !titleScroll && direction == 'horizontal' },
+                      { ellipsis: ellipsis && !titleScroll && direction === 'horizontal' },
                       `${b('')}__titles-item__text`
                     )}
                   >
@@ -160,7 +170,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
               )
             })}
       </div>
-      <div className={b('') + '__content'} style={contentStyle}>
+      <div className={`${b('')}__content`} style={contentStyle}>
         {React.Children.map(children, (child, idx) => {
           if (!React.isValidElement(child)) {
             return null

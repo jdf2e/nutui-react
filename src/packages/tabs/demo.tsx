@@ -44,6 +44,8 @@ const TabsDemo = () => {
         <h2>基础用法</h2>
         <Tabs
           value={tab1value}
+          className="test"
+          style={{ color: 'red' }}
           onChange={({ paneKey }) => {
             setTab1value(paneKey)
           }}
@@ -75,7 +77,7 @@ const TabsDemo = () => {
             {' '}
             Tab 1{' '}
           </TabPane>
-          <TabPane title="Tab 2" pane-key="1" disabled={true}>
+          <TabPane title="Tab 2" pane-key="1" disabled>
             {' '}
             Tab 2{' '}
           </TabPane>
@@ -92,7 +94,10 @@ const TabsDemo = () => {
           }}
         >
           {list3.map((item) => (
-            <TabPane title={'Tab ' + item}> Tab {item} </TabPane>
+            <TabPane key={item} title={`Tab ${item}`}>
+              {' '}
+              Tab {item}{' '}
+            </TabPane>
           ))}
         </Tabs>
         <h2>数量多,滚动操作</h2>
@@ -101,11 +106,14 @@ const TabsDemo = () => {
           onChange={({ paneKey }) => {
             setTab4value(paneKey)
           }}
-          titleScroll={true}
+          titleScroll
           titleGutter="10"
         >
           {list4.map((item) => (
-            <TabPane title={'Tab ' + item}> Tab {item} </TabPane>
+            <TabPane key={item} title={`Tab ${item}`}>
+              {' '}
+              Tab {item}{' '}
+            </TabPane>
           ))}
         </Tabs>
         <h2>左右布局</h2>
@@ -114,11 +122,14 @@ const TabsDemo = () => {
           onChange={({ paneKey }) => {
             setTab5value(paneKey)
           }}
-          titleScroll={true}
+          titleScroll
           direction="vertical"
         >
           {list5.map((item) => (
-            <TabPane title={'Tab ' + item}> Tab {item} </TabPane>
+            <TabPane key={item} title={`Tab ${item}`}>
+              {' '}
+              Tab {item}{' '}
+            </TabPane>
           ))}
         </Tabs>
         <h2>左右布局-微笑曲线</h2>
@@ -132,7 +143,10 @@ const TabsDemo = () => {
           direction="vertical"
         >
           {list5.map((item) => (
-            <TabPane title={'Tab ' + item}> Tab {item} </TabPane>
+            <TabPane key={item} title={`Tab ${item}`}>
+              {' '}
+              Tab {item}{' '}
+            </TabPane>
           ))}
         </Tabs>
         <h2>标签栏字体尺寸 large normal small </h2>
@@ -177,7 +191,7 @@ const TabsDemo = () => {
             return list6.map((item) => (
               <div
                 onClick={() => setTab7value(item.paneKey)}
-                className={`nut-tabs__titles-item ${tab7value == item.paneKey ? 'active' : ''}`}
+                className={`nut-tabs__titles-item ${tab7value === item.paneKey ? 'active' : ''}`}
                 key={item.paneKey}
               >
                 {item.icon && <Icon name={item.icon} />}
@@ -188,7 +202,9 @@ const TabsDemo = () => {
           }}
         >
           {list6.map((item) => (
-            <TabPane paneKey={item.paneKey}>{item.title}</TabPane>
+            <TabPane key={item.paneKey} paneKey={item.paneKey}>
+              {item.title}
+            </TabPane>
           ))}
         </Tabs>
       </div>
