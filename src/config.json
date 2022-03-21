@@ -420,6 +420,27 @@
           "sort": 2,
           "show": true,
           "author": "vickyYe"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Tabs",
+          "type": "component",
+          "cName": "选项卡切换",
+          "desc": "常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式",
+          "sort": 12,
+          "show": true,
+          "author": "张晶发"
+        },
+        {
+          "version": "0.1.0",
+          "name": "TabPane",
+          "sort": 2,
+          "cName": "选项卡切换子组件",
+          "type": "component",
+          "show": false,
+          "exportEmpty": true,
+          "desc": "选项卡切换子组件",
+          "author": "张晶发"
         }
       ]
     },
