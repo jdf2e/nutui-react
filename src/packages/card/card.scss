@@ -30,12 +30,10 @@
       line-height: 18px;
       margin-top: 9px;
       .nut-price {
-        .nut-price__symbol {
-          font-size: 12px;
-        }
         .nut-price__big {
           font-size: 18px;
         }
+        .nut-price__symbol,
         .nut-price__point,
         .nut-price__small {
           font-size: 12px;
@@ -45,12 +43,8 @@
         &.nut-price {
           margin-left: 2px;
           color: #d2a448;
-          .nut-price__symbol {
-            font-size: 12px;
-          }
-          .nut-price__big {
-            font-size: 12px;
-          }
+          .nut-price__big,
+          .nut-price__symbol,
           .nut-price__point,
           .nut-price__small {
             font-size: 12px;
