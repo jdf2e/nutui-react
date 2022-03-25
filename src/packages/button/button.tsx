@@ -1,5 +1,6 @@
 import React, { CSSProperties, FunctionComponent, useEffect, useState } from 'react'
 import Icon from '@/packages/icon'
+
 export interface ButtonProps {
   className: string
   color: string
@@ -114,8 +115,8 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
       onClick={(e) => handleClick(e)}
     >
       <div className="nut-button__warp" style={getStyle()}>
-        {loading && <Icon name="loading"></Icon>}
-        {!loading && icon ? <Icon name={icon}></Icon> : ''}
+        {loading && <Icon name="loading" />}
+        {!loading && icon ? <Icon name={icon} /> : ''}
         {children}
       </div>
     </div>

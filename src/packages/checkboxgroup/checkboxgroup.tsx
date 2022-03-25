@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useImperativeHandle, useState } from 'react'
+import React, { useEffect, useImperativeHandle, useState } from 'react'
 import bem from '@/utils/bem'
 
 export interface CheckBoxGroupProps {

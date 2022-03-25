@@ -90,7 +90,7 @@ Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme �
     {
       selfContent.map((item: any)=>{
         return <div className="self-content-item" style={selfContentItem} key={item.name}>
-          <Icon name={item.name} size="15"></Icon>
+          <Icon name={item.name} size="15" />
           <div className="self-content-desc" style={selfContentDesc}>{ item.desc }</div>
         </div>
       })

@@ -1,13 +1,7 @@
-import React, {
-  useState,
-  FunctionComponent,
-  useContext,
-  useEffect,
-  useImperativeHandle,
-} from 'react'
+import React, { useState, useContext, useImperativeHandle } from 'react'
+import classNames from 'classnames'
 import { DataContext } from '@/packages/swiper/UserContext'
 import bem from '@/utils/bem'
-import classNames from 'classnames'
 
 interface SwiperItemProps {
   direction?: string
@@ -48,7 +42,7 @@ export const SwiperItem = React.forwardRef<
       style[_direction === 'horizontal' ? 'width' : 'height'] = `${_size}px`
     }
     if (offset) {
-      style['transform'] = `translate3D${
+      style.transform = `translate3D${
         _direction === 'horizontal' ? `(${offset}px,0,0)` : `(0,${offset}px,0)`
       }`
     }

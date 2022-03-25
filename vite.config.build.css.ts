@@ -2,8 +2,8 @@ import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 
 const path = require('path')
-const config = require('./package.json')
 const atImport = require('postcss-import')
+const config = require('./package.json')
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
@@ -11,7 +11,7 @@ const banner = `/*!
 * Released under the MIT License.
 */`
 
-const resolve = path.resolve
+const { resolve } = path
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {

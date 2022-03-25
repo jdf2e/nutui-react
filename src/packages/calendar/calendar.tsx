@@ -61,13 +61,13 @@ export const Calendar: FunctionComponent<
   }
 
   return (
-    <React.Fragment>
+    <>
       {poppable ? (
         <Popup
           visible={visible}
           position="bottom"
           round
-          closeable={true}
+          closeable
           onClickOverlay={closePopup}
           onClickCloseIcon={closePopup}
         >
@@ -82,7 +82,7 @@ export const Calendar: FunctionComponent<
             onUpdate={update}
             onClose={close}
             onChoose={choose}
-          ></CalendarItem>
+          />
         </Popup>
       ) : (
         <CalendarItem
@@ -95,9 +95,9 @@ export const Calendar: FunctionComponent<
           endDate={endDate}
           onClose={close}
           onChoose={choose}
-        ></CalendarItem>
+        />
       )}
-    </React.Fragment>
+    </>
   )
 }
 

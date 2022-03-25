@@ -3,7 +3,7 @@ import Radio from '@/packages/radio'
 import Cell from '@/packages/cell'
 import CellGroup from '@/packages/cellgroup'
 
-const RadioGroup = Radio.RadioGroup
+const { RadioGroup } = Radio
 const RadioDemo = () => {
   const [checked1] = useState(true)
   const [radioVal, setRadioVal] = useState(1)
@@ -27,7 +27,7 @@ const RadioDemo = () => {
         <h2>基本用法</h2>
         <CellGroup>
           <Cell>
-            <RadioGroup value={'1'}>
+            <RadioGroup value="1">
               <Radio value="1">选项1</Radio>
               <Radio disabled value="2">
                 选项2
@@ -122,7 +122,7 @@ const RadioDemo = () => {
               <Radio value={2}>触发事件</Radio>
             </RadioGroup>
           </Cell>
-          <Cell title="当前选中值" desc={radioVal.toString()}></Cell>
+          <Cell title="当前选中值" desc={radioVal.toString()} />
         </CellGroup>
       </div>
     </>

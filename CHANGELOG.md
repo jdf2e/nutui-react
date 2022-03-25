@@ -1,3 +1,12 @@
+## v1.1.1
+`2022-03-21`
+
+* :zap: feat(tabs):  新增 tabs 组件(#99 ) @HaoGeShuoHuaNiHaoHaoTing
+* :zap: feat(datepicker): 新增 datepicker 组件(#102 ) @dushoujun
+* :zap: feat(skeleton): 新增 skeleton 组件(#96 ) @junjun666
+* :zap: feat: NutUI-React 官网增加 tabs、datepicker、skeleton 组件的文档。
+
+
 ## v1.1.0
 `2022-02-25`
 

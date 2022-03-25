@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -51,6 +51,8 @@
     "build:es": "npx rollup -c rollup.config.es.js",
     "build": "npm run checked && vite build --config vite.config.build.ts && npm run build:es && npm run build:css && npm run build:loader-style && npm run build:types ",
     "build:site": "npm run checked && vite build --config vite.config.build.site.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "publish:beta": "npm publish --tag beta",
     "prepare": "husky install"
   },
@@ -101,8 +103,11 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-markdown": "^2.2.1",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "fs-extra": "^10.0.0",
     "glob": "^7.2.0",
     "husky": "^6.0.0",

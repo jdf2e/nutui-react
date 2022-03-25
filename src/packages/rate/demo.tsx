@@ -9,29 +9,29 @@ const RateDemo = () => {
     <>
       <div className="demo">
         <h2>基础用法</h2>
-        <Rate modelValue={3}></Rate>
+        <Rate modelValue={3} />
         <h2>半星</h2>
-        <Rate allowHalf modelValue="3.5"></Rate>
+        <Rate allowHalf modelValue="3.5" />
 
         <h2>自定义 icon </h2>
-        <Rate checkedIcon="heart-fill1" uncheckedIcon="heart" modelValue="3"></Rate>
+        <Rate checkedIcon="heart-fill1" uncheckedIcon="heart" modelValue="3" />
 
         <h2>自定义数量</h2>
-        <Rate count="6" modelValue="3"></Rate>
+        <Rate count="6" modelValue="3" />
 
         <h2>自定义颜色</h2>
-        <Rate activeColor="#FFC800" modelValue="3"></Rate>
+        <Rate activeColor="#FFC800" modelValue="3" />
 
         <h2>禁用状态</h2>
-        <Rate disabled modelValue="3"></Rate>
+        <Rate disabled modelValue="3" />
 
         <h2>只读状态</h2>
-        <Rate modelValue="3" readonly></Rate>
+        <Rate modelValue="3" readonly />
 
         <h2>绑定事件</h2>
-        <Rate modelValue="3" change={() => onChange}></Rate>
+        <Rate modelValue="3" change={() => onChange} />
         <h2>自定义尺寸 35px</h2>
-        <Rate modelValue="3" iconSize="35"></Rate>
+        <Rate modelValue="3" iconSize="35" />
       </div>
     </>
   )

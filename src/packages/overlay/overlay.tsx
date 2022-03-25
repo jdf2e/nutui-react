@@ -1,6 +1,6 @@
 import React, { FunctionComponent, MouseEventHandler, useEffect, useRef, useState } from 'react'
-import bem from '@/utils/bem'
 import classNames from 'classnames'
+import bem from '@/utils/bem'
 
 export interface OverlayProps {
   zIndex: number
@@ -67,7 +67,7 @@ export const Overlay: FunctionComponent<
   )
 
   const styles = {
-    zIndex: zIndex,
+    zIndex,
     animationDuration: `${props.duration}s`,
     ...overlayStyle,
   }
@@ -84,7 +84,7 @@ export const Overlay: FunctionComponent<
     if (closeOnClickOverlay) {
       props.onClick && props.onClick(e)
       renderRef.current = false
-      let id = setTimeout(() => {
+      const id = setTimeout(() => {
         setShow(!visible)
       }, duration * 1000 * 0.8)
       intervalRef.current = id
@@ -92,11 +92,11 @@ export const Overlay: FunctionComponent<
   }
 
   return (
-    <React.Fragment>
+    <>
       <div className={classes} style={styles} {...rest} onClick={handleClick}>
         {children}
       </div>
-    </React.Fragment>
+    </>
   )
 }
 

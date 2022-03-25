@@ -42,7 +42,7 @@ import { Divider } from '@nutui/nutui-react';
 添加 dashed 属性使分割线渲染为虚线。
 
 ```jsx
-<Divider dashed={true}>文本</Divider>
+<Divider dashed>文本</Divider>
 ```
 
 ### 自定义样式

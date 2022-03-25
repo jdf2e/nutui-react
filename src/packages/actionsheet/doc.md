@@ -19,6 +19,7 @@ import { ActionSheet } from '@nutui/nutui-react';
 ```tsx
 import  React, { useState } from "react";
 import { ActionSheet,Cell } from '@nutui/nutui-react';
+
 interface Item {
   name: string
   subname?: string
@@ -46,7 +47,7 @@ const App = () => {
 
   return ( 
     <>   
-    <Cell isLink={true} onClick={() => setIsVisible1(!isVisible1)}>
+    <Cell isLink onClick={() => setIsVisible1(!isVisible1)}>
       <span>
         <label>基础用法</label>
       </span>
@@ -58,7 +59,7 @@ const App = () => {
       menuItems={menuItemsOne}
       choose={chooseItem}
       cancel={() => setIsVisible1(false)}
-    ></ActionSheet>
+     />
     </>
   );
 };  
@@ -93,7 +94,7 @@ const App = () => {
   }
   return ( 
     <>   
-    <Cell isLink={true} onClick={() => setIsVisible2(!isVisible2)}>
+    <Cell isLink onClick={() => setIsVisible2(!isVisible2)}>
       <span>
         <label>展示取消按钮</label>
       </span>
@@ -106,7 +107,7 @@ const App = () => {
       menuItems={menuItemsOne}
       choose={chooseItemTwo}
       cancel={() => setIsVisible2(false)}
-    ></ActionSheet>
+     />
     </>
   );
 };  
@@ -142,7 +143,7 @@ const App = () => {
   }
   return ( 
     <>   
-    <Cell isLink={true} onClick={() => setIsVisible3(!isVisible3)}>
+    <Cell isLink onClick={() => setIsVisible3(!isVisible3)}>
       <span>
         <label>展示描述信息</label>
       </span>
@@ -155,7 +156,7 @@ const App = () => {
       choose={chooseItemThree}
       cancelTxt="取消"
       cancel={() => setIsVisible3(false)}
-    ></ActionSheet>
+     />
     </>
   );
 };  
@@ -183,7 +184,7 @@ const App = () => {
   ]
   return ( 
     <>   
-    <Cell isLink={true} onClick={() => setIsVisible4(!isVisible4)}>
+    <Cell isLink onClick={() => setIsVisible4(!isVisible4)}>
       <span>
         <label>选项状态</label>
       </span>
@@ -197,7 +198,7 @@ const App = () => {
       choose={() => {
         setIsVisible4(false)
       }}
-    ></ActionSheet>
+     />
     </>
   );
 };  

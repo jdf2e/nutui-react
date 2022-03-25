@@ -97,7 +97,7 @@ export const Radio: FunctionComponent<
         name={checkedStatement ? iconActiveName : iconName}
         size={iconSize}
         className={color()}
-      ></Icon>
+      />
     )
   }
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -106,7 +106,7 @@ export const Radio: FunctionComponent<
     props.onChange && props.onChange(e)
     context && context.onChange(valueStatement)
   }
-  let reverseState = textPosition === 'left'
+  const reverseState = textPosition === 'left'
   return (
     <div className={`nut-radio ${className}`} onClick={handleClick} {...rest}>
       {props.shape == 'button'

@@ -74,7 +74,6 @@ export const CustomRender: FunctionComponent<
     data.forEach((item: RegionData) => {
       if (!item.title) {
         console.error('[NutUI] <Address> 请检查数组选项的 title 值是否有设置 ,title 为必填项 .')
-        return
       }
     })
 
@@ -114,7 +113,7 @@ export const CustomRender: FunctionComponent<
     town: isCustom2() ? transformData(town) : town,
   })
 
-  //已选择的 省、市、县、镇
+  // 已选择的 省、市、县、镇
   const [selectedRegion, setSelectedRegion] = useState<{
     province: RegionData
     city: RegionData
@@ -133,15 +132,14 @@ export const CustomRender: FunctionComponent<
 
   const [lineDistance, setLineDistance] = useState(20)
 
-  //获取已选地区列表名称
+  // 获取已选地区列表名称
   const getTabName = (item: RegionData, index: number) => {
     if (item.name) return item.name
 
     if (tabIndex < index) {
       return item.name
-    } else {
-      return '请选择'
     }
+    return '请选择'
   }
 
   const mapRef = {
@@ -161,7 +159,7 @@ export const CustomRender: FunctionComponent<
 
       if (name && refD[name] && refD[name].current) {
         const distance = (refD[name as MapRefType] as any).current.offsetLeft
-        setLineDistance(distance ? distance : 20)
+        setLineDistance(distance || 20)
       }
     }, 0)
   }
@@ -211,7 +209,7 @@ export const CustomRender: FunctionComponent<
       onClose && onClose()
     }
   }
-  //切换地区Tab
+  // 切换地区Tab
   const changeRegionTab = (item: RegionData, index: number) => {
     if (getTabName(item, index)) {
       setTabIndex(index)
@@ -272,7 +270,7 @@ export const CustomRender: FunctionComponent<
             </div>
           )
         })}
-        <div className={b('tab-line')} ref={regionLine} style={{ left: lineDistance + 'px' }}></div>
+        <div className={b('tab-line')} ref={regionLine} style={{ left: `${lineDistance}px` }} />
       </div>
 
       {privateType === 'custom' && (
@@ -293,7 +291,7 @@ export const CustomRender: FunctionComponent<
                         name="Check"
                         color="#FA2C19"
                         size="13px"
-                      ></Icon>
+                      />
                     )}
                     {(item as RegionData).name}
                   </li>
@@ -310,7 +308,7 @@ export const CustomRender: FunctionComponent<
             height={height}
             indexList={regionList[tabName[tabIndex] as SelectedRegionType]}
             clickItem={handleElevatorItem}
-          ></Elevator>
+          />
         </div>
       )}
     </div>

@@ -85,7 +85,7 @@ return (
   height="260"
   clickItem={(key: string, item: any) => clickItem(key, item)}
   clickIndex={(key: string) => clickIndex(key)}
-></Elevator>
+ />
  );
 };
 export default App;
@@ -219,7 +219,7 @@ return (
   acceptKey="num"
   clickItem={(key: string, item: any) => clickItem(key, item)}
   clickIndex={(key: string) => clickIndex(key)}
-></Elevator>
+ />
  );
 };
 export default App;

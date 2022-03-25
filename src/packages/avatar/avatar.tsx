@@ -1,6 +1,6 @@
 import React, { FunctionComponent, MouseEventHandler } from 'react'
-import Icon from '@/packages/icon'
 import classNames from 'classnames'
+import Icon from '@/packages/icon'
 
 export interface AvatarProps {
   size: AvatarSize
@@ -33,8 +33,8 @@ export const Avatar: FunctionComponent<
   const sizeValue = ['large', 'normal', 'small']
   const classes = classNames({
     [`${prefixCls}`]: true,
-    ['avatar-' + size]: true,
-    ['avatar-' + shape]: true,
+    [`avatar-${size}`]: true,
+    [`avatar-${shape}`]: true,
   })
   const cls = classNames(classes, className)
   const styles: React.CSSProperties = {

@@ -36,7 +36,7 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo((props) 
     if (!Array.isArray(activeName)) {
       activeArr.push(activeName.toString())
     } else {
-      //数组
+      // 数组
       if (accordion && activeName.length > 1) {
         console.warn('手风琴模式不支持传递多个打开页签')
       }
@@ -57,13 +57,13 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo((props) 
   const onToggle = (isOpen: boolean, name: string) => {
     let newOpenIndex = [...defaultOpenIndex]
     if (isOpen) {
-      //当前状态为true，则变为false,闭合
+      // 当前状态为true，则变为false,闭合
       const removeIndex = newOpenIndex.findIndex((value) => {
         return value === name
       })
       newOpenIndex.splice(removeIndex, 1)
     } else {
-      //当前状态为false，变为true，展开
+      // 当前状态为false，变为true，展开
       if (accordion) {
         newOpenIndex = [name]
       } else {

@@ -27,7 +27,7 @@ const OverlayDemo = () => {
           <Button type="primary" onClick={handleToggleShow}>
             显示遮罩层
           </Button>
-          <Overlay visible={visible} onClick={onClose}></Overlay>
+          <Overlay visible={visible} onClick={onClose} />
         </Cell>
         <h2>嵌套内容</h2>
         <Cell>

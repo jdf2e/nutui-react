@@ -22,7 +22,7 @@ import { Rate } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Rate modelValue={3}></Rate>
+    <Rate modelValue={3} />
     </>
   );
 };  
@@ -41,7 +41,7 @@ import { Rate } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Rate allowHalf modelValue="3.5"></Rate>
+    <Rate allowHalf modelValue="3.5" />
     </>
   );
 };  
@@ -59,7 +59,7 @@ import { Rate } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Rate checkedIcon="heart-fill1" uncheckedIcon="heart" modelValue="3"></Rate>
+    <Rate checkedIcon="heart-fill1" uncheckedIcon="heart" modelValue="3" />
     </>
   );
 };  
@@ -77,7 +77,7 @@ import { Rate } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Rate count="6" modelValue="3"></Rate>
+    <Rate count="6" modelValue="3" />
     </>
   );
 };  
@@ -95,7 +95,7 @@ import { Rate } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Rate activeColor="#FFC800" modelValue="3"></Rate>
+    <Rate activeColor="#FFC800" modelValue="3" />
     </>
   );
 };  
@@ -113,7 +113,7 @@ import { Rate } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Rate disabled modelValue="3"></Rate>
+    <Rate disabled modelValue="3" />
     </>
   );
 };  
@@ -131,7 +131,7 @@ import { Rate } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Rate modelValue="3" readonly></Rate>
+    <Rate modelValue="3" readonly />
     </>
   );
 };  
@@ -152,7 +152,7 @@ const App = () => {
   }
   return ( 
     <>   
-    <Rate modelValue="3" change={onChange}></Rate>
+    <Rate modelValue="3" change={onChange} />
     </>
   );
 };  
@@ -170,7 +170,7 @@ import { Rate } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Rate modelValue="3" iconSize="35"></Rate>
+    <Rate modelValue="3" iconSize="35" />
     </>
   );
 };  
