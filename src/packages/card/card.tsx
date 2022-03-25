@@ -38,14 +38,14 @@ export const Card: FunctionComponent<Partial<CardProps> & React.HTMLAttributes<H
     originTpl,
     prolistTpl,
     footerTpl,
-    children,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
   }
   const b = bem('card')
   return (
-    <div className={`${b()} ${className}`} style={style}>
+    <div className={`${b()} ${className}`} style={style} {...rest}>
       <div className={b('left')}>
         <img src={imgUrl} alt="" />
       </div>
@@ -54,16 +54,10 @@ export const Card: FunctionComponent<Partial<CardProps> & React.HTMLAttributes<H
         {prolistTpl}
         <div className={b('right__price')}>
           <Price price={price}></Price>
-          {originTpl ? (
-            originTpl
-          ) : (
-            <Price className={b('right__price__origin')} price={vipPrice}></Price>
-          )}
+          {originTpl || <Price className={b('right__price__origin')} price={vipPrice}></Price>}
         </div>
         <div className={b('right__other')}>
-          {shopTagTpl ? (
-            shopTagTpl
-          ) : (
+          {shopTagTpl || (
             <>
               <Tag type="danger">{shopDesc}</Tag>
               <Tag plain>{delivery}</Tag>

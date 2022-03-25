@@ -243,10 +243,10 @@ export default App;
 | imgUrl   | 左侧图片Url                                 | String  | -         |
 | title     | 标题                   | String  | -    |
 | price | 商品价格                         | String  | -      |
-| vip-price     | 会员价格                               | String | -    |
-| shop-desc  | 店铺介绍                                  | String | -    |
+| vipPrice     | 会员价格                               | String | -    |
+| shopDesc  | 店铺介绍                                  | String | -    |
 | delivery     | 配送方式 | String  | -      |
-| shop-name   | 店铺名称| String  | -      |
+| shopName   | 店铺名称| String  | -      |
 | prolistTpl   | 自定义商品介绍| React.ReactChild  | -      |
 | originTpl   | 价格后方自定义内容| React.ReactChild  | -      |
 | shopTagTpl   | 店铺介绍自定义| React.ReactChild  | -      |
