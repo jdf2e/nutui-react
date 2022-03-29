@@ -1,3 +1,9 @@
+## v1.1.2
+`2022-03-29`
+
+* :zap: feat(tabs): 新增 card 组件(#105 ) @irisSong
+* :zap: feat: NutUI-React 官网增加 card 组件的文档。
+
 ## v1.1.1
 `2022-03-21`
 

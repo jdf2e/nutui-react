@@ -1,5 +1,4 @@
-import React, { FunctionComponent, CSSProperties } from 'react'
-import './card.scss'
+import React, { FunctionComponent } from 'react'
 import Price from '@/packages/price'
 import Tag from '@/packages/tag'
 
