@@ -26,11 +26,11 @@ const App = () => {
     <NavBar
       title="订单详情"
       icon="share"
-      leftShow={true}
+      leftShow
       onClickTitle={(e) => alert('标题')}
       onClickBack={(e) => alert('返回')}
       onClickIcon={(e) => alert('icon')}
-    ></NavBar>
+     />
     </>
   );
 };  
@@ -50,11 +50,11 @@ const App = () => {
     <NavBar
       title="浏览记录"
       desc="清空"
-      leftShow={true}
+      leftShow
       onClickTitle={(e) => alert('标题')}
       onClickBack={(e) => alert('返回')}
       onClickClear={(e) => alert('清空')}
-    ></NavBar>
+     />
     </>
   );
 };  
@@ -80,7 +80,7 @@ const App = () => {
       onClickBack={(e) => alert('返回')}
       onClickClear={(e) => alert('编辑')}
       onClickIcon={(e) => alert('icon')}
-    ></NavBar>
+     />
     </>
   );
 };  

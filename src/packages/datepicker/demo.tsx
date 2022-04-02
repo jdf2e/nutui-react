@@ -20,15 +20,15 @@ const DatePickerDemo = () => {
     <>
       <div className="demo">
         <h2>每列不显示中文</h2>
-        <Cell title="日期选择" desc={desc1} onClick={() => setShow1(true)}></Cell>
+        <Cell title="日期选择" desc={desc1} onClick={() => setShow1(true)} />
         <h2>限制开始结束时间</h2>
-        <Cell title="日期选择" desc={desc2} onClick={() => setShow2(true)}></Cell>
+        <Cell title="日期选择" desc={desc2} onClick={() => setShow2(true)} />
         <h2>限制开始结束时间（有默认值）</h2>
-        <Cell title="日期时间选择" desc={desc3} onClick={() => setShow3(true)}></Cell>
+        <Cell title="日期时间选择" desc={desc3} onClick={() => setShow3(true)} />
         <h2>限制开始结束小时</h2>
-        <Cell title="时间选择" desc={desc4} onClick={() => setShow4(true)}></Cell>
+        <Cell title="时间选择" desc={desc4} onClick={() => setShow4(true)} />
         <h2>分钟数递增步长设置</h2>
-        <Cell title="时间选择" desc={desc5} onClick={() => setShow5(true)}></Cell>
+        <Cell title="时间选择" desc={desc5} onClick={() => setShow5(true)} />
 
         <DatePicker
           title="日期选择"
@@ -36,7 +36,7 @@ const DatePickerDemo = () => {
           onCloseDatePicker={() => setShow1(false)}
           onConfirmDatePicker={(list) => setDesc1(list.join('-'))}
           isShowChinese={false}
-        ></DatePicker>
+        />
 
         <DatePicker
           title="日期选择"
@@ -45,7 +45,7 @@ const DatePickerDemo = () => {
           visible={show2}
           onCloseDatePicker={() => setShow2(false)}
           onConfirmDatePicker={(list) => setDesc2(list.join('-'))}
-        ></DatePicker>
+        />
 
         <DatePicker
           title="日期时间选择"
@@ -55,7 +55,7 @@ const DatePickerDemo = () => {
           type="datetime"
           onCloseDatePicker={() => setShow3(false)}
           onConfirmDatePicker={(list) => setDesc3(list.join('-'))}
-        ></DatePicker>
+        />
 
         <DatePicker
           title="时间选择"
@@ -65,7 +65,7 @@ const DatePickerDemo = () => {
           visible={show4}
           onCloseDatePicker={() => setShow4(false)}
           onConfirmDatePicker={(list) => setDesc4(list.join('-'))}
-        ></DatePicker>
+        />
 
         <DatePicker
           title="时间选择"
@@ -76,7 +76,7 @@ const DatePickerDemo = () => {
           minuteStep={5}
           onCloseDatePicker={() => setShow5(false)}
           onConfirmDatePicker={(list) => setDesc5(list.join('-'))}
-        ></DatePicker>
+        />
       </div>
     </>
   )

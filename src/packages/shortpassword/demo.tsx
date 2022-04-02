@@ -25,13 +25,13 @@ const ShortPasswordDemo = () => {
         onClick={() => {
           setVisible1(true)
         }}
-      ></Cell>
+      />
       <ShortPassword
         visible={visible1}
         modelValue={value}
         onClose={() => setVisible1(false)}
         change={(value) => change(value)}
-      ></ShortPassword>
+      />
       <h2>显示按钮组</h2>
       <Cell
         title="显示按钮组"
@@ -39,14 +39,14 @@ const ShortPasswordDemo = () => {
         onClick={() => {
           setVisible2(true)
         }}
-      ></Cell>
+      />
       <ShortPassword
         visible={visible2}
         onClose={() => setVisible2(false)}
         noButton={false}
         onOk={() => setVisible2(false)}
         onCancel={() => setVisible2(false)}
-      ></ShortPassword>
+      />
       <h2>自定义密码长度4</h2>
       <Cell
         title="自定义密码长度4"
@@ -54,12 +54,8 @@ const ShortPasswordDemo = () => {
         onClick={() => {
           setVisible3(true)
         }}
-      ></Cell>
-      <ShortPassword
-        visible={visible3}
-        onClose={() => setVisible3(false)}
-        length={4}
-      ></ShortPassword>
+      />
+      <ShortPassword visible={visible3} onClose={() => setVisible3(false)} length={4} />
       <h2>忘记密码提示语事件回调</h2>
       <Cell
         title="忘记密码提示语事件回调"
@@ -67,12 +63,12 @@ const ShortPasswordDemo = () => {
         onClick={() => {
           setVisible4(true)
         }}
-      ></Cell>
+      />
       <ShortPassword
         visible={visible4}
         onClose={() => setVisible4(false)}
         onTips={() => onTips()}
-      ></ShortPassword>
+      />
     </div>
   )
 }

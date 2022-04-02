@@ -85,8 +85,8 @@ const App = () => {
         <Step activeIndex={1} title="步骤一" content="步骤描述">
           1
         </Step>
-        <Step activeIndex={2} title="步骤二" content="步骤描述"></Step>
-        <Step activeIndex={3} title="步骤三" content="步骤描述"></Step>
+        <Step activeIndex={2} title="步骤二" content="步骤描述" />
+        <Step activeIndex={3} title="步骤三" content="步骤描述" />
       </Steps>
       <div className="steps-button" style={{ marginTop: '10px', textAlign: 'center' }}>
         <Button type="danger" onClick={() => handleStep('current2')}>

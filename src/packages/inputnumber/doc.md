@@ -225,7 +225,7 @@ const App = () => {
   }
   return (
     <>
-      <InputNumber modelValue={inputState.val7} change={onChange} isAsync={true} />
+      <InputNumber modelValue={inputState.val7} change={onChange} isAsync />
     </>
   )
 }

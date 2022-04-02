@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { TextArea } from './textarea'
 
 const TextAreaDemo = () => {
@@ -14,7 +14,7 @@ const TextAreaDemo = () => {
         <h2>基础用法</h2>
         <TextArea
           defaultValue={value1}
-          className={'text-1'}
+          className="text-1"
           style={{ fontSize: '12px' }}
           change={(value, event) => {
             change(value, event)
@@ -34,7 +34,7 @@ const TextAreaDemo = () => {
         <TextArea readonly defaultValue="textarea只读状态" />
         <h2>禁用</h2>
         <TextArea disabled defaultValue="textarea禁用状态" limitshow maxlength="20" />
-        <h2></h2>
+        <h2 />
       </div>
     </>
   )

@@ -17,19 +17,19 @@ const PriceDemo = () => {
     <div className="demo">
       <h2>基本用法</h2>
       <Cell>
-        <Price price={1010} needSymbol={false} thousands={true} />
+        <Price price={1010} needSymbol={false} thousands />
       </Cell>
       <h2>有人民币符号，无千位分隔</h2>
       <Cell>
-        <Price price={10010.01} needSymbol={true} thousands={false} />
+        <Price price={10010.01} needSymbol thousands={false} />
       </Cell>
       <h2>带人民币符号，有千位分隔，保留小数点后三位</h2>
       <Cell>
-        <Price price={15213.1221} decimalDigits={3} needSymbol={true} thousands={true} />
+        <Price price={15213.1221} decimalDigits={3} needSymbol thousands />
       </Cell>
       <h2>异步随机变更</h2>
       <Cell>
-        <Price price={price} decimalDigits={3} needSymbol={true} thousands={true} />
+        <Price price={price} decimalDigits={3} needSymbol thousands />
       </Cell>
     </div>
   )

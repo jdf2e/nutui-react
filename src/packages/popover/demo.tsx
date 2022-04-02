@@ -4,12 +4,12 @@ import Button from '@/packages/button'
 import Icon from '@/packages/icon'
 
 const BadgeDemo = () => {
-  let selfContentStyle = {
+  const selfContentStyle = {
     width: '195px',
     display: 'flex',
     flexWrap: 'wrap',
   } as any
-  let selfContentItem = {
+  const selfContentItem = {
     marginTop: '10px',
     marginBottom: '10px',
     display: 'flex',
@@ -17,13 +17,13 @@ const BadgeDemo = () => {
     alignItems: 'center',
     flexDirection: 'column',
   } as any
-  let selfContentDesc = {
+  const selfContentDesc = {
     marginTop: '5px',
     width: '60px',
     fontSize: '10px',
     textAlign: 'center',
   } as any
-  let hTwo = {
+  const hTwo = {
     marginTop: '30px',
     marginBottom: '10px',
     fontSize: '14px',
@@ -174,7 +174,7 @@ const BadgeDemo = () => {
                 {selfContent.map((item: any) => {
                   return (
                     <div className="self-content-item" style={selfContentItem} key={item.name}>
-                      <Icon name={item.name} size="15"></Icon>
+                      <Icon name={item.name} size="15" />
                       <div className="self-content-desc" style={selfContentDesc}>
                         {item.desc}
                       </div>
@@ -202,7 +202,7 @@ const BadgeDemo = () => {
               向上弹出
             </Button>
           </Popover>
-          <h2 style={hTwo}></h2>
+          <h2 style={hTwo} />
           <Popover
             visible={rightLocation}
             location="right"

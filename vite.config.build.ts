@@ -10,7 +10,7 @@ const banner = `/*!
 * Released under the MIT License.
 */`
 
-const resolve = path.resolve
+const { resolve } = path
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {

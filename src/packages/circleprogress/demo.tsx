@@ -32,17 +32,17 @@ const CricleProgressDemo = () => {
       <div className="demo">
         <h2>基础用法</h2>
         <div className="demo__piece">
-          <CircleProgress progress={10}></CircleProgress>
+          <CircleProgress progress={10} />
         </div>
 
         <h2>环形进度条自定义样式</h2>
         <div className="demo__piece">
-          <CircleProgress progress={50} progressOption={progressOption}></CircleProgress>
+          <CircleProgress progress={50} progressOption={progressOption} />
         </div>
 
         <h2>环形进度条自定义内容</h2>
         <div className="demo__piece">
-          <CircleProgress progress={50} isAuto={true}>
+          <CircleProgress progress={50} isAuto>
             <div>自定义</div>
           </CircleProgress>
         </div>
@@ -53,7 +53,7 @@ const CricleProgressDemo = () => {
             progress={percent}
             progressOption={progressOption}
             strokeInnerWidth={strokeInnerWidth}
-          ></CircleProgress>
+          />
         </div>
         <div className="demo__btn">
           <Button type="primary" onClick={setReduceVal}>

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 import { AddressList } from './address'
@@ -8,7 +8,7 @@ export interface ExistRenderProps {
   existAddress: AddressList[] | []
   defaultIcon: string
   selectedIcon: string
-  isShowCustomAddress: Boolean
+  isShowCustomAddress: boolean
   customAndExistTitle: string
   onSelected?: (prevExistAdd: AddressList, item: AddressList, copyExistAdd: AddressList[]) => void
   onClose?: (cal: { closeWay: string }) => void
@@ -84,7 +84,7 @@ export const ExistRender: FunctionComponent<
                   name={item.selectedAddress ? selectedIcon : defaultIcon}
                   color={item.selectedAddress ? '#FA2C19' : ''}
                   size="13px"
-                ></Icon>
+                />
                 <div className={b('exist-item-info')}>
                   {item.name && item.phone && (
                     <div className="exist-item-info-top">

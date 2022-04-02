@@ -51,9 +51,7 @@ export const Checkbox: FunctionComponent<
   }, [disabled, checked])
 
   const renderIcon = () => {
-    return (
-      <Icon name={innerChecked ? iconActiveName : iconName} size={iconSize} color={color()}></Icon>
-    )
+    return <Icon name={innerChecked ? iconActiveName : iconName} size={iconSize} color={color()} />
   }
   const color = () => {
     return !innerDisabled ? (!innerChecked ? '#d6d6d6' : '#fa2c19') : '#f5f5f5'

@@ -3,7 +3,6 @@ import React, { CSSProperties, FunctionComponent, useEffect, useState } from 're
 import bem from '@/utils/bem'
 import { formatNumber } from './util'
 import Icon from '@/packages/icon'
-import classNames from 'classnames'
 
 export interface InputProps {
   type: string
@@ -84,7 +83,7 @@ export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes
     }
 
     const valueFocus = (event: Event) => {
-      let val: any = (event.target as any).value
+      const val: any = (event.target as any).value
       SetActive(true)
       if (focus) {
         focus(val, event)
@@ -95,7 +94,7 @@ export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes
       setTimeout(() => {
         SetActive(false)
       }, 0)
-      let val: any = (event.target as any).value
+      const val: any = (event.target as any).value
       if (blur) {
         blur(val, event)
       }
@@ -107,15 +106,11 @@ export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes
       SetInputValue('')
     }
     const textAlignStyle = {
-      textAlign: textAlign,
+      textAlign,
     }
 
     return (
-      <div
-        className={`${inputBem()} ${disabled ? inputBem('disabled') : ''}  ${
-          className ? className : ''
-        }`}
-      >
+      <div className={`${inputBem()} ${disabled ? inputBem('disabled') : ''}  ${className || ''}`}>
         <div className={inputBem('label')}>
           {requireShow ? <div className={inputBem('require')}>*</div> : null}
           {label ? <div className="label-string">{label}</div> : null}
@@ -146,7 +141,7 @@ export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes
             }}
             className={inputBem('clear')}
           >
-            {active && inputValue.length > 0 ? <Icon name="close-little" size="12px"></Icon> : null}
+            {active && inputValue.length > 0 ? <Icon name="close-little" size="12px" /> : null}
           </div>
         ) : null}
       </div>

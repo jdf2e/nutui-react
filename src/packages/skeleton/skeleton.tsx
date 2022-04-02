@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import Avatar from '@/packages/avatar'
 import bem from '@/utils/bem'
-import './skeleton.scss'
 
 type avatarShape = 'round' | 'square'
 export interface SkeletonProps {
@@ -54,11 +53,11 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
   const b = bem('skeleton')
   const classes = classNames(className, b())
   const blockClass = classNames({
-    ['blockClass']: true,
-    ['blockClass--round']: round,
+    blockClass: true,
+    'blockClass--round': round,
   })
   const avatarClass = classNames({
-    ['avatarClass']: true,
+    avatarClass: true,
     [`avatarClass--${avatarShape}`]: avatarShape,
   })
 
@@ -79,30 +78,23 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
         <div>{children}</div>
       ) : (
         <div className={classes} {...restProps}>
-          <div className="skeleton-animation"></div>
+          <div className="skeleton-animation" />
           <div className="nut-skeleton-content">
             {avatar && (
-              <Avatar
-                className={avatarClass}
-                bgColor="rgb(239, 239, 239)"
-                style={getStyle()}
-              ></Avatar>
+              <Avatar className={avatarClass} bgColor="rgb(239, 239, 239)" style={getStyle()} />
             )}
             {row === 1 ? (
-              <div
-                className={blockClass}
-                style={{ width: `${width}px`, height: `${height}px` }}
-              ></div>
+              <div className={blockClass} style={{ width: `${width}px`, height: `${height}px` }} />
             ) : (
               <div className="skeleton-content-line">
-                {title && <div className="skeleton-title"></div>}
+                {title && <div className="skeleton-title" />}
                 {repeatLines(row).map((item, index) => {
                   return (
                     <div
                       className={`${blockClass} skeleton-lines`}
                       key={index}
                       style={{ width: `${width}px`, height: `${height}px` }}
-                    ></div>
+                    />
                   )
                 })}
               </div>

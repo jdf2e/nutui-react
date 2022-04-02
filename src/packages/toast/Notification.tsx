@@ -1,9 +1,9 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
-import classNames from 'classnames'
 export interface NotificationProps {
   id?: string
   style?: React.CSSProperties
@@ -31,7 +31,9 @@ interface State {
 
 export default class Notification extends React.PureComponent<NotificationProps, State> {
   private closeTimer: number | undefined
+
   static newInstance: (properties: NotificationProps, callback: any) => void
+
   constructor(props: NotificationProps) {
     super(props)
     this.close = this.close.bind(this)
@@ -67,6 +69,7 @@ export default class Notification extends React.PureComponent<NotificationProps,
       this.closeTimer = -1
     }
   }
+
   clickCover() {
     const { closeOnClickOverlay } = this.props
     if (closeOnClickOverlay) {
@@ -101,19 +104,19 @@ export default class Notification extends React.PureComponent<NotificationProps,
     const toastBem = bem('toast')
 
     const classes = classNames({
-      ['nut-toast-center']: center,
-      ['nut-toast-has-icon']: icon,
-      ['nut-toast-cover']: cover,
-      ['nut-toast-loading']: type === 'loading',
+      'nut-toast-center': center,
+      'nut-toast-has-icon': icon,
+      'nut-toast-cover': cover,
+      'nut-toast-loading': type === 'loading',
       customClass,
-      ['nut-toast-' + size]: true,
+      [`nut-toast-${size}`]: true,
     })
     return (
       <>
         <div
           className={`${toastBem()} ${classes}`}
           style={{
-            bottom: center ? 'auto' : bottom + 'px',
+            bottom: center ? 'auto' : `${bottom}px`,
             backgroundColor: cover ? coverColor : '',
           }}
           onClick={() => {
@@ -126,7 +129,7 @@ export default class Notification extends React.PureComponent<NotificationProps,
           >
             {icon ? (
               <p className={toastBem('icon-wrapper')}>
-                <Icon name={icon ? icon : ''} size="20" />
+                <Icon name={icon || ''} size="20" />
               </p>
             ) : null}
 

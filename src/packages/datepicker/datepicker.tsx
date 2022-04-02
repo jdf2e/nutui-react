@@ -138,7 +138,7 @@ export const DatePicker: FunctionComponent<
       curDate
     )
 
-    let result = [
+    const result = [
       {
         type: 'year',
         range: [minYear, maxYear],
@@ -194,7 +194,7 @@ export const DatePicker: FunctionComponent<
 
   const initDefault = () => {
     if (['date', 'datetime', 'time'].includes(type)) {
-      let formatDate = [
+      const formatDate = [
         modelValue.getFullYear(),
         modelValue.getMonth() + 1,
         modelValue.getDate(),
@@ -337,7 +337,7 @@ export const DatePicker: FunctionComponent<
   }, [visible])
 
   return (
-    <div className={`nut-datepicker ${className ? className : ''}`} style={style} {...rest}>
+    <div className={`nut-datepicker ${className || ''}`} style={style} {...rest}>
       <Picker
         isVisible={show}
         listData={listData}
@@ -348,7 +348,7 @@ export const DatePicker: FunctionComponent<
           updateChooseValueCustmer(index, value, list)
         }
         ref={pickerRef}
-      ></Picker>
+      />
     </div>
   )
 }

@@ -50,7 +50,7 @@ const UploaderDemo = () => {
     canvas.height = img.height
     context.clearRect(0, 0, img.width, img.height)
     context.drawImage(img, 0, 0, img.width, img.height)
-    let blob = (await canvastoFile(canvas, 'image/jpeg', 0.5)) as Blob //quality:0.5可根据实际情况计算
+    const blob = (await canvastoFile(canvas, 'image/jpeg', 0.5)) as Blob // quality:0.5可根据实际情况计算
     const f = await new File([blob], files[0].name, { type: files[0].type })
     return [f]
   }
@@ -61,7 +61,7 @@ const UploaderDemo = () => {
     <>
       <div className="demo bg-w">
         <h2>基础用法</h2>
-        <Uploader url={uploadUrl} start={onStart}></Uploader>
+        <Uploader url={uploadUrl} start={onStart} />
         <h2>自定义上传样式</h2>
         <Uploader url={uploadUrl}>
           <Button type="primary" icon="uploader">
@@ -69,13 +69,13 @@ const UploaderDemo = () => {
           </Button>
         </Uploader>
         <h2>直接调起摄像头（移动端生效）</h2>
-        <Uploader capture></Uploader>
+        <Uploader capture />
         <h2>上传状态</h2>
-        <Uploader url={uploadUrl} multiple removeImage={onDelete}></Uploader>
+        <Uploader url={uploadUrl} multiple removeImage={onDelete} />
         <h2>限制上传数量5个</h2>
-        <Uploader url={uploadUrl} multiple maximum="5"></Uploader>
+        <Uploader url={uploadUrl} multiple maximum="5" />
         <h2>限制上传大小（每个文件最大不超过 50kb）</h2>
-        <Uploader url={uploadUrl} multiple maximize={1024 * 50} oversize={onOversize}></Uploader>
+        <Uploader url={uploadUrl} multiple maximize={1024 * 50} oversize={onOversize} />
         <h2>限制上传大小（在beforeupload钩子中处理）</h2>
         <Uploader
           url={uploadUrl}
@@ -83,22 +83,17 @@ const UploaderDemo = () => {
           beforeUpload={beforeUpload}
           maximize={1024 * 50}
           oversize={onOversize}
-        ></Uploader>
+        />
         <h2>自定义数据 FormData 、 headers </h2>
-        <Uploader
-          url={uploadUrl}
-          data={formData}
-          headers={formData}
-          withCredentials={true}
-        ></Uploader>
+        <Uploader url={uploadUrl} data={formData} headers={formData} withCredentials />
         <h2>手动上传 </h2>
-        <Uploader url={uploadUrl} maximum="5" autoUpload={false} ref={uploadRef}></Uploader>
+        <Uploader url={uploadUrl} maximum="5" autoUpload={false} ref={uploadRef} />
         <br />
         <Button type="success" size="small" onClick={submitUpload}>
           执行上传
         </Button>
         <h2>禁用状态</h2>
-        <Uploader disabled></Uploader>
+        <Uploader disabled />
       </div>
     </>
   )

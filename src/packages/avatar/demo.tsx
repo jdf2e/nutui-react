@@ -18,28 +18,28 @@ const AvatarDemo = () => {
           <Avatar
             size="large"
             src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-          ></Avatar>
+          />
           <Avatar
             size="normal"
             src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-          ></Avatar>
+          />
           <Avatar
             size="small"
             src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-          ></Avatar>
+          />
         </Cell>
         <h2>修改形状</h2>
         <Cell>
-          <Avatar icon="my" shape="square"></Avatar>
-          <Avatar icon="my" shape="round"></Avatar>
+          <Avatar icon="my" shape="square" />
+          <Avatar icon="my" shape="round" />
         </Cell>
         <h2>修改背景色</h2>
         <Cell>
-          <Avatar className="demo-avatar" bgColor="#FA2C19" icon="my"></Avatar>
+          <Avatar className="demo-avatar" bgColor="#FA2C19" icon="my" />
         </Cell>
         <h2>修改背景图片</h2>
         <Cell>
-          <Avatar icon="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"></Avatar>
+          <Avatar icon="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
         </Cell>
         <h2>可以修改头像的内容</h2>
         <Cell>
@@ -47,7 +47,7 @@ const AvatarDemo = () => {
         </Cell>
         <h2>点击头像触发事件</h2>
         <Cell>
-          <Avatar icon="my" onClick={handleClick}></Avatar>
+          <Avatar icon="my" onClick={handleClick} />
         </Cell>
       </div>
     </>

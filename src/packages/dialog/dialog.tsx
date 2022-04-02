@@ -80,7 +80,7 @@ const BaseDialog: ForwardRefRenderFunction<
     return footerContent
   }
 
-  return <DialogWrapper {...restProps} visible={visible} footer={renderFooter()}></DialogWrapper>
+  return <DialogWrapper {...restProps} visible={visible} footer={renderFooter()} />
 }
 
 export const Dialog: DialogComponent = forwardRef(BaseDialog) as DialogComponent

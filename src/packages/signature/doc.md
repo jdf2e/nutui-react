@@ -22,13 +22,13 @@ import { Signature} from '@nutui/nutui-react';
 
 const App = () => {
     const confirm = (canvas: HTMLCanvasElement, data: string) => {
-      let img = document.createElement('img')
+      const img = document.createElement('img')
       img.src = data
       const demo = document.querySelector('.demo') as HTMLElement
       demo.appendChild(img)
     }
     const clear = () => {
-      let img = document.querySelector('.demo img')
+      const img = document.querySelector('.demo img')
       if (img) {
         img.remove()
       }
@@ -36,7 +36,7 @@ const App = () => {
     const demoStyles: React.CSSProperties = { margin: '1em 0' }
     return (
     <>
-        <Signature confirm={confirm} clear={clear}></Signature>
+        <Signature confirm={confirm} clear={clear} />
         <p className="demo-tips demo" style={demoStyles}>
             Tips: 点击确认按钮,下方显示签名图片
         </p>
@@ -58,13 +58,13 @@ import { Signature} from '@nutui/nutui-react';
 
 const App = () => {
     const confirm = (canvas: HTMLCanvasElement, data: string) => {
-    let img = document.createElement('img')
+    const img = document.createElement('img')
     img.src = data
     const demo = document.querySelector('.demo') as HTMLElement
     demo.appendChild(img)
     }
     const clear = () => {
-    let img = document.querySelector('.demo img')
+    const img = document.querySelector('.demo img')
     if (img) {
         img.remove()
     }
@@ -74,10 +74,10 @@ const App = () => {
     <>
         <Signature
             lineWidth={4}
-            strokeStyle={'green'}
+            strokeStyle="green"
             confirm={confirm}
             clear={clear}
-        ></Signature>
+         />
         <p className="demo-tips demo" style={demoStyles}>
             Tips: 点击确认按钮,下方显示签名图片
         </p>
