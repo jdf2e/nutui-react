@@ -26,13 +26,13 @@ const App = () => {
 }
   return (
     <>
-    <Cell title="我是标题" desc="描述文字"></Cell>
-    <Cell title="我是标题" subTitle="副标题描述" desc="描述文字"></Cell>
+    <Cell title="我是标题" desc="描述文字" />
+    <Cell title="我是标题" subTitle="副标题描述" desc="描述文字" />
     <Cell
         title="点击测试"
         click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) =>
         testClick(event)}
-    ></Cell>
+     />
     </>
   );
 };
@@ -75,9 +75,9 @@ const App = () => {
   return (
     <>
     <CellGroup title="链接 | 分组用法">
-      <Cell title="链接" isLink={true}></Cell>
-      <Cell title="URL 跳转" desc="https://m.jd.com/" isLink={true} url="https://m.jd.com/"></Cell>
-      <Cell title="路由跳转 ’/‘ " to="/"></Cell>
+      <Cell title="链接" isLink />
+      <Cell title="URL 跳转" desc="https://m.jd.com/" isLink url="https://m.jd.com/" />
+      <Cell title="路由跳转 ’/‘ " to="/" />
     </CellGroup>
     </>
   );
@@ -98,7 +98,7 @@ import { CellGroup,Cell,Switch } from '@nutui/nutui-react';
 const App = () => {
   return (
     <CellGroup title="自定义右侧箭头区域">
-      <Cell title="Switch" extra={<Switch checked={true}></Switch>}></Cell>
+      <Cell title="Switch" extra={<Switch checked />} />
     </CellGroup>
   );
 };
@@ -117,7 +117,7 @@ import { Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Cell title="姓名" icon="my" desc="张三" isLink={true}></Cell>
+    <Cell title="姓名" icon="my" desc="张三" isLink />
   );
 };
 export default App;
@@ -135,7 +135,7 @@ import { Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Cell descTextAlign="left" desc="张三"></Cell>
+    <Cell descTextAlign="left" desc="张三" />
   );
 };
 export default App;

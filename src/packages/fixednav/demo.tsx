@@ -1,7 +1,7 @@
 import React, { useState, MouseEvent } from 'react'
 import { Icon } from '../icon/icon'
 import { FixedNav } from './fixednav'
-import Drag from './../drag'
+import Drag from '../drag'
 
 const FixedNavDemo = () => {
   const navList = [
@@ -75,7 +75,7 @@ const FixedNavDemo = () => {
         <FixedNav
           navList={navList}
           activeText="基础用法"
-          overlay={true}
+          overlay
           position={{ top: '70px' }}
           onChange={change1}
           visible={visible1}
@@ -83,11 +83,11 @@ const FixedNavDemo = () => {
         />
         <FixedNav
           navList={navList}
-          type={'left'}
+          type="left"
           position={{ top: '140px' }}
           visible={visible2}
-          activeText={'左侧收起'}
-          unActiveText={'左侧展开'}
+          activeText="左侧收起"
+          unActiveText="左侧展开"
           onChange={change2}
           onSelected={selected2}
         />
@@ -101,12 +101,12 @@ const FixedNavDemo = () => {
         />
         <FixedNav
           position={{ top: '280px' }}
-          type={'left'}
+          type="left"
           visible={visible4}
           onChange={change4}
           onSelected={selected4}
           slotList={
-            <ul className="nut-fixednav__list" slot={'list'}>
+            <ul className="nut-fixednav__list" slot="list">
               <li className="nut-fixednav__list-item">1</li>
               <li className="nut-fixednav__list-item">2</li>
               <li className="nut-fixednav__list-item">3</li>
@@ -124,7 +124,7 @@ const FixedNavDemo = () => {
           }
         />
         {/* <!-- 配合 Drag 支持拖拽 ，小程序暂不支持 --> */}
-        <Drag direction={'y'} style={{ right: '0px', bottom: '240px' }}>
+        <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
           <FixedNav
             navList={navList}
             unActiveText="支持拖拽"

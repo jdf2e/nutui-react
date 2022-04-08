@@ -24,7 +24,7 @@ interface IToastOptions {
 const options: IToastOptions = {
   msg: '',
   id: '',
-  duration: 1.5, //时长,duration为0则一直展示
+  duration: 1.5, // 时长,duration为0则一直展示
   center: true, // toast是否居中展示
   type: 'text',
   customClass: '', // 自定义样式名
@@ -35,7 +35,7 @@ const options: IToastOptions = {
   loadingRotate: true, // 未实现
   bgColor: 'rgba(0, 0, 0, .8)',
   onClose: () => {}, // 未实现
-  cover: false, //是否展示透明遮罩层
+  cover: false, // 是否展示透明遮罩层
   coverColor: 'rgba(0, 0, 0, 0)', // 遮罩颜色设定
   closeOnClickOverlay: false, // 是否点击遮罩可关闭
 }
@@ -66,7 +66,6 @@ function notice(opts: any) {
 const errorMsg = (msg: any) => {
   if (!msg) {
     console.warn('[NutUI Toast]: msg不能为空')
-    return
   }
 }
 

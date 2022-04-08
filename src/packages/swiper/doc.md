@@ -34,10 +34,10 @@ const App = () => {
   return (
     <Swiper
       height={height}
-      paginationColor={"#426543"}
+      paginationColor="#426543"
       autoPlay="3000"
       initPage={initPage1}
-      paginationVisible={true}
+      paginationVisible
       onChange={onChange}
     >
       <SwiperItem >
@@ -111,7 +111,7 @@ const App = () => {
   return (
     <Swiper
       initPage={initPage3}
-      loop={true}
+      loop
       onChange={onChange3}
       pageContent={<div className="page"> {current}/4 </div>}
     >
@@ -151,12 +151,12 @@ const App = () => {
   }
   return (
     <Swiper
-      loop={true}
+      loop
       initPage={initPage4}
       direction="vertical"
       autoPlay="3000"
       height="150"
-      paginationVisible={true}
+      paginationVisible
     >
       <SwiperItem >
         <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />

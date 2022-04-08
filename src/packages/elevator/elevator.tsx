@@ -43,7 +43,7 @@ export const Elevator: FunctionComponent<
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [scrollStart, setScrollStart] = useState<boolean>(false)
   const state = useRef(initData)
-  //重置滚动参数
+  // 重置滚动参数
   const resetScrollState = () => {
     state.current.anchorIndex = 0
     setCurrentIndex(0)
@@ -64,7 +64,7 @@ export const Elevator: FunctionComponent<
 
     state.current.listHeight.push(height)
     for (let i = 0; i < state.current.listGroup.length; i++) {
-      let item = state.current.listGroup[i]
+      const item = state.current.listGroup[i]
       height += item.clientHeight
       state.current.listHeight.push(height)
     }
@@ -89,9 +89,9 @@ export const Elevator: FunctionComponent<
   }
 
   const touchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    let firstTouch = e.touches[0]
+    const firstTouch = e.touches[0]
     touchState.current.y2 = firstTouch.pageY
-    let delta = ((touchState.current.y2 - touchState.current.y1) / spaceHeight) | 0
+    const delta = ((touchState.current.y2 - touchState.current.y1) / spaceHeight) | 0
     const cacheIndex = state.current.anchorIndex + delta
 
     setCurrentIndex(cacheIndex)
@@ -104,8 +104,8 @@ export const Elevator: FunctionComponent<
 
   const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     setScrollStart(true)
-    let index = Number(getData(e.target as HTMLElement, 'index'))
-    let firstTouch = e.touches[0]
+    const index = Number(getData(e.target as HTMLElement, 'index'))
+    const firstTouch = e.touches[0]
     touchState.current.y1 = firstTouch.pageY
     state.current.anchorIndex = +index
     setCurrentIndex((currentIndex) => currentIndex + index)
@@ -156,7 +156,7 @@ export const Elevator: FunctionComponent<
                   return (
                     <div
                       className={b('list__item__name')}
-                      key={subitem['id']}
+                      key={subitem.id}
                       onClick={() => handleClickItem(item[acceptKey], subitem)}
                     >
                       {subitem.name}

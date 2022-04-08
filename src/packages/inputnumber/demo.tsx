@@ -65,7 +65,7 @@ const InputNumberDemo = () => {
         </Cell>
         <h2>支持异步修改</h2>
         <Cell>
-          <InputNumber modelValue={inputState.val7} change={onChange} isAsync={true} />
+          <InputNumber modelValue={inputState.val7} change={onChange} isAsync />
         </Cell>
         <h2>自定义按钮大小</h2>
         <Cell>

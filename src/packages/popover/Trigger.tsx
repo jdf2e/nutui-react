@@ -1,4 +1,5 @@
 import React, { HTMLAttributes } from 'react'
+
 interface TriggerProps {
   className?: string | undefined
   // onMouseEnter: () => void
@@ -50,6 +51,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
     //   }
     // })
   }
+
   fireEvents(type: string, e: Event) {
     const childCallback = (this.props.children as React.ReactElement).props[type]
     if (childCallback) {
@@ -60,6 +62,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
       callback(e)
     }
   }
+
   render() {
     const { children, className = '' } = this.props
     const child = React.Children.only(children) as React.ReactElement

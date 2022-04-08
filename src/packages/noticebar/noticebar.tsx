@@ -3,15 +3,13 @@ import React, {
   useEffect,
   useRef,
   FunctionComponent,
-  useImperativeHandle,
   MouseEvent,
   CSSProperties,
 } from 'react'
 
-import { number } from 'prop-types'
+import classNames from 'classnames'
 import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
-import classNames from 'classnames'
 
 export interface NoticeBarProps {
   // 滚动方向  across 横向 vertical 纵向
@@ -82,7 +80,7 @@ export const NoticeBar: FunctionComponent<
   const content = useRef<HTMLDivElement>(null)
   // const [scrollList,SetScrollList] = useState([])
   const [showNoticeBar, SetShowNoticeBar] = useState(true)
-  let scrollList: any = useRef([])
+  const scrollList: any = useRef([])
   const [wrapWidth, SetWrapWidth] = useState(0)
   const [firstRound, SetFirstRound] = useState(true)
   const [duration, SetDuration] = useState(0)
@@ -97,7 +95,7 @@ export const NoticeBar: FunctionComponent<
   useEffect(() => {
     if (direction === 'vertical') {
       if (children) {
-        let arr: string[] | any = []
+        const arr: string[] | any = []
         React.Children.map(children, (child) => {
           arr.push((child as any).props.children)
         })
@@ -112,7 +110,7 @@ export const NoticeBar: FunctionComponent<
       initScrollWrap(text)
     }
     return () => {
-      //销毁事件
+      // 销毁事件
       clearInterval(timer)
       startRoll()
       startRollEasy()
@@ -184,7 +182,7 @@ export const NoticeBar: FunctionComponent<
    */
   const startRollEasy = () => {
     showhorseLamp()
-    let timerCurr = window.setInterval(
+    const timerCurr = window.setInterval(
       showhorseLamp,
       ~~(height / speed / 4) * 1000 + Number(standTime)
     )
@@ -200,10 +198,10 @@ export const NoticeBar: FunctionComponent<
   }
 
   const startRoll = () => {
-    let timerCurr = setInterval(() => {
-      let chunk = 100
+    const timerCurr = setInterval(() => {
+      const chunk = 100
       for (let i = 0; i < chunk; i++) {
-        scroll(i, i < chunk - 1 ? false : true)
+        scroll(i, !(i < chunk - 1))
       }
     }, Number(standTime) + 100 * speed)
     SetTimer(timerCurr)
@@ -236,20 +234,19 @@ export const NoticeBar: FunctionComponent<
   const iconShow = () => {
     if (leftIcon === 'close') {
       return false
-    } else {
-      return true
     }
+    return true
   }
 
   const contentStyle = {
-    paddingLeft: firstRound ? 0 : wrapWidth + 'px',
-    animationDelay: (firstRound ? props.delay : 0) + 's',
-    animationDuration: duration + 's',
+    paddingLeft: firstRound ? 0 : `${wrapWidth}px`,
+    animationDelay: `${firstRound ? props.delay : 0}s`,
+    animationDuration: `${duration}s`,
   }
 
   const barStyle = {
-    color: color,
-    background: background,
+    color,
+    background,
     height: direction == 'vertical' ? `${height}px` : '',
   }
 
@@ -264,18 +261,15 @@ export const NoticeBar: FunctionComponent<
     'nut-noticebar-page': true,
     withicon: closeMode,
     close: closeMode,
-    wrapable: wrapable,
+    wrapable,
   })
 
   return (
-    <div className={`${b()} ${className ? className : ''}`} style={style}>
+    <div className={`${b()} ${className || ''}`} style={style}>
       {showNoticeBar && direction == 'across' ? (
         <div className={noticebarClass} style={barStyle} onClick={handleClick}>
-          <div
-            className="left-icon"
-            style={{ backgroundImage: `url(${leftIcon ? leftIcon : ''})` }}
-          >
-            {!leftIcon ? <Icon name={'notice'} size="16" color={color} /> : null}
+          <div className="left-icon" style={{ backgroundImage: `url(${leftIcon || ''})` }}>
+            {!leftIcon ? <Icon name="notice" size="16" color={color} /> : null}
           </div>
           <div ref={wrap} className="wrap">
             <div
@@ -290,7 +284,7 @@ export const NoticeBar: FunctionComponent<
           </div>
           {closeMode ? (
             <div className="right-icon" onClick={onClickIcon}>
-              <Icon name={'close'} color={color} />
+              <Icon name="close" color={color} />
             </div>
           ) : null}
         </div>
@@ -309,7 +303,7 @@ export const NoticeBar: FunctionComponent<
                 return (
                   <li
                     className="horseLamp_list_item"
-                    style={{ height: height }}
+                    style={{ height }}
                     key={index}
                     onClick={() => {
                       go(item)
@@ -327,11 +321,7 @@ export const NoticeBar: FunctionComponent<
               handleClickIcon()
             }}
           >
-            {rightIcon ? (
-              rightIcon
-            ) : closeMode ? (
-              <Icon name="cross" color={color} size="11px" />
-            ) : null}
+            {rightIcon || (closeMode ? <Icon name="cross" color={color} size="11px" /> : null)}
           </div>
         </div>
       ) : null}

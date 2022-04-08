@@ -89,9 +89,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 下拉刷新
 
+:::demo
 ```tsx
 import React, { useState, useEffect } from "react";
 import { Cell, Infiniteloading } from '@nutui/nutui-react';
@@ -156,7 +158,7 @@ const App = () => {
             pullIcon="JD"
             containerId="refreshScroll"
             useWindow={false}
-            isOpenRefresh={true}
+            isOpenRefresh
             hasMore={refreshHasMore}
             loadMore={refreshLoadMore}
             refresh={refresh}
@@ -176,8 +178,10 @@ const App = () => {
 }
 export default App;
 ```
+:::
 ### 自定义加载文案
 
+:::demo
 ```tsx
 import React, { useState, useEffect } from "react";
 import { Cell, Infiniteloading } from '@nutui/nutui-react';
@@ -254,6 +258,8 @@ const App = () => {
 }
 export default App;
 ```
+:::
+
 ## API
 
 ### Props

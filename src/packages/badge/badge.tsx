@@ -1,10 +1,11 @@
 import React, { CSSProperties, FunctionComponent } from 'react'
 
 import Icon from '@/packages/icon'
+
 export interface BadgeProps {
   value: any
   dot: boolean
-  max: Number
+  max: number
   top: string
   right: string
   zIndex: string
@@ -30,8 +31,8 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   }
   const content = () => {
     if (dot) return
-    const value = props.value
-    const max = props.max
+    const { value } = props
+    const { max } = props
     if (typeof value === 'number' && typeof max === 'number') {
       return max < value ? `${max}+` : value
     }
@@ -49,7 +50,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     <div className="nut-badge">
       {icons != '' && (
         <div className="slot-icons">
-          <Icon className="_icon" name={icons} color="#ffffff" size="12"></Icon>
+          <Icon className="_icon" name={icons} color="#ffffff" size="12" />
         </div>
       )}
       <div>{children}</div>

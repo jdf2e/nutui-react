@@ -4,10 +4,10 @@ import Button from '@/packages/button'
 import bem from '@/utils/bem'
 
 export interface SignatureProps {
-  type: String
-  lineWidth: Number
-  strokeStyle: String
-  unSupportTpl: String
+  type: string
+  lineWidth: number
+  strokeStyle: string
+  unSupportTpl: string
   className: string
   confirm?: (canvas: HTMLCanvasElement, dataurl: string) => void
   clear?: () => void
@@ -33,7 +33,7 @@ export const Signature: FunctionComponent<
   const [canvasWidth, setCanvasWidth] = useState(0)
   const ctx = useRef<CanvasRenderingContext2D | null>(null)
   const isCanvasSupported = () => {
-    let elem = document.createElement('canvas')
+    const elem = document.createElement('canvas')
     return !!(elem.getContext && elem.getContext('2d'))
   }
   const isSupportTouch = 'ontouchstart' in window
@@ -71,11 +71,11 @@ export const Signature: FunctionComponent<
   const moveEventHandler = (event: any) => {
     event.preventDefault()
 
-    let evt = isSupportTouch ? event.touches[0] : event
+    const evt = isSupportTouch ? event.touches[0] : event
     if (canvasRef.current && ctx.current) {
-      let coverPos = canvasRef.current.getBoundingClientRect()
-      let mouseX = evt.clientX - coverPos.left
-      let mouseY = evt.clientY - coverPos.top
+      const coverPos = canvasRef.current.getBoundingClientRect()
+      const mouseX = evt.clientX - coverPos.left
+      const mouseY = evt.clientY - coverPos.top
 
       ctx.current.lineTo(mouseX, mouseY)
       ctx.current.stroke()
@@ -126,7 +126,7 @@ export const Signature: FunctionComponent<
     <div className={`${b()} ${className}`} {...rest}>
       <div className={`${b('inner')}`} ref={wrapRef}>
         {isCanvasSupported() ? (
-          <canvas ref={canvasRef} height={canvasHeight} width={canvasWidth}></canvas>
+          <canvas ref={canvasRef} height={canvasHeight} width={canvasWidth} />
         ) : (
           <p className={`${b('unsopport')}`}>{unSupportTpl}</p>
         )}

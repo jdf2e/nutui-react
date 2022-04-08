@@ -24,19 +24,21 @@ const App = () => {
   return (
     <>
       <Avatar size="large" src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-      ></Avatar>
+       />
       <Avatar size="normal" src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-      ></Avatar>
+       />
       <Avatar size="small" src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-      ></Avatar>  
+       />  
     </>
   )
 }
 export default App;
 ```
+:::
 
 ### 修改形状类型
 
+:::demo
 ``` tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
@@ -44,16 +46,18 @@ import { Avatar } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Avatar icon="my" shape="square"></Avatar>
-      <Avatar icon="my" shape="round"></Avatar>
+      <Avatar icon="my" shape="square" />
+      <Avatar icon="my" shape="round" />
     </>
   )
 }
 export default App;
 ```
+:::
 
 ### 修改背景色
 
+:::demo
 ``` tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
@@ -64,33 +68,39 @@ const styles = {
 const App = () => {
   return (
     <>
-      <Avatar className="demo-avatar" bgColor="#FA2C19" icon="my" style={styles}></Avatar>
+      <Avatar className="demo-avatar" bgColor="#FA2C19" icon="my" style={styles} />
     </>
   )
 }
 export default App;
 ```
+:::
 
 ### 修改背景icon
 
+:::demo
 ``` tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
+
 const App = () => {
   return (
     <>
-      <Avatar icon="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"></Avatar>
+      <Avatar icon="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
     </>
   )
 }
 export default App;
 ```
+:::
 
 ### 设置头像的文本内容
 
+:::demo
 ``` tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
+
 const App = () => {
   return (
     <>
@@ -100,9 +110,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 点击头像触发事件
 
+:::demo
 ``` tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
@@ -113,13 +125,13 @@ const App = () => {
   }
   return (
     <>
-      <Avatar icon="my" onClick={handleClick}></Avatar>
+      <Avatar icon="my" onClick={handleClick} />
     </>
   )
 }
 export default App;
 ```
-
+:::
 
 ### Prop
 

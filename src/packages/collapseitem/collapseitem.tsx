@@ -55,8 +55,8 @@ export const CollapseItem: FunctionComponent<Partial<CollapseItemProps>> = (prop
     ...defaultProps,
     ...props,
   }
-  const [domHeight, setDomHeight] = useState(-1) //保存content的高度
-  const [currHeight, setCurrHeight] = useState('auto') //设置content的高度
+  const [domHeight, setDomHeight] = useState(-1) // 保存content的高度
+  const [currHeight, setCurrHeight] = useState('auto') // 设置content的高度
   const [update, setUpdate] = useState(false)
   const [iconStyle, setIconStyle] = useState({
     transform: 'translateY(-50%)',
@@ -79,11 +79,11 @@ export const CollapseItem: FunctionComponent<Partial<CollapseItemProps>> = (prop
 
   useEffect(() => {
     // setCurrHeight('auto')
-    //一开始content都有高度，在这里根据isOpen，改变其高度
+    // 一开始content都有高度，在这里根据isOpen，改变其高度
     if (domHeight !== -1) {
-      isOpen ? setCurrHeight(domHeight + 'px') : setCurrHeight('0px')
+      isOpen ? setCurrHeight(`${domHeight}px`) : setCurrHeight('0px')
     }
-    let newIconStyle = isOpen
+    const newIconStyle = isOpen
       ? { transform: `translateY(-50%) rotate(${rotate}deg)` }
       : { transform: 'translateY(-50%)' }
     setIconStyle(newIconStyle)
@@ -92,7 +92,7 @@ export const CollapseItem: FunctionComponent<Partial<CollapseItemProps>> = (prop
   return (
     <div className={colBem()}>
       <div
-        className={colBem('header', { disabled: disabled })}
+        className={colBem('header', { disabled })}
         onClick={() => {
           if (disabled) return
           onToggle && onToggle(isOpen, name)
@@ -105,7 +105,7 @@ export const CollapseItem: FunctionComponent<Partial<CollapseItemProps>> = (prop
                 name={titleIcon}
                 size={titleIconSize}
                 color={disabled ? '#C2C2C2' : titleIconColor}
-              ></Icon>
+              />
             </b>
           )}
           {title}
@@ -115,14 +115,14 @@ export const CollapseItem: FunctionComponent<Partial<CollapseItemProps>> = (prop
                 name={titleIcon}
                 size={titleIconSize}
                 color={disabled ? '#C2C2C2' : titleIconColor}
-              ></Icon>
+              />
             </b>
           )}
         </div>
         <div className={colBem('sub-title')}>{subTitle}</div>
         <div className={colBem('icon-box')}>
           <div className={colBem('icon')} style={iconStyle}>
-            <Icon name={icon} size={iconSize} color={disabled ? '#C2C2C2' : iconColor}></Icon>
+            <Icon name={icon} size={iconSize} color={disabled ? '#C2C2C2' : iconColor} />
           </div>
         </div>
       </div>

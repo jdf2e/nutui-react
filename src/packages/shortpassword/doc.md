@@ -17,6 +17,7 @@ import { ShortPassword } from '@nutui/nutui-react';
 ```tsx
 import React, { useState } from "react";
 import { Cell,ShortPassword } from '@nutui/nutui-react';
+
 const App = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
@@ -31,13 +32,13 @@ const App = () => {
         onClick={() => {
           setVisible(true)
         }}
-      ></Cell>
+       />
         <ShortPassword
         visible={visible}
         modelValue={value}
         onClose={() => setVisible(false)}
         change={(value) => change(value)}
-      ></ShortPassword>
+       />
      </>
   )
 }
@@ -49,6 +50,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Cell,ShortPassword } from '@nutui/nutui-react';
+
 const App = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
@@ -63,14 +65,14 @@ const App = () => {
         onClick={() => {
           setVisible(true)
         }}
-      ></Cell>
+       />
         <ShortPassword
         visible={visible}
         onClose={() => setVisible(false)}
         noButton={false}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
-      ></ShortPassword>
+       />
      </>
   )
 }
@@ -82,6 +84,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Cell,ShortPassword } from '@nutui/nutui-react';
+
 const App = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
@@ -96,12 +99,12 @@ const App = () => {
         onClick={() => {
           setVisible(true)
         }}
-      ></Cell>
+       />
         <ShortPassword
         visible={visible}
         onClose={() => setVisible(false)}
         length={4}
-      ></ShortPassword>
+       />
      </>
   )
 }
@@ -112,6 +115,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Cell,ShortPassword,Toast } from '@nutui/nutui-react';
+
 const App = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
@@ -129,12 +133,12 @@ const App = () => {
         onClick={() => {
           setVisible(true)
         }}
-      ></Cell>
+       />
        <ShortPassword
         visible={visible}
         onClose={() => setVisible(false)}
         onTips={() => onTips()}
-      ></ShortPassword>
+       />
      </>
   )
 }

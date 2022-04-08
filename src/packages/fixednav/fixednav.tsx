@@ -1,8 +1,8 @@
-import React, { FunctionComponent, useState, useEffect, MouseEvent, HTMLProps } from 'react'
+import React, { FunctionComponent, MouseEvent, HTMLProps } from 'react'
+import classNames from 'classnames'
 import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
 import bem from '@/utils/bem'
-import classNames from 'classnames'
 
 type Direction = 'right' | 'left'
 type Position = {
@@ -69,7 +69,7 @@ export const FixedNav: FunctionComponent<
     onSelected(item, event)
   }
 
-  const onUpdateValue = (value: boolean = !visible): void => {
+  const onUpdateValue = (value = !visible): void => {
     onChange(value)
   }
 
@@ -85,13 +85,9 @@ export const FixedNav: FunctionComponent<
 
   return (
     <div className={classes} style={position} {...rest}>
-      {overlay && (
-        <Overlay visible={visible} zIndex={200} onClick={() => onUpdateValue(false)}></Overlay>
-      )}
+      {overlay && <Overlay visible={visible} zIndex={200} onClick={() => onUpdateValue(false)} />}
       <div className="list">
-        {slotList ? (
-          slotList
-        ) : (
+        {slotList || (
           <div className="nut-fixednav__list">
             {navList.map((item: any, index) => {
               return (
@@ -111,9 +107,7 @@ export const FixedNav: FunctionComponent<
       </div>
 
       <div className="nut-fixednav__btn" onClick={() => onUpdateValue()}>
-        {slotBtn ? (
-          slotBtn
-        ) : (
+        {slotBtn || (
           <>
             <Icon name="left" color="#fff" />
             <div className="text">{visible ? activeText : unActiveText}</div>

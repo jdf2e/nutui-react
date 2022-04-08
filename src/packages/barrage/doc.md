@@ -25,19 +25,19 @@ const barrageStyle = {
   boxSizing: 'border-box'
 }
 const App = () => {
-  let list = ['画美不看', '不明觉厉', '喜大普奔', '男默女泪', '累觉不爱', '爷青结-']
+  const list = ['画美不看', '不明觉厉', '喜大普奔', '男默女泪', '累觉不爱', '爷青结-']
   const barrageRef = useRef(null)
   const addBarrage = () => {
-    let n = Math.random()
+    const n = Math.random()
     if (barrageRef.current) {
-      barrageRef.current.add('随机——' + String(n).substr(2, 10))
+      barrageRef.current.add(`随机——${  String(n).substr(2, 10)}`)
     }
   }
   return (
     <div className="demo">
       <h2>基础用法</h2>
-      <Cell className={'barrage-demo-wrap'} style={barrageStyle}>
-        <Barrage className={'barrage-demo'} ref={barrageRef} barrageList={list} style={barrageStyle}></Barrage>
+      <Cell className="barrage-demo-wrap" style={barrageStyle}>
+        <Barrage className="barrage-demo" ref={barrageRef} barrageList={list} style={barrageStyle} />
       </Cell>
       <div className="test" style={{ textAlign: 'center' }}>
         <Button type="danger" onClick={addBarrage}>
@@ -49,6 +49,7 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 
 ## API

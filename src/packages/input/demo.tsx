@@ -34,8 +34,8 @@ const InputDemo = () => {
 
         <Input label="文本" defaultValue={value2} change={change} clear={clear} requireShow />
         <h2>禁用输入框</h2>
-        <Input label="文本" defaultValue="禁止修改" disabled={true} />
-        <Input label="文本" defaultValue="readonly只读" readonly={true} />
+        <Input label="文本" defaultValue="禁止修改" disabled />
+        <Input label="文本" defaultValue="readonly只读" readonly />
         <h2>限制输入长度</h2>
         <Input label="限制7" defaultValue={value3} maxLength="7" />
         <h2>自定义类型</h2>

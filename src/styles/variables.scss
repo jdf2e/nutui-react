@@ -349,3 +349,28 @@ $dialog-footer-ok-max-width: 128px !default;
 // 在组件中import
 //@import './mixins/index';
 //@import './animation/index';
+
+// tabs
+$tabs-tab-smile-color: $primary-color !default;
+$tabs-titles-border-radius: 0 !default;
+$tabs-titles-item-large-font-size: $font-size-3 !default;
+$tabs-titles-item-font-size: $font-size-2 !default;
+$tabs-titles-item-small-font-size: $font-size-1 !default;
+$tabs-titles-item-color: $title-color !default;
+$tabs-titles-background-color: $help-color !default;
+$tabs-horizontal-tab-line-color: linear-gradient(
+  90deg,
+  $primary-color 0%,
+  rgba($primary-color, 0.15) 100%
+) !default;
+$tabs-horizontal-titles-height: 46px !default;
+$tabs-horizontal-titles-item-min-width: 50px !default;
+$tabs-horizontal-titles-item-active-line-width: 40px !default;
+$tabs-vertical-tab-line-color: linear-gradient(
+  180deg,
+  $primary-color 0%,
+  rgba($primary-color, 0.15) 100%
+) !default;
+$tabs-vertical-titles-item-height: 40px !default;
+$tabs-vertical-titles-item-active-line-height: 14px !default;
+$tabs-vertical-titles-width: 100px !default;

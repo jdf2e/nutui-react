@@ -40,11 +40,13 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 步长设置
 
 设置步长 `step` 5 
 
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { InputNumber } from '@nutui/nutui-react';
@@ -68,11 +70,13 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 限制输入范围
 
 `min` 和 `max` 属性分别表示最小值和最大值
 
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { InputNumber } from '@nutui/nutui-react';
@@ -100,11 +104,13 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 禁用状态
 
 `disabled` 禁用状态下无法点击按钮或修改输入框。
 
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { InputNumber } from '@nutui/nutui-react';
@@ -128,11 +134,13 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 只读禁用输入框
 
 `readonly` 设置只读禁用输入框输入行为
 
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { InputNumber } from '@nutui/nutui-react';
@@ -156,11 +164,13 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 支持小数点
 
 设置步长 `step` 0.1  `decimal-places` 小数保留1位
 
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { InputNumber } from '@nutui/nutui-react';
@@ -184,10 +194,12 @@ const App = () => {
 }
 export default App;
 ```
+:::
 ### 支持异步修改
 
 通过 `change` 事件和 `model-value` 进行异步修改
 
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { InputNumber, Toast } from '@nutui/nutui-react';
@@ -213,17 +225,19 @@ const App = () => {
   }
   return (
     <>
-      <InputNumber modelValue={inputState.val7} change={onChange} isAsync={true} />
+      <InputNumber modelValue={inputState.val7} change={onChange} isAsync />
     </>
   )
 }
 export default App;
 ```
+:::
 
 ### 自定义按钮大小
 
 设置步长 `step` 0.1  `decimal-places` 小数保留1位
 
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { InputNumber, Toast } from '@nutui/nutui-react';
@@ -247,6 +261,7 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ## API
 

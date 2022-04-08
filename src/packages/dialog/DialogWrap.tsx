@@ -1,8 +1,8 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react'
-import { Content } from './Content'
-import Mask from './Mask'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
+import { Content } from './Content'
+import Mask from './Mask'
 
 interface DialogWrapProps {
   visible?: boolean
@@ -40,13 +40,7 @@ export const DialogWrap: FunctionComponent<
   return (
     <>
       {mask ? (
-        <CSSTransition
-          in={visible}
-          timeout={300}
-          classNames="fadeDialog"
-          unmountOnExit
-          appear={true}
-        >
+        <CSSTransition in={visible} timeout={300} classNames="fadeDialog" unmountOnExit appear>
           <Mask />
         </CSSTransition>
       ) : null}

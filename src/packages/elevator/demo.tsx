@@ -170,7 +170,7 @@ const ElevatorDemo = () => {
           height="260"
           clickItem={(key: string, item: any) => clickItem(key, item)}
           clickIndex={(key: string) => clickIndex(key)}
-        ></Elevator>
+        />
         <h2>自定义索引key</h2>
         <Elevator
           indexList={dataList2}
@@ -178,7 +178,7 @@ const ElevatorDemo = () => {
           acceptKey="num"
           clickItem={(key: string, item: any) => clickItem(key, item)}
           clickIndex={(key: string) => clickIndex(key)}
-        ></Elevator>
+        />
       </div>
     </>
   )

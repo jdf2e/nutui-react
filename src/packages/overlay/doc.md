@@ -33,15 +33,17 @@ const App = () => {
       <Button type="primary" onClick={handleToggleShow}>
         显示遮罩层
       </Button>
-      <Overlay visible={visible} onClick={onClose}></Overlay>
+      <Overlay visible={visible} onClick={onClose} />
     </>
   )
 }
 export default App;
 ```
+:::
 
 ### 嵌套内容
 
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -85,6 +87,7 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ## API
 

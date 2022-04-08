@@ -42,7 +42,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (props) =
 
   return (
     <div
-      className={`${b({ active: active })}`}
+      className={`${b({ active })}`}
       style={{
         color: active ? activeColor : unactiveColor,
       }}
@@ -55,7 +55,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (props) =
         {num && num >= 100 && <div className={`${bIcon('tips', [bIcon('nums')])}`}>99+</div>}
         {icon && (
           <div>
-            <Icon size={20} name={icon}></Icon>
+            <Icon size={20} name={icon} />
           </div>
         )}
         <div className={bIcon({ 'nav-word': true }, [bIcon({ 'big-word': !icon })])}>

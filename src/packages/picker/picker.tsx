@@ -73,7 +73,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
   const updateChooseValue = (index: number, value: any, cacheValueData: any[]) => {
     if (!value) return
     setcacheValueData((data) => {
-      let cache = [...cacheValueData]
+      const cache = [...cacheValueData]
       cache.splice(index, 1, value)
       return cache
     })
@@ -81,7 +81,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
   }
 
   useImperativeHandle(ref, () => {
-    return { updateChooseValue: updateChooseValue }
+    return { updateChooseValue }
   })
 
   const closeActionSheet = () => {
@@ -100,7 +100,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
 
   const chooseItem = (value: any, index: number) => {
     setcacheValueData((data) => {
-      let cacheData = [...data]
+      const cacheData = [...data]
       if (cacheData[index] != value) {
         cacheData[index] = value
         onChoose && onChoose(index, value, cacheData, pickerRef)
@@ -131,12 +131,12 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
         onClose && onClose()
       }}
     >
-      <div className={`${b()} ${className ? className : ''}`} style={style} {...rest}>
+      <div className={`${b()} ${className || ''}`} style={style} {...rest}>
         <div className={b('control')}>
           <span className={b('cancel-btn')} onClick={() => closeActionSheet()}>
             取消
           </span>
-          <div className={b('title')}>{title ? title : ''}</div>
+          <div className={b('title')}>{title || ''}</div>
           <span className={b('confirm-btn')} onClick={() => confirm()}>
             确定
           </span>

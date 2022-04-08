@@ -27,16 +27,17 @@ const App = () => {
   return (
     <>
       <h2>基础用法</h2>
-      <Uploader url={uploadUrl} start={onStart}></Uploader>
+      <Uploader url={uploadUrl} start={onStart} />
     </>
   )
 }
 export default App;
 ```
-
+:::
 
 ### 自定义上传样式
 
+:::demo
 ``` tsx
 import React, { useState } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -56,9 +57,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 直接调起摄像头（移动端生效）
-    
+
+:::demo
 ``` tsx
 import React, { useState } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -68,15 +71,17 @@ const App = () => {
   return (
     <>
       <h2>直接调起摄像头（移动端生效）</h2>
-      <Uploader capture url={uploadUrl}></Uploader>
+      <Uploader capture url={uploadUrl} />
     </>
   )
 }
 export default App;
 ```
+:::
 
 ### 上传状态
-    
+
+:::demo
 ``` tsx
 import React, { useState } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -89,16 +94,18 @@ const App = () => {
   return (
     <>
       <h2>上传状态</h2>
-      <Uploader url={uploadUrl} multiple removeImage={onDelete}></Uploader>
+      <Uploader url={uploadUrl} multiple removeImage={onDelete} />
     </>
   )
 }
 export default App;
 ```
+:::
 
 
 ### 限制上传数量5个
 
+:::demo
 ``` tsx
 import React, { useState } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -108,14 +115,17 @@ const App = () => {
   return (
     <>
       <h2>限制上传数量5个</h2>
-      <Uploader url={uploadUrl} multiple maximum="5"></Uploader>
+      <Uploader url={uploadUrl} multiple maximum="5" />
     </>
   )
 }
 export default App;
 ```
+:::
+
 ### 限制上传大小（每个文件最大不超过 50kb，也可以在beforeupload中自行处理）
 
+:::demo
 ``` tsx
 import React, { useState } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -128,16 +138,18 @@ const App = () => {
   return (
     <>
       <h2>限制上传大小（每个文件最大不超过 50kb）</h2>
-      <Uploader url={uploadUrl} multiple maximize={1024 * 50} oversize={onOversize}></Uploader>
+      <Uploader url={uploadUrl} multiple maximize={1024 * 50} oversize={onOversize} />
     </>
   )
 }
 export default App;
 ```
+:::
 
 
 ### 自定义 FormData headers
 
+:::demo
 ``` tsx
 import React, { useState } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -154,16 +166,18 @@ const App = () => {
         url={uploadUrl}
         data={formData}
         headers={formData}
-        withCredentials={true}
-      ></Uploader>
+        withCredentials
+       />
     </>
   )
 }
 export default App;
 ```
+:::
 
 ### 手动上传
 
+:::demo
 ``` tsx
 import React, { useState, useRef } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -177,7 +191,7 @@ const App = () => {
   return (
     <>
       <h2>手动上传</h2>
-      <Uploader url={uploadUrl} maximum="5" autoUpload={false} ref={uploadRef}></Uploader>
+      <Uploader url={uploadUrl} maximum="5" autoUpload={false} ref={uploadRef} />
       <br />
       <Button type="success" size="small" onClick={submitUpload}>
         执行上传
@@ -187,9 +201,11 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 ### 禁用状态
 
+:::demo
 ``` tsx
 import React, { useState } from "react";
 import { Uploader, Button } from '@nutui/nutui-react';
@@ -198,12 +214,13 @@ const App = () => {
   return (
     <>
       <h2>禁用状态</h2>
-      <Uploader disabled></Uploader>
+      <Uploader disabled />
     </>
   )
 }
 export default App;
 ```
+:::
 
 ### Prop
 

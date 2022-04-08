@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useContext } from 'react'
+import classNames from 'classnames'
 import { DataContext } from '@/packages/steps/UserContext'
 import bem from '@/utils/bem'
-import classNames from 'classnames'
 import Icon from '@/packages/icon'
 
 export interface StepProps {
@@ -58,12 +58,12 @@ export const Step: FunctionComponent<Partial<StepProps> & React.HTMLAttributes<H
   return (
     <div className={classes} {...restProps}>
       <div className="nut-step-head">
-        <div className="nut-step-line"></div>
+        <div className="nut-step-line" />
         <div className={`nut-step-icon ${!dot ? (icon ? 'is-icon' : 'is-text') : ''}`}>
           {icon ? (
             <Icon className="nut-step-icon-inner" name={icon} size={size} />
           ) : dot ? (
-            <span></span>
+            <span />
           ) : (
             <span className="nut-step-inner">{activeIndex}</span>
           )}

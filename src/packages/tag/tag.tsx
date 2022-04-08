@@ -68,16 +68,12 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
       style.color = textColor
       if (plain) {
         style.background = '#fff'
-      } else {
-        if (color) {
-          style.background = color
-        }
-      }
-    } else {
-      if (color) {
-        style.color = '#fff'
+      } else if (color) {
         style.background = color
       }
+    } else if (color) {
+      style.color = '#fff'
+      style.background = color
     }
     return style
   }
@@ -88,7 +84,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
           <div className={`${btnName}`} style={getStyle()} onClick={(e) => handleClick(e)}>
             {children && <span className="text">{children}</span>}
             {closeable && (
-              <Icon className="_icon" name="close" size="12" onClick={(e) => handleClick(e)}></Icon>
+              <Icon className="_icon" name="close" size="12" onClick={(e) => handleClick(e)} />
             )}
           </div>
         ) : (

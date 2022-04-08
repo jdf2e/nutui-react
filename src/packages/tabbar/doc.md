@@ -27,11 +27,11 @@ const App = () => {
         alert(idx)
       }}
     >
-      <TabbarItem tabTitle="首页" icon="home"></TabbarItem>
-      <TabbarItem tabTitle="分类" icon="category"></TabbarItem>
-      <TabbarItem tabTitle="发现" icon="find"></TabbarItem>
-      <TabbarItem tabTitle="购物车" icon="cart"></TabbarItem>
-      <TabbarItem tabTitle="我的" icon="my"></TabbarItem>
+      <TabbarItem tabTitle="首页" icon="home" />
+      <TabbarItem tabTitle="分类" icon="category" />
+      <TabbarItem tabTitle="发现" icon="find" />
+      <TabbarItem tabTitle="购物车" icon="cart" />
+      <TabbarItem tabTitle="我的" icon="my" />
     </Tabbar>
     </>
   );
@@ -51,11 +51,11 @@ const App = () => {
   return ( 
     <>   
     <Tabbar visible={2}>
-      <TabbarItem tabTitle="首页" icon="home"></TabbarItem>
-      <TabbarItem tabTitle="分类" icon="category"></TabbarItem>
-      <TabbarItem tabTitle="发现" icon="find"></TabbarItem>
-      <TabbarItem tabTitle="购物车" icon="cart"></TabbarItem>
-      <TabbarItem tabTitle="我的" icon="my"></TabbarItem>
+      <TabbarItem tabTitle="首页" icon="home" />
+      <TabbarItem tabTitle="分类" icon="category" />
+      <TabbarItem tabTitle="发现" icon="find" />
+      <TabbarItem tabTitle="购物车" icon="cart" />
+      <TabbarItem tabTitle="我的" icon="my" />
     </Tabbar>
     </>
   );
@@ -75,11 +75,11 @@ const App = () => {
   return ( 
     <>   
     <Tabbar>
-      <TabbarItem tabTitle="首页" icon="home" num="11"></TabbarItem>
-      <TabbarItem tabTitle="分类" icon="category"></TabbarItem>
-      <TabbarItem tabTitle="发现" icon="find"></TabbarItem>
-      <TabbarItem tabTitle="购物车" icon="cart" num="110"></TabbarItem>
-      <TabbarItem tabTitle="我的" icon="my"></TabbarItem>
+      <TabbarItem tabTitle="首页" icon="home" num="11" />
+      <TabbarItem tabTitle="分类" icon="category" />
+      <TabbarItem tabTitle="发现" icon="find" />
+      <TabbarItem tabTitle="购物车" icon="cart" num="110" />
+      <TabbarItem tabTitle="我的" icon="my" />
     </Tabbar>
     </>
   );
@@ -99,11 +99,11 @@ const App = () => {
   return ( 
     <>   
      <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-      <TabbarItem tabTitle="首页" icon="home"></TabbarItem>
-      <TabbarItem tabTitle="分类" icon="category"></TabbarItem>
-      <TabbarItem tabTitle="发现" icon="find"></TabbarItem>
-      <TabbarItem tabTitle="购物车" icon="cart"></TabbarItem>
-      <TabbarItem tabTitle="我的" icon="my"></TabbarItem>
+      <TabbarItem tabTitle="首页" icon="home" />
+      <TabbarItem tabTitle="分类" icon="category" />
+      <TabbarItem tabTitle="发现" icon="find" />
+      <TabbarItem tabTitle="购物车" icon="cart" />
+      <TabbarItem tabTitle="我的" icon="my" />
     </Tabbar>
     </>
   );
@@ -123,9 +123,9 @@ const App = () => {
   return ( 
     <>   
     <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-      <TabbarItem tabTitle="首页" icon="home"></TabbarItem>
-      <TabbarItem tabTitle="分类" icon="category"></TabbarItem>
-      <TabbarItem tabTitle="发现" icon="find"></TabbarItem>
+      <TabbarItem tabTitle="首页" icon="home" />
+      <TabbarItem tabTitle="分类" icon="category" />
+      <TabbarItem tabTitle="发现" icon="find" />
     </Tabbar>
     </>
   );
@@ -144,12 +144,12 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Tabbar bottom={true}>
-      <TabbarItem tabTitle="首页" href="" icon="home"></TabbarItem>
-      <TabbarItem tabTitle="分类" icon="category"></TabbarItem>
-      <TabbarItem tabTitle="发现" icon="find"></TabbarItem>
-      <TabbarItem tabTitle="购物车" href="https://m.jd.com" icon="cart"></TabbarItem>
-      <TabbarItem tabTitle="我的" href="######" icon="my"></TabbarItem>
+    <Tabbar bottom>
+      <TabbarItem tabTitle="首页" href="" icon="home" />
+      <TabbarItem tabTitle="分类" icon="category" />
+      <TabbarItem tabTitle="发现" icon="find" />
+      <TabbarItem tabTitle="购物车" href="https://m.jd.com" icon="cart" />
+      <TabbarItem tabTitle="我的" href="######" icon="my" />
     </Tabbar>
     </>
   );

@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-import bem from '@/utils/bem'
 import classNames from 'classnames'
+import bem from '@/utils/bem'
 import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 
@@ -144,8 +144,8 @@ export const CalendarItem: FunctionComponent<
 
   const getCurrDate = (day: Day, month: MonthInfo, isRange?: boolean) => {
     return isRange
-      ? month.curData[3] + '-' + month.curData[4] + '-' + Utils.getNumTwoBit(+day.day)
-      : month.curData[0] + '-' + month.curData[1] + '-' + Utils.getNumTwoBit(+day.day)
+      ? `${month.curData[3]}-${month.curData[4]}-${Utils.getNumTwoBit(+day.day)}`
+      : `${month.curData[0]}-${month.curData[1]}-${Utils.getNumTwoBit(+day.day)}`
   }
 
   const getClass = (day: Day, month: MonthInfo, isRange?: boolean) => {
@@ -156,12 +156,14 @@ export const CalendarItem: FunctionComponent<
         (state.isRange && (isStart(currDate) || isEnd(currDate)))
       ) {
         return `${state.dayPrefix}-active`
-      } else if (
+      }
+      if (
         (startDate && Utils.compareDate(currDate, startDate as string)) ||
         (endDate && Utils.compareDate(endDate as string, currDate))
       ) {
         return `${state.dayPrefix}-disabled`
-      } else if (
+      }
+      if (
         state.isRange &&
         Array.isArray(state.currDate) &&
         Object.values(state.currDate).length == 2 &&
@@ -169,12 +171,10 @@ export const CalendarItem: FunctionComponent<
         Utils.compareDate(currDate, state.currDate[1])
       ) {
         return `${state.dayPrefix}-choose`
-      } else {
-        return null
       }
-    } else {
-      return `${state.dayPrefix}-disabled`
+      return null
     }
+    return `${state.dayPrefix}-disabled`
   }
 
   const isActive = (day: Day, month: MonthInfo) => {
@@ -210,22 +210,18 @@ export const CalendarItem: FunctionComponent<
       } else {
         if (Object.values(state.currDate).length === 2) {
           state.currDate = [days[3]]
+        } else if (Utils.compareDate(state.currDate[0], days[3])) {
+          Array.isArray(state.currDate) && state.currDate.push(days[3])
         } else {
-          if (Utils.compareDate(state.currDate[0], days[3])) {
-            Array.isArray(state.currDate) && state.currDate.push(days[3])
-          } else {
-            Array.isArray(state.currDate) && state.currDate.unshift(days[3])
-          }
+          Array.isArray(state.currDate) && state.currDate.unshift(days[3])
         }
 
         if (state.chooseData.length == 2 || !state.chooseData.length) {
           state.chooseData = [...days]
+        } else if (Utils.compareDate(state.chooseData[3], days[3])) {
+          state.chooseData = [[...state.chooseData], [...days]]
         } else {
-          if (Utils.compareDate(state.chooseData[3], days[3])) {
-            state.chooseData = [[...state.chooseData], [...days]]
-          } else {
-            state.chooseData = [[...days], [...state.chooseData]]
-          }
+          state.chooseData = [[...days], [...state.chooseData]]
         }
       }
 
@@ -240,9 +236,8 @@ export const CalendarItem: FunctionComponent<
   const isStartTip = (day: Day, month: MonthInfo) => {
     if (isActive(day, month)) {
       return isStart(getCurrDate(day, month))
-    } else {
-      return false
     }
+    return false
   }
 
   // 是否有结束提示
@@ -278,7 +273,7 @@ export const CalendarItem: FunctionComponent<
     return Array.from(Array(days), (v, k) => {
       return {
         day: k + 1,
-        type: type,
+        type,
       }
     })
   }
@@ -292,7 +287,7 @@ export const CalendarItem: FunctionComponent<
       month: curData[1],
     }
     const monthInfo: MonthInfo = {
-      curData: curData,
+      curData,
       title: `${title.year}年${title.month}月`,
       monthData: [
         ...(getDaysStatus(preMonthDays, 'prev') as Day[]),
@@ -312,18 +307,16 @@ export const CalendarItem: FunctionComponent<
       ) {
         state.monthsData.push(monthInfo)
       }
+    } else if (
+      !state.startData ||
+      !Utils.compareDate(
+        `${curData[0]}-${curData[1]}-${curData[2]}`,
+        `${state.startData[0]}-${state.startData[1]}-01`
+      )
+    ) {
+      state.monthsData.unshift(monthInfo)
     } else {
-      if (
-        !state.startData ||
-        !Utils.compareDate(
-          `${curData[0]}-${curData[1]}-${curData[2]}`,
-          `${state.startData[0]}-${state.startData[1]}-01`
-        )
-      ) {
-        state.monthsData.unshift(monthInfo)
-      } else {
-        setUnLoadPrev(true)
-      }
+      setUnLoadPrev(true)
     }
 
     setMonthsData(state.monthsData)
@@ -447,8 +440,8 @@ export const CalendarItem: FunctionComponent<
 
     let moveTime = state.touchParams.lastTime - state.touchParams.startTime
     if (moveTime <= 300) {
-      move = move * 2
-      moveTime = moveTime + 1000
+      move *= 2
+      moveTime += 1000
       setMove(move, 'end', moveTime)
     } else {
       setMove(move, 'end')
@@ -456,10 +449,10 @@ export const CalendarItem: FunctionComponent<
   }
 
   const initData = () => {
-    //初始化开始结束数据
+    // 初始化开始结束数据
     state.startData = startDate ? splitDate(startDate as string) : ''
     state.endData = endDate ? splitDate(endDate as string) : ''
-    //初始化当前日期
+    // 初始化当前日期
     if (!defaultValue) {
       state.currDate = state.isRange
         ? [Utils.date2Str(new Date()), Utils.getDay(1)]
@@ -468,7 +461,7 @@ export const CalendarItem: FunctionComponent<
       state.currDate = state.isRange ? [...defaultValue] : defaultValue
     }
 
-    //日期转化为数组
+    // 日期转化为数组
     if (state.isRange && Array.isArray(state.currDate)) {
       if (startDate && Utils.compareDate(state.currDate[0], startDate as string)) {
         state.currDate.splice(0, 1, startDate as string)
@@ -508,7 +501,7 @@ export const CalendarItem: FunctionComponent<
   }, [])
 
   return (
-    <React.Fragment>
+    <>
       <div className={classes}>
         {/* header */}
         <div className={headerClasses}>
@@ -586,7 +579,7 @@ export const CalendarItem: FunctionComponent<
           ''
         )}
       </div>
-    </React.Fragment>
+    </>
   )
 }
 

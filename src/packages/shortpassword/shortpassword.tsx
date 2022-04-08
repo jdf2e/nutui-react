@@ -91,9 +91,9 @@ export const ShortPassword: FunctionComponent<
     change && change(inputValue)
   }
   const systemStyle = () => {
-    let u = navigator.userAgent
-    let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1 //g
-    let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) //ios终端
+    const u = navigator.userAgent
+    const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1 // g
+    const isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) // ios终端
     if (isIOS) {
       return {
         paddingRight: '1200px',
@@ -124,7 +124,7 @@ export const ShortPassword: FunctionComponent<
           textAlign: 'center',
         }}
         visible={innerVisible}
-        closeable={true}
+        closeable
         close-on-click-overlay={closeOnClickOverlay}
         onClickOverlay={onClose}
         onClickCloseIcon={onClose}
@@ -143,13 +143,13 @@ export const ShortPassword: FunctionComponent<
               value={inputValue}
               onChange={(e) => changeValue(e)}
             />
-            <div className={b('input-site')}></div>
+            <div className={b('input-site')} />
             <div className={b('input-fake')} onClick={() => focus()}>
               {[...new Array(comLen).keys()].map((item, index) => {
                 return (
                   <div className={b('input-fake__li')} key={index}>
                     {String(inputValue).length > index ? (
-                      <div className={b('input-fake__li__icon')}></div>
+                      <div className={b('input-fake__li__icon')} />
                     ) : null}
                   </div>
                 )
@@ -160,7 +160,7 @@ export const ShortPassword: FunctionComponent<
             <div className={b('message__error')}>{errorMsg}</div>
             {tips ? (
               <div className={b('message__forget')}>
-                <Icon className="icon" size="11px" name="tips"></Icon>
+                <Icon className="icon" size="11px" name="tips" />
                 <div onClick={onTips}>{tips}</div>
               </div>
             ) : null}

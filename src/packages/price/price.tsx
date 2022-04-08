@@ -43,9 +43,8 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     }
     if (thousands) {
       return (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,')
-    } else {
-      return num
     }
+    return num
   }
   const formatDecimal = (decimalNum: any) => {
     if (Number(decimalNum) == 0) {
@@ -58,14 +57,14 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     } else {
       decimalNum = 0
     }
-    const result = '0.' + decimalNum
+    const result = `0.${decimalNum}`
     const resultFixed = Number(result).toFixed(decimalDigits)
     return String(resultFixed).substring(2, resultFixed.length)
   }
   return (
     <div className={`${b()} ${className}`} {...rest}>
       {needSymbol ? (
-        <div className={`${b('symbol')}`} dangerouslySetInnerHTML={showSymbol()}></div>
+        <div className={`${b('symbol')}`} dangerouslySetInnerHTML={showSymbol()} />
       ) : null}
       <div className={`${b('big')}`}>{formatThousands(price)}</div>
       <div className={`${b('point')}`}>.</div>

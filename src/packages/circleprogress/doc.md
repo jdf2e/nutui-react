@@ -22,14 +22,17 @@ import { CircleProgress } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <CircleProgress progress={10}></CircleProgress>
+      <CircleProgress progress={10} />
     </>
   )
 }
 export default App;
 ```
+:::
+
 ### 环形进度条自定义样式
 
+:::demo
 ```tsx
 import React from "react";
 import { CircleProgress } from '@nutui/nutui-react';
@@ -43,14 +46,16 @@ const progressOption = {
 const App = () => {
   return (
     <>
-      <CircleProgress progress={50} progressOption={progressOption}></CircleProgress>
+      <CircleProgress progress={50} progressOption={progressOption} />
     </>
   )
 }
 export default App;
 ```
-### 环形进度条自定义内容
+:::
 
+### 环形进度条自定义内容
+:::demo
 ```tsx
 import React from "react";
 import { CircleProgress } from '@nutui/nutui-react';
@@ -64,7 +69,7 @@ const progressOption = {
 const App = () => {
   return (
     <>
-      <CircleProgress progress={50} isAuto={true}>
+      <CircleProgress progress={50} isAuto>
         <div>自定义</div>
       </CircleProgress>
     </>
@@ -72,8 +77,10 @@ const App = () => {
 }
 export default App;
 ```
-### 动态改变环形进度条的进度
+:::
 
+### 动态改变环形进度条的进度
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Button, CircleProgress } from '@nutui/nutui-react';
@@ -122,7 +129,7 @@ const App = () => {
           progress={percent}
           progressOption={progressOption}
           strokeInnerWidth={strokeInnerWidth}
-        ></CircleProgress>
+         />
       </div>
       <div className="demo__btn" style={demoBtnStyle}>
         <Button type="primary" onClick={setReduceVal} style={{ marginRight: '10px' }}>
@@ -137,6 +144,7 @@ const App = () => {
 }
 export default App;
 ```
+:::
 
 
 ## Prop

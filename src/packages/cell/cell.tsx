@@ -55,7 +55,7 @@ export const Cell: FunctionComponent<Partial<CellProps> & React.HTMLAttributes<H
     ...props,
   }
   const b = bem('cell')
-  let history = useHistory()
+  const history = useHistory()
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     click(event)
     if (to && history) {
@@ -74,17 +74,15 @@ export const Cell: FunctionComponent<Partial<CellProps> & React.HTMLAttributes<H
         }
   return (
     <div
-      className={`${b({ clickable: isLink || to ? true : false }, [className])} `}
+      className={`${b({ clickable: !!(isLink || to) }, [className])} `}
       onClick={(event) => handleClick(event)}
       {...rest}
     >
-      {children ? (
-        children
-      ) : (
+      {children || (
         <>
           {title || subTitle || icon ? (
             <>
-              <div className={`${b('title', { icon: icon ? true : false })}`}>
+              <div className={`${b('title', { icon: !!icon })}`}>
                 {icon ? <Icon name={icon} className={`${b('icon')}`} /> : null}
                 {subTitle ? (
                   <>
@@ -104,8 +102,8 @@ export const Cell: FunctionComponent<Partial<CellProps> & React.HTMLAttributes<H
           ) : null}
         </>
       )}
-      {extra ? extra : null}
-      {!extra && (isLink || to) ? <Icon name="right" className={b('link')}></Icon> : null}
+      {extra || null}
+      {!extra && (isLink || to) ? <Icon name="right" className={b('link')} /> : null}
     </div>
   )
 }

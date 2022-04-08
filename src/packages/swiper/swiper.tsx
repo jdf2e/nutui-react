@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, TouchEvent } from 'react'
+import classNames from 'classnames'
 import { DataContext } from './UserContext'
 import bem from '@/utils/bem'
-import classNames from 'classnames'
 
 export type SwiperRef = {
   to: (index: number) => void
@@ -82,15 +82,15 @@ export const Swiper = React.forwardRef<
   const childsRefs: any = []
   const isVertical = direction === 'vertical'
 
-  let [rect, setRect] = useState(null as DOMRect | null)
+  const [rect, setRect] = useState(null as DOMRect | null)
   let [active, setActive] = useState(0)
-  let [width, setWidth] = useState(0)
-  let [height, setHeight] = useState(0)
-  let [offset, setOffset] = useState(0)
-  let [ready, setReady] = useState(false)
+  const [width, setWidth] = useState(0)
+  const [height, setHeight] = useState(0)
+  const [offset, setOffset] = useState(0)
+  const [ready, setReady] = useState(false)
 
   let size = isVertical ? height : width
-  let [touch, setTouch] = useState({
+  const [touch, setTouch] = useState({
     startX: 0,
     startY: 0,
     deltaX: 0,
@@ -103,9 +103,9 @@ export const Swiper = React.forwardRef<
   })
 
   const [childs, setChilds] = useState([])
-  let [touchTime, setTouchTime] = useState<any>('')
+  const [touchTime, setTouchTime] = useState<any>('')
 
-  let childCount = (children as any[]).length
+  const childCount = (children as any[]).length
   for (let i = 0; i < childCount; i++) {
     childsRefs.push(useRef<any>(null))
   }
@@ -114,7 +114,7 @@ export const Swiper = React.forwardRef<
     const childs: any = []
     React.Children.toArray(children).forEach((child: any, index) => {
       if (child.type && child.type.displayName === 'NutSwiperItem') {
-        childs.push(React.cloneElement(child, { ref: childsRefs[index], key: 'item_' + index }))
+        childs.push(React.cloneElement(child, { ref: childsRefs[index], key: `item_${index}` }))
       }
     })
     return childs
@@ -236,7 +236,7 @@ export const Swiper = React.forwardRef<
   // 确定当前active 元素
   const getActive = (pace: number) => {
     if (pace) {
-      let _active = active + pace
+      const _active = active + pace
       if (props.loop) {
         return range(_active, -1, childCount)
       }
@@ -308,7 +308,7 @@ export const Swiper = React.forwardRef<
     [`${b('vertical')}`]: isVertical,
   })
   const getStyle = (moveOffset = offset) => {
-    let target = innerRef.current
+    const target = innerRef.current
     target.style.transform = `translate3D${
       !isVertical ? `(${moveOffset}px,0,0)` : `(0,${moveOffset}px,0)`
     }`
@@ -367,13 +367,13 @@ export const Swiper = React.forwardRef<
   }, [active])
 
   const init = (active: number = +propSwiper.initPage) => {
-    let rect = container.current.getBoundingClientRect()
-    let _active = Math.max(Math.min(childCount - 1, active), 0)
-    let _width = propSwiper.width ? +propSwiper.width : rect.width
-    let _height = propSwiper.height ? +propSwiper.height : rect.height
+    const rect = container.current.getBoundingClientRect()
+    const _active = Math.max(Math.min(childCount - 1, active), 0)
+    const _width = propSwiper.width ? +propSwiper.width : rect.width
+    const _height = propSwiper.height ? +propSwiper.height : rect.height
     size = isVertical ? _height : _width
     trackSize = childCount * Number(size)
-    let targetOffset = getOffset(_active)
+    const targetOffset = getOffset(_active)
     _swiper.current.moving = true
     if (ready) {
       _swiper.current.moving = false
@@ -407,7 +407,7 @@ export const Swiper = React.forwardRef<
     init()
   }, [propSwiper.initPage])
   useEffect(() => {
-    let target = container.current
+    const target = container.current
     target.addEventListener('touchstart', onTouchStart, false)
     target.addEventListener('touchmove', onTouchMove, false)
     target.addEventListener('touchend', onTouchEnd, false)

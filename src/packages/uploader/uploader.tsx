@@ -4,9 +4,9 @@ import React, {
   ForwardRefRenderFunction,
   PropsWithChildren,
 } from 'react'
+import classNames from 'classnames'
 import Icon from '@/packages/icon'
 import { Upload, UploadOptions } from './upload'
-import classNames from 'classnames'
 import bem from '@/utils/bem'
 
 export interface UploaderProps {
@@ -70,10 +70,15 @@ const defaultProps = {
 } as UploaderProps
 export class FileItem {
   status: FileItemStatus = 'ready'
+
   uid: string = new Date().getTime().toString()
+
   name?: string
+
   url?: string
+
   type?: string
+
   formData: FormData = new FormData()
 }
 const InternalUploader: ForwardRefRenderFunction<
@@ -215,7 +220,7 @@ const InternalUploader: ForwardRefRenderFunction<
           option,
         })
     }
-    let task = new Upload(uploadOption)
+    const task = new Upload(uploadOption)
     if (props.autoUpload) {
       task.upload()
     } else {
@@ -262,9 +267,8 @@ const InternalUploader: ForwardRefRenderFunction<
       if (file.size > maximize) {
         oversizes.push(file)
         return false
-      } else {
-        return true
       }
+      return true
     })
     if (oversizes.length) {
       oversize && oversize(files)
@@ -297,7 +301,7 @@ const InternalUploader: ForwardRefRenderFunction<
       return
     }
     const $el = event.target
-    let { files } = $el
+    const { files } = $el
 
     if (beforeUpload) {
       beforeUpload(new Array<File>().slice.call(files)).then((f: Array<File>) => {
@@ -320,37 +324,35 @@ const InternalUploader: ForwardRefRenderFunction<
     <div className={classes} {...restProps}>
       {children ? (
         <div className="nut-uploader__slot">
-          {
-            <>
-              {children}
-              {maximum > fileList.length && (
-                <>
-                  {capture ? (
-                    <input
-                      className="nut-uploader__input"
-                      type="file"
-                      capture="user"
-                      name={name}
-                      accept={accept}
-                      disabled={disabled}
-                      multiple={multiple}
-                      onChange={fileChange}
-                    />
-                  ) : (
-                    <input
-                      className="nut-uploader__input"
-                      type="file"
-                      name={name}
-                      accept={accept}
-                      disabled={disabled}
-                      multiple={multiple}
-                      onChange={fileChange}
-                    />
-                  )}
-                </>
-              )}
-            </>
-          }
+          <>
+            {children}
+            {maximum > fileList.length && (
+              <>
+                {capture ? (
+                  <input
+                    className="nut-uploader__input"
+                    type="file"
+                    capture="user"
+                    name={name}
+                    accept={accept}
+                    disabled={disabled}
+                    multiple={multiple}
+                    onChange={fileChange}
+                  />
+                ) : (
+                  <input
+                    className="nut-uploader__input"
+                    type="file"
+                    name={name}
+                    accept={accept}
+                    disabled={disabled}
+                    multiple={multiple}
+                    onChange={fileChange}
+                  />
+                )}
+              </>
+            )}
+          </>
         </div>
       ) : (
         <>

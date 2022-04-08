@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
-import bem from '@/utils/bem'
 import classNames from 'classnames'
+import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
 export interface InfiniteloadingProps {
@@ -22,7 +22,7 @@ export interface InfiniteloadingProps {
   scrollChange: (param: number) => void
 }
 
-declare var window: Window & { webkitRequestAnimationFrame: any }
+declare let window: Window & { webkitRequestAnimationFrame: any }
 const defaultProps = {
   hasMore: true,
   threshold: 200,
@@ -108,17 +108,16 @@ export const Infiniteloading: FunctionComponent<
   }
 
   const getParentElement = (el: HTMLElement) => {
-    return !!containerId ? document.querySelector(`#${containerId}`) : el && el.parentNode
+    return containerId ? document.querySelector(`#${containerId}`) : el && el.parentNode
   }
 
   const handleScroll = () => {
     requestAniFrame()(() => {
       if (!isScrollAtBottom() || !hasMore || isInfiniting) {
         return false
-      } else {
-        setIsInfiniting(true)
-        loadMore && loadMore(infiniteDone)
       }
+      setIsInfiniting(true)
+      loadMore && loadMore(infiniteDone)
     })
   }
 
