@@ -121,16 +121,12 @@ export const Address: FunctionComponent<
 
   const [selectedExistAddress, setSelectedExistAddress] = useState({}) // 当前选择的地址
 
-  const [closeWay, setCloseWay] = useState('self')
-
   // 手动关闭 点击叉号(cross)，或者蒙层(mask)
-  const handClose = (type = 'self') => {
-    // setCloseWay(() => (type === 'cross' ? 'cross' : 'self'))
+  const handClose = () => {
     setShowPopup(false)
   }
   // 点击遮罩层关闭
   const clickOverlay = () => {
-    // setCloseWay('mask')
     closeMask && closeMask({ closeWay: 'mask' })
   }
   // 切换下一级列表
@@ -227,7 +223,7 @@ export const Address: FunctionComponent<
           {privateType === 'custom' ? customAddressTitle : existAddressTitle}
         </div>
 
-        <div onClick={() => handClose('cross')}>
+        <div onClick={() => handClose()}>
           {closeBtnIcon && <Icon name={closeBtnIcon} color="#cccccc" size="18px" />}
         </div>
       </div>
@@ -251,9 +247,6 @@ export const Address: FunctionComponent<
           visible={showPopup}
           position="bottom"
           onClickOverlay={clickOverlay}
-          onOpen={() => {
-            // setCloseWay('self')
-          }}
           onClose={() => {
             closeFun()
           }}
