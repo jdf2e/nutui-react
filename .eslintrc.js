@@ -39,8 +39,9 @@ module.exports = {
     },
   ],
   rules: {
+    radix: 0,
     'unused-imports/no-unused-imports': 2,
-
+    'no-underscore-dangle': 0,
     'import/prefer-default-export': 0,
     'import/no-extraneous-dependencies': 0,
     'import/extensions': 0,
