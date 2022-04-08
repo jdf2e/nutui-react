@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { CountDown } from './countdown'
+import { CountDown } from '../countdown/countdown'
 import { Cell } from '../cell/cell'
 import { Button } from '../button/button'
 

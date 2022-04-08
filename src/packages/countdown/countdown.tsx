@@ -4,7 +4,6 @@ import bem from '@/utils/bem'
 export interface CountDownProps {
   className?: string
   style?: CSSProperties
-  modelValue: {}
   paused: boolean
   showDays: boolean
   showPlainText: boolean
@@ -45,8 +44,8 @@ export const CountDown: FunctionComponent<
   const b = bem('countdown')
   const [restTimeStamp, setRestTime] = useState(0)
   const stateRef = useRef({
-    p: 0,
-    _curr: 0,
+    pauseTime: 0,
+    curr: 0,
     timer: 0,
     isPaused: paused,
     isIninted: false,
@@ -99,7 +98,7 @@ export const CountDown: FunctionComponent<
   // 倒计最终时格式数据
   const resttime = (() => {
     const rest = restTime(restTimeStamp)
-    const { d, h, m, s } = rest
+    const { d } = rest
     if (!showDays && Number(d) > 0) {
       rest.h = fill2(Number(rest.h) + Number(d) * 24)
       rest.d = '0'
@@ -118,7 +117,8 @@ export const CountDown: FunctionComponent<
   // 展示文案
   const plainText = (() => {
     const { d, h, m, s } = resttime
-    return `${Number(d) > 0 && showDays ? d + '天' + h : h}小时${m}分${s}秒`
+    const showDayshours = Number(d) > 0 && showDays ? `${d}天${h}` : h
+    return `${showDayshours}小时${m}分${s}秒`
   })()
 
   // 初始化
@@ -135,7 +135,7 @@ export const CountDown: FunctionComponent<
     setRestTime(end - (start + diffTime))
     stateRef.current.timer = setInterval(() => {
       if (!stateRef.current.isPaused) {
-        let restTime = end - (Date.now() - stateRef.current.p + diffTime)
+        const restTime = end - (Date.now() - stateRef.current.pauseTime + diffTime)
         setRestTime(restTime)
         if (restTime < 0) {
           setRestTime(0)
@@ -159,10 +159,10 @@ export const CountDown: FunctionComponent<
     if (stateRef.current.isIninted) {
       stateRef.current.isPaused = paused
       if (paused) {
-        stateRef.current._curr = getTimeStamp()
+        stateRef.current.curr = getTimeStamp()
         onPaused && onPaused(restTimeStamp)
       } else {
-        stateRef.current.p += getTimeStamp() - stateRef.current._curr
+        stateRef.current.pauseTime += getTimeStamp() - stateRef.current.curr
         onRestart && onRestart(restTimeStamp)
       }
     }
@@ -187,9 +187,7 @@ export const CountDown: FunctionComponent<
 
   return (
     <div className={`${b()} ${className || ''}`} style={{ ...style }} {...rest}>
-      {children ? (
-        children
-      ) : (
+      {children || (
         <>
           {showPlainText ? (
             <div className={b('block')}> {plainText} </div>
