@@ -40,7 +40,7 @@ export interface UploaderProps {
   oversize?: (file: File[]) => void
   change?: (param: { fileList: any[]; event: React.ChangeEvent<HTMLInputElement> }) => void
   beforeUpload?: (file: File[]) => Promise<File[]>
-  beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
+  beforeDelete?: (file?: FileItem, files?: FileItem[]) => boolean
 }
 export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error' | 'removed'
 
@@ -64,7 +64,7 @@ const defaultProps = {
   isPreview: true,
   isDeletable: true,
   capture: false,
-  beforeDelete: (file: FileItem, files: FileItem[]) => {
+  beforeDelete: () => {
     return true
   },
 } as UploaderProps
@@ -220,7 +220,7 @@ const InternalUploader: ForwardRefRenderFunction<
       task.upload()
     } else {
       uploadQueue.push(
-        new Promise((resolve, reject) => {
+        new Promise((resolve) => {
           resolve(task)
         })
       )

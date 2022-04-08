@@ -12,7 +12,7 @@ export interface TabbarItemProps {
   activeColor: string
   unactiveColor: string
   index: number
-  handleClick: (idx: number) => void
+  handleClick: (idx?: number) => void
 }
 const defaultProps = {
   tabTitle: '',
@@ -23,7 +23,7 @@ const defaultProps = {
   activeColor: '',
   unactiveColor: '',
   index: 0,
-  handleClick: (idx) => {},
+  handleClick: () => {},
 } as TabbarItemProps
 
 export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (props) => {

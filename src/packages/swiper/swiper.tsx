@@ -1,12 +1,4 @@
-import React, {
-  useState,
-  FunctionComponent,
-  useEffect,
-  useRef,
-  TouchEvent,
-  forwardRef,
-  useMemo,
-} from 'react'
+import React, { useState, useEffect, useRef, TouchEvent } from 'react'
 import { DataContext } from './UserContext'
 import bem from '@/utils/bem'
 import classNames from 'classnames'
@@ -87,9 +79,7 @@ export const Swiper = React.forwardRef<
     offset: 0,
     size: 0,
   })
-
   const childsRefs: any = []
-
   const isVertical = direction === 'vertical'
 
   let [rect, setRect] = useState(null as DOMRect | null)

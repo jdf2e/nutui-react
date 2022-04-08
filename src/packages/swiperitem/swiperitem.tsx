@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  FunctionComponent,
-  useContext,
-  useEffect,
-  useImperativeHandle,
-} from 'react'
+import React, { useState, useContext, useImperativeHandle } from 'react'
 import { DataContext } from '@/packages/swiper/UserContext'
 import bem from '@/utils/bem'
 import classNames from 'classnames'

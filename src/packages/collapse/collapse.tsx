@@ -75,7 +75,7 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo((props) 
   }
   return (
     <div className={colBem()}>
-      {childrenDom.map((item: any, index: number) => {
+      {childrenDom.map((item: any) => {
         return React.cloneElement(item, {
           isOpen: defaultOpenIndex.includes(item.props.name),
           onToggle: (isOpen: boolean, name: string) => onToggle(isOpen, name),

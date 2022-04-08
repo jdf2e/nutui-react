@@ -125,14 +125,12 @@ export const Address: FunctionComponent<
 
   // 手动关闭 点击叉号(cross)，或者蒙层(mask)
   const handClose = (type = 'self') => {
-    setCloseWay(() => (type === 'cross' ? 'cross' : 'self'))
-
+    // setCloseWay(() => (type === 'cross' ? 'cross' : 'self'))
     setShowPopup(false)
   }
   // 点击遮罩层关闭
   const clickOverlay = () => {
-    setCloseWay('mask')
-
+    // setCloseWay('mask')
     closeMask && closeMask({ closeWay: 'mask' })
   }
   // 切换下一级列表
@@ -159,9 +157,7 @@ export const Address: FunctionComponent<
   ) => {
     console.log(prevExistAdd, item, copyExistAdd)
     setSelectedExistAddress(item)
-
     onSelected && onSelected(prevExistAdd, item, copyExistAdd)
-
     handClose()
   }
   // 初始化
@@ -260,7 +256,7 @@ export const Address: FunctionComponent<
           position="bottom"
           onClickOverlay={clickOverlay}
           onOpen={() => {
-            setCloseWay('self')
+            // setCloseWay('self')
           }}
           onClose={() => {
             closeFun()

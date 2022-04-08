@@ -14,16 +14,23 @@
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitAny": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
     "jsx": "react",
     "lib": [
       "esnext",
       "dom"
     ],
+    "outDir": "./tsc/test",
     "paths": {
       "@/*": [
         "src/*"

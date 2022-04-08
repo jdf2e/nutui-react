@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactComponentElement, useState } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 
 import bem from '@/utils/bem'
 

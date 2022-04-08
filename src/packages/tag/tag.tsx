@@ -11,7 +11,7 @@ export interface TagProps {
   closeable: boolean
   isShow: boolean
   prefixCls: string
-  onClick: (e: MouseEvent) => void
+  onClick: (e?: MouseEvent) => void
 }
 
 export type TagType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
@@ -25,7 +25,7 @@ const defaultProps = {
   closeable: false,
   isShow: true,
   prefixCls: 'nut-tag',
-  onClick: (e: MouseEvent) => {},
+  onClick: () => {},
 } as TagProps
 export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   const {

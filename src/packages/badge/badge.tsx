@@ -1,10 +1,4 @@
-import React, {
-  CSSProperties,
-  FunctionComponent,
-  MouseEventHandler,
-  useEffect,
-  useState,
-} from 'react'
+import React, { CSSProperties, FunctionComponent } from 'react'
 
 import Icon from '@/packages/icon'
 export interface BadgeProps {
@@ -30,7 +24,7 @@ const defaultProps = {
   icons: '',
 } as BadgeProps
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
-  const { value, children, dot, max, top, right, zIndex, color, icons } = {
+  const { children, dot, top, right, zIndex, color, icons } = {
     ...defaultProps,
     ...props,
   }

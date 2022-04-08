@@ -84,7 +84,6 @@ export default class Notification extends React.PureComponent<NotificationProps,
 
   render() {
     const {
-      style,
       icon,
       msg,
       bottom,
@@ -97,9 +96,7 @@ export default class Notification extends React.PureComponent<NotificationProps,
       cover,
       type,
     } = this.props
-    const { show } = this.state
     const toastBem = bem('toast')
-
     const classes = classNames({
       ['nut-toast-center']: center,
       ['nut-toast-has-icon']: icon,
@@ -129,7 +126,6 @@ export default class Notification extends React.PureComponent<NotificationProps,
                 <Icon name={icon ? icon : ''} size="20" />
               </p>
             ) : null}
-
             <span className={toastBem('text')}>{msg}</span>
           </div>
         </div>

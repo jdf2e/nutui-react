@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import { useState } from 'react'
 
 const MIN_DISTANCE = 10
 
