@@ -1,9 +1,10 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import bem from '@/utils/bem'
 
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
+import bem from '@/utils/bem'
+
 export interface NotificationProps {
   id?: string
   style?: React.CSSProperties
@@ -25,7 +26,9 @@ interface State {
 
 export default class Notification extends React.PureComponent<NotificationProps, State> {
   private closeTimer: number | undefined
+
   static newInstance: (properties: NotificationProps, callback: any) => void
+
   constructor(props: NotificationProps) {
     super(props)
     this.close = this.close.bind(this)
@@ -64,6 +67,7 @@ export default class Notification extends React.PureComponent<NotificationProps,
       this.closeTimer = -1
     }
   }
+
   clickCover() {
     this.props.onClick()
   }
@@ -82,25 +86,19 @@ export default class Notification extends React.PureComponent<NotificationProps,
     const notifyBem = bem('notify')
 
     const classes = classNames({
-      ['popup-top']: true,
-      ['nut-notify']: true,
+      'popup-top': true,
+      'nut-notify': true,
       [`nut-notify--${type}`]: true,
     })
     return (
       <>
-        <CSSTransition
-          in={this.state.show}
-          timeout={300}
-          classNames="fade"
-          unmountOnExit
-          appear={true}
-        >
+        <CSSTransition in={this.state.show} timeout={300} classNames="fade" unmountOnExit appear>
           <div
             className={`${classes} ${className}`}
             style={{ color: `${color || ''}`, background: `${background || ''}` }}
             onClick={this.clickCover}
           >
-            {children ? children : msg}
+            {children || msg}
           </div>
         </CSSTransition>
       </>
@@ -111,7 +109,7 @@ export default class Notification extends React.PureComponent<NotificationProps,
 Notification.newInstance = (properties, callback) => {
   const element = document.createElement('div')
 
-  let id = properties.id ? properties.id : new Date().getTime() + ''
+  const id = properties.id ? properties.id : `${new Date().getTime()}`
 
   element.id = id
   properties.id = id

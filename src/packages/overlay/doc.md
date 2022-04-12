@@ -33,7 +33,7 @@ const App = () => {
       <Button type="primary" onClick={handleToggleShow}>
         显示遮罩层
       </Button>
-      <Overlay visible={visible} onClick={onClose}></Overlay>
+      <Overlay visible={visible} onClick={onClose} />
     </>
   )
 }

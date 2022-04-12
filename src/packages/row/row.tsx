@@ -33,7 +33,7 @@ export const Row: FunctionComponent<Partial<RowProps> & React.HTMLAttributes<HTM
    `
   }
   const parentRow = {
-    gutter: gutter,
+    gutter,
   }
 
   return (

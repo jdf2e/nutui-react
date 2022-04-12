@@ -1,12 +1,11 @@
 import React, { FunctionComponent, useState, useEffect, MouseEventHandler, MouseEvent } from 'react'
 import { CSSTransition } from 'react-transition-group'
+import classNames from 'classnames'
+import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
 import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
-import classNames from 'classnames'
 import bem from '@/utils/bem'
-
-import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 
 interface PopupProps extends OverlayProps {
   position: string
@@ -82,7 +81,7 @@ export const Popup: FunctionComponent<Partial<PopupProps> & React.HTMLAttributes
       onClick,
     } = props
 
-    const [index, setIndex] = useState(zIndex ? zIndex : _zIndex)
+    const [index, setIndex] = useState(zIndex || _zIndex)
     const [innerVisible, setInnerVisible] = useState(visible)
     const [showChildren, setShowChildren] = useState(true)
     const [transitionName, setTransitionName] = useState('')
@@ -106,7 +105,7 @@ export const Popup: FunctionComponent<Partial<PopupProps> & React.HTMLAttributes
 
     const classes = classNames(
       {
-        ['round']: round,
+        round,
         [`popup-${position}`]: true,
         [`${popClass}`]: true,
         [`${className}`]: true,
@@ -175,11 +174,11 @@ export const Popup: FunctionComponent<Partial<PopupProps> & React.HTMLAttributes
     }, [visible])
 
     useEffect(() => {
-      setTransitionName(transition ? transition : `popup-slide-${position}`)
+      setTransitionName(transition || `popup-slide-${position}`)
     }, [position])
 
     return (
-      <React.Fragment>
+      <>
         <Overlay
           style={overlayStyles}
           visible={innerVisible}
@@ -188,7 +187,7 @@ export const Popup: FunctionComponent<Partial<PopupProps> & React.HTMLAttributes
           lockScroll={lockScroll}
           duration={duration}
           onClick={onHandleClickOverlay}
-        ></Overlay>
+        />
         <CSSTransition
           classNames={transitionName}
           unmountOnExit
@@ -201,14 +200,14 @@ export const Popup: FunctionComponent<Partial<PopupProps> & React.HTMLAttributes
             {showChildren ? children : ''}
             {closeable ? (
               <div className={closeClasses} onClick={onHandleClickCloseIcon}>
-                <Icon name={closeIcon} size="12px"></Icon>
+                <Icon name={closeIcon} size="12px" />
               </div>
             ) : (
               ''
             )}
           </div>
         </CSSTransition>
-      </React.Fragment>
+      </>
     )
   }
 

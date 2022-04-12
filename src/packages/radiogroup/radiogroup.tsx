@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useImperativeHandle, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import RadioContext from '../radio/context'
 
 import bem from '@/utils/bem'
@@ -76,7 +76,7 @@ export const RadioGroup = React.forwardRef(
           return React.cloneElement(child)
         }
         return React.cloneElement(child, {
-          textPosition: textPosition,
+          textPosition,
           checked: childChecked,
           // onChange: handleChildChange,
         })

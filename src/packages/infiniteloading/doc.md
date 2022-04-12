@@ -158,7 +158,7 @@ const App = () => {
             pullIcon="JD"
             containerId="refreshScroll"
             useWindow={false}
-            isOpenRefresh={true}
+            isOpenRefresh
             hasMore={refreshHasMore}
             loadMore={refreshLoadMore}
             refresh={refresh}

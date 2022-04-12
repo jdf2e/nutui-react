@@ -8,8 +8,6 @@
   bottom	底部与视图窗口左上角的距离	number
  */
 
-import React, { useState, useRef } from 'react'
-
 function isWindow(val: unknown): val is Window {
   return val === window
 }

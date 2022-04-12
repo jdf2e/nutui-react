@@ -4,7 +4,7 @@ import Swiper from '@/packages/swiper'
 import '@/packages/swiper/demo.scss'
 
 const SwiperDemo = () => {
-  let swiperRef = React.useRef<any>(null)
+  const swiperRef = React.useRef<any>(null)
   const [height, setHeight] = useState<any>(150)
   const [paginationColor, setPaginationColor] = useState<string>('#426543')
   const [initPage1, setInitPage1] = useState<any>(0)
@@ -31,7 +31,7 @@ const SwiperDemo = () => {
           autoPlay="2000"
           initPage={initPage1}
           onChange={onChange}
-          paginationVisible={true}
+          paginationVisible
         >
           {list.map((item) => {
             return (
@@ -57,7 +57,7 @@ const SwiperDemo = () => {
       <h2>自定义指示器</h2>
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper
-          loop={true}
+          loop
           initPage={initPage3}
           onChange={(e) => setCurrent(e + 1)}
           pageContent={<div className="page"> {current}/4 </div>}
@@ -74,12 +74,12 @@ const SwiperDemo = () => {
       <h2>垂直方向</h2>
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper
-          loop={true}
+          loop
           initPage={initPage4}
           direction="vertical"
           autoPlay="3000"
           height="150"
-          paginationVisible={true}
+          paginationVisible
         >
           {list.map((item) => {
             return (

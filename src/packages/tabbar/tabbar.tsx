@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactComponentElement, useState } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 
 import bem from '@/utils/bem'
 
@@ -49,8 +49,8 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
           ...child.props,
           active: idx === selectIndex,
           index: idx,
-          unactiveColor: unactiveColor,
-          activeColor: activeColor,
+          unactiveColor,
+          activeColor,
           handleClick: () => {
             handleClick(idx)
             tabSwitch(child, idx)

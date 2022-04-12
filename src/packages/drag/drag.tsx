@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-import bem from '@/utils/bem'
 import { useDrag } from '@use-gesture/react'
 import { useSpring, animated } from '@react-spring/web'
+import bem from '@/utils/bem'
 
 export interface DragProps {
   attract: boolean

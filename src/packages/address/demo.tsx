@@ -60,10 +60,10 @@ const AddressDemo = () => {
   })
 
   const [address, setAddress] = useState({
-    province: province,
-    city: city,
-    country: country,
-    town: town,
+    province,
+    city,
+    country,
+    town,
   })
 
   const [showPopup, setShowPopup] = useState({
@@ -195,13 +195,11 @@ const AddressDemo = () => {
           two: provinceName + cityName + countyName + townName + addressDetail,
         })
       }
-    } else {
-      if ((val.data as AddressResult).addressStr) {
-        setText({
-          ...text,
-          two: (val.data as AddressResult).addressStr,
-        })
-      }
+    } else if ((val.data as AddressResult).addressStr) {
+      setText({
+        ...text,
+        two: (val.data as AddressResult).addressStr,
+      })
     }
 
     setShowPopup({
@@ -220,13 +218,11 @@ const AddressDemo = () => {
           three: provinceName + cityName + countyName + townName + addressDetail,
         })
       }
-    } else {
-      if ((val.data as AddressResult).addressStr) {
-        setText({
-          ...text,
-          three: (val.data as AddressResult).addressStr,
-        })
-      }
+    } else if ((val.data as AddressResult).addressStr) {
+      setText({
+        ...text,
+        three: (val.data as AddressResult).addressStr,
+      })
     }
 
     setShowPopup({
@@ -245,13 +241,11 @@ const AddressDemo = () => {
           four: provinceName + cityName + countyName + townName + addressDetail,
         })
       }
-    } else {
-      if ((val.data as AddressResult).addressStr) {
-        setText({
-          ...text,
-          four: (val.data as AddressResult).addressStr,
-        })
-      }
+    } else if ((val.data as AddressResult).addressStr) {
+      setText({
+        ...text,
+        four: (val.data as AddressResult).addressStr,
+      })
     }
 
     setShowPopup({
@@ -278,15 +272,15 @@ const AddressDemo = () => {
     <>
       <div className="demo">
         <h2>选择自定义地址</h2>
-        <Cell title={`选择地址`} desc={text.one} onClick={() => showAddress('normal')}></Cell>
+        <Cell title="选择地址" desc={text.one} onClick={() => showAddress('normal')} />
         <h2>选择自定义地址2</h2>
-        <Cell title="选择地址" desc={text.five} onClick={() => showAddress('normal2')}></Cell>
+        <Cell title="选择地址" desc={text.five} onClick={() => showAddress('normal2')} />
         <h2>选择已有地址</h2>
-        <Cell title="选择地址" desc={text.two} onClick={() => showAddress('exist')}></Cell>
+        <Cell title="选择地址" desc={text.two} onClick={() => showAddress('exist')} />
         <h2>自定义图标</h2>
-        <Cell title="选择地址" desc={text.three} onClick={() => showAddress('customImg')}></Cell>
+        <Cell title="选择地址" desc={text.three} onClick={() => showAddress('customImg')} />
         <h2>自定义地址与已有地址切换</h2>
-        <Cell title="选择地址" desc={text.four} onClick={() => showAddress('other')}></Cell>
+        <Cell title="选择地址" desc={text.four} onClick={() => showAddress('other')} />
 
         <Address
           modelValue={showPopup.normal}
@@ -297,7 +291,7 @@ const AddressDemo = () => {
           customAddressTitle="请选择所在地区"
           onChange={(cal) => onChange(cal, 'normal')}
           onClose={close1}
-        ></Address>
+        />
 
         <Address
           modelValue={showPopup.normal2}
@@ -310,7 +304,7 @@ const AddressDemo = () => {
           onChange={(cal) => onChange(cal, 'normal2')}
           onClose={close5}
           customAddressTitle="请选择所在地区"
-        ></Address>
+        />
 
         <Address
           modelValue={showPopup.exist}
@@ -321,7 +315,7 @@ const AddressDemo = () => {
           isShowCustomAddress={false}
           onSelected={selected}
           existAddressTitle="配送至"
-        ></Address>
+        />
 
         <Address
           modelValue={showPopup.customImg}
@@ -334,7 +328,7 @@ const AddressDemo = () => {
           defaultIcon={icon.defaultIcon}
           selectedIcon={icon.selectedIcon}
           closeBtnIcon={icon.closeBtnIcon}
-        ></Address>
+        />
 
         <Address
           modelValue={showPopup.other}
@@ -351,7 +345,7 @@ const AddressDemo = () => {
           customAndExistTitle="选择其他地址"
           switchModule={switchModule}
           closeMask={closeMask}
-        ></Address>
+        />
       </div>
     </>
   )

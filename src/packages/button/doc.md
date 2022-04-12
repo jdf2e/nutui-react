@@ -111,7 +111,7 @@ const App = () => {
   const [loading,setLoading] = useState(false)
   return (
     <>
-<Button loading type="info"></Button>
+<Button loading type="info" />
 <Button loading type="warning">加载中...</Button>
 <Button
       loading={loading}
@@ -142,7 +142,7 @@ import { Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-  <Button shape="square" plain type="primary" icon="star-fill"></Button>
+  <Button shape="square" plain type="primary" icon="star-fill" />
   <Button shape="square" type="primary" icon="star">收藏</Button>
     </>
   );

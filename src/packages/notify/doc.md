@@ -18,7 +18,7 @@ import { Notify } from '@nutui/nutui-react';
  click={(event: React.MouseEvent) => { 
     baseNotify('基础用法')
  }}
-></Cell>
+ />
 const baseNotify = (msg: string) => {
     Notify.text(msg,{
       onClosed: () => {

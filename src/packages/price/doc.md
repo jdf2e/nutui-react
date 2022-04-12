@@ -23,7 +23,7 @@ import { Price, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <Price price={1010} needSymbol={false} thousands={true} />
+        <Price price={1010} needSymbol={false} thousands />
     </Cell>
   );
 };
@@ -43,7 +43,7 @@ import { Price, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <Price price={10010.01} needSymbol={true} thousands={false} />
+        <Price price={10010.01} needSymbol thousands={false} />
     </Cell>
   );
 };
@@ -63,7 +63,7 @@ import { Price, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <Price price={15213.1221} decimalDigits={3} needSymbol={true} thousands={true} />
+        <Price price={15213.1221} decimalDigits={3} needSymbol thousands />
     </Cell>
   );
 };
@@ -93,7 +93,7 @@ const App = () => {
   }, [])
   return (
     <Cell>
-      <Price price={price} decimalDigits={3} needSymbol={true} thousands={true} />
+      <Price price={price} decimalDigits={3} needSymbol thousands />
     </Cell>
   );
 };

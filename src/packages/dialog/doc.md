@@ -52,7 +52,7 @@ const [visible1, setVisible1] = useState(false);
 const [visible2, setVisible2] = useState(false);
 
 return <>
-<Cell title="基础弹框" onClick={() => setVisible1(true)}></Cell>
+<Cell title="基础弹框" onClick={() => setVisible1(true)} />
 <Dialog 
     title="组件调用"
     visible={visible1}
@@ -61,11 +61,11 @@ return <>
 >
     如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
 </Dialog>
-<Cell title="底部按钮 垂直调用" onClick={() => setVisible2(true)}></Cell>
+<Cell title="底部按钮 垂直调用" onClick={() => setVisible2(true)} />
 <Dialog 
     title="组件调用"
     visible={visible2}
-    lockScroll={true}
+    lockScroll
     footerDirection='vertical'
     onOk={() => setVisible2(false)}
     onCancel={() => setVisible2(false)}

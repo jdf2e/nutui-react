@@ -17,6 +17,7 @@ import { FixedNav } from '@nutui/nutui-react';
 ``` tsx
 import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
+
 const App = () => {
   const navList = [
     {
@@ -53,13 +54,12 @@ const App = () => {
       <FixedNav
         navList={navList}
         activeText="基础用法"
-        overlay={true}
+        overlay
         position={{ top: '70px' }}
         onChange={change}
         visible={visible}
         onSelected={selected}
-      >
-      </FixedNav>
+       />
     </>
   )
 };
@@ -71,6 +71,7 @@ export default App;
 ``` tsx
 import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
+
 const App = () => {
   const navList = [
     {
@@ -106,15 +107,14 @@ const App = () => {
     <>
       <FixedNav
         navList={navList}
-        type={"left"}
+        type="left"
         position={{ top: '140px' }}
         visible={visible}
-        activeText={"左侧收起"}
-        unActiveText={"左侧展开"}
+        activeText="左侧收起"
+        unActiveText="左侧展开"
         onChange={change}
         onSelected={selected}
-      >
-      </FixedNav>
+       />
     </>
   )
 };
@@ -128,6 +128,7 @@ export default App;
 ``` tsx
 import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
+
 const App = () => {
   const navList = [
     {
@@ -168,8 +169,7 @@ const App = () => {
         visible={visible}
         onChange={change}
         onSelected={selected}
-      >
-      </FixedNav>
+       />
     </>
   )
 };
@@ -182,6 +182,7 @@ export default App;
 ``` tsx
 import React, { useState } from "react";
 import { Icon, FixedNav } from '@nutui/nutui-react';
+
 const App = () => {
   const navList = [
     {
@@ -217,12 +218,12 @@ const App = () => {
     <>
       <FixedNav
         position={{ top: '280px' }}
-        type={"left"}
+        type="left"
         visible={visible}
         onChange={change}
         onSelected={selected}
         slotList={
-          <ul className="nut-fixednav__list" slot={"list"}>
+          <ul className="nut-fixednav__list" slot="list">
             <li className="nut-fixednav__list-item">1</li>
             <li className="nut-fixednav__list-item">2</li>
             <li className="nut-fixednav__list-item">3</li>
@@ -236,8 +237,7 @@ const App = () => {
             <span className="text">{ visible ? '自定义开' : '自定义关' }</span>
           </>
         }
-      >
-      </FixedNav>
+       />
     </>
   )
 };
@@ -250,6 +250,7 @@ export default App;
 ``` tsx
 import React, { useState } from "react";
 import { Drag, FixedNav } from '@nutui/nutui-react';
+
 const App = () => {
   const navList = [
     {
@@ -283,14 +284,13 @@ const App = () => {
   };
   return (
     <>
-      <Drag direction={"y"} style={{ right: '0px', bottom: '240px' }}>
+      <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
         <FixedNav
           navList={navList}
           unActiveText="支持拖拽"
           visible={visible} 
           onChange={change}
-          onSelected={selected}>
-        </FixedNav>
+          onSelected={selected} />
       </Drag>
     </>
   )

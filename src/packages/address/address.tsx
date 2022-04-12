@@ -42,7 +42,7 @@ export interface AddressProps {
   city: RegionData[]
   country: RegionData[]
   town: RegionData[]
-  isShowCustomAddress: Boolean
+  isShowCustomAddress: boolean
   existAddress: AddressList[]
   existAddressTitle: string
   customAndExistTitle: string
@@ -117,9 +117,9 @@ export const Address: FunctionComponent<
     city: { name: '' },
     country: { name: '' },
     town: { name: '' },
-  }) //已选择的 省、市、县、镇
+  }) // 已选择的 省、市、县、镇
 
-  let [selectedExistAddress, setSelectedExistAddress] = useState({}) // 当前选择的地址
+  const [selectedExistAddress, setSelectedExistAddress] = useState({}) // 当前选择的地址
 
   const [closeWay, setCloseWay] = useState('self')
 
@@ -177,13 +177,11 @@ export const Address: FunctionComponent<
   }
   // 关闭
   const closeFun = () => {
-    const resCopy = Object.assign(
-      {
-        addressIdStr: '',
-        addressStr: '',
-      },
-      selectedRegion
-    )
+    const resCopy = {
+      addressIdStr: '',
+      addressStr: '',
+      ...selectedRegion,
+    }
     const res: CloseRes = {
       data: {},
       type: privateType,
@@ -226,9 +224,7 @@ export const Address: FunctionComponent<
     return (
       <div className={b('header')}>
         <div className="arrow-back" onClick={onSwitchModule}>
-          {privateType === 'custom' && backBtnIcon && (
-            <Icon name={backBtnIcon} color="#cccccc"></Icon>
-          )}
+          {privateType === 'custom' && backBtnIcon && <Icon name={backBtnIcon} color="#cccccc" />}
         </div>
 
         <div className={b('header__title')}>
@@ -236,7 +232,7 @@ export const Address: FunctionComponent<
         </div>
 
         <div onClick={() => handClose('cross')}>
-          {closeBtnIcon && <Icon name={closeBtnIcon} color="#cccccc" size="18px"></Icon>}
+          {closeBtnIcon && <Icon name={closeBtnIcon} color="#cccccc" size="18px" />}
         </div>
       </div>
     )
@@ -266,7 +262,7 @@ export const Address: FunctionComponent<
             closeFun()
           }}
         >
-          <div className={`${b()} ${className ? className : ''}`} style={{ ...style }} {...rest}>
+          <div className={`${b()} ${className || ''}`} style={{ ...style }} {...rest}>
             {headerRender()}
             {(privateType === 'custom' || privateType === 'custom2') && (
               <CustomRender
@@ -280,7 +276,7 @@ export const Address: FunctionComponent<
                   nextAreaList && nextAreaList(cal)
                 }}
                 onClose={handClose}
-              ></CustomRender>
+              />
             )}
             {privateType === 'exist' && (
               <ExistRender
@@ -292,7 +288,7 @@ export const Address: FunctionComponent<
                 customAndExistTitle={customAndExistTitle}
                 onSelected={selectedExist}
                 onSwitchModule={onSwitchModule}
-              ></ExistRender>
+              />
             )}
           </div>
         </Popup>
