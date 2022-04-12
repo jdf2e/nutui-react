@@ -30,6 +30,7 @@ export interface UploaderProps {
   isDeletable: boolean
   capture: boolean
   className: string
+  defaultImg: string
   style: React.CSSProperties
   start?: (option: UploadOptions) => void
   removeImage?: (file: FileItem, fileList: FileItem[]) => void
@@ -57,6 +58,7 @@ const defaultProps = {
   data: {},
   headers: {},
   method: 'post',
+  defaultImg: '',
   xhrState: 200,
   timeout: 1000 * 30,
   withCredentials: false,
@@ -93,6 +95,7 @@ const InternalUploader: ForwardRefRenderFunction<
     disabled,
     multiple,
     url,
+    defaultImg,
     headers,
     timeout,
     method,
@@ -372,6 +375,9 @@ const InternalUploader: ForwardRefRenderFunction<
                     )}
                     {item.type.includes('image') && item.url && (
                       <img className="nut-uploader__preview-img__c" src={item.url} />
+                    )}
+                    {!item.type.includes('image') && defaultImg && (
+                      <img className="nut-uploader__preview-img__c" src={defaultImg} />
                     )}
                     {item.status !== 'success' && <div className="tips">{item.status}</div>}
                   </div>
