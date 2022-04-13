@@ -16,6 +16,7 @@ package-lock.json
 /src/packages/nutui.*.ts
 /src/sites/doc/docs.ts
 /tsc/test
+/site_docs
 
 
 # local env files
