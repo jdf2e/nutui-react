@@ -4,14 +4,15 @@
     "rootDir": ".",
     "target": "ESNext",
     "types": [
-      "vite/client"
+      "vite/client",
+      "jest"
     ],
     "allowJs": false,
     "declaration": true,
     "declarationDir": "./dist/esm/types",
     "emitDeclarationOnly": true,
     "skipLibCheck": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
