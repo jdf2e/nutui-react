@@ -24,12 +24,23 @@ const BaseDialog: ForwardRefRenderFunction<
   unknown,
   Partial<DialogProps> & HTMLAttributes<HTMLDivElement>
 > = (props, ref) => {
-  const { visible, footer, noOkBtn, noCancelBtn, okBtnDisabled, cancelAutoClose, ...restProps } =
-    props
+  const {
+    visible,
+    footer,
+    noOkBtn,
+    noCancelBtn,
+    lockScroll,
+    okBtnDisabled,
+    cancelAutoClose,
+    okText,
+    cancelText,
+    onClosed,
+    onCancel,
+    onOk,
+    ...restProps
+  } = props
 
   const renderFooter = () => {
-    const { okText, cancelText, footer, lockScroll, onClosed, onCancel, onOk } = props
-
     if (footer === null) return
 
     const handleCancel = (e?: any) => {
@@ -80,7 +91,16 @@ const BaseDialog: ForwardRefRenderFunction<
     return footerContent
   }
 
-  return <DialogWrapper {...restProps} visible={visible} footer={renderFooter()} />
+  return (
+    <DialogWrapper
+      {...restProps}
+      visible={visible}
+      lockScroll={lockScroll}
+      footer={renderFooter()}
+      onClosed={onClosed}
+      onCancel={onCancel}
+    />
+  )
 }
 
 export const Dialog: DialogComponent = forwardRef(BaseDialog) as DialogComponent
