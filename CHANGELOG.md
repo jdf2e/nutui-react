@@ -1,3 +1,11 @@
+## v1.1.3
+`2022-04-18`
+
+* :zap: feat(countdown): 新增 countdown 组件(#107 ) @irisSong
+* :zap: feat(upload): 新增 defaultImg 属性支持(#108 ) @junjun666
+* :bug: fix(dialog): 修复Dialog自定义关闭事件不清除body样式类问题(#111 ) @yangjinjun3
+* :zap: feat: NutUI-React 官网增加 countdown 组件的文档。
+
 ## v1.1.2
 `2022-03-29`
 
