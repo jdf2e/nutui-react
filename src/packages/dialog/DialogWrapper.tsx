@@ -6,8 +6,8 @@ interface DialogWrapperProps {
   title?: ReactNode
   footer?: ReactNode
   lockScroll?: boolean
-  onCancel?: Function
-  onClosed?: Function
+  onCancel?: () => void
+  onClosed?: () => void
 }
 
 export const DialogWrapper: FunctionComponent<
