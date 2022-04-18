@@ -607,7 +607,17 @@
           "author": "swag~jun"
         },
         {
-          "version": "0.1.0",
+          "version": "1.0.0",
+          "name": "CountDown",
+          "type": "component",
+          "cName": "倒计时",
+          "desc": "用于实时展示倒计时数值，支持毫秒精度。",
+          "sort": 17,
+          "show": true,
+          "author": "songsong"
+        },
+        {
+        "version": "0.1.0",
           "name": "Collapse",
           "type": "component",
           "cName": "折叠面板",
