@@ -16,7 +16,7 @@ export interface CellProps {
   icon: string
   className: string
   extra: ReactNode
-  click: (event?: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+  click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 const defaultProps = {
   title: '',
@@ -30,7 +30,7 @@ const defaultProps = {
   icon: '',
   className: '',
   extra: '',
-  click: () => {},
+  click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
 export const Cell: FunctionComponent<Partial<CellProps> & React.HTMLAttributes<HTMLDivElement>> = (
   props

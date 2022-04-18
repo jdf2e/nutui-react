@@ -4,13 +4,13 @@ import bem from '@/utils/bem'
 export interface CheckBoxGroupProps {
   disabled: boolean
   checkedValue: string[]
-  onChange: (value?: string[]) => void
+  onChange: (value: string[]) => void
 }
 
 const defaultProps = {
   disabled: false,
   checkedValue: [],
-  onChange: () => {},
+  onChange: (value: string[]) => {},
 } as CheckBoxGroupProps
 export const CheckboxGroup = React.forwardRef(
   (

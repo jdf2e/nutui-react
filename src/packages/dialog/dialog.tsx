@@ -23,7 +23,7 @@ const defaultProps = {
 const BaseDialog: ForwardRefRenderFunction<
   unknown,
   Partial<DialogProps> & HTMLAttributes<HTMLDivElement>
-> = (props) => {
+> = (props, ref) => {
   const { visible, footer, noOkBtn, noCancelBtn, okBtnDisabled, cancelAutoClose, ...restProps } =
     props
 
@@ -32,8 +32,9 @@ const BaseDialog: ForwardRefRenderFunction<
 
     if (footer === null) return
 
-    const handleCancel = () => {
+    const handleCancel = (e?: any) => {
       if (!cancelAutoClose) return
+
       onClosed?.()
       onCancel?.()
       if (lockScroll && visible) {

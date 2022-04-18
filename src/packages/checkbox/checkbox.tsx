@@ -12,7 +12,7 @@ export interface CheckBoxProps {
   iconName: string
   iconActiveName: string
   label: string
-  onChange: (state?: boolean, label?: string) => void
+  onChange: (state: boolean, label: string) => void
 }
 
 const defaultProps = {
@@ -22,7 +22,7 @@ const defaultProps = {
   iconSize: 18,
   iconName: 'check-normal',
   iconActiveName: 'checked',
-  onChange: () => {},
+  onChange: (state, label) => {},
 } as CheckBoxProps
 export const Checkbox: FunctionComponent<
   Partial<CheckBoxProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>

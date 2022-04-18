@@ -30,6 +30,7 @@ export interface UploaderProps {
   isDeletable: boolean
   capture: boolean
   className: string
+  defaultImg: string
   style: React.CSSProperties
   start?: (option: UploadOptions) => void
   removeImage?: (file: FileItem, fileList: FileItem[]) => void
@@ -40,7 +41,7 @@ export interface UploaderProps {
   oversize?: (file: File[]) => void
   change?: (param: { fileList: any[]; event: React.ChangeEvent<HTMLInputElement> }) => void
   beforeUpload?: (file: File[]) => Promise<File[]>
-  beforeDelete?: (file?: FileItem, files?: FileItem[]) => boolean
+  beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
 }
 export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error' | 'removed'
 
@@ -57,6 +58,7 @@ const defaultProps = {
   data: {},
   headers: {},
   method: 'post',
+  defaultImg: '',
   xhrState: 200,
   timeout: 1000 * 30,
   withCredentials: false,
@@ -64,7 +66,7 @@ const defaultProps = {
   isPreview: true,
   isDeletable: true,
   capture: false,
-  beforeDelete: () => {
+  beforeDelete: (file: FileItem, files: FileItem[]) => {
     return true
   },
 } as UploaderProps
@@ -93,6 +95,7 @@ const InternalUploader: ForwardRefRenderFunction<
     disabled,
     multiple,
     url,
+    defaultImg,
     headers,
     timeout,
     method,
@@ -225,7 +228,7 @@ const InternalUploader: ForwardRefRenderFunction<
       task.upload()
     } else {
       uploadQueue.push(
-        new Promise((resolve) => {
+        new Promise((resolve, reject) => {
           resolve(task)
         })
       )
@@ -372,6 +375,9 @@ const InternalUploader: ForwardRefRenderFunction<
                     )}
                     {item.type.includes('image') && item.url && (
                       <img className="nut-uploader__preview-img__c" src={item.url} />
+                    )}
+                    {!item.type.includes('image') && defaultImg && (
+                      <img className="nut-uploader__preview-img__c" src={defaultImg} />
                     )}
                     {item.status !== 'success' && <div className="tips">{item.status}</div>}
                   </div>

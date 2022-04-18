@@ -21,7 +21,7 @@ const defaultProps = {
 } as CollapseProps
 
 function areEqual(prevProps: Partial<CollapseProps>, nextProps: Partial<CollapseProps>) {
-  return JSON.stringify(prevProps.activeName) == JSON.stringify(nextProps.activeName)
+  return JSON.stringify(prevProps.activeName) === JSON.stringify(nextProps.activeName)
 }
 
 export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo((props) => {

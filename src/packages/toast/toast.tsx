@@ -58,8 +58,8 @@ function notice(opts: any) {
       messageInstance = null
     }
   }
-  opts = { ...options, ...opts, onClose: close }
-  getInstance(opts, (notification: any) => {
+  const opts2 = { ...options, ...opts, onClose: close }
+  getInstance(opts2, (notification: any) => {
     messageInstance = notification
   })
 }
