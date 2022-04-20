@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState, CSSProperties } from 'react'
-
+import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 
 export interface TextAreaProps {
@@ -32,6 +32,7 @@ const defaultProps = {
 export const TextArea: FunctionComponent<
   Partial<TextAreaProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const { locale } = useConfig()
   const {
     className,
     defaultValue,
@@ -118,7 +119,7 @@ export const TextArea: FunctionComponent<
         }}
         rows={rows}
         maxLength={maxlength < 0 ? 0 : maxlength}
-        placeholder={placeholder}
+        placeholder={locale.placeholder}
       />
       {limitshow ? (
         <div className={textareaBem('limit')}>

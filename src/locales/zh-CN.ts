@@ -1,11 +1,12 @@
-import { BaseLang } from './baseLang'
-const lang: BaseLang = {
+import { BaseLang } from './base'
+
+const zhCN: BaseLang = {
   save: '保存',
   confirm: '确认',
   cancel: '取消',
   done: '完成',
   noData: '暂无数据',
-  placeholder: '请输入',
+  placeholder: '请输入内容',
   select: '请选择',
   video: {
     errorTip: '视频加载失败',
@@ -75,4 +76,4 @@ const lang: BaseLang = {
     addAddress: '新建地址',
   },
 }
-export default lang
+export default zhCN

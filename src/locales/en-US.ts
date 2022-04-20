@@ -1,5 +1,6 @@
-import { BaseLang } from './baseLang'
-const lang: BaseLang = {
+import { BaseLang } from './base'
+
+const enUS: BaseLang = {
   save: 'Save',
   confirm: 'Confirm',
   cancel: 'Cancel',
@@ -75,4 +76,4 @@ const lang: BaseLang = {
     addAddress: 'Add New Address',
   },
 }
-export default lang
+export default enUS

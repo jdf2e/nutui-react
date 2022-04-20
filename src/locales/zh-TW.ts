@@ -1,4 +1,4 @@
-import { BaseLang } from './baseLang'
+import { BaseLang } from './base'
 const lang: BaseLang = {
   save: '保存',
   confirm: '確認',
