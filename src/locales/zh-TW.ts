@@ -1,5 +1,5 @@
 import { BaseLang } from './base'
-const lang: BaseLang = {
+const zhTW: BaseLang = {
   save: '保存',
   confirm: '確認',
   cancel: '取消',
@@ -75,4 +75,4 @@ const lang: BaseLang = {
     addAddress: '新建地址',
   },
 }
-export default lang
+export default zhTW
