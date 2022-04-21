@@ -5,3 +5,4 @@ dist
 .idea
 .husky
 iconfont.js
+.vscode
