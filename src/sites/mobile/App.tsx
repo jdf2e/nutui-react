@@ -5,6 +5,20 @@ import loadable, { LoadableComponent } from '@loadable/component'
 import routes from './router'
 import Links from './Links'
 import logo from '@/sites/assets/images/logo-red.png'
+import useLocale from '@/sites/assets/locale/uselocale'
+import Configprovider from '@/packages/configprovider'
+import zhTW from '@/locales/zh-TW'
+import zhCN from '@/locales/zh-CN'
+import { BaseLang } from '@/locales/base'
+
+interface Languages {
+  [key: string]: BaseLang
+}
+
+const languages: Languages = {
+  zhTW,
+  zhCN,
+}
 
 const WithNavRouter = (C: LoadableComponent<any>) => {
   const WithNav: FunctionComponent = (props: PropsWithChildren<any>) => {
@@ -21,39 +35,45 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
   return WithNav
 }
 const App = () => {
+  const [locale] = useLocale()
+
   return (
     <>
-      <HashRouter>
-        <Switch>
-          <Route path="/" exact>
-            <div className="index">
-              <div className="index-header">
-                <img src={logo} alt="" srcSet="" />
-                <div className="info">
-                  <h1>NutUI-React</h1>
-                  <p>京东风格的轻量级移动端 React 组件库</p>
+      <Configprovider locale={languages[locale.replace('-', '')]}>
+        <HashRouter>
+          <Switch>
+            <Route path="/" exact>
+              <div className="index">
+                <div className="index-header">
+                  <img src={logo} alt="" srcSet="" />
+                  <div className="info">
+                    <h1>NutUI-React</h1>
+                    <p>京东风格的轻量级移动端 React 组件库</p>
+                  </div>
+                </div>
+                <div className="index-components">
+                  <Links />
                 </div>
               </div>
-              <div className="index-components">
-                <Links />
-              </div>
-            </div>
-          </Route>
+            </Route>
 
-          {routes.map((item: any, index: number) => {
-            const C = loadable(item.component)
-            return <Route key={index} path={item.path} component={WithNavRouter(C)} />
-          })}
+            {routes.map((item: any, index: number) => {
+              const C = loadable(item.component)
+              return (
+                <Route key={index} path={`/${locale}${item.path}`} component={WithNavRouter(C)} />
+              )
+            })}
 
-          <Route path="*">
-            <Redirect
-              to={{
-                pathname: '/',
-              }}
-            />
-          </Route>
-        </Switch>
-      </HashRouter>
+            <Route path="*">
+              <Redirect
+                to={{
+                  pathname: '/',
+                }}
+              />
+            </Route>
+          </Switch>
+        </HashRouter>
+      </Configprovider>
     </>
   )
 }
