@@ -21,7 +21,7 @@ const defaultProps = {
 } as CollapseProps
 
 function areEqual(prevProps: Partial<CollapseProps>, nextProps: Partial<CollapseProps>) {
-  return JSON.stringify(prevProps.activeName) == JSON.stringify(nextProps.activeName)
+  return JSON.stringify(prevProps.activeName) === JSON.stringify(nextProps.activeName)
 }
 
 export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo((props) => {
@@ -75,7 +75,7 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo((props) 
   }
   return (
     <div className={colBem()}>
-      {childrenDom.map((item: any, index: number) => {
+      {childrenDom.map((item: any) => {
         return React.cloneElement(item, {
           isOpen: defaultOpenIndex.includes(item.props.name),
           onToggle: (isOpen: boolean, name: string) => onToggle(isOpen, name),

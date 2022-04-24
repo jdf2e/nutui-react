@@ -2,6 +2,7 @@ import React, { CSSProperties, FunctionComponent, useEffect, useRef, useState } 
 import bem from '@/utils/bem'
 import Popup from '@/packages/popup'
 import Icon from '@/packages/icon'
+import { useConfig } from '@/packages/configprovider'
 
 export interface ShortPasswordProps {
   title: string
@@ -43,6 +44,7 @@ const defaultProps = {
 export const ShortPassword: FunctionComponent<
   Partial<ShortPasswordProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const { locale } = useConfig()
   const {
     title,
     desc,
@@ -130,8 +132,8 @@ export const ShortPassword: FunctionComponent<
         onClickCloseIcon={onClose}
       >
         <div className={`${b()} ${className}`} style={{ ...style }} {...reset}>
-          <div className={b('title')}>{title}</div>
-          <div className={b('subtitle')}>{desc}</div>
+          <div className={b('title')}>{locale.shortpassword.title || title}</div>
+          <div className={b('subtitle')}>{locale.shortpassword.desc || desc}</div>
 
           <div className={b('input')}>
             <input
@@ -161,7 +163,7 @@ export const ShortPassword: FunctionComponent<
             {tips ? (
               <div className={b('message__forget')}>
                 <Icon className="icon" size="11px" name="tips" />
-                <div onClick={onTips}>{tips}</div>
+                <div onClick={onTips}>{locale.shortpassword.tips || tips}</div>
               </div>
             ) : null}
           </div>

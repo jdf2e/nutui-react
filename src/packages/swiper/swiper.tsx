@@ -79,9 +79,7 @@ export const Swiper = React.forwardRef<
     offset: 0,
     size: 0,
   })
-
   const childsRefs: any = []
-
   const isVertical = direction === 'vertical'
 
   const [rect, setRect] = useState(null as DOMRect | null)

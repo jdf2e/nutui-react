@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import Popup from '@/packages/popup'
 import CalendarItem from '@/packages/calendaritem'
 import Utils from '@/utils/date'
+import { useConfig } from '@/packages/configprovider'
 
 export interface CalendarProps {
   type?: string
@@ -15,6 +16,7 @@ export interface CalendarProps {
   onClose?: () => void
   onChoose?: (param: string) => void
 }
+
 const defaultProps = {
   type: 'one',
   isAutoBackFill: false,
@@ -31,6 +33,7 @@ const defaultProps = {
 export const Calendar: FunctionComponent<
   Partial<CalendarProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const { locale } = useConfig()
   const {
     children,
     poppable,
@@ -50,12 +53,10 @@ export const Calendar: FunctionComponent<
   }
 
   const update = () => {}
-
   const choose = (param: string) => {
     close()
     onChoose && onChoose(param)
   }
-
   const closePopup = () => {
     close()
   }
@@ -75,7 +76,7 @@ export const Calendar: FunctionComponent<
             type={type}
             isAutoBackFill={isAutoBackFill}
             poppable={poppable}
-            title={title}
+            title={locale.calendaritem.title}
             defaultValue={defaultValue}
             startDate={startDate}
             endDate={endDate}
@@ -89,7 +90,7 @@ export const Calendar: FunctionComponent<
           type={type}
           isAutoBackFill={isAutoBackFill}
           poppable={poppable}
-          title={title}
+          title={locale.calendaritem.title}
           defaultValue={defaultValue}
           startDate={startDate}
           endDate={endDate}

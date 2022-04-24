@@ -64,11 +64,9 @@ export const CalendarItem: FunctionComponent<
   Partial<CalendarItemProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
-    children,
     type,
     isAutoBackFill,
     poppable,
-    visible,
     title,
     defaultValue,
     startDate,
@@ -83,7 +81,7 @@ export const CalendarItem: FunctionComponent<
   const [unLoadPrev, setUnLoadPrev] = useState(false)
   const [monthsData, setMonthsData] = useState<MonthInfo[]>([])
 
-  const [state, setState] = useState<CalendarState>({
+  const [state] = useState<CalendarState>({
     currDate: '',
     touchParams: {
       startY: 0,
