@@ -26,6 +26,8 @@ const zhTW: BaseLang = {
     title: '行事曆選擇',
     monthTitle: (year: number, month: number) => `${year}年${month}月`,
     today: '今天',
+    loadPreviousMonth: '加載上一個月',
+    noEarlierMonth: '沒有更早月份',
   },
   shortpassword: {
     title: '請輸入密碼',

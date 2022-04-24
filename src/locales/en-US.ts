@@ -27,6 +27,8 @@ const enUS: BaseLang = {
     title: 'Calendar',
     monthTitle: (year: number, month: number) => `${year}/${month}`,
     today: 'Today',
+    loadPreviousMonth: 'Load Previous Month',
+    noEarlierMonth: 'No Earlier Month',
   },
   shortpassword: {
     title: 'Please input a password',

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 const getLocale = () => {
-  let locale = 'zh-CN'
+  let locale = 'en-US'
   const matched = window.location.href.match(/#\/([a-z-]+)\//i)
   console.log(window.location.href)
   if (matched) {

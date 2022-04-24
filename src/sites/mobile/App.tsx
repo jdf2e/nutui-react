@@ -9,6 +9,7 @@ import useLocale from '@/sites/assets/locale/uselocale'
 import Configprovider from '@/packages/configprovider'
 import zhTW from '@/locales/zh-TW'
 import zhCN from '@/locales/zh-CN'
+import enUS from '@/locales/en-US'
 import { BaseLang } from '@/locales/base'
 
 interface Languages {
@@ -18,6 +19,7 @@ interface Languages {
 const languages: Languages = {
   zhTW,
   zhCN,
+  enUS,
 }
 
 const WithNavRouter = (C: LoadableComponent<any>) => {

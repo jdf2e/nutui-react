@@ -25,6 +25,8 @@ export interface BaseLang {
     title: string
     monthTitle: Function
     today: string
+    loadPreviousMonth: string
+    noEarlierMonth: string
   }
   shortpassword: {
     title: string
