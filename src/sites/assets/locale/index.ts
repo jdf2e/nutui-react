@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import useLocale from '@/sites/assets/locale/uselocale'
+import { BaseLang } from '@/locales/base'
 
-interface LanguagesPackage {
+type Keys = keyof BaseLang
+interface LanguagesPackage<A = {}> {
   [key: string]: {
-    [key: string]: string
-  }
-}
-interface LanguagePackage {
-  [key: string]: string
+    [k in Keys]?: string
+  } &
+    A
 }
 
-export const useTranslate = (languagesPackage: LanguagesPackage) => {
+export const useTranslate = <T>(languagesPackage: LanguagesPackage<T>) => {
   const [locale] = useLocale()
-  const [translated, setLanguagesPackage] = useState<LanguagePackage>({})
+  const [translated, setLanguagesPackage] = useState<BaseLang & T>({} as any)
   useEffect(() => {
-    if (languagesPackage) setLanguagesPackage(languagesPackage[locale])
+    if (languagesPackage) {
+      // @ts-ignore
+      setLanguagesPackage(languagesPackage[locale])
+    }
   }, [])
   return [translated]
 }

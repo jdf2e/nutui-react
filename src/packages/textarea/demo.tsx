@@ -2,8 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { TextArea } from './textarea'
 import { useTranslate } from '../../sites/assets/locale'
 
+interface T {
+  basic: string
+  numbers: string
+  autoHeight: string
+  readOnly: string
+  readOnlyState: string
+  disabled: string
+  disabledState: string
+}
+
 const TextAreaDemo = () => {
-  const [translated] = useTranslate({
+  const [translated] = useTranslate<T>({
     'zh-CN': {
       basic: '基础用法',
       numbers: '显示字数统计',
