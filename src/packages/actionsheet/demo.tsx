@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { ActionSheet, ItemType } from './actionsheet'
 import Cell from '@/packages/cell'
+import { useTranslate } from '../../sites/assets/locale'
 
 interface Item {
   name: string
@@ -9,6 +10,17 @@ interface Item {
 }
 
 const ActionSheetDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基础用法',
+      cancel: '取消',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      cancel: 'Cancel',
+    },
+  })
+
   const [isVisible1, setIsVisible1] = useState(false)
   const [isVisible2, setIsVisible2] = useState(false)
   const [isVisible3, setIsVisible3] = useState(false)
@@ -36,7 +48,7 @@ const ActionSheetDemo = () => {
     },
     {
       name: '选项三',
-      subname: '描述信息',
+      subname: 'Description Info',
     },
   ]
   const menuItemsThree: ItemType<string | boolean>[] = [
@@ -67,10 +79,10 @@ const ActionSheetDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>基本用法</h2>
+        <h2>{translated.basic}</h2>
         <Cell isLink onClick={() => setIsVisible1(!isVisible1)}>
           <span>
-            <label>基础用法</label>
+            <label>{translated.basic}</label>
           </span>
           <div className="selected-option">{val1}</div>
         </Cell>
@@ -104,7 +116,7 @@ const ActionSheetDemo = () => {
         {/* demo(带取消按钮） */}
         <ActionSheet
           visible={isVisible2}
-          cancelTxt="取消"
+          cancelTxt={translated.basic}
           menuItems={menuItemsOne}
           choose={chooseItemTwo}
           cancel={() => setIsVisible2(false)}
@@ -115,13 +127,13 @@ const ActionSheetDemo = () => {
           description="这是一段描述信息"
           menuItems={menuItemsTwo}
           choose={chooseItemThree}
-          cancelTxt="取消"
+          cancelTxt={translated.basic}
           cancel={() => setIsVisible3(false)}
         />
         {/* demo 选项状态 */}
         <ActionSheet
           visible={isVisible4}
-          cancelTxt="取消"
+          cancelTxt={translated.basic}
           cancel={() => setIsVisible4(false)}
           menuItems={menuItemsThree}
           chooseTagValue="着色选项"

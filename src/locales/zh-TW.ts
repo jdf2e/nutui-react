@@ -1,5 +1,5 @@
 import { BaseLang } from './base'
-const lang: BaseLang = {
+const zhTW: BaseLang = {
   save: '保存',
   confirm: '確認',
   cancel: '取消',
@@ -26,6 +26,8 @@ const lang: BaseLang = {
     title: '行事曆選擇',
     monthTitle: (year: number, month: number) => `${year}年${month}月`,
     today: '今天',
+    loadPreviousMonth: '加載上一個月',
+    noEarlierMonth: '沒有更早月份',
   },
   shortpassword: {
     title: '請輸入密碼',
@@ -75,4 +77,4 @@ const lang: BaseLang = {
     addAddress: '新建地址',
   },
 }
-export default lang
+export default zhTW

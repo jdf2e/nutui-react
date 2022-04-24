@@ -2,6 +2,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 import { AddressList } from './address'
+import { useConfig } from '@/packages/configprovider'
 
 export interface ExistRenderProps {
   type: string
@@ -27,6 +28,7 @@ const defaultProps = {
 export const ExistRender: FunctionComponent<
   Partial<ExistRenderProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const { locale } = useConfig()
   const {
     children,
     type,
@@ -109,7 +111,9 @@ export const ExistRender: FunctionComponent<
       </div>
       {isShowCustomAddress && (
         <div className={b('choose-other')} onClick={switchModule}>
-          <div className={b('choose-other-btn')}>{customAndExistTitle}</div>
+          <div className={b('choose-other-btn')}>
+            {locale.address.chooseAnotherAddress || customAndExistTitle}
+          </div>
         </div>
       )}
     </div>

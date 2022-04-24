@@ -76,7 +76,7 @@ export const Calendar: FunctionComponent<
             type={type}
             isAutoBackFill={isAutoBackFill}
             poppable={poppable}
-            title={locale.calendaritem.title}
+            title={locale.calendaritem.title || title}
             defaultValue={defaultValue}
             startDate={startDate}
             endDate={endDate}

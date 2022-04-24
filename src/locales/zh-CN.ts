@@ -27,6 +27,8 @@ const zhCN: BaseLang = {
     title: '日历选择',
     monthTitle: (year: number, month: number) => `${year}年${month}月`,
     today: '今天',
+    loadPreviousMonth: '加载上一个月',
+    noEarlierMonth: '没有更早月份',
   },
   shortpassword: {
     title: '请输入密码',
