@@ -14,9 +14,17 @@ export interface BaseLang {
     activeText: string
     unActiveText: string
   }
+  infiniteloading: {
+    pullRefreshText: string
+    loadText: string
+    loadMoreText: string
+  }
   pagination: {
     prev: string
     next: string
+  }
+  range: {
+    rangeText: string
   }
   calendaritem: {
     weekdays: Array<string>
@@ -74,5 +82,10 @@ export interface BaseLang {
   }
   addresslist: {
     addAddress: string
+  }
+  comment: {
+    complaintsText: string
+    additionalReview: Function
+    additionalImages: Function
   }
 }
