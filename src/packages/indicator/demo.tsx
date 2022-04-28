@@ -11,7 +11,7 @@ const IndicatorDemo = () => {
       <div className="demo">
         <h2>基础用法</h2>
         <Cell>
-          <Indicator size={3} current={3}></Indicator>
+          <Indicator className="lkjh" size={3} current={3}></Indicator>
         </Cell>
         <Cell>
           <Row>

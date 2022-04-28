@@ -9,7 +9,6 @@
 ```javascript
 import { Indicator } from '@nutui/nutui-react'
 ```
-
 ### 基础用法
 :::demo
 ```tsx
@@ -40,9 +39,6 @@ const App = () => {
 export default App;
 ```
 :::
-
-
-
 ### block用法
 :::demo
 ```tsx
@@ -68,9 +64,6 @@ const App = () => {
 export default App;
 ```
 :::
-
-
-
 ### 不补0
 :::demo
 ```tsx

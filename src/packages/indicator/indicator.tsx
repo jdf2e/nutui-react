@@ -30,11 +30,10 @@ export const Indicator: FunctionComponent<
     {
       [`${b('block')}`]: block,
       [`${b('align')}__${align}`]: block && align,
-      [`className`]: className,
     },
     b('')
   )
-  const renderEle = () => {
+  const renderEles = () => {
     let childs: ReactNode[] = []
     for (let item = 1; item <= size; item++) {
       childs.push(
@@ -51,8 +50,8 @@ export const Indicator: FunctionComponent<
   }
   useEffect(() => {}, [])
   return (
-    <div className={classes} {...rest}>
-      {renderEle()}
+    <div className={`${classes} ${className}`} {...rest}>
+      {renderEles()}
     </div>
   )
 }
