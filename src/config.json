@@ -654,7 +654,8 @@
           "cName": "全局配置组件",
           "desc": "可以配置多语言等全局属性",
           "sort": 16,
-          "show": true,
+          "show": false,
+          "exportEmpty": true,
           "author": "hanyuxinting"
         }
       ]
