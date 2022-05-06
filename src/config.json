@@ -558,6 +558,16 @@
           "author": "junjun"
         },
         {
+          "version": "1.0.0",
+          "name": "AvatarGroup",
+          "type": "component",
+          "cName": "头像组合子组件",
+          "desc": "头像组合子组件",
+          "sort": 18,
+          "show": false,
+          "author": "swag~jun"
+        },
+        {
           "version": "0.1.0",
           "name": "Price",
           "type": "component",
