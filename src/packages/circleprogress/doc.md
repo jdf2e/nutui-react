@@ -22,7 +22,7 @@ import { CircleProgress } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <CircleProgress progress={10} />
+      <CircleProgress progress={20} />
     </>
   )
 }
@@ -30,23 +30,57 @@ export default App;
 ```
 :::
 
-### 环形进度条自定义样式
+### 环形进度条自定义宽度
 
 :::demo
 ```tsx
 import React from "react";
 import { CircleProgress } from '@nutui/nutui-react';
 
-const progressOption = {
-  radius: 50,
-  strokeOutWidth: 10,
-  backColor: '#d9d9d9',
-  progressColor: 'red',
-}
 const App = () => {
   return (
     <>
-      <CircleProgress progress={50} progressOption={progressOption} />
+      <CircleProgress progress={50} strokeWidth={10} />
+    </>
+  )
+}
+export default App;
+```
+:::
+
+### 环形进度条自定义颜色(支持渐变色)
+:::demo
+```tsx
+import React from "react";
+import { CircleProgress } from '@nutui/nutui-react';
+
+const gradientColor = {
+  '0%': '#FF5E5E',
+  '100%': '#FFA062'
+};
+const App = () => {
+  return (
+    <>
+      <CircleProgress progress={50} color="red" />
+      <CircleProgress progress={100} circleColor={gradientColor} />
+    </>
+  )
+}
+export default App;
+```
+:::
+
+### 环形进度条自定义大小
+:::demo
+```tsx
+import React from "react";
+import { CircleProgress } from '@nutui/nutui-react';
+
+
+const App = () => {
+  return (
+    <>
+      <CircleProgress progress={50} radius={60} />
     </>
   )
 }
@@ -60,18 +94,11 @@ export default App;
 import React from "react";
 import { CircleProgress } from '@nutui/nutui-react';
 
-const progressOption = {
-  radius: 50,
-  strokeOutWidth: 10,
-  backColor: '#d9d9d9',
-  progressColor: 'red',
-}
+
 const App = () => {
   return (
     <>
-      <CircleProgress progress={50} isAuto>
-        <div>自定义</div>
-      </CircleProgress>
+      <CircleProgress progress={50} radius={60}>自定义</CircleProgress>
     </>
   )
 }
@@ -85,12 +112,6 @@ export default App;
 import React, { useState } from "react";
 import { Button, CircleProgress } from '@nutui/nutui-react';
 
-const progressOption = {
-  radius: 50,
-  strokeOutWidth: 10,
-  backColor: '#d9d9d9',
-  progressColor: 'red',
-}
 const demoBtnStyle = {
   textAlign: 'center',
   width: '100%',
@@ -102,37 +123,33 @@ const demoBtnStyle = {
 const demoPieceStyle = {
   display: 'flex',
   justifyContent: 'center',
-  background: 'rgba(255, 255, 255, 1)'
+  background: 'rgba(255, 255, 255, 1)',
+  padding: '10px 0'
 }
 const App = () => {
-  const [percent, setPercent] = useState(50)
-  const [strokeInnerWidth, setStrokeInnerWidth] = useState(10)
+  const [percent, setPercent] = useState(30)
+  
   const setReduceVal = () => {
     if (percent - 10 <= 0) {
-      setStrokeInnerWidth(0)
       setPercent(0)
       return
     }
     setPercent(percent - 10)
   }
   const setAddVal = () => {
-    setStrokeInnerWidth(10)
     if (percent >= 100) {
       return
     }
     setPercent(percent + 10)
   }
+
   return (
     <>
       <div className="demo__piece" style={demoPieceStyle}>
-        <CircleProgress
-          progress={percent}
-          progressOption={progressOption}
-          strokeInnerWidth={strokeInnerWidth}
-         />
+        <CircleProgress progress={percent} />
       </div>
       <div className="demo__btn" style={demoBtnStyle}>
-        <Button type="primary" onClick={setReduceVal} style={{ marginRight: '10px' }}>
+        <Button type="primary" onClick={setReduceVal}>
           减少
         </Button>
         <Button type="primary" onClick={setAddVal}>
@@ -152,6 +169,9 @@ export default App;
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
 | progress | 百分比 | Number,String | 必传项，无默认值
-| strokeInnerWidth | 圆弧的宽度 | Number,String | 10
-| isAuto | 是否自定义内容显示（taro暂不支持） | Boolean | false
-| progressOption | 外圆相关参数对象,其中包括半径，宽度，背景颜色，进度色值 | Object | {radius: 50,strokeOutWidth: 10, backColor: '#d9d9d9',progressColor: 'red'}
+| strokeWidth | 圆弧的宽度 | Number,String | 5
+| radius | 半径 | Number,String | 50
+| circleColor | 圆环进度条颜色 | Number,String | '#fa2c19'
+| pathColor | 圆环轨道颜色| String | '#d9d9d9'
+| strokeLinecap | 圆环进度条端点形状可选值为 square butt| String | 'round'
+| clockwise| 是否顺时针展示| Boolean | true
