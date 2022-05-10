@@ -11,7 +11,7 @@ const AvatarDemo = () => {
   }
   return (
     <>
-      <div className="demo full">
+      <div className="demo full avatar-demo">
         <h2>支持三种尺寸：small、normal、large</h2>
         <Cell>
           <Avatar
