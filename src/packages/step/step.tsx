@@ -9,6 +9,7 @@ export interface StepProps {
   content: string
   activeIndex: number
   icon: string
+  iconColor: string
   size: string
   className: string
   style: React.CSSProperties
@@ -19,6 +20,7 @@ const defaultProps = {
   content: '',
   activeIndex: 0,
   icon: '',
+  iconColor: '',
   size: '12px',
 } as StepProps
 export const Step: FunctionComponent<Partial<StepProps> & React.HTMLAttributes<HTMLDivElement>> = (
@@ -30,6 +32,7 @@ export const Step: FunctionComponent<Partial<StepProps> & React.HTMLAttributes<H
     content,
     activeIndex,
     icon,
+    iconColor,
     size,
     className,
     renderContent,
@@ -46,6 +49,9 @@ export const Step: FunctionComponent<Partial<StepProps> & React.HTMLAttributes<H
     if (index < +parent.propSteps.current) return 'finish'
     return index === +parent.propSteps.current ? 'process' : 'wait'
   }
+  const handleClickStep = () => {
+    parent.propSteps?.clickStep(activeIndex)
+  }
 
   const b = bem('step')
   const classes = classNames(
@@ -56,12 +62,12 @@ export const Step: FunctionComponent<Partial<StepProps> & React.HTMLAttributes<H
     b('')
   )
   return (
-    <div className={classes} {...restProps}>
+    <div className={classes} {...restProps} onClick={handleClickStep}>
       <div className="nut-step-head">
         <div className="nut-step-line" />
         <div className={`nut-step-icon ${!dot ? (icon ? 'is-icon' : 'is-text') : ''}`}>
           {icon ? (
-            <Icon className="nut-step-icon-inner" name={icon} size={size} />
+            <Icon className="nut-step-icon-inner" color={iconColor} name={icon} size={size} />
           ) : dot ? (
             <span />
           ) : (
