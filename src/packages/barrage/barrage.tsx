@@ -68,7 +68,6 @@ const InternalBarrage: ForwardRefRenderFunction<unknown, Partial<BarrageProps>> 
 
     const width = el.offsetWidth
     const height = el.offsetHeight
-    console.log(el.offsetWidth, el.offsetHeight)
     el.classList.add('move')
     el.style.animationDuration = `${speeds}ms`
     el.style.top = `${(_index % rows) * (height + top) + 20}px`
