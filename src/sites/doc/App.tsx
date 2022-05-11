@@ -1,6 +1,7 @@
-import React from 'react'
-import { HashRouter, Switch, Route } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
 import './App.scss'
+import useLocale from '../assets/locale/uselocale'
 import remarkGfm from 'remark-gfm'
 import { routers, raws } from './docs'
 import { visit } from 'unist-util-visit'
@@ -30,6 +31,20 @@ function myRemarkPlugin() {
 }
 
 const App = () => {
+  const [lang] = useLocale()
+  console.log('doc app')
+  const getMarkdownByLang = (ru: string) => {
+    if (lang == 'zh-CN') {
+      // @ts-ignore
+      return raws[ru]
+    } else {
+      // @ts-ignore
+      return raws[`${ru}${lang.replace('-', '')}`]
+    }
+  }
+  useEffect(() => {
+    console.log('sssssss')
+  }, [lang])
   return (
     <div>
       <HashRouter>
@@ -40,13 +55,12 @@ const App = () => {
             <Switch>
               {routers.map((ru, k) => {
                 return (
-                  <Route key={k} path={`/${ru}`}>
+                  <Route key={Math.random()} path={`/${lang}/${ru}`}>
                     <ReactMarkdown
-                      children={raws[ru]}
+                      children={getMarkdownByLang(ru)}
                       remarkPlugins={[remarkGfm, remarkDirective, myRemarkPlugin]}
                       components={{
                         code({ node, inline, className, children, ...props }) {
-                          console.log('props', node)
                           const match = /language-(\w+)/.exec(className || '')
                           return !inline && match ? (
                             <Demoblock text={String(children).replace(/\n$/, '')}>
@@ -68,6 +82,13 @@ const App = () => {
                   </Route>
                 )
               })}
+              {/*<Route path="*">*/}
+              {/*  <Redirect*/}
+              {/*    to={{*/}
+              {/*      pathname: '/zh-CN111',*/}
+              {/*    }}*/}
+              {/*  />*/}
+              {/*</Route>*/}
             </Switch>
           </div>
           <div className="markdown-body">

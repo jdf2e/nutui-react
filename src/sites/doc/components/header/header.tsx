@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { nav } from '@/config.json'
 // @ts-ignore
 import { version } from '/package.json'
 import './header.scss'
 import { useHistory } from 'react-router-dom'
+import '@/packages/popover/popover.scss'
+import Popover from '@/packages/popover'
 
 const Header = () => {
   const history = useHistory()
@@ -17,6 +19,26 @@ const Header = () => {
     })
   }, [])
 
+  const langs = [
+    { name: '中文', locale: 'zh-CN' },
+    { name: 'English', locale: 'zh-TW' },
+    { name: 'Thai', locale: 'th' },
+  ]
+
+  const [visible, setVisible] = useState(false)
+  const handleSwitchLocale = (e: any) => {
+    const classList: string[] = [].slice.call(e.target.classList)
+    if (classList.indexOf('curr-lang') > -1) {
+      setVisible(!visible)
+      return
+    }
+    const name = e.target.innerText
+    setVisible(!visible)
+    const [{ locale }] = langs.filter((l) => name == l.name)
+    const link = window.location.href.replace(/\#\/([a-z-]+)/gi, `#/${locale}`)
+    window.location.href = link
+  }
+
   return (
     <div className="doc-header doc-header-black">
       <div className="header-logo">
@@ -28,6 +50,13 @@ const Header = () => {
         <a href="https//github.com/jdf2e/nutui-docs" target="_blank">
           当前环境：development ,代码 PR 合并后，文档会自动同步至 https//github.com/jdf2e/nutui-docs
         </a>
+      </div>
+      <div className={'switch'}>
+        <div className={'switch-content'}>
+          <Popover visible={visible} theme={'dark'} onClick={handleSwitchLocale} list={langs}>
+            <span className={'curr-lang'}>中文</span>
+          </Popover>
+        </div>
       </div>
     </div>
   )

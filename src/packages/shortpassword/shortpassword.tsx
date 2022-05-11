@@ -170,10 +170,10 @@ export const ShortPassword: FunctionComponent<
           {!noButton ? (
             <div className={b('footer')}>
               <div className={b('footer__cancel')} onClick={onCancel}>
-                取消
+                {locale.cancel}
               </div>
               <div className={b('footer__sure')} onClick={() => sure()}>
-                确认
+                {locale.confirm}
               </div>
             </div>
           ) : null}

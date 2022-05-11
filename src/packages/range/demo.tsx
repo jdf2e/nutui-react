@@ -44,7 +44,7 @@ const RangeDemo = () => {
         <h2>指定范围</h2>
         <Cell style={cellStyle}>
           <Range
-            modelValue={0}
+            modelValue={100}
             max={10}
             min={-10}
             change={(value: any) => {

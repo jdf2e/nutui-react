@@ -16,10 +16,16 @@ const enUS: BaseLang = {
     activeText: 'Close Nav',
     unActiveText: 'Open Nav',
   },
+  infiniteloading: {
+    pullRefreshText: 'Pull Refresh',
+    loadText: 'Loading',
+    loadMoreText: "Oops, here's the bottom",
+  },
   pagination: {
     prev: 'Previous',
     next: 'Next',
   },
+  range: { rangeText: 'is overflow' },
   calendaritem: {
     weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     end: 'End',
@@ -27,6 +33,8 @@ const enUS: BaseLang = {
     title: 'Calendar',
     monthTitle: (year: number, month: number) => `${year}/${month}`,
     today: 'Today',
+    loadPreviousMonth: 'Load Previous Month',
+    noEarlierMonth: 'No Earlier Month',
   },
   shortpassword: {
     title: 'Please input a password',
@@ -74,6 +82,11 @@ const enUS: BaseLang = {
   },
   addresslist: {
     addAddress: 'Add New Address',
+  },
+  comment: {
+    complaintsText: 'I have a complaint',
+    additionalReview: (day: number) => `Review after ${day} days of purchase`,
+    additionalImages: (length: number) => `There are ${length} follow-up comments`,
   },
 }
 export default enUS

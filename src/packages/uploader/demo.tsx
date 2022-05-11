@@ -54,6 +54,9 @@ const UploaderDemo = () => {
     const f = await new File([blob], files[0].name, { type: files[0].type })
     return [f]
   }
+  const beforeDelete = (file: FileItem, fileList: FileItem[]) => {
+    return false
+  }
   const submitUpload = () => {
     ;(uploadRef.current as uploadRefState).submit()
   }
@@ -83,6 +86,7 @@ const UploaderDemo = () => {
           beforeUpload={beforeUpload}
           maximize={1024 * 50}
           oversize={onOversize}
+          beforeDelete={beforeDelete}
         />
         <h2>自定义数据 FormData 、 headers </h2>
         <Uploader url={uploadUrl} data={formData} headers={formData} withCredentials />

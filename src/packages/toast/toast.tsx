@@ -65,7 +65,7 @@ function notice(opts: any) {
 }
 const errorMsg = (msg: any) => {
   if (!msg) {
-    console.warn('[NutUI Toast]: msg不能为空')
+    console.warn('[NutUI Toast]: msg cannot be null')
   }
 }
 

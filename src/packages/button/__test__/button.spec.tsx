@@ -7,7 +7,7 @@ import '@testing-library/jest-dom'
 import { useState } from 'react'
 import { Button } from '../button'
 
-test('this is first testcase', () => {
+test('children correctly', () => {
   const { getByText } = render(
     <Button className="aa" style={{ margin: 8 }} type="primary" shape="round">
       主要按钮

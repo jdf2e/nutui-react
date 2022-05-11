@@ -3,6 +3,7 @@ import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 import Elevator from '@/packages/elevator'
 import { RegionData } from './address'
+import { useConfig } from '@/packages/configprovider'
 
 interface CustomRegionData {
   title: string
@@ -45,15 +46,16 @@ const defaultProps = {
 export const CustomRender: FunctionComponent<
   Partial<AddressProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const { locale } = useConfig()
   const { children, type, height, province, city, country, town, onNextArea, onClose, ...rest } = {
     ...defaultProps,
     ...props,
   }
 
   const b = bem('address')
-  const [privateType, setPrivateType] = useState<string>(type)
+  const [privateType] = useState<string>(type)
   const [tabIndex, setTabIndex] = useState(0)
-  const [tabName, setTabName] = useState<string[]>(['province', 'city', 'country', 'town'])
+  const [tabName] = useState<string[]>(['province', 'city', 'country', 'town'])
 
   const provinceRef = useRef(null)
   const cityRef = useRef(null)
@@ -139,7 +141,7 @@ export const CustomRender: FunctionComponent<
     if (tabIndex < index) {
       return item.name
     }
-    return '请选择'
+    return locale.select
   }
 
   const mapRef = {
