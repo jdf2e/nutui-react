@@ -11,7 +11,7 @@ interface IconProps {
   className: string
 }
 
-const defaultProps: IconProps = {
+const defaultProps = {
   name: '',
   size: '',
   classPrefix: 'nutui-iconfont',
@@ -19,7 +19,7 @@ const defaultProps: IconProps = {
   tag: 'i',
   click: (e: MouseEvent) => {},
   className: '',
-}
+} as IconProps
 
 function pxCheck(value: string | number): string {
   return Number.isNaN(Number(value)) ? String(value) : `${value}px`

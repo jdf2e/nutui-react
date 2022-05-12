@@ -76,7 +76,7 @@ import { Icon } from '@nutui/nutui-react';
 | name         | 图标名称或图片链接               | String           | -                |
 | color        | 图标颜色                         | String           | -                |
 | size         | 图标大小，如 `20px` `2em` `2rem` | String or Number | -                |
-| class-prefix | 类名前缀，用于使用自定义图标     | String           | `nutui-iconfont` |
+| classPrefix | 类名前缀，用于使用自定义图标     | String           | `nutui-iconfont` |
 | tag          | tsx 标签                        | String           | `i`              |
 
 ### Events
