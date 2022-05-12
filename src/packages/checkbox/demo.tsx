@@ -8,7 +8,7 @@ import Button from '@/packages/button'
 const CheckBoxDemo = () => {
   const [checked, setChecked] = useState(true)
   const [checkboxgroup1, setCheckboxgroup1] = useState(['1'])
-  const [checkboxgroup2, setCheckboxgroup2] = useState(['1'])
+  const [checkboxgroup2] = useState(['1'])
   const checkboxgroup2Ref = useRef(null)
   return (
     <>
@@ -22,7 +22,7 @@ const CheckBoxDemo = () => {
           基本用法-左右
         </h2>
         <Cell className="nut-cell">
-          <Checkbox textPosition="left" label="复选框" checked={checked} />
+          <Checkbox className="test" textPosition="left" label="复选框" checked={checked} />
         </Cell>
         <Cell className="nut-cell">
           <Checkbox textPosition="right" label="复选框" checked={false} />

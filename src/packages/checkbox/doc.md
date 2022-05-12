@@ -186,10 +186,10 @@ const CheckBoxDemo = () => {
 
 | 字段 | 说明 | 回调参数
 |----- | ----- | ----- 
-| change | 值变化时触发 | (state, label),`state`代表当前状态，`label`表示当前选中的值
+| onChange | 值变化时触发 | (state, label),`state`代表当前状态，`label`表示当前选中的值
 
 ## CheckBoxGroup Event
 
 | 字段 | 说明 | 回调参数
 |----- | ----- | ----- 
-| change | 值变化时触发 | label,`label`返回一个数组，表示当前选中项的集合
+| onChange | 值变化时触发 | label,`label`返回一个数组，表示当前选中项的集合
