@@ -10,7 +10,7 @@ test('should icon snapshot match', () => {
 
 test('should color #fa2c19', async () => {
   const { container } = render(<Icon className="test" name="JD" color="#fa2c19" size="24" />)
-  expect(container.querySelector('i')?.style.color).toEqual(true)
+  expect(container.querySelector('i')?.style.color).toBeTruthy()
 })
 
 test('should classname test', async () => {
