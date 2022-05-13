@@ -397,7 +397,6 @@
   position: relative;
 }
 .curr-lang {
-  width: 100px;
   display: block;
   font-size: 12px;
 }
@@ -406,13 +405,14 @@
   right: 60px;
   top: 0;
   height: 100%;
-  width: 50px;
-  //display: flex;
-  //align-items: center;
-  //justify-content: center;
+  width: 150px;
   cursor: pointer;
+
   .nut-popover--dark {
+    width: 100%;
+    margin-right: 0;
     background: transparent;
+    text-align: center;
   }
   .title-item {
     height: 30px;
