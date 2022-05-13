@@ -1,10 +1,10 @@
-# Radio 单选按钮
+# Radio 單選按鈕
 
-### 介绍
+### 介紹
 
-用于在一组备选项中进行单选
+用於在一組備選項中進行單選
 
-### 安装
+### 安裝
 
 ``` ts
 import { Radio,RadioGroup } from '@nutui/nutui-react';
@@ -12,89 +12,128 @@ import { Radio,RadioGroup } from '@nutui/nutui-react';
 
 ## 基本用法
 
-通过 **value** 绑定值当前选项的 **label** 。并且必须 **RadioGroup** 和 **Radio** 相结合进行使用
+通過 **value** 綁定值當前選項的 **label** 。 並且必須 **RadioGroup** 和 **Radio** 相結合進行使用
+
+:::demo
 
 ```tsx
+import React, { useState } from 'react'
+import { Radio, RadioGroup } from '@nutui/nutui-react';
+
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <RadioGroup value={radioVal}>
-      <Radio label="1">选项1</Radio>
-      <Radio disabled label="2">选项2</Radio>
-      <Radio label="3">选项3</Radio>
+      <Radio label="1">選項1</Radio>
+      <Radio disabled label="2">選項2</Radio>
+      <Radio label="3">選項3</Radio>
     </RadioGroup>
     <RadioGroup value={radioVal} textPosition="left">
-      <Radio label="1">选项1</Radio>
-      <Radio disabled label="2">选项2</Radio>
-      <Radio label="3">选项3</Radio>
+      <Radio label="1">選項1</Radio>
+      <Radio disabled label="2">選項2</Radio>
+      <Radio label="3">選項3</Radio>
     </RadioGroup>
     <RadioGroup value={radioVal}>
-      <Radio shape="button" label="1">选项1</Radio>
-      <Radio disabled shape="button" label="2">选项2</Radio>
-      <Radio shape="button" label="3">选项3</Radio>
+      <Radio shape="button" label="1">選項1</Radio>
+      <Radio disabled shape="button" label="2">選項2</Radio>
+      <Radio shape="button" label="3">選項3</Radio>
     </RadioGroup>
   </>
 }
+export default RadioGroupLast;
 ```
 
-## 水平使用
+:::
+
+## 水準使用
+
+:::demo
 
 ```tsx
+import React, { useState } from 'react'
+import { Radio, RadioGroup } from '@nutui/nutui-react';
+
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <RadioGroup value={radioVal} direction="horizontal">
-      <Radio label="1">选项1</Radio>
-      <Radio disabled label="2">选项2</Radio>
-      <Radio label="3">选项3</Radio>
+      <Radio label="1">選項1</Radio>
+      <Radio disabled label="2">選項2</Radio>
+      <Radio label="3">選項3</Radio>
     </RadioGroup>
     <RadioGroup value={radioVal} textPosition="left" direction="horizontal">
-      <Radio label="1">选项1</Radio>
-      <Radio disabled label="2">选项2</Radio>
-      <Radio label="3">选项3</Radio>
+      <Radio label="1">選項1</Radio>
+      <Radio disabled label="2">選項2</Radio>
+      <Radio label="3">選項3</Radio>
     </RadioGroup>
     <RadioGroup value={radioVal} direction="horizontal">
-      <Radio shape="button" label="1">选项1</Radio>
-      <Radio disabled shape="button" label="2">选项2</Radio>
-      <Radio shape="button" label="3">选项3</Radio>
+      <Radio shape="button" label="1">選項1</Radio>
+      <Radio disabled shape="button" label="2">選項2</Radio>
+      <Radio shape="button" label="3">選項3</Radio>
     </RadioGroup>
   </>
 }
+export default RadioGroupLast;
 ```
 
-## 自定义尺寸
+:::
+
+## 自訂尺寸
+
+:::demo
 
 ```tsx
+import React, { useState } from 'react'
+import { Radio, RadioGroup } from '@nutui/nutui-react';
+
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <RadioGroup value={radioVal}>
-      <Radio label="1" iconSize="12">自定义尺寸12</Radio>
-      <Radio label="2" iconSize="12">自定义尺寸12</Radio>
+      <Radio label="1" iconSize="12">自訂尺寸12</Radio>
+      <Radio label="2" iconSize="12">自訂尺寸12</Radio>
     </RadioGroup>
   </>
 }
+export default RadioGroupLast;
 ```
 
-## 自定义图标
+:::
 
-建议 `iconName` `iconActiveName` 一起修改
+## 自訂圖示
+
+建議 『iconName』 'iconActiveName' 一起修改
+
+:::demo
 
 ```tsx
+import React, { useState } from 'react'
+import { Radio, RadioGroup } from '@nutui/nutui-react';
+
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <RadioGroup value={radioVal}>
-      <Radio label="1" iconName="checklist" iconActiveName="checklist">自定义图标</Radio>
-      <Radio label="2" iconName="checklist" iconActiveName="checklist">自定义图标</Radio>
+      <Radio label="1" iconName="checklist"
+             iconActiveName="checklist">自訂圖示</Radio>
+      <Radio label="2" iconName="checklist"
+             iconActiveName="checklist">自訂圖示</Radio>
     </RadioGroup>
   </>
 }
+export default RadioGroupLast;
 ```
 
-## 触发 change 事件
+:::
+
+## 觸發 change 事件
+
+:::demo
 
 ```tsx
+import React, { useState } from 'react'
+import { Radio, RadioGroup } from '@nutui/nutui-react';
+
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   const handleChange = (v) => {
@@ -102,36 +141,39 @@ const RadioGroupLast = () => {
   }
   return <>
     <RadioGroup value={radioVal} onChange={handleChange}>
-      <Radio label="1">触发事件</Radio>
-      <Radio label="2">触发事件</Radio>
+      <Radio label="1">觸發事件</Radio>
+      <Radio label="2">觸發事件</Radio>
     </RadioGroup>
   </>
 }
+export default RadioGroupLast;
 ```
+
+:::
 
 ## Prop
 
 ### Radio
 
-| 字段             | 说明                                                         | 类型                    | 默认值            |
+| 屬性         | 說明                             | 類型             | 預設值           |
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
-| disabled         | 是否禁用选择                                                 | Boolean                 | `false`           |
-| iconSize        | [图标尺寸](#/icon)                                           | String、Number          | `18`              |
-| iconName        | [图标名称](#/icon)，选中前(建议和`iconActiveName`一起修改) | String                  | `'check-normal'`  |
-| iconActiveName | [图标名称](#/icon)，选中后(建议和`iconName`一起修改)        | String                  | `'check-checked'` |
-| label            | 单选框标识                                                   | String、Number、Boolean | -                 |
-| shape            | 形状，可选值为 button、round                                 | String                  | round             |
+| disabled         | 是否禁用選擇                                                 | Boolean                 | `false`           |
+| iconSize        | [圖示尺寸](#/icon)                                           | String、Number          | `18`              |
+| iconName        | [圖示名稱](#/icon)，選中前（建議和'iconActiveName'一起修改） | String                  | `'check-normal'`  |
+| iconActiveName | [圖示名稱](#/icon)，選取後（建議和'iconName'一起修改）        | String                  | `'check-checked'` |
+| label            | 單選框標識                                                   | String、Number、Boolean | -                 |
+| shape            | 形狀，可選值為 button、round                                 | String                  | round             |
 
 ### RadioGroup
 
-| 字段          | 说明                                          | 类型                    | 默认值     |
+| 屬性 | 說明 | 類型 | 預設值 |
 |---------------|-----------------------------------------------|-------------------------|------------|
-| value       | 当前选中项的标识符，与label值一致时呈选中状态 | String、Number、Boolean | -          |
-| textPosition | 文本所在的位置，可选值：`left`,`right`        | String                  | `right`    |
-| direction     | 使用横纵方向 可选值 horizontal、vertical      | String                  | `vertical` |
+| value       | 當前選取的標識碼，與label值一致時呈選中狀態 | String、Number、Boolean | -          |
+| textPosition | 文本所在的位置，可選值：'left'，'right' | String                  | `right`    |
+| direction     | 使用橫縱方向 可選值 horizontal、vertical | String                  | `vertical` |
 
 ## RadioGroup Event
 
-| 字段   | 说明         | 回调参数                                           |
+| 事件名稱     | 說明 | 回調參數 |
 |--------|--------------|----------------------------------------------------|
-| change | 值变化时触发 | 当前选中项值（label）【设置label后有值、默认为空】 |
+| change | 值變化時觸發 | 當前選取的選項（label）【設置label後有值、預設為空】 |

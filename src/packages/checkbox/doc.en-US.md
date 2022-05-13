@@ -1,195 +1,251 @@
-# Checkbox 复选按钮
+# Checkbox
 
-### 介绍
+### Introduction
 
-多选按钮用于选择。
+Multi-select buttons are used for selection.
 
-### 安装
+### Install
 
 ``` ts
-import { Checkbox, CheckBoxGroup } from '@nutui/nutui-react';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
 
 ```
 
-## 基本用法
+## Basic Usage
 
-```html
+:::demo
+
+```tsx
+import React, {useState} from "react";
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+
 const CheckBoxDemo = () => {
   const [checked, setChecked] = useState(true)
   return (<>
-    <CheckBox textPosition={'left'} label={'复选框'} checked={checked}></CheckBox>
-    <CheckBox textPosition={'right'} label={'复选框'} checked={false}></CheckBox>
-  </>
+      <Checkbox textPosition={'left'} label={'check box'}
+                checked={checked}></Checkbox>
+      <Checkbox textPosition={'right'} label={'check box'}
+                checked={false}></Checkbox>
+    </>
   )
 }
+export default CheckBoxDemo;
 ```
 
-## 禁用状态
+:::
 
-```html
+## Disabled state
+
+:::demo
+
+```tsx
+import React from "react";
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+
 const CheckBoxDemo = () => {
   return (<>
-    <CheckBox
+    <Checkbox
       textPosition={'right'}
-      label={'未选时禁用状态'}
+      label={'not selected'}
       checked={false}
       disabled={true}
-    ></CheckBox>
-    <CheckBox
+    ></Checkbox>
+    <Checkbox
       textPosition={'right'}
-      label={'选中时禁用状态'}
+      label={'selected'}
       checked={true}
       disabled={true}
-    ></CheckBox>
+    ></Checkbox>
   </>)
 }
+export default CheckBoxDemo;
 ```
 
-## 自定义尺寸
+:::
 
-```html
+## Custom dimensions
+
+:::demo
+
+```tsx
+import React from "react";
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+
 const CheckBoxDemo = () => {
   return (<>
-    <CheckBox label={'自定义尺寸25'} iconSize={25}></CheckBox>
-    <CheckBox label={'自定义尺寸10'} iconSize={10}></CheckBox>
+    <Checkbox label={'size 25'} iconSize={25}></Checkbox>
+    <Checkbox label={'size 10'} iconSize={10}></Checkbox>
   </>)
 }
+export default CheckBoxDemo;
 ```
 
-## 自定义图标
+:::
 
-这里建议同时设置 `iconName` 和 `iconActiveName` 属性
+## Customize the icon
 
-```html
+It is recommended to set both the 'iconName' and 'iconActiveName' properties
+here
+
+:::demo
+
+```tsx
+import React from "react";
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+
 const CheckBoxDemo = () => {
   return (<>
-    <CheckBox iconName="checklist" iconActiveName="checklist">自定义图标</CheckBox>
+    <Checkbox iconName="checklist" iconActiveName="checklist">Custom
+      icons</Checkbox>
   </>)
 }
+export default CheckBoxDemo;
 ```
 
+:::
 
-## change事件
+## Change event
 
-值发生变化时，将触发change事件
+When the value changes, the change event is triggered
 
-```html
+:::demo
+
+```tsx
+import React from "react";
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+
 const CheckBoxDemo = () => {
   return (<>
-    <CheckBox
+    <Checkbox
       checked={false}
       onChange={(state, label) => {
-      Toast.text(`您${state ? '选中' : '取消'}了${label}`)
+        Toast.text(`${state ? 'selected' : 'cancel'}了${label}`)
       }}
-      >
-      change复选框
-    </CheckBox>
+    >
+      check box
+    </Checkbox>
   </>)
 }
+export default CheckBoxDemo;
 ```
 
-## CheckBoxGroup使用
+:::
 
-```html
+## CheckboxGroup
+
+:::demo
+
+```tsx
+import React from "react";
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+
 const CheckBoxDemo = () => {
   const [checkboxgroup1, setCheckboxgroup1] = useState(['1'])
   return (
-    <CheckBoxGroup
+    <CheckboxGroup
       checkedValue={checkboxgroup1}
       onChange={(value) => {
-    console.log(value)
-    setCheckboxgroup1(value)
-    }}
+        console.log(value)
+        setCheckboxgroup1(value)
+      }}
     >
-      <CheckBox checked={false} label="1">
-        组合复选框
-      </CheckBox>
-      <CheckBox checked={false} label="2">
-        组合复选框
-      </CheckBox>
-      <CheckBox checked={false} label="3">
-        组合复选框
-      </CheckBox>
-      <CheckBox checked={false} label="4">
-        组合复选框
-      </CheckBox>
-    </CheckBoxGroup>
+      <Checkbox checked={false} label="1">
+        apple
+      </Checkbox>
+      <Checkbox checked={false} label="2">
+        plum
+      </Checkbox>
+      <Checkbox checked={false} label="3">
+        hawthorn
+      </Checkbox>
+      <Checkbox checked={false} label="4">
+        pomegranate
+      </Checkbox>
+    </CheckboxGroup>
   )
 }
+export default CheckBoxDemo;
 ```
 
-## CheckBoxGroup 全选/取消
+:::
 
-```html
+## CheckboxGroup Select All/Cancel
+
+:::demo
+
+```tsx
+import React from "react";
+import { Checkbox, CheckboxGroup, Button } from '@nutui/nutui-react';
+
 const CheckBoxDemo = () => {
   const [checkboxgroup2, setCheckboxgroup2] = useState(['1'])
   const checkboxgroup2Ref = useRef(null)
   return (<>
-    <CheckBoxGroup
+    <CheckboxGroup
       style={{}}
       ref={checkboxgroup2Ref}
       checkedValue={checkboxgroup2}
       onChange={(value) => {
-    Toast.text(`${value.length === 2 ? '全选' : '取消全选'}`)
-    }}
+        Toast.text(`${value.length === 2 ? 'Select All' : 'Cancel'}`)
+      }}
     >
-    <CheckBox checked={false} label="1">
-      组合复选框
-    </CheckBox>
-    <CheckBox checked={false} label="2">
-      组合复选框
-    </CheckBox>
-    </CheckBoxGroup>
+      <Checkbox checked={false} label="1">
+        apple
+      </Checkbox>
+      <Checkbox checked={false} label="2">
+        pomegranate
+      </Checkbox>
+    </CheckboxGroup>
     <Button
       type="primary"
       onClick={() => {
-    ;(checkboxgroup2Ref.current as any).toggleAll(true)
-    }}
+        ;(checkboxgroup2Ref.current as any).toggleAll(true)
+      }}
     >
-    全选
+      Select All
     </Button>
     <Button
       type="info"
       onClick={() => {
-    ;(checkboxgroup2Ref.current as any).toggleAll(false)
-    }}
+        ;(checkboxgroup2Ref.current as any).toggleAll(false)
+      }}
     >
-    取消
+      Cancel
     </Button>
   </>)
 }
+export default CheckBoxDemo;
 ```
+
+:::
 
 ## Checkbox
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| checked | 是否处于选中状态 | Boolean | `false`
-| disabled | 是否禁用选择 | Boolean | `false`
-| textPosition | 文本所在的位置，可选值：`left`,`right` | String | `right`
-| iconSize | [图标尺寸](#/icon) | String、Number | `18`
-| iconName | [图标名称](#/icon)，选中前(建议和`iconActiveName`一起修改) | String | `'check-normal'`
-| iconActiveName | [图标名称](#/icon)，选中后(建议和`iconName`一起修改) | String | `'checked'`
-| label | 复选框的文本内容 | String | -
+| Props          | Description | Type | Default          |
+|----------------| ----- | ----- |------------------|
+| checked        | Whether it is selected | Boolean | `false`          |
+| disabled       | Whether to disable the selection | Boolean | `false`          |
+| textPosition   | The location of the text, optionally：`left`,`right` | String | `right`          |
+| iconSize       | [Icon size](#/icon) | String、Number | `18`             |
+| iconName       | [Icon name](#/icon)，Before selecting (it is recommended to modify it with 'iconActiveName') | String | `'check-normal'` |
+| iconActiveName | [Icon name](#/icon)，Once selected (it is recommended to modify it together with 'iconName') | String | `'checked'`      |
+| label          | The text content of the check box | String | -                |
 
+## CheckboxGroup
 
-## CheckBoxGroup
-
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| checkedValue | 当前选中项的标识符，和 `label` 相对应  | String | -
-| disabled | 是否禁用选择,将用于其下的全部复选框 | Boolean | `false`
-
-
+| Props          | Description | Type | Default|
+|----- | ----- | ----- | ----- |
+| checkedValue | The identifier of the currently selected item, corresponding to 'label'  | String | -|
+| disabled | Whether to disable the selection will be used for all check boxes under it | Boolean | `false`|
 
 ## Checkbox Event
 
-| 字段 | 说明 | 回调参数
-|----- | ----- | ----- 
-| change | 值变化时触发 | (state, label),`state`代表当前状态，`label`表示当前选中的值
+| Props          | Description | Callback parameters|
+|----- | ----- | ----- |
+| change | Triggers | when the value changes (state, label), 'state' represents the current state, and 'label' represents the currently selected value|
 
-## CheckBoxGroup Event
+## CheckboxGroup Event
 
-| 字段 | 说明 | 回调参数
-|----- | ----- | ----- 
-| change | 值变化时触发 | label,`label`返回一个数组，表示当前选中项的集合
+| Props          | Description | Callback parameters|
+|----- | ----- | ----- |
+| change | Triggered when the value changes | label, 'label' returns an array representing the collection of the currently selected items|

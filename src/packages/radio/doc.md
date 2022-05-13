@@ -14,7 +14,12 @@ import { Radio,RadioGroup } from '@nutui/nutui-react';
 
 通过 **value** 绑定值当前选项的 **label** 。并且必须 **RadioGroup** 和 **Radio** 相结合进行使用
 
+:::demo
+
 ```tsx
+import React, { useState } from 'react';
+import { Radio, RadioGroup } from '@nutui/nutui-react';
+
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
@@ -35,11 +40,19 @@ const RadioGroupLast = () => {
     </RadioGroup>
   </>
 }
+export default RadioGroupLast;
 ```
+
+:::
 
 ## 水平使用
 
+:::demo
+
 ```tsx
+import React, { useState } from 'react';
+import { Radio, RadioGroup } from '@nutui/nutui-react';
+
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
@@ -60,11 +73,19 @@ const RadioGroupLast = () => {
     </RadioGroup>
   </>
 }
+export default RadioGroupLast;
 ```
+
+:::
 
 ## 自定义尺寸
 
+:::demo
+
 ```tsx
+import React, { useState } from 'react';
+import { Radio, RadioGroup } from '@nutui/nutui-react';
+
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
@@ -74,27 +95,45 @@ const RadioGroupLast = () => {
     </RadioGroup>
   </>
 }
+export default RadioGroupLast;
 ```
+
+:::
 
 ## 自定义图标
 
 建议 `iconName` `iconActiveName` 一起修改
 
+:::demo
+
 ```tsx
+import React, { useState } from 'react';
+import { Radio, RadioGroup } from '@nutui/nutui-react';
+
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <RadioGroup value={radioVal}>
-      <Radio label="1" iconName="checklist" iconActiveName="checklist">自定义图标</Radio>
-      <Radio label="2" iconName="checklist" iconActiveName="checklist">自定义图标</Radio>
+      <Radio label="1" iconName="checklist"
+             iconActiveName="checklist">自定义图标</Radio>
+      <Radio label="2" iconName="checklist"
+             iconActiveName="checklist">自定义图标</Radio>
     </RadioGroup>
   </>
 }
+export default RadioGroupLast;
 ```
+
+:::
 
 ## 触发 change 事件
 
+:::demo
+
 ```tsx
+import React, { useState } from 'react';
+import { Radio, RadioGroup } from '@nutui/nutui-react';
+
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   const handleChange = (v) => {
@@ -107,7 +146,10 @@ const RadioGroupLast = () => {
     </RadioGroup>
   </>
 }
+export default RadioGroupLast;
 ```
+
+:::
 
 ## Prop
 
