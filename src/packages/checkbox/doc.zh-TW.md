@@ -1,10 +1,10 @@
-# Checkbox 复选按钮
+# Checkbox 複選按鈕
 
-### 介绍
+### 介紹
 
-多选按钮用于选择。
+多選按鈕用於選擇。
 
-### 安装
+### 安裝
 
 ``` ts
 import { Checkbox, CheckBoxGroup } from '@nutui/nutui-react';
@@ -17,27 +17,27 @@ import { Checkbox, CheckBoxGroup } from '@nutui/nutui-react';
 const CheckBoxDemo = () => {
   const [checked, setChecked] = useState(true)
   return (<>
-    <CheckBox textPosition={'left'} label={'复选框'} checked={checked}></CheckBox>
-    <CheckBox textPosition={'right'} label={'复选框'} checked={false}></CheckBox>
+    <CheckBox textPosition={'left'} label={'複選框'} checked={checked}></CheckBox>
+    <CheckBox textPosition={'right'} label={'複選框'} checked={false}></CheckBox>
   </>
   )
 }
 ```
 
-## 禁用状态
+## 禁用狀態
 
 ```html
 const CheckBoxDemo = () => {
   return (<>
     <CheckBox
       textPosition={'right'}
-      label={'未选时禁用状态'}
+      label={'未選時禁用狀態'}
       checked={false}
       disabled={true}
     ></CheckBox>
     <CheckBox
       textPosition={'right'}
-      label={'选中时禁用状态'}
+      label={'選中時禁用狀態'}
       checked={true}
       disabled={true}
     ></CheckBox>
@@ -45,25 +45,25 @@ const CheckBoxDemo = () => {
 }
 ```
 
-## 自定义尺寸
+## 自訂尺寸
 
 ```html
 const CheckBoxDemo = () => {
   return (<>
-    <CheckBox label={'自定义尺寸25'} iconSize={25}></CheckBox>
-    <CheckBox label={'自定义尺寸10'} iconSize={10}></CheckBox>
+    <CheckBox label={'自訂尺寸25'} iconSize={25}></CheckBox>
+    <CheckBox label={'自訂尺寸10'} iconSize={10}></CheckBox>
   </>)
 }
 ```
 
-## 自定义图标
+## 自訂圖示
 
-这里建议同时设置 `iconName` 和 `iconActiveName` 属性
+這裏建議同時設置 『iconName』 和 『iconActiveName』 屬性
 
 ```html
 const CheckBoxDemo = () => {
   return (<>
-    <CheckBox iconName="checklist" iconActiveName="checklist">自定义图标</CheckBox>
+    <CheckBox iconName="checklist" iconActiveName="checklist">自訂圖示</CheckBox>
   </>)
 }
 ```
@@ -71,7 +71,7 @@ const CheckBoxDemo = () => {
 
 ## change事件
 
-值发生变化时，将触发change事件
+值發生變化時，將觸發change事件
 
 ```html
 const CheckBoxDemo = () => {
@@ -79,10 +79,10 @@ const CheckBoxDemo = () => {
     <CheckBox
       checked={false}
       onChange={(state, label) => {
-      Toast.text(`您${state ? '选中' : '取消'}了${label}`)
+      Toast.text(`您${state ? '選中' : '取消'}了${label}`)
       }}
       >
-      change复选框
+      複選框
     </CheckBox>
   </>)
 }
@@ -102,23 +102,23 @@ const CheckBoxDemo = () => {
     }}
     >
       <CheckBox checked={false} label="1">
-        组合复选框
+        組合複選框
       </CheckBox>
       <CheckBox checked={false} label="2">
-        组合复选框
+        組合複選框
       </CheckBox>
       <CheckBox checked={false} label="3">
-        组合复选框
+        組合複選框
       </CheckBox>
       <CheckBox checked={false} label="4">
-        组合复选框
+        組合複選框
       </CheckBox>
     </CheckBoxGroup>
   )
 }
 ```
 
-## CheckBoxGroup 全选/取消
+## CheckBoxGroup 全選/取消
 
 ```html
 const CheckBoxDemo = () => {
@@ -130,14 +130,14 @@ const CheckBoxDemo = () => {
       ref={checkboxgroup2Ref}
       checkedValue={checkboxgroup2}
       onChange={(value) => {
-    Toast.text(`${value.length === 2 ? '全选' : '取消全选'}`)
+    Toast.text(`${value.length === 2 ? '全選' : '取消全選'}`)
     }}
     >
     <CheckBox checked={false} label="1">
-      组合复选框
+      組合複選框
     </CheckBox>
     <CheckBox checked={false} label="2">
-      组合复选框
+      組合複選框
     </CheckBox>
     </CheckBoxGroup>
     <Button
@@ -146,7 +146,7 @@ const CheckBoxDemo = () => {
     ;(checkboxgroup2Ref.current as any).toggleAll(true)
     }}
     >
-    全选
+    全選
     </Button>
     <Button
       type="info"
@@ -162,34 +162,34 @@ const CheckBoxDemo = () => {
 
 ## Checkbox
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| checked | 是否处于选中状态 | Boolean | `false`
-| disabled | 是否禁用选择 | Boolean | `false`
-| textPosition | 文本所在的位置，可选值：`left`,`right` | String | `right`
-| iconSize | [图标尺寸](#/icon) | String、Number | `18`
-| iconName | [图标名称](#/icon)，选中前(建议和`iconActiveName`一起修改) | String | `'check-normal'`
-| iconActiveName | [图标名称](#/icon)，选中后(建议和`iconName`一起修改) | String | `'checked'`
-| label | 复选框的文本内容 | String | -
+| 屬性 | 說明 | 類型 | 預設值 |
+|----- | ----- | ----- | -----  |
+| checked | 是否處於選取狀態 | Boolean | `false` |
+| disabled | 是否禁用選擇 | Boolean | `false` |
+| textPosition | 文本所在的位置，可選值：`left`,`right` | String | `right` |
+| iconSize | [图标尺寸](#/icon) | String、Number | `18` |
+| iconName | [图标名称](#/icon)，选中前(建议和`iconActiveName`一起修改) | String | `'check-normal'` |
+| iconActiveName | [图标名称](#/icon)，选中后(建议和`iconName`一起修改) | String | `'checked'` |
+| label | 复选框的文本内容 | String | - |
 
 
 ## CheckBoxGroup
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| checkedValue | 当前选中项的标识符，和 `label` 相对应  | String | -
-| disabled | 是否禁用选择,将用于其下的全部复选框 | Boolean | `false`
+| 屬性 | 說明 | 類型 | 預設值 |
+|----- | ----- | ----- | ----- |
+| checkedValue | 當前選取的標識碼，和 'label' 相對應 | String | - |
+| disabled | 是否禁用選擇，將用於其下的全部複選框 | Boolean | `false` |
 
 
 
 ## Checkbox Event
 
-| 字段 | 说明 | 回调参数
-|----- | ----- | ----- 
-| change | 值变化时触发 | (state, label),`state`代表当前状态，`label`表示当前选中的值
+| 事件名稱 | 說明 | 回調參數 |
+|----- | ----- | ----- |
+| change | 值變化時觸發 | (state, label),`state`代表當前狀態，`label`表示目前選取的值 |
 
 ## CheckBoxGroup Event
 
-| 字段 | 说明 | 回调参数
-|----- | ----- | ----- 
-| change | 值变化时触发 | label,`label`返回一个数组，表示当前选中项的集合
+| 事件名稱 | 說明 | 回調參數 |
+|----- | ----- | ----- |
+| change | 值變化時觸發 | label，'label'返回一個陣列，表示當前選中項的集合 |

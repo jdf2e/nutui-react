@@ -1,45 +1,20 @@
-# Button 按钮
+# Button 按鈕
 
-### 介绍
+### 介紹
 
-按钮用于触发一个操作，如提交表单。
+按鈕用於觸發一個操作，如提交表單。
 
-### 安装
+### 安裝
 
 ``` javascript
 import { Button } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 代碼演示
 
-### 按钮类型
+### 按鈕類型
 
-按钮支持 `default`、`primary`、`info`、`warning`、`danger`、`success` 六种类型，默认为 `default`。
-
-:::demo
-```tsx
-import  React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-    <Button type="primary">主要按钮</Button>
-    <Button type="info">信息按钮</Button>
-    <Button type="default">默认按钮</Button>
-    <Button type="danger">危险按钮</Button>
-    <Button type="warning">警告按钮</Button>
-    <Button type="success">成功按钮</Button>
-    </>
-  );
-};
-export default App;
-```
-:::
-
-### 朴素按钮
-
-通过 `plain` 属性将按钮设置为朴素按钮，朴素按钮的文字为按钮颜色，背景为白色。
+按鈕支援 'default'、'primary'、'info'、'warning'、'danger'、'success' 六種類型，預設為 'default'。
 
 :::demo
 ```tsx
@@ -49,17 +24,22 @@ import { Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-<Button plain type="primary">朴素按钮</Button>
-<Button plain type="info">朴素按钮</Button>
+    <Button type="primary">主要按鈕</Button>
+    <Button type="info">資訊按鈕</Button>
+    <Button type="default">默認按鈕</Button>
+    <Button type="danger">危險按鈕</Button>
+    <Button type="warning">警告按鈕</Button>
+    <Button type="success">成功按鈕</Button>
     </>
   );
 };
 export default App;
 ```
 :::
-### 禁用状态
 
-通过 `disabled` 属性来禁用按钮，禁用状态下按钮不可点击。
+### 樸素按鈕
+
+通過 『plain』 屬性將按鈕設置為樸素按鈕，樸素按鈕的文字為按鈕顏色，背景為白色。
 
 :::demo
 ```tsx
@@ -69,19 +49,17 @@ import { Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-<Button disabled type="primary">禁用状态</Button>
-<Button plain disabled type="info">禁用状态</Button>
-<Button plain disabled type="primary">禁用状态</Button>
+      <Button plain type="primary">樸素按鈕</Button>
+      <Button plain type="info">樸素按鈕</Button>
     </>
   );
 };
 export default App;
 ```
 :::
+### 禁用狀態
 
-### 按钮形状
-
-通过 `shape` 属性设置按钮形状，支持圆形、方形按钮，默认为圆形。
+通過 'disabled' 屬性來禁用按鈕，禁用狀態下按鈕不可點擊。
 
 :::demo
 ```tsx
@@ -91,8 +69,9 @@ import { Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-<Button shape="square" type="primary">方形按钮</Button>
-<Button type="info">圆形按钮</Button>
+      <Button disabled type="primary">禁用狀態</Button>
+      <Button plain disabled type="info">禁用狀態</Button>
+      <Button plain disabled type="primary">禁用狀態</Button>
     </>
   );
 };
@@ -100,7 +79,28 @@ export default App;
 ```
 :::
 
-### 加载状态
+### 按鈕形狀
+
+通過 『shape』 屬性設置按鈕形狀，支援圓形、方形按鈕，預設為圓形。
+
+:::demo
+```tsx
+import  React from "react";
+import { Button } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+    <Button shape="square" type="primary">方形按鈕</Button>
+  <Button type="info">圓形按鈕</Button>
+    </>
+  );
+};
+export default App;
+```
+:::
+
+### 載入狀態
 
 :::demo
 ```tsx
@@ -112,15 +112,15 @@ const App = () => {
   return (
     <>
 <Button loading type="info" />
-<Button loading type="warning">加载中...</Button>
+<Button loading type="warning">載入中...</Button>
 <Button
       loading={loading}
       type="success"
       onClick={() => {
         setTimeout(() => {
           setLoading(false)
-        }, 1500),
-          setLoading(!loading)
+        }, 1500);
+        setLoading(!loading)
       }}
       style={{ margin: 8 }}
     >
@@ -132,7 +132,7 @@ const App = () => {
 export default App;
 ```
 :::
-### 图标按钮
+### 圖示按鈕
 
 :::demo
 ```tsx
@@ -150,9 +150,9 @@ const App = () => {
 export default App;
 ```
 :::
-### 按钮尺寸
+### 按鈕尺寸
 
-支持 `large`、`normal`、`small` 三种尺寸，默认为 `normal`。
+支援 'large'、'normal'、'small' 三種尺寸，預設為 'normal'。
 
 :::demo
 ```tsx
@@ -162,9 +162,9 @@ import { Button } from '@nutui/nutui-react';
 const App = () => { 
   return (
     <>
-<Button size="large" type="primary">大号按钮</Button>
-<Button type="primary">普通按钮</Button>
-<Button size="small" type="primary">小型按钮</Button>
+    <Button size="large" type="primary">大號按鈕</Button>
+  <Button type="primary">普通按鈕</Button>
+  <Button size="small" type="primary">小型按鈕</Button>
     </>
   );
 };
@@ -172,9 +172,9 @@ export default App;
 ```
 :::
 
-### 块级元素
+### 塊級元素
 
-按钮在默认情况下为行内块级元素，通过 `block` 属性可以将按钮的元素类型设置为块级元素，常用来实现通栏按钮。
+按鈕在預設情況下為行內塊級元素，通過 'block' 屬性可以將按鈕的元素類型設置為塊級元素，常用來實現通欄按鈕。
 
 :::demo
 ```tsx
@@ -184,7 +184,7 @@ import { Button } from '@nutui/nutui-react';
 const App = () => { 
   return (
     <>
-<Button block type="primary">块级元素</Button>
+<Button block type="primary">塊級元素</Button>
     </>
   );
 };
@@ -192,8 +192,8 @@ export default App;
 ```
 :::
 
-### 自定义颜色
-通过 color 属性可以自定义按钮的颜色。
+### 自定義顏色
+通過 color 屬性可以自定義按鈕的顏色。
 
 :::demo
 ```tsx
@@ -203,11 +203,11 @@ import { Button } from '@nutui/nutui-react';
 const App = () => { 
   return (
     <>
-<Button color="#7232dd">单色按钮</Button>
-<Button color="#7232dd" plain>单色按钮</Button>
-<Button color="linear-gradient(to right, #ff6034, #ee0a24)">
-  渐变色按钮
-</Button>
+    <Button color="#7232dd">單色按鈕</Button>
+  <Button color="#7232dd" plain>單色按鈕</Button>
+  <Button color="linear-gradient(to right, #ff6034, #ee0a24)">
+    漸變色按鈕
+  </Button>
     </>
   );
 };
@@ -218,21 +218,21 @@ export default App;
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| 屬性 | 說明 | 類型 | 預設值           |
 |--------------|----------------------------------|--------|------------------|
-| type         | 类型，可选值为 `primary` `info` `warning` `danger` `success` | String |`default`         |
-| size        | 尺寸，可选值为 `large` `small`  | String | `normal`      |
-| shape         | 形状，可选值为 `square` | String | `round`             |
-| color | 按钮颜色，支持传入 linear-gradient 渐变色     | String | - |
-| plain          | 	是否为朴素按钮                       | Boolean | `false`             |
-| disabled          | 	是否禁用按钮                       | Boolean | `false`              |
-| block          | 是否为块级元素                        | Boolean | `false`               |
-| icon          | 按钮图标，同Icon组件name属性                        | String | -     |
-| loading          | 按钮loading状态                        | Boolean | `false`               |
+| type         | 類型，可選值為 `primary` `info` `warning` `danger` `success` | String |`default`         |
+| size        | 尺寸，可選值為 `large` `small`  | String | `normal`      |
+| shape         | 形狀，可選值為 `square` | String | `round`             |
+| color | 按鈕顏色，支持傳入linear-gradient漸變色     | String | - |
+| plain          | 	是否為樸素按鈕                       | Boolean | `false`             |
+| disabled          | 	是否禁用按鈕                       | Boolean | `false`              |
+| block          | 是否為塊級元素                        | Boolean | `false`               |
+| icon          | 按鈕圖示，同Icon元件name屬性                        | String | -     |
+| loading          | 按鈕loading狀態                        | Boolean | `false`               |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
+| 事件名稱 | 說明 | 回調參數     |
 |--------|----------------|--------------|
 | click  | 点击按钮时触发 | event: MouseEvent |
 
