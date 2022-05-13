@@ -16,35 +16,73 @@ import { Icon } from '@nutui/nutui-react';
 
 The `name` attribute of `Icon` supports passing in icon names or image links.
 
+:::demo
 ```tsx
-<Icon name="dongdong"></Icon>
-<Icon name="JD"></Icon>
-<Icon size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"></Icon>
+import React from "react";
+import { Icon } from '@nutui/nutui-react';
+
+const App = () => {
+  return <>
+    <Icon name="dongdong" />
+    <Icon name="JD" />
+    <Icon size="40"
+          name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png" />
+
+  </>
+}
+
+export default App;
 ```
+:::
 
 ### Color
 
 The 'color' property of 'Icon' is used to set the color of the icon.
 
+:::demo
 ```tsx
-<Icon name="dongdong" color="#fa2c19"></Icon>
-<Icon name="dongdong" color="#64b578"></Icon>
-<Icon name="JD" color="#fa2c19"></Icon>
+import React from "react";
+import { Icon } from '@nutui/nutui-react';
+
+const App = () => {
+  return <>
+    <Icon name="dongdong" color="#fa2c19" />
+    <Icon name="dongdong" color="#64b578" />
+    <Icon name="JD" color="#fa2c19" />
+  </>
+}
+
+export default App;
 ```
+:::
 
 ### Size
 
-The 'size' property of 'Icon' is used to set the size of the icon, with the default unit being 'px'.
+The 'size' property of 'Icon' is used to set the size of the icon, with the
+default unit being 'px'.
 
+:::demo
 ```tsx
-<Icon name="dongdong"></Icon>
-<Icon name="dongdong" size="24"></Icon>
-<Icon name="dongdong" size="16"></Icon>
+import React from "react";
+import { Icon } from '@nutui/nutui-react';
+
+const App = () => {
+  return <>
+    <Icon name="dongdong" />
+    <Icon name="dongdong" size="24" />
+    <Icon name="dongdong" size="16" />
+  </>
+}
+
+export default App;
 ```
+:::
 
 ### Custom icons
 
-If you need to use more icons in addition to your existing Icon, you can introduce font files and CSS files corresponding to third-party iconfonts, which can then be used directly in the Icon component.
+If you need to use more icons in addition to your existing Icon, you can
+introduce font files and CSS files corresponding to third-party iconfonts, which
+can then be used directly in the Icon component.
 
 ```css
 /* Introduce third-party or custom font icon styles */
@@ -63,8 +101,16 @@ If you need to use more icons in addition to your existing Icon, you can introdu
 ```
 
 ```tsx
-<!-- Specify the class name my-icon via class-prefix -->
-<Icon class-prefix="my-icon" name="extra" />
+import React from "react";
+import { Icon } from '@nutui/nutui-react';
+
+const App = () => {
+  return <>
+    <Icon class-prefix="my-icon" name="extra" />
+  </>
+}
+
+export default App;
 ```
 
 ## API

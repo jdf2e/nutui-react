@@ -16,32 +16,64 @@ import { Icon } from '@nutui/nutui-react';
 
 `Icon` 的 `name` 属性支持传入图标名称或图片链接。
 
+:::demo
 ```tsx
-<Icon name="dongdong"></Icon>
-<Icon name="JD"></Icon>
-<Icon size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"></Icon>
+import React from "react";
+import { Icon } from '@nutui/nutui-react';
+
+const App = () => {
+  return <>
+    <Icon name="dongdong" />
+    <Icon name="JD"/>
+    <Icon size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"/>
+  </>
+}
+export default App;
+
 ```
+:::
 
 ### 图标颜色
 
 `Icon` 的 `color` 属性用来设置图标的颜色。
 
+:::demo
 ```tsx
-<Icon name="dongdong" color="#fa2c19"></Icon>
-<Icon name="dongdong" color="#64b578"></Icon>
-<Icon name="JD" color="#fa2c19"></Icon>
+import React from "react";
+import { Icon } from '@nutui/nutui-react';
+
+const App = () => {
+  return <>
+    <Icon name="dongdong" color="#fa2c19" />
+    <Icon name="dongdong" color="#64b578" />
+    <Icon name="JD" color="#fa2c19" />
+  </>
+}
+
+export default App;
 ```
+:::
 
 ### 图标大小
 
 `Icon` 的 `size` 属性用来设置图标的尺寸大小，默认单位为 `px`。
 
+:::demo
 ```tsx
-<Icon name="dongdong"></Icon>
-<Icon name="dongdong" size="24"></Icon>
-<Icon name="dongdong" size="16"></Icon>
-```
+import React from "react";
+import { Icon } from '@nutui/nutui-react';
 
+const App = () => {
+  return <>
+    <Icon name="dongdong" />
+    <Icon name="dongdong" size="24" />
+    <Icon name="dongdong" size="16" />
+  </>
+}
+
+export default App;
+```
+:::
 ### 自定义图标
 
 如果需要在现有 Icon 的基础上使用更多图标，可以引入第三方 iconfont 对应的字体文件和 CSS 文件，之后就可以在 Icon 组件中直接使用。
@@ -63,8 +95,16 @@ import { Icon } from '@nutui/nutui-react';
 ```
 
 ```tsx
-<!-- 通过 class-prefix 指定类名为 my-icon -->
-<Icon class-prefix="my-icon" name="extra" />
+import React from "react";
+import { Icon } from '@nutui/nutui-react';
+
+const App = () => {
+  return <>
+    <Icon class-prefix="my-icon" name="extra" />
+  </>
+}
+
+export default App;
 ```
 
 ## API

@@ -16,31 +16,67 @@ import { Icon } from '@nutui/nutui-react';
 
 'Icon' 的 'name' 屬性支援傳入圖示名稱或圖片連結。
 
+:::demo
 ```tsx
-<Icon name="dongdong"></Icon>
-<Icon name="JD"></Icon>
-<Icon size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"></Icon>
+import React from "react";
+import { Icon } from '@nutui/nutui-react';
+
+const App = () => {
+  return <>
+    <Icon name="dongdong" />
+    <Icon name="JD" />
+    <Icon size="40"
+          name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png" />
+
+  </>
+}
+
+export default App;
 ```
+:::
+
 
 ### 圖示顏色
 
 'Icon' 的 'color' 屬性用來設置圖示的顏色。
 
+:::demo
 ```tsx
-<Icon name="dongdong" color="#fa2c19"></Icon>
-<Icon name="dongdong" color="#64b578"></Icon>
-<Icon name="JD" color="#fa2c19"></Icon>
+import React from "react";
+import { Icon } from '@nutui/nutui-react';
+
+const App = () => {
+  return <>
+    <Icon name="dongdong" color="#fa2c19" />
+    <Icon name="dongdong" color="#64b578" />
+    <Icon name="JD" color="#fa2c19" />
+  </>
+}
+
+export default App;
 ```
+:::
 
 ### 圖示大小
 
 'Icon' 的 'size' 屬性用來設置圖示的尺寸大小，預設單位為 'px'。
 
+:::demo
 ```tsx
-<Icon name="dongdong"></Icon>
-<Icon name="dongdong" size="24"></Icon>
-<Icon name="dongdong" size="16"></Icon>
+import React from "react";
+import { Icon } from '@nutui/nutui-react';
+
+const App = () => {
+  return <>
+    <Icon name="dongdong" />
+    <Icon name="dongdong" size="24" />
+    <Icon name="dongdong" size="16" />
+  </>
+}
+
+export default App;
 ```
+:::
 
 ### 自訂圖示
 
@@ -63,8 +99,16 @@ import { Icon } from '@nutui/nutui-react';
 ```
 
 ```tsx
-<!-- 通過 class-prefix 指定類名為 my-icon -->
-<Icon class-prefix="my-icon" name="extra" />
+import React from "react";
+import { Icon } from '@nutui/nutui-react';
+
+const App = () => {
+  return <>
+    <Icon class-prefix="my-icon" name="extra" />
+  </>
+}
+
+export default App;
 ```
 
 ## API
