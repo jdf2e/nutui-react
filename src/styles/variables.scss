@@ -117,9 +117,9 @@ $icon-line-height: 20px;
 
 // uploader
 
-$uploader-width: 100px;
-$uploader-height: 100px;
-$uploader-background: #f7f8fa;
+$uploader-picture-width: 100px !default;
+$uploader-picture-height: 100px !default;
+$uploader-background: #f7f8fa !default;
 
 //input
 $input-border-bottom: #eaf0fb;
