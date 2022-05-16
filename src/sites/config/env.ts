@@ -1,6 +1,7 @@
 type EnvConfig = {
   baseUrl: string
   isPrd: boolean
+  locales: string[]
 }
 
 /**
@@ -13,6 +14,7 @@ type EnvConfig = {
 const config: EnvConfig = {
   baseUrl: '',
   isPrd: true, // 是否为线上
+  locales: ['zh-CN', 'zh-TW', 'en-US', 'th'],
 }
 switch (import.meta.env.MODE) {
   case 'development':

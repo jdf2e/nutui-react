@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
+import config from '@/sites/config/env'
+
 const getLocale = () => {
-  let locale = 'zh-CN'
+  let locale = ''
   const matched = window.parent.location.href.match(/#\/([a-z-]+)/i)
   if (matched) {
     ;[, locale] = matched
+    if (config.locales.indexOf(locale) === -1) locale = ''
   }
   return locale
 }
