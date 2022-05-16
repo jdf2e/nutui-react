@@ -1,52 +1,145 @@
 import React, { useState } from 'react'
+import { useTranslate } from '../../sites/assets/locale'
 import { Button } from './button'
 
+interface T {
+  ce5c5446: string
+  c38a08ef: string
+  b840c88f: string
+  a74a1fd4: string
+  '8dab2f66': string
+  cfbdc781: string
+  c3a3a1d2: string
+  e51e4582: string
+  '7db1a8b2': string
+  a52bef0c: string
+  d04fcbda: string
+  '0aaad620': string
+  '60a53514': string
+  b8a453e3: string
+  '248be9e1': string
+  ea3d02f2: string
+  c9e6df49: string
+  '781b07fd': string
+  '1076d771': string
+  '6ab47cd2': string
+}
+
 const ButtonDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      ce5c5446: '按钮类型',
+      c38a08ef: '主要按钮',
+      b840c88f: '信息按钮',
+      a74a1fd4: '默认按钮',
+      '8dab2f66': '危险按钮',
+      cfbdc781: '警告按钮',
+      c3a3a1d2: '成功按钮',
+      e51e4582: '朴素按钮',
+      '7db1a8b2': '禁用状态',
+      a52bef0c: '加载状态',
+      d04fcbda: '加载中',
+      '0aaad620': '按钮尺寸',
+      '60a53514': '收藏',
+      b8a453e3: '大号按钮',
+      '248be9e1': '普通按钮',
+      ea3d02f2: '小型按钮',
+      c9e6df49: '块级元素',
+      '781b07fd': '自定义颜色',
+      '1076d771': '单色按钮',
+      '6ab47cd2': '渐变按钮',
+    },
+    'zh-TW': {
+      ce5c5446: '按鈕類型',
+      c38a08ef: '主要按鈕',
+      b840c88f: '資訊按鈕',
+      a74a1fd4: '默認按鈕',
+      '8dab2f66': '危險按鈕',
+      cfbdc781: '警告按鈕',
+      c3a3a1d2: '成功按鈕',
+      e51e4582: '樸素按鈕',
+      '7db1a8b2': '禁用狀態',
+      a52bef0c: '載入狀態',
+      d04fcbda: '載入中',
+      '0aaad620': '按鈕尺寸',
+      '60a53514': '收藏',
+      b8a453e3: '大號按鈕',
+      '248be9e1': '普通按鈕',
+      ea3d02f2: '小型按鈕',
+      c9e6df49: '塊級元素',
+      '781b07fd': '自定義顏色',
+      '1076d771': '單色按鈕',
+      '6ab47cd2': '漸變按鈕',
+    },
+    'en-US': {
+      ce5c5446: 'Button Type',
+      c38a08ef: 'Main button',
+      b840c88f: 'Info Button',
+      a74a1fd4: 'Default Button',
+      '8dab2f66': 'Danger Button',
+      cfbdc781: 'Warning button',
+      c3a3a1d2: 'Success Button',
+      e51e4582: 'Naïve button',
+      '7db1a8b2': 'Disabled State',
+      a52bef0c: 'Load State',
+      d04fcbda: 'Loading',
+      '0aaad620': 'Button size',
+      '60a53514': 'Favorite',
+      b8a453e3: 'Large button',
+      '248be9e1': 'Normal Button',
+      ea3d02f2: 'Mini Button',
+      c9e6df49: 'Block-level elements',
+      '781b07fd': 'Custom Colors',
+      '1076d771': 'Monochrome button',
+      '6ab47cd2': 'Gradient button',
+    },
+  })
+
   const [loading, setLoading] = useState(false)
   return (
     <>
       <div className="demo">
-        <h2>按钮类型</h2>
+        <h2>{translated.ce5c5446}</h2>
         <Button className="aa" style={{ margin: 8 }} type="primary" shape="round">
-          主要按钮
+          {translated.c38a08ef}
         </Button>
         <Button type="info" style={{ margin: 8 }} shape="round">
-          信息按钮
+          {translated.b840c88f}
         </Button>
         <Button shape="round" style={{ margin: 8 }}>
-          默认按钮
+          {translated.a74a1fd4}
         </Button>
         <Button type="danger" style={{ margin: 8 }} shape="round">
-          危险按钮
+          {translated['8dab2f66']}
         </Button>
         <Button type="warning" style={{ margin: 8 }}>
-          警告按钮
+          {translated.cfbdc781}
         </Button>
         <Button type="success" style={{ margin: 8 }}>
-          成功按钮
+          {translated.c3a3a1d2}
         </Button>
 
-        <h2>朴素按钮</h2>
+        <h2>{translated.e51e4582}</h2>
         <Button plain style={{ margin: 8 }} type="primary">
-          朴素按钮
+          {translated.e51e4582}
         </Button>
         <Button plain style={{ margin: 8 }} type="info">
-          朴素按钮
+          {translated.e51e4582}
         </Button>
-        <h2>禁用状态</h2>
+        <h2>{translated['7db1a8b2']}</h2>
         <Button disabled style={{ margin: 8 }} type="primary">
-          禁用状态
+          {translated['7db1a8b2']}
         </Button>
         <Button plain disabled style={{ margin: 8 }} type="info">
-          禁用状态
+          {translated['7db1a8b2']}
         </Button>
         <Button plain disabled style={{ margin: 8 }} type="primary">
-          禁用状态
+          {translated['7db1a8b2']}
         </Button>
-        <h2>加载状态</h2>
+        <h2>{translated.a52bef0c}</h2>
         <Button loading type="info" style={{ margin: 8 }} />
         <Button loading type="warning" style={{ margin: 8 }}>
-          加载中
+          {translated.d04fcbda}
         </Button>
         <Button
           loading={loading}
@@ -54,41 +147,41 @@ const ButtonDemo = () => {
           onClick={() => {
             setTimeout(() => {
               setLoading(false)
-            }, 1500),
-              setLoading(!loading)
+            }, 1500)
+            setLoading(!loading)
           }}
           style={{ margin: 8 }}
         >
           Click me!
         </Button>
-        <h2>按钮尺寸</h2>
+        <h2>{translated['0aaad620']}</h2>
         <Button shape="square" plain type="primary" icon="star-fill" style={{ margin: 8 }} />
         <Button shape="square" type="primary" icon="star" style={{ margin: 8 }}>
-          收藏
+          {translated['60a53514']}
         </Button>
-        <h2>按钮尺寸</h2>
+        <h2>{translated['0aaad620']}</h2>
         <Button size="large" type="primary">
-          大号按钮
+          {translated.b8a453e3}
         </Button>
         <Button type="primary" style={{ margin: 8 }}>
-          普通按钮
+          {translated['248be9e1']}
         </Button>
         <Button size="small" style={{ margin: 8 }} type="primary">
-          小型按钮
+          {translated.ea3d02f2}
         </Button>
-        <h2>块级元素</h2>
+        <h2>{translated.c9e6df49}</h2>
         <Button block type="primary">
-          块级元素
+          {translated.c9e6df49}
         </Button>
-        <h2>自定义颜色</h2>
+        <h2>{translated['781b07fd']}</h2>
         <Button color="#7232dd" style={{ margin: 8 }}>
-          单色按钮
+          {translated['1076d771']}
         </Button>
         <Button color="#7232dd" plain style={{ margin: 8 }}>
-          单色按钮
+          {translated['1076d771']}
         </Button>
         <Button color="linear-gradient(to right, #ff6034, #ee0a24)" style={{ margin: 8 }}>
-          渐变按钮
+          {translated['6ab47cd2']}
         </Button>
       </div>
     </>

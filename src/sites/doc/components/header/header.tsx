@@ -12,6 +12,7 @@ const Header = () => {
   const toHome = () => {
     history.replace('/')
   }
+  console.log(history.location.pathname)
   useEffect(() => {
     let packages = [] as any[]
     nav.forEach((item) => {
@@ -40,6 +41,8 @@ const Header = () => {
     window.location.href = link
   }
 
+  const currLang = langs.filter((l) => history.location.pathname.indexOf(l.locale) > -1)[0]
+
   return (
     <div className="doc-header doc-header-black">
       <div className="header-logo">
@@ -55,7 +58,7 @@ const Header = () => {
       <div className={'switch'}>
         <div className={'switch-content'}>
           <Popover visible={visible} theme={'dark'} onClick={handleSwitchLocale} list={langs}>
-            <span className={'curr-lang'}>中文</span>
+            <span className={'curr-lang'}>{currLang ? currLang['name'] : '中文'}</span>
           </Popover>
         </div>
       </div>

@@ -32,6 +32,15 @@ const TextAreaDemo = () => {
       disabled: '禁用',
       disabledState: '禁用狀態',
     },
+    'en-US': {
+      basic: 'Basic usage',
+      numbers: 'Displays numerical',
+      autoHeight: 'Highly adaptive',
+      readOnly: 'Read only',
+      readOnlyState: 'Read-only status',
+      disabled: 'Disable',
+      disabledState: 'Disabled state',
+    },
   })
 
   const [value1, updateValue1] = useState('')
@@ -39,6 +48,7 @@ const TextAreaDemo = () => {
   const [value3] = useState('')
 
   useEffect(() => {
+    console.log('translated.basic', translated.basic)
     updateValue1(translated.basic)
   }, [translated])
 

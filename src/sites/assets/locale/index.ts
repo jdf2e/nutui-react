@@ -16,7 +16,7 @@ export const useTranslate = <T>(languagesPackage: LanguagesPackage<T>) => {
   useEffect(() => {
     if (languagesPackage) {
       // @ts-ignore
-      setLanguagesPackage(languagesPackage[locale])
+      setLanguagesPackage(languagesPackage[locale] || {})
     }
   }, [])
   return [translated]
