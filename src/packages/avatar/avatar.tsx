@@ -30,7 +30,6 @@ export type AvatarShape = 'round' | 'square'
 const defaultProps = {
   size: '',
   icon: '',
-  shape: 'round',
   bgColor: '#eee',
   color: '#666',
   prefixCls: 'nut-avatar',
@@ -69,7 +68,7 @@ export const Avatar: FunctionComponent<
   const b = bem('avatar')
   const classes = classNames({
     [`nut-avatar-${size || parent?.propAvatarGroup?.size || 'normal'}`]: true,
-    [`nut-avatar-${shape || parent?.propAvatarGroup?.shape || 'normal'}`]: true,
+    [`nut-avatar-${shape || parent?.propAvatarGroup?.shape || 'round'}`]: true,
   })
   const cls = classNames(b(''), classes, className)
 
@@ -106,9 +105,10 @@ export const Avatar: FunctionComponent<
       }
     }
     const index = avatarRef?.current?.dataset?.index
+    const maxCount = parent?.propAvatarGroup?.maxCount
     setMaxSum(children.length)
     setAvatarIndex(index)
-    if (index == children.length && index != parent?.propAvatarGroup?.maxCount) {
+    if (index == children.length && index != maxCount && children.length > maxCount) {
       setShowMax(true)
     }
   }

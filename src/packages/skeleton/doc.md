@@ -155,9 +155,9 @@ export default App;
 
 | 字段       | 说明                                             | 类型    | 默认值    |
 |------------|-------------------------------------------------|---------|----------|
-| loading    | 是否显示骨架屏                                    | Boolean | `true`    | 
-| width       | 每行宽度                                        | String  | `default` |
-| height      | 每行高度                                        | String  | `100px`   |
+| loading    | 是否显示骨架屏(true不显示骨架屏，false显示骨架屏)                                    | Boolean | `true`    | 
+| width       | 每行宽度(px单位)                                       | String  | `100px` |
+| height      | 每行高度(px单位)                                        | String  | `100px`   |
 | animated    | 是否开启骨架屏动画                                | Boolean  | `false`  |
 | avatar      | 是否显示头像                                     | Boolean | `false`   |
 | avatarShape      | 头像形状：正方形/圆形                        | String | `round`   |
