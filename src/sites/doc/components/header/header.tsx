@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { nav } from '@/config.json'
 // @ts-ignore
 import { version } from '/package.json'
+import config from '@/sites/config/env'
 import './header.scss'
 import { useHistory } from 'react-router-dom'
 import '@/packages/popover/popover.scss'
@@ -37,7 +38,13 @@ const Header = () => {
     const name = e.target.innerText
     setVisible(!visible)
     const [{ locale }] = langs.filter((l) => name == l.name)
-    const link = window.location.href.replace(/\#\/([a-z-]+)/gi, `#/${locale}`)
+
+    let link = ''
+    if (config.locales.some((l) => window.location.href.indexOf(l) > -1)) {
+      link = window.location.href.replace(/\#\/([a-z-]+)/gi, `#/${locale}`)
+    } else {
+      link = window.location.href.replace(/\#\//gi, `#/${locale}/`)
+    }
     window.location.href = link
   }
 
