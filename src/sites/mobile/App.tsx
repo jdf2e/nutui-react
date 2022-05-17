@@ -41,7 +41,7 @@ const AppSwitch = () => {
   const [locale] = useLocale()
 
   return (
-    <Configprovider locale={languages[(locale as string).replace('-', '')]}>
+    <Configprovider locale={languages[((locale as string) || 'zh-CN').replace('-', '')]}>
       <Switch>
         <Route path="/" exact>
           <div className="index">
@@ -63,7 +63,7 @@ const AppSwitch = () => {
           return (
             <Route
               key={Math.random()}
-              path={`/${locale}${item.path}`}
+              path={`${locale ? `/${locale}` : ''}${item.path}`}
               component={WithNavRouter(C)}
             />
           )

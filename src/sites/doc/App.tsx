@@ -34,7 +34,7 @@ const App = () => {
   const [lang] = useLocale()
   console.log('doc app')
   const getMarkdownByLang = (ru: string) => {
-    if (lang == 'zh-CN') {
+    if (lang === 'zh-CN' || lang === '') {
       // @ts-ignore
       return raws[ru]
     } else {
