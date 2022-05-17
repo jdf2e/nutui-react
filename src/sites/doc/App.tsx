@@ -55,7 +55,7 @@ const App = () => {
             <Switch>
               {routers.map((ru, k) => {
                 return (
-                  <Route key={Math.random()} path={`/${lang}/${ru}`}>
+                  <Route key={Math.random()} path={`${lang ? `/${lang}` : ''}/${ru}`}>
                     <ReactMarkdown
                       children={getMarkdownByLang(ru)}
                       remarkPlugins={[remarkGfm, remarkDirective, myRemarkPlugin]}
