@@ -1,6 +1,6 @@
 import React from 'react'
 import { Tabbar } from './tabbar'
-import TabbarItem from '../TabbarItem'
+import TabbarItem from '../tabbaritem'
 
 const TabbarDemo = () => {
   return (
@@ -9,7 +9,7 @@ const TabbarDemo = () => {
         <h2>基础用法</h2>
         <Tabbar
           tabSwitch={(child, idx) => {
-            alert(idx)
+            console.log(idx);
           }}
         >
           <TabbarItem tabTitle="首页" icon="home" />
@@ -45,19 +45,21 @@ const TabbarDemo = () => {
           <TabbarItem tabTitle="购物车" icon="cart" />
           <TabbarItem tabTitle="我的" icon="my" />
         </Tabbar>
+
         <h2>三个icon的tabbar</h2>
         <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
           <TabbarItem tabTitle="首页" icon="home" />
           <TabbarItem tabTitle="分类" icon="category" />
           <TabbarItem tabTitle="发现" icon="find" />
         </Tabbar>
+
         <h2>固定底部，可自由跳转</h2>
         <Tabbar bottom>
           <TabbarItem tabTitle="首页" href="" icon="home" />
           <TabbarItem tabTitle="分类" icon="category" />
           <TabbarItem tabTitle="发现" icon="find" />
           <TabbarItem tabTitle="购物车" href="https://m.jd.com" icon="cart" />
-          <TabbarItem tabTitle="我的" href="######" icon="my" />
+          <TabbarItem tabTitle="我的" to="/" icon="my" />
         </Tabbar>
       </div>
     </>
