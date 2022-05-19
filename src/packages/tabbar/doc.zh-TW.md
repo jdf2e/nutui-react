@@ -127,7 +127,7 @@ const App = () => (
     <TabbarItem tabTitle="分类" icon="category" />
     <TabbarItem tabTitle="发现" icon="find" />
     <TabbarItem tabTitle="购物车" href="https://m.jd.com" icon="cart" />
-    <TabbarItem tabTitle="我的" href="######" icon="my" />
+    <TabbarItem tabTitle="我的" to="/" icon="my" />
   </Tabbar>
 );
 
@@ -154,7 +154,7 @@ export default App;
 |-----------|-------------------------------------------|--------|--------|
 | tabTitle | 标签页的标题                              | String | --     |
 | icon      | 标签页显示的[图标名称](#/icon) 或图片链接 | String | --     |
-| href      | 标签页的跳转链接                          | String | --     |
+| href      | 标签页的跳转链接；如果同时存在 `to`，优先级高于 to   | String | --     |
 | to        | 	标签页的路由对象，等于 React Router 的 [to 属性](https://v5.reactrouter.com/web/api/Link/to-string) 属性 | string｜object | --     |
 | num       | 页签右上角的数字角标，超出99之后为99+     | Number | --     |
 

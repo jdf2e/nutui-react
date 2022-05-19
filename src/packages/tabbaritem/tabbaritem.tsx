@@ -41,6 +41,10 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (props) =
   useEffect(() => {
     if (active && href) {
       window.location.href = href
+      return
+    }
+    if (active && to) {
+      history.push(to)
     }
   }, [active])
 
@@ -52,9 +56,6 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (props) =
       }}
       onClick={() => {
         handleClick(index)
-        if(to !== '') {
-          history.push(to);
-        }
       }}
     >
       <div className={`${bIcon()}`}>
