@@ -49,7 +49,7 @@ const InternalBarrage: ForwardRefRenderFunction<unknown, Partial<BarrageProps>> 
     return () => {
       clearInterval(timer.current)
     }
-  }, [])
+  }, [barrageList])
 
   const run = () => {
     clearInterval(timer.current)

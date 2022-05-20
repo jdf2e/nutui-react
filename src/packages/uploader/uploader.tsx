@@ -136,6 +136,7 @@ const InternalUploader: ForwardRefRenderFunction<
   const [uploadQueue, setUploadQueue] = useState<Promise<Upload>[]>([])
 
   useEffect(() => {
+    console.log('defaultFileList', defaultFileList)
     if (defaultFileList) {
       setFileList(defaultFileList)
     }
