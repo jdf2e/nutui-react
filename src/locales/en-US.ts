@@ -45,9 +45,10 @@ const enUS: BaseLang = {
     ready: 'Ready',
     readyUpload: 'Ready to upload',
     waitingUpload: 'Waiting for upload',
-    uploading: 'Uploading',
+    uploading: 'Uploading...',
     success: 'Upload successful',
     error: 'Upload failed',
+    deleteWord: 'The user blocked the deletion!',
   },
   countdown: {
     day: ' Day ',

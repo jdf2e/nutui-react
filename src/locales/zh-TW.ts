@@ -44,9 +44,10 @@ const zhTW: BaseLang = {
     ready: '準備完成',
     readyUpload: '準備上傳',
     waitingUpload: '等待上傳',
-    uploading: '上傳中',
+    uploading: '上傳中...',
     success: '上傳成功',
     error: '上傳失敗',
+    deleteWord: '使用者阻止了刪除！',
   },
   countdown: {
     day: '天',

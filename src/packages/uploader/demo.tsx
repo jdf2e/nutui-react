@@ -61,7 +61,7 @@ const UploaderDemo = () => {
       df9128ec: '檔2.png',
       '219481a6': '上傳失敗',
       '29ab0c96': '檔3.png',
-      '403b055e': 'Uploading...',
+      '403b055e': '上傳中...',
       '25e04d44': 'oversize觸發檔大小不能超過50kb',
       d06e873e: 'start觸發',
       ca3903f3: 'delete事件觸發',

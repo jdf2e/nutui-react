@@ -9,6 +9,7 @@ import classNames from 'classnames'
 import Icon from '@/packages/icon'
 import { Upload, UploadOptions } from './upload'
 import bem from '@/utils/bem'
+import { useConfig } from '@/packages/configprovider'
 
 export type FileType<T> = { [key: string]: T }
 
@@ -80,6 +81,7 @@ const defaultProps = {
     return true
   },
 } as UploaderProps
+
 export class FileItem {
   status: FileItemStatus = 'ready'
   message: string = '准备中..'
@@ -93,6 +95,7 @@ const InternalUploader: ForwardRefRenderFunction<
   unknown,
   PropsWithChildren<Partial<UploaderProps>>
 > = (props, ref) => {
+  const { locale } = useConfig()
   const {
     children,
     uploadIcon,
@@ -184,7 +187,7 @@ const InternalUploader: ForwardRefRenderFunction<
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'ready'
-            item.message = '准备上传'
+            item.message = locale.uploader.readyUpload
           }
         })
         return [...fileList]
@@ -199,7 +202,7 @@ const InternalUploader: ForwardRefRenderFunction<
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'uploading'
-            item.message = '上传中...'
+            item.message = locale.uploader.uploading
           }
         })
         return [...fileList]
@@ -215,7 +218,7 @@ const InternalUploader: ForwardRefRenderFunction<
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'success'
-            item.message = '上传成功'
+            item.message = locale.uploader.success
           }
         })
         return [...fileList]
@@ -234,7 +237,7 @@ const InternalUploader: ForwardRefRenderFunction<
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'error'
-            item.message = '上传失败'
+            item.message = locale.uploader.error
           }
         })
         return [...fileList]
@@ -268,7 +271,7 @@ const InternalUploader: ForwardRefRenderFunction<
       fileItem.type = file.type
       fileItem.formData = formData
       fileItem.uid = file.lastModified + fileItem.uid
-      fileItem.message = '准备上传'
+      fileItem.message = locale.uploader.readyUpload
       executeUpload(fileItem, index)
 
       if (isPreview && file.type.includes('image')) {
@@ -318,7 +321,7 @@ const InternalUploader: ForwardRefRenderFunction<
       removeImage && removeImage(file, fileList)
       setFileList([...fileList])
     } else {
-      console.log('用户阻止了删除！')
+      console.log(locale.uploader.deleteWord)
     }
   }
 

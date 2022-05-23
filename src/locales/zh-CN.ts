@@ -47,9 +47,10 @@ const zhCN: BaseLang = {
     ready: '准备完成',
     readyUpload: '准备上传',
     waitingUpload: '等待上传',
-    uploading: '上传中',
+    uploading: '上传中...',
     success: '上传成功',
     error: '上传失败',
+    deleteWord: '用户阻止了删除！',
   },
   countdown: {
     day: '天',
