@@ -565,6 +565,7 @@
           "desc": "头像组合子组件",
           "sort": 18,
           "show": false,
+          "exportEmpty": true,
           "author": "swag~jun"
         },
         {
