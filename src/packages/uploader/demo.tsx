@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { Uploader, FileItem } from './uploader'
+import { Uploader, FileItem, FileType } from './uploader'
 import Button from '@/packages/button'
 
 interface uploadRefState {
@@ -11,6 +11,32 @@ const UploaderDemo = () => {
   const formData = {
     custom: 'test',
   }
+  const defaultFileList: FileType<string>[] = [
+    {
+      name: '文件1.png',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'success',
+      message: '上传成功',
+      type: 'image',
+      uid: '123',
+    },
+    {
+      name: '文件2.png',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'error',
+      message: '上传失败',
+      type: 'image',
+      uid: '124',
+    },
+    {
+      name: '文件3.png',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'uploading',
+      message: '上传中...',
+      type: 'image',
+      uid: '125',
+    },
+  ]
   const fileToDataURL = (file: Blob): Promise<any> => {
     return new Promise((resolve) => {
       const reader = new FileReader()
@@ -54,9 +80,6 @@ const UploaderDemo = () => {
     const f = await new File([blob], files[0].name, { type: files[0].type })
     return [f]
   }
-  const beforeDelete = (file: FileItem, fileList: FileItem[]) => {
-    return false
-  }
   const submitUpload = () => {
     ;(uploadRef.current as uploadRefState).submit()
   }
@@ -65,32 +88,35 @@ const UploaderDemo = () => {
       <div className="demo bg-w">
         <h2>基础用法</h2>
         <Uploader url={uploadUrl} start={onStart} />
+
+        <h2>上传状态</h2>
+        <Uploader
+          url={uploadUrl}
+          defaultFileList={defaultFileList}
+          removeImage={onDelete}
+          maximum="3"
+          multiple
+          uploadIcon="dongdong"
+        />
         <h2>自定义上传样式</h2>
         <Uploader url={uploadUrl}>
-          <Button type="primary" icon="uploader">
+          <Button type="success" size="small">
             上传文件
           </Button>
         </Uploader>
         <h2>直接调起摄像头（移动端生效）</h2>
-        <Uploader capture />
+        <Uploader url={uploadUrl} capture />
         <h2>上传状态</h2>
         <Uploader url={uploadUrl} multiple removeImage={onDelete} />
         <h2>限制上传数量5个</h2>
         <Uploader url={uploadUrl} multiple maximum="5" />
         <h2>限制上传大小（每个文件最大不超过 50kb）</h2>
         <Uploader url={uploadUrl} multiple maximize={1024 * 50} oversize={onOversize} />
-        <h2>限制上传大小（在beforeupload钩子中处理）</h2>
-        <Uploader
-          url={uploadUrl}
-          multiple
-          beforeUpload={beforeUpload}
-          maximize={1024 * 50}
-          oversize={onOversize}
-          beforeDelete={beforeDelete}
-        />
+        <h2>图片压缩（在beforeupload钩子中处理）</h2>
+        <Uploader url={uploadUrl} multiple beforeUpload={beforeUpload} />
         <h2>自定义数据 FormData 、 headers </h2>
         <Uploader url={uploadUrl} data={formData} headers={formData} withCredentials />
-        <h2>手动上传 </h2>
+        <h2>选中文件后，通过按钮手动执行上传 </h2>
         <Uploader url={uploadUrl} maximum="5" autoUpload={false} ref={uploadRef} />
         <br />
         <Button type="success" size="small" onClick={submitUpload}>

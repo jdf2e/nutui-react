@@ -14,17 +14,28 @@ const SkeletonDemo = () => {
     <>
       <div className="demo">
         <h2>基础用法</h2>
-        <Skeleton width={250} height={15} animated />
+        <Skeleton width="250px" height="15px" animated />
+        <Skeleton width="250px" height="15px" />
+
         <h2>传入多行</h2>
-        <Skeleton width={250} height={15} row={3} title animated />
+        <Skeleton width="250px" height="15px" row={3} title animated />
+
         <h2>显示头像</h2>
-        <Skeleton width={250} height={15} row={3} title animated avatar />
+        <Skeleton width="250px" height="15px" row={3} title animated avatar avatarSize="100px" />
+
         <h2>标题段落圆角风格</h2>
-        <Skeleton width={250} height={15} animated round />
+        <Skeleton width="250px" height="15px" animated round />
+
+        <h2>图片组合</h2>
+        <div className="pic-compose">
+          <Skeleton width="250px" height="15px" title animated row={3} className="item" />
+          <Skeleton width="250px" height="15px" title animated row={3} className="item" />
+        </div>
+
         <h2>显示子组件</h2>
         <div className="content">
           <Switch size="15px" change={(value, event) => changeStatus(value, event)} />
-          <Skeleton width={250} height={15} title animated avatar row={3} loading={checked}>
+          <Skeleton width="250px" height="15px" title animated avatar row={3} loading={checked}>
             <div className="container">
               <Avatar
                 size="50"

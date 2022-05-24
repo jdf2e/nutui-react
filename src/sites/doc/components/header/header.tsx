@@ -4,22 +4,31 @@ import { nav } from '@/config.json'
 import { version } from '/package.json'
 import config from '@/sites/config/env'
 import './header.scss'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import '@/packages/popover/popover.scss'
 import Popover from '@/packages/popover'
 
 const Header = () => {
   const history = useHistory()
+  const location = useLocation()
+
+  const [currLang, setCurrLang] = useState({})
+
   const toHome = () => {
     history.replace('/')
   }
-  console.log(history.location.pathname)
+
   useEffect(() => {
     let packages = [] as any[]
     nav.forEach((item) => {
       packages.push(...item.packages)
     })
   }, [])
+
+  useEffect(() => {
+    const lang = langs.filter((l) => location.pathname.indexOf(l.locale) > -1)[0]
+    setCurrLang(lang)
+  }, [location])
 
   const langs = [
     { name: '中文', locale: 'zh-CN' },
@@ -32,8 +41,7 @@ const Header = () => {
   const handleSwitchLocale = (e: any) => {
     const classList: string[] = [].slice.call(e.target.classList)
     if (classList.indexOf('curr-lang') > -1) {
-      setVisible(!visible)
-      return
+      return setVisible(!visible)
     }
     const name = e.target.innerText
     setVisible(!visible)
@@ -47,8 +55,6 @@ const Header = () => {
     }
     window.location.href = link
   }
-
-  const currLang = langs.filter((l) => history.location.pathname.indexOf(l.locale) > -1)[0]
 
   return (
     <div className="doc-header doc-header-black">

@@ -28,7 +28,7 @@ interface SwiperProps {
 }
 
 const defaultProps = {
-  width: window.innerWidth,
+  width: typeof window === 'object' ? window.innerWidth : 375,
   height: 0,
   duration: 500,
   initPage: 0,

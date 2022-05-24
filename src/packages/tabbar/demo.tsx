@@ -1,6 +1,6 @@
 import React from 'react'
 import { Tabbar } from './tabbar'
-import TabbarItem from '../TabbarItem'
+import TabbarItem from '../tabbaritem'
 
 const TabbarDemo = () => {
   return (

@@ -21,12 +21,15 @@ const StepsDemo = () => {
       setStepState({ ...stepState })
     }
   }
+  const handleClickStep = (index: number) => {
+    console.log(index)
+  }
   return (
     <>
       <div className="demo padding">
         <h2>基本用法</h2>
         <div className="steps-wrapper">
-          <Steps current={stepState.current1}>
+          <Steps current={stepState.current1} clickStep={handleClickStep}>
             <Step activeIndex={1} title="步骤一">
               1
             </Step>

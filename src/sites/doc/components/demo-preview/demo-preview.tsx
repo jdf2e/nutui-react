@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './demo-preview.scss'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
 const DemoPreview = () => {
   const history = useHistory()
+  const location = useLocation()
   const [URL, setURL] = useState(history.location.pathname)
 
-  history.listen((location) => {
+  useEffect(() => {
     setURL(location.pathname)
-  })
+  }, [location])
 
   return (
     <div className="doc-demo-preview">

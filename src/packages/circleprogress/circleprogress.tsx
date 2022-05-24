@@ -1,31 +1,44 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
+import { isObject } from '@/utils'
 import bem from '@/utils/bem'
 
+export interface IColor {
+  [key: string]: string
+}
 export interface CircleProgressProps {
-  strokeInnerWidth: string | number
   progress: string | number
-  isAuto: boolean
-  progressOption: object
-  className: string
+  strokeWidth?: string | number
+  radius?: number | string
+  strokeLinecap?: 'butt' | 'round' | 'square' | 'inherit' | undefined
+  circleColor?: object | string
+  pathColor?: string
+  clockwise?: boolean
+  className?: string
 }
 const defaultProps = {
-  strokeInnerWidth: 10,
-  progress: 10,
-  isAuto: false,
-  progressOption: {},
+  strokeWidth: 5,
+  radius: 50,
+  strokeLinecap: 'round',
+  circleColor: '',
+  pathColor: '',
+  clockwise: true,
 } as CircleProgressProps
+
 export const CircleProgress: FunctionComponent<
-  Partial<CircleProgressProps> & React.HTMLAttributes<HTMLDivElement>
+  CircleProgressProps & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
     children,
-    strokeInnerWidth,
     progress,
-    isAuto,
-    progressOption,
     className,
+    radius,
+    pathColor,
+    clockwise,
+    circleColor,
+    strokeWidth,
     style,
+    strokeLinecap,
     ...restProps
   } = {
     ...defaultProps,
@@ -33,60 +46,84 @@ export const CircleProgress: FunctionComponent<
   }
   const b = bem('circleprogress')
   const classes = classNames(className, b(''))
-  const option = () => {
-    // 所有进度条的可配置项
-    const baseOption = {
-      radius: 50,
-      strokeOutWidth: 10,
-      backColor: '#d9d9d9',
-      progressColor: 'red',
-      cy: 1,
-      cx: 1,
-      size: 1,
-      startPosition: '',
-    }
-    Object.assign(baseOption, progressOption)
-    // 圆心位置自动生成
-    baseOption.cy = baseOption.cx = baseOption.radius + baseOption.strokeOutWidth
-    baseOption.size = (baseOption.radius + baseOption.strokeOutWidth) * 2
-    baseOption.startPosition = `rotate(-90,${baseOption.cx},${baseOption.cy})`
-    return baseOption
-  }
+  const refRandomId = Math.random().toString(36).slice(-8)
+
   const styles: React.CSSProperties = {
-    height: `${option().size}px`,
-    width: `${option().size}px`,
+    height: `${Number(radius) * 2}px`,
+    width: `${Number(radius) * 2}px`,
     ...style,
   }
-  const arcLength = () => {
-    const circleLength = Math.floor(2 * Math.PI * option().radius)
-    const progressLength = ((progress as number) / 100) * circleLength
-    return `${progressLength},${circleLength}`
+
+  const pathStyle = {
+    stroke: pathColor,
   }
+
+  const hoverStyle = () => {
+    let perimeter = 283
+    let offset = (perimeter * Number(progress)) / 100
+    return {
+      stroke: isObject(circleColor) ? `url(#${refRandomId})` : circleColor,
+      strokeDasharray: `${offset}px ${perimeter}px`,
+    }
+  }
+
+  const path = () => {
+    const isWise = clockwise ? 1 : 0
+    return `M 50 50 m -45 0 a 45 45 0 1 ${isWise} 90 0  a 45 45 0 1 ${isWise} -90 0`
+  }
+
+  const hoverColor = () => {
+    return isObject(circleColor) ? `url(#${refRandomId})` : circleColor
+  }
+
+  const stop = () => {
+    if (!isObject(circleColor)) {
+      return
+    }
+    let color = circleColor as IColor
+    const colorArr = Object.keys(color).sort((a, b) => parseFloat(a) - parseFloat(b))
+    let stopArr: object[] = []
+    colorArr.map((item) => {
+      let obj = {
+        key: '',
+        value: '',
+      }
+      obj.key = item
+      obj.value = color[item]
+      stopArr.push(obj)
+    })
+    return stopArr
+  }
+
   return (
     <div className={classes} style={styles} {...restProps}>
-      <svg height={option().size} width={option().size} x-mlns="http://www.w3.org/200/svg">
-        <circle
-          r={option().radius}
-          cx={option().cx}
-          cy={option().cy}
-          stroke={option().backColor}
-          strokeWidth={option().strokeOutWidth}
+      <svg viewBox="0 0 100 100">
+        <defs>
+          <linearGradient id={refRandomId} x1="100%" y1="0%" x2="0%" y2="0%">
+            {stop()?.map((item: any, index) => {
+              return <stop key={index} offset={item.key} stopColor={item.value}></stop>
+            })}
+          </linearGradient>
+        </defs>
+        <path
+          className="nut-circleprogress-path"
+          style={pathStyle}
+          d={path()}
           fill="none"
-        />
-        <circle
-          r={option().radius}
-          cx={option().cx}
-          cy={option().cy}
-          stroke={option().progressColor}
-          strokeWidth={strokeInnerWidth}
-          strokeDasharray={arcLength()}
-          transform={option().startPosition}
+          strokeWidth={strokeWidth}
+        ></path>
+        <path
+          className="nut-circleprogress-hover"
+          style={hoverStyle()}
+          d={path()}
           fill="none"
-          strokeLinecap="round"
-          style={{ transition: 'stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s' }}
-        />
+          stroke={hoverColor()}
+          strokeLinecap={strokeLinecap}
+          transform="rotate(90,50,50)"
+          strokeWidth={strokeWidth}
+        ></path>
       </svg>
-      <div className="nut-circleprogress-content">{!isAuto ? `${progress}%` : <>{children}</>}</div>
+      <div className="nut-circleprogress-text">{children ? children : <div>{progress}%</div>}</div>
     </div>
   )
 }

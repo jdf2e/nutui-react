@@ -117,9 +117,9 @@ $icon-line-height: 20px;
 
 // uploader
 
-$uploader-width: 100px;
-$uploader-height: 100px;
-$uploader-background: #f7f8fa;
+$uploader-picture-width: 100px !default;
+$uploader-picture-height: 100px !default;
+$uploader-background: #f7f8fa !default;
 
 //input
 $input-border-bottom: #eaf0fb;
@@ -252,7 +252,33 @@ $rang-bar-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-en
 $address-region-tab-line: linear-gradient(90deg, $primary-color 0%, $primary-color-end 100%);
 
 //steps
-$step-wait-bg-color: #959fb1;
+$steps-base-icon-width: 25px !default;
+$steps-base-icon-height: 25px !default;
+$steps-base-icon-line-height: 25px !default;
+$steps-base-icon-font-size: 13px !default;
+$steps-base-title-font-size: 14px !default;
+$steps-base-line-color: #909ca4 !default;
+$steps-base-title-color: #909ca4 !default;
+$steps-base-title-margin-bottom: 10px !default;
+$steps-base-content-font-size: 14px !default;
+$steps-base-content-color: #666 !default;
+
+$steps-wait-icon-bg-color: #959fb1 !default;
+$steps-wait-icon-color: $white !default;
+$steps-wait-head-color: #909ca4 !default;
+$steps-wait-head-border-color: #909ca4 !default;
+$steps-wait-content-color: #909ca4 !default;
+
+$steps-finish-head-color: $primary-color !default;
+$steps-finish-head-border-color: $primary-color !default;
+$steps-finish-title-color: $primary-color !default;
+$steps-finish-line-background: $primary-color !default;
+$steps-finish-icon-text-color: $white !default;
+
+$steps-process-head-color: $white !default;
+$steps-process-head-border-color: $primary-color !default;
+$steps-process-title-color: $primary-color !default;
+$steps-process-icon-text-color: $primary-color !default;
 
 // dialog
 $dialog-width: 296px;
@@ -374,3 +400,9 @@ $tabs-vertical-tab-line-color: linear-gradient(
 $tabs-vertical-titles-item-height: 40px !default;
 $tabs-vertical-titles-item-active-line-height: 14px !default;
 $tabs-vertical-titles-width: 100px !default;
+
+// circleProgress
+$circleprogress-primary-color: $primary-color !default;
+$circleprogress-path-color: #e5e9f2 !default;
+$circleprogress-text-color: #000000 !default;
+$circleprogress-text-size: $font-size-3 !default;
