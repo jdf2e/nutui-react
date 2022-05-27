@@ -48,6 +48,7 @@ export interface BaseLang {
     uploading: string
     success: string
     error: string
+    deleteWord: string
   }
   countdown: {
     day: string

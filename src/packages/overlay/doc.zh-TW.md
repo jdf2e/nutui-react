@@ -1,19 +1,19 @@
-# Overlay 遮罩层
+# Overlay 遮罩層
 
-### 介绍
+### 介紹
 
-创建一个遮罩层，通常用于阻止用户进行其他操作
+創建一個遮罩層，通常用於阻止用戶進行其他操作
 
-### 安装
+### 安裝
 
 
 ``` ts
 import { OverLay } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 ```tsx
@@ -31,7 +31,7 @@ const App = () => {
   return (
     <>
       <Button type="primary" onClick={handleToggleShow}>
-        显示遮罩层
+        顯示遮罩層
       </Button>
       <Overlay visible={visible} onClick={onClose} />
     </>
@@ -75,11 +75,11 @@ const App = () => {
   return (
     <>
       <Button type="success" onClick={handleToggleShow2}>
-        嵌套内容
+        嵌套內容
       </Button>
       <Overlay visible={visible2} onClick={onClose2}>
         <div className="wrapper" style={WrapperStyle}>
-          <div className="content" style={ContentStyle}>这里是正文</div>
+          <div className="content" style={ContentStyle}>這裡是正文</div>
         </div>
       </Overlay>
     </>
@@ -93,18 +93,18 @@ export default App;
 
 ### Props
 
-| 参数                   | 说明             | 类型           | 默认值 |
+| 參數                   | 說明             | 類型           | 預設值 |
 | ---------------------- | ---------------- | -------------- | ------ |
-| visible                   | 当前组件是否显示 | Boolean        | `false`  |
-| zIndex                | 遮罩层级         | Number | 2000   |
-| duration               | 动画时长，单位秒 | Number | 0.3    |
-| overlayClass          | 自定义遮罩类名   | String         | -      |
-| overlayStyle          | 自定义遮罩样式   | CSSProperties  | -      |
-| lockScroll          | 背景是否锁定   | Boolean  | `false`     |
-| closeOnClickOverlay | 是否点击遮罩关闭 | Boolean        | `true`   |
+| visible                   | 當前元件是否顯示 | Boolean        | `false`  |
+| zIndex                | 遮罩層級         | Number | 2000   |
+| duration               | 動畫時長，單位秒 | Number | 0.3    |
+| overlayClass          | 自定義遮罩類名   | String         | -      |
+| overlayStyle          | 自定義遮罩樣式   | CSSProperties  | -      |
+| lockScroll          | 背景是否鎖定   | Boolean  | `false`     |
+| closeOnClickOverlay | 是否點擊遮罩關閉 | Boolean        | `true`   |
 
 ### Events
 
-| 事件名 | 说明       | 回调参数     |
+| 事件名 | 說明       | 回調參數     |
 | ------ | ---------- | ------------ |
-| onClick  | 点击时触发 | event: Event |
+| onClick  | 點擊時觸發 | event: Event |

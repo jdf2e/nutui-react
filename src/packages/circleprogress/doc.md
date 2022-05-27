@@ -1,4 +1,4 @@
-# CricleProgress 进度条
+# CircleProgress 进度条
 
 ### 介绍
 
@@ -7,7 +7,7 @@
 ### 安装
 
 ``` ts
-import { CirecleProgress } from '@nutui/nutui-react';
+import { CircleProgress } from '@nutui/nutui-react';
 ```
 
 ## 代码演示

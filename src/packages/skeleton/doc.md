@@ -1,4 +1,4 @@
-#  Skeleton组件
+#  Skeleton 骨架屏组件
 
 ### 介绍
 
