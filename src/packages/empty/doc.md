@@ -28,6 +28,21 @@ export default App;
 ```
 :::
 
+### 自定义内容大小
+:::demo
+```tsx
+import  React from "react";
+import { Empty } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Empty description="无数据" imageSize={100}></Empty>
+  );
+};
+export default App;
+```
+:::
+
 ### 图片类型，内置 3 个
 :::demo
 ```tsx
@@ -90,7 +105,7 @@ export default App;
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | image         | 图片类型，可选值为 error network search，支持传入图片 URL              | ReactNode       |
-| image-size        | 图片大小，Number 类型单位为 px                         | Number \| String | -       |
+| imageSize        | 图片大小，Number 类型单位为 px                         | Number \| String | -       |
 | description         | 图片下方的描述文字 | ReactNode | 无内容                |
 
 

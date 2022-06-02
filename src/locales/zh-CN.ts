@@ -16,9 +16,17 @@ const zhCN: BaseLang = {
     activeText: '收起导航',
     unActiveText: '快速导航',
   },
+  infiniteloading: {
+    pullRefreshText: '松开刷新',
+    loadText: '加载中……',
+    loadMoreText: '哎呀，这里是底部了啦',
+  },
   pagination: {
     prev: '上一页',
     next: '下一页',
+  },
+  range: {
+    rangeText: '不在该区间内',
   },
   calendaritem: {
     weekdays: ['日', '一', '二', '三', '四', '五', '六'],
@@ -27,6 +35,8 @@ const zhCN: BaseLang = {
     title: '日历选择',
     monthTitle: (year: number, month: number) => `${year}年${month}月`,
     today: '今天',
+    loadPreviousMonth: '加载上一个月',
+    noEarlierMonth: '没有更早月份',
   },
   shortpassword: {
     title: '请输入密码',
@@ -37,9 +47,10 @@ const zhCN: BaseLang = {
     ready: '准备完成',
     readyUpload: '准备上传',
     waitingUpload: '等待上传',
-    uploading: '上传中',
+    uploading: '上传中...',
     success: '上传成功',
     error: '上传失败',
+    deleteWord: '用户阻止了删除！',
   },
   countdown: {
     day: '天',
@@ -74,6 +85,11 @@ const zhCN: BaseLang = {
   },
   addresslist: {
     addAddress: '新建地址',
+  },
+  comment: {
+    complaintsText: '我要投诉',
+    additionalReview: (day: number) => `购买${day}天后追评`,
+    additionalImages: (length: number) => `${length}张追评图片`,
   },
 }
 export default zhCN

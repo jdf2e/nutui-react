@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useEffect, useState, useRef, CSSProperties } from 'react'
-
 import bem from '@/utils/bem'
 import { useTouch } from '../../utils/useTouch'
 import { useRect } from '../../utils/useRect'
 import Toast from '@/packages/toast'
+import { useConfig } from '@/packages/configprovider'
 
 type SliderValue = number | number[]
 export interface RangeProps {
@@ -40,6 +40,7 @@ let currentValue: any
 
 export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes<HTMLDivElement>> =
   (props) => {
+    const { locale } = useConfig()
     const {
       className,
       range,
@@ -70,7 +71,7 @@ export const Range: FunctionComponent<Partial<RangeProps> & React.HTMLAttributes
       if (modelValue) {
         if (!range && (modelValue < min || modelValue > max)) {
           SetInitValue(0)
-          Toast.text(`${modelValue}不在该区间内`)
+          Toast.text(`${modelValue} ${locale.range.rangeText}`)
           return
         }
         SetInitValue(modelValue)

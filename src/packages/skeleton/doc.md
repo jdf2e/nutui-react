@@ -1,4 +1,4 @@
-#  Skeleton组件
+#  Skeleton 骨架屏组件
 
 ### 介绍
 
@@ -22,7 +22,7 @@ import { Skeleton } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Skeleton width={250} height={15} animated />
+      <Skeleton width="250px" height="15px" animated />
     </>
   )
 }
@@ -40,7 +40,7 @@ import { Skeleton } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Skeleton width={250} height={15} row={3} title animated />
+      <Skeleton width="250px" height="15px" row={3} title animated />
     </>
   )
 }
@@ -58,7 +58,7 @@ import { Skeleton } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Skeleton width={250} height={15} row={3} title animated avatar />
+      <Skeleton width="250px" height="15px" row={3} title animated avatar avatarSize="100px" />
     </>
   )
 }
@@ -76,7 +76,7 @@ import { Skeleton } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Skeleton width={250} height={15} animated round />
+      <Skeleton width="250px" height="15px" animated round />
     </>
   )
 }
@@ -124,7 +124,7 @@ const App = () => {
     <>
       <div className="content">
         <Switch size="15px" change={(value, event) => changeStatus(value, event)} className={NutSwitchStyle} />
-        <Skeleton width={250} height={15} title animated avatar row={3} loading={checked}>
+        <Skeleton width="250px" height="15px" title animated avatar row={3} loading={checked}>
           <div className="container" style={{ display: 'flex' }}>
             <Avatar
               size="50"
@@ -155,13 +155,13 @@ export default App;
 
 | 字段       | 说明                                             | 类型    | 默认值    |
 |------------|-------------------------------------------------|---------|----------|
-| loading    | 是否显示骨架屏                                    | Boolean | `false`    | 
-| width       | 每行宽度                                        | Number  | 100 |
-| height      | 每行高度                                        | Number  | 100   |
+| loading    | 是否显示骨架屏(true不显示骨架屏，false显示骨架屏)                                    | Boolean | `true`    | 
+| width       | 每行宽度(px单位)                                       | String  | `100px` |
+| height      | 每行高度(px单位)                                        | String  | `100px`   |
 | animated    | 是否开启骨架屏动画                                | Boolean  | `false`  |
 | avatar      | 是否显示头像                                     | Boolean | `false`   |
 | avatarShape      | 头像形状：正方形/圆形                        | String | `round`   |
 | avatarSize       | 头像大小                                   | String | `50px`    |
 | round  | 标题/段落是否采用圆角风格                                | Boolean | `false`  |
-| row    | 设置段落行数                                           | Number | 1       |
-| title  | 是否显示段落标题                                        | Boolean | `false`   |
+| row    | 设置段落行数                                           | String | `1`       |
+| title  | 是否显示段落标题                                        | Boolean | `true`   |

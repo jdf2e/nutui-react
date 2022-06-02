@@ -568,6 +568,17 @@
           "author": "junjun"
         },
         {
+          "version": "1.0.0",
+          "name": "AvatarGroup",
+          "type": "component",
+          "cName": "头像组合子组件",
+          "desc": "头像组合子组件",
+          "sort": 18,
+          "show": false,
+          "exportEmpty": true,
+          "author": "swag~jun"
+        },
+        {
           "version": "0.1.0",
           "name": "Price",
           "type": "component",
@@ -659,16 +670,6 @@
         },
         {
           "version": "1.0.0",
-          "name": "ConfigProvider",
-          "type": "component",
-          "cName": "全局配置组件",
-          "desc": "可以配置多语言等全局属性",
-          "sort": 16,
-          "show": true,
-          "author": "hanyuxinting"
-        },
-        {
-          "version": "1.0.0",
           "name": "Empty",
           "type": "component",
           "cName": "空状态",
@@ -676,6 +677,17 @@
           "sort": 16,
           "show": true,
           "author": "liukun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "ConfigProvider",
+          "type": "component",
+          "cName": "全局配置组件",
+          "desc": "可以配置多语言等全局属性",
+          "sort": 16,
+          "show": false,
+          "exportEmpty": true,
+          "author": "hanyuxinting"
         }
       ]
     },

@@ -1,4 +1,5 @@
 .content {
+  margin-bottom: 20px;
   .nut-switch {
     display: flex;
     margin: 0 16px 8px 0;
@@ -20,5 +21,12 @@
         color: rgba(154, 155, 157, 1);
       }
     }
+  }
+}
+.pic-compose {
+  display: flex;
+  justify-content: space-between;
+  .item {
+    width: 47%;
   }
 }

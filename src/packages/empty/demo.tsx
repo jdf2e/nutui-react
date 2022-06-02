@@ -15,6 +15,10 @@ const EmptyDemo = () => {
         <div className="show">
           <Empty description="无数据"></Empty>
         </div>
+        <h2>自定义内容大小</h2>
+        <div className="show">
+          <Empty description="无数据" imageSize={100}></Empty>
+        </div>
         <h2>图片类型，内置3个</h2>
         <div className="show">
           <Tabs

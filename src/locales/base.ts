@@ -14,9 +14,17 @@ export interface BaseLang {
     activeText: string
     unActiveText: string
   }
+  infiniteloading: {
+    pullRefreshText: string
+    loadText: string
+    loadMoreText: string
+  }
   pagination: {
     prev: string
     next: string
+  }
+  range: {
+    rangeText: string
   }
   calendaritem: {
     weekdays: Array<string>
@@ -25,6 +33,8 @@ export interface BaseLang {
     title: string
     monthTitle: Function
     today: string
+    loadPreviousMonth: string
+    noEarlierMonth: string
   }
   shortpassword: {
     title: string
@@ -38,6 +48,7 @@ export interface BaseLang {
     uploading: string
     success: string
     error: string
+    deleteWord: string
   }
   countdown: {
     day: string
@@ -72,5 +83,10 @@ export interface BaseLang {
   }
   addresslist: {
     addAddress: string
+  }
+  comment: {
+    complaintsText: string
+    additionalReview: Function
+    additionalImages: Function
   }
 }

@@ -15,10 +15,16 @@ const zhTW: BaseLang = {
     activeText: '收起導航',
     unActiveText: '快速導航',
   },
+  infiniteloading: {
+    pullRefreshText: '鬆開刷新',
+    loadText: '加載中……',
+    loadMoreText: '哎呀，這裡是底部了啦',
+  },
   pagination: {
     prev: '上一頁',
     next: '下一頁',
   },
+  range: { rangeText: '不在該區間內' },
   calendaritem: {
     weekdays: ['日', '一', '二', '三', '四', '五', '六'],
     end: '結束',
@@ -26,6 +32,8 @@ const zhTW: BaseLang = {
     title: '行事曆選擇',
     monthTitle: (year: number, month: number) => `${year}年${month}月`,
     today: '今天',
+    loadPreviousMonth: '加載上一個月',
+    noEarlierMonth: '沒有更早月份',
   },
   shortpassword: {
     title: '請輸入密碼',
@@ -36,9 +44,10 @@ const zhTW: BaseLang = {
     ready: '準備完成',
     readyUpload: '準備上傳',
     waitingUpload: '等待上傳',
-    uploading: '上傳中',
+    uploading: '上傳中...',
     success: '上傳成功',
     error: '上傳失敗',
+    deleteWord: '使用者阻止了刪除！',
   },
   countdown: {
     day: '天',
@@ -73,6 +82,11 @@ const zhTW: BaseLang = {
   },
   addresslist: {
     addAddress: '新建地址',
+  },
+  comment: {
+    complaintsText: '我要投訴',
+    additionalReview: (day: number) => `購買${day}天後追評`,
+    additionalImages: (length: number) => `${length}張追評圖片`,
   },
 }
 export default zhTW

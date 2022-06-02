@@ -1,5 +1,4 @@
 import React, { FunctionComponent, createContext, useContext } from 'react'
-import './configprovider.scss'
 import { BaseLang } from '@/locales/base'
 import zhCN from '@/locales/zh-CN'
 

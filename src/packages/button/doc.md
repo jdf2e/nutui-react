@@ -49,8 +49,8 @@ import { Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-<Button plain type="primary">朴素按钮</Button>
-<Button plain type="info">朴素按钮</Button>
+      <Button plain type="primary">朴素按钮</Button>
+      <Button plain type="info">朴素按钮</Button>
     </>
   );
 };
@@ -69,9 +69,9 @@ import { Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-<Button disabled type="primary">禁用状态</Button>
-<Button plain disabled type="info">禁用状态</Button>
-<Button plain disabled type="primary">禁用状态</Button>
+      <Button disabled type="primary">禁用状态</Button>
+      <Button plain disabled type="info">禁用状态</Button>
+      <Button plain disabled type="primary">禁用状态</Button>
     </>
   );
 };
@@ -91,8 +91,8 @@ import { Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-<Button shape="square" type="primary">方形按钮</Button>
-<Button type="info">圆形按钮</Button>
+      <Button shape="square" type="primary">方形按钮</Button>
+      <Button type="info">圆形按钮</Button>
     </>
   );
 };
@@ -111,21 +111,21 @@ const App = () => {
   const [loading,setLoading] = useState(false)
   return (
     <>
-<Button loading type="info" />
-<Button loading type="warning">加载中...</Button>
-<Button
-      loading={loading}
-      type="success"
-      onClick={() => {
-        setTimeout(() => {
-          setLoading(false)
-        }, 1500),
-          setLoading(!loading)
-      }}
-      style={{ margin: 8 }}
-    >
-      Click me!
-</Button>
+      <Button loading type="info" />
+      <Button loading type="warning">加载中...</Button>
+      <Button
+            loading={loading}
+            type="success"
+            onClick={() => {
+              setTimeout(() => {
+                setLoading(false)
+              }, 1500),
+                setLoading(!loading)
+            }}
+            style={{ margin: 8 }}
+          >
+            Click me!
+      </Button>
     </>
   );
 };
@@ -142,8 +142,8 @@ import { Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-  <Button shape="square" plain type="primary" icon="star-fill" />
-  <Button shape="square" type="primary" icon="star">收藏</Button>
+      <Button shape="square" plain type="primary" icon="star-fill" />
+      <Button shape="square" type="primary" icon="star">收藏</Button>
     </>
   );
 };
@@ -162,9 +162,9 @@ import { Button } from '@nutui/nutui-react';
 const App = () => { 
   return (
     <>
-<Button size="large" type="primary">大号按钮</Button>
-<Button type="primary">普通按钮</Button>
-<Button size="small" type="primary">小型按钮</Button>
+      <Button size="large" type="primary">大号按钮</Button>
+      <Button type="primary">普通按钮</Button>
+      <Button size="small" type="primary">小型按钮</Button>
     </>
   );
 };
@@ -184,7 +184,7 @@ import { Button } from '@nutui/nutui-react';
 const App = () => { 
   return (
     <>
-<Button block type="primary">块级元素</Button>
+      <Button block type="primary">块级元素</Button>
     </>
   );
 };
@@ -203,11 +203,11 @@ import { Button } from '@nutui/nutui-react';
 const App = () => { 
   return (
     <>
-<Button color="#7232dd">单色按钮</Button>
-<Button color="#7232dd" plain>单色按钮</Button>
-<Button color="linear-gradient(to right, #ff6034, #ee0a24)">
-  渐变色按钮
-</Button>
+      <Button color="#7232dd">单色按钮</Button>
+      <Button color="#7232dd" plain>单色按钮</Button>
+      <Button color="linear-gradient(to right, #ff6034, #ee0a24)">
+        渐变色按钮
+      </Button>
     </>
   );
 };

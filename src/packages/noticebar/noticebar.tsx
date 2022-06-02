@@ -178,7 +178,7 @@ export const NoticeBar: FunctionComponent<
   }
 
   /**
-   * 利益点滚动方式一
+   * 滚动方式一
    */
   const startRollEasy = () => {
     showhorseLamp()
