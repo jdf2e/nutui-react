@@ -15,56 +15,87 @@ import { Empty } from '@nutui/nutui-react'
 
 ### 基础用法
 :::demo
-```html
-<template>
+```tsx
+import  React from "react";
+import { Empty } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
     <Empty description="无数据"></Empty>
-</template>
+  );
+};
+export default App;
 ```
 :::
 
 ### 自定义内容大小
 :::demo
-```html
-<template>
+```tsx
+import  React from "react";
+import { Empty } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
     <Empty description="无数据" imageSize={100}></Empty>
-</template>
+  );
+};
+export default App;
 ```
 :::
 
 ### 图片类型，内置 3 个
 :::demo
-```html
-<template>
+```tsx
+import  React from "react";
+import { Empty } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
     <Empty image="empty" description="无内容"></Empty>
     <Empty image="error" description="加载失败/错误"></Empty>
     <Empty image="network" description="无网络"></Empty>
-</template>
+  );
+};
+export default App;
 ```
 :::
 
 ### 自定义图片
 :::demo
-```html
-<template>
+```tsx
+import  React from "react";
+import { Empty } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
     <Empty
       description="无优惠券" 
       image={<img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" />}
     >
     </Empty>
-</template>
+  );
+};
+export default App;
 ```
 :::
 
+
 ### 底部内容
 :::demo
-```html
-<template>
+```tsx
+import  React from "react";
+import { Empty } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
     <Empty image="error" description="加载失败">
         <div style="margin-top: 10px">
             <nut-button icon="refresh" type="primary">重试</nut-button>
         </div>
     </Empty>
-</template>
+  );
+};
+export default App;
 ```
 :::
 ## API
