@@ -4,6 +4,7 @@ import Popup from '@/packages/popup'
 import bem from '@/utils/bem'
 import { ExistRender } from './existRender'
 import { CustomRender } from './customRender'
+import { useConfig } from '@/packages/configprovider'
 
 export interface RegionData {
   name?: string
@@ -80,6 +81,7 @@ const defaultProps = {
 export const Address: FunctionComponent<
   Partial<AddressProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
+  const { locale } = useConfig()
   const {
     modelValue,
     children,
@@ -110,7 +112,7 @@ export const Address: FunctionComponent<
   const b = bem('address')
 
   const [privateType, setPrivateType] = useState<string>(type)
-  const [tabName, setTabName] = useState<string[]>(['province', 'city', 'country', 'town'])
+  const [tabName] = useState<string[]>(['province', 'city', 'country', 'town'])
   const [showPopup, setShowPopup] = useState(modelValue)
   const [selectedRegion, setSelectedRegion] = useState({
     province: { name: '' },
@@ -220,7 +222,9 @@ export const Address: FunctionComponent<
         </div>
 
         <div className={b('header__title')}>
-          {privateType === 'custom' ? customAddressTitle : existAddressTitle}
+          {privateType === 'custom'
+            ? locale.address.selectRegion || customAddressTitle
+            : locale.address.deliveryTo || existAddressTitle}
         </div>
 
         <div onClick={() => handClose()}>
@@ -274,7 +278,7 @@ export const Address: FunctionComponent<
                 selectedIcon={selectedIcon}
                 defaultIcon={defaultIcon}
                 isShowCustomAddress={isShowCustomAddress}
-                customAndExistTitle={customAndExistTitle}
+                customAndExistTitle={locale.address.chooseAnotherAddress || customAndExistTitle}
                 onSelected={selectedExist}
                 onSwitchModule={onSwitchModule}
               />

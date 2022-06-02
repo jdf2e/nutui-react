@@ -1,5 +1,6 @@
 import React, { FunctionComponent, CSSProperties, useState, useRef, useEffect } from 'react'
 import bem from '@/utils/bem'
+import { useConfig } from '@/packages/configprovider'
 
 export interface CountDownProps {
   className?: string
@@ -26,6 +27,7 @@ const defaultProps = {
 export const CountDown: FunctionComponent<
   Partial<CountDownProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const { locale } = useConfig()
   const {
     showPlainText,
     showDays,
@@ -114,11 +116,11 @@ export const CountDown: FunctionComponent<
     return new Date(t).getTime()
   }
 
-  // 展示文案
+  // 展示文案，English todo @hanyuxinting
   const plainText = (() => {
     const { d, h, m, s } = resttime
-    const showDayshours = Number(d) > 0 && showDays ? `${d}天${h}` : h
-    return `${showDayshours}小时${m}分${s}秒`
+    const showDayshours = Number(d) > 0 && showDays ? `${d}${locale.countdown.day}${h}` : h
+    return `${showDayshours}${locale.countdown.hour}${m}${locale.countdown.minute}${s}${locale.countdown.second}`
   })()
 
   // 初始化
@@ -196,7 +198,7 @@ export const CountDown: FunctionComponent<
               {Number(resttime.d) >= 0 && showDays ? (
                 <>
                   <div className={b('block')}>{resttime.d}</div>
-                  <div className={b('dot')}>天</div>
+                  <div className={b('dot')}>{locale.countdown.day || ':'}</div>
                 </>
               ) : null}
               <div className={b('block')}>{resttime.h}</div>

@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
@@ -7,6 +8,7 @@ export interface TabbarItemProps {
   tabTitle: string
   icon: string
   href: string
+  to: object | string
   num: string | number
   active: boolean
   activeColor: string
@@ -18,6 +20,7 @@ const defaultProps = {
   tabTitle: '',
   icon: '',
   href: '',
+  to: '',
   num: '',
   active: false,
   activeColor: '',
@@ -27,16 +30,22 @@ const defaultProps = {
 } as TabbarItemProps
 
 export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (props) => {
-  const { tabTitle, icon, href, num, active, activeColor, unactiveColor, index, handleClick } = {
-    ...defaultProps,
-    ...props,
-  }
+  const { tabTitle, icon, href, to, num, active, activeColor, unactiveColor, index, handleClick } =
+    {
+      ...defaultProps,
+      ...props,
+    }
   const b = bem('tabbar-item')
   const bIcon = bem('tabbar-item__icon-box')
+  const history = useHistory()
 
   useEffect(() => {
     if (active && href) {
       window.location.href = href
+      return
+    }
+    if (active && to) {
+      history.push(to)
     }
   }, [active])
 

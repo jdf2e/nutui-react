@@ -18,7 +18,6 @@ package-lock.json
 /tsc/test
 /site_docs
 /coverage
-**/__test__/__snapshots__/
 
 # local env files
 .env.local

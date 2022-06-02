@@ -3,6 +3,7 @@ import React, { CSSProperties, FunctionComponent, useEffect, useState } from 're
 import bem from '@/utils/bem'
 import { formatNumber } from './util'
 import Icon from '@/packages/icon'
+import { useConfig } from '@/packages/configprovider'
 
 export interface InputProps {
   type: string
@@ -37,6 +38,7 @@ const defaultProps = {
 
 export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes<HTMLDivElement>> =
   (props) => {
+    const { locale } = useConfig()
     const {
       type,
       defaultValue,
@@ -118,7 +120,7 @@ export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes
         <input
           className="input-text"
           type={type}
-          placeholder={placeholder}
+          placeholder={locale.placeholder || placeholder}
           disabled={disabled}
           readOnly={readonly}
           value={inputValue}

@@ -9,6 +9,7 @@ export interface StepsProps {
   progressDot: boolean
   className: string
   style: React.CSSProperties
+  clickStep: (index: number) => void
 }
 const defaultProps = {
   current: 0,
@@ -19,7 +20,8 @@ const defaultProps = {
 export const Steps: FunctionComponent<Partial<StepsProps> & React.HTMLAttributes<HTMLDivElement>> =
   (props) => {
     const propSteps = { ...defaultProps, ...props }
-    const { children, direction, className, ...restProps } = propSteps
+    const { children, current, direction, className, progressDot, clickStep, ...restProps } =
+      propSteps
 
     const parentSteps = {
       propSteps,
