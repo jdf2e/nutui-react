@@ -58,14 +58,14 @@ function notice(opts: any) {
       messageInstance = null
     }
   }
-  opts = { ...options, ...opts, onClose: close }
-  getInstance(opts, (notification: any) => {
+  const opts2 = { ...options, ...opts, onClose: close }
+  getInstance(opts2, (notification: any) => {
     messageInstance = notification
   })
 }
 const errorMsg = (msg: any) => {
   if (!msg) {
-    console.warn('[NutUI Toast]: msg不能为空')
+    console.warn('[NutUI Toast]: msg cannot be null')
   }
 }
 

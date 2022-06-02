@@ -9,8 +9,8 @@ interface DialogWrapProps {
   mask?: boolean
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
-  onCancel?: Function
-  onClosed?: Function
+  onCancel?: () => void
+  onClosed?: () => void
 }
 
 export const DialogWrap: FunctionComponent<

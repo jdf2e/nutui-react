@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`content test 1`] = `
+<div>
+  <div
+    class="overlay-fade-enter-active nut-overlay"
+    style="z-index: 2000; animation-duration: 0.3s;"
+  >
+    <div
+      class="wrapper"
+    >
+      <div
+        class="content"
+      >
+        这里是正文
+      </div>
+    </div>
+  </div>
+</div>
+`;

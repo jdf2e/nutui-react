@@ -52,8 +52,8 @@ export const Card: FunctionComponent<Partial<CardProps> & React.HTMLAttributes<H
         <div className={b('right__title')}>{title}</div>
         {prolistTpl}
         <div className={b('right__price')}>
-          <Price price={price}></Price>
-          {originTpl || <Price className={b('right__price__origin')} price={vipPrice}></Price>}
+          <Price price={price} />
+          {originTpl || <Price className={b('right__price__origin')} price={vipPrice} />}
         </div>
         <div className={b('right__other')}>
           {shopTagTpl || (

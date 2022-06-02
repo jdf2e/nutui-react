@@ -16,22 +16,17 @@ export interface NotificationProps {
   customClass: string
   size: string | number
   textAlignCenter: boolean
-  loadingRotate: boolean
+  // loadingRotate: boolean
   bgColor: string
   cover: boolean
   coverColor: string
   closeOnClickOverlay: boolean
   onClose: () => void
-  className?: string
+  // className?: string
 }
 
-interface State {
-  show: boolean
-}
-
-export default class Notification extends React.PureComponent<NotificationProps, State> {
+export default class Notification extends React.PureComponent<NotificationProps> {
   private closeTimer: number | undefined
-
   static newInstance: (properties: NotificationProps, callback: any) => void
 
   constructor(props: NotificationProps) {
@@ -41,15 +36,9 @@ export default class Notification extends React.PureComponent<NotificationProps,
     this.clearCloseTimer = this.clearCloseTimer.bind(this)
     this.close = this.close.bind(this)
     this.clickCover = this.clickCover.bind(this)
-    this.state = {
-      show: true,
-    }
   }
 
   close() {
-    this.setState({
-      show: false,
-    })
     this.clearCloseTimer()
     this.props.onClose()
   }
@@ -100,7 +89,6 @@ export default class Notification extends React.PureComponent<NotificationProps,
       cover,
       type,
     } = this.props
-    const { show } = this.state
     const toastBem = bem('toast')
 
     const classes = classNames({
@@ -132,7 +120,6 @@ export default class Notification extends React.PureComponent<NotificationProps,
                 <Icon name={icon || ''} size="20" />
               </p>
             ) : null}
-
             <span className={toastBem('text')}>{msg}</span>
           </div>
         </div>

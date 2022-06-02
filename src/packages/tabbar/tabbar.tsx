@@ -13,6 +13,7 @@ export interface TabbarProps {
   style: React.CSSProperties
   tabSwitch: (child: React.ReactElement<any>, active: number) => void
 }
+
 const defaultProps = {
   visible: 0,
   bottom: false,
@@ -61,5 +62,6 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
     </div>
   )
 }
+
 Tabbar.defaultProps = defaultProps
 Tabbar.displayName = 'NutTabbar'

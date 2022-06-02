@@ -4,6 +4,7 @@ import Popup from '@/packages/popup'
 import bem from '@/utils/bem'
 import { ExistRender } from './existRender'
 import { CustomRender } from './customRender'
+import { useConfig } from '@/packages/configprovider'
 
 export interface RegionData {
   name?: string
@@ -80,6 +81,7 @@ const defaultProps = {
 export const Address: FunctionComponent<
   Partial<AddressProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
+  const { locale } = useConfig()
   const {
     modelValue,
     children,
@@ -110,7 +112,7 @@ export const Address: FunctionComponent<
   const b = bem('address')
 
   const [privateType, setPrivateType] = useState<string>(type)
-  const [tabName, setTabName] = useState<string[]>(['province', 'city', 'country', 'town'])
+  const [tabName] = useState<string[]>(['province', 'city', 'country', 'town'])
   const [showPopup, setShowPopup] = useState(modelValue)
   const [selectedRegion, setSelectedRegion] = useState({
     province: { name: '' },
@@ -121,18 +123,12 @@ export const Address: FunctionComponent<
 
   const [selectedExistAddress, setSelectedExistAddress] = useState({}) // 当前选择的地址
 
-  const [closeWay, setCloseWay] = useState('self')
-
   // 手动关闭 点击叉号(cross)，或者蒙层(mask)
-  const handClose = (type = 'self') => {
-    setCloseWay(() => (type === 'cross' ? 'cross' : 'self'))
-
+  const handClose = () => {
     setShowPopup(false)
   }
   // 点击遮罩层关闭
   const clickOverlay = () => {
-    setCloseWay('mask')
-
     closeMask && closeMask({ closeWay: 'mask' })
   }
   // 切换下一级列表
@@ -159,9 +155,7 @@ export const Address: FunctionComponent<
   ) => {
     console.log(prevExistAdd, item, copyExistAdd)
     setSelectedExistAddress(item)
-
     onSelected && onSelected(prevExistAdd, item, copyExistAdd)
-
     handClose()
   }
   // 初始化
@@ -228,10 +222,12 @@ export const Address: FunctionComponent<
         </div>
 
         <div className={b('header__title')}>
-          {privateType === 'custom' ? customAddressTitle : existAddressTitle}
+          {privateType === 'custom'
+            ? locale.address.selectRegion || customAddressTitle
+            : locale.address.deliveryTo || existAddressTitle}
         </div>
 
-        <div onClick={() => handClose('cross')}>
+        <div onClick={() => handClose()}>
           {closeBtnIcon && <Icon name={closeBtnIcon} color="#cccccc" size="18px" />}
         </div>
       </div>
@@ -255,9 +251,6 @@ export const Address: FunctionComponent<
           visible={showPopup}
           position="bottom"
           onClickOverlay={clickOverlay}
-          onOpen={() => {
-            setCloseWay('self')
-          }}
           onClose={() => {
             closeFun()
           }}
@@ -285,7 +278,7 @@ export const Address: FunctionComponent<
                 selectedIcon={selectedIcon}
                 defaultIcon={defaultIcon}
                 isShowCustomAddress={isShowCustomAddress}
-                customAndExistTitle={customAndExistTitle}
+                customAndExistTitle={locale.address.chooseAnotherAddress || customAndExistTitle}
                 onSelected={selectedExist}
                 onSwitchModule={onSwitchModule}
               />

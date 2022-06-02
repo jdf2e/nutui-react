@@ -28,7 +28,7 @@ interface SwiperProps {
 }
 
 const defaultProps = {
-  width: window.innerWidth,
+  width: typeof window === 'object' ? window.innerWidth : 375,
   height: 0,
   duration: 500,
   initPage: 0,
@@ -79,9 +79,7 @@ export const Swiper = React.forwardRef<
     offset: 0,
     size: 0,
   })
-
   const childsRefs: any = []
-
   const isVertical = direction === 'vertical'
 
   const [rect, setRect] = useState(null as DOMRect | null)

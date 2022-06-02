@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
+import { useConfig } from '@/packages/configprovider'
 
 export interface InfiniteloadingProps {
   hasMore: boolean
@@ -42,6 +43,7 @@ const defaultProps = {
 export const Infiniteloading: FunctionComponent<
   Partial<InfiniteloadingProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const { locale } = useConfig()
   const {
     children,
     hasMore,
@@ -228,7 +230,7 @@ export const Infiniteloading: FunctionComponent<
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="top-box">
           <Icon className="top-img" name={pullIcon} />
-          <span className="top-text">{pullTxt}</span>
+          <span className="top-text">{locale.infiniteloading.pullRefreshText || pullTxt}</span>
         </div>
       </div>
       <div className="nut-infinite-container">{children}</div>
@@ -236,10 +238,12 @@ export const Infiniteloading: FunctionComponent<
         {isInfiniting ? (
           <div className="bottom-box">
             <Icon className="bottom-img" name={loadIcon} />
-            <div className="bottom-text">{loadTxt}</div>
+            <div className="bottom-text">{locale.infiniteloading.loadText || loadTxt}</div>
           </div>
         ) : (
-          !hasMore && <div className="tips">{loadMoreTxt}</div>
+          !hasMore && (
+            <div className="tips">{locale.infiniteloading.loadMoreText || loadMoreTxt}</div>
+          )
         )}
       </div>
     </div>

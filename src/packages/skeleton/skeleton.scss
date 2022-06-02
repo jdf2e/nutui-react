@@ -16,13 +16,11 @@
       height: 100%;
       background: rgb(239, 239, 239);
       margin-top: 10px;
-    }
-
-    .skeleton-lines {
       &:last-child {
         width: 70% !important;
       }
     }
+
     .blockClass--round {
       border-radius: 10px;
     }

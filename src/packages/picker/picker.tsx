@@ -8,6 +8,7 @@ import React, {
 } from 'react'
 import Popup from '@/packages/popup'
 import PickerSlot from './pickerSlot'
+import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 
 interface IPickerProps {
@@ -33,6 +34,7 @@ interface IResValue {
   value: string
 }
 const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> = (props, ref) => {
+  const { locale } = useConfig()
   const {
     isVisible,
     title,
@@ -134,11 +136,11 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
       <div className={`${b()} ${className || ''}`} style={style} {...rest}>
         <div className={b('control')}>
           <span className={b('cancel-btn')} onClick={() => closeActionSheet()}>
-            取消
+            {locale.cancel}
           </span>
           <div className={b('title')}>{title || ''}</div>
           <span className={b('confirm-btn')} onClick={() => confirm()}>
-            确定
+            {locale.confirm}
           </span>
         </div>
         <div className={b('panel')} ref={pickerRef}>

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState, CSSProperties } from 'react'
+import React, { FunctionComponent, useEffect, useState, CSSProperties, useRef } from 'react'
 
 import Icon from '@/packages/icon'
 
@@ -46,7 +46,7 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
   const [backTop, SetBackTop] = useState(false)
   const [scrollTop, SetScrollTop] = useState(0)
   let startTime = 0
-  let scrollEl: any = elId ? document.getElementById(elId) : (window as Window)
+  let scrollEl: any = useRef<any>(null)
   // 初始化
   useEffect(() => {
     init()
@@ -55,18 +55,18 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
 
   const init = () => {
     if (elId && document.getElementById(elId)) {
-      scrollEl = document.getElementById(elId) as HTMLElement | Window
+      scrollEl.current = document.getElementById(elId) as HTMLElement | Window
     }
     addEventListener()
     initCancelAniFrame()
   }
   const scrollListener = () => {
     let top: any = null
-    if (scrollEl instanceof Window) {
-      top = scrollEl.pageYOffset
+    if (scrollEl.current instanceof Window) {
+      top = scrollEl.current.pageYOffset
       SetScrollTop(top)
     } else {
-      top = scrollEl.scrollTop
+      top = scrollEl.current.scrollTop
       SetScrollTop(top)
     }
     const showBtn = top >= distance
@@ -75,10 +75,10 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
   }
 
   const scroll = (y = 0) => {
-    if (scrollEl instanceof Window) {
+    if (scrollEl.current instanceof Window) {
       window.scrollTo(0, y)
     } else {
-      scrollEl.scrollTop = y
+      scrollEl.current.scrollTop = y
     }
   }
 
@@ -110,13 +110,13 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
   }
   // 监听事件
   function addEventListener() {
-    scrollEl.addEventListener('scroll', scrollListener, false)
-    scrollEl.addEventListener('resize', scrollListener, false)
+    scrollEl.current?.addEventListener('scroll', scrollListener, false)
+    scrollEl.current?.addEventListener('resize', scrollListener, false)
   }
   // 移除监听事件
   function removeEventListener() {
-    scrollEl.removeEventListener('scroll', scrollListener, false)
-    scrollEl.removeEventListener('resize', scrollListener, false)
+    scrollEl.current?.removeEventListener('scroll', scrollListener, false)
+    scrollEl.current?.removeEventListener('resize', scrollListener, false)
   }
   // 返回顶部点击事件
   const goTop = (e: any) => {

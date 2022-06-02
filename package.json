@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -49,13 +49,17 @@
     "build:css": "npm run generate:themes && vite build --config vite.config.build.css.ts && npm run build:replace ",
     "build:replace": "npm run replace:scss",
     "build:es": "npx rollup -c rollup.config.es.js",
-    "build": "npm run checked && vite build --config vite.config.build.ts && npm run build:es && npm run build:css && npm run build:loader-style && npm run build:types ",
+    "build:locales": "vite build --config vite.config.build.locales.ts",
+    "build": "npm run checked && npm run test && vite build --config vite.config.build.ts && npm run build:es && npm run build:css && npm run build:loader-style && npm run build:types && npm run build:locales",
     "build:site": "npm run checked && vite build --config vite.config.build.site.ts",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "publish:beta": "npm publish --tag beta",
     "prepare": "husky install",
     "test": "jest"
+  },
+  "engines": {
+    "node": "^14.18.0 || >=15.0.0"
   },
   "lint-staged": {
     "*.md": "prettier --write",
@@ -65,7 +69,7 @@
     "@babel/runtime": "^7.16.5",
     "@bem-react/classname": "^1.5.10",
     "@react-spring/web": "^9.3.2",
-    "@use-gesture/react": "^10.2.4",
+    "@use-gesture/react": "10.2.9",
     "classnames": "^2.3.1",
     "react-router-dom": "^5.2.0",
     "react-transition-group": "^4.4.2"
@@ -85,6 +89,8 @@
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.1",
     "@rollup/plugin-typescript": "^8.3.0",
+    "@testing-library/jest-dom": "^5.16.3",
+    "@testing-library/react": "^12.1.5",
     "@types/jest": "^27.4.1",
     "@types/loadable__component": "^5.13.3",
     "@types/node": "^15.3.1",
@@ -137,6 +143,7 @@
     "typescript": "^4.1.2",
     "unist-util-visit": "^4.1.0",
     "vinyl-fs": "^3.0.3",
-    "vite": "^2.1.5"
+    "vite": "^2.1.5",
+    "vite-plugin-dts": "^1.1.1"
   }
 }

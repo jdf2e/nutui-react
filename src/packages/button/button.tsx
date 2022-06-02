@@ -8,7 +8,7 @@ export interface ButtonProps {
   plain: boolean
   loading: boolean
   disabled: boolean
-  style: object
+  style: React.CSSProperties
   type: ButtonType
   size: ButtonSize
   block: boolean
