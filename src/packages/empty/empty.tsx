@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useRef, useEffect, useState, ReactNode } from 'react'
-import './empty.scss'
 import bem from '@/utils/bem'
 
 type statusOptions = {
