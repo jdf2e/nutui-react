@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`prop title desc subtitle 1`] = `
+<div>
+  <div
+    class="nut-cell-group nutui-cell-group"
+  >
+    <div
+      class="nut-cell-group__title"
+    >
+      链接 | 分组用法
+    </div>
+    <div
+      class="nut-cell-group__wrap"
+    >
+      <div
+        class="nut-cell nut-cell--clickable "
+      >
+        <div
+          class="nut-cell__title"
+        >
+          链接
+        </div>
+        <i
+          class="nut-cell__link nut-icon nutui-iconfont nut-icon-right "
+        />
+      </div>
+      <div
+        class="nut-cell nut-cell--clickable "
+      >
+        <div
+          class="nut-cell__title"
+        >
+          URL 跳转
+        </div>
+        <div
+          class="nut-cell__desc"
+        >
+          https://jd.com
+        </div>
+        <i
+          class="nut-cell__link nut-icon nutui-iconfont nut-icon-right "
+        />
+      </div>
+      <div
+        class="nut-cell nut-cell--clickable "
+      >
+        <div
+          class="nut-cell__title"
+        >
+          路由跳转 ’/‘ 
+        </div>
+        <i
+          class="nut-cell__link nut-icon nutui-iconfont nut-icon-right "
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
