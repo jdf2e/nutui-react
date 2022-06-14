@@ -9,7 +9,7 @@ const TabbarDemo = () => {
         <h2>基础用法</h2>
         <Tabbar
           tabSwitch={(child, idx) => {
-            console.log(idx);
+            console.log(idx)
           }}
         >
           <TabbarItem tabTitle="首页" icon="home" />

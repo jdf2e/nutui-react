@@ -565,6 +565,7 @@
           "desc": "头像组合子组件",
           "sort": 18,
           "show": false,
+          "exportEmpty": true,
           "author": "swag~jun"
         },
         {
@@ -656,6 +657,16 @@
           "sort": 7,
           "show": true,
           "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Empty",
+          "type": "component",
+          "cName": "空状态",
+          "desc": "空状态时的占位提示",
+          "sort": 16,
+          "show": true,
+          "author": "liukun"
         },
         {
           "version": "1.0.0",

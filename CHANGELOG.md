@@ -1,3 +1,15 @@
+## v1.1.4
+`2022-05-23`
+
+* :zap: feat(upload): upload 组件上传失败时希望可以自定义是否显示图片(#114 ) @junjun666
+* :zap: feat(tabbar): tabbar 组件支持路由跳转,文档更新(#123 ) @allan2coder
+* :zap: feat(circleprogress): circleprogress 组件 strokeInnerWidth 属性重命名为 strokeWidth，移除 isAuto、progressOption 属性(#121 ) @junjun666
+* :zap: feat(avatar): avatar 组件 src 属性重命名为 url，增加 avatargroup 子组件(#121 ) @junjun666
+* :zap: feat(skeleton): skeleton 组件 width、height 属性的类型修改为 string(#121 ) @junjun666
+* :bug: fix(dialog): 修复 swiper 组件在 Next.js 环境下提示 window not defined 问题 @oasis-cloud
+* :bug: fix(backtop): 修复 backtop 组件在 Next.js 环境下提示 document not defined 的问题 @oasis-cloud
+* :zap: feat: NutUI-React 官网增加 issue 入口，以及组件文档更新。
+
 ## v1.1.3
 `2022-04-18`
 
