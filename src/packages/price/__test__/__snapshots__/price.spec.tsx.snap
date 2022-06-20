@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`props decimalDigits test 1`] = `
+<div>
+  <div
+    class="nut-price "
+  >
+    <div
+      class="nut-price__symbol"
+    >
+      ¥
+    </div>
+    <div
+      class="nut-price__big"
+    >
+      15213
+    </div>
+    <div
+      class="nut-price__point"
+    >
+      .
+    </div>
+    <div
+      class="nut-price__small"
+    >
+      122
+    </div>
+  </div>
+</div>
+`;
+
+exports[`props needSymbol and symbol test 1`] = `
+<div>
+  <div
+    class="nut-price "
+  >
+    <div
+      class="nut-price__symbol"
+    >
+      $
+    </div>
+    <div
+      class="nut-price__big"
+    >
+      10010
+    </div>
+    <div
+      class="nut-price__point"
+    >
+      .
+    </div>
+    <div
+      class="nut-price__small"
+    >
+      00
+    </div>
+  </div>
+</div>
+`;
+
+exports[`props test 1`] = `
+<div>
+  <div
+    class="nut-price "
+  >
+    <div
+      class="nut-price__big"
+    >
+      1,010
+    </div>
+    <div
+      class="nut-price__point"
+    >
+      .
+    </div>
+    <div
+      class="nut-price__small"
+    >
+      00
+    </div>
+  </div>
+</div>
+`;
+
+exports[`props thousands test 1`] = `
+<div>
+  <div
+    class="nut-price "
+  >
+    <div
+      class="nut-price__symbol"
+    >
+      $
+    </div>
+    <div
+      class="nut-price__big"
+    >
+      10010
+    </div>
+    <div
+      class="nut-price__point"
+    >
+      .
+    </div>
+    <div
+      class="nut-price__small"
+    >
+      01
+    </div>
+  </div>
+</div>
+`;

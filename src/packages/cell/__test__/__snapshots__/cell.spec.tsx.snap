@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`prop icon 1`] = `
+<div>
+  <div
+    class="nut-cell nut-cell--clickable "
+  >
+    <div
+      class="nut-cell__title nut-cell__title--icon"
+    >
+      <i
+        class="nut-cell__icon nut-icon nutui-iconfont nut-icon-my "
+      />
+      姓名
+    </div>
+    <div
+      class="nut-cell__desc"
+    >
+      张三
+    </div>
+    <i
+      class="nut-cell__link nut-icon nutui-iconfont nut-icon-right "
+    />
+  </div>
+</div>
+`;
+
+exports[`prop isLink 1`] = `
+<div>
+  <div
+    class="nut-cell nut-cell--clickable "
+  >
+    <div
+      class="nut-cell__title"
+    >
+      URL 跳转
+    </div>
+    <div
+      class="nut-cell__desc"
+    >
+      https://m.jd.com/
+    </div>
+    <i
+      class="nut-cell__link nut-icon nutui-iconfont nut-icon-right "
+    />
+  </div>
+</div>
+`;
+
+exports[`prop title desc subtitle 1`] = `
+<div
+  class="nut-cell "
+  data-testid="prop"
+>
+  <div
+    class="nut-cell__title"
+  >
+    <div
+      class="nut-cell__maintitle"
+    >
+      我是标题
+    </div>
+    <div
+      class="nut-cell__subtitle"
+    >
+      副标题描述
+    </div>
+  </div>
+  <div
+    class="nut-cell__desc"
+  >
+    描述文字
+  </div>
+</div>
+`;
+
+exports[`slot default test 1`] = `
+<div>
+  <div
+    class="nut-cell "
+  >
+    <div>
+      自定义内容
+    </div>
+  </div>
+</div>
+`;
+
+exports[`slot extra 1`] = `
+<div>
+  <div
+    class="nut-cell "
+  >
+    <div
+      class="nut-cell__title"
+    >
+      Switch
+    </div>
+    <div
+      class="nut-switch switch-open  nut-switch-base "
+    >
+      <div
+        class="switch-button"
+      >
+        
+      </div>
+    </div>
+  </div>
+</div>
+`;
