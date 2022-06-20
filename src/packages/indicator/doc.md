@@ -40,6 +40,7 @@ export default App;
 ```
 :::
 ### block用法
+在`block`为true时，将表现为块级元素，可通过`align`，设置对齐方式
 :::demo
 ```tsx
 import  React from "react";

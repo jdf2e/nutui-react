@@ -1,5 +1,4 @@
 import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react'
-import './indicator.scss'
 import bem from '@/utils/bem'
 import classNames from 'classnames'
 
