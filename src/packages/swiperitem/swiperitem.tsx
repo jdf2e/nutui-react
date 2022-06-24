@@ -41,11 +41,6 @@ export const SwiperItem = React.forwardRef<
     if (_size) {
       style[_direction === 'horizontal' ? 'width' : 'height'] = `${_size}px`
     }
-    if (offset) {
-      style.transform = `translate3D${
-        _direction === 'horizontal' ? `(${offset}px,0,0)` : `(0,${offset}px,0)`
-      }`
-    }
     return style
   }
 
