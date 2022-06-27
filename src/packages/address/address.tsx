@@ -57,6 +57,7 @@ export interface AddressProps {
   closeMask?: (cal: { closeWay: string }) => void
   switchModule?: (cal: { type: string }) => void
   onChange?: (cal: NextListObj) => void
+  onTabChecked?: (cal: string) => void
 }
 
 const defaultProps = {
@@ -105,6 +106,7 @@ export const Address: FunctionComponent<
     onClose,
     closeMask,
     switchModule,
+    onTabChecked,
     style,
     className,
     ...rest
@@ -267,6 +269,9 @@ export const Address: FunctionComponent<
                 height={height}
                 onNextArea={(cal) => {
                   nextAreaList && nextAreaList(cal)
+                }}
+                onTabClick={(type) => {
+                  onTabChecked && onTabChecked(type)
                 }}
                 onClose={handClose}
               />
