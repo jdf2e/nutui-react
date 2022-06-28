@@ -56,7 +56,8 @@
     "lint:fix": "eslint --fix .",
     "publish:beta": "npm publish --tag beta",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "test:demo": "jest  --testNamePattern=^should match snapshot$ --runTestsByPath ./src/packages/collapse/__test__/collapse.spec.tsx"
   },
   "engines": {
     "node": "^14.18.0 || >=15.0.0"
