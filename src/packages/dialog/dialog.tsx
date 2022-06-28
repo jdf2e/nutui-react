@@ -7,8 +7,8 @@ import { DialogProps, DialogReturnProps, DialogComponent, ConfirmProps } from '.
 import { useConfig } from '@/packages/configprovider'
 
 const defaultProps = {
-  okText: '确定',
-  cancelText: '取消',
+  okText: '',
+  cancelText: '',
   mask: true,
   closeOnClickOverlay: true,
   noFooter: false,
@@ -73,7 +73,7 @@ const BaseDialog: ForwardRefRenderFunction<
             className="nut-dialog__footer-cancel"
             onClick={() => handleCancel()}
           >
-            {locale.cancel || cancelText}
+            {cancelText || locale.cancel}
           </Button>
         )}
         {!noOkBtn && (
@@ -84,7 +84,7 @@ const BaseDialog: ForwardRefRenderFunction<
             disabled={okBtnDisabled}
             onClick={() => handleOk()}
           >
-            {locale.confirm || okText}
+            {okText || locale.confirm}
           </Button>
         )}
       </>
