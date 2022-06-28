@@ -148,12 +148,11 @@ export const CustomRender: FunctionComponent<
 
   // 获取已选地区列表名称
   const getTabName = (item: RegionData, index: number) => {
-    if (item.name) return item.name
-
-    if (tabIndex < index) {
+    if (tabIndex > index) {
       return item.name
+    } else {
+      return locale.select
     }
-    return locale.select
   }
 
   const mapRef = {
