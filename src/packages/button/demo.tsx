@@ -79,7 +79,7 @@ const ButtonDemo = () => {
       '8dab2f66': 'Danger Button',
       cfbdc781: 'Warning button',
       c3a3a1d2: 'Success Button',
-      e51e4582: 'Naïve button',
+      e51e4582: 'Naive button',
       '7db1a8b2': 'Disabled State',
       a52bef0c: 'Load State',
       d04fcbda: 'Loading',

@@ -30,10 +30,11 @@ const defaultProps = {
 } as TabbarItemProps
 
 export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (props) => {
-  const { tabTitle, icon, href, to, num, active, activeColor, unactiveColor, index, handleClick } = {
-    ...defaultProps,
-    ...props,
-  }
+  const { tabTitle, icon, href, to, num, active, activeColor, unactiveColor, index, handleClick } =
+    {
+      ...defaultProps,
+      ...props,
+    }
   const b = bem('tabbar-item')
   const bIcon = bem('tabbar-item__icon-box')
   const history = useHistory()

@@ -26,7 +26,7 @@ export interface InputProps {
 const defaultProps = {
   type: 'text',
   defaultValue: '',
-  placeholder: '请输入信息',
+  placeholder: '',
   label: '',
   requireShow: false,
   disabled: false,
@@ -57,6 +57,8 @@ export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes
       focus,
       clear,
     } = { ...defaultProps, ...props }
+
+    locale.placeholder = placeholder || locale.placeholder
 
     const inputBem = bem('input')
     const [inputValue, SetInputValue] = useState('')
@@ -120,7 +122,7 @@ export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes
         <input
           className="input-text"
           type={type}
-          placeholder={locale.placeholder || placeholder}
+          placeholder={placeholder}
           disabled={disabled}
           readOnly={readonly}
           value={inputValue}

@@ -98,8 +98,8 @@ export const FixedNav: FunctionComponent<
                   onClick={(event) => onSelectCb(event, item)}
                   key={item.id || index}
                 >
-                  <img src={item.icon} />
-                  <div className="span">{item.text}</div>
+                  <img src={item.icon} alt="" />
+                  <div className="nut-fixednav__list-text">{item.text}</div>
                   {item.num && <div className="b">{item.num}</div>}
                 </div>
               )
