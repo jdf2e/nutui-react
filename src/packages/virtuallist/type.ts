@@ -1,10 +1,3 @@
-/*
- * @Author: hanxin
- * @Date: 2022-06-14 13:56:14
- * @LastEditTime: 2022-06-14 13:57:06
- * @LastEditors: hanxin
- * @Description:
- */
 export type Data = any
 
 export interface VirtualListState {
@@ -31,7 +24,8 @@ export interface VirtualListProps {
   itemEqualSize?: boolean // item 固定大小，默认是true
   horizontal?: boolean // true为水平的，false为垂直的， 默认为false
   overscan?: number // 除了视窗里面默认的元素, 还需要额外渲染的, 避免滚动过快, 渲染不及时,默认是2
-  handleScroll?: Function // 滑动到底部执行的函数
+  handleScroll?: (...args: any[]) => any // 滑动到底部执行的函数
   key?: string // 遍历时生成item 的唯一key,默认是index,建议传入resources的数据具体的某个唯一值的字段
   locale?: { [key in string]: string }
+  className?: string
 }

@@ -23,6 +23,7 @@ export const VirtualList: FunctionComponent<
     overscan = 2,
     key,
     handleScroll,
+    className,
     ...rest
   } = props
   const sizeKey = horizontal ? 'width' : 'height'
@@ -48,19 +49,17 @@ export const VirtualList: FunctionComponent<
     },
   ])
   // 列表总大小
-  const [listTotalSize, setListTotalSize] = useState<number>(0)
+  const [listTotalSize, setListTotalSize] = useState<number>(99999999)
   // 可视区域条数
   const [visibleCount, setVisibleCount] = useState<number>(0)
-
+  const [offSetSize, setOffSetSize] = useState<number>(0)
   const [options, setOptions] = useState<VirtualListState>({
     startOffset: 0, // 可视区域距离顶部的偏移量
     startIndex: 0, // 可视区域开始索引
     overStart: 0,
     endIndex: 10, // 可视区域结束索引
   })
-  const getElement = useCallback(() => {
-    return scrollRef.current?.parentElement || document.body
-  }, [])
+
   // 列表位置信息
   useEffect(() => {
     const pos = initPositinoCache(itemSize, sourceData.length)
@@ -68,16 +67,24 @@ export const VirtualList: FunctionComponent<
     const totalSize = getListTotalSize(pos, horizontal)
     setListTotalSize(totalSize)
   }, [sourceData, itemSize, horizontal])
-
+  const getElement = useCallback(() => {
+    return scrollRef.current?.parentElement || document.body
+  }, [])
+  useEffect(() => {
+    const offSetSize = horizontal ? getElement().offsetWidth : getElement().offsetHeight
+    setOffSetSize(offSetSize)
+  }, [getElement, horizontal])
   useEffect(() => {
     // 初始-计算visibleCount
-    const offSetSize = horizontal ? getElement().offsetWidth : getElement().offsetHeight
+    if (offSetSize === 0) return
     const count = Math.ceil(offSetSize / itemSize) + overscan
+
     setVisibleCount(count)
     setOptions((options) => {
       return { ...options, endIndex: count }
     })
-  }, [getElement, horizontal, itemSize, overscan])
+  }, [getElement, horizontal, itemSize, overscan, offSetSize])
+
   const updateTotalSize = useCallback(() => {
     if (!itemsRef.current) return
     const items: HTMLCollection = itemsRef.current.children
@@ -93,7 +100,7 @@ export const VirtualList: FunctionComponent<
       const scrollSize = getElement()[scrollKey]
       const startIndex = binarySearch(positions, scrollSize, horizontal)
       const overStart = startIndex - overscan > -1 ? startIndex - overscan : 0
-      const offSetSize = horizontal ? getElement().offsetWidth : getElement().offsetHeight
+      // const offSetSize = horizontal ? getElement().offsetWidth : getElement().offsetHeight
       if (!itemEqualSize) {
         updateTotalSize()
       }
@@ -110,7 +117,7 @@ export const VirtualList: FunctionComponent<
       endIndex += 1
       const startOffset = positions[startIndex][offsetKey] as number
       setOptions({ startOffset, startIndex, overStart, endIndex })
-      //无限下滑
+      // 无限下滑
       if (endIndex > sourceData.length - 1) {
         handleScroll && handleScroll()
       }
@@ -127,6 +134,8 @@ export const VirtualList: FunctionComponent<
     scrollKey,
     horizontal,
     overscan,
+    handleScroll,
+    offSetSize,
   ])
 
   useEffect(() => {
@@ -139,45 +148,53 @@ export const VirtualList: FunctionComponent<
 
   return (
     <div
+      className={className ? `${className} nut-virtualList-box` : 'nut-virtualList-box'}
       {...rest}
-      ref={scrollRef}
-      style={{
-        position: 'relative',
-        [sizeKey]: `${listTotalSize}px`,
-      }}
     >
-      <ul
-        className={
-          horizontal ? 'nut-virtuallist nut-horizontal-items' : 'nut-virtuallist nut-vertical-items'
-        }
-        ref={itemsRef}
+      {offSetSize}
+      <div
+        ref={scrollRef}
+        className={horizontal ? 'nut-horizontal-box' : 'nut-vertical-box'}
         style={{
-          transform: horizontal
-            ? `translate3d(${options.startOffset}px,0,0)`
-            : `translate3d(0,${options.startOffset}px,0)`,
+          position: 'relative',
+          [sizeKey]: `${listTotalSize}px`,
         }}
       >
-        {sourceData.slice(options.overStart, options.endIndex).map((data, index) => {
-          const { startIndex, overStart } = options
-          const dataIndex = overStart + index
-          const styleVal = dataIndex < startIndex ? 'none' : 'block'
-          const keyVal = key && data[key] ? data[key] : dataIndex
+        <ul
+          className={
+            horizontal
+              ? 'nut-virtuallist-items nut-horizontal-items'
+              : 'nut-virtuallist-items nut-vertical-items'
+          }
+          ref={itemsRef}
+          style={{
+            transform: horizontal
+              ? `translate3d(${options.startOffset}px,0,0)`
+              : `translate3d(0,${options.startOffset}px,0)`,
+          }}
+        >
+          {sourceData.slice(options.overStart, options.endIndex).map((data, index) => {
+            const { startIndex, overStart } = options
+            const dataIndex = overStart + index
+            const styleVal = dataIndex < startIndex ? 'none' : 'block'
+            const keyVal = key && data[key] ? data[key] : dataIndex
 
-          return (
-            <li
-              ref={dataIndex === 0 ? firstItemRef : null}
-              data-index={`${dataIndex}`}
-              className={
-                dataIndex % 2 === 0 ? 'nut-virtuallist-item even' : 'nut-virtuallist-item odd'
-              }
-              key={`${keyVal}`}
-              style={{ display: styleVal }}
-            >
-              {ItemRender ? <ItemRender data={data} index={`${dataIndex}`} /> : data}
-            </li>
-          )
-        })}
-      </ul>
+            return (
+              <li
+                ref={dataIndex === 0 ? firstItemRef : null}
+                data-index={`${dataIndex}`}
+                className={
+                  dataIndex % 2 === 0 ? 'nut-virtuallist-item even' : 'nut-virtuallist-item odd'
+                }
+                key={`${keyVal}`}
+                style={{ display: styleVal }}
+              >
+                {ItemRender ? <ItemRender data={data} index={`${dataIndex}`} /> : data}
+              </li>
+            )
+          })}
+        </ul>
+      </div>
     </div>
   )
 }
