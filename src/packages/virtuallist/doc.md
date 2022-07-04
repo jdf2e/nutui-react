@@ -201,6 +201,7 @@ export default App;
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | sourceData       |  获取数据                  | Array | -                |
+|containerSize   |  容器高度 | Number|获取元素的offsetWidth或offsetHeight，需要css给出|
 | ItemRender       | virtual 列表父节点渲染的函数 | React.FC<any> | -|
 | itemSize         | item高度，如果不定高，则为首屏单个最大size | String      | -  |
 | itemEqualSize    | item大小是否一致             | Boolean    | true |

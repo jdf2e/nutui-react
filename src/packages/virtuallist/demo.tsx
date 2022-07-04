@@ -11,6 +11,7 @@ const ListDemo = () => {
   const [sourceData, setsourceData] = useState([])
   const [pageNo, setPageNo] = useState(1)
   const [radioVal, setRadioVal] = useState('1')
+  const [isLoading, setIsLoading] = useState(false)
   const handleChange = (v) => {
     setRadioVal(v)
     setPageNo(1)
@@ -44,8 +45,12 @@ const ListDemo = () => {
   }
   const ItemVariableDemo = React.memo(ItemVariable)
   const handleScroll = () => {
-    if (pageNo > 100) return
-    setPageNo(pageNo + 1)
+    if (pageNo > 50 || isLoading) return
+    setIsLoading(true)
+    setTimeout(() => {
+      setPageNo(pageNo + 1)
+      setIsLoading(false)
+    }, 30)
   }
   useEffect(() => {
     getData()
@@ -66,9 +71,9 @@ const ListDemo = () => {
         return (
           <VirtualList
             sourceData={sourceData}
-            className="heigh1"
             ItemRender={ItemVariableDemo}
             itemSize={128}
+            containerSize={500}
             itemEqualSize={false}
             handleScroll={handleScroll}
           />
@@ -79,6 +84,7 @@ const ListDemo = () => {
             sourceData={sourceData}
             ItemRender={ItemRenderMemo}
             itemSize={124}
+            containerSize={341}
             handleScroll={handleScroll}
             horizontal
           />
@@ -91,6 +97,17 @@ const ListDemo = () => {
             ItemRender={ItemVariableDemo}
             horizontal
             itemEqualSize={false}
+            handleScroll={handleScroll}
+          />
+        )
+      default:
+        return (
+          <VirtualList
+            itemSize={66}
+            className="heigh1"
+            sourceData={sourceData}
+            ItemRender={ItemRenderMemo}
+            handleScroll={handleScroll}
           />
         )
     }

@@ -117,6 +117,7 @@ const updateItemSize = (
     const styleVal = item.getAttribute('style')
     if (styleVal && styleVal.includes('none')) return
     const nowSize = item.getBoundingClientRect()[sizeKey]
+
     const oldSize = positions[index][sizeKey] as number
     // 存在差值, 更新该节点以后所有的节点
     const dValue = oldSize - nowSize

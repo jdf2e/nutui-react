@@ -24,6 +24,7 @@ export const VirtualList: FunctionComponent<
     key,
     handleScroll,
     className,
+    containerSize,
     ...rest
   } = props
   const sizeKey = horizontal ? 'width' : 'height'
@@ -52,7 +53,7 @@ export const VirtualList: FunctionComponent<
   const [listTotalSize, setListTotalSize] = useState<number>(99999999)
   // 可视区域条数
   const [visibleCount, setVisibleCount] = useState<number>(0)
-  const [offSetSize, setOffSetSize] = useState<number>(0)
+  const [offSetSize, setOffSetSize] = useState<number>(containerSize || 0)
   const [options, setOptions] = useState<VirtualListState>({
     startOffset: 0, // 可视区域距离顶部的偏移量
     startIndex: 0, // 可视区域开始索引
@@ -71,9 +72,10 @@ export const VirtualList: FunctionComponent<
     return scrollRef.current?.parentElement || document.body
   }, [])
   useEffect(() => {
-    const offSetSize = horizontal ? getElement().offsetWidth : getElement().offsetHeight
-    setOffSetSize(offSetSize)
-  }, [getElement, horizontal])
+    if (containerSize) return
+    const size = horizontal ? getElement().offsetWidth : getElement().offsetHeight
+    setOffSetSize(size)
+  }, [getElement, horizontal, containerSize])
   useEffect(() => {
     // 初始-计算visibleCount
     if (offSetSize === 0) return
@@ -114,7 +116,6 @@ export const VirtualList: FunctionComponent<
         sizeKey,
         overscan,
       })
-      endIndex += 1
       const startOffset = positions[startIndex][offsetKey] as number
       setOptions({ startOffset, startIndex, overStart, endIndex })
       // 无限下滑
@@ -150,8 +151,10 @@ export const VirtualList: FunctionComponent<
     <div
       className={className ? `${className} nut-virtualList-box` : 'nut-virtualList-box'}
       {...rest}
+      style={{
+        [sizeKey]: containerSize ? `${offSetSize}px` : '',
+      }}
     >
-      {offSetSize}
       <div
         ref={scrollRef}
         className={horizontal ? 'nut-horizontal-box' : 'nut-vertical-box'}
