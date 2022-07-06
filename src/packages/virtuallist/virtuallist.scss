@@ -1,0 +1,51 @@
+.nut-horizontal-items {
+  float: left;
+  li {
+    display: block;
+    float: left;
+    background: #fff;
+    padding: 10px;
+    margin-right: 20px;
+  }
+  &:after {
+    content: '';
+    display: block;
+    visibility: hidden;
+    clear: both;
+  }
+}
+.nut-vertical-items {
+  li {
+    display: block;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 7px;
+    box-shadow: 0 1px 6px 0 rgba(237, 238, 241, 1);
+    margin-top: 20px;
+    padding: 14px 15px;
+    font-size: 13px;
+    line-height: 18px;
+    font-family: PingFangSC;
+    font-weight: 500;
+    color: rgba(102, 102, 102, 1);
+  }
+}
+
+.nut-virtualList-demo-item {
+  height: 100px;
+}
+.nut-virtualList-box {
+  overflow: auto;
+}
+.nut-virtualList-demo-box {
+  .heigh1 {
+    height: 500px;
+  }
+  &.hideScrollbar {
+    .nut-virtualList-box {
+      &::-webkit-scrollbar {
+        width: 0px;
+        height: 0px;
+      }
+    }
+  }
+}

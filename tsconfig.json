@@ -3,10 +3,7 @@
     "baseUrl": ".",
     "rootDir": ".",
     "target": "ESNext",
-    "types": [
-      "vite/client",
-      "jest"
-    ],
+    "types": ["vite/client", "jest"],
     "allowJs": false,
     "declaration": true,
     "declarationDir": "./dist/esm/types",
@@ -27,25 +24,12 @@
     // "noUnusedParameters": true,
     // "noUnusedLocals": true,
     "jsx": "react",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "lib": ["esnext", "dom"],
     // "outDir": "./tsc/test",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx"
-  ],
-  "exclude": [
-    "./node_modules/*",
-    "src/sites/*",
-    "src/**/demo.tsx"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"],
+  "exclude": ["./node_modules/*", "src/sites/*", "src/**/demo.tsx"]
 }
