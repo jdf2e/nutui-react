@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-collapse"
+  >
+    <div
+      class="nut-collapse-item"
+    >
+      <div
+        class="nut-collapse-item__header"
+      >
+        <div
+          class="nut-collapse-item__title"
+        >
+          标题1
+        </div>
+        <div
+          class="nut-collapse-item__sub-title"
+        />
+        <div
+          class="nut-collapse-item__icon-box"
+        >
+          <div
+            class="nut-collapse-item__icon"
+            style="transform: translateY(-50%) rotate(180deg);"
+          >
+            <i
+              class=" nut-icon nutui-iconfont nut-icon-arrow-down "
+              style="color: rgb(153, 153, 153); font-size: 16px; width: 16px; height: 16px;"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-collapse-item__content"
+        style="height: 0px;"
+      >
+        <div
+          class="nut-collapse-item__content-text"
+        >
+          京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-collapse-item"
+    >
+      <div
+        class="nut-collapse-item__header"
+      >
+        <div
+          class="nut-collapse-item__title"
+        >
+          标题2
+        </div>
+        <div
+          class="nut-collapse-item__sub-title"
+        />
+        <div
+          class="nut-collapse-item__icon-box"
+        >
+          <div
+            class="nut-collapse-item__icon"
+            style="transform: translateY(-50%) rotate(180deg);"
+          >
+            <i
+              class=" nut-icon nutui-iconfont nut-icon-arrow-down "
+              style="color: rgb(153, 153, 153); font-size: 16px; width: 16px; height: 16px;"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-collapse-item__content"
+        style="height: 0px;"
+      >
+        <div
+          class="nut-collapse-item__content-text"
+        >
+          京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-collapse-item"
+    >
+      <div
+        class="nut-collapse-item__header nut-collapse-item__header--disabled"
+      >
+        <div
+          class="nut-collapse-item__title"
+        >
+          标题3
+        </div>
+        <div
+          class="nut-collapse-item__sub-title"
+        />
+        <div
+          class="nut-collapse-item__icon-box"
+        >
+          <div
+            class="nut-collapse-item__icon"
+            style="transform: translateY(-50%);"
+          >
+            <i
+              class=" nut-icon nutui-iconfont nut-icon-arrow-down "
+              style="color: rgb(194, 194, 194); font-size: 16px; width: 16px; height: 16px;"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-collapse-item__content"
+        style="height: 0px;"
+      >
+        <div
+          class="nut-collapse-item__content-text"
+        >
+          京东“厂直优品计划”首推“政府优品馆”
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
