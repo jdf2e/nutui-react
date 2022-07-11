@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-
+import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 
 export interface PaginationProps {
@@ -38,6 +38,7 @@ const defaultProps = {
 export const Pagination: FunctionComponent<
   Partial<PaginationProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
+  const { locale } = useConfig()
   const { children } = { ...defaultProps, ...props }
   const {
     modelValue,
@@ -150,7 +151,7 @@ export const Pagination: FunctionComponent<
         }`}
         onClick={(e) => selectPage(Number(currentPage) - 1, true)}
       >
-        {prevText}
+        {locale.pagination.prev || prevText}
       </div>
       {mode == 'multi' ? (
         <div className={`${paginationBem('contain')}`}>
@@ -182,7 +183,7 @@ export const Pagination: FunctionComponent<
         className={`${paginationBem('next')}  ${Number(currentPage) >= countRef ? 'disabled' : ''}`}
         onClick={(e) => selectPage(Number(currentPage) + 1, true)}
       >
-        {nextText}
+        {locale.pagination.next || nextText}
       </div>
     </div>
   )

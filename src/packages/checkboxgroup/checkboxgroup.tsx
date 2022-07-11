@@ -65,7 +65,7 @@ export const CheckboxGroup = React.forwardRef(
     }
 
     function cloneChildren() {
-      return React.Children.map(children, (child: any, index) => {
+      return React.Children.map(children, (child: any) => {
         const childChecked = validateChildChecked(child)
         if ((child as any).type.displayName !== 'NutCheckBox') {
           return React.cloneElement(child)

@@ -4,10 +4,11 @@ import Button from '@/packages/button'
 import { DialogWrapper } from './DialogWrapper'
 import confirm from './Confirm'
 import { DialogProps, DialogReturnProps, DialogComponent, ConfirmProps } from './config'
+import { useConfig } from '@/packages/configprovider'
 
 const defaultProps = {
-  okText: '确定',
-  cancelText: '取消',
+  okText: '',
+  cancelText: '',
   mask: true,
   closeOnClickOverlay: true,
   noFooter: false,
@@ -24,15 +25,27 @@ const BaseDialog: ForwardRefRenderFunction<
   unknown,
   Partial<DialogProps> & HTMLAttributes<HTMLDivElement>
 > = (props, ref) => {
-  const { visible, footer, noOkBtn, noCancelBtn, okBtnDisabled, cancelAutoClose, ...restProps } =
-    props
+  const { locale } = useConfig()
+  const {
+    visible,
+    footer,
+    noOkBtn,
+    noCancelBtn,
+    lockScroll,
+    okBtnDisabled,
+    cancelAutoClose,
+    okText,
+    cancelText,
+    onClosed,
+    onCancel,
+    onOk,
+    ...restProps
+  } = props
 
   const renderFooter = () => {
-    const { okText, cancelText, footer, lockScroll, onClosed, onCancel, onOk } = props
-
     if (footer === null) return
 
-    const handleCancel = (e?: any) => {
+    const handleCancel = () => {
       if (!cancelAutoClose) return
 
       onClosed?.()
@@ -60,7 +73,7 @@ const BaseDialog: ForwardRefRenderFunction<
             className="nut-dialog__footer-cancel"
             onClick={() => handleCancel()}
           >
-            {cancelText}
+            {cancelText || locale.cancel}
           </Button>
         )}
         {!noOkBtn && (
@@ -71,7 +84,7 @@ const BaseDialog: ForwardRefRenderFunction<
             disabled={okBtnDisabled}
             onClick={() => handleOk()}
           >
-            {okText}
+            {okText || locale.confirm}
           </Button>
         )}
       </>
@@ -80,7 +93,16 @@ const BaseDialog: ForwardRefRenderFunction<
     return footerContent
   }
 
-  return <DialogWrapper {...restProps} visible={visible} footer={renderFooter()} />
+  return (
+    <DialogWrapper
+      {...restProps}
+      visible={visible}
+      lockScroll={lockScroll}
+      footer={renderFooter()}
+      onClosed={onClosed}
+      onCancel={onCancel}
+    />
+  )
 }
 
 export const Dialog: DialogComponent = forwardRef(BaseDialog) as DialogComponent
@@ -99,5 +121,4 @@ Dialog.confirm = (props: ConfirmProps): DialogReturnProps => {
 })
 
 Dialog.defaultProps = defaultProps
-
 Dialog.displayName = 'NutDialog'

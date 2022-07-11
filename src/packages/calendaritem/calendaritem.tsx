@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
+import { useConfig } from '@/packages/configprovider'
 
 type InputDate = string | string[]
 
@@ -63,12 +64,11 @@ const defaultProps = {
 export const CalendarItem: FunctionComponent<
   Partial<CalendarItemProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const { locale } = useConfig()
   const {
-    children,
     type,
     isAutoBackFill,
     poppable,
-    visible,
     title,
     defaultValue,
     startDate,
@@ -78,12 +78,12 @@ export const CalendarItem: FunctionComponent<
     onClose,
   } = { ...defaultProps, ...props }
 
-  const weeks = ['日', '一', '二', '三', '四', '五', '六']
+  const weeks = locale.calendaritem.weekdays
   const [yearMonthTitle, setYearMonthTitle] = useState('')
   const [unLoadPrev, setUnLoadPrev] = useState(false)
   const [monthsData, setMonthsData] = useState<MonthInfo[]>([])
 
-  const [state, setState] = useState<CalendarState>({
+  const [state] = useState<CalendarState>({
     currDate: '',
     touchParams: {
       startY: 0,
@@ -288,7 +288,7 @@ export const CalendarItem: FunctionComponent<
     }
     const monthInfo: MonthInfo = {
       curData,
-      title: `${title.year}年${title.month}月`,
+      title: locale.calendaritem.monthTitle(title.year, title.month),
       monthData: [
         ...(getDaysStatus(preMonthDays, 'prev') as Day[]),
         ...(getDaysStatus(currMonthDays, 'curr') as Day[]),
@@ -507,7 +507,7 @@ export const CalendarItem: FunctionComponent<
         <div className={headerClasses}>
           {poppable ? (
             <>
-              <div className="calendar-title">{title}</div>
+              <div className="calendar-title">{locale.calendaritem.title}</div>
               <div className="calendar-curr-month">{yearMonthTitle}</div>
             </>
           ) : (
@@ -531,7 +531,9 @@ export const CalendarItem: FunctionComponent<
         >
           <div className="calendar-months-panel" ref={monthsPanel}>
             <div className="calendar-loading-tip">
-              {!unLoadPrev ? '加载上一个月' : '没有更早月份'}
+              {!unLoadPrev
+                ? locale.calendaritem.loadPreviousMonth
+                : locale.calendaritem.noEarlierMonth}
             </div>
             {monthsData.map((month: any, key: number) => (
               <div className="calendar-month" key={key}>
@@ -549,14 +551,14 @@ export const CalendarItem: FunctionComponent<
                         >
                           <div className="calendar-day">{day.type === 'curr' ? day.day : ''}</div>
                           {isCurrDay(month, day.day) ? (
-                            <div className="calendar-curr-tips">今天</div>
+                            <div className="calendar-curr-tips">{locale.calendaritem.today}</div>
                           ) : (
                             ''
                           )}
                           {isStartTip(day, month) ? (
-                            <div className="calendar-day-tip">开始</div>
+                            <div className="calendar-day-tip">{locale.calendaritem.start}</div>
                           ) : isEndTip(day, month) ? (
-                            <div className="calendar-day-tip">结束</div>
+                            <div className="calendar-day-tip">{locale.calendaritem.end}</div>
                           ) : (
                             ''
                           )}
@@ -572,7 +574,7 @@ export const CalendarItem: FunctionComponent<
         {poppable && !isAutoBackFill ? (
           <div className="nut-calendar-footer">
             <div className="calendar-confirm-btn" onClick={confirm}>
-              确定
+              {locale.confirm}
             </div>
           </div>
         ) : (

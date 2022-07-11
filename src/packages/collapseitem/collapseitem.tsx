@@ -34,7 +34,9 @@ const defaultProps = {
   titleIconPosition: '',
   titleIconSize: '',
 } as CollapseItemProps
-export const CollapseItem: FunctionComponent<Partial<CollapseItemProps>> = (props) => {
+export const CollapseItem: FunctionComponent<
+  Partial<CollapseItemProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
   const {
     children,
     title,
@@ -51,6 +53,7 @@ export const CollapseItem: FunctionComponent<Partial<CollapseItemProps>> = (prop
     titleIconSize,
     iconSize,
     iconColor,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -90,7 +93,7 @@ export const CollapseItem: FunctionComponent<Partial<CollapseItemProps>> = (prop
   }, [isOpen, domHeight])
 
   return (
-    <div className={colBem()}>
+    <div className={colBem()} {...rest}>
       <div
         className={colBem('header', { disabled })}
         onClick={() => {

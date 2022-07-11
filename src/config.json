@@ -83,7 +83,7 @@
         },
         {
           "version": "0.1.0",
-          "name": "OverLay",
+          "name": "Overlay",
           "type": "component",
           "cName": "遮罩层",
           "desc": "创建一个遮罩层，通常用于阻止用户进行其他操作",
@@ -157,7 +157,7 @@
       "packages": [
         {
           "version": "0.1.0",
-          "name": "Navbar",
+          "name": "NavBar",
           "type": "component",
           "cName": "头部导航",
           "desc": "提供导航功能。",
@@ -441,7 +441,7 @@
         },
         {
           "version": "0.1.0",
-          "name": "InfiniteLoading",
+          "name": "Infiniteloading",
           "type": "component",
           "cName": "滚动加载",
           "desc": "列表滚动到底部自动加载更多数据。",
@@ -558,6 +558,17 @@
           "author": "junjun"
         },
         {
+          "version": "1.0.0",
+          "name": "AvatarGroup",
+          "type": "component",
+          "cName": "头像组合子组件",
+          "desc": "头像组合子组件",
+          "sort": 18,
+          "show": false,
+          "exportEmpty": true,
+          "author": "swag~jun"
+        },
+        {
           "version": "0.1.0",
           "name": "Price",
           "type": "component",
@@ -607,6 +618,16 @@
           "author": "swag~jun"
         },
         {
+          "version": "1.0.0",
+          "name": "CountDown",
+          "type": "component",
+          "cName": "倒计时",
+          "desc": "用于实时展示倒计时数值，支持毫秒精度。",
+          "sort": 17,
+          "show": true,
+          "author": "songsong"
+        },
+        {
           "version": "0.1.0",
           "name": "Collapse",
           "type": "component",
@@ -636,6 +657,37 @@
           "sort": 7,
           "show": true,
           "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Empty",
+          "type": "component",
+          "cName": "空状态",
+          "desc": "空状态时的占位提示",
+          "sort": 16,
+          "show": true,
+          "author": "liukun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "ConfigProvider",
+          "type": "component",
+          "cName": "全局配置组件",
+          "desc": "可以配置多语言等全局属性",
+          "sort": 16,
+          "show": false,
+          "exportEmpty": true,
+          "author": "hanyuxinting"
+        },
+        {
+          "version": "1.0.0",
+          "name": "VirtualList",
+          "type": "component",
+          "cName": "虚拟列表",
+          "desc": "长列表渲染",
+          "sort": 20,
+          "show": true,
+          "author": "hx"
         }
       ]
     },

@@ -1,6 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import { useHistory } from 'react-router-dom'
-
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 

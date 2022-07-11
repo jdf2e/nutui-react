@@ -22,12 +22,14 @@ export default ${name}
 `,
     react: `import React, { FunctionComponent } from 'react'
 import './${name.toLowerCase()}.scss'
+import { useConfig } from '@/packages/configprovider'
 
 export interface ${name}Props {
 
 }
 const defaultProps = {} as ${name}Props
 export const ${name}: FunctionComponent<Partial<${name}Props> & React.HTMLAttributes<HTMLDivElement>> = (props) => {
+  const { locale } = useConfig()
   const { children } = { ...defaultProps, ...props }
   return <div className="nut-${name.toLowerCase()}">${name}</div>
 }

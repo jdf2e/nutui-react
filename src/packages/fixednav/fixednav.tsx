@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
 import bem from '@/utils/bem'
+import { useConfig } from '@/packages/configprovider'
 
 type Direction = 'right' | 'left'
 type Position = {
@@ -38,6 +39,7 @@ const defaultProps = {
 export const FixedNav: FunctionComponent<
   Partial<FixedNavProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const { locale } = useConfig()
   const {
     fixednavClass,
     overlay,
@@ -96,8 +98,8 @@ export const FixedNav: FunctionComponent<
                   onClick={(event) => onSelectCb(event, item)}
                   key={item.id || index}
                 >
-                  <img src={item.icon} />
-                  <div className="span">{item.text}</div>
+                  <img src={item.icon} alt="" />
+                  <div className="nut-fixednav__list-text">{item.text}</div>
                   {item.num && <div className="b">{item.num}</div>}
                 </div>
               )
@@ -110,7 +112,11 @@ export const FixedNav: FunctionComponent<
         {slotBtn || (
           <>
             <Icon name="left" color="#fff" />
-            <div className="text">{visible ? activeText : unActiveText}</div>
+            <div className="text">
+              {visible
+                ? locale.fixednav.activeText || activeText
+                : locale.fixednav.unActiveText || unActiveText}
+            </div>
           </>
         )}
       </div>

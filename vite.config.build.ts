@@ -6,7 +6,7 @@ const config = require('./package.json')
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
-* (c) 2021 @jdf2e.
+* (c) 2022 @jdf2e.
 * Released under the MIT License.
 */`
 

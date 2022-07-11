@@ -3,6 +3,7 @@ import React, { CSSProperties, FunctionComponent, useEffect, useState } from 're
 import bem from '@/utils/bem'
 import { formatNumber } from './util'
 import Icon from '@/packages/icon'
+import { useConfig } from '@/packages/configprovider'
 
 export interface InputProps {
   type: string
@@ -25,7 +26,7 @@ export interface InputProps {
 const defaultProps = {
   type: 'text',
   defaultValue: '',
-  placeholder: '请输入信息',
+  placeholder: '',
   label: '',
   requireShow: false,
   disabled: false,
@@ -37,6 +38,7 @@ const defaultProps = {
 
 export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes<HTMLDivElement>> =
   (props) => {
+    const { locale } = useConfig()
     const {
       type,
       defaultValue,
@@ -55,6 +57,8 @@ export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes
       focus,
       clear,
     } = { ...defaultProps, ...props }
+
+    locale.placeholder = placeholder || locale.placeholder
 
     const inputBem = bem('input')
     const [inputValue, SetInputValue] = useState('')

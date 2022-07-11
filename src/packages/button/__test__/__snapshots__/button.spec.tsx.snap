@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-button nut-button--primary nut-button--normal nut-button--round aa"
+    style="margin: 8px;"
+  >
+    <div
+      class="nut-button__warp"
+    >
+      主要按钮
+    </div>
+  </div>
+</DocumentFragment>
+`;

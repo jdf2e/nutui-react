@@ -24,7 +24,7 @@ export interface DialogProps {
   textAlign?: any
   footerDirection?: string
   lockScroll?: boolean
-  onClosed?: Function
+  onClosed?: () => void
   onOk?: (e?: MouseEvent) => Promise<any> | void
   onCancel?: () => void
   onConfirm?: (e?: MouseEvent) => Promise<any> | void

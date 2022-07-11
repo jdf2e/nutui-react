@@ -3,6 +3,7 @@ import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 import Elevator from '@/packages/elevator'
 import { RegionData } from './address'
+import { useConfig } from '@/packages/configprovider'
 
 interface CustomRegionData {
   title: string
@@ -29,7 +30,7 @@ export interface AddressProps {
     custom: string
     selectedRegion: {}
   }) => void
-
+  onTabClick?: (type: string) => void
   onClose?: () => void
 }
 
@@ -45,15 +46,28 @@ const defaultProps = {
 export const CustomRender: FunctionComponent<
   Partial<AddressProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { children, type, height, province, city, country, town, onNextArea, onClose, ...rest } = {
+  const { locale } = useConfig()
+  const {
+    children,
+    type,
+    height,
+    province,
+    city,
+    country,
+    town,
+    onNextArea,
+    onTabClick,
+    onClose,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }
 
   const b = bem('address')
-  const [privateType, setPrivateType] = useState<string>(type)
+  const [privateType] = useState<string>(type)
   const [tabIndex, setTabIndex] = useState(0)
-  const [tabName, setTabName] = useState<string[]>(['province', 'city', 'country', 'town'])
+  const [tabName] = useState<string[]>(['province', 'city', 'country', 'town'])
 
   const provinceRef = useRef(null)
   const cityRef = useRef(null)
@@ -134,12 +148,11 @@ export const CustomRender: FunctionComponent<
 
   // 获取已选地区列表名称
   const getTabName = (item: RegionData, index: number) => {
-    if (item.name) return item.name
-
-    if (tabIndex < index) {
+    if (tabIndex > index) {
       return item.name
+    } else {
+      return locale.select
     }
-    return '请选择'
   }
 
   const mapRef = {
@@ -194,14 +207,15 @@ export const CustomRender: FunctionComponent<
         [tabName[i + 1]]: {},
       }
     }
-
-    if (tabIndex < 3) {
-      setTabIndex(() => tabIndex + 1)
-
-      lineAnimation(tabIndex + 1)
-
+    if (tabIndex < 4) {
       // 切换下一个
-      calBack.next = tabName[tabIndex + 1]
+      if (tabIndex === 3) {
+        calBack.next = ''
+      } else {
+        setTabIndex(() => tabIndex + 1)
+        lineAnimation(tabIndex + 1)
+        calBack.next = tabName[tabIndex + 1]
+      }
       calBack.value = item as string
 
       onNextArea && onNextArea(calBack)
@@ -210,11 +224,12 @@ export const CustomRender: FunctionComponent<
     }
   }
   // 切换地区Tab
-  const changeRegionTab = (item: RegionData, index: number) => {
+  const changeRegionTab = (item: RegionData, index: number, key: string) => {
     if (getTabName(item, index)) {
       setTabIndex(index)
       lineAnimation(index)
     }
+    onTabClick && onTabClick(key)
   }
 
   const handleElevatorItem = (key: string, item: RegionData | string) => {
@@ -264,9 +279,11 @@ export const CustomRender: FunctionComponent<
               className={`${b('tab-item')} ${index === tabIndex ? 'active' : ''}`}
               key={index}
               ref={mapRef[key as SelectedRegionType]}
-              onClick={() => changeRegionTab(selectedRegion[key as SelectedRegionType], index)}
+              onClick={() => changeRegionTab(selectedRegion[key as SelectedRegionType], index, key)}
             >
-              <div>{getTabName(selectedRegion[key as SelectedRegionType], index)}</div>
+              {index <= tabIndex && (
+                <div>{getTabName(selectedRegion[key as SelectedRegionType], index)}</div>
+              )}
             </div>
           )
         })}

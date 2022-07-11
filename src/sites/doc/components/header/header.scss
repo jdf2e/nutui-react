@@ -392,6 +392,35 @@
     }
   }
 }
+.nut-popover {
+  height: 100%;
+  position: relative;
+}
+.curr-lang {
+  display: block;
+  font-size: 12px;
+}
+.switch {
+  position: absolute;
+  right: 60px;
+  top: 0;
+  height: 100%;
+  width: 150px;
+  cursor: pointer;
+
+  .nut-popover--dark {
+    width: 100%;
+    margin-right: 0;
+    background: transparent;
+    text-align: center;
+  }
+  .title-item {
+    height: 30px;
+  }
+}
+.switch-content {
+  position: relative;
+}
 // 下拉列表选择动画效果
 .fade-enter-active,
 .fade-leave-active {
