@@ -1,0 +1,72 @@
+@import '../popup/popup.scss';
+.nut-cascader {
+  width: 100%;
+  font-size: 14px;
+  line-height: 22px;
+  .nut-popup {
+    padding: 0;
+    &.popup-bottom.round {
+      padding: 0 !important;
+    }
+  }
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 20px 17px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 20px;
+    color: #1a1a1a;
+    font-size: 18px;
+  }
+  .nut-tabs__titles {
+    padding: 0 10px;
+    background: #fff;
+  }
+  .nut-tabs__titles-item {
+    flex: initial;
+    min-width: auto;
+    width: auto;
+    padding: 0 10px;
+    white-space: nowrap;
+  }
+  .nut-tabpane {
+    padding: 0;
+  }
+  &-pane {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    padding-top: 10px;
+    height: 342px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  &-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    margin: 0;
+    cursor: pointer;
+    font-size: 14px;
+    color: #1a1a1a;
+    &.active {
+      &:not(.disabled) {
+        color: #fa2c19;
+      }
+      .nut-cascader-item__icon-check {
+        visibility: visible;
+        color: #fa2c19;
+      }
+    }
+  }
+  &-item__title {
+    flex: 1;
+  }
+  .nut-icon-checklist {
+    margin-left: 10px;
+    visibility: hidden;
+  }
+}
