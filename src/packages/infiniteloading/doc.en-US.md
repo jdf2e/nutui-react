@@ -1,18 +1,16 @@
-#  Infiniteloading 滚动加载
+#  Infiniteloading
 
-### 介绍
+### Intro
 
-列表滚动到底部自动加载更多数据。
+Scrolling to the bottom of the list automatically loads more data.
 
-### 安装
+### Install
 
 ```ts
 import { InfiniteLoading } from '@nutui/nutui-react';
 ```
 
-## 代码演示
-    
-### 基础用法
+### Basic Usage
 
 :::demo
 ```tsx
@@ -65,7 +63,7 @@ const App = () => {
 
   return (
     <>
-      <h2>基础用法</h2>
+      <h2>Basic Usage</h2>
       <Cell>
         <ul className="infiniteUl" id="scroll" style={InfiniteUlStyle}>
           <Infiniteloading
@@ -91,7 +89,7 @@ export default App;
 ```
 :::
 
-### 下拉刷新
+### Pull to refresh
 
 :::demo
 ```tsx
@@ -144,14 +142,14 @@ const App = () => {
 
   const refresh = (done: () => void) => {
     setTimeout(() => {
-      Toast.text('刷新成功')
+      Toast.text('Refresh success!')
       done()
     }, 1000)
   }
 
   return (
     <>
-      <h2>下拉刷新</h2>
+      <h2>Pull to refresh</h2>
       <Cell>
         <ul className="infiniteUl" id="refreshScroll" style={InfiniteUlStyle}>
           <Infiniteloading
@@ -179,7 +177,7 @@ const App = () => {
 export default App;
 ```
 :::
-### 自定义加载文案
+### Custom loading copywriting
 
 :::demo
 ```tsx
@@ -232,14 +230,14 @@ const App = () => {
 
   return (
     <>
-      <h2>自定义加载文案</h2>
+      <h2>Custom loading copywriting</h2>
       <Cell>
         <ul className="infiniteUl" id="customScroll" style={InfiniteUlStyle}>
           <Infiniteloading
             containerId="customScroll"
             useWindow={false}
             loadTxt="loading"
-            loadMoreTxt="没有啦～"
+            loadMoreTxt="none～"
             hasMore={customHasMore}
             loadMore={customLoadMore}
           >
@@ -264,24 +262,24 @@ export default App;
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| hasMore         | 是否还有更多数据               | Boolean | `true`                |
-| threshold         | 距离底部多远加载 | Number | `200`               |
-| useWindow | 将滚动侦听器添加到 window 否则侦听组件的父节点     | Boolean | `true` |
-| useCapture          | 是否使用捕获模式 true 捕获 false 冒泡                        | Boolean | `false`            |
-| containerId          | 在 useWindow 属性为 false 的时候，自定义设置节点ID                        | String | `''`            |
-| loadMoreTxt          | “没有更多数”据展示文案                        | String | `'哎呀，这里是底部了啦'`            |
-| isOpenRefresh        | 是否开启下拉刷新                         | Boolean | `false`                |
-| pullIcon        | 下拉刷新[图标名称](#/icon)                        | String | ''                |
-| pullTxt        | 下拉刷新提示文案                         | String | `松手刷新`                |
-| loadIcon        | 上拉加载[图标名称](#/icon)                       | String | ''            |
-| loadTxt        | 上拉加载提示文案                         | String | `加载中...`                |
+| hasMore         | Has more data               | Boolean | `true`                |
+| threshold         | The loadMore event will be Emitted when the distance between the scrollbar and the bottom is less than threshold | Number | `200`               |
+| useWindow | Add the scroll listener to the window or the parent of the listening component    | Boolean | `true` |
+| useCapture          | Whether to use capture mode                        | Boolean | `false`            |
+| containerId          | When useWindow is false, set the node ID by default                        | String | `''`            |
+| loadMoreTxt          | “No more” text                        | String | `‘Oops, this is the bottom’`            |
+| isOpenRefresh        | Enable pull refresh                         | Boolean | `false`                |
+| pullIcon        | Pull refresh[icon name](#/icon)                        | String | ''                |
+| pullTxt        | Pull refresh text                        | String | `Loose to refresh`                |
+| loadIcon        | Pull on loading[icon name](#/icon)                       | String | ''            |
+| loadTxt        | Pull on loading text                         | String | `Loading...`                |
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| loadMore  | 继续加载的回调函数 | done 函数，用于关闭加载中状态 |
-| scrollChange  | 实时监听滚动高度 | 滚动高度 |
-| refresh  | 下拉刷新事件回调 | done 函数，用于关闭加载中状态 |
+| loadMore  | Emitted when continues to load | done() |
+| scrollChange  | Real-time monitoring of roll height | height |
+| refresh  | Emitted when pull refresh | done() |

@@ -1,18 +1,18 @@
-#  Skeleton组件
+#  Skeleton組件
 
-### 介绍
+### 介紹
 
-在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果。
+在頁面上待加載區域填充灰色的佔位圖，本質上是界面加載過程中的過渡效果。
 
-### 安装
+### 安裝
 ``` ts
 import { Skeleton } from '@nutui/nutui-react';
 ```
 
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 ```tsx
@@ -30,7 +30,7 @@ export default App;
 ```
 :::
 
-### 传入多行
+### 傳入多行
 
 :::demo
 ```tsx
@@ -48,7 +48,7 @@ export default App;
 ```
 :::
 
-### 显示头像
+### 顯示頭像
 
 :::demo
 ```tsx
@@ -66,7 +66,7 @@ export default App;
 ```
 :::
 
-### 标题段落圆角风格
+### 標題段落圓角風格
 
 :::demo
 ```tsx
@@ -84,7 +84,7 @@ export default App;
 ```
 :::
 
-### 显示子组件
+### 顯示子組件
 
 :::demo
 ```tsx
@@ -117,7 +117,6 @@ const DescStyle = {
 const App = () => {
   const [checked, setChecked] = useState(false)
   const changeStatus = (value: boolean, event: React.MouseEvent<Element, MouseEvent>) => {
-    console.log(`触发了change事件，开关状态：${value}`)
     setChecked(value)
   }
   return (
@@ -133,7 +132,7 @@ const App = () => {
             <div className="right-content" className={RightContentStyle}>
               <span className="title" className={TitleStyle}>NutUI-React</span>
               <div className="desc" className={DescStyle}>
-                一套京东风格的轻量级移动端React组件库，提供丰富的基础组件和业务组件，帮助开发者快速搭建移动应用。
+                一套京東風格的輕量級移動端React組件庫，提供豐富的基礎組件和業務組件，幫助開發者快速搭建移動應用。
               </div>
             </div>
           </div>
@@ -153,15 +152,15 @@ export default App;
 
 ### Prop  
 
-| 字段       | 说明                                             | 类型    | 默认值    |
+| 字段       | 說明                                             | 類型    | 默認值    |
 |------------|-------------------------------------------------|---------|----------|
-| loading    | 是否显示骨架屏                                    | Boolean | `false`    | 
-| width       | 每行宽度                                        | Number  | 100 |
+| loading    | 是否顯示骨架屏                                    | Boolean | `false`    | 
+| width       | 每行寬度                                        | Number  | 100 |
 | height      | 每行高度                                        | Number  | 100   |
-| animated    | 是否开启骨架屏动画                                | Boolean  | `false`  |
-| avatar      | 是否显示头像                                     | Boolean | `false`   |
-| avatarShape      | 头像形状：正方形/圆形                        | String | `round`   |
-| avatarSize       | 头像大小                                   | String | `50px`    |
-| round  | 标题/段落是否采用圆角风格                                | Boolean | `false`  |
-| row    | 设置段落行数                                           | Number | 1       |
-| title  | 是否显示段落标题                                        | Boolean | `false`   |
+| animated    | 是否開啟骨架屏動畫                                | Boolean  | `false`  |
+| avatar      | 是否顯示頭像                                    | Boolean | `false`   |
+| avatarShape      | 頭像形狀：正方形/圓形                        | String | `round`   |
+| avatarSize       | 頭像大小                                  | String | `50px`    |
+| round  | 標題/段落是否採用圓角風格                                | Boolean | `false`  |
+| row    | 設置段落行數                                           | Number | 1       |
+| title  | 是否顯示段落標題                                        | Boolean | `false`   |
