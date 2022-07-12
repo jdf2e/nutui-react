@@ -51,14 +51,11 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo((props) 
   const colBem = bem('collapse')
   useEffect(() => {
     const activeArr = handleActiveName()
-    console.log('activeArr', activeArr)
     setDefaultOpenIndex(activeArr)
   }, [activeName])
 
   const onToggle = (isOpen: boolean, name: string) => {
     let newOpenIndex = [...defaultOpenIndex]
-    console.log('newOpenIndex', newOpenIndex)
-    console.log('isOpen', isOpen, name)
     if (isOpen) {
       // 当前状态为true，则变为false,闭合
       const removeIndex = newOpenIndex.findIndex((value) => {
@@ -74,7 +71,7 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo((props) 
       }
     }
     setDefaultOpenIndex(newOpenIndex)
-    // change && change(!isOpen, name)
+    change && change(!isOpen, name)
   }
   return (
     <div className={colBem()}>
