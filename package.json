@@ -39,8 +39,11 @@
     "add": "node scripts/createComponentMode.js",
     "generate:file": "node scripts/generate-nutui.js",
     "generate:themes": "node scripts/generate-themes.js",
+    "generate:file:taro": "node scripts/generate-nutui-taro.js",
     "checked": "npm run generate:file && tsc",
+    "checked:taro":"npm run generate:file:taro",
     "dev": "npm run checked && vite --open --force",
+    "dev:taro:weapp": "npm run checked:taro && cd ./src/sites/mobile-taro/react && npm run dev:weapp --watch",
     "replace:scss": "node scripts/replace-scss-alias.js",
     "replace:types": "node scripts/replace-types-alias.js",
     "build:types": "tsc && npm run replace:types",
@@ -59,7 +62,8 @@
     "publish:beta": "npm publish --tag beta",
     "prepare": "husky install",
     "test": "jest",
-    "test:demo": "jest  --testNamePattern=^should match snapshot$ --runTestsByPath ./src/packages/collapse/__test__/collapse.spec.tsx"
+    "test:demo": "jest  --testNamePattern=^should match snapshot$ --runTestsByPath ./src/packages/collapse/__test__/collapse.spec.tsx",
+    "createTaroConfig": "node scripts/generate-taro-route.js"
   },
   "engines": {
     "node": "^14.18.0 || >=15.0.0"

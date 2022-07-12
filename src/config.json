@@ -48,6 +48,7 @@
           "desc": "按钮",
           "sort": 1,
           "show": true,
+          "taro": true,
           "author": ""
         },
         {
