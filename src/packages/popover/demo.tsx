@@ -173,9 +173,16 @@ const BadgeDemo = () => {
               <div className="self-content" style={selfContentStyle}>
                 {selfContent.map((item: any) => {
                   return (
-                    <div className="self-content-item" style={selfContentItem} key={item.name}>
+                    <div
+                      className="self-content-item"
+                      style={selfContentItem}
+                      key={item.name}
+                    >
                       <Icon name={item.name} size="15" />
-                      <div className="self-content-desc" style={selfContentDesc}>
+                      <div
+                        className="self-content-desc"
+                        style={selfContentDesc}
+                      >
                         {item.desc}
                       </div>
                     </div>

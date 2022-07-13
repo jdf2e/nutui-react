@@ -13,7 +13,12 @@ import { useConfig } from '@/packages/configprovider'
 
 export type FileType<T> = { [key: string]: T }
 
-export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error' | 'removed'
+export type FileItemStatus =
+  | 'ready'
+  | 'uploading'
+  | 'success'
+  | 'error'
+  | 'removed'
 
 export interface UploaderProps {
   url: string
@@ -43,12 +48,24 @@ export interface UploaderProps {
   style: React.CSSProperties
   start?: (option: UploadOptions) => void
   removeImage?: (file: FileItem, fileList: FileItem[]) => void
-  success?: (param: { responseText: XMLHttpRequest['responseText']; option: UploadOptions }) => void
-  progress?: (param: { e: ProgressEvent<XMLHttpRequestEventTarget>; option: UploadOptions }) => void
-  failure?: (param: { responseText: XMLHttpRequest['responseText']; option: UploadOptions }) => void
+  success?: (param: {
+    responseText: XMLHttpRequest['responseText']
+    option: UploadOptions
+  }) => void
+  progress?: (param: {
+    e: ProgressEvent<XMLHttpRequestEventTarget>
+    option: UploadOptions
+  }) => void
+  failure?: (param: {
+    responseText: XMLHttpRequest['responseText']
+    option: UploadOptions
+  }) => void
   update?: (fileList: any[]) => void
   oversize?: (file: File[]) => void
-  change?: (param: { fileList: any[]; event: React.ChangeEvent<HTMLInputElement> }) => void
+  change?: (param: {
+    fileList: any[]
+    event: React.ChangeEvent<HTMLInputElement>
+  }) => void
   beforeUpload?: (file: File[]) => Promise<File[]>
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
   fileItemClick?: (file: FileItem) => void
@@ -84,11 +101,17 @@ const defaultProps = {
 
 export class FileItem {
   status: FileItemStatus = 'ready'
-  message: string = '准备中..'
+
+  message = '准备中..'
+
   uid: string = new Date().getTime().toString()
+
   name?: string
+
   url?: string
+
   type?: string
+
   formData: FormData = new FormData()
 }
 const InternalUploader: ForwardRefRenderFunction<
@@ -333,10 +356,12 @@ const InternalUploader: ForwardRefRenderFunction<
     const { files } = $el
 
     if (beforeUpload) {
-      beforeUpload(new Array<File>().slice.call(files)).then((f: Array<File>) => {
-        const _files: File[] = filterFiles(new Array<File>().slice.call(f))
-        readFile(_files)
-      })
+      beforeUpload(new Array<File>().slice.call(files)).then(
+        (f: Array<File>) => {
+          const _files: File[] = filterFiles(new Array<File>().slice.call(f))
+          readFile(_files)
+        }
+      )
     } else {
       const _files = filterFiles(new Array<File>().slice.call(files))
       readFile(_files)
@@ -397,16 +422,22 @@ const InternalUploader: ForwardRefRenderFunction<
                 <div className="nut-uploader__preview-img">
                   {item.status === 'ready' ? (
                     <div className="nut-uploader__preview__progress">
-                      <div className="nut-uploader__preview__progress__msg">{item.message}</div>
+                      <div className="nut-uploader__preview__progress__msg">
+                        {item.message}
+                      </div>
                     </div>
                   ) : (
                     item.status !== 'success' && (
                       <div className="nut-uploader__preview__progress">
                         <Icon
                           color="#fff"
-                          name={`${item.status == 'error' ? 'failure' : 'loading'}`}
-                        ></Icon>
-                        <div className="nut-uploader__preview__progress__msg">{item.message}</div>
+                          name={`${
+                            item.status == 'error' ? 'failure' : 'loading'
+                          }`}
+                        />
+                        <div className="nut-uploader__preview__progress__msg">
+                          {item.message}
+                        </div>
                       </div>
                     )
                   )}
@@ -444,7 +475,9 @@ const InternalUploader: ForwardRefRenderFunction<
                             onClick={() => handleItemClick(item)}
                             className="nut-uploader__preview-img__file__name"
                           >
-                            <Icon color="#808080" name="link"></Icon>&nbsp;{item.name}
+                            <Icon color="#808080" name="link" />
+                            &nbsp;
+                            {item.name}
                           </div>
                         </div>
                       )}

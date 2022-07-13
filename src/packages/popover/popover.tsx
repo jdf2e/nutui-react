@@ -1,4 +1,10 @@
-import React, { CSSProperties, FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import ReactDOM from 'react-dom'
 import Trigger from './Trigger'
 import Icon from '@/packages/icon'
@@ -12,7 +18,9 @@ export interface PopoverProps {
   style?: CSSProperties
   onClick: (e: MouseEvent) => void
 }
-export function findDOMNode<T = HTMLElement>(node: React.ReactInstance | HTMLElement): T {
+export function findDOMNode<T = HTMLElement>(
+  node: React.ReactInstance | HTMLElement
+): T {
   if (node instanceof HTMLElement) {
     return node as unknown as T
   }
@@ -24,7 +32,12 @@ const getEleAttr = (ele: HTMLElement | Element) => {
   }
   return null
 }
-export type PopoverType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
+export type PopoverType =
+  | 'default'
+  | 'primary'
+  | 'success'
+  | 'warning'
+  | 'danger'
 const defaultProps = {
   list: [],
   theme: 'light',
@@ -34,7 +47,17 @@ const defaultProps = {
   onClick: (e: MouseEvent) => {},
 } as PopoverProps
 export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
-  const { children, list, theme, location, visible, className, style, onClick, ...reset } = {
+  const {
+    children,
+    list,
+    theme,
+    location,
+    visible,
+    className,
+    style,
+    onClick,
+    ...reset
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -134,8 +157,15 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
               {Array.isArray(children) ? children[1] : ''}
               {list.map((item) => {
                 return (
-                  <div key={item.name} className={`title-item ${item.disabled ? 'disabled' : ''}`}>
-                    {item.icon ? <Icon className="item-img" name={item.icon} /> : ''}
+                  <div
+                    key={item.name}
+                    className={`title-item ${item.disabled ? 'disabled' : ''}`}
+                  >
+                    {item.icon ? (
+                      <Icon className="item-img" name={item.icon} />
+                    ) : (
+                      ''
+                    )}
                     <div className="title-name">{item.name}</div>
                   </div>
                 )

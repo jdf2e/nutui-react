@@ -87,7 +87,9 @@ export const CustomRender: FunctionComponent<
 
     data.forEach((item: RegionData) => {
       if (!item.title) {
-        console.error('[NutUI] <Address> 请检查数组选项的 title 值是否有设置 ,title 为必填项 .')
+        console.error(
+          '[NutUI] <Address> 请检查数组选项的 title 值是否有设置 ,title 为必填项 .'
+        )
       }
     })
 
@@ -98,7 +100,9 @@ export const CustomRender: FunctionComponent<
     })
 
     data.forEach((item: RegionData) => {
-      const index = newData.findIndex((value: CustomRegionData) => value.title === item.title)
+      const index = newData.findIndex(
+        (value: CustomRegionData) => value.title === item.title
+      )
       if (index <= -1) {
         newData.push({
           title: item.title,
@@ -150,9 +154,8 @@ export const CustomRender: FunctionComponent<
   const getTabName = (item: RegionData, index: number) => {
     if (tabIndex > index) {
       return item.name
-    } else {
-      return locale.select
     }
+    return locale.select
   }
 
   const mapRef = {
@@ -273,21 +276,40 @@ export const CustomRender: FunctionComponent<
   return (
     <div className={b('custom')}>
       <div className={b('region-tab')}>
-        {Object.keys(selectedRegion).map((key: string | SelectedRegionType, index) => {
-          return (
-            <div
-              className={`${b('tab-item')} ${index === tabIndex ? 'active' : ''}`}
-              key={index}
-              ref={mapRef[key as SelectedRegionType]}
-              onClick={() => changeRegionTab(selectedRegion[key as SelectedRegionType], index, key)}
-            >
-              {index <= tabIndex && (
-                <div>{getTabName(selectedRegion[key as SelectedRegionType], index)}</div>
-              )}
-            </div>
-          )
-        })}
-        <div className={b('tab-line')} ref={regionLine} style={{ left: `${lineDistance}px` }} />
+        {Object.keys(selectedRegion).map(
+          (key: string | SelectedRegionType, index) => {
+            return (
+              <div
+                className={`${b('tab-item')} ${
+                  index === tabIndex ? 'active' : ''
+                }`}
+                key={index}
+                ref={mapRef[key as SelectedRegionType]}
+                onClick={() =>
+                  changeRegionTab(
+                    selectedRegion[key as SelectedRegionType],
+                    index,
+                    key
+                  )
+                }
+              >
+                {index <= tabIndex && (
+                  <div>
+                    {getTabName(
+                      selectedRegion[key as SelectedRegionType],
+                      index
+                    )}
+                  </div>
+                )}
+              </div>
+            )
+          }
+        )}
+        <div
+          className={b('tab-line')}
+          ref={regionLine}
+          style={{ left: `${lineDistance}px` }}
+        />
       </div>
 
       {privateType === 'custom' && (
@@ -301,8 +323,8 @@ export const CustomRender: FunctionComponent<
                     className={b('region-item')}
                     onClick={(e) => nextAreaList(item as RegionData)}
                   >
-                    {selectedRegion[tabName[tabIndex] as SelectedRegionType].id ===
-                      (item as RegionData).id && (
+                    {selectedRegion[tabName[tabIndex] as SelectedRegionType]
+                      .id === (item as RegionData).id && (
                       <Icon
                         className={b('region-item--icon')}
                         name="Check"

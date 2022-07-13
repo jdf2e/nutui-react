@@ -1,18 +1,16 @@
-# CricleProgress 进度条
+# CricleProgress
 
-### 介绍
+### Intro
 
-展示操作或任务的当前进度。
+Circular progress bar component
 
-### 安装
+### Install
 
 ``` ts
 import { CirecleProgress } from '@nutui/nutui-react';
 ```
 
-## 代码演示
-
-### 基础用法
+### Basic Usage
 
 :::demo
 ```tsx
@@ -30,7 +28,7 @@ export default App;
 ```
 :::
 
-### 环形进度条自定义样式
+### Ring progress bar custom style
 
 :::demo
 ```tsx
@@ -54,7 +52,7 @@ export default App;
 ```
 :::
 
-### 环形进度条自定义内容
+### Ring progress bar custom content
 :::demo
 ```tsx
 import React from "react";
@@ -70,7 +68,7 @@ const App = () => {
   return (
     <>
       <CircleProgress progress={50} isAuto>
-        <div>自定义</div>
+        <div>custom</div>
       </CircleProgress>
     </>
   )
@@ -79,7 +77,7 @@ export default App;
 ```
 :::
 
-### 动态改变环形进度条的进度
+### Dynamically change the progress of the circular progress bar
 :::demo
 ```tsx
 import React, { useState } from "react";
@@ -133,10 +131,10 @@ const App = () => {
       </div>
       <div className="demo__btn" style={demoBtnStyle}>
         <Button type="primary" onClick={setReduceVal} style={{ marginRight: '10px' }}>
-          减少
+          reduce
         </Button>
         <Button type="primary" onClick={setAddVal}>
-          增加
+          add
         </Button>
       </div>
     </>
@@ -149,9 +147,12 @@ export default App;
 
 ## Prop
 
-| 字段 | 说明 | 类型 | 默认值
+| Attribute | Description | Type | Default
 |----- | ----- | ----- | -----
-| progress | 百分比 | Number,String | 必传项，无默认值
-| strokeInnerWidth | 圆弧的宽度 | Number,String | 10
-| isAuto | 是否自定义内容显示（taro暂不支持） | Boolean | false
-| progressOption | 外圆相关参数对象,其中包括半径，宽度，背景颜色，进度色值 | Object | {radius: 50,strokeOutWidth: 10, backColor: '#d9d9d9',progressColor: 'red'}
+| progress | Progress Rate | Number,String | Required, no default value
+| strokeWidth | Stroke width | Number,String | 5
+| radius | radius | Number,String | 50
+| circleColor | Progress color, passing object to render gradient | Number,String | '#fa2c19'
+| pathColor | Track Color | String | '#d9d9d9'
+| strokeLinecap | Stroke linecap, can be set to square butt | String | 'round'
+| clockwise| Whether to be clockwise | Boolean | true

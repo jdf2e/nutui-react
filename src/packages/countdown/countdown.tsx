@@ -1,4 +1,10 @@
-import React, { FunctionComponent, CSSProperties, useState, useRef, useEffect } from 'react'
+import React, {
+  FunctionComponent,
+  CSSProperties,
+  useState,
+  useRef,
+  useEffect,
+} from 'react'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
 
@@ -57,7 +63,7 @@ export const CountDown: FunctionComponent<
   const fill2 = (v: any) => {
     v += ''
     while (v.length < 2) {
-      v = '0' + v
+      v = `0${v}`
     }
     return v
   }
@@ -86,10 +92,13 @@ export const CountDown: FunctionComponent<
 
       const d: number = ts >= ds ? parseInt(String(ts / ds)) : 0
       const h = ts - d * ds >= hs ? parseInt(String((ts - d * ds) / hs)) : 0
-      const m = ts - d * ds - h * hs >= ms ? parseInt(String((ts - d * ds - h * hs) / ms)) : 0
+      const m =
+        ts - d * ds - h * hs >= ms
+          ? parseInt(String((ts - d * ds - h * hs) / ms))
+          : 0
       const s = Math.round((ts - d * ds - h * hs - m * ms) / 1000)
 
-      if (d >= 0) rest.d = d + ''
+      if (d >= 0) rest.d = `${d}`
       if (h >= 0) rest.h = fill2(h)
       if (m >= 0) rest.m = fill2(m)
       if (s >= 0) rest.s = fill2(s)
@@ -119,7 +128,8 @@ export const CountDown: FunctionComponent<
   // 展示文案，English todo @hanyuxinting
   const plainText = (() => {
     const { d, h, m, s } = resttime
-    const showDayshours = Number(d) > 0 && showDays ? `${d}${locale.countdown.day}${h}` : h
+    const showDayshours =
+      Number(d) > 0 && showDays ? `${d}${locale.countdown.day}${h}` : h
     return `${showDayshours}${locale.countdown.hour}${m}${locale.countdown.minute}${s}${locale.countdown.second}`
   })()
 
@@ -137,7 +147,8 @@ export const CountDown: FunctionComponent<
     setRestTime(end - (start + diffTime))
     stateRef.current.timer = setInterval(() => {
       if (!stateRef.current.isPaused) {
-        const restTime = end - (Date.now() - stateRef.current.pauseTime + diffTime)
+        const restTime =
+          end - (Date.now() - stateRef.current.pauseTime + diffTime)
         setRestTime(restTime)
         if (restTime < 0) {
           setRestTime(0)

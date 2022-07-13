@@ -6,8 +6,13 @@ export interface CellGroupProps {
   title: string
   classPrefix: string
 }
-const defaultProps = { title: '', classPrefix: 'nutui-cell-group' } as CellGroupProps
-export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (props) => {
+const defaultProps = {
+  title: '',
+  classPrefix: 'nutui-cell-group',
+} as CellGroupProps
+export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
+  props
+) => {
   const { children, classPrefix, title } = {
     ...defaultProps,
     ...props,

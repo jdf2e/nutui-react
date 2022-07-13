@@ -1,4 +1,9 @@
-import { CSSProperties, ReactNode, ForwardRefExoticComponent, PropsWithChildren } from 'react'
+import {
+  CSSProperties,
+  ReactNode,
+  ForwardRefExoticComponent,
+  PropsWithChildren,
+} from 'react'
 
 export type DialogConfigType = {
   prefixCls?: string
@@ -39,7 +44,8 @@ export interface ConfirmProps extends DialogProps {
   noticeType?: string
 }
 
-export interface DialogComponent extends ForwardRefExoticComponent<PropsWithChildren<DialogProps>> {
+export interface DialogComponent
+  extends ForwardRefExoticComponent<PropsWithChildren<DialogProps>> {
   confirm: (props: ConfirmProps) => DialogReturnProps
   alert: (props: ConfirmProps) => DialogReturnProps
   config: (config: DialogConfigType) => void

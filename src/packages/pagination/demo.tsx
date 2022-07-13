@@ -36,7 +36,12 @@ const PaginationDemo = () => {
         onChange={pageChange1}
       />
       <h2>简单模式</h2>
-      <Pagination modelValue={currentPage2} pageCount={12} mode="simple" onChange={pageChange2} />
+      <Pagination
+        modelValue={currentPage2}
+        pageCount={12}
+        mode="simple"
+        onChange={pageChange2}
+      />
       <h2>显示省略号</h2>
       <Pagination
         modelValue={currentPage3}

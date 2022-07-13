@@ -130,11 +130,23 @@ const StepsDemo = () => {
         <h2>{translated['0533b453']}</h2>
         <div className="steps-wrapper">
           <Steps current={stepState.current2}>
-            <Step activeIndex={1} title={translated['606ae3f5']} content={translated.db1b4ed6}>
+            <Step
+              activeIndex={1}
+              title={translated['606ae3f5']}
+              content={translated.db1b4ed6}
+            >
               1
             </Step>
-            <Step activeIndex={2} title={translated['3c6225eb']} content={translated.db1b4ed6} />
-            <Step activeIndex={3} title={translated['979df428']} content={translated.db1b4ed6} />
+            <Step
+              activeIndex={2}
+              title={translated['3c6225eb']}
+              content={translated.db1b4ed6}
+            />
+            <Step
+              activeIndex={3}
+              title={translated['979df428']}
+              content={translated.db1b4ed6}
+            />
           </Steps>
           <div className="steps-button" style={{ marginTop: '10px' }}>
             <Button type="danger" onClick={() => handleStep('current2')}>
@@ -157,12 +169,23 @@ const StepsDemo = () => {
           </Steps>
         </div>
         <h2>{translated['7605ff3d']}</h2>
-        <div className="steps-wrapper" style={{ height: '300px', padding: '15px 30px' }}>
+        <div
+          className="steps-wrapper"
+          style={{ height: '300px', padding: '15px 30px' }}
+        >
           <Steps direction="vertical" current={2}>
-            <Step activeIndex={1} title={translated.f28461bb} content={translated.da71e1e5}>
+            <Step
+              activeIndex={1}
+              title={translated.f28461bb}
+              content={translated.da71e1e5}
+            >
               1
             </Step>
-            <Step activeIndex={2} title={translated.dc9591e5} content={translated['2e60dc8f']}>
+            <Step
+              activeIndex={2}
+              title={translated.dc9591e5}
+              content={translated['2e60dc8f']}
+            >
               2
             </Step>
             <Step
@@ -175,12 +198,23 @@ const StepsDemo = () => {
           </Steps>
         </div>
         <h2>{translated.d98503f5}</h2>
-        <div className="steps-wrapper" style={{ height: '300px', padding: '15px 40px' }}>
+        <div
+          className="steps-wrapper"
+          style={{ height: '300px', padding: '15px 40px' }}
+        >
           <Steps direction="vertical" progressDot current={2}>
-            <Step activeIndex={1} title={translated.f28461bb} content={translated.da71e1e5}>
+            <Step
+              activeIndex={1}
+              title={translated.f28461bb}
+              content={translated.da71e1e5}
+            >
               1
             </Step>
-            <Step activeIndex={2} title={translated.dc9591e5} content={translated['2e60dc8f']}>
+            <Step
+              activeIndex={2}
+              title={translated.dc9591e5}
+              content={translated['2e60dc8f']}
+            >
               2
             </Step>
             <Step

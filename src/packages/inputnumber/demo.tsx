@@ -102,7 +102,12 @@ const InputNumberDemo = () => {
         </Cell>
         <h2>{translated['9636103a']}</h2>
         <Cell>
-          <InputNumber modelValue={inputState.val3} min="10" max="20" overlimit={overlimit} />
+          <InputNumber
+            modelValue={inputState.val3}
+            min="10"
+            max="20"
+            overlimit={overlimit}
+          />
         </Cell>
         <h2>{translated['181965e2']}</h2>
         <Cell>
@@ -114,7 +119,12 @@ const InputNumberDemo = () => {
         </Cell>
         <h2>{translated['3a42134b']}</h2>
         <Cell>
-          <InputNumber modelValue={inputState.val6} step="0.1" decimalPlaces="1" readonly />
+          <InputNumber
+            modelValue={inputState.val6}
+            step="0.1"
+            decimalPlaces="1"
+            readonly
+          />
         </Cell>
         <h2>{translated['65bafb1d']}</h2>
         <Cell>
@@ -122,7 +132,11 @@ const InputNumberDemo = () => {
         </Cell>
         <h2>{translated['7e2394ae']}</h2>
         <Cell>
-          <InputNumber modelValue={inputState.val8} buttonSize="30" inputWidth="50" />
+          <InputNumber
+            modelValue={inputState.val8}
+            buttonSize="30"
+            inputWidth="50"
+          />
         </Cell>
       </div>
     </>

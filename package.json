@@ -62,8 +62,9 @@
     "node": "^14.18.0 || >=15.0.0"
   },
   "lint-staged": {
+    "*.{ts,tsx}": "eslint",
     "*.md": "prettier --write",
-    "*.{ts,tsx,js,vue,scss}": "prettier --write"
+    "*.{ts,tsx,scss}": "prettier --write"
   },
   "dependencies": {
     "@babel/runtime": "^7.16.5",
@@ -116,7 +117,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-unused-imports": "^2.0.0",
+    "eslint-plugin-unused-imports": "^1.1.5",
     "fs-extra": "^10.0.0",
     "glob": "^7.2.0",
     "husky": "^6.0.0",

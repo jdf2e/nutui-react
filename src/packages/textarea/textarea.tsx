@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useEffect, useState, CSSProperties } from 'react'
+import React, {
+  FunctionComponent,
+  useEffect,
+  useState,
+  CSSProperties,
+} from 'react'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 
@@ -96,7 +101,9 @@ export const TextArea: FunctionComponent<
 
   return (
     <div
-      className={`${textareaBem()} ${disabled ? textareaBem('disabled') : ''} ${className || ''}`}
+      className={`${textareaBem()} ${disabled ? textareaBem('disabled') : ''} ${
+        className || ''
+      }`}
     >
       <textarea
         className={textareaBem('textarea')}
