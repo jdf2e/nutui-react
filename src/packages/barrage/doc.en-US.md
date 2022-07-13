@@ -1,18 +1,18 @@
-# Barrage 弹幕
+# Barrage 
 
-### 介绍
+### Intro
 
-用于话语和词组的轮播展示，适用于视频中或其他类似需求中。
+It is used for the rotation display of words and phrases, which is suitable for video or other similar needs.
 
-### 安装
+### Install
 
 ``` ts
 import { Barrage } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## Code demonstration
 
-### 基础用法
+### Basic usage
 
 :::demo
 ```tsx
@@ -25,23 +25,23 @@ const barrageStyle = {
   boxSizing: 'border-box'
 }
 const App = () => {
-  const list = ['画美不看', '不明觉厉', '喜大普奔', '男默女泪', '累觉不爱', '爷青结-']
+  const list = ['beautiful painting', 'Unconsciously', 'Super Plus enjoy', 'male silent female tears', 'Tired of not loving', 'cool-']
   const barrageRef = useRef(null)
   const addBarrage = () => {
     const n = Math.random()
     if (barrageRef.current) {
-      barrageRef.current.add(`随机——${  String(n).substr(2, 10)}`)
+      barrageRef.current.add(`random——${  String(n).substr(2, 10)}`)
     }
   }
   return (
     <div className="demo">
-      <h2>基础用法</h2>
+      <h2>Basic usage</h2>
       <Cell className="barrage-demo-wrap" style={barrageStyle}>
         <Barrage className="barrage-demo" ref={barrageRef} barrageList={list} style={barrageStyle} />
       </Cell>
       <div className="test" style={{ textAlign: 'center' }}>
         <Button type="danger" onClick={addBarrage}>
-          随机添加
+          add randomly
         </Button>
       </div>
     </div>
@@ -56,17 +56,17 @@ export default App;
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| barrageList         | 弹幕列表数据               | Array | []              |
-| frequency        | 可视区域内每个弹幕出现的时间间隔                         | Number | 500               |
-| speeds         | 每个弹幕的滚动时间 | Number |  2000               |
-| rows  | 弹幕行数，分几行展示     | Number | 1 |
-| top  | 弹幕垂直距离    | Number | 10 |
-| loop  | 是否循环播放     | Boolean | true |
+| barrageList         | Barrage list data               | Array | []              |
+| frequency        | The time interval between the occurrence of each barrage in the visual area                         | Number | 500               |
+| speeds         | Rolling time of each barrage | Number |  2000               |
+| rows  | The number of bullet screen lines is displayed in several lines     | Number | 1 |
+| top  | Vertical distance of barrage    | Number | 10 |
+| loop  | Loop play     | Boolean | true |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
+| Event | Description           | Arguments     |
 |--------|----------------|--------------|
-| add  | 添加数据 | - |
+| add  | Add data | - |
