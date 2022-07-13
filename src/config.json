@@ -392,16 +392,6 @@
           "sort": 1,
           "show": true,
           "author": "swag~jun"
-        },
-        {
-          "version": "0.1.0",
-          "name": "Cascader",
-          "type": "component",
-          "cName": "级联选择器",
-          "desc": "级联选择，用于多层级数据的选择，典型场景为省市区选择。",
-          "sort": 1,
-          "show": true,
-          "author": "ailululu"
         }
       ]
     },
@@ -698,6 +688,16 @@
           "sort": 20,
           "show": true,
           "author": "hx"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Progress",
+          "type": "component",
+          "cName": "进度条",
+          "desc": "进度条",
+          "sort": 1,
+          "show": true,
+          "author": "ailululu"
         }
       ]
     },
