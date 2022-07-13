@@ -1,18 +1,18 @@
-# Barrage 弹幕
+# Barrage 彈幕
 
-### 介绍
+### 介紹
 
-用于话语和词组的轮播展示，适用于视频中或其他类似需求中。
+用於話語和詞組的輪播展示，適用於視頻中或其他類似需求中。
 
-### 安装
+### 安裝
 
 ``` ts
 import { Barrage } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 ```tsx
@@ -25,23 +25,23 @@ const barrageStyle = {
   boxSizing: 'border-box'
 }
 const App = () => {
-  const list = ['画美不看', '不明觉厉', '喜大普奔', '男默女泪', '累觉不爱', '爷青结-']
+  const list = ['畫美不看', '不明覺厲', '喜大普奔', '男默女淚', '累覺不愛', '爺青結-']
   const barrageRef = useRef(null)
   const addBarrage = () => {
     const n = Math.random()
     if (barrageRef.current) {
-      barrageRef.current.add(`随机——${  String(n).substr(2, 10)}`)
+      barrageRef.current.add(`隨機——${  String(n).substr(2, 10)}`)
     }
   }
   return (
     <div className="demo">
-      <h2>基础用法</h2>
+      <h2>基礎用法</h2>
       <Cell className="barrage-demo-wrap" style={barrageStyle}>
         <Barrage className="barrage-demo" ref={barrageRef} barrageList={list} style={barrageStyle} />
       </Cell>
       <div className="test" style={{ textAlign: 'center' }}>
         <Button type="danger" onClick={addBarrage}>
-          随机添加
+          隨機添加
         </Button>
       </div>
     </div>
@@ -56,17 +56,17 @@ export default App;
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| 參數         | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
-| barrageList         | 弹幕列表数据               | Array | []              |
-| frequency        | 可视区域内每个弹幕出现的时间间隔                         | Number | 500               |
-| speeds         | 每个弹幕的滚动时间 | Number |  2000               |
-| rows  | 弹幕行数，分几行展示     | Number | 1 |
-| top  | 弹幕垂直距离    | Number | 10 |
-| loop  | 是否循环播放     | Boolean | true |
+| barrageList         | 彈幕列表數據               | Array | []              |
+| frequency        | 可視區域內每個彈幕出現的時間間隔                         | Number | 500               |
+| speeds         | 每個彈幕的滾動時間 | Number |  2000               |
+| rows  | 彈幕行數，分幾行展示     | Number | 1 |
+| top  | 彈幕垂直距離    | Number | 10 |
+| loop  | 是否循環播放     | Boolean | true |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
+| 事件名 | 說明           | 回調參數     |
 |--------|----------------|--------------|
-| add  | 添加数据 | - |
+| add  | 添加數據 | - |
