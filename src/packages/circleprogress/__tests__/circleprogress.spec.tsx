@@ -6,14 +6,21 @@ import { CircleProgress } from '../circleprogress'
 
 test('should change stoke when use width props', () => {
   const { getByTestId } = render(
-    <CircleProgress data-testid="circle-prop" progress={40} strokeWidth={10} radius={60} />
+    <CircleProgress
+      data-testid="circle-prop"
+      progress={40}
+      strokeWidth={10}
+      radius={60}
+    />
   )
   expect(getByTestId('circle-prop').style.width).toBe('120px')
   expect(getByTestId('circle-prop').style.height).toBe('120px')
 })
 
 test('should change color when use color props', () => {
-  const { container } = render(<CircleProgress progress={40} circleColor="red" />)
+  const { container } = render(
+    <CircleProgress progress={40} circleColor="red" />
+  )
   expect(container.querySelectorAll('path')[1].style.stroke).toBe('red')
 })
 

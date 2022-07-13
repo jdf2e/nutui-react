@@ -87,7 +87,13 @@ export const FixedNav: FunctionComponent<
 
   return (
     <div className={classes} style={position} {...rest}>
-      {overlay && <Overlay visible={visible} zIndex={200} onClick={() => onUpdateValue(false)} />}
+      {overlay && (
+        <Overlay
+          visible={visible}
+          zIndex={200}
+          onClick={() => onUpdateValue(false)}
+        />
+      )}
       <div className="list">
         {slotList || (
           <div className="nut-fixednav__list">

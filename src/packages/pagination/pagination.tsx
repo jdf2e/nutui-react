@@ -36,7 +36,8 @@ const defaultProps = {
   },
 } as PaginationProps
 export const Pagination: FunctionComponent<
-  Partial<PaginationProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<PaginationProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const { locale } = useConfig()
   const { children } = { ...defaultProps, ...props }
@@ -64,7 +65,8 @@ export const Pagination: FunctionComponent<
   const paginationBem = bem('pagination')
   // 计算页面的数量
   const computedCountRef = () => {
-    const num = Number(pageCount) || Math.ceil(Number(totalItems) / Number(itemsPerPage))
+    const num =
+      Number(pageCount) || Math.ceil(Number(totalItems) / Number(itemsPerPage))
     return isNaN(num) ? 1 : Math.max(1, num)
   }
 
@@ -146,9 +148,9 @@ export const Pagination: FunctionComponent<
   return (
     <div className={`${paginationBem('')} ${className}`} {...rest}>
       <div
-        className={`${paginationBem('prev')}  ${mode == 'multi' ? '' : 'simple-border'} ${
-          currentPage == 1 ? 'disabled' : ''
-        }`}
+        className={`${paginationBem('prev')}  ${
+          mode == 'multi' ? '' : 'simple-border'
+        } ${currentPage == 1 ? 'disabled' : ''}`}
         onClick={(e) => selectPage(Number(currentPage) - 1, true)}
       >
         {locale.pagination.prev || prevText}
@@ -159,8 +161,12 @@ export const Pagination: FunctionComponent<
             return (
               <div
                 key={`${index}pagination`}
-                className={`${paginationBem('item')} ${item.active ? 'active' : ''}`}
-                onClick={(e) => (!item.active ? selectPage(item.number, true) : '')}
+                className={`${paginationBem('item')} ${
+                  item.active ? 'active' : ''
+                }`}
+                onClick={(e) =>
+                  !item.active ? selectPage(item.number, true) : ''
+                }
               >
                 {pageNodeRender ? pageNodeRender(item) : item.text}
               </div>
@@ -180,7 +186,9 @@ export const Pagination: FunctionComponent<
         ''
       )}
       <div
-        className={`${paginationBem('next')}  ${Number(currentPage) >= countRef ? 'disabled' : ''}`}
+        className={`${paginationBem('next')}  ${
+          Number(currentPage) >= countRef ? 'disabled' : ''
+        }`}
         onClick={(e) => selectPage(Number(currentPage) + 1, true)}
       >
         {locale.pagination.next || nextText}

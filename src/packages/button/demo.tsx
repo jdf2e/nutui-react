@@ -100,7 +100,12 @@ const ButtonDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
-        <Button className="aa" style={{ margin: 8 }} type="primary" shape="round">
+        <Button
+          className="aa"
+          style={{ margin: 8 }}
+          type="primary"
+          shape="round"
+        >
           {translated.c38a08ef}
         </Button>
         <Button type="info" style={{ margin: 8 }} shape="round">
@@ -155,7 +160,13 @@ const ButtonDemo = () => {
           Click me!
         </Button>
         <h2>{translated['0aaad620']}</h2>
-        <Button shape="square" plain type="primary" icon="star-fill" style={{ margin: 8 }} />
+        <Button
+          shape="square"
+          plain
+          type="primary"
+          icon="star-fill"
+          style={{ margin: 8 }}
+        />
         <Button shape="square" type="primary" icon="star" style={{ margin: 8 }}>
           {translated['60a53514']}
         </Button>
@@ -180,7 +191,10 @@ const ButtonDemo = () => {
         <Button color="#7232dd" plain style={{ margin: 8 }}>
           {translated['1076d771']}
         </Button>
-        <Button color="linear-gradient(to right, #ff6034, #ee0a24)" style={{ margin: 8 }}>
+        <Button
+          color="linear-gradient(to right, #ff6034, #ee0a24)"
+          style={{ margin: 8 }}
+        >
           {translated['6ab47cd2']}
         </Button>
       </div>

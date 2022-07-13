@@ -46,7 +46,8 @@ const AvatarDemo = () => {
       '67f78db5': 'Support three sizes: small, normal, large',
       '3928b17e': 'Two shapes are supported: square, round',
       '049b6a97': 'Three types are supported: Picture, Icon and Character',
-      a304dabf: 'Icon and character type can customize icon color and background color',
+      a304dabf:
+        'Icon and character type can customize icon color and background color',
       '89bca4e7': 'Avatar with logo',
       e981579e: 'Avatar combination display',
       f645fc65: 'Combining avatars to control hierarchy direction',
@@ -88,7 +89,12 @@ const AvatarDemo = () => {
         </Cell>
         <h2>{translated.a304dabf}</h2>
         <Cell>
-          <Avatar className="demo-avatar" color="#fff" bgColor="#FA2C19" icon="my" />
+          <Avatar
+            className="demo-avatar"
+            color="#fff"
+            bgColor="#FA2C19"
+            icon="my"
+          />
           <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
             U
           </Avatar>

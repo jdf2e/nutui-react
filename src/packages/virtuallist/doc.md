@@ -85,7 +85,7 @@ const App =() => {
       <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>可变大小隔行展示-{data}</p>
     )
   }
-  /** itemSize为首屏最大元素大小*/
+  /** itemSize为首屏最大元素大小 */
   const ItemVariableDemo = React.memo(ItemVariable)
   return (
    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>

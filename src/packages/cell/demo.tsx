@@ -4,7 +4,9 @@ import { CellGroup } from '../cellgroup/cellgroup'
 import { Switch } from '../switch/switch'
 
 const CellDemo = () => {
-  const testClick = (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
+  const testClick = (
+    event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+  ) => {
     console.log('点击事件')
   }
   return (
@@ -15,9 +17,9 @@ const CellDemo = () => {
         <Cell title="我是标题" subTitle="副标题描述" desc="描述文字" />
         <Cell
           title="点击测试"
-          click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) =>
-            testClick(event)
-          }
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => testClick(event)}
         />
         <h2>直接使用</h2>
         <Cell title="我是标题" desc="描述文字">
@@ -25,7 +27,12 @@ const CellDemo = () => {
         </Cell>
         <CellGroup title="链接 | 分组用法">
           <Cell title="链接" isLink />
-          <Cell title="URL 跳转" desc="https://jd.com" isLink url="https://jd.com" />
+          <Cell
+            title="URL 跳转"
+            desc="https://jd.com"
+            isLink
+            url="https://jd.com"
+          />
           <Cell title="路由跳转 ’/‘ " to="/" />
         </CellGroup>
 

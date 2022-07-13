@@ -1,9 +1,18 @@
-import React, { ForwardRefRenderFunction, HTMLAttributes, forwardRef } from 'react'
+import React, {
+  ForwardRefRenderFunction,
+  HTMLAttributes,
+  forwardRef,
+} from 'react'
 import classNames from 'classnames'
 import Button from '@/packages/button'
 import { DialogWrapper } from './DialogWrapper'
 import confirm from './Confirm'
-import { DialogProps, DialogReturnProps, DialogComponent, ConfirmProps } from './config'
+import {
+  DialogProps,
+  DialogReturnProps,
+  DialogComponent,
+  ConfirmProps,
+} from './config'
 import { useConfig } from '@/packages/configprovider'
 
 const defaultProps = {
@@ -80,7 +89,9 @@ const BaseDialog: ForwardRefRenderFunction<
           <Button
             size="small"
             type="primary"
-            className={classNames('nut-dialog__footer-ok', { disabled: okBtnDisabled })}
+            className={classNames('nut-dialog__footer-ok', {
+              disabled: okBtnDisabled,
+            })}
             disabled={okBtnDisabled}
             onClick={() => handleOk()}
           >

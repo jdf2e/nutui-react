@@ -15,17 +15,20 @@ test('should allow to disable animation', () => {
 })
 
 test('should change avatar size when using avatarSize prop', () => {
-  const { container } = render(<Skeleton avatar={true} avatarSize="20px" />)
-  expect(container.querySelector('.avatarClass')).toHaveStyle({ width: '20px', height: '20px' })
+  const { container } = render(<Skeleton avatar avatarSize="20px" />)
+  expect(container.querySelector('.avatarClass')).toHaveStyle({
+    width: '20px',
+    height: '20px',
+  })
   expect(container).toMatchSnapshot()
 })
 
 test('should change avatar shape when using avatarShape prop', () => {
-  const { container } = render(<Skeleton avatar={true} avatarShape="square" />)
+  const { container } = render(<Skeleton avatar avatarShape="square" />)
   expect(container.querySelector('.avatarClass')).toMatchSnapshot()
 })
 
 test('should be round when using round prop', () => {
-  const { container } = render(<Skeleton title={true} round={true} avatar={true} />)
+  const { container } = render(<Skeleton title round avatar />)
   expect(container.querySelector('.avatarClass')).toBeTruthy()
 })

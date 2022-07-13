@@ -55,7 +55,11 @@ const ShortPasswordDemo = () => {
           setVisible3(true)
         }}
       />
-      <ShortPassword visible={visible3} onClose={() => setVisible3(false)} length={4} />
+      <ShortPassword
+        visible={visible3}
+        onClose={() => setVisible3(false)}
+        length={4}
+      />
       <h2>忘记密码提示语事件回调</h2>
       <Cell
         title="忘记密码提示语事件回调"

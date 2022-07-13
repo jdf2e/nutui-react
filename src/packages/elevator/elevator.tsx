@@ -24,7 +24,15 @@ interface ElevatorData {
 export const Elevator: FunctionComponent<
   Partial<ElevatorProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { height, acceptKey, indexList, className, clickItem, clickIndex, ...rest } = {
+  const {
+    height,
+    acceptKey,
+    indexList,
+    className,
+    clickItem,
+    clickIndex,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -80,7 +88,8 @@ export const Elevator: FunctionComponent<
     }
     if (index < 0) index = 0
 
-    if (index > state.current.listHeight.length - 2) index = state.current.listHeight.length - 2
+    if (index > state.current.listHeight.length - 2)
+      index = state.current.listHeight.length - 2
 
     setCurrentIndex(index)
     if (listview.current) {
@@ -91,7 +100,8 @@ export const Elevator: FunctionComponent<
   const touchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     const firstTouch = e.touches[0]
     touchState.current.y2 = firstTouch.pageY
-    const delta = ((touchState.current.y2 - touchState.current.y1) / spaceHeight) | 0
+    const delta =
+      ((touchState.current.y2 - touchState.current.y1) / spaceHeight) | 0
     const cacheIndex = state.current.anchorIndex + delta
 
     setCurrentIndex(cacheIndex)
@@ -169,7 +179,10 @@ export const Elevator: FunctionComponent<
         })}
       </div>
       {indexList.length && scrollStart ? (
-        <div className={b('code', { current: true })}> {indexList[currentIndex][acceptKey]}</div>
+        <div className={b('code', { current: true })}>
+          {' '}
+          {indexList[currentIndex][acceptKey]}
+        </div>
       ) : null}
       <div
         className={b('bars')}

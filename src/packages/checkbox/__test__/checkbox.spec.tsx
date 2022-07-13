@@ -5,7 +5,9 @@ import { Checkbox } from '../checkbox'
 import { CheckboxGroup } from '../../checkboxgroup/checkboxgroup'
 
 test('should match snapshot', () => {
-  const { asFragment } = render(<Checkbox textPosition="left" label="复选框" checked />)
+  const { asFragment } = render(
+    <Checkbox textPosition="left" label="复选框" checked />
+  )
   expect(asFragment()).toMatchSnapshot()
 })
 
@@ -22,7 +24,9 @@ test('should props correctly', () => {
       disabled
     />
   )
-  expect(container.querySelector('.nut-checkbox__label--disabled')).toBeInTheDocument()
+  expect(
+    container.querySelector('.nut-checkbox__label--disabled')
+  ).toBeInTheDocument()
   expect(getByTestId('checkbox')).toHaveClass('test')
   expect(getByTestId('checkbox')).toHaveStyle('color: red')
   expect(queryByText('复选框')).toBeInTheDocument()

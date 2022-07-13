@@ -1,4 +1,5 @@
 import { BaseLang } from './base'
+
 const zhTW: BaseLang = {
   save: '保存',
   confirm: '確認',

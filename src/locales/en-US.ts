@@ -87,7 +87,8 @@ const enUS: BaseLang = {
   comment: {
     complaintsText: 'I have a complaint',
     additionalReview: (day: number) => `Review after ${day} days of purchase`,
-    additionalImages: (length: number) => `There are ${length} follow-up comments`,
+    additionalImages: (length: number) =>
+      `There are ${length} follow-up comments`,
   },
 }
 export default enUS

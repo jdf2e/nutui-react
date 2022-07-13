@@ -19,7 +19,10 @@ const initPositinoCache = (reaItemSize: number, length = 0): PositionType[] => {
   return positions
 }
 // 获取列表总高度
-const getListTotalSize = (positions: Array<PositionType>, horizontal: true | false): number => {
+const getListTotalSize = (
+  positions: Array<PositionType>,
+  horizontal: true | false
+): number => {
   const index = positions.length - 1
   let size = 0
   if (index < 0) {
@@ -141,4 +144,10 @@ const updateItemSize = (
   })
 }
 
-export { initPositinoCache, getListTotalSize, binarySearch, getEndIndex, updateItemSize }
+export {
+  initPositinoCache,
+  getListTotalSize,
+  binarySearch,
+  getEndIndex,
+  updateItemSize,
+}

@@ -1,4 +1,9 @@
-import React, { CSSProperties, FunctionComponent, useEffect, useState } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  useEffect,
+  useState,
+} from 'react'
 
 import bem from '@/utils/bem'
 import { formatNumber } from './util'
@@ -36,121 +41,128 @@ const defaultProps = {
   clearable: true,
 } as InputProps
 
-export const Input: FunctionComponent<Partial<InputProps> & React.HTMLAttributes<HTMLDivElement>> =
-  (props) => {
-    const { locale } = useConfig()
-    const {
-      type,
-      defaultValue,
-      placeholder,
-      label,
-      requireShow,
-      disabled,
-      readonly,
-      textAlign,
-      maxLength,
-      clearable,
-      style,
-      className,
-      change,
-      blur,
-      focus,
-      clear,
-    } = { ...defaultProps, ...props }
+export const Input: FunctionComponent<
+  Partial<InputProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
+  const { locale } = useConfig()
+  const {
+    type,
+    defaultValue,
+    placeholder,
+    label,
+    requireShow,
+    disabled,
+    readonly,
+    textAlign,
+    maxLength,
+    clearable,
+    style,
+    className,
+    change,
+    blur,
+    focus,
+    clear,
+  } = { ...defaultProps, ...props }
 
-    locale.placeholder = placeholder || locale.placeholder
+  locale.placeholder = placeholder || locale.placeholder
 
-    const inputBem = bem('input')
-    const [inputValue, SetInputValue] = useState('')
-    const [active, SetActive] = useState(false)
+  const inputBem = bem('input')
+  const [inputValue, SetInputValue] = useState('')
+  const [active, SetActive] = useState(false)
 
-    useEffect(() => {
-      if (defaultValue) {
-        SetInputValue(defaultValue)
-      }
-    }, [defaultValue])
-
-    const valueChange = (event: Event) => {
-      let val: any = (event.target as any).value
-
-      if (type === 'digit') {
-        val = formatNumber(val, true)
-      }
-      if (type === 'number') {
-        val = formatNumber(val, false)
-      }
-      if (maxLength && val.length > Number(maxLength)) {
-        val = val.slice(0, Number(maxLength))
-      }
-      change && change(val, event)
-      SetInputValue(val)
+  useEffect(() => {
+    if (defaultValue) {
+      SetInputValue(defaultValue)
     }
+  }, [defaultValue])
 
-    const valueFocus = (event: Event) => {
-      const val: any = (event.target as any).value
-      SetActive(true)
-      if (focus) {
-        focus(val, event)
-      }
-    }
+  const valueChange = (event: Event) => {
+    let val: any = (event.target as any).value
 
-    const valueBlur = (event: Event) => {
-      setTimeout(() => {
-        SetActive(false)
-      }, 0)
-      const val: any = (event.target as any).value
-      if (blur) {
-        blur(val, event)
-      }
+    if (type === 'digit') {
+      val = formatNumber(val, true)
     }
-    const handleClear = (event: Event) => {
-      if (clear) {
-        clear('', event)
-      }
-      SetInputValue('')
+    if (type === 'number') {
+      val = formatNumber(val, false)
     }
-    const textAlignStyle = {
-      textAlign,
+    if (maxLength && val.length > Number(maxLength)) {
+      val = val.slice(0, Number(maxLength))
     }
-
-    return (
-      <div className={`${inputBem()} ${disabled ? inputBem('disabled') : ''}  ${className || ''}`}>
-        <div className={inputBem('label')}>
-          {requireShow ? <div className={inputBem('require')}>*</div> : null}
-          {label ? <div className="label-string">{label}</div> : null}
-        </div>
-        <input
-          className="input-text"
-          type={type}
-          placeholder={placeholder}
-          disabled={disabled}
-          readOnly={readonly}
-          value={inputValue}
-          style={{ ...style, ...textAlignStyle }}
-          maxLength={maxLength}
-          onBlur={(e: any) => {
-            valueBlur(e)
-          }}
-          onFocus={(e: any) => {
-            valueFocus(e)
-          }}
-          onChange={(e: any) => {
-            valueChange(e)
-          }}
-        />
-        {clearable && !readonly && active ? (
-          <div
-            onClick={(e: any) => {
-              handleClear(e)
-            }}
-            className={inputBem('clear')}
-          >
-            {active && inputValue.length > 0 ? <Icon name="close-little" size="12px" /> : null}
-          </div>
-        ) : null}
-      </div>
-    )
+    change && change(val, event)
+    SetInputValue(val)
   }
+
+  const valueFocus = (event: Event) => {
+    const val: any = (event.target as any).value
+    SetActive(true)
+    if (focus) {
+      focus(val, event)
+    }
+  }
+
+  const valueBlur = (event: Event) => {
+    setTimeout(() => {
+      SetActive(false)
+    }, 0)
+    const val: any = (event.target as any).value
+    if (blur) {
+      blur(val, event)
+    }
+  }
+  const handleClear = (event: Event) => {
+    if (clear) {
+      clear('', event)
+    }
+    SetInputValue('')
+  }
+  const textAlignStyle = {
+    textAlign,
+  }
+
+  return (
+    <div
+      className={`${inputBem()} ${disabled ? inputBem('disabled') : ''}  ${
+        className || ''
+      }`}
+    >
+      <div className={inputBem('label')}>
+        {requireShow ? <div className={inputBem('require')}>*</div> : null}
+        {label ? <div className="label-string">{label}</div> : null}
+      </div>
+      <input
+        className="input-text"
+        type={type}
+        placeholder={placeholder}
+        disabled={disabled}
+        readOnly={readonly}
+        value={inputValue}
+        style={{ ...style, ...textAlignStyle }}
+        maxLength={maxLength}
+        onBlur={(e: any) => {
+          valueBlur(e)
+        }}
+        onFocus={(e: any) => {
+          valueFocus(e)
+        }}
+        onChange={(e: any) => {
+          valueChange(e)
+        }}
+      />
+      {clearable && !readonly && active ? (
+        <div
+          onClick={(e: any) => {
+            handleClear(e)
+          }}
+          className={inputBem('clear')}
+        >
+          {active && inputValue.length > 0 ? (
+            <Icon name="close-little" size="12px" />
+          ) : null}
+        </div>
+      ) : null}
+    </div>
+  )
+}
 
 Input.defaultProps = defaultProps
 Input.displayName = 'NutInput'
