@@ -39,8 +39,11 @@
     "add": "node scripts/createComponentMode.js",
     "generate:file": "node scripts/generate-nutui.js",
     "generate:themes": "node scripts/generate-themes.js",
+    "generate:file:taro": "node scripts/generate-nutui-taro.js",
     "checked": "npm run generate:file && tsc",
+    "checked:taro":"npm run generate:file:taro",
     "dev": "npm run checked && vite --open --force",
+    "dev:taro:weapp": "npm run checked:taro && cd ./src/sites/mobile-taro/react && npm run dev:weapp --watch",
     "replace:scss": "node scripts/replace-scss-alias.js",
     "replace:types": "node scripts/replace-types-alias.js",
     "build:types": "tsc && npm run replace:types",
@@ -49,22 +52,25 @@
     "build:css": "npm run generate:themes && vite build --config vite.config.build.css.ts && npm run build:replace ",
     "build:replace": "npm run replace:scss",
     "build:es": "npx rollup -c rollup.config.es.js",
+    "build:taro:es": "npx rollup -c rollup.config.es.js",
     "build:locales": "vite build --config vite.config.build.locales.ts",
     "build": "npm run checked && npm run test && vite build --config vite.config.build.ts && npm run build:es && npm run build:css && npm run build:loader-style && npm run build:types && npm run build:locales",
     "build:site": "npm run checked && vite build --config vite.config.build.site.ts",
+    "build:taro:react": " vite build --config vite.config.build.taro.ts && npm run build:taro:es  && npm run build:css && npm run build:loader-style && npm run build:types && npm run build:locales",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "publish:beta": "npm publish --tag beta",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "test:demo": "jest  --testNamePattern=^should match snapshot$ --runTestsByPath ./src/packages/collapse/__test__/collapse.spec.tsx",
+    "createTaroConfig": "node scripts/generate-taro-route.js"
   },
   "engines": {
     "node": "^14.18.0 || >=15.0.0"
   },
   "lint-staged": {
-    "*.{ts,tsx}": "eslint",
     "*.md": "prettier --write",
-    "*.{ts,tsx,scss}": "prettier --write"
+    "*.{ts,tsx,js,vue,scss}": "prettier --write"
   },
   "dependencies": {
     "@babel/runtime": "^7.16.5",
@@ -117,7 +123,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-unused-imports": "^1.1.5",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "fs-extra": "^10.0.0",
     "glob": "^7.2.0",
     "husky": "^6.0.0",
