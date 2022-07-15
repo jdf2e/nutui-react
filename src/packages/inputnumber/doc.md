@@ -9,9 +9,6 @@
 ``` ts
 import { InputNumber } from '@nutui/nutui-react';
 ```
-
-## 代码演示
-
 ### 基础用法
 
 初始化一个默认值
@@ -234,8 +231,6 @@ export default App;
 :::
 
 ### 自定义按钮大小
-
-设置步长 `step` 0.1  `decimal-places` 小数保留1位
 
 :::demo
 ```tsx

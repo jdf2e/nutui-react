@@ -5,7 +5,7 @@ import { Button } from '../button/button'
 
 const CountDownDemo = () => {
   const stateRef = useRef({
-    timer: null,
+    timer: -1,
     serverTime: Date.now() - 30 * 1000,
     endTime: Date.now() + 50 * 1000,
   })
@@ -52,13 +52,13 @@ const CountDownDemo = () => {
   const onEnd = () => {
     console.log('countdown: ended.')
   }
-  const onpaused = (v) => {
+  const onpaused = (v: number) => {
     console.log('paused: ', v)
   }
-  const onrestart = (v) => {
+  const onrestart = (v: number) => {
     console.log('restart: ', v)
   }
-  const onUpdate = (v) => {
+  const onUpdate = (v: any) => {
     console.log('restTime: ', v)
     setResetTime(v)
   }
@@ -67,30 +67,37 @@ const CountDownDemo = () => {
       <div className="demo">
         <h2>基础用法</h2>
         <Cell>
-          <CountDown endTime={stateRef.current.endTime} onEnd={onEnd}></CountDown>
+          <CountDown endTime={stateRef.current.endTime} onEnd={onEnd} />
         </Cell>
         <h2>显示天</h2>
 
         <Cell>
-          <CountDown endTime={stateRef.current.endTime} showDays={true} />
+          <CountDown endTime={stateRef.current.endTime} showDays />
         </Cell>
 
         <h2>以服务端的时间为准</h2>
 
         <Cell>
-          <CountDown startTime={stateRef.current.serverTime} endTime={stateRef.current.endTime} />
+          <CountDown
+            startTime={stateRef.current.serverTime}
+            endTime={stateRef.current.endTime}
+          />
         </Cell>
 
         <h2>显示为天时分秒</h2>
 
         <Cell>
-          <CountDown showDays={true} showPlainText={true} endTime={stateRef.current.endTime} />
+          <CountDown
+            showDays
+            showPlainText
+            endTime={stateRef.current.endTime}
+          />
         </Cell>
 
         <h2>异步更新结束时间</h2>
 
         <Cell>
-          <CountDown showPlainText={true} endTime={asyncEnd} />
+          <CountDown showPlainText endTime={asyncEnd} />
         </Cell>
 
         <h2>控制开始和暂停的倒计时</h2>
@@ -116,7 +123,10 @@ const CountDownDemo = () => {
         <Cell>
           <span>
             <CountDown endTime={stateRef.current.endTime} onUpdate={onUpdate}>
-              <div className="countdown-part-box" style={{ display: 'flex', alignItems: 'center' }}>
+              <div
+                className="countdown-part-box"
+                style={{ display: 'flex', alignItems: 'center' }}
+              >
                 <div className="part-item-symbol" style={partItemSymbolStyle}>
                   {resetTime.d}天
                 </div>

@@ -49,7 +49,12 @@ const CollapseDemo = () => {
     <>
       <div className="demo">
         <h2>基础用法</h2>
-        <Collapse activeName={['1', '2']} icon="arrow-down" iconSize="16" iconColor="#999">
+        <Collapse
+          activeName={['1', '2']}
+          icon="arrow-down"
+          iconSize="16"
+          iconColor="#999"
+        >
           <CollapseItem title="标题1" name="1">
             京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
           </CollapseItem>
@@ -61,7 +66,10 @@ const CollapseDemo = () => {
           </CollapseItem>
         </Collapse>
         <h2>无icon样式，绑定点击事件</h2>
-        <Collapse activeName={['1', '2']} change={(isOpen, name) => changeEnv(isOpen, name)}>
+        <Collapse
+          activeName={['1', '2']}
+          change={(isOpen, name) => changeEnv(isOpen, name)}
+        >
           <CollapseItem title="标题1" name="1">
             京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
           </CollapseItem>

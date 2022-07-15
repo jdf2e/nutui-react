@@ -5,7 +5,14 @@ import '@testing-library/jest-dom'
 import { Barrage } from '../barrage'
 import Button from '../../button'
 
-const list = ['画美不看', '不明觉厉', '喜大普奔', '男默女泪', '累觉不爱', '爷青结-']
+const list = [
+  '画美不看',
+  '不明觉厉',
+  '喜大普奔',
+  '男默女泪',
+  '累觉不爱',
+  '爷青结-',
+]
 
 test('should danmu list props', async () => {
   const App = () => {
@@ -16,7 +23,9 @@ test('should danmu list props', async () => {
   await waitFor(
     () => {
       container.querySelectorAll('.barrage-item').forEach((item) => {
-        expect(Number(item.getAttribute('data-index'))).toBeLessThan(list.length)
+        expect(Number(item.getAttribute('data-index'))).toBeLessThan(
+          list.length
+        )
       })
     },
     { timeout: 4000 }
@@ -54,7 +63,9 @@ test('should danmu rows top', async () => {
 
   await waitFor(
     () => {
-      expect(container.querySelectorAll('.barrage-item')[1]).toHaveStyle({ top: '50px' })
+      expect(container.querySelectorAll('.barrage-item')[1]).toHaveStyle({
+        top: '50px',
+      })
     },
     { timeout: 4000 }
   )

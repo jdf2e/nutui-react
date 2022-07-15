@@ -27,6 +27,7 @@ export interface NotificationProps {
 
 export default class Notification extends React.PureComponent<NotificationProps> {
   private closeTimer: number | undefined
+
   static newInstance: (properties: NotificationProps, callback: any) => void
 
   constructor(props: NotificationProps) {
@@ -113,7 +114,10 @@ export default class Notification extends React.PureComponent<NotificationProps>
         >
           <div
             className={toastBem('inner')}
-            style={{ textAlign: textAlignCenter ? 'center' : 'left', backgroundColor: bgColor }}
+            style={{
+              textAlign: textAlignCenter ? 'center' : 'left',
+              backgroundColor: bgColor,
+            }}
           >
             {icon ? (
               <p className={toastBem('icon-wrapper')}>

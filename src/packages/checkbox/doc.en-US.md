@@ -22,10 +22,10 @@ import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
 const CheckBoxDemo = () => {
   const [checked, setChecked] = useState(true)
   return (<>
-      <Checkbox textPosition={'left'} label={'check box'}
-                checked={checked}></Checkbox>
-      <Checkbox textPosition={'right'} label={'check box'}
-                checked={false}></Checkbox>
+      <Checkbox textPosition="left" label="check box"
+                checked={checked} />
+      <Checkbox textPosition="right" label="check box"
+                checked={false} />
     </>
   )
 }
@@ -45,17 +45,17 @@ import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
 const CheckBoxDemo = () => {
   return (<>
     <Checkbox
-      textPosition={'right'}
-      label={'not selected'}
+      textPosition="right"
+      label="not selected"
       checked={false}
-      disabled={true}
-    ></Checkbox>
+      disabled
+     />
     <Checkbox
-      textPosition={'right'}
-      label={'selected'}
-      checked={true}
-      disabled={true}
-    ></Checkbox>
+      textPosition="right"
+      label="selected"
+      checked
+      disabled
+     />
   </>)
 }
 export default CheckBoxDemo;
@@ -73,8 +73,8 @@ import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   return (<>
-    <Checkbox label={'size 25'} iconSize={25}></Checkbox>
-    <Checkbox label={'size 10'} iconSize={10}></Checkbox>
+    <Checkbox label="size 25" iconSize={25} />
+    <Checkbox label="size 10" iconSize={10} />
   </>)
 }
 export default CheckBoxDemo;

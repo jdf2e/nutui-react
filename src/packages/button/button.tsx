@@ -1,4 +1,10 @@
-import React, { CSSProperties, FunctionComponent, useCallback, useEffect, useState } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react'
 import Icon from '@/packages/icon'
 
 export interface ButtonProps {
@@ -17,7 +23,13 @@ export interface ButtonProps {
   onClick: (e: MouseEvent) => void
 }
 
-export type ButtonType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
+export type ButtonType =
+  | 'default'
+  | 'primary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger'
 export type ButtonSize = 'large' | 'normal' | 'small'
 export type ButtonShape = 'square' | 'round'
 const defaultProps = {

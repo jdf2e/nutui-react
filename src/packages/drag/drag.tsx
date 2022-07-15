@@ -26,13 +26,14 @@ const defaultProps = {
   },
   className: '',
 } as DragProps
-export const Drag: FunctionComponent<Partial<DragProps> & React.HTMLAttributes<HTMLDivElement>> = (
-  props
-) => {
-  const { attract, direction, boundary, children, className, style, ...reset } = {
-    ...defaultProps,
-    ...props,
-  }
+export const Drag: FunctionComponent<
+  Partial<DragProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
+  const { attract, direction, boundary, children, className, style, ...reset } =
+    {
+      ...defaultProps,
+      ...props,
+    }
   const b = bem('drag')
   const [boundaryState, setBoundaryState] = useState(boundary)
   const myDrag = useRef<HTMLDivElement>(null)
@@ -55,7 +56,8 @@ export const Drag: FunctionComponent<Partial<DragProps> & React.HTMLAttributes<H
         bottom: clientHeight - offsetHeight - offsetTop - bottom,
         right: clientWidth - offsetWidth - offsetLeft - right,
       })
-      middleLine.current = clientWidth - offsetWidth - offsetLeft - (clientWidth - offsetWidth) / 2
+      middleLine.current =
+        clientWidth - offsetWidth - offsetLeft - (clientWidth - offsetWidth) / 2
     }
   }
 
@@ -88,7 +90,12 @@ export const Drag: FunctionComponent<Partial<DragProps> & React.HTMLAttributes<H
   }, [myDrag])
 
   return (
-    <div style={style} className={`${b()} ${className}`} {...reset} ref={myDrag}>
+    <div
+      style={style}
+      className={`${b()} ${className}`}
+      {...reset}
+      ref={myDrag}
+    >
       <animated.div style={currstyle} {...bind()}>
         {children}
       </animated.div>

@@ -3,7 +3,11 @@ import Picker from './picker'
 import Cell from '@/packages/cell'
 
 interface pickerRefState {
-  updateChooseValue: (index: number, value: string, cacheValueData: any[]) => void
+  updateChooseValue: (
+    index: number,
+    value: string,
+    cacheValueData: any[]
+  ) => void
 }
 interface IResValue {
   label: number
@@ -168,7 +172,11 @@ const PickerDemo = () => {
     }, 100)
   }
 
-  const updateChooseValueCustmer = (index: number, resValue: IResValue, cacheValueData: any[]) => {
+  const updateChooseValueCustmer = (
+    index: number,
+    resValue: IResValue,
+    cacheValueData: any[]
+  ) => {
     // 本demo为二级联动，所以限制只有首列变动的时候触发事件
     if (index === 0) {
       // 此处模拟查询API，如果数据缓存了不需要再重新请求
@@ -185,7 +193,11 @@ const PickerDemo = () => {
           })
           setTimeout(() => {
             // 更新第二列位置
-            pickerRef3.current?.updateChooseValue(index + 1, cityData[1]?.[0], cacheValueData)
+            pickerRef3.current?.updateChooseValue(
+              index + 1,
+              cityData[1]?.[0],
+              cacheValueData
+            )
           }, 200)
         }
       }, 100)
@@ -239,7 +251,9 @@ const PickerDemo = () => {
           onChoose={(index: number, value: IResValue, list: any[]) =>
             updateChooseValueCustmer(index, value, list)
           }
-          onCloseUpdate={(list: any[]) => closeUpdateChooseValueCustmer(list, pickerRef3)}
+          onCloseUpdate={(list: any[]) =>
+            closeUpdateChooseValueCustmer(list, pickerRef3)
+          }
           ref={pickerRef3}
         />
       </div>

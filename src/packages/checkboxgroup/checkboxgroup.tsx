@@ -14,7 +14,8 @@ const defaultProps = {
 } as CheckBoxGroupProps
 export const CheckboxGroup = React.forwardRef(
   (
-    props: Partial<CheckBoxGroupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
+    props: Partial<CheckBoxGroupProps> &
+      Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
     ref
   ) => {
     const { children } = { ...defaultProps, ...props }

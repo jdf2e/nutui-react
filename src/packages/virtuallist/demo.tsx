@@ -1,23 +1,24 @@
-import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Radio from '@/packages/radio'
-const { RadioGroup } = Radio
 import Cell from '@/packages/cell'
 import CellGroup from '@/packages/cellgroup'
 
 import VirtualList from './index'
+
+const { RadioGroup } = Radio
 // import './demo.scss'
 
 const ListDemo = () => {
-  const [sourceData, setsourceData] = useState([])
+  const [sourceData, setsourceData] = useState<any>([])
   const [pageNo, setPageNo] = useState(1)
   const [radioVal, setRadioVal] = useState('1')
   const [isLoading, setIsLoading] = useState(false)
-  const handleChange = (v) => {
+  const handleChange = (v: any) => {
     setRadioVal(v)
     setPageNo(1)
   }
   const getData = useCallback(() => {
-    const datas = []
+    const datas: any = []
     const pageSize = 10
     for (let i = (pageNo - 1) * pageSize; i < pageNo * pageSize; i++) {
       const num = i > 9 ? i : `0${i}`
@@ -28,19 +29,21 @@ const ListDemo = () => {
         return datas
       })
     } else {
-      setsourceData((sourceData) => {
+      setsourceData((sourceData: any) => {
         return [...sourceData, ...datas]
       })
     }
   }, [pageNo])
-  const ItemRender = ({ data }) => {
+  const ItemRender = ({ data }: any) => {
     return <p>我是-{data}</p>
   }
   const ItemRenderMemo = React.memo(ItemRender)
 
-  const ItemVariable = ({ data, index }) => {
+  const ItemVariable = ({ data, index }: any) => {
     return (
-      <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>可变大小隔行展示-{data}</p>
+      <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>
+        可变大小隔行展示-{data}
+      </p>
     )
   }
   const ItemVariableDemo = React.memo(ItemVariable)
@@ -117,7 +120,11 @@ const ListDemo = () => {
       <div className="demo">
         <CellGroup>
           <Cell>
-            <RadioGroup value={radioVal} onChange={handleChange} direction="horizontal">
+            <RadioGroup
+              value={radioVal}
+              onChange={handleChange}
+              direction="horizontal"
+            >
               <Radio value="1">垂直等高</Radio>
               <Radio value="2">垂直不等高</Radio>
               <Radio value="3">水平等宽</Radio>

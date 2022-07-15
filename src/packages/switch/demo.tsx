@@ -3,7 +3,10 @@ import { Switch } from './switch'
 
 const SwitchDemo = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
-  const change = (value: boolean, event: React.MouseEvent<Element, MouseEvent>) => {
+  const change = (
+    value: boolean,
+    event: React.MouseEvent<Element, MouseEvent>
+  ) => {
     alert(`触发了change事件，开关状态：${value}`)
   }
   const changeAsync = (value: boolean, event: any) => {

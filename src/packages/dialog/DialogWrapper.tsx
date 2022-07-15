@@ -14,7 +14,11 @@ export const DialogWrapper: FunctionComponent<
   Partial<DialogWrapperProps> & HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { visible, lockScroll } = props
-  if (lockScroll && !visible && document.body.classList.value.includes('nut-overflow-hidden')) {
+  if (
+    lockScroll &&
+    !visible &&
+    document.body.classList.value.includes('nut-overflow-hidden')
+  ) {
     document.body.classList.remove('nut-overflow-hidden')
   }
 

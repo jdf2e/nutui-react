@@ -21,12 +21,14 @@ const defaultProps = {
 } as RadioGroupProps
 export const RadioGroup = React.forwardRef(
   (
-    props: Partial<RadioGroupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
+    props: Partial<RadioGroupProps> &
+      Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
     ref
   ) => {
     const { children } = { ...defaultProps, ...props }
     const b = bem('RadioGroup')
-    const { className, value, onChange, textPosition, direction, ...rest } = props
+    const { className, value, onChange, textPosition, direction, ...rest } =
+      props
 
     const [val2State, setVal2State] = useState(value)
 
@@ -92,7 +94,10 @@ export const RadioGroup = React.forwardRef(
           },
         }}
       >
-        <div className={`nut-radiogroup nut-radiogroup--${props.direction}`} {...rest}>
+        <div
+          className={`nut-radiogroup nut-radiogroup--${props.direction}`}
+          {...rest}
+        >
           {cloneChildren()}
         </div>
       </RadioContext.Provider>

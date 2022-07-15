@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useEffect, useState, CSSProperties } from 'react'
+import React, {
+  FunctionComponent,
+  useEffect,
+  useState,
+  CSSProperties,
+} from 'react'
 import Icon from '@/packages/icon'
 import Popup from '@/packages/popup'
 import bem from '@/utils/bem'
@@ -52,7 +57,11 @@ export interface AddressProps {
   selectedIcon: string
   closeBtnIcon: string
   backBtnIcon: string
-  onSelected?: (prevExistAdd: AddressList, item: AddressList, copyExistAdd: AddressList[]) => void
+  onSelected?: (
+    prevExistAdd: AddressList,
+    item: AddressList,
+    copyExistAdd: AddressList[]
+  ) => void
   onClose?: (cal: CloseRes) => void
   closeMask?: (cal: { closeWay: string }) => void
   switchModule?: (cal: { type: string }) => void
@@ -220,7 +229,9 @@ export const Address: FunctionComponent<
     return (
       <div className={b('header')}>
         <div className="arrow-back" onClick={onSwitchModule}>
-          {privateType === 'custom' && backBtnIcon && <Icon name={backBtnIcon} color="#cccccc" />}
+          {privateType === 'custom' && backBtnIcon && (
+            <Icon name={backBtnIcon} color="#cccccc" />
+          )}
         </div>
 
         <div className={b('header__title')}>
@@ -230,7 +241,9 @@ export const Address: FunctionComponent<
         </div>
 
         <div onClick={() => handClose()}>
-          {closeBtnIcon && <Icon name={closeBtnIcon} color="#cccccc" size="18px" />}
+          {closeBtnIcon && (
+            <Icon name={closeBtnIcon} color="#cccccc" size="18px" />
+          )}
         </div>
       </div>
     )
@@ -257,7 +270,11 @@ export const Address: FunctionComponent<
             closeFun()
           }}
         >
-          <div className={`${b()} ${className || ''}`} style={{ ...style }} {...rest}>
+          <div
+            className={`${b()} ${className || ''}`}
+            style={{ ...style }}
+            {...rest}
+          >
             {headerRender()}
             {(privateType === 'custom' || privateType === 'custom2') && (
               <CustomRender
@@ -283,7 +300,9 @@ export const Address: FunctionComponent<
                 selectedIcon={selectedIcon}
                 defaultIcon={defaultIcon}
                 isShowCustomAddress={isShowCustomAddress}
-                customAndExistTitle={locale.address.chooseAnotherAddress || customAndExistTitle}
+                customAndExistTitle={
+                  locale.address.chooseAnotherAddress || customAndExistTitle
+                }
                 onSelected={selectedExist}
                 onSwitchModule={onSwitchModule}
               />

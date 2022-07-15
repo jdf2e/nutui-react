@@ -79,7 +79,10 @@ const TextAreaDemo = () => {
         <h2>{translated.autoHeight}</h2>
         <TextArea defaultValue={value3} rows="10" autosize />
         <h2>{translated.readOnly}</h2>
-        <TextArea readonly defaultValue={`textarea${translated.readOnlyState}`} />
+        <TextArea
+          readonly
+          defaultValue={`textarea${translated.readOnlyState}`}
+        />
         <h2>{translated.disabled}</h2>
         <TextArea
           disabled

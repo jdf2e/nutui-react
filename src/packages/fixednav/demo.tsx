@@ -41,28 +41,28 @@ const FixedNavDemo = () => {
     console.log(item, event)
   }
 
-  const change2 = (value) => {
+  const change2 = (value: any) => {
     setVisible2(value)
   }
   const selected2 = (item: any, event: MouseEvent) => {
     console.log(item, event)
   }
 
-  const change3 = (value) => {
+  const change3 = (value: any) => {
     setVisible3(value)
   }
   const selected3 = (item: any, event: MouseEvent) => {
     console.log(item, event)
   }
 
-  const change4 = (value) => {
+  const change4 = (value: any) => {
     setVisible4(value)
   }
   const selected4 = (item: any, event: MouseEvent) => {
     console.log(item, event)
   }
 
-  const change5 = (value) => {
+  const change5 = (value: any) => {
     setVisible5(value)
   }
   const selected5 = (item: any, event: MouseEvent) => {

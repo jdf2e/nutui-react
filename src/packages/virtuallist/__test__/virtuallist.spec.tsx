@@ -13,11 +13,18 @@ describe('props', () => {
   const { getByTestId } = render(
     <>
       <VirtualList {...props} itemSize={40} data-testid="verticalList" />
-      <VirtualList horizontal {...props} itemSize={100} data-testid="horizontalList" />
+      <VirtualList
+        horizontal
+        {...props}
+        itemSize={100}
+        data-testid="horizontalList"
+      />
     </>
   )
-  const horizontalListBox = getByTestId('horizontalList').getElementsByTagName('div')[0]
-  const verticalListBox = getByTestId('verticalList').getElementsByTagName('div')[0]
+  const horizontalListBox =
+    getByTestId('horizontalList').getElementsByTagName('div')[0]
+  const verticalListBox =
+    getByTestId('verticalList').getElementsByTagName('div')[0]
   test('direction props', () => {
     expect(horizontalListBox).toHaveClass('nut-horizontal-box')
     expect(verticalListBox).toHaveClass('nut-vertical-box')

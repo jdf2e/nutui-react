@@ -14,7 +14,13 @@ test('should add step 2 when trigger click plus button', () => {
   const add = jest.fn()
   const change = jest.fn()
   const { container } = render(
-    <InputNumber modelValue={1} step={2} overlimit={overlimit} add={add} change={change} />
+    <InputNumber
+      modelValue={1}
+      step={2}
+      overlimit={overlimit}
+      add={add}
+      change={change}
+    />
   )
   const iconPlus = container.querySelectorAll('.nut-icon-plus')[0]
   fireEvent.click(iconPlus)
@@ -28,7 +34,13 @@ test('should minis step 2 when trigger click minis button', () => {
   const reduce = jest.fn()
   const change = jest.fn()
   const { container } = render(
-    <InputNumber modelValue={3} step={2} overlimit={overlimit} reduce={reduce} change={change} />
+    <InputNumber
+      modelValue={3}
+      step={2}
+      overlimit={overlimit}
+      reduce={reduce}
+      change={change}
+    />
   )
   const iconMinus = container.querySelectorAll('.nut-icon-minus')[0]
   fireEvent.click(iconMinus)
@@ -80,7 +92,7 @@ test('should render min props', () => {
 })
 
 test('should not trigger click when disabled props to be true', () => {
-  const { container } = render(<InputNumber modelValue={1} disabled={true} />)
+  const { container } = render(<InputNumber modelValue={1} disabled />)
 
   const iconPlus = container.querySelectorAll('.nut-icon-plus')[0]
   fireEvent.click(iconPlus)
@@ -94,7 +106,9 @@ test('should not trigger click when disabled props to be true', () => {
 
 test('should not focus input when readonly props to be true', () => {
   const focus = jest.fn()
-  const { container } = render(<InputNumber readonly={true} modelValue={2} focus={focus} />)
+  const { container } = render(
+    <InputNumber readonly modelValue={2} focus={focus} />
+  )
   const iconMinus = container.querySelectorAll('.nut-icon-minus')[0]
   fireEvent.click(iconMinus)
   expect(container.querySelector('input')?.value).toBe('1')
@@ -102,14 +116,18 @@ test('should not focus input when readonly props to be true', () => {
 })
 
 test('should render decimal when step props to be 0.2', () => {
-  const { container } = render(<InputNumber step="0.2" decimalPlaces="1" modelValue={2} />)
+  const { container } = render(
+    <InputNumber step="0.2" decimalPlaces="1" modelValue={2} />
+  )
   const iconPlus = container.querySelectorAll('.nut-icon-plus')[0]
   fireEvent.click(iconPlus)
   expect(container.querySelector('input')?.value).toBe('2.2')
 })
 
 test('should render size when buttonSize and inputWidth props setted', () => {
-  const { container } = render(<InputNumber buttonSize="30px" inputWidth="120px" modelValue={2} />)
+  const { container } = render(
+    <InputNumber buttonSize="30px" inputWidth="120px" modelValue={2} />
+  )
   const iconPlus = container.querySelectorAll('.nut-icon-plus')[0]
   const input = container.querySelectorAll('input')[0]
   expect(iconPlus).toHaveStyle({ fontSize: '30px' })
@@ -119,7 +137,9 @@ test('should render size when buttonSize and inputWidth props setted', () => {
 test('should update input value when inputValue overlimit', () => {
   const change = jest.fn()
   const blur = jest.fn()
-  const { container } = render(<InputNumber modelValue={2} max="100" change={change} blur={blur} />)
+  const { container } = render(
+    <InputNumber modelValue={2} max="100" change={change} blur={blur} />
+  )
   const input = container.querySelectorAll('input')[0]
   input.value = '200'
   fireEvent.blur(input)

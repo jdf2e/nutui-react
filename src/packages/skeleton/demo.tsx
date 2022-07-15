@@ -53,7 +53,10 @@ const SkeletonDemo = () => {
   })
 
   const [checked, setChecked] = useState(false)
-  const changeStatus = (value: boolean, event: React.MouseEvent<Element, MouseEvent>) => {
+  const changeStatus = (
+    value: boolean,
+    event: React.MouseEvent<Element, MouseEvent>
+  ) => {
     console.log(`${translated['3b02fdee']}${value}`)
     setChecked(value)
   }
@@ -68,21 +71,51 @@ const SkeletonDemo = () => {
         <Skeleton width="250px" height="15px" row={3} title animated />
 
         <h2>{translated['02a53df5']}</h2>
-        <Skeleton width="250px" height="15px" row={3} title animated avatar avatarSize="100px" />
+        <Skeleton
+          width="250px"
+          height="15px"
+          row={3}
+          title
+          animated
+          avatar
+          avatarSize="100px"
+        />
 
         <h2>{translated['0a001122']}</h2>
         <Skeleton width="250px" height="15px" animated round />
 
         <h2>{translated.a4ed11b5}</h2>
         <div className="pic-compose">
-          <Skeleton width="250px" height="15px" title animated row={3} className="item" />
-          <Skeleton width="250px" height="15px" title animated row={3} className="item" />
+          <Skeleton
+            width="250px"
+            height="15px"
+            title
+            animated
+            row={3}
+            className="item"
+          />
+          <Skeleton
+            width="250px"
+            height="15px"
+            title
+            animated
+            row={3}
+            className="item"
+          />
         </div>
 
         <h2>{translated['07d62d5c']}</h2>
         <div className="content">
-          <Switch size="15px" change={(value, event) => changeStatus(value, event)} />
-          <Skeleton width="250px" height="15px" title animated avatar row={3} loading={checked}>
+          <Switch change={(value, event) => changeStatus(value, event)} />
+          <Skeleton
+            width="250px"
+            height="15px"
+            title
+            animated
+            avatar
+            row={3}
+            loading={checked}
+          >
             <div className="container">
               <Avatar
                 size="50"
