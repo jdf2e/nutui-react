@@ -85,6 +85,24 @@ export default App;
 
 ```
 :::
+### Select the minimum quantity (support half star)  
+
+:::demo
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+    <Rate count="5" modelValue="2" minimizeValue="3"/>
+    </>
+  );
+};  
+export default App;
+
+```
+:::
 ### custom color 
 
 :::demo
@@ -187,6 +205,7 @@ export default App;
 |----------------|-------------------------------------------|---------|-------------|
 | modelValue     | The current number of stars <= count     | Number    | -           |
 | count          | total number of stars                    | Number  | 5           |
+| minimizeValue  | At least the number of STAR              | Number  | 0           |
 | iconSize      | size of star                              | Number  | 18          |
 | activeColor   | Icon selection color                      | String  | #fa200c     |
 | voidColor     | Icon unselected color                    | String  | #ccc        |
