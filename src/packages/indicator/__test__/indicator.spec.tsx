@@ -1,7 +1,5 @@
 import * as React from 'react'
-// import * as renderer from 'react-test-renderer'
-
-import { render, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { useState } from 'react'
@@ -12,7 +10,9 @@ import Row from '@/packages/row'
 import Col from '@/packages/col'
 
 test('should match snapshot', () => {
-  const { asFragment } = render(<Indicator className="demo1" size={3} current={3}></Indicator>)
+  const { asFragment } = render(
+    <Indicator className="demo1" size={3} current={3} />
+  )
   expect(asFragment()).toMatchSnapshot()
 })
 
@@ -29,11 +29,11 @@ test('should be shown when passing size and current', () => {
           <Indicator
             data-testid="indicator"
             className="aa"
-            block={true}
+            block
             align="right"
             size={6}
             current={5}
-          ></Indicator>
+          />
         </Col>
       </Row>
     </Cell>
@@ -48,15 +48,17 @@ test('should be shown when passing block and align and fillZero', () => {
     const [loading, setLoading] = useState(false)
     return (
       <Cell>
-        <Indicator block={true} fillZero={true} align="center" size={6} current={5}></Indicator>
+        <Indicator block fillZero align="center" size={6} current={5} />
       </Cell>
     )
   }
 
   const { container } = render(<IndicatorDemo />)
 
-  let wrapper = container.querySelector('.nut-indicator')
+  const wrapper = container.querySelector('.nut-indicator')
   expect(wrapper).toHaveClass('nut-indicator__align__center')
   expect(wrapper).toHaveClass('nut-indicator__block')
-  expect(container.querySelector('.nut-indicator__number')).toHaveTextContent('05')
+  expect(container.querySelector('.nut-indicator__number')).toHaveTextContent(
+    '05'
+  )
 })

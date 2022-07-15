@@ -1,6 +1,6 @@
-import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react'
-import bem from '@/utils/bem'
+import React, { FunctionComponent, ReactNode, useEffect } from 'react'
 import classNames from 'classnames'
+import bem from '@/utils/bem'
 
 export interface IndicatorProps {
   size: number
@@ -20,7 +20,16 @@ const defaultProps = {
 export const Indicator: FunctionComponent<
   Partial<IndicatorProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { size, current, block, align, fillZero, children, className, ...rest } = {
+  const {
+    size,
+    current,
+    block,
+    align,
+    fillZero,
+    children,
+    className,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -33,15 +42,15 @@ export const Indicator: FunctionComponent<
     b('')
   )
   const renderEles = () => {
-    let childs: ReactNode[] = []
+    const childs: ReactNode[] = []
     for (let item = 1; item <= size; item++) {
       childs.push(
-        item == current ? (
+        item === current ? (
           <div key={item} className={b('number')}>
             {fillZero && item < 10 ? `0${item}` : item}
           </div>
         ) : (
-          <div key={item} className={b('dot')}></div>
+          <div key={item} className={b('dot')} />
         )
       )
     }
