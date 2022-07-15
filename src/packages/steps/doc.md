@@ -10,8 +10,6 @@
 import { Steps } from '@nutui/nutui-react';
 ```
 
-## 代码演示
-
 ### 基本用法
 
 :::demo

@@ -95,12 +95,20 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
               />
             )}
 
-            {row === 1 && <div className={blockClass} style={{ width, height }} />}
+            {row === 1 && (
+              <div className={blockClass} style={{ width, height }} />
+            )}
 
             <div className="skeleton-content-line">
               {title && <div className="skeleton-title" />}
               {repeatLines(row).map((item, index) => {
-                return <div className={blockClass} key={index} style={{ width, height }} />
+                return (
+                  <div
+                    className={blockClass}
+                    key={index}
+                    style={{ width, height }}
+                  />
+                )
               })}
             </div>
           </div>

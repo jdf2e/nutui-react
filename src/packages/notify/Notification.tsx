@@ -24,7 +24,10 @@ interface State {
   show: boolean
 }
 
-export default class Notification extends React.PureComponent<NotificationProps, State> {
+export default class Notification extends React.PureComponent<
+  NotificationProps,
+  State
+> {
   private closeTimer: number | undefined
 
   static newInstance: (properties: NotificationProps, callback: any) => void
@@ -81,7 +84,8 @@ export default class Notification extends React.PureComponent<NotificationProps,
   }
 
   render() {
-    const { children, style, msg, color, background, type, className } = this.props
+    const { children, style, msg, color, background, type, className } =
+      this.props
     const { show } = this.state
     const notifyBem = bem('notify')
 
@@ -92,10 +96,19 @@ export default class Notification extends React.PureComponent<NotificationProps,
     })
     return (
       <>
-        <CSSTransition in={this.state.show} timeout={300} classNames="fade" unmountOnExit appear>
+        <CSSTransition
+          in={this.state.show}
+          timeout={300}
+          classNames="fade"
+          unmountOnExit
+          appear
+        >
           <div
             className={`${classes} ${className}`}
-            style={{ color: `${color || ''}`, background: `${background || ''}` }}
+            style={{
+              color: `${color || ''}`,
+              background: `${background || ''}`,
+            }}
             onClick={this.clickCover}
           >
             {children || msg}
@@ -127,7 +140,9 @@ Notification.newInstance = (properties, callback) => {
       destroy() {
         setTimeout(() => {
           ReactDOM.unmountComponentAtNode(element)
-          element && element.parentNode && element.parentNode.removeChild(element)
+          element &&
+            element.parentNode &&
+            element.parentNode.removeChild(element)
         }, 300)
       },
     })

@@ -151,16 +151,27 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
                   key={item.paneKey}
                 >
                   {type === 'line' && (
-                    <div className={`${b('')}__titles-item__line`} style={tabsActiveStyle} />
+                    <div
+                      className={`${b('')}__titles-item__line`}
+                      style={tabsActiveStyle}
+                    />
                   )}
                   {type === 'smile' && (
-                    <div className={`${b('')}__titles-item__smile`} style={tabsActiveStyle}>
+                    <div
+                      className={`${b('')}__titles-item__smile`}
+                      style={tabsActiveStyle}
+                    >
                       <Icon color={color} name="joy-smile" />
                     </div>
                   )}
                   <div
                     className={classNames(
-                      { ellipsis: ellipsis && !titleScroll && direction === 'horizontal' },
+                      {
+                        ellipsis:
+                          ellipsis &&
+                          !titleScroll &&
+                          direction === 'horizontal',
+                      },
                       `${b('')}__titles-item__text`
                     )}
                   >

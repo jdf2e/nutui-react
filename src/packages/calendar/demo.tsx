@@ -94,7 +94,11 @@ const CalendarDemo = () => {
           onChoose={setChooseValue1}
         />
         <h2>自定义日历-自动回填</h2>
-        <Cell title="选择日期" desc={date3 ? `${date3}` : '请选择'} onClick={openSwitch3} />
+        <Cell
+          title="选择日期"
+          desc={date3 ? `${date3}` : '请选择'}
+          onClick={openSwitch3}
+        />
         <Calendar
           visible={isVisible3}
           defaultValue={date3}
@@ -107,7 +111,12 @@ const CalendarDemo = () => {
         <h2>平铺展示</h2>
         <div
           className="test-calendar-wrapper"
-          style={{ display: 'flex', width: '100%', height: '613px', overflow: 'hidden' }}
+          style={{
+            display: 'flex',
+            width: '100%',
+            height: '613px',
+            overflow: 'hidden',
+          }}
         >
           <Calendar
             poppable={false}

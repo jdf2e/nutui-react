@@ -3,10 +3,30 @@ import { NoticeBar } from './noticebar'
 import Icon from '../icon'
 
 const NoticeBarDemo = () => {
-  const horseLamp1 = ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']
-  const horseLamp2 = ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']
-  const horseLamp3 = ['惊喜红包免费领1', '爆款准点秒2', '买超值优惠3', '赢百万京豆4']
-  const horseLamp4 = ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']
+  const horseLamp1 = [
+    '惊喜红包免费领',
+    '爆款准点秒',
+    '买超值优惠',
+    '赢百万京豆',
+  ]
+  const horseLamp2 = [
+    '惊喜红包免费领',
+    '爆款准点秒',
+    '买超值优惠',
+    '赢百万京豆',
+  ]
+  const horseLamp3 = [
+    '惊喜红包免费领1',
+    '爆款准点秒2',
+    '买超值优惠3',
+    '赢百万京豆4',
+  ]
+  const horseLamp4 = [
+    '惊喜红包免费领',
+    '爆款准点秒',
+    '买超值优惠',
+    '赢百万京豆',
+  ]
   const text =
     '华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！'
 
@@ -27,7 +47,11 @@ const NoticeBarDemo = () => {
     <>
       <div className="demo" style={{ paddingBottom: '30px' }}>
         <h2>基础用法</h2>
-        <NoticeBar text={text} background="rgba(251, 248, 220, 1)" color="#D9500B" />
+        <NoticeBar
+          text={text}
+          background="rgba(251, 248, 220, 1)"
+          color="#D9500B"
+        />
 
         <h2>禁用滚动</h2>
         <NoticeBar
@@ -38,7 +62,12 @@ const NoticeBarDemo = () => {
         />
 
         <h2>通告栏模式--关闭模式</h2>
-        <NoticeBar closeMode click={hello} background="rgba(251, 248, 220, 1)" color="#D9500B">
+        <NoticeBar
+          closeMode
+          click={hello}
+          background="rgba(251, 248, 220, 1)"
+          color="#D9500B"
+        >
           华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI
           WATCH等好礼，更多产品信息请持续关注！
         </NoticeBar>
@@ -70,12 +99,23 @@ const NoticeBarDemo = () => {
 
         <h2>纵向复杂滚动动画</h2>
         <div style={demoStyles}>
-          <NoticeBar direction="vertical" list={horseLamp2} speed={10} standTime={2000} complexAm />
+          <NoticeBar
+            direction="vertical"
+            list={horseLamp2}
+            speed={10}
+            standTime={2000}
+            complexAm
+          />
         </div>
 
         <h2>纵向自定义滚动内容</h2>
         <div style={demoStyles}>
-          <NoticeBar direction="vertical" height={50} speed={10} standTime={1000}>
+          <NoticeBar
+            direction="vertical"
+            height={50}
+            speed={10}
+            standTime={1000}
+          >
             {horseLamp3.map((item, index) => {
               return (
                 <div

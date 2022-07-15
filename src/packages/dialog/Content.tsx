@@ -9,9 +9,9 @@ interface ContentProps {
   footerDirection?: string
 }
 
-export const Content: FunctionComponent<Partial<ContentProps> & HTMLAttributes<HTMLDivElement>> = (
-  props
-) => {
+export const Content: FunctionComponent<
+  Partial<ContentProps> & HTMLAttributes<HTMLDivElement>
+> = (props) => {
   const { visible, title, footer, textAlign, footerDirection, children } = props
 
   let headerNode: ReactNode
@@ -23,7 +23,9 @@ export const Content: FunctionComponent<Partial<ContentProps> & HTMLAttributes<H
   if (footer) {
     footerNode = (
       <div
-        className={classNames('nut-dialog__footer', { [footerDirection as any]: footerDirection })}
+        className={classNames('nut-dialog__footer', {
+          [footerDirection as any]: footerDirection,
+        })}
       >
         {footer}
       </div>
@@ -32,7 +34,10 @@ export const Content: FunctionComponent<Partial<ContentProps> & HTMLAttributes<H
 
   return (
     <div className="nut-dialog__outer">
-      <div className="nut-dialog" style={{ display: visible ? 'flex' : 'none' }}>
+      <div
+        className="nut-dialog"
+        style={{ display: visible ? 'flex' : 'none' }}
+      >
         {headerNode}
         <div className="nut-dialog__content" style={{ textAlign }}>
           <div>{children}</div>

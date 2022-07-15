@@ -191,12 +191,16 @@ const TabsDemo = () => {
             return list6.map((item) => (
               <div
                 onClick={() => setTab7value(item.paneKey)}
-                className={`nut-tabs__titles-item ${tab7value === item.paneKey ? 'active' : ''}`}
+                className={`nut-tabs__titles-item ${
+                  tab7value === item.paneKey ? 'active' : ''
+                }`}
                 key={item.paneKey}
               >
                 {item.icon && <Icon name={item.icon} />}
-                <span className="nut-tabs__titles-item__text">{item.title}</span>
-                <span className="nut-tabs__titles-item__line"></span>
+                <span className="nut-tabs__titles-item__text">
+                  {item.title}
+                </span>
+                <span className="nut-tabs__titles-item__line" />
               </div>
             ))
           }}

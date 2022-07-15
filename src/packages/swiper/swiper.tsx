@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, TouchEvent } from 'react'
+import React, { useState, useEffect, useRef, TouchEvent, useMemo } from 'react'
 import classNames from 'classnames'
 import { DataContext } from './UserContext'
 import bem from '@/utils/bem'
@@ -7,6 +7,11 @@ export type SwiperRef = {
   to: (index: number) => void
   next: () => void
   prev: () => void
+}
+interface IStyle {
+  width?: string
+  height?: string
+  transform?: string
 }
 interface SwiperProps {
   width: number | string
@@ -79,7 +84,6 @@ export const Swiper = React.forwardRef<
     offset: 0,
     size: 0,
   })
-  const childsRefs: any = []
   const isVertical = direction === 'vertical'
 
   const [rect, setRect] = useState(null as DOMRect | null)
@@ -87,6 +91,7 @@ export const Swiper = React.forwardRef<
   const [width, setWidth] = useState(0)
   const [height, setHeight] = useState(0)
   const [offset, setOffset] = useState(0)
+  const [childOffset, setChildOffset] = useState<any[]>([])
   const [ready, setReady] = useState(false)
 
   let size = isVertical ? height : width
@@ -102,23 +107,20 @@ export const Swiper = React.forwardRef<
     touchTime: 0,
   })
 
-  const [childs, setChilds] = useState([])
-  const [touchTime, setTouchTime] = useState<any>('')
-
-  const childCount = (children as any[]).length
-  for (let i = 0; i < childCount; i++) {
-    childsRefs.push(useRef<any>(null))
-  }
-  let trackSize = childCount * Number(size)
-  const getChildren = () => {
-    const childs: any = []
-    React.Children.toArray(children).forEach((child: any, index) => {
-      if (child.type && child.type.displayName === 'NutSwiperItem') {
-        childs.push(React.cloneElement(child, { ref: childsRefs[index], key: `item_${index}` }))
-      }
+  const { childs, childCount } = useMemo(() => {
+    let childCount = 0
+    const childs = React.Children.map(props.children, (child) => {
+      if (!React.isValidElement(child)) return null
+      childCount++
+      return child
     })
-    return childs
-  }
+    return {
+      childs,
+      childCount,
+    }
+  }, [props.children])
+  let trackSize = childCount * Number(size)
+
   // 父组件参数传入子组件item
   const parent: Parent = {
     propSwiper,
@@ -207,21 +209,35 @@ export const Swiper = React.forwardRef<
   }
 
   // 切换方法
-  const move = ({ pace = 0, offset = 0, isEmit = false, movingStatus = false }) => {
+  const move = ({
+    pace = 0,
+    offset = 0,
+    isEmit = false,
+    movingStatus = false,
+  }) => {
     if (childCount <= 1) return
     const targetActive = getActive(pace)
     // 父级容器偏移量
     const targetOffset = getOffset(targetActive, offset)
     // 如果循环，调整开头结尾图片位置
     if (props.loop) {
-      if (Array.isArray(children) && children[0] && targetOffset !== minOffset) {
+      if (
+        Array.isArray(children) &&
+        children[0] &&
+        targetOffset !== minOffset
+      ) {
         const rightBound = targetOffset < minOffset
-        childsRefs[0].current.changeOffset(rightBound ? trackSize : 0)
+        childOffset[0] = rightBound ? trackSize : 0
       }
-      if (Array.isArray(children) && children[childCount - 1] && targetOffset !== 0) {
+      if (
+        Array.isArray(children) &&
+        children[childCount - 1] &&
+        targetOffset !== 0
+      ) {
         const leftBound = targetOffset > 0
-        childsRefs[childCount - 1].current.changeOffset(leftBound ? -trackSize : 0)
+        childOffset[childCount - 1] = leftBound ? -trackSize : 0
       }
+      setChildOffset(childOffset)
     }
     if (isEmit && active !== targetActive) {
       props.onChange && props.onChange((targetActive + childCount) % childCount)
@@ -312,9 +328,15 @@ export const Swiper = React.forwardRef<
     target.style.transform = `translate3D${
       !isVertical ? `(${moveOffset}px,0,0)` : `(0,${moveOffset}px,0)`
     }`
-    target.style.transitionDuration = `${_swiper.current.moving ? 0 : props.duration}ms`
-    target.style[isVertical ? 'height' : 'width'] = `${Number(size) * childCount}px`
-    target.style[isVertical ? 'width' : 'height'] = `${isVertical ? width : height}px`
+    target.style.transitionDuration = `${
+      _swiper.current.moving ? 0 : props.duration
+    }ms`
+    target.style[isVertical ? 'height' : 'width'] = `${
+      Number(size) * childCount
+    }px`
+    target.style[isVertical ? 'width' : 'height'] = `${
+      isVertical ? width : height
+    }px`
   }
 
   const onTouchStart = (e: TouchEvent) => {
@@ -340,7 +362,8 @@ export const Swiper = React.forwardRef<
   const onTouchEnd = (e: TouchEvent) => {
     if (!props.touchable || !_swiper.current.moving) return
     const speed = touch.delta / (Date.now() - touch.touchTime)
-    const isShouldMove = Math.abs(speed) > 0.3 || Math.abs(touch.delta) > +(size / 2).toFixed(2)
+    const isShouldMove =
+      Math.abs(speed) > 0.3 || Math.abs(touch.delta) > +(size / 2).toFixed(2)
     let pace = 0
     _swiper.current.moving = false
     if (isShouldMove && touch.stateDirection === props.direction) {
@@ -399,9 +422,9 @@ export const Swiper = React.forwardRef<
       setReady(false)
     }
   }, [ready])
-
   useEffect(() => {
-    setChilds(getChildren())
+    stopAutoPlay()
+    autoplay()
   }, [children])
   useEffect(() => {
     init()
@@ -417,6 +440,21 @@ export const Swiper = React.forwardRef<
       target.removeEventListener('touchend', onTouchEnd, false)
     }
   })
+  const style = (index: any) => {
+    const style: IStyle = {}
+    const _direction = propSwiper.direction || direction
+    const _size = size
+    if (_size) {
+      style[_direction === 'horizontal' ? 'width' : 'height'] = `${_size}px`
+    }
+    const offset = childOffset[index]
+    if (offset) {
+      style.transform = `translate3D${
+        _direction === 'horizontal' ? `(${offset}px,0,0)` : `(0,${offset}px,0)`
+      }`
+    }
+    return style
+  }
   React.useImperativeHandle(ref, () => ({
     to,
     next,
@@ -426,7 +464,17 @@ export const Swiper = React.forwardRef<
     <DataContext.Provider value={parent}>
       <div className={`${classes} ${className}`} ref={container} {...rest}>
         <div className={contentClass} ref={innerRef}>
-          {childs}
+          {React.Children.map(childs, (child: any, index: number) => {
+            return (
+              <div
+                className={b('item-wrapper')}
+                style={style(index)}
+                key={index}
+              >
+                {child}
+              </div>
+            )
+          })}
         </div>
         {propSwiper.paginationVisible && !('pageContent' in propSwiper) ? (
           <div
@@ -435,7 +483,7 @@ export const Swiper = React.forwardRef<
               [`${b('pagination-vertical')}`]: isVertical,
             })}
           >
-            {childs.map((item, index) => {
+            {React.Children.map(childs, (item: any, index: number) => {
               return (
                 <i
                   style={{

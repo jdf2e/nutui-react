@@ -49,67 +49,69 @@ const ToastDemo = () => {
         <Cell
           title="Text文字提示"
           isLink
-          click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) =>
-            textToast('网络失败，请稍后再试~')
-          }
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => textToast('网络失败，请稍后再试~')}
         />
 
         <h2>成功提示</h2>
         <Cell
           title="Success 成功提示"
           isLink
-          click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) =>
-            successToast('成功提示')
-          }
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => successToast('成功提示')}
         />
 
         <h2>失败提示</h2>
         <Cell
           title="Error 失败提示"
           isLink
-          click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) =>
-            errorToast('失败提示')
-          }
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => errorToast('失败提示')}
         />
 
         <h2>警告提示</h2>
         <Cell
           title=" Warning 警告提示"
           isLink
-          click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) =>
-            warningToast('警告提示')
-          }
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => warningToast('警告提示')}
         />
 
         <h2>加载提示</h2>
         <Cell
           title=" Loading 加载提示"
           isLink
-          click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) =>
-            loadingToast('加载中')
-          }
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => loadingToast('加载中')}
         />
 
         <h2>展示时长设置</h2>
         <Cell
           title="设置展示时长为10秒提示"
           isLink
-          click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) =>
-            duringToast('设置展示时长为10秒')
-          }
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => duringToast('设置展示时长为10秒')}
         />
         <Cell
           title="关闭正在显示的toast"
           isLink
-          click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => Toast.hide()}
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => Toast.hide()}
         />
         <h2>自定义icon图标</h2>
         <Cell
           title="传入icon组件中的'JD'图标"
           isLink
-          click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) =>
-            iconToast('设置icon为JD')
-          }
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => iconToast('设置icon为JD')}
         />
       </div>
     </>

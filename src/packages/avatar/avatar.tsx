@@ -6,9 +6,9 @@ import React, {
   useContext,
   MouseEventHandler,
 } from 'react'
+import classNames from 'classnames'
 import { AvatarContext } from '@/packages/avatargroup/AvatarContext'
 import bem from '@/utils/bem'
-import classNames from 'classnames'
 import Icon from '@/packages/icon'
 
 export interface AvatarProps {
@@ -79,8 +79,13 @@ export const Avatar: FunctionComponent<
     backgroundColor: `${bgColor}`,
     color: `${color}`,
     marginLeft:
-      avatarIndex != 1 && parent?.propAvatarGroup?.span ? `${parent?.propAvatarGroup?.span}px` : '',
-    zIndex: parent?.propAvatarGroup?.zIndex == 'right' ? `${Math.abs(maxSum - avatarIndex)}` : '',
+      avatarIndex != 1 && parent?.propAvatarGroup?.span
+        ? `${parent?.propAvatarGroup?.span}px`
+        : '',
+    zIndex:
+      parent?.propAvatarGroup?.zIndex == 'right'
+        ? `${Math.abs(maxSum - avatarIndex)}`
+        : '',
     ...style,
   }
 
@@ -89,7 +94,7 @@ export const Avatar: FunctionComponent<
     color: `${parent?.propAvatarGroup?.maxColor}`,
   }
 
-  const iconStyles = !!icon ? icon : ''
+  const iconStyles = icon || ''
 
   useEffect(() => {
     const avatarChildren = parent?.avatarGroupRef?.current.children
@@ -100,7 +105,11 @@ export const Avatar: FunctionComponent<
 
   const avatarLength = (children: any) => {
     for (let i = 0; i < children.length; i++) {
-      if (children[i] && children[i].classList && children[i].classList[0] == 'nut-avatar') {
+      if (
+        children[i] &&
+        children[i].classList &&
+        children[i].classList[0] == 'nut-avatar'
+      ) {
         children[i].setAttribute('data-index', i + 1)
       }
     }
@@ -108,7 +117,11 @@ export const Avatar: FunctionComponent<
     const maxCount = parent?.propAvatarGroup?.maxCount
     setMaxSum(children.length)
     setAvatarIndex(index)
-    if (index == children.length && index != maxCount && children.length > maxCount) {
+    if (
+      index == children.length &&
+      index != maxCount &&
+      children.length > maxCount
+    ) {
       setShowMax(true)
     }
   }

@@ -688,6 +688,16 @@
           "show": false,
           "exportEmpty": true,
           "author": "hanyuxinting"
+        },
+        {
+          "version": "1.0.0",
+          "name": "VirtualList",
+          "type": "component",
+          "cName": "虚拟列表",
+          "desc": "长列表渲染",
+          "sort": 20,
+          "show": true,
+          "author": "hx"
         }
       ]
     },

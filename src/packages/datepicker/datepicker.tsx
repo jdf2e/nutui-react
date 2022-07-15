@@ -6,7 +6,11 @@ interface IResValue {
   value: string
 }
 interface pickerRefState {
-  updateChooseValue: (index: number, value: string, cacheValueData: any[]) => void
+  updateChooseValue: (
+    index: number,
+    value: string,
+    cacheValueData: any[]
+  ) => void
 }
 
 export interface DatePickerProps {
@@ -64,7 +68,10 @@ export const DatePicker: FunctionComponent<
   const pickerRef = useRef<pickerRefState>(null)
 
   const isDate = (val: Date): val is Date => {
-    return Object.prototype.toString.call(val) === '[object Date]' && !isNaN(val.getTime())
+    return (
+      Object.prototype.toString.call(val) === '[object Date]' &&
+      !isNaN(val.getTime())
+    )
   }
 
   const zhCNType: { [key: string]: string } = {
@@ -128,15 +135,11 @@ export const DatePicker: FunctionComponent<
 
   const ranges = (date?: Date) => {
     const curDate = date || currentDate
-    const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } = getBoundary(
-      'max',
-      curDate
-    )
+    const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } =
+      getBoundary('max', curDate)
 
-    const { minYear, minDate, minMonth, minHour, minMinute, minSeconds } = getBoundary(
-      'min',
-      curDate
-    )
+    const { minYear, minDate, minMonth, minHour, minMinute, minSeconds } =
+      getBoundary('min', curDate)
 
     const result = [
       {
@@ -250,7 +253,11 @@ export const DatePicker: FunctionComponent<
             modelValue.getDate() + zhCNType.day,
           ]
         } else {
-          val = [modelValue.getFullYear(), resValue as string, modelValue.getDate()]
+          val = [
+            modelValue.getFullYear(),
+            resValue as string,
+            modelValue.getDate(),
+          ]
         }
 
         setDefaultValue(val)
@@ -267,7 +274,12 @@ export const DatePicker: FunctionComponent<
     }
   }
 
-  const generateValue = (min: number, max: number, val: number, type: string) => {
+  const generateValue = (
+    min: number,
+    max: number,
+    val: number,
+    type: string
+  ) => {
     if (!(max > min)) return
     const arr: Array<number | string> = []
     let index = 0
@@ -321,7 +333,12 @@ export const DatePicker: FunctionComponent<
 
   const columns = (date?: Date) => {
     const val = ranges(date).map((res) => {
-      return generateValue(res.range[0], res.range[1], getDateIndex(res.type, date), res.type)
+      return generateValue(
+        res.range[0],
+        res.range[1],
+        getDateIndex(res.type, date),
+        res.type
+      )
     })
     return val || []
   }
@@ -337,13 +354,19 @@ export const DatePicker: FunctionComponent<
   }, [visible])
 
   return (
-    <div className={`nut-datepicker ${className || ''}`} style={style} {...rest}>
+    <div
+      className={`nut-datepicker ${className || ''}`}
+      style={style}
+      {...rest}
+    >
       <Picker
         isVisible={show}
         listData={listData}
         onClose={onCloseDatePicker}
         defaultValueData={defaultValue}
-        onConfirm={(list: any[]) => onConfirmDatePicker && onConfirmDatePicker(list)}
+        onConfirm={(list: any[]) =>
+          onConfirmDatePicker && onConfirmDatePicker(list)
+        }
         onChoose={(index: number, value: IResValue | string, list: any[]) =>
           updateChooseValueCustmer(index, value, list)
         }

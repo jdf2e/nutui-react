@@ -1,4 +1,10 @@
-import React, { FunctionComponent, useEffect, useState, CSSProperties, useRef } from 'react'
+import React, {
+  FunctionComponent,
+  useEffect,
+  useState,
+  CSSProperties,
+  useRef,
+} from 'react'
 
 import Icon from '@/packages/icon'
 
@@ -46,7 +52,7 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
   const [backTop, SetBackTop] = useState(false)
   const [scrollTop, SetScrollTop] = useState(0)
   let startTime = 0
-  let scrollEl: any = useRef<any>(null)
+  const scrollEl: any = useRef<any>(null)
   // 初始化
   useEffect(() => {
     init()

@@ -9,9 +9,6 @@
 ``` ts
 import { Uploader } from '@nutui/nutui-react';
 ```
-
-## 代码示例
-
 ### 基本用法
 
 :::demo

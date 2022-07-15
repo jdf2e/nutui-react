@@ -1,4 +1,9 @@
-import React, { CSSProperties, FunctionComponent, useEffect, useState } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  useEffect,
+  useState,
+} from 'react'
 import Icon from '@/packages/icon'
 
 export interface TagProps {
@@ -47,7 +52,18 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   const [btnName, setBtnName] = useState('')
   useEffect(() => {
     setBtnName(classes())
-  }, [type, color, textColor, plain, round, mark, closeable, prefixCls, isShow, onClick])
+  }, [
+    type,
+    color,
+    textColor,
+    plain,
+    round,
+    mark,
+    closeable,
+    prefixCls,
+    isShow,
+    onClick,
+  ])
   const classes = () => {
     const prefixCls = 'nut-tag'
     return `${prefixCls}
@@ -81,17 +97,30 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     <div>
       {closeable ? (
         isShow ? (
-          <div className={`${btnName}`} style={getStyle()} onClick={(e) => handleClick(e)}>
+          <div
+            className={`${btnName}`}
+            style={getStyle()}
+            onClick={(e) => handleClick(e)}
+          >
             {children && <span className="text">{children}</span>}
             {closeable && (
-              <Icon className="_icon" name="close" size="12" onClick={(e) => handleClick(e)} />
+              <Icon
+                className="_icon"
+                name="close"
+                size="12"
+                onClick={(e) => handleClick(e)}
+              />
             )}
           </div>
         ) : (
           ''
         )
       ) : (
-        <div className={`${btnName}`} style={getStyle()} onClick={(e) => handleClick(e)}>
+        <div
+          className={`${btnName}`}
+          style={getStyle()}
+          onClick={(e) => handleClick(e)}
+        >
           {children && <span className="text">{children}</span>}
         </div>
       )}

@@ -70,7 +70,9 @@ const BarrageDemo = () => {
   const addBarrage = () => {
     const n = Math.random()
     if (barrageRef.current) {
-      barrageRef.current.add(`${translated['75ca4f92']}${String(n).substr(2, 10)}`)
+      barrageRef.current.add(
+        `${translated['75ca4f92']}${String(n).substr(2, 10)}`
+      )
     }
   }
 
@@ -79,7 +81,11 @@ const BarrageDemo = () => {
       <div className="demo">
         <h2>{translated['84aa6bce']}</h2>
         <Cell className="barrage-demo-wrap">
-          <Barrage className="barrage-demo" ref={barrageRef} barrageList={list} />
+          <Barrage
+            className="barrage-demo"
+            ref={barrageRef}
+            barrageList={list}
+          />
         </Cell>
         <div className="test" style={{ textAlign: 'center' }}>
           <Button type="danger" onClick={addBarrage}>

@@ -7,7 +7,9 @@ import Step from '../../step'
 import Button from '../../button'
 
 test('should render horizontal class when props direction is to be horizontal', () => {
-  const { getByTestId } = render(<Steps data-testid="steps-horizontal" direction="horizontal" />)
+  const { getByTestId } = render(
+    <Steps data-testid="steps-horizontal" direction="horizontal" />
+  )
   expect(getByTestId('steps-horizontal')).toHaveClass('nut-steps-horizontal')
 })
 
@@ -25,11 +27,15 @@ test('should render horizontal class when props direction is to be horizontal', 
       </Step>
     </Steps>
   )
-  expect(container.querySelectorAll('.nut-step')[0]).toHaveClass('nut-step-process')
+  expect(container.querySelectorAll('.nut-step')[0]).toHaveClass(
+    'nut-step-process'
+  )
 })
 
 test('should render dot class when props progressDot is to be true', async () => {
-  const { getByTestId } = render(<Steps data-testid="steps-progressDot" progressDot={true} />)
+  const { getByTestId } = render(
+    <Steps data-testid="steps-progressDot" progressDot />
+  )
   expect(getByTestId('steps-progressDot')).toHaveClass('nut-steps-dot')
 })
 
@@ -68,9 +74,15 @@ test('should render horizontal class when props direction is to be horizontal', 
       </Step>
     </Steps>
   )
-  expect(container.querySelectorAll('.nut-step-title')[0].innerHTML).toBe('已完成')
-  expect(container.querySelectorAll('.nut-step-content')[1].innerHTML).toBe('您的订单正在配送途中')
-  expect(container.querySelectorAll('.nutui-iconfont')[2]).toHaveClass('nut-icon-location2')
+  expect(container.querySelectorAll('.nut-step-title')[0].innerHTML).toBe(
+    '已完成'
+  )
+  expect(container.querySelectorAll('.nut-step-content')[1].innerHTML).toBe(
+    '您的订单正在配送途中'
+  )
+  expect(container.querySelectorAll('.nutui-iconfont')[2]).toHaveClass(
+    'nut-icon-location2'
+  )
   expect(container.querySelectorAll('.nutui-iconfont')[2]).toHaveStyle({
     color: 'blue',
     width: '14px',
@@ -90,7 +102,11 @@ test('should props current changes when trigger click', () => {
     return (
       <>
         <Steps current={current}>
-          <Step activeIndex={1} title="已完成" content="您的订单已经打包完成，商品已发出">
+          <Step
+            activeIndex={1}
+            title="已完成"
+            content="您的订单已经打包完成，商品已发出"
+          >
             1
           </Step>
           <Step activeIndex={2} title="进行中" content="您的订单正在配送途中">
@@ -111,17 +127,25 @@ test('should props current changes when trigger click', () => {
   const { container, getByText } = render(<App />)
 
   fireEvent.click(getByText('下一步'))
-  expect(container.querySelectorAll('.nut-step')[1]).toHaveClass('nut-step-process')
+  expect(container.querySelectorAll('.nut-step')[1]).toHaveClass(
+    'nut-step-process'
+  )
 
   fireEvent.click(getByText('下一步'))
-  expect(container.querySelectorAll('.nut-step')[2]).toHaveClass('nut-step-process')
+  expect(container.querySelectorAll('.nut-step')[2]).toHaveClass(
+    'nut-step-process'
+  )
 })
 
 test('should emited click when step trigger', () => {
   const handleClickStep = jest.fn()
   const { getByText } = render(
     <Steps current={1} clickStep={handleClickStep}>
-      <Step activeIndex={1} title="已完成" content="您的订单已经打包完成，商品已发出">
+      <Step
+        activeIndex={1}
+        title="已完成"
+        content="您的订单已经打包完成，商品已发出"
+      >
         1
       </Step>
       <Step activeIndex={2} title="进行中" content="您的订单正在配送途中">
@@ -143,7 +167,11 @@ test('should emited click when step trigger', () => {
 test('render step slot', () => {
   const { container, queryByText } = render(
     <Steps current={1}>
-      <Step activeIndex={1} title="已完成" content="您的订单已经打包完成，商品已发出">
+      <Step
+        activeIndex={1}
+        title="已完成"
+        content="您的订单已经打包完成，商品已发出"
+      >
         1
       </Step>
       <Step activeIndex={2} title="进行中" content="您的订单正在配送途中">
@@ -164,5 +192,7 @@ test('render step slot', () => {
     </Steps>
   )
   expect(container).toContainHTML('<p>收货地址为：</p>')
-  expect(queryByText('北京市经济技术开发区科创十一街18号院京东大厦')).toBeTruthy()
+  expect(
+    queryByText('北京市经济技术开发区科创十一街18号院京东大厦')
+  ).toBeTruthy()
 })
