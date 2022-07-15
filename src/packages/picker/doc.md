@@ -29,7 +29,7 @@ const App = () => {
     [
       {
         label: 1,
-        value: '南京市',
+        value: '测试',
       },
       {
         label: 2,
