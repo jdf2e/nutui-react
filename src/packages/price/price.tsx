@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import './price.scss'
+
 import bem from '@/utils/bem'
 
 export interface PriceProps {
@@ -20,7 +20,15 @@ const defaultProps = {
   className: '',
 } as PriceProps
 export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
-  const { price, needSymbol, symbol, decimalDigits, thousands, className, ...rest } = {
+  const {
+    price,
+    needSymbol,
+    symbol,
+    decimalDigits,
+    thousands,
+    className,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -37,15 +45,15 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     }
     if (checkPoint(num)) {
       num = Number(num).toFixed(decimalDigits)
-      num = typeof num.split('.') === 'string' ? num.split('.') : num.split('.')[0]
+      num =
+        typeof num.split('.') === 'string' ? num.split('.') : num.split('.')[0]
     } else {
       num = num.toString()
     }
     if (thousands) {
       return (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,')
-    } else {
-      return num
     }
+    return num
   }
   const formatDecimal = (decimalNum: any) => {
     if (Number(decimalNum) == 0) {
@@ -54,18 +62,22 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
 
     if (checkPoint(decimalNum)) {
       decimalNum = Number(decimalNum).toFixed(decimalDigits)
-      decimalNum = typeof decimalNum.split('.') === 'string' ? 0 : decimalNum.split('.')[1]
+      decimalNum =
+        typeof decimalNum.split('.') === 'string' ? 0 : decimalNum.split('.')[1]
     } else {
       decimalNum = 0
     }
-    const result = '0.' + decimalNum
+    const result = `0.${decimalNum}`
     const resultFixed = Number(result).toFixed(decimalDigits)
     return String(resultFixed).substring(2, resultFixed.length)
   }
   return (
     <div className={`${b()} ${className}`} {...rest}>
       {needSymbol ? (
-        <div className={`${b('symbol')}`} dangerouslySetInnerHTML={showSymbol()}></div>
+        <div
+          className={`${b('symbol')}`}
+          dangerouslySetInnerHTML={showSymbol()}
+        />
       ) : null}
       <div className={`${b('big')}`}>{formatThousands(price)}</div>
       <div className={`${b('point')}`}>.</div>

@@ -28,7 +28,11 @@ const NotifyDemo = () => {
     Notify.warn(msg)
   }
   const cusBgNotify = (msg: string) => {
-    Notify.text(msg, { color: '#ad0000', background: '#ffe1e1', className: 'aa' })
+    Notify.text(msg, {
+      color: '#ad0000',
+      background: '#ffe1e1',
+      className: 'aa',
+    })
   }
   const timeNotify = (msg: string) => {
     Notify.text(msg, { duration: 10000 })
@@ -42,7 +46,7 @@ const NotifyDemo = () => {
           click={(event: React.MouseEvent) => {
             baseNotify('基础用法')
           }}
-        ></Cell>
+        />
         <h2>通知类</h2>
         <CellGroup>
           <Cell
@@ -50,25 +54,25 @@ const NotifyDemo = () => {
             click={(event: React.MouseEvent) => {
               primaryNotify('主要通知')
             }}
-          ></Cell>
+          />
           <Cell
             title="成功通知"
             click={(event: React.MouseEvent) => {
               successNotify('成功通知')
             }}
-          ></Cell>
+          />
           <Cell
             title="危险通知"
             click={(event: React.MouseEvent) => {
               errorNotify('危险通知')
             }}
-          ></Cell>
+          />
           <Cell
             title="警告通知"
             click={(event: React.MouseEvent) => {
               warningNotify('警告通知')
             }}
-          ></Cell>
+          />
         </CellGroup>
         <h2>自定义背景色和字体颜色</h2>
         <Cell
@@ -76,14 +80,14 @@ const NotifyDemo = () => {
           click={(event: React.MouseEvent) => {
             cusBgNotify('自定义背景色和字体颜色')
           }}
-        ></Cell>
+        />
         <h2>自定义时长</h2>
         <Cell
           title="自定义时长10s"
           click={(event: React.MouseEvent) => {
             timeNotify('自定义时长10s')
           }}
-        ></Cell>
+        />
 
         <Button
           type="primary"

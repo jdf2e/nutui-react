@@ -1,8 +1,5 @@
 // 创建模板
-
 const inquirer = require('inquirer')
-// import {  ROOT_PACKAGE_PATH } from '../util/dic';
-
 const path = require('path')
 const fs = require('fs')
 const config = require('../src/config.json')
@@ -80,7 +77,7 @@ function init() {
         type: 'input',
         name: 'sort',
         message:
-          '请选择组件分类(输入编号)：1基础组件，2布局组件，3操作反馈，4导航组件，5数据录入，6特色组件',
+          '请选择组件分类(输入编号)：1基础组件，2布局组件，3导航组件，4数据录入，5操作反馈，6展示组件，7特色组件',
         validate(value) {
           const pass = /^[1-6]$/.test(value)
           if (pass) {
@@ -119,38 +116,10 @@ function createIndexJs() {
   if (!fs.existsSync(destPath)) {
     fs.mkdirSync(destPath)
   }
-  // copy(path.join(__dirname, './__template__/**.*'), destPath, function (err: any, file: any) {
-  // 	if (err) {
-  // 		console.log('拷贝__template__目录失败！');
-  // 	}
-  // 	createNew();
-  // });
 
   if (newCpt.type == 'method') return
   return new Promise((resolve, reject) => {
-    //         let content = `import ${newCpt.name} from './src/${nameLc}.vue';
-    // ${newCpt.name}.install = function(Vue) {
-    //   Vue.${newCpt.type}(${newCpt.name}.name, ${newCpt.name});
-    // };
-    // export default ${newCpt.name}`;
-    //         let content2 = `${newCpt.name}.install = function(Vue) {
-    // Vue.${newCpt.type}(${newCpt.name}.name, ${newCpt.name});
-    // };
-    // export default ${newCpt.name}`;
-
-    // const dirPath = path.join(__dirname, `../src/packages/${nameLc}/`);
-
-    // const filePath = path.join(dirPath, `index.js`);
-    // if (!fs.existsSync(dirPath)) {
-    // 	fs.mkdirSync(filePath);
-    // }
-    // if (newCpt.type == 'filter' || newCpt.type == 'directive'){
-    //     content = content2;
-    // }
-    // fs.writeFile(filePath,  content, (err) => {
-    //     if (err) throw err;
     resolve(`生成index.js文件成功`)
-    // });
   })
 }
 

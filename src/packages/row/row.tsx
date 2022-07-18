@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react'
 import { DataContext } from './UserContext'
-import './row.scss'
 
 export interface RowProps {
   type: string
@@ -16,13 +15,20 @@ const defaultProps = {
   wrap: 'nowrap',
   gutter: '0',
 } as RowProps
-export const Row: FunctionComponent<Partial<RowProps> & React.HTMLAttributes<HTMLDivElement>> = (
-  props
-) => {
-  const { children, type, justify, align, wrap, gutter } = { ...defaultProps, ...props }
+export const Row: FunctionComponent<
+  Partial<RowProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
+  const { children, type, justify, align, wrap, gutter } = {
+    ...defaultProps,
+    ...props,
+  }
   const prefixCls = 'nut-row'
   const getClass = (prefix: string, type: string) => {
-    return prefix ? (type ? `nut-row-${prefix}-${type}` : '') : `nut-row-${type}`
+    return prefix
+      ? type
+        ? `nut-row-${prefix}-${type}`
+        : ''
+      : `nut-row-${type}`
   }
   const getClasses = () => {
     return `
@@ -34,7 +40,7 @@ export const Row: FunctionComponent<Partial<RowProps> & React.HTMLAttributes<HTM
    `
   }
   const parentRow = {
-    gutter: gutter,
+    gutter,
   }
 
   return (

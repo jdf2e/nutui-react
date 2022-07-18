@@ -6,80 +6,218 @@
 
 ### 安装
 
-``` javascript
+``` ts
 import { Uploader } from '@nutui/nutui-react';
 ```
-
-## 代码示例
-
 ### 基本用法
 
+:::demo
 ``` tsx
-<Uploader url="http://服务器地址"></Uploader>
-```
+import React, { useState } from "react";
+import { Uploader } from '@nutui/nutui-react';
 
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  const onStart = () => {
+    console.log('start 触发')
+  }
+  return (
+    <>
+      <h2>基础用法</h2>
+      <Uploader url={uploadUrl} start={onStart} />
+    </>
+  )
+}
+export default App;
+```
+:::
 
 ### 自定义上传样式
 
+:::demo
 ``` tsx
-<Uploader url="http://服务器地址">
-  <Button type="primary" icon="uploader">上传文件</Button>
-</Uploader>
+import React, { useState } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  return (
+    <>
+      <h2>自定义上传样式</h2>
+      <Uploader url={uploadUrl}>
+        <Button type="primary" icon="uploader">
+          上传文件
+        </Button>
+      </Uploader>
+    </>
+  )
+}
+export default App;
 ```
+:::
 
 ### 直接调起摄像头（移动端生效）
-    
+
+:::demo
 ``` tsx
-<Uploader url="http://服务器地址" capture></Uploader>
+import React, { useState } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  return (
+    <>
+      <h2>直接调起摄像头（移动端生效）</h2>
+      <Uploader capture url={uploadUrl} />
+    </>
+  )
+}
+export default App;
 ```
+:::
+
+### 上传状态
+
+:::demo
+``` tsx
+import React, { useState } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  const onDelete = (file: FileItem, fileList: FileItem[]) => {
+    console.log('delete 事件触发', file, fileList)
+  }
+  return (
+    <>
+      <h2>上传状态</h2>
+      <Uploader url={uploadUrl} multiple removeImage={onDelete} />
+    </>
+  )
+}
+export default App;
+```
+:::
+
+
 ### 限制上传数量5个
 
+:::demo
 ``` tsx
-<Uploader url="http://服务器地址" multiple maximum="5"></Uploader>
+import React, { useState } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  return (
+    <>
+      <h2>限制上传数量5个</h2>
+      <Uploader url={uploadUrl} multiple maximum="5" />
+    </>
+  )
+}
+export default App;
 ```
+:::
+
 ### 限制上传大小（每个文件最大不超过 50kb，也可以在beforeupload中自行处理）
 
+:::demo
 ``` tsx
-<Uploader url="http://服务器地址" multiple maximize={1024 * 50} beforeUpload={beforeUpload} oversize={onOversize}></Uploader>
-```
+import React, { useState } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
 
-``` javascript
-const formData = {
-    custom: 'test'
-};
-const onOversize = (files: File[]) => {
-    console.log('oversize 触发 文件大小不能超过 50kb', files);
-};
-const beforeUpload = (files: File[]) => {
-    //自定义处理
-    return files;
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  const onOversize = (files: File[]) => {
+    console.log('oversize 触发 文件大小不能超过 50kb', files)
+  }
+  return (
+    <>
+      <h2>限制上传大小（每个文件最大不超过 50kb）</h2>
+      <Uploader url={uploadUrl} multiple maximize={1024 * 50} oversize={onOversize} />
+    </>
+  )
 }
+export default App;
 ```
+:::
+
 
 ### 自定义 FormData headers
 
+:::demo
 ``` tsx
-<Uploader url="http://服务器地址" data={formData} headers={formData} withCredentials={true}></Uploader>
-```
+import React, { useState } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
 
-``` javascript
-const formData = {
-    custom: 'test'
-};
-const onOversize = (files: File[]) => {
-    console.log('oversize 触发 文件大小不能超过 50kb', files);
-};
-const beforeUpload = (files: File[]) => {
-    //自定义处理
-    return files;
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  const formData = {
+    custom: 'test',
+  }
+  return (
+    <>
+      <h2>自定义 FormData headers</h2>
+      <Uploader
+        url={uploadUrl}
+        data={formData}
+        headers={formData}
+        withCredentials
+       />
+    </>
+  )
 }
+export default App;
 ```
+:::
+
+### 手动上传
+
+:::demo
+``` tsx
+import React, { useState, useRef } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  const uploadRef = useRef(null)
+  const submitUpload = () => {
+    uploadRef.current.submit()
+  }
+  return (
+    <>
+      <h2>手动上传</h2>
+      <Uploader url={uploadUrl} maximum="5" autoUpload={false} ref={uploadRef} />
+      <br />
+      <Button type="success" size="small" onClick={submitUpload}>
+        执行上传
+      </Button>
+    </>
+  )
+}
+export default App;
+```
+:::
 
 ### 禁用状态
 
+:::demo
 ``` tsx
-<Uploader disabled></Uploader>
+import React, { useState } from "react";
+import { Uploader, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <h2>禁用状态</h2>
+      <Uploader disabled />
+    </>
+  )
+}
+export default App;
 ```
+:::
 
 ### Prop
 
@@ -88,6 +226,7 @@ const beforeUpload = (files: File[]) => {
 | name              | `input` 标签 `name` 的名称，发到后台的文件参数名                                                                                                                                       | String                            | "file"           |
 | url               | 上传服务器的接口地址                                                                                                                                                                   | String                            | -                |
 | isPreview        | 是否上传成功后展示预览图                                                                                                                                                               | Boolean                           | true             |
+| defaultImg        | 当上传非图片('image')格式的默认图片地址                                                                                                                                                               | String                           | ''             |
 | isDeletable      | 是否展示删除按钮                                                                                                                                                                       | Boolean                           | true             |
 | method            | 上传请求的 http method                                                                                                                                                                 | String                            | "post"           |
 | capture           | 图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接调起摄像头                                                                     | String                            | false            |

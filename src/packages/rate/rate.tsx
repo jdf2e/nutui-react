@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import './rate.scss'
+
 import bem from '@/utils/bem'
-import Icon from '../icon'
+import Icon from '@/packages/icon'
 
 export interface RateProps {
   count: string | number
@@ -97,7 +97,9 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
           >
             <Icon
               size={iconSize}
-              className={`${bi('icon')} ${disabled || n > score ? bi('icon--disabled') : ''}`}
+              className={`${bi('icon')} ${
+                disabled || n > score ? bi('icon--disabled') : ''
+              }`}
               name={n <= score ? checkedIcon : uncheckedIcon}
               color={n <= score ? activeColor : voidColor}
             />
@@ -111,7 +113,9 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
             )}
             {allowHalf && score < n - 1 && (
               <Icon
-                className={`${bi('icon')} ${bi('icon--disabled')} ${bi('icon--half')}`}
+                className={`${bi('icon')} ${bi('icon--disabled')} ${bi(
+                  'icon--half'
+                )}`}
                 color={voidColor}
                 size={iconSize}
                 name={uncheckedIcon}

@@ -1,4 +1,4 @@
-# Overlay 组件
+# Overlay 遮罩层
 
 ### 介绍
 
@@ -7,7 +7,7 @@
 ### 安装
 
 
-``` javascript
+``` ts
 import { OverLay } from '@nutui/nutui-react';
 ```
 
@@ -15,19 +15,79 @@ import { OverLay } from '@nutui/nutui-react';
 
 ### 基础用法
 
+:::demo
 ```tsx
-<Overlay visible={true} zindex={2000}></Overlay>
+import React, { useState } from "react";
+import { Button, Overlay } from '@nutui/nutui-react';
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  const handleToggleShow = () => {
+    setVisible(true)
+  }
+  const onClose = () => {
+    setVisible(false)
+  }
+  return (
+    <>
+      <Button type="primary" onClick={handleToggleShow}>
+        显示遮罩层
+      </Button>
+      <Overlay visible={visible} onClick={onClose} />
+    </>
+  )
+}
+export default App;
 ```
+:::
 
 ### 嵌套内容
 
+:::demo
 ```tsx
-<nut-overlay visible={true} zIndex={2000}>
-  <div className="wrapper">
-    <div className="content">这里是正文</div>
-  </div>
-</nut-overlay>
+import React, { useState } from "react";
+import { Button, Overlay } from '@nutui/nutui-react';
+
+const WrapperStyle = {
+  display: 'flex',
+  height: '100%',
+  alignItems: 'center',
+  justifyContent: 'center'
+}
+const ContentStyle = {
+  display: 'flex',
+  width: '150px',
+  height: '150px',
+  background: '#fff',
+  borderRadius: '8px',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: 'red'
+}
+const App = () => {
+  const [visible2, setVisible2] = useState(false)
+  const handleToggleShow2 = () => {
+    setVisible2(true)
+  }
+  const onClose2 = () => {
+    setVisible2(false)
+  }
+  return (
+    <>
+      <Button type="success" onClick={handleToggleShow2}>
+        嵌套内容
+      </Button>
+      <Overlay visible={visible2} onClick={onClose2}>
+        <div className="wrapper" style={WrapperStyle}>
+          <div className="content" style={ContentStyle}>这里是正文</div>
+        </div>
+      </Overlay>
+    </>
+  )
+}
+export default App;
 ```
+:::
 
 ## API
 

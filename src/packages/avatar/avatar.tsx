@@ -1,61 +1,174 @@
-import React, { FunctionComponent, MouseEventHandler } from 'react'
-import Icon from '@/packages/icon'
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  FunctionComponent,
+  useContext,
+  MouseEventHandler,
+} from 'react'
 import classNames from 'classnames'
-import './avatar.scss'
+import { AvatarContext } from '@/packages/avatargroup/AvatarContext'
+import bem from '@/utils/bem'
+import Icon from '@/packages/icon'
 
 export interface AvatarProps {
-  size: AvatarSize
+  size: string
   icon: string
   shape: AvatarShape
   bgColor: string
+  color: string
   prefixCls: string
-  src: string
+  url: string
   className: string
+  alt: string
   style: React.CSSProperties
+  activeAvatar: (e: MouseEvent) => void
+  onError: (e: any) => void
 }
 
-export type AvatarSize = 'large' | 'normal' | 'small'
 export type AvatarShape = 'round' | 'square'
 const defaultProps = {
-  size: 'normal',
+  size: '',
   icon: '',
-  shape: 'round',
   bgColor: '#eee',
+  color: '#666',
   prefixCls: 'nut-avatar',
-  src: '',
+  url: '',
+  alt: '',
 } as AvatarProps
 export const Avatar: FunctionComponent<
   Partial<AvatarProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { children, prefixCls, size, shape, bgColor, src, icon, className, style, ...rest } = {
+  const {
+    children,
+    prefixCls,
+    size,
+    shape,
+    bgColor,
+    color,
+    url,
+    alt,
+    icon,
+    className,
+    style,
+    activeAvatar,
+    onError,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }
-  const sizeValue = ['large', 'normal', 'small']
+
+  const [maxSum, setMaxSum] = useState(0) // avatarGroup里的avatar的个数
+  const [showMax, setShowMax] = useState(false) // 是否显示的最大头像个数
+  const [avatarIndex, setAvatarIndex] = useState(1) // avatar的索引
+  const avatarRef = useRef<any>(null)
+  const parent: any = useContext(AvatarContext)
+
+  const b = bem('avatar')
   const classes = classNames({
-    [`${prefixCls}`]: true,
-    ['avatar-' + size]: true,
-    ['avatar-' + shape]: true,
+    [`nut-avatar-${size || parent?.propAvatarGroup?.size || 'normal'}`]: true,
+    [`nut-avatar-${shape || parent?.propAvatarGroup?.shape || 'round'}`]: true,
   })
-  const cls = classNames(classes, className)
+  const cls = classNames(b(''), classes, className)
+
+  const sizeValue = ['large', 'normal', 'small']
   const styles: React.CSSProperties = {
     width: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
     height: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
-    backgroundImage: src ? `url(${src})` : '',
     backgroundColor: `${bgColor}`,
+    color: `${color}`,
+    marginLeft:
+      avatarIndex != 1 && parent?.propAvatarGroup?.span
+        ? `${parent?.propAvatarGroup?.span}px`
+        : '',
+    zIndex:
+      parent?.propAvatarGroup?.zIndex == 'right'
+        ? `${Math.abs(maxSum - avatarIndex)}`
+        : '',
     ...style,
   }
-  const iconStyles = !!icon && !src ? icon : ''
-  const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
-    if (props.onClick) {
-      props.onClick(e)
+
+  const maxStyles: React.CSSProperties = {
+    backgroundColor: `${parent?.propAvatarGroup?.maxBgColor}`,
+    color: `${parent?.propAvatarGroup?.maxColor}`,
+  }
+
+  const iconStyles = icon || ''
+
+  useEffect(() => {
+    const avatarChildren = parent?.avatarGroupRef?.current.children
+    if (avatarChildren) {
+      avatarLength(avatarChildren)
+    }
+  }, [])
+
+  const avatarLength = (children: any) => {
+    for (let i = 0; i < children.length; i++) {
+      if (
+        children[i] &&
+        children[i].classList &&
+        children[i].classList[0] == 'nut-avatar'
+      ) {
+        children[i].setAttribute('data-index', i + 1)
+      }
+    }
+    const index = avatarRef?.current?.dataset?.index
+    const maxCount = parent?.propAvatarGroup?.maxCount
+    setMaxSum(children.length)
+    setAvatarIndex(index)
+    if (
+      index == children.length &&
+      index != maxCount &&
+      children.length > maxCount
+    ) {
+      setShowMax(true)
     }
   }
+
+  const errorEvent = (e: any) => {
+    if (props.onError) {
+      props.onError(e)
+    }
+  }
+
+  const clickAvatar: MouseEventHandler<HTMLDivElement> = (e: any) => {
+    if (props.activeAvatar) {
+      props.activeAvatar(e)
+    }
+  }
+
   return (
-    <div className={cls} {...rest} style={styles} onClick={handleClick}>
-      <Icon className="icon" name={iconStyles} />
-      {children && <span className="text">{children}</span>}
-    </div>
+    <>
+      {(showMax ||
+        !parent?.propAvatarGroup?.maxCount ||
+        avatarIndex <= parent?.propAvatarGroup?.maxCount) && (
+        <div
+          className={cls}
+          {...rest}
+          style={!showMax ? styles : maxStyles}
+          onClick={clickAvatar}
+          ref={avatarRef}
+        >
+          {(!parent?.propAvatarGroup?.maxCount ||
+            avatarIndex <= parent?.propAvatarGroup?.maxCount) && (
+            <>
+              {url && <img src={url} alt={alt} onError={errorEvent} />}
+              {icon && <Icon className="icon" name={iconStyles} />}
+              {children && <span className="text">{children}</span>}
+            </>
+          )}
+          {/* 折叠头像 */}
+          {showMax && (
+            <div className="text">
+              {parent?.propAvatarGroup?.maxContent
+                ? parent?.propAvatarGroup?.maxContent
+                : `+ ${avatarIndex - parent?.propAvatarGroup?.maxCount}`}
+            </div>
+          )}
+        </div>
+      )}
+    </>
   )
 }
 

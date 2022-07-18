@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import Icon from '../icon'
-import { CheckboxGroup } from '@/packages/checkboxgroup/checkboxgroup'
-import './checkbox.scss'
+import Icon from '@/packages/icon'
+import CheckboxGroup from '@/packages/checkboxgroup'
+
 import bem from '@/utils/bem'
 
 export interface CheckBoxProps {
@@ -25,7 +25,8 @@ const defaultProps = {
   onChange: (state, label) => {},
 } as CheckBoxProps
 export const Checkbox: FunctionComponent<
-  Partial<CheckBoxProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<CheckBoxProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > & { Group: typeof CheckboxGroup } = (props) => {
   const { children } = { ...defaultProps, ...props }
   const b = bem('checkbox')
@@ -52,7 +53,11 @@ export const Checkbox: FunctionComponent<
 
   const renderIcon = () => {
     return (
-      <Icon name={innerChecked ? iconActiveName : iconName} size={iconSize} color={color()}></Icon>
+      <Icon
+        name={innerChecked ? iconActiveName : iconName}
+        size={iconSize}
+        color={color()}
+      />
     )
   }
   const color = () => {
@@ -60,7 +65,9 @@ export const Checkbox: FunctionComponent<
   }
   const renderLabel = () => {
     return (
-      <span className={`${b('label', { disabled: innerDisabled })} `}>{label || children}</span>
+      <span className={`${b('label', { disabled: innerDisabled })} `}>
+        {label || children}
+      </span>
     )
   }
 
@@ -72,7 +79,9 @@ export const Checkbox: FunctionComponent<
 
   return (
     <div
-      className={`${b({ reverse: textPosition === 'left' })} ${className || ''}`}
+      className={`${b({ reverse: textPosition === 'left' })} ${
+        className || ''
+      }`}
       {...rest}
       onClick={handleClick}
     >

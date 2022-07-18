@@ -1,5 +1,10 @@
-import React, { CSSProperties, FunctionComponent, useEffect, useRef, useState } from 'react'
-import './countup.scss'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  useEffect,
+  useRef,
+} from 'react'
+
 import bem from '@/utils/bem'
 
 export interface CountUpProps {
@@ -20,7 +25,15 @@ const defaultProps = {
   className: '',
 } as CountUpProps
 export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
-  const { maxLen, endNumber, delaySpeed, easeSpeed, className, thousands, ...reset } = {
+  const {
+    maxLen,
+    endNumber,
+    delaySpeed,
+    easeSpeed,
+    className,
+    thousands,
+    ...reset
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -45,9 +58,13 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
 
   const setNumberTransform = () => {
     if (countupRef.current) {
-      const numberItems = countupRef.current.querySelectorAll('.nut-countup__number')
-      const numberFilterArr: Array<string> = numerArr.filter((item: any) => !isNaN(item))
-      for (let index in numberItems) {
+      const numberItems = countupRef.current.querySelectorAll(
+        '.nut-countup__number'
+      )
+      const numberFilterArr: Array<string> = numerArr.filter(
+        (item: any) => !isNaN(item)
+      )
+      for (const index in numberItems) {
         if (!Object.prototype.hasOwnProperty.call(numberItems, index)) continue
         const elem = numberItems[Number(index)] as HTMLElement
         const idx = Number(numberFilterArr[Number(index)])
@@ -83,7 +100,10 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
       <ul className={b('list')}>
         {numerArr.map((item: any, idx: number) => {
           return (
-            <li className={`${b('listitem', { number: !isNaN(item) ? true : false })}`} key={idx}>
+            <li
+              className={`${b('listitem', { number: !isNaN(item) })}`}
+              key={idx}
+            >
               {!isNaN(item) ? (
                 <span className={b('number')} style={numberEaseStyle}>
                   {[...numbers, ...numbers].map((number, subidx) => {

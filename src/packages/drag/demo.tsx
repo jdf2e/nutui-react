@@ -1,6 +1,6 @@
 import React from 'react'
 import { Drag } from './drag'
-import { Button } from '../button/button'
+
 const DragDemo = () => {
   const right = () => {
     return document.documentElement.clientWidth - 300 - 9
@@ -24,14 +24,14 @@ const DragDemo = () => {
         <span style={btnStyle}>触摸移动</span>
       </Drag>
       <h2 style={{ top: '30px', position: 'relative' }}>限制拖拽方向</h2>
-      <Drag direction={'x'} style={{ top: '200px', left: '8px' }}>
+      <Drag direction="x" style={{ top: '200px', left: '8px' }}>
         <span style={btnStyle}>只能X轴拖拽</span>
       </Drag>
-      <Drag direction={'y'} style={{ top: '200px', right: '50px' }}>
+      <Drag direction="y" style={{ top: '200px', right: '50px' }}>
         <span style={btnStyle}>只能Y轴拖拽</span>
       </Drag>
       <h2 style={{ top: '60px', position: 'relative' }}>自动吸边</h2>
-      <Drag direction={'x'} attract={true} style={{ top: '275px', left: '8px' }}>
+      <Drag direction="x" attract style={{ top: '275px', left: '8px' }}>
         <span style={btnStyle}>拖动我</span>
       </Drag>
       <h2 style={{ top: '90px', position: 'relative' }}>限制拖动边界</h2>
@@ -45,7 +45,7 @@ const DragDemo = () => {
           height: '200px',
           border: '1px solid red',
         }}
-      ></div>
+      />
       <Drag
         boundary={{ top: 361, left: 9, bottom: bottom(), right: right() }}
         style={{ top: '400px', left: '50px' }}

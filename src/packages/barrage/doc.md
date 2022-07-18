@@ -6,35 +6,50 @@
 
 ### 安装
 
-``` javascript
+``` ts
 import { Barrage } from '@nutui/nutui-react';
 ```
 
 ## 代码演示
 
-### 基础用法1
+### 基础用法
 
+:::demo
 ```tsx
-<h2>基础用法</h2>
-<Cell>
-  <Barrage ref={barrageRef} barrageList={list}></Barrage>
-</Cell>
-<div className="test" style={{ textAlign: 'center' }}>
-  <Button type="danger" onClick={addBarrage}>随机添加</Button>
-</div>
-```
+import React, { useRef } from "react";
+import { Cell, Button, Barrage } from '@nutui/nutui-react';
 
-```tsx
-let list = ['画美不看', '不明觉厉', '喜大普奔', '男默女泪', '累觉不爱', '爷青结-']
-const barrageRef = useRef(null)
-const addBarrage = () => {
-  let n = Math.random()
-  if (barrageRef.current) {
-    barrageRef.current.add('随机——' + String(n).substr(2, 10))
-  }
+const barrageStyle = {
+  padding: '20px 0',
+  height: '150px',
+  boxSizing: 'border-box'
 }
+const App = () => {
+  const list = ['画美不看', '不明觉厉', '喜大普奔', '男默女泪', '累觉不爱', '爷青结-']
+  const barrageRef = useRef(null)
+  const addBarrage = () => {
+    const n = Math.random()
+    if (barrageRef.current) {
+      barrageRef.current.add(`随机——${  String(n).substr(2, 10)}`)
+    }
+  }
+  return (
+    <div className="demo">
+      <h2>基础用法</h2>
+      <Cell className="barrage-demo-wrap" style={barrageStyle}>
+        <Barrage className="barrage-demo" ref={barrageRef} barrageList={list} style={barrageStyle} />
+      </Cell>
+      <div className="test" style={{ textAlign: 'center' }}>
+        <Button type="danger" onClick={addBarrage}>
+          随机添加
+        </Button>
+      </div>
+    </div>
+  )
+}
+export default App;
 ```
-
+:::
 
 
 ## API

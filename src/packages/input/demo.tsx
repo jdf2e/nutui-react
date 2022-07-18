@@ -4,9 +4,9 @@ import { Input } from './input'
 const InputDemo = () => {
   const [value1, UpdateValue1] = useState('')
   const [value2, UpdateValue2] = useState('')
-  const [value3, UpdateValue3] = useState('')
-  const [value4, UpdateValue4] = useState('')
-  const [value5, UpdateValue5] = useState('')
+  const [value3] = useState('')
+  const [value4] = useState('')
+  const [value5] = useState('')
   useEffect(() => {
     setTimeout(() => {
       UpdateValue1('异步文本')
@@ -30,18 +30,33 @@ const InputDemo = () => {
     <>
       <div className="demo">
         <h2>基础用法</h2>
-        <Input label="文本(异步)" defaultValue={value1} focus={focus} blur={blur} />
-
-        <Input label="文本" defaultValue={value2} change={change} clear={clear} requireShow />
+        <Input
+          label="文本(异步)"
+          defaultValue={value1}
+          focus={focus}
+          blur={blur}
+        />
+        <Input
+          label="文本"
+          defaultValue={value2}
+          change={change}
+          clear={clear}
+          requireShow
+        />
         <h2>禁用输入框</h2>
-        <Input label="文本" defaultValue="禁止修改" disabled={true} />
-        <Input label="文本" defaultValue="readonly只读" readonly={true} />
+        <Input label="文本" defaultValue="禁止修改" disabled />
+        <Input label="文本" defaultValue="readonly只读" readonly />
         <h2>限制输入长度</h2>
         <Input label="限制7" defaultValue={value3} maxLength="7" />
         <h2>自定义类型</h2>
         <Input label="密码" defaultValue={value4} type="password" />
         <Input label="整数" defaultValue={value5} type="number" />
-        <Input label="数字" defaultValue="" type="digit" placeholder="支持小数点的输入" />
+        <Input
+          label="数字"
+          defaultValue=""
+          type="digit"
+          placeholder="支持小数点的输入"
+        />
       </div>
     </>
   )

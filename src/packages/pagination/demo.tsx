@@ -1,25 +1,26 @@
 import React, { useState } from 'react'
-import { Pagination } from './pagination'
+import Pagination from '@/packages/pagination'
 import Icon from '@/packages/icon'
+
 const PaginationDemo = () => {
   const [currentPage1, setCurrent1] = useState(1)
   const [currentPage2, setCurrent2] = useState(1)
   const [currentPage3, setCurrent3] = useState(1)
   const [currentPage4, setCurrent4] = useState(3)
   const pageChange1 = (v: any) => {
-    let c = v
+    const c = v
     setCurrent1(c)
   }
   const pageChange2 = (v: any) => {
-    let c = v
+    const c = v
     setCurrent2(c)
   }
   const pageChange3 = (v: any) => {
-    let c = v
+    const c = v
     setCurrent3(c)
   }
   const pageChange4 = (v: any) => {
-    let c = v
+    const c = v
     setCurrent4(c)
   }
   const pageNodeRender = (item: any) => {
@@ -35,7 +36,12 @@ const PaginationDemo = () => {
         onChange={pageChange1}
       />
       <h2>简单模式</h2>
-      <Pagination modelValue={currentPage2} pageCount={12} mode="simple" onChange={pageChange2} />
+      <Pagination
+        modelValue={currentPage2}
+        pageCount={12}
+        mode="simple"
+        onChange={pageChange2}
+      />
       <h2>显示省略号</h2>
       <Pagination
         modelValue={currentPage3}

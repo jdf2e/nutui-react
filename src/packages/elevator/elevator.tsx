@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useRef, useEffect, useState } from 'react'
-import './elevator.scss'
 import bem from '@/utils/bem'
 
 export interface ElevatorProps {
@@ -25,7 +24,15 @@ interface ElevatorData {
 export const Elevator: FunctionComponent<
   Partial<ElevatorProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { height, acceptKey, indexList, className, clickItem, clickIndex, ...rest } = {
+  const {
+    height,
+    acceptKey,
+    indexList,
+    className,
+    clickItem,
+    clickIndex,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -44,7 +51,7 @@ export const Elevator: FunctionComponent<
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [scrollStart, setScrollStart] = useState<boolean>(false)
   const state = useRef(initData)
-  //重置滚动参数
+  // 重置滚动参数
   const resetScrollState = () => {
     state.current.anchorIndex = 0
     setCurrentIndex(0)
@@ -65,7 +72,7 @@ export const Elevator: FunctionComponent<
 
     state.current.listHeight.push(height)
     for (let i = 0; i < state.current.listGroup.length; i++) {
-      let item = state.current.listGroup[i]
+      const item = state.current.listGroup[i]
       height += item.clientHeight
       state.current.listHeight.push(height)
     }
@@ -81,7 +88,8 @@ export const Elevator: FunctionComponent<
     }
     if (index < 0) index = 0
 
-    if (index > state.current.listHeight.length - 2) index = state.current.listHeight.length - 2
+    if (index > state.current.listHeight.length - 2)
+      index = state.current.listHeight.length - 2
 
     setCurrentIndex(index)
     if (listview.current) {
@@ -90,9 +98,10 @@ export const Elevator: FunctionComponent<
   }
 
   const touchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    let firstTouch = e.touches[0]
+    const firstTouch = e.touches[0]
     touchState.current.y2 = firstTouch.pageY
-    let delta = ((touchState.current.y2 - touchState.current.y1) / spaceHeight) | 0
+    const delta =
+      ((touchState.current.y2 - touchState.current.y1) / spaceHeight) | 0
     const cacheIndex = state.current.anchorIndex + delta
 
     setCurrentIndex(cacheIndex)
@@ -105,18 +114,14 @@ export const Elevator: FunctionComponent<
 
   const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     setScrollStart(true)
-    let index = Number(getData(e.target as HTMLElement, 'index'))
-    let firstTouch = e.touches[0]
+    const index = Number(getData(e.target as HTMLElement, 'index'))
+    const firstTouch = e.touches[0]
     touchState.current.y1 = firstTouch.pageY
     state.current.anchorIndex = +index
     setCurrentIndex((currentIndex) => currentIndex + index)
     scrollTo(index)
-
     const target = e.currentTarget as HTMLElement
-
-    target.removeEventListener('touchmove', () => touchMove(e), false)
     target.removeEventListener('touchend', touchEnd, false)
-    target.addEventListener('touchmove', () => touchMove(e), false)
     target.addEventListener('touchend', touchEnd, false)
   }
 
@@ -161,7 +166,7 @@ export const Elevator: FunctionComponent<
                   return (
                     <div
                       className={b('list__item__name')}
-                      key={subitem['id']}
+                      key={subitem.id}
                       onClick={() => handleClickItem(item[acceptKey], subitem)}
                     >
                       {subitem.name}
@@ -174,9 +179,16 @@ export const Elevator: FunctionComponent<
         })}
       </div>
       {indexList.length && scrollStart ? (
-        <div className={b('code', { current: true })}> {indexList[currentIndex][acceptKey]}</div>
+        <div className={b('code', { current: true })}>
+          {' '}
+          {indexList[currentIndex][acceptKey]}
+        </div>
       ) : null}
-      <div className={b('bars')} onTouchStart={(event) => touchStart(event)}>
+      <div
+        className={b('bars')}
+        onTouchStart={(event) => touchStart(event)}
+        onTouchMove={(event) => touchMove(event)}
+      >
         <div className={b('bars__inner')}>
           {indexList.map((item: any, index: number) => {
             return (

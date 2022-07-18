@@ -1,3 +1,5 @@
+@import '../icon/icon.scss';
+@import '../overlay/overlay.scss';
 .nut-fixednav {
   position: fixed;
   z-index: $fixednav-index;
@@ -83,7 +85,7 @@
         height: 20px;
         margin-bottom: 2px;
       }
-      .span {
+      .nut-fixednav__list-text {
         font-size: 10px;
         color: $fixednav-font-color;
       }
@@ -124,6 +126,10 @@
         left: 80px;
         right: 20px;
       }
+      margin: 0;
     }
   }
+}
+.nut-drag .nut-fixednav {
+  position: inherit;
 }

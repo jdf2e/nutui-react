@@ -1,13 +1,18 @@
 import React, { FunctionComponent } from 'react'
-import './cellgroup.scss'
+
 import bem from '@/utils/bem'
 
 export interface CellGroupProps {
   title: string
   classPrefix: string
 }
-const defaultProps = { title: '', classPrefix: 'nutui-cell-group' } as CellGroupProps
-export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (props) => {
+const defaultProps = {
+  title: '',
+  classPrefix: 'nutui-cell-group',
+} as CellGroupProps
+export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
+  props
+) => {
   const { children, classPrefix, title } = {
     ...defaultProps,
     ...props,

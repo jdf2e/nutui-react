@@ -1,8 +1,7 @@
-import React, { FunctionComponent, CSSProperties, ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import { useHistory } from 'react-router-dom'
-import './cell.scss'
 import bem from '@/utils/bem'
-import { Icon } from '../icon/icon'
+import Icon from '@/packages/icon'
 
 export interface CellProps {
   title: string
@@ -32,9 +31,9 @@ const defaultProps = {
   extra: '',
   click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
-export const Cell: FunctionComponent<Partial<CellProps> & React.HTMLAttributes<HTMLDivElement>> = (
-  props
-) => {
+export const Cell: FunctionComponent<
+  Partial<CellProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
   const {
     children,
     click,
@@ -55,7 +54,7 @@ export const Cell: FunctionComponent<Partial<CellProps> & React.HTMLAttributes<H
     ...props,
   }
   const b = bem('cell')
-  let history = useHistory()
+  const history = useHistory()
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     click(event)
     if (to && history) {
@@ -74,17 +73,15 @@ export const Cell: FunctionComponent<Partial<CellProps> & React.HTMLAttributes<H
         }
   return (
     <div
-      className={`${b({ clickable: isLink || to ? true : false }, [className])} `}
+      className={`${b({ clickable: !!(isLink || to) }, [className])} `}
       onClick={(event) => handleClick(event)}
       {...rest}
     >
-      {children ? (
-        children
-      ) : (
+      {children || (
         <>
           {title || subTitle || icon ? (
             <>
-              <div className={`${b('title', { icon: icon ? true : false })}`}>
+              <div className={`${b('title', { icon: !!icon })}`}>
                 {icon ? <Icon name={icon} className={`${b('icon')}`} /> : null}
                 {subTitle ? (
                   <>
@@ -104,8 +101,10 @@ export const Cell: FunctionComponent<Partial<CellProps> & React.HTMLAttributes<H
           ) : null}
         </>
       )}
-      {extra ? extra : null}
-      {!extra && (isLink || to) ? <Icon name="right" className={b('link')}></Icon> : null}
+      {extra || null}
+      {!extra && (isLink || to) ? (
+        <Icon name="right" className={b('link')} />
+      ) : null}
     </div>
   )
 }

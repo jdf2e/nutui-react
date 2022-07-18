@@ -12,7 +12,11 @@ function trimExtraChar(value: string, char: string, regExp: RegExp) {
   return value.slice(0, index + 1) + value.slice(index).replace(regExp, '')
 }
 
-export function formatNumber(value: string, allowDot = true, allowMinus = true) {
+export function formatNumber(
+  value: string,
+  allowDot = true,
+  allowMinus = true
+) {
   if (allowDot) {
     value = trimExtraChar(value, '.', /\./g)
   } else {

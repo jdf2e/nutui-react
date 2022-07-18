@@ -1,7 +1,11 @@
-import React, { ForwardRefRenderFunction, useEffect, useRef, useImperativeHandle } from 'react'
+import React, {
+  ForwardRefRenderFunction,
+  useEffect,
+  useRef,
+  useImperativeHandle,
+} from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import './barrage.scss'
 
 export interface BarrageProps {
   className: string
@@ -21,8 +25,20 @@ const defaultProps = {
   rows: 3,
   top: 10,
 }
-const InternalBarrage: ForwardRefRenderFunction<unknown, Partial<BarrageProps>> = (props, ref) => {
-  const { className, frequency, loop, barrageList, speeds, rows, top, ...restProps } = {
+const InternalBarrage: ForwardRefRenderFunction<
+  unknown,
+  Partial<BarrageProps>
+> = (props, ref) => {
+  const {
+    className,
+    frequency,
+    loop,
+    barrageList,
+    speeds,
+    rows,
+    top,
+    ...restProps
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -50,7 +66,7 @@ const InternalBarrage: ForwardRefRenderFunction<unknown, Partial<BarrageProps>> 
     return () => {
       clearInterval(timer.current)
     }
-  }, [])
+  }, [barrageList])
 
   const run = () => {
     clearInterval(timer.current)
@@ -62,7 +78,7 @@ const InternalBarrage: ForwardRefRenderFunction<unknown, Partial<BarrageProps>> 
 
   const play = () => {
     const _index = loop ? index.current % barrageList.length : index.current
-    let el = document.createElement(`div`)
+    const el = document.createElement(`div`)
     el.innerHTML = barrageList[_index] as string
     el.classList.add('barrage-item')
     ;(barrageContainer.current as HTMLDivElement).appendChild(el)
@@ -71,8 +87,8 @@ const InternalBarrage: ForwardRefRenderFunction<unknown, Partial<BarrageProps>> 
     const height = el.offsetHeight
     el.classList.add('move')
     el.style.animationDuration = `${speeds}ms`
-    el.style.top = (_index % rows) * (height + top) + 20 + 'px'
-    el.style.width = width + 20 + 'px'
+    el.style.top = `${(_index % rows) * (height + top) + 20}px`
+    el.style.width = `${width + 20}px`
     el.style.setProperty('--move-distance', `-${barrageCWidth.current}px`)
     el.dataset.index = `${_index}`
     el.addEventListener('animationend', () => {
@@ -83,12 +99,13 @@ const InternalBarrage: ForwardRefRenderFunction<unknown, Partial<BarrageProps>> 
 
   return (
     <div className={classes} ref={barrageBody} {...restProps}>
-      <div ref={barrageContainer} className="bContainer"></div>
+      <div ref={barrageContainer} className="bContainer" />
     </div>
   )
 }
 
-export const Barrage = React.forwardRef<unknown, Partial<BarrageProps>>(InternalBarrage)
+export const Barrage =
+  React.forwardRef<unknown, Partial<BarrageProps>>(InternalBarrage)
 
 Barrage.defaultProps = defaultProps
 Barrage.displayName = 'NutBarrage'

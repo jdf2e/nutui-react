@@ -1,7 +1,12 @@
-import React, { FunctionComponent, MouseEventHandler, useEffect, useRef, useState } from 'react'
-import bem from '@/utils/bem'
+import React, {
+  FunctionComponent,
+  MouseEventHandler,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import classNames from 'classnames'
-import './overlay.scss'
+import bem from '@/utils/bem'
 
 export interface OverlayProps {
   zIndex: number
@@ -24,9 +29,6 @@ export const defaultOverlayProps = {
 export const Overlay: FunctionComponent<
   Partial<OverlayProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const [show, setShow] = useState(false)
-  const renderRef = useRef(true)
-  const intervalRef = useRef(0)
   const {
     children,
     zIndex,
@@ -41,9 +43,12 @@ export const Overlay: FunctionComponent<
     ...defaultOverlayProps,
     ...props,
   }
+  const [show, setShow] = useState(visible)
+  const renderRef = useRef(true)
+  const intervalRef = useRef(0)
 
   useEffect(() => {
-    setShow(false)
+    visible && setShow(visible)
     lock()
   }, [visible])
 
@@ -61,14 +66,14 @@ export const Overlay: FunctionComponent<
       'overlay-fade-leave-active': !renderRef.current && !visible,
       'overlay-fade-enter-active': visible,
       'first-render': renderRef.current && !visible,
-      'hidden-render': show,
+      'hidden-render': !visible,
     },
     overlayClass,
     b('')
   )
 
   const styles = {
-    zIndex: zIndex,
+    zIndex,
     animationDuration: `${props.duration}s`,
     ...overlayStyle,
   }
@@ -85,19 +90,19 @@ export const Overlay: FunctionComponent<
     if (closeOnClickOverlay) {
       props.onClick && props.onClick(e)
       renderRef.current = false
-      let id = setTimeout(() => {
-        setShow(true)
+      const id = setTimeout(() => {
+        setShow(!visible)
       }, duration * 1000 * 0.8)
       intervalRef.current = id
     }
   }
 
   return (
-    <React.Fragment>
+    <>
       <div className={classes} style={styles} {...rest} onClick={handleClick}>
         {children}
       </div>
-    </React.Fragment>
+    </>
   )
 }
 

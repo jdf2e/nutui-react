@@ -1,15 +1,16 @@
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
-import path from 'path'
-import config from './package.json'
+
+const path = require('path')
+const config = require('./package.json')
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
-* (c) 2021 @jdf2e.
+* (c) 2022 @jdf2e.
 * Released under the MIT License.
 */`
 
-const resolve = path.resolve
+const { resolve } = path
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
@@ -18,14 +19,29 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
+        charset: false,
         // example : additionalData: `@import "./src/design/styles/variables";`
         // dont need include file extend .scss
-        additionalData: `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`,
+        additionalData: `@import "@/styles/variables.scss";`,
+      },
+      postcss: {
+        plugins: [
+          require('autoprefixer')({
+            overrideBrowserslist: [
+              '> 0.5%',
+              'last 2 versions',
+              'ie > 11',
+              'iOS >= 10',
+              'Android >= 5',
+            ],
+          }),
+        ],
       },
     },
   },
   plugins: [reactRefresh()],
   build: {
+    emptyOutDir: true,
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
       external: ['react', 'react-dom'],
@@ -39,7 +55,7 @@ export default defineConfig({
       },
     },
     lib: {
-      entry: 'src/packages/nutui.react.ts',
+      entry: 'src/packages/nutui.react.build.ts',
       name: 'nutui.react',
       fileName: 'nutui.react',
       formats: ['es', 'umd'],

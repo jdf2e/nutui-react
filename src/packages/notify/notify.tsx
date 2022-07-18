@@ -1,6 +1,5 @@
 import * as React from 'react'
 import Notification, { NotificationProps } from './Notification'
-import classNames from 'classnames'
 
 let messageInstance: any = null
 interface INotifyProps {
@@ -18,14 +17,17 @@ interface INotifyProps {
 const options: INotifyProps = {
   msg: '',
   id: '',
-  duration: 3000, //时长
+  duration: 3000, // 时长
   type: 'danger',
   className: '',
   onClosed: () => {},
   onClick: () => {},
 }
 
-function getInstance(props: NotificationProps, callback: (notification: any) => void) {
+function getInstance(
+  props: NotificationProps,
+  callback: (notification: any) => void
+) {
   if (messageInstance) {
     messageInstance.destroy()
     messageInstance = null
@@ -51,7 +53,6 @@ function notice(opts: any) {
 const errorMsg = (msg: any) => {
   if (!msg) {
     console.warn('[NutUI Notify]: msg不能为空')
-    return
   }
 }
 

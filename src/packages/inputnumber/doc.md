@@ -6,95 +6,257 @@
 
 ### 安装
 
-``` javascript
+``` ts
 import { InputNumber } from '@nutui/nutui-react';
 ```
-
-## 代码演示
-
 ### 基础用法
 
 初始化一个默认值
 
+:::demo
 ```tsx
-<InputNumber modelValue={inputState.val1} />
+import React, { useState } from "react";
+import { InputNumber } from '@nutui/nutui-react';
+
+const App = () => {
+  const [inputState, setInputState] = useState({
+    val1: 1,
+    val2: 0,
+    val3: 10,
+    val4: 0,
+    val5: 1,
+    val6: 5.5,
+    val7: 1,
+    val8: 1,
+  })
+  return (
+    <>
+      <InputNumber modelValue={inputState.val1} />
+    </>
+  )
+}
+export default App;
 ```
-```tsx
-const [inputState, setInputState] = useState({
-  val1: 1,
-})
-```
+:::
 
 ### 步长设置
 
 设置步长 `step` 5 
 
+:::demo
 ```tsx
-<InputNumber modelValue={inputState.val2} step="5" />
+import React, { useState } from "react";
+import { InputNumber } from '@nutui/nutui-react';
+
+const App = () => {
+  const [inputState, setInputState] = useState({
+    val1: 1,
+    val2: 0,
+    val3: 10,
+    val4: 0,
+    val5: 1,
+    val6: 5.5,
+    val7: 1,
+    val8: 1,
+  })
+  return (
+    <>
+      <InputNumber modelValue={inputState.val2} step="5" />
+    </>
+  )
+}
+export default App;
 ```
+:::
 
 ### 限制输入范围
 
 `min` 和 `max` 属性分别表示最小值和最大值
 
+:::demo
 ```tsx
-<InputNumber modelValue={inputState.val3} min="10" max="20" overlimit={overlimit} />
-```
-```tsx
-const overlimit = (e: MouseEvent) => {
-  console.log(e)
-  Toast.warn('超出限制事件触发')
+import React, { useState } from "react";
+import { InputNumber } from '@nutui/nutui-react';
+
+const App = () => {
+  const [inputState, setInputState] = useState({
+    val1: 1,
+    val2: 0,
+    val3: 10,
+    val4: 0,
+    val5: 1,
+    val6: 5.5,
+    val7: 1,
+    val8: 1,
+  })
+  const overlimit = (e: MouseEvent) => {
+    console.log(e)
+    Toast.warn('超出限制事件触发')
+  }
+  return (
+    <>
+      <InputNumber modelValue={inputState.val3} min="10" max="20" overlimit={overlimit} />
+    </>
+  )
 }
+export default App;
 ```
+:::
 
 ### 禁用状态
 
 `disabled` 禁用状态下无法点击按钮或修改输入框。
 
+:::demo
 ```tsx
-<InputNumber modelValue={inputState.val4} disabled />
+import React, { useState } from "react";
+import { InputNumber } from '@nutui/nutui-react';
+
+const App = () => {
+  const [inputState, setInputState] = useState({
+    val1: 1,
+    val2: 0,
+    val3: 10,
+    val4: 0,
+    val5: 1,
+    val6: 5.5,
+    val7: 1,
+    val8: 1,
+  })
+  return (
+    <>
+      <InputNumber modelValue={inputState.val4} disabled />
+    </>
+  )
+}
+export default App;
 ```
+:::
 
 ### 只读禁用输入框
 
 `readonly` 设置只读禁用输入框输入行为
 
+:::demo
 ```tsx
-<InputNumber modelValue={inputState.val5} readonly />
+import React, { useState } from "react";
+import { InputNumber } from '@nutui/nutui-react';
+
+const App = () => {
+  const [inputState, setInputState] = useState({
+    val1: 1,
+    val2: 0,
+    val3: 10,
+    val4: 0,
+    val5: 1,
+    val6: 5.5,
+    val7: 1,
+    val8: 1,
+  })
+  return (
+    <>
+      <InputNumber modelValue={inputState.val5} readonly />
+    </>
+  )
+}
+export default App;
 ```
+:::
 
 ### 支持小数点
 
 设置步长 `step` 0.1  `decimal-places` 小数保留1位
 
+:::demo
 ```tsx
-<InputNumber modelValue={inputState.val6} step="0.1" decimalPlaces="1" readonly />
+import React, { useState } from "react";
+import { InputNumber } from '@nutui/nutui-react';
+
+const App = () => {
+  const [inputState, setInputState] = useState({
+    val1: 1,
+    val2: 0,
+    val3: 10,
+    val4: 0,
+    val5: 1,
+    val6: 5.5,
+    val7: 1,
+    val8: 1,
+  })
+  return (
+    <>
+      <InputNumber modelValue={inputState.val6} step="0.1" decimalPlaces="1" readonly />
+    </>
+  )
+}
+export default App;
 ```
+:::
 ### 支持异步修改
 
 通过 `change` 事件和 `model-value` 进行异步修改
 
+:::demo
 ```tsx
-<InputNumber modelValue={inputState.val7} change={onChange} isAsync={true} />
-```
+import React, { useState } from "react";
+import { InputNumber, Toast } from '@nutui/nutui-react';
 
-```tsx
-const onChange = (value: string | number) => {
-  Toast.loading('异步演示 2 秒后更改')
-  setTimeout(() => {
-    inputState.val7 = Number(value)
-    setInputState({ ...inputState })
-    Toast.hide()
-  }, 2000)
+const App = () => {
+  const [inputState, setInputState] = useState({
+    val1: 1,
+    val2: 0,
+    val3: 10,
+    val4: 0,
+    val5: 1,
+    val6: 5.5,
+    val7: 1,
+    val8: 1,
+  })
+  const onChange = (value: string | number) => {
+    Toast.loading('异步演示 2 秒后更改')
+    setTimeout(() => {
+      inputState.val7 = Number(value)
+      setInputState({ ...inputState })
+      Toast.hide()
+    }, 2000)
+  }
+  return (
+    <>
+      <InputNumber modelValue={inputState.val7} change={onChange} isAsync />
+    </>
+  )
 }
+export default App;
 ```
+:::
+
 ### 自定义按钮大小
 
-设置步长 `step` 0.1  `decimal-places` 小数保留1位
-
+:::demo
 ```tsx
-<InputNumber modelValue={inputState.val8} buttonSize="30" inputWidth="50" />
+import React, { useState } from "react";
+import { InputNumber, Toast } from '@nutui/nutui-react';
+
+const App = () => {
+  const [inputState, setInputState] = useState({
+    val1: 1,
+    val2: 0,
+    val3: 10,
+    val4: 0,
+    val5: 1,
+    val6: 5.5,
+    val7: 1,
+    val8: 1,
+  })
+  return (
+    <>
+      <InputNumber modelValue={inputState.val8} buttonSize="30" inputWidth="50" />
+    </>
+  )
+}
+export default App;
 ```
+:::
 
 ## API
 

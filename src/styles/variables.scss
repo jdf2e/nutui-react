@@ -117,9 +117,9 @@ $icon-line-height: 20px;
 
 // uploader
 
-$uploader-width: 100px;
-$uploader-height: 100px;
-$uploader-background: #f7f8fa;
+$uploader-picture-width: 100px !default;
+$uploader-picture-height: 100px !default;
+$uploader-background: #f7f8fa !default;
 
 //input
 $input-border-bottom: #eaf0fb;
@@ -252,7 +252,33 @@ $rang-bar-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-en
 $address-region-tab-line: linear-gradient(90deg, $primary-color 0%, $primary-color-end 100%);
 
 //steps
-$step-wait-bg-color: #959fb1;
+$steps-base-icon-width: 25px !default;
+$steps-base-icon-height: 25px !default;
+$steps-base-icon-line-height: 25px !default;
+$steps-base-icon-font-size: 13px !default;
+$steps-base-title-font-size: 14px !default;
+$steps-base-line-color: #909ca4 !default;
+$steps-base-title-color: #909ca4 !default;
+$steps-base-title-margin-bottom: 10px !default;
+$steps-base-content-font-size: 14px !default;
+$steps-base-content-color: #666 !default;
+
+$steps-wait-icon-bg-color: #959fb1 !default;
+$steps-wait-icon-color: $white !default;
+$steps-wait-head-color: #909ca4 !default;
+$steps-wait-head-border-color: #909ca4 !default;
+$steps-wait-content-color: #909ca4 !default;
+
+$steps-finish-head-color: $primary-color !default;
+$steps-finish-head-border-color: $primary-color !default;
+$steps-finish-title-color: $primary-color !default;
+$steps-finish-line-background: $primary-color !default;
+$steps-finish-icon-text-color: $white !default;
+
+$steps-process-head-color: $white !default;
+$steps-process-head-border-color: $primary-color !default;
+$steps-process-title-color: $primary-color !default;
+$steps-process-icon-text-color: $primary-color !default;
 
 // dialog
 $dialog-width: 296px;
@@ -306,6 +332,13 @@ $badge-background-color: linear-gradient(
 $badge-font-size: $font-size-1 !default;
 $badge-default-background-color: rgba(255, 255, 255, 1) !default;
 
+//popover
+$popover-white-background-color: rgba(255, 255, 255, 1) !default;
+$popover-dark-background-color: rgba(75, 76, 77, 1) !default;
+$popover-border-bottom-color: rgba(229, 229, 229, 1) !default;
+$popover-primary-text-color: rgba(51, 51, 51, 1) !default;
+$popover-disable-color: rgba(154, 155, 157, 1) !default;
+
 //pagination
 $pagination-color: $primary-color !default;
 $pagination-font-size: $font-size-2 !default;
@@ -322,5 +355,62 @@ $pagination-disable-background-color: #f7f8fa !default;
 $pagination-item-border-width: 1px !default;
 $pagination-item-border-radius: 2px !default;
 $pagination-prev-next-padding: 0 11px !default;
-@import './mixins/index';
-@import './animation/index';
+
+// dialog
+$dialog-min-height: 156px !default;
+$dialog-padding: 28px 24px 16px 24px !default;
+$dialog-header-height: 20px !default;
+$dialog-header-color: rgba(38, 38, 38, 1) !default;
+$dialog-content-margin: 20px 0 !default;
+$dialog-content-max-height: 268px !default;
+$dialog-content-line-height: 16px !default;
+$dialog-mask-z-index: 1050 !default;
+$dialog-mask-background-color: rgba($black, 0.7) !default;
+$dialog-outer-z-index: 2000 !default;
+$dialog-outer-bordder-radius: 20px !default;
+$dialog-vertical-footer-ok-margin-top: 10px !default;
+$dialog-footer-button-min-width: 100px !default;
+$dialog-footer-cancel-margin-right: 20px !default;
+$dialog-footer-ok-max-width: 128px !default;
+// 在组件中import
+//@import './mixins/index';
+//@import './animation/index';
+
+// tabs
+$tabs-tab-smile-color: $primary-color !default;
+$tabs-titles-border-radius: 0 !default;
+$tabs-titles-item-large-font-size: $font-size-3 !default;
+$tabs-titles-item-font-size: $font-size-2 !default;
+$tabs-titles-item-small-font-size: $font-size-1 !default;
+$tabs-titles-item-color: $title-color !default;
+$tabs-titles-background-color: $help-color !default;
+$tabs-horizontal-tab-line-color: linear-gradient(
+  90deg,
+  $primary-color 0%,
+  rgba($primary-color, 0.15) 100%
+) !default;
+$tabs-horizontal-titles-height: 46px !default;
+$tabs-horizontal-titles-item-min-width: 50px !default;
+$tabs-horizontal-titles-item-active-line-width: 40px !default;
+$tabs-vertical-tab-line-color: linear-gradient(
+  180deg,
+  $primary-color 0%,
+  rgba($primary-color, 0.15) 100%
+) !default;
+$tabs-vertical-titles-item-height: 40px !default;
+$tabs-vertical-titles-item-active-line-height: 14px !default;
+$tabs-vertical-titles-width: 100px !default;
+
+// empty
+$empty-padding: 32px 0 !default;
+$empty-image-size: 170px !default;
+$empty-description-margin-top: 4px !default;
+$empty-description-color: #666666 !default;
+$empty-description-font-size: 14px !default;
+$empty-description-line-height: 20px !default;
+$empty-description-padding: 0 40px !default;
+// circleProgress
+$circleprogress-primary-color: $primary-color !default;
+$circleprogress-path-color: #e5e9f2 !default;
+$circleprogress-text-color: #000000 !default;
+$circleprogress-text-size: $font-size-3 !default;

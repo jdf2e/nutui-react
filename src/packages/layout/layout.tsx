@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import './layout.scss'
 
 export interface LayoutProps {}
 const defaultProps = {} as LayoutProps

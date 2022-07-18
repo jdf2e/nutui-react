@@ -1,5 +1,4 @@
-import React, { FunctionComponent, useEffect, useImperativeHandle, useState } from 'react'
-import '../checkbox/checkbox.scss'
+import React, { useEffect, useImperativeHandle, useState } from 'react'
 import bem from '@/utils/bem'
 
 export interface CheckBoxGroupProps {
@@ -15,7 +14,8 @@ const defaultProps = {
 } as CheckBoxGroupProps
 export const CheckboxGroup = React.forwardRef(
   (
-    props: Partial<CheckBoxGroupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
+    props: Partial<CheckBoxGroupProps> &
+      Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
     ref
   ) => {
     const { children } = { ...defaultProps, ...props }
@@ -66,7 +66,7 @@ export const CheckboxGroup = React.forwardRef(
     }
 
     function cloneChildren() {
-      return React.Children.map(children, (child: any, index) => {
+      return React.Children.map(children, (child: any) => {
         const childChecked = validateChildChecked(child)
         if ((child as any).type.displayName !== 'NutCheckBox') {
           return React.cloneElement(child)

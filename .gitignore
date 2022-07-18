@@ -14,8 +14,10 @@ package-lock.json
 /src/packages/nutui.ts
 /src/packages/nutui.react.ts
 /src/packages/nutui.*.ts
+/src/sites/doc/docs.ts
 /tsc/test
-
+/site_docs
+/coverage
 
 # local env files
 .env.local

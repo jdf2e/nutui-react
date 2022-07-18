@@ -24,7 +24,7 @@ const PopupDemo = () => {
           onClick={() => {
             setShowBasic(true)
           }}
-        ></Cell>
+        />
         <Popup
           visible={showBasic}
           style={{ padding: '30px 50px' }}
@@ -42,7 +42,7 @@ const PopupDemo = () => {
           onClick={() => {
             setShowTop(true)
           }}
-        ></Cell>
+        />
         <Popup
           visible={showTop}
           style={{ height: '20%' }}
@@ -50,14 +50,14 @@ const PopupDemo = () => {
           onClose={() => {
             setShowTop(false)
           }}
-        ></Popup>
+        />
         <Cell
           title="底部弹出"
           isLink
           onClick={() => {
             setShowBottom(true)
           }}
-        ></Cell>
+        />
         <Popup
           visible={showBottom}
           style={{ height: '20%' }}
@@ -65,14 +65,14 @@ const PopupDemo = () => {
           onClose={() => {
             setShowBottom(false)
           }}
-        ></Popup>
+        />
         <Cell
           title="左侧弹出"
           isLink
           onClick={() => {
             setShowLeft(true)
           }}
-        ></Cell>
+        />
         <Popup
           visible={showLeft}
           style={{ width: '20%', height: '100%' }}
@@ -80,14 +80,14 @@ const PopupDemo = () => {
           onClose={() => {
             setShowLeft(false)
           }}
-        ></Popup>
+        />
         <Cell
           title="右侧弹出"
           isLink
           onClick={() => {
             setShowRight(true)
           }}
-        ></Cell>
+        />
         <Popup
           visible={showRight}
           style={{ width: '20%', height: '100%' }}
@@ -95,7 +95,7 @@ const PopupDemo = () => {
           onClose={() => {
             setShowRight(false)
           }}
-        ></Popup>
+        />
 
         <h2>关闭图标</h2>
         <Cell
@@ -104,7 +104,7 @@ const PopupDemo = () => {
           onClick={() => {
             setShowIcon(true)
           }}
-        ></Cell>
+        />
         <Popup
           closeable
           visible={showIcon}
@@ -113,14 +113,14 @@ const PopupDemo = () => {
           onClose={() => {
             setShowIcon(false)
           }}
-        ></Popup>
+        />
         <Cell
           title="图标位置"
           isLink
           onClick={() => {
             setShowIconPosition(true)
           }}
-        ></Cell>
+        />
         <Popup
           closeable
           visible={showIconPosition}
@@ -130,14 +130,14 @@ const PopupDemo = () => {
           onClose={() => {
             setShowIconPosition(false)
           }}
-        ></Popup>
+        />
         <Cell
           title="自定义图标"
           isLink
           onClick={() => {
             setShowIconDefine(true)
           }}
-        ></Cell>
+        />
         <Popup
           closeable
           visible={showIconDefine}
@@ -147,7 +147,7 @@ const PopupDemo = () => {
           onClose={() => {
             setShowIconDefine(false)
           }}
-        ></Popup>
+        />
 
         <h2>圆角弹框</h2>
         <Cell
@@ -156,7 +156,7 @@ const PopupDemo = () => {
           onClick={() => {
             setShowBottomRound(true)
           }}
-        ></Cell>
+        />
         <Popup
           closeable
           visible={showBottomRound}
@@ -166,7 +166,7 @@ const PopupDemo = () => {
           onClose={() => {
             setShowBottomRound(false)
           }}
-        ></Popup>
+        />
       </div>
     </>
   )

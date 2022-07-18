@@ -1,25 +1,39 @@
 export class UploadOptions {
   url = ''
+
   name = 'file'
+
   formData?: FormData
+
   method = 'post'
+
   xhrState: string | number = 200
+
   timeout: number = 30 * 1000
+
   headers = {}
+
   withCredentials = false
+
   onStart?: Function
+
   taroFilePath?: string
+
   onProgress?: Function
+
   onSuccess?: Function
+
   onFailure?: Function
 }
 export class Upload {
   options: UploadOptions
+
   constructor(options: UploadOptions) {
     this.options = options
   }
+
   upload() {
-    const options = this.options
+    const { options } = this
     const xhr = new XMLHttpRequest()
     xhr.timeout = options.timeout
     if (xhr.upload) {

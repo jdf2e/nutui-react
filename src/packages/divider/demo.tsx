@@ -23,11 +23,17 @@ const DividerDemo = () => {
         </Cell>
         <h2>虚线</h2>
         <Cell>
-          <Divider dashed={true}>文本</Divider>
+          <Divider dashed>文本</Divider>
         </Cell>
         <h2>自定义样式</h2>
         <Cell>
-          <Divider styles={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }}>
+          <Divider
+            styles={{
+              color: '#1989fa',
+              borderColor: '#1989fa',
+              padding: '0 16px',
+            }}
+          >
             文本
           </Divider>
         </Cell>

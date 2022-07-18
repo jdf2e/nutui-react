@@ -1,6 +1,5 @@
 import React, { FunctionComponent, ReactHTML } from 'react'
 import bem from '@/utils/bem'
-import './icon.scss'
 
 interface IconProps {
   name: string
@@ -12,7 +11,7 @@ interface IconProps {
   className: string
 }
 
-const defaultProps: IconProps = {
+const defaultProps = {
   name: '',
   size: '',
   classPrefix: 'nutui-iconfont',
@@ -20,16 +19,27 @@ const defaultProps: IconProps = {
   tag: 'i',
   click: (e: MouseEvent) => {},
   className: '',
-}
+} as IconProps
 
 function pxCheck(value: string | number): string {
   return Number.isNaN(Number(value)) ? String(value) : `${value}px`
 }
 
-export const Icon: FunctionComponent<Partial<IconProps> & React.HTMLAttributes<HTMLDivElement>> = (
-  props
-) => {
-  const { name, size, classPrefix, color, tag, children, className, style, click, ...rest } = {
+export const Icon: FunctionComponent<
+  Partial<IconProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
+  const {
+    name,
+    size,
+    classPrefix,
+    color,
+    tag,
+    children,
+    className,
+    style,
+    click,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }

@@ -1,16 +1,11 @@
-import React, {
-  CSSProperties,
-  FunctionComponent,
-  MouseEventHandler,
-  useEffect,
-  useState,
-} from 'react'
-import './badge.scss'
+import React, { CSSProperties, FunctionComponent } from 'react'
+
 import Icon from '@/packages/icon'
+
 export interface BadgeProps {
   value: any
   dot: boolean
-  max: Number
+  max: number
   top: string
   right: string
   zIndex: string
@@ -30,14 +25,14 @@ const defaultProps = {
   icons: '',
 } as BadgeProps
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
-  const { value, children, dot, max, top, right, zIndex, color, icons } = {
+  const { children, dot, top, right, zIndex, color, icons } = {
     ...defaultProps,
     ...props,
   }
   const content = () => {
     if (dot) return
-    const value = props.value
-    const max = props.max
+    const { value } = props
+    const { max } = props
     if (typeof value === 'number' && typeof max === 'number') {
       return max < value ? `${max}+` : value
     }
@@ -55,11 +50,14 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     <div className="nut-badge">
       {icons != '' && (
         <div className="slot-icons">
-          <Icon className="_icon" name={icons} color="#ffffff" size="12"></Icon>
+          <Icon className="_icon" name={icons} color="#ffffff" size="12" />
         </div>
       )}
       <div>{children}</div>
-      <div className={`${dot ? 'is-dot' : ''} nut-badge__content sup`} style={getStyle()}>
+      <div
+        className={`${dot ? 'is-dot' : ''} nut-badge__content sup`}
+        style={getStyle()}
+      >
         {content()}
       </div>
     </div>

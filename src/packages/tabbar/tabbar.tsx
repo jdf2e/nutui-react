@@ -1,7 +1,6 @@
-import React, { FunctionComponent, ReactComponentElement, useState } from 'react'
-import './tabbar.scss'
+import React, { FunctionComponent, useState } from 'react'
+
 import bem from '@/utils/bem'
-import { TabbarItem } from '../tabbaritem/tabbarItem'
 
 export interface TabbarProps {
   visible: number | string
@@ -14,6 +13,7 @@ export interface TabbarProps {
   style: React.CSSProperties
   tabSwitch: (child: React.ReactElement<any>, active: number) => void
 }
+
 const defaultProps = {
   visible: 0,
   bottom: false,
@@ -27,7 +27,16 @@ const defaultProps = {
 } as TabbarProps
 
 export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
-  const { children, visible, bottom, activeColor, unactiveColor, className, style, tabSwitch } = {
+  const {
+    children,
+    visible,
+    bottom,
+    activeColor,
+    unactiveColor,
+    className,
+    style,
+    tabSwitch,
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -41,7 +50,12 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
   }
 
   return (
-    <div className={[`${b()}`, bottom ? `${b('bottom')}` : '', className].join(' ')} style={style}>
+    <div
+      className={[`${b()}`, bottom ? `${b('bottom')}` : '', className].join(
+        ' '
+      )}
+      style={style}
+    >
       {React.Children.map(children, (child, idx) => {
         if (!React.isValidElement(child)) {
           return null
@@ -50,8 +64,8 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
           ...child.props,
           active: idx === selectIndex,
           index: idx,
-          unactiveColor: unactiveColor,
-          activeColor: activeColor,
+          unactiveColor,
+          activeColor,
           handleClick: () => {
             handleClick(idx)
             tabSwitch(child, idx)
@@ -62,7 +76,6 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
     </div>
   )
 }
-//@ts-ignore  todo...
-Tabbar.TabbarItem = TabbarItem
+
 Tabbar.defaultProps = defaultProps
 Tabbar.displayName = 'NutTabbar'

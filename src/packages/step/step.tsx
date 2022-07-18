@@ -1,15 +1,15 @@
 import React, { FunctionComponent, useContext } from 'react'
+import classNames from 'classnames'
 import { DataContext } from '@/packages/steps/UserContext'
 import bem from '@/utils/bem'
-import classNames from 'classnames'
 import Icon from '@/packages/icon'
-import './step.scss'
 
 export interface StepProps {
   title: string
   content: string
   activeIndex: number
   icon: string
+  iconColor: string
   size: string
   className: string
   style: React.CSSProperties
@@ -20,17 +20,19 @@ const defaultProps = {
   content: '',
   activeIndex: 0,
   icon: '',
+  iconColor: '',
   size: '12px',
 } as StepProps
-export const Step: FunctionComponent<Partial<StepProps> & React.HTMLAttributes<HTMLDivElement>> = (
-  props
-) => {
+export const Step: FunctionComponent<
+  Partial<StepProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
   const {
     children,
     title,
     content,
     activeIndex,
     icon,
+    iconColor,
     size,
     className,
     renderContent,
@@ -47,6 +49,9 @@ export const Step: FunctionComponent<Partial<StepProps> & React.HTMLAttributes<H
     if (index < +parent.propSteps.current) return 'finish'
     return index === +parent.propSteps.current ? 'process' : 'wait'
   }
+  const handleClickStep = () => {
+    parent.propSteps?.clickStep(activeIndex)
+  }
 
   const b = bem('step')
   const classes = classNames(
@@ -57,14 +62,23 @@ export const Step: FunctionComponent<Partial<StepProps> & React.HTMLAttributes<H
     b('')
   )
   return (
-    <div className={classes} {...restProps}>
+    <div className={classes} {...restProps} onClick={handleClickStep}>
       <div className="nut-step-head">
-        <div className="nut-step-line"></div>
-        <div className={`nut-step-icon ${!dot ? (icon ? 'is-icon' : 'is-text') : ''}`}>
+        <div className="nut-step-line" />
+        <div
+          className={`nut-step-icon ${
+            !dot ? (icon ? 'is-icon' : 'is-text') : ''
+          }`}
+        >
           {icon ? (
-            <Icon className="nut-step-icon-inner" name={icon} size={size} />
+            <Icon
+              className="nut-step-icon-inner"
+              color={iconColor}
+              name={icon}
+              size={size}
+            />
           ) : dot ? (
-            <span></span>
+            <span />
           ) : (
             <span className="nut-step-inner">{activeIndex}</span>
           )}
@@ -73,7 +87,9 @@ export const Step: FunctionComponent<Partial<StepProps> & React.HTMLAttributes<H
       <div className="nut-step-main">
         <span className="nut-step-title">{title}</span>
         {content && <span className="nut-step-content">{content}</span>}
-        {renderContent && <span className="nut-step-content">{renderContent()}</span>}
+        {renderContent && (
+          <span className="nut-step-content">{renderContent()}</span>
+        )}
       </div>
     </div>
   )

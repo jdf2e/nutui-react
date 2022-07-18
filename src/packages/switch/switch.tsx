@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
-import './switch.scss'
+
 import bem from '@/utils/bem'
 
 export interface SwitchProps {
@@ -55,11 +55,10 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
   }
 
   const styles = () => {
-    const myStyle = Object.assign(
-      {},
-      { backgroundColor: value ? activeColor : inactiveColor },
-      style || {}
-    )
+    const myStyle = {
+      backgroundColor: value ? activeColor : inactiveColor,
+      ...(style || {}),
+    }
 
     return myStyle
   }
@@ -74,7 +73,7 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
   return (
     <div className={classes()} onClick={(e) => onClick(e)} style={styles()}>
       <div className="switch-button">
-        {!value && <div className="close-line"></div>}
+        {!value && <div className="close-line" />}
         {activeText && (
           <>
             {value ? (

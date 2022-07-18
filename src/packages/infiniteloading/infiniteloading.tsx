@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
-import bem from '@/utils/bem'
 import classNames from 'classnames'
+import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
-import './infiniteloading.scss'
+import { useConfig } from '@/packages/configprovider'
 
 export interface InfiniteloadingProps {
   hasMore: boolean
@@ -23,7 +23,7 @@ export interface InfiniteloadingProps {
   scrollChange: (param: number) => void
 }
 
-declare var window: Window & { webkitRequestAnimationFrame: any }
+declare let window: Window & { webkitRequestAnimationFrame: any }
 const defaultProps = {
   hasMore: true,
   threshold: 200,
@@ -43,6 +43,7 @@ const defaultProps = {
 export const Infiniteloading: FunctionComponent<
   Partial<InfiniteloadingProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const { locale } = useConfig()
   const {
     children,
     hasMore,
@@ -79,7 +80,9 @@ export const Infiniteloading: FunctionComponent<
   const classes = classNames(className, b())
 
   useEffect(() => {
-    const parentElement = getParentElement(scroller.current as HTMLDivElement) as Node & ParentNode
+    const parentElement = getParentElement(
+      scroller.current as HTMLDivElement
+    ) as Node & ParentNode
     scrollEl.current = useWindow ? window : parentElement
     scrollEl.current.addEventListener('scroll', handleScroll, useCapture)
 
@@ -109,17 +112,18 @@ export const Infiniteloading: FunctionComponent<
   }
 
   const getParentElement = (el: HTMLElement) => {
-    return !!containerId ? document.querySelector(`#${containerId}`) : el && el.parentNode
+    return containerId
+      ? document.querySelector(`#${containerId}`)
+      : el && el.parentNode
   }
 
   const handleScroll = () => {
     requestAniFrame()(() => {
       if (!isScrollAtBottom() || !hasMore || isInfiniting) {
         return false
-      } else {
-        setIsInfiniting(true)
-        loadMore && loadMore(infiniteDone)
       }
+      setIsInfiniting(true)
+      loadMore && loadMore(infiniteDone)
     })
   }
 
@@ -129,7 +133,9 @@ export const Infiniteloading: FunctionComponent<
 
   const refreshDone = () => {
     distance.current = 0
-    ;(refreshTop.current as HTMLDivElement).style.height = `${distance.current}px`
+    ;(
+      refreshTop.current as HTMLDivElement
+    ).style.height = `${distance.current}px`
     isTouching.current = false
   }
 
@@ -137,8 +143,9 @@ export const Infiniteloading: FunctionComponent<
     if (beforeScrollTop.current === 0 && !isTouching.current && isOpenRefresh) {
       y.current = event.touches[0].pageY
       isTouching.current = true
-      const childHeight = ((refreshTop.current as HTMLDivElement).firstElementChild as HTMLElement)
-        .offsetHeight
+      const childHeight = (
+        (refreshTop.current as HTMLDivElement).firstElementChild as HTMLElement
+      ).offsetHeight
       refreshMaxH.current = Math.floor(childHeight * 1 + 10)
     }
   }
@@ -149,13 +156,19 @@ export const Infiniteloading: FunctionComponent<
       event.preventDefault()
       if (distance.current >= refreshMaxH.current) {
         distance.current = refreshMaxH.current
-        ;(refreshTop.current as HTMLDivElement).style.height = `${distance.current}px`
+        ;(
+          refreshTop.current as HTMLDivElement
+        ).style.height = `${distance.current}px`
       } else {
-        ;(refreshTop.current as HTMLDivElement).style.height = `${distance.current}px`
+        ;(
+          refreshTop.current as HTMLDivElement
+        ).style.height = `${distance.current}px`
       }
     } else {
       distance.current = 0
-      ;(refreshTop.current as HTMLDivElement).style.height = `${distance.current}px`
+      ;(
+        refreshTop.current as HTMLDivElement
+      ).style.height = `${distance.current}px`
       isTouching.current = false
     }
   }
@@ -163,7 +176,9 @@ export const Infiniteloading: FunctionComponent<
   const touchEnd = () => {
     if (distance.current < refreshMaxH.current) {
       distance.current = 0
-      ;(refreshTop.current as HTMLDivElement).style.height = `${distance.current}px`
+      ;(
+        refreshTop.current as HTMLDivElement
+      ).style.height = `${distance.current}px`
     } else {
       refresh && refresh(refreshDone)
     }
@@ -182,11 +197,14 @@ export const Infiniteloading: FunctionComponent<
   const getWindowScrollTop = () => {
     return window.pageYOffset !== undefined
       ? window.pageYOffset
-      : (document.documentElement || document.body.parentNode || document.body).scrollTop
+      : (document.documentElement || document.body.parentNode || document.body)
+          .scrollTop
   }
 
   const calculateTopPosition = (el: HTMLElement): number => {
-    return !el ? 0 : el.offsetTop + calculateTopPosition(el.offsetParent as HTMLElement)
+    return !el
+      ? 0
+      : el.offsetTop + calculateTopPosition(el.offsetParent as HTMLElement)
   }
 
   const isScrollAtBottom = () => {
@@ -204,7 +222,8 @@ export const Infiniteloading: FunctionComponent<
       }
       resScrollTop = windowScrollTop
     } else {
-      const { scrollHeight, clientHeight, scrollTop } = scrollEl.current as HTMLElement
+      const { scrollHeight, clientHeight, scrollTop } =
+        scrollEl.current as HTMLElement
       offsetDistance = scrollHeight - clientHeight - scrollTop
       resScrollTop = scrollTop
     }
@@ -230,7 +249,9 @@ export const Infiniteloading: FunctionComponent<
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="top-box">
           <Icon className="top-img" name={pullIcon} />
-          <span className="top-text">{pullTxt}</span>
+          <span className="top-text">
+            {locale.infiniteloading.pullRefreshText || pullTxt}
+          </span>
         </div>
       </div>
       <div className="nut-infinite-container">{children}</div>
@@ -238,10 +259,16 @@ export const Infiniteloading: FunctionComponent<
         {isInfiniting ? (
           <div className="bottom-box">
             <Icon className="bottom-img" name={loadIcon} />
-            <div className="bottom-text">{loadTxt}</div>
+            <div className="bottom-text">
+              {locale.infiniteloading.loadText || loadTxt}
+            </div>
           </div>
         ) : (
-          !hasMore && <div className="tips">{loadMoreTxt}</div>
+          !hasMore && (
+            <div className="tips">
+              {locale.infiniteloading.loadMoreText || loadMoreTxt}
+            </div>
+          )
         )}
       </div>
     </div>

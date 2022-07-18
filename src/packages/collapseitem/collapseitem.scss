@@ -1,0 +1,84 @@
+@import '../icon/icon.scss';
+
+.nut-collapseitem {
+}
+.nut-collapse-item {
+  &__header {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    padding: 13px 0px 13px 26px;
+    color: #666666;
+    font-size: 14px;
+    line-height: 24px;
+    background-color: #fff;
+    box-sizing: border-box;
+    display: flex;
+    &::after {
+      position: absolute;
+      box-sizing: border-box;
+      content: ' ';
+      pointer-events: none;
+      right: 16px;
+      bottom: 0;
+      left: 16px;
+      border-bottom: 1px solid #ebedf0;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    &-icon-left {
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+    }
+    &-icon-right {
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+    }
+  }
+  &__sub-title {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__icon-box {
+    display: flex;
+    padding-right: 40px;
+    position: relative;
+  }
+  &__icon {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    transform-origin: center;
+    transition: transform 0.3s;
+  }
+  &__header--disabled {
+    color: #c2c2c2;
+  }
+  &__content {
+    overflow: hidden;
+    display: block;
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: #fff;
+    transition: all 0.3s linear;
+    &-text {
+      padding: 12px 26px;
+    }
+  }
+}

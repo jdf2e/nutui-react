@@ -1,14 +1,13 @@
 import React, {
   FunctionComponent,
-  useLayoutEffect,
   useEffect,
   useState,
-  useRef,
   CSSProperties,
+  useRef,
 } from 'react'
-import './backtop.scss'
-import Icon from '../icon'
-import classNames from 'classnames'
+
+import Icon from '@/packages/icon'
+
 declare const window: any
 export interface BackTopProps {
   className?: string
@@ -53,8 +52,8 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
   const [backTop, SetBackTop] = useState(false)
   const [scrollTop, SetScrollTop] = useState(0)
   let startTime = 0
-  let scrollEl: any = elId ? document.getElementById(elId) : (window as Window)
-  //初始化
+  const scrollEl: any = useRef<any>(null)
+  // 初始化
   useEffect(() => {
     init()
     return () => removeEventListener()
@@ -62,37 +61,37 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
 
   const init = () => {
     if (elId && document.getElementById(elId)) {
-      scrollEl = document.getElementById(elId) as HTMLElement | Window
+      scrollEl.current = document.getElementById(elId) as HTMLElement | Window
     }
     addEventListener()
     initCancelAniFrame()
   }
   const scrollListener = () => {
     let top: any = null
-    if (scrollEl instanceof Window) {
-      top = scrollEl.pageYOffset
+    if (scrollEl.current instanceof Window) {
+      top = scrollEl.current.pageYOffset
       SetScrollTop(top)
     } else {
-      top = scrollEl.scrollTop
+      top = scrollEl.current.scrollTop
       SetScrollTop(top)
     }
-    let showBtn = top >= distance
+    const showBtn = top >= distance
 
     SetBackTop(showBtn)
   }
 
   const scroll = (y = 0) => {
-    if (scrollEl instanceof Window) {
+    if (scrollEl.current instanceof Window) {
       window.scrollTo(0, y)
     } else {
-      scrollEl.scrollTop = y
+      scrollEl.current.scrollTop = y
     }
   }
 
   const scrollAnimation = () => {
     let cid = requestAniFrame()(function fn() {
-      var t = duration - Math.max(0, startTime - +new Date() + duration)
-      var y = (t * -scrollTop) / duration + scrollTop
+      const t = duration - Math.max(0, startTime - +new Date() + duration)
+      const y = (t * -scrollTop) / duration + scrollTop
       scroll(y)
       cid = requestAniFrame()(fn)
       if (t == duration || y == 0) {
@@ -104,7 +103,7 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
   const initCancelAniFrame = () => {
     window.cancelAnimationFrame = window.webkitCancelAnimationFrame
   }
-  //防频
+  // 防频
   const requestAniFrame = () => {
     return (
       window.requestAnimationFrame ||
@@ -115,20 +114,20 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
       }
     )
   }
-  //监听事件
+  // 监听事件
   function addEventListener() {
-    scrollEl.addEventListener('scroll', scrollListener, false)
-    scrollEl.addEventListener('resize', scrollListener, false)
+    scrollEl.current?.addEventListener('scroll', scrollListener, false)
+    scrollEl.current?.addEventListener('resize', scrollListener, false)
   }
-  //移除监听事件
+  // 移除监听事件
   function removeEventListener() {
-    scrollEl.removeEventListener('scroll', scrollListener, false)
-    scrollEl.removeEventListener('resize', scrollListener, false)
+    scrollEl.current?.removeEventListener('scroll', scrollListener, false)
+    scrollEl.current?.removeEventListener('resize', scrollListener, false)
   }
-  //返回顶部点击事件
+  // 返回顶部点击事件
   const goTop = (e: any) => {
     backTopClick(e)
-    let otime = +new Date()
+    const otime = +new Date()
     startTime = otime
     isAnimation && duration > 0 ? scrollAnimation() : scroll()
   }
@@ -136,16 +135,16 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
   const backTopClass = {
     right: `${right}px`,
     bottom: `${bottom}px`,
-    zIndex: zIndex,
+    zIndex,
   }
 
   return (
     <div
-      className={`nut-backtop ${backTop ? 'show' : ''} ${className ? className : ''}`}
+      className={`nut-backtop ${backTop ? 'show' : ''} ${className || ''}`}
       style={{ ...backTopClass, ...style }}
       onClick={goTop}
     >
-      {children ? children : <Icon size="19px" className="nut-backtop-main" name="top"></Icon>}
+      {children || <Icon size="19px" className="nut-backtop-main" name="top" />}
     </div>
   )
 }

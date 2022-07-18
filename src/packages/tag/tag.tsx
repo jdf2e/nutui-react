@@ -1,13 +1,11 @@
 import React, {
   CSSProperties,
   FunctionComponent,
-  MouseEventHandler,
   useEffect,
   useState,
 } from 'react'
-import './tag.scss'
-import classNames from 'classnames'
 import Icon from '@/packages/icon'
+
 export interface TagProps {
   type: TagType
   color: string
@@ -54,7 +52,18 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   const [btnName, setBtnName] = useState('')
   useEffect(() => {
     setBtnName(classes())
-  }, [type, color, textColor, plain, round, mark, closeable, prefixCls, isShow, onClick])
+  }, [
+    type,
+    color,
+    textColor,
+    plain,
+    round,
+    mark,
+    closeable,
+    prefixCls,
+    isShow,
+    onClick,
+  ])
   const classes = () => {
     const prefixCls = 'nut-tag'
     return `${prefixCls}
@@ -75,16 +84,12 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
       style.color = textColor
       if (plain) {
         style.background = '#fff'
-      } else {
-        if (color) {
-          style.background = color
-        }
-      }
-    } else {
-      if (color) {
-        style.color = '#fff'
+      } else if (color) {
         style.background = color
       }
+    } else if (color) {
+      style.color = '#fff'
+      style.background = color
     }
     return style
   }
@@ -92,17 +97,30 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     <div>
       {closeable ? (
         isShow ? (
-          <div className={`${btnName}`} style={getStyle()} onClick={(e) => handleClick(e)}>
+          <div
+            className={`${btnName}`}
+            style={getStyle()}
+            onClick={(e) => handleClick(e)}
+          >
             {children && <span className="text">{children}</span>}
             {closeable && (
-              <Icon className="_icon" name="close" size="12" onClick={(e) => handleClick(e)}></Icon>
+              <Icon
+                className="_icon"
+                name="close"
+                size="12"
+                onClick={(e) => handleClick(e)}
+              />
             )}
           </div>
         ) : (
           ''
         )
       ) : (
-        <div className={`${btnName}`} style={getStyle()} onClick={(e) => handleClick(e)}>
+        <div
+          className={`${btnName}`}
+          style={getStyle()}
+          onClick={(e) => handleClick(e)}
+        >
           {children && <span className="text">{children}</span>}
         </div>
       )}
