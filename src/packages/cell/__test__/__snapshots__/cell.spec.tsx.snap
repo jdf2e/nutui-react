@@ -21,9 +21,6 @@ exports[`prop icon 1`] = `
       >
         姓名
       </div>
-      <div
-        class="nut-cell__subtitle"
-      />
     </div>
     <div
       class="nut-cell__value"
@@ -51,9 +48,6 @@ exports[`prop isLink 1`] = `
       >
         URL 跳转
       </div>
-      <div
-        class="nut-cell__subtitle"
-      />
     </div>
     <div
       class="nut-cell__value"
@@ -124,9 +118,6 @@ exports[`slot linkSlot 1`] = `
       >
         Switch
       </div>
-      <div
-        class="nut-cell__subtitle"
-      />
     </div>
     <div
       class="nut-switch switch-open  nut-switch-base "
