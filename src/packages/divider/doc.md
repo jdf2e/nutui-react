@@ -52,7 +52,15 @@ import { Divider } from '@nutui/nutui-react';
 ```jsx
 <Divider styles={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }}>文本</Divider>
 ```
+### 垂直分割线
 
+```jsx
+文本
+<Divider direction="vertical"></Divider>
+<a href="#" style={{ color: '#1989fa' }}>链接</a>
+<Divider direction="vertical"></Divider>
+<a href="#" style={{ color: '#1989fa' }}>链接</a>
+```
 ## API
 
 ### Props
@@ -62,7 +70,8 @@ import { Divider } from '@nutui/nutui-react';
 | dashed          | 是否使用虚线                  | Boolean | false  |
 | hairline        | 是否使用 0.5px 线             | Boolean | true   |
 | contentPosition | 内容位置，可选值为 left right | String  | center |
-| styles          | 修改自定义样式                | css     | -      |
+| styles          | 修改自定义样式                | CSS     | -      |
+| direction           | 水平还是垂直类型                | String     | 'horizontal'      |
 
 ### Slots
 

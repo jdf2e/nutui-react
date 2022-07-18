@@ -19,7 +19,8 @@ $black: #000;
 // padding
 $padding-xs: 12px;
 
-$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif !default;
+$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
+  sans-serif !default;
 
 // ---- Animation ----
 $animation-duration: 0.25s !default;
@@ -246,10 +247,18 @@ $infinite-bottom-color: #c8c8c8;
 //range
 $range-max: #333333;
 $rang-bg-color: rgba($primary-color, 0.5);
-$rang-bar-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%);
+$rang-bar-bg-color: linear-gradient(
+  135deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+);
 
 //address
-$address-region-tab-line: linear-gradient(90deg, $primary-color 0%, $primary-color-end 100%);
+$address-region-tab-line: linear-gradient(
+  90deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+);
 
 //steps
 $steps-base-icon-width: 25px !default;
@@ -303,7 +312,11 @@ $signature-border-color: #dadada;
 $fixednav-bg-color: $white;
 $fixednav-font-color: $black;
 $fixednav-index: 201;
-$fixednav-btn-bg: linear-gradient(135deg, rgba(250, 25, 44, 1) 0%, rgba(250, 63, 25, 1) 100%);
+$fixednav-btn-bg: linear-gradient(
+  135deg,
+  rgba(250, 25, 44, 1) 0%,
+  rgba(250, 63, 25, 1) 100%
+);
 
 // Tag
 $tag-font-size: 12px !default;
@@ -414,3 +427,16 @@ $circleprogress-primary-color: $primary-color !default;
 $circleprogress-path-color: #e5e9f2 !default;
 $circleprogress-text-color: #000000 !default;
 $circleprogress-text-size: $font-size-3 !default;
+
+// divider
+
+$divider-margin: 16px 0 !default;
+$divider-text-font-size: $font-size-2 !default;
+$divider-text-color: #909ca4 !default;
+$divider-line-height: 2px !default;
+$divider-before-margin-right: 16px !default;
+$divider-after-margin-left: 16px !default;
+$divider-vertical-height: 12px !default;
+$divider-vertical-top: 2px !default;
+$divider-vertical-border-left: rgba(0, 0, 0, 0.06) !default;
+$divider-vertical-margin: 0 8px !default;
