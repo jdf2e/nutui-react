@@ -29,7 +29,7 @@ const defaultProps = {
   limitshow: false,
   maxlength: '',
   rows: '',
-  placeholder: '请输入内容',
+  placeholder: '',
   readonly: false,
   disabled: false,
   autosize: false,
@@ -126,7 +126,7 @@ export const TextArea: FunctionComponent<
         }}
         rows={rows}
         maxLength={maxlength < 0 ? 0 : maxlength}
-        placeholder={locale.placeholder}
+        placeholder={placeholder || locale.placeholder}
       />
       {limitshow ? (
         <div className={textareaBem('limit')}>
