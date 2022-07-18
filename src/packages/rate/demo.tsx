@@ -19,6 +19,13 @@ const RateDemo = () => {
         <h2>自定义数量</h2>
         <Rate count="6" modelValue="3" />
 
+        <h2>最少选中数量（支持半星）</h2>
+        <Rate
+          modelValue="2"
+          minimizeValue={3}
+          change={(num) => console.log(num)}
+        />
+
         <h2>自定义颜色</h2>
         <Rate activeColor="#FFC800" modelValue="3" />
 
@@ -29,7 +36,8 @@ const RateDemo = () => {
         <Rate modelValue="3" readonly />
 
         <h2>绑定事件</h2>
-        <Rate modelValue="3" change={() => onChange} />
+        <Rate modelValue="3" change={onChange} />
+
         <h2>自定义尺寸 35px</h2>
         <Rate modelValue="3" iconSize="35" />
       </div>
