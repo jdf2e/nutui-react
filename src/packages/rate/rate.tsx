@@ -6,6 +6,7 @@ import Icon from '@/packages/icon'
 export interface RateProps {
   count: string | number
   modelValue: string | number
+  minimizeValue: string | number
   iconSize: string | number
   activeColor: string
   voidColor: string
@@ -20,6 +21,7 @@ export interface RateProps {
 const defaultProps = {
   count: 5,
   modelValue: 0,
+  minimizeValue: 0,
   iconSize: 18,
   activeColor: '',
   voidColor: '',
@@ -34,6 +36,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   const {
     count,
     modelValue,
+    minimizeValue,
     iconSize,
     activeColor,
     voidColor,
@@ -60,7 +63,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   }, [count])
 
   useEffect(() => {
-    setScore(Number(modelValue))
+    setScore(Math.max(Number(modelValue), Number(minimizeValue)))
   }, [modelValue])
 
   const pxCheck = (value: string | number): string => {
@@ -81,6 +84,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
         }
       }
     }
+    value = Math.max(value, Number(minimizeValue))
     setScore(value)
 
     change && change(value)
