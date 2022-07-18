@@ -91,7 +91,7 @@ export default App;
 
 :::
 
-### Use Slots(titleSlot)
+### Use Slots(title slots)
 
 :::demo
 
@@ -102,7 +102,7 @@ import { Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell
-        titleSlot={
+        title={
         <span>
             Title <b style={{ color: 'red' }}>1</b>
         </span>
@@ -269,19 +269,18 @@ export default App;
 
 | 字段                   | 说明                                                                                           | 类型             | 默认值 |
 |------------------------|------------------------------------------------------------------------------------------------|------------------|--------|
-| title                  | 标题名称                      | String           | -      |
-| subTitle              | 左侧副标题                           | String           | -      |
+| title                  | 标题名称                      |  React.ReactNode           | -      |
+| subTitle              | 左侧副标题                           |  React.ReactNode           | -      |
 | desc                   | 右侧描述                                     | String      | -      |
 | descTextAlign | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String | right  |
 | isLink                | 是否展示右侧箭头并开启点击反馈            | Boolean          | false  |
 | to      | 点击后跳转的目标路由对象 | String  | -      |
 | replace | 是否在跳转时替换当前页面历史                             | Boolean          | false  |
-| roundRadius           | 圆角半径                                      | String            | 6px    |
+| roundRadius           | 圆角半径                                      | String| Number            | 6px    |
 | url     | 点击后跳转的链接地址                                         | String           | -      |
 | icon                   | 左侧 [图标名称](#/icon) 或图片链接              | String           | -      |
 | center        | 是否使内容垂直居中                                                                             | Boolean          | false  |
 | size        | 单元格大小，可选值为 `large`                           | String          | -  |
-| titleSlot        | 自定义`title`标题区域                          | React.ReactNode          | -  |
 | iconSlot        | 自定义左侧`icon`区域                          | React.ReactNode          | -  |
 | linkSlot        | 自定义右侧`link`区域                         | React.ReactNode          | -  |
 

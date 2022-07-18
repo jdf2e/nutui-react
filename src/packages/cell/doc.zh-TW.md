@@ -91,7 +91,7 @@ export default App;
 
 :::
 
-### 直接使用插槽(titleSlot)
+### 直接使用插槽(title slots)
 
 :::demo
 
@@ -102,7 +102,7 @@ import { Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell
-        titleSlot={
+        title={
         <span>
             Title <b style={{ color: 'red' }}>1</b>
         </span>
@@ -269,8 +269,8 @@ export default App;
 
 | 字段                   | 說明                                                                                           | 類型             | 默認值 |
 |------------------------|------------------------------------------------------------------------------------------------|------------------|--------|
-| title                  | 標題名稱                      | String           | -      |
-| subTitle              | 左側副標題                           | String           | -      |
+| title                  | 標題名稱                      |  React.ReactNode           | -      |
+| subTitle              | 左側副標題                           |  React.ReactNode           | -      |
 | desc                   | 右側描述                                     | String      | -      |
 | descTextAlign | 右側描述文本對齊方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String | right  |
 | isLink                | 是否展示右側箭頭並開啟點擊反饋            | Boolean          | false  |
@@ -281,7 +281,6 @@ export default App;
 | icon                   | 左側 [圖標名稱](#/icon) 或圖片鏈接              | String           | -      |
 | center        | 是否使內容垂直居中                                                                             | Boolean          | false  |
 | size        | 單元格大小，可選值為 `large`                           | String          | -  |
-| titleSlot        | 自定義`title`標題區域                          | React.ReactNode          | -  |
 | iconSlot        | 自定義左側`icon`區域                          | React.ReactNode          | -  |
 | linkSlot        | 自定義右側`link`區域                         | React.ReactNode          | -  |
 

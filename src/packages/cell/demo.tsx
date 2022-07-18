@@ -141,7 +141,7 @@ const CellDemo = () => {
         </Cell>
         <h2>{translated.title8}</h2>
         <Cell
-          titleSlot={
+          title={
             <span>
               Title <b style={{ color: 'red' }}>1</b>
             </span>

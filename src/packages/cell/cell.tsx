@@ -4,13 +4,13 @@ import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
 export interface CellProps {
-  title: string
-  subTitle: string
+  title: ReactNode
+  subTitle: ReactNode
   desc: string
   descTextAlign: string
   isLink: boolean
   icon: string
-  roundRadius: string
+  roundRadius: string | number
   url: string
   to: string
   replace: boolean
@@ -19,12 +19,11 @@ export interface CellProps {
   className: string
   iconSlot: ReactNode
   linkSlot: ReactNode
-  titleSlot: ReactNode
   click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 const defaultProps = {
-  title: '',
-  subTitle: '',
+  title: null,
+  subTitle: null,
   desc: '',
   descTextAlign: 'right',
   isLink: false,
@@ -38,11 +37,11 @@ const defaultProps = {
   className: '',
   iconSlot: null,
   linkSlot: null,
-  titleSlot: null,
   click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
+
 export const Cell: FunctionComponent<
-  Partial<CellProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<CellProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
   const {
     children,
@@ -62,7 +61,6 @@ export const Cell: FunctionComponent<
     className,
     iconSlot,
     linkSlot,
-    titleSlot,
     ...rest
   } = {
     ...defaultProps,
@@ -110,24 +108,18 @@ export const Cell: FunctionComponent<
                 (icon ? <Icon name={icon} className="icon" /> : null)}
             </div>
           ) : null}
-          {title || subTitle || titleSlot ? (
-            <>
-              <div className={`${b('title')}`}>
-                {title || titleSlot ? (
-                  <>
-                    {titleSlot || <div className={b('maintitle')}>{title}</div>}
-                    <div className={b('subtitle')}>{subTitle}</div>
-                  </>
-                ) : (
-                  <>{title}</>
-                )}
-              </div>
-            </>
+          {title || subTitle ? (
+            <div className={`${b('title')}`}>
+              {title ? <div className={b('maintitle')}>{title}</div> : null}
+              {subTitle ? (
+                <div className={b('subtitle')}>{subTitle}</div>
+              ) : null}
+            </div>
           ) : null}
           {desc ? (
             <div
               className={b('value', {
-                alone: !title && !subTitle && !titleSlot,
+                alone: !title && !subTitle,
               })}
               style={styles as React.CSSProperties}
             >
