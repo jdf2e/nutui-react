@@ -15,56 +15,54 @@ import { Popover } from '@nutui/nutui-react';
 ### 基本用法
 Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme 属性设置为 dark 可切换为暗黑风格。
 
+:::demo
 ```tsx
-<Popover 
-  visible={lightTheme} 
-  onClick={()=>{lightTheme ? setLightTheme(false) : setLightTheme(true)}} 
-  list={itemList}>
-  <Button type="primary" shape="square">明朗风格</Button>
-</Popover>
-<Popover 
-  visible={darkTheme} 
-  theme="dark" 
-  onClick={()=>{darkTheme ? setDarkTheme(false) : setDarkTheme(true)}} 
-  list={itemList}>
-  <Button type="primary" shape="square">暗黑风格</Button>
-</Popover>
-```
 
-```javascript
+import  React, { useState, useRef  } from "react";
+import { Popover,Button,Icon } from '@nutui/nutui-react';
 
+const App = () => {
   const [lightTheme, setLightTheme] = useState(false)
   const [darkTheme, setDarkTheme] = useState(false)
   const itemList = [
     {name: '选项一'},
     {name: '选项二'},
-    {name: '选项三'}];
+    {name: '选项三'},
+  ]
+  return (
+    <>
+      <Popover 
+        visible={lightTheme} 
+        onClick={()=>{lightTheme ? setLightTheme(false) : setLightTheme(true)}} 
+        list={itemList}>
+        <Button type="primary" shape="square">明朗风格</Button>
+      </Popover>
+      <Popover 
+        visible={darkTheme} 
+        theme="dark" 
+        onClick={()=>{darkTheme ? setDarkTheme(false) : setDarkTheme(true)}} 
+        list={itemList}>
+        <Button type="primary" shape="square">暗黑风格</Button>
+      </Popover>
+    </>
+  )
+};
 
+export default App;
 ```
+:::
 
 ### 选项配置
 
+:::demo
 ```tsx
-<Popover
-  visible={showIcon} 
-  theme="dark" 
-  onClick={()=>{showIcon ? setShowIcon(false) : setShowIcon(true)}} 
-  list={iconItemList}>
-  <Button type="primary" shape="square">展示图标</Button>
-</Popover>
-<Popover 
-  visible={disableAction} 
-  onClick={()=>{disableAction ? setDisableAction(false) : setDisableAction(true)}} 
-  list={itemListDisabled}>
-  <Button type="primary" shape="square">禁用选项</Button>
-</Popover>
-```
+import  React, { useState, useRef  } from "react";
+import { Popover,Button,Icon } from '@nutui/nutui-react';
 
-```javascript
-
+const App = () => {
   const [showIcon, setShowIcon] = useState(false)
   const [disableAction, setDisableAction] = useState(false)
- const iconItemList= [
+  const iconItemList= [
     {name: '选项一',icon: 'my2'},
     {name: '选项二',icon: 'cart2'},
     {name: '选项三',icon: 'location2'}
@@ -75,32 +73,37 @@ Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme �
     {name: '选项三'}
   ];
 
+  return (
+    <>
+      <Popover
+        visible={showIcon} 
+        theme="dark" 
+        onClick={()=>{showIcon ? setShowIcon(false) : setShowIcon(true)}} 
+        list={iconItemList}>
+        <Button type="primary" shape="square">展示图标</Button>
+      </Popover>
+      <Popover 
+        visible={disableAction} 
+        onClick={()=>{disableAction ? setDisableAction(false) : setDisableAction(true)}} 
+        list={itemListDisabled}>
+        <Button type="primary" shape="square">禁用选项</Button>
+      </Popover>
+    </>
+  );
+};
+
+export default App;
 ```
+:::
 
 ### 自定义内容
 
+:::demo
 ```tsx
- <Popover 
-  visible={customized} 
-  onClick={()=>{customized ? setCustomized(false) : setCustomized(true)}}>
-  <Button type="primary" shape="square">自定义内容</Button>
-  {
-    customized ? 
-    <div className="self-content" style={selfContentStyle}>
-    {
-      selfContent.map((item: any)=>{
-        return <div className="self-content-item" style={selfContentItem} key={item.name}>
-          <Icon name={item.name} size="15" />
-          <div className="self-content-desc" style={selfContentDesc}>{ item.desc }</div>
-        </div>
-      })
-    }
-  </div> : ''
-  }
-</Popover>
-```
-```javascript
+import  React, { useState, useRef  } from "react";
+import { Popover,Button } from '@nutui/nutui-react';
 
+const App = () => {
   const [customized, setCustomized] = useState(false)
   const selfContent= [
     {
@@ -129,39 +132,41 @@ Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme �
     }
   ];
 
+  return (
+    <>
+      <Popover 
+        visible={customized} 
+        onClick={()=>{customized ? setCustomized(false) : setCustomized(true)}}>
+        <Button type="primary" shape="square">自定义内容</Button>
+        {
+          customized ? 
+          <div className="self-content" style={selfContentStyle}>
+          {
+            selfContent.map((item: any)=>{
+              return <div className="self-content-item" style={selfContentItem} key={item.name}>
+                <Icon name={item.name} size="15" />
+                <div className="self-content-desc" style={selfContentDesc}>{ item.desc }</div>
+              </div>
+            })
+          }
+        </div> : ''
+        }
+      </Popover>
+    </>
+  )
+}
+
+export default App;
 ```
+:::
 
 ### 位置自定义
-
+:::demo
 ```tsx
-<Popover  
-  visible={topLocation} 
-  location="top" 
-  theme="dark" 
-  onClick={()=>{topLocation ? setTopLocation(false) : setTopLocation(true)}} 
-  list={iconItemList}>
-  <Button type="primary" shape="square">向上弹出</Button>
-</Popover>
-<Popover 
-  visible={rightLocation} 
-  location="right" 
-  theme="dark" 
-  onClick={()=>{rightLocation ? setRightLocation(false) : setRightLocation(true)}} 
-  list={iconItemList}>
-  <Button type="primary" shape="square">向右弹出</Button>
-</Popover>
-<Popover  
-  visible={leftLocation} 
-  location="left" 
-  theme="dark" 
-  onClick={()=>{leftLocation ? setLeftLocation(false) : setLeftLocation(true)}} 
-  list={iconItemList}>
-  <Button type="primary" shape="square">向左弹出</Button>
-</Popover>
-```
+  import  React, { useState, useRef  } from "react";
+  import { Popover,Button } from '@nutui/nutui-react';
 
-```javascript
-
+const App = () => {
   const [topLocation, setTopLocation] = useState(false)
   const [rightLocation, setRightLocation] = useState(false)
   const [leftLocation, setLeftLocation] = useState(false)
@@ -171,7 +176,39 @@ Popover 支持明朗和暗黑两种风格，默认为明朗风格，将 theme �
     {name: '选项三',icon: 'location2'}
   ];
 
+  return (
+    <>
+      <Popover  
+        visible={topLocation} 
+        location="top" 
+        theme="dark" 
+        onClick={()=>{topLocation ? setTopLocation(false) : setTopLocation(true)}} 
+        list={iconItemList}>
+        <Button type="primary" shape="square">向上弹出</Button>
+      </Popover>
+      <Popover 
+        visible={rightLocation} 
+        location="right" 
+        theme="dark" 
+        onClick={()=>{rightLocation ? setRightLocation(false) : setRightLocation(true)}} 
+        list={iconItemList}>
+        <Button type="primary" shape="square">向右弹出</Button>
+      </Popover>
+      <Popover  
+        visible={leftLocation} 
+        location="left" 
+        theme="dark" 
+        onClick={()=>{leftLocation ? setLeftLocation(false) : setLeftLocation(true)}} 
+        list={iconItemList}>
+        <Button type="primary" shape="square">向左弹出</Button>
+      </Popover>
+    </>
+  )
+}
+  
+export default App;
 ```
+:::
 
 ## API
 
