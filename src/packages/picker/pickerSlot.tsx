@@ -5,6 +5,7 @@ import React, {
   useImperativeHandle,
   ForwardRefRenderFunction,
 } from 'react'
+import { useTouch } from '../../utils/useTouch'
 
 interface IPickerSlotProps {
   isUpdate?: boolean
@@ -26,6 +27,12 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     chooseItem,
   } = props
 
+  const touch = useTouch()
+  // 触发惯性滑动条件:
+  // 在手指离开屏幕时，如果和上一次 move 时的间隔小于 `MOMENTUM_TIME` 且 move
+  // 距离大于 `MOMENTUM_DISTANCE` 时，执行惯性滑动
+  const INERTIA_TIME = 300
+  const INERTIA_DISTANCE = 15
   const [currIndex, setCurrIndex] = useState(1)
   const lineSpacing = 36
   const rotation = 20
@@ -36,17 +43,17 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const pickerSlotRef = useRef<any>(null)
   const [list, setList] = useState<any[]>()
 
-  const touchParams = {
-    startY: 0,
-    startTime: 0,
-    transformY: 0,
-    scrollDistance: 0,
-  }
+  const [moving, setMoving] = useState(false) // 是否处于滚动中
+  const [startTime, setStartTime] = useState(0)
+  const [startY, setStartY] = useState(0)
+
+  const [transformY, setTransformY] = useState(0)
+  const [scrollDistance, setScrollDistance] = useState(0)
 
   useImperativeHandle(ref, () => ({
     updateTransform: (value: any) => {
       if (value) {
-        touchParams.transformY = 0
+        setTransformY(0)
         timer = setTimeout(() => {
           modifyStatus(false, value)
         }, 10)
@@ -55,11 +62,11 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   }))
 
   useEffect(() => {
-    touchParams.transformY = 0
+    setTransformY(0)
     modifyStatus()
   }, [isUpdate])
   useEffect(() => {
-    touchParams.transformY = 0
+    setTransformY(0)
     modifyStatus()
   }, [defaultValue])
 
@@ -76,21 +83,21 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     time = 1000,
     deg: string
   ) => {
-    if (type === 'end') {
-      listRef.current.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`
-      rollerRef.current.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`
-    } else {
-      listRef.current.style.webkitTransition = ''
-      rollerRef.current.style.webkitTransition = ''
+    let nTime = time
+    if (type !== 'end') {
+      nTime = 0
     }
+    listRef.current.style.webkitTransition = `transform ${nTime}ms cubic-bezier(0.17, 0.89, 0.45, 1)`
+    rollerRef.current.style.webkitTransition = `transform ${nTime}ms cubic-bezier(0.17, 0.89, 0.45, 1)`
+
     listRef.current.style.webkitTransform = `translate3d(0, ${translateY}px, 0)`
     rollerRef.current.style.webkitTransform = `rotate3d(1, 0, 0, ${deg})`
-    touchParams.scrollDistance = translateY
+    setScrollDistance(translateY)
   }
 
   const setMove = (move: number, type?: string, time?: number) => {
-    let updateMove = move + touchParams.transformY
-    if (type === 'end' && time) {
+    let updateMove = move + transformY
+    if (type === 'end') {
       // 限定滚动距离
       if (updateMove > 0) {
         updateMove = 0
@@ -106,65 +113,103 @@ const InternalPickerSlot: ForwardRefRenderFunction<
       }deg`
 
       setTransform(endMove, type, time, deg)
-      timer = setTimeout(() => {
-        setChooseValue(endMove)
-      }, time / 2)
+      // timer = setTimeout(() => {
+      //   setChooseValue(endMove)
+      // }, time / 2)
 
       setCurrIndex(Math.abs(Math.round(endMove / lineSpacing)) + 1)
     } else {
-      let deg = '0deg'
-      if (updateMove < 0) {
-        deg = `${(Math.abs(updateMove / lineSpacing) + 1) * rotation}deg`
-      } else {
-        deg = `${(-updateMove / lineSpacing + 1) * rotation}deg`
-      }
+      let deg = 0
+      const currentDeg = (-updateMove / lineSpacing + 1) * rotation
 
-      setTransform(updateMove, '', 0, deg)
-      setCurrIndex(Math.abs(Math.round(updateMove / lineSpacing)) + 1)
+      // picker 滚动的最大角度
+      const maxDeg = (listData.length + 1) * rotation
+      const minDeg = 0
+
+      deg = Math.min(Math.max(currentDeg, minDeg), maxDeg)
+
+      if (minDeg < deg && deg < maxDeg) {
+        setTransform(updateMove, '', undefined, `${deg}deg`)
+        setCurrIndex(Math.abs(Math.round(updateMove / lineSpacing)) + 1)
+      }
     }
   }
 
-  const setChooseValue = (move: number) => {
-    chooseItem &&
-      chooseItem(listData?.[Math.round(-move / lineSpacing)], keyIndex)
+  const setChooseValue = (move?: number) => {
+    // chooseItem &&
+    // chooseItem(listData?.[Math.round(-move / lineSpacing)], keyIndex)
   }
 
-  const touchStart = (event: React.TouchEvent) => {
-    event.preventDefault()
+  const touchStart = (event: React.TouchEvent<HTMLElement>) => {
+    touch.start(event as any)
 
-    const changedTouches = event.changedTouches[0]
+    let distance = scrollDistance
+    // 正在滚动中
+    if (moving) {
+      console.log('滚动中')
+      const dom = listRef.current as any
+      // if (!props.threeDimensional) {
+      //   dom = roller.value as any;
+      // }
+      const { transform } = window.getComputedStyle(dom)
 
-    touchParams.startY = changedTouches.pageY
+      setScrollDistance(
+        +transform.slice(7, transform.length - 1).split(', ')[5]
+      )
+      distance = +transform.slice(7, transform.length - 1).split(', ')[5]
 
-    touchParams.startTime = event.timeStamp || Date.now()
+      console.log(distance)
+    }
 
-    touchParams.transformY = touchParams.scrollDistance
+    setStartY(touch.deltaY)
+    setStartTime(Date.now())
+    setTransformY(distance)
   }
 
-  const touchMove = (event: React.TouchEvent, listData?: any[]) => {
-    event.preventDefault()
+  const touchMove = (
+    event: React.TouchEvent<HTMLElement>,
+    listData?: any[]
+  ) => {
+    touch.move(event as any)
 
-    const changedTouches = event.changedTouches[0]
-    const lastY = changedTouches.pageY
-    const move = lastY - touchParams.startY
+    if ((touch as any).isVertical) {
+      setMoving(true)
+      preventDefault(event, true)
+    }
+
+    const move = touch.deltaY - startY
+
     setMove(move)
   }
 
-  const touchEnd = (event: React.TouchEvent) => {
-    event.preventDefault()
+  const touchEnd = (event: React.TouchEvent<HTMLElement>) => {
+    const move = touch.deltaY - startY
 
-    const changedTouches = event.changedTouches[0]
-    const lastTime = event.timeStamp || Date.now()
-    let move = changedTouches.pageY - touchParams.startY
+    const moveTime = Date.now() - startTime
 
-    let moveTime = lastTime - touchParams.startTime
-    if (moveTime <= 300) {
-      move *= 2
-      moveTime += 1000
-      setMove(move, 'end', moveTime)
+    if (moveTime <= INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
+      // 惯性滚动
+      const distance = momentum(move, moveTime)
+
+      setMove(distance, 'end', moveTime + 1000)
     } else {
-      setMove(move, 'end', moveTime)
+      setMove(move, 'end')
+
+      setTimeout(() => {
+        touch.reset()
+        setMoving(false)
+      }, 0)
     }
+  }
+
+  // 惯性滚动 距离
+  const momentum = (distance: number, duration: number) => {
+    let nDis = distance
+    // 惯性滚动的速度
+    const speed = Math.abs(nDis / duration)
+    // 惯性滚动的距离
+    nDis = (speed / 0.003) * (nDis < 0 ? -1 : 1)
+    return nDis
   }
 
   const modifyStatus = (type?: boolean, val?: any) => {
@@ -172,17 +217,20 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     let index = -1
     if (value && value.value) {
       listData.some((item, idx) => {
-        if (item.value == value.value) {
+        if (item.value === value.value) {
           index = idx
           return true
         }
+        return false
       })
     } else if (value && !value.value) {
       listData.some((item, idx) => {
-        if (item == value) {
+        if (item === value) {
           index = idx
           return true
         }
+
+        return false
       })
     } else {
       index = listData.indexOf(defaultValue)
@@ -193,24 +241,44 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     setMove(-move)
   }
 
+  // 惯性滚动结束
+  const stopMomentum = () => {
+    console.log('惯性滚动结束')
+    setMoving(false)
+
+    setChooseValue()
+  }
+
+  const preventDefault = (
+    event: React.TouchEvent<HTMLElement>,
+    isStopPropagation?: boolean
+  ) => {
+    /* istanbul ignore else */
+    if (typeof event.cancelable !== 'boolean' || event.cancelable) {
+      event.preventDefault()
+    }
+
+    if (isStopPropagation) {
+      event.stopPropagation()
+    }
+  }
+
   useEffect(() => {
     modifyStatus(true)
-    // 监听
-    pickerSlotRef.current?.addEventListener('touchstart', touchStart)
-    pickerSlotRef.current?.addEventListener('touchmove', touchMove)
-    pickerSlotRef.current?.addEventListener('touchend', touchEnd)
     return () => {
-      // 移除监听
-      pickerSlotRef.current?.removeEventListener('touchstart', touchStart)
-      pickerSlotRef.current?.removeEventListener('touchmove', touchMove)
-      pickerSlotRef.current?.removeEventListener('touchend', touchEnd)
       clearTimeout(timer)
     }
   }, [listData])
 
   return (
-    <div className="nut-picker-list" ref={pickerSlotRef}>
-      <div className="nut-picker-roller" ref={rollerRef}>
+    <div
+      className="nut-picker-list"
+      ref={pickerSlotRef}
+      onTouchStart={touchStart}
+      onTouchMove={touchMove}
+      onTouchEnd={touchEnd}
+    >
+      {/* <div className="nut-picker-roller" ref={rollerRef} onTransitionEnd={stopMomentum}>
         {listData.map((item, index) => {
           return (
             <div
@@ -245,8 +313,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
           {listData?.length === 1 && <div className="nut-picker-placeholder" />}
         </div>
       </div>
-      <div className="nut-picker-mask" />
-      <div className="nut-picker-indicator" />
+      <div className="nut-picker-mask" ></div>
+      <div className='nut-picker-indicator'></div> */}
     </div>
   )
 }
