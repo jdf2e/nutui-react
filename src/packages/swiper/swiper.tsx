@@ -87,7 +87,7 @@ export const Swiper = React.forwardRef<
   const isVertical = direction === 'vertical'
 
   const [rect, setRect] = useState(null as DOMRect | null)
-  let [active, setActive] = useState(0)
+  const [active, setActive] = useState(0)
   const [width, setWidth] = useState(0)
   const [height, setHeight] = useState(0)
   const [offset, setOffset] = useState(0)
@@ -242,8 +242,8 @@ export const Swiper = React.forwardRef<
     if (isEmit && active !== targetActive) {
       props.onChange && props.onChange((targetActive + childCount) % childCount)
     }
-    active = targetActive
-    offset = targetOffset
+    // active = targetActive
+    // offset = targetOffset
     setActive(targetActive)
     setOffset(targetOffset)
 
@@ -369,7 +369,11 @@ export const Swiper = React.forwardRef<
     if (isShouldMove && touch.stateDirection === props.direction) {
       const offset = isVertical ? touch.offsetY : touch.offsetX
       if (props.loop) {
-        pace = offset > 0 ? (touch.delta > 0 ? -1 : 1) : 0
+        if (offset > 0) {
+          pace = touch.delta > 0 ? -1 : 1
+        } else {
+          pace = 0
+        }
       } else {
         pace = -Math[touch.delta > 0 ? 'ceil' : 'floor'](touch.delta / size)
       }
@@ -438,6 +442,7 @@ export const Swiper = React.forwardRef<
       target.removeEventListener('touchstart', onTouchStart, false)
       target.removeEventListener('touchmove', onTouchMove, false)
       target.removeEventListener('touchend', onTouchEnd, false)
+      stopAutoPlay()
     }
   })
   const style = (index: any) => {
