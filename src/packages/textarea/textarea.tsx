@@ -34,10 +34,7 @@ const defaultProps = {
   disabled: false,
   autosize: false,
 } as TextAreaProps
-export const TextArea: FunctionComponent<
-  Partial<TextAreaProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
-> = (props) => {
+export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
   const { locale } = useConfig()
   const {
     className,
