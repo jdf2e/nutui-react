@@ -28,7 +28,11 @@ const NotifyDemo = () => {
     Notify.warn(msg)
   }
   const cusBgNotify = (msg: string) => {
-    Notify.text(msg, { color: '#ad0000', background: '#ffe1e1', className: 'aa' })
+    Notify.text(msg, {
+      color: '#ad0000',
+      background: '#ffe1e1',
+      className: 'aa',
+    })
   }
   const timeNotify = (msg: string) => {
     Notify.text(msg, { duration: 10000 })

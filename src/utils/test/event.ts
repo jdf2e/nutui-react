@@ -14,7 +14,13 @@ function getTouch(el: HTMLElement | Window, x: number, y: number) {
 }
 
 // Trigger pointer/touch event
-export function trigger(wrapper: any, eventName: string, x = 0, y = 0, options: any = {}) {
+export function trigger(
+  wrapper: any,
+  eventName: string,
+  x = 0,
+  y = 0,
+  options: any = {}
+) {
   const el = 'element' in wrapper ? wrapper.element : wrapper
   const touchList = options.touchList || [getTouch(el, x, y)]
 

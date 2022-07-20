@@ -14,7 +14,15 @@ const Utils = {
   getWhatDay(year: number, month: number, day: number): string {
     const date = new Date(`${year}/${month}/${day}`)
     const index = date.getDay()
-    const dayNames = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+    const dayNames = [
+      '星期日',
+      '星期一',
+      '星期二',
+      '星期三',
+      '星期四',
+      '星期五',
+      '星期六',
+    ]
     return dayNames[index]
   },
 

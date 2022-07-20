@@ -21,7 +21,7 @@ import { Empty } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Empty description="无数据"></Empty>
+    <Empty description="无数据" />
   );
 };
 export default App;
@@ -36,7 +36,7 @@ import { Empty } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Empty description="无数据" imageSize={100}></Empty>
+    <Empty description="无数据" imageSize={100} />
   );
 };
 export default App;
@@ -51,9 +51,11 @@ import { Empty } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Empty image="empty" description="无内容"></Empty>
-    <Empty image="error" description="加载失败/错误"></Empty>
-    <Empty image="network" description="无网络"></Empty>
+    <div className="show">
+      <Empty image="empty" description="无内容" />
+      <Empty image="error" description="加载失败/错误" />
+      <Empty image="network" description="无网络" />
+    </div>
   );
 };
 export default App;
@@ -70,9 +72,8 @@ const App = () => {
   return (
     <Empty
       description="无优惠券" 
-      image={<img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" />}
-    >
-    </Empty>
+      image={<img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" alt=""/>}
+     />
   );
 };
 export default App;

@@ -29,12 +29,24 @@ const defaultProps = {
   handleClick: (idx) => {},
 } as TabbarItemProps
 
-export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (props) => {
-  const { tabTitle, icon, href, to, num, active, activeColor, unactiveColor, index, handleClick } =
-    {
-      ...defaultProps,
-      ...props,
-    }
+export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
+  props
+) => {
+  const {
+    tabTitle,
+    icon,
+    href,
+    to,
+    num,
+    active,
+    activeColor,
+    unactiveColor,
+    index,
+    handleClick,
+  } = {
+    ...defaultProps,
+    ...props,
+  }
   const b = bem('tabbar-item')
   const bIcon = bem('tabbar-item__icon-box')
   const history = useHistory()
@@ -60,14 +72,22 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (props) =
       }}
     >
       <div className={`${bIcon()}`}>
-        {num && num <= 99 && <div className={`${bIcon('tips', [bIcon('num')])}`}>{num}</div>}
-        {num && num >= 100 && <div className={`${bIcon('tips', [bIcon('nums')])}`}>99+</div>}
+        {num && num <= 99 && (
+          <div className={`${bIcon('tips', [bIcon('num')])}`}>{num}</div>
+        )}
+        {num && num >= 100 && (
+          <div className={`${bIcon('tips', [bIcon('nums')])}`}>99+</div>
+        )}
         {icon && (
           <div>
             <Icon size={20} name={icon} />
           </div>
         )}
-        <div className={bIcon({ 'nav-word': true }, [bIcon({ 'big-word': !icon })])}>
+        <div
+          className={bIcon({ 'nav-word': true }, [
+            bIcon({ 'big-word': !icon }),
+          ])}
+        >
           {tabTitle}
         </div>
       </div>

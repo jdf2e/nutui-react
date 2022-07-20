@@ -1,14 +1,23 @@
-import React, { ForwardRefRenderFunction, HTMLAttributes, forwardRef } from 'react'
+import React, {
+  ForwardRefRenderFunction,
+  HTMLAttributes,
+  forwardRef,
+} from 'react'
 import classNames from 'classnames'
 import Button from '@/packages/button'
 import { DialogWrapper } from './DialogWrapper'
 import confirm from './Confirm'
-import { DialogProps, DialogReturnProps, DialogComponent, ConfirmProps } from './config'
+import {
+  DialogProps,
+  DialogReturnProps,
+  DialogComponent,
+  ConfirmProps,
+} from './config'
 import { useConfig } from '@/packages/configprovider'
 
 const defaultProps = {
-  okText: '确定',
-  cancelText: '取消',
+  okText: '',
+  cancelText: '',
   mask: true,
   closeOnClickOverlay: true,
   noFooter: false,
@@ -73,18 +82,20 @@ const BaseDialog: ForwardRefRenderFunction<
             className="nut-dialog__footer-cancel"
             onClick={() => handleCancel()}
           >
-            {locale.cancel || cancelText}
+            {cancelText || locale.cancel}
           </Button>
         )}
         {!noOkBtn && (
           <Button
             size="small"
             type="primary"
-            className={classNames('nut-dialog__footer-ok', { disabled: okBtnDisabled })}
+            className={classNames('nut-dialog__footer-ok', {
+              disabled: okBtnDisabled,
+            })}
             disabled={okBtnDisabled}
             onClick={() => handleOk()}
           >
-            {locale.confirm || okText}
+            {okText || locale.confirm}
           </Button>
         )}
       </>

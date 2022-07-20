@@ -40,7 +40,10 @@ const options: IToastOptions = {
   closeOnClickOverlay: false, // 是否点击遮罩可关闭
 }
 
-function getInstance(props: NotificationProps, callback: (notification: any) => void) {
+function getInstance(
+  props: NotificationProps,
+  callback: (notification: any) => void
+) {
   if (messageInstance) {
     messageInstance.destroy()
     messageInstance = null

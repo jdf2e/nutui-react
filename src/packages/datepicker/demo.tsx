@@ -24,7 +24,11 @@ const DatePickerDemo = () => {
         <h2>限制开始结束时间</h2>
         <Cell title="日期选择" desc={desc2} onClick={() => setShow2(true)} />
         <h2>限制开始结束时间（有默认值）</h2>
-        <Cell title="日期时间选择" desc={desc3} onClick={() => setShow3(true)} />
+        <Cell
+          title="日期时间选择"
+          desc={desc3}
+          onClick={() => setShow3(true)}
+        />
         <h2>限制开始结束小时</h2>
         <Cell title="时间选择" desc={desc4} onClick={() => setShow4(true)} />
         <h2>分钟数递增步长设置</h2>

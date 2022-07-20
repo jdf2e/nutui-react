@@ -268,13 +268,18 @@ export const NoticeBar: FunctionComponent<
     <div className={`${b()} ${className || ''}`} style={style}>
       {showNoticeBar && direction == 'across' ? (
         <div className={noticebarClass} style={barStyle} onClick={handleClick}>
-          <div className="left-icon" style={{ backgroundImage: `url(${leftIcon || ''})` }}>
+          <div
+            className="left-icon"
+            style={{ backgroundImage: `url(${leftIcon || ''})` }}
+          >
             {!leftIcon ? <Icon name="notice" size="16" color={color} /> : null}
           </div>
           <div ref={wrap} className="wrap">
             <div
               ref={content}
-              className={`content ${animationClass} ${!scrollable && !wrapable && 'nut-ellipsis'}`}
+              className={`content ${animationClass} ${
+                !scrollable && !wrapable && 'nut-ellipsis'
+              }`}
               style={contentStyle}
               onAnimationEnd={onAnimationEnd}
             >
@@ -321,7 +326,10 @@ export const NoticeBar: FunctionComponent<
               handleClickIcon()
             }}
           >
-            {rightIcon || (closeMode ? <Icon name="cross" color={color} size="11px" /> : null)}
+            {rightIcon ||
+              (closeMode ? (
+                <Icon name="cross" color={color} size="11px" />
+              ) : null)}
           </div>
         </div>
       ) : null}

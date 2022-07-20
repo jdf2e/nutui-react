@@ -16,8 +16,16 @@ interface DialogWrapProps {
 export const DialogWrap: FunctionComponent<
   Partial<DialogWrapProps> & HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { className, style, visible, mask, closeOnClickOverlay, lockScroll, onClosed, onCancel } =
-    props
+  const {
+    className,
+    style,
+    visible,
+    mask,
+    closeOnClickOverlay,
+    lockScroll,
+    onClosed,
+    onCancel,
+  } = props
 
   const handleClick = (e: any) => {
     if (closeOnClickOverlay && visible && e.target === e.currentTarget) {
@@ -40,7 +48,13 @@ export const DialogWrap: FunctionComponent<
   return (
     <>
       {mask ? (
-        <CSSTransition in={visible} timeout={300} classNames="fadeDialog" unmountOnExit appear>
+        <CSSTransition
+          in={visible}
+          timeout={300}
+          classNames="fadeDialog"
+          unmountOnExit
+          appear
+        >
           <Mask />
         </CSSTransition>
       ) : null}

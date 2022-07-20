@@ -144,8 +144,12 @@ export const CalendarItem: FunctionComponent<
 
   const getCurrDate = (day: Day, month: MonthInfo, isRange?: boolean) => {
     return isRange
-      ? `${month.curData[3]}-${month.curData[4]}-${Utils.getNumTwoBit(+day.day)}`
-      : `${month.curData[0]}-${month.curData[1]}-${Utils.getNumTwoBit(+day.day)}`
+      ? `${month.curData[3]}-${month.curData[4]}-${Utils.getNumTwoBit(
+          +day.day
+        )}`
+      : `${month.curData[0]}-${month.curData[1]}-${Utils.getNumTwoBit(
+          +day.day
+        )}`
   }
 
   const getClass = (day: Day, month: MonthInfo, isRange?: boolean) => {
@@ -179,7 +183,9 @@ export const CalendarItem: FunctionComponent<
 
   const isActive = (day: Day, month: MonthInfo) => {
     return (
-      state.isRange && day.type == 'curr' && getClass(day, month) == 'calendar-month-day-active'
+      state.isRange &&
+      day.type == 'curr' &&
+      getClass(day, month) == 'calendar-month-day-active'
     )
   }
 
@@ -197,11 +203,17 @@ export const CalendarItem: FunctionComponent<
     }
   }
 
-  const chooseDay = (day: Day, month: MonthInfo, isFirst?: boolean, isRange?: boolean) => {
+  const chooseDay = (
+    day: Day,
+    month: MonthInfo,
+    isFirst?: boolean,
+    isRange?: boolean
+  ) => {
     if (getClass(day, month, isRange) != `${state.dayPrefix}-disabled`) {
       let days = [...month.curData]
       days = isRange ? days.splice(3) : days.splice(0, 3)
-      days[2] = typeof day.day === 'number' ? Utils.getNumTwoBit(day.day) : day.day
+      days[2] =
+        typeof day.day === 'number' ? Utils.getNumTwoBit(day.day) : day.day
       days[3] = `${days[0]}-${days[1]}-${days[2]}`
       days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2])
       if (!state.isRange) {
@@ -248,7 +260,9 @@ export const CalendarItem: FunctionComponent<
   // 获取当前月数据
   const getCurrData = (type: string) => {
     const monthData =
-      type == 'prev' ? state.monthsData[0] : state.monthsData[state.monthsData.length - 1]
+      type == 'prev'
+        ? state.monthsData[0]
+        : state.monthsData[state.monthsData.length - 1]
     let year = parseInt(monthData.curData[0])
     let month = parseInt(monthData.curData[1].toString().replace(/^0/, ''))
     switch (type) {
@@ -261,7 +275,11 @@ export const CalendarItem: FunctionComponent<
         month = month == 12 ? 1 : ++month
         break
     }
-    return [year, Utils.getNumTwoBit(month), Utils.getMonthDays(String(year), String(month))]
+    return [
+      year,
+      Utils.getNumTwoBit(month),
+      Utils.getMonthDays(String(year), String(month)),
+    ]
   }
 
   // 获取日期状态
@@ -330,7 +348,8 @@ export const CalendarItem: FunctionComponent<
     requestAniFrame(() => {
       if (weeksPanel?.current && monthsPanel?.current) {
         const top = weeksPanel?.current.getBoundingClientRect().bottom
-        const monthsDoms = monthsPanel.current.getElementsByClassName('calendar-month')
+        const monthsDoms =
+          monthsPanel.current.getElementsByClassName('calendar-month')
         for (let i = 0; i < monthsDoms.length; i++) {
           if (
             monthsDoms[i].getBoundingClientRect().top <= top &&
@@ -463,17 +482,29 @@ export const CalendarItem: FunctionComponent<
 
     // 日期转化为数组
     if (state.isRange && Array.isArray(state.currDate)) {
-      if (startDate && Utils.compareDate(state.currDate[0], startDate as string)) {
+      if (
+        startDate &&
+        Utils.compareDate(state.currDate[0], startDate as string)
+      ) {
         state.currDate.splice(0, 1, startDate as string)
       }
       if (endDate && Utils.compareDate(endDate as string, state.currDate[1])) {
         state.currDate.splice(1, 1, endDate as string)
       }
-      state.defaultData = [...splitDate(state.currDate[0]), ...splitDate(state.currDate[1])]
+      state.defaultData = [
+        ...splitDate(state.currDate[0]),
+        ...splitDate(state.currDate[1]),
+      ]
     } else {
-      if (startDate && Utils.compareDate(state.currDate as string, startDate as string)) {
+      if (
+        startDate &&
+        Utils.compareDate(state.currDate as string, startDate as string)
+      ) {
         state.currDate = startDate
-      } else if (endDate && !Utils.compareDate(state.currDate as string, endDate as string)) {
+      } else if (
+        endDate &&
+        !Utils.compareDate(state.currDate as string, endDate as string)
+      ) {
         state.currDate = endDate
       }
 
@@ -489,10 +520,23 @@ export const CalendarItem: FunctionComponent<
     } while (i++ < 4)
 
     if (state.isRange) {
-      chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[0], true)
-      chooseDay({ day: state.defaultData[5], type: 'curr' }, state.monthsData[0], true, true)
+      chooseDay(
+        { day: state.defaultData[2], type: 'curr' },
+        state.monthsData[0],
+        true
+      )
+      chooseDay(
+        { day: state.defaultData[5], type: 'curr' },
+        state.monthsData[0],
+        true,
+        true
+      )
     } else {
-      chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[0], true)
+      chooseDay(
+        { day: state.defaultData[2], type: 'curr' },
+        state.monthsData[0],
+        true
+      )
     }
   }
 
@@ -543,22 +587,33 @@ export const CalendarItem: FunctionComponent<
                     {month.monthData &&
                       month.monthData.map((day: Day, index: number) => (
                         <div
-                          className={['calendar-month-day', getClass(day, month)].join(' ')}
+                          className={[
+                            'calendar-month-day',
+                            getClass(day, month),
+                          ].join(' ')}
                           key={index}
                           onClick={() => {
                             chooseDay(day, month)
                           }}
                         >
-                          <div className="calendar-day">{day.type === 'curr' ? day.day : ''}</div>
+                          <div className="calendar-day">
+                            {day.type === 'curr' ? day.day : ''}
+                          </div>
                           {isCurrDay(month, day.day) ? (
-                            <div className="calendar-curr-tips">{locale.calendaritem.today}</div>
+                            <div className="calendar-curr-tips">
+                              {locale.calendaritem.today}
+                            </div>
                           ) : (
                             ''
                           )}
                           {isStartTip(day, month) ? (
-                            <div className="calendar-day-tip">{locale.calendaritem.start}</div>
+                            <div className="calendar-day-tip">
+                              {locale.calendaritem.start}
+                            </div>
                           ) : isEndTip(day, month) ? (
-                            <div className="calendar-day-tip">{locale.calendaritem.end}</div>
+                            <div className="calendar-day-tip">
+                              {locale.calendaritem.end}
+                            </div>
                           ) : (
                             ''
                           )}

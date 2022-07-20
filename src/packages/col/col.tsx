@@ -1,4 +1,10 @@
-import React, { FunctionComponent, useEffect, useState, CSSProperties, useContext } from 'react'
+import React, {
+  FunctionComponent,
+  useEffect,
+  useState,
+  CSSProperties,
+  useContext,
+} from 'react'
 import { DataContext } from '@/packages/row/UserContext'
 
 export interface ColProps {
@@ -12,9 +18,9 @@ const defaultProps = {
   gutter: '0',
 } as ColProps
 
-export const Col: FunctionComponent<Partial<ColProps> & React.HTMLAttributes<HTMLDivElement>> = (
-  props
-) => {
+export const Col: FunctionComponent<
+  Partial<ColProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
   const { span, offset, children } = { ...defaultProps, ...props }
   const [colName, setColName] = useState('')
   const [colStyle, setColStyle] = useState({})

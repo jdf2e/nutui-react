@@ -6,7 +6,7 @@ interface CalBack {
   next: string
   value: string | RegionData
   custom: string
-  selectedRegion: {}
+  selectedRegion: any
 }
 interface RegionData {
   name?: string
@@ -14,7 +14,7 @@ interface RegionData {
 }
 interface CalResult {
   type: string
-  data: {}
+  data: any
 }
 interface AddressList {
   id?: string | number
@@ -45,13 +45,13 @@ const AddressDemo = () => {
     { id: 5, name: '浙江', title: 'Z' },
   ])
 
-  const [city, setCity] = useState([])
+  const [city, setCity] = useState<any>([])
 
-  const [country, setCountry] = useState([])
+  const [country, setCountry] = useState<any>([])
 
-  const [town, setTown] = useState([])
+  const [town, setTown] = useState<any>([])
 
-  const [text, setText] = useState({
+  const [text, setText] = useState<any>({
     one: '请选择地址',
     two: '请选择地址',
     three: '请选择地址',
@@ -155,12 +155,16 @@ const AddressDemo = () => {
     }, 200)
   }
 
-  const selected = (prevExistAdd: AddressList, nowExistAdd: AddressList, arr: AddressList[]) => {
+  const selected = (
+    prevExistAdd: AddressList,
+    nowExistAdd: AddressList,
+    arr: AddressList[]
+  ) => {
     console.log('选择')
   }
 
   const switchModule = (val: { type: string }) => {
-    if (val.type == 'custom') {
+    if (val.type === 'custom') {
       console.log('点击了“选择其他地址”按钮')
     } else {
       console.log('点击了自定义地址左上角的返回按钮')
@@ -186,7 +190,7 @@ const AddressDemo = () => {
   }
 
   const close2 = (val: CalResult) => {
-    if (val.type == 'exist') {
+    if (val.type === 'exist') {
       const { provinceName, cityName, countyName, townName, addressDetail } =
         val.data as AddressResult
       if (provinceName) {
@@ -209,13 +213,14 @@ const AddressDemo = () => {
   }
 
   const close3 = (val: CalResult) => {
-    if (val.type == 'exist') {
+    if (val.type === 'exist') {
       const { provinceName, cityName, countyName, townName, addressDetail } =
         val.data as AddressResult
       if (provinceName) {
         setText({
           ...text,
-          three: provinceName + cityName + countyName + townName + addressDetail,
+          three:
+            provinceName + cityName + countyName + townName + addressDetail,
         })
       }
     } else if ((val.data as AddressResult).addressStr) {
@@ -232,7 +237,7 @@ const AddressDemo = () => {
   }
 
   const close4 = (val: CalResult) => {
-    if (val.type == 'exist') {
+    if (val.type === 'exist') {
       const { provinceName, cityName, countyName, townName, addressDetail } =
         val.data as AddressResult
       if (provinceName) {
@@ -272,15 +277,35 @@ const AddressDemo = () => {
     <>
       <div className="demo">
         <h2>选择自定义地址</h2>
-        <Cell title="选择地址" desc={text.one} onClick={() => showAddress('normal')} />
+        <Cell
+          title="选择地址"
+          desc={text.one}
+          onClick={() => showAddress('normal')}
+        />
         <h2>选择自定义地址2</h2>
-        <Cell title="选择地址" desc={text.five} onClick={() => showAddress('normal2')} />
+        <Cell
+          title="选择地址"
+          desc={text.five}
+          onClick={() => showAddress('normal2')}
+        />
         <h2>选择已有地址</h2>
-        <Cell title="选择地址" desc={text.two} onClick={() => showAddress('exist')} />
+        <Cell
+          title="选择地址"
+          desc={text.two}
+          onClick={() => showAddress('exist')}
+        />
         <h2>自定义图标</h2>
-        <Cell title="选择地址" desc={text.three} onClick={() => showAddress('customImg')} />
+        <Cell
+          title="选择地址"
+          desc={text.three}
+          onClick={() => showAddress('customImg')}
+        />
         <h2>自定义地址与已有地址切换</h2>
-        <Cell title="选择地址" desc={text.four} onClick={() => showAddress('other')} />
+        <Cell
+          title="选择地址"
+          desc={text.four}
+          onClick={() => showAddress('other')}
+        />
 
         <Address
           modelValue={showPopup.normal}

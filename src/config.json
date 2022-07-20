@@ -236,6 +236,16 @@
           "exportEmpty": true,
           "desc": "选项卡切换子组件",
           "author": "张晶发"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Indicator",
+          "type": "component",
+          "cName": "指示器",
+          "desc": "显示一个任务或流程的进度，常用于开通流程。",
+          "sort": 16,
+          "show": true,
+          "author": "liukun"
         }
       ]
     },
@@ -678,6 +688,16 @@
           "show": false,
           "exportEmpty": true,
           "author": "hanyuxinting"
+        },
+        {
+          "version": "1.0.0",
+          "name": "VirtualList",
+          "type": "component",
+          "cName": "虚拟列表",
+          "desc": "长列表渲染",
+          "sort": 20,
+          "show": true,
+          "author": "hx"
         }
       ]
     },
