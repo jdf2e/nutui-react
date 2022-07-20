@@ -1,19 +1,19 @@
-#  Empty组件
+#  Empty
 
-### 介绍
+### Introduce
 
-空状态时的占位提示
+Placeholder prompt when empty
 
-### 安装
+### Install
 
 ```javascript
 import { Empty } from '@nutui/nutui-react'
 ```
 
 
-## 代码演示
+## Demo
 
-### 基础用法
+### Basic usage
 :::demo
 ```tsx
 import  React from "react";
@@ -21,14 +21,14 @@ import { Empty } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Empty description="无数据" />
+    <Empty description="No Data" />
   );
 };
 export default App;
 ```
 :::
 
-### 自定义内容大小
+### Custom content size
 :::demo
 ```tsx
 import  React from "react";
@@ -36,14 +36,14 @@ import { Empty } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Empty description="无数据" imageSize={100} />
+    <Empty description="No Data" imageSize={100} />
   );
 };
 export default App;
 ```
 :::
 
-### 图片类型，内置 3 个
+### Picture type, 3 built-in
 :::demo
 ```tsx
 import  React from "react";
@@ -52,9 +52,9 @@ import { Empty } from '@nutui/nutui-react';
 const App = () => {
   return (
     <div className="show">
-      <Empty image="empty" description="无内容" />
-      <Empty image="error" description="加载失败/错误" />
-      <Empty image="network" description="无网络" />
+      <Empty image="empty" description="No Content" />
+      <Empty image="error" description="Load Failed" />
+      <Empty image="network" description="No Network" />
     </div>
   );
 };
@@ -62,7 +62,7 @@ export default App;
 ```
 :::
 
-### 自定义图片
+### Custom image
 :::demo
 ```tsx
 import  React from "react";
@@ -71,7 +71,7 @@ import { Empty } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Empty
-      description="无优惠券" 
+      description="No Coupon" 
       image={<img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" alt=""/>}
      />
   );
@@ -81,7 +81,7 @@ export default App;
 :::
 
 
-### 底部内容
+### Bottom content
 :::demo
 ```tsx
 import  React from "react";
@@ -89,9 +89,9 @@ import { Empty } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Empty image="error" description="加载失败">
+    <Empty image="error" description="Failed to load">
         <div style="margin-top: 10px">
-            <nut-button icon="refresh" type="primary">重试</nut-button>
+            <nut-button icon="refresh" type="primary">Retry</nut-button>
         </div>
     </Empty>
   );
@@ -103,10 +103,10 @@ export default App;
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| Props    | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| image         | 图片类型，可选值为 error network search，支持传入图片 URL              | ReactNode       |
-| imageSize        | 图片大小，Number 类型单位为 px                         | Number \| String | -       |
-| description         | 图片下方的描述文字 | ReactNode | 无数据                |
+| image         | Image type, the optional value is `error` `network` `search`, which supports incoming image URLs             | ReactNode       |
+| imageSize        | Image size, the unit of Number type is px                       | Number \| String | -       |
+| description         | Description text below the image | ReactNode | No Data                |
 
 
