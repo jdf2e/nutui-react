@@ -1,15 +1,15 @@
 # Indicator 指示器
 
-### 介绍
+### 介紹
 
-显示一个任务或流程的进度，常用于开通流程。
+顯示一個任務或流程的進度，常用於開通流程
 
 ### 安装
 
 ```javascript
 import { Indicator } from '@nutui/nutui-react'
 ```
-### 基础用法
+### 基礎用法
 :::demo
 ```tsx
 import  React from "react";
@@ -25,7 +25,7 @@ const App = () => {
         <Row>
           <Col span="12">
             <Button size="small" type="primary">
-              主要按钮
+              主要按鈕
             </Button>
           </Col>
           <Col span="12">
@@ -40,7 +40,7 @@ export default App;
 ```
 :::
 ### block用法
-在`block`为true时，将表现为块级元素，可通过`align`，设置对齐方式
+在`block`為true時，將表現為塊級元素，可通過`align`，設置對齊方式
 :::demo
 ```tsx
 import  React from "react";
@@ -48,7 +48,7 @@ import { Indicator, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <div className="demo">
+   <div className="demo">
       <Cell>
         <Indicator block align="center" size={6} current={5} />
       </Cell>
@@ -64,7 +64,7 @@ const App = () => {
 export default App;
 ```
 :::
-### 不补0
+### 不補0
 :::demo
 ```tsx
 import  React from "react";
@@ -86,10 +86,10 @@ export default App;
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| 屬性 | 說明 | 類型 | 預設值           |
 |--------------|----------------------------------|--------|------------------|
-| current  | 当前步骤               | Number | 1              |
-| size       | 步骤长度                         | Number | 3               |
-| block | 是否启用块级布局     | Boolean | false |
-| align | 对齐方式，仅在block为true时生效, 可选值 'left', 'right', 'center'| String | left |
-| fillZero     | 单数前面是否补0                      | Boolean | true        |
+| current  | 當前步驟               | Number | 1              |
+| size       | 步驟長度                         | Number | 3               |
+| block | 是否啟用塊級佈局     | Boolean | false |
+| align | 對齊方式，僅在block為true時生效, 可選值 'left', 'right', 'center'| String | left |
+| fillZero     | 單數前面是否補0       | Boolean | true        |

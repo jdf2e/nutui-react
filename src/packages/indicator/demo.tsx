@@ -4,12 +4,39 @@ import Cell from '@/packages/cell'
 import Row from '@/packages/row'
 import Col from '@/packages/col'
 import Button from '@/packages/button'
+import { useTranslate } from '../../sites/assets/locale'
 
+interface T {
+  ce5c5446: string
+  c38a08ef: string
+  b840c88f: string
+  a74a1fd4: string
+}
 const IndicatorDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      ce5c5446: '基础用法',
+      c38a08ef: '主要按钮',
+      b840c88f: 'block用法',
+      a74a1fd4: '不补0',
+    },
+    'zh-TW': {
+      ce5c5446: '基礎用法',
+      c38a08ef: '主要按鈕',
+      b840c88f: 'block用法',
+      a74a1fd4: '不補0',
+    },
+    'en-US': {
+      ce5c5446: 'Basic usage',
+      c38a08ef: 'Button',
+      b840c88f: 'Block usage',
+      a74a1fd4: "Not Add '0'",
+    },
+  })
   return (
     <>
       <div className="demo">
-        <h2>基础用法</h2>
+        <h2>{translated.ce5c5446}</h2>
         <Cell>
           <Indicator className="demo1" size={3} current={3} />
         </Cell>
@@ -17,7 +44,7 @@ const IndicatorDemo = () => {
           <Row>
             <Col span="12">
               <Button size="small" type="primary">
-                主要按钮
+                {translated.c38a08ef}
               </Button>
             </Col>
             <Col span="12">
@@ -25,7 +52,7 @@ const IndicatorDemo = () => {
             </Col>
           </Row>
         </Cell>
-        <h2>block用法</h2>
+        <h2>{translated.b840c88f}</h2>
         <Cell>
           <Indicator block align="center" size={6} current={5} />
         </Cell>
@@ -35,7 +62,7 @@ const IndicatorDemo = () => {
         <Cell>
           <Indicator block align="right" size={6} current={5} />
         </Cell>
-        <h2>不补0</h2>
+        <h2>{translated.a74a1fd4}</h2>
         <Cell>
           <Indicator fillZero={false} size={6} current={5} />
         </Cell>
