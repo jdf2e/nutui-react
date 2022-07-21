@@ -26,62 +26,7 @@ const PickerDemo = () => {
   const [tileDesc, settileDesc] = useState('')
 
   const [defaultValue, setDefaultValue] = useState([2])
-  const APIData = [
-    {
-      value: 1,
-      children: [
-        {
-          value: 1,
-          text: '朝阳区',
-        },
-        {
-          value: 2,
-          text: '海淀区',
-        },
-        {
-          value: 3,
-          text: '大兴区',
-        },
-        {
-          value: 4,
-          text: '东城区',
-        },
-        {
-          value: 5,
-          text: '西城区',
-        },
-        {
-          value: 6,
-          text: '丰台区',
-        },
-      ],
-    },
-    {
-      value: 2,
-      children: [
-        {
-          value: 1,
-          text: '黄浦区',
-        },
-        {
-          value: 2,
-          text: '长宁区',
-        },
-        {
-          value: 3,
-          text: '普陀区',
-        },
-        {
-          value: 4,
-          text: '杨浦区',
-        },
-        {
-          value: 5,
-          text: '浦东新区',
-        },
-      ],
-    },
-  ]
+
   const listData1 = [
     [
       {
