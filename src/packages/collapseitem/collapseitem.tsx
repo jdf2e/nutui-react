@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useEffect, useState, useCallback } from 'react'
+import React, {
+  FunctionComponent,
+  useEffect,
+  useState,
+  useCallback,
+} from 'react'
 
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
@@ -125,11 +130,19 @@ export const CollapseItem: FunctionComponent<
         <div className={colBem('sub-title')}>{subTitle}</div>
         <div className={colBem('icon-box')}>
           <div className={colBem('icon')} style={iconStyle}>
-            <Icon name={icon} size={iconSize} color={disabled ? '#C2C2C2' : iconColor} />
+            <Icon
+              name={icon}
+              size={iconSize}
+              color={disabled ? '#C2C2C2' : iconColor}
+            />
           </div>
         </div>
       </div>
-      <div className={colBem('content')} style={{ height: currHeight }} ref={measuredRef}>
+      <div
+        className={colBem('content')}
+        style={{ height: currHeight }}
+        ref={measuredRef}
+      >
         <div className={colBem('content-text')}>{children}</div>
       </div>
     </div>

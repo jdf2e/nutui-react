@@ -14,11 +14,17 @@ interface IPickerSlotProps {
   chooseItem?: (val: string, idx: number) => void
 }
 
-const InternalPickerSlot: ForwardRefRenderFunction<unknown, Partial<IPickerSlotProps>> = (
-  props,
-  ref
-) => {
-  const { isUpdate, keyIndex = 0, defaultValue, listData = [], chooseItem } = props
+const InternalPickerSlot: ForwardRefRenderFunction<
+  unknown,
+  Partial<IPickerSlotProps>
+> = (props, ref) => {
+  const {
+    isUpdate,
+    keyIndex = 0,
+    defaultValue,
+    listData = [],
+    chooseItem,
+  } = props
 
   const [currIndex, setCurrIndex] = useState(1)
   const lineSpacing = 36
@@ -64,7 +70,12 @@ const InternalPickerSlot: ForwardRefRenderFunction<unknown, Partial<IPickerSlotP
     return false
   }
 
-  const setTransform = (translateY = 0, type: string, time = 1000, deg: string) => {
+  const setTransform = (
+    translateY = 0,
+    type: string,
+    time = 1000,
+    deg: string
+  ) => {
     if (type === 'end') {
       listRef.current.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`
       rollerRef.current.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`
@@ -90,7 +101,9 @@ const InternalPickerSlot: ForwardRefRenderFunction<unknown, Partial<IPickerSlotP
 
       // 设置滚动距离为lineSpacing的倍数值
       const endMove = Math.round(updateMove / lineSpacing) * lineSpacing
-      const deg = `${(Math.abs(Math.round(endMove / lineSpacing)) + 1) * rotation}deg`
+      const deg = `${
+        (Math.abs(Math.round(endMove / lineSpacing)) + 1) * rotation
+      }deg`
 
       setTransform(endMove, type, time, deg)
       timer = setTimeout(() => {
@@ -112,7 +125,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<unknown, Partial<IPickerSlotP
   }
 
   const setChooseValue = (move: number) => {
-    chooseItem && chooseItem(listData?.[Math.round(-move / lineSpacing)], keyIndex)
+    chooseItem &&
+      chooseItem(listData?.[Math.round(-move / lineSpacing)], keyIndex)
   }
 
   const touchStart = (event: React.TouchEvent) => {
@@ -219,7 +233,10 @@ const InternalPickerSlot: ForwardRefRenderFunction<unknown, Partial<IPickerSlotP
         <div className="nut-picker-list-panel" ref={listRef}>
           {listData.map((item, index) => {
             return (
-              <div className="nut-picker-item" key={item.label ? item.label : index}>
+              <div
+                className="nut-picker-item"
+                key={item.label ? item.label : index}
+              >
                 {item.value ? item.value : item}
               </div>
             )
@@ -233,5 +250,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<unknown, Partial<IPickerSlotP
     </div>
   )
 }
-const PickerSlot = React.forwardRef<unknown, Partial<IPickerSlotProps>>(InternalPickerSlot)
+const PickerSlot =
+  React.forwardRef<unknown, Partial<IPickerSlotProps>>(InternalPickerSlot)
 export default PickerSlot

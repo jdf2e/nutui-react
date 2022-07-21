@@ -409,6 +409,16 @@ $empty-description-color: #666666 !default;
 $empty-description-font-size: 14px !default;
 $empty-description-line-height: 20px !default;
 $empty-description-padding: 0 40px !default;
+
+// indicator
+$indicator-color: $primary-color !default;
+$indicator-dot-color: $disable-color !default;
+$indicator-white: $white !default;
+$indicator-size: 18px !default;
+$indicator-dot-size: calc($indicator-size / 3) !default;
+$indicator-border-size: $indicator-size + 2 !default;
+$indicator-number-font-size: 10px !default;
+
 // circleProgress
 $circleprogress-primary-color: $primary-color !default;
 $circleprogress-path-color: #e5e9f2 !default;

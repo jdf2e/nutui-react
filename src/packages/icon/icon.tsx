@@ -25,10 +25,21 @@ function pxCheck(value: string | number): string {
   return Number.isNaN(Number(value)) ? String(value) : `${value}px`
 }
 
-export const Icon: FunctionComponent<Partial<IconProps> & React.HTMLAttributes<HTMLDivElement>> = (
-  props
-) => {
-  const { name, size, classPrefix, color, tag, children, className, style, click, ...rest } = {
+export const Icon: FunctionComponent<
+  Partial<IconProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
+  const {
+    name,
+    size,
+    classPrefix,
+    color,
+    tag,
+    children,
+    className,
+    style,
+    click,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }

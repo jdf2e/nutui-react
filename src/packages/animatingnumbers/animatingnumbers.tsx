@@ -6,7 +6,10 @@ export interface AnimatingNumbersProps {}
 const defaultProps = {} as AnimatingNumbersProps
 type AnimatingNumbersStates = {}
 
-export class AnimatingNumbers extends Component<AnimatingNumbersProps, AnimatingNumbersStates> {
+export class AnimatingNumbers extends Component<
+  AnimatingNumbersProps,
+  AnimatingNumbersStates
+> {
   static defaultProps = defaultProps
 
   static displayName = 'NutAnimatingNumbers'

@@ -13,7 +13,14 @@ test('activeColor && inactiveColor &&  activeText && checked && change && inacti
     className: 'switch-test',
     style: { fontSize: '12px' },
   }
-  const { activeColor, inactiveColor, activeText, inactiveText, className, style } = state
+  const {
+    activeColor,
+    inactiveColor,
+    activeText,
+    inactiveText,
+    className,
+    style,
+  } = state
   const testFn = jest.fn()
   const { container } = render(
     <Switch
@@ -30,12 +37,18 @@ test('activeColor && inactiveColor &&  activeText && checked && change && inacti
   )
   const el: Element | null = container.querySelector('.nut-switch-base')
   if (el) {
-    expect(el).toHaveAttribute('class', `nut-switch switch-close  nut-switch-base switch-test`)
-    expect(el).toHaveAttribute('style', `background-color: ${inactiveColor}; font-size: 12px;`)
+    expect(el).toHaveAttribute(
+      'class',
+      `nut-switch switch-close  nut-switch-base switch-test`
+    )
+    expect(el).toHaveAttribute(
+      'style',
+      `background-color: ${inactiveColor}; font-size: 12px;`
+    )
     expect(el).toHaveTextContent(inactiveText)
     fireEvent.click(el)
     setTimeout(() => {
-      //异步
+      // 异步
       expect(el).toHaveAttribute('style', `background-color: ${activeColor};`)
       expect(el).toHaveTextContent(activeText)
       expect(testFn).toBeCalled()

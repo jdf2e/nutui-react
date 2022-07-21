@@ -31,9 +31,9 @@ const defaultProps = {
   extra: '',
   click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
-export const Cell: FunctionComponent<Partial<CellProps> & React.HTMLAttributes<HTMLDivElement>> = (
-  props
-) => {
+export const Cell: FunctionComponent<
+  Partial<CellProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
   const {
     children,
     click,
@@ -102,7 +102,9 @@ export const Cell: FunctionComponent<Partial<CellProps> & React.HTMLAttributes<H
         </>
       )}
       {extra || null}
-      {!extra && (isLink || to) ? <Icon name="right" className={b('link')} /> : null}
+      {!extra && (isLink || to) ? (
+        <Icon name="right" className={b('link')} />
+      ) : null}
     </div>
   )
 }

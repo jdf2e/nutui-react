@@ -6,14 +6,14 @@ import { Overlay } from '../overlay'
 
 test('should change z-index when using z-index prop', () => {
   const { getByTestId } = render(
-    <Overlay data-testid="overlay-zindex" visible={true} zIndex={99} />
+    <Overlay data-testid="overlay-zindex" visible zIndex={99} />
   )
   expect(getByTestId('overlay-zindex').style.zIndex).toBe('99')
 })
 
 test('should change animation duration when using duration prop', () => {
   const { getByTestId } = render(
-    <Overlay data-testid="overlay-animation" visible={true} duration={1} />
+    <Overlay data-testid="overlay-animation" visible duration={1} />
   )
   expect(getByTestId('overlay-animation').style.animationDuration).toBe('1s')
 })
@@ -23,7 +23,7 @@ test('prop close-on-click-overlay test', () => {
   const { getByTestId } = render(
     <Overlay
       data-testid="overlay-closeFalsy"
-      visible={true}
+      visible
       closeOnClickOverlay={false}
       onClick={onClose}
     />
@@ -37,8 +37,8 @@ test('event click test', () => {
   const { getByTestId } = render(
     <Overlay
       data-testid="overlay-click"
-      visible={true}
-      closeOnClickOverlay={true}
+      visible
+      closeOnClickOverlay
       onClick={onClose}
     />
   )
@@ -48,7 +48,7 @@ test('event click test', () => {
 
 test('content test', () => {
   const { container } = render(
-    <Overlay visible={true}>
+    <Overlay visible>
       <div className="wrapper">
         <div className="content">这里是正文</div>
       </div>

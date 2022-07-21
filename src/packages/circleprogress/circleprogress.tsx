@@ -59,8 +59,8 @@ export const CircleProgress: FunctionComponent<
   }
 
   const hoverStyle = () => {
-    let perimeter = 283
-    let offset = (perimeter * Number(progress)) / 100
+    const perimeter = 283
+    const offset = (perimeter * Number(progress)) / 100
     return {
       stroke: isObject(circleColor) ? `url(#${refRandomId})` : circleColor,
       strokeDasharray: `${offset}px ${perimeter}px`,
@@ -80,11 +80,13 @@ export const CircleProgress: FunctionComponent<
     if (!isObject(circleColor)) {
       return
     }
-    let color = circleColor as IColor
-    const colorArr = Object.keys(color).sort((a, b) => parseFloat(a) - parseFloat(b))
-    let stopArr: object[] = []
+    const color = circleColor as IColor
+    const colorArr = Object.keys(color).sort(
+      (a, b) => parseFloat(a) - parseFloat(b)
+    )
+    const stopArr: object[] = []
     colorArr.map((item) => {
-      let obj = {
+      const obj = {
         key: '',
         value: '',
       }
@@ -101,7 +103,9 @@ export const CircleProgress: FunctionComponent<
         <defs>
           <linearGradient id={refRandomId} x1="100%" y1="0%" x2="0%" y2="0%">
             {stop()?.map((item: any, index) => {
-              return <stop key={index} offset={item.key} stopColor={item.value}></stop>
+              return (
+                <stop key={index} offset={item.key} stopColor={item.value} />
+              )
             })}
           </linearGradient>
         </defs>
@@ -111,7 +115,7 @@ export const CircleProgress: FunctionComponent<
           d={path()}
           fill="none"
           strokeWidth={strokeWidth}
-        ></path>
+        />
         <path
           className="nut-circleprogress-hover"
           style={hoverStyle()}
@@ -121,9 +125,11 @@ export const CircleProgress: FunctionComponent<
           strokeLinecap={strokeLinecap}
           transform="rotate(90,50,50)"
           strokeWidth={strokeWidth}
-        ></path>
+        />
       </svg>
-      <div className="nut-circleprogress-text">{children ? children : <div>{progress}%</div>}</div>
+      <div className="nut-circleprogress-text">
+        {children || <div>{progress}%</div>}
+      </div>
     </div>
   )
 }

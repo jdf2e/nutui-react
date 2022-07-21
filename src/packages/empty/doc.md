@@ -21,7 +21,7 @@ import { Empty } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Empty description="无数据"></Empty>
+    <Empty description="无数据" />
   );
 };
 export default App;
@@ -36,7 +36,7 @@ import { Empty } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Empty description="无数据" imageSize={100}></Empty>
+    <Empty description="无数据" imageSize={100} />
   );
 };
 export default App;
@@ -71,8 +71,7 @@ const App = () => {
     <Empty
       description="无优惠券" 
       image={<img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" />}
-    >
-    </Empty>
+     />
   );
 };
 export default App;

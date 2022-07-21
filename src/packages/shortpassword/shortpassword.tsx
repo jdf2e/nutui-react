@@ -1,4 +1,10 @@
-import React, { CSSProperties, FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import bem from '@/utils/bem'
 import Popup from '@/packages/popup'
 import Icon from '@/packages/icon'
@@ -132,8 +138,12 @@ export const ShortPassword: FunctionComponent<
         onClickCloseIcon={onClose}
       >
         <div className={`${b()} ${className}`} style={{ ...style }} {...reset}>
-          <div className={b('title')}>{locale.shortpassword.title || title}</div>
-          <div className={b('subtitle')}>{locale.shortpassword.desc || desc}</div>
+          <div className={b('title')}>
+            {locale.shortpassword.title || title}
+          </div>
+          <div className={b('subtitle')}>
+            {locale.shortpassword.desc || desc}
+          </div>
 
           <div className={b('input')}>
             <input

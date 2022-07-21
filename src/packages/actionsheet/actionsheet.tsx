@@ -57,7 +57,8 @@ export const ActionSheet: FunctionComponent<
   const b = bem('actionsheet')
 
   const isHighlight = (item: ItemType<string | boolean>) => {
-    return props.chooseTagValue && props.chooseTagValue === item[props.optionTag || 'name']
+    return props.chooseTagValue &&
+      props.chooseTagValue === item[props.optionTag || 'name']
       ? props.color
       : '#1a1a1a'
   }
@@ -83,13 +84,17 @@ export const ActionSheet: FunctionComponent<
     >
       <div className={`${b()} ${className}`} style={style} {...rest}>
         {title && <div className={b('title')}>{title}</div>}
-        {description && <div className={`${b('item')} desc`}>{description}</div>}
+        {description && (
+          <div className={`${b('item')} desc`}>{description}</div>
+        )}
         {menuItems.length ? (
           <div className={b('menu')}>
             {menuItems.map((item, index) => {
               return (
                 <div
-                  className={`${b('item')} ${item.disable ? b('item-disabled') : ''}`}
+                  className={`${b('item')} ${
+                    item.disable ? b('item-disabled') : ''
+                  }`}
                   style={{ color: isHighlight(item) }}
                   key={index}
                   onClick={() => chooseItem(item, index)}

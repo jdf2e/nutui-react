@@ -1,4 +1,10 @@
-import React, { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import { useConfig } from '@/packages/configprovider'
 import { VirtualListProps, VirtualListState, PositionType } from './type'
 import {
@@ -73,7 +79,9 @@ export const VirtualList: FunctionComponent<
   }, [])
   useEffect(() => {
     if (containerSize) return
-    const size = horizontal ? getElement().offsetWidth : getElement().offsetHeight
+    const size = horizontal
+      ? getElement().offsetWidth
+      : getElement().offsetHeight
     setOffSetSize(size)
   }, [getElement, horizontal, containerSize])
   useEffect(() => {
@@ -106,7 +114,7 @@ export const VirtualList: FunctionComponent<
       if (!itemEqualSize) {
         updateTotalSize()
       }
-      let endIndex = getEndIndex({
+      const endIndex = getEndIndex({
         sourceData,
         startIndex,
         visibleCount,
@@ -149,7 +157,9 @@ export const VirtualList: FunctionComponent<
 
   return (
     <div
-      className={className ? `${className} nut-virtualList-box` : 'nut-virtualList-box'}
+      className={
+        className ? `${className} nut-virtualList-box` : 'nut-virtualList-box'
+      }
       {...rest}
       style={{
         [sizeKey]: containerSize ? `${offSetSize}px` : '',
@@ -176,26 +186,34 @@ export const VirtualList: FunctionComponent<
               : `translate3d(0,${options.startOffset}px,0)`,
           }}
         >
-          {sourceData.slice(options.overStart, options.endIndex).map((data, index) => {
-            const { startIndex, overStart } = options
-            const dataIndex = overStart + index
-            const styleVal = dataIndex < startIndex ? 'none' : 'block'
-            const keyVal = key && data[key] ? data[key] : dataIndex
+          {sourceData
+            .slice(options.overStart, options.endIndex)
+            .map((data, index) => {
+              const { startIndex, overStart } = options
+              const dataIndex = overStart + index
+              const styleVal = dataIndex < startIndex ? 'none' : 'block'
+              const keyVal = key && data[key] ? data[key] : dataIndex
 
-            return (
-              <li
-                ref={dataIndex === 0 ? firstItemRef : null}
-                data-index={`${dataIndex}`}
-                className={
-                  dataIndex % 2 === 0 ? 'nut-virtuallist-item even' : 'nut-virtuallist-item odd'
-                }
-                key={`${keyVal}`}
-                style={{ display: styleVal }}
-              >
-                {ItemRender ? <ItemRender data={data} index={`${dataIndex}`} /> : data}
-              </li>
-            )
-          })}
+              return (
+                <li
+                  ref={dataIndex === 0 ? firstItemRef : null}
+                  data-index={`${dataIndex}`}
+                  className={
+                    dataIndex % 2 === 0
+                      ? 'nut-virtuallist-item even'
+                      : 'nut-virtuallist-item odd'
+                  }
+                  key={`${keyVal}`}
+                  style={{ display: styleVal }}
+                >
+                  {ItemRender ? (
+                    <ItemRender data={data} index={`${dataIndex}`} />
+                  ) : (
+                    data
+                  )}
+                </li>
+              )
+            })}
         </ul>
       </div>
     </div>

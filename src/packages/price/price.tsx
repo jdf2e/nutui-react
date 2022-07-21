@@ -20,7 +20,15 @@ const defaultProps = {
   className: '',
 } as PriceProps
 export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
-  const { price, needSymbol, symbol, decimalDigits, thousands, className, ...rest } = {
+  const {
+    price,
+    needSymbol,
+    symbol,
+    decimalDigits,
+    thousands,
+    className,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -37,7 +45,8 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     }
     if (checkPoint(num)) {
       num = Number(num).toFixed(decimalDigits)
-      num = typeof num.split('.') === 'string' ? num.split('.') : num.split('.')[0]
+      num =
+        typeof num.split('.') === 'string' ? num.split('.') : num.split('.')[0]
     } else {
       num = num.toString()
     }
@@ -53,7 +62,8 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
 
     if (checkPoint(decimalNum)) {
       decimalNum = Number(decimalNum).toFixed(decimalDigits)
-      decimalNum = typeof decimalNum.split('.') === 'string' ? 0 : decimalNum.split('.')[1]
+      decimalNum =
+        typeof decimalNum.split('.') === 'string' ? 0 : decimalNum.split('.')[1]
     } else {
       decimalNum = 0
     }
@@ -64,7 +74,10 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
   return (
     <div className={`${b()} ${className}`} {...rest}>
       {needSymbol ? (
-        <div className={`${b('symbol')}`} dangerouslySetInnerHTML={showSymbol()} />
+        <div
+          className={`${b('symbol')}`}
+          dangerouslySetInnerHTML={showSymbol()}
+        />
       ) : null}
       <div className={`${b('big')}`}>{formatThousands(price)}</div>
       <div className={`${b('point')}`}>.</div>
