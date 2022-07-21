@@ -105,7 +105,7 @@
           "version": "1.0.0",
           "name": "ConfigProvider",
           "type": "component",
-          "cName": "全局配置组件",
+          "cName": "全局配置",
           "desc": "可以配置多语言等全局属性",
           "sort": 16,
           "show": true,
