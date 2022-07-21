@@ -1,153 +1,80 @@
-# Popup 彈出層
+# Popup 弹出层
 
 ### 介绍
 
-彈出層容器，用於展示彈窗、信息提示等內容
+弹出层容器，用于展示弹窗、信息提示等内容
 
-### 安裝
+### 安装
 
 ``` javascript
 import { Popup } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 代码演示
 
-### 基礎用法
+### 基础用法
 
-`visible` 控製顯示/隱藏
+`visible` 控制显示/隐藏
 
-:::demo
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showBasic, setShowBasic] = useState(false);
-  return (
-    <>
-        <Cell title="展示彈出層" isLink onClick={() => { setShowBasic(true) }}/>
-        <Popup visible={ showBasic } style={{ padding: '30px 50px' }} onClose={ () => { setShowBasic(false) } }>正文</Popup>
-    </>
-  );
-};
-export default App;
-
+```html
+<Popup visible={ showBasic } style={{ padding: '30px 50px' }} onClose={ () => { setShowBasic(false) } }>正文</Popup>
 ```
-:::
 
-### 彈出位置
+### 弹出位置
 
-:::demo
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showTop, setShowTop] = useState(false);
-  const [showBottom, setShowBottom] = useState(false);
-  const [showLeft, setShowLeft] = useState(false);
-  const [showRight, setShowRight] = useState(false);
-
-  return (
-    <>
-        <Cell title="頂部彈出" isLink onClick={() => { setShowTop(true) }}/>
-        <Cell title="底部彈出" isLink onClick={() => { setShowBottom(true) }}/>
-        <Cell title="左側彈出" isLink onClick={() => { setShowLeft(true) }}/>
-        <Cell title="右側彈出" isLink onClick={() => { setShowRight(true) }}/>
-        <Popup visible={ showTop } style={{ height: '20%' }} position="top" onClose={ () => { setShowTop(false) } }></Popup>
-        <Popup visible={ showBottom } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowBottom(false) } }></Popup>
-        <Popup visible={ showLeft } style={{ width: '20%', height: '100%' }} position="left" onClose={ () => { setShowLeft(false) } }></Popup>
-        <Popup visible={ showRight } style={{ width: '20%', height: '100%' }} position="right" onClose={ () => { setShowRight(false) } }></Popup>
-    </>
-  );
-};
-export default App;
-
+```html
+<Popup visible={ showTop } style={{ height: '20%' }} position="top" onClose={ () => { setShowTop(false) } }></Popup>
+<Popup visible={ showBottom } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowBottom(false) } }></Popup>
+<Popup visible={ showLeft } style={{ width: '20%', height: '100%' }} position="left" onClose={ () => { setShowLeft(false) } }></Popup>
+<Popup visible={ showRight } style={{ width: '20%', height: '100%' }} position="right" onClose={ () => { setShowRight(false) } }></Popup>
 ```
-:::
 
-### 圖標
+### 图标
 
-:::demo
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showIcon, setShowIcon] = useState(false);
-  const [showIconPosition, setShowIconPosition] = useState(false);
-  const [showIconDefine, setShowIconDefine] = useState(false);
-
-  return (
-    <>
-        <Cell title="關閉圖標" isLink onClick={() => { setShowIcon(true) }}/>
-        <Cell title="圖標位置" isLink onClick={() => { setShowIconPosition(true) }}/>
-        <Cell title="自定義圖標" isLink onClick={() => { setShowIconDefine(true) }}/>
-        <Popup closeable visible={ showIcon } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowIcon(false) } }></Popup>
-        <Popup closeable visible={ showIconPosition } style={{ height: '20%' }} closeIconPosition="top-left" position="bottom" onClose={ () => { setShowIconPosition(false) } }></Popup>
-        <Popup closeable visible={ showIconDefine } style={{ height: '20%' }} closeIcon="heart" position="bottom" onClose={ () => { setShowIconDefine(false) } }></Popup>
-    </>
-  );
-};
-export default App;
-
-
+```html
+<Popup closeable visible={ showIcon } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowIcon(false) } }></Popup>
+<Popup closeable visible={ showIconPosition } style={{ height: '20%' }} closeIconPosition="top-left" position="bottom" onClose={ () => { setShowIconPosition(false) } }></Popup>
+<Popup closeable visible={ showIconDefine } style={{ height: '20%' }} closeIcon="heart" position="bottom" onClose={ () => { setShowIconDefine(false) } }></Popup>
 ```
-:::
 
-### 圓角彈框
+### 圆角弹框
 
-:::demo
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showBottomRound, setShowBottomRound] = useState(false);
-
-  return (
-    <>
-        <Cell title="圓角彈框" isLink onClick={() => { setShowBottomRound(true) }}/>
-        <Popup closeable visible={ showBottomRound } style={{ height: '20%' }} position="bottom" round onClose={ () => { setShowBottomRound(false) } }></Popup>
-    </>
-  );
-};
-export default App;
+```html
+<Popup closeable visible={ showBottomRound } style={{ height: '20%' }} position="bottom" round onClose={ () => { setShowBottomRound(false) } }></Popup>
 ```
-:::
 
 ## API
 
 ### Props
 
-| 參數                   | 說明                                                        | 類型           | 默認值        |
+| 参数                   | 说明                                                        | 类型           | 默认值        |
 |------------------------|-------------------------------------------------------------|----------------|---------------|
-| visible                | 當前組件是否顯示                                            | Boolean        | `false`       |
-| zIndex                | 遮罩層級                                                    | String、Number | `2000`        |
-| duration               | 遮罩動畫時長，單位秒                                            | Number | `0.3`         |
-| overlayClass          | 自定義遮罩類名                                              | String         | -             |
-| overlayStyle          | 自定義遮罩樣式                                              | CSSProperties  | -             |
-| lockScroll            | 背景是否鎖定                                                | Boolean        | `true`       |
-| overlay                | 是否顯示遮罩                                                | Boolean        | `true`        |
-| closeOnClickOverlay | 是否點擊遮罩關閉                                            | Boolean        | `true`        |
-| position               | 彈出位置（top,bottom,left,right,center）                    | String         | `"center"`    |
-| transition             | 動畫名                                                      | String         | -             |
-| style                  | 自定義彈框樣式                                              | CSSProperties  | -             |
-| popClass              | 自定義彈框類名                                              | String         | -             |
-| closeable              | 是否顯示關閉按鈕                                            | Boolean        | `false`        |
-| closeIconPosition    | 關閉按鈕位置（top-left,top-right,bottom-left,bottom-right） | String         | `"top-right"` |
-| closeIcon             | 自定義 Icon                                                 | String         | `"close"`     |
-| destroyOnClose       | 組件銷毀後是否關閉                                          | Boolean        | `true`        |
-| round                  | 是否顯示圓角                                                | Boolean        | `false`       |
+| visible                | 当前组件是否显示                                            | Boolean        | `false`       |
+| zIndex                | 遮罩层级                                                    | String、Number | `2000`        |
+| duration               | 遮罩动画时长，单位秒                                            | Number | `0.3`         |
+| overlayClass          | 自定义遮罩类名                                              | String         | -             |
+| overlayStyle          | 自定义遮罩样式                                              | CSSProperties  | -             |
+| lockScroll            | 背景是否锁定                                                | Boolean        | `true`       |
+| overlay                | 是否显示遮罩                                                | Boolean        | `true`        |
+| closeOnClickOverlay | 是否点击遮罩关闭                                            | Boolean        | `true`        |
+| position               | 弹出位置（top,bottom,left,right,center）                    | String         | `"center"`    |
+| transition             | 动画名                                                      | String         | -             |
+| style                  | 自定义弹框样式                                              | CSSProperties  | -             |
+| popClass              | 自定义弹框类名                                              | String         | -             |
+| closeable              | 是否显示关闭按钮                                            | Boolean        | `false`        |
+| closeIconPosition    | 关闭按钮位置（top-left,top-right,bottom-left,bottom-right） | String         | `"top-right"` |
+| closeIcon             | 自定义 Icon                                                 | String         | `"close"`     |
+| destroyOnClose       | 组件销毁后是否关闭                                          | Boolean        | `true`        |
+| round                  | 是否显示圆角                                                | Boolean        | `false`       |
 
 ### Events
 
-| 事件名           | 說明                   | 回調參數       |
+| 事件名           | 说明                   | 回调参数       |
 |------------------|------------------------|----------------|
-| onClick            | 點擊彈框時觸發         | `event: MouseEvent` |
-| onClickCloseIcon | 點擊關閉圖標時觸發     | `event: MouseEvent` |
-| onOpen             | 打開彈框時觸發         | -              |
-| onClose            | 關閉彈框時觸發         | -              |
-| onOpend            | 遮罩打開動畫結束時觸發 | `event: HTMLElement` |
-| onClosed           | 遮罩關閉動畫結束時觸發 | `event: HTMLElement` |
-| onClickOverlay    | 點擊遮罩觸發           | `event: MouseEvent` |
+| onClick            | 点击弹框时触发         | `event: MouseEvent` |
+| onClickCloseIcon | 点击关闭图标时触发     | `event: MouseEvent` |
+| onOpen             | 打开弹框时触发         | -              |
+| onClose            | 关闭弹框时触发         | -              |
+| onOpend            | 遮罩打开动画结束时触发 | `event: HTMLElement` |
+| onClosed           | 遮罩关闭动画结束时触发 | `event: HTMLElement` |
+| onClickOverlay    | 点击遮罩触发           | `event: MouseEvent` |
