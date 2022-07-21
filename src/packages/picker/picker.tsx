@@ -3,7 +3,6 @@ import React, {
   useEffect,
   useRef,
   RefObject,
-  useImperativeHandle,
   ForwardRefRenderFunction,
 } from 'react'
 import Popup from '@/packages/popup'
@@ -11,28 +10,40 @@ import PickerSlot from './pickerSlot'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 
-interface IPickerProps {
+export interface PickerOption {
+  text: string | number
+  value: string | number
+  disabled?: string
+  children?: PickerOption[]
+  className?: string | number
+}
+export interface IPickerProps {
   isVisible: boolean
   title?: string
   listData: any[]
-  defaultValueData?: any[]
-  className: ''
-  style: {}
-  onConfirm?: (list: any[]) => void
-  onClose?: () => void
-  onCloseUpdate?: (list: any[], pickerRef: RefObject<HTMLDivElement>) => void
-  onChoose?: (
-    index: number,
-    value: IResValue,
-    list: any[],
+  defaultValueData?: (number | string)[]
+  className?: ''
+  style?: React.CSSProperties
+  threeDimensional?: boolean
+  onConfirm?: (
+    selectedValue: (string | number)[],
+    selectedOptions: PickerOption[]
+  ) => void
+  onClose?: (
+    selectedValue: (string | number)[],
+    selectedOptions: PickerOption[]
+  ) => void
+  onCloseUpdate?: (
+    list: PickerOption[],
     pickerRef: RefObject<HTMLDivElement>
+  ) => void
+  onChange?: (
+    index: number,
+    value: PickerOption,
+    selectedOptions: PickerOption[]
   ) => void
 }
 
-interface IResValue {
-  label: number
-  value: string
-}
 const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
   (props, ref) => {
     const { locale } = useConfig()
@@ -40,102 +51,192 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
       isVisible,
       title,
       listData = [],
-      defaultValueData = [],
+      defaultValueData,
       onConfirm,
       onClose,
       onCloseUpdate,
-      onChoose,
+      onChange,
       className,
       style,
+      threeDimensional,
       ...rest
     } = props
 
-    const [chooseValueData, setchooseValueData] = useState<Array<any>>([])
-    const [cacheValueData, setcacheValueData] = useState<Array<any>>([])
-    const [isUpdate, setisUpdate] = useState(false)
+    const [chooseValueData, setchooseValueData] = useState<Array<any>>([]) // 选择的数据, 每一条数据的 value 值
     const pickerRef = useRef<any>(null)
 
-    const pickerSlotRef1 = useRef<any>(null)
-    const pickerSlotRef2 = useRef<any>(null)
-    const pickerSlotRef3 = useRef<any>(null)
-    const refList: any[] = [pickerSlotRef1, pickerSlotRef2, pickerSlotRef3]
-    const [isReady, setIsReady] = useState(true)
+    const [columnsList, setColumnsList] = useState<PickerOption[][]>([]) // 格式化后每一列的数据
     const b = bem('picker')
 
+    // 默认值修改
     useEffect(() => {
-      const data = [...defaultValueData]
-      setchooseValueData(data)
-      setcacheValueData(data)
-      onConfirm && onConfirm(data)
+      if (defaultValueData && defaultValueData.length !== 0) {
+        const data = [...defaultValueData]
+        setchooseValueData(data)
+        setColumnsList(normalListData())
+      }
     }, [defaultValueData])
 
+    // 列表格式修改
     useEffect(() => {
       init()
     }, [listData])
 
-    const updateChooseValue = (
-      index: number,
-      value: any,
-      cacheValueData: any[]
-    ) => {
-      if (!value) return
-      setcacheValueData((data) => {
-        const cache = [...cacheValueData]
-        cache.splice(index, 1, value)
-        return cache
-      })
-      refList[index].current?.updateTransform(value)
-    }
-
-    useImperativeHandle(ref, () => {
-      return { updateChooseValue }
-    })
-
     const closeActionSheet = () => {
-      setisUpdate(!isUpdate)
-      setcacheValueData([...chooseValueData])
-      onClose && onClose()
+      onClose && onClose(chooseValueData, selectedOptions())
       onCloseUpdate && onCloseUpdate(chooseValueData, pickerRef)
     }
-
+    // 点击确定
     const confirm = (defaultValueData?: Array<any>) => {
-      const data = defaultValueData || cacheValueData
-      onConfirm && onConfirm(data)
+      const data = defaultValueData || chooseValueData
       setchooseValueData([...data])
-      onClose && onClose()
+      onConfirm && onConfirm(chooseValueData, selectedOptions())
+      onClose && onClose(chooseValueData, selectedOptions())
     }
 
-    const chooseItem = (value: any, index: number) => {
-      setcacheValueData((data) => {
-        const cacheData = [...data]
-        if (cacheData[index] != value) {
-          cacheData[index] = value
-          onChoose && onChoose(index, value, cacheData, pickerRef)
-        }
-        return cacheData
+    const selectedOptions = () => {
+      const optins: PickerOption[] = []
+      columnsList.map((column: PickerOption[], index: number) => {
+        let currOptions = []
+        currOptions = column.filter(
+          (item) => item.value === chooseValueData[index]
+        )
+        optins.push(currOptions[0])
+
+        return column
       })
+
+      return optins
     }
+
+    // 选择每一列的数据
+    const chooseItem = (option: PickerOption, columnIndex: number) => {
+      if (option && Object.keys(option).length) {
+        // 是否移动后是否与之前有差异
+        if (chooseValueData[columnIndex] !== option.value) {
+          if (columnsType() === 'cascade') {
+            setchooseValueData((data) => {
+              const cdata = [...data]
+              cdata[columnIndex] = option.value ? option.value : ''
+              return cdata
+            })
+
+            let index = columnIndex
+            let cursor = option
+            while (cursor && cursor.children && cursor.children[0]) {
+              const buffchooseValueData = [...chooseValueData]
+              buffchooseValueData[index + 1] = cursor.children[0].value
+              setchooseValueData(buffchooseValueData)
+
+              index++
+              const ccursor = cursor.children[0]
+              cursor = ccursor
+            }
+            // 当前改变列的下一列 children 值为空
+            if (cursor && cursor.children) {
+              const buffchooseValueData = [...chooseValueData]
+              buffchooseValueData[index + 1] = ''
+              setchooseValueData([...buffchooseValueData])
+            }
+
+            setColumnsList(normalListData())
+          } else {
+            setchooseValueData((data) => {
+              const cdata = [...data]
+              cdata[columnIndex] = Object.prototype.hasOwnProperty.call(
+                option,
+                'value'
+              )
+                ? option.value
+                : ''
+              return cdata
+            })
+          }
+
+          onChange && onChange(columnIndex, option, selectedOptions())
+        }
+      }
+    }
+    // 传入的数据格式化
+    const normalListData = () => {
+      const type = columnsType()
+
+      switch (type) {
+        case 'multiple':
+          return listData
+        case 'cascade':
+          // 级联数据处理
+          return formatCascade(listData, chooseValueData)
+        default:
+          return [listData]
+      }
+    }
+    // 每一列的类型
+    const columnsType = () => {
+      const firstColumn: PickerOption = listData[0]
+      if (firstColumn) {
+        if (Array.isArray(firstColumn)) {
+          return 'multiple'
+        }
+        if ('children' in firstColumn) {
+          return 'cascade'
+        }
+      }
+      return 'single'
+    }
+
+    // 级联数据格式化
+    const formatCascade = (
+      columns: PickerOption[],
+      defaultValues: (number | string)[]
+    ) => {
+      const formatted: PickerOption[][] = []
+      let cursor: PickerOption = {
+        text: '',
+        value: '',
+        children: columns,
+      }
+
+      let columnIndex = 0
+
+      while (cursor && cursor.children) {
+        const options: PickerOption[] = cursor.children
+        const value = defaultValues[columnIndex]
+        let index = options.findIndex(
+          (columnItem) => columnItem.value === value
+        )
+        if (index === -1) index = 0
+        cursor = cursor.children[index]
+
+        columnIndex++
+        formatted.push(options)
+      }
+
+      return formatted
+    }
+
     const init = () => {
-      if (defaultValueData && defaultValueData.length) {
-        setchooseValueData([...defaultValueData])
-      } else {
-        const data: React.SetStateAction<any[]> = []
-        listData.map((item, index) => {
-          data.push(item[0])
-        })
-        setcacheValueData((cache) => {
-          return [...data]
-        })
+      const data: React.SetStateAction<any[]> = []
+
+      const normalData = normalListData()
+
+      setColumnsList(normalData)
+
+      normalData.map((item) => {
+        data.push(item[0].value)
+        return item
+      })
+
+      if (!defaultValueData && chooseValueData.length === 0) {
         setchooseValueData([...data])
       }
-      setIsReady(true)
     }
     return (
       <Popup
         visible={isVisible}
         position="bottom"
         onClose={() => {
-          onClose && onClose()
+          closeActionSheet()
         }}
       >
         <div className={`${b()} ${className || ''}`} style={style} {...rest}>
@@ -152,18 +253,17 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
             </span>
           </div>
           <div className={b('panel')} ref={pickerRef}>
-            {listData?.map((item, index) => {
+            {columnsList?.map((item, index) => {
               return (
                 <PickerSlot
                   defaultValue={chooseValueData?.[index]}
-                  isUpdate={isUpdate}
                   listData={item}
+                  threeDimensional={threeDimensional}
                   chooseItem={(value: any, index: number) =>
                     chooseItem(value, index)
                   }
                   key={index}
                   keyIndex={index}
-                  ref={refList[index]}
                 />
               )
             })}

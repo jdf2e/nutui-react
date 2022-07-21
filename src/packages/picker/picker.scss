@@ -83,11 +83,11 @@
     height: 36px;
     line-height: 36px;
     color: #262626;
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
   }
   .nut-picker-item {
-    font-size: 15px;
+    font-size: 16px;
     background: #fff;
   }
   .nut-picker-roller {
@@ -99,6 +99,15 @@
       top: 0;
       width: 100%;
       color: #262626;
+    }
+
+    .nut-picker-roller-item-tile {
+      display: block;
+      width: 100%;
+      height: 36px;
+      line-height: 36px;
+      color: #262626;
+      font-size: 16px;
     }
     .nut-picker-roller-item-hidden {
       visibility: hidden;
