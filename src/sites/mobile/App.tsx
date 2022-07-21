@@ -1,17 +1,24 @@
 import './App.scss'
 import React, { FunctionComponent, PropsWithChildren, useState } from 'react'
-import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
+import {
+  HashRouter,
+  Switch,
+  Route,
+  Redirect,
+  useHistory,
+} from 'react-router-dom'
 import loadable, { LoadableComponent } from '@loadable/component'
 import routes from './router'
 import Links from './Links'
 import logo from '@/sites/assets/images/logo-red.png'
-import useLocale from '@/sites/assets/locale/uselocale'
+import useLocale, { getLocale } from '@/sites/assets/locale/uselocale'
 import Configprovider from '@/packages/configprovider'
 import zhTW from '@/locales/zh-TW'
 import zhCN from '@/locales/zh-CN'
 import enUS from '@/locales/en-US'
 import { BaseLang } from '@/locales/base'
-import Popover from '@/packages/popover'
+import Icon from '@/packages/Icon'
+import config from '@/sites/config/env'
 
 interface Languages {
   [key: string]: BaseLang
@@ -25,11 +32,28 @@ const languages: Languages = {
 
 const WithNavRouter = (C: LoadableComponent<any>) => {
   const WithNav: FunctionComponent = (props: PropsWithChildren<any>) => {
+    const handleSwitchLocale = () => {
+      let href = ''
+      let locale = getLocale()
+      let location = window.parent.location
+      if (locale == 'zh-CN') {
+        href = location.href.replace('zh-CN', 'en-US')
+      } else {
+        href = location.href.replace('en-US', 'zh-CN')
+      }
+      location.href = href
+    }
+
     return (
       <>
         <div id="nav">
-          <div className="back"></div>
+          <div className="back" onClick={() => window.parent.history.back()}>
+            <Icon name="left"></Icon>
+          </div>
           {props.location.pathname.replace('/', '')}
+          <div className="translate" onClick={() => handleSwitchLocale()}>
+            <Icon name="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"></Icon>
+          </div>
         </div>
         <C key={Math.random()} />
       </>
@@ -41,7 +65,9 @@ const AppSwitch = () => {
   const [locale] = useLocale()
 
   return (
-    <Configprovider locale={languages[((locale as string) || 'zh-CN').replace('-', '')]}>
+    <Configprovider
+      locale={languages[((locale as string) || 'zh-CN').replace('-', '')]}
+    >
       <Switch>
         <Route path="/" exact>
           <div className="index">
