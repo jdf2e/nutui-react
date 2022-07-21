@@ -111,32 +111,29 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
 
     // 选择每一列的数据
     const chooseItem = (option: PickerOption, columnIndex: number) => {
+      console.log('选择')
       if (option && Object.keys(option).length) {
         // 是否移动后是否与之前有差异
         if (chooseValueData[columnIndex] !== option.value) {
+          console.log('有差异')
           if (columnsType() === 'cascade') {
-            setchooseValueData((data) => {
-              const cdata = [...data]
-              cdata[columnIndex] = option.value ? option.value : ''
-              return cdata
-            })
+            chooseValueData[columnIndex] = option.value ? option.value : ''
+            setchooseValueData(chooseValueData)
 
             let index = columnIndex
             let cursor = option
             while (cursor && cursor.children && cursor.children[0]) {
-              const buffchooseValueData = [...chooseValueData]
-              buffchooseValueData[index + 1] = cursor.children[0].value
-              setchooseValueData(buffchooseValueData)
+              chooseValueData[index + 1] = cursor.children[0].value
+              setchooseValueData(chooseValueData)
 
               index++
-              const ccursor = cursor.children[0]
-              cursor = ccursor
+              const cc = cursor.children[0]
+              cursor = cc
             }
             // 当前改变列的下一列 children 值为空
             if (cursor && cursor.children) {
-              const buffchooseValueData = [...chooseValueData]
-              buffchooseValueData[index + 1] = ''
-              setchooseValueData([...buffchooseValueData])
+              chooseValueData[index + 1] = ''
+              setchooseValueData(chooseValueData)
             }
 
             setColumnsList(normalListData())
@@ -166,6 +163,11 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
           return listData
         case 'cascade':
           // 级联数据处理
+          console.log(
+            '格式化数据',
+            chooseValueData,
+            formatCascade(listData, chooseValueData)
+          )
           return formatCascade(listData, chooseValueData)
         default:
           return [listData]
