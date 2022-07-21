@@ -105,7 +105,7 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 預設值           |
 |--------------|----------------------------------|--------|------------------|
-| image         | 圖片類型，可選值為 error network search，支持傳入圖片 URL              | ReactNode       |
+| image         | 圖片類型，可選值為 error network empty，支持傳入圖片 URL              | ReactNode       |
 | imageSize        | 圖片大小，Number 類型單位為 px                    | Number \| String | -       |
 | description         | 圖片下方的描述文字  | ReactNode |    無數據             |
 

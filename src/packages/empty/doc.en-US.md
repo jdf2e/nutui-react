@@ -105,7 +105,7 @@ export default App;
 
 | Props    | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| image         | Image type, the optional value is `error` `network` `search`, which supports incoming image URLs             | ReactNode       |
+| image         | Image type, the optional value is `error` `network` `empty`, which supports incoming image URLs             | ReactNode       |
 | imageSize        | Image size, the unit of Number type is px                       | Number \| String | -       |
 | description         | Description text below the image | ReactNode | No Data                |
 
