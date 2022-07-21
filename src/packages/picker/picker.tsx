@@ -111,21 +111,18 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
 
     // 选择每一列的数据
     const chooseItem = (option: PickerOption, columnIndex: number) => {
-      console.log('选择')
       if (option && Object.keys(option).length) {
         // 是否移动后是否与之前有差异
         if (chooseValueData[columnIndex] !== option.value) {
-          console.log('有差异')
           if (columnsType() === 'cascade') {
             chooseValueData[columnIndex] = option.value ? option.value : ''
-            setchooseValueData(chooseValueData)
+            setchooseValueData([...chooseValueData])
 
             let index = columnIndex
             let cursor = option
             while (cursor && cursor.children && cursor.children[0]) {
               chooseValueData[index + 1] = cursor.children[0].value
-              setchooseValueData(chooseValueData)
-
+              setchooseValueData([...chooseValueData])
               index++
               const cc = cursor.children[0]
               cursor = cc
@@ -133,7 +130,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
             // 当前改变列的下一列 children 值为空
             if (cursor && cursor.children) {
               chooseValueData[index + 1] = ''
-              setchooseValueData(chooseValueData)
+              setchooseValueData([...chooseValueData])
             }
 
             setColumnsList(normalListData())

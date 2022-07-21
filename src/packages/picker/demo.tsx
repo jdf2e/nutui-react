@@ -269,12 +269,18 @@ const PickerDemo = () => {
     columnIndex: number,
     option: PickerOption
   ) => {
-    if (columnIndex === 0) {
-      const { value, text } = option
+    if (columnIndex === 0 && option.value === 2) {
       setTimeout(() => {
-        const resItems = APIData.find((item) => item.value === value)
-        if (resItems && resItems.children.length) {
-          setAsyncData(custmerCityData)
+        if (asyncData[1].children.length === 0) {
+          asyncData[1].children = [
+            { value: 1, text: '黄浦区' },
+            { value: 2, text: '长宁区' },
+            { value: 3, text: '普陀区' },
+            { value: 4, text: '杨浦区' },
+            { value: 5, text: '浦东新区' },
+          ]
+
+          setAsyncData([...asyncData])
         }
       }, 100)
     }
