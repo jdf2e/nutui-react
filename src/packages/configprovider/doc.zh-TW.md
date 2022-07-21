@@ -1,33 +1,43 @@
-#  ConfigProvider组件
+# ConfigProvider 全域配置
 
-### 介绍
+### 介紹
 
-基于 xxxxxxx
+用於全域配置 NutUI-React 元件，提供國際化支援。
 
-### 安装
+### 安裝
 
+``` javascript
+import { ConfigProvider } from '@nutui/nutui-react';
+```
 
+## 代碼演示
 
-## 代码演示
+### 基礎用法
 
-### 基础用法1
+:::demo
 
+```tsx
+import React from 'react';
+import { ConfigProvider, Textarea } from "@nutui/nutui-react";
+import en from "@nutui/nutui-react/dist/locales/en-US";
 
+const App = () => {
+  return (
+    <ConfigProvider locale={en}>
+      <Textarea />
+    </ConfigProvider>
+  )
+}
+
+export default App;
+```
+
+:::
 
 ## API
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| name         | 图标名称或图片链接               | String | -                |
-| color        | 图标颜色                         | String | -                |
-| size         | 图标大小，如 '20px' '2em' '2rem' | String | -                |
-| class-prefix | 类名前缀，用于使用自定义图标     | String | 'nutui-iconfont' |
-| tag          | HTML 标签                        | String | 'i'              |
-
-### Events
-
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| click  | 点击图标时触发 | event: Event |
+| 屬性 | 說明 | 類型 | 預設值           |
+|--------------|----------------------------|--------|-----------------|
+| locale         | 設置多語言包                     | BaseLang | zhCN                |

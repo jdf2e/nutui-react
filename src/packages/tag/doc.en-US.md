@@ -1,76 +1,76 @@
-# Tag 标签
+# Tag 
 
-### 介绍
+### introduce
 
-用于标记和分类的标签。
+Label for labeling and classification.
 
-### 安装
+### Install
 
 ``` javascript
 import { Tag } from '@nutui/nutui-react';
 ```
 
-## 代码实例
+## Code instance
 
-### 基础用法
+### Basic usage
 
 ```tsx
-<Tag type="primary">标签</Tag>
-<Tag type="success">标签</Tag>
-<Tag type="danger">标签</Tag>
-<Tag type="warning">标签</Tag>
+<Tag type="primary">Label</Tag>
+<Tag type="success">Label</Tag>
+<Tag type="danger">Label</Tag>
+<Tag type="warning">Label</Tag>
 ```
 
-### 空心样式
+### Hollow style
 
 ```tsx
-<Tag plain>标签</Tag>
+<Tag plain>Label</Tag>
 ```
 
-### 圆角样式
+### Rounded style
 
 ```tsx
-<Tag round type="primary">标签</Tag>
+<Tag round type="primary">Label</Tag>
 ```
 
-### 标记样式
+### Label style
 
 ```tsx
-<Tag mark type="primary">标签</Tag>
+<Tag mark type="primary">Label</Tag>
 ```
 
-### 可关闭标签
+### Can close label
 
 ```tsx
-<Tag isShow={isShow} closeable onClick={close} type="primary">标签</Tag>
+<Tag isShow={isShow} closeable onClick={close} type="primary">Label</Tag>
 ```
 
-### 自定义颜色
+### Custom color
 
 ```tsx
-<Tag color="#FA685D">标签</Tag>
-<Tag color="#E9E9E9" text-color="#999999">标签</Tag>
-<Tag color="#FA2400" plain>标签</Tag>
+<Tag color="#FA685D">Label</Tag>
+<Tag color="#E9E9E9" text-color="#999999">Label</Tag>
+<Tag color="#FA2400" plain>Label</Tag>
 ```
 
 ## API
 
 ### Props
 
-| 字段       | 说明                                             | 类型    | 默认值    |
+| Field       | illustrate                                      | type    | Defaults    |
 |------------|--------------------------------------------------|---------|-----------|
-| type       | 标签类型，可选值为primary success danger warning | String  | `default` |
-| color      | 标签颜色                                         | String  | -         |
-| text-color | 文本颜色，优先级高于color属性                    | String  | `white`   |
-| plain      | 是否为空心样式                                   | Boolean | `false`   |
-| round      | 是否为圆角样式                                   | Boolean | `false`   |
-| mark       | 是否为标记样式                                   | Boolean | `false`   |
-| closeable  | 是否为可关闭标签                                 | Boolean | `false`   |
+| type       | Label type, the optional value is primary success danger warning | String  | `default` |
+| color      | Label color                                         | String  | -         |
+| text-color | Text color, priority is higher than the color attribute  | String  | `white`   |
+| plain      | Whether it is hollow                               | Boolean | `false`   |
+| round      | Whether it is a rounded style                      | Boolean | `false`   |
+| mark       | Whether it is a tag style                          | Boolean | `false`   |
+| closeable  | Whether it can be closed label                     | Boolean | `false`   |
 
 
 ### Event
 
-| 事件名称 | 说明     | 回调参数 |
+| Event name | illustrate  | Callback parameter |
 |----------|----------|----------|
-| close    | 关闭事件 | event    |
+| close    | Close event | event    |
 
