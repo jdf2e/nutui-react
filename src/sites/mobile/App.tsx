@@ -43,14 +43,14 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
       }
       location.href = href
     }
-
+    const pathNames = props.location.pathname.split('/')
     return (
       <>
         <div id="nav">
           <div className="back" onClick={() => window.parent.history.back()}>
             <Icon name="left"></Icon>
           </div>
-          {props.location.pathname.replace('/', '')}
+          {pathNames[pathNames.length - 1]}
           <div className="translate" onClick={() => handleSwitchLocale()}>
             <Icon name="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"></Icon>
           </div>
