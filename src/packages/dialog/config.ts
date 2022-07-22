@@ -36,7 +36,10 @@ export interface DialogProps {
   onConfirm?: (e?: MouseEvent) => Promise<() => void> | void
 }
 
-export type DialogReturnProps = { update: () => void; close: () => void }
+export type DialogReturnProps = {
+  update: (newConfig: ConfirmProps) => void
+  close: () => void
+}
 
 export interface ConfirmProps extends DialogProps {
   content?: ReactNode
