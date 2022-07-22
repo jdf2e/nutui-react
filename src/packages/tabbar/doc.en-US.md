@@ -1,18 +1,18 @@
-#  Tabbar 标签栏
+#  Tabbar
 
-### 介绍
+### introduce
 
-底部导航常用场景
+Bottom Navigation Common Scenarios
 
-### 安装
+### Install
 
 ```ts
 import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## code demo
 
-### 基础用法
+### Basic usage
 
 :::demo
 ```tsx
@@ -25,18 +25,18 @@ const App = () =>(
       console.log(idx)
     }}
   >
-    <TabbarItem tabTitle="首页" icon="home" />
-    <TabbarItem tabTitle="分类" icon="category" />
-    <TabbarItem tabTitle="发现" icon="find" />
-    <TabbarItem tabTitle="购物车" icon="cart" />
-    <TabbarItem tabTitle="我的" icon="my" />
+    <TabbarItem tabTitle="front page" icon="home" />
+    <TabbarItem tabTitle="Classification" icon="category" />
+    <TabbarItem tabTitle="Find" icon="find" />
+    <TabbarItem tabTitle="shopping cart" icon="cart" />
+    <TabbarItem tabTitle="mine" icon="my" />
   </Tabbar>
 );
 
 export default App;
 ```
 :::
-### 自定义选中
+### custom check
 
 :::demo
 ```tsx
@@ -45,38 +45,38 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar visible={2}>
-    <TabbarItem tabTitle="首页" icon="home" />
-    <TabbarItem tabTitle="分类" icon="category" />
-    <TabbarItem tabTitle="发现" icon="find" />
-    <TabbarItem tabTitle="购物车" icon="cart" />
-    <TabbarItem tabTitle="我的" icon="my" />
+    <TabbarItem tabTitle="front page" icon="home" />
+    <TabbarItem tabTitle="Classification" icon="category" />
+    <TabbarItem tabTitle="Find" icon="find" />
+    <TabbarItem tabTitle="shopping cart" icon="cart" />
+    <TabbarItem tabTitle="mine" icon="my" />
   </Tabbar>
 );
 
 export default App;
 ```
 :::
-### 徽标提示
+### Logo Tips
 
 :::demo
 ```tsx
 import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem tabTitle="首页" icon="home" num="11" />
-    <TabbarItem tabTitle="分类" icon="category" />
-    <TabbarItem tabTitle="发现" icon="find" />
-    <TabbarItem tabTitle="购物车" icon="cart" num="110" />
-    <TabbarItem tabTitle="我的" icon="my" />
+    <TabbarItem tabTitle="front page" icon="home" num="11" />
+    <TabbarItem tabTitle="Classification" icon="category" />
+    <TabbarItem tabTitle="Find" icon="find" />
+    <TabbarItem tabTitle="shopping cart" icon="cart" num="110" />
+    <TabbarItem tabTitle="mine" icon="my" />
   </Tabbar>
 );
 
 export default App;
 ```
 :::
-### 自定义颜色
+### custom color
 
 :::demo
 ```tsx
@@ -85,18 +85,18 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem tabTitle="首页" icon="home" />
-    <TabbarItem tabTitle="分类" icon="category" />
-    <TabbarItem tabTitle="发现" icon="find" />
-    <TabbarItem tabTitle="购物车" icon="cart" />
-    <TabbarItem tabTitle="我的" icon="my" />
+    <TabbarItem tabTitle="front page" icon="home" />
+    <TabbarItem tabTitle="Classification" icon="category" />
+    <TabbarItem tabTitle="Find" icon="find" />
+    <TabbarItem tabTitle="shopping cart" icon="cart" />
+    <TabbarItem tabTitle="mine" icon="my" />
   </Tabbar>
 );
 
 export default App;
 ```
 :::
-### 三个icon的tabbar
+### Tabbar with three icons
 
 :::demo
 ```tsx
@@ -105,16 +105,16 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem tabTitle="首页" icon="home" />
-    <TabbarItem tabTitle="分类" icon="category" />
-    <TabbarItem tabTitle="发现" icon="find" />
+    <TabbarItem tabTitle="front page" icon="home" />
+    <TabbarItem tabTitle="Classification" icon="category" />
+    <TabbarItem tabTitle="Find" icon="find" />
   </Tabbar>
 );
 
 export default App;
 ```
 :::
-### 固定底部，可自由跳转
+### Fixed bottom, free to jump
 
 :::demo
 ```tsx
@@ -123,11 +123,11 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar bottom>
-    <TabbarItem tabTitle="首页" href="" icon="home" />
-    <TabbarItem tabTitle="分类" icon="category" />
-    <TabbarItem tabTitle="发现" icon="find" />
-    <TabbarItem tabTitle="购物车" href="https://m.jd.com" icon="cart" />
-    <TabbarItem tabTitle="我的" to="/" icon="my" />
+    <TabbarItem tabTitle="front page" href="" icon="home" />
+    <TabbarItem tabTitle="Classification" icon="category" />
+    <TabbarItem tabTitle="Find" icon="find" />
+    <TabbarItem tabTitle="shopping cart" href="https://m.jd.com" icon="cart" />
+    <TabbarItem tabTitle="mine" to="/" icon="my" />
   </Tabbar>
 );
 
@@ -141,26 +141,26 @@ export default App;
 
 ### nut-tabbar
 
-| 字段            | 说明               | 类型   | 默认值  |
+| Prop            | Description                | Type   | Default  |
 |-----------------|--------------------|--------|---------|
-| visible | 选中标签的索引值   | number | 0       |
-| bottom          | 是否固定在页面底部 | Booble | false   |
-| unactiveColor  | icon未激活的颜色   | string | #7d7e80 |
-| activeColor    | icon激活的颜色     | string | #1989fa |
+| visible | The index value of the selected label   | number | 0       |
+| bottom          | Whether it is fixed at the bottom of the page | Booble | false   |
+| unactiveColor  | Icon inactive color   | string | #7d7e80 |
+| activeColor    | icon active color     | string | #1989fa |
 
 ### tabbar-item
 
-| 字段      | 说明                                      | 类型   | 默认值 |
+| Prop      | Description                                      | Type   | Default |
 |-----------|-------------------------------------------|--------|--------|
-| tabTitle | 标签页的标题                              | String | --     |
-| icon      | 标签页显示的[图标名称](#/icon) 或图片链接 | String | --     |
-| href      | 标签页的跳转链接；如果同时存在 `to`，优先级高于 to   | String | --     |
-| to       | 	标签页的路由对象，等于 React Router 的 [to 属性](https://v5.reactrouter.com/web/api/Link/to-string) 属性 | string｜object | --     |
-| num       | 页签右上角的数字角标，超出99之后为99+     | Number | --     |
+| tabTitle | the title of the tab                              | String | --     |
+| icon      | [icon name](#/icon) or image link displayed on the tab page | String | --     |
+| href      | Jump link of tab page; if `to` exists at the same time, it takes precedence over to   | String | --     |
+| to       | 	The route object of the tab, equal to React Router's [to Prop](https://v5.reactrouter.com/web/api/Link/to-string) Prop | string｜object | --     |
+| num       | The numerical corner mark in the upper right corner of the tab, if it exceeds 99, it will be 99+     | Number | --     |
 
 
 ### Event
 
-| 事件名称   | 说明               | 回调参数           |
+| Event   | Description               | callback parameter           |
 |------------|--------------------|--------------------|
-| tabSwitch | 切换页签时触发事件 | 点击的数据和索引值 |
+| tabSwitch | Trigger an event when switching tabs | Clicked data and index value |

@@ -6,8 +6,8 @@ export interface PaginationProps {
   defaultValue: number
   modelValue: number
   mode: 'multi' | 'simple'
-  prevText: React.ReactNode
-  nextText: React.ReactNode
+  prevText?: React.ReactNode
+  nextText?: React.ReactNode
   pageCount: string | number
   totalItems: string | number
   itemsPerPage: string | number
@@ -23,8 +23,8 @@ export interface PaginationProps {
 const defaultProps = {
   defaultValue: 1,
   mode: 'multi',
-  prevText: '上一页',
-  nextText: '下一页',
+  prevText: '',
+  nextText: '',
   pageCount: '',
   totalItems: '0',
   itemsPerPage: '10',
@@ -153,7 +153,7 @@ export const Pagination: FunctionComponent<
         } ${currentPage === 1 ? 'disabled' : ''}`}
         onClick={(e) => selectPage(Number(currentPage) - 1, true)}
       >
-        {locale.pagination.prev || prevText}
+        {prevText || locale.pagination.prev}
       </div>
       {mode === 'multi' ? (
         <div className={`${paginationBem('contain')}`}>
@@ -191,7 +191,7 @@ export const Pagination: FunctionComponent<
         }`}
         onClick={(e) => selectPage(Number(currentPage) + 1, true)}
       >
-        {locale.pagination.next || nextText}
+        {nextText || locale.pagination.next}
       </div>
     </div>
   )

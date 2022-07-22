@@ -4,50 +4,63 @@ import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
 export interface CellProps {
-  title: string
-  subTitle: string
+  title: ReactNode
+  subTitle: ReactNode
   desc: string
   descTextAlign: string
   isLink: boolean
+  icon: string
+  roundRadius: string | number
+  url: string
   to: string
   replace: boolean
-  url: string
-  icon: string
+  center: boolean
+  size: string
   className: string
-  extra: ReactNode
+  iconSlot: ReactNode
+  linkSlot: ReactNode
   click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 const defaultProps = {
-  title: '',
-  subTitle: '',
+  title: null,
+  subTitle: null,
   desc: '',
   descTextAlign: 'right',
   isLink: false,
+  icon: '',
+  roundRadius: '6px',
+  url: '',
   to: '',
   replace: false,
-  url: '',
-  icon: '',
+  center: false,
+  size: '',
   className: '',
-  extra: '',
+  iconSlot: null,
+  linkSlot: null,
   click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
+
 export const Cell: FunctionComponent<
-  Partial<CellProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<CellProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
   const {
     children,
     click,
-    isLink,
-    to,
-    url,
-    replace,
-    className,
-    descTextAlign,
-    desc,
-    icon,
     title,
     subTitle,
-    extra,
+    desc,
+    descTextAlign,
+    isLink,
+    icon,
+    roundRadius,
+    url,
+    to,
+    replace,
+    center,
+    size,
+    className,
+    iconSlot,
+    linkSlot,
     ...rest
   } = {
     ...defaultProps,
@@ -60,8 +73,14 @@ export const Cell: FunctionComponent<
     if (to && history) {
       history[replace ? 'replace' : 'push'](to)
     } else if (url) {
-      replace ? location.replace(url) : (location.href = url)
+      replace ? window.location.replace(url) : (window.location.href = url)
     }
+  }
+
+  const baseStyle = {
+    borderRadius: Number.isNaN(Number(roundRadius))
+      ? String(roundRadius)
+      : `${roundRadius}px`,
   }
 
   const styles =
@@ -73,38 +92,47 @@ export const Cell: FunctionComponent<
         }
   return (
     <div
-      className={`${b({ clickable: !!(isLink || to) }, [className])} `}
+      className={`${b(
+        { clickable: !!(isLink || to), center, large: size === 'large' },
+        [className]
+      )} `}
       onClick={(event) => handleClick(event)}
+      style={baseStyle}
       {...rest}
     >
       {children || (
         <>
-          {title || subTitle || icon ? (
-            <>
-              <div className={`${b('title', { icon: !!icon })}`}>
-                {icon ? <Icon name={icon} className={`${b('icon')}`} /> : null}
-                {subTitle ? (
-                  <>
-                    <div className={b('maintitle')}>{title}</div>
-                    <div className={b('subtitle')}>{subTitle}</div>
-                  </>
-                ) : (
-                  <>{title}</>
-                )}
-              </div>
-            </>
+          {icon || iconSlot ? (
+            <div className={b('icon')}>
+              {iconSlot ||
+                (icon ? <Icon name={icon} className="icon" /> : null)}
+            </div>
+          ) : null}
+          {title || subTitle ? (
+            <div className={`${b('title')}`}>
+              {title ? <div className={b('maintitle')}>{title}</div> : null}
+              {subTitle ? (
+                <div className={b('subtitle')}>{subTitle}</div>
+              ) : null}
+            </div>
           ) : null}
           {desc ? (
-            <div className={b('desc')} style={styles as React.CSSProperties}>
+            <div
+              className={b('value', {
+                alone: !title && !subTitle,
+              })}
+              style={styles as React.CSSProperties}
+            >
               {desc}
             </div>
           ) : null}
+          {!linkSlot && (isLink || to) ? (
+            <Icon name="right" className={b('link')} />
+          ) : (
+            linkSlot
+          )}
         </>
       )}
-      {extra || null}
-      {!extra && (isLink || to) ? (
-        <Icon name="right" className={b('link')} />
-      ) : null}
     </div>
   )
 }
