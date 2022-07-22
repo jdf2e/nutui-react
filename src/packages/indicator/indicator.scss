@@ -14,12 +14,12 @@
   }
   &__dot,
   &__number {
-    margin: 0 4px;
+    margin: 0 $indicator-dot-margin;
     &:first-child {
-      margin-left: 0;
+      margin-left: $indicator-dot-first-margin;
     }
     &:last-child {
-      margin-right: 0;
+      margin-right: $indicator-dot-last-margin;
     }
   }
   &__dot {
@@ -51,12 +51,12 @@
     align-items: center;
     justify-content: center;
     .nut-indicator__dot {
-      margin: 4px 0;
+      margin: $indicator-dot-vertical-margin 0;
       &:first-child {
-        margin-top: 0;
+        margin-top: $indicator-dot-first-margin;
       }
       &:last-child {
-        margin-bottom: 0;
+        margin-bottom: $indicator-dot-last-margin;
       }
     }
   }
