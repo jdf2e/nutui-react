@@ -8,6 +8,7 @@ export interface IndicatorProps {
   block: boolean
   align: 'left' | 'right' | 'center'
   fillZero: boolean
+  vertical: boolean
 }
 const defaultProps = {
   size: 3,
@@ -15,6 +16,7 @@ const defaultProps = {
   block: false,
   align: 'center',
   fillZero: true,
+  vertical: false,
 } as IndicatorProps
 
 export const Indicator: FunctionComponent<
@@ -28,6 +30,7 @@ export const Indicator: FunctionComponent<
     fillZero,
     children,
     className,
+    vertical,
     ...rest
   } = {
     ...defaultProps,
@@ -38,6 +41,7 @@ export const Indicator: FunctionComponent<
     {
       [`${b('block')}`]: block,
       [`${b('align')}__${align}`]: block && align,
+      [`${b('vertical')}`]: vertical,
     },
     b('')
   )
