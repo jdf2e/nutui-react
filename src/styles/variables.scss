@@ -19,7 +19,8 @@ $black: #000;
 // padding
 $padding-xs: 12px;
 
-$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif !default;
+$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
+  sans-serif !default;
 
 // ---- Animation ----
 $animation-duration: 0.25s !default;
@@ -94,21 +95,33 @@ $button-plain-background-color: $white;
 
 // cell
 
-$cell-color: $title-color2;
-$cell-title-font: $font-size-2;
-$cell-title-desc-font: $font-size-1;
-$cell-desc-font: $font-size-2;
-$cell-desc-color: $disable-color;
-$cell-border-radius: 6px;
+$cell-color: $title-color2 !default;
+$cell-title-font: $font-size-2 !default;
+$cell-title-desc-font: $font-size-1 !default;
+$cell-desc-font: $font-size-2 !default;
+$cell-desc-color: $disable-color !default;
+$cell-border-radius: 6px !default;
+$cell-padding: 13px 16px !default;
+$cell-line-height: 20px !default;
+$cell-after-right: 16px !default;
+$cell-after-border-bottom: 2px solid #f5f6f7 !default;
+$cell-default-icon-margin: 0 4px 0 0px !default;
+$cell-large-title-font: $font-size-large !default;
+$cell-large-title-desc-font: $font-size-base !default;
+$cell-large-padding: 15px 16px !default;
+$cell-background: $white !default;
 
 // cell-group
 
-$cell-group-title-padding: 0 10px;
-$cell-group-title-color: #909ca4;
-$cell-group-title-font-size: $font-size-2;
-$cell-group-title-line-height: 20px;
-$cell-group-background-color: $white;
-
+$cell-group-title-padding: 0 10px !default;
+$cell-group-title-color: #909ca4 !default;
+$cell-group-title-font-size: $font-size-2 !default;
+$cell-group-title-line-height: 20px !default;
+$cell-group-desc-padding: 0 10px !default;
+$cell-group-desc-color: #909ca4 !default;
+$cell-group-desc-font-size: $font-size-1 !default;
+$cell-group-desc-line-height: 16px !default;
+$cell-group-background-color: $white !default;
 // icon
 
 $icon-height: 20px;
@@ -246,10 +259,18 @@ $infinite-bottom-color: #c8c8c8;
 //range
 $range-max: #333333;
 $rang-bg-color: rgba($primary-color, 0.5);
-$rang-bar-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%);
+$rang-bar-bg-color: linear-gradient(
+  135deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+);
 
 //address
-$address-region-tab-line: linear-gradient(90deg, $primary-color 0%, $primary-color-end 100%);
+$address-region-tab-line: linear-gradient(
+  90deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+);
 
 //steps
 $steps-base-icon-width: 25px !default;
@@ -303,7 +324,11 @@ $signature-border-color: #dadada;
 $fixednav-bg-color: $white;
 $fixednav-font-color: $black;
 $fixednav-index: 201;
-$fixednav-btn-bg: linear-gradient(135deg, rgba(250, 25, 44, 1) 0%, rgba(250, 63, 25, 1) 100%);
+$fixednav-btn-bg: linear-gradient(
+  135deg,
+  rgba(250, 25, 44, 1) 0%,
+  rgba(250, 63, 25, 1) 100%
+);
 
 // Tag
 $tag-font-size: 12px !default;
