@@ -4,17 +4,26 @@ exports[`prop icon 1`] = `
 <div>
   <div
     class="nut-cell nut-cell--clickable "
+    style="border-radius: 6px;"
   >
     <div
-      class="nut-cell__title nut-cell__title--icon"
+      class="nut-cell__icon"
     >
       <i
-        class="nut-cell__icon nut-icon nutui-iconfont nut-icon-my "
+        class="icon nut-icon nutui-iconfont nut-icon-my "
       />
-      姓名
     </div>
     <div
-      class="nut-cell__desc"
+      class="nut-cell__title"
+    >
+      <div
+        class="nut-cell__maintitle"
+      >
+        姓名
+      </div>
+    </div>
+    <div
+      class="nut-cell__value"
     >
       张三
     </div>
@@ -29,14 +38,19 @@ exports[`prop isLink 1`] = `
 <div>
   <div
     class="nut-cell nut-cell--clickable "
+    style="border-radius: 6px;"
   >
     <div
       class="nut-cell__title"
     >
-      URL 跳转
+      <div
+        class="nut-cell__maintitle"
+      >
+        URL 跳转
+      </div>
     </div>
     <div
-      class="nut-cell__desc"
+      class="nut-cell__value"
     >
       https://m.jd.com/
     </div>
@@ -47,29 +61,32 @@ exports[`prop isLink 1`] = `
 </div>
 `;
 
-exports[`prop title desc subtitle 1`] = `
-<div
-  class="nut-cell "
-  data-testid="prop"
->
+exports[`prop title desc subtitle test 1`] = `
+<div>
   <div
-    class="nut-cell__title"
+    class="nut-cell "
+    data-testid="prop"
+    style="border-radius: 6px;"
   >
     <div
-      class="nut-cell__maintitle"
+      class="nut-cell__title"
     >
-      我是标题
+      <div
+        class="nut-cell__maintitle"
+      >
+        我是标题
+      </div>
+      <div
+        class="nut-cell__subtitle"
+      >
+        副标题描述
+      </div>
     </div>
     <div
-      class="nut-cell__subtitle"
+      class="nut-cell__value"
     >
-      副标题描述
+      描述文字
     </div>
-  </div>
-  <div
-    class="nut-cell__desc"
-  >
-    描述文字
   </div>
 </div>
 `;
@@ -78,6 +95,7 @@ exports[`slot default test 1`] = `
 <div>
   <div
     class="nut-cell "
+    style="border-radius: 6px;"
   >
     <div>
       自定义内容
@@ -86,15 +104,20 @@ exports[`slot default test 1`] = `
 </div>
 `;
 
-exports[`slot extra 1`] = `
+exports[`slot linkSlot 1`] = `
 <div>
   <div
     class="nut-cell "
+    style="border-radius: 6px;"
   >
     <div
       class="nut-cell__title"
     >
-      Switch
+      <div
+        class="nut-cell__maintitle"
+      >
+        Switch
+      </div>
     </div>
     <div
       class="nut-switch switch-open  nut-switch-base "
