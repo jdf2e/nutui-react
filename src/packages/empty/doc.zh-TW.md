@@ -1,19 +1,19 @@
 #  Empty组件
 
-### 介绍
+### 介紹
 
-空状态时的占位提示
+空狀態時的佔位提示
 
-### 安装
+### 安裝
 
 ```javascript
 import { Empty } from '@nutui/nutui-react'
 ```
 
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
 :::demo
 ```tsx
 import  React from "react";
@@ -21,14 +21,14 @@ import { Empty } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Empty description="无数据" />
+    <Empty description="無數據" />
   );
 };
 export default App;
 ```
 :::
 
-### 自定义内容大小
+### 自定義內容大小
 :::demo
 ```tsx
 import  React from "react";
@@ -36,14 +36,14 @@ import { Empty } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Empty description="无数据" imageSize={100} />
+    <Empty description="無數據" imageSize={100} />
   );
 };
 export default App;
 ```
 :::
 
-### 图片类型，内置 3 个
+### 圖片類型，內置 3 個
 :::demo
 ```tsx
 import  React from "react";
@@ -52,9 +52,9 @@ import { Empty } from '@nutui/nutui-react';
 const App = () => {
   return (
     <div className="show">
-      <Empty image="empty" description="无内容" />
-      <Empty image="error" description="加载失败/错误" />
-      <Empty image="network" description="无网络" />
+      <Empty image="empty" description="無內容" />
+      <Empty image="error" description="加載失敗/錯誤" />
+      <Empty image="network" description="無網絡" />
     </div>
   );
 };
@@ -62,7 +62,7 @@ export default App;
 ```
 :::
 
-### 自定义图片
+### 自定義圖片
 :::demo
 ```tsx
 import  React from "react";
@@ -71,7 +71,7 @@ import { Empty } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Empty
-      description="无优惠券" 
+      description="無優惠券" 
       image={<img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" alt=""/>}
      />
   );
@@ -81,7 +81,7 @@ export default App;
 :::
 
 
-### 底部内容
+### 底部內容
 :::demo
 ```tsx
 import  React from "react";
@@ -89,9 +89,9 @@ import { Empty } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Empty image="error" description="加载失败">
+    <Empty image="error" description="加載失敗">
         <div style="margin-top: 10px">
-            <nut-button icon="refresh" type="primary">重试</nut-button>
+            <nut-button icon="refresh" type="primary">重試</nut-button>
         </div>
     </Empty>
   );
@@ -103,10 +103,10 @@ export default App;
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| 屬性 | 說明 | 類型 | 預設值           |
 |--------------|----------------------------------|--------|------------------|
-| image         | 图片类型，可选值为 error network empty，支持传入图片 URL              | ReactNode       |
-| imageSize        | 图片大小，Number 类型单位为 px                         | Number \| String | -       |
-| description         | 图片下方的描述文字 | ReactNode | 无数据                |
+| image         | 圖片類型，可選值為 error network empty，支持傳入圖片 URL              | ReactNode       |
+| imageSize        | 圖片大小，Number 類型單位為 px                    | Number \| String | -       |
+| description         | 圖片下方的描述文字  | ReactNode |    無數據             |
 
 
