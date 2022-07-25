@@ -1,8 +1,8 @@
 {
   "miniprogramRoot": "dist/",
-  "projectname": "first",
+  "projectname": "NutUI-React-Taro",
   "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
-  "appid": "wxf2b976b67dab3882",
+  "appid": "test",
   "setting": {
     "urlCheck": true,
     "es6": false,

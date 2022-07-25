@@ -13,12 +13,13 @@ const config = {
   outputRoot: 'dist',
   plugins: ['@tarojs/plugin-html'],
   alias: {
-    react: path.resolve(__dirname, '../../../../../node_modules/react'),
-    '@/packages': path.resolve(__dirname, '../../../../../src/packages'),
-    '@/utils': path.resolve(__dirname, '../../../../../src/utils'),
+    react: path.resolve(__dirname, '../../../../node_modules/react'),
+    '@/packages': path.resolve(__dirname, '../../../../src/packages'),
+    '@/utils': path.resolve(__dirname, '../../../../src/utils'),
+    '@': path.resolve(__dirname, '../../../../src'),
   },
   sass: {
-    resource: path.resolve(__dirname, '../../../../', 'styles/variables.scss'),
+    resource: path.resolve(__dirname, '../../../', 'styles/variables.scss'),
   },
   defineConstants: {},
   copy: {
@@ -31,6 +32,7 @@ const config = {
       pxtransform: {
         enable: true,
         config: {},
+        // config: {selectorBlackList: ['nut-']},
       },
       url: {
         enable: true,

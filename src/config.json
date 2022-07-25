@@ -48,6 +48,7 @@
           "desc": "按钮",
           "sort": 1,
           "show": true,
+          "taro": true,
           "author": ""
         },
         {
@@ -89,6 +90,7 @@
           "desc": "创建一个遮罩层，通常用于阻止用户进行其他操作",
           "sort": 5,
           "show": true,
+          "taro": true,
           "author": "junjun"
         },
         {
@@ -126,6 +128,7 @@
           "desc": "协助进行页面级整体布局。",
           "sort": 1,
           "show": true,
+          "taro": true,
           "author": "yushuang24"
         },
         {
@@ -158,6 +161,7 @@
           "desc": "用于将内容分隔为多个区域",
           "sort": 7,
           "show": true,
+          "taro": true,
           "author": "vickyYE"
         }
       ]
@@ -184,6 +188,7 @@
           "desc": "悬浮收齐体验交互，用于快捷导航",
           "sort": 5,
           "show": true,
+          "taro": true,
           "author": "Ymm0008"
         },
         {
@@ -194,6 +199,7 @@
           "desc": "底部导航常用场景",
           "sort": 2,
           "show": true,
+          "taro": true,
           "author": "dsj"
         },
         {
@@ -203,6 +209,7 @@
           "cName": "标签栏子组件",
           "type": "component",
           "show": false,
+          "taro": true,
           "exportEmpty": true,
           "desc": "标签栏子组件",
           "author": "dsj"
@@ -225,6 +232,7 @@
           "desc": "当数据量较多时，采用分页的形式分隔长列表。",
           "sort": 6,
           "show": true,
+          "taro": true,
           "author": "lkjh3214"
         },
         {
@@ -235,6 +243,7 @@
           "desc": "常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式",
           "sort": 12,
           "show": true,
+          "taro": true,
           "author": "张晶发"
         },
         {
@@ -323,6 +332,7 @@
           "desc": "多选按钮用于选择。",
           "sort": 4,
           "show": true,
+          "taro": true,
           "author": "oasis"
         },
         {
@@ -363,6 +373,7 @@
           "desc": "单行输入框",
           "sort": 1,
           "show": true,
+          "taro": true,
           "author": "VickyYe"
         },
         {
@@ -373,6 +384,7 @@
           "desc": "用于在一组备选项中进行单选",
           "sort": 6,
           "show": true,
+          "taro": true,
           "author": "oasis"
         },
         {
@@ -480,6 +492,7 @@
           "desc": "从底部弹出的动作菜单面板。",
           "sort": 11,
           "show": true,
+          "taro": true,
           "author": "dsj"
         },
         {
@@ -586,6 +599,7 @@
           "desc": "拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。",
           "sort": 7,
           "show": true,
+          "taro": true,
           "author": "swag~jun"
         },
         {
@@ -688,6 +702,7 @@
           "desc": "在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果。",
           "sort": 15,
           "show": true,
+          "taro": true,
           "author": "swag~jun"
         },
         {
@@ -698,6 +713,7 @@
           "desc": "用于实时展示倒计时数值，支持毫秒精度。",
           "sort": 17,
           "show": true,
+          "taro": true,
           "author": "songsong"
         },
         {
@@ -739,6 +755,7 @@
           "desc": "空状态时的占位提示",
           "sort": 16,
           "show": true,
+          "taro": true,
           "author": "liukun"
         },
         {
