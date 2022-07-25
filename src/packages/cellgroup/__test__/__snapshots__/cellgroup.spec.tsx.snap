@@ -11,15 +11,23 @@ exports[`prop title desc subtitle 1`] = `
       链接 | 分组用法
     </div>
     <div
+      class="nut-cell-group__desc"
+    />
+    <div
       class="nut-cell-group__wrap"
     >
       <div
         class="nut-cell nut-cell--clickable "
+        style="border-radius: 6px;"
       >
         <div
           class="nut-cell__title"
         >
-          链接
+          <div
+            class="nut-cell__maintitle"
+          >
+            链接
+          </div>
         </div>
         <i
           class="nut-cell__link nut-icon nutui-iconfont nut-icon-right "
@@ -27,14 +35,19 @@ exports[`prop title desc subtitle 1`] = `
       </div>
       <div
         class="nut-cell nut-cell--clickable "
+        style="border-radius: 6px;"
       >
         <div
           class="nut-cell__title"
         >
-          URL 跳转
+          <div
+            class="nut-cell__maintitle"
+          >
+            URL 跳转
+          </div>
         </div>
         <div
-          class="nut-cell__desc"
+          class="nut-cell__value"
         >
           https://jd.com
         </div>
@@ -44,11 +57,16 @@ exports[`prop title desc subtitle 1`] = `
       </div>
       <div
         class="nut-cell nut-cell--clickable "
+        style="border-radius: 6px;"
       >
         <div
           class="nut-cell__title"
         >
-          路由跳转 ’/‘ 
+          <div
+            class="nut-cell__maintitle"
+          >
+            路由跳转 ’/‘ 
+          </div>
         </div>
         <i
           class="nut-cell__link nut-icon nutui-iconfont nut-icon-right "

@@ -1,26 +1,38 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 
 import bem from '@/utils/bem'
 
 export interface CellGroupProps {
-  title: string
+  title: ReactNode
+  desc: ReactNode
+  titleSlot: ReactNode
+  descSlot: ReactNode
   classPrefix: string
 }
 const defaultProps = {
   title: '',
+  desc: '',
+  titleSlot: null,
+  descSlot: null,
   classPrefix: 'nutui-cell-group',
 } as CellGroupProps
 export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
   props
 ) => {
-  const { children, classPrefix, title } = {
+  const { children, classPrefix, title, desc, titleSlot, descSlot } = {
     ...defaultProps,
     ...props,
   }
   const b = bem('cell-group')
   return (
     <div className={b(null, [classPrefix])}>
-      {title ? <div className={b('title')}>{title}</div> : null}
+      {titleSlot || (
+        <>{title ? <div className={b('title')}>{title}</div> : null}</>
+      )}
+      {descSlot || (
+        <>{title ? <div className={b('desc')}>{desc}</div> : null}</>
+      )}
+
       <div className={b('wrap')}>{children}</div>
     </div>
   )
