@@ -14,6 +14,7 @@ var newCpt = {
   desc: '',
   sort: '',
   show: true,
+  taro: true,
   author: '',
 }
 function init() {

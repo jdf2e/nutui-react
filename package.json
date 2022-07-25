@@ -59,12 +59,12 @@
     "test": "jest",
     "test:demo": "jest  --testNamePattern=^should match snapshot$ --runTestsByPath ./src/packages/collapse/__test__/collapse.spec.tsx",
 
-    "generate:file:taro": "node scripts/generate-nutui-taro.js",
-    "checked:taro":"npm run generate:file:taro",
-    "dev:taro:weapp": "npm run checked:taro && cd ./src/sites/mobile-taro && npm run dev:weapp --watch",
-    "build:taro:es": "npx rollup -c rollup.config.es.js",
-    "build:taro": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run build:taro:es  && npm run build:css && npm run build:loader-style && npm run build:types && npm run build:locales",
-    "createTaroConfig": "node scripts/generate-taro-route.js"
+    "generate:file:taro": "node scripts/taro/generate-nutui-taro.js",
+    "checked:taro":"npm run generate:file:taro && tsc",
+    "dev:taro:weapp": "npm run checked:taro && cd ./src/sites/mobile-taro && npm run dev:weapp",
+    "build:taro:es": "npx rollup -c taro/rollup.config.taro.es.js",
+    "build:taro": "npm run checked:taro && vite build --config taro/vite.config.build.taro.ts && npm run build:taro:es  && npm run build:css && npm run build:loader-style && npm run build:types && npm run build:locales",
+    "createTaroConfig": "node scripts/taro/generate-taro-route.js"
   },
   "engines": {
     "node": "^14.18.0 || >=15.0.0"

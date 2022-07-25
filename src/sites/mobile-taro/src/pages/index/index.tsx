@@ -10,7 +10,7 @@ import './index.scss'
 
 const navs = pkg.nav
 const Index = () => {
-  // const [lang] = useLocale()s
+  // const [lang] = useLocale()
   return (
     <>
       <div className="index">

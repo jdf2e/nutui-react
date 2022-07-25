@@ -3,10 +3,13 @@ import typescript from '@rollup/plugin-typescript'
 import { getBabelOutputPlugin } from '@rollup/plugin-babel'
 
 const path = require('path')
-const config = require('./src/config.json')
+const config = require('../src/config.json')
 
 const entries = {
-  'nutui-react.es': path.join(__dirname, `./src/packages/nutui.taro.react.build.ts`),
+  'nutui-react.es': path.join(
+    __dirname,
+    `./src/packages/nutui.taro.react.build.ts`
+  ),
 }
 const outputEntries = {}
 
@@ -15,7 +18,10 @@ config.nav.map((item) => {
     const { name, show, type, exportEmpty } = element
     if (show || exportEmpty) {
       outputEntries[`./${name.toLowerCase()}`] = `./${name}`
-      entries[name] = path.join(__dirname, `./src/packages/${name.toLowerCase()}/index.taro.ts`)
+      entries[name] = path.join(
+        __dirname,
+        `./src/packages/${name.toLowerCase()}/index.taro.ts`
+      )
     }
   })
 })
@@ -35,7 +41,9 @@ export default {
     dir: './dist/esm',
     name: '[entryName].js',
     paths: (id) => {
-      return /@\/packages/.test(id) ? `${outputEntries[id.replace('@/packages/', './')]}.js` : id
+      return /@\/packages/.test(id)
+        ? `${outputEntries[id.replace('@/packages/', './')]}.js`
+        : id
     },
   },
   plugins: [

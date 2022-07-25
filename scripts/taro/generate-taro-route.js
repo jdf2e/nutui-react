@@ -1,5 +1,5 @@
 const fse = require('fs-extra')
-const config = require('../src/config.json')
+const config = require('../../src/config.json')
 const targetBaseUrl = `${process.cwd()}/src`
 const taroConfig = `${targetBaseUrl}/sites/mobile-taro/src/app.config.ts`
 
