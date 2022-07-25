@@ -13,27 +13,27 @@ import { Indicator } from '@nutui/nutui-react'
 :::demo
 ```tsx
 import  React from "react";
-import { Indicator, Cell, Button } from '@nutui/nutui-react';
+import { Indicator, Cell, Button, Row, Col } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Cell>
-      <Indicator size={3} current={3}>
-      </Indicator>
-    </Cell>
-    <Cell>
-      <Row>
-        <Col span="12">
-          <Button size="small" type="primary">
-            主要按钮
-          </Button>
-        </Col>
-        <Col span="12">
-          <Indicator block={true} align="right" size={6} current={5}>
-          </Indicator>
-        </Col>
-      </Row>
-    </Cell>
+    <div className="demo">
+      <Cell>
+        <Indicator size={3} current={3} />
+      </Cell>
+      <Cell>
+        <Row>
+          <Col span="12">
+            <Button size="small" type="primary">
+              主要按钮
+            </Button>
+          </Col>
+          <Col span="12">
+            <Indicator block align="right" size={6} current={5} />
+          </Col>
+        </Row>
+      </Cell>
+    </div>
   );
 };
 export default App;
@@ -48,18 +48,17 @@ import { Indicator, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Cell>
-      <Indicator block={true} align="center" size={6} current={5}>
-      </Indicator>
-    </Cell>
-    <Cell>
-      <Indicator block={true} align="left" size={6} current={1}>
-      </Indicator>
-    </Cell>
-    <Cell>
-      <Indicator block={true} align="right" size={6} current={5}>
-      </Indicator>
-    </Cell>
+    <div className="demo">
+      <Cell>
+        <Indicator block align="center" size={6} current={5} />
+      </Cell>
+      <Cell>
+        <Indicator block align="left" size={6} current={1} />
+      </Cell>
+      <Cell>
+        <Indicator block align="right" size={6} current={5} />
+      </Cell>
+    </div>
   );
 };
 export default App;
@@ -74,8 +73,32 @@ import { Indicator, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Indicator fillZero={false} size={6} current={5}>
-      </Indicator>
+      <Indicator fillZero={false} size={6} current={5} />
+    </Cell>
+  );
+};
+export default App;
+```
+:::
+### 竖向展示
+:::demo
+```tsx
+import  React from "react";
+import { Indicator, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Cell>
+      <view 
+        style={{ height: '100px', width: '50%' }} 
+      >
+        <Indicator fillZero={false} size={6} current={5} vertical />
+      </view>
+      <view 
+        style={{ height: '100px', width: '50%' }} 
+      >
+        <Indicator size={6} current={2} vertical />
+      </view>
     </Cell>
   );
 };
@@ -95,3 +118,4 @@ export default App;
 | block | 是否启用块级布局     | Boolean | false |
 | align | 对齐方式，仅在block为true时生效, 可选值 'left', 'right', 'center'| String | left |
 | fillZero     | 单数前面是否补0                      | Boolean | true        |
+| vertical | 是否竖向展示     | Boolean | false |

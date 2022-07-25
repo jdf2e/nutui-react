@@ -64,13 +64,13 @@ const TextAreaDemo = () => {
           defaultValue={value1}
           className="text-1"
           style={{ fontSize: '12px' }}
-          change={(value, event) => {
+          onChange={(value, event) => {
             change(value, event)
           }}
-          blur={() => {
+          onBlur={() => {
             console.log('blur')
           }}
-          focus={() => {
+          onFocus={() => {
             console.log('focus')
           }}
         />
