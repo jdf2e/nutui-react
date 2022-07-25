@@ -1,6 +1,6 @@
 .doc {
   &-header {
-    position: fixed;
+    //position: fixed;
     z-index: 2;
     top: 0;
     left: 0;
@@ -163,7 +163,8 @@
     .header {
       &-logo {
         .logo-link {
-          background: url('../../assets/images/logo-header-white.png') no-repeat center/100%;
+          background: url('../../assets/images/logo-header-white.png') no-repeat
+            center/100%;
         }
         .logo-border {
           background: $theme-red-border;
@@ -241,7 +242,8 @@
     .header {
       &-logo {
         .logo-link {
-          background: url('../../assets/images/logo-header-red.png') no-repeat center/100%;
+          background: url('../../assets/images/logo-header-red.png') no-repeat
+            center/100%;
         }
         .logo-border {
           background: $theme-white-border;
@@ -319,7 +321,8 @@
     .header {
       &-logo {
         .logo-link {
-          background: url('../../assets/images/logo-header-red.png') no-repeat center/100%;
+          background: url('../../assets/images/logo-header-red.png') no-repeat
+            center/100%;
         }
         .logo-border {
           background: $theme-black-border;

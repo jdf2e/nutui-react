@@ -4,7 +4,8 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { Rate } from '../rate'
-const publicCls = 'nut-rate-item__icon nut-rate-item__icon--disabled nut-icon nutui-iconfont'
+const publicCls =
+  'nut-rate-item__icon nut-rate-item__icon--disabled nut-icon nutui-iconfont'
 test('spacing & count & modelValue & checkedIcon & uncheckedIcon & readonly & iconSize & activeColor & voidColor & change test', () => {
   const state = {
     voidColor: 'rgb(250, 104, 93)',
