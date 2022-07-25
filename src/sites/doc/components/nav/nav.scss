@@ -1,15 +1,20 @@
 .doc {
   &-nav {
-    position: fixed;
-    top: $doc-header-height + 50;
+    position: absolute;
+    top: $doc-header-height;
     left: 0;
     bottom: 0;
     z-index: 1;
     background: $white;
     width: 290px;
+    height: 100vh;
     border-right: 1px solid #eee;
     overflow: auto;
     padding-left: 35px;
+    &.fixed {
+      position: fixed;
+      top: 0;
+    }
     ol {
       &.introduce {
         padding-left: 5px;
@@ -29,10 +34,6 @@
         position: relative;
 
         &.active {
-        }
-      }
-      .selected {
-        li {
           &::before {
             position: absolute;
             content: '';
@@ -52,6 +53,7 @@
         li {
           padding-left: 29px;
           cursor: pointer;
+
           &:hover {
             a {
               color: $doc-default-color;
@@ -63,15 +65,16 @@
               color: $doc-default-color !important;
             }
 
+            &:link,
+            &:visited {
+              color: $title-color;
+            }
+
             &:hover {
               color: $doc-default-color;
               &:visited {
                 color: $doc-default-color;
               }
-            }
-            &:link,
-            &:visited {
-              color: $title-color;
             }
 
             height: 100%;

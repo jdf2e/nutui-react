@@ -1,16 +1,16 @@
-# Cell 单元格
+# Cell 單元格
 
-### 介绍
+### 介紹
 
-列表项，可组成列表。
+列表項，可組成列表。
 
-### 安装
+### 安裝
 
 ```javascript
 import { Cell, CellGroup } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 代碼演示
 
 ### 基本用法
 
@@ -22,17 +22,19 @@ import { Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const testClick = (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
-    console.log('点击事件')
+    console.log('點擊事件')
 }
   return (
     <>
-    <Cell title="我是标题" desc="描述文字" />
-    <Cell title="我是标题" subTitle="副标题描述" desc="描述文字" />
+    <Cell title="我是標題" desc="描述文字" />
+    <Cell title="我是標題" subTitle="副標題描述" desc="描述文字" />
     <Cell
-        title="点击测试"
-        click={(event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) =>
-        testClick(event)}
-     />
+        title="點擊測試"
+        click={(
+        event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+        ) => testClick(event)}
+    />
+    <Cell title="圓角設置0" roundRadius={0} />
     </>
   );
 };
@@ -41,7 +43,7 @@ export default App;
 
 :::
 
-### 直接使用
+### 尺寸設置 large
 
 :::demo
 
@@ -52,8 +54,34 @@ import { Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-    <Cell title="我是标题" desc="描述文字">
-      <div>自定义内容</div>
+    <Cell size="large" title="我是標題" desc="描述文字" />
+    <Cell
+        size="large"
+        title="我是標題"
+        subTitle="副標題描述"
+        desc="描述文字"
+    />
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 直接使用插槽
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+    <Cell>
+        <div>自定義內容</div>
     </Cell>
     </>
   );
@@ -63,7 +91,32 @@ export default App;
 
 :::
 
-### 链接 | 分组用法
+### 直接使用插槽(title slots)
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Cell
+        title={
+        <span>
+            Title <b style={{ color: 'red' }}>1</b>
+        </span>
+        }
+        desc="描述文字"
+    />
+  );
+};
+export default App;
+```
+
+:::
+
+### 鏈接 | 分組用法
 
 :::demo
 
@@ -74,10 +127,18 @@ import { CellGroup,Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-    <CellGroup title="链接 | 分组用法">
-      <Cell title="链接" isLink />
-      <Cell title="URL 跳转" desc="https://m.jd.com/" isLink url="https://m.jd.com/" />
-      <Cell title="路由跳转 ’/‘ " to="/" />
+    <CellGroup
+        title="鏈接 | 分組用法"
+        desc="使用 nut-cell-group 支持 title desc slots"
+    >
+        <Cell title="鏈接" isLink />
+        <Cell
+        title="URL 跳轉"
+        desc="https://jd.com"
+        isLink
+        url="https://jd.com"
+        />
+        <Cell title="路由跳轉 』/『 " to="/" />
     </CellGroup>
     </>
   );
@@ -87,7 +148,7 @@ export default App;
 
 :::
 
-### 自定义右侧箭头区域
+### 自定義右側箭頭區域
 
 :::demo
 
@@ -97,8 +158,8 @@ import { CellGroup,Cell,Switch } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <CellGroup title="自定义右侧箭头区域">
-      <Cell title="Switch" extra={<Switch checked />} />
+    <CellGroup title="自定義右側箭頭區域">
+      <Cell title="Switch" linkSlot={<Switch checked />} />
     </CellGroup>
   );
 };
@@ -107,17 +168,28 @@ export default App;
 
 :::
 
-### 单元格展示图标
+### 自定義左側 Icon 區域
 
 :::demo
 
 ```tsx
 import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import { CellGroup,Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Cell title="姓名" icon="my" desc="张三" isLink />
+    <CellGroup title="自定義左側 Icon 區域">
+        <Cell
+        title="圖片"
+        iconSlot={
+            <img
+            className="nut-icon"
+            alt=""
+            src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+            />
+        }
+        />
+    </CellGroup>
   );
 };
 export default App;
@@ -125,7 +197,7 @@ export default App;
 
 :::
 
-### 只展示 desc ，可通过 desc-text-align 调整内容位置
+### 單元格展示圖標
 
 :::demo
 
@@ -135,7 +207,45 @@ import { Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Cell descTextAlign="left" desc="张三" />
+    <Cell title="姓名" icon="my" desc="描述文案" isLink />
+  );
+};
+export default App;
+```
+
+:::
+
+### 只展示 desc ，可通過 desc-text-align 調整內容位置
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Cell descTextAlign="left" desc="描述文案" />
+  );
+};
+export default App;
+```
+
+:::
+
+### 垂直居中
+
+通過 `center` 屬性可以讓 Cell 的左右內容都垂直居中。
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+     <Cell center title="我是標題" subTitle="副標題描述" desc="描述文字" />
   );
 };
 export default App;
@@ -145,23 +255,40 @@ export default App;
 
 ## API
 
-### Prop
 
-| 字段            | 说明                                                                                         | 类型            | 默认值 |
-| --------------- | -------------------------------------------------------------------------------------------- | --------------- | ------ |
-| title           | 标题名称                                                                                     | String          | -      |
-| sub-title       | 左侧副标题                                                                                   | String          | -      |
-| desc            | 右侧描述                                                                                     | String          | -      |
-| desc-text-align | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String          | right  |
-| is-link         | 是否展示右侧箭头并开启点击反馈                                                               | Boolean         | false  |
-| icon            | 左侧 [图标名称](#/icon) 或图片链接                                                           | String          | -      |
-| url             | 点击后跳转的链接地址                                                                         | String          | -      |
-| to              | 点击后跳转的目标路由对象                                                                     | String          | -      |
-| replace         | 是否在跳转时替换当前页面历史                                                                 | Boolean         | false  |
-| extra           | 其他                                                                                         | React.ReactNode | -      |
+### CellGroup Prop
 
-### Event
+| 字段  | 說明     | 類型   | 默認值 |
+|-------|----------|--------|--------|
+| title | 分組標題 | String | -      |
+| desc  | 分組描述 | String | -      |
+| titleSlot        | 自定義`title`標題區域                         | React.ReactNode          | -  |
+| descSlot        | 自定義`desc`描述區域                         | React.ReactNode          | -  |
 
-| 名称  | 说明     | 回调参数                                                       |
+### Cell Prop
+
+| 字段                   | 說明                                                                                           | 類型             | 默認值 |
+|------------------------|------------------------------------------------------------------------------------------------|------------------|--------|
+| title                  | 標題名稱                      |  React.ReactNode           | -      |
+| subTitle              | 左側副標題                           |  React.ReactNode           | -      |
+| desc                   | 右側描述                                     | String      | -      |
+| descTextAlign | 右側描述文本對齊方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String | right  |
+| isLink                | 是否展示右側箭頭並開啟點擊反饋            | Boolean          | false  |
+| to      | 點擊後跳轉的目標路由對象 | String  | -      |
+| replace | 是否在跳轉時替換當前頁面歷史                             | Boolean          | false  |
+| roundRadius           | 圓角半徑                                      | String            | 6px    |
+| url     | 點擊後跳轉的鏈接地址                                         | String           | -      |
+| icon                   | 左側 [圖標名稱](#/icon) 或圖片鏈接              | String           | -      |
+| center        | 是否使內容垂直居中                                                                             | Boolean          | false  |
+| size        | 單元格大小，可選值為 `large`                           | String          | -  |
+| iconSlot        | 自定義左側`icon`區域                          | React.ReactNode          | -  |
+| linkSlot        | 自定義右側`link`區域                         | React.ReactNode          | -  |
+
+
+
+
+### Cell Event
+
+| 名稱  | 說明     | 回調參數                                                       |
 | ----- | -------- | -------------------------------------------------------------- |
-| click | 点击事件 | event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent> |
+| click | 點擊事件 | event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent> |

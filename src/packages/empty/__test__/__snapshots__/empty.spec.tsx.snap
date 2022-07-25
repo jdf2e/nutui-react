@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render description correctly 1`] = `
+<div>
+  <div
+    class="nut-empty "
+  >
+    <div
+      class="nut-empty__image"
+    >
+      <img
+        alt="empty"
+        class="img"
+        src="https://static-ftcms.jd.com/p/files/61a9e3183985005b3958672b.png"
+      />
+    </div>
+    <div
+      class="nut-empty__description"
+    >
+      暂无数据
+    </div>
+  </div>
+</div>
+`;

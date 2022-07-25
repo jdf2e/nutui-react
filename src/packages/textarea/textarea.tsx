@@ -19,9 +19,9 @@ export interface TextAreaProps {
   disabled?: boolean
   autosize?: boolean
   style?: CSSProperties
-  change?: (value: any, event: Event) => void
-  blur?: (event: Event) => void
-  focus?: (event: Event) => void
+  onChange?: (value: any, event: Event) => void
+  onBlur?: (event: Event) => void
+  onFocus?: (event: Event) => void
 }
 const defaultProps = {
   defaultValue: '',
@@ -35,7 +35,11 @@ const defaultProps = {
   autosize: false,
 } as TextAreaProps
 export const TextArea: FunctionComponent<
-  Partial<TextAreaProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<TextAreaProps> &
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      'onChange' | 'onBlur' | 'onFocus'
+    >
 > = (props) => {
   const { locale } = useConfig()
   const {
@@ -50,9 +54,9 @@ export const TextArea: FunctionComponent<
     disabled,
     autosize,
     style,
-    change,
-    blur,
-    focus,
+    onChange,
+    onBlur,
+    onFocus,
   } = { ...defaultProps, ...props }
 
   const textareaBem = bem('textarea')
@@ -74,29 +78,21 @@ export const TextArea: FunctionComponent<
       text.value = text.value.substring(0, Number(maxlength))
     }
     SetInputValue(text.value)
-    if (change) {
-      change(text.value, event)
-    }
+    onChange && onChange(text.value, event)
   }
 
   const textFocus = (event: Event) => {
     if (disabled) return
     if (readonly) return
-    if (focus) {
-      focus(event)
-    }
+    onFocus && onFocus(event)
   }
 
   const textBlur = (event: Event) => {
     if (disabled) return
     if (readonly) return
     const text = event.target as any
-    if (change) {
-      change(text.value, event)
-    }
-    if (blur) {
-      blur(event)
-    }
+    onChange && onChange(text.value, event)
+    onBlur && onBlur(event)
   }
 
   return (
