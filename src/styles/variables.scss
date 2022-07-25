@@ -95,21 +95,33 @@ $button-plain-background-color: $white;
 
 // cell
 
-$cell-color: $title-color2;
-$cell-title-font: $font-size-2;
-$cell-title-desc-font: $font-size-1;
-$cell-desc-font: $font-size-2;
-$cell-desc-color: $disable-color;
-$cell-border-radius: 6px;
+$cell-color: $title-color2 !default;
+$cell-title-font: $font-size-2 !default;
+$cell-title-desc-font: $font-size-1 !default;
+$cell-desc-font: $font-size-2 !default;
+$cell-desc-color: $disable-color !default;
+$cell-border-radius: 6px !default;
+$cell-padding: 13px 16px !default;
+$cell-line-height: 20px !default;
+$cell-after-right: 16px !default;
+$cell-after-border-bottom: 2px solid #f5f6f7 !default;
+$cell-default-icon-margin: 0 4px 0 0px !default;
+$cell-large-title-font: $font-size-large !default;
+$cell-large-title-desc-font: $font-size-base !default;
+$cell-large-padding: 15px 16px !default;
+$cell-background: $white !default;
 
 // cell-group
 
-$cell-group-title-padding: 0 10px;
-$cell-group-title-color: #909ca4;
-$cell-group-title-font-size: $font-size-2;
-$cell-group-title-line-height: 20px;
-$cell-group-background-color: $white;
-
+$cell-group-title-padding: 0 10px !default;
+$cell-group-title-color: #909ca4 !default;
+$cell-group-title-font-size: $font-size-2 !default;
+$cell-group-title-line-height: 20px !default;
+$cell-group-desc-padding: 0 10px !default;
+$cell-group-desc-color: #909ca4 !default;
+$cell-group-desc-font-size: $font-size-1 !default;
+$cell-group-desc-line-height: 16px !default;
+$cell-group-background-color: $white !default;
 // icon
 
 $icon-height: 20px;
@@ -431,6 +443,10 @@ $indicator-size: 18px !default;
 $indicator-dot-size: calc($indicator-size / 3) !default;
 $indicator-border-size: $indicator-size + 2 !default;
 $indicator-number-font-size: 10px !default;
+$indicator-dot-margin: 4px !default;
+$indicator-dot-vertical-margin: 4px !default;
+$indicator-dot-first-margin: 0px !default;
+$indicator-dot-last-margin: 0px !default;
 
 // circleProgress
 $circleprogress-primary-color: $primary-color !default;

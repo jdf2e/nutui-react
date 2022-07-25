@@ -6,7 +6,7 @@ import { Switch } from '../../switch/switch'
 
 const classPrefix = `nut-avatar`
 
-test('prop title desc subtitle', () => {
+test('prop title desc subtitle test', () => {
   const { getByTestId, container } = render(
     <>
       <Cell
@@ -17,17 +17,23 @@ test('prop title desc subtitle', () => {
       />
     </>
   )
-  expect(container).toContainHTML(
-    '<div class="nut-cell__title"><div class="nut-cell__maintitle">我是标题</div><div class="nut-cell__subtitle">副标题描述</div></div><div class="nut-cell__desc">描述文字</div>'
+  expect(container.querySelector('.nut-cell__maintitle')?.innerHTML).toBe(
+    '我是标题'
   )
-  expect(getByTestId('prop')).toMatchSnapshot()
+  expect(container.querySelector('.nut-cell__subtitle')?.innerHTML).toBe(
+    '副标题描述'
+  )
+  expect(container.querySelector('.nut-cell__value')?.innerHTML).toBe(
+    '描述文字'
+  )
+  expect(container).toMatchSnapshot()
 })
 
 test('prop desc-text-align left', () => {
   const { container } = render(
     <Cell data-testid="prop" descTextAlign="left" desc="张三" />
   )
-  expect(container.querySelector('.nut-cell__desc')).toHaveAttribute(
+  expect(container.querySelector('.nut-cell__value')).toHaveAttribute(
     'style',
     'text-align: left; flex: 1;'
   )
@@ -65,9 +71,9 @@ test('slot default test', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('slot extra', () => {
+test('slot linkSlot', () => {
   const { container } = render(
-    <Cell title="Switch" extra={<Switch checked />} />
+    <Cell title="Switch" linkSlot={<Switch checked />} />
   )
   expect(container.querySelector('.nut-switch')).toBeInTheDocument()
   expect(container).toMatchSnapshot()

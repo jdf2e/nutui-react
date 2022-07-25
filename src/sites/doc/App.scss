@@ -2,16 +2,55 @@
   background: $doc-default-color;
   color: #fff;
 }
+
+$doc-title-height: 137px;
+
 #doc {
   background: #fff;
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: $doc-header-height;
+  //padding-top: $doc-header-height;
 }
 
 .doc {
+  &-title {
+    width: 100%;
+    height: $doc-title-height;
+    z-index: 2;
+    &-position {
+      top: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px;
+      // line-height: 56px;
+      border-bottom: 1px solid #eee;
+      background: #fff;
+      visibility: visible;
+      opacity: 1;
+      // transition: opacity 0.8s linear, visibility 0.8s linear;
+      transition: opacity 0.8s;
+      &.fixed {
+        width: calc(100% - 290px);
+        position: fixed;
+        padding: 24px 48px;
+        .title {
+          font-size: 24px;
+          font-weight: bold;
+        }
+      }
+      &.hidden {
+        visibility: hidden;
+        opacity: 0;
+      }
+      .title {
+        font-size: 40px;
+        font-weight: bold;
+      }
+    }
+  }
   &-content {
     margin-left: 290px;
     display: flex;
@@ -19,6 +58,9 @@
 
     &-document {
       min-height: 800px;
+      .markdown-body {
+        min-height: 600px;
+      }
     }
     &-tabs {
       position: absolute;

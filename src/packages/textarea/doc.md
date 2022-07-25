@@ -63,6 +63,6 @@ const [value1, UpdateValue1] = useState('')
 
 | 名称   | 说明           | 回调参数 |
 | ------ | -------------- | -------- |
-| change | 输入内容时触发 | val      |
-| focus  | 聚焦时触发     | val      |
-| blur   | 失焦时触发     | val      |
+| onChange | 输入内容时触发 | val      |
+| onFocus  | 聚焦时触发     | val      |
+| onBlur   | 失焦时触发     | val      |

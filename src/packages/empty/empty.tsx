@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import bem from '@/utils/bem'
+import { useConfig } from '@/packages/configprovider'
 
 type statusOptions = {
   [key: string]: string
@@ -18,6 +19,7 @@ export interface EmptyProps {
   description: ReactNode
   className: string
 }
+
 const defaultProps = {
   description: '无内容',
   image: 'empty',
@@ -28,6 +30,8 @@ const defaultProps = {
 export const Empty: FunctionComponent<
   Partial<EmptyProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const { locale } = useConfig()
+  defaultProps.description = locale.noData || defaultProps.description
   const { image, imageSize, description, children, className, ...rest } = {
     ...defaultProps,
     ...props,
