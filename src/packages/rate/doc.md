@@ -85,6 +85,24 @@ export default App;
 
 ```
 :::
+### 最少选中数量（支持半星）  
+
+:::demo
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+    <Rate count="5" modelValue="2" minimizeValue="3"/>
+    </>
+  );
+};  
+export default App;
+
+```
+:::
 ### 自定义颜色 
 
 :::demo
@@ -187,6 +205,7 @@ export default App;
 |----------------|-------------------------------------------|---------|-------------|
 | modelValue        | 当前 star 数不能大于count | Number  | -           |
 | count          | star 总数                                 | Number  | 5           |
+| minimizeValue  | 最少选中star数量                           | Number  | 0           |
 | iconSize      | star 大小                                 | Number  | 18          |
 | activeColor   | 图标选中颜色                              | String  | #fa200c     |
 | voidColor     | 图标未选中颜色                            | String  | #ccc        |

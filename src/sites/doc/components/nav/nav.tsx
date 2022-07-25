@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { nav } from '@/config.json'
 import { NavLink } from 'react-router-dom'
 import './nav.scss'
@@ -7,8 +7,20 @@ import useLocale from '@/sites/assets/locale/uselocale'
 const Nav = () => {
   const [cNav] = useState<any>(nav)
   const [lang] = useLocale()
+  const [fixed, setFixed] = useState(false)
+  const scrollNav = () => {
+    let top = document.documentElement.scrollTop
+    if (top > 64) {
+      setFixed(true)
+    } else {
+      setFixed(false)
+    }
+  }
+  useEffect(() => {
+    document.addEventListener('scroll', scrollNav)
+  }, [])
   return (
-    <div className="doc-nav">
+    <div className={`doc-nav ${fixed ? 'fixed' : ''}`}>
       <ol>
         {cNav.map((cn: any) => {
           return (
