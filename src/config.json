@@ -18,9 +18,9 @@
         "show": true
       },
       {
-        "name": "international",
+        "name": "international-react",
         "cName": "国际化",
-        "show": false
+        "show": true
       },
       {
         "name": "resource",
@@ -100,6 +100,17 @@
           "show": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008"
+        },
+        {
+          "version": "1.0.0",
+          "name": "ConfigProvider",
+          "type": "component",
+          "cName": "全局配置",
+          "desc": "可以配置多语言等全局属性",
+          "sort": 16,
+          "show": true,
+          "exportEmpty": true,
+          "author": "hanyuxinting"
         }
       ]
     },
@@ -236,6 +247,16 @@
           "exportEmpty": true,
           "desc": "选项卡切换子组件",
           "author": "张晶发"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Indicator",
+          "type": "component",
+          "cName": "指示器",
+          "desc": "显示一个任务或流程的进度，常用于开通流程。",
+          "sort": 16,
+          "show": true,
+          "author": "liukun"
         }
       ]
     },
@@ -667,17 +688,6 @@
           "sort": 16,
           "show": true,
           "author": "liukun"
-        },
-        {
-          "version": "1.0.0",
-          "name": "ConfigProvider",
-          "type": "component",
-          "cName": "全局配置组件",
-          "desc": "可以配置多语言等全局属性",
-          "sort": 16,
-          "show": false,
-          "exportEmpty": true,
-          "author": "hanyuxinting"
         },
         {
           "version": "1.0.0",
