@@ -19,10 +19,14 @@ const DatePickerDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>每列不显示中文</h2>
-        <Cell title="日期选择" desc={desc1} onClick={() => setShow1(true)} />
-        <h2>限制开始结束时间</h2>
-        <Cell title="日期选择" desc={desc2} onClick={() => setShow2(true)} />
+        <h2>选择日期</h2>
+        <Cell title="显示中文" desc={desc1} onClick={() => setShow1(true)} />
+        <h2>选择月日</h2>
+        <Cell
+          title="限制开始结束时间"
+          desc={desc2}
+          onClick={() => setShow2(true)}
+        />
         <h2>限制开始结束时间（有默认值）</h2>
         <Cell
           title="日期时间选择"
@@ -37,21 +41,23 @@ const DatePickerDemo = () => {
         <DatePicker
           title="日期选择"
           visible={show1}
+          isShowChinese
           onCloseDatePicker={() => setShow1(false)}
           onConfirmDatePicker={(list) => setDesc1(list.join('-'))}
-          isShowChinese={false}
         />
 
         <DatePicker
           title="日期选择"
-          minDate={minDate}
-          maxDate={maxDate}
+          minDate={new Date(2022, 0, 1)}
+          maxDate={new Date(2022, 7, 1)}
+          type="month-day"
           visible={show2}
+          isShowChinese
           onCloseDatePicker={() => setShow2(false)}
           onConfirmDatePicker={(list) => setDesc2(list.join('-'))}
         />
 
-        <DatePicker
+        {/* <DatePicker
           title="日期时间选择"
           minDate={minDate}
           maxDate={maxDate}
@@ -59,9 +65,9 @@ const DatePickerDemo = () => {
           type="datetime"
           onCloseDatePicker={() => setShow3(false)}
           onConfirmDatePicker={(list) => setDesc3(list.join('-'))}
-        />
+        /> */}
 
-        <DatePicker
+        {/* <DatePicker
           title="时间选择"
           type="time"
           minDate={minDate}
@@ -69,9 +75,9 @@ const DatePickerDemo = () => {
           visible={show4}
           onCloseDatePicker={() => setShow4(false)}
           onConfirmDatePicker={(list) => setDesc4(list.join('-'))}
-        />
+        /> */}
 
-        <DatePicker
+        {/* <DatePicker
           title="时间选择"
           type="time"
           minDate={minDate}
@@ -80,7 +86,7 @@ const DatePickerDemo = () => {
           minuteStep={5}
           onCloseDatePicker={() => setShow5(false)}
           onConfirmDatePicker={(list) => setDesc5(list.join('-'))}
-        />
+        /> */}
       </div>
     </>
   )
