@@ -1,5 +1,19 @@
+.flex-content {
+  line-height: 40px;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  background: #ff8881;
+  &.flex-content-light {
+    background: #ffc7c4;
+  }
+  &.flex-content-height {
+    height: 50px;
+  }
+}
 .nut-row {
   width: 100%;
+  overflow: hidden;
   &:after {
     display: block;
     height: 0;
