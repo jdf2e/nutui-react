@@ -43,7 +43,7 @@ export const Video: FunctionComponent<
   const rootRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    // init()
+    init()
   }, [])
 
   const init = () => {
