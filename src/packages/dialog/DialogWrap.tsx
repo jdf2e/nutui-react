@@ -11,6 +11,7 @@ interface DialogWrapProps {
   closeOnClickOverlay?: boolean
   onCancel?: () => void
   onClosed?: () => void
+  onClickSelf?: () => void
 }
 
 export const DialogWrap: FunctionComponent<
