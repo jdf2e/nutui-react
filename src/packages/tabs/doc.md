@@ -323,6 +323,7 @@ export default App;
 | titleGutter  | 标签间隙                                      | number,string | 0          |
 | titleNode    | 自定义导航区域                                 | () => JSX.Element[] | 0          |
 | size         | 标签栏字体尺寸大小 可选值 large normal small | string        | normal     |
+| autoHeight         | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean        | false     |
 
 ## Tabs Children
 
