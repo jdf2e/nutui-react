@@ -9,10 +9,10 @@ import './index.scss'
 
 const navs = pkg.nav
 const Index = () => {
-  const gotoNext = () => {
+  const gotoNext = (name: string, enName: string) => {
     // 跳转到目的页面，打开新页面
     Taro.navigateTo({
-      url: '/base/pages/button/index',
+      url: `/${enName}/pages/${name.toLocaleLowerCase()}/index`,
     })
   }
 
@@ -34,7 +34,10 @@ const Index = () => {
                 {nav.packages.map((com) =>
                   com.show && com.taro ? (
                     <li key={com.name}>
-                      <a key={com.name} onClick={() => gotoNext()}>
+                      <a
+                        key={com.name}
+                        onClick={() => gotoNext(com.name, nav.enName)}
+                      >
                         {com.name}
                       </a>
                     </li>
