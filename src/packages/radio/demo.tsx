@@ -147,10 +147,18 @@ const RadioDemo = () => {
         <CellGroup>
           <Cell>
             <RadioGroup value="1">
-              <Radio value="1" iconName="checklist" icon-active-name="checklist">
+              <Radio
+                value="1"
+                iconName="checklist"
+                icon-active-name="checklist"
+              >
                 {translated['70ffa5d8']}
               </Radio>
-              <Radio value="2" iconName="checklist" icon-active-name="checklist">
+              <Radio
+                value="2"
+                iconName="checklist"
+                icon-active-name="checklist"
+              >
                 {translated['70ffa5d8']}
               </Radio>
             </RadioGroup>

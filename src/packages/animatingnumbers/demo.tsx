@@ -5,7 +5,11 @@ const AnimatingNumbersDemo = () => {
   const [endNumber, setEndNumer] = useState('1570.99')
   useEffect(() => {
     const timer = setInterval(() => {
-      setEndNumer(`${Math.floor(Math.random() * 999999)}.${Math.floor(Math.random() * 89 + 10)}`)
+      setEndNumer(
+        `${Math.floor(Math.random() * 999999)}.${Math.floor(
+          Math.random() * 89 + 10
+        )}`
+      )
     }, 30000)
     return () => {
       clearInterval(timer)

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, waitFor } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { trigger, triggerDrag } from '@/utils/test/event'
 import '@testing-library/jest-dom'
 
@@ -8,7 +8,7 @@ import { Infiniteloading } from '../infiniteloading'
 test('pull base', () => {
   const refresh = jest.fn()
   const { container } = render(
-    <Infiniteloading isOpenRefresh={true} loadMoreTxt="没有更多" refresh={refresh} />
+    <Infiniteloading isOpenRefresh loadMoreTxt="没有更多" refresh={refresh} />
   )
   const track = container.querySelector('.nut-infiniteloading')
 
@@ -57,7 +57,11 @@ test('infiniteloading base', () => {
       }, 500)
     }
     return (
-      <Infiniteloading loadMoreTxt="没有更多" loadMore={refreshLoadMore} hasMore={refreshHasMore} />
+      <Infiniteloading
+        loadMoreTxt="没有更多"
+        loadMore={refreshLoadMore}
+        hasMore={refreshHasMore}
+      />
     )
   }
   const { container } = render(<App />)

@@ -29,7 +29,7 @@ const App = () => {
   }
   return (
      <Cell>
-        <CountDown endTime={stateRef.current.endTime} onEnd={onEnd}></CountDown>
+        <CountDown endTime={stateRef.current.endTime} onEnd={onEnd} />
     </Cell>
   );
 };
@@ -52,7 +52,7 @@ const App = () => {
   })
   return (
      <Cell>
-        <CountDown endTime={stateRef.current.endTime} showDays={true} />
+        <CountDown endTime={stateRef.current.endTime} showDays />
     </Cell>
   );
 };
@@ -99,7 +99,7 @@ const App = () => {
   })
   return (
      <Cell>
-        <CountDown showDays={true} showPlainText={true} endTime={stateRef.current.endTime} />
+        <CountDown showDays showPlainText endTime={stateRef.current.endTime} />
     </Cell>
   );
 };
@@ -132,7 +132,7 @@ const App = () => {
   }, [])
   return (
     <Cell>
-        <CountDown showPlainText={true} endTime={asyncEnd} />
+        <CountDown showPlainText endTime={asyncEnd} />
     </Cell>
   );
 };
@@ -194,6 +194,7 @@ export default App;
 ```tsx
 import React, {  useRef, useState } from 'react'
 import { Cell, CountDown } from '@nutui/nutui-react';
+
 const [resetTime, setResetTime] = useState({
     d: '1',
     h: '00',

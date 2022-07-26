@@ -18,9 +18,9 @@
         "show": true
       },
       {
-        "name": "international",
+        "name": "international-react",
         "cName": "国际化",
-        "show": false
+        "show": true
       },
       {
         "name": "resource",
@@ -103,23 +103,14 @@
         },
         {
           "version": "1.0.0",
-          "name": "TimePannel",
+          "name": "ConfigProvider",
           "type": "component",
-          "cName": "配送时间",
-          "desc": "配送时间日期选择",
-          "sort": 7,
-          "show": false,
-          "author": "zhaoqian16"
-        },
-        {
-          "version": "1.0.0",
-          "name": "TimeDetail",
-          "type": "component",
-          "cName": "配送时间",
-          "desc": "配送时间上门时间选择",
-          "sort": 8,
-          "show": false,
-          "author": "zhaoqian16"
+          "cName": "全局配置",
+          "desc": "可以配置多语言等全局属性",
+          "sort": 16,
+          "show": true,
+          "exportEmpty": true,
+          "author": "hanyuxinting"
         }
       ]
     },
@@ -256,6 +247,16 @@
           "exportEmpty": true,
           "desc": "选项卡切换子组件",
           "author": "张晶发"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Indicator",
+          "type": "component",
+          "cName": "指示器",
+          "desc": "显示一个任务或流程的进度，常用于开通流程。",
+          "sort": 16,
+          "show": true,
+          "author": "liukun"
         }
       ]
     },
@@ -690,14 +691,13 @@
         },
         {
           "version": "1.0.0",
-          "name": "ConfigProvider",
+          "name": "VirtualList",
           "type": "component",
-          "cName": "全局配置组件",
-          "desc": "可以配置多语言等全局属性",
-          "sort": 16,
-          "show": false,
-          "exportEmpty": true,
-          "author": "hanyuxinting"
+          "cName": "虚拟列表",
+          "desc": "长列表渲染",
+          "sort": 20,
+          "show": true,
+          "author": "hx"
         }
       ]
     },
@@ -744,6 +744,26 @@
           "sort": 6,
           "show": true,
           "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "TimePannel",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "配送时间日期选择",
+          "sort": 7,
+          "show": false,
+          "author": "zhaoqian16"
+        },
+        {
+          "version": "1.0.0",
+          "name": "TimeDetail",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "配送时间上门时间选择",
+          "sort": 8,
+          "show": false,
+          "author": "zhaoqian16"
         },
         {
           "version": "1.0.0",

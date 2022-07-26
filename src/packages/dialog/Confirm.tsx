@@ -25,7 +25,10 @@ export const normalizeConfig = (_config: ConfirmProps): ConfirmProps => {
   return _config
 }
 
-function confirm(config: ConfirmProps, renderFunc?: (props: ConfirmProps) => void) {
+function confirm(
+  config: ConfirmProps,
+  renderFunc?: (props: ConfirmProps) => void
+) {
   const div = document.createElement('div')
   document.body.appendChild(div)
 

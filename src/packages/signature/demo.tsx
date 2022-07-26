@@ -39,7 +39,12 @@ const SignatureDemo = () => {
           Tips: 点击确认按钮,下方显示签名图片
         </p>
         <h2>修改颜色和签字粗细</h2>
-        <Signature lineWidth={4} strokeStyle="green" confirm={confirm1} clear={clear1} />
+        <Signature
+          lineWidth={4}
+          strokeStyle="green"
+          confirm={confirm1}
+          clear={clear1}
+        />
         <p className="demo-tips demo2" style={demoStyles}>
           Tips: 点击确认按钮,下方显示签名图片
         </p>

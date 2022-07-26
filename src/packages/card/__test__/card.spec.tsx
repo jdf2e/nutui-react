@@ -9,7 +9,8 @@ test('props test', () => {
   const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    title:
+      '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
     vipPrice: '378',
     shopDesc: '自营',
@@ -29,13 +30,23 @@ test('props test', () => {
   )
   const priceDoms = container.querySelectorAll('.nut-price__big')
   const tagDoms = container.querySelectorAll('.nut-tag')
-  expect(container.querySelector('.nut-card__left img')?.getAttribute('src')).toBe(state.imgUrl)
-  expect(container.querySelector('.nut-card__right__title')).toContainHTML(state.title)
+  expect(
+    container.querySelector('.nut-card__left img')?.getAttribute('src')
+  ).toBe(state.imgUrl)
+  expect(container.querySelector('.nut-card__right__title')).toContainHTML(
+    state.title
+  )
   expect(priceDoms[0].innerHTML).toBe(state.price)
   expect(priceDoms[1].innerHTML).toBe(state.vipPrice)
-  expect(tagDoms[0]).toContainHTML(`<span class="text">${state.shopDesc}</span>`)
-  expect(tagDoms[1]).toContainHTML(`<span class="text">${state.delivery}</span>`)
-  expect(container.querySelector('.nut-card__right__shop__name')).toContainHTML(state.shopName)
+  expect(tagDoms[0]).toContainHTML(
+    `<span class="text">${state.shopDesc}</span>`
+  )
+  expect(tagDoms[1]).toContainHTML(
+    `<span class="text">${state.delivery}</span>`
+  )
+  expect(container.querySelector('.nut-card__right__shop__name')).toContainHTML(
+    state.shopName
+  )
   expect(container).toMatchSnapshot()
 })
 
@@ -43,7 +54,8 @@ test('prolistTpl slot test', () => {
   const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    title:
+      '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
     vipPrice: '378',
     shopDesc: '自营',
@@ -81,7 +93,8 @@ test('originTpl slot test', () => {
   const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    title:
+      '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
     vipPrice: '378',
     shopDesc: '自营',
@@ -104,9 +117,9 @@ test('originTpl slot test', () => {
       originTpl={<img src={plusIconUrl} alt="" />}
     />
   )
-  expect(container.querySelector('.nut-card__right__price img')?.getAttribute('src')).toBe(
-    plusIconUrl
-  )
+  expect(
+    container.querySelector('.nut-card__right__price img')?.getAttribute('src')
+  ).toBe(plusIconUrl)
   expect(container).toMatchSnapshot()
 })
 
@@ -114,7 +127,8 @@ test('shopTagTpl slot test', () => {
   const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    title:
+      '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
     vipPrice: '378',
     shopDesc: '自营',
@@ -144,7 +158,8 @@ test('footerTpl slot test', () => {
   const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    title:
+      '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
     price: '388',
     vipPrice: '378',
     shopDesc: '自营',
@@ -164,8 +179,10 @@ test('footerTpl slot test', () => {
       footerTpl={<div style={{ fontSize: '12px' }}>自定义</div>}
     />
   )
-  expect(container.querySelectorAll('.nut-card__right__shop div')[1]?.getAttribute('style')).toBe(
-    'font-size: 12px;'
-  )
+  expect(
+    container
+      .querySelectorAll('.nut-card__right__shop div')[1]
+      ?.getAttribute('style')
+  ).toBe('font-size: 12px;')
   expect(container).toMatchSnapshot()
 })

@@ -1,5 +1,6 @@
-import React, { FunctionComponent, useRef, useEffect, useState, ReactNode } from 'react'
+import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import bem from '@/utils/bem'
+import { useConfig } from '@/packages/configprovider'
 
 type statusOptions = {
   [key: string]: string
@@ -18,6 +19,7 @@ export interface EmptyProps {
   description: ReactNode
   className: string
 }
+
 const defaultProps = {
   description: '无内容',
   image: 'empty',
@@ -25,54 +27,59 @@ const defaultProps = {
   className: '',
 } as EmptyProps
 
-export const Empty: FunctionComponent<Partial<EmptyProps> & React.HTMLAttributes<HTMLDivElement>> =
-  (props) => {
-    const { image, imageSize, description, children, className, ...rest } = {
-      ...defaultProps,
-      ...props,
-    }
-
-    const [imgStyle, setImgStyle] = useState<any>({})
-    const b = bem('empty')
-
-    let imageNode = image
-    if (typeof image === 'string') {
-      const isHttpUrl =
-        image.startsWith('https://') || image.startsWith('http://') || image.startsWith('//')
-      const imageUrl = isHttpUrl ? image : defaultStatus[image]
-      imageNode = <img className="img" src={imageUrl} alt="empty" />
-    }
-    useEffect(() => {
-      setImgStyle(() => {
-        if (!imageSize) {
-          return {}
-        }
-        if (typeof imageSize === 'number') {
-          return {
-            width: `${imageSize}px`,
-            height: `${imageSize}px`,
-          }
-        }
-        return {
-          width: imageSize,
-          height: imageSize,
-        }
-      })
-    }, [imageSize])
-    return (
-      <div className={`${b()} ${className}`} {...rest}>
-        <div className={b('image')} style={imgStyle}>
-          {imageNode}
-        </div>
-        {typeof description === 'string' ? (
-          <div className={b('description')}>{description}</div>
-        ) : (
-          { description }
-        )}
-        {children}
-      </div>
-    )
+export const Empty: FunctionComponent<
+  Partial<EmptyProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
+  const { locale } = useConfig()
+  defaultProps.description = locale.noData || defaultProps.description
+  const { image, imageSize, description, children, className, ...rest } = {
+    ...defaultProps,
+    ...props,
   }
+
+  const [imgStyle, setImgStyle] = useState<any>({})
+  const b = bem('empty')
+
+  let imageNode = image
+  if (typeof image === 'string') {
+    const isHttpUrl =
+      image.startsWith('https://') ||
+      image.startsWith('http://') ||
+      image.startsWith('//')
+    const imageUrl = isHttpUrl ? image : defaultStatus[image]
+    imageNode = <img className="img" src={imageUrl} alt="empty" />
+  }
+  useEffect(() => {
+    setImgStyle(() => {
+      if (!imageSize) {
+        return {}
+      }
+      if (typeof imageSize === 'number') {
+        return {
+          width: `${imageSize}px`,
+          height: `${imageSize}px`,
+        }
+      }
+      return {
+        width: imageSize,
+        height: imageSize,
+      }
+    })
+  }, [imageSize])
+  return (
+    <div className={`${b()} ${className}`} {...rest}>
+      <div className={b('image')} style={imgStyle}>
+        {imageNode}
+      </div>
+      {typeof description === 'string' ? (
+        <div className={b('description')}>{description}</div>
+      ) : (
+        { description }
+      )}
+      {children}
+    </div>
+  )
+}
 
 Empty.defaultProps = defaultProps
 Empty.displayName = 'NutEmpty'

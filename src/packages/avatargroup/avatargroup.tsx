@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useRef } from 'react'
+import classNames from 'classnames'
 import { AvatarContext } from './AvatarContext'
 import bem from '@/utils/bem'
-import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 
 export interface AvatarGroupProps {

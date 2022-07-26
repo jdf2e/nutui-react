@@ -1,16 +1,14 @@
-# Steps 步骤条
+# Steps 步驟條
 
-### 介绍
+### 介紹
 
-拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。
+拆分展示某項流程的步驟，引導用戶按流程完成任務或向用戶展示當前狀態。
 
-### 安装
+### 安裝
 
 ```ts
 import { Steps } from '@nutui/nutui-react';
 ```
-
-## 代码演示
 
 ### 基本用法
 
@@ -39,9 +37,9 @@ const App = () => {
   return (
     <>
       <Steps current={stepState.current1}>
-        <Step activeIndex={1} title="步骤一">1</Step>
-        <Step activeIndex={2} title="步骤二">2</Step>
-        <Step activeIndex={3} title="步骤三">3</Step>
+        <Step activeIndex={1} title="步驟一">1</Step>
+        <Step activeIndex={2} title="步驟二">2</Step>
+        <Step activeIndex={3} title="步驟三">3</Step>
       </Steps>
       <div className="steps-button" style={{ textAlign: 'center' }}>
         <Button type="danger" onClick={() => handleStep('current1')}>
@@ -55,7 +53,7 @@ export default App;
 ```
 :::
 
-### 标题和描述信息
+### 標題和描述信息
 
 :::demo
 ```tsx
@@ -82,11 +80,11 @@ const App = () => {
   return (
     <>
       <Steps current={stepState.current2}>
-        <Step activeIndex={1} title="步骤一" content="步骤描述">
+        <Step activeIndex={1} title="步驟一" content="步驟描述">
           1
         </Step>
-        <Step activeIndex={2} title="步骤二" content="步骤描述" />
-        <Step activeIndex={3} title="步骤三" content="步骤描述" />
+        <Step activeIndex={2} title="步驟二" content="步驟描述" />
+        <Step activeIndex={3} title="步驟三" content="步驟描述" />
       </Steps>
       <div className="steps-button" style={{ marginTop: '10px', textAlign: 'center' }}>
         <Button type="danger" onClick={() => handleStep('current2')}>
@@ -100,7 +98,7 @@ export default App;
 ```
 :::
 
-### 自定义图标
+### 自定義圖標
 
 :::demo
 ```tsx
@@ -130,10 +128,10 @@ const App = () => {
         <Step activeIndex={1} title="已完成" icon="service">
           1
         </Step>
-        <Step activeIndex={2} title="进行中" icon="people">
+        <Step activeIndex={2} title="進行中" icon="people">
           2
         </Step>
-        <Step activeIndex={3} title="未开始" icon="location2">
+        <Step activeIndex={3} title="未開始" icon="location2">
           3
         </Step>
       </Steps>
@@ -144,7 +142,7 @@ export default App;
 ```
 :::
 
-### 竖向步骤条
+### 豎向步驟條
 :::demo
 ```tsx
 import React, { useState } from "react";
@@ -170,16 +168,16 @@ const App = () => {
   return (
     <div className="steps-wrapper" style={{ height: '300px', padding: '15px 30px' }}>
       <Steps direction="vertical" current={2}>
-        <Step activeIndex={1} title="已完成" content="您的订单已经打包完成，商品已发出">
+        <Step activeIndex={1} title="已完成" content="您的訂單已經打包完成，商品已發出">
           1
         </Step>
-        <Step activeIndex={2} title="进行中" content="您的订单正在配送途中">
+        <Step activeIndex={2} title="進行中" content="您的訂單正在配送途中">
           2
         </Step>
         <Step
           activeIndex={3}
-          title="未开始"
-          content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
+          title="未開始"
+          content="收貨地址為：北京市經濟技術開發區科創十一街18號院京東大廈"
         >
           3
         </Step>
@@ -191,7 +189,7 @@ export default App;
 ```
 :::
 
-### 点状步骤和垂直方向
+### 點狀步驟和垂直方向
 :::demo
 ```tsx
 import React, { useState } from "react";
@@ -217,19 +215,19 @@ const App = () => {
   return (
     <div className="steps-wrapper" style={{ height: '300px', padding: '15px 30px' }}>
       <Steps direction="vertical" progressDot current={2}>
-        <Step activeIndex={1} title="已完成" content="您的订单已经打包完成，商品已发出">
+        <Step activeIndex={1} title="已完成" content="您的訂單已經打包完成，商品已發出">
           1
         </Step>
-        <Step activeIndex={2} title="进行中" content="您的订单正在配送途中">
+        <Step activeIndex={2} title="進行中" content="您的訂單正在配送途中">
           2
         </Step>
         <Step
           activeIndex={3}
-          title="未开始"
+          title="未開始"
           renderContent={() => (
             <>
-              <p>收货地址为：</p>
-              <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
+              <p>收貨地址為：</p>
+              <p>北京市經濟技術開發區科創十一街18號院京東大廈</p>
             </>
           )}
         >
@@ -250,21 +248,21 @@ export default App;
 
 #### Steps
 
-| 参数                   | 说明                                                        | 类型           | 默认值      |
+| 參數                   | 說明                                                        | 類型           | 默認值      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| direction	             | 	显示方向，`horizontal`,`vertical`  | String        | 'horizontal'  | 
-| current	               | 	当前所在的步骤           | Number        | 0      |
-| progressDot            |  点状步骤条     | Boolean | false         |
+| direction	             | 	顯示方向，`horizontal`,`vertical`  | String        | 'horizontal'  | 
+| current	               | 	當前所在的步驟           | Number        | 0      |
+| progressDot            |  點狀步驟條     | Boolean | false         |
 
 
 
 #### Step
 
-| 参数           | 说明                   | 类型     | 默认值      |
+| 參數           | 說明                   | 類型     | 默認值      |
 | ---------------- | ---------------------- | ------------ | ----------- |
-| title            | 流程步骤的标题         | String | '' |
-| content          | 流程步骤的描述性文字       | String | '' |
-| icon          | 图标       | String | '' |
-| size          | 图标尺寸大小       | String | '' |
-| activeIndex          | 流程步骤的索引       | Number | 0 |
-| renderContent         | 流程步骤的描述性文字的html结构      | React.ReactNode | - |
+| title            | 流程步驟的標題         | String | '' |
+| content          | 流程步驟的描述性文字       | String | '' |
+| icon          | 圖標       | String | '' |
+| size          | 圖標尺寸大小       | String | '' |
+| activeIndex          | 流程步驟的索引       | Number | 0 |
+| renderContent         | 流程步驟的描述性文字的html結構      | React.ReactNode | - |

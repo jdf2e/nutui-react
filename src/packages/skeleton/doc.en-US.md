@@ -1,18 +1,18 @@
-#  Skeleton组件
+#  Skeleton
 
-### 介绍
+### Intro
 
-在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果。
+Filling gray bitmap in the area to be loaded on the page is essentially the transition effect in the process of interface loading.
 
-### 安装
+### Install
 ``` ts
 import { Skeleton } from '@nutui/nutui-react';
 ```
 
 
-## 代码演示
+## Code demonstration
 
-### 基础用法
+### Basic usage
 
 :::demo
 ```tsx
@@ -30,7 +30,7 @@ export default App;
 ```
 :::
 
-### 传入多行
+### Incoming multiline
 
 :::demo
 ```tsx
@@ -48,7 +48,7 @@ export default App;
 ```
 :::
 
-### 显示头像
+### Show Faces
 
 :::demo
 ```tsx
@@ -66,7 +66,7 @@ export default App;
 ```
 :::
 
-### 标题段落圆角风格
+### Title paragraph fillet style
 
 :::demo
 ```tsx
@@ -84,7 +84,7 @@ export default App;
 ```
 :::
 
-### 显示子组件
+### Display subcomponents
 
 :::demo
 ```tsx
@@ -117,7 +117,6 @@ const DescStyle = {
 const App = () => {
   const [checked, setChecked] = useState(false)
   const changeStatus = (value: boolean, event: React.MouseEvent<Element, MouseEvent>) => {
-    console.log(`触发了change事件，开关状态：${value}`)
     setChecked(value)
   }
   return (
@@ -133,7 +132,7 @@ const App = () => {
             <div className="right-content" className={RightContentStyle}>
               <span className="title" className={TitleStyle}>NutUI-React</span>
               <div className="desc" className={DescStyle}>
-                一套京东风格的轻量级移动端React组件库，提供丰富的基础组件和业务组件，帮助开发者快速搭建移动应用。
+                A set of JD style lightweight mobile terminal Vue group library provides rich basic components and business components to help developers quickly build mobile applications.
               </div>
             </div>
           </div>
@@ -153,15 +152,15 @@ export default App;
 
 ### Prop  
 
-| 字段       | 说明                                             | 类型    | 默认值    |
+| Attribute       | Description                                             | Type    | Default    |
 |------------|-------------------------------------------------|---------|----------|
-| loading    | 是否显示骨架屏                                    | Boolean | `false`    | 
-| width       | 每行宽度                                        | Number  | 100 |
-| height      | 每行高度                                        | Number  | 100   |
-| animated    | 是否开启骨架屏动画                                | Boolean  | `false`  |
-| avatar      | 是否显示头像                                     | Boolean | `false`   |
-| avatarShape      | 头像形状：正方形/圆形                        | String | `round`   |
-| avatarSize       | 头像大小                                   | String | `50px`    |
-| round  | 标题/段落是否采用圆角风格                                | Boolean | `false`  |
-| row    | 设置段落行数                                           | Number | 1       |
-| title  | 是否显示段落标题                                        | Boolean | `false`   |
+| loading    | Whether to display skeleton screen                                    | Boolean | `false`    | 
+| width       | Width per row                                        | Number  | 100 |
+| height      | Height of each row                                        | Number  | 100   |
+| animated    | Whether to turn on skeleton screen animation                                | Boolean  | `false`  |
+| avatar      | Show avatar                                     | Boolean | `false`   |
+| avatarShape      | Avatar shape: square / round                        | String | `round`   |
+| avatarSize       | Avatar size                                   | String | `50px`    |
+| round  | Is the title / paragraph rounded                                | Boolean | `false`  |
+| row    | Set the number of paragraph lines                                           | Number | 1       |
+| title  | Show paragraph titles                                        | Boolean | `false`   |

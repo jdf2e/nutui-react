@@ -111,14 +111,28 @@ const CheckboxDemo = () => {
           />
         </Cell>
         <Cell className="nut-cell">
-          <Checkbox textPosition="right" label={translated['48b50759']} checked={false} />
+          <Checkbox
+            textPosition="right"
+            label={translated['48b50759']}
+            checked={false}
+          />
         </Cell>
         <h2>{translated['7db1a8b2']}</h2>
         <Cell className="nut-cell">
-          <Checkbox textPosition="right" label={translated.f3480b64} checked={false} disabled />
+          <Checkbox
+            textPosition="right"
+            label={translated.f3480b64}
+            checked={false}
+            disabled
+          />
         </Cell>
         <Cell className="nut-cell">
-          <Checkbox textPosition="right" label={translated.f4e46058} checked disabled />
+          <Checkbox
+            textPosition="right"
+            label={translated.f4e46058}
+            checked
+            disabled
+          />
         </Cell>
         <h2>{translated['8a2e2847']}</h2>
         <Cell className="nut-cell">
@@ -129,7 +143,11 @@ const CheckboxDemo = () => {
         </Cell>
         <h2>{translated['70ffa5d8']}</h2>
         <Cell className="nut-cell">
-          <Checkbox checked={false} iconName="checklist" iconActiveName="checklist">
+          <Checkbox
+            checked={false}
+            iconName="checklist"
+            iconActiveName="checklist"
+          >
             {translated['70ffa5d8']}
           </Checkbox>
         </Cell>
@@ -200,7 +218,13 @@ const CheckboxDemo = () => {
             ref={checkboxgroup2Ref}
             checkedValue={checkboxgroup2}
             onChange={(value) => {
-              Toast.text(`${value.length === 2 ? translated['3a5040b6'] : translated.f4d4bae5}`)
+              Toast.text(
+                `${
+                  value.length === 2
+                    ? translated['3a5040b6']
+                    : translated.f4d4bae5
+                }`
+              )
             }}
           >
             <Checkbox checked={false} label="1">
