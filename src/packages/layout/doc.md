@@ -89,7 +89,7 @@ const App = () => {
     </Row>
   )
 };
-
+export default App;
 ```
 
 :::demo
@@ -175,6 +175,7 @@ const App = () => {
     </>
   )
 }
+export default App;
 ```
 
 

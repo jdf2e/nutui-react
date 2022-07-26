@@ -1,14 +1,14 @@
 .flex-content {
-  line-height: 40px;
-  color: #fff;
+  line-height: $row-content-line-height;
+  color: $row-content-color;
   text-align: center;
-  border-radius: 6px;
-  background: #ff8881;
+  border-radius: $row-content-border-radius;
+  background: $row-content-background-color;
   &.flex-content-light {
-    background: #ffc7c4;
+    background: $row-content-light-background-color;
   }
   &.flex-content-height {
-    height: 50px;
+    height: $row-content-height;
   }
 }
 .nut-row {
