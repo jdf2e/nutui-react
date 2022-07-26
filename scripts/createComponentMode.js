@@ -146,6 +146,28 @@ function createReact() {
   })
 }
 
+function createReactTaro() {
+  return new Promise((resolve, reject) => {
+    const nameLc = newCpt.name.toLowerCase()
+    const name = newCpt.name
+    let content = demoModel(name).react
+    let indexFileContent = demoModel(name).taroindex
+    const dirPath = path.join(__dirname, `../src/packages/${nameLc}/`)
+    const filePath = path.join(dirPath, `${nameLc}.taro.tsx`)
+    const indexFilePath = path.join(dirPath, `index.taro.ts`)
+    if (!fs.existsSync(dirPath)) {
+      fs.mkdirSync(filePath)
+    }
+    try {
+      fs.writeFileSync(filePath, content)
+      fs.writeFileSync(indexFilePath, indexFileContent)
+    } catch (e) {
+      throw e
+    }
+    resolve(`生成index.taro.ts文件成功`)
+  })
+}
+
 function createDemo() {
   return new Promise((resolve, reject) => {
     const name = newCpt.name
@@ -159,6 +181,23 @@ function createDemo() {
     fs.writeFile(filePath, content, (err) => {
       if (err) throw err
       resolve(`生成demo.tsx文件成功`)
+    })
+  })
+}
+
+function createTaroDemo() {
+  return new Promise((resolve, reject) => {
+    const name = newCpt.name
+    const nameLc = newCpt.name.toLowerCase()
+    let content = demoModel(name).tarodemo
+    const dirPath = path.join(__dirname, '../src/packages/' + nameLc)
+    const filePath = path.join(dirPath, `demo.taro.tsx`)
+    if (!fs.existsSync(dirPath)) {
+      fs.mkdirSync(filePath)
+    }
+    fs.writeFile(filePath, content, (err) => {
+      if (err) throw err
+      resolve(`生成demo.taro.tsx文件成功`)
     })
   })
 }
@@ -215,7 +254,7 @@ function createNew() {
   createIndexJs()
     .then(() => {
       if (newCpt.type == 'component' || newCpt.type == 'method') {
-        return createReact()
+        return createReact() && createReactTaro()
       } else {
         return
       }
@@ -225,6 +264,9 @@ function createNew() {
     })
     .then(() => {
       return createDemo()
+    })
+    .then(() => {
+      return createTaroDemo()
     })
     .then(() => {
       return createDoc()
