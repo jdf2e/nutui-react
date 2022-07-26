@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import './timedetail.scss'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
 
@@ -57,7 +56,11 @@ export const TimeDetail: FunctionComponent<
   return (
     <div className={`${b()} ${className || ''}`}>
       {renderData.map((item: string, index: number) => (
-        <span className={getDetailClass(item)} key={item} onClick={() => handleTime(item)}>
+        <span
+          className={getDetailClass(item)}
+          key={item}
+          onClick={() => handleTime(item)}
+        >
           {item}
         </span>
       ))}
