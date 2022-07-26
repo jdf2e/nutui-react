@@ -744,6 +744,36 @@
           "sort": 6,
           "show": true,
           "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "TimePannel",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "配送时间日期选择",
+          "sort": 7,
+          "show": false,
+          "author": "zhaoqian16"
+        },
+        {
+          "version": "1.0.0",
+          "name": "TimeDetail",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "配送时间上门时间选择",
+          "sort": 8,
+          "show": false,
+          "author": "zhaoqian16"
+        },
+        {
+          "version": "1.0.0",
+          "name": "TimeSelect",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "用于配送时间选择",
+          "sort": 20,
+          "show": true,
+          "author": "zhaoqian16"
         }
       ]
     }
