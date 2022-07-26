@@ -32,7 +32,7 @@ const config = {
       pxtransform: {
         enable: true,
         config: {},
-        // config: {selectorBlackList: ['nut-']},
+        config: { selectorBlackList: ['nut-'] },
       },
       url: {
         enable: true,

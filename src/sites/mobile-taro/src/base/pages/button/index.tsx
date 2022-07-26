@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useTranslate } from '@/sites/assets/locale'
+import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button } from '@/packages/nutui.react.taro'
 
 interface T {
@@ -94,7 +94,6 @@ const ButtonDemo = () => {
       '6ab47cd2': 'Gradient button',
     },
   })
-
   const [loading, setLoading] = useState(false)
   return (
     <>
