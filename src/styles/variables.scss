@@ -443,6 +443,10 @@ $indicator-size: 18px !default;
 $indicator-dot-size: calc($indicator-size / 3) !default;
 $indicator-border-size: $indicator-size + 2 !default;
 $indicator-number-font-size: 10px !default;
+$indicator-dot-margin: 4px !default;
+$indicator-dot-vertical-margin: 4px !default;
+$indicator-dot-first-margin: 0px !default;
+$indicator-dot-last-margin: 0px !default;
 
 // circleProgress
 $circleprogress-primary-color: $primary-color !default;
