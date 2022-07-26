@@ -51,10 +51,11 @@ const BaseDialog: ForwardRefRenderFunction<
     ...restProps
   } = props
 
-  const renderFooter = () => {
-    if (footer === null) return
+  const renderFooter = function () {
+    if (footer === null) return ''
 
-    const handleCancel = () => {
+    const handleCancel = function (e: MouseEvent) {
+      e.stopPropagation()
       if (!cancelAutoClose) return
 
       onClosed?.()
@@ -64,7 +65,8 @@ const BaseDialog: ForwardRefRenderFunction<
       }
     }
 
-    const handleOk = (e?: any) => {
+    const handleOk = function (e: MouseEvent) {
+      e.stopPropagation()
       onClosed?.()
       onOk?.(e)
       if (lockScroll && visible) {
@@ -80,7 +82,7 @@ const BaseDialog: ForwardRefRenderFunction<
             plain
             type="primary"
             className="nut-dialog__footer-cancel"
-            onClick={() => handleCancel()}
+            onClick={(e) => handleCancel(e)}
           >
             {cancelText || locale.cancel}
           </Button>
@@ -93,7 +95,7 @@ const BaseDialog: ForwardRefRenderFunction<
               disabled: okBtnDisabled,
             })}
             disabled={okBtnDisabled}
-            onClick={() => handleOk()}
+            onClick={(e) => handleOk(e)}
           >
             {okText || locale.confirm}
           </Button>
