@@ -80,6 +80,7 @@ const TimeSelectDemo = () => {
 
 export default TimeSelectDemo
 ```
+
 :::
 
 ## API
@@ -88,10 +89,10 @@ export default TimeSelectDemo
 
 | 字段                   | 说明                                                | 是否必传             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------|--------|------------|---------|
-| visible                 | 是否显示弹层                                      | 是       | Boolean  | `false`
-| height                 | 弹层的高度                                         | 否     | String  | `20%`
-| title                 | 弹层标题                                         | 否      | String  | `取件时间`
-| multiple              | 是否选择多个日期时间                               | 否        | String  | `false`
+| visible                 | 是否显示弹层                                      | 是       | Boolean  | `false`|
+| height                 | 弹层的高度                                         | 否     | String  | `20%`|
+| title                 | 弹层标题                                         | 否      | String  | `取件时间`|
+| multiple              | 是否选择多个日期时间                               | 否        | String  | `false`|
 | currentKey           | 唯一标识                                    | 否        | String、Number  | `0` |
 | dates            | 选择日期面板的数据                                 | 是       | []        | ``       |
 | times            | 选择时间面板的数据                                  | 是     | []        | ``       |
@@ -100,16 +101,15 @@ export default TimeSelectDemo
 
 | 字段                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
-| date                 | 显示的名称                                            | String  | ``
-| pannel-key           | 唯一标识，和 currentKey 一起标识当前选择的天            | Number、String  | `0`
+| date                 | 显示的名称                                            | String  | ``|
+| pannel-key           | 唯一标识，和 currentKey 一起标识当前选择的天            | Number、String  | `0`|
 
 ### times
 
 | 字段                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
-| key                 | 唯一标识，和 pannel-key、currentKey 一起标识当前选择的天              | Array  | `[]`
-| list                 | 可选时间列表                                                        | Array  | `[]`
-
+| key                 | 唯一标识，和 pannel-key、currentKey 一起标识当前选择的天              | Array  | `[]`|
+| list                 | 可选时间列表                                                        | Array  | `[]`|
 
 ### TimeSelect Event
 

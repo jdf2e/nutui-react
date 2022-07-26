@@ -32,16 +32,16 @@ const TimeSelectDemo = () => {
     SetVisible1(true)
   }
   // 点击弹层 X 或者弹层外区域触发事件
-  const handleSelect = (selectTimeData) => {
+  const handleSelect = (selectTimeData: any) => {
     SetVisible1(false)
     Toast.text(`您选择了: ${JSON.stringify(selectTimeData)}`)
   }
   // 选择日期触发回调事件
-  const handlePannelChange = (pannelKey, selectTimeData) => {
+  const handlePannelChange = (pannelKey: any, selectTimeData: any) => {
     console.log('pannelKey, selectTimeData: ', pannelKey, selectTimeData)
   }
   // 选择配送时间触发回调事件
-  const handleTimeChange = (time, selectTimeData) => {
+  const handleTimeChange = (time: any, selectTimeData: any) => {
     console.log('time, selectTimeData: ', time, selectTimeData)
   }
   return (

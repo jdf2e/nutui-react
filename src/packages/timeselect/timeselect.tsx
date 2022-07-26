@@ -1,11 +1,10 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import './timeselect.scss'
 import Popup from '@/packages/popup'
-import TimePannel from '../timepannel'
-import TimeDetail from '../timedetail'
+import TimePannel from '@/packages/timepannel'
+import TimeDetail from '@/packages/timedetail'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
-import { TimeType } from '../timedetail/timedetail'
+import { TimeType } from '@/packages/timedetail/timedetail'
 
 export interface DateType {
   'pannel-key'?: string | number
@@ -22,7 +21,10 @@ export interface TimeSelectProps {
   dates: DateType[]
   times: TimeType[]
   select?: (selectTimeData: TimeType[]) => void
-  pannelChange?: (pannelKey: string | number, selectTimeData: TimeType[]) => void
+  pannelChange?: (
+    pannelKey: string | number,
+    selectTimeData: TimeType[]
+  ) => void
   timeChange?: (time: string, selectTimeData: TimeType[]) => void
 }
 const defaultProps = {
@@ -91,7 +93,9 @@ export const TimeSelect: FunctionComponent<
         break
       }
     }
-    const curTimeIndex = curTimeData.list.findIndex((item: string) => String(item) === String(time))
+    const curTimeIndex = curTimeData.list.findIndex(
+      (item: string) => String(item) === String(time)
+    )
     if (curTimeIndex === -1) {
       curTimeData.list.push(time)
     } else {
