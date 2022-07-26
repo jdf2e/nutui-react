@@ -1,0 +1,36 @@
+@import '../timepannel/timepannel.scss';
+@import '../timedetail/timedetail.scss';
+
+.nut-timeselect {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__title {
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #1a1a1a;
+    text-align: center;
+  }
+
+  &__content {
+    display: flex;
+    flex: 1;
+  }
+
+  &__content-left {
+    width: 140px;
+    min-width: 140px;
+    height: 100%;
+    overflow: auto;
+    background-color: #f6f7f9;
+  }
+
+  .nut-timepannel-active {
+    background-color: #fff;
+    color: #333;
+    font-weight: 700;
+  }
+}
