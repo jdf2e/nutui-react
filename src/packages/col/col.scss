@@ -2,7 +2,7 @@
   float: left;
   box-sizing: border-box;
   word-break: break-all;
-
+  margin-bottom: $col-default-margin-bottom;
   &-gutter {
     &:last-child {
       padding-right: 0 !important;
