@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import './timepannel.scss'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
 
@@ -18,7 +17,10 @@ export const TimePannel: FunctionComponent<
   Partial<TimePannelProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { locale } = useConfig()
-  const { children, className, date, curKey, change } = { ...defaultProps, ...props }
+  const { children, className, date, curKey, change } = {
+    ...defaultProps,
+    ...props,
+  }
   const b = bem('timepannel')
 
   return (
