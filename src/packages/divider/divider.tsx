@@ -2,13 +2,15 @@ import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 
+export type ContentPositionType = 'left' | 'center' | 'right'
+export type DirectionType = 'horizontal' | 'vertical'
 export interface DividerProps {
-  contentPosition: string
+  contentPosition: ContentPositionType
   dashed: boolean
   hairline: boolean
   styles?: React.CSSProperties
   className?: string
-  direction?: string
+  direction?: DirectionType
 }
 const defaultProps = {
   contentPosition: 'center',
