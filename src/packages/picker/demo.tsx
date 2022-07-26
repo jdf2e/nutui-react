@@ -196,25 +196,29 @@ const PickerDemo = () => {
 
   const setChooseValueCustmer = (
     values: (string | number)[],
-    chooseData: PickerOption[]
+    options: PickerOption[]
   ) => {
-    const str = chooseData.map((item) => item.text).join('-')
+    console.log('多级联动确定', values, options)
+    const str = options.map((item) => item.text).join('-')
     setCityCustmer(str)
   }
 
   const setAsyncConfirm = (
     values: (string | number)[],
-    chooseData: PickerOption[]
+    options: PickerOption[]
   ) => {
-    const str = chooseData.map((item) => item.text).join('-')
+    console.log('异步获取确定', values, options)
+    const str = options.map((item) => item.text).join('-')
     setasyncDesc(str)
   }
 
   const updateChooseValueCustmer = (
     columnIndex: number,
-    option: PickerOption
+    values: (string | number)[],
+    options: PickerOption[]
   ) => {
-    if (columnIndex === 0 && option.value === 2) {
+    console.log('异步获取change', columnIndex, values, options)
+    if (columnIndex === 0 && values[0] === 2) {
       setTimeout(() => {
         if (asyncData[1].children.length === 0) {
           asyncData[1].children = [
@@ -232,8 +236,8 @@ const PickerDemo = () => {
   }
 
   // 切换选择项
-  const changePicker = (columnIndex: number, option: any, list: any[]) => {
-    console.log(columnIndex, option)
+  const changePicker = (columnIndex: number, values: any, options: any[]) => {
+    console.log('picker选择change', columnIndex, values, options)
   }
   // 确定选择
   const confirmPicker = (
@@ -241,6 +245,7 @@ const PickerDemo = () => {
     values: (string | number)[],
     options: PickerOption[]
   ) => {
+    console.log('picker选择确定', values, options)
     let desc = ''
     options.forEach((option: any) => {
       desc += option.text
@@ -304,6 +309,7 @@ const PickerDemo = () => {
           listData={listData2}
           onClose={() => setIsVisible2(false)}
           defaultValueData={['Wednesday']}
+          onChange={changePicker}
           onConfirm={(values, list) => confirmPicker('mutil', values, list)}
         />
         <h2>平铺展示</h2>
@@ -336,9 +342,11 @@ const PickerDemo = () => {
           onConfirm={(values, list: PickerOption[]) =>
             setChooseValueCustmer(values, list)
           }
-          onChange={(index: number, value: PickerOption, list: any[]) =>
-            console.log('选择用户')
-          }
+          onChange={(
+            columnIndex: number,
+            value: (string | number)[],
+            options: PickerOption[]
+          ) => console.log('多级联动', columnIndex, value, options)}
         />
 
         <h2>动态获取</h2>
@@ -355,9 +363,11 @@ const PickerDemo = () => {
           onConfirm={(values, list: PickerOption[]) =>
             setAsyncConfirm(values, list)
           }
-          onChange={(columnIndex: number, option: PickerOption) =>
-            updateChooseValueCustmer(columnIndex, option)
-          }
+          onChange={(
+            columnIndex: number,
+            value: (string | number)[],
+            options: PickerOption[]
+          ) => updateChooseValueCustmer(columnIndex, value, options)}
         />
       </div>
     </>

@@ -34,12 +34,13 @@ export interface IPickerProps {
     selectedOptions: PickerOption[]
   ) => void
   onCloseUpdate?: (
+    selectedValue: (string | number)[],
     list: PickerOption[],
     pickerRef: RefObject<HTMLDivElement>
   ) => void
   onChange?: (
     index: number,
-    value: PickerOption,
+    value: (string | number)[],
     selectedOptions: PickerOption[]
   ) => void
 }
@@ -62,7 +63,10 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
       ...rest
     } = props
 
-    const [chooseValueData, setchooseValueData] = useState<Array<any>>([]) // 选择的数据, 每一条数据的 value 值
+    const [chooseValueData, setchooseValueData] = useState<
+      Array<string | number>
+    >([]) // 选择的数据的 value 值, 每一条数据的 value 值
+    const [columnIndex, setcolumnIndex] = useState<number>(0) // 选中列
     const pickerRef = useRef<any>(null)
 
     const [columnsList, setColumnsList] = useState<PickerOption[][]>([]) // 格式化后每一列的数据
@@ -70,12 +74,21 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
 
     // 默认值修改
     useEffect(() => {
-      if (defaultValueData && defaultValueData.length !== 0) {
+      if (
+        defaultValueData &&
+        defaultValueData.length !== 0 &&
+        defaultValueData.toString() !== chooseValueData.toString()
+      ) {
         const data = [...defaultValueData]
         setchooseValueData(data)
         setColumnsList(normalListData())
       }
     }, [defaultValueData])
+
+    // 选中值进行修改
+    useEffect(() => {
+      onChange && onChange(columnIndex, chooseValueData, selectedOptions())
+    }, [chooseValueData])
 
     // 列表格式修改
     useEffect(() => {
@@ -84,12 +97,11 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
 
     const closeActionSheet = () => {
       onClose && onClose(chooseValueData, selectedOptions())
-      onCloseUpdate && onCloseUpdate(chooseValueData, pickerRef)
+      onCloseUpdate &&
+        onCloseUpdate(chooseValueData, selectedOptions(), pickerRef)
     }
     // 点击确定
-    const confirm = (defaultValueData?: Array<any>) => {
-      const data = defaultValueData || chooseValueData
-      setchooseValueData([...data])
+    const confirm = () => {
       onConfirm && onConfirm(chooseValueData, selectedOptions())
       onClose && onClose(chooseValueData, selectedOptions())
     }
@@ -101,7 +113,11 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
         currOptions = column.filter(
           (item) => item.value === chooseValueData[index]
         )
-        optins.push(currOptions[0])
+        if (currOptions[0]) {
+          optins.push(currOptions[0])
+        } else {
+          column[0] && optins.push(column[0])
+        }
 
         return column
       })
@@ -146,8 +162,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
               return cdata
             })
           }
-
-          onChange && onChange(columnIndex, option, selectedOptions())
+          setcolumnIndex(columnIndex)
         }
       }
     }
@@ -160,11 +175,6 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
           return listData
         case 'cascade':
           // 级联数据处理
-          console.log(
-            '格式化数据',
-            chooseValueData,
-            formatCascade(listData, chooseValueData)
-          )
           return formatCascade(listData, chooseValueData)
         default:
           return [listData]
