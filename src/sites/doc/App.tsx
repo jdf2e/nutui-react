@@ -127,7 +127,7 @@ const App = () => {
                 return (
                   <Route
                     key={Math.random()}
-                    path={`${lang ? `/${lang}` : ''}/${ru}`}
+                    path={`${lang ? `/${lang}` : ''}/component/${ru}`}
                   >
                     <ReactMarkdown
                       children={getMarkdownByLang(ru)}
