@@ -32,27 +32,29 @@ const App = () => {
     // do something
   }
   return (
-    <Swiper
-      height={height}
-      paginationColor="#426543"
-      autoPlay="3000"
-      initPage={initPage1}
-      paginationVisible
-      onChange={onChange}
-    >
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-      </SwiperItem>
-    </Swiper>
+    <div className="demo-box" style={{ height: 150 }}>
+      <Swiper
+        height={height}
+        paginationColor="#426543"
+        autoPlay="3000"
+        initPage={initPage1}
+        paginationVisible
+        onChange={onChange}
+      >
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+        </SwiperItem>
+      </Swiper>
+    </div>
   )
 }
 export default App;
@@ -81,21 +83,23 @@ const App = () => {
     }, 3000)
   }, [])
   return (
-    <Swiper
-      height={height}
-      paginationColor="#426543"
-      autoPlay="3000"
-      initPage={initPage1}
-      paginationVisible
-    >
-      {list.map((item) => {
-        return (
-          <SwiperItem key={item}>
-            <img src={item} alt="" />
-          </SwiperItem>
-        )
-      })}
-    </Swiper>
+    <div className="demo-box" style={{ height: 150 }}>
+      <Swiper
+        height={height}
+        paginationColor="#426543"
+        autoPlay="3000"
+        initPage={initPage1}
+        paginationVisible
+      >
+        {list.map((item) => {
+          return (
+            <SwiperItem key={item}>
+              <img src={item} alt="" />
+            </SwiperItem>
+          )
+        })}
+      </Swiper>
+    </div>
   )
 }
 export default App;
@@ -128,21 +132,23 @@ const App = () => {
     }, 3000)
   }, [])
   return (
-    <Swiper
-      height={height}
-      paginationColor="#426543"
-      autoPlay="3000"
-      initPage={initPage1}
-      paginationVisible
-    >
-      {list.map((item) => {
-        return (
-          <SwiperItem key={item}>
-            <img src={item} alt="" />
-          </SwiperItem>
-        )
-      })}
-    </Swiper>
+    <div className="demo-box" style={{ height: 150 }}>
+      <Swiper
+        height={height}
+        paginationColor="#426543"
+        autoPlay="3000"
+        initPage={initPage1}
+        paginationVisible
+      >
+        {list.map((item) => {
+          return (
+            <SwiperItem key={item}>
+              <img src={item} alt="" />
+            </SwiperItem>
+          )
+        })}
+      </Swiper>
+    </div>
   )
 }
 export default App;
@@ -160,25 +166,27 @@ import { Swiper,SwiperItem } from '@nutui/nutui-react';
 const App = () => {
   const [initPage2, setInitPage2] = useState(0)
   return (
-    <Swiper
-      width={300}
-      initPage={initPage2}
-      loop={false}
-      height={150}
-    >
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-      </SwiperItem>
-    </Swiper>
+    <div className="demo-box" style={{ height: 150 }}>
+      <Swiper
+        width={300}
+        initPage={initPage2}
+        loop={false}
+        height={150}
+      >
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+        </SwiperItem>
+      </Swiper>
+    </div>
   )
 }
 export default App;
@@ -201,26 +209,28 @@ const App = () => {
     setCurrent(e + 1)
   }
   return (
-    <Swiper
-      initPage={initPage3}
-      loop
-      height={150}
-      onChange={onChange3}
-      pageContent={<div className="page"> {current}/4 </div>}
-    >
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-      </SwiperItem>
-    </Swiper>
+    <div className="demo-box" style={{ height: 150 }}>
+      <Swiper
+        initPage={initPage3}
+        loop
+        height={150}
+        onChange={onChange3}
+        pageContent={<div className="page"> {current}/4 </div>}
+      >
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+        </SwiperItem>
+      </Swiper>
+    </div>
   )
 }
 export default App;
@@ -335,27 +345,29 @@ const App = () => {
     setCurrent(e + 1)
   }
   return (
-    <Swiper
-      loop
-      initPage={initPage4}
-      direction="vertical"
-      autoPlay="3000"
-      height="150"
-      paginationVisible
-    >
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-      </SwiperItem>
-    </Swiper>
+    <div className="demo-box vertical-center" style={{ height: '150px' }}>
+      <Swiper
+        loop
+        initPage={initPage4}
+        direction="vertical"
+        autoPlay="3000"
+        height="150"
+        paginationVisible
+      >
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+        </SwiperItem>
+      </Swiper>
+    </div>
   )
 }
 export default App;
@@ -423,7 +435,7 @@ const App = () => {
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
   ]
   return (
-   <div className="demo-box " style={{ height: '150px' }}>
+   <div className="demo-box vertical-center" style={{ height: '150px' }}>
       <Swiper
         loop={false}
         initPage={initPage9}
