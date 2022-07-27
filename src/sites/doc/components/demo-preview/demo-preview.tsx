@@ -5,10 +5,12 @@ import { useHistory, useLocation } from 'react-router-dom'
 const DemoPreview = (props: any) => {
   const history = useHistory()
   const location = useLocation()
-  const [URL, setURL] = useState(history.location.pathname)
+  const path = location.pathname.split('/')
+  const [URL, setURL] = useState(path[path.length - 1])
 
   useEffect(() => {
-    setURL(location.pathname)
+    const path = location.pathname.split('/')
+    setURL(path[path.length - 1])
   }, [location])
 
   return (

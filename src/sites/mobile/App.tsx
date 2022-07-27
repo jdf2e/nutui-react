@@ -18,7 +18,7 @@ import zhCN from '@/locales/zh-CN'
 import enUS from '@/locales/en-US'
 import { BaseLang } from '@/locales/base'
 import Icon from '@/packages/Icon'
-import config from '@/sites/config/env'
+import { nav } from '@/config.json'
 
 interface Languages {
   [key: string]: BaseLang
@@ -44,13 +44,29 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
       location.href = href
     }
     const pathNames = props.location.pathname.split('/')
+    const getComponentName = () => {
+      const s = window.location.hash.split('/')
+      const cname = s[s.length - 1].toLowerCase()
+      const component: any = {}
+      nav.forEach((item: any) => {
+        item.packages.forEach((sItem: any) => {
+          if (sItem.name.toLowerCase() == cname) {
+            component.name = sItem.name
+            component.cName = sItem.cName
+            return
+          }
+        })
+      })
+      return component
+    }
+    console.log(getComponentName())
     return (
       <>
         <div id="nav">
           <div className="back" onClick={() => window.parent.history.back()}>
             <Icon name="left"></Icon>
           </div>
-          {pathNames[pathNames.length - 1]}
+          {getComponentName()['name']}
           <div className="translate" onClick={() => handleSwitchLocale()}>
             <Icon name="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"></Icon>
           </div>
@@ -89,7 +105,7 @@ const AppSwitch = () => {
           return (
             <Route
               key={Math.random()}
-              path={`${locale ? `/${locale}` : ''}${item.path}`}
+              path={`${item.path}`}
               component={WithNavRouter(C)}
             />
           )
