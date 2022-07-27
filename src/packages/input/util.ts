@@ -18,18 +18,14 @@ export function formatNumber(
   allowMinus = true
 ) {
   if (allowDot) {
-    // eslint-disable-next-line no-param-reassign
     value = trimExtraChar(value, '.', /\./g)
   } else {
-    // eslint-disable-next-line prefer-destructuring, no-param-reassign
     value = value.split('.')[0]
   }
 
   if (allowMinus) {
-    // eslint-disable-next-line no-param-reassign
     value = trimExtraChar(value, '-', /-/g)
   } else {
-    // eslint-disable-next-line no-param-reassign
     value = value.replace(/-/, '')
   }
   const regExp = allowDot ? /[^-0-9.]/g : /[^-0-9]/g

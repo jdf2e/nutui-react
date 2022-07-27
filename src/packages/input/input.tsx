@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-autofocus */
 import React, {
   CSSProperties,
   FunctionComponent,
@@ -100,7 +99,7 @@ export interface InputProps {
 const defaultProps = {
   type: 'text',
   defaultValue: '',
-  placeholder: '请输入...',
+  placeholder: '',
   label: '',
   labelClass: '',
   labelWidth: '80',
@@ -310,8 +309,6 @@ export const Input: FunctionComponent<
   const handleClear = (event: Event) => {
     updateValue('')
     clear && clear('', event)
-    // change && change('', event)
-    // SetInputValue('')
   }
 
   return (
@@ -382,7 +379,7 @@ export const Input: FunctionComponent<
                     height: `${Number(rows) * 24}px`,
                   }}
                   maxLength={maxlength}
-                  placeholder={placeholder}
+                  placeholder={placeholder || locale.placeholder}
                   disabled={disabled}
                   readOnly={readonly}
                   value={inputValue}

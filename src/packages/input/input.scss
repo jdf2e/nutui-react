@@ -14,20 +14,12 @@
 input,
 textarea {
   font: inherit;
-  .nut-placeholder {
-    // font: inherit;
-  }
 }
-textarea {
-  .nut-placeholder {
-    // padding: 0 2px;
-    // font: inherit;
-  }
-}
+
 .nut-input {
   position: relative;
   width: 100%;
-  padding: 10px 25px;
+  padding: $input-padding;
   display: flex;
   line-height: 24px;
   background: $white;
@@ -85,7 +77,6 @@ textarea {
   &__text--readonly {
     width: 90%;
     padding: 0;
-    // padding-right: 35px;
     line-height: inherit;
     text-align: left;
     outline: 0 none;
@@ -100,11 +91,6 @@ textarea {
     overflow: hidden;
     margin-right: 6px;
     text-align: left;
-    .label-string {
-      // overflow: hidden;
-      // white-space: nowrap;
-      // text-overflow: ellipsis;
-    }
   }
   &-value {
     flex: 1;

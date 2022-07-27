@@ -252,7 +252,6 @@ const InputDemo = () => {
           defaultValue={state.buttonVal}
           clearable
           center
-          // eslint-disable-next-line react/no-children-prop
           slotButton={buttonTpl}
         />
         <h2>{translated.title6}</h2>
