@@ -1,3 +1,35 @@
+## v1.2.0
+`2022-07-27`
+
+* :bug: fix: html title 文案修改 & button 组件 readme 格式修改 (#126)
+* :zap: feat: 国际化语言支持 (#124)
+* :zap: feat: add empty & review (#130)
+* :bug: fix: 修复 button 组件 demo 中的错误文案 (#134)
+* :zap: feat: cell 单元测试完成 (#132)
+* :bug: fix: 修复 input 组件添加多语言支持后 placeholder 属性设置不生效的问题
+* :bug: fix: fixednav 样式类名优化
+* :bug: fix: 修改Button在服务端不渲染class和style (#133)
+* :bug: fix: 修复自定义地址组件 (#143)
+* :bug: fix: swiper问题修复 (#140)
+* :bug: fix: 修复address组件三级地址切换回来二级地址不同步的问题 (#144)
+* :bug: fix: dialog 组件多语言后props设置出错
+* :zap: feat: 新增collapse组件的单元测试 (#145)
+* :zap: feat: tag + switch 组件测试用例 (#148)
+* :zap: feat: 新增虚拟列表virtuallist (#136)
+* :zap: feat: indicator 组件 (#158)
+* :bug: fix: textarea placeholder 设置不生效
+* :bug: fix: textarea 组件 change、focus、blur 事件改为 onChange、onFocus、onBlur (#163)
+* :zap: feat: popup在线文档接入和国际化支持 (#167)
+* :zap: feat: navbar在线文档接入和国际化支持 (#171)
+* :zap: feat: tabbar在线文档接入和国际化支持 (#169)
+* :bug: fix: empty空状态组件新增国际化文档新增单元测试 (#164)
+* :zap: feat: calendar在线文档接入和国际化支持 (#168)
+* :zap: feat: indicator指示器组件新增国际化文档 (#166)
+* :zap: feat: 弹框增加onClickSelf事件 (#172)
+* :zap: feat: timeselect (#149)
+* :zap: feat: divider组件新增props (#162)
+
+
 ## v1.1.4
 `2022-05-23`
 
