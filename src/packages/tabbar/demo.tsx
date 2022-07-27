@@ -15,6 +15,7 @@ interface T {
   '7db1a8b2': string
   a52bef0c: string
   d04fcbda: string
+  c9e6df49: string
 }
 
 const TabbarDemo = () => {
@@ -31,6 +32,7 @@ const TabbarDemo = () => {
       '7db1a8b2': '购物车',
       a52bef0c: '发现',
       d04fcbda: '分类',
+      c9e6df49: '红点',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
@@ -44,6 +46,7 @@ const TabbarDemo = () => {
       '7db1a8b2': '購物車',
       a52bef0c: '發現',
       d04fcbda: '分類',
+      c9e6df49: '紅點',
     },
     'en-US': {
       ce5c5446: 'Basic usage',
@@ -57,6 +60,7 @@ const TabbarDemo = () => {
       '7db1a8b2': 'shopping cart',
       a52bef0c: 'Find',
       d04fcbda: 'Classification',
+      c9e6df49: 'Red dot',
     },
   })
   return (
@@ -90,6 +94,15 @@ const TabbarDemo = () => {
           <TabbarItem tabTitle={translated.d04fcbda} icon="category" />
           <TabbarItem tabTitle={translated.a52bef0c} icon="find" />
           <TabbarItem tabTitle={translated['7db1a8b2']} icon="cart" num="110" />
+          <TabbarItem tabTitle={translated.e51e4582} icon="my" />
+        </Tabbar>
+
+        <h2>{translated.c9e6df49}</h2>
+        <Tabbar>
+          <TabbarItem tabTitle={translated.c3a3a1d2} icon="home" dot />
+          <TabbarItem tabTitle={translated.d04fcbda} icon="category" />
+          <TabbarItem tabTitle={translated.a52bef0c} icon="find" />
+          <TabbarItem tabTitle={translated['7db1a8b2']} icon="cart" dot />
           <TabbarItem tabTitle={translated.e51e4582} icon="my" />
         </Tabbar>
 

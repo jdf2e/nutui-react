@@ -76,6 +76,27 @@ const App = () => (
 export default App;
 ```
 :::
+
+### 紅點
+
+:::demo
+```tsx
+import  React from "react";
+import { Tabbar, TabbarItem } from '@nutui/nutui-react';
+
+const App = () => (
+  <Tabbar>
+    <TabbarItem tabTitle="首頁" icon="home" dot />
+    <TabbarItem tabTitle="分類" icon="category" />
+    <TabbarItem tabTitle="發現" icon="find" />
+    <TabbarItem tabTitle="購物車" icon="cart" dot />
+    <TabbarItem tabTitle="我的" icon="my" />
+  </Tabbar>
+)
+
+export default App;
+```
+:::
 ### 自定義顏色
 
 :::demo
@@ -144,9 +165,13 @@ export default App;
 | 字段            | 說明               | 類型   | 默認值  |
 |-----------------|--------------------|--------|---------|
 | visible | 選中標籤的索引值   | number | 0       |
-| bottom          | 是否固定在頁面底部 | Booble | false   |
-| unactiveColor  | icon未激活的顏色   | string | #7d7e80 |
-| activeColor    | icon激活的顏色     | string | #1989fa |
+| bottom          | 是否固定在頁面底部 | Boolean | false   |
+| unactiveColor  | icon未激活的顏色   | String | #7d7e80 |
+| activeColor    | icon激活的顏色     | String | #1989fa |
+| size    | icon的尺寸     | String 、Boolean | 20 |
+| safeAreaInsetBottom    | 是否開啟iphone系列全面屏底部安全區適配     | Boolean | false |
+| style    | 組件樣式     | React.CSSProperties | {} |
+| clsssName    | 組件類名     | String | - |
 
 ### tabbar-item
 
@@ -155,8 +180,10 @@ export default App;
 | tabTitle | 標籤頁的標題                              | String | --     |
 | icon      | 標籤頁顯示的[圖標名稱](#/icon) 或圖片鏈接 | String | --     |
 | href      | 標籤頁的跳轉鏈接；如果同時存在 `to`，優先級高於 to   | String | --     |
-| to        | 	標籤頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性 | string｜object | --     |
+| to        | 	標籤頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性 | string｜any | --     |
 | num       | 頁簽右上角的數字角標，超出99之後為99+     | Number | --     |
+| classPrefix      | 自定義icon 類名前綴，用於使用自定義圖標   | String | 'nutui-iconfont'     |
+| dot      | 是否顯示圖標右上角小紅點   | Boolean | false     |
 
 
 ### Event
