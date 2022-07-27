@@ -1,6 +1,5 @@
 import React from 'react'
-import { NoticeBar } from './noticebar'
-import Icon from '../icon'
+import { NoticeBar, Icon } from '@/packages/nutui.react.taro'
 
 const NoticeBarDemo = () => {
   const horseLamp1 = [

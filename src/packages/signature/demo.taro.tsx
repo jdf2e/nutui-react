@@ -1,5 +1,5 @@
 import React from 'react'
-import { Signature } from './signature'
+import { Signature } from '@/packages/nutui.react.taro'
 
 const SignatureDemo = () => {
   const confirm = (canvas: HTMLCanvasElement, data: string) => {

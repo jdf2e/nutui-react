@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { Collapse } from './collapse'
-import CollapseItem from '../collapseitem'
+import { Collapse, CollapseItem } from '@/packages/nutui.react.taro'
 
 const CollapseDemo = () => {
   const [currIndex, setCurrIndex] = useState(2)

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { AnimatingNumbers } from './animatingnumbers'
+import { AnimatingNumbers } from '@/packages/nutui.react.taro'
 
 const AnimatingNumbersDemo = () => {
   const [endNumber, setEndNumer] = useState('1570.99')

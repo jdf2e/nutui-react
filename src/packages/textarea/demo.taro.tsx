@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { TextArea } from './textarea'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import { TextArea } from '@/packages/nutui.react.taro'
 
 interface T {
   basic: string

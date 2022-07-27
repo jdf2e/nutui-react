@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react'
-import Picker from './picker'
-import Cell from '@/packages/cell'
+import { Cell, Picker } from '@/packages/nutui.react.taro'
 
 interface pickerRefState {
   updateChooseValue: (

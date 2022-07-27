@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import Cell from '../cell'
-import Toast from '../toast'
-import { ShortPassword } from './shortpassword'
+import { ShortPassword, Cell, Toast } from '@/packages/nutui.react.taro'
 
 const ShortPasswordDemo = () => {
   const [visible1, setVisible1] = useState(false)

@@ -1,7 +1,31 @@
 import React, { useRef } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Uploader, FileItem, FileType } from './uploader'
-import Button from '@/packages/button'
+import { Button, Uploader } from '@/packages/nutui.react.taro'
+
+export type FileItemStatus =
+  | 'ready'
+  | 'uploading'
+  | 'success'
+  | 'error'
+  | 'removed'
+
+export type FileType<T> = { [key: string]: T }
+
+export class FileItem {
+  status: FileItemStatus = 'ready'
+
+  message = '准备中..'
+
+  uid: string = new Date().getTime().toString()
+
+  name?: string
+
+  url?: string
+
+  type?: string
+
+  formData: FormData = new FormData()
+}
 
 interface uploadRefState {
   submit: () => void

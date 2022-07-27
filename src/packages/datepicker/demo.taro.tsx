@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { DatePicker } from './datepicker'
-import Cell from '@/packages/cell'
+import { Cell, DatePicker } from '@/packages/nutui.react.taro'
 
 const DatePickerDemo = () => {
   const minDate = new Date(2020, 0, 1)

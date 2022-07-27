@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import Radio from '@/packages/radio'
-import Cell from '@/packages/cell'
-import CellGroup from '@/packages/cellgroup'
-
-import VirtualList from './index'
+import {
+  VirtualList,
+  Cell,
+  CellGroup,
+  Radio,
+} from '@/packages/nutui.react.taro'
 
 const { RadioGroup } = Radio
-// import './demo.scss'
 
 const ListDemo = () => {
   const [sourceData, setsourceData] = useState<any>([])

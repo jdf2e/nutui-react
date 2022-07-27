@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import SwiperItem from '@/packages/swiperitem'
-import Swiper from '@/packages/swiper'
 import '@/packages/swiper/demo.scss'
+import { SwiperItem, Swiper } from '@/packages/nutui.react.taro'
 
 const SwiperDemo = () => {
   const swiperRef = React.useRef<any>(null)

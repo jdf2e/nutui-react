@@ -1,10 +1,6 @@
 import React from 'react'
-import { Indicator } from './indicator'
-import Cell from '@/packages/cell'
-import Row from '@/packages/row'
-import Col from '@/packages/col'
-import Button from '@/packages/button'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import { Button, Cell, Col, Row, Indicator } from '@/packages/nutui.react.taro'
 import '@/packages/indicator/demo.scss'
 
 interface T {

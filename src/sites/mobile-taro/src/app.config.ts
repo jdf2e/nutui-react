@@ -1,7 +1,12 @@
 const subPackages = [
   {
     root: 'base',
-    pages: ['pages/button/index', 'pages/overlay/index'],
+    pages: [
+      'pages/button/index',
+      'pages/cell/index',
+      'pages/icon/index',
+      'pages/overlay/index',
+    ],
   },
   {
     root: 'layout',
@@ -22,21 +27,32 @@ const subPackages = [
   },
   {
     root: 'feedback',
-    pages: ['pages/actionsheet/index'],
+    pages: [
+      'pages/actionsheet/index',
+      'pages/notify/index',
+      'pages/switch/index',
+      'pages/toast/index',
+    ],
   },
   {
     root: 'exhibition',
     pages: [
+      'pages/circleprogress/index',
       'pages/steps/index',
+      'pages/avatar/index',
+      'pages/price/index',
+      'pages/badge/index',
+      'pages/tag/index',
+      'pages/popover/index',
       'pages/skeleton/index',
       'pages/countdown/index',
       'pages/empty/index',
     ],
   },
-  // {
-  //   "root": "business",
-  //   "pages": []
-  // }
+  {
+    root: 'business',
+    pages: ['pages/card/index'],
+  },
 ]
 
 export default defineAppConfig({

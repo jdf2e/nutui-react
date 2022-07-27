@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Calendar } from './calendar'
-import { Cell } from '@/packages/cell/cell'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import { Cell, Calendar } from '@/packages/nutui.react.taro'
 
 interface T {
   ce5c5446: string

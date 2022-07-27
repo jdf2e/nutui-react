@@ -1,6 +1,6 @@
 import React from 'react'
-import { NavBar } from './navbar'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import { NavBar } from '@/packages/nutui.react.taro'
 
 interface T {
   ce5c5446: string

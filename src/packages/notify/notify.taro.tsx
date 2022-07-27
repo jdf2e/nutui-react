@@ -39,6 +39,7 @@ function getInstance(
 }
 
 function notice(opts: any) {
+  debugger
   function close() {
     if (messageInstance) {
       messageInstance.destroy()

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Elevator } from './elevator'
+import { Elevator } from '@/packages/nutui.react.taro'
 
 const ElevatorDemo = () => {
   const dataList = [

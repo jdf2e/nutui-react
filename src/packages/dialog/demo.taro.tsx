@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { Dialog } from './dialog'
-import Cell from '../cell'
+import { Dialog, Cell } from '@/packages/nutui.react.taro'
 
 const DialogDemo = () => {
   const [visible1, setVisible1] = useState(false)

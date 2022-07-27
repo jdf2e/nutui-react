@@ -1,5 +1,5 @@
 import React from 'react'
-import { Drag } from './drag'
+import { Drag } from '@/packages/nutui.react.taro'
 
 const DragDemo = () => {
   const right = () => {

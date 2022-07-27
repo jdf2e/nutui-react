@@ -1,5 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import { useHistory } from 'react-router-dom'
+import Taro from '@tarojs/taro'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
@@ -73,7 +74,15 @@ export const Cell: FunctionComponent<
     if (to && history) {
       history[replace ? 'replace' : 'push'](to)
     } else if (url) {
-      replace ? window.location.replace(url) : (window.location.href = url)
+      if (
+        url.startsWith('https://') ||
+        url.startsWith('http://') ||
+        url.startsWith('//')
+      ) {
+        replace ? window.location.replace(url) : (window.location.href = url)
+      } else {
+        Taro.navigateTo({ url })
+      }
     }
   }
 

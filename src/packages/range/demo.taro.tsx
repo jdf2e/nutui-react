@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
-import { Range } from './range'
-import { Cell } from '../cell/cell'
-
-import Toast from '../toast'
+import { Range, Cell, Toast } from '@/packages/nutui.react.taro'
 
 const RangeDemo = () => {
   const cellStyle = {

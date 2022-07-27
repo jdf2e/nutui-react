@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import { TimeSelect } from './timeselect'
-import { Cell } from '../cell/cell'
-import Toast from '../toast'
+import { TimeSelect, Cell, Toast } from '@/packages/nutui.react.taro'
 
 const TimeSelectDemo = () => {
   const [visible1, SetVisible1] = useState(false)

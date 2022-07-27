@@ -105,6 +105,7 @@ export const Avatar: FunctionComponent<
 
   const avatarLength = (children: any) => {
     for (let i = 0; i < children.length; i++) {
+      console.log('child', children[i], children[i].classList)
       if (
         children[i] &&
         children[i].classList &&
@@ -116,6 +117,7 @@ export const Avatar: FunctionComponent<
     const index = avatarRef?.current?.dataset?.index
     const maxCount = parent?.propAvatarGroup?.maxCount
     setMaxSum(children.length)
+    console.log('index', index, avatarRef)
     setAvatarIndex(index)
     if (
       index == children.length &&
@@ -137,6 +139,14 @@ export const Avatar: FunctionComponent<
       props.activeAvatar(e)
     }
   }
+
+  console.log(
+    'ddddd',
+    showMax ||
+      !parent?.propAvatarGroup?.maxCount ||
+      avatarIndex <= parent?.propAvatarGroup?.maxCount,
+    showMax
+  )
 
   return (
     <>

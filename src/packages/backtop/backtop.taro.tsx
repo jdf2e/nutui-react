@@ -94,7 +94,7 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
       const y = (t * -scrollTop) / duration + scrollTop
       scroll(y)
       cid = requestAniFrame()(fn)
-      if (t == duration || y == 0) {
+      if (t === duration || y === 0) {
         window.cancelAnimationFrame(cid)
       }
     })

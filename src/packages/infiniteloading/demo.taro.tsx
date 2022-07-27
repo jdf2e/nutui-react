@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Infiniteloading } from './infiniteloading'
-import Cell from '@/packages/cell'
-import Toast from '@/packages/toast'
-import './demo.scss'
+import { Infiniteloading, Cell, Toast } from '@/packages/nutui.react.taro'
+import '@/packages/infiniteloading/demo.scss'
 
 interface T {
   '83913e71': string
