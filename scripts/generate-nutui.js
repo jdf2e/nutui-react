@@ -5,8 +5,10 @@ const path = require('path')
 const fs = require('fs-extra')
 let importStr = ``
 let importMarkdownStr = ``
+let importOnlineEditScssStr = ``
 let importScssStr = `\n`
 const packages = []
+const onlineEditScss = []
 const mds = []
 const raws = []
 
@@ -16,11 +18,15 @@ config.nav.map((item) => {
     if (show || exportEmpty) {
       importStr += `import ${name} from '@/packages/${name.toLowerCase()}';\n`
       importScssStr += `import '@/packages/${name.toLowerCase()}/${name.toLowerCase()}.scss';\n`
+
       packages.push(name)
     }
     if (show) {
       glob
-        .sync(path.join(__dirname, `../src/packages/${name.toLowerCase()}/`) + '*.md')
+        .sync(
+          path.join(__dirname, `../src/packages/${name.toLowerCase()}/`) +
+            '*.md'
+        )
         .map((f) => {
           let lang = 'zh-CN'
           let matched = f.match(/doc\.([a-z-]+)\.md/i)
@@ -31,8 +37,15 @@ config.nav.map((item) => {
             raws.push(langComponentName)
           }
         })
-      // fs.existsSync(path.join(__dirname, `../src/packages/${name.toLowerCase()}/doc.md`))
-      // console.log(__dirname)
+      glob
+        .sync(
+          path.join(__dirname, `../src/packages/${name.toLowerCase()}/`) +
+            'demo.scss'
+        )
+        .map((f) => {
+          onlineEditScss.push(name)
+          importOnlineEditScssStr += `import ${name}Scss from '@/packages/${name.toLowerCase()}/demo.scss?raw';\n`
+        })
       importMarkdownStr += `import ${name} from '@/packages/${name.toLowerCase()}/doc.md?raw';\n`
       mds.push(name)
       raws.push(name)
@@ -74,10 +87,17 @@ fs.outputFile(
 )
 
 let mdFileStr = `${importMarkdownStr}
+${importOnlineEditScssStr}
+export const scssRaws = { ${onlineEditScss.map((r) => r + 'Scss').join(',')} }
 export const routers = [${mds.map((m) => `'${m}'`)}]
 export const raws = {${raws.join(',')}}
 `
 
-fs.outputFile(path.resolve(__dirname, '../src/sites/doc/docs.ts'), mdFileStr, 'utf8', (error) => {
-  if (error) throw error
-})
+fs.outputFile(
+  path.resolve(__dirname, '../src/sites/doc/docs.ts'),
+  mdFileStr,
+  'utf8',
+  (error) => {
+    if (error) throw error
+  }
+)

@@ -26,16 +26,20 @@ export interface DialogProps {
   noFooter?: boolean
   closeOnClickOverlay?: boolean
   cancelAutoClose?: boolean
-  textAlign?: any
+  textAlign?: string
   footerDirection?: string
   lockScroll?: boolean
   onClosed?: () => void
-  onOk?: (e?: MouseEvent) => Promise<any> | void
+  onOk?: (e?: MouseEvent) => Promise<() => void> | void
   onCancel?: () => void
-  onConfirm?: (e?: MouseEvent) => Promise<any> | void
+  onClickSelf?: () => void
+  onConfirm?: (e?: MouseEvent) => Promise<() => void> | void
 }
 
-export type DialogReturnProps = { update: Function; close: Function }
+export type DialogReturnProps = {
+  update: (newConfig: ConfirmProps) => void
+  close: () => void
+}
 
 export interface ConfirmProps extends DialogProps {
   content?: ReactNode
@@ -52,4 +56,4 @@ export interface DialogComponent
   destroyAll: () => void
 }
 
-export const destroyList: Array<Function> = []
+export const destroyList: Array<() => void> = []
