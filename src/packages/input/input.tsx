@@ -8,6 +8,7 @@ import React, {
   useLayoutEffect,
   MouseEvent,
   HTMLProps,
+  HTMLInputTypeAttribute,
 } from 'react'
 
 import { formatNumber } from './util'
@@ -16,31 +17,7 @@ import { useConfig } from '@/packages/configprovider'
 
 export type InputAlignType = 'left' | 'center' | 'right' // text-align
 export type InputFormatTrigger = 'onChange' | 'onBlur' // onChange: 在输入时执行格式化 ; onBlur: 在失焦时执行格式化
-export type InputType =
-  | 'tel'
-  | 'url'
-  | 'date'
-  | 'file'
-  | 'text'
-  | 'time'
-  | 'week'
-  | 'color'
-  | 'digit'
-  | 'email'
-  | 'image'
-  | 'month'
-  | 'radio'
-  | 'range'
-  | 'reset'
-  | 'button'
-  | 'hidden'
-  | 'number'
-  | 'search'
-  | 'submit'
-  | 'checkbox'
-  | 'password'
-  | 'textarea'
-  | 'datetime-local'
+export type InputType = HTMLInputTypeAttribute
 
 export type InputRule = {
   pattern?: RegExp
@@ -59,7 +36,7 @@ export interface InputProps {
   labelWidth: string | number
   labelAlign: InputAlignType
   colon: boolean
-  inputAlign: InputAlignType | any
+  inputAlign: InputAlignType
   center: boolean
   required: boolean
   disabled: boolean
@@ -75,10 +52,10 @@ export interface InputProps {
   clearSize: string | number
   border: boolean
   formatTrigger: InputFormatTrigger
-  rules: Array<InputRule> | any
+  rules: Array<InputRule>
   errorMessage: string
-  errorMessageAlign: InputAlignType | any
-  rows: any
+  errorMessageAlign: InputAlignType
+  rows: string | number
   showWordLimit: boolean
   autofocus: boolean
   style?: CSSProperties
@@ -127,7 +104,7 @@ const defaultProps = {
   errorMessageAlign: '',
   showWordLimit: false,
   autofocus: false,
-} as InputProps
+} as unknown as InputProps
 
 export const Input: FunctionComponent<
   Partial<InputProps> & React.HTMLAttributes<HTMLDivElement>
