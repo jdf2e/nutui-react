@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavBar } from './navbar'
+import { Icon } from '../icon/icon'
+import { Tabs } from '../tabs/tabs'
+import { TabPane } from '../tabpane/tabpane'
 import { useTranslate } from '../../sites/assets/locale'
 
 interface T {
@@ -11,6 +14,7 @@ interface T {
   cfbdc781: string
   c3a3a1d2: string
   e51e4582: string
+  c9e6df49: string
 }
 
 const NavBarDemo = () => {
@@ -24,6 +28,7 @@ const NavBarDemo = () => {
       cfbdc781: '清空',
       c3a3a1d2: '购物车',
       e51e4582: '浏览记录',
+      c9e6df49: '自定义导航栏中间内容',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
@@ -34,6 +39,7 @@ const NavBarDemo = () => {
       cfbdc781: '清空',
       c3a3a1d2: '購物車',
       e51e4582: '瀏覽記錄',
+      c9e6df49: '自定義導航欄中間內容',
     },
     'en-US': {
       ce5c5446: 'Basic usage',
@@ -44,38 +50,76 @@ const NavBarDemo = () => {
       cfbdc781: 'empty',
       c3a3a1d2: 'shopping cart',
       e51e4582: 'Browsing history',
+      c9e6df49: 'Customize the middle content of the navigation bar',
     },
   })
+  const [tab1value, setTab1value] = useState('Tab 1')
   return (
     <>
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
         <NavBar
           title={translated.c38a08ef}
-          icon="share"
           leftShow
+          leftText={translated.a74a1fd4}
           onClickTitle={(e) => alert(translated.b840c88f)}
           onClickBack={(e) => alert(translated.a74a1fd4)}
-          onClickIcon={(e) => alert('icon')}
-        />
+          onClickRight={(e) => alert('icon')}
+        >
+          <Icon name="share" slot="right" />
+        </NavBar>
         <NavBar
           title={translated.e51e4582}
           desc={translated.cfbdc781}
           leftShow
           onClickTitle={(e) => alert(translated.b840c88f)}
           onClickBack={(e) => alert(translated.a74a1fd4)}
-          onClickClear={(e) => alert(translated.cfbdc781)}
+          onClickRight={(e) => alert(translated.cfbdc781)}
         />
         <NavBar
           title={translated.c3a3a1d2}
-          icon="more"
           desc={translated['8dab2f66']}
           titIcon="locationg3"
           onClickTitle={(e) => alert(translated.b840c88f)}
+          onClickRight={(e) => alert(translated['8dab2f66'])}
           onClickBack={(e) => alert(translated.a74a1fd4)}
-          onClickClear={(e) => alert(translated['8dab2f66'])}
           onClickIcon={(e) => alert('icon')}
-        />
+        >
+          <Icon name="more-x" slot="right" />
+        </NavBar>
+        <NavBar
+          title={translated.c38a08ef}
+          leftShow
+          border
+          leftText={translated.a74a1fd4}
+          onClickTitle={(e) => alert(translated.b840c88f)}
+          onClickBack={(e) => alert(translated.a74a1fd4)}
+          onClickRight={(e) => alert('icon')}
+        >
+          <Icon name="share" slot="right" />
+        </NavBar>
+        <h2>{translated.c9e6df49}</h2>
+        <NavBar
+          desc={translated['8dab2f66']}
+          onClickTitle={(e) => alert(translated.b840c88f)}
+          onClickRight={(e) => alert(translated['8dab2f66'])}
+          onClickBack={(e) => alert(translated.a74a1fd4)}
+          onClickIcon={(e) => alert('icon')}
+        >
+          <div slot="content">
+            <Tabs
+              value={tab1value}
+              onChange={({ paneKey }) => {
+                setTab1value(paneKey)
+              }}
+            >
+              <TabPane title="Tab 1"> Tab 1 </TabPane>
+              <TabPane title="Tab 2"> Tab 2 </TabPane>
+              <TabPane title="Tab 3"> Tab 3 </TabPane>
+            </Tabs>
+          </div>
+          <Icon name="more-x" slot="right" />
+        </NavBar>
       </div>
     </>
   )
