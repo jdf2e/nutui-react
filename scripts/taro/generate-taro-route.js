@@ -34,16 +34,16 @@ const create = async () => {
     taroConfig,
     `
 const subPackages = ${JSON.stringify(subpackages, null, 2)};\n
-export default {
+export default defineAppConfig ({
   pages: ['pages/index/index'],
   subPackages,
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
-    navigationBarTitleText: 'NutUI',
+    navigationBarTitleText: 'NutUI-React',
     navigationBarTextStyle: 'black'
   }
-}`,
+})`,
     'utf8'
   )
 }
