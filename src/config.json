@@ -753,6 +753,7 @@
           "desc": "配送时间日期选择",
           "sort": 7,
           "show": false,
+          "exportEmpty": true,
           "author": "zhaoqian16"
         },
         {
@@ -763,6 +764,7 @@
           "desc": "配送时间上门时间选择",
           "sort": 8,
           "show": false,
+          "exportEmpty": true,
           "author": "zhaoqian16"
         },
         {
