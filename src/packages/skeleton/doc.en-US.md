@@ -91,48 +91,27 @@ export default App;
 import React, { useState } from 'react'
 import { Skeleton, Switch, Avatar } from '@nutui/nutui-react';
 
-const NutSwitchStyle = {
-  display: 'flex',
-  margin: '0 16px 8px 0'
-}
-
-const RightContentStyle = {
-  marginLeft: '19px',
-  fontFamily: 'PingFangSC',
-  display: 'flex',
-  flexDirection: 'column'
-}
-
-const TitleStyle = {
-  fontSize: '14px',
-  color: 'rgba(51, 51, 51, 1)'
-}
-
-const DescStyle = {
-  marginTop: '10px',
-  fontSize: '13px',
-  color: 'rgba(154, 155, 157, 1)'
-}
 
 const App = () => {
   const [checked, setChecked] = useState(false)
   const changeStatus = (value: boolean, event: React.MouseEvent<Element, MouseEvent>) => {
+    console.log(`触发了change事件，开关状态：${value}`)
     setChecked(value)
   }
   return (
     <>
       <div className="content">
-        <Switch size="15px" change={(value, event) => changeStatus(value, event)} className={NutSwitchStyle} />
-        <Skeleton width={250} height={15} title animated avatar row={3} loading={checked}>
-          <div className="container" style={{ display: 'flex' }}>
+        <Switch size="15px" change={(value, event) => changeStatus(value, event)} />
+        <Skeleton width="250px" height="15px" title animated avatar row={3} loading={checked}>
+          <div className="container">
             <Avatar
               size="50"
               icon="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
             />
-            <div className="right-content" className={RightContentStyle}>
-              <span className="title" className={TitleStyle}>NutUI-React</span>
-              <div className="desc" className={DescStyle}>
-                A set of JD style lightweight mobile terminal Vue group library provides rich basic components and business components to help developers quickly build mobile applications.
+            <div className="right-content">
+              <span className="title">NutUI-React</span>
+              <div className="desc">
+                一套京东风格的轻量级移动端React组件库，提供丰富的基础组件和业务组件，帮助开发者快速搭建移动应用。
               </div>
             </div>
           </div>

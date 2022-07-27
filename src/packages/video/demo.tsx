@@ -91,7 +91,7 @@ const VideoDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <div className="demo demo-video">
         <h2>{translated['84aa6bce']}</h2>
         <Cell className="cell">
           <Video

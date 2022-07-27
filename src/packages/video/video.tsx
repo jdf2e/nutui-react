@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, FunctionComponent } from 'react'
+import classNames from 'classnames'
+import bem from '@/utils/bem'
 
 export interface VideoProps {
   source: {
@@ -14,6 +16,8 @@ export interface VideoProps {
     disabled?: boolean
     loop?: boolean
   }
+  className: string
+  style: React.CSSProperties
   play: (e: HTMLVideoElement) => void
   pause: (e: HTMLVideoElement) => void
   playend: (e: HTMLVideoElement) => void
@@ -36,11 +40,22 @@ const defaultProps = {
 export const Video: FunctionComponent<
   Partial<VideoProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { children, source, options, play, pause, playend } = {
+  const {
+    children,
+    source,
+    options,
+    className,
+    play,
+    pause,
+    playend,
+    ...restProps
+  } = {
     ...defaultProps,
     ...props,
   }
   const rootRef = useRef<HTMLVideoElement>(null)
+  const b = bem('video')
+  const classes = classNames(className, b(''))
 
   useEffect(() => {
     init()
@@ -80,7 +95,7 @@ export const Video: FunctionComponent<
   }
 
   return (
-    <div className="nut-video">
+    <div className={classes} {...restProps}>
       <video
         className="nut-video-player"
         muted={options.muted}
