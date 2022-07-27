@@ -93,6 +93,38 @@ export default App;
 
 :::
 
+### Tabpane 自动高度
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs, TabPane } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab2value, setTab2value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab2value} autoHeight onChange={({ paneKey }) => {
+        setTab2value(paneKey)
+      }}>
+        <TabPane title="Tab 1" pane-key="0">
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+        </TabPane>
+        <TabPane title="Tab 2" pane-key="1"> Tab 2 </TabPane>
+        <TabPane title="Tab 3" pane-key="2"> Tab 3 </TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
 ### 数据异步渲染 3s
 
 :::demo

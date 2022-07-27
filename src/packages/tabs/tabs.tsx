@@ -198,7 +198,10 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
             activeKey: value,
           }
 
-          if (value !== (child.props?.paneKey || idx) && autoHeight) {
+          if (
+            String(value) !== String(child.props?.paneKey || idx) &&
+            autoHeight
+          ) {
             childProps = {
               ...childProps,
               autoHeightClassName: 'inactive',
