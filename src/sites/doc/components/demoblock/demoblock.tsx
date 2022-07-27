@@ -21,7 +21,7 @@ ReactDOM.render(
 
     const sourceMainReactJs = compressText(sourceMainReactJsStr)
     const sourceReactJs = compressText(props.text)
-    const sourceScss = compressText(props.scss)
+    const sourceScss = compressText(props.scss || '')
     const onlineUrl = `https://codehouse.jd.com/?source=share&type=react&mainJs=${sourceMainReactJs}&appValue=${sourceReactJs}&scssValue=${sourceScss}`
     setOnlineUrl(onlineUrl)
   }, [])
