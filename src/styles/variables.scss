@@ -62,7 +62,7 @@ $button-primary-background-color: linear-gradient(
   $primary-color-end 100%
 );
 $button-info-color: $white;
-$button-info-border-color: rgba(73, 106, 242, 1);
+$button-info-border-color: #496af2;
 $button-info-background-color: linear-gradient(
   315deg,
   rgba(73, 143, 242, 1) 0%,
@@ -453,3 +453,7 @@ $circleprogress-primary-color: $primary-color !default;
 $circleprogress-path-color: #e5e9f2 !default;
 $circleprogress-text-color: #000000 !default;
 $circleprogress-text-size: $font-size-3 !default;
+
+// swiper
+
+$swiper-pagination-item-background-color: #ddd !default;
