@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTranslate } from '../../sites/assets/locale'
+import { useTranslate } from '@/sites/assets/locale/taro'
 import { Avatar } from './avatar'
 import Cell from '@/packages/cell'
 import Badge from '@/packages/badge'

@@ -14,11 +14,11 @@
 }
 
 @for $i from 1 through 24 {
-  .nut-col-offset-#{$i} {
-    margin-left: calc(100 / 24) * $i * 1%;
-  }
+  // .nut-col-offset-#{$i} {
+  //   margin-left: calc(100 / 24) * $i * 1%;
+  // }
 
-  .nut-col-#{$i} {
-    width: calc(100 / 24) * $i * 1%;
-  }
+  // .nut-col-#{$i} {
+  //   width: calc(100 / 24) * $i * 1%;
+  // }
 }

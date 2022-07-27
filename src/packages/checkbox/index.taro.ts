@@ -1,3 +1,3 @@
-import { Checkbox } from './checkbox'
+import { Checkbox } from './checkbox.taro'
 
 export default Checkbox

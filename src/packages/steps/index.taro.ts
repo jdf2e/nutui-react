@@ -1,3 +1,3 @@
-import { Steps } from './steps'
+import { Steps } from './steps.taro'
 
 export default Steps

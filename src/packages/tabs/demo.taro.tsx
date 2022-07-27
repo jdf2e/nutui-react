@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Tabs } from './tabs'
-import TabPane from '../tabpane'
-import Icon from '@/packages/icon'
+import { Icon, TabPane, Tabs } from '@/packages/nutui.react.taro'
 
 const TabsDemo = () => {
   const [tab1value, setTab1value] = useState('0')

@@ -10,11 +10,22 @@ const copyFile = (from, to) => {
   fse
     .copy(from, to)
     .then(() => {
-      console.log('success!>', to)
+      console.log('taro success!>', to)
     })
     .catch((err) => {
       console.error(err)
     })
+}
+
+const removeFile = async (url) => {
+  return new Promise((res, rej) => {
+    fse.remove(url, (err) => {
+      if (err) {
+        throw err
+      }
+      res(true)
+    })
+  })
 }
 
 // 在mobile-taro下创建相应的文件夹，并创建index.config.ts、index.tsx

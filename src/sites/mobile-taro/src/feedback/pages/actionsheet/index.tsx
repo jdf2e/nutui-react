@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { useTranslate } from '../../sites/assets/locale'
-import { ActionSheet, ItemType } from './actionsheet'
-import Cell from '@/packages/cell'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import { ActionSheet, Cell } from '@/packages/nutui.react.taro'
 
+export type ItemType<T> = { [key: string]: T }
 interface Item {
   name: string
   subname?: string

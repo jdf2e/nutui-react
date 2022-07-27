@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useTranslate } from '../../sites/assets/locale'
+import { useTranslate } from '@/sites/assets/locale/taro'
 import Cell from '@/packages/cell'
 import { Barrage } from './barrage'
 import Button from '@/packages/button'

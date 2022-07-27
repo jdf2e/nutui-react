@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
-import { useTranslate } from '../../sites/assets/locale'
-import { Steps } from './steps'
-import Button from '@/packages/button'
-import Step from '@/packages/step'
-import './demo.scss'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import { Button, Step, Steps } from '@/packages/nutui.react.taro'
+import '@/packages/steps/demo.scss'
 
 interface T {
   '74fc5d8a': string

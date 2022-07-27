@@ -1,3 +1,3 @@
-import { Pagination } from './pagination'
+import { Pagination } from './pagination.taro'
 
 export default Pagination

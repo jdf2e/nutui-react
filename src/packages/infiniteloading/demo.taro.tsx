@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useTranslate } from '../../sites/assets/locale'
+import { useTranslate } from '@/sites/assets/locale/taro'
 import { Infiniteloading } from './infiniteloading'
 import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useTranslate } from '../../sites/assets/locale'
+import { useTranslate } from '@/sites/assets/locale/taro'
 import { CircleProgress } from './circleprogress'
 import Button from '@/packages/button'
 import './demo.scss'

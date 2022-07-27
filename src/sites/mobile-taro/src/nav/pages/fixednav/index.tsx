@@ -1,7 +1,5 @@
 import React, { useState, MouseEvent } from 'react'
-import { Icon } from '../icon/icon'
-import { FixedNav } from './fixednav'
-import Drag from '../drag'
+import { FixedNav, Drag, Icon } from '@/packages/nutui.react.taro'
 
 const FixedNavDemo = () => {
   const navList = [

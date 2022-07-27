@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
-import { useTranslate } from '../../sites/assets/locale'
-import { Skeleton } from './skeleton'
-import Switch from '@/packages/switch'
-import Avatar from '@/packages/avatar'
-import './demo.scss'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import { Skeleton, Switch, Avatar } from '@/packages/nutui.react.taro'
+import '@/packages/skeleton/demo.scss'
 
 interface T {
   '3b02fdee': string

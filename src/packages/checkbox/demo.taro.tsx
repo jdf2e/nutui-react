@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react'
-import { useTranslate } from '../../sites/assets/locale'
-import Toast from '../toast'
-import { Cell } from '../cell/cell'
-import { Checkbox } from './checkbox'
-import { CheckboxGroup } from '@/packages/checkboxgroup/checkboxgroup'
-import Button from '@/packages/button'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import {
+  Button,
+  Cell,
+  Checkbox,
+  CheckboxGroup,
+  Toast,
+} from '@/packages/nutui.react.taro'
 
 interface T {
   '74fc5d8a': string

@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import { useTranslate } from '../../sites/assets/locale'
-import Radio from '@/packages/radio'
-import Cell from '@/packages/cell'
-import CellGroup from '@/packages/cellgroup'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import { Radio, Cell, CellGroup } from '@/packages/nutui.react.taro'
 
 const { RadioGroup } = Radio
 

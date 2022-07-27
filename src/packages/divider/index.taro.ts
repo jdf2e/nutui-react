@@ -1,3 +1,3 @@
-import { Divider } from './divider'
+import { Divider } from './divider.taro'
 
 export default Divider

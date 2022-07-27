@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTranslate } from '../../sites/assets/locale'
+import { useTranslate } from '@/sites/assets/locale/taro'
 import { Icon } from './icon'
 import Cell from '../cell'
 import CellGroup from '../cellgroup'

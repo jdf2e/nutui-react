@@ -13,33 +13,33 @@ const raws = []
 config.nav.map((item) => {
   item.packages.forEach((element) => {
     let { name, show, type, taro, exportEmpty } = element
-    if (show && taro) {
-      importStr += `import ${name} from '@/packages/${name.toLowerCase()}/index.taro'\n`
-      importScssStr += `import '@/packages/${name.toLowerCase()}/${name.toLowerCase()}.scss'\n`
-      packages.push(name)
-    }
-    if (show && taro) {
-      glob
-        .sync(
-          path.join(__dirname, `../../src/packages/${name.toLowerCase()}/`) +
-            '*.md'
-        )
-        .map((f) => {
-          let lang = 'zh-CN'
-          let matched = f.match(/doc\.([a-z-]+)\.md/i)
-          if (matched) {
-            ;[, lang] = matched
-            const langComponentName = `${name}${lang.replace('-', '')}`
-            importMarkdownStr += `import ${langComponentName} from '@/packages/${name.toLowerCase()}/doc.${lang}.md?raw';\n`
-            raws.push(langComponentName)
-          }
-        })
-      // fs.existsSync(path.join(__dirname, `../src/packages/${name.toLowerCase()}/doc.md`))
-      // console.log(__dirname)
-      importMarkdownStr += `import ${name} from '@/packages/${name.toLowerCase()}/doc.md?raw'\n`
-      mds.push(name)
-      raws.push(name)
-    }
+    // if (show ) {
+    importStr += `import ${name} from '@/packages/${name.toLowerCase()}/index.taro'\n`
+    importScssStr += `import '@/packages/${name.toLowerCase()}/${name.toLowerCase()}.scss'\n`
+    packages.push(name)
+    // }
+    // if (show) {
+    glob
+      .sync(
+        path.join(__dirname, `../../src/packages/${name.toLowerCase()}/`) +
+          '*.md'
+      )
+      .map((f) => {
+        let lang = 'zh-CN'
+        let matched = f.match(/doc\.([a-z-]+)\.md/i)
+        if (matched) {
+          ;[, lang] = matched
+          const langComponentName = `${name}${lang.replace('-', '')}`
+          importMarkdownStr += `import ${langComponentName} from '@/packages/${name.toLowerCase()}/doc.${lang}.md?raw';\n`
+          raws.push(langComponentName)
+        }
+      })
+    // fs.existsSync(path.join(__dirname, `../src/packages/${name.toLowerCase()}/doc.md`))
+    // console.log(__dirname)
+    importMarkdownStr += `import ${name} from '@/packages/${name.toLowerCase()}/doc.md?raw'\n`
+    mds.push(name)
+    raws.push(name)
+    // }
   })
 })
 

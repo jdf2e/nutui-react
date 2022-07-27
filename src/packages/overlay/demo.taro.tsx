@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
-// import { Overlay } from './overlay'
-// import Cell from '@/packages/cell'
-// import Button from '@/packages/button'
-import { Button, Overlay } from '@/packages/nutui.react.taro'
+import { Button, Cell, Overlay } from '@/packages/nutui.react.taro'
 import '@/packages/overlay/demo.scss'
 
 interface T {
@@ -65,36 +62,36 @@ const OverlayDemo = () => {
     <>
       <div className="demo">
         <h2>{translated['84aa6bce']}</h2>
-        {/* <Cell> */}
-        <Button type="primary" onClick={handleToggleShow}>
-          {translated['2a9e4928']}
-        </Button>
-        <Overlay visible={visible} onClick={onClose} />
-        {/* </Cell> */}
+        <Cell>
+          <Button type="primary" onClick={handleToggleShow}>
+            {translated['2a9e4928']}
+          </Button>
+          <Overlay visible={visible} onClick={onClose} />
+        </Cell>
         <h2>{translated.abbf9359}</h2>
-        {/* <Cell> */}
-        <Button type="primary" onClick={handleToggleShow2}>
-          {translated['2a9e4928']}
-        </Button>
-        <Overlay
-          visible={visible2}
-          onClick={onClose2}
-          overlayStyle={{
-            backgroundColor: '#38333333',
-          }}
-        />
-        {/* </Cell> */}
+        <Cell>
+          <Button type="primary" onClick={handleToggleShow2}>
+            {translated['2a9e4928']}
+          </Button>
+          <Overlay
+            visible={visible2}
+            onClick={onClose2}
+            overlayStyle={{
+              backgroundColor: '#38333333',
+            }}
+          />
+        </Cell>
         <h2>{translated.ec0d7acf}</h2>
-        {/* <Cell> */}
-        <Button type="success" onClick={handleToggleShow3}>
-          {translated.ec0d7acf}
-        </Button>
-        <Overlay visible={visible3} onClick={onClose3}>
-          <div className="wrapper">
-            <div className="content">{translated.ce1e18a2}</div>
-          </div>
-        </Overlay>
-        {/* </Cell> */}
+        <Cell>
+          <Button type="success" onClick={handleToggleShow3}>
+            {translated.ec0d7acf}
+          </Button>
+          <Overlay visible={visible3} onClick={onClose3}>
+            <div className="wrapper">
+              <div className="content">{translated.ce1e18a2}</div>
+            </div>
+          </Overlay>
+        </Cell>
       </div>
     </>
   )

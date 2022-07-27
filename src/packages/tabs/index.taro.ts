@@ -1,3 +1,3 @@
-import { Tabs } from './tabs'
+import { Tabs } from './tabs.taro'
 
 export default Tabs

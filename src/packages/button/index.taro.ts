@@ -1,3 +1,3 @@
-import { Button } from './button'
+import { Button } from './button.taro'
 
 export default Button

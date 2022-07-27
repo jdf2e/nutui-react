@@ -1,42 +1,47 @@
 import React from 'react'
-import { Divider } from './divider'
-import { Cell } from '../cell/cell'
+import { Divider } from '@/packages/nutui.react.taro'
 
 const DividerDemo = () => {
   return (
     <>
       <div className="demo">
         <h2>基础用法</h2>
-        <Cell>
-          <Divider />
-        </Cell>
+        <Divider />
         <h2>展示文本</h2>
-        <Cell>
-          <Divider>文本</Divider>
-        </Cell>
+        <Divider>文本</Divider>
         <h2>内容位置</h2>
-        <Cell>
-          <Divider contentPosition="left">文本</Divider>
-        </Cell>
-        <Cell>
-          <Divider contentPosition="right">文本</Divider>
-        </Cell>
+        <Divider contentPosition="left">文本</Divider>
+        <Divider contentPosition="right">文本</Divider>
         <h2>虚线</h2>
-        <Cell>
-          <Divider dashed>文本</Divider>
-        </Cell>
+        <Divider dashed>文本</Divider>
         <h2>自定义样式</h2>
-        <Cell>
-          <Divider
-            styles={{
-              color: '#1989fa',
-              borderColor: '#1989fa',
-              padding: '0 16px',
-            }}
+        <Divider
+          styles={{
+            color: '#1989fa',
+            borderColor: '#1989fa',
+            padding: '0 16px',
+          }}
+        >
+          文本
+        </Divider>
+        <h2>垂直分割线</h2>
+        <div style={{ fontSize: '14px', marginLeft: '27px', color: '#909ca4' }}>
+          文本
+          <Divider direction="vertical" />
+          <a
+            href="#/Divider"
+            style={{ color: '#1989fa', display: 'inline-block' }}
           >
-            文本
-          </Divider>
-        </Cell>
+            链接
+          </a>
+          <Divider direction="vertical" />
+          <a
+            href="#/Divider"
+            style={{ color: '#1989fa', display: 'inline-block' }}
+          >
+            链接
+          </a>
+        </div>
       </div>
     </>
   )

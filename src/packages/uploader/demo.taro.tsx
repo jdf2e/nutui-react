@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useTranslate } from '../../sites/assets/locale'
+import { useTranslate } from '@/sites/assets/locale/taro'
 import { Uploader, FileItem, FileType } from './uploader'
 import Button from '@/packages/button'
 

@@ -1,3 +1,3 @@
-import { ActionSheet } from './actionsheet'
+import { ActionSheet } from './actionsheet.taro'
 
 export default ActionSheet

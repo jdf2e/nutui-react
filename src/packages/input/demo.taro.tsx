@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Input } from './input'
+import { Input } from '@/packages/nutui.react.taro'
 
 const InputDemo = () => {
   const [value1, UpdateValue1] = useState('')
