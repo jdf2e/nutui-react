@@ -698,6 +698,16 @@
           "sort": 20,
           "show": true,
           "author": "hx"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Progress",
+          "type": "component",
+          "cName": "进度条",
+          "desc": "进度条",
+          "sort": 1,
+          "show": true,
+          "author": "ailululu"
         }
       ]
     },
