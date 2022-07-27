@@ -18,9 +18,9 @@
         "show": true
       },
       {
-        "name": "international",
+        "name": "international-react",
         "cName": "国际化",
-        "show": false
+        "show": true
       },
       {
         "name": "resource",
@@ -100,6 +100,17 @@
           "show": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008"
+        },
+        {
+          "version": "1.0.0",
+          "name": "ConfigProvider",
+          "type": "component",
+          "cName": "全局配置",
+          "desc": "可以配置多语言等全局属性",
+          "sort": 16,
+          "show": true,
+          "exportEmpty": true,
+          "author": "hanyuxinting"
         }
       ]
     },
@@ -680,17 +691,6 @@
         },
         {
           "version": "1.0.0",
-          "name": "ConfigProvider",
-          "type": "component",
-          "cName": "全局配置组件",
-          "desc": "可以配置多语言等全局属性",
-          "sort": 16,
-          "show": false,
-          "exportEmpty": true,
-          "author": "hanyuxinting"
-        },
-        {
-          "version": "1.0.0",
           "name": "VirtualList",
           "type": "component",
           "cName": "虚拟列表",
@@ -744,6 +744,38 @@
           "sort": 6,
           "show": true,
           "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "TimePannel",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "配送时间日期选择",
+          "sort": 7,
+          "show": false,
+          "exportEmpty": true,
+          "author": "zhaoqian16"
+        },
+        {
+          "version": "1.0.0",
+          "name": "TimeDetail",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "配送时间上门时间选择",
+          "sort": 8,
+          "show": false,
+          "exportEmpty": true,
+          "author": "zhaoqian16"
+        },
+        {
+          "version": "1.0.0",
+          "name": "TimeSelect",
+          "type": "component",
+          "cName": "配送时间",
+          "desc": "用于配送时间选择",
+          "sort": 20,
+          "show": true,
+          "author": "zhaoqian16"
         }
       ]
     }
