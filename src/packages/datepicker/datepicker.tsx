@@ -248,13 +248,19 @@ export const DatePicker: FunctionComponent<
   ) => {
     console.log('滨化', index, selectedValue, cacheValueData)
 
-    if (['date', 'datetime', 'datehour', 'month-day'].includes(type)) {
+    if (
+      ['date', 'datetime', 'datehour', 'month-day', 'year-month'].includes(type)
+    ) {
       const formatDate: (number | string)[] = []
       selectedValue.forEach((item) => {
         formatDate.push(item)
       })
       if (props.type === 'month-day' && formatDate.length < 3) {
         formatDate.unshift(new Date(minDate || maxDate).getFullYear())
+      }
+
+      if (props.type === 'year-month' && formatDate.length < 3) {
+        formatDate.push(new Date(minDate || maxDate).getDate())
       }
 
       const year = Number(formatDate[0])
@@ -264,7 +270,11 @@ export const DatePicker: FunctionComponent<
         getMonthEndDay(Number(formatDate[0]), Number(formatDate[1]))
       )
       let date: Date | null = null
-      if (props.type === 'date' || props.type === 'month-day') {
+      if (
+        props.type === 'date' ||
+        props.type === 'month-day' ||
+        props.type === 'year-month'
+      ) {
         date = new Date(year, month, day)
       } else if (props.type === 'datetime') {
         date = new Date(
@@ -279,7 +289,7 @@ export const DatePicker: FunctionComponent<
       }
 
       console.log(11, date)
-      setCurrentDate(formatValue(date as Date))
+      date && setCurrentDate(formatValue(date as Date))
     }
   }
 
@@ -372,7 +382,6 @@ export const DatePicker: FunctionComponent<
   }
 
   useEffect(() => {
-    console.log('初始化', formatValue(modelValue))
     setCurrentDate(formatValue(modelValue))
     // setListData(columns())
     // initDefault()
@@ -383,9 +392,12 @@ export const DatePicker: FunctionComponent<
   }, [visible])
 
   useEffect(() => {
-    console.log('当前选中值', currentDate)
+    console.log('datepicker listdate 更新')
+  }, [listData])
+
+  useEffect(() => {
     if (currentDate) {
-      // console.log(columns())
+      console.log('currentDate 更新')
       setListData(columns())
     }
   }, [currentDate])
