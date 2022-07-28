@@ -81,7 +81,7 @@ export const DatePicker: FunctionComponent<
   }
 
   const [show, setShow] = useState(false)
-  const [currentDate, setCurrentDate] = useState<Date | null>(null)
+  const [currentDate, setCurrentDate] = useState<Date | null>(modelValue)
   const [defaultValue, setDefaultValue] = useState<(string | number)[]>([])
   const [listData, setListData] = useState<PickerOption[][]>([])
   const pickerRef = useRef<pickerRefState>(null)
@@ -155,6 +155,7 @@ export const DatePicker: FunctionComponent<
 
   const ranges = (date?: Date) => {
     const curDate = date || currentDate
+    console.log(11, currentDate)
     if (!curDate) return []
     const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } =
       getBoundary('max', curDate)
@@ -229,11 +230,13 @@ export const DatePicker: FunctionComponent<
         formatDate.push(item)
       })
       if (type.toLocaleLowerCase() === 'month-day' && formatDate.length < 3) {
-        formatDate.unshift(new Date(minDate || maxDate).getFullYear())
+        formatDate.unshift(
+          new Date(modelValue || minDate || maxDate).getFullYear()
+        )
       }
 
       if (type.toLocaleLowerCase() === 'year-month' && formatDate.length < 3) {
-        formatDate.push(new Date(minDate || maxDate).getDate())
+        formatDate.push(new Date(modelValue || minDate || maxDate).getDate())
       }
 
       const year = Number(formatDate[0])
@@ -260,7 +263,8 @@ export const DatePicker: FunctionComponent<
       } else if (type.toLocaleLowerCase() === 'datehour') {
         date = new Date(year, month, day, Number(formatDate[3]))
       }
-      date && setCurrentDate(formatValue(date as Date))
+
+      date && isDate(date) && setCurrentDate(formatValue(date as Date))
     }
 
     props.onChangeDatePicker &&
@@ -360,8 +364,13 @@ export const DatePicker: FunctionComponent<
 
   useEffect(() => {
     setCurrentDate(formatValue(modelValue))
+
     // initDefault()
   }, [])
+
+  useEffect(() => {
+    setCurrentDate(formatValue(modelValue))
+  }, [modelValue])
 
   useEffect(() => {
     setShow(visible)
