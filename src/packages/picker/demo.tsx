@@ -276,6 +276,7 @@ const PickerDemo = () => {
           onClick={() => setIsVisible1(!isVisible1)}
         />
         <Picker
+          title="请选择城市"
           isVisible={isVisible1}
           listData={listData1}
           onConfirm={(values, list) => confirmPicker('base', values, list)}
