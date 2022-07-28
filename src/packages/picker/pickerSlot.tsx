@@ -44,7 +44,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const [startTime, setStartTime] = useState(0)
   const [startY, setStartY] = useState(0)
 
-  const [transformY, setTransformY] = useState(0)
+  const transformY = useRef(0)
   const [scrollDistance, setScrollDistance] = useState(0)
 
   const isHidden = (index: number) => {
@@ -82,7 +82,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   }
 
   const setMove = (move: number, type?: string, time?: number) => {
-    let updateMove = move + transformY
+    let updateMove = move + transformY.current
     if (type === 'end') {
       // 限定滚动距离
       if (updateMove > 0) {
@@ -128,7 +128,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     touch.start(event as any)
     setStartY(touch.deltaY)
     setStartTime(Date.now())
-    setTransformY(scrollDistance)
+    transformY.current = scrollDistance
   }
 
   const touchMove = (
@@ -211,6 +211,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   }
 
   useEffect(() => {
+    setScrollDistance(0)
+    transformY.current = 0
     modifyStatus(false)
     return () => {
       clearTimeout(timer)
