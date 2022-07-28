@@ -13,7 +13,7 @@ interface pickerRefState {
   updateChooseValue: (
     index: number,
     value: string,
-    cacheValueData: any[]
+    cacheValueData: PickerOption[]
   ) => void
 }
 
@@ -21,16 +21,26 @@ export interface DatePickerProps {
   modelValue: Date | null
   visible: boolean
   title: string
-  type: string
+  type: 'date' | 'time' | 'year-month' | 'month-day' | 'datehour' | 'datetime'
   isShowChinese: boolean
   minuteStep: number
   minDate: Date
   maxDate: Date
+  threeDimensional: boolean
   className?: string
   style?: React.CSSProperties
-  formatter?: (type: string, option: PickerOption) => PickerOption
+  formatter: (type: string, option: PickerOption) => PickerOption
+  filter: (type: string, option: PickerOption[]) => PickerOption[]
   onCloseDatePicker: () => void
-  onConfirmDatePicker: (list: any[]) => void
+  onConfirmDatePicker: (
+    values: (string | number)[],
+    options: PickerOption[]
+  ) => void
+  onChangeDatePicker: (
+    columnIndex: string | number,
+    values: (string | number)[],
+    options: PickerOption[]
+  ) => void
 }
 const currentYear = new Date().getFullYear()
 const defaultProps = {
@@ -39,6 +49,7 @@ const defaultProps = {
   title: '',
   type: 'date',
   isShowChinese: false,
+  threeDimensional: true,
   minuteStep: 1,
   minDate: new Date(currentYear - 10, 0, 1),
   maxDate: new Date(currentYear + 10, 11, 31),
@@ -59,6 +70,8 @@ export const DatePicker: FunctionComponent<
     formatter,
     onCloseDatePicker,
     onConfirmDatePicker,
+    filter,
+    threeDimensional,
     className,
     style,
     ...rest
@@ -70,7 +83,7 @@ export const DatePicker: FunctionComponent<
   const [show, setShow] = useState(false)
   const [currentDate, setCurrentDate] = useState<Date | null>(null)
   const [defaultValue, setDefaultValue] = useState<(string | number)[]>([])
-  const [listData, setListData] = useState<any[]>([])
+  const [listData, setListData] = useState<PickerOption[][]>([])
   const pickerRef = useRef<pickerRefState>(null)
 
   const isDate = (val: Date): val is Date => {
@@ -149,7 +162,7 @@ export const DatePicker: FunctionComponent<
     const { minYear, minDate, minMonth, minHour, minMinute, minSeconds } =
       getBoundary('min', curDate)
 
-    const result = [
+    let result = [
       {
         type: 'year',
         range: [minYear, maxYear],
@@ -176,69 +189,29 @@ export const DatePicker: FunctionComponent<
       },
     ]
 
-    let start = 0
-    let end = 0
-    switch (type) {
+    switch (type.toLocaleLowerCase()) {
       case 'date':
-        start = 0
-        end = 3
+        result = result.slice(0, 3)
         break
       case 'datetime':
-        start = 0
-        end = 5
+        result = result.slice(0, 5)
         break
       case 'time':
-        start = 3
-        end = 6
+        result = result.slice(3, 6)
+        break
+      case 'year-month':
+        result = result.slice(0, 2)
         break
       case 'month-day':
-        start = 1
-        end = 3
+        result = result.slice(1, 3)
         break
       case 'datehour':
-        start = 0
-        end = 4
+        result = result.slice(0, 4)
         break
       default:
-        start = 0
-        end = 0
+        ''
     }
-    return result.slice(start, end)
-  }
-
-  const initDefault = () => {
-    if (['date', 'datetime', 'time'].includes(type) && modelValue) {
-      const formatDate = [
-        modelValue.getFullYear(),
-        modelValue.getMonth() + 1,
-        modelValue.getDate(),
-        modelValue.getHours(),
-        modelValue.getMinutes(),
-        modelValue.getSeconds(),
-      ]
-      const [year, month, hour, minute, seconds] = formatDate
-      let [day] = formatDate
-
-      day = Math.min(day, getMonthEndDay(year, month))
-      let val: (string | number)[] = formatDate
-      if (isShowChinese) {
-        val = [
-          year + zhCNType.year,
-          month + zhCNType.month,
-          day + zhCNType.day,
-          hour + zhCNType.hour,
-          minute + zhCNType.minute,
-          seconds + zhCNType.seconds,
-        ]
-      }
-      if (type === 'date') {
-        setDefaultValue(val.splice(0, 3))
-      } else if (type === 'datetime') {
-        setDefaultValue(val.splice(0, 5))
-      } else if (type === 'time') {
-        setDefaultValue(val.splice(3, 3))
-      }
-    }
+    return result
   }
 
   const updateChooseValueCustmer = (
@@ -246,20 +219,20 @@ export const DatePicker: FunctionComponent<
     selectedValue: (number | string)[],
     cacheValueData: PickerOption[]
   ) => {
-    console.log('滨化', index, selectedValue, cacheValueData)
-
     if (
-      ['date', 'datetime', 'datehour', 'month-day', 'year-month'].includes(type)
+      ['date', 'datetime', 'datehour', 'month-day', 'year-month'].includes(
+        type.toLocaleLowerCase()
+      )
     ) {
       const formatDate: (number | string)[] = []
       selectedValue.forEach((item) => {
         formatDate.push(item)
       })
-      if (props.type === 'month-day' && formatDate.length < 3) {
+      if (type.toLocaleLowerCase() === 'month-day' && formatDate.length < 3) {
         formatDate.unshift(new Date(minDate || maxDate).getFullYear())
       }
 
-      if (props.type === 'year-month' && formatDate.length < 3) {
+      if (type.toLocaleLowerCase() === 'year-month' && formatDate.length < 3) {
         formatDate.push(new Date(minDate || maxDate).getDate())
       }
 
@@ -271,12 +244,12 @@ export const DatePicker: FunctionComponent<
       )
       let date: Date | null = null
       if (
-        props.type === 'date' ||
-        props.type === 'month-day' ||
-        props.type === 'year-month'
+        type.toLocaleLowerCase() === 'date' ||
+        type.toLocaleLowerCase() === 'month-day' ||
+        type.toLocaleLowerCase() === 'year-month'
       ) {
         date = new Date(year, month, day)
-      } else if (props.type === 'datetime') {
+      } else if (type.toLocaleLowerCase() === 'datetime') {
         date = new Date(
           year,
           month,
@@ -284,13 +257,14 @@ export const DatePicker: FunctionComponent<
           Number(formatDate[3]),
           Number(formatDate[4])
         )
-      } else if (props.type === 'datehour') {
+      } else if (type.toLocaleLowerCase() === 'datehour') {
         date = new Date(year, month, day, Number(formatDate[3]))
       }
-
-      console.log(11, date)
       date && setCurrentDate(formatValue(date as Date))
     }
+
+    props.onChangeDatePicker &&
+      props.onChangeDatePicker(index, selectedValue, cacheValueData)
   }
 
   const padZero = (num: number | string, targetLength = 2) => {
@@ -344,6 +318,9 @@ export const DatePicker: FunctionComponent<
     defaultValue[columnIndex] = arr[index].value
     setDefaultValue([...defaultValue])
 
+    if (props.filter && props.filter(type, arr)) {
+      return props.filter(type, arr)
+    }
     return arr
   }
 
@@ -383,7 +360,6 @@ export const DatePicker: FunctionComponent<
 
   useEffect(() => {
     setCurrentDate(formatValue(modelValue))
-    // setListData(columns())
     // initDefault()
   }, [])
 
@@ -392,19 +368,10 @@ export const DatePicker: FunctionComponent<
   }, [visible])
 
   useEffect(() => {
-    console.log('datepicker listdate 更新')
-  }, [listData])
-
-  useEffect(() => {
     if (currentDate) {
-      console.log('currentDate 更新')
       setListData(columns())
     }
   }, [currentDate])
-
-  useEffect(() => {
-    console.log('picker设置值', defaultValue)
-  }, [defaultValue])
 
   return (
     <div
@@ -418,14 +385,15 @@ export const DatePicker: FunctionComponent<
           listData={listData}
           onClose={onCloseDatePicker}
           defaultValueData={defaultValue}
-          onConfirm={(list: any[]) =>
-            onConfirmDatePicker && onConfirmDatePicker(list)
+          onConfirm={(values: (string | number)[], options: PickerOption[]) =>
+            onConfirmDatePicker && onConfirmDatePicker(values, options)
           }
           onChange={(
             index: number,
             value: (number | string)[],
             list: PickerOption[]
           ) => updateChooseValueCustmer(index, value, list)}
+          threeDimensional={threeDimensional}
           ref={pickerRef}
         />
       )}

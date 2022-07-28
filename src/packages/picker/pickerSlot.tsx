@@ -64,7 +64,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     if (type !== 'end') {
       nTime = 0
     }
-
     if (threeDimensional) {
       // listRef.current.style.webkitTransition = `transform ${nTime}ms cubic-bezier(0.17, 0.89, 0.45, 1)`
       // listRef.current.style.webkitTransform = `translate3d(0, ${translateY}px, 0)`
