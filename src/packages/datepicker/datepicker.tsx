@@ -68,7 +68,7 @@ export const DatePicker: FunctionComponent<
   }
 
   const [show, setShow] = useState(false)
-  const [currentDate, setCurrentDate] = useState(new Date())
+  const [currentDate, setCurrentDate] = useState<Date | null>(null)
   const [defaultValue, setDefaultValue] = useState<(string | number)[]>([])
   const [listData, setListData] = useState<any[]>([])
   const pickerRef = useRef<pickerRefState>(null)
@@ -88,9 +88,9 @@ export const DatePicker: FunctionComponent<
     minute: '分',
     seconds: '秒',
   }
-  const formatValue = (value: Date) => {
+  const formatValue = (value: Date | null) => {
     let cvalue = value
-    if (!isDate(cvalue)) {
+    if (!cvalue || (cvalue && !isDate(cvalue))) {
       cvalue = minDate
     }
     let timestmp = Math.max(cvalue.getTime(), minDate.getTime())
@@ -142,6 +142,7 @@ export const DatePicker: FunctionComponent<
 
   const ranges = (date?: Date) => {
     const curDate = date || currentDate
+    if (!curDate) return []
     const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } =
       getBoundary('max', curDate)
 
@@ -242,15 +243,15 @@ export const DatePicker: FunctionComponent<
 
   const updateChooseValueCustmer = (
     index: number,
-    selectedValue: PickerOption,
-    cacheValueData: any[]
+    selectedValue: (number | string)[],
+    cacheValueData: PickerOption[]
   ) => {
     console.log('滨化', index, selectedValue, cacheValueData)
 
     if (['date', 'datetime', 'datehour', 'month-day'].includes(type)) {
       const formatDate: (number | string)[] = []
-      Object.keys(selectedValue).forEach((i) => {
-        formatDate.push((selectedValue as any)[i])
+      selectedValue.forEach((item) => {
+        formatDate.push(item)
       })
       if (props.type === 'month-day' && formatDate.length < 3) {
         formatDate.unshift(new Date(minDate || maxDate).getFullYear())
@@ -277,6 +278,7 @@ export const DatePicker: FunctionComponent<
         date = new Date(year, month, day, Number(formatDate[3]))
       }
 
+      console.log(11, date)
       setCurrentDate(formatValue(date as Date))
     }
   }
@@ -308,11 +310,11 @@ export const DatePicker: FunctionComponent<
   const generateValue = (
     min: number,
     max: number,
-    val: number,
-    type: string
+    val: number | string,
+    type: string,
+    columnIndex: number
   ) => {
     let cmin = min
-    if (!(max > cmin)) return []
     const arr: Array<PickerOption> = []
     let index = 0
     while (cmin <= max) {
@@ -329,64 +331,68 @@ export const DatePicker: FunctionComponent<
       }
     }
 
+    defaultValue[columnIndex] = arr[index].value
+    setDefaultValue([...defaultValue])
+
     return arr
   }
 
-  const getDateIndex = (type: string, date?: Date) => {
-    const curDate = date || currentDate
-    let val = 0
-    switch (type) {
-      case 'year':
-        val = curDate.getFullYear()
-        break
-      case 'month':
-        val = curDate.getMonth()
-        break
-      case 'day':
-        val = curDate.getDate()
-        break
-      case 'hour':
-        val = curDate.getHours()
-        break
-      case 'minute':
-        val = curDate.getMinutes()
-        break
-      case 'seconds':
-        val = curDate.getSeconds()
-        break
-      default:
-        val = 0
+  const getDateIndex = (type: string) => {
+    if (!currentDate) return 0
+
+    let d = 0
+    if (type === 'year') {
+      d = (currentDate as Date).getFullYear()
+    } else if (type === 'month') {
+      d = (currentDate as Date).getMonth() + 1
+    } else if (type === 'day') {
+      d = (currentDate as Date).getDate()
+    } else if (type === 'hour') {
+      d = (currentDate as Date).getHours()
+    } else if (type === 'minute') {
+      d = (currentDate as Date).getMinutes()
+    } else if (type === 'seconds') {
+      d = (currentDate as Date).getSeconds()
     }
 
-    return val
+    return d
   }
 
   const columns = (date?: Date) => {
-    const val = ranges(date).map((res) => {
+    const val = ranges(date).map((res, columnIndex) => {
       return generateValue(
         res.range[0],
         res.range[1],
-        getDateIndex(res.type, date),
-        res.type
+        getDateIndex(res.type),
+        res.type,
+        columnIndex
       )
     })
     return val || []
   }
 
   useEffect(() => {
-    if (modelValue) {
-      setCurrentDate(modelValue)
-    }
-
-    console.log(columns())
-    setListData(columns())
+    console.log('初始化', formatValue(modelValue))
+    setCurrentDate(formatValue(modelValue))
+    // setListData(columns())
     // initDefault()
   }, [])
 
   useEffect(() => {
-    console.log('展开', listData)
     setShow(visible)
   }, [visible])
+
+  useEffect(() => {
+    console.log('当前选中值', currentDate)
+    if (currentDate) {
+      // console.log(columns())
+      setListData(columns())
+    }
+  }, [currentDate])
+
+  useEffect(() => {
+    console.log('picker设置值', defaultValue)
+  }, [defaultValue])
 
   return (
     <div
@@ -394,21 +400,26 @@ export const DatePicker: FunctionComponent<
       style={style}
       {...rest}
     >
-      <Picker
-        isVisible={show}
-        listData={listData}
-        onClose={onCloseDatePicker}
-        onConfirm={(list: any[]) =>
-          onConfirmDatePicker && onConfirmDatePicker(list)
-        }
-        onChange={(index: number, value: PickerOption, list: any[]) =>
-          updateChooseValueCustmer(index, value, list)
-        }
-        ref={pickerRef}
-      />
+      {listData.length > 0 && (
+        <Picker
+          isVisible={show}
+          listData={listData}
+          onClose={onCloseDatePicker}
+          defaultValueData={defaultValue}
+          onConfirm={(list: any[]) =>
+            onConfirmDatePicker && onConfirmDatePicker(list)
+          }
+          onChange={(
+            index: number,
+            value: (number | string)[],
+            list: PickerOption[]
+          ) => updateChooseValueCustmer(index, value, list)}
+          ref={pickerRef}
+        />
+      )}
     </div>
   )
 }
 
-// DatePicker.defaultProps = defaultProps
+DatePicker.defaultProps = defaultProps
 DatePicker.displayName = 'NutDatePicker'

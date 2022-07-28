@@ -38,7 +38,7 @@ const DatePickerDemo = () => {
         <h2>分钟数递增步长设置</h2>
         <Cell title="时间选择" desc={desc5} onClick={() => setShow5(true)} />
 
-        <DatePicker
+        {/* <DatePicker
           title="日期选择"
           visible={show1}
           isShowChinese
@@ -55,9 +55,9 @@ const DatePickerDemo = () => {
           isShowChinese
           onCloseDatePicker={() => setShow2(false)}
           onConfirmDatePicker={(list) => setDesc2(list.join('-'))}
-        />
+        /> */}
 
-        {/* <DatePicker
+        <DatePicker
           title="日期时间选择"
           minDate={minDate}
           maxDate={maxDate}
@@ -65,9 +65,9 @@ const DatePickerDemo = () => {
           type="datetime"
           onCloseDatePicker={() => setShow3(false)}
           onConfirmDatePicker={(list) => setDesc3(list.join('-'))}
-        /> */}
+        />
 
-        {/* <DatePicker
+        <DatePicker
           title="时间选择"
           type="time"
           minDate={minDate}
@@ -75,7 +75,7 @@ const DatePickerDemo = () => {
           visible={show4}
           onCloseDatePicker={() => setShow4(false)}
           onConfirmDatePicker={(list) => setDesc4(list.join('-'))}
-        /> */}
+        />
 
         {/* <DatePicker
           title="时间选择"
