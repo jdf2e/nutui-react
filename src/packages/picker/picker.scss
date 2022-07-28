@@ -95,6 +95,8 @@
     transform-style: preserve-3d;
     .nut-picker-roller-item {
       backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
       position: absolute;
       top: 0;
       width: 100%;
@@ -107,7 +109,7 @@
       height: 36px;
       line-height: 36px;
       color: #262626;
-      font-size: 16px;
+      font-size: 14px;
     }
     .nut-picker-roller-item-hidden {
       visibility: hidden;

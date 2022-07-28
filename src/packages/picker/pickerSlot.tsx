@@ -211,7 +211,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   }
 
   useEffect(() => {
-    modifyStatus(true)
+    modifyStatus(false)
     return () => {
       clearTimeout(timer)
     }
