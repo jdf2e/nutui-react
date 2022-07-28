@@ -1,0 +1,26 @@
+.nut-timedetail {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  padding: 0 0 50px 13px;
+
+  &__item {
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #f6f7f9;
+    border-radius: 5px;
+    color: #333;
+    font-size: 14px;
+    border: 1px solid transparent;
+    font-weight: 700;
+  }
+  &__item-active {
+    background-color: #fa2c1926;
+    border: 1px solid #fa2c19;
+    color: #fa2c19;
+  }
+}
