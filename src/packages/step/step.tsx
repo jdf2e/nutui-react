@@ -50,7 +50,9 @@ export const Step: FunctionComponent<
     return index === +parent.propSteps.current ? 'process' : 'wait'
   }
   const handleClickStep = () => {
-    parent.propSteps?.clickStep(activeIndex)
+    if (parent.propSteps?.clickStep) {
+      parent.propSteps?.clickStep(activeIndex)
+    }
   }
 
   const b = bem('step')
@@ -61,15 +63,21 @@ export const Step: FunctionComponent<
     className,
     b('')
   )
+
+  const renderIconClass = () => {
+    if (!dot && icon) {
+      return 'nut-step-icon is-icon'
+    }
+    if (!dot && !icon) {
+      return 'nut-step-icon is-text'
+    }
+    return 'nut-step-icon'
+  }
   return (
     <div className={classes} {...restProps} onClick={handleClickStep}>
       <div className="nut-step-head">
         <div className="nut-step-line" />
-        <div
-          className={`nut-step-icon ${
-            !dot ? (icon ? 'is-icon' : 'is-text') : ''
-          }`}
-        >
+        <div className={renderIconClass()}>
           {icon ? (
             <Icon
               className="nut-step-icon-inner"
@@ -77,10 +85,8 @@ export const Step: FunctionComponent<
               name={icon}
               size={size}
             />
-          ) : dot ? (
-            <span />
           ) : (
-            <span className="nut-step-inner">{activeIndex}</span>
+            !dot && <span className="nut-step-inner">{activeIndex}</span>
           )}
         </div>
       </div>
