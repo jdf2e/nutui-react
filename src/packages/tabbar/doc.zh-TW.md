@@ -1,18 +1,18 @@
-#  Tabbar 标签栏
+#  Tabbar 標籤欄
 
-### 介绍
+### 介紹
 
-底部导航常用场景
+導航最常用場景
 
-### 安装
+### 安裝
 
 ```ts
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
+從“@nutui/nutui-react”導入 { Tabbar, TabbarItem }；
 ```
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎語言
 
 :::demo
 ```tsx
@@ -25,18 +25,18 @@ const App = () => (
       console.log(idx)
     }}
   >
-    <TabbarItem tabTitle="首页" icon="home" />
-    <TabbarItem tabTitle="分类" icon="category" />
-    <TabbarItem tabTitle="发现" icon="find" />
-    <TabbarItem tabTitle="购物车" icon="cart" />
-    <TabbarItem tabTitle="我的" icon="my" />
+    <TabbarItem tabTitle="首頁" icon="首頁" />
+    <TabbarItem tabTitle="分類" icon="category" />
+    <TabbarItem tabTitle="發現" icon="find" />
+    <TabbarItem tabTitle="購物車" icon="cart" />
+    <TabbarItem tabTitle="我的" icon="我的" />
   </Tabbar>
 );
 
 export default App;
 ```
 :::
-### 自定义选中
+### 自定義選中
 
 :::demo
 ```tsx
@@ -45,18 +45,18 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar visible={2}>
-    <TabbarItem tabTitle="首页" icon="home" />
-    <TabbarItem tabTitle="分类" icon="category" />
-    <TabbarItem tabTitle="发现" icon="find" />
-    <TabbarItem tabTitle="购物车" icon="cart" />
-    <TabbarItem tabTitle="我的" icon="my" />
+    <TabbarItem tabTitle="首頁" icon="首頁" />
+    <TabbarItem tabTitle="分類" icon="category" />
+    <TabbarItem tabTitle="發現" icon="find" />
+    <TabbarItem tabTitle="購物車" icon="cart" />
+    <TabbarItem tabTitle="我的" icon="我的" />
   </Tabbar>
 );
 
 export default App;
 ```
 :::
-### 徽标提示
+### 徽標提示
 
 :::demo
 ```tsx
@@ -65,10 +65,10 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem tabTitle="首页" icon="home" num="11" />
-    <TabbarItem tabTitle="分类" icon="category" />
-    <TabbarItem tabTitle="发现" icon="find" />
-    <TabbarItem tabTitle="购物车" icon="cart" num="110" />
+    <TabbarItem tabTitle="首頁" icon="home" num="11" />
+    <TabbarItem tabTitle="分類" icon="category" />
+    <TabbarItem tabTitle="發現" icon="find" />
+    <TabbarItem tabTitle="購物車" icon="cart" num="110" />
     <TabbarItem tabTitle="我的" icon="my" />
   </Tabbar>
 );
@@ -76,7 +76,7 @@ const App = () => (
 export default App;
 ```
 :::
-### 自定义颜色
+### 自定義顏色
 
 :::demo
 ```tsx
@@ -85,10 +85,10 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem tabTitle="首页" icon="home" />
-    <TabbarItem tabTitle="分类" icon="category" />
-    <TabbarItem tabTitle="发现" icon="find" />
-    <TabbarItem tabTitle="购物车" icon="cart" />
+    <TabbarItem tabTitle="首頁" icon="home" />
+    <TabbarItem tabTitle="分類" icon="category" />
+    <TabbarItem tabTitle="發現" icon="find" />
+    <TabbarItem tabTitle="購物車" icon="cart" />
     <TabbarItem tabTitle="我的" icon="my" />
   </Tabbar>
 );
@@ -96,7 +96,7 @@ const App = () => (
 export default App;
 ```
 :::
-### 三个icon的tabbar
+### 三個icon的tabbar
 
 :::demo
 ```tsx
@@ -105,16 +105,16 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem tabTitle="首页" icon="home" />
-    <TabbarItem tabTitle="分类" icon="category" />
-    <TabbarItem tabTitle="发现" icon="find" />
+    <TabbarItem tabTitle="首頁" icon="home" />
+    <TabbarItem tabTitle="分類" icon="category" />
+    <TabbarItem tabTitle="發現" icon="find" />
   </Tabbar>
 );  
 
 export default App;
 ```
 :::
-### 固定底部，可自由跳转
+### 固定底部，可自由跳轉
 
 :::demo
 ```tsx
@@ -123,10 +123,10 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar bottom>
-    <TabbarItem tabTitle="首页" href="" icon="home" />
-    <TabbarItem tabTitle="分类" icon="category" />
-    <TabbarItem tabTitle="发现" icon="find" />
-    <TabbarItem tabTitle="购物车" href="https://m.jd.com" icon="cart" />
+    <TabbarItem tabTitle="首頁" href="" icon="home" />
+    <TabbarItem tabTitle="分類" icon="category" />
+    <TabbarItem tabTitle="發現" icon="find" />
+    <TabbarItem tabTitle="購物車" href="https://m.jd.com" icon="cart" />
     <TabbarItem tabTitle="我的" to="/" icon="my" />
   </Tabbar>
 );
@@ -141,26 +141,26 @@ export default App;
 
 ### nut-tabbar
 
-| 字段            | 说明               | 类型   | 默认值  |
+| 字段            | 說明               | 類型   | 默認值  |
 |-----------------|--------------------|--------|---------|
-| visible | 选中标签的索引值   | number | 0       |
-| bottom          | 是否固定在页面底部 | Booble | false   |
-| unactiveColor  | icon未激活的颜色   | string | #7d7e80 |
-| activeColor    | icon激活的颜色     | string | #1989fa |
+| visible | 選中標籤的索引值   | number | 0       |
+| bottom          | 是否固定在頁面底部 | Booble | false   |
+| unactiveColor  | icon未激活的顏色   | string | #7d7e80 |
+| activeColor    | icon激活的顏色     | string | #1989fa |
 
 ### tabbar-item
 
-| 字段      | 说明                                      | 类型   | 默认值 |
+| 字段      | 說明                                      | 類型   | 默認值 |
 |-----------|-------------------------------------------|--------|--------|
-| tabTitle | 标签页的标题                              | String | --     |
-| icon      | 标签页显示的[图标名称](#/icon) 或图片链接 | String | --     |
-| href      | 标签页的跳转链接；如果同时存在 `to`，优先级高于 to   | String | --     |
-| to        | 	标签页的路由对象，等于 React Router 的 [to 属性](https://v5.reactrouter.com/web/api/Link/to-string) 属性 | string｜object | --     |
-| num       | 页签右上角的数字角标，超出99之后为99+     | Number | --     |
+| tabTitle | 標籤頁的標題                              | String | --     |
+| icon      | 標籤頁顯示的[圖標名稱](#/icon) 或圖片鏈接 | String | --     |
+| href      | 標籤頁的跳轉鏈接；如果同時存在 `to`，優先級高於 to   | String | --     |
+| to        | 	標籤頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性 | string｜object | --     |
+| num       | 頁簽右上角的數字角標，超出99之後為99+     | Number | --     |
 
 
 ### Event
 
-| 事件名称   | 说明               | 回调参数           |
+| 事件名稱   | 說明               | 回調參數           |
 |------------|--------------------|--------------------|
-| tabSwitch | 切换页签时触发事件 | 点击的数据和索引值 |
+| tabSwitch | 切換頁籤時觸發事件 | 點擊的數據和索引值 |

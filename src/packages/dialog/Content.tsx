@@ -5,14 +5,23 @@ interface ContentProps {
   visible?: boolean
   title?: ReactNode
   footer?: ReactNode
-  textAlign?: any
+  textAlign?: string
   footerDirection?: string
+  onClickSelf?: () => void
 }
 
 export const Content: FunctionComponent<
   Partial<ContentProps> & HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { visible, title, footer, textAlign, footerDirection, children } = props
+  const {
+    visible,
+    title,
+    footer,
+    textAlign,
+    footerDirection,
+    onClickSelf,
+    children,
+  } = props
 
   let headerNode: ReactNode
   if (title) {
@@ -32,14 +41,21 @@ export const Content: FunctionComponent<
     )
   }
 
+  const handleClick = () => {
+    onClickSelf && onClickSelf()
+  }
+
   return (
-    <div className="nut-dialog__outer">
+    <div className="nut-dialog__outer" onClick={handleClick}>
       <div
         className="nut-dialog"
         style={{ display: visible ? 'flex' : 'none' }}
       >
         {headerNode}
-        <div className="nut-dialog__content" style={{ textAlign }}>
+        <div
+          className="nut-dialog__content"
+          style={{ textAlign } as React.CSSProperties}
+        >
           <div>{children}</div>
         </div>
         {footerNode}
