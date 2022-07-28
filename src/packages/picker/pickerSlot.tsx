@@ -4,14 +4,15 @@ import React, {
   useRef,
   ForwardRefRenderFunction,
 } from 'react'
+import { PickerOption } from './picker'
 import { useTouch } from '../../utils/useTouch'
 
 interface IPickerSlotProps {
   keyIndex?: number
   defaultValue?: string | number
-  listData?: any[]
+  listData?: PickerOption[]
   threeDimensional: boolean
-  chooseItem?: (val: string, idx: number) => void
+  chooseItem?: (val: PickerOption, idx: number) => void
 }
 
 const InternalPickerSlot: ForwardRefRenderFunction<
@@ -131,10 +132,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     transformY.current = scrollDistance
   }
 
-  const touchMove = (
-    event: React.TouchEvent<HTMLElement>,
-    listData?: any[]
-  ) => {
+  const touchMove = (event: React.TouchEvent<HTMLElement>) => {
     touch.move(event as any)
     if ((touch as any).isVertical) {
       preventDefault(event, true)
@@ -170,7 +168,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     return nDistance
   }
 
-  const modifyStatus = (type?: boolean, val?: any) => {
+  const modifyStatus = (type?: boolean, val?: string | number) => {
     const value = val || defaultValue
     let index = -1
     if (value) {
@@ -182,7 +180,11 @@ const InternalPickerSlot: ForwardRefRenderFunction<
         return false
       })
     } else {
-      index = listData.indexOf(defaultValue)
+      listData.forEach((item, i) => {
+        if (item.value === defaultValue) {
+          index = i
+        }
+      })
     }
 
     setCurrIndex(index === -1 ? 1 : index + 1)

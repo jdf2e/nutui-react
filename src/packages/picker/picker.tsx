@@ -20,7 +20,7 @@ export interface PickerOption {
 export interface IPickerProps {
   isVisible: boolean
   title?: string
-  listData: any[]
+  listData: (PickerOption | PickerOption[])[]
   defaultValueData?: (number | string)[]
   className?: ''
   style?: React.CSSProperties
@@ -81,7 +81,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
       ) {
         const data = [...defaultValueData]
         setchooseValueData(data)
-        setColumnsList(normalListData())
+        setColumnsList(normalListData() as PickerOption[][])
       }
     }, [defaultValueData])
 
@@ -149,7 +149,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
               setchooseValueData([...chooseValueData])
             }
 
-            setColumnsList(normalListData())
+            setColumnsList(normalListData() as PickerOption[][])
           } else {
             setchooseValueData((data) => {
               const cdata = [...data]
@@ -175,14 +175,14 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
           return listData
         case 'cascade':
           // 级联数据处理
-          return formatCascade(listData, chooseValueData)
+          return formatCascade(listData as PickerOption[], chooseValueData)
         default:
           return [listData]
       }
     }
     // 每一列的类型
     const columnsType = () => {
-      const firstColumn: PickerOption = listData[0]
+      const firstColumn: PickerOption | PickerOption[] = listData[0]
       if (firstColumn) {
         if (Array.isArray(firstColumn)) {
           return 'multiple'
@@ -225,9 +225,9 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
     }
 
     const init = () => {
-      const data: React.SetStateAction<any[]> = []
+      const data: (string | number)[] = []
 
-      const normalData = normalListData()
+      const normalData: PickerOption[][] = normalListData() as PickerOption[][]
 
       setColumnsList(normalData)
 
@@ -268,7 +268,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
                   defaultValue={chooseValueData?.[index]}
                   listData={item}
                   threeDimensional={threeDimensional}
-                  chooseItem={(value: any, index: number) =>
+                  chooseItem={(value: PickerOption, index: number) =>
                     chooseItem(value, index)
                   }
                   key={index}
