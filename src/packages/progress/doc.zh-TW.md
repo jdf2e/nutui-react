@@ -1,18 +1,18 @@
-# Progress 进度条
+# Progress 進度條
 
-### 介绍
+### 介紹
 
-展示操作或任务的当前进度。
+展示操作或任務的當前進度。
 
-### 安装
+### 安裝
 
 ```js
 import { Progress, Icon } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 ```jsx
@@ -32,7 +32,7 @@ export default App;
 ```
 :::
 
-### 设置高度和颜色
+### 線形進度條-設置顏色高度
 
 :::demo
 ```jsx
@@ -55,7 +55,7 @@ export default App;
 ```
 :::
 
-### 设置百分比不显示
+### 百分比不顯示
 
 :::demo
 ```jsx
@@ -76,7 +76,7 @@ export default App;
 ```
 :::
 
-### 设置百分比外显
+### 百分比外顯
 
 :::demo
 ```jsx
@@ -96,7 +96,7 @@ export default App;
 ```
 :::
 
-### 设置百分比内显
+### 百分比內顯
 
 :::demo
 ```jsx
@@ -117,7 +117,7 @@ export default App;
 ```
 :::
 
-### 设置内显自定义内容
+### 百分比內顯自定義
 
 :::demo
 ```jsx
@@ -143,7 +143,7 @@ export default App;
 ```
 :::
 
-### 自定义尺寸
+### 自定義尺寸
 
 :::demo
 ```jsx
@@ -179,7 +179,7 @@ export default App;
 ```
 :::
 
-### 设置状态显示
+### 狀態顯示
 
 :::demo
 ```jsx
@@ -217,7 +217,7 @@ export default App;
 ```
 :::
 
-### 动态改变
+### 動態改變
 
 :::demo
 ```jsx
@@ -245,7 +245,7 @@ const App = () => {
           setValue(num);
         }}
       >
-        减少
+        減少
       </Button>
       <Button 
         type="primary" 
@@ -271,7 +271,7 @@ export default App;
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值
+| 屬性 | 說明 | 類型 | 預設值
 |----- | ----- | ----- | -----
 | percentage | 百分比 | Number | 0
 | isShowPercentage | 是否需要展示百分号 | Boolean | true

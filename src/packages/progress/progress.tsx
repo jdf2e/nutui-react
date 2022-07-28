@@ -1,12 +1,14 @@
-import React, { FunctionComponent } from 'react'
-import { Icon } from '@/packages/icon/icon'
+import React, { FunctionComponent, CSSProperties, ReactNode } from 'react'
 import classNames from 'classnames'
+import { Icon } from '@/packages/icon/icon'
 import bem from '@/utils/bem'
 
 export type ProgressSize = 'small' | 'base' | 'large'
 export type TextType = 'icon' | 'text'
 
 export interface ProgressProps {
+  className: string
+  style: CSSProperties
   isShowPercentage: boolean
   percentage: number
   fillColor: string
@@ -24,10 +26,12 @@ export interface ProgressProps {
   iconColor: string
   iconSize: string
   rounded: boolean | string
-  children: any
+  children: ReactNode
 }
 
 const defaultProps = {
+  className: '',
+  style: {},
   isShowPercentage: true,
   percentage: 0,
   fillColor: '#f3f3f3',
@@ -51,6 +55,8 @@ export const Progress: FunctionComponent<
   Partial<ProgressProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
+    className,
+    style,
     isShowPercentage,
     percentage,
     fillColor,
@@ -69,6 +75,7 @@ export const Progress: FunctionComponent<
     iconSize,
     rounded,
     children,
+    ...rest
   } = { ...defaultProps, ...props }
 
   const b = bem('progress')
@@ -126,44 +133,42 @@ export const Progress: FunctionComponent<
   }
 
   return (
-    <>
-      <div className={classes}>
-        <div className={classesOuter} style={stylesOuter}>
-          <div className={classesInner} style={stylesInner}>
-            {showText && textInside && (
-              <>
-                {children ? (
-                  <div className={classesInsideText} style={stylesInsideIcon}>
-                    {children}
-                  </div>
-                ) : (
-                  <div className={classesInsideText} style={stylesInsideText}>
-                    <span
-                      className={classesTextInner}
-                      style={{ color: textColor ? textColor : '#fff' }}
-                    >
-                      {percentage}
-                      {isShowPercentage ? '%' : ''}
-                    </span>
-                  </div>
-                )}
-              </>
-            )}
-          </div>
+    <div className={`${classes} ${className}`} style={style} {...rest}>
+      <div className={classesOuter} style={stylesOuter}>
+        <div className={classesInner} style={stylesInner}>
+          {showText && textInside && (
+            <>
+              {children ? (
+                <div className={classesInsideText} style={stylesInsideIcon}>
+                  {children}
+                </div>
+              ) : (
+                <div className={classesInsideText} style={stylesInsideText}>
+                  <span
+                    className={classesTextInner}
+                    style={{ color: textColor ? textColor : '#fff' }}
+                  >
+                    {percentage}
+                    {isShowPercentage ? '%' : ''}
+                  </span>
+                </div>
+              )}
+            </>
+          )}
         </div>
-        {showText && !textInside && (
-          <div className={classesText} style={stylesText}>
-            {textType == 'text' && (
-              <span className={classesTextInner} style={{ color: textColor ? textColor : '#333' }}>
-                {percentage}
-                {isShowPercentage ? '%' : ''}
-              </span>
-            )}
-            {textType == 'icon' && <Icon size={iconSize} name={iconName} color={iconColor}></Icon>}
-          </div>
-        )}
       </div>
-    </>
+      {showText && !textInside && (
+        <div className={classesText} style={stylesText}>
+          {textType === 'text' && (
+            <span className={classesTextInner} style={{ color: textColor ? textColor : '#333' }}>
+              {percentage}
+              {isShowPercentage ? '%' : ''}
+            </span>
+          )}
+          {textType === 'icon' && <Icon size={iconSize} name={iconName} color={iconColor}></Icon>}
+        </div>
+      )}
+    </div>
   )
 }
 

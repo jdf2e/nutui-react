@@ -1,36 +1,98 @@
 import React, { useState } from 'react'
+import { useTranslate } from '../../sites/assets/locale'
 import { Progress } from './progress'
 import { Cell } from '@/packages/cell/cell'
 import { Icon } from '@/packages/icon/icon'
 import { Button } from '@/packages/button/button'
 
+interface T {
+  basic: string
+  customStyle: string
+  noShowPercentage: string
+  showPercentage: string
+  showInsidePercentage: string
+  customContent: string
+  customSize: string
+  statusDisplay: string
+  dynamicChange: string
+  reduce: string
+  add: string
+}
+
 const ProgressDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基础用法',
+      customStyle: '线形进度条-设置颜色高度',
+      noShowPercentage: '百分比不显示',
+      showPercentage: '百分比外显',
+      showInsidePercentage: '百分比内显',
+      customContent: '百分比内显自定义',
+      customSize: '自定义尺寸',
+      statusDisplay: '状态显示',
+      dynamicChange: '动态改变',
+      reduce: '减少',
+      add: '增加',
+    },
+    'zh-TW': {
+      basic: '基礎用法',
+      customStyle: '線形進度條-設置顏色高度',
+      noShowPercentage: '百分比不顯示',
+      showPercentage: '百分比外顯',
+      showInsidePercentage: '百分比內顯',
+      customContent: '百分比內顯自定義',
+      customSize: '自定義尺寸',
+      statusDisplay: '狀態顯示',
+      dynamicChange: '動態改變',
+      reduce: '減少',
+      add: '增加',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      customStyle: 'Custom Style',
+      noShowPercentage: 'Don’t Show Percentage',
+      showPercentage: 'Percentage displayed outside',
+      showInsidePercentage: 'Percentage displayed inside',
+      customContent: 'Custom Content',
+      customSize: 'Custom Size',
+      statusDisplay: 'Status Display',
+      dynamicChange: 'Dynamic Change',
+      reduce: 'reduce',
+      add: 'add',
+    },
+  })
+
   const [value, setValue] = useState(0)
 
   return (
     <>
       <div className="demo">
-        <h2>基础用法</h2>
+        <h2>{translated.basic}</h2>
         <Cell>
           <Progress percentage={30} />
         </Cell>
-        <h2>设置高度和颜色</h2>
+        <h2>{translated.customStyle}</h2>
         <Cell>
-          <Progress percentage={30} strokeColor="rgba(250,44,25,0.47)" textColor="red" />
+          <Progress
+            percentage={30}
+            strokeColor="rgba(250,44,25,0.47)"
+            stroke-width="20"
+            textColor="red"
+          />
         </Cell>
-        <h2>设置百分比不显示</h2>
+        <h2>{translated.noShowPercentage}</h2>
         <Cell>
           <Progress percentage={50} showText={false} />
         </Cell>
-        <h2>百分比外显</h2>
+        <h2>{translated.showPercentage}</h2>
         <Cell>
           <Progress percentage={30} />
         </Cell>
-        <h2>百分比内显</h2>
+        <h2>{translated.showInsidePercentage}</h2>
         <Cell>
           <Progress percentage={60} textInside />
         </Cell>
-        <h2>内显自定义内容</h2>
+        <h2>{translated.customContent}</h2>
         <Cell>
           <Progress percentage={60} textInside>
             <Icon
@@ -39,7 +101,7 @@ const ProgressDemo = () => {
             ></Icon>
           </Progress>
         </Cell>
-        <h2>自定义尺寸</h2>
+        <h2>{translated.customSize}</h2>
         <Cell>
           <Progress percentage={30} size="small" textInside />
         </Cell>
@@ -49,7 +111,7 @@ const ProgressDemo = () => {
         <Cell>
           <Progress percentage={70} size="large" textInside />
         </Cell>
-        <h2>状态显示</h2>
+        <h2>{translated.statusDisplay}</h2>
         <Cell>
           <Progress
             percentage={30}
@@ -70,7 +132,7 @@ const ProgressDemo = () => {
             iconColor="red"
           />
         </Cell>
-        <h2>动态改变</h2>
+        <h2>{translated.dynamicChange}</h2>
         <Cell>
           <Progress percentage={value} />
         </Cell>
@@ -87,7 +149,7 @@ const ProgressDemo = () => {
               setValue(num)
             }}
           >
-            减少
+            {translated.reduce}
           </Button>
           <Button
             type="primary"
@@ -100,7 +162,7 @@ const ProgressDemo = () => {
               setValue(num)
             }}
           >
-            增加
+            {translated.add}
           </Button>
         </Cell>
       </div>

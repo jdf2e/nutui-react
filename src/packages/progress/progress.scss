@@ -15,29 +15,29 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border-radius: 12px;
+      border-radius: $progress-border-radius;
       animation: progressActive 2s ease-in-out infinite;
     }
   }
   &-small {
-    height: 5px;
+    height: $progress-small-height;
     .nut-progress-text {
-      font-size: 7px;
-      padding: 0 4px;
+      font-size: $progress-small-font-size;
+      padding: $progress-small-padding;
     }
   }
   &-base {
-    height: 10px;
+    height: $progress-base-height;
     .nut-progress-text {
-      font-size: 9px;
-      padding: 0 5px;
+      font-size: $progress-base-font-size;
+      padding: $progress-base-padding;
     }
   }
   &-large {
-    height: 15px;
+    height: $progress-large-height;
     .nut-progress-text {
-      font-size: 13px;
-      padding: 0 5px;
+      font-size: $progress-large-font-size;
+      padding: $progress-large-padding;
     }
   }
   &-inner {
@@ -45,15 +45,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    transition: all 0.4s;
   }
   &-text {
     display: flex;
-    padding: 0 5px;
-    font-size: 13px;
+    padding: $progress-text-padding;
+    font-size: $progress-text-font-size;
     line-height: 1;
     min-width: 35px;
-  }
-  &-text__inner {
   }
   &-insidetext {
     position: absolute;
@@ -64,7 +63,7 @@
     min-width: 0px;
     transition: all 0.4s;
     transform: translate(-50%);
-    border-radius: 5px;
+    border-radius: $progress-insidetext-border-radius;
   }
   @keyframes progressActive {
     0% {
