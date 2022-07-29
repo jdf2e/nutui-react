@@ -309,7 +309,6 @@ export default App;
 | options.loop        | 是否循環播放                               | Boolean | false    |
 | options.controls    | 是否展示操作欄                             | Boolean | true     |
 | options.muted       | 是否靜音                                   | Boolean | false    |
-| options.disabled    | 禁用操作（如循環播放的背景圖，禁止操作）   | Boolean | false    |
 | options.playsinline | 是否設置為行內播放元素（解決安卓兼容問題） | Boolean | false    |
 
 ### Events

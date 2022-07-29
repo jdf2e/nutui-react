@@ -13,7 +13,6 @@ export interface VideoProps {
     autoplay?: boolean
     poster?: string
     playsinline?: boolean
-    disabled?: boolean
     loop?: boolean
   }
   className: string
@@ -33,7 +32,6 @@ const defaultProps = {
     autoplay: false,
     poster: '',
     playsinline: false,
-    disabled: false,
     loop: false,
   },
 } as VideoProps
@@ -70,14 +68,8 @@ export const Video: FunctionComponent<
         }, 200)
       }
       if (options.playsinline) {
-        videoRef.setAttribute(
-          'playsinline',
-          JSON.stringify(options.playsinline)
-        )
-        videoRef.setAttribute(
-          'webkit-playsinline',
-          JSON.stringify(options.playsinline)
-        )
+        videoRef.setAttribute('playsinline', String(options.playsinline))
+        videoRef.setAttribute('webkit-playsinline', String(options.playsinline))
         videoRef.setAttribute('x5-video-player-type', 'h5-page')
         videoRef.setAttribute('x5-video-player-fullscreen', 'false')
       }

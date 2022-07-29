@@ -306,7 +306,6 @@ export default App;
 | options.loop        | Poster loop                             | Boolean | false    |
 | options.controls    | Show operation control                             | Boolean | true     |
 | options.muted       | Mute                                   | Boolean | false    |
-| options.disabled    | Disable operation (e.g. background image of circular playback, prohibit operation)   | Boolean | false    |
 | options.playsinline | Whether to set as inline playback element (solve Android compatibility problem) | Boolean | false    |
 
 ### Events
