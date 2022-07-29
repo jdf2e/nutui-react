@@ -10,42 +10,29 @@ const subPackages = [
   },
   {
     root: 'layout',
-    pages: ['pages/layout/index', 'pages/divider/index'],
+    pages: ['pages/divider/index'],
   },
   {
     root: 'nav',
-    pages: [
-      'pages/fixednav/index',
-      'pages/tabbar/index',
-      'pages/pagination/index',
-      'pages/tabs/index',
-    ],
+    pages: ['pages/tabbar/index', 'pages/pagination/index', 'pages/tabs/index'],
   },
   {
     root: 'dentry',
-    pages: ['pages/checkbox/index', 'pages/input/index', 'pages/radio/index'],
+    pages: ['pages/checkbox/index', 'pages/radio/index'],
   },
   {
     root: 'feedback',
-    pages: [
-      'pages/actionsheet/index',
-      'pages/notify/index',
-      'pages/switch/index',
-      'pages/toast/index',
-    ],
+    pages: ['pages/actionsheet/index', 'pages/switch/index'],
   },
   {
     root: 'exhibition',
     pages: [
-      'pages/circleprogress/index',
       'pages/steps/index',
       'pages/avatar/index',
       'pages/price/index',
       'pages/badge/index',
       'pages/tag/index',
-      'pages/popover/index',
       'pages/skeleton/index',
-      'pages/countdown/index',
       'pages/empty/index',
     ],
   },

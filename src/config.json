@@ -70,6 +70,7 @@
           "desc": "列表项，可组成列表",
           "sort": 2,
           "show": false,
+          "taro": false,
           "exportEmpty": true,
           "author": "songsong"
         },
@@ -102,6 +103,7 @@
           "cName": "弹出层",
           "type": "component",
           "show": true,
+          "taro": false,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008"
         },
@@ -130,7 +132,7 @@
           "desc": "协助进行页面级整体布局。",
           "sort": 1,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "yushuang24"
         },
         {
@@ -180,6 +182,7 @@
           "desc": "提供导航功能。",
           "sort": 1,
           "show": true,
+          "taro": false,
           "author": "dsj"
         },
         {
@@ -190,7 +193,7 @@
           "desc": "悬浮收齐体验交互，用于快捷导航",
           "sort": 5,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "Ymm0008"
         },
         {
@@ -224,6 +227,7 @@
           "desc": "用于列表快速定位以及索引的显示",
           "sort": 4,
           "show": true,
+          "taro": false,
           "author": "songsong"
         },
         {
@@ -267,6 +271,7 @@
           "desc": "显示一个任务或流程的进度，常用于开通流程。",
           "sort": 16,
           "show": true,
+          "taro": false,
           "author": "liukun"
         },
         {
@@ -315,6 +320,7 @@
           "desc": "滑动输入条，用于在给定的范围内选择一个值。",
           "sort": 3,
           "show": true,
+          "taro": false,
           "author": "vickyYe"
         },
         {
@@ -324,6 +330,7 @@
           "desc": "日历，可平铺/弹窗展示",
           "sort": 10,
           "show": true,
+          "taro": false,
           "author": "szg2008"
         },
         {
@@ -355,6 +362,7 @@
           "desc": "时间选择器，支持日期、年月、时分等维度，通常与弹出层组件配合使用。",
           "sort": 15,
           "show": true,
+          "taro": false,
           "author": "dsj"
         },
         {
@@ -365,6 +373,7 @@
           "desc": "通过点击按钮控制数字增减。",
           "sort": 3,
           "show": true,
+          "taro": false,
           "author": "swag~jun"
         },
         {
@@ -375,7 +384,7 @@
           "desc": "单行输入框",
           "sort": 1,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "VickyYe"
         },
         {
@@ -408,6 +417,7 @@
           "desc": "用于快速的评级操作，或对评价进行展示。",
           "sort": 1,
           "show": true,
+          "taro": false,
           "author": "dsj"
         },
         {
@@ -428,6 +438,7 @@
           "desc": "提供多个选项集合供用户选择其中一项。",
           "sort": 10,
           "show": true,
+          "taro": false,
           "author": "dsj"
         },
         {
@@ -438,6 +449,7 @@
           "desc": "短密码输入框",
           "sort": 10,
           "show": true,
+          "taro": false,
           "author": "Drjingfubo"
         },
         {
@@ -448,6 +460,7 @@
           "desc": "文本框内输入或编辑文字，支持限制输入数量。",
           "sort": 2,
           "show": true,
+          "taro": false,
           "author": "VickyYe"
         },
         {
@@ -458,6 +471,7 @@
           "desc": "用于将本地的图片或文件上传至服务器。",
           "sort": 1,
           "show": true,
+          "taro": false,
           "author": "swag~jun"
         },
         {
@@ -505,6 +519,7 @@
           "desc": "提供较长的页面快捷返回顶部功能。",
           "sort": 2,
           "show": true,
+          "taro": false,
           "author": "vickyYe"
         },
         {
@@ -515,6 +530,7 @@
           "desc": "实现可拖拽的任意元素",
           "sort": 1,
           "show": true,
+          "taro": false,
           "author": "songsong"
         },
         {
@@ -525,6 +541,7 @@
           "desc": "模态对话框",
           "sort": 12,
           "show": true,
+          "taro": false,
           "author": "yangjinjun3"
         },
         {
@@ -535,6 +552,7 @@
           "desc": "列表滚动到底部自动加载更多数据。",
           "sort": 5,
           "show": true,
+          "taro": false,
           "author": "swag~jun"
         },
         {
@@ -545,7 +563,7 @@
           "desc": "在页面顶部展示消息提示",
           "sort": 11,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "vickyYE"
         },
         {
@@ -567,7 +585,7 @@
           "desc": "轻提示",
           "sort": 1,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "VickyYe"
         }
       ]
@@ -584,7 +602,7 @@
           "desc": "展示操作或任务的当前进度。",
           "sort": 7,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "swag~jun"
         },
         {
@@ -595,6 +613,7 @@
           "desc": "用于循环播放展示一组消息通知。",
           "sort": 11,
           "show": true,
+          "taro": false,
           "author": "vickyYe"
         },
         {
@@ -627,6 +646,7 @@
           "desc": "轮播组件",
           "sort": 14,
           "show": true,
+          "taro": false,
           "author": "liukun"
         },
         {
@@ -703,7 +723,7 @@
           "desc": "气泡弹出框",
           "sort": 19,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "lzz"
         },
         {
@@ -724,7 +744,7 @@
           "desc": "用于实时展示倒计时数值，支持毫秒精度。",
           "sort": 17,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "songsong"
         },
         {
@@ -735,6 +755,7 @@
           "desc": "折叠面板，可进行内容折叠展开操作，可以多面板配合使用。",
           "sort": 2,
           "show": true,
+          "taro": false,
           "author": "zhenyulei"
         },
         {
@@ -756,6 +777,7 @@
           "desc": "带特效的数字",
           "sort": 7,
           "show": true,
+          "taro": false,
           "author": "songsong"
         },
         {
@@ -777,6 +799,7 @@
           "desc": "长列表渲染",
           "sort": 20,
           "show": true,
+          "taro": false,
           "author": "hx"
         },
         {
@@ -823,6 +846,7 @@
           "desc": "地址组件",
           "sort": 3,
           "show": true,
+          "taro": false,
           "author": "yangxiaolu"
         },
         {
@@ -833,6 +857,7 @@
           "desc": "用于话语和词组的轮播展示，适用于视频中或其他类似需求中。",
           "sort": 2,
           "show": true,
+          "taro": false,
           "author": "swag~jun"
         },
         {
@@ -843,6 +868,7 @@
           "desc": "基于Canvas的签名组件",
           "sort": 1,
           "show": true,
+          "taro": false,
           "author": "songsong"
         },
         {
@@ -886,6 +912,7 @@
           "desc": "用于配送时间选择",
           "sort": 20,
           "show": true,
+          "taro": false,
           "author": "zhaoqian16"
         }
       ]

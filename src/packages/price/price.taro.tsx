@@ -33,14 +33,24 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     ...props,
   }
   const b = bem('price')
+  const replaceSpecialChar = (symbol: string) => {
+    let desSymbol = symbol
+    desSymbol = symbol.replace(/&quot;/g, '"')
+    desSymbol = symbol.replace(/&amp;/g, '&')
+    desSymbol = symbol.replace(/&lt;/g, '<')
+    desSymbol = symbol.replace(/&gt;/g, '>')
+    desSymbol = symbol.replace(/&nbsp;/g, ' ')
+    desSymbol = symbol.replace(/&yen;/g, '￥')
+    return desSymbol
+  }
   const showSymbol = () => {
-    return { __html: (needSymbol ? symbol : '') || '' }
+    return { __html: (needSymbol ? replaceSpecialChar(symbol) : '') || '' }
   }
   const checkPoint = (price: string | number) => {
     return String(price).indexOf('.') > 0
   }
   const formatThousands = (num: any) => {
-    if (Number(num) == 0) {
+    if (Number(num) === 0) {
       num = 0
     }
     if (checkPoint(num)) {
@@ -56,7 +66,7 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     return num
   }
   const formatDecimal = (decimalNum: any) => {
-    if (Number(decimalNum) == 0) {
+    if (Number(decimalNum) === 0) {
       decimalNum = 0
     }
 
