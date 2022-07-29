@@ -39,7 +39,6 @@ export const SubSideNavBar: FunctionComponent<
   useEffect(() => {
     const childNodes = listRef.current?.children as HTMLCollection
     listRef.current?.setAttribute('level', '1')
-    console.log('childNodes')
     childNodes && setListLevel(childNodes)
   }, [setListLevel])
   return (

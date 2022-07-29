@@ -67,7 +67,8 @@ const PopupDemo = () => {
           }}
         />
         <Cell
-          title="左侧"
+          title="左侧弹出"
+          isLink
           onClick={() => {
             setShowLeft(true)
           }}

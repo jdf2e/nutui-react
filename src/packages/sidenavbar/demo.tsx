@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import SideNavBar from './index'
 import SubSideNavBar from '../subsidenavbar'
 import SideNavBarItem from '../sidenavbaritem'
-import './sidenavbar.scss'
 import Cell from '@/packages/cell'
 
 const SideNavBarDemo = () => {
@@ -18,7 +17,13 @@ const SideNavBarDemo = () => {
             setShowLeft(true)
           }}
         />
-        <SideNavBar title="首页" visible={showLeft}>
+        <SideNavBar
+          title="首页"
+          visible={showLeft}
+          handleClose={() => {
+            setShowLeft(false)
+          }}
+        >
           <SubSideNavBar>
             <SideNavBarItem title="一级内容1" />
             <SideNavBarItem title="一级内容2" />

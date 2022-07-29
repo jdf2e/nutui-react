@@ -67,29 +67,3 @@ $nutSidenavbarItemHeight: 40px;
     }
   }
 }
-
-.nut-subsidenavbar {
-  &__title {
-    height: $nutSidenavbarItemHeight;
-    padding: 10px 8px 10px 35px;
-    background: #f7f8fa;
-  }
-  &__list {
-    &.nutShow {
-      .nut-subsidenavbar__content {
-        height: auto;
-        overflow: inherit;
-      }
-    }
-    &.nutHide {
-      .nut-subsidenavbar__content {
-        height: 0;
-        overflow: hidden;
-      }
-    }
-  }
-  &__item {
-    height: $nutSidenavbarItemHeight;
-    padding: 10px 8px 10px 55px;
-  }
-}
