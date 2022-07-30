@@ -466,3 +466,9 @@ $divider-vertical-height: 12px !default;
 $divider-vertical-top: 2px !default;
 $divider-vertical-border-left: rgba(0, 0, 0, 0.06) !default;
 $divider-vertical-margin: 0 8px !default;
+
+// Table
+$table-border-color: #ececec !default;
+$table-cols-padding: 10px !default;
+$table-tr-even-bg-color: #f3f3f3 !default;
+$table-tr-odd-bg-color: $white !default;
