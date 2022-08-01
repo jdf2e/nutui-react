@@ -15,6 +15,13 @@ $text-color: #808080 !default;
 $disable-color: #cccccc !default;
 $white: #fff;
 $black: #000;
+$required-color: #fa2c19 !default;
+
+$dark-background: #1a1919 !default;
+$dark-background2: #1d1b1c !default;
+$dark-background3: #141414 !default;
+$dark-color: $white !default;
+$dark-color-gray: $text-color !default;
 
 // padding
 $padding-xs: 12px;
@@ -135,8 +142,11 @@ $uploader-picture-height: 100px !default;
 $uploader-background: #f7f8fa !default;
 
 //input
-$input-border-bottom: #eaf0fb;
-$input-disabled-color: #c8c9cc;
+$input-border-bottom: #eaf0fb !default;
+$input-disabled-color: #c8c9cc !default;
+$input-required-color: $required-color !default;
+$input-font-size: $font-size-2 !default;
+$input-padding: 10px 25px !default;
 
 // textarea
 
