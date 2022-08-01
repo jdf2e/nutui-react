@@ -40,7 +40,7 @@ const App = () => {
           play={play}
           pause={pause}
           playend={playend}
-        ></Video>
+         />
       </Cell>
     </>
   )
@@ -80,7 +80,7 @@ const App = () => {
           play={play}
           pause={pause}
           playend={playend}
-        ></Video>
+         />
       </Cell>
     </>
   )
@@ -119,7 +119,7 @@ const App = () => {
           play={play}
           pause={pause}
           playend={playend}
-        ></Video>
+         />
       </Cell>
     </>
   )
@@ -159,7 +159,7 @@ const App = () => {
           play={play}
           pause={pause}
           playend={playend}
-        ></Video>
+         />
       </Cell>
     </>
   )
@@ -199,7 +199,7 @@ const App = () => {
           play={play}
           pause={pause}
           playend={playend}
-        ></Video>
+         />
       </Cell>
     </>
   )
@@ -242,7 +242,7 @@ const App = () => {
           play={play}
           pause={pause}
           playend={playend}
-        ></Video>
+         />
       </Cell>
     </>
   )
@@ -284,7 +284,7 @@ const App = () => {
           play={play}
           pause={pause}
           playend={playend}
-        ></Video>
+         />
       </Cell>
       <Button type="primary" className="m-b" onClick={changeVideo}>视频切换</Button>
     </>
