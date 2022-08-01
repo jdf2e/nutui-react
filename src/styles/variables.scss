@@ -15,6 +15,13 @@ $text-color: #808080 !default;
 $disable-color: #cccccc !default;
 $white: #fff;
 $black: #000;
+$required-color: #fa2c19 !default;
+
+$dark-background: #1a1919 !default;
+$dark-background2: #1d1b1c !default;
+$dark-background3: #141414 !default;
+$dark-color: $white !default;
+$dark-color-gray: $text-color !default;
 
 // padding
 $padding-xs: 12px;
@@ -135,8 +142,11 @@ $uploader-picture-height: 100px !default;
 $uploader-background: #f7f8fa !default;
 
 //input
-$input-border-bottom: #eaf0fb;
-$input-disabled-color: #c8c9cc;
+$input-border-bottom: #eaf0fb !default;
+$input-disabled-color: #c8c9cc !default;
+$input-required-color: $required-color !default;
+$input-font-size: $font-size-2 !default;
+$input-padding: 10px 25px !default;
 
 // textarea
 
@@ -510,3 +520,27 @@ $elevator-list-fixed-color: $primary-color !default;
 $elevator-list-fixed-bg-color: $white !default;
 $elevator-list-fixed-box-shadow: 0 0 10px #eee !default;
 $elevator-list-item-bars-inner-item-active-color: $primary-color !default;
+
+//navbar
+$navbar-height: 44px !default;
+$navbar-margin-bottom: 20px !default;
+$navbar-padding: 13px 16px !default;
+$navbar-background: $white !default;
+$navbar-box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1) !default;
+$navbar-color: $title-color2 !default;
+$navbar-title-base-font: $font-size-2 !default;
+$navbar-title-font: $font-size-2 !default;
+$navbar-title-font-weight: 0 !default;
+$navbar-title-font-color: $navbar-color !default;
+$navbar-title-width: 100px !default;
+$navbar-title-icon-margin: 0 0 0 13px !default;
+
+// layout
+$row-content-color: #fff !default;
+$row-content-background-color: #ff8881 !default;
+$row-content-light-background-color: #ffc7c4 !default;
+$row-content-border-radius: 6px !default;
+$row-content-height: 50px !default;
+$row-content-line-height: 40px !default;
+$col-default-margin-bottom: 15px !default;
+

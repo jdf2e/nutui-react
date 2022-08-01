@@ -9,4 +9,9 @@
   &.active {
     // overflow: visible;
   }
+
+  &.inactive {
+    overflow: visible;
+    height: 0;
+  }
 }

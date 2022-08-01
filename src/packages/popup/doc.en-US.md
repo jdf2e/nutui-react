@@ -54,10 +54,10 @@ const App = () => {
         <Cell title="bottom pop" isLink onClick={() => { setShowBottom(true) }}/>
         <Cell title="pop up left" isLink onClick={() => { setShowLeft(true) }}/>
         <Cell title="pop up right" isLink onClick={() => { setShowRight(true) }}/>
-        <Popup visible={ showTop } style={{ height: '20%' }} position="top" onClose={ () => { setShowTop(false) } }></Popup>
-        <Popup visible={ showBottom } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowBottom(false) } }></Popup>
-        <Popup visible={ showLeft } style={{ width: '20%', height: '100%' }} position="left" onClose={ () => { setShowLeft(false) } }></Popup>
-        <Popup visible={ showRight } style={{ width: '20%', height: '100%' }} position="right" onClose={ () => { setShowRight(false) } }></Popup>
+        <Popup visible={ showTop } style={{ height: '20%' }} position="top" onClose={ () => { setShowTop(false) } } />
+        <Popup visible={ showBottom } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowBottom(false) } } />
+        <Popup visible={ showLeft } style={{ width: '20%', height: '100%' }} position="left" onClose={ () => { setShowLeft(false) } } />
+        <Popup visible={ showRight } style={{ width: '20%', height: '100%' }} position="right" onClose={ () => { setShowRight(false) } } />
     </>
   );
 };
@@ -83,9 +83,9 @@ const App = () => {
         <Cell title="close icon" isLink onClick={() => { setShowIcon(true) }}/>
         <Cell title="Icon position" isLink onClick={() => { setShowIconPosition(true) }}/>
         <Cell title="custom icon" isLink onClick={() => { setShowIconDefine(true) }}/>
-        <Popup closeable visible={ showIcon } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowIcon(false) } }></Popup>
-        <Popup closeable visible={ showIconPosition } style={{ height: '20%' }} closeIconPosition="top-left" position="bottom" onClose={ () => { setShowIconPosition(false) } }></Popup>
-        <Popup closeable visible={ showIconDefine } style={{ height: '20%' }} closeIcon="heart" position="bottom" onClose={ () => { setShowIconDefine(false) } }></Popup>
+        <Popup closeable visible={ showIcon } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowIcon(false) } } />
+        <Popup closeable visible={ showIconPosition } style={{ height: '20%' }} closeIconPosition="top-left" position="bottom" onClose={ () => { setShowIconPosition(false) } } />
+        <Popup closeable visible={ showIconDefine } style={{ height: '20%' }} closeIcon="heart" position="bottom" onClose={ () => { setShowIconDefine(false) } } />
     </>
   );
 };
@@ -108,7 +108,7 @@ const App = () => {
   return (
     <>
         <Cell title="Rounded popup" isLink onClick={() => { setShowBottomRound(true) }}/>
-        <Popup closeable visible={ showBottomRound } style={{ height: '20%' }} position="bottom" round onClose={ () => { setShowBottomRound(false) } }></Popup>
+        <Popup closeable visible={ showBottomRound } style={{ height: '20%' }} position="bottom" round onClose={ () => { setShowBottomRound(false) } } />
     </>
   );
 };
