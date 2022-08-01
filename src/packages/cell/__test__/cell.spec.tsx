@@ -4,8 +4,6 @@ import '@testing-library/jest-dom'
 import { Cell } from '../cell'
 import { Switch } from '../../switch/switch'
 
-const classPrefix = `nut-avatar`
-
 test('prop title desc subtitle test', () => {
   const { getByTestId, container } = render(
     <>

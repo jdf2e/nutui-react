@@ -1,13 +1,202 @@
 import React from 'react'
-import { Elevator } from './elevator'
+import { Elevator, elevatorContext } from './elevator'
+import { useTranslate } from '../../sites/assets/locale'
+import Icon from '../icon'
 
+interface T {
+  basic: string
+  customIndex: string
+  sticky: string
+  customContent: string
+  anhui: string
+  beijing: string
+  guangxi: string
+  guangdong: string
+  hunan: string
+  hubei: string
+  shanghai: string
+  shenzhen: string
+  guangzhou: string
+  hangzhou: string
+  chengdu: string
+  xian: string
+  tianjin: string
+  wuhan: string
+  changsha: string
+  chongqin: string
+  suzhou: string
+  nanjing: string
+  xining: string
+  lanzhou: string
+  shijiazhuang: string
+  qinhuangdao: string
+  dalian: string
+  haerbin: string
+  changchun: string
+  taiyuan: string
+  fujian: string
+  gansu: string
+  guizhou: string
+  hainan: string
+  hebei: string
+  henan: string
+  heilongjiang: string
+  jilin: string
+  jiangsu: string
+  jiangxi: string
+  liaoning: string
+  one: string
+  two: string
+  three: string
+}
 const ElevatorDemo = () => {
+  const acceptKey = 'num'
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基本用法',
+      customIndex: '自定义索引key',
+      sticky: '索引吸顶',
+      customContent: '自定义内容',
+      anhui: '安徽',
+      beijing: '北京',
+      guangxi: '广西',
+      guangdong: '广东',
+      hunan: '湖南',
+      hubei: '湖北',
+      shanghai: '上海',
+      shenzhen: '深圳',
+      guangzhou: '广州',
+      hangzhou: '杭州',
+      chengdu: '成都',
+      xian: '西安',
+      tianjin: '天津',
+      wuhan: '武汉',
+      changsha: '长沙',
+      chongqin: '重庆',
+      suzhou: '苏州',
+      nanjing: '南京',
+      xining: '西宁',
+      lanzhou: '兰州',
+      shijiazhuang: '石家庄',
+      qinhuangdao: '秦皇岛',
+      dalian: '大连',
+      haerbin: '哈尔滨',
+      changchun: '长春',
+      taiyuan: '太原',
+      fujian: '福建',
+      gansu: '甘肃',
+      guizhou: '贵州',
+      hainan: '海南',
+      hebei: '河北',
+      henan: '河南',
+      heilongjiang: '黑龙江',
+      jilin: '吉林',
+      jiangsu: '江苏',
+      jiangxi: '江西',
+      liaoning: '辽宁',
+      one: '一',
+      two: '二',
+      three: '三',
+    },
+    'zh-TW': {
+      basic: '基本用法',
+      customIndex: '自定義索引key',
+      sticky: '索引吸頂',
+      customContent: '自定義內容',
+      anhui: '安徽',
+      beijing: '北京',
+      guangxi: '廣西',
+      guangdong: '廣東',
+      hunan: '湖南',
+      hubei: '湖北',
+      shanghai: '上海',
+      shenzhen: '深圳',
+      guangzhou: '廣州',
+      hangzhou: '杭州',
+      chengdu: '成都',
+      xian: '西安',
+      tianjin: '天津',
+      wuhan: '武漢',
+      changsha: '長沙',
+      chongqin: '重慶',
+      suzhou: '蘇州',
+      nanjing: '南京',
+      xining: '西寧',
+      lanzhou: '蘭州',
+      shijiazhuang: '石家莊',
+      qinhuangdao: '秦皇島',
+      dalian: '大連',
+      haerbin: '哈爾濱',
+      changchun: '長春',
+      taiyuan: '太原',
+      fujian: '福建',
+      gansu: '甘肅',
+      guizhou: '貴州',
+      hainan: '海南',
+      hebei: '河北',
+      henan: '河南',
+      heilongjiang: '黑龍江',
+      jilin: '吉林',
+      jiangsu: '江蘇',
+      jiangxi: '江西',
+      liaoning: '遼寧',
+      one: '一',
+      two: '二',
+      three: '三',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      customIndex: 'Custom index key',
+      sticky: 'Index ceiling',
+      customContent: 'Custom content',
+      anhui: 'AnHui',
+      beijing: 'BeiJing',
+      guangxi: 'GuangXi',
+      guangdong: 'GuangDong',
+      hunan: 'HuNan',
+      hubei: 'HuBei',
+      shanghai: 'ShangHai',
+      shenzhen: 'ShenZhen',
+      guangzhou: 'GuangZhou',
+      hangzhou: 'HangZhou',
+      chengdu: 'ChengDu',
+      xian: 'XiAn',
+      tianjin: 'TianJin',
+      wuhan: 'WuHan',
+      changsha: 'ChangSha',
+      chongqin: 'ChongQin',
+      suzhou: 'SuZhou',
+      nanjing: 'NanJing',
+      xining: 'XiNing',
+      lanzhou: 'LanZhou',
+      shijiazhuang: 'ShiJiaZhuang',
+      qinhuangdao: 'QinHuangDao',
+      dalian: 'DaLian',
+      haerbin: 'HaErBin',
+      changchun: 'ChangChun',
+      taiyuan: 'TaiYuan',
+      fujian: 'FuJian',
+      gansu: 'GanSu',
+      guizhou: 'GuiZhou',
+      hainan: 'HaiNan',
+      hebei: 'HeBei',
+      henan: 'HeNan',
+      heilongjiang: 'HeiLongJiang',
+      jilin: 'JiLin',
+      jiangsu: 'JiangSu',
+      jiangxi: 'JiangXi',
+      liaoning: 'LiaoNing',
+      one: 'one',
+      two: 'two',
+      three: 'three',
+    },
+  })
   const dataList = [
     {
       title: 'A',
       list: [
         {
-          name: '安徽',
+          name: translated.anhui,
           id: 1,
         },
       ],
@@ -16,7 +205,7 @@ const ElevatorDemo = () => {
       title: 'B',
       list: [
         {
-          name: '北京',
+          name: translated.beijing,
           id: 2,
         },
       ],
@@ -25,11 +214,11 @@ const ElevatorDemo = () => {
       title: 'G',
       list: [
         {
-          name: '广西',
+          name: translated.guangxi,
           id: 3,
         },
         {
-          name: '广东',
+          name: translated.guangdong,
           id: 4,
         },
       ],
@@ -38,16 +227,15 @@ const ElevatorDemo = () => {
       title: 'H',
       list: [
         {
-          name: '湖南',
+          name: translated.hunan,
           id: 5,
         },
         {
-          name: '湖北',
+          name: translated.hubei,
           id: 6,
         },
-        ,
         {
-          name: '琥珀',
+          name: translated.henan,
           id: 7,
         },
       ],
@@ -55,101 +243,215 @@ const ElevatorDemo = () => {
   ]
   const dataList2 = [
     {
-      num: '一',
+      num: translated.one,
       list: [
         {
-          name: '北京',
+          name: translated.beijing,
           id: 1,
         },
         {
-          name: '上海',
+          name: translated.shanghai,
           id: 2,
         },
         {
-          name: '深圳',
+          name: translated.shenzhen,
           id: 3,
         },
         {
-          name: '广州',
+          name: translated.guangzhou,
           id: 4,
         },
         {
-          name: '杭州',
+          name: translated.hangzhou,
           id: 5,
         },
       ],
     },
     {
-      num: '二',
+      num: translated.two,
       list: [
         {
-          name: '成都',
+          name: translated.chengdu,
           id: 6,
         },
         {
-          name: '西安',
+          name: translated.xian,
           id: 7,
         },
         {
-          name: '天津',
+          name: translated.tianjin,
           id: 8,
         },
         {
-          name: '武汉',
+          name: translated.wuhan,
           id: 9,
         },
         {
-          name: '长沙',
+          name: translated.changsha,
           id: 10,
         },
         {
-          name: '重庆',
+          name: translated.chongqin,
           id: 11,
         },
         {
-          name: '苏州',
+          name: translated.suzhou,
           id: 12,
         },
         {
-          name: '南京',
+          name: translated.nanjing,
           id: 13,
         },
       ],
     },
     {
-      num: '三',
+      num: translated.three,
       list: [
         {
-          name: '西宁',
+          name: translated.xining,
           id: 14,
         },
         {
-          name: '兰州',
+          name: translated.lanzhou,
           id: 15,
         },
         {
-          name: '石家庄',
+          name: translated.shijiazhuang,
           id: 16,
         },
         {
-          name: '秦皇岛',
+          name: translated.qinhuangdao,
           id: 17,
         },
         {
-          name: '大连',
+          name: translated.dalian,
           id: 18,
         },
         {
-          name: '哈尔滨',
+          name: translated.haerbin,
           id: 19,
         },
         {
-          name: '长春',
+          name: translated.changchun,
           id: 20,
         },
         {
-          name: '太原',
+          name: translated.taiyuan,
           id: 21,
+        },
+      ],
+    },
+  ]
+  const dataList3 = [
+    {
+      title: 'A',
+      list: [
+        {
+          name: translated.anhui,
+          id: 1,
+        },
+      ],
+    },
+    {
+      title: 'B',
+      list: [
+        {
+          name: translated.beijing,
+          id: 2,
+        },
+      ],
+    },
+    {
+      title: 'C',
+      list: [
+        {
+          name: translated.chongqin,
+          id: 3,
+        },
+      ],
+    },
+    {
+      title: 'F',
+      list: [
+        {
+          name: translated.anhui,
+          id: 4,
+        },
+      ],
+    },
+    {
+      title: 'G',
+      list: [
+        {
+          name: translated.guangxi,
+          id: 5,
+        },
+        {
+          name: translated.guangdong,
+          id: 6,
+        },
+        {
+          name: translated.gansu,
+          id: 7,
+        },
+        {
+          name: translated.guizhou,
+          id: 8,
+        },
+      ],
+    },
+    {
+      title: 'H',
+      list: [
+        {
+          name: translated.hunan,
+          id: 9,
+        },
+        {
+          name: translated.hubei,
+          id: 10,
+        },
+        {
+          name: translated.hainan,
+          id: 11,
+        },
+        {
+          name: translated.hebei,
+          id: 12,
+        },
+        {
+          name: translated.henan,
+          id: 13,
+        },
+        {
+          name: translated.heilongjiang,
+          id: 14,
+        },
+      ],
+    },
+    {
+      title: 'J',
+      list: [
+        {
+          name: translated.jilin,
+          id: 15,
+        },
+        {
+          name: translated.jiangsu,
+          id: 16,
+        },
+        {
+          name: translated.jiangxi,
+          id: 17,
+        },
+      ],
+    },
+    {
+      title: 'L',
+      list: [
+        {
+          name: translated.liaoning,
+          id: 18,
         },
       ],
     },
@@ -164,21 +466,47 @@ const ElevatorDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>基础用法</h2>
+        <h2>{translated.basic}</h2>
         <Elevator
           indexList={dataList}
           height="260"
           clickItem={(key: string, item: any) => clickItem(key, item)}
           clickIndex={(key: string) => clickIndex(key)}
         />
-        <h2>自定义索引key</h2>
+        <h2>{translated.customIndex}</h2>
         <Elevator
           indexList={dataList2}
           height="220"
-          acceptKey="num"
+          acceptKey={acceptKey}
           clickItem={(key: string, item: any) => clickItem(key, item)}
           clickIndex={(key: string) => clickIndex(key)}
         />
+        <h2>{translated.sticky}</h2>
+        <Elevator
+          indexList={dataList3}
+          isSticky
+          height="220"
+          clickItem={(key: string, item: any) => clickItem(key, item)}
+          clickIndex={(key: string) => clickIndex(key)}
+        />
+        <h2>{translated.customContent}</h2>
+        <Elevator
+          indexList={dataList}
+          height="260"
+          clickItem={(key: string, item: any) => clickItem(key, item)}
+          clickIndex={(key: string) => clickIndex(key)}
+        >
+          <elevatorContext.Consumer>
+            {(value) => {
+              return (
+                <>
+                  <Icon name="JD" size="12" />
+                  <span style={{ marginLeft: '15px' }}>{value?.name}</span>
+                </>
+              )
+            }}
+          </elevatorContext.Consumer>
+        </Elevator>
       </div>
     </>
   )
