@@ -89,19 +89,6 @@ const progressOption = {
   backColor: '#d9d9d9',
   progressColor: 'red',
 }
-const demoBtnStyle = {
-  textAlign: 'center',
-  width: '100%',
-  height: '50px',
-  borderTop: '1px solid rgba(234, 240, 251, 1)',
-  paddingTop: '6px',
-  background: 'rgba(255, 255, 255, 1)'
-}
-const demoPieceStyle = {
-  display: 'flex',
-  justifyContent: 'center',
-  background: 'rgba(255, 255, 255, 1)'
-}
 const App = () => {
   const [percent, setPercent] = useState(50)
   const [strokeInnerWidth, setStrokeInnerWidth] = useState(10)
@@ -122,14 +109,14 @@ const App = () => {
   }
   return (
     <>
-      <div className="demo__piece" style={demoPieceStyle}>
+      <div className="demo__piece">
         <CircleProgress
           progress={percent}
           progressOption={progressOption}
           strokeInnerWidth={strokeInnerWidth}
          />
       </div>
-      <div className="demo__btn" style={demoBtnStyle}>
+      <div className="demo__btn">
         <Button type="primary" onClick={setReduceVal} style={{ marginRight: '10px' }}>
           reduce
         </Button>
