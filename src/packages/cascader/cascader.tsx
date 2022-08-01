@@ -1,61 +1,109 @@
-import React, { FunctionComponent, useState, useEffect } from 'react'
+import React, { FunctionComponent, useState, useEffect, CSSProperties } from 'react'
 import Popup from '@/packages/popup'
 import { Tabs } from '@/packages/tabs/tabs'
 import { TabPane } from '@/packages/tabpane/tabpane'
-import { Icon } from '@/packages/icon/icon'
 import { CascaderItem } from './cascaderItem'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-
-interface OptiosData {
-  nodes: OptiosInfo[]
-  selectedNode: OptiosInfo | null
-  paneKey: string
-}
-
-interface OptiosInfo {
-  text: string
-  value: string
-  paneKey: string
-  disabled?: boolean
-  loading?: boolean
-  children: OptiosInfo[]
-}
-
+import { convertListToOptions } from './helper'
+import { CascaderPane, CascaderOption, CascaderValue, convertConfig } from './types'
+import Tree from './tree'
 export interface CascaderProps {
-  visible: boolean
-  options: OptiosInfo[]
+  className: string
+  style: CSSProperties
+  visible: boolean // popup 显示状态
+  options: CascaderOption[]
+  value: string[]
   title: string
-  value: []
+  textKey: string
+  valueKey: string
+  childrenKey: string
+  convertConfig: object
+  closeable: boolean
+  closeIconPosition: string
+  closeIcon: string
+  lazy: boolean
+  lazyLoad: Function
   onClose?: () => void
-  onChange: (params: any) => void
+  change: (value: any, params: any) => void
+  pathChange: (value: any, params: any) => void
 }
 
 const defaultProps = {
+  className: '',
+  style: {},
   visible: false,
   options: [],
-  title: '',
   value: [],
+  title: '',
+  textKey: 'text',
+  valueKey: 'value',
+  childrenKey: 'children',
+  convertConfig: {},
+  closeable: false,
+  closeIconPosition: 'top-right',
+  closeIcon: 'close',
+  lazy: false,
+  lazyLoad: () => {},
   onClose: () => {},
-  onChange: (params) => {},
+  change: () => {},
+  pathChange: () => {},
+  ...Popup.defaultProps,
 } as CascaderProps
-
 export const Cascader: FunctionComponent<
   Partial<CascaderProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const [tabvalue, setTabvalue] = useState('c1')
-  const [optiosData, setOptiosData] = useState<OptiosData[]>([])
-  const [checkedIndexList, setCheckedIndexList] = useState<Array<number>>([])
-  const [selectValue, setSelectValue] = useState([])
-
   const {
+    className,
+    style,
     visible,
     options,
+    value,
     title,
-    value, // 选中值
+    textKey,
+    valueKey,
+    childrenKey,
+    convertConfig,
+    closeable,
+    closeIconPosition,
+    closeIcon,
+    lazy,
+    lazyLoad,
     onClose,
-    onChange,
+    change,
+    pathChange,
+    ...rest
   } = { ...defaultProps, ...props }
+
+  const [tabvalue, setTabvalue] = useState('c1') as any
+  const [optiosData, setOptiosData] = useState<CascaderPane[]>([])
+
+  const isLazy = () => state.configs.lazy && Boolean(state.configs.lazyLoad)
+
+  const [state] = useState({
+    optionsData: [] as CascaderOption,
+    panes: [
+      {
+        nodes: [] as any,
+        selectedNode: [] as CascaderOption | null,
+        paneKey: '',
+      },
+    ],
+    innerValue: value as CascaderValue,
+    tree: new Tree([], {}),
+    tabsCursor: 0, // 选中的tab项
+    initLoading: false,
+    currentProcessNode: [] as CascaderOption | null,
+    configs: {
+      lazy: lazy,
+      lazyLoad: lazyLoad,
+      valueKey: valueKey,
+      textKey: textKey,
+      childrenKey: childrenKey,
+      convertConfig: convertConfig,
+    },
+    lazyLoadMap: new Map(),
+  })
 
   const b = bem('cascader')
 
@@ -69,133 +117,277 @@ export const Cascader: FunctionComponent<
     initData()
   }, [])
 
-  const initData = () => {
-    console.log('options', options)
-    let newOptions: any[] = []
-    let newOptionsChild: any[] = []
-    options.forEach((item: any, index: number) => {
-      console.log('item', item)
-      item.paneKey = 'c' + (index + 1)
-      // item.checked = false
-      newOptionsChild.push(item)
+  useEffect(() => {
+    if (value !== state.innerValue) {
+      state.innerValue = value as CascaderValue
+    }
+  }, [value])
+
+  useEffect(() => {
+    initData()
+  }, [options])
+
+  const initData = async () => {
+    // 初始化开始处理数据
+    state.lazyLoadMap.clear()
+    if (convertConfig && Object.keys(convertConfig).length > 0) {
+      state.optionsData = convertListToOptions(
+        options as CascaderOption[],
+        convertConfig as convertConfig
+      )
+    } else {
+      state.optionsData = options
+    }
+    state.tree = new Tree(state.optionsData as CascaderOption[], {
+      value: state.configs.valueKey,
+      text: state.configs.textKey,
+      children: state.configs.childrenKey,
     })
-    newOptions = [
+
+    if (isLazy() && !state.tree.nodes.length) {
+      await invokeLazyLoad({
+        root: true,
+        loading: true,
+        text: '',
+        value: '',
+      })
+    }
+
+    state.panes = [
       {
-        nodes: newOptionsChild,
+        nodes: state.tree.nodes,
         selectedNode: null,
         paneKey: 'c1',
       },
     ]
-    setOptiosData([...newOptions])
+    syncValue()
 
-    console.log('newOptions', newOptions)
-    console.log('optiosData 2', optiosData)
+    setOptiosData(state.panes)
+  }
+  // 处理有默认值时的数据
+  const syncValue = async () => {
+    const currentValue = state.innerValue
+    if (currentValue === undefined || !state.tree.nodes.length) {
+      return
+    }
+
+    if (currentValue.length === 0) {
+      state.tabsCursor = 0
+      // state.panes = [{ nodes: state.tree.nodes, selectedNode: null }];
+      return
+    }
+
+    let needToSync = currentValue
+
+    if (isLazy() && Array.isArray(currentValue) && currentValue.length) {
+      needToSync = []
+      let parent: any = state.tree.nodes.find((node) => node.value === currentValue[0])
+
+      if (parent) {
+        needToSync = [parent.value]
+        state.initLoading = true
+
+        const last = await currentValue
+          .slice(1)
+          .reduce(async (p: Promise<CascaderOption | void>, value) => {
+            const parent = await p
+
+            await invokeLazyLoad(parent)
+            const node: any = parent?.children?.find((item) => item.value === value)
+
+            if (node) {
+              needToSync.push(value)
+            }
+
+            return Promise.resolve(node)
+          }, Promise.resolve(parent))
+
+        await invokeLazyLoad(last)
+
+        state.initLoading = false
+      }
+    }
+
+    if (needToSync.length && currentValue === value) {
+      const pathNodes = state.tree.getPathNodesByValue(needToSync)
+      pathNodes.map((node, index) => {
+        state.tabsCursor = index
+        // 当有默认值时，不触发 chooseItem 里的 emit 事件
+        chooseItem(node, true)
+      })
+    }
+  }
+
+  const invokeLazyLoad = async (node?: CascaderOption | void) => {
+    if (!node) {
+      return
+    }
+
+    if (!state.configs.lazyLoad) {
+      node.leaf = true
+      return
+    }
+
+    if (state.tree.isLeaf(node, isLazy()) || state.tree.hasChildren(node, isLazy())) {
+      return
+    }
+
+    node.loading = true
+
+    const parent = node.root ? null : node
+    let lazyLoadPromise = state.lazyLoadMap.get(node)
+
+    if (!lazyLoadPromise) {
+      lazyLoadPromise = new Promise((resolve) => {
+        // 外部必须resolve
+        state.configs.lazyLoad?.(node, resolve)
+      })
+      state.lazyLoadMap.set(node, lazyLoadPromise)
+    }
+
+    const nodes: CascaderOption[] | void = await lazyLoadPromise
+
+    if (Array.isArray(nodes) && nodes.length > 0) {
+      state.tree.updateChildren(nodes, parent)
+    } else {
+      // 如果加载完成后没有提供子节点，作为叶子节点处理
+      node.leaf = true
+    }
+    node.loading = false
+    state.lazyLoadMap.delete(node)
   }
 
   const close = () => {
     onClose && onClose()
   }
 
-  // const choose = (param: string) => {
-  //   close()
-  //   onChoose && onChoose(param)
-  // }
   const closePopup = () => {
     close()
   }
 
-  const chooseItem = (item: any, checked: boolean, index: number, tabIndex: number) => {
-    console.log('item:', item)
-    console.log('checked', checked, 'index', index, tabIndex)
-    let newOptiosData = [...optiosData]
-    let newCheckedIndexList = [...checkedIndexList]
-    // 当前状态为true，被选中，滑到下一个
-    // 当前状态为false，没被选中
-    newCheckedIndexList[tabIndex] = index + 1
-    newOptiosData[tabIndex].selectedNode = item
-    // newOptiosData = newOptiosData.slice(0, level);
-    if (item.children && item.children.length > 0) {
-      newOptiosData.push({
-        nodes: item.children || [],
-        selectedNode: null,
-        paneKey: 'c' + (tabIndex + 2),
-      })
+  /* type: 是否是静默模式，是的话不触发事件
+  tabsCursor: tab的索引 */
+  const chooseItem = async (node: CascaderOption, type: boolean) => {
+    // console.log('chooseItem', node)
+    if ((!type && node.disabled) || !state.panes[state.tabsCursor]) {
+      return
     }
-    // console.log('newOptiosData 3', newOptiosData)
-    // console.log('tabIndex', tabIndex)
-    setCheckedIndexList(newCheckedIndexList)
-    setOptiosData([...newOptiosData])
-
-    // 滑到下一个
-    if (item.children && item.children.length > 0) {
-      setTabvalue('c' + (tabIndex + 2))
-    } else {
-      const pathNodes = optiosData.map((item) => item.selectedNode)
-      const optionParams = pathNodes.map((item) => item.value)
-      console.log('optionParams', optionParams)
-      onChange(optionParams)
+    // 如果没有子节点
+    if (state.tree.isLeaf(node, isLazy())) {
+      node.leaf = true
+      state.panes[state.tabsCursor].selectedNode = node
+      state.panes = state.panes.slice(0, (node.level as number) + 1)
+      if (!type) {
+        const pathNodes = state.panes.map((item) => item.selectedNode)
+        const optionParams = pathNodes.map((item: any) => item.value)
+        change(optionParams, pathNodes)
+        pathChange(optionParams, pathNodes)
+      }
+      setOptiosData(state.panes)
       close()
+      return
     }
+    // 如果有子节点，滑到下一个
+    // if (node.children && node.children.length > 0) {
+    if (state.tree.hasChildren(node, isLazy())) {
+      const level = (node.level as number) + 1
+
+      state.panes[state.tabsCursor].selectedNode = node
+      state.panes = state.panes.slice(0, level)
+      state.tabsCursor = level
+      state.panes.push({
+        nodes: node.children || [],
+        selectedNode: null,
+        paneKey: 'c' + (state.tabsCursor + 1),
+      })
+      setTabvalue('c' + (state.tabsCursor + 1))
+      setOptiosData(state.panes)
+
+      if (!type) {
+        const pathNodes = state.panes.map((item) => item.selectedNode)
+        const optionParams = pathNodes.map((item: any) => item?.value)
+        pathChange(optionParams, pathNodes)
+      }
+      return
+    }
+    state.currentProcessNode = node
+
+    if (node.loading) {
+      return
+    }
+
+    await invokeLazyLoad(node)
+
+    if (state.currentProcessNode === node) {
+      state.panes[state.tabsCursor].selectedNode = node
+      chooseItem(node, type)
+    }
+    setOptiosData(state.panes)
   }
 
   return (
-    <>
-      <div className={classes}>
-        {console.log('dom optiosData 2', optiosData)}
-        <Popup
-          visible={visible}
-          position="bottom"
-          round
-          closeable
-          onClickOverlay={closePopup}
-          onClickCloseIcon={closePopup}
-          style={{ padding: '30px 50px' }}
+    <div className={`${classes} ${className}`} style={style} {...rest}>
+      <Popup
+        visible={visible}
+        position="bottom"
+        round
+        closeable={closeable}
+        closeIconPosition={closeIconPosition}
+        closeIcon={closeIcon}
+        onClickOverlay={closePopup}
+        onClickCloseIcon={closePopup}
+        style={{ padding: '30px 50px' }}
+      >
+        <div className={b('title')}>{title}</div>
+        <Tabs
+          value={tabvalue}
+          titleNode={() => {
+            return optiosData.map((pane, index) => (
+              <div
+                onClick={() => {
+                  setTabvalue(pane.paneKey)
+                  state.tabsCursor = index
+                }}
+                className={`nut-tabs__titles-item ${tabvalue == pane.paneKey ? 'active' : ''}`}
+                key={pane.paneKey}
+              >
+                <span className="nut-tabs__titles-item__text">
+                  {!state.initLoading && state.panes.length
+                    ? pane?.selectedNode?.text
+                      ? pane.selectedNode.text
+                      : '请选择'
+                    : 'Loading...'}
+                </span>
+                <span className="nut-tabs__titles-item__line" />
+              </div>
+            ))
+          }}
         >
-          <div className="nut-cascader__title">{title}</div>
-          <Tabs
-            value={tabvalue}
-            titleNode={() => {
-              return optiosData.map((pane) => (
-                <div
-                  onClick={() => setTabvalue(pane.paneKey)}
-                  className={`nut-tabs__titles-item ${tabvalue == pane.paneKey ? 'active' : ''}`}
-                  key={pane.paneKey}
-                >
-                  <span className="nut-tabs__titles-item__text">
-                    {pane?.selectedNode?.text ? pane.selectedNode.text : '请选择'}
-                  </span>
-                  <span className="nut-tabs__titles-item__line" />
-                </div>
-              ))
-            }}
-          >
-            {optiosData.map((pane, tabIndex) => (
+          {!state.initLoading && state.panes.length ? (
+            optiosData.map((pane) => (
               <TabPane key={pane.paneKey} paneKey={pane.paneKey}>
                 <div className={classesPane}>
                   {pane.nodes &&
-                    pane.nodes.map((item: any, index: number) => (
+                    pane.nodes.map((node: any, index: number) => (
                       <CascaderItem
                         key={index}
                         {...props}
-                        data={item}
-                        checked={checkedIndexList[tabIndex] == index + 1}
-                        index={index}
-                        tabIndex={tabIndex}
-                        chooseItem={(
-                          item: any,
-                          checked: boolean,
-                          index: number,
-                          tabIndex: number
-                        ) => chooseItem(item, checked, index, tabIndex)}
+                        data={node}
+                        checked={pane.selectedNode?.value === node.value}
+                        chooseItem={(node: any) => chooseItem(node, false)}
                       />
                     ))}
                 </div>
               </TabPane>
-            ))}
-          </Tabs>
-        </Popup>
-      </div>
-    </>
+            ))
+          ) : (
+            <TabPane>
+              <div className={classesPane}></div>
+            </TabPane>
+          )}
+        </Tabs>
+      </Popup>
+    </div>
   )
 }
 

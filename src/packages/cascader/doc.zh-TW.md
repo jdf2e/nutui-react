@@ -1,19 +1,19 @@
-# Cascader 级联选择
+# Cascader 級聯選擇
 
-### 介绍
+### 介紹
 
-级联选择器，用于多层级数据的选择，典型场景为省市区选择。
+級聯選擇器，用於多層級數據的選擇，典型場景為省市區選擇。
 
-### 安装
+### 安裝
 
 ```js
 import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
 ```
 
-## 代码演示
-### 基础用法
+## 代碼演示
+### 基礎用法
 
-传入`options`列表。
+傳入`options`列表。
 :::demo
 ```jsx
 import  React from "react";
@@ -120,9 +120,9 @@ export default App;
 ```
 :::
 
-### 自定义属性名称
+### 自定義屬性名稱
 
-可通过`textKey`、`valueKey`、`childrenKey`指定属性名。
+可通過`textKey`、`valueKey`、`childrenKey`指定屬性名。
 
 :::demo
 ```jsx
@@ -233,9 +233,9 @@ export default App;
 ```
 :::
 
-### 动态加载
+### 動態加載
 
-使用`lazy`标识是否需要动态获取数据，此时不传`options`代表所有数据都需要通过`lazyLoad`加载，首次加载通过`root`属性区分，当遇到非叶子节点时会调用`lazyLoad`方法，参数为当前节点和`resolve`方法，注意`resolve`方法必须调用，不传子节点时会被当做叶子节点处理。
+使用`lazy`標識是否需要動態獲取數據，此時不傳`options`代表所有數據都需要通過`lazyLoad`加載，首次加載通過`root`屬性區分，當遇到非葉子節點時會調用`lazyLoad`方法，參數為當前節點和`resolve`方法，註意`resolve`方法必須調用，不傳子節點時會被當做葉子節點處理。
 
 :::demo
 ```jsx
@@ -304,7 +304,7 @@ export default App;
 :::
 
 
-### 部分数据动态加载
+### 部分數據動態加載
 
 :::demo
 ```jsx
@@ -376,9 +376,9 @@ export default App;
 ```
 :::
 
-### 自动转换
+### 自動轉換
 
-如果你的数据为可转换为树形结构的扁平结构时，可以通过`convertConfig`告诉组件需要进行自动转换，`convertConfig`接受4个参数，`topId`为顶层节点的父级id，`idKey`为节点唯一id，`pidKey`为指向父节点id的属性名，存在`sortKey`将根据指定字段调用Array.prototype.sort()进行同层排序。
+如果你的數據為可轉換為樹形結構的扁平結構時，可以通過`convertConfig`告訴組件需要進行自動轉換，`convertConfig`接受4個參數，`topId`為頂層節點的父級id，`idKey`為節點唯一id，`pidKey`為指向父節點id的屬性名，存在`sortKey`將根據指定字段調用Array.prototype.sort()進行同層排序。
 
 :::demo
 ```jsx
@@ -441,25 +441,25 @@ export default App;
 
 ### Props
 
-| 参数           | 说明                                            | 类型     | 默认值 |
+| 屬性           | 說明                                            | 類型     | 默認值 |
 | ------------- | ---------------------------------------------- | -------- | ------ |
-| value         | 选中值                                          | Array    | -      |
-| options       | 级联数据                                         | Array    | -      |
-| visible       | 级联显示隐藏状态                                  | Boolean  | false  |
-| lazy          | 是否开启动态加载                                  | Boolean  | false  |
-| lazyLoad      | 动态加载回调，开启动态加载时生效                   | Function | -      |
-| valueKey      | 自定义`options`结构中`value`的字段               | String   | -      |
-| textKey       | 自定义`options`结构中`text`的字段                | String   | -      |
-| childrenKey   | 自定义`options`结构中`children`的字段            | String   | -      |
-| convertConfig | 当options为可转换为树形结构的扁平结构时，配置转换规则 | Object   | -      |
-| title          | 标题 | String   | ''      |
-| closeIconPosition | 取消按钮位置，继承 Popup 组件 | String   | "top-right"      |
-| close-icon | 自定义关闭按钮，继承 Popup 组件 | String   | "close"     |
-| closeable | 是否显示关闭按钮，继承 Popup 组件 | Boolean   | true     |
+| value         | 選中值                                          | Array    | -      |
+| options       | 級聯數據                                         | Array    | -      |
+| visible       | 級聯顯示隱藏狀態                                  | Boolean  | false  |
+| lazy          | 是否開啟動態加載                                  | Boolean  | false  |
+| lazyLoad      | 動態加載回調，開啟動態加載時生效                   | Function | -      |
+| valueKey      | 自定義`options`結構中`value`的字段               | String   | -      |
+| textKey       | 自定義`options`結構中`text`的字段                | String   | -      |
+| childrenKey   | 自定義`options`結構中`children`的字段            | String   | -      |
+| convertConfig | 當options為可轉換為樹形結構的扁平結構時，配置轉換規則 | Object   | -      |
+| title          | 標題 | String   | ''      |
+| closeIconPosition | 取消按鈕位置，繼承 Popup 組件 | String   | "top-right"      |
+| close-icon | 自定義關閉按鈕，繼承 Popup 組件 | String   | "close"     |
+| closeable | 是否顯示關閉按鈕，繼承 Popup 組件 | Boolean   | true     |
 
 ### Events
 
-| 事件名     | 说明             | 回调参数           |
-| ---------- | ---------------- | ------------------ |
-| change     | 选中值改变时触发 | (value, pathNodes) |
-| pathChange | 选中项改变时触发 | (pathNodes)        |
+| 事件名      | 說明             | 回調參數           |
+| ---------- | --------------- | ------------------ |
+| change     | 選中值改變時觸發   | (value, pathNodes) |
+| pathChange | 選中項改變時觸發   | (pathNodes)        |

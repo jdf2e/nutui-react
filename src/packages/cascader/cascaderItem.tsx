@@ -1,39 +1,47 @@
-import React, { FunctionComponent, useState, useEffect } from 'react'
-import Popup from '@/packages/popup'
-import { Tabs } from '@/packages/tabs/tabs'
-import { TabPane } from '@/packages/tabpane/tabpane'
+import React, { FunctionComponent, useEffect } from 'react'
 import { Icon } from '@/packages/icon/icon'
-
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 
+interface OptiosInfo {
+  text: string
+  value: string
+  paneKey: string
+  disabled?: boolean
+  loading?: boolean
+  children?: OptiosInfo[]
+}
+
 export interface CascaderItemProps {
-  data: Object
-  index: number
-  tabIndex: number
+  data: {
+    text: string
+    value: string
+    paneKey: string
+    disabled?: boolean
+    loading?: boolean
+    children?: OptiosInfo[]
+  }
   checked: boolean
-  options: []
-  chooseItem: (data: any, checked: boolean, index: number, tabIndex: number) => void
+  chooseItem: (data: any) => void
 }
 
 const defaultProps = {
-  data: {},
-  index: 0,
-  tabIndex: 0,
+  data: {
+    text: '',
+    value: '',
+    paneKey: '',
+    disabled: false,
+    loading: false,
+    children: [],
+  },
   checked: false,
-  options: [],
-
-  // chooseItem: () => {},
+  chooseItem: () => {},
 } as CascaderItemProps
 
 export const CascaderItem: FunctionComponent<
   Partial<CascaderItemProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const [showBasic, setShowBasic] = useState(false)
-  const [tabvalue, setTabvalue] = useState('c1')
-  const [optiosData, setOptiosData] = useState([])
-
-  const { pane, data, index, tabIndex, checked, options, chooseItem } = {
+  const { data, checked, chooseItem } = {
     ...defaultProps,
     ...props,
   }
@@ -43,6 +51,7 @@ export const CascaderItem: FunctionComponent<
   const classes = classNames(
     {
       active: checked,
+      disabled: data.disabled,
     },
     b('')
   )
@@ -53,33 +62,29 @@ export const CascaderItem: FunctionComponent<
 
   useEffect(() => {
     initData()
-  }, [])
+  }, [data])
 
   const initData = () => {
-    // options.forEach((item, index: number) => {
-    //   item.title = item.text
-    //   item.paneKey = 'c'+ (index + 1)
-    //   optiosData.push(item)
-    // })
+    // console.log('------data', data)
   }
 
   return (
-    <>
-      <div
-        className={classes}
-        onClick={() => {
-          chooseItem(data, checked, index, tabIndex)
-        }}
-      >
-        <div className={classesTitle}>{data.text}</div>
-        {
-          checked ? <Icon className={`${checked ? b('icon-check') : ''}`} name="checklist" /> : ''
-          // <Icon v-if="node.loading" className="nut-cascader-item__icon-loading" name="loading" />
-        }
-      </div>
-    </>
+    <div
+      className={classes}
+      onClick={() => {
+        // console.log('click', data)
+        chooseItem(data)
+      }}
+    >
+      <div className={classesTitle}>{data.text}</div>
+      {data.loading ? (
+        <Icon color="#969799" className="nut-cascader-item__icon-loading" name="loading" />
+      ) : (
+        <Icon className={`${checked ? b('icon-check') : ''}`} name="checklist" />
+      )}
+    </div>
   )
 }
 
-// Cascader.defaultProps = defaultProps
+CascaderItem.defaultProps = defaultProps
 CascaderItem.displayName = 'NutCascaderItem'
