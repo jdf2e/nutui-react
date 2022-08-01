@@ -17,7 +17,7 @@ const Links = () => {
             {nav.packages.map((com) =>
               com.show ? (
                 <li key={com.name}>
-                  <Link key={com.name} to={`${lang}/${com.name}`}>
+                  <Link key={com.name} to={`${com.name}`}>
                     {com.name}
                   </Link>
                 </li>

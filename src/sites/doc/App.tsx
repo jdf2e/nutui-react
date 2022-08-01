@@ -10,7 +10,7 @@ import './App.scss'
 import { nav } from '@/config.json'
 import useLocale from '../assets/locale/uselocale'
 import remarkGfm from 'remark-gfm'
-import { routers, raws } from './docs'
+import { routers, raws, scssRaws } from './docs'
 import { visit } from 'unist-util-visit'
 import ReactMarkdown from 'react-markdown'
 import Nav from '@/sites/doc/components/nav'
@@ -127,7 +127,7 @@ const App = () => {
                 return (
                   <Route
                     key={Math.random()}
-                    path={`${lang ? `/${lang}` : ''}/${ru}`}
+                    path={`${lang ? `/${lang}` : ''}/component/${ru}`}
                   >
                     <ReactMarkdown
                       children={getMarkdownByLang(ru)}
@@ -142,6 +142,7 @@ const App = () => {
                           return !inline && match ? (
                             <Demoblock
                               text={String(children).replace(/\n$/, '')}
+                              scss={(scssRaws as any)[ru + 'Scss']}
                             >
                               <SyntaxHighlighter
                                 children={String(children).replace(/\n$/, '')}
