@@ -104,6 +104,8 @@ const defaultProps = {
   errorMessageAlign: '',
   showWordLimit: false,
   autofocus: false,
+  slotButton: null,
+  slotInput: null,
 } as unknown as InputProps
 
 export const Input: FunctionComponent<

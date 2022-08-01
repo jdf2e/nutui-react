@@ -1,10 +1,4 @@
-import React, {
-  FunctionComponent,
-  useEffect,
-  useState,
-  CSSProperties,
-  useRef,
-} from 'react'
+import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 
 import Icon from '@/packages/icon'
 
@@ -19,20 +13,22 @@ export interface BackTopProps {
   isAnimation: boolean
   duration: number
   children?: HTMLElement | any
-  style?: CSSProperties
-  backTopClick: (event: MouseEvent) => void
+  style?: React.CSSProperties
+  onClick?: (event: MouseEvent) => void
 }
 const defaultProps = {
   bottom: 20,
   right: 10,
-  elId: '',
+  elId: 'body',
   distance: 200,
   zIndex: 10,
   isAnimation: true,
   duration: 1000,
 } as BackTopProps
 
-export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
+export const BackTop: FunctionComponent<
+  Partial<BackTopProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
+> = (props) => {
   const {
     children,
     bottom,
@@ -44,7 +40,7 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
     className,
     duration,
     style,
-    backTopClick,
+    onClick,
   } = {
     ...defaultProps,
     ...props,
@@ -55,7 +51,9 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
   const scrollEl: any = useRef<any>(null)
   // 初始化
   useEffect(() => {
+    console.log('backtopInit')
     init()
+
     return () => removeEventListener()
   }, [])
 
@@ -90,11 +88,11 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
 
   const scrollAnimation = () => {
     let cid = requestAniFrame()(function fn() {
-      const t = duration - Math.max(0, startTime - +new Date() + duration)
+      const t = duration - Math.max(0, startTime - +new Date() + duration / 2)
       const y = (t * -scrollTop) / duration + scrollTop
       scroll(y)
       cid = requestAniFrame()(fn)
-      if (t == duration || y == 0) {
+      if (t === duration || y === 0) {
         window.cancelAnimationFrame(cid)
       }
     })
@@ -125,8 +123,8 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
     scrollEl.current?.removeEventListener('resize', scrollListener, false)
   }
   // 返回顶部点击事件
-  const goTop = (e: any) => {
-    backTopClick(e)
+  const goTop = (e: MouseEvent) => {
+    onClick && onClick(e)
     const otime = +new Date()
     startTime = otime
     isAnimation && duration > 0 ? scrollAnimation() : scroll()
@@ -142,7 +140,9 @@ export const BackTop: FunctionComponent<Partial<BackTopProps>> = (props) => {
     <div
       className={`nut-backtop ${backTop ? 'show' : ''} ${className || ''}`}
       style={{ ...backTopClass, ...style }}
-      onClick={goTop}
+      onClick={(e: any) => {
+        goTop(e)
+      }}
     >
       {children || <Icon size="19px" className="nut-backtop-main" name="top" />}
     </div>
