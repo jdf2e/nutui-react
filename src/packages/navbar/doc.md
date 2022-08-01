@@ -31,7 +31,7 @@ const App = () => {
           onClickBack={(e) => alert("标题")}
           onClickRight={(e) => alert('icon')}
         >
-          <Icon name="share" slot="right"></Icon>
+          <Icon name="share" slot="right" />
         </NavBar>
     </>
   );
@@ -82,7 +82,7 @@ const App = () => {
           onClickRight={(e) => alert('编辑')}
           onClickIcon={(e) => alert('icon')}
         >
-          <Icon name="more-x" slot="right"></Icon>
+          <Icon name="more-x" slot="right" />
       </NavBar>
     </>
   );
@@ -109,7 +109,7 @@ const App = () => {
           onClickBack={(e) => alert("标题")}
           onClickRight={(e) => alert('icon')}
         >
-          <Icon name="share" slot="right"></Icon>
+          <Icon name="share" slot="right" />
       </NavBar>
     </>
   );
@@ -145,7 +145,7 @@ const App = () => {
               <TabPane title="Tab 3"> Tab 3 </TabPane>
             </Tabs>
           </div>
-          <Icon name="more-x" slot="right"></Icon>
+          <Icon name="more-x" slot="right" />
       </NavBar>
     </>
   );
