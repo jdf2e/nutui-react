@@ -38,7 +38,7 @@ const App = () => {
     }
     return (
         <>
-            <Cell title="选择单个日期" desc={ date ? `${date} ${dateWeek}` : '请选择' } onClick={ openSwitch }></Cell>
+            <Cell title="选择单个日期" desc={ date ? `${date} ${dateWeek}` : '请选择' } onClick={ openSwitch } />
             <Calendar 
                 visible={ isVisible }
                 defaultValue={ date }
@@ -46,7 +46,7 @@ const App = () => {
                 endDate="2029-11-11"
                 onClose={ closeSwitch }
                 onChoose={ setChooseValue }
-            ></Calendar>
+             />
         </>
     );
 };
@@ -80,7 +80,7 @@ const App = () => {
 
     return (
         <>
-            <Cell title="选择日期区间" desc={ date1 ? `${date1[0]}至${date1[1]}` : '请选择' } onClick={ openSwitch1 }></Cell>
+            <Cell title="选择日期区间" desc={ date1 ? `${date1[0]}至${date1[1]}` : '请选择' } onClick={ openSwitch1 } />
             <Calendar 
                 visible={ isVisible1 }
                 defaultValue={ date1 }
@@ -89,7 +89,7 @@ const App = () => {
                 endDate="2021-01-08"
                 onClose={ closeSwitch1 }
                 onChoose={ setChooseValue1 }
-            ></Calendar>
+             />
         </>
     );
 };
@@ -123,16 +123,16 @@ const App = () => {
 
     return (
         <>
-            <Cell title="选择日期" desc={ date3 ? `${date3}` : '请选择' } onClick={ openSwitch3 }></Cell>
+            <Cell title="选择日期" desc={ date3 ? `${date3}` : '请选择' } onClick={ openSwitch3 } />
             <Calendar
                 visible={ isVisible3 }
                 defaultValue={ date3 }
                 startDate=""
                 endDate=""
-                isAutoBackFill={ true }
+                isAutoBackFill
                 onClose={ closeSwitch3 }
                 onChoose={ setChooseValue3 }
-            ></Calendar>
+             />
         </>
     );
 };
