@@ -413,6 +413,16 @@
           "sort": 1,
           "show": true,
           "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "SearchBar",
+          "type": "component",
+          "cName": "搜索栏",
+          "desc": "用于搜索场景的输入框组件",
+          "sort": 16,
+          "show": true,
+          "author": "Ymm0008"
         }
       ]
     },
