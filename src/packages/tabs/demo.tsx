@@ -86,6 +86,29 @@ const TabsDemo = () => {
             Tab 3{' '}
           </TabPane>
         </Tabs>
+        <h2>Tabpane 自动高度</h2>
+        <Tabs
+          value={tab2value}
+          autoHeight
+          onChange={({ paneKey }) => {
+            setTab2value(paneKey)
+          }}
+        >
+          <TabPane title="Tab 1" pane-key="0">
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+          </TabPane>
+          <TabPane title="Tab 2" pane-key="1">
+            {' '}
+            Tab 2{' '}
+          </TabPane>
+          <TabPane title="Tab 3" pane-key="2">
+            {' '}
+            Tab 3{' '}
+          </TabPane>
+        </Tabs>
         <h2>数据异步渲染 3s</h2>
         <Tabs
           value={tab3value}
