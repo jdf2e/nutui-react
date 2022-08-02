@@ -31,7 +31,7 @@ export interface BaseLang {
     end: string
     start: string
     title: string
-    monthTitle: Function
+    monthTitle: () => void
     today: string
     loadPreviousMonth: string
     noEarlierMonth: string
@@ -86,7 +86,18 @@ export interface BaseLang {
   }
   comment: {
     complaintsText: string
-    additionalReview: Function
-    additionalImages: Function
+    additionalReview: () => void
+    additionalImages: () => void
+  }
+  searchbar: {
+    basePlaceholder: string
+    text: string
+    test: string
+    title1: string
+    title2: string
+    title3: string
+    title4: string
+    title5: string
+    title6: string
   }
 }

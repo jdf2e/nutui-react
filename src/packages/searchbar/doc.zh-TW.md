@@ -135,7 +135,7 @@ const App = () => {
       change={(val: string, e: Event) => change(val, e)}
       maxLength={10}
     />
-    數值：{value}
+    value：{value}
   </>
 }
 export default App;
@@ -157,6 +157,8 @@ export default App;
 | readonly |輸入框只讀| _boolean_ | ` false` |
 | maxLength |最大輸入長度| _number_ | ` 9999` |
 | clearable |是否展示清除按鈕| _boolean_ | ` true` |
+| background |蒐索框外部背景色| _string_ | - |
+| inputBackground |蒐索框背景色| _string_ | - |
 | inputAlign |對齊管道，可選`center` `right` | _string_ | ` left` |
 | autofocus |是否自動聚焦| _boolean_ | ` false` |
 | label |蒐索框左側文字| _string_ | '' |

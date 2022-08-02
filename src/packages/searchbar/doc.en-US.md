@@ -149,34 +149,36 @@ export default App;
 
 |Parameter | description | type | default value|
 |--------------|----------------------------------|--------|------------------|
-|Value | current input value | _string_ | - |
-|Placeholder | input box default dark texture | _string_ | ` Please enter `|
-|Classname | custom class name | _string_ | '' |
-|Shape | search box shape, the optional value is 'round '| _string_ | ` square` |
-|Disabled | whether to disable the input box | _boolean_ | ` false` |
-|Readonly | the input box is read-only | _boolean_ | ` false` |
-|MaxLength | maximum input length | _number_ | ` 9999` |
-|Clear | whether to display the clear button | _boolean_ | ` true` |
-|Inputalign | alignment, optional `center` `right` | _string_ | ` left` |
-|Autofocus | auto focus | _boolean_ | ` false` |
-|Label | left text of search box | _string_ | '' |
-|Actiontext | cancel button text | _ReactNode_ | '' |
-|Leftinicon | input box, left Icon | _ReactNode_ | `< Icon name="search" size="12" />` |
-|Rightinicon | input box, right icon | _ReactNode_ | - |
-|Leftouticon | outside the input box, left Icon | _ReactNode_ | - |
-|Rightouticon | outside the input box, right icon | _ReactNode_ | - |
+|value | current input value | _string_ | - |
+|placeholder | input box default dark texture | _string_ | ` Please enter `|
+|classname | custom class name | _string_ | '' |
+|shape | search box shape, the optional value is 'round '| _string_ | ` square` |
+|disabled | whether to disable the input box | _boolean_ | ` false` |
+|readonly | the input box is read-only | _boolean_ | ` false` |
+|maxLength | maximum input length | _number_ | ` 9999` |
+|clearable | whether to display the clear button | _boolean_ | ` true` |
+|background | search box external background color |_string_ | - |
+|inputbackground | search box background color |_string_ | - |
+|inputalign | alignment, optional `center` `right` | _string_ | ` left` |
+|autofocus | auto focus | _boolean_ | ` false` |
+|label | left text of search box | _string_ | '' |
+|actiontext | cancel button text | _ReactNode_ | '' |
+|leftinicon | input box, left Icon | _ReactNode_ | `< Icon name="search" size="12" />` |
+|rightinicon | input box, right icon | _ReactNode_ | - |
+|leftouticon | outside the input box, left Icon | _ReactNode_ | - |
+|rightouticon | outside the input box, right icon | _ReactNode_ | - |
 
 ### Events
 
 |Event name | description | callback parameters|
 |--------|----------------|--------------|
-|Change | triggered when entering content | _val: string, event: Event_ |
-|Focus | triggered when focusing | _val: string, event: Event_ |
-|Blur | triggered when out of focus | _val: string, event: Event_ |
-|Clear | triggered when clicking clear | _event: Event_ |
-|Search | trigger when confirming search | _val: string, event: Event_ |
-|Clickinput | triggered when clicking the input area | _event: Event_ |
-|Clickleftinicon | triggered when clicking the icon on the left side of the input box | _val: string, event: Event_ |
-|Clickleftouticon | triggered when clicking the icon on the left outside of the input box | _val: string, event: Event_ |
-|Clickrightinicon | triggered when clicking the icon on the right side of the input box | _val: string, event: Event_ |
-|Clickrightouticon | triggered when clicking the icon on the right side of the input box | _val: string, event: Event_ |
+|change | triggered when entering content | _val: string, event: Event_ |
+|focus | triggered when focusing | _val: string, event: Event_ |
+|blur | triggered when out of focus | _val: string, event: Event_ |
+|clear | triggered when clicking clear | _event: Event_ |
+|search | trigger when confirming search | _val: string, event: Event_ |
+|clickinput | triggered when clicking the input area | _event: Event_ |
+|clickleftinicon | triggered when clicking the icon on the left side of the input box | _val: string, event: Event_ |
+|clickleftouticon | triggered when clicking the icon on the left outside of the input box | _val: string, event: Event_ |
+|clickrightinicon | triggered when clicking the icon on the right side of the input box | _val: string, event: Event_ |
+|clickrightouticon | triggered when clicking the icon on the right side of the input box | _val: string, event: Event_ |

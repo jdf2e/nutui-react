@@ -1,8 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import './searchbar.scss'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
-import Icon from '../icon'
+import Icon from '@/packages/icon'
 
 type TIconDirection = 'in-left' | 'out-left' | 'in-right' | 'out-right'
 export interface SearchBarProps {
@@ -13,7 +12,7 @@ export interface SearchBarProps {
   /** 搜索框形状，可选值为 round	 */
   shape?: 'square' | 'round'
   /** 自定义class名	 */
-  className?: ''
+  className?: string
   /** 是否禁用输入框	 */
   disabled?: boolean
   /** 最大输入长度	 */
@@ -68,7 +67,6 @@ export interface SearchBarProps {
 const defaultProps = {
   placeholder: '',
   shape: 'square',
-  className: '',
   disabled: false,
   maxLength: 9999,
   clearable: true,
@@ -76,11 +74,7 @@ const defaultProps = {
   readonly: true,
   autoFocus: false,
   label: '',
-  // actionText: '',
   leftinIcon: <Icon name="search" size="12" />,
-  // leftoutIcon: '',
-  // rightinIcon: '',
-  // rightoutIcon: '',
 } as SearchBarProps
 export const SearchBar: FunctionComponent<
   Partial<SearchBarProps> & React.HTMLAttributes<HTMLDivElement>
@@ -160,7 +154,7 @@ export const SearchBar: FunctionComponent<
         ref={searchRef}
         style={{ ...props.style, background: props.inputBackground }}
         value={value || ''}
-        placeholder={placeholder || '请输入'}
+        placeholder={placeholder || locale.placeholder}
         disabled={disabled}
         readOnly={readOnly}
         maxLength={maxLength}
