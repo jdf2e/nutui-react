@@ -31,7 +31,8 @@ export interface BaseLang {
     end: string
     start: string
     title: string
-    monthTitle: () => void
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    monthTitle: Function
     today: string
     loadPreviousMonth: string
     noEarlierMonth: string
@@ -86,8 +87,10 @@ export interface BaseLang {
   }
   comment: {
     complaintsText: string
-    additionalReview: () => void
-    additionalImages: () => void
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    additionalReview: Function
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    additionalImages: Function
   }
   searchbar: {
     basePlaceholder: string
