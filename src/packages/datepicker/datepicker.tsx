@@ -264,7 +264,11 @@ export const DatePicker: FunctionComponent<
         date = new Date(year, month, day, Number(formatDate[3]))
       }
 
-      date && isDate(date) && setCurrentDate(formatValue(date as Date))
+      const isEqual = currentDate?.getTime() === date?.getTime()
+      date &&
+        isDate(date) &&
+        !isEqual &&
+        setCurrentDate(formatValue(date as Date))
     }
 
     props.onChangeDatePicker &&
