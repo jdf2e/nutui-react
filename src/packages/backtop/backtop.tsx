@@ -51,7 +51,6 @@ export const BackTop: FunctionComponent<
   const scrollEl: any = useRef<any>(null)
   // 初始化
   useEffect(() => {
-    console.log('backtopInit')
     init()
 
     return () => removeEventListener()
@@ -123,7 +122,7 @@ export const BackTop: FunctionComponent<
     scrollEl.current?.removeEventListener('resize', scrollListener, false)
   }
   // 返回顶部点击事件
-  const goTop = (e: MouseEvent) => {
+  const goTop = (e: any) => {
     onClick && onClick(e)
     const otime = +new Date()
     startTime = otime
@@ -140,7 +139,7 @@ export const BackTop: FunctionComponent<
     <div
       className={`nut-backtop ${backTop ? 'show' : ''} ${className || ''}`}
       style={{ ...backTopClass, ...style }}
-      onClick={(e: any) => {
+      onClick={(e) => {
         goTop(e)
       }}
     >
