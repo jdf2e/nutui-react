@@ -170,7 +170,7 @@ export const CalendarItem: FunctionComponent<
       if (
         state.isRange &&
         Array.isArray(state.currDate) &&
-        Object.values(state.currDate).length == 2 &&
+        Object.values(state.currDate).length === 2 &&
         Utils.compareDate(state.currDate[0], currDate) &&
         Utils.compareDate(currDate, state.currDate[1])
       ) {
@@ -184,8 +184,8 @@ export const CalendarItem: FunctionComponent<
   const isActive = (day: Day, month: MonthInfo) => {
     return (
       state.isRange &&
-      day.type == 'curr' &&
-      getClass(day, month) == 'calendar-month-day-active'
+      day.type === 'curr' &&
+      getClass(day, month) === 'calendar-month-day-active'
     )
   }
 
@@ -195,7 +195,7 @@ export const CalendarItem: FunctionComponent<
   }
 
   const confirm = () => {
-    if ((state.isRange && state.chooseData.length == 2) || !state.isRange) {
+    if ((state.isRange && state.chooseData.length === 2) || !state.isRange) {
       onChoose && onChoose(state.chooseData)
       if (poppable) {
         onUpdate && onUpdate()
@@ -209,7 +209,7 @@ export const CalendarItem: FunctionComponent<
     isFirst?: boolean,
     isRange?: boolean
   ) => {
-    if (getClass(day, month, isRange) != `${state.dayPrefix}-disabled`) {
+    if (getClass(day, month, isRange) !== `${state.dayPrefix}-disabled`) {
       let days = [...month.curData]
       days = isRange ? days.splice(3) : days.splice(0, 3)
       days[2] =
@@ -228,7 +228,7 @@ export const CalendarItem: FunctionComponent<
           Array.isArray(state.currDate) && state.currDate.unshift(days[3])
         }
 
-        if (state.chooseData.length == 2 || !state.chooseData.length) {
+        if (state.chooseData.length === 2 || !state.chooseData.length) {
           state.chooseData = [...days]
         } else if (Utils.compareDate(state.chooseData[3], days[3])) {
           state.chooseData = [[...state.chooseData], [...days]]
@@ -260,19 +260,21 @@ export const CalendarItem: FunctionComponent<
   // 获取当前月数据
   const getCurrData = (type: string) => {
     const monthData =
-      type == 'prev'
+      type === 'prev'
         ? state.monthsData[0]
         : state.monthsData[state.monthsData.length - 1]
     let year = parseInt(monthData.curData[0])
     let month = parseInt(monthData.curData[1].toString().replace(/^0/, ''))
     switch (type) {
       case 'prev':
-        month == 1 && (year -= 1)
-        month = month == 1 ? 12 : --month
+        month === 1 && (year -= 1)
+        month = month === 1 ? 12 : --month
         break
       case 'next':
-        month == 12 && (year += 1)
-        month = month == 12 ? 1 : ++month
+        month === 12 && (year += 1)
+        month = month === 12 ? 1 : ++month
+        break
+      default:
         break
     }
     return [
@@ -285,7 +287,7 @@ export const CalendarItem: FunctionComponent<
   // 获取日期状态
   const getDaysStatus = (days: number, type: string) => {
     // 修复：当某个月的1号是周日时，月份下方会空出来一行
-    if (type == 'prev' && days >= 7) {
+    if (type === 'prev' && days >= 7) {
       days -= 7
     }
     return Array.from(Array(days), (v, k) => {
@@ -312,7 +314,7 @@ export const CalendarItem: FunctionComponent<
         ...(getDaysStatus(currMonthDays, 'curr') as Day[]),
       ],
     }
-    if (type == 'next') {
+    if (type === 'next') {
       if (
         !state.endData ||
         !Utils.compareDate(
@@ -395,7 +397,7 @@ export const CalendarItem: FunctionComponent<
       if (updateMove < 0 && updateMove < -offsetHeight + h) {
         updateMove = -offsetHeight + h
       }
-      if (offsetHeight <= h && state.monthsData.length == 1) {
+      if (offsetHeight <= h && state.monthsData.length === 1) {
         updateMove = 0
       }
       setTransform(updateMove, type, time)
@@ -406,7 +408,11 @@ export const CalendarItem: FunctionComponent<
       if (updateMove < -offsetHeight + h - 100 && state.monthsData.length > 1) {
         updateMove = -offsetHeight + h - 100
       }
-      if (updateMove < 0 && updateMove < -100 && state.monthsData.length == 1) {
+      if (
+        updateMove < 0 &&
+        updateMove < -100 &&
+        state.monthsData.length === 1
+      ) {
         updateMove = -100
       }
       setTransform(updateMove)

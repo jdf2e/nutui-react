@@ -107,7 +107,7 @@ export const CollapseItem: FunctionComponent<
         }}
       >
         <div className={colBem('title')}>
-          {titleIcon && titleIconPosition == 'left' && (
+          {titleIcon && titleIconPosition === 'left' && (
             <b className={colBem('title-icon-left')}>
               <Icon
                 name={titleIcon}
@@ -117,7 +117,7 @@ export const CollapseItem: FunctionComponent<
             </b>
           )}
           {title}
-          {titleIcon && titleIconPosition == 'right' && (
+          {titleIcon && titleIconPosition === 'right' && (
             <b className={colBem('title-icon-right')}>
               <Icon
                 name={titleIcon}

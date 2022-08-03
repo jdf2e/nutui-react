@@ -755,7 +755,7 @@
           "desc": "折叠面板，可进行内容折叠展开操作，可以多面板配合使用。",
           "sort": 2,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "zhenyulei"
         },
         {
