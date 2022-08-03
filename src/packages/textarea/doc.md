@@ -16,32 +16,99 @@ import { TextArea } from '@nutui/nutui-react';
 
 ### 基础用法
 
-```html
-<textarea defaultValue="{value1}" />
-```
+:::demo
 
-```javascript
-const [value1, UpdateValue1] = useState('')
+```tsx
+import  React, {useState} from "react";
+import { TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+    const [value1, updateValue1] = useState('')
+    const change = (value: any, event: Event) => {
+        updateValue1(value)
+    }
+    return (
+        <>
+           <TextArea
+            defaultValue={value1}
+            className="text-1"
+            style={{ fontSize: '12px' }}
+            onChange={(value, event) => {
+                change(value, event)
+            }}
+            onBlur={() => {
+                console.log('blur')
+            }}
+            onFocus={() => {
+                console.log('focus')
+            }}
+            />
+        </>
+    )
+};
+export default App
 ```
+:::
 
 ### 显示字数统计
 
-```html
-<textarea defaultValue="{value2}" limitShow maxlength="20" />
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+    const [value2, updateValue2] = useState('')
+    return (
+        <>
+            <TextArea defaultValue={value2} limitShow maxlength="20" />
+        </>
+    )
+};
+export default App
 ```
+:::
 
 ### 高度自定义，拉伸
 
-```html
-<textarea defaultValue="{value3}" rows="10" autosize />
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+    const [value3, updateValue3] = useState('')
+    return (
+        <>
+            <TextArea defaultValue={value3} rows="10" autosize />
+        </>
+    )
+};
+export default App
 ```
+:::
 
 ### 只读、禁用
 
-```html
-<textarea readonly defaultValue="textarea只读状态" />
-<textarea disabled defaultValue="textarea禁用状态" limitShow maxlength="20" />
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+    return (
+        <>
+            <TextArea readonly defaultValue="textarea只读状态" />
+            <TextArea disabled defaultValue="textarea禁用状态" limitShow maxlength="20" />
+        </>
+    )
+};
+export default App
 ```
+:::
 
 ## API
 

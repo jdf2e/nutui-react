@@ -1,4 +1,4 @@
-# Tag 
+# Tag
 
 ### introduce
 
@@ -14,44 +14,132 @@ import { Tag } from '@nutui/nutui-react';
 
 ### Basic usage
 
+:::demo
+
 ```tsx
-<Tag type="primary">Label</Tag>
-<Tag type="success">Label</Tag>
-<Tag type="danger">Label</Tag>
-<Tag type="warning">Label</Tag>
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag type="primary">Label</Tag>
+      <Tag type="success">Label</Tag>
+      <Tag type="danger">Label</Tag>
+      <Tag type="warning">Label</Tag>
+    </>
+  )
+}
+export default App;
 ```
+
+:::
 
 ### Hollow style
 
+:::demo
+
 ```tsx
-<Tag plain>Label</Tag>
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag plain>Label</Tag>
+    </>
+  )
+}
+export default App;
 ```
+
+:::
 
 ### Rounded style
 
+:::demo
+
 ```tsx
-<Tag round type="primary">Label</Tag>
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag round type="primary">Label</Tag>
+    </>
+  )
+}
+export default App;
 ```
+
+:::
 
 ### Label style
 
+:::demo
+
 ```tsx
-<Tag mark type="primary">Label</Tag>
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag mark type="primary">Label</Tag>
+    </>
+  )
+}
+export default App;
 ```
+
+:::
 
 ### Can close label
 
+:::demo
+
 ```tsx
-<Tag isShow={isShow} closeable onClick={close} type="primary">Label</Tag>
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  const [isShow, setIsShow] = useState(true)
+  const close = () => {
+    setIsShow(false)
+  }
+  return (
+    <>
+      <Tag isShow={isShow} closeable onClick={close} type="primary">Label</Tag>
+    </>
+  )
+}
+export default App;
 ```
+
+:::
 
 ### Custom color
 
+:::demo
+
 ```tsx
-<Tag color="#FA685D">Label</Tag>
-<Tag color="#E9E9E9" text-color="#999999">Label</Tag>
-<Tag color="#FA2400" plain>Label</Tag>
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag color="#FA685D">Label</Tag>
+      <Tag color="#E9E9E9" text-color="#999999">Label</Tag>
+      <Tag color="#FA2400" plain>Label</Tag>
+    </>
+  )
+}
+export default App;
 ```
+
+:::
 
 ## API
 
@@ -66,7 +154,6 @@ import { Tag } from '@nutui/nutui-react';
 | round      | Whether it is a rounded style                      | Boolean | `false`   |
 | mark       | Whether it is a tag style                          | Boolean | `false`   |
 | closeable  | Whether it can be closed label                     | Boolean | `false`   |
-
 
 ### Event
 
