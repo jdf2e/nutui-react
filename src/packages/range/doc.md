@@ -14,140 +14,302 @@ import { Range } from '@nutui/nutui-react';
 
 ### 基础用法
 
-```jsx
-<Range modelValue={40} />
-```
+:::demo
 
+```tsx
+import  React from "react";
+import { Range,Cell } from '@nutui/nutui-react';
+
+const App = () => {
+    const cellStyle = {
+        padding: '40px 18px',
+    }
+    return (
+    <>
+        <Cell style={cellStyle}>
+            <Range modelValue={40} />
+        </Cell>
+    </>
+    )
+};
+export default App;
+```
+:::
 ### 双滑块
 
-```jsx
-<Range
-  range
-  modelValue={[30, 60]}
-  change={(value) => {
-    change(value)
-  }}
- />
+:::demo
+
+```tsx
+import  React from "react";
+import { Range,Cell,Toast } from '@nutui/nutui-react';
+
+const App = () => {
+    const change = (value: number, name?: string) => {
+        Toast.text(`当前值：${value}`)
+    }
+    const cellStyle = {
+        padding: '40px 18px',
+    }
+    return (
+    <>
+        <Cell style={cellStyle}>
+        <Range
+            range
+            modelValue={[30, 60]}
+            change={(value) => {
+                change(value)
+            }}
+        />
+        </Cell>
+    </>
+    )
+};
+export default App;
 ```
+:::
 
 ### 指定范围
 
-```jsx
-<Range
-  modelValue={0}
-  max={10}
-  min={-10}
-  change={(value) => {
-    change(value)
-  }}
- />
+:::demo
+
+```tsx
+import  React from "react";
+import { Range,Cell,Toast } from '@nutui/nutui-react';
+
+const App = () => {
+    const change = (value: number, name?: string) => {
+        Toast.text(`当前值：${value}`)
+    }
+    const cellStyle = {
+        padding: '40px 18px',
+    }
+    return (
+    <>
+        <Cell style={cellStyle}>
+        <Range
+            modelValue={0}
+            max={10}
+            min={-10}
+            change={(value) => {
+                change(value)
+            }}
+            />
+        </Cell>
+    </>
+    )
+};
+export default App;
 ```
+:::
 
 ### 设置步长
 
-```jsx
-<Range
-  modelValue={value1}
-  step={5}
-  change={(value: any) => {
-    change(value, 'value1')
-  }}
- />
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Range,Cell,Toast } from '@nutui/nutui-react';
+
+const App = () => {
+    const [value1, SetValue1] = useState(40)
+    const change = (value: number, name?: string) => {
+        Toast.text(`当前值：${value}`)
+        SetValue1(value)
+    }
+    const cellStyle = {
+        padding: '40px 18px',
+    }
+    return (
+    <>
+        <Cell style={cellStyle}>
+        <Range
+            modelValue={value1}
+            step={5}
+            change={(value: any) => {
+                change(value, 'value1')
+            }}
+            />
+        </Cell>
+    </>
+    )
+};
+export default App;
 ```
+:::
+
 
 ### 隐藏范围
 
-```jsx
-<Range
-  modelValue={30}
-  hiddenRange
-  change={(value: any) => {
-    change(value)
-  }}
- />
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Range,Cell,Toast } from '@nutui/nutui-react';
+
+const App = () => {
+    const change = (value: number, name?: string) => {
+        Toast.text(`当前值：${value}`)
+    }
+    const cellStyle = {
+        padding: '40px 18px',
+    }
+    return (
+    <>
+        <Cell style={cellStyle}>
+        <Range
+            modelValue={30}
+            hiddenRange
+            change={(value: any) => {
+                change(value)
+            }}
+            />
+        </Cell>
+    </>
+    )
+};
+export default App;
 ```
+:::
+
 
 ### 隐藏标签
 
-```jsx
-<Range
-  modelValue={20}
-  hiddenTag
-  change={(value: any) => {
-    change(value)
-  }}
- />
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Range,Cell,Toast } from '@nutui/nutui-react';
+
+const App = () => {
+    const change = (value: number, name?: string) => {
+        Toast.text(`当前值：${value}`)
+    }
+    const cellStyle = {
+        padding: '40px 18px',
+    }
+    return (
+    <>
+        <Cell style={cellStyle}>
+        <Range
+            modelValue={20}
+            hiddenTag
+            change={(value: any) => {
+                change(value)
+            }}
+            />
+        </Cell>
+    </>
+    )
+};
+export default App;
 ```
+:::
+
 
 ### 禁用
 
-```jsx
-<Range
-  modelValue={50}
-  disabled
-  change={(value: any) => {
-    change(value)
-  }}
- />
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Range,Cell,Toast } from '@nutui/nutui-react';
+
+const App = () => {
+    const change = (value: number, name?: string) => {
+        Toast.text(`当前值：${value}`)
+    }
+    const cellStyle = {
+        padding: '40px 18px',
+    }
+    return (
+    <>
+        <Cell style={cellStyle}>
+        <Range
+            modelValue={50}
+            disabled
+            change={(value: any) => {
+                change(value)
+            }}
+            />
+        </Cell>
+    </>
+    )
+};
+export default App;
 ```
+:::
 
 ### 自定义样式
 
-```jsx
-<Range
-  modelValue={40}
-  inactiveColor="rgba(163,184,255,1)"
-  buttonColor="rgba(52,96,250,1)"
-  activeColor="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-  change={(value: number) => {
-    change(value)
-  }}
- />
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Range,Cell,Toast } from '@nutui/nutui-react';
+
+const App = () => {
+    const change = (value: number, name?: string) => {
+        Toast.text(`当前值：${value}`)
+    }
+    const cellStyle = {
+        padding: '40px 18px',
+    }
+    return (
+    <>
+        <Cell style={cellStyle}>
+        <Range
+            modelValue={40}
+            inactiveColor="rgba(163,184,255,1)"
+            buttonColor="rgba(52,96,250,1)"
+            activeColor="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
+            change={(value: number) => {
+                change(value)
+            }}
+            />
+        </Cell>
+    </>
+    )
+};
+export default App;
 ```
+:::
+
 
 ### 自定义按钮
 
-```jsx
-<Range
-  modelValue={value2}
-  button={<div className="custom-button">{value2}</div>}
-  change={(value: number) => {
-    change(value, 'value2')
-  }}
- />
-```
+:::demo
 
-```js
-const [value1, SetValue1] = useState(40)
-const [value2, SetValue2] = useState(60)
-const change = (value: number, name?: string) => {
-  Toast.text(`当前值：${  value}`)
-  switch (name) {
-    case 'value1':
-      SetValue1(value)
-      break
-    case 'value2':
-      SetValue2(value)
-      break
-    default:
-      break
-  }
-}
-```
+```tsx
+import  React, {useState} from "react";
+import { Range,Cell,Toast } from '@nutui/nutui-react';
 
-```html
-<style>
-  .custom-button {
-    width: 26px;
-    color: #fff;
-    font-size: 10px;
-    line-height: 18px;
-    text-align: center;
-    background-color: #ee0a24;
-    border-radius: 100px;
-  }
-</style>
+const App = () => {
+    const [value2, SetValue2] = useState(60)
+    const change = (value: number, name?: string) => {
+        Toast.text(`当前值：${value}`)
+        SetValue2(value)
+    }
+    const cellStyle = {
+        padding: '40px 18px',
+    }
+    return (
+    <>
+        <Cell style={cellStyle}>
+        <Range
+            modelValue={value2}
+            button={<div className="custom-button">{value2}</div>}
+            change={(value: number) => {
+                change(value, 'value2')
+            }}
+            />
+        </Cell>
+    </>
+    )
+};
+export default App;
 ```
+:::
+
 
 ## API
 

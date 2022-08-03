@@ -17,28 +17,30 @@ import { Cell, CellGroup } from '@nutui/nutui-react'
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
-  const testClick = (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
+  const testClick = (
+    event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+  ) => {
     console.log('Click Test')
-}
+  }
   return (
     <>
-    <Cell title="Title" desc="Description" />
-    <Cell title="Title" subTitle="Subtitle Description" desc="Description" />
-    <Cell
+      <Cell title="Title" desc="Description" />
+      <Cell title="Title" subTitle="Subtitle Description" desc="Description" />
+      <Cell
         title="Click Test"
         click={(
-        event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => testClick(event)}
-    />
-    <Cell title="Round Radius 0" roundRadius={0} />
+      />
+      <Cell title="Round Radius 0" roundRadius={0} />
     </>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -48,23 +50,23 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
     <>
-    <Cell size="large" title="Title" desc="Description" />
-    <Cell
+      <Cell size="large" title="Title" desc="Description" />
+      <Cell
         size="large"
         title="Title"
         subTitle="Subtitle Description"
         desc="Description"
-    />
+      />
     </>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -74,19 +76,19 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
     <>
-    <Cell>
+      <Cell>
         <div>Content</div>
-    </Cell>
+      </Cell>
     </>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -96,22 +98,22 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
     <Cell
-        title={
+      title={
         <span>
-            Title <b style={{ color: 'red' }}>1</b>
+          Title <b style={{ color: 'red' }}>1</b>
         </span>
-        }
-        desc="Description"
+      }
+      desc="Description"
     />
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -121,29 +123,29 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { CellGroup,Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { CellGroup, Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
     <>
-    <CellGroup
+      <CellGroup
         title="Link | CellGroup Usage"
         desc="Usage nut-cell-group support title desc slots"
-    >
+      >
         <Cell title="Link Usage" isLink />
         <Cell
-        title="URL Jump"
-        desc="https://jd.com"
-        isLink
-        url="https://jd.com"
+          title="URL Jump"
+          desc="https://jd.com"
+          isLink
+          url="https://jd.com"
         />
         <Cell title="Router Jump ’/‘ " to="/" />
-    </CellGroup>
+      </CellGroup>
     </>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -153,17 +155,17 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { CellGroup,Cell,Switch } from '@nutui/nutui-react';
+import React from 'react'
+import { CellGroup, Cell, Switch } from '@nutui/nutui-react'
 
 const App = () => {
   return (
     <CellGroup title="Customize the right arrow area">
       <Cell title="Switch" linkSlot={<Switch checked />} />
     </CellGroup>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -173,26 +175,26 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { CellGroup,Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { CellGroup, Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
     <CellGroup title="Customize the left Icon area">
-        <Cell
+      <Cell
         title="Image"
         iconSlot={
-            <img
+          <img
             className="nut-icon"
             alt=""
             src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-            />
+          />
         }
-        />
+      />
     </CellGroup>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -202,15 +204,13 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
-  return (
-    <Cell title="Name" icon="my" desc="Description" isLink />
-  );
-};
-export default App;
+  return <Cell title="Name" icon="my" desc="Description" isLink />
+}
+export default App
 ```
 
 :::
@@ -220,15 +220,13 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
-  return (
-    <Cell descTextAlign="left" desc="Description" />
-  );
-};
-export default App;
+  return <Cell descTextAlign="left" desc="Description" />
+}
+export default App
 ```
 
 :::
@@ -240,15 +238,15 @@ You can center the left and right contents of the cell vertically through the 'c
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
-     <Cell center title="Title" subTitle="Subtitle Description" desc="Desc" />
-  );
-};
-export default App;
+    <Cell center title="Title" subTitle="Subtitle Description" desc="Desc" />
+  )
+}
+export default App
 ```
 
 :::

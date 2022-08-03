@@ -20,7 +20,7 @@ export function formatNumber(
   if (allowDot) {
     value = trimExtraChar(value, '.', /\./g)
   } else {
-    value = value.replace(/\./g, '')
+    value = value.split('.')[0]
   }
 
   if (allowMinus) {
@@ -28,7 +28,6 @@ export function formatNumber(
   } else {
     value = value.replace(/-/, '')
   }
-
   const regExp = allowDot ? /[^-0-9.]/g : /[^-0-9]/g
 
   return value.replace(regExp, '')
