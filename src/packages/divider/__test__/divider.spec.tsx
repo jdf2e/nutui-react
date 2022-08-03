@@ -54,7 +54,7 @@ test('custom style test', () => {
   )
   expect(container.querySelector('.nut-divider')).toHaveAttribute(
     'style',
-    'color: #1989fa;border-color: #1989fa;padding: 0 16px;'
+    'color: rgb(25, 137, 250); border-color: #1989fa; padding: 0px 16px;'
   )
 })
 
