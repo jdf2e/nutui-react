@@ -1,40 +1,132 @@
-@import '../icon/icon.scss';
-
 .nut-navbar {
   position: relative;
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  height: 44px;
-  padding: 13px 16px;
-  background: #fff;
-  box-shadow: 0 1px 7px 0 #edeef1;
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 20px;
-  &__back {
-    padding: 0 16px;
-    &:before {
-      content: '\e673';
+  height: $navbar-height;
+  box-sizing: border-box;
+  padding: $navbar-padding;
+  background: $navbar-background;
+  box-shadow: $navbar-box-shadow;
+  font-size: $navbar-title-base-font;
+  color: $navbar-color;
+  margin-bottom: $navbar-margin-bottom;
+  overflow: hidden;
+  &:active::before {
+    opacity: 0.1;
+  }
+  &--border {
+    border-bottom: 1px solid #eee;
+  }
+  &--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  &--placeholder {
+    display: inline-block;
+    width: 100%;
+  }
+  &--safe-area-inset-top {
+    padding-top: constant(safe-area-inset-top);
+    padding-top: env(safe-area-inset-top);
+  }
+  &--clickable {
+    &::before {
       position: absolute;
+      content: ' ';
       top: 50%;
       left: 50%;
+      width: 100%;
+      height: 100%;
+      background-color: $black;
+      border: inherit;
+      border-color: $black;
+      border-radius: inherit;
       transform: translate(-50%, -50%);
+      opacity: 0;
     }
   }
-  &__icon {
-    display: flex;
-    margin-left: 16px;
-    .nut-icon:before {
-      max-width: 100%;
+
+  .nutui-iconfont {
+    .nut-icon-left {
+      text-align: left;
     }
   }
+
   &__title {
-    flex: 1;
+    min-width: 53%;
+    margin: 0 auto;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .title {
+      min-width: $navbar-title-width;
+      font-size: $navbar-title-font;
+      font-weight: $navbar-title-font-weight;
+      color: $navbar-title-font-color;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+    }
+    &.icon {
+      .icon {
+        margin: $navbar-title-icon-margin;
+      }
+    }
     .nut-icon {
-      vertical-align: middle;
-      margin-top: -2px;
+      display: inline;
+    }
+    &-desc {
+      font-size: $cell-title-desc-font;
+    }
+    .text__title {
+      display: inline-block;
+    }
+
+    .nut-tabs__titles {
+      background: $white;
+    }
+
+    .nut-tabpane {
+      display: none;
+    }
+  }
+
+  &__title ::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__left {
+    font-size: $cell-desc-font;
+    color: $cell-desc-color;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 16px;
+  }
+  &__right {
+    font-size: $cell-desc-font;
+    color: $cell-desc-color;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    cursor: pointer;
+    .rightIcon {
+      margin-left: 16px;
+    }
+    .leftIcon {
+      margin-left: 16px;
     }
   }
 }

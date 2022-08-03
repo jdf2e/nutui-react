@@ -4,6 +4,7 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { Rate } from '../rate'
+
 const publicCls =
   'nut-rate-item__icon nut-rate-item__icon--disabled nut-icon nutui-iconfont'
 test('spacing & count & modelValue & checkedIcon & uncheckedIcon & readonly & iconSize & activeColor & voidColor & change test', () => {
@@ -46,26 +47,26 @@ test('spacing & count & modelValue & checkedIcon & uncheckedIcon & readonly & ic
   const valueEl = container.querySelector('.curModelValue')
   const el = container.querySelectorAll('.nut-rate-item')
   if (el && valueEl) {
-    expect(el.length).toBe(state.count) //count
+    expect(el.length).toBe(state.count) // count
     expect(el[0].childNodes[0]).toHaveClass(
-      //modelValue
+      // modelValue
       'nut-rate-item__icon nut-icon nutui-iconfont nut-icon-star-fill-n'
     )
     expect(el[0].childNodes[0]).toHaveAttribute(
-      //activeColor && iconSize
+      // activeColor && iconSize
       'style',
       'color: red; font-size: 18px; width: 18px; height: 18px;'
     )
     expect(el[1].childNodes[0]).toHaveClass(`${publicCls} nut-icon-star-n`)
     expect(el[1].childNodes[0]).toHaveAttribute(
-      //voidColor
+      // voidColor
       'style',
       'color: rgb(250, 104, 93); font-size: 18px; width: 18px; height: 18px;'
     )
-    expect(el[0]).toHaveAttribute('style', 'margin-right: 12px;') //spacing
+    expect(el[0]).toHaveAttribute('style', 'margin-right: 12px;') // spacing
 
     fireEvent.click(el[1])
-    expect(valueEl.innerHTML).toBe('2') //change api test
+    expect(valueEl.innerHTML).toBe('2') // change api test
   }
 })
 
