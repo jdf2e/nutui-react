@@ -142,12 +142,14 @@ export const NoticeBar: FunctionComponent<
     if (showNoticeBar === false) {
       return
     }
-    setTimeout(() => {
+    setTimeout(async () => {
       if (!wrap.current || !content.current) {
         return
       }
-      const wrapW = wrap.current.getBoundingClientRect().width
-      const offsetW = content.current.getBoundingClientRect().width
+      const wrapRes = await wrap.current.getBoundingClientRect()
+      const wrapW = wrapRes.width
+      const contentRes = await content.current.getBoundingClientRect()
+      const offsetW = contentRes.width
 
       if (scrollable && offsetW > wrapW) {
         SetWrapWidth(wrapW)
@@ -231,12 +233,12 @@ export const NoticeBar: FunctionComponent<
     close && close(scrollList[0])
   }
 
-  const iconShow = () => {
-    if (leftIcon === 'close') {
-      return false
-    }
-    return true
-  }
+  // const iconShow = () => {
+  //   if (leftIcon === 'close') {
+  //     return false
+  //   }
+  //   return true
+  // }
 
   const contentStyle = {
     paddingLeft: firstRound ? 0 : `${wrapWidth}px`,

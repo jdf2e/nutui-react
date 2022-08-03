@@ -14,7 +14,12 @@ const subPackages = [
   },
   {
     root: 'nav',
-    pages: ['pages/tabbar/index', 'pages/pagination/index', 'pages/tabs/index'],
+    pages: [
+      'pages/fixednav/index',
+      'pages/tabbar/index',
+      'pages/pagination/index',
+      'pages/tabs/index',
+    ],
   },
   {
     root: 'dentry',
@@ -27,11 +32,14 @@ const subPackages = [
   {
     root: 'exhibition',
     pages: [
+      'pages/noticebar/index',
       'pages/steps/index',
+      'pages/swiper/index',
       'pages/avatar/index',
       'pages/price/index',
       'pages/badge/index',
       'pages/tag/index',
+      'pages/popover/index',
       'pages/skeleton/index',
       'pages/empty/index',
     ],

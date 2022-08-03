@@ -193,7 +193,7 @@
           "desc": "悬浮收齐体验交互，用于快捷导航",
           "sort": 5,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "Ymm0008"
         },
         {
@@ -613,7 +613,7 @@
           "desc": "用于循环播放展示一组消息通知。",
           "sort": 11,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "vickyYe"
         },
         {
@@ -646,7 +646,7 @@
           "desc": "轮播组件",
           "sort": 14,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "liukun"
         },
         {

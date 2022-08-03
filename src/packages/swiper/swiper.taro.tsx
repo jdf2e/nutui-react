@@ -246,7 +246,6 @@ export const Swiper = React.forwardRef<
     offset = targetOffset
     setActive(targetActive)
     setOffset(targetOffset)
-
     getStyle(targetOffset)
   }
   // 确定当前active 元素
@@ -325,6 +324,7 @@ export const Swiper = React.forwardRef<
   })
   const getStyle = (moveOffset = offset) => {
     const target = innerRef.current
+    if (!target) return
     target.style.transform = `translate3D${
       !isVertical ? `(${moveOffset}px,0,0)` : `(0,${moveOffset}px,0)`
     }`
@@ -389,11 +389,11 @@ export const Swiper = React.forwardRef<
     _swiper.current.activePagination = (active + childCount) % childCount
   }, [active])
 
-  const init = (active: number = +propSwiper.initPage) => {
-    const rect = container.current.getBoundingClientRect()
+  const init = async (active: number = +propSwiper.initPage) => {
+    const rect = await container.current.getBoundingClientRect()
     const _active = Math.max(Math.min(childCount - 1, active), 0)
-    const _width = propSwiper.width ? +propSwiper.width : rect.width
-    const _height = propSwiper.height ? +propSwiper.height : rect.height
+    const _width = propSwiper.width ? +propSwiper.width : rect?.width
+    const _height = propSwiper.height ? +propSwiper.height : rect?.height
     size = isVertical ? _height : _width
     trackSize = childCount * Number(size)
     const targetOffset = getOffset(_active)
