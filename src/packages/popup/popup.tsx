@@ -4,7 +4,10 @@ import React, {
   useEffect,
   MouseEventHandler,
   MouseEvent,
+  ReactElement,
+  ReactPortal,
 } from 'react'
+import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
@@ -12,6 +15,8 @@ import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
 import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
 import bem from '@/utils/bem'
+
+type Teleport = HTMLElement | (() => HTMLElement) | null
 
 interface PopupProps extends OverlayProps {
   position: string
@@ -22,7 +27,7 @@ interface PopupProps extends OverlayProps {
   closeIconPosition: string
   closeIcon: string
   destroyOnClose: boolean
-  // teleport: string | HTMLElement
+  teleport: Teleport
   overlay: boolean
   round: boolean
   onOpen: () => void
@@ -43,7 +48,7 @@ const defaultProps = {
   closeIconPosition: 'top-right',
   closeIcon: 'close',
   destroyOnClose: true,
-  // teleport: 'body',
+  teleport: null,
   overlay: true,
   round: false,
   onOpen: () => {},
@@ -66,6 +71,7 @@ export const Popup: FunctionComponent<
     visible,
     closeOnClickOverlay,
     overlayStyle,
+    overlayClass,
     zIndex,
     lockScroll,
     duration,
@@ -79,6 +85,7 @@ export const Popup: FunctionComponent<
     popClass,
     className,
     destroyOnClose,
+    teleport,
     onOpen,
     onClose,
     onClickOverlay,
@@ -127,9 +134,6 @@ export const Popup: FunctionComponent<
 
   const open = () => {
     if (!innerVisible) {
-      // if(zIndex !== undefined) {
-      //   _zIndex = +zIndex;
-      // }
       setInnerVisible(true)
       setIndex(++_zIndex)
     }
@@ -181,6 +185,57 @@ export const Popup: FunctionComponent<
     onClosed && onClosed(e)
   }
 
+  const resolveContainer = (getContainer: Teleport | undefined) => {
+    const container =
+      typeof getContainer === 'function' ? getContainer() : getContainer
+    return container || document.body
+  }
+
+  const renderToContainer = (getContainer: Teleport, node: ReactElement) => {
+    if (getContainer) {
+      const container = resolveContainer(getContainer)
+      return createPortal(node, container) as ReactPortal
+    }
+
+    return node
+  }
+
+  const renderNode = () => {
+    return (
+      <>
+        <Overlay
+          style={overlayStyles}
+          overlayClass={overlayClass}
+          visible={innerVisible}
+          closeOnClickOverlay={closeOnClickOverlay}
+          zIndex={zIndex}
+          lockScroll={lockScroll}
+          duration={duration}
+          onClick={onHandleClickOverlay}
+        />
+        <CSSTransition
+          classNames={transitionName}
+          unmountOnExit
+          timeout={500}
+          in={innerVisible}
+          onEntered={onHandleOpened}
+          onExited={onHandleClosed}
+        >
+          <div style={popStyles} className={classes} onClick={onHandleClick}>
+            {showChildren ? children : ''}
+            {closeable ? (
+              <div className={closeClasses} onClick={onHandleClickCloseIcon}>
+                <Icon name={closeIcon} size="12px" />
+              </div>
+            ) : (
+              ''
+            )}
+          </div>
+        </CSSTransition>
+      </>
+    )
+  }
+
   useEffect(() => {
     visible && open()
     !visible && close()
@@ -190,38 +245,7 @@ export const Popup: FunctionComponent<
     setTransitionName(transition || `popup-slide-${position}`)
   }, [position])
 
-  return (
-    <>
-      <Overlay
-        style={overlayStyles}
-        visible={innerVisible}
-        closeOnClickOverlay={closeOnClickOverlay}
-        zIndex={zIndex}
-        lockScroll={lockScroll}
-        duration={duration}
-        onClick={onHandleClickOverlay}
-      />
-      <CSSTransition
-        classNames={transitionName}
-        unmountOnExit
-        timeout={500}
-        in={innerVisible}
-        onEntered={onHandleOpened}
-        onExited={onHandleClosed}
-      >
-        <div style={popStyles} className={classes} onClick={onHandleClick}>
-          {showChildren ? children : ''}
-          {closeable ? (
-            <div className={closeClasses} onClick={onHandleClickCloseIcon}>
-              <Icon name={closeIcon} size="12px" />
-            </div>
-          ) : (
-            ''
-          )}
-        </div>
-      </CSSTransition>
-    </>
-  )
+  return <>{renderToContainer(teleport as Teleport, renderNode())}</>
 }
 
 Popup.defaultProps = defaultProps
