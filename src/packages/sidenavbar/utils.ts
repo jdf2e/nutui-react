@@ -8,6 +8,7 @@ const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
   const isShow = currentClass.includes('nutShow')
   const arrowIcon = e.currentTarget.querySelector('.arrow-icon') as Element
   const iconClass = arrowIcon.className
+
   if (isTitle) {
     e.currentTarget.className = isShow
       ? currentClass.replace('nutShow', 'nutHide')

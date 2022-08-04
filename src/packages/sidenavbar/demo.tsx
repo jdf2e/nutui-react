@@ -3,9 +3,33 @@ import SideNavBar from './index'
 import SubSideNavBar from '../subsidenavbar'
 import SideNavBarItem from '../sidenavbaritem'
 import Cell from '@/packages/cell'
+import Toast from '@/packages/Toast'
 
+type Position = 'left' | 'right'
+type NavBarState = {
+  visible: boolean
+  position: Position
+}
 const SideNavBarDemo = () => {
-  const [showLeft, setShowLeft] = useState(false)
+  const [navBarState, setNavBarState] = useState<NavBarState>({
+    visible: false,
+    position: 'left',
+  })
+  const [showThird, setShowThird] = useState(false)
+  const changeNarBar = (visible, position: Position = navBarState.position) => {
+    setNavBarState({
+      visible,
+      position,
+    })
+    setShowThird(false)
+  }
+  const clickItem = ({ title, ikey }) => {
+    showThird && Toast.text(`title=${title},ikey=${ikey}`)
+  }
+  const clickTitle = ({ title, ikey, isShow }) => {
+    showThird && Toast.text(`title=${title},ikey=${ikey},isShow=${isShow}`)
+  }
+
   return (
     <>
       <div className="demo">
@@ -14,35 +38,50 @@ const SideNavBarDemo = () => {
           title="左侧弹出"
           isLink
           onClick={() => {
-            setShowLeft(true)
+            changeNarBar(true, 'left')
+          }}
+        />
+        <Cell
+          title="右侧弹出"
+          isLink
+          onClick={() => {
+            changeNarBar(true, 'right')
+          }}
+        />
+        <h2>导航嵌套（建议最多三层）,点击一级标题和一级内容1回调</h2>
+        <Cell
+          title="显示"
+          isLink
+          onClick={() => {
+            changeNarBar(true, 'right')
+            setShowThird(true)
           }}
         />
         <SideNavBar
           title="首页"
-          visible={showLeft}
+          visible={navBarState.visible}
+          position={navBarState.position}
           handleClose={() => {
-            setShowLeft(false)
+            changeNarBar(false)
           }}
         >
-          <SubSideNavBar>
-            <SideNavBarItem title="一级内容1" />
-            <SideNavBarItem title="一级内容2" />
-            <SubSideNavBar title="二级标题">
-              <SideNavBarItem title="二级内容1" />
-              <SideNavBarItem title="二级内容2" />
-              <SubSideNavBar title="三级标题">
-                <SideNavBarItem title="三级内容1" />
-                <SideNavBarItem title="三级内容2" />
-              </SubSideNavBar>
-            </SubSideNavBar>
-            <SubSideNavBar title="二级标题">
-              <SideNavBarItem title="二级内容1" />
-              <SideNavBarItem title="二级内容2" />
+          <SubSideNavBar title="一级标题" ikey="1-0" titleClick={clickTitle}>
+            <SideNavBarItem title="一级内容1" ikey="1-01" click={clickItem} />
+            <SideNavBarItem title="一级内容2" ikey="1-02" />
+            <SubSideNavBar title="二级标题" ikey="2-0">
+              <SideNavBarItem title="二级内容1" ikey="2-01" />
+              <SideNavBarItem title="二级内容2" ikey="2-02" />
+              {showThird ? (
+                <SubSideNavBar title="三级标题" ikey="3-0">
+                  <SideNavBarItem title="三级内容1" ikey="3-01" />
+                  <SideNavBarItem title="三级内容2" ikey="3-02" />
+                </SubSideNavBar>
+              ) : null}
             </SubSideNavBar>
           </SubSideNavBar>
-          <SubSideNavBar title="一级标题">
-            <SideNavBarItem title="一级内容1" />
-            <SideNavBarItem title="一级内容2" />
+          <SubSideNavBar open={false} title="一级标题-2" ikey="1-1">
+            <SideNavBarItem title="一级内容2-1" ikey="1-11" />
+            <SideNavBarItem title="一级内容2-2" ikey="1-12" />
           </SubSideNavBar>
         </SideNavBar>
       </div>
