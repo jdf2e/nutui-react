@@ -1,13 +1,23 @@
-import React, { FunctionComponent, useRef, useEffect, useCallback, MouseEventHandler } from 'react'
+import React, {
+  FunctionComponent,
+  useRef,
+  useEffect,
+  useCallback,
+  MouseEventHandler,
+  useContext,
+} from 'react'
 import { SubNavBarProps } from '../sidenavbar/type'
 import { handleClick } from '../sidenavbar/utils'
+import { OffsetContext } from '../sidenavbar/offsetContext'
 
 const defaultProps = {
   open: true,
 } as SubNavBarProps
 export const SubSideNavBar: FunctionComponent<SubNavBarProps> = (props) => {
   const { title, ikey, children, titleClick, open, ...rest } = { ...defaultProps, ...props }
-  const offset = props.offset ? Number(props.offset) : 20
+  // const offset = props.offset ? Number(props.offset) : 20
+  const offset = useContext(OffsetContext)
+  console.log('offset>>>>>>>', offset)
   const listRef = useRef<HTMLDivElement>(null)
   const setListLevel = useCallback(
     (nodeList: HTMLCollection, level = 1) => {
@@ -56,6 +66,7 @@ export const SubSideNavBar: FunctionComponent<SubNavBarProps> = (props) => {
   }, [setListLevel])
   const divClass = open ? 'nut-subsidenavbar__list  nutShow' : 'nut-subsidenavbar__list  nutHide'
   const iconClass = open ? 'arrow-icon arrow-down' : 'arrow-icon arrow-up'
+
   return (
     <div className={divClass} ref={listRef} onClick={clickFn}>
       <div className="nut-subsidenavbar__title border-bt">

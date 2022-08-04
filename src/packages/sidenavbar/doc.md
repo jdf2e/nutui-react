@@ -138,14 +138,14 @@ export default App;
 | title        | 整体标题                           | String  | -               |
 | width        | 遮罩宽度                           | String   | '80%'          |
 | position     | 弹出位置                           | 'left'、'right' | 'left'  |
+| offset       | 缩进宽度                           | number  | 20              |
 
 ### 2、SubSideNavBar
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | ikey         | 导航唯一标识                       | String、Number |          |
-| title        | 整体标题                           | String  | -               |
-| offset       | 缩进宽度                           | number  | 20              |
+| title        | 整体标题                           | String  | -              |
 | open         | 导航是否默认展开                     | Boolean  | true         |
 ### 3、SideNavBarItem
 

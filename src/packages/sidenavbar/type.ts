@@ -5,6 +5,7 @@ export interface SideNavBarProps extends React.HTMLAttributes<HTMLDivElement>, N
   title: string
   visible: boolean
   width?: string
+  offset?: number
   position?: 'left' | 'right'
   handleClose: () => void
   // showhead?: boolean
@@ -17,7 +18,6 @@ export type SideNavBarItemProps = {
 export type SubNavBarProps = {
   title: string
   ikey: string | number
-  offset?: number
   open?: boolean
   titleClick?: ({
     title,
