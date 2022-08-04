@@ -160,6 +160,35 @@ export default App;
 ```
 
 :::
+
+### Display control
+
+:::demo
+
+```tsx
+import React from "react";
+import {useState} from 'react'
+import { Tag,Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const  [isShow,setIsShow] = useState(true) //Whether to display a tag component
+  return (
+    <>
+    {
+      isShow? (
+        <Tag type='primary' onClick={()=>alert('Tag clicked')}>Label</Tag>
+      ):null
+    }  
+    <Button type='default' size="small" onClick={()=>{setIsShow(false)}} >delete</Button>
+    </>
+  )
+  
+}
+export default App;
+```
+
+:::
+
 ## API
 
 ### Props
