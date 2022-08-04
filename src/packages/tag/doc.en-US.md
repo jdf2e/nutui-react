@@ -104,13 +104,9 @@ import React from "react";
 import { Tag } from '@nutui/nutui-react';
 
 const App = () => {
-  const [isShow, setIsShow] = useState(true)
-  const close = () => {
-    setIsShow(false)
-  }
   return (
     <>
-      <Tag isShow={isShow} closeable onClick={close} type="primary">Label</Tag>
+      <Tag  closeable onClose={()=>alert('Tag closed')}  type="primary">标签</Tag>
     </>
   )
 }

@@ -39,11 +39,25 @@ import { Tag } from '@nutui/nutui-react';
 <Tag mark type="primary">標籤</Tag>
 ```
 
-### 可关闭標籤
+### 可关闭标签
+
+:::demo
 
 ```tsx
-<Tag isShow={true} closeable  type="primary">標籤</Tag>
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag  closeable onClose={()=>alert('Tag closed')}  type="primary">标签</Tag>
+    </>
+  )
+}
+export default App;
 ```
+
+:::
 
 ### 自定義顏色
 

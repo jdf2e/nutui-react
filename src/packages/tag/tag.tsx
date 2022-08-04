@@ -14,7 +14,6 @@ export interface TagProps {
   round: boolean
   mark: boolean
   closeable: boolean
-  isShow: boolean
   prefixCls: string
   onClick: (e: MouseEvent) => void
   onClose: (e?: any) => void
@@ -29,7 +28,6 @@ const defaultProps = {
   round: false,
   mark: false,
   closeable: false,
-  isShow: true,
   prefixCls: 'nut-tag',
   onClose: (e: any) => {},
   onClick: (e: MouseEvent) => {},
@@ -45,7 +43,6 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     mark,
     closeable,
     textColor,
-    isShow,
     onClick,
     onClose,
   } = {
@@ -65,7 +62,6 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     mark,
     closeable,
     prefixCls,
-    isShow,
     onClick,
     onClose,
   ])
@@ -115,7 +111,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
                 size="12"
                 click={(e) => {
                   setIsTagShow(false)
-                  if (props?.onClose) {
+                  if (props.onClose) {
                     props.onClose(e)
                   }
                 }}
