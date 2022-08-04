@@ -42,7 +42,7 @@ import { Tag } from '@nutui/nutui-react';
 ### 可关闭標籤
 
 ```tsx
-<Tag isShow={isShow} closeable onClick={close} type="primary">標籤</Tag>
+<Tag isShow={true} closeable  type="primary">標籤</Tag>
 ```
 
 ### 自定義顏色
@@ -52,7 +52,25 @@ import { Tag } from '@nutui/nutui-react';
 <Tag color="#E9E9E9" text-color="#999999">標籤</Tag>
 <Tag color="#FA2400" plain>標籤</Tag>
 ```
+### 點擊事件
 
+:::demo
+
+```tsx
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag type='primary' onClick={()=>alert('Tag clicked')}>標籤</Tag>
+    </>
+  )
+}
+export default App;
+```
+
+:::
 ## API
 
 ### Props
@@ -72,5 +90,4 @@ import { Tag } from '@nutui/nutui-react';
 
 | 事件名稱| 說明     | 回調參數 |
 |----------|----------|----------|
-| close    | 關閉事件 | event    |
-
+| onClick    | 點擊事件 | event    |

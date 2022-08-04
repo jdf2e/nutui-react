@@ -50,6 +50,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     ...props,
   }
   const [btnName, setBtnName] = useState('')
+  const [isTagShow, setIsTagShow] = useState(isShow)
   useEffect(() => {
     setBtnName(classes())
   }, [
@@ -96,7 +97,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   return (
     <div>
       {closeable ? (
-        isShow ? (
+        isTagShow ? (
           <div
             className={`${btnName}`}
             style={getStyle()}
@@ -108,7 +109,9 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
                 className="_icon"
                 name="close"
                 size="12"
-                onClick={(e) => handleClick(e)}
+                click={() => {
+                  setIsTagShow(false)
+                }}
               />
             )}
           </div>

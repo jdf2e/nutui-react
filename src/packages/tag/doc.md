@@ -104,13 +104,12 @@ import React from "react";
 import { Tag } from '@nutui/nutui-react';
 
 const App = () => {
-  const [isShow, setIsShow] = useState(true)
   const close = () => {
     setIsShow(false)
   }
   return (
     <>
-      <Tag isShow={isShow} closeable onClick={close} type="primary">标签</Tag>
+      <Tag isShow={true} closeable  type="primary">标签</Tag>
     </>
   )
 }
@@ -141,6 +140,26 @@ export default App;
 
 :::
 
+
+### 点击事件
+
+:::demo
+
+```tsx
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag type='primary' onClick={()=>alert('Tag clicked')}>标签</Tag>
+    </>
+  )
+}
+export default App;
+```
+
+:::
 ## API
 
 ### Props
@@ -159,5 +178,5 @@ export default App;
 
 | 事件名称 | 说明     | 回调参数 |
 |----------|----------|----------|
-| close    | 关闭事件 | event    |
+| onClick    | 点击事件 | event    |
 

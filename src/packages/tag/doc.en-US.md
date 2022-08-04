@@ -141,6 +141,25 @@ export default App;
 
 :::
 
+### Click event
+
+:::demo
+
+```tsx
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag type='primary' onClick={()=>alert('Tag clicked')}>Tag</Tag>
+    </>
+  )
+}
+export default App;
+```
+
+:::
 ## API
 
 ### Props
@@ -159,5 +178,4 @@ export default App;
 
 | Event name | illustrate  | Callback parameter |
 |----------|----------|----------|
-| close    | Close event | event    |
-
+| onClick    | Click event | event    |
