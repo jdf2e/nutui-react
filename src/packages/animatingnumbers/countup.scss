@@ -1,13 +1,13 @@
 .nut-countup {
   &__list {
     display: inline-flex;
-    height: 32px;
+    height: $countup-height;
     overflow: hidden;
   }
   &__listitem {
-    height: 32px;
+    height: $countup-height;
     overflow: hidden;
-    font-size: 18px;
+    font-size: $countup-base-size;
     color: #000;
     font-weight: bold;
   }
@@ -17,20 +17,20 @@
     flex-direction: column;
     align-items: center;
     span {
-      height: 32px;
-      line-height: 32px;
+      height: $countup-height;
+      line-height: $countup-height;
     }
   }
 }
 // 自定义样式
 .custom-coutup {
   .nut-countup__listitem--number {
-    margin: 0 1px;
-    border-radius: 4px;
-    color: #fff;
-    background-color: #031f63;
+    margin: 0 $countup-lr-margin;
+    border-radius: $countup-border-raduis;
+    color: $countup-color;
+    background-color: $countup-bgcolor;
   }
   .nut-countup__number {
-    width: 24px;
+    width: $countup-width;
   }
 }
