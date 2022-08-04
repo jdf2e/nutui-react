@@ -4,7 +4,6 @@ import Cell from '@/packages/cell'
 import CellGroup from '@/packages/cellgroup'
 
 const TagDemo = () => {
-  const [isShow, setIsShow] = useState(true)
   return (
     <>
       <div className="demo">
@@ -38,7 +37,7 @@ const TagDemo = () => {
           <Cell
             title="可关闭标签"
             linkSlot={
-              <Tag isShow={isShow} closeable type="primary">
+              <Tag closeable onClose={() => alert('Tag closed')} type="primary">
                 标签
               </Tag>
             }

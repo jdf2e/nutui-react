@@ -49,7 +49,7 @@ import { Tag } from '@nutui/nutui-react';
 
 ```tsx
 <Tag color="#FA685D">標籤</Tag>
-<Tag color="#E9E9E9" text-color="#999999">標籤</Tag>
+<Tag color="#E9E9E9" textColor="#999999">標籤</Tag>
 <Tag color="#FA2400" plain>標籤</Tag>
 ```
 ### 點擊事件
@@ -79,7 +79,7 @@ export default App;
 |------------|--------------------------------------------------|---------|-----------|
 | type       | 標籤类型，可选值为primary success danger warning | String  | `default` |
 | color      | 標籤颜色                                         | String  | -         |
-| text-color | 文本顏色，優先級高於color屬性                    | String  | `white`   |
+| textColor | 文本顏色，優先級高於color屬性                    | String  | `white`   |
 | plain      | 是否為空心樣式                                   | Boolean | `false`   |
 | round      | 是否為圓角樣式                                   | Boolean | `false`   |
 | mark       | 是否為標記樣式                                   | Boolean | `false`   |
@@ -91,3 +91,4 @@ export default App;
 | 事件名稱| 說明     | 回調參數 |
 |----------|----------|----------|
 | onClick    | 點擊事件 | event    |
+| onClose    | 關閉事件 | event    |

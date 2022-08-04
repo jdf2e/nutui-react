@@ -17,6 +17,7 @@ export interface TagProps {
   isShow: boolean
   prefixCls: string
   onClick: (e: MouseEvent) => void
+  onClose: (e?: any) => void
 }
 
 export type TagType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
@@ -30,6 +31,7 @@ const defaultProps = {
   closeable: false,
   isShow: true,
   prefixCls: 'nut-tag',
+  onClose: (e: any) => {},
   onClick: (e: MouseEvent) => {},
 } as TagProps
 export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
@@ -45,12 +47,13 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     textColor,
     isShow,
     onClick,
+    onClose,
   } = {
     ...defaultProps,
     ...props,
   }
   const [btnName, setBtnName] = useState('')
-  const [isTagShow, setIsTagShow] = useState(isShow)
+  const [isTagShow, setIsTagShow] = useState(true)
   useEffect(() => {
     setBtnName(classes())
   }, [
@@ -64,6 +67,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     prefixCls,
     isShow,
     onClick,
+    onClose,
   ])
   const classes = () => {
     const prefixCls = 'nut-tag'
@@ -109,8 +113,11 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
                 className="_icon"
                 name="close"
                 size="12"
-                click={() => {
+                click={(e) => {
                   setIsTagShow(false)
+                  if (props?.onClose) {
+                    props.onClose(e)
+                  }
                 }}
               />
             )}

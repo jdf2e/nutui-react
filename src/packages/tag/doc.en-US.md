@@ -131,7 +131,7 @@ const App = () => {
   return (
     <>
       <Tag color="#FA685D">Label</Tag>
-      <Tag color="#E9E9E9" text-color="#999999">Label</Tag>
+      <Tag color="#E9E9E9" textColor="#999999">Label</Tag>
       <Tag color="#FA2400" plain>Label</Tag>
     </>
   )
@@ -168,7 +168,7 @@ export default App;
 |------------|--------------------------------------------------|---------|-----------|
 | type       | Label type, the optional value is primary success danger warning | String  | `default` |
 | color      | Label color                                         | String  | -         |
-| text-color | Text color, priority is higher than the color attribute  | String  | `white`   |
+| texColor | Text color, priority is higher than the color attribute  | String  | `white`   |
 | plain      | Whether it is hollow                               | Boolean | `false`   |
 | round      | Whether it is a rounded style                      | Boolean | `false`   |
 | mark       | Whether it is a tag style                          | Boolean | `false`   |
@@ -179,3 +179,4 @@ export default App;
 | Event name | illustrate  | Callback parameter |
 |----------|----------|----------|
 | onClick    | Click event | event    |
+| onClose    | Close event | event    |
