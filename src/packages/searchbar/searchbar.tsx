@@ -75,7 +75,11 @@ const defaultProps = {
   leftinIcon: <Icon name="search" size="12" />,
 } as SearchBarProps
 export const SearchBar: FunctionComponent<
-  Partial<SearchBarProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<SearchBarProps> &
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      'onChange' | 'onFocus' | 'onBlur'
+    >
 > = (props) => {
   const searchbarBem = bem('searchbar')
 
