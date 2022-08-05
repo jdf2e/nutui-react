@@ -718,6 +718,16 @@
           "sort": 20,
           "show": true,
           "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Progress",
+          "type": "component",
+          "cName": "进度条",
+          "desc": "用来展示进度",
+          "sort": 20,
+          "show": true,
+          "author": "ailululu"
         }
       ]
     },
