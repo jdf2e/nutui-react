@@ -509,6 +509,16 @@
           "sort": 1,
           "show": true,
           "author": "VickyYe"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Swipe",
+          "type": "component",
+          "cName": "滑动手势",
+          "desc": "可以左右滑动来展示操作按钮的组件",
+          "sort": 9,
+          "show": true,
+          "author": "Ymm0008"
         }
       ]
     },
