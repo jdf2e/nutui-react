@@ -1,10 +1,10 @@
-# TextArea 文本域
+# TextArea
 
-### 介绍
+### Intro
 
-文本框内输入或编辑文字，支持限制输入数量。
+Enter or edit text in the text box, and limit the number of entries is supported.
 
-### 安装
+### Install
 
 ```javascript
 
@@ -12,57 +12,125 @@ import { TextArea } from '@nutui/nutui-react';
 
 ```
 
-## 代码演示
+## Demo
 
-### 基础用法
+### Basic Usage
 
-```html
-<textarea defaultValue="{value1}" />
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+    const [value1, updateValue1] = useState('')
+    const change = (value: any, event: Event) => {
+        updateValue1(value)
+    }
+    return (
+        <>
+           <TextArea
+            defaultValue={value1}
+            className="text-1"
+            style={{ fontSize: '12px' }}
+            onChange={(value, event) => {
+                change(value, event)
+            }}
+            onBlur={() => {
+                console.log('blur')
+            }}
+            onFocus={() => {
+                console.log('focus')
+            }}
+            />
+        </>
+    )
+};
+export default App
 ```
+:::
 
-```javascript
-const [value1, UpdateValue1] = useState('')
+
+### Display word count
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+    const [value2, updateValue2] = useState('')
+    return (
+        <>
+            <TextArea defaultValue={value2} limitShow maxlength="20" />
+        </>
+    )
+};
+export default App
 ```
+:::
 
-### 显示字数统计
+### Height customization, stretching
 
-```html
-<textarea defaultValue="{value2}" limitShow maxlength="20" />
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+    const [value3, updateValue3] = useState('')
+    return (
+        <>
+            <TextArea defaultValue={value3} rows="10" autosize />
+        </>
+    )
+};
+export default App
 ```
+:::
 
-### 高度自定义，拉伸
+### read-only，disabled
 
-```html
-<textarea defaultValue="{value3}" rows="10" autosize />
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+    return (
+        <>
+            <TextArea readonly defaultValue="textarea只读状态" />
+            <TextArea disabled defaultValue="textarea禁用状态" limitShow maxlength="20" />
+        </>
+    )
+};
+export default App
 ```
-
-### 只读、禁用
-
-```html
-<textarea readonly defaultValue="textarea只读状态" />
-<textarea disabled defaultValue="textarea禁用状态" limitShow maxlength="20" />
-```
+:::
 
 ## API
 
 ### Props
 
-| 参数         | 说明                                              | 类型           | 默认值         |
-| ------------ | ------------------------------------------------- | -------------- | -------------- |
-| defaultValue | 初始默认值，支持双向绑定                          | String         | -              |
-| placeholder  | 设置占位提示文字                                  | String         | `'请输入内容'` |
-| maxlength    | 限制最长输入字符                                  | String、Number | -              |
-| rows         | textarea 的高度                                   | String、Number | `2`            |
-| limitShow    | textarea 是否展示输入字符。须配合`max-length`使用 | Boolean        | `false`        |
-| autosize     | 高度是否可拉伸                                    | Boolean        | `false`        |
-| textAlign    | 文本位置,可选值`left`,`center`,`right`            | String         | `left`         |
-| readonly     | 只读属性                                          | Boolean        | `false`        |
-| disabled     | 禁用属性                                          | Boolean        | `false`        |
+| Attribute     | Description            | Type   | Default       |
+| ------------ | ----------------------------------- | -------------- | -------------- |
+| defaultValue | input value, support two-way binding              | String         | -              |
+| placeholder  | set placeholder prompt text             | String         | ` 'please enter content' ` |
+| maxlength    | limit the maximum input characters              | String、Number | -              |
+| rows         | height of textarea, with priority higher than autosize attribute `Only H5 is supported`                                  | String、Number | `2`            |
+| limitShow    | whether textarea displays the input characters. Use | Boolean        | `false`        |
+| autosize     | whether to adapt the content height. You can also pass in objects, such as {maxheight: 200, minheight: 100}. The unit is PX          | Boolean        | `false`    |
+| textAlign    | text position, optional values ` left ,  center,  right `     | String         | `left`         |
+| readonly     | read only attribute          | Boolean        | `false`        |
+| disabled     | disable attribute           | Boolean        | `false`        |
 
 ### Events
 
-| 名称   | 说明           | 回调参数 |
+| Event   | Description           |Arguments  |
 | ------ | -------------- | -------- |
-| change | 输入内容时触发 | val      |
-| focus  | 聚焦时触发     | val      |
-| blur   | 失焦时触发     | val      |
+| change | Triggered when the value of the input box changes | val      |
+| focus  | Triggered when focusing     | val      |
+| blur   | Triggered when out of focus     | val      |

@@ -1,17 +1,17 @@
-#  VirtualList 虚拟列表
+#  VirtualList
 
-### 介绍
+### Intro
 
-在正常的列表展示以及上拉加载中，我们通常使用 NutUI-React 提供的 滚动加载 组件，那如果我们加载的数据量非常大时，则可能会产生严重的性能问题，导致视图无法响应操作一段时间，这时候我们就用到了虚拟列表组件 List，它可以保证只渲染当前可视区域，其他部分在用户滚动到可视区域内之后再渲染。保证了页面流程度，提升性能。
+In normal list show and pull-up loading, we usually use the InfiniteLoading component provided by NutUI. If we load a large amount of data, serious performance problems may occur, resulting in the view unable to respond to the operation for a period of time. At this time, we use the virtual list component list, which can ensure that only the current visual area is rendered, Other parts are rendered after the user scrolls to the visible area. Ensure page flow and improve performance.
 
-### 安装
+### Install
 ```javascript
 import { Virtuallist } from '@nutui/nutui-react';
 ```
-## 代码演示
+## Demo
 
 
-### 1、基础用法-垂直等高
+### 1、Basic usage - vertical height
 
 :::demo
 ``` tsx
@@ -35,7 +35,7 @@ const App =() => {
     getData()
   }, [getData])
   const ItemRender = ({ data,index }) => {
-    return <p>自定义-{data}-{index}</p>
+    return <p>Custom-{data}-{index}</p>
   }
   const ItemRenderMemo = React.memo(ItemRender)
   return (
@@ -51,7 +51,7 @@ const App =() => {
 export default App;
 ```
 :::
-### 2、垂直不等高&无限下滑
+### 2、Vertical unequal height & infinite slide
 
 :::demo
 ``` tsx
@@ -80,10 +80,10 @@ const App =() => {
   }, [getData])
   const ItemVariable = ({ data, index }) => {
     return (
-      <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>可变大小隔行展示-{data}</p>
+      <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>Variable size-{data}</p>
     )
   }
-  /** itemSize为首屏最大元素大小 */
+  /** ItemSize Indicates the maximum size of the first screen element */
   const ItemVariableDemo = React.memo(ItemVariable)
   return (
    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
@@ -101,7 +101,7 @@ export default App;
 ```
 :::
 
-### 3、水平等宽
+### 3、horizontal width
 
 :::demo
 ``` tsx
@@ -125,7 +125,7 @@ const App =() => {
     getData()
   }, [getData])
   const ItemRender = ({ data,index }) => {
-    return <p>自定义-{data}-{index}</p>
+    return <p>Custom-{data}-{index}</p>
   }
   const ItemRenderMemo = React.memo(ItemRender)
   return (
@@ -142,7 +142,7 @@ const App =() => {
 export default App;
 ```
 :::
-### 4、水平不等宽&无限滑动
+### 4、Horizontal unequal width & infinite sliding
 
 :::demo
 ``` tsx
@@ -171,10 +171,10 @@ const App =() => {
   }, [getData])
   const ItemVariable = ({ data, index }) => {
     return (
-      <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>可变大小隔行展示-{data}</p>
+      <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>Variable size-{data}</p>
     )
   }
-  /** itemSize为首屏最大元素大小 */
+  /** ItemSize Indicates the maximum size of the first screen element */
   const ItemVariableDemo = React.memo(ItemVariable)
   return (
    <div className='nut-virtualList-demo-box  hideScrollbar'>
@@ -198,18 +198,18 @@ export default App;
 
 | 参数           | 说明                               | 类型       | 默认值                                   |
 |---------------|----------------------------------|----------|---------------------------------------|
-| sourceData    | 获取数据                             | Array    | -                                     |
-| containerSize | 容器高度                             | Number   | 获取元素的offsetWidth或offsetHeight，需要css给出 |
-| ItemRender    | virtual 列表父节点渲染的函数               | React.FC | -                                     |
-| itemSize      | item高度，如果不定高，则为首屏单个最大size        | String   | -                                     |
-| itemEqualSize | item大小是否一致                       | Boolean  | true                                  |
-| overscan      | 除了视窗里面默认的元素, 还需要额外渲染的item个数      | Number   | 2                                     |
-| key           | 唯一值 ,Item(sourceData)具体的某个唯一值的字段 | string   | index                                 |
-| horizontal    | 决定列表是横向的还是纵向的                    | Boolean  | false                                 |
+| sourceData    | source data                      | Array    | -                                     |
+| containerSize | container height                      | Number   | Get the element offsetWidth or offsetHeight, which is given by CSS |
+| ItemRender    | virtual function rendered by the parent of the list               | React.FC | -                                     |
+| itemSize      | Item height, if not height, the first screen single maximum size       | String   | -                                     |
+| itemEqualSize | the sizes of items are consistent                       | Boolean  | true                                  |
+| overscan      | In addition to the default elements in the viewport, there is an additional number of items to render      | Number   | 2                                     |
+| key           | Unique value,Item(sourceData) Specifies a field with a unique value | string   | index                                 |
+| horizontal    |  horizontal or vertical                    | Boolean  | false                                 |
 ## Events
-| 方法名          | 说明                  | 参数            | 返回值     |
-| -------------- |---------------------| --------------- | ---------- |
-| handleScroll   | 滑动到底(右)的事件，可以实现无限滚动 |        -        |      -    |
+| 方法名          | 说明       | 参数            | 返回值     |
+| -------------- |----------| --------------- | ---------- |
+| handleScroll   | scroll event |        -        |      -    |
 
 
 

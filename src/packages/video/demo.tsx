@@ -93,7 +93,7 @@ const VideoDemo = () => {
     <>
       <div className="demo demo-video">
         <h2>{translated['84aa6bce']}</h2>
-        <Cell className="cell">
+        <Cell className="video-cell">
           <Video
             source={source}
             options={options}
@@ -103,7 +103,7 @@ const VideoDemo = () => {
           />
         </Cell>
         <h2>{translated.a5a25e88}</h2>
-        <Cell className="cell">
+        <Cell className="video-cell">
           <Video
             source={source}
             options={options1}
@@ -113,7 +113,7 @@ const VideoDemo = () => {
           />
         </Cell>
         <h2>{translated['19875a3f']}</h2>
-        <Cell className="cell">
+        <Cell className="video-cell">
           <Video
             source={source}
             options={options2}
@@ -123,7 +123,7 @@ const VideoDemo = () => {
           />
         </Cell>
         <h2>{translated.fcdac2ed}</h2>
-        <Cell className="cell">
+        <Cell className="video-cell">
           <Video
             source={source}
             options={options3}
@@ -133,7 +133,7 @@ const VideoDemo = () => {
           />
         </Cell>
         <h2>{translated['200baa8c']}</h2>
-        <Cell className="cell">
+        <Cell className="video-cell">
           <Video
             source={source}
             options={options4}
@@ -143,7 +143,7 @@ const VideoDemo = () => {
           />
         </Cell>
         <h2>{translated['5ec0e561']}</h2>
-        <Cell className="cell">
+        <Cell className="video-cell">
           <Video
             source={source}
             options={options5}
@@ -153,7 +153,7 @@ const VideoDemo = () => {
           />
         </Cell>
         <h2>{translated.a6e0b0cf}</h2>
-        <Cell className="cell">
+        <Cell className="video-cell">
           <Video
             source={source1}
             options={options}
@@ -162,7 +162,7 @@ const VideoDemo = () => {
             playend={playend}
           />
         </Cell>
-        <Button type="primary" className="m-b" onClick={changeVideo}>
+        <Button type="primary" className="video-m-b" onClick={changeVideo}>
           {translated.a6e0b0cf}
         </Button>
       </div>
