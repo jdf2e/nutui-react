@@ -157,6 +157,7 @@ import AnimatingNumbers from '@/packages/animatingnumbers/doc.md?raw'
 import EmptyenUS from '@/packages/empty/doc.en-US.md?raw'
 import EmptyzhTW from '@/packages/empty/doc.zh-TW.md?raw'
 import Empty from '@/packages/empty/doc.md?raw'
+import VirtualListenUS from '@/packages/virtuallist/doc.en-US.md?raw'
 import VirtualList from '@/packages/virtuallist/doc.md?raw'
 import VideoenUS from '@/packages/video/doc.en-US.md?raw'
 import VideozhTW from '@/packages/video/doc.zh-TW.md?raw'
@@ -411,6 +412,7 @@ export const raws = {
   EmptyenUS,
   EmptyzhTW,
   Empty,
+  VirtualListenUS,
   VirtualList,
   VideoenUS,
   VideozhTW,

@@ -23,7 +23,7 @@ const subPackages = [
   },
   {
     root: 'dentry',
-    pages: ['pages/checkbox/index', 'pages/radio/index'],
+    pages: ['pages/checkbox/index', 'pages/radio/index', 'pages/rate/index'],
   },
   {
     root: 'feedback',
@@ -39,8 +39,8 @@ const subPackages = [
       'pages/price/index',
       'pages/badge/index',
       'pages/tag/index',
-      'pages/popover/index',
       'pages/skeleton/index',
+      'pages/collapse/index',
       'pages/empty/index',
     ],
   },

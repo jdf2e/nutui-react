@@ -417,7 +417,7 @@
           "desc": "用于快速的评级操作，或对评价进行展示。",
           "sort": 1,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "dsj"
         },
         {
