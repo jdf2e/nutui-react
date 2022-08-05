@@ -163,12 +163,11 @@ export default App;
 :::demo
 
 ```tsx
-import React from "react";
-import {useState} from 'react'
+import React, {useState} from "react";
 import { Tag,Button } from '@nutui/nutui-react';
 
 const App = () => {
-  const  [isShow,setIsShow] = useState(true) //是否展示Tag组件
+  const  [isShow,setIsShow] = useState(true) // 是否展示Tag组件
   return (
     <>
     {
