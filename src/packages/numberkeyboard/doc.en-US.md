@@ -47,8 +47,10 @@ const App = () => {
 export default App;
 
 ```
+:::
 
 ### Keyboard With Sidebar
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
@@ -84,8 +86,10 @@ const App = () => {
 export default App;
 
 ```
+:::
 
 ###  Random Key Order
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
@@ -120,7 +124,9 @@ const App = () => {
 export default App;
 
 ```
+:::
 ### Show Keyboard With Title
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
@@ -156,7 +162,9 @@ const App = () => {
 export default App;
 
 ```
+:::
 ### Show IdNumber Keyboard
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
@@ -191,6 +199,7 @@ const App = () => {
 export default App;
 
 ```
+:::
 
 
 

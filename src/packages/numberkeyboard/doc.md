@@ -47,8 +47,10 @@ const App = () => {
 export default App;
 
 ```
+:::
 
 ### 带右侧栏键盘
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
@@ -84,8 +86,10 @@ const App = () => {
 export default App;
 
 ```
+:::
 
 ### 随机数键盘
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
@@ -120,7 +124,9 @@ const App = () => {
 export default App;
 
 ```
+:::
 ### 带标题栏键盘
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
@@ -156,7 +162,9 @@ const App = () => {
 export default App;
 
 ```
+:::
 ### 身份证键盘
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
@@ -191,6 +199,7 @@ const App = () => {
 export default App;
 
 ```
+:::
 
 
 

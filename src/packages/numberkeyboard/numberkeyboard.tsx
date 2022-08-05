@@ -66,25 +66,25 @@ export const NumberKeyboard: FunctionComponent<
     setShow(visible)
   }, [visible])
   const defaultKey = () => {
-    let object = {
+    let leftBottomKey = {
       id: 'lock',
       type: 'lock',
     }
     if (customKey) {
-      let customKeys: Array<string> = Array.isArray(customKey)
+      const customKeys: Array<string> = Array.isArray(customKey)
         ? customKey
         : [customKey]
       if (customKeys.length > 0) {
-        customKeys = [customKeys[0]]
-        object = {
-          id: customKeys[0],
+        const newCustomKey = customKeys[0]
+        leftBottomKey = {
+          id: newCustomKey,
           type: 'custom',
         }
       }
     }
     return [
       ...getBasicKeys(),
-      object,
+      leftBottomKey,
       { id: 0, type: 'number' },
       { id: 'delete', type: 'delete' },
     ]
