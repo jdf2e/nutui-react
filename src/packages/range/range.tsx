@@ -4,6 +4,7 @@ import React, {
   useState,
   useRef,
   CSSProperties,
+  useCallback,
 } from 'react'
 import bem from '@/utils/bem'
 import { useTouch } from '../../utils/useTouch'
@@ -27,6 +28,9 @@ export interface RangeProps {
   step: number | string
   modelValue: SliderValue
   button: React.ReactNode
+  vertical: boolean
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  marks: Object
   change?: (value: number) => void
   dragStart?: () => void
   dragEnd?: () => void
@@ -39,6 +43,8 @@ const defaultProps = {
   max: 100,
   step: 1,
   modelValue: 0,
+  vertical: false,
+  marks: {},
 } as RangeProps
 
 let startValue: any
@@ -62,6 +68,8 @@ export const Range: FunctionComponent<
     step,
     modelValue,
     button,
+    vertical,
+    marks,
     change,
     dragStart,
     dragEnd,
@@ -74,6 +82,8 @@ export const Range: FunctionComponent<
   const root = useRef<HTMLDivElement>(null)
   const rangeBem = bem('range')
 
+  const [marksList, SetMarksList] = useState([])
+
   useEffect(() => {
     if (modelValue) {
       if (!range && (modelValue < min || modelValue > max)) {
@@ -85,9 +95,85 @@ export const Range: FunctionComponent<
     }
   }, [modelValue])
 
+  useEffect(() => {
+    if (marks) {
+      const marksKeys = Object.keys(marks)
+      const range = Number(max) - Number(min)
+      const list: any = marksKeys
+        .map(parseFloat)
+        .sort((a, b) => a - b)
+        .filter((point) => point >= min && point <= max)
+      SetMarksList(list)
+    }
+  }, [marks])
+
+  //   const marksList: any = () => {
+  //     const marksKeys = Object.keys(marks)
+  //     const range = Number(max) - Number(min)
+  //     const list = marksKeys
+  //       .map(parseFloat)
+  //       .sort((a, b) => a - b)
+  //       .filter((point) => point >= min && point <= max)
+  //     return list
+  //   }
+
   const scope = () => {
     return Number(max) - Number(min)
   }
+
+  const classes = useCallback(() => {
+    const prefixCls = 'nut-range'
+    return [
+      prefixCls,
+      `${disabled ? `${prefixCls}-disabled` : ''}`,
+      `${vertical ? `${prefixCls}-vertical` : ''}`,
+      `${!hiddenRange ? `${prefixCls}-show-number` : ''}`,
+    ]
+      .filter(Boolean)
+      .join(' ')
+  }, [disabled, vertical, hiddenRange])
+
+  const containerClasses = useCallback(() => {
+    const prefixCls = 'nut-range-container'
+    return [prefixCls, `${vertical ? `${prefixCls}-vertical` : ''}`, className]
+      .filter(Boolean)
+      .join(' ')
+  }, [vertical, className])
+
+  const markClassName = useCallback(
+    (mark: any) => {
+      const classPrefix = 'nut-range-mark'
+      let lowerBound: any = Number(min)
+      let upperBound: any = Number(max)
+      if (range) {
+        const [left, right] = modelValue as any
+        lowerBound = left
+        upperBound = right
+      } else {
+        upperBound = modelValue
+      }
+      const isActive = mark <= upperBound && mark >= lowerBound
+      return [
+        `${classPrefix}-text`,
+        `${isActive ? `${classPrefix}-text-active` : ''}`,
+      ]
+        .filter(Boolean)
+        .join(' ')
+      //   return {
+      //     [`${classPrefix}-text`]: true,
+      //     [`${classPrefix}-text-active`]: isActive,
+      //   }
+    },
+    [range, modelValue, min, max]
+  )
+
+  const [rangeName, setRangeName] = useState(classes())
+  const [containerName, setContainerName] = useState(containerClasses())
+
+  useEffect(() => {
+    setRangeName(classes())
+    setContainerName(containerClasses())
+  }, [classes, containerClasses])
 
   const wrapperStyle = () => {
     return {
@@ -121,12 +207,47 @@ export const Range: FunctionComponent<
   }
 
   const barStyle = () => {
+    if (vertical) {
+      return {
+        height: calcMainAxis(),
+        top: calcOffset(),
+        background: activeColor,
+        transition: dragStatus ? 'none' : undefined,
+      }
+    }
     return {
       width: calcMainAxis(),
       left: calcOffset(),
       background: activeColor,
       transition: dragStatus ? 'none' : undefined,
     }
+  }
+
+  const marksStyle = (mark: any) => {
+    let style: any = {
+      left: `${((mark - Number(min)) / scope()) * 100}%`,
+    }
+    if (vertical) {
+      style = {
+        top: `${((mark - Number(min)) / scope()) * 100}%`,
+      }
+    }
+    return style
+  }
+  const tickStyle = (mark: any) => {
+    let lowerBound: any = Number(min)
+    let upperBound: any = Number(max)
+    if (range) {
+      const [left, right] = modelValue as any
+      lowerBound = left
+      upperBound = right
+    }
+    const isActive = mark <= upperBound && mark >= lowerBound
+    const style: any = {
+      background: !isActive ? inactiveColor : activeColor,
+    }
+
+    return style
   }
 
   const format = (value: number) => {
@@ -161,7 +282,7 @@ export const Range: FunctionComponent<
     }
   }
 
-  const onTouchStart = (event: TouchEvent) => {
+  const onTouchStart = (event: any) => {
     if (disabled) {
       return
     }
@@ -188,9 +309,15 @@ export const Range: FunctionComponent<
     SetDragStatus('draging')
 
     const rect = useRect(root.current)
-    const delta = touch.deltaX
-    const total = rect.width
-    const diff = (delta / total) * scope()
+    let delta = touch.deltaX
+    let total = rect.width
+    let diff = (delta / total) * scope()
+
+    if (vertical) {
+      delta = touch.deltaY
+      total = rect.height
+      diff = (delta / total) * scope()
+    }
 
     if (isRange(startValue)) {
       currentValue[buttonIndex] = startValue[buttonIndex] + diff
@@ -198,6 +325,8 @@ export const Range: FunctionComponent<
       currentValue = startValue + diff
     }
     updateValue(currentValue)
+    event.stopPropagation()
+    event.preventDefault()
   }
 
   const onTouchEnd = (event: TouchEvent) => {
@@ -218,15 +347,26 @@ export const Range: FunctionComponent<
   }
 
   return (
-    <div className={`nut-range-container ${className || ''}`}>
+    <div className={`${containerName}`}>
       {!hiddenRange ? <div className="min">{+min}</div> : null}
-      <div
-        ref={root}
-        style={wrapperStyle()}
-        className={`${rangeBem()} ${disabled ? rangeBem('disabled') : ''} ${
-          !hiddenRange ? rangeBem('show-number') : ''
-        }`}
-      >
+      <div ref={root} style={wrapperStyle()} className={`${rangeName}`}>
+        {marksList.length > 0 ? (
+          <div className="nut-range-mark">
+            {marksList.map((marks: any) => {
+              return (
+                <span
+                  key={marks}
+                  className={markClassName(marks)}
+                  style={marksStyle(marks)}
+                >
+                  {marks}
+                  <span className="nut-range-tick" style={tickStyle(marks)} />
+                </span>
+              )
+            })}
+          </div>
+        ) : null}
+
         <div className="nut-range-bar" style={barStyle()}>
           {range ? (
             [0, 1].map((item, index) => {
@@ -235,16 +375,16 @@ export const Range: FunctionComponent<
                   role="slider"
                   key={index}
                   className={`${
-                    index == 0 ? 'nut-range-button-wrapper-left' : ''
+                    index === 0 ? 'nut-range-button-wrapper-left' : ''
                   }
-              ${index == 1 ? 'nut-range-button-wrapper-right' : ''}`}
+              ${index === 1 ? 'nut-range-button-wrapper-right' : ''}`}
                   tabIndex={disabled ? -1 : 0}
                   aria-valuemin={+min}
                   aria-valuenow={curValue(index)}
                   aria-valuemax={+max}
                   aria-orientation="horizontal"
                   onTouchStart={(e: any) => {
-                    e.preventDefault
+                    e.preventDefault()
                     if (typeof index === 'number') {
                       // 实时更新当前拖动的按钮索引
                       SetButtonIndex(index)
@@ -252,12 +392,15 @@ export const Range: FunctionComponent<
                     onTouchStart(e)
                   }}
                   onTouchMove={(e: any) => {
+                    e.preventDefault()
                     onTouchMove(e)
                   }}
                   onTouchEnd={(e: any) => {
+                    e.preventDefault()
                     onTouchEnd(e)
                   }}
                   onTouchCancel={(e: any) => {
+                    e.preventDefault()
                     onTouchEnd(e)
                   }}
                   onClick={(e) => {
@@ -283,16 +426,20 @@ export const Range: FunctionComponent<
               aria-valuenow={curValue()}
               aria-valuemax={+max}
               aria-orientation="horizontal"
-              onTouchStart={(e: any) => {
+              onTouchStart={(e) => {
+                e.preventDefault()
                 onTouchStart(e)
               }}
               onTouchMove={(e: any) => {
+                e.preventDefault()
                 onTouchMove(e)
               }}
               onTouchEnd={(e: any) => {
+                e.preventDefault()
                 onTouchEnd(e)
               }}
               onTouchCancel={(e: any) => {
+                e.preventDefault()
                 onTouchEnd(e)
               }}
               onClick={(e) => {
