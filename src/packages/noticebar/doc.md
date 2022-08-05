@@ -14,135 +14,234 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 ### 基本用法
 
+:::demo
+
 ```tsx
-<NoticeBar text={text} background="rgba(251, 248, 220, 1)" color="#D9500B" />
+import  React, {useState} from "react";
+import { NoticeBar } from '@nutui/nutui-react';
+
+const App = () => {
+    const text = '华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！'
+    return (
+      <>
+        <NoticeBar text={text} background="rgba(251, 248, 220, 1)" color="#D9500B" />
+      </>
+    )
+}
+export default App
 ```
-```javascript
-const text = '华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！'
-```
+:::
+
 
 ### 禁用滚动
 文字内容多于一行时，可通过scrollable参数控制是否开启滚动
+
+:::demo
+
 ```tsx
-<NoticeBar
-    text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
-    scrollable={false}
-    background="rgba(251, 248, 220, 1)"
-    color="#D9500B"
- />
+import  React, {useState} from "react";
+import { NoticeBar } from '@nutui/nutui-react';
+
+const App = () => {
+    return (
+      <>
+        <NoticeBar
+            text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
+            scrollable={false}
+            background="rgba(251, 248, 220, 1)"
+            color="#D9500B"
+        />
+      </>
+    )
+}
+export default App
 ```
+:::
+
 
 ### 通告栏模式--关闭模式
+
+:::demo
+
 ```tsx
-<NoticeBar
-    closeMode
-    click={hello}
-    background="rgba(251, 248, 220, 1)"
-    color="#D9500B"
->
-    华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI
-    WATCH等好礼，更多产品信息请持续关注！
-</NoticeBar>
+import  React, {useState} from "react";
+import { NoticeBar } from '@nutui/nutui-react';
+
+const App = () => {
+    const hello = () => {
+        console.log('hello world')
+    }
+    return (
+      <>
+        <NoticeBar
+            closeMode
+            click={hello}
+            background="rgba(251, 248, 220, 1)"
+            color="#D9500B"
+        >
+            华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI
+            WATCH等好礼，更多产品信息请持续关注！
+        </NoticeBar>
+      </>
+    )
+}
+export default App
 ```
-```javascript
-const hello = () => {
-    console.log('hello world')
-  }
-```
+:::
 
 ### 通告栏模式--链接模式
+
+:::demo
+
 ```tsx
-<NoticeBar
-    leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
-    background="rgba(251, 248, 220, 1)"
-    color="#D9500B"
->
-    <a href="https://www.jd.com">京东商城</a>
-</NoticeBar>
+import  React, {useState} from "react";
+import { NoticeBar } from '@nutui/nutui-react';
+
+const App = () => {
+    return (
+      <>
+        <NoticeBar
+            leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+            background="rgba(251, 248, 220, 1)"
+            color="#D9500B"
+        >
+            <a href="https://www.jd.com">京东商城</a>
+        </NoticeBar>
+      </>
+    )
+}
+export default App
 ```
+:::
+
 
 
 ### 纵向滚动
 
+:::demo
+
 ```tsx
- <NoticeBar
-    direction="vertical"
-    list={horseLamp1}
-    speed={10}
-    standTime={1000}
-    click={(item) => {
-        go(item)
-    }}
-    closeMode
-    background="rgba(251, 248, 220, 1)"
-    color="#D9500B"
-  />
-```
-```javascript
+import  React, {useState} from "react";
+import { NoticeBar } from '@nutui/nutui-react';
 
-const horseLamp1 = ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
+const App = () => {
+    const horseLamp1 = ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']
 
-const go = (item: any) => {
-    console.log(item)
+    const go = (item: any) => {
+        console.log(item)
+    }
+    return (
+      <>
+        <NoticeBar
+            direction="vertical"
+            list={horseLamp1}
+            speed={10}
+            standTime={1000}
+            click={(item) => {
+                go(item)
+            }}
+            closeMode
+            background="rgba(251, 248, 220, 1)"
+            color="#D9500B"
+        />
+      </>
+    )
 }
+export default App
 ```
+:::
+
 
 
 ### 复杂滚动动画
 
-```tsx
-<NoticeBar
-    direction="vertical"
-    list={horseLamp2}
-    speed={10}
-    standTime={2000}
-    complexAm
- />
-```
-```javascript
-const horseLamp2 = ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆'],
+:::demo
 
+```tsx
+import  React, {useState} from "react";
+import { NoticeBar } from '@nutui/nutui-react';
+
+const App = () => {
+    const horseLamp2 = ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']
+    return (
+      <>
+        <NoticeBar
+            direction="vertical"
+            list={horseLamp2}
+            speed={10}
+            standTime={2000}
+            complexAm
+        />
+      </>
+    )
 }
+export default App
 ```
+:::
+
 
 ### 自定义滚动内容
 
+:::demo
+
 ```tsx
-<NoticeBar direction="vertical" height={50} speed={10} standTime={1000}>
-    {horseLamp3.map((item, index) => {
-        return (
-        <div
-            className="custom-item"
-            style={{ height: '50px', lineHeight: '50px' }}
-            key={index}
-        >
-            {item}
-        </div>
-        )
-    })}
-    </NoticeBar>
+import  React, {useState} from "react";
+import { NoticeBar } from '@nutui/nutui-react';
+
+const App = () => {
+    const  horseLamp3 = ['惊喜红包免费领1', '爆款准点秒2', '买超值优惠3', '赢百万京豆4']
+
+    return (
+      <>
+        <NoticeBar direction="vertical" height={50} speed={10} standTime={1000}>
+        {horseLamp3.map((item, index) => {
+            return (
+            <div
+                className="custom-item"
+                style={{ height: '50px', lineHeight: '50px' }}
+                key={index}
+            >
+                {item}
+            </div>
+            )
+        })}
+        </NoticeBar>
+        </>
+    )
+};
+export default App
 ```
-```javascript
-const  horseLamp3 = ['惊喜红包免费领1', '爆款准点秒2', '买超值优惠3', '赢百万京豆4']
-}
-```
+:::
+
 
 
 ### 纵向自定义右侧图标
 
+:::demo
+
 ```tsx
- <NoticeBar
-    className="custom"
-    direction="vertical"
-    list={horseLamp4}
-    speed={10}
-    standTime={1000}
-    rightIcon={<Icon name="fabulous" size="16" color="#f0250f" />}
- />
+import  React, {useState} from "react";
+import { NoticeBar,Icon } from '@nutui/nutui-react';
+
+const App = () => {
+    const horseLamp4 = ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']
+    
+    return (
+      <>
+        <NoticeBar
+            className="custom"
+            direction="vertical"
+            list={horseLamp4}
+            speed={10}
+            standTime={1000}
+            rightIcon={<Icon name="fabulous" size="16" color="#f0250f" />}
+        />
+        </>
+    )
+};
+export default App
 ```
-```javascript
-const horseLamp4 = ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']
-```
+:::
 
 
 ## API

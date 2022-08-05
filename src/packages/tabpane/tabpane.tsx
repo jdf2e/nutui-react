@@ -8,6 +8,7 @@ export interface TabPaneProps {
   paneKey: string | number
   activeKey: string | number
   disabled: boolean
+  autoHeightClassName: string
 }
 
 const defaultProps = {
@@ -18,7 +19,7 @@ const defaultProps = {
 } as TabPaneProps
 
 export const TabPane: FunctionComponent<Partial<TabPaneProps>> = (props) => {
-  const { children, paneKey, activeKey } = {
+  const { children, paneKey, activeKey, autoHeightClassName } = {
     ...defaultProps,
     ...props,
   }
@@ -28,7 +29,8 @@ export const TabPane: FunctionComponent<Partial<TabPaneProps>> = (props) => {
     {
       active: paneKey === activeKey,
     },
-    b('')
+    b(''),
+    autoHeightClassName
   )
 
   return <div className={classes}>{children}</div>

@@ -93,6 +93,38 @@ export default App;
 
 :::
 
+### Tabpane 自动高度
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs, TabPane } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab2value, setTab2value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab2value} autoHeight onChange={({ paneKey }) => {
+        setTab2value(paneKey)
+      }}>
+        <TabPane title="Tab 1" pane-key="0">
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+        </TabPane>
+        <TabPane title="Tab 2" pane-key="1"> Tab 2 </TabPane>
+        <TabPane title="Tab 3" pane-key="2"> Tab 3 </TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
 ### 数据异步渲染 3s
 
 :::demo
@@ -323,6 +355,7 @@ export default App;
 | titleGutter  | 标签间隙                                      | number,string | 0          |
 | titleNode    | 自定义导航区域                                 | () => JSX.Element[] | 0          |
 | size         | 标签栏字体尺寸大小 可选值 large normal small | string        | normal     |
+| autoHeight         | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean        | false     |
 
 ## Tabs Children
 

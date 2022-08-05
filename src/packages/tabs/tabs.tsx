@@ -32,6 +32,7 @@ export interface TabsProps {
   titleNode: () => JSX.Element[]
   onChange: (t: Title) => void
   onClick: (t: Title) => void
+  autoHeight: boolean
 }
 const defaultProps = {
   value: 0,
@@ -44,6 +45,7 @@ const defaultProps = {
   animatedTime: 300,
   titleGutter: 0,
   size: 'normal',
+  autoHeight: false,
 } as TabsProps
 const pxCheck = (value: string | number): string => {
   return Number.isNaN(Number(value)) ? String(value) : `${value}px`
@@ -65,6 +67,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
     onClick,
     onChange,
     className,
+    autoHeight,
     ...rest
   } = { ...defaultProps, ...props }
 
@@ -145,7 +148,10 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
                   style={titleStyle}
                   onClick={(e) => tabChange(item, index)}
                   className={classNames(
-                    { active: item.paneKey === value, disabled: item.disabled },
+                    {
+                      active: String(item.paneKey) === String(value),
+                      disabled: item.disabled,
+                    },
                     `${b('')}__titles-item`
                   )}
                   key={item.paneKey}
@@ -186,9 +192,20 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
           if (!React.isValidElement(child)) {
             return null
           }
-          const childProps = {
+
+          let childProps = {
             ...child.props,
             activeKey: value,
+          }
+
+          if (
+            String(value) !== String(child.props?.paneKey || idx) &&
+            autoHeight
+          ) {
+            childProps = {
+              ...childProps,
+              autoHeightClassName: 'inactive',
+            }
           }
           return React.cloneElement(child, childProps)
         })}

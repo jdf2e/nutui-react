@@ -698,6 +698,26 @@
           "sort": 20,
           "show": true,
           "author": "hx"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Video",
+          "type": "component",
+          "cName": "视频播放器",
+          "desc": "原生video实现的视频播放器",
+          "sort": 20,
+          "show": true,
+          "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Progress",
+          "type": "component",
+          "cName": "进度条",
+          "desc": "用来展示进度",
+          "sort": 20,
+          "show": true,
+          "author": "ailululu"
         }
       ]
     },
