@@ -51,7 +51,7 @@ let startValue: any
 let currentValue: any
 
 export const Range: FunctionComponent<
-  Partial<RangeProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<RangeProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const { locale } = useConfig()
   const {
@@ -282,6 +282,32 @@ export const Range: FunctionComponent<
     }
   }
 
+  const click = (event: any) => {
+    if (disabled || !root.current) {
+      return
+    }
+    SetDragStatus('')
+    const rect = useRect(root.current)
+    let delta = event.clientX - rect.left
+    let total = rect.width
+    if (vertical) {
+      delta = event.clientY - rect.top
+      total = rect.height
+    }
+    const value = Number(min) + (delta / total) * scope()
+    if (isRange(modelValue)) {
+      const [left, right] = modelValue as any
+      const middle = (left + right) / 2
+      if (value <= middle) {
+        updateValue([value, right], true)
+      } else {
+        updateValue([left, value], true)
+      }
+    } else {
+      updateValue(value, true)
+    }
+  }
+
   const onTouchStart = (event: any) => {
     if (disabled) {
       return
@@ -296,6 +322,7 @@ export const Range: FunctionComponent<
 
     SetDragStatus('start')
   }
+
   const onTouchMove = (event: TouchEvent) => {
     if (disabled || !root.current) {
       return
@@ -349,7 +376,14 @@ export const Range: FunctionComponent<
   return (
     <div className={`${containerName}`}>
       {!hiddenRange ? <div className="min">{+min}</div> : null}
-      <div ref={root} style={wrapperStyle()} className={`${rangeName}`}>
+      <div
+        ref={root}
+        style={wrapperStyle()}
+        className={`${rangeName}`}
+        onClick={(e) => {
+          click(e)
+        }}
+      >
         {marksList.length > 0 ? (
           <div className="nut-range-mark">
             {marksList.map((marks: any) => {
