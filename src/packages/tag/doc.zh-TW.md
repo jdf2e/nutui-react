@@ -135,7 +135,6 @@ const App = () => {
 export default App;
 ```
 
-:::
 
 
 ### 點擊事件
