@@ -6,8 +6,8 @@ exports[`should match snapshot 1`] = `
     class="nut-checkbox nut-checkbox--reverse "
   >
     <i
-      class=" nut-icon nutui-iconfont nut-icon-checked "
-      style="color: rgb(250, 44, 25); font-size: 18px; width: 18px; height: 18px;"
+      class="nut-checkbox__icon nutui-iconfont nut-icon nut-icon-checked "
+      style="font-size: 18px; width: 18px; height: 18px;"
     />
     <span
       class="nut-checkbox__label "
