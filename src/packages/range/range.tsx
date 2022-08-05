@@ -271,9 +271,9 @@ export const Range: FunctionComponent<
     } else {
       value = format(value)
     }
-    const modelVal = initValue || initValue === 0 ? initValue : modelValue
+    // const modelVal = initValue || initValue === 0 ? initValue : modelValue
 
-    if (!isSameValue(value, modelVal)) {
+    if (!isSameValue(value, modelValue)) {
       SetInitValue(value)
     }
 
