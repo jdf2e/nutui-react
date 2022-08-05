@@ -97,29 +97,25 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   return (
     <div>
       {closeable ? (
-        isTagShow ? (
+        isTagShow && (
           <div
             className={`${btnName}`}
             style={getStyle()}
             onClick={(e) => handleClick(e)}
           >
             {children && <span className="text">{children}</span>}
-            {closeable && (
-              <Icon
-                className="_icon"
-                name="close"
-                size="12"
-                click={(e) => {
-                  setIsTagShow(false)
-                  if (props.onClose) {
-                    props.onClose(e)
-                  }
-                }}
-              />
-            )}
+            <Icon
+              className="_icon"
+              name="close"
+              size="12"
+              click={(e) => {
+                setIsTagShow(false)
+                if (props.onClose) {
+                  props.onClose(e)
+                }
+              }}
+            />
           </div>
-        ) : (
-          ''
         )
       ) : (
         <div
