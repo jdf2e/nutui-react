@@ -2,8 +2,8 @@ import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 import Elevator from '@/packages/elevator'
-import { RegionData } from './address'
 import { useConfig } from '@/packages/configprovider'
+import { SelectedRegionObj, RegionData, NextListObj } from './type'
 
 interface CustomRegionData {
   title: string
@@ -18,23 +18,20 @@ interface MapRef {
 }
 
 export interface AddressProps {
+  modelValue: (string | number)[]
   type: string
   province: RegionData[]
   city: RegionData[]
   country: RegionData[]
   town: RegionData[]
   height: string | number
-  onNextArea?: (cal: {
-    next: string
-    value: string | RegionData
-    custom: string
-    selectedRegion: {}
-  }) => void
+  onNextArea?: (cal: NextListObj) => void
   onTabClick?: (type: string) => void
   onClose?: () => void
 }
 
 const defaultProps = {
+  modelValue: [],
   type: 'custom',
   province: [],
   city: [],
@@ -50,6 +47,7 @@ export const CustomRender: FunctionComponent<
   const {
     children,
     type,
+    modelValue,
     height,
     province,
     city,
@@ -132,15 +130,8 @@ export const CustomRender: FunctionComponent<
   })
 
   // 已选择的 省、市、县、镇
-  const [selectedRegion, setSelectedRegion] = useState<{
-    province: RegionData
-    city: RegionData
-    country: RegionData
-    town: RegionData
-  }>({
-    province: {
-      name: '',
-    },
+  const [selectedRegion, setSelectedRegion] = useState<SelectedRegionObj>({
+    province: { name: '' },
     city: { name: '' },
     country: { name: '' },
     town: { name: '' },
@@ -182,34 +173,38 @@ export const CustomRender: FunctionComponent<
   // 切换下一级列表
   const nextAreaList = (item: RegionData | string) => {
     // onchange 接收的参数
-    const calBack = {
+    const calBack: NextListObj = {
       next: '',
       value: '',
       custom: tabName[tabIndex],
-      selectedRegion: {},
     }
 
-    setSelectedRegion({
-      ...selectedRegion,
-      [tabName[tabIndex]]: item,
-    })
+    const bbselectedRegion = selectedRegion ? { ...selectedRegion } : null
 
-    calBack.selectedRegion = {
-      ...selectedRegion,
-      [tabName[tabIndex]]: item,
-    }
-
-    for (let i = tabIndex; i < tabIndex - 1; i++) {
-      setSelectedRegion(() => ({
-        ...selectedRegion,
-        [tabName[i + 1]]: {},
-      }))
+    if (bbselectedRegion) {
+      setSelectedRegion({
+        ...bbselectedRegion,
+        [tabName[tabIndex]]: item,
+      })
 
       calBack.selectedRegion = {
-        ...selectedRegion,
-        [tabName[i + 1]]: {},
+        ...bbselectedRegion,
+        [tabName[tabIndex]]: item,
+      }
+
+      for (let i = tabIndex; i < tabIndex - 1; i++) {
+        setSelectedRegion({
+          ...bbselectedRegion,
+          [tabName[i + 1]]: null,
+        })
+
+        calBack.selectedRegion = {
+          ...bbselectedRegion,
+          [tabName[i + 1]]: {},
+        }
       }
     }
+
     if (tabIndex < 4) {
       // 切换下一个
       if (tabIndex === 3) {
@@ -233,6 +228,45 @@ export const CustomRender: FunctionComponent<
       lineAnimation(index)
     }
     onTabClick && onTabClick(key)
+  }
+
+  // 默认选中项
+  const initCustomSelected = () => {
+    if (modelValue.length > 0) {
+      let tagIndex = 0
+      const selectedRegionC: any =
+        selectedRegion && Object.assign(selectedRegion)
+
+      for (let index = 0; index < modelValue.length; index++) {
+        if ((regionList as any)[tabName[index]].length === 0) {
+          tagIndex = index - 1
+          setTabIndex(index - 1)
+          break
+        } else {
+          const val = modelValue[index]
+          const arr: [] = (regionList as any)[tabName[index]]
+          if (privateType === 'custom') {
+            selectedRegionC[[tabName[index]] as any] = arr.filter(
+              (item: RegionData) => item.id === val
+            )[0]
+          } else if (privateType === 'custom2') {
+            const sumArr: any = []
+            arr.forEach((item) => {
+              sumArr.push(...(item as any).list)
+            })
+            selectedRegionC[[tabName[index]] as any] = sumArr.filter(
+              (item: RegionData) => item.id === val
+            )[0]
+          }
+
+          tagIndex = index
+          setSelectedRegion(selectedRegionC)
+        }
+      }
+
+      setTabIndex(tagIndex)
+      lineAnimation(tagIndex)
+    }
   }
 
   const handleElevatorItem = (key: string, item: RegionData | string) => {
@@ -273,38 +307,43 @@ export const CustomRender: FunctionComponent<
     })
   }, [town])
 
+  useEffect(() => {
+    initCustomSelected()
+  }, [modelValue])
+
   return (
     <div className={b('custom')}>
       <div className={b('region-tab')}>
-        {Object.keys(selectedRegion).map(
-          (key: string | SelectedRegionType, index) => {
-            return (
-              <div
-                className={`${b('tab-item')} ${
-                  index === tabIndex ? 'active' : ''
-                }`}
-                key={index}
-                ref={mapRef[key as SelectedRegionType]}
-                onClick={() =>
-                  changeRegionTab(
-                    selectedRegion[key as SelectedRegionType],
-                    index,
-                    key
-                  )
-                }
-              >
-                {index <= tabIndex && (
-                  <div>
-                    {getTabName(
+        {selectedRegion &&
+          Object.keys(selectedRegion).map(
+            (key: string | SelectedRegionType, index) => {
+              return (
+                <div
+                  className={`${b('tab-item')} ${
+                    index === tabIndex ? 'active' : ''
+                  }`}
+                  key={index}
+                  ref={mapRef[key as SelectedRegionType]}
+                  onClick={() =>
+                    changeRegionTab(
                       selectedRegion[key as SelectedRegionType],
-                      index
-                    )}
-                  </div>
-                )}
-              </div>
-            )
-          }
-        )}
+                      index,
+                      key
+                    )
+                  }
+                >
+                  {index <= tabIndex && (
+                    <div>
+                      {getTabName(
+                        selectedRegion[key as SelectedRegionType],
+                        index
+                      )}
+                    </div>
+                  )}
+                </div>
+              )
+            }
+          )}
         <div
           className={b('tab-line')}
           ref={regionLine}
@@ -321,17 +360,18 @@ export const CustomRender: FunctionComponent<
                   <li
                     key={index}
                     className={b('region-item')}
-                    onClick={(e) => nextAreaList(item as RegionData)}
+                    // onClick={nextAreaList(item as RegionData)}
                   >
-                    {selectedRegion[tabName[tabIndex] as SelectedRegionType]
-                      .id === (item as RegionData).id && (
-                      <Icon
-                        className={b('region-item--icon')}
-                        name="Check"
-                        color="#FA2C19"
-                        size="13px"
-                      />
-                    )}
+                    {selectedRegion &&
+                      selectedRegion[tabName[tabIndex] as SelectedRegionType]
+                        .id === (item as RegionData).id && (
+                        <Icon
+                          className={b('region-item--icon')}
+                          name="Check"
+                          color="#FA2C19"
+                          size="13px"
+                        />
+                      )}
                     {(item as RegionData).name}
                   </li>
                 )
