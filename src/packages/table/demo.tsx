@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import Button from '../button'
-import Toast from '../toast'
-import Icon from '../icon'
-import { Table } from './table'
+import Button from '@/packages/button'
+import Toast from '@/packages/toast'
+import Icon from '@/packages/icon'
+import Table from '@/packages/table'
 import { TableColumnProps } from './types'
 
 const TableDemo = () => {

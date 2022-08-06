@@ -13,7 +13,7 @@ export interface TableProps {
 }
 
 export interface TableColumnProps {
-  key?: string
+  key: string
   title?: string
   align?: string
   sorter?: ((a: any, b: any) => number) | boolean | string

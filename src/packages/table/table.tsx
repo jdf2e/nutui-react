@@ -1,8 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import './table.scss'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import Icon from '../icon'
+import Icon from '@/packages/icon'
 import { TableProps, TableColumnProps } from './types'
 
 const defaultProps = {
