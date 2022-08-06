@@ -357,22 +357,24 @@ export const CustomRender: FunctionComponent<
             {regionList[tabName[tabIndex] as SelectedRegionType].map(
               (item: RegionData | CustomRegionData, index: number) => {
                 return (
-                  <li
-                    key={index}
-                    className={b('region-item')}
-                    // onClick={nextAreaList(item as RegionData)}
-                  >
-                    {selectedRegion &&
-                      selectedRegion[tabName[tabIndex] as SelectedRegionType]
-                        .id === (item as RegionData).id && (
-                        <Icon
-                          className={b('region-item--icon')}
-                          name="Check"
-                          color="#FA2C19"
-                          size="13px"
-                        />
-                      )}
-                    {(item as RegionData).name}
+                  <li key={index} className={b('region-item')}>
+                    <div
+                      onClick={() => {
+                        nextAreaList(item as RegionData)
+                      }}
+                    >
+                      {selectedRegion &&
+                        selectedRegion[tabName[tabIndex] as SelectedRegionType]
+                          .id === (item as RegionData).id && (
+                          <Icon
+                            className={b('region-item--icon')}
+                            name="Check"
+                            color="#FA2C19"
+                            size="13px"
+                          />
+                        )}
+                      {(item as RegionData).name}
+                    </div>
                   </li>
                 )
               }
