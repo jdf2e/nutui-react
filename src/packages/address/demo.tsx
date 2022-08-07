@@ -150,7 +150,7 @@ const AddressDemo = () => {
     })
   }
 
-  const onChange = (cal: CalBack, tag: string) => {
+  const onChange = (cal: any, tag: string) => {
     console.log('change', cal, tag)
 
     if (tag === 'normal2' || tag === 'select') {
@@ -376,10 +376,10 @@ const AddressDemo = () => {
         <Address
           modelValue={showPopup.select}
           modelSelect={[1, 7, 3]}
-          province={province}
-          city={city}
-          country={country}
-          town={town}
+          province={addressData.province}
+          city={addressData.city}
+          country={addressData.country}
+          town={addressData.town}
           customAddressTitle="请选择所在地区"
           onChange={(cal) => onChange(cal, 'select')}
           onClose={close6}
