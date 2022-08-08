@@ -104,6 +104,8 @@ const defaultProps = {
   errorMessageAlign: '',
   showWordLimit: false,
   autofocus: false,
+  slotButton: null,
+  slotInput: null,
 } as unknown as InputProps
 
 export const Input: FunctionComponent<
@@ -293,7 +295,7 @@ export const Input: FunctionComponent<
       className={`${classes}  ${className || ''}`}
       style={style}
       {...rest}
-      onClick={(e: any) => {
+      onClick={(e) => {
         click && click(e)
       }}
     >
@@ -311,7 +313,7 @@ export const Input: FunctionComponent<
           <div className="nut-input-value">
             <div
               className="nut-input-inner"
-              onClick={(e: any) => {
+              onClick={(e) => {
                 onClickInput(e)
               }}
             >
@@ -324,7 +326,7 @@ export const Input: FunctionComponent<
           {leftIcon && leftIcon.length > 0 ? (
             <div
               className="nut-input-left-icon"
-              onClick={(e: any) => {
+              onClick={(e) => {
                 onClickLeftIcon(e)
               }}
             >
@@ -343,7 +345,7 @@ export const Input: FunctionComponent<
           <div className="nut-input-value">
             <div
               className="nut-input-inner"
-              onClick={(e: any) => {
+              onClick={(e) => {
                 onClickInput(e)
               }}
             >
@@ -399,7 +401,7 @@ export const Input: FunctionComponent<
                   className="nut-input-clear"
                   name={clearIcon}
                   size={clearSize}
-                  click={(e: any) => {
+                  click={(e) => {
                     handleClear(e)
                   }}
                 />
@@ -407,7 +409,7 @@ export const Input: FunctionComponent<
               {rightIcon && rightIcon.length > 0 ? (
                 <div
                   className="nut-input-right-icon"
-                  onClick={(e: any) => {
+                  onClick={(e) => {
                     onClickRightIcon(e)
                   }}
                 >

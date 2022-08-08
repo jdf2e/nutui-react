@@ -14,87 +14,175 @@ import { Badge } from '@nutui/nutui-react';
 
 ### 基本用法
 
+:::demo
+
 ```tsx
-<Badge value={8}>
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
-<Badge value={76}>
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
-<Badge value="NEW">
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
-<Badge dot>
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
+import React from "react";
+import { Badge, Avatar } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Badge value={8}>
+        <Avatar icon="my" shape="square" />
+      </Badge>
+      <Badge value={76}>
+        <Avatar icon="my" shape="square" />
+      </Badge>
+      <Badge value="NEW">
+        <Avatar icon="my" shape="square" />
+      </Badge>
+      <Badge dot>
+        <Avatar icon="my" shape="square" />
+      </Badge>
+    </>
+  )
+}
+export default App;
 ```
+
+:::
 
 ### 最大值
 
+:::demo
+
 ```tsx
-<Badge value={200} max={9}>
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
-<Badge value={200} max={20}>
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
-<Badge value={200} max={99}>>
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
+import React from "react";
+import { Badge, Avatar } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Badge value={200} max={9}>
+        <Avatar icon="my" shape="square" />
+      </Badge>
+      <Badge value={200} max={20}>
+        <Avatar icon="my" shape="square" />
+      </Badge>
+      <Badge value={200} max={99}>
+        <Avatar icon="my" shape="square" />
+      </Badge>
+    </>
+  )
+}
+export default App;
 ```
+
+:::
 
 ### 自定义颜色
 
+:::demo
+
 ```tsx
-<Badge value={8} color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
-<Badge value={76} color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
-<Badge value="NEW" color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
-<Badge dot color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
+import React from "react";
+import { Badge, Avatar } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Badge value={8}
+             color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
+        <Avatar icon="my" shape="square" />
+      </Badge>
+      <Badge value={76}
+             color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
+        <Avatar icon="my" shape="square" />
+      </Badge>
+      <Badge value="NEW"
+             color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
+        <Avatar icon="my" shape="square" />
+      </Badge>
+      <Badge dot
+             color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
+        <Avatar icon="my" shape="square" />
+      </Badge>
+    </>
+  )
+}
+export default App;
 ```
+
+:::
 
 ### 自定义徽标内容
 
+:::demo
+
 ```tsx
-<Badge icon="checklist">
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
-<Badge icon="link">
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
-<Badge icon="download">
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
+import React from "react";
+import { Badge, Avatar } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Badge icon="checklist">
+        <Avatar icon="my" shape="square" />
+      </Badge>
+      <Badge icon="link">
+        <Avatar icon="my" shape="square" />
+      </Badge>
+      <Badge icon="download">
+        <Avatar icon="my" shape="square" />
+      </Badge>
+    </>
+  )
+}
+export default App;
 ```
+
+:::
 
 ### 自定义位置
 
+:::demo
+
 ```tsx
-<Badge value={8} top="5" right="5">
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
-<Badge value={76} top="10" right="10">
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
-<Badge value="NEW">
-  <Avatar icon="my" shape="square"></Avatar>
-</Badge>
+import React from "react";
+import { Badge, Avatar } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Badge value={8} top="5" right="5">
+        <Avatar icon="my" shape="square" />
+      </Badge>
+      <Badge value={76} top="10" right="10">
+        <Avatar icon="my" shape="square" />
+      </Badge>
+      <Badge value="NEW">
+        <Avatar icon="my" shape="square" />
+      </Badge>
+    </>
+  )
+}
+export default App;
 ```
+
+:::
 
 ### 独立展示
 
+:::demo
+
 ```tsx
-<Badge value={8}> </Badge>
-<Badge value={76}> </Badge>
-<Badge value="NEW"> </Badge>
+import React from "react";
+import { Badge } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Badge value={8}> </Badge>
+      <Badge value={76}> </Badge>
+      <Badge value="NEW"> </Badge>
+    </>
+  )
+}
+export default App;
 ```
+
+:::
 
 ## API
 

@@ -315,8 +315,12 @@ $steps-process-icon-text-color: $primary-color !default;
 $dialog-width: 296px;
 
 // checkbox
-$checkbox-label-color: #1d1e1e;
-$checkbox-label-disable-color: #999;
+$checkbox-label-color: #1d1e1e !default;
+$checkbox-label-disable-color: #999 !default;
+$checkbox-icon-disable-color: #d6d6d6 !default;
+$checkbox-label-margin-left: 15px !default;
+$checkbox-label-font-size: 14px !default;
+$checkbox-icon-font-size: 18px !default;
 
 //radio
 $radio-label-font-color: #1d1e1e !default;
@@ -543,6 +547,21 @@ $row-content-border-radius: 6px !default;
 $row-content-height: 50px !default;
 $row-content-line-height: 40px !default;
 $col-default-margin-bottom: 15px !default;
+
+// progress
+$progress-border-radius: 12px !default;
+$progress-text-padding: 0 5px !default;
+$progress-text-font-size: 13px !default;
+$progress-insidetext-border-radius: 5px !default;
+$progress-small-height: 5px !default;
+$progress-base-height: 10px !default;
+$progress-large-height: 15px !default;
+$progress-small-padding: 0 4px !default;
+$progress-base-padding: 0 5px !default;
+$progress-large-padding: 0 5px !default;
+$progress-small-font-size: 7px !default;
+$progress-base-font-size: 9px !default;
+$progress-large-font-size: 13px !default;
 
 // animatingnumbers
 $countup-height: 32px !default;

@@ -153,12 +153,6 @@ const InputDemo = () => {
   }
   const formatter = (value: string) => value.replace(/\d/g, '')
 
-  const buttonTpl = (
-    <Button size="small" type="primary">
-      {translated.sendCode}
-    </Button>
-  )
-
   return (
     <>
       <div className="demo" style={{ paddingBottom: '20px' }}>
@@ -252,7 +246,11 @@ const InputDemo = () => {
           defaultValue={state.buttonVal}
           clearable
           center
-          slotButton={buttonTpl}
+          slotButton={
+            <Button size="small" type="primary">
+              {translated.sendCode}
+            </Button>
+          }
         />
         <h2>{translated.title6}</h2>
         <Input
