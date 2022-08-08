@@ -114,7 +114,7 @@ const App = () => (
 export default App;
 ```
 :::
-### 三个icon的tabbar
+### 可自定义icon个数的tabbar
 
 :::demo
 ```tsx
@@ -177,7 +177,7 @@ export default App;
 | tabTitle | 标签页的标题                              | String | --     |
 | icon      | 标签页显示的[图标名称](#/icon) 或图片链接 | String | --     |
 | href      | 标签页的跳转链接；如果同时存在 `to`，优先级高于 to   | String | --     |
-| to        | 标签页的路由对象，等于 React Router 的 [to 属性](https://v5.reactrouter.com/web/api/Link/to-string) 属性 | string｜any | --     |
+| to        | 标签页的路由对象，等于 React Router 的 [to 属性](https://v5.reactrouter.com/web/api/Link/to-string) 属性 | any | --     |
 | num       | 页签右上角的数字角标，超出99之后为99+     | Number | --     |
 | classPrefix      | 自定义icon 类名前缀，用于使用自定义图标   | String | 'nutui-iconfont'     |
 | dot      | 是否显示图标右上角小红点   | Boolean | false     |

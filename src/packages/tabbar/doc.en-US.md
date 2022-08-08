@@ -25,10 +25,10 @@ const App = () =>(
       console.log(idx)
     }}
   >
-    <TabbarItem tabTitle="front page" icon="home" />
+    <TabbarItem tabTitle="first" icon="home" />
     <TabbarItem tabTitle="Classification" icon="category" />
     <TabbarItem tabTitle="Find" icon="find" />
-    <TabbarItem tabTitle="shopping cart" icon="cart" />
+    <TabbarItem tabTitle="cart" icon="cart" />
     <TabbarItem tabTitle="mine" icon="my" />
   </Tabbar>
 );
@@ -45,10 +45,10 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar visible={2}>
-    <TabbarItem tabTitle="front page" icon="home" />
+    <TabbarItem tabTitle="first" icon="home" />
     <TabbarItem tabTitle="Classification" icon="category" />
     <TabbarItem tabTitle="Find" icon="find" />
-    <TabbarItem tabTitle="shopping cart" icon="cart" />
+    <TabbarItem tabTitle="cart" icon="cart" />
     <TabbarItem tabTitle="mine" icon="my" />
   </Tabbar>
 );
@@ -65,10 +65,10 @@ import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem tabTitle="front page" icon="home" num="11" />
+    <TabbarItem tabTitle="first" icon="home" num="11" />
     <TabbarItem tabTitle="Classification" icon="category" />
     <TabbarItem tabTitle="Find" icon="find" />
-    <TabbarItem tabTitle="shopping cart" icon="cart" num="110" />
+    <TabbarItem tabTitle="cart" icon="cart" num="110" />
     <TabbarItem tabTitle="mine" icon="my" />
   </Tabbar>
 );
@@ -86,10 +86,10 @@ import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem tabTitle="front page" icon="home" dot />
+    <TabbarItem tabTitle="first" icon="home" dot />
     <TabbarItem tabTitle="Classification" icon="category" />
     <TabbarItem tabTitle="Find" icon="find" />
-    <TabbarItem tabTitle="shopping cart" icon="cart" dot />
+    <TabbarItem tabTitle="cart" icon="cart" dot />
     <TabbarItem tabTitle="mine" icon="my" />
   </Tabbar>
 )
@@ -106,10 +106,10 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem tabTitle="front page" icon="home" />
+    <TabbarItem tabTitle="first" icon="home" />
     <TabbarItem tabTitle="Classification" icon="category" />
     <TabbarItem tabTitle="Find" icon="find" />
-    <TabbarItem tabTitle="shopping cart" icon="cart" />
+    <TabbarItem tabTitle="cart" icon="cart" />
     <TabbarItem tabTitle="mine" icon="my" />
   </Tabbar>
 );
@@ -117,7 +117,7 @@ const App = () => (
 export default App;
 ```
 :::
-### Tabbar with three icons
+### Tabbar with customizable number of icons
 
 :::demo
 ```tsx
@@ -126,7 +126,7 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem tabTitle="front page" icon="home" />
+    <TabbarItem tabTitle="first" icon="home" />
     <TabbarItem tabTitle="Classification" icon="category" />
     <TabbarItem tabTitle="Find" icon="find" />
   </Tabbar>
@@ -144,10 +144,10 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar bottom>
-    <TabbarItem tabTitle="front page" href="" icon="home" />
+    <TabbarItem tabTitle="first" href="" icon="home" />
     <TabbarItem tabTitle="Classification" icon="category" />
     <TabbarItem tabTitle="Find" icon="find" />
-    <TabbarItem tabTitle="shopping cart" href="https://m.jd.com" icon="cart" />
+    <TabbarItem tabTitle="cart" href="https://m.jd.com" icon="cart" />
     <TabbarItem tabTitle="mine" to="/" icon="my" />
   </Tabbar>
 );
@@ -180,7 +180,7 @@ export default App;
 | tabTitle | the title of the tab                              | String | --     |
 | icon      | [icon name](#/icon) or image link displayed on the tab page | String | --     |
 | href      | Jump link of tab page; if `to` exists at the same time, it takes precedence over to   | String | --     |
-| to       | 	The route object of the tab, equal to React Router's [to Prop](https://v5.reactrouter.com/web/api/Link/to-string) Prop | string｜any | --     |
+| to       | 	The route object of the tab, equal to React Router's [to Prop](https://v5.reactrouter.com/web/api/Link/to-string) Prop | any | --     |
 | num       | The numerical corner mark in the upper right corner of the tab, if it exceeds 99, it will be 99+     | Number | --     |
 | classPrefix      | 自Custom icon class name prefix for using custom icons   | String | 'nutui-iconfont'     |
 | dot      | Whether to display the little red dot in the upper right corner of the icon   | Boolean | false     |

@@ -11,7 +11,7 @@ export interface TabbarItemProps {
   tabTitle: string
   icon: string
   href: string
-  to: any | string
+  to: any
   num: string | number
   active: boolean
   activeColor: string
@@ -68,7 +68,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     if (active && to) {
       history.push(to)
     }
-  }, [active])
+  }, [active, history, href, to])
 
   return (
     <div

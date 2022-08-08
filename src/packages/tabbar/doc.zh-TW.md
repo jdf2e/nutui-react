@@ -7,7 +7,7 @@
 ### 安裝
 
 ```ts
-從“@nutui/nutui-react”導入 { Tabbar, TabbarItem }；
+import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 ```
 
 ## 代碼演示
@@ -117,7 +117,7 @@ const App = () => (
 export default App;
 ```
 :::
-### 三個icon的tabbar
+### 可自定義icon個數的tabbar
 
 :::demo
 ```tsx
@@ -180,7 +180,7 @@ export default App;
 | tabTitle | 標籤頁的標題                              | String | --     |
 | icon      | 標籤頁顯示的[圖標名稱](#/icon) 或圖片鏈接 | String | --     |
 | href      | 標籤頁的跳轉鏈接；如果同時存在 `to`，優先級高於 to   | String | --     |
-| to        | 	標籤頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性 | string｜any | --     |
+| to        | 	標籤頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性 | any | --     |
 | num       | 頁簽右上角的數字角標，超出99之後為99+     | Number | --     |
 | classPrefix      | 自定義icon 類名前綴，用於使用自定義圖標   | String | 'nutui-iconfont'     |
 | dot      | 是否顯示圖標右上角小紅點   | Boolean | false     |
