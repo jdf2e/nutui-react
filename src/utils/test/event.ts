@@ -22,7 +22,6 @@ export function trigger(
   options: any = {}
 ) {
   const el = 'element' in wrapper ? wrapper.element : wrapper
-  console.log('element' in wrapper, wrapper.element)
   const touchList = options.touchList || [getTouch(el, x, y)]
 
   if (options.x || options.y) {
