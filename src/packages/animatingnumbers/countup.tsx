@@ -1,4 +1,9 @@
-import React, { CSSProperties, FunctionComponent, useEffect, useRef } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  useEffect,
+  useRef,
+} from 'react'
 
 import bem from '@/utils/bem'
 
@@ -20,7 +25,15 @@ const defaultProps = {
   className: '',
 } as CountUpProps
 export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
-  const { maxLen, endNumber, delaySpeed, easeSpeed, className, thousands, ...reset } = {
+  const {
+    maxLen,
+    endNumber,
+    delaySpeed,
+    easeSpeed,
+    className,
+    thousands,
+    ...reset
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -45,19 +58,22 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
 
   const setNumberTransform = () => {
     if (countupRef.current) {
-      const numberItems = countupRef.current.querySelectorAll('.nut-countup__number')
-      const numberFilterArr: Array<string> = numerArr.filter((item: any) => !isNaN(item))
-      for (const index in numberItems) {
-        if (!Object.prototype.hasOwnProperty.call(numberItems, index)) continue
-        const elem = numberItems[Number(index)] as HTMLElement
-        const idx = Number(numberFilterArr[Number(index)])
-        if ((idx || idx == 0) && elem) {
+      const numberItems = countupRef.current.querySelectorAll(
+        '.nut-countup__number'
+      )
+      const numberFilterArr: Array<string> = numerArr.filter(
+        (item: string) => !Number.isNaN(Number(item))
+      )
+      Object.keys(numberItems).forEach((key) => {
+        const elem = numberItems[Number(key)] as HTMLElement
+        const idx = Number(numberFilterArr[Number(key)])
+        if ((idx || idx === 0) && elem) {
           // 计算规则：父元素和实际列表高度的百分比，分割成20等份
-          const transform = `translate(0, -${(idx == 0 ? 10 : idx) * 5}%)`
+          const transform = `translate(0, -${(idx === 0 ? 10 : idx) * 5}%)`
           elem.style.transform = transform
           elem.style.webkitTransform = transform
         }
-      }
+      })
     }
   }
 
@@ -81,10 +97,15 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
   return (
     <div className={`${b()} ${className}`} ref={countupRef}>
       <ul className={b('list')}>
-        {numerArr.map((item: any, idx: number) => {
+        {numerArr.map((item: string, idx: number) => {
           return (
-            <li className={`${b('listitem', { number: !isNaN(item) })}`} key={idx}>
-              {!isNaN(item) ? (
+            <li
+              className={`${b('listitem', {
+                number: !Number.isNaN(Number(item)),
+              })}`}
+              key={idx}
+            >
+              {!Number.isNaN(Number(item)) ? (
                 <span className={b('number')} style={numberEaseStyle}>
                   {[...numbers, ...numbers].map((number, subidx) => {
                     return <span key={subidx}>{number}</span>

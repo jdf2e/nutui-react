@@ -20,7 +20,14 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', 'react-hooks', '@typescript-eslint', 'unused-imports', 'prettier', 'markdown'],
+  plugins: [
+    'react',
+    'react-hooks',
+    '@typescript-eslint',
+    'unused-imports',
+    'markdown',
+    'prettier',
+  ],
   overrides: [
     {
       files: ['src/packages/**/*.md'],
@@ -39,6 +46,16 @@ module.exports = {
     },
   ],
   rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        trailingComma: 'es5',
+        tabWidth: 2,
+        semi: false,
+        singleQuote: true,
+        printWidth: 80,
+      },
+    ],
     radix: 0,
     'unused-imports/no-unused-imports': 2,
     'no-underscore-dangle': 0,
@@ -65,5 +82,9 @@ module.exports = {
     'react/jsx-filename-extension': 0,
     'react/jsx-props-no-spreading': 0,
     'jsx-a11y/no-static-element-interactions': 0,
+    'no-param-reassign': 0,
+    'prefer-destructuring': 0,
+    'jsx-a11y/no-autofocus': 0,
+    'react/no-children-prop': 0,
   },
 }

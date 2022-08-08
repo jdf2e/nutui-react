@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-indicator demo1"
+  >
+    <div
+      class="nut-indicator__dot"
+    />
+    <div
+      class="nut-indicator__dot"
+    />
+    <div
+      class="nut-indicator__number"
+    >
+      03
+    </div>
+  </div>
+</DocumentFragment>
+`;

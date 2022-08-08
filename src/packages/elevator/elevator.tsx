@@ -1,19 +1,34 @@
-import React, { FunctionComponent, useRef, useEffect, useState } from 'react'
+import React, {
+  FunctionComponent,
+  useRef,
+  useEffect,
+  useState,
+  createContext,
+} from 'react'
 import bem from '@/utils/bem'
+
+export const elevatorContext = createContext({} as ElevatorData)
 
 export interface ElevatorProps {
   height: number | string
   acceptKey: string
-  indexList: any
+  indexList: any[]
+  isSticky: boolean
+  spaceHeight: number
+  titleHeight: number
   className: string
   style: React.CSSProperties
+  children: React.ReactNode
   clickItem: (key: string, item: ElevatorData) => void
   clickIndex: (key: string) => void
 }
 const defaultProps = {
   height: '200px',
   acceptKey: 'title',
-  indexList: [],
+  indexList: [] as any[],
+  isSticky: false,
+  spaceHeight: 23,
+  titleHeight: 35,
   className: '',
 } as ElevatorProps
 interface ElevatorData {
@@ -24,34 +39,52 @@ interface ElevatorData {
 export const Elevator: FunctionComponent<
   Partial<ElevatorProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { height, acceptKey, indexList, className, clickItem, clickIndex, ...rest } = {
+  const {
+    height,
+    acceptKey,
+    indexList,
+    isSticky,
+    spaceHeight,
+    titleHeight,
+    className,
+    clickItem,
+    clickIndex,
+    children,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }
   const b = bem('elevator')
-  const spaceHeight = 23
   const listview = useRef<HTMLDivElement>(null)
   const initData = {
     anchorIndex: 0,
     listHeight: [] as number[],
     listGroup: [] as Element[],
+    scrollY: 0,
+    diff: -1,
+    fixedTop: 0,
   }
   const touchState = useRef({
     y1: 0,
     y2: 0,
   })
+  const [scrollY, setScrollY] = useState(0)
+  const [currentData, setCurrentData] = useState<ElevatorData>(
+    {} as ElevatorData
+  )
+  const [currentKey, setCurrentKey] = useState('')
   const [currentIndex, setCurrentIndex] = useState<number>(0)
+  const [codeIndex, setCodeIndex] = useState<number>(0)
   const [scrollStart, setScrollStart] = useState<boolean>(false)
   const state = useRef(initData)
   // 重置滚动参数
   const resetScrollState = () => {
-    state.current.anchorIndex = 0
-    setCurrentIndex(0)
     setScrollStart(false)
-    touchState.current = {
-      y1: 0,
-      y2: 0,
-    }
+  }
+
+  const clientHeight = () => {
+    return listview.current ? listview.current.clientHeight : 0
   }
 
   const getData = (el: HTMLElement, name: string): string | void => {
@@ -78,23 +111,28 @@ export const Elevator: FunctionComponent<
     if (!state.current.listHeight.length) {
       calculateHeight()
     }
-    if (index < 0) index = 0
+    let cacheIndex = index
+    if (index < 0) {
+      cacheIndex = 0
+    }
 
-    if (index > state.current.listHeight.length - 2) index = state.current.listHeight.length - 2
+    if (index > state.current.listHeight.length - 2) {
+      cacheIndex = state.current.listHeight.length - 2
+    }
 
-    setCurrentIndex(index)
+    setCodeIndex(cacheIndex)
     if (listview.current) {
-      listview.current.scrollTo(0, state.current.listHeight[index])
+      listview.current.scrollTo(0, state.current.listHeight[cacheIndex])
     }
   }
 
   const touchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     const firstTouch = e.touches[0]
     touchState.current.y2 = firstTouch.pageY
-    const delta = ((touchState.current.y2 - touchState.current.y1) / spaceHeight) | 0
+    const delta =
+      (touchState.current.y2 - touchState.current.y1) / spaceHeight || 0
     const cacheIndex = state.current.anchorIndex + delta
-
-    setCurrentIndex(cacheIndex)
+    setCodeIndex(cacheIndex)
     scrollTo(cacheIndex)
   }
 
@@ -108,7 +146,7 @@ export const Elevator: FunctionComponent<
     const firstTouch = e.touches[0]
     touchState.current.y1 = firstTouch.pageY
     state.current.anchorIndex = +index
-    setCurrentIndex((currentIndex) => currentIndex + index)
+    setCodeIndex((codeIndex) => codeIndex + index)
     scrollTo(index)
     const target = e.currentTarget as HTMLElement
     target.removeEventListener('touchend', touchEnd, false)
@@ -117,6 +155,8 @@ export const Elevator: FunctionComponent<
 
   const handleClickItem = (key: string, item: ElevatorData) => {
     clickItem && clickItem(key, item)
+    setCurrentData(item)
+    setCurrentKey(key)
   }
 
   const handleClickIndex = (key: string) => {
@@ -134,42 +174,102 @@ export const Elevator: FunctionComponent<
       })
     }
   }
+
+  const listViewScroll = (e: Event) => {
+    const { listHeight } = state.current
+    if (!listHeight.length) {
+      calculateHeight()
+    }
+    const target = e.target as Element
+    const { scrollTop } = target
+    state.current.scrollY = scrollTop
+    setScrollY(scrollTop)
+    for (let i = 0; i < listHeight.length - 1; i++) {
+      const height1 = listHeight[i]
+      const height2 = listHeight[i + 1]
+      if (state.current.scrollY >= height1 && state.current.scrollY < height2) {
+        setCurrentIndex(i)
+        state.current.diff = height2 - state.current.scrollY
+        return
+      }
+    }
+
+    setCurrentIndex(listHeight.length - 2)
+  }
+
   useEffect(() => {
     if (listview.current) {
       setListGroup()
+      listview.current.addEventListener('scroll', listViewScroll)
     }
-  }, [listview.current])
+  }, [listview])
+
+  useEffect(() => {
+    const { listHeight, diff, scrollY } = state.current
+    let fixedTop = diff > 0 && diff < titleHeight ? diff - titleHeight : 0
+    if (scrollY + clientHeight() === listHeight[listHeight.length - 1]) {
+      if (fixedTop !== 0) {
+        fixedTop = 0
+      }
+    }
+    if (state.current.fixedTop === fixedTop) return
+    state.current.fixedTop = fixedTop
+  }, [state.current.diff, titleHeight])
 
   return (
     <div className={`${b()} ${className}`} {...rest}>
+      {isSticky && scrollY > 0 ? (
+        <div className={b('list__fixed')}>
+          <span className="fixed-title">
+            {indexList[currentIndex][acceptKey]}
+          </span>
+        </div>
+      ) : null}
       <div
         className={b('list')}
-        ref={listview}
-        style={{ height: isNaN(+height) ? height : `${height}px` }}
+        style={{ height: Number.isNaN(+height) ? height : `${height}px` }}
       >
-        {indexList.map((item: any) => {
-          return (
-            <div className={b('list__item')} key={item[acceptKey]}>
-              <div className={b('list__item__code')}>{item[acceptKey]}</div>
-              <>
-                {item.list.map((subitem: any) => {
-                  return (
-                    <div
-                      className={b('list__item__name')}
-                      key={subitem.id}
-                      onClick={() => handleClickItem(item[acceptKey], subitem)}
-                    >
-                      {subitem.name}
-                    </div>
-                  )
-                })}
-              </>
-            </div>
-          )
-        })}
+        <div className={b('list__inner')} ref={listview}>
+          {indexList.map((item: any, idx: number) => {
+            return (
+              <div className={b('list__item')} key={idx}>
+                <div className={b('list__item__code')}>{item[acceptKey]}</div>
+                <>
+                  {item.list.map((subitem: ElevatorData) => {
+                    return (
+                      <div
+                        className={b('list__item__name', {
+                          highcolor:
+                            currentData.id === subitem.id &&
+                            currentKey === item[acceptKey],
+                        })}
+                        key={subitem.id}
+                        onClick={() =>
+                          handleClickItem(item[acceptKey], subitem)
+                        }
+                      >
+                        {children ? (
+                          <>
+                            <elevatorContext.Provider value={subitem}>
+                              {children}
+                            </elevatorContext.Provider>
+                          </>
+                        ) : (
+                          subitem.name
+                        )}
+                      </div>
+                    )
+                  })}
+                </>
+              </div>
+            )
+          })}
+        </div>
       </div>
       {indexList.length && scrollStart ? (
-        <div className={b('code', { current: true })}> {indexList[currentIndex][acceptKey]}</div>
+        <div className={b('code--current', { current: true })}>
+          {indexList[codeIndex][acceptKey]}
+        </div>
       ) : null}
       <div
         className={b('bars')}
@@ -180,9 +280,12 @@ export const Elevator: FunctionComponent<
           {indexList.map((item: any, index: number) => {
             return (
               <div
-                className={b('bars__inner__item')}
+                className={b('bars__inner__item', {
+                  active:
+                    item[acceptKey] === indexList[currentIndex][acceptKey],
+                })}
                 data-index={index}
-                key={item[acceptKey]}
+                key={index}
                 onClick={() => handleClickIndex(item[acceptKey])}
               >
                 {item[acceptKey]}

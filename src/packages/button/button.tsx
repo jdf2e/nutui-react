@@ -1,4 +1,10 @@
-import React, { CSSProperties, FunctionComponent, useEffect, useState } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react'
 import Icon from '@/packages/icon'
 
 export interface ButtonProps {
@@ -17,7 +23,13 @@ export interface ButtonProps {
   onClick: (e: MouseEvent) => void
 }
 
-export type ButtonType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
+export type ButtonType =
+  | 'default'
+  | 'primary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger'
 export type ButtonSize = 'large' | 'normal' | 'small'
 export type ButtonShape = 'square' | 'round'
 const defaultProps = {
@@ -55,9 +67,39 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
     ...defaultProps,
     ...props,
   }
-
-  const [btnName, setBtnName] = useState('')
-  const [btnStyle, setBtnStyle] = useState({})
+  const getStyle = useCallback(() => {
+    const style: CSSProperties = {}
+    if (color) {
+      if (plain) {
+        style.color = color
+        style.background = '#fff'
+        if (!color?.includes('gradient')) {
+          style.borderColor = color
+        }
+      } else {
+        style.color = '#fff'
+        style.background = color
+      }
+    }
+    return style
+  }, [color, plain])
+  const classes = useCallback(() => {
+    const prefixCls = 'nut-button'
+    return [
+      prefixCls,
+      `${type ? `${prefixCls}--${type}` : ''}`,
+      `${size ? `${prefixCls}--${size}` : ''}`,
+      `${shape ? `${prefixCls}--${shape}` : ''}`,
+      `${plain ? `${prefixCls}--plain` : ''}`,
+      `${block ? `${prefixCls}--block` : ''}`,
+      `${disabled ? `${prefixCls}--disabled` : ''}`,
+      `${loading ? `${prefixCls}--loading` : ''}`,
+    ]
+      .filter(Boolean)
+      .join(' ')
+  }, [block, disabled, loading, plain, shape, size, type])
+  const [btnName, setBtnName] = useState(classes())
+  const [btnStyle, setBtnStyle] = useState(getStyle())
   useEffect(() => {
     setBtnName(classes())
     setBtnStyle(getStyle())
@@ -75,38 +117,16 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
     icon,
     children,
     onClick,
+    classes,
+    getStyle,
   ])
-  const classes = () => {
-    const prefixCls = 'nut-button'
-    return `${prefixCls} ${type ? `${prefixCls}--${type}` : ''}
-    ${size ? `${prefixCls}--${size}` : ''}
-    ${shape ? `${prefixCls}--${shape}` : ''}
-    ${plain ? `${prefixCls}--plain` : ''}
-    ${block ? `${prefixCls}--block` : ''}
-    ${disabled ? `${prefixCls}--disabled` : ''}
-    ${loading ? `${prefixCls}--loading` : ''}`
-  }
+
   const handleClick = (e: any) => {
     if (!loading && !disabled && onClick) {
       onClick(e)
     }
   }
-  const getStyle = () => {
-    const style: CSSProperties = {}
-    if (color) {
-      if (plain) {
-        style.color = color
-        style.background = '#fff'
-        if (!color?.includes('gradient')) {
-          style.borderColor = color
-        }
-      } else {
-        style.color = '#fff'
-        style.background = color
-      }
-    }
-    return style
-  }
+
   return (
     <div
       className={`${btnName} ${className}`}

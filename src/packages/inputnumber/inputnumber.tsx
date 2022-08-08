@@ -1,4 +1,10 @@
-import React, { useState, useEffect, FunctionComponent, ChangeEvent, FocusEvent } from 'react'
+import React, {
+  useState,
+  useEffect,
+  FunctionComponent,
+  ChangeEvent,
+  FocusEvent,
+} from 'react'
 import classNames from 'classnames'
 import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
@@ -21,7 +27,10 @@ export interface InputNumberProps {
   overlimit: (e: MouseEvent) => void
   blur: (e: ChangeEvent<HTMLInputElement>) => void
   focus: (e: FocusEvent<HTMLInputElement>) => void
-  change: (param: string | number, e: MouseEvent | ChangeEvent<HTMLInputElement>) => void
+  change: (
+    param: string | number,
+    e: MouseEvent | ChangeEvent<HTMLInputElement>
+  ) => void
 }
 const defaultProps = {
   disabled: false,
@@ -103,7 +112,10 @@ export const InputNumber: FunctionComponent<
     return Number(v).toFixed(Number(decimalPlaces))
   }
 
-  const emitChange = (value: string | number, e: MouseEvent | ChangeEvent<HTMLInputElement>) => {
+  const emitChange = (
+    value: string | number,
+    e: MouseEvent | ChangeEvent<HTMLInputElement>
+  ) => {
     const output_value: number | string = fixedDecimalPlaces(value)
     change && change(output_value, e)
     if (!isAsync) {
@@ -170,7 +182,12 @@ export const InputNumber: FunctionComponent<
   }
   return (
     <div className={classes} style={styles} {...restProps}>
-      <Icon className={iconMinusClasses} size={buttonSize} name="minus" click={reduceNumber} />
+      <Icon
+        className={iconMinusClasses}
+        size={buttonSize}
+        name="minus"
+        click={reduceNumber}
+      />
       <input
         type="number"
         min={min}
@@ -183,7 +200,12 @@ export const InputNumber: FunctionComponent<
         onBlur={burValue}
         onFocus={focusValue}
       />
-      <Icon className={iconAddClasses} size={buttonSize} name="plus" click={addNumber} />
+      <Icon
+        className={iconAddClasses}
+        size={buttonSize}
+        name="plus"
+        click={addNumber}
+      />
     </div>
   )
 }

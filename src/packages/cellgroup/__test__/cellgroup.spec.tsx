@@ -10,11 +10,18 @@ test('prop title desc subtitle', () => {
   const { container } = render(
     <CellGroup title="链接 | 分组用法">
       <Cell title="链接" isLink />
-      <Cell title="URL 跳转" desc="https://jd.com" isLink url="https://jd.com" />
+      <Cell
+        title="URL 跳转"
+        desc="https://jd.com"
+        isLink
+        url="https://jd.com"
+      />
       <Cell title="路由跳转 ’/‘ " to="/" />
     </CellGroup>
   )
-  expect(container.querySelectorAll('.nut-cell-group__title')[0].innerHTML).toBe('链接 | 分组用法')
+  expect(
+    container.querySelectorAll('.nut-cell-group__title')[0].innerHTML
+  ).toBe('链接 | 分组用法')
   expect(container.querySelectorAll('.nut-cell').length).toEqual(3)
   expect(container).toMatchSnapshot()
 })

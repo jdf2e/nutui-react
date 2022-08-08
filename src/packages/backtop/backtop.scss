@@ -1,4 +1,12 @@
 @import '../icon/icon.scss';
+.nut-theme-dark {
+  .nut-backtop {
+    &.show {
+      background: $dark-background;
+      color: $dark-color;
+    }
+  }
+}
 .nut-backtop {
   display: none;
   position: fixed;

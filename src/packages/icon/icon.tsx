@@ -8,13 +8,15 @@ interface IconProps {
   color: string
   tag: keyof ReactHTML
   click: (e: MouseEvent) => void
+  fontClassName: string
   className: string
 }
 
 const defaultProps = {
   name: '',
   size: '',
-  classPrefix: 'nutui-iconfont',
+  classPrefix: 'nutui-icon',
+  fontClassName: 'nutui-iconfont',
   color: '',
   tag: 'i',
   click: (e: MouseEvent) => {},
@@ -25,10 +27,22 @@ function pxCheck(value: string | number): string {
   return Number.isNaN(Number(value)) ? String(value) : `${value}px`
 }
 
-export const Icon: FunctionComponent<Partial<IconProps> & React.HTMLAttributes<HTMLDivElement>> = (
-  props
-) => {
-  const { name, size, classPrefix, color, tag, children, className, style, click, ...rest } = {
+export const Icon: FunctionComponent<
+  Partial<IconProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
+  const {
+    name,
+    size,
+    classPrefix,
+    color,
+    tag,
+    children,
+    className,
+    fontClassName,
+    style,
+    click,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -50,7 +64,9 @@ export const Icon: FunctionComponent<Partial<IconProps> & React.HTMLAttributes<H
     {
       className: isImage
         ? `${className || ''} ${b('img')}`
-        : `${className || ''} ${b(null, [classPrefix])} nut-icon-${name} `,
+        : `${className || ''} ${fontClassName} ${b(null, [
+            classPrefix,
+          ])} nut-icon-${name} `,
       style: {
         color,
         fontSize: pxCheck(size),

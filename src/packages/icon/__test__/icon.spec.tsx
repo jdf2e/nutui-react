@@ -4,17 +4,23 @@ import '@testing-library/jest-dom'
 import { Icon } from '../icon'
 
 test('should icon snapshot match', () => {
-  const { asFragment } = render(<Icon className="test" name="JD" color="#fa2c19" size="24" />)
+  const { asFragment } = render(
+    <Icon className="test" name="JD" color="#fa2c19" size="24" />
+  )
   expect(asFragment()).toMatchSnapshot()
 })
 
 test('should color #fa2c19', async () => {
-  const { container } = render(<Icon className="test" name="JD" color="#fa2c19" size="24" />)
+  const { container } = render(
+    <Icon className="test" name="JD" color="#fa2c19" size="24" />
+  )
   expect(container.querySelector('i')?.style.color).toBeTruthy()
 })
 
 test('should classname test', async () => {
-  const { container } = render(<Icon className="test" name="JD" color="#fa2c19" size="24" />)
+  const { container } = render(
+    <Icon className="test" name="JD" color="#fa2c19" size="24" />
+  )
   expect(container.querySelector('.test')).toBeInTheDocument()
 })
 

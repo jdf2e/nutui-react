@@ -42,7 +42,10 @@ const ALL_HANDLERS = [
   // 'onContextMenu',
 ]
 
-export default class Trigger extends React.Component<TriggerProps, TriggerState> {
+export default class Trigger extends React.Component<
+  TriggerProps,
+  TriggerState
+> {
   constructor(props: any) {
     super(props)
     // ALL_HANDLERS.forEach((h) => {
@@ -53,7 +56,9 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
   }
 
   fireEvents(type: string, e: Event) {
-    const childCallback = (this.props.children as React.ReactElement).props[type]
+    const childCallback = (this.props.children as React.ReactElement).props[
+      type
+    ]
     if (childCallback) {
       childCallback(e)
     }
@@ -91,7 +96,7 @@ export default class Trigger extends React.Component<TriggerProps, TriggerState>
       ...newChildProps,
     }
     cloneProps.ref = composeRef(this.props.forwardedRef, (child as any).ref)
-    const trigger = React.cloneElement(child, cloneProps)
+    const trigger = React.cloneElement(child, cloneProps) as JSX.Element
     return trigger
   }
 }

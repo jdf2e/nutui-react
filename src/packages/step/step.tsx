@@ -23,9 +23,9 @@ const defaultProps = {
   iconColor: '',
   size: '12px',
 } as StepProps
-export const Step: FunctionComponent<Partial<StepProps> & React.HTMLAttributes<HTMLDivElement>> = (
-  props
-) => {
+export const Step: FunctionComponent<
+  Partial<StepProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
   const {
     children,
     title,
@@ -50,7 +50,9 @@ export const Step: FunctionComponent<Partial<StepProps> & React.HTMLAttributes<H
     return index === +parent.propSteps.current ? 'process' : 'wait'
   }
   const handleClickStep = () => {
-    parent.propSteps?.clickStep(activeIndex)
+    if (parent.propSteps?.clickStep) {
+      parent.propSteps?.clickStep(activeIndex)
+    }
   }
 
   const b = bem('step')
@@ -61,24 +63,39 @@ export const Step: FunctionComponent<Partial<StepProps> & React.HTMLAttributes<H
     className,
     b('')
   )
+
+  const renderIconClass = () => {
+    if (!dot && icon) {
+      return 'nut-step-icon is-icon'
+    }
+    if (!dot && !icon) {
+      return 'nut-step-icon is-text'
+    }
+    return 'nut-step-icon'
+  }
   return (
     <div className={classes} {...restProps} onClick={handleClickStep}>
       <div className="nut-step-head">
         <div className="nut-step-line" />
-        <div className={`nut-step-icon ${!dot ? (icon ? 'is-icon' : 'is-text') : ''}`}>
+        <div className={renderIconClass()}>
           {icon ? (
-            <Icon className="nut-step-icon-inner" color={iconColor} name={icon} size={size} />
-          ) : dot ? (
-            <span />
+            <Icon
+              className="nut-step-icon-inner"
+              color={iconColor}
+              name={icon}
+              size={size}
+            />
           ) : (
-            <span className="nut-step-inner">{activeIndex}</span>
+            !dot && <span className="nut-step-inner">{activeIndex}</span>
           )}
         </div>
       </div>
       <div className="nut-step-main">
         <span className="nut-step-title">{title}</span>
         {content && <span className="nut-step-content">{content}</span>}
-        {renderContent && <span className="nut-step-content">{renderContent()}</span>}
+        {renderContent && (
+          <span className="nut-step-content">{renderContent()}</span>
+        )}
       </div>
     </div>
   )

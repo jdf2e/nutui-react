@@ -4,39 +4,53 @@ import bem from '@/utils/bem'
 export interface CheckBoxGroupProps {
   disabled: boolean
   checkedValue: string[]
+  max: number | undefined
   onChange: (value: string[]) => void
 }
 
 const defaultProps = {
   disabled: false,
   checkedValue: [],
+  max: undefined,
   onChange: (value: string[]) => {},
 } as CheckBoxGroupProps
 export const CheckboxGroup = React.forwardRef(
   (
-    props: Partial<CheckBoxGroupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
+    props: Partial<CheckBoxGroupProps> &
+      Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
     ref
   ) => {
     const { children } = { ...defaultProps, ...props }
     const b = bem('checkboxgroup')
-    const { className, disabled, onChange, checkedValue, ...rest } = props
+    const { className, disabled, onChange, checkedValue, max, ...rest } = props
 
     const [innerDisabled, setInnerDisabled] = useState(disabled)
     const [innerValue, setInnerValue] = useState(checkedValue)
 
-    useImperativeHandle(ref, () => ({
+    useImperativeHandle<any, any>(ref, () => ({
       toggleAll(state: boolean) {
-        console.log(state)
         if (state === false) {
           setInnerValue([])
         } else {
           const childrenLabel: string[] = []
           React.Children.map(children, (child) => {
             const childProps = (child as any).props
+            console.log(child)
             childrenLabel.push(childProps.label || (child as any).children)
           })
           setInnerValue(childrenLabel)
         }
+      },
+      toggleReverse() {
+        const childrenLabel: string[] = []
+        React.Children.map(children, (child) => {
+          const childProps = (child as any).props
+          childrenLabel.push(childProps.label || (child as any).children)
+        })
+        const reverse: string[] = childrenLabel.filter(
+          (c) => innerValue?.findIndex((v) => v === c) === -1
+        )
+        setInnerValue(reverse)
       },
     }))
 
@@ -46,6 +60,7 @@ export const CheckboxGroup = React.forwardRef(
     }, [disabled, checkedValue])
 
     function handleChildChange(state: boolean, label: string) {
+      if (max !== undefined && innerValue && innerValue.length > max) return
       if (innerValue) {
         let clippedValue = []
         if (state) {
@@ -64,6 +79,10 @@ export const CheckboxGroup = React.forwardRef(
       return innerValue?.indexOf(child.props.label || child.children) > -1
     }
 
+    function getParentVals() {
+      return innerValue
+    }
+
     function cloneChildren() {
       return React.Children.map(children, (child: any) => {
         const childChecked = validateChildChecked(child)
@@ -74,6 +93,8 @@ export const CheckboxGroup = React.forwardRef(
           disabled: innerDisabled,
           checked: childChecked,
           onChange: handleChildChange,
+          getParentVals,
+          max,
         })
       })
     }

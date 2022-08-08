@@ -1,18 +1,16 @@
-#  Infiniteloading 滚动加载
+#  Infiniteloading 滾動加載
 
-### 介绍
+### 介紹
 
-列表滚动到底部自动加载更多数据。
+列表滾動到底部自動加載更多數據。
 
-### 安装
+### 安裝
 
 ```ts
 import { InfiniteLoading } from '@nutui/nutui-react';
 ```
 
-## 代码演示
-    
-### 基础用法
+### 基礎用法
 
 :::demo
 ```tsx
@@ -65,9 +63,9 @@ const App = () => {
 
   return (
     <>
-      <h2>基础用法</h2>
+      <h2>基礎用法</h2>
       <Cell>
-        <ul className="infiniteUl" id="scroll" style={InfiniteUlStyle}>
+        <ul id="scroll" style={InfiniteUlStyle}>
           <Infiniteloading
             containerId="scroll"
             useWindow={false}
@@ -76,7 +74,7 @@ const App = () => {
           >
             {defultList.map((item, index) => {
               return (
-                <li className="infiniteLi" key={index} style={InfiniteLiStyle}>
+                <li key={index} style={InfiniteLiStyle}>
                   {item}
                 </li>
               )
@@ -153,7 +151,7 @@ const App = () => {
     <>
       <h2>下拉刷新</h2>
       <Cell>
-        <ul className="infiniteUl" id="refreshScroll" style={InfiniteUlStyle}>
+        <ul id="refreshScroll" style={InfiniteUlStyle}>
           <Infiniteloading
             pullIcon="JD"
             containerId="refreshScroll"
@@ -165,7 +163,7 @@ const App = () => {
           >
             {refreshList.map((item, index) => {
               return (
-                <li className="infiniteLi" key={index} style={InfiniteLiStyle}>
+                <li key={index} style={InfiniteLiStyle}>
                   {item}
                 </li>
               )
@@ -179,7 +177,7 @@ const App = () => {
 export default App;
 ```
 :::
-### 自定义加载文案
+### 自定義加載文案
 
 :::demo
 ```tsx
@@ -232,20 +230,20 @@ const App = () => {
 
   return (
     <>
-      <h2>自定义加载文案</h2>
+      <h2>自定義加載文案</h2>
       <Cell>
-        <ul className="infiniteUl" id="customScroll" style={InfiniteUlStyle}>
+        <ul id="customScroll" style={InfiniteUlStyle}>
           <Infiniteloading
             containerId="customScroll"
             useWindow={false}
             loadTxt="loading"
-            loadMoreTxt="没有啦～"
+            loadMoreTxt="沒有啦～"
             hasMore={customHasMore}
             loadMore={customLoadMore}
           >
             {customList.map((item, index) => {
               return (
-                <li className="infiniteLi" key={index} style={InfiniteLiStyle}>
+                <li key={index} style={InfiniteLiStyle}>
                   {item}
                 </li>
               )
@@ -264,24 +262,24 @@ export default App;
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| 參數         | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
-| hasMore         | 是否还有更多数据               | Boolean | `true`                |
-| threshold         | 距离底部多远加载 | Number | `200`               |
-| useWindow | 将滚动侦听器添加到 window 否则侦听组件的父节点     | Boolean | `true` |
-| useCapture          | 是否使用捕获模式 true 捕获 false 冒泡                        | Boolean | `false`            |
-| containerId          | 在 useWindow 属性为 false 的时候，自定义设置节点ID                        | String | `''`            |
-| loadMoreTxt          | “没有更多数”据展示文案                        | String | `'哎呀，这里是底部了啦'`            |
-| isOpenRefresh        | 是否开启下拉刷新                         | Boolean | `false`                |
-| pullIcon        | 下拉刷新[图标名称](#/icon)                        | String | ''                |
-| pullTxt        | 下拉刷新提示文案                         | String | `松手刷新`                |
-| loadIcon        | 上拉加载[图标名称](#/icon)                       | String | ''            |
-| loadTxt        | 上拉加载提示文案                         | String | `加载中...`                |
+| hasMore         | 是否還有更多數據               | Boolean | `true`                |
+| threshold         | 距離底部多遠加載 | Number | `200`               |
+| useWindow | 將滾動偵聽器添加到 window 否則偵聽組件的父節點     | Boolean | `true` |
+| useCapture          | 是否使用捕獲模式 true 捕獲 false 冒泡                        | Boolean | `false`            |
+| containerId          | 在 useWindow 屬性為 false 的時候，自定義設置節點ID                       | String | `''`            |
+| loadMoreTxt          | “沒有更多數”據展示文案                        | String | `'哎呀，這裡是底部了啦'`            |
+| isOpenRefresh        | 是否開啟下拉刷新                         | Boolean | `false`                |
+| pullIcon        | 下拉刷新[圖標名稱](#/icon)                        | String | ''                |
+| pullTxt        | 下拉刷新提示文案                         | String | `鬆手刷新`                |
+| loadIcon        | 上拉加載[圖標名稱](#/icon)                       | String | ''            |
+| loadTxt        | 上拉加載提示文案                         | String | `加載中...`                |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
+| 事件名 | 說明           | 回調參數     |
 |--------|----------------|--------------|
-| loadMore  | 继续加载的回调函数 | done 函数，用于关闭加载中状态 |
-| scrollChange  | 实时监听滚动高度 | 滚动高度 |
-| refresh  | 下拉刷新事件回调 | done 函数，用于关闭加载中状态 |
+| loadMore  | 繼續加載的回調函數 | done() |
+| scrollChange  | 實時監聽滾動高度 | 滾動高度 |
+| refresh  | 下拉刷新事件回調 | done() |

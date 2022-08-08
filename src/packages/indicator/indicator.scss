@@ -1,0 +1,63 @@
+.nut-indicator {
+  &__block {
+    display: block;
+    width: 100%;
+  }
+  &__align__left {
+    text-align: left;
+  }
+  &__align__right {
+    text-align: right;
+  }
+  &__align__center {
+    text-align: center;
+  }
+  &__dot,
+  &__number {
+    margin: 0 $indicator-dot-margin;
+    &:first-child {
+      margin-left: $indicator-dot-first-margin;
+    }
+    &:last-child {
+      margin-right: $indicator-dot-last-margin;
+    }
+  }
+  &__dot {
+    display: inline-block;
+    vertical-align: middle;
+    width: $indicator-dot-size;
+    height: $indicator-dot-size;
+    border-radius: 50%;
+    background-color: $indicator-dot-color;
+  }
+  &__number {
+    display: inline-block;
+    position: relative;
+    width: $indicator-size;
+    height: $indicator-size;
+    text-align: center;
+    font-size: $indicator-number-font-size;
+    line-height: $indicator-size;
+    color: $indicator-white;
+    vertical-align: middle;
+    border: 1px solid $indicator-white;
+    border-radius: 50%;
+    background-color: $indicator-color;
+    box-shadow: 0 0 1px 1px $indicator-color;
+  }
+  &__vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .nut-indicator__dot {
+      margin: $indicator-dot-vertical-margin 0;
+      &:first-child {
+        margin-top: $indicator-dot-first-margin;
+      }
+      &:last-child {
+        margin-bottom: $indicator-dot-last-margin;
+      }
+    }
+  }
+}

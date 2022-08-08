@@ -11,7 +11,11 @@ export interface ExistRenderProps {
   selectedIcon: string
   isShowCustomAddress: boolean
   customAndExistTitle: string
-  onSelected?: (prevExistAdd: AddressList, item: AddressList, copyExistAdd: AddressList[]) => void
+  onSelected?: (
+    prevExistAdd: AddressList,
+    item: AddressList,
+    copyExistAdd: AddressList[]
+  ) => void
   onClose?: (cal: { closeWay: string }) => void
   onSwitchModule?: (cal: { type: string }) => void
 }
@@ -69,7 +73,8 @@ export const ExistRender: FunctionComponent<
 
   // 选择其他地址
   const switchModule = () => {
-    onSwitchModule && onSwitchModule({ type: type === 'exist' ? 'custom' : 'exist' })
+    onSwitchModule &&
+      onSwitchModule({ type: type === 'exist' ? 'custom' : 'exist' })
   }
 
   useEffect(() => {}, [existAddress])
@@ -80,7 +85,11 @@ export const ExistRender: FunctionComponent<
         <ul className={b('exist-ul')}>
           {existAddress.map((item: AddressList, index: number) => {
             return (
-              <li className={b('exist-item')} key={index} onClick={() => selectedExist(item)}>
+              <li
+                className={b('exist-item')}
+                key={index}
+                onClick={() => selectedExist(item)}
+              >
                 <Icon
                   className={b('exist-item-icon')}
                   name={item.selectedAddress ? selectedIcon : defaultIcon}

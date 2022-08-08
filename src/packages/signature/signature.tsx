@@ -129,14 +129,20 @@ export const Signature: FunctionComponent<
         {isCanvasSupported() ? (
           <canvas ref={canvasRef} height={canvasHeight} width={canvasWidth} />
         ) : (
-          <p className={`${b('unsopport')}`}>{locale.signature.unSupportTpl || unSupportTpl}</p>
+          <p className={`${b('unsopport')}`}>
+            {locale.signature.unSupportTpl || unSupportTpl}
+          </p>
         )}
       </div>
 
       <Button className={`${b('btn')}`} type="default" onClick={() => clear()}>
         {locale.signature.reSign}
       </Button>
-      <Button className={`${b('btn')}`} type="primary" onClick={() => confirm()}>
+      <Button
+        className={`${b('btn')}`}
+        type="primary"
+        onClick={() => confirm()}
+      >
         {locale.confirm}
       </Button>
     </div>

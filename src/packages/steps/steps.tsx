@@ -17,38 +17,46 @@ const defaultProps = {
   progressDot: false,
 } as StepsProps
 
-export const Steps: FunctionComponent<Partial<StepsProps> & React.HTMLAttributes<HTMLDivElement>> =
-  (props) => {
-    const propSteps = { ...defaultProps, ...props }
-    const { children, current, direction, className, progressDot, clickStep, ...restProps } =
-      propSteps
+export const Steps: FunctionComponent<
+  Partial<StepsProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
+  const propSteps = { ...defaultProps, ...props }
+  const {
+    children,
+    current,
+    direction,
+    className,
+    progressDot,
+    clickStep,
+    ...restProps
+  } = propSteps
 
-    const parentSteps = {
-      propSteps,
-    }
-
-    const b = bem('steps')
-    const classes = classNames(
-      {
-        [`${b('')}-${direction}`]: true,
-        [`${b('')}-dot`]: !!props.progressDot,
-      },
-      className,
-      b('')
-    )
-    return (
-      <DataContext.Provider value={parentSteps}>
-        {React.createElement(
-          'div',
-          {
-            className: classes,
-            ...restProps,
-          },
-          children
-        )}
-      </DataContext.Provider>
-    )
+  const parentSteps = {
+    propSteps,
   }
+
+  const b = bem('steps')
+  const classes = classNames(
+    {
+      [`${b('')}-${direction}`]: true,
+      [`${b('')}-dot`]: !!props.progressDot,
+    },
+    className,
+    b('')
+  )
+  return (
+    <DataContext.Provider value={parentSteps}>
+      {React.createElement(
+        'div',
+        {
+          className: classes,
+          ...restProps,
+        },
+        children
+      )}
+    </DataContext.Provider>
+  )
+}
 
 Steps.defaultProps = defaultProps
 Steps.displayName = 'NutSteps'

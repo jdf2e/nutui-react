@@ -97,7 +97,8 @@ const UploaderDemo = () => {
       b7454181: 'Limit upload size (maximum 50kb per file)',
       '5c393e52': 'Image compression (handled in a foreupload hook)',
       e3217a8d: 'Custom data FormData, headers',
-      '67fffe24': 'After selecting Chinese, manually perform the upload via the button',
+      '67fffe24':
+        'After selecting Chinese, manually perform the upload via the button',
       fcf01d1a: 'Perform the upload',
       '7db1a8b2': 'Disabled state',
     },
@@ -153,7 +154,9 @@ const UploaderDemo = () => {
     type: string,
     quality: number
   ): Promise<Blob | null> => {
-    return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality))
+    return new Promise((resolve) =>
+      canvas.toBlob((blob) => resolve(blob), type, quality)
+    )
   }
   const onOversize = (files: File[]) => {
     console.log(translated['25e04d44'], files)
@@ -208,13 +211,28 @@ const UploaderDemo = () => {
         <h2>{translated['0e5eaea3']}</h2>
         <Uploader url={uploadUrl} multiple maximum="5" />
         <h2>{translated.b7454181}</h2>
-        <Uploader url={uploadUrl} multiple maximize={1024 * 50} oversize={onOversize} />
+        <Uploader
+          url={uploadUrl}
+          multiple
+          maximize={1024 * 50}
+          oversize={onOversize}
+        />
         <h2>{translated['5c393e52']}</h2>
         <Uploader url={uploadUrl} multiple beforeUpload={beforeUpload} />
         <h2>{translated.e3217a8d}</h2>
-        <Uploader url={uploadUrl} data={formData} headers={formData} withCredentials />
+        <Uploader
+          url={uploadUrl}
+          data={formData}
+          headers={formData}
+          withCredentials
+        />
         <h2>{translated['67fffe24']}</h2>
-        <Uploader url={uploadUrl} maximum="5" autoUpload={false} ref={uploadRef} />
+        <Uploader
+          url={uploadUrl}
+          maximum="5"
+          autoUpload={false}
+          ref={uploadRef}
+        />
         <br />
         <Button type="success" size="small" onClick={submitUpload}>
           {translated.fcf01d1a}

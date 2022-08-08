@@ -24,7 +24,10 @@ const options: INotifyProps = {
   onClick: () => {},
 }
 
-function getInstance(props: NotificationProps, callback: (notification: any) => void) {
+function getInstance(
+  props: NotificationProps,
+  callback: (notification: any) => void
+) {
   if (messageInstance) {
     messageInstance.destroy()
     messageInstance = null

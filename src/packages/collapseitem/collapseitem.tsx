@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useEffect, useState, useCallback } from 'react'
+import React, {
+  FunctionComponent,
+  useEffect,
+  useState,
+  useCallback,
+} from 'react'
 
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
@@ -34,7 +39,9 @@ const defaultProps = {
   titleIconPosition: '',
   titleIconSize: '',
 } as CollapseItemProps
-export const CollapseItem: FunctionComponent<Partial<CollapseItemProps>> = (props) => {
+export const CollapseItem: FunctionComponent<
+  Partial<CollapseItemProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
   const {
     children,
     title,
@@ -51,6 +58,7 @@ export const CollapseItem: FunctionComponent<Partial<CollapseItemProps>> = (prop
     titleIconSize,
     iconSize,
     iconColor,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -90,7 +98,7 @@ export const CollapseItem: FunctionComponent<Partial<CollapseItemProps>> = (prop
   }, [isOpen, domHeight])
 
   return (
-    <div className={colBem()}>
+    <div className={colBem()} {...rest}>
       <div
         className={colBem('header', { disabled })}
         onClick={() => {
@@ -122,11 +130,19 @@ export const CollapseItem: FunctionComponent<Partial<CollapseItemProps>> = (prop
         <div className={colBem('sub-title')}>{subTitle}</div>
         <div className={colBem('icon-box')}>
           <div className={colBem('icon')} style={iconStyle}>
-            <Icon name={icon} size={iconSize} color={disabled ? '#C2C2C2' : iconColor} />
+            <Icon
+              name={icon}
+              size={iconSize}
+              color={disabled ? '#C2C2C2' : iconColor}
+            />
           </div>
         </div>
       </div>
-      <div className={colBem('content')} style={{ height: currHeight }} ref={measuredRef}>
+      <div
+        className={colBem('content')}
+        style={{ height: currHeight }}
+        ref={measuredRef}
+      >
         <div className={colBem('content-text')}>{children}</div>
       </div>
     </div>

@@ -54,7 +54,10 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
         </div>
       )}
       <div>{children}</div>
-      <div className={`${dot ? 'is-dot' : ''} nut-badge__content sup`} style={getStyle()}>
+      <div
+        className={`${dot ? 'is-dot' : ''} nut-badge__content sup`}
+        style={getStyle()}
+      >
         {content()}
       </div>
     </div>

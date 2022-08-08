@@ -48,7 +48,6 @@ const TextAreaDemo = () => {
   const [value3] = useState('')
 
   useEffect(() => {
-    console.log('translated.basic', translated.basic)
     updateValue1(translated.basic)
   }, [translated])
 
@@ -64,13 +63,13 @@ const TextAreaDemo = () => {
           defaultValue={value1}
           className="text-1"
           style={{ fontSize: '12px' }}
-          change={(value, event) => {
+          onChange={(value, event) => {
             change(value, event)
           }}
-          blur={() => {
+          onBlur={() => {
             console.log('blur')
           }}
-          focus={() => {
+          onFocus={() => {
             console.log('focus')
           }}
         />
@@ -79,7 +78,10 @@ const TextAreaDemo = () => {
         <h2>{translated.autoHeight}</h2>
         <TextArea defaultValue={value3} rows="10" autosize />
         <h2>{translated.readOnly}</h2>
-        <TextArea readonly defaultValue={`textarea${translated.readOnlyState}`} />
+        <TextArea
+          readonly
+          defaultValue={`textarea${translated.readOnlyState}`}
+        />
         <h2>{translated.disabled}</h2>
         <TextArea
           disabled
