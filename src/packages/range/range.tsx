@@ -61,9 +61,9 @@ export const Range: FunctionComponent<
     buttonColor,
     hiddenRange,
     hiddenTag,
-    min,
-    max,
-    step,
+    // min,
+    // max,
+    // step,
     modelValue,
     button,
     vertical,
@@ -72,6 +72,12 @@ export const Range: FunctionComponent<
     dragStart,
     dragEnd,
   } = { ...defaultProps, ...props }
+
+  let { min, max, step } = { ...defaultProps, ...props }
+  min = Number(min)
+  max = Number(max)
+  step = Number(step)
+
   const [buttonIndex, SetButtonIndex] = useState(0)
   const [initValue, SetInitValue] = useState<number | number[] | any>()
 
