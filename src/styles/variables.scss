@@ -260,8 +260,13 @@ $rate-icon-void-color: $disable-color;
 
 // tabbar
 
-$tabbar-active-color: $primary-color;
-$tabbar-border-color: #eee;
+$tabbar-active-color: $primary-color !default;
+$tabbar-unactive-color: $primary-color !default;
+$tabbar-border-top: 1px solid #eee !default;
+$tabbar-border-bottom: 1px solid #eee !default;
+$tabbar-box-shadow: none !default;
+$tabbar-item-text-font-size: $font-size-0 !default;
+$tabbar-item-text-line-height: initial !default;
 
 //infiniteloading
 $infinite-bottom-color: #c8c8c8;
@@ -315,8 +320,12 @@ $steps-process-icon-text-color: $primary-color !default;
 $dialog-width: 296px;
 
 // checkbox
-$checkbox-label-color: #1d1e1e;
-$checkbox-label-disable-color: #999;
+$checkbox-label-color: #1d1e1e !default;
+$checkbox-label-disable-color: #999 !default;
+$checkbox-icon-disable-color: #d6d6d6 !default;
+$checkbox-label-margin-left: 15px !default;
+$checkbox-label-font-size: 14px !default;
+$checkbox-icon-font-size: 18px !default;
 
 //radio
 $radio-label-font-color: #1d1e1e !default;
@@ -477,6 +486,29 @@ $divider-vertical-top: 2px !default;
 $divider-vertical-border-left: rgba(0, 0, 0, 0.06) !default;
 $divider-vertical-margin: 0 8px !default;
 
+//numberkeyboard
+$numberkeyboard-width: 100% !default;
+$numberkeyboard-padding: 0 0 22px 0 !default;
+$numberkeyboard-background-color: #f2f3f5 !default;
+$numberkeyboard-header-height: 34px !default;
+$numberkeyboard-header-padding: 6px 0 0 0 !default;
+$numberkeyboard-header-color: #646566 !default;
+$numberkeyboard-header-font-size: 16px !default;
+$numberkeyboard-header-close-padding: 0 16px !default;
+$numberkeyboard-header-close-color: #576b95 !default;
+$numberkeyboard-header-close-font-size: 14px !default;
+$numberkeyboard-header-close-background-color: transparent !default;
+$numberkeyboard-key-background-color: #fff !default;
+$numberkeyboard-key-active-background-color: #ebedf0 !default;
+$numberkeyboard-key-height: 48px !default;
+$numberkeyboard-key-line-height: 1.5 !default;
+$numberkeyboard-key-border-radius: 8px !default;
+$numberkeyboard-key-font-size: 28px !default;
+$numberkeyboard-key-font-size-color: #333 !default;
+$numberkeyboard-key-finish-font-size: 16px !default;
+$numberkeyboard-key-finish-font-size-color: #fff !default;
+$numberkeyboard-key-finish-background-color: #1989fa !default;
+$numberkeyboard-key-activeFinsh-background-color: #0570db !default;
 // elevator
 $elevator-list-item-highcolor: $primary-color !default;
 $elevator-list-item-font-size: 12px !default;
@@ -544,6 +576,7 @@ $row-content-height: 50px !default;
 $row-content-line-height: 40px !default;
 $col-default-margin-bottom: 15px !default;
 
+
 // searchbar
 $searchbar-background: $white !default;
 $searchbar-right-out-color: $black !default;
@@ -556,3 +589,28 @@ $searchbar-input-height: 32px !default;
 $searchbar-input-width: 100% !default;
 $searchbar-input-border-radius: 16px !default;
 $searchbar-input-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04) !default;
+
+// progress
+$progress-border-radius: 12px !default;
+$progress-text-padding: 0 5px !default;
+$progress-text-font-size: 13px !default;
+$progress-insidetext-border-radius: 5px !default;
+$progress-small-height: 5px !default;
+$progress-base-height: 10px !default;
+$progress-large-height: 15px !default;
+$progress-small-padding: 0 4px !default;
+$progress-base-padding: 0 5px !default;
+$progress-large-padding: 0 5px !default;
+$progress-small-font-size: 7px !default;
+$progress-base-font-size: 9px !default;
+$progress-large-font-size: 13px !default;
+
+// animatingnumbers
+$countup-height: 32px !default;
+$countup-base-size: 18px !default;
+$countup-border-raduis: 4px !default;
+$countup-lr-margin: 1px !default;
+$countup-bgcolor: #031f63 !default;
+$countup-color: #ffffff !default;
+$countup-width: 24px !default;
+

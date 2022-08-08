@@ -9,20 +9,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   &--active {
     color: $primary-color;
   }
 
   &__icon-box {
     padding: 0px;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
 
     &__tips {
       position: absolute;
       background: $tabbar-active-color;
       border: 1px solid $white;
-      border-radius: 8px;
+      border-radius: 7px;
       text-align: center;
       top: -2px;
       right: -7px;
@@ -31,28 +34,43 @@
       color: $white;
       z-index: 1;
     }
+    &__dot {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 7px;
+      padding: 0px;
+      background: $tabbar-active-color;
+      text-align: center;
+      font-size: 12px;
+      font-weight: normal;
+      color: #fff;
+      top: 0;
+      right: 0;
+      transform: translate(50%, -50%);
+    }
 
     &__num {
       line-height: 1;
-      font-size: $font-size-0;
+      font-size: $tabbar-item-text-font-size;
       color: $white;
-      padding: 1px 2px 2px 2px;
-      min-width: 17px;
+      padding: 1px 2px 2px 3px;
     }
 
     &__nums {
       line-height: 1;
-      font-size: $font-size-0;
+      font-size: $tabbar-item-text-font-size;
       color: $white;
-      padding: 1px 2px 2px 2px;
+      padding: 2px 1px 2px 2px;
     }
-    &_icon {
+    &__icon {
       display: block;
       background-size: 100% 100%;
       background-position: center center;
     }
     &--nav-word {
       font-size: $font-size-0;
+      line-height: $tabbar-item-text-line-height;
       display: block;
     }
     &--big-word {
