@@ -136,7 +136,7 @@ export default App;
 |--------------|----------------------------------|--------|------------------|
 | visible      | 组件是否显示                       | boolean | false           |
 | title        | 整体标题                           | String  | -               |
-| width        | 遮罩宽度                           | String   | '80%'          |
+| width        | 遮罩宽度百分比                      | String   | '80%'          |
 | position     | 弹出位置                           | 'left'、'right' | 'left'  |
 | offset       | 缩进宽度                           | number  | 20              |
 

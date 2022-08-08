@@ -10,7 +10,11 @@ export const SideNavBarItem: FunctionComponent<SideNavBarItemProps> = (
     click && click({ title, ikey })
   }
   return (
-    <div className="nut-subsidenavbar__item border-bt" onClick={clickFn}>
+    <div
+      className="nut-subsidenavbar__item border-bt"
+      onClick={clickFn}
+      {...rest}
+    >
       {title}
     </div>
   )

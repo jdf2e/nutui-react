@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import SideNavBar from './index'
-import SubSideNavBar from '../subsidenavbar'
-import SideNavBarItem from '../sidenavbaritem'
+import SubSideNavBar from '@/packages/subsidenavbar'
+import SideNavBarItem from '@/packages/sidenavbaritem'
 import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'
 

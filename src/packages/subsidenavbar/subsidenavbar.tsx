@@ -75,7 +75,7 @@ export const SubSideNavBar: FunctionComponent<SubNavBarProps> = (props) => {
   const iconClass = open ? 'arrow-icon arrow-down' : 'arrow-icon arrow-up'
 
   return (
-    <div className={divClass} ref={listRef} onClick={clickFn}>
+    <div className={divClass} ref={listRef} onClick={clickFn} {...rest}>
       <div className="nut-subsidenavbar__title border-bt">
         {title} <i className={iconClass} />
       </div>
