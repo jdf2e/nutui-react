@@ -162,6 +162,9 @@ import VirtualList from '@/packages/virtuallist/doc.md?raw'
 import VideoenUS from '@/packages/video/doc.en-US.md?raw'
 import VideozhTW from '@/packages/video/doc.zh-TW.md?raw'
 import Video from '@/packages/video/doc.md?raw'
+import ProgressenUS from '@/packages/progress/doc.en-US.md?raw'
+import ProgresszhTW from '@/packages/progress/doc.zh-TW.md?raw'
+import Progress from '@/packages/progress/doc.md?raw'
 import AddressenUS from '@/packages/address/doc.en-US.md?raw'
 import AddresszhTW from '@/packages/address/doc.zh-TW.md?raw'
 import Address from '@/packages/address/doc.md?raw'
@@ -244,6 +247,7 @@ export const routers = [
   'Empty',
   'VirtualList',
   'Video',
+  'Progress',
   'Address',
   'Barrage',
   'Signature',
@@ -417,6 +421,9 @@ export const raws = {
   VideoenUS,
   VideozhTW,
   Video,
+  ProgressenUS,
+  ProgresszhTW,
+  Progress,
   AddressenUS,
   AddresszhTW,
   Address,

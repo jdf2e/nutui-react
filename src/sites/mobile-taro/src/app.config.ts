@@ -42,6 +42,7 @@ const subPackages = [
       'pages/skeleton/index',
       'pages/collapse/index',
       'pages/empty/index',
+      'pages/progress/index',
     ],
   },
   {

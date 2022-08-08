@@ -830,6 +830,7 @@
           "desc": "用来展示进度",
           "sort": 20,
           "show": true,
+          "taro": true,
           "author": "ailululu"
         }
       ]
