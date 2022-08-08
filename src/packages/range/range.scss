@@ -143,6 +143,7 @@
 
     &-wrapper,
     &-wrapper-right {
+      touch-action: none;
       position: absolute;
       top: 50%;
       right: 0;
@@ -158,6 +159,7 @@
       transform: translate3d(-50%, -50%, 0);
       cursor: grab;
       outline: none;
+      touch-action: none;
     }
 
     .number {

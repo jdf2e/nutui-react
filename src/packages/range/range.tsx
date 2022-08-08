@@ -426,15 +426,12 @@ export const Range: FunctionComponent<
                     onTouchStart(e)
                   }}
                   onTouchMove={(e: any) => {
-                    e.preventDefault()
                     onTouchMove(e)
                   }}
                   onTouchEnd={(e: any) => {
-                    e.preventDefault()
                     onTouchEnd(e)
                   }}
                   onTouchCancel={(e: any) => {
-                    e.preventDefault()
                     onTouchEnd(e)
                   }}
                   onClick={(e) => {
@@ -461,19 +458,15 @@ export const Range: FunctionComponent<
               aria-valuemax={+max}
               aria-orientation="horizontal"
               onTouchStart={(e) => {
-                e.preventDefault()
                 onTouchStart(e)
               }}
               onTouchMove={(e: any) => {
-                e.preventDefault()
                 onTouchMove(e)
               }}
               onTouchEnd={(e: any) => {
-                e.preventDefault()
                 onTouchEnd(e)
               }}
               onTouchCancel={(e: any) => {
-                e.preventDefault()
                 onTouchEnd(e)
               }}
               onClick={(e) => {
