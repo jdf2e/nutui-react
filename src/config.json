@@ -413,6 +413,16 @@
           "sort": 1,
           "show": true,
           "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "NumberKeyboard",
+          "type": "component",
+          "cName": "数字键盘",
+          "desc": "",
+          "sort": 16,
+          "show": true,
+          "author": "Drjingfubo"
         }
       ]
     },
