@@ -576,6 +576,20 @@ $row-content-height: 50px !default;
 $row-content-line-height: 40px !default;
 $col-default-margin-bottom: 15px !default;
 
+
+// searchbar
+$searchbar-background: $white !default;
+$searchbar-right-out-color: $black !default;
+$searchbar-padding: 9px 16px !default;
+$searchbar-width: 100% !default;
+$searchbar-action-text-color: #323233 !default;
+$searchbar-input-background: #f7f7f7 !default;
+$searchbar-input-padding: 0 28px !default;
+$searchbar-input-height: 32px !default;
+$searchbar-input-width: 100% !default;
+$searchbar-input-border-radius: 16px !default;
+$searchbar-input-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04) !default;
+
 // progress
 $progress-border-radius: 12px !default;
 $progress-text-padding: 0 5px !default;
@@ -599,3 +613,4 @@ $countup-lr-margin: 1px !default;
 $countup-bgcolor: #031f63 !default;
 $countup-color: #ffffff !default;
 $countup-width: 24px !default;
+
