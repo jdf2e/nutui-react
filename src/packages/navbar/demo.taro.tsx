@@ -1,4 +1,5 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { NavBar } from '@/packages/nutui.react.taro'
 
@@ -54,27 +55,29 @@ const NavBarDemo = () => {
           title={translated.c38a08ef}
           icon="share"
           leftShow
-          onClickTitle={(e) => alert(translated.b840c88f)}
-          onClickBack={(e) => alert(translated.a74a1fd4)}
-          onClickIcon={(e) => alert('icon')}
+          onClickTitle={(e) => Taro.showToast({ title: translated.b840c88f })}
+          onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
+          onClickIcon={(e) => Taro.showToast({ title: 'icon' })}
         />
         <NavBar
           title={translated.e51e4582}
           desc={translated.cfbdc781}
           leftShow
-          onClickTitle={(e) => alert(translated.b840c88f)}
-          onClickBack={(e) => alert(translated.a74a1fd4)}
-          onClickClear={(e) => alert(translated.cfbdc781)}
+          onClickTitle={(e) => Taro.showToast({ title: translated.b840c88f })}
+          onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
+          onClickClear={(e) => Taro.showToast({ title: translated.cfbdc781 })}
         />
         <NavBar
           title={translated.c3a3a1d2}
           icon="more"
           desc={translated['8dab2f66']}
           titIcon="locationg3"
-          onClickTitle={(e) => alert(translated.b840c88f)}
-          onClickBack={(e) => alert(translated.a74a1fd4)}
-          onClickClear={(e) => alert(translated['8dab2f66'])}
-          onClickIcon={(e) => alert('icon')}
+          onClickTitle={(e) => Taro.showToast({ title: translated.b840c88f })}
+          onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
+          onClickClear={(e) =>
+            Taro.showToast({ title: translated['8dab2f66'] })
+          }
+          onClickIcon={(e) => Taro.showToast({ title: 'icon' })}
         />
       </div>
     </>

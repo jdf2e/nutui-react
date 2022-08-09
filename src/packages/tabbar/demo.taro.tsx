@@ -128,7 +128,7 @@ const TabbarDemo = () => {
           <TabbarItem tabTitle={translated.a52bef0c} icon="find" />
           <TabbarItem
             tabTitle={translated['7db1a8b2']}
-            href="https://m.jd.com"
+            // href="https://m.jd.com"
             icon="cart"
           />
           <TabbarItem tabTitle={translated.e51e4582} to="/" icon="my" />

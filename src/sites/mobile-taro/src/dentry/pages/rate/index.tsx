@@ -1,9 +1,10 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import { Rate } from '@/packages/nutui.react.taro'
 
 const RateDemo = () => {
   const onChange = (val: any) => {
-    alert(val)
+    Taro.showToast({ title: val })
   }
   return (
     <>

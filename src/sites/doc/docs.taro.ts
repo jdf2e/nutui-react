@@ -87,6 +87,12 @@ import TextArea from '@/packages/textarea/doc.md?raw'
 import UploaderenUS from '@/packages/uploader/doc.en-US.md?raw'
 import UploaderzhTW from '@/packages/uploader/doc.zh-TW.md?raw'
 import Uploader from '@/packages/uploader/doc.md?raw'
+import SearchBarenUS from '@/packages/searchbar/doc.en-US.md?raw'
+import SearchBarzhTW from '@/packages/searchbar/doc.zh-TW.md?raw'
+import SearchBar from '@/packages/searchbar/doc.md?raw'
+import NumberKeyboardenUS from '@/packages/numberkeyboard/doc.en-US.md?raw'
+import NumberKeyboardzhTW from '@/packages/numberkeyboard/doc.zh-TW.md?raw'
+import NumberKeyboard from '@/packages/numberkeyboard/doc.md?raw'
 import ActionSheetenUS from '@/packages/actionsheet/doc.en-US.md?raw'
 import ActionSheetzhTW from '@/packages/actionsheet/doc.zh-TW.md?raw'
 import ActionSheet from '@/packages/actionsheet/doc.md?raw'
@@ -219,6 +225,8 @@ export const routers = [
   'ShortPassword',
   'TextArea',
   'Uploader',
+  'SearchBar',
+  'NumberKeyboard',
   'ActionSheet',
   'BackTop',
   'Drag',
@@ -346,6 +354,12 @@ export const raws = {
   UploaderenUS,
   UploaderzhTW,
   Uploader,
+  SearchBarenUS,
+  SearchBarzhTW,
+  SearchBar,
+  NumberKeyboardenUS,
+  NumberKeyboardzhTW,
+  NumberKeyboard,
   ActionSheetenUS,
   ActionSheetzhTW,
   ActionSheet,
