@@ -67,8 +67,6 @@
     "build:taro:types": "tsc && npm run replace:taro:types",
     "build:taro:es": "npx rollup -c rollup.config.taro.es.js",
     "build:taro": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run build:taro:es  && npm run build:css && npm run build:loader-style && npm run build:taro:types && npm run build:locales",
-    "build:taro:test": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run build:taro:es ",
-    "build:test": "npm run checked && vite build --config vite.config.build.ts",
     "add:taro:config": "node scripts/taro/generate-taro-route.js"
   },
   "engines": {
