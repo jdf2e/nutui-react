@@ -140,14 +140,6 @@ export const Avatar: FunctionComponent<
     }
   }
 
-  console.log(
-    'ddddd',
-    showMax ||
-      !parent?.propAvatarGroup?.maxCount ||
-      avatarIndex <= parent?.propAvatarGroup?.maxCount,
-    showMax
-  )
-
   return (
     <>
       {(showMax ||

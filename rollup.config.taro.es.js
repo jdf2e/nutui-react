@@ -3,7 +3,7 @@ import typescript from '@rollup/plugin-typescript'
 import { getBabelOutputPlugin } from '@rollup/plugin-babel'
 
 const path = require('path')
-const config = require('../src/config.json')
+const config = require('./src/config.json')
 
 const entries = {
   'nutui-react.es': path.join(
@@ -28,14 +28,15 @@ config.nav.map((item) => {
 
 export default {
   input: entries,
-  external: (id, parent) =>
-    /^react/.test(id) ||
-    /^react\-dom/.test(id) ||
-    /^classnames/.test(id) ||
-    /^\@use-gesture/.test(id) ||
-    /^\@react-spring/.test(id) ||
-    /^\@bem-react/.test(id) ||
-    (/^\@\/packages\/\w+$/.test(id) && !!parent),
+  external: (id, parent) => {
+    ;/^react/.test(id) ||
+      /^react\-dom/.test(id) ||
+      /^classnames/.test(id) ||
+      /^\@use-gesture/.test(id) ||
+      /^\@react-spring/.test(id) ||
+      /^\@bem-react/.test(id) ||
+      (/^\@\/packages\/\w+$/.test(id) && !!parent)
+  },
   output: {
     format: 'esm',
     dir: './dist/esm',
