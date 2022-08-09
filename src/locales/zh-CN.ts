@@ -91,5 +91,16 @@ const zhCN: BaseLang = {
     additionalReview: (day: number) => `购买${day}天后追评`,
     additionalImages: (length: number) => `${length}张追评图片`,
   },
+  searchbar: {
+    basePlaceholder: '上京东，购好物',
+    text: '文本',
+    test: '测试',
+    title1: '基础用法',
+    title2: '搜索框形状及最大长度',
+    title3: '搜索框内外背景设置',
+    title4: '搜索框文本设置',
+    title5: '自定义图标设置',
+    title6: '数据改变监听',
+  },
 }
 export default zhCN
