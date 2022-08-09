@@ -28,8 +28,7 @@ export interface RangeProps {
   modelValue: SliderValue
   button: React.ReactNode
   vertical: boolean
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  marks: Object
+  marks: Record<string, unknown>
   change?: (value: number) => void
   dragStart?: () => void
   dragEnd?: () => void
