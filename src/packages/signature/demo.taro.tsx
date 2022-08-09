@@ -1,7 +1,31 @@
 import React from 'react'
+import { useTranslate } from '@/sites/assets/locale/taro'
 import { Signature } from '@/packages/nutui.react.taro'
 
+interface T {
+  basic: string
+  title: string
+  tips: string
+}
+
 const SignatureDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基本用法',
+      title: '修改颜色和签字粗细',
+      tips: 'Tips: 点击确认按钮,下方显示签名图片',
+    },
+    'zh-TW': {
+      basic: '基本用法',
+      title: '修改顏色和簽字粗細',
+      tips: 'Tips: 點擊確認按鈕,下方顯示簽名圖片',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title: 'Modify color and signature thickness',
+      tips: 'Tips: click the confirm button, and the signature image is displayed below',
+    },
+  })
   const confirm = (canvas: HTMLCanvasElement, data: string) => {
     const img = document.createElement('img')
     img.src = data
@@ -33,12 +57,12 @@ const SignatureDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>基础用法</h2>
+        <h2>{translated.basic}</h2>
         <Signature confirm={confirm} clear={clear} />
         <p className="demo-tips demo1" style={demoStyles}>
-          Tips: 点击确认按钮,下方显示签名图片
+          {translated.tips}
         </p>
-        <h2>修改颜色和签字粗细</h2>
+        <h2> {translated.title}</h2>
         <Signature
           lineWidth={4}
           strokeStyle="green"
@@ -46,7 +70,7 @@ const SignatureDemo = () => {
           clear={clear1}
         />
         <p className="demo-tips demo2" style={demoStyles}>
-          Tips: 点击确认按钮,下方显示签名图片
+          {translated.tips}
         </p>
       </div>
     </>

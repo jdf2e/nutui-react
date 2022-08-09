@@ -5,10 +5,13 @@ import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
 export interface TabbarItemProps {
+  dot: boolean
+  size: string | number
+  classPrefix: string
   tabTitle: string
   icon: string
   href: string
-  to: object | string
+  to: any
   num: string | number
   active: boolean
   activeColor: string
@@ -17,6 +20,9 @@ export interface TabbarItemProps {
   handleClick: (idx: number) => void
 }
 const defaultProps = {
+  dot: false,
+  size: '',
+  classPrefix: 'nutui-iconfont',
   tabTitle: '',
   icon: '',
   href: '',
@@ -33,6 +39,9 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
   props
 ) => {
   const {
+    dot,
+    size,
+    classPrefix,
     tabTitle,
     icon,
     href,
@@ -59,7 +68,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     if (active && to) {
       history.push(to)
     }
-  }, [active])
+  }, [active, history, href, to])
 
   return (
     <div
@@ -72,15 +81,21 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
       }}
     >
       <div className={`${bIcon()}`}>
-        {num && num <= 99 && (
-          <div className={`${bIcon('tips', [bIcon('num')])}`}>{num}</div>
-        )}
-        {num && num >= 100 && (
-          <div className={`${bIcon('tips', [bIcon('nums')])}`}>99+</div>
+        {!dot ? (
+          <>
+            {num && num <= 99 && (
+              <div className={`${bIcon('tips', [bIcon('num')])}`}>{num}</div>
+            )}
+            {num && num >= 100 && (
+              <div className={`${bIcon('tips', [bIcon('nums')])}`}>99+</div>
+            )}
+          </>
+        ) : (
+          <div className={`${bIcon('dot')}`} />
         )}
         {icon && (
           <div>
-            <Icon size={20} name={icon} />
+            <Icon size={size} name={icon} classPrefix={classPrefix} />
           </div>
         )}
         <div
