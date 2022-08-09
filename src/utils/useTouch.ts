@@ -17,6 +17,8 @@ function getDirection(x: number, y: number) {
 export function useTouch() {
   const [startX, SetStartX] = useState(0)
   const [startY, SetStartY] = useState(0)
+  const [moveX, SetMoveX] = useState(0)
+  const [moveY, SetMoveY] = useState(0)
   const [deltaX, SetDeltaX] = useState(0)
   const [deltaY, SetDeltaY] = useState(0)
   const [offsetX, SetOffsetX] = useState(0)
@@ -46,10 +48,12 @@ export function useTouch() {
     const dY = touch.clientY - startY
     SetDeltaX(dX)
     SetDeltaY(dY)
+    SetMoveX(touch.clientX)
+    SetMoveY(touch.clientY)
     SetOffsetX(Math.abs(dX))
     SetOffsetY(Math.abs(dY))
     if (!direction) {
-      SetDirection(getDirection(Math.abs(dX), Math.abs(dY)))
+      SetDirection(getDirection(offsetX, offsetY))
     }
   }) as EventListener
 
@@ -59,6 +63,8 @@ export function useTouch() {
     reset,
     startX,
     startY,
+    moveX,
+    moveY,
     deltaX,
     deltaY,
     offsetX,
