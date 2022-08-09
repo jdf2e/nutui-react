@@ -1,18 +1,18 @@
-# Signature 签名
+# Signature 簽名
 
-### 介绍
+### 介紹
 
-基于 Canvas 的签名组件
+基於 Canvas 的簽名組件
 
-### 安装
+### 安裝
 
 ```javascript
 import { Signature } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 
@@ -38,7 +38,7 @@ const App = () => {
     <>
         <Signature confirm={confirm} clear={clear} />
         <p className="demo-tips demo" style={demoStyles}>
-            Tips: 点击确认按钮,下方显示签名图片
+            Tips: 點擊確認按鈕,下方顯示簽名圖片
         </p>
     </>
     );
@@ -48,7 +48,7 @@ export default App;
 
 :::
 
-### 修改颜色和签字粗细
+### 修改顏色和簽字粗細
 
 :::demo
 
@@ -79,7 +79,7 @@ const App = () => {
             clear={clear}
          />
         <p className="demo-tips demo" style={demoStyles}>
-            Tips: 点击确认按钮,下方显示签名图片
+            Tips: 點擊確認按鈕,下方顯示簽名圖片
         </p>
     </>
     );
@@ -93,17 +93,17 @@ export default App;
 
 ### Props
 
-| 参数           | 说明                           | 类型   | 默认值                                              |
+| 參數           | 說明                           | 類型   | 默認值                                              |
 | -------------- | ------------------------------ | ------ | --------------------------------------------------- |
-| custom-class   | 自定义 class                   | String | -                                                   |
-| line-width     | 线条的宽度                     | Number | 3                                                   |
-| stroke-style   | 绘图笔触颜色                   | String | '#000'                                              |
-| type           | 图片格式                       | String | 'png'                                               |
-| un-support-tpl | 不支持 Canvas 情况下的展示文案 | String | '对不起，当前浏览器不支持 Canvas，无法使用本控件！' |
+| customClass   | 自定義 class                   | String | -                                                   |
+| lineWidth     | 線條的寬度                     | Number | 3                                                   |
+| strokeStyle   | 繪圖筆觸顏色                   | String | '#000'                                              |
+| type           | 圖片格式                       | String | 'png'                                               |
+| unSupportTpl | 不支持 Canvas 情況下的展示文案 | String | '對不起，當前瀏覽器不支持 Canvas，無法使用本控件！' |
 
 ## Event
 
-| 字段    | 说明                         | 回调参数                         |
+| 字段    | 說明                         | 回調參數                         |
 | ------- | ---------------------------- | -------------------------------- |
-| confirm | 点击确认按钮触发事件回调函数 | canvas 和签名图片展示的 data URI |
-| clear   | 点击重签按钮触发事件回调函数 | 无                               |
+| confirm | 點擊確認按鈕觸發事件回調函數 | canvas 和簽名圖片展示的 data URI |
+| clear   | 點擊重簽按鈕觸發事件回調函數 | -                               |
