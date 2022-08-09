@@ -40,12 +40,14 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
+import  React, {useState} from "react";
 import { Range,Cell,Toast } from '@nutui/nutui-react';
 
 const App = () => {
+    const [value0, SetValue0] = useState([30, 60])
     const change = (value: number, name?: string) => {
         Toast.text(`当前值：${value}`)
+        SetValue0(value)
     }
     const cellStyle = {
         padding: '40px 18px',
@@ -55,7 +57,7 @@ const App = () => {
         <Cell style={cellStyle}>
         <Range
             range
-            modelValue={[30, 60]}
+            modelValue={value0}
             change={(value) => {
                 change(value)
             }}
@@ -282,6 +284,7 @@ export default App;
 ```tsx
 import  React, {useState} from "react";
 import { Range,Cell,Toast } from '@nutui/nutui-react';
+import "./demo.scss"
 
 const App = () => {
     const [value2, SetValue2] = useState(60)
@@ -297,7 +300,7 @@ const App = () => {
         <Cell style={cellStyle}>
         <Range
             modelValue={value2}
-            button={<div className="custom-button">{value2}</div>}
+            button={<div className="range-custom-button">{value2}</div>}
             change={(value: number) => {
                 change(value, 'value2')
             }}
@@ -470,7 +473,7 @@ export default App;
 ### Props
 
 | 参数          | 说明               | 类型             | 默认值                   |
-| ------------- | ------------------ | ---------------- | ------------------------ |
+| ------------- | -------------------- | ---------------- | ------------------------ |
 | modelValue    | 当前进度百分比     | Number、Number[] | `0`                      |
 | range         | 是否开启双滑块模式 | Boolean          | `false`                  |
 | max           | 最大值             | Number、String   | `100`                    |
@@ -483,7 +486,7 @@ export default App;
 | activeColor   | 进度条激活态颜色   | String           | `rgba(250, 44, 25, 1)`   |
 | inactiveColor | 进度条非激活态颜色 | String           | `rgba(255, 163, 154, 1)` |
 | buttonColor   | 按钮颜色           | String           | `rgba(250, 44, 25, 1)`   |
-| marks | 刻度标示 | Object{key:number} | {} |
+| marks | 刻度标示 | Object{key: number}    | {} |
 
 ### Events
 

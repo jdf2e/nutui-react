@@ -55,7 +55,8 @@ const RangeDemo = () => {
     height: '180px',
     padding: '10px',
   }
-  const [value1, SetValue1] = useState(40)
+  const [value0, SetValue0] = useState([30, 60])
+  const [value1, SetValue1] = useState(30)
   const [value2, SetValue2] = useState(60)
   const [value3, SetValue3] = useState(20)
   const [value4, SetValue4] = useState([20, 80])
@@ -74,6 +75,9 @@ const RangeDemo = () => {
   const change = (value: any, name?: string) => {
     Toast.text(`当前值：${value}`)
     switch (name) {
+      case 'value0':
+        SetValue0(value)
+        break
       case 'value1':
         SetValue1(value)
         break
@@ -114,9 +118,9 @@ const RangeDemo = () => {
         <Cell style={cellStyle}>
           <Range
             range
-            modelValue={[30, 60]}
+            modelValue={value0}
             change={(value: any) => {
-              change(value)
+              change(value, 'value0')
             }}
           />
         </Cell>
@@ -189,7 +193,7 @@ const RangeDemo = () => {
         <Cell style={cellStyle}>
           <Range
             modelValue={value2}
-            button={<div className="custom-button">{value2}</div>}
+            button={<div className="range-custom-button">{value2}</div>}
             change={(value: number) => {
               change(value, 'value2')
             }}

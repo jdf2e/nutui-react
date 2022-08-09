@@ -6,9 +6,8 @@ import React, {
   CSSProperties,
   useCallback,
 } from 'react'
-import bem from '@/utils/bem'
 import { useTouch } from '../../utils/useTouch'
-import { useRect } from '../../utils/useRect'
+import { getRect } from '../../utils/useClientRect'
 import Toast from '@/packages/toast'
 import { useConfig } from '@/packages/configprovider'
 
@@ -80,7 +79,6 @@ export const Range: FunctionComponent<
   const [dragStatus, SetDragStatus] = useState('start' || 'draging' || '')
   const touch = useTouch()
   const root = useRef<HTMLDivElement>(null)
-  const rangeBem = bem('range')
 
   const [marksList, SetMarksList] = useState([])
 
@@ -98,7 +96,6 @@ export const Range: FunctionComponent<
   useEffect(() => {
     if (marks) {
       const marksKeys = Object.keys(marks)
-      const range = Number(max) - Number(min)
       const list: any = marksKeys
         .map(parseFloat)
         .sort((a, b) => a - b)
@@ -106,16 +103,6 @@ export const Range: FunctionComponent<
       SetMarksList(list)
     }
   }, [marks])
-
-  //   const marksList: any = () => {
-  //     const marksKeys = Object.keys(marks)
-  //     const range = Number(max) - Number(min)
-  //     const list = marksKeys
-  //       .map(parseFloat)
-  //       .sort((a, b) => a - b)
-  //       .filter((point) => point >= min && point <= max)
-  //     return list
-  //   }
 
   const scope = () => {
     return Number(max) - Number(min)
@@ -159,10 +146,6 @@ export const Range: FunctionComponent<
       ]
         .filter(Boolean)
         .join(' ')
-      //   return {
-      //     [`${classPrefix}-text`]: true,
-      //     [`${classPrefix}-text-active`]: isActive,
-      //   }
     },
     [range, modelValue, min, max]
   )
@@ -271,13 +254,13 @@ export const Range: FunctionComponent<
     } else {
       value = format(value)
     }
-    // const modelVal = initValue || initValue === 0 ? initValue : modelValue
+    const modelVal = initValue || initValue === 0 ? initValue : modelValue
 
-    if (!isSameValue(value, modelValue)) {
+    if (!isSameValue(value, modelVal)) {
       SetInitValue(value)
     }
 
-    if (end && !isSameValue(value, startValue)) {
+    if ((marks || end) && !isSameValue(value, startValue)) {
       change && change(value)
     }
   }
@@ -287,7 +270,7 @@ export const Range: FunctionComponent<
       return
     }
     SetDragStatus('')
-    const rect = useRect(root.current)
+    const rect = getRect(root.current)
     let delta = event.clientX - rect.left
     let total = rect.width
     if (vertical) {
@@ -295,8 +278,9 @@ export const Range: FunctionComponent<
       total = rect.height
     }
     const value = Number(min) + (delta / total) * scope()
-    if (isRange(modelValue)) {
-      const [left, right] = modelValue as any
+    currentValue = initValue || initValue === 0 ? initValue : modelValue
+    if (isRange(currentValue)) {
+      const [left, right] = currentValue as any
       const middle = (left + right) / 2
       if (value <= middle) {
         updateValue([value, right], true)
@@ -335,7 +319,7 @@ export const Range: FunctionComponent<
 
     SetDragStatus('draging')
 
-    const rect = useRect(root.current)
+    const rect = getRect(root.current)
     let delta = touch.deltaX
     let total = rect.width
     let diff = (delta / total) * scope()
@@ -352,8 +336,6 @@ export const Range: FunctionComponent<
       currentValue = startValue + diff
     }
     updateValue(currentValue)
-    event.stopPropagation()
-    event.preventDefault()
   }
 
   const onTouchEnd = (event: TouchEvent) => {
@@ -418,7 +400,6 @@ export const Range: FunctionComponent<
                   aria-valuemax={+max}
                   aria-orientation="horizontal"
                   onTouchStart={(e: any) => {
-                    e.preventDefault()
                     if (typeof index === 'number') {
                       // 实时更新当前拖动的按钮索引
                       SetButtonIndex(index)

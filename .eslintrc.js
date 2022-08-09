@@ -87,6 +87,5 @@ module.exports = {
     'jsx-a11y/no-autofocus': 0,
     'react/no-children-prop': 0,
     'jsx-a11y/aria-proptypes': 0,
-    'react-hooks/rules-of-hooks': 0,
   },
 }
