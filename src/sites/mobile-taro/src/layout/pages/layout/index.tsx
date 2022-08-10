@@ -1,5 +1,5 @@
 import React from 'react'
-// import { Row, Col } from '@/packages/nutui.react.taro'
+import { Row, Col } from '@/packages/nutui.react.taro'
 import '@/packages/layout/demo.scss'
 
 const LayoutDemo = () => {
@@ -8,7 +8,7 @@ const LayoutDemo = () => {
       <div className="demo">
         <h2>基础布局</h2>
         <div className="box-item">
-          {/* <Row>
+          <Row>
             <Col span="24">
               <div className="flex-content">span:24</div>
             </Col>
@@ -117,7 +117,7 @@ const LayoutDemo = () => {
             <Col span="6">
               <div className="flex-content">span:6</div>
             </Col>
-          </Row> */}
+          </Row>
         </div>
       </div>
     </>
