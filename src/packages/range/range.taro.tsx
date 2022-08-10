@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import bem from '@/utils/bem'
 import { useTouch } from '../../utils/useTouch'
-import { useRect } from '../../utils/useRect'
+import { getRect } from '../../utils/useClientRect'
 import Toast from '@/packages/toast'
 import { useConfig } from '@/packages/configprovider'
 
@@ -187,7 +187,7 @@ export const Range: FunctionComponent<
 
     SetDragStatus('draging')
 
-    const rect = useRect(root.current)
+    const rect = getRect(root.current)
     const delta = touch.deltaX
     const total = rect.width
     const diff = (delta / total) * scope()
