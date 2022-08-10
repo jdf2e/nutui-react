@@ -116,15 +116,15 @@ export const InputNumber: FunctionComponent<
     value: string | number,
     e: MouseEvent | ChangeEvent<HTMLInputElement>
   ) => {
-    const output_value: number | string = fixedDecimalPlaces(value)
-    change && change(output_value, e)
+    const outputValue: number | string = fixedDecimalPlaces(value)
+    change && change(outputValue, e)
     if (!isAsync) {
-      if (Number(output_value) < Number(min)) {
+      if (Number(outputValue) < Number(min)) {
         setInputValue(Number(min))
-      } else if (Number(output_value) > Number(max)) {
+      } else if (Number(outputValue) > Number(max)) {
         setInputValue(Number(max))
       } else {
-        setInputValue(output_value)
+        setInputValue(outputValue)
       }
     }
   }
@@ -132,8 +132,8 @@ export const InputNumber: FunctionComponent<
   const reduceNumber = (e: MouseEvent) => {
     reduce && reduce(e)
     if (reduceAllow()) {
-      const output_value = Number(inputValue) - Number(step)
-      emitChange(output_value, e)
+      const outputValue = Number(inputValue) - Number(step)
+      emitChange(outputValue, e)
     } else {
       overlimit && overlimit(e)
     }
@@ -142,8 +142,8 @@ export const InputNumber: FunctionComponent<
   const addNumber = (e: MouseEvent) => {
     add && add(e)
     if (addAllow()) {
-      const output_value = Number(inputValue) + Number(step)
-      emitChange(output_value, e)
+      const outputValue = Number(inputValue) + Number(step)
+      emitChange(outputValue, e)
     } else {
       overlimit && overlimit(e)
     }

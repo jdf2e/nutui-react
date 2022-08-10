@@ -116,15 +116,15 @@ export const InputNumber: FunctionComponent<
     value: string | number,
     e: MouseEvent | ChangeEvent<HTMLInputElement>
   ) => {
-    const output_value: number | string = fixedDecimalPlaces(value)
-    change && change(output_value, e)
+    const outputValue: number | string = fixedDecimalPlaces(value)
+    change && change(outputValue, e)
     if (!isAsync) {
-      if (Number(output_value) < Number(min)) {
+      if (Number(outputValue) < Number(min)) {
         setInputValue(Number(min))
-      } else if (Number(output_value) > Number(max)) {
+      } else if (Number(outputValue) > Number(max)) {
         setInputValue(Number(max))
       } else {
-        setInputValue(output_value)
+        setInputValue(outputValue)
       }
     }
   }
@@ -132,8 +132,8 @@ export const InputNumber: FunctionComponent<
   const reduceNumber = (e: MouseEvent) => {
     reduce && reduce(e)
     if (reduceAllow()) {
-      const output_value = Number(inputValue) - Number(step)
-      emitChange(output_value, e)
+      const outputValue = Number(inputValue) - Number(step)
+      emitChange(outputValue, e)
     } else {
       overlimit && overlimit(e)
     }
@@ -142,21 +142,21 @@ export const InputNumber: FunctionComponent<
   const addNumber = (e: MouseEvent) => {
     add && add(e)
     if (addAllow()) {
-      const output_value = Number(inputValue) + Number(step)
-      emitChange(output_value, e)
+      const outputValue = Number(inputValue) + Number(step)
+      emitChange(outputValue, e)
     } else {
       overlimit && overlimit(e)
     }
   }
 
-  const changeValue = (e: ChangeEvent<HTMLInputElement>) => {
-    const input = e.target as HTMLInputElement
-    change && change(input.valueAsNumber, e)
+  const changeValue = (e: any) => {
+    const value = Number(e.detail.value)
+    change && change(value, e)
     if (!isAsync) {
-      if (Number.isNaN(input.valueAsNumber)) {
+      if (Number.isNaN(value)) {
         setInputValue(inputValue)
       } else {
-        setInputValue(input.valueAsNumber)
+        setInputValue(value)
       }
     }
   }
@@ -167,11 +167,10 @@ export const InputNumber: FunctionComponent<
     focus && focus(e)
   }
 
-  const burValue = (e: ChangeEvent<HTMLInputElement>) => {
+  const burValue = (e: any) => {
     if (disabled) return
     if (readonly) return
-    const input = e.target as HTMLInputElement
-    let value = input.valueAsNumber
+    let value = Number(e.detail.value)
     if (value < Number(min)) {
       value = Number(min)
     } else if (value > Number(max)) {
