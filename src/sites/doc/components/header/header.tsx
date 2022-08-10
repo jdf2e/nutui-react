@@ -26,7 +26,9 @@ const Header = () => {
   }, [])
 
   useEffect(() => {
-    const lang = langs.filter((l) => location.pathname.indexOf(l.locale) > -1)[0]
+    const lang = langs.filter(
+      (l) => location.pathname.indexOf(l.locale) > -1
+    )[0]
     setCurrLang(lang)
   }, [location])
 
@@ -57,7 +59,7 @@ const Header = () => {
   }
 
   return (
-    <div className="doc-header doc-header-black">
+    <div className="doc-header doc-header-red">
       <div className="header-logo">
         <a className="logo-link" href="#/" onClick={toHome}></a>
         <span className="logo-border"></span>
@@ -65,16 +67,17 @@ const Header = () => {
       </div>
       <div className="header-nav">
         <a href="https//github.com/jdf2e/nutui-docs" target="_blank">
-          当前环境：development ,代码 PR 合并后，文档会自动同步至 https//github.com/jdf2e/nutui-docs
+          当前环境：development ,代码 PR 合并后，文档会自动同步至
+          https//github.com/jdf2e/nutui-docs
         </a>
       </div>
-      <div className={'switch'}>
-        <div className={'switch-content'}>
-          <Popover visible={visible} theme={'dark'} onClick={handleSwitchLocale} list={langs}>
-            <span className={'curr-lang'}>{currLang ? currLang['name'] : '中文'}</span>
-          </Popover>
-        </div>
-      </div>
+      {/*<div className={'switch'}>*/}
+      {/*  <div className={'switch-content'}>*/}
+      {/*    <Popover visible={visible} theme={'dark'} onClick={handleSwitchLocale} list={langs}>*/}
+      {/*      <span className={'curr-lang'}>{currLang ? currLang['name'] : '中文'}</span>*/}
+      {/*    </Popover>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
     </div>
   )
 }

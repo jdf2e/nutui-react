@@ -6,8 +6,8 @@ export interface PaginationProps {
   defaultValue: number
   modelValue: number
   mode: 'multi' | 'simple'
-  prevText: React.ReactNode
-  nextText: React.ReactNode
+  prevText?: React.ReactNode
+  nextText?: React.ReactNode
   pageCount: string | number
   totalItems: string | number
   itemsPerPage: string | number
@@ -23,8 +23,8 @@ export interface PaginationProps {
 const defaultProps = {
   defaultValue: 1,
   mode: 'multi',
-  prevText: '上一页',
-  nextText: '下一页',
+  prevText: '',
+  nextText: '',
   pageCount: '',
   totalItems: '0',
   itemsPerPage: '10',
@@ -60,19 +60,19 @@ export const Pagination: FunctionComponent<
   } = props
 
   const [currentPage, setCurrent] = useState(1)
-  const [pages, setPages] = useState<any>([])
+  const [pages, setPages] = useState<unknown[]>([])
   const [countRef, setCountRef] = useState(Number(pageCount))
   const paginationBem = bem('pagination')
   // 计算页面的数量
   const computedCountRef = () => {
     const num =
       Number(pageCount) || Math.ceil(Number(totalItems) / Number(itemsPerPage))
-    return isNaN(num) ? 1 : Math.max(1, num)
+    return Number.isNaN(num) ? 1 : Math.max(1, num)
   }
 
   // 生成pages数组，用来遍历
   const computedPages = (_currentPage?: number, _countRef?: number) => {
-    if (mode == 'simple') return []
+    if (mode === 'simple') return []
     const items = []
     const pageCount = _countRef || countRef // 总的页面数量
     const pageSize = Number(showPageSize) // 展示的页面个数
@@ -91,7 +91,7 @@ export const Pagination: FunctionComponent<
     }
     // 遍历生成数组
     for (let i = startPage; i <= endPage; i++) {
-      const page = setPage(i, i, _current == i)
+      const page = setPage(i, i, _current === i)
       items.push(page)
     }
     // 判断是否有折叠
@@ -113,11 +113,11 @@ export const Pagination: FunctionComponent<
     // 是否传入modelValue
     if (!('modelValue' in props)) {
       setCurrent(Number(curPage))
-      if (curPage != currentPage) {
+      if (curPage !== currentPage) {
         setPages(computedPages(curPage))
       }
     }
-    if (curPage != currentPage) {
+    if (curPage !== currentPage) {
       updatecurrent && updatecurrent(curPage)
     }
     if (isSelect) onChange && onChange(curPage)
@@ -149,13 +149,13 @@ export const Pagination: FunctionComponent<
     <div className={`${paginationBem('')} ${className}`} {...rest}>
       <div
         className={`${paginationBem('prev')}  ${
-          mode == 'multi' ? '' : 'simple-border'
-        } ${currentPage == 1 ? 'disabled' : ''}`}
+          mode === 'multi' ? '' : 'simple-border'
+        } ${currentPage === 1 ? 'disabled' : ''}`}
         onClick={(e) => selectPage(Number(currentPage) - 1, true)}
       >
-        {locale.pagination.prev || prevText}
+        {prevText || locale.pagination.prev}
       </div>
-      {mode == 'multi' ? (
+      {mode === 'multi' ? (
         <div className={`${paginationBem('contain')}`}>
           {pages.map((item: any, index: number) => {
             return (
@@ -176,7 +176,7 @@ export const Pagination: FunctionComponent<
       ) : (
         ''
       )}
-      {mode == 'simple' ? (
+      {mode === 'simple' ? (
         <div className={`${paginationBem('contain')}`}>
           <div className={`${paginationBem('simple')}`}>
             {currentPage}/{countRef}
@@ -191,7 +191,7 @@ export const Pagination: FunctionComponent<
         }`}
         onClick={(e) => selectPage(Number(currentPage) + 1, true)}
       >
-        {locale.pagination.next || nextText}
+        {nextText || locale.pagination.next}
       </div>
     </div>
   )

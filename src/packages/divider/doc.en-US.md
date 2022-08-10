@@ -1,71 +1,165 @@
-# Divider 分割线
+# Divider 
 
-### 介绍
+### Introduce
 
-用于将内容分隔为多个区域。
+Separate content into multiple areas.
 
-### 安装
+### Install
 
 ```js
 import { Divider } from '@nutui/nutui-react';
 ```
+### code demo
+### Basic Usage
 
-## 代码演示
+Default render one horizontal divider line.
 
-### 基础用法
+:::demo
 
-默认渲染一条水平分割线。
+```tsx
+import  React from "react";
+import { Divider } from '@nutui/nutui-react';
 
-```jsx
-<Divider />
+const App = () => {
+  return (
+    <>
+    <Divider />
+    </>
+  );
+};
+export default App;
 ```
+:::
 
-### 展示文本
 
-通过插槽在可以分割线中间插入内容。
+### With Text
 
-```jsx
-<Divider>文本</Divider>
+Insert text into divider with default slot.
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Divider } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+        <Divider>Text</Divider>
+    </>
+  );
+};
+export default App;
 ```
+:::
 
-### 内容位置
 
-通过 contentPosition 指定内容所在位置。
+### Content Position
 
-```jsx
-<Divider contentPosition="left">文本</Divider>
- <Divider contentPosition="right">文本</Divider>
+Set Content Position with `contentPosition` attribute.
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Divider } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+        <Divider contentPosition="left">Text</Divider>
+        <Divider contentPosition="right">Text</Divider>
+    </>
+  );
+};
+export default App;
 ```
+:::
 
-### 虚线
 
-添加 dashed 属性使分割线渲染为虚线。
+### Dashed
 
-```jsx
-<Divider dashed>文本</Divider>
+Render dashed divider line with `dashed` attribute.
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Divider } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+        <Divider dashed>Text</Divider>
+    </>
+  );
+};
+export default App;
 ```
+:::
 
-### 自定义样式
 
-可以直接通过 styles 属性设置分割线的样式。
+### Custom Style
 
-```jsx
-<Divider styles={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }}>文本</Divider>
+User can custom divider style with `styles` attribute.
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Divider } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+        <Divider styles={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }}>Text</Divider>
+    </>
+  );
+};
+export default App;
 ```
+:::
+
+### Vertical Divider
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Divider } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+    <div>
+        文本
+        <Divider direction="vertical" />
+        <a href="#" style={{ color: '#1989fa' }}>Link</a>
+        <Divider direction="vertical" />
+        <a href="#" style={{ color: '#1989fa' }}>Link</a>
+    </div>
+    </>
+  );
+};
+export default App;
+```
+:::
+
 
 ## API
 
 ### Props
 
-| 参数            | 说明                          | 类型    | 默认值 |
+| Attribute            | Description                       | Type    | Default |
 | --------------- | ----------------------------- | ------- | ------ |
-| dashed          | 是否使用虚线                  | Boolean | false  |
-| hairline        | 是否使用 0.5px 线             | Boolean | true   |
-| contentPosition | 内容位置，可选值为 left right | String  | center |
-| styles          | 修改自定义样式                | css     | -      |
+| dashed          | Whether to use dashed border                  | Boolean | false  |
+| hairline        | Whether to use hairline             | Boolean | true   |
+| contentPosition | Content position, can be set to left or right   | String  | center |
+| styles          | Modify custom styles                | CSS     | -      |
+| direction           | The direction of divider, can be set to horizontal or vertical            | String     | 'horizontal'      |
 
 ### Slots
 
-| 名称    | 说明 |
+| Name    | Description |
 | ------- | ---- |
-| default | 内容 |
+| default | Default slot |

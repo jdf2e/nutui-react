@@ -17,15 +17,13 @@ import { AnimatingNumbers } from '@nutui/nutui-react'
 :::demo
 
 ```tsx
-import  React from "react";
-import { AnimatingNumbers } from '@nutui/nutui-react';
+import React from 'react'
+import { AnimatingNumbers } from '@nutui/nutui-react'
 
 const App = () => {
-  return (
-    <AnimatingNumbers.CountUp endNumber="678.94" />
- );
-};
-export default App;
+  return <AnimatingNumbers.CountUp endNumber="678.94" />
+}
+export default App
 ```
 
 :::
@@ -39,23 +37,26 @@ import React, { useEffect, useState } from 'react'
 import { AnimatingNumbers } from '@nutui/nutui-react'
 
 const App = () => {
-  
   const [endNumber, setEndNumer] = useState('1570.99')
   useEffect(() => {
     setInterval(() => {
-      setEndNumer(`${Math.floor(Math.random() * 999999)}.${Math.floor(Math.random() * 89 + 10)}`)
+      setEndNumer(
+        `${Math.floor(Math.random() * 999999)}.${Math.floor(
+          Math.random() * 89 + 10
+        )}`
+      )
     }, 30000)
   }, [])
   return (
-   <AnimatingNumbers.CountUp
-          endNumber={endNumber}
-          easeSpeed={1.2}
-          maxLen={6}
-          className="custom-coutup"
-        />
- );
-};
-export default App;
+    <AnimatingNumbers.CountUp
+      endNumber={endNumber}
+      easeSpeed={1.2}
+      maxLen={6}
+      className="custom-coutup"
+    />
+  )
+}
+export default App
 ```
 
 :::

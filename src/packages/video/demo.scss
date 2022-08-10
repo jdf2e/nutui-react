@@ -1,0 +1,12 @@
+.demo-video {
+  padding: 57px 0 0 0 !important;
+}
+.video-cell {
+  padding: 0;
+  &::after {
+    display: none;
+  }
+}
+.video-m-b {
+  margin-bottom: 60px;
+}

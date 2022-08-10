@@ -65,7 +65,7 @@ const App = () => {
     <>
       <h2>基礎用法</h2>
       <Cell>
-        <ul className="infiniteUl" id="scroll" style={InfiniteUlStyle}>
+        <ul id="scroll" style={InfiniteUlStyle}>
           <Infiniteloading
             containerId="scroll"
             useWindow={false}
@@ -74,7 +74,7 @@ const App = () => {
           >
             {defultList.map((item, index) => {
               return (
-                <li className="infiniteLi" key={index} style={InfiniteLiStyle}>
+                <li key={index} style={InfiniteLiStyle}>
                   {item}
                 </li>
               )
@@ -151,7 +151,7 @@ const App = () => {
     <>
       <h2>下拉刷新</h2>
       <Cell>
-        <ul className="infiniteUl" id="refreshScroll" style={InfiniteUlStyle}>
+        <ul id="refreshScroll" style={InfiniteUlStyle}>
           <Infiniteloading
             pullIcon="JD"
             containerId="refreshScroll"
@@ -163,7 +163,7 @@ const App = () => {
           >
             {refreshList.map((item, index) => {
               return (
-                <li className="infiniteLi" key={index} style={InfiniteLiStyle}>
+                <li key={index} style={InfiniteLiStyle}>
                   {item}
                 </li>
               )
@@ -232,7 +232,7 @@ const App = () => {
     <>
       <h2>自定義加載文案</h2>
       <Cell>
-        <ul className="infiniteUl" id="customScroll" style={InfiniteUlStyle}>
+        <ul id="customScroll" style={InfiniteUlStyle}>
           <Infiniteloading
             containerId="customScroll"
             useWindow={false}
@@ -243,7 +243,7 @@ const App = () => {
           >
             {customList.map((item, index) => {
               return (
-                <li className="infiniteLi" key={index} style={InfiniteLiStyle}>
+                <li key={index} style={InfiniteLiStyle}>
                   {item}
                 </li>
               )

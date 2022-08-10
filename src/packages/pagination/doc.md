@@ -101,7 +101,7 @@ const App = () => {
     setCurrentPage4(c)
   }
   const pageNodeRender = (page: any) => {
-    return <div>{page.number == 3 ? 'hot' : page.text}</div>
+    return <div>{page.number === 3 ? 'hot' : page.text}</div>
   }
   return (
     <Pagination

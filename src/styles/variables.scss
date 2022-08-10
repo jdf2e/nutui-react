@@ -15,11 +15,19 @@ $text-color: #808080 !default;
 $disable-color: #cccccc !default;
 $white: #fff;
 $black: #000;
+$required-color: #fa2c19 !default;
+
+$dark-background: #1a1919 !default;
+$dark-background2: #1d1b1c !default;
+$dark-background3: #141414 !default;
+$dark-color: $white !default;
+$dark-color-gray: $text-color !default;
 
 // padding
 $padding-xs: 12px;
 
-$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif !default;
+$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
+  sans-serif !default;
 
 // ---- Animation ----
 $animation-duration: 0.25s !default;
@@ -94,21 +102,33 @@ $button-plain-background-color: $white;
 
 // cell
 
-$cell-color: $title-color2;
-$cell-title-font: $font-size-2;
-$cell-title-desc-font: $font-size-1;
-$cell-desc-font: $font-size-2;
-$cell-desc-color: $disable-color;
-$cell-border-radius: 6px;
+$cell-color: $title-color2 !default;
+$cell-title-font: $font-size-2 !default;
+$cell-title-desc-font: $font-size-1 !default;
+$cell-desc-font: $font-size-2 !default;
+$cell-desc-color: $disable-color !default;
+$cell-border-radius: 6px !default;
+$cell-padding: 13px 16px !default;
+$cell-line-height: 20px !default;
+$cell-after-right: 16px !default;
+$cell-after-border-bottom: 2px solid #f5f6f7 !default;
+$cell-default-icon-margin: 0 4px 0 0px !default;
+$cell-large-title-font: $font-size-large !default;
+$cell-large-title-desc-font: $font-size-base !default;
+$cell-large-padding: 15px 16px !default;
+$cell-background: $white !default;
 
 // cell-group
 
-$cell-group-title-padding: 0 10px;
-$cell-group-title-color: #909ca4;
-$cell-group-title-font-size: $font-size-2;
-$cell-group-title-line-height: 20px;
-$cell-group-background-color: $white;
-
+$cell-group-title-padding: 0 10px !default;
+$cell-group-title-color: #909ca4 !default;
+$cell-group-title-font-size: $font-size-2 !default;
+$cell-group-title-line-height: 20px !default;
+$cell-group-desc-padding: 0 10px !default;
+$cell-group-desc-color: #909ca4 !default;
+$cell-group-desc-font-size: $font-size-1 !default;
+$cell-group-desc-line-height: 16px !default;
+$cell-group-background-color: $white !default;
 // icon
 
 $icon-height: 20px;
@@ -122,8 +142,11 @@ $uploader-picture-height: 100px !default;
 $uploader-background: #f7f8fa !default;
 
 //input
-$input-border-bottom: #eaf0fb;
-$input-disabled-color: #c8c9cc;
+$input-border-bottom: #eaf0fb !default;
+$input-disabled-color: #c8c9cc !default;
+$input-required-color: $required-color !default;
+$input-font-size: $font-size-2 !default;
+$input-padding: 10px 25px !default;
 
 // textarea
 
@@ -237,19 +260,37 @@ $rate-icon-void-color: $disable-color;
 
 // tabbar
 
-$tabbar-active-color: $primary-color;
-$tabbar-border-color: #eee;
+$tabbar-active-color: $primary-color !default;
+$tabbar-unactive-color: $primary-color !default;
+$tabbar-border-top: 1px solid #eee !default;
+$tabbar-border-bottom: 1px solid #eee !default;
+$tabbar-box-shadow: none !default;
+$tabbar-item-text-font-size: $font-size-0 !default;
+$tabbar-item-text-line-height: initial !default;
 
 //infiniteloading
 $infinite-bottom-color: #c8c8c8;
 
 //range
-$range-max: #333333;
-$rang-bg-color: rgba($primary-color, 0.5);
-$rang-bar-bg-color: linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%);
+$range-tip-font-color: #333333 !default;
+$range-bg-color: rgba($primary-color, 0.5) !default;
+$range-bg-color-tick: #fa958c !default;
+$range-bar-bg-color: linear-gradient(
+  135deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+) !default;
+$range-bar-btn-bg-color: $white !default;
+$range-bar-btn-width: 24px !default;
+$range-bar-btn-height: 24px !default;
+$range-bar-btn-border: 1px solid $primary-color !default;
 
 //address
-$address-region-tab-line: linear-gradient(90deg, $primary-color 0%, $primary-color-end 100%);
+$address-region-tab-line: linear-gradient(
+  90deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+);
 
 //steps
 $steps-base-icon-width: 25px !default;
@@ -284,8 +325,12 @@ $steps-process-icon-text-color: $primary-color !default;
 $dialog-width: 296px;
 
 // checkbox
-$checkbox-label-color: #1d1e1e;
-$checkbox-label-disable-color: #999;
+$checkbox-label-color: #1d1e1e !default;
+$checkbox-label-disable-color: #999 !default;
+$checkbox-icon-disable-color: #d6d6d6 !default;
+$checkbox-label-margin-left: 15px !default;
+$checkbox-label-font-size: 14px !default;
+$checkbox-icon-font-size: 18px !default;
 
 //radio
 $radio-label-font-color: #1d1e1e !default;
@@ -298,12 +343,20 @@ $radio-label-button-background: rgba(240, 37, 15, 0.05) !default;
 
 // signature
 $signature-border-color: #dadada;
+$signature-border-width: 1px;
+$signature-height: 10rem;
+$signature-margin-bottom: 1rem;
+$signature-btn-margin-right: 15px;
 
 //fixednav
 $fixednav-bg-color: $white;
 $fixednav-font-color: $black;
 $fixednav-index: 201;
-$fixednav-btn-bg: linear-gradient(135deg, rgba(250, 25, 44, 1) 0%, rgba(250, 63, 25, 1) 100%);
+$fixednav-btn-bg: linear-gradient(
+  135deg,
+  rgba(250, 25, 44, 1) 0%,
+  rgba(250, 63, 25, 1) 100%
+);
 
 // Tag
 $tag-font-size: 12px !default;
@@ -409,8 +462,164 @@ $empty-description-color: #666666 !default;
 $empty-description-font-size: 14px !default;
 $empty-description-line-height: 20px !default;
 $empty-description-padding: 0 40px !default;
+
+// indicator
+$indicator-color: $primary-color !default;
+$indicator-dot-color: $disable-color !default;
+$indicator-white: $white !default;
+$indicator-size: 18px !default;
+$indicator-dot-size: calc($indicator-size / 3) !default;
+$indicator-border-size: $indicator-size + 2 !default;
+$indicator-number-font-size: 10px !default;
+$indicator-dot-margin: 4px !default;
+$indicator-dot-vertical-margin: 4px !default;
+$indicator-dot-first-margin: 0px !default;
+$indicator-dot-last-margin: 0px !default;
+
 // circleProgress
 $circleprogress-primary-color: $primary-color !default;
 $circleprogress-path-color: #e5e9f2 !default;
 $circleprogress-text-color: #000000 !default;
 $circleprogress-text-size: $font-size-3 !default;
+
+// divider
+
+$divider-margin: 16px 0 !default;
+$divider-text-font-size: $font-size-2 !default;
+$divider-text-color: #909ca4 !default;
+$divider-line-height: 2px !default;
+$divider-before-margin-right: 16px !default;
+$divider-after-margin-left: 16px !default;
+$divider-vertical-height: 12px !default;
+$divider-vertical-top: 2px !default;
+$divider-vertical-border-left: rgba(0, 0, 0, 0.06) !default;
+$divider-vertical-margin: 0 8px !default;
+
+//numberkeyboard
+$numberkeyboard-width: 100% !default;
+$numberkeyboard-padding: 0 0 22px 0 !default;
+$numberkeyboard-background-color: #f2f3f5 !default;
+$numberkeyboard-header-height: 34px !default;
+$numberkeyboard-header-padding: 6px 0 0 0 !default;
+$numberkeyboard-header-color: #646566 !default;
+$numberkeyboard-header-font-size: 16px !default;
+$numberkeyboard-header-close-padding: 0 16px !default;
+$numberkeyboard-header-close-color: #576b95 !default;
+$numberkeyboard-header-close-font-size: 14px !default;
+$numberkeyboard-header-close-background-color: transparent !default;
+$numberkeyboard-key-background-color: #fff !default;
+$numberkeyboard-key-active-background-color: #ebedf0 !default;
+$numberkeyboard-key-height: 48px !default;
+$numberkeyboard-key-line-height: 1.5 !default;
+$numberkeyboard-key-border-radius: 8px !default;
+$numberkeyboard-key-font-size: 28px !default;
+$numberkeyboard-key-font-size-color: #333 !default;
+$numberkeyboard-key-finish-font-size: 16px !default;
+$numberkeyboard-key-finish-font-size-color: #fff !default;
+$numberkeyboard-key-finish-background-color: #1989fa !default;
+$numberkeyboard-key-activeFinsh-background-color: #0570db !default;
+// elevator
+$elevator-list-item-highcolor: $primary-color !default;
+$elevator-list-item-font-size: 12px !default;
+$elevator-list-item-font-color: #333333 !default;
+$elevator-list-item-name-padding: 0 20px !default;
+$elevator-list-item-name-height: 30px !default;
+$elevator-list-item-name-line-height: 30px !default;
+$elevator-list-item-code-font-size: 14px !default;
+$elevator-list-item-code-font-color: #1a1a1a !default;
+$elevator-list-item-code-font-weight: 500 !default;
+$elevator-list-item-code-padding: 0 20px !default;
+$elevator-list-item-code-height: 35px !default;
+$elevator-list-item-code-line-height: 35px !default;
+$elevator-list-item-code-after-width: 100% !default;
+$elevator-list-item-code-after-height: 1px !default;
+$elevator-list-item-code-after-bg-color: #f5f5f5 !default;
+$elevator-list-item-code-current-box-shadow: 0 3px 3px 1px
+  rgba(240, 240, 240, 1) !default;
+$elevator-list-item-code-current-bg-color: #fff !default;
+$elevator-list-item-code-current-border-radius: 50% !default;
+$elevator-list-item-code-current-width: 45px !default;
+$elevator-list-item-code-current-height: 45px !default;
+$elevator-list-item-code-current-line-height: 45px !default;
+$elevator-list-item-code-current-position: absolute !default;
+$elevator-list-item-code-current-right: 60px !default;
+$elevator-list-item-code-current-top: 50% !default;
+$elevator-list-item-code-current-transform: translateY(-50%) !default;
+$elevator-list-item-code-current-text-align: center !default;
+$elevator-list-item-bars-position: absolute !default;
+$elevator-list-item-bars-right: 8px !default;
+$elevator-list-item-bars-top: 50% !default;
+$elevator-list-item-bars-transform: translateY(-50%) !default;
+$elevator-list-item-bars-padding: 15px 0 !default;
+$elevator-list-item-bars-background-color: #eeeff2 !default;
+$elevator-list-item-bars-border-radius: 6px !default;
+$elevator-list-item-bars-text-align: center !default;
+$elevator-list-item-bars-z-index: 1 !default;
+$elevator-list-item-bars-inner-item-padding: 3px !default;
+$elevator-list-item-bars-inner-item-font-size: 10px !default;
+$elevator-list-fixed-color: $primary-color !default;
+$elevator-list-fixed-bg-color: $white !default;
+$elevator-list-fixed-box-shadow: 0 0 10px #eee !default;
+$elevator-list-item-bars-inner-item-active-color: $primary-color !default;
+
+//navbar
+$navbar-height: 44px !default;
+$navbar-margin-bottom: 20px !default;
+$navbar-padding: 13px 16px !default;
+$navbar-background: $white !default;
+$navbar-box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1) !default;
+$navbar-color: $title-color2 !default;
+$navbar-title-base-font: $font-size-2 !default;
+$navbar-title-font: $font-size-2 !default;
+$navbar-title-font-weight: 0 !default;
+$navbar-title-font-color: $navbar-color !default;
+$navbar-title-width: 100px !default;
+$navbar-title-icon-margin: 0 0 0 13px !default;
+
+// layout
+$row-content-color: #fff !default;
+$row-content-background-color: #ff8881 !default;
+$row-content-light-background-color: #ffc7c4 !default;
+$row-content-border-radius: 6px !default;
+$row-content-height: 50px !default;
+$row-content-line-height: 40px !default;
+$col-default-margin-bottom: 15px !default;
+
+
+// searchbar
+$searchbar-background: $white !default;
+$searchbar-right-out-color: $black !default;
+$searchbar-padding: 9px 16px !default;
+$searchbar-width: 100% !default;
+$searchbar-action-text-color: #323233 !default;
+$searchbar-input-background: #f7f7f7 !default;
+$searchbar-input-padding: 0 28px !default;
+$searchbar-input-height: 32px !default;
+$searchbar-input-width: 100% !default;
+$searchbar-input-border-radius: 16px !default;
+$searchbar-input-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04) !default;
+
+// progress
+$progress-border-radius: 12px !default;
+$progress-text-padding: 0 5px !default;
+$progress-text-font-size: 13px !default;
+$progress-insidetext-border-radius: 5px !default;
+$progress-small-height: 5px !default;
+$progress-base-height: 10px !default;
+$progress-large-height: 15px !default;
+$progress-small-padding: 0 4px !default;
+$progress-base-padding: 0 5px !default;
+$progress-large-padding: 0 5px !default;
+$progress-small-font-size: 7px !default;
+$progress-base-font-size: 9px !default;
+$progress-large-font-size: 13px !default;
+
+// animatingnumbers
+$countup-height: 32px !default;
+$countup-base-size: 18px !default;
+$countup-border-raduis: 4px !default;
+$countup-lr-margin: 1px !default;
+$countup-bgcolor: #031f63 !default;
+$countup-color: #ffffff !default;
+$countup-width: 24px !default;
+

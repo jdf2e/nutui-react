@@ -1,76 +1,206 @@
-# Tag 标签
+# Tag
 
-### 介绍
+### introduce
 
-用于标记和分类的标签。
+Label for labeling and classification.
 
-### 安装
+### Install
 
 ``` javascript
 import { Tag } from '@nutui/nutui-react';
 ```
 
-## 代码实例
+## Code instance
 
-### 基础用法
+### Basic usage
 
-```tsx
-<Tag type="primary">标签</Tag>
-<Tag type="success">标签</Tag>
-<Tag type="danger">标签</Tag>
-<Tag type="warning">标签</Tag>
-```
-
-### 空心样式
+:::demo
 
 ```tsx
-<Tag plain>标签</Tag>
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag type="primary">Label</Tag>
+      <Tag type="success">Label</Tag>
+      <Tag type="danger">Label</Tag>
+      <Tag type="warning">Label</Tag>
+    </>
+  )
+}
+export default App;
 ```
 
-### 圆角样式
+:::
+
+### Hollow style
+
+:::demo
 
 ```tsx
-<Tag round type="primary">标签</Tag>
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag plain>Label</Tag>
+    </>
+  )
+}
+export default App;
 ```
 
-### 标记样式
+:::
+
+### Rounded style
+
+:::demo
 
 ```tsx
-<Tag mark type="primary">标签</Tag>
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag round type="primary">Label</Tag>
+    </>
+  )
+}
+export default App;
 ```
 
-### 可关闭标签
+:::
+
+### Label style
+
+:::demo
 
 ```tsx
-<Tag isShow={isShow} closeable onClick={close} type="primary">标签</Tag>
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag mark type="primary">Label</Tag>
+    </>
+  )
+}
+export default App;
 ```
 
-### 自定义颜色
+:::
+
+### Can close label
+
+:::demo
 
 ```tsx
-<Tag color="#FA685D">标签</Tag>
-<Tag color="#E9E9E9" text-color="#999999">标签</Tag>
-<Tag color="#FA2400" plain>标签</Tag>
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag  closeable onClose={()=>alert('Tag closed')}  type="primary">标签</Tag>
+    </>
+  )
+}
+export default App;
 ```
+
+:::
+
+### Custom color
+
+:::demo
+
+```tsx
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag color="#FA685D">Label</Tag>
+      <Tag color="#E9E9E9" textColor="#999999">Label</Tag>
+      <Tag color="#FA2400" plain>Label</Tag>
+    </>
+  )
+}
+export default App;
+```
+
+:::
+
+### Click event
+
+:::demo
+
+```tsx
+import React from "react";
+import { Tag } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Tag type='primary' onClick={()=>alert('Tag clicked')}>Tag</Tag>
+    </>
+  )
+}
+export default App;
+```
+
+:::
+
+### Display control
+
+:::demo
+
+```tsx
+import React, {useState} from "react";
+import { Tag,Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const  [isShow,setIsShow] = useState(true) // Whether to display a tag component
+  return (
+    <>
+    {
+      isShow? (
+        <Tag type='primary' onClick={()=>alert('Tag clicked')}>Label</Tag>
+      ):null
+    }  
+    <Button type='default' size="small" onClick={()=>{setIsShow(false)}} >delete</Button>
+    </>
+  )
+  
+}
+export default App;
+```
+
+:::
 
 ## API
 
 ### Props
 
-| 字段       | 说明                                             | 类型    | 默认值    |
+| Field       | illustrate                                      | type    | Defaults    |
 |------------|--------------------------------------------------|---------|-----------|
-| type       | 标签类型，可选值为primary success danger warning | String  | `default` |
-| color      | 标签颜色                                         | String  | -         |
-| text-color | 文本颜色，优先级高于color属性                    | String  | `white`   |
-| plain      | 是否为空心样式                                   | Boolean | `false`   |
-| round      | 是否为圆角样式                                   | Boolean | `false`   |
-| mark       | 是否为标记样式                                   | Boolean | `false`   |
-| closeable  | 是否为可关闭标签                                 | Boolean | `false`   |
-
+| type       | Label type, the optional value is primary success danger warning | String  | `default` |
+| color      | Label color                                         | String  | -         |
+| texColor | Text color, priority is higher than the color attribute  | String  | `white`   |
+| plain      | Whether it is hollow                               | Boolean | `false`   |
+| round      | Whether it is a rounded style                      | Boolean | `false`   |
+| mark       | Whether it is a tag style                          | Boolean | `false`   |
+| closeable  | Whether it can be closed label                     | Boolean | `false`   |
 
 ### Event
 
-| 事件名称 | 说明     | 回调参数 |
+| Event name | illustrate  | Callback parameter |
 |----------|----------|----------|
-| close    | 关闭事件 | event    |
-
+| onClick    | Click event | event    |
+| onClose    | Close event | event    |
