@@ -5,7 +5,6 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import ReactDOM from 'react-dom'
 import Trigger from './Trigger'
 import Icon from '@/packages/icon'
 
@@ -24,11 +23,12 @@ export function findDOMNode<T = HTMLElement>(
   if (node instanceof HTMLElement) {
     return node as unknown as T
   }
-  return ReactDOM.findDOMNode(node) as unknown as T
+  return node as unknown as T
 }
-const getEleAttr = (ele: HTMLElement | Element) => {
+const getEleAttr = async (ele: HTMLElement | Element) => {
   if (ele && ele.getBoundingClientRect) {
-    return ele.getBoundingClientRect()
+    const res = await ele.getBoundingClientRect()
+    return res
   }
   return null
 }
@@ -62,11 +62,11 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
     ...props,
   }
   const goodItem = useRef(null)
-  const aa = goodItem.current && findDOMNode(goodItem.current)
-  setTimeout(() => {
+  const aa = goodItem.current
+  setTimeout(async () => {
     if (aa) {
-      setElWidth((getEleAttr(aa) as any).width)
-      setElHeight((getEleAttr(aa) as any).height)
+      setElWidth(((await getEleAttr(aa)) as any).width)
+      setElHeight(((await getEleAttr(aa)) as any).height)
     }
   })
   const [classes, setClasses] = useState('')
@@ -81,13 +81,13 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
   }, [list, theme])
   const getStyle = () => {
     const style: CSSProperties = {}
-    if (location == 'top') {
+    if (location === 'top') {
       style.bottom = elHeight + 20
       style.left = 0
-    } else if (location == 'right') {
+    } else if (location === 'right') {
       style.top = 0
       style.right = -elWidth - 20
-    } else if (location == 'left') {
+    } else if (location === 'left') {
       style.top = 0
       style.left = -elWidth - 20
     } else {
@@ -102,13 +102,13 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
   }
   const getArrowStyle = () => {
     const style: CSSProperties = {}
-    if (location == 'top') {
+    if (location === 'top') {
       style.bottom = -20
       style.left = elWidth / 2
-    } else if (location == 'right') {
+    } else if (location === 'right') {
       style.top = 20
       style.left = -20
-    } else if (location == 'left') {
+    } else if (location === 'left') {
       style.top = 20
       style.right = -20
     } else {
