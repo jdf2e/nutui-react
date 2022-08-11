@@ -72,8 +72,8 @@ export const TextArea: FunctionComponent<
     }
   }, [defaultValue])
 
-  const textChange = (event: Event) => {
-    const text = event.target as any
+  const textChange = (event: any) => {
+    const text = event.detail as any
     if (maxlength && text.value.length > Number(maxlength)) {
       text.value = text.value.substring(0, Number(maxlength))
     }
@@ -87,10 +87,10 @@ export const TextArea: FunctionComponent<
     onFocus && onFocus(event)
   }
 
-  const textBlur = (event: Event) => {
+  const textBlur = (event: any) => {
     if (disabled) return
     if (readonly) return
-    const text = event.target as any
+    const text = event.detail as any
     onChange && onChange(text.value, event)
     onBlur && onBlur(event)
   }
@@ -111,6 +111,9 @@ export const TextArea: FunctionComponent<
         disabled={disabled}
         readOnly={readonly}
         value={inputValue}
+        onInput={(e: any) => {
+          textChange(e)
+        }}
         onChange={(e: any) => {
           textChange(e)
         }}
