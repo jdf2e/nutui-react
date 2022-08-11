@@ -40,12 +40,14 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
+import  React, {useState} from "react";
 import { Range,Cell,Toast } from '@nutui/nutui-react';
 
 const App = () => {
+    const [value0, SetValue0] = useState([30, 60])
     const change = (value: number, name?: string) => {
         Toast.text(`当前值：${value}`)
+        SetValue0(value)
     }
     const cellStyle = {
         padding: '40px 18px',
@@ -55,7 +57,7 @@ const App = () => {
         <Cell style={cellStyle}>
         <Range
             range
-            modelValue={[30, 60]}
+            modelValue={value0}
             change={(value) => {
                 change(value)
             }}
@@ -282,6 +284,7 @@ export default App;
 ```tsx
 import  React, {useState} from "react";
 import { Range,Cell,Toast } from '@nutui/nutui-react';
+import "./demo.scss"
 
 const App = () => {
     const [value2, SetValue2] = useState(60)
@@ -297,7 +300,7 @@ const App = () => {
         <Cell style={cellStyle}>
         <Range
             modelValue={value2}
-            button={<div className="custom-button">{value2}</div>}
+            button={<div className="range-custom-button">{value2}</div>}
             change={(value: number) => {
                 change(value, 'value2')
             }}
@@ -310,24 +313,180 @@ export default App;
 ```
 :::
 
+### 垂直方向
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Range,Cell,Toast } from '@nutui/nutui-react';
+
+const App = () => {
+    const [value3, SetValue3] = useState(20)
+    const [value4, SetValue4] = useState([20, 80])
+    const change = (value: number, name?: string) => {
+        Toast.text(`当前值：${value}`)
+        switch (name) {
+        case 'value3':
+            SetValue3(value)
+            break
+        case 'value4':
+            SetValue4(value)
+            break
+        default:
+            break
+        }
+    }
+    const cellStyle = {
+        padding: '40px 18px',
+    }
+    const verticalStyle = {
+        height: '180px',
+        padding: '10px',
+    }
+    return (
+    <Cell style={verticalStyle}>
+        <div style={{ width: '150px' }}>
+        <Range
+            modelValue={value3}
+            vertical
+            change={(value: number) => {
+            change(value, 'value3')
+            }}
+        />
+        </div>
+        <div style={{ width: '150px' }}>
+        <Range
+            modelValue={value4}
+            vertical
+            range
+            change={(value: number) => {
+            change(value, 'value4')
+            }}
+        />
+        </div>
+    </Cell>
+    )
+};
+export default App;
+```
+:::
+
+### 刻度标记
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Range,Cell,Toast } from '@nutui/nutui-react';
+
+const App = () => {
+    const [value5, SetValue5] = useState(60)
+    const [value6, SetValue6] = useState([20, 80])
+    const [value7, SetValue7] = useState(60)
+    const [value8, SetValue8] = useState([20, 80])
+    const [marks, SetMarks] = useState({
+        0: 0,
+        20: 20,
+        40: 40,
+        60: 60,
+        80: 80,
+        100: 100,
+    })
+    const change = (value: number, name?: string) => {
+        Toast.text(`当前值：${value}`)
+        switch (name) {
+            case 'value5':
+                SetValue5(value)
+                break
+            case 'value6':
+                SetValue6(value)
+                break
+            case 'value7':
+                SetValue7(value)
+                break
+            case 'value8':
+                SetValue8(value)
+                break
+            default:
+                break
+        }
+    }
+    const cellStyle = {
+        padding: '40px 18px',
+    }
+    const verticalStyle = {
+        height: '180px',
+        padding: '10px',
+    }
+    return (
+    <>
+        <Cell style={cellStyle}>
+          <Range
+            modelValue={value5}
+            hiddenRange
+            marks={marks}
+            change={(value: number) => {
+              change(value, 'value5')
+            }}
+          />
+        </Cell>
+        <Cell style={cellStyle}>
+          <Range
+            modelValue={value6}
+            marks={marks}
+            range
+            change={(value: number) => {
+              change(value, 'value6')
+            }}
+          />
+        </Cell>
+        <Cell style={verticalStyle}>
+          <Range
+            modelValue={value7}
+            vertical
+            hiddenRange
+            marks={marks}
+            change={(value: number) => {
+              change(value, 'value7')
+            }}
+          />
+          <Range
+            modelValue={value8}
+            vertical
+            marks={marks}
+            range
+            change={(value: number) => {
+              change(value, 'value8')
+            }}
+          />
+        </Cell>
+    </>
+    )
+};
+export default App;
+```
+:::
 
 ## API
 
 ### Props
 
 | 参数          | 说明               | 类型             | 默认值                   |
-| ------------- | ------------------ | ---------------- | ------------------------ |
+| ------------- | -------------------- | ---------------- | ------------------------ |
 | modelValue    | 当前进度百分比     | Number、Number[] | `0`                      |
 | range         | 是否开启双滑块模式 | Boolean          | `false`                  |
 | max           | 最大值             | Number、String   | `100`                    |
 | min           | 最小值             | Number、String   | `0`                      |
 | step          | 步长               | Number、String   | `1`                      |
 | disabled      | 是否禁用滑块       | Boolean          | `false`                  |
+| vertical | 是否竖向展示 | Boolean | `false` |
 | hiddenRange   | 是否隐藏范围值     | Boolean          | `false`                  |
 | hiddenTag     | 是否隐藏标签       | Boolean          | `false`                  |
 | activeColor   | 进度条激活态颜色   | String           | `rgba(250, 44, 25, 1)`   |
 | inactiveColor | 进度条非激活态颜色 | String           | `rgba(255, 163, 154, 1)` |
 | buttonColor   | 按钮颜色           | String           | `rgba(250, 44, 25, 1)`   |
+| marks | 刻度标示 | Object{key: number}    | {} |
 
 ### Events
 

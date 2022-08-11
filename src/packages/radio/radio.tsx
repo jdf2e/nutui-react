@@ -89,11 +89,13 @@ export const Radio: FunctionComponent<
     )
   }
   const color = () => {
-    return !disabledStatement
-      ? checkedStatement
-        ? 'nut-radio__icon'
-        : 'nut-radio__icon--unchecked'
-      : 'nut-radio__icon--disable'
+    if (disabledStatement) {
+      return 'nut-radio__icon--disable'
+    }
+    if (checkedStatement) {
+      return 'nut-radio__icon'
+    }
+    return 'nut-radio__icon--unchecked'
   }
   const renderIcon = () => {
     const { iconName, iconSize, iconActiveName } = props
@@ -106,20 +108,25 @@ export const Radio: FunctionComponent<
       />
     )
   }
+  const renderRadioItem = () => {
+    if (shape === 'button') {
+      return renderButton()
+    }
+    if (reverseState) {
+      return [renderLabel(), renderIcon()]
+    }
+    return [renderIcon(), renderLabel()]
+  }
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
-    if (disabledStatement) return
+    if (disabledStatement || checkedStatement) return
     setCheckedStatement(!checkedStatement)
-    props.onChange && props.onChange(e)
+    onChange && onChange(e)
     context && context.onChange(valueStatement)
   }
   const reverseState = textPosition === 'left'
   return (
     <div className={`nut-radio ${className}`} onClick={handleClick} {...rest}>
-      {props.shape == 'button'
-        ? renderButton()
-        : reverseState
-        ? [renderLabel(), renderIcon()]
-        : [renderIcon(), renderLabel()]}
+      {renderRadioItem()}
     </div>
   )
 }
