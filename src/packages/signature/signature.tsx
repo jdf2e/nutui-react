@@ -119,6 +119,8 @@ export const Signature: FunctionComponent<
       case 'jpg':
         dataurl = canvas.toDataURL('image/jpeg', 0.8)
         break
+      default:
+        dataurl = canvas.toDataURL('image/png')
     }
     clear()
     props.confirm && props.confirm(canvas, dataurl as string)
