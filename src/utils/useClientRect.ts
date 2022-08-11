@@ -12,7 +12,7 @@ function isWindow(val: unknown): val is Window {
   return val === window
 }
 
-export const useRect = (elementRef: Element | Window | undefined) => {
+export const getRect = (elementRef: Element | Window | undefined) => {
   const element = elementRef
 
   if (isWindow(element)) {
