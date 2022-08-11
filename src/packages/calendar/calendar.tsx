@@ -13,8 +13,16 @@ export interface CalendarProps {
   defaultValue?: string | string[]
   startDate?: string
   endDate?: string
+  showToday?: boolean
+  startText?: string
+  endText?: string
+  confirmText?: string
+  showTitle?: boolean
+  showSubTitle?: boolean
+  toDateAnimation?: boolean
   onClose?: () => void
   onChoose?: (param: string) => void
+  onSelected?: (data: string) => void
 }
 
 const defaultProps = {
@@ -26,8 +34,16 @@ const defaultProps = {
   defaultValue: '',
   startDate: Utils.getDay(0),
   endDate: Utils.getDay(365),
+  showToday: true,
+  startText: '开始',
+  endText: '结束',
+  confirmText: '确认',
+  showTitle: true,
+  showSubTitle: true,
+  toDateAnimation: true,
   onClose: () => {},
   onChoose: (param: string) => {},
+  onSelected: (data: string) => {}
 } as CalendarProps
 
 export const Calendar: FunctionComponent<
@@ -35,7 +51,6 @@ export const Calendar: FunctionComponent<
 > = (props) => {
   const { locale } = useConfig()
   const {
-    children,
     poppable,
     visible,
     type,
@@ -44,21 +59,71 @@ export const Calendar: FunctionComponent<
     defaultValue,
     startDate,
     endDate,
+    showToday,
+    startText,
+    endText,
+    confirmText,
+    showTitle,
+    showSubTitle,
+    toDateAnimation,
     onClose,
     onChoose,
+    onSelected
   } = { ...defaultProps, ...props }
+
+  const children = Array.isArray(props.children)
+    ? props.children
+    : [props.children]
+
+  const slot = children.reduce((slot: any, item: React.ReactElement) => {
+    const data = slot
+    if (item && item.props) {
+      data[item.props.slot] = item
+    }
+    return data
+  }, {});
 
   const close = () => {
     onClose && onClose()
   }
 
-  const update = () => {}
   const choose = (param: string) => {
     close()
     onChoose && onChoose(param)
   }
   const closePopup = () => {
     close()
+  }
+
+  const select = (param: string) => {
+    onSelected && onSelected(param);
+  }
+
+  const renderItem = () => {
+    return <CalendarItem
+            type={type}
+            isAutoBackFill={isAutoBackFill}
+            poppable={poppable}
+            title={locale.calendaritem.title || title}
+            defaultValue={defaultValue}
+            startDate={startDate}
+            endDate={endDate}
+            showToday={showToday}
+            startText={startText}
+            endText={endText}
+            confirmText={confirmText}
+            showTitle={showTitle}
+            showSubTitle={showSubTitle}
+            toDateAnimation={toDateAnimation}
+            onClose={close}
+            onChoose={choose}
+            onSelected={select}
+          >
+            { slot.btn }
+            { slot.day }
+            { slot.topInfo }
+            { slot.bottomInfo }
+          </CalendarItem>
   }
 
   return (
@@ -69,35 +134,14 @@ export const Calendar: FunctionComponent<
           position="bottom"
           round
           closeable
+          destroyOnClose
           onClickOverlay={closePopup}
           onClickCloseIcon={closePopup}
+          style={{ height: '85vh' }}
         >
-          <CalendarItem
-            type={type}
-            isAutoBackFill={isAutoBackFill}
-            poppable={poppable}
-            title={locale.calendaritem.title || title}
-            defaultValue={defaultValue}
-            startDate={startDate}
-            endDate={endDate}
-            onUpdate={update}
-            onClose={close}
-            onChoose={choose}
-          />
+          { renderItem() }
         </Popup>
-      ) : (
-        <CalendarItem
-          type={type}
-          isAutoBackFill={isAutoBackFill}
-          poppable={poppable}
-          title={locale.calendaritem.title}
-          defaultValue={defaultValue}
-          startDate={startDate}
-          endDate={endDate}
-          onClose={close}
-          onChoose={choose}
-        />
-      )}
+      ) : renderItem() }
     </>
   )
 }

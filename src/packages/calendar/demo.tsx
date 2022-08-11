@@ -37,8 +37,8 @@ const CalendarDemo = () => {
       cfbdc781: '自定义日历-自动回填',
       c3a3a1d2: '选择日期',
       e51e4582: '平铺展示',
-      '7db1a8b2': '禁用状态',
-      a52bef0c: '加载状态',
+      '7db1a8b2': '选择多个日期',
+      a52bef0c: '已选择',
       d04fcbda: '加载中',
       '0aaad620': '按钮尺寸',
       '60a53514': '收藏',
@@ -59,8 +59,8 @@ const CalendarDemo = () => {
       cfbdc781: '自定義日曆-自動回填',
       c3a3a1d2: '選擇日期',
       e51e4582: '平鋪展示',
-      '7db1a8b2': '禁用狀態',
-      a52bef0c: '載入狀態',
+      '7db1a8b2': '選擇多個日期',
+      a52bef0c: '已選擇',
       d04fcbda: '載入中',
       '0aaad620': '按鈕尺寸',
       '60a53514': '收藏',
@@ -81,8 +81,8 @@ const CalendarDemo = () => {
       cfbdc781: 'Custom Calendar - Auto Backfill',
       c3a3a1d2: 'select date',
       e51e4582: 'Tiled display',
-      '7db1a8b2': 'Disabled State',
-      a52bef0c: 'Load State',
+      '7db1a8b2': 'select multiple dates',
+      a52bef0c: 'chosen',
       d04fcbda: 'Loading',
       '0aaad620': 'Button size',
       '60a53514': 'Favorite',
@@ -95,14 +95,16 @@ const CalendarDemo = () => {
       '6ab47cd2': 'Gradient button',
     },
   })
-  const [date, setDate] = useState('')
+  const [date, setDate] = useState('2022-08-10')
   const [date1, setDate1] = useState(['2019-12-23', '2019-12-26'])
   const [date2, setDate2] = useState('2020-07-08')
   const [date3, setDate3] = useState('')
+  const [date4, setDate4] = useState<string[]>([])
   const [dateWeek, setDateWeek] = useState('')
   const [isVisible, setIsVisible] = useState(false)
   const [isVisible1, setIsVisible1] = useState(false)
   const [isVisible3, setIsVisible3] = useState(false)
+  const [isVisible4, setIsVisible4] = useState(false)
 
   const openSwitch = () => {
     setIsVisible(true)
@@ -128,6 +130,10 @@ const CalendarDemo = () => {
     setIsVisible3(false)
   }
 
+  const closeSwitch4 = () => {
+    setIsVisible4(false)
+  }
+
   const setChooseValue = (param: string) => {
     setDate(param[3])
     setDateWeek(param[4])
@@ -146,6 +152,17 @@ const CalendarDemo = () => {
     setDate3(param[3])
   }
 
+  const setChooseValue4 = (chooseData: any) => {
+    const dateArr = chooseData.map((item: any) => {
+      return item[3];
+    });
+    setDate4([...dateArr])
+  }
+
+  const select = (param: string) => {
+    console.log(param);
+  }
+
   return (
     <>
       <div className="demo">
@@ -158,11 +175,12 @@ const CalendarDemo = () => {
         <Calendar
           visible={isVisible}
           defaultValue={date}
-          startDate="2019-10-11"
-          endDate="2029-11-11"
+          startDate="2022-01-11"
+          endDate="2029-11-30"
           onClose={closeSwitch}
           onChoose={setChooseValue}
         />
+
         <Cell
           title={translated.a74a1fd4}
           desc={
@@ -180,7 +198,24 @@ const CalendarDemo = () => {
           endDate="2021-01-08"
           onClose={closeSwitch1}
           onChoose={setChooseValue1}
+          onSelected={select}
         />
+
+        <Cell
+          title={translated['7db1a8b2']}
+          desc={ date4 && date4.length ? `${translated.a52bef0c}${date4.length}` : translated.b840c88f }
+          onClick={openSwitch1}
+        />
+        <Calendar
+          visible={isVisible4}
+          defaultValue={date4}
+          type="multiple"
+          startDate="2022-01-01"
+          endDate="2022-09-10"
+          onClose={closeSwitch4}
+          onChoose={setChooseValue4}
+        />
+
         <h2>{translated.cfbdc781}</h2>
         <Cell
           title={translated.c3a3a1d2}

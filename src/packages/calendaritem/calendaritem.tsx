@@ -7,6 +7,9 @@ import { useConfig } from '@/packages/configprovider'
 
 type InputDate = string | string[]
 
+interface Obj {
+  [x: string]: string
+}
 interface Day {
   day: string | number
   type: string
@@ -16,6 +19,8 @@ interface MonthInfo {
   curData: string[] | string
   title: string
   monthData: Day[]
+  cssHeight?: number;
+  cssScrollHeight?: number;
 }
 
 interface CalendarState {
@@ -31,7 +36,14 @@ interface CalendarState {
   endData: InputDate
   isRange: boolean
   timer: number
-  monthsData: MonthInfo[]
+  monthsData: any[]
+  avgHeight: number;
+  propStartDate: string;
+  propEndDate: string;
+  currentIndex: number;
+  unLoadPrev: boolean;
+  monthsNum: number;
+  defaultRange: any[];
 }
 
 export interface CalendarItemProps {
@@ -43,9 +55,17 @@ export interface CalendarItemProps {
   defaultValue: InputDate
   startDate?: InputDate
   endDate?: InputDate
+  showToday?: boolean
+  startText?: string
+  endText?: string
+  confirmText?: string
+  showTitle?: boolean
+  showSubTitle?: boolean
+  toDateAnimation?: boolean
   onChoose?: (data: any) => void
   onUpdate?: () => void
   onClose?: () => void
+  onSelected?: (data: string) => void
 }
 const defaultProps = {
   type: 'one',
@@ -56,9 +76,17 @@ const defaultProps = {
   defaultValue: '',
   startDate: Utils.getDay(0),
   endDate: Utils.getDay(365),
+  showToday: true,
+  startText: '开始',
+  endText: '结束',
+  confirmText: '确认',
+  showTitle: true,
+  showSubTitle: true,
+  toDateAnimation: true,
   onChoose: (data: any) => {},
   onUpdate: () => {},
   onClose: () => {},
+  onSelected: (data: string) => {}
 } as CalendarItemProps
 
 export const CalendarItem: FunctionComponent<
@@ -73,9 +101,17 @@ export const CalendarItem: FunctionComponent<
     defaultValue,
     startDate,
     endDate,
+    showToday,
+    startText,
+    endText,
+    confirmText,
+    showTitle,
+    showSubTitle,
+    toDateAnimation,
     onChoose,
     onUpdate,
     onClose,
+    onSelected
   } = { ...defaultProps, ...props }
 
   const weeks = locale.calendaritem.weekdays
@@ -84,14 +120,18 @@ export const CalendarItem: FunctionComponent<
   const [monthsData, setMonthsData] = useState<MonthInfo[]>([])
 
   const [state] = useState<CalendarState>({
+    defaultRange: [],
     currDate: '',
+    propStartDate: '',
+    propEndDate: '',
+    unLoadPrev: false,
     touchParams: {
       startY: 0,
       endY: 0,
       startTime: 0,
       endTime: 0,
       lastY: 0,
-      lastTime: 0,
+      lastTime: 0
     },
     transformY: 0,
     translateY: 0,
@@ -102,13 +142,30 @@ export const CalendarItem: FunctionComponent<
     dayPrefix: 'calendar-month-day',
     startData: '',
     endData: '',
-    isRange: type === 'range',
+    isRange: props.type === 'range',
     timer: 0,
+    currentIndex: 0,
+    avgHeight: 0,
+    monthsNum: 0
   })
 
   const weeksPanel = useRef<HTMLDivElement>(null)
   const months = useRef<HTMLDivElement>(null)
   const monthsPanel = useRef<HTMLDivElement>(null)
+  const viewArea = useRef<HTMLDivElement>(null);
+  let viewHeight = 0;
+
+  const children = Array.isArray(props.children)
+    ? props.children
+    : [props.children]
+
+  const slot = children.reduce((slot: any, item: React.ReactElement) => {
+    const data = slot
+    if (item && item.props) {
+      data[item.props.slot] = item
+    }
+    return data
+  }, {});
 
   const b = bem('calendar')
 
@@ -142,50 +199,55 @@ export const CalendarItem: FunctionComponent<
     return Utils.isEqual(state.currDate[1], currDate)
   }
 
-  const getCurrDate = (day: Day, month: MonthInfo, isRange?: boolean) => {
-    return isRange
-      ? `${month.curData[3]}-${month.curData[4]}-${Utils.getNumTwoBit(
-          +day.day
-        )}`
-      : `${month.curData[0]}-${month.curData[1]}-${Utils.getNumTwoBit(
-          +day.day
-        )}`
+  const isMultiple = (currDate: string) => {
+    if (state.currDate.length > 0) {
+      return (state.currDate as string[]).some((item: any) => {
+        return Utils.isEqual(item, currDate);
+      });
+    }
+    return false
+  };
+
+  const getCurrDate = (day: Day, month: MonthInfo) => {
+    return `${month.curData[0]}-${month.curData[1]}-${Utils.getNumTwoBit(+day.day)}`
   }
 
-  const getClass = (day: Day, month: MonthInfo, isRange?: boolean) => {
-    const currDate = getCurrDate(day, month, isRange)
+  const getClass = (day: Day, month: MonthInfo) => {
+    const currDate = getCurrDate(day, month)
+    const { type } = props;
     if (day.type === 'curr') {
       if (
-        (!state.isRange && Utils.isEqual(state.currDate as string, currDate)) ||
-        (state.isRange && (isStart(currDate) || isEnd(currDate)))
+        Utils.isEqual(state.currDate as string, currDate) ||
+        (type === 'range' && (isStart(currDate) || isEnd(currDate))) ||
+        (type === 'multiple' && isMultiple(currDate))
       ) {
-        return `${state.dayPrefix}-active`
-      }
-      if (
-        (startDate && Utils.compareDate(currDate, startDate as string)) ||
-        (endDate && Utils.compareDate(endDate as string, currDate))
+        return `${state.dayPrefix}-active`;
+      } else if (
+        (state.propStartDate && Utils.compareDate(currDate, state.propStartDate)) ||
+        (state.propEndDate && Utils.compareDate(state.propEndDate, currDate))
       ) {
-        return `${state.dayPrefix}-disabled`
-      }
-      if (
-        state.isRange &&
+        return `${state.dayPrefix}-disabled`;
+      } else if (
+        type === 'range' &&
         Array.isArray(state.currDate) &&
-        Object.values(state.currDate).length == 2 &&
+        Object.values(state.currDate).length === 2 &&
         Utils.compareDate(state.currDate[0], currDate) &&
         Utils.compareDate(currDate, state.currDate[1])
       ) {
-        return `${state.dayPrefix}-choose`
+        return `${state.dayPrefix}-choose`;
       }
+
       return null
+
     }
-    return `${state.dayPrefix}-disabled`
+    return `${state.dayPrefix}-disabled`;
   }
 
   const isActive = (day: Day, month: MonthInfo) => {
     return (
       state.isRange &&
-      day.type == 'curr' &&
-      getClass(day, month) == 'calendar-month-day-active'
+      day.type === 'curr' &&
+      getClass(day, month) === 'calendar-month-day-active'
     )
   }
 
@@ -195,8 +257,10 @@ export const CalendarItem: FunctionComponent<
   }
 
   const confirm = () => {
-    if ((state.isRange && state.chooseData.length == 2) || !state.isRange) {
-      onChoose && onChoose(state.chooseData)
+    const { type } = props;
+    if ((type === 'range' && state.chooseData.length === 2) || type !== 'range') {
+      const chooseData = state.chooseData.slice(0);
+      onChoose && onChoose(chooseData)
       if (poppable) {
         onUpdate && onUpdate()
       }
@@ -206,39 +270,70 @@ export const CalendarItem: FunctionComponent<
   const chooseDay = (
     day: Day,
     month: MonthInfo,
-    isFirst?: boolean,
-    isRange?: boolean
+    isFirst?: boolean
   ) => {
-    if (getClass(day, month, isRange) != `${state.dayPrefix}-disabled`) {
-      let days = [...month.curData]
-      days = isRange ? days.splice(3) : days.splice(0, 3)
+    if (getClass(day, month) !== `${state.dayPrefix}-disabled`) {
+      const { type } = props;
+      const days = [...month.curData]
       days[2] =
         typeof day.day === 'number' ? Utils.getNumTwoBit(day.day) : day.day
       days[3] = `${days[0]}-${days[1]}-${days[2]}`
       days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2])
-      if (!state.isRange) {
-        state.currDate = days[3]
-        state.chooseData = [...days]
-      } else {
-        if (Object.values(state.currDate).length === 2) {
-          state.currDate = [days[3]]
-        } else if (Utils.compareDate(state.currDate[0], days[3])) {
-          Array.isArray(state.currDate) && state.currDate.push(days[3])
+      if (type === 'multiple') {
+        if (state.currDate.length > 0) {
+          let hasIndex: any = '';
+          (state.currDate as string[]).forEach((item: any, index: number) => {
+            if (item === days[3]) {
+              hasIndex = index;
+            }
+          });
+          if (isFirst) {
+            state.chooseData.push([...days]);
+          } else {
+            if (hasIndex !== '') {
+              (state.currDate as string[]).splice(hasIndex, 1);
+              state.chooseData.splice(hasIndex, 1);
+            } else {
+              (state.currDate as string[]).push(days[3]);
+              state.chooseData.push([...days]);
+            }
+          }
         } else {
-          Array.isArray(state.currDate) && state.currDate.unshift(days[3])
+          state.currDate = [days[3]];
+          state.chooseData = [[...days]];
+        }
+      } else if (type === 'range') {
+        const curDataLength = Object.values(state.currDate).length;
+        if (curDataLength === 2 || curDataLength === 0) {
+          state.currDate = [days[3]];
+        } else {
+          if (Utils.compareDate(state.currDate[0], days[3])) {
+            Array.isArray(state.currDate) && state.currDate.push(days[3]);
+          } else {
+            Array.isArray(state.currDate) && state.currDate.unshift(days[3]);
+          }
         }
 
-        if (state.chooseData.length == 2 || !state.chooseData.length) {
-          state.chooseData = [...days]
-        } else if (Utils.compareDate(state.chooseData[3], days[3])) {
-          state.chooseData = [[...state.chooseData], [...days]]
+        if (state.chooseData.length === 2 || !state.chooseData.length) {
+          state.chooseData = [[...days]];
         } else {
-          state.chooseData = [[...days], [...state.chooseData]]
+          if (Utils.compareDate(state.chooseData[0][3], days[3])) {
+            state.chooseData = [...state.chooseData, [...days]];
+          } else {
+            state.chooseData = [[...days], ...state.chooseData];
+          }
         }
+      } else {
+        state.currDate = days[3];
+        state.chooseData = [...days];
       }
 
-      if (isAutoBackFill && !isFirst) {
-        confirm()
+      if (!isFirst) {
+        // 点击日期 触发
+        onSelected && onSelected(state.chooseData);
+        if (isAutoBackFill || !poppable) {
+          confirm();
+        }
       }
 
       setMonthsData(state.monthsData.slice())
@@ -257,23 +352,32 @@ export const CalendarItem: FunctionComponent<
     return isActive(day, month)
   }
 
+  // 开始结束时间是否相等
+  const rangeTip = () => {
+    if (state.currDate.length >= 2) {
+      return Utils.isEqual(state.currDate[0], state.currDate[1]);
+    }
+  };
+
   // 获取当前月数据
   const getCurrData = (type: string) => {
     const monthData =
-      type == 'prev'
+      type === 'prev'
         ? state.monthsData[0]
         : state.monthsData[state.monthsData.length - 1]
     let year = parseInt(monthData.curData[0])
     let month = parseInt(monthData.curData[1].toString().replace(/^0/, ''))
     switch (type) {
       case 'prev':
-        month == 1 && (year -= 1)
-        month = month == 1 ? 12 : --month
+        month === 1 && (year -= 1)
+        month = month === 1 ? 12 : --month
         break
       case 'next':
-        month == 12 && (year += 1)
-        month = month == 12 ? 1 : ++month
+        month === 12 && (year += 1)
+        month = month === 12 ? 1 : ++month
         break
+      default:
+        break;
     }
     return [
       year,
@@ -283,23 +387,54 @@ export const CalendarItem: FunctionComponent<
   }
 
   // 获取日期状态
-  const getDaysStatus = (days: number, type: string) => {
+  const getDaysStatus = (days: number, type: string, dateInfo: any) => {
     // 修复：当某个月的1号是周日时，月份下方会空出来一行
-    if (type == 'prev' && days >= 7) {
+    const { year, month } = dateInfo;
+    if (type === 'prev' && days >= 7) {
       days -= 7
     }
     return Array.from(Array(days), (v, k) => {
       return {
         day: k + 1,
         type,
+        year,
+        month
       }
     })
   }
 
+  // 获取上一个月的最后一周天数，填充当月空白
+  const getPreDaysStatus = (days: number, type: string, dateInfo: any, preCurrMonthDays: number) => {
+    // 修复：当某个月的1号是周日时，月份下方会空出来一行
+    const { year, month } = dateInfo;
+    if (type === 'prev' && days >= 7) {
+      days -= 7;
+    }
+    const months = Array.from(Array(preCurrMonthDays), (v, k) => {
+      return {
+        day: k + 1,
+        type,
+        year,
+        month
+      };
+    });
+    return months.slice(preCurrMonthDays - days);
+  };
+
   // 获取月数据
   const getMonth = (curData: string[], type: string) => {
     const preMonthDays = Utils.getMonthPreDay(+curData[0], +curData[1])
-    const currMonthDays = Utils.getMonthDays(curData[0], curData[1])
+    
+    let preMonth = +curData[1] - 1;
+    let preYear = curData[0];
+    if (preMonth <= 0) {
+      preMonth = 12;
+      preYear += 1;
+    }
+
+    const currMonthDays = Utils.getMonthDays(curData[0], curData[1]);
+    const preCurrMonthDays = Utils.getMonthDays(preYear + '', preMonth + '');
+
     const title = {
       year: curData[0],
       month: curData[1],
@@ -308,11 +443,19 @@ export const CalendarItem: FunctionComponent<
       curData,
       title: locale.calendaritem.monthTitle(title.year, title.month),
       monthData: [
-        ...(getDaysStatus(preMonthDays, 'prev') as Day[]),
-        ...(getDaysStatus(currMonthDays, 'curr') as Day[]),
+        ...(getPreDaysStatus(preMonthDays, 'prev', { month: preMonth, year: preYear }, preCurrMonthDays) as Day[]),
+        ...(getDaysStatus(currMonthDays, 'curr', title) as Day[]),
       ],
     }
-    if (type == 'next') {
+    monthInfo.cssHeight = 39 + (monthInfo.monthData.length > 35 ? 384 : 320);
+    let cssScrollHeight = 0;
+    if (state.monthsData.length > 0) {
+      cssScrollHeight =
+        state.monthsData[state.monthsData.length - 1].cssScrollHeight +
+        state.monthsData[state.monthsData.length - 1].cssHeight;
+    }
+    monthInfo.cssScrollHeight = cssScrollHeight;
+    if (type === 'next') {
       if (
         !state.endData ||
         !Utils.compareDate(
@@ -340,209 +483,249 @@ export const CalendarItem: FunctionComponent<
     setMonthsData(state.monthsData)
   }
 
-  // 监听月份滚动，改变月份标题
-  const loadScroll = () => {
-    if (!props.poppable) {
-      return false
-    }
-    requestAniFrame(() => {
-      if (weeksPanel?.current && monthsPanel?.current) {
-        const top = weeksPanel?.current.getBoundingClientRect().bottom
-        const monthsDoms =
-          monthsPanel.current.getElementsByClassName('calendar-month')
-        for (let i = 0; i < monthsDoms.length; i++) {
-          if (
-            monthsDoms[i].getBoundingClientRect().top <= top &&
-            monthsDoms[i].getBoundingClientRect().bottom >= top
-          ) {
-            setYearMonthTitle(state.monthsData[i].title)
-          } else if (state.scrollDistance === 0) {
-            setYearMonthTitle(state.monthsData[0].title)
-          }
-        }
+  const setDefaultRange = (monthsNum: number, current: number) => {
+    if (monthsNum >= 3) {
+      if (current > 0 && current < monthsNum) {
+        state.defaultRange = [current - 1, current + 3];
+      } else if (current === 0) {
+        state.defaultRange = [current, current + 4];
+      } else if (current === monthsNum) {
+        state.defaultRange = [current - 2, current + 2];
       }
-    })
-  }
-
-  // 设置月份滚动距离和速度
-  const setTransform = (translateY = 0, type?: string, time = 1000) => {
-    if (monthsPanel?.current) {
-      if (type === 'end') {
-        monthsPanel.current.style.webkitTransition = `transform ${time}ms cubic-bezier(0.19, 1, 0.22, 1)`
-        clearTimeout(state.timer)
-        state.timer = setTimeout(() => {
-          loadScroll()
-        }, time)
-      } else {
-        monthsPanel.current.style.webkitTransition = ''
-        loadScroll()
-      }
-      monthsPanel.current.style.webkitTransform = `translateY(${translateY}px)`
-      state.scrollDistance = translateY
-    }
-  }
-
-  // 计算滚动方向和距离
-  const setMove = (move: number, type?: string, time?: number) => {
-    let updateMove = move + state.transformY
-    const h = months.current?.offsetHeight || 0
-    const offsetHeight = monthsPanel.current?.offsetHeight || 0
-    if (type === 'end') {
-      // 限定滚动距离
-      if (updateMove > 0) {
-        updateMove = 0
-      }
-      if (updateMove < 0 && updateMove < -offsetHeight + h) {
-        updateMove = -offsetHeight + h
-      }
-      if (offsetHeight <= h && state.monthsData.length == 1) {
-        updateMove = 0
-      }
-      setTransform(updateMove, type, time)
     } else {
-      if (updateMove > 0 && updateMove > 100) {
-        updateMove = 100
-      }
-      if (updateMove < -offsetHeight + h - 100 && state.monthsData.length > 1) {
-        updateMove = -offsetHeight + h - 100
-      }
-      if (updateMove < 0 && updateMove < -100 && state.monthsData.length == 1) {
-        updateMove = -100
-      }
-      setTransform(updateMove)
+      state.defaultRange = [0, monthsNum + 2];
     }
-  }
+    const defaultScrollTop = state.monthsData[state.defaultRange[0]].cssScrollHeight;
+    state.translateY = defaultScrollTop;
+  };
 
-  const onTouchStart = (event: React.TouchEvent<HTMLElement>) => {
-    event.stopPropagation()
-    const changedTouches = event.changedTouches[0]
-    state.touchParams.startY = changedTouches.pageY
-    state.touchParams.startTime = event.timeStamp || Date.now()
-    state.transformY = state.scrollDistance
-  }
-
-  const onTouchMove = (event: React.TouchEvent<HTMLElement>) => {
-    event.stopPropagation()
-    const changedTouches = event.changedTouches[0]
-    state.touchParams.lastY = changedTouches.pageY
-    state.touchParams.lastTime = event.timeStamp || Date.now()
-    const move = state.touchParams.lastY - state.touchParams.startY
-    if (Math.abs(move) < 5) {
-      return false
+  const mothsViewScroll = (e: any) => {
+    if (state.monthsData.length <= 1) {
+      return;
     }
-    setMove(move)
-  }
-
-  const onTouchEnd = (event: React.TouchEvent<HTMLElement>) => {
-    event.stopPropagation()
-    const changedTouches = event.changedTouches[0]
-    state.touchParams.lastY = changedTouches.pageY
-    state.touchParams.lastTime = event.timeStamp || Date.now()
-    let move = state.touchParams.lastY - state.touchParams.startY
-    if (Math.abs(move) < 5) {
-      return false
-    }
-    const updateMove = move + state.transformY
-    const h = months.current?.offsetHeight || 0
-    const offsetHeight = monthsPanel.current?.offsetHeight || 0
-    if (updateMove > 0) {
-      getMonth(getCurrData('prev') as string[], 'prev')
-    } else if (
-      updateMove < 0 &&
-      updateMove < -offsetHeight + (Math.abs(move) > h ? Math.abs(move) : h) * 5
-    ) {
-      getMonth(getCurrData('next') as string[], 'next')
-      if (Math.abs(move) >= 300) {
-        getMonth(getCurrData('next') as string[], 'next')
+    const target = e.target as HTMLElement;
+    const currentScrollTop = target.scrollTop;
+    let current = Math.floor(currentScrollTop / state.avgHeight);
+    if (current === 0) {
+      if (currentScrollTop >= state.monthsData[current + 1].cssScrollHeight) {
+        current += 1;
       }
-    }
-
-    let moveTime = state.touchParams.lastTime - state.touchParams.startTime
-    if (moveTime <= 300) {
-      move *= 2
-      moveTime += 1000
-      setMove(move, 'end', moveTime)
+    } else if (current > 0 && current < state.monthsNum - 1) {
+      if (currentScrollTop >= state.monthsData[current + 1].cssScrollHeight) {
+        current += 1;
+      }
+      if (currentScrollTop < state.monthsData[current].cssScrollHeight) {
+        current -= 1;
+      }
     } else {
-      setMove(move, 'end')
+      const viewPosition = Math.round(currentScrollTop + viewHeight);
+      if (
+        viewPosition < state.monthsData[current].cssScrollHeight + state.monthsData[current].cssHeight &&
+        currentScrollTop > state.monthsData[current - 1].cssScrollHeight
+      ) {
+        current -= 1;
+      }
+      if (
+        current + 1 <= state.monthsNum &&
+        viewPosition >= state.monthsData[current + 1].cssScrollHeight + state.monthsData[current + 1].cssHeight
+      ) {
+        current += 1;
+      }
+      if (current >= 1 && currentScrollTop < state.monthsData[current - 1].cssScrollHeight) {
+        current -= 1;
+      }
     }
+
+    if (state.currentIndex !== current) {
+      state.currentIndex = current;
+      setDefaultRange(state.monthsNum, current);
+    }
+
+    setYearMonthTitle(state.monthsData[current].title);
   }
 
   const initData = () => {
     // 初始化开始结束数据
-    state.startData = startDate ? splitDate(startDate as string) : ''
-    state.endData = endDate ? splitDate(endDate as string) : ''
-    // 初始化当前日期
-    if (!defaultValue) {
-      state.currDate = state.isRange
-        ? [Utils.date2Str(new Date()), Utils.getDay(1)]
-        : Utils.date2Str(new Date())
-    } else {
-      state.currDate = state.isRange ? [...defaultValue] : defaultValue
+    const propStartDate = props.startDate ? props.startDate : Utils.getDay(0);
+    const propEndDate = props.endDate ? props.endDate : Utils.getDay(365);
+    state.propStartDate = propStartDate as string;
+    state.propEndDate = propEndDate as string;
+    state.startData = splitDate(propStartDate as string);
+    state.endData = splitDate(propEndDate as string);
+
+    // 根据是否存在默认时间，初始化当前日期
+    if (defaultValue || (Array.isArray(defaultValue) && defaultValue.length > 0)) {
+      state.currDate = props.type !== 'one' ? [...props.defaultValue as string[]] as string[] : props.defaultValue as string[];
     }
 
-    // 日期转化为数组
-    if (state.isRange && Array.isArray(state.currDate)) {
-      if (
-        startDate &&
-        Utils.compareDate(state.currDate[0], startDate as string)
-      ) {
-        state.currDate.splice(0, 1, startDate as string)
-      }
-      if (endDate && Utils.compareDate(endDate as string, state.currDate[1])) {
-        state.currDate.splice(1, 1, endDate as string)
-      }
-      state.defaultData = [
-        ...splitDate(state.currDate[0]),
-        ...splitDate(state.currDate[1]),
-      ]
-    } else {
-      if (
-        startDate &&
-        Utils.compareDate(state.currDate as string, startDate as string)
-      ) {
-        state.currDate = startDate
-      } else if (
-        endDate &&
-        !Utils.compareDate(state.currDate as string, endDate as string)
-      ) {
-        state.currDate = endDate
-      }
-
-      state.defaultData = [...splitDate(state.currDate as string)]
+    // 判断时间范围内存在多少个月
+    const startDate = {
+      year: Number(state.startData[0]),
+      month: Number(state.startData[1])
+    };
+    const endDate = {
+      year: Number(state.endData[0]),
+      month: Number(state.endData[1])
+    };
+    let monthsNum = endDate.month - startDate.month;
+    if (endDate.year - startDate.year > 0) {
+      monthsNum = monthsNum + 12 * (endDate.year - startDate.year);
     }
+    if (monthsNum <= 0) {
+      monthsNum = 1;
+    }
+    // 设置月份数据
+    getMonth(state.startData, 'next');
 
-    getMonth(state.defaultData, 'next')
-    setYearMonthTitle(state.monthsData[0].title)
-
-    let i = 1
+    let i = 1;
     do {
-      getMonth(getCurrData('next') as string[], 'next')
-    } while (i++ < 4)
+      getMonth(getCurrData('next') as string[], 'next');
+    } while (i++ < monthsNum);
+    state.monthsNum = monthsNum;
 
-    if (state.isRange) {
-      chooseDay(
-        { day: state.defaultData[2], type: 'curr' },
-        state.monthsData[0],
-        true
-      )
-      chooseDay(
-        { day: state.defaultData[5], type: 'curr' },
-        state.monthsData[0],
-        true,
-        true
-      )
+    // 日期转化为数组，限制初始日期。判断时间范围
+    if (type === 'range' && Array.isArray(state.currDate)) {
+      if (state.currDate.length > 0) {
+        if (propStartDate && Utils.compareDate(state.currDate[0], propStartDate as string)) {
+          state.currDate.splice(0, 1, propStartDate as string);
+        }
+        if (propEndDate && Utils.compareDate(propEndDate as string, state.currDate[1])) {
+          state.currDate.splice(1, 1, propEndDate as string);
+        }
+        state.defaultData = [...splitDate(state.currDate[0]), ...splitDate(state.currDate[1])];
+      }
+    } else if (props.type === 'multiple' && Array.isArray(state.currDate)) {
+      if (state.currDate.length > 0) {
+        const defaultArr = [] as string[];
+        const obj: Obj = {};
+        state.currDate.forEach((item: string) => {
+          if (
+            propStartDate &&
+            !Utils.compareDate(item, propStartDate as string) &&
+            propEndDate &&
+            !Utils.compareDate(propEndDate as string, item)
+          ) {
+            if (!obj.hasOwnProperty(item)) {
+              defaultArr.push(item);
+              obj[item] = item;
+            }
+          }
+        });
+        state.currDate = [...defaultArr];
+        state.defaultData = [...splitDate(defaultArr[0])];
+      }
     } else {
-      chooseDay(
-        { day: state.defaultData[2], type: 'curr' },
-        state.monthsData[0],
-        true
-      )
+      if (state.currDate) {
+        if (propStartDate && Utils.compareDate(state.currDate as string, propStartDate as string)) {
+          state.currDate = propStartDate;
+        } else if (propEndDate && !Utils.compareDate(state.currDate as string, propEndDate as string)) {
+          state.currDate = propEndDate;
+        }
+        state.defaultData = [...splitDate(state.currDate as string)];
+      }
     }
+
+    // 设置默认可见区域
+    let current = 0;
+    let lastCurrent = 0;
+    if (state.defaultData.length > 0) {
+      state.monthsData.forEach((item, index) => {
+        if (item.title === locale.calendaritem.monthTitle(state.defaultData[0], state.defaultData[1])) {
+          current = index;
+        }
+        if (props.type === 'range') {
+          if (item.title === locale.calendaritem.monthTitle(state.defaultData[3], state.defaultData[4])) {
+            lastCurrent = index;
+          }
+        }
+      });
+    }
+
+    setDefaultRange(monthsNum, current);
+    state.currentIndex = current;
+    setYearMonthTitle(state.monthsData[state.currentIndex].title)
+
+    if (state.defaultData.length > 0) {
+      // 设置当前选中日期
+      if (type === 'range') {
+        chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
+        chooseDay({ day: state.defaultData[5], type: 'curr' }, state.monthsData[lastCurrent], true);
+      } else if (type === 'multiple') {
+        [...state.currDate].forEach((item: string) => {
+          const dateArr = splitDate(item);
+          let current = state.currentIndex;
+          state.monthsData.forEach((item, index) => {
+            if (item.title === locale.calendaritem.monthTitle(dateArr[0], dateArr[1])) {
+              current = index;
+            }
+          });
+          chooseDay({ day: dateArr[2], type: 'curr' }, state.monthsData[current], true);
+        });
+      } else {
+        chooseDay({ day: state.defaultData[2], type: 'curr' }, state.monthsData[state.currentIndex], true);
+      }
+    }
+
+    const lastItem = state.monthsData[state.monthsData.length - 1];
+    const containerHeight = lastItem.cssHeight + lastItem.cssScrollHeight;
+
+    requestAniFrame(() => {
+      // 初始化 日历位置
+      if (months && monthsPanel && viewArea) {
+        viewHeight = (months.current as HTMLDivElement).clientHeight;
+        (monthsPanel.current as HTMLDivElement).style.height = `${containerHeight}px`;
+        (months.current as HTMLDivElement).scrollTop = state.monthsData[state.currentIndex].cssScrollHeight;
+      }
+    });
+
+    state.avgHeight = Math.floor(containerHeight / (monthsNum + 1));
   }
+
+  const resetRender = () => {
+    state.chooseData.splice(0);
+    state.monthsData.splice(0);
+    initData();
+  };
+
+  // 暴露出的API
+  const scrollToDate = (date: string) => {
+    if (Utils.compareDate(date, state.propStartDate)) {
+      date = state.propStartDate;
+    } else if (!Utils.compareDate(date, state.propEndDate)) {
+      date = state.propEndDate;
+    }
+    const dateArr = splitDate(date);
+    state.monthsData.forEach((item, index) => {
+      if (item.title === locale.calendaritem.monthTitle(dateArr[0], dateArr[1])) {
+        if (months.current) {
+          const distance = state.monthsData[index].cssScrollHeight - months.current.scrollTop;
+          if (toDateAnimation) {
+            let flag = 0;
+            const interval = setInterval(() => {
+              flag++;
+              if (months.current) {
+                const offset = distance / 10;
+                months.current.scrollTop = months.current.scrollTop + offset;
+              }
+
+              if (flag >= 10) {
+                clearInterval(interval);
+                if (months.current) {
+                  months.current.scrollTop = state.monthsData[index].cssScrollHeight;
+                }
+              }
+            }, 40);
+          } else {
+            months.current.scrollTop = state.monthsData[index].cssScrollHeight;
+          }
+        }
+      }
+    });
+  };
 
   useEffect(() => {
     initData()
-  }, [])
+  }, [initData]);
 
   return (
     <>
@@ -551,8 +734,19 @@ export const CalendarItem: FunctionComponent<
         <div className={headerClasses}>
           {poppable ? (
             <>
-              <div className="calendar-title">{locale.calendaritem.title}</div>
-              <div className="calendar-curr-month">{yearMonthTitle}</div>
+              {
+                showTitle && <div className="calendar-title">{locale.calendaritem.title || title}</div>
+              }
+              {
+                slot.btn && (
+                  <div className="calendar-top-slot">
+                    { slot.btn }
+                  </div>
+                )
+              }
+              {
+                showSubTitle && <div className="calendar-curr-month">{yearMonthTitle}</div>
+              }
             </>
           ) : (
             ''
@@ -568,68 +762,62 @@ export const CalendarItem: FunctionComponent<
         {/* content */}
         <div
           className="nut-calendar-content"
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
+          onScroll={ mothsViewScroll }
           ref={months}
         >
           <div className="calendar-months-panel" ref={monthsPanel}>
-            <div className="calendar-loading-tip">
-              {!unLoadPrev
-                ? locale.calendaritem.loadPreviousMonth
-                : locale.calendaritem.noEarlierMonth}
-            </div>
-            {monthsData.map((month: any, key: number) => (
-              <div className="calendar-month" key={key}>
-                <div className="calendar-month-title">{month.title}</div>
-                <div className="calendar-month-con">
-                  <div className={monthitemclasses}>
-                    {month.monthData &&
-                      month.monthData.map((day: Day, index: number) => (
-                        <div
-                          className={[
-                            'calendar-month-day',
-                            getClass(day, month),
-                          ].join(' ')}
-                          key={index}
-                          onClick={() => {
-                            chooseDay(day, month)
-                          }}
-                        >
-                          <div className="calendar-day">
-                            {day.type === 'curr' ? day.day : ''}
-                          </div>
-                          {isCurrDay(month, day.day) ? (
-                            <div className="calendar-curr-tips">
-                              {locale.calendaritem.today}
-                            </div>
-                          ) : (
-                            ''
-                          )}
-                          {isStartTip(day, month) ? (
-                            <div className="calendar-day-tip">
-                              {locale.calendaritem.start}
-                            </div>
-                          ) : isEndTip(day, month) ? (
-                            <div className="calendar-day-tip">
-                              {locale.calendaritem.end}
-                            </div>
-                          ) : (
-                            ''
-                          )}
+            <div className="viewArea" ref={ viewArea } style={{ 'transform': `translateY(${state.translateY}px)` }}>
+              {
+                state.monthsData.slice(state.defaultRange[0], state.defaultRange[1]).map((month: any, key: number) => {
+                  return (
+                    <div className="calendar-month" key={key}>
+                      <div className="calendar-month-title">{month.title}</div>
+                      <div className="calendar-month-con">
+                        <div className={monthitemclasses}>
+                          {
+                            month.monthData.map((day: Day, i: number) => (
+                              <div className={['calendar-month-day',getClass(day, month),].join(' ')} onClick={() => {chooseDay(day, month)}} key={ i }>
+                                <div className="calendar-day">
+                                  {/* <slot name="day" :date="day.type == 'curr' ? day : ''">
+                                    {{ day.type == 'curr' ? day.day : '' }}
+                                  </slot> */}
+                                </div>
+                                {
+                                  slot.topInfo && <div className="calendar-curr-tips calendar-curr-tips-top">
+                                    {/* <slot name="topInfo" :date="day.type == 'curr' ? day : ''"> </slot> */}
+                                  </div>
+                                }
+                                {
+                                  slot.bottomInfo && <div className="calendar-curr-tips calendar-curr-tips-bottom" v-if="bottomInfo">
+                                    {/* <slot name="bottomInfo" :date="day.type == 'curr' ? day : ''"> </slot> */}
+                                  </div>
+                                }
+                                {
+                                  !slot.bottomInfo && showToday && isCurrDay(month, day.day) && <div className="calendar-curr-tip-curr">{locale.calendaritem.today}</div>
+                                }
+                                {
+                                  isStartTip(day, month) && <div className={`calendar-day-tip ${rangeTip() ? 'calendar-curr-tips-top' : ''}`}>{locale.calendaritem.start || startText}</div>
+                                }
+                                {
+                                  isEndTip(day, month) && <div className="calendar-day-tip">{locale.calendaritem.end || endText}</div>
+                                }
+                              </div>
+                            ))
+                          }
                         </div>
-                      ))}
-                  </div>
-                </div>
-              </div>
-            ))}
+                      </div>
+                    </div>
+                  )
+                })
+              }
+            </div>
           </div>
         </div>
         {/* footer */}
         {poppable && !isAutoBackFill ? (
           <div className="nut-calendar-footer">
             <div className="calendar-confirm-btn" onClick={confirm}>
-              {locale.confirm}
+              {locale.confirm || confirmText}
             </div>
           </div>
         ) : (
