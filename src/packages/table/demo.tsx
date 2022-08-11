@@ -4,8 +4,51 @@ import Toast from '@/packages/toast'
 import Icon from '@/packages/icon'
 import Table from '@/packages/table'
 import { TableColumnProps } from './types'
+import { useTranslate } from '../../sites/assets/locale'
+
+interface T {
+  basic: string
+  borderedAndAlign: string
+  summaryTitle: string
+  summary: string
+  striped: string
+  noDataTitle: string
+  customNoData: string
+  customCell: string
+  asynchronousRendering: string
+  sorting: string
+}
 
 const TableDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基础用法',
+      borderedAndAlign: '是否显示边框，文字对齐',
+      summaryTitle: '显示总结栏',
+      summary: '这是总结栏',
+      striped: '条纹、明暗交替',
+      noDataTitle: '无数据默认展示，支持自定义',
+      customNoData: '这里是自定义展示',
+      customCell: '自定义单元格',
+      asynchronousRendering: '支持异步渲染(5s之后看效果)',
+      sorting: '支持排序',
+    },
+    'en-US': {
+      basic: 'Basic usage',
+      borderedAndAlign: 'Whether to display border and align text',
+      summaryTitle: 'Show summary bar',
+      summary: 'This is the summary column',
+      striped: 'Stripes, alternating light and shade',
+      noDataTitle:
+        'No data is displayed by default, and customization is supported',
+      customNoData: 'Here is the custom display',
+      customCell: 'Custom cell',
+      asynchronousRendering:
+        'Support asynchronous rendering(See the effect after 5S)',
+      sorting: 'Support sorting',
+    },
+  })
+
   const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
@@ -183,42 +226,42 @@ const TableDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>基本用法</h2>
+        <h2>{translated.basic}</h2>
         <Table columns={columns1} data={data1} style={{ background: '#fff' }} />
-        <h2>是否显示边框，文字对齐</h2>
+        <h2>{translated.borderedAndAlign}</h2>
         <Table
           columns={columns2}
           data={data1}
           bordered={false}
           style={{ background: '#fff' }}
         />
-        <h2>显示总结栏</h2>
+        <h2>{translated.summaryTitle}</h2>
         <Table
           columns={columns1}
           data={data1}
-          summary="这是总结栏"
+          summary={translated.summary}
           style={{ background: '#fff' }}
         />
-        <h2>条纹、明暗交替</h2>
+        <h2>{translated.striped}</h2>
         <Table
           columns={columns1}
           data={data1}
           style={{ background: '#fff' }}
           striped
         />
-        <h2>无数据默认展示，支持自定义</h2>
+        <h2>{translated.noDataTitle}</h2>
         <Table columns={columns1} data={data2} style={{ background: '#fff' }} />
         <Table
           columns={columns1}
           data={data2}
           style={{ background: '#fff' }}
-          noData="这里是自定义展示"
+          noData={translated.customNoData}
         />
-        <h2>自定义单元格</h2>
+        <h2>{translated.customCell}</h2>
         <Table columns={columns4} data={data4} style={{ background: '#fff' }} />
-        <h2>支持异步渲染(5s之后看效果)</h2>
+        <h2>{translated.asynchronousRendering}</h2>
         <Table columns={columns1} data={data3} style={{ background: '#fff' }} />
-        <h2>支持排序</h2>
+        <h2>{translated.sorting}</h2>
         <Table
           columns={columns5}
           data={data5}

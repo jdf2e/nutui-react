@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 import { TableProps, TableColumnProps } from './types'
+import { useConfig } from '@/packages/configprovider'
 
 const defaultProps = {
   className: '',
@@ -16,6 +17,9 @@ const defaultProps = {
 export const Table: FunctionComponent<
   Partial<TableProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const { locale } = useConfig()
+  defaultProps.noData = locale.noData
+
   const {
     children,
     className,
