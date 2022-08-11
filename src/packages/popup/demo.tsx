@@ -285,6 +285,7 @@ const PopupDemo = () => {
         <Popup
           visible={showMutipleInner}
           style={{ padding: '30px 50px' }}
+          overlayStyle={{ backgroundColor: 'transparent' }}
           onClose={() => {
             setShowMutipleInner(false)
           }}

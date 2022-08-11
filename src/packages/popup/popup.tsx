@@ -69,6 +69,7 @@ export const Popup: FunctionComponent<
   const {
     children,
     visible,
+    overlay,
     closeOnClickOverlay,
     overlayStyle,
     overlayClass,
@@ -200,38 +201,50 @@ export const Popup: FunctionComponent<
     return node
   }
 
+  const renderPop = () => {
+    return (
+      <CSSTransition
+        classNames={transitionName}
+        unmountOnExit
+        timeout={500}
+        in={innerVisible}
+        onEntered={onHandleOpened}
+        onExited={onHandleClosed}
+      >
+        <div style={popStyles} className={classes} onClick={onHandleClick}>
+          {showChildren ? children : ''}
+          {closeable ? (
+            <div className={closeClasses} onClick={onHandleClickCloseIcon}>
+              <Icon name={closeIcon} size="12px" />
+            </div>
+          ) : (
+            ''
+          )}
+        </div>
+      </CSSTransition>
+    )
+  }
+
   const renderNode = () => {
     return (
       <>
-        <Overlay
-          style={overlayStyles}
-          overlayClass={overlayClass}
-          visible={innerVisible}
-          closeOnClickOverlay={closeOnClickOverlay}
-          zIndex={zIndex}
-          lockScroll={lockScroll}
-          duration={duration}
-          onClick={onHandleClickOverlay}
-        />
-        <CSSTransition
-          classNames={transitionName}
-          unmountOnExit
-          timeout={500}
-          in={innerVisible}
-          onEntered={onHandleOpened}
-          onExited={onHandleClosed}
-        >
-          <div style={popStyles} className={classes} onClick={onHandleClick}>
-            {showChildren ? children : ''}
-            {closeable ? (
-              <div className={closeClasses} onClick={onHandleClickCloseIcon}>
-                <Icon name={closeIcon} size="12px" />
-              </div>
-            ) : (
-              ''
-            )}
-          </div>
-        </CSSTransition>
+        {overlay ? (
+          <>
+            <Overlay
+              style={overlayStyles}
+              overlayClass={overlayClass}
+              visible={innerVisible}
+              closeOnClickOverlay={closeOnClickOverlay}
+              zIndex={zIndex}
+              lockScroll={lockScroll}
+              duration={duration}
+              onClick={onHandleClickOverlay}
+            />
+            {renderPop()}
+          </>
+        ) : (
+          <>{renderPop()}</>
+        )}
       </>
     )
   }
