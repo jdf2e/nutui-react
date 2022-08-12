@@ -4,6 +4,7 @@ import React, {
   useRef,
   useImperativeHandle,
 } from 'react'
+import Taro from '@tarojs/taro'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 
@@ -21,7 +22,7 @@ const defaultProps = {
   barrageList: [],
   frequency: 500,
   loop: true,
-  speeds: 2000,
+  speeds: 5000,
   rows: 3,
   top: 10,
 }
@@ -76,25 +77,31 @@ const InternalBarrage: ForwardRefRenderFunction<
     }, frequency)
   }
 
-  const play = () => {
+  const play = async () => {
     const _index = loop ? index.current % barrageList.length : index.current
     const el = document.createElement(`div`)
     el.innerHTML = barrageList[_index] as string
     el.classList.add('barrage-item')
     ;(barrageContainer.current as HTMLDivElement).appendChild(el)
 
-    const width = el.offsetWidth
-    const height = el.offsetHeight
-    el.classList.add('move')
-    el.style.animationDuration = `${speeds}ms`
-    el.style.top = `${(_index % rows) * (height + top) + 20}px`
-    el.style.width = `${width + 20}px`
-    el.style.setProperty('--move-distance', `-${barrageCWidth.current}px`)
-    el.dataset.index = `${_index}`
-    el.addEventListener('animationend', () => {
-      ;(barrageContainer.current as HTMLDivElement).removeChild(el)
-    })
-    index.current++
+    const query = Taro.createSelectorQuery()
+      .select('.barrage-item')
+      .boundingClientRect((res) => {
+        const width = res?.width
+        const height = res?.height
+
+        el.classList.add('move')
+        el.style.animationDuration = `${speeds}ms`
+        el.style.top = `${(_index % rows) * (height + top) + 20}px`
+        // el.style.width = `${width}px`
+        el.style.setProperty('--move-distance', `-${barrageCWidth.current}px`)
+        el.dataset.index = `${_index}`
+        el.addEventListener('animationend', () => {
+          ;(barrageContainer.current as HTMLDivElement).removeChild(el)
+        })
+        index.current++
+      })
+      .exec()
   }
 
   return (
