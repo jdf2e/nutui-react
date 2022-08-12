@@ -26,6 +26,7 @@ interface SwiperProps {
   touchable: boolean
   isPreventDefault: boolean
   isStopPropagation: boolean
+  isCenter: boolean
   className?: string
   style?: React.CSSProperties
   pageContent?: React.ReactNode
@@ -45,6 +46,7 @@ const defaultProps = {
   touchable: true,
   isPreventDefault: true,
   isStopPropagation: true,
+  isCenter: false,
   className: '',
 } as SwiperProps
 
@@ -72,6 +74,7 @@ export const Swiper = React.forwardRef<
     isPreventDefault,
     isStopPropagation,
     autoPlay,
+    isCenter,
     ...rest
   } = propSwiper
   const container = useRef<any>(null)
@@ -87,6 +90,7 @@ export const Swiper = React.forwardRef<
   const isVertical = direction === 'vertical'
 
   const [rect, setRect] = useState(null as DOMRect | null)
+  // eslint-disable-next-line prefer-const
   let [active, setActive] = useState(0)
   const [width, setWidth] = useState(0)
   const [height, setHeight] = useState(0)
@@ -190,7 +194,6 @@ export const Swiper = React.forwardRef<
   const to = (index: number) => {
     resettPosition()
     touchReset()
-
     requestFrame(() => {
       requestFrame(() => {
         _swiper.current.moving = false
@@ -243,10 +246,8 @@ export const Swiper = React.forwardRef<
       props.onChange && props.onChange((targetActive + childCount) % childCount)
     }
     active = targetActive
-    offset = targetOffset
     setActive(targetActive)
     setOffset(targetOffset)
-
     getStyle(targetOffset)
   }
   // 确定当前active 元素
@@ -325,8 +326,22 @@ export const Swiper = React.forwardRef<
   })
   const getStyle = (moveOffset = offset) => {
     const target = innerRef.current
+
+    let _offset = 0
+    if (!isCenter) {
+      _offset = moveOffset
+    } else {
+      const _size = isVertical ? height : width
+      const val = isVertical
+        ? (rect as DOMRect).height - _size
+        : (rect as DOMRect).width - _size
+      _offset =
+        moveOffset +
+        (active === childCount - 1 && !props.loop ? -val / 2 : val / 2)
+    }
+
     target.style.transform = `translate3D${
-      !isVertical ? `(${moveOffset}px,0,0)` : `(0,${moveOffset}px,0)`
+      !isVertical ? `(${_offset}px,0,0)` : `(0,${_offset}px,0)`
     }`
     target.style.transitionDuration = `${
       _swiper.current.moving ? 0 : props.duration
@@ -369,7 +384,11 @@ export const Swiper = React.forwardRef<
     if (isShouldMove && touch.stateDirection === props.direction) {
       const offset = isVertical ? touch.offsetY : touch.offsetX
       if (props.loop) {
-        pace = offset > 0 ? (touch.delta > 0 ? -1 : 1) : 0
+        if (offset > 0) {
+          pace = touch.delta > 0 ? -1 : 1
+        } else {
+          pace = 0
+        }
       } else {
         pace = -Math[touch.delta > 0 ? 'ceil' : 'floor'](touch.delta / size)
       }
@@ -426,9 +445,11 @@ export const Swiper = React.forwardRef<
     stopAutoPlay()
     autoplay()
   }, [children])
+
   useEffect(() => {
     init()
   }, [propSwiper.initPage])
+
   useEffect(() => {
     const target = container.current
     target.addEventListener('touchstart', onTouchStart, false)
@@ -440,7 +461,12 @@ export const Swiper = React.forwardRef<
       target.removeEventListener('touchend', onTouchEnd, false)
     }
   })
-  const style = (index: any) => {
+  useEffect(() => {
+    return () => {
+      stopAutoPlay()
+    }
+  }, [])
+  const itemStyle = (index: any) => {
     const style: IStyle = {}
     const _direction = propSwiper.direction || direction
     const _size = size
@@ -468,7 +494,7 @@ export const Swiper = React.forwardRef<
             return (
               <div
                 className={b('item-wrapper')}
-                style={style(index)}
+                style={itemStyle(index)}
                 key={index}
               >
                 {child}
@@ -486,12 +512,17 @@ export const Swiper = React.forwardRef<
             {React.Children.map(childs, (item: any, index: number) => {
               return (
                 <i
-                  style={{
-                    backgroundColor:
-                      (active + childCount) % childCount === index
-                        ? propSwiper.paginationColor
-                        : '#ddd',
-                  }}
+                  style={
+                    (active + childCount) % childCount === index
+                      ? {
+                          backgroundColor: propSwiper.paginationColor,
+                        }
+                      : undefined
+                  }
+                  className={classNames({
+                    [`${b('pagination-item')}`]: true,
+                    active: (active + childCount) % childCount === index,
+                  })}
                   key={index}
                 />
               )

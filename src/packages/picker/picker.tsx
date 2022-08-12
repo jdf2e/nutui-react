@@ -231,10 +231,11 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
 
       setColumnsList(normalData)
 
-      normalData.map((item) => {
-        data.push(item[0].value)
-        return item
-      })
+      normalData.length > 0 &&
+        normalData.map((item) => {
+          item[0] && data.push(item[0].value)
+          return item
+        })
 
       if (!defaultValueData && chooseValueData.length === 0) {
         setchooseValueData([...data])
