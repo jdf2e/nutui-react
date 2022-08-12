@@ -69,7 +69,7 @@ $button-primary-background-color: linear-gradient(
   $primary-color-end 100%
 );
 $button-info-color: $white;
-$button-info-border-color: rgba(73, 106, 242, 1);
+$button-info-border-color: #496af2;
 $button-info-background-color: linear-gradient(
   315deg,
   rgba(73, 143, 242, 1) 0%,
@@ -260,20 +260,30 @@ $rate-icon-void-color: $disable-color;
 
 // tabbar
 
-$tabbar-active-color: $primary-color;
-$tabbar-border-color: #eee;
+$tabbar-active-color: $primary-color !default;
+$tabbar-unactive-color: $primary-color !default;
+$tabbar-border-top: 1px solid #eee !default;
+$tabbar-border-bottom: 1px solid #eee !default;
+$tabbar-box-shadow: none !default;
+$tabbar-item-text-font-size: $font-size-0 !default;
+$tabbar-item-text-line-height: initial !default;
 
 //infiniteloading
 $infinite-bottom-color: #c8c8c8;
 
 //range
-$range-max: #333333;
-$rang-bg-color: rgba($primary-color, 0.5);
-$rang-bar-bg-color: linear-gradient(
+$range-tip-font-color: #333333 !default;
+$range-bg-color: rgba($primary-color, 0.5) !default;
+$range-bg-color-tick: #fa958c !default;
+$range-bar-bg-color: linear-gradient(
   135deg,
   $primary-color 0%,
   $primary-color-end 100%
-);
+) !default;
+$range-bar-btn-bg-color: $white !default;
+$range-bar-btn-width: 24px !default;
+$range-bar-btn-height: 24px !default;
+$range-bar-btn-border: 1px solid $primary-color !default;
 
 //address
 $address-region-tab-line: linear-gradient(
@@ -333,6 +343,10 @@ $radio-label-button-background: rgba(240, 37, 15, 0.05) !default;
 
 // signature
 $signature-border-color: #dadada;
+$signature-border-width: 1px;
+$signature-height: 10rem;
+$signature-margin-bottom: 1rem;
+$signature-btn-margin-right: 15px;
 
 //fixednav
 $fixednav-bg-color: $white;
@@ -481,6 +495,15 @@ $divider-vertical-top: 2px !default;
 $divider-vertical-border-left: rgba(0, 0, 0, 0.06) !default;
 $divider-vertical-margin: 0 8px !default;
 
+// swiper
+$swiper-pagination-item-background-color: #ddd !default;
+
+// Table
+$table-border-color: #ececec !default;
+$table-cols-padding: 10px !default;
+$table-tr-even-bg-color: #f3f3f3 !default;
+$table-tr-odd-bg-color: $white !default;
+
 //numberkeyboard
 $numberkeyboard-width: 100% !default;
 $numberkeyboard-padding: 0 0 22px 0 !default;
@@ -504,6 +527,7 @@ $numberkeyboard-key-finish-font-size: 16px !default;
 $numberkeyboard-key-finish-font-size-color: #fff !default;
 $numberkeyboard-key-finish-background-color: #1989fa !default;
 $numberkeyboard-key-activeFinsh-background-color: #0570db !default;
+
 // elevator
 $elevator-list-item-highcolor: $primary-color !default;
 $elevator-list-item-font-size: 12px !default;
@@ -570,6 +594,19 @@ $row-content-border-radius: 6px !default;
 $row-content-height: 50px !default;
 $row-content-line-height: 40px !default;
 $col-default-margin-bottom: 15px !default;
+
+// searchbar
+$searchbar-background: $white !default;
+$searchbar-right-out-color: $black !default;
+$searchbar-padding: 9px 16px !default;
+$searchbar-width: 100% !default;
+$searchbar-action-text-color: #323233 !default;
+$searchbar-input-background: #f7f7f7 !default;
+$searchbar-input-padding: 0 28px !default;
+$searchbar-input-height: 32px !default;
+$searchbar-input-width: 100% !default;
+$searchbar-input-border-radius: 16px !default;
+$searchbar-input-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04) !default;
 
 // progress
 $progress-border-radius: 12px !default;

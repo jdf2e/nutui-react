@@ -5,10 +5,10 @@ import bem from '@/utils/bem'
 export interface TabbarProps {
   visible: number | string
   bottom: boolean
-  type: string
-  size: string
+  size: string | number
   unactiveColor: string
   activeColor: string
+  safeAreaInsetBottom: boolean
   className: string
   style: React.CSSProperties
   tabSwitch: (child: React.ReactElement<any>, active: number) => void
@@ -17,10 +17,10 @@ export interface TabbarProps {
 const defaultProps = {
   visible: 0,
   bottom: false,
-  type: '',
-  size: '',
+  size: 20,
   unactiveColor: '',
   activeColor: '',
+  safeAreaInsetBottom: false,
   className: '',
   style: {},
   tabSwitch: () => {},
@@ -31,8 +31,10 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
     children,
     visible,
     bottom,
+    size,
     activeColor,
     unactiveColor,
+    safeAreaInsetBottom,
     className,
     style,
     tabSwitch,
@@ -51,9 +53,12 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
 
   return (
     <div
-      className={[`${b()}`, bottom ? `${b('bottom')}` : '', className].join(
-        ' '
-      )}
+      className={[
+        `${b()}`,
+        bottom ? `${b('bottom')}` : '',
+        safeAreaInsetBottom ? `${b('safebottom')}` : '',
+        className,
+      ].join(' ')}
       style={style}
     >
       {React.Children.map(children, (child, idx) => {
@@ -66,6 +71,7 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
           index: idx,
           unactiveColor,
           activeColor,
+          size,
           handleClick: () => {
             handleClick(idx)
             tabSwitch(child, idx)

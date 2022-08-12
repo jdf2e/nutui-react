@@ -3,12 +3,6 @@ import { render, waitFor, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { DatePicker } from '../datepicker'
 
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay)
-  })
-}
-
 const currentYear = new Date().getFullYear()
 test('Show Chinese', async () => {
   const confirm = jest.fn()
