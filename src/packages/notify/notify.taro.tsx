@@ -39,13 +39,12 @@ function getInstance(
 }
 
 function notice(opts: any) {
-  debugger
-  function close() {
-    if (messageInstance) {
-      messageInstance.destroy()
-      messageInstance = null
-    }
-  }
+  // function close() {
+  //   if (messageInstance) {
+  //     messageInstance.destroy()
+  //     messageInstance = null
+  //   }
+  // }
   opts = { ...options, ...opts }
   getInstance(opts, (notification: any) => {
     messageInstance = notification
@@ -54,6 +53,8 @@ function notice(opts: any) {
 const errorMsg = (msg: any) => {
   if (!msg) {
     console.warn('[NutUI Notify]: msg不能为空')
+  } else {
+    console.log('ok')
   }
 }
 
