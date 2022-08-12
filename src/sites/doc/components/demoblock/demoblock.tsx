@@ -3,6 +3,7 @@ import { compressText, copyCodeHtml, decompressText } from './basedUtil'
 interface A {
   text: string
   scss: string
+  children?: React.ReactNode
 }
 const DemoBlock: React.FunctionComponent<A> = (props) => {
   const [onlineUrl, setOnlineUrl] = useState('')

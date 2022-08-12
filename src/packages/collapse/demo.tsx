@@ -140,6 +140,7 @@ const CollapseDemo = () => {
             )
           })}
         </Collapse>
+        {/* eslint-disable-next-line react/button-has-type */}
         <button onClick={() => changeData()}>点击我</button>
       </div>
     </>

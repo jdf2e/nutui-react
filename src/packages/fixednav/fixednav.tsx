@@ -1,4 +1,4 @@
-import React, { FunctionComponent, MouseEvent, HTMLProps } from 'react'
+import React, { FunctionComponent, MouseEvent } from 'react'
 import classNames from 'classnames'
 import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
@@ -14,15 +14,15 @@ export interface FixedNavProps {
   fixednavClass: string
   visible: boolean
   overlay: boolean
-  navList: Array<object>
+  navList: Array<any>
   activeText: string
   unActiveText: string
   position: Position
   type: Direction
   onChange: (v: any) => void
-  onSelected: Function
-  slotList: HTMLProps<HTMLElement>
-  slotBtn: HTMLProps<HTMLElement>
+  onSelected: (item: any, e: any) => void
+  slotList: React.ReactNode
+  slotBtn: React.ReactNode
 }
 
 const defaultProps = {
