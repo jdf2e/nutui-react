@@ -721,6 +721,16 @@
         },
         {
           "version": "1.0.0",
+          "name": "Table",
+          "type": "component",
+          "cName": "表格",
+          "desc": "表格",
+          "sort": 21,
+          "show": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "1.0.0",
           "name": "Video",
           "type": "component",
           "cName": "视频播放器",
