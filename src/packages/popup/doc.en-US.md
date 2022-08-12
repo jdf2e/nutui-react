@@ -116,6 +116,68 @@ export default App;
 ```
 :::
 
+### Mount the specified node
+
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Popup, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const [showMountNode, setShowMountNode] = useState(false);
+
+  return (
+    <>
+        <Cell title="Mount the specified node" isLink onClick={() => { setShowMountNode(true) }}/>
+        <Popup visible={showMountNode} style={{ padding: '30px 50px' }} teleport={ document.body } onClose={() => { setShowMountNode(false) }}>
+          body
+        </Popup>
+    </>
+  );
+};
+export default App;
+```
+:::
+
+### multi-layer stacking
+
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Popup, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const [showMutiple, setShowMutiple] = useState(false)
+  const [showMutipleInner, setShowMutipleInner] = useState(false)
+
+  return (
+    <>
+        <Cell title="multi-layer stacking" isLink onClick={() => { setShowMutiple(true) }}/>
+        <Popup
+          visible={showMutiple}
+          style={{ padding: '30px 50px' }}
+          onClose={() => {
+            setShowMutiple(false)
+          }}
+        >
+          <span onClick={ () => { setShowMutipleInner(true) } }>Click It</span>
+        </Popup>
+        <Popup
+          visible={showMutipleInner}
+          style={{ padding: '30px 50px' }}
+          onClose={() => {
+            setShowMutipleInner(false)
+          }}
+        >
+          <span onClick={ () => { setShowMutipleInner(false) } }>close</span>
+        </Popup>
+    </>
+  );
+};
+export default App;
+```
+:::
+
 ## API
 
 ### Props
@@ -139,6 +201,7 @@ export default App;
 | closeIcon             | Custom Icon                                                 | String         | `"close"`     |
 | destroyOnClose       | Whether to close after the component is destroyed                                          | Boolean        | `true`        |
 | round                  | Whether to show rounded corners                                                | Boolean        | `false`       |
+| teleport                  | Mount the specified node                                                | HTMLElement、(() => HTMLElement) 、null        | `null`       |
 
 ### Events
 
