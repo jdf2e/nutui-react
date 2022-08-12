@@ -165,3 +165,15 @@ import { Layout,Row,Col } from '@nutui/nutui-react'
 |--------|----------------|--------------| ------------------|
 | span  | 列元素宽度（共分为24份，例如设置一行3个，那么span值为8） | String、Number| 24|
 | offset  | 列元素偏移距离 | String、Number| 0|
+
+### row events
+
+| Fields | Description | Callback Parameters
+|----- | ----- | -----
+| onClick | Fired when clicked | event: MouseEvent, type: 'row' | 'col'
+
+### col events
+
+| Fields | Description | Callback Parameters
+|----- | ----- | -----
+| onClick | Fired when clicked | event: MouseEvent, type: 'row' | 'col'
