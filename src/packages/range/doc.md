@@ -480,13 +480,13 @@ export default App;
 | min           | 最小值             | Number、String   | `0`                      |
 | step          | 步长               | Number、String   | `1`                      |
 | disabled      | 是否禁用滑块       | Boolean          | `false`                  |
-| vertical | 是否竖向展示 | Boolean | `false` |
+| vertical`v1.2.2` | 是否竖向展示 | Boolean | `false` |
 | hiddenRange   | 是否隐藏范围值     | Boolean          | `false`                  |
 | hiddenTag     | 是否隐藏标签       | Boolean          | `false`                  |
 | activeColor   | 进度条激活态颜色   | String           | `rgba(250, 44, 25, 1)`   |
 | inactiveColor | 进度条非激活态颜色 | String           | `rgba(255, 163, 154, 1)` |
 | buttonColor   | 按钮颜色           | String           | `rgba(250, 44, 25, 1)`   |
-| marks | 刻度标示| Object{key: number}    | {} |
+| marks`v1.2.2` | 刻度标示| Object{key: number}    | {} |
 
 ### Events
 
