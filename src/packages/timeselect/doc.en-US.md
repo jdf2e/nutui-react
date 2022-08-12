@@ -1,16 +1,16 @@
 # TimeSelect 配送时间
 
-### 介绍
+### Intro
 
-用于配送时间选择
+For delivery time selection
 
-### 安装
+### Install
 
 ``` javascript
 import { TimeSelect } from '@nutui/nutui-react';
 ```
 
-### 基本用法
+### Basic Usage
 
 :::demo
 
@@ -25,11 +25,11 @@ const TimeSelectDemo = () => {
   const dates = [
     {
       'pannel-key': '0',
-      date: '5月20日(今天)',
+      date: 'May 20 (Today)',
     },
     {
       'pannel-key': '1',
-      date: '5月21日(星期三)',
+      date: 'May 21 (Wednesday)',
     },
   ]
   const times = [
@@ -48,7 +48,7 @@ const TimeSelectDemo = () => {
   }
   const handleSelect = (selectTimeData) => {
     SetVisible1(false)
-    Toast.text(`您选择了: ${JSON.stringify(selectTimeData)}`)
+    Toast.text(`selected: ${JSON.stringify(selectTimeData)}`)
   }
   const handlePannelChange = (pannelKey, selectTimeData) => {
     console.log('pannelKey, selectTimeData: ', pannelKey, selectTimeData)
@@ -59,12 +59,12 @@ const TimeSelectDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>用法</h2>
-        <Cell title="请选择配送时间" click={handleClick} />
+        <h2>Demo</h2>
+        <Cell title="delivery time" click={handleClick} />
         <TimeSelect
           visible={visible1}
           height="50%"
-          title="取件时间 1"
+          title="Pickup time"
           multiple
           currentKey={currentKey}
           dates={dates}
@@ -87,34 +87,34 @@ export default TimeSelectDemo
 
 ### TimeSelect Prop
 
-| 字段                   | 说明                                                | 是否必传             | 类型    | 默认值 |
-|------------------------|----------------------------------------------------|--------|------------|---------|
-| visible                 | 是否显示弹层                                      | 是       | Boolean  | `false`|
-| height                 | 弹层的高度                                         | 否     | String  | `20%`|
-| title                 | 弹层标题                                         | 否      | String  | `取件时间`|
-| multiple              | 是否选择多个日期时间                               | 否        | String  | `false`|
-| currentKey           | 唯一标识                                    | 否        | String、Number  | `0` |
-| dates            | 选择日期面板的数据                                 | 是       | []        | ``       |
-| times            | 选择时间面板的数据                                  | 是     | []        | ``       |
+| Props                   | Description                 | required | Type    | Default |
+|------------------------|-----------------------------|----------|------------|---------|
+| visible                 | display the popup           | true     | Boolean  | `false`|
+| height                 | height of the popup         | false        | String  | `20%`|
+| title                 | popup title                 | false                | String  | `Pickup time`|
+| multiple              | Select multiple datetimes   | false                | String  | `false`|
+| currentKey           | Uniquely identifies         | false                | String、Number  | `0` |
+| dates            | Select data for date panel  | true     | []        | ``       |
+| times            | Select data for time panel  | true     | []        | ``       |
 
 ### dates
 
-| 字段                   | 说明                                                             | 类型    | 默认值 |
+| Props                   | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
-| date                 | 显示的名称                                            | String  | ``|
-| pannel-key           | 唯一标识，和 currentKey 一起标识当前选择的天            | Number、String  | `0`|
+| date                 | display name                                            | String  | ``|
+| pannel-key           | Unique identifier, together with currentKey to identify the currently selected day            | Number、String  | `0`|
 
 ### times
 
-| 字段                   | 说明                                                             | 类型    | 默认值 |
-|------------------------|----------------------------------------------------------------|---------|------|
-| key                 | 唯一标识，和 pannel-key、currentKey 一起标识当前选择的天              | Array  | `[]`|
-| list                 | 可选时间列表                                                        | Array  | `[]`|
+| Props                   | Description                                                                                       | Type    | Default |
+|------------------------|---------------------------------------------------------------------------------------------------|---------|------|
+| key                 | Unique identifier, together with pannel-key and currentKey to identify the currently selected day | Array  | `[]`|
+| list                 | Optional time list                                                                                | Array  | `[]`|
 
 ### TimeSelect Event
 
-| 名称  | 说明    | 是否必传       | 回调参数    |
-|-------|----------|--------|-------------|
-| select | 关闭遮罩之后的回调 | 是 | `list: []` |
-| pannelChange | 点击左栏日期回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `pannelKey: string 、number, list: []` |
-| timeChange | 点击时间回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `time: string, list: []` |
+| Event | Description                                                                                                       | required | callback args                         |
+|--------------|-------------------------------------------------------------------------------------------------------------------|----------|---------------------------------------|
+| select       | Callback after closing the mask                                                                                   | true     | `list: []`                            |
+| pannelChange | Click the date callback in the left column, and internally update the data through setCurrentKey, setCurrentTime  | false    | `pannelKey: string 、number, list: []` |
+| timeChange   | Click the time callback, and internally update the data through setCurrentKey, setCurrentTime                                                                     | false                | `time: string, list: []`              |

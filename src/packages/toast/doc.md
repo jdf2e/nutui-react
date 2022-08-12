@@ -16,62 +16,232 @@ import { Toast } from '@nutui/nutui-react';
 
 文字提示
 
-```javascript
-Toast.text('网络失败，请稍后再试~')
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Toast, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+    const textToast = (msg: string) => {
+        Toast.text(msg)
+    }
+    return (
+        <>
+        <Cell
+          title="Text文字提示"
+          isLink
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => textToast('网络失败，请稍后再试~')}
+        />
+        </>
+    )
+}
+export default App
 ```
+:::
 
 成功提示
 
-```javascript
-Toast.success('成功提示')
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Toast, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+    const successToast = (msg: string) => {
+        Toast.success(msg)
+    }
+    return (
+        <>
+        <Cell
+          title="Success 成功提示"
+          isLink
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => successToast('成功提示')}
+        />
+        </>
+    )
+}
+export default App
 ```
+:::
+
 
 失败提示
 
-```javascript
-Toast.fail('失败提示')
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Toast, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+    const errorToast = (msg: string) => {
+        Toast.fail(msg)
+    }
+    return (
+        <>
+        <Cell
+          title="Error 失败提示"
+          isLink
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => errorToast('失败提示')}
+        />
+        </>
+    )
+}
+export default App
 ```
+:::
+
 
 警告提示
 
-```javascript
-Toast.warn('警告提示')
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Toast, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+    const warningToast = (msg: string) => {
+        Toast.warn(msg)
+    }
+    return (
+        <>
+            <Cell
+            title=" Warning 警告提示"
+            isLink
+            click={(
+                event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+            ) => warningToast('警告提示')}
+            />
+        </>
+    )
+}
+export default App
 ```
+:::
+
 
 加载提示
 
-```javascript
-Toast.loading('加载中')
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Toast, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+    const loadingToast = (msg: string) => {
+        Toast.loading(msg)
+    }
+    return (
+        <>
+            <Cell
+            title=" Loading 加载提示"
+            isLink
+            click={(
+                event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+            ) => loadingToast('加载中')}
+            />
+        </>
+    )
+}
+export default App
 ```
+:::
+
+
+
 
 展示时长设置
 
-```javascript
-Toast.text('设置展示时长为10秒', {duration:10})
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Toast, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+    const duringToast = (msg: string) => {
+        Toast.text(msg, { duration: 10 })
+    }
+    return (
+        <>
+            <Cell
+            title="设置展示时长为10秒提示"
+            isLink
+            click={(
+                event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+            ) => duringToast('设置展示时长为10秒')}
+            />
+            <Cell
+            title="关闭正在显示的toast"
+            isLink
+            click={(
+                event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+            ) => Toast.hide()}
+            />
+        </>
+    )
+}
+export default App
 ```
+:::
+
 
 自定义 icon 图标
 
-```javascript
-Toast.customIcon('设置icon为JD图标', {
-      duration:0, //duration为0则一直展示
-      icon:'JD',
-      id: '',
-      center: true, // toast是否居中展示
-      type: 'text',
-      customClass: '', // 自定义样式名
-      bottom: 30,
-      size: 'base', 
-      textAlignCenter: true, 
-      bgColor: 'rgba(0, 0, 0, .8)',
-      cover: true, //是否展示透明遮罩层 
-      coverColor: 'rgba(0, 0, 0, 0.4)', // 遮罩颜色设定
-      closeOnClickOverlay: true, // 点击遮罩可关闭
-      onClose: () => {
-        console.log('closeToast')
-      }
-    })
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Toast, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+    const iconToast = (msg: string) => {
+        Toast.customIcon(msg, {
+        duration: 0, // duration为0则一直展示
+        icon: 'JD',
+        id: '',
+        center: true, // toast是否居中展示
+        type: 'text',
+        customClass: '', // 自定义样式名
+        bottom: 30, // toast不居中时距离底部位置
+        size: 'base', // 设置字体大小，默认base,可选large\small\base
+        textAlignCenter: true, // 文字是否居中显示,true为居中，false为left
+        bgColor: 'rgba(0, 0, 0, .8)',
+        cover: true, // 是否展示透明遮罩层
+        coverColor: 'rgba(0, 0, 0, 0.4)', // 遮罩颜色设定
+        closeOnClickOverlay: true, // 点击遮罩可关闭
+        onClose: () => {
+            console.log('closeToast')
+        },
+        })
+    }
+    return (
+        <>
+            <Cell
+            title="传入icon组件中的'JD'图标"
+            isLink
+            click={(
+                event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+            ) => iconToast('设置icon为JD')}
+            />
+        </>
+    )
+}
+export default App
 ```
+:::
+
+
 
 ## API
 

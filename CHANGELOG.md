@@ -1,3 +1,44 @@
+## v1.2.2
+`2022-08-10`
+
+* :zap: feat: range组件props补齐+国际化 (#201) @vickyYE
+* :zap: feat: signature组件增加单元测试、文档和demo国际化 (#205) @irisSong
+* :zap: test(navbar): navbar unit test (#203) @szg2008
+* :zap: test(tabbar): tabbar unit test (#204) @szg2008
+* :zap: feat: 新增 searchbar 组件 (#186) @Ymm0008
+* :zap: feat(numberkeyboard): new components (#192) @Drjingfubo
+* :zap: feat(tabbar): 组件能力补齐 (#178) @szg2008
+* :zap: feat: progress 组件 (#187) @ailululu
+* :zap: chore: tag 组件 eslint 修复 (#200) @libin0824
+* :zap: feat: datepicker 功能补齐 (#182) @yangxiaolu1993
+* :zap: feat: tag 组件新增 onClick 事件，closeable 支持非受控(#195) @libin0824
+* :zap: feat: divider组件增加单元测试 (#194) @vickyYE
+* :zap: feat: Dialog组件增加在线调试能力,文档多语言支持 (#193) @libin0824
+
+## v1.2.1
+`2022-08-03`
+
+* :sparkles: feat: video 视频组件 (#174)
+* :zap: feat: checkbox props 扩展
+* :zap: feat: tabs 能力补齐&单元测试 (#175)
+* :zap: feat(navbar): navbar组件能力补齐 (#177)
+* :zap: feat: input 组件新增 props (#173)
+* :bug: fix: elevator 组件props补全、新增单元测试、demo和文档多语言支持 (#180)
+* :bug: fix: 修改steps点击报错和eslint校验报错 (#179)
+* 📖docs: feat: timeselect 国际化支持
+* 📖docs: feat: vlist 国际化
+* 📖docs: feat: tag 增加在线调试能力
+* 📖docs: feat: badge 增加在线调试能力
+* 📖docs: fix: 修复 video 组件 demo 样式冲突
+* 📖docs: feat: noticebar、notify、range、textarea、toast组件增加在线编辑功能 (#190)
+* 📖docs: feat: price组件文档和demo国际化 (#191)
+* 📖docs: feat: vlist 国际化文档
+* 📖docs: feat: animatingnumbers 增加单元测试、文档和demo国际化支持、主题定制支持 (#189)
+* 📖docs: feat: divider组件增加国际化demo (#176)
+* 📖docs: feat: layout 增加在线调试，变量提取，依赖版本锁定 (#157)
+* 📖docs: chore: 在线调试增加scss支持
+
+
 ## v1.2.0
 `2022-07-27`
 

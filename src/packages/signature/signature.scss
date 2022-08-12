@@ -1,9 +1,9 @@
 @import '../button/button';
 .nut-signature {
   &__inner {
-    height: 10rem;
-    margin-bottom: 1rem;
-    border: 1px solid $signature-border-color;
+    height: $signature-height;
+    margin-bottom: $signature-margin-bottom;
+    border: $signature-border-width solid $signature-border-color;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,6 +12,6 @@
     font-size: $font-size-base;
   }
   &__btn {
-    margin-right: 15px !important;
+    margin-right: $signature-btn-margin-right !important;
   }
 }

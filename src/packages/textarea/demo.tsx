@@ -48,7 +48,6 @@ const TextAreaDemo = () => {
   const [value3] = useState('')
 
   useEffect(() => {
-    console.log('translated.basic', translated.basic)
     updateValue1(translated.basic)
   }, [translated])
 

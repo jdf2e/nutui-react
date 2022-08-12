@@ -15,6 +15,13 @@ $text-color: #808080 !default;
 $disable-color: #cccccc !default;
 $white: #fff;
 $black: #000;
+$required-color: #fa2c19 !default;
+
+$dark-background: #1a1919 !default;
+$dark-background2: #1d1b1c !default;
+$dark-background3: #141414 !default;
+$dark-color: $white !default;
+$dark-color-gray: $text-color !default;
 
 // padding
 $padding-xs: 12px;
@@ -135,8 +142,11 @@ $uploader-picture-height: 100px !default;
 $uploader-background: #f7f8fa !default;
 
 //input
-$input-border-bottom: #eaf0fb;
-$input-disabled-color: #c8c9cc;
+$input-border-bottom: #eaf0fb !default;
+$input-disabled-color: #c8c9cc !default;
+$input-required-color: $required-color !default;
+$input-font-size: $font-size-2 !default;
+$input-padding: 10px 25px !default;
 
 // textarea
 
@@ -250,20 +260,30 @@ $rate-icon-void-color: $disable-color;
 
 // tabbar
 
-$tabbar-active-color: $primary-color;
-$tabbar-border-color: #eee;
+$tabbar-active-color: $primary-color !default;
+$tabbar-unactive-color: $primary-color !default;
+$tabbar-border-top: 1px solid #eee !default;
+$tabbar-border-bottom: 1px solid #eee !default;
+$tabbar-box-shadow: none !default;
+$tabbar-item-text-font-size: $font-size-0 !default;
+$tabbar-item-text-line-height: initial !default;
 
 //infiniteloading
 $infinite-bottom-color: #c8c8c8;
 
 //range
-$range-max: #333333;
-$rang-bg-color: rgba($primary-color, 0.5);
-$rang-bar-bg-color: linear-gradient(
+$range-tip-font-color: #333333 !default;
+$range-bg-color: rgba($primary-color, 0.5) !default;
+$range-bg-color-tick: #fa958c !default;
+$range-bar-bg-color: linear-gradient(
   135deg,
   $primary-color 0%,
   $primary-color-end 100%
-);
+) !default;
+$range-bar-btn-bg-color: $white !default;
+$range-bar-btn-width: 24px !default;
+$range-bar-btn-height: 24px !default;
+$range-bar-btn-border: 1px solid $primary-color !default;
 
 //address
 $address-region-tab-line: linear-gradient(
@@ -305,8 +325,12 @@ $steps-process-icon-text-color: $primary-color !default;
 $dialog-width: 296px;
 
 // checkbox
-$checkbox-label-color: #1d1e1e;
-$checkbox-label-disable-color: #999;
+$checkbox-label-color: #1d1e1e !default;
+$checkbox-label-disable-color: #999 !default;
+$checkbox-icon-disable-color: #d6d6d6 !default;
+$checkbox-label-margin-left: 15px !default;
+$checkbox-label-font-size: 14px !default;
+$checkbox-icon-font-size: 18px !default;
 
 //radio
 $radio-label-font-color: #1d1e1e !default;
@@ -319,6 +343,10 @@ $radio-label-button-background: rgba(240, 37, 15, 0.05) !default;
 
 // signature
 $signature-border-color: #dadada;
+$signature-border-width: 1px;
+$signature-height: 10rem;
+$signature-margin-bottom: 1rem;
+$signature-btn-margin-right: 15px;
 
 //fixednav
 $fixednav-bg-color: $white;
@@ -472,3 +500,131 @@ $table-border-color: #ececec !default;
 $table-cols-padding: 10px !default;
 $table-tr-even-bg-color: #f3f3f3 !default;
 $table-tr-odd-bg-color: $white !default;
+
+//numberkeyboard
+$numberkeyboard-width: 100% !default;
+$numberkeyboard-padding: 0 0 22px 0 !default;
+$numberkeyboard-background-color: #f2f3f5 !default;
+$numberkeyboard-header-height: 34px !default;
+$numberkeyboard-header-padding: 6px 0 0 0 !default;
+$numberkeyboard-header-color: #646566 !default;
+$numberkeyboard-header-font-size: 16px !default;
+$numberkeyboard-header-close-padding: 0 16px !default;
+$numberkeyboard-header-close-color: #576b95 !default;
+$numberkeyboard-header-close-font-size: 14px !default;
+$numberkeyboard-header-close-background-color: transparent !default;
+$numberkeyboard-key-background-color: #fff !default;
+$numberkeyboard-key-active-background-color: #ebedf0 !default;
+$numberkeyboard-key-height: 48px !default;
+$numberkeyboard-key-line-height: 1.5 !default;
+$numberkeyboard-key-border-radius: 8px !default;
+$numberkeyboard-key-font-size: 28px !default;
+$numberkeyboard-key-font-size-color: #333 !default;
+$numberkeyboard-key-finish-font-size: 16px !default;
+$numberkeyboard-key-finish-font-size-color: #fff !default;
+$numberkeyboard-key-finish-background-color: #1989fa !default;
+$numberkeyboard-key-activeFinsh-background-color: #0570db !default;
+// elevator
+$elevator-list-item-highcolor: $primary-color !default;
+$elevator-list-item-font-size: 12px !default;
+$elevator-list-item-font-color: #333333 !default;
+$elevator-list-item-name-padding: 0 20px !default;
+$elevator-list-item-name-height: 30px !default;
+$elevator-list-item-name-line-height: 30px !default;
+$elevator-list-item-code-font-size: 14px !default;
+$elevator-list-item-code-font-color: #1a1a1a !default;
+$elevator-list-item-code-font-weight: 500 !default;
+$elevator-list-item-code-padding: 0 20px !default;
+$elevator-list-item-code-height: 35px !default;
+$elevator-list-item-code-line-height: 35px !default;
+$elevator-list-item-code-after-width: 100% !default;
+$elevator-list-item-code-after-height: 1px !default;
+$elevator-list-item-code-after-bg-color: #f5f5f5 !default;
+$elevator-list-item-code-current-box-shadow: 0 3px 3px 1px
+  rgba(240, 240, 240, 1) !default;
+$elevator-list-item-code-current-bg-color: #fff !default;
+$elevator-list-item-code-current-border-radius: 50% !default;
+$elevator-list-item-code-current-width: 45px !default;
+$elevator-list-item-code-current-height: 45px !default;
+$elevator-list-item-code-current-line-height: 45px !default;
+$elevator-list-item-code-current-position: absolute !default;
+$elevator-list-item-code-current-right: 60px !default;
+$elevator-list-item-code-current-top: 50% !default;
+$elevator-list-item-code-current-transform: translateY(-50%) !default;
+$elevator-list-item-code-current-text-align: center !default;
+$elevator-list-item-bars-position: absolute !default;
+$elevator-list-item-bars-right: 8px !default;
+$elevator-list-item-bars-top: 50% !default;
+$elevator-list-item-bars-transform: translateY(-50%) !default;
+$elevator-list-item-bars-padding: 15px 0 !default;
+$elevator-list-item-bars-background-color: #eeeff2 !default;
+$elevator-list-item-bars-border-radius: 6px !default;
+$elevator-list-item-bars-text-align: center !default;
+$elevator-list-item-bars-z-index: 1 !default;
+$elevator-list-item-bars-inner-item-padding: 3px !default;
+$elevator-list-item-bars-inner-item-font-size: 10px !default;
+$elevator-list-fixed-color: $primary-color !default;
+$elevator-list-fixed-bg-color: $white !default;
+$elevator-list-fixed-box-shadow: 0 0 10px #eee !default;
+$elevator-list-item-bars-inner-item-active-color: $primary-color !default;
+
+//navbar
+$navbar-height: 44px !default;
+$navbar-margin-bottom: 20px !default;
+$navbar-padding: 13px 16px !default;
+$navbar-background: $white !default;
+$navbar-box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1) !default;
+$navbar-color: $title-color2 !default;
+$navbar-title-base-font: $font-size-2 !default;
+$navbar-title-font: $font-size-2 !default;
+$navbar-title-font-weight: 0 !default;
+$navbar-title-font-color: $navbar-color !default;
+$navbar-title-width: 100px !default;
+$navbar-title-icon-margin: 0 0 0 13px !default;
+
+// layout
+$row-content-color: #fff !default;
+$row-content-background-color: #ff8881 !default;
+$row-content-light-background-color: #ffc7c4 !default;
+$row-content-border-radius: 6px !default;
+$row-content-height: 50px !default;
+$row-content-line-height: 40px !default;
+$col-default-margin-bottom: 15px !default;
+
+
+// searchbar
+$searchbar-background: $white !default;
+$searchbar-right-out-color: $black !default;
+$searchbar-padding: 9px 16px !default;
+$searchbar-width: 100% !default;
+$searchbar-action-text-color: #323233 !default;
+$searchbar-input-background: #f7f7f7 !default;
+$searchbar-input-padding: 0 28px !default;
+$searchbar-input-height: 32px !default;
+$searchbar-input-width: 100% !default;
+$searchbar-input-border-radius: 16px !default;
+$searchbar-input-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04) !default;
+
+// progress
+$progress-border-radius: 12px !default;
+$progress-text-padding: 0 5px !default;
+$progress-text-font-size: 13px !default;
+$progress-insidetext-border-radius: 5px !default;
+$progress-small-height: 5px !default;
+$progress-base-height: 10px !default;
+$progress-large-height: 15px !default;
+$progress-small-padding: 0 4px !default;
+$progress-base-padding: 0 5px !default;
+$progress-large-padding: 0 5px !default;
+$progress-small-font-size: 7px !default;
+$progress-base-font-size: 9px !default;
+$progress-large-font-size: 13px !default;
+
+// animatingnumbers
+$countup-height: 32px !default;
+$countup-base-size: 18px !default;
+$countup-border-raduis: 4px !default;
+$countup-lr-margin: 1px !default;
+$countup-bgcolor: #031f63 !default;
+$countup-color: #ffffff !default;
+$countup-width: 24px !default;

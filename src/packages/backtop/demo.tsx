@@ -1,7 +1,30 @@
 import React from 'react'
 import { BackTop } from './backtop'
+import { useTranslate } from '../../sites/assets/locale'
+import Icon from '@/packages/icon'
+
+interface T {
+  title: string
+  clg: string
+  backText: string
+  content: string
+}
 
 const BackTopDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      title: '基本用法',
+      clg: '触发返回顶部',
+      content: '我是测试数据',
+      backText: '顶部',
+    },
+    'en-US': {
+      title: 'Basic Usage',
+      clg: 'backtop',
+      content: 'test data',
+      backText: 'Top',
+    },
+  })
   const demoStyle = {
     height: '1600px',
   }
@@ -17,102 +40,106 @@ const BackTopDemo = () => {
     fontSize: '13px',
   }
 
+  const handleClick = () => {
+    console.log(translated.clg)
+  }
+
   return (
     <>
       <div className="demo" style={demoStyle} id="elId">
-        <h2>基础用法</h2>
+        <h2>{translated.title}</h2>
         <div className="text-data" style={cellStyle}>
-          我是测试数据1
+          {translated.content}1
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据2
+          {translated.content}2
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据3
+          {translated.content}3
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据4
+          {translated.content}4
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据5
+          {translated.content}5
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据6
+          {translated.content}6
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据7
+          {translated.content}7
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据8
+          {translated.content}8
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据9
+          {translated.content}9
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据10
+          {translated.content}10
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据11
+          {translated.content}11
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据12
+          {translated.content}12
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据13
+          {translated.content}13
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据14
+          {translated.content}14
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据15
+          {translated.content}15
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据16
+          {translated.content}16
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据17
+          {translated.content}17
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据18
+          {translated.content}18
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据19
+          {translated.content}19
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据20
+          {translated.content}20
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据21
+          {translated.content}21
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据22
+          {translated.content}22
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据23
+          {translated.content}23
         </div>
         <div className="text-data" style={cellStyle}>
-          我是测试数据24
+          {translated.content}24
         </div>
         <BackTop
-          className="test123"
+          className="custom-class"
           elId="elId"
-          distance={200}
-          bottom={100}
-          isAnimation={false}
-          style={{ color: 'red' }}
-          backTopClick={() => {
-            console.log('触发点击')
-          }}
+          distance={100}
+          bottom={110}
+          onClick={handleClick}
         >
-          <div>无</div>
+          <div
+            className="backtop-demo"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Icon size="12px" className="nut-backtop-main" name="top" />
+            <div style={{ fontSize: '12px' }}>{translated.backText}</div>
+          </div>
         </BackTop>
-        <BackTop
-          elId="elId"
-          distance={200}
-          backTopClick={() => {
-            console.log('触发返回顶部')
-          }}
-        />
+        <BackTop elId="elId" distance={200} bottom={50} onClick={handleClick} />
       </div>
     </>
   )

@@ -3,7 +3,7 @@
 exports[`should icon snapshot match 1`] = `
 <DocumentFragment>
   <i
-    class="test nut-icon nutui-iconfont nut-icon-JD "
+    class="test nutui-iconfont nut-icon nutui-icon nut-icon-JD "
     style="color: rgb(250, 44, 25); font-size: 24px; width: 24px; height: 24px;"
   />
 </DocumentFragment>

@@ -30,7 +30,7 @@ exports[`prop title desc subtitle 1`] = `
           </div>
         </div>
         <i
-          class="nut-cell__link nut-icon nutui-iconfont nut-icon-right "
+          class="nut-cell__link nutui-iconfont nut-icon nutui-icon nut-icon-right "
         />
       </div>
       <div
@@ -52,7 +52,7 @@ exports[`prop title desc subtitle 1`] = `
           https://jd.com
         </div>
         <i
-          class="nut-cell__link nut-icon nutui-iconfont nut-icon-right "
+          class="nut-cell__link nutui-iconfont nut-icon nutui-icon nut-icon-right "
         />
       </div>
       <div
@@ -69,7 +69,7 @@ exports[`prop title desc subtitle 1`] = `
           </div>
         </div>
         <i
-          class="nut-cell__link nut-icon nutui-iconfont nut-icon-right "
+          class="nut-cell__link nutui-iconfont nut-icon nutui-icon nut-icon-right "
         />
       </div>
     </div>
