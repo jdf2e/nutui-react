@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-subsidenavbar__list  nutHide"
+    level="1"
+  >
+    <div
+      class="nut-subsidenavbar__title border-bt"
+      style="padding-left: 40px;"
+    >
+      一级标题 
+      <i
+        class="arrow-icon arrow-up"
+      />
+    </div>
+    <div
+      class="nut-subsidenavbar__content"
+    >
+      <div
+        class="nut-subsidenavbar__item border-bt"
+        style="padding-left: 60px;"
+      >
+        一级内容1
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
