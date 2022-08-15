@@ -209,3 +209,4 @@ export default App;
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | ----- |
 | onClick`v1.2.3` | 点击时触发 | event: MouseEvent, type: 'row' | 'col' |
+
