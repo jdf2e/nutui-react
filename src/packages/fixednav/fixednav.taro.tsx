@@ -20,9 +20,9 @@ export interface FixedNavProps {
   position: Position
   type: Direction
   onChange: (v: any) => void
-  onSelected: Function
-  slotList: HTMLProps<HTMLElement>
-  slotBtn: HTMLProps<HTMLElement>
+  onSelected: (item: any, e: any) => void
+  slotList: React.ReactNode
+  slotBtn: React.ReactNode
 }
 
 const defaultProps = {
