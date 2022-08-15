@@ -111,6 +111,10 @@ const BadgeDemo = () => {
 
   const [customLocationName, setCustomLocationName] = useState('top')
   const [customLocationShow, setCustomLocationShow] = useState(false)
+
+  const chooseHandle = (item, index) => {
+    console.log('选择')
+  }
   return (
     <>
       <div className="demo">
@@ -160,6 +164,7 @@ const BadgeDemo = () => {
             disableAction ? setDisableAction(false) : setDisableAction(true)
           }}
           list={itemListDisabled}
+          onChoose={chooseHandle}
         >
           <Button type="primary" shape="square">
             禁用选项
@@ -209,6 +214,7 @@ const BadgeDemo = () => {
             setCustomLocationShow(false)
           }}
           list={iconItemList}
+          onChoose={chooseHandle}
           className="brickBox"
         >
           <div className="brick" />

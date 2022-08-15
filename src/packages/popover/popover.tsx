@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import Trigger from './Trigger'
 import Icon from '@/packages/icon'
+import Overlay from '@/packages/overlay'
 
 export type PopoverTheme = 'light' | 'dark'
 
@@ -137,44 +138,66 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
       props.onClick(e)
     }
   }
-  return (
-    <div className={`${classes} ${className}`} style={{ ...style }} {...reset}>
-      <Trigger forwardedRef={goodItem}>
-        <div onClick={(e) => handleClick(e)}>
-          {Array.isArray(children) ? children[0] : children}
 
-          {visible ? (
-            <div className={`${popoverContent}`} style={getStyle()}>
-              <div className={`${popoverArrow}`} />
-              {Array.isArray(children) ? children[1] : ''}
-              {list.map((item: List, i: number) => {
-                return (
-                  <div
-                    key={item.name}
-                    className={`popover-menu-item ${
-                      item.disabled ? 'disabled' : ''
-                    }`}
-                    onClick={() => {
-                      onChoose(item, i)
-                    }}
-                  >
-                    {item.icon ? (
-                      <Icon
-                        className="popover-menu-item-img"
-                        name={item.icon}
-                      />
-                    ) : (
-                      ''
-                    )}
-                    <div className="popover-menu-item-name">{item.name}</div>
-                  </div>
-                )
-              })}
-            </div>
-          ) : null}
-        </div>
-      </Trigger>
-    </div>
+  const handleChoose = (item: List, index: number) => {
+    if (!item.disabled) {
+      onChoose(item, index)
+    }
+  }
+  return (
+    <>
+      <div
+        className={`${classes} ${className}`}
+        style={{ ...style }}
+        {...reset}
+      >
+        <Trigger forwardedRef={goodItem}>
+          <div onClick={(e) => handleClick(e)}>
+            {Array.isArray(children) ? children[0] : children}
+
+            {visible ? (
+              <div className={`${popoverContent}`} style={getStyle()}>
+                <div className={`${popoverArrow}`} />
+                {Array.isArray(children) ? children[1] : ''}
+                {list.map((item: List, i: number) => {
+                  return (
+                    <div
+                      key={item.name}
+                      className={`popover-menu-item ${
+                        item.disabled ? 'disabled' : ''
+                      }`}
+                      onClick={() => {
+                        handleChoose(item, i)
+                      }}
+                    >
+                      {item.icon ? (
+                        <Icon
+                          className="popover-menu-item-img"
+                          name={item.icon}
+                        />
+                      ) : (
+                        ''
+                      )}
+                      <div className="popover-menu-item-name">{item.name}</div>
+                    </div>
+                  )
+                })}
+              </div>
+            ) : null}
+          </div>
+        </Trigger>
+      </div>
+
+      {visible ? (
+        <Overlay
+          visible={visible}
+          onClick={(e) => handleClick(e)}
+          style={{ background: 'transparent' }}
+        />
+      ) : (
+        ''
+      )}
+    </>
   )
 }
 
