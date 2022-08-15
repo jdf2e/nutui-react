@@ -70,7 +70,7 @@
           "desc": "列表项，可组成列表",
           "sort": 2,
           "show": false,
-          "taro": false,
+          "taro": true,
           "exportEmpty": true,
           "author": "songsong"
         },
@@ -103,7 +103,7 @@
           "cName": "弹出层",
           "type": "component",
           "show": true,
-          "taro": false,
+          "taro": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008"
         },
@@ -132,7 +132,7 @@
           "desc": "协助进行页面级整体布局。",
           "sort": 1,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "yushuang24"
         },
         {
@@ -182,7 +182,7 @@
           "desc": "提供导航功能。",
           "sort": 1,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "dsj"
         },
         {
@@ -271,7 +271,7 @@
           "desc": "显示一个任务或流程的进度，常用于开通流程。",
           "sort": 16,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "liukun"
         },
         {
@@ -330,7 +330,7 @@
           "desc": "日历，可平铺/弹窗展示",
           "sort": 10,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "szg2008"
         },
         {
@@ -373,7 +373,7 @@
           "desc": "通过点击按钮控制数字增减。",
           "sort": 3,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         },
         {
@@ -384,7 +384,7 @@
           "desc": "单行输入框",
           "sort": 1,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "VickyYe"
         },
         {
@@ -460,7 +460,7 @@
           "desc": "文本框内输入或编辑文字，支持限制输入数量。",
           "sort": 2,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "VickyYe"
         },
         {
@@ -482,6 +482,7 @@
           "desc": "用于搜索场景的输入框组件",
           "sort": 16,
           "show": true,
+          "taro": false,
           "author": "Ymm0008"
         },
         {
@@ -492,6 +493,7 @@
           "desc": "",
           "sort": 16,
           "show": true,
+          "taro": true,
           "author": "Drjingfubo"
         }
       ]
@@ -723,7 +725,7 @@
           "desc": "气泡弹出框",
           "sort": 19,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "lzz"
         },
         {
@@ -820,6 +822,7 @@
           "desc": "原生video实现的视频播放器",
           "sort": 20,
           "show": true,
+          "taro": false,
           "author": "swag~jun"
         },
         {
@@ -913,7 +916,7 @@
           "desc": "用于配送时间选择",
           "sort": 20,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "zhaoqian16"
         }
       ]
