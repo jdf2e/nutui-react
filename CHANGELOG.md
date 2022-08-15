@@ -1,3 +1,20 @@
+## v1.2.2
+`2022-08-10`
+
+* :zap: feat: range组件props补齐+国际化 (#201) @vickyYE
+* :zap: feat: signature组件增加单元测试、文档和demo国际化 (#205) @irisSong
+* :zap: test(navbar): navbar unit test (#203) @szg2008
+* :zap: test(tabbar): tabbar unit test (#204) @szg2008
+* :zap: feat: 新增 searchbar 组件 (#186) @Ymm0008
+* :zap: feat(numberkeyboard): new components (#192) @Drjingfubo
+* :zap: feat(tabbar): 组件能力补齐 (#178) @szg2008
+* :zap: feat: progress 组件 (#187) @ailululu
+* :zap: chore: tag 组件 eslint 修复 (#200) @libin0824
+* :zap: feat: datepicker 功能补齐 (#182) @yangxiaolu1993
+* :zap: feat: tag 组件新增 onClick 事件，closeable 支持非受控(#195) @libin0824
+* :zap: feat: divider组件增加单元测试 (#194) @vickyYE
+* :zap: feat: Dialog组件增加在线调试能力,文档多语言支持 (#193) @libin0824
+
 ## v1.2.1
 `2022-08-03`
 

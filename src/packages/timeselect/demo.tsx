@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { TimeSelect } from './timeselect'
+import { TimeType } from '../timedetail/timedetail'
 import { Cell } from '../cell/cell'
 import Toast from '../toast'
 import { useTranslate } from '../../sites/assets/locale'
@@ -57,16 +58,19 @@ const TimeSelectDemo = () => {
     SetVisible1(true)
   }
   // 点击弹层 X 或者弹层外区域触发事件
-  const handleSelect = (selectTimeData: any) => {
+  const handleSelect = (selectTimeData: TimeType[]) => {
     SetVisible1(false)
     Toast.text(`${translated.text1}: ${JSON.stringify(selectTimeData)}`)
   }
   // 选择日期触发回调事件
-  const handlePannelChange = (pannelKey: any, selectTimeData: any) => {
+  const handlePannelChange = (
+    pannelKey: string | number,
+    selectTimeData: TimeType[]
+  ) => {
     console.log('pannelKey, selectTimeData: ', pannelKey, selectTimeData)
   }
   // 选择配送时间触发回调事件
-  const handleTimeChange = (time: any, selectTimeData: any) => {
+  const handleTimeChange = (time: string, selectTimeData: TimeType[]) => {
     console.log('time, selectTimeData: ', time, selectTimeData)
   }
   return (
