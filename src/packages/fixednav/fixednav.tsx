@@ -27,8 +27,8 @@ export interface FixedNavProps {
 
 const defaultProps = {
   fixednavClass: 'nut-fixednav',
-  activeText: '收起导航',
-  unActiveText: '快速导航',
+  activeText: '',
+  unActiveText: '',
   type: 'right',
   position: {
     top: 'auto',
@@ -120,8 +120,8 @@ export const FixedNav: FunctionComponent<
             <Icon name="left" color="#fff" />
             <div className="text">
               {visible
-                ? locale.fixednav.activeText || activeText
-                : locale.fixednav.unActiveText || unActiveText}
+                ? activeText || locale.fixednav.activeText
+                : unActiveText || locale.fixednav.unActiveText}
             </div>
           </>
         )}
