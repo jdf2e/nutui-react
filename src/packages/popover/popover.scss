@@ -183,6 +183,12 @@
     color: $popover-primary-text-color;
     position: absolute;
     box-shadow: 0 2px 12px #3232331f;
+    opacity: 0;
+    transition: opacity 0.1s;
+
+    &.popover-content-show {
+      opacity: 1;
+    }
 
     .popover-menu-item {
       display: flex;

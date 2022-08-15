@@ -7,7 +7,6 @@ import React, {
 } from 'react'
 import Trigger from './Trigger'
 import Icon from '@/packages/icon'
-// import { CSSTransition } from 'react-transition-group'
 
 export type PopoverTheme = 'light' | 'dark'
 
@@ -117,7 +116,9 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
   }
   const popoverContentSelf = () => {
     const prefixCls = 'popover-content'
-    return `${prefixCls} ${location ? `${prefixCls}--${location}` : ''}`
+    return `${prefixCls}-show ${prefixCls} ${
+      location ? `${prefixCls}--${location}` : ''
+    }`
   }
 
   const filter = () => {
@@ -141,6 +142,7 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
       <Trigger forwardedRef={goodItem}>
         <div onClick={(e) => handleClick(e)}>
           {Array.isArray(children) ? children[0] : children}
+
           {visible ? (
             <div className={`${popoverContent}`} style={getStyle()}>
               <div className={`${popoverArrow}`} />
