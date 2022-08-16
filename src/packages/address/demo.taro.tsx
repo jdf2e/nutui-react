@@ -44,6 +44,30 @@ const AddressDemo = () => {
     { id: 5, name: '浙江', title: 'Z' },
   ])
 
+  const addressData: any = {
+    province: [
+      { id: 1, name: '北京', title: 'B' },
+      { id: 2, name: '广西', title: 'G' },
+      { id: 3, name: '江西', title: 'J' },
+      { id: 4, name: '四川', title: 'S' },
+      { id: 5, name: '浙江', title: 'Z' },
+    ],
+    city: [
+      { id: 7, name: '朝阳区', title: 'C' },
+      { id: 8, name: '崇文区', title: 'C' },
+      { id: 9, name: '昌平区', title: 'C' },
+      { id: 6, name: '石景山区', title: 'S' },
+      { id: 3, name: '八里庄街道', title: 'B' },
+      { id: 10, name: '北苑', title: 'B' },
+    ],
+    country: [
+      { id: 3, name: '八里庄街道', title: 'B' },
+      { id: 9, name: '北苑', title: 'B' },
+      { id: 4, name: '常营乡', title: 'C' },
+    ],
+    town: [],
+  }
+
   const [city, setCity] = useState<any>([])
 
   const [country, setCountry] = useState<any>([])
@@ -56,6 +80,7 @@ const AddressDemo = () => {
     three: '请选择地址',
     four: '请选择地址',
     five: '请选择地址',
+    six: '请选择地址',
   })
 
   const [address, setAddress] = useState({
@@ -71,6 +96,7 @@ const AddressDemo = () => {
     exist: false,
     customImg: false,
     other: false,
+    select: false,
   })
 
   const [icon, setIcon] = useState({
@@ -123,35 +149,44 @@ const AddressDemo = () => {
     })
   }
 
-  const onChange = (cal: CalBack, tag: string) => {
-    console.log('change', cal)
+  const onChange = (cal: any, tag: string) => {
+    console.log('change', cal, tag)
 
-    setTimeout(() => {
-      switch (cal.next) {
-        case 'city':
-          setCity([
-            { id: 7, name: '朝阳区', title: 'C' },
-            { id: 8, name: '崇文区', title: 'C' },
-            { id: 9, name: '昌平区', title: 'C' },
-            { id: 6, name: '石景山区', title: 'S' },
-            { id: 3, name: '八里庄街道', title: 'B' },
-            { id: 9, name: '北苑', title: 'B' },
-          ])
-          break
-        case 'country':
-          setCountry([
-            { id: 3, name: '八里庄街道', title: 'B' },
-            { id: 9, name: '北苑', title: 'B' },
-            { id: 4, name: '常营乡', title: 'C' },
-          ])
-          break
-        default:
-          setShowPopup({
-            ...showPopup,
-            [tag]: false,
-          })
+    if (tag === 'normal2' || tag === 'select') {
+      if (cal.next === 'town') {
+        setShowPopup({
+          ...showPopup,
+          [tag]: false,
+        })
       }
-    }, 200)
+    } else {
+      setTimeout(() => {
+        switch (cal.next) {
+          case 'city':
+            setCity([
+              { id: 7, name: '朝阳区', title: 'C' },
+              { id: 8, name: '崇文区', title: 'C' },
+              { id: 9, name: '昌平区', title: 'C' },
+              { id: 6, name: '石景山区', title: 'S' },
+              { id: 3, name: '八里庄街道', title: 'B' },
+              { id: 10, name: '北苑', title: 'B' },
+            ])
+            break
+          case 'country':
+            setCountry([
+              { id: 3, name: '八里庄街道', title: 'B' },
+              { id: 9, name: '北苑', title: 'B' },
+              { id: 4, name: '常营乡', title: 'C' },
+            ])
+            break
+          default:
+            setShowPopup({
+              ...showPopup,
+              [tag]: false,
+            })
+        }
+      }, 200)
+    }
   }
 
   const selected = (
@@ -272,6 +307,20 @@ const AddressDemo = () => {
     })
   }
 
+  const close6 = (val: CalResult) => {
+    if ((val.data as AddressResult).addressStr) {
+      setText({
+        ...text,
+        six: (val.data as AddressResult).addressStr,
+      })
+    }
+
+    setShowPopup({
+      ...showPopup,
+      select: false,
+    })
+  }
+
   return (
     <>
       <div className="demo">
@@ -280,6 +329,12 @@ const AddressDemo = () => {
           title="选择地址"
           desc={text.one}
           onClick={() => showAddress('normal')}
+        />
+        <h2>选中省市区</h2>
+        <Cell
+          title="选择地址"
+          desc={text.six}
+          onClick={() => showAddress('select')}
         />
         <h2>选择自定义地址2</h2>
         <Cell
@@ -318,12 +373,25 @@ const AddressDemo = () => {
         />
 
         <Address
+          modelValue={showPopup.select}
+          modelSelect={[1, 7, 3]}
+          province={addressData.province}
+          city={addressData.city}
+          country={addressData.country}
+          town={addressData.town}
+          customAddressTitle="请选择所在地区"
+          onChange={(cal) => onChange(cal, 'select')}
+          onClose={close6}
+        />
+
+        <Address
           modelValue={showPopup.normal2}
           type="custom2"
-          province={province}
-          city={city}
-          country={country}
-          town={town}
+          modelSelect={[1, 7, 3]}
+          province={addressData.province}
+          city={addressData.city}
+          country={addressData.country}
+          town={addressData.town}
           height="270px"
           onChange={(cal) => onChange(cal, 'normal2')}
           onClose={close5}
