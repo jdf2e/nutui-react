@@ -1,14 +1,32 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import {
-  VirtualList,
-  Cell,
-  CellGroup,
-  Radio,
-} from '@/packages/nutui.react.taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import { Cell, CellGroup, Radio } from '@/packages/nutui.react.taro'
+
+import VirtualList from './index'
 
 const { RadioGroup } = Radio
 
 const ListDemo = () => {
+  const [translated] = useTranslate<any>({
+    'zh-CN': {
+      text1: '垂直等高',
+      text2: '垂直不等高',
+      text3: '水平等宽',
+      text4: '水平不等宽',
+    },
+    'zh-TW': {
+      text1: '縱向等高',
+      text2: '縱向不等高',
+      text3: '水平等寬',
+      text4: '水平不等寬',
+    },
+    'en-US': {
+      text1: 'Vertical equal height',
+      text2: 'Vertical unequal height',
+      text3: 'Horizontal equal width',
+      text4: 'Horizontal unequal width',
+    },
+  })
   const [sourceData, setsourceData] = useState<any>([])
   const [pageNo, setPageNo] = useState(1)
   const [radioVal, setRadioVal] = useState('1')
@@ -35,14 +53,14 @@ const ListDemo = () => {
     }
   }, [pageNo])
   const ItemRender = ({ data }: any) => {
-    return <p>我是-{data}</p>
+    return <p>{data}</p>
   }
   const ItemRenderMemo = React.memo(ItemRender)
 
   const ItemVariable = ({ data, index }: any) => {
     return (
       <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>
-        可变大小隔行展示-{data}
+        {data}
       </p>
     )
   }
@@ -125,10 +143,10 @@ const ListDemo = () => {
               onChange={handleChange}
               direction="horizontal"
             >
-              <Radio value="1">垂直等高</Radio>
-              <Radio value="2">垂直不等高</Radio>
-              <Radio value="3">水平等宽</Radio>
-              <Radio value="4">水平不等宽</Radio>
+              <Radio value="1">{translated.text1}</Radio>
+              <Radio value="2">{translated.text2}</Radio>
+              <Radio value="3">{translated.text3}</Radio>
+              <Radio value="4">{translated.text4}</Radio>
             </RadioGroup>
           </Cell>
         </CellGroup>

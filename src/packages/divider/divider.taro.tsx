@@ -29,6 +29,7 @@ export const Divider: FunctionComponent<
     styles,
     className,
     direction,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -49,7 +50,7 @@ export const Divider: FunctionComponent<
           [dividerBem('vertical')]: direction === 'vertical',
         })
   return (
-    <div className={`${classes} ${className || ''}`} style={styles}>
+    <div className={`${classes} ${className || ''}`} style={styles} {...rest}>
       {children}
     </div>
   )

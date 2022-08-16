@@ -48,6 +48,10 @@ import TabPane from '@/packages/tabpane/doc.md?raw'
 import IndicatorenUS from '@/packages/indicator/doc.en-US.md?raw'
 import IndicatorzhTW from '@/packages/indicator/doc.zh-TW.md?raw'
 import Indicator from '@/packages/indicator/doc.md?raw'
+import SideNavBarenUS from '@/packages/sidenavbar/doc.en-US.md?raw'
+import SideNavBar from '@/packages/sidenavbar/doc.md?raw'
+import SubSideNavBar from '@/packages/subsidenavbar/doc.md?raw'
+import SideNavBarItem from '@/packages/sidenavbaritem/doc.md?raw'
 import RangeenUS from '@/packages/range/doc.en-US.md?raw'
 import RangezhTW from '@/packages/range/doc.zh-TW.md?raw'
 import Range from '@/packages/range/doc.md?raw'
@@ -165,6 +169,8 @@ import EmptyzhTW from '@/packages/empty/doc.zh-TW.md?raw'
 import Empty from '@/packages/empty/doc.md?raw'
 import VirtualListenUS from '@/packages/virtuallist/doc.en-US.md?raw'
 import VirtualList from '@/packages/virtuallist/doc.md?raw'
+import TableenUS from '@/packages/table/doc.en-US.md?raw'
+import Table from '@/packages/table/doc.md?raw'
 import VideoenUS from '@/packages/video/doc.en-US.md?raw'
 import VideozhTW from '@/packages/video/doc.zh-TW.md?raw'
 import Video from '@/packages/video/doc.md?raw'
@@ -210,6 +216,9 @@ export const routers = [
   'Tabs',
   'TabPane',
   'Indicator',
+  'SideNavBar',
+  'SubSideNavBar',
+  'SideNavBarItem',
   'Range',
   'Calendar',
   'Checkbox',
@@ -254,6 +263,7 @@ export const routers = [
   'AnimatingNumbers',
   'Empty',
   'VirtualList',
+  'Table',
   'Video',
   'Progress',
   'Address',
@@ -315,6 +325,10 @@ export const raws = {
   IndicatorenUS,
   IndicatorzhTW,
   Indicator,
+  SideNavBarenUS,
+  SideNavBar,
+  SubSideNavBar,
+  SideNavBarItem,
   RangeenUS,
   RangezhTW,
   Range,
@@ -432,6 +446,8 @@ export const raws = {
   Empty,
   VirtualListenUS,
   VirtualList,
+  TableenUS,
+  Table,
   VideoenUS,
   VideozhTW,
   Video,

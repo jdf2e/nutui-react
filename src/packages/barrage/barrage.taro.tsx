@@ -22,7 +22,7 @@ const defaultProps = {
   barrageList: [],
   frequency: 500,
   loop: true,
-  speeds: 5000,
+  speeds: 2000,
   rows: 3,
   top: 10,
 }

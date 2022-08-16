@@ -127,7 +127,6 @@ const AvatarDemo = () => {
               U
             </Avatar>
             <Avatar icon="my" />
-            <Avatar icon="my" />
           </AvatarGroup>
         </Cell>
         <h2>{translated.f645fc65}</h2>
@@ -138,7 +137,6 @@ const AvatarDemo = () => {
             <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
               U
             </Avatar>
-            <Avatar icon="my" />
             <Avatar icon="my" />
           </AvatarGroup>
         </Cell>

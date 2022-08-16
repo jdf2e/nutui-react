@@ -254,6 +254,9 @@ export const CalendarItem: FunctionComponent<
 
   // 是否有结束提示
   const isEndTip = (day: Day, month: MonthInfo) => {
+    if (isStartTip(day, month)) {
+      return false
+    }
     return isActive(day, month)
   }
 
@@ -619,7 +622,10 @@ export const CalendarItem: FunctionComponent<
                             <div className="calendar-day-tip">
                               {locale.calendaritem.start}
                             </div>
-                          ) : isEndTip(day, month) ? (
+                          ) : (
+                            ''
+                          )}
+                          {isEndTip(day, month) ? (
                             <div className="calendar-day-tip">
                               {locale.calendaritem.end}
                             </div>

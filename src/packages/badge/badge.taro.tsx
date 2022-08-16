@@ -48,7 +48,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   }
   return (
     <div className="nut-badge">
-      {icons != '' && (
+      {icons !== '' && (
         <div className="slot-icons">
           <Icon className="_icon" name={icons} color="#ffffff" size="12" />
         </div>

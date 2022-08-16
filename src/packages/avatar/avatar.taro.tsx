@@ -116,7 +116,6 @@ export const Avatar: FunctionComponent<
     const index = avatarRef?.current?.dataset?.index
     const maxCount = parent?.propAvatarGroup?.maxCount
     setMaxSum(children.length)
-    console.log('index', index)
     setAvatarIndex(index)
     if (
       index === children.length &&

@@ -487,7 +487,7 @@ const InternalUploader: ForwardRefRenderFunction<
                 </div>
               )}
 
-              {listType == 'list' && (
+              {listType === 'list' && (
                 <div className="nut-uploader__preview-list">
                   <div
                     className={`nut-uploader__preview-img__file__name ${item.status}`}
@@ -509,7 +509,7 @@ const InternalUploader: ForwardRefRenderFunction<
           )
         })}
 
-      {maximum > fileList.length && listType == 'picture' && !children && (
+      {maximum > fileList.length && listType === 'picture' && !children && (
         <div className={`nut-uploader__upload ${listType}`}>
           <Icon size={uploadIconSize} color="#808080" name={uploadIcon} />
           {capture ? (

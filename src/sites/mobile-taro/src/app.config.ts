@@ -6,28 +6,44 @@ const subPackages = [
       'pages/cell/index',
       'pages/icon/index',
       'pages/overlay/index',
+      'pages/popup/index',
     ],
   },
   {
     root: 'layout',
-    pages: ['pages/divider/index'],
+    pages: ['pages/layout/index', 'pages/divider/index'],
   },
   {
     root: 'nav',
     pages: [
+      'pages/navbar/index',
       'pages/fixednav/index',
       'pages/tabbar/index',
       'pages/pagination/index',
       'pages/tabs/index',
+      'pages/indicator/index',
     ],
   },
   {
     root: 'dentry',
-    pages: ['pages/checkbox/index', 'pages/radio/index', 'pages/rate/index'],
+    pages: [
+      'pages/calendar/index',
+      'pages/checkbox/index',
+      'pages/inputnumber/index',
+      'pages/input/index',
+      'pages/radio/index',
+      'pages/rate/index',
+      'pages/textarea/index',
+      'pages/numberkeyboard/index',
+    ],
   },
   {
     root: 'feedback',
-    pages: ['pages/actionsheet/index', 'pages/switch/index'],
+    pages: [
+      'pages/actionsheet/index',
+      'pages/drag/index',
+      'pages/switch/index',
+    ],
   },
   {
     root: 'exhibition',
@@ -39,6 +55,7 @@ const subPackages = [
       'pages/price/index',
       'pages/badge/index',
       'pages/tag/index',
+      'pages/popover/index',
       'pages/skeleton/index',
       'pages/collapse/index',
       'pages/empty/index',
@@ -47,7 +64,7 @@ const subPackages = [
   },
   {
     root: 'business',
-    pages: ['pages/card/index'],
+    pages: ['pages/card/index', 'pages/timeselect/index'],
   },
 ]
 

@@ -14,7 +14,7 @@ export interface FixedNavProps {
   fixednavClass: string
   visible: boolean
   overlay: boolean
-  navList: Array<object>
+  navList: Array<any>
   activeText: string
   unActiveText: string
   position: Position
@@ -27,8 +27,8 @@ export interface FixedNavProps {
 
 const defaultProps = {
   fixednavClass: 'nut-fixednav',
-  activeText: '收起导航',
-  unActiveText: '快速导航',
+  activeText: '',
+  unActiveText: '',
   type: 'right',
   position: {
     top: 'auto',

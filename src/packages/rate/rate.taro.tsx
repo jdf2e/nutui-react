@@ -79,7 +79,8 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     } else {
       value = index
       if (allowHalf) {
-        if ((e?.target as Element).className.includes('__icon--half')) {
+        console.log('e', e)
+        if ((e?.target as any)?.className?.includes('__icon--half')) {
           value -= 0.5
         }
       }
