@@ -1,7 +1,8 @@
 import React, { FunctionComponent, useEffect } from 'react'
 import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
-import { AddressList } from './address'
+import { AddressList } from './type'
+
 import { useConfig } from '@/packages/configprovider'
 
 export interface ExistRenderProps {
@@ -85,31 +86,31 @@ export const ExistRender: FunctionComponent<
         <ul className={b('exist-ul')}>
           {existAddress.map((item: AddressList, index: number) => {
             return (
-              <li
-                className={b('exist-item')}
-                key={index}
-                onClick={() => selectedExist(item)}
-              >
-                <Icon
-                  className={b('exist-item-icon')}
-                  name={item.selectedAddress ? selectedIcon : defaultIcon}
-                  color={item.selectedAddress ? '#FA2C19' : ''}
-                  size="13px"
-                />
-                <div className={b('exist-item-info')}>
-                  {item.name && item.phone && (
-                    <div className="exist-item-info-top">
-                      <div className="exist-item-info-name">{item.name}</div>
-                      <div className="exist-item-info-phone">{item.phone}</div>
-                    </div>
-                  )}
-                  <div className="exist-item-info-bottom">
-                    <div>
-                      {item.provinceName +
-                        item.cityName +
-                        item.countyName +
-                        item.townName +
-                        item.addressDetail}
+              <li className={b('exist-item')} key={index}>
+                <div onClick={() => selectedExist(item)}>
+                  <Icon
+                    className={b('exist-item-icon')}
+                    name={item.selectedAddress ? selectedIcon : defaultIcon}
+                    color={item.selectedAddress ? '#FA2C19' : ''}
+                    size="13px"
+                  />
+                  <div className={b('exist-item-info')}>
+                    {item.name && item.phone && (
+                      <div className="exist-item-info-top">
+                        <div className="exist-item-info-name">{item.name}</div>
+                        <div className="exist-item-info-phone">
+                          {item.phone}
+                        </div>
+                      </div>
+                    )}
+                    <div className="exist-item-info-bottom">
+                      <div>
+                        {item.provinceName +
+                          item.cityName +
+                          item.countyName +
+                          item.townName +
+                          item.addressDetail}
+                      </div>
                     </div>
                   </div>
                 </div>

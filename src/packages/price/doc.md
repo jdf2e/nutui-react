@@ -109,7 +109,7 @@ export default App;
 | 参数           | 说明                     | 类型    | 默认值 |
 | -------------- | ------------------------ | ------- | ------ |
 | price          | 价格数量                 | Number  | 0      |
-| need-symbol    | 是否需要加上 symbol 符号 | Boolean | true   |
+| needSymbol    | 是否需要加上 symbol 符号 | Boolean | true   |
 | symbol         | 符号类型                 | String  | &yen;  |
-| decimal-digits | 小数位位数               | Number  | 2      |
+| decimalDigits | 小数位位数               | Number  | 2      |
 | thousands      | 是否按照千分号形式显示   | Boolean | false  |

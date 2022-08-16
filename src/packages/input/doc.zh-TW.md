@@ -17,7 +17,7 @@ import { Input } from '@nutui/nutui-react';
 
 :::demo
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -37,7 +37,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -89,7 +89,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -123,7 +123,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -159,7 +159,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -199,18 +199,14 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Input,Button } from '@nutui/nutui-react';
+import  React, { useState } from "react";
+import { Input, Button } from '@nutui/nutui-react';
 
 const App = () => {
     const  [state, setState] = useState({
         buttonVal: '',
     })
-    const buttonTpl = (
-    <Button size="small" type="primary">
-        发送验证码
-    </Button>
-  )
+    
   return (
     <>
        <Input
@@ -219,7 +215,7 @@ const App = () => {
           defaultValue={state.buttonVal}
           clearable
           center
-          slotButton={buttonTpl}
+          slotButton={<Button size="small" type="primary">发送验证码</Button>}
         />
     </>
   )
@@ -232,7 +228,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -267,7 +263,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -296,7 +292,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -329,7 +325,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -362,13 +358,16 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
     const  [state, setState] = useState({
         event: '',
     })
+    const change = (value: string | number) => {
+        console.log('change: ', value)
+    }
     const focus = (value: string | number, event: Event) => {
         console.log('focus:', value, event)
     }
@@ -393,8 +392,8 @@ const App = () => {
   return (
     <>
        <Input
-          label={translated.click}
-          placeholder={translated.click}
+          label="点击"
+          placeholder="点击"
           defaultValue={state.event}
           leftIcon="dongdong"
           rightIcon="ask2"

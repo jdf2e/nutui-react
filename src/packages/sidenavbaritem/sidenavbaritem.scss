@@ -1,0 +1,8 @@
+$nutSidenavbarItemHeight: 40px;
+
+.nut-subsidenavbar {
+  &__item {
+    height: $nutSidenavbarItemHeight;
+    padding: 10px 8px 10px 55px;
+  }
+}

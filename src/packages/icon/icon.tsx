@@ -8,13 +8,15 @@ interface IconProps {
   color: string
   tag: keyof ReactHTML
   click: (e: MouseEvent) => void
+  fontClassName: string
   className: string
 }
 
 const defaultProps = {
   name: '',
   size: '',
-  classPrefix: 'nutui-iconfont',
+  classPrefix: 'nutui-icon',
+  fontClassName: 'nutui-iconfont',
   color: '',
   tag: 'i',
   click: (e: MouseEvent) => {},
@@ -36,6 +38,7 @@ export const Icon: FunctionComponent<
     tag,
     children,
     className,
+    fontClassName,
     style,
     click,
     ...rest
@@ -61,7 +64,9 @@ export const Icon: FunctionComponent<
     {
       className: isImage
         ? `${className || ''} ${b('img')}`
-        : `${className || ''} ${b(null, [classPrefix])} nut-icon-${name} `,
+        : `${className || ''} ${fontClassName} ${b(null, [
+            classPrefix,
+          ])} nut-icon-${name} `,
       style: {
         color,
         fontSize: pxCheck(size),
