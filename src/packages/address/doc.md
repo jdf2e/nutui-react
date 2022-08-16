@@ -588,7 +588,7 @@ export default App;
 | 字段 | 说明 | 类型 | 默认值 |
 |----- | ----- | ----- | -----  |
 | modelValue | 是否打开地址选择 | String | '' |
-| modelSelect | 设置默认选中地址 | String\|Number[] | [] |
+| modelSelect`v1.2.3` | 设置默认选中地址 | String\|Number[] | [] |
 | type | 地址选择类型 exist/custom/custom2  | String | 'custom' |
 | province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |

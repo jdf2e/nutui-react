@@ -201,20 +201,20 @@ export default App;
 
 ## Prop
 
-| 字段           | 说明                                      | 类型    | 默认值      |
-|----------------|-------------------------------------------|---------|-------------|
-| modelValue        | 当前 star 数不能大于count | Number  | -           |
-| count          | star 总数                                 | Number  | 5           |
-| minimizeValue  | 最少选中star数量                           | Number  | 0           |
-| iconSize      | star 大小                                 | Number  | 18          |
-| activeColor   | 图标选中颜色                              | String  | #fa200c     |
-| voidColor     | 图标未选中颜色                            | String  | #ccc        |
-| uncheckedIcon | 使用图标(未选中)                          | String  | star-n      |
-| checkedIcon   | 使用图标(选中)                            | String  | star-fill-n |
-| allowHalf     | 是否半星                                  | Boolean | false       |
-| readonly       | 是否只读                                  | Boolean | false       |
-| disabled       | 是否禁用                                  | Boolean | false       |
-| spacing        | 间距                                      | Number  | 20          |
+| 字段                     | 说明                                      | 类型    | 默认值      |
+|------------------------|-------------------------------------------|---------|-------------|
+| modelValue             | 当前 star 数不能大于count | Number  | -           |
+| count                  | star 总数                                 | Number  | 5           |
+| minimizeValue `v1.2.0` | 最少选中star数量                           | Number  | 0           |
+| iconSize               | star 大小                                 | Number  | 18          |
+| activeColor            | 图标选中颜色                              | String  | #fa200c     |
+| voidColor              | 图标未选中颜色                            | String  | #ccc        |
+| uncheckedIcon          | 使用图标(未选中)                          | String  | star-n      |
+| checkedIcon            | 使用图标(选中)                            | String  | star-fill-n |
+| allowHalf              | 是否半星                                  | Boolean | false       |
+| readonly               | 是否只读                                  | Boolean | false       |
+| disabled               | 是否禁用                                  | Boolean | false       |
+| spacing                | 间距                                      | Number  | 20          |
 
 ## Event
 | 字段   | 说明                       | 回调参数 |

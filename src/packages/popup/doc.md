@@ -201,7 +201,7 @@ export default App;
 | closeIcon             | 自定义 Icon                                                 | String         | `"close"`     |
 | destroyOnClose       | 组件销毁后是否关闭                                          | Boolean        | `true`        |
 | round                  | 是否显示圆角                                                | Boolean        | `false`       |
-| teleport                  | 指定节点挂载                                                | HTMLElement、(() => HTMLElement) 、null        | `null`       |
+| teleport`v1.2.3`                  | 指定节点挂载                                                | HTMLElement、(() => HTMLElement) 、null        | `null`       |
 
 ### Events
 
