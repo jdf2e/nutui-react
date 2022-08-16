@@ -75,6 +75,9 @@ const NotifyDemo = () => {
   const timeNotify = (msg: string) => {
     Notify.text(msg, { duration: 1000 })
   }
+  const positionNotify = (msg: string) => {
+    Notify.text(msg, { position: 'bottom' })
+  }
   return (
     <>
       <div className="demo" style={{ paddingBottom: '30px' }}>
@@ -124,6 +127,12 @@ const NotifyDemo = () => {
           title={translated.t3}
           click={(event: React.MouseEvent) => {
             timeNotify(translated.t3)
+          }}
+        />
+        <Cell
+          title={translated.cusPostion}
+          click={(event: React.MouseEvent) => {
+            positionNotify(translated.cusPostion)
           }}
         />
       </div>
