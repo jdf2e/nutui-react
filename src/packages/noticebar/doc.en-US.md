@@ -1,18 +1,18 @@
-#  NoticeBar 公告栏
+#  NoticeBar 
 
-### 介绍
+### Intro
 
-用于循环播放展示一组消息通知。
+Used to display a group of message notifications in a continuons loop.
 
-### 安装
+### Install
 
 ```javascript
 import { NoticeBar } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## Demo
 
-### 基本用法
+### Basic Usage
 
 :::demo
 
@@ -21,10 +21,10 @@ import  React, {useState} from "react";
 import { NoticeBar } from '@nutui/nutui-react';
 
 const App = () => {
-    const text = '华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！'
+    const text = 'Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.'
     return (
       <>
-        <NoticeBar text={text} background="rgba(251, 248, 220, 1)" color="#D9500B" />
+        <NoticeBar text={text} />
       </>
     )
 }
@@ -32,9 +32,8 @@ export default App
 ```
 :::
 
-
-### 禁用滚动
-文字内容多于一行时，可通过scrollable参数控制是否开启滚动
+### Scrollable
+Scrolling is automatically enabled when the content length of the notification bar overflows, which can be controlled through the scrollable property.
 
 :::demo
 
@@ -46,10 +45,12 @@ const App = () => {
     return (
       <>
         <NoticeBar
-            text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
-            scrollable={false}
-            background="rgba(251, 248, 220, 1)"
-            color="#D9500B"
+            text="Nutui is a mobile terminal component library."
+            scrollable
+        />
+
+        <NoticeBar 
+            text="Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience." scrollable={false} 
         />
       </>
     )
@@ -59,7 +60,7 @@ export default App
 :::
 
 
-### 通告栏模式--关闭模式
+### Mode
 
 :::demo
 
@@ -73,14 +74,16 @@ const App = () => {
     }
     return (
       <>
-        <NoticeBar
-            closeMode
-            click={hello}
-            background="rgba(251, 248, 220, 1)"
-            color="#D9500B"
-        >
-            华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI
-            WATCH等好礼，更多产品信息请持续关注！
+       <NoticeBar closeMode click={hello}>
+          Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
+        </NoticeBar>
+        <br />
+        <NoticeBar closeMode rightIcon="circle-close" click={hello}>
+          Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
+        </NoticeBar>
+        <br />
+        <NoticeBar leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png">
+          <a href="https://www.jd.com">Jingdong</a>
         </NoticeBar>
       </>
     )
@@ -89,7 +92,10 @@ export default App
 ```
 :::
 
-### 通告栏模式--链接模式
+
+### Wrapable
+
+When text is long, you can enable multi-line display by setting the wrapable property.
 
 :::demo
 
@@ -98,25 +104,17 @@ import  React, {useState} from "react";
 import { NoticeBar } from '@nutui/nutui-react';
 
 const App = () => {
+    const text = 'Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.'
+    
     return (
-      <>
-        <NoticeBar
-            leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
-            background="rgba(251, 248, 220, 1)"
-            color="#D9500B"
-        >
-            <a href="https://www.jd.com">京东商城</a>
-        </NoticeBar>
-      </>
+      <NoticeBar text={text} wrapable />
     )
 }
 export default App
 ```
 :::
 
-
-
-### 纵向滚动
+### Vertical Scroll
 
 :::demo
 
@@ -125,26 +123,23 @@ import  React, {useState} from "react";
 import { NoticeBar } from '@nutui/nutui-react';
 
 const App = () => {
-    const horseLamp1 = ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']
-
+    const horseLamp1 = ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox']
     const go = (item: any) => {
         console.log(item)
     }
     return (
-      <>
-        <NoticeBar
+      <div className="interstroll-list">
+          <NoticeBar
             direction="vertical"
             list={horseLamp1}
             speed={10}
             standTime={1000}
-            click={(item) => {
-                go(item)
+            click={(item: any) => {
+              go(item)
             }}
             closeMode
-            background="rgba(251, 248, 220, 1)"
-            color="#D9500B"
-        />
-      </>
+          />
+        </div>
     )
 }
 export default App
@@ -153,7 +148,7 @@ export default App
 
 
 
-### 复杂滚动动画
+### Vertical Scroll Complex Animation
 
 :::demo
 
@@ -162,7 +157,7 @@ import  React, {useState} from "react";
 import { NoticeBar } from '@nutui/nutui-react';
 
 const App = () => {
-    const horseLamp2 = ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']
+     const horseLamp2 = ref(['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox']);
     return (
       <>
         <NoticeBar
@@ -180,7 +175,7 @@ export default App
 :::
 
 
-### 自定义滚动内容
+### Vertical Scroll Custom Style
 
 :::demo
 
@@ -189,7 +184,7 @@ import  React, {useState} from "react";
 import { NoticeBar } from '@nutui/nutui-react';
 
 const App = () => {
-    const  horseLamp3 = ['惊喜红包免费领1', '爆款准点秒2', '买超值优惠3', '赢百万京豆4']
+    const  horseLamp3 = ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox']
 
     return (
       <>
@@ -215,7 +210,7 @@ export default App
 
 
 
-### 纵向自定义右侧图标
+### Vertical Scroll Custom Right Icon
 
 :::demo
 
@@ -224,14 +219,13 @@ import  React, {useState} from "react";
 import { NoticeBar,Icon } from '@nutui/nutui-react';
 
 const App = () => {
-    const horseLamp4 = ['惊喜红包免费领', '爆款准点秒', '买超值优惠', '赢百万京豆']
-    
+     const horseLamp1 = ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox']
     return (
       <>
         <NoticeBar
             className="custom"
             direction="vertical"
-            list={horseLamp4}
+            list={horseLamp1}
             speed={10}
             standTime={1000}
             rightIcon={<Icon name="fabulous" size="16" color="#f0250f" />}
@@ -248,32 +242,42 @@ export default App
 
 ### Prop
 
-| 字段       | 说明                                                       | 类型          | 默认值 |
+| Attribute     | Description                                               | Type          | Default |
 | ---------- | ---------------------------------------------------------- | ------------- | ------ |
-| direction       | 滚动的方向，可选 across、vertical                         | String        | across     |
-| text       | 提示的信息                                                 | String        | 空     |
-| closeMode  | 是否启用关闭模式                                           | Boolean       | false  |
-| leftIcon   | close为没有左边icon,其他为自定义的图片链接，没有为默认图片 | String        | 空     |
-| color      | 导航栏的文字颜色                                           | String        | 空     |
-| background | 导航栏的背景颜色                                           | String        | 空     |
-| delay      | 延时多少秒                                                 | String/Number | 1      |
-| scrollable | 是否可以滚动                                               | Boolean       | true   |
-| speed      | 滚动速率 (px/s)                                            | Number        | 50     |
+| direction  | Rolling direction                                  | String        | across  |
+| text       | Notice text content                                | String        |  -      |
+| closeMode  | Whether to enable the off mode                     | Boolean       | false   |
+| leftIcon   | Left Icon                                          | String        | -       |
+| rightIcon  | Right Icon                                         | String        | -       |
+| color      | Text Color                                         | String        | -       |
+| background | Background                                         | String        | -       |
+| delay      | Delay time                                         | String/Number | 1       |
+| scrollable | Whether to scroll content                          | Boolean       | true    |
+| speed      | Scrolling speed (px/s)                             | Number         | 50      |
+| wrapable`new` | Whether to enable text wrap                        | Boolean       | false    |
 
 ### Prop（direction=vertical）
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| list         | 纵向滚动数据列表               | Array | []               |
-| speed        | 滚动的速度                         | Number | 50               |
-| standTime         | 停留时间(毫秒) | Number | 1000                |
-| complexAm | 稍复杂的动画，耗能会高     | Boolean | false |
-| height          | 每一个滚动列的高度(px)，注意：在使用 slot 插槽定义滚动单元时，按照实际高度修改此值                 | Number | 40              |
-| closeMode  | 是否启用右侧关闭图标，可以通过slot[name=rightIcon]自定义图标                                   | Boolean       | false  |
+| Attribute    | Description                             | Type     | Default          |
+|--------------|-----------------------------------------|----------|------------------|
+| list         | List                                    | Array    | []               |
+| speed        | Scrolling speed                         | Number   | 50               |
+| standTime    | Show time(millisecond)                  | Number   | 1000             |
+| complexAm    | Complex animation                       | Boolean  | false            |
+| height       | height                                  | Number   | 40               |
+| closeMode    | Whether to enable the off mode          | Boolean  | false            |
 
+### Slots
+
+| Attribute         | Description                      |
+|-------------------|----------------------------------|
+| default           | Notice text content              |
+| rightIcon        | Custom right icon                |
+| leftIcon         | Custom left icon                 |
 ### Event
 
-| 字段  | 说明             | 回调参数     |
-| ----- | ---------------- | ------------ |
-| click | 外层点击事件回调 | event: Event |
-| close | 关闭通知栏时触发 | event: Event |
+| Attribute  | Description                             | Arguments     |
+| ---------- | --------------------------------------- | ------------ |
+| click      | Emitted when NoticeBar is clicked       | event: Event |
+| close      | Emitted when NoticeBar is closed        | event: Event |
+

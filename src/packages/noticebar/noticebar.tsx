@@ -27,7 +27,7 @@ export interface NoticeBarProps {
   color: string
   background: string
   delay: string | number
-  scrollable: boolean
+  scrollable: boolean | null
   speed: number
   rightIcon?: HTMLElement | any
   close?: (list?: any) => void
@@ -47,7 +47,7 @@ const defaultProps = {
   color: '',
   background: '',
   delay: 1,
-  scrollable: true,
+  scrollable: null,
   speed: 50,
 } as NoticeBarProps
 export const NoticeBar: FunctionComponent<
@@ -89,6 +89,7 @@ export const NoticeBar: FunctionComponent<
   const [animate, SetAnimate] = useState(false)
   const [distance, SetDistance] = useState(0)
   const [timer, SetTimer] = useState(0)
+  const [isCanScroll, SetIsCanScroll] = useState<null | boolean>(null)
 
   const [index, setIndex] = useState<number>(0)
 
@@ -118,8 +119,9 @@ export const NoticeBar: FunctionComponent<
   }, [])
 
   const cloneChild = (listItem: string, listIndex: number) => {
+    // eslint-disable-next-line func-names, consistent-return
     return React.Children.map(children, function (child: any, index: number) {
-      if (child && index == listIndex) {
+      if (child && index === listIndex) {
         return React.cloneElement(child, {
           key: listIndex,
           children: listItem,
@@ -148,8 +150,9 @@ export const NoticeBar: FunctionComponent<
       }
       const wrapW = wrap.current.getBoundingClientRect().width
       const offsetW = content.current.getBoundingClientRect().width
-
-      if (scrollable && offsetW > wrapW) {
+      const canScroll = scrollable == null ? offsetW > wrapW : scrollable
+      SetIsCanScroll(canScroll)
+      if (canScroll) {
         SetWrapWidth(wrapW)
         SetOffsetW(offsetW)
         SetDuration(offsetW / speed)
@@ -157,7 +160,7 @@ export const NoticeBar: FunctionComponent<
       } else {
         SetAnimationClass('')
       }
-    })
+    }, 0)
   }
   const handleClick = (event: MouseEvent) => {
     click && click(event)
@@ -237,22 +240,38 @@ export const NoticeBar: FunctionComponent<
     }
     return true
   }
+  const iconBg = () => {
+    let iconBg = ''
+    if (leftIcon) {
+      iconBg = leftIcon
+    }
+    return iconBg
+  }
+
+  const isEllipsis = () => {
+    if (isCanScroll == null) {
+      return wrapable
+    }
+    return !isCanScroll && !wrapable
+  }
 
   const contentStyle = {
-    paddingLeft: firstRound ? 0 : `${wrapWidth}px`,
-    animationDelay: `${firstRound ? props.delay : 0}s`,
+    // paddingLeft: firstRound ? 0 : `${wrapWidth}px`,
+    animationDelay: `${firstRound ? delay : 0}s`,
     animationDuration: `${duration}s`,
+    transform: `translateX(${firstRound ? 0 : `${wrapWidth}px`})`,
   }
 
   const barStyle = {
     color,
     background,
-    height: direction == 'vertical' ? `${height}px` : '',
+    height: direction === 'vertical' ? `${height}px` : '',
   }
 
+  const t = ~~(height / speed / 4)
   const horseLampStyle = {
     transform: complexAm ? `translateY(${distance}px)` : '',
-    transition: animate ? `all ${~~(height / speed / 4)}s` : '',
+    transition: animate ? `all ${t === 0 ? ~~(height / speed) : t}s` : '',
     marginTop: animate ? `-${height}px` : '',
   }
 
@@ -266,19 +285,23 @@ export const NoticeBar: FunctionComponent<
 
   return (
     <div className={`${b()} ${className || ''}`} style={style}>
-      {showNoticeBar && direction == 'across' ? (
+      {showNoticeBar && direction === 'across' ? (
         <div className={noticebarClass} style={barStyle} onClick={handleClick}>
-          <div
-            className="left-icon"
-            style={{ backgroundImage: `url(${leftIcon || ''})` }}
-          >
-            {!leftIcon ? <Icon name="notice" size="16" color={color} /> : null}
-          </div>
+          {iconShow() ? (
+            <div
+              className="left-icon"
+              style={{ backgroundImage: `url(${iconBg() || ''})` }}
+            >
+              {!iconBg() ? (
+                <Icon name="notice" size="16" color={color} />
+              ) : null}
+            </div>
+          ) : null}
           <div ref={wrap} className="wrap">
             <div
               ref={content}
               className={`content ${animationClass} ${
-                !scrollable && !wrapable && 'nut-ellipsis'
+                isEllipsis() && 'nut-ellipsis'
               }`}
               style={contentStyle}
               onAnimationEnd={onAnimationEnd}
@@ -287,17 +310,17 @@ export const NoticeBar: FunctionComponent<
               {text}
             </div>
           </div>
-          {closeMode ? (
+          {closeMode || rightIcon ? (
             <div className="right-icon" onClick={onClickIcon}>
-              <Icon name="close" color={color} />
+              <Icon name={rightIcon || 'close'} color={color} />
             </div>
           ) : null}
         </div>
-      ) : scrollList.current.length > 0 && direction == 'vertical' ? (
+      ) : null}
+      {scrollList.current.length > 0 && direction === 'vertical' ? (
         <div className="nut-noticebar-vertical" style={barStyle}>
           {children ? (
             <div className="horseLamp_list" style={horseLampStyle}>
-               
               {scrollList.current.map((item: string, index: number) => {
                 return cloneChild(item, index)
               })}
@@ -306,6 +329,7 @@ export const NoticeBar: FunctionComponent<
             <ul className="horseLamp_list" style={horseLampStyle}>
               {scrollList.current.map((item: string, index: number) => {
                 return (
+                  // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
                   <li
                     className="horseLamp_list_item"
                     style={{ height }}
