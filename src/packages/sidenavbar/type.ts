@@ -1,3 +1,5 @@
+import React from 'react'
+
 type NavBarProps = {
   showhead?: boolean
 }
@@ -10,17 +12,19 @@ export interface SideNavBarProps
   offset?: number
   position?: 'left' | 'right'
   handleClose: () => void
-  // showhead?: boolean
+  children?: React.ReactNode
 }
 export type SideNavBarItemProps = {
   title: string
   ikey: string | number
   click?: ({ title, ikey }: { title: string; ikey: string | number }) => void
+  children?: React.ReactNode
 }
 export type SubNavBarProps = {
   title: string
   ikey: string | number
   open?: boolean
+  children?: React.ReactNode
   titleClick?: ({
     title,
     ikey,
