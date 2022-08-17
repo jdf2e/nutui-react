@@ -20,6 +20,7 @@ export interface NavBarProps {
   onClickIcon: (e: React.MouseEvent<HTMLDivElement>) => void
   onClickBack: (e: React.MouseEvent<HTMLElement>) => void
   onClickRight: (e: React.MouseEvent<HTMLDivElement>) => void
+  children?: React.ReactNode
 }
 const defaultProps = {
   title: '',
