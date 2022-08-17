@@ -95,15 +95,15 @@ export default App;
 
 | 参数           | 说明                           | 类型   | 默认值                                              |
 | -------------- | ------------------------------ | ------ | --------------------------------------------------- |
-| custom-class   | 自定义 class                   | String | -                                                   |
-| line-width     | 线条的宽度                     | Number | 3                                                   |
-| stroke-style   | 绘图笔触颜色                   | String | '#000'                                              |
+| customClass   | 自定义 class                   | String | -                                                   |
+| lineWidth     | 线条的宽度                     | Number | 3                                                   |
+| strokeStyle   | 绘图笔触颜色                   | String | '#000'                                              |
 | type           | 图片格式                       | String | 'png'                                               |
-| un-support-tpl | 不支持 Canvas 情况下的展示文案 | String | '对不起，当前浏览器不支持 Canvas，无法使用本控件！' |
+| unSupportTpl | 不支持 Canvas 情况下的展示文案 | String | '对不起，当前浏览器不支持 Canvas，无法使用本控件！' |
 
 ## Event
 
 | 字段    | 说明                         | 回调参数                         |
 | ------- | ---------------------------- | -------------------------------- |
 | confirm | 点击确认按钮触发事件回调函数 | canvas 和签名图片展示的 data URI |
-| clear   | 点击重签按钮触发事件回调函数 | 无                               |
+| clear   | 点击重签按钮触发事件回调函数 | -                              |

@@ -257,6 +257,38 @@
           "sort": 16,
           "show": true,
           "author": "liukun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "SideNavBar",
+          "type": "component",
+          "cName": "侧边栏导航",
+          "desc": "用于内容选择和切换",
+          "sort": 9,
+          "show": true,
+          "author": "hx"
+        },
+        {
+          "version": "1.0.0",
+          "name": "SubSideNavBar",
+          "type": "component",
+          "cName": "侧边栏导航子组件",
+          "desc": "用于侧边栏导航的子组件",
+          "exportEmpty": true,
+          "sort": 10,
+          "show": false,
+          "author": "hx"
+        },
+        {
+          "version": "1.0.0",
+          "name": "SideNavBarItem",
+          "type": "component",
+          "cName": "侧边栏导航子组件",
+          "exportEmpty": true,
+          "desc": "用于侧边栏导航子组件",
+          "sort": 11,
+          "show": false,
+          "author": "hx"
         }
       ]
     },
@@ -423,6 +455,26 @@
           "sort": 1,
           "show": true,
           "author": "ailululu"
+        },
+        {
+          "version": "1.0.0",
+          "name": "SearchBar",
+          "type": "component",
+          "cName": "搜索栏",
+          "desc": "用于搜索场景的输入框组件",
+          "sort": 16,
+          "show": true,
+          "author": "Ymm0008"
+        },
+        {
+          "version": "1.0.0",
+          "name": "NumberKeyboard",
+          "type": "component",
+          "cName": "数字键盘",
+          "desc": "",
+          "sort": 16,
+          "show": true,
+          "author": "Drjingfubo"
         }
       ]
     },
@@ -708,6 +760,16 @@
           "sort": 20,
           "show": true,
           "author": "hx"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Table",
+          "type": "component",
+          "cName": "表格",
+          "desc": "表格",
+          "sort": 21,
+          "show": true,
+          "author": "yangjinjun3"
         },
         {
           "version": "1.0.0",
