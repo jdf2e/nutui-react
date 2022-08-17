@@ -1,18 +1,18 @@
-#  Picker 选择器
+#  Picker 
 
-### 介绍
+### 介紹
 
-提供多个选项集合供用户选择其中一项。
+提供多個選項集合供用戶選擇其中一項。
 
-### 安装
+### 安裝
 ```ts
 import { Picker } from '@nutui/nutui-react';
 ```
 
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 ```tsx
@@ -33,11 +33,11 @@ const App = () => {
       },
       {
         label: 2,
-        value: '无锡市',
+        value: '無錫市',
       },
       {
         label: 3,
-        value: '海北藏族自治区',
+        value: '海北藏族自治區',
       },
       {
         label: 4,
@@ -45,7 +45,7 @@ const App = () => {
       },
       {
         label: 5,
-        value: '连云港市',
+        value: '連雲港市',
       },
       {
         label: 6,
@@ -53,27 +53,27 @@ const App = () => {
       },
       {
         label: 7,
-        value: '江苏市',
+        value: '江蘇市',
       },
       {
         label: 8,
-        value: '大庆市',
+        value: '大慶市',
       },
       {
         label: 9,
-        value: '绥化市',
+        value: '綏化市',
       },
       {
         label: 10,
-        value: '潍坊市',
+        value: '濰坊市',
       },
       {
         label: 11,
-        value: '请按市',
+        value: '請按市',
       },
       {
         label: 12,
-        value: '乌鲁木齐市',
+        value: '烏魯木齊市',
       },
     ],
   ]
@@ -81,7 +81,7 @@ const App = () => {
     <>   
       <Cell isLink onClick={() => setIsVisible1(!isVisible1)}>
         <span>
-          <label>基础用法</label>
+          <label>基礎用法</label>
         </span>
       </Cell>
       <Picker
@@ -127,7 +127,7 @@ const App = () => {
       listData={listData2}
       onClose={() => setIsVisible2(false)}
       defaultValueData={['周四', '下午']}
-      onConfirm={(list: any[]) => console.log('多列用法选中项：', list)}
+      onConfirm={(list: any[]) => console.log('多列用法選中項：', list)}
       ref={pickerRef2}
      />
     </>
@@ -137,7 +137,7 @@ export default App;
 
 ```
 :::
-### 多级联动
+### 多級聯動
 
 :::demo
 ```tsx
@@ -157,27 +157,27 @@ const App = () => {
       array: [
         {
           label: 1,
-          value: '朝阳区',
+          value: '朝陽區',
         },
         {
           label: 2,
-          value: '海淀区',
+          value: '海澱區',
         },
         {
           label: 3,
-          value: '大兴区',
+          value: '大興區',
         },
         {
           label: 4,
-          value: '东城区',
+          value: '東城區',
         },
         {
           label: 5,
-          value: '西城区',
+          value: '西城區',
         },
         {
           label: 6,
-          value: '丰台区',
+          value: '豐臺區',
         },
       ],
     },
@@ -186,23 +186,23 @@ const App = () => {
       array: [
         {
           label: 1,
-          value: '黄浦区',
+          value: '黃浦區',
         },
         {
           label: 2,
-          value: '长宁区',
+          value: '長寧區',
         },
         {
           label: 3,
-          value: '普陀区',
+          value: '普陀區',
         },
         {
           label: 4,
-          value: '杨浦区',
+          value: '楊浦區',
         },
         {
           label: 5,
-          value: '浦东新区',
+          value: '浦東新區',
         },
       ],
     },
@@ -224,11 +224,11 @@ const App = () => {
   const setChooseValueCustmer = (chooseData: any[]) => {
     const str = chooseData.map((item) => item.value).join('-')
     setCityCustmer(str)
-    console.log('多级联动用法选中项：', str)
+    console.log('多級聯動用法選中項：', str)
   }
 
   const closeUpdateChooseValueCustmer = (chooseData: any[], ref) => {
-    // 此处模拟查询API，如果数据缓存了不需要再重新请求
+    // 此處模擬查詢API，如果數據緩存了不需要再重新請求
     setTimeout(() => {
       const { label, value } = chooseData[0]
       const resItems = APIData.find((item) => item.label == label)
@@ -239,7 +239,7 @@ const App = () => {
           return result
         })
 
-        // 复原位置
+        // 復原位置
         ref.current?.updateChooseValue(0, chooseData[0])
         ref.current?.updateChooseValue(1, chooseData[1])
       }
@@ -247,9 +247,9 @@ const App = () => {
   }
 
   const updateChooseValueCustmer = (index: number, resValue: IResValue, cacheValueData: any[]) => {
-    // 本demo为二级联动，所以限制只有首列变动的时候触发事件
+    // 本demo為二級聯動，所以限制只有首列變動的時候觸發事件
     if (index === 0) {
-      // 此处模拟查询API，如果数据缓存了不需要再重新请求
+      // 此處模擬查詢API，如果數據緩存了不需要再重新請求
       const { label, value } = resValue
       setTimeout(() => {
         const resItems = APIData.find((item) => item.label == label)
@@ -274,7 +274,7 @@ const App = () => {
       <Cell isLink onClick={() => setIsVisible3(!isVisible3)}>
         <span>
           <label>
-            多级联动
+            多級聯動
             <span>{cityCustmer}</span>
           </label>
         </span>
@@ -304,18 +304,18 @@ export default App;
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值
+| 字段 | 說明 | 類型 | 默認值
 |----- | ----- | ----- | ----- 
-| isVisible | 是否可见 | Boolean | false
-| title | 设置标题 | String | null
-| listData | 列表数据 | Array | []
-| defaultValueData | 默认选中 | Array | []
+| isVisible | 是否可見 | Boolean | false
+| title | 設置標題 | String | null
+| listData | 列錶數據 | Array | []
+| defaultValueData | 默認選中 | Array | []
 
 ## Events
 
-| 字段 | 说明 | 回调参数 
+| 字段 | 說明 | 回調參數 
 |----- | ----- | ----- 
-| onConfirm | 点击确认按钮时候回调 | 返回选中值
-| onChoose | 每一列值变更时调用 | 依次返回this、改变的列数，改变值，当前选中值
-| onCloseUpdate | 联动时，关闭时回调 | 依次返回this、当前选中值
-| onClose | 关闭时触发 | -
+| onConfirm | 點擊確認按鈕時候回調 | 返回選中值
+| onChoose | 每一列值變更時調用 | 依次返回this、改變的列數，改變值，當前選中值
+| onCloseUpdate | 聯動時，關閉時回調 | 依次返回this、當前選中值
+| onClose | 關閉時觸發 | -
