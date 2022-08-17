@@ -1,9 +1,6 @@
 import React from 'react'
-// import * as renderer from 'react-test-renderer'
-
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-
 import SubSideNavBar from '@/packages/subsidenavbar'
 import SideNavBarItem from '@/packages/sidenavbaritem'
 

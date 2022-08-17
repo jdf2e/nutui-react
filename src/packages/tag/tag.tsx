@@ -17,6 +17,7 @@ export interface TagProps {
   prefixCls: string
   onClick: (e: MouseEvent) => void
   onClose: (e?: any) => void
+  children?: React.ReactNode
 }
 
 export type TagType = 'default' | 'primary' | 'success' | 'warning' | 'danger'

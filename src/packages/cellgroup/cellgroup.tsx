@@ -8,6 +8,7 @@ export interface CellGroupProps {
   titleSlot: ReactNode
   descSlot: ReactNode
   classPrefix: string
+  children?: ReactNode
 }
 const defaultProps = {
   title: '',
