@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import ReactDOM from 'react-dom'
 import Trigger from './Trigger'
 import Icon from '@/packages/icon'
 
@@ -16,6 +17,7 @@ export interface PopoverProps {
   className: string
   style?: CSSProperties
   onClick: (e: MouseEvent) => void
+  children?: React.ReactNode
 }
 export function findDOMNode<T = HTMLElement>(
   node: React.ReactInstance | HTMLElement
@@ -75,9 +77,9 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
   const [popoverContent, setPopoverContent] = useState('')
   const [popoverArrow, setPopoverArrow] = useState('')
   useEffect(() => {
-    setClasses(classes_self())
-    setPopoverContent(popoverContent_self())
-    setPopoverArrow(popoverArrow_self())
+    setClasses(classesSelf())
+    setPopoverContent(popoverContentSelf())
+    setPopoverArrow(popoverArrowSelf())
   }, [list, theme])
   const getStyle = () => {
     const style: CSSProperties = {}
@@ -122,17 +124,17 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
     return style
   }
 
-  const classes_self = () => {
+  const classesSelf = () => {
     const prefixCls = 'nut-popover'
     return `${prefixCls}
     ${theme ? `${prefixCls}--${theme}` : ''}`
   }
-  const popoverContent_self = () => {
+  const popoverContentSelf = () => {
     const prefixCls = 'popoverContent'
     return `${prefixCls}
     ${location ? `${prefixCls}--${location}` : ''}`
   }
-  const popoverArrow_self = () => {
+  const popoverArrowSelf = () => {
     const prefixCls = 'popoverArrow'
     return `${prefixCls}
     ${location ? `${prefixCls}--${location}` : ''}`

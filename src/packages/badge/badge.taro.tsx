@@ -1,4 +1,4 @@
-import React, { CSSProperties, FunctionComponent } from 'react'
+import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
 
 import Icon from '@/packages/icon'
 
@@ -11,6 +11,7 @@ export interface BadgeProps {
   zIndex: string
   color: string
   icons: any
+  children?: ReactNode
 }
 
 export type BadgeType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
@@ -29,8 +30,8 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     ...defaultProps,
     ...props,
   }
-  const content = () => {
-    if (dot) return
+  function content() {
+    if (dot) return undefined
     const { value } = props
     const { max } = props
     if (typeof value === 'number' && typeof max === 'number') {

@@ -33,6 +33,7 @@ export interface TabsProps {
   onChange: (t: Title) => void
   onClick: (t: Title) => void
   autoHeight: boolean
+  children?: React.ReactNode
 }
 const defaultProps = {
   value: 0,
@@ -83,7 +84,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
         return null
       }
       const title = new Title()
-      if (child.props?.title || child.props?.paneKey) {
+      if (child?.props?.title || child?.props?.paneKey) {
         title.title = child.props?.title
         title.paneKey = child.props?.paneKey || idx
         title.disabled = child.props?.disabled

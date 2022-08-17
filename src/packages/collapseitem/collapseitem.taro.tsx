@@ -77,25 +77,26 @@ export const CollapseItem: FunctionComponent<
   }, [children])
 
   const measuredRef = useCallback(
-    (node) => {
+    (node: HTMLDivElement) => {
       if (node !== null) {
         setDomHeight(node.getBoundingClientRect().height)
       }
     },
-    [children, update]
+    [update]
   )
 
   useEffect(() => {
-    // setCurrHeight('auto')
     // 一开始content都有高度，在这里根据isOpen，改变其高度
-    if (domHeight !== -1) {
-      isOpen ? setCurrHeight(`${domHeight}px`) : setCurrHeight('0px')
-    }
-    const newIconStyle = isOpen
-      ? { transform: `translateY(-50%) rotate(${rotate}deg)` }
-      : { transform: 'translateY(-50%)' }
-    setIconStyle(newIconStyle)
-  }, [isOpen, domHeight])
+    setTimeout(() => {
+      if (domHeight !== -1) {
+        isOpen ? setCurrHeight(`${domHeight}px`) : setCurrHeight('0px')
+      }
+      const newIconStyle = isOpen
+        ? { transform: `translateY(-50%) rotate(${rotate}deg)` }
+        : { transform: 'translateY(-50%)' }
+      setIconStyle(newIconStyle)
+    }, 10)
+  }, [isOpen, domHeight, rotate])
 
   return (
     <div className={colBem()} {...rest}>
