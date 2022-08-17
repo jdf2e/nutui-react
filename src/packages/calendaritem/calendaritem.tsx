@@ -27,7 +27,6 @@ interface CalendarState {
   currDate: InputDate
   touchParams: any
   transformY: number
-  translateY: number
   scrollDistance: number
   defaultData: InputDate
   chooseData: any
@@ -43,7 +42,6 @@ interface CalendarState {
   currentIndex: number;
   unLoadPrev: boolean;
   monthsNum: number;
-  defaultRange: any[];
 }
 
 export interface CalendarItemProps {
@@ -99,8 +97,6 @@ export const CalendarItem: FunctionComponent<
     poppable,
     title,
     defaultValue,
-    startDate,
-    endDate,
     showToday,
     startText,
     endText,
@@ -110,17 +106,15 @@ export const CalendarItem: FunctionComponent<
     toDateAnimation,
     onChoose,
     onUpdate,
-    onClose,
     onSelected
   } = { ...defaultProps, ...props }
 
   const weeks = locale.calendaritem.weekdays
   const [yearMonthTitle, setYearMonthTitle] = useState('')
-  const [unLoadPrev, setUnLoadPrev] = useState(false)
-  const [monthsData, setMonthsData] = useState<MonthInfo[]>([])
+  const [translateY, setTranslateY] = useState(0)
+  const [monthDefaultRange, setMonthDefaultRange] = useState<number[]>([]);
 
   const [state] = useState<CalendarState>({
-    defaultRange: [],
     currDate: '',
     propStartDate: '',
     propEndDate: '',
@@ -134,7 +128,6 @@ export const CalendarItem: FunctionComponent<
       lastTime: 0
     },
     transformY: 0,
-    translateY: 0,
     scrollDistance: 0,
     defaultData: [],
     chooseData: [],
@@ -484,19 +477,25 @@ export const CalendarItem: FunctionComponent<
   }
 
   const setDefaultRange = (monthsNum: number, current: number) => {
+    let start = 0;
+    let end = 0;
     if (monthsNum >= 3) {
       if (current > 0 && current < monthsNum) {
-        state.defaultRange = [current - 1, current + 3];
+        start = current - 1;
+        end = current + 3;
       } else if (current === 0) {
-        state.defaultRange = [current, current + 4];
+        start = current;
+        end = current + 4;
       } else if (current === monthsNum) {
-        state.defaultRange = [current - 2, current + 2];
+        start = current - 2;
+        end = current + 2;
       }
     } else {
-      state.defaultRange = [0, monthsNum + 2];
+      start = 0;
+      end = monthsNum + 2;
     }
-    const defaultScrollTop = state.monthsData[state.defaultRange[0]].cssScrollHeight;
-    state.translateY = defaultScrollTop;
+    setMonthDefaultRange([start, end]);
+    setTranslateY(state.monthsData[start].cssScrollHeight);
   };
 
   const mothsViewScroll = (e: any) => {
@@ -725,38 +724,34 @@ export const CalendarItem: FunctionComponent<
 
   useEffect(() => {
     initData()
-  }, [initData]);
+  }, []);
 
   return (
     <>
       <div className={classes}>
         {/* header */}
         <div className={headerClasses}>
-          {poppable ? (
-            <>
-              {
-                showTitle && <div className="calendar-title">{locale.calendaritem.title || title}</div>
-              }
-              {
-                slot.btn && (
-                  <div className="calendar-top-slot">
-                    { slot.btn }
-                  </div>
-                )
-              }
-              {
-                showSubTitle && <div className="calendar-curr-month">{yearMonthTitle}</div>
-              }
-            </>
-          ) : (
-            ''
-          )}
-          <div className="calendar-weeks" ref={weeksPanel}>
-            {weeks.map((item: string) => (
-              <div className="calendar-week-item" key={item}>
-                {item}
+          {
+            showTitle && <div className="calendar-title">{locale.calendaritem.title || title}</div>
+          }
+          {
+            slot.btn && (
+              <div className="calendar-top-slot">
+                { slot.btn }
               </div>
-            ))}
+            )
+          }
+          {
+            showSubTitle && <div className="calendar-curr-month">{ yearMonthTitle }</div>
+          }
+          <div className="calendar-weeks" ref={ weeksPanel }>
+            {
+              weeks.map((item: string) => (
+                <div className="calendar-week-item" key={item}>
+                  { item }
+                </div>
+              ))
+            }
           </div>
         </div>
         {/* content */}
@@ -766,12 +761,12 @@ export const CalendarItem: FunctionComponent<
           ref={months}
         >
           <div className="calendar-months-panel" ref={monthsPanel}>
-            <div className="viewArea" ref={ viewArea } style={{ 'transform': `translateY(${state.translateY}px)` }}>
+            <div className="viewArea" ref={ viewArea } style={{ 'transform': `translateY(${translateY}px)` }}>
               {
-                state.monthsData.slice(state.defaultRange[0], state.defaultRange[1]).map((month: any, key: number) => {
+                state.monthsData.slice(monthDefaultRange[0], monthDefaultRange[1]).map((month: any, key: number) => {
                   return (
                     <div className="calendar-month" key={key}>
-                      <div className="calendar-month-title">{month.title}</div>
+                      <div className="calendar-month-title">{ month.title }</div>
                       <div className="calendar-month-con">
                         <div className={monthitemclasses}>
                           {
@@ -781,6 +776,7 @@ export const CalendarItem: FunctionComponent<
                                   {/* <slot name="day" :date="day.type == 'curr' ? day : ''">
                                     {{ day.type == 'curr' ? day.day : '' }}
                                   </slot> */}
+                                  { day.day }
                                 </div>
                                 {
                                   slot.topInfo && <div className="calendar-curr-tips calendar-curr-tips-top">
@@ -814,15 +810,15 @@ export const CalendarItem: FunctionComponent<
           </div>
         </div>
         {/* footer */}
-        {poppable && !isAutoBackFill ? (
-          <div className="nut-calendar-footer">
-            <div className="calendar-confirm-btn" onClick={confirm}>
-              {locale.confirm || confirmText}
+        {
+          poppable && !isAutoBackFill ? (
+            <div className="nut-calendar-footer">
+              <div className="calendar-confirm-btn" onClick={confirm}>
+                { locale.confirm || confirmText }
+              </div>
             </div>
-          </div>
-        ) : (
-          ''
-        )}
+          ) : ''
+        }
       </div>
     </>
   )
