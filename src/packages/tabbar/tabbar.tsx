@@ -12,6 +12,7 @@ export interface TabbarProps {
   className: string
   style: React.CSSProperties
   tabSwitch: (child: React.ReactElement<any>, active: number) => void
+  children?: React.ReactNode
 }
 
 const defaultProps = {

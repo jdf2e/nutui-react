@@ -247,10 +247,10 @@ export default App;
 | shopDesc  | 店铺介绍                                  | String | -    |
 | delivery     | 配送方式 | String  | -      |
 | shopName   | 店铺名称| String  | -      |
-| prolistTpl   | 自定义商品介绍| React.ReactChild  | -      |
-| originTpl   | 价格后方自定义内容| React.ReactChild  | -      |
-| shopTagTpl   | 店铺介绍自定义| React.ReactChild  | -      |
-| footerTpl   | 右下角内容自定义| React.ReactChild  | -      |
+| prolistTpl   | 自定义商品介绍| React.ReactNode  | -      |
+| originTpl   | 价格后方自定义内容| React.ReactNode  | -      |
+| shopTagTpl   | 店铺介绍自定义| React.ReactNode  | -      |
+| footerTpl   | 右下角内容自定义| React.ReactNode  | -      |
 
 
 

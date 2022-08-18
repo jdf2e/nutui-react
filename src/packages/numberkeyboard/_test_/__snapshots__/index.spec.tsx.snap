@@ -180,7 +180,6 @@ exports[`should match customKey snapshot 1`] = `
           </div>
         </div>
       </div>
-      
     </div>
   </div>
 </div>
@@ -343,7 +342,6 @@ exports[`should match snapshot 1`] = `
           </div>
         </div>
       </div>
-      
     </div>
   </div>
 </div>
