@@ -8,10 +8,9 @@ import React, {
   useImperativeHandle,
   useEffect,
 } from 'react'
-import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 import { useTouch } from '@/utils/useTouch'
-import { useRect as UseRect } from '@/utils/useRect'
+import { getRect } from '@/utils/useClientRect'
 
 export type SwipeSide = 'left' | 'right'
 export type SwipePosition = SwipeSide | 'cell' | 'outside'
@@ -77,7 +76,6 @@ export const Swipe = forwardRef<
   const swipeBem = bem('swipe')
   const touch: any = useTouch()
 
-  const { locale } = useConfig()
   const { children } = { ...defaultProps, ...props }
 
   const root: any = useRef<HTMLDivElement>()
@@ -191,7 +189,7 @@ export const Swipe = forwardRef<
 
   const getNodeWidth = (node: Element) => {
     if (node) {
-      const ele = UseRect(node)
+      const ele = getRect(node)
       return ele.width
     }
     return 0
