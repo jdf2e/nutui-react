@@ -248,7 +248,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
                 }}
                 key={item.value ? item.value : index}
               >
-                {item.text ? item.text : item}
+                <>{item.text ? item.text : item}</>
               </div>
             )
           })}
@@ -260,7 +260,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
                 className="nut-picker-roller-item-tile"
                 key={item.value ? item.value : index}
               >
-                {item.text ? item.text : item}
+                <>{item.text ? item.text : item}</>
               </div>
             )
           })}

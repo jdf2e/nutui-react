@@ -33,6 +33,7 @@ export interface TabsProps {
   onChange: (t: Title) => void
   onClick: (t: Title) => void
   autoHeight: boolean
+  children?: React.ReactNode
 }
 const defaultProps = {
   value: 0,
