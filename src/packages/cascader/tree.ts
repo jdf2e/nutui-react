@@ -27,14 +27,13 @@ class Tree {
   // for test
   getNodeByValue(value: CascaderOption['value']): CascaderOption | void {
     let foundNode
-    // eslint-disable-next-line consistent-return
     eachTree(this.nodes, (node: CascaderOption) => {
       if (node.value === value) {
         foundNode = node
         return true
       }
+      return null
     })
-
     return foundNode
   }
 
@@ -62,15 +61,13 @@ class Tree {
     return pathNodes
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  isLeaf(node: CascaderOption, lazy: boolean): boolean {
+  isLeaf = (node: CascaderOption, lazy: boolean): boolean => {
     const { leaf, children } = node
     const hasChildren = Array.isArray(children) && Boolean(children.length)
-
     return leaf || (!hasChildren && !lazy)
   }
 
-  hasChildren(node: CascaderOption, lazy: boolean): boolean {
+  hasChildren = (node: CascaderOption, lazy: boolean): boolean => {
     const isLeaf = this.isLeaf(node, lazy)
 
     if (isLeaf) {

@@ -52,7 +52,7 @@ const CascaderDemo = () => {
 
   const [text, setText] = useState({
     desc1: translated.addressTip1,
-    desc2: '福建福州福州',
+    desc2: '福建福州台江区',
     desc3: 'A0A12A23A32',
     desc4: translated.addressTip1,
     desc5: '广东省广州市',
@@ -222,7 +222,7 @@ const CascaderDemo = () => {
   })
 
   const change1 = (value: any, path: any) => {
-    console.log('change', value, path)
+    console.log('onChange', value, path)
     setText({
       ...text,
       desc1: value,
@@ -230,7 +230,7 @@ const CascaderDemo = () => {
     setValue1(value)
   }
   const change2 = (value: any, path: any) => {
-    console.log('change', value, path)
+    console.log('onChange', value, path)
     setText({
       ...text,
       desc2: value,
@@ -238,7 +238,7 @@ const CascaderDemo = () => {
     setValue2(value)
   }
   const change3 = (value: any, path: any) => {
-    console.log('change', value, path)
+    console.log('onChange', value, path)
     setText({
       ...text,
       desc3: value,
@@ -246,7 +246,7 @@ const CascaderDemo = () => {
     setValue3(value)
   }
   const change4 = (value: any, path: any) => {
-    console.log('change', value, path)
+    console.log('onChange', value, path)
     setText({
       ...text,
       desc4: value,
@@ -254,15 +254,15 @@ const CascaderDemo = () => {
     setValue4(value)
   }
   const change5 = (value: any, path: any) => {
-    console.log('change', value, path)
+    console.log('onChange', value, path)
     setText({
       ...text,
       desc5: value,
     })
     setValue5(value)
   }
-  const pathChange = (value: any, path: any) => {
-    console.log('pathChange', value, path)
+  const onPathChange = (value: any, path: any) => {
+    console.log('onPathChange', value, path)
   }
 
   const lazyLoadDemo3 = (node: any, resolve: (children: any) => void) => {
@@ -321,8 +321,8 @@ const CascaderDemo = () => {
           onClose={() => {
             setIsVisibleDemo1(false)
           }}
-          change={change1}
-          pathChange={pathChange}
+          onChange={change1}
+          onPathChange={onPathChange}
         />
         <h2>{translated.title1}</h2>
         <Cell
@@ -344,8 +344,8 @@ const CascaderDemo = () => {
           onClose={() => {
             setIsVisibleDemo2(false)
           }}
-          change={change2}
-          pathChange={pathChange}
+          onChange={change2}
+          onPathChange={onPathChange}
         />
         <h2>{translated.title2}</h2>
         <Cell
@@ -363,8 +363,8 @@ const CascaderDemo = () => {
           onClose={() => {
             setIsVisibleDemo3(false)
           }}
-          change={change3}
-          pathChange={pathChange}
+          onChange={change3}
+          onPathChange={onPathChange}
           lazy
           lazyLoad={lazyLoadDemo3}
         />
@@ -385,8 +385,8 @@ const CascaderDemo = () => {
           onClose={() => {
             setIsVisibleDemo4(false)
           }}
-          change={change4}
-          pathChange={pathChange}
+          onChange={change4}
+          onPathChange={onPathChange}
           lazy
           lazyLoad={lazyLoadDemo4}
         />
@@ -408,8 +408,8 @@ const CascaderDemo = () => {
           onClose={() => {
             setIsVisibleDemo5(false)
           }}
-          change={change5}
-          pathChange={pathChange}
+          onChange={change5}
+          onPathChange={onPathChange}
         />
       </div>
     </>

@@ -1,4 +1,8 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import React, {
+  ForwardRefRenderFunction,
+  PropsWithChildren,
+  useEffect,
+} from 'react'
 import classNames from 'classnames'
 import { Icon } from '@/packages/icon/icon'
 import bem from '@/utils/bem'
@@ -38,8 +42,9 @@ const defaultProps = {
   chooseItem: () => {},
 } as CascaderItemProps
 
-export const CascaderItem: FunctionComponent<
-  Partial<CascaderItemProps> & React.HTMLAttributes<HTMLDivElement>
+const InternalCascaderItem: ForwardRefRenderFunction<
+  unknown,
+  PropsWithChildren<Partial<CascaderItemProps>>
 > = (props) => {
   const { data, checked, chooseItem } = {
     ...defaultProps,
@@ -72,7 +77,6 @@ export const CascaderItem: FunctionComponent<
     <div
       className={classes}
       onClick={() => {
-        // console.log('click', data)
         chooseItem(data)
       }}
     >
@@ -92,6 +96,8 @@ export const CascaderItem: FunctionComponent<
     </div>
   )
 }
+
+export const CascaderItem = React.forwardRef(InternalCascaderItem)
 
 CascaderItem.defaultProps = defaultProps
 CascaderItem.displayName = 'NutCascaderItem'

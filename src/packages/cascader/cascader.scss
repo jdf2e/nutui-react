@@ -3,22 +3,16 @@
   width: 100%;
   font-size: $cascader-font-size;
   line-height: $cascader-line-height;
-  .nut-popup {
-    padding: 0;
-    &.popup-bottom.round {
-      padding: 0 !important;
-    }
-  }
   &__title {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 24px 20px 17px;
+    padding: $cascader-title-padding;
     text-align: center;
     font-weight: bold;
-    line-height: 20px;
+    line-height: $cascader-title-line-height;
     color: #1a1a1a;
-    font-size: 18px;
+    font-size: $cascader-title-font-size;
   }
   .nut-tabs__titles {
     padding: $cascader-tabs-item-padding;
@@ -39,8 +33,8 @@
     padding: 0;
     margin: 0;
     width: 100%;
-    padding-top: 10px;
-    height: 342px;
+    padding-top: $cascader-pane-paddingTop;
+    height: $cascader-pane-height;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -70,7 +64,7 @@
     flex: 1;
   }
   .nut-icon-checklist {
-    margin-left: 10px;
+    margin-left: $cascader-icon-checklist-marginLeft;
     visibility: hidden;
   }
 }

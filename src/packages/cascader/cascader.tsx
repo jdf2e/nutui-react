@@ -1,5 +1,6 @@
 import React, {
-  FunctionComponent,
+  ForwardRefRenderFunction,
+  PropsWithChildren,
   useState,
   useEffect,
   CSSProperties,
@@ -36,8 +37,8 @@ export interface CascaderProps {
   lazy: boolean
   lazyLoad: (node: any, resolve: any) => void
   onClose?: () => void
-  change: (value: any, params: any) => void
-  pathChange: (value: any, params: any) => void
+  onChange: (value: any, params: any) => void
+  onPathChange: (value: any, params: any) => void
 }
 
 const defaultProps = {
@@ -57,12 +58,13 @@ const defaultProps = {
   lazy: false,
   lazyLoad: () => {},
   onClose: () => {},
-  change: () => {},
-  pathChange: () => {},
+  onChange: () => {},
+  onPathChange: () => {},
   ...Popup.defaultProps,
 } as CascaderProps
-export const Cascader: FunctionComponent<
-  Partial<CascaderProps> & React.HTMLAttributes<HTMLDivElement>
+const InternalCascader: ForwardRefRenderFunction<
+  unknown,
+  PropsWithChildren<Partial<CascaderProps>>
 > = (props) => {
   const {
     className,
@@ -81,11 +83,11 @@ export const Cascader: FunctionComponent<
     lazy,
     lazyLoad,
     onClose,
-    change,
-    pathChange,
+    onChange,
+    onPathChange,
   } = { ...defaultProps, ...props }
 
-  const [tabvalue, setTabvalue] = useState('c1') as any
+  const [tabvalue, setTabvalue] = useState('c1')
   const [optiosData, setOptiosData] = useState<CascaderPane[]>([])
 
   const isLazy = () => state.configs.lazy && Boolean(state.configs.lazyLoad)
@@ -297,8 +299,8 @@ export const Cascader: FunctionComponent<
       if (!type) {
         const pathNodes = state.panes.map((item) => item.selectedNode)
         const optionParams = pathNodes.map((item: any) => item.value)
-        change(optionParams, pathNodes)
-        pathChange(optionParams, pathNodes)
+        onChange(optionParams, pathNodes)
+        onPathChange(optionParams, pathNodes)
       }
       setOptiosData(state.panes)
       close()
@@ -323,7 +325,7 @@ export const Cascader: FunctionComponent<
       if (!type) {
         const pathNodes = state.panes.map((item) => item.selectedNode)
         const optionParams = pathNodes.map((item: any) => item?.value)
-        pathChange(optionParams, pathNodes)
+        onPathChange(optionParams, pathNodes)
       }
       return
     }
@@ -345,6 +347,7 @@ export const Cascader: FunctionComponent<
   return (
     <div className={`${classes} ${className}`} style={style}>
       <Popup
+        popClass="cascadar-popup"
         visible={visible}
         position="bottom"
         round
@@ -353,7 +356,6 @@ export const Cascader: FunctionComponent<
         closeIcon={closeIcon}
         onClickOverlay={closePopup}
         onClickCloseIcon={closePopup}
-        style={{ padding: '30px 50px' }}
       >
         <div className={b('title')}>{title}</div>
         <Tabs
@@ -378,7 +380,6 @@ export const Cascader: FunctionComponent<
                     : 'Loading...'} */}
                   {!state.initLoading &&
                     state.panes.length &&
-                    pane?.selectedNode?.text &&
                     pane?.selectedNode?.text}
                   {!state.initLoading &&
                     state.panes.length &&
@@ -418,6 +419,8 @@ export const Cascader: FunctionComponent<
     </div>
   )
 }
+
+export const Cascader = React.forwardRef(InternalCascader)
 
 Cascader.defaultProps = defaultProps
 Cascader.displayName = 'NutCascader'

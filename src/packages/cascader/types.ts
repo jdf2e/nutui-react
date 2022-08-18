@@ -1,7 +1,7 @@
 export interface CascaderPane {
   nodes: []
   selectedNode: CascaderOption | null
-  paneKey: string | undefined
+  paneKey: string
 }
 
 export interface CascaderOption {

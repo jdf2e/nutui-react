@@ -86,11 +86,11 @@ const App = () => {
     },
   ])
   const change1 = (value: any, path: any) => {
-    console.log('change', value, path)
+    console.log('onChange', value, path)
     setValue1(value)
   }
-  const pathChange = (value: any, path: any) => {
-    console.log('pathChange', value, path)
+  const onPathChange = (value: any, path: any) => {
+    console.log('onPathChange', value, path)
   }
 
   return (
@@ -110,8 +110,8 @@ const App = () => {
       options={optionsDemo1}
       closeable
       onClose={()=>{setIsVisibleDemo1(false)}}
-      change={change1}
-      pathChange={pathChange}
+      onChange={change1}
+      onPathChange={onPathChange}
     />
     </>
   );
@@ -196,11 +196,11 @@ const App = () => {
     },
   ])
   const change2 = (value, path) => {
-    console.log('change', value, path)
+    console.log('onChange', value, path)
     setValue2(value)
   }
-  const pathChange = (value, path) => {
-    console.log('pathChange', value, path)
+  const onPathChange = (value, path) => {
+    console.log('onPathChange', value, path)
   }
 
   return (
@@ -223,8 +223,8 @@ const App = () => {
       childrenKey="items"
       closeable
       onClose={()=>{setIsVisibleDemo2(false)}}
-      change={change2}
-      pathChange={pathChange}
+      onChange={change2}
+      onPathChange={onPathChange}
     />
     </>
   );
@@ -269,11 +269,11 @@ const App = () => {
     }, 2000);
   }
   const change3 = (value, path) => {
-    console.log('change', value, path)
+    console.log('onChange', value, path)
     setValue3(value)
   }
-  const pathChange = (value, path) => {
-    console.log('pathChange', value, path)
+  const onPathChange = (value, path) => {
+    console.log('onPathChange', value, path)
   }
   return (
     <>
@@ -291,8 +291,8 @@ const App = () => {
       title="地址选择"
       closeable
       onClose={()=>{setIsVisibleDemo3(false)}}
-      change={change3}
-      pathChange={pathChange}
+      onChange={change3}
+      onPathChange={onPathChange}
       lazy
       lazyLoad={lazyLoadDemo3}
     />
@@ -340,11 +340,11 @@ const App = () => {
     }, 500);
   }
   const change4 = (value, path) => {
-    console.log('change', value, path)
+    console.log('onChange', value, path)
     setValue4(value)
   }
-  const pathChange = (value, path) => {
-    console.log('pathChange', value, path)
+  const onPathChange = (value, path) => {
+    console.log('onPathChange', value, path)
   }
 
   return (
@@ -364,8 +364,8 @@ const App = () => {
       options={optionsDemo4}
       closeable
       onClose={()=>{setIsVisibleDemo4(false)}}
-      change={change4}
-      pathChange={pathChange}
+      onChange={change4}
+      onPathChange={onPathChange}
       lazy
       lazyLoad={lazyLoadDemo4}
     />
@@ -402,11 +402,11 @@ const App = () => {
     sortKey: ''
   })
   const change5 = (value, path) => {
-    console.log('change', value, path)
+    console.log('onChange', value, path)
     setValue5(value)
   }
-  const pathChange = (value, path) => {
-    console.log('pathChange', value, path)
+  const onPathChange = (value, path) => {
+    console.log('onPathChange', value, path)
   }
 
   return (
@@ -427,8 +427,8 @@ const App = () => {
       convertConfig={convertConfigDemo5}
       closeable
       onClose={()=>{setIsVisibleDemo5(false)}}
-      change={change5}
-      pathChange={pathChange}
+      onChange={change5}
+      onPathChange={onPathChange}
     />
     </>
   );
@@ -461,5 +461,5 @@ export default App;
 
 | Event | Description           | Callback parameters |
 | ---------- | ---------------- | ------------------ |
-| change     | Triggered when the selected value changes | (value, pathNodes) |
-| pathChange | Triggered when the selected item changes | (pathNodes)        |
+| onChange     | Triggered when the selected value changes | (value, pathNodes) |
+| onPathChange | Triggered when the selected item changes | (pathNodes)        |
