@@ -172,13 +172,13 @@ export default App;
 
 |事件名|說明|回檔參數|
 |--------|----------------|--------------|
-| change |輸入內容時觸發| _val: string，event: Event_ |
-| focus |聚焦時觸發| _val: string，event: Event_ |
-| blur |失焦時觸發| _val: string，event: Event_ |
-| clear |點擊清空時觸發| _event: Event_ |
-| search |確定蒐索時觸發| _val: string，event: Event_ |
-| clickInput |點擊輸入區域時觸發| _event: Event_ |
-| clickLeftinIcon |點擊輸入框`內左側`圖標時觸發| _val: string，event: Event_ |
-| clickLeftoutIcon |點擊輸入框`外左側`圖標時觸發| _val: string，event: Event_ |
-| clickRightinIcon |點擊輸入框`內右側`圖標時觸發| _val: string，event: Event_ |
-| clickRightoutIcon |點擊輸入框`外右側`圖標時觸發| _val: string，event: Event_ |
+| onChange |輸入內容時觸發| _val: string，event: Event_ |
+| onFocus |聚焦時觸發| _val: string，event: Event_ |
+| onBlur |失焦時觸發| _val: string，event: Event_ |
+| onClear |點擊清空時觸發| _event: Event_ |
+| onSearch |確定蒐索時觸發| _val: string，event: Event_ |
+| onClickInput |點擊輸入區域時觸發| _event: Event_ |
+| onClickLeftinIcon |點擊輸入框`內左側`圖標時觸發| _val: string，event: Event_ |
+| onClickLeftoutIcon |點擊輸入框`外左側`圖標時觸發| _val: string，event: Event_ |
+| onClickRightinIcon |點擊輸入框`內右側`圖標時觸發| _val: string，event: Event_ |
+| onClickRightoutIcon |點擊輸入框`外右側`圖標時觸發| _val: string，event: Event_ |

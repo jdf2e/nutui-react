@@ -17,7 +17,7 @@ import { Input } from '@nutui/nutui-react';
 
 :::demo
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -37,7 +37,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -89,7 +89,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -123,7 +123,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -159,7 +159,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -199,18 +199,14 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Input,Button } from '@nutui/nutui-react';
+import  React, { useState } from "react";
+import { Input, Button } from '@nutui/nutui-react';
 
 const App = () => {
     const  [state, setState] = useState({
         buttonVal: '',
     })
-    const buttonTpl = (
-    <Button size="small" type="primary">
-        发送验证码
-    </Button>
-  )
+    
   return (
     <>
        <Input
@@ -219,7 +215,7 @@ const App = () => {
           defaultValue={state.buttonVal}
           clearable
           center
-          slotButton={buttonTpl}
+          slotButton={<Button size="small" type="primary">发送验证码</Button>}
         />
     </>
   )
@@ -232,7 +228,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -267,7 +263,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -296,7 +292,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -329,7 +325,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
@@ -362,13 +358,16 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
+import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
     const  [state, setState] = useState({
         event: '',
     })
+    const change = (value: string | number) => {
+        console.log('change: ', value)
+    }
     const focus = (value: string | number, event: Event) => {
         console.log('focus:', value, event)
     }
@@ -393,8 +392,8 @@ const App = () => {
   return (
     <>
        <Input
-          label={translated.click}
-          placeholder={translated.click}
+          label="点击"
+          placeholder="点击"
           defaultValue={state.event}
           leftIcon="dongdong"
           rightIcon="ask2"
@@ -422,30 +421,30 @@ export default App;
 | type         | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `textarea` `number` `digit`      | String         | `text`  |
 | placeholder  | 输入框为空时占位符                           | String         | -       |
 | label        | 左侧文本                               | String         | -       |
-| labelClass  | 左侧文本额外类名                        | String | -  |
-| labelWidth  | 左侧文本宽度，默认单位为 `px`            | String、Number | `80`    |
-| labelAlign  | 左侧文本对齐方式，可选值 `left`、`center`、`right`   | String | `left` |
-| inputAlign  | 输入框内容对齐方式，可选值 `left`、`center`、`right` | String | `left` |
-| colon        | 是否在 label 后面添加冒号               | Boolean        | `false` |
-| required     | 左侧*号是否展示                        | Boolean        | `false` |
-| border       | 是否显示下边框                         | Boolean        | `true` |
+| labelClass`v1.2.1`  | 左侧文本额外类名                        | String | -  |
+| labelWidth`v1.2.1`  | 左侧文本宽度，默认单位为 `px`            | String、Number | `80`    |
+| labelAlign`v1.2.1`  | 左侧文本对齐方式，可选值 `left`、`center`、`right`   | String | `left` |
+| inputAlign`v1.2.1`  | 输入框内容对齐方式，可选值 `left`、`center`、`right` | String | `left` |
+| colon`v1.2.1`        | 是否在 label 后面添加冒号               | Boolean        | `false` |
+| required`v1.2.1`     | 左侧*号是否展示                        | Boolean        | `false` |
+| border`v1.2.1`       | 是否显示下边框                         | Boolean        | `true` |
 | disabled     | 是否禁用                              | Boolean        | `false` |
 | readonly     | 是否只读                              | Boolean        | `false` |
-| autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | Boolean        | `false` |
+| autofocus`v1.2.1`    | 是否自动获得焦点，iOS 系统不支持该属性     | Boolean        | `false` |
 | maxlength      | 限制最长输入字符                       | String、Number  | -       |
 | clearable    | 展示清除 Icon                         | Boolean        | `false`  |
-| clearIcon   | 清除图标 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon)   | String        | `mask-close`  |
-| clearSize   | 清除图标的 `font-size` 大小           | String        | `14`  |
-| leftIcon    | 左侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
-| rightIcon   | 右侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
-| leftIconSize    | 左侧 Icon 的 `font-size` 大小           | String        | `14`  |
-| rightIconSize   | 右侧 Icon 的 `font-size` 大小           | String        | `14`  |
-| showWordLimit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | Boolean | `false`  |
-| error         | 是否标红                                | Boolean | `false`  |
-| errorMessage | 底部错误提示文案，为空时不展示            | String、Number | - |
-| errorMessageAlign | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`          | String | - |
-| formatter      | 输入内容格式化函数    | `(val: string) => string` | - |
-| formatTrigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | String | - |
+| clearIcon`v1.2.1`   | 清除图标 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon)   | String        | `mask-close`  |
+| clearSize`v1.2.1`   | 清除图标的 `font-size` 大小           | String        | `14`  |
+| leftIcon`v1.2.1`    | 左侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
+| rightIcon`v1.2.1`   | 右侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
+| leftIconSize`v1.2.1`    | 左侧 Icon 的 `font-size` 大小           | String        | `14`  |
+| rightIconSize`v1.2.1`   | 右侧 Icon 的 `font-size` 大小           | String        | `14`  |
+| showWordLimit`v1.2.1` | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | Boolean | `false`  |
+| error`v1.2.1`         | 是否标红                                | Boolean | `false`  |
+| errorMessage`v1.2.1` | 底部错误提示文案，为空时不展示            | String、Number | - |
+| errorMessageAlign`v1.2.1` | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`          | String | - |
+| formatter`v1.2.1`      | 输入内容格式化函数    | `(val: string) => string` | - |
+| formatTrigger`v1.2.1` | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | String | - |
 ### Events
 
 | 名称   | 说明           | 回调参数    |
@@ -454,13 +453,13 @@ export default App;
 | focus  | 输入框聚焦时触发     | val  ,event |
 | blur   | 输入框失焦时触发     | val ,event  |
 | clear  | 点击清除按钮时触发   | val ,event  |
-| click  | 点击组件时触发      | val ,event  |
-| clickInput      | 点击输入区域时触发      | val ,event  |
-| clickLeftIcon  | 点击左侧图标时触发      | val ,event  |
-| clickRightIcon | 点击右侧图标时触发      | val ,event  |
+| click`v1.2.1`  | 点击组件时触发      | val ,event  |
+| clickInput`v1.2.1`     | 点击输入区域时触发      | val ,event  |
+| clickLeftIcon`v1.2.1`  | 点击左侧图标时触发      | val ,event  |
+| clickRightIcon`v1.2.1` | 点击右侧图标时触发      | val ,event  |
 
 ### Slots
-| 名称  | 说明     | 
-|-------|----------|
-| slotButton | 自定义输入框尾部按钮 |
-| slotInput `v3.1.22` | 自定义输入框，使用此插槽后，与输入框相关的属性和事件将失效 |
+| 名称                 | 说明     | 
+|--------------------|----------|
+| slotButton`v1.2.1`       | 自定义输入框尾部按钮 |
+| slotInput`v1.2.1` | 自定义输入框，使用此插槽后，与输入框相关的属性和事件将失效 |

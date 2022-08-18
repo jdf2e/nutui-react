@@ -24,10 +24,10 @@ exports[`should match snapshot 1`] = `
         >
           <div
             class="nut-collapse-item__icon"
-            style="transform: translateY(-50%) rotate(180deg);"
+            style="transform: translateY(-50%);"
           >
             <i
-              class=" nut-icon nutui-iconfont nut-icon-arrow-down "
+              class=" nutui-iconfont nut-icon nutui-icon nut-icon-arrow-down "
               style="color: rgb(153, 153, 153); font-size: 16px; width: 16px; height: 16px;"
             />
           </div>
@@ -35,7 +35,7 @@ exports[`should match snapshot 1`] = `
       </div>
       <div
         class="nut-collapse-item__content"
-        style="height: 0px;"
+        style="height: auto;"
       >
         <div
           class="nut-collapse-item__content-text"
@@ -63,10 +63,10 @@ exports[`should match snapshot 1`] = `
         >
           <div
             class="nut-collapse-item__icon"
-            style="transform: translateY(-50%) rotate(180deg);"
+            style="transform: translateY(-50%);"
           >
             <i
-              class=" nut-icon nutui-iconfont nut-icon-arrow-down "
+              class=" nutui-iconfont nut-icon nutui-icon nut-icon-arrow-down "
               style="color: rgb(153, 153, 153); font-size: 16px; width: 16px; height: 16px;"
             />
           </div>
@@ -74,7 +74,7 @@ exports[`should match snapshot 1`] = `
       </div>
       <div
         class="nut-collapse-item__content"
-        style="height: 0px;"
+        style="height: auto;"
       >
         <div
           class="nut-collapse-item__content-text"
@@ -105,7 +105,7 @@ exports[`should match snapshot 1`] = `
             style="transform: translateY(-50%);"
           >
             <i
-              class=" nut-icon nutui-iconfont nut-icon-arrow-down "
+              class=" nutui-iconfont nut-icon nutui-icon nut-icon-arrow-down "
               style="color: rgb(194, 194, 194); font-size: 16px; width: 16px; height: 16px;"
             />
           </div>
@@ -113,7 +113,7 @@ exports[`should match snapshot 1`] = `
       </div>
       <div
         class="nut-collapse-item__content"
-        style="height: 0px;"
+        style="height: auto;"
       >
         <div
           class="nut-collapse-item__content-text"

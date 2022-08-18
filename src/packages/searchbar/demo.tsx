@@ -35,7 +35,7 @@ const SearchBarDemo = () => {
         />
         <h2>{locale.searchbar.title6}</h2>
         <SearchBar
-          change={(val: string, e: Event) => change(val, e)}
+          onChange={(val: string, e: Event) => change(val, e)}
           maxLength={10}
         />
         <span className="val-text">value：{value}</span>

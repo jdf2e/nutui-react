@@ -1,18 +1,55 @@
-#  ShortPassword 短密码
+#  ShortPassword
 
-### 介绍
+### 介紹
 
-短密码输入框，可用于输入密码、短信验证码等
+短密碼輸入框，可用於輸入密碼、短信驗證碼等
 
-### 安装
+### 安裝
 ```js
 import { ShortPassword } from '@nutui/nutui-react';
 ```
 
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Cell,ShortPassword } from '@nutui/nutui-react';
+
+const App = () => {
+  const [visible,setVisible] = useState(false)
+  const [value,setValue] = useState('')
+  const close = ()=>{
+    setVisible(false)
+    setValue('')
+  }
+  return (
+     <>
+       <Cell
+        title="基礎用法"
+        isLink
+        onClick={() => {
+          setVisible(true)
+        }}
+       />
+        <ShortPassword
+        visible={visible}
+        modelValue={value}
+        onClose={() => close()}
+        onChange={(value) => setValue(value)}
+       />
+     </>
+  )
+}
+export default App;
+
+```
+:::
+
+
+### 顯示按鈕組
 :::demo
 ```tsx
 import React, { useState } from "react";
@@ -24,10 +61,14 @@ const App = () => {
   const change = (value)=>{
      setValue(value)
   }
+   const close = ()=>{
+    setVisible(false)
+    setValue('')
+  }
   return (
      <>
        <Cell
-        title="基础用法"
+        title="顯示按鈕組"
         isLink
         onClick={() => {
           setVisible(true)
@@ -36,40 +77,9 @@ const App = () => {
         <ShortPassword
         visible={visible}
         modelValue={value}
-        onClose={() => setVisible(false)}
-        change={(value) => change(value)}
-       />
-     </>
-  )
-}
-export default App;
-
-```
-
-### 显示按钮组
-```tsx
-import React, { useState } from "react";
-import { Cell,ShortPassword } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible,setVisible] = useState(false)
-  const [value,setValue] = useState('')
-  const change = (value)=>{
-     setValue(value)
-  }
-  return (
-     <>
-       <Cell
-        title="显示按钮组"
-        isLink
-        onClick={() => {
-          setVisible(true)
-        }}
-       />
-        <ShortPassword
-        visible={visible}
-        onClose={() => setVisible(false)}
+        onClose={() => close()}
         noButton={false}
+        onChange={(value) => setValue(value)}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
        />
@@ -79,8 +89,10 @@ const App = () => {
 export default App;
 
 ```
+:::
 
-### 自定义密码长度4
+### 自定義密碼長度
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Cell,ShortPassword } from '@nutui/nutui-react';
@@ -91,10 +103,14 @@ const App = () => {
   const change = (value)=>{
      setValue(value)
   }
+   const close = ()=>{
+    setVisible(false)
+    setValue('')
+  }
   return (
      <>
        <Cell
-        title="自定义密码长度4"
+        title="自定義密碼長度"
         isLink
         onClick={() => {
           setVisible(true)
@@ -102,7 +118,9 @@ const App = () => {
        />
         <ShortPassword
         visible={visible}
-        onClose={() => setVisible(false)}
+        modelValue={value}
+        onChange={(value) => setValue(value)}
+        onClose={() => close()}
         length={4}
        />
      </>
@@ -111,7 +129,9 @@ const App = () => {
 export default App;
 
 ```
-### 忘记密码提示语事件回调
+:::
+### 忘記密碼提示語事件回調
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Cell,ShortPassword,Toast } from '@nutui/nutui-react';
@@ -119,16 +139,17 @@ import { Cell,ShortPassword,Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
-  const change = (value)=>{
-     setValue(value)
-  }
    const onTips = () => {
-    Toast.text('执行忘记密码提示语')
+    Toast.text('執行忘記密碼提示語')
+  }
+   const close = ()=>{
+    setVisible(false)
+    setValue('')
   }
   return (
      <>
        <Cell
-        title="忘记密码提示语事件回调"
+        title="忘記密碼提示語事件回調"
         isLink
         onClick={() => {
           setVisible(true)
@@ -136,7 +157,9 @@ const App = () => {
        />
        <ShortPassword
         visible={visible}
-        onClose={() => setVisible(false)}
+        modelValue={value}
+        onChange={(value) => setValue(value)}
+        onClose={() => close()}
         onTips={() => onTips()}
        />
      </>
@@ -145,6 +168,7 @@ const App = () => {
 export default App;
 
 ```
+:::
 
 
 
@@ -152,25 +176,25 @@ export default App;
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| 參數         | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
-| modelValue         | 密码初始值               | String｜Number | -                |
-| visible        | 是否展示短密码框                         | Boolean | false              |
-| title                  | 标题                | String         | 请输入密码                   |
-| desc                   | 密码框描述          | String         | 您使用了虚拟资产，请进行验证 |
-| tips                   | 提示语              | String         | 忘记密码                     |
-| closeOnClickOverlay | 是否点击遮罩关闭    | Boolean        | true                         |
-| noButton              | 是否隐藏底部按钮    | Boolean        | true                         |
-| length                 | 密码长度，取值为4~6 | String｜Number | 6                            |
-| errorMsg              | 错误信息提示        | String         | ''                           |
+| modelValue         | 內容               | String｜Number | -                |
+| visible        | 是否展示短密碼框                         | Boolean | false              |
+| title                  | 標題                | String         | 請輸入密碼                   |
+| desc                   | 密碼框描述          | String         | 您使用了虛擬資產，請進行驗證|
+| tips                   | 提示語              | String         | 忘記密碼                     |
+| closeOnClickOverlay | 是否點擊遮罩關閉    | Boolean        | true                         |
+| noButton              | 是否隱藏底部按鈕    | Boolean        | true                         |
+| length                 | 密碼長度，取值為4~6 | String｜Number | 6                            |
+| errorMsg              | 錯誤信息提示        | String         | ''                           |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
+| 事件名 | 說明           | 回調參數     |
 |--------|----------------|--------------|
-| change   | 输入密码时触发事件     |  当前输入框值value    |
-| onOk       | 点击确实时触发事件     | 当前输入框值value    |
-| onCancel   | 点击取消时触发事件     | -    |
-| onClose    | 点击关闭图标和遮罩时触发事件 | -    |
-| onTips    | 点击忘记密码时触发事件 | -    |
-| complete | 输入完成的回调         | 当前输入框值value    |
+| onChange   | 輸入密碼時觸發事件     |  value    |
+| onOk       | 點擊確認時觸發事件     | value    |
+| onCancel   | 點擊取消時觸發事件     | -    |
+| onClose    | 點擊關閉圖標和遮罩時觸發事件 | -    |
+| onTips    | 點擊忘記密碼時觸發事件 | -    |
+| onComplete | 輸入完成的回調         | value    |

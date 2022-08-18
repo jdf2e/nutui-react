@@ -68,15 +68,17 @@ export const Empty: FunctionComponent<
   }, [imageSize])
   return (
     <div className={`${b()} ${className}`} {...rest}>
-      <div className={b('image')} style={imgStyle}>
-        {imageNode}
-      </div>
-      {typeof description === 'string' ? (
-        <div className={b('description')}>{description}</div>
-      ) : (
-        { description }
-      )}
-      {children}
+      <>
+        <div className={b('image')} style={imgStyle}>
+          {imageNode}
+        </div>
+        {typeof description === 'string' ? (
+          <div className={b('description')}>{description}</div>
+        ) : (
+          { description }
+        )}
+        {children}
+      </>
     </div>
   )
 }

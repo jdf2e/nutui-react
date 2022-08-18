@@ -152,13 +152,13 @@ export default App;
 
 ### Props
 
-| 参数            | 说明                          | 类型    | 默认值 |
-| --------------- | ----------------------------- | ------- | ------ |
+| 参数              | 说明                          | 类型    | 默认值 |
+|-----------------| ----------------------------- | ------- | ------ |
 | dashed          | 是否使用虚线                  | Boolean | false  |
 | hairline        | 是否使用 0.5px 线             | Boolean | true   |
 | contentPosition | 内容位置，可选值为 left right | String  | center |
 | styles          | 修改自定义样式                | CSS     | -      |
-| direction           | 水平还是垂直类型,可选值为 horizontal vertical               | String     | 'horizontal'      |
+| direction`v1.2.0`   | 水平还是垂直类型,可选值为 horizontal vertical               | String     | 'horizontal'      |
 
 ### Slots
 

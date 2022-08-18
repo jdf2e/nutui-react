@@ -1,12 +1,14 @@
 import React, { FunctionComponent } from 'react'
 import { DataContext } from './UserContext'
 
+type EventType = 'row' | 'col'
 export interface RowProps {
   type: string
   justify: string
   align: string
   wrap: string
   gutter: string | number
+  onClick: (e: any, type: EventType) => void
 }
 const defaultProps = {
   type: '',
@@ -16,19 +18,17 @@ const defaultProps = {
   gutter: '0',
 } as RowProps
 export const Row: FunctionComponent<
-  Partial<RowProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<RowProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
-  const { children, type, justify, align, wrap, gutter } = {
+  const { children, type, justify, align, wrap, gutter, onClick } = {
     ...defaultProps,
     ...props,
   }
   const prefixCls = 'nut-row'
   const getClass = (prefix: string, type: string) => {
-    return prefix
-      ? type
-        ? `nut-row-${prefix}-${type}`
-        : ''
-      : `nut-row-${type}`
+    const classType = type ? `nut-row-${prefix}-${type}` : ''
+    const className = prefix ? classType : `nut-row-${type}`
+    return className
   }
   const getClasses = () => {
     return `
@@ -52,6 +52,9 @@ export const Row: FunctionComponent<
         'div',
         {
           className: getClasses(),
+          onClick: (e: any) => {
+            onClick && onClick(e, 'row')
+          },
         },
         children
       )}

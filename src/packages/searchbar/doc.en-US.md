@@ -172,13 +172,13 @@ export default App;
 
 |Event name | description | callback parameters|
 |--------|----------------|--------------|
-|change | triggered when entering content | _val: string, event: Event_ |
-|focus | triggered when focusing | _val: string, event: Event_ |
-|blur | triggered when out of focus | _val: string, event: Event_ |
-|clear | triggered when clicking clear | _event: Event_ |
-|search | trigger when confirming search | _val: string, event: Event_ |
-|clickinput | triggered when clicking the input area | _event: Event_ |
-|clickleftinicon | triggered when clicking the icon on the left side of the input box | _val: string, event: Event_ |
-|clickleftouticon | triggered when clicking the icon on the left outside of the input box | _val: string, event: Event_ |
-|clickrightinicon | triggered when clicking the icon on the right side of the input box | _val: string, event: Event_ |
-|clickrightouticon | triggered when clicking the icon on the right side of the input box | _val: string, event: Event_ |
+|onChange | triggered when entering content | _val: string, event: Event_ |
+|onFocus | triggered when focusing | _val: string, event: Event_ |
+|onBlur | triggered when out of focus | _val: string, event: Event_ |
+|onClear | triggered when clicking clear | _event: Event_ |
+|onSearch | trigger when confirming search | _val: string, event: Event_ |
+|onClickInput | triggered when clicking the input area | _event: Event_ |
+|onClickLeftinIcon | triggered when clicking the icon on the left side of the input box | _val: string, event: Event_ |
+|onClickLeftoutIcon | triggered when clicking the icon on the left outside of the input box | _val: string, event: Event_ |
+|onClickRightinIcon | triggered when clicking the icon on the right side of the input box | _val: string, event: Event_ |
+|onClickRightoutIcon | triggered when clicking the icon on the right side of the input box | _val: string, event: Event_ |

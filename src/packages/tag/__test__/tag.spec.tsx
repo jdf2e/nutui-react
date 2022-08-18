@@ -54,20 +54,24 @@ test('mark test', () => {
   expect(el.length > 0).toBe(true)
 })
 
-test('closeable && isShow test', () => {
+test('closeable && onClose  test', () => {
   const state = {
     closeable: true,
-    isShow: true,
   }
+  const handleClose = jest.fn()
   const { container } = render(
-    <Tag closeable={state.closeable} isShow={state.isShow}>
-      TEST
-    </Tag>
+    <>
+      <h1 className="text">0</h1>
+      <Tag closeable={state.closeable} onClose={handleClose}>
+        TEST
+      </Tag>
+    </>
   )
   const el: any = container.querySelectorAll('.nut-tag--close')[0]
   const icon: any = el.childNodes[1]
   fireEvent.click(icon)
   expect(el && el.length > 0).toBe(false)
+  expect(handleClose).toBeCalled()
 })
 
 test('emit click event', () => {

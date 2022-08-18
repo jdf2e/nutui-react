@@ -173,13 +173,13 @@ export default App;
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| change  | 输入内容时触发 | _val: string, event: Event_ |
-| focus  | 聚焦时触发 | _val: string, event: Event_ |
-| blur  | 失焦时触发 | _val: string, event: Event_ |
-| clear  | 点击清空时触发 | _event: Event_ |
-| search  | 确定搜索时触发 | _val: string, event: Event_ |
-| clickInput |	点击输入区域时触发	 |	_event: Event_ |
-| clickLeftinIcon |	点击输入框`内左侧`图标时触发 |	_val: string, event: Event_ |
-| clickLeftoutIcon |	点击输入框`外左侧`图标时触发 |	_val: string, event: Event_ |
-| clickRightinIcon |	点击输入框`内右侧`图标时触发 |	_val: string, event: Event_ |
-| clickRightoutIcon |	点击输入框`外右侧`图标时触发 |	_val: string, event: Event_ |
+| onChange  | 输入内容时触发 | _val: string, event: Event_ |
+| onFocus  | 聚焦时触发 | _val: string, event: Event_ |
+| onBlur  | 失焦时触发 | _val: string, event: Event_ |
+| onClear  | 点击清空时触发 | _event: Event_ |
+| onSearch  | 确定搜索时触发 | _val: string, event: Event_ |
+| onClickInput |	点击输入区域时触发	 |	_event: Event_ |
+| onClickLeftinIcon |	点击输入框`内左侧`图标时触发 |	_val: string, event: Event_ |
+| onClickLeftoutIcon |	点击输入框`外左侧`图标时触发 |	_val: string, event: Event_ |
+| onClickRightinIcon |	点击输入框`内右侧`图标时触发 |	_val: string, event: Event_ |
+| onClickRightoutIcon |	点击输入框`外右侧`图标时触发 |	_val: string, event: Event_ |

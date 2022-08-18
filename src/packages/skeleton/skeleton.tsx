@@ -17,6 +17,7 @@ export interface SkeletonProps {
   round: boolean
   loading: boolean
   avatarShape: avatarShape
+  children?: React.ReactNode
 }
 const defaultProps = {
   width: '100px',

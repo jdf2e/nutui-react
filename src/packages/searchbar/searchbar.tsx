@@ -42,27 +42,25 @@ export interface SearchBarProps {
   /** 取消按钮文字	 */
   actionText?: React.ReactNode
   /**  确定搜索时触发	 */
-  search?: (val: string) => void
-  /** 点击取消按钮时触发	 */
-  onCancel?: () => void
+  onSearch?: (val: string) => void
   /** 输入框内容变化时触发	 */
-  change?: (value: string, event: Event) => void
+  onChange?: (value: string, event: Event) => void
   /** 输入框获得焦点时触发	 */
-  focus?: (value: string, event: Event) => void
+  onFocus?: (value: string, event: Event) => void
   /** 输入框失去焦点时触发	 */
-  blur?: (value: string, event: Event) => void
+  onBlur?: (value: string, event: Event) => void
   /** 点击清除按钮后触发	 */
-  clear?: (event: Event) => void
+  onClear?: (event: Event) => void
   /** 点击输入区域时触发	 */
-  clickInput?: (event: Event) => void
+  onClickInput?: (event: Event) => void
   /** 点击输入框内左侧图标时触发	 */
-  clickLeftinIcon?: (value: string, event: Event) => void
+  onClickLeftinIcon?: (value: string, event: Event) => void
   /** 点击输入框外左侧图标时触发	 */
-  clickLeftoutIcon?: (value: string, event: Event) => void
+  onClickLeftoutIcon?: (value: string, event: Event) => void
   /** 点击输入框内右侧图标时触发	 */
-  clickRightinIcon?: (value: string, event: Event) => void
+  onClickRightinIcon?: (value: string, event: Event) => void
   /** 点击输入框外右侧图标时触发	 */
-  clickRightoutIcon?: (value: string, event: Event) => void
+  onClickRightoutIcon?: (value: string, event: Event) => void
 }
 const defaultProps = {
   placeholder: '',
@@ -77,7 +75,11 @@ const defaultProps = {
   leftinIcon: <Icon name="search" size="12" />,
 } as SearchBarProps
 export const SearchBar: FunctionComponent<
-  Partial<SearchBarProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<SearchBarProps> &
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      'onChange' | 'onFocus' | 'onBlur'
+    >
 > = (props) => {
   const searchbarBem = bem('searchbar')
 
@@ -101,16 +103,16 @@ export const SearchBar: FunctionComponent<
     rightinIcon,
     leftoutIcon,
     rightoutIcon,
-    change,
-    focus,
-    blur,
-    clear,
-    search,
-    clickInput,
-    clickLeftinIcon,
-    clickLeftoutIcon,
-    clickRightinIcon,
-    clickRightoutIcon,
+    onChange,
+    onFocus,
+    onBlur,
+    onClear,
+    onSearch,
+    onClickInput,
+    onClickLeftinIcon,
+    onClickLeftoutIcon,
+    onClickRightinIcon,
+    onClickRightoutIcon,
   } = {
     ...defaultProps,
     ...props,
@@ -118,20 +120,20 @@ export const SearchBar: FunctionComponent<
 
   const alignClass = `${align}`
 
-  const onChange = (event: Event) => {
+  const change = (event: Event) => {
     const { value } = event.target as any
-    change && change?.(value, event)
+    onChange && onChange?.(value, event)
     setValue(value)
   }
-  const onFocus = (event: Event) => {
+  const focus = (event: Event) => {
     const { value } = event.target as any
-    focus && focus?.(value, event)
+    onFocus && onFocus?.(value, event)
   }
-  const onBlur = (event: Event) => {
+  const blur = (event: Event) => {
     const searchSelf: HTMLInputElement | null = searchRef.current
     searchSelf && searchSelf.blur()
     const { value } = event.target as any
-    blur && blur?.(value, event)
+    onBlur && onBlur?.(value, event)
   }
 
   useEffect(() => {
@@ -158,16 +160,16 @@ export const SearchBar: FunctionComponent<
         disabled={disabled}
         readOnly={readOnly}
         maxLength={maxLength}
-        onChange={(e: any) => onChange(e)}
-        onFocus={(e: any) => onFocus(e)}
-        onBlur={(e: any) => onBlur(e)}
-        onClick={(e: any) => onClickInput(e)}
+        onChange={(e: any) => change(e)}
+        onFocus={(e: any) => focus(e)}
+        onBlur={(e: any) => blur(e)}
+        onClick={(e: any) => clickInput(e)}
       />
     )
   }
 
-  const onClickInput = (e: Event) => {
-    clickInput && clickInput(e)
+  const clickInput = (e: Event) => {
+    onClickInput && onClickInput(e)
   }
 
   const renderLeftinIcon = () => {
@@ -175,7 +177,7 @@ export const SearchBar: FunctionComponent<
     return (
       <div
         className={`${searchbarBem('leftin-icon')} ${searchbarBem('icon')}`}
-        onClick={(e: any) => onClickLeftIcon('in-left', e)}
+        onClick={(e: any) => clickLeftIcon('in-left', e)}
       >
         {leftinIcon}
       </div>
@@ -186,17 +188,17 @@ export const SearchBar: FunctionComponent<
     return (
       <div
         className={`${searchbarBem('leftout-icon')}`}
-        onClick={(e: any) => onClickLeftIcon('out-left', e)}
+        onClick={(e: any) => clickLeftIcon('out-left', e)}
       >
         {leftoutIcon}
       </div>
     )
   }
-  const onClickLeftIcon = (flag: TIconDirection, event: Event) => {
+  const clickLeftIcon = (flag: TIconDirection, event: Event) => {
     if (flag === 'in-left') {
-      clickLeftinIcon && clickLeftinIcon(value as string, event)
+      onClickLeftinIcon && onClickLeftinIcon(value as string, event)
     } else {
-      clickLeftoutIcon && clickLeftoutIcon(value as string, event)
+      onClickLeftoutIcon && onClickLeftoutIcon(value as string, event)
     }
   }
 
@@ -205,7 +207,7 @@ export const SearchBar: FunctionComponent<
     return (
       <div
         className={`${searchbarBem('rightin-icon')} ${searchbarBem('icon')}`}
-        onClick={(e: any) => onClickRightIcon('in-right', e)}
+        onClick={(e: any) => clickRightIcon('in-right', e)}
       >
         {rightinIcon}
       </div>
@@ -216,17 +218,17 @@ export const SearchBar: FunctionComponent<
     return (
       <div
         className={`${searchbarBem('rightout-icon')}`}
-        onClick={(e: any) => onClickRightIcon('out-right', e)}
+        onClick={(e: any) => clickRightIcon('out-right', e)}
       >
         {rightoutIcon}
       </div>
     )
   }
-  const onClickRightIcon = (flag: TIconDirection, event: Event) => {
+  const clickRightIcon = (flag: TIconDirection, event: Event) => {
     if (flag === 'in-left') {
-      clickRightinIcon && clickRightinIcon(value as string, event)
+      onClickRightinIcon && onClickRightinIcon(value as string, event)
     } else {
-      clickRightoutIcon && clickRightoutIcon(value as string, event)
+      onClickRightoutIcon && onClickRightoutIcon(value as string, event)
     }
   }
 
@@ -246,13 +248,13 @@ export const SearchBar: FunctionComponent<
       return
     }
     setValue('')
-    clear && clear(event)
+    onClear && onClear(event)
   }
 
   const renderRightLabel = () => {
     if (actionText) {
       return (
-        <div className={searchbarBem('action-text')} onClick={onSearch}>
+        <div className={searchbarBem('action-text')} onClick={search}>
           {actionText}
         </div>
       )
@@ -260,8 +262,8 @@ export const SearchBar: FunctionComponent<
     return null
   }
 
-  const onSearch = () => {
-    search && search(value as string)
+  const search = () => {
+    onSearch && onSearch(value as string)
   }
   const renderLabel = () => {
     if (label) {
