@@ -194,12 +194,12 @@ export const Swipe = forwardRef<
     }
     return 0
   }
-  const leftRef = useCallback((node) => {
+  const leftRef = useCallback((node: Element | null) => {
     if (node !== null) {
       setActionWidth((v) => ({ ...v, left: getNodeWidth(node) }))
     }
   }, [])
-  const rightRef = useCallback((node) => {
+  const rightRef = useCallback((node: Element | null) => {
     if (node !== null) {
       setActionWidth((v) => ({ ...v, right: getNodeWidth(node) }))
     }
