@@ -33,7 +33,7 @@ test('should onclick called', () => {
       name="JD"
       color="#fa2c19"
       size="24"
-      click={handleClick}
+      onClick={handleClick}
     />
   )
   fireEvent.click(getByTestId('test'))
