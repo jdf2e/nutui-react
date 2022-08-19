@@ -13,21 +13,17 @@
   position: fixed;
   left: 0;
   bottom: 150px;
-  top: 50%;
-  transform: translateY(-50%);
   width: 100%;
   text-align: center;
   pointer-events: none;
   z-index: 9999;
   &-small {
-    .nut-toast__inner,
-    .nut-toast__text {
+    .nut-toast__inner {
       font-size: $font-size-small;
     }
   }
   &-large {
-    .nut-toast__inner,
-    .nut-toast__text {
+    .nut-toast__inner {
       font-size: $font-size-large;
     }
   }
@@ -37,21 +33,28 @@
     justify-content: center;
     pointer-events: auto;
     height: 100%;
+    background: $toast-cover-bg-color;
   }
   &__inner {
     display: inline-block;
-    font-size: $font-size-base;
+    font-size: $toast-text-font-size;
     min-width: 40%;
     max-width: 65%;
     text-align: center;
-    padding: 24px 30px;
+    padding: $toast-inner-padding;
     word-break: break-all;
-    background: rgba(0, 0, 0, 0);
-    border-radius: 12px;
-    color: $white;
+    background: $toast-inner-bg-color;
+    border-radius: $toast-inner-border-radius;
+    color: $toast-font-color;
   }
-  &__text {
-    font-size: 14px;
+  &-text {
+    font-size: $toast-text-font-size;
+    &:empty {
+      margin-bottom: -8px;
+    }
+  }
+  &-title {
+    font-size: $toast-title-font-size;
     &:empty {
       margin-bottom: -8px;
     }
