@@ -10,6 +10,8 @@ interface INotifyProps {
   className?: string
   background?: string
   type: string
+  position: string
+  isWrapTeleport: boolean
   onClick: () => void
   onClosed: () => void
 }
@@ -18,8 +20,11 @@ const options: INotifyProps = {
   msg: '',
   id: '',
   duration: 3000, // 时长
+  color: '',
   type: 'danger',
   className: '',
+  position: 'top',
+  isWrapTeleport: true,
   onClosed: () => {},
   onClick: () => {},
 }
