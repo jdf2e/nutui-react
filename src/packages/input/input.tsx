@@ -400,7 +400,7 @@ export const Input: FunctionComponent<
                   className="nut-input-clear"
                   name={clearIcon}
                   size={clearSize}
-                  click={(e) => {
+                  onClick={(e) => {
                     handleClear(e)
                   }}
                 />
