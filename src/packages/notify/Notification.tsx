@@ -29,7 +29,6 @@ export default class Notification extends React.PureComponent<
   NotificationProps,
   State
 > {
-  // eslint-disable-next-line react/sort-comp
   private closeTimer: number | undefined
 
   static newInstance: (properties: NotificationProps, callback: any) => void
@@ -45,7 +44,6 @@ export default class Notification extends React.PureComponent<
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, react/sort-comp
   close() {
     this.setState({
       show: false,
