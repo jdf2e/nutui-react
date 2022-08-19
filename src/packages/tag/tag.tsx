@@ -109,7 +109,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
               className="_icon"
               name="close"
               size="12"
-              click={(e) => {
+              onClick={(e) => {
                 setIsTagShow(false)
                 if (props.onClose) {
                   props.onClose(e)
