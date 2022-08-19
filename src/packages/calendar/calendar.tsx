@@ -1,8 +1,17 @@
-import React, { FunctionComponent } from 'react'
+import React, { useRef } from 'react'
 import Popup from '@/packages/popup'
 import CalendarItem from '@/packages/calendaritem'
 import Utils from '@/utils/date'
 import { useConfig } from '@/packages/configprovider'
+
+type CalendarRef = {
+  scrollToDate: (date: string) => void
+}
+
+interface Day {
+  day: string | number;
+  type: string;
+}
 
 export interface CalendarProps {
   type?: string
@@ -20,6 +29,10 @@ export interface CalendarProps {
   showTitle?: boolean
   showSubTitle?: boolean
   toDateAnimation?: boolean
+  onBtn?: (() => string | JSX.Element) | undefined
+  onDay?: ((date: Day) => string | JSX.Element) | undefined
+  onTopInfo?: ((date: Day) => string | JSX.Element) | undefined
+  onBottomInfo?: ((date: Day) => string | JSX.Element) | undefined
   onClose?: () => void
   onChoose?: (param: string) => void
   onSelected?: (data: string) => void
@@ -41,14 +54,19 @@ const defaultProps = {
   showTitle: true,
   showSubTitle: true,
   toDateAnimation: true,
+  onBtn: undefined,
+  onDay: undefined,
+  onTopInfo: undefined,
+  onBottomInfo: undefined,
   onClose: () => {},
   onChoose: (param: string) => {},
   onSelected: (data: string) => {}
 } as CalendarProps
 
-export const Calendar: FunctionComponent<
-  Partial<CalendarProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+export const Calendar = React.forwardRef<
+CalendarRef,
+Partial<CalendarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, ''>
+>((props, ref) => {
   const { locale } = useConfig()
   const {
     poppable,
@@ -66,22 +84,16 @@ export const Calendar: FunctionComponent<
     showTitle,
     showSubTitle,
     toDateAnimation,
+    onBtn,
+    onDay,
+    onTopInfo,
+    onBottomInfo,
     onClose,
     onChoose,
     onSelected
   } = { ...defaultProps, ...props }
 
-  const children = Array.isArray(props.children)
-    ? props.children
-    : [props.children]
-
-  const slot = children.reduce((slot: any, item: React.ReactElement) => {
-    const data = slot
-    if (item && item.props) {
-      data[item.props.slot] = item
-    }
-    return data
-  }, {});
+  const calendarRef = useRef<any>(null);
 
   const close = () => {
     onClose && onClose()
@@ -99,8 +111,17 @@ export const Calendar: FunctionComponent<
     onSelected && onSelected(param);
   }
 
+  const scrollToDate = (date: string) => {
+    calendarRef.current?.scrollToDate(date);
+  };
+
+  React.useImperativeHandle(ref, () => ({
+    scrollToDate
+  }));
+
   const renderItem = () => {
     return <CalendarItem
+            ref={ calendarRef }
             type={type}
             isAutoBackFill={isAutoBackFill}
             poppable={poppable}
@@ -115,16 +136,15 @@ export const Calendar: FunctionComponent<
             showTitle={showTitle}
             showSubTitle={showSubTitle}
             toDateAnimation={toDateAnimation}
-            onClose={close}
+            onBtn={onBtn}
+            onDay={onDay}
+            onTopInfo={onTopInfo}
+            onBottomInfo={onBottomInfo}
             onChoose={choose}
             onSelected={select}
           >
-            { slot.btn }
-            { slot.day }
-            { slot.topInfo }
-            { slot.bottomInfo }
           </CalendarItem>
-  }
+  };
 
   return (
     <>
@@ -144,7 +164,7 @@ export const Calendar: FunctionComponent<
       ) : renderItem() }
     </>
   )
-}
+});
 
 Calendar.defaultProps = defaultProps
 Calendar.displayName = 'NutCalendar'

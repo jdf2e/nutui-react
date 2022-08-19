@@ -1,15 +1,15 @@
-import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider'
 
+type CalendarRef = {
+  scrollToDate: (date: string) => void
+}
 type InputDate = string | string[]
 
-interface Obj {
-  [x: string]: string
-}
 interface Day {
   day: string | number
   type: string
@@ -60,9 +60,12 @@ export interface CalendarItemProps {
   showTitle?: boolean
   showSubTitle?: boolean
   toDateAnimation?: boolean
+  onBtn?: (() => string | JSX.Element) | undefined
+  onDay?: ((date: Day) => string | JSX.Element) | undefined
+  onTopInfo?: ((date: Day) => string | JSX.Element) | undefined
+  onBottomInfo?: ((date: Day) => string | JSX.Element) | undefined
   onChoose?: (data: any) => void
   onUpdate?: () => void
-  onClose?: () => void
   onSelected?: (data: string) => void
 }
 const defaultProps = {
@@ -81,15 +84,19 @@ const defaultProps = {
   showTitle: true,
   showSubTitle: true,
   toDateAnimation: true,
+  onBtn: undefined,
+  onDay: undefined,
+  onTopInfo: undefined,
+  onBottomInfo: undefined,
   onChoose: (data: any) => {},
   onUpdate: () => {},
-  onClose: () => {},
   onSelected: (data: string) => {}
 } as CalendarItemProps
 
-export const CalendarItem: FunctionComponent<
-  Partial<CalendarItemProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+export const CalendarItem = React.forwardRef<
+CalendarRef,
+Partial<CalendarItemProps> & Omit<React.HTMLAttributes<HTMLDivElement>, ''>
+>((props, ref) => {
   const { locale } = useConfig()
   const {
     type,
@@ -104,6 +111,10 @@ export const CalendarItem: FunctionComponent<
     showTitle,
     showSubTitle,
     toDateAnimation,
+    onBtn,
+    onDay,
+    onTopInfo,
+    onBottomInfo,
     onChoose,
     onUpdate,
     onSelected
@@ -111,6 +122,7 @@ export const CalendarItem: FunctionComponent<
 
   const weeks = locale.calendaritem.weekdays
   const [yearMonthTitle, setYearMonthTitle] = useState('')
+  const [monthsData, setMonthsData] = useState<any[]>([]);
   const [translateY, setTranslateY] = useState(0)
   const [monthDefaultRange, setMonthDefaultRange] = useState<number[]>([]);
 
@@ -148,18 +160,6 @@ export const CalendarItem: FunctionComponent<
   const viewArea = useRef<HTMLDivElement>(null);
   let viewHeight = 0;
 
-  const children = Array.isArray(props.children)
-    ? props.children
-    : [props.children]
-
-  const slot = children.reduce((slot: any, item: React.ReactElement) => {
-    const data = slot
-    if (item && item.props) {
-      data[item.props.slot] = item
-    }
-    return data
-  }, {});
-
   const b = bem('calendar')
 
   const classes = classNames(
@@ -194,7 +194,7 @@ export const CalendarItem: FunctionComponent<
 
   const isMultiple = (currDate: string) => {
     if (state.currDate.length > 0) {
-      return (state.currDate as string[]).some((item: any) => {
+      return (state.currDate as string[]).some((item: string) => {
         return Utils.isEqual(item, currDate);
       });
     }
@@ -207,7 +207,6 @@ export const CalendarItem: FunctionComponent<
 
   const getClass = (day: Day, month: MonthInfo) => {
     const currDate = getCurrDate(day, month)
-    const { type } = props;
     if (day.type === 'curr') {
       if (
         Utils.isEqual(state.currDate as string, currDate) ||
@@ -233,6 +232,7 @@ export const CalendarItem: FunctionComponent<
       return null
 
     }
+
     return `${state.dayPrefix}-disabled`;
   }
 
@@ -334,15 +334,15 @@ export const CalendarItem: FunctionComponent<
   }
 
   const isStartTip = (day: Day, month: MonthInfo) => {
-    if (isActive(day, month)) {
-      return isStart(getCurrDate(day, month))
-    }
-    return false
+    return isActive(day, month) && isStart(getCurrDate(day, month));
   }
 
   // 是否有结束提示
   const isEndTip = (day: Day, month: MonthInfo) => {
-    return isActive(day, month)
+    if (state.currDate.length >= 2 && isEnd(getCurrDate(day, month))) {
+      return isActive(day, month);
+    }
+    return false;
   }
 
   // 开始结束时间是否相等
@@ -469,8 +469,6 @@ export const CalendarItem: FunctionComponent<
       )
     ) {
       state.monthsData.unshift(monthInfo)
-    } else {
-      setUnLoadPrev(true)
     }
 
     setMonthsData(state.monthsData)
@@ -596,7 +594,7 @@ export const CalendarItem: FunctionComponent<
     } else if (props.type === 'multiple' && Array.isArray(state.currDate)) {
       if (state.currDate.length > 0) {
         const defaultArr = [] as string[];
-        const obj: Obj = {};
+        const obj: Record<string, unknown> = {};
         state.currDate.forEach((item: string) => {
           if (
             propStartDate &&
@@ -604,7 +602,7 @@ export const CalendarItem: FunctionComponent<
             propEndDate &&
             !Utils.compareDate(propEndDate as string, item)
           ) {
-            if (!obj.hasOwnProperty(item)) {
+            if (!Object.hasOwnProperty.call(obj, item)) {
               defaultArr.push(item);
               obj[item] = item;
             }
@@ -726,18 +724,26 @@ export const CalendarItem: FunctionComponent<
     initData()
   }, []);
 
+  useEffect(() => {
+    poppable && resetRender();
+  },[defaultValue]);
+
+  React.useImperativeHandle(ref, () => ({
+    scrollToDate
+  }));
+
   return (
     <>
       <div className={classes}>
         {/* header */}
         <div className={headerClasses}>
           {
-            showTitle && <div className="calendar-title">{locale.calendaritem.title || title}</div>
+            showTitle && <div className="calendar-title">{title || locale.calendaritem.title}</div>
           }
           {
-            slot.btn && (
+            onBtn && (
               <div className="calendar-top-slot">
-                { slot.btn }
+                { onBtn() }
               </div>
             )
           }
@@ -773,29 +779,28 @@ export const CalendarItem: FunctionComponent<
                             month.monthData.map((day: Day, i: number) => (
                               <div className={['calendar-month-day',getClass(day, month),].join(' ')} onClick={() => {chooseDay(day, month)}} key={ i }>
                                 <div className="calendar-day">
-                                  {/* <slot name="day" :date="day.type == 'curr' ? day : ''">
-                                    {{ day.type == 'curr' ? day.day : '' }}
-                                  </slot> */}
-                                  { day.day }
+                                  {
+                                    onDay ? onDay(day) : day.day
+                                  }
                                 </div>
                                 {
-                                  slot.topInfo && <div className="calendar-curr-tips calendar-curr-tips-top">
-                                    {/* <slot name="topInfo" :date="day.type == 'curr' ? day : ''"> </slot> */}
+                                  onTopInfo && <div className="calendar-curr-tips calendar-curr-tips-top">
+                                    { onTopInfo(day) }
+                                    </div>
+                                }
+                                {
+                                  onBottomInfo && <div className="calendar-curr-tips calendar-curr-tips-bottom">
+                                    { onBottomInfo(day) }
                                   </div>
                                 }
                                 {
-                                  slot.bottomInfo && <div className="calendar-curr-tips calendar-curr-tips-bottom" v-if="bottomInfo">
-                                    {/* <slot name="bottomInfo" :date="day.type == 'curr' ? day : ''"> </slot> */}
-                                  </div>
+                                  !onBottomInfo && showToday && isCurrDay(month, day.day) && <div className="calendar-curr-tip-curr">{locale.calendaritem.today}</div>
                                 }
                                 {
-                                  !slot.bottomInfo && showToday && isCurrDay(month, day.day) && <div className="calendar-curr-tip-curr">{locale.calendaritem.today}</div>
+                                  isStartTip(day, month) && <div className={`calendar-day-tip ${rangeTip() ? 'calendar-curr-tips-top' : ''}`}>{startText || locale.calendaritem.start}</div>
                                 }
                                 {
-                                  isStartTip(day, month) && <div className={`calendar-day-tip ${rangeTip() ? 'calendar-curr-tips-top' : ''}`}>{locale.calendaritem.start || startText}</div>
-                                }
-                                {
-                                  isEndTip(day, month) && <div className="calendar-day-tip">{locale.calendaritem.end || endText}</div>
+                                  isEndTip(day, month) && <div className="calendar-day-tip">{endText || locale.calendaritem.end}</div>
                                 }
                               </div>
                             ))
@@ -814,7 +819,7 @@ export const CalendarItem: FunctionComponent<
           poppable && !isAutoBackFill ? (
             <div className="nut-calendar-footer">
               <div className="calendar-confirm-btn" onClick={confirm}>
-                { locale.confirm || confirmText }
+                { confirmText || locale.confirm }
               </div>
             </div>
           ) : ''
@@ -822,7 +827,7 @@ export const CalendarItem: FunctionComponent<
       </div>
     </>
   )
-}
+});
 
 CalendarItem.defaultProps = defaultProps
 CalendarItem.displayName = 'NutCalendarItem'
