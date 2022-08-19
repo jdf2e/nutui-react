@@ -135,7 +135,7 @@ const RadioDemo = () => {
           <Cell>
             <RadioGroup value="2">
               <Radio value="1" iconSize="24">
-                {translated['8a2e2847']}12
+                {translated['8a2e2847']}24
               </Radio>
               <Radio value="2" iconSize="12">
                 {translated['8a2e2847']}12
