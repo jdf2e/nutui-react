@@ -14,10 +14,10 @@ export interface CardProps {
   shopName: string
   className: string
   style: React.CSSProperties
-  prolistTpl: React.ReactChild
-  shopTagTpl: React.ReactChild
-  originTpl: React.ReactChild
-  footerTpl: React.ReactChild
+  prolistTpl: React.ReactNode
+  shopTagTpl: React.ReactNode
+  originTpl: React.ReactNode
+  footerTpl: React.ReactNode
 }
 const defaultProps = {} as CardProps
 export const Card: FunctionComponent<
