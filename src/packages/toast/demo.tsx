@@ -1,10 +1,66 @@
 import React from 'react'
 import Toast from './index'
-import { Cell } from '../cell/cell'
+import Cell from '@/packages/cell'
+import Button from '@/packages/button'
+import { useTranslate } from '../../sites/assets/locale'
+
+interface T {
+  basic: string
+  toastText: string
+  toastTitle: string
+  toastSuccess: string
+  toastError: string
+  toastLoading: string
+  toastWarning: string
+  toastAll: string
+  toastBottom: string
+  toastTransparent: string
+  toastDuration: string
+  toastDurationText: string
+  toastHide: string
+  toastCustomIcon: string
+}
 
 const ToastDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基本用法',
+      toastText: '文字提示',
+      toastTitle: '标题展示',
+      toastSuccess: '成功提示',
+      toastError: '错误提示',
+      toastWarning: '警告提示',
+      toastLoading: '加载提示',
+      toastAll: 'Toast 不消失',
+      toastBottom: '自定义底部高度',
+      toastTransparent: '加载状态透明遮罩',
+      toastDuration: '设置展示时长',
+      toastDurationText: '展示时长为10秒',
+      toastHide: '隐藏Toast',
+      toastCustomIcon: '自定义Icon',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      toastText: 'Text Message',
+      toastTitle: 'Title',
+      toastSuccess: 'Success',
+      toastError: 'Error',
+      toastWarning: 'Warning',
+      toastLoading: 'Loading',
+      toastAll: 'Not Disappear',
+      toastBottom: 'Custom Bottom Height',
+      toastTransparent: 'Loading Transparent Cover',
+      toastDuration: 'Set Display Duration',
+      toastDurationText: 'Show for 10 seconds',
+      toastHide: 'Hide Toast',
+      toastCustomIcon: 'Custom Icon',
+    },
+  })
   const textToast = (msg: string) => {
     Toast.text(msg)
+  }
+  const titleToast = (msg: string) => {
+    Toast.text(msg, { title: `${translated.toastTitle}` })
   }
   const successToast = (msg: string) => {
     Toast.success(msg)
@@ -21,20 +77,16 @@ const ToastDemo = () => {
   const duringToast = (msg: string) => {
     Toast.text(msg, { duration: 10 })
   }
+  const toastBottom = (msg: string) => {
+    Toast.text(msg, {
+      center: false,
+      bottom: '10%',
+    })
+  }
   const iconToast = (msg: string) => {
-    Toast.customIcon(msg, {
-      duration: 0, // duration为0则一直展示
-      icon: 'JD',
-      id: '',
-      center: true, // toast是否居中展示
-      type: 'text',
-      customClass: '', // 自定义样式名
-      bottom: 30, // toast不居中时距离底部位置
-      size: 'base', // 设置字体大小，默认base,可选large\small\base
-      textAlignCenter: true, // 文字是否居中显示,true为居中，false为left
-      bgColor: 'rgba(0, 0, 0, .8)',
+    Toast.loading(msg, {
       cover: true, // 是否展示透明遮罩层
-      coverColor: 'rgba(0, 0, 0, 0.4)', // 遮罩颜色设定
+      coverColor: '', // 遮罩颜色设定
       closeOnClickOverlay: true, // 点击遮罩可关闭
       onClose: () => {
         console.log('closeToast')
@@ -44,74 +96,92 @@ const ToastDemo = () => {
 
   return (
     <>
-      <div className="demo">
-        <h2>基础用法</h2>
+      <div className="demo" style={{ paddingBottom: '20px' }}>
+        <h2>{translated.basic}</h2>
         <Cell
-          title="Text文字提示"
+          title={translated.toastText}
           isLink
           click={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => textToast('网络失败，请稍后再试~')}
-        />
-
-        <h2>成功提示</h2>
-        <Cell
-          title="Success 成功提示"
-          isLink
-          click={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => successToast('成功提示')}
-        />
-
-        <h2>失败提示</h2>
-        <Cell
-          title="Error 失败提示"
-          isLink
-          click={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => errorToast('失败提示')}
-        />
-
-        <h2>警告提示</h2>
-        <Cell
-          title=" Warning 警告提示"
-          isLink
-          click={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => warningToast('警告提示')}
-        />
-
-        <h2>加载提示</h2>
-        <Cell
-          title=" Loading 加载提示"
-          isLink
-          click={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => loadingToast('加载中')}
-        />
-
-        <h2>展示时长设置</h2>
-        <Cell
-          title="设置展示时长为10秒提示"
-          isLink
-          click={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => duringToast('设置展示时长为10秒')}
+          ) => textToast(`${translated.toastText}`)}
         />
         <Cell
-          title="关闭正在显示的toast"
+          title={translated.toastTitle}
           isLink
           click={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => Toast.hide()}
+          ) => titleToast(`${translated.toastTitle}`)}
         />
-        <h2>自定义icon图标</h2>
         <Cell
-          title="传入icon组件中的'JD'图标"
+          title={translated.toastSuccess}
           isLink
           click={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => iconToast('设置icon为JD')}
+          ) => successToast(`${translated.toastSuccess}`)}
+        />
+        <Cell
+          title={translated.toastError}
+          isLink
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => errorToast(`${translated.toastError}`)}
+        />
+        <Cell
+          title={translated.toastWarning}
+          isLink
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => warningToast(`${translated.toastWarning}`)}
+        />
+        <Cell
+          title={translated.toastLoading}
+          isLink
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => loadingToast(`${translated.toastLoading}`)}
+        />
+        <h2>{translated.toastDuration}</h2>
+        <Cell
+          title={translated.toastDurationText}
+          isLink
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => duringToast(`${translated.toastDurationText}`)}
+        />
+        <Cell
+          title={translated.toastAll}
+          isLink
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => {
+            Toast.text(translated.toastAll, { duration: 0 })
+          }}
+        />
+        <Button
+          style={{ margin: 8 }}
+          type="primary"
+          shape="round"
+          onClick={() => {
+            Toast.hide()
+          }}
+        >
+          {translated.toastHide}
+        </Button>
+        <h2>{translated.toastBottom}</h2>
+        <Cell
+          title={translated.toastBottom}
+          isLink
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => toastBottom(`${translated.toastBottom}`)}
+        />
+        <h2>{translated.toastTransparent}</h2>
+        <Cell
+          title={translated.toastTransparent}
+          isLink
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => iconToast(`${translated.toastTransparent}`)}
         />
       </div>
     </>
