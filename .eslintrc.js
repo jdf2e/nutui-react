@@ -95,7 +95,7 @@ module.exports = {
         order: ['constructor', 'lifecycle', 'everything-else', 'render'],
       },
     ],
-    'react/sort-comp': 0,
     'react/require-default-props': 0,
+    'no-bitwise': 0,
   },
 }

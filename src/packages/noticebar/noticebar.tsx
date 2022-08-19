@@ -119,7 +119,6 @@ export const NoticeBar: FunctionComponent<
   }, [])
 
   const cloneChild = (listItem: string, listIndex: number) => {
-    // eslint-disable-next-line func-names, consistent-return
     return React.Children.map(children, function (child: any, index: number) {
       if (child && index === listIndex) {
         return React.cloneElement(child, {
@@ -127,6 +126,7 @@ export const NoticeBar: FunctionComponent<
           children: listItem,
         })
       }
+      return null
     })
   }
 
@@ -268,10 +268,12 @@ export const NoticeBar: FunctionComponent<
     height: direction === 'vertical' ? `${height}px` : '',
   }
 
-  const t = ~~(height / speed / 4)
+  const duringTime = ~~(height / speed / 4)
   const horseLampStyle = {
     transform: complexAm ? `translateY(${distance}px)` : '',
-    transition: animate ? `all ${t === 0 ? ~~(height / speed) : t}s` : '',
+    transition: animate
+      ? `all ${duringTime === 0 ? ~~(height / speed) : duringTime}s`
+      : '',
     marginTop: animate ? `-${height}px` : '',
   }
 
