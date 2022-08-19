@@ -7,7 +7,6 @@ import React, {
   useRef,
   useLayoutEffect,
   MouseEvent,
-  HTMLProps,
   HTMLInputTypeAttribute,
 } from 'react'
 
@@ -60,8 +59,8 @@ export interface InputProps {
   autofocus: boolean
   style?: CSSProperties
   className?: string
-  slotButton?: HTMLProps<HTMLElement>
-  slotInput?: HTMLProps<HTMLElement>
+  slotButton?: React.ReactNode
+  slotInput?: React.ReactNode
   formatter: (value: string) => void
   change?: (value: any, event: Event) => void
   blur?: (value: any, event: Event) => void
