@@ -34,10 +34,10 @@ export interface UploaderProps {
   autoUpload: boolean
   multiple: boolean
   timeout: number
-  data: object
+  data: any
   method: string
   xhrState: number | string
-  headers: object
+  headers: any
   withCredentials: boolean
   clearInput: boolean
   isPreview: boolean
@@ -195,7 +195,7 @@ const InternalUploader: ForwardRefRenderFunction<
   const executeUpload = (fileItem: FileItem, index: number) => {
     const uploadOption = new UploadOptions()
     uploadOption.url = url
-    for (const [key, value] of Object.entries(data)) {
+    for (const [key, value] of Object.entries<string | Blob>(data)) {
       fileItem.formData.append(key, value)
     }
     uploadOption.formData = fileItem.formData
@@ -212,6 +212,7 @@ const InternalUploader: ForwardRefRenderFunction<
             item.status = 'ready'
             item.message = locale.uploader.readyUpload
           }
+          return item
         })
         return [...fileList]
       })
@@ -227,6 +228,7 @@ const InternalUploader: ForwardRefRenderFunction<
             item.status = 'uploading'
             item.message = locale.uploader.uploading
           }
+          return item
         })
         return [...fileList]
       })
@@ -243,6 +245,7 @@ const InternalUploader: ForwardRefRenderFunction<
             item.status = 'success'
             item.message = locale.uploader.success
           }
+          return item
         })
         return [...fileList]
       })
@@ -262,6 +265,7 @@ const InternalUploader: ForwardRefRenderFunction<
             item.status = 'error'
             item.message = locale.uploader.error
           }
+          return item
         })
         return [...fileList]
       })
@@ -418,7 +422,7 @@ const InternalUploader: ForwardRefRenderFunction<
         fileList.map((item: any, index: number) => {
           return (
             <div className={`nut-uploader__preview ${listType}`} key={item.uid}>
-              {listType == 'picture' && !children && (
+              {listType === 'picture' && !children && (
                 <div className="nut-uploader__preview-img">
                   {item.status === 'ready' ? (
                     <div className="nut-uploader__preview__progress">
@@ -432,7 +436,7 @@ const InternalUploader: ForwardRefRenderFunction<
                         <Icon
                           color="#fff"
                           name={`${
-                            item.status == 'error' ? 'failure' : 'loading'
+                            item.status === 'error' ? 'failure' : 'loading'
                           }`}
                         />
                         <div className="nut-uploader__preview__progress__msg">
@@ -447,7 +451,7 @@ const InternalUploader: ForwardRefRenderFunction<
                       color="rgba(0,0,0,0.6)"
                       className="close"
                       name="failure"
-                      click={() => onDelete(item, index)}
+                      onClick={() => onDelete(item, index)}
                     />
                   )}
 
@@ -457,6 +461,7 @@ const InternalUploader: ForwardRefRenderFunction<
                         <img
                           className="nut-uploader__preview-img__c"
                           src={item.url}
+                          alt=""
                           onClick={() => handleItemClick(item)}
                         />
                       )}
@@ -467,6 +472,7 @@ const InternalUploader: ForwardRefRenderFunction<
                         <img
                           className="nut-uploader__preview-img__c"
                           src={defaultImg}
+                          alt=""
                           onClick={() => handleItemClick(item)}
                         />
                       ) : (
@@ -500,7 +506,7 @@ const InternalUploader: ForwardRefRenderFunction<
                     color="#808080"
                     className="nut-uploader__preview-img__file__del"
                     name="del"
-                    click={() => onDelete(item, index)}
+                    onClick={() => onDelete(item, index)}
                   />
                   {/* 缺少进度条组件，待更新 */}
                 </div>
