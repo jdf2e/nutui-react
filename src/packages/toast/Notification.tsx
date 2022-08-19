@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unused-prop-types */
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import classNames from 'classnames'
@@ -42,7 +41,6 @@ export default class Notification extends React.PureComponent<NotificationProps>
     this.clickCover = this.clickCover.bind(this)
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, react/sort-comp
   close() {
     this.clearCloseTimer()
     this.props.onClose()
