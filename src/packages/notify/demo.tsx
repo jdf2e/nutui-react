@@ -2,9 +2,47 @@ import React from 'react'
 import Notify from './notify'
 import Cell from '@/packages/cell'
 import CellGroup from '@/packages/cellgroup'
-import Button from '@/packages/button'
+import { useTranslate } from '../../sites/assets/locale'
+
+interface T {
+  basic: string
+  numbers: string
+  autoHeight: string
+  readOnly: string
+  readOnlyState: string
+  disabled: string
+  disabledState: string
+}
 
 const NotifyDemo = () => {
+  const [translated] = useTranslate({
+    'zh-CN': {
+      basic: '基本用法',
+      t1: '通知类型',
+      t2: '自定义样式',
+      t3: '自定义时长',
+      cusPostion: '自定义位置',
+      useTemplate: '组件调用',
+      primaryNotify: '主要通知',
+      successNotify: '成功通知',
+      errorNotify: '危险通知',
+      warningNotify: '警告通知',
+      cusBgNotify: '自定义背景色和字体颜色',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      t1: 'Notify Type',
+      t2: 'Custom Style',
+      t3: 'Custom Duration',
+      cusPostion: 'Custom Postion',
+      useTemplate: 'Template use',
+      primaryNotify: 'Primary Notify',
+      successNotify: 'Success Notify',
+      errorNotify: 'Error Notify',
+      warningNotify: 'Warning Notify',
+      cusBgNotify: 'Customize background and font colors',
+    },
+  })
   const baseNotify = (msg: string) => {
     Notify.text(msg, {
       onClosed: () => {
@@ -35,68 +73,68 @@ const NotifyDemo = () => {
     })
   }
   const timeNotify = (msg: string) => {
-    Notify.text(msg, { duration: 10000 })
+    Notify.text(msg, { duration: 1000 })
+  }
+  const positionNotify = (msg: string) => {
+    Notify.text(msg, { position: 'bottom' })
   }
   return (
     <>
       <div className="demo" style={{ paddingBottom: '30px' }}>
-        <h2>基础用法</h2>
+        <h2>{translated.basic}</h2>
         <Cell
-          title="基础用法"
+          title={translated.basic}
           click={(event: React.MouseEvent) => {
-            baseNotify('基础用法')
+            baseNotify(translated.basic)
           }}
         />
-        <h2>通知类</h2>
+        <h2>{translated.t1}</h2>
         <CellGroup>
           <Cell
-            title="主要通知"
+            title={translated.primaryNotify}
             click={(event: React.MouseEvent) => {
-              primaryNotify('主要通知')
+              primaryNotify(translated.primaryNotify)
             }}
           />
           <Cell
-            title="成功通知"
+            title={translated.successNotify}
             click={(event: React.MouseEvent) => {
-              successNotify('成功通知')
+              successNotify(translated.successNotify)
             }}
           />
           <Cell
-            title="危险通知"
+            title={translated.errorNotify}
             click={(event: React.MouseEvent) => {
-              errorNotify('危险通知')
+              errorNotify(translated.errorNotify)
             }}
           />
           <Cell
-            title="警告通知"
+            title={translated.warningNotify}
             click={(event: React.MouseEvent) => {
-              warningNotify('警告通知')
+              warningNotify(translated.warningNotify)
             }}
           />
         </CellGroup>
-        <h2>自定义背景色和字体颜色</h2>
+        <h2>{translated.t2}</h2>
         <Cell
-          title="自定义背景色和字体颜色"
+          title={translated.cusBgNotify}
           click={(event: React.MouseEvent) => {
-            cusBgNotify('自定义背景色和字体颜色')
+            cusBgNotify(translated.cusBgNotify)
           }}
         />
-        <h2>自定义时长</h2>
+        <h2>{translated.t3}</h2>
         <Cell
-          title="自定义时长10s"
+          title={translated.t3}
           click={(event: React.MouseEvent) => {
-            timeNotify('自定义时长10s')
+            timeNotify(translated.t3)
           }}
         />
-
-        <Button
-          type="primary"
-          onClick={() => {
-            Notify.hide()
+        <Cell
+          title={translated.cusPostion}
+          click={(event: React.MouseEvent) => {
+            positionNotify(translated.cusPostion)
           }}
-        >
-          点我关闭通告栏
-        </Button>
+        />
       </div>
     </>
   )
