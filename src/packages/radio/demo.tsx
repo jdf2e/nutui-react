@@ -159,7 +159,6 @@ const RadioDemo = () => {
         <h2>{translated['0f261484']}</h2>
         <CellGroup>
           <Cell>
-            {/* eslint-disable-next-line react/jsx-no-bind */}
             <RadioGroup value={radioVal} onChange={(e) => handleChange(e)}>
               <Radio value={1}>{translated['0f261484']}</Radio>
               <Radio value={2}>{translated['0f261484']}</Radio>
