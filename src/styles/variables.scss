@@ -631,3 +631,22 @@ $countup-lr-margin: 1px !default;
 $countup-bgcolor: #031f63 !default;
 $countup-color: #ffffff !default;
 $countup-width: 24px !default;
+
+// menu
+$menu-bar-line-height: 48px !default;
+$menu-item-font-size: $font-size-2 !default;
+$menu-item-text-color: $title-color !default;
+$menu-item-active-text-color: $primary-color !default;
+$menu-bar-border-bottom-color: #eaf0fb !default;
+$menu-bar-opened-z-index: 2001 !default;
+$menu-item-disabled-color: #969799 !default;
+$menu-title-text-padding-left: 8px !default;
+$menu-title-text-padding-right: 8px !default;
+$menu-item-content-padding: 12px 24px !default;
+$menu-item-content-max-height: 214px !default;
+$menu-item-option-padding-top: 12px !default;
+$menu-item-option-padding-bottom: 12px !default;
+$menu-item-option-i-margin-right: 6px !default;
+$menu-bar-box-shadow: 0 2px 12px rgba(89, 89, 89, 0.12) !default;
+$menu-scroll-fixed-top: 0 !default;
+$menu-scroll-fixed-z-index: 1000 !default;
