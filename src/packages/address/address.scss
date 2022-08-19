@@ -84,6 +84,10 @@
           .nut-address__region-item--icon {
             margin-right: 6px;
           }
+
+          > div {
+            width: 100%;
+          }
         }
       }
     }
@@ -107,14 +111,17 @@
         box-sizing: border-box;
         padding: 0;
         .nut-address__exist-item {
-          display: flex;
-          align-items: center;
           margin-bottom: 20px;
           font-size: $font-size-1;
           line-height: 14px;
           color: $black;
           &.active {
             font-weight: bold;
+          }
+
+          > div {
+            display: flex;
+            align-items: center;
           }
           .nut-address__exist-item-icon {
             margin-right: 9px;

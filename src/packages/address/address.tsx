@@ -10,38 +10,20 @@ import bem from '@/utils/bem'
 import { ExistRender } from './existRender'
 import { CustomRender } from './customRender'
 import { useConfig } from '@/packages/configprovider'
+import {
+  RegionData,
+  NextListObj,
+  SelectedRegionObj,
+  ChangeCallBack,
+  CloseCallBack,
+  AddressList,
+} from './type'
 
-export interface RegionData {
-  name?: string
-  [key: string]: any
-}
-
-export interface NextListObj {
-  next: string
-  value: string | RegionData
-  custom: string
-  selectedRegion: {}
-}
-export interface AddressList {
-  id?: string | number
-  provinceName: string
-  cityName: string
-  countyName: string
-  townName: string
-  addressDetail: string
-  selectedAddress: boolean
-  name?: string
-  phone?: string
-}
-
-export interface CloseRes {
-  data: {}
-  type: string
-}
 export interface AddressProps {
   className?: string
   style?: CSSProperties
   modelValue: boolean
+  modelSelect: (string | number)[]
   type: string
   customAddressTitle: string
   province: RegionData[]
@@ -62,15 +44,16 @@ export interface AddressProps {
     item: AddressList,
     copyExistAdd: AddressList[]
   ) => void
-  onClose?: (cal: CloseRes) => void
+  onClose?: (cal: CloseCallBack) => void
   closeMask?: (cal: { closeWay: string }) => void
   switchModule?: (cal: { type: string }) => void
-  onChange?: (cal: NextListObj) => void
+  onChange?: (cal: ChangeCallBack) => void
   onTabChecked?: (cal: string) => void
 }
 
 const defaultProps = {
   modelValue: false,
+  modelSelect: [],
   type: 'custom',
   customAddressTitle: '请选择所在地区',
   province: [],
@@ -94,6 +77,7 @@ export const Address: FunctionComponent<
   const { locale } = useConfig()
   const {
     modelValue,
+    modelSelect,
     children,
     type,
     height,
@@ -125,7 +109,7 @@ export const Address: FunctionComponent<
   const [privateType, setPrivateType] = useState<string>(type)
   const [tabName] = useState<string[]>(['province', 'city', 'country', 'town'])
   const [showPopup, setShowPopup] = useState(modelValue)
-  const [selectedRegion, setSelectedRegion] = useState({
+  const [selectedRegion, setSelectedRegion] = useState<SelectedRegionObj>({
     province: { name: '' },
     city: { name: '' },
     country: { name: '' },
@@ -149,7 +133,6 @@ export const Address: FunctionComponent<
       next: item.next,
       value: item.value,
       custom: item.custom,
-      selectedRegion: {},
     }
 
     setSelectedRegion({
@@ -164,7 +147,6 @@ export const Address: FunctionComponent<
     item: AddressList,
     copyExistAdd: AddressList[]
   ) => {
-    console.log(prevExistAdd, item, copyExistAdd)
     setSelectedExistAddress(item)
     onSelected && onSelected(prevExistAdd, item, copyExistAdd)
     handClose()
@@ -177,8 +159,6 @@ export const Address: FunctionComponent<
         [tabName[i]]: {},
       })
     }
-
-    console.log(selectedRegion)
   }
   // 关闭
   const closeFun = () => {
@@ -187,8 +167,12 @@ export const Address: FunctionComponent<
       addressStr: '',
       ...selectedRegion,
     }
-    const res: CloseRes = {
-      data: {},
+    const res: CloseCallBack = {
+      data: {
+        addressIdStr: '',
+        addressStr: '',
+        ...selectedRegion,
+      },
       type: privateType,
     }
     if (privateType === 'custom' || privateType === 'custom2') {
@@ -207,7 +191,7 @@ export const Address: FunctionComponent<
       ].join('')
       res.data = resCopy
     } else {
-      res.data = selectedExistAddress
+      res.data = selectedExistAddress as AddressList
     }
 
     initAddress()
@@ -278,6 +262,7 @@ export const Address: FunctionComponent<
             {headerRender()}
             {(privateType === 'custom' || privateType === 'custom2') && (
               <CustomRender
+                modelValue={modelSelect}
                 type={privateType}
                 province={province}
                 city={city}

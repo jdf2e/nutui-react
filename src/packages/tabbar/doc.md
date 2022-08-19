@@ -165,10 +165,10 @@ export default App;
 | bottom          | 是否固定在页面底部 | Boolean | false   |
 | unactiveColor  | icon未激活的颜色   | String | #7d7e80 |
 | activeColor    | icon激活的颜色     | String | #1989fa |
-| size    | icon的尺寸     | String 、Boolean | 20 |
-| safeAreaInsetBottom    | 是否开启iphone系列全面屏底部安全区适配     | Boolean | false |
-| style    | 组件样式     | React.CSSProperties | {} |
-| clsssName    | 组件类名     | String | - |
+| size`v1.2.2`    | icon的尺寸     | String 、Boolean | 20 |
+| safeAreaInsetBottom`v1.2.2`    | 是否开启iphone系列全面屏底部安全区适配     | Boolean | false |
+| style`v1.2.2`    | 组件样式     | React.CSSProperties | {} |
+| clsssName`v1.2.2`    | 组件类名     | String | - |
 
 ### tabbar-item
 
@@ -179,8 +179,8 @@ export default App;
 | href      | 标签页的跳转链接；如果同时存在 `to`，优先级高于 to   | String | --     |
 | to        | 标签页的路由对象，等于 React Router 的 [to 属性](https://v5.reactrouter.com/web/api/Link/to-string) 属性 | any | --     |
 | num       | 页签右上角的数字角标，超出99之后为99+     | Number | --     |
-| classPrefix      | 自定义icon 类名前缀，用于使用自定义图标   | String | 'nutui-iconfont'     |
-| dot      | 是否显示图标右上角小红点   | Boolean | false     |
+| classPrefix`v1.2.2`      | 自定义icon 类名前缀，用于使用自定义图标   | String | 'nutui-iconfont'     |
+| dot`v1.2.2`      | 是否显示图标右上角小红点   | Boolean | false     |
 
 
 ### Event

@@ -17,6 +17,7 @@ export interface PopoverProps {
   className: string
   style?: CSSProperties
   onClick: (e: MouseEvent) => void
+  children?: React.ReactNode
 }
 export function findDOMNode<T = HTMLElement>(
   node: React.ReactInstance | HTMLElement
@@ -24,6 +25,7 @@ export function findDOMNode<T = HTMLElement>(
   if (node instanceof HTMLElement) {
     return node as unknown as T
   }
+  // eslint-disable-next-line react/no-find-dom-node
   return ReactDOM.findDOMNode(node) as unknown as T
 }
 const getEleAttr = (ele: HTMLElement | Element) => {
@@ -62,6 +64,7 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
     ...props,
   }
   const goodItem = useRef(null)
+  // eslint-disable-next-line react/no-find-dom-node
   const aa = goodItem.current && findDOMNode(goodItem.current)
   setTimeout(() => {
     if (aa) {
@@ -75,19 +78,19 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
   const [popoverContent, setPopoverContent] = useState('')
   const [popoverArrow, setPopoverArrow] = useState('')
   useEffect(() => {
-    setClasses(classes_self())
-    setPopoverContent(popoverContent_self())
-    setPopoverArrow(popoverArrow_self())
+    setClasses(classesSelf())
+    setPopoverContent(popoverContentSelf())
+    setPopoverArrow(popoverArrowSelf())
   }, [list, theme])
   const getStyle = () => {
     const style: CSSProperties = {}
-    if (location == 'top') {
+    if (location === 'top') {
       style.bottom = elHeight + 20
       style.left = 0
-    } else if (location == 'right') {
+    } else if (location === 'right') {
       style.top = 0
       style.right = -elWidth - 20
-    } else if (location == 'left') {
+    } else if (location === 'left') {
       style.top = 0
       style.left = -elWidth - 20
     } else {
@@ -102,13 +105,13 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
   }
   const getArrowStyle = () => {
     const style: CSSProperties = {}
-    if (location == 'top') {
+    if (location === 'top') {
       style.bottom = -20
       style.left = elWidth / 2
-    } else if (location == 'right') {
+    } else if (location === 'right') {
       style.top = 20
       style.left = -20
-    } else if (location == 'left') {
+    } else if (location === 'left') {
       style.top = 20
       style.right = -20
     } else {
@@ -122,17 +125,17 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
     return style
   }
 
-  const classes_self = () => {
+  const classesSelf = () => {
     const prefixCls = 'nut-popover'
     return `${prefixCls}
     ${theme ? `${prefixCls}--${theme}` : ''}`
   }
-  const popoverContent_self = () => {
+  const popoverContentSelf = () => {
     const prefixCls = 'popoverContent'
     return `${prefixCls}
     ${location ? `${prefixCls}--${location}` : ''}`
   }
-  const popoverArrow_self = () => {
+  const popoverArrowSelf = () => {
     const prefixCls = 'popoverArrow'
     return `${prefixCls}
     ${location ? `${prefixCls}--${location}` : ''}`

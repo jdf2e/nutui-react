@@ -69,7 +69,7 @@ $button-primary-background-color: linear-gradient(
   $primary-color-end 100%
 );
 $button-info-color: $white;
-$button-info-border-color: rgba(73, 106, 242, 1);
+$button-info-border-color: #496af2;
 $button-info-background-color: linear-gradient(
   315deg,
   rgba(73, 143, 242, 1) 0%,
@@ -504,6 +504,15 @@ $divider-vertical-top: 2px !default;
 $divider-vertical-border-left: rgba(0, 0, 0, 0.06) !default;
 $divider-vertical-margin: 0 8px !default;
 
+// swiper
+$swiper-pagination-item-background-color: #ddd !default;
+
+// Table
+$table-border-color: #ececec !default;
+$table-cols-padding: 10px !default;
+$table-tr-even-bg-color: #f3f3f3 !default;
+$table-tr-odd-bg-color: $white !default;
+
 //numberkeyboard
 $numberkeyboard-width: 100% !default;
 $numberkeyboard-padding: 0 0 22px 0 !default;
@@ -527,6 +536,7 @@ $numberkeyboard-key-finish-font-size: 16px !default;
 $numberkeyboard-key-finish-font-size-color: #fff !default;
 $numberkeyboard-key-finish-background-color: #1989fa !default;
 $numberkeyboard-key-activeFinsh-background-color: #0570db !default;
+
 // elevator
 $elevator-list-item-highcolor: $primary-color !default;
 $elevator-list-item-font-size: 12px !default;

@@ -318,10 +318,10 @@ export default App;
 
 ### Event
 
-| 字段     | 说明         | 回调参数                 |
-|----------|--------------|--------------------------|
-| onChange | 展开收起按钮回调 | {value:boolean} |
-| onSelected | 选择之后触发 | {item:item, event:MouseEvent} |
+| 字段     | 说明         | 回调参数        |
+|:----------|:--------------|:------------|
+| onChange | 展开收起按钮回调 | value:boolean |
+| onSelected | 选择之后触发 | item,event:MouseEvent |
 
 
     
