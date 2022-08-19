@@ -147,18 +147,10 @@ const RadioDemo = () => {
         <CellGroup>
           <Cell>
             <RadioGroup value="1">
-              <Radio
-                value="1"
-                iconName="checklist"
-                icon-active-name="checklist"
-              >
+              <Radio value="1" iconName="checklist" iconActiveName="checklist">
                 {translated['70ffa5d8']}
               </Radio>
-              <Radio
-                value="2"
-                iconName="checklist"
-                icon-active-name="checklist"
-              >
+              <Radio value="2" iconName="checklist" iconActiveName="checklist">
                 {translated['70ffa5d8']}
               </Radio>
             </RadioGroup>
@@ -167,7 +159,8 @@ const RadioDemo = () => {
         <h2>{translated['0f261484']}</h2>
         <CellGroup>
           <Cell>
-            <RadioGroup value={radioVal} onChange={handleChange}>
+            {/* eslint-disable-next-line react/jsx-no-bind */}
+            <RadioGroup value={radioVal} onChange={(e) => handleChange(e)}>
               <Radio value={1}>{translated['0f261484']}</Radio>
               <Radio value={2}>{translated['0f261484']}</Radio>
             </RadioGroup>
