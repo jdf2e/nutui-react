@@ -209,7 +209,7 @@ export const Input: FunctionComponent<
   ) => {
     let val = value
 
-    if (type === 'digit') {
+    if (type === 'digit' || type === 'tel') {
       val = formatNumber(val, false, false)
     }
     if (type === 'number') {
@@ -400,7 +400,7 @@ export const Input: FunctionComponent<
                   className="nut-input-clear"
                   name={clearIcon}
                   size={clearSize}
-                  click={(e) => {
+                  onClick={(e) => {
                     handleClear(e)
                   }}
                 />
