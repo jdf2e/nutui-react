@@ -7,7 +7,6 @@ import React, {
   useRef,
   useLayoutEffect,
   MouseEvent,
-  HTMLProps,
   HTMLInputTypeAttribute,
 } from 'react'
 
@@ -60,8 +59,8 @@ export interface InputProps {
   autofocus: boolean
   style?: CSSProperties
   className?: string
-  slotButton?: HTMLProps<HTMLElement>
-  slotInput?: HTMLProps<HTMLElement>
+  slotButton?: React.ReactNode
+  slotInput?: React.ReactNode
   formatter: (value: string) => void
   change?: (value: any, event: Event) => void
   blur?: (value: any, event: Event) => void
@@ -210,7 +209,7 @@ export const Input: FunctionComponent<
   ) => {
     let val = value
 
-    if (type === 'digit') {
+    if (type === 'digit' || type === 'tel') {
       val = formatNumber(val, false, false)
     }
     if (type === 'number') {
@@ -408,7 +407,7 @@ export const Input: FunctionComponent<
                   className="nut-input-clear"
                   name={clearIcon}
                   size={clearSize}
-                  click={(e) => {
+                  onClick={(e) => {
                     handleClear(e)
                   }}
                 />

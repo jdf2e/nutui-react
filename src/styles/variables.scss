@@ -194,6 +194,15 @@ $avatar-normal-height: 40px;
 $switch-close-bg-color: #ebebeb;
 $switch-close--cline-bg-color: #f0f0f0;
 
+// toast
+$toast-title-font-size: 16px !default;
+$toast-text-font-size: 14px !default;
+$toast-font-color: $white !default;
+$toast-inner-padding: 24px 30px !default;
+$toast-inner-bg-color: rgba(0, 0, 0, 0.8) !default;
+$toast-inner-border-radius: 12px !default;
+$toast-cover-bg-color: rgba(0, 0, 0, 0) !default;
+
 //backtop
 $backtop-border-color: #e0e0e0;
 
