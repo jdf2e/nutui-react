@@ -780,6 +780,16 @@
           "sort": 20,
           "show": true,
           "author": "ailululu"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Audio",
+          "type": "component",
+          "cName": "音频播放器",
+          "desc": "原生audio实现的音频播放器",
+          "sort": 21,
+          "show": true,
+          "author": "libin"
         }
       ]
     },

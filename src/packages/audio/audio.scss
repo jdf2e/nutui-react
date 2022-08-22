@@ -1,0 +1,96 @@
+.nut-theme-dark {
+  .nut-audio-icon {
+    .nut-audio-icon-box {
+      background: $dark-color;
+    }
+  }
+}
+.nut-audio {
+  &__icon {
+    position: relative;
+    display: inline-block;
+    &-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba($color: $text-color, $alpha: 0.5);
+
+      .nut-icon-am-rotate {
+        transform: rotate((360));
+        animation-timing-function: ease-in-out;
+      }
+    }
+
+    .nut-audio__icon-stop {
+      position: relative;
+      &::after {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%);
+        content: '';
+        height: 2px;
+        width: 30px;
+        background: $disable-color;
+        transform: rotate(45deg);
+        transform-origin: 8px -18px;
+      }
+    }
+  }
+
+  &__progress {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0px auto;
+    padding: 10px 0;
+
+    &-bar-wrapper {
+      flex: 1;
+      margin: 0 10px;
+    }
+    .time {
+      min-width: 50px;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+  .custom-button-group {
+    .nut-button--primary {
+      margin: 0 5px;
+    }
+  }
+  .custom-button-group-disable {
+    .nut-button--primary {
+      margin: 0 5px;
+      pointer-events: none;
+    }
+  }
+  .disable {
+    color: blue;
+  }
+}
+
+.nut-range-button {
+  width: 8px !important;
+  height: 8px;
+}
+
+// .nut-audio__icon-stop {
+//   &::before {
+//     position: absolute;
+//     left: 50%;
+//     top: 50%;
+//     transform: translateX(-15px);
+//     content: '';
+//     height: 2px;
+//     width: 30px;
+//     background: $disable-color;
+//     transform: rotate(45deg);
+//     transform-origin: 8px -18px;
+//   }
+// }
