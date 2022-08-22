@@ -39,6 +39,7 @@ export interface PopoverProps {
   offset: string | number
   className: string
   style?: CSSProperties
+  children?: React.ReactNode
   onClick: (e: React.MouseEvent) => void
   onChoose: (item: List, index: number) => void
 }
@@ -60,7 +61,9 @@ const defaultProps = {
   onClick: (e: React.MouseEvent) => {},
   onChoose: (item, index) => {},
 } as PopoverProps
-export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
+export const Popover: FunctionComponent<
+  Partial<PopoverProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
   const {
     children,
     list,

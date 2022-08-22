@@ -2,7 +2,12 @@ import React, { useRef, useState } from 'react'
 import { Popover } from './popover'
 import Button from '@/packages/button'
 import Icon from '@/packages/icon'
-import './demo.scss'
+
+interface List {
+  name: string
+  icon?: string
+  disabled?: boolean
+}
 
 const BadgeDemo = () => {
   const selfContentStyle = {
@@ -112,11 +117,44 @@ const BadgeDemo = () => {
   const [customLocationName, setCustomLocationName] = useState('top')
   const [customLocationShow, setCustomLocationShow] = useState(false)
 
-  const chooseHandle = (item, index) => {
+  const chooseHandle = (item: List, index: number) => {
     console.log('选择')
   }
+
+  const styles = `
+    .customButtonBox {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    
+    .brickBox {
+      display: flex;
+      justify-content: center;
+      margin: 80px 0;
+    }
+    
+    .brick {
+      width: 60px;
+      height: 60px;
+      background: #1989fa;
+      border-radius: 10px;
+    }
+    
+    .popover-content {
+      width: 100px;
+    }
+    
+    .customContent {
+      .popover-content {
+        width: 200px;
+      }
+    }
+  `
+
   return (
     <>
+      <style>{styles}</style>
       <div className="demo">
         <h2>基础用法</h2>
         <Popover
