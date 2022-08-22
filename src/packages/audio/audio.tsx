@@ -5,10 +5,10 @@ import React, {
   FunctionComponent,
   ReactEventHandler,
 } from 'react'
-import Icon from '../icon'
-import Range from '../range'
+import Icon from '@/packages/icon'
+import Range from '@/packages/range'
 import bem from '@/utils/bem'
-import Button from '../button'
+import Button from '@/packages/button'
 import { useConfig } from '@/packages/configprovider'
 
 export interface AudioProps {
