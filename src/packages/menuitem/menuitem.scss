@@ -1,3 +1,6 @@
+@import '../icon/icon.scss';
+@import '../popup/popup.scss';
+
 .nut-theme-dark {
   .nut-menu-item__content {
     .nut-menu-item__option {
@@ -7,10 +10,6 @@
 }
 
 .nut-menu-item {
-  .active {
-    font-weight: 500;
-    color: $menu-item-active-text-color !important;
-  }
 }
 
 .nut-menu-item__content {
@@ -28,20 +27,25 @@
     display: flex;
     align-items: center;
 
+    &.active {
+      font-weight: 500;
+      color: $menu-item-active-text-color;
+    }
+
     i {
       margin-right: $menu-item-option-i-margin-right;
     }
   }
 }
 
-.nut-menu__overlay {
-  top: auto !important;
+.overlay-fade-enter-active.nut-menu__overlay {
+  top: auto;
 }
 
-.nut-menu__pop {
+.nut-menu__pop.nut-popup {
   transition: all 0s ease 0s;
   transform: none;
-  // top: auto !important;
+  //top: auto !important;
 }
 
 .placeholder-element {
