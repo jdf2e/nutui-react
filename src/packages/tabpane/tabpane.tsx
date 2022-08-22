@@ -9,6 +9,7 @@ export interface TabPaneProps {
   activeKey: string | number
   disabled: boolean
   autoHeightClassName: string
+  children?: React.ReactNode
 }
 
 const defaultProps = {

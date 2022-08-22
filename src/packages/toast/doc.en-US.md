@@ -1,20 +1,20 @@
-# Toast 吐司
+# Toast 
 
-### 介绍
+### Intro
 
-用于轻提示。
+For light tips.
 
-### 安装
+### Install
 
 ```javascript
 import { Toast } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## Demo
 
-### 基础用法
+### Usage
 
-文字提示
+#### Text
 
 :::demo
 
@@ -29,11 +29,11 @@ const App = () => {
     return (
         <>
         <Cell
-          title="Text文字提示"
+          title="Text"
           isLink
           click={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => textToast('网络失败，请稍后再试~')}
+          ) => textToast('text message~')}
         />
         </>
     )
@@ -42,7 +42,35 @@ export default App
 ```
 :::
 
-成功提示
+#### Title
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Toast, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+    const titleToast = (msg: string) => {
+        Toast.text(msg,{title: 'title'})
+    }
+    return (
+        <>
+        <Cell
+          title="Toast Title"
+          isLink
+          click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          ) => titleToast('title message~')}
+        />
+        </>
+    )
+}
+export default App
+```
+:::
+
+#### Success
 
 :::demo
 
@@ -57,11 +85,11 @@ const App = () => {
     return (
         <>
         <Cell
-          title="Success 成功提示"
+          title="Toast Success"
           isLink
           click={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => successToast('成功提示')}
+          ) => successToast('Success')}
         />
         </>
     )
@@ -71,7 +99,7 @@ export default App
 :::
 
 
-失败提示
+#### Fail
 
 :::demo
 
@@ -86,11 +114,11 @@ const App = () => {
     return (
         <>
         <Cell
-          title="Error 失败提示"
+          title="Toast Fail"
           isLink
           click={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => errorToast('失败提示')}
+          ) => errorToast('Fail')}
         />
         </>
     )
@@ -100,7 +128,7 @@ export default App
 :::
 
 
-警告提示
+#### Warn
 
 :::demo
 
@@ -115,11 +143,11 @@ const App = () => {
     return (
         <>
             <Cell
-            title=" Warning 警告提示"
+            title="Toast Warn"
             isLink
             click={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => warningToast('警告提示')}
+            ) => warningToast('Warn')}
             />
         </>
     )
@@ -129,7 +157,7 @@ export default App
 :::
 
 
-加载提示
+#### Loading
 
 :::demo
 
@@ -144,11 +172,11 @@ const App = () => {
     return (
         <>
             <Cell
-            title=" Loading 加载提示"
+            title="Toast Loading"
             isLink
             click={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => loadingToast('加载中')}
+            ) => loadingToast('Loading')}
             />
         </>
     )
@@ -158,13 +186,13 @@ export default App
 :::
 
 
-展示时长设置
+#### Set Display Duration
 
 :::demo
 
 ```tsx
 import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
+import { Toast, Cell, Button } from '@nutui/nutui-react';
 
 const App = () => {
     const duringToast = (msg: string) => {
@@ -173,19 +201,27 @@ const App = () => {
     return (
         <>
             <Cell
-            title="设置展示时长为10秒提示"
+            title="Show for 10 seconds"
             isLink
             click={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => duringToast('设置展示时长为10秒')}
+            ) => duringToast('Show for 10 seconds')}
             />
             <Cell
-            title="关闭正在显示的toast"
+            title="Toast Not Disappear"
             isLink
             click={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => Toast.hide()}
+            ) => {Toast.text('Toast Not Disappear', { duration: 0 })}}
             />
+            <Button
+                style={{ margin: 8 }}
+                type="primary"
+                shape="round"
+                onClick={() => {
+                    Toast.hide()
+                }}
+            >Hide Toast</Button>
         </>
     )
 }
@@ -193,8 +229,38 @@ export default App
 ```
 :::
 
+#### Custom Bottom Height
 
-自定义 icon 图标
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Toast, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+    const toastBottom = (msg: string) => {
+        Toast.text(msg, {
+            center: false,
+            bottom: '10%',
+        })
+    }
+    return (
+        <Cell
+        title='Custom Bottom Height'
+        isLink
+        click={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+        ) => toastBottom('Custom Bottom Height')}
+        />
+    )
+}
+export default App
+```
+:::
+
+
+
+#### Loading with transparent cover
 
 :::demo
 
@@ -204,20 +270,10 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const iconToast = (msg: string) => {
-        Toast.customIcon(msg, {
-        duration: 0, // duration为0则一直展示
-        icon: 'JD',
-        id: '',
-        center: true, // toast是否居中展示
-        type: 'text',
-        customClass: '', // 自定义样式名
-        bottom: 30, // toast不居中时距离底部位置
-        size: 'base', // 设置字体大小，默认base,可选large\small\base
-        textAlignCenter: true, // 文字是否居中显示,true为居中，false为left
-        bgColor: 'rgba(0, 0, 0, .8)',
-        cover: true, // 是否展示透明遮罩层
-        coverColor: 'rgba(0, 0, 0, 0.4)', // 遮罩颜色设定
-        closeOnClickOverlay: true, // 点击遮罩可关闭
+        Toast.loading(msg, {
+        cover: true, 
+        coverColor: 'rgba(0, 0, 0, 0)', 
+        closeOnClickOverlay: true, 
         onClose: () => {
             console.log('closeToast')
         },
@@ -226,11 +282,11 @@ const App = () => {
     return (
         <>
             <Cell
-            title="传入icon组件中的'JD'图标"
+            title="Loading with transparent cover"
             isLink
             click={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => iconToast('设置icon为JD')}
+            ) => iconToast('Loading')}
             />
         </>
     )
@@ -243,31 +299,33 @@ export default App
 
 ## API
 
-| 方法名        | 说明                       | 参数            | 返回值     |
-| ---------- | ------------------------ | --------------- | ---------- |
-| Toast.text                | 展示文字提示    |  message｜ options | toast 实例(message支持传入HTML) |
-| Toast.success             | 展示成功提示       | message｜ options| toast 实例 |
-| Toast.fail                | 展示失败提示     | message｜ options| toast 实例 |
-| Toast.warn                | 展示警告提示        | message｜ options | toast 实例 |
-| Toast.hide                | 关闭提示          | force:boolean   | void       |
-| Toast.loading             | 展示加载提示       | message｜ options | toast 实例 |
+| Methods           | Description              | Attribute          | Return value     |
+| ---------------- | ------------------------------------------- | --------------- | ---------- |
+| Toast.text      | Show text toast   |  message｜ options | toast instance(message support incoming HTML) |
+| Toast.success  | Show success toast     | message｜ options| toast instance |
+| Toast.fail       | Show fail toast   | message｜ options| toast instance|
+| Toast.warn       | Show warn toast    | message｜ options | toast instance |
+| Toast.hide      | Close toast     | clearAll: boolean   | void       |
+| Toast.loading       | Show loading toast      | message｜ options | toast instance |
 
 ### Props
 
-| 字段                | 说明              | 类型          | 默认值                        |
+| Attribute                | Description              |  Type         | Default                        |
 | ------------------- | -------------- | ------------- | ----------------------------- |
-| id                  | 标识符，相同者共用一个实例<br>loading类型默认使用一个实例，其他类型默认不共用 | String/Number | -                             |
-| duration            | 展示时长（毫秒）<br>值为 0 时，toast 不会自动消失      | Number        | 2000                          |
-| center              | 是否展示在页面中部（为false时展示在底部）                                     | Boolean       | true                          |
-| bottom              | 距页面底部的距离（像素），option.center为false时生效                          | Number       | 30                          |
-| textAlignCenter     | 多行文案是否居中                                                              | Boolean       | true                          |
-| bgColor             | 背景颜色（透明度）                                                            | String        | "rgba(0, 0, 0, 0.8)"       |
-| customClass         | 自定义类名                                            | String        | ""                            |
-| icon                | 自定义图标，**支持图片链接或base64格式**              | String        | ""                            |
-| size                | 文案尺寸，**small**/**base**/**large**三选一                                                  | String        | "base"                        |
-| cover               | 是否显示遮罩层                                          | Boolean       | false |
-| coverColor          | 遮罩层颜色，默认透明                                                          | String        | "rgba(0,0,0,0)"               |
-| loadingRotate       | loading图标是否旋转，仅对loading类型生效                                      | Boolean       | true                          |
-| onClose             | 关闭时触发的事件                                                              | function      | null                          |
-| closeOnClickOverlay | 是否在点击遮罩层后关闭提示                                                    | Boolean       | false                         |
+| id                  | Identifier, share one instance at the same time, default to multiple instances| String/Number | -            |
+| duration            | Toast duration(ms), won't disappear if value is 0      | Number        | 2000                          |
+| title `new`           | title     | String        |           -             |
+| center  | Whether to display in the middle of the page (display at the bottom when false) | Boolean| true                          |
+| bottom | The distance from the bottom of the page (px or %), which takes effect when option.center is false | String| 30px       |
+| textAlignCenter     | Whether the multi-line copy is centered           | Boolean       | true                          |
+| bgColor             | background color (transparency) | String        | rgba(0, 0, 0, 0.8)      |
+| customClass         |   Custom Class          | String        |          -                   |
+| icon                | Custom Icon        | String        |         -                   |
+| iconSize `new`  | Custom iconSize      | String        | 20                           |
+| size        | Text Size **small**/**base**/**large**          | String        | base      |
+| cover      | Whether to show the mask layer     | Boolean       | false |
+| coverColor          |  Cover Color   | String        | rgba(0,0,0,0)             |
+| loadingRotate  | Whether the loading icon is rotated, only valid for the loading type  | Boolean | true                          |
+| onClose             |Callback function after close             | function      | null         |
+| closeOnClickOverlay | Whether to close when overlay is clicked         | Boolean       | false         |
 

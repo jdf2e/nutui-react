@@ -10,6 +10,7 @@ export interface CollapseProps {
   iconColor: string
   rotate: number
   change: (isOpen: boolean, name: string) => void
+  children?: React.ReactNode
 }
 const defaultProps = {
   activeName: ['0'],
@@ -80,6 +81,7 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo(
         newOpenIndex.splice(removeIndex, 1)
       } else {
         // 当前状态为false，变为true，展开
+        // eslint-disable-next-line no-lonely-if
         if (accordion) {
           newOpenIndex = [name]
         } else {

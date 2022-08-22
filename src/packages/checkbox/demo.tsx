@@ -306,6 +306,9 @@ const CheckboxDemo = () => {
             checked={checkbox1}
             indeterminate={indeterminate}
             onChange={(state, label) => {
+              if (state) {
+                setIndeterminate(false)
+              }
               ;(checkboxgroup3Ref.current as any).toggleAll(state)
             }}
           >
