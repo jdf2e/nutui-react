@@ -1,6 +1,9 @@
+@import '../icon/icon.scss';
+@import '../button/button.scss';
+@import '../range/range.scss';
 .nut-theme-dark {
-  .nut-audio-icon {
-    .nut-audio-icon-box {
+  .nut-audio__icon {
+    .nut-audio__icon-box {
       background: $dark-color;
     }
   }

@@ -9,6 +9,7 @@ import Icon from '../icon'
 import Range from '../range'
 import bem from '@/utils/bem'
 import Button from '../button'
+import { useConfig } from '@/packages/configprovider'
 
 export interface AudioProps {
   className: string
@@ -45,6 +46,7 @@ const defaultProps = {
 export const Audio: FunctionComponent<
   Partial<AudioProps> & React.HTMLAttributes<HTMLAudioElement>
 > = (props) => {
+  const { locale } = useConfig()
   const {
     className,
     url,
@@ -86,7 +88,7 @@ export const Audio: FunctionComponent<
   const warn = console.warn
   const handleEnded = (e: any) => {
     if (props.loop) {
-      warn('onPlayEnd事件在loop=false时才会触发')
+      warn(locale.audio.tips || 'onPlayEnd事件在loop=false时才会触发')
     } else {
       props.onPlayEnd && props.onPlayEnd(e)
     }
@@ -204,7 +206,7 @@ export const Audio: FunctionComponent<
             className="back"
             onClick={handleBack}
           >
-            快退
+            {locale.audio.back || '快退'}
           </Button>
           <Button
             type="primary"
@@ -212,10 +214,12 @@ export const Audio: FunctionComponent<
             className="start"
             onClick={handleStatusChange}
           >
-            {playing ? '暂停' : '开始'}
+            {playing
+              ? `${locale.audio.pause || '暂停'}`
+              : `${locale.audio.start || '开始'}`}
           </Button>
           <Button type="primary" size="small" onClick={handleForward}>
-            快进
+            {locale.audio.forward || '快进'}
           </Button>
           <Button
             type={
@@ -224,7 +228,7 @@ export const Audio: FunctionComponent<
             size="small"
             onClick={handleMute}
           >
-            静音
+            {locale.audio.mute || '静音'}
           </Button>
         </div>
       </>
