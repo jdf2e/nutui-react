@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactHTML } from 'react'
+import React, { ReactElement, ReactHTML } from 'react'
 import bem from '@/utils/bem'
 
 interface IconProps {
@@ -7,19 +7,21 @@ interface IconProps {
   classPrefix: string
   color: string
   tag: keyof ReactHTML
-  click: (e: MouseEvent) => void
+  onClick: (e: MouseEvent) => void
   fontClassName: string
   className: string
+  style: React.CSSProperties
+  children: React.ReactNode
 }
 
 const defaultProps = {
   name: '',
   size: '',
-  classPrefix: 'nutui-icon',
+  classPrefix: 'nut-icon',
   fontClassName: 'nutui-iconfont',
   color: '',
   tag: 'i',
-  click: (e: MouseEvent) => {},
+  onClick: (e: MouseEvent) => {},
   className: '',
 } as IconProps
 
@@ -27,9 +29,7 @@ function pxCheck(value: string | number): string {
   return Number.isNaN(Number(value)) ? String(value) : `${value}px`
 }
 
-export const Icon: FunctionComponent<
-  Partial<IconProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+export function Icon<T>(props: Partial<IconProps> & T): ReactElement {
   const {
     name,
     size,
@@ -40,7 +40,7 @@ export const Icon: FunctionComponent<
     className,
     fontClassName,
     style,
-    click,
+    onClick,
     ...rest
   } = {
     ...defaultProps,
@@ -51,22 +51,22 @@ export const Icon: FunctionComponent<
   const b = bem('icon')
 
   const handleClick = (e: MouseEvent) => {
-    if (props.click) {
-      props.click(e)
+    if (onClick) {
+      onClick(e)
     }
   }
   const hasSrc = () => {
     if (isImage) return { src: name }
     return {}
   }
-  return React.createElement(
+  return React.createElement<any>(
     type,
     {
       className: isImage
-        ? `${className || ''} ${b('img')}`
-        : `${className || ''} ${fontClassName} ${b(null, [
-            classPrefix,
-          ])} nut-icon-${name} `,
+        ? `${b('img')} ${className || ''} `
+        : `${fontClassName} ${b(null)} ${classPrefix}-${name} ${
+            className || ''
+          }`,
       style: {
         color,
         fontSize: pxCheck(size),
