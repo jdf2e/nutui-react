@@ -66,7 +66,7 @@ const NavBarDemo = () => {
           onClickBack={(e) => alert(translated.a74a1fd4)}
           onClickRight={(e) => alert('icon')}
         >
-          <Icon name="share" slot="right" />
+          <Icon<{ slot: string }> name="share" slot="right" />
         </NavBar>
         <NavBar
           title={translated.e51e4582}
@@ -85,7 +85,7 @@ const NavBarDemo = () => {
           onClickBack={(e) => alert(translated.a74a1fd4)}
           onClickIcon={(e) => alert('icon')}
         >
-          <Icon name="more-x" slot="right" />
+          <Icon<{ slot: string }> name="more-x" slot="right" />
         </NavBar>
         <NavBar
           title={translated.c38a08ef}
@@ -96,7 +96,7 @@ const NavBarDemo = () => {
           onClickBack={(e) => alert(translated.a74a1fd4)}
           onClickRight={(e) => alert('icon')}
         >
-          <Icon name="share" slot="right" />
+          <Icon<{ slot: string }> name="share" slot="right" />
         </NavBar>
         <h2>{translated.c9e6df49}</h2>
         <NavBar
@@ -118,7 +118,7 @@ const NavBarDemo = () => {
               <TabPane title="Tab 3"> Tab 3 </TabPane>
             </Tabs>
           </div>
-          <Icon name="more-x" slot="right" />
+          <Icon<{ slot: string }> name="more-x" slot="right" />
         </NavBar>
       </div>
     </>
