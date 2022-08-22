@@ -1,40 +1,48 @@
 import React from 'react'
 import { NoticeBar } from './noticebar'
+import { useTranslate } from '../../sites/assets/locale'
 import Icon from '../icon'
+import './demo.scss'
 
 const NoticeBarDemo = () => {
-  const horseLamp1 = [
-    '惊喜红包免费领',
-    '爆款准点秒',
-    '买超值优惠',
-    '赢百万京豆',
-  ]
-  const horseLamp2 = [
-    '惊喜红包免费领',
-    '爆款准点秒',
-    '买超值优惠',
-    '赢百万京豆',
-  ]
-  const horseLamp3 = [
-    '惊喜红包免费领1',
-    '爆款准点秒2',
-    '买超值优惠3',
-    '赢百万京豆4',
-  ]
-  const horseLamp4 = [
-    '惊喜红包免费领',
-    '爆款准点秒',
-    '买超值优惠',
-    '赢百万京豆',
-  ]
-  const text =
-    '华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！'
-
-  const demoStyles: React.CSSProperties = {
-    padding: '0 10px',
-    background: 'rgba(251, 248, 220, 1)',
-    color: '#d9500b',
-  }
+  const [translated] = useTranslate({
+    'zh-CN': {
+      basic: '基础使用',
+      scrollable: '滚动播放',
+      mode: '通告栏--关闭模式',
+      multiline: '多行展示',
+      vertical: '垂直滚动',
+      complexAm: '纵向--复杂滚动动画',
+      customAm: '纵向--自定义滚动内容',
+      customRightIcon: '纵向--自定义右侧图标',
+      text: 'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。',
+      textShort: 'NutUI 是移动端组件库',
+      horseLamp: [
+        'NoticeBar 公告栏',
+        'Cascader 级联选择',
+        'DatePicker 日期选择器',
+        'CheckBox 复选按钮',
+      ],
+      jd: '京东商城',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      scrollable: 'Scrollable',
+      mode: 'Mode',
+      multiline: 'Wrapable',
+      vertical: 'Vertical Scroll',
+      complexAm: 'Vertical Scroll Complex Animation',
+      customAm: 'Vertical Scroll Custom Style',
+      customRightIcon: 'Vertical Scroll Custom Right Icon',
+      text: 'Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.',
+      textShort: 'Nutui is a mobile terminal component library.',
+      horseLamp: ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox'],
+      jd: 'Jingdong',
+    },
+  })
+  const horseLamp1 = translated.horseLamp
+  const horseLamp2 = translated.horseLamp
+  const horseLamp3 = ['NoticeBar', 'Cascader ', 'DatePicker ', 'CheckBox']
 
   const hello = () => {
     console.log('hello world')
@@ -46,43 +54,32 @@ const NoticeBarDemo = () => {
   return (
     <>
       <div className="demo" style={{ paddingBottom: '30px' }}>
-        <h2>基础用法</h2>
-        <NoticeBar
-          text={text}
-          background="rgba(251, 248, 220, 1)"
-          color="#D9500B"
-        />
+        <h2>{translated.basic}</h2>
+        <NoticeBar text={translated.text} />
 
-        <h2>禁用滚动</h2>
-        <NoticeBar
-          text="华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI WATCH等好礼，更多产品信息请持续关注！"
-          scrollable={false}
-          background="rgba(251, 248, 220, 1)"
-          color="#D9500B"
-        />
+        <h2>{translated.scrollable}</h2>
+        <NoticeBar text={translated.textShort} scrollable />
+        <br />
+        <NoticeBar text={translated.text} scrollable={false} />
 
-        <h2>通告栏模式--关闭模式</h2>
-        <NoticeBar
-          closeMode
-          click={hello}
-          background="rgba(251, 248, 220, 1)"
-          color="#D9500B"
-        >
-          华为畅享9新品即将上市，活动期间0元预约可参与抽奖，赢HUAWEI
-          WATCH等好礼，更多产品信息请持续关注！
+        <h2>{translated.mode}</h2>
+        <NoticeBar closeMode click={hello}>
+          {translated.text}
+        </NoticeBar>
+        <br />
+        <NoticeBar closeMode rightIcon="circle-close" click={hello}>
+          {translated.text}
+        </NoticeBar>
+        <br />
+        <NoticeBar leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png">
+          <a href="https://www.jd.com">{translated.jd}</a>
         </NoticeBar>
 
-        <h2>通告栏模式--链接模式</h2>
-        <NoticeBar
-          leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
-          background="rgba(251, 248, 220, 1)"
-          color="#D9500B"
-        >
-          <a href="https://www.jd.com">京东商城</a>
-        </NoticeBar>
+        <h2>{translated.multiline}</h2>
+        <NoticeBar text={translated.text} wrapable />
 
-        <h2>纵向滚动</h2>
-        <div style={demoStyles}>
+        <h2>{translated.vertical}</h2>
+        <div className="interstroll-list">
           <NoticeBar
             direction="vertical"
             list={horseLamp1}
@@ -92,29 +89,30 @@ const NoticeBarDemo = () => {
               go(item)
             }}
             closeMode
-            background="rgba(251, 248, 220, 1)"
-            color="#D9500B"
           />
         </div>
 
-        <h2>纵向复杂滚动动画</h2>
-        <div style={demoStyles}>
+        <h2>{translated.complexAm}</h2>
+        <div className="interstroll-list">
           <NoticeBar
             direction="vertical"
             list={horseLamp2}
             speed={10}
-            standTime={2000}
+            standTime={1000}
             complexAm
           />
         </div>
 
-        <h2>纵向自定义滚动内容</h2>
-        <div style={demoStyles}>
+        <h2>{translated.customAm}</h2>
+        <div className="interstroll-list">
           <NoticeBar
             direction="vertical"
             height={50}
             speed={10}
             standTime={1000}
+            click={(item: any) => {
+              go(item)
+            }}
           >
             {horseLamp3.map((item, index) => {
               return (
@@ -130,12 +128,12 @@ const NoticeBarDemo = () => {
           </NoticeBar>
         </div>
 
-        <h2>纵向自定义右侧图标</h2>
-        <div style={demoStyles}>
+        <h2>{translated.customRightIcon}</h2>
+        <div className="interstroll-list">
           <NoticeBar
             className="custom"
             direction="vertical"
-            list={horseLamp4}
+            list={horseLamp1}
             speed={10}
             standTime={1000}
             rightIcon={<Icon name="fabulous" size="16" color="#f0250f" />}

@@ -194,6 +194,15 @@ $avatar-normal-height: 40px;
 $switch-close-bg-color: #ebebeb;
 $switch-close--cline-bg-color: #f0f0f0;
 
+// toast
+$toast-title-font-size: 16px !default;
+$toast-text-font-size: 14px !default;
+$toast-font-color: $white !default;
+$toast-inner-padding: 24px 30px !default;
+$toast-inner-bg-color: rgba(0, 0, 0, 0.8) !default;
+$toast-inner-border-radius: 12px !default;
+$toast-cover-bg-color: rgba(0, 0, 0, 0) !default;
+
 //backtop
 $backtop-border-color: #e0e0e0;
 
@@ -221,12 +230,19 @@ $notify-font-size: 14px;
 $notify-height: 44px;
 
 // NoticeBar
-$noticeBar-font-size: 14px !default;
-$noticeBar-height: 40px !default;
-$noticeBar-line-height: 24px !default;
-$noticeBar-left-icon-width: 16px !default;
-$noticeBar-right-icon-width: 16px !default;
+$noticebar-background: rgba(251, 248, 220, 1) !default;
+$noticebar-color: #d9500b !default;
+$noticebar-font-size: 14px !default;
+$noticebar-height: 40px !default;
+$noticebar-line-height: 24px !default;
+$noticebar-left-icon-width: 16px !default;
+$noticebar-right-icon-width: 16px !default;
+$noticebar-box-padding: 0 16px !default;
+$noticebar-wrapable-padding: 16px !default;
+$noticebar-lefticon-margin: 0px 10px !default;
+$noticebar-righticon-margin: 0px 10px !default;
 
+//notify
 $notify-base-background-color: linear-gradient(
   135deg,
   rgba(250, 44, 25, 1) 0%,
@@ -494,7 +510,6 @@ $divider-vertical-height: 12px !default;
 $divider-vertical-top: 2px !default;
 $divider-vertical-border-left: rgba(0, 0, 0, 0.06) !default;
 $divider-vertical-margin: 0 8px !default;
-
 
 // swiper
 $swiper-pagination-item-background-color: #ddd !default;

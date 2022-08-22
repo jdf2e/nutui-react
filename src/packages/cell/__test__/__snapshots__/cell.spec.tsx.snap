@@ -124,9 +124,7 @@ exports[`slot linkSlot 1`] = `
     >
       <div
         class="switch-button"
-      >
-        
-      </div>
+      />
     </div>
   </div>
 </div>

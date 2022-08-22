@@ -78,6 +78,44 @@ export default App;
 
 如果需要在现有 Icon 的基础上使用更多图标，可以引入第三方 iconfont 对应的字体文件和 CSS 文件，之后就可以在 Icon 组件中直接使用。
 
+> 方案一 引入 [iconfont](https://www.iconfont.cn/)   推荐此方案
+
+第一步：首先在 [iconfont](https://www.iconfont.cn/) 生成你自定义的Icon文件下载存放至本地项目  [详细使用说明](https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code)
+
+``` bash
+/assets/font/demo.css
+/assets/font/demo_index.html
+/assets/font/iconfont.css
+/assets/font/iconfont.js
+/assets/font/iconfont.json
+/assets/font/iconfont.ttf
+/assets/font/iconfont.woff
+/assets/font/iconfont.woff2
+```
+
+第二步：项目入口文件 main.js 引用 `iconfont.css`
+
+
+``` javascript
+import './assets/font/iconfont.css';
+```
+
+第三步:
+
+```tsx
+// fontClassName 指定类名为默认 iconfont
+// classPrefix 指定默认 icon
+// name 值根据 iconfont.css 中值对应填写 
+import React from 'react'
+import Icon from '@nutui/nutui-react'
+
+const App = () => {
+  return <Icon fontClassName="iconfont" classPrefix='icon' name="close"/>
+}
+```
+
+> 方案二 第三方自定义字体库
+
 ```css
 /* 引入第三方或自定义的字体图标样式 */
 @font-face {
@@ -89,7 +127,7 @@ export default App;
   font-family: 'my-icon';
 }
 
-.my-icon-extra::before {
+.icon-extra::before {
   content: '\e626';
 }
 ```
@@ -100,7 +138,7 @@ import { Icon } from '@nutui/nutui-react';
 
 const App = () => {
   return <>
-    <Icon class-prefix="my-icon" name="extra" />
+    <Icon fontClassName="my-icon" classPrefix="icon" name="extra" />
   </>
 }
 
@@ -111,13 +149,14 @@ export default App;
 
 ### Props
 
-| 参数         | 说明                             | 类型             | 默认值           |
-|--------------|----------------------------------|------------------|------------------|
-| name         | 图标名称或图片链接               | String           | -                |
-| color        | 图标颜色                         | String           | -                |
-| size         | 图标大小，如 `20px` `2em` `2rem` | String or Number | -                |
-| classPrefix | 类名前缀，用于使用自定义图标     | String           | `nutui-iconfont` |
-| tag          | tsx 标签                        | String           | `i`              |
+| 参数          | 说明                             | 类型             | 默认值           |
+|-------------|----------------------------------|------------------|------------------|
+| name        | 图标名称或图片链接               | String           | -                |
+| color       | 图标颜色                         | String           | -                |
+| size        | 图标大小，如 `20px` `2em` `2rem` | String or Number | -                |
+| classPrefix | 类名前缀，用于使用自定义图标     | String           | `nut-iconfont` |
+| fontClassName           | 自定义 icon 字体基础类名                        | String           | `nutui-iconfonti`              |
+| tag         | tsx 标签                        | String           | `i`              |
 
 ### Events
 

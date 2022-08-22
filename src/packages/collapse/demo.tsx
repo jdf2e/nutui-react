@@ -1,49 +1,55 @@
 import React, { useState } from 'react'
 import { Collapse } from './collapse'
 import CollapseItem from '../collapseitem'
+import { Button } from '../button/button'
 
+const oldDate = [
+  {
+    title: '标题1',
+    name: '1',
+    data: '京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府',
+  },
+  {
+    title: '标题12',
+    name: '2',
+    data: '京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府',
+  },
+  {
+    title: '标题13',
+    name: '3',
+    data: '京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府',
+  },
+]
+const newDate = [
+  {
+    title: '标题21',
+    name: '1',
+    data: '京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府',
+  },
+  {
+    title: '标题22',
+    name: '2',
+    data: '京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府',
+  },
+  {
+    title: '标题23',
+    name: '3',
+    data: '京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府',
+  },
+]
 const CollapseDemo = () => {
   const [currIndex, setCurrIndex] = useState(2)
-  const [domData, setDomData] = useState([
-    {
-      title: '标题1',
-      name: '1',
-      data: '京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府',
-    },
-    {
-      title: '标题12',
-      name: '2',
-      data: '京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府',
-    },
-    {
-      title: '标题13',
-      name: '3',
-      data: '京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府',
-    },
-  ])
+  const [domData, setDomData] = useState(oldDate)
   const changeEnv = (isOpen: boolean, name: string) => {
     console.log(isOpen, name)
   }
-  const changeData = () => {
-    const newData = [
-      {
-        title: '标题21',
-        name: '1',
-        data: '京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府',
-      },
-      {
-        title: '标题22',
-        name: '2',
-        data: '京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府',
-      },
-      {
-        title: '标题23',
-        name: '3',
-        data: '京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府',
-      },
-    ]
-    setDomData(newData)
+  const changeNewData = () => {
+    setDomData(newDate)
     setCurrIndex(3)
+  }
+  const changeOldData = () => {
+    setDomData(oldDate)
+    setCurrIndex(2)
   }
   return (
     <>
@@ -140,7 +146,13 @@ const CollapseDemo = () => {
             )
           })}
         </Collapse>
-        <button onClick={() => changeData()}>点击我</button>
+        {/* eslint-disable-next-line react/button-has-type */}
+        <Button type="primary" size="small" onClick={() => changeNewData()}>
+          改变数据
+        </Button>
+        <Button type="info" size="small" onClick={() => changeOldData()}>
+          还原数据
+        </Button>
       </div>
     </>
   )
