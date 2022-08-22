@@ -137,6 +137,10 @@ const SwipeDemo = () => {
     })
   }
 
+  const handleClose = () => {
+    Toast.text('close')
+  }
+
   return (
     <>
       <div className="demo">
@@ -180,7 +184,7 @@ const SwipeDemo = () => {
           }
           onActionClick={handleChange}
           onOpen={() => Toast.text(translated.open)}
-          onClose={() => Toast.text(translated.close)}
+          onClose={handleClose}
         >
           <Cell title={translated.event} />
         </Swipe>
