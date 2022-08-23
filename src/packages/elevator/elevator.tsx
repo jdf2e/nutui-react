@@ -126,7 +126,7 @@ export const Elevator: FunctionComponent<
     }
   }
 
-  const touchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+  const touchMove = (e: TouchEvent) => {
     const firstTouch = e.touches[0]
     touchState.current.y2 = firstTouch.pageY
     const delta =
@@ -135,6 +135,7 @@ export const Elevator: FunctionComponent<
     const cacheIndex = state.current.anchorIndex + Math.ceil(delta)
     setCodeIndex(cacheIndex)
     scrollTo(cacheIndex)
+    e.preventDefault()
   }
 
   const touchEnd = () => {
@@ -217,6 +218,20 @@ export const Elevator: FunctionComponent<
     state.current.fixedTop = fixedTop
   }, [state.current.diff, titleHeight])
 
+  const refIndexBar = useRef<HTMLDivElement>(null)
+
+  // 之前的代码, 手指在index条上下移动的时候, 下面的列表也会跟随滚动, 需要阻止默认事件
+  // 如果使用react的touchmove, 没有找到可以设置passive的选项, 无法阻止默认事件, 所以使用了原生的方法进行添加
+  useEffect(() => {
+    refIndexBar.current &&
+      refIndexBar.current.addEventListener('touchmove', touchMove, {
+        passive: false,
+      })
+    return () => {
+      refIndexBar.current &&
+        refIndexBar.current.removeEventListener('touchmove', touchMove)
+    }
+  }, [])
   return (
     <div className={`${b()} ${className}`} {...rest}>
       {isSticky && scrollY > 0 ? (
@@ -273,9 +288,10 @@ export const Elevator: FunctionComponent<
         </div>
       ) : null}
       <div
+        ref={refIndexBar}
         className={b('bars')}
         onTouchStart={(event) => touchStart(event)}
-        onTouchMove={(event) => touchMove(event)}
+        // onTouchMove={(event) => touchMove(event)}
       >
         <div className={b('bars__inner')}>
           {indexList.map((item: any, index: number) => {
