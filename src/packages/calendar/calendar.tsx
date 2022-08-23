@@ -9,8 +9,8 @@ type CalendarRef = {
 }
 
 interface Day {
-  day: string | number;
-  type: string;
+  day: string | number
+  type: string
 }
 
 export interface CalendarProps {
@@ -60,12 +60,12 @@ const defaultProps = {
   onBottomInfo: undefined,
   onClose: () => {},
   onChoose: (param: string) => {},
-  onSelected: (data: string) => {}
+  onSelected: (data: string) => {},
 } as CalendarProps
 
 export const Calendar = React.forwardRef<
-CalendarRef,
-Partial<CalendarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, ''>
+  CalendarRef,
+  Partial<CalendarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, ''>
 >((props, ref) => {
   const { locale } = useConfig()
   const {
@@ -90,10 +90,10 @@ Partial<CalendarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, ''>
     onBottomInfo,
     onClose,
     onChoose,
-    onSelected
+    onSelected,
   } = { ...defaultProps, ...props }
 
-  const calendarRef = useRef<any>(null);
+  const calendarRef = useRef<any>(null)
 
   const close = () => {
     onClose && onClose()
@@ -108,43 +108,44 @@ Partial<CalendarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, ''>
   }
 
   const select = (param: string) => {
-    onSelected && onSelected(param);
+    onSelected && onSelected(param)
   }
 
   const scrollToDate = (date: string) => {
-    calendarRef.current?.scrollToDate(date);
-  };
+    calendarRef.current?.scrollToDate(date)
+  }
 
   React.useImperativeHandle(ref, () => ({
-    scrollToDate
-  }));
+    scrollToDate,
+  }))
 
   const renderItem = () => {
-    return <CalendarItem
-            ref={ calendarRef }
-            type={type}
-            isAutoBackFill={isAutoBackFill}
-            poppable={poppable}
-            title={locale.calendaritem.title || title}
-            defaultValue={defaultValue}
-            startDate={startDate}
-            endDate={endDate}
-            showToday={showToday}
-            startText={startText}
-            endText={endText}
-            confirmText={confirmText}
-            showTitle={showTitle}
-            showSubTitle={showSubTitle}
-            toDateAnimation={toDateAnimation}
-            onBtn={onBtn}
-            onDay={onDay}
-            onTopInfo={onTopInfo}
-            onBottomInfo={onBottomInfo}
-            onChoose={choose}
-            onSelected={select}
-          >
-          </CalendarItem>
-  };
+    return (
+      <CalendarItem
+        ref={calendarRef}
+        type={type}
+        isAutoBackFill={isAutoBackFill}
+        poppable={poppable}
+        title={locale.calendaritem.title || title}
+        defaultValue={defaultValue}
+        startDate={startDate}
+        endDate={endDate}
+        showToday={showToday}
+        startText={startText}
+        endText={endText}
+        confirmText={confirmText}
+        showTitle={showTitle}
+        showSubTitle={showSubTitle}
+        toDateAnimation={toDateAnimation}
+        onBtn={onBtn}
+        onDay={onDay}
+        onTopInfo={onTopInfo}
+        onBottomInfo={onBottomInfo}
+        onChoose={choose}
+        onSelected={select}
+      />
+    )
+  }
 
   return (
     <>
@@ -159,12 +160,14 @@ Partial<CalendarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, ''>
           onClickCloseIcon={closePopup}
           style={{ height: '85vh' }}
         >
-          { renderItem() }
+          {renderItem()}
         </Popup>
-      ) : renderItem() }
+      ) : (
+        renderItem()
+      )}
     </>
   )
-});
+})
 
 Calendar.defaultProps = defaultProps
 Calendar.displayName = 'NutCalendar'

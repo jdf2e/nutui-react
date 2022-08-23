@@ -4,11 +4,11 @@ import { Cell } from '@/packages/cell/cell'
 import Utils from '@/utils/date'
 import { useTranslate } from '../../sites/assets/locale'
 
-import './demo.scss';
+import './demo.scss'
 
 interface Day {
-  day: string | number;
-  type: string;
+  day: string | number
+  type: string
 }
 
 interface T {
@@ -104,7 +104,7 @@ const CalendarDemo = () => {
   const [isVisible6, setIsVisible6] = useState(false)
   const [isVisible7, setIsVisible7] = useState(false)
 
-  const calendarRef = useRef<any>(null);
+  const calendarRef = useRef<any>(null)
 
   const openSwitch = () => {
     setIsVisible(true)
@@ -163,7 +163,6 @@ const CalendarDemo = () => {
   }
 
   const setChooseValue = (param: string) => {
-    console.log(1233)
     setDate(param[3])
     setDateWeek(param[4])
   }
@@ -183,8 +182,8 @@ const CalendarDemo = () => {
 
   const setChooseValue4 = (chooseData: any) => {
     const dateArr = chooseData.map((item: any) => {
-      return item[3];
-    });
+      return item[3]
+    })
     setDate4([...dateArr])
   }
 
@@ -201,59 +200,62 @@ const CalendarDemo = () => {
   }
 
   const select = (param: string) => {
-    console.log(param);
+    console.log(param)
   }
 
   const goDate = () => {
     if (calendarRef.current) {
-      calendarRef.current.scrollToDate('2022-04-01');
+      calendarRef.current.scrollToDate('2022-04-01')
     }
-  };
+  }
 
   const clickBtn = () => {
-    const date = [Utils.date2Str(new Date()), Utils.getDay(6)];
-    setDate7(date);
+    const date = [Utils.date2Str(new Date()), Utils.getDay(6)]
+    setDate7(date)
   }
 
   const clickBtn1 = () => {
-    const date = new Date();
-    const year = date.getFullYear();
-    let month: any = date.getMonth() + 1;
-    month = month < 10 ? `0${month}` : `${month}`;
-    const yearMonth = `${year}-${month}`;
-    const currMonthDays = Utils.getMonthDays(`${year}`, `${month}`);
-    setDate7([`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`]);
+    const date = new Date()
+    const year = date.getFullYear()
+    let month: any = date.getMonth() + 1
+    month = month < 10 ? `0${month}` : `${month}`
+    const yearMonth = `${year}-${month}`
+    const currMonthDays = Utils.getMonthDays(`${year}`, `${month}`)
+    setDate7([`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`])
   }
 
   const onDay = (date: Day) => {
-    return (
-      <span>{ date.day <= 9 ? `0${date.day}`: date.day }</span>
-    )
+    return <span>{date.day <= 9 ? `0${date.day}` : date.day}</span>
   }
 
   const onBottomInfo = (date: Day) => {
-    let currDate = '';
-    if(date && date.day <= 10 && date.day > 20) {
+    let currDate = ''
+    if (date && date.day <= 10 && date.day > 20) {
       currDate = ''
     } else {
-      currDate = 'mid';
+      currDate = 'mid'
     }
-    return (
-      <span className="info">{currDate}</span>
-    )
+    return <span className="info">{currDate}</span>
   }
 
   const onBtn = () => {
     return (
       <div className="wrapper">
         <div className="d_div">
-          <span className="d_btn" onClick={ goDate }>{ translated['781b07fd'] }</span></div>
+          <span className="d_btn" onClick={goDate}>
+            {translated['781b07fd']}
+          </span>
+        </div>
         <div className="d_div">
-          <span className="d_btn" onClick={ clickBtn }>{ translated['1076d771'] }</span></div
-        >
+          <span className="d_btn" onClick={clickBtn}>
+            {translated['1076d771']}
+          </span>
+        </div>
         <div className="d_div">
-          <span className="d_btn" onClick={ clickBtn1 }>{ translated['6ab47cd2'] }</span></div
-        >
+          <span className="d_btn" onClick={clickBtn1}>
+            {translated['6ab47cd2']}
+          </span>
+        </div>
       </div>
     )
   }
@@ -269,7 +271,7 @@ const CalendarDemo = () => {
         />
         <Calendar
           visible={isVisible}
-          showTitle={ false }
+          showTitle={false}
           defaultValue={date}
           startDate="2022-01-11"
           endDate="2029-11-30"
@@ -300,7 +302,11 @@ const CalendarDemo = () => {
 
         <Cell
           title={translated['7db1a8b2']}
-          desc={ date4 && date4.length ? `${translated.a52bef0c}${date4.length}` : translated.b840c88f }
+          desc={
+            date4 && date4.length
+              ? `${translated.a52bef0c}${date4.length}`
+              : translated.b840c88f
+          }
           onClick={openSwitch4}
         />
         <Calendar
@@ -348,7 +354,7 @@ const CalendarDemo = () => {
           onChoose={setChooseValue5}
           onSelected={select}
         />
-        <h2>{ translated.d04fcbda }</h2>
+        <h2>{translated.d04fcbda}</h2>
         <Cell
           title={translated['60a53514']}
           desc={
@@ -367,8 +373,8 @@ const CalendarDemo = () => {
           confirmText="submit"
           startText="enter"
           endText="leave"
-          onDay={ onDay }
-          onBottomInfo={ onBottomInfo }
+          onDay={onDay}
+          onBottomInfo={onBottomInfo}
           onClose={closeSwitch6}
           onChoose={setChooseValue6}
         />
@@ -383,13 +389,13 @@ const CalendarDemo = () => {
           onClick={openSwitch7}
         />
         <Calendar
-          ref={ calendarRef }
+          ref={calendarRef}
           visible={isVisible7}
           defaultValue={date7}
           type="range"
           startDate="2021-12-22"
           endDate="2022-12-31"
-          onBtn={ onBtn }
+          onBtn={onBtn}
           onClose={closeSwitch7}
           onChoose={setChooseValue7}
         />

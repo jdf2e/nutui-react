@@ -214,7 +214,7 @@ const App = () => {
 
     const onDay = (date: Day) => {
         return (
-            <span>{ date.day <= 9 ? '0' + date.day : date.day }</span>
+            <span>{ date.day <= 9 ? `0${  date.day}` : date.day }</span>
         )
     }
 
@@ -337,17 +337,17 @@ const App = () => {
     };
 
     const clickBtn = () => {
-        let date = [Utils.date2Str(new Date()), Utils.getDay(6)];
+        const date = [Utils.date2Str(new Date()), Utils.getDay(6)];
         setDate3(date);
     }
 
     const clickBtn1 = () => {
-        let date = new Date();
-        let year = date.getFullYear();
+        const date = new Date();
+        const year = date.getFullYear();
         let month: any = date.getMonth() + 1;
-        month = month < 10 ? '0' + month : month + '';
-        let yearMonth = `${year}-${month}`;
-        let currMonthDays = Utils.getMonthDays(year + '', month + '');
+        month = month < 10 ? `0${  month}` : `${month  }`;
+        const yearMonth = `${year}-${month}`;
+        const currMonthDays = Utils.getMonthDays(`${year  }`, `${month  }`);
         setDate3([`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`]);
     }
 
