@@ -2,6 +2,7 @@ import React, { CSSProperties, FunctionComponent } from 'react'
 import './griditem.scss'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
+import Icon from '@/packages/icon'
 
 type GridDirection = 'horizontal' | 'vertical'
 
@@ -18,11 +19,13 @@ export interface GridItemProps {
   center: boolean
   square: boolean
   reverse: boolean
-  direction: GridDirection
+  direction: string
 }
 const defaultProps = {
   text: '',
   icon: '',
+  iconSize: '',
+  iconColor: '',
 
   columnNum: 4,
   border: true,
@@ -30,7 +33,7 @@ const defaultProps = {
   center: true,
   square: false,
   reverse: false,
-  direction: 'horizontal',
+  direction: 'vertical',
 } as GridItemProps
 export const GridItem: FunctionComponent<
   Partial<GridItemProps> & React.HTMLAttributes<HTMLDivElement>
@@ -44,6 +47,8 @@ export const GridItem: FunctionComponent<
     square,
     text,
     icon,
+    iconColor,
+    iconSize,
     border,
     center,
     reverse,
@@ -55,6 +60,7 @@ export const GridItem: FunctionComponent<
   }
 
   const rootStyle = () => {
+    console.log(11, columnNum)
     const style: CSSProperties = {
       flexBasis: `${100 / +columnNum}%`,
     }
@@ -68,8 +74,6 @@ export const GridItem: FunctionComponent<
       }
     }
 
-    // console.log(style)
-
     return style
   }
 
@@ -79,19 +83,14 @@ export const GridItem: FunctionComponent<
       border && gutter && b('content--surround')
     }  ${center && b('content--center')} ${square && b('content--square')} ${
       reverse && b('content--reverse')
-    } 
+    } ${!!direction && b(`content--${direction}`)}
       `
   }
 
   return (
     <div className={b()} style={rootStyle()}>
       <div className={contentClass()}>
-        {/* <nut-icon
-            :name="iconProps.name"
-            v-bind="$attrs"
-            :size="iconProps.size"
-            :color="iconProps.color"
-          ></nut-icon> */}
+        <Icon name={icon} size={iconSize} color={iconColor} />
 
         <div className="nut-grid-item__text">{text}</div>
       </div>
