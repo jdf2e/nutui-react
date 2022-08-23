@@ -145,10 +145,8 @@ const BadgeDemo = () => {
       width: 100px;
     }
     
-    .customContent {
-      .popover-content {
+    .customContent .popover-content{
         width: 200px;
-      }
     }
   `
 
