@@ -325,6 +325,7 @@ const PickerDemo = () => {
           onConfirm={(values, list) => confirmPicker('tile', values, list)}
           defaultValueData={defaultValue}
           threeDimensional={false}
+          swipeDuration={1000}
           onClose={() => setIsVisible6(false)}
           onChange={changePicker}
         />
