@@ -13,7 +13,8 @@ export interface GridProps {
   square: boolean
   reverse: boolean
   direction: GridDirection
-  clickable: boolean
+  iconSize?: string | number
+  iconColor?: string
   style?: CSSProperties
 }
 
@@ -24,8 +25,9 @@ const defaultProps = {
   center: true,
   square: false,
   reverse: false,
-  direction: 'horizontal',
-  clickable: false,
+  direction: 'vertical',
+  iconSize: 28,
+  iconColor: '',
 } as GridProps
 
 export const Grid: FunctionComponent<
@@ -41,8 +43,9 @@ export const Grid: FunctionComponent<
     square,
     reverse,
     direction,
-    clickable,
     style,
+    iconSize,
+    iconColor,
     ...rest
   } = { ...defaultProps, ...props }
   const childrenDom = React.Children.toArray(children)
@@ -69,6 +72,7 @@ export const Grid: FunctionComponent<
 
     return styleSelf
   }
+
   return (
     <div className={rootClass()} style={rootStyle()} {...rest}>
       {childrenDom.map((item: any, idex: number) => {
@@ -81,6 +85,8 @@ export const Grid: FunctionComponent<
           square,
           reverse,
           direction,
+          parentIconSize: iconSize,
+          parentIconColor: iconColor,
         })
       })}
     </div>

@@ -1,4 +1,4 @@
-import React, { CSSProperties, FunctionComponent } from 'react'
+import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
 import './griditem.scss'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
@@ -7,10 +7,12 @@ import Icon from '@/packages/icon'
 type GridDirection = 'horizontal' | 'vertical'
 
 export interface GridItemProps {
-  text: string
-  icon: string
+  text: string | ReactNode
+  icon: string | ReactNode
   iconSize?: string | number
   iconColor?: string
+  parentIconSize?: string | number
+  parentIconColor?: string
   index: number
 
   columnNum: string | number
@@ -19,13 +21,15 @@ export interface GridItemProps {
   center: boolean
   square: boolean
   reverse: boolean
-  direction: string
+  direction: GridDirection
 }
 const defaultProps = {
   text: '',
   icon: '',
-  iconSize: '',
+  iconSize: 28,
   iconColor: '',
+  parentIconSize: 28,
+  parentIconColor: '',
 
   columnNum: 4,
   border: true,
@@ -49,18 +53,21 @@ export const GridItem: FunctionComponent<
     icon,
     iconColor,
     iconSize,
+    parentIconSize,
+    parentIconColor,
     border,
     center,
     reverse,
     direction,
+    ...rest
   } = { ...defaultProps, ...props }
   const b = bem('grid-item')
+
   const pxCheck = (value: string | number): string => {
     return Number.isNaN(Number(value)) ? String(value) : `${value}px`
   }
 
   const rootStyle = () => {
-    console.log(11, columnNum)
     const style: CSSProperties = {
       flexBasis: `${100 / +columnNum}%`,
     }
@@ -78,7 +85,6 @@ export const GridItem: FunctionComponent<
   }
 
   const contentClass = () => {
-    const prefixCls = b('content')
     return `${b('content')} ${border && b('content--border')} ${
       border && gutter && b('content--surround')
     }  ${center && b('content--center')} ${square && b('content--square')} ${
@@ -87,12 +93,24 @@ export const GridItem: FunctionComponent<
       `
   }
 
-  return (
-    <div className={b()} style={rootStyle()}>
-      <div className={contentClass()}>
-        <Icon name={icon} size={iconSize} color={iconColor} />
+  const isIconName = () => {
+    return typeof icon === 'string'
+  }
 
-        <div className="nut-grid-item__text">{text}</div>
+  return (
+    <div className={b()} style={rootStyle()} {...rest}>
+      <div className={contentClass()}>
+        {icon && isIconName() ? (
+          <Icon
+            name={icon as string}
+            size={iconSize || parentIconSize}
+            color={iconColor || parentIconColor}
+          />
+        ) : (
+          <>{icon}</>
+        )}
+        {text && <div className="nut-grid-item__text">{text}</div>}
+        {children && <>{children}</>}
       </div>
     </div>
   )
