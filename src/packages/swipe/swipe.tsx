@@ -31,6 +31,10 @@ export interface SwipeInstance {
   close: () => void
 }
 export interface SwipeProps {
+  /** 自定义类名 */
+  className: string
+  /** 自定义样式 */
+  style: React.CSSProperties
   /** 标识符，可以在事件参数中获取到 */
   name?: string | number
   /** 指定左侧滑动区域宽度，单位为px */
@@ -66,6 +70,7 @@ export interface SwipeProps {
   children?: React.ReactNode
 }
 const defaultProps = {
+  name: '',
   leftWidth: 0,
   rightWidth: 0,
 } as SwipeProps
@@ -76,7 +81,7 @@ export const Swipe = forwardRef<
   const swipeBem = bem('swipe')
   const touch: any = useTouch()
 
-  const { children } = { ...defaultProps, ...props }
+  const { children, className, style } = { ...defaultProps, ...props }
 
   const root: any = useRef<HTMLDivElement>()
   const opened = useRef(false)
@@ -262,10 +267,11 @@ export const Swipe = forwardRef<
   return (
     <div
       ref={root}
-      className={`${swipeBem()}`}
+      className={`${swipeBem()} ${className}`}
       onTouchStart={(e: any) => onTouchStart(e)}
       onTouchMove={(e: any) => onTouchMove(e)}
       onTouchEnd={onTouchEnd}
+      style={style}
     >
       <div className={`${swipeBem('wrapper')}`} style={wrapperStyle}>
         {renderActionContent('left', leftRef)}

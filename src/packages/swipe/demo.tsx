@@ -77,7 +77,7 @@ const SwipeDemo = () => {
       deleteTips: '確定刪除嗎？ ',
     },
     'en-US': {
-      title1: 'basic usage',
+      title1: 'Basic usage',
       title2: 'Disable sliding',
       title3: 'Event monitoring',
       title4: 'Asynchronous control',
@@ -183,7 +183,10 @@ const SwipeDemo = () => {
             </>
           }
           onActionClick={handleChange}
-          onOpen={() => Toast.text(translated.open)}
+          onOpen={({ name, position }) => {
+            console.log(name, position)
+            Toast.text(translated.open)
+          }}
           onClose={handleClose}
         >
           <Cell title={translated.event} />
