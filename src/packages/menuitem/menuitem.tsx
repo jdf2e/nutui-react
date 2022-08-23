@@ -1,8 +1,10 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classnames from 'classnames'
+import { CSSTransition } from 'react-transition-group'
 import { useConfig } from '@/packages/configprovider'
-import Popup from '@/packages/popup'
+// import Popup from '@/packages/popup'
 import Icon from '@/packages/icon'
+import { Overlay } from '../overlay/overlay'
 
 export interface OptionItem {
   text: string
@@ -27,6 +29,7 @@ export interface MenuItemProps {
 
 const defaultProps = {
   columns: 1,
+  direction: 'down',
   optionsIcon: 'Check',
   iconClassPrefix: 'nut-icon',
   fontClassName: 'nutui-iconfont',
@@ -42,27 +45,23 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
     iconClassPrefix,
     fontClassName,
     optionsIcon,
+    direction,
     children,
   } = {
     ...defaultProps,
     ...props,
   }
-  const {
-    lockScroll,
-    overlay,
-    activeColor,
-    closeOnClickOverlay,
-    showPopup,
-    parent,
-    orderKey,
-    ref,
-  } = mergedProps as any
+  const { lockScroll, activeColor, showPopup, parent, orderKey, ref } =
+    mergedProps as any
 
   const [_showPopup, setShowPopup] = useState(showPopup)
   const [_value, setValue] = useState(value)
   useEffect(() => {
     setShowPopup(showPopup)
   }, [showPopup])
+  useEffect(() => {
+    getParentOffset()
+  }, [_showPopup])
 
   const getIconCName = (optionVal: string | number, value: string | number) => {
     return classnames({
@@ -80,88 +79,109 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
     setTitle(item.text)
     setValue(item.value)
   }
-  const [offsetTop, setOffsetTop] = useState(0)
+  const [position, setPosition] = useState<{ top: number; height: number }>({
+    top: 0,
+    height: 0,
+  })
   const getParentOffset = () => {
     setTimeout(() => {
-      setOffsetTop(
-        parent.parent().current.offsetTop + parent.parent().current.offsetHeight
-      )
+      const p = parent.parent().current
+      const rect = p.getBoundingClientRect()
+      console.log(rect, p.offsetTop, window.screenTop)
+      setPosition({
+        height: rect.height,
+        top: rect.top,
+      })
     })
   }
-
-  useEffect(() => {
-    getParentOffset()
-  }, [])
-
   const isShow = () => {
     if (_showPopup) return {}
     return { display: 'none' }
   }
 
+  const getPosition = () => {
+    return direction === 'down'
+      ? { top: `${position.top + position.height}px` }
+      : { bottom: `${window.innerHeight - position.top}px`, top: 'auto' }
+  }
+
+  const placeholderStyle = () => {
+    if (direction === 'down') {
+      return { height: `${position.top + position.height}px`, ...isShow() }
+    }
+    return {
+      height: `${window.innerHeight - position.top}px`,
+      top: 'auto',
+      ...isShow(),
+    }
+  }
+
   return (
     <>
       <div
-        className="placeholder-element"
-        style={{ height: `${offsetTop}px`, ...isShow() }}
+        className={`placeholder-element ${classnames({
+          up: direction === 'up',
+        })}`}
+        style={placeholderStyle()}
+        onClick={() => parent.toggleItemShow(orderKey)}
       />
-      <Popup
-        style={
-          parent.direction === 'down'
-            ? { top: `${offsetTop}px` }
-            : { bottom: `${offsetTop}px` }
-        }
-        overlayStyle={
-          parent.direction === 'down'
-            ? { top: `${offsetTop}px` }
-            : { bottom: `${offsetTop}px` }
-        }
-        className="nut-menu__pop"
+      <Overlay
         overlayClass="nut-menu__overlay"
-        position={parent.direction === 'down' ? 'top' : 'bottom'}
+        style={getPosition()}
         lockScroll={lockScroll}
-        overlay={overlay}
         visible={_showPopup}
-        closeOnClickOverlay={closeOnClickOverlay}
-        onClose={() => parent.hideItemShow(orderKey)}
+        closeOnClickOverlay={parent.closeOnClickOverlay}
+        onClick={() => {
+          parent.closeOnClickOverlay && parent.toggleItemShow(orderKey)
+        }}
+      />
+      <div
+        className="nut-menu-item__wrap"
+        style={{
+          ...getPosition(),
+          ...isShow(),
+        }}
       >
-        <div className="nut-menu-item__content">
-          {options.map((item, index) => {
-            return (
-              <div
-                className={`nut-menu-item__option ${classnames({
-                  active: item.value === _value,
-                })}`}
-                key={item.text}
-                style={{
-                  flexBasis: `${100 / columns}%`,
-                }}
-                onClick={() => {
-                  handleClick(item)
-                }}
-              >
-                {item.value === _value ? (
-                  <Icon
-                    className={getIconCName(item.text, value)}
-                    name={optionsIcon}
-                    classPrefix={iconClassPrefix}
-                    fontClassName={fontClassName}
-                    color={activeColor}
-                  />
-                ) : null}
+        <CSSTransition in={_showPopup} timeout={100} classNames="menu-item">
+          <div className="nut-menu-item__content">
+            {options?.map((item, index) => {
+              return (
                 <div
-                  className={getIconCName(item.text, value)}
+                  className={`nut-menu-item__option ${classnames({
+                    active: item.value === _value,
+                  })}`}
+                  key={item.text}
                   style={{
-                    color: `${item.value === _value ? activeColor : ''}`,
+                    flexBasis: `${100 / columns}%`,
+                  }}
+                  onClick={() => {
+                    handleClick(item)
                   }}
                 >
-                  {item.text}
+                  {item.value === _value ? (
+                    <Icon
+                      className={getIconCName(item.text, value)}
+                      name={optionsIcon}
+                      classPrefix={iconClassPrefix}
+                      fontClassName={fontClassName}
+                      color={activeColor}
+                    />
+                  ) : null}
+                  <div
+                    className={getIconCName(item.text, value)}
+                    style={{
+                      color: `${item.value === _value ? activeColor : ''}`,
+                    }}
+                  >
+                    {item.text}
+                  </div>
                 </div>
-              </div>
-            )
-          })}
-          {children}
-        </div>
-      </Popup>
+              )
+            })}
+            {children}
+          </div>
+        </CSSTransition>
+      </div>
     </>
   )
 }

@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import classnames from 'classnames'
 import Icon from '@/packages/icon'
 import { OptionItem } from '@/packages/menuitem/menuitem'
 
@@ -8,10 +9,8 @@ export interface MenuProps {
   activeColor: string
   closeOnClickOverlay: boolean
   scrollFixed: boolean | string | number
-  titleClassName: string
   lockScroll: boolean
   titleIcon: string
-  direction: 'up' | 'down'
   children: React.ReactNode
 }
 
@@ -21,13 +20,19 @@ const defaultProps = {
   activeColor: '#F2270C',
   closeOnClickOverlay: true,
   scrollFixed: false,
-  titleClassName: '',
   lockScroll: true,
   titleIcon: '',
-  direction: 'down',
 } as MenuProps
 export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
-  const { className, style, titleIcon, scrollFixed, direction, children } = {
+  const {
+    className,
+    titleIcon,
+    scrollFixed,
+    closeOnClickOverlay,
+    children,
+    activeColor,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -42,12 +47,12 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const [itemShow, setItemShow] = useState<any>([])
-  const [itemTitle, setItemTitle] = useState<any>([])
-  const childrenArray = React.Children.toArray(children)
+  const [itemShow, setItemShow] = useState<boolean[]>([])
+  const [itemTitle, setItemTitle] = useState<string[]>([])
   const toggleItemShow = (index: number) => {
     itemShow[index] = !itemShow[index]
-    setItemShow([...itemShow])
+    const temp = itemShow.map((i: boolean, idx) => (idx === index ? i : false))
+    setItemShow([...temp])
   }
   const hideItemShow = (index: number) => {
     itemShow[index] = false
@@ -65,8 +70,9 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
       return React.cloneElement(child as any, {
         showPopup: itemShow[index],
         orderKey: index,
+        activeColor,
         parent: {
-          direction,
+          closeOnClickOverlay,
           toggleItemShow,
           updateTitle,
           hideItemShow,
@@ -77,16 +83,15 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
   }
 
   return (
-    <div className="nut-menu" ref={parentRef}>
+    <div className={`nut-menu ${className}`} {...rest} ref={parentRef}>
       <div
         className={`nut-menu__bar ${
           itemShow.includes(true) ? 'opened' : ''
         } ${className}`}
-        style={style}
       >
-        {childrenArray.map((child, index) => {
+        {React.Children.toArray(children).map((child, index) => {
           if (!child) return null
-          const { disabled, title, value, options } = (child as any)
+          const { disabled, title, value, direction, options } = (child as any)
             .props as any
           const currentTitle = options?.filter(
             (option: OptionItem) => option.value === value
@@ -102,17 +107,26 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
 
           return (
             <div
-              className={`nut-menu__item ${itemShow[index] ? 'active' : ''}`}
+              className={`nut-menu__item ${classnames({
+                active: itemShow[index],
+                disabled,
+              })}`}
+              style={{ color: itemShow[index] ? activeColor : '' }}
               key={index}
               onClick={() => {
                 !disabled && toggleItemShow(index)
               }}
             >
               <div
-                className={`nut-menu__title ${itemShow[index] ? 'active' : ''}`}
+                className={`nut-menu__title ${classnames({
+                  active: itemShow[index],
+                  disabled,
+                })}`}
               >
                 <div className="nut-menu__title-text">{finallyTitle()}</div>
                 <Icon
+                  className="nut-menu__title-icon"
+                  size="10"
                   name={
                     titleIcon ||
                     (direction === 'up' ? 'arrow-up' : 'down-arrow')
