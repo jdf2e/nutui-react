@@ -25,6 +25,7 @@ export interface IPickerProps {
   className?: ''
   style?: React.CSSProperties
   threeDimensional?: boolean
+  swipeDuration: number | string
   onConfirm?: (
     selectedValue: (string | number)[],
     selectedOptions: PickerOption[]
@@ -60,6 +61,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
       className,
       style,
       threeDimensional,
+      swipeDuration,
       ...rest
     } = props
 
@@ -272,6 +274,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
                   chooseItem={(value: PickerOption, index: number) =>
                     chooseItem(value, index)
                   }
+                  swipeDuration={swipeDuration}
                   key={index}
                   keyIndex={index}
                 />

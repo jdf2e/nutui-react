@@ -12,6 +12,7 @@ interface IPickerSlotProps {
   defaultValue?: string | number
   listData?: PickerOption[]
   threeDimensional: boolean
+  swipeDuration: number | string
   chooseItem?: (val: PickerOption, idx: number) => void
 }
 
@@ -24,10 +25,13 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     defaultValue,
     listData = [],
     threeDimensional = true,
+    swipeDuration = 1000,
     chooseItem,
   } = props
 
   const touch = useTouch()
+
+  const DEFAULT_DURATION = 200
   // 触发惯性滑动条件:
   // 在手指离开屏幕时，如果和上一次 move 时的间隔小于 `MOMENTUM_TIME` 且 move
   // 距离大于 `MOMENTUM_DISTANCE` 时，执行惯性滑动
@@ -58,16 +62,12 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const setTransform = (
     translateY = 0,
     type: string,
-    time = 1000,
+    time = DEFAULT_DURATION,
     deg: string
   ) => {
     let nTime = time
     if (type !== 'end') {
       nTime = 0
-    }
-    if (threeDimensional) {
-      // listRef.current.style.webkitTransition = `transform ${nTime}ms cubic-bezier(0.17, 0.89, 0.45, 1)`
-      // listRef.current.style.webkitTransform = `translate3d(0, ${translateY}px, 0)`
     }
 
     if (threeDimensional) {
@@ -147,7 +147,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     if (moveTime <= INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
       // 惯性滚动
       const distance = momentum(move, moveTime)
-      setMove(distance, 'end', moveTime + 1000)
+      setMove(distance, 'end', +swipeDuration)
     } else {
       setMove(move, 'end')
     }
