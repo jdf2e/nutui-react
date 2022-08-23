@@ -21,8 +21,9 @@ import { Cell,ShortPassword } from '@nutui/nutui-react';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
-  const change = (value)=>{
-     setValue(value)
+  const close = ()=>{
+    setVisible(false)
+    setValue('')
   }
   return (
      <>
@@ -36,8 +37,8 @@ const App = () => {
         <ShortPassword
         visible={visible}
         modelValue={value}
-        onClose={() => setVisible(false)}
-        change={(value) => change(value)}
+        onClose={() => close()}
+        onChange={(value) => setValue(value)}
        />
      </>
   )
@@ -45,8 +46,11 @@ const App = () => {
 export default App;
 
 ```
+:::
+
 
 ### 显示按钮组
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Cell,ShortPassword } from '@nutui/nutui-react';
@@ -56,6 +60,10 @@ const App = () => {
   const [value,setValue] = useState('')
   const change = (value)=>{
      setValue(value)
+  }
+   const close = ()=>{
+    setVisible(false)
+    setValue('')
   }
   return (
      <>
@@ -68,8 +76,10 @@ const App = () => {
        />
         <ShortPassword
         visible={visible}
-        onClose={() => setVisible(false)}
+        modelValue={value}
+        onClose={() => close()}
         noButton={false}
+        onChange={(value) => setValue(value)}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
        />
@@ -79,8 +89,10 @@ const App = () => {
 export default App;
 
 ```
+:::
 
 ### 自定义密码长度4
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Cell,ShortPassword } from '@nutui/nutui-react';
@@ -90,6 +102,10 @@ const App = () => {
   const [value,setValue] = useState('')
   const change = (value)=>{
      setValue(value)
+  }
+   const close = ()=>{
+    setVisible(false)
+    setValue('')
   }
   return (
      <>
@@ -102,7 +118,9 @@ const App = () => {
        />
         <ShortPassword
         visible={visible}
-        onClose={() => setVisible(false)}
+        modelValue={value}
+        onChange={(value) => setValue(value)}
+        onClose={() => close()}
         length={4}
        />
      </>
@@ -111,7 +129,9 @@ const App = () => {
 export default App;
 
 ```
+:::
 ### 忘记密码提示语事件回调
+:::demo
 ```tsx
 import React, { useState } from "react";
 import { Cell,ShortPassword,Toast } from '@nutui/nutui-react';
@@ -119,11 +139,12 @@ import { Cell,ShortPassword,Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
-  const change = (value)=>{
-     setValue(value)
-  }
    const onTips = () => {
     Toast.text('执行忘记密码提示语')
+  }
+   const close = ()=>{
+    setVisible(false)
+    setValue('')
   }
   return (
      <>
@@ -136,7 +157,9 @@ const App = () => {
        />
        <ShortPassword
         visible={visible}
-        onClose={() => setVisible(false)}
+        modelValue={value}
+        onChange={(value) => setValue(value)}
+        onClose={() => close()}
         onTips={() => onTips()}
        />
      </>
@@ -145,6 +168,7 @@ const App = () => {
 export default App;
 
 ```
+:::
 
 
 
@@ -154,7 +178,7 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| modelValue         | 密码初始值               | String｜Number | -                |
+| modelValue         | 内容               | String｜Number | -                |
 | visible        | 是否展示短密码框                         | Boolean | false              |
 | title                  | 标题                | String         | 请输入密码                   |
 | desc                   | 密码框描述          | String         | 您使用了虚拟资产，请进行验证 |
@@ -168,9 +192,9 @@ export default App;
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| change   | 输入密码时触发事件     |  当前输入框值value    |
-| onOk       | 点击确实时触发事件     | 当前输入框值value    |
+| onChange   | 输入密码时触发事件     |  当前输入框值value    |
+| onOk       | 点击确认时触发事件     | 当前输入框值value    |
 | onCancel   | 点击取消时触发事件     | -    |
 | onClose    | 点击关闭图标和遮罩时触发事件 | -    |
 | onTips    | 点击忘记密码时触发事件 | -    |
-| complete | 输入完成的回调         | 当前输入框值value    |
+| onComplete | 输入完成的回调         | 当前输入框值value    |
