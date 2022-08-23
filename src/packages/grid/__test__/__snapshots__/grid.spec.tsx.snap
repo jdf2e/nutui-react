@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render with custom content 1`] = `
+<div>
+  <div
+    class="nut-grid nut-grid__border"
+  >
+    <div
+      class="nut-grid-item"
+      style="flex-basis: 25%;"
+    >
+      <div
+        class="nut-grid-item__content nut-grid-item__content--border 0  nut-grid-item__content--center false false nut-grid-item__content--horizontal
+      "
+      >
+        <i
+          class="nutui-iconfont nut-icon nut-icon-dongdong "
+          style="font-size: 28px; width: 28px; height: 28px;"
+        />
+        <div
+          class="nut-grid-item__text"
+        >
+          <span>
+            More
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-grid-item"
+      style="flex-basis: 25%;"
+    >
+      <div
+        class="nut-grid-item__content nut-grid-item__content--border 0  nut-grid-item__content--center false false nut-grid-item__content--horizontal
+      "
+      >
+        <div
+          class="nut-grid-item__text"
+        >
+          <div
+            class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
+            style="background-color: rgb(250, 44, 25); color: rgb(255, 255, 255);"
+          >
+            <i
+              class="nutui-iconfont nut-icon nut-icon-my icon"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-grid-item"
+      style="flex-basis: 25%;"
+    >
+      <div
+        class="nut-grid-item__content nut-grid-item__content--border 0  nut-grid-item__content--center false false nut-grid-item__content--horizontal
+      "
+      >
+        <div
+          class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
+          style="background-color: rgb(250, 44, 25); color: rgb(255, 255, 255);"
+        >
+          <i
+            class="nutui-iconfont nut-icon nut-icon-my icon"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-grid-item"
+      style="flex-basis: 25%;"
+    >
+      <div
+        class="nut-grid-item__content nut-grid-item__content--border 0  nut-grid-item__content--center false false nut-grid-item__content--horizontal
+      "
+      >
+        <div
+          class="nut-avatar nut-avatar-large nut-avatar-round"
+          style="background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);"
+        >
+          <img
+            class="nut-icon__img icon "
+            src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should match snapshot 1`] = `
+<div>
+  <div
+    class="nut-grid nut-grid__border"
+  >
+    <div
+      class="nut-grid-item"
+      style="flex-basis: 25%;"
+    >
+      <div
+        class="nut-grid-item__content nut-grid-item__content--border 0  nut-grid-item__content--center false false nut-grid-item__content--vertical
+      "
+      >
+        <i
+          class="nutui-iconfont nut-icon nut-icon-dongdong "
+          style="font-size: 28px; width: 28px; height: 28px;"
+        />
+        <div
+          class="nut-grid-item__text"
+        >
+          文本
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-grid-item"
+      style="flex-basis: 25%;"
+    >
+      <div
+        class="nut-grid-item__content nut-grid-item__content--border 0  nut-grid-item__content--center false false nut-grid-item__content--vertical
+      "
+      >
+        <i
+          class="nutui-iconfont nut-icon nut-icon-dongdong "
+          style="font-size: 28px; width: 28px; height: 28px;"
+        />
+        <div
+          class="nut-grid-item__text"
+        >
+          文本
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-grid-item"
+      style="flex-basis: 25%;"
+    >
+      <div
+        class="nut-grid-item__content nut-grid-item__content--border 0  nut-grid-item__content--center false false nut-grid-item__content--vertical
+      "
+      >
+        <i
+          class="nutui-iconfont nut-icon nut-icon-dongdong "
+          style="font-size: 28px; width: 28px; height: 28px;"
+        />
+        <div
+          class="nut-grid-item__text"
+        >
+          文本
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,5 +1,4 @@
 import React, { CSSProperties, FunctionComponent } from 'react'
-import './grid.scss'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 

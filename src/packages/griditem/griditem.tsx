@@ -1,5 +1,4 @@
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
-import './griditem.scss'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
