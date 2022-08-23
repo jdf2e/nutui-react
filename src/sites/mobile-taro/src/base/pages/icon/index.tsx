@@ -1,7 +1,9 @@
 import React from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import icons from '@/styles/font/iconfont.json'
+import icons from '@/styles/font/config.json'
 import { Icon, Cell, CellGroup } from '@/packages/nutui.react.taro'
+import Taro from '@tarojs/taro'
+import '@/packages/icon/demo.scss'
 
 interface T {
   '84aa6bce': string
@@ -9,6 +11,25 @@ interface T {
   '52c15454': string
   '7aeb5407': string
   f2e6c6d6: string
+}
+const generateCopyText = (name: string) => {
+  return `<Icon name="${name}"></Icon>`
+}
+const generateAMCopyText = (icon: any) => {
+  return `
+  <Icon name="${icon.name}"
+    className="${`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}"/>`
+}
+const copyTag = (text: string) => {
+  const input = document.createElement('input')
+  document.body.appendChild(input)
+  input.setAttribute('value', text)
+  input.select()
+  if (document.execCommand('copy')) {
+    document.execCommand('copy')
+    Taro.showToast({ title: `Copy: ${text}` })
+  }
+  document.body.removeChild(input)
 }
 
 const IconDemo = () => {
@@ -63,17 +84,51 @@ const IconDemo = () => {
           <Icon name="dongdong" size="24" />
           <Icon name="dongdong" size="16" />
         </Cell>
-        <h2>{translated.f2e6c6d6}</h2>
-        <CellGroup>
-          {icons.glyphs.map((item) => {
-            return (
-              <Cell key={item.font_class}>
-                <Icon name={item.font_class} />
-                <span>{item.name}</span>
+        {icons.data.map((item, index) => {
+          return (
+            <CellGroup key={index} title={item.name}>
+              <Cell>
+                <ul>
+                  {item.icons.map((icon) => {
+                    return (
+                      <li
+                        key={icon}
+                        onClick={() => copyTag(generateCopyText(icon))}
+                      >
+                        <Icon name={icon} />
+                        <span>{icon}</span>
+                      </li>
+                    )
+                  })}
+                </ul>
               </Cell>
-            )
-          })}
-        </CellGroup>
+            </CellGroup>
+          )
+        })}
+        {icons.style.map((item, index) => {
+          return (
+            <CellGroup key={index} title={item.name}>
+              <Cell>
+                <ul>
+                  {item.icons.map((icon) => {
+                    return (
+                      <li
+                        key={icon.name}
+                        onClick={() => copyTag(generateAMCopyText(icon))}
+                      >
+                        <Icon
+                          name={icon.name}
+                          className={`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}
+                        />
+                        <span>{icon['animation-name']}</span>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </Cell>
+            </CellGroup>
+          )
+        })}
       </div>
     </>
   )

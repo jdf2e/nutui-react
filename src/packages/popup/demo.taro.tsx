@@ -238,7 +238,8 @@ const PopupDemo = () => {
             setShowBottomRound(false)
           }}
         />
-        <h2>{translated.ea3d02f2}</h2>
+        {/* 等一下3.5.0 */}
+        {/* <h2>{translated.ea3d02f2}</h2>
         <Cell
           title={translated.ea3d02f2}
           isLink
@@ -255,7 +256,7 @@ const PopupDemo = () => {
           }}
         >
           body
-        </Popup>
+        </Popup> */}
 
         <h2>{translated.c9e6df49}</h2>
         <Cell

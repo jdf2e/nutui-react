@@ -7,6 +7,7 @@ import {
   CheckboxGroup,
   Toast,
 } from '@/packages/nutui.react.taro'
+import '@/packages/checkbox/demo.scss'
 
 interface T {
   '74fc5d8a': string
@@ -307,6 +308,9 @@ const CheckboxDemo = () => {
             checked={checkbox1}
             indeterminate={indeterminate}
             onChange={(state, label) => {
+              if (state) {
+                setIndeterminate(false)
+              }
               ;(checkboxgroup3Ref.current as any).toggleAll(state)
             }}
           >

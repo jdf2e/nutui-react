@@ -1,3 +1,3 @@
-import { RadioGroup } from './radiogroup.taro'
+import { RadioGroup } from './radiogroup'
 
 export default RadioGroup

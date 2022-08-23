@@ -185,7 +185,7 @@ export const InputNumber: FunctionComponent<
         className={iconMinusClasses}
         size={buttonSize}
         name="minus"
-        click={reduceNumber}
+        onClick={reduceNumber}
       />
       <input
         type="number"
@@ -203,7 +203,7 @@ export const InputNumber: FunctionComponent<
         className={iconAddClasses}
         size={buttonSize}
         name="plus"
-        click={addNumber}
+        onClick={addNumber}
       />
     </div>
   )

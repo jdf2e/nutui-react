@@ -209,11 +209,20 @@ export const Input: FunctionComponent<
   ) => {
     let val = value
 
-    if (type === 'digit') {
+    if (type === 'digit' || type === 'tel') {
       val = formatNumber(val, false, false)
     }
     if (type === 'number') {
       val = formatNumber(val, true, true)
+    }
+    if (type === 'tel' && !formatter) {
+      const regTel =
+        /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/
+      const regNumber = /[^-0-9]/g
+      val =
+        !regTel.test(val) && val.length > 11
+          ? val.substring(0, 11)
+          : val.replace(regNumber, '')
     }
 
     if (formatter && trigger === formatTrigger) {
@@ -400,7 +409,7 @@ export const Input: FunctionComponent<
                   className="nut-input-clear"
                   name={clearIcon}
                   size={clearSize}
-                  click={(e) => {
+                  onClick={(e) => {
                     handleClear(e)
                   }}
                 />

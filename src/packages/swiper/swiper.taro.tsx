@@ -246,7 +246,6 @@ export const Swiper = React.forwardRef<
       props.onChange && props.onChange((targetActive + childCount) % childCount)
     }
     active = targetActive
-    offset = targetOffset
     setActive(targetActive)
     setOffset(targetOffset)
     getStyle(targetOffset)

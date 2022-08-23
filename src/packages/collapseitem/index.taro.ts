@@ -1,3 +1,3 @@
-import { CollapseItem } from './collapseitem.taro'
+import { CollapseItem } from './collapseitem'
 
 export default CollapseItem

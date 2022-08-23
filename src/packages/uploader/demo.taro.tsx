@@ -162,6 +162,7 @@ const UploaderDemo = () => {
   const fileToDataURL = (file: Blob): Promise<any> => {
     return new Promise((resolve) => {
       const reader = new FileReader()
+      // todo hanyu
       reader.onloadend = (e) => resolve((e.target as FileReader).result)
       reader.readAsDataURL(file)
     })

@@ -1,3 +1,3 @@
-import { SwiperItem } from './swiperitem.taro'
+import { SwiperItem } from './swiperitem'
 
 export default SwiperItem

@@ -365,8 +365,6 @@ export const CalendarItem: FunctionComponent<
               setYearMonthTitle(state.monthsData[0].title)
             }
           }
-
-          setTitles(monthsDoms[i])
         }
       }
     })

@@ -220,7 +220,9 @@ export const Input: FunctionComponent<
         /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/
       const regNumber = /[^-0-9]/g
       val =
-        !regTel.test(val) && val.length > 11 ? '' : val.replace(regNumber, '')
+        !regTel.test(val) && val.length > 11
+          ? val.substring(0, 11)
+          : val.replace(regNumber, '')
     }
 
     if (formatter && trigger === formatTrigger) {

@@ -1,3 +1,3 @@
-import { AvatarGroup } from './avatargroup.taro'
+import { AvatarGroup } from './avatargroup'
 
 export default AvatarGroup
