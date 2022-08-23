@@ -229,4 +229,16 @@ export default App
 | iconColor    | 圖標顏色                                  | string                 | -          |
 | border        | 是否顯示邊框                               | boolean                | `true`     |
 | gutter        | 格子之間的間距，默認單位為`px`               | number \| string        | `0`        |
-| center        | 是否將格子內容居中顯示                   
+| center        | 是否將格子內容居中顯示                      | boolean                | `true`      |
+| square        | 是否將格子固定為正方形                      | boolean                | `false`     |
+| reverse       | 內容翻轉                                  | boolean                | `false`     |
+| direction     | 格子內容排列的方向，可選值為 `horizontal`    | string                 | `vertical`  |
+
+### GridItem Props
+
+| 參數                  | 說明                                                                                     | 類型               | 默認值      |
+|----------------------|-----------------------------------------------------------------------------------------|--------------------|------------|
+| text                 | 文字                                                                                     | string \| ReactNode   | -          |
+| icon                 | [圖標名稱](#/icon) 或圖片鏈接                                                              | string  \| ReactNode   | -          |
+| iconSize            | 圖標大小，如 `20px` `2em` `2rem`                                                          | number \| string   | `28px`     |
+| iconColor           | 圖標顏色                                                                                  | string            | -           |

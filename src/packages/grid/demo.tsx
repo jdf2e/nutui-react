@@ -2,84 +2,132 @@ import React from 'react'
 import Avatar from '../avatar'
 import { Grid } from './grid'
 import GridItem from '../griditem'
+import { useTranslate } from '../../sites/assets/locale'
 
+interface T {
+  basic: string
+  text: string
+  columnNum: string
+  square: string
+  gutter: string
+  reverse: string
+  horizontal: string
+  iconStyle: string
+  customContent: string
+}
 const GridDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基本用法',
+      text: '文字',
+      columnNum: '自定义列数',
+      square: '正方形格子',
+      gutter: '格子间距',
+      reverse: '内容翻转',
+      horizontal: '内容横向',
+      iconStyle: '图标颜色/大小',
+      customContent: '自定义内容',
+    },
+    'zh-TW': {
+      basic: '基本用法',
+      text: '文字',
+      columnNum: '自定義列數',
+      square: '正方形格子',
+      gutter: '格子間距',
+      reverse: '內容翻轉',
+      horizontal: '內容橫向',
+      iconStyle: '圖標顏色/大小',
+      customContent: '自定義內容',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      text: 'text',
+      columnNum: 'Column Num',
+      square: 'Square',
+      gutter: 'Gutter',
+      reverse: 'Reverse',
+      horizontal: 'Horizontal',
+      iconStyle: 'Icon Style',
+      customContent: 'Custom Content',
+    },
+  })
+
   const handleClick = () => {
     console.log('点击了第几个')
   }
   return (
     <>
       <div className="demo">
-        <h2>基础用法</h2>
+        <h2>{translated.basic}</h2>
         <Grid>
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
         </Grid>
 
-        <h2>自定义列数</h2>
+        <h2>{translated.columnNum}</h2>
         <Grid columnNum={3}>
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
         </Grid>
 
-        <h2>正方形格子</h2>
+        <h2>{translated.square}</h2>
         <Grid columnNum={3} square>
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
         </Grid>
 
-        <h2>格子间距</h2>
+        <h2>{translated.gutter}</h2>
         <Grid gutter={3}>
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
         </Grid>
 
-        <h2>内容翻转</h2>
+        <h2>{translated.reverse}</h2>
         <Grid reverse>
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
         </Grid>
 
-        <h2>内容横向</h2>
+        <h2>{translated.horizontal}</h2>
         <Grid direction="horizontal">
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
-          <GridItem icon="dongdong" text="文字" />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
+          <GridItem icon="dongdong" text={translated.text} />
         </Grid>
 
-        <h2>图标颜色/大小</h2>
+        <h2>{translated.iconStyle}</h2>
         <Grid columnNum="3" iconColor="#fa2c19">
-          <GridItem icon="dongdong" text="文字" />
+          <GridItem icon="dongdong" text={translated.text} />
           <GridItem
             icon="dongdong"
-            text="文字"
+            text={translated.text}
             iconColor="#478EF2"
             iconSize="40"
           />
-          <GridItem icon="dongdong" text="文字" />
+          <GridItem icon="dongdong" text={translated.text} />
         </Grid>
 
-        <h2>自定义内容</h2>
+        <h2>{translated.customContent}</h2>
         <Grid border={false}>
           <GridItem icon="dongdong" text={<span>More</span>} />
           <GridItem
