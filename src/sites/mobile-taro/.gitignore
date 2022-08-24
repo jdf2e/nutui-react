@@ -4,3 +4,10 @@ deploy_versions/
 .rn_temp/
 node_modules/
 .DS_Store
+src/base/
+src/business/
+src/dentry/
+src/exhibition/
+src/feedback/
+src/layout/
+src/nav/
