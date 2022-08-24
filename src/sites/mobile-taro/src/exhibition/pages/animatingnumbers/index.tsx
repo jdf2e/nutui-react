@@ -1,0 +1,35 @@
+import React, { useEffect, useState } from 'react'
+import { AnimatingNumbers } from '@/packages/nutui.react.taro'
+
+const AnimatingNumbersDemo = () => {
+  const [endNumber, setEndNumer] = useState('1570.99')
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setEndNumer(
+        `${Math.floor(Math.random() * 999999)}.${Math.floor(
+          Math.random() * 89 + 10
+        )}`
+      )
+    }, 30000)
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
+  return (
+    <>
+      <div className="demo">
+        <h2>CountUp-基础用法</h2>
+        <AnimatingNumbers.CountUp endNumber="678.94" />
+        <h2>CountUp-自定义样式，动态修改数据（需要指定最大位数）</h2>
+        <AnimatingNumbers.CountUp
+          endNumber={endNumber}
+          easeSpeed={1.2}
+          maxLen={6}
+          className="custom-coutup"
+        />
+      </div>
+    </>
+  )
+}
+
+export default AnimatingNumbersDemo
