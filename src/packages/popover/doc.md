@@ -101,7 +101,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState, useRef  } from "react";
-import { Popover,Button } from '@nutui/nutui-react';
+import { Popover,Button, Icon } from '@nutui/nutui-react';
 
 const App = () => {
   const [customized, setCustomized] = useState(false)
@@ -169,7 +169,7 @@ left          # 左侧中间位置
 right         # 右侧中间位置
 bottom        # 底部中间位置
 ```
-自 `v1.2.3` 起新增
+自 `v1.3.0` 起新增
 ```
 top-start     # 顶部左侧位置
 top-end       # 顶部右侧位置 
@@ -224,7 +224,7 @@ export default App;
 | visible      | 是否展示气泡弹出层                 | boolean  | false     |
 | theme          | 主题风格，可选值为 dark            | string   | `light`   |
 | location       | 弹出位置  | string   | `bottom`  |
-| offset `v1.2.3`       | 出现位置的偏移量  | number   | 20  |
+| offset `v1.3.0`       | 出现位置的偏移量  | number   | 20  |
 
 ### List 数据结构  
 
