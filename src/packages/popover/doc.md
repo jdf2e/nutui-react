@@ -161,6 +161,26 @@ export default App;
 :::
 
 ### 位置自定义
+
+通过 location 属性来控制气泡的弹出位置。可选值
+```
+top           # 顶部中间位置
+left          # 左侧中间位置
+right         # 右侧中间位置
+bottom        # 底部中间位置
+```
+自 `v1.2.3` 起新增
+```
+top-start     # 顶部左侧位置
+top-end       # 顶部右侧位置 
+left-start    # 左侧上方位置
+left-end      # 左侧下方位置
+right-start   # 右侧上方位置
+right-end     # 右侧下方位置
+bottom-start  # 底部左侧位置
+bottom-end    # 底部右侧位置
+```
+
 :::demo
 ```tsx
   import  React, { useState, useRef  } from "react";
@@ -186,22 +206,6 @@ const App = () => {
         list={iconItemList}>
         <Button type="primary" shape="square">向上弹出</Button>
       </Popover>
-      <Popover 
-        visible={rightLocation} 
-        location="right" 
-        theme="dark" 
-        onClick={()=>{rightLocation ? setRightLocation(false) : setRightLocation(true)}} 
-        list={iconItemList}>
-        <Button type="primary" shape="square">向右弹出</Button>
-      </Popover>
-      <Popover  
-        visible={leftLocation} 
-        location="left" 
-        theme="dark" 
-        onClick={()=>{leftLocation ? setLeftLocation(false) : setLeftLocation(true)}} 
-        list={iconItemList}>
-        <Button type="primary" shape="square">向左弹出</Button>
-      </Popover>
     </>
   )
 }
@@ -219,7 +223,8 @@ export default App;
 | list          | 选项列表                          | List[]   | []        |
 | visible      | 是否展示气泡弹出层                 | boolean  | false     |
 | theme          | 主题风格，可选值为 dark            | string   | `light`   |
-| location       | 弹出位置，可选值为 top,left,right  | string   | `bottom`  |
+| location       | 弹出位置  | string   | `bottom`  |
+| offset `v1.2.3`       | 出现位置的偏移量  | number   | 20  |
 
 ### List 数据结构  
 
@@ -235,7 +240,8 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 
 | 名称    | 说明         |
 |---------|--------------|
-| onClick | 打开（关闭）菜单时触发 |
+| onClick | 点击菜单时触发 |
+| onChoose | 点击选项时触发 |
 
 
 
