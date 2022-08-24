@@ -5,73 +5,90 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import ReactDOM from 'react-dom'
 import Trigger from './Trigger'
 import Icon from '@/packages/icon'
+import Overlay from '@/packages/overlay'
+
+export type PopoverTheme = 'light' | 'dark'
+
+export type PopoverLocation =
+  | 'bottom'
+  | 'top'
+  | 'left'
+  | 'right'
+  | 'top-start'
+  | 'top-end'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'left-start'
+  | 'left-end'
+  | 'right-start'
+  | 'right-end'
+
+export interface List {
+  name: string
+  icon?: string
+  disabled?: boolean
+}
 
 export interface PopoverProps {
-  list: Array<any>
-  theme: string
-  location: string
+  list: List[]
+  theme: PopoverTheme
+  location: PopoverLocation | string
   visible: boolean
+  offset: string | number
   className: string
   style?: CSSProperties
-  onClick: (e: MouseEvent) => void
   children?: React.ReactNode
+  onClick: (e: React.MouseEvent) => void
+  onChoose: (item: List, index: number) => void
 }
-export function findDOMNode<T = HTMLElement>(
-  node: React.ReactInstance | HTMLElement
-): T {
-  if (node instanceof HTMLElement) {
-    return node as unknown as T
-  }
-  // eslint-disable-next-line react/no-find-dom-node
-  return ReactDOM.findDOMNode(node) as unknown as T
-}
+
 const getEleAttr = (ele: HTMLElement | Element) => {
   if (ele && ele.getBoundingClientRect) {
     return ele.getBoundingClientRect()
   }
   return null
 }
-export type PopoverType =
-  | 'default'
-  | 'primary'
-  | 'success'
-  | 'warning'
-  | 'danger'
+
 const defaultProps = {
   list: [],
   theme: 'light',
   location: 'bottom',
   visible: false,
+  offset: 20,
   className: '',
-  onClick: (e: MouseEvent) => {},
+  onClick: (e: React.MouseEvent) => {},
+  onChoose: (item, index) => {},
 } as PopoverProps
-export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
+export const Popover: FunctionComponent<
+  Partial<PopoverProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
   const {
     children,
     list,
     theme,
     location,
     visible,
+    offset,
     className,
     style,
     onClick,
+    onChoose,
     ...reset
   } = {
     ...defaultProps,
     ...props,
   }
+
   const goodItem = useRef(null)
-  // eslint-disable-next-line react/no-find-dom-node
-  const aa = goodItem.current && findDOMNode(goodItem.current)
   setTimeout(() => {
-    if (aa) {
-      setElWidth((getEleAttr(aa) as any).width)
-      setElHeight((getEleAttr(aa) as any).height)
+    if (goodItem.current && getEleAttr(goodItem.current)) {
+      setElWidth((getEleAttr(goodItem.current) as any).width)
+      setElHeight((getEleAttr(goodItem.current) as any).height)
     }
   })
+
   const [classes, setClasses] = useState('')
   const [elWidth, setElWidth] = useState(0)
   const [elHeight, setElHeight] = useState(0)
@@ -83,101 +100,107 @@ export const Popover: FunctionComponent<Partial<PopoverProps>> = (props) => {
     setPopoverArrow(popoverArrowSelf())
   }, [list, theme])
   const getStyle = () => {
+    const offNumer = Number(offset) ? Number(offset) : 0
     const style: CSSProperties = {}
-    if (location === 'top') {
-      style.bottom = elHeight + 20
-      style.left = 0
-    } else if (location === 'right') {
-      style.top = 0
-      style.right = -elWidth - 20
-    } else if (location === 'left') {
-      style.top = 0
-      style.left = -elWidth - 20
+    if (location.includes('top')) {
+      style.bottom = `${elHeight + offNumer}px`
+    } else if (location.includes('right')) {
+      style.left = `${elWidth + offNumer}px`
+    } else if (location.includes('left')) {
+      style.right = `${elWidth + offNumer}px`
     } else {
-      style.top = elHeight + 20
-      style.left = 0
+      style.top = `${elHeight + offNumer}px`
     }
-    style.top += 'px'
-    style.left += 'px'
-    style.bottom += 'px'
-    style.right += 'px'
-    return style
-  }
-  const getArrowStyle = () => {
-    const style: CSSProperties = {}
-    if (location === 'top') {
-      style.bottom = -20
-      style.left = elWidth / 2
-    } else if (location === 'right') {
-      style.top = 20
-      style.left = -20
-    } else if (location === 'left') {
-      style.top = 20
-      style.right = -20
-    } else {
-      style.left = elWidth / 2
-      style.top = -20
-    }
-    style.top += 'px'
-    style.left += 'px'
-    style.bottom += 'px'
-    style.right += 'px'
     return style
   }
 
   const classesSelf = () => {
     const prefixCls = 'nut-popover'
-    return `${prefixCls}
-    ${theme ? `${prefixCls}--${theme}` : ''}`
+    return `${prefixCls} ${theme ? `${prefixCls}--${theme}` : ''}`
   }
   const popoverContentSelf = () => {
-    const prefixCls = 'popoverContent'
-    return `${prefixCls}
-    ${location ? `${prefixCls}--${location}` : ''}`
-  }
-  const popoverArrowSelf = () => {
-    const prefixCls = 'popoverArrow'
-    return `${prefixCls}
-    ${location ? `${prefixCls}--${location}` : ''}`
+    const prefixCls = 'popover-content'
+    return `${prefixCls}-show ${prefixCls} ${
+      location ? `${prefixCls}--${location}` : ''
+    }`
   }
 
-  // const showPopup = props.visible
-  const handleClick = (e: any) => {
+  const filter = () => {
+    const ms = ['top', 'bottom', 'left', 'right']
+    return ms.filter((m) => location.includes(m))[0]
+  }
+  const popoverArrowSelf = () => {
+    const prefixCls = 'popover-arrow'
+    return `${prefixCls} ${prefixCls}-${filter()} ${
+      location ? `${prefixCls}--${location}` : ''
+    }`
+  }
+
+  const handleClick = (e: React.MouseEvent) => {
     if (props.onClick) {
       props.onClick(e)
     }
   }
+
+  const handleChoose = (item: List, index: number) => {
+    if (!item.disabled) {
+      onChoose(item, index)
+    }
+  }
   return (
-    <div className={`${classes} ${className}`} style={{ ...style }} {...reset}>
-      <Trigger forwardedRef={goodItem}>
-        <div onClick={(e) => handleClick(e)}>
-          {Array.isArray(children) ? children[0] : children}
-          {visible ? (
-            <div className={`${popoverContent}`} style={getStyle()}>
-              <div className={`${popoverArrow}`} style={getArrowStyle()}>
-                {' '}
+    <>
+      <div
+        className={`${classes} ${className}`}
+        style={{ ...style }}
+        {...reset}
+      >
+        <Trigger forwardedRef={goodItem}>
+          <div onClick={(e) => handleClick(e)}>
+            {Array.isArray(children) ? children[0] : children}
+
+            {visible ? (
+              <div className={`${popoverContent}`} style={getStyle()}>
+                <div className={`${popoverArrow}`} />
+                {Array.isArray(children) ? children[1] : ''}
+                {list.map((item: List, i: number) => {
+                  return (
+                    <div
+                      key={item.name}
+                      className={`popover-menu-item ${
+                        item.disabled ? 'disabled' : ''
+                      }`}
+                      onClick={() => {
+                        handleChoose(item, i)
+                      }}
+                    >
+                      {item.icon ? (
+                        <Icon
+                          className="popover-menu-item-img"
+                          name={item.icon}
+                        />
+                      ) : (
+                        ''
+                      )}
+                      <div className="popover-menu-item-name">{item.name}</div>
+                    </div>
+                  )
+                })}
               </div>
-              {Array.isArray(children) ? children[1] : ''}
-              {list.map((item) => {
-                return (
-                  <div
-                    key={item.name}
-                    className={`title-item ${item.disabled ? 'disabled' : ''}`}
-                  >
-                    {item.icon ? (
-                      <Icon className="item-img" name={item.icon} />
-                    ) : (
-                      ''
-                    )}
-                    <div className="title-name">{item.name}</div>
-                  </div>
-                )
-              })}
-            </div>
-          ) : null}
-        </div>
-      </Trigger>
-    </div>
+            ) : null}
+          </div>
+        </Trigger>
+      </div>
+
+      {visible ? (
+        <Overlay
+          visible={visible}
+          onClick={(e) => handleClick(e)}
+          style={{ background: 'transparent' }}
+        />
+      ) : (
+        ''
+      )}
+    </>
   )
 }
 
