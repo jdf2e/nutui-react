@@ -76,7 +76,7 @@ const TextAreaDemo = () => {
         <h2>{translated.numbers}</h2>
         <TextArea defaultValue={value2} limitshow maxlength="20" />
         <h2>{translated.autoHeight}</h2>
-        <TextArea defaultValue={value3} rows="10" autosize />
+        <TextArea defaultValue={value3} rows="1" autosize />
         <h2>{translated.readOnly}</h2>
         <TextArea
           readonly
