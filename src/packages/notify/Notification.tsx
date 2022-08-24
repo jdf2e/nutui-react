@@ -6,16 +6,17 @@ import { CSSTransition } from 'react-transition-group'
 import bem from '@/utils/bem'
 
 export interface NotificationProps {
-  id?: string
-  style?: React.CSSProperties
+  id: string
+  style: React.CSSProperties
   msg: string
-  color?: string
+  color: string
   duration: number
   type: string
-  className?: string
-  background?: string
-  customClass: string
-  children?: React.ReactNode
+  className: string
+  background: string
+  children: React.ReactNode
+  position: string
+  isWrapTeleport: boolean
   onClosed: () => void
   onClick: () => void
 }
@@ -84,13 +85,23 @@ export default class Notification extends React.PureComponent<
   }
 
   render() {
-    const { children, style, msg, color, background, type, className } =
-      this.props
+    const {
+      children,
+      style,
+      msg,
+      color,
+      background,
+      type,
+      className,
+      position,
+      isWrapTeleport,
+    } = this.props
     const { show } = this.state
     const notifyBem = bem('notify')
 
     const classes = classNames({
-      'popup-top': true,
+      'popup-top': position === 'top',
+      'popup-bottom': position === 'bottom',
       'nut-notify': true,
       [`nut-notify--${type}`]: true,
     })
@@ -102,6 +113,8 @@ export default class Notification extends React.PureComponent<
           classNames="fade"
           unmountOnExit
           appear
+          position={position}
+          isWrapTeleport={isWrapTeleport}
         >
           <div
             className={`${classes} ${className}`}
