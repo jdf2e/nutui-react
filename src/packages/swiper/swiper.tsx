@@ -90,7 +90,7 @@ export const Swiper = React.forwardRef<
   })
   const isVertical = direction === 'vertical'
 
-  const [rect, setRect] = useState(null as DOMRect | null)
+  const [rect, setRect] = useState(null as any | null)
   // eslint-disable-next-line prefer-const
   let [active, setActive] = useState(0)
   const [width, setWidth] = useState(0)
@@ -410,7 +410,7 @@ export const Swiper = React.forwardRef<
   }, [active])
 
   const init = (active: number = +propSwiper.initPage) => {
-    const rect = getRect(container.current)
+    const rect = getRect(container?.current)
     const _active = Math.max(Math.min(childCount - 1, active), 0)
     const _width = propSwiper.width ? +propSwiper.width : rect.width
     const _height = propSwiper.height ? +propSwiper.height : rect.height
