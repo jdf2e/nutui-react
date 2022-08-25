@@ -7,7 +7,7 @@ import React, {
   useCallback,
 } from 'react'
 import { useTouch } from '../../utils/useTouch'
-import { getRect } from '../../utils/useClientRect'
+import { getRectByTaro } from '../../utils/useClientRect'
 import Toast from '@/packages/toast'
 import { useConfig } from '@/packages/configprovider'
 
@@ -61,9 +61,6 @@ export const Range: FunctionComponent<
     buttonColor,
     hiddenRange,
     hiddenTag,
-    // min,
-    // max,
-    // step,
     modelValue,
     button,
     vertical,
@@ -270,16 +267,16 @@ export const Range: FunctionComponent<
     }
   }
 
-  const click = (event: any) => {
+  const click = async (event: any) => {
     if (disabled || !root.current) {
       return
     }
     SetDragStatus('')
-    const rect = getRect(root.current)
-    let delta = event.clientX - rect.left
+    const rect = await getRectByTaro(root.current)
+    let delta = event.detail.x - rect.left
     let total = rect.width
     if (vertical) {
-      delta = event.clientY - rect.top
+      delta = event.detail.y - rect.top
       total = rect.height
     }
     const value = Number(min) + (delta / total) * scope()
@@ -312,7 +309,7 @@ export const Range: FunctionComponent<
     SetDragStatus('start')
   }
 
-  const onTouchMove = (event: TouchEvent) => {
+  const onTouchMove = async (event: TouchEvent) => {
     if (disabled || !root.current) {
       return
     }
@@ -324,7 +321,7 @@ export const Range: FunctionComponent<
 
     SetDragStatus('draging')
 
-    const rect = getRect(root.current)
+    const rect = await getRectByTaro(root.current)
     let delta = touch.deltaX
     let total = rect.width
     let diff = (delta / total) * scope()
@@ -398,7 +395,7 @@ export const Range: FunctionComponent<
                   className={`${
                     index === 0 ? 'nut-range-button-wrapper-left' : ''
                   }
-              ${index === 1 ? 'nut-range-button-wrapper-right' : ''}`}
+                  ${index === 1 ? 'nut-range-button-wrapper-right' : ''}`}
                   tabIndex={disabled ? -1 : 0}
                   aria-valuemin={+min}
                   aria-valuenow={curValue(index)}

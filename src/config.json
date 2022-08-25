@@ -320,7 +320,7 @@
           "desc": "滑动输入条，用于在给定的范围内选择一个值。",
           "sort": 3,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "vickyYe"
         },
         {
@@ -599,6 +599,16 @@
           "show": true,
           "taro": false,
           "author": "VickyYe"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Swipe",
+          "type": "component",
+          "cName": "滑动手势",
+          "desc": "可以左右滑动来展示操作按钮的组件",
+          "sort": 9,
+          "show": true,
+          "author": "Ymm0008"
         }
       ]
     },
