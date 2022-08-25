@@ -41,8 +41,8 @@ export const eachTree = (
   cb: (node: CascaderOption) => unknown
 ): void => {
   let i = 0
-  let node: CascaderOption | void
-  while (node === tree[i++]) {
+  let node: CascaderOption
+  while ((node = tree[i++])) {
     if (cb(node) === true) {
       break
     }
@@ -70,15 +70,14 @@ export const convertListToOptions = (
 
   const { topId, idKey, pidKey, sortKey } = mergedOptions
 
-  // console.log('mergedOptions', mergedOptions)
-
   let result: CascaderOption[] = []
   let map: any = {}
 
   list.forEach((node: any) => {
     node = { ...node }
     const { [idKey]: id, [pidKey]: pid } = node
-    const children = map[pid] || []
+    const children = (map[pid] = map[pid] || [])
+    // const children = map[pid] || []
 
     if (!result.length && pid === topId) {
       result = children
