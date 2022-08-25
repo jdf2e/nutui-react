@@ -449,7 +449,7 @@
           "desc": "短密码输入框",
           "sort": 10,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "Drjingfubo"
         },
         {

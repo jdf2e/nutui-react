@@ -34,6 +34,7 @@ const subPackages = [
       'pages/input/index',
       'pages/radio/index',
       'pages/rate/index',
+      'pages/shortpassword/index',
       'pages/textarea/index',
       'pages/numberkeyboard/index',
     ],
