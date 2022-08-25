@@ -449,7 +449,7 @@
           "desc": "短密码输入框",
           "sort": 10,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "Drjingfubo"
         },
         {
@@ -492,7 +492,7 @@
           "desc": "用于搜索场景的输入框组件",
           "sort": 16,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "Ymm0008"
         },
         {
