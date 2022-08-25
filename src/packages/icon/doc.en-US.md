@@ -78,11 +78,48 @@ export default App;
 ```
 :::
 
-### Custom icons
+### custom iconfont
 
-If you need to use more icons in addition to your existing Icon, you can
-introduce font files and CSS files corresponding to third-party iconfonts, which
-can then be used directly in the Icon component.
+If you need to use more icons based on the existing Icon, you can import the font file and CSS file corresponding to the third-party iconfont, and then you can use it directly in the Icon component.
+
+> use [iconfont](https://www.iconfont.cn/)   recommend
+
+1：first in [iconfont](https://www.iconfont.cn/) generate your custom Icon file and download it to the local project  [Docs](https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code)
+
+``` bash
+/assets/font/demo.css
+/assets/font/demo_index.html
+/assets/font/iconfont.css
+/assets/font/iconfont.js
+/assets/font/iconfont.json
+/assets/font/iconfont.ttf
+/assets/font/iconfont.woff
+/assets/font/iconfont.woff2
+```
+
+2：project entry file main.js add `iconfont.css`
+
+
+``` javascript
+import './assets/font/iconfont.css';
+```
+
+3：use
+
+```tsx
+// fontClassName 指定类名为默认 iconfont
+// classPrefix 指定默认 icon
+// name 值根据 iconfont.css 中值对应填写
+import React from 'react'
+import Icon from '@nutui/nutui-react'
+
+const App = () => {
+return <Icon fontClassName="iconfont" classPrefix='icon' name="close"/>
+}
+```
+
+
+> Use a third-party custom font library
 
 ```css
 /* Introduce third-party or custom font icon styles */
@@ -95,7 +132,7 @@ can then be used directly in the Icon component.
   font-family: 'my-icon';
 }
 
-.my-icon-extra::before {
+.icon-extra::before {
   content: '\e626';
 }
 ```
@@ -106,7 +143,7 @@ import { Icon } from '@nutui/nutui-react';
 
 const App = () => {
   return <>
-    <Icon class-prefix="my-icon" name="extra" />
+    <Icon fontClassName="my-icon" classPrefix="icon" name="extra" />
   </>
 }
 

@@ -138,19 +138,25 @@ const ActionSheetDemo = () => {
         <h2>{translated['74fc5d8a']}</h2>
         <Cell isLink onClick={() => setIsVisible1(!isVisible1)}>
           <span>
-            <label>{translated['84aa6bce']}</label>
+            <label htmlFor={translated['84aa6bce']}>
+              {translated['84aa6bce']}
+            </label>
           </span>
           <div className="selected-option">{val1}</div>
         </Cell>
         <Cell isLink onClick={() => setIsVisible2(!isVisible2)}>
           <span>
-            <label>{translated['595d7bb3']}</label>
+            <label htmlFor={translated['595d7bb3']}>
+              {translated['595d7bb3']}
+            </label>
           </span>
           <div className="selected-option">{val2}</div>
         </Cell>
         <Cell isLink onClick={() => setIsVisible3(!isVisible3)}>
           <span>
-            <label>{translated['0a1a6656']}</label>
+            <label htmlFor={translated['0a1a6656']}>
+              {translated['0a1a6656']}
+            </label>
           </span>
           <div className="selected-option">{val3}</div>
         </Cell>
@@ -158,7 +164,7 @@ const ActionSheetDemo = () => {
 
         <Cell isLink onClick={() => setIsVisible4(!isVisible4)}>
           <span>
-            <label>{translated.c3a08064}</label>
+            <label htmlFor={translated.c3a08064}>{translated.c3a08064}</label>
           </span>
         </Cell>
 

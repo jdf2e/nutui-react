@@ -89,16 +89,5 @@ const zhTW: BaseLang = {
     additionalReview: (day: number) => `購買${day}天後追評`,
     additionalImages: (length: number) => `${length}張追評圖片`,
   },
-  searchbar: {
-    basePlaceholder: '上京東，購好物',
-    text: '文字',
-    test: '測試',
-    title1: '基礎用法',
-    title2: '蒐索框形狀及最大長度',
-    title3: '蒐索框內外背景設定',
-    title4: '蒐索框文字設定',
-    title5: '自定義圖標設定',
-    title6: '數據改變監聽',
-  },
 }
 export default zhTW
