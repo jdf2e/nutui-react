@@ -13,11 +13,10 @@ import {
   DialogComponent,
   ConfirmProps,
 } from './config'
-import { useConfig } from '@/packages/configprovider'
 
 const defaultProps = {
-  okText: '',
-  cancelText: '',
+  okText: '确认',
+  cancelText: '取消',
   mask: true,
   closeOnClickOverlay: true,
   noFooter: false,
@@ -34,7 +33,6 @@ const BaseDialog: ForwardRefRenderFunction<
   unknown,
   Partial<DialogProps> & HTMLAttributes<HTMLDivElement>
 > = (props, ref) => {
-  const { locale } = useConfig()
   const {
     visible,
     footer,
@@ -85,7 +83,7 @@ const BaseDialog: ForwardRefRenderFunction<
             className="nut-dialog__footer-cancel"
             onClick={handleCancel}
           >
-            {cancelText || locale.cancel}
+            {cancelText}
           </Button>
         )}
         {!noOkBtn && (
@@ -98,7 +96,7 @@ const BaseDialog: ForwardRefRenderFunction<
             disabled={okBtnDisabled}
             onClick={handleOk}
           >
-            {okText || locale.confirm}
+            {okText}
           </Button>
         )}
       </>

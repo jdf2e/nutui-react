@@ -12,6 +12,8 @@ interface T {
   title1: string
   content: string
   tips: string
+  okText: string
+  cancelText: string
 }
 
 const DialogDemo = () => {
@@ -25,6 +27,8 @@ const DialogDemo = () => {
       title: '底部按钮 垂直使用',
       title1: '标签式使用',
       content: '支持函数调用和组件调用两种方式。',
+      okText: '确定',
+      cancelText: '取消',
     },
     'en-US': {
       funUse: 'Function use',
@@ -35,6 +39,8 @@ const DialogDemo = () => {
       title: 'Bottom button vertical use',
       title1: 'Template use',
       content: 'Function call and template call are supported.',
+      okText: 'confirm',
+      cancelText: 'cancel',
     },
   })
 
@@ -51,6 +57,8 @@ const DialogDemo = () => {
             Dialog.alert({
               title: translated.basic,
               content: translated.content,
+              okText: translated.okText,
+              cancelText: translated.cancelText,
             })
           }}
         />
@@ -59,6 +67,8 @@ const DialogDemo = () => {
           onClick={() => {
             Dialog.alert({
               content: translated.noTitle,
+              okText: translated.okText,
+              cancelText: translated.cancelText,
             })
           }}
         />
@@ -69,6 +79,7 @@ const DialogDemo = () => {
               title: translated.tips,
               content: translated.content,
               noCancelBtn: true,
+              okText: translated.okText,
             })
           }}
         />
@@ -79,6 +90,8 @@ const DialogDemo = () => {
               title: translated.tips,
               content: translated.content,
               footerDirection: 'vertical',
+              okText: translated.okText,
+              cancelText: translated.cancelText,
             })
           }}
         />
@@ -87,6 +100,8 @@ const DialogDemo = () => {
         <Dialog
           title={translated.title1}
           visible={visible1}
+          okText={translated.okText}
+          cancelText={translated.cancelText}
           onOk={() => setVisible1(false)}
           onCancel={() => setVisible1(false)}
         >
@@ -98,6 +113,8 @@ const DialogDemo = () => {
           visible={visible2}
           lockScroll
           footerDirection="vertical"
+          okText={translated.okText}
+          cancelText={translated.cancelText}
           onOk={() => setVisible2(false)}
           onCancel={() => setVisible2(false)}
         >
