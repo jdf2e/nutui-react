@@ -97,5 +97,7 @@ module.exports = {
     ],
     'react/require-default-props': 0,
     'no-bitwise': 0,
+    'no-multi-assign': 0, // 禁止连续赋值
+    'no-cond-assign': 0, // 禁止条件表达式中出现赋值操作符
   },
 }
