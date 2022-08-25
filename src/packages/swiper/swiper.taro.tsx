@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, TouchEvent, useMemo } from 'react'
 import classNames from 'classnames'
 import { DataContext } from './UserContext'
 import bem from '@/utils/bem'
+import { getRectByTaro } from '../../utils/useClientRect'
 
 export type SwiperRef = {
   to: (index: number) => void
@@ -407,7 +408,7 @@ export const Swiper = React.forwardRef<
   }, [active])
 
   const init = async (active: number = +propSwiper.initPage) => {
-    const rect = await container.current.getBoundingClientRect()
+    const rect = await getRectByTaro(container.current)
     const _active = Math.max(Math.min(childCount - 1, active), 0)
     const _width = propSwiper.width ? +propSwiper.width : rect?.width
     const _height = propSwiper.height ? +propSwiper.height : rect?.height

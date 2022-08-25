@@ -320,7 +320,7 @@
           "desc": "滑动输入条，用于在给定的范围内选择一个值。",
           "sort": 3,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "vickyYe"
         },
         {
