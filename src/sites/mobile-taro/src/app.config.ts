@@ -27,6 +27,7 @@ const subPackages = [
   {
     root: 'dentry',
     pages: [
+      'pages/range/index',
       'pages/calendar/index',
       'pages/checkbox/index',
       'pages/inputnumber/index',
