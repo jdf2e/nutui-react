@@ -20,7 +20,7 @@ export interface FixedNavProps {
   position: Position
   type: Direction
   onChange: (v: any) => void
-  onSelected: (item: any, e: any) => void
+  onSelected: (v: any, event: MouseEvent) => void
   slotList: React.ReactNode
   slotBtn: React.ReactNode
 }
