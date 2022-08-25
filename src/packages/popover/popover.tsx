@@ -8,6 +8,7 @@ import React, {
 import Trigger from './Trigger'
 import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
+import { getRect } from '../../utils/useClientRect'
 
 export type PopoverTheme = 'light' | 'dark'
 
@@ -44,13 +45,6 @@ export interface PopoverProps {
   onChoose: (item: List, index: number) => void
 }
 
-const getEleAttr = (ele: HTMLElement | Element) => {
-  if (ele && ele.getBoundingClientRect) {
-    return ele.getBoundingClientRect()
-  }
-  return null
-}
-
 const defaultProps = {
   list: [],
   theme: 'light',
@@ -83,9 +77,9 @@ export const Popover: FunctionComponent<
 
   const goodItem = useRef(null)
   setTimeout(() => {
-    if (goodItem.current && getEleAttr(goodItem.current)) {
-      setElWidth((getEleAttr(goodItem.current) as any).width)
-      setElHeight((getEleAttr(goodItem.current) as any).height)
+    if (goodItem.current && getRect(goodItem.current)) {
+      setElWidth((getRect(goodItem.current) as any).width)
+      setElHeight((getRect(goodItem.current) as any).height)
     }
   })
 
