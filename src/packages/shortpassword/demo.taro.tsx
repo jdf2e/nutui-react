@@ -8,7 +8,6 @@ const ShortPasswordDemo = () => {
   const [visible4, setVisible4] = useState(false)
   const [value, setValue] = useState<string | number>('')
   const change = (value: number | string) => {
-    console.log(value)
     setValue(value)
   }
   const onTips = () => {
@@ -27,8 +26,11 @@ const ShortPasswordDemo = () => {
       <ShortPassword
         visible={visible1}
         modelValue={value}
-        onClose={() => setVisible1(false)}
-        change={(value) => change(value)}
+        onClose={() => {
+          setVisible1(false)
+          setValue('')
+        }}
+        onChange={(value) => change(value)}
       />
       <h2>显示按钮组</h2>
       <Cell
@@ -40,10 +42,18 @@ const ShortPasswordDemo = () => {
       />
       <ShortPassword
         visible={visible2}
-        onClose={() => setVisible2(false)}
+        modelValue={value}
+        onClose={() => {
+          setVisible2(false)
+          setValue('')
+        }}
         noButton={false}
-        onOk={() => setVisible2(false)}
-        onCancel={() => setVisible2(false)}
+        onOk={() => {
+          setVisible2(false)
+        }}
+        onCancel={() => {
+          setVisible2(false)
+        }}
       />
       <h2>自定义密码长度4</h2>
       <Cell
@@ -55,7 +65,11 @@ const ShortPasswordDemo = () => {
       />
       <ShortPassword
         visible={visible3}
-        onClose={() => setVisible3(false)}
+        modelValue={value}
+        onClose={() => {
+          setVisible3(false)
+          setValue('')
+        }}
         length={4}
       />
       <h2>忘记密码提示语事件回调</h2>
@@ -68,7 +82,11 @@ const ShortPasswordDemo = () => {
       />
       <ShortPassword
         visible={visible4}
-        onClose={() => setVisible4(false)}
+        modelValue={value}
+        onClose={() => {
+          setVisible4(false)
+          setValue('')
+        }}
         onTips={() => onTips()}
       />
     </div>
