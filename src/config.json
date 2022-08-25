@@ -780,6 +780,16 @@
           "sort": 20,
           "show": true,
           "author": "ailululu"
+        },
+        {
+          "version": "1.0.0",
+          "name": "ImagePreview",
+          "type": "component",
+          "cName": "图片预览",
+          "desc": "图片预览",
+          "sort": 23,
+          "show": true,
+          "author": "yangjinjun3"
         }
       ]
     },
