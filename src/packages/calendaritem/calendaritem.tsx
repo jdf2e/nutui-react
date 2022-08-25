@@ -4,6 +4,7 @@ import bem from '@/utils/bem'
 import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider'
+import { getRect } from '../../utils/useClientRect'
 
 type InputDate = string | string[]
 
@@ -352,14 +353,12 @@ export const CalendarItem: FunctionComponent<
     }
     requestAniFrame(() => {
       if (weeksPanel?.current && monthsPanel?.current) {
-        const top = weeksPanel?.current.getBoundingClientRect().bottom
+        const top = getRect(weeksPanel?.current).bottom
         const monthsDoms =
           monthsPanel.current.getElementsByClassName('calendar-month')
         for (let i = 0; i < monthsDoms.length; i++) {
-          if (
-            monthsDoms[i].getBoundingClientRect().top <= top &&
-            monthsDoms[i].getBoundingClientRect().bottom >= top
-          ) {
+          const monthsDomsRect = getRect(monthsDoms[i])
+          if (monthsDomsRect.top <= top && monthsDomsRect.bottom >= top) {
             setYearMonthTitle(state.monthsData[i].title)
           } else if (state.scrollDistance === 0) {
             setYearMonthTitle(state.monthsData[0].title)
