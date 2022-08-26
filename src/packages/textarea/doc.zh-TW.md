@@ -82,7 +82,7 @@ const App = () => {
     const [value3, updateValue3] = useState('')
     return (
         <>
-            <TextArea defaultValue={value3} rows="10" autosize />
+            <TextArea defaultValue={value3} rows="1" autosize />
         </>
     )
 };

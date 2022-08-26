@@ -83,7 +83,7 @@ const App = () => {
     const [value3, updateValue3] = useState('')
     return (
         <>
-            <TextArea defaultValue={value3} rows="10" autosize />
+            <TextArea defaultValue={value3} rows="1" autosize />
         </>
     )
 };
@@ -131,6 +131,6 @@ export default App
 
 | Event   | Description           |Arguments  |
 | ------ | -------------- | -------- |
-| change | Triggered when the value of the input box changes | val      |
-| focus  | Triggered when focusing     | val      |
-| blur   | Triggered when out of focus     | val      |
+| onChange | Triggered when the value of the input box changes | val      |
+| onFocus  | Triggered when focusing     | val      |
+| onBlur   | Triggered when out of focus     | val      |
