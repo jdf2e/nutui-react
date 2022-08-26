@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render progress when use props 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-progress "
+  >
+    <div
+      class="nut-progress-outer nut-progress-base"
+      style="border-radius: 12px; background: rgb(243, 243, 243);"
+    >
+      <div
+        class="nut-progress-inner"
+        style="width: 100%; border-radius: 12px;"
+      />
+    </div>
+    <div
+      class="nut-progress-text"
+    >
+      <span
+        class="nut-progress-text__inner"
+        style="color: rgb(51, 51, 51);"
+      >
+        100%
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -70,8 +70,10 @@ module.exports = {
     'no-console': 0,
     'no-plusplus': 0,
     'no-script-url': 0,
+    'no-restricted-syntax': 0,
     'no-unused-expressions': 0,
     'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-noninteractive-element-interactions': 0,
     '@typescript-eslint/no-empty-function': 0,
     '@typescript-eslint/no-unused-vars': 0,
     '@typescript-eslint/no-var-requires': 0,
@@ -87,5 +89,15 @@ module.exports = {
     'jsx-a11y/no-autofocus': 0,
     'react/no-children-prop': 0,
     'jsx-a11y/aria-proptypes': 0,
+    'react/sort-comp': [
+      1,
+      {
+        order: ['constructor', 'lifecycle', 'everything-else', 'render'],
+      },
+    ],
+    'react/require-default-props': 0,
+    'no-bitwise': 0,
+    'no-multi-assign': 0, // 禁止连续赋值
+    'no-cond-assign': 0, // 禁止条件表达式中出现赋值操作符
   },
 }
