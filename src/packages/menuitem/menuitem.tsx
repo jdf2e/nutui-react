@@ -33,6 +33,7 @@ const defaultProps = {
   optionsIcon: 'Check',
   iconClassPrefix: 'nut-icon',
   fontClassName: 'nutui-iconfont',
+  onChange: (value: OptionItem) => undefined,
 } as MenuItemProps
 export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
   const { locale } = useConfig()
@@ -46,6 +47,7 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
     fontClassName,
     optionsIcon,
     direction,
+    onChange,
     children,
   } = {
     ...defaultProps,
@@ -78,6 +80,7 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
     parent.toggleItemShow(orderKey)
     setTitle(item.text)
     setValue(item.value)
+    onChange && onChange(item)
   }
   const [position, setPosition] = useState<{ top: number; height: number }>({
     top: 0,

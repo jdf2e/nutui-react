@@ -1,18 +1,16 @@
-# Menu 菜单
+# Menu
 
-### 介绍
+### Intro
 
-向下弹出的菜单列表
+The menu list that pops down downwards.
 
-### 安装
+### Install
 
 ``` javascript
 import { Menu, MenuItem } from '@nutui/nutui-react';
 ```
 
-## 代码演示
-
-### 基础用法
+### Basic Usage
 
 :::demo
 
@@ -22,18 +20,19 @@ import { Menu, MenuItem } from '@nutui/nutui-react';
 
 const App = () => {
   const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
+    { text: 'All Products', value: 0 },
+    { text: 'New Products', value: 1 },
+    { text: 'Activity Products', value: 2 }
   ])
   const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
+    { text: 'Default Sort', value: 'a' },
+    { text: 'Praise Sort', value: 'b' },
+    { text: 'Sales Volume Sort', value: 'c' }
   ])
   return (
     <>
       <div className="demo full">
+        <h2>Basic Usage</h2>
         <Menu>
           <MenuItem options={options} value={0} />
           <MenuItem options={options1} value={'a'} />
@@ -48,9 +47,9 @@ export default App
 
 :::
 
-### 自定义菜单内容
+### Custom Menu Content
 
-使用实例上的 toggle 方法可以手动关闭弹框。
+Popup can be closed with toggle method in menu instance.
 
 :::demo
 
@@ -60,14 +59,9 @@ import { Menu, MenuItem } from '@nutui/nutui-react';
 
 const App = () => {
   const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
-  ])
-  const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
+    { text: 'All Products', value: 0 },
+    { text: 'New Products', value: 1 },
+    { text: 'Activity Products', value: 2 }
   ])
   return (
     <>
@@ -75,8 +69,8 @@ const App = () => {
         <Menu>
           <MenuItem options={options} value={0} />
           <MenuItem title="筛选">
-            <div>自定义内容</div>
-            <Button>确认</Button>
+            <div>Custom content</div>
+            <Button>Confirm</Button>
           </MenuItem>
         </Menu>
       </div>
@@ -89,7 +83,7 @@ export default App
 
 :::
 
-### 一行两列
+### Two Cols In One Line
 
 :::demo
 
@@ -99,9 +93,24 @@ import { Menu, MenuItem } from '@nutui/nutui-react';
 
 const App = () => {
   const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
+    { text: 'All Products', value: 0 },
+    { text: 'Product1', value: 1 },
+    { text: 'Product2', value: 2 },
+    { text: 'Product3', value: 3 },
+    { text: 'Product4', value: 4 },
+    { text: 'Product5', value: 5 },
+    { text: 'Product6', value: 6 },
+    { text: 'Product7', value: 7 },
+    { text: 'Product8', value: 8 },
+    { text: 'Product9', value: 9 },
+    { text: 'Product10', value: 10 },
+    { text: 'Product11', value: 11 },
+    { text: 'Product12', value: 12 },
+    { text: 'Product13', value: 13 },
+    { text: 'Product14', value: 14 },
+    { text: 'Product15', value: 15 },
+    { text: 'Product16', value: 16 },
+    { text: 'Product17', value: 17 }
   ])
   
   return (
@@ -120,7 +129,7 @@ export default App
 
 :::
 
-### 自定义选中态颜色
+### Custom Active Color
 
 :::demo
 
@@ -130,14 +139,14 @@ import { Menu, MenuItem } from '@nutui/nutui-react';
 
 const App = () => {
   const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
+    { text: 'All Products', value: 0 },
+    { text: 'New Products', value: 1 },
+    { text: 'Activity Products', value: 2 }
   ])
   const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
+    { text: 'Default Sort', value: 'a' },
+    { text: 'Praise Sort', value: 'b' },
+    { text: 'Sales Volume Sort', value: 'c' }
   ])
   return (
     <>
@@ -156,7 +165,7 @@ export default App
 
 :::
 
-### 自定义图标
+### Custom Icons
 
 :::demo
 
@@ -166,14 +175,14 @@ import { Menu, MenuItem } from '@nutui/nutui-react';
 
 const App = () => {
   const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
+    { text: 'All Products', value: 0 },
+    { text: 'New Products', value: 1 },
+    { text: 'Activity Products', value: 2 }
   ])
   const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
+    { text: 'Default Sort', value: 'a' },
+    { text: 'Praise Sort', value: 'b' },
+    { text: 'Sales Volume Sort', value: 'c' }
   ])
   return (
     <>
@@ -192,7 +201,7 @@ export default App
 
 :::
 
-### 向上展开
+### Expand Directions
 
 :::demo
 
@@ -202,14 +211,14 @@ import { Menu, MenuItem } from '@nutui/nutui-react';
 
 const App = () => {
   const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
+    { text: 'All Products', value: 0 },
+    { text: 'New Products', value: 1 },
+    { text: 'Activity Products', value: 2 }
   ])
   const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
+    { text: 'Default Sort', value: 'a' },
+    { text: 'Praise Sort', value: 'b' },
+    { text: 'Sales Volume Sort', value: 'c' }
   ])
   return (
     <>
@@ -228,7 +237,7 @@ export default App
 
 :::
 
-### 禁用菜单
+### Disable Menu
 
 :::demo
 
@@ -238,14 +247,14 @@ import { Menu, MenuItem } from '@nutui/nutui-react';
 
 const App = () => {
   const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
+    { text: 'All Products', value: 0 },
+    { text: 'New Products', value: 1 },
+    { text: 'Activity Products', value: 2 }
   ])
   const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
+    { text: 'Default Sort', value: 'a' },
+    { text: 'Praise Sort', value: 'b' },
+    { text: 'Sales Volume Sort', value: 'c' }
   ])
   return (
     <>
