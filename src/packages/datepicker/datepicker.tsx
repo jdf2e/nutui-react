@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
+import { useTranslate } from '../../sites/assets/locale'
 import Picker from '@/packages/picker'
 
 export interface PickerOption {
@@ -15,6 +16,10 @@ interface pickerRefState {
     value: string,
     cacheValueData: PickerOption[]
   ) => void
+}
+
+interface T {
+  [props: string]: string
 }
 
 export interface DatePickerProps {
@@ -80,6 +85,33 @@ export const DatePicker: FunctionComponent<
     ...props,
   }
 
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      year: '年',
+      month: '月',
+      day: '日',
+      hour: '时',
+      min: '分',
+      seconds: '秒',
+    },
+    'zh-TW': {
+      year: '年',
+      month: '月',
+      day: '日',
+      hour: '時',
+      min: '分',
+      seconds: '秒',
+    },
+    'en-US': {
+      year: 'Year',
+      month: 'Month',
+      day: 'Day',
+      hour: 'Hour',
+      min: 'Minute',
+      seconds: 'Second',
+    },
+  })
+
   const [show, setShow] = useState(false)
   const [currentDate, setCurrentDate] = useState<Date | null>(modelValue)
   const [defaultValue, setDefaultValue] = useState<(string | number)[]>([])
@@ -94,12 +126,12 @@ export const DatePicker: FunctionComponent<
   }
 
   const zhCNType: { [key: string]: string } = {
-    day: '日',
-    year: '年',
-    month: '月',
-    hour: '时',
-    minute: '分',
-    seconds: '秒',
+    day: translated.day,
+    year: translated.year,
+    month: translated.month,
+    hour: translated.hour,
+    minute: translated.min,
+    seconds: translated.seconds,
   }
   const formatValue = (value: Date | null) => {
     let cvalue = value

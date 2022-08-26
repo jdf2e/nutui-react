@@ -150,6 +150,9 @@ export const TextArea: FunctionComponent<
         disabled={disabled}
         readOnly={readonly}
         value={inputValue}
+        onInput={(e: any) => {
+          textChange(e)
+        }}
         onChange={(e: any) => {
           textChange(e)
         }}

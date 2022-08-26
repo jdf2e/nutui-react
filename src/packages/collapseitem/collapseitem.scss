@@ -5,7 +5,7 @@
 .nut-collapse-item {
   &__header {
     position: relative;
-    display: block;
+    display: flex;
     width: 100%;
     overflow: hidden;
     padding: 13px 0px 13px 26px;
@@ -14,7 +14,6 @@
     line-height: 24px;
     background-color: #fff;
     box-sizing: border-box;
-    display: flex;
     &::after {
       position: absolute;
       box-sizing: border-box;
