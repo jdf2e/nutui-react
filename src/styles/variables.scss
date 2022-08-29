@@ -484,7 +484,7 @@ $indicator-color: $primary-color !default;
 $indicator-dot-color: $disable-color !default;
 $indicator-white: $white !default;
 $indicator-size: 18px !default;
-$indicator-dot-size: calc($indicator-size / 3) !default;
+$indicator-dot-size: calc(#{$indicator-size} / 3) !default;
 $indicator-border-size: $indicator-size + 2 !default;
 $indicator-number-font-size: 10px !default;
 $indicator-dot-margin: 4px !default;
@@ -647,3 +647,18 @@ $countup-lr-margin: 1px !default;
 $countup-bgcolor: #031f63 !default;
 $countup-color: #ffffff !default;
 $countup-width: 24px !default;
+
+// cascader
+$cascader-font-size: 14px !default;
+$cascader-line-height: 22px !default;
+$cascader-tabs-item-padding: 0 10px !default;
+$cascader-title-padding: 24px 20px 17px !default;
+$cascader-title-font-size: 18px !default;
+$cascader-title-line-height: 20px !default;
+$cascader-item-padding: 10px 20px !default;
+$cascader-item-font-size: 14px !default;
+$cascader-item-color: #1a1a1a !default;
+$cascader-item-active-color: #fa2c19 !default;
+$cascader-pane-height: 342px !default;
+$cascader-pane-paddingTop: 10px !default;
+$cascader-icon-checklist-marginLeft: 10px !default;
