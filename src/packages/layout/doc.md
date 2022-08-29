@@ -202,11 +202,11 @@ export default App;
 
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | ----- |
-| onClick`v1.2.3` | 点击时触发 | event: MouseEvent, type: 'row' | 'col' |
+| onClick`v1.3.0` | 点击时触发 | event: MouseEvent, type: 'row' | 'col' |
 
 ### col events
 
 | 字段 | 说明 | 回调参数 |
 |----- | ----- | ----- |
-| onClick`v1.2.3` | 点击时触发 | event: MouseEvent, type: 'row' | 'col' |
+| onClick`v1.3.0` | 点击时触发 | event: MouseEvent, type: 'row' | 'col' |
 

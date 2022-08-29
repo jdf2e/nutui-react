@@ -182,7 +182,7 @@ export default App;
 | href      | Jump link of tab page; if `to` exists at the same time, it takes precedence over to   | String | --     |
 | to       | 	The route object of the tab, equal to React Router's [to Prop](https://v5.reactrouter.com/web/api/Link/to-string) Prop | any | --     |
 | num       | The numerical corner mark in the upper right corner of the tab, if it exceeds 99, it will be 99+     | Number | --     |
-| classPrefix      | 自Custom icon class name prefix for using custom icons   | String | 'nutui-iconfont'     |
+| classPrefix      | 自Custom icon class name prefix for using custom icons   | String | 'nut-icon'     |
 | dot      | Whether to display the little red dot in the upper right corner of the icon   | Boolean | false     |
 
 

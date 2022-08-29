@@ -254,7 +254,7 @@ export default App
 | delay      | Delay time                                         | String/Number | 1       |
 | scrollable | Whether to scroll content                          | Boolean       | true    |
 | speed      | Scrolling speed (px/s)                             | Number         | 50      |
-| wrapable`new` | Whether to enable text wrap                        | Boolean       | false    |
+| wrapable`v1.3.0` | Whether to enable text wrap                        | Boolean       | false    |
 
 ### Prop（direction=vertical）
 

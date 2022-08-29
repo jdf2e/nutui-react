@@ -28,9 +28,9 @@ export interface NotificationProps {
 }
 
 export default class Notification extends React.PureComponent<NotificationProps> {
-  private closeTimer: number | undefined
-
   static newInstance: (properties: NotificationProps, callback: any) => void
+
+  private closeTimer: number | undefined
 
   constructor(props: NotificationProps) {
     super(props)

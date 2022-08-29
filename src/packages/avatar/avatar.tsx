@@ -79,11 +79,11 @@ export const Avatar: FunctionComponent<
     backgroundColor: `${bgColor}`,
     color: `${color}`,
     marginLeft:
-      avatarIndex != 1 && parent?.propAvatarGroup?.span
+      avatarIndex !== 1 && parent?.propAvatarGroup?.span
         ? `${parent?.propAvatarGroup?.span}px`
         : '',
     zIndex:
-      parent?.propAvatarGroup?.zIndex == 'right'
+      parent?.propAvatarGroup?.zIndex === 'right'
         ? `${Math.abs(maxSum - avatarIndex)}`
         : '',
     ...style,
@@ -105,21 +105,22 @@ export const Avatar: FunctionComponent<
 
   const avatarLength = (children: any) => {
     for (let i = 0; i < children.length; i++) {
+      console.log('child', children[i], children[i].classList)
       if (
         children[i] &&
         children[i].classList &&
-        children[i].classList[0] == 'nut-avatar'
+        children[i].classList[0] === 'nut-avatar'
       ) {
         children[i].setAttribute('data-index', i + 1)
       }
     }
-    const index = avatarRef?.current?.dataset?.index
+    const index = Number(avatarRef?.current?.dataset?.index)
     const maxCount = parent?.propAvatarGroup?.maxCount
     setMaxSum(children.length)
     setAvatarIndex(index)
     if (
-      index == children.length &&
-      index != maxCount &&
+      index === children.length &&
+      index !== maxCount &&
       children.length > maxCount
     ) {
       setShowMax(true)

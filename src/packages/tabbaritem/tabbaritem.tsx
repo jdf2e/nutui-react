@@ -22,7 +22,7 @@ export interface TabbarItemProps {
 const defaultProps = {
   dot: false,
   size: '',
-  classPrefix: 'nutui-iconfont',
+  classPrefix: 'nut-icon',
   tabTitle: '',
   icon: '',
   href: '',
