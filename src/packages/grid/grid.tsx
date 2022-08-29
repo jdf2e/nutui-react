@@ -12,6 +12,7 @@ export interface GridProps {
   square: boolean
   reverse: boolean
   direction: GridDirection
+  className?: string
   iconSize?: string | number
   iconColor?: string
   style?: CSSProperties
@@ -45,6 +46,7 @@ export const Grid: FunctionComponent<
     style,
     iconSize,
     iconColor,
+    className,
     ...rest
   } = { ...defaultProps, ...props }
   const childrenDom = React.Children.toArray(children)
@@ -57,7 +59,9 @@ export const Grid: FunctionComponent<
 
   const rootClass = () => {
     const prefixCls = b()
-    return `${prefixCls} ${border && !gutter ? `${b('border')}` : ''}`
+    return `${className} ${prefixCls} ${
+      border && !gutter ? `${b('border')}` : ''
+    }`
   }
 
   const rootStyle = () => {

@@ -3,7 +3,7 @@
 exports[`render with custom content 1`] = `
 <div>
   <div
-    class="nut-grid nut-grid__border"
+    class="undefined nut-grid nut-grid__border"
   >
     <div
       class="nut-grid-item"
@@ -92,7 +92,7 @@ exports[`render with custom content 1`] = `
 exports[`should match snapshot 1`] = `
 <div>
   <div
-    class="nut-grid nut-grid__border"
+    class="undefined nut-grid nut-grid__border"
   >
     <div
       class="nut-grid-item"

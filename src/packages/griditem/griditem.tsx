@@ -25,9 +25,9 @@ export interface GridItemProps {
 const defaultProps = {
   text: '',
   icon: '',
-  iconSize: 28,
+  iconSize: '',
   iconColor: '',
-  parentIconSize: 28,
+  parentIconSize: '',
   parentIconColor: '',
 
   columnNum: 4,

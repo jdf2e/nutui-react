@@ -154,3 +154,20 @@ test('render with custom content', () => {
 
   expect(container).toMatchSnapshot()
 })
+
+test('render with props center', () => {
+  const { container } = render(
+    <>
+      <Grid center>
+        <GridItem icon="dongdong" text="文本" />
+        <GridItem icon="dongdong" text="文本" />
+        <GridItem icon="dongdong" text="文本" />
+        <GridItem icon="dongdong" text="文本" />
+      </Grid>
+    </>
+  )
+
+  const regionItem = container.querySelector('.nut-grid-item')
+  const item = regionItem?.querySelector('.nut-grid-item__content')
+  expect(item).toHaveClass('nut-grid-item__content--center')
+})

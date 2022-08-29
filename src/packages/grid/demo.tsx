@@ -3,6 +3,7 @@ import Avatar from '../avatar'
 import { Grid } from './grid'
 import GridItem from '../griditem'
 import { useTranslate } from '../../sites/assets/locale'
+import Toast from '../toast/index.taro'
 
 interface T {
   basic: string
@@ -53,7 +54,8 @@ const GridDemo = () => {
   })
 
   const handleClick = () => {
-    console.log('点击了第几个')
+    // console.log('点击了第几个')
+    Toast.text('点击了第几个')
   }
   return (
     <>
