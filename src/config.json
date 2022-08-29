@@ -167,6 +167,27 @@
           "show": true,
           "taro": true,
           "author": "vickyYE"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Grid",
+          "type": "component",
+          "cName": "宫格",
+          "desc": "宫格",
+          "sort": 5,
+          "show": true,
+          "author": "yangxiaolu"
+        },
+        {
+          "version": "1.0.0",
+          "name": "GridItem",
+          "type": "component",
+          "cName": "宫格子组件",
+          "desc": "宫格子组件",
+          "sort": 6,
+          "show": false,
+          "exportEmpty": true,
+          "author": "yangxiaolu"
         }
       ]
     },
