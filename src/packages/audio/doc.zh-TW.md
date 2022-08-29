@@ -148,6 +148,7 @@ export default App;
 | 參數         | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
 | className       | 類名               | String | ''              |
+| style       | css樣式               | CSSProperties | {}           |
 | url         | 語音資源鏈接               | String | ''              |
 | muted        | 是否靜音                         | Boolean | false             |
 | autoplay         | 是否自動播放 | Boolean | false               |

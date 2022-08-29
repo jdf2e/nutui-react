@@ -2,6 +2,7 @@ import React, {
   useState,
   useEffect,
   useRef,
+  CSSProperties,
   FunctionComponent,
   ReactEventHandler,
 } from 'react'
@@ -13,6 +14,7 @@ import { useConfig } from '@/packages/configprovider'
 
 export interface AudioProps {
   className: string
+  style: CSSProperties
   url: string
   muted: boolean
   autoplay: boolean
@@ -31,6 +33,7 @@ export interface AudioProps {
 const defaultProps = {
   className: '',
   url: '',
+  style: {},
   muted: false,
   autoplay: false,
   loop: false,
@@ -44,12 +47,13 @@ const defaultProps = {
   onCanPlay: (e: HTMLAudioElement) => {},
 } as AudioProps
 export const Audio: FunctionComponent<
-  Partial<AudioProps> & React.HTMLAttributes<HTMLAudioElement>
+  Partial<AudioProps> & React.HTMLAttributes<HTMLElement>
 > = (props) => {
   const { locale } = useConfig()
   const {
     className,
     url,
+    style,
     muted,
     autoplay,
     loop,
@@ -274,7 +278,7 @@ export const Audio: FunctionComponent<
     statusRef.current.currentTime = time
   }
   return (
-    <div className={`${b()} ${className}`}>
+    <div className={`${b()} ${className}`} style={style} {...rest}>
       {renderAudio()}
       <audio
         className="audioMain"

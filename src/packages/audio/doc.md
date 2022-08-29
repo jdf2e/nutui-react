@@ -148,6 +148,7 @@ export default App;
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | className       | 类名               | String | ''              |
+| style       | css样式               | CSSProperties | {}           |
 | url         | 语音资源链接               | String | ''              |
 | muted        | 是否静音                         | Boolean | false             |
 | autoplay         | 是否自动播放 | Boolean | false               |

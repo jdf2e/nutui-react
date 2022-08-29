@@ -34,6 +34,7 @@ const AudioDemo = () => {
       <Cell>
         <Audio
           autoplay={false}
+          style={{ fontSize: '20px' }}
           url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
           type="progress"
           preload="auto"

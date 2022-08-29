@@ -148,6 +148,7 @@ export default App;
 | parameter         | illustrate                             | type   | Defaults           |
 |--------------|----------------------------------|--------|------------------|
 | className       | Classification               | String | ''              |
+| style       | CSS Properties              | CSSProperties | {}           |
 | url         | Voice resource link               | String | ''              |
 | muted        | Whether it is mute                         | Boolean | false             |
 | autoplay         | Whether to play automatically | Boolean | false               |
