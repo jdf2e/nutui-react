@@ -272,7 +272,6 @@ export default App
 |----------------------------------|--------------------------------|-------------------------|---------|
 | activeColor                     | 选项的选中态图标颜色           | String                  | #F2270C |
 | closeOnClickOverlay | 是否在点击遮罩层后关闭菜单     | Boolean                 | true    |
-| scrollFixed           | 滚动后是否固定，可设置固定位置 | Boolean、String、Number | false   |
 | lockScroll            | 背景是否锁定                   | Boolean                 | true    |
 | titleIcon               | 自定义标题图标                 | String                  | -       |
 

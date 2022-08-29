@@ -6,6 +6,10 @@ import MenuItem from '../menuitem'
 import { useTranslate } from '../../sites/assets/locale'
 
 const MenuDemo = () => {
+  const style = `
+  .nut-overflow-hidden .demo.full{
+    overflow: hidden !important;
+  }`
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基本用法',
@@ -97,9 +101,10 @@ const MenuDemo = () => {
 
   return (
     <>
+      <style>{style}</style>
       <div className="demo full">
         <h2>{translated.basic}</h2>
-        <Menu>
+        <Menu closeOnClickOverlay={false} lockScroll={false}>
           <MenuItem
             options={options}
             value={0}

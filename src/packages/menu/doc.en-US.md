@@ -279,29 +279,28 @@ export default App
 
 | 参数                             | 说明                           | 类型                    | 默认值  |
 |----------------------------------|--------------------------------|-------------------------|---------|
-| activeColor                     | 选项的选中态图标颜色           | String                  | #F2270C |
-| closeOnClickOverlay | 是否在点击遮罩层后关闭菜单     | Boolean                 | true    |
-| scrollFixed           | 滚动后是否固定，可设置固定位置 | Boolean、String、Number | false   |
-| lockScroll            | 背景是否锁定                   | Boolean                 | true    |
-| titleIcon               | 自定义标题图标                 | String                  | -       |
+| activeColor                     | Active color of title and option           | String                  | #F2270C |
+| closeOnClickOverlay | Whether to close when overlay is clicked     | Boolean                 | true    |
+| lockScroll            | Whether the background is locked                   | Boolean                 | true    |
+| titleIcon               | Custome title icon                 | String                  | -       |
 
 ### MenuItem Props
 
 | 参数                          | 说明                                    | 类型    | 默认值           |
 |-------------------------------|-----------------------------------------|---------|------------------|
-| title                         | 菜单项标题                              | String  | 当前选中项文字   |
-| options                       | 选项数组                                | Array   | -                |
-| disabled                      | 是否禁用菜单                            | Boolean | false            |
-| columns                          | 可以设置一行展示多少列 options          | Number  | 1                |
-| optionsIcon          | 自定义选项图标                          | String  | 'Check'          |
-| direction            | 菜单展开方向，可选值为up                | String  | 'down'           |
-| activeClassName    | 选项选中时自定义标题样式类              | String  | -                |
-| inactiveClassName  | 选项非选中时自定义标题样式类            | String  | -                |
-| fontClassName       | 自定义icon 字体基础类名                 | string  | `nutui-iconfont` |
-| iconClassPrefix          | 自定义icon 类名前缀，用于使用自定义图标 | string  | `nut-icon`       |
+| title                         | Item title                              | String  | 当前选中项文字   |
+| options                       | Options                                | Array   | -                |
+| disabled                      | Whether to disable dropdown item                            | Boolean | false            |
+| columns                          | Display how many options in one line          | Number  | 1                |
+| optionsIcon          | Custome option icon                          | String  | 'Check'          |
+| direction            | Expand direction, can be set to up                | String  | 'down'           |
+| activeClassName    | Active custome title class              | String  | -                |
+| inactiveClassName  | Inactive custome title class            | String  | -                |
+| fontClassName       | Custom icon font base class name                 | string  | `nutui-iconfont` |
+| iconClassPrefix          | Custom icon class name prefix for using custom icons | string  | `nut-icon`       |
 
 ### MenuItem Events
 
-| 事件名      | 说明                 | 回调参数     |
+| Event      | Description                 | Arguments     |
 |----------|----------------------|--------------|
-| onChange | 选择 option 之后触发 | 选择的 value |
+| onChange | Emitted select option changed | Selected value |

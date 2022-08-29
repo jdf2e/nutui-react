@@ -2,7 +2,6 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import classnames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { useConfig } from '@/packages/configprovider'
-// import Popup from '@/packages/popup'
 import Icon from '@/packages/icon'
 import { Overlay } from '../overlay/overlay'
 
@@ -12,14 +11,16 @@ export interface OptionItem {
 }
 
 export interface MenuItemProps {
+  className: string
+  style: React.CSSProperties
   title: React.ReactNode
   options: OptionItem[]
   disabled: boolean
   columns: number
   optionsIcon: string
   direction: string
-  activeClassName: string
-  inactiveClassName: string
+  activeTitleClass: string
+  inactiveTitleClass: string
   fontClassName: string
   iconClassPrefix: string
   value: string | number
@@ -28,9 +29,13 @@ export interface MenuItemProps {
 }
 
 const defaultProps = {
+  className: '',
+  style: {},
   columns: 1,
   direction: 'down',
   optionsIcon: 'Check',
+  activeTitleClass: '',
+  inactiveTitleClass: '',
   iconClassPrefix: 'nut-icon',
   fontClassName: 'nutui-iconfont',
   onChange: (value: OptionItem) => undefined,
@@ -39,6 +44,8 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
   const { locale } = useConfig()
   const mergedProps = { ...defaultProps, ...props }
   const {
+    className,
+    style,
     options,
     value,
     columns,
@@ -48,13 +55,14 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
     optionsIcon,
     direction,
     onChange,
+    activeTitleClass,
+    inactiveTitleClass,
     children,
   } = {
     ...defaultProps,
     ...props,
   }
-  const { lockScroll, activeColor, showPopup, parent, orderKey, ref } =
-    mergedProps as any
+  const { activeColor, showPopup, parent, orderKey } = mergedProps as any
 
   const [_showPopup, setShowPopup] = useState(showPopup)
   const [_value, setValue] = useState(value)
@@ -67,8 +75,8 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
 
   const getIconCName = (optionVal: string | number, value: string | number) => {
     return classnames({
-      activeTitleClass: optionVal === value,
-      inactiveTitleClass: optionVal !== value,
+      [activeTitleClass]: optionVal === value,
+      [inactiveTitleClass]: optionVal !== value,
     })
   }
   const setTitle = (text: string) => {
@@ -110,12 +118,17 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
 
   const placeholderStyle = () => {
     if (direction === 'down') {
-      return { height: `${position.top + position.height}px`, ...isShow() }
+      return {
+        height: `${position.top + position.height}px`,
+        ...isShow(),
+        ...style,
+      }
     }
     return {
       height: `${window.innerHeight - position.top}px`,
       top: 'auto',
       ...isShow(),
+      ...style,
     }
   }
 
@@ -124,14 +137,14 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
       <div
         className={`placeholder-element ${classnames({
           up: direction === 'up',
-        })}`}
+        })} ${className}`}
         style={placeholderStyle()}
         onClick={() => parent.toggleItemShow(orderKey)}
       />
       <Overlay
         overlayClass="nut-menu__overlay"
         style={getPosition()}
-        lockScroll={lockScroll}
+        lockScroll={parent.lockScroll}
         visible={_showPopup}
         closeOnClickOverlay={parent.closeOnClickOverlay}
         onClick={() => {
@@ -163,7 +176,7 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
                 >
                   {item.value === _value ? (
                     <Icon
-                      className={getIconCName(item.text, value)}
+                      className={getIconCName(item.value, value)}
                       name={optionsIcon}
                       classPrefix={iconClassPrefix}
                       fontClassName={fontClassName}
@@ -171,7 +184,7 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
                     />
                   ) : null}
                   <div
-                    className={getIconCName(item.text, value)}
+                    className={getIconCName(item.value, value)}
                     style={{
                       color: `${item.value === _value ? activeColor : ''}`,
                     }}

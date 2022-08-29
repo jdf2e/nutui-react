@@ -28,6 +28,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
     className,
     titleIcon,
     scrollFixed,
+    lockScroll,
     closeOnClickOverlay,
     children,
     activeColor,
@@ -73,6 +74,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
         activeColor,
         parent: {
           closeOnClickOverlay,
+          lockScroll,
           toggleItemShow,
           updateTitle,
           hideItemShow,
