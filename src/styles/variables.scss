@@ -230,12 +230,19 @@ $notify-font-size: 14px;
 $notify-height: 44px;
 
 // NoticeBar
-$noticeBar-font-size: 14px !default;
-$noticeBar-height: 40px !default;
-$noticeBar-line-height: 24px !default;
-$noticeBar-left-icon-width: 16px !default;
-$noticeBar-right-icon-width: 16px !default;
+$noticebar-background: rgba(251, 248, 220, 1) !default;
+$noticebar-color: #d9500b !default;
+$noticebar-font-size: 14px !default;
+$noticebar-height: 40px !default;
+$noticebar-line-height: 24px !default;
+$noticebar-left-icon-width: 16px !default;
+$noticebar-right-icon-width: 16px !default;
+$noticebar-box-padding: 0 16px !default;
+$noticebar-wrapable-padding: 16px !default;
+$noticebar-lefticon-margin: 0px 10px !default;
+$noticebar-righticon-margin: 0px 10px !default;
 
+//notify
 $notify-base-background-color: linear-gradient(
   135deg,
   rgba(250, 44, 25, 1) 0%,
@@ -477,7 +484,7 @@ $indicator-color: $primary-color !default;
 $indicator-dot-color: $disable-color !default;
 $indicator-white: $white !default;
 $indicator-size: 18px !default;
-$indicator-dot-size: calc($indicator-size / 3) !default;
+$indicator-dot-size: calc(#{$indicator-size} / 3) !default;
 $indicator-border-size: $indicator-size + 2 !default;
 $indicator-number-font-size: 10px !default;
 $indicator-dot-margin: 4px !default;
@@ -659,3 +666,19 @@ $menu-item-option-i-margin-right: 6px !default;
 $menu-bar-box-shadow: 0 2px 12px rgba(89, 89, 89, 0.12) !default;
 $menu-scroll-fixed-top: 0 !default;
 $menu-scroll-fixed-z-index: 1000 !default;
+
+// cascader
+$cascader-font-size: 14px !default;
+$cascader-line-height: 22px !default;
+$cascader-tabs-item-padding: 0 10px !default;
+$cascader-title-padding: 24px 20px 17px !default;
+$cascader-title-font-size: 18px !default;
+$cascader-title-line-height: 20px !default;
+$cascader-item-padding: 10px 20px !default;
+$cascader-item-font-size: 14px !default;
+$cascader-item-color: #1a1a1a !default;
+$cascader-item-active-color: #fa2c19 !default;
+$cascader-pane-height: 342px !default;
+$cascader-pane-paddingTop: 10px !default;
+$cascader-icon-checklist-marginLeft: 10px !default;
+

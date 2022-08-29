@@ -480,7 +480,7 @@ export default App;
 | pageContent       | 自定义指示器                           | String \| React.ReactNode | -                 |
 | isPreventDefault  | 滑动过程中是否禁用默认事件             | Boolean                   | true              |
 | isStopPropagation | 滑动过程中是否禁止冒泡                 | Boolean                   | true              |
-| isCenter`v1.2.3` | 是否居中展示，必须传对应的`width` 和 `height`                  | Boolean                   | false              |
+| isCenter`v1.3.0` | 是否居中展示，必须传对应的`width` 和 `height`                  | Boolean                   | false              |
 
 
 

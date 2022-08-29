@@ -170,7 +170,7 @@ export default App;
 
 ### 平铺展示
 
-通过设置 `threeDimensional` 取消 3D 展示效果
+通过设置 `threeDimensional` 取消 3D 展示效果，并且通过设置 `swipeDuration` 可以控制快速滚动的时长。
 
 :::demo
 ```tsx
@@ -210,6 +210,7 @@ const App = () => {
         isVisible={isVisible}
         listData={listData}
         threeDimensional={false}
+        swipeDuration={1000}
         onConfirm={(values, list) => confirmPicker(values, list)}
         onClose={() => setIsVisible(false)}
        />
@@ -370,6 +371,7 @@ export default App;
 | listData               | 列表数据 | Array | [] |
 | defaultValueData       | 默认选中 | Array | [] |
 | threeDimensional`v1.2.2` | 是否开启3D效果               | Boolean  | true   |
+| swipeDuration`v1.3.0` | 快速滑动时惯性滚动的时长，单位 ms               | String \| Number  | 1000   |
 
 
 ## listData 数据结构
