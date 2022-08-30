@@ -6,11 +6,11 @@ import React, {
   FunctionComponent,
   ReactEventHandler,
 } from 'react'
-import Icon from '@/packages/icon'
-import Range from '@/packages/range'
+import Icon from '@/packages/icon/index.taro'
+import Range from '@/packages/range/index.taro'
 import bem from '@/utils/bem'
-import Button from '@/packages/button'
-import { useConfig } from '@/packages/configprovider'
+import Button from '@/packages/button/index.taro'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export interface AudioProps {
   className: string

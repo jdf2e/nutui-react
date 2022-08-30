@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Audio } from './audio'
-import Icon from '../icon'
+import { Audio } from './audio.taro'
+import Icon from '../icon/index.taro'
 import './demo.scss'
-import Cell from '../cell'
+import Cell from '../cell/index.taro'
 
 const AudioDemo = () => {
   const [duration, setDuration] = useState(0)
