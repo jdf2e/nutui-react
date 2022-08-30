@@ -63,7 +63,6 @@ export const TextArea: FunctionComponent<
   const textareaBem = bem('textarea')
   const [inputValue, SetInputValue] = useState('')
   const textareaRef = useRef<any>(null)
-  const [textareaH, SetTextareaH] = useState('')
 
   useEffect(() => {
     if (defaultValue) {
@@ -75,7 +74,7 @@ export const TextArea: FunctionComponent<
     }
     if (autosize) {
       setTimeout(() => {
-        getContentHeight()
+        setContentHeight()
       })
     }
   }, [defaultValue, autosize])
@@ -83,17 +82,15 @@ export const TextArea: FunctionComponent<
   useEffect(() => {
     if (inputValue) {
       if (autosize) {
-        // setTimeout(() => {
-        getContentHeight()
-        // })
+        setContentHeight()
       }
     }
   }, [inputValue])
 
-  const getContentHeight = () => {
+  const setContentHeight = () => {
     const textarea: any = textareaRef.current
-    if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto'
+    if (textarea) {
+      textarea.style.height = 'auto'
       let height = textarea?.scrollHeight
 
       if (typeof autosize === 'object') {
@@ -106,7 +103,7 @@ export const TextArea: FunctionComponent<
         }
       }
       if (height) {
-        textareaRef.current.style.height = `${height}px`
+        textarea.style.height = `${height}px`
       }
     }
   }

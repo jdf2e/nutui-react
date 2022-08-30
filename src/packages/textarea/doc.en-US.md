@@ -102,8 +102,27 @@ import { TextArea } from '@nutui/nutui-react';
 const App = () => {
     return (
         <>
-            <TextArea readonly defaultValue="textarea只读状态" />
-            <TextArea disabled defaultValue="textarea禁用状态" limitShow maxlength="20" />
+            <TextArea readonly defaultValue="textarea readonly" />
+            <TextArea disabled defaultValue="textarea disabled" limitShow maxlength="20" />
+        </>
+    )
+};
+export default App
+```
+:::
+
+### TextAlign
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+    return (
+        <>
+            <TextArea defaultValue="TextAlign Right" textAlign="right" />
         </>
     )
 };
