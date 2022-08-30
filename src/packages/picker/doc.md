@@ -371,7 +371,7 @@ export default App;
 | listData               | 列表数据 | Array | [] |
 | defaultValueData       | 默认选中 | Array | [] |
 | threeDimensional`v1.2.2` | 是否开启3D效果               | Boolean  | true   |
-| swipeDuration`v1.2.3` | 快速滑动时惯性滚动的时长，单位 ms               | String \| Number  | 1000   |
+| swipeDuration`v1.3.0` | 快速滑动时惯性滚动的时长，单位 ms               | String \| Number  | 1000   |
 
 
 ## listData 数据结构

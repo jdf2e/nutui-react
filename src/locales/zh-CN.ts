@@ -102,5 +102,13 @@ const zhCN: BaseLang = {
     title5: '自定义图标设置',
     title6: '数据改变监听',
   },
+  audio: {
+    back: '快退',
+    forward: '快进',
+    pause: '暂停',
+    start: '开始',
+    mute: '静音',
+    tips: 'onPlayEnd事件在loop=false时才会触发',
+  },
 }
 export default zhCN
