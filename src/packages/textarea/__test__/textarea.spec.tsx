@@ -66,11 +66,9 @@ test('textarea onFocus event test', () => {
   const handleFocus = jest.fn()
   const handleBlur = jest.fn()
   const TextareaDemo = () => {
-    const [value, setValue] = useState('文字')
     return (
       <TextArea
         data-testid="textarea"
-        defaultValue={value}
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
