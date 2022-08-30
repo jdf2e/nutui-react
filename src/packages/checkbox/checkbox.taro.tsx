@@ -4,7 +4,7 @@ import CheckboxGroup from '@/packages/checkboxgroup'
 
 import bem from '@/utils/bem'
 
-export interface CheckBoxProps {
+export interface CheckboxProps {
   checked: boolean
   disabled: boolean
   textPosition: 'left' | 'right'
@@ -30,9 +30,9 @@ const defaultProps = {
   iconFontClassName: 'nutui-iconfont',
   iconIndeterminateName: 'check-disabled',
   onChange: (state, label) => {},
-} as CheckBoxProps
+} as CheckboxProps
 export const Checkbox: FunctionComponent<
-  Partial<CheckBoxProps> &
+  Partial<CheckboxProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > & { Group: typeof CheckboxGroup } = (props) => {
   const { children } = { ...defaultProps, ...props }

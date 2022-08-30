@@ -6,14 +6,29 @@ import React, {
   MouseEventHandler,
   useContext,
 } from 'react'
-import { SubNavBarProps } from '../sidenavbar/type'
+// import { SubSideNavBarProps } from '../sidenavbar/type'
 import { handleClick } from '../sidenavbar/utils'
 import { OffsetContext } from '../sidenavbar/offsetContext'
 
+export type SubSideNavBarProps = {
+  title: string
+  ikey: string | number
+  open?: boolean
+  children?: React.ReactNode
+  titleClick?: ({
+    title,
+    ikey,
+    isShow,
+  }: {
+    title: string
+    ikey: string | number
+    isShow: boolean
+  }) => void
+}
 const defaultProps = {
   open: true,
-} as SubNavBarProps
-export const SubSideNavBar: FunctionComponent<SubNavBarProps> = (props) => {
+} as SubSideNavBarProps
+export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
   const { title, ikey, children, titleClick, open, ...rest } = {
     ...defaultProps,
     ...props,
