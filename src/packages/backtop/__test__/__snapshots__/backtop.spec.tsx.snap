@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`backtop custom test 1`] = `
+<div>
+  <div
+    class="nut-backtop  custom-class"
+    style="right: 10px; bottom: 110px; z-index: 10;"
+  >
+    <div
+      class="backtop-demo"
+      style="display: flex; flex-direction: column; align-items: center;"
+    >
+      <i
+        class="nutui-iconfont nut-icon nut-icon-top nut-backtop-main"
+        style="font-size: 12px; width: 12px; height: 12px;"
+      />
+      <div
+        style="font-size: 12px;"
+      >
+        顶部
+      </div>
+    </div>
+  </div>
+</div>
+`;
