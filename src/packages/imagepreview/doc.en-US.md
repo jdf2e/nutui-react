@@ -49,7 +49,7 @@ const App = () => {
   return (
     <>
         <ImagePreview images={images} show={showPreview1} onClose={hideFn1}></ImagePreview>
-        <Cell title="展示图片预览" isLink={true} onClick={showFn1}></Cell>
+        <Cell title="Show preview" isLink={true} onClick={showFn1}></Cell>
     </>
   );
 };
@@ -92,7 +92,7 @@ const App = () => {
   return (
     <>
         <ImagePreview images={images} initNo={3} show={showPreview2} onClose={hideFn2}></ImagePreview>
-        <Cell title="设置初始页码" isLink={true} onClick={showFn2}></Cell>
+        <Cell title="With init no" isLink={true} onClick={showFn2}></Cell>
     </>
   );
 };
@@ -135,7 +135,7 @@ const App = () => {
   return (
     <>
         <ImagePreview images={images} show={showPreview3} paginationVisible={true} paginationColor="red" onClose={hideFn3}></ImagePreview>
-        <Cell title="设置轮播指示器及颜色" isLink={true} onClick={showFn3}></Cell>
+        <Cell title="With pagination" isLink={true} onClick={showFn3}></Cell>
     </>
   );
 };
@@ -201,7 +201,7 @@ const App = () => {
   return (
     <>
         <ImagePreview images={images} videos={videos} show={showPreview4} onClose={hideFn4}></ImagePreview>
-        <Cell title="视频、图片预览" isLink={true} onClick={showFn4}></Cell>
+        <Cell title="With videos" isLink={true} onClick={showFn4}></Cell>
     </>
   );
 };
@@ -215,19 +215,19 @@ export default App;
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | show | Whether to show preview | Boolean | false
 | videos | Videos Array(Videos are before images, not support in taro) | Array<`Object`> | []
 | images | Images array | Array<`String`> | []
 | autoplay | Autoplay time, zero means not autoplay | Number、String  | 3000  |
-| init-no | Init no | Number | 1
-| pagination-visible | Whether to show pagination    | Boolean | false |
-| pagination-color   | Pagination color    | String  | '#fff'  |
-| content-close   | Click image to exit preview    | Boolean  | false  |
+| initNo | Init no | Number | 1
+| paginationVisible | Whether to show pagination    | Boolean | false |
+| paginationColor   | Pagination color    | String  | '#fff'  |
+| contentClose   | Click image to exit preview    | Boolean  | false  |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
+| Event | Description           | Arguments     |
 |--------|----------------|--------------|
-|close|Emitted when closing ImagePreview|-|
+|onClose|Emitted when closing ImagePreview|-|

@@ -221,10 +221,10 @@ export default App;
 | videos | 预览的视频数组（视频自动放到图片之前、taro场景暂不支持） | Array<`Object`> | []
 | images | 预览图片数组 | { src: String }[] | []
 | autoplay | 自动轮播时长，0表示不会自动轮播 | Number、String  | 3000  |
-| init-no | 初始页码 | Number | 1
-| pagination-visible | 分页指示器是否展示    | Boolean | false |
-| pagination-color   | 分页指示器选中的颜色    | String  | '#fff'  |
-| content-close   | 点击图片可以退出预览    | Boolean  | false  |
+| initNo | 初始页码 | Number | 1
+| paginationVisible | 分页指示器是否展示    | Boolean | false |
+| paginationColor   | 分页指示器选中的颜色    | String  | '#fff'  |
+| contentClose   | 点击图片可以退出预览    | Boolean  | false  |
 
 ### Events
 

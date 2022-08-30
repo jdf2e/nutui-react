@@ -8,12 +8,13 @@ import Button from '@/packages/button'
 import { DialogWrapper } from './DialogWrapper'
 import confirm from './Confirm'
 import {
-  DialogProps,
+  IDialogProps,
   DialogReturnProps,
   DialogComponent,
   ConfirmProps,
 } from './config'
 
+export type DialogProps = IDialogProps
 const defaultProps = {
   okText: '确认',
   cancelText: '取消',

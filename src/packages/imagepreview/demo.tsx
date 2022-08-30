@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { ImagePreview } from './imagepreview'
-import Cell from '../cell'
+import Cell from '@/packages/cell'
+import ImagePreview from '@/packages/imagepreview'
 import { useTranslate } from '../../sites/assets/locale'
 
 interface T {
