@@ -2,7 +2,7 @@ import * as React from 'react'
 import Notification, { NotificationProps } from './Notification'
 
 let messageInstance: any = null
-interface IToastOptions {
+export interface ToastOptions {
   id?: string
   msg: string
   style?: React.CSSProperties
@@ -24,7 +24,7 @@ interface IToastOptions {
   closeOnClickOverlay: boolean
 }
 
-const options: IToastOptions = {
+const options: ToastOptions = {
   msg: '',
   id: '',
   style: {},

@@ -15,6 +15,9 @@ package-lock.json
 /src/packages/nutui.react.ts
 /src/packages/nutui.*.ts
 /src/sites/doc/docs.ts
+/src/sites/doc/docs.taro.ts
+/src/sites/mobile-taro/dist
+/src/sites/mobile-taro/node_modules
 /tsc/test
 /site_docs
 /coverage

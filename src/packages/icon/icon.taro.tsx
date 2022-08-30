@@ -1,7 +1,7 @@
 import React, { ReactElement, ReactHTML } from 'react'
 import bem from '@/utils/bem'
 
-interface IconProps {
+export interface IconProps {
   name: string
   size: string | number
   classPrefix: string

@@ -167,6 +167,27 @@
           "show": true,
           "taro": true,
           "author": "vickyYE"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Grid",
+          "type": "component",
+          "cName": "宫格",
+          "desc": "宫格",
+          "sort": 5,
+          "show": true,
+          "author": "yangxiaolu"
+        },
+        {
+          "version": "1.0.0",
+          "name": "GridItem",
+          "type": "component",
+          "cName": "宫格子组件",
+          "desc": "宫格子组件",
+          "sort": 6,
+          "show": false,
+          "exportEmpty": true,
+          "author": "yangxiaolu"
         }
       ]
     },
@@ -305,6 +326,27 @@
           "sort": 11,
           "show": false,
           "author": "hx"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Menu",
+          "type": "component",
+          "cName": "菜单",
+          "desc": "向下弹出的菜单列表",
+          "sort": 13,
+          "show": true,
+          "author": "oasis-cloud"
+        },
+        {
+          "version": "1.0.0",
+          "name": "MenuItem",
+          "type": "component",
+          "cName": "菜单子项",
+          "desc": "菜单子项",
+          "sort": 14,
+          "exportEmpty": true,
+          "show": false,
+          "author": "oasis-cloud"
         }
       ]
     },

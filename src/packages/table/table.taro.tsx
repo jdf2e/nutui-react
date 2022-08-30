@@ -2,9 +2,10 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
-import { TableProps, TableColumnProps } from './types'
+import { ITableProps, TableColumnProps } from './types'
 import { useConfig } from '@/packages/configprovider'
 
+export type TableProps = ITableProps
 const defaultProps = {
   className: '',
   style: {},

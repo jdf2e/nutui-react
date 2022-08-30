@@ -18,7 +18,7 @@ import bem from '@/utils/bem'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
-interface PopupProps extends OverlayProps {
+export interface PopupProps extends OverlayProps {
   position: string
   transition: string
   style: React.CSSProperties

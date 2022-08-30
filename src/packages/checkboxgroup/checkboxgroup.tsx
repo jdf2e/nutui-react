@@ -1,7 +1,7 @@
 import React, { useEffect, useImperativeHandle, useState } from 'react'
 import bem from '@/utils/bem'
 
-export interface CheckBoxGroupProps {
+export interface CheckboxGroupProps {
   disabled: boolean
   checkedValue: string[]
   max: number | undefined
@@ -13,10 +13,10 @@ const defaultProps = {
   checkedValue: [],
   max: undefined,
   onChange: (value: string[]) => {},
-} as CheckBoxGroupProps
+} as CheckboxGroupProps
 export const CheckboxGroup = React.forwardRef(
   (
-    props: Partial<CheckBoxGroupProps> &
+    props: Partial<CheckboxGroupProps> &
       Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
     ref
   ) => {
