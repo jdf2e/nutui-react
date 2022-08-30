@@ -17,7 +17,7 @@ export interface PickerOption {
   children?: PickerOption[]
   className?: string | number
 }
-export interface IPickerProps {
+export interface PickerProps {
   isVisible: boolean
   title?: string
   listData: (PickerOption | PickerOption[])[]
@@ -46,7 +46,7 @@ export interface IPickerProps {
   ) => void
 }
 
-const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
+const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
   (props, ref) => {
     const { locale } = useConfig()
     const {
@@ -286,5 +286,5 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<IPickerProps>> =
     )
   }
 
-const Picker = React.forwardRef<unknown, Partial<IPickerProps>>(InternalPicker)
+const Picker = React.forwardRef<unknown, Partial<PickerProps>>(InternalPicker)
 export default Picker
