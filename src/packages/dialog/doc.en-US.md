@@ -1,6 +1,6 @@
 #  Dialog 
 
-### introduce
+### Intro
 
 Modular dialog box, displayed in the floating layer, guides users to perform related operations, often used in message prompts, message confirmation, or complete specific interaction operations on the current page。
 
