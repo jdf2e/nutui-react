@@ -4,6 +4,7 @@ import * as ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import bem from '@/utils/bem'
+import { render } from '@/utils/render'
 
 export interface NotificationProps {
   id: string
@@ -161,5 +162,5 @@ Notification.newInstance = (properties, callback) => {
     })
   }
 
-  ReactDOM.render(<Notification {...properties} ref={ref} />, element)
+  render(<Notification {...properties} ref={ref} />, element)
 }

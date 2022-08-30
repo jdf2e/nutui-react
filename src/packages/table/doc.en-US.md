@@ -1,4 +1,4 @@
-#  Table组件
+#  Table
 
 ### Intro
 
