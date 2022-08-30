@@ -10,6 +10,8 @@ interface T {
   readOnlyState: string
   disabled: string
   disabledState: string
+  textAlign: string
+  alignRight: string
 }
 
 const TextAreaDemo = () => {
@@ -22,6 +24,8 @@ const TextAreaDemo = () => {
       readOnlyState: '只读状态',
       disabled: '禁用',
       disabledState: '禁用状态',
+      textAlign: '文本位置',
+      alignRight: '文本居右',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -31,6 +35,8 @@ const TextAreaDemo = () => {
       readOnlyState: '只讀狀態',
       disabled: '禁用',
       disabledState: '禁用狀態',
+      textAlign: '文本位置',
+      alignRight: '文本居右',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -40,12 +46,15 @@ const TextAreaDemo = () => {
       readOnlyState: 'Read-only status',
       disabled: 'Disable',
       disabledState: 'Disabled state',
+      textAlign: 'TextAlign',
+      alignRight: 'TextAlign Right',
     },
   })
 
   const [value1, updateValue1] = useState('')
   const [value2] = useState('')
   const [value3] = useState('')
+  const [value4] = useState('')
 
   useEffect(() => {
     updateValue1(translated.basic)
@@ -57,7 +66,7 @@ const TextAreaDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <div className="demo" style={{ paddingBottom: '20px' }}>
         <h2>{translated.basic}</h2>
         <TextArea
           defaultValue={value1}
@@ -89,6 +98,8 @@ const TextAreaDemo = () => {
           limitshow
           maxlength="20"
         />
+        <h2>{translated.textAlign}</h2>
+        <TextArea defaultValue={translated.alignRight} textAlign="right" />
       </div>
     </>
   )

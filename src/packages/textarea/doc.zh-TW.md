@@ -110,6 +110,24 @@ export default App
 ```
 :::
 
+### 文本位置
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+    return (
+        <>
+            <TextArea defaultValue="文本居右" textAlign="right" />
+        </>
+    )
+};
+export default App
+```
+:::
 ## API
 
 ### Props
