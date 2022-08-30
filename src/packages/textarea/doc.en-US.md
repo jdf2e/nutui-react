@@ -83,7 +83,7 @@ const App = () => {
     const [value3, updateValue3] = useState('')
     return (
         <>
-            <TextArea defaultValue={value3} rows="10" autosize />
+            <TextArea defaultValue={value3} rows="1" autosize />
         </>
     )
 };
@@ -102,8 +102,27 @@ import { TextArea } from '@nutui/nutui-react';
 const App = () => {
     return (
         <>
-            <TextArea readonly defaultValue="textarea只读状态" />
-            <TextArea disabled defaultValue="textarea禁用状态" limitShow maxlength="20" />
+            <TextArea readonly defaultValue="textarea readonly" />
+            <TextArea disabled defaultValue="textarea disabled" limitShow maxlength="20" />
+        </>
+    )
+};
+export default App
+```
+:::
+
+### TextAlign
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+    return (
+        <>
+            <TextArea defaultValue="TextAlign Right" textAlign="right" />
         </>
     )
 };
@@ -131,6 +150,6 @@ export default App
 
 | Event   | Description           |Arguments  |
 | ------ | -------------- | -------- |
-| change | Triggered when the value of the input box changes | val      |
-| focus  | Triggered when focusing     | val      |
-| blur   | Triggered when out of focus     | val      |
+| onChange | Triggered when the value of the input box changes | val      |
+| onFocus  | Triggered when focusing     | val      |
+| onBlur   | Triggered when out of focus     | val      |
