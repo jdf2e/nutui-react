@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
-import { VirtualListProps, VirtualListState, PositionType } from './type'
+import { IVirtualListProps, VirtualListState, PositionType } from './type'
 import {
   initPositinoCache,
   getListTotalSize,
@@ -15,6 +15,7 @@ import {
   updateItemSize,
 } from './utils'
 
+export type VirtualListProps = IVirtualListProps
 const defaultProps = {} as VirtualListProps
 
 export const VirtualList: FunctionComponent<
