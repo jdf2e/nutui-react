@@ -1,17 +1,15 @@
-#  Address 地址
+# Address
 
-### 介绍
+### Intro
 
-地址选择
+Load on demand Load the  Icon、Popup、Elevator dependent component
 
-
-### 安装
+### Install
 ``` javascript
 import { Address } from '@nutui/nutui-react';
 ```
 
-## 代码示例
-### 选择自定义地址
+### Choose Custom Address
 
 :::demo
 ```tsx
@@ -19,7 +17,7 @@ import  React,{useState} from "react";
 import { Address, Cell ,Popup} from '@nutui/nutui-react';
 
 const App = () => {
-  const [text, setText] = useState('请选择地址')
+  const [text, setText] = useState('Choose Address')
   const [normal,setNormal] = useState(false)
   const [province, setProvince] = useState([
       { id: 1, name: '北京', title: 'B' },
@@ -52,7 +50,7 @@ const App = () => {
             { id: 9, name: '昌平区', title: 'C' },
             { id: 6, name: '石景山区', title: 'S' },
             { id: 3, name: '八里庄街道', title: 'B' },
-            { id: 9, name: '北苑', title: 'B' },
+            { id: 10, name: '北苑', title: 'B' },
           ])
           break;
         case 'country':
@@ -77,14 +75,14 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text}  onClick={()=>setNormal(true)} />
+      <Cell title="Choose Address" desc={text}  onClick={()=>setNormal(true)} />
       <Address
           modelValue={normal}
           province={province}
           city={city}
           country={country}
           town={town}
-          customAddressTitle="请选择所在地区"
+          customAddressTitle="Choose Address"
           onChange={onChange}
           onClose={close}
        />
@@ -94,7 +92,84 @@ const App = () => {
 export default App;
 ```
 :::
-### 选择自定义地址2
+
+### Choose City
+
+If you want to select a province, you need to set the region ID in the order of province City country town in the model-value, and ensure that the data of the corresponding province can be queried
+
+:::demo
+```tsx
+import  React,{useState} from "react";
+import { Address, Cell ,Popup} from '@nutui/nutui-react';
+
+const App = () => {
+  const [text, setText] = useState('Choose City')
+  const [normal,setNormal] = useState(false)
+  const [province, setProvince] = useState([
+      { id: 1, name: '北京', title: 'B' },
+      { id: 2, name: '广西', title: 'G' },
+      { id: 3, name: '江西', title: 'J' },
+      { id: 4, name: '四川', title: 'S' },
+      { id: 5, name: '浙江', title: 'Z' },
+  ])
+
+  const [city, setCity] = useState([
+    { id: 7, name: '朝阳区', title: 'C' },
+    { id: 8, name: '崇文区', title: 'C' },
+    { id: 9, name: '昌平区', title: 'C' },
+    { id: 6, name: '石景山区', title: 'S' },
+    { id: 3, name: '八里庄街道', title: 'B' },
+    { id: 10, name: '北苑', title: 'B' },
+  ])
+
+  const [country, setCountry] = useState([
+    { id: 3, name: '八里庄街道', title: 'B' },
+    { id: 9, name: '北苑', title: 'B' },
+    { id: 4, name: '常营乡', title: 'C' },
+  ])
+  const [town, setTown] = useState([])
+
+  const [address, setAddress] = useState({
+    province,
+    city,
+    country,
+    town,
+  })
+
+  const onChange = (cal) => {
+    const name = address[cal.next]
+
+    if(cal.next == 'town') setNormal(false)
+  }
+  const close = (val) => {
+      console.log(val)
+      setNormal(false)
+
+      if ((val.data as AddressResult).addressStr) {
+        setText((val.data as AddressResult).addressStr,)
+      }
+  }
+  return (
+    <>
+      <Cell title="Choose Address" desc={text}  onClick={()=>setNormal(true)} />
+      <Address
+          modelValue={normal}
+          modelSelect={[1, 7, 3]}
+          province={province}
+          city={city}
+          country={country}
+          town={town}
+          customAddressTitle="Choose Address"
+          onChange={onChange}
+          onClose={close}
+       />
+    </>
+  );
+};
+export default App;
+```
+:::
+### Choose Custom Address2
 
 :::demo
 ```tsx
@@ -103,7 +178,7 @@ import  React,{useState} from "react";
 import { Address, Cell ,Popup} from '@nutui/nutui-react';
 
 const App = () => {
-  const [text, setText] = useState('请选择地址')
+  const [text, setText] = useState('Choose Address')
   const [normal2,setNormal2] = useState(false)
   const [province, setProvince] = useState([
       { id: 1, name: '北京', title: 'B' },
@@ -157,7 +232,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text}  onClick={()=>setNormal2(true)} />
+      <Cell title="Choose Address" desc={text}  onClick={()=>setNormal2(true)} />
       <Address
           modelValue={normal2}
           type="custom2"
@@ -168,7 +243,7 @@ const App = () => {
           height="270px"
           onChange={onChange}
           onClose={close}
-          customAddressTitle="请选择所在地区"
+          customAddressTitle="Choose Address"
        />
     </>
   );
@@ -177,7 +252,7 @@ export default App;
 
 ```
 :::
-### 选择已有地址
+### Choose Exist Address
 
 
 :::demo
@@ -186,7 +261,7 @@ import  React,{useState} from "react";
 import { Address, Cell ,Popup} from '@nutui/nutui-react';
 
 const App = () => {
-  const [text, setText] = useState('请选择地址')
+  const [text, setText] = useState('Choose Address')
   const [exist,setExist] = useState(false)
   const [existAddress, setExistAddress] = useState([
       {
@@ -243,7 +318,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text}  onClick={()=>setExist(true)} />
+      <Cell title="Choose Address" desc={text}  onClick={()=>setExist(true)} />
       <Address
           modelValue={exist}
           type="exist"
@@ -252,7 +327,7 @@ const App = () => {
           onClose={close}
           isShowCustomAddress={false}
           onSelected={selected}
-          existAddressTitle="配送至"
+          existAddressTitle="Delivery To"
        />
     </>
   );
@@ -261,7 +336,7 @@ export default App;
 
 ```
 :::
-### 自定义图标
+### Custom Icon
 
 :::demo
 ```tsx
@@ -269,7 +344,7 @@ import  React,{useState} from "react";
 import { Address, Cell ,Popup} from '@nutui/nutui-react';
 
 const App = () => {
-  const [text, setText] = useState('请选择地址')
+  const [text, setText] = useState('Choose Address')
   const [customImg,setCustomImg] = useState(false)
   const [icon, setIcon] = useState({
       selectedIcon: 'heart-fill',
@@ -335,7 +410,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text}  onClick={()=>setCustomImg(true)} />
+      <Cell title="Choose Address" desc={text}  onClick={()=>setCustomImg(true)} />
       <Address
           modelValue={customImg}
           type="exist"
@@ -356,7 +431,7 @@ export default App;
 ```
 :::
 
-### 自定义地址与已有地址切换
+### Custom Or Exist
 
 :::demo
 ```tsx
@@ -364,7 +439,7 @@ import  React,{useState} from "react";
 import { Address, Cell ,Popup} from '@nutui/nutui-react';
 
 const App = () => {
-  const [text, setText] = useState('请选择地址')
+  const [text, setText] = useState('Choose Address')
   const [other,setOther] = useState(false)
   const [icon, setIcon] = useState({
       selectedIcon: 'heart-fill',
@@ -480,7 +555,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text}  onClick={()=>setOther(true)} />
+      <Cell title="Choose Address" desc={text}  onClick={()=>setOther(true)} />
       <Address
           modelValue={other}
           type="exist"
@@ -493,7 +568,7 @@ const App = () => {
           onChange={onChange}
           onClose={close}
           onSelected={selected}
-          customAndExistTitle="选择其他地址"
+          customAndExistTitle="Choose Other Address"
           switchModule={switchModule}
           closeMask={closeMask}
        />
@@ -508,60 +583,54 @@ export default App;
 
 # API
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| modelValue | 是否打开地址选择 | String | ''
-| type | 地址选择类型 exist/custom/custom2  | String | 'custom'
-| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | []
-| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | []
-| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | []
-| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | []
-| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | String、Number | '200px'
-| existAddress | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | []
-| defaultIcon | 已有地址列表默认图标，type=‘exist’ 时生效 | String | ''
-| selectedIcon | 已有地址列表选中图标，type=‘exist’ 时生效 | String | ''
-| closeBtnIcon | 自定义关闭弹框按钮图标 | string | -
-| backBtnIcon | 自定义地址与已有地址切换时，自定义返回的按钮图标 | String | -
-| isShowCustomAddress | 是否可以切换自定义地址选择，type=‘exist’ 时生效 | Boolean | true
-| customAddressTitle  | 自定义地址选择文案，type='custom' 时生效 | String | '请选择所在地区'
-| existAddressTitle| 已有地址文案 ，type=‘exist’ 时生效| String | '配送至'
-| customAndExistTitle| 自定义地址与已有地址切换按钮文案 ，type=‘exist’ 时生效| String | '选择其他地址'
+| Attribute            | Description               | Type   | Default  |
+|----- | ----- | ----- | -----  |
+| modelValue | Whether to open address | String | '' |
+| modelSelect`v1.2.3` | Default address value | String\|Number[] | [] |
+| type | Choose type: exist/custom/custom2  | String | 'custom' |
+| province | Province data | Array | [] |
+| city | City data | Array | [] |
+| country | Country data | Array | [] |
+| town | Town data | Array | [] |
+| height | Popup height | String、Number | '200px' |
+| existAddress | Exist address list data | Array | [] |
+| defaultIcon | Exist address default icon | String | '' |
+| selectedIcon | Exist address selected icon | String | '' |
+| closeBtnIcon | Custom close button icon | string | - |
+| backBtnIcon | Custom back button icon | String | - |
+| isShowCustomAddress | Whether to change custom address | Boolean | true |
+| customAddressTitle  | Custom address title | String | 'Select Region' |
+| existAddressTitle|  Exist address title | String | 'Delivery To'
+| customAndExistTitle| Custom address and existing address switch button copywriting | String | 'Choose Another Address'
 
-
-  * provinceName 省的名字
-  * cityName 市的名字
-  * countyName 县的名字
-  * townName 乡/镇的名字
-  * addressDetail 具体地址
-  * selectedAddress 字段用于判断当前地址列表的选中项。
 
 ## Event
-| 字段 | 说明 | 回调参数 
-|----- | ----- | ----- 
-| onChange | 自定义选择地址时，选择地区时触发 |  参考 onChange
-| onSelected | 选择已有地址列表时触发 | 参考 selected
-| onClose | 地址选择弹框关闭时触发 | 参考 close
-| closeMask |点击遮罩层或点击右上角叉号关闭时触发 | {closeWay:'mask'/'cross'}
-| switchModule | 点击‘选择其他地址’或自定义地址选择左上角返回按钮触发 | {type:'exist'/'custom'/'custom2'}
+| Attribute            | Description               | Arguments   |
+|----- | ----- | -----  |
+| onChange | Emitted when to selected custom address |  reference onChange |
+| onSelected |  Emitted when to selected exist address  | reference selected
+| onClose | Emitted when to close  | reference close
+| closeMask |Emitted when to close mask | {closeWay:'mask'/'cross'} |
+| switchModule | Click to select another address or custom address to select the upper left corner of the return button triggered | {type:'exist'/'custom'/'custom2'}
 
 
 ## change 回调参数
-| 参数 | 说明 | 可能值 
+| Attribute            | Description               | Options   |
 |----- | ----- | ----- 
-| custom | 当前点击的行政区域  |  province(省) / city(市) / country(县) / town(乡)
-| next | 当前点击的行政区域的下一级 | province(省) / city(市) / country(县) / town(乡)
-| value | 当前点击的行政区域的值（返回传入的值） | {}
+| custom | The administrative region currently clicked  |  province / city / country / town
+| next | The next level of the administrative region currently clicked | province / city / country / town
+| value | The value of the currently clicked administrative region | {}
 
-## selected 回调参数
-| 参数 | 说明 | 可能值 
+## selected 
+| Attribute            | Description               | Options   |
 |----- | ----- | ----- 
-| 第一个参数（prevExistAdd） |  选择前选中的地址 |  {}
-| 第二个参数（nowExistAdd） |  当前选中的地址 |  {}
-| 第三个参数（arr） |  选择完之后的已有地址列表（selectedAddress 值发生改变） |  {}
+| First Option（prevExistAdd） |  Select the previously selected address |  {}
+| Second Option（nowExistAdd） |  Currently selected address |  {}
+| Third Option（arr） |  After selecting the existing address list |  {}
 
-## close 回调参数
-| 参数 | 说明 | 可能值 
+## close 
+| Attribute            | Description               | Options   |
 |----- | ----- | ----- 
-| type | 地址选择类型 exist/custom/custom2  |  exist/custom/custom2
-| data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | {} 
+| type | Selected Type  |  exist/custom/custom2
+| data | Selected Data | {} 
     

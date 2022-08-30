@@ -61,9 +61,6 @@ export const Range: FunctionComponent<
     buttonColor,
     hiddenRange,
     hiddenTag,
-    min,
-    max,
-    step,
     modelValue,
     button,
     vertical,
@@ -72,6 +69,12 @@ export const Range: FunctionComponent<
     dragStart,
     dragEnd,
   } = { ...defaultProps, ...props }
+
+  let { min, max, step } = { ...defaultProps, ...props }
+  min = Number(min)
+  max = Number(max)
+  step = Number(step)
+
   const [buttonIndex, SetButtonIndex] = useState(0)
   const [initValue, SetInitValue] = useState<number | number[] | any>()
 
@@ -392,7 +395,7 @@ export const Range: FunctionComponent<
                   className={`${
                     index === 0 ? 'nut-range-button-wrapper-left' : ''
                   }
-              ${index === 1 ? 'nut-range-button-wrapper-right' : ''}`}
+                  ${index === 1 ? 'nut-range-button-wrapper-right' : ''}`}
                   tabIndex={disabled ? -1 : 0}
                   aria-valuemin={+min}
                   aria-valuenow={curValue(index)}

@@ -13,7 +13,7 @@ exports[`infiniteloading base 1`] = `
         class="top-box"
       >
         <img
-          class="top-img nut-icon__img"
+          class="nut-icon__img top-img "
           src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png"
         />
         <span
@@ -46,7 +46,7 @@ exports[`pull base 1`] = `
         class="top-box"
       >
         <img
-          class="top-img nut-icon__img"
+          class="nut-icon__img top-img "
           src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png"
         />
         <span
@@ -79,7 +79,7 @@ exports[`pull base 2`] = `
         class="top-box"
       >
         <img
-          class="top-img nut-icon__img"
+          class="nut-icon__img top-img "
           src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png"
         />
         <span

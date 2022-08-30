@@ -82,7 +82,7 @@ const App = () => {
     const [value3, updateValue3] = useState('')
     return (
         <>
-            <TextArea defaultValue={value3} rows="10" autosize />
+            <TextArea defaultValue={value3} rows="1" autosize />
         </>
     )
 };
@@ -110,6 +110,24 @@ export default App
 ```
 :::
 
+### 文本位置
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+    return (
+        <>
+            <TextArea defaultValue="文本居右" textAlign="right" />
+        </>
+    )
+};
+export default App
+```
+:::
 ## API
 
 ### Props

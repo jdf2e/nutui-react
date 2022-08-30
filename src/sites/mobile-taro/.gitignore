@@ -1,0 +1,14 @@
+dist/
+deploy_versions/
+.temp/
+.rn_temp/
+node_modules/
+.DS_Store
+src/base/
+src/business/
+src/dentry/
+src/exhibition/
+src/feedback/
+src/layout/
+src/nav/
+src/app.config.ts

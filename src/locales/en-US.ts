@@ -101,5 +101,13 @@ const enUS: BaseLang = {
     title5: 'custom icon settings',
     title6: 'data change monitoring',
   },
+  audio: {
+    back: 'fastBack',
+    forward: 'forward',
+    pause: 'pause',
+    start: 'start',
+    mute: 'mute',
+    tips: 'The onplayend event will only be triggered when loop = false',
+  },
 }
 export default enUS

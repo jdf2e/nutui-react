@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslate } from '../../sites/assets/locale'
 import { Address } from './address'
 import Cell from '@/packages/cell'
 
@@ -36,7 +37,49 @@ interface AddressResult extends AddressList {
   town: RegionData[]
 }
 
+interface T {
+  [props: string]: string
+}
+
 const AddressDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基本用法',
+      title: '选择地址',
+      customAddress: '选择自定义地址',
+      selectCity: '选中省市区',
+      customAddress2: '选择自定义地址2',
+      existAddress: '选择已有地址',
+      icon: '自定义图标',
+      change: '自定义地址与已有地址切换',
+      delivery: '配送',
+      other: '选择其他地址',
+    },
+    'zh-TW': {
+      basic: '基本用法',
+      title: '選擇地址',
+      customAddress: '選擇自定義地址',
+      selectCity: '選中省市區',
+      customAddress2: '選擇自定義地址2',
+      existAddress: '選擇已有地址',
+      icon: '自定義圖標',
+      change: '自定義地址與已有地址切換',
+      delivery: '配送',
+      other: '選擇其他地址',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title: 'Choose Address',
+      customAddress: 'Choose Custom Address',
+      selectCity: 'Choose City',
+      customAddress2: 'Choose Custom Address2',
+      existAddress: 'Choose Exist Address',
+      icon: 'Custom Icon',
+      change: 'Custom Or Exist',
+      delivery: 'Delivery',
+      other: 'Choose Other Address',
+    },
+  })
   const [province, setProvince] = useState([
     { id: 1, name: '北京', title: 'B' },
     { id: 2, name: '广西', title: 'G' },
@@ -76,12 +119,12 @@ const AddressDemo = () => {
   const [town, setTown] = useState<any>([])
 
   const [text, setText] = useState<any>({
-    one: '请选择地址',
-    two: '请选择地址',
-    three: '请选择地址',
-    four: '请选择地址',
-    five: '请选择地址',
-    six: '请选择地址',
+    one: translated.title,
+    two: translated.title,
+    three: translated.title,
+    four: translated.title,
+    five: translated.title,
+    six: translated.title,
   })
 
   const [address, setAddress] = useState({
@@ -325,39 +368,39 @@ const AddressDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>选择自定义地址</h2>
+        <h2>{translated.title}</h2>
         <Cell
-          title="选择地址"
+          title={translated.customAddress}
           desc={text.one}
           onClick={() => showAddress('normal')}
         />
-        <h2>选中省市区</h2>
+        <h2>{translated.selectCity}</h2>
         <Cell
-          title="选择地址"
+          title={translated.title}
           desc={text.six}
           onClick={() => showAddress('select')}
         />
-        <h2>选择自定义地址2</h2>
+        <h2>{translated.customAddress2}</h2>
         <Cell
-          title="选择地址"
+          title={translated.title}
           desc={text.five}
           onClick={() => showAddress('normal2')}
         />
-        <h2>选择已有地址</h2>
+        <h2>{translated.existAddress}</h2>
         <Cell
-          title="选择地址"
+          title={translated.title}
           desc={text.two}
           onClick={() => showAddress('exist')}
         />
-        <h2>自定义图标</h2>
+        <h2>{translated.icon}</h2>
         <Cell
-          title="选择地址"
+          title={translated.title}
           desc={text.three}
           onClick={() => showAddress('customImg')}
         />
-        <h2>自定义地址与已有地址切换</h2>
+        <h2>{translated.change}</h2>
         <Cell
-          title="选择地址"
+          title={translated.title}
           desc={text.four}
           onClick={() => showAddress('other')}
         />
@@ -368,7 +411,7 @@ const AddressDemo = () => {
           city={city}
           country={country}
           town={town}
-          customAddressTitle="请选择所在地区"
+          customAddressTitle={translated.title}
           onChange={(cal) => onChange(cal, 'normal')}
           onClose={close1}
         />
@@ -380,7 +423,7 @@ const AddressDemo = () => {
           city={addressData.city}
           country={addressData.country}
           town={addressData.town}
-          customAddressTitle="请选择所在地区"
+          customAddressTitle={translated.title}
           onChange={(cal) => onChange(cal, 'select')}
           onClose={close6}
         />
@@ -396,7 +439,7 @@ const AddressDemo = () => {
           height="270px"
           onChange={(cal) => onChange(cal, 'normal2')}
           onClose={close5}
-          customAddressTitle="请选择所在地区"
+          customAddressTitle={translated.title}
         />
 
         <Address
@@ -407,7 +450,7 @@ const AddressDemo = () => {
           onClose={close2}
           isShowCustomAddress={false}
           onSelected={selected}
-          existAddressTitle="配送至"
+          existAddressTitle={translated.delivery}
         />
 
         <Address
@@ -435,7 +478,7 @@ const AddressDemo = () => {
           onChange={(cal) => onChange(cal, 'other')}
           onClose={close4}
           onSelected={selected}
-          customAndExistTitle="选择其他地址"
+          customAndExistTitle={translated.other}
           switchModule={switchModule}
           closeMask={closeMask}
         />

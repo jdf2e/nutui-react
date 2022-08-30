@@ -154,6 +154,7 @@ export const Calendar = React.forwardRef<
           visible={visible}
           position="bottom"
           round
+          duration={0.5}
           closeable
           destroyOnClose
           onClickOverlay={closePopup}
