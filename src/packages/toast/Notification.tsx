@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
+import { render } from '@/utils/render'
 
 export interface NotificationProps {
   id?: string
@@ -28,9 +29,9 @@ export interface NotificationProps {
 }
 
 export default class Notification extends React.PureComponent<NotificationProps> {
-  private closeTimer: number | undefined
-
   static newInstance: (properties: NotificationProps, callback: any) => void
+
+  private closeTimer: number | undefined
 
   constructor(props: NotificationProps) {
     super(props)
@@ -163,5 +164,5 @@ Notification.newInstance = (properties, callback) => {
     })
   }
 
-  ReactDOM.render(<Notification {...properties} ref={ref} />, element)
+  render(<Notification {...properties} ref={ref} />, element)
 }
