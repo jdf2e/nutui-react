@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Cascader } from './cascader.taro'
-import { Cell } from '@/packages/cell/cell'
+import { Cell } from '../cell/cell.taro'
 
 interface T {
   basic: string

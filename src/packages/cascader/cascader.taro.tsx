@@ -6,10 +6,11 @@ import React, {
   CSSProperties,
 } from 'react'
 import classNames from 'classnames'
-import Popup from '@/packages/popup'
-import { Tabs } from '@/packages/tabs/tabs'
-import { TabPane } from '@/packages/tabpane/tabpane'
-import { CascaderItem } from './cascaderItem'
+import { Popup } from '@/packages/popup/popup.taro'
+import { Tabs } from '@/packages/tabs/tabs.taro'
+import { TabPane } from '@/packages/tabpane/tabpane.taro'
+import { CascaderItem } from './cascaderItem.taro'
+
 import bem from '@/utils/bem'
 import { convertListToOptions } from './helper'
 import {
