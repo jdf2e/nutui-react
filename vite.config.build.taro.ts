@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
+import autoprefixer from 'autoprefixer'
 
 const path = require('path')
 const config = require('./package.json')
@@ -26,7 +27,7 @@ export default defineConfig({
       },
       postcss: {
         plugins: [
-          require('autoprefixer')({
+          autoprefixer({
             overrideBrowserslist: [
               '> 0.5%',
               'last 2 versions',
@@ -41,6 +42,7 @@ export default defineConfig({
   },
   plugins: [reactRefresh()],
   build: {
+    minify: false,
     emptyOutDir: true,
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖

@@ -92,4 +92,31 @@ export interface BaseLang {
     // eslint-disable-next-line @typescript-eslint/ban-types
     additionalImages: Function
   }
+  searchbar: {
+    basePlaceholder: string
+    text: string
+    test: string
+    title1: string
+    title2: string
+    title3: string
+    title4: string
+    title5: string
+    title6: string
+  }
+  audio: {
+    back: string
+    forward: string
+    pause: string
+    start: string
+    mute: string
+    tips: string
+  }
+  datepicker: {
+    year: string
+    month: string
+    day: string
+    hour: string
+    min: string
+    seconds: string
+  }
 }
