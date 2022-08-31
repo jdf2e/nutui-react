@@ -1,9 +1,9 @@
-import React, { useState, useContext, useImperativeHandle } from 'react'
+import React, { useContext } from 'react'
 import classNames from 'classnames'
 import { DataContext } from '@/packages/swiper/UserContext'
 import bem from '@/utils/bem'
 
-interface SwiperItemProps {
+export interface SwiperItemProps {
   direction?: string
   size?: 0
 }
@@ -25,15 +25,9 @@ export const SwiperItem = React.forwardRef<
   const _props = { ...defaultProps, ...props }
   const { children, direction, size } = _props
   const parent: any = useContext(DataContext)
-  const [offset, setOffset] = useState(0)
   const b = bem('swiper-item')
   const classes = classNames(b(''))
 
-  useImperativeHandle<HTMLDivElement, any>(ref, () => ({
-    changeOffset: (num: number) => {
-      setOffset(num)
-    },
-  }))
   const style = () => {
     const style: IStyle = {}
     const _direction = parent?.propSwiper.direction || direction

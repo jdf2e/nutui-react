@@ -1,3 +1,68 @@
+## v1.3.1
+`2022-08-31`
+* :sparkles: feat: calendar 组件功能补齐、单元测试 (#228) @love_forever
+* :bug: fix: audio组件内部css覆盖range组件样式问题修复 (#254) @libin0824
+* :sparkles: chore: audio 组件增加 taro 文件 (#253) @libin0824
+* :sparkles: feat: 新增 ImagePreview、Dialog国际化&单元测试 (#244) @yangjinjun3
+* :sparkles: feat: 增加backtop、input、notify组件的单元测试 (#252) @vickyYe
+* :sparkles: feat: textarea 组件增加单元测试、优化自动伸缩高度功能 (#248) @vickyYe
+* :sparkles: chore: taro 版本构建不压缩，解决 banner 插入导致打出的文件报错 oasis-cloud
+* :sparkles: feat: 新增组件 Grid (#237) @yangxiaolu1993
+* :sparkles: chore: 导出组件的 props 类型 oasis-cloud
+* :sparkles: feat: 新增 audio 组件 (#250) @libin0824
+* :sparkles: feat: 新增 menu 组件 (#251) @oasis-cloud
+* :bug: fix: elevator 电梯楼层组件索引滚动后白屏 (#238) @mike8625
+* :sparkles: feat: SearchBar、ShortPassword 适配 Taro (#247) @xiaoyatong
+* :sparkles: feat: Picker、DatePicker、Address 组件添加国际化 (#236) @yangxiaolu1993
+* :sparkles: feat: 新增 cascader 组件 (#202) @ailululu
+* :sparkles: feat: 新增 swipe 组件 (#226) @Ymm
+* :sparkles: feat: range适配taro (#243) @xiaoyatong
+
+## v1.3.0
+`2022-08-24`
+
+* :sparkles: chore: Taro support (#240) @xiaoyatong
+* :sparkles: chore: support react18 (#224) @oasis-cloud
+* :sparkles: chore: noticebar (#233) @vickyYe
+* :sparkles: feat: add SideNavBar (#198) @mangov587
+* :sparkles: feat: add Table (#185) @yangjinjun3
+* :sparkles: feat: popover 功能补齐与单元测试 (#219) @yangxiaolu1993
+* :sparkles: feat: notify 增加props+国际化文档 (#221) @vickyYe
+* :sparkles: feat: icon 组件增加自定义字体新方案，增加 fontClassName 属性 (#232) @oasis-cloud
+* :sparkles: feat: toast 组件props补齐+国际化，input组件issue问题修改 (#214) @vickyYe
+* :sparkles: feat: shortpassword 优化demo，增加单元测试，增加国际化 (#222) @Drjingfubo
+* :sparkles: feat: fixednav 单元测试 (#217) @Ymm0008
+* :sparkles: feat: timeselect (#216) @shadow-Fiend
+* :sparkles: feat: layout props补齐，单元测试 (#208) @Ymm0008
+* :sparkles: feat: Address 组件功能补齐-添加默认选中项；单元测试添加 (#207) @yangxiaolu1993
+* :sparkles: feat: popup 增加指定节点挂载与多层堆叠功能 (#197) @love_forever
+* :sparkles: feat: Swiper 组件能力补齐，新增demo，添加国际化文档 (#196) @lkjh3214
+* :bug: fix: checkbox 组件的全选 demo 无法高亮全选按钮 (#239) @oasis-cloud
+* :bug: fix: 解决Picker滚动结束延迟触发事件问题 (#218) @yangxiaolu1993
+* :bug: fix: radio 组件 demo 中自定义尺寸文案错误 (#231) @oasis-cloud
+* :bug: fix: radio 组件 demo 中自定义图标展示错误 (#230) @oasis-cloud
+* :bug: fix: checkbox 全选 demo 中的错误 (#229) @oasis-cloud
+* :bug: fix: vite 构建 umd 文件时 banner 插入错误 @oasis-cloud
+* :bug: fix: 修复Infiniteloading 组件 pullTxt、loadTxt 和 loadMoreTxt 参数无效 (#227) @junjun666
+* :bug: fix: radio 组件选中后可以取消的问题 (#211) @oasis-cloud
+
+## v1.2.2
+`2022-08-10`
+
+* :zap: feat: range组件props补齐+国际化 (#201) @vickyYE
+* :zap: feat: signature组件增加单元测试、文档和demo国际化 (#205) @irisSong
+* :zap: test(navbar): navbar unit test (#203) @szg2008
+* :zap: test(tabbar): tabbar unit test (#204) @szg2008
+* :zap: feat: 新增 searchbar 组件 (#186) @Ymm0008
+* :zap: feat(numberkeyboard): new components (#192) @Drjingfubo
+* :zap: feat(tabbar): 组件能力补齐 (#178) @szg2008
+* :zap: feat: progress 组件 (#187) @ailululu
+* :zap: chore: tag 组件 eslint 修复 (#200) @libin0824
+* :zap: feat: datepicker 功能补齐 (#182) @yangxiaolu1993
+* :zap: feat: tag 组件新增 onClick 事件，closeable 支持非受控(#195) @libin0824
+* :zap: feat: divider组件增加单元测试 (#194) @vickyYE
+* :zap: feat: Dialog组件增加在线调试能力,文档多语言支持 (#193) @libin0824
+
 ## v1.2.1
 `2022-08-03`
 

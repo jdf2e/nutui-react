@@ -1,0 +1,107 @@
+.nut-theme-dark {
+  .nut-searchbar {
+    background: $black;
+    &__search-label {
+      color: $white;
+    }
+    .nut-searchbar__input-clear {
+      & .nut-searchbar__nut-icon-mask-close {
+        color: $white;
+        &:hover {
+          cursor: pointer;
+          color: $white;
+        }
+      }
+    }
+    &__right-search-icon,
+    &__left-search-icon {
+      color: $white;
+    }
+  }
+}
+.val-text {
+  font-size: 12px;
+  color: $title-color2;
+  padding: 0 20px;
+}
+.nut-searchbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: $searchbar-width;
+  padding: $searchbar-padding;
+  background: $searchbar-background;
+  box-sizing: border-box;
+  &__content {
+    position: relative;
+    flex: 1;
+  }
+  &__icon {
+    position: absolute !important;
+    z-index: 888;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    overflow: hidden;
+  }
+  &__leftin-icon {
+    left: 15px;
+    top: 53%;
+  }
+  &__rightin-icon {
+    right: 5px;
+    top: 53%;
+  }
+  &__input {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    width: $searchbar-input-width;
+    height: $searchbar-input-height;
+    flex: 1;
+    padding: $searchbar-input-padding;
+    border-radius: 0;
+    font-size: $font-size-small;
+    // box-shadow: $searchbar-input-box-shadow;
+    background: $searchbar-input-background;
+  }
+  &__round {
+    border-radius: $searchbar-input-border-radius;
+  }
+  &__disabled {
+    cursor: not-allowed;
+  }
+  &__clear {
+    position: absolute !important;
+    z-index: 888;
+    right: 3px;
+    top: 47%;
+    transform: translate(-50%, -40%);
+  }
+  .pos-right {
+    right: 40px;
+  }
+  &__left {
+    text-align: left;
+  }
+  &__right {
+    text-align: right;
+  }
+  &__center {
+    text-align: center;
+  }
+  &__label,
+  &__action-text {
+    padding: 0 8px 0 0;
+    font-size: 12px;
+    color: $searchbar-action-text-color;
+  }
+  &__action-text {
+    padding: 0 0 0 8px;
+  }
+  &__leftout-icon {
+    margin-right: 10px;
+  }
+  &__rightout-icon {
+    margin-left: 10px;
+  }
+}

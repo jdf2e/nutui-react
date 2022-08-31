@@ -316,6 +316,9 @@ const CheckBoxDemo = () => {
       checked={checkbox1}
       indeterminate={indeterminate}
       onChange={(state, label) => {
+        if (state) {
+          setIndeterminate(false)
+        }
         ;(checkboxgroup2Ref.current as any).toggleAll(state)
       }}
     >
@@ -357,18 +360,18 @@ export default CheckBoxDemo;
 
 ## Checkbox
 
-| 字段                    | 说明 | 类型 | 默认值 | 
-|-----------------------| ----- | ----- | -----|
-| checked               | 是否处于选中状态 | Boolean | `false`|
-| disabled              | 是否禁用选择 | Boolean | `false`|
-| textPosition          | 文本所在的位置，可选值：`left`,`right` | String | `right`|
-| iconSize              | [图标尺寸](#/icon) | String、Number | `18`|
-| iconName              | [图标名称](#/icon)，选中前(建议和`iconActiveName`一起修改) | String | `'check-normal'`|
-| iconActiveName        | [图标名称](#/icon)，选中后(建议和`iconName`一起修改) | String | `'checked'`|
-| iconIndeterminateName | [图标名称](#/icon)，半选状态 | String | `'check-disabled'`|
-| iconClassPrefix       | 自定义 icon 类名前缀，用于使用自定义图标        | String                  | `nut-icon` |
-| iconFontClassName     | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
-| label                 | 复选框的文本内容 | String | -|
+| 字段                            | 说明 | 类型 | 默认值 | 
+|-------------------------------| ----- | ----- | -----|
+| checked                       | 是否处于选中状态 | Boolean | `false`|
+| disabled                      | 是否禁用选择 | Boolean | `false`|
+| textPosition                  | 文本所在的位置，可选值：`left`,`right` | String | `right`|
+| iconSize                      | [图标尺寸](#/icon) | String、Number | `18`|
+| iconName                      | [图标名称](#/icon)，选中前(建议和`iconActiveName`一起修改) | String | `'check-normal'`|
+| iconActiveName                | [图标名称](#/icon)，选中后(建议和`iconName`一起修改) | String | `'checked'`|
+| iconIndeterminateName`v1.2.1` | [图标名称](#/icon)，半选状态 | String | `'check-disabled'`|
+| iconClassPrefix`v1.2.1`       | 自定义 icon 类名前缀，用于使用自定义图标        | String                  | `nut-icon` |
+| iconFontClassName`v1.2.1`       | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
+| label                         | 复选框的文本内容 | String | -|
 
 ## CheckboxGroup
 
@@ -376,7 +379,7 @@ export default CheckBoxDemo;
 |--------------| ----- |-------------| -- |
 | checkedValue | 当前选中项的标识符，和 `label` 相对应  | String      | -|
 | disabled     | 是否禁用选择,将用于其下的全部复选框 | Boolean     | `false`|
-| max           | 限制最大可选数 | `undefined|number` | `undefined`|
+| max`v1.2.1`           | 限制最大可选数 | `undefined|number` | `undefined`|
 
 ## Checkbox Event
 
@@ -392,7 +395,7 @@ export default CheckBoxDemo;
 
 ## CheckboxGroup API
 
-| 方法名 | 说明 | 参数 |
-|----- | ----- | ----- |
-| toggleAll | 全选/取消 | `f`,传 `true`,表示全选，传 `false`,表示取消全选 |
-| toggleReverse | 反选 | - |
+| 方法名               | 说明 | 参数 |
+|-------------------| ----- | ----- |
+| toggleAll`v1.2.1` | 全选/取消 | `f`,传 `true`,表示全选，传 `false`,表示取消全选 |
+| toggleReverse`v1.2.1`   | 反选 | - |

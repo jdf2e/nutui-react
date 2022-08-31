@@ -10,7 +10,7 @@ exports[`prop icon 1`] = `
       class="nut-cell__icon"
     >
       <i
-        class="icon nutui-iconfont nut-icon nutui-icon nut-icon-my "
+        class="nutui-iconfont nut-icon nut-icon-my icon"
       />
     </div>
     <div
@@ -28,7 +28,7 @@ exports[`prop icon 1`] = `
       张三
     </div>
     <i
-      class="nut-cell__link nutui-iconfont nut-icon nutui-icon nut-icon-right "
+      class="nutui-iconfont nut-icon nut-icon-right nut-cell__link"
     />
   </div>
 </div>
@@ -55,7 +55,7 @@ exports[`prop isLink 1`] = `
       https://m.jd.com/
     </div>
     <i
-      class="nut-cell__link nutui-iconfont nut-icon nutui-icon nut-icon-right "
+      class="nutui-iconfont nut-icon nut-icon-right nut-cell__link"
     />
   </div>
 </div>
@@ -124,9 +124,7 @@ exports[`slot linkSlot 1`] = `
     >
       <div
         class="switch-button"
-      >
-        
-      </div>
+      />
     </div>
   </div>
 </div>

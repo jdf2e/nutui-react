@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`timeselect props test 1`] = `
+<div>
+  <div
+    class="overlay-fade-enter-active nut-overlay"
+    style="z-index: 2000; animation-duration: 0.3s;"
+  />
+  <div
+    class="round popup-bottom  undefined nut-popup"
+    style="width: 100%; height: 50%; z-index: 2000; animation-duration: 0.3s;"
+  >
+    <div
+      class="nut-timeselect "
+    >
+      <div
+        class="nut-timeselect__title"
+      >
+        取件时间 1
+      </div>
+      <div
+        class="nut-timeselect__content"
+      >
+        <div
+          class="nut-timeselect__content-left"
+        >
+          <div
+            class="nut-timepannel nut-timepannel-active"
+          >
+            5月20日(今天)
+          </div>
+          <div
+            class="nut-timepannel "
+          >
+            5月21日(星期三)
+          </div>
+        </div>
+        <div
+          class="nut-timedetail "
+        >
+          <span
+            class="nut-timedetail__item"
+          >
+            9:00-10:00
+          </span>
+          <span
+            class="nut-timedetail__item"
+          >
+            10:00-11:00
+          </span>
+          <span
+            class="nut-timedetail__item"
+          >
+            11:00-12:00
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="nutui-popup__close-icon nutui-popup__close-icon--top-right"
+    >
+      <i
+        class="nutui-iconfont nut-icon nut-icon-close "
+        style="font-size: 12px; width: 12px; height: 12px;"
+      />
+    </div>
+  </div>
+</div>
+`;

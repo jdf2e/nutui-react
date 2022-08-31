@@ -42,6 +42,12 @@ export function trigger(
   el.dispatchEvent(event)
 }
 
+export function sleep(delay = 0): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay)
+  })
+}
+
 // simulate drag gesture
 export function triggerDrag(el: any, relativeX = 0, relativeY = 0): void {
   let x = relativeX

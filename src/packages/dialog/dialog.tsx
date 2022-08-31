@@ -8,16 +8,16 @@ import Button from '@/packages/button'
 import { DialogWrapper } from './DialogWrapper'
 import confirm from './Confirm'
 import {
-  DialogProps,
+  IDialogProps,
   DialogReturnProps,
   DialogComponent,
   ConfirmProps,
 } from './config'
-import { useConfig } from '@/packages/configprovider'
 
+export type DialogProps = IDialogProps
 const defaultProps = {
-  okText: '',
-  cancelText: '',
+  okText: '确认',
+  cancelText: '取消',
   mask: true,
   closeOnClickOverlay: true,
   noFooter: false,
@@ -34,10 +34,10 @@ const BaseDialog: ForwardRefRenderFunction<
   unknown,
   Partial<DialogProps> & HTMLAttributes<HTMLDivElement>
 > = (props, ref) => {
-  const { locale } = useConfig()
   const {
     visible,
     footer,
+    noFooter,
     noOkBtn,
     noCancelBtn,
     lockScroll,
@@ -52,9 +52,9 @@ const BaseDialog: ForwardRefRenderFunction<
   } = props
 
   const renderFooter = function () {
-    if (footer === null) return ''
+    if (footer === null || noFooter) return ''
 
-    const handleCancel = function (e: MouseEvent) {
+    const handleCancel = (e: MouseEvent) => {
       e.stopPropagation()
       if (!cancelAutoClose) return
 
@@ -65,7 +65,7 @@ const BaseDialog: ForwardRefRenderFunction<
       }
     }
 
-    const handleOk = function (e: MouseEvent) {
+    const handleOk = (e: MouseEvent) => {
       e.stopPropagation()
       onClosed?.()
       onOk?.(e)
@@ -82,9 +82,9 @@ const BaseDialog: ForwardRefRenderFunction<
             plain
             type="primary"
             className="nut-dialog__footer-cancel"
-            onClick={(e) => handleCancel(e)}
+            onClick={handleCancel}
           >
-            {cancelText || locale.cancel}
+            {cancelText}
           </Button>
         )}
         {!noOkBtn && (
@@ -95,9 +95,9 @@ const BaseDialog: ForwardRefRenderFunction<
               disabled: okBtnDisabled,
             })}
             disabled={okBtnDisabled}
-            onClick={(e) => handleOk(e)}
+            onClick={handleOk}
           >
-            {okText || locale.confirm}
+            {okText}
           </Button>
         )}
       </>

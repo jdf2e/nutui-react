@@ -17,6 +17,8 @@ interface T {
   a52bef0c: string
   d04fcbda: string
   '0aaad620': string
+  ea3d02f2: string
+  c9e6df49: string
 }
 
 const PopupDemo = () => {
@@ -34,6 +36,8 @@ const PopupDemo = () => {
       a52bef0c: '图标位置',
       d04fcbda: '自定义图标',
       '0aaad620': '圆角弹框',
+      ea3d02f2: '指定节点挂载',
+      c9e6df49: '多层堆叠',
     },
     'zh-TW': {
       ce5c5446: '基礎類型',
@@ -48,6 +52,8 @@ const PopupDemo = () => {
       a52bef0c: '圖標位置',
       d04fcbda: '自定義圖標',
       '0aaad620': '圓角彈框',
+      ea3d02f2: '指定節點掛載',
+      c9e6df49: '多層堆疊',
     },
     'en-US': {
       ce5c5446: 'base type',
@@ -62,6 +68,8 @@ const PopupDemo = () => {
       a52bef0c: 'Icon position',
       d04fcbda: 'custom icon',
       '0aaad620': 'Rounded popup',
+      ea3d02f2: 'Mount the specified node',
+      c9e6df49: 'multi-layer stacking',
     },
   })
 
@@ -74,6 +82,9 @@ const PopupDemo = () => {
   const [showIconPosition, setShowIconPosition] = useState(false)
   const [showIconDefine, setShowIconDefine] = useState(false)
   const [showBottomRound, setShowBottomRound] = useState(false)
+  const [showMountNode, setShowMountNode] = useState(false)
+  const [showMutiple, setShowMutiple] = useState(false)
+  const [showMutipleInner, setShowMutipleInner] = useState(false)
 
   return (
     <>
@@ -228,6 +239,65 @@ const PopupDemo = () => {
             setShowBottomRound(false)
           }}
         />
+
+        <h2>{translated.ea3d02f2}</h2>
+        <Cell
+          title={translated.ea3d02f2}
+          isLink
+          onClick={() => {
+            setShowMountNode(true)
+          }}
+        />
+        <Popup
+          visible={showMountNode}
+          style={{ padding: '30px 50px' }}
+          teleport={document.body}
+          onClose={() => {
+            setShowMountNode(false)
+          }}
+        >
+          body
+        </Popup>
+
+        <h2>{translated.c9e6df49}</h2>
+        <Cell
+          title={translated.c9e6df49}
+          isLink
+          onClick={() => {
+            setShowMutiple(true)
+          }}
+        />
+        <Popup
+          visible={showMutiple}
+          style={{ padding: '30px 50px' }}
+          onClose={() => {
+            setShowMutiple(false)
+          }}
+        >
+          <span
+            onClick={() => {
+              setShowMutipleInner(true)
+            }}
+          >
+            Click It
+          </span>
+        </Popup>
+        <Popup
+          visible={showMutipleInner}
+          style={{ padding: '30px 50px' }}
+          overlayStyle={{ backgroundColor: 'transparent' }}
+          onClose={() => {
+            setShowMutipleInner(false)
+          }}
+        >
+          <span
+            onClick={() => {
+              setShowMutipleInner(false)
+            }}
+          >
+            close
+          </span>
+        </Popup>
       </div>
     </>
   )

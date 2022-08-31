@@ -8,7 +8,7 @@ exports[`props decimalDigits test 1`] = `
     <div
       class="nut-price__symbol"
     >
-      ¥
+      ￥
     </div>
     <div
       class="nut-price__big"

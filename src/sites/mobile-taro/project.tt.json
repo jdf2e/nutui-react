@@ -1,0 +1,9 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "NutUI-React-Taro",
+  "appid": "test",
+  "setting": {
+    "es6": false,
+    "minified": false
+  }
+}

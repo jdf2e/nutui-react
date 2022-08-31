@@ -1,4 +1,4 @@
-import React, { FunctionComponent, MouseEvent, HTMLProps } from 'react'
+import React, { FunctionComponent, MouseEvent } from 'react'
 import classNames from 'classnames'
 import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
@@ -14,21 +14,21 @@ export interface FixedNavProps {
   fixednavClass: string
   visible: boolean
   overlay: boolean
-  navList: Array<object>
+  navList: Array<any>
   activeText: string
   unActiveText: string
   position: Position
   type: Direction
   onChange: (v: any) => void
-  onSelected: Function
-  slotList: HTMLProps<HTMLElement>
-  slotBtn: HTMLProps<HTMLElement>
+  onSelected: (v: any, event: MouseEvent) => void
+  slotList: React.ReactNode
+  slotBtn: React.ReactNode
 }
 
 const defaultProps = {
   fixednavClass: 'nut-fixednav',
-  activeText: '收起导航',
-  unActiveText: '快速导航',
+  activeText: '',
+  unActiveText: '',
   type: 'right',
   position: {
     top: 'auto',
@@ -120,8 +120,8 @@ export const FixedNav: FunctionComponent<
             <Icon name="left" color="#fff" />
             <div className="text">
               {visible
-                ? locale.fixednav.activeText || activeText
-                : locale.fixednav.unActiveText || unActiveText}
+                ? activeText || locale.fixednav.activeText
+                : unActiveText || locale.fixednav.unActiveText}
             </div>
           </>
         )}
