@@ -3,15 +3,18 @@ import Notification, { NotificationProps } from './Notification'
 
 let messageInstance: any = null
 interface IToastOptions {
-  id: string
+  id?: string
   msg: string
+  style?: React.CSSProperties
   duration: number
   center: boolean
   type: string
-  customClass: string
-  bottom: number
+  title: string
+  customClass?: string
+  bottom: string
   size: string | number
-  icon: string
+  icon: string | null
+  iconSize: string
   textAlignCenter: boolean
   loadingRotate: boolean
   bgColor: string
@@ -24,13 +27,16 @@ interface IToastOptions {
 const options: IToastOptions = {
   msg: '',
   id: '',
+  style: {},
   duration: 1.5, // 时长,duration为0则一直展示
   center: true, // toast是否居中展示
   type: 'text',
+  title: '',
   customClass: '', // 自定义样式名
-  bottom: 30, // center为false时生效，距离底部位置
+  bottom: '30px', // center为false时生效，距离底部位置
   size: 'base', // 设置字体大小，默认base,可选large\small\base
-  icon: '', // 未实现
+  icon: null, // 未实现
+  iconSize: '20',
   textAlignCenter: true, // 文字是否居中显示,true为居中，false为left
   loadingRotate: true, // 未实现
   bgColor: 'rgba(0, 0, 0, .8)',

@@ -116,6 +116,68 @@ export default App;
 ```
 :::
 
+### 指定节点挂载
+
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Popup, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const [showMountNode, setShowMountNode] = useState(false);
+
+  return (
+    <>
+        <Cell title="指定节点挂载" isLink onClick={() => { setShowMountNode(true) }}/>
+        <Popup visible={showMountNode} style={{ padding: '30px 50px' }} teleport={ document.body } onClose={() => { setShowMountNode(false) }}>
+          body
+        </Popup>
+    </>
+  );
+};
+export default App;
+```
+:::
+
+### 多层堆叠
+
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Popup, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const [showMutiple, setShowMutiple] = useState(false)
+  const [showMutipleInner, setShowMutipleInner] = useState(false)
+
+  return (
+    <>
+        <Cell title="多层堆叠" isLink onClick={() => { setShowMutiple(true) }}/>
+        <Popup
+          visible={showMutiple}
+          style={{ padding: '30px 50px' }}
+          onClose={() => {
+            setShowMutiple(false)
+          }}
+        >
+          <span onClick={ () => { setShowMutipleInner(true) } }>Click It</span>
+        </Popup>
+        <Popup
+          visible={showMutipleInner}
+          style={{ padding: '30px 50px' }}
+          onClose={() => {
+            setShowMutipleInner(false)
+          }}
+        >
+          <span onClick={ () => { setShowMutipleInner(false) } }>close</span>
+        </Popup>
+    </>
+  );
+};
+export default App;
+```
+:::
+
 ## API
 
 ### Props
@@ -139,6 +201,7 @@ export default App;
 | closeIcon             | 自定义 Icon                                                 | String         | `"close"`     |
 | destroyOnClose       | 组件销毁后是否关闭                                          | Boolean        | `true`        |
 | round                  | 是否显示圆角                                                | Boolean        | `false`       |
+| teleport`v1.3.0`                  | 指定节点挂载                                                | HTMLElement、(() => HTMLElement) 、null        | `null`       |
 
 ### Events
 

@@ -141,7 +141,7 @@ const App = () => {
   const onChange = (cal) => {
     const name = address[cal.next]
 
-    if(cal.next == 'town') setNormal(false)
+    if(cal.next === 'town') setNormal(false)
   }
   const close = (val) => {
       console.log(val)
@@ -535,7 +535,7 @@ const App = () => {
   }
   const close = (val) => {
       setOther(false)
-      if (val.type == 'exist') {
+      if (val.type === 'exist') {
         const { provinceName, cityName, countyName, townName, addressDetail } = val.data as AddressResult
         if (provinceName) {
           setText(provinceName + cityName + countyName + townName + addressDetail)
@@ -545,7 +545,7 @@ const App = () => {
         }
   }
   const switchModule = (val) => {
-      if (val.type == 'custom') {
+      if (val.type === 'custom') {
         console.log('点击了“选择其他地址”按钮')
       } else {
         console.log('点击了自定义地址左上角的返回按钮')
@@ -588,7 +588,7 @@ export default App;
 | 字段 | 说明 | 类型 | 默认值 |
 |----- | ----- | ----- | -----  |
 | modelValue | 是否打开地址选择 | String | '' |
-| modelSelect | 设置默认选中地址 | String\|Number[] | [] |
+| modelSelect`v1.3.0` | 设置默认选中地址 | String\|Number[] | [] |
 | type | 地址选择类型 exist/custom/custom2  | String | 'custom' |
 | province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
 | city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |

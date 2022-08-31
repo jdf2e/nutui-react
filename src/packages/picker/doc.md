@@ -170,7 +170,7 @@ export default App;
 
 ### 平铺展示
 
-通过设置 `threeDimensional` 取消 3D 展示效果
+通过设置 `threeDimensional` 取消 3D 展示效果，并且通过设置 `swipeDuration` 可以控制快速滚动的时长。
 
 :::demo
 ```tsx
@@ -210,6 +210,7 @@ const App = () => {
         isVisible={isVisible}
         listData={listData}
         threeDimensional={false}
+        swipeDuration={1000}
         onConfirm={(values, list) => confirmPicker(values, list)}
         onClose={() => setIsVisible(false)}
        />
@@ -363,28 +364,30 @@ export default App;
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | ----- 
-| isVisible | 是否可见 | Boolean | false
-| title | 设置标题 | String | null
-| listData | 列表数据 | Array | []
-| defaultValueData | 默认选中 | Array | []
-| threeDimensional          | 是否开启3D效果               | Boolean  | true   |
+| 字段                     | 说明 | 类型 | 默认值 |
+|------------------------| ----- | ----- | ----- |
+| isVisible              | 是否可见 | Boolean | false |
+| title                  | 设置标题 | String | null |
+| listData               | 列表数据 | Array | [] |
+| defaultValueData       | 默认选中 | Array | [] |
+| threeDimensional`v1.2.2` | 是否开启3D效果               | Boolean  | true   |
+| swipeDuration`v1.3.0` | 快速滑动时惯性滚动的时长，单位 ms               | String \| Number  | 1000   |
 
 
 ## listData 数据结构
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| text        | 选项的文字内容               | String|Number |               |
-| value          | 选项对应的值，且唯一               | String|Number |            |
-| children         | 用于级联选项               | Array | -                |
+| text`v1.2.2`        | 选项的文字内容               | String|Number |               |
+| value`v1.2.2`          | 选项对应的值，且唯一               | String|Number |            |
+| children`v1.2.2`        | 用于级联选项               | Array | -                |
 
 
 ## Events
 
-| 字段           | 说明 | 回调参数 
-|-----          | ----- | ----- 
-| onConfirm     | 点击确认按钮时候回调 | 返回选中值 value，选中值对象
-| onChange      | 每一列值变更时调用   | 改变的列数，改变值 value，当前选中值
-| onCloseUpdate | 联动时，关闭时回调   | 当前选中值，依次返回this
-| onClose       | 关闭时触发          | 返回选中值 value，选中值对象
+| 字段                   | 说明 | 回调参数 |
+|----------------------| ----- | ----- |
+| onConfirm            | 点击确认按钮时候回调 | 返回选中值 value，选中值对象 |
+| onChoose`v1.2.2(废弃)` | 每一列值变更时调用 | 依次返回this、改变的列数，改变值，当前选中值 |
+| onChange`v1.2.2`     | 每一列值变更时调用   | 改变的列数，改变值 value，当前选中值 |
+| onCloseUpdate        | 联动时，关闭时回调   | 当前选中值，依次返回this |
+| onClose              | 关闭时触发          | 返回选中值 value，选中值对象 |

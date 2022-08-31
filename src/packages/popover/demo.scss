@@ -1,0 +1,26 @@
+.customButtonBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.brickBox {
+  display: flex;
+  justify-content: center;
+  margin: 80px 0;
+}
+
+.brick {
+  width: 60px;
+  height: 60px;
+  background: #1989fa;
+  border-radius: 10px;
+}
+
+.popover-content {
+  width: 100px;
+}
+
+.customContent .popover-content {
+  width: 200px;
+}

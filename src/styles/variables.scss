@@ -69,7 +69,7 @@ $button-primary-background-color: linear-gradient(
   $primary-color-end 100%
 );
 $button-info-color: $white;
-$button-info-border-color: rgba(73, 106, 242, 1);
+$button-info-border-color: #496af2;
 $button-info-background-color: linear-gradient(
   315deg,
   rgba(73, 143, 242, 1) 0%,
@@ -194,6 +194,15 @@ $avatar-normal-height: 40px;
 $switch-close-bg-color: #ebebeb;
 $switch-close--cline-bg-color: #f0f0f0;
 
+// toast
+$toast-title-font-size: 16px !default;
+$toast-text-font-size: 14px !default;
+$toast-font-color: $white !default;
+$toast-inner-padding: 24px 30px !default;
+$toast-inner-bg-color: rgba(0, 0, 0, 0.8) !default;
+$toast-inner-border-radius: 12px !default;
+$toast-cover-bg-color: rgba(0, 0, 0, 0) !default;
+
 //backtop
 $backtop-border-color: #e0e0e0;
 
@@ -221,12 +230,19 @@ $notify-font-size: 14px;
 $notify-height: 44px;
 
 // NoticeBar
-$noticeBar-font-size: 14px !default;
-$noticeBar-height: 40px !default;
-$noticeBar-line-height: 24px !default;
-$noticeBar-left-icon-width: 16px !default;
-$noticeBar-right-icon-width: 16px !default;
+$noticebar-background: rgba(251, 248, 220, 1) !default;
+$noticebar-color: #d9500b !default;
+$noticebar-font-size: 14px !default;
+$noticebar-height: 40px !default;
+$noticebar-line-height: 24px !default;
+$noticebar-left-icon-width: 16px !default;
+$noticebar-right-icon-width: 16px !default;
+$noticebar-box-padding: 0 16px !default;
+$noticebar-wrapable-padding: 16px !default;
+$noticebar-lefticon-margin: 0px 10px !default;
+$noticebar-righticon-margin: 0px 10px !default;
 
+//notify
 $notify-base-background-color: linear-gradient(
   135deg,
   rgba(250, 44, 25, 1) 0%,
@@ -468,7 +484,7 @@ $indicator-color: $primary-color !default;
 $indicator-dot-color: $disable-color !default;
 $indicator-white: $white !default;
 $indicator-size: 18px !default;
-$indicator-dot-size: calc($indicator-size / 3) !default;
+$indicator-dot-size: calc(#{$indicator-size} / 3) !default;
 $indicator-border-size: $indicator-size + 2 !default;
 $indicator-number-font-size: 10px !default;
 $indicator-dot-margin: 4px !default;
@@ -495,6 +511,15 @@ $divider-vertical-top: 2px !default;
 $divider-vertical-border-left: rgba(0, 0, 0, 0.06) !default;
 $divider-vertical-margin: 0 8px !default;
 
+// swiper
+$swiper-pagination-item-background-color: #ddd !default;
+
+// Table
+$table-border-color: #ececec !default;
+$table-cols-padding: 10px !default;
+$table-tr-even-bg-color: #f3f3f3 !default;
+$table-tr-odd-bg-color: $white !default;
+
 //numberkeyboard
 $numberkeyboard-width: 100% !default;
 $numberkeyboard-padding: 0 0 22px 0 !default;
@@ -518,6 +543,7 @@ $numberkeyboard-key-finish-font-size: 16px !default;
 $numberkeyboard-key-finish-font-size-color: #fff !default;
 $numberkeyboard-key-finish-background-color: #1989fa !default;
 $numberkeyboard-key-activeFinsh-background-color: #0570db !default;
+
 // elevator
 $elevator-list-item-highcolor: $primary-color !default;
 $elevator-list-item-font-size: 12px !default;
@@ -585,7 +611,6 @@ $row-content-height: 50px !default;
 $row-content-line-height: 40px !default;
 $col-default-margin-bottom: 15px !default;
 
-
 // searchbar
 $searchbar-background: $white !default;
 $searchbar-right-out-color: $black !default;
@@ -623,3 +648,17 @@ $countup-bgcolor: #031f63 !default;
 $countup-color: #ffffff !default;
 $countup-width: 24px !default;
 
+// cascader
+$cascader-font-size: 14px !default;
+$cascader-line-height: 22px !default;
+$cascader-tabs-item-padding: 0 10px !default;
+$cascader-title-padding: 24px 20px 17px !default;
+$cascader-title-font-size: 18px !default;
+$cascader-title-line-height: 20px !default;
+$cascader-item-padding: 10px 20px !default;
+$cascader-item-font-size: 14px !default;
+$cascader-item-color: #1a1a1a !default;
+$cascader-item-active-color: #fa2c19 !default;
+$cascader-pane-height: 342px !default;
+$cascader-pane-paddingTop: 10px !default;
+$cascader-icon-checklist-marginLeft: 10px !default;

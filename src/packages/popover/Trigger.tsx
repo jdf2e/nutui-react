@@ -1,15 +1,12 @@
 import React, { HTMLAttributes } from 'react'
 
 interface TriggerProps {
+  // eslint-disable-next-line react/require-default-props
   className?: string | undefined
-  // onMouseEnter: () => void
-  // onMouseLeave: () => void
-  // onFocus: () => void
-  // onClick: (e: any) => void
-  // onKeyPress?: () => void
+  // eslint-disable-next-line react/require-default-props
+  children?: React.ReactNode
   forwardedRef: React.RefObject<HTMLElement>
 }
-interface TriggerState {}
 /**
  * 过滤ref
  */
@@ -31,30 +28,8 @@ export function composeRef<T>(...refs: React.Ref<T>[]): React.Ref<T> {
     })
   }
 }
-const ALL_HANDLERS = [
-  // 'onClick',
-  // 'onMouseDown',
-  // 'onTouchStart',
-  // 'onMouseEnter',
-  // 'onMouseLeave',
-  // 'onFocus',
-  // 'onBlur',
-  // 'onContextMenu',
-]
 
-export default class Trigger extends React.Component<
-  TriggerProps,
-  TriggerState
-> {
-  constructor(props: any) {
-    super(props)
-    // ALL_HANDLERS.forEach((h) => {
-    //  ( this as any)[`fire${h}`] = (e: any) => {
-    //     this.fireEvents(h, e)
-    //   }
-    // })
-  }
-
+export default class Trigger extends React.Component<TriggerProps, unknown> {
   fireEvents(type: string, e: Event) {
     const childCallback = (this.props.children as React.ReactElement).props[
       type
@@ -74,21 +49,7 @@ export default class Trigger extends React.Component<
     const newChildProps: HTMLAttributes<HTMLElement> & { key: string } = {
       key: 'trigger',
     }
-    // newChildProps.onClick = (e: any) => {
-    //   this.fireEvents('onClick', e)
-    // }
-    // newChildProps.onMouseEnter = (e: any) => {
-    //   this.fireEvents('onMouseEnter', e)
-    // }
-    // newChildProps.onMouseLeave = (e: any) => {
-    //   this.fireEvents('onMouseLeave', e)
-    // }
-    // newChildProps.onFocus = (e: any) => {
-    //   this.fireEvents('onMouseLeave', e)
-    // }
-    // newChildProps.onKeyPress = (e: any) => {
-    //   this.fireEvents('onMouseLeave', e)
-    // }
+
     if (child && child.props && child.props.className) {
       newChildProps.className = className
     }

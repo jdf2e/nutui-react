@@ -124,6 +124,7 @@ export const Infiniteloading: FunctionComponent<
       }
       setIsInfiniting(true)
       loadMore && loadMore(infiniteDone)
+      return true
     })
   }
 
@@ -188,7 +189,7 @@ export const Infiniteloading: FunctionComponent<
     return (
       window.requestAnimationFrame ||
       window.webkitRequestAnimationFrame ||
-      function (callback) {
+      function fn(callback) {
         window.setTimeout(callback, 1000 / 60)
       }
     )
@@ -234,7 +235,7 @@ export const Infiniteloading: FunctionComponent<
     }
     beforeScrollTop.current = resScrollTop
     scrollChange && scrollChange(resScrollTop)
-    return offsetDistance <= threshold && direction == 'down'
+    return offsetDistance <= threshold && direction === 'down'
   }
 
   return (
@@ -250,7 +251,7 @@ export const Infiniteloading: FunctionComponent<
         <div className="top-box">
           <Icon className="top-img" name={pullIcon} />
           <span className="top-text">
-            {locale.infiniteloading.pullRefreshText || pullTxt}
+            {pullTxt || locale.infiniteloading.pullRefreshText}
           </span>
         </div>
       </div>
@@ -260,13 +261,13 @@ export const Infiniteloading: FunctionComponent<
           <div className="bottom-box">
             <Icon className="bottom-img" name={loadIcon} />
             <div className="bottom-text">
-              {locale.infiniteloading.loadText || loadTxt}
+              {loadTxt || locale.infiniteloading.loadText}
             </div>
           </div>
         ) : (
           !hasMore && (
             <div className="tips">
-              {locale.infiniteloading.loadMoreText || loadMoreTxt}
+              {loadMoreTxt || locale.infiniteloading.loadMoreText}
             </div>
           )
         )}

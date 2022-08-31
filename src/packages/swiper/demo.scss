@@ -1,4 +1,5 @@
 .demo-box {
+  position: relative;
   .nut-swiper {
     height: 150px;
     img {
@@ -17,5 +18,43 @@
     text-align: center;
     color: #fff;
     font-size: 14px;
+  }
+  .nut-swiper-btns {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-15px);
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    height: 0px;
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 30px;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+.vertical-center {
+  .nut-swiper__pagination-vertical {
+    i {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      &.active {
+        height: 18px;
+        border-radius: 5px;
+      }
+    }
+  }
+  .nut-swiper-item {
+    height: 300px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
