@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react",
-  "version": "1.3.1-beta.0",
+  "version": "1.3.1",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -50,7 +50,7 @@
     "build:replace": "npm run replace:scss",
     "build:es": "npx rollup -c rollup.config.es.js",
     "build:locales": "vite build --config vite.config.build.locales.ts",
-    "build": "npm run checked && npm run test && vite build --config vite.config.build.ts && npm run build:es && npm run build:css && npm run build:loader-style && npm run build:types && npm run build:locales",
+    "build": "npm run checked && vite build --config vite.config.build.ts && npm run build:es && npm run build:css && npm run build:loader-style && npm run build:types && npm run build:locales",
     "build:site": "npm run checked && vite build --config vite.config.build.site.ts",
     "lint": "eslint ./src/packages/calendar",
     "lint:fix": "eslint --fix ./src/packages/calendar",

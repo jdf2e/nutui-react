@@ -41,9 +41,8 @@ vfs
           './dist/types/nutui.react.d.ts',
           (err) => {
             console.log('重命名失败', err)
+            exportPropsTypes('taro')
           }
-        ).then(() => {
-          exportPropsTypes()
-        })
+        )
       })
   })
