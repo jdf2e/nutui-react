@@ -108,5 +108,13 @@ const zhTW: BaseLang = {
     mute: '靜音',
     tips: 'onPlayEnd事件在loop=false時才會觸發',
   },
+  datepicker: {
+    year: '年',
+    month: '月',
+    day: '日',
+    hour: '時',
+    min: '分',
+    seconds: '秒',
+  },
 }
 export default zhTW
