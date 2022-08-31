@@ -1,10 +1,24 @@
 import React, { FunctionComponent } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import Popup from '@/packages/popup'
-import { SideNavBarProps } from './type'
+// import { SideNavBarProps } from './type'
 import { handleClick } from './utils'
 import { OffsetContext } from './offsetContext'
 
+type NavBarProps = {
+  showhead?: boolean
+}
+export interface SideNavBarProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    NavBarProps {
+  title: string
+  visible: boolean
+  width?: string
+  offset?: number
+  position?: 'left' | 'right'
+  handleClose: () => void
+  children?: React.ReactNode
+}
 const defaultProps = {
   showhead: false,
   position: 'left',

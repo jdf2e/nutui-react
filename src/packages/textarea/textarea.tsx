@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useState,
   CSSProperties,
+  useRef,
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
@@ -61,6 +62,7 @@ export const TextArea: FunctionComponent<
 
   const textareaBem = bem('textarea')
   const [inputValue, SetInputValue] = useState('')
+  const textareaRef = useRef<any>(null)
 
   useEffect(() => {
     if (defaultValue) {
@@ -70,7 +72,41 @@ export const TextArea: FunctionComponent<
       }
       SetInputValue(initValue)
     }
-  }, [defaultValue])
+    if (autosize) {
+      setTimeout(() => {
+        setContentHeight()
+      })
+    }
+  }, [defaultValue, autosize])
+
+  useEffect(() => {
+    if (inputValue) {
+      if (autosize) {
+        setContentHeight()
+      }
+    }
+  }, [inputValue])
+
+  const setContentHeight = () => {
+    const textarea: any = textareaRef.current
+    if (textarea) {
+      textarea.style.height = 'auto'
+      let height = textarea?.scrollHeight
+
+      if (typeof autosize === 'object') {
+        const { maxHeight, minHeight } = autosize
+        if (maxHeight !== undefined) {
+          height = Math.min(height, maxHeight)
+        }
+        if (minHeight !== undefined) {
+          height = Math.max(height, minHeight)
+        }
+      }
+      if (height) {
+        textarea.style.height = `${height}px`
+      }
+    }
+  }
 
   const textChange = (event: Event) => {
     const text = event.target as any
@@ -102,10 +138,10 @@ export const TextArea: FunctionComponent<
       }`}
     >
       <textarea
+        ref={textareaRef}
         className={textareaBem('textarea')}
         style={{
           textAlign,
-          resize: `${autosize ? 'vertical' : 'none'}` as any,
           ...style,
         }}
         disabled={disabled}

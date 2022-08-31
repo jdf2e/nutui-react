@@ -207,14 +207,23 @@ $toast-cover-bg-color: rgba(0, 0, 0, 0) !default;
 $backtop-border-color: #e0e0e0;
 
 // calendar
-$calendar-primary-color: $primary-color;
-$calendar-choose-color: #fef6f6;
-$calendar-base-color: #333333;
-$calendar-disable-color: #d1d0d0;
-$calendar-title-font: $font-size-4;
-$calendar-base-font: $font-size-3;
-$calendar-text-font: $font-size-1;
-$calendar-day-font: 18px;
+$calendar-primary-color: $primary-color !default;
+$calendar-choose-color: rgba($primary-color, 0.09) !default;
+$calendar-choose-font-color: $primary-color !default;
+$calendar-base-color: #333333 !default;
+$calendar-disable-color: #d1d0d0 !default;
+$calendar-base-font: $font-size-3 !default;
+$calendar-title-font: $font-size-4 !default;
+$calendar-title-font-weight: 500 !default;
+$calendar-sub-title-font: $font-size-2 !default;
+$calendar-text-font: $font-size-1 !default;
+$calendar-day-font: 16px !default;
+$calendar-day-active-border-radius: 0px !default;
+$calendar-day-width: 14.28% !default;
+$calendar-day-height: 64px !default;
+$calendar-day-font-weight: 500 !default;
+$calendar-day67-font-color: $primary-color !default;
+$calendar-top-slot-height: 24px !default;
 
 //overlay
 $overlay-bg-color: rgba(0, 0, 0, 0.7);
@@ -648,6 +657,25 @@ $countup-bgcolor: #031f63 !default;
 $countup-color: #ffffff !default;
 $countup-width: 24px !default;
 
+// menu
+$menu-bar-line-height: 48px !default;
+$menu-item-font-size: $font-size-2 !default;
+$menu-item-text-color: $title-color !default;
+$menu-item-active-text-color: $primary-color !default;
+$menu-bar-border-bottom-color: #eaf0fb !default;
+$menu-bar-opened-z-index: 2001 !default;
+$menu-item-disabled-color: #969799 !default;
+$menu-title-text-padding-left: 8px !default;
+$menu-title-text-padding-right: 8px !default;
+$menu-item-content-padding: 12px 24px !default;
+$menu-item-content-max-height: 214px !default;
+$menu-item-option-padding-top: 12px !default;
+$menu-item-option-padding-bottom: 12px !default;
+$menu-item-option-i-margin-right: 6px !default;
+$menu-bar-box-shadow: 0 2px 12px rgba(89, 89, 89, 0.12) !default;
+$menu-scroll-fixed-top: 0 !default;
+$menu-scroll-fixed-z-index: 1000 !default;
+
 // cascader
 $cascader-font-size: 14px !default;
 $cascader-line-height: 22px !default;
@@ -662,3 +690,11 @@ $cascader-item-active-color: #fa2c19 !default;
 $cascader-pane-height: 342px !default;
 $cascader-pane-paddingTop: 10px !default;
 $cascader-icon-checklist-marginLeft: 10px !default;
+
+// Grid
+$grid-border-color: #f5f6f7 !default;
+$grid-item-content-padding: 16px 8px !default;
+$grid-item-content-bg-color: $white !default;
+$grid-item-text-margin: 8px !default;
+$grid-item-text-color: $title-color2 !default;
+$grid-item-text-font-size: $font-size-1 !default;

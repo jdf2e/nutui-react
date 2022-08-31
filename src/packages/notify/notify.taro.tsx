@@ -2,7 +2,7 @@ import * as React from 'react'
 import Notification, { NotificationProps } from './Notification'
 
 let messageInstance: any = null
-interface INotifyProps {
+export interface NotifyProps {
   id: string
   color?: string
   msg: string
@@ -16,7 +16,7 @@ interface INotifyProps {
   onClosed: () => void
 }
 
-const options: INotifyProps = {
+const options: NotifyProps = {
   msg: '',
   id: '',
   duration: 3000, // 时长

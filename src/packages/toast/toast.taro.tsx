@@ -2,7 +2,7 @@ import * as React from 'react'
 import Notification, { NotificationProps } from './Notification'
 
 let messageInstance: any = null
-interface IToastOptions {
+export interface ToastProps {
   id: string
   msg: string
   duration: number
@@ -21,7 +21,7 @@ interface IToastOptions {
   closeOnClickOverlay: boolean
 }
 
-const options: IToastOptions = {
+const options: ToastProps = {
   msg: '',
   id: '',
   duration: 1.5, // 时长,duration为0则一直展示
