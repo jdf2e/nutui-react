@@ -1,9 +1,6 @@
 import React from 'react'
-import Avatar from '../avatar'
-import { Grid } from './grid'
-import GridItem from '../griditem'
-import { useTranslate } from '../../sites/assets/locale'
-import Toast from '../toast'
+import { Grid, Avatar, GridItem } from '@/packages/nutui.react.taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
 
 interface T {
   basic: string
@@ -54,7 +51,7 @@ const GridDemo = () => {
   })
 
   const handleClick = () => {
-    Toast.text('点击了第几个')
+    console.log('点击了第几个')
   }
   return (
     <>

@@ -11,7 +11,7 @@ const subPackages = [
   },
   {
     root: 'layout',
-    pages: ['pages/layout/index', 'pages/divider/index'],
+    pages: ['pages/layout/index', 'pages/divider/index', 'pages/grid/index'],
   },
   {
     root: 'nav',
@@ -34,7 +34,9 @@ const subPackages = [
       'pages/input/index',
       'pages/radio/index',
       'pages/rate/index',
+      'pages/shortpassword/index',
       'pages/textarea/index',
+      'pages/searchbar/index',
       'pages/numberkeyboard/index',
     ],
   },
