@@ -34,7 +34,9 @@ const subPackages = [
       'pages/input/index',
       'pages/radio/index',
       'pages/rate/index',
+      'pages/shortpassword/index',
       'pages/textarea/index',
+      'pages/searchbar/index',
       'pages/numberkeyboard/index',
     ],
   },
@@ -61,7 +63,11 @@ const subPackages = [
   },
   {
     root: 'business',
-    pages: ['pages/card/index', 'pages/timeselect/index'],
+    pages: [
+      'pages/address/index',
+      'pages/card/index',
+      'pages/timeselect/index',
+    ],
   },
 ]
 

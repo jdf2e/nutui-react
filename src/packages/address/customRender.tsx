@@ -10,13 +10,6 @@ interface CustomRegionData {
   list: any[]
 }
 
-interface MapRef {
-  province: React.RefObject<HTMLDivElement>
-  city: React.RefObject<HTMLDivElement>
-  country: React.RefObject<HTMLDivElement>
-  town: React.RefObject<HTMLDivElement>
-}
-
 export interface AddressProps {
   modelValue: (string | number)[]
   type: string
@@ -39,6 +32,7 @@ const defaultProps = {
   town: [],
   height: '200px',
 } as AddressProps
+import Taro from '@tarojs/taro'
 
 export const CustomRender: FunctionComponent<
   Partial<AddressProps> & React.HTMLAttributes<HTMLDivElement>
@@ -149,26 +143,21 @@ export const CustomRender: FunctionComponent<
     return locale.select
   }
 
-  const mapRef = {
-    province: provinceRef,
-    city: cityRef,
-    country: countryRef,
-    town: townRef,
-  }
-
-  type MapRefType = keyof typeof mapRef
   // 移动下面的红线
   const lineAnimation = (index: string | number) => {
     setTimeout(() => {
-      const name: MapRefType = tabName[index as number] as MapRefType
-
-      const refD: MapRef = mapRef
-
-      if (name && refD[name] && refD[name].current) {
-        const distance = (refD[name as MapRefType] as any).current.offsetLeft
-        setLineDistance(distance || 20)
-      }
-    }, 0)
+      const name: string = tabName[index as number]
+      Taro.createSelectorQuery()
+        .selectAll(`.${name}`)
+        .boundingClientRect((rects: any) => {
+          rects &&
+            rects.length > 0 &&
+            (rects as any).forEach((rect: any) => {
+              if (rect.width > 0) setLineDistance(rect.left || 20)
+            })
+        })
+        .exec()
+    }, 100)
   }
   // 切换下一级列表
   const nextAreaList = (item: RegionData | string) => {
@@ -321,9 +310,8 @@ export const CustomRender: FunctionComponent<
                 <div
                   className={`${b('tab-item')} ${
                     index === tabIndex ? 'active' : ''
-                  }`}
+                  } ${tabName[index]}`}
                   key={index}
-                  ref={mapRef[key as SelectedRegionType]}
                   onClick={() =>
                     changeRegionTab(
                       selectedRegion[key as SelectedRegionType],

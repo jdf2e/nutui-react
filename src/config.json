@@ -932,7 +932,7 @@
           "desc": "地址组件",
           "sort": 3,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "yangxiaolu"
         },
         {
