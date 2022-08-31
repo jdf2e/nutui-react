@@ -108,6 +108,6 @@ const idID: BaseLang = {
     start: 'Mulailah',
     mute: 'bisu',
     tips: 'Acara Onplayend hanya akan dipicu saat loop = false',
-  }
+  },
 }
 export default idID

@@ -105,10 +105,10 @@ export interface BaseLang {
   }
   audio: {
     back: string
-    forward:string
-    pause:string
-    start:string
-    mute:string
-    tips:string
+    forward: string
+    pause: string
+    start: string
+    mute: string
+    tips: string
   }
 }

@@ -15,7 +15,7 @@ test('className && style && type = progress  && onPause  && onFastBack && onForw
       <>
         <Audio
           className="audio-jest"
-          style={{fontSize:'20px'}}
+          style={{ fontSize: '20px' }}
           type="progress"
           autoplay
           url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"

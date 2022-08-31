@@ -61,6 +61,10 @@
       font-size: 12px;
       text-align: center;
     }
+    .nut-range-button {
+      width: 8px;
+      height: 8px;
+    }
   }
   .custom-button-group {
     .nut-button--primary {
@@ -77,23 +81,3 @@
     color: blue;
   }
 }
-
-.nut-range-button {
-  width: 8px !important;
-  height: 8px;
-}
-
-// .nut-audio__icon-stop {
-//   &::before {
-//     position: absolute;
-//     left: 50%;
-//     top: 50%;
-//     transform: translateX(-15px);
-//     content: '';
-//     height: 2px;
-//     width: 30px;
-//     background: $disable-color;
-//     transform: rotate(45deg);
-//     transform-origin: 8px -18px;
-//   }
-// }
