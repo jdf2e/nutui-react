@@ -70,9 +70,19 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     >([]) // 选择的数据的 value 值, 每一条数据的 value 值
     const [columnIndex, setcolumnIndex] = useState<number>(0) // 选中列
     const pickerRef = useRef<any>(null)
-
+    // const [refs, setRefs] = useRefs()
     const [columnsList, setColumnsList] = useState<PickerOption[][]>([]) // 格式化后每一列的数据
     const b = bem('picker')
+
+    const refs = React.useRef<HTMLDivElement[]>([])
+
+    const setRefs = React.useCallback(
+      (index: number) => (el: HTMLDivElement) => {
+        console.log(11, el)
+        if (el) refs.current[index] = el
+      },
+      []
+    )
 
     // 默认值修改
     useEffect(() => {
@@ -104,6 +114,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     }
     // 点击确定
     const confirm = () => {
+      console.log('去顶', refs.current)
       onConfirm && onConfirm(chooseValueData, selectedOptions())
       onClose && onClose(chooseValueData, selectedOptions())
     }
@@ -268,6 +279,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
             {columnsList?.map((item, index) => {
               return (
                 <PickerSlot
+                  ref={setRefs(index)}
                   defaultValue={chooseValueData?.[index]}
                   listData={item}
                   threeDimensional={threeDimensional}

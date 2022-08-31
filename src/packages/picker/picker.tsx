@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import Popup from '@/packages/popup'
 import PickerSlot from './pickerSlot'
+import useRefs from './useRefs'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 
@@ -70,7 +71,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     >([]) // 选择的数据的 value 值, 每一条数据的 value 值
     const [columnIndex, setcolumnIndex] = useState<number>(0) // 选中列
     const pickerRef = useRef<any>(null)
-
+    const [refs, setRefs] = useRefs()
     const [columnsList, setColumnsList] = useState<PickerOption[][]>([]) // 格式化后每一列的数据
     const b = bem('picker')
 
@@ -104,6 +105,8 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     }
     // 点击确定
     const confirm = () => {
+      refs.forEach((_ref: any) => _ref.stopMomentum())
+
       onConfirm && onConfirm(chooseValueData, selectedOptions())
       onClose && onClose(chooseValueData, selectedOptions())
     }
@@ -132,6 +135,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       if (option && Object.keys(option).length) {
         // 是否移动后是否与之前有差异
         if (chooseValueData[columnIndex] !== option.value) {
+          console.log('chooseItem')
           if (columnsType() === 'cascade') {
             chooseValueData[columnIndex] = option.value ? option.value : ''
             setchooseValueData([...chooseValueData])
@@ -163,6 +167,8 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
                 : ''
               return cdata
             })
+
+            console.log('完成')
           }
           setcolumnIndex(columnIndex)
         }
@@ -268,6 +274,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
             {columnsList?.map((item, index) => {
               return (
                 <PickerSlot
+                  ref={setRefs(index)}
                   defaultValue={chooseValueData?.[index]}
                   listData={item}
                   threeDimensional={threeDimensional}
