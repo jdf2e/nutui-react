@@ -6,7 +6,7 @@ import React, {
   ForwardRefRenderFunction,
 } from 'react'
 import Popup from '@/packages/popup'
-import PickerSlot from './pickerSlot'
+import PickerSlot from './pickerSlot.taro'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 
@@ -277,6 +277,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
                   swipeDuration={swipeDuration}
                   key={index}
                   keyIndex={index}
+                  itemShow={isVisible}
                 />
               )
             })}
