@@ -26,7 +26,7 @@ interface TableColumnProps {
 }
 
 const App = () => {
-  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
+  const [columns1, setColumns1] = useState([
     {
       title: '姓名',
       key: 'name',
@@ -87,7 +87,7 @@ interface TableColumnProps {
 }
 
 const App = () => {
-  const [columns2, setColumns2] = useState<Array<TableColumnProps>>([
+  const [columns2, setColumns2] = useState([
     {
       title: '姓名',
       key: 'name',
@@ -136,18 +136,10 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from "react";
-import { Table } from '@nutui/nutui-react';
-
-interface TableColumnProps {
-  key?: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
-}
+import { Table, Button, Icon } from '@nutui/nutui-react';
 
 const App = () => {
-  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
+  const [columns1, setColumns1] = useState([
     {
       title: '姓名',
       key: 'name',
@@ -155,7 +147,7 @@ const App = () => {
     {
       title: '性别',
       key: 'sex',
-      render: (record: any) => {
+      render: (record) => {
         return (
           <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
             {record.sex}
@@ -212,7 +204,7 @@ interface TableColumnProps {
 }
 
 const App = () => {
-  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
+  const [columns1, setColumns1] = useState([
     {
       title: '姓名',
       key: 'name',
@@ -277,7 +269,7 @@ interface TableColumnProps {
 }
 
 const App = () => {
-  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
+  const [columns1, setColumns1] = useState([
     {
       title: '姓名',
       key: 'name',
@@ -320,18 +312,10 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from "react";
-import { Table } from '@nutui/nutui-react';
-
-interface TableColumnProps {
-  key?: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
-}
+import { Table, Button, Icon } from '@nutui/nutui-react';
 
 const App = () => {
-  const [columns4, setColumns4] = useState<Array<TableColumnProps>>([
+  const [columns4, setColumns4] = useState([
     {
       title: '姓名',
       key: 'name',
@@ -404,18 +388,10 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from "react";
-import { Table } from '@nutui/nutui-react';
-
-interface TableColumnProps {
-  key?: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
-}
+import { Table, Button, Icon } from '@nutui/nutui-react';
 
 const App = () => {
-  const [columns4, setColumns4] = useState<Array<TableColumnProps>>([
+  const [columns4, setColumns4] = useState([
     {
       title: '姓名',
       key: 'name',
@@ -488,18 +464,10 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from "react";
-import { Table } from '@nutui/nutui-react';
-
-interface TableColumnProps {
-  key?: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
-}
+import { Table, Button, Icon } from '@nutui/nutui-react';
 
 const App = () => {
-  const [columns4, setColumns4] = useState<Array<TableColumnProps>>([
+  const [columns4, setColumns4] = useState([
     {
       title: '姓名',
       key: 'name',
@@ -598,4 +566,4 @@ export default App;
 
 | Event | Description           | Arguments     |
 |--------|----------------|--------------|
-| onSorter  | Click the sort button to trigger | item: TableColumnProps, data: Array<any> |
+| onSorter  | Click the sort button to trigger | `item: TableColumnProps, data: Array<any>` |

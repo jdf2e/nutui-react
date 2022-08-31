@@ -410,59 +410,6 @@ exports[`Cascader value 1`] = `
 </div>
 `;
 
-exports[`Cascader value with lazy 1`] = `
-<div>
-  <div
-    class="nut-cascader "
-  >
-    <div
-      class="overlay-fade-enter-active nut-overlay"
-      style="z-index: 2000; animation-duration: 0.3s;"
-    />
-    <div
-      class="round popup-bottom cascadar-popup undefined nut-popup"
-      style="z-index: 2000; animation-duration: 0.3s;"
-    >
-      <div
-        class="nut-cascader__title"
-      />
-      <div
-        class="horizontal nut-tabs"
-      >
-        <div
-          class="line normal nut-tabs__titles"
-        >
-          <div
-            class="nut-tabs__titles-item active"
-          >
-            <span
-              class="nut-tabs__titles-item__text"
-            >
-              Loading...
-            </span>
-            <span
-              class="nut-tabs__titles-item__line"
-            />
-          </div>
-        </div>
-        <div
-          class="nut-tabs__content"
-          style="transform: translate3d(--100%, 0, 0); transition-duration: 300ms;"
-        >
-          <div
-            class="nut-tabpane"
-          >
-            <div
-              class="nut-cascader-pane"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`Cascader visible true 1`] = `
 <div>
   <div
