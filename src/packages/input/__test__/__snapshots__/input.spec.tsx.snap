@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`input props test 1`] = `
+<div>
+  <div
+    class="nut-input nut-input-border  "
+  >
+    <div
+      class="nut-input-label "
+      style="width: 80px; text-align: left;"
+    >
+      <div
+        class="label-string"
+      >
+        文本
+      </div>
+    </div>
+    <div
+      class="nut-input-value"
+    >
+      <div
+        class="nut-input-inner"
+      >
+        <input
+          class="input-text"
+          maxlength="9999"
+          placeholder="请输入文字"
+          style="text-align: left;"
+          type="text"
+          value="初始文本"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

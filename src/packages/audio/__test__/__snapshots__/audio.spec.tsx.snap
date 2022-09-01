@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`icon type test 1`] = `
+<div>
+  <div
+    class="nut-audio "
+  >
+    <div
+      class="nut-audio__icon"
+    >
+      <div
+        class="nut-audio__icon-box nut-audio__icon-stop"
+      >
+        <i
+          class="nutui-iconfont nut-icon nut-icon-service "
+        />
+      </div>
+    </div>
+    <audio
+      class="audioMain"
+      preload="auto"
+      src=""
+    >
+      <track
+        kind="captions"
+      />
+    </audio>
+  </div>
+</div>
+`;
+
+exports[`none type test 1`] = `
+<div>
+  <div
+    class="nut-audio "
+  >
+    <div
+      class="nut-audio__none-container"
+    />
+    <audio
+      class="audioMain"
+      preload="auto"
+      src=""
+    >
+      <track
+        kind="captions"
+      />
+    </audio>
+  </div>
+</div>
+`;

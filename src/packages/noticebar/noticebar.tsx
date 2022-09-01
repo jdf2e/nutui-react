@@ -10,6 +10,7 @@ import React, {
 import classNames from 'classnames'
 import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
+import { getRect } from '../../utils/useClientRect'
 
 export interface NoticeBarProps {
   // 滚动方向  across 横向 vertical 纵向
@@ -148,8 +149,8 @@ export const NoticeBar: FunctionComponent<
       if (!wrap.current || !content.current) {
         return
       }
-      const wrapW = wrap.current.getBoundingClientRect().width
-      const offsetW = content.current.getBoundingClientRect().width
+      const wrapW = getRect(wrap.current).width
+      const offsetW = getRect(content.current).width
       const canScroll = scrollable == null ? offsetW > wrapW : scrollable
       SetIsCanScroll(canScroll)
       if (canScroll) {

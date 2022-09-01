@@ -1,6 +1,6 @@
 import React from 'react'
 
-export interface TableProps {
+export interface ITableProps {
   className: string
   style: React.CSSProperties
   columns: Array<TableColumnProps>

@@ -18,6 +18,7 @@ const CardDemo = () => {
     verticalAlign: 'middle',
     marginRight: '5px',
     marginLeft: '2px',
+    width: '29px',
     height: '14px',
   }
   const wordStyles = {

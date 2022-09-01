@@ -101,5 +101,21 @@ const idID: BaseLang = {
     title5: 'pengaturan ikon suai',
     title6: 'Monitor perubahan data',
   },
+  audio: {
+    back: 'Fastback',
+    forward: 'maju',
+    pause: 'berhenti sebentar',
+    start: 'Mulailah',
+    mute: 'bisu',
+    tips: 'Acara Onplayend hanya akan dipicu saat loop = false',
+  },
+  datepicker: {
+    year: 'Tahun',
+    month: 'Bulan',
+    day: 'Hari',
+    hour: 'Jam',
+    min: 'Menit',
+    seconds: 'Detik',
+  },
 }
 export default idID

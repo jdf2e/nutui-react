@@ -103,4 +103,20 @@ export interface BaseLang {
     title5: string
     title6: string
   }
+  audio: {
+    back: string
+    forward: string
+    pause: string
+    start: string
+    mute: string
+    tips: string
+  }
+  datepicker: {
+    year: string
+    month: string
+    day: string
+    hour: string
+    min: string
+    seconds: string
+  }
 }
