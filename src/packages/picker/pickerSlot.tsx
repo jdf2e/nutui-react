@@ -154,6 +154,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     }
 
     setTimeout(() => {
+      // moving.current = false
       touch.reset()
     }, 0)
   }

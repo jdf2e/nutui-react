@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import Popup from '@/packages/popup'
 import PickerSlot from './pickerSlot.taro'
+import useRefs from './useRefs'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 
@@ -70,19 +71,11 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     >([]) // 选择的数据的 value 值, 每一条数据的 value 值
     const [columnIndex, setcolumnIndex] = useState<number>(0) // 选中列
     const pickerRef = useRef<any>(null)
-    // const [refs, setRefs] = useRefs()
+    const [refs, setRefs] = useRefs()
     const [columnsList, setColumnsList] = useState<PickerOption[][]>([]) // 格式化后每一列的数据
     const b = bem('picker')
 
-    const refs = React.useRef<HTMLDivElement[]>([])
-
-    const setRefs = React.useCallback(
-      (index: number) => (el: HTMLDivElement) => {
-        console.log(11, el)
-        if (el) refs.current[index] = el
-      },
-      []
-    )
+    let isConfirmEvent = useRef(false)
 
     // 默认值修改
     useEffect(() => {
@@ -100,6 +93,10 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     // 选中值进行修改
     useEffect(() => {
       onChange && onChange(columnIndex, chooseValueData, selectedOptions())
+      if (isConfirmEvent.current) {
+        isConfirmEvent.current = false
+        onConfirm && onConfirm(chooseValueData, selectedOptions())
+      }
     }, [chooseValueData])
 
     // 列表格式修改
@@ -114,9 +111,23 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     }
     // 点击确定
     const confirm = () => {
-      console.log('去顶', refs.current)
-      onConfirm && onConfirm(chooseValueData, selectedOptions())
+      let movings = false
+      refs.forEach((_ref: any) => {
+        if (_ref.moving) movings = true
+        _ref.stopMomentum()
+      })
+
+      if (movings) {
+        isConfirmEvent.current = true
+      } else {
+        onConfirm && onConfirm(chooseValueData, selectedOptions())
+      }
+
       onClose && onClose(chooseValueData, selectedOptions())
+
+      setTimeout(() => {
+        isConfirmEvent.current = false
+      }, 0)
     }
 
     const selectedOptions = () => {
@@ -254,6 +265,20 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
         setchooseValueData([...data])
       }
     }
+
+    const renderToolbar = () => {
+      return (
+        <div className={b('control')}>
+          <span className={b('cancel-btn')} onClick={() => closeActionSheet()}>
+            {locale.cancel}
+          </span>
+          <div className={b('title')}>{title || ''}</div>
+          <span className={b('confirm-btn')} onClick={confirm}>
+            {locale.confirm}
+          </span>
+        </div>
+      )
+    }
     return (
       <Popup
         visible={isVisible}
@@ -263,18 +288,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
         }}
       >
         <div className={`${b()} ${className || ''}`} style={style} {...rest}>
-          <div className={b('control')}>
-            <span
-              className={b('cancel-btn')}
-              onClick={() => closeActionSheet()}
-            >
-              {locale.cancel}
-            </span>
-            <div className={b('title')}>{title || ''}</div>
-            <span className={b('confirm-btn')} onClick={() => confirm()}>
-              {locale.confirm}
-            </span>
-          </div>
+          {renderToolbar()}
           <div className={b('panel')} ref={pickerRef}>
             {columnsList?.map((item, index) => {
               return (

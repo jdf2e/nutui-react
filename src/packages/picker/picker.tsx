@@ -75,7 +75,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     const [columnsList, setColumnsList] = useState<PickerOption[][]>([]) // 格式化后每一列的数据
     const b = bem('picker')
 
-    let isConfirm = useRef(false)
+    let isConfirmEvent = useRef(false)
 
     // 默认值修改
     useEffect(() => {
@@ -94,8 +94,8 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     useEffect(() => {
       console.log('修改')
       onChange && onChange(columnIndex, chooseValueData, selectedOptions())
-      if (isConfirm.current) {
-        isConfirm.current = false
+      if (isConfirmEvent.current) {
+        isConfirmEvent.current = false
         onConfirm && onConfirm(chooseValueData, selectedOptions())
       }
     }, [chooseValueData])
@@ -112,14 +112,14 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     }
     // 点击确定
     const confirm = () => {
-      let isMoving = false
+      let movings = false
       refs.forEach((_ref: any) => {
-        if (_ref.moving) isMoving = true
+        if (_ref.moving) movings = true
         _ref.stopMomentum()
       })
 
-      if (isMoving) {
-        isConfirm.current = true
+      if (movings) {
+        isConfirmEvent.current = true
       } else {
         onConfirm && onConfirm(chooseValueData, selectedOptions())
       }
@@ -127,7 +127,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       onClose && onClose(chooseValueData, selectedOptions())
 
       setTimeout(() => {
-        isConfirm.current = false
+        isConfirmEvent.current = false
       }, 0)
     }
 

@@ -3,11 +3,11 @@ import React, {
   useEffect,
   useRef,
   ForwardRefRenderFunction,
+  useImperativeHandle,
 } from 'react'
 import { PickerOption } from './picker'
 import { useTouch } from '../../utils/useTouch'
 import { getRectByTaro } from '@/utils/useClientRect'
-import Taro from '@tarojs/taro'
 
 interface IPickerSlotProps {
   keyIndex?: number
@@ -20,7 +20,7 @@ interface IPickerSlotProps {
 }
 
 const InternalPickerSlot: ForwardRefRenderFunction<
-  unknown,
+  { stopMomentum: () => void; moving: boolean },
   Partial<IPickerSlotProps>
 > = (props, ref) => {
   const {
@@ -48,6 +48,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const [touchTime, setTouchTime] = useState(0)
   const [touchDeg, setTouchDeg] = useState('0deg')
   const rotation = 20
+  const moving = useRef(false)
   let timer: number | undefined
 
   const listbox = useRef<any>(null)
@@ -139,6 +140,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const touchMove = (event: React.TouchEvent<HTMLElement>) => {
     touch.move(event as any)
     if ((touch as any).isVertical) {
+      moving.current = true
       preventDefault(event, true)
     }
     const move = touch.deltaY - startY
@@ -146,6 +148,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   }
 
   const touchEnd = (event: React.TouchEvent<HTMLElement>) => {
+    if (!moving.current) return
     const move = touch.deltaY - startY
     const moveTime = Date.now() - startTime
     // 区分是否为惯性滚动
@@ -199,6 +202,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
 
   // 惯性滚动结束
   const stopMomentum = () => {
+    moving.current = false
+    setTouchTime(0)
     setChooseValue(scrollDistance)
   }
   // 阻止默认事件
@@ -253,6 +258,11 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     }
   }, [itemShow])
 
+  useImperativeHandle(ref, () => ({
+    stopMomentum,
+    moving: moving.current,
+  }))
+
   return (
     <div
       className="nut-picker-list"
@@ -295,6 +305,10 @@ const InternalPickerSlot: ForwardRefRenderFunction<
               <div
                 className="nut-picker-roller-item-tile"
                 key={item.value ? item.value : index}
+                style={{
+                  height: `${lineSpacing.current}px`,
+                  lineHeight: `${lineSpacing.current}px`,
+                }}
               >
                 <>{item.text ? item.text : item}</>
               </div>
@@ -308,5 +322,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   )
 }
 const PickerSlot =
-  React.forwardRef<unknown, Partial<IPickerSlotProps>>(InternalPickerSlot)
+  React.forwardRef<
+    { stopMomentum: () => void; moving: boolean },
+    Partial<IPickerSlotProps>
+  >(InternalPickerSlot)
 export default PickerSlot
