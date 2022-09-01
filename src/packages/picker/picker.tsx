@@ -112,9 +112,18 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     }
     // 点击确定
     const confirm = () => {
-      refs.forEach((_ref: any) => _ref.stopMomentum())
-      isConfirm.current = true
-      onConfirm && onConfirm(chooseValueData, selectedOptions())
+      let isMoving = false
+      refs.forEach((_ref: any) => {
+        if (_ref.moving) isMoving = true
+        _ref.stopMomentum()
+      })
+
+      if (isMoving) {
+        isConfirm.current = true
+      } else {
+        onConfirm && onConfirm(chooseValueData, selectedOptions())
+      }
+
       onClose && onClose(chooseValueData, selectedOptions())
 
       setTimeout(() => {

@@ -18,7 +18,7 @@ interface IPickerSlotProps {
 }
 
 const InternalPickerSlot: ForwardRefRenderFunction<
-  { stopMomentum: () => void },
+  { stopMomentum: () => void; moving: boolean },
   Partial<IPickerSlotProps>
 > = (props, ref) => {
   const {
@@ -43,6 +43,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const [touchTime, setTouchTime] = useState(0)
   const [touchDeg, setTouchDeg] = useState('0deg')
   const rotation = 20
+  const moving = useRef(false)
   let timer: number | undefined
 
   const listRef = useRef<any>(null)
@@ -132,6 +133,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const touchMove = (event: React.TouchEvent<HTMLElement>) => {
     touch.move(event as any)
     if ((touch as any).isVertical) {
+      moving.current = true
       preventDefault(event, true)
     }
     const move = touch.deltaY - startY
@@ -139,6 +141,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   }
 
   const touchEnd = (event: React.TouchEvent<HTMLElement>) => {
+    if (!moving.current) return
     const move = touch.deltaY - startY
     const moveTime = Date.now() - startTime
     // 区分是否为惯性滚动
@@ -192,7 +195,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
 
   // 惯性滚动结束
   const stopMomentum = () => {
-    console.log('滚动结束')
+    moving.current = false
     setTouchTime(0)
     setChooseValue(scrollDistance)
   }
@@ -235,6 +238,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
 
   useImperativeHandle(ref, () => ({
     stopMomentum,
+    moving: moving.current,
   }))
 
   return (
@@ -290,7 +294,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   )
 }
 const PickerSlot =
-  React.forwardRef<{ stopMomentum: () => void }, Partial<IPickerSlotProps>>(
-    InternalPickerSlot
-  )
+  React.forwardRef<
+    { stopMomentum: () => void; moving: boolean },
+    Partial<IPickerSlotProps>
+  >(InternalPickerSlot)
 export default PickerSlot
