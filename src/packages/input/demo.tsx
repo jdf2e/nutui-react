@@ -59,6 +59,7 @@ const InputDemo = () => {
       noBorder: '无边框',
       click: '点击',
       placeholder1: '在输入时执行格式化',
+      text1: '校验文本中无数字',
       placeholder2: '在失焦时执行格式化',
       placeholder3: '请输入留言',
       placeholder4: '文本内容对齐',
@@ -95,6 +96,7 @@ const InputDemo = () => {
       noBorder: 'No Border',
       click: 'Click',
       placeholder1: 'Format On Change',
+      text1: 'Check no digits',
       placeholder2: 'Format On Blur',
       placeholder3: 'Message',
       placeholder4: 'Label Align',
@@ -252,7 +254,12 @@ const InputDemo = () => {
             </Button>
           }
         />
-        <h2>{translated.title6}</h2>
+        <h2>
+          {translated.title6}
+          <span style={{ fontSize: '12px', paddingLeft: '10px' }}>
+            ({translated.text1})
+          </span>
+        </h2>
         <Input
           label={translated.text}
           placeholder={translated.placeholder1}

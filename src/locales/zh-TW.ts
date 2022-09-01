@@ -100,5 +100,21 @@ const zhTW: BaseLang = {
     title5: '自定義圖標設定',
     title6: '數據改變監聽',
   },
+  audio: {
+    back: '快退',
+    forward: '快進',
+    pause: '暫停',
+    start: '開始',
+    mute: '靜音',
+    tips: 'onPlayEnd事件在loop=false時才會觸發',
+  },
+  datepicker: {
+    year: '年',
+    month: '月',
+    day: '日',
+    hour: '時',
+    min: '分',
+    seconds: '秒',
+  },
 }
 export default zhTW

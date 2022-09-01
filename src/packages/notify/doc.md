@@ -47,8 +47,6 @@ export default App
 
 ## 通知类型
 
-### 主要通知
-
 :::demo
 
 ```tsx
@@ -59,89 +57,35 @@ const App = () => {
     const primaryNotify = (msg: string) => {
         Notify.primary(msg)
     }
-    return (
-        <>
-            <Cell
-            title="主要通知"
-            click={(event: React.MouseEvent) => {
-              primaryNotify('主要通知')
-            }}
-          />
-        </>
-    )
-}
-export default App
-```
-:::
-
-### 成功通知
-
-:::demo
-
-```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react';
-
-const App = () => {
     const successNotify = (msg: string) => {
         Notify.success(msg)
     }
+    const errorNotify = (msg: string) => {
+        Notify.danger(msg)
+    }
+    const warningNotify = (msg: string) => {
+        Notify.warn(msg)
+    }
     return (
         <>
+            <Cell
+                title="主要通知"
+                click={(event: React.MouseEvent) => {
+                primaryNotify('主要通知')
+                }}
+            />
             <Cell
                 title="成功通知"
                 click={(event: React.MouseEvent) => {
                 successNotify('成功通知')
                 }}
             />
-        </>
-    )
-}
-export default App
-```
-:::
-
-### 危险通知
-
-:::demo
-
-```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const errorNotify = (msg: string) => {
-        Notify.danger(msg)
-    }
-    return (
-        <>
             <Cell
                 title="危险通知"
                 click={(event: React.MouseEvent) => {
                 errorNotify('危险通知')
                 }}
             />
-        </>
-    )
-}
-export default App
-```
-:::
-
-### 警告通知
-
-:::demo
-
-```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const warningNotify = (msg: string) => {
-        Notify.warn(msg)
-    }
-    return (
-        <>
             <Cell
                 title="警告通知"
                 click={(event: React.MouseEvent) => {
@@ -154,6 +98,7 @@ const App = () => {
 export default App
 ```
 :::
+
 
 
 ## 自定义
@@ -192,35 +137,36 @@ export default App
 
 ```tsx
 import  React, {useState} from "react";
-import { Notify, Cell,Button } from '@nutui/nutui-react';
+import { Notify, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const timeNotify = (msg: string) => {
-        Notify.text(msg, { duration: 10000 })
+        Notify.text(msg, { duration: 1000 })
+    }
+    const positionNotify = (msg: string) => {
+        Notify.text(msg, { position: 'bottom' })
     }
     return (
         <>
              <Cell
-                title="自定义时长10s"
+                title="自定义时长"
                 click={(event: React.MouseEvent) => {
-                    timeNotify('自定义时长10s')
+                    timeNotify('自定义时长')
                 }}
             />
-
-            <Button
-                type="primary"
-                onClick={() => {
-                    Notify.hide()
+            <Cell
+                title="自定义位置"
+                click={(event: React.MouseEvent) => {
+                    positionNotify('自定义位置')
                 }}
-            >
-                点我关闭通告栏
-            </Button>
+            />
         </>
     )
 }
 export default App
 ```
 :::
+
 
 
 
@@ -236,6 +182,7 @@ export default App
 | color      | 字体颜色                                              | String        | 空       |
 | background | 背景颜色                                              | String        | 空       |
 | className | 自定义类名                                            | String/Number | 1        |
+| position `v1.3.0` | 自定义位置 (top, bottom)                                           | String | 'top'        |
 
 ### Events
 
