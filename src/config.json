@@ -404,7 +404,7 @@
           "desc": "时间选择器，支持日期、年月、时分等维度，通常与弹出层组件配合使用。",
           "sort": 15,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "dsj"
         },
         {

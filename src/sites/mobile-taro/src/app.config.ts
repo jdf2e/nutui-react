@@ -30,6 +30,7 @@ const subPackages = [
       'pages/range/index',
       'pages/calendar/index',
       'pages/checkbox/index',
+      'pages/datepicker/index',
       'pages/inputnumber/index',
       'pages/input/index',
       'pages/radio/index',
