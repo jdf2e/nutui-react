@@ -117,7 +117,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   }
 
   const setChooseValue = (move: number) => {
-    console.log('setChooseValue', move)
     chooseItem &&
       chooseItem(listData?.[Math.round(-move / lineSpacing)], keyIndex)
   }
@@ -193,8 +192,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
 
   // 惯性滚动结束
   const stopMomentum = () => {
+    console.log('滚动结束')
     setTouchTime(0)
-    console.log('暂停', scrollDistance)
     setChooseValue(scrollDistance)
   }
   // 阻止默认事件

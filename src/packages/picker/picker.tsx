@@ -75,6 +75,8 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     const [columnsList, setColumnsList] = useState<PickerOption[][]>([]) // 格式化后每一列的数据
     const b = bem('picker')
 
+    let isConfirm = useRef(false)
+
     // 默认值修改
     useEffect(() => {
       if (
@@ -90,7 +92,12 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
 
     // 选中值进行修改
     useEffect(() => {
+      console.log('修改')
       onChange && onChange(columnIndex, chooseValueData, selectedOptions())
+      if (isConfirm.current) {
+        isConfirm.current = false
+        onConfirm && onConfirm(chooseValueData, selectedOptions())
+      }
     }, [chooseValueData])
 
     // 列表格式修改
@@ -106,9 +113,13 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     // 点击确定
     const confirm = () => {
       refs.forEach((_ref: any) => _ref.stopMomentum())
-
+      isConfirm.current = true
       onConfirm && onConfirm(chooseValueData, selectedOptions())
       onClose && onClose(chooseValueData, selectedOptions())
+
+      setTimeout(() => {
+        isConfirm.current = false
+      }, 0)
     }
 
     const selectedOptions = () => {
@@ -135,7 +146,6 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       if (option && Object.keys(option).length) {
         // 是否移动后是否与之前有差异
         if (chooseValueData[columnIndex] !== option.value) {
-          console.log('chooseItem')
           if (columnsType() === 'cascade') {
             chooseValueData[columnIndex] = option.value ? option.value : ''
             setchooseValueData([...chooseValueData])
@@ -167,8 +177,6 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
                 : ''
               return cdata
             })
-
-            console.log('完成')
           }
           setcolumnIndex(columnIndex)
         }
@@ -249,6 +257,20 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
         setchooseValueData([...data])
       }
     }
+
+    const renderToolbar = () => {
+      return (
+        <div className={b('control')}>
+          <span className={b('cancel-btn')} onClick={() => closeActionSheet()}>
+            {locale.cancel}
+          </span>
+          <div className={b('title')}>{title || ''}</div>
+          <span className={b('confirm-btn')} onClick={confirm}>
+            {locale.confirm}
+          </span>
+        </div>
+      )
+    }
     return (
       <Popup
         visible={isVisible}
@@ -258,18 +280,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
         }}
       >
         <div className={`${b()} ${className || ''}`} style={style} {...rest}>
-          <div className={b('control')}>
-            <span
-              className={b('cancel-btn')}
-              onClick={() => closeActionSheet()}
-            >
-              {locale.cancel}
-            </span>
-            <div className={b('title')}>{title || ''}</div>
-            <span className={b('confirm-btn')} onClick={() => confirm()}>
-              {locale.confirm}
-            </span>
-          </div>
+          {renderToolbar()}
           <div className={b('panel')} ref={pickerRef}>
             {columnsList?.map((item, index) => {
               return (
