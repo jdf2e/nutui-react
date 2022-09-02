@@ -651,6 +651,17 @@
           "sort": 9,
           "show": true,
           "author": "Ymm0008"
+        },
+        {
+          "version": "1.0.0",
+          "name": "PullToRefresh",
+          "type": "component",
+          "cName": "下拉刷新",
+          "desc": "",
+          "sort": 10,
+          "show": true,
+          "taro": true,
+          "author": "oasis"
         }
       ]
     },

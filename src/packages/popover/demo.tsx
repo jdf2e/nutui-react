@@ -1,8 +1,12 @@
 import React, { useRef, useState } from 'react'
+import { useTranslate } from '../../sites/assets/locale'
 import { Popover } from './popover'
 import Button from '@/packages/button'
 import Icon from '@/packages/icon'
 
+interface T {
+  [props: string]: string
+}
 interface List {
   name: string
   icon?: string
@@ -10,6 +14,44 @@ interface List {
 }
 
 const BadgeDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      title: '基础用法',
+      title1: '选项配置',
+      title2: '自定义内容',
+      title3: '位置自定义',
+      light: '明朗风格',
+      dark: '暗黑风格',
+      showIcon: '展示图标',
+      disableAction: '禁用选项',
+      content: '自定义内容',
+      popup: '弹出',
+    },
+    'en-US': {
+      title: 'Basic Usage',
+      title1: 'Option Configuration',
+      title2: 'Custom Content',
+      title3: 'Custom Location',
+      light: 'light',
+      dark: 'dark',
+      showIcon: 'show icon',
+      disableAction: 'disabled',
+      content: 'custom content',
+      popup: '',
+    },
+    'zh-TW': {
+      title: '基礎用法',
+      title1: '選項配置',
+      title2: '自定義內容',
+      title3: '位置自定義',
+      light: '明朗風格',
+      dark: '暗黑風格',
+      showIcon: '展示圖標',
+      disableAction: '禁用選項',
+      content: '自定義內容',
+      popup: '彈出',
+    },
+  })
   const selfContentStyle = {
     width: '195px',
     display: 'flex',
@@ -32,66 +74,66 @@ const BadgeDemo = () => {
 
   const itemList = [
     {
-      name: '选项一',
+      name: 'option1',
     },
     {
-      name: '选项二',
+      name: 'option2',
     },
     {
-      name: '选项三',
+      name: 'option3',
     },
   ]
   const iconItemList = [
     {
-      name: '选项一',
+      name: 'option1',
       icon: 'my2',
     },
     {
-      name: '选项二',
+      name: 'option2',
       icon: 'cart2',
     },
     {
-      name: '选项三',
+      name: 'option3',
       icon: 'location2',
     },
   ]
   const itemListDisabled = [
     {
-      name: '选项一',
+      name: 'option1',
       disabled: true,
     },
     {
-      name: '选项二',
+      name: 'option2',
       disabled: true,
     },
     {
-      name: '选项三',
+      name: 'option3',
     },
   ]
   const selfContent = [
     {
       name: 'service',
-      desc: '选项一',
+      desc: 'option1',
     },
     {
       name: 'notice',
-      desc: '选项二',
+      desc: 'option2',
     },
     {
       name: 'location',
-      desc: '选项三',
+      desc: 'option3',
     },
     {
       name: 'category',
-      desc: '选项四',
+      desc: 'option4',
     },
     {
       name: 'scan2',
-      desc: '选项五',
+      desc: 'option5',
     },
     {
       name: 'message',
-      desc: '选项六',
+      desc: 'option6',
     },
   ]
   const [lightTheme, setLightTheme] = useState(false)
@@ -154,7 +196,7 @@ const BadgeDemo = () => {
     <>
       <style>{styles}</style>
       <div className="demo">
-        <h2>基础用法</h2>
+        <h2>{translated.title}</h2>
         <Popover
           visible={lightTheme}
           onClick={() => {
@@ -164,7 +206,7 @@ const BadgeDemo = () => {
           style={{ marginRight: '30px' }}
         >
           <Button type="primary" shape="square">
-            明朗风格
+            {translated.light}
           </Button>
         </Popover>
         <Popover
@@ -176,11 +218,11 @@ const BadgeDemo = () => {
           list={itemList}
         >
           <Button type="primary" shape="square">
-            暗黑风格
+            {translated.dark}
           </Button>
         </Popover>
 
-        <h2>选项配置</h2>
+        <h2>{translated.title1}</h2>
         <Popover
           visible={showIcon}
           theme="dark"
@@ -191,7 +233,7 @@ const BadgeDemo = () => {
           style={{ marginRight: '30px' }}
         >
           <Button type="primary" shape="square">
-            展示图标
+            {translated.showIcon}
           </Button>
         </Popover>
         <Popover
@@ -203,11 +245,11 @@ const BadgeDemo = () => {
           onChoose={chooseHandle}
         >
           <Button type="primary" shape="square">
-            禁用选项
+            {translated.disableAction}
           </Button>
         </Popover>
 
-        <h2>自定义内容</h2>
+        <h2>{translated.content}</h2>
         <Popover
           visible={customized}
           onClick={() => {
@@ -217,7 +259,7 @@ const BadgeDemo = () => {
           className="customContent"
         >
           <Button type="primary" shape="square">
-            自定义内容
+            {translated.content}
           </Button>
           {customized ? (
             <div className="self-content" style={selfContentStyle}>
@@ -241,7 +283,7 @@ const BadgeDemo = () => {
           )}
         </Popover>
 
-        <h2 className="demoClass">位置自定义</h2>
+        <h2 className="demoClass">{translated.title3}</h2>
 
         <Popover
           visible={customLocationShow}
@@ -271,7 +313,7 @@ const BadgeDemo = () => {
                   setCustomLocationShow(!customLocationShow)
                 }}
               >
-                {k} 弹出
+                {k} {translated.popup}
               </Button>
             )
           })}
