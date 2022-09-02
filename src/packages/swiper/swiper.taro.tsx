@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, TouchEvent, useMemo } from 'react'
 import classNames from 'classnames'
 import { DataContext } from './UserContext'
 import bem from '@/utils/bem'
-import { getRectByTaro } from '../../utils/useClientRect'
 import Taro, { useReady } from '@tarojs/taro'
 export type SwiperRef = {
   to: (index: number) => void
@@ -341,9 +340,6 @@ export const Swiper = React.forwardRef<
         moveOffset +
         (active === childCount - 1 && !props.loop ? -val / 2 : val / 2)
     }
-    target.style.transform = `translate3D${
-      !isVertical ? `(${_offset}px,0,0)` : `(0,${_offset}px,0)`
-    }`
     target.style.transitionDuration = `${
       _swiper.current.moving ? 0 : props.duration
     }ms`
@@ -353,6 +349,9 @@ export const Swiper = React.forwardRef<
     target.style[isVertical ? 'width' : 'height'] = `${
       isVertical ? width : height
     }px`
+    target.style.transform = `translate3D${
+      !isVertical ? `(${_offset}px,0,0)` : `(0,${_offset}px,0)`
+    }`
   }
 
   const onTouchStart = (e: TouchEvent) => {
@@ -416,7 +415,6 @@ export const Swiper = React.forwardRef<
       query.select(`#${(element as any).id}`) &&
         query.select(`#${(element as any).id}`).boundingClientRect()
       query.exec(function (res: any) {
-        console.log(res)
         resolve(res[0])
       })
     })
