@@ -117,5 +117,11 @@ const idID: BaseLang = {
     min: 'Menit',
     seconds: 'Detik',
   },
+  pullToRefresh: {
+    pullingText: 'Tarik ke bawah untuk menyegarkan',
+    canReleaseText: 'Rilis untuk menyegarkan',
+    refreshingText: 'Memuat...',
+    completeText: 'Penyegaran berhasil',
+  },
 }
 export default idID

@@ -117,5 +117,11 @@ const enUS: BaseLang = {
     min: 'Minute',
     seconds: 'Second',
   },
+  pullToRefresh: {
+    pullingText: 'Pulling',
+    canReleaseText: 'Release to refresh',
+    refreshingText: 'Loading...',
+    completeText: 'Refresh successful',
+  },
 }
 export default enUS
