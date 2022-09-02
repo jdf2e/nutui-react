@@ -118,5 +118,11 @@ const zhCN: BaseLang = {
     min: '分',
     seconds: '秒',
   },
+  pullToRefresh: {
+    pullingText: '下拉刷新',
+    canReleaseText: '松开刷新',
+    refreshingText: '加载中...',
+    completeText: '刷新成功',
+  },
 }
 export default zhCN
