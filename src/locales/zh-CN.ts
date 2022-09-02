@@ -110,5 +110,19 @@ const zhCN: BaseLang = {
     mute: '静音',
     tips: 'onPlayEnd事件在loop=false时才会触发',
   },
+  datepicker: {
+    year: '年',
+    month: '月',
+    day: '日',
+    hour: '时',
+    min: '分',
+    seconds: '秒',
+  },
+  pullToRefresh: {
+    pullingText: '下拉刷新',
+    canReleaseText: '松开刷新',
+    refreshingText: '加载中...',
+    completeText: '刷新成功',
+  },
 }
 export default zhCN
