@@ -25,9 +25,9 @@ const App = () => {
   const [lightTheme, setLightTheme] = useState(false)
   const [darkTheme, setDarkTheme] = useState(false)
   const itemList = [
-    {name: '选项一'},
-    {name: '选项二'},
-    {name: '选项三'},
+    {name: 'option1'},
+    {name: 'option2'},
+    {name: 'option3'},
   ]
   return (
     <>
@@ -63,14 +63,14 @@ const App = () => {
   const [showIcon, setShowIcon] = useState(false)
   const [disableAction, setDisableAction] = useState(false)
   const iconItemList= [
-    {name: '选项一',icon: 'my2'},
-    {name: '选项二',icon: 'cart2'},
-    {name: '选项三',icon: 'location2'}
+    {name: 'option1',icon: 'my2'},
+    {name: 'option2',icon: 'cart2'},
+    {name: 'option3',icon: 'location2'}
   ];
   const itemListDisabled=[
-    {name: '选项一',disabled: true},
-    {name: '选项二', disabled: true},
-    {name: '选项三'}
+    {name: 'option1',disabled: true},
+    {name: 'option2', disabled: true},
+    {name: 'option3'}
   ];
 
   return (
@@ -108,27 +108,27 @@ const App = () => {
   const selfContent= [
     {
       name: 'service',
-      desc: '选项一'
+      desc: 'option1'
     },
     {
       name: 'notice',
-      desc: '选项二'
+      desc: 'option2'
     },
     {
       name: 'location',
-      desc: '选项三'
+      desc: 'option3'
     },
     {
       name: 'category',
-      desc: '选项四'
+      desc: 'option4'
     },
     {
       name: 'scan2',
-      desc: '选项五'
+      desc: 'option5'
     },
     {
       name: 'message',
-      desc: '选项六'
+      desc: 'option6'
     }
   ];
 
@@ -191,9 +191,9 @@ const App = () => {
   const [rightLocation, setRightLocation] = useState(false)
   const [leftLocation, setLeftLocation] = useState(false)
   const iconItemList= [
-    {name: '选项一',icon: 'my2'},
-    {name: '选项二',icon: 'cart2'},
-    {name: '选项三',icon: 'location2'}
+    {name: 'option1',icon: 'my2'},
+    {name: 'option2',icon: 'cart2'},
+    {name: 'option3',icon: 'location2'}
   ];
 
   return (

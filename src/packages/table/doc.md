@@ -322,18 +322,10 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from "react";
-import { Table } from '@nutui/nutui-react';
-
-interface TableColumnProps {
-  key?: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
-}
+import { Table, Button, Icon } from '@nutui/nutui-react';
 
 const App = () => {
-  const [columns4, setColumns4] = useState<Array<TableColumnProps>>([
+  const [columns4, setColumns4] = useState([
     {
       title: '姓名',
       key: 'name',
@@ -406,18 +398,10 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from "react";
-import { Table } from '@nutui/nutui-react';
-
-interface TableColumnProps {
-  key?: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
-}
+import { Table, Button, Icon } from '@nutui/nutui-react';
 
 const App = () => {
-  const [columns4, setColumns4] = useState<Array<TableColumnProps>>([
+  const [columns4, setColumns4] = useState([
     {
       title: '姓名',
       key: 'name',
@@ -490,18 +474,10 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from "react";
-import { Table } from '@nutui/nutui-react';
-
-interface TableColumnProps {
-  key?: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
-}
+import { Table, Button, Icon } from '@nutui/nutui-react';
 
 const App = () => {
-  const [columns4, setColumns4] = useState<Array<TableColumnProps>>([
+  const [columns4, setColumns4] = useState([
     {
       title: '姓名',
       key: 'name',
@@ -600,4 +576,4 @@ export default App;
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| onSorter  | 点击排序按钮触发 | item: TableColumnProps, data: Array<any> |
+| onSorter  | 点击排序按钮触发 | `item: TableColumnProps, data: Array<any>` |

@@ -109,5 +109,19 @@ const enUS: BaseLang = {
     mute: 'mute',
     tips: 'The onplayend event will only be triggered when loop = false',
   },
+  datepicker: {
+    year: 'Year',
+    month: 'Month',
+    day: 'Day',
+    hour: 'Hour',
+    min: 'Minute',
+    seconds: 'Second',
+  },
+  pullToRefresh: {
+    pullingText: 'Pulling',
+    canReleaseText: 'Release to refresh',
+    refreshingText: 'Loading...',
+    completeText: 'Refresh successful',
+  },
 }
 export default enUS

@@ -109,5 +109,19 @@ const idID: BaseLang = {
     mute: 'bisu',
     tips: 'Acara Onplayend hanya akan dipicu saat loop = false',
   },
+  datepicker: {
+    year: 'Tahun',
+    month: 'Bulan',
+    day: 'Hari',
+    hour: 'Jam',
+    min: 'Menit',
+    seconds: 'Detik',
+  },
+  pullToRefresh: {
+    pullingText: 'Tarik ke bawah untuk menyegarkan',
+    canReleaseText: 'Rilis untuk menyegarkan',
+    refreshingText: 'Memuat...',
+    completeText: 'Penyegaran berhasil',
+  },
 }
 export default idID
