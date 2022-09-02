@@ -2,6 +2,7 @@
 const vfs = require('vinyl-fs')
 const map = require('map-stream')
 const fs = require('fs-extra')
+const exportPropsTypes = require('../export-props')
 const dest_docs = './dist/types'
 
 vfs
@@ -40,6 +41,7 @@ vfs
           './dist/types/nutui.react.d.ts',
           (err) => {
             console.log('重命名失败', err)
+            exportPropsTypes('taro')
           }
         )
       })

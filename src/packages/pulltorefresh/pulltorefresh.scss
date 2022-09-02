@@ -1,0 +1,18 @@
+.nut-pulltorefresh {
+  &-head {
+    overflow: hidden;
+    position: relative;
+    font-size: 14px;
+
+    &-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

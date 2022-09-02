@@ -108,5 +108,19 @@ const zhTW: BaseLang = {
     mute: '靜音',
     tips: 'onPlayEnd事件在loop=false時才會觸發',
   },
+  datepicker: {
+    year: '年',
+    month: '月',
+    day: '日',
+    hour: '時',
+    min: '分',
+    seconds: '秒',
+  },
+  pullToRefresh: {
+    pullingText: '下拉刷新',
+    canReleaseText: '鬆開刷新',
+    refreshingText: '加載中...',
+    completeText: '刷新成功',
+  },
 }
 export default zhTW
