@@ -11,8 +11,8 @@ export const getLocale = () => {
   return locale
 }
 
-const useLocale = () => {
-  const [locale, setLocale] = useState(getLocale())
+const useLocale = (): [string, any] => {
+  const [locale, setLocale] = useState<string>(getLocale())
   const handlePopState = () => {
     setLocale(getLocale())
   }
