@@ -13,8 +13,6 @@ import { ActionSheet } from '@nutui/nutui-react';
 
 ### 基本用法
 
-默认
-
 :::demo
 ```tsx
 import  React, { useState } from "react";

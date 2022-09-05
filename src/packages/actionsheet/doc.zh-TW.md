@@ -1,19 +1,17 @@
-# ActionSheet 动作面板
+# ActionSheet 動作面板
 
 
-### 介绍
+### 介紹
 从底部弹出的动作菜单面板。
 
-### 安装
+### 安裝
 
 ```ts
 import { ActionSheet } from '@nutui/nutui-react';
 ```
-## 代码示例
+## 代碼示例
 
 ### 基本用法
-
-默认
 
 :::demo
 ```tsx
@@ -30,13 +28,13 @@ const App = () => {
   const [isVisible1, setIsVisible1] = useState(false)
   const menuItemsOne: ItemType<string>[] = [
     {
-      name: '选项一',
+      name: '選項一',
     },
     {
-      name: '选项二',
+      name: '選項二',
     },
     {
-      name: '选项三',
+      name: '選項三',
     },
   ]
   const chooseItem = (itemParams: any) => {
@@ -67,7 +65,7 @@ export default App;
 
 ```
 :::
-### 展示取消按钮
+### 展示取消按鈕
 
 :::demo
 ```tsx
@@ -79,13 +77,13 @@ const App = () => {
   const [val2, setVal2] = useState('')
   const menuItemsOne: ItemType<string>[] = [
     {
-      name: '选项一',
+      name: '選項一',
     },
     {
-      name: '选项二',
+      name: '選項二',
     },
     {
-      name: '选项三',
+      name: '選項三',
     },
   ]
   const chooseItemTwo = (itemParams: Item) => {
@@ -96,7 +94,7 @@ const App = () => {
     <>   
     <Cell isLink onClick={() => setIsVisible2(!isVisible2)}>
       <span>
-        <label>展示取消按钮</label>
+        <label>展示取消按鈕</label>
       </span>
       <div className="selected-option">{val2}</div>
     </Cell>
@@ -115,7 +113,7 @@ export default App;
 
 ```
 :::
-### 展示描述信息
+### 展示描述資訊
 
 :::demo
 ```tsx
@@ -127,14 +125,14 @@ const App = () => {
   const [val3, setVal3] = useState('')
   const menuItemsTwo: ItemType<string>[] = [
     {
-      name: '选项一',
+      name: '選項一',
     },
     {
-      name: '选项二',
+      name: '選項二',
     },
     {
-      name: '选项三',
-      subname: '描述信息',
+      name: '選項三',
+      subname: '描述資訊',
     },
   ]
   const chooseItemThree = (itemParams: Item) => {
@@ -145,13 +143,13 @@ const App = () => {
     <>   
     <Cell isLink onClick={() => setIsVisible3(!isVisible3)}>
       <span>
-        <label>展示描述信息</label>
+        <label>展示描述資訊</label>
       </span>
       <div className="selected-option">{val3}</div>
     </Cell>
     <ActionSheet
       visible={isVisible3}
-      description="这是一段描述信息"
+      description="這是一段描述資訊"
       menuItems={menuItemsTwo}
       choose={chooseItemThree}
       cancelTxt="取消"
@@ -164,7 +162,7 @@ export default App;
 
 ```
 :::
-### 选项状态
+### 選項状态
 
 :::demo
 ```tsx
@@ -175,10 +173,10 @@ const App = () => {
   const [isVisible4, setIsVisible4] = useState(false)
   const menuItemsThree: ItemType<string | boolean>[] = [
     {
-      name: '着色选项',
+      name: '著色選項',
     },
     {
-      name: '禁用选项',
+      name: '禁用選項',
       disable: true,
     },
   ]
@@ -186,7 +184,7 @@ const App = () => {
     <>   
     <Cell isLink onClick={() => setIsVisible4(!isVisible4)}>
       <span>
-        <label>选项状态</label>
+        <label>選項状态</label>
       </span>
     </Cell>
     <ActionSheet
@@ -194,7 +192,7 @@ const App = () => {
       cancelTxt="取消"
       cancel={() => setIsVisible4(false)}
       menuItems={menuItemsThree}
-      chooseTagValue="着色选项"
+      chooseTagValue="着色選項"
       choose={() => {
         setIsVisible4(false)
       }}
@@ -209,22 +207,23 @@ export default App;
 
 ## Prop
 
-| 字段             | 说明                                   | 类型    | 默认值    |
+| 字段             | 說明                                   | 類型    | 默認值    |
 |------------------|----------------------------------------|---------|-----------|
-| cancelTxt       | 取消文案                               | String  | '取消'    |
-| menuItems       | 列表项                                 | Array   | [ ]       |
-| optionTag       | 设置列表项展示使用参数                 | String  | 'name'    |
-| visible       | 遮罩层可见                             | Boolean | false     |
-| optionSubTag   | 设置列表项描述展示使用参数             | String  | 'subname' |
-| chooseTagValue | 设置选中项的值，和'option-tag'的值对应 | String  | ''        |
-| title            | 设置列表项标题                         | String  | ''        |
-| description      | 设置列表项副标题/描述                  | String  | ''        |
-| color            | 高亮颜色                               | String  | '#ee0a24' |
+| cancelTxt       | 取消文案
+                               | String  | '取消'    |
+| menuItems       | 列表項                                | Array   | [ ]       |
+| optionTag       | 設置列表項展示使用參數                | String  | 'name'    |
+| visible       | 遮罩層可見                            | Boolean | false     |
+| optionSubTag   | 設置列表項描述展示使用參數             | String  | 'subname' |
+| chooseTagValue | 設置選中項的值，和'option-tag'的值對應 | String  | ''        |
+| title            | 設置列表項標題                         | String  | ''        |
+| description      | 設置列表項副標題/描述                  | String  | ''        |
+| color            | 高亮顏色                               | String  | '#ee0a24' |
 
 
 ## Event
 
-| 字段   | 说明               | 回调参数                          |
+| 字段   | 說明               | 回調參數                          |
 |--------|--------------------|-----------------------------------|
-| choose | 选择之后触发       | 选中列表项item, 选中的索引值index |
-| cancel | 点击取消文案时触发 | 无                                |
+| choose | 選擇之後觸發 |  選中列表項item, 選中的索引值index |
+| cancel | 點擊取消文案時觸發 | 無                               |
