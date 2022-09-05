@@ -21,8 +21,8 @@ export interface ElevatorProps {
   className: string
   style: React.CSSProperties
   children: React.ReactNode
-  clickItem: (key: string, item: ElevatorData) => void
-  clickIndex: (key: string) => void
+  onClickItem: (key: string, item: ElevatorData) => void
+  onClickIndex: (key: string) => void
 }
 const defaultProps = {
   height: '200px',
@@ -49,8 +49,8 @@ export const Elevator: FunctionComponent<
     spaceHeight,
     titleHeight,
     className,
-    clickItem,
-    clickIndex,
+    onClickItem,
+    onClickIndex,
     children,
     ...rest
   } = {
@@ -150,13 +150,13 @@ export const Elevator: FunctionComponent<
   })
 
   const handleClickItem = (key: string, item: ElevatorData) => {
-    clickItem && clickItem(key, item)
+    onClickItem && onClickItem(key, item)
     setCurrentData(item)
     setCurrentKey(key)
   }
 
   const handleClickIndex = (key: string) => {
-    clickIndex && clickIndex(key)
+    onClickIndex && onClickIndex(key)
   }
 
   const setListGroup = () => {
