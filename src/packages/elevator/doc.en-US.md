@@ -479,5 +479,8 @@ export default App
 
 | Event  | Description     | Arguments    |
 |-------|----------|-------------|
-| onClickItem | Click content | key: string, item: { id: 0, name: '' } |
-| onClickIndex | Click index | key: string |
+| onClickItem`v1.3.2` | Click content | key: string, item: { id: 0, name: '' } |
+| onClickIndex`v1.3.2` | Click index | key: string |
+| clickItem`v1.3.2(废弃)` | Click content | key: string, item: { id: 0, name: '' } |
+| clickIndex`v1.3.2(废弃)` | Click index | key: string |
+

@@ -480,5 +480,8 @@ export default App
 
 | 名称       | 说明     | 回调参数                               |
 | ---------- | -------- | -------------------------------------- |
-| onClickItem  | 点击内容 | key: string, item: { id: 0, name: '' } |
-| onClickIndex | 点击索引 | key: string                            |
+| onClickItem`v1.3.2`  | 点击内容 | key: string, item: { id: 0, name: '' } |
+| onClickIndex`v1.3.2` | 点击索引 | key: string                            |
+| clickItem`v1.3.2(废弃)`  | 点击内容 | key: string, item: { id: 0, name: '' } |
+| clickIndex`v1.3.2(废弃)` | 点击索引 | key: string                            |
+
