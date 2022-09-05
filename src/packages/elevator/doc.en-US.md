@@ -3,7 +3,7 @@
 ### Intro
 
 
-用于列表快速定位以及索引的显示
+It is used to quickly locate the list and display the index
 
 ### Install
 
@@ -471,9 +471,9 @@ export default App
 | height                 | Height of elevator area                                                    | Number、String  | `200px`
 | acceptKey             | Index key value                                                      | String  | `title` |
 | indexList             | Index list                                                         | Array（`item` needs to contain `id` and `name` attributes, and `name` supports passing in `html` structure）  | `[{id: 0, name: ''}]` |
-| isSticky            | Whether the index is ceiling                                                    | Boolean  | `false` |
-| spaceHeight             | Up and down spacing of right anchor point              | Number  | `23` |
-| titleHeight             | Height of left index                                                     | Number  | `35` |
+| isSticky`v1.2.1`            | Whether the index is ceiling                                                    | Boolean  | `false` |
+| spaceHeight`v1.2.1`             | Up and down spacing of right anchor point              | Number  | `23` |
+| titleHeight`v1.2.1`             | Height of left index                                                     | Number  | `35` |
 
 ### Event
 

@@ -471,9 +471,9 @@ export default App
 | height    | 電梯區域的高度 | Number、String                                              | `200px`               |
 | acceptKey | 索引 key 值    | String                                                      | `title`               |
 | indexList | 索引列表       | Array（item 需包含 id、name 屬性, name 支持傳入 html 結構） | `[{id: 0, name: ''}]` |
-| isSticky            | 索引是否吸頂                                                    | Boolean  | `false` |
-| spaceHeight             | 右側錨點的上下間距                                                   | Number  | `23` |
-| titleHeight             | 左側索引的高度                                                     | Number  | `35` |
+| isSticky`v1.2.1`    | 索引是否吸頂                                                    | Boolean  | `false` |
+| spaceHeight`v1.2.1` | 右側錨點的上下間距                                                   | Number  | `23` |
+| titleHeight`v1.2.1`   | 左側索引的高度                                                     | Number  | `35` |
 
 ### Event
 
