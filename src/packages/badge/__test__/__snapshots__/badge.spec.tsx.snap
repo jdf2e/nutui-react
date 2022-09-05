@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match custom color 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-badge"
+  >
+    <div />
+    <div
+      class=" nut-badge__content sup"
+      style="top: 0px; right: 0px; z-index: 0;"
+    >
+      200
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match max size 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-badge"
+  >
+    <div />
+    <div
+      class=" nut-badge__content sup"
+      style="top: 0px; right: 0px; z-index: 0;"
+    >
+      9+
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-badge"
+  >
+    <div />
+    <div
+      class=" nut-badge__content sup"
+      style="top: 0px; right: 0px; z-index: 0;"
+    >
+      8
+    </div>
+  </div>
+</DocumentFragment>
+`;
