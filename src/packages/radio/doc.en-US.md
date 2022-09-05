@@ -25,19 +25,19 @@ const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <RadioGroup value={radioVal}>
-      <Radio label="1">Option 1</Radio>
-      <Radio disabled label="2">Option 2</Radio>
-      <Radio label="3">Option 3</Radio>
+      <Radio value="1">Option 1</Radio>
+      <Radio disabled value="2">Option 2</Radio>
+      <Radio value="3">Option 3</Radio>
     </RadioGroup>
     <RadioGroup value={radioVal} textPosition="left">
-      <Radio label="1">Option 1</Radio>
-      <Radio disabled label="2">Option 2</Radio>
-      <Radio label="3">Option 3</Radio>
+      <Radio value="1">Option 1</Radio>
+      <Radio disabled value="2">Option 2</Radio>
+      <Radio value="3">Option 3</Radio>
     </RadioGroup>
     <RadioGroup value={radioVal}>
-      <Radio shape="button" label="1">Option 1</Radio>
-      <Radio disabled shape="button" label="2">Option 2</Radio>
-      <Radio shape="button" label="3">Option 3</Radio>
+      <Radio shape="button" value="1">Option 1</Radio>
+      <Radio disabled shape="button" value="2">Option 2</Radio>
+      <Radio shape="button" value="3">Option 3</Radio>
     </RadioGroup>
   </>
 }
@@ -58,19 +58,19 @@ const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <RadioGroup value={radioVal} direction="horizontal">
-      <Radio label="1">Option 1</Radio>
-      <Radio disabled label="2">Option 2</Radio>
-      <Radio label="3">Option 3</Radio>
+      <Radio value="1">Option 1</Radio>
+      <Radio disabled value="2">Option 2</Radio>
+      <Radio value="3">Option 3</Radio>
     </RadioGroup>
     <RadioGroup value={radioVal} textPosition="left" direction="horizontal">
-      <Radio label="1">Option 1</Radio>
-      <Radio disabled label="2">Option 2</Radio>
-      <Radio label="3">Option 3</Radio>
+      <Radio value="1">Option 1</Radio>
+      <Radio disabled value="2">Option 2</Radio>
+      <Radio value="3">Option 3</Radio>
     </RadioGroup>
     <RadioGroup value={radioVal} direction="horizontal">
-      <Radio label="1">Option 1</Radio>
-      <Radio disabled label="2">Option 2</Radio>
-      <Radio label="3">Option 3</Radio>
+      <Radio value="1">Option 1</Radio>
+      <Radio disabled value="2">Option 2</Radio>
+      <Radio value="3">Option 3</Radio>
     </RadioGroup>
   </>
 }
@@ -91,8 +91,8 @@ const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <RadioGroup value={radioVal}>
-      <Radio label="1" iconSize="12">Size 12</Radio>
-      <Radio label="2" iconSize="12">Size 12</Radio>
+      <Radio value="1" iconSize="12">Size 12</Radio>
+      <Radio value="2" iconSize="12">Size 12</Radio>
     </RadioGroup>
   </>
 }
@@ -115,9 +115,9 @@ const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <RadioGroup value={radioVal}>
-      <Radio label="1" iconName="checklist" iconActiveName="checklist">Custom
+      <Radio value="1" iconName="checklist" iconActiveName="checklist">Custom
         icons</Radio>
-      <Radio label="2" iconName="checklist" iconActiveName="checklist">Custom
+      <Radio value="2" iconName="checklist" iconActiveName="checklist">Custom
         icons</Radio>
     </RadioGroup>
   </>
@@ -142,8 +142,8 @@ const RadioGroupLast = () => {
   }
   return <>
     <RadioGroup value={radioVal} onChange={handleChange}>
-      <Radio label="1">Trigger event</Radio>
-      <Radio label="2">Trigger event</Radio>
+      <Radio value="1">Trigger event</Radio>
+      <Radio value="2">Trigger event</Radio>
     </RadioGroup>
   </>
 }
@@ -162,7 +162,7 @@ export default RadioGroupLast;
 | iconSize        | [Icon size] (#/icon)                                           | String、Number          | `18`              |
 | iconName        | [Icon Name] (#/icon), before selecting (it is recommended to modify it with 'iconActiveName') | String                  | `'check-normal'`  |
 | iconActiveName | [Icon Name] (#/icon), selected (it is recommended to modify it with 'iconName') | String                  | `'check-checked'` |
-| label            | The radio box identifies the | String、Number、Boolean | -                 |
+| value            | Value is carrying identification, used in Group mode | String、Number、Boolean | -                 |
 | shape            | Shape, with optional values of button, round, | String                  | round             |
 
 ### RadioGroup
@@ -175,6 +175,6 @@ export default RadioGroupLast;
 
 ## RadioGroup Event
 
-| Props          | Description | Callback parameters|
-|----- | ----- | ----- |
-| change | Triggers | when the value changes The currently selected label value (label) [there is a value after setting the label, the default is empty] |
+| Props    | Description | Callback parameters|
+|----------| ----- | ----- |
+| onChange | Triggers | when the value changes The currently selected label value (label) [there is a value after setting the label, the default is empty] |

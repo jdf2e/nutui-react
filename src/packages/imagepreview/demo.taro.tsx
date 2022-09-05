@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Cell, ImagePreview } from '@/packages/nutui.react.taro'
+import { Cell, ImagePreview } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 
 interface T {
