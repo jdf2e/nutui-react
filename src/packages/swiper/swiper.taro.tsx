@@ -460,17 +460,6 @@ export const Swiper = React.forwardRef<
     init()
   }, [propSwiper.initPage])
   useEffect(() => {
-    const target = container.current
-    target.addEventListener('touchstart', onTouchStart, false)
-    target.addEventListener('touchmove', onTouchMove, false)
-    target.addEventListener('touchend', onTouchEnd, false)
-    return () => {
-      target.removeEventListener('touchstart', onTouchStart, false)
-      target.removeEventListener('touchmove', onTouchMove, false)
-      target.removeEventListener('touchend', onTouchEnd, false)
-    }
-  })
-  useEffect(() => {
     return () => {
       stopAutoPlay()
     }
@@ -502,11 +491,16 @@ export const Swiper = React.forwardRef<
   }))
   return (
     <DataContext.Provider value={parent}>
-      <div
+      <view
         className={`${classes} ${className}`}
         ref={container}
         {...rest}
         id={'container-' + refRandomId}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        // @ts-ignore
+        catchMove={isVertical}
       >
         <div className={contentClass} ref={innerRef}>
           {React.Children.map(childs, (child: any, index: number) => {
@@ -550,7 +544,7 @@ export const Swiper = React.forwardRef<
         ) : (
           <div>{pageContent}</div>
         )}
-      </div>
+      </view>
     </DataContext.Provider>
   )
 })
