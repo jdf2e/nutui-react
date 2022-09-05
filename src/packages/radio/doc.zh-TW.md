@@ -24,19 +24,19 @@ const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <RadioGroup value={radioVal}>
-      <Radio label="1">選項1</Radio>
-      <Radio disabled label="2">選項2</Radio>
-      <Radio label="3">選項3</Radio>
+      <Radio value="1">選項1</Radio>
+      <Radio disabled value="2">選項2</Radio>
+      <Radio value="3">選項3</Radio>
     </RadioGroup>
     <RadioGroup value={radioVal} textPosition="left">
-      <Radio label="1">選項1</Radio>
-      <Radio disabled label="2">選項2</Radio>
-      <Radio label="3">選項3</Radio>
+      <Radio value="1">選項1</Radio>
+      <Radio disabled value="2">選項2</Radio>
+      <Radio value="3">選項3</Radio>
     </RadioGroup>
     <RadioGroup value={radioVal}>
-      <Radio shape="button" label="1">選項1</Radio>
-      <Radio disabled shape="button" label="2">選項2</Radio>
-      <Radio shape="button" label="3">選項3</Radio>
+      <Radio shape="button" value="1">選項1</Radio>
+      <Radio disabled shape="button" value="2">選項2</Radio>
+      <Radio shape="button" value="3">選項3</Radio>
     </RadioGroup>
   </>
 }
@@ -57,19 +57,19 @@ const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <RadioGroup value={radioVal} direction="horizontal">
-      <Radio label="1">選項1</Radio>
-      <Radio disabled label="2">選項2</Radio>
-      <Radio label="3">選項3</Radio>
+      <Radio value="1">選項1</Radio>
+      <Radio disabled value="2">選項2</Radio>
+      <Radio value="3">選項3</Radio>
     </RadioGroup>
     <RadioGroup value={radioVal} textPosition="left" direction="horizontal">
-      <Radio label="1">選項1</Radio>
-      <Radio disabled label="2">選項2</Radio>
-      <Radio label="3">選項3</Radio>
+      <Radio value="1">選項1</Radio>
+      <Radio disabled value="2">選項2</Radio>
+      <Radio value="3">選項3</Radio>
     </RadioGroup>
     <RadioGroup value={radioVal} direction="horizontal">
-      <Radio shape="button" label="1">選項1</Radio>
-      <Radio disabled shape="button" label="2">選項2</Radio>
-      <Radio shape="button" label="3">選項3</Radio>
+      <Radio shape="button" value="1">選項1</Radio>
+      <Radio disabled shape="button" value="2">選項2</Radio>
+      <Radio shape="button" value="3">選項3</Radio>
     </RadioGroup>
   </>
 }
@@ -90,8 +90,8 @@ const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <RadioGroup value={radioVal}>
-      <Radio label="1" iconSize="12">自訂尺寸12</Radio>
-      <Radio label="2" iconSize="12">自訂尺寸12</Radio>
+      <Radio value="1" iconSize="12">自訂尺寸12</Radio>
+      <Radio value="2" iconSize="12">自訂尺寸12</Radio>
     </RadioGroup>
   </>
 }
@@ -114,9 +114,9 @@ const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <RadioGroup value={radioVal}>
-      <Radio label="1" iconName="checklist"
+      <Radio value="1" iconName="checklist"
              iconActiveName="checklist">自訂圖示</Radio>
-      <Radio label="2" iconName="checklist"
+      <Radio value="2" iconName="checklist"
              iconActiveName="checklist">自訂圖示</Radio>
     </RadioGroup>
   </>
@@ -141,8 +141,8 @@ const RadioGroupLast = () => {
   }
   return <>
     <RadioGroup value={radioVal} onChange={handleChange}>
-      <Radio label="1">觸發事件</Radio>
-      <Radio label="2">觸發事件</Radio>
+      <Radio value="1">觸發事件</Radio>
+      <Radio value="2">觸發事件</Radio>
     </RadioGroup>
   </>
 }
@@ -161,7 +161,7 @@ export default RadioGroupLast;
 | iconSize        | [圖示尺寸](#/icon)                                           | String、Number          | `18`              |
 | iconName        | [圖示名稱](#/icon)，選中前（建議和'iconActiveName'一起修改） | String                  | `'check-normal'`  |
 | iconActiveName | [圖示名稱](#/icon)，選取後（建議和'iconName'一起修改）        | String                  | `'check-checked'` |
-| label            | 單選框標識                                                   | String、Number、Boolean | -                 |
+| value            | 攜帶的標識值，用於 Group 模式                                                   | String、Number、Boolean | -                 |
 | shape            | 形狀，可選值為 button、round                                 | String                  | round             |
 
 ### RadioGroup
@@ -175,5 +175,5 @@ export default RadioGroupLast;
 ## RadioGroup Event
 
 | 事件名稱     | 說明 | 回調參數 |
-|--------|--------------|----------------------------------------------------|
-| change | 值變化時觸發 | 當前選取的選項（label）【設置label後有值、預設為空】 |
+|----------|--------------|----------------------------------------------------|
+| onChange | 值變化時觸發 | 當前選取的選項（label）【設置label後有值、預設為空】 |

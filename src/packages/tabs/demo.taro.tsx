@@ -1,7 +1,57 @@
 import React, { useEffect, useState } from 'react'
-import { Icon, TabPane, Tabs } from '@/packages/nutui.react.taro'
+import { Tabs, TabPane, Icon } from '@/packages/nutui.react.taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
+
+interface T {
+  basic: string
+  title1: string
+  title2: string
+  title3: string
+  title4: string
+  title5: string
+  title6: string
+  title7: string
+  title8: string
+  title9: string
+  custom1: string
+  custom2: string
+  custom3: string
+}
 
 const TabsDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基本用法',
+      title1: '基础用法-微笑曲线',
+      title2: '通过 pane-key 匹配',
+      title3: '数据异步渲染 3s',
+      title4: '数量多,滚动操作',
+      title5: '左右布局',
+      title6: '左右布局-微笑曲线',
+      title7: '标签栏字体尺寸 large normal small',
+      title8: '自定义标签栏',
+      title9: 'Tabpane 自动高度',
+      custom1: '自定义 1',
+      custom2: '自定义 2',
+      custom3: '自定义 3',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title1: 'Basic Usage - Smile Curve',
+      title2: 'Match by pane-key',
+      title3: 'Data is rendered asynchronously for 3s',
+      title4: 'A large number of scrolling operations',
+      title5: 'Left and right layout',
+      title6: 'Left and Right Layout - Smile Curve',
+      title7: 'tab bar font size large normal small',
+      title8: 'custom tab bar',
+      title9: 'Tabpane auto height',
+      custom1: 'custom 1',
+      custom2: 'custom 2',
+      custom3: 'custom 3',
+    },
+  })
+
   const [tab1value, setTab1value] = useState('0')
   const [tab2value, setTab2value] = useState('0')
   const [tab3value, setTab3value] = useState('0')
@@ -14,17 +64,17 @@ const TabsDemo = () => {
   const list5 = Array.from(new Array(2).keys())
   const list6 = [
     {
-      title: '自定义 1',
+      title: translated.custom1,
       paneKey: 'c1',
       icon: 'dongdong',
     },
     {
-      title: '自定义 2',
+      title: translated.custom2,
       paneKey: 'c2',
       icon: 'JD',
     },
     {
-      title: '自定义 3',
+      title: translated.custom3,
       paneKey: 'c3',
     },
   ]
@@ -39,7 +89,7 @@ const TabsDemo = () => {
   return (
     <>
       <div className="demo full">
-        <h2>基础用法</h2>
+        <h2>{translated.basic}</h2>
         <Tabs
           value={tab1value}
           className="test"
@@ -52,7 +102,7 @@ const TabsDemo = () => {
           <TabPane title="Tab 2"> Tab 2 </TabPane>
           <TabPane title="Tab 3"> Tab 3 </TabPane>
         </Tabs>
-        <h2>基础用法-微笑曲线</h2>
+        <h2>{translated.title1}</h2>
         <Tabs
           value={tab1value}
           onChange={({ paneKey }) => {
@@ -64,7 +114,7 @@ const TabsDemo = () => {
           <TabPane title="Tab 2"> Tab 2 </TabPane>
           <TabPane title="Tab 3"> Tab 3 </TabPane>
         </Tabs>
-        <h2>通过 pane-key 匹配</h2>
+        <h2>{translated.title2}</h2>
         <Tabs
           value={tab2value}
           onChange={({ paneKey }) => {
@@ -84,7 +134,7 @@ const TabsDemo = () => {
             Tab 3{' '}
           </TabPane>
         </Tabs>
-        <h2>Tabpane 自动高度</h2>
+        <h2>{translated.title9}</h2>
         <Tabs
           value={tab2value}
           autoHeight
@@ -107,7 +157,7 @@ const TabsDemo = () => {
             Tab 3{' '}
           </TabPane>
         </Tabs>
-        <h2>数据异步渲染 3s</h2>
+        <h2>{translated.title3}</h2>
         <Tabs
           value={tab3value}
           onChange={({ paneKey }) => {
@@ -121,7 +171,7 @@ const TabsDemo = () => {
             </TabPane>
           ))}
         </Tabs>
-        <h2>数量多,滚动操作</h2>
+        <h2>{translated.title4}</h2>
         <Tabs
           value={tab4value}
           onChange={({ paneKey }) => {
@@ -137,7 +187,7 @@ const TabsDemo = () => {
             </TabPane>
           ))}
         </Tabs>
-        <h2>左右布局</h2>
+        <h2>{translated.title5}</h2>
         <Tabs
           value={tab5value}
           onChange={({ paneKey }) => {
@@ -153,7 +203,7 @@ const TabsDemo = () => {
             </TabPane>
           ))}
         </Tabs>
-        <h2>左右布局-微笑曲线</h2>
+        <h2>{translated.title6}</h2>
         <Tabs
           value={tab6value}
           onChange={({ paneKey }) => {
@@ -170,7 +220,7 @@ const TabsDemo = () => {
             </TabPane>
           ))}
         </Tabs>
-        <h2>标签栏字体尺寸 large normal small </h2>
+        <h2>{translated.title7}</h2>
         <Tabs
           value={tab1value}
           onChange={({ paneKey }) => {
@@ -205,7 +255,7 @@ const TabsDemo = () => {
           <TabPane title="Tab 3"> Tab 3 </TabPane>
         </Tabs>
 
-        <h2>自定义标签栏</h2>
+        <h2>{translated.title8}</h2>
         <Tabs
           value={tab7value}
           titleNode={() => {

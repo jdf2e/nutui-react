@@ -72,6 +72,7 @@ module.exports = {
     'no-script-url': 0,
     'no-restricted-syntax': 0,
     'no-unused-expressions': 0,
+    'import/no-mutable-exports': 0,
     'jsx-a11y/click-events-have-key-events': 0,
     'jsx-a11y/no-noninteractive-element-interactions': 0,
     '@typescript-eslint/no-empty-function': 0,

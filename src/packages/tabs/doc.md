@@ -95,6 +95,8 @@ export default App;
 
 ### Tabpane 自动高度
 
+自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。
+
 :::demo
 
 ```tsx
@@ -375,5 +377,5 @@ export default App;
 
 | 事件名 | 说明                     | 回调参数                 |
 |--------|--------------------------|--------------------------|
-| click  | 点击标签时触发           | {title,paneKey,disabled} |
-| change | 当前激活的标签改变时触发 | {title,paneKey,disabled} |
+| onClick  | 点击标签时触发           | {title,paneKey,disabled} |
+| onChange | 当前激活的标签改变时触发 | {title,paneKey,disabled} |
