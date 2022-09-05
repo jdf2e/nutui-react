@@ -5,6 +5,8 @@ import React, {
   useState,
   createContext,
 } from 'react'
+import { useGesture } from '@use-gesture/react'
+import { animated } from '@react-spring/web'
 import bem from '@/utils/bem'
 
 export const elevatorContext = createContext({} as ElevatorData)
@@ -19,8 +21,8 @@ export interface ElevatorProps {
   className: string
   style: React.CSSProperties
   children: React.ReactNode
-  clickItem: (key: string, item: ElevatorData) => void
-  clickIndex: (key: string) => void
+  onClickItem: (key: string, item: ElevatorData) => void
+  onClickIndex: (key: string) => void
 }
 const defaultProps = {
   height: '200px',
@@ -47,8 +49,8 @@ export const Elevator: FunctionComponent<
     spaceHeight,
     titleHeight,
     className,
-    clickItem,
-    clickIndex,
+    onClickItem,
+    onClickIndex,
     children,
     ...rest
   } = {
@@ -126,43 +128,35 @@ export const Elevator: FunctionComponent<
     }
   }
 
-  const touchMove = (e: TouchEvent) => {
-    const firstTouch = e.touches[0]
-    touchState.current.y2 = firstTouch.pageY
-    const delta =
-      (touchState.current.y2 - touchState.current.y1) / spaceHeight || 0
-    // delta 是一个浮点数, 需要四舍五入一下, 否则页面会找不到最终计算后的index
-    const cacheIndex = state.current.anchorIndex + Math.ceil(delta)
-    setCodeIndex(cacheIndex)
-    scrollTo(cacheIndex)
-    e.preventDefault()
-  }
-
-  const touchEnd = () => {
-    resetScrollState()
-  }
-
-  const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    setScrollStart(true)
-    const index = Number(getData(e.target as HTMLElement, 'index'))
-    const firstTouch = e.touches[0]
-    touchState.current.y1 = firstTouch.pageY
-    state.current.anchorIndex = +index
-    setCodeIndex((codeIndex) => codeIndex + index)
-    scrollTo(index)
-    const target = e.currentTarget as HTMLElement
-    target.removeEventListener('touchend', touchEnd, false)
-    target.addEventListener('touchend', touchEnd, false)
-  }
+  const bind = useGesture({
+    onDragStart: ({ target, offset }) => {
+      setScrollStart(true)
+      const index = Number(getData(target as HTMLElement, 'index'))
+      touchState.current.y1 = offset[1]
+      state.current.anchorIndex = +index
+      setCodeIndex((codeIndex) => codeIndex + index)
+      scrollTo(index)
+    },
+    onDragEnd: ({ offset }) => {
+      touchState.current.y2 = offset[1]
+      const delta =
+        (touchState.current.y2 - touchState.current.y1) / spaceHeight || 0
+      // delta 是一个浮点数, 需要四舍五入一下, 否则页面会找不到最终计算后的index
+      const cacheIndex = state.current.anchorIndex + Math.ceil(delta)
+      setCodeIndex(cacheIndex)
+      scrollTo(cacheIndex)
+      resetScrollState()
+    },
+  })
 
   const handleClickItem = (key: string, item: ElevatorData) => {
-    clickItem && clickItem(key, item)
+    onClickItem && onClickItem(key, item)
     setCurrentData(item)
     setCurrentKey(key)
   }
 
   const handleClickIndex = (key: string) => {
-    clickIndex && clickIndex(key)
+    onClickIndex && onClickIndex(key)
   }
 
   const setListGroup = () => {
@@ -218,20 +212,6 @@ export const Elevator: FunctionComponent<
     state.current.fixedTop = fixedTop
   }, [state.current.diff, titleHeight])
 
-  const refIndexBar = useRef<HTMLDivElement>(null)
-
-  // 之前的代码, 手指在index条上下移动的时候, 下面的列表也会跟随滚动, 需要阻止默认事件
-  // 如果使用react的touchmove, 没有找到可以设置passive的选项, 无法阻止默认事件, 所以使用了原生的方法进行添加
-  useEffect(() => {
-    refIndexBar.current &&
-      refIndexBar.current.addEventListener('touchmove', touchMove, {
-        passive: false,
-      })
-    return () => {
-      refIndexBar.current &&
-        refIndexBar.current.removeEventListener('touchmove', touchMove)
-    }
-  }, [])
   return (
     <div className={`${b()} ${className}`} {...rest}>
       {isSticky && scrollY > 0 ? (
@@ -287,13 +267,12 @@ export const Elevator: FunctionComponent<
           {indexList[codeIndex][acceptKey]}
         </div>
       ) : null}
-      <div
-        ref={refIndexBar}
-        className={b('bars')}
-        onTouchStart={(event) => touchStart(event)}
-        // onTouchMove={(event) => touchMove(event)}
-      >
-        <div className={b('bars__inner')}>
+      <div className={b('bars')}>
+        <animated.div
+          className={b('bars__inner')}
+          {...bind()}
+          style={{ touchAction: 'pan-y' }}
+        >
           {indexList.map((item: any, index: number) => {
             return (
               <div
@@ -309,7 +288,7 @@ export const Elevator: FunctionComponent<
               </div>
             )
           })}
-        </div>
+        </animated.div>
       </div>
     </div>
   )

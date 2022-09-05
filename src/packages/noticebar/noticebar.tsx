@@ -304,7 +304,7 @@ export const NoticeBar: FunctionComponent<
             <div
               ref={content}
               className={`content ${animationClass} ${
-                isEllipsis() && 'nut-ellipsis'
+                isEllipsis() ? 'nut-ellipsis' : ''
               }`}
               style={contentStyle}
               onAnimationEnd={onAnimationEnd}
