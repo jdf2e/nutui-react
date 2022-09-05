@@ -192,7 +192,7 @@ export default App;
 |---------|--------------------------------------------|---------|-----------|
 | value   | 显示的内容  | String  | -         |
 | max     | value 为数值时，最大值 | Number  | `10000`   |
-| z-index | 徽标的 z-index 值 | Number  | `10`      |
+| zIndex | 徽标的 z-index 值 | Number  | `10`      |
 | dot     | 是否为小点 | Boolean | `false`   |
 | top     | 上下偏移量，支持单位设置，可设置为：5 等 | Number  | `0`       |
 | right   | 左右偏移量，支持单位设置，可设置为：5 等 | Number  | `0`       |

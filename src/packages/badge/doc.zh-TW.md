@@ -104,7 +104,7 @@ import { Badge } from '@nutui/nutui-react';
 |---------|--------------------------------------------|---------|-----------|
 | value   | 顯示的內容                                 | String  | -         |
 | max     | value 為數值時，最大值 | Number  | `10000`   |
-| z-index | 徽標的 z-index 值 | Number  | `10`      |
+| zIndex | 徽標的 z-index 值 | Number  | `10`      |
 | dot     | 是否為小點 | Boolean | `false`   |
 | top     | 上下偏移量，支持單位設置，可設置為：5 等 | Number  | `0`       |
 | right   | 左右偏移量，支持單位設置，可設置為：5 等 | Number  | `0`       |
