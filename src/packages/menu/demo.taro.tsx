@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import './demo.scss'
-import Button from '../button/index.taro'
-import { Menu } from './menu.taro'
-import MenuItem from '../menuitem/index.taro'
-import { useTranslate } from '../../sites/assets/locale'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import { Menu, MenuItem, Button } from '@/packages/nutui.react.taro'
 
 const MenuDemo = () => {
   const style = `

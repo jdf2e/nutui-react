@@ -1,18 +1,18 @@
-# Menu 菜单
+# Menu 菜單
 
-### 介绍
+### 介紹
 
-向下弹出的菜单列表
+向下彈出的菜單列表
 
-### 安装
+### 安裝
 
 ``` javascript
 import { Menu, MenuItem } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 
@@ -24,19 +24,19 @@ const App = () => {
   const [options] = useState([
     { text: '全部商品', value: 0 },
     { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
+    { text: '活動商品', value: 2 },
   ])
   const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
+    { text: '默認排序', value: 'a' },
+    { text: '好評排序', value: 'b' },
+    { text: '銷量排序', value: 'c' },
   ])
   return (
     <>
       <div className="demo full">
         <Menu>
           <MenuItem options={options} value={0} />
-          <MenuItem options={options1} value={'a'} />
+          <MenuItem options={options1} value='a' />
         </Menu>
       </div>
     </>
@@ -48,35 +48,35 @@ export default App
 
 :::
 
-### 自定义菜单内容
+### 自定義菜單內容
 
-使用实例上的 toggle 方法可以手动关闭弹框。
+使用實例上的 toggle 方法可以手動關閉彈框。
 
 :::demo
 
 ```tsx
 import React from 'react';
-import { Menu, MenuItem } from '@nutui/nutui-react';
+import { Menu, MenuItem, Button } from '@nutui/nutui-react';
 
 const App = () => {
   const [options] = useState([
     { text: '全部商品', value: 0 },
     { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
+    { text: '活動商品', value: 2 },
   ])
   const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
+    { text: '默認排序', value: 'a' },
+    { text: '好評排序', value: 'b' },
+    { text: '銷量排序', value: 'c' },
   ])
   return (
     <>
       <div className="demo full">
         <Menu>
           <MenuItem options={options} value={0} />
-          <MenuItem title="筛选">
-            <div>自定义内容</div>
-            <Button>确认</Button>
+          <MenuItem title="篩選">
+            <div>自定義內容</div>
+            <Button>確認</Button>
           </MenuItem>
         </Menu>
       </div>
@@ -89,7 +89,7 @@ export default App
 
 :::
 
-### 一行两列
+### 一行兩列
 
 :::demo
 
@@ -101,7 +101,7 @@ const App = () => {
   const [options] = useState([
     { text: '全部商品', value: 0 },
     { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
+    { text: '活動商品', value: 2 },
   ])
   
   return (
@@ -120,7 +120,7 @@ export default App
 
 :::
 
-### 自定义选中态颜色
+### 自定義選中態顏色
 
 :::demo
 
@@ -132,12 +132,12 @@ const App = () => {
   const [options] = useState([
     { text: '全部商品', value: 0 },
     { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
+    { text: '活動商品', value: 2 },
   ])
   const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
+    { text: '默認排序', value: 'a' },
+    { text: '好評排序', value: 'b' },
+    { text: '銷量排序', value: 'c' },
   ])
   return (
     <>
@@ -156,7 +156,7 @@ export default App
 
 :::
 
-### 自定义图标
+### 自定義圖標
 
 :::demo
 
@@ -168,12 +168,12 @@ const App = () => {
   const [options] = useState([
     { text: '全部商品', value: 0 },
     { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
+    { text: '活動商品', value: 2 },
   ])
   const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
+    { text: '默認排序', value: 'a' },
+    { text: '好評排序', value: 'b' },
+    { text: '銷量排序', value: 'c' },
   ])
   return (
     <>
@@ -192,7 +192,7 @@ export default App
 
 :::
 
-### 向上展开
+### 向上展開
 
 :::demo
 
@@ -204,12 +204,12 @@ const App = () => {
   const [options] = useState([
     { text: '全部商品', value: 0 },
     { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
+    { text: '活動商品', value: 2 },
   ])
   const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
+    { text: '默認排序', value: 'a' },
+    { text: '好評排序', value: 'b' },
+    { text: '銷量排序', value: 'c' },
   ])
   return (
     <>
@@ -228,7 +228,7 @@ export default App
 
 :::
 
-### 禁用菜单
+### 禁用菜單
 
 :::demo
 
@@ -240,12 +240,12 @@ const App = () => {
   const [options] = useState([
     { text: '全部商品', value: 0 },
     { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
+    { text: '活動商品', value: 2 },
   ])
   const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
+    { text: '默認排序', value: 'a' },
+    { text: '好評排序', value: 'b' },
+    { text: '銷量排序', value: 'c' },
   ])
   return (
     <>
@@ -268,31 +268,31 @@ export default App
 
 ### Menu Props
 
-| 参数                  | 说明                           | 类型                    | 默认值  |
+| 參數                  | 說明                           | 類型                    | 默認值  |
 |---------------------|--------------------------------|-------------------------|---------|
-| activeColor         | 选项的选中态图标颜色           | String                  | #F2270C |
-| closeOnClickOverlay | 是否在点击遮罩层后关闭菜单     | Boolean                 | true    |
-| lockScroll          | 背景是否锁定                   | Boolean                 | true    |
-| scrollFixed         | 滚动后是否固定，可设置固定位置                   | Boolean、String、Number                 | true    |
-| titleIcon           | 自定义标题图标                 | String                  | -       |
+| activeColor         | 選項的選中態圖標顏色           | String                  | #F2270C |
+| closeOnClickOverlay | 是否在點擊遮罩層後關閉菜單     | Boolean                 | true    |
+| lockScroll          | 背景是否鎖定                   | Boolean                 | true    |
+| scrollFixed         | 滾動後是否固定，可設置固定位置                   | Boolean、String、Number                 | true    |
+| titleIcon           | 自定義標題圖標                 | String                  | -       |
 
 ### MenuItem Props
 
-| 参数                          | 说明                                    | 类型    | 默认值           |
+| 參數                          | 說明                                    | 類型    | 默認值           |
 |-------------------------------|-----------------------------------------|---------|------------------|
-| title                         | 菜单项标题                              | String  | 当前选中项文字   |
-| options                       | 选项数组                                | Array   | -                |
-| disabled                      | 是否禁用菜单                            | Boolean | false            |
-| columns                          | 可以设置一行展示多少列 options          | Number  | 1                |
-| optionsIcon          | 自定义选项图标                          | String  | 'Check'          |
-| direction            | 菜单展开方向，可选值为up                | String  | 'down'           |
-| activeClassName    | 选项选中时自定义标题样式类              | String  | -                |
-| inactiveClassName  | 选项非选中时自定义标题样式类            | String  | -                |
-| fontClassName       | 自定义icon 字体基础类名                 | string  | `nutui-iconfont` |
-| iconClassPrefix          | 自定义icon 类名前缀，用于使用自定义图标 | string  | `nut-icon`       |
+| title                         | 菜單項標題                              | String  | 當前選中項文字   |
+| options                       | 選項數組                                | Array   | -                |
+| disabled                      | 是否禁用菜單                            | Boolean | false            |
+| columns                          | 可以設置一行展示多少列 options          | Number  | 1                |
+| optionsIcon          | 自定義選項圖標                          | String  | 'Check'          |
+| direction            | 菜單展開方向，可選值為up                | String  | 'down'           |
+| activeClassName    | 選項選中時自定義標題樣式類              | String  | -                |
+| inactiveClassName  | 選項非選中時自定義標題樣式類            | String  | -                |
+| fontClassName       | 自定義icon 字體基礎類名                 | string  | `nutui-iconfont` |
+| iconClassPrefix          | 自定義icon 類名前綴，用於使用自定義圖標 | string  | `nut-icon`       |
 
 ### MenuItem Events
 
-| 事件名      | 说明                 | 回调参数     |
+| 事件名      | 說明                 | 回調參數     |
 |----------|----------------------|--------------|
-| onChange | 选择 option 之后触发 | 选择的 value |
+| onChange | 選擇 option 之後觸發 | 選擇的 value |
