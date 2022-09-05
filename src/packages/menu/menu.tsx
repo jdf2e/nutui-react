@@ -38,8 +38,20 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
     ...props,
   }
   const parentRef = useRef(null)
+  const [isScrollFixed, setIsScrollFixed] = useState(false)
 
-  const onScroll = () => {}
+  const getScrollTop = (el: Element | Window) => {
+    return Math.max(0, 'scrollTop' in el ? el.scrollTop : el.pageYOffset)
+  }
+  const onScroll = () => {
+    const { scrollFixed } = props
+
+    const scrollTop = getScrollTop(window)
+    console.log(scrollTop)
+    const isFixed =
+      scrollTop > (typeof scrollFixed === 'boolean' ? 30 : Number(scrollFixed))
+    setIsScrollFixed(isFixed)
+  }
 
   useEffect(() => {
     if (scrollFixed) {
@@ -83,9 +95,13 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
       })
     })
   }
-
+  console.log('isScrollFixed', isScrollFixed)
   return (
-    <div className={`nut-menu ${className}`} {...rest} ref={parentRef}>
+    <div
+      className={`nut-menu ${className} ${isScrollFixed ? 'scroll-fixed' : ''}`}
+      {...rest}
+      ref={parentRef}
+    >
       <div
         className={`nut-menu__bar ${
           itemShow.includes(true) ? 'opened' : ''
