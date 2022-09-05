@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex;
+  padding: 0 40px;
+}
+.d_div {
+  margin: 0px 5px;
+  .d_btn {
+    background: #fa3f19;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    height: 20px;
+  }
+}
+
+.info {
+  font-size: 12px;
+  line-height: 14px;
+}

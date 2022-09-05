@@ -111,4 +111,18 @@ export interface BaseLang {
     mute: string
     tips: string
   }
+  datepicker: {
+    year: string
+    month: string
+    day: string
+    hour: string
+    min: string
+    seconds: string
+  }
+  pullToRefresh: {
+    pullingText: string
+    canReleaseText: string
+    refreshingText: string
+    completeText: string
+  }
 }

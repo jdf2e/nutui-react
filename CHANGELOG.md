@@ -1,3 +1,23 @@
+## v1.3.1
+`2022-08-31`
+* :sparkles: feat: calendar 组件功能补齐、单元测试 (#228) @love_forever
+* :bug: fix: audio组件内部css覆盖range组件样式问题修复 (#254) @libin0824
+* :sparkles: chore: audio 组件增加 taro 文件 (#253) @libin0824
+* :sparkles: feat: 新增 ImagePreview、Dialog国际化&单元测试 (#244) @yangjinjun3
+* :sparkles: feat: 增加backtop、input、notify组件的单元测试 (#252) @vickyYe
+* :sparkles: feat: textarea 组件增加单元测试、优化自动伸缩高度功能 (#248) @vickyYe
+* :sparkles: chore: taro 版本构建不压缩，解决 banner 插入导致打出的文件报错 oasis-cloud
+* :sparkles: feat: 新增组件 Grid (#237) @yangxiaolu1993
+* :sparkles: chore: 导出组件的 props 类型 oasis-cloud
+* :sparkles: feat: 新增 audio 组件 (#250) @libin0824
+* :sparkles: feat: 新增 menu 组件 (#251) @oasis-cloud
+* :bug: fix: elevator 电梯楼层组件索引滚动后白屏 (#238) @mike8625
+* :sparkles: feat: SearchBar、ShortPassword 适配 Taro (#247) @xiaoyatong
+* :sparkles: feat: Picker、DatePicker、Address 组件添加国际化 (#236) @yangxiaolu1993
+* :sparkles: feat: 新增 cascader 组件 (#202) @ailululu
+* :sparkles: feat: 新增 swipe 组件 (#226) @Ymm
+* :sparkles: feat: range适配taro (#243) @xiaoyatong
+
 ## v1.3.0
 `2022-08-24`
 

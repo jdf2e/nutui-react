@@ -207,14 +207,23 @@ $toast-cover-bg-color: rgba(0, 0, 0, 0) !default;
 $backtop-border-color: #e0e0e0;
 
 // calendar
-$calendar-primary-color: $primary-color;
-$calendar-choose-color: #fef6f6;
-$calendar-base-color: #333333;
-$calendar-disable-color: #d1d0d0;
-$calendar-title-font: $font-size-4;
-$calendar-base-font: $font-size-3;
-$calendar-text-font: $font-size-1;
-$calendar-day-font: 18px;
+$calendar-primary-color: $primary-color !default;
+$calendar-choose-color: rgba($primary-color, 0.09) !default;
+$calendar-choose-font-color: $primary-color !default;
+$calendar-base-color: #333333 !default;
+$calendar-disable-color: #d1d0d0 !default;
+$calendar-base-font: $font-size-3 !default;
+$calendar-title-font: $font-size-4 !default;
+$calendar-title-font-weight: 500 !default;
+$calendar-sub-title-font: $font-size-2 !default;
+$calendar-text-font: $font-size-1 !default;
+$calendar-day-font: 16px !default;
+$calendar-day-active-border-radius: 0px !default;
+$calendar-day-width: 14.28% !default;
+$calendar-day-height: 64px !default;
+$calendar-day-font-weight: 500 !default;
+$calendar-day67-font-color: $primary-color !default;
+$calendar-top-slot-height: 24px !default;
 
 //overlay
 $overlay-bg-color: rgba(0, 0, 0, 0.7);
