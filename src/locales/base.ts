@@ -119,4 +119,10 @@ export interface BaseLang {
     min: string
     seconds: string
   }
+  pullToRefresh: {
+    pullingText: string
+    canReleaseText: string
+    refreshingText: string
+    completeText: string
+  }
 }

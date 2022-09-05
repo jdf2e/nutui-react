@@ -116,5 +116,11 @@ const zhTW: BaseLang = {
     min: '分',
     seconds: '秒',
   },
+  pullToRefresh: {
+    pullingText: '下拉刷新',
+    canReleaseText: '鬆開刷新',
+    refreshingText: '加載中...',
+    completeText: '刷新成功',
+  },
 }
 export default zhTW

@@ -259,16 +259,14 @@ const PickerDemo = () => {
   }
 
   // 切换选择项
-  const changePicker = (columnIndex: number, values: any, options: any[]) => {
-    console.log('picker', columnIndex, values, options)
-  }
+  const changePicker = (columnIndex: number, values: any, options: any[]) => {}
   // 确定选择
   const confirmPicker = (
     type: string,
     values: (string | number)[],
     options: PickerOption[]
   ) => {
-    console.log('picker', values, options)
+    console.log('demo 确定')
     let desc = ''
     options.forEach((option: any) => {
       desc += option.text
