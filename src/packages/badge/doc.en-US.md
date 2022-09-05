@@ -193,10 +193,9 @@ export default App;
 | value   | value to show                                 | String  | -         |
 | max     | when value is number, it's the max size                     | Number  | `10000`   |
 | z-index |  z-index                          | Number  | `10`      |
-| dot     | Is dotted                                 | Boolean | `false`   |
-| hidden  | Is hidden                                   | Boolean | `false`   |
-| top     | Up and down offset, support unit setting, can be set to: 5px, etc. | Number  | `0`       |
-| right   | Left and right offset, support unit setting, can be set to: 5px, etc. | Number  | `0`       |
+| dot     | Is dotted    | Boolean | `false`   |
+| top     | Up and down offset, support unit setting, can be set to: 5, etc. | Number  | `0`       |
+| right   | Left and right offset, support unit setting, can be set to: 5, etc. | Number  | `0`       |
 | color   | background color                                | String  | `#fa2c19` |
 | icons   | custom icons                               | String  | - |
 

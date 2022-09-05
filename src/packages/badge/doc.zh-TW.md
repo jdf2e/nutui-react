@@ -103,16 +103,11 @@ import { Badge } from '@nutui/nutui-react';
 | 字段    | 說明                                       | 類型    | 默認值    |
 |---------|--------------------------------------------|---------|-----------|
 | value   | 顯示的內容                                 | String  | -         |
-| max     | value 為數值時，最大值
-                     | Number  | `10000`   |
-| z-index | 徽標的 z-index 值
-                         | Number  | `10`      |
-| dot     | 是否為小點
-                                 | Boolean | `false`   |
-| hidden  | 是否隱藏
-                                   | Boolean | `false`   |
-| top     | 上下偏移量，支持單位設置，可設置為：5px 等 | Number  | `0`       |
-| right   | 左右偏移量，支持單位設置，可設置為：5px 等 | Number  | `0`       |
+| max     | value 為數值時，最大值 | Number  | `10000`   |
+| z-index | 徽標的 z-index 值 | Number  | `10`      |
+| dot     | 是否為小點 | Boolean | `false`   |
+| top     | 上下偏移量，支持單位設置，可設置為：5 等 | Number  | `0`       |
+| right   | 左右偏移量，支持單位設置，可設置為：5 等 | Number  | `0`       |
 | color   | 徽標背景顏色                               | String  | `#fa2c19` |
 | icons   | 徽標自定義                               | String  | - |
 

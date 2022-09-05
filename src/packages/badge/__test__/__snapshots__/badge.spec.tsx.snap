@@ -8,10 +8,64 @@ exports[`should match custom color 1`] = `
     <div />
     <div
       class=" nut-badge__content sup"
+      style="top: 0px; right: 0px; z-index: 0; background-color: orange;"
+    >
+      200
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match custom gradient color 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-badge"
+  >
+    <div />
+    <div
+      class=" nut-badge__content sup"
       style="top: 0px; right: 0px; z-index: 0;"
     >
       200
     </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match custom icons 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-badge"
+  >
+    <div
+      class="slot-icons"
+    >
+      <i
+        class="nutui-iconfont nut-icon nut-icon-link _icon"
+        style="color: rgb(255, 255, 255); font-size: 12px; width: 12px; height: 12px;"
+      />
+    </div>
+    <div />
+    <div
+      class=" nut-badge__content sup"
+      style="top: 0px; right: 0px; z-index: 0;"
+    >
+      200
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match dot 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-badge"
+  >
+    <div />
+    <div
+      class="is-dot nut-badge__content sup"
+      style="top: 0px; right: 0px; z-index: 0;"
+    />
   </div>
 </DocumentFragment>
 `;
@@ -43,6 +97,54 @@ exports[`should match snapshot 1`] = `
       style="top: 0px; right: 0px; z-index: 0;"
     >
       8
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match top、right: bad number 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-badge"
+  >
+    <div />
+    <div
+      class=" nut-badge__content sup"
+      style="top: 0px; right: 0px; z-index: 0;"
+    >
+      10
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match top、right: float 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-badge"
+  >
+    <div />
+    <div
+      class=" nut-badge__content sup"
+      style="top: -10.8px; right: 0.5px; z-index: 0;"
+    >
+      10
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match top、right: have px 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-badge"
+  >
+    <div />
+    <div
+      class=" nut-badge__content sup"
+      style="top: -10px; right: 0px; z-index: 0;"
+    >
+      10
     </div>
   </div>
 </DocumentFragment>
