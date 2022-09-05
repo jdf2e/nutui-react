@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classnames from 'classnames'
 import Icon from '@/packages/icon/index.taro'
-import { OptionItem } from '@/packages/menuitem/menuitem'
+import { OptionItem } from '@/packages/menuitem/menuitem.taro'
 
 export interface MenuProps {
   className: string

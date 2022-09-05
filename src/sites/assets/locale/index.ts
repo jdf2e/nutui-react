@@ -12,12 +12,14 @@ interface LanguagesPackage<A = {}> {
 
 export const useTranslate = <T>(languagesPackage: LanguagesPackage<T>) => {
   const [locale] = useLocale()
-  const [translated, setLanguagesPackage] = useState<BaseLang & T>({} as any)
-  useEffect(() => {
-    if (languagesPackage) {
-      // @ts-ignore
-      setLanguagesPackage(languagesPackage[locale || 'zh-CN'] || {})
-    }
-  }, [])
+  const [translated, setLanguagesPackage] = useState<BaseLang & T>(
+    languagesPackage[locale || 'zh-CN'] as any
+  )
+  // useEffect(() => {
+  //   if (languagesPackage) {
+  //     // @ts-ignore
+  //     setLanguagesPackage(languagesPackage[locale || 'zh-CN'] || {})
+  //   }
+  // }, [])
   return [translated]
 }

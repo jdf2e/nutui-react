@@ -28,6 +28,8 @@ export interface RadioProps {
 }
 
 const defaultProps = {
+  className: '',
+  style: {},
   disabled: false,
   checked: false,
   shape: 'round',
