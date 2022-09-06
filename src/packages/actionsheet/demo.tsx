@@ -132,6 +132,21 @@ const ActionSheetDemo = () => {
     setIsVisible3(false)
   }
 
+  const menulist: ItemType<string | boolean>[] = [
+    {
+      name: '选项一',
+      subname: '选项一的描述信息',
+    },
+    {
+      name: '选项二',
+      disable: true,
+    },
+    {
+      name: '必填',
+      name1: '选项三',
+    },
+  ]
+
   return (
     <>
       <div className="demo">
@@ -161,7 +176,6 @@ const ActionSheetDemo = () => {
           <div className="selected-option">{val3}</div>
         </Cell>
         <h2>{translated.c3a08064}</h2>
-
         <Cell isLink onClick={() => setIsVisible4(!isVisible4)}>
           <span>
             <label htmlFor={translated.c3a08064}>{translated.c3a08064}</label>
@@ -172,36 +186,36 @@ const ActionSheetDemo = () => {
         <ActionSheet
           visible={isVisible1}
           menuItems={menuItemsOne}
-          choose={chooseItem}
-          cancel={() => setIsVisible1(false)}
+          onChoose={chooseItem}
+          onCancel={() => setIsVisible1(false)}
         />
         {/* demo(带取消按钮） */}
         <ActionSheet
           visible={isVisible2}
           cancelTxt={translated['2cd0f3be']}
           menuItems={menuItemsOne}
-          choose={chooseItemTwo}
-          cancel={() => setIsVisible2(false)}
+          onChoose={chooseItemTwo}
+          onCancel={() => setIsVisible2(false)}
         />
         {/* 展示描述信息 */}
         <ActionSheet
           visible={isVisible3}
           description={translated.e1699442}
-          menuItems={menuItemsTwo}
-          choose={chooseItemThree}
           cancelTxt={translated['2cd0f3be']}
-          cancel={() => setIsVisible3(false)}
+          menuItems={menuItemsTwo}
+          onChoose={chooseItemThree}
+          onCancel={() => setIsVisible3(false)}
         />
         {/* demo 选项状态 */}
         <ActionSheet
           visible={isVisible4}
           cancelTxt={translated['2cd0f3be']}
-          cancel={() => setIsVisible4(false)}
           menuItems={menuItemsThree}
           chooseTagValue={translated['85dae65b']}
-          choose={() => {
+          onChoose={() => {
             setIsVisible4(false)
           }}
+          onCancel={() => setIsVisible4(false)}
         />
       </div>
     </>
