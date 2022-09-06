@@ -226,5 +226,5 @@ export default App;
 
 | Attribute   | Description               | Arguments                          |
 |--------|--------------------|-----------------------------------|
-| onChoose | Triggered after selection       | Selected list item item, selected index value index |
-| onCancel | Triggered when onCancel copy is clicked | none                                |
+| onChoose`v1.3.2` | Triggered after selection       | Selected list item item, selected index value index |
+| onCancel`v1.3.2` | Triggered when onCancel copy is clicked | none                                |
