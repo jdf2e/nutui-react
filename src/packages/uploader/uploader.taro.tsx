@@ -9,7 +9,7 @@ import classNames from 'classnames'
 import Icon from '@/packages/icon'
 import { Upload, UploadOptions } from './upload'
 import bem from '@/utils/bem'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export type FileType<T> = { [key: string]: T }
 

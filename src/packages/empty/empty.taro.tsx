@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import bem from '@/utils/bem'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 type statusOptions = {
   [key: string]: string

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 import bem from '@/utils/bem'
 
 export interface NavBarProps {

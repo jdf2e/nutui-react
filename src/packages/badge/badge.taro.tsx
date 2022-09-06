@@ -1,6 +1,6 @@
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
 
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 
 export interface BadgeProps {
   value: any
