@@ -41,10 +41,10 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   }
   const getStyle = () => {
     const style: CSSProperties = {}
-    style.top = `${top}px`
-    style.right = `${right}px`
+    style.top = `${Number(top) || parseFloat(top) || 0}px`
+    style.right = `${Number(right) || parseFloat(right) || 0}px`
     style.zIndex = zIndex
-    style.background = color
+    style.backgroundColor = color
     return style
   }
   return (
