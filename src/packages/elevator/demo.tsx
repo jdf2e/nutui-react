@@ -456,11 +456,11 @@ const ElevatorDemo = () => {
       ],
     },
   ]
-  const clickItem = (key: string, item: any) => {
+  const onClickItem = (key: string, item: any) => {
     console.log(key, JSON.stringify(item))
   }
 
-  const clickIndex = (key: string) => {
+  const onClickIndex = (key: string) => {
     console.log(key)
   }
   return (
@@ -470,31 +470,31 @@ const ElevatorDemo = () => {
         <Elevator
           indexList={dataList}
           height="260"
-          clickItem={(key: string, item: any) => clickItem(key, item)}
-          clickIndex={(key: string) => clickIndex(key)}
+          onClickItem={(key: string, item: any) => onClickItem(key, item)}
+          onClickIndex={(key: string) => onClickIndex(key)}
         />
         <h2>{translated.customIndex}</h2>
         <Elevator
           indexList={dataList2}
           height="220"
           acceptKey={acceptKey}
-          clickItem={(key: string, item: any) => clickItem(key, item)}
-          clickIndex={(key: string) => clickIndex(key)}
+          onClickItem={(key: string, item: any) => onClickItem(key, item)}
+          onClickIndex={(key: string) => onClickIndex(key)}
         />
         <h2>{translated.sticky}</h2>
         <Elevator
           indexList={dataList3}
           isSticky
           height="220"
-          clickItem={(key: string, item: any) => clickItem(key, item)}
-          clickIndex={(key: string) => clickIndex(key)}
+          onClickItem={(key: string, item: any) => onClickItem(key, item)}
+          onClickIndex={(key: string) => onClickIndex(key)}
         />
         <h2>{translated.customContent}</h2>
         <Elevator
           indexList={dataList}
           height="260"
-          clickItem={(key: string, item: any) => clickItem(key, item)}
-          clickIndex={(key: string) => clickIndex(key)}
+          onClickItem={(key: string, item: any) => onClickItem(key, item)}
+          onClickIndex={(key: string) => onClickIndex(key)}
         >
           <elevatorContext.Consumer>
             {(value) => {

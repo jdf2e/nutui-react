@@ -1,14 +1,50 @@
 import React from 'react'
+import { useTranslate } from '../../sites/assets/locale'
 import { Badge } from './badge'
 import Cell from '@/packages/cell'
 import CellGroup from '@/packages/cellgroup'
 import Avatar from '@/packages/avatar'
 
+interface T {
+  '8ab98966': string
+  '1e7a2282': string
+  '781b07fd': string
+  '1c730245': string
+  '915d7b01': string
+  f1089312: string
+}
 const BadgeDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      '8ab98966': '默认用法',
+      '1e7a2282': '最大值',
+      '781b07fd': '自定义颜色',
+      '1c730245': '自定义徽标内容',
+      '915d7b01': '自定义位置',
+      f1089312: '独立展示',
+    },
+    'zh-TW': {
+      '8ab98966': '默认用法',
+      '1e7a2282': '最大值',
+      '781b07fd': '自定义颜色',
+      '1c730245': '自定义徽标内容',
+      '915d7b01': '自定义位置',
+      f1089312: '独立展示',
+    },
+    'en-US': {
+      '8ab98966': '默认用法',
+      '1e7a2282': '最大值',
+      '781b07fd': '自定义颜色',
+      '1c730245': '自定义徽标内容',
+      '915d7b01': '自定义位置',
+      f1089312: '独立展示',
+    },
+  })
+
   return (
     <>
       <div className="demo">
-        <h2>默认用法</h2>
+        <h2>{translated['8ab98966']}</h2>
         <CellGroup>
           <Cell>
             <Badge value={8}>
@@ -26,7 +62,7 @@ const BadgeDemo = () => {
           </Cell>
         </CellGroup>
 
-        <h2>最大值</h2>
+        <h2>{translated['1e7a2282']}</h2>
         <CellGroup>
           <Cell>
             <Badge value={200} max={9}>
@@ -41,7 +77,7 @@ const BadgeDemo = () => {
           </Cell>
         </CellGroup>
 
-        <h2>自定义颜色</h2>
+        <h2>{translated['781b07fd']}</h2>
         <CellGroup>
           <Cell>
             <Badge
@@ -71,7 +107,7 @@ const BadgeDemo = () => {
           </Cell>
         </CellGroup>
 
-        <h2>自定义徽标内容</h2>
+        <h2>{translated['1c730245']}</h2>
         <CellGroup>
           <Cell>
             <Badge icons="checklist">
@@ -86,7 +122,7 @@ const BadgeDemo = () => {
           </Cell>
         </CellGroup>
 
-        <h2>自定义位置</h2>
+        <h2>{translated['915d7b01']}</h2>
         <CellGroup>
           <Cell>
             <Badge value={8} top="5" right="5">
@@ -101,7 +137,7 @@ const BadgeDemo = () => {
           </Cell>
         </CellGroup>
 
-        <h2>独立展示</h2>
+        <h2>{translated.f1089312}</h2>
         <CellGroup>
           <Cell>
             <Badge value={8} />

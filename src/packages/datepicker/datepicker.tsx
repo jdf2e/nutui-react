@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-import { useTranslate } from '../../sites/assets/locale'
+// import { useTranslate } from '../../sites/assets/locale'
 import Picker from '@/packages/picker'
+import { useConfig } from '@/packages/configprovider'
 
 export interface PickerOption {
   text: string | number
@@ -84,33 +85,33 @@ export const DatePicker: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-
-  const [translated] = useTranslate<T>({
-    'zh-CN': {
-      year: '年',
-      month: '月',
-      day: '日',
-      hour: '时',
-      min: '分',
-      seconds: '秒',
-    },
-    'zh-TW': {
-      year: '年',
-      month: '月',
-      day: '日',
-      hour: '時',
-      min: '分',
-      seconds: '秒',
-    },
-    'en-US': {
-      year: 'Year',
-      month: 'Month',
-      day: 'Day',
-      hour: 'Hour',
-      min: 'Minute',
-      seconds: 'Second',
-    },
-  })
+  const { locale } = useConfig()
+  // const [translated] = useTranslate<T>({
+  //   'zh-CN': {
+  //     year: '年',
+  //     month: '月',
+  //     day: '日',
+  //     hour: '时',
+  //     min: '分',
+  //     seconds: '秒',
+  //   },
+  //   'zh-TW': {
+  //     year: '年',
+  //     month: '月',
+  //     day: '日',
+  //     hour: '時',
+  //     min: '分',
+  //     seconds: '秒',
+  //   },
+  //   'en-US': {
+  //     year: 'Year',
+  //     month: 'Month',
+  //     day: 'Day',
+  //     hour: 'Hour',
+  //     min: 'Minute',
+  //     seconds: 'Second',
+  //   },
+  // })
 
   const [show, setShow] = useState(false)
   const [currentDate, setCurrentDate] = useState<Date | null>(modelValue)
@@ -125,13 +126,14 @@ export const DatePicker: FunctionComponent<
     )
   }
 
+  const datepickerLang = locale.datepicker
   const zhCNType: { [key: string]: string } = {
-    day: translated.day,
-    year: translated.year,
-    month: translated.month,
-    hour: translated.hour,
-    minute: translated.min,
-    seconds: translated.seconds,
+    day: datepickerLang.day,
+    year: datepickerLang.year,
+    month: datepickerLang.month,
+    hour: datepickerLang.hour,
+    minute: datepickerLang.min,
+    seconds: datepickerLang.seconds,
   }
   const formatValue = (value: Date | null) => {
     let cvalue = value

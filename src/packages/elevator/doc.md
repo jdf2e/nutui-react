@@ -71,19 +71,19 @@ const App = () => {
       ],
     },
   ]
-  const clickItem = (key: string, item: any) => {
+  const onClickItem = (key: string, item: any) => {
     console.log(key, JSON.stringify(item))
   }
 
-  const clickIndex = (key: string) => {
+  const onClickIndex = (key: string) => {
     console.log(key)
   }
   return (
     <Elevator
       indexList={dataList}
       height="260"
-      clickItem={(key: string, item: any) => clickItem(key, item)}
-      clickIndex={(key: string) => clickIndex(key)}
+      onClickItem={(key: string, item: any) => onClickItem(key, item)}
+      onClickIndex={(key: string) => onClickIndex(key)}
     />
   )
 }
@@ -203,11 +203,11 @@ const App = () => {
       ],
     },
   ]
-  const clickItem = (key: string, item: any) => {
+  const onClickItem = (key: string, item: any) => {
     console.log(key, JSON.stringify(item))
   }
 
-  const clickIndex = (key: string) => {
+  const onClickIndex = (key: string) => {
     console.log(key)
   }
   return (
@@ -215,8 +215,8 @@ const App = () => {
       indexList={dataList}
       height="220"
       acceptKey="num"
-      clickItem={(key: string, item: any) => clickItem(key, item)}
-      clickIndex={(key: string) => clickIndex(key)}
+      onClickItem={(key: string, item: any) => onClickItem(key, item)}
+      onClickIndex={(key: string) => onClickIndex(key)}
     />
   )
 }
@@ -349,11 +349,11 @@ const App = () => {
       ],
     },
   ]
-  const clickItem = (key: string, item: any) => {
+  const onClickItem = (key: string, item: any) => {
     console.log(key, JSON.stringify(item))
   }
 
-  const clickIndex = (key: string) => {
+  const onClickIndex = (key: string) => {
     console.log(key)
   }
   return (
@@ -361,8 +361,8 @@ const App = () => {
       indexList={dataList}
       height="220"
       isSticky
-      clickItem={(key: string, item: any) => clickItem(key, item)}
-      clickIndex={(key: string) => clickIndex(key)}
+      onClickItem={(key: string, item: any) => onClickItem(key, item)}
+      onClickIndex={(key: string) => onClickIndex(key)}
     />
   )
 }
@@ -431,19 +431,19 @@ const App = () => {
       ],
     },
   ]
-  const clickItem = (key: string, item: any) => {
+  const onClickItem = (key: string, item: any) => {
     console.log(key, JSON.stringify(item))
   }
 
-  const clickIndex = (key: string) => {
+  const onClickIndex = (key: string) => {
     console.log(key)
   }
   return (
     <Elevator
       indexList={dataList}
       height="260"
-      clickItem={(key: string, item: any) => clickItem(key, item)}
-      clickIndex={(key: string) => clickIndex(key)}
+      onClickItem={(key: string, item: any) => onClickItem(key, item)}
+      onClickIndex={(key: string) => onClickIndex(key)}
     >
       <elevatorContext.Consumer>
         {(value) => {
@@ -480,5 +480,8 @@ export default App
 
 | 名称       | 说明     | 回调参数                               |
 | ---------- | -------- | -------------------------------------- |
-| clickItem  | 点击内容 | key: string, item: { id: 0, name: '' } |
-| clickIndex | 点击索引 | key: string                            |
+| onClickItem`v1.3.2`  | 点击内容 | key: string, item: { id: 0, name: '' } |
+| onClickIndex`v1.3.2` | 点击索引 | key: string                            |
+| clickItem`v1.3.2(废弃)`  | 点击内容 | key: string, item: { id: 0, name: '' } |
+| clickIndex`v1.3.2(废弃)` | 点击索引 | key: string                            |
+

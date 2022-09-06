@@ -5,13 +5,14 @@ const config = require('../src/config.json')
 const dest_docs = './dist/types'
 const types = []
 
-function exportComponentProps() {
+function exportComponentProps(isTaro) {
+  const fileExt = isTaro ? '.taro' : ''
   config.nav.map((item) => {
     item.packages.forEach((element) => {
       let { name, show, type, exportEmpty } = element
       if (show || exportEmpty) {
         types.push(
-          `export type { ${name}Props } from './${name.toLowerCase()}/${name.toLowerCase()}';`
+          `export type { ${name}Props } from './${name.toLowerCase()}/${name.toLowerCase()}${fileExt}';`
         )
       }
     })
