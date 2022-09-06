@@ -61,7 +61,7 @@ const ActionSheetDemo = () => {
     },
     'en-US': {
       '0f87770f': 'Option One',
-      e23e5e80: 'Option two',
+      e23e5e80: 'Option Two',
       b6102b61: 'Option Three',
       acc5939e: 'Description Information',
       '85dae65b': 'Shading Options',

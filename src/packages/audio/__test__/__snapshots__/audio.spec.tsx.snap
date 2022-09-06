@@ -12,7 +12,7 @@ exports[`icon type test 1`] = `
         class="nut-audio__icon-box nut-audio__icon-stop"
       >
         <i
-          class=" nutui-iconfont nut-icon nutui-icon nut-icon-service "
+          class="nutui-iconfont nut-icon nut-icon-service "
         />
       </div>
     </div>

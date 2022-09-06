@@ -1,18 +1,18 @@
-# Badge 徽标
+# Badge
 
-### 介绍
+### Intro
 
 出现在图标或文字右上角的红色圆点、数字或者文字，表示有新内容或者待处理的信息。
 
-### 安装
+### Install
 
 ``` javascript
 import { Badge } from '@nutui/nutui-react';
 ```
 
-## 代码实例
+## Demo
 
-### 基本用法
+### Basic usage
 
 :::demo
 
@@ -43,7 +43,7 @@ export default App;
 
 :::
 
-### 最大值
+### Max Size
 
 :::demo
 
@@ -71,7 +71,7 @@ export default App;
 
 :::
 
-### 自定义颜色
+### Custom Color
 
 :::demo
 
@@ -106,7 +106,7 @@ export default App;
 
 :::
 
-### 自定义徽标内容
+### Custom context
 
 :::demo
 
@@ -134,7 +134,7 @@ export default App;
 
 :::
 
-### 自定义位置
+### Custom Position
 
 :::demo
 
@@ -162,7 +162,7 @@ export default App;
 
 :::
 
-### 独立展示
+### Display Alone
 
 :::demo
 
@@ -188,17 +188,16 @@ export default App;
 
 ### Props
 
-| 字段    | 说明                                       | 类型    | 默认值    |
+| Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
-| value   | 显示的内容                                 | String  | -         |
-| max     | value 为数值时，最大值                     | Number  | `10000`   |
-| z-index | 徽标的 z-index 值                          | Number  | `10`      |
-| dot     | 是否为小点                                 | Boolean | `false`   |
-| hidden  | 是否隐藏                                   | Boolean | `false`   |
-| top     | 上下偏移量，支持单位设置，可设置为：5px 等 | Number  | `0`       |
-| right   | 左右偏移量，支持单位设置，可设置为：5px 等 | Number  | `0`       |
-| color   | 徽标背景颜色                               | String  | `#fa2c19` |
-| icons   | 徽标自定义                               | String  | - |
+| value   | value to show                                 | String  | -         |
+| max     | when value is number, it's the max size                     | Number  | `10000`   |
+| zIndex |  z-index                          | Number  | `10`      |
+| dot     | Is dotted    | Boolean | `false`   |
+| top     | Up and down offset, support unit setting, can be set to: 5, etc. | Number  | `0`       |
+| right   | Left and right offset, support unit setting, can be set to: 5, etc. | Number  | `0`       |
+| color   | background color                                | String  | `#fa2c19` |
+| icons   | custom icons                               | String  | - |
 
 
 
