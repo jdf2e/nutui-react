@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import Icon from '@/packages/icon'
-import CheckboxGroup from '@/packages/checkboxgroup'
+import Icon from '@/packages/icon/index.taro'
+import CheckboxGroup from '@/packages/checkboxgroup/index.taro'
 
 import bem from '@/utils/bem'
 

@@ -6,7 +6,7 @@ import React, {
   useEffect,
 } from 'react'
 import bem from '@/utils/bem'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export interface CountDownProps {
   className?: string

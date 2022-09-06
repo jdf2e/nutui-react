@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import Popup from '@/packages/popup'
+import Popup from '@/packages/popup/index.taro'
 import bem from '@/utils/bem'
 
 export type ItemType<T> = { [key: string]: T }

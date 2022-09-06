@@ -8,7 +8,7 @@ import React, {
 import Popup from '@/packages/popup'
 import PickerSlot from './pickerSlot.taro'
 import useRefs from '@/utils/useRefs'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import bem from '@/utils/bem'
 
 export interface PickerOption {

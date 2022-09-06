@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 
 declare const window: any
 export interface BackTopProps {

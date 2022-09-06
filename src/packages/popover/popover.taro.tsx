@@ -6,8 +6,8 @@ import React, {
   useState,
 } from 'react'
 import Trigger from './Trigger'
-import Icon from '@/packages/icon'
-import Overlay from '@/packages/overlay'
+import Icon from '@/packages/icon/index.taro'
+import Overlay from '@/packages/overlay/index.taro'
 import { getRectByTaro } from '../../utils/useClientRect'
 
 export type PopoverTheme = 'light' | 'dark'
