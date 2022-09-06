@@ -161,7 +161,6 @@ const ActionSheetDemo = () => {
           <div className="selected-option">{val3}</div>
         </Cell>
         <h2>{translated.c3a08064}</h2>
-
         <Cell isLink onClick={() => setIsVisible4(!isVisible4)}>
           <span>
             <label htmlFor={translated.c3a08064}>{translated.c3a08064}</label>
@@ -187,21 +186,21 @@ const ActionSheetDemo = () => {
         <ActionSheet
           visible={isVisible3}
           description={translated.e1699442}
+          cancelTxt={translated['2cd0f3be']}
           menuItems={menuItemsTwo}
           onChoose={chooseItemThree}
-          cancelTxt={translated['2cd0f3be']}
           onCancel={() => setIsVisible3(false)}
         />
         {/* demo 选项状态 */}
         <ActionSheet
           visible={isVisible4}
           cancelTxt={translated['2cd0f3be']}
-          onCancel={() => setIsVisible4(false)}
           menuItems={menuItemsThree}
           chooseTagValue={translated['85dae65b']}
           onChoose={() => {
             setIsVisible4(false)
           }}
+          onCancel={() => setIsVisible4(false)}
         />
       </div>
     </>

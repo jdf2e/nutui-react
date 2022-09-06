@@ -132,21 +132,6 @@ const ActionSheetDemo = () => {
     setIsVisible3(false)
   }
 
-  const menulist: ItemType<string | boolean>[] = [
-    {
-      name: '选项一',
-      subname: '选项一的描述信息',
-    },
-    {
-      name: '选项二',
-      disable: true,
-    },
-    {
-      name: '必填',
-      name1: '选项三',
-    },
-  ]
-
   return (
     <>
       <div className="demo">
