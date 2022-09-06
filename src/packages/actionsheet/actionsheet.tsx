@@ -38,6 +38,7 @@ export const ActionSheet: FunctionComponent<
   Partial<ActionSheetProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
+    children,
     cancelTxt,
     optionTag,
     optionSubTag,
@@ -105,7 +106,9 @@ export const ActionSheet: FunctionComponent<
               )
             })}
           </div>
-        ) : null}
+        ) : (
+          children
+        )}
         {cancelTxt && (
           <div className={b('cancel')} onClick={() => cancelActionSheet()}>
             {cancelTxt}
