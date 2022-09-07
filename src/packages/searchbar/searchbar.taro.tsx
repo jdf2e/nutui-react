@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import bem from '@/utils/bem'
-import { useConfig } from '@/packages/configprovider'
-import Icon from '@/packages/icon'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import Icon from '@/packages/icon/index.taro'
 
 type TIconDirection = 'in-left' | 'out-left' | 'in-right' | 'out-right'
 export interface SearchBarProps {

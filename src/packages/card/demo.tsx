@@ -1,17 +1,81 @@
 import React from 'react'
 import { Card } from './card'
+import { useTranslate } from '../../sites/assets/locale'
 
+interface T {
+  basic: string
+  customProduct: string
+  customPro1: string
+  customPro2: string
+  customPro3: string
+  title: string
+  customShop: string
+  customPriceIcon: string
+  customFooter: string
+  customContent: string
+  desc: string
+  delivery: string
+  shopName: string
+}
 const CardDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基本用法',
+      customProduct: '自定义商品标签',
+      customPro1: '活鲜',
+      customPro2: '礼盒',
+      customPro3: '国产',
+      title:
+        '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+      customShop: '自定义店铺介绍',
+      customPriceIcon: '价格后自定义标签',
+      customFooter: '自定义右下角内容',
+      customContent: '自定义',
+      desc: '自营',
+      delivery: '厂商配送',
+      shopName: '阳澄湖大闸蟹自营店>',
+    },
+    'zh-TW': {
+      basic: '基本用法',
+      customProduct: '自定義商品標簽',
+      customPro1: '活鮮',
+      customPro2: '禮盒',
+      customPro3: '國產',
+      title:
+        '【活蟹】湖塘煙雨 陽澄湖大閘蟹公4.5兩 母3.5兩 4對8只 鮮活生鮮螃蟹現貨水產禮盒海鮮水',
+      customShop: '自定義店鋪介紹',
+      customPriceIcon: '價格後自定義標簽',
+      customFooter: '自定義右下角內容',
+      customContent: '自定義',
+      desc: '自營',
+      delivery: '廠商配送',
+      shopName: '陽澄湖大閘蟹自營店>',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      customProduct: 'Custom prolist',
+      customPro1: 'tag',
+      customPro2: 'tag',
+      customPro3: 'tag',
+      title: 'title',
+      customShop: 'Custom Content',
+      customPriceIcon: 'Price after custom tag',
+      customFooter: 'Customize bottom right content',
+      customContent: 'custom',
+      desc: 'desc',
+      delivery: 'delivery',
+      shopName: 'shopName>',
+    },
+  })
   const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title:
-      '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    title: translated.title,
     price: '388',
     vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
+    shopDesc: translated.desc,
+    delivery: translated.delivery,
+    shopName: translated.shopName,
   }
   const tagStyles = {
     display: 'inline-block',
@@ -34,7 +98,7 @@ const CardDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>基本用法</h2>
+        <h2>{translated.basic}</h2>
         <Card
           imgUrl={state.imgUrl}
           title={state.title}
@@ -44,7 +108,7 @@ const CardDemo = () => {
           delivery={state.delivery}
           shopName={state.shopName}
         />
-        <h2>自定义商品标签</h2>
+        <h2>{translated.customProduct}</h2>
         <Card
           imgUrl={state.imgUrl}
           title={state.title}
@@ -62,7 +126,11 @@ const CardDemo = () => {
                 height: '15px',
               }}
             >
-              {['鲜活', '礼盒', '国产'].map((item) => {
+              {[
+                translated.customPro1,
+                translated.customPro2,
+                translated.customPro3,
+              ].map((item) => {
                 return (
                   <span style={wordStyles} className="word" key={item}>
                     {item}
@@ -72,7 +140,7 @@ const CardDemo = () => {
             </div>
           }
         />
-        <h2>价格后自定义标签</h2>
+        <h2>{translated.customPriceIcon}</h2>
         <Card
           imgUrl={state.imgUrl}
           title={state.title}
@@ -89,7 +157,7 @@ const CardDemo = () => {
             />
           }
         />
-        <h2>商家介绍自定义</h2>
+        <h2>{translated.customShop}</h2>
         <Card
           imgUrl={state.imgUrl}
           title={state.title}
@@ -98,9 +166,9 @@ const CardDemo = () => {
           shopDesc={state.shopDesc}
           delivery={state.delivery}
           shopName={state.shopName}
-          shopTagTpl={<div>这里是自定义区域</div>}
+          shopTagTpl={<div>{translated.customShop}</div>}
         />
-        <h2>自定义右下角内容</h2>
+        <h2>{translated.customFooter}</h2>
         <Card
           imgUrl={state.imgUrl}
           title={state.title}
@@ -109,7 +177,9 @@ const CardDemo = () => {
           shopDesc={state.shopDesc}
           delivery={state.delivery}
           shopName={state.shopName}
-          footerTpl={<div style={{ fontSize: '12px' }}>自定义</div>}
+          footerTpl={
+            <div style={{ fontSize: '12px' }}>{translated.customContent}</div>
+          }
         />
       </div>
     </>

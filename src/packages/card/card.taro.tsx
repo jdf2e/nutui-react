@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
-import Price from '@/packages/price'
-import Tag from '@/packages/tag'
+import Price from '@/packages/price/index.taro'
+import Tag from '@/packages/tag/index.taro'
 
 import bem from '@/utils/bem'
 

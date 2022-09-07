@@ -1,17 +1,17 @@
-# FixedNav 悬浮导航
+# FixedNav 懸浮導航
 
-### 介绍
+### 介紹
 
-悬浮收齐体验交互，用于快捷导航
+懸浮收齊體驗交互，用於快捷導航
 
-### 安装
+### 安裝
     
 ``` javascript
 import { FixedNav } from '@nutui/nutui-react';
 ```
 
 
-### 基础用法
+### 基礎用法
 
 :::demo
 ``` tsx
@@ -22,17 +22,17 @@ const App = () => {
   const navList = [
     {
       id: 1,
-      text: '首页',
+      text: '首頁',
       icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/117646/2/11112/1297/5ef83e95E81d77f05/daf8e3b1c81e3c98.png'
     },
     {
       id: 2,
-      text: '分类',
+      text: '分類',
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png'
     },
     {
       id: 3,
-      text: '购物车',
+      text: '購物車',
       num: 2,
       icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/130725/4/3157/1704/5ef83e95Eb976644f/b36c6cfc1cc1a99d.png'
     },
@@ -53,7 +53,7 @@ const App = () => {
     <>
       <FixedNav
         navList={navList}
-        activeText="基础用法"
+        activeText="基礎用法"
         overlay
         position={{ top: '70px' }}
         onChange={change}
@@ -66,7 +66,7 @@ const App = () => {
 export default App;
 ```
 
-### 左侧效果
+### 左側效果
 
 ``` tsx
 import React, { useState } from "react";
@@ -76,17 +76,17 @@ const App = () => {
   const navList = [
     {
       id: 1,
-      text: '首页',
+      text: '首頁',
       icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/117646/2/11112/1297/5ef83e95E81d77f05/daf8e3b1c81e3c98.png'
     },
     {
       id: 2,
-      text: '分类',
+      text: '分類',
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png'
     },
     {
       id: 3,
-      text: '购物车',
+      text: '購物車',
       num: 2,
       icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/130725/4/3157/1704/5ef83e95Eb976644f/b36c6cfc1cc1a99d.png'
     },
@@ -110,8 +110,8 @@ const App = () => {
         type="left"
         position={{ top: '140px' }}
         visible={visible}
-        activeText="左侧收起"
-        unActiveText="左侧展开"
+        activeText="左側收起"
+        unActiveText="左側展開"
         onChange={change}
         onSelected={selected}
        />
@@ -133,17 +133,17 @@ const App = () => {
   const navList = [
     {
       id: 1,
-      text: '首页',
+      text: '首頁',
       icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/117646/2/11112/1297/5ef83e95E81d77f05/daf8e3b1c81e3c98.png'
     },
     {
       id: 2,
-      text: '分类',
+      text: '分類',
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png'
     },
     {
       id: 3,
-      text: '购物车',
+      text: '購物車',
       num: 2,
       icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/130725/4/3157/1704/5ef83e95Eb976644f/b36c6cfc1cc1a99d.png'
     },
@@ -177,7 +177,7 @@ export default App;
 ```
 
 
-### 自定义使用
+### 自定義使用
 
 ``` tsx
 import React, { useState } from "react";
@@ -187,17 +187,17 @@ const App = () => {
   const navList = [
     {
       id: 1,
-      text: '首页',
+      text: '首頁',
       icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/117646/2/11112/1297/5ef83e95E81d77f05/daf8e3b1c81e3c98.png'
     },
     {
       id: 2,
-      text: '分类',
+      text: '分類',
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png'
     },
     {
       id: 3,
-      text: '购物车',
+      text: '購物車',
       num: 2,
       icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/130725/4/3157/1704/5ef83e95Eb976644f/b36c6cfc1cc1a99d.png'
     },
@@ -234,7 +234,7 @@ const App = () => {
         slotBtn={
           <>
             <Icon name="retweet" color="#fff"> </Icon>
-            <span className="text">{ visible ? '自定义开' : '自定义关' }</span>
+            <span className="text">{ visible ? '自定義開' : '自定義關' }</span>
           </>
         }
        />
@@ -255,17 +255,17 @@ const App = () => {
   const navList = [
     {
       id: 1,
-      text: '首页',
+      text: '首頁',
       icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/117646/2/11112/1297/5ef83e95E81d77f05/daf8e3b1c81e3c98.png'
     },
     {
       id: 2,
-      text: '分类',
+      text: '分類',
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png'
     },
     {
       id: 3,
-      text: '购物车',
+      text: '購物車',
       num: 2,
       icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/130725/4/3157/1704/5ef83e95Eb976644f/b36c6cfc1cc1a99d.png'
     },
@@ -302,26 +302,23 @@ export default App;
 
 
 ### Prop
-| 字段           | 说明                       | 类型    | 默认值                       |
+| 字段           | 說明                       | 類型    | 默認值                       |
 |:---------------|:---------------------------|:--------|:-----------------------------|
-| fixednavClass        | 自定义类名                   | String | fixednav                        |
-| visible        | 是否打开                   | Boolean | false                        |
-| navList       | 悬浮列表内容数据           | Array   | []                           |
-| activeText    | 收起列表按钮文案           | String  | 收起导航                     |
-| unActiveText | 展开列表按钮文案           | String  | 快速导航                     |
-| type           | 导航方向,可选值 left right | String  | right                        |
-| overlay        | 展开时是否显示遮罩         | Boolean | true                         |
+| fixednavClass        | 自定義類名                   | String | fixednav                        |
+| visible        | 是否打開                   | Boolean | false                        |
+| navList       | 懸浮列表內容數據           | Array   | []                           |
+| activeText    | 收起列表按鈕文案           | String  | 收起導航                     |
+| unActiveText | 展開列表按鈕文案           | String  | 快速導航                     |
+| type           | 導航方向,可選值 left right | String  | right                        |
+| overlay        | 展開時是否顯示遮罩         | Boolean | true                         |
 | position       | fixed 垂直位置             | Object  | {top: 'auto',bottom: 'auto'} |
-| slotList       | 自定义展开列表内容             | HTMLElement  | - |
-| slotBtn       | 自定义按钮            | HTMLElement  | - |
+| slotList       | 自定義展開列表內容             | HTMLElement  | - |
+| slotBtn       | 自定義按鈕            | HTMLElement  | - |
 
 
 ### Event
 
-| 字段     | 说明         | 回调参数                 |
-|----------|--------------|--------------------------|
-| onChange | 展开收起按钮回调 | {value:boolean} |
-| onSelected | 选择之后触发 | {item:item, event:MouseEvent} |
-
-
-    
+| 字段     | 說明         | 回調參數        |
+|:----------|:--------------|:------------|
+| onChange | 展開收起按鈕回調 | value:boolean |
+| onSelected | 選擇之後觸發 | item,event:MouseEvent |

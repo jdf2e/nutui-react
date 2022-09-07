@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import Avatar from '@/packages/avatar'
+import Avatar from '@/packages/avatar/index.taro'
 import bem from '@/utils/bem'
 
 type avatarShape = 'round' | 'square'

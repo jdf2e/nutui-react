@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import { useHistory } from 'react-router-dom'
 import Taro from '@tarojs/taro'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 
 export interface CellProps {
   title: ReactNode

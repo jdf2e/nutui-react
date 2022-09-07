@@ -1,7 +1,7 @@
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 
 type GridDirection = 'horizontal' | 'vertical'
 
