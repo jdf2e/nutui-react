@@ -170,7 +170,7 @@ const App = () => {
   }
   return ( 
     <>   
-    <Rate modelValue="3" change={onChange} />
+    <Rate modelValue="3" onChange={onChange} />
     </>
   );
 };  
@@ -219,4 +219,4 @@ export default App;
 ## Event
 | field   | explain                                          | Callback Arguments  |
 |--------|----------------------------|----------|
-| change | Event triggered when the current score is modified | Current value   |
+| onChange | Event triggered when the current score is modified | Current value   |

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon/index.taro'
+import Icon from '@/packages/icon'
 
 export interface RateProps {
   count: string | number
@@ -78,16 +78,17 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     if (index === 1 && score === index) {
     } else {
       value = index
-      if (allowHalf) {
-        console.log('e', e)
-        if ((e?.target as any)?.className?.includes('__icon--half')) {
-          value -= 0.5
-        }
-      }
     }
     value = Math.max(value, Number(minimizeValue))
     setScore(value)
 
+    change && change(value)
+  }
+  const onHalfClick = (event: any, n: number) => {
+    event.preventDefault()
+    event.stopPropagation()
+    const value = Math.max(Number(minimizeValue), n - 0.5)
+    setScore(value)
     change && change(value)
   }
   return (
@@ -110,6 +111,15 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
             />
             {allowHalf && score > n - 1 && (
               <Icon
+                onClick={(event) => onHalfClick(event, n)}
+                className={`${bi('icon')} ${bi('icon--half')}`}
+                color={n <= score ? activeColor : voidColor}
+                size={iconSize}
+                name={checkedIcon}
+              />
+            )}
+            {/* {allowHalf && score > n - 1 && (
+              <Icon
                 className={`${bi('icon')} ${bi('icon--half')}`}
                 color={n <= score ? activeColor : voidColor}
                 size={iconSize}
@@ -125,7 +135,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
                 size={iconSize}
                 name={uncheckedIcon}
               />
-            )}
+            )} */}
           </div>
         )
       })}
