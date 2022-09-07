@@ -16,7 +16,7 @@ export interface RateProps {
   readonly: boolean
   allowHalf: boolean
   spacing: string | number
-  change: (val: number) => void
+  onChange: (val: number) => void
 }
 const defaultProps = {
   count: 5,
@@ -46,7 +46,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     readonly,
     allowHalf,
     spacing,
-    change,
+    onChange,
   } = { ...defaultProps, ...props }
   const b = bem('rate')
   const bi = bem('rate-item')
@@ -82,14 +82,14 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     value = Math.max(value, Number(minimizeValue))
     setScore(value)
 
-    change && change(value)
+    onChange && onChange(value)
   }
   const onHalfClick = (event: any, n: number) => {
     event.preventDefault()
     event.stopPropagation()
     const value = Math.max(Number(minimizeValue), n - 0.5)
     setScore(value)
-    change && change(value)
+    onChange && onChange(value)
   }
   return (
     <div className={b()}>

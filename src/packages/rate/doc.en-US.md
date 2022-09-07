@@ -219,4 +219,4 @@ export default App;
 ## Event
 | field   | explain                                          | Callback Arguments  |
 |--------|----------------------------|----------|
-| onChange | Event triggered when the current score is modified | Current value   |
+| onChange `v1.3.3` | Event triggered when the current score is modified | Current value   |

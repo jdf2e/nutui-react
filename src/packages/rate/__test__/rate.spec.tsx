@@ -66,7 +66,7 @@ test('spacing & count & modelValue & checkedIcon & uncheckedIcon & readonly & ic
     expect(el[0]).toHaveAttribute('style', 'margin-right: 12px;') // spacing
 
     fireEvent.click(el[1])
-    expect(valueEl.innerHTML).toBe('2') // change api test
+    expect(valueEl.innerHTML).toBe('2') // onChange api test
   }
 })
 

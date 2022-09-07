@@ -15,7 +15,7 @@ const RateDemo = () => {
         <Rate
           allowHalf
           modelValue="3.5"
-          change={(num) => console.log('allowHalf count', num)}
+          onChange={(num) => console.log('allowHalf count', num)}
         />
 
         <h2>自定义 icon </h2>
@@ -23,7 +23,7 @@ const RateDemo = () => {
           checkedIcon="heart-fill1"
           uncheckedIcon="heart"
           modelValue="3"
-          change={(num) => console.log('coustom icon count', num)}
+          onChange={(num) => console.log('coustom icon count', num)}
         />
 
         <h2>自定义数量</h2>
@@ -33,7 +33,7 @@ const RateDemo = () => {
         <Rate
           modelValue="2"
           minimizeValue={3}
-          change={(num) => console.log(num)}
+          onChange={(num) => console.log(num)}
         />
 
         <h2>自定义颜色</h2>
@@ -46,7 +46,7 @@ const RateDemo = () => {
         <Rate modelValue="3" readonly />
 
         <h2>绑定事件</h2>
-        <Rate modelValue="3" change={onChange} />
+        <Rate modelValue="3" onChange={onChange} />
 
         <h2>自定义尺寸 35px</h2>
         <Rate modelValue="3" iconSize="35" />
