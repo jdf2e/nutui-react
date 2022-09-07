@@ -1,15 +1,15 @@
 #  Card 商品卡片
 
-### 介绍
+### 介紹
 
-商品卡片，用于展示商品的图片、价格等信息
+商品卡片，用於展示商品的圖片、價格等信息
 
-### 安装
+### 安裝
 
 import { Card,Price, Tag} from '@nutui/nutui-react';
 
 
-## 代码演示
+## 代碼演示
 
 ### 基本用法
 
@@ -23,12 +23,12 @@ const App = () => {
     const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    title: '【活蟹】湖塘煙雨 陽澄湖大閘蟹公4.5兩 母3.5兩 4對8只 鮮活生鮮螃蟹現貨水產禮盒海鮮水',
     price: '388',
     vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
+    shopDesc: '自營',
+    delivery: '廠商配送',
+    shopName: '陽澄湖大閘蟹自營店>',
   }
   return (
     <Card
@@ -47,7 +47,7 @@ export default App;
 
 :::
 
-### 自定义商品标签
+### 自定義商品標簽
 
 :::demo
 
@@ -59,12 +59,12 @@ const App = () => {
     const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    title: '【活蟹】湖塘煙雨 陽澄湖大閘蟹公4.5兩 母3.5兩 4對8只 鮮活生鮮螃蟹現貨水產禮盒海鮮水',
     price: '388',
     vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
+    shopDesc: '自營',
+    delivery: '廠商配送',
+    shopName: '陽澄湖大閘蟹自營店>',
   }
   const wordStyles = {
     padding: '0 5px',
@@ -90,7 +90,7 @@ const App = () => {
             className="search_prolist_attr"
             style={{ display: 'inline-flex', margin: '3px 0 1px', height: '15px' }}
         >
-            {['鲜活', '礼盒', '国产'].map((item) => {
+            {['鮮活', '禮盒', '國產'].map((item) => {
             return (
                 <span style={wordStyles} className="word" key={item}>
                 {item}
@@ -108,7 +108,7 @@ export default App;
 
 :::
 
-### 价格后自定义标签
+### 價格後自定義標簽
 
 :::demo
 
@@ -120,12 +120,12 @@ const App = () => {
     const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    title: '【活蟹】湖塘煙雨 陽澄湖大閘蟹公4.5兩 母3.5兩 4對8只 鮮活生鮮螃蟹現貨水產禮盒海鮮水',
     price: '388',
     vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
+    shopDesc: '自營',
+    delivery: '廠商配送',
+    shopName: '陽澄湖大閘蟹自營店>',
   }
   const tagStyles = {
     display: 'inline-block',
@@ -158,7 +158,7 @@ export default App;
 
 :::
 
-### 商家介绍自定义
+### 自定義店鋪介紹
 
 :::demo
 ```ts
@@ -169,12 +169,12 @@ const App = () => {
     const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    title: '【活蟹】湖塘煙雨 陽澄湖大閘蟹公4.5兩 母3.5兩 4對8只 鮮活生鮮螃蟹現貨水產禮盒海鮮水',
     price: '388',
     vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
+    shopDesc: '自營',
+    delivery: '廠商配送',
+    shopName: '陽澄湖大閘蟹自營店>',
   }
   return (
     <Card
@@ -185,7 +185,7 @@ const App = () => {
         shopDesc={state.shopDesc}
         delivery={state.delivery}
         shopName={state.shopName}
-        shopTagTpl={<div>这里是自定义区域</div>}
+        shopTagTpl={<div>自定義店鋪介紹</div>}
     ></Card>
   );
 };
@@ -194,7 +194,7 @@ export default App;
 
 :::
 
-### 自定义右下角内容
+### 自定義右下角內容
 
 :::demo
 
@@ -206,12 +206,12 @@ const App = () => {
     const state = {
     imgUrl:
       '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
+    title: '【活蟹】湖塘煙雨 陽澄湖大閘蟹公4.5兩 母3.5兩 4對8只 鮮活生鮮螃蟹現貨水產禮盒海鮮水',
     price: '388',
     vipPrice: '378',
-    shopDesc: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
+    shopDesc: '自營',
+    delivery: '廠商配送',
+    shopName: '陽澄湖大閘蟹自營店>',
   }
   
   return (
@@ -223,7 +223,7 @@ const App = () => {
         shopDesc={state.shopDesc}
         delivery={state.delivery}
         shopName={state.shopName}
-        footerTpl={<div style={{ fontSize: '12px' }}>自定义</div>}
+        footerTpl={<div style={{ fontSize: '12px' }}>自定義</div>}
     ></Card>
   );
 };
@@ -238,19 +238,19 @@ export default App;
 ### Props
 
 
-| 字段    | 说明                                       | 类型    | 默认值    |
+| 字段    | 說明                                       | 類型    | 默認值    |
 |---------|--------------------------------------------|---------|-----------|
-| imgUrl   | 左侧图片Url                                 | String  | -         |
-| title     | 标题                   | String  | -    |
-| price | 商品价格                         | String  | -      |
-| vipPrice     | 会员价格                               | String | -    |
-| shopDesc  | 店铺介绍                                  | String | -    |
+| imgUrl   | 左側圖片Url                                 | String  | -         |
+| title     | 標題                   | String  | -    |
+| price | 商品價格                         | String  | -      |
+| vipPrice     | 會員價格                               | String | -    |
+| shopDesc  | 店鋪介紹                                  | String | -    |
 | delivery     | 配送方式 | String  | -      |
-| shopName   | 店铺名称| String  | -      |
-| prolistTpl   | 自定义商品介绍| React.ReactNode  | -      |
-| originTpl   | 价格后方自定义内容| React.ReactNode  | -      |
-| shopTagTpl   | 店铺介绍自定义| React.ReactNode  | -      |
-| footerTpl   | 右下角内容自定义| React.ReactNode  | -      |
+| shopName   | 店鋪名稱| String  | -      |
+| prolistTpl   | 自定義商品介紹| React.ReactNode  | -      |
+| originTpl   | 價格後方自定義內容| React.ReactNode  | -      |
+| shopTagTpl   | 店鋪介紹自定義| React.ReactNode  | -      |
+| footerTpl   | 右下角內容自定義| React.ReactNode  | -      |
 
 
 

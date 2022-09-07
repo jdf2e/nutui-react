@@ -11,8 +11,8 @@ import React, {
 } from 'react'
 
 import { formatNumber } from './util'
-import Icon from '@/packages/icon'
-import { useConfig } from '@/packages/configprovider'
+import Icon from '@/packages/icon/index.taro'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export type InputAlignType = 'left' | 'center' | 'right' // text-align
 export type InputFormatTrigger = 'onChange' | 'onBlur' // onChange: 在输入时执行格式化 ; onBlur: 在失焦时执行格式化

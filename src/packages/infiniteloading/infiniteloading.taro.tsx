@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
-import { useConfig } from '@/packages/configprovider'
+import Icon from '@/packages/icon/index.taro'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export interface InfiniteloadingProps {
   hasMore: boolean

@@ -22,6 +22,7 @@ const subPackages = [
       'pages/pagination/index',
       'pages/tabs/index',
       'pages/indicator/index',
+      'pages/menu/index',
     ],
   },
   {
@@ -44,7 +45,11 @@ const subPackages = [
   },
   {
     root: 'feedback',
-    pages: ['pages/actionsheet/index', 'pages/switch/index'],
+    pages: [
+      'pages/actionsheet/index',
+      'pages/switch/index',
+      'pages/pulltorefresh/index',
+    ],
   },
   {
     root: 'exhibition',

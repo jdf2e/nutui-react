@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`range props test 1`] = `
+<div>
+  <div
+    class="nut-range-container test-range"
+  >
+    <div
+      class="min"
+    >
+      0
+    </div>
+    <div
+      class="nut-range nut-range-show-number"
+      style="background: rgb(163, 184, 255);"
+    >
+      <div
+        class="nut-range-bar"
+        style="width: 40%; left: 0%; transition: none;"
+      >
+        <div
+          aria-orientation="horizontal"
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuenow="40"
+          class="nut-range-button-wrapper"
+          role="slider"
+          tabindex="0"
+        >
+          <div
+            class="nut-range-button"
+            style="border-color: rgba(52,96,250,1);"
+          >
+            <div
+              class="number"
+            >
+              40
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="max"
+    >
+      100
+    </div>
+  </div>
+</div>
+`;

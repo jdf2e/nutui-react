@@ -127,7 +127,7 @@ const RangeDemo = () => {
         <h2>{translated.title2}</h2>
         <Cell style={cellStyle}>
           <Range
-            modelValue={100}
+            modelValue={0}
             max={10}
             min={-10}
             change={(value: any) => {

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classnames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Icon from '@/packages/icon/index.taro'
 import { Overlay } from '../overlay/overlay.taro'
 
@@ -97,11 +97,12 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
   const getParentOffset = () => {
     setTimeout(() => {
       const p = parent.parent().current
-      const rect = p.getBoundingClientRect()
-      console.log(rect, p.offsetTop, window.screenTop)
-      setPosition({
-        height: rect.height,
-        top: rect.top,
+
+      const rect = p.getBoundingClientRect().then((rect: any) => {
+        setPosition({
+          height: rect.height,
+          top: rect.top,
+        })
       })
     })
   }

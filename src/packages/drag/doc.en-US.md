@@ -1,20 +1,18 @@
-# Drag 拖拽
+# Drag 
 
-### 介绍
+### Intro
 
-实现可拖拽的任意元素
+Implement draggable arbitrary elements.
 
-### 安装
+### Install
 
 ```javascript
 import { Drag } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## Demo
 
-### 基础用法
-
-## 基本用法
+### Basic Usage
 
 :::demo
 
@@ -34,7 +32,7 @@ const App = () => {
   }
   return (
     <Drag>
-        <div className="touch-dom" style={btnStyle}>触摸移动</div>
+        <div className="touch-dom" style={btnStyle}>Button</div>
     </Drag>
  );
 };
@@ -43,7 +41,7 @@ export default App;
 
 :::
 
-## 限制拖拽方向
+##  Limit Direction
 
 :::demo
 
@@ -64,10 +62,10 @@ const App = () => {
   return (
     <>
     <Drag direction="x" style={{ top: '200px', left: '8px' }}>
-        <span style={btnStyle}>只能X轴拖拽</span>
+        <span style={btnStyle}>X axis</span>
       </Drag>
       <Drag direction="y" style={{ top: '200px', right: '50px' }}>
-        <span style={btnStyle}>只能Y轴拖拽</span>
+        <span style={btnStyle}>Y axis</span>
       </Drag>
     </>
  );
@@ -77,7 +75,7 @@ export default App;
 
 :::
 
-## 自动吸边
+## Attract
 
 :::demo
 
@@ -97,7 +95,7 @@ const App = () => {
   }
   return (
     <Drag direction="x" attract>
-      <div className="touch-dom" style={btnStyle}>拖动我</div>
+      <div className="touch-dom" style={btnStyle}>Button</div>
     </Drag>
  );
 };
@@ -106,7 +104,7 @@ export default App;
 
 :::
 
-## 限制拖拽边界
+## Limit Boundaries
 :::demo
 
 ```tsx
@@ -147,7 +145,7 @@ const App = () => {
         boundary={{ top: 1, left: 9, bottom: bottom(), right: right() }}
         style={{ top: '40px', left: '50px' }}
       >
-        <span style={btnStyle}>限制拖拽边界</span>
+        <span style={btnStyle}>Limit Boundaries</span>
       </Drag>
     </>
    );
@@ -161,8 +159,9 @@ export default App;
 
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --------------- | ----------------------------- | ------- | ------ |
-| attract | 是否开启自动吸边 | Boolean | false |
-| direction | 拖拽元素的拖拽方向限制，x、y、all三选一 | String |'all' |
-| boundary | 拖拽元素的拖拽边界 | Object | {top: 0,left: 0,right: 0,bottom: 0} |
+
+| Attribute            | Description               | Type   | Default  |
+| :-------- | :------------------------------------------------ | :------------- | :---------------------------------- |
+| attract   | Whether to enable automatic edge suction  | Boolean        | false                                |
+| direction | The drag direction limit of the dragged element **x**/**y**/**all**| String   | 'all'         |
+| boundary  | The drag boundary of the dragged element   | Object         | {top: 0,left: 0,right: 0,bottom: 0} |

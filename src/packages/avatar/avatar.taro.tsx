@@ -9,7 +9,7 @@ import React, {
 import classNames from 'classnames'
 import { AvatarContext } from '@/packages/avatargroup/AvatarContext'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 
 export interface AvatarProps {
   size: string

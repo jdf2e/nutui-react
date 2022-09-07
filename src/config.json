@@ -335,6 +335,7 @@
           "desc": "向下弹出的菜单列表",
           "sort": 13,
           "show": true,
+          "taro": true,
           "author": "oasis-cloud"
         },
         {
@@ -346,6 +347,7 @@
           "sort": 14,
           "exportEmpty": true,
           "show": false,
+          "taro": true,
           "author": "oasis-cloud"
         }
       ]

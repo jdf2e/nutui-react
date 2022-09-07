@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 import { ITableProps, TableColumnProps } from './types'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export type TableProps = ITableProps
 const defaultProps = {
