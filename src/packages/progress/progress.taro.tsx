@@ -1,6 +1,6 @@
 import React, { FunctionComponent, CSSProperties, ReactNode } from 'react'
 import classNames from 'classnames'
-import { Icon } from '@/packages/icon/icon'
+import { Icon } from '@/packages/icon/icon.taro'
 import bem from '@/utils/bem'
 
 export type ProgressSize = 'small' | 'base' | 'large'

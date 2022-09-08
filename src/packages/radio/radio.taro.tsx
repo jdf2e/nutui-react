@@ -5,10 +5,10 @@ import React, {
   useEffect,
   useState,
 } from 'react'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 
 import RadioContext from './context'
-import RadioGroup from '@/packages/radiogroup'
+import RadioGroup from '@/packages/radiogroup/index.taro'
 
 type Shape = 'button' | 'round'
 type Position = 'right' | 'left'

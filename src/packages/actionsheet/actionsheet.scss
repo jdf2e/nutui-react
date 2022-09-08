@@ -1,6 +1,8 @@
 @import '../popup/popup.scss';
 .nut-actionsheet {
   display: block;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
   .nut-actionsheet__title {
     display: block;
     padding: 10px;

@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 
 export interface TabbarItemProps {
   dot: boolean

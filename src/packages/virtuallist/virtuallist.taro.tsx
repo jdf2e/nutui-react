@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { IVirtualListProps, VirtualListState, PositionType } from './type'
 import {
   initPositinoCache,

@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { getRectByTaro } from '../../utils/useClientRect'
 
 type InputDate = string | string[]

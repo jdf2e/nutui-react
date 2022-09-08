@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 
 class Title {
   title = ''
