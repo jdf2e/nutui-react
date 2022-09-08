@@ -4,12 +4,12 @@ import React, {
   useState,
   CSSProperties,
 } from 'react'
-import Icon from '@/packages/icon'
-import Popup from '@/packages/popup'
+import Icon from '@/packages/icon/index.taro'
+import Popup from '@/packages/popup/index.taro'
 import bem from '@/utils/bem'
 import { ExistRender } from './existRender'
 import { CustomRender } from './customRender'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import {
   RegionData,
   NextListObj,

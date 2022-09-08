@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 
 export interface ButtonProps {
   className: string
