@@ -75,16 +75,6 @@ export const FixedNav: FunctionComponent<
     onChange(value)
   }
 
-  // const [classNames, setClassNames] = useState('')
-
-  // const classes = () => {
-  //   return `${fixednavClass} ${type} ${visible ? 'active' : ''}`
-  // }
-
-  // useEffect(() => {
-  //   setClassNames(classes())
-  // }, [visible])
-
   return (
     <div className={classes} style={position} {...rest}>
       {overlay && (
