@@ -79,7 +79,6 @@ export const NoticeBar: FunctionComponent<
 
   const wrap = useRef<HTMLDivElement>(null)
   const content = useRef<HTMLDivElement>(null)
-  // const [scrollList,SetScrollList] = useState([])
   const [showNoticeBar, SetShowNoticeBar] = useState(true)
   const scrollList: any = useRef([])
   const [wrapWidth, SetWrapWidth] = useState(0)
@@ -91,8 +90,6 @@ export const NoticeBar: FunctionComponent<
   const [distance, SetDistance] = useState(0)
   const [timer, SetTimer] = useState(0)
   const [isCanScroll, SetIsCanScroll] = useState<null | boolean>(null)
-
-  const [index, setIndex] = useState<number>(0)
 
   useEffect(() => {
     if (direction === 'vertical') {
@@ -188,7 +185,7 @@ export const NoticeBar: FunctionComponent<
    */
   const startRollEasy = () => {
     showhorseLamp()
-    const timerCurr = window.setInterval(
+    const timerCurr = setInterval(
       showhorseLamp,
       ~~(height / speed / 4) * 1000 + Number(standTime)
     )
@@ -259,7 +256,6 @@ export const NoticeBar: FunctionComponent<
   }
 
   const contentStyle = {
-    // paddingLeft: firstRound ? 0 : `${wrapWidth}px`,
     animationDelay: `${firstRound ? delay : 0}s`,
     animationDuration: `${duration}s`,
     transform: `translateX(${firstRound ? 0 : `${wrapWidth}px`})`,
@@ -306,7 +302,7 @@ export const NoticeBar: FunctionComponent<
             <div
               ref={content}
               className={`content ${animationClass} ${
-                isEllipsis() && 'nut-ellipsis'
+                isEllipsis() ? 'nut-ellipsis' : ''
               }`}
               style={contentStyle}
               onAnimationEnd={onAnimationEnd}
