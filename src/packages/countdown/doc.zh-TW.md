@@ -326,13 +326,13 @@ export default App;
 
 | 字段 | 說明 | 類型 | 默認值
 | ----- | ----- | ----- | -----
-| startTime | 開始時間 | String, Number | Date.now()
-| endTime | 結束時間 | String, Number | Date.now()
+| startTime | 開始時間 | Number | Date.now()
+| endTime | 結束時間 | Number | Date.now()
 | paused | 是否暫停 | Boolean | false
 | format `v1.3.3` |  時間格式 | String | HH:mm:ss
 | millisecond `v1.3.3` |  是否開啟毫秒級渲染 | Boolean | false
 | autoStart `v1.3.3` |  是否自動開始倒計時 | Boolean | true
-| time `v1.3.3` | 倒計時顯示時間，單位是毫秒。autoStart 為 false 時生效 | String，Number | 0
+| time `v1.3.3` | 倒計時顯示時間，單位是毫秒。autoStart 為 false 時生效 | Number | 0
 | showDays `v1.3.3廢棄` | 是否顯示天 | Boolean | false
 | showPlainText `v1.3.3廢棄` | 顯示為純文本 | Boolean | false
 

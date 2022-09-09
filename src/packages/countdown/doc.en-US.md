@@ -51,7 +51,7 @@ const App = () => {
   })
   return (
      <Cell>
-        <CountDown endTime={stateRef.current.endTime} format="DD 天 HH 時 mm 分 ss 秒"/>
+        <CountDown endTime={stateRef.current.endTime} format="DD Day HH : mm : ss" />
     </Cell>
   );
 };
@@ -326,13 +326,13 @@ export default App;
 
 | Attribute | Description | Type | Default
 | ----- | ----- | ----- | -----
-| startTime | Start Time | String, Number | Date.now()
-| endTime | End Time | String, Number | Date.now()
+| startTime | Start Time |  Number | Date.now()
+| endTime | End Time | Number | Date.now()
 | paused | Paused | Boolean | false
 | format `v1.3.3` |  Format Time | String | HH:mm:ss
 | millisecond `v1.3.3` |  Whether to enable millisecond render | Boolean | false
 | autoStart `v1.3.3` |  Whether to auto start count down | Boolean | true
-| time `v1.3.3` | Total time, unit milliseconds | String，Number | 0
+| time `v1.3.3` | Total time, unit milliseconds | Number | 0
 | showDays `v1.3.3(Abandon)` | Show Text Day | Boolean | false
 | showPlainText `v1.3.3(Abandon)` | Show Text | Boolean | false
 
