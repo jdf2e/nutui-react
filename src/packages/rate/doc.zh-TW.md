@@ -170,7 +170,7 @@ const App = () => {
   }
   return ( 
     <>   
-    <Rate modelValue="3" change={onChange} />
+    <Rate modelValue="3" onChange={onChange} />
     </>
   );
 };  
@@ -219,4 +219,4 @@ export default App;
 ## Event
 | 字段   | 說明                       | 回調參數 |
 |--------|----------------------------|----------|
-| change | 當前分值修改時時觸發的事件 | 當前值   |
+| onChange `v1.3.3`| 當前分值修改時時觸發的事件 | 當前值   |
