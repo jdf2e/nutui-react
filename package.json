@@ -8,7 +8,8 @@
   "sideEffects": [
     "*.scss",
     "dist/esm/**/style/*",
-    "dist/style.css"
+    "dist/style.css",
+    "dist/styles/font/*"
   ],
   "description": "京东风格的轻量级移动端 React 组件库",
   "keywords": [
