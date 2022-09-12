@@ -8,7 +8,8 @@
   "sideEffects": [
     "*.scss",
     "dist/esm/**/style/*",
-    "dist/style.css"
+    "dist/style.css",
+    "dist/styles/font/*"
   ],
   "description": "京东风格的轻量级移动端 React 组件库",
   "keywords": [
@@ -62,6 +63,7 @@
     "checked:taro": "npm run generate:file:taro && tsc --project ./tsconfig.taro.json",
     "generate:file:taro:pages": "node scripts/taro/generate-taro-pages.js",
     "dev:taro:weapp": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:weapp",
+    "dev:taro:jd": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:jd",
     "replace:taro:types": "node scripts/taro/replace-taro-types-alias.js",
     "build:taro:types": "tsc && npm run replace:taro:types",
     "build:taro:es": "npx rollup -c rollup.config.taro.es.js",
@@ -152,7 +154,7 @@
     "shelljs": "^0.8.4",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
-    "typescript": "^4.1.2",
+    "typescript": "4.5.5",
     "unist-util-visit": "^4.1.0",
     "vinyl-fs": "^3.0.3",
     "vite": "^2.1.5",

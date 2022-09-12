@@ -63,6 +63,7 @@ const subPackages = [
       'pages/tag/index',
       'pages/popover/index',
       'pages/skeleton/index',
+      'pages/countdown/index',
       'pages/collapse/index',
       'pages/empty/index',
       'pages/progress/index',
