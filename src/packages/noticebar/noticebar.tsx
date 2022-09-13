@@ -12,7 +12,9 @@ import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 import { getRect } from '../../utils/useClientRect'
 
-export interface NoticeBarProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface NoticeBarProps extends IComponent {
   // 滚动方向  across 横向 vertical 纵向
   direction: string
   className?: string
@@ -34,7 +36,9 @@ export interface NoticeBarProps {
   close?: (list?: any) => void
   click?: (item?: any) => void
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   // 滚动方向  across 横向 vertical 纵向
   direction: 'across',
   list: [],
@@ -292,7 +296,13 @@ export const NoticeBar: FunctionComponent<
               style={{ backgroundImage: `url(${iconBg() || ''})` }}
             >
               {!iconBg() ? (
-                <Icon name="notice" size="16" color={color} />
+                <Icon
+                  classPrefix={props.iconClassPrefix}
+                  fontClassName={props.iconFontClassName}
+                  name="notice"
+                  size="16"
+                  color={color}
+                />
               ) : null}
             </div>
           ) : null}
@@ -311,7 +321,12 @@ export const NoticeBar: FunctionComponent<
           </div>
           {closeMode || rightIcon ? (
             <div className="right-icon" onClick={onClickIcon}>
-              <Icon name={rightIcon || 'close'} color={color} />
+              <Icon
+                classPrefix={props.iconClassPrefix}
+                fontClassName={props.iconFontClassName}
+                name={rightIcon || 'close'}
+                color={color}
+              />
             </div>
           ) : null}
         </div>
@@ -351,7 +366,13 @@ export const NoticeBar: FunctionComponent<
           >
             {rightIcon ||
               (closeMode ? (
-                <Icon name="cross" color={color} size="11px" />
+                <Icon
+                  classPrefix={props.iconClassPrefix}
+                  fontClassName={props.iconFontClassName}
+                  name="cross"
+                  color={color}
+                  size="11px"
+                />
               ) : null)}
           </div>
         </div>

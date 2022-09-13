@@ -13,7 +13,9 @@ import RadioGroup from '@/packages/radiogroup/index.taro'
 type Shape = 'button' | 'round'
 type Position = 'right' | 'left'
 
-export interface RadioProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface RadioProps extends IComponent {
   className: string
   style: React.CSSProperties
   disabled: boolean
@@ -28,6 +30,7 @@ export interface RadioProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   disabled: false,
   checked: false,
   shape: 'round',
@@ -102,6 +105,8 @@ export const Radio: FunctionComponent<
 
     return (
       <Icon
+        classPrefix={props.iconClassPrefix}
+        fontClassName={props.iconFontClassName}
         name={checkedStatement ? iconActiveName : iconName}
         size={iconSize}
         className={color()}
