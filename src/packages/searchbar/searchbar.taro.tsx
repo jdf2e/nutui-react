@@ -2,9 +2,11 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Icon from '@/packages/icon/index.taro'
+import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 type TIconDirection = 'in-left' | 'out-left' | 'in-right' | 'out-right'
-export interface SearchBarProps {
+
+export interface SearchBarProps extends IComponent {
   /** 文本值	 */
   value?: number | string
   /** 输入框占位提示文字	 */
@@ -62,7 +64,9 @@ export interface SearchBarProps {
   /** 点击输入框外右侧图标时触发	 */
   onClickRightoutIcon?: (value: string, event: Event) => void
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   placeholder: '',
   shape: 'square',
   disabled: false,
@@ -238,7 +242,13 @@ export const SearchBar: FunctionComponent<
         className={`${searchbarBem('clear')} ${rightinIcon ? 'pos-right' : ''}`}
         onClick={(e: any) => clearaVal(e)}
       >
-        <Icon name="circle-close" size="12" color="#555" />
+        <Icon
+          classPrefix={props.iconClassPrefix}
+          fontClassName={props.iconFontClassName}
+          name="circle-close"
+          size="12"
+          color="#555"
+        />
       </div>
     )
   }

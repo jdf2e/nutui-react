@@ -10,7 +10,9 @@ import Popup from '@/packages/popup/index.taro'
 import Icon from '@/packages/icon/index.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
-export interface ShortPasswordProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface ShortPasswordProps extends IComponent {
   title: string
   desc: string
   tips: string
@@ -29,7 +31,9 @@ export interface ShortPasswordProps {
   onTips: () => void
   onComplete: (value: string | number) => void
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   title: '',
   desc: '',
   tips: '',
@@ -176,7 +180,13 @@ export const ShortPassword: FunctionComponent<
             <div className={b('message__error')}>{errorMsg}</div>
             {tips || locale.shortpassword.tips ? (
               <div className={b('message__forget')}>
-                <Icon className="icon" size="11px" name="tips" />
+                <Icon
+                  classPrefix={props.iconClassPrefix}
+                  fontClassName={props.iconFontClassName}
+                  className="icon"
+                  size="11px"
+                  name="tips"
+                />
                 <div onClick={onTips}>{tips || locale.shortpassword.tips}</div>
               </div>
             ) : null}

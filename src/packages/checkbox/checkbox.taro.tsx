@@ -4,7 +4,9 @@ import CheckboxGroup from '@/packages/checkboxgroup/index.taro'
 
 import bem from '@/utils/bem'
 
-export interface CheckboxProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface CheckboxProps extends IComponent {
   checked: boolean
   disabled: boolean
   textPosition: 'left' | 'right'
@@ -20,6 +22,7 @@ export interface CheckboxProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   checked: false,
   disabled: false,
   textPosition: 'right',
@@ -82,11 +85,11 @@ export const Checkbox: FunctionComponent<
   const renderIcon = () => {
     return (
       <Icon
+        classPrefix={props.iconClassPrefix}
+        fontClassName={props.iconFontClassName}
         name={getIconName()}
         size={iconSize}
         className={color()}
-        classPrefix={iconClassPrefix}
-        fontClassName={iconFontClassName}
       />
     )
   }

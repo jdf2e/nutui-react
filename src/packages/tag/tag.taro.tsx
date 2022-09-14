@@ -6,7 +6,9 @@ import React, {
 } from 'react'
 import Icon from '@/packages/icon/index.taro'
 
-export interface TagProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface TagProps extends IComponent {
   type: TagType
   color: string
   textColor: string
@@ -21,7 +23,9 @@ export interface TagProps {
 }
 
 export type TagType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
+
 const defaultProps = {
+  ...ComponentDefaults,
   type: 'default',
   color: '',
   textColor: '',
@@ -106,6 +110,8 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
           >
             {children && <span className="text">{children}</span>}
             <Icon
+              classPrefix={props.iconClassPrefix}
+              fontClassName={props.iconFontClassName}
               className="_icon"
               name="close"
               size="12"

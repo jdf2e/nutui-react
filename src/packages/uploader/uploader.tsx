@@ -20,7 +20,9 @@ export type FileItemStatus =
   | 'error'
   | 'removed'
 
-export interface UploaderProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface UploaderProps extends IComponent {
   url: string
   maximum: string | number
   maximize: number
@@ -72,6 +74,7 @@ export interface UploaderProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   url: '',
   maximum: 1,
   uploadIcon: 'photograph',
@@ -434,6 +437,8 @@ const InternalUploader: ForwardRefRenderFunction<
                     item.status !== 'success' && (
                       <div className="nut-uploader__preview__progress">
                         <Icon
+                          classPrefix={props.iconClassPrefix}
+                          fontClassName={props.iconFontClassName}
                           color="#fff"
                           name={`${
                             item.status === 'error' ? 'failure' : 'loading'
@@ -448,6 +453,8 @@ const InternalUploader: ForwardRefRenderFunction<
 
                   {isDeletable && (
                     <Icon
+                      classPrefix={props.iconClassPrefix}
+                      fontClassName={props.iconFontClassName}
                       color="rgba(0,0,0,0.6)"
                       className="close"
                       name="failure"
@@ -481,7 +488,12 @@ const InternalUploader: ForwardRefRenderFunction<
                             onClick={() => handleItemClick(item)}
                             className="nut-uploader__preview-img__file__name"
                           >
-                            <Icon color="#808080" name="link" />
+                            <Icon
+                              classPrefix={props.iconClassPrefix}
+                              fontClassName={props.iconFontClassName}
+                              color="#808080"
+                              name="link"
+                            />
                             &nbsp;
                             {item.name}
                           </div>
@@ -499,10 +511,16 @@ const InternalUploader: ForwardRefRenderFunction<
                     className={`nut-uploader__preview-img__file__name ${item.status}`}
                     onClick={() => handleItemClick(item)}
                   >
-                    <Icon name="link" />
+                    <Icon
+                      classPrefix={props.iconClassPrefix}
+                      fontClassName={props.iconFontClassName}
+                      name="link"
+                    />
                     &nbsp;{item.name}
                   </div>
                   <Icon
+                    classPrefix={props.iconClassPrefix}
+                    fontClassName={props.iconFontClassName}
                     color="#808080"
                     className="nut-uploader__preview-img__file__del"
                     name="del"
@@ -517,7 +535,13 @@ const InternalUploader: ForwardRefRenderFunction<
 
       {maximum > fileList.length && listType === 'picture' && !children && (
         <div className={`nut-uploader__upload ${listType}`}>
-          <Icon size={uploadIconSize} color="#808080" name={uploadIcon} />
+          <Icon
+            classPrefix={props.iconClassPrefix}
+            fontClassName={props.iconFontClassName}
+            size={uploadIconSize}
+            color="#808080"
+            name={uploadIcon}
+          />
           {capture ? (
             <input
               className="nut-uploader__input"

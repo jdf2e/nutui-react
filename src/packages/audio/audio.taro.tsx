@@ -12,7 +12,9 @@ import bem from '@/utils/bem'
 import Button from '@/packages/button/index.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
-export interface AudioProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface AudioProps extends IComponent {
   className: string
   style: CSSProperties
   url: string
@@ -31,6 +33,7 @@ export interface AudioProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   className: '',
   url: '',
   style: {},
@@ -130,9 +133,18 @@ export const Audio: FunctionComponent<
             onClick={handleStatusChange}
           >
             {playing ? (
-              <Icon name="service" className="nut-icon-loading" />
+              <Icon
+                classPrefix={props.iconClassPrefix}
+                fontClassName={props.iconFontClassName}
+                name="service"
+                className="nut-icon-loading"
+              />
             ) : (
-              <Icon name="service" />
+              <Icon
+                classPrefix={props.iconClassPrefix}
+                fontClassName={props.iconFontClassName}
+                name="service"
+              />
             )}
           </div>
         </div>
