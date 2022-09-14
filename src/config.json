@@ -521,7 +521,7 @@
           "desc": "用于将本地的图片或文件上传至服务器。",
           "sort": 1,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         },
         {
@@ -614,7 +614,7 @@
           "desc": "列表滚动到底部自动加载更多数据。",
           "sort": 5,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         },
         {
@@ -685,7 +685,7 @@
           "desc": "展示操作或任务的当前进度。",
           "sort": 7,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         },
         {
@@ -962,7 +962,7 @@
           "desc": "用于话语和词组的轮播展示，适用于视频中或其他类似需求中。",
           "sort": 2,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         },
         {

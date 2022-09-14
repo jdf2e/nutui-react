@@ -132,29 +132,6 @@ const InfiniteloadingDemo = () => {
           </ul>
         </Cell>
 
-        <h2>{translated.eb4236fe}</h2>
-        <Cell>
-          <ul className="infiniteUl" id="refreshScroll">
-            <Infiniteloading
-              pullIcon="JD"
-              containerId="refreshScroll"
-              useWindow={false}
-              isOpenRefresh
-              hasMore={refreshHasMore}
-              loadMore={refreshLoadMore}
-              refresh={refresh}
-            >
-              {refreshList.map((item, index) => {
-                return (
-                  <li className="infiniteLi" key={index}>
-                    {item}
-                  </li>
-                )
-              })}
-            </Infiniteloading>
-          </ul>
-        </Cell>
-
         <h2>{translated['9ed40460']}</h2>
         <Cell>
           <ul className="infiniteUl" id="customScroll">
