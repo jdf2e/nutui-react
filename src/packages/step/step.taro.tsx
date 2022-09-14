@@ -2,7 +2,7 @@ import React, { FunctionComponent, useContext } from 'react'
 import classNames from 'classnames'
 import { DataContext } from '@/packages/steps/UserContext'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 
 import { IComponent, ComponentDefaults } from '@/utils/typings'
 

@@ -10,7 +10,9 @@ export interface OptionItem {
   value: string | number
 }
 
-export interface MenuItemProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface MenuItemProps extends IComponent {
   className: string
   style: React.CSSProperties
   title: React.ReactNode
@@ -29,6 +31,7 @@ export interface MenuItemProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   className: '',
   style: {},
   columns: 1,
@@ -176,10 +179,10 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
                 >
                   {item.value === _value ? (
                     <Icon
+                      classPrefix={props.iconClassPrefix}
+                      fontClassName={props.iconFontClassName}
                       className={getIconCName(item.value, value)}
                       name={optionsIcon}
-                      classPrefix={iconClassPrefix}
-                      fontClassName={fontClassName}
                       color={activeColor}
                     />
                   ) : null}
