@@ -3,7 +3,9 @@ import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 import Icon from '@/packages/icon/index.taro'
 
 declare const window: any
-export interface BackTopProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface BackTopProps extends IComponent {
   className?: string
   bottom: number
   right: number
@@ -16,7 +18,9 @@ export interface BackTopProps {
   style?: React.CSSProperties
   onClick?: (event: MouseEvent) => void
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   bottom: 20,
   right: 10,
   elId: 'body',
@@ -143,7 +147,15 @@ export const BackTop: FunctionComponent<
         goTop(e)
       }}
     >
-      {children || <Icon size="19px" className="nut-backtop-main" name="top" />}
+      {children || (
+        <Icon
+          classPrefix={props.iconClassPrefix}
+          fontClassName={props.iconFontClassName}
+          size="19px"
+          className="nut-backtop-main"
+          name="top"
+        />
+      )}
     </div>
   )
 }

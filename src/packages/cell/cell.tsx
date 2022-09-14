@@ -3,7 +3,9 @@ import { useHistory } from 'react-router-dom'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
-export interface CellProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface CellProps extends IComponent {
   title: ReactNode
   subTitle: ReactNode
   desc: string
@@ -21,7 +23,9 @@ export interface CellProps {
   linkSlot: ReactNode
   click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   title: null,
   subTitle: null,
   desc: '',
@@ -105,7 +109,14 @@ export const Cell: FunctionComponent<
           {icon || iconSlot ? (
             <div className={b('icon')}>
               {iconSlot ||
-                (icon ? <Icon name={icon} className="icon" /> : null)}
+                (icon ? (
+                  <Icon
+                    classPrefix={props.iconClassPrefix}
+                    fontClassName={props.iconFontClassName}
+                    name={icon}
+                    className="icon"
+                  />
+                ) : null)}
             </div>
           ) : null}
           {title || subTitle ? (
@@ -127,7 +138,12 @@ export const Cell: FunctionComponent<
             </div>
           ) : null}
           {!linkSlot && (isLink || to) ? (
-            <Icon name="right" className={b('link')} />
+            <Icon
+              classPrefix={props.iconClassPrefix}
+              fontClassName={props.iconFontClassName}
+              name="right"
+              className={b('link')}
+            />
           ) : (
             linkSlot
           )}

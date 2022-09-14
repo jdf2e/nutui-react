@@ -2,7 +2,9 @@ import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
 
 import Icon from '@/packages/icon/index.taro'
 
-export interface BadgeProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface BadgeProps extends IComponent {
   value: any
   dot: boolean
   max: number
@@ -15,7 +17,9 @@ export interface BadgeProps {
 }
 
 export type BadgeType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
+
 const defaultProps = {
+  ...ComponentDefaults,
   value: '',
   dot: false,
   max: 10000,
@@ -51,7 +55,14 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     <div className="nut-badge">
       {icons !== '' && (
         <div className="slot-icons">
-          <Icon className="_icon" name={icons} color="#ffffff" size="12" />
+          <Icon
+            classPrefix={props.iconClassPrefix}
+            fontClassName={props.iconFontClassName}
+            className="_icon"
+            name={icons}
+            color="#ffffff"
+            size="12"
+          />
         </div>
       )}
       <div>{children}</div>
