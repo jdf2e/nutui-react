@@ -1,3 +1,13 @@
+## v1.3.3
+`2022-09-14`
+* :sparkles: chore: 组件 icon 自定义以及优化typing 导出 (#283) @oasis-cloud
+* :sparkles: chore: sideEffects 优化 (#280) @oasis-cloud
+* :sparkles: feat: drag组件增加单元测试 (#277) @irisSong
+* :sparkles: feat: 适配jd小程序。 (#278) @xiaoyatong
+* :bug: fix: 修复 button 组件 loading 效果 (#284) @oasis-cloud
+* :bug: fix: countdown 组件 props 能力补全、demo 和文档国际化 (#279) @irisSong
+* :bug: fix : rate组件taro适配 (#276) @libin0824
+
 ## v1.3.2
 `2022-09-07`
 * :sparkles: feat: Popover 新增国际化 (#260) @yangxiaolu1993
