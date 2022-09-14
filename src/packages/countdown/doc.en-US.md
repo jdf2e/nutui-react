@@ -1,18 +1,18 @@
-#  CountDown组件
+#  CountDown
 
-### 介绍
+### Introduce
 
-用于实时展示倒计时数值，支持毫秒精度。
+Used to display the countdown value in real time, and precision supports milliseconds.
 
-### 安装
+### Install
 
 ```javascript
 import { CountDown } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## Demo
 
-### 基础用法
+### Basic Usage
 
 :::demo
 
@@ -22,7 +22,7 @@ import { Cell, CountDown } from '@nutui/nutui-react';
 
 const App = () => {
   const stateRef = useRef({
-    endTime: Date.now() + 50 * 1000,
+    endTime: Date.now() + 60 * 1000,
   })
   const onEnd = () => {
     console.log('countdown: ended.')
@@ -37,8 +37,7 @@ export default App;
 ```
 
 :::
-
-### 显示天
+### Custom format
 
 :::demo
 
@@ -48,11 +47,11 @@ import { Cell, CountDown } from '@nutui/nutui-react';
 
 const App = () => {
   const stateRef = useRef({
-    endTime: Date.now() + 50 * 1000,
+    endTime: Date.now() + 60 * 1000,
   })
   return (
      <Cell>
-        <CountDown endTime={stateRef.current.endTime} showDays />
+        <CountDown endTime={stateRef.current.endTime} format="DD Day HH : mm : ss" />
     </Cell>
   );
 };
@@ -61,7 +60,7 @@ export default App;
 
 :::
 
-### 以服务端的时间为准
+### Millisecond
 
 :::demo
 
@@ -71,8 +70,33 @@ import { Cell, CountDown } from '@nutui/nutui-react';
 
 const App = () => {
   const stateRef = useRef({
-    serverTime: Date.now() - 30 * 1000,
-    endTime: Date.now() + 50 * 1000,
+    endTime: Date.now() + 60 * 1000,
+  })
+  return (
+     <Cell>
+        <CountDown endTime={stateRef.current.endTime} millisecond format="HH:mm:ss:SS"
+        />
+    </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
+
+### Server Time Prevails
+
+:::demo
+
+```tsx
+import  React, {useRef }from "react";
+import { Cell, CountDown } from '@nutui/nutui-react';
+
+const App = () => {
+  const stateRef = useRef({
+    serverTime: Date.now() - 20 * 1000,
+    endTime: Date.now() + 60 * 1000,
   })
   return (
     <Cell>
@@ -85,30 +109,7 @@ export default App;
 
 :::
 
-### 显示为天时分秒
-
-:::demo
-
-```tsx
-import  React, {useRef }from "react";
-import { Cell, CountDown } from '@nutui/nutui-react';
-
-const App = () => {
-  const stateRef = useRef({
-    endTime: Date.now() + 50 * 1000,
-  })
-  return (
-     <Cell>
-        <CountDown showDays showPlainText endTime={stateRef.current.endTime} />
-    </Cell>
-  );
-};
-export default App;
-```
-
-:::
-
-### 异步更新结束时间
+### End-Time of Asyn Update
 
 :::demo
 
@@ -119,8 +120,8 @@ import { Cell, CountDown } from '@nutui/nutui-react';
 const App = () => {
   const [asyncEnd, setAsyncEnd] = useState(0)
   const stateRef = useRef({
-    timer: null,
-    endTime: Date.now() + 50 * 1000,
+    timer: -1,
+    endTime: Date.now() + 60 * 1000,
   })
   useEffect(() => {
     stateRef.current.timer = setTimeout(() => {
@@ -132,7 +133,7 @@ const App = () => {
   }, [])
   return (
     <Cell>
-        <CountDown showPlainText endTime={asyncEnd} />
+        <CountDown  endTime={asyncEnd} />
     </Cell>
   );
 };
@@ -141,17 +142,17 @@ export default App;
 
 :::
 
-### 控制开始和暂停的倒计时
+### Controls start and pause countdowns
 
 :::demo
 
 ```tsx
 import React, {  useRef, useState } from 'react'
-import { Cell, CountDown } from '@nutui/nutui-react';
+import { Cell, CountDown, Button } from '@nutui/nutui-react';
 
 const App = () => {
   const stateRef = useRef({
-    endTime: Date.now() + 50 * 1000,
+    endTime: Date.now() + 60 * 1000,
   })
   const [paused, setPaused] = useState(false)
   const toggle = () => {
@@ -167,18 +168,18 @@ const App = () => {
   return (
     <Cell>
         <CountDown
-        endTime={stateRef.current.endTime}
-        paused={paused}
-        onPaused={onpaused}
-        onRestart={onrestart}
-        />
-        <div style={{ position: 'absolute', right: '10px', top: '9px' }}>
-        <div onClick={() => toggle()}>
-            <Button type="primary" size="small">
-            {paused ? 'start' : 'stop'}
-            </Button>
-        </div>
-        </div>
+            endTime={stateRef.current.endTime}
+            paused={paused}
+            onPaused={onpaused}
+            onRestart={onrestart}
+          />
+          <div style={{ position: 'absolute', right: '10px', top: '9px' }}>
+            <div onClick={() => toggle()}>
+              <Button type="primary" size="small">
+                {paused ? 'start' : 'stop'}
+              </Button>
+            </div>
+          </div>
     </Cell>
   );
 };
@@ -187,7 +188,7 @@ export default App;
 
 :::
 
-### 自定义展示
+### Custom Presentation
 
 :::demo
 
@@ -202,7 +203,7 @@ const [resetTime, setResetTime] = useState({
     s: '00',
 })
 const stateRef = useRef({
-    endTime: Date.now() + 50 * 1000,
+    endTime: Date.now() + 60 * 1000,
 })
 const partItemStyle = {
     flexShrink: 0,
@@ -258,27 +259,108 @@ export default App;
 
 :::
 
+###  Manual Control
+
+Paused and restarted the countdown with the paused attribute
+
+:::demo
+
+```tsx
+import React, {  useRef } from 'react'
+import { Cell, CountDown, Grid, GridItem, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  
+  const countDownRef = useRef<countdownRefState>(null)
+  const start = () => {
+    console.log(countDownRef.current)
+    countDownRef.current && countDownRef.current.start()
+  }
+
+  const pause = () => {
+    countDownRef.current && countDownRef.current.pause()
+  }
+
+  const reset = () => {
+    countDownRef.current && countDownRef.current.reset()
+  }
+  return (
+    <>
+    <Cell>
+          <CountDown
+            format="ss:SS"
+            autoStart={false}
+            time={20000}
+            ref={countDownRef}
+          />
+        </Cell>
+        <Grid columnNum="3">
+          <GridItem>
+            <Button type="primary" onClick={start}>
+              start
+            </Button>
+          </GridItem>
+          <GridItem>
+            <Button type="primary" onClick={pause}>
+              paused
+            </Button>
+          </GridItem>
+          <GridItem>
+            <Button type="primary" onClick={reset}>
+              reset
+            </Button>
+          </GridItem>
+        </Grid>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
 
 ## API
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值
+| Attribute | Description | Type | Default
 | ----- | ----- | ----- | -----
-| startTime | 开始时间 | String, Number | Date.now()
-| endTime | 结束时间 | String, Number | Date.now()
-| showDays | 是否显示天 | Boolean | false
-| showPlainText | 显示为纯文本 | Boolean | false
-| paused | 是否暂停 | Boolean | false
+| startTime | Start Time |  Number | Date.now()
+| endTime | End Time | Number | Date.now()
+| paused | Paused | Boolean | false
+| format `v1.3.3` |  Format Time | String | HH:mm:ss
+| millisecond `v1.3.3` |  Whether to enable millisecond render | Boolean | false
+| autoStart `v1.3.3` |  Whether to auto start count down | Boolean | true
+| time `v1.3.3` | Total time, unit milliseconds | Number | 0
+| showDays `v1.3.3(Abandon)` | Show Text Day | Boolean | false
+| showPlainText `v1.3.3(Abandon)` | Show Text | Boolean | false
 
+### Format
+
+| Name | Description | 
+| ----- | ----- | 
+| DD | Day | 
+| HH | Hour | 
+| mm | Minute | 
+| ss | Second | 
+| S | Millisecond, 1-digit | 
+| SS | Millisecond, 2-digits | 
+| SSS | Millisecond, 3-digits | 
 
 ### Event
 
-| 字段 | 说明 | 回调参数
+| Event | Description | Arguments
 | ----- | ----- | ----- 
-| onEnd | 倒计时结束时回调函数 | 无
-| onPaused | 暂停倒计时回调函数 | 剩余时间戳
-| onRestart | 重新开始倒计时回调函数 | 剩余时间戳
-| onUpdate | 自定义展示内容时，实时更新倒计时数据回调函数 | 倒计时实时数据
+| onEnd | Emitted when count down end | Residual Timestamp
+| onPaused | Emitted when count down paused | Residual Timestamp
+| onRestart | Emitted when count down restart | Residual Timestamp
+| onUpdate | Real-time update of the countdown data callback function | Real-time countdown data
 
+### Ref
 
+| Name | Description |
+| ----- | ----- | 
+| start | Count Down Start | 
+| pause | Count Down Pause | 
+| reset | Count Down Reset | 
