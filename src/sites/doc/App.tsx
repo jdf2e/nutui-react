@@ -10,7 +10,7 @@ import './App.scss'
 import { nav } from '@/config.json'
 import useLocale from '../assets/locale/uselocale'
 import remarkGfm from 'remark-gfm'
-import { routers, raws, scssRaws } from './docs'
+import { raws, scssRaws } from './docs'
 import { visit } from 'unist-util-visit'
 import ReactMarkdown from 'react-markdown'
 import Nav from '@/sites/doc/components/nav'
@@ -20,6 +20,7 @@ import Demoblock from '@/sites/doc/components/demoblock'
 import DemoPreview from '@/sites/doc/components/demo-preview'
 import Issue from '@/sites/doc/components/issue'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import routers from './router'
 
 function myRemarkPlugin() {
   return (tree: any) => {
@@ -124,13 +125,16 @@ const App = () => {
           <div className="doc-content-document isComponent">
             <Switch>
               {routers.map((ru, k) => {
+                // console.log(ru)
                 return (
                   <Route
                     key={Math.random()}
-                    path={`${lang ? `/${lang}` : ''}/component/${ru}`}
+                    path={ru.path}
+                    // path={`${lang ? `/${lang}` : ''}/component/${ru}`}
                   >
                     <ReactMarkdown
-                      children={getMarkdownByLang(ru)}
+                      // children={getMarkdownByLang(ru)}
+                      children={ru.component}
                       remarkPlugins={[
                         remarkGfm,
                         remarkDirective,
@@ -142,7 +146,8 @@ const App = () => {
                           return !inline && match ? (
                             <Demoblock
                               text={String(children).replace(/\n$/, '')}
-                              scss={(scssRaws as any)[ru + 'Scss']}
+                              // scss={(scssRaws as any)[ru + 'Scss']}
+                              scss={(scssRaws as any)[ru.name + 'Scss']}
                             >
                               <SyntaxHighlighter
                                 children={String(children).replace(/\n$/, '')}
@@ -162,13 +167,6 @@ const App = () => {
                   </Route>
                 )
               })}
-              {/*<Route path="*">*/}
-              {/*  <Redirect*/}
-              {/*    to={{*/}
-              {/*      pathname: '/zh-CN111',*/}
-              {/*    }}*/}
-              {/*  />*/}
-              {/*</Route>*/}
             </Switch>
           </div>
           <div className="markdown-body">
