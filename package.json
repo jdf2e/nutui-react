@@ -63,6 +63,7 @@
     "generate:file:taro:pages": "node scripts/taro/generate-taro-pages.js",
     "dev:taro:weapp": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:weapp",
     "dev:taro:jd": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:jd",
+    "dev:taro:h5": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:h5",
     "replace:taro:types": "node scripts/taro/replace-taro-types-alias.js",
     "build:taro:types": "tsc && npm run replace:taro:types",
     "build:taro:es": "npx rollup -c rollup.config.taro.es.js",
