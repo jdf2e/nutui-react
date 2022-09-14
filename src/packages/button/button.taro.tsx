@@ -7,7 +7,9 @@ import React, {
 } from 'react'
 import Icon from '@/packages/icon/index.taro'
 
-export interface ButtonProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface ButtonProps extends IComponent {
   className: string
   color: string
   shape: ButtonShape
@@ -32,7 +34,9 @@ export type ButtonType =
   | 'danger'
 export type ButtonSize = 'large' | 'normal' | 'small'
 export type ButtonShape = 'square' | 'round'
+
 const defaultProps = {
+  ...ComponentDefaults,
   className: '',
   color: '',
   shape: 'round',
@@ -135,8 +139,22 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
       onClick={(e) => handleClick(e)}
     >
       <div className="nut-button__warp" style={getStyle()}>
-        {loading && <Icon name="loading" />}
-        {!loading && icon ? <Icon name={icon} /> : ''}
+        {loading && (
+          <Icon
+            classPrefix={props.iconClassPrefix}
+            fontClassName={props.iconFontClassName}
+            name="loading"
+          />
+        )}
+        {!loading && icon ? (
+          <Icon
+            classPrefix={props.iconClassPrefix}
+            fontClassName={props.iconFontClassName}
+            name={icon}
+          />
+        ) : (
+          ''
+        )}
         {children}
       </div>
     </div>

@@ -4,7 +4,9 @@ import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 import { useConfig } from '@/packages/configprovider'
 
-export interface InfiniteloadingProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface InfiniteloadingProps extends IComponent {
   hasMore: boolean
   threshold: number
   containerId: string
@@ -24,7 +26,9 @@ export interface InfiniteloadingProps {
 }
 
 declare let window: Window & { webkitRequestAnimationFrame: any }
+
 const defaultProps = {
+  ...ComponentDefaults,
   hasMore: true,
   threshold: 200,
   containerId: '',
@@ -249,7 +253,12 @@ export const Infiniteloading: FunctionComponent<
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="top-box">
-          <Icon className="top-img" name={pullIcon} />
+          <Icon
+            classPrefix={props.iconClassPrefix}
+            fontClassName={props.iconFontClassName}
+            className="top-img"
+            name={pullIcon}
+          />
           <span className="top-text">
             {pullTxt || locale.infiniteloading.pullRefreshText}
           </span>
@@ -259,7 +268,12 @@ export const Infiniteloading: FunctionComponent<
       <div className="nut-infinite-bottom">
         {isInfiniting ? (
           <div className="bottom-box">
-            <Icon className="bottom-img" name={loadIcon} />
+            <Icon
+              classPrefix={props.iconClassPrefix}
+              fontClassName={props.iconFontClassName}
+              className="bottom-img"
+              name={loadIcon}
+            />
             <div className="bottom-text">
               {loadTxt || locale.infiniteloading.loadText}
             </div>

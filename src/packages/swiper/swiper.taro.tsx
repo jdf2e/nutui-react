@@ -13,7 +13,7 @@ interface IStyle {
   height?: string
   transform?: string
 }
-interface SwiperProps {
+export interface SwiperProps {
   width: number | string
   height: number | string
   duration: number | string
