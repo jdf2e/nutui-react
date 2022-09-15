@@ -8,7 +8,7 @@
   box-sizing: border-box;
   background-color: #f7f8fa;
   .barrage-item {
-    width: 100px;
+    width: 120px;
     // max-width: 150px;
     display: block;
     position: absolute;
@@ -19,7 +19,12 @@
     text-align: center;
     white-space: pre;
     transform: translateX(100%);
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0)
+    );
+    box-sizing: border-box;
     &.move {
       will-change: transform;
       animation-name: moving;

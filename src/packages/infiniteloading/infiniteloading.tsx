@@ -156,6 +156,7 @@ export const Infiniteloading: FunctionComponent<
   }
 
   const touchMove = (event: any) => {
+    console.log('touchMove', event)
     distance.current = event.touches[0].pageY - y.current
     if (distance.current > 0 && isTouching.current) {
       event.preventDefault()

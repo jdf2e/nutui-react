@@ -523,7 +523,7 @@
           "desc": "用于将本地的图片或文件上传至服务器。",
           "sort": 1,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         },
         {
@@ -612,11 +612,12 @@
           "version": "0.1.0",
           "name": "Infiniteloading",
           "type": "component",
+          "tarodoc": true,
           "cName": "滚动加载",
           "desc": "列表滚动到底部自动加载更多数据。",
           "sort": 5,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         },
         {
@@ -687,7 +688,7 @@
           "desc": "展示操作或任务的当前进度。",
           "sort": 7,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         },
         {
@@ -902,6 +903,7 @@
           "name": "Video",
           "type": "component",
           "cName": "视频播放器",
+          "tarodoc": true,
           "desc": "原生video实现的视频播放器",
           "sort": 20,
           "show": true,
@@ -964,7 +966,7 @@
           "desc": "用于话语和词组的轮播展示，适用于视频中或其他类似需求中。",
           "sort": 2,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         },
         {
