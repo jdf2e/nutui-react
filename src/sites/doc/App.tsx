@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import {
   HashRouter,
   Switch,
   Route,
   Redirect,
   useLocation,
+  useHistory,
 } from 'react-router-dom'
 import './App.scss'
 import { nav } from '@/config.json'
@@ -70,6 +71,18 @@ const Title = () => {
 }
 
 const App = () => {
+  const memoTaroDocs = useMemo(() => {
+    const taroDocs = {} as any
+    nav.forEach((navItem) => {
+      return navItem.packages.forEach((pk: any) => {
+        if (pk.tarodoc) {
+          taroDocs[pk.name.toLowerCase()] = true
+        }
+      })
+    })
+    return taroDocs
+  }, [nav])
+
   const [lang] = useLocale()
 
   const getMarkdownByLang = (ru: string) => {
@@ -81,14 +94,12 @@ const App = () => {
       return raws[`${ru}${lang.replace('-', '')}`]
     }
   }
-  // useEffect(() => {}, [lang])
 
   const [fixed, setFixed] = useState(false)
   const [hidden, setHidden] = useState(false)
 
   const scrollTitle = () => {
     let top = document.documentElement.scrollTop
-    // console.log('state.hidden', state.hidden)
     if (top > 127) {
       setFixed(true)
       if (top < 142) {
@@ -99,6 +110,15 @@ const App = () => {
     } else {
       setFixed(false)
       setHidden(false)
+    }
+  }
+
+  const switchDoc = (name: string) => {
+    const href = window.location.href
+    if (name === 'react') {
+      window.location.href = href.replace('-taro', '')
+    } else {
+      window.location.href = href.replace('-taro', '') + '-taro'
     }
   }
 
@@ -125,15 +145,31 @@ const App = () => {
           <div className="doc-content-document isComponent">
             <Switch>
               {routers.map((ru, k) => {
-                // console.log(ru)
+                console.log(ru)
                 return (
-                  <Route
-                    key={Math.random()}
-                    path={ru.path}
-                    // path={`${lang ? `/${lang}` : ''}/component/${ru}`}
-                  >
+                  <Route key={Math.random()} path={ru.path}>
+                    {memoTaroDocs[ru.name] ? (
+                      <div className="doc-content-tabs ">
+                        <div
+                          className="tab-item cur"
+                          onClick={() => switchDoc('react')}
+                        >
+                          React
+                        </div>
+                        <div
+                          className="tab-item "
+                          onClick={() => switchDoc('taro')}
+                        >
+                          Taro
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="doc-content-tabs single">
+                        <div className="tab-item cur">React / Taro</div>
+                      </div>
+                    )}
+
                     <ReactMarkdown
-                      // children={getMarkdownByLang(ru)}
                       children={ru.component}
                       remarkPlugins={[
                         remarkGfm,
@@ -146,7 +182,6 @@ const App = () => {
                           return !inline && match ? (
                             <Demoblock
                               text={String(children).replace(/\n$/, '')}
-                              // scss={(scssRaws as any)[ru + 'Scss']}
                               scss={(scssRaws as any)[ru.name + 'Scss']}
                             >
                               <SyntaxHighlighter
