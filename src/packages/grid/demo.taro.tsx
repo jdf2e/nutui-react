@@ -1,10 +1,7 @@
 import React from 'react'
-import Avatar from '../avatar/index.taro'
-import { Grid } from './grid.taro'
-import GridItem from '../griditem/index.taro'
-import { useTranslate } from '../../sites/assets/locale'
-import Toast from '../toast'
-
+import { useTranslate } from '@/sites/assets/locale/taro'
+import { Avatar, Grid, GridItem, Toast } from '@/packages/nutui.react.taro'
+import Taro from '@tarojs/taro'
 interface T {
   basic: string
   text: string
@@ -54,7 +51,8 @@ const GridDemo = () => {
   })
 
   const handleClick = () => {
-    Toast.text('点击了第几个')
+    // Toast.text('点击了第几个')
+    Taro.showToast({ title: '点击了第几个' })
   }
   return (
     <>
