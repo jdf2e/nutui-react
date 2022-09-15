@@ -10,7 +10,7 @@ const config = {
     375: 2 / 1,
   },
   sourceRoot: 'src',
-  outputRoot: 'dist',
+  outputRoot: `dist/${process.env.TARO_ENV}`,
   plugins: ['@tarojs/plugin-html'],
   alias: {
     react: path.resolve(__dirname, '../../../../node_modules/react'),
@@ -65,6 +65,8 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]',
         },
       },
+      // 自定义 Webpack 配置
+      devServer: {},
     },
   },
 }
