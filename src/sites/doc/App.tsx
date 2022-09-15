@@ -45,7 +45,7 @@ const Title = () => {
 
   const getComponentName = () => {
     const s = window.location.hash.split('/')
-    const cname = s[s.length - 1].toLowerCase()
+    const cname = s[s.length - 1].toLowerCase().replace('-taro', '')
     const component: any = {}
     nav.forEach((item: any) => {
       item.packages.forEach((sItem: any) => {
@@ -120,11 +120,14 @@ const App = () => {
     } else {
       window.location.href = href.replace('-taro', '') + '-taro'
     }
+    setDocName(name)
   }
 
   useEffect(() => {
     document.addEventListener('scroll', scrollTitle)
   }, [])
+
+  const [docname, setDocName] = useState('react')
 
   return (
     <div>
@@ -145,19 +148,22 @@ const App = () => {
           <div className="doc-content-document isComponent">
             <Switch>
               {routers.map((ru, k) => {
-                console.log(ru)
                 return (
                   <Route key={Math.random()} path={ru.path}>
-                    {memoTaroDocs[ru.name] ? (
+                    {memoTaroDocs[ru.name.replace('-taro', '')] ? (
                       <div className="doc-content-tabs ">
                         <div
-                          className="tab-item cur"
+                          className={`tab-item ${
+                            docname === 'react' ? 'cur' : ''
+                          }`}
                           onClick={() => switchDoc('react')}
                         >
                           React
                         </div>
                         <div
-                          className="tab-item "
+                          className={`tab-item ${
+                            docname === 'taro' ? 'cur' : ''
+                          }`}
                           onClick={() => switchDoc('taro')}
                         >
                           Taro
