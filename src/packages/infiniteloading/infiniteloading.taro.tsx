@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
+import { ScrollView } from '@tarojs/components'
+import Taro from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 import { IComponent, ComponentDefaults } from '@/utils/typings'
@@ -9,6 +11,7 @@ import { IComponent, ComponentDefaults } from '@/utils/typings'
 export interface InfiniteloadingProps extends IComponent {
   hasMore: boolean
   threshold: number
+  upperThreshold: number
   containerId: string
   useWindow: boolean
   useCapture: boolean
@@ -31,6 +34,7 @@ const defaultProps = {
   ...ComponentDefaults,
   hasMore: true,
   threshold: 200,
+  upperThreshold: 40,
   containerId: '',
   useWindow: true,
   useCapture: false,
@@ -52,6 +56,7 @@ export const Infiniteloading: FunctionComponent<
     children,
     hasMore,
     threshold,
+    upperThreshold,
     containerId,
     useWindow,
     useCapture,
@@ -65,7 +70,6 @@ export const Infiniteloading: FunctionComponent<
     refresh,
     loadMore,
     scrollChange,
-    ...restProps
   } = {
     ...defaultProps,
     ...props,
@@ -74,8 +78,10 @@ export const Infiniteloading: FunctionComponent<
   const scroller = useRef<HTMLDivElement>(null)
   const refreshTop = useRef<HTMLDivElement>(null)
   const scrollEl = useRef<Window | HTMLElement | (Node & ParentNode)>(window)
+  const scrollHeight = useRef(0)
+  const scrollTop = useRef(0)
+  const direction = useRef('down')
   const isTouching = useRef(false)
-  const beforeScrollTop = useRef(0)
   const refreshMaxH = useRef(0)
   const y = useRef(0)
   const distance = useRef(0)
@@ -84,27 +90,21 @@ export const Infiniteloading: FunctionComponent<
   const classes = classNames(className, b())
 
   useEffect(() => {
-    const parentElement = getParentElement(
-      scroller.current as HTMLDivElement
-    ) as Node & ParentNode
-    scrollEl.current = useWindow ? window : parentElement
-    scrollEl.current.addEventListener('scroll', handleScroll, useCapture)
-
-    return () => {
-      scrollEl.current.removeEventListener('scroll', handleScroll, useCapture)
-    }
+    refreshMaxH.current = upperThreshold
+    setTimeout(() => {
+      getScrollHeight()
+    }, 200)
   }, [hasMore, isInfiniting])
 
-  useEffect(() => {
-    const element = scroller.current as HTMLDivElement
-    element.addEventListener('touchmove', touchMove, { passive: false })
-
-    return () => {
-      element.removeEventListener('touchmove', touchMove, {
-        passive: false,
-      } as EventListenerOptions)
-    }
-  }, [])
+  /** 获取需要滚动的距离 */
+  const getScrollHeight = () => {
+    const parentElement = getParentElement('scroller')
+    parentElement
+      .boundingClientRect((rect) => {
+        scrollHeight.current = rect.height
+      })
+      .exec()
+  }
 
   const getStyle = () => {
     return {
@@ -115,20 +115,10 @@ export const Infiniteloading: FunctionComponent<
     }
   }
 
-  const getParentElement = (el: HTMLElement) => {
-    return containerId
-      ? document.querySelector(`#${containerId}`)
-      : el && el.parentNode
-  }
-
-  const handleScroll = () => {
-    requestAniFrame()(() => {
-      if (!isScrollAtBottom() || !hasMore || isInfiniting) {
-        return false
-      }
-      setIsInfiniting(true)
-      loadMore && loadMore(infiniteDone)
-    })
+  const getParentElement = (el: string) => {
+    return Taro.createSelectorQuery().select(
+      !!containerId ? `#${containerId} #${el}` : `#${el}`
+    )
   }
 
   const infiniteDone = () => {
@@ -143,112 +133,43 @@ export const Infiniteloading: FunctionComponent<
     isTouching.current = false
   }
 
-  const touchStart = (event: React.TouchEvent<HTMLDivElement>) => {
-    if (beforeScrollTop.current === 0 && !isTouching.current && isOpenRefresh) {
-      y.current = event.touches[0].pageY
-      isTouching.current = true
-      const childHeight = (
-        (refreshTop.current as HTMLDivElement).firstElementChild as HTMLElement
-      ).offsetHeight
-      refreshMaxH.current = Math.floor(childHeight * 1 + 10)
+  const scrollAction = (e: any) => {
+    if (e.detail.scrollTop <= 0) {
+      // 滚动到最顶部
+      e.detail.scrollTop = 0
+    } else if (e.detail.scrollTop >= scrollHeight.current) {
+      // 滚动到最底部
+      e.detail.scrollTop = scrollHeight.current
     }
-  }
-
-  const touchMove = (event: any) => {
-    distance.current = event.touches[0].pageY - y.current
-    if (distance.current > 0 && isTouching.current) {
-      event.preventDefault()
-      if (distance.current >= refreshMaxH.current) {
-        distance.current = refreshMaxH.current
-        ;(
-          refreshTop.current as HTMLDivElement
-        ).style.height = `${distance.current}px`
-      } else {
-        ;(
-          refreshTop.current as HTMLDivElement
-        ).style.height = `${distance.current}px`
-      }
+    if (
+      e.detail.scrollTop > scrollTop.current ||
+      e.detail.scrollTop >= scrollHeight.current
+    ) {
+      direction.current = 'down'
     } else {
-      distance.current = 0
-      ;(
-        refreshTop.current as HTMLDivElement
-      ).style.height = `${distance.current}px`
-      isTouching.current = false
+      direction.current = 'up'
     }
+    scrollTop.current = e.detail.scrollTop
+    scrollChange && scrollChange(e.detail.scrollTop)
   }
 
-  const touchEnd = () => {
-    if (distance.current < refreshMaxH.current) {
-      distance.current = 0
-      ;(
-        refreshTop.current as HTMLDivElement
-      ).style.height = `${distance.current}px`
+  const lower = () => {
+    if (direction.current == 'up' || !hasMore || isInfiniting) {
+      return false
     } else {
-      refresh && refresh(refreshDone)
+      setIsInfiniting(true)
+      loadMore && loadMore(infiniteDone)
     }
-  }
-
-  const requestAniFrame = () => {
-    return (
-      window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      function (callback) {
-        window.setTimeout(callback, 1000 / 60)
-      }
-    )
-  }
-
-  const getWindowScrollTop = () => {
-    return window.pageYOffset !== undefined
-      ? window.pageYOffset
-      : (document.documentElement || document.body.parentNode || document.body)
-          .scrollTop
-  }
-
-  const calculateTopPosition = (el: HTMLElement): number => {
-    return !el
-      ? 0
-      : el.offsetTop + calculateTopPosition(el.offsetParent as HTMLElement)
-  }
-
-  const isScrollAtBottom = () => {
-    let offsetDistance = 0
-    let resScrollTop = 0
-    let direction = 'down'
-    const windowScrollTop = getWindowScrollTop()
-    if (useWindow) {
-      if (scroller.current) {
-        offsetDistance =
-          calculateTopPosition(scroller.current) +
-          scroller.current.offsetHeight -
-          windowScrollTop -
-          window.innerHeight
-      }
-      resScrollTop = windowScrollTop
-    } else {
-      const { scrollHeight, clientHeight, scrollTop } =
-        scrollEl.current as HTMLElement
-      offsetDistance = scrollHeight - clientHeight - scrollTop
-      resScrollTop = scrollTop
-    }
-    if (beforeScrollTop.current > resScrollTop) {
-      direction = 'up'
-    } else {
-      direction = 'down'
-    }
-    beforeScrollTop.current = resScrollTop
-    scrollChange && scrollChange(resScrollTop)
-    return offsetDistance <= threshold && direction == 'down'
   }
 
   return (
-    <div
+    <ScrollView
       className={classes}
-      ref={scroller}
-      onTouchStart={touchStart}
-      onTouchMove={touchMove}
-      onTouchEnd={touchEnd}
-      {...restProps}
+      scrollY={true}
+      id="scroller"
+      style={{ height: '100%' }}
+      onScroll={scrollAction}
+      onScrollToLower={lower}
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="top-box">
@@ -285,7 +206,7 @@ export const Infiniteloading: FunctionComponent<
           )
         )}
       </div>
-    </div>
+    </ScrollView>
   )
 }
 

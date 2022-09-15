@@ -11,7 +11,7 @@ const subPackages = [
   },
   {
     root: 'layout',
-    pages: ['pages/layout/index', 'pages/divider/index'],
+    pages: ['pages/layout/index', 'pages/divider/index', 'pages/grid/index'],
   },
   {
     root: 'nav',
@@ -39,6 +39,7 @@ const subPackages = [
       'pages/picker/index',
       'pages/shortpassword/index',
       'pages/textarea/index',
+      'pages/uploader/index',
       'pages/searchbar/index',
       'pages/numberkeyboard/index',
     ],
@@ -47,6 +48,7 @@ const subPackages = [
     root: 'feedback',
     pages: [
       'pages/actionsheet/index',
+      'pages/infiniteloading/index',
       'pages/switch/index',
       'pages/pulltorefresh/index',
     ],
@@ -54,6 +56,7 @@ const subPackages = [
   {
     root: 'exhibition',
     pages: [
+      'pages/circleprogress/index',
       'pages/noticebar/index',
       'pages/steps/index',
       'pages/swiper/index',
@@ -71,7 +74,11 @@ const subPackages = [
   },
   {
     root: 'business',
-    pages: ['pages/card/index', 'pages/timeselect/index'],
+    pages: [
+      'pages/barrage/index',
+      'pages/card/index',
+      'pages/timeselect/index',
+    ],
   },
 ]
 

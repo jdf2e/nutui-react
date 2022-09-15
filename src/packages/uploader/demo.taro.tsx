@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Uploader } from '@/packages/nutui.react.taro'
+import Taro from '@tarojs/taro'
 
 export type FileItemStatus =
   | 'ready'
@@ -183,7 +184,7 @@ const UploaderDemo = () => {
       canvas.toBlob((blob) => resolve(blob), type, quality)
     )
   }
-  const onOversize = (files: File[]) => {
+  const onOversize = (files: Taro.chooseImage.ImageFile[]) => {
     console.log(translated['25e04d44'], files)
   }
   const onStart = () => {
