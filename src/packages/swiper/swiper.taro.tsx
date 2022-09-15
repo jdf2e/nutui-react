@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef, TouchEvent, useMemo } from 'react'
 import classNames from 'classnames'
+import { useReady, createSelectorQuery, nextTick } from '@tarojs/taro'
 import { DataContext } from './UserContext'
 import bem from '@/utils/bem'
-import Taro, { useReady } from '@tarojs/taro'
+
 export type SwiperRef = {
   to: (index: number) => void
   next: () => void
@@ -410,7 +411,7 @@ export const Swiper = React.forwardRef<
 
   const queryRect = (element: any): Promise<any> => {
     return new Promise((resolve) => {
-      const query = Taro.createSelectorQuery()
+      const query = createSelectorQuery()
 
       query.select(`#${(element as any).id}`) &&
         query.select(`#${(element as any).id}`).boundingClientRect()
@@ -465,7 +466,7 @@ export const Swiper = React.forwardRef<
     }
   }, [])
   useReady(() => {
-    Taro.nextTick(() => {
+    nextTick(() => {
       init()
     })
   })

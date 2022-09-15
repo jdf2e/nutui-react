@@ -150,6 +150,8 @@
     "react-test-renderer": "^18.2.0",
     "remark-directive": "^2.0.1",
     "remark-gfm": "^3.0.1",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-dts": "^4.2.2",
     "sass": "^1.45.0",
     "shelljs": "^0.8.4",
     "ts-jest": "^27.1.4",
