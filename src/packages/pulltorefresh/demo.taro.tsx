@@ -1,13 +1,24 @@
-import React from 'react'
-import { useTranslate } from '@/sites/assets/locale/taro'
-import { PullToRefresh } from '@/packages/nutui.react.taro'
+import React, { useState } from 'react'
+import { PullToRefresh, Cell, Toast } from '@/packages/nutui.react.taro'
 
 const PullToRefreshDemo = () => {
+  const [list] = useState([1, 2, 3, 4, 5, 6, 7])
   return (
     <>
       <div className="demo">
         <h2>基础用法</h2>
-        <PullToRefresh></PullToRefresh>
+        <PullToRefresh
+          onRefresh={() =>
+            new Promise((resolve) => {
+              Toast.text('😊')
+              resolve('done')
+            })
+          }
+        >
+          {list.map((item) => (
+            <Cell key={item}>{item}</Cell>
+          ))}
+        </PullToRefresh>
       </div>
     </>
   )

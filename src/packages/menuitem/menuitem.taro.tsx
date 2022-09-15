@@ -98,14 +98,12 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
     height: 0,
   })
   const getParentOffset = () => {
-    setTimeout(() => {
+    setTimeout(async () => {
       const p = parent.parent().current
-
-      const rect = p.getBoundingClientRect().then((rect: any) => {
-        setPosition({
-          height: rect.height,
-          top: rect.top,
-        })
+      const rect = await p.getBoundingClientRect()
+      setPosition({
+        height: rect.height,
+        top: rect.top,
       })
     })
   }
