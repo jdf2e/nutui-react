@@ -2,6 +2,7 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
+import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 class Title {
   title = ''
@@ -16,7 +17,6 @@ class Title {
   constructor() {}
 }
 export type TabsSize = 'large' | 'normal' | 'small'
-import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface TabsProps extends IComponent {
   className: string
@@ -73,8 +73,13 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
     onChange,
     className,
     autoHeight,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
-  } = { ...defaultProps, ...props }
+  } = {
+    ...defaultProps,
+    ...props,
+  }
 
   const [currentItem, setCurrentItem] = useState<Title>({ index: 0 } as Title)
   const titles = useRef<Title[]>([])
@@ -173,8 +178,8 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
                       style={tabsActiveStyle}
                     >
                       <Icon
-                        classPrefix={props.iconClassPrefix}
-                        fontClassName={props.iconFontClassName}
+                        classPrefix={iconClassPrefix}
+                        fontClassName={iconFontClassName}
                         color={color}
                         name="joy-smile"
                       />

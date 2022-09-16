@@ -14,6 +14,8 @@ import { formatNumber } from './util'
 import Icon from '@/packages/icon'
 import { useConfig } from '@/packages/configprovider'
 
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
 export type InputAlignType = 'left' | 'center' | 'right' // text-align
 export type InputFormatTrigger = 'onChange' | 'onBlur' // onChange: 在输入时执行格式化 ; onBlur: 在失焦时执行格式化
 export type InputType = HTMLInputTypeAttribute
@@ -25,8 +27,6 @@ export type InputRule = {
 }
 
 export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
-
-import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface InputProps extends IComponent {
   type: InputType
@@ -161,8 +161,13 @@ export const Input: FunctionComponent<
     clickLeftIcon,
     clickRightIcon,
     click,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
-  } = { ...defaultProps, ...props }
+  } = {
+    ...defaultProps,
+    ...props,
+  }
 
   locale.placeholder = placeholder || locale.placeholder
 
@@ -343,8 +348,8 @@ export const Input: FunctionComponent<
               }}
             >
               <Icon
-                classPrefix={props.iconClassPrefix}
-                fontClassName={props.iconFontClassName}
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
                 name={leftIcon}
                 size={leftIconSize}
               />
@@ -415,8 +420,8 @@ export const Input: FunctionComponent<
               )}
               {clearable && !readonly && active && inputValue.length > 0 ? (
                 <Icon
-                  classPrefix={props.iconClassPrefix}
-                  fontClassName={props.iconFontClassName}
+                  classPrefix={iconClassPrefix}
+                  fontClassName={iconFontClassName}
                   className="nut-input-clear"
                   name={clearIcon}
                   size={clearSize}
@@ -433,8 +438,8 @@ export const Input: FunctionComponent<
                   }}
                 >
                   <Icon
-                    classPrefix={props.iconClassPrefix}
-                    fontClassName={props.iconFontClassName}
+                    classPrefix={iconClassPrefix}
+                    fontClassName={iconFontClassName}
                     name={rightIcon}
                     size={rightIconSize}
                   />

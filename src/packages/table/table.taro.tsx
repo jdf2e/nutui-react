@@ -35,6 +35,8 @@ export const Table: FunctionComponent<
     striped,
     noData,
     onSorter,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -90,8 +92,8 @@ export const Table: FunctionComponent<
           {item.title}
           {item.sorter && (
             <Icon
-              classPrefix={props.iconClassPrefix}
-              fontClassName={props.iconFontClassName}
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               name="down-arrow"
               size="12px"
             />

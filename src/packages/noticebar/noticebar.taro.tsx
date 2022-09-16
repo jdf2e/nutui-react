@@ -79,7 +79,12 @@ export const NoticeBar: FunctionComponent<
     rightIcon,
     close,
     click,
-  } = { ...defaultProps, ...props }
+    iconClassPrefix,
+    iconFontClassName,
+  } = {
+    ...defaultProps,
+    ...props,
+  }
 
   const wrap = useRef<HTMLDivElement>(null)
   const content = useRef<HTMLDivElement>(null)
@@ -299,8 +304,8 @@ export const NoticeBar: FunctionComponent<
             >
               {!iconBg() ? (
                 <Icon
-                  classPrefix={props.iconClassPrefix}
-                  fontClassName={props.iconFontClassName}
+                  classPrefix={iconClassPrefix}
+                  fontClassName={iconFontClassName}
                   name="notice"
                   size="16"
                   color={color}
@@ -324,8 +329,8 @@ export const NoticeBar: FunctionComponent<
           {closeMode || rightIcon ? (
             <div className="right-icon" onClick={onClickIcon}>
               <Icon
-                classPrefix={props.iconClassPrefix}
-                fontClassName={props.iconFontClassName}
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
                 name={rightIcon || 'close'}
                 color={color}
               />
@@ -369,8 +374,8 @@ export const NoticeBar: FunctionComponent<
             {rightIcon ||
               (closeMode ? (
                 <Icon
-                  classPrefix={props.iconClassPrefix}
-                  fontClassName={props.iconFontClassName}
+                  classPrefix={iconClassPrefix}
+                  fontClassName={iconFontClassName}
                   name="cross"
                   color={color}
                   size="11px"

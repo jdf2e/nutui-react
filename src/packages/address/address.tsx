@@ -105,8 +105,13 @@ export const Address: FunctionComponent<
     onTabChecked,
     style,
     className,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
-  } = { ...defaultProps, ...props }
+  } = {
+    ...defaultProps,
+    ...props,
+  }
   const b = bem('address')
 
   const [privateType, setPrivateType] = useState<string>(type)
@@ -218,8 +223,8 @@ export const Address: FunctionComponent<
         <div className="arrow-back" onClick={onSwitchModule}>
           {privateType === 'custom' && backBtnIcon && (
             <Icon
-              classPrefix={props.iconClassPrefix}
-              fontClassName={props.iconFontClassName}
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               name={backBtnIcon}
               color="#cccccc"
             />
@@ -235,8 +240,8 @@ export const Address: FunctionComponent<
         <div onClick={() => handClose()}>
           {closeBtnIcon && (
             <Icon
-              classPrefix={props.iconClassPrefix}
-              fontClassName={props.iconFontClassName}
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               name={closeBtnIcon}
               color="#cccccc"
               size="18px"

@@ -30,7 +30,17 @@ const defaultProps = {
   icons: '',
 } as BadgeProps
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
-  const { children, dot, top, right, zIndex, color, icons } = {
+  const {
+    children,
+    dot,
+    top,
+    right,
+    zIndex,
+    color,
+    icons,
+    iconClassPrefix,
+    iconFontClassName,
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -56,8 +66,8 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
       {icons !== '' && (
         <div className="slot-icons">
           <Icon
-            classPrefix={props.iconClassPrefix}
-            fontClassName={props.iconFontClassName}
+            classPrefix={iconClassPrefix}
+            fontClassName={iconFontClassName}
             className="_icon"
             name={icons}
             color="#ffffff"

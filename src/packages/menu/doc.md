@@ -36,7 +36,7 @@ const App = () => {
       <div className="demo full">
         <Menu>
           <MenuItem options={options} value={0} />
-          <MenuItem options={options1} value={'a'} />
+          <MenuItem options={options1} value="a" />
         </Menu>
       </div>
     </>

@@ -75,7 +75,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     const [columnsList, setColumnsList] = useState<PickerOption[][]>([]) // 格式化后每一列的数据
     const b = bem('picker')
 
-    let isConfirmEvent = useRef(false)
+    const isConfirmEvent = useRef(false)
 
     // 默认值修改
     useEffect(() => {

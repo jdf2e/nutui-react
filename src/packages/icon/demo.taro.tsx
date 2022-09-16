@@ -1,8 +1,8 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import icons from '@/styles/font/config.json'
 import { Icon, Cell, CellGroup } from '@/packages/nutui.react.taro'
-import Taro from '@tarojs/taro'
 import '@/packages/icon/demo.scss'
 
 interface T {
