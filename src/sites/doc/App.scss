@@ -64,36 +64,41 @@ $doc-title-height: 137px;
     }
     &-tabs {
       position: absolute;
-      right: 445px;
+      right: 475px;
       top: 48px;
       display: flex;
-      height: 50px;
+      height: 40px;
       align-items: center;
-      margin-bottom: 20px;
+      justify-content: space-between;
       z-index: 1;
+      padding: 2px;
+      box-sizing: border-box;
+
+      border-radius: 2px;
+      background: #eee;
+      box-shadow: rgb(0 0 0 / 15%) 0px 2px 4px;
+      &.single {
+        padding: 0;
+
+        .tab-item {
+          line-height: 40px;
+          cursor: auto;
+        }
+      }
       .tab-item {
         position: relative;
-        padding: 10px 25px;
-        height: 100%;
+        padding: 0 10px;
+        line-height: 36px;
         cursor: pointer;
         font-size: 16px;
         color: #323232;
         text-align: center;
-        border-radius: 4px;
+        border-radius: 2px;
+        background: #eee;
         &.cur {
-          color: #fa2c19;
-          &:after {
-            content: ' ';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: #fa2c19;
-          }
-        }
-        &:hover {
-          background-color: #f7f8fa;
+          font-weight: bold;
+          color: #323232;
+          background: #fff;
         }
       }
     }
