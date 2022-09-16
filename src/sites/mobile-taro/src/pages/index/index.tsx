@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { HashRouter, Switch, Route } from 'react-router-dom'
-import logo from '@/sites/assets/images/logo-red.png'
+import logo from '@/sites/assets/images/logo-react-red.png'
 import Taro from '@tarojs/taro'
 import pkg from '@/config.json'
 import '@/sites/assets/styles/reset.scss'
@@ -22,8 +22,8 @@ const Index = () => {
         <div className="index-header">
           <img src={logo} alt="" srcSet="" />
           <div className="info">
-            <h1>NutUI</h1>
-            <p>京东风格的轻量级小程序组件库React版1</p>
+            <h1>NutUI React</h1>
+            <p>京东风格的轻量级小程序组件库 React 版</p>
           </div>
         </div>
         <div className="index-components">
