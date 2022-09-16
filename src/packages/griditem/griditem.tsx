@@ -5,7 +5,9 @@ import Icon from '@/packages/icon'
 
 type GridDirection = 'horizontal' | 'vertical'
 
-export interface GridItemProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface GridItemProps extends IComponent {
   text: string | ReactNode
   icon: string | ReactNode
   iconSize?: string | number
@@ -22,7 +24,9 @@ export interface GridItemProps {
   reverse: boolean
   direction: GridDirection
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   text: '',
   icon: '',
   iconSize: '',
@@ -101,6 +105,8 @@ export const GridItem: FunctionComponent<
       <div className={contentClass()}>
         {icon && isIconName() ? (
           <Icon
+            classPrefix={props.iconClassPrefix}
+            fontClassName={props.iconFontClassName}
             name={icon as string}
             size={iconSize || parentIconSize}
             color={iconColor || parentIconColor}

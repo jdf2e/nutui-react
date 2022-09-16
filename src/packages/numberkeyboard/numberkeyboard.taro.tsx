@@ -6,8 +6,8 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import Popup from '@/packages/popup'
-import { useConfig } from '@/packages/configprovider'
+import Popup from '@/packages/popup/index.taro'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export interface NextListObj {
   type: string

@@ -2,9 +2,11 @@ import React, { FunctionComponent, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 
-export interface TabbarItemProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface TabbarItemProps extends IComponent {
   dot: boolean
   size: string | number
   classPrefix: string
@@ -19,7 +21,9 @@ export interface TabbarItemProps {
   index: number
   handleClick: (idx: number) => void
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   dot: false,
   size: '',
   classPrefix: 'nutui-iconfont',
@@ -95,7 +99,12 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
         )}
         {icon && (
           <div>
-            <Icon size={size} name={icon} classPrefix={classPrefix} />
+            <Icon
+              classPrefix={props.iconClassPrefix}
+              fontClassName={props.iconFontClassName}
+              size={size}
+              name={icon}
+            />
           </div>
         )}
         <div

@@ -55,8 +55,8 @@ const App = () => {
     <ActionSheet
       visible={isVisible1}
       menuItems={menuItemsOne}
-      choose={chooseItem}
-      cancel={() => setIsVisible1(false)}
+      onChoose={chooseItem}
+      onCancel={() => setIsVisible1(false)}
      />
     </>
   );
@@ -103,8 +103,8 @@ const App = () => {
       visible={isVisible2}
       cancelTxt="取消"
       menuItems={menuItemsOne}
-      choose={chooseItemTwo}
-      cancel={() => setIsVisible2(false)}
+      onChoose={chooseItemTwo}
+      onCancel={() => setIsVisible2(false)}
      />
     </>
   );
@@ -150,10 +150,11 @@ const App = () => {
     <ActionSheet
       visible={isVisible3}
       description="這是一段描述資訊"
-      menuItems={menuItemsTwo}
-      choose={chooseItemThree}
       cancelTxt="取消"
-      cancel={() => setIsVisible3(false)}
+      menuItems={menuItemsTwo}
+      onChoose={chooseItemThree}
+      
+      onCancel={() => setIsVisible3(false)}
      />
     </>
   );
@@ -190,10 +191,11 @@ const App = () => {
     <ActionSheet
       visible={isVisible4}
       cancelTxt="取消"
-      cancel={() => setIsVisible4(false)}
       menuItems={menuItemsThree}
       chooseTagValue="着色選項"
-      choose={() => {
+      onCancel={() => setIsVisible4(false)}
+      
+      onChoose={() => {
         setIsVisible4(false)
       }}
      />
@@ -209,15 +211,14 @@ export default App;
 
 | 字段             | 說明                                   | 類型    | 默認值    |
 |------------------|----------------------------------------|---------|-----------|
-| cancelTxt       | 取消文案
-                               | String  | '取消'    |
+| visible       | 遮罩層可見                            | Boolean | false     |
+| cancelTxt       | 取消文案                              | String  | '取消'    |
 | menuItems       | 列表項                                | Array   | [ ]       |
 | optionTag       | 設置列表項展示使用參數                | String  | 'name'    |
-| visible       | 遮罩層可見                            | Boolean | false     |
 | optionSubTag   | 設置列表項描述展示使用參數             | String  | 'subname' |
+| title            | 設置面板標題                         | String  | ''        |
+| description      | 設置面板副標題/描述                  | String  | ''        |
 | chooseTagValue | 設置選中項的值，和'option-tag'的值對應 | String  | ''        |
-| title            | 設置列表項標題                         | String  | ''        |
-| description      | 設置列表項副標題/描述                  | String  | ''        |
 | color            | 高亮顏色                               | String  | '#ee0a24' |
 
 
@@ -225,5 +226,5 @@ export default App;
 
 | 字段   | 說明               | 回調參數                          |
 |--------|--------------------|-----------------------------------|
-| choose | 選擇之後觸發 |  選中列表項item, 選中的索引值index |
-| cancel | 點擊取消文案時觸發 | 無                               |
+| onChoose`v1.3.2` | 選擇之後觸發 |  選中列表項item, 選中的索引值index |
+| onCancel`v1.3.2` | 點擊取消文案時觸發 | 無                               |

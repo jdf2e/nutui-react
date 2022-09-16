@@ -74,7 +74,7 @@ const CircleProgressDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <div className="demo demo-circleprogress">
         <h2>{translated['84aa6bce']}</h2>
         <div className="demo__piece">
           <CircleProgress progress={20} />

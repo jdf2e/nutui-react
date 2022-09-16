@@ -4,7 +4,7 @@ import React, {
   forwardRef,
 } from 'react'
 import classNames from 'classnames'
-import Button from '@/packages/button'
+import Button from '@/packages/button/index.taro'
 import { DialogWrapper } from './DialogWrapper'
 import confirm from './Confirm'
 import {
@@ -13,7 +13,7 @@ import {
   DialogComponent,
   ConfirmProps,
 } from './config'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export type DialogProps = IDialogProps
 const defaultProps = {

@@ -6,8 +6,8 @@ import React, {
   useState,
 } from 'react'
 import Trigger from './Trigger'
-import Icon from '@/packages/icon'
-import Overlay from '@/packages/overlay'
+import Icon from '@/packages/icon/index.taro'
+import Overlay from '@/packages/overlay/index.taro'
 import { getRectByTaro } from '../../utils/useClientRect'
 
 export type PopoverTheme = 'light' | 'dark'
@@ -32,7 +32,9 @@ export interface List {
   disabled?: boolean
 }
 
-export interface PopoverProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface PopoverProps extends IComponent {
   list: List[]
   theme: PopoverTheme
   location: PopoverLocation | string
@@ -46,6 +48,7 @@ export interface PopoverProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   list: [],
   theme: 'light',
   location: 'bottom',
@@ -170,6 +173,8 @@ export const Popover: FunctionComponent<
                     >
                       {item.icon ? (
                         <Icon
+                          classPrefix={props.iconClassPrefix}
+                          fontClassName={props.iconFontClassName}
                           className="popover-menu-item-img"
                           name={item.icon}
                         />

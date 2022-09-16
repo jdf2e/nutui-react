@@ -4,12 +4,12 @@ import React, {
   useState,
   CSSProperties,
 } from 'react'
-import Icon from '@/packages/icon'
-import Popup from '@/packages/popup'
+import Icon from '@/packages/icon/index.taro'
+import Popup from '@/packages/popup/index.taro'
 import bem from '@/utils/bem'
 import { ExistRender } from './existRender'
 import { CustomRender } from './customRender'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import {
   RegionData,
   NextListObj,
@@ -19,7 +19,9 @@ import {
   AddressList,
 } from './type'
 
-export interface AddressProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface AddressProps extends IComponent {
   className?: string
   style?: CSSProperties
   modelValue: boolean
@@ -52,6 +54,7 @@ export interface AddressProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   modelValue: false,
   modelSelect: [],
   type: 'custom',
@@ -214,7 +217,12 @@ export const Address: FunctionComponent<
       <div className={b('header')}>
         <div className="arrow-back" onClick={onSwitchModule}>
           {privateType === 'custom' && backBtnIcon && (
-            <Icon name={backBtnIcon} color="#cccccc" />
+            <Icon
+              classPrefix={props.iconClassPrefix}
+              fontClassName={props.iconFontClassName}
+              name={backBtnIcon}
+              color="#cccccc"
+            />
           )}
         </div>
 
@@ -226,7 +234,13 @@ export const Address: FunctionComponent<
 
         <div onClick={() => handClose()}>
           {closeBtnIcon && (
-            <Icon name={closeBtnIcon} color="#cccccc" size="18px" />
+            <Icon
+              classPrefix={props.iconClassPrefix}
+              fontClassName={props.iconFontClassName}
+              name={closeBtnIcon}
+              color="#cccccc"
+              size="18px"
+            />
           )}
         </div>
       </div>
