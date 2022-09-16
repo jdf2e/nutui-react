@@ -3,6 +3,12 @@ import { PullToRefresh, Cell, Toast } from '@/packages/nutui.react.taro'
 
 const PullToRefreshDemo = () => {
   const [list] = useState([1, 2, 3, 4, 5, 6, 7])
+  const [show, SetShow] = useState(false)
+  const [toastMsg, SetToastMsg] = useState('')
+  const toastShow = (msg: any) => {
+    SetToastMsg(msg)
+    SetShow(true)
+  }
   return (
     <>
       <div className="demo">
@@ -10,7 +16,8 @@ const PullToRefreshDemo = () => {
         <PullToRefresh
           onRefresh={() =>
             new Promise((resolve) => {
-              Toast.text('😊')
+              //   Toast.text('😊')
+              toastShow('😊')
               resolve('done')
             })
           }
@@ -19,6 +26,14 @@ const PullToRefreshDemo = () => {
             <Cell key={item}>{item}</Cell>
           ))}
         </PullToRefresh>
+        <Toast
+          type="text"
+          visible={show}
+          msg={toastMsg}
+          onClose={() => {
+            SetShow(false)
+          }}
+        />
       </div>
     </>
   )

@@ -312,7 +312,7 @@ export default App
 | 字段                | 说明              | 类型          | 默认值                        |
 | ------------------- | -------------- | ------------- | ----------------------------- |
 | id                  | 标识符，相同者共用一个实例<br>loading类型默认使用一个实例，其他类型默认不共用 | String/Number | -                             |
-| duration            | 展示时长（毫秒）<br>值为 0 时，toast 不会自动消失      | Number        | 2000       |
+| duration            | 展示时长（秒）<br>值为 0 时，toast 不会自动消失      | Number        | 2       |
 | title `v1.3.0`            | 标题      | string        | -            |
 | center              | 是否展示在页面中部（为false时展示在底部）                   | Boolean  | true   |
 | bottom              | 距页面底部的距离（像素），option.center为false时生效        | Number   | 30     |
