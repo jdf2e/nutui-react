@@ -58,9 +58,8 @@
     "prepare": "husky install",
     "test": "jest",
     "test:demo": "jest  --testNamePattern=^should match snapshot$ --runTestsByPath ./src/packages/collapse/__test__/collapse.spec.tsx",
-
     "generate:file:taro": "node scripts/taro/generate-nutui-taro.js",
-    "checked:taro":"npm run generate:file:taro && tsc --project ./tsconfig.taro.json",
+    "checked:taro": "npm run generate:file:taro && tsc --project ./tsconfig.taro.json",
     "generate:file:taro:pages": "node scripts/taro/generate-taro-pages.js",
     "dev:taro:weapp": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:weapp",
     "replace:taro:types": "node scripts/taro/replace-taro-types-alias.js",
@@ -80,6 +79,7 @@
     "@babel/runtime": "^7.16.5",
     "@bem-react/classname": "^1.5.10",
     "@react-spring/web": "^9.3.2",
+    "@tarojs/cli": "^3.5.4",
     "@use-gesture/react": "10.2.9",
     "classnames": "^2.3.1",
     "react-router-dom": "^5.2.0",

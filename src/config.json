@@ -573,7 +573,7 @@
           "desc": "提供较长的页面快捷返回顶部功能。",
           "sort": 2,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "vickyYe"
         },
         {
@@ -639,7 +639,7 @@
           "desc": "轻提示",
           "sort": 1,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "VickyYe"
         },
         {

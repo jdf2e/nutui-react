@@ -44,7 +44,12 @@ const subPackages = [
   },
   {
     root: 'feedback',
-    pages: ['pages/actionsheet/index', 'pages/switch/index'],
+    pages: [
+      'pages/actionsheet/index',
+      'pages/switch/index',
+      'pages/toast/index',
+      'pages/pulltorefresh/index',
+    ],
   },
   {
     root: 'exhibition',
