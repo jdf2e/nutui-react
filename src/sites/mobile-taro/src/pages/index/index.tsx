@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import { HashRouter, Switch, Route } from 'react-router-dom'
-import logo from '@/sites/assets/images/logo-react-red.png'
+import React from 'react'
+import logo from '@/sites/assets/images/logo-red.png'
 import Taro from '@tarojs/taro'
 import pkg from '@/config.json'
 import '@/sites/assets/styles/reset.scss'
