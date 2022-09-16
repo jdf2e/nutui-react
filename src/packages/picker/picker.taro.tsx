@@ -5,10 +5,10 @@ import React, {
   RefObject,
   ForwardRefRenderFunction,
 } from 'react'
-import Popup from '@/packages/popup'
+import Popup from '@/packages/popup/index.taro'
 import PickerSlot from './pickerSlot.taro'
 import useRefs from '@/utils/useRefs'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import bem from '@/utils/bem'
 
 export interface PickerOption {

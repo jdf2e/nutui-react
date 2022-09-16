@@ -88,7 +88,7 @@ const InternalBarrage: ForwardRefRenderFunction<
     el.classList.add('move')
     el.style.animationDuration = `${speeds}ms`
     el.style.top = `${(_index % rows) * (height + top) + 20}px`
-    el.style.width = `${width + 20}px`
+    el.style.width = `${width}px`
     el.style.setProperty('--move-distance', `-${barrageCWidth.current}px`)
     el.dataset.index = `${_index}`
     el.addEventListener('animationend', () => {

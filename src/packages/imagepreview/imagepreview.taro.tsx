@@ -6,10 +6,10 @@ import React, {
   useRef,
   TouchEvent,
 } from 'react'
-import Popup from '@/packages/popup'
-import Video from '@/packages/video'
-import Swiper from '@/packages/swiper'
-import SwiperItem from '@/packages/swiperitem'
+import Popup from '@/packages/popup/index.taro'
+import Video from '@/packages/video/index.taro'
+import Swiper from '@/packages/swiper/index.taro'
+import SwiperItem from '@/packages/swiperitem/index.taro'
 
 interface IStore {
   scale: number

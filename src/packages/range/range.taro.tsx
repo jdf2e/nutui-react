@@ -8,8 +8,8 @@ import React, {
 } from 'react'
 import { useTouch } from '../../utils/useTouch'
 import { getRectByTaro } from '../../utils/useClientRect'
-import Toast from '@/packages/toast'
-import { useConfig } from '@/packages/configprovider'
+import Toast from '@/packages/toast/index.taro'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 type SliderValue = number | number[]
 export interface RangeProps {

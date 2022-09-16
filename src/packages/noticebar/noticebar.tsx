@@ -12,7 +12,9 @@ import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 import { getRect } from '../../utils/useClientRect'
 
-export interface NoticeBarProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface NoticeBarProps extends IComponent {
   // 滚动方向  across 横向 vertical 纵向
   direction: string
   className?: string
@@ -34,7 +36,9 @@ export interface NoticeBarProps {
   close?: (list?: any) => void
   click?: (item?: any) => void
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   // 滚动方向  across 横向 vertical 纵向
   direction: 'across',
   list: [],
@@ -79,7 +83,6 @@ export const NoticeBar: FunctionComponent<
 
   const wrap = useRef<HTMLDivElement>(null)
   const content = useRef<HTMLDivElement>(null)
-  // const [scrollList,SetScrollList] = useState([])
   const [showNoticeBar, SetShowNoticeBar] = useState(true)
   const scrollList: any = useRef([])
   const [wrapWidth, SetWrapWidth] = useState(0)
@@ -91,8 +94,6 @@ export const NoticeBar: FunctionComponent<
   const [distance, SetDistance] = useState(0)
   const [timer, SetTimer] = useState(0)
   const [isCanScroll, SetIsCanScroll] = useState<null | boolean>(null)
-
-  const [index, setIndex] = useState<number>(0)
 
   useEffect(() => {
     if (direction === 'vertical') {
@@ -186,7 +187,7 @@ export const NoticeBar: FunctionComponent<
    */
   const startRollEasy = () => {
     showhorseLamp()
-    const timerCurr = window.setInterval(
+    const timerCurr = setInterval(
       showhorseLamp,
       ~~(height / speed / 4) * 1000 + Number(standTime)
     )
@@ -257,7 +258,6 @@ export const NoticeBar: FunctionComponent<
   }
 
   const contentStyle = {
-    // paddingLeft: firstRound ? 0 : `${wrapWidth}px`,
     animationDelay: `${firstRound ? delay : 0}s`,
     animationDuration: `${duration}s`,
     transform: `translateX(${firstRound ? 0 : `${wrapWidth}px`})`,
@@ -296,7 +296,13 @@ export const NoticeBar: FunctionComponent<
               style={{ backgroundImage: `url(${iconBg() || ''})` }}
             >
               {!iconBg() ? (
-                <Icon name="notice" size="16" color={color} />
+                <Icon
+                  classPrefix={props.iconClassPrefix}
+                  fontClassName={props.iconFontClassName}
+                  name="notice"
+                  size="16"
+                  color={color}
+                />
               ) : null}
             </div>
           ) : null}
@@ -315,7 +321,12 @@ export const NoticeBar: FunctionComponent<
           </div>
           {closeMode || rightIcon ? (
             <div className="right-icon" onClick={onClickIcon}>
-              <Icon name={rightIcon || 'close'} color={color} />
+              <Icon
+                classPrefix={props.iconClassPrefix}
+                fontClassName={props.iconFontClassName}
+                name={rightIcon || 'close'}
+                color={color}
+              />
             </div>
           ) : null}
         </div>
@@ -355,7 +366,13 @@ export const NoticeBar: FunctionComponent<
           >
             {rightIcon ||
               (closeMode ? (
-                <Icon name="cross" color={color} size="11px" />
+                <Icon
+                  classPrefix={props.iconClassPrefix}
+                  fontClassName={props.iconFontClassName}
+                  name="cross"
+                  color={color}
+                  size="11px"
+                />
               ) : null)}
           </div>
         </div>

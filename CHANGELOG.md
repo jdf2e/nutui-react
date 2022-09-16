@@ -1,3 +1,31 @@
+## v1.3.3
+`2022-09-14`
+* :sparkles: chore: 组件 icon 自定义以及优化typing 导出 (#283) @oasis-cloud
+* :sparkles: chore: sideEffects 优化 (#280) @oasis-cloud
+* :sparkles: feat: drag组件增加单元测试 (#277) @irisSong
+* :sparkles: feat: 适配jd小程序。 (#278) @xiaoyatong
+* :bug: fix: 修复 button 组件 loading 效果 (#284) @oasis-cloud
+* :bug: fix: countdown 组件 props 能力补全、demo 和文档国际化 (#279) @irisSong
+* :bug: fix : rate组件taro适配 (#276) @libin0824
+
+## v1.3.2
+`2022-09-07`
+* :sparkles: feat: Popover 新增国际化 (#260) @yangxiaolu1993
+* :sparkles: feat: 下拉刷新组件 (#261) @oasis-cloud
+* :sparkles: feat: Actionsheet 新增单元测试，修改事件属性名。 (#272) @xiaoyatong
+* :sparkles: feat: Badge 增加测试用例，修改top、right 值的适配，去掉doc中的hidden属性，无此属性。 (#269) @xiaoyatong
+* :sparkles: feat: noticebar、range组件增加单元测试 (#267) @vickyYe
+* :sparkles: feat: menu scrollFixed 属性 (#268) @oasis-cloud
+* :sparkles: feat: tabs 增加国际化 (#262) @yangjinjun3
+* :sparkles: feat: Picker、Datepicker组件Taro适配 (#259) @yangxiaolu1993
+* :bug: fix: elevator组件支持pc端 (#258) @irisSong
+* :bug: fix: Swiper组件taro适配优化 (#263) @lkjh3214
+* 📖 docs: Badge增加多语言 (#265) @xiaoyatong
+* 📖 docs: actionsheet 文档支持多语言版本 (#264) @xiaoyatong
+* 📖 docs: radio 组件文档优化并增加单元测试 (#266) @oasis-cloud
+* 📖 docs: layout、fixednav 国际化文档，searchbar 单元测试 (#271) @Ymm0008
+* 📖 docs: card\drag组件文档和demo国际化, cell组件英文文档修改 (#270) @irisSong
+
 ## v1.3.1
 `2022-08-31`
 * :sparkles: feat: calendar 组件功能补齐、单元测试 (#228) @love_forever

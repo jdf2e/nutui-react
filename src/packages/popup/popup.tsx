@@ -15,10 +15,11 @@ import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
 import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
 import bem from '@/utils/bem'
+import { ComponentDefaults, IComponent } from '@/utils/typings'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
-export interface PopupProps extends OverlayProps {
+export interface PopupProps extends OverlayProps, IComponent {
   position: string
   transition: string
   style: React.CSSProperties
@@ -40,6 +41,7 @@ export interface PopupProps extends OverlayProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   position: 'center',
   transition: '',
   style: {},
@@ -215,7 +217,12 @@ export const Popup: FunctionComponent<
           {showChildren ? children : ''}
           {closeable ? (
             <div className={closeClasses} onClick={onHandleClickCloseIcon}>
-              <Icon name={closeIcon} size="12px" />
+              <Icon
+                classPrefix={props.iconClassPrefix}
+                fontClassName={props.iconFontClassName}
+                name={closeIcon}
+                size="12px"
+              />
             </div>
           ) : (
             ''

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-import Picker from '@/packages/picker'
+import Picker from '@/packages/picker/index.taro'
 
 export interface PickerOption {
   text: string | number

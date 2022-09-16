@@ -97,7 +97,7 @@ const NoticeBarDemo = () => {
             direction="vertical"
             list={horseLamp2}
             speed={10}
-            standTime={1000}
+            standTime={2000}
             complexAm
           />
         </div>

@@ -8,7 +8,9 @@ import React, {
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
-export interface CollapseItemProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface CollapseItemProps extends IComponent {
   title: string
   name: string
   isOpen: boolean
@@ -24,7 +26,9 @@ export interface CollapseItemProps {
   titleIconSize: string
   onToggle: (isOpen: boolean, name: string) => void
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   title: '',
   name: '',
   isOpen: false,
@@ -111,6 +115,8 @@ export const CollapseItem: FunctionComponent<
           {titleIcon && titleIconPosition === 'left' && (
             <b className={colBem('title-icon-left')}>
               <Icon
+                classPrefix={props.iconClassPrefix}
+                fontClassName={props.iconFontClassName}
                 name={titleIcon}
                 size={titleIconSize}
                 color={disabled ? '#C2C2C2' : titleIconColor}
@@ -121,6 +127,8 @@ export const CollapseItem: FunctionComponent<
           {titleIcon && titleIconPosition === 'right' && (
             <b className={colBem('title-icon-right')}>
               <Icon
+                classPrefix={props.iconClassPrefix}
+                fontClassName={props.iconFontClassName}
                 name={titleIcon}
                 size={titleIconSize}
                 color={disabled ? '#C2C2C2' : titleIconColor}
@@ -132,6 +140,8 @@ export const CollapseItem: FunctionComponent<
         <div className={colBem('icon-box')}>
           <div className={colBem('icon')} style={iconStyle}>
             <Icon
+              classPrefix={props.iconClassPrefix}
+              fontClassName={props.iconFontClassName}
               name={icon}
               size={iconSize}
               color={disabled ? '#C2C2C2' : iconColor}
