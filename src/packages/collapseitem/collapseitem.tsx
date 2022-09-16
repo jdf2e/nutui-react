@@ -24,6 +24,7 @@ export interface CollapseItemProps extends IComponent {
   titleIconColor: string
   titleIconPosition: string
   titleIconSize: string
+  childnull: boolean
   onToggle: (isOpen: boolean, name: string) => void
 }
 
@@ -42,6 +43,7 @@ const defaultProps = {
   titleIconColor: '',
   titleIconPosition: '',
   titleIconSize: '',
+  childnull: true,
 } as CollapseItemProps
 export const CollapseItem: FunctionComponent<
   Partial<CollapseItemProps> & React.HTMLAttributes<HTMLDivElement>
@@ -62,6 +64,7 @@ export const CollapseItem: FunctionComponent<
     titleIconSize,
     iconSize,
     iconColor,
+    childnull,
     ...rest
   } = {
     ...defaultProps,
@@ -149,13 +152,15 @@ export const CollapseItem: FunctionComponent<
           </div>
         </div>
       </div>
-      <div
-        className={colBem('content')}
-        style={{ height: currHeight }}
-        ref={measuredRef}
-      >
-        <div className={colBem('content-text')}>{children}</div>
-      </div>
+      {childnull && (
+        <div
+          className={colBem('content')}
+          style={{ height: currHeight }}
+          ref={measuredRef}
+        >
+          <div className={colBem('content-text')}>{children}</div>
+        </div>
+      )}
     </div>
   )
 }
