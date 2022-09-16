@@ -18,6 +18,8 @@ exports[`prop title desc subtitle 1`] = `
     >
       <div
         class="nut-cell nut-cell--clickable "
+        iconclassprefix="nut-icon"
+        iconfontclassname="nutui-iconfont"
         style="border-radius: 6px;"
       >
         <div
@@ -35,6 +37,8 @@ exports[`prop title desc subtitle 1`] = `
       </div>
       <div
         class="nut-cell nut-cell--clickable "
+        iconclassprefix="nut-icon"
+        iconfontclassname="nutui-iconfont"
         style="border-radius: 6px;"
       >
         <div
@@ -57,6 +61,8 @@ exports[`prop title desc subtitle 1`] = `
       </div>
       <div
         class="nut-cell nut-cell--clickable "
+        iconclassprefix="nut-icon"
+        iconfontclassname="nutui-iconfont"
         style="border-radius: 6px;"
       >
         <div
