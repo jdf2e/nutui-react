@@ -196,6 +196,17 @@
           "taro": true,
           "exportEmpty": true,
           "author": "yangxiaolu"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Sticky",
+          "type": "component",
+          "cName": "粘性布局",
+          "desc": "效果同 css 中的 position: sticky",
+          "sort": 7,
+          "show": true,
+          "taro": true,
+          "author": "hx"
         }
       ]
     },
