@@ -64,10 +64,10 @@ export interface UploaderProps extends IComponent {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
   }) => void
-  onUpdate?: (fileList: any[]) => void
+  onUpdate?: (fileList: FileItem[]) => void
   onOversize?: (file: File[]) => void
   onChange?: (param: {
-    fileList: any[]
+    fileList: FileItem[]
     event: React.ChangeEvent<HTMLInputElement>
   }) => void
   onBeforeUpload?: (file: File[]) => Promise<File[]>
