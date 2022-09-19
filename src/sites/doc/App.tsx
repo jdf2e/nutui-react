@@ -71,29 +71,22 @@ const Title = () => {
 }
 
 const App = () => {
-  const memoTaroDocs = useMemo(() => {
-    const taroDocs = {} as any
+  const taros = useMemo(() => {
+    const docs = {} as any
+    const support = {} as any
     nav.forEach((navItem) => {
       return navItem.packages.forEach((pk: any) => {
+        const lname = pk.name.toLowerCase()
         if (pk.tarodoc) {
-          taroDocs[pk.name.toLowerCase()] = true
+          docs[lname] = true
+        }
+        if (pk.taro) {
+          support[lname] = true
         }
       })
     })
-    return taroDocs
+    return { docs, support }
   }, [nav])
-
-  const [lang] = useLocale()
-
-  const getMarkdownByLang = (ru: string) => {
-    if (lang === 'zh-CN' || lang === '') {
-      // @ts-ignore
-      return raws[ru]
-    } else {
-      // @ts-ignore
-      return raws[`${ru}${lang.replace('-', '')}`]
-    }
-  }
 
   const [fixed, setFixed] = useState(false)
   const [hidden, setHidden] = useState(false)
@@ -150,7 +143,7 @@ const App = () => {
               {routers.map((ru, k) => {
                 return (
                   <Route key={Math.random()} path={ru.path}>
-                    {memoTaroDocs[ru.name.replace('-taro', '')] ? (
+                    {taros.docs[ru.name.replace('-taro', '')] ? (
                       <div className="doc-content-tabs ">
                         <div
                           className={`tab-item ${
@@ -170,7 +163,16 @@ const App = () => {
                         </div>
                       </div>
                     ) : (
-                      <div className="doc-content-tabs single">
+                      <div
+                        className="doc-content-tabs single"
+                        style={{
+                          display: `${
+                            taros.support[ru.name.replace('-taro', '')]
+                              ? 'inherit'
+                              : 'none'
+                          }`,
+                        }}
+                      >
                         <div className="tab-item cur">React / Taro</div>
                       </div>
                     )}
