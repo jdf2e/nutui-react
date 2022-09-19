@@ -6,20 +6,19 @@ import React, {
   useState,
 } from 'react'
 import { getScrollParent } from '@/utils/get-scroll-parent'
-import { getRect } from '../../utils/useClientRect'
-import useWatch from './useWatch'
+import { getRect } from '@/utils/useClientRect'
+import useWatch from '@/utils/useWatch'
+import { IComponent } from '@/utils/typings'
 
-import './sticky.scss'
-// import { useConfig } from '@/packages/configprovider'
-
-export interface StickyProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface StickyProps extends IComponent {
   container?: React.RefObject<HTMLElement>
   position?: 'top' | 'bottom'
+  className?: string
   top?: number
   bottom?: number
   zIndex?: number
   children: React.ReactNode
-  change?: (val: boolean) => void
+  onChange?: (val: boolean) => void
 }
 
 export const Sticky: FunctionComponent<StickyProps> = (props) => {
@@ -30,7 +29,8 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
     zIndex = 2000,
     children,
     container,
-    change,
+    className,
+    onChange,
 
     ...rest
   } = props
@@ -154,7 +154,7 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
     }
   }, [position, bottom, container, top])
   useWatch(isFixed, () => {
-    change && change(isFixed)
+    onChange && onChange(isFixed)
   })
   useEffect(() => {
     const el = getElement() as HTMLElement | Window
@@ -165,7 +165,12 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
   }, [getElement, handleScroll])
 
   return (
-    <div ref={rootRef} style={rootStyle} className="nut-sticky" {...rest}>
+    <div
+      ref={rootRef}
+      style={rootStyle}
+      className={`nut-sticky ${className}`}
+      {...rest}
+    >
       <div className="nut-sticky-box" ref={stickyRef} style={stickyStyle}>
         {children}
       </div>

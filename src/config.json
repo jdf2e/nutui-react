@@ -205,7 +205,7 @@
           "desc": "效果同 css 中的 position: sticky",
           "sort": 7,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "hx"
         }
       ]

@@ -27,7 +27,7 @@ return(
     <>
         <h2>Ceiling</h2>
         <Cell style={{ height: '300px' }}>
-          <Sticky top={57} change={handleChange}>
+          <Sticky top={57} onChange={handleChange}>
             <Button type="primary">Ceiling button</Button>
           </Sticky>
         </Cell>
@@ -114,4 +114,4 @@ export default App;
 
 | 事件名 | 说明                                            | 回调参数     |
 |--------|------------------------------------------------|--------------|
-| change  | Triggered when the adsorption state changes   | val: Boolean |
+| onChange  | Triggered when the adsorption state changes   | val: Boolean |

@@ -27,7 +27,7 @@ return(
     <>
         <h2>基础用法</h2>
         <Cell style={{ height: '300px' }}>
-          <Sticky top={57} change={handleChange}>
+          <Sticky top={57} onChange={handleChange}>
             <Button type="primary">吸顶</Button>
           </Sticky>
         </Cell>
@@ -114,4 +114,4 @@ export default App;
 
 | 事件名 | 说明                                            | 回调参数     |
 |--------|------------------------------------------------|--------------|
-| change  | 吸附状态改变时触发  | val: Boolean |
+| onChange  | 吸附状态改变时触发  | val: Boolean |

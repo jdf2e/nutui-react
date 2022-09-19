@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import './sticky.scss'
+
 import { useConfig } from '@/packages/configprovider'
 
 export interface StickyProps {}

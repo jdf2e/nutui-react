@@ -14,7 +14,7 @@ const StickyDemo = () => {
       <div className="demo">
         <h2>基础用法</h2>
         <Cell>
-          <Sticky top={57} change={handleChange}>
+          <Sticky top={57} onChange={handleChange}>
             <Button type="primary">吸顶</Button>
           </Sticky>
         </Cell>
