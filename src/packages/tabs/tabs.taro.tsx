@@ -93,10 +93,11 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
         return null
       }
       const title = new Title()
-      if (child?.props?.title || child?.props?.paneKey) {
-        title.title = child.props?.title
-        title.paneKey = child.props?.paneKey || idx
-        title.disabled = child.props?.disabled
+      const childProps = child?.props
+      if (childProps?.title || childProps?.paneKey) {
+        title.title = childProps?.title
+        title.paneKey = childProps?.paneKey || idx
+        title.disabled = childProps?.disabled
         title.index = idx
         if (title.paneKey === value) {
           currentIndex = idx
