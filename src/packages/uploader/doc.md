@@ -320,7 +320,7 @@ export default App;
 
 | 字段              | 说明                                                                                                                                                                                   | 类型                              | 默认值           |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|------------------|
-| autoUpload              | 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传                                                                                                                                       | Boolean                            | true           |
+| autoUpload `v1.3.4`              | 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传                                                                                                                                       | Boolean                            | true           |
 | name              | `input` 标签 `name` 的名称，发到后台的文件参数名                                                                                                                                       | String                            | "file"           |
 | url               | 上传服务器的接口地址                                                                                                                                                                   | String                            | -                |
 | defaultFileList               | 默认已经上传的文件列表                                                                                                                                                                   | FileItem[]                            | []                |
@@ -328,7 +328,7 @@ export default App;
 | defaultImg        | 当上传非图片('image')格式的默认图片地址                                                                                                                                                               | String                           | ''             |
 | isDeletable      | 是否展示删除按钮                                                                                                                                                                       | Boolean                           | true             |
 | method            | 上传请求的 http method                                                                                                                                                                 | String                            | "post"           |
-| listType            | 上传列表的内建样式，支持两种基本样式 picture、list                                                                                                                                                                 | String                            | "picture"           |
+| listType `v1.3.4`            | 上传列表的内建样式，支持两种基本样式 picture、list                                                                                                                                                                 | String                            | "picture"           |
 | capture           | 图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接调起摄像头                                                                     | String                            | false            |
 | maximize          | 可以设定最大上传文件的大小（字节）                                                                                                                                                     | Number丨String                    | Number.MAX_VALUE |
 | maximum           | 文件上传数量限制                                                                                                                                                                       | Number丨String                    | 1                |
@@ -337,15 +337,17 @@ export default App;
 | headers           | 设置上传的请求头部                                                                                                                                                                     | Object                            | {}               |
 | data              | 附加上传的信息 formData                                                                                                                                                                | Object                            | {}               |
 | uploadIcon       | 上传区域[图标名称](#/zh-CN/icon)或图片链接                                                                                                                                             | String                            | "photograph"     |
-| uploadIconSize       | 上传区域[图标尺寸](#/icon)大小，如 `20px` `2em` `2rem`                                                                                                                                             | String or Number                            | -     |
+| uploadIconSize `v1.3.4`       | 上传区域[图标尺寸](#/icon)大小，如 `20px` `2em` `2rem`                                                                                                                                             | String or Number                            | -     |
 | xhrState         | 接口响应的成功状态（status）值                                                                                                                                                         | Number                            | 200              |
 | withCredentials  | 支持发送 cookie 凭证信息                                                                                                                                                               | Boolean                           | false            |
 | multiple          | 是否支持文件多选                                                                                                                                                                       | Boolean                           | false            |
 | disabled          | 是否禁用文件上传                                                                                                                                                                       | Boolean                           | false            |
 | timeout           | 超时时间，单位为毫秒                                                                                                   | Number丨String                    | 1000 * 30                 |
-| onBeforeUpload     | 上传前的函数需要返回一个`Promise`对象                                                                                                                                                  | Function                          | null             |
-| onBeforeXhrUpload     | 执行 XHR 上传时，自定义方式                                                                                                                                                  | Function(xhr，option)                          | null             |
-| onBeforeDelete     | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除                                                                 | Function(file): boolean 丨Promise | -                |
+| beforeUpload `v1.3.4废弃`     | 上传前的函数需要返回一个`Promise`对象                                                                                                                                                  | Function                          | null             |
+| onBeforeUpload `v1.3.4`     | 上传前的函数需要返回一个`Promise`对象                                                                                                                                                  | Function                          | null             |
+| onBeforeXhrUpload `v1.3.4`     | 执行 XHR 上传时，自定义方式                                                                                                                                                  | Function(xhr，option)                          | null             |
+| beforeDelete  `v1.3.4废弃`   | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除                                                                 | Function(file): boolean 丨Promise | -                |
+| onBeforeDelete  `v1.3.4`  | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除                                                                 | Function(file): boolean 丨Promise | -                |
 
 
 
@@ -364,12 +366,19 @@ export default App;
 
 | 名称     | 说明                   | 回调参数             |
 |----------|------------------------|----------------------|
-| onStart    | 文件上传开始           | options              |
-| onProgress | 文件上传的进度         | event,options,percentage        |
-| onOversize | 文件大小超过限制时触发 | files                |
-| onSuccess  | 上传成功               | responseText,options |
-| onFailure  | 上传失败               | responseText,options |
-| onChange   | 上传文件改变时的状态   | fileList,event       |
-| onRemove   | 文件删除之前的状态     | files,fileList       |
-| onFileItemClick   | 文件上传成功后点击触发     | fileItem       |
+| start `v1.3.4废弃`    | 文件上传开始           | options              |
+| onStart `v1.3.4`    | 文件上传开始           | options              |
+| progress `v1.3.4废弃` | 文件上传的进度         | event,options        |
+| onProgress `v1.3.4` | 文件上传的进度         | event,options,percentage        |
+| oversize `v1.3.4废弃` | 文件大小超过限制时触发 | files                |
+| onOversize `v1.3.4` | 文件大小超过限制时触发 | files                |
+| success `v1.3.4废弃`  | 上传成功               | responseText,options |
+| onSuccess `v1.3.4`  | 上传成功               | responseText,options |
+| failure `v1.3.4废弃`  | 上传失败               | responseText,options |
+| onFailure `v1.3.4`  | 上传失败               | responseText,options |
+| onChange `v1.3.4`   | 上传文件改变时的状态   | fileList,event       |
+| change `v1.3.4废弃`  | 上传文件改变时的状态   | fileList,event       |
+| onRemove `v1.3.4`   | 文件删除之前的状态     | files,fileList       |
+| removeImage  `v1.3.4废弃` | 文件删除之前的状态     | files,fileList       |
+| onFileItemClick `v1.3.4`   | 文件上传成功后点击触发     | fileItem       |
 

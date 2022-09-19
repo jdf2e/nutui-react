@@ -320,7 +320,7 @@ export default App;
 
 | 字段              | 說明                                                                                                                                                                                   | 類型                              | 默認值           |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|------------------|
-| autoUpload              | 是否在選取文件後立即進行上傳，false 時需要手動執行 ref submit 方法進行上傳                                                                                                                                       | Boolean                            | true           |
+| autoUpload `v1.3.4`             | 是否在選取文件後立即進行上傳，false 時需要手動執行 ref submit 方法進行上傳                                                                                                                                       | Boolean                            | true           |
 | name              | `input` 標籤 `name` 的名稱，發到後台的文件參數名                                                                                                                                       | String                            | "file"           |
 | url               | 上傳服務器的接口地址                                                                                                                                                                   | String                            | -                |
 | defaultFileList               | 默認已經上傳的文件列表                                                                                                                                                                   | FileItem[]                            | []                |
@@ -328,7 +328,7 @@ export default App;
 | defaultImg        | 當上傳非圖片('image')格式的默認圖片地址                                                                                                                                                               | String                           | ''             |
 | isDeletable      | 是否展示刪除按鈕                                                                                                                                                                       | Boolean                           | true             |
 | method            | 上傳請求的 http method                                                                                                                                                                 | String                            | "post"           |
-| listType            | 上傳列表的內建樣式，支持兩種基本樣式 picture、list                                                                                                                                                                 | String                            | "picture"           |
+| listType `v1.3.4`            | 上傳列表的內建樣式，支持兩種基本樣式 picture、list                                                                                                                                                                 | String                            | "picture"           |
 | capture           | 圖片[選取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接調起攝像頭                                                                     | String                            | false            |
 | maximize          | 可以設定最大上傳文件的大小（字節）                                                                                                                                                     | Number丨String                    | Number.MAX_VALUE |
 | maximum           | 文件上傳數量限制                                                                                                                                                                       | Number丨String                    | 1                |
@@ -337,15 +337,17 @@ export default App;
 | headers           | 設置上傳的請求頭部                                                                                                                                                                     | Object                            | {}               |
 | data              | 附加上傳的信息 formData                                                                                                                                                                | Object                            | {}               |
 | uploadIcon       | 上傳區域[圖標名稱](#/zh-CN/icon)或圖片鏈接                                                                                                                                             | String                            | "photograph"     |
-| uploadIconSize       | 上傳區域[圖標尺寸](#/icon)大小，如 `20px` `2em` `2rem`                                                                                                                                             | String or Number                            | -     |
+| uploadIconSize `v1.3.4`       | 上傳區域[圖標尺寸](#/icon)大小，如 `20px` `2em` `2rem`                                                                                                                                             | String or Number                            | -     |
 | xhrState         | 接口響應的成功狀態（status）值                                                                                                                                                         | Number                            | 200              |
 | withCredentials  | 支持發送 cookie 憑證信息                                                                                                                                                               | Boolean                           | fasle            |
 | multiple          | 是否支持文件多選                                                                                                                                                                       | Boolean                           | fasle            |
 | disabled          | 是否禁用文件上傳                                                                                                                                                                       | Boolean                           | fasle            |
 | timeout           | 超時時間，單位為毫秒                                                                                                   | Number丨String                    | 1000 * 30                 |
-| onBeforeUpload     | 上傳前的函數需要返回一個`Promise`對象                                                                                                                                                  | Function                          | null             |
-| onBeforeXhrUpload     | 執行 XHR 上傳時，自定義方式                                                                                                                                                  | Function(xhr，option)                          | null             |
-| onBeforeDelete     | 除文件時的回調，返回值為 false 時不移除。支持返回一個 `Promise` 對象，`Promise` 對象 resolve(false) 或 reject 時不移除                                                                 | Function(file): boolean 丨Promise | -                |
+| beforeUpload `v1.3.4廢棄`     | 上傳前的函數需要返回一個`Promise`對象                                                                                                                                                  | Function                          | null             |
+| onBeforeUpload `v1.3.4`     | 上傳前的函數需要返回一個`Promise`對象                                                                                                                                                  | Function                          | null             |
+| onBeforeXhrUpload `v1.3.4`    | 執行 XHR 上傳時，自定義方式                                                                                                                                                  | Function(xhr，option)                          | null             |
+| beforeDelete `v1.3.4 廢棄`   | 除文件時的回調，返回值為 false 時不移除。支持返回一個 `Promise` 對象，`Promise` 對象 resolve(false) 或 reject 時不移除                                                                 | Function(file): boolean 丨Promise | -                |
+| onBeforeDelete `v1.3.4`   | 除文件時的回調，返回值為 false 時不移除。支持返回一個 `Promise` 對象，`Promise` 對象 resolve(false) 或 reject 時不移除                                                                 | Function(file): boolean 丨Promise | -                |
 
 
 
@@ -364,12 +366,20 @@ export default App;
 
 | 名稱     | 說明                   | 回調參數             |
 |----------|------------------------|----------------------|
-| onStart    | 文件上傳開始           | options              |
-| onProgress | 文件上傳的進度         | event,options,percentage        |
-| onOversize | 文件大小超過限制時觸發 | files                |
-| onSuccess  | 上傳成功               | responseText,options |
-| onFailure  | 上傳失敗               | responseText,options |
-| onChange   | 上傳文件改變時的狀態   | fileList,event       |
-| onRemove   | 文件刪除之前的狀態     | files,fileList       |
-| onFileItemClick   | 文件上傳成功後點擊觸發     | fileItem       |
+| onStart `v1.3.4`    | 文件上傳開始           | options              |
+| start `v1.3.4廢棄`    | 文件上傳開始           | options              |
+| onProgress `v1.3.4` | 文件上傳的進度         | event,options,percentage        |
+| progress `v1.3.4廢棄` | 文件上傳的進度         | event,options,percentage        |
+| onOversize `v1.3.4` | 文件大小超過限制時觸發 | files                |
+| oversize `v1.3.4廢棄` | 文件大小超過限制時觸發 | files                |
+| onSuccess `v1.3.4`  | 上傳成功               | responseText,options |
+| success `v1.3.4廢棄`  | 上傳成功               | responseText,options |
+| onFailure `v1.3.4`  | 上傳失敗               | responseText,options |
+| failure `v1.3.4廢棄`  | 上傳失敗               | responseText,options |
+| onChange `v1.3.4`   | 上傳文件改變時的狀態   | fileList,event       |
+| change `v1.3.4廢棄`   | 上傳文件改變時的狀態   | fileList,event       |
+| onRemove `v1.3.4`   | 文件刪除之前的狀態     | files,fileList       |
+| remove `v1.3.4廢棄`   | 文件刪除之前的狀態     | files,fileList       |
+| onFileItemClick `v1.3.4`   | 文件上傳成功後點擊觸發     | fileItem       |
+| fileItemClick `v1.3.4廢棄`   | 文件上傳成功後點擊觸發     | fileItem       |
 

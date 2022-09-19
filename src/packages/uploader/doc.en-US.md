@@ -319,7 +319,7 @@ export default App;
 
 | Attribute              |Description                                                                                                                                                                                   | Type                              | Default           |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|------------------|
-| autoUpload              | Whether to upload the file immediately after selecting it, if false, you need to manually execute the ref submit method to upload                                                                                                                                       | Boolean                            | true           |
+| autoUpload `v1.3.4`              | Whether to upload the file immediately after selecting it, if false, you need to manually execute the ref submit method to upload                                                                                                                                       | Boolean                            | true           |
 | name              | The name of the `input` tag `name`, the file parameter name sent to the background                                                                                                                                       | String                            | "file"           |
 | url               | The interface address of the upload server                                                                                                                                                                   | String                            | -                |
 | defaultFileList               | List of uploaded files by default                                                                                                                                                                   | FileItem[]                            | []                |
@@ -327,7 +327,7 @@ export default App;
 | defaultImg        | When uploading a default image URL in a non-image ('image') format                                                                                                                                                               | String                           | ''             |
 | isDeletable      | Whether to display the delete button                                                                                                                                                                       | Boolean                           | true             |
 | method            | The http method of upload request                                                                                                                                                                 | String                            | "post"           |
-| listType            | The built-in style of the upload list, supports two basic styles picture, list                                                                                                                                                                 | String                            | "picture"           |
+| listType `v1.3.4`            | The built-in style of the upload list, supports two basic styles picture, list                                                                                                                                                                 | String                            | "picture"           |
 | capture           | Capture, can be set to[camera](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，，turn on the camera directly                                                                     | String                            | false            |
 | maximize          | You can set the maximum upload file size (bytes)                                                                                                                                                     | Number丨String                    | Number.MAX_VALUE |
 | maximum           | File upload limit                                                                                                                                                                       | Number丨String                    | 1                |
@@ -336,15 +336,17 @@ export default App;
 | headers           | Set request headers                                                                                                                                                                     | Object                            | {}               |
 | data              | Uploading extra params or function which can return uploading extra params formData                                                                                                                                                                | Object                            | {}               |
 | uploadIcon       | Upload area[icon name](#/zh-CN/icon)or image link                                                                                                                                             | String                            | "photograph"     |
-| uploadIconSize       | Upload area [icon size](#/icon) size, such as `20px` `2em` `2rem`                                                                                                                                             | String or Number                            | -     |
+| uploadIconSize `v1.3.4`       | Upload area [icon size](#/icon) size, such as `20px` `2em` `2rem`                                                                                                                                             | String or Number                            | -     |
 | xhrState         | The success status (status) value of the interface response                                                                                                                                                         | Number                            | 200              |
 | withCredentials  | Support for sending cookie credential information                                                                                                                                                               | Boolean                           | false            |
 | multiple          | Whether to support multiple file selection                                                                                                                                                                       | Boolean                           | false            |
 | disabled          | Whether to disable file upload                                                                                                                                                                       | Boolean                           | false            |
 | timeout           | timeout, in milliseconds                                                                                                   | Number丨String                    | 1000 * 30                 |
-| onBeforeUpload     | The pre-upload function needs to return a `Promise` object                                                                                                                                                  | Function                          | null             |
-| onBeforeXhrUpload     | When performing an XHR upload, the custom method                                                                                                                                                  | Function(xhr，option)                          | null             |
-| onBeforeDelete     | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects                                                                 | Function(file): boolean 丨Promise | -                |
+| beforeUpload `v1.3.4(Abandon)`     | The pre-upload function needs to return a `Promise` object                                                                                                                                                  | Function                          | null             |
+| onBeforeUpload `v1.3.4`     | The pre-upload function needs to return a `Promise` object                                                                                                                                                  | Function                          | null             |
+| onBeforeXhrUpload `v1.3.4`     | When performing an XHR upload, the custom method                                                                                                                                                  | Function(xhr，option)                          | null             |
+| beforeDelete `v1.3.4(Abandon)`     | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects                                                                 | Function(file): boolean 丨Promise | -                |
+| onBeforeDelete `v1.3.4`     | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects                                                                 | Function(file): boolean 丨Promise | -                |
 
 
 
@@ -363,12 +365,20 @@ export default App;
 
 | Event	     | Description                   | Arguments             |
 |----------|------------------------|----------------------|
-| onStart    | File upload starts           | options              |
-| onProgress | The progress of the file upload         | event,options,percentage        |
-| onOversize | Triggered when the file size exceeds the limit | files                |
-| onSuccess  | Uploaded successfully               | responseText,options |
-| onFailure  | Upload failed               | responseText,options |
-| onChange   | The state when the uploaded file changes   | fileList,event       |
-| onRemove   | The state before the file was deleted    | files,fileList       |
-| onFileItemClick   | File delete event     | fileItem       |
+| onStart `v1.3.4`    | File upload starts           | options              |
+| start `v1.3.4(Abandon)`    | File upload starts           | options              |
+| onProgress `v1.3.4` | The progress of the file upload         | event,options,percentage        |
+| progress `v1.3.4(Abandon)` | The progress of the file upload         | event,options,percentage        |
+| onOversize `v1.3.4`  | Triggered when the file size exceeds the limit | files                |
+| oversize `v1.3.4(Abandon)`  | Triggered when the file size exceeds the limit | files                |
+| onSuccess `v1.3.4`  | Uploaded successfully               | responseText,options |
+| success `v1.3.4(Abandon)`  | Uploaded successfully               | responseText,options |
+| onFailure `v1.3.4`  | Upload failed               | responseText,options |
+| failure `v1.3.4(Abandon)`  | Upload failed               | responseText,options |
+| onChange `v1.3.4`   | The state when the uploaded file changes   | fileList,event       |
+| change `v1.3.4(Abandon)`   | The state when the uploaded file changes   | fileList,event       |
+| onRemove `v1.3.4`   | The state before the file was deleted    | files,fileList       |
+| remove `v1.3.4(Abandon)`   | The state before the file was deleted    | files,fileList       |
+| onFileItemClick `v1.3.4`   | File delete event     | fileItem       |
+| fileItemClick `v1.3.4(Abandon)`   | File delete event     | fileItem       |
 
