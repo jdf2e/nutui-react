@@ -65,6 +65,8 @@ export const CollapseItem: FunctionComponent<
     iconSize,
     iconColor,
     childnull,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -118,8 +120,8 @@ export const CollapseItem: FunctionComponent<
           {titleIcon && titleIconPosition === 'left' && (
             <b className={colBem('title-icon-left')}>
               <Icon
-                classPrefix={props.iconClassPrefix}
-                fontClassName={props.iconFontClassName}
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
                 name={titleIcon}
                 size={titleIconSize}
                 color={disabled ? '#C2C2C2' : titleIconColor}
@@ -130,8 +132,8 @@ export const CollapseItem: FunctionComponent<
           {titleIcon && titleIconPosition === 'right' && (
             <b className={colBem('title-icon-right')}>
               <Icon
-                classPrefix={props.iconClassPrefix}
-                fontClassName={props.iconFontClassName}
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
                 name={titleIcon}
                 size={titleIconSize}
                 color={disabled ? '#C2C2C2' : titleIconColor}
@@ -143,8 +145,8 @@ export const CollapseItem: FunctionComponent<
         <div className={colBem('icon-box')}>
           <div className={colBem('icon')} style={iconStyle}>
             <Icon
-              classPrefix={props.iconClassPrefix}
-              fontClassName={props.iconFontClassName}
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               name={icon}
               size={iconSize}
               color={disabled ? '#C2C2C2' : iconColor}

@@ -31,30 +31,26 @@ const App = () => {
             title: '基础弹框',
             content: '支持函数调用和组件调用两种方式。'
         });
-        }}>
-     </Cell>
+        }} />
       <Cell title="无标题弹框" onClick={() => {
             Dialog.alert({
             content: '无标题弹框'
         });
-        }}>
-     </Cell>
+        }} />
       <Cell title="提示弹框" onClick={() => {
         Dialog.alert({
             title: '温馨提示',
             content: '支持函数调用和组件调用两种方式。',
             noCancelBtn: true
         });
-        }}>
-     </Cell>
+        }} />
       <Cell title="底部按钮 垂直调用" onClick={() => {
         Dialog.alert({
             title: '温馨提示',
             content: '支持函数调用和组件调用两种方式。',
             footerDirection: 'vertical'
         });
-        }}>
-     </Cell>
+        }} />
     </>
   )
 }
@@ -68,8 +64,7 @@ export default App;
 :::demo
 
 ```tsx
-import React from "react";
-import {useState} from 'react'
+import React, {useState} from "react";
 import { Cell,Dialog } from '@nutui/nutui-react';
 
 const App = () => {

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Uploader } from '@/packages/nutui.react.taro'
-import Taro from '@tarojs/taro'
 
 export type FileItemStatus =
   | 'ready'

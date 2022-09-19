@@ -3,10 +3,10 @@ import classNames from 'classnames'
 import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
 export type ProgressSize = 'small' | 'base' | 'large'
 export type TextType = 'icon' | 'text'
-
-import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface ProgressProps extends IComponent {
   className: string
@@ -78,8 +78,13 @@ export const Progress: FunctionComponent<
     iconSize,
     rounded,
     children,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
-  } = { ...defaultProps, ...props }
+  } = {
+    ...defaultProps,
+    ...props,
+  }
 
   const b = bem('progress')
 
@@ -175,8 +180,8 @@ export const Progress: FunctionComponent<
           )}
           {textType === 'icon' && (
             <Icon
-              classPrefix={props.iconClassPrefix}
-              fontClassName={props.iconFontClassName}
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               size={iconSize}
               name={iconName}
               color={iconColor}

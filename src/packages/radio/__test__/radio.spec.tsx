@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { useState } from 'react'
 import Radio from '@/packages/radio'
 import RadioGroup from '@/packages/radiogroup'
-import { useState } from 'react'
 
 describe('radio', () => {
   test('radio className', () => {

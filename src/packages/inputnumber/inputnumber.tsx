@@ -74,6 +74,8 @@ export const InputNumber: FunctionComponent<
     overlimit,
     blur,
     focus,
+    iconClassPrefix,
+    iconFontClassName,
     ...restProps
   } = {
     ...defaultProps,
@@ -187,8 +189,8 @@ export const InputNumber: FunctionComponent<
   return (
     <div className={classes} style={styles} {...restProps}>
       <Icon
-        classPrefix={props.iconClassPrefix}
-        fontClassName={props.iconFontClassName}
+        classPrefix={iconClassPrefix}
+        fontClassName={iconFontClassName}
         className={iconMinusClasses}
         size={buttonSize}
         name="minus"
@@ -207,8 +209,8 @@ export const InputNumber: FunctionComponent<
         onFocus={focusValue}
       />
       <Icon
-        classPrefix={props.iconClassPrefix}
-        fontClassName={props.iconFontClassName}
+        classPrefix={iconClassPrefix}
+        fontClassName={iconFontClassName}
         className={iconAddClasses}
         size={buttonSize}
         name="plus"

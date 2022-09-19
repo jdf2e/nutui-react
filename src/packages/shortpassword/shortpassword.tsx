@@ -74,6 +74,8 @@ export const ShortPassword: FunctionComponent<
     onCancel,
     onClose,
     onComplete,
+    iconClassPrefix,
+    iconFontClassName,
     ...reset
   } = props
   const b = bem('shortpassword')
@@ -181,8 +183,8 @@ export const ShortPassword: FunctionComponent<
             {tips || locale.shortpassword.tips ? (
               <div className={b('message__forget')}>
                 <Icon
-                  classPrefix={props.iconClassPrefix}
-                  fontClassName={props.iconFontClassName}
+                  classPrefix={iconClassPrefix}
+                  fontClassName={iconFontClassName}
                   className="icon"
                   size="11px"
                   name="tips"

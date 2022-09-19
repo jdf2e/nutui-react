@@ -66,6 +66,8 @@ export const Cell: FunctionComponent<
     className,
     iconSlot,
     linkSlot,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -120,8 +122,8 @@ export const Cell: FunctionComponent<
               {iconSlot ||
                 (icon ? (
                   <Icon
-                    classPrefix={props.iconClassPrefix}
-                    fontClassName={props.iconFontClassName}
+                    classPrefix={iconClassPrefix}
+                    fontClassName={iconFontClassName}
                     name={icon}
                     className="icon"
                   />
@@ -148,8 +150,8 @@ export const Cell: FunctionComponent<
           ) : null}
           {!linkSlot && (isLink || to) ? (
             <Icon
-              classPrefix={props.iconClassPrefix}
-              fontClassName={props.iconFontClassName}
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               name="right"
               className={b('link')}
             />
