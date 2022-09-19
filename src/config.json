@@ -672,7 +672,7 @@
           "desc": "",
           "sort": 10,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "oasis"
         }
       ]
@@ -909,6 +909,7 @@
           "sort": 20,
           "show": true,
           "taro": false,
+          "tarodoc": true,
           "author": "swag~jun"
         },
         {
@@ -930,6 +931,7 @@
           "desc": "原生audio实现的音频播放器",
           "sort": 21,
           "show": true,
+          "taro":true,
           "author": "libin"
         },
         {

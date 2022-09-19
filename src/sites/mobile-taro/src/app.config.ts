@@ -71,6 +71,7 @@ const subPackages = [
       'pages/collapse/index',
       'pages/empty/index',
       'pages/progress/index',
+      'pages/audio/index',
     ],
   },
   {
