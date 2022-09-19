@@ -646,11 +646,12 @@
           "version": "0.1.0",
           "name": "Toast",
           "type": "component",
+          "tarodoc": true,
           "cName": "吐司",
           "desc": "轻提示",
           "sort": 1,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "VickyYe"
         },
         {

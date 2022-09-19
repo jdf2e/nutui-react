@@ -80,6 +80,7 @@
     "@babel/runtime": "^7.16.5",
     "@bem-react/classname": "^1.5.10",
     "@react-spring/web": "^9.3.2",
+    "@tarojs/cli": "^3.5.4",
     "@use-gesture/react": "10.2.9",
     "classnames": "^2.3.1",
     "react-router-dom": "^5.2.0",
