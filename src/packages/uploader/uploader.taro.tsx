@@ -50,7 +50,7 @@ export interface UploaderProps extends IComponent {
   sizeType: (keyof sizeType)[]
   sourceType: (keyof sourceType)[]
   maximize: number
-  defaultFileList: FileType<string>[]
+  defaultFileList: FileItem[]
   listType: string
   uploadIcon: string
   uploadIconSize: string | number
@@ -85,9 +85,9 @@ export interface UploaderProps extends IComponent {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
   }) => void
-  update?: (fileList: any[]) => void
+  update?: (fileList: FileItem[]) => void
   oversize?: (file: Taro.chooseImage.ImageFile[]) => void
-  change?: (param: { fileList: any[] }) => void
+  change?: (param: { fileList: FileItem[] }) => void
   beforeUpload?: (file: any[]) => Promise<any[]>
   beforeXhrUpload?: (
     file: Taro.chooseImage.ImageFile[]
@@ -129,7 +129,7 @@ const defaultProps = {
 export class FileItem {
   status: FileItemStatus = 'ready'
 
-  message = '准备中..'
+  message: string = '准备中..'
 
   uid: string = new Date().getTime().toString()
 
@@ -189,11 +189,10 @@ const InternalUploader: ForwardRefRenderFunction<
     beforeDelete,
     ...restProps
   } = { ...defaultProps, ...props }
-  const [fileList, setFileList] = useState<any>([])
+  const [fileList, setFileList] = useState<FileItem[]>([])
   const [uploadQueue, setUploadQueue] = useState<Promise<Upload>[]>([])
 
   useEffect(() => {
-    console.log('defaultFileList', defaultFileList)
     if (defaultFileList) {
       setFileList(defaultFileList)
     }

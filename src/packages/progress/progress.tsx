@@ -78,6 +78,8 @@ export const Progress: FunctionComponent<
     iconSize,
     rounded,
     children,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = { ...defaultProps, ...props }
 

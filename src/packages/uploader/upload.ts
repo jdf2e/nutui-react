@@ -7,6 +7,8 @@ export class UploadOptions {
 
   formData?: FormData
 
+  sourceFile: any
+
   method = 'post'
 
   xhrState: string | number = 200
@@ -64,7 +66,11 @@ export class Upload {
         xhr.setRequestHeader(key, value as string)
       }
       options.onStart?.(options)
-      xhr.send(options.formData)
+      if (options.beforeXhrUpload) {
+        options.beforeXhrUpload(xhr, options)
+      } else {
+        xhr.send(options.formData)
+      }
     } else {
       console.warn('浏览器不支持 XMLHttpRequest')
     }
