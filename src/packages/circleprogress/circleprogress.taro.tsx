@@ -79,10 +79,10 @@ export const CircleProgress: FunctionComponent<
   }, [progress])
 
   const requestAnimationFrame = function (callback: Function) {
-    var currTime = new Date().getTime()
-    var timeToCall = Math.max(0, 16.7 - (currTime - lastTime))
+    const currTime = new Date().getTime()
+    const timeToCall = Math.max(0, 16.7 - (currTime - lastTime))
     lastTime = currTime + timeToCall
-    var id = setTimeout(function () {
+    const id = setTimeout(function () {
       callback()
     }, timeToCall)
     lastTime = currTime + timeToCall
@@ -121,8 +121,8 @@ export const CircleProgress: FunctionComponent<
     Math.min(Math.max(+progress, 0), 100)
 
   const circleStyle = () => {
-    let stopArr: Array<object> = stop()
-    let stopDom: string[] = []
+    const stopArr: Array<object> = stop()
+    const stopDom: string[] = []
     if (stopArr) {
       stopArr.map((item: { key?: string; value?: string }) => {
         let obj = ''
@@ -132,15 +132,15 @@ export const CircleProgress: FunctionComponent<
         stopDom.push(obj)
       })
     }
-    let perimeter = 283
-    let progress = +oldValue
-    let offset =
+    const perimeter = 283
+    const progress = +oldValue
+    const offset =
       (perimeter * Number(format(parseFloat(progress.toFixed(1))))) / 100
     const isWise = props.clockwise ? 1 : 0
     const color = isObject(circleColor)
       ? `url(%23${refRandomId})`
       : transColor(circleColor)
-    let d = `M 50 50 m 0 -45 a 45 45 0 1 ${isWise} 0 90 a 45 45 0 1, ${isWise} 0 -90`
+    const d = `M 50 50 m 0 -45 a 45 45 0 1 ${isWise} 0 90 a 45 45 0 1, ${isWise} 0 -90`
     const pa = `%3Cdefs%3E%3ClinearGradient id='${refRandomId}' x1='100%25' y1='0%25' x2='0%25' y2='0%25'%3E${stopDom}%3C/linearGradient%3E%3C/defs%3E`
     const path = `%3Cpath d='${d}' stroke-width='${strokeWidth}' stroke='${transColor(
       props.pathColor
@@ -157,7 +157,7 @@ export const CircleProgress: FunctionComponent<
 
   return (
     <div className={classes} style={styles} {...restProps}>
-      <div style={circleStyle()}></div>
+      <div style={circleStyle()} />
       <div className="nut-circleprogress-text">
         {children || <div>{progress}%</div>}
       </div>

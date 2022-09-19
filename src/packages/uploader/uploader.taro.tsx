@@ -6,12 +6,14 @@ import React, {
   useEffect,
 } from 'react'
 import classNames from 'classnames'
+import Taro from '@tarojs/taro'
 import Icon from '@/packages/icon/index.taro'
 import Button from '@/packages/button/index.taro'
-import Taro from '@tarojs/taro'
 import { Upload, UploadOptions } from './upload'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
+
+import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export type FileType<T> = { [key: string]: T }
 
@@ -41,8 +43,6 @@ interface sourceType {
   /** 使用后置摄像头(仅H5纯浏览器) */
   environment: string
 }
-
-import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface UploaderProps extends IComponent {
   url: string
@@ -187,8 +187,13 @@ const InternalUploader: ForwardRefRenderFunction<
     beforeUpload,
     beforeXhrUpload,
     beforeDelete,
+    iconClassPrefix,
+    iconFontClassName,
     ...restProps
-  } = { ...defaultProps, ...props }
+  } = {
+    ...defaultProps,
+    ...props,
+  }
   const [fileList, setFileList] = useState<any>([])
   const [uploadQueue, setUploadQueue] = useState<Promise<Upload>[]>([])
 
@@ -227,8 +232,8 @@ const InternalUploader: ForwardRefRenderFunction<
       // 选择数量
       count: (maximum as number) * 1 - fileList.length,
       // 可以指定是原图还是压缩图，默认二者都有
-      sizeType: sizeType,
-      sourceType: sourceType,
+      sizeType,
+      sourceType,
       success: onChange,
     })
   }
@@ -385,7 +390,7 @@ const InternalUploader: ForwardRefRenderFunction<
       oversize && oversize(files)
     }
 
-    let currentFileLength = filterFile.length + fileList.length
+    const currentFileLength = filterFile.length + fileList.length
     if (currentFileLength > maximum) {
       filterFile.splice(filterFile.length - (currentFileLength - maximum))
     }
@@ -452,8 +457,8 @@ const InternalUploader: ForwardRefRenderFunction<
                     item.status !== 'success' && (
                       <div className="nut-uploader__preview__progress">
                         <Icon
-                          classPrefix={props.iconClassPrefix}
-                          fontClassName={props.iconFontClassName}
+                          classPrefix={iconClassPrefix}
+                          fontClassName={iconFontClassName}
                           color="#fff"
                           name={`${
                             item.status == 'error' ? 'failure' : 'loading'
@@ -468,8 +473,8 @@ const InternalUploader: ForwardRefRenderFunction<
 
                   {isDeletable && (
                     <Icon
-                      classPrefix={props.iconClassPrefix}
-                      fontClassName={props.iconFontClassName}
+                      classPrefix={iconClassPrefix}
+                      fontClassName={iconFontClassName}
                       color="rgba(0,0,0,0.6)"
                       className="close"
                       name="failure"
@@ -502,8 +507,8 @@ const InternalUploader: ForwardRefRenderFunction<
                             className="nut-uploader__preview-img__file__name"
                           >
                             <Icon
-                              classPrefix={props.iconClassPrefix}
-                              fontClassName={props.iconFontClassName}
+                              classPrefix={iconClassPrefix}
+                              fontClassName={iconFontClassName}
                               color="#808080"
                               name="link"
                             />
@@ -525,15 +530,15 @@ const InternalUploader: ForwardRefRenderFunction<
                     onClick={() => handleItemClick(item)}
                   >
                     <Icon
-                      classPrefix={props.iconClassPrefix}
-                      fontClassName={props.iconFontClassName}
+                      classPrefix={iconClassPrefix}
+                      fontClassName={iconFontClassName}
                       name="link"
                     />
                     &nbsp;{item.name}
                   </div>
                   <Icon
-                    classPrefix={props.iconClassPrefix}
-                    fontClassName={props.iconFontClassName}
+                    classPrefix={iconClassPrefix}
+                    fontClassName={iconFontClassName}
                     color="#808080"
                     className="nut-uploader__preview-img__file__del"
                     name="del"
@@ -549,8 +554,8 @@ const InternalUploader: ForwardRefRenderFunction<
       {maximum > fileList.length && listType === 'picture' && !children && (
         <div className={`nut-uploader__upload ${listType}`}>
           <Icon
-            classPrefix={props.iconClassPrefix}
-            fontClassName={props.iconFontClassName}
+            classPrefix={iconClassPrefix}
+            fontClassName={iconFontClassName}
             size={uploadIconSize}
             color="#808080"
             name={uploadIcon}

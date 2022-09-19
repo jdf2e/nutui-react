@@ -4,13 +4,13 @@ import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
+import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 type Direction = 'right' | 'left'
 type Position = {
   top?: string
   bottom?: string
 }
-import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface FixedNavProps extends IComponent {
   fixednavClass: string
@@ -56,8 +56,13 @@ export const FixedNav: FunctionComponent<
     type,
     slotList,
     slotBtn,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
-  } = { ...defaultProps, ...props }
+  } = {
+    ...defaultProps,
+    ...props,
+  }
 
   const b = bem('fixednav')
 
@@ -121,8 +126,8 @@ export const FixedNav: FunctionComponent<
         {slotBtn || (
           <>
             <Icon
-              classPrefix={props.iconClassPrefix}
-              fontClassName={props.iconFontClassName}
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               name="left"
               color="#fff"
             />

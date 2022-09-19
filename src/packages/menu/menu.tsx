@@ -35,6 +35,8 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
     closeOnClickOverlay,
     children,
     activeColor,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -146,8 +148,8 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
               >
                 <div className="nut-menu__title-text">{finallyTitle()}</div>
                 <Icon
-                  classPrefix={props.iconClassPrefix}
-                  fontClassName={props.iconFontClassName}
+                  classPrefix={iconClassPrefix}
+                  fontClassName={iconFontClassName}
                   className="nut-menu__title-icon"
                   size="10"
                   name={

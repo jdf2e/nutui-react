@@ -165,7 +165,9 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       axis: 'y',
       target: elementRef,
       enabled: !props.disabled,
-      eventOptions: passiveSupported ? { passive: false } : false,
+      eventOptions: (passiveSupported
+        ? { passive: false }
+        : false) as AddEventListenerOptions,
     }
   )
 

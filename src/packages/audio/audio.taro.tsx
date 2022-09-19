@@ -9,7 +9,7 @@ import Taro from '@tarojs/taro'
 import { Icon, Range, Button } from '@/packages/nutui.react.taro'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { IComponent } from '@/utils/typings'
+import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 const b = bem('audio')
 const warn = console.warn
@@ -29,6 +29,7 @@ export interface AudioProps extends IComponent {
   onCanPlay?: (ctx: Taro.InnerAudioContext) => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   className: '',
   url: '',
   style: {},
@@ -61,6 +62,8 @@ export const Audio: FunctionComponent<
     onPlayEnd,
     onCanPlay,
     children,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -174,9 +177,18 @@ export const Audio: FunctionComponent<
             onClick={handleStatusChange}
           >
             {playing ? (
-              <Icon name="service" className="nut-icon-loading" />
+              <Icon
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
+                name="service"
+                className="nut-icon-loading"
+              />
             ) : (
-              <Icon name="service" />
+              <Icon
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
+                name="service"
+              />
             )}
           </div>
         </div>

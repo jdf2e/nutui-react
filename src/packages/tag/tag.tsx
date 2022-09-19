@@ -50,6 +50,8 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     textColor,
     onClick,
     onClose,
+    iconClassPrefix,
+    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -110,8 +112,8 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
           >
             {children && <span className="text">{children}</span>}
             <Icon
-              classPrefix={props.iconClassPrefix}
-              fontClassName={props.iconFontClassName}
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               className="_icon"
               name="close"
               size="12"
