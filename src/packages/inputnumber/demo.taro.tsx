@@ -77,15 +77,26 @@ const InputNumberDemo = () => {
   })
   const overlimit = (e: MouseEvent) => {
     console.log(e)
-    Toast.warn(translated['6333c786'])
+    // Toast.warn(translated['6333c786'])
+    toastShow(translated['6333c786'], 'warn')
   }
   const onChange = (value: string | number) => {
-    Toast.loading(translated['0137871a'])
+    // Toast.loading(translated['0137871a'])
+    toastShow(translated['0137871a'], 'loading')
     setTimeout(() => {
       inputState.val7 = Number(value)
       setInputState({ ...inputState })
-      Toast.hide()
+      //   Toast.hide()
+      SetShow(false)
     }, 2000)
+  }
+  const [show, SetShow] = useState(false)
+  const [toastMsg, SetToastMsg] = useState('')
+  const [toastType, SetToastType] = useState('text')
+  const toastShow = (msg: any, type: string) => {
+    SetToastMsg(msg)
+    SetToastType(type)
+    SetShow(true)
   }
   return (
     <>
@@ -136,6 +147,14 @@ const InputNumberDemo = () => {
             inputWidth="50"
           />
         </Cell>
+        <Toast
+          type={toastType}
+          visible={show}
+          msg={toastMsg}
+          onClose={() => {
+            SetShow(false)
+          }}
+        />
       </div>
     </>
   )

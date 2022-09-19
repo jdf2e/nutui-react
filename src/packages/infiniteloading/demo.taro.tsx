@@ -93,9 +93,16 @@ const InfiniteloadingDemo = () => {
 
   const refresh = (done: () => void) => {
     setTimeout(() => {
-      Toast.text(translated['83913e71'])
+      //   Toast.text(translated['83913e71'])
+      toastShow(translated['83913e71'])
       done()
     }, 1000)
+  }
+  const [show, SetShow] = useState(false)
+  const [toastMsg, SetToastMsg] = useState('')
+  const toastShow = (msg: any) => {
+    SetToastMsg(msg)
+    SetShow(true)
   }
 
   const init = () => {
@@ -153,6 +160,13 @@ const InfiniteloadingDemo = () => {
             </Infiniteloading>
           </ul>
         </Cell>
+        <Toast
+          visible={show}
+          msg={toastMsg}
+          onClose={() => {
+            SetShow(false)
+          }}
+        />
       </div>
     </>
   )

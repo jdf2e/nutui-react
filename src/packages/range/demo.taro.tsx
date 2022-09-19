@@ -70,8 +70,15 @@ const RangeDemo = () => {
     80: 80,
     100: 100,
   })
+  const [show, SetShow] = useState(false)
+  const [toastMsg, SetToastMsg] = useState('')
+  const toastShow = (msg: any) => {
+    SetToastMsg(msg)
+    SetShow(true)
+  }
   const change = (value: any, name?: string) => {
-    Toast.text(`当前值：${value}`)
+    // Toast.text(`当前值：${value}`)
+    toastShow(`当前值：${value}`)
     switch (name) {
       case 'value0':
         SetValue0(value)
@@ -261,6 +268,14 @@ const RangeDemo = () => {
             }}
           />
         </Cell>
+        <Toast
+          type="text"
+          visible={show}
+          msg={toastMsg}
+          onClose={() => {
+            SetShow(false)
+          }}
+        />
       </div>
     </>
   )
