@@ -46,7 +46,7 @@ const defaultProps = {
 export const Radio: FunctionComponent<
   Partial<RadioProps> & React.HTMLAttributes<HTMLDivElement>
 > & { RadioGroup: typeof RadioGroup } = (props) => {
-  const { children, iconClassPrefix, iconFontClassName } = {
+  const { children } = {
     ...defaultProps,
     ...props,
   }
@@ -61,6 +61,8 @@ export const Radio: FunctionComponent<
     iconActiveName,
     iconSize,
     onChange,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = props
   const componentName = 'nut-radio'
