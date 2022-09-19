@@ -50,7 +50,6 @@ const subPackages = [
       'pages/actionsheet/index',
       'pages/infiniteloading/index',
       'pages/switch/index',
-      'pages/pulltorefresh/index',
     ],
   },
   {

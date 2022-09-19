@@ -3,7 +3,6 @@ import logo from '@/sites/assets/images/logo-red.png'
 import Taro from '@tarojs/taro'
 import pkg from '@/config.json'
 import '@/sites/assets/styles/reset.scss'
-import '@/packages/nutui.react.scss'
 import './index.scss'
 
 const navs = pkg.nav
@@ -13,6 +12,21 @@ const Index = () => {
     Taro.navigateTo({
       url: `/${enName}/pages/${name.toLocaleLowerCase()}/index`,
     })
+  }
+
+  const onShareAppMessage = (res) => {
+    return {
+      title: 'NutUI React 小程序',
+      path: 'pages/index/index',
+    }
+  }
+
+  const onShareTimeline = () => {
+    console.log('onShareTimeline')
+    return {
+      title: 'NutUI React 小程序',
+      path: 'pages/index/index',
+    }
   }
 
   return (

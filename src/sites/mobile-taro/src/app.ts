@@ -1,8 +1,8 @@
 import { Component } from 'react'
-import './app.scss'
 
 import '@/sites/assets/styles/reset.scss'
-import('@/packages/nutui.react.scss')
+import './app.scss'
+
 class App extends Component {
   componentDidMount() {}
 
