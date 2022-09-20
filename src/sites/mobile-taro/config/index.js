@@ -37,7 +37,6 @@ const config = {
     postcss: {
       pxtransform: {
         enable: true,
-        config: {},
         // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
         config: { selectorBlackList: ['nut-'] },
       },
@@ -60,6 +59,11 @@ const config = {
     publicPath: '/',
     staticDirectory: 'static',
     postcss: {
+      pxtransform: {
+        enable: true,
+        // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
+        config: { selectorBlackList: ['nut-'] },
+      },
       autoprefixer: {
         enable: true,
         config: {},
