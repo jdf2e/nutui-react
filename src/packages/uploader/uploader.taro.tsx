@@ -8,6 +8,7 @@ import React, {
 import classNames from 'classnames'
 import Icon from '@/packages/icon/index.taro'
 import Button from '@/packages/button/index.taro'
+import Progress from '@/packages/progress/index.taro'
 import Taro from '@tarojs/taro'
 import { Upload, UploadOptions } from './upload'
 import bem from '@/utils/bem'
@@ -55,45 +56,40 @@ export interface UploaderProps extends IComponent {
   uploadIcon: string
   uploadIconSize: string | number
   name: string
-  accept: string
   disabled: boolean
   autoUpload: boolean
-  multiple: boolean
   timeout: number
   data: object
   method: string
   xhrState: number | string
   headers: object
-  withCredentials: boolean
   isPreview: boolean
   isDeletable: boolean
-  capture: boolean
   className: string
   defaultImg: string
   style: React.CSSProperties
-  start?: (option: UploadOptions) => void
-  removeImage?: (file: FileItem, fileList: FileType<string>[]) => void
-  success?: (param: {
+  onStart?: (option: UploadOptions) => void
+  onRemove?: (file: FileItem, fileList: FileType<string>[]) => void
+  onSuccess?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
   }) => void
-  progress?: (param: {
+  onProgress?: (param: {
     e: ProgressEvent<XMLHttpRequestEventTarget>
     option: UploadOptions
+    percentage: string | number
   }) => void
-  failure?: (param: {
+  onFailure?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
   }) => void
-  update?: (fileList: FileType<string>[]) => void
-  oversize?: (file: Taro.chooseImage.ImageFile[]) => void
-  change?: (param: { fileList: FileType<string>[] }) => void
-  beforeUpload?: (file: any[]) => Promise<any[]>
-  beforeXhrUpload?: (
-    file: Taro.chooseImage.ImageFile[]
-  ) => Promise<Taro.chooseImage.ImageFile[]>
-  beforeDelete?: (file: FileItem, files: FileType<string>[]) => boolean
-  fileItemClick?: (file: FileItem) => void
+  onUpdate?: (fileList: FileType<string>[]) => void
+  onOversize?: (file: Taro.chooseImage.ImageFile[]) => void
+  onChange?: (param: { fileList: FileType<string>[] }) => void
+  onBeforeUpload?: (file: Taro.chooseImage.ImageFile[]) => Promise<any[]>
+  onBeforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
+  onBeforeDelete?: (file: FileItem, files: FileType<string>[]) => boolean
+  onFileItemClick?: (file: FileItem) => void
 }
 
 const defaultProps = {
@@ -106,10 +102,8 @@ const defaultProps = {
   uploadIconSize: '',
   listType: 'picture',
   name: 'file',
-  accept: '*',
   disabled: false,
   autoUpload: true,
-  multiple: false,
   maximize: Number.MAX_VALUE,
   data: {},
   headers: {},
@@ -117,11 +111,9 @@ const defaultProps = {
   defaultImg: '',
   xhrState: 200,
   timeout: 1000 * 30,
-  withCredentials: false,
   isPreview: true,
   isDeletable: true,
-  capture: false,
-  beforeDelete: (file: FileItem, files: FileType<string>[]) => {
+  onBeforeDelete: (file: FileItem, files: FileType<string>[]) => {
     return true
   },
 } as UploaderProps
@@ -141,6 +133,8 @@ export class FileItem {
 
   path?: string
 
+  percentage: string | number = 0
+
   formData: any = {}
 }
 const InternalUploader: ForwardRefRenderFunction<
@@ -153,40 +147,36 @@ const InternalUploader: ForwardRefRenderFunction<
     uploadIcon,
     uploadIconSize,
     name,
-    accept,
     defaultFileList,
     listType,
     disabled,
-    multiple,
     url,
     defaultImg,
     headers,
     timeout,
     method,
     xhrState,
-    withCredentials,
     data,
     isPreview,
     isDeletable,
     maximum,
-    capture,
     maximize,
     className,
     autoUpload,
     sizeType,
     sourceType,
-    start,
-    removeImage,
-    change,
-    fileItemClick,
-    progress,
-    success,
-    update,
-    failure,
-    oversize,
-    beforeUpload,
-    beforeXhrUpload,
-    beforeDelete,
+    onStart,
+    onRemove,
+    onChange,
+    onFileItemClick,
+    onProgress,
+    onSuccess,
+    onUpdate,
+    onFailure,
+    onOversize,
+    onBeforeUpload,
+    onBeforeXhrUpload,
+    onBeforeDelete,
     ...restProps
   } = { ...defaultProps, ...props }
   const [fileList, setFileList] = useState<FileType<string>[]>([])
@@ -228,13 +218,11 @@ const InternalUploader: ForwardRefRenderFunction<
       // 可以指定是原图还是压缩图，默认二者都有
       sizeType: sizeType,
       sourceType: sourceType,
-      success: onChange,
+      success: onChangeFn,
     })
   }
 
   const executeUpload = (fileItem: FileItem, index: number) => {
-    console.log('executeUpload fileItem', fileItem, index)
-
     const uploadOption = new UploadOptions()
     uploadOption.name = name
     uploadOption.url = url
@@ -245,9 +233,7 @@ const InternalUploader: ForwardRefRenderFunction<
     uploadOption.xhrState = xhrState
     uploadOption.headers = headers
     uploadOption.taroFilePath = fileItem.path
-    uploadOption.beforeXhrUpload = beforeXhrUpload
-
-    console.log('uploadOption', uploadOption)
+    uploadOption.beforeXhrUpload = onBeforeXhrUpload
 
     uploadOption.onStart = (option: UploadOptions) => {
       clearUploadQueue(index)
@@ -260,23 +246,21 @@ const InternalUploader: ForwardRefRenderFunction<
         })
         return [...fileList]
       })
-      start && start(option)
+      onStart && onStart(option)
     }
 
-    uploadOption.onProgress = (
-      e: ProgressEvent<XMLHttpRequestEventTarget>,
-      option: UploadOptions
-    ) => {
+    uploadOption.onProgress = (e: any, option: UploadOptions) => {
       setFileList((fileList: FileType<string>[]) => {
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'uploading'
             item.message = locale.uploader.uploading
+            item.percentage = e.progress
+            onProgress && onProgress({ e, option, percentage: item.percentage })
           }
         })
         return [...fileList]
       })
-      progress && progress({ e, option })
     }
 
     uploadOption.onSuccess = (
@@ -284,7 +268,7 @@ const InternalUploader: ForwardRefRenderFunction<
       option: UploadOptions
     ) => {
       setFileList((fileList: FileType<string>[]) => {
-        update && update(fileList)
+        onUpdate && onUpdate(fileList)
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'success'
@@ -293,8 +277,8 @@ const InternalUploader: ForwardRefRenderFunction<
         })
         return [...fileList]
       })
-      success &&
-        success({
+      onSuccess &&
+        onSuccess({
           responseText,
           option,
         })
@@ -313,8 +297,8 @@ const InternalUploader: ForwardRefRenderFunction<
         })
         return [...fileList]
       })
-      failure &&
-        failure({
+      onFailure &&
+        onFailure({
           responseText,
           option,
         })
@@ -336,6 +320,7 @@ const InternalUploader: ForwardRefRenderFunction<
   const readFile = (files: Taro.chooseImage.ImageFile[]) => {
     const imgReg = /\.(png|jpeg|jpg|webp|gif)$/i
     files.forEach((file: Taro.chooseImage.ImageFile, index: number) => {
+      console.log('file', file)
       let fileType = file.type
       const fileItem = new FileItem()
       if (!fileType && imgReg.test(file.path)) {
@@ -381,7 +366,7 @@ const InternalUploader: ForwardRefRenderFunction<
       return true
     })
     if (oversizes.length) {
-      oversize && oversize(files)
+      onOversize && onOversize(files)
     }
 
     let currentFileLength = filterFile.length + fileList.length
@@ -393,20 +378,20 @@ const InternalUploader: ForwardRefRenderFunction<
 
   const onDelete = (file: FileItem, index: number) => {
     clearUploadQueue(index)
-    if (beforeDelete && beforeDelete(file, fileList)) {
+    if (onBeforeDelete && onBeforeDelete(file, fileList)) {
       fileList.splice(index, 1)
-      removeImage && removeImage(file, fileList)
+      onRemove && onRemove(file, fileList)
       setFileList([...fileList])
     } else {
       console.log(locale.uploader.deleteWord)
     }
   }
 
-  const onChange = (res: Taro.chooseImage.SuccessCallbackResult) => {
+  const onChangeFn = (res: Taro.chooseImage.SuccessCallbackResult) => {
     // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
     const { tempFiles } = res
-    if (beforeUpload) {
-      beforeUpload(tempFiles).then((f: Array<Taro.chooseImage.ImageFile>) => {
+    if (onBeforeUpload) {
+      onBeforeUpload(tempFiles).then((f: Array<Taro.chooseImage.ImageFile>) => {
         const _files: Taro.chooseImage.ImageFile[] = filterFiles(f)
         readFile(_files)
       })
@@ -415,11 +400,11 @@ const InternalUploader: ForwardRefRenderFunction<
       readFile(_files)
     }
 
-    props.change && props.change({ fileList })
+    onChange && onChange({ fileList })
   }
 
   const handleItemClick = (file: FileItem) => {
-    fileItemClick && fileItemClick(file)
+    onFileItemClick && onFileItemClick(file)
   }
 
   return (
@@ -538,7 +523,14 @@ const InternalUploader: ForwardRefRenderFunction<
                     name="del"
                     onClick={() => onDelete(item, index)}
                   />
-                  {/* 缺少进度条组件，待更新 */}
+                  {item.status === 'uploading' && (
+                    <Progress
+                      size="small"
+                      percentage={item.percentage}
+                      strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
+                      showText={false}
+                    />
+                  )}
                 </div>
               )}
             </div>
