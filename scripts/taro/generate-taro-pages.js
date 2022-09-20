@@ -85,7 +85,7 @@ const createIndexConfig = (enName, package) => {
           fileString = lines.join('\n')
           fsExtra.outputFile(fileDemoPath, fileString, 'utf8', (error) => {
             if (error) console.log('Error', error)
-            console.log(`文件写入成功`)
+            // console.log(`文件写入成功`)
           })
         }
       })

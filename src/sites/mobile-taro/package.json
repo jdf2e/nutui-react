@@ -37,6 +37,7 @@
   "dependencies": {
     "@babel/runtime": "^7.7.7",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
+    "@tarojs/cli": "^3.5.5",
     "@tarojs/components": "^3.5.5",
     "@tarojs/plugin-framework-react": "^3.5.5",
     "@tarojs/plugin-html": "^3.5.5",
