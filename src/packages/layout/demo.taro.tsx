@@ -5,7 +5,7 @@ import '@/packages/layout/demo.scss'
 const LayoutDemo = () => {
   return (
     <>
-      <div className="demo">
+      <div className="demo full">
         <h2>基础布局</h2>
         <div className="box-item">
           <Row>
