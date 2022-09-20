@@ -72,7 +72,7 @@ export interface UploaderProps extends IComponent {
   defaultImg: string
   style: React.CSSProperties
   start?: (option: UploadOptions) => void
-  removeImage?: (file: FileItem, fileList: FileItem[]) => void
+  removeImage?: (file: FileItem, fileList: FileType<string>[]) => void
   success?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
@@ -85,14 +85,14 @@ export interface UploaderProps extends IComponent {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
   }) => void
-  update?: (fileList: any[]) => void
+  update?: (fileList: FileType<string>[]) => void
   oversize?: (file: Taro.chooseImage.ImageFile[]) => void
-  change?: (param: { fileList: any[] }) => void
+  change?: (param: { fileList: FileType<string>[] }) => void
   beforeUpload?: (file: any[]) => Promise<any[]>
   beforeXhrUpload?: (
     file: Taro.chooseImage.ImageFile[]
   ) => Promise<Taro.chooseImage.ImageFile[]>
-  beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
+  beforeDelete?: (file: FileItem, files: FileType<string>[]) => boolean
   fileItemClick?: (file: FileItem) => void
 }
 
@@ -121,7 +121,7 @@ const defaultProps = {
   isPreview: true,
   isDeletable: true,
   capture: false,
-  beforeDelete: (file: FileItem, files: FileItem[]) => {
+  beforeDelete: (file: FileItem, files: FileType<string>[]) => {
     return true
   },
 } as UploaderProps
@@ -129,7 +129,7 @@ const defaultProps = {
 export class FileItem {
   status: FileItemStatus = 'ready'
 
-  message = '准备中..'
+  message: string = '准备中..'
 
   uid: string = new Date().getTime().toString()
 
@@ -189,11 +189,10 @@ const InternalUploader: ForwardRefRenderFunction<
     beforeDelete,
     ...restProps
   } = { ...defaultProps, ...props }
-  const [fileList, setFileList] = useState<any>([])
+  const [fileList, setFileList] = useState<FileType<string>[]>([])
   const [uploadQueue, setUploadQueue] = useState<Promise<Upload>[]>([])
 
   useEffect(() => {
-    console.log('defaultFileList', defaultFileList)
     if (defaultFileList) {
       setFileList(defaultFileList)
     }
@@ -252,7 +251,7 @@ const InternalUploader: ForwardRefRenderFunction<
 
     uploadOption.onStart = (option: UploadOptions) => {
       clearUploadQueue(index)
-      setFileList((fileList: FileItem[]) => {
+      setFileList((fileList: FileType<string>[]) => {
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'ready'
@@ -268,7 +267,7 @@ const InternalUploader: ForwardRefRenderFunction<
       e: ProgressEvent<XMLHttpRequestEventTarget>,
       option: UploadOptions
     ) => {
-      setFileList((fileList: FileItem[]) => {
+      setFileList((fileList: FileType<string>[]) => {
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'uploading'
@@ -284,7 +283,7 @@ const InternalUploader: ForwardRefRenderFunction<
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      setFileList((fileList: FileItem[]) => {
+      setFileList((fileList: FileType<string>[]) => {
         update && update(fileList)
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
@@ -305,7 +304,7 @@ const InternalUploader: ForwardRefRenderFunction<
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      setFileList((fileList: FileItem[]) => {
+      setFileList((fileList: FileType<string>[]) => {
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'error'
@@ -364,7 +363,7 @@ const InternalUploader: ForwardRefRenderFunction<
         fileItem.url = file.path
       }
 
-      fileList.push(fileItem)
+      fileList.push(fileItem as any)
       setFileList([...fileList])
       executeUpload(fileItem, index)
     })

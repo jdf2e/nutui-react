@@ -58,6 +58,8 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
     onClickIcon,
     onClickBack,
     onClickRight,
+    iconClassPrefix,
+    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -88,8 +90,8 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
       <div className={`${b('left')}`} onClick={(e) => onClickBack(e)}>
         {leftShow && (
           <Icon
-            classPrefix={props.iconClassPrefix}
-            fontClassName={props.iconFontClassName}
+            classPrefix={iconClassPrefix}
+            fontClassName={iconFontClassName}
             name="left"
             color="#979797"
           />
@@ -111,8 +113,8 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
         {titIcon && (
           <div onClick={(e) => onClickIcon(e)}>
             <Icon
-              classPrefix={props.iconClassPrefix}
-              fontClassName={props.iconFontClassName}
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               name={titIcon}
             />
           </div>

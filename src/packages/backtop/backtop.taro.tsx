@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 
 import Icon from '@/packages/icon/index.taro'
+import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 declare const window: any
-import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface BackTopProps extends IComponent {
   className?: string
@@ -45,6 +45,8 @@ export const BackTop: FunctionComponent<
     duration,
     style,
     onClick,
+    iconClassPrefix,
+    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -149,8 +151,8 @@ export const BackTop: FunctionComponent<
     >
       {children || (
         <Icon
-          classPrefix={props.iconClassPrefix}
-          fontClassName={props.iconFontClassName}
+          classPrefix={iconClassPrefix}
+          fontClassName={iconFontClassName}
           size="19px"
           className="nut-backtop-main"
           name="top"

@@ -57,6 +57,8 @@ export const Avatar: FunctionComponent<
     style,
     activeAvatar,
     onError,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -161,8 +163,8 @@ export const Avatar: FunctionComponent<
               {url && <img src={url} alt={alt} onError={errorEvent} />}
               {icon && (
                 <Icon
-                  classPrefix={props.iconClassPrefix}
-                  fontClassName={props.iconFontClassName}
+                  classPrefix={iconClassPrefix}
+                  fontClassName={iconFontClassName}
                   className="icon"
                   name={iconStyles}
                 />

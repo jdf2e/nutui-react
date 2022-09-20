@@ -65,6 +65,8 @@ export const Infiniteloading: FunctionComponent<
     refresh,
     loadMore,
     scrollChange,
+    iconClassPrefix,
+    iconFontClassName,
     ...restProps
   } = {
     ...defaultProps,
@@ -255,8 +257,8 @@ export const Infiniteloading: FunctionComponent<
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="top-box">
           <Icon
-            classPrefix={props.iconClassPrefix}
-            fontClassName={props.iconFontClassName}
+            classPrefix={iconClassPrefix}
+            fontClassName={iconFontClassName}
             className="top-img"
             name={pullIcon}
           />
@@ -270,8 +272,8 @@ export const Infiniteloading: FunctionComponent<
         {isInfiniting ? (
           <div className="bottom-box">
             <Icon
-              classPrefix={props.iconClassPrefix}
-              fontClassName={props.iconFontClassName}
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               className="bottom-img"
               name={loadIcon}
             />

@@ -1,5 +1,4 @@
 import React from 'react'
-import logo from '@/sites/assets/images/logo-red.png'
 import Taro from '@tarojs/taro'
 import pkg from '@/config.json'
 import '@/sites/assets/styles/reset.scss'
@@ -33,7 +32,11 @@ const Index = () => {
     <>
       <div className="index">
         <div className="index-header">
-          <img src={logo} alt="" srcSet="" />
+          <img
+            src={`https://img14.360buyimg.com/imagetools/jfs/t1/117879/25/28831/6279/6329723bE66715a2f/5f099b8feca9e8cc.png`}
+            alt=""
+            srcSet=""
+          />
           <div className="info">
             <h1>NutUI React</h1>
             <p>京东风格的轻量级小程序组件库 React 版</p>

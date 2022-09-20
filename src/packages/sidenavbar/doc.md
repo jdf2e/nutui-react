@@ -14,7 +14,7 @@ import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 
 :::demo
 ```tsx
-import  React from "react";
+import  React,{useState} from "react";
 import {Cell, SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 
 const App = () => {
@@ -74,7 +74,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import  React,{useState} from "react";
 import {Cell,SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 
 const App = () => {

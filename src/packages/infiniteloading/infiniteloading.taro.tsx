@@ -69,6 +69,8 @@ export const Infiniteloading: FunctionComponent<
     refresh,
     loadMore,
     scrollChange,
+    iconClassPrefix,
+    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -116,7 +118,7 @@ export const Infiniteloading: FunctionComponent<
 
   const getParentElement = (el: string) => {
     return Taro.createSelectorQuery().select(
-      !!containerId ? `#${containerId} #${el}` : `#${el}`
+      containerId ? `#${containerId} #${el}` : `#${el}`
     )
   }
 
@@ -155,16 +157,15 @@ export const Infiniteloading: FunctionComponent<
   const lower = () => {
     if (direction.current == 'up' || !hasMore || isInfiniting) {
       return false
-    } else {
-      setIsInfiniting(true)
-      loadMore && loadMore(infiniteDone)
     }
+    setIsInfiniting(true)
+    loadMore && loadMore(infiniteDone)
   }
 
   return (
     <ScrollView
       className={classes}
-      scrollY={true}
+      scrollY
       id="scroller"
       style={{ height: '100%' }}
       onScroll={scrollAction}
@@ -173,8 +174,8 @@ export const Infiniteloading: FunctionComponent<
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="top-box">
           <Icon
-            classPrefix={props.iconClassPrefix}
-            fontClassName={props.iconFontClassName}
+            classPrefix={iconClassPrefix}
+            fontClassName={iconFontClassName}
             className="top-img"
             name={pullIcon}
           />
@@ -188,8 +189,8 @@ export const Infiniteloading: FunctionComponent<
         {isInfiniting ? (
           <div className="bottom-box">
             <Icon
-              classPrefix={props.iconClassPrefix}
-              fontClassName={props.iconFontClassName}
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               className="bottom-img"
               name={loadIcon}
             />

@@ -38,7 +38,10 @@ export const Checkbox: FunctionComponent<
   Partial<CheckboxProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > & { Group: typeof CheckboxGroup } = (props) => {
-  const { children } = { ...defaultProps, ...props }
+  const { children } = {
+    ...defaultProps,
+    ...props,
+  }
   const b = bem('checkbox')
   const {
     iconName,
@@ -85,8 +88,8 @@ export const Checkbox: FunctionComponent<
   const renderIcon = () => {
     return (
       <Icon
-        classPrefix={props.iconClassPrefix}
-        fontClassName={props.iconFontClassName}
+        classPrefix={iconClassPrefix}
+        fontClassName={iconFontClassName}
         name={getIconName()}
         size={iconSize}
         className={color()}

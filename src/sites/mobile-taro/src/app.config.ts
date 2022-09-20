@@ -48,8 +48,8 @@ const subPackages = [
     root: 'feedback',
     pages: [
       'pages/actionsheet/index',
-      'pages/infiniteloading/index',
       'pages/switch/index',
+      'pages/toast/index',
     ],
   },
   {
@@ -69,6 +69,7 @@ const subPackages = [
       'pages/collapse/index',
       'pages/empty/index',
       'pages/progress/index',
+      'pages/audio/index',
     ],
   },
   {

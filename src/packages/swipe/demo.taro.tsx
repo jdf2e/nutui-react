@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { SwipeInstance, Swipe } from './swipe.taro'
 import { useTranslate } from '../../sites/assets/locale'
 import Cell from '@/packages/cell/index.taro'
@@ -121,10 +121,17 @@ const SwipeDemo = () => {
       deleteTips: 'Apakah Anda yakin untuk menghapus?',
     },
   })
+  const [show, SetShow] = useState(false)
+  const [toastMsg, SetToastMsg] = useState('')
+  const toastShow = (msg: any) => {
+    SetToastMsg(msg)
+    SetShow(true)
+  }
 
   const refDom = useRef<SwipeInstance>(null)
   const handleChange = () => {
-    Toast.text(translated.click)
+    // Toast.text(translated.click)
+    toastShow(translated.click)
   }
   const beforeClose = (postion: string) => {
     Dialog.alert({
@@ -138,7 +145,8 @@ const SwipeDemo = () => {
   }
 
   const handleClose = () => {
-    Toast.text('close')
+    // Toast.text('close')
+    toastShow('close')
   }
 
   return (
@@ -185,7 +193,8 @@ const SwipeDemo = () => {
           onActionClick={handleChange}
           onOpen={({ name, position }) => {
             console.log(name, position)
-            Toast.text(translated.open)
+            // Toast.text(translated.open)
+            toastShow(translated.open)
           }}
           onClose={handleClose}
         >
@@ -233,6 +242,14 @@ const SwipeDemo = () => {
             </div>
           </Cell>
         </Swipe>
+        <Toast
+          type="text"
+          visible={show}
+          msg={toastMsg}
+          onClose={() => {
+            SetShow(false)
+          }}
+        />
       </div>
     </>
   )

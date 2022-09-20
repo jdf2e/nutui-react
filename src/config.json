@@ -196,6 +196,17 @@
           "taro": true,
           "exportEmpty": true,
           "author": "yangxiaolu"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Sticky",
+          "type": "component",
+          "cName": "粘性布局",
+          "desc": "效果同 css 中的 position: sticky",
+          "sort": 7,
+          "show": true,
+          "taro": false,
+          "author": "hx"
         }
       ]
     },
@@ -617,7 +628,7 @@
           "desc": "列表滚动到底部自动加载更多数据。",
           "sort": 5,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "swag~jun"
         },
         {
@@ -646,11 +657,12 @@
           "version": "0.1.0",
           "name": "Toast",
           "type": "component",
+          "tarodoc": true,
           "cName": "吐司",
           "desc": "轻提示",
           "sort": 1,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "VickyYe"
         },
         {
@@ -930,6 +942,7 @@
           "desc": "原生audio实现的音频播放器",
           "sort": 21,
           "show": true,
+          "taro":true,
           "author": "libin"
         },
         {

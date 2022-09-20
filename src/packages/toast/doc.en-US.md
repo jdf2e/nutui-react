@@ -313,7 +313,7 @@ export default App
 | Attribute                | Description              |  Type         | Default                        |
 | ------------------- | -------------- | ------------- | ----------------------------- |
 | id                  | Identifier, share one instance at the same time, default to multiple instances| String/Number | -            |
-| duration            | Toast duration(ms), won't disappear if value is 0      | Number        | 2000                          |
+| duration            | Toast duration(s), won't disappear if value is 0      | Number        | 2                          |
 | title `v1.3.0`           | title     | String        |           -             |
 | center  | Whether to display in the middle of the page (display at the bottom when false) | Boolean| true                          |
 | bottom | The distance from the bottom of the page (px or %), which takes effect when option.center is false | String| 30px       |

@@ -5,7 +5,7 @@ import bem from '@/utils/bem'
 
 export interface DragProps {
   attract: boolean
-  direction: undefined | string
+  direction: 'x' | 'y' | 'lock' | undefined
   boundary: {
     top: number
     left: number

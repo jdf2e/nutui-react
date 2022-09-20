@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Uploader } from '@/packages/nutui.react.taro'
-import Taro from '@tarojs/taro'
 
 export type FileItemStatus =
   | 'ready'
@@ -190,7 +190,7 @@ const UploaderDemo = () => {
   const onStart = () => {
     console.log(translated.d06e873e)
   }
-  const onDelete = (file: FileItem, fileList: FileItem[]) => {
+  const onDelete = (file: FileItem, fileList: FileType<string>[]) => {
     console.log(translated.ca3903f3, file, fileList)
   }
   const beforeUpload = async (files: File[]) => {

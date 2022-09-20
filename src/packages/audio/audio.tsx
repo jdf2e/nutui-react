@@ -69,6 +69,8 @@ export const Audio: FunctionComponent<
     onMute,
     onCanPlay,
     children,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -134,15 +136,15 @@ export const Audio: FunctionComponent<
           >
             {playing ? (
               <Icon
-                classPrefix={props.iconClassPrefix}
-                fontClassName={props.iconFontClassName}
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
                 name="service"
                 className="nut-icon-loading"
               />
             ) : (
               <Icon
-                classPrefix={props.iconClassPrefix}
-                fontClassName={props.iconFontClassName}
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
                 name="service"
               />
             )}
