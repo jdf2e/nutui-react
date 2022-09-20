@@ -33,7 +33,7 @@ const LayoutDemo = () => {
   })
   return (
     <>
-      <div className="demo">
+      <div className="demo full">
         <h2>{translated.title1}</h2>
         <div className="box-item">
           <Row>
