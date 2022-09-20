@@ -530,6 +530,7 @@
           "version": "0.1.0",
           "name": "Uploader",
           "type": "component",
+          "tarodoc": true,
           "cName": "上传",
           "desc": "用于将本地的图片或文件上传至服务器。",
           "sort": 1,
