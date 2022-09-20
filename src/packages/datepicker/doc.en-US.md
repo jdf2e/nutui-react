@@ -87,7 +87,7 @@ const App = () => {
   const confirm3 = (values:(string|number)[],options:PickerOption[])=>{
     const date = values.slice(0, 3).join('-');
     const time = values.slice(3).join(':');
-    setDesc3(date + ' ' + time)
+    setDesc3(`${date  } ${  time}`)
   }
   return ( 
     <>   

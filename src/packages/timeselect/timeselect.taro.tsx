@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import Popup from '@/packages/popup'
-import TimePannel from '@/packages/timepannel'
-import TimeDetail from '@/packages/timedetail'
+import Popup from '@/packages/popup/index.taro'
+import TimePannel from '@/packages/timepannel/index.taro'
+import TimeDetail from '@/packages/timedetail/index.taro'
 import bem from '@/utils/bem'
-import { useConfig } from '@/packages/configprovider'
-import { TimeType } from '@/packages/timedetail/timedetail'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { TimeType } from '@/packages/timedetail/timedetail.taro'
 
 export interface DateType {
   'pannel-key'?: string | number

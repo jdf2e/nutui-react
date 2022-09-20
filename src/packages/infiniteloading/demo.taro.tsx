@@ -93,9 +93,16 @@ const InfiniteloadingDemo = () => {
 
   const refresh = (done: () => void) => {
     setTimeout(() => {
-      Toast.text(translated['83913e71'])
+      //   Toast.text(translated['83913e71'])
+      toastShow(translated['83913e71'])
       done()
     }, 1000)
+  }
+  const [show, SetShow] = useState(false)
+  const [toastMsg, SetToastMsg] = useState('')
+  const toastShow = (msg: any) => {
+    SetToastMsg(msg)
+    SetShow(true)
   }
 
   const init = () => {
@@ -132,29 +139,6 @@ const InfiniteloadingDemo = () => {
           </ul>
         </Cell>
 
-        <h2>{translated.eb4236fe}</h2>
-        <Cell>
-          <ul className="infiniteUl" id="refreshScroll">
-            <Infiniteloading
-              pullIcon="JD"
-              containerId="refreshScroll"
-              useWindow={false}
-              isOpenRefresh
-              hasMore={refreshHasMore}
-              loadMore={refreshLoadMore}
-              refresh={refresh}
-            >
-              {refreshList.map((item, index) => {
-                return (
-                  <li className="infiniteLi" key={index}>
-                    {item}
-                  </li>
-                )
-              })}
-            </Infiniteloading>
-          </ul>
-        </Cell>
-
         <h2>{translated['9ed40460']}</h2>
         <Cell>
           <ul className="infiniteUl" id="customScroll">
@@ -176,6 +160,13 @@ const InfiniteloadingDemo = () => {
             </Infiniteloading>
           </ul>
         </Cell>
+        <Toast
+          visible={show}
+          msg={toastMsg}
+          onClose={() => {
+            SetShow(false)
+          }}
+        />
       </div>
     </>
   )

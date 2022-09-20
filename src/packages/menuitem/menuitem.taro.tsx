@@ -1,16 +1,18 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classnames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Icon from '@/packages/icon/index.taro'
 import { Overlay } from '../overlay/overlay.taro'
+
+import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface OptionItem {
   text: string
   value: string | number
 }
 
-export interface MenuItemProps {
+export interface MenuItemProps extends IComponent {
   className: string
   style: React.CSSProperties
   title: React.ReactNode
@@ -29,6 +31,7 @@ export interface MenuItemProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   className: '',
   style: {},
   columns: 1,
@@ -50,14 +53,14 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
     value,
     columns,
     title,
-    iconClassPrefix,
-    fontClassName,
     optionsIcon,
     direction,
     onChange,
     activeTitleClass,
     inactiveTitleClass,
     children,
+    iconClassPrefix,
+    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -95,10 +98,9 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
     height: 0,
   })
   const getParentOffset = () => {
-    setTimeout(() => {
+    setTimeout(async () => {
       const p = parent.parent().current
-      const rect = p.getBoundingClientRect()
-      console.log(rect, p.offsetTop, window.screenTop)
+      const rect = await p.getBoundingClientRect()
       setPosition({
         height: rect.height,
         top: rect.top,
@@ -176,10 +178,10 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
                 >
                   {item.value === _value ? (
                     <Icon
+                      classPrefix={iconClassPrefix}
+                      fontClassName={iconFontClassName}
                       className={getIconCName(item.value, value)}
                       name={optionsIcon}
-                      classPrefix={iconClassPrefix}
-                      fontClassName={fontClassName}
                       color={activeColor}
                     />
                   ) : null}

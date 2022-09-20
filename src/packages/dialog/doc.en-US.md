@@ -31,30 +31,26 @@ const App = () => {
             title: 'Basic bullet',
             content: 'Support function calls and module call.'
         });
-        }}>
-     </Cell>
+        }} />
       <Cell title="Non -title bullet box" onClick={() => {
             Dialog.alert({
             content: 'Non -title bullet box'
         });
-        }}>
-     </Cell>
+        }} />
       <Cell title="Prompt bomb frame" onClick={() => {
         Dialog.alert({
             title: 'Kind tips',
             content: 'Support function calls and module call.',
             noCancelBtn: true
         });
-        }}>
-     </Cell>
+        }} />
       <Cell title="The bottom button is called vertically" onClick={() => {
         Dialog.alert({
             title: 'Kind tips',
             content: 'Support function calls and module call.',
             footerDirection: 'vertical'
         });
-        }}>
-     </Cell>
+        }} />
     </>
   )
 }
@@ -68,8 +64,7 @@ export default App;
 :::demo
 
 ```tsx
-import React from "react";
-import {useState} from 'react'
+import React, {useState} from "react";
 import { Cell,Dialog } from '@nutui/nutui-react';
 
 const App = () => {

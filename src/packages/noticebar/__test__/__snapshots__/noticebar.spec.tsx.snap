@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`noticebar base test 1`] = `
+<div>
+  <div
+    class="nut-noticebar "
+  >
+    <div
+      class="nut-noticebar-page"
+    >
+      <div
+        class="left-icon"
+        style="background-image: url();"
+      >
+        <i
+          class="nutui-iconfont nut-icon nut-icon-notice "
+          style="font-size: 16px; width: 16px; height: 16px;"
+        />
+      </div>
+      <div
+        class="wrap"
+      >
+        <div
+          class="content  "
+          style="animation-delay: 1s; animation-duration: 0s; transform: translateX(0);"
+        >
+          NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`scrollable test 1`] = `
+<div>
+  <div
+    class="nut-noticebar "
+  >
+    <div
+      class="nut-noticebar-page"
+    >
+      <div
+        class="left-icon"
+        style="background-image: url();"
+      >
+        <i
+          class="nutui-iconfont nut-icon nut-icon-notice "
+          style="font-size: 16px; width: 16px; height: 16px;"
+        />
+      </div>
+      <div
+        class="wrap"
+      >
+        <div
+          class="content  "
+          style="animation-delay: 1s; animation-duration: 0s; transform: translateX(0);"
+        >
+          NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

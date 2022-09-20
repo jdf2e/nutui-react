@@ -4,7 +4,9 @@ import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 import { useConfig } from '@/packages/configprovider'
 
-export interface InfiniteloadingProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface InfiniteloadingProps extends IComponent {
   hasMore: boolean
   threshold: number
   containerId: string
@@ -24,7 +26,9 @@ export interface InfiniteloadingProps {
 }
 
 declare let window: Window & { webkitRequestAnimationFrame: any }
+
 const defaultProps = {
+  ...ComponentDefaults,
   hasMore: true,
   threshold: 200,
   containerId: '',
@@ -61,6 +65,8 @@ export const Infiniteloading: FunctionComponent<
     refresh,
     loadMore,
     scrollChange,
+    iconClassPrefix,
+    iconFontClassName,
     ...restProps
   } = {
     ...defaultProps,
@@ -152,6 +158,7 @@ export const Infiniteloading: FunctionComponent<
   }
 
   const touchMove = (event: any) => {
+    console.log('touchMove', event)
     distance.current = event.touches[0].pageY - y.current
     if (distance.current > 0 && isTouching.current) {
       event.preventDefault()
@@ -249,7 +256,12 @@ export const Infiniteloading: FunctionComponent<
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="top-box">
-          <Icon className="top-img" name={pullIcon} />
+          <Icon
+            classPrefix={iconClassPrefix}
+            fontClassName={iconFontClassName}
+            className="top-img"
+            name={pullIcon}
+          />
           <span className="top-text">
             {pullTxt || locale.infiniteloading.pullRefreshText}
           </span>
@@ -259,7 +271,12 @@ export const Infiniteloading: FunctionComponent<
       <div className="nut-infinite-bottom">
         {isInfiniting ? (
           <div className="bottom-box">
-            <Icon className="bottom-img" name={loadIcon} />
+            <Icon
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
+              className="bottom-img"
+              name={loadIcon}
+            />
             <div className="bottom-text">
               {loadTxt || locale.infiniteloading.loadText}
             </div>

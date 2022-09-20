@@ -4,7 +4,9 @@ import { useHistory } from 'react-router-dom'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
-export interface TabbarItemProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface TabbarItemProps extends IComponent {
   dot: boolean
   size: string | number
   classPrefix: string
@@ -19,7 +21,9 @@ export interface TabbarItemProps {
   index: number
   handleClick: (idx: number) => void
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   dot: false,
   size: '',
   classPrefix: 'nut-icon',
@@ -52,6 +56,8 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     unactiveColor,
     index,
     handleClick,
+    iconClassPrefix,
+    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -96,7 +102,12 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
 
         {icon && (
           <div>
-            <Icon size={size} name={icon} classPrefix={classPrefix} />
+            <Icon
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
+              size={size}
+              name={icon}
+            />
           </div>
         )}
         <div

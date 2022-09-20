@@ -10,8 +10,15 @@ const ShortPasswordDemo = () => {
   const change = (value: number | string) => {
     setValue(value)
   }
+  const [show, SetShow] = useState(false)
+  const [toastMsg, SetToastMsg] = useState('')
+  const toastShow = (msg: any) => {
+    SetToastMsg(msg)
+    SetShow(true)
+  }
   const onTips = () => {
-    Toast.text('执行忘记密码提示语')
+    // Toast.text('执行忘记密码提示语')
+    toastShow('执行忘记密码提示语')
   }
   return (
     <div className="demo">
@@ -88,6 +95,14 @@ const ShortPasswordDemo = () => {
           setValue('')
         }}
         onTips={() => onTips()}
+      />
+      <Toast
+        type="text"
+        visible={show}
+        msg={toastMsg}
+        onClose={() => {
+          SetShow(false)
+        }}
       />
     </div>
   )

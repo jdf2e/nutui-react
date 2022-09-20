@@ -24,6 +24,7 @@ interface T {
   a4a58638: string
   '2cd0f3be': string
   e1699442: string
+  c3a08065: string
 }
 const ActionSheetDemo = () => {
   const [translated] = useTranslate<T>({
@@ -42,6 +43,7 @@ const ActionSheetDemo = () => {
       a4a58638: '带取消按钮）',
       '2cd0f3be': '取消',
       e1699442: '这是一段描述信息',
+      c3a08065: '自定义内容',
     },
     'zh-TW': {
       '0f87770f': '選項一',
@@ -58,10 +60,11 @@ const ActionSheetDemo = () => {
       a4a58638: '帶取消按鈕）',
       '2cd0f3be': '取消',
       e1699442: '這是一段描述資訊',
+      c3a08065: '自定義內容',
     },
     'en-US': {
       '0f87770f': 'Option One',
-      e23e5e80: 'Option two',
+      e23e5e80: 'Option Two',
       b6102b61: 'Option Three',
       acc5939e: 'Description Information',
       '85dae65b': 'Shading Options',
@@ -74,6 +77,7 @@ const ActionSheetDemo = () => {
       a4a58638: 'with cancel button)',
       '2cd0f3be': 'Cancel',
       e1699442: 'This is a descriptive message',
+      c3a08065: 'Custom content',
     },
   })
 
@@ -81,6 +85,7 @@ const ActionSheetDemo = () => {
   const [isVisible2, setIsVisible2] = useState(false)
   const [isVisible3, setIsVisible3] = useState(false)
   const [isVisible4, setIsVisible4] = useState(false)
+  const [isVisible5, setIsVisible5] = useState(false)
   const [val1, setVal1] = useState('')
   const [val2, setVal2] = useState('')
   const [val3, setVal3] = useState('')
@@ -161,10 +166,15 @@ const ActionSheetDemo = () => {
           <div className="selected-option">{val3}</div>
         </Cell>
         <h2>{translated.c3a08064}</h2>
-
         <Cell isLink onClick={() => setIsVisible4(!isVisible4)}>
           <span>
             <label htmlFor={translated.c3a08064}>{translated.c3a08064}</label>
+          </span>
+        </Cell>
+        <h2>{translated.c3a08065}</h2>
+        <Cell isLink onClick={() => setIsVisible5(!isVisible4)}>
+          <span>
+            <label htmlFor={translated.c3a08065}>{translated.c3a08065}</label>
           </span>
         </Cell>
 
@@ -172,37 +182,48 @@ const ActionSheetDemo = () => {
         <ActionSheet
           visible={isVisible1}
           menuItems={menuItemsOne}
-          choose={chooseItem}
-          cancel={() => setIsVisible1(false)}
+          onChoose={chooseItem}
+          onCancel={() => setIsVisible1(false)}
         />
         {/* demo(带取消按钮） */}
         <ActionSheet
           visible={isVisible2}
           cancelTxt={translated['2cd0f3be']}
           menuItems={menuItemsOne}
-          choose={chooseItemTwo}
-          cancel={() => setIsVisible2(false)}
+          onChoose={chooseItemTwo}
+          onCancel={() => setIsVisible2(false)}
         />
         {/* 展示描述信息 */}
         <ActionSheet
           visible={isVisible3}
           description={translated.e1699442}
-          menuItems={menuItemsTwo}
-          choose={chooseItemThree}
           cancelTxt={translated['2cd0f3be']}
-          cancel={() => setIsVisible3(false)}
+          menuItems={menuItemsTwo}
+          onChoose={chooseItemThree}
+          onCancel={() => setIsVisible3(false)}
         />
         {/* demo 选项状态 */}
         <ActionSheet
           visible={isVisible4}
           cancelTxt={translated['2cd0f3be']}
-          cancel={() => setIsVisible4(false)}
           menuItems={menuItemsThree}
           chooseTagValue={translated['85dae65b']}
-          choose={() => {
+          onChoose={() => {
             setIsVisible4(false)
           }}
+          onCancel={() => setIsVisible4(false)}
         />
+        <ActionSheet
+          visible={isVisible5}
+          cancelTxt={translated['2cd0f3be']}
+          chooseTagValue={translated['85dae65b']}
+          onChoose={() => {
+            setIsVisible5(false)
+          }}
+          onCancel={() => setIsVisible5(false)}
+        >
+          <div style={{ textAlign: 'center' }}>1223</div>
+        </ActionSheet>
       </div>
     </>
   )

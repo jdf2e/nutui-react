@@ -9,7 +9,9 @@ import classNames from 'classnames'
 import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 
-export interface InputNumberProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface InputNumberProps extends IComponent {
   disabled: boolean
   buttonSize: string | number
   min: string | number
@@ -32,7 +34,9 @@ export interface InputNumberProps {
     e: MouseEvent | ChangeEvent<HTMLInputElement>
   ) => void
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   disabled: false,
   buttonSize: '',
   min: 1,
@@ -70,6 +74,8 @@ export const InputNumber: FunctionComponent<
     overlimit,
     blur,
     focus,
+    iconClassPrefix,
+    iconFontClassName,
     ...restProps
   } = {
     ...defaultProps,
@@ -183,6 +189,8 @@ export const InputNumber: FunctionComponent<
   return (
     <div className={classes} style={styles} {...restProps}>
       <Icon
+        classPrefix={iconClassPrefix}
+        fontClassName={iconFontClassName}
         className={iconMinusClasses}
         size={buttonSize}
         name="minus"
@@ -201,6 +209,8 @@ export const InputNumber: FunctionComponent<
         onFocus={focusValue}
       />
       <Icon
+        classPrefix={iconClassPrefix}
+        fontClassName={iconFontClassName}
         className={iconAddClasses}
         size={buttonSize}
         name="plus"

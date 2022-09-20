@@ -1,8 +1,10 @@
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
 
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 
-export interface BadgeProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface BadgeProps extends IComponent {
   value: any
   dot: boolean
   max: number
@@ -15,7 +17,9 @@ export interface BadgeProps {
 }
 
 export type BadgeType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
+
 const defaultProps = {
+  ...ComponentDefaults,
   value: '',
   dot: false,
   max: 10000,
@@ -26,7 +30,17 @@ const defaultProps = {
   icons: '',
 } as BadgeProps
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
-  const { children, dot, top, right, zIndex, color, icons } = {
+  const {
+    children,
+    dot,
+    top,
+    right,
+    zIndex,
+    color,
+    icons,
+    iconClassPrefix,
+    iconFontClassName,
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -41,17 +55,24 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   }
   const getStyle = () => {
     const style: CSSProperties = {}
-    style.top = `${top}px`
-    style.right = `${right}px`
+    style.top = `${Number(top) || parseFloat(top) || 0}px`
+    style.right = `${Number(right) || parseFloat(right) || 0}px`
     style.zIndex = zIndex
-    style.background = color
+    style.backgroundColor = color
     return style
   }
   return (
     <div className="nut-badge">
       {icons !== '' && (
         <div className="slot-icons">
-          <Icon className="_icon" name={icons} color="#ffffff" size="12" />
+          <Icon
+            classPrefix={iconClassPrefix}
+            fontClassName={iconFontClassName}
+            className="_icon"
+            name={icons}
+            color="#ffffff"
+            size="12"
+          />
         </div>
       )}
       <div>{children}</div>

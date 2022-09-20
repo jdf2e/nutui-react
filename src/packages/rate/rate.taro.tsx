@@ -3,7 +3,9 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
-export interface RateProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface RateProps extends IComponent {
   count: string | number
   modelValue: string | number
   minimizeValue: string | number
@@ -16,9 +18,11 @@ export interface RateProps {
   readonly: boolean
   allowHalf: boolean
   spacing: string | number
-  change: (val: number) => void
+  onChange: (val: number) => void
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   count: 5,
   modelValue: 0,
   minimizeValue: 0,
@@ -46,8 +50,13 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     readonly,
     allowHalf,
     spacing,
-    change,
-  } = { ...defaultProps, ...props }
+    onChange,
+    iconClassPrefix,
+    iconFontClassName,
+  } = {
+    ...defaultProps,
+    ...props,
+  }
   const b = bem('rate')
   const bi = bem('rate-item')
 
@@ -78,17 +87,18 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     if (index === 1 && score === index) {
     } else {
       value = index
-      if (allowHalf) {
-        console.log('e', e)
-        if ((e?.target as any)?.className?.includes('__icon--half')) {
-          value -= 0.5
-        }
-      }
     }
     value = Math.max(value, Number(minimizeValue))
     setScore(value)
 
-    change && change(value)
+    onChange && onChange(value)
+  }
+  const onHalfClick = (event: any, n: number) => {
+    event.preventDefault()
+    event.stopPropagation()
+    const value = Math.max(Number(minimizeValue), n - 0.5)
+    setScore(value)
+    onChange && onChange(value)
   }
   return (
     <div className={b()}>
@@ -101,6 +111,8 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
             style={{ marginRight: pxCheck(spacing) }}
           >
             <Icon
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               size={iconSize}
               className={`${bi('icon')} ${
                 disabled || n > score ? bi('icon--disabled') : ''
@@ -110,6 +122,17 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
             />
             {allowHalf && score > n - 1 && (
               <Icon
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
+                onClick={(event) => onHalfClick(event, n)}
+                className={`${bi('icon')} ${bi('icon--half')}`}
+                color={n <= score ? activeColor : voidColor}
+                size={iconSize}
+                name={checkedIcon}
+              />
+            )}
+            {/* {allowHalf && score > n - 1 && (
+              <Icon classPrefix={iconClassPrefix} fontClassName={iconFontClassName}
                 className={`${bi('icon')} ${bi('icon--half')}`}
                 color={n <= score ? activeColor : voidColor}
                 size={iconSize}
@@ -117,7 +140,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
               />
             )}
             {allowHalf && score < n - 1 && (
-              <Icon
+              <Icon classPrefix={iconClassPrefix} fontClassName={iconFontClassName}
                 className={`${bi('icon')} ${bi('icon--disabled')} ${bi(
                   'icon--half'
                 )}`}
@@ -125,7 +148,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
                 size={iconSize}
                 name={uncheckedIcon}
               />
-            )}
+            )} */}
           </div>
         )
       })}

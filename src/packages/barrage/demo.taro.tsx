@@ -76,7 +76,7 @@ const BarrageDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <div className="demo demo-barrage">
         <h2>{translated['84aa6bce']}</h2>
         <Cell className="barrage-demo-wrap">
           <Barrage

@@ -1,9 +1,11 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classnames from 'classnames'
 import Icon from '@/packages/icon/index.taro'
-import { OptionItem } from '@/packages/menuitem/menuitem'
+import { OptionItem } from '@/packages/menuitem/menuitem.taro'
 
-export interface MenuProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface MenuProps extends IComponent {
   className: string
   style: React.CSSProperties
   activeColor: string
@@ -15,6 +17,7 @@ export interface MenuProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   className: '',
   style: {},
   activeColor: '#F2270C',
@@ -32,6 +35,8 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
     closeOnClickOverlay,
     children,
     activeColor,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -127,6 +132,8 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
               >
                 <div className="nut-menu__title-text">{finallyTitle()}</div>
                 <Icon
+                  classPrefix={iconClassPrefix}
+                  fontClassName={iconFontClassName}
                   className="nut-menu__title-icon"
                   size="10"
                   name={

@@ -1,18 +1,16 @@
 # Tabs 选项卡切换
 
-### 介绍
+### Intro
 
-常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式
+It is often used for the storage and display of large blocks of content in the level area, and supports the form of embedded tags and rendering loop data.
 
-### 安装
+### Install
 
 ```ts
 import { Tabs, TabPane } from '@nutui/nutui-react';
 ```
 
-## 代码演示
-
-### 基础用法
+### Basic Usage
 
 :::demo
 
@@ -39,7 +37,7 @@ export default App;
 
 :::
 
-### 基础用法-微笑曲线
+### Basic Usage - Smile Curve
 
 :::demo
 
@@ -66,7 +64,7 @@ export default App;
 
 :::
 
-### 通过 pane-key 匹配
+### Match by pane-key
 
 :::demo
 
@@ -93,7 +91,42 @@ export default App;
 
 :::
 
-### 数据异步渲染 3s
+### Tabpane height auto
+
+Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tabpane`.
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs, TabPane } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab2value, setTab2value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab2value} autoHeight onChange={({ paneKey }) => {
+        setTab2value(paneKey)
+      }}>
+        <TabPane title="Tab 1" pane-key="0">
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+        </TabPane>
+        <TabPane title="Tab 2" pane-key="1"> Tab 2 </TabPane>
+        <TabPane title="Tab 3" pane-key="2"> Tab 3 </TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+
+### Data is rendered asynchronously for 3s
 
 :::demo
 
@@ -127,7 +160,7 @@ export default App;
 
 :::
 
-### 数量多,滚动操作
+### A large number of scrolling operations
 
 :::demo
 
@@ -154,7 +187,7 @@ export default App;
 
 :::
 
-### 左右布局
+### Left and right layout
 
 :::demo
 
@@ -181,7 +214,7 @@ export default App;
 
 :::
 
-### 左右布局-微笑曲线
+### Left and Right Layout - Smile Curve
 
 :::demo
 
@@ -208,7 +241,7 @@ export default App;
 
 :::
 
-### 标签栏字体尺寸 large normal small
+### tab bar font size large normal small
 
 :::demo
 
@@ -249,7 +282,7 @@ export default App;
 
 :::
 
-### 自定义标签栏
+### custom tab bar
 
 :::demo
 
@@ -261,17 +294,17 @@ const App = () => {
   const [tab7value, setTab7value] = useState('c1');
   const list6 = [
     {
-      title: '自定义 1',
+      title: 'custom 1',
       paneKey: 'c1',
       icon: 'dongdong'
     },
     {
-      title: '自定义 2',
+      title: 'custom 2',
       paneKey: 'c2',
       icon: 'JD'
     },
     {
-      title: '自定义 3',
+      title: 'custom 3',
       paneKey: 'c3'
     }
   ]
@@ -310,37 +343,38 @@ export default App;
 
 ### Tabs Props
 
-| 参数          | 说明                                          | 类型          | 默认值     |
+| Attribute          | Description                                          | Type          | Default     |
 |---------------|-----------------------------------------------|---------------|------------|
-| value         | 绑定当前选中标签的标识符                      | number,string | 0          |
-| color         | 标签选中色                                    | string        | #1a1a1a    |
-| background    | 标签栏背景颜色                                | string        | #f5f5f5    |
-| direction     | 使用横纵方向 可选值 horizontal、vertical      | string        | horizontal |
-| type          | 选中底部展示样式 可选值 line、smile           | string        | line       |
-| titleScroll  | 标签栏是否可以滚动                            | boolean       | false      |
-| ellipsis      | 是否省略过长的标题文字                        | boolean       | true       |
-| animatedTime | 切换动画时长,单位 ms 0 代表无动画              | number,string | 300        |
-| titleGutter  | 标签间隙                                      | number,string | 0          |
-| titleNode    | 自定义导航区域                                 | () => JSX.Element[] | 0          |
-| size         | 标签栏字体尺寸大小 可选值 large normal small | string        | normal     |
+| value         | Index of active tab                      | number,string | 0          |
+| color         | Label selection color                                    | string        | #1a1a1a    |
+| background    | Tab bar background color                                | string        | #f5f5f5    |
+| direction     | Use landscape orientation optional value `horizontal`、`vertical`     | string        | horizontal |
+| type          | Check the bottom display style optional value `line`、`smile`           | string        | line       |
+| titleScroll  | Is the tab bar scrollable                            | boolean       | false      |
+| ellipsis      | Whether to omit too long title text                        | boolean       | true       |
+| animatedTime | Switch animation duration, unit ms 0 means no animation              | number,string | 300        |
+| titleGutter  | Label gap                                      | number,string | 0          |
+| titleNode    | Custom Titles Area                     | () => JSX.Element[] | 0          |
+| size         | Tab bar font size optional value `large` `normal` `small` | string        | normal     |
+| autoHeight`v1.2.1` | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tabpane`. | boolean        | false     |
 
 ## Tabs Children
 
-| 名称    | 说明           |
+| Name    | Description           |
 |---------|----------------|
-| default | 自定义内容     |
+| default | Custom Default Content     |
 
 ### Tabpane Props
 
-| 参数     | 说明                    | 类型    | 默认值           |
+| Attribute     | Description                    | Type    | Default           |
 |----------|-------------------------|---------|------------------|
-| title    | 标题                    | string  |                  |
-| paneKey  | 标签 Key , 匹配的标识符 | string  | 默认索引0,1,2... |
-| disabled | 是否禁用标签            | boolean | false            |
+| title    | title                    | string  |                  |
+| paneKey  | Tag Key , the matching identifier | string  | Default index 0,1,2... |
+| disabled | whether to disable tabs            | boolean | false            |
 
 ### Tabs Events
 
-| 事件名 | 说明                     | 回调参数                 |
+| Event | Description                     | Arguments                 |
 |--------|--------------------------|--------------------------|
-| click  | 点击标签时触发           | {title,paneKey,disabled} |
-| change | 当前激活的标签改变时触发 | {title,paneKey,disabled} |
+| onClick  | Triggered when the label is clicked           | {title,paneKey,disabled} |
+| onChange | Fired when the currently active tab changes | {title,paneKey,disabled} |

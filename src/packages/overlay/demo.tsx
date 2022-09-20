@@ -62,7 +62,7 @@ const OverlayDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <div className="demo demo-overlay">
         <h2>{translated['84aa6bce']}</h2>
         <Cell>
           <Button type="primary" onClick={handleToggleShow}>

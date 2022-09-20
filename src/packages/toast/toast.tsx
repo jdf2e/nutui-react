@@ -2,7 +2,7 @@ import * as React from 'react'
 import Notification, { NotificationProps } from './Notification'
 
 let messageInstance: any = null
-export interface ToastOptions {
+export interface ToastProps {
   id?: string
   msg: string
   style?: React.CSSProperties
@@ -24,7 +24,7 @@ export interface ToastOptions {
   closeOnClickOverlay: boolean
 }
 
-const options: ToastOptions = {
+const options: ToastProps = {
   msg: '',
   id: '',
   style: {},
@@ -35,12 +35,12 @@ const options: ToastOptions = {
   customClass: '', // 自定义样式名
   bottom: '30px', // center为false时生效，距离底部位置
   size: 'base', // 设置字体大小，默认base,可选large\small\base
-  icon: null, // 未实现
+  icon: null,
   iconSize: '20',
   textAlignCenter: true, // 文字是否居中显示,true为居中，false为left
   loadingRotate: true, // 未实现
   bgColor: 'rgba(0, 0, 0, .8)',
-  onClose: () => {}, // 未实现
+  onClose: () => {},
   cover: false, // 是否展示透明遮罩层
   coverColor: 'rgba(0, 0, 0, 0)', // 遮罩颜色设定
   closeOnClickOverlay: false, // 是否点击遮罩可关闭

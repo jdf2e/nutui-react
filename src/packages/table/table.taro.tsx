@@ -1,12 +1,15 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 import { ITableProps, TableColumnProps } from './types'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { ComponentDefaults } from '@/utils/typings'
 
 export type TableProps = ITableProps
+
 const defaultProps = {
+  ...ComponentDefaults,
   className: '',
   style: {},
   columns: [],
@@ -32,6 +35,8 @@ export const Table: FunctionComponent<
     striped,
     noData,
     onSorter,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -85,7 +90,14 @@ export const Table: FunctionComponent<
           onClick={() => handleSorterClick(item)}
         >
           {item.title}
-          {item.sorter && <Icon name="down-arrow" size="12px" />}
+          {item.sorter && (
+            <Icon
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
+              name="down-arrow"
+              size="12px"
+            />
+          )}
         </span>
       )
     })

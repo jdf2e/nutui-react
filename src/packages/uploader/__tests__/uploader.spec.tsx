@@ -24,7 +24,7 @@ test('should render base uploader props', () => {
       accept=".jpg"
       maximize={1024 * 50}
       maximum={2}
-      change={change}
+      onChange={change}
     />
   )
   const input = container.querySelectorAll('.nut-uploader__input')[0]
@@ -77,8 +77,8 @@ test('should render base uploader other props', () => {
         isPreview
         uploadIcon="dongdong"
         uploadIconSize="20px"
-        removeImage={onDelete}
-        fileItemClick={fileItemClick}
+        onRemove={onDelete}
+        onFileItemClick={fileItemClick}
       />
     )
   }
@@ -166,8 +166,8 @@ test('before-delete prop return false', () => {
       <Uploader
         isDeletable
         defaultFileList={defaultFileList}
-        removeImage={onDelete}
-        beforeDelete={() => {
+        onRemove={onDelete}
+        onBeforeDelete={() => {
           return false
         }}
       />
@@ -195,8 +195,8 @@ test('before-delete prop return true', () => {
       <Uploader
         isDeletable
         defaultFileList={defaultFileList}
-        removeImage={onDelete}
-        beforeDelete={() => {
+        onRemove={onDelete}
+        onBeforeDelete={() => {
           return true
         }}
       />

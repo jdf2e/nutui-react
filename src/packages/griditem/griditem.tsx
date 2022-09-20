@@ -3,9 +3,11 @@ import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
 type GridDirection = 'horizontal' | 'vertical'
 
-export interface GridItemProps {
+export interface GridItemProps extends IComponent {
   text: string | ReactNode
   icon: string | ReactNode
   iconSize?: string | number
@@ -22,7 +24,9 @@ export interface GridItemProps {
   reverse: boolean
   direction: GridDirection
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   text: '',
   icon: '',
   iconSize: '',
@@ -58,8 +62,13 @@ export const GridItem: FunctionComponent<
     center,
     reverse,
     direction,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
-  } = { ...defaultProps, ...props }
+  } = {
+    ...defaultProps,
+    ...props,
+  }
   const b = bem('grid-item')
 
   const pxCheck = (value: string | number): string => {
@@ -101,6 +110,8 @@ export const GridItem: FunctionComponent<
       <div className={contentClass()}>
         {icon && isIconName() ? (
           <Icon
+            classPrefix={iconClassPrefix}
+            fontClassName={iconFontClassName}
             name={icon as string}
             size={iconSize || parentIconSize}
             color={iconColor || parentIconColor}
