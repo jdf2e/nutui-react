@@ -51,7 +51,6 @@ const subPackages = [
       'pages/switch/index',
       'pages/toast/index',
       'pages/infiniteloading/index',
-      'pages/pulltorefresh/index',
     ],
   },
   {
