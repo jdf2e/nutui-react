@@ -38,10 +38,18 @@ const NumberKeyboardDemo = () => {
   const [visible4, setVisible4] = useState(false)
   const [visible5, setVisible5] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    // Toast.text(`输入：${number}`)
+    toastShow(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    // Toast.text('删除')
+    toastShow('删除')
+  }
+  const [show, SetShow] = useState(false)
+  const [toastMsg, SetToastMsg] = useState('')
+  const toastShow = (msg: any) => {
+    SetToastMsg(msg)
+    SetShow(true)
   }
   return (
     <div className="demo">
@@ -120,6 +128,14 @@ const NumberKeyboardDemo = () => {
         onChange={onChange}
         onDelete={onDelete}
         onClose={() => setVisible5(false)}
+      />
+      <Toast
+        type="text"
+        visible={show}
+        msg={toastMsg}
+        onClose={() => {
+          SetShow(false)
+        }}
       />
     </div>
   )

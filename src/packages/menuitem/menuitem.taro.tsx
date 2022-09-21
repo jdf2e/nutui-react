@@ -5,12 +5,12 @@ import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Icon from '@/packages/icon/index.taro'
 import { Overlay } from '../overlay/overlay.taro'
 
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
 export interface OptionItem {
   text: string
   value: string | number
 }
-
-import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface MenuItemProps extends IComponent {
   className: string
@@ -53,14 +53,14 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
     value,
     columns,
     title,
-    iconClassPrefix,
-    fontClassName,
     optionsIcon,
     direction,
     onChange,
     activeTitleClass,
     inactiveTitleClass,
     children,
+    iconClassPrefix,
+    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -98,14 +98,12 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
     height: 0,
   })
   const getParentOffset = () => {
-    setTimeout(() => {
+    setTimeout(async () => {
       const p = parent.parent().current
-
-      const rect = p.getBoundingClientRect().then((rect: any) => {
-        setPosition({
-          height: rect.height,
-          top: rect.top,
-        })
+      const rect = await p.getBoundingClientRect()
+      setPosition({
+        height: rect.height,
+        top: rect.top,
       })
     })
   }
@@ -180,8 +178,8 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
                 >
                   {item.value === _value ? (
                     <Icon
-                      classPrefix={props.iconClassPrefix}
-                      fontClassName={props.iconFontClassName}
+                      classPrefix={iconClassPrefix}
+                      fontClassName={iconFontClassName}
                       className={getIconCName(item.value, value)}
                       name={optionsIcon}
                       color={activeColor}

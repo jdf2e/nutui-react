@@ -51,7 +51,12 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     allowHalf,
     spacing,
     onChange,
-  } = { ...defaultProps, ...props }
+    iconClassPrefix,
+    iconFontClassName,
+  } = {
+    ...defaultProps,
+    ...props,
+  }
   const b = bem('rate')
   const bi = bem('rate-item')
 
@@ -104,8 +109,8 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
             style={{ marginRight: pxCheck(spacing) }}
           >
             <Icon
-              classPrefix={props.iconClassPrefix}
-              fontClassName={props.iconFontClassName}
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               size={iconSize}
               className={`${bi('icon')} ${
                 disabled || n > score ? bi('icon--disabled') : ''
@@ -115,8 +120,8 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
             />
             {allowHalf && score > n - 1 && (
               <Icon
-                classPrefix={props.iconClassPrefix}
-                fontClassName={props.iconFontClassName}
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
                 className={`${bi('icon')} ${bi('icon--half')}`}
                 color={n <= score ? activeColor : voidColor}
                 size={iconSize}
@@ -125,8 +130,8 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
             )}
             {allowHalf && score < n - 1 && (
               <Icon
-                classPrefix={props.iconClassPrefix}
-                fontClassName={props.iconFontClassName}
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
                 className={`${bi('icon')} ${bi('icon--disabled')} ${bi(
                   'icon--half'
                 )}`}

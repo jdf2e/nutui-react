@@ -10,13 +10,19 @@ const config = {
     375: 2 / 1,
   },
   sourceRoot: 'src',
-  outputRoot: 'dist',
+  outputRoot: `dist/${process.env.TARO_ENV}`,
   plugins: ['@tarojs/plugin-html'],
+  compiler: 'webpack5',
   alias: {
-    react: path.resolve(__dirname, '../../../../node_modules/react'),
+    react: path.resolve(__dirname, '../node_modules/react'),
     '@/packages': path.resolve(__dirname, '../../../../src/packages'),
     '@/utils': path.resolve(__dirname, '../../../../src/utils'),
     '@': path.resolve(__dirname, '../../../../src'),
+    '@tarojs/components': path.resolve(
+      __dirname,
+      '../node_modules/@tarojs/components'
+    ),
+    '@tarojs/react': path.resolve(__dirname, '../node_modules/@tarojs/react'),
   },
   sass: {
     resource: path.resolve(__dirname, '../../../', 'styles/variables.scss'),
@@ -31,9 +37,8 @@ const config = {
     postcss: {
       pxtransform: {
         enable: true,
-        config: {},
         // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
-        config: { selectorBlackList: ['nut-'] },
+        config: { selectorBlackList: ['nut-', 'demo', 'index'] },
       },
       url: {
         enable: true,
@@ -54,6 +59,11 @@ const config = {
     publicPath: '/',
     staticDirectory: 'static',
     postcss: {
+      pxtransform: {
+        enable: true,
+        // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
+        config: { selectorBlackList: ['nut-', 'demo', 'index'] },
+      },
       autoprefixer: {
         enable: true,
         config: {},
@@ -65,6 +75,8 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]',
         },
       },
+      // 自定义 Webpack 配置
+      devServer: {},
     },
   },
 }

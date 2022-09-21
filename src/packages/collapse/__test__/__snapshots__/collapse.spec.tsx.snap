@@ -7,6 +7,8 @@ exports[`should match snapshot 1`] = `
   >
     <div
       class="nut-collapse-item"
+      iconclassprefix="nut-icon"
+      iconfontclassname="nutui-iconfont"
     >
       <div
         class="nut-collapse-item__header"
@@ -46,6 +48,8 @@ exports[`should match snapshot 1`] = `
     </div>
     <div
       class="nut-collapse-item"
+      iconclassprefix="nut-icon"
+      iconfontclassname="nutui-iconfont"
     >
       <div
         class="nut-collapse-item__header"
@@ -85,6 +89,8 @@ exports[`should match snapshot 1`] = `
     </div>
     <div
       class="nut-collapse-item"
+      iconclassprefix="nut-icon"
+      iconfontclassname="nutui-iconfont"
     >
       <div
         class="nut-collapse-item__header nut-collapse-item__header--disabled"

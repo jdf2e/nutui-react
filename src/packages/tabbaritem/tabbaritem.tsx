@@ -56,6 +56,8 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     unactiveColor,
     index,
     handleClick,
+    iconClassPrefix,
+    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -101,8 +103,8 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
         {icon && (
           <div>
             <Icon
-              classPrefix={props.iconClassPrefix}
-              fontClassName={props.iconFontClassName}
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               size={size}
               name={icon}
             />

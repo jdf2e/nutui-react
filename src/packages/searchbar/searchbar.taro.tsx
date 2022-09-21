@@ -117,6 +117,8 @@ export const SearchBar: FunctionComponent<
     onClickLeftoutIcon,
     onClickRightinIcon,
     onClickRightoutIcon,
+    iconClassPrefix,
+    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -243,8 +245,8 @@ export const SearchBar: FunctionComponent<
         onClick={(e: any) => clearaVal(e)}
       >
         <Icon
-          classPrefix={props.iconClassPrefix}
-          fontClassName={props.iconFontClassName}
+          classPrefix={iconClassPrefix}
+          fontClassName={iconFontClassName}
           name="circle-close"
           size="12"
           color="#555"

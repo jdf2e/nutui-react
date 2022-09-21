@@ -96,6 +96,8 @@ export const Popup: FunctionComponent<
     onOpened,
     onClosed,
     onClick,
+    iconClassPrefix,
+    iconFontClassName,
   } = props
 
   const [index, setIndex] = useState(zIndex || _zIndex)
@@ -218,8 +220,8 @@ export const Popup: FunctionComponent<
           {closeable ? (
             <div className={closeClasses} onClick={onHandleClickCloseIcon}>
               <Icon
-                classPrefix={props.iconClassPrefix}
-                fontClassName={props.iconFontClassName}
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
                 name={closeIcon}
                 size="12px"
               />
