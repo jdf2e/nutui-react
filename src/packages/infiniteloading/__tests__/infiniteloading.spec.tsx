@@ -8,7 +8,7 @@ import { Infiniteloading } from '../infiniteloading'
 test('pull base', () => {
   const refresh = jest.fn()
   const { container } = render(
-    <Infiniteloading isOpenRefresh loadMoreTxt="没有更多" refresh={refresh} />
+    <Infiniteloading isOpenRefresh loadMoreTxt="没有更多" onRefresh={refresh} />
   )
   const track = container.querySelector('.nut-infiniteloading')
 
@@ -59,7 +59,7 @@ test('infiniteloading base', () => {
     return (
       <Infiniteloading
         loadMoreTxt="没有更多"
-        loadMore={refreshLoadMore}
+        onLoadMore={refreshLoadMore}
         hasMore={refreshHasMore}
       />
     )

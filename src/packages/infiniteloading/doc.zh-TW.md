@@ -280,6 +280,9 @@ export default App;
 
 | 事件名 | 說明           | 回調參數     |
 |--------|----------------|--------------|
-| loadMore  | 繼續加載的回調函數 | done() |
-| scrollChange  | 實時監聽滾動高度 | 滾動高度 |
-| refresh  | 下拉刷新事件回調 | done() |
+| loadMore `v1.3.4廢棄` | 繼續加載的回調函數 | done() |
+| onLoadMore `v1.3.4` | 繼續加載的回調函數 | done() |
+| scrollChange `v1.3.4廢棄` | 實時監聽滾動高度 | 滾動高度 |
+| onScrollChange `v1.3.4` | 實時監聽滾動高度 | 滾動高度 |
+| refresh `v1.3.4廢棄` | 下拉刷新事件回調 | done() |
+| onRefresh `v1.3.4` | 下拉刷新事件回調 | done() |
