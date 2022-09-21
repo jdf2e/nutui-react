@@ -38,7 +38,7 @@ const config = {
       pxtransform: {
         enable: true,
         // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
-        config: { selectorBlackList: ['nut-'] },
+        config: { selectorBlackList: ['nut-', 'demo', 'index'] },
       },
       url: {
         enable: true,
@@ -62,7 +62,7 @@ const config = {
       pxtransform: {
         enable: true,
         // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
-        config: { selectorBlackList: ['nut-'] },
+        config: { selectorBlackList: ['nut-', 'demo', 'index'] },
       },
       autoprefixer: {
         enable: true,

@@ -51,7 +51,10 @@ const copy = async () => {
         })
         fse.readFile(docTaropath, (err, data) => {
           if (!err) {
-            copyFile(docTaropath, `${targetBaseUrl}/docs/${cmpName}/doc.taro.md`)
+            copyFile(
+              docTaropath,
+              `${targetBaseUrl}/docs/${cmpName}/doc.taro.md`
+            )
           }
         })
       }
