@@ -104,6 +104,7 @@ export const Swipe = forwardRef<
     () => (props.leftWidth ? props.leftWidth : actionWidth.left),
     [props.leftWidth, actionWidth.left]
   )
+  console.log(props.rightWidth, actionWidth.right)
 
   const rightWidth = useMemo(
     () => (props.rightWidth ? props.rightWidth : actionWidth.right),
@@ -131,6 +132,7 @@ export const Swipe = forwardRef<
       if (isEdge) {
         preventDefault(event, true)
       }
+      console.log(touch.deltaX, rightWidth, leftWidth)
 
       newState.offset = rangeCalculation(
         touch.deltaX + startOffset.current,

@@ -49,6 +49,7 @@ const subPackages = [
       'pages/actionsheet/index',
       'pages/switch/index',
       'pages/pulltorefresh/index',
+      'pages/swipe/index',
     ],
   },
   {
