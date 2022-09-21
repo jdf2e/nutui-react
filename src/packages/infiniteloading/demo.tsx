@@ -121,7 +121,7 @@ const InfiniteloadingDemo = () => {
               containerId="scroll"
               useWindow={false}
               hasMore={hasMore}
-              loadMore={loadMore}
+              onLoadMore={loadMore}
             >
               {defultList.map((item, index) => {
                 return (
@@ -143,8 +143,8 @@ const InfiniteloadingDemo = () => {
               useWindow={false}
               isOpenRefresh
               hasMore={refreshHasMore}
-              loadMore={refreshLoadMore}
-              refresh={refresh}
+              onLoadMore={refreshLoadMore}
+              onRefresh={refresh}
             >
               {refreshList.map((item, index) => {
                 return (
@@ -166,7 +166,7 @@ const InfiniteloadingDemo = () => {
               loadTxt="loading"
               loadMoreTxt={translated['1254a90a']}
               hasMore={customHasMore}
-              loadMore={customLoadMore}
+              onLoadMore={customLoadMore}
             >
               {customList.map((item, index) => {
                 return (

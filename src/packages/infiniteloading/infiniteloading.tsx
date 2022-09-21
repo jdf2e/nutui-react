@@ -20,9 +20,9 @@ export interface InfiniteloadingProps extends IComponent {
   loadMoreTxt: string
   className: string
   style: React.CSSProperties
-  refresh: (param: () => void) => void
-  loadMore: (param: () => void) => void
-  scrollChange: (param: number) => void
+  onRefresh: (param: () => void) => void
+  onLoadMore: (param: () => void) => void
+  onScrollChange: (param: number) => void
 }
 
 declare let window: Window & { webkitRequestAnimationFrame: any }
@@ -62,9 +62,9 @@ export const Infiniteloading: FunctionComponent<
     loadTxt,
     loadMoreTxt,
     className,
-    refresh,
-    loadMore,
-    scrollChange,
+    onRefresh,
+    onLoadMore,
+    onScrollChange,
     iconClassPrefix,
     iconFontClassName,
     ...restProps
@@ -129,7 +129,7 @@ export const Infiniteloading: FunctionComponent<
         return false
       }
       setIsInfiniting(true)
-      loadMore && loadMore(infiniteDone)
+      onLoadMore && onLoadMore(infiniteDone)
       return true
     })
   }
@@ -158,7 +158,6 @@ export const Infiniteloading: FunctionComponent<
   }
 
   const touchMove = (event: any) => {
-    console.log('touchMove', event)
     distance.current = event.touches[0].pageY - y.current
     if (distance.current > 0 && isTouching.current) {
       event.preventDefault()
@@ -188,7 +187,7 @@ export const Infiniteloading: FunctionComponent<
         refreshTop.current as HTMLDivElement
       ).style.height = `${distance.current}px`
     } else {
-      refresh && refresh(refreshDone)
+      onRefresh && onRefresh(refreshDone)
     }
   }
 
@@ -241,7 +240,7 @@ export const Infiniteloading: FunctionComponent<
       direction = 'down'
     }
     beforeScrollTop.current = resScrollTop
-    scrollChange && scrollChange(resScrollTop)
+    onScrollChange && onScrollChange(resScrollTop)
     return offsetDistance <= threshold && direction === 'down'
   }
 

@@ -9,11 +9,8 @@ import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface InfiniteloadingProps extends IComponent {
   hasMore: boolean
-  threshold: number
   upperThreshold: number
   containerId: string
-  useWindow: boolean
-  useCapture: boolean
   isOpenRefresh: boolean
   pullIcon: string
   pullTxt: string
@@ -22,21 +19,16 @@ export interface InfiniteloadingProps extends IComponent {
   loadMoreTxt: string
   className: string
   style: React.CSSProperties
-  refresh: (param: () => void) => void
-  loadMore: (param: () => void) => void
-  scrollChange: (param: number) => void
+  onRefresh: (param: () => void) => void
+  onLoadMore: (param: () => void) => void
+  onScrollChange: (param: number) => void
 }
-
-declare let window: Window & { webkitRequestAnimationFrame: any }
 
 const defaultProps = {
   ...ComponentDefaults,
   hasMore: true,
-  threshold: 200,
   upperThreshold: 40,
   containerId: '',
-  useWindow: true,
-  useCapture: false,
   isOpenRefresh: false,
   pullIcon:
     'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png',
@@ -47,6 +39,17 @@ const defaultProps = {
   loadMoreTxt: '哎呀，这里是底部了啦',
 } as InfiniteloadingProps
 
+interface BaseTouchEvent<TouchDetail> {
+  /** 触摸事件，当前停留在屏幕中的触摸点信息的数组 */
+  touches: Array<TouchDetail>
+
+  /** 触摸事件，当前变化的触摸点信息的数组 */
+  changedTouches: Array<TouchDetail>
+
+  preventDefault: any
+}
+interface ITouchEvent extends BaseTouchEvent<any> {}
+
 export const Infiniteloading: FunctionComponent<
   Partial<InfiniteloadingProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
@@ -54,11 +57,8 @@ export const Infiniteloading: FunctionComponent<
   const {
     children,
     hasMore,
-    threshold,
     upperThreshold,
     containerId,
-    useWindow,
-    useCapture,
     isOpenRefresh,
     pullIcon,
     pullTxt,
@@ -66,9 +66,9 @@ export const Infiniteloading: FunctionComponent<
     loadTxt,
     loadMoreTxt,
     className,
-    refresh,
-    loadMore,
-    scrollChange,
+    onRefresh,
+    onLoadMore,
+    onScrollChange,
     iconClassPrefix,
     iconFontClassName,
   } = {
@@ -76,15 +76,14 @@ export const Infiniteloading: FunctionComponent<
     ...props,
   }
   const [isInfiniting, setIsInfiniting] = useState(false)
-  const scroller = useRef<HTMLDivElement>(null)
+  const [topDisScoll, setTopDisScoll] = useState(0)
   const refreshTop = useRef<HTMLDivElement>(null)
-  const scrollEl = useRef<Window | HTMLElement | (Node & ParentNode)>(window)
   const scrollHeight = useRef(0)
   const scrollTop = useRef(0)
   const direction = useRef('down')
   const isTouching = useRef(false)
-  const refreshMaxH = useRef(0)
   const y = useRef(0)
+  const refreshMaxH = useRef(0)
   const distance = useRef(0)
 
   const b = bem('infiniteloading')
@@ -109,10 +108,8 @@ export const Infiniteloading: FunctionComponent<
 
   const getStyle = () => {
     return {
-      height: distance.current < 0 ? `0px` : `${distance.current}px`,
-      transition: isTouching.current
-        ? `height 0s cubic-bezier(0.25,0.1,0.25,1)`
-        : `height 0.2s cubic-bezier(0.25,0.1,0.25,1)`,
+      height: topDisScoll < 0 ? `0px` : `${topDisScoll}px`,
+      transition: `height 0.2s cubic-bezier(0.25,0.1,0.25,1)`,
     }
   }
 
@@ -128,9 +125,7 @@ export const Infiniteloading: FunctionComponent<
 
   const refreshDone = () => {
     distance.current = 0
-    ;(
-      refreshTop.current as HTMLDivElement
-    ).style.height = `${distance.current}px`
+    setTopDisScoll(0)
     isTouching.current = false
   }
 
@@ -151,7 +146,7 @@ export const Infiniteloading: FunctionComponent<
       direction.current = 'up'
     }
     scrollTop.current = e.detail.scrollTop
-    scrollChange && scrollChange(e.detail.scrollTop)
+    onScrollChange && onScrollChange(e.detail.scrollTop)
   }
 
   const lower = () => {
@@ -159,7 +154,39 @@ export const Infiniteloading: FunctionComponent<
       return false
     }
     setIsInfiniting(true)
-    loadMore && loadMore(infiniteDone)
+    onLoadMore && onLoadMore(infiniteDone)
+  }
+
+  const touchStart = (event: ITouchEvent) => {
+    if (scrollTop.current == 0 && !isTouching.current && isOpenRefresh) {
+      y.current = event.touches[0].pageY
+      isTouching.current = true
+    }
+  }
+
+  const touchMove = (event: ITouchEvent) => {
+    distance.current = event.touches[0].pageY - y.current
+    if (distance.current > 0 && isTouching.current) {
+      event.preventDefault()
+      setTopDisScoll(distance.current)
+      if (distance.current >= refreshMaxH.current) {
+        distance.current = refreshMaxH.current
+        setTopDisScoll(refreshMaxH.current)
+      }
+    } else {
+      distance.current = 0
+      setTopDisScoll(0)
+      isTouching.current = false
+    }
+  }
+
+  const touchEnd = () => {
+    if (distance.current < refreshMaxH.current) {
+      distance.current = 0
+      setTopDisScoll(0)
+    } else {
+      onRefresh && onRefresh(refreshDone)
+    }
   }
 
   return (
@@ -170,6 +197,9 @@ export const Infiniteloading: FunctionComponent<
       style={{ height: '100%' }}
       onScroll={scrollAction}
       onScrollToLower={lower}
+      onTouchStart={touchStart}
+      onTouchMove={touchMove}
+      onTouchEnd={touchEnd}
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="top-box">
@@ -180,7 +210,7 @@ export const Infiniteloading: FunctionComponent<
             name={pullIcon}
           />
           <span className="top-text">
-            {locale.infiniteloading.pullRefreshText || pullTxt}
+            {pullTxt || locale.infiniteloading.pullRefreshText}
           </span>
         </div>
       </div>
@@ -195,13 +225,13 @@ export const Infiniteloading: FunctionComponent<
               name={loadIcon}
             />
             <div className="bottom-text">
-              {locale.infiniteloading.loadText || loadTxt}
+              {loadTxt || locale.infiniteloading.loadText}
             </div>
           </div>
         ) : (
           !hasMore && (
             <div className="tips">
-              {locale.infiniteloading.loadMoreText || loadMoreTxt}
+              {loadMoreTxt || locale.infiniteloading.loadMoreText}
             </div>
           )
         )}
