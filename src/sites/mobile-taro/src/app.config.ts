@@ -11,7 +11,7 @@ const subPackages = [
   },
   {
     root: 'layout',
-    pages: ['pages/layout/index', 'pages/divider/index'],
+    pages: ['pages/layout/index', 'pages/divider/index', 'pages/grid/index'],
   },
   {
     root: 'nav',
@@ -39,6 +39,7 @@ const subPackages = [
       'pages/picker/index',
       'pages/shortpassword/index',
       'pages/textarea/index',
+      'pages/uploader/index',
       'pages/searchbar/index',
       'pages/numberkeyboard/index',
     ],
@@ -50,11 +51,13 @@ const subPackages = [
       'pages/switch/index',
       'pages/pulltorefresh/index',
       'pages/swipe/index',
+      'pages/toast/index',
     ],
   },
   {
     root: 'exhibition',
     pages: [
+      'pages/circleprogress/index',
       'pages/noticebar/index',
       'pages/steps/index',
       'pages/swiper/index',
@@ -68,11 +71,16 @@ const subPackages = [
       'pages/collapse/index',
       'pages/empty/index',
       'pages/progress/index',
+      'pages/audio/index',
     ],
   },
   {
     root: 'business',
-    pages: ['pages/card/index', 'pages/timeselect/index'],
+    pages: [
+      'pages/barrage/index',
+      'pages/card/index',
+      'pages/timeselect/index',
+    ],
   },
 ]
 

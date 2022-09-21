@@ -38,6 +38,7 @@ const copy = async () => {
         let cmpName = item.name.toLowerCase()
         let docpath = `src/packages/${cmpName}/doc.md`
         let docENpath = `src/packages/${cmpName}/doc.en-US.md`
+        let docTaropath = `src/packages/${cmpName}/doc.taro.md`
         fse.readFile(docpath, (err, data) => {
           if (!err) {
             copyFile(docpath, `${targetBaseUrl}/docs/${cmpName}/doc.md`)
@@ -45,7 +46,15 @@ const copy = async () => {
         })
         fse.readFile(docENpath, (err, data) => {
           if (!err) {
-            copyFile(docpath, `${targetBaseUrl}/docs/${cmpName}/doc.en-US.md`)
+            copyFile(docENpath, `${targetBaseUrl}/docs/${cmpName}/doc.en-US.md`)
+          }
+        })
+        fse.readFile(docTaropath, (err, data) => {
+          if (!err) {
+            copyFile(
+              docTaropath,
+              `${targetBaseUrl}/docs/${cmpName}/doc.taro.md`
+            )
           }
         })
       }

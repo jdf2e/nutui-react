@@ -1,6 +1,7 @@
 import React from 'react'
+import { IComponent } from '@/utils/typings'
 
-export interface ITableProps {
+export interface ITableProps extends IComponent {
   className: string
   style: React.CSSProperties
   columns: Array<TableColumnProps>

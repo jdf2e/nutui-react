@@ -48,8 +48,9 @@
 <p>
    <img src="https://img12.360buyimg.com/imagetools/jfs/t1/202336/18/18586/7437/61b832ccE0b13d53d/18605da7232a5a0e.png" height="250" alt="NutUI" />  
 </p>
-
-
+<p>
+  <img src="https://img13.360buyimg.com/imagetools/jfs/t1/102323/22/33163/27773/632a7855E75c9fa02/8c351778f47d24f5.jpg" width="200" alt="NutUI-React" />
+</p>
 ## 构建版本
 
 > AMD 环境、Webpack、Vite 等构建工具环境、服务端建议使用 es 版，非模块化环境（如通过 `<script>` 标签直接引用）建议使用 umd 压缩版。

@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { AnimatingNumbers } from '../animatingnumbers'
 
@@ -14,7 +14,7 @@ test('test endNumber props', () => {
   expect(listNumbers.length).toBe(5)
 })
 
-test('test aysnc endNumber and  easeSpeed props', () => {
+test('test aysnc endNumber and  easeSpeed props', async () => {
   let endNumber = '1570.99'
   const { container, rerender } = render(
     <AnimatingNumbers.CountUp
@@ -40,10 +40,12 @@ test('test aysnc endNumber and  easeSpeed props', () => {
       className="custom-coutup"
     />
   )
-  const listNumbers2 = container.querySelectorAll('.nut-countup__number')
-  const lastlen = endNumber.length - 1
-  const lastNumber = Number(endNumber.slice(lastlen))
-  const percentage = lastNumber === 0 ? 50 : 5 * lastNumber
-  const style = `transition: transform 0s ease-in-out; transform: translate(${0}, -${percentage}%); webkit-transform: translate(0, -${percentage}%);`
-  expect(listNumbers2[7]).toHaveAttribute('style', style)
+  await waitFor(() => {
+    const listNumbers2 = container.querySelectorAll('.nut-countup__number')
+    const lastlen = endNumber.length - 1
+    const lastNumber = Number(endNumber.slice(lastlen))
+    const percentage = lastNumber === 0 ? 50 : 5 * lastNumber
+    const style = `transition: transform 0s ease-in-out; transform: translate(${0}, -${percentage}%); webkit-transform: translate(0, -${percentage}%);`
+    expect(listNumbers2[7]).toHaveAttribute('style', style)
+  })
 })

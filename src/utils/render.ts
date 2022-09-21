@@ -3,15 +3,19 @@ import * as ReactDOM from 'react-dom'
 import { Root, RootOptions } from 'react-dom/client'
 
 type CR = (container: Element | DocumentFragment, options?: RootOptions) => Root
-type IR = typeof ReactDOM & {
+type IR = {
   createRoot: CR
-}
+} & typeof ReactDOM
 
 let createRoot: CR | undefined
+const { version } = ReactDOM as any
+const reactDOMClone = {
+  ...ReactDOM,
+} as IR
 try {
-  const mainVersion = Number((ReactDOM.version || '').split('.')[0])
-  if (mainVersion >= 18 && (ReactDOM as IR).createRoot) {
-    createRoot = (ReactDOM as IR).createRoot
+  const mainVersion = Number((version || '').split('.')[0])
+  if (mainVersion >= 18) {
+    createRoot = reactDOMClone.createRoot
   }
 } catch (e) {
   console.log(e)
@@ -22,8 +26,10 @@ function legacyRender(node: any, container: any) {
 }
 
 function concurrentRender(node: any, container: any) {
-  const root = (ReactDOM as IR).createRoot(container)
-  root.render(node)
+  if (createRoot) {
+    const root = createRoot(container)
+    root.render(node)
+  }
 }
 
 export function render(node: ReactElement, container: any) {

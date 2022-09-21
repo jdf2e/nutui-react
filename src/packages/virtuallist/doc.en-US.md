@@ -20,7 +20,7 @@ import { VirtualList } from '@nutui/nutui-react';
 
 const App =() => {
   const [sourceData, setsourceData] = useState([])
-
+  const [pageNo, setPageNo] = useState(1)
   const getData = useCallback(() => {
     const datas = []
     const pageSize = 90
@@ -60,7 +60,7 @@ import { VirtualList } from '@nutui/nutui-react';
 
 const App =() => {
   const [sourceData, setsourceData] = useState([])
-
+  const [pageNo, setPageNo] = useState(1)
   const getData = useCallback(() => {
     const datas = []
     const pageSize = 90
@@ -110,7 +110,7 @@ import { VirtualList } from '@nutui/nutui-react';
 
 const App =() => {
   const [sourceData, setsourceData] = useState([])
-
+  const [pageNo, setPageNo] = useState(1)
   const getData = useCallback(() => {
     const datas = []
     const pageSize = 90

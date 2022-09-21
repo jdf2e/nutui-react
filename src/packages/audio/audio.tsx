@@ -12,7 +12,9 @@ import bem from '@/utils/bem'
 import Button from '@/packages/button'
 import { useConfig } from '@/packages/configprovider'
 
-export interface AudioProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface AudioProps extends IComponent {
   className: string
   style: CSSProperties
   url: string
@@ -31,6 +33,7 @@ export interface AudioProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   className: '',
   url: '',
   style: {},
@@ -66,6 +69,8 @@ export const Audio: FunctionComponent<
     onMute,
     onCanPlay,
     children,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -130,9 +135,18 @@ export const Audio: FunctionComponent<
             onClick={handleStatusChange}
           >
             {playing ? (
-              <Icon name="service" className="nut-icon-loading" />
+              <Icon
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
+                name="service"
+                className="nut-icon-loading"
+              />
             ) : (
-              <Icon name="service" />
+              <Icon
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
+                name="service"
+              />
             )}
           </div>
         </div>

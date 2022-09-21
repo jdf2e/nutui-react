@@ -45,7 +45,6 @@ const InternalBarrage: ForwardRefRenderFunction<
   }
   const barrageBody = useRef<HTMLDivElement>(null)
   const barrageContainer = useRef<HTMLDivElement>(null)
-  const barrageCWidth = useRef(0)
   const timer = useRef(0)
   const index = useRef(0)
 
@@ -60,10 +59,7 @@ const InternalBarrage: ForwardRefRenderFunction<
   }))
 
   useEffect(() => {
-    if (barrageBody.current) {
-      barrageCWidth.current = barrageBody.current.offsetWidth
-      run()
-    }
+    run()
     return () => {
       clearInterval(timer.current)
     }
@@ -84,17 +80,15 @@ const InternalBarrage: ForwardRefRenderFunction<
     el.classList.add('barrage-item')
     ;(barrageContainer.current as HTMLDivElement).appendChild(el)
 
-    const query = Taro.createSelectorQuery()
+    Taro.createSelectorQuery()
       .select('.barrage-item')
       .boundingClientRect((res) => {
-        const width = res?.width
+        console.log('res', res)
         const height = res?.height
 
         el.classList.add('move')
         el.style.animationDuration = `${speeds}ms`
         el.style.top = `${(_index % rows) * (height + top) + 20}px`
-        // el.style.width = `${width}px`
-        el.style.setProperty('--move-distance', `-${barrageCWidth.current}px`)
         el.dataset.index = `${_index}`
         el.addEventListener('animationend', () => {
           ;(barrageContainer.current as HTMLDivElement).removeChild(el)
