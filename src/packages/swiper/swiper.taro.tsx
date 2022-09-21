@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, TouchEvent, useMemo } from 'react'
 import classNames from 'classnames'
+import { useReady, createSelectorQuery, nextTick } from '@tarojs/taro'
 import { DataContext } from './UserContext'
 import bem from '@/utils/bem'
-import { getRectByTaro } from '../../utils/useClientRect'
 
 export type SwiperRef = {
   to: (index: number) => void
@@ -14,7 +14,7 @@ interface IStyle {
   height?: string
   transform?: string
 }
-interface SwiperProps {
+export interface SwiperProps {
   width: number | string
   height: number | string
   duration: number | string
@@ -88,6 +88,8 @@ export const Swiper = React.forwardRef<
     offset: 0,
     size: 0,
   })
+  const [refRandomId] = useState(Math.random().toString(36).slice(-8))
+
   const isVertical = direction === 'vertical'
 
   const [rect, setRect] = useState(null as DOMRect | null)
@@ -339,9 +341,6 @@ export const Swiper = React.forwardRef<
         moveOffset +
         (active === childCount - 1 && !props.loop ? -val / 2 : val / 2)
     }
-    target.style.transform = `translate3D${
-      !isVertical ? `(${_offset}px,0,0)` : `(0,${_offset}px,0)`
-    }`
     target.style.transitionDuration = `${
       _swiper.current.moving ? 0 : props.duration
     }ms`
@@ -351,6 +350,9 @@ export const Swiper = React.forwardRef<
     target.style[isVertical ? 'width' : 'height'] = `${
       isVertical ? width : height
     }px`
+    target.style.transform = `translate3D${
+      !isVertical ? `(${_offset}px,0,0)` : `(0,${_offset}px,0)`
+    }`
   }
 
   const onTouchStart = (e: TouchEvent) => {
@@ -407,8 +409,19 @@ export const Swiper = React.forwardRef<
     _swiper.current.activePagination = (active + childCount) % childCount
   }, [active])
 
+  const queryRect = (element: any): Promise<any> => {
+    return new Promise((resolve) => {
+      const query = createSelectorQuery()
+
+      query.select(`#${(element as any).id}`) &&
+        query.select(`#${(element as any).id}`).boundingClientRect()
+      query.exec(function (res: any) {
+        resolve(res[0])
+      })
+    })
+  }
   const init = async (active: number = +propSwiper.initPage) => {
-    const rect = await getRectByTaro(container.current)
+    const rect = await queryRect(container.current)
     const _active = Math.max(Math.min(childCount - 1, active), 0)
     const _width = propSwiper.width ? +propSwiper.width : rect?.width
     const _height = propSwiper.height ? +propSwiper.height : rect?.height
@@ -448,21 +461,15 @@ export const Swiper = React.forwardRef<
     init()
   }, [propSwiper.initPage])
   useEffect(() => {
-    const target = container.current
-    target.addEventListener('touchstart', onTouchStart, false)
-    target.addEventListener('touchmove', onTouchMove, false)
-    target.addEventListener('touchend', onTouchEnd, false)
-    return () => {
-      target.removeEventListener('touchstart', onTouchStart, false)
-      target.removeEventListener('touchmove', onTouchMove, false)
-      target.removeEventListener('touchend', onTouchEnd, false)
-    }
-  })
-  useEffect(() => {
     return () => {
       stopAutoPlay()
     }
   }, [])
+  useReady(() => {
+    nextTick(() => {
+      init()
+    })
+  })
   const itemStyle = (index: any) => {
     const style: IStyle = {}
     const _direction = propSwiper.direction || direction
@@ -485,7 +492,17 @@ export const Swiper = React.forwardRef<
   }))
   return (
     <DataContext.Provider value={parent}>
-      <div className={`${classes} ${className}`} ref={container} {...rest}>
+      <view
+        className={`${classes} ${className}`}
+        ref={container}
+        {...rest}
+        id={`container-${refRandomId}`}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        // @ts-ignore
+        catchMove={isVertical}
+      >
         <div className={contentClass} ref={innerRef}>
           {React.Children.map(childs, (child: any, index: number) => {
             return (
@@ -528,7 +545,7 @@ export const Swiper = React.forwardRef<
         ) : (
           <div>{pageContent}</div>
         )}
-      </div>
+      </view>
     </DataContext.Provider>
   )
 })

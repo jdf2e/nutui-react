@@ -107,9 +107,23 @@ const CheckboxDemo = () => {
   const [checkboxgroup4] = useState([])
   const checkboxgroup2Ref = useRef(null)
   const checkboxgroup3Ref = useRef(null)
+  const [show, SetShow] = useState(false)
+  const [toastMsg, SetToastMsg] = useState('')
+  const toastShow = (msg: any) => {
+    SetToastMsg(msg)
+    SetShow(true)
+  }
   return (
     <>
       <div className="demo">
+        <Toast
+          type="text"
+          visible={show}
+          msg={toastMsg}
+          onClose={() => {
+            SetShow(false)
+          }}
+        />
         <h2>{translated['74fc5d8a']}</h2>
         <Cell className="nut-cell">
           <Checkbox
@@ -175,9 +189,11 @@ const CheckboxDemo = () => {
             checked={false}
             onChange={(state, label) => {
               if (state) {
-                Toast.text(translated.b2dd27e8.replace('x', label))
+                // Toast.text(translated.b2dd27e8.replace('x', label))
+                toastShow(translated.b2dd27e8.replace('x', label))
               } else {
-                Toast.text(translated['9bbfbbc7'].replace('x', label))
+                // Toast.text(translated['9bbfbbc7'].replace('x', label))
+                toastShow(translated['9bbfbbc7'].replace('x', label))
               }
             }}
           >
@@ -189,7 +205,8 @@ const CheckboxDemo = () => {
           <CheckboxGroup
             checkedValue={checkboxgroup1}
             onChange={(value) => {
-              Toast.text(value)
+              //   Toast.text(value)
+              toastShow(value)
               setCheckboxgroup1(value)
             }}
           >
@@ -228,7 +245,14 @@ const CheckboxDemo = () => {
             ref={checkboxgroup2Ref}
             checkedValue={checkboxgroup2}
             onChange={(value) => {
-              Toast.text(
+              //   Toast.text(
+              //     `${
+              //       value.length === 4
+              //         ? translated['3a5040b6']
+              //         : translated.f4d4bae5
+              //     }`
+              //   )
+              toastShow(
                 `${
                   value.length === 4
                     ? translated['3a5040b6']
@@ -285,7 +309,8 @@ const CheckboxDemo = () => {
             checkedValue={checkboxgroup3}
             max={2}
             onChange={(value) => {
-              Toast.text(value)
+              //   Toast.text(value)
+              toastShow(value)
             }}
           >
             <Checkbox checked={false} label="1">

@@ -1,17 +1,17 @@
-# FixedNav 悬浮导航
+# FixedNav hover navigation
 
-### 介绍
+### introduce
 
-悬浮收齐体验交互，用于快捷导航
+Hovering and collecting experience interaction for quick navigation
 
-### 安装
+### Install
     
 ``` javascript
 import { FixedNav } from '@nutui/nutui-react';
 ```
 
 
-### 基础用法
+### Basic usage
 
 :::demo
 ``` tsx
@@ -22,23 +22,23 @@ const App = () => {
   const navList = [
     {
       id: 1,
-      text: '首页',
+      text: 'Home',
       icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/117646/2/11112/1297/5ef83e95E81d77f05/daf8e3b1c81e3c98.png'
     },
     {
       id: 2,
-      text: '分类',
+      text: 'Classification',
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png'
     },
     {
       id: 3,
-      text: '购物车',
+      text: 'Shopping Cart',
       num: 2,
       icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/130725/4/3157/1704/5ef83e95Eb976644f/b36c6cfc1cc1a99d.png'
     },
     {
       id: 4,
-      text: '我的',
+      text: 'my',
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/147573/29/1603/1721/5ef83e94E1393a678/5ddf1695ec989373.png'
     }
   ];
@@ -53,7 +53,7 @@ const App = () => {
     <>
       <FixedNav
         navList={navList}
-        activeText="基础用法"
+        activeText="basic usage"
         overlay
         position={{ top: '70px' }}
         onChange={change}
@@ -66,7 +66,7 @@ const App = () => {
 export default App;
 ```
 
-### 左侧效果
+### Left side effect
 
 ``` tsx
 import React, { useState } from "react";
@@ -76,23 +76,23 @@ const App = () => {
   const navList = [
     {
       id: 1,
-      text: '首页',
+      text: 'Home',
       icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/117646/2/11112/1297/5ef83e95E81d77f05/daf8e3b1c81e3c98.png'
     },
     {
       id: 2,
-      text: '分类',
+      text: 'Classification',
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png'
     },
     {
       id: 3,
-      text: '购物车',
+      text: 'Shopping Cart',
       num: 2,
       icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/130725/4/3157/1704/5ef83e95Eb976644f/b36c6cfc1cc1a99d.png'
     },
     {
       id: 4,
-      text: '我的',
+      text: 'my',
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/147573/29/1603/1721/5ef83e94E1393a678/5ddf1695ec989373.png'
     }
   ];
@@ -110,8 +110,8 @@ const App = () => {
         type="left"
         position={{ top: '140px' }}
         visible={visible}
-        activeText="左侧收起"
-        unActiveText="左侧展开"
+        activeText="Left collapsed"
+        unActiveText="Expand left"
         onChange={change}
         onSelected={selected}
        />
@@ -119,6 +119,7 @@ const App = () => {
   )
 };
 export default App;
+
 ```
 
 
@@ -176,10 +177,9 @@ const App = () => {
 export default App;
 ```
 
+### Custom use
 
-### 自定义使用
-
-``` tsx
+```` tsx
 import React, { useState } from "react";
 import { Icon, FixedNav } from '@nutui/nutui-react';
 
@@ -187,23 +187,23 @@ const App = () => {
   const navList = [
     {
       id: 1,
-      text: '首页',
+      text: 'Home',
       icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/117646/2/11112/1297/5ef83e95E81d77f05/daf8e3b1c81e3c98.png'
     },
     {
       id: 2,
-      text: '分类',
+      text: 'Classification',
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png'
     },
     {
       id: 3,
-      text: '购物车',
+      text: 'Shopping Cart',
       num: 2,
       icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/130725/4/3157/1704/5ef83e95Eb976644f/b36c6cfc1cc1a99d.png'
     },
     {
       id: 4,
-      text: '我的',
+      text: 'my',
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/147573/29/1603/1721/5ef83e94E1393a678/5ddf1695ec989373.png'
     }
   ];
@@ -234,7 +234,7 @@ const App = () => {
         slotBtn={
           <>
             <Icon name="retweet" color="#fff"> </Icon>
-            <span className="text">{ visible ? '自定义开' : '自定义关' }</span>
+            <span className="text">{ visible ? 'Custom On' : 'Custom Off' }</span>
           </>
         }
        />
@@ -242,12 +242,12 @@ const App = () => {
   )
 };
 export default App;
-```
+````
 
 
-### 支持拖拽
+### Support drag and drop
 
-``` tsx
+```` tsx
 import React, { useState } from "react";
 import { Drag, FixedNav } from '@nutui/nutui-react';
 
@@ -255,23 +255,23 @@ const App = () => {
   const navList = [
     {
       id: 1,
-      text: '首页',
+      text: 'Home',
       icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/117646/2/11112/1297/5ef83e95E81d77f05/daf8e3b1c81e3c98.png'
     },
     {
       id: 2,
-      text: '分类',
+      text: 'Classification',
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png'
     },
     {
       id: 3,
-      text: '购物车',
+      text: 'Shopping Cart',
       num: 2,
       icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/130725/4/3157/1704/5ef83e95Eb976644f/b36c6cfc1cc1a99d.png'
     },
     {
       id: 4,
-      text: '我的',
+      text: 'my',
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/147573/29/1603/1721/5ef83e94E1393a678/5ddf1695ec989373.png'
     }
   ];
@@ -287,8 +287,8 @@ const App = () => {
       <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
         <FixedNav
           navList={navList}
-          unActiveText="支持拖拽"
-          visible={visible} 
+          unActiveText="support drag and drop"
+          visible={visible}
           onChange={change}
           onSelected={selected} />
       </Drag>
@@ -296,32 +296,28 @@ const App = () => {
   )
 };
 export default App;
-```
-
-
-
-
+````
 ### Prop
-| 字段           | 说明                       | 类型    | 默认值                       |
-|:---------------|:---------------------------|:--------|:-----------------------------|
-| fixednavClass        | 自定义类名                   | String | fixednav                        |
-| visible        | 是否打开                   | Boolean | false                        |
-| navList       | 悬浮列表内容数据           | Array   | []                           |
-| activeText    | 收起列表按钮文案           | String  | 收起导航                     |
-| unActiveText | 展开列表按钮文案           | String  | 快速导航                     |
-| type           | 导航方向,可选值 left right | String  | right                        |
-| overlay        | 展开时是否显示遮罩         | Boolean | true                         |
-| position       | fixed 垂直位置             | Object  | {top: 'auto',bottom: 'auto'} |
-| slotList       | 自定义展开列表内容             | HTMLElement  | - |
-| slotBtn       | 自定义按钮            | HTMLElement  | - |
+| Field | Description | Type | Default Value |
+|:---------------|:----------------------------|:--------|:----------------------------|
+| fixednavClass | custom class name | String | fixednav |
+| visible | whether to open | Boolean | false |
+| navList | Floating list content data | Array | [] |
+| activeText | Collapse list button text | String | Collapse navigation |
+| unActiveText | Expand List Button Text | String | Quick Navigation |
+| type | navigation direction, optional left right | String | right |
+| overlay | Whether to show the mask when expanding | Boolean | true |
+| position | fixed vertical position | Object | {top: 'auto',bottom: 'auto'} |
+| slotList | Customize expanded list content | HTMLElement | - |
+| slotBtn | custom button | HTMLElement | - |
 
 
 ### Event
 
-| 字段     | 说明         | 回调参数                 |
-|----------|--------------|--------------------------|
-| onChange | 展开收起按钮回调 | {value:boolean} |
-| onSelected | 选择之后触发 | {item:item, event:MouseEvent} |
+| Field | Description | Callback Parameters |
+|----------|-------------|----------------|
+| onChange | expand/collapse button callback | {value:boolean} |
+| onSelected | Fired after selection | {item:item, event:MouseEvent} |
 
 
     

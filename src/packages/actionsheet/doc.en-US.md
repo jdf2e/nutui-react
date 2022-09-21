@@ -55,8 +55,8 @@ const App = () => {
     <ActionSheet
       visible={isVisible1}
       menuItems={menuItemsOne}
-      choose={chooseItem}
-      cancel={() => setIsVisible1(false)}
+      onChoose={chooseItem}
+      onCancel={() => setIsVisible1(false)}
      />
     </>
   );
@@ -103,8 +103,8 @@ const App = () => {
       visible={isVisible2}
       cancelTxt="Cancel"
       menuItems={menuItemsOne}
-      choose={chooseItemTwo}
-      cancel={() => setIsVisible2(false)}
+      onChoose={chooseItemTwo}
+      onCancel={() => setIsVisible2(false)}
      />
     </>
   );
@@ -150,10 +150,11 @@ const App = () => {
     <ActionSheet
       visible={isVisible3}
       description="This is a descriptive message"
-      menuItems={menuItemsTwo}
-      choose={chooseItemThree}
       cancelTxt="Cancel"
-      cancel={() => setIsVisible3(false)}
+      menuItems={menuItemsTwo}
+      onChoose={chooseItemThree}
+      
+      onCancel={() => setIsVisible3(false)}
      />
     </>
   );
@@ -190,10 +191,11 @@ const App = () => {
     <ActionSheet
       visible={isVisible4}
       cancelTxt="Cancel"
-      cancel={() => setIsVisible4(false)}
       menuItems={menuItemsThree}
       chooseTagValue="Shading Options"
-      choose={() => {
+      onCancel={() => setIsVisible4(false)}
+      
+      onChoose={() => {
         setIsVisible4(false)
       }}
      />
@@ -209,14 +211,14 @@ export default App;
 
 | Attribute             | Description                                   | Type    | Default    |
 |------------------|----------------------------------------|---------|-----------|
+| visible       | Mask layer visible  | Boolean | false     |
 | cancelTxt       | Cancel Text                               | String  | 'Cancel'    |
 | menuItems       | Menu Item                                 | Array   | [ ]       |
 | optionTag       | Set menu item display usage parameters                 | String  | 'name'    |
-| visible       | Mask layer visible  | Boolean | false     |
 | optionSubTag   | Set menu item description display usage parameters             | String  | 'subname' |
+| title            | Set panel title                         | String  | ''        |
+| description      | Set panel subtitle/description                  | String  | ''        |
 | chooseTagValue | Set selected item'value, corresponds to the value of 'option-tag' | String  | ''        |
-| title            | Set menu item title                         | String  | ''        |
-| description      | Set menu item subtitle/description                  | String  | ''        |
 | color            | highlight color                               | String  | '#ee0a24' |
 
 
@@ -224,5 +226,5 @@ export default App;
 
 | Attribute   | Description               | Arguments                          |
 |--------|--------------------|-----------------------------------|
-| choose | Triggered after selection       | Selected list item item, selected index value index |
-| cancel | Triggered when cancel copy is clicked | none                                |
+| onChoose`v1.3.2` | Triggered after selection       | Selected list item item, selected index value index |
+| onCancel`v1.3.2` | Triggered when onCancel copy is clicked | none                                |

@@ -101,6 +101,7 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo(
             rotate,
             iconSize,
             iconColor,
+            childnull: !!item.props.children,
           })
         })}
       </div>

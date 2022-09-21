@@ -11,8 +11,10 @@ import React, {
 } from 'react'
 
 import { formatNumber } from './util'
-import Icon from '@/packages/icon'
-import { useConfig } from '@/packages/configprovider'
+import Icon from '@/packages/icon/index.taro'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
+
+import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export type InputAlignType = 'left' | 'center' | 'right' // text-align
 export type InputFormatTrigger = 'onChange' | 'onBlur' // onChange: 在输入时执行格式化 ; onBlur: 在失焦时执行格式化
@@ -26,7 +28,7 @@ export type InputRule = {
 
 export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
 
-export interface InputProps {
+export interface InputProps extends IComponent {
   type: InputType
   defaultValue: any
   placeholder: string
@@ -72,7 +74,9 @@ export interface InputProps {
   clickRightIcon?: (value: any) => void
   click?: (value: any) => void
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   type: 'text',
   defaultValue: '',
   placeholder: '',
@@ -157,8 +161,13 @@ export const Input: FunctionComponent<
     clickLeftIcon,
     clickRightIcon,
     click,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
-  } = { ...defaultProps, ...props }
+  } = {
+    ...defaultProps,
+    ...props,
+  }
 
   locale.placeholder = placeholder || locale.placeholder
 
@@ -338,7 +347,12 @@ export const Input: FunctionComponent<
                 onClickLeftIcon(e)
               }}
             >
-              <Icon name={leftIcon} size={leftIconSize} />
+              <Icon
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
+                name={leftIcon}
+                size={leftIconSize}
+              />
             </div>
           ) : null}
           <div
@@ -406,6 +420,8 @@ export const Input: FunctionComponent<
               )}
               {clearable && !readonly && active && inputValue.length > 0 ? (
                 <Icon
+                  classPrefix={iconClassPrefix}
+                  fontClassName={iconFontClassName}
                   className="nut-input-clear"
                   name={clearIcon}
                   size={clearSize}
@@ -421,7 +437,12 @@ export const Input: FunctionComponent<
                     onClickRightIcon(e)
                   }}
                 >
-                  <Icon name={rightIcon} size={rightIconSize} />
+                  <Icon
+                    classPrefix={iconClassPrefix}
+                    fontClassName={iconFontClassName}
+                    name={rightIcon}
+                    size={rightIconSize}
+                  />
                 </div>
               ) : null}
               {slotButton ? (

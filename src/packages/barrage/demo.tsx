@@ -65,7 +65,7 @@ const BarrageDemo = () => {
     translated['4d14b3e0'],
     translated['448f995e'],
   ]
-  console.log(11, translated)
+
   const barrageRef = useRef<barrageRefState>(null)
   const addBarrage = () => {
     const n = Math.random()

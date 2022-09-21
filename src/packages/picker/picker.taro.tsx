@@ -5,10 +5,10 @@ import React, {
   RefObject,
   ForwardRefRenderFunction,
 } from 'react'
-import Popup from '@/packages/popup'
+import Popup from '@/packages/popup/index.taro'
 import PickerSlot from './pickerSlot.taro'
 import useRefs from '@/utils/useRefs'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import bem from '@/utils/bem'
 
 export interface PickerOption {
@@ -75,7 +75,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     const [columnsList, setColumnsList] = useState<PickerOption[][]>([]) // 格式化后每一列的数据
     const b = bem('picker')
 
-    let isConfirmEvent = useRef(false)
+    const isConfirmEvent = useRef(false)
 
     // 默认值修改
     useEffect(() => {

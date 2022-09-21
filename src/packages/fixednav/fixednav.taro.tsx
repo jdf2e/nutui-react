@@ -1,16 +1,18 @@
-import React, { FunctionComponent, MouseEvent, HTMLProps } from 'react'
+import React, { FunctionComponent, MouseEvent } from 'react'
 import classNames from 'classnames'
-import Icon from '@/packages/icon'
-import Overlay from '@/packages/overlay'
+import Icon from '@/packages/icon/index.taro'
+import Overlay from '@/packages/overlay/index.taro'
 import bem from '@/utils/bem'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 type Direction = 'right' | 'left'
 type Position = {
   top?: string
   bottom?: string
 }
-export interface FixedNavProps {
+
+export interface FixedNavProps extends IComponent {
   fixednavClass: string
   visible: boolean
   overlay: boolean
@@ -26,6 +28,7 @@ export interface FixedNavProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   fixednavClass: 'nut-fixednav',
   activeText: '',
   unActiveText: '',
@@ -53,8 +56,13 @@ export const FixedNav: FunctionComponent<
     type,
     slotList,
     slotBtn,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
-  } = { ...defaultProps, ...props }
+  } = {
+    ...defaultProps,
+    ...props,
+  }
 
   const b = bem('fixednav')
 
@@ -74,16 +82,6 @@ export const FixedNav: FunctionComponent<
   const onUpdateValue = (value = !visible): void => {
     onChange(value)
   }
-
-  // const [classNames, setClassNames] = useState('')
-
-  // const classes = () => {
-  //   return `${fixednavClass} ${type} ${visible ? 'active' : ''}`
-  // }
-
-  // useEffect(() => {
-  //   setClassNames(classes())
-  // }, [visible])
 
   return (
     <div className={classes} style={position} {...rest}>
@@ -117,7 +115,12 @@ export const FixedNav: FunctionComponent<
       <div className="nut-fixednav__btn" onClick={() => onUpdateValue()}>
         {slotBtn || (
           <>
-            <Icon name="left" color="#fff" />
+            <Icon
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
+              name="left"
+              color="#fff"
+            />
             <div className="text">
               {visible
                 ? activeText || locale.fixednav.activeText

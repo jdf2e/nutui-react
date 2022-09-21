@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import { useDrag } from '@use-gesture/react'
 import { animated, useSpring } from '@react-spring/web'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { getScrollParent } from '@/utils/get-scroll-parent'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
@@ -165,7 +165,9 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       axis: 'y',
       target: elementRef,
       enabled: !props.disabled,
-      eventOptions: passiveSupported ? { passive: false } : false,
+      eventOptions: (passiveSupported
+        ? { passive: false }
+        : false) as AddEventListenerOptions,
     }
   )
 

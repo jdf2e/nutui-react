@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useRef, useState, useEffect } from 'react'
-import Button from '@/packages/button'
+import Button from '@/packages/button/index.taro'
 import bem from '@/utils/bem'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export interface SignatureProps {
   type: string

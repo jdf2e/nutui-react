@@ -35,7 +35,7 @@ const App = () => {
         <h2>Basic Usage</h2>
         <Menu>
           <MenuItem options={options} value={0} />
-          <MenuItem options={options1} value={'a'} />
+          <MenuItem options={options1} value="a" />
         </Menu>
       </div>
     </>
@@ -277,12 +277,13 @@ export default App
 
 ### Menu Props
 
-| 参数                             | 说明                           | 类型                    | 默认值  |
-|----------------------------------|--------------------------------|-------------------------|---------|
-| activeColor                     | Active color of title and option           | String                  | #F2270C |
+| 参数                  | 说明                           | 类型                    | 默认值  |
+|---------------------|--------------------------------|-------------------------|---------|
+| activeColor         | Active color of title and option           | String                  | #F2270C |
 | closeOnClickOverlay | Whether to close when overlay is clicked     | Boolean                 | true    |
-| lockScroll            | Whether the background is locked                   | Boolean                 | true    |
-| titleIcon               | Custome title icon                 | String                  | -       |
+| lockScroll          | Whether the background is locked                   | Boolean                 | true    |
+| scrollFixed         | Whether to fixed when window is scrolled, fixed position can be set                   | Boolean、String、Number                 | true    |
+| titleIcon           | Custome title icon                 | String                  | -       |
 
 ### MenuItem Props
 

@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import Icon from '@/packages/icon'
+import Progress from '@/packages/progress'
 import { Upload, UploadOptions } from './upload'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
@@ -20,7 +21,9 @@ export type FileItemStatus =
   | 'error'
   | 'removed'
 
-export interface UploaderProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface UploaderProps extends IComponent {
   url: string
   maximum: string | number
   maximize: number
@@ -46,32 +49,35 @@ export interface UploaderProps {
   className: string
   defaultImg: string
   style: React.CSSProperties
-  start?: (option: UploadOptions) => void
-  removeImage?: (file: FileItem, fileList: FileItem[]) => void
-  success?: (param: {
+  onStart?: (option: UploadOptions) => void
+  onRemove?: (file: FileItem, fileList: FileItem[]) => void
+  onSuccess?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
   }) => void
-  progress?: (param: {
+  onProgress?: (param: {
     e: ProgressEvent<XMLHttpRequestEventTarget>
     option: UploadOptions
+    percentage: string | number
   }) => void
-  failure?: (param: {
+  onFailure?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
   }) => void
-  update?: (fileList: any[]) => void
-  oversize?: (file: File[]) => void
-  change?: (param: {
-    fileList: any[]
+  onUpdate?: (fileList: FileItem[]) => void
+  onOversize?: (file: File[]) => void
+  onChange?: (param: {
+    fileList: FileItem[]
     event: React.ChangeEvent<HTMLInputElement>
   }) => void
-  beforeUpload?: (file: File[]) => Promise<File[]>
-  beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
-  fileItemClick?: (file: FileItem) => void
+  onBeforeUpload?: (file: File[]) => Promise<File[]>
+  onBeforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
+  onBeforeDelete?: (file: FileItem, files: FileItem[]) => boolean
+  onFileItemClick?: (file: FileItem) => void
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   url: '',
   maximum: 1,
   uploadIcon: 'photograph',
@@ -90,11 +96,11 @@ const defaultProps = {
   xhrState: 200,
   timeout: 1000 * 30,
   withCredentials: false,
-  clearInput: false,
+  clearInput: true,
   isPreview: true,
   isDeletable: true,
   capture: false,
-  beforeDelete: (file: FileItem, files: FileItem[]) => {
+  onBeforeDelete: (file: FileItem, files: FileItem[]) => {
     return true
   },
 } as UploaderProps
@@ -111,6 +117,10 @@ export class FileItem {
   url?: string
 
   type?: string
+
+  path?: string
+
+  percentage: string | number = 0
 
   formData: FormData = new FormData()
 }
@@ -145,24 +155,26 @@ const InternalUploader: ForwardRefRenderFunction<
     className,
     autoUpload,
     clearInput,
-    start,
-    removeImage,
-    change,
-    fileItemClick,
-    progress,
-    success,
-    update,
-    failure,
-    oversize,
-    beforeUpload,
-    beforeDelete,
+    iconClassPrefix,
+    iconFontClassName,
+    onStart,
+    onRemove,
+    onChange,
+    onFileItemClick,
+    onProgress,
+    onSuccess,
+    onUpdate,
+    onFailure,
+    onOversize,
+    onBeforeUpload,
+    onBeforeXhrUpload,
+    onBeforeDelete,
     ...restProps
   } = { ...defaultProps, ...props }
   const [fileList, setFileList] = useState<any>([])
   const [uploadQueue, setUploadQueue] = useState<Promise<Upload>[]>([])
 
   useEffect(() => {
-    console.log('defaultFileList', defaultFileList)
     if (defaultFileList) {
       setFileList(defaultFileList)
     }
@@ -204,6 +216,10 @@ const InternalUploader: ForwardRefRenderFunction<
     uploadOption.xhrState = xhrState
     uploadOption.headers = headers
     uploadOption.withCredentials = withCredentials
+    uploadOption.beforeXhrUpload = onBeforeXhrUpload
+    try {
+      uploadOption.sourceFile = fileItem.formData.get(name)
+    } catch (error) {}
     uploadOption.onStart = (option: UploadOptions) => {
       clearUploadQueue(index)
       setFileList((fileList: FileItem[]) => {
@@ -216,7 +232,7 @@ const InternalUploader: ForwardRefRenderFunction<
         })
         return [...fileList]
       })
-      start && start(option)
+      onStart && onStart(option)
     }
     uploadOption.onProgress = (
       e: ProgressEvent<XMLHttpRequestEventTarget>,
@@ -227,19 +243,20 @@ const InternalUploader: ForwardRefRenderFunction<
           if (item.uid === fileItem.uid) {
             item.status = 'uploading'
             item.message = locale.uploader.uploading
+            item.percentage = ((e.loaded / e.total) * 100).toFixed(0)
+            onProgress && onProgress({ e, option, percentage: item.percentage })
           }
           return item
         })
         return [...fileList]
       })
-      progress && progress({ e, option })
     }
     uploadOption.onSuccess = (
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
       setFileList((fileList: FileItem[]) => {
-        update && update(fileList)
+        onUpdate && onUpdate(fileList)
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'success'
@@ -249,8 +266,8 @@ const InternalUploader: ForwardRefRenderFunction<
         })
         return [...fileList]
       })
-      success &&
-        success({
+      onSuccess &&
+        onSuccess({
           responseText,
           option,
         })
@@ -269,8 +286,8 @@ const InternalUploader: ForwardRefRenderFunction<
         })
         return [...fileList]
       })
-      failure &&
-        failure({
+      onFailure &&
+        onFailure({
           responseText,
           option,
         })
@@ -327,7 +344,7 @@ const InternalUploader: ForwardRefRenderFunction<
       return true
     })
     if (oversizes.length) {
-      oversize && oversize(files)
+      onOversize && onOversize(files)
     }
 
     if (filterFile.length > maximum) {
@@ -343,9 +360,9 @@ const InternalUploader: ForwardRefRenderFunction<
 
   const onDelete = (file: FileItem, index: number) => {
     clearUploadQueue(index)
-    if (beforeDelete && beforeDelete(file, fileList)) {
+    if (onBeforeDelete && onBeforeDelete(file, fileList)) {
       fileList.splice(index, 1)
-      removeImage && removeImage(file, fileList)
+      onRemove && onRemove(file, fileList)
       setFileList([...fileList])
     } else {
       console.log(locale.uploader.deleteWord)
@@ -359,8 +376,8 @@ const InternalUploader: ForwardRefRenderFunction<
     const $el = event.target
     const { files } = $el
 
-    if (beforeUpload) {
-      beforeUpload(new Array<File>().slice.call(files)).then(
+    if (onBeforeUpload) {
+      onBeforeUpload(new Array<File>().slice.call(files)).then(
         (f: Array<File>) => {
           const _files: File[] = filterFiles(new Array<File>().slice.call(f))
           readFile(_files)
@@ -371,7 +388,7 @@ const InternalUploader: ForwardRefRenderFunction<
       readFile(_files)
     }
 
-    props.change && props.change({ fileList, event })
+    onChange && onChange({ fileList, event })
 
     if (clearInput) {
       clearInputValue($el)
@@ -379,7 +396,7 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const handleItemClick = (file: FileItem) => {
-    fileItemClick && fileItemClick(file)
+    onFileItemClick && onFileItemClick(file)
   }
 
   return (
@@ -434,6 +451,8 @@ const InternalUploader: ForwardRefRenderFunction<
                     item.status !== 'success' && (
                       <div className="nut-uploader__preview__progress">
                         <Icon
+                          classPrefix={iconClassPrefix}
+                          fontClassName={iconFontClassName}
                           color="#fff"
                           name={`${
                             item.status === 'error' ? 'failure' : 'loading'
@@ -448,6 +467,8 @@ const InternalUploader: ForwardRefRenderFunction<
 
                   {isDeletable && (
                     <Icon
+                      classPrefix={iconClassPrefix}
+                      fontClassName={iconFontClassName}
                       color="rgba(0,0,0,0.6)"
                       className="close"
                       name="failure"
@@ -481,7 +502,12 @@ const InternalUploader: ForwardRefRenderFunction<
                             onClick={() => handleItemClick(item)}
                             className="nut-uploader__preview-img__file__name"
                           >
-                            <Icon color="#808080" name="link" />
+                            <Icon
+                              classPrefix={iconClassPrefix}
+                              fontClassName={iconFontClassName}
+                              color="#808080"
+                              name="link"
+                            />
                             &nbsp;
                             {item.name}
                           </div>
@@ -499,16 +525,29 @@ const InternalUploader: ForwardRefRenderFunction<
                     className={`nut-uploader__preview-img__file__name ${item.status}`}
                     onClick={() => handleItemClick(item)}
                   >
-                    <Icon name="link" />
+                    <Icon
+                      classPrefix={iconClassPrefix}
+                      fontClassName={iconFontClassName}
+                      name="link"
+                    />
                     &nbsp;{item.name}
                   </div>
                   <Icon
+                    classPrefix={iconClassPrefix}
+                    fontClassName={iconFontClassName}
                     color="#808080"
                     className="nut-uploader__preview-img__file__del"
                     name="del"
                     onClick={() => onDelete(item, index)}
                   />
-                  {/* 缺少进度条组件，待更新 */}
+                  {item.status === 'uploading' && (
+                    <Progress
+                      size="small"
+                      percentage={item.percentage}
+                      strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
+                      showText={false}
+                    />
+                  )}
                 </div>
               )}
             </div>
@@ -517,7 +556,13 @@ const InternalUploader: ForwardRefRenderFunction<
 
       {maximum > fileList.length && listType === 'picture' && !children && (
         <div className={`nut-uploader__upload ${listType}`}>
-          <Icon size={uploadIconSize} color="#808080" name={uploadIcon} />
+          <Icon
+            classPrefix={iconClassPrefix}
+            fontClassName={iconFontClassName}
+            size={uploadIconSize}
+            color="#808080"
+            name={uploadIcon}
+          />
           {capture ? (
             <input
               className="nut-uploader__input"

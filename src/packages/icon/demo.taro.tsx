@@ -1,8 +1,8 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import icons from '@/styles/font/config.json'
 import { Icon, Cell, CellGroup } from '@/packages/nutui.react.taro'
-import Taro from '@tarojs/taro'
 import '@/packages/icon/demo.scss'
 
 interface T {
@@ -32,6 +32,34 @@ const copyTag = (text: string) => {
   document.body.removeChild(input)
 }
 
+const style = `
+.nut-cell > .nutui-iconfont {
+  margin-right: 10px;
+}
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  width: 100%;
+}
+ul li {
+    flex: 0 0 25%;
+    max-width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+ul li  span {
+  height: 40px;
+  font-size: 12px;
+  text-align: center;
+}
+ul li span .nutui-iconfont {
+  margin: 16px 0 16px;
+}
+`
+
 const IconDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -59,6 +87,7 @@ const IconDemo = () => {
 
   return (
     <>
+      <style>{style}</style>
       <div className="demo">
         <h2>{translated['84aa6bce']}</h2>
         <Cell>
