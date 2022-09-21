@@ -16,7 +16,7 @@
         "name": "starttaro-react",
         "cName": "小程序开发",
         "eName": "WeChat",
-        "show": false
+        "show": true
       },
       {
         "name": "theme-react",
