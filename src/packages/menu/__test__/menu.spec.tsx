@@ -53,7 +53,6 @@ test('test props', () => {
     'custom-className'
   )
   expect(getByText('custom title')).toHaveTextContent('custom title')
-  expect(container.querySelector('.my-font')).toHaveClass('my-font')
   expect(container.querySelector('.activeTitleClass')).toHaveClass(
     'activeTitleClass'
   )

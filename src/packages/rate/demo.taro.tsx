@@ -4,7 +4,7 @@ import { Rate } from '@/packages/nutui.react.taro'
 
 const RateDemo = () => {
   const onChange = (val: any) => {
-    Taro.showToast({ title: val })
+    Taro.showToast({ title: String(val) })
   }
   return (
     <>
@@ -12,10 +12,19 @@ const RateDemo = () => {
         <h2>基础用法</h2>
         <Rate modelValue={3} />
         <h2>半星</h2>
-        <Rate allowHalf modelValue="3.5" />
+        <Rate
+          allowHalf
+          modelValue="3.5"
+          onChange={(num) => console.log('allowHalf count', num)}
+        />
 
         <h2>自定义 icon </h2>
-        <Rate checkedIcon="heart-fill1" uncheckedIcon="heart" modelValue="3" />
+        <Rate
+          checkedIcon="heart-fill1"
+          uncheckedIcon="heart"
+          modelValue="3"
+          onChange={(num) => console.log('coustom icon count', num)}
+        />
 
         <h2>自定义数量</h2>
         <Rate count="6" modelValue="3" />
@@ -24,7 +33,7 @@ const RateDemo = () => {
         <Rate
           modelValue="2"
           minimizeValue={3}
-          change={(num) => console.log(num)}
+          onChange={(num) => console.log(num)}
         />
 
         <h2>自定义颜色</h2>
@@ -37,7 +46,7 @@ const RateDemo = () => {
         <Rate modelValue="3" readonly />
 
         <h2>绑定事件</h2>
-        <Rate modelValue="3" change={onChange} />
+        <Rate modelValue="3" onChange={onChange} />
 
         <h2>自定义尺寸 35px</h2>
         <Rate modelValue="3" iconSize="35" />

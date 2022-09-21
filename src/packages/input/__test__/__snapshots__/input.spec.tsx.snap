@@ -4,6 +4,8 @@ exports[`input props test 1`] = `
 <div>
   <div
     class="nut-input nut-input-border  "
+    iconclassprefix="nut-icon"
+    iconfontclassname="nutui-iconfont"
   >
     <div
       class="nut-input-label "

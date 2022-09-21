@@ -1,6 +1,7 @@
 import React from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Avatar, Badge, Cell, CellGroup } from '@/packages/nutui.react.taro'
+
 interface T {
   '8ab98966': string
   '1e7a2282': string

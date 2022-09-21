@@ -30,30 +30,26 @@ const App = () => {
             title: '基礎彈框',
             content: '支持函數調用和組件調用兩種方式。'
         });
-        }}>
-     </Cell>
+        }} />
       <Cell title="無標題彈框" onClick={() => {
             Dialog.alert({
             content: '無標題彈框'
         });
-        }}>
-     </Cell>
+        }} />
       <Cell title="提示彈框" onClick={() => {
         Dialog.alert({
             title: '溫馨提示',
             content: '支持函數調用和組件調用兩種方式。',
             noCancelBtn: true
         });
-        }}>
-     </Cell>
+        }} />
       <Cell title="底部按鈕 垂直調用" onClick={() => {
         Dialog.alert({
             title: '溫馨提示',
             content: '支持函數調用和組件調用兩種方式。',
             footerDirection: 'vertical'
         });
-        }}>
-     </Cell>
+        }} />
     </>
   )
 }
@@ -67,8 +63,7 @@ export default App;
 :::demo
 
 ```tsx
-import React from "react";
-import {useState} from 'react'
+import React, {useState} from "react";
 import { Cell,Dialog } from '@nutui/nutui-react';
 
 const App = () => {

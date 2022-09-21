@@ -1,3 +1,34 @@
+## v1.3.4
+`2022-09-21`
+* :sparkles: feat: Infiniteloading滚动taro适配优化开发 (#308) @junjun666
+* :sparkles: feat: 适配 Taro h5。处理样式兼容问题。 (#307) @xiaoyatong
+* :sparkles: chore: demo 增加白底 (#306) @oasis-cloud
+* :sparkles: feat: 适配 Taro 的 3.5.x 版本；清理无用依赖；增加小程序首页的分享功能。 (#305) @xiaoyatong
+* :sparkles: feat: 适配Taro h5，调整样式配置。 (#309) @xiaoyatong
+* :sparkles: feat: nutui-react taro uploader功能更新 (#303) @junjun666
+* :bug: fix: createRoot 类型检查 (#302) @oasis-cloud
+* :sparkles: feat: uploader组件h5功能新增和文档修复 (#301) @junjun666
+* :sparkles: feat: 增加布局组件Sticky (#294) @mangov587
+* :sparkles: chore: 文档需要增加 demo 用到的 css (#300) @oasis-cloud
+* :sparkles: chore: taro docs (#299) @oasis-cloud
+* :sparkles: chore: typescript 4.8 (#298) @oasis-cloud
+* :bug: fix: Iconclassprefix waring 问题修复 (#297) @oasis-cloud
+* :sparkles: feat: toast适配taro (#295) @ovickyYe
+* :sparkles: feat: audio组件taro适配 (#292) @libin0824
+* :sparkles: chore: taro docs 预览 (#289) @oasis-cloud
+* :sparkles: feat: Grid 适配 Taro。 (#287) @xiaoyatong
+* :sparkles: feat: 增加 Taro 多端输出路径。 (#286) @xiaoyatong
+
+## v1.3.3
+`2022-09-14`
+* :sparkles: chore: 组件 icon 自定义以及优化typing 导出 (#283) @oasis-cloud
+* :sparkles: chore: sideEffects 优化 (#280) @oasis-cloud
+* :sparkles: feat: drag组件增加单元测试 (#277) @irisSong
+* :sparkles: feat: 适配jd小程序。 (#278) @xiaoyatong
+* :bug: fix: 修复 button 组件 loading 效果 (#284) @oasis-cloud
+* :bug: fix: countdown 组件 props 能力补全、demo 和文档国际化 (#279) @irisSong
+* :bug: fix : rate组件taro适配 (#276) @libin0824
+
 ## v1.3.2
 `2022-09-07`
 * :sparkles: feat: Popover 新增国际化 (#260) @yangxiaolu1993

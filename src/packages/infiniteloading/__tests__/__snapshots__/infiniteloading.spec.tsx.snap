@@ -4,6 +4,8 @@ exports[`infiniteloading base 1`] = `
 <div>
   <div
     class="nut-infiniteloading"
+    iconclassprefix="nut-icon"
+    iconfontclassname="nutui-iconfont"
   >
     <div
       class="nut-infinite-top"
@@ -37,6 +39,8 @@ exports[`pull base 1`] = `
 <div>
   <div
     class="nut-infiniteloading"
+    iconclassprefix="nut-icon"
+    iconfontclassname="nutui-iconfont"
   >
     <div
       class="nut-infinite-top"
@@ -70,6 +74,8 @@ exports[`pull base 2`] = `
 <div>
   <div
     class="nut-infiniteloading"
+    iconclassprefix="nut-icon"
+    iconfontclassname="nutui-iconfont"
   >
     <div
       class="nut-infinite-top"

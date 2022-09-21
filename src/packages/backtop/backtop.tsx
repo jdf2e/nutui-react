@@ -1,9 +1,11 @@
 import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 
 import Icon from '@/packages/icon'
+import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 declare const window: any
-export interface BackTopProps {
+
+export interface BackTopProps extends IComponent {
   className?: string
   bottom: number
   right: number
@@ -16,7 +18,9 @@ export interface BackTopProps {
   style?: React.CSSProperties
   onClick?: (event: MouseEvent) => void
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   bottom: 20,
   right: 10,
   elId: 'body',
@@ -41,6 +45,8 @@ export const BackTop: FunctionComponent<
     duration,
     style,
     onClick,
+    iconClassPrefix,
+    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -143,7 +149,15 @@ export const BackTop: FunctionComponent<
         goTop(e)
       }}
     >
-      {children || <Icon size="19px" className="nut-backtop-main" name="top" />}
+      {children || (
+        <Icon
+          classPrefix={iconClassPrefix}
+          fontClassName={iconFontClassName}
+          size="19px"
+          className="nut-backtop-main"
+          name="top"
+        />
+      )}
     </div>
   )
 }

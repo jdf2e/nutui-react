@@ -70,7 +70,7 @@ const CountDownDemo = () => {
         <h2>显示天</h2>
 
         <Cell>
-          <CountDown endTime={stateRef.current.endTime} showDays />
+          <CountDown endTime={stateRef.current.endTime} />
         </Cell>
 
         <h2>以服务端的时间为准</h2>
@@ -85,17 +85,13 @@ const CountDownDemo = () => {
         <h2>显示为天时分秒</h2>
 
         <Cell>
-          <CountDown
-            showDays
-            showPlainText
-            endTime={stateRef.current.endTime}
-          />
+          <CountDown endTime={stateRef.current.endTime} />
         </Cell>
 
         <h2>异步更新结束时间</h2>
 
         <Cell>
-          <CountDown showPlainText endTime={asyncEnd} />
+          <CountDown endTime={asyncEnd} />
         </Cell>
 
         <h2>控制开始和暂停的倒计时</h2>

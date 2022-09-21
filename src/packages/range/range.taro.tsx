@@ -84,11 +84,19 @@ export const Range: FunctionComponent<
 
   const [marksList, SetMarksList] = useState([])
 
+  const [show, SetShow] = useState(false)
+  const [toastMsg, SetToastMsg] = useState('')
+  const toastShow = (msg: any) => {
+    SetToastMsg(msg)
+    SetShow(true)
+  }
+
   useEffect(() => {
     if (modelValue) {
       if (!range && (modelValue < min || modelValue > max)) {
         SetInitValue(0)
-        Toast.text(`${modelValue} ${locale.range.rangeText}`)
+        // Toast.text(`${modelValue} ${locale.range.rangeText}`)
+        toastShow(`${modelValue} ${locale.range.rangeText}`)
         return
       }
       SetInitValue(modelValue)
@@ -468,6 +476,14 @@ export const Range: FunctionComponent<
         </div>
       </div>
       {!hiddenRange ? <div className="max">{+max}</div> : null}
+      <Toast
+        type="text"
+        visible={show}
+        msg={toastMsg}
+        onClose={() => {
+          SetShow(false)
+        }}
+      />
     </div>
   )
 }

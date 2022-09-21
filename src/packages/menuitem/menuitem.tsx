@@ -5,12 +5,14 @@ import { useConfig } from '@/packages/configprovider'
 import Icon from '@/packages/icon'
 import { Overlay } from '../overlay/overlay'
 
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
 export interface OptionItem {
   text: string
   value: string | number
 }
 
-export interface MenuItemProps {
+export interface MenuItemProps extends IComponent {
   className: string
   style: React.CSSProperties
   title: React.ReactNode
@@ -29,6 +31,7 @@ export interface MenuItemProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   className: '',
   style: {},
   columns: 1,
@@ -50,14 +53,14 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
     value,
     columns,
     title,
-    iconClassPrefix,
-    fontClassName,
     optionsIcon,
     direction,
     onChange,
     activeTitleClass,
     inactiveTitleClass,
     children,
+    iconClassPrefix,
+    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -176,10 +179,10 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
                 >
                   {item.value === _value ? (
                     <Icon
+                      classPrefix={iconClassPrefix}
+                      fontClassName={iconFontClassName}
                       className={getIconCName(item.value, value)}
                       name={optionsIcon}
-                      classPrefix={iconClassPrefix}
-                      fontClassName={fontClassName}
                       color={activeColor}
                     />
                   ) : null}

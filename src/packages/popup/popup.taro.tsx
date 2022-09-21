@@ -18,10 +18,11 @@ import {
 import Icon from '@/packages/icon/index.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import bem from '@/utils/bem'
+import { ComponentDefaults, IComponent } from '@/utils/typings'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
-export interface PopupProps extends OverlayProps {
+export interface PopupProps extends OverlayProps, IComponent {
   position: string
   transition: string
   style: React.CSSProperties
@@ -43,6 +44,7 @@ export interface PopupProps extends OverlayProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   position: 'center',
   transition: '',
   style: {},
@@ -97,6 +99,8 @@ export const Popup: FunctionComponent<
     onOpened,
     onClosed,
     onClick,
+    iconClassPrefix,
+    iconFontClassName,
   } = props
 
   const [index, setIndex] = useState(zIndex || _zIndex)
@@ -218,7 +222,12 @@ export const Popup: FunctionComponent<
           {showChildren ? children : ''}
           {closeable ? (
             <div className={closeClasses} onClick={onHandleClickCloseIcon}>
-              <Icon name={closeIcon} size="12px" />
+              <Icon
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
+                name={closeIcon}
+                size="12px"
+              />
             </div>
           ) : (
             ''

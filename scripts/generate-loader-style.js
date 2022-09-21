@@ -15,22 +15,39 @@ config.nav.map((item) => {
   item.packages.forEach((element) => {
     let { name, show, exportEmpty } = element
     const nameLowerCase = name.toLowerCase()
+
     const file = path.resolve(process.cwd(), `dist/esm/${name}/style/index.js`)
-    const cssFile = path.resolve(process.cwd(), `dist/esm/${name}/style/css.js`)
     if (show || exportEmpty) {
-      // todo 删掉 @import 改成 require 方式
       const componentSassFile = path.join(
         __dirname,
         `../dist/packages/${nameLowerCase}/${nameLowerCase}.scss`
       )
       // 这里匹配 @import，并转换为 require()
-      let data = fs.readFileSync(componentSassFile, { encoding: 'utf8', flag: 'r' })
+      let data = fs.readFileSync(componentSassFile, {
+        encoding: 'utf8',
+        flag: 'r',
+      })
       const matched = data.match(/@import.*?[;][\n\r]?/gi)
 
       let rewrite = ''
+      console.log(matched)
       if (matched && matched.length) {
         rewrite = matched.map((im) => {
           if (im.indexOf('../../styles/') > -1) {
+            if (im.indexOf('.css') > -1) {
+              data = data.replace(im, '')
+
+              // return im
+              //   .toLowerCase()
+              //   .replace('@import ', `require(`)
+              //   .replace('../../', '../../../')
+              //   .replace("';", "')")
+
+              return im
+                .toLowerCase()
+                .replace('@import ', `import`)
+                .replace('../../', '../../../')
+            }
             return ''
           } else {
             data = data.replace(im, '')
@@ -43,35 +60,42 @@ config.nav.map((item) => {
             // require('../../Popup/style')
             const matchGroup = im.match(/\.\.\/(?<package>[a-z]+)\//)
             if (matchGroup && matchGroup.groups && matchGroup.groups.package) {
-              const find = components.filter((c) => c.toLowerCase() == matchGroup.groups.package)[0]
+              const find = components.filter(
+                (c) => c.toLowerCase() == matchGroup.groups.package
+              )[0]
               if (find) {
-                return `require('../../${find}/style')`
+                // return `require('../../${find}/style')`
+                return `import '../../${find}/style'`
               }
             }
 
             // 替换为 js 文件内容
             // @import './countup.scss';
             // require('../../../packages/animatingnumbers/countup.scss')
+
+            // return im
+            //   .toLowerCase()
+            //   .replace('@import ', `require(`)
+            //   .replace('../', '../../../packages/')
+            //   .replace("'./", `'../../../packages/${nameLowerCase}/`)
+            //   .replace("';", "')")
+
             return im
               .toLowerCase()
-              .replace('@import ', `require(`)
+              .replace('@import ', `import`)
               .replace('../', '../../../packages/')
               .replace("'./", `'../../../packages/${nameLowerCase}/`)
-              .replace("';", "')")
           }
         })
+        console.log('rewrite', rewrite)
         rewrite = rewrite.join('\r\n')
         fse.outputFileSync(componentSassFile, data)
       }
-
       fse.outputFileSync(
         file,
-        `${rewrite}${'\n'}require('../../../packages/${nameLowerCase}/${nameLowerCase}.scss')`
+        // `${rewrite}${'\n'}require('../../../packages/${nameLowerCase}/${nameLowerCase}.scss')`
+        `${rewrite}${'\n'}import '../../../packages/${nameLowerCase}/${nameLowerCase}.scss'`
       )
-      // fse.outputFileSync(
-      //   cssFile,
-      //   `require('../../../packages/${nameLowerCase}/${nameLowerCase}.css')`
-      // )
     }
   })
 })

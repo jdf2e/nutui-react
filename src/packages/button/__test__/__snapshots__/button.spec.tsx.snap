@@ -4,6 +4,8 @@ exports[`should match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="nut-button nut-button--primary nut-button--normal nut-button--round aa"
+    iconclassprefix="nut-icon"
+    iconfontclassname="nutui-iconfont"
     style="margin: 8px;"
   >
     <div
