@@ -6,7 +6,9 @@ import React, {
 } from 'react'
 
 import Taro from '@tarojs/taro'
-import { Icon, Range, Button } from '@/packages/nutui.react.taro'
+import Icon from '@/packages/icon/index.taro'
+import Range from '@/packages/range/index.taro'
+import Button from '@/packages/button/index.taro'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { IComponent, ComponentDefaults } from '@/utils/typings'
