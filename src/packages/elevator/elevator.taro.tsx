@@ -87,7 +87,6 @@ export const Elevator: FunctionComponent<
   }
 
   const clientHeight = () => {
-    console.log(listview.current ? listview.current.clientHeight : 0)
     return listview.current ? listview.current.clientHeight : 0
   }
 
@@ -111,7 +110,6 @@ export const Elevator: FunctionComponent<
     if (!index && index !== 0) {
       return
     }
-    console.log(index, 1)
 
     if (!state.current.listHeight.length) {
       calculateHeight()
@@ -134,7 +132,6 @@ export const Elevator: FunctionComponent<
 
   const bind = useGesture({
     onDragStart: ({ target, offset }) => {
-      console.log('sss')
       setScrollStart(true)
       const index = Number(getData(target as HTMLElement, 'index'))
       touchState.current.y1 = offset[1]
@@ -170,7 +167,6 @@ export const Elevator: FunctionComponent<
       query.selectAll('.nut-elevator__list__item')
       query.exec((el: Element) => {
         if (el != null && !state.current.listGroup.includes(el)) {
-          console.log(el)
           state.current.listGroup.push(el)
         }
       })
@@ -178,7 +174,6 @@ export const Elevator: FunctionComponent<
   }
 
   const listViewScroll = (e: Event) => {
-    console.log('sss')
     const { listHeight } = state.current
     if (!listHeight.length) {
       calculateHeight()
@@ -203,6 +198,7 @@ export const Elevator: FunctionComponent<
   useEffect(() => {
     if (listview.current) {
       setListGroup()
+      listview.current.addEventListener('scroll', listViewScroll)
     }
   }, [listview])
 
@@ -231,11 +227,7 @@ export const Elevator: FunctionComponent<
         className={b('list')}
         style={{ height: Number.isNaN(+height) ? height : `${height}px` }}
       >
-        <div
-          className={b('list__inner')}
-          ref={listview}
-          onScroll={listViewScroll}
-        >
+        <div className={b('list__inner')} ref={listview}>
           {indexList.map((item: any, idx: number) => {
             return (
               <div className={b('list__item')} key={idx}>
@@ -294,7 +286,7 @@ export const Elevator: FunctionComponent<
                 key={index}
                 onClick={() => handleClickIndex(item[acceptKey])}
               >
-                3{item[acceptKey]}
+                {item[acceptKey]}
               </div>
             )
           })}
