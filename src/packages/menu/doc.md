@@ -36,7 +36,7 @@ const App = () => {
       <div className="demo full">
         <Menu>
           <MenuItem options={options} value={0} />
-          <MenuItem options={options1} value={'a'} />
+          <MenuItem options={options1} value="a" />
         </Menu>
       </div>
     </>
@@ -268,12 +268,13 @@ export default App
 
 ### Menu Props
 
-| 参数                             | 说明                           | 类型                    | 默认值  |
-|----------------------------------|--------------------------------|-------------------------|---------|
-| activeColor                     | 选项的选中态图标颜色           | String                  | #F2270C |
+| 参数                  | 说明                           | 类型                    | 默认值  |
+|---------------------|--------------------------------|-------------------------|---------|
+| activeColor         | 选项的选中态图标颜色           | String                  | #F2270C |
 | closeOnClickOverlay | 是否在点击遮罩层后关闭菜单     | Boolean                 | true    |
-| lockScroll            | 背景是否锁定                   | Boolean                 | true    |
-| titleIcon               | 自定义标题图标                 | String                  | -       |
+| lockScroll          | 背景是否锁定                   | Boolean                 | true    |
+| scrollFixed         | 滚动后是否固定，可设置固定位置                   | Boolean、String、Number                 | true    |
+| titleIcon           | 自定义标题图标                 | String                  | -       |
 
 ### MenuItem Props
 

@@ -1,45 +1,55 @@
 import React, {
-  FunctionComponent,
   CSSProperties,
   useState,
   useRef,
   useEffect,
+  ReactNode,
+  ForwardRefRenderFunction,
+  useImperativeHandle,
 } from 'react'
 import bem from '@/utils/bem'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export interface CountDownProps {
   className?: string
   style?: CSSProperties
   paused: boolean
-  showDays: boolean
-  showPlainText: boolean
-  startTime: number | string
-  endTime: number | string
+  startTime: number
+  endTime: number
+  millisecond: boolean
+  format: string
+  autoStart: boolean
+  time: number
   onEnd: () => void
   onPaused: (restTime: number) => void
   onRestart: (restTime: number) => void
   onUpdate: (restTime: any) => void
+  children: ReactNode
 }
 
 const defaultProps = {
-  showPlainText: false,
-  showDays: false,
   paused: false,
   startTime: Date.now(),
   endTime: Date.now(),
+  millisecond: false,
+  format: 'HH:mm:ss',
+  autoStart: true,
+  time: 0,
 } as CountDownProps
 
-export const CountDown: FunctionComponent<
-  Partial<CountDownProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+const InternalCountDown: ForwardRefRenderFunction<
+  unknown,
+  Partial<CountDownProps>
+> = (props, ref) => {
   const { locale } = useConfig()
   const {
-    showPlainText,
-    showDays,
     paused,
     startTime,
     endTime,
+    millisecond,
+    format,
+    autoStart,
+    time,
     className,
     style,
     onEnd,
@@ -54,129 +64,191 @@ export const CountDown: FunctionComponent<
   const stateRef = useRef({
     pauseTime: 0,
     curr: 0,
-    timer: 0,
     isPaused: paused,
     isIninted: false,
+    timer: 0,
+    restTime: 0, // 倒计时剩余时间时间
+    counting: !paused && autoStart, // 是否处于倒计时中
+    handleEndTime: Date.now(), // 最终截止时间
+    diffTime: 0, // 设置了 startTime 时，与 date.now() 的差异
   })
 
-  // 补0操作
-  const fill2 = (v: any) => {
-    v += ''
-    while (v.length < 2) {
-      v = `0${v}`
-    }
-    return v
-  }
-
-  // 倒计时数据
-  const restTime = (t: number) => {
-    const ts = t
-    let rest = {
-      d: '-',
-      h: '--',
-      m: '--',
-      s: '--',
-    }
-    if (ts === 0) {
-      rest = {
-        d: '0',
-        h: '00',
-        m: '00',
-        s: '00',
-      }
-    }
-    if (ts) {
-      const ds = 24 * 60 * 60 * 1000
-      const hs = 60 * 60 * 1000
-      const ms = 60 * 1000
-
-      const d: number = ts >= ds ? parseInt(String(ts / ds)) : 0
-      const h = ts - d * ds >= hs ? parseInt(String((ts - d * ds) / hs)) : 0
-      const m =
-        ts - d * ds - h * hs >= ms
-          ? parseInt(String((ts - d * ds - h * hs) / ms))
-          : 0
-      const s = Math.round((ts - d * ds - h * hs - m * ms) / 1000)
-
-      if (d >= 0) rest.d = `${d}`
-      if (h >= 0) rest.h = fill2(h)
-      if (m >= 0) rest.m = fill2(m)
-      if (s >= 0) rest.s = fill2(s)
-    }
-    return rest
-  }
-
-  // 倒计最终时格式数据
-  const resttime = (() => {
-    const rest = restTime(restTimeStamp)
-    const { d } = rest
-    if (!showDays && Number(d) > 0) {
-      rest.h = fill2(Number(rest.h) + Number(d) * 24)
-      rest.d = '0'
-    }
-    return rest
-  })()
-
-  // 获取时间戳
+  // 时间戳转换 或 获取当前时间的时间戳
   const getTimeStamp = (timeStr?: string | number) => {
     if (!timeStr) return Date.now()
     let t = timeStr
-    t = t > 0 ? +t : t.toString().replace(/\-/g, '/')
+    t = t > 0 ? +t : t.toString().replace(/-/g, '/')
     return new Date(t).getTime()
   }
 
-  // 展示文案，English todo @hanyuxinting
-  const plainText = (() => {
-    const { d, h, m, s } = resttime
-    const showDayshours =
-      Number(d) > 0 && showDays ? `${d}${locale.countdown.day}${h}` : h
-    return `${showDayshours}${locale.countdown.hour}${m}${locale.countdown.minute}${s}${locale.countdown.second}`
-  })()
+  // 倒计时 interval
+  const initTime = () => {
+    stateRef.current.handleEndTime = endTime
+    stateRef.current.diffTime = Date.now() - getTimeStamp(startTime) // 时间差
+    if (!stateRef.current.counting) stateRef.current.counting = true
+    tick()
+  }
 
-  // 初始化
-  const initTimer = () => {
-    if (!stateRef.current.isIninted) {
-      stateRef.current.isIninted = true
-    }
-    const delay = 1000
-    const curr = Date.now()
-    const start = getTimeStamp(startTime || curr)
-    const end = getTimeStamp(endTime || curr)
-    const diffTime = curr - start
+  const tick = () => {
+    stateRef.current.timer = requestAnimationFrame(() => {
+      if (stateRef.current.counting) {
+        const currentTime = Date.now() - stateRef.current.diffTime
+        const remainTime = Math.max(
+          stateRef.current.handleEndTime - currentTime,
+          0
+        )
 
-    setRestTime(end - (start + diffTime))
-    stateRef.current.timer = setInterval(() => {
-      if (!stateRef.current.isPaused) {
-        const restTime =
-          end - (Date.now() - stateRef.current.pauseTime + diffTime)
-        setRestTime(restTime)
-        if (restTime < 0) {
-          setRestTime(0)
+        stateRef.current.restTime = remainTime
+        setRestTime(remainTime)
+
+        if (!remainTime) {
+          stateRef.current.counting = false
+          pause()
           onEnd && onEnd()
-          clearInterval(stateRef.current.timer)
+        }
+
+        if (remainTime > 0) {
+          tick()
         }
       }
-    }, delay)
+    })
   }
+
+  // 将倒计时剩余时间格式化   参数： t  时间戳  type custom 自定义类型
+  const formatRemainTime = (t: number, type?: string) => {
+    const ts = t
+    const rest = {
+      d: 0,
+      h: 0,
+      m: 0,
+      s: 0,
+      ms: 0,
+    }
+
+    const SECOND = 1000
+    const MINUTE = 60 * SECOND
+    const HOUR = 60 * MINUTE
+    const DAY = 24 * HOUR
+    if (ts > 0) {
+      rest.d = ts >= SECOND ? Math.floor(ts / DAY) : 0
+      rest.h = Math.floor((ts % DAY) / HOUR)
+      rest.m = Math.floor((ts % HOUR) / MINUTE)
+      rest.s = Math.floor((ts % MINUTE) / SECOND)
+      rest.ms = Math.floor(ts % SECOND)
+    }
+    return type === 'custom' ? rest : parseFormat({ ...rest })
+  }
+
+  const parseFormat = (time: {
+    d: number
+    h: number
+    m: number
+    s: number
+    ms: number
+  }) => {
+    const { d } = time
+    let { h, m, s, ms } = time
+    let formatCache = format
+
+    if (formatCache.includes('DD')) {
+      formatCache = formatCache.replace('DD', padZero(d))
+    } else {
+      h += Number(d) * 24
+    }
+
+    if (formatCache.includes('HH')) {
+      formatCache = formatCache.replace('HH', padZero(h))
+    } else {
+      m += Number(h) * 60
+    }
+
+    if (formatCache.includes('mm')) {
+      formatCache = formatCache.replace('mm', padZero(m))
+    } else {
+      s += Number(m) * 60
+    }
+
+    if (formatCache.includes('ss')) {
+      formatCache = formatCache.replace('ss', padZero(s))
+    } else {
+      ms += Number(s) * 1000
+    }
+
+    if (formatCache.includes('S')) {
+      const msC = padZero(ms, 3).toString()
+
+      if (formatCache.includes('SSS')) {
+        formatCache = formatCache.replace('SSS', msC)
+      } else if (formatCache.includes('SS')) {
+        formatCache = formatCache.replace('SS', msC.slice(0, 2))
+      } else if (formatCache.includes('S')) {
+        formatCache = formatCache.replace('SS', msC.slice(0, 1))
+      }
+    }
+    return formatCache
+  }
+
+  const padZero = (num: number | string, length = 2) => {
+    num += ''
+    while ((num as string).length < length) {
+      num = `0${num}`
+    }
+    return num.toString()
+  }
+
+  // 暂定
+  const pause = () => {
+    cancelAnimationFrame(stateRef.current.timer)
+    stateRef.current.counting = false
+    onPaused && onPaused(stateRef.current.restTime)
+  }
+
+  useImperativeHandle(ref, () => ({
+    start: () => {
+      if (!stateRef.current.counting && !autoStart) {
+        stateRef.current.counting = true
+        stateRef.current.handleEndTime =
+          Date.now() + Number(stateRef.current.restTime)
+        tick()
+        onRestart && onRestart(stateRef.current.restTime)
+      }
+    },
+    pause: () => {
+      cancelAnimationFrame(stateRef.current.timer)
+      stateRef.current.counting = false
+      onPaused && onPaused(stateRef.current.restTime)
+    },
+    reset: () => {
+      if (!autoStart) {
+        pause()
+        stateRef.current.restTime = time
+        setRestTime(time)
+      }
+    },
+  }))
 
   // 监听值变更
   useEffect(() => {
-    if (onUpdate) {
-      const tranTime = restTime(restTimeStamp)
-      onUpdate(tranTime)
-    }
+    const tranTime = formatRemainTime(stateRef.current.restTime, 'custom')
+
+    onUpdate && onUpdate(tranTime)
   }, [restTimeStamp])
 
   // 监听暂停
   useEffect(() => {
     if (stateRef.current.isIninted) {
-      stateRef.current.isPaused = paused
       if (paused) {
-        stateRef.current.curr = getTimeStamp()
-        onPaused && onPaused(restTimeStamp)
+        if (stateRef.current.counting) {
+          pause()
+        }
       } else {
-        stateRef.current.pauseTime += getTimeStamp() - stateRef.current.curr
-        onRestart && onRestart(restTimeStamp)
+        if (!stateRef.current.counting) {
+          stateRef.current.counting = true
+          stateRef.current.handleEndTime =
+            Date.now() + Number(stateRef.current.restTime)
+          tick()
+        }
+        onRestart && onRestart(stateRef.current.restTime)
       }
     }
   }, [paused])
@@ -184,13 +256,21 @@ export const CountDown: FunctionComponent<
   // 监听开始结束时间变更
   useEffect(() => {
     if (stateRef.current.isIninted) {
-      initTimer()
+      initTime()
     }
   }, [endTime, startTime])
 
   // 初始化
   useEffect(() => {
-    initTimer()
+    if (autoStart) {
+      initTime()
+    } else {
+      stateRef.current.restTime = time
+      setRestTime(time)
+    }
+    if (!stateRef.current.isIninted) {
+      stateRef.current.isIninted = true
+    }
     return componentWillUnmount
   }, [])
 
@@ -198,32 +278,27 @@ export const CountDown: FunctionComponent<
     clearInterval(stateRef.current.timer)
   }
 
+  const renderTime = (() => {
+    return formatRemainTime(stateRef.current.restTime)
+  })()
+
   return (
     <div className={`${b()} ${className || ''}`} style={{ ...style }} {...rest}>
       {children || (
-        <>
-          {showPlainText ? (
-            <div className={b('block')}> {plainText} </div>
-          ) : (
-            <>
-              {Number(resttime.d) >= 0 && showDays ? (
-                <>
-                  <div className={b('block')}>{resttime.d}</div>
-                  <div className={b('dot')}>{locale.countdown.day || ':'}</div>
-                </>
-              ) : null}
-              <div className={b('block')}>{resttime.h}</div>
-              <div className={b('dot')}>:</div>
-              <div className={b('block')}>{resttime.m}</div>
-              <div className={b('dot')}>:</div>
-              <div className={b('block')}>{resttime.s}</div>
-            </>
-          )}
-        </>
+        <div
+          className={b('block')}
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `${renderTime}`,
+          }}
+        />
       )}
     </div>
   )
 }
+
+export const CountDown =
+  React.forwardRef<unknown, Partial<CountDownProps>>(InternalCountDown)
 
 CountDown.defaultProps = defaultProps
 CountDown.displayName = 'NutCountDown'

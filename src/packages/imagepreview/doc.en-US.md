@@ -48,8 +48,8 @@ const App = () => {
 
   return (
     <>
-        <ImagePreview images={images} show={showPreview1} onClose={hideFn1}></ImagePreview>
-        <Cell title="Show preview" isLink={true} onClick={showFn1}></Cell>
+        <ImagePreview images={images} show={showPreview1} onClose={hideFn1} />
+        <Cell title="Show preview" isLink onClick={showFn1} />
     </>
   );
 };
@@ -91,8 +91,8 @@ const App = () => {
 
   return (
     <>
-        <ImagePreview images={images} initNo={3} show={showPreview2} onClose={hideFn2}></ImagePreview>
-        <Cell title="With init no" isLink={true} onClick={showFn2}></Cell>
+        <ImagePreview images={images} initNo={3} show={showPreview2} onClose={hideFn2} />
+        <Cell title="With init no" isLink onClick={showFn2} />
     </>
   );
 };
@@ -134,8 +134,8 @@ const App = () => {
 
   return (
     <>
-        <ImagePreview images={images} show={showPreview3} paginationVisible={true} paginationColor="red" onClose={hideFn3}></ImagePreview>
-        <Cell title="With pagination" isLink={true} onClick={showFn3}></Cell>
+        <ImagePreview images={images} show={showPreview3} paginationVisible paginationColor="red" onClose={hideFn3} />
+        <Cell title="With pagination" isLink onClick={showFn3} />
     </>
   );
 };
@@ -200,8 +200,8 @@ const App = () => {
 
   return (
     <>
-        <ImagePreview images={images} videos={videos} show={showPreview4} onClose={hideFn4}></ImagePreview>
-        <Cell title="With videos" isLink={true} onClick={showFn4}></Cell>
+        <ImagePreview images={images} videos={videos} show={showPreview4} onClose={hideFn4} />
+        <Cell title="With videos" isLink onClick={showFn4} />
     </>
   );
 };

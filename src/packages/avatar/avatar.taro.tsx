@@ -9,9 +9,11 @@ import React, {
 import classNames from 'classnames'
 import { AvatarContext } from '@/packages/avatargroup/AvatarContext'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 
-export interface AvatarProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface AvatarProps extends IComponent {
   size: string
   icon: string
   shape: AvatarShape
@@ -27,7 +29,9 @@ export interface AvatarProps {
 }
 
 export type AvatarShape = 'round' | 'square'
+
 const defaultProps = {
+  ...ComponentDefaults,
   size: '',
   icon: '',
   bgColor: '#eee',
@@ -53,6 +57,8 @@ export const Avatar: FunctionComponent<
     style,
     activeAvatar,
     onError,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -160,7 +166,14 @@ export const Avatar: FunctionComponent<
             avatarIndex <= parent?.propAvatarGroup?.maxCount) && (
             <>
               {url && <img src={url} alt={alt} onError={errorEvent} />}
-              {icon && <Icon className="icon" name={iconStyles} />}
+              {icon && (
+                <Icon
+                  classPrefix={iconClassPrefix}
+                  fontClassName={iconFontClassName}
+                  className="icon"
+                  name={iconStyles}
+                />
+              )}
               {children && <span className="text">{children}</span>}
             </>
           )}

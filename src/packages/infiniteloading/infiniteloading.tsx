@@ -4,7 +4,9 @@ import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 import { useConfig } from '@/packages/configprovider'
 
-export interface InfiniteloadingProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface InfiniteloadingProps extends IComponent {
   hasMore: boolean
   threshold: number
   containerId: string
@@ -18,13 +20,15 @@ export interface InfiniteloadingProps {
   loadMoreTxt: string
   className: string
   style: React.CSSProperties
-  refresh: (param: () => void) => void
-  loadMore: (param: () => void) => void
-  scrollChange: (param: number) => void
+  onRefresh: (param: () => void) => void
+  onLoadMore: (param: () => void) => void
+  onScrollChange: (param: number) => void
 }
 
 declare let window: Window & { webkitRequestAnimationFrame: any }
+
 const defaultProps = {
+  ...ComponentDefaults,
   hasMore: true,
   threshold: 200,
   containerId: '',
@@ -58,9 +62,11 @@ export const Infiniteloading: FunctionComponent<
     loadTxt,
     loadMoreTxt,
     className,
-    refresh,
-    loadMore,
-    scrollChange,
+    onRefresh,
+    onLoadMore,
+    onScrollChange,
+    iconClassPrefix,
+    iconFontClassName,
     ...restProps
   } = {
     ...defaultProps,
@@ -123,7 +129,7 @@ export const Infiniteloading: FunctionComponent<
         return false
       }
       setIsInfiniting(true)
-      loadMore && loadMore(infiniteDone)
+      onLoadMore && onLoadMore(infiniteDone)
       return true
     })
   }
@@ -181,7 +187,7 @@ export const Infiniteloading: FunctionComponent<
         refreshTop.current as HTMLDivElement
       ).style.height = `${distance.current}px`
     } else {
-      refresh && refresh(refreshDone)
+      onRefresh && onRefresh(refreshDone)
     }
   }
 
@@ -234,7 +240,7 @@ export const Infiniteloading: FunctionComponent<
       direction = 'down'
     }
     beforeScrollTop.current = resScrollTop
-    scrollChange && scrollChange(resScrollTop)
+    onScrollChange && onScrollChange(resScrollTop)
     return offsetDistance <= threshold && direction === 'down'
   }
 
@@ -249,7 +255,12 @@ export const Infiniteloading: FunctionComponent<
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="top-box">
-          <Icon className="top-img" name={pullIcon} />
+          <Icon
+            classPrefix={iconClassPrefix}
+            fontClassName={iconFontClassName}
+            className="top-img"
+            name={pullIcon}
+          />
           <span className="top-text">
             {pullTxt || locale.infiniteloading.pullRefreshText}
           </span>
@@ -259,7 +270,12 @@ export const Infiniteloading: FunctionComponent<
       <div className="nut-infinite-bottom">
         {isInfiniting ? (
           <div className="bottom-box">
-            <Icon className="bottom-img" name={loadIcon} />
+            <Icon
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
+              className="bottom-img"
+              name={loadIcon}
+            />
             <div className="bottom-text">
               {loadTxt || locale.infiniteloading.loadText}
             </div>

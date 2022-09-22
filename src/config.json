@@ -9,7 +9,13 @@
       },
       {
         "name": "start-react",
-        "cName": "快速上手",
+        "cName": "H5快速上手",
+        "show": true
+      },
+      {
+        "name": "starttaro-react",
+        "cName": "小程序开发",
+        "eName": "WeChat",
         "show": true
       },
       {
@@ -176,6 +182,7 @@
           "desc": "宫格",
           "sort": 5,
           "show": true,
+          "taro": true,
           "author": "yangxiaolu"
         },
         {
@@ -186,8 +193,20 @@
           "desc": "宫格子组件",
           "sort": 6,
           "show": false,
+          "taro": true,
           "exportEmpty": true,
           "author": "yangxiaolu"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Sticky",
+          "type": "component",
+          "cName": "粘性布局",
+          "desc": "效果同 css 中的 position: sticky",
+          "sort": 7,
+          "show": true,
+          "taro": false,
+          "author": "hx"
         }
       ]
     },
@@ -335,6 +354,7 @@
           "desc": "向下弹出的菜单列表",
           "sort": 13,
           "show": true,
+          "taro": true,
           "author": "oasis-cloud"
         },
         {
@@ -346,6 +366,7 @@
           "sort": 14,
           "exportEmpty": true,
           "show": false,
+          "taro": true,
           "author": "oasis-cloud"
         }
       ]
@@ -404,7 +425,7 @@
           "desc": "时间选择器，支持日期、年月、时分等维度，通常与弹出层组件配合使用。",
           "sort": 15,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "dsj"
         },
         {
@@ -480,7 +501,7 @@
           "desc": "提供多个选项集合供用户选择其中一项。",
           "sort": 10,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "dsj"
         },
         {
@@ -509,11 +530,12 @@
           "version": "0.1.0",
           "name": "Uploader",
           "type": "component",
+          "tarodoc": true,
           "cName": "上传",
           "desc": "用于将本地的图片或文件上传至服务器。",
           "sort": 1,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         },
         {
@@ -602,6 +624,7 @@
           "version": "0.1.0",
           "name": "Infiniteloading",
           "type": "component",
+          "tarodoc": true,
           "cName": "滚动加载",
           "desc": "列表滚动到底部自动加载更多数据。",
           "sort": 5,
@@ -635,11 +658,12 @@
           "version": "0.1.0",
           "name": "Toast",
           "type": "component",
+          "tarodoc": true,
           "cName": "吐司",
           "desc": "轻提示",
           "sort": 1,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "VickyYe"
         },
         {
@@ -651,6 +675,17 @@
           "sort": 9,
           "show": true,
           "author": "Ymm0008"
+        },
+        {
+          "version": "1.0.0",
+          "name": "PullToRefresh",
+          "type": "component",
+          "cName": "下拉刷新",
+          "desc": "",
+          "sort": 10,
+          "show": true,
+          "taro": false,
+          "author": "oasis"
         }
       ]
     },
@@ -666,7 +701,7 @@
           "desc": "展示操作或任务的当前进度。",
           "sort": 7,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         },
         {
@@ -808,7 +843,7 @@
           "desc": "用于实时展示倒计时数值，支持毫秒精度。",
           "sort": 17,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "songsong"
         },
         {
@@ -881,10 +916,12 @@
           "name": "Video",
           "type": "component",
           "cName": "视频播放器",
+          "tarodoc": true,
           "desc": "原生video实现的视频播放器",
           "sort": 20,
           "show": true,
           "taro": false,
+          "tarodoc": true,
           "author": "swag~jun"
         },
         {
@@ -906,6 +943,7 @@
           "desc": "原生audio实现的音频播放器",
           "sort": 21,
           "show": true,
+          "taro":true,
           "author": "libin"
         },
         {
@@ -943,7 +981,7 @@
           "desc": "用于话语和词组的轮播展示，适用于视频中或其他类似需求中。",
           "sort": 2,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         },
         {

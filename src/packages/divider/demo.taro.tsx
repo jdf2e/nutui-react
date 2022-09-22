@@ -1,4 +1,5 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import { Divider } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 
@@ -61,19 +62,23 @@ const DividerDemo = () => {
         <div style={{ fontSize: '14px', marginLeft: '27px', color: '#909ca4' }}>
           {translated.text}
           <Divider direction="vertical" />
-          <a
-            href="#/Divider"
+          <span
+            onClick={() => {
+              Taro.navigateTo({ url: '/pages/index/index' })
+            }}
             style={{ color: '#1989fa', display: 'inline-block' }}
           >
             {translated.link}
-          </a>
+          </span>
           <Divider direction="vertical" />
-          <a
-            href="#/Divider"
+          <span
+            onClick={() => {
+              Taro.navigateTo({ url: '/pages/index/index' })
+            }}
             style={{ color: '#1989fa', display: 'inline-block' }}
           >
             {translated.link}
-          </a>
+          </span>
         </div>
       </div>
     </>

@@ -1,10 +1,12 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import Icon from '@/packages/icon'
-import CheckboxGroup from '@/packages/checkboxgroup'
+import Icon from '@/packages/icon/index.taro'
+import CheckboxGroup from '@/packages/checkboxgroup/index.taro'
 
 import bem from '@/utils/bem'
 
-export interface CheckboxProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface CheckboxProps extends IComponent {
   checked: boolean
   disabled: boolean
   textPosition: 'left' | 'right'
@@ -20,6 +22,7 @@ export interface CheckboxProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   checked: false,
   disabled: false,
   textPosition: 'right',
@@ -35,7 +38,10 @@ export const Checkbox: FunctionComponent<
   Partial<CheckboxProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > & { Group: typeof CheckboxGroup } = (props) => {
-  const { children } = { ...defaultProps, ...props }
+  const { children } = {
+    ...defaultProps,
+    ...props,
+  }
   const b = bem('checkbox')
   const {
     iconName,
@@ -82,11 +88,11 @@ export const Checkbox: FunctionComponent<
   const renderIcon = () => {
     return (
       <Icon
+        classPrefix={iconClassPrefix}
+        fontClassName={iconFontClassName}
         name={getIconName()}
         size={iconSize}
         className={color()}
-        classPrefix={iconClassPrefix}
-        fontClassName={iconFontClassName}
       />
     )
   }

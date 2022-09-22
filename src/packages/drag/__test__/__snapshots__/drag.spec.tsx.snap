@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drag should render default slot correctly 1`] = `
+<span
+  class="custom-inner"
+  style="border-radius: 25px; padding: 0px 18px; font-size: 14px; color: rgb(255, 255, 255); display: inline-block; line-height: 36px;"
+>
+  自定义内容
+</span>
+`;
+
+exports[`Drag touch move 1`] = `
+<div
+  style="transform: none;"
+>
+  <span
+    class="custom-inner"
+    style="border-radius: 25px; padding: 0px 18px; font-size: 14px; color: rgb(255, 255, 255); display: inline-block; line-height: 36px;"
+  >
+    按钮
+  </span>
+</div>
+`;

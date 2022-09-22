@@ -4,7 +4,7 @@ import React, {
   useState,
   CSSProperties,
 } from 'react'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import bem from '@/utils/bem'
 
 export interface TextAreaProps {

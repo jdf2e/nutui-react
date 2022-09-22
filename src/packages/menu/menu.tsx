@@ -3,7 +3,9 @@ import classnames from 'classnames'
 import Icon from '@/packages/icon'
 import { OptionItem } from '@/packages/menuitem/menuitem'
 
-export interface MenuProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface MenuProps extends IComponent {
   className: string
   style: React.CSSProperties
   activeColor: string
@@ -15,6 +17,7 @@ export interface MenuProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   className: '',
   style: {},
   activeColor: '#F2270C',
@@ -32,14 +35,28 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
     closeOnClickOverlay,
     children,
     activeColor,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
   const parentRef = useRef(null)
+  const [isScrollFixed, setIsScrollFixed] = useState(false)
 
-  const onScroll = () => {}
+  const getScrollTop = (el: Element | Window) => {
+    return Math.max(0, 'scrollTop' in el ? el.scrollTop : el.pageYOffset)
+  }
+  const onScroll = () => {
+    const { scrollFixed } = props
+
+    const scrollTop = getScrollTop(window)
+    console.log(scrollTop)
+    const isFixed =
+      scrollTop > (typeof scrollFixed === 'boolean' ? 30 : Number(scrollFixed))
+    setIsScrollFixed(isFixed)
+  }
 
   useEffect(() => {
     if (scrollFixed) {
@@ -83,9 +100,13 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
       })
     })
   }
-
+  console.log('isScrollFixed', isScrollFixed)
   return (
-    <div className={`nut-menu ${className}`} {...rest} ref={parentRef}>
+    <div
+      className={`nut-menu ${className} ${isScrollFixed ? 'scroll-fixed' : ''}`}
+      {...rest}
+      ref={parentRef}
+    >
       <div
         className={`nut-menu__bar ${
           itemShow.includes(true) ? 'opened' : ''
@@ -127,6 +148,8 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
               >
                 <div className="nut-menu__title-text">{finallyTitle()}</div>
                 <Icon
+                  classPrefix={iconClassPrefix}
+                  fontClassName={iconFontClassName}
                   className="nut-menu__title-icon"
                   size="10"
                   name={

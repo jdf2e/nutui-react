@@ -1,124 +1,173 @@
 import React, {
   useState,
-  useEffect,
   useRef,
   CSSProperties,
   FunctionComponent,
-  ReactEventHandler,
 } from 'react'
+
+import Taro from '@tarojs/taro'
 import Icon from '@/packages/icon/index.taro'
 import Range from '@/packages/range/index.taro'
-import bem from '@/utils/bem'
 import Button from '@/packages/button/index.taro'
+import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { IComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface AudioProps {
-  className: string
-  style: CSSProperties
+const b = bem('audio')
+const warn = console.warn
+
+export interface AudioProps extends IComponent {
+  className?: string
+  style?: CSSProperties
   url: string
-  muted: boolean
-  autoplay: boolean
-  loop: boolean
-  preload: string
+  autoplay?: boolean
+  loop?: boolean
   type: string
-  onFastBack: (e: HTMLAudioElement) => void
-  onForward: (e: HTMLAudioElement) => void
-  onPause: ((e: HTMLAudioElement) => void) & ReactEventHandler<HTMLAudioElement>
-  onPlayEnd: (e: HTMLAudioElement) => void
-  onMute: (e: HTMLAudioElement) => void
-  onCanPlay: ((e: HTMLAudioElement) => void) &
-    ReactEventHandler<HTMLAudioElement>
+  onFastBack?: (ctx: Taro.InnerAudioContext) => void
+  onForward?: (ctx: Taro.InnerAudioContext) => void
+  onPause?: any
+  onPlay?: any
+  onPlayEnd?: (ctx: Taro.InnerAudioContext) => void
+  onCanPlay?: (ctx: Taro.InnerAudioContext) => void
 }
-
 const defaultProps = {
+  ...ComponentDefaults,
   className: '',
   url: '',
   style: {},
-  muted: false,
   autoplay: false,
   loop: false,
-  preload: 'auto',
   type: 'progress',
-  onFastBack: (e: HTMLAudioElement) => {}, // type 为 progress时生效
-  onForward: (e: HTMLAudioElement) => {}, // type 为 progress时生效
-  onPause: (e) => {},
-  onPlayEnd: (e: HTMLAudioElement) => {},
-  onMute: (e: HTMLAudioElement) => {},
-  onCanPlay: (e: HTMLAudioElement) => {},
+  onFastBack: (ctx: Taro.InnerAudioContext) => {}, // type 为 progress时生效
+  onForward: (ctx: Taro.InnerAudioContext) => {}, // type 为 progress时生效
+  onPause: (ctx: Taro.InnerAudioContext) => {},
+  onPlay: (ctx: Taro.InnerAudioContext) => {},
+  onPlayEnd: (ctx: Taro.InnerAudioContext) => {},
+  onCanPlay: (ctx: Taro.InnerAudioContext) => {},
 } as AudioProps
 export const Audio: FunctionComponent<
-  Partial<AudioProps> & React.HTMLAttributes<HTMLElement>
+  Partial<AudioProps> &
+    (React.HTMLAttributes<HTMLDivElement> | Taro.InnerAudioContext)
 > = (props) => {
   const { locale } = useConfig()
   const {
     className,
     url,
     style,
-    muted,
     autoplay,
     loop,
-    preload,
     type,
     onFastBack,
     onForward,
     onPause,
+    onPlay,
     onPlayEnd,
-    onMute,
     onCanPlay,
     children,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
     ...props,
-  }
+  } as any
 
   const [playing, setPlaying] = useState(false)
+  const [totalSeconds, setTotalSeconds] = useState(0)
   const [percent, setPercent] = useState(0)
   const [isCanPlay, setIsCanPlay] = useState(false)
   const [currentDuration, setCurrentDuration] = useState('00:00:00')
 
-  const AudioRef = useRef<HTMLAudioElement>(null)
   const statusRef = useRef({
     currentTime: 0,
     currentDuration: '00:00:00',
     percent: 0,
-    duration: '00:00:00',
-    second: 0,
-    hanMuted: props.muted,
-    playing: props.autoplay,
-    handPlaying: false,
   })
-  const b = bem('audio')
-  const warn = console.warn
-  const handleEnded = (e: any) => {
+
+  const audioRef = useRef(Taro.createInnerAudioContext())
+  const audioCtx = audioRef.current
+  audioCtx.src = url
+  audioCtx.autoplay = autoplay || false
+  audioCtx.loop = loop || false
+  audioCtx.onPause(() => {
+    props.onPause && props.onPause(audioCtx)
+  })
+  audioCtx.onEnded(() => {
     if (props.loop) {
       warn(locale.audio.tips || 'onPlayEnd事件在loop=false时才会触发')
     } else {
-      props.onPlayEnd && props.onPlayEnd(e)
+      props.onPlayEnd && props.onPlayEnd(audioCtx)
     }
+  })
+
+  audioCtx.onPlay(() => {
+    const { duration } = audioCtx
+    setTotalSeconds(Math.floor(duration))
+    props.onPlay && props.onPlay(audioCtx)
+  })
+  audioCtx.onCanplay(() => {
+    const intervalID = setInterval(function () {
+      if (audioCtx.duration !== 0) {
+        setTotalSeconds(audioCtx.duration)
+        clearInterval(intervalID)
+      }
+    }, 500)
+    setIsCanPlay(true)
+    props.onCanPlay && props.onCanPlay(audioCtx)
+  })
+  audioCtx.onTimeUpdate(() => {
+    const time = parseInt(`${audioCtx.currentTime}`)
+    const formated = formatSeconds(`${time}`)
+    statusRef.current.currentDuration = formated
+    setPercent((time / totalSeconds) * 100)
+    setCurrentDuration(formatSeconds(audioCtx.currentTime.toString()))
+  })
+
+  audioCtx.onError((res) => {
+    console.log('code', res.errCode)
+    console.log('message', res.errMsg)
+  })
+
+  function formatSeconds(value: string) {
+    if (!value) {
+      return '00:00:00'
+    }
+    const time = parseInt(value)
+    const hours = Math.floor(time / 3600)
+    const minutes = Math.floor((time - hours * 3600) / 60)
+    const secondss = time - hours * 3600 - minutes * 60
+    let result = ''
+    result += `${`0${hours.toString()}`.slice(-2)}:`
+    result += `${`0${minutes.toString()}`.slice(-2)}:`
+    result += `0${secondss.toString()}`.slice(-2)
+    return result
   }
 
-  function watch() {
-    if (AudioRef && AudioRef.current) {
-      const current = AudioRef.current
-      current.addEventListener('play', () => {
-        setPlaying(true)
-      })
-    }
+  const handleBack = () => {
+    const currentTime = Math.floor(audioCtx.currentTime)
+    statusRef.current.currentTime = Math.max(currentTime - 1, 0)
+    setCurrentDuration(formatSeconds(statusRef.current.currentTime.toString()))
+    audioCtx.seek(statusRef.current.currentTime)
+    props.onFastBack && props.onFastBack(audioCtx)
   }
-  useEffect(() => {
-    watch()
-  }, [])
 
-  useEffect(() => {}, [currentDuration])
+  const handleForward = () => {
+    const currentTime = Math.floor(audioCtx.currentTime)
+    statusRef.current.currentTime = Math.min(currentTime + 1, audioCtx.duration)
+    setCurrentDuration(formatSeconds(statusRef.current.currentTime.toString()))
+    audioCtx.seek(statusRef.current.currentTime)
+    props.onForward && props.onForward(audioCtx)
+  }
+
   const handleStatusChange = () => {
     setPlaying(!playing)
-    if (playing) {
-      AudioRef && AudioRef.current && AudioRef.current.pause()
+    if (!playing) {
+      audioCtx.play()
     } else {
-      AudioRef && AudioRef.current && AudioRef.current.play()
+      audioCtx.pause()
     }
   }
+
   const renderIcon = () => {
     return (
       <>
@@ -130,9 +179,18 @@ export const Audio: FunctionComponent<
             onClick={handleStatusChange}
           >
             {playing ? (
-              <Icon name="service" className="nut-icon-loading" />
+              <Icon
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
+                name="service"
+                className="nut-icon-loading"
+              />
             ) : (
-              <Icon name="service" />
+              <Icon
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
+                name="service"
+              />
             )}
           </div>
         </div>
@@ -140,45 +198,6 @@ export const Audio: FunctionComponent<
     )
   }
 
-  const handleBack = () => {
-    if (statusRef.current.currentTime > 0 && AudioRef.current) {
-      statusRef.current.currentTime--
-      AudioRef.current.currentTime = statusRef.current.currentTime
-      props.onFastBack && props.onFastBack(AudioRef.current)
-    }
-  }
-  const handleForward = () => {
-    if (AudioRef.current) {
-      statusRef.current.currentTime++
-      AudioRef.current.currentTime = statusRef.current.currentTime
-      props.onForward && props.onForward(AudioRef.current)
-    }
-  }
-  const handleMute = () => {
-    if (AudioRef.current) {
-      AudioRef.current.muted = !AudioRef.current.muted
-      props.onMute && props.onMute(AudioRef.current)
-    }
-  }
-  const handlePause = (e: HTMLAudioElement) => {
-    setPlaying(false)
-    props.onPause && props.onPause(e)
-  }
-
-  const formatSeconds = (value: string) => {
-    if (!value) {
-      return '00:00:00'
-    }
-    const time = parseInt(value)
-    const hours = Math.floor(time / 3600)
-    const minutes = Math.floor((time - hours * 3600) / 60)
-    const seconds = time - hours * 3600 - minutes * 60
-    let result = ''
-    result += `${`0${hours.toString()}`.slice(-2)}:`
-    result += `${`0${minutes.toString()}`.slice(-2)}:`
-    result += `0${seconds.toString()}`.slice(-2)
-    return result
-  }
   const renderProgerss = () => {
     return (
       <>
@@ -194,9 +213,7 @@ export const Audio: FunctionComponent<
             />
           </div>
           <div className="time">
-            {AudioRef.current
-              ? formatSeconds(`${statusRef.current.second}`)
-              : '00:00:00'}
+            {formatSeconds(`${totalSeconds}`) || '00:00:00'}
           </div>
         </div>
         <div
@@ -225,15 +242,6 @@ export const Audio: FunctionComponent<
           <Button type="primary" size="small" onClick={handleForward}>
             {locale.audio.forward || '快进'}
           </Button>
-          <Button
-            type={
-              AudioRef.current && AudioRef.current.muted ? 'default' : 'primary'
-            }
-            size="small"
-            onClick={handleMute}
-          >
-            {locale.audio.mute || '静音'}
-          </Button>
         </div>
       </>
     )
@@ -246,6 +254,7 @@ export const Audio: FunctionComponent<
       </div>
     )
   }
+
   const renderAudio = () => {
     switch (type) {
       case 'icon':
@@ -259,44 +268,9 @@ export const Audio: FunctionComponent<
     }
   }
 
-  const handleCanplay = (e: any) => {
-    setIsCanPlay(true)
-    if (props.autoplay && !playing) {
-      AudioRef && AudioRef.current && AudioRef.current.play()
-    }
-    if (AudioRef.current) {
-      statusRef.current.second = AudioRef.current.duration || 0
-      props.onCanPlay && props.onCanPlay(e)
-    }
-  }
-  const onTimeupdate = (e: any) => {
-    const time = parseInt(e.target.currentTime)
-    const formated = formatSeconds(`${time}`)
-    statusRef.current.currentDuration = formated
-    setPercent((time / statusRef.current.second) * 100)
-    setCurrentDuration(formated)
-    statusRef.current.currentTime = time
-  }
   return (
     <div className={`${b()} ${className}`} style={style} {...rest}>
       {renderAudio()}
-      <audio
-        className="audioMain"
-        controls={type === 'controls'}
-        ref={AudioRef}
-        src={url}
-        muted={muted}
-        preload={preload}
-        loop={loop}
-        onPause={(e: any) => handlePause(e)}
-        onEnded={(e: React.SyntheticEvent<HTMLAudioElement, Event>) =>
-          handleEnded(e)
-        }
-        onCanPlay={(e) => handleCanplay(e)}
-        onTimeUpdate={(e) => onTimeupdate(e)}
-      >
-        <track kind="captions" />
-      </audio>
     </div>
   )
 }

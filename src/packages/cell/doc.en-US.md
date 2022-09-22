@@ -256,37 +256,36 @@ export default App
 
 ### CellGroup Prop
 
-| 字段  | 说明     | 类型   | 默认值 |
+| Attribute | Description | Type   | Default |
 |-------|----------|--------|--------|
-| title | 分组标题 | String | -      |
-| desc  | 分组描述 | String | -      |
-| titleSlot        | 自定义`title`标题区域                         | React.ReactNode          | -  |
-| descSlot        | 自定义`desc`描述区域                         | React.ReactNode          | -  |
+| title | Title | String | -      |
+| desc  | Description | String | -      |
+| titleSlot        | Custom`title`slot                        | React.ReactNode          | -  |
+| descSlot        | Custom`desc`slot                         | React.ReactNode          | -  |
 
 ### Cell Prop
 
-| 字段                   | 说明                                                                                           | 类型             | 默认值 |
-|------------------------|------------------------------------------------------------------------------------------------|------------------|--------|
-| title                  | 标题名称                      |  React.ReactNode           | -      |
-| subTitle              | 左侧副标题                           |  React.ReactNode           | -      |
-| desc                   | 右侧描述                                     | String      | -      |
-| descTextAlign | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String | right  |
-| isLink                | 是否展示右侧箭头并开启点击反馈            | Boolean          | false  |
-| to      | 点击后跳转的目标路由对象 | String  | -      |
-| replace | 是否在跳转时替换当前页面历史                             | Boolean          | false  |
-| roundRadius           | 圆角半径                                      | String| Number            | 6px    |
-| url     | 点击后跳转的链接地址                                         | String           | -      |
-| icon                   | 左侧 [图标名称](#/icon) 或图片链接              | String           | -      |
-| center        | 是否使内容垂直居中                                                                             | Boolean          | false  |
-| size        | 单元格大小，可选值为 `large`                           | String          | -  |
-| iconSlot        | 自定义左侧`icon`区域                          | React.ReactNode          | -  |
-| linkSlot        | 自定义右侧`link`区域                         | React.ReactNode          | -  |
-
+| Attribute               | Description                                                                                              | Type             | Default          |
+|-------------------------|----------------------------------------------------------------------------------------------------------|------------------|------------------|
+| title            | Title                      |  React.ReactNode           | -      |
+| subTitle         | Subtitle                           |  React.ReactNode           | -      |
+| desc             | Description                                     | String      | -      |
+| descTextAlign    | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String | right  |
+| isLink           | Whether to show the right arrow and turn on click feedback            | Boolean          | false  |
+| to               | C Target route of the link | String  | -      |
+| replace          | If true, the navigation will not leave a history record                             | Boolean          | false  |
+| roundRadius`v1.2.0`    | Corner radius                                      | String            | 6px    |
+| url              | Link                                         | String           | -      |
+| icon             |  Left [icon name](#/icon) or image              | String           | -      |
+| center`v1.2.0`   | Whether to center content                                                                              | Boolean          | false  |
+| size`v1.2.0`     | Size, can be set to `large`                         | String          | -  |
+| iconSlot`v1.2.0` |  Custom Left `icon`                        | React.ReactNode          | -  |
+| linkSlot`v1.2.0` | Custom Right`link`                      | React.ReactNode          | -  |
 
 
 
 ### Cell Event
 
-| 名称  | 说明     | 回调参数                                                       |
-| ----- | -------- | -------------------------------------------------------------- |
-| click | 点击事件 | event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent> |
+| Event | Description                  | Arguments   |
+|-------|------------------------------|-------------|
+| click | Emitted when cell is clicked | event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent> |

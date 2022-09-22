@@ -1,56 +1,60 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Cell, Toast } from '@/packages/nutui.react.taro'
 
 const ToastDemo = () => {
-  const textToast = (msg: string) => {
-    Toast.text(msg)
-  }
-  const successToast = (msg: string) => {
-    Toast.success(msg)
-  }
-  const errorToast = (msg: string) => {
-    Toast.fail(msg)
-  }
-  const warningToast = (msg: string) => {
-    Toast.warn(msg)
-  }
-  const loadingToast = (msg: string) => {
-    Toast.loading(msg)
-  }
-  const duringToast = (msg: string) => {
-    Toast.text(msg, { duration: 10 })
-  }
-  const iconToast = (msg: string) => {
-    Toast.customIcon(msg, {
-      duration: 0, // duration为0则一直展示
-      icon: 'JD',
-      id: '',
-      center: true, // toast是否居中展示
-      type: 'text',
-      customClass: '', // 自定义样式名
-      bottom: 30, // toast不居中时距离底部位置
-      size: 'base', // 设置字体大小，默认base,可选large\small\base
-      textAlignCenter: true, // 文字是否居中显示,true为居中，false为left
-      bgColor: 'rgba(0, 0, 0, .8)',
-      cover: true, // 是否展示透明遮罩层
-      coverColor: 'rgba(0, 0, 0, 0.4)', // 遮罩颜色设定
-      closeOnClickOverlay: true, // 点击遮罩可关闭
-      onClose: () => {
-        console.log('closeToast')
-      },
+  const [state, SetState] = useState({
+    msg: 'toast',
+    type: 'text',
+    cover: false,
+    duration: 2,
+    closeOnClickOverlay: false,
+    title: '',
+    bottom: '',
+    icon: '',
+    center: true,
+  })
+  const [showToast, SetShowToast] = useState(false)
+
+  const openToast = (
+    type: string,
+    msg: string,
+    duration?: number,
+    icon?: string
+  ) => {
+    const changeState = Object.assign(state, {
+      msg,
+      type,
+      duration,
+      icon,
     })
+    SetState(changeState)
   }
 
   return (
     <>
       <div className="demo">
+        <Toast
+          msg={state.msg}
+          visible={showToast}
+          type={state.type}
+          cover={state.cover}
+          duration={state.duration}
+          icon={state.icon}
+          closeOnClickOverlay={state.closeOnClickOverlay}
+          onClose={() => {
+            SetShowToast(false)
+          }}
+        />
         <h2>基础用法</h2>
         <Cell
           title="Text文字提示"
           isLink
           click={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => textToast('网络失败，请稍后再试~')}
+          ) => {
+            openToast('text', '网络失败，请稍后再试~')
+            SetShowToast(true)
+          }}
         />
 
         <h2>成功提示</h2>
@@ -59,7 +63,10 @@ const ToastDemo = () => {
           isLink
           click={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => successToast('成功提示')}
+          ) => {
+            openToast('success', '成功提示')
+            SetShowToast(true)
+          }}
         />
 
         <h2>失败提示</h2>
@@ -68,7 +75,10 @@ const ToastDemo = () => {
           isLink
           click={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => errorToast('失败提示')}
+          ) => {
+            openToast('fail', '失败提示')
+            SetShowToast(true)
+          }}
         />
 
         <h2>警告提示</h2>
@@ -77,7 +87,10 @@ const ToastDemo = () => {
           isLink
           click={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => warningToast('警告提示')}
+          ) => {
+            openToast('warn', '警告提示')
+            SetShowToast(true)
+          }}
         />
 
         <h2>加载提示</h2>
@@ -86,7 +99,10 @@ const ToastDemo = () => {
           isLink
           click={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => loadingToast('加载中')}
+          ) => {
+            openToast('loading', '加载中')
+            SetShowToast(true)
+          }}
         />
 
         <h2>展示时长设置</h2>
@@ -95,14 +111,19 @@ const ToastDemo = () => {
           isLink
           click={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => duringToast('设置展示时长为10秒')}
+          ) => {
+            openToast('text', '设置展示时长为10秒', 10)
+            SetShowToast(true)
+          }}
         />
         <Cell
           title="关闭正在显示的toast"
           isLink
           click={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => Toast.hide()}
+          ) => {
+            SetShowToast(false)
+          }}
         />
         <h2>自定义icon图标</h2>
         <Cell
@@ -110,7 +131,10 @@ const ToastDemo = () => {
           isLink
           click={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => iconToast('设置icon为JD')}
+          ) => {
+            openToast('text', '设置icon为JD', 2, 'JD')
+            SetShowToast(true)
+          }}
         />
       </div>
     </>

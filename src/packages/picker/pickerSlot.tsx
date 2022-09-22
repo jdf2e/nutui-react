@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useRef,
   ForwardRefRenderFunction,
+  useImperativeHandle,
 } from 'react'
 import { PickerOption } from './picker'
 import { useTouch } from '../../utils/useTouch'
@@ -17,7 +18,7 @@ interface IPickerSlotProps {
 }
 
 const InternalPickerSlot: ForwardRefRenderFunction<
-  unknown,
+  { stopMomentum: () => void; moving: boolean },
   Partial<IPickerSlotProps>
 > = (props, ref) => {
   const {
@@ -39,7 +40,10 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const INERTIA_DISTANCE = 15
   const [currIndex, setCurrIndex] = useState(1)
   const lineSpacing = 36
+  const [touchTime, setTouchTime] = useState(0)
+  const [touchDeg, setTouchDeg] = useState('0deg')
   const rotation = 20
+  const moving = useRef(false)
   let timer: number | undefined
 
   const listRef = useRef<any>(null)
@@ -70,13 +74,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
       nTime = 0
     }
 
-    if (threeDimensional) {
-      rollerRef.current.style.webkitTransform = `rotate3d(1, 0, 0, ${deg})`
-    } else {
-      rollerRef.current.style.webkitTransform = `translate3d(0, ${translateY}px, 0)`
-    }
-
-    rollerRef.current.style.webkitTransition = `transform ${nTime}ms cubic-bezier(0.17, 0.89, 0.45, 1)`
+    setTouchTime(nTime)
+    setTouchDeg(deg)
 
     setScrollDistance(translateY)
   }
@@ -134,6 +133,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const touchMove = (event: React.TouchEvent<HTMLElement>) => {
     touch.move(event as any)
     if ((touch as any).isVertical) {
+      moving.current = true
       preventDefault(event, true)
     }
     const move = touch.deltaY - startY
@@ -141,6 +141,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   }
 
   const touchEnd = (event: React.TouchEvent<HTMLElement>) => {
+    if (!moving.current) return
     const move = touch.deltaY - startY
     const moveTime = Date.now() - startTime
     // 区分是否为惯性滚动
@@ -153,6 +154,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     }
 
     setTimeout(() => {
+      // moving.current = false
       touch.reset()
     }, 0)
   }
@@ -194,6 +196,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
 
   // 惯性滚动结束
   const stopMomentum = () => {
+    moving.current = false
+    setTouchTime(0)
     setChooseValue(scrollDistance)
   }
   // 阻止默认事件
@@ -211,6 +215,19 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     }
   }
 
+  const touchRollerStyle = () => {
+    return {
+      transition: `transform ${touchTime}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
+      transform: `rotate3d(1, 0, 0, ${touchDeg})`,
+    }
+  }
+  const touchTileStyle = () => {
+    return {
+      transition: `transform ${touchTime}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
+      transform: `translate3d(0, ${scrollDistance}px, 0)`,
+    }
+  }
+
   useEffect(() => {
     setScrollDistance(0)
     transformY.current = 0
@@ -219,6 +236,11 @@ const InternalPickerSlot: ForwardRefRenderFunction<
       clearTimeout(timer)
     }
   }, [listData])
+
+  useImperativeHandle(ref, () => ({
+    stopMomentum,
+    moving: moving.current,
+  }))
 
   return (
     <div
@@ -231,6 +253,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
       <div
         className="nut-picker-roller"
         ref={rollerRef}
+        style={threeDimensional ? touchRollerStyle() : touchTileStyle()}
         onTransitionEnd={stopMomentum}
       >
         {/* 3D 效果 */}
@@ -272,5 +295,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   )
 }
 const PickerSlot =
-  React.forwardRef<unknown, Partial<IPickerSlotProps>>(InternalPickerSlot)
+  React.forwardRef<
+    { stopMomentum: () => void; moving: boolean },
+    Partial<IPickerSlotProps>
+  >(InternalPickerSlot)
 export default PickerSlot

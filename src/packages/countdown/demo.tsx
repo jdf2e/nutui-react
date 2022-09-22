@@ -1,14 +1,94 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { CountDown } from '../countdown/countdown'
 import { Cell } from '../cell/cell'
-import { Button } from '../button/button'
+import { useTranslate } from '../../sites/assets/locale'
+import Button from '../button'
+import Grid from '../grid'
+import GridItem from '../griditem'
 
+interface countdownRefState {
+  start: () => void
+  pause: () => void
+  reset: () => void
+}
+interface T {
+  basic: string
+  format: string
+  millisecond: string
+  serverTime: string
+  async: string
+  controlTime: string
+  customStyle: string
+  handleControl: string
+  start: string
+  pause: string
+  reset: string
+  day: string
+  hour: string
+  minute: string
+  second: string
+}
 const CountDownDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基本用法',
+      format: '自定义格式',
+      millisecond: '毫秒级渲染',
+      serverTime: '以服务端的时间为准',
+      async: '异步更新结束时间',
+      controlTime: '控制开始和暂停的倒计时',
+      customStyle: '自定义展示样式',
+      handleControl: '手动控制',
+      start: '开始',
+      pause: '暂停',
+      reset: '重置',
+      day: '天',
+      hour: '时',
+      minute: '分',
+      second: '秒',
+    },
+    'zh-TW': {
+      basic: '基本用法',
+      format: '自定义格式',
+      millisecond: '毫秒级渲染',
+      serverTime: '以服务端的时间为准',
+      async: '异步更新结束时间',
+      controlTime: '控制开始和暂停的倒计时',
+      customStyle: '自定义展示样式',
+      handleControl: '手动控制',
+      start: '开始',
+      pause: '暂停',
+      reset: '重置',
+      day: '天',
+      hour: '时',
+      minute: '分',
+      second: '秒',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      format: 'Custom Format',
+      millisecond: 'Millisecond',
+      serverTime: 'Server Time Prevails',
+      async: 'End-Time of Asyn Update',
+      controlTime: 'Manual Control',
+      customStyle: 'Custom Style',
+      handleControl: 'Handle Control',
+      start: 'Start',
+      pause: 'Pause',
+      reset: 'Reset',
+      day: 'Day',
+      hour: ':',
+      minute: ':',
+      second: '',
+    },
+  })
   const stateRef = useRef({
     timer: -1,
-    serverTime: Date.now() - 30 * 1000,
-    endTime: Date.now() + 50 * 1000,
+    serverTime: Date.now() - 20 * 1000,
+    endTime: Date.now() + 60 * 1000,
   })
+
+  const countDownRef = useRef<countdownRefState>(null)
 
   const [paused, setPaused] = useState(false)
   const [asyncEnd, setAsyncEnd] = useState(0)
@@ -59,24 +139,51 @@ const CountDownDemo = () => {
     console.log('restart: ', v)
   }
   const onUpdate = (v: any) => {
-    console.log('restTime: ', v)
     setResetTime(v)
+  }
+
+  const start = () => {
+    console.log(countDownRef.current)
+    countDownRef.current && countDownRef.current.start()
+  }
+
+  const pause = () => {
+    countDownRef.current && countDownRef.current.pause()
+  }
+
+  const reset = () => {
+    countDownRef.current && countDownRef.current.reset()
   }
   return (
     <>
       <div className="demo">
-        <h2>基础用法</h2>
+        <h2>{translated.basic}</h2>
         <Cell>
-          <CountDown endTime={stateRef.current.endTime} onEnd={onEnd} />
+          <CountDown
+            endTime={stateRef.current.endTime}
+            onUpdate={onUpdate}
+            onEnd={onEnd}
+          />
         </Cell>
-        <h2>显示天</h2>
 
+        <h2>{translated.format}</h2>
         <Cell>
-          <CountDown endTime={stateRef.current.endTime} showDays />
+          <CountDown
+            endTime={stateRef.current.endTime}
+            format={`DD ${translated.day} HH ${translated.hour} mm ${translated.minute} ss ${translated.second}`}
+          />
         </Cell>
 
-        <h2>以服务端的时间为准</h2>
+        <h2>{translated.millisecond}</h2>
+        <Cell>
+          <CountDown
+            endTime={stateRef.current.endTime}
+            millisecond
+            format="HH:mm:ss:SS"
+          />
+        </Cell>
 
+        <h2>{translated.serverTime}</h2>
         <Cell>
           <CountDown
             startTime={stateRef.current.serverTime}
@@ -84,24 +191,12 @@ const CountDownDemo = () => {
           />
         </Cell>
 
-        <h2>显示为天时分秒</h2>
-
+        <h2>{translated.async}</h2>
         <Cell>
-          <CountDown
-            showDays
-            showPlainText
-            endTime={stateRef.current.endTime}
-          />
+          <CountDown endTime={asyncEnd} />
         </Cell>
 
-        <h2>异步更新结束时间</h2>
-
-        <Cell>
-          <CountDown showPlainText endTime={asyncEnd} />
-        </Cell>
-
-        <h2>控制开始和暂停的倒计时</h2>
-
+        <h2>{translated.controlTime}</h2>
         <Cell>
           <CountDown
             endTime={stateRef.current.endTime}
@@ -118,8 +213,7 @@ const CountDownDemo = () => {
           </div>
         </Cell>
 
-        <h2>自定义展示</h2>
-
+        <h2>{translated.customStyle}</h2>
         <Cell>
           <span>
             <CountDown endTime={stateRef.current.endTime} onUpdate={onUpdate}>
@@ -149,6 +243,33 @@ const CountDownDemo = () => {
             </CountDown>
           </span>
         </Cell>
+
+        <h2>{translated.handleControl}</h2>
+        <Cell>
+          <CountDown
+            format="ss:SS"
+            autoStart={false}
+            time={20000}
+            ref={countDownRef}
+          />
+        </Cell>
+        <Grid columnNum="3">
+          <GridItem>
+            <Button type="primary" onClick={start}>
+              {translated.start}
+            </Button>
+          </GridItem>
+          <GridItem>
+            <Button type="primary" onClick={pause}>
+              {translated.pause}
+            </Button>
+          </GridItem>
+          <GridItem>
+            <Button type="primary" onClick={reset}>
+              {translated.reset}
+            </Button>
+          </GridItem>
+        </Grid>
       </div>
     </>
   )

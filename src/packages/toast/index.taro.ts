@@ -1,3 +1,3 @@
-import Toast from './toast.taro'
+import { Toast } from './toast.taro'
 
 export default Toast

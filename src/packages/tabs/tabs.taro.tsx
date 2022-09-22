@@ -1,7 +1,8 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
+import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 class Title {
   title = ''
@@ -16,7 +17,8 @@ class Title {
   constructor() {}
 }
 export type TabsSize = 'large' | 'normal' | 'small'
-export interface TabsProps {
+
+export interface TabsProps extends IComponent {
   className: string
   style: React.CSSProperties
   value: string | number
@@ -35,7 +37,9 @@ export interface TabsProps {
   autoHeight: boolean
   children?: React.ReactNode
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   value: 0,
   color: '',
   background: '',
@@ -69,8 +73,13 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
     onChange,
     className,
     autoHeight,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
-  } = { ...defaultProps, ...props }
+  } = {
+    ...defaultProps,
+    ...props,
+  }
 
   const [currentItem, setCurrentItem] = useState<Title>({ index: 0 } as Title)
   const titles = useRef<Title[]>([])
@@ -84,10 +93,11 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
         return null
       }
       const title = new Title()
-      if (child?.props?.title || child?.props?.paneKey) {
-        title.title = child.props?.title
-        title.paneKey = child.props?.paneKey || idx
-        title.disabled = child.props?.disabled
+      const childProps = child?.props
+      if (childProps?.title || childProps?.paneKey) {
+        title.title = childProps?.title
+        title.paneKey = childProps?.paneKey || idx
+        title.disabled = childProps?.disabled
         title.index = idx
         if (title.paneKey === value) {
           currentIndex = idx
@@ -168,7 +178,12 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
                       className={`${b('')}__titles-item__smile`}
                       style={tabsActiveStyle}
                     >
-                      <Icon color={color} name="joy-smile" />
+                      <Icon
+                        classPrefix={iconClassPrefix}
+                        fontClassName={iconFontClassName}
+                        color={color}
+                        name="joy-smile"
+                      />
                     </div>
                   )}
                   <div

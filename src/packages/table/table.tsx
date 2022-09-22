@@ -4,9 +4,12 @@ import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 import { ITableProps, TableColumnProps } from './types'
 import { useConfig } from '@/packages/configprovider'
+import { ComponentDefaults } from '@/utils/typings'
 
 export type TableProps = ITableProps
+
 const defaultProps = {
+  ...ComponentDefaults,
   className: '',
   style: {},
   columns: [],
@@ -32,6 +35,8 @@ export const Table: FunctionComponent<
     striped,
     noData,
     onSorter,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -85,7 +90,14 @@ export const Table: FunctionComponent<
           onClick={() => handleSorterClick(item)}
         >
           {item.title}
-          {item.sorter && <Icon name="down-arrow" size="12px" />}
+          {item.sorter && (
+            <Icon
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
+              name="down-arrow"
+              size="12px"
+            />
+          )}
         </span>
       )
     })

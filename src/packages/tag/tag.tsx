@@ -6,7 +6,9 @@ import React, {
 } from 'react'
 import Icon from '@/packages/icon'
 
-export interface TagProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface TagProps extends IComponent {
   type: TagType
   color: string
   textColor: string
@@ -21,7 +23,9 @@ export interface TagProps {
 }
 
 export type TagType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
+
 const defaultProps = {
+  ...ComponentDefaults,
   type: 'default',
   color: '',
   textColor: '',
@@ -46,6 +50,8 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     textColor,
     onClick,
     onClose,
+    iconClassPrefix,
+    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -106,6 +112,8 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
           >
             {children && <span className="text">{children}</span>}
             <Icon
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               className="_icon"
               name="close"
               size="12"

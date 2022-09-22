@@ -10,10 +10,12 @@ import Icon from '@/packages/icon'
 import RadioContext from './context'
 import RadioGroup from '@/packages/radiogroup'
 
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
 type Shape = 'button' | 'round'
 type Position = 'right' | 'left'
 
-export interface RadioProps {
+export interface RadioProps extends IComponent {
   className: string
   style: React.CSSProperties
   disabled: boolean
@@ -28,6 +30,9 @@ export interface RadioProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
+  className: '',
+  style: {},
   disabled: false,
   checked: false,
   shape: 'round',
@@ -41,7 +46,10 @@ const defaultProps = {
 export const Radio: FunctionComponent<
   Partial<RadioProps> & React.HTMLAttributes<HTMLDivElement>
 > & { RadioGroup: typeof RadioGroup } = (props) => {
-  const { children } = { ...defaultProps, ...props }
+  const { children } = {
+    ...defaultProps,
+    ...props,
+  }
   const {
     className,
     disabled,
@@ -53,6 +61,8 @@ export const Radio: FunctionComponent<
     iconActiveName,
     iconSize,
     onChange,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = props
   const componentName = 'nut-radio'
@@ -102,6 +112,8 @@ export const Radio: FunctionComponent<
 
     return (
       <Icon
+        classPrefix={iconClassPrefix}
+        fontClassName={iconFontClassName}
         name={checkedStatement ? iconActiveName : iconName}
         size={iconSize}
         className={color()}

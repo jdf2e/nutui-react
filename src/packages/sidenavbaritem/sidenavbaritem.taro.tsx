@@ -1,5 +1,5 @@
 import React, { FunctionComponent, MouseEventHandler } from 'react'
-// import { SideNavBarItemProps } from '../sidenavbar/type'
+
 export type SideNavBarItemProps = {
   title: string
   ikey: string | number

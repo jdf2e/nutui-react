@@ -57,7 +57,7 @@ const RadioDemo = () => {
 
   return (
     <>
-      <div className="demo full">
+      <div className="demo">
         <h2>{translated['74fc5d8a']}</h2>
         <CellGroup>
           <Cell>

@@ -4,13 +4,15 @@ import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
+import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 type Direction = 'right' | 'left'
 type Position = {
   top?: string
   bottom?: string
 }
-export interface FixedNavProps {
+
+export interface FixedNavProps extends IComponent {
   fixednavClass: string
   visible: boolean
   overlay: boolean
@@ -26,6 +28,7 @@ export interface FixedNavProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   fixednavClass: 'nut-fixednav',
   activeText: '',
   unActiveText: '',
@@ -53,8 +56,13 @@ export const FixedNav: FunctionComponent<
     type,
     slotList,
     slotBtn,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
-  } = { ...defaultProps, ...props }
+  } = {
+    ...defaultProps,
+    ...props,
+  }
 
   const b = bem('fixednav')
 
@@ -117,7 +125,12 @@ export const FixedNav: FunctionComponent<
       <div className="nut-fixednav__btn" onClick={() => onUpdateValue()}>
         {slotBtn || (
           <>
-            <Icon name="left" color="#fff" />
+            <Icon
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
+              name="left"
+              color="#fff"
+            />
             <div className="text">
               {visible
                 ? activeText || locale.fixednav.activeText

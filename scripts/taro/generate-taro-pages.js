@@ -3,6 +3,7 @@ const targetBaseUrl = `${process.cwd()}/src`
 const inquirer = require('inquirer')
 const path = require('path')
 const fs = require('fs')
+const fsExtra = require('fs-extra')
 const config = require('../../src/config.json')
 const navs = config.nav
 
@@ -48,6 +49,7 @@ const createIndexConfig = (enName, package) => {
           console.log('mkdir error', err)
         })
       }
+
       fs.writeFile(filePath, content, (err) => {
         if (err) {
           throw err
@@ -56,11 +58,35 @@ const createIndexConfig = (enName, package) => {
       })
 
       // 拷贝demo
-      const fileDemoPath = path.join(dirPath, `index.tsx`)
+      const fileDemoPath = path.resolve(dirPath, `index.tsx`)
       let demoPath = `src/packages/${nameLc}/demo.taro.tsx`
       fse.readFile(demoPath, (err, data) => {
         if (!err) {
-          copyFile(demoPath, fileDemoPath)
+          let fileString = data.toString()
+          const lines = fileString.split('\n')
+          const reg =
+            /import{1,}[\w\s\S]+(\'@\/packages\/nutui\.react\.taro\'){1,}/g
+          let fileStrArr = fileString.match(reg)
+          fileStrArr = fileStrArr[0].split('import')
+          let importScssStr = ''
+          for (let i = 0, lens = fileStrArr.length; i < lens; i++) {
+            if (fileStrArr[i].indexOf('@/packages/nutui.react.taro') != -1) {
+              let str = fileStrArr[i]
+              str = str.substring(str.indexOf('{') + 1, str.indexOf('}'))
+              let strs = str.split(',')
+              strs.forEach((namestr) => {
+                namestr = namestr.trim()
+                namestr &&
+                  (importScssStr += `import '@/packages/${namestr.toLowerCase()}/${namestr.toLowerCase()}.scss';\n`)
+              })
+            }
+          }
+          lines.splice(1, 0, importScssStr)
+          fileString = lines.join('\n')
+          fsExtra.outputFile(fileDemoPath, fileString, 'utf8', (error) => {
+            if (error) console.log('Error', error)
+            // console.log(`文件写入成功`)
+          })
         }
       })
     }
