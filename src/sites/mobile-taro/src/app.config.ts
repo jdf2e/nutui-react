@@ -40,6 +40,7 @@ const subPackages = [
       'pages/shortpassword/index',
       'pages/textarea/index',
       'pages/uploader/index',
+      'pages/cascader/index',
       'pages/searchbar/index',
       'pages/numberkeyboard/index',
     ],
@@ -48,10 +49,9 @@ const subPackages = [
     root: 'feedback',
     pages: [
       'pages/actionsheet/index',
+      'pages/infiniteloading/index',
       'pages/switch/index',
       'pages/toast/index',
-      'pages/infiniteloading/index',
-      'pages/pulltorefresh/index',
     ],
   },
   {
