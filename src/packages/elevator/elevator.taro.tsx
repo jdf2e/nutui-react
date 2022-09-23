@@ -124,6 +124,7 @@ export const Elevator: FunctionComponent<
     }
 
     setCodeIndex(cacheIndex)
+
     if (listview.current) {
       listview.current.scrollTo(0, state.current.listHeight[cacheIndex])
     }
