@@ -76,7 +76,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   }, [modelValue])
 
   const pxCheck = (value: string | number): string => {
-    return isNaN(Number(value)) ? String(value) : `${value}px`
+    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
   }
 
   const onClick = (e: React.MouseEvent, index: number) => {
@@ -84,8 +84,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     e.stopPropagation()
     if (disabled || readonly) return
     let value = 0
-    if (index === 1 && score === index) {
-    } else {
+    if (!(index === 1 && score === index)) {
       value = index
     }
     value = Math.max(value, Number(minimizeValue))
