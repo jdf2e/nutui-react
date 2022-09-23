@@ -16,7 +16,7 @@
         "name": "starttaro-react",
         "cName": "小程序开发",
         "eName": "WeChat",
-        "show": false
+        "show": true
       },
       {
         "name": "theme-react",
@@ -630,7 +630,7 @@
           "desc": "列表滚动到底部自动加载更多数据。",
           "sort": 5,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "swag~jun"
         },
         {
