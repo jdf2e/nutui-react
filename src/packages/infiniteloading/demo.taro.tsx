@@ -64,12 +64,6 @@ const InfiniteloadingDemo = () => {
       done()
     }, 1000)
   }
-  const [show, SetShow] = useState(false)
-  const [toastMsg, SetToastMsg] = useState('')
-  const toastShow = (msg: any) => {
-    SetToastMsg(msg)
-    SetShow(true)
-  }
 
   const init = () => {
     for (let i = 0; i < 20; i++) {
@@ -108,13 +102,6 @@ const InfiniteloadingDemo = () => {
             </Infiniteloading>
           </ul>
         </Cell>
-        <Toast
-          visible={show}
-          msg={toastMsg}
-          onClose={() => {
-            SetShow(false)
-          }}
-        />
       </div>
     </>
   )
