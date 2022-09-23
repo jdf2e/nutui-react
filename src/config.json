@@ -909,6 +909,7 @@
           "desc": "表格",
           "sort": 21,
           "show": true,
+          "taro": true,
           "author": "yangjinjun3"
         },
         {
