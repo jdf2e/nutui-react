@@ -157,14 +157,14 @@ export const Infiniteloading: FunctionComponent<
     onLoadMore && onLoadMore(infiniteDone)
   }
 
-  const touchStart = (event: ITouchEvent) => {
+  const touchStart = (event: any) => {
     if (scrollTop.current == 0 && !isTouching.current && isOpenRefresh) {
       y.current = event.touches[0].pageY
       isTouching.current = true
     }
   }
 
-  const touchMove = (event: ITouchEvent) => {
+  const touchMove = (event: any) => {
     distance.current = event.touches[0].pageY - y.current
     if (distance.current > 0 && isTouching.current) {
       event.preventDefault()
@@ -194,7 +194,7 @@ export const Infiniteloading: FunctionComponent<
       className={classes}
       scrollY
       id="scroller"
-      style={{ height: '100%' }}
+      // style={{ height: '100%' }}
       onScroll={scrollAction}
       onScrollToLower={lower}
       onTouchStart={touchStart}
