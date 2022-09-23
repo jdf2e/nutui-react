@@ -79,6 +79,7 @@ const subPackages = [
       'pages/barrage/index',
       'pages/card/index',
       'pages/timeselect/index',
+      'pages/signature/index',
     ],
   },
 ]

@@ -992,7 +992,7 @@
           "desc": "基于Canvas的签名组件",
           "sort": 1,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "songsong"
         },
         {
