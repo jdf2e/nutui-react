@@ -179,4 +179,4 @@ export const Toast: FunctionComponent<
 }
 
 Toast.defaultProps = defaultProps
-Toast.displayName = 'NutInput'
+Toast.displayName = 'NutToast'

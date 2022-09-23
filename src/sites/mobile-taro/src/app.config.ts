@@ -48,6 +48,7 @@ const subPackages = [
     root: 'feedback',
     pages: [
       'pages/actionsheet/index',
+      'pages/notify/index',
       'pages/switch/index',
       'pages/toast/index',
     ],
