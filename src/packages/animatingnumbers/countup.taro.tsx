@@ -3,6 +3,7 @@ import React, {
   FunctionComponent,
   useEffect,
   useRef,
+  useState,
 } from 'react'
 import Taro from '@tarojs/taro'
 import bem from '@/utils/bem'
@@ -54,50 +55,59 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     return currNumber.split('')
   }
 
-  const numerArr = getShowNumber()
+  const [numerArr, setNumerArr] = useState<string[]>([])
+
+  const [transformArr, setTransformArr] = useState<Array<string>>([])
+  const isLoaded = useRef(false)
 
   const setNumberTransform = () => {
-    if (countupRef.current) {
-      // const numberItems = countupRef.current.querySelectorAll(
-      //   '.nut-countup__number'
-      // )
+    if (countupRef.current && numerArr.length) {
       const query = Taro.createSelectorQuery()
-        .selectAll('.nut-countup__number')
+        .selectAll('.nut-countup__listitem')
         .node((numberItems: any) => {
-          const numberFilterArr: Array<string> = numerArr.filter(
-            (item: string) => !Number.isNaN(Number(item))
-          )
-          Object.keys(numberItems).forEach((key) => {
+          const transformArrCache: string[] = []
+          Object.keys(numberItems).forEach((key: any) => {
             const elem = numberItems[Number(key)] as HTMLElement
-            const idx = Number(numberFilterArr[Number(key)])
-            if ((idx || idx === 0) && elem) {
+            const idx = Number(numerArr[Number(key)])
+            if (elem) {
               // 计算规则：父元素和实际列表高度的百分比，分割成20等份
-              const transform = `translate(0, -${(idx === 0 ? 10 : idx) * 5}%)`
-              elem.style.transform = transform
-              elem.style.webkitTransform = transform
+              const transform =
+                idx || idx === 0
+                  ? `translate(0, -${(idx === 0 ? 10 : idx) * 5}%)`
+                  : ''
+              transformArrCache.push(transform)
             }
           })
+          setTransformArr([...transformArrCache])
         })
         .exec()
     }
   }
 
-  const numberEaseStyle: CSSProperties = {
-    transition: `transform ${easeSpeed}s ease-in-out`,
+  const numberEaseStyle = (idx: number) => {
+    return {
+      transition: `transform ${easeSpeed}s ease-in-out`,
+      transform: transformArr[idx] ? transformArr[idx] : null,
+    } as CSSProperties
   }
-
-  useEffect(() => {
-    timerRef.current = window.setTimeout(() => {
-      setNumberTransform()
-    }, delaySpeed)
-    return () => {
-      window.clearTimeout(timerRef.current)
-    }
-  }, [])
 
   useEffect(() => {
     setNumberTransform()
   }, [numerArr])
+
+  useEffect(() => {
+    if (!isLoaded.current) {
+      isLoaded.current = true
+      timerRef.current = window.setTimeout(() => {
+        setNumerArr(getShowNumber())
+      }, delaySpeed)
+    } else {
+      setNumerArr(getShowNumber())
+    }
+    return () => {
+      window.clearTimeout(timerRef.current)
+    }
+  }, [endNumber])
 
   return (
     <div className={`${b()} ${className}`} ref={countupRef}>
@@ -111,7 +121,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
               key={idx}
             >
               {!Number.isNaN(Number(item)) ? (
-                <span className={b('number')} style={numberEaseStyle}>
+                <span className={b('number')} style={numberEaseStyle(idx)}>
                   {[...numbers, ...numbers].map((number, subidx) => {
                     return <span key={subidx}>{number}</span>
                   })}

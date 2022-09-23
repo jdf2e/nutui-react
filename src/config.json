@@ -876,7 +876,7 @@
           "desc": "带特效的数字",
           "sort": 7,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "songsong"
         },
         {
