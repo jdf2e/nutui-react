@@ -16,7 +16,7 @@
         "name": "starttaro-react",
         "cName": "小程序开发",
         "eName": "WeChat",
-        "show": false
+        "show": true
       },
       {
         "name": "theme-react",
@@ -196,6 +196,17 @@
           "taro": true,
           "exportEmpty": true,
           "author": "yangxiaolu"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Sticky",
+          "type": "component",
+          "cName": "粘性布局",
+          "desc": "效果同 css 中的 position: sticky",
+          "sort": 7,
+          "show": true,
+          "taro": false,
+          "author": "hx"
         }
       ]
     },
@@ -519,6 +530,7 @@
           "version": "0.1.0",
           "name": "Uploader",
           "type": "component",
+          "tarodoc": true,
           "cName": "上传",
           "desc": "用于将本地的图片或文件上传至服务器。",
           "sort": 1,
@@ -617,7 +629,7 @@
           "desc": "列表滚动到底部自动加载更多数据。",
           "sort": 5,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "swag~jun"
         },
         {

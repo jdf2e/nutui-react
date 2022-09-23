@@ -3,9 +3,9 @@ import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
 
-type GridDirection = 'horizontal' | 'vertical'
-
 import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+type GridDirection = 'horizontal' | 'vertical'
 
 export interface GridItemProps extends IComponent {
   text: string | ReactNode
@@ -62,8 +62,13 @@ export const GridItem: FunctionComponent<
     center,
     reverse,
     direction,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
-  } = { ...defaultProps, ...props }
+  } = {
+    ...defaultProps,
+    ...props,
+  }
   const b = bem('grid-item')
 
   const pxCheck = (value: string | number): string => {
@@ -105,8 +110,8 @@ export const GridItem: FunctionComponent<
       <div className={contentClass()}>
         {icon && isIconName() ? (
           <Icon
-            classPrefix={props.iconClassPrefix}
-            fontClassName={props.iconFontClassName}
+            classPrefix={iconClassPrefix}
+            fontClassName={iconFontClassName}
             name={icon as string}
             size={iconSize || parentIconSize}
             color={iconColor || parentIconColor}

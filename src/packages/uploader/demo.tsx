@@ -1,7 +1,9 @@
-import React, { useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Uploader, FileItem, FileType } from './uploader'
 import Button from '@/packages/button'
+import Progress from '@/packages/progress'
+import './demo.scss'
 
 interface uploadRefState {
   submit: () => void
@@ -17,7 +19,10 @@ interface T {
   '25e04d44': string
   d06e873e: string
   ca3903f3: string
+  upload_progress_action: string
   '84aa6bce': string
+  upload_list_show: string
+  upload_default_progress: string
   a4afedb5: string
   '37c65f47': string
   bb5caa9c: string
@@ -26,6 +31,7 @@ interface T {
   b7454181: string
   '5c393e52': string
   e3217a8d: string
+  upload_xhr_custom: string
   '67fffe24': string
   fcf01d1a: string
   '7db1a8b2': string
@@ -42,7 +48,10 @@ const UploaderDemo = () => {
       '25e04d44': 'oversize触发文件大小不能超过50kb',
       d06e873e: 'start触发',
       ca3903f3: 'delete事件触发',
+      upload_progress_action: 'progress事件触发',
       '84aa6bce': '基础用法',
+      upload_list_show: '基础用法-上传列表展示',
+      upload_default_progress: '自定义上传使用默认进度条',
       a4afedb5: '上传状态',
       '37c65f47': '自定义上传样式',
       bb5caa9c: '上传文件',
@@ -51,6 +60,7 @@ const UploaderDemo = () => {
       b7454181: '限制上传大小（每个文件最大不超过50kb）',
       '5c393e52': '图片压缩（在beforeupload钩子中处理）',
       e3217a8d: '自定义数据 FormData、headers',
+      upload_xhr_custom: '自定义 xhr 上传方式(before-xhr-upload)',
       '67fffe24': '选中文件后，通过按钮手动执行上传',
       fcf01d1a: '执行上传',
       '7db1a8b2': '禁用状态',
@@ -65,7 +75,10 @@ const UploaderDemo = () => {
       '25e04d44': 'oversize觸發檔大小不能超過50kb',
       d06e873e: 'start觸發',
       ca3903f3: 'delete事件觸發',
+      upload_progress_action: 'progress事件觸發',
       '84aa6bce': '基础用法',
+      upload_list_show: '基礎用法-上傳列表展示',
+      upload_default_progress: '自定義上傳使用默認進度條',
       a4afedb5: '上傳狀態',
       '37c65f47': '自定義上傳樣式',
       bb5caa9c: '上傳檔',
@@ -74,6 +87,7 @@ const UploaderDemo = () => {
       b7454181: '限制上傳大小（每個檔案最大不超過50kb）',
       '5c393e52': '圖片壓縮（在beforeupload鉤子中處理）',
       e3217a8d: '自定義數據 FormData、headers',
+      upload_xhr_custom: '自定義 xhr 上傳方式(before-xhr-upload)',
       '67fffe24': '選取檔後，通過按鈕手動執行上傳',
       fcf01d1a: '執行上傳',
       '7db1a8b2': '禁用狀態',
@@ -88,7 +102,10 @@ const UploaderDemo = () => {
       '25e04d44': 'The oversize trigger file size cannot exceed 50kb',
       d06e873e: 'start triggered',
       ca3903f3: 'The delete event is triggered',
+      upload_progress_action: 'The progress event is triggered',
       '84aa6bce': 'Basic usage',
+      upload_list_show: 'Basic usage - upload list display',
+      upload_default_progress: 'Custom upload uses default progress bar',
       a4afedb5: 'Upload status',
       '37c65f47': 'Customize the upload style',
       bb5caa9c: 'Upload the file',
@@ -97,6 +114,7 @@ const UploaderDemo = () => {
       b7454181: 'Limit upload size (maximum 50kb per file)',
       '5c393e52': 'Image compression (handled in a foreupload hook)',
       e3217a8d: 'Custom data FormData, headers',
+      upload_xhr_custom: 'Custom xhr upload method (before-xhr-upload)',
       '67fffe24':
         'After selecting Chinese, manually perform the upload via the button',
       fcf01d1a: 'Perform the upload',
@@ -104,6 +122,7 @@ const UploaderDemo = () => {
     },
   })
 
+  const [progressPercent, setProgressPercent] = useState(0)
   const uploadRef = useRef<uploadRefState>(null)
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
   const formData = {
@@ -164,6 +183,10 @@ const UploaderDemo = () => {
   const onStart = () => {
     console.log(translated.d06e873e)
   }
+  const onProgress = ({ event, options, percentage }: any) => {
+    setProgressPercent(percentage)
+    console.log(translated.upload_progress_action)
+  }
   const onDelete = (file: FileItem, fileList: FileItem[]) => {
     console.log(translated.ca3903f3, file, fileList)
   }
@@ -180,45 +203,82 @@ const UploaderDemo = () => {
     const f = await new File([blob], files[0].name, { type: files[0].type })
     return [f]
   }
+  const beforeXhrUpload = (xhr: XMLHttpRequest, options: any) => {
+    if (options.method.toLowerCase() == 'put') {
+      xhr.send(options.sourceFile)
+    } else {
+      xhr.send(options.formData)
+    }
+  }
   const submitUpload = () => {
     ;(uploadRef.current as uploadRefState).submit()
   }
   return (
     <>
-      <div className="demo bg-w">
+      <div className="demo bg-w demo-uploader">
         <h2>{translated['84aa6bce']}</h2>
-        <Uploader url={uploadUrl} start={onStart} />
+        <Uploader url={uploadUrl} onStart={onStart} />
 
         <h2>{translated.a4afedb5}</h2>
         <Uploader
           url={uploadUrl}
           defaultFileList={defaultFileList}
-          removeImage={onDelete}
+          onRemove={onDelete}
           maximum="3"
           multiple
           uploadIcon="dongdong"
         />
+
+        <h2>{translated.upload_list_show}</h2>
+        <Uploader
+          url={uploadUrl}
+          defaultFileList={defaultFileList}
+          maximum="10"
+          multiple
+          listType="list"
+        >
+          <Button type="success" size="small">
+            {translated.bb5caa9c}
+          </Button>
+        </Uploader>
+
         <h2>{translated['37c65f47']}</h2>
         <Uploader url={uploadUrl}>
           <Button type="success" size="small">
             {translated.bb5caa9c}
           </Button>
         </Uploader>
+
+        <h2>{translated.upload_default_progress}</h2>
+        <Uploader url={uploadUrl} onProgress={onProgress}>
+          <Button type="success" size="small">
+            {translated.bb5caa9c}
+          </Button>
+        </Uploader>
+        <br />
+        <Progress
+          percentage={progressPercent}
+          strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
+          status
+        />
+
         <h2>{translated['27f1376e']}</h2>
         <Uploader url={uploadUrl} capture />
-        <h2>{translated.a4afedb5}</h2>
-        <Uploader url={uploadUrl} multiple removeImage={onDelete} />
+
         <h2>{translated['0e5eaea3']}</h2>
         <Uploader url={uploadUrl} multiple maximum="5" />
+
         <h2>{translated.b7454181}</h2>
         <Uploader
           url={uploadUrl}
           multiple
           maximize={1024 * 50}
-          oversize={onOversize}
+          onOversize={onOversize}
         />
+
         <h2>{translated['5c393e52']}</h2>
-        <Uploader url={uploadUrl} multiple beforeUpload={beforeUpload} />
+        <Uploader url={uploadUrl} multiple onBeforeUpload={beforeUpload} />
+
         <h2>{translated.e3217a8d}</h2>
         <Uploader
           url={uploadUrl}
@@ -226,6 +286,14 @@ const UploaderDemo = () => {
           headers={formData}
           withCredentials
         />
+
+        <h2>{translated.upload_xhr_custom}</h2>
+        <Uploader
+          url={uploadUrl}
+          method="put"
+          onBeforeXhrUpload={beforeXhrUpload}
+        />
+
         <h2>{translated['67fffe24']}</h2>
         <Uploader
           url={uploadUrl}
@@ -237,6 +305,7 @@ const UploaderDemo = () => {
         <Button type="success" size="small" onClick={submitUpload}>
           {translated.fcf01d1a}
         </Button>
+
         <h2>{translated['7db1a8b2']}</h2>
         <Uploader disabled />
       </div>

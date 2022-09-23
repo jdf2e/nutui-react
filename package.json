@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -65,8 +65,9 @@
     "dev:taro:jd": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:jd",
     "dev:taro:h5": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:h5",
     "replace:taro:types": "node scripts/taro/replace-taro-types-alias.js",
-    "build:taro:es": "npx rollup -c rollup.config.taro.es.js",
     "build:taro": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run build:taro:es  && npm run build:css && npm run build:loader-style && npm --taro run build:dts && npm run build:locales",
+    "build:taro:es": "npx rollup -c rollup.config.taro.es.js",
+    "build:taro:weapp": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run build:weapp",
     "add:taro:config": "node scripts/taro/generate-taro-route.js"
   },
   "engines": {
@@ -80,8 +81,7 @@
     "@babel/runtime": "^7.16.5",
     "@bem-react/classname": "^1.5.10",
     "@react-spring/web": "^9.3.2",
-    "@tarojs/cli": "^3.5.4",
-    "@use-gesture/react": "10.2.9",
+    "@use-gesture/react": "^10.2.9",
     "classnames": "^2.3.1",
     "react-router-dom": "^5.2.0",
     "react-transition-group": "^4.4.2"
@@ -102,7 +102,7 @@
     "@rollup/plugin-node-resolve": "^13.1.1",
     "@rollup/plugin-typescript": "^8.3.0",
     "@tarojs/components": "^3.5.5",
-    "@tarojs/taro": "3.4.13",
+    "@tarojs/taro": "^3.5.5",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^13.3.0",
     "@types/jest": "^27.4.1",
@@ -157,7 +157,7 @@
     "shelljs": "^0.8.4",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
-    "typescript": "4.7.4",
+    "typescript": "^4.8.2",
     "unist-util-visit": "^4.1.0",
     "vinyl-fs": "^3.0.3",
     "vite": "^2.1.5",

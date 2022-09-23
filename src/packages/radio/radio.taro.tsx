@@ -10,10 +10,10 @@ import Icon from '@/packages/icon/index.taro'
 import RadioContext from './context'
 import RadioGroup from '@/packages/radiogroup/index.taro'
 
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
 type Shape = 'button' | 'round'
 type Position = 'right' | 'left'
-
-import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface RadioProps extends IComponent {
   className: string
@@ -44,7 +44,10 @@ const defaultProps = {
 export const Radio: FunctionComponent<
   Partial<RadioProps> & React.HTMLAttributes<HTMLDivElement>
 > & { RadioGroup: typeof RadioGroup } = (props) => {
-  const { children } = { ...defaultProps, ...props }
+  const { children } = {
+    ...defaultProps,
+    ...props,
+  }
   const {
     className,
     disabled,
@@ -56,6 +59,8 @@ export const Radio: FunctionComponent<
     iconActiveName,
     iconSize,
     onChange,
+    iconClassPrefix,
+    iconFontClassName,
     ...rest
   } = props
   const componentName = 'nut-radio'
@@ -105,8 +110,8 @@ export const Radio: FunctionComponent<
 
     return (
       <Icon
-        classPrefix={props.iconClassPrefix}
-        fontClassName={props.iconFontClassName}
+        classPrefix={iconClassPrefix}
+        fontClassName={iconFontClassName}
         name={checkedStatement ? iconActiveName : iconName}
         size={iconSize}
         className={color()}

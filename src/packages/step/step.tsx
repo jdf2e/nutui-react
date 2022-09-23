@@ -40,6 +40,8 @@ export const Step: FunctionComponent<
     size,
     className,
     renderContent,
+    iconClassPrefix,
+    iconFontClassName,
     ...restProps
   } = {
     ...defaultProps,
@@ -84,8 +86,8 @@ export const Step: FunctionComponent<
         <div className={renderIconClass()}>
           {icon ? (
             <Icon
-              classPrefix={props.iconClassPrefix}
-              fontClassName={props.iconFontClassName}
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
               className="nut-step-icon-inner"
               color={iconColor}
               name={icon}

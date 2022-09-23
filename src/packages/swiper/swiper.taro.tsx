@@ -496,7 +496,7 @@ export const Swiper = React.forwardRef<
         className={`${classes} ${className}`}
         ref={container}
         {...rest}
-        id={'container-' + refRandomId}
+        id={`container-${refRandomId}`}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}

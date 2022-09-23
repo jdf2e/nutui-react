@@ -10,6 +10,8 @@ import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
 import { getRect } from '../../utils/useClientRect'
 
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
 export type PopoverTheme = 'light' | 'dark'
 
 export type PopoverLocation =
@@ -31,8 +33,6 @@ export interface List {
   icon?: string
   disabled?: boolean
 }
-
-import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface PopoverProps extends IComponent {
   list: List[]
@@ -72,6 +72,8 @@ export const Popover: FunctionComponent<
     style,
     onClick,
     onChoose,
+    iconClassPrefix,
+    iconFontClassName,
     ...reset
   } = {
     ...defaultProps,
@@ -172,8 +174,8 @@ export const Popover: FunctionComponent<
                     >
                       {item.icon ? (
                         <Icon
-                          classPrefix={props.iconClassPrefix}
-                          fontClassName={props.iconFontClassName}
+                          classPrefix={iconClassPrefix}
+                          fontClassName={iconFontClassName}
                           className="popover-menu-item-img"
                           name={item.icon}
                         />
