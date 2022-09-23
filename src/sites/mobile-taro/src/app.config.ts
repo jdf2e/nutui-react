@@ -50,6 +50,7 @@ const subPackages = [
       'pages/actionsheet/index',
       'pages/switch/index',
       'pages/toast/index',
+      'pages/dialog/index',
     ],
   },
   {
