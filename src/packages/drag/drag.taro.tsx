@@ -56,7 +56,7 @@ export const Drag: FunctionComponent<
       Taro.createSelectorQuery()
         .select(`.${className}`)
         .boundingClientRect((rec: any) => {
-          console.log(rec.height, rec.width)
+          // console.log(rec.height, rec.width)
           setBoundaryState({
             top: -rec.top + top,
             left: -rec.left + left,

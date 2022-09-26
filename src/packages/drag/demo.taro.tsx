@@ -1,4 +1,5 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import { Drag } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 
@@ -45,11 +46,13 @@ const DragDemo = () => {
       limitBoundaries: 'Limit Boundaries',
     },
   })
+  const { screenWidth, windowHeight } = Taro.getSystemInfoSync()
+
   const right = () => {
-    return document.documentElement.clientWidth - 300 - 9
+    return screenWidth - 300 - 9
   }
   const bottom = () => {
-    return document.documentElement.clientHeight - 559
+    return windowHeight - 501
   }
   const btnStyle = {
     borderRadius: '25px',
@@ -61,7 +64,7 @@ const DragDemo = () => {
     background: 'linear-gradient(135deg,#fa2c19 0,#fa6419 100%)',
   }
   return (
-    <div className="demo">
+    <div className="demo" style={{ height: `${windowHeight - 20}px` }}>
       <h2>{translated.basic}</h2>
       <Drag style={{ left: '8px' }}>
         <span style={btnStyle}>{translated.dragBasic}</span>
