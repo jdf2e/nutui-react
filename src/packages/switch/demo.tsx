@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Switch } from './switch'
+import { Switch, Cell } from '@/packages/nutui.react'
 
 const SwitchDemo = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
@@ -19,21 +19,33 @@ const SwitchDemo = () => {
     <>
       <div className="demo">
         <h2>基础用法</h2>
-        <Switch checked />
+        <Cell>
+          <Switch checked />
+        </Cell>
         <h2>禁用状态</h2>
-        <Switch checked disable />
+        <Cell>
+          <Switch checked disable />
+        </Cell>
         <h2>change事件</h2>
-        <Switch change={(value, event) => change(value, event)} />
+        <Cell>
+          <Switch change={(value, event) => change(value, event)} />
+        </Cell>
         <h2>异步控制</h2>
-        <Switch
-          checked={checkedAsync}
-          isAsync
-          change={(value, event) => changeAsync(value, event)}
-        />
+        <Cell>
+          <Switch
+            checked={checkedAsync}
+            isAsync
+            change={(value, event) => changeAsync(value, event)}
+          />
+        </Cell>
         <h2>自定义颜色</h2>
-        <Switch activeColor="blue" />
+        <Cell>
+          <Switch activeColor="blue" />
+        </Cell>
         <h2>支持文字</h2>
-        <Switch activeText="开" inactiveText="关" />
+        <Cell>
+          <Switch activeText="开" inactiveText="关" />
+        </Cell>
       </div>
     </>
   )

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useTranslate } from '../../sites/assets/locale'
-import { Cascader } from './cascader.taro'
-import { Cell } from '../cell/cell.taro'
-
+import { useTranslate } from '@/sites/assets/locale/taro'
+import { Cascader, Cell } from '@/packages/nutui.react.taro'
 interface T {
   basic: string
   title1: string
