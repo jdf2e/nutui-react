@@ -606,7 +606,7 @@
           "desc": "实现可拖拽的任意元素",
           "sort": 1,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "songsong"
         },
         {

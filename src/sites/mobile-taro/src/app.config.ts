@@ -23,6 +23,7 @@ const subPackages = [
       'pages/tabs/index',
       'pages/indicator/index',
       'pages/menu/index',
+      'pages/elevator/index',
     ],
   },
   {
@@ -51,6 +52,7 @@ const subPackages = [
       'pages/notify/index',
       'pages/switch/index',
       'pages/toast/index',
+      'pages/drag/index',
     ],
   },
   {
