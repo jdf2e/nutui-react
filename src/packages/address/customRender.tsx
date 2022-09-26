@@ -370,7 +370,7 @@ export const CustomRender: FunctionComponent<
           </ul>
         </div>
       )}
-
+      {/* 
       {privateType === 'custom2' && (
         <div className={b('elevator-group')}>
           <Elevator
@@ -379,7 +379,7 @@ export const CustomRender: FunctionComponent<
             onClickItem={handleElevatorItem}
           />
         </div>
-      )}
+      )} */}
     </div>
   )
 }
