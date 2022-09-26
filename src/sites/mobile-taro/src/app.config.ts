@@ -71,6 +71,7 @@ const subPackages = [
       'pages/progress/index',
       'pages/audio/index',
       'pages/animatingnumbers/index',
+      'pages/imagepreview/index',
     ],
   },
   {

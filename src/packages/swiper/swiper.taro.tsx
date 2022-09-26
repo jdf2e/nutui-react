@@ -458,18 +458,15 @@ export const Swiper = React.forwardRef<
     autoplay()
   }, [children])
   useEffect(() => {
-    init()
+    nextTick(() => {
+      init()
+    })
   }, [propSwiper.initPage])
   useEffect(() => {
     return () => {
       stopAutoPlay()
     }
   }, [])
-  useReady(() => {
-    nextTick(() => {
-      init()
-    })
-  })
   const itemStyle = (index: any) => {
     const style: IStyle = {}
     const _direction = propSwiper.direction || direction
