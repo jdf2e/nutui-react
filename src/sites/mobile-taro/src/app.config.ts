@@ -40,6 +40,7 @@ const subPackages = [
       'pages/shortpassword/index',
       'pages/textarea/index',
       'pages/uploader/index',
+      'pages/cascader/index',
       'pages/searchbar/index',
       'pages/numberkeyboard/index',
     ],
@@ -49,6 +50,7 @@ const subPackages = [
     pages: [
       'pages/actionsheet/index',
       'pages/drag/index',
+      'pages/dialog/index',
       'pages/notify/index',
       'pages/switch/index',
       'pages/toast/index',
@@ -74,11 +76,13 @@ const subPackages = [
       'pages/table/index',
       'pages/progress/index',
       'pages/audio/index',
+      'pages/imagepreview/index',
     ],
   },
   {
     root: 'business',
     pages: [
+      'pages/address/index',
       'pages/barrage/index',
       'pages/signature/index',
       'pages/card/index',
