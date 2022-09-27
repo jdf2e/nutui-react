@@ -1,7 +1,7 @@
 import React, { createContext } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Elevator } from '@/packages/nutui.react.taro'
-import './demo.scss'
+import '@/packages/elevator/demo.scss'
 
 export const elevatorContext = createContext({} as ElevatorData)
 

@@ -23,7 +23,6 @@ const subPackages = [
       'pages/tabs/index',
       'pages/indicator/index',
       'pages/menu/index',
-      'pages/elevator/index',
     ],
   },
   {
@@ -49,10 +48,10 @@ const subPackages = [
     root: 'feedback',
     pages: [
       'pages/actionsheet/index',
+      'pages/drag/index',
       'pages/notify/index',
       'pages/switch/index',
       'pages/toast/index',
-      'pages/drag/index',
     ],
   },
   {
@@ -70,20 +69,20 @@ const subPackages = [
       'pages/skeleton/index',
       'pages/countdown/index',
       'pages/collapse/index',
+      'pages/animatingnumbers/index',
       'pages/empty/index',
       'pages/table/index',
       'pages/progress/index',
       'pages/audio/index',
-      'pages/animatingnumbers/index',
     ],
   },
   {
     root: 'business',
     pages: [
       'pages/barrage/index',
+      'pages/signature/index',
       'pages/card/index',
       'pages/timeselect/index',
-      'pages/signature/index',
     ],
   },
 ]
