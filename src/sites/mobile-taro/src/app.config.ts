@@ -40,6 +40,7 @@ const subPackages = [
       'pages/shortpassword/index',
       'pages/textarea/index',
       'pages/uploader/index',
+      'pages/cascader/index',
       'pages/searchbar/index',
       'pages/numberkeyboard/index',
     ],

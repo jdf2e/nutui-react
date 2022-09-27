@@ -29,7 +29,8 @@
     },
     "disableUseStrict": false,
     "useCompilerPlugins": false,
-    "minifyWXML": true
+    "minifyWXML": true,
+    "useMultiFrameRuntime": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.25.0",
