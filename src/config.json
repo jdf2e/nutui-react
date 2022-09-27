@@ -617,7 +617,7 @@
           "desc": "模态对话框",
           "sort": 12,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "yangjinjun3"
         },
         {
@@ -955,6 +955,7 @@
           "desc": "图片预览",
           "sort": 23,
           "show": true,
+          "taro": true,
           "author": "yangjinjun3"
         }
       ]
