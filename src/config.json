@@ -956,6 +956,7 @@
           "desc": "图片预览",
           "sort": 23,
           "show": true,
+          "taro": true,
           "author": "yangjinjun3"
         }
       ]
