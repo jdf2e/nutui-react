@@ -923,7 +923,6 @@
           "sort": 20,
           "show": true,
           "taro": false,
-          "tarodoc": true,
           "author": "swag~jun"
         },
         {
@@ -973,7 +972,7 @@
           "desc": "地址组件",
           "sort": 3,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "yangxiaolu"
         },
         {

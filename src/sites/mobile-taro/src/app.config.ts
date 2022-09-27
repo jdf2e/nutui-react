@@ -69,6 +69,7 @@ const subPackages = [
       'pages/skeleton/index',
       'pages/countdown/index',
       'pages/collapse/index',
+      'pages/animatingnumbers/index',
       'pages/empty/index',
       'pages/table/index',
       'pages/progress/index',
@@ -80,6 +81,7 @@ const subPackages = [
   {
     root: 'business',
     pages: [
+      'pages/address/index',
       'pages/barrage/index',
       'pages/card/index',
       'pages/timeselect/index',
