@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Infiniteloading, Cell } from '@/packages/nutui.react.taro'
-import Taro from '@tarojs/taro'
 import '@/packages/infiniteloading/demo.scss'
 
 interface T {
@@ -86,7 +86,7 @@ const InfiniteloadingDemo = () => {
               pullIcon="JD"
               loadTxt="loading"
               loadMoreTxt="没有啦～"
-              isOpenRefresh={true}
+              isOpenRefresh
               containerId="scrollDemo"
               hasMore={hasMore}
               onLoadMore={loadMore}

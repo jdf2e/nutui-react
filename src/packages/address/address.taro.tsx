@@ -8,7 +8,7 @@ import Icon from '@/packages/icon/index.taro'
 import Popup from '@/packages/popup/index.taro'
 import bem from '@/utils/bem'
 import { ExistRender } from './existRender'
-import { CustomRender } from './customRender'
+import { CustomRender } from './customRender.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import {
   RegionData,

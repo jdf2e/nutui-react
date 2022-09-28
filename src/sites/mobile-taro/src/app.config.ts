@@ -40,6 +40,7 @@ const subPackages = [
       'pages/shortpassword/index',
       'pages/textarea/index',
       'pages/uploader/index',
+      'pages/cascader/index',
       'pages/searchbar/index',
       'pages/numberkeyboard/index',
     ],
@@ -48,8 +49,10 @@ const subPackages = [
     root: 'feedback',
     pages: [
       'pages/actionsheet/index',
+      'pages/notify/index',
       'pages/switch/index',
       'pages/toast/index',
+      'pages/dialog/index',
     ],
   },
   {
@@ -67,14 +70,19 @@ const subPackages = [
       'pages/skeleton/index',
       'pages/countdown/index',
       'pages/collapse/index',
+      'pages/animatingnumbers/index',
       'pages/empty/index',
+      'pages/table/index',
       'pages/progress/index',
       'pages/audio/index',
+      'pages/animatingnumbers/index',
+      'pages/imagepreview/index',
     ],
   },
   {
     root: 'business',
     pages: [
+      'pages/address/index',
       'pages/barrage/index',
       'pages/card/index',
       'pages/timeselect/index',

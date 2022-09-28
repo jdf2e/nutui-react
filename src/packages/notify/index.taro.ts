@@ -1,3 +1,3 @@
-import Notify from './notify.taro'
+import { Notify } from './notify.taro'
 
 export default Notify

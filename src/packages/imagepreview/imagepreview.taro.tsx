@@ -7,7 +7,6 @@ import React, {
   TouchEvent,
 } from 'react'
 import Popup from '@/packages/popup/index.taro'
-import Video from '@/packages/video/index.taro'
 import Swiper from '@/packages/swiper/index.taro'
 import SwiperItem from '@/packages/swiperitem/index.taro'
 
@@ -257,24 +256,19 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           paginationColor={paginationColor}
           paginationVisible={paginationVisible}
         >
-          {videos &&
-            videos.length > 0 &&
-            videos.map((item, index) => {
-              return (
-                <SwiperItem key={index}>
-                  <Video source={item.source} options={item.options} />
-                </SwiperItem>
-              )
-            })}
-          {images &&
-            images.length > 0 &&
-            images.map((item, index) => {
-              return (
-                <SwiperItem key={index}>
-                  <img src={item.src} alt="" className="nut-imagepreview-img" />
-                </SwiperItem>
-              )
-            })}
+          {images && images.length > 0
+            ? images.map((item, index) => {
+                return (
+                  <SwiperItem key={index}>
+                    <img
+                      src={item.src}
+                      alt=""
+                      className="nut-imagepreview-img"
+                    />
+                  </SwiperItem>
+                )
+              })
+            : []}
         </Swiper>
       </div>
       <div className="nut-imagepreview-index">
