@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { DataContext } from '@/packages/swiper/UserContext'
 import bem from '@/utils/bem'
 
-interface SwiperItemProps {
+export interface SwiperItemProps {
   direction?: string
   size?: 0
 }

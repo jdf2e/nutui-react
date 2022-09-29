@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import Popup from '@/packages/popup'
-import CalendarItem from '@/packages/calendaritem'
+import Popup from '@/packages/popup/index.taro'
+import CalendarItem from '@/packages/calendaritem/index.taro'
 import Utils from '@/utils/date'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export interface CalendarProps {
   type?: string

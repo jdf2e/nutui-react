@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Notify, Cell, CellGroup } from '@/packages/nutui.react.taro'
+
 interface T {
   basic: string
   numbers: string
@@ -16,7 +17,7 @@ const NotifyDemo = () => {
       basic: '基本用法',
       t1: '通知类型',
       t2: '自定义样式',
-      t3: '自定义时长',
+      t3: '自定义时长为5秒',
       cusPostion: '自定义位置',
       useTemplate: '组件调用',
       primaryNotify: '主要通知',
@@ -29,7 +30,7 @@ const NotifyDemo = () => {
       basic: 'Basic Usage',
       t1: 'Notify Type',
       t2: 'Custom Style',
-      t3: 'Custom Duration',
+      t3: 'Custom Duration 5s',
       cusPostion: 'Custom Postion',
       useTemplate: 'Template use',
       primaryNotify: 'Primary Notify',
@@ -39,49 +40,55 @@ const NotifyDemo = () => {
       cusBgNotify: 'Customize background and font colors',
     },
   })
-  const baseNotify = (msg: string) => {
-    Notify.text(msg, {
-      onClosed: () => {
-        console.log('close')
-      },
-      onClick: () => {
-        console.log('click')
-      },
+  const [showNotify, SetShowNotify] = useState(false)
+  const [customShow, SetCustomShow] = useState(false)
+  const [states, SetStates] = useState({
+    msg: '',
+    type: 'danger',
+    duration: 2000,
+    position: 'top',
+    color: '',
+    background: '',
+  })
+  const changeNotify = (
+    msg: string,
+    type?: string,
+    duration?: number,
+    color?: string,
+    position?: string
+  ) => {
+    const change = Object.assign(states, {
+      msg,
+      type,
+      duration,
+      color,
+      position,
     })
+    SetStates(change)
   }
-  const primaryNotify = (msg: string) => {
-    Notify.primary(msg)
-  }
-  const successNotify = (msg: string) => {
-    Notify.success(msg)
-  }
-  const errorNotify = (msg: string) => {
-    Notify.danger(msg)
-  }
-  const warningNotify = (msg: string) => {
-    Notify.warn(msg)
-  }
-  const cusBgNotify = (msg: string) => {
-    Notify.text(msg, {
-      color: '#ad0000',
-      background: '#ffe1e1',
-      className: 'aa',
-    })
-  }
-  const timeNotify = (msg: string) => {
-    Notify.text(msg, { duration: 1000 })
-  }
-  const positionNotify = (msg: string) => {
-    Notify.text(msg, { position: 'bottom' })
-  }
+
   return (
     <>
       <div className="demo" style={{ paddingBottom: '30px' }}>
+        <Notify
+          visible={showNotify}
+          msg={states.msg}
+          type={states.type}
+          duration={states.duration}
+          position={states.position}
+          onClosed={() => {
+            SetShowNotify(false)
+          }}
+          onClick={() => {
+            console.log('click')
+          }}
+        />
         <h2>{translated.basic}</h2>
         <Cell
           title={translated.basic}
           click={(event: React.MouseEvent) => {
-            baseNotify(translated.basic)
+            changeNotify(translated.basic)
+            SetShowNotify(true)
           }}
         />
         <h2>{translated.t1}</h2>
@@ -89,46 +96,62 @@ const NotifyDemo = () => {
           <Cell
             title={translated.primaryNotify}
             click={(event: React.MouseEvent) => {
-              primaryNotify(translated.primaryNotify)
+              changeNotify(translated.primaryNotify, 'primary')
+              SetShowNotify(true)
             }}
           />
           <Cell
             title={translated.successNotify}
             click={(event: React.MouseEvent) => {
-              successNotify(translated.successNotify)
+              changeNotify(translated.successNotify, 'success')
+              SetShowNotify(true)
             }}
           />
           <Cell
             title={translated.errorNotify}
             click={(event: React.MouseEvent) => {
-              errorNotify(translated.errorNotify)
+              changeNotify(translated.errorNotify, 'danger')
+              SetShowNotify(true)
             }}
           />
           <Cell
             title={translated.warningNotify}
             click={(event: React.MouseEvent) => {
-              warningNotify(translated.warningNotify)
+              changeNotify(translated.warningNotify, 'warning')
+              SetShowNotify(true)
             }}
           />
         </CellGroup>
         <h2>{translated.t2}</h2>
+        <Notify
+          className="customer"
+          visible={customShow}
+          msg={translated.cusBgNotify}
+          color="#ad0000"
+          background="#ffe1e1"
+          onClosed={() => {
+            SetCustomShow(false)
+          }}
+        />
         <Cell
           title={translated.cusBgNotify}
           click={(event: React.MouseEvent) => {
-            cusBgNotify(translated.cusBgNotify)
+            SetCustomShow(true)
           }}
         />
         <h2>{translated.t3}</h2>
         <Cell
           title={translated.t3}
           click={(event: React.MouseEvent) => {
-            timeNotify(translated.t3)
+            changeNotify(translated.t3, 'base', 5000)
+            SetShowNotify(true)
           }}
         />
         <Cell
           title={translated.cusPostion}
           click={(event: React.MouseEvent) => {
-            positionNotify(translated.cusPostion)
+            changeNotify(translated.cusPostion, 'base', 2000, '', 'bottom')
+            SetShowNotify(true)
           }}
         />
       </div>

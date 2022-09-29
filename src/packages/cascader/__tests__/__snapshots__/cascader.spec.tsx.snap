@@ -18,6 +18,8 @@ exports[`Cascader change tab 1`] = `
       />
       <div
         class="horizontal nut-tabs"
+        iconclassprefix="nut-icon"
+        iconfontclassname="nutui-iconfont"
       >
         <div
           class="line normal nut-tabs__titles"
@@ -184,6 +186,8 @@ exports[`Cascader change tab 2`] = `
       />
       <div
         class="horizontal nut-tabs"
+        iconclassprefix="nut-icon"
+        iconfontclassname="nutui-iconfont"
       >
         <div
           class="line normal nut-tabs__titles"
@@ -332,172 +336,6 @@ exports[`Cascader change tab 2`] = `
 </div>
 `;
 
-exports[`Cascader no visible 1`] = `
-<div>
-  <div
-    class="nut-cascader "
-  >
-    <div
-      class="overlay-fade-enter-active nut-overlay"
-      style="z-index: 2000; animation-duration: 0.3s;"
-    />
-    <div
-      class="round popup-bottom cascadar-popup undefined nut-popup"
-      style="z-index: 2000; animation-duration: 0.3s;"
-    >
-      <div
-        class="nut-cascader__title"
-      />
-      <div
-        class="horizontal nut-tabs"
-      >
-        <div
-          class="line normal nut-tabs__titles"
-        >
-          <div
-            class="nut-tabs__titles-item "
-          >
-            <span
-              class="nut-tabs__titles-item__text"
-            >
-              福建
-            </span>
-            <span
-              class="nut-tabs__titles-item__line"
-            />
-          </div>
-          <div
-            class="nut-tabs__titles-item "
-          >
-            <span
-              class="nut-tabs__titles-item__text"
-            >
-              福州
-            </span>
-            <span
-              class="nut-tabs__titles-item__line"
-            />
-          </div>
-          <div
-            class="nut-tabs__titles-item active"
-          >
-            <span
-              class="nut-tabs__titles-item__text"
-            >
-              鼓楼区
-            </span>
-            <span
-              class="nut-tabs__titles-item__line"
-            />
-          </div>
-        </div>
-        <div
-          class="nut-tabs__content"
-          style="transform: translate3d(-200%, 0, 0); transition-duration: 300ms;"
-        >
-          <div
-            class="nut-tabpane"
-          >
-            <div
-              class="nut-cascader-pane"
-            >
-              <div
-                class="nut-cascader-item"
-              >
-                <div
-                  class="nut-cascader-item__title"
-                >
-                  浙江
-                </div>
-                <i
-                  class="nutui-iconfont nut-icon nut-icon-checklist "
-                />
-              </div>
-              <div
-                class="disabled nut-cascader-item"
-              >
-                <div
-                  class="nut-cascader-item__title"
-                >
-                  湖南
-                </div>
-                <i
-                  class="nutui-iconfont nut-icon nut-icon-checklist "
-                />
-              </div>
-              <div
-                class="active nut-cascader-item"
-              >
-                <div
-                  class="nut-cascader-item__title"
-                >
-                  福建
-                </div>
-                <i
-                  class="nutui-iconfont nut-icon nut-icon-checklist nut-cascader-item__icon-check"
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="nut-tabpane"
-          >
-            <div
-              class="nut-cascader-pane"
-            >
-              <div
-                class="active nut-cascader-item"
-              >
-                <div
-                  class="nut-cascader-item__title"
-                >
-                  福州
-                </div>
-                <i
-                  class="nutui-iconfont nut-icon nut-icon-checklist nut-cascader-item__icon-check"
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="active nut-tabpane"
-          >
-            <div
-              class="nut-cascader-pane"
-            >
-              <div
-                class="active nut-cascader-item"
-              >
-                <div
-                  class="nut-cascader-item__title"
-                >
-                  鼓楼区
-                </div>
-                <i
-                  class="nutui-iconfont nut-icon nut-icon-checklist nut-cascader-item__icon-check"
-                />
-              </div>
-              <div
-                class="nut-cascader-item"
-              >
-                <div
-                  class="nut-cascader-item__title"
-                >
-                  台江区
-                </div>
-                <i
-                  class="nutui-iconfont nut-icon nut-icon-checklist "
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`Cascader options 1`] = `
 <div>
   <div
@@ -576,38 +414,6 @@ exports[`Cascader value 1`] = `
 </div>
 `;
 
-exports[`Cascader value with lazy 1`] = `
-<div>
-  <div
-    class="nut-cascader "
-  >
-    <div
-      class="overlay-fade-enter-active nut-overlay"
-      style="z-index: 2000; animation-duration: 0.3s;"
-    />
-    <div
-      class="round popup-bottom cascadar-popup undefined nut-popup"
-      style="z-index: 2000; animation-duration: 0.3s;"
-    >
-      <div
-        class="nut-cascader__title"
-      />
-      <div
-        class="horizontal nut-tabs"
-      >
-        <div
-          class="line normal nut-tabs__titles"
-        />
-        <div
-          class="nut-tabs__content"
-          style="transform: translate3d(--100%, 0, 0); transition-duration: 300ms;"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`Cascader visible true 1`] = `
 <div>
   <div
@@ -626,6 +432,8 @@ exports[`Cascader visible true 1`] = `
       />
       <div
         class="horizontal nut-tabs"
+        iconclassprefix="nut-icon"
+        iconfontclassname="nutui-iconfont"
       >
         <div
           class="line normal nut-tabs__titles"

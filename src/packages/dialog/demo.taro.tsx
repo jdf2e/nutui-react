@@ -1,74 +1,98 @@
 import React, { useState } from 'react'
 import { Dialog, Cell } from '@/packages/nutui.react.taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
+
+interface T {
+  basic: string
+  noTitle: string
+  tipDialog: string
+  title: string
+  title1: string
+  content: string
+  tips: string
+  okText: string
+  cancelText: string
+}
 
 const DialogDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基础弹框',
+      noTitle: '无标题弹框',
+      tipDialog: '提示弹框',
+      tips: '提示',
+      title: '底部按钮 垂直使用',
+      title1: '标签式使用',
+      content: '这里是弹框内容',
+      okText: '确定',
+      cancelText: '取消',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      noTitle: 'No Title',
+      tipDialog: 'Tips Dialog',
+      tips: 'Tips',
+      title: 'Bottom button vertical use',
+      title1: 'Template use',
+      content: 'Function call and template call are supported.',
+      okText: 'confirm',
+      cancelText: 'cancel',
+    },
+  })
+
   const [visible1, setVisible1] = useState(false)
   const [visible2, setVisible2] = useState(false)
+  const [visible3, setVisible3] = useState(false)
+  const [visible4, setVisible4] = useState(false)
 
   return (
-    <>
-      <div className="demo">
-        <h2>函数式调用</h2>
-        <Cell
-          title="基础弹框"
-          onClick={() => {
-            Dialog.alert({
-              title: '基础弹框',
-              content: '支持函数调用和组件调用两种方式。',
-            })
-          }}
-        />
-        <Cell
-          title="无标题弹框"
-          onClick={() => {
-            Dialog.alert({
-              content: '无标题弹框',
-            })
-          }}
-        />
-        <Cell
-          title="提示弹框"
-          onClick={() => {
-            Dialog.alert({
-              title: '温馨提示',
-              content: '支持函数调用和组件调用两种方式。',
-              noCancelBtn: true,
-            })
-          }}
-        />
-        <Cell
-          title="底部按钮 垂直调用"
-          onClick={() => {
-            Dialog.alert({
-              title: '温馨提示',
-              content: '支持函数调用和组件调用两种方式。',
-              footerDirection: 'vertical',
-            })
-          }}
-        />
-        <h2>组件调用</h2>
-        <Cell title="基础弹框" onClick={() => setVisible1(true)} />
-        <Dialog
-          title="组件调用"
-          visible={visible1}
-          onOk={() => setVisible1(false)}
-          onCancel={() => setVisible1(false)}
-        >
-          如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-        </Dialog>
-        <Cell title="底部按钮 垂直调用" onClick={() => setVisible2(true)} />
-        <Dialog
-          title="组件调用"
-          visible={visible2}
-          lockScroll
-          footerDirection="vertical"
-          onOk={() => setVisible2(false)}
-          onCancel={() => setVisible2(false)}
-        >
-          如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-        </Dialog>
-      </div>
-    </>
+    <div className="demo">
+      <Cell title={translated.basic} onClick={() => setVisible1(true)} />
+      <Dialog
+        title={translated.title1}
+        visible={visible1}
+        okText={translated.okText}
+        cancelText={translated.cancelText}
+        onOk={() => setVisible1(false)}
+        onCancel={() => setVisible1(false)}
+      >
+        {translated.content}
+      </Dialog>
+      <Cell title={translated.noTitle} onClick={() => setVisible2(true)} />
+      <Dialog
+        visible={visible2}
+        okText={translated.okText}
+        cancelText={translated.cancelText}
+        onOk={() => setVisible2(false)}
+        onCancel={() => setVisible2(false)}
+      >
+        {translated.content}
+      </Dialog>
+      <Cell title={translated.tipDialog} onClick={() => setVisible3(true)} />
+      <Dialog
+        title={translated.title1}
+        visible={visible3}
+        okText={translated.okText}
+        noCancelBtn={true}
+        onOk={() => setVisible3(false)}
+        onCancel={() => setVisible3(false)}
+      >
+        {translated.content}
+      </Dialog>
+      <Cell title={translated.title} onClick={() => setVisible4(true)} />
+      <Dialog
+        title={translated.title1}
+        visible={visible4}
+        lockScroll
+        footerDirection="vertical"
+        okText={translated.okText}
+        cancelText={translated.cancelText}
+        onOk={() => setVisible4(false)}
+        onCancel={() => setVisible4(false)}
+      >
+        {translated.content}
+      </Dialog>
+    </div>
   )
 }
 

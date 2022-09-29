@@ -1,9 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 import bem from '@/utils/bem'
 
-export interface NavBarProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface NavBarProps extends IComponent {
   leftShow: boolean
   title: string
   titIcon: string
@@ -22,7 +24,9 @@ export interface NavBarProps {
   onClickRight: (e: React.MouseEvent<HTMLDivElement>) => void
   children?: React.ReactNode
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   title: '',
   desc: '',
   leftShow: true,
@@ -54,6 +58,8 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
     onClickIcon,
     onClickBack,
     onClickRight,
+    iconClassPrefix,
+    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -82,7 +88,14 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   const renderLeft = () => {
     return (
       <div className={`${b('left')}`} onClick={(e) => onClickBack(e)}>
-        {leftShow && <Icon name="left" color="#979797" />}
+        {leftShow && (
+          <Icon
+            classPrefix={iconClassPrefix}
+            fontClassName={iconFontClassName}
+            name="left"
+            color="#979797"
+          />
+        )}
         {leftText && <div className={`${b('text')}`}>{leftText}</div>}
         {slot.left}
       </div>
@@ -99,7 +112,11 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
         )}
         {titIcon && (
           <div onClick={(e) => onClickIcon(e)}>
-            <Icon name={titIcon} />
+            <Icon
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
+              name={titIcon}
+            />
           </div>
         )}
         {slot.content}

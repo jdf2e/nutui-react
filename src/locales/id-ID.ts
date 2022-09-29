@@ -90,5 +90,38 @@ const idID: BaseLang = {
       `Ulas setelah ${day} hari dari pembelian`,
     additionalImages: (length: number) => `Terdapat ${length} komentar lainnya`,
   },
+  searchbar: {
+    basePlaceholder: 'pergi ke jd.com, membeli barang baik',
+    text: 'teks',
+    test: 'tes',
+    title1: 'penggunaan dasar',
+    title2: 'bentuk kotak pencarian dan panjang maksimum',
+    title3: 'pengaturan latar belakang di dalam dan diluar kotak pencarian',
+    title4: 'tetapan teks kotak pencarian',
+    title5: 'pengaturan ikon suai',
+    title6: 'Monitor perubahan data',
+  },
+  audio: {
+    back: 'Fastback',
+    forward: 'maju',
+    pause: 'berhenti sebentar',
+    start: 'Mulailah',
+    mute: 'bisu',
+    tips: 'Acara Onplayend hanya akan dipicu saat loop = false',
+  },
+  datepicker: {
+    year: 'Tahun',
+    month: 'Bulan',
+    day: 'Hari',
+    hour: 'Jam',
+    min: 'Menit',
+    seconds: 'Detik',
+  },
+  pullToRefresh: {
+    pullingText: 'Tarik ke bawah untuk menyegarkan',
+    canReleaseText: 'Rilis untuk menyegarkan',
+    refreshingText: 'Memuat...',
+    completeText: 'Penyegaran berhasil',
+  },
 }
 export default idID

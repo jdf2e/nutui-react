@@ -19,6 +19,7 @@ import enUS from '@/locales/en-US'
 import { BaseLang } from '@/locales/base'
 import Icon from '@/packages/Icon'
 import { nav } from '@/config.json'
+import TaroDemo from '@/sites/mobile/TaroDemo'
 
 interface Languages {
   [key: string]: BaseLang
@@ -110,7 +111,9 @@ const AppSwitch = () => {
             />
           )
         })}
-
+        <Route path="*-taro">
+          <TaroDemo />
+        </Route>
         <Route path="*">
           <Redirect
             to={{

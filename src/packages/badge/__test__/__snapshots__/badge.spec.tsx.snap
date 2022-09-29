@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match custom icons 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-badge"
+  >
+    <div
+      class="slot-icons"
+    >
+      <i
+        class="nutui-iconfont nut-icon nut-icon-link _icon"
+        style="color: rgb(255, 255, 255); font-size: 12px; width: 12px; height: 12px;"
+      />
+    </div>
+    <div />
+    <div
+      class=" nut-badge__content sup"
+      style="top: 0px; right: 0px; z-index: 0;"
+    >
+      200
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-badge"
+  >
+    <div />
+    <div
+      class=" nut-badge__content sup"
+      style="top: 0px; right: 0px; z-index: 0;"
+    >
+      8
+    </div>
+  </div>
+</DocumentFragment>
+`;

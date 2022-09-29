@@ -4,7 +4,9 @@ import CheckboxGroup from '@/packages/checkboxgroup'
 
 import bem from '@/utils/bem'
 
-export interface CheckBoxProps {
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface CheckboxProps extends IComponent {
   checked: boolean
   disabled: boolean
   textPosition: 'left' | 'right'
@@ -20,6 +22,7 @@ export interface CheckBoxProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   checked: false,
   disabled: false,
   textPosition: 'right',
@@ -30,12 +33,15 @@ const defaultProps = {
   iconFontClassName: 'nutui-iconfont',
   iconIndeterminateName: 'check-disabled',
   onChange: (state, label) => {},
-} as CheckBoxProps
+} as CheckboxProps
 export const Checkbox: FunctionComponent<
-  Partial<CheckBoxProps> &
+  Partial<CheckboxProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > & { Group: typeof CheckboxGroup } = (props) => {
-  const { children } = { ...defaultProps, ...props }
+  const { children } = {
+    ...defaultProps,
+    ...props,
+  }
   const b = bem('checkbox')
   const {
     iconName,
@@ -82,11 +88,11 @@ export const Checkbox: FunctionComponent<
   const renderIcon = () => {
     return (
       <Icon
+        classPrefix={iconClassPrefix}
+        fontClassName={iconFontClassName}
         name={getIconName()}
         size={iconSize}
         className={color()}
-        classPrefix={iconClassPrefix}
-        fontClassName={iconFontClassName}
       />
     )
   }

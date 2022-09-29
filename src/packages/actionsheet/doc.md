@@ -13,8 +13,6 @@ import { ActionSheet } from '@nutui/nutui-react';
 
 ### 基本用法
 
-默认
-
 :::demo
 ```tsx
 import  React, { useState } from "react";
@@ -57,8 +55,8 @@ const App = () => {
     <ActionSheet
       visible={isVisible1}
       menuItems={menuItemsOne}
-      choose={chooseItem}
-      cancel={() => setIsVisible1(false)}
+      onChoose={chooseItem}
+      onCancel={() => setIsVisible1(false)}
      />
     </>
   );
@@ -105,8 +103,8 @@ const App = () => {
       visible={isVisible2}
       cancelTxt="取消"
       menuItems={menuItemsOne}
-      choose={chooseItemTwo}
-      cancel={() => setIsVisible2(false)}
+      onChoose={chooseItemTwo}
+      onCancel={() => setIsVisible2(false)}
      />
     </>
   );
@@ -151,11 +149,12 @@ const App = () => {
     </Cell>
     <ActionSheet
       visible={isVisible3}
+      title='ActionSheet'
       description="这是一段描述信息"
-      menuItems={menuItemsTwo}
-      choose={chooseItemThree}
       cancelTxt="取消"
-      cancel={() => setIsVisible3(false)}
+      menuItems={menuItemsTwo}
+      onChoose={chooseItemThree}
+      onCancel={() => setIsVisible3(false)}
      />
     </>
   );
@@ -192,10 +191,10 @@ const App = () => {
     <ActionSheet
       visible={isVisible4}
       cancelTxt="取消"
-      cancel={() => setIsVisible4(false)}
       menuItems={menuItemsThree}
       chooseTagValue="着色选项"
-      choose={() => {
+      onCancel={() => setIsVisible4(false)}
+      onChoose={() => {
         setIsVisible4(false)
       }}
      />
@@ -211,20 +210,20 @@ export default App;
 
 | 字段             | 说明                                   | 类型    | 默认值    |
 |------------------|----------------------------------------|---------|-----------|
-| cancelTxt       | 取消文案                               | String  | '取消'    |
-| menuItems       | 列表项                                 | Array   | [ ]       |
-| optionTag       | 设置列表项展示使用参数                 | String  | 'name'    |
-| visible       | 遮罩层可见                             | Boolean | false     |
-| optionSubTag   | 设置列表项描述展示使用参数             | String  | 'subname' |
+| visible       | 遮罩层可见 | Boolean | false     |
+| cancelTxt       | 取消文案 | String  | '取消'    |
+| menuItems       | 列表项 | Array   | [ ]       |
+| optionTag       | 设置列表项展示使用参数 | String  | 'name'    |
+| optionSubTag   | 设置列表项描述展示使用参数 | String  | 'subname' |
+| title            | 设置列表面板标题 | String  | ''        |
+| description      | 设置列表面板副标题/描述 | String  | ''        |
 | chooseTagValue | 设置选中项的值，和'option-tag'的值对应 | String  | ''        |
-| title            | 设置列表项标题                         | String  | ''        |
-| description      | 设置列表项副标题/描述                  | String  | ''        |
-| color            | 高亮颜色                               | String  | '#ee0a24' |
+| color            | 高亮颜色 | String  | '#ee0a24' |
 
 
 ## Event
 
 | 字段   | 说明               | 回调参数                          |
 |--------|--------------------|-----------------------------------|
-| choose | 选择之后触发       | 选中列表项item, 选中的索引值index |
-| cancel | 点击取消文案时触发 | 无                                |
+| onChoose`v1.3.2` | 选择之后触发       | 选中列表项item, 选中的索引值index |
+| onCancel`v1.3.2` | 点击取消文案时触发 | 无                                |

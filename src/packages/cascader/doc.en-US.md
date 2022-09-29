@@ -97,12 +97,11 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value1 ? value1 : '请选择地址'}
+      desc={value1 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo1(true)
       }}
-    >
-    </Cell>
+     />
     <Cascader
       visible={isVisibleDemo1}
       value={value1}
@@ -207,12 +206,11 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value2 ? value2 : '请选择地址'}
+      desc={value2 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo2(true)
       }}
-    >
-    </Cell>
+     />
     <Cascader
       visible={isVisibleDemo2}
       value={value2}
@@ -279,12 +277,11 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value3 ? value3 : '请选择地址'}
+      desc={value3 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo3(true)
       }}
-    >
-    </Cell>
+     />
     <Cascader
       visible={isVisibleDemo3}
       value={value3}
@@ -351,12 +348,11 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value4 ? value4 : '请选择地址'}
+      desc={value4 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo4(true)
       }}
-    >
-    </Cell>
+     />
     <Cascader
       visible={isVisibleDemo4}
       value={value4}
@@ -413,12 +409,11 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value5 ? value5 : '请选择地址'}
+      desc={value5 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo5(true)
       }}
-    >
-    </Cell>
+     />
     <Cascader
       visible={isVisibleDemo5}
       value={value5}
@@ -445,6 +440,7 @@ export default App;
 | ------------- | --------------------------------------------- | -------- | ------ |
 | value         | Selected value                                | Array    | -      |
 | options       | Cascade data                                  | Array    | -      |
+| poppable      | Whether to display the pop-up window status   | Boolean  | true   |
 | visible       | Cascading show hidden states                  | Boolean  | false  |
 | lazy          | Whether to enable dynamic loading             | Boolean  | false  |
 | lazyLoad      | Dynamic loading callback, which takes effect when dynamic loading is enabled   | Function | -      |

@@ -97,12 +97,11 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value1 ? value1 : '请选择地址'}
+      desc={value1 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo1(true)
       }}
-    >
-    </Cell>
+     />
     <Cascader
       visible={isVisibleDemo1}
       value={value1}
@@ -207,12 +206,11 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value2 ? value2 : '请选择地址'}
+      desc={value2 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo2(true)
       }}
-    >
-    </Cell>
+     />
     <Cascader
       visible={isVisibleDemo2}
       value={value2}
@@ -279,12 +277,11 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value3 ? value3 : '请选择地址'}
+      desc={value3 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo3(true)
       }}
-    >
-    </Cell>
+     />
     <Cascader
       visible={isVisibleDemo3}
       value={value3}
@@ -351,12 +348,11 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value4 ? value4 : '请选择地址'}
+      desc={value4 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo4(true)
       }}
-    >
-    </Cell>
+     />
     <Cascader
       visible={isVisibleDemo4}
       value={value4}
@@ -413,12 +409,11 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value5 ? value5 : '请选择地址'}
+      desc={value5 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo5(true)
       }}
-    >
-    </Cell>
+     />
     <Cascader
       visible={isVisibleDemo5}
       value={value5}
@@ -445,6 +440,7 @@ export default App;
 | ------------- | ---------------------------------------------- | -------- | ------ |
 | value         | 选中值                                          | Array    | -      |
 | options       | 级联数据                                         | Array    | -      |
+| poppable      | 是否弹窗状态展示                                  | Boolean  | true   |
 | visible       | 级联显示隐藏状态                                  | Boolean  | false  |
 | lazy          | 是否开启动态加载                                  | Boolean  | false  |
 | lazyLoad      | 动态加载回调，开启动态加载时生效                   | Function | -      |

@@ -1,28 +1,38 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 import { ReactElement } from 'react'
 import * as ReactDOM from 'react-dom'
+import { Root, RootOptions } from 'react-dom/client'
 
-let createRoot
+type CR = (container: Element | DocumentFragment, options?: RootOptions) => Root
+type IR = {
+  createRoot: CR
+} & typeof ReactDOM
+
+let createRoot: CR | undefined
+const { version } = ReactDOM as any
+const reactDOMClone = {
+  ...ReactDOM,
+} as IR
 try {
-  const mainVersion = Number((ReactDOM.version || '').split('.')[0])
-  if (mainVersion >= 18 && ReactDOM.createRoot) {
-    createRoot = ReactDOM.createRoot
+  const mainVersion = Number((version || '').split('.')[0])
+  if (mainVersion >= 18) {
+    createRoot = reactDOMClone.createRoot
   }
 } catch (e) {
   console.log(e)
 }
 
-function legacyRender(node, container) {
+function legacyRender(node: any, container: any) {
   ReactDOM.render(node, container)
 }
 
-function concurrentRender(node, container) {
-  const root = ReactDOM.createRoot(container)
-  root.render(node)
+function concurrentRender(node: any, container: any) {
+  if (createRoot) {
+    const root = createRoot(container)
+    root.render(node)
+  }
 }
 
-export function render(node: ReactElement, container) {
+export function render(node: ReactElement, container: any) {
   if (createRoot) {
     concurrentRender(node, container)
     return
