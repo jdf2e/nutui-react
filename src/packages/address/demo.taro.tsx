@@ -336,12 +336,12 @@ const AddressDemo = () => {
           desc={text.six}
           onClick={() => showAddress('select')}
         />
-        <h2>选择自定义地址2</h2>
+        {/* <h2>选择自定义地址2</h2>
         <Cell
           title="选择地址"
           desc={text.five}
           onClick={() => showAddress('normal2')}
-        />
+        /> */}
         <h2>选择已有地址</h2>
         <Cell
           title="选择地址"
@@ -384,7 +384,7 @@ const AddressDemo = () => {
           onClose={close6}
         />
 
-        <Address
+        {/* <Address
           modelValue={showPopup.normal2}
           type="custom2"
           modelSelect={[1, 7, 3]}
@@ -396,7 +396,7 @@ const AddressDemo = () => {
           onChange={(cal) => onChange(cal, 'normal2')}
           onClose={close5}
           customAddressTitle="请选择所在地区"
-        />
+        /> */}
 
         <Address
           modelValue={showPopup.exist}

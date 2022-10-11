@@ -440,6 +440,7 @@ export default App;
 | ------------- | ---------------------------------------------- | -------- | ------ |
 | value         | 選中值                                          | Array    | -      |
 | options       | 級聯數據                                         | Array    | -      |
+| poppable      | 是否彈窗狀態展示                                  | Boolean  | true   |
 | visible       | 級聯顯示隱藏狀態                                  | Boolean  | false  |
 | lazy          | 是否開啟動態加載                                  | Boolean  | false  |
 | lazyLoad      | 動態加載回調，開啟動態加載時生效                   | Function | -      |

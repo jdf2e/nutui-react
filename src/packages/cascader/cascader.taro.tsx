@@ -24,6 +24,7 @@ import Tree from './tree'
 export interface CascaderProps {
   className: string
   style: CSSProperties
+  poppable: boolean
   visible: boolean // popup 显示状态
   options: CascaderOption[]
   value: string[]
@@ -45,6 +46,7 @@ export interface CascaderProps {
 const defaultProps = {
   className: '',
   style: {},
+  poppable: true,
   visible: false,
   options: [],
   value: [],
@@ -70,6 +72,7 @@ const InternalCascader: ForwardRefRenderFunction<
   const {
     className,
     style,
+    poppable,
     visible,
     options,
     value,
@@ -345,20 +348,10 @@ const InternalCascader: ForwardRefRenderFunction<
     setOptiosData(state.panes)
   }
 
-  return (
-    <div className={`${classes} ${className}`} style={style}>
-      <Popup
-        popClass="cascadar-popup"
-        visible={visible}
-        position="bottom"
-        round
-        closeable={closeable}
-        closeIconPosition={closeIconPosition}
-        closeIcon={closeIcon}
-        onClickOverlay={closePopup}
-        onClickCloseIcon={closePopup}
-      >
-        <div className={b('title')}>{title}</div>
+  const renderItem = () => {
+    return (
+      <div className={`${classes} ${className}`} style={style}>
+        {poppable && <div className={b('title')}>{title}</div>}
         <Tabs
           value={tabvalue}
           titleNode={() => {
@@ -416,8 +409,30 @@ const InternalCascader: ForwardRefRenderFunction<
             </TabPane>
           )}
         </Tabs>
-      </Popup>
-    </div>
+      </div>
+    )
+  }
+
+  return (
+    <>
+      {poppable ? (
+        <Popup
+          popClass="cascadar-popup"
+          visible={visible}
+          position="bottom"
+          round
+          closeable={closeable}
+          closeIconPosition={closeIconPosition}
+          closeIcon={closeIcon}
+          onClickOverlay={closePopup}
+          onClickCloseIcon={closePopup}
+        >
+          {renderItem()}
+        </Popup>
+      ) : (
+        renderItem()
+      )}
+    </>
   )
 }
 

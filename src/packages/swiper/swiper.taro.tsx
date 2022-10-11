@@ -458,7 +458,9 @@ export const Swiper = React.forwardRef<
     autoplay()
   }, [children])
   useEffect(() => {
-    init()
+    nextTick(() => {
+      init()
+    })
   }, [propSwiper.initPage])
   useEffect(() => {
     return () => {

@@ -25,29 +25,6 @@ const images = [
   },
 ]
 
-const videos = [
-  {
-    source: {
-      src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-      type: 'video/mp4',
-    },
-    options: {
-      muted: true,
-      controls: true,
-    },
-  },
-  {
-    source: {
-      src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
-      type: 'video/mp4',
-    },
-    options: {
-      muted: true,
-      controls: true,
-    },
-  },
-]
-
 const ImagePreviewDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -69,7 +46,6 @@ const ImagePreviewDemo = () => {
   const [showPreview1, setShowPreview1] = useState(false)
   const [showPreview2, setShowPreview2] = useState(false)
   const [showPreview3, setShowPreview3] = useState(false)
-  const [showPreview4, setShowPreview4] = useState(false)
 
   const showFn1 = () => {
     setShowPreview1(true)
@@ -83,10 +59,6 @@ const ImagePreviewDemo = () => {
     setShowPreview3(true)
   }
 
-  const showFn4 = () => {
-    setShowPreview4(true)
-  }
-
   const hideFn1 = () => {
     setShowPreview1(false)
   }
@@ -97,10 +69,6 @@ const ImagePreviewDemo = () => {
 
   const hideFn3 = () => {
     setShowPreview3(false)
-  }
-
-  const hideFn4 = () => {
-    setShowPreview4(false)
   }
 
   return (
@@ -126,14 +94,6 @@ const ImagePreviewDemo = () => {
           onClose={hideFn3}
         />
         <Cell title={translated.withPagination} isLink onClick={showFn3} />
-        <h2>{translated.withVideos}</h2>
-        <ImagePreview
-          images={images}
-          videos={videos}
-          show={showPreview4}
-          onClose={hideFn4}
-        />
-        <Cell title={translated.withVideos} isLink onClick={showFn4} />
       </div>
     </>
   )

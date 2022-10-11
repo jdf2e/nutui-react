@@ -546,6 +546,7 @@
           "desc": "级联选择，用于多层级数据的选择，典型场景为省市区选择。",
           "sort": 1,
           "show": true,
+          "taro": true,
           "author": "ailululu"
         },
         {
@@ -606,7 +607,7 @@
           "desc": "实现可拖拽的任意元素",
           "sort": 1,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "songsong"
         },
         {
@@ -617,7 +618,7 @@
           "desc": "模态对话框",
           "sort": 12,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "yangjinjun3"
         },
         {
@@ -924,7 +925,6 @@
           "sort": 20,
           "show": true,
           "taro": false,
-          "tarodoc": true,
           "author": "swag~jun"
         },
         {
@@ -957,6 +957,7 @@
           "desc": "图片预览",
           "sort": 23,
           "show": true,
+          "taro": true,
           "author": "yangjinjun3"
         }
       ]
@@ -973,7 +974,7 @@
           "desc": "地址组件",
           "sort": 3,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "yangxiaolu"
         },
         {
@@ -995,7 +996,7 @@
           "desc": "基于Canvas的签名组件",
           "sort": 1,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "songsong"
         },
         {
