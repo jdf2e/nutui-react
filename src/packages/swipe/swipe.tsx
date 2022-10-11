@@ -132,7 +132,6 @@ export const Swipe = forwardRef<
       if (isEdge) {
         preventDefault(event, true)
       }
-      console.log(touch.deltaX, rightWidth, leftWidth)
 
       newState.offset = rangeCalculation(
         touch.deltaX + startOffset.current,
