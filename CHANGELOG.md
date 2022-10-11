@@ -1,3 +1,15 @@
+# v1.3.5
+`2022-09-28`
+* :sparkles: feat: cascader 组件适配 taro (#318) @ailululu
+* :sparkles: feat: Address 组件Taro适配 (#327) @yangxiaolu1993
+* :sparkles: feat: imagepreview 适配 taro (#326) @eiinu
+* :sparkles: feat: 对话框 Dialog 适配Taro修改 (#323) @yangjinjun3
+* :bug: fix:rate组件+switch组件 demo优化, rate组件lint问题修复 (#321) @libin0824
+* :sparkles: feat: notify组件适配taro (#319) @vickyYe
+* :sparkles: feat: table 组件适配小程序 (#320) @eiinu
+* :bug: fix: AnimatingNumber 组件 Taro 适配完成 (#317) @irisSong
+* :bug: fix: Infiniteloading修复ts报错 (#316) @junjun666
+
 ## v1.3.4
 `2022-09-21`
 * :sparkles: feat: Infiniteloading滚动taro适配优化开发 (#308) @junjun666
