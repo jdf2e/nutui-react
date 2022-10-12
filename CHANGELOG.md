@@ -1,3 +1,10 @@
+# v1.3.6
+`2022-10-12`
+* :sparkles: feat: Swipe 组件适配小程序，Searchbar 增加 onCancel 回调函数 (#311) @Ymm0008
+* :sparkles: chore: Switch demo import 优化 (#332) @oasis-cloud
+* :bug: fix: Signature 和 Drag 组件 Taro 适配完成 (#322) @irisSong
+* :bug: fix: searchbar 组件样式兼容 (#333) @Ymm0008
+
 # v1.3.5
 `2022-09-28`
 * :sparkles: feat: cascader 组件适配 taro (#318) @ailululu
