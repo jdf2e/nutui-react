@@ -53,9 +53,8 @@ const subPackages = [
       'pages/dialog/index',
       'pages/notify/index',
       'pages/switch/index',
-      'pages/pulltorefresh/index',
-      'pages/swipe/index',
       'pages/toast/index',
+      'pages/swipe/index',
     ],
   },
   {

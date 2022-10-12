@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react'
-import Swipe from '@/packages/swipe'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import {
   Button,
@@ -7,6 +6,7 @@ import {
   Toast,
   Dialog,
   InputNumber,
+  Swipe,
 } from '@/packages/nutui.react.taro'
 
 type TSwipeDemo = {

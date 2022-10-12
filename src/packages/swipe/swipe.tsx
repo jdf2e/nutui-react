@@ -104,7 +104,6 @@ export const Swipe = forwardRef<
     () => (props.leftWidth ? props.leftWidth : actionWidth.left),
     [props.leftWidth, actionWidth.left]
   )
-  console.log(props.rightWidth, actionWidth.right)
 
   const rightWidth = useMemo(
     () => (props.rightWidth ? props.rightWidth : actionWidth.right),
