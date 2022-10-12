@@ -65,6 +65,11 @@ const SearchBarDemo = () => {
   const change = (val: string, e: Event) => {
     setValue(val)
   }
+
+  const [show, SetShow] = useState(false)
+  const toastShow = () => {
+    SetShow(true)
+  }
   return (
     <>
       <div className="demo">
@@ -82,7 +87,7 @@ const SearchBarDemo = () => {
         <SearchBar
           label={translated.text}
           actionText={translated.test}
-          onSearch={() => Toast.text('搜索')}
+          onSearch={() => toastShow()}
         />
         <h2>{translated.title5}</h2>
         <SearchBar
@@ -96,6 +101,14 @@ const SearchBarDemo = () => {
         />
         <span className="val-text">value：{value}</span>
       </div>
+      <Toast
+        type="text"
+        visible={show}
+        msg="搜索"
+        onClose={() => {
+          SetShow(false)
+        }}
+      />
     </>
   )
 }

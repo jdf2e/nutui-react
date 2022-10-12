@@ -176,7 +176,7 @@ export default App;
 |onFocus | triggered when focusing | _val: string, event: Event_ |
 |onBlur | triggered when out of focus | _val: string, event: Event_ |
 |onClear | triggered when clicking clear | _event: Event_ |
-|onCancel | Fired when the cancel button is clicked | - |
+|onCancel `v1.3.6`| Fired when the cancel button is clicked | - |
 |onSearch | trigger when confirming search | _val: string, event: Event_ |
 |onClickInput | triggered when clicking the input area | _event: Event_ |
 |onClickLeftinIcon | triggered when clicking the icon on the left side of the input box | _val: string, event: Event_ |
