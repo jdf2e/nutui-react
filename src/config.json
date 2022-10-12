@@ -676,6 +676,7 @@
           "desc": "可以左右滑动来展示操作按钮的组件",
           "sort": 9,
           "show": true,
+          "taro": true,
           "author": "Ymm0008"
         },
         {
