@@ -1,33 +1,9 @@
 const fse = require('fs-extra')
-const targetBaseUrl = `${process.cwd()}/src`
-const inquirer = require('inquirer')
 const path = require('path')
 const fs = require('fs')
 const fsExtra = require('fs-extra')
 const config = require('../../src/config.json')
 const navs = config.nav
-
-const copyFile = (from, to) => {
-  fse
-    .copy(from, to)
-    .then(() => {
-      console.log('taro success!>', to)
-    })
-    .catch((err) => {
-      console.error(err)
-    })
-}
-
-const removeFile = async (url) => {
-  return new Promise((res, rej) => {
-    fse.remove(url, (err) => {
-      if (err) {
-        throw err
-      }
-      res(true)
-    })
-  })
-}
 
 // 在mobile-taro下创建相应的文件夹，并创建index.config.ts、index.tsx
 // 将packages下的demo.taro.tsx 的内容拷贝到 mobile-taro 下的 index.tsx 中。
