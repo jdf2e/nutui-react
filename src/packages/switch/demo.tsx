@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Switch, Cell } from '@/packages/nutui.react'
+import Switch from '@/packages/switch'
+import Cell from '@/packages/cell'
 
 const SwitchDemo = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)

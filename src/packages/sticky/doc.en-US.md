@@ -108,7 +108,7 @@ export default App;
 | top          | Ceiling distance                 | Number | 0               |
 | bottom       | Suction distance                 | Number | 0               |
 | z-index      | Level of adsorption              | Number | 2000            |
-| container    | container ref                    | React.RefObject<HTMLElement> |
+| container    | container ref                    | `React.RefObject<HTMLElement>` |
 
 ### Events
 

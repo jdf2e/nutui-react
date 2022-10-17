@@ -2,6 +2,7 @@ import React from 'react'
 import { Elevator, elevatorContext } from './elevator'
 import { useTranslate } from '../../sites/assets/locale'
 import Icon from '../icon'
+import './demo.scss'
 
 interface T {
   basic: string
@@ -467,46 +468,55 @@ const ElevatorDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <Elevator
-          indexList={dataList}
-          height="260"
-          onClickItem={(key: string, item: any) => onClickItem(key, item)}
-          onClickIndex={(key: string) => onClickIndex(key)}
-        />
+        <div className="demo-component">
+          <Elevator
+            indexList={dataList}
+            height="260"
+            onClickItem={(key: string, item: any) => onClickItem(key, item)}
+            onClickIndex={(key: string) => onClickIndex(key)}
+          />
+        </div>
+
         <h2>{translated.customIndex}</h2>
-        <Elevator
-          indexList={dataList2}
-          height="220"
-          acceptKey={acceptKey}
-          onClickItem={(key: string, item: any) => onClickItem(key, item)}
-          onClickIndex={(key: string) => onClickIndex(key)}
-        />
+        <div className="demo-component">
+          <Elevator
+            indexList={dataList2}
+            height="220"
+            acceptKey={acceptKey}
+            onClickItem={(key: string, item: any) => onClickItem(key, item)}
+            onClickIndex={(key: string) => onClickIndex(key)}
+          />
+        </div>
         <h2>{translated.sticky}</h2>
-        <Elevator
-          indexList={dataList3}
-          isSticky
-          height="220"
-          onClickItem={(key: string, item: any) => onClickItem(key, item)}
-          onClickIndex={(key: string) => onClickIndex(key)}
-        />
+        <div className="demo-component">
+          <Elevator
+            indexList={dataList3}
+            isSticky
+            height="220"
+            onClickItem={(key: string, item: any) => onClickItem(key, item)}
+            onClickIndex={(key: string) => onClickIndex(key)}
+          />
+        </div>
         <h2>{translated.customContent}</h2>
-        <Elevator
-          indexList={dataList}
-          height="260"
-          onClickItem={(key: string, item: any) => onClickItem(key, item)}
-          onClickIndex={(key: string) => onClickIndex(key)}
-        >
-          <elevatorContext.Consumer>
-            {(value) => {
-              return (
-                <>
-                  <Icon name="JD" size="12" />
-                  <span style={{ marginLeft: '15px' }}>{value?.name}</span>
-                </>
-              )
-            }}
-          </elevatorContext.Consumer>
-        </Elevator>
+        <div className="demo-component">
+          <Elevator
+            indexList={dataList}
+            height="260"
+            onClickItem={(key: string, item: any) => onClickItem(key, item)}
+            onClickIndex={(key: string) => onClickIndex(key)}
+          >
+            <elevatorContext.Consumer>
+              {(value) => {
+                return (
+                  <>
+                    <Icon name="JD" size="12" />
+                    <span style={{ marginLeft: '15px' }}>{value?.name}</span>
+                  </>
+                )
+              }}
+            </elevatorContext.Consumer>
+          </Elevator>
+        </div>
       </div>
     </>
   )

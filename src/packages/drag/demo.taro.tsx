@@ -1,4 +1,5 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import { Drag } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 
@@ -45,11 +46,13 @@ const DragDemo = () => {
       limitBoundaries: 'Limit Boundaries',
     },
   })
+  const { screenWidth, windowHeight } = Taro.getSystemInfoSync()
+
   const right = () => {
-    return document.documentElement.clientWidth - 300 - 9
+    return screenWidth - 300 - 9
   }
   const bottom = () => {
-    return document.documentElement.clientHeight - 559
+    return windowHeight - 501
   }
   const btnStyle = {
     borderRadius: '25px',
@@ -61,24 +64,37 @@ const DragDemo = () => {
     background: 'linear-gradient(135deg,#fa2c19 0,#fa6419 100%)',
   }
   return (
-    <div className="demo">
+    <div className="demo" style={{ height: `${windowHeight - 20}px` }}>
       <h2>{translated.basic}</h2>
-      <Drag style={{ top: '120px', left: '8px' }}>
+      <Drag style={{ left: '8px' }}>
         <span style={btnStyle}>{translated.dragBasic}</span>
       </Drag>
       <h2 style={{ top: '30px', position: 'relative' }}>
         {translated.direction}
       </h2>
-      <Drag direction="x" style={{ top: '200px', left: '8px' }}>
+      <Drag
+        direction="x"
+        style={{ top: '140px', left: '8px' }}
+        className="weapp-drag1"
+      >
         <span style={btnStyle}> {translated.directionX}</span>
       </Drag>
-      <Drag direction="y" style={{ top: '200px', right: '50px' }}>
+      <Drag
+        direction="y"
+        style={{ top: '140px', right: '50px' }}
+        className="weapp-drag2"
+      >
         <span style={btnStyle}> {translated.directionY}</span>
       </Drag>
       <h2 style={{ top: '60px', position: 'relative' }}>
         {translated.attract}
       </h2>
-      <Drag direction="x" attract style={{ top: '275px', left: '8px' }}>
+      <Drag
+        direction="x"
+        attract
+        style={{ top: '220px', left: '8px' }}
+        className="weapp-drag3"
+      >
         <span style={btnStyle}>{translated.attractText}</span>
       </Drag>
       <h2 style={{ top: '90px', position: 'relative' }}>
@@ -88,7 +104,7 @@ const DragDemo = () => {
         className="drag-boundary"
         style={{
           position: 'absolute',
-          top: '360px',
+          top: '300px',
           left: '8px',
           width: '300px',
           height: '200px',
@@ -96,8 +112,9 @@ const DragDemo = () => {
         }}
       />
       <Drag
-        boundary={{ top: 361, left: 9, bottom: bottom(), right: right() }}
-        style={{ top: '400px', left: '50px' }}
+        boundary={{ top: 301, left: 9, bottom: bottom(), right: right() }}
+        style={{ top: '360px', left: '50px' }}
+        className="weapp-drag4"
       >
         <span style={btnStyle}>{translated.limitBoundaries}</span>
       </Drag>

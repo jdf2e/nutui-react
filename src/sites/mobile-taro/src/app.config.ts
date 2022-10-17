@@ -49,10 +49,12 @@ const subPackages = [
     root: 'feedback',
     pages: [
       'pages/actionsheet/index',
+      'pages/drag/index',
+      'pages/dialog/index',
       'pages/notify/index',
       'pages/switch/index',
       'pages/toast/index',
-      'pages/dialog/index',
+      'pages/swipe/index',
     ],
   },
   {
@@ -75,7 +77,6 @@ const subPackages = [
       'pages/table/index',
       'pages/progress/index',
       'pages/audio/index',
-      'pages/animatingnumbers/index',
       'pages/imagepreview/index',
     ],
   },
@@ -84,6 +85,7 @@ const subPackages = [
     pages: [
       'pages/address/index',
       'pages/barrage/index',
+      'pages/signature/index',
       'pages/card/index',
       'pages/timeselect/index',
     ],
