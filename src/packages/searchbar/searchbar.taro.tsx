@@ -3,6 +3,7 @@ import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Icon from '@/packages/icon/index.taro'
 import { IComponent, ComponentDefaults } from '@/utils/typings'
+import Taro from '@tarojs/taro'
 
 type TIconDirection = 'in-left' | 'out-left' | 'in-right' | 'out-right'
 
@@ -297,9 +298,14 @@ export const SearchBar: FunctionComponent<
     }
     return null
   }
+
+  const envClass = () => {
+    return Taro.getEnv() === 'WEB' ? 'nut-searchbar-taro' : ''
+  }
+
   return (
     <div
-      className={`${searchbarBem()} ${
+      className={`${searchbarBem()} ${envClass()} ${
         disabled ? searchbarBem('disabled') : ''
       }  ${className || ''}`}
       style={{ ...props.style, background: props.background }}
@@ -308,7 +314,7 @@ export const SearchBar: FunctionComponent<
       {renderLabel()}
       <div className={`${searchbarBem('content')}`}>
         {renderLeftinIcon()}
-        {renderField()}
+        <div className="nut-searchbar__input-box">{renderField()}</div>
         {renderRightinIcon()}
         {clearable && value && handleClear()}
       </div>
