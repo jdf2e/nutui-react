@@ -3,7 +3,7 @@
 
 .nut-tabs {
   display: flex;
-  overflow: hidden;
+  // overflow: hidden;
 
   &.horizontal {
     flex-direction: column;
@@ -186,6 +186,9 @@
   }
 
   &__content {
+    &__wrap {
+      overflow: hidden;
+    }
     display: flex;
     box-sizing: border-box;
   }

@@ -127,6 +127,44 @@ export default App;
 
 :::
 
+### Css 粘性布局
+
+通过设置tab的style  tabStyle={{ position: 'sticky', top: '28px', zIndex: 10 }} ，来实现Css的粘性布局，注意：外层不能用 overflow 的设置。
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs, TabPane } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab2value, setTab2value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab2value} autoHeight tabStyle={{ position: 'sticky', top: '28px', zIndex: 10 }} onChange={({ paneKey }) => {
+        setTab2value(paneKey)
+      }}>
+        <TabPane title="Tab 1" pane-key="0">
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+        </TabPane>
+        <TabPane title="Tab 2" pane-key="1"> Tab 2 </TabPane>
+        <TabPane title="Tab 3" pane-key="2"> Tab 3 </TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
 ### 数据异步渲染 3s
 
 :::demo
