@@ -367,11 +367,11 @@ export default App;
 
 ### Tabpane Props
 
-| 参数     | 说明                    | 类型    | 默认值           |
-|----------|-------------------------|---------|------------------|
-| title    | 标题                    | string  |                  |
-| paneKey  | 标签 Key , 匹配的标识符 | string  | 默认索引0,1,2... |
-| disabled | 是否禁用标签            | boolean | false            |
+| 参数                | 说明              | 类型    | 默认值           |
+|-------------------|-----------------|---------|------------------|
+| title             | 标题              | string  |                  |
+| paneKey           | 标签 Key , 匹配的标识符 | string  | 默认索引0,1,2... |
+| disabled          | 是否禁用标签          | boolean | false            |
 
 ### Tabs Events
 
