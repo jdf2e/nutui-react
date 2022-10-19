@@ -3,6 +3,7 @@ import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Icon from '@/packages/icon/index.taro'
 import { IComponent, ComponentDefaults } from '@/utils/typings'
+import Taro from '@tarojs/taro'
 
 type TIconDirection = 'in-left' | 'out-left' | 'in-right' | 'out-right'
 
@@ -53,6 +54,8 @@ export interface SearchBarProps extends IComponent {
   onBlur?: (value: string, event: Event) => void
   /** 点击清除按钮后触发	 */
   onClear?: (event: Event) => void
+  /** 点击取消按钮后触发	 */
+  onCancel?: () => void
   /** 点击输入区域时触发	 */
   onClickInput?: (event: Event) => void
   /** 点击输入框内左侧图标时触发	 */
@@ -111,6 +114,7 @@ export const SearchBar: FunctionComponent<
     onFocus,
     onBlur,
     onClear,
+    onCancel,
     onSearch,
     onClickInput,
     onClickLeftinIcon,
@@ -166,6 +170,7 @@ export const SearchBar: FunctionComponent<
         disabled={disabled}
         readOnly={readOnly}
         maxLength={maxLength}
+        onKeyPress={onKeypress}
         onChange={(e: any) => change(e)}
         onFocus={(e: any) => focus(e)}
         onBlur={(e: any) => blur(e)}
@@ -266,7 +271,7 @@ export const SearchBar: FunctionComponent<
   const renderRightLabel = () => {
     if (actionText) {
       return (
-        <div className={searchbarBem('action-text')} onClick={search}>
+        <div className={searchbarBem('action-text')} onClick={cancel}>
           {actionText}
         </div>
       )
@@ -274,8 +279,18 @@ export const SearchBar: FunctionComponent<
     return null
   }
 
-  const search = () => {
-    onSearch && onSearch(value as string)
+  const onKeypress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      const event = e.nativeEvent
+      if (typeof event.cancelable !== 'boolean' || event.cancelable) {
+        event.preventDefault()
+      }
+      onSearch && onSearch(value as string)
+    }
+  }
+
+  const cancel = () => {
+    onCancel && onCancel()
   }
   const renderLabel = () => {
     if (label) {
@@ -283,9 +298,14 @@ export const SearchBar: FunctionComponent<
     }
     return null
   }
+
+  const envClass = () => {
+    return Taro.getEnv() === 'WEB' ? 'nut-searchbar-taro' : ''
+  }
+
   return (
     <div
-      className={`${searchbarBem()} ${
+      className={`${searchbarBem()} ${envClass()} ${
         disabled ? searchbarBem('disabled') : ''
       }  ${className || ''}`}
       style={{ ...props.style, background: props.background }}
@@ -294,7 +314,7 @@ export const SearchBar: FunctionComponent<
       {renderLabel()}
       <div className={`${searchbarBem('content')}`}>
         {renderLeftinIcon()}
-        {renderField()}
+        <div className="nut-searchbar__input-box">{renderField()}</div>
         {renderRightinIcon()}
         {clearable && value && handleClear()}
       </div>

@@ -99,7 +99,7 @@ const MenuDemo = () => {
   return (
     <>
       <style>{style}</style>
-      <div className="demo full">
+      <div className="demo demo-full">
         <h2>{translated.basic}</h2>
         <Menu closeOnClickOverlay={false} lockScroll={false}>
           <MenuItem

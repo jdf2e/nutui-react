@@ -1,3 +1,29 @@
+# v1.3.7
+`2022-10-19`
+* :sparkles: feat: 优化 menu 组件的弹出动画效果 (#341) @oasis-cloud
+* :sparkles: chore: add issue template (#334) @oasis-cloud
+* :bug: fix: feat: Audio 组件 Demo 变量名修改 (#340) @libin0824
+* :bug: fix: Collapse 改变变量的名字 (#336) @zhenyulei
+
+# v1.3.6
+`2022-10-12`
+* :sparkles: feat: Swipe 组件适配小程序，Searchbar 增加 onCancel 回调函数 (#311) @Ymm0008
+* :sparkles: chore: Switch demo import 优化 (#332) @oasis-cloud
+* :bug: fix: Signature 和 Drag 组件 Taro 适配完成 (#322) @irisSong
+* :bug: fix: searchbar 组件样式兼容 (#333) @Ymm0008
+
+# v1.3.5
+`2022-09-28`
+* :sparkles: feat: cascader 组件适配 taro (#318) @ailululu
+* :sparkles: feat: Address 组件Taro适配 (#327) @yangxiaolu1993
+* :sparkles: feat: imagepreview 适配 taro (#326) @eiinu
+* :sparkles: feat: 对话框 Dialog 适配Taro修改 (#323) @yangjinjun3
+* :bug: fix:rate组件+switch组件 demo优化, rate组件lint问题修复 (#321) @libin0824
+* :sparkles: feat: notify组件适配taro (#319) @vickyYe
+* :sparkles: feat: table 组件适配小程序 (#320) @eiinu
+* :bug: fix: AnimatingNumber 组件 Taro 适配完成 (#317) @irisSong
+* :bug: fix: Infiniteloading修复ts报错 (#316) @junjun666
+
 ## v1.3.4
 `2022-09-21`
 * :sparkles: feat: Infiniteloading滚动taro适配优化开发 (#308) @junjun666

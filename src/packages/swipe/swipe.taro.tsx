@@ -4,13 +4,12 @@ import React, {
   useState,
   TouchEvent,
   useMemo,
-  useCallback,
   useImperativeHandle,
   useEffect,
 } from 'react'
 import bem from '@/utils/bem'
 import { useTouch } from '@/utils/useTouch'
-import { getRect } from '@/utils/useClientRect'
+import { getRectByTaro } from '@/utils/useClientRect'
 
 export type SwipeSide = 'left' | 'right'
 export type SwipePosition = SwipeSide | 'cell' | 'outside'
@@ -110,7 +109,16 @@ export const Swipe = forwardRef<
     [props.rightWidth, actionWidth.right]
   )
 
-  const onTouchStart = (event: Event) => {
+  const onTouchStart = async (event: Event) => {
+    if (leftWrapper.current) {
+      const leftRect = await getRectByTaro(leftWrapper.current)
+      setActionWidth((v) => ({ ...v, left: leftRect.width }))
+    }
+    if (rightWrapper.current) {
+      const rightRect = await getRectByTaro(rightWrapper.current)
+      setActionWidth((v) => ({ ...v, right: rightRect.width }))
+    }
+
     if (!props.disabled) {
       startOffset.current = state.offset
       touch.start(event)
@@ -131,11 +139,10 @@ export const Swipe = forwardRef<
       if (isEdge) {
         preventDefault(event, true)
       }
-
       newState.offset = rangeCalculation(
         touch.deltaX + startOffset.current,
-        -rightWidth,
-        leftWidth
+        -rightWidth || 0,
+        leftWidth || 0
       )
 
       setState(newState)
@@ -146,7 +153,6 @@ export const Swipe = forwardRef<
     if (state.dragging) {
       setState((v) => ({ ...v, dragging: false }))
       toggle(state.offset > 0 ? 'left' : 'right')
-
       setTimeout(() => {
         lockClick.current = false
       }, 0)
@@ -192,34 +198,36 @@ export const Swipe = forwardRef<
     return Math.min(Math.max(Number(num), Number(min)), Number(max))
   }
 
-  const getNodeWidth = (node: Element) => {
-    if (node) {
-      const ele = getRect(node)
-      return ele.width
-    }
-    return 0
-  }
-  const leftRef = useCallback(
-    (node: Element | null) => {
-      if (node !== null) {
-        setActionWidth((v) => ({ ...v, left: getNodeWidth(node) }))
-      }
-    },
-    [props.leftAction]
-  )
-  const rightRef = useCallback(
-    (node: Element | null) => {
-      if (node !== null) {
-        setActionWidth((v) => ({ ...v, right: getNodeWidth(node) }))
-      }
-    },
-    [props.rightAction]
-  )
-  const renderActionContent = (side: SwipeSide, measuredRef: any) => {
+  // const getNodeWidth = (node: Element) => {
+  //   if (node) {
+  //     const ele: any = getRectByTaro(node)
+  //     return ele.width
+  //   }
+  //   return 0
+  // }
+  // const leftRef = useCallback(
+  //   (node: Element | null) => {
+  //     if (node !== null) {
+  //       setActionWidth((v) => ({ ...v, left: getNodeWidth(node) }))
+  //     }
+  //   },
+  //   [props.leftAction]
+  // )
+  // const rightRef = useCallback(
+  //   (node: Element | null) => {
+  //     if (node !== null) {
+  //       setActionWidth((v) => ({ ...v, right: getNodeWidth(node) }))
+  //     }
+  //   },
+  //   [props.rightAction]
+  // )
+  const leftWrapper = useRef(null)
+  const rightWrapper = useRef(null)
+  const renderActionContent = (side: SwipeSide) => {
     if (props[`${side}Action`]) {
       return (
         <div
-          ref={measuredRef}
+          ref={side === 'left' ? leftWrapper : rightWrapper}
           className={`${swipeBem(side)}`}
           onClick={(e: any) => handleOperate(e, side)}
         >
@@ -274,9 +282,9 @@ export const Swipe = forwardRef<
       style={style}
     >
       <div className={`${swipeBem('wrapper')}`} style={wrapperStyle}>
-        {renderActionContent('left', leftRef)}
+        {renderActionContent('left')}
         {children}
-        {renderActionContent('right', rightRef)}
+        {renderActionContent('right')}
       </div>
     </div>
   )
