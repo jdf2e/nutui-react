@@ -1,3 +1,10 @@
+# v1.3.7
+`2022-10-19`
+* :sparkles: feat: 优化 menu 组件的弹出动画效果 (#341) @oasis-cloud
+* :sparkles: chore: add issue template (#334) @oasis-cloud
+* :bug: fix: feat: Audio 组件 Demo 变量名修改 (#340) @libin0824
+* :bug: fix: Collapse 改变变量的名字 (#336) @zhenyulei
+
 # v1.3.6
 `2022-10-12`
 * :sparkles: feat: Swipe 组件适配小程序，Searchbar 增加 onCancel 回调函数 (#311) @Ymm0008
