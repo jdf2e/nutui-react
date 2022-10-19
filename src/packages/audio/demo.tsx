@@ -7,12 +7,12 @@ import Cell from '../cell'
 const AudioDemo = () => {
   const [duration, setDuration] = useState(0)
   const [voiceIcon, setVoiceIcon] = useState('play-circle-fill')
-  const video = document.querySelectorAll('audio')[2]
-  if (video) {
-    video.addEventListener('playing', (e) => {
+  const audioElement = document.querySelectorAll('audio')[2]
+  if (audioElement) {
+    audioElement.addEventListener('playing', (e) => {
       setVoiceIcon('poweroff-circle-fill')
     })
-    video.addEventListener('pause', (e) => {
+    audioElement.addEventListener('pause', (e) => {
       setVoiceIcon('play-circle-fill')
     })
   }
