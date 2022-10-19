@@ -98,7 +98,10 @@ const TabsDemo = () => {
             setTab1value(paneKey)
           }}
         >
-          <TabPane title="Tab 1"> Tab 1 </TabPane>
+          <TabPane title="Tab 1" className="custom-class">
+            {' '}
+            Tab 1{' '}
+          </TabPane>
           <TabPane title="Tab 2"> Tab 2 </TabPane>
           <TabPane title="Tab 3"> Tab 3 </TabPane>
         </Tabs>
