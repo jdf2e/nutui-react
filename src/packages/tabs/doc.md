@@ -404,7 +404,7 @@ export default App;
 | titleNode      | 自定义导航区域                                 | () => JSX.Element[] | 0          |
 | size           | 标签栏字体尺寸大小 可选值 large normal small | string        | normal     |
 | autoHeight`v1.2.1` | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean        | false     |
-| tabStyle`v1.x.x` | 标签栏样式 | React.CSSProperties        | {}     |
+| tabStyle`v1.3.8` | 标签栏样式 | React.CSSProperties        | {}     |
 
 ## Tabs Children
 
