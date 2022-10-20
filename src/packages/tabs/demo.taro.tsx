@@ -140,6 +140,40 @@ const TabsDemo = () => {
             Tab 3{' '}
           </TabPane>
         </Tabs>
+        <h2>{translated.title10}</h2>
+        <Tabs
+          value={tab2value}
+          tabStyle={{ position: 'sticky', top: '0px', zIndex: 1 }}
+          onChange={({ paneKey }) => {
+            setTab2value(paneKey)
+          }}
+        >
+          <TabPane title="Tab 1" pane-key="0">
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+          </TabPane>
+          <TabPane title="Tab 2" pane-key="1">
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+          </TabPane>
+          <TabPane title="Tab 3" pane-key="2">
+            {' '}
+            Tab 3{' '}
+          </TabPane>
+        </Tabs>
         <h2>{translated.title9}</h2>
         <Tabs
           value={tab2value}
@@ -149,35 +183,6 @@ const TabsDemo = () => {
           }}
         >
           <TabPane title="Tab 1" pane-key="0">
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-          </TabPane>
-          <TabPane title="Tab 2" pane-key="1">
-            {' '}
-            Tab 2{' '}
-          </TabPane>
-          <TabPane title="Tab 3" pane-key="2">
-            {' '}
-            Tab 3{' '}
-          </TabPane>
-        </Tabs>
-        <h2>{translated.title10}</h2>
-        <Tabs
-          value={tab2value}
-          autoHeight
-          tabStyle={{ position: 'sticky', top: '28px', zIndex: 10 }}
-          onChange={({ paneKey }) => {
-            setTab2value(paneKey)
-          }}
-        >
-          <TabPane title="Tab 1" pane-key="0">
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-            <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
