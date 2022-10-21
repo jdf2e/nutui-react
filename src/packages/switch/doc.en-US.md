@@ -161,4 +161,4 @@ export default App;
 
 | Incident name | illustrate           | Callback parameter       |
 |--------|----------------|-------------------------------|
-| onChange | Trigger when switching switches | (value: boolean,event: Event) |
+| onChange `v1.3.8` | Trigger when switching switches | (value: boolean,event: Event) |
