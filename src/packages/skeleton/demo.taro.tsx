@@ -104,7 +104,7 @@ const SkeletonDemo = () => {
 
         <h2>{translated['07d62d5c']}</h2>
         <div className="content">
-          <Switch change={(value, event) => changeStatus(value, event)} />
+          <Switch onChange={(value, event) => changeStatus(value, event)} />
           <Skeleton
             width="250px"
             height="15px"
