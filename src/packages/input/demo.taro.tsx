@@ -102,7 +102,7 @@ const InputDemo = () => {
       placeholder5: 'Input Align',
     },
   })
-  const [value1, UpdateValue1] = useState('')
+  const [value, UpdateValue] = useState('')
   const [state, setState] = useState({
     val1: '',
     text: '',
@@ -128,7 +128,7 @@ const InputDemo = () => {
     clear: '',
   })
 
-  const change = (value: string | number) => {
+  const change = (value: string | number, event: Event) => {
     console.log('change: ', value)
   }
   const focus = (value: string | number, event: Event) => {
@@ -161,13 +161,17 @@ const InputDemo = () => {
         <Input
           label={translated.text}
           placeholder={translated.text}
-          defaultValue={value1}
+          defaultValue={value}
+          change={(val) => {
+            console.log('change value:', val)
+            UpdateValue(val)
+          }}
         />
         <h2>{translated.title1}</h2>
         <Input
           label={translated.text}
           placeholder={translated.text}
-          defaultValue={value1}
+          defaultValue={state.val1}
         />
         <Input
           label={translated.password}
