@@ -25,7 +25,7 @@ test('should emit click event', async () => {
         data-testid="sideNavBarItem-click"
         title="一级内容1"
         ikey="1-01"
-        click={click}
+        onClick={click}
       />
     </>
   )

@@ -15,7 +15,7 @@ export type SubSideNavBarProps = {
   ikey: string | number
   open?: boolean
   children?: React.ReactNode
-  titleClick?: ({
+  onClick?: ({
     title,
     ikey,
     isShow,
@@ -29,7 +29,7 @@ const defaultProps = {
   open: true,
 } as SubSideNavBarProps
 export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
-  const { title, ikey, children, titleClick, open, ...rest } = {
+  const { title, ikey, children, onClick, open, ...rest } = {
     ...defaultProps,
     ...props,
   }
@@ -77,7 +77,7 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
     handleClick(e)
     const currentClass = e.currentTarget.className
     const isShow = currentClass.includes('nutShow')
-    titleClick && titleClick({ title, ikey, isShow })
+    onClick && onClick({ title, ikey, isShow })
   }
   useEffect(() => {
     const childNodes = listRef.current?.children as HTMLCollection
