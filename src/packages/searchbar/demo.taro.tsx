@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { SearchBar, Icon } from '@/packages/nutui.react.taro'
+import { SearchBar, Icon, Toast } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 
 type TSearchDemo = {
@@ -65,6 +65,11 @@ const SearchBarDemo = () => {
   const change = (val: string, e: Event) => {
     setValue(val)
   }
+
+  const [show, SetShow] = useState(false)
+  const toastShow = () => {
+    SetShow(true)
+  }
   return (
     <>
       <div className="demo">
@@ -79,7 +84,11 @@ const SearchBarDemo = () => {
           align="right"
         />
         <h2>{translated.title4}</h2>
-        <SearchBar label={translated.text} actionText={translated.test} />
+        <SearchBar
+          label={translated.text}
+          actionText={translated.test}
+          onSearch={() => toastShow()}
+        />
         <h2>{translated.title5}</h2>
         <SearchBar
           leftoutIcon={<Icon name="heart-fill1" size="14" />}
@@ -92,6 +101,14 @@ const SearchBarDemo = () => {
         />
         <span className="val-text">value：{value}</span>
       </div>
+      <Toast
+        type="text"
+        visible={show}
+        msg="搜索"
+        onClose={() => {
+          SetShow(false)
+        }}
+      />
     </>
   )
 }

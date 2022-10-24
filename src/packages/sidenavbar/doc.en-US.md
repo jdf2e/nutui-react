@@ -157,18 +157,18 @@ export default App;
 ## Events
 ### 1、SideNavBar Events
 
-| Event                | Description            | Arguments     |
-|----------------------|------------------------|--------------|
-| handleClose          | Click mask trigger     | -           |
+| Event | Description            | Arguments     |
+|-------|------------------------|--------------|
+| onClose     | Click mask trigger     | -           |
 
 ### 2、SubSideNavBar Events
 
-| Event                | Description                                | Arguments    |
-|----------------------|--------------------------------------------|--------------|
-| titleClick           | Navigation Click,return{ title,ikey,isShow}| -           |
+| Event | Description                                | Arguments    |
+|-------|--------------------------------------------|--------------|
+| onClick     | Navigation Click,return{ title,ikey,isShow}| -           |
 
 ### 3、SideNavBarItem Events
 
-| Event                | Description                                | Arguments    |
-|----------------------|--------------------------------------------|--------------|
-| click                | Navigation Click,return{ title,ikey}       | -           |
+| Event  | Description                                | Arguments    |
+|--------|--------------------------------------------|--------------|
+| onClick | Navigation Click,return{ title,ikey}       | -           |

@@ -22,7 +22,9 @@ const App = () => {
     const [value, UpdateValue] = useState('')
   return (
     <>
-      <Input label="Text" defaultValue={value} placeholder="Text" />
+      <Input label="Text" defaultValue={value} placeholder="Text" change={(val) => {
+            UpdateValue(val)
+          }}/>
     </>
   );
 };
@@ -423,7 +425,7 @@ export default App;
 
 | Attribute         | Description                                   | Type           | Default  |
 | ------------ | -------------------------------------- | -------------- | ------- |
-| defaultValue | Input value, two-way binding                   | String         | -       |
+| defaultValue | Input value                   | String         | -       |
 | type         | Input type, support all native types and `textarea` `number` `digit` type    | String         | `text`  |
 | placeholder  | Placeholder when the input box is empty         | String         | -       |
 | label        | Left text                               | String         | -       |

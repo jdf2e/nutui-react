@@ -234,5 +234,5 @@ export default App;
 
 | Event | Description           | Callback parameters     |
 |--------|----------------|--------------|
-| click  | Triggered when the button is clicked | event: MouseEvent |
+| onClick`v1.3.8`  | Triggered when the button is clicked | event: MouseEvent |
 
