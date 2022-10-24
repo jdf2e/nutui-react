@@ -188,6 +188,6 @@ export default App;
 
 ### Event
 
-| Event   | Description               | callback parameter           |
-|------------|--------------------|--------------------|
-| tabSwitch | Trigger an event when switching tabs | Clicked data and index value |
+| Event               | Description               | callback parameter           |
+|---------------------|--------------------|--------------------|
+| onSwitch`v1.3.8`    | Trigger an event when switching tabs | Clicked data and index value |
