@@ -3,6 +3,9 @@
 }
 
 .demo {
+  &.no-overflow {
+    overflow: unset;
+  }
   height: 100%;
   background: #f7f8fa;
   overflow-x: hidden;
