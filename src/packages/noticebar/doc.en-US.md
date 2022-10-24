@@ -134,7 +134,7 @@ const App = () => {
             list={horseLamp1}
             speed={10}
             standTime={1000}
-            click={(item: any) => {
+            onClick={(item: any) => {
               go(item)
             }}
             closeMode
@@ -278,6 +278,6 @@ export default App
 
 | Attribute  | Description                             | Arguments     |
 | ---------- | --------------------------------------- | ------------ |
-| click      | Emitted when NoticeBar is clicked       | event: Event |
-| close      | Emitted when NoticeBar is closed        | event: Event |
+| onClick `v1.3.8`     | Emitted when NoticeBar is clicked       | event: Event |
+| onClose `v1.3.8`     | Emitted when NoticeBar is closed        | event: Event |
 

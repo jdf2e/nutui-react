@@ -35,6 +35,8 @@ export interface NoticeBarProps extends IComponent {
   rightIcon?: HTMLElement | any
   close?: (list?: any) => void
   click?: (item?: any) => void
+  onClose?: (list?: any) => void
+  onClick?: (item?: any) => void
 }
 
 const defaultProps = {
@@ -56,7 +58,8 @@ const defaultProps = {
   speed: 50,
 } as NoticeBarProps
 export const NoticeBar: FunctionComponent<
-  Partial<NoticeBarProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<NoticeBarProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const {
     children,
@@ -79,6 +82,8 @@ export const NoticeBar: FunctionComponent<
     rightIcon,
     close,
     click,
+    onClose,
+    onClick,
     iconClassPrefix,
     iconFontClassName,
   } = {
@@ -171,12 +176,14 @@ export const NoticeBar: FunctionComponent<
   }
   const handleClick = (event: MouseEvent) => {
     click && click(event)
+    onClick && onClick(event)
   }
 
   const onClickIcon = (event: MouseEvent) => {
     event.stopPropagation()
     SetShowNoticeBar(!closeMode)
     close && close(event)
+    onClose && onClose(event)
   }
 
   const onAnimationEnd = () => {
@@ -235,10 +242,12 @@ export const NoticeBar: FunctionComponent<
    */
   const go = (item: any) => {
     click && click(item)
+    onClick && onClick(item)
   }
 
   const handleClickIcon = () => {
     close && close(scrollList[0])
+    onClose && onClose(scrollList[0])
   }
 
   const iconShow = () => {
