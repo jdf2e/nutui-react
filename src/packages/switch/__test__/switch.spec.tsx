@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Switch } from '../switch'
 
-test('activeColor && inactiveColor &&  activeText && checked && change && inactiveText && isAsync && className && style test', () => {
+test('activeColor && inactiveColor &&  activeText && checked && onChange && inactiveText && isAsync && className && style test', () => {
   const state: any = {
     activeColor: 'rgb(124, 88, 33)',
     inactiveColor: 'rgb(250, 104, 93)',
@@ -31,7 +31,7 @@ test('activeColor && inactiveColor &&  activeText && checked && change && inacti
       inactiveColor={inactiveColor}
       activeText={activeText}
       checked={false}
-      change={testFn}
+      onChange={testFn}
       inactiveText={inactiveText}
     />
   )

@@ -440,6 +440,7 @@ export default App;
 | ------------- | --------------------------------------------- | -------- | ------ |
 | value         | Selected value                                | Array    | -      |
 | options       | Cascade data                                  | Array    | -      |
+| poppable      | Whether to display the pop-up window status   | Boolean  | true   |
 | visible       | Cascading show hidden states                  | Boolean  | false  |
 | lazy          | Whether to enable dynamic loading             | Boolean  | false  |
 | lazyLoad      | Dynamic loading callback, which takes effect when dynamic loading is enabled   | Function | -      |

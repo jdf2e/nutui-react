@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Icon from '../icon'
 import { SearchBar } from './searchbar'
+import Toast from '../toast'
 import { useTranslate } from '../../sites/assets/locale'
 
 type TSearchDemo = {
@@ -80,7 +81,11 @@ const SearchBarDemo = () => {
           align="right"
         />
         <h2>{translated.title4}</h2>
-        <SearchBar label={translated.text} actionText={translated.test} />
+        <SearchBar
+          label={translated.text}
+          actionText={translated.test}
+          onSearch={() => Toast.text('搜索')}
+        />
         <h2>{translated.title5}</h2>
         <SearchBar
           leftoutIcon={<Icon name="heart-fill1" size="14" />}

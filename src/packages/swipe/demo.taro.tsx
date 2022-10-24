@@ -1,11 +1,13 @@
 import React, { useRef, useState } from 'react'
-import { SwipeInstance, Swipe } from './swipe.taro'
-import { useTranslate } from '../../sites/assets/locale'
-import Cell from '@/packages/cell/index.taro'
-import Button from '@/packages/button/index.taro'
-import Toast from '@/packages/toast/index.taro'
-import Dialog from '@/packages/dialog/index.taro'
-import InputNumber from '@/packages/inputnumber/index.taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import {
+  Button,
+  Cell,
+  Toast,
+  Dialog,
+  InputNumber,
+  Swipe,
+} from '@/packages/nutui.react.taro'
 
 type TSwipeDemo = {
   title1: string
@@ -128,7 +130,7 @@ const SwipeDemo = () => {
     SetShow(true)
   }
 
-  const refDom = useRef<SwipeInstance>(null)
+  const refDom = useRef<any>(null)
   const handleChange = () => {
     // Toast.text(translated.click)
     toastShow(translated.click)
@@ -192,7 +194,6 @@ const SwipeDemo = () => {
           }
           onActionClick={handleChange}
           onOpen={({ name, position }) => {
-            console.log(name, position)
             // Toast.text(translated.open)
             toastShow(translated.open)
           }}

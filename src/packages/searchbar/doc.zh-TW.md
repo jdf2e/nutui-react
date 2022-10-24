@@ -176,6 +176,7 @@ export default App;
 | onFocus |聚焦時觸發| _val: string，event: Event_ |
 | onBlur |失焦時觸發| _val: string，event: Event_ |
 | onClear |點擊清空時觸發| _event: Event_ |
+| onCancel `v1.3.6`| 點擊取消按鈕時觸發 | - |
 | onSearch |確定蒐索時觸發| _val: string，event: Event_ |
 | onClickInput |點擊輸入區域時觸發| _event: Event_ |
 | onClickLeftinIcon |點擊輸入框`內左側`圖標時觸發| _val: string，event: Event_ |

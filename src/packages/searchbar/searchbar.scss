@@ -51,13 +51,19 @@
     right: 5px;
     top: 53%;
   }
-  &__input {
-    box-sizing: border-box;
+  .nut-searchbar__input-box {
     display: flex;
     align-items: center;
+    flex: 1;
+  }
+  &__input {
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+
     width: $searchbar-input-width;
     height: $searchbar-input-height;
-    flex: 1;
+    width: 100%;
     padding: $searchbar-input-padding;
     border-radius: 0;
     font-size: $font-size-small;
@@ -103,5 +109,16 @@
   }
   &__rightout-icon {
     margin-left: 10px;
+  }
+}
+.nut-searchbar-taro {
+  .nut-searchbar__leftin-icon {
+    top: 41%;
+  }
+  .nut-searchbar__rightin-icon {
+    top: 41%;
+  }
+  .nut-searchbar__clear {
+    top: 33%;
   }
 }
