@@ -234,5 +234,5 @@ export default App;
 
 | 事件名稱 | 說明 | 回調參數     |
 |--------|----------------|--------------|
-| click  | 点击按钮时触发 | event: MouseEvent |
+| onClick`v1.3.8`  | 点击按钮时触发 | event: MouseEvent |
 
