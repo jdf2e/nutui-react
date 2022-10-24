@@ -188,6 +188,7 @@ const CollapseDemo = () => {
       <div className="demo">
         <h2>{translated.header1}</h2>
         <Collapse
+          className="test"
           activeName={['1', '2']}
           icon="arrow-down"
           iconSize="16"

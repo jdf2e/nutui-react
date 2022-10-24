@@ -69,9 +69,9 @@ const TimeSelectDemo = () => {
           currentKey={currentKey}
           dates={dates}
           times={times}
-          select={handleSelect}
-          pannelChange={handlePannelChange}
-          timeChange={handleTimeChange}
+          onSelect={handleSelect}
+          onPannelChange={handlePannelChange}
+          onTimeChange={handleTimeChange}
         />
       </div>
     </>
@@ -113,8 +113,8 @@ export default TimeSelectDemo
 
 ### TimeSelect Event
 
-| Event | Description                                                                                                       | required | callback args                         |
-|--------------|-------------------------------------------------------------------------------------------------------------------|----------|---------------------------------------|
-| select       | Callback after closing the mask                                                                                   | true     | `list: []`                            |
-| pannelChange | Click the date callback in the left column, and internally update the data through setCurrentKey, setCurrentTime  | false    | `pannelKey: string 、number, list: []` |
-| timeChange   | Click the time callback, and internally update the data through setCurrentKey, setCurrentTime                                                                     | false                | `time: string, list: []`              |
+| Event                  | Description                                                                                                       | required | callback args                         |
+|------------------------|-------------------------------------------------------------------------------------------------------------------|----------|---------------------------------------|
+| onSelect`v1.3.8`       | Callback after closing the mask                                                                                   | true     | `list: []`                            |
+| onPannelChange`v1.3.8` | Click the date callback in the left column, and internally update the data through setCurrentKey, setCurrentTime  | false    | `pannelKey: string 、number, list: []` |
+| onTimeChange`v1.3.8`         | Click the time callback, and internally update the data through setCurrentKey, setCurrentTime                                                                     | false                | `time: string, list: []`              |

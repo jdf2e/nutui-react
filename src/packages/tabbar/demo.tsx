@@ -68,7 +68,7 @@ const TabbarDemo = () => {
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
         <Tabbar
-          tabSwitch={(child, idx) => {
+          onSwitch={(child, idx) => {
             console.log(idx)
           }}
         >

@@ -22,7 +22,9 @@ const App = () => {
     const [value, UpdateValue] = useState('')
   return (
     <>
-      <Input label="Text" defaultValue={value} placeholder="Text" />
+      <Input label="Text" defaultValue={value} placeholder="Text" change={(val) => {
+            UpdateValue(val)
+          }}/>
     </>
   );
 };

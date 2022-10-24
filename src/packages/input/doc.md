@@ -21,10 +21,12 @@ import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
-    const [value1, UpdateValue1] = useState('')
+    const [value, UpdateValue] = useState('')
   return (
     <>
-      <Input label="文本" defaultValue="{value1}"  placeholder="文本" />
+      <Input label="文本" defaultValue={value}  placeholder="文本" change={(val) => {
+            UpdateValue(val)
+          }}/>
     </>
   );
 };
@@ -365,8 +367,8 @@ const App = () => {
     const  [state, setState] = useState({
         event: '',
     })
-    const change = (value: string | number) => {
-        console.log('change: ', value)
+    const change = (value: string | number, event: Event) => {
+        console.log('change: ', value, event)
     }
     const focus = (value: string | number, event: Event) => {
         console.log('focus:', value, event)
