@@ -67,7 +67,7 @@ const ListDemo = () => {
     )
   }
   const ItemVariableDemo = React.memo(ItemVariable)
-  const handleScroll = () => {
+  const onScroll = () => {
     if (pageNo > 50 || isLoading) return
     setIsLoading(true)
     setTimeout(() => {
@@ -87,7 +87,7 @@ const ListDemo = () => {
             className="heigh1"
             sourceData={sourceData}
             ItemRender={ItemRenderMemo}
-            handleScroll={handleScroll}
+            onScroll={onScroll}
           />
         )
       case '2':
@@ -98,7 +98,7 @@ const ListDemo = () => {
             itemSize={128}
             containerSize={500}
             itemEqualSize={false}
-            handleScroll={handleScroll}
+            onScroll={onScroll}
           />
         )
       case '3':
@@ -108,7 +108,7 @@ const ListDemo = () => {
             ItemRender={ItemRenderMemo}
             itemSize={124}
             containerSize={341}
-            handleScroll={handleScroll}
+            onScroll={onScroll}
             horizontal
           />
         )
@@ -120,7 +120,7 @@ const ListDemo = () => {
             ItemRender={ItemVariableDemo}
             horizontal
             itemEqualSize={false}
-            handleScroll={handleScroll}
+            onScroll={onScroll}
           />
         )
       default:
@@ -130,7 +130,7 @@ const ListDemo = () => {
             className="heigh1"
             sourceData={sourceData}
             ItemRender={ItemRenderMemo}
-            handleScroll={handleScroll}
+            onScroll={onScroll}
           />
         )
     }
