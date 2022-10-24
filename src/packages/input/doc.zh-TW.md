@@ -21,10 +21,12 @@ import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
-    const [value1, UpdateValue1] = useState('')
+    const [value, UpdateValue] = useState('')
   return (
     <>
-      <Input label="文本" defaultValue="{value1}"  placeholder="文本" />
+      <Input label="文本" defaultValue={value}  placeholder="文本" change={(val) => {
+            UpdateValue(val)
+          }}/>
     </>
   );
 };
@@ -365,8 +367,8 @@ const App = () => {
     const  [state, setState] = useState({
         event: '',
     })
-    const change = (value: string | number) => {
-        console.log('change: ', value)
+    const change = (value: string | number, event: Event) => {
+        console.log('change: ', value, event)
     }
     const focus = (value: string | number, event: Event) => {
         console.log('focus:', value, event)
@@ -417,7 +419,7 @@ export default App;
 
 | 参数         | 说明                                   | 类型           | 默认值  |
 | ------------ | -------------------------------------- | -------------- | ------- |
-| defaultValue | 初始默认值，双向绑定                   | String         | -       |
+| defaultValue | 初始默认值                   | String         | -       |
 | type         | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `textarea` `number` `digit`      | String         | `text`  |
 | placeholder  | 输入框为空时占位符                           | String         | -       |
 | label        | 左侧文本                               | String         | -       |
