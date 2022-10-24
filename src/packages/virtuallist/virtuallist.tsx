@@ -18,9 +18,9 @@ import {
 export type VirtualListProps = IVirtualListProps
 const defaultProps = {} as VirtualListProps
 
-export const VirtualList: FunctionComponent<
-  VirtualListProps & React.HTMLAttributes<HTMLDivElement>
-> = (props: VirtualListProps) => {
+export const VirtualList: FunctionComponent<VirtualListProps> = (
+  props: VirtualListProps
+) => {
   const {
     sourceData = [],
     ItemRender,
@@ -30,6 +30,7 @@ export const VirtualList: FunctionComponent<
     overscan = 2,
     key,
     handleScroll,
+    onScroll,
     className,
     containerSize,
     ...rest
@@ -106,7 +107,7 @@ export const VirtualList: FunctionComponent<
     setListTotalSize(totalSize)
   }, [positions, sizeKey, horizontal])
 
-  const onScroll = useCallback(() => {
+  const scroll = useCallback(() => {
     requestAnimationFrame((e) => {
       const scrollSize = getElement()[scrollKey]
       const startIndex = binarySearch(positions, scrollSize, horizontal)
@@ -129,7 +130,11 @@ export const VirtualList: FunctionComponent<
       setOptions({ startOffset, startIndex, overStart, endIndex })
       // 无限下滑
       if (endIndex > sourceData.length - 1) {
-        handleScroll && handleScroll()
+        if (onScroll) {
+          onScroll()
+        } else if (handleScroll) {
+          handleScroll()
+        }
       }
     })
   }, [
@@ -150,11 +155,11 @@ export const VirtualList: FunctionComponent<
 
   useEffect(() => {
     const element = getElement()
-    element.addEventListener('scroll', onScroll, false)
+    element.addEventListener('scroll', scroll, false)
     return () => {
-      element.removeEventListener('scroll', onScroll, false)
+      element.removeEventListener('scroll', scroll, false)
     }
-  }, [getElement, onScroll])
+  }, [getElement, scroll])
 
   return (
     <div

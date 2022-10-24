@@ -71,7 +71,7 @@ const App =() => {
       return [...sourceData, ...datas]
     })
   }, [])
- const handleScroll = () => {
+ const onScroll = () => {
     if (pageNo > 100) return
     setPageNo(pageNo + 1)
   }
@@ -92,7 +92,7 @@ const App =() => {
             ItemRender={ItemVariableDemo}
             itemSize={128}
             itemEqualSize={false}
-            handleScroll={handleScroll}
+            onScroll={onScroll}
           />
   </div>
   )
@@ -162,7 +162,7 @@ const App =() => {
       return [...sourceData, ...datas]
     })
   }, [])
- const handleScroll = () => {
+ const onScroll = () => {
     if (pageNo > 100) return
     setPageNo(pageNo + 1)
   }
@@ -184,7 +184,7 @@ const App =() => {
             ItemRender={ItemVariableDemo}
             horizontal
             itemEqualSize={false}
-            handleScroll={handleScroll}
+            onScroll={onScroll}
           />
   </div>
   )
@@ -207,9 +207,9 @@ export default App;
 | key           | Unique value,Item(sourceData) Specifies a field with a unique value | string   | index                                 |
 | horizontal    |  horizontal or vertical                    | Boolean  | false                                 |
 ## Events
-| 方法名          | 说明       | 参数            | 返回值     |
-| -------------- |----------| --------------- | ---------- |
-| handleScroll   | scroll event |        -        |      -    |
+| 方法名            | 说明       | 参数            | 返回值     |
+|----------------|----------| --------------- | ---------- |
+| onScroll`v1.3.8` | scroll event |        -        |      -    |
 
 
 
