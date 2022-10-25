@@ -354,7 +354,7 @@ export default App;
 | ellipsis      | Whether to omit too long title text                        | boolean       | true       |
 | animatedTime | Switch animation duration, unit ms 0 means no animation              | number,string | 300        |
 | titleGutter  | Label gap                                      | number,string | 0          |
-| titleNode    | Custom Titles Area                     | () => JSX.Element[] | 0          |
+| titleNode    | Custom Titles Area                     | `() => JSX.Element[]` | 0          |
 | size         | Tab bar font size optional value `large` `normal` `small` | string        | normal     |
 | autoHeight`v1.2.1` | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tabpane`. | boolean        | false     |
 
