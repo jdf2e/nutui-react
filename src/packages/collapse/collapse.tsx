@@ -11,7 +11,7 @@ export interface CollapseProps {
   iconSize: string
   iconColor: string
   rotate: number
-  change: (isOpen: boolean, name: string) => void
+  onChange: (isOpen: boolean, name: string) => void
   children?: React.ReactNode
 }
 const defaultProps = {
@@ -46,7 +46,7 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo(
       rotate,
       iconSize,
       iconColor,
-      change,
+      onChange,
     } = {
       ...defaultProps,
       ...props,
@@ -94,7 +94,7 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo(
         }
       }
       setDefaultOpenIndex(newOpenIndex)
-      change && change(!isOpen, name)
+      onChange && onChange(!isOpen, name)
     }
     return (
       <div className={`${colBem()} ${className}`} style={style}>
