@@ -23,6 +23,7 @@ const subPackages = [
       'pages/tabs/index',
       'pages/indicator/index',
       'pages/menu/index',
+      'pages/elevator/index',
     ],
   },
   {

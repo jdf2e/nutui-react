@@ -267,7 +267,7 @@
           "desc": "用于列表快速定位以及索引的显示",
           "sort": 4,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "songsong"
         },
         {
