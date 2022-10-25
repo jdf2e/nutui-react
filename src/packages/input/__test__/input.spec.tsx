@@ -90,7 +90,7 @@ test('clearable and clear event test', () => {
       defaultValue="清除文本"
       clearable
       clearSize="14"
-      clear={handleClear}
+      onClear={handleClear}
     />
   )
   const inputEl = container.querySelector('.nut-input-inner') as Element
@@ -179,13 +179,13 @@ test('clearable and clear event test', () => {
       clearSize="14"
       leftIcon="dongdong"
       rightIcon="ask2"
-      change={handleChange}
-      focus={handleFocus}
-      blur={handleBlur}
-      click={handleClick}
-      clickInput={handleClickInput}
-      clickLeftIcon={handleClickLeftIcon}
-      clickRightIcon={handleClickRightIcon}
+      onChange={handleChange}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onClick={handleClick}
+      onClickInput={handleClickInput}
+      onClickLeftIcon={handleClickLeftIcon}
+      onClickRightIcon={handleClickRightIcon}
     />
   )
   const inputEl = container.querySelector('.input-text') as Element

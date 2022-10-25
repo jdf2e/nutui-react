@@ -39,7 +39,7 @@ test('closeMode & rightIcon test', () => {
     <NoticeBar
       text={text}
       closeMode
-      click={handleClick}
+      onClick={handleClick}
       rightIcon="circle-close"
     />
   )

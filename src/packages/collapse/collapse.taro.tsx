@@ -3,6 +3,8 @@ import React, { FunctionComponent, useEffect, useState, memo } from 'react'
 import bem from '@/utils/bem'
 
 export interface CollapseProps {
+  className: string
+  style: React.CSSProperties
   activeName: Array<number | string> | number | string
   accordion: boolean
   icon: string
@@ -34,6 +36,8 @@ function areEqual(
 export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo(
   (props) => {
     const {
+      className,
+      style,
       children,
       activeName,
       accordion,
@@ -92,7 +96,7 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo(
       change && change(!isOpen, name)
     }
     return (
-      <div className={colBem()}>
+      <div className={`${colBem()} ${className}`} style={style}>
         {childrenDom.map((item: any) => {
           return React.cloneElement(item, {
             isOpen: defaultOpenIndex.includes(item.props.name),

@@ -51,7 +51,7 @@ export default App;
 ```
 :::
 
-### change event
+### onChange event
 
 :::demo
 ```tsx
@@ -59,12 +59,12 @@ import  React from "react";
 import { Switch } from '@nutui/nutui-react';
 
 const App = () => {
-  const change = (value: boolean, event: Event) => {
-    alert(`Triggering the change event, the switch status：${value}`)
+  const onChange = (value: boolean, event: Event) => {
+    alert(`Triggering the onChange event, the switch status：${value}`)
   }
   return ( 
     <>   
-    <Switch change={(value, event) => change(value, event)} />
+    <Switch onChange={(value, event) => onChange(value, event)} />
     </>
   );
 };  
@@ -82,7 +82,7 @@ import { Switch } from '@nutui/nutui-react';
 const App = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
   
-  const changeAsync = (value: boolean, event: Event) => {
+  const onChangeAsync = (value: boolean, event: Event) => {
     alert(`Asynchronous trigger after 2 seconds ${value}`)
     setTimeout(() => {
       setCheckedAsync(value)
@@ -93,7 +93,7 @@ const App = () => {
     <Switch
       checked={checkedAsync}
       isAsync
-      change={(value, event) => changeAsync(value, event)}
+      onChange={(value, event) => onChangeAsync(value, event)}
      />
     </>
   );
@@ -161,4 +161,4 @@ export default App;
 
 | Incident name | illustrate           | Callback parameter       |
 |--------|----------------|-------------------------------|
-| change | Trigger when switching switches | (value: boolean,event: Event) |
+| onChange `v1.3.8` | Trigger when switching switches | (value: boolean,event: Event) |

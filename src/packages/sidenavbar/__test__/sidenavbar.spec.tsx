@@ -15,7 +15,7 @@ test('default props', () => {
       <Sidenavbar
         title="首页"
         visible
-        handleClose={() => {
+        onClose={() => {
           changeNarBar(false)
         }}
       >
@@ -36,7 +36,7 @@ test('position  should be right', () => {
         title="首页"
         visible
         position="right"
-        handleClose={() => {
+        onClose={() => {
           changeNarBar(false)
         }}
       >
@@ -54,7 +54,7 @@ test('offset  should be 30', () => {
         visible
         position="left"
         offset={30}
-        handleClose={() => {
+        onClose={() => {
           changeNarBar(false)
         }}
       >
