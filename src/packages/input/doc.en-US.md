@@ -406,14 +406,14 @@ const App = () => {
           leftIcon="dongdong"
           rightIcon="ask2"
           clearable
-          change={change}
-          focus={focus}
-          blur={blur}
-          clear={clear}
-          click={click}
-          clickInput={clickInput}
-          clickLeftIcon={clickLeftIcon}
-          clickRightIcon={clickRightIcon}
+          onChange={change}
+          onFocus={focus}
+          onBlur={blur}
+          onClear={clear}
+          onClick={click}
+          onClickInput={clickInput}
+          onClickLeftIcon={clickLeftIcon}
+          onClickRightIcon={clickRightIcon}
         />
     </>
   )
@@ -458,14 +458,14 @@ export default App;
 
 | Event   | Description      | Arguments    |
 |--------|----------------|-------------|
-| change | Emitted when input value changed | val ,event  |
-| focus  | Emitted when input is focused     | val  ,event |
-| blur   | Emitted when input is blurred     | val ,event  |
-| clear  | Emitted when the clear icon is clicked   | val ,event  |
-| click  | Emitted when component is clicked	      | val ,event  |
-| clickInput      | Emitted when the input is clicked      | val ,event  |
-| clickLeftIcon  | Emitted when the left icon is clicked      | val ,event  |
-| clickRightIcon | Emitted when the right icon is clicked      | val ,event  |
+| onChange `v1.3.8` | Emitted when input value changed | val ,event  |
+| onFocus `v1.3.8`  | Emitted when input is focused     | val  ,event |
+| onBlur `v1.3.8`   | Emitted when input is blurred     | val ,event  |
+| onClear `v1.3.8` | Emitted when the clear icon is clicked   | val ,event  |
+| onClick `v1.3.8`  | Emitted when component is clicked	      | val ,event  |
+| onClickInput `v1.3.8`      | Emitted when the input is clicked      | val ,event  |
+| onClickLeftIcon `v1.3.8`  | Emitted when the left icon is clicked      | val ,event  |
+| onClickRightIcon `v1.3.8` | Emitted when the right icon is clicked      | val ,event  |
 
 ### Slots
 
