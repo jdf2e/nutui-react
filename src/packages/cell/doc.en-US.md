@@ -32,7 +32,7 @@ const App = () => {
       <Cell title="Title" subTitle="Subtitle Description" desc="Description" />
       <Cell
         title="Click Test"
-        click={(
+        onClick={(
           event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => testClick(event)}
       />
@@ -288,4 +288,6 @@ export default App
 
 | Event | Description                  | Arguments   |
 |-------|------------------------------|-------------|
-| click | Emitted when cell is clicked | event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent> |
+| click`v1.3.8废弃` | Emitted when cell is clicked | event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent> |
+| onClick`v1.3.8` | Emitted when cell is clicked | event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent> |
+
