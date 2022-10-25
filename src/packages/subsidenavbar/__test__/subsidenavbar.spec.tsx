@@ -40,7 +40,7 @@ test('should emit titleClick event', async () => {
         data-testid="SubSideNavBar-click"
         title="一级标题"
         ikey="1-0"
-        titleClick={titleClick}
+        onClick={titleClick}
       >
         <SideNavBarItem title="一级内容1" ikey="1-01" />
       </SubSideNavBar>

@@ -12,6 +12,7 @@
   }
 }
 .nut-noticebar {
+  width: 100%;
   .nut-noticebar-page {
     display: flex;
     padding: $noticebar-box-padding;
@@ -108,12 +109,14 @@
     font-size: $noticebar-font-size;
     overflow: hidden;
     padding: $noticebar-box-padding;
-
+    background: $noticebar-background;
+    color: $noticebar-color;
     .horseLamp_list {
       margin: 0;
       padding: 0;
       display: block;
       flex: 1;
+
       .horseLamp_list_item {
         display: flex;
         align-items: center;

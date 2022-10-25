@@ -6,7 +6,6 @@ import React, {
   useState,
 } from 'react'
 import Icon from '@/packages/icon/index.taro'
-
 import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface ButtonProps extends IComponent {

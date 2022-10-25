@@ -12,6 +12,7 @@ export interface DateType {
 }
 export interface TimeSelectProps {
   className?: string
+  style: React.CSSProperties
   visible?: boolean
   height?: string
   multiple?: boolean
@@ -26,9 +27,16 @@ export interface TimeSelectProps {
     selectTimeData: TimeType[]
   ) => void
   timeChange?: (time: string, selectTimeData: TimeType[]) => void
+  onSelect?: (selectTimeData: TimeType[]) => void
+  onPannelChange?: (
+    pannelKey: string | number,
+    selectTimeData: TimeType[]
+  ) => void
+  onTimeChange?: (time: string, selectTimeData: TimeType[]) => void
 }
 const defaultProps = {
   className: '',
+  style: {},
   visible: false,
   height: '20%',
   multiple: false,
@@ -38,12 +46,11 @@ const defaultProps = {
   dates: [],
   times: [],
 } as TimeSelectProps
-export const TimeSelect: FunctionComponent<
-  Partial<TimeSelectProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
+  props
+) => {
   const { locale } = useConfig()
   const {
-    children,
     visible,
     className,
     height,
@@ -56,6 +63,9 @@ export const TimeSelect: FunctionComponent<
     select,
     pannelChange,
     timeChange,
+    onSelect,
+    onPannelChange,
+    onTimeChange,
   } = {
     ...defaultProps,
     ...props,
@@ -80,7 +90,11 @@ export const TimeSelect: FunctionComponent<
 
   // popup 的关闭回调, 执行 select 函数更改外部 visible
   const closeFun = () => {
-    select && select(activeTime)
+    if (onSelect) {
+      onSelect(activeTime)
+    } else if (select) {
+      select(activeTime)
+    }
   }
   // 选择配送时间回调
   const handleSelectTime = (time: string) => {
@@ -104,7 +118,11 @@ export const TimeSelect: FunctionComponent<
     const resultTimeData = [...activeTime]
     resultTimeData.splice(curIndex, 1, curTimeData)
     setActiveTime(resultTimeData)
-    timeChange && timeChange(time, resultTimeData)
+    if (onTimeChange) {
+      onTimeChange(time, resultTimeData)
+    } else if (timeChange) {
+      timeChange(time, resultTimeData)
+    }
   }
   // 选择日期的回调
   const handleChange = (pannelKey: string | number) => {
@@ -131,7 +149,11 @@ export const TimeSelect: FunctionComponent<
         ])
       }
     }
-    pannelChange && pannelChange(pannelKey, resultTimeData)
+    if (onPannelChange) {
+      onPannelChange(pannelKey, resultTimeData)
+    } else if (pannelChange) {
+      pannelChange(pannelKey, resultTimeData)
+    }
   }
   // 选中的日期增加 active 类名
   const getTimePannelClass = (dataItem: DateType) => {

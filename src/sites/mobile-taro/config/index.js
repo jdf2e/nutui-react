@@ -14,15 +14,10 @@ const config = {
   plugins: ['@tarojs/plugin-html'],
   compiler: 'webpack5',
   alias: {
-    react: path.resolve(__dirname, '../node_modules/react'),
+    react: path.resolve(__dirname, '../../../../node_modules/react'),
     '@/packages': path.resolve(__dirname, '../../../../src/packages'),
     '@/utils': path.resolve(__dirname, '../../../../src/utils'),
     '@': path.resolve(__dirname, '../../../../src'),
-    '@tarojs/components': path.resolve(
-      __dirname,
-      '../node_modules/@tarojs/components'
-    ),
-    '@tarojs/react': path.resolve(__dirname, '../node_modules/@tarojs/react'),
   },
   sass: {
     resource: path.resolve(__dirname, '../../../', 'styles/variables.scss'),
@@ -79,6 +74,7 @@ const config = {
       devServer: {},
     },
   },
+  isWatch: true,
 }
 
 module.exports = function (merge) {
