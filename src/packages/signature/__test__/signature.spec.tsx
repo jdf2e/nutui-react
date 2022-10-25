@@ -12,7 +12,7 @@ test('props test', () => {
       className="test-signature"
       lineWidth={4}
       strokeStyle="green"
-      confirm={(canvas: HTMLCanvasElement, data: string) =>
+      onConfirm={(canvas: HTMLCanvasElement, data: string) =>
         testClick(canvas, data)
       }
     />

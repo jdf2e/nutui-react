@@ -122,7 +122,7 @@ const CellDemo = () => {
         />
         <Cell
           title={translated.title3}
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => testClick(event)}
         />
