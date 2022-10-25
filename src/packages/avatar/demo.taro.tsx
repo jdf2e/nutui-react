@@ -140,7 +140,7 @@ const AvatarDemo = () => {
         </Cell>
         <h2>{translated['43f00872']}</h2>
         <Cell>
-          <Avatar icon="my" activeAvatar={activeAvatar} />
+          <Avatar icon="my" onActiveAvatar={activeAvatar} />
         </Cell>
       </div>
     </>

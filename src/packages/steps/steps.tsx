@@ -10,6 +10,7 @@ export interface StepsProps {
   className: string
   style: React.CSSProperties
   clickStep: (index: number) => void
+  onClickStep: (index: number) => void
 }
 const defaultProps = {
   current: 0,
@@ -28,6 +29,7 @@ export const Steps: FunctionComponent<
     className,
     progressDot,
     clickStep,
+    onClickStep,
     ...restProps
   } = propSteps
 

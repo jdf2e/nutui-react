@@ -20,6 +20,9 @@ export interface VideoProps {
   play: (e: HTMLVideoElement) => void
   pause: (e: HTMLVideoElement) => void
   playend: (e: HTMLVideoElement) => void
+  onPlayFuc: (e: HTMLVideoElement) => void
+  onPauseFuc: (e: HTMLVideoElement) => void
+  onPlayend: (e: HTMLVideoElement) => void
 }
 const defaultProps = {
   source: {
@@ -46,6 +49,9 @@ export const Video: FunctionComponent<
     play,
     pause,
     playend,
+    onPlayFuc,
+    onPauseFuc,
+    onPlayend,
     ...restProps
   } = {
     ...defaultProps,
@@ -74,13 +80,16 @@ export const Video: FunctionComponent<
         videoRef.setAttribute('x5-video-player-fullscreen', 'false')
       }
       videoRef.addEventListener('play', () => {
+        onPlayFuc && onPlayFuc(videoRef)
         play && play(videoRef)
       })
       videoRef.addEventListener('pause', () => {
+        onPauseFuc && onPauseFuc(videoRef)
         pause && pause(videoRef)
       })
       videoRef.addEventListener('ended', () => {
         videoRef.currentTime = 0
+        onPlayend && onPlayend(videoRef)
         playend && playend(videoRef)
       })
     }
