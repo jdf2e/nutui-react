@@ -97,9 +97,9 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options}
-            play={play}
-            pause={pause}
-            playend={playend}
+            onPlayFuc={play}
+            onPauseFuc={pause}
+            onPlayend={playend}
           />
         </Cell>
         <h2>{translated.a5a25e88}</h2>
@@ -107,9 +107,9 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options1}
-            play={play}
-            pause={pause}
-            playend={playend}
+            onPlayFuc={play}
+            onPauseFuc={pause}
+            onPlayend={playend}
           />
         </Cell>
         <h2>{translated['19875a3f']}</h2>
@@ -117,9 +117,9 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options2}
-            play={play}
-            pause={pause}
-            playend={playend}
+            onPlayFuc={play}
+            onPauseFuc={pause}
+            onPlayend={playend}
           />
         </Cell>
         <h2>{translated.fcdac2ed}</h2>
@@ -127,9 +127,9 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options3}
-            play={play}
-            pause={pause}
-            playend={playend}
+            onPlayFuc={play}
+            onPauseFuc={pause}
+            onPlayend={playend}
           />
         </Cell>
         <h2>{translated['200baa8c']}</h2>
@@ -137,9 +137,9 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options4}
-            play={play}
-            pause={pause}
-            playend={playend}
+            onPlayFuc={play}
+            onPauseFuc={pause}
+            onPlayend={playend}
           />
         </Cell>
         <h2>{translated['5ec0e561']}</h2>
@@ -147,9 +147,9 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options5}
-            play={play}
-            pause={pause}
-            playend={playend}
+            onPlayFuc={play}
+            onPauseFuc={pause}
+            onPlayend={playend}
           />
         </Cell>
         <h2>{translated.a6e0b0cf}</h2>
@@ -157,9 +157,9 @@ const VideoDemo = () => {
           <Video
             source={source1}
             options={options}
-            play={play}
-            pause={pause}
-            playend={playend}
+            onPlayFuc={play}
+            onPauseFuc={pause}
+            onPlayend={playend}
           />
         </Cell>
         <Button type="primary" className="video-m-b" onClick={changeVideo}>
