@@ -23,6 +23,7 @@ export interface CellProps extends IComponent {
   iconSlot: ReactNode
   linkSlot: ReactNode
   click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
 const defaultProps = {
@@ -43,6 +44,7 @@ const defaultProps = {
   iconSlot: null,
   linkSlot: null,
   click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
+  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
 
 export const Cell: FunctionComponent<
@@ -51,6 +53,7 @@ export const Cell: FunctionComponent<
   const {
     children,
     click,
+    onClick,
     title,
     subTitle,
     desc,
@@ -77,6 +80,7 @@ export const Cell: FunctionComponent<
   const history = useHistory()
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     click(event)
+    onClick(event)
     if (to && history) {
       history[replace ? 'replace' : 'push'](to)
     } else if (url) {
