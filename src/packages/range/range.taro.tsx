@@ -32,6 +32,9 @@ export interface RangeProps {
   change?: (value: number) => void
   dragStart?: () => void
   dragEnd?: () => void
+  onChange?: (value: number) => void
+  onDragStart?: () => void
+  onDragEnd?: () => void
 }
 const defaultProps = {
   range: false,
@@ -49,7 +52,8 @@ let startValue: any
 let currentValue: any
 
 export const Range: FunctionComponent<
-  Partial<RangeProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
+  Partial<RangeProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onChange'>
 > = (props) => {
   const { locale } = useConfig()
   const {
@@ -68,6 +72,9 @@ export const Range: FunctionComponent<
     change,
     dragStart,
     dragEnd,
+    onChange,
+    onDragStart,
+    onDragEnd,
   } = { ...defaultProps, ...props }
 
   let { min, max, step } = { ...defaultProps, ...props }
@@ -272,6 +279,7 @@ export const Range: FunctionComponent<
 
     if ((marks || end) && !isSameValue(value, startValue)) {
       change && change(value)
+      onChange && onChange(value)
     }
   }
 
@@ -323,6 +331,7 @@ export const Range: FunctionComponent<
     }
     if (dragStatus === 'start') {
       dragStart && dragStart()
+      onDragStart && onDragStart()
     }
 
     touch.move(event)
@@ -355,6 +364,7 @@ export const Range: FunctionComponent<
     if (dragStatus === 'draging') {
       updateValue(currentValue, true)
       dragEnd && dragEnd()
+      onDragEnd && onDragEnd()
     }
     SetDragStatus('')
   }

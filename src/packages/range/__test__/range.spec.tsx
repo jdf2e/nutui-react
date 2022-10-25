@@ -39,7 +39,7 @@ test('range props test', () => {
 test('range max and min test', () => {
   const handleChange = jest.fn()
   const { container } = render(
-    <Range modelValue={0} max={10} min={-10} change={handleChange} />
+    <Range modelValue={0} max={10} min={-10} onChange={handleChange} />
   )
   expect(container.querySelector('.min')?.innerHTML).toBe('-10')
   expect(container.querySelector('.max')?.innerHTML).toBe('10')

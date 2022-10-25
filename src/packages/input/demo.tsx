@@ -321,14 +321,14 @@ const InputDemo = () => {
           leftIcon="dongdong"
           rightIcon="ask2"
           clearable
-          change={change}
-          focus={focus}
-          blur={blur}
-          clear={clear}
-          click={click}
-          clickInput={clickInput}
-          clickLeftIcon={clickLeftIcon}
-          clickRightIcon={clickRightIcon}
+          onChange={change}
+          onFocus={focus}
+          onBlur={blur}
+          onClear={clear}
+          onClick={click}
+          onClickInput={clickInput}
+          onClickLeftIcon={clickLeftIcon}
+          onClickRightIcon={clickRightIcon}
         />
       </div>
     </>
