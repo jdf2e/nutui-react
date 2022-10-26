@@ -191,7 +191,7 @@ const App = () => {
   }
   return (
     <>
-      <Avatar icon="my" activeAvatar={activeAvatar} />
+      <Avatar icon="my" onActiveAvatar={activeAvatar} />
     </>
   )
 }
@@ -226,5 +226,6 @@ export default App;
 
 | Event            | Description    | Type     | Arguments |
 | ---------------- | ------------ | -------- | -------- |
-| activeAvatar | Emitted when cell is clicked    | Function | event    |
+| activeAvatar `v1.3.8(Abandon)` | Emitted when cell is clicked    | Function | event    |
+| onActiveAvatar `v1.3.8` | Emitted when cell is clicked    | Function | event    |
 | onError       | Handler when img load error   | Function | event    |
