@@ -1,16 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { MouseEventHandler, useEffect, useState } from 'react'
 import RadioContext from '../radio/context'
+import Radio from '../radio/index.taro'
 
 import bem from '@/utils/bem'
 
 type Position = 'left' | 'right'
 type Direction = 'horizontal' | 'vertical'
 
+export interface RadioGroupOptionType {
+  label: string
+  value: string
+  disabled?: boolean
+  onChange?: MouseEventHandler<HTMLDivElement>
+}
+
 export interface RadioGroupProps {
   value: string | number | boolean | null
   textPosition: Position
   direction: Direction
   onChange: (value: string | number | boolean) => void
+  options: RadioGroupOptionType[]
 }
 
 const defaultProps = {
@@ -18,6 +27,7 @@ const defaultProps = {
   textPosition: 'right',
   onChange: (value: string | number | boolean) => {},
   direction: 'vertical',
+  options: [],
 } as RadioGroupProps
 export const RadioGroup = React.forwardRef(
   (
@@ -27,8 +37,15 @@ export const RadioGroup = React.forwardRef(
   ) => {
     const { children } = { ...defaultProps, ...props }
     const b = bem('RadioGroup')
-    const { className, value, onChange, textPosition, direction, ...rest } =
-      props
+    const {
+      className,
+      value,
+      onChange,
+      textPosition,
+      direction,
+      options,
+      ...rest
+    } = props
 
     const [val2State, setVal2State] = useState(value)
 
@@ -85,6 +102,18 @@ export const RadioGroup = React.forwardRef(
       })
     }
 
+    function renderOptionsChildren() {
+      return options?.map(({ label, value, disabled, onChange }) => (
+        <Radio
+          key={value?.toString()}
+          children={label}
+          value={value}
+          disabled={disabled}
+          onChange={onChange}
+        />
+      ))
+    }
+
     return (
       <RadioContext.Provider
         value={{
@@ -95,10 +124,12 @@ export const RadioGroup = React.forwardRef(
         }}
       >
         <div
-          className={`nut-radiogroup nut-radiogroup--${props.direction}`}
+          className={`nut-radiogroup nut-radiogroup--${props.direction} ${
+            className || ''
+          }`}
           {...rest}
         >
-          {cloneChildren()}
+          {options?.length ? renderOptionsChildren() : cloneChildren()}
         </div>
       </RadioContext.Provider>
     )

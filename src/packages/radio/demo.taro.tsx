@@ -12,6 +12,7 @@ interface T {
   '70ffa5d8': string
   '0f261484': string
   '6b1f669d': string
+  options: string
 }
 
 const RadioDemo = () => {
@@ -24,6 +25,7 @@ const RadioDemo = () => {
       '70ffa5d8': '自定义图标',
       '0f261484': '触发事件',
       '6b1f669d': '当前选中值',
+      options: '配置 options 渲染单选按钮',
     },
     'zh-TW': {
       '74fc5d8a': '基本用法',
@@ -33,6 +35,7 @@ const RadioDemo = () => {
       '70ffa5d8': '自定義圖示',
       '0f261484': '觸發事件',
       '6b1f669d': '當前選中值',
+      options: '配置 options 渲染單選按鈕',
     },
     'en-US': {
       '74fc5d8a': 'Basic Usage',
@@ -42,11 +45,27 @@ const RadioDemo = () => {
       '70ffa5d8': 'Custom Icon',
       '0f261484': 'Trigger Event',
       '6b1f669d': 'Currently selected',
+      options: 'Render radios by configuring options',
     },
   })
 
   const [checked1] = useState(true)
   const [radioVal, setRadioVal] = useState(1)
+  const [optionsDemo1, setOptionsDemo1] = useState([
+    {
+      label: '选项一',
+      value: '1',
+    },
+    {
+      label: '选项二',
+      value: '2',
+      disabled: true,
+    },
+    {
+      label: '选项三',
+      value: '3',
+    },
+  ])
 
   function handleChange(val: number | string | boolean) {
     console.log(val)
@@ -163,6 +182,12 @@ const RadioDemo = () => {
             </RadioGroup>
           </Cell>
           <Cell title={translated['6b1f669d']} desc={radioVal.toString()} />
+        </CellGroup>
+        <h2>{translated.options}</h2>
+        <CellGroup>
+          <Cell>
+            <RadioGroup options={optionsDemo1} value={radioVal}></RadioGroup>
+          </Cell>
         </CellGroup>
       </div>
     </>

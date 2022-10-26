@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import RadioContext from '../radio/context'
+import { RadioGroupOptionType } from './radiogroup.taro'
+import { Radio } from '../radio/radio'
 
 import bem from '@/utils/bem'
 
@@ -11,6 +13,7 @@ export interface RadioGroupProps {
   textPosition: Position
   direction: Direction
   onChange: (value: string | number | boolean) => void
+  options: RadioGroupOptionType[]
 }
 
 const defaultProps = {
@@ -18,6 +21,7 @@ const defaultProps = {
   textPosition: 'right',
   onChange: (value: string | number | boolean) => {},
   direction: 'vertical',
+  options: [],
 } as RadioGroupProps
 export const RadioGroup = React.forwardRef(
   (
@@ -27,8 +31,15 @@ export const RadioGroup = React.forwardRef(
   ) => {
     const { children } = { ...defaultProps, ...props }
     const b = bem('RadioGroup')
-    const { className, value, onChange, textPosition, direction, ...rest } =
-      props
+    const {
+      className,
+      value,
+      onChange,
+      textPosition,
+      direction,
+      options,
+      ...rest
+    } = props
 
     const [val2State, setVal2State] = useState(value)
 
@@ -85,6 +96,18 @@ export const RadioGroup = React.forwardRef(
       })
     }
 
+    function renderOptionsChildren() {
+      return options?.map(({ label, value, disabled, onChange }) => (
+        <Radio
+          key={value?.toString()}
+          children={label}
+          value={value}
+          disabled={disabled}
+          onChange={onChange}
+        />
+      ))
+    }
+
     return (
       <RadioContext.Provider
         value={{
@@ -95,10 +118,12 @@ export const RadioGroup = React.forwardRef(
         }}
       >
         <div
-          className={`nut-radiogroup nut-radiogroup--${props.direction}`}
+          className={`nut-radiogroup nut-radiogroup--${props.direction} ${
+            className || ''
+          }`}
           {...rest}
         >
-          {cloneChildren()}
+          {options?.length ? renderOptionsChildren() : cloneChildren()}
         </div>
       </RadioContext.Provider>
     )

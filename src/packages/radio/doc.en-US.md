@@ -172,6 +172,7 @@ export default RadioGroupLast;
 | value       | The identifier of the currently selected item, which is selected when the label value is consistent with the | String、Number、Boolean | -          |
 | textPosition | Where the text is located, optional values: 'left', 'right' | String                  | `right`    |
 | direction     | Use horizontal and vertical directions The optional values horizontal, vertical, | String                  | `vertical` |
+| options `v1.3.9`     | Render radios by configuring options      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 ## RadioGroup Event
 
