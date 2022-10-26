@@ -192,7 +192,7 @@ const App = () => {
   }
   return (
     <>
-      <Avatar icon="my" activeAvatar={activeAvatar} />
+      <Avatar icon="my" onActiveAvatar={activeAvatar} />
     </>
   )
 }
@@ -227,5 +227,6 @@ export default App;
 
 | 字段             | 說明         | 類型     | 回調參數 |
 | ---------------- | ------------ | -------- | -------- |
-| activeAvatar | 點擊頭像觸發事件    | Function | event    |
+| activeAvatar `v1.3.8廢棄` | 點擊頭像觸發事件    | Function | event    |
+| onActiveAvatar `v1.3.8` | 點擊頭像觸發事件    | Function | event    |
 | onError       | 圖片加載失敗的事件   | Function | event    |

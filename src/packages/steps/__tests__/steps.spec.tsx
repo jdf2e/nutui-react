@@ -140,7 +140,7 @@ test('should props current changes when trigger click', () => {
 test('should emited click when step trigger', () => {
   const handleClickStep = jest.fn()
   const { getByText } = render(
-    <Steps current={1} clickStep={handleClickStep}>
+    <Steps current={1} onClickStep={handleClickStep}>
       <Step
         activeIndex={1}
         title="已完成"

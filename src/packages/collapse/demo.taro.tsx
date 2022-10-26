@@ -72,7 +72,7 @@ const CollapseDemo = () => {
         <h2>无icon样式，绑定点击事件</h2>
         <Collapse
           activeName={['1', '2']}
-          change={(isOpen, name) => changeEnv(isOpen, name)}
+          onChange={(isOpen, name) => changeEnv(isOpen, name)}
         >
           <CollapseItem title="标题1" name="1">
             京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
