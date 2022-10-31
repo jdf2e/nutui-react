@@ -422,9 +422,20 @@ $address-region-tab-line: linear-gradient(
   90deg,
   $primary-color 0%,
   $primary-color-end 100%
-);
+) !default;
+$address-icon-color: $primary-color !default;
+$address-header-title-font-size: 18px !default;
+$address-header-title-color: #262626 !default;
+$address-region-tab-font-size: 13px !default;
+$address-region-tab-color: #1d1e1e !default;
+$address-region-tab-active-item-font-weight: bold !default;
+$address-region-tab-line-border-radius: 0 !default;
+$address-region-tab-line-opacity: 1 !default;
+$address-region-item-color: #333 !default;
+$address-region-item-font-size: $font-size-1 !default;
+$address-item-margin-right: 9px !default;
 
-//steps
+//steps（✅）
 $steps-base-icon-width: 25px !default;
 $steps-base-icon-height: 25px !default;
 $steps-base-icon-line-height: 25px !default;
@@ -453,18 +464,40 @@ $steps-process-head-border-color: $primary-color !default;
 $steps-process-title-color: $primary-color !default;
 $steps-process-icon-text-color: $primary-color !default;
 
-// dialog
-$dialog-width: 296px;
+// dialog（✅）
+$dialog-width: 296px !default;
+$dialog-header-font-weight: normal !default;
+$dialog-header-color: rgba(38, 38, 38, 1) !default;
+$dialog-footer-justify-content: space-around !default;
+$dialog-min-height: 156px !default;
+$dialog-padding: 28px 24px 16px 24px !default;
+$dialog-header-height: 20px !default;
+$dialog-header-color: rgba(38, 38, 38, 1) !default;
+$dialog-content-margin: 20px 0 !default;
+$dialog-content-max-height: 268px !default;
+$dialog-content-line-height: 16px !default;
+$dialog-mask-z-index: 1050 !default;
+$dialog-mask-background-color: rgba($black, 0.7) !default;
+$dialog-outer-z-index: 2000 !default;
+$dialog-outer-bordder-radius: 20px !default;
+$dialog-vertical-footer-ok-margin-top: 10px !default;
+$dialog-footer-button-min-width: 100px !default;
+$dialog-footer-cancel-margin-right: 20px !default;
+$dialog-footer-ok-max-width: 128px !default;
+// 在组件中import
+//@import './mixins/index';
+//@import './animation/index';
 
-// checkbox
+// checkbox（✅）
 $checkbox-label-color: #1d1e1e !default;
 $checkbox-label-disable-color: #999 !default;
 $checkbox-icon-disable-color: #d6d6d6 !default;
 $checkbox-label-margin-left: 15px !default;
 $checkbox-label-font-size: 14px !default;
 $checkbox-icon-font-size: 18px !default;
+$checkbox-icon-disable-color2: $help-color !default;
 
-//radio
+//radio（✅）
 $radio-label-font-color: #1d1e1e !default;
 $radio-label-font-active-color: #f0250f !default;
 $radio-label-disable-color: #999 !default;
@@ -472,26 +505,81 @@ $radio-icon-disable-color: #d6d6d6 !default;
 
 $radio-label-button-border-color: #f0250f !default;
 $radio-label-button-background: rgba(240, 37, 15, 0.05) !default;
+$radio-label-margin-left: 15px !default;
+$radio-button-border-radius: 15px !default;
+$radio-label-font-size: 14px !default;
+$radio-button-font-size: 12px !default;
+$radio-button-padding: 5px 18px !default;
+$radio-icon-font-size: 18px !default;
+$radio-icon-disable-color2: $help-color !default;
 
-// signature
+// signature（✅）
 $signature-border-color: #dadada;
 $signature-border-width: 1px;
 $signature-height: 10rem;
 $signature-margin-bottom: 1rem;
 $signature-btn-margin-right: 15px;
 
-//fixednav
-$fixednav-bg-color: $white;
-$fixednav-font-color: $black;
-$fixednav-index: 201;
+//fixednav（✅）
+$fixednav-bg-color: $white !default;
+$fixednav-font-color: $black !default;
+$fixednav-index: 201 !default;
 $fixednav-btn-bg: linear-gradient(
   135deg,
   rgba(250, 25, 44, 1) 0%,
   rgba(250, 63, 25, 1) 100%
-);
+) !default;
+$fixednav-item-active-color: $primary-color !default;
 
-// Tag
+// NoticeBar（✅）
+$noticebar-background: rgba(251, 248, 220, 1) !default;
+$noticebar-color: #d9500b !default;
+$noticebar-font-size: 14px !default;
+$noticebar-height: 40px !default;
+$noticebar-line-height: 24px !default;
+$noticebar-left-icon-width: 16px !default;
+$noticebar-right-icon-width: 16px !default;
+$noticebar-box-padding: 0 16px !default;
+$noticebar-wrapable-padding: 16px !default;
+$noticebar-lefticon-margin: 0px 10px !default;
+$noticebar-righticon-margin: 0px 10px !default;
+
+// TimeSelect（✅）
+$timeselect-title-font-size: $font-size-2 !default;
+$timeselect-title-color: $title-color !default;
+$timeselect-title-width: 100% !default;
+$timeselect-title-height: 50px !default;
+$timeselect-title-line-height: 50px !default;
+$timeselect-pannel-bg-color: #f6f7f9 !default;
+
+// TimePannel（✅）
+$timeselect-timepannel-text-color: $title-color2 !default;
+$timeselect-timepannel-font-size: $font-size-2 !default;
+$timeselect-timepannel-cur-bg-color: $white !default;
+$timeselect-timepannel-cur-text-color: #333333 !default;
+$timeselect-timepannel-width: 140px !default;
+$timeselect-timepannel-height: 40px !default;
+$timeselect-timepannel-padding: 15px !default;
+
+// TimeDetail（✅）
+$timeselect-timedetail-padding: 0 5px 50px 13px !default;
+$timeselect-timedetail-item-width: 100px !default;
+$timeselect-timedetail-item-height: 50px !default;
+$timeselect-timedetail-item-line-height: 50px !default;
+$timeselect-timedetail-item-bg-color: #f6f7f9 !default;
+$timeselect-timedetail-item-border-radius: 5px !default;
+$timeselect-timedetail-item-text-color: #333333 !default;
+$timeselect-timedetail-item-text-font-size: $font-size-2 !default;
+$timeselect-timedetail-item-cur-bg-color: rgba($primary-color, 0.15) !default;
+$timeselect-timedetail-item-cur-border: $primary-color !default;
+$timeselect-timedetail-item-cur-text-color: $primary-color !default;
+$timeselect-timedetail-time-text-color: #999 !default;
+$timeselect-timedetail-time-font-size: $font-size-1 !default;
+
+//tag（✅）
 $tag-font-size: 12px !default;
+$tag-default-border-radius: 4px !default;
+$tag-round-border-radius: 8px !default;
 $tag-default-background-color: #000000 !default;
 $tag-primary-background-color: #3460fa !default;
 $tag-success-background-color: #4fc08d !default;
@@ -501,28 +589,79 @@ $tag-danger-background-color: linear-gradient(
   rgba(232, 34, 14, 1) 69.83950099728881%,
   rgba(242, 77, 12, 1) 100%
 ) !default;
+$tag-danger-background-color-plain: #df3526 !default;
 $tag-warning-background-color: #f3812e !default;
 $tag-default-color: #ffffff !default;
 $tag-border-width: 1px !default;
 
 $tag-plain-background-color: #fff !default;
 $tag-plain-color: rgb(250, 36, 0) !default;
+$tag-height: auto !default;
 
-//badge
+//badge（✅）
 $badge-background-color: linear-gradient(
   135deg,
   $primary-color 0%,
   $primary-color-end 100%
 ) !default;
+$badge-color: #fff !default;
 $badge-font-size: $font-size-1 !default;
 $badge-default-background-color: rgba(255, 255, 255, 1) !default;
+$badge-border-radius: 14px !default;
+$badge-padding: 0 5px !default;
+$badge-content-transform: translateY(-50%) translateX(100%) !default;
+$badge-z-index: 1 !default;
+$badge-dot-width: 7px !default;
+$badge-dot-height: 7px !default;
+$badge-dot-border-radius: 7px !default;
+$badge-dot-padding: 0px !default;
 
-//popover
+//popover（✅）
 $popover-white-background-color: rgba(255, 255, 255, 1) !default;
 $popover-dark-background-color: rgba(75, 76, 77, 1) !default;
 $popover-border-bottom-color: rgba(229, 229, 229, 1) !default;
 $popover-primary-text-color: rgba(51, 51, 51, 1) !default;
 $popover-disable-color: rgba(154, 155, 157, 1) !default;
+$popover-menu-item-padding: 8px 0 !default;
+$popover-menu-item-margin: 0 8px !default;
+$popover-menu-name-line-height: normal !default;
+
+//progressr（✅）
+$progress-border-radius: 12px !default;
+$progress-text-padding: 0 5px !default;
+$progress-text-font-size: 13px !default;
+$progress-insidetext-border-radius: 5px !default;
+$progress-inner-background-color: linear-gradient(
+  135deg,
+  $primary-color 0%,
+  $primary-color-end 100%
+) !default;
+$progress-insidetext-background: $progress-inner-background-color !default;
+$progress-outer-background-color: #f3f3f3 !default;
+$progress-outer-border-radius: 12px !default;
+$progress-insidetext-padding: 3px 5px 3px 6px !default;
+$progress-insidetext-top: -42% !default;
+$progress-small-text-top: -100% !default;
+$progress-small-font-size: 7px !default;
+$progress-small-padding: 0 4px !default;
+$progress-small-height: 5px !default;
+$progress-small-text-font-size: 7px !default;
+$progress-small-text-line-height: 10px !default;
+$progress-small-text-padding: 2px 4px !default;
+$progress-base-font-size: 9px !default;
+$progress-base-padding: 0 5px !default;
+$progress-base-height: 10px !default;
+$progress-base-text-font-size: 9px !default;
+$progress-base-text-top: $progress-insidetext-top !default;
+$progress-base-text-padding: $progress-insidetext-padding !default;
+$progress-base-text-line-height: 13px !default;
+$progress-large-font-size: 13px !default;
+$progress-large-padding: 0 5px !default;
+$progress-large-height: 15px !default;
+$progress-large-text-font-size: 13px !default;
+$progress-large-text-line-height: 18px !default;
+$progress-large-text-padding: $progress-insidetext-padding !default;
+$progress-large-text-top: $progress-insidetext-top !default;
 
 //pagination
 $pagination-color: $primary-color !default;

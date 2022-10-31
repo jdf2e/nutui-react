@@ -7,11 +7,11 @@
   height: 100%;
 
   &__title {
-    height: 50px;
-    line-height: 50px;
+    height: $timeselect-title-height;
+    line-height: $timeselect-title-line-height;
     margin-bottom: 10px;
-    font-size: 14px;
-    color: #1a1a1a;
+    font-size: $timeselect-title-font-size;
+    color: $timeselect-title-color;
     text-align: center;
   }
 
