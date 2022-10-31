@@ -65,7 +65,7 @@ export default App;
 | top  | Vertical distance of barrage    | Number | 10 |
 | loop  | Loop play     | Boolean | true |
 
-### Events
+### Events API
 
 | Event | Description           | Arguments     |
 |--------|----------------|--------------|

@@ -188,6 +188,7 @@ const CollapseDemo = () => {
       <div className="demo">
         <h2>{translated.header1}</h2>
         <Collapse
+          className="test"
           activeName={['1', '2']}
           icon="arrow-down"
           iconSize="16"
@@ -206,7 +207,7 @@ const CollapseDemo = () => {
         <h2>{translated.header2}</h2>
         <Collapse
           activeName={['1', '2']}
-          change={(isOpen, name) => changeEnv(isOpen, name)}
+          onChange={(isOpen, name) => changeEnv(isOpen, name)}
         >
           <CollapseItem title={translated.title1} name="1">
             {translated.content1}

@@ -36,7 +36,7 @@ const App = () => {
     const demoStyles: React.CSSProperties = { margin: '1em 0' }
     return (
     <>
-        <Signature confirm={confirm} clear={clear} />
+        <Signature onConfirm={confirm} onClear={clear} />
         <p className="demo-tips demo" style={demoStyles}>
            Tips: click the confirm button, and the signature image is displayed below
         </p>
@@ -75,8 +75,8 @@ const App = () => {
         <Signature
             lineWidth={4}
             strokeStyle="green"
-            confirm={confirm}
-            clear={clear}
+            onConfirm={confirm}
+            onClear={clear}
          />
         <p className="demo-tips demo" style={demoStyles}>
             Tips: click the confirm button, and the signature image is displayed below
@@ -105,5 +105,8 @@ export default App;
 
 | 字段    | 说明                         | 回调参数                         |
 | ------- | ---------------------------- | -------------------------------- |
-| confirm | Click the confirm button to trigger the event callback function | Canvas and data URI displayed by signature imageURI |
-| clear   | Click the re sign button to trigger the event callback function | -                               |
+| confirm`v1.3.8废弃` | Click the confirm button to trigger the event callback function | Canvas and data URI displayed by signature imageURI |
+| clear`v1.3.8废弃`   | Click the re sign button to trigger the event callback function | -                               |
+| onConfirm`v1.3.8` | Click the confirm button to trigger the event callback function | Canvas and data URI displayed by signature imageURI |
+| onClear`v1.3.8`   | Click the re sign button to trigger the event callback function | -                               |
+

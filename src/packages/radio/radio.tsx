@@ -125,9 +125,19 @@ export const Radio: FunctionComponent<
       return renderButton()
     }
     if (reverseState) {
-      return [renderLabel(), renderIcon()]
+      return (
+        <>
+          {renderLabel()}
+          {renderIcon()}
+        </>
+      )
     }
-    return [renderIcon(), renderLabel()]
+    return (
+      <>
+        {renderIcon()}
+        {renderLabel()}
+      </>
+    )
   }
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
     if (disabledStatement || checkedStatement) return

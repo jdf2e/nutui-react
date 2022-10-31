@@ -30,7 +30,7 @@ const App = () => {
     <Cell title="我是標題" subTitle="副標題描述" desc="描述文字" />
     <Cell
         title="點擊測試"
-        click={(
+        onClick={(
         event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => testClick(event)}
     />
@@ -291,4 +291,5 @@ export default App;
 
 | 名稱  | 說明     | 回調參數                                                       |
 | ----- | -------- | -------------------------------------------------------------- |
-| click | 點擊事件 | event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent> |
+| click`v1.3.8废弃` | 點擊事件 | event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent> |
+| onClick`v1.3.8` | 點擊事件 | event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent> |

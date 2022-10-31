@@ -65,7 +65,7 @@ export default App;
 | top  | 弹幕垂直距离    | Number | 10 |
 | loop  | 是否循环播放     | Boolean | true |
 
-### Events
+### Events API
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|

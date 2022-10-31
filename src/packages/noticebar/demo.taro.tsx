@@ -62,7 +62,7 @@ const NoticeBarDemo = () => {
         <NoticeBar text={translated.text} scrollable={false} />
 
         <h2>{translated.mode}</h2>
-        <NoticeBar closeMode click={hello}>
+        <NoticeBar closeMode onClick={hello}>
           {translated.text}
         </NoticeBar>
         <br />
@@ -84,7 +84,7 @@ const NoticeBarDemo = () => {
             list={horseLamp1}
             speed={10}
             standTime={1000}
-            click={(item: any) => {
+            onClick={(item: any) => {
               go(item)
             }}
             closeMode
@@ -109,7 +109,7 @@ const NoticeBarDemo = () => {
             height={50}
             speed={10}
             standTime={1000}
-            click={(item: any) => {
+            onClick={(item: any) => {
               go(item)
             }}
           >

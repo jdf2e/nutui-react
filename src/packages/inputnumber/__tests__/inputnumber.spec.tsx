@@ -17,9 +17,9 @@ test('should add step 2 when trigger click plus button', () => {
     <InputNumber
       modelValue={1}
       step={2}
-      overlimit={overlimit}
-      add={add}
-      change={change}
+      onOverlimit={overlimit}
+      onAdd={add}
+      onChangeFuc={change}
     />
   )
   const iconPlus = container.querySelectorAll('.nut-icon-plus')[0]
@@ -37,9 +37,9 @@ test('should minis step 2 when trigger click minis button', () => {
     <InputNumber
       modelValue={3}
       step={2}
-      overlimit={overlimit}
-      reduce={reduce}
-      change={change}
+      onOverlimit={overlimit}
+      onReduce={reduce}
+      onChangeFuc={change}
     />
   )
   const iconMinus = container.querySelectorAll('.nut-icon-minus')[0]
@@ -58,9 +58,9 @@ test('should render max props', () => {
       modelValue={100}
       min="2"
       max="100"
-      overlimit={overlimit}
-      add={add}
-      change={change}
+      onOverlimit={overlimit}
+      onAdd={add}
+      onChangeFuc={change}
     />
   )
   const iconPlus = container.querySelectorAll('.nut-icon-plus')[0]
@@ -79,9 +79,9 @@ test('should render min props', () => {
       modelValue={2}
       min="2"
       max="100"
-      overlimit={overlimit}
-      reduce={reduce}
-      change={change}
+      onOverlimit={overlimit}
+      onReduce={reduce}
+      onChangeFuc={change}
     />
   )
   const iconMinus = container.querySelectorAll('.nut-icon-minus')[0]
@@ -107,7 +107,7 @@ test('should not trigger click when disabled props to be true', () => {
 test('should not focus input when readonly props to be true', () => {
   const focus = jest.fn()
   const { container } = render(
-    <InputNumber readonly modelValue={2} focus={focus} />
+    <InputNumber readonly modelValue={2} onFocus={focus} />
   )
   const iconMinus = container.querySelectorAll('.nut-icon-minus')[0]
   fireEvent.click(iconMinus)
@@ -138,7 +138,12 @@ test('should update input value when inputValue overlimit', () => {
   const change = jest.fn()
   const blur = jest.fn()
   const { container } = render(
-    <InputNumber modelValue={2} max="100" change={change} blur={blur} />
+    <InputNumber
+      modelValue={2}
+      max="100"
+      onChangeFuc={change}
+      onBlurFuc={blur}
+    />
   )
   const input = container.querySelectorAll('input')[0]
   input.value = '200'

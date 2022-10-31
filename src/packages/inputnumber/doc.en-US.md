@@ -96,7 +96,7 @@ const App = () => {
   }
   return (
     <>
-      <InputNumber modelValue={inputState.val3} min="10" max="20" overlimit={overlimit} />
+      <InputNumber modelValue={inputState.val3} min="10" max="20" onOverlimit={overlimit} />
     </>
   )
 }
@@ -223,7 +223,7 @@ const App = () => {
   }
   return (
     <>
-      <InputNumber modelValue={inputState.val7} change={onChange} isAsync />
+      <InputNumber modelValue={inputState.val7} onChangeFuc={onChange} isAsync />
     </>
   )
 }
@@ -280,9 +280,15 @@ export default App;
 
 | Event    | Description                   | Arguments                       |
 |-----------|------------------------|--------------------------------|
-| add       | Triggered when the Add button is clicked     | event: Event                   |
-| reduce    | Triggered when the decrease button is clicked     | event: Event                   |
-| overlimit | Triggered when an unavailable button is clicked | event: Event                   |
-| change    | Triggered when the value changes           | value:  number , event : Event |
-| blur      | Triggered when the input box blur   | event: Event                   |
-| focus     | Triggered when the input box focus   | event: Event                   |
+| add    `v1.3.8(Abandon)`   | Triggered when the Add button is clicked     | event: Event                   |
+| reduce   `v1.3.8(Abandon)` | Triggered when the decrease button is clicked     | event: Event                   |
+| overlimit `v1.3.8(Abandon)` | Triggered when an unavailable button is clicked | event: Event                   |
+| change `v1.3.8(Abandon)`    | Triggered when the value changes           | value:  number , event : Event |
+| blur `v1.3.8(Abandon)`      | Triggered when the input box blur   | event: Event                   |
+| focus `v1.3.8(Abandon)`     | Triggered when the input box focus   | event: Event                   |
+| onAdd `v1.3.8`       | Triggered when the Add button is clicked     | event: Event                   |
+| onReduce `v1.3.8`    | Triggered when the decrease button is clicked     | event: Event                   |
+| onOverlimit `v1.3.8` | Triggered when an unavailable button is clicked | event: Event                   |
+| onChangeFuc `v1.3.8`    | Triggered when the value changes           | value:  number , event : Event |
+| onBlurFuc `v1.3.8`      | Triggered when the input box blur   | event: Event                   |
+| onFocus `v1.3.8`     | Triggered when the input box focus   | event: Event                   |

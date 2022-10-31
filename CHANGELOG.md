@@ -1,3 +1,43 @@
+# v1.3.8
+`2022-10-26`
+
+* :sparkles: feat: tabs 组件支持 css 粘性布局 (#346) @leiyu0932
+* :sparkles: feat: tabpane 组件增加 className 属性 (#343) @oasis-cloud
+* :sparkles: feat: sidenavbar 事件名修改为 onClick (#359) @oasis-cloud
+* :sparkles: feat: collapse 组件增加 className 和 style 支持 (#360) @oasis-cloud
+* :sparkles: feat: tabbar 组件增加 onSwitch 事件 (#361) @oasis-cloud
+* :sparkles: feat: timeselect 组件增加 onSelect onPannelChange onTimeChange 事件 (#362) @oasis-cloud
+* :sparkles: feat: virtuallist 组件增加 onScroll 事件 (#363) @oasis-cloud
+* :sparkles: feat: input、noticebar、range组件 event 事件修改, divider组件demo优化 (#365) @vickyYE
+* :sparkles: feat: avartar、steps、video、inputnumber 组件事件优化 (#371)  @junjun666
+* :bug: fix: 修改 signature 组件taro demo文案 (#344)  @irisSong
+* :bug: fix: switch 组件-事件命名修改 (#352)  @libin0824
+* :bug: fix: radio 组件中的 render 数组改成 fragment (#353) @oasis-cloud
+* :bug: fix: taro/components 组件的使用，taro:h5 启动报错 (#357) @oasis-cloud
+* :bug: fix: uploader 使用 isDeletable 无法隐藏 删除按钮 (#366)  @junjun666
+* :bug: fix: cell 和 signature 修改 Event (#367) @irisSong
+* :bug: fix: 修改 collapse 组件的事件名称 (#369)  @zhenyulei
+* 📖 docs: button 组件文档中事件 click 改为 onClick (#356) @oasis-cloud
+* 📖 docs: icon 组件文档中事件 click 改为 onClick (#358) @oasis-cloud
+* 📖 docs: input 数据变化控制例子补充 (#364) @vickyYE
+* 📖 docs: layout 文档修改 (#368) @Ymm0008 
+* 📖 docs: tabs 文档优化 (#370) @oasis-cloud
+
+
+# v1.3.7
+`2022-10-19`
+* :sparkles: feat: 优化 menu 组件的弹出动画效果 (#341) @oasis-cloud
+* :sparkles: chore: add issue template (#334) @oasis-cloud
+* :bug: fix: feat: Audio 组件 Demo 变量名修改 (#340) @libin0824
+* :bug: fix: Collapse 改变变量的名字 (#336) @zhenyulei
+
+# v1.3.6
+`2022-10-12`
+* :sparkles: feat: Swipe 组件适配小程序，Searchbar 增加 onCancel 回调函数 (#311) @Ymm0008
+* :sparkles: chore: Switch demo import 优化 (#332) @oasis-cloud
+* :bug: fix: Signature 和 Drag 组件 Taro 适配完成 (#322) @irisSong
+* :bug: fix: searchbar 组件样式兼容 (#333) @Ymm0008
+
 # v1.3.5
 `2022-09-28`
 * :sparkles: feat: cascader 组件适配 taro (#318) @ailululu
