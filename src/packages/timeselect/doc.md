@@ -69,9 +69,9 @@ const TimeSelectDemo = () => {
           currentKey={currentKey}
           dates={dates}
           times={times}
-          select={handleSelect}
-          pannelChange={handlePannelChange}
-          timeChange={handleTimeChange}
+          onSelect={handleSelect}
+          onPannelChange={handlePannelChange}
+          onTimeChange={handleTimeChange}
         />
       </div>
     </>
@@ -113,8 +113,11 @@ export default TimeSelectDemo
 
 ### TimeSelect Event
 
-| 名称  | 说明    | 是否必传       | 回调参数    |
-|-------|----------|--------|-------------|
-| select | 关闭遮罩之后的回调 | 是 | `list: []` |
-| pannelChange | 点击左栏日期回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `pannelKey: string 、number, list: []` |
-| timeChange | 点击时间回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `time: string, list: []` |
+| 名称                     | 说明    | 是否必传       | 回调参数    |
+|------------------------|----------|--------|-------------|
+| select`废弃`                 | 关闭遮罩之后的回调 | 是 | `list: []` |
+| pannelChange`废弃`           | 点击左栏日期回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `pannelKey: string 、number, list: []` |
+| timeChange`废弃`         | 点击时间回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `time: string, list: []` |
+| onSelect`v1.3.8`       | 关闭遮罩之后的回调 | 是 | `list: []` |
+| onPannelChange`v1.3.8` | 点击左栏日期回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `pannelKey: string 、number, list: []` |
+| onTimeChange`v1.3.8`   | 点击时间回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `time: string, list: []` |

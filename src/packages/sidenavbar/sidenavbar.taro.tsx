@@ -15,7 +15,7 @@ export interface SideNavBarProps
   width?: string
   offset?: number
   position?: 'left' | 'right'
-  handleClose: () => void
+  onClose: () => void
   children?: React.ReactNode
 }
 const defaultProps = {
@@ -33,7 +33,7 @@ export const SideNavBar: FunctionComponent<SideNavBarProps> = (props) => {
     children,
     className,
     showhead,
-    handleClose,
+    onClose,
     ...rest
   } = {
     ...defaultProps,
@@ -46,7 +46,7 @@ export const SideNavBar: FunctionComponent<SideNavBarProps> = (props) => {
       visible={visible}
       style={{ width, height: '100%' }}
       position={position}
-      onClose={handleClose}
+      onClose={onClose}
     >
       <div
         className={className ? `${className} nut-sidenavbar` : 'nut-sidenavbar'}

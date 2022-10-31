@@ -64,8 +64,8 @@ const App = () => {
   )
 };
 export default App;
-
 ```
+:::
 
 :::demo
 ### 分栏间隔
@@ -91,6 +91,8 @@ const App = () => {
 };
 export default App;
 ```
+:::
+
 
 :::demo
 ### Flex布局
@@ -177,7 +179,7 @@ const App = () => {
 }
 export default App;
 ```
-
+:::
 
 ## API
 

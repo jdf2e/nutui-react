@@ -68,11 +68,19 @@ export interface InputProps extends IComponent {
   blur?: (value: any, event: Event) => void
   focus?: (value: any, event: Event) => void
   clear?: (value: any, event: Event) => void
-  keypress?: (value: any, event: Event) => void
   clickInput?: (value: any) => void
   clickLeftIcon?: (value: any) => void
   clickRightIcon?: (value: any) => void
   click?: (value: any) => void
+  onChange?: (value: any, event: Event) => void
+  onBlur?: (value: any, event: Event) => void
+  onFocus?: (value: any, event: Event) => void
+  onClear?: (value: any, event: Event) => void
+  keypress?: (value: any, event: Event) => void
+  onClickInput?: (value: any) => void
+  onClickLeftIcon?: (value: any) => void
+  onClickRightIcon?: (value: any) => void
+  onClick?: (value: any) => void
 }
 
 const defaultProps = {
@@ -112,7 +120,11 @@ const defaultProps = {
 } as unknown as InputProps
 
 export const Input: FunctionComponent<
-  Partial<InputProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<InputProps> &
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      'onChange' | 'onBlur' | 'onFocus' | 'onClick'
+    >
 > = (props) => {
   const { locale } = useConfig()
   const {
@@ -151,12 +163,20 @@ export const Input: FunctionComponent<
     rows,
     slotButton,
     slotInput,
+    onChange,
+    onBlur,
+    onFocus,
+    onClear,
+    formatter,
+    keypress,
+    onClickInput,
+    onClickLeftIcon,
+    onClickRightIcon,
+    onClick,
     change,
     blur,
     focus,
     clear,
-    formatter,
-    keypress,
     clickInput,
     clickLeftIcon,
     clickRightIcon,
@@ -246,23 +266,25 @@ export const Input: FunctionComponent<
     // }
   }
 
-  const onFocus = (event: Event) => {
+  const handleFocus = (event: Event) => {
     const val: any = (event.target as any).value
     SetActive(true)
+    onFocus && onFocus(val, event)
     focus && focus(val, event)
   }
 
-  const onInput = (event: Event) => {
+  const handleInput = (event: Event) => {
     let val: any = (event.target as any).value
 
     if (maxlength && val.length > Number(maxlength)) {
       val = val.slice(0, Number(maxlength))
     }
     updateValue(val)
+    onChange && onChange(val, event)
     change && change(val, event)
   }
 
-  const onBlur = (event: Event) => {
+  const handleBlur = (event: Event) => {
     setTimeout(() => {
       SetActive(false)
     }, 200)
@@ -271,17 +293,21 @@ export const Input: FunctionComponent<
       val = val.slice(0, Number(maxlength))
     }
     updateValue(getModelValue(), 'onBlur')
+    onBlur && onBlur(val, event)
     blur && blur(val, event)
   }
 
-  const onClickInput = (event: MouseEvent) => {
+  const handleClickInput = (event: MouseEvent) => {
+    onClickInput && onClickInput(event)
     clickInput && clickInput(event)
   }
-  const onClickLeftIcon = (event: MouseEvent) => {
+  const handleClickLeftIcon = (event: MouseEvent) => {
+    onClickLeftIcon && onClickLeftIcon(event)
     clickLeftIcon && clickLeftIcon(event)
   }
 
-  const onClickRightIcon = (event: MouseEvent) => {
+  const handleClickRightIcon = (event: MouseEvent) => {
+    onClickRightIcon && onClickRightIcon(event)
     clickRightIcon && clickRightIcon(event)
   }
 
@@ -304,6 +330,7 @@ export const Input: FunctionComponent<
 
   const handleClear = (event: Event) => {
     updateValue('')
+    onClear && onClear('', event)
     clear && clear('', event)
   }
 
@@ -313,6 +340,7 @@ export const Input: FunctionComponent<
       style={style}
       {...rest}
       onClick={(e) => {
+        onClick && onClick(e)
         click && click(e)
       }}
     >
@@ -331,7 +359,7 @@ export const Input: FunctionComponent<
             <div
               className="nut-input-inner"
               onClick={(e) => {
-                onClickInput(e)
+                handleClickInput(e)
               }}
             >
               {slotInput}
@@ -344,7 +372,7 @@ export const Input: FunctionComponent<
             <div
               className="nut-input-left-icon"
               onClick={(e) => {
-                onClickLeftIcon(e)
+                handleClickLeftIcon(e)
               }}
             >
               <Icon
@@ -368,7 +396,7 @@ export const Input: FunctionComponent<
             <div
               className="nut-input-inner"
               onClick={(e) => {
-                onClickInput(e)
+                handleClickInput(e)
               }}
             >
               {type === 'textarea' ? (
@@ -386,13 +414,13 @@ export const Input: FunctionComponent<
                   value={inputValue}
                   autoFocus={autofocus}
                   onBlur={(e: any) => {
-                    onBlur(e)
+                    handleBlur(e)
                   }}
                   onFocus={(e: any) => {
-                    onFocus(e)
+                    handleFocus(e)
                   }}
                   onInput={(e: any) => {
-                    onInput(e)
+                    handleInput(e)
                   }}
                 />
               ) : (
@@ -408,13 +436,13 @@ export const Input: FunctionComponent<
                   value={inputValue}
                   autoFocus={autofocus}
                   onBlur={(e: any) => {
-                    onBlur(e)
+                    handleBlur(e)
                   }}
                   onFocus={(e: any) => {
-                    onFocus(e)
+                    handleFocus(e)
                   }}
                   onInput={(e: any) => {
-                    onInput(e)
+                    handleInput(e)
                   }}
                 />
               )}
@@ -434,7 +462,7 @@ export const Input: FunctionComponent<
                 <div
                   className="nut-input-right-icon"
                   onClick={(e) => {
-                    onClickRightIcon(e)
+                    handleClickRightIcon(e)
                   }}
                 >
                   <Icon

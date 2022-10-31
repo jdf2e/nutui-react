@@ -56,9 +56,8 @@ export const Step: FunctionComponent<
     return index === +parent.propSteps.current ? 'process' : 'wait'
   }
   const handleClickStep = () => {
-    if (parent.propSteps?.clickStep) {
-      parent.propSteps?.clickStep(activeIndex)
-    }
+    parent.propSteps?.onClickStep && parent.propSteps?.onClickStep(activeIndex)
+    parent.propSteps?.clickStep && parent.propSteps?.clickStep(activeIndex)
   }
 
   const b = bem('step')

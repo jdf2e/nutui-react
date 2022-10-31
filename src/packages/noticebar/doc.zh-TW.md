@@ -74,11 +74,11 @@ const App = () => {
     }
     return (
       <>
-       <NoticeBar closeMode click={hello}>
+       <NoticeBar closeMode onClick={hello}>
           NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
         </NoticeBar>
         <br />
-        <NoticeBar closeMode rightIcon="circle-close" click={hello}>
+        <NoticeBar closeMode rightIcon="circle-close" onClick={hello}>
           NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
         </NoticeBar>
         <br />
@@ -140,7 +140,7 @@ const App = () => {
             list={horseLamp1}
             speed={10}
             standTime={1000}
-            click={(item: any) => {
+            onClick={(item: any) => {
               go(item)
             }}
             closeMode
@@ -289,5 +289,5 @@ export default App
 
 | 字段  | 说明             | 回调参数     |
 | ----- | ---------------- | ------------ |
-| click | 外层点击事件回调 | event: Event |
-| close | 关闭通知栏时触发 | event: Event |
+| onClick `v1.3.8` | 外层点击事件回调 | event: Event |
+| onClose `v1.3.8` | 关闭通知栏时触发 | event: Event |

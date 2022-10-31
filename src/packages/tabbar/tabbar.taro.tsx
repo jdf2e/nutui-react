@@ -12,6 +12,7 @@ export interface TabbarProps {
   className: string
   style: React.CSSProperties
   tabSwitch: (child: React.ReactElement<any>, active: number) => void
+  onSwitch: (child: React.ReactElement<any>, active: number) => void
   children?: React.ReactNode
 }
 
@@ -25,6 +26,7 @@ const defaultProps = {
   className: '',
   style: {},
   tabSwitch: () => {},
+  onSwitch: () => {},
 } as TabbarProps
 
 export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
@@ -39,6 +41,7 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
     className,
     style,
     tabSwitch,
+    onSwitch,
   } = {
     ...defaultProps,
     ...props,
@@ -76,6 +79,7 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
           handleClick: () => {
             handleClick(idx)
             tabSwitch(child, idx)
+            onSwitch(child, idx)
           },
         }
         return React.cloneElement(child, childProps)

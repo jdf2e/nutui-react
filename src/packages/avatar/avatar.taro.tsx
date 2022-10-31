@@ -25,6 +25,7 @@ export interface AvatarProps extends IComponent {
   alt: string
   style: React.CSSProperties
   activeAvatar: (e: MouseEvent) => void
+  onActiveAvatar: (e: MouseEvent) => void
   onError: (e: any) => void
 }
 
@@ -56,6 +57,7 @@ export const Avatar: FunctionComponent<
     className,
     style,
     activeAvatar,
+    onActiveAvatar,
     onError,
     iconClassPrefix,
     iconFontClassName,
@@ -139,9 +141,8 @@ export const Avatar: FunctionComponent<
   }
 
   const clickAvatar: MouseEventHandler<HTMLDivElement> = (e: any) => {
-    if (props.activeAvatar) {
-      props.activeAvatar(e)
-    }
+    activeAvatar && activeAvatar(e)
+    onActiveAvatar && onActiveAvatar(e)
   }
 
   console.log(

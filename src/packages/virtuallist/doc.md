@@ -71,7 +71,7 @@ const App =() => {
       return [...sourceData, ...datas]
     })
   }, [])
- const handleScroll = () => {
+ const onScroll = () => {
     if (pageNo > 100) return
     setPageNo(pageNo + 1)
   }
@@ -92,7 +92,7 @@ const App =() => {
             ItemRender={ItemVariableDemo}
             itemSize={128}
             itemEqualSize={false}
-            handleScroll={handleScroll}
+            onScroll={onScroll}
           />
   </div>
   )
@@ -162,7 +162,7 @@ const App =() => {
       return [...sourceData, ...datas]
     })
   }, [])
- const handleScroll = () => {
+ const onScroll = () => {
     if (pageNo > 100) return
     setPageNo(pageNo + 1)
   }
@@ -184,7 +184,7 @@ const App =() => {
             ItemRender={ItemVariableDemo}
             horizontal
             itemEqualSize={false}
-            handleScroll={handleScroll}
+            onScroll={onScroll}
           />
   </div>
   )
@@ -207,9 +207,10 @@ export default App;
 | key           | 唯一值 ,Item(sourceData)具体的某个唯一值的字段 | string   | index                                 |
 | horizontal    | 决定列表是横向的还是纵向的                    | Boolean  | false                                 |
 ## Events
-| 方法名          | 说明                  | 参数            | 返回值     |
-| -------------- |---------------------| --------------- | ---------- |
-| handleScroll   | 滑动到底(右)的事件，可以实现无限滚动 |        -        |      -    |
+| 方法名              | 说明                  | 参数            | 返回值     |
+|------------------|---------------------| --------------- | ---------- |
+| handleScroll`废弃` | 滑动到底(右)的事件，可以实现无限滚动 |        -        |      -    |
+| onScroll`v1.3.8`  | 滑动到底(右)的事件，可以实现无限滚动 |        -        |      -    |
 
 
 

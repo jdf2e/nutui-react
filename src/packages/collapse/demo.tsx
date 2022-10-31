@@ -28,7 +28,7 @@ const CollapseDemo = () => {
       content2: '在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！',
       content3: '全面使用 TypeScipt',
       subTitle: '文本内容',
-      buttonTextOnoe: '改变数据',
+      buttonTextOne: '改变数据',
       buttonTextSec: '还原数据',
       oldDate: [
         {
@@ -79,7 +79,7 @@ const CollapseDemo = () => {
       content2: '在產品的功能、體驗、易用性和靈活性等各個方面做了全面的升級',
       content3: '全面使用 TypeScipt',
       subTitle: '文本內容',
-      buttonTextOnoe: '改變數據',
+      buttonTextOne: '改變數據',
       buttonTextSec: '還原數據',
       oldDate: [
         {
@@ -188,6 +188,7 @@ const CollapseDemo = () => {
       <div className="demo">
         <h2>{translated.header1}</h2>
         <Collapse
+          className="test"
           activeName={['1', '2']}
           icon="arrow-down"
           iconSize="16"
@@ -206,7 +207,7 @@ const CollapseDemo = () => {
         <h2>{translated.header2}</h2>
         <Collapse
           activeName={['1', '2']}
-          change={(isOpen, name) => changeEnv(isOpen, name)}
+          onChange={(isOpen, name) => changeEnv(isOpen, name)}
         >
           <CollapseItem title={translated.title1} name="1">
             {translated.content1}

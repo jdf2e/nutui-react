@@ -70,7 +70,7 @@ test('alt props', () => {
 test('should emit active-avatarror event', () => {
   const activeAvatar = jest.fn()
   const { getByTestId } = render(
-    <Avatar data-testid="avatar-click" activeAvatar={activeAvatar} />
+    <Avatar data-testid="avatar-click" onActiveAvatar={activeAvatar} />
   )
   fireEvent.click(getByTestId('avatar-click'))
   expect(activeAvatar).toBeCalled()

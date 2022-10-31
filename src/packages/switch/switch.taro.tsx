@@ -12,7 +12,7 @@ export interface SwitchProps {
   inactiveText: string
   className: string
   style: React.CSSProperties
-  change: (val: boolean, event: React.MouseEvent) => void
+  onChange: (val: boolean, event: React.MouseEvent) => void
 }
 const defaultProps = {
   isAsync: false,
@@ -33,7 +33,7 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
     inactiveColor,
     activeText,
     inactiveText,
-    change,
+    onChange,
     className,
     style,
   } = {
@@ -68,7 +68,7 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
     if (!isAsync) {
       setValue(!value)
     }
-    change && change(!value, event)
+    onChange && onChange(!value, event)
   }
   return (
     <div className={classes()} onClick={(e) => onClick(e)} style={styles()}>

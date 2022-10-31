@@ -53,7 +53,7 @@ test('prop isLink', () => {
 test('emit click event', () => {
   const testClick = jest.fn()
   const { getByTestId } = render(
-    <Cell data-testid="emit-click" click={() => testClick()} />
+    <Cell data-testid="emit-click" onClick={() => testClick()} />
   )
   fireEvent.click(getByTestId('emit-click'))
   expect(testClick).toBeCalled()

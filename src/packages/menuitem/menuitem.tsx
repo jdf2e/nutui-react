@@ -101,7 +101,6 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
     setTimeout(() => {
       const p = parent.parent().current
       const rect = p.getBoundingClientRect()
-      console.log(rect, p.offsetTop, window.screenTop)
       setPosition({
         height: rect.height,
         top: rect.top,
@@ -155,13 +154,21 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
         }}
       />
       <div
-        className="nut-menu-item__wrap"
+        className={
+          direction === 'down'
+            ? 'nut-menu-item__wrap'
+            : 'nut-menu-item__wrap-up'
+        }
         style={{
-          ...getPosition(),
+          // ...getPosition(),
           ...isShow(),
         }}
       >
-        <CSSTransition in={_showPopup} timeout={100} classNames="menu-item">
+        <CSSTransition
+          in={_showPopup}
+          timeout={100}
+          classNames={direction === 'down' ? 'menu-item' : 'menu-item-up'}
+        >
           <div className="nut-menu-item__content">
             {options?.map((item, index) => {
               return (
