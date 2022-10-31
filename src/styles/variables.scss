@@ -45,6 +45,7 @@ $font-size-small: $font-size-1;
 $font-size-base: $font-size-2;
 $font-size-large: $font-size-3;
 $line-height-base: 1.5 !default;
+
 // button
 $button-border-radius: 25px;
 $button-border-width: 1px;
@@ -101,7 +102,6 @@ $button-plain-background-color: #fff;
 $button-plain-background-color: $white;
 
 // cell
-
 $cell-color: $title-color2 !default;
 $cell-title-font: $font-size-2 !default;
 $cell-title-desc-font: $font-size-1 !default;
@@ -119,7 +119,6 @@ $cell-large-padding: 15px 16px !default;
 $cell-background: $white !default;
 
 // cell-group
-
 $cell-group-title-padding: 0 10px !default;
 $cell-group-title-color: #909ca4 !default;
 $cell-group-title-font-size: $font-size-2 !default;
@@ -129,14 +128,13 @@ $cell-group-desc-color: #909ca4 !default;
 $cell-group-desc-font-size: $font-size-1 !default;
 $cell-group-desc-line-height: 16px !default;
 $cell-group-background-color: $white !default;
-// icon
 
+// icon
 $icon-height: 20px;
 $icon-width: 20px;
 $icon-line-height: 20px;
 
 // uploader
-
 $uploader-picture-width: 100px !default;
 $uploader-picture-height: 100px !default;
 $uploader-background: #f7f8fa !default;
@@ -149,7 +147,6 @@ $input-font-size: $font-size-2 !default;
 $input-padding: 10px 25px !default;
 
 // textarea
-
 $textarea-font: $font-size-2;
 $textarea-height: 100px;
 $textarea-limit-color: $text-color;
@@ -157,7 +154,6 @@ $textarea-text-color: $title-color;
 $textarea-disabled-color: $disable-color;
 
 // inputnumber
-
 $inputnumber-icon-color: $title-color;
 $inputnumber-icon-void-color: $disable-color;
 $inputnumber-input-background-color: $help-color;
@@ -279,12 +275,10 @@ $notify-warning-background-color: linear-gradient(
 );
 
 // rate
-
 $rate-icon-color: $primary-color;
 $rate-icon-void-color: $disable-color;
 
 // tabbar
-
 $tabbar-active-color: $primary-color !default;
 $tabbar-unactive-color: $primary-color !default;
 $tabbar-border-top: 1px solid #eee !default;
@@ -698,3 +692,18 @@ $grid-item-content-bg-color: $white !default;
 $grid-item-text-margin: 8px !default;
 $grid-item-text-color: $title-color2 !default;
 $grid-item-text-font-size: $font-size-1 !default;
+
+// form
+$form-item-error-line-color: $required-color !default;
+$form-item-required-color: $required-color !default;
+$form-item-error-message-color: $required-color !default;
+$form-item-label-font-size: 14px !default;
+$form-item-label-width: 90px !default;
+$form-item-label-margin-right: 10px !default;
+$form-item-label-text-align: left !default;
+$form-item-required-margin-right: 4px !default;
+$form-item-body-font-size: 14px !default;
+$form-item-body-slots-text-align: left !default;
+$form-item-body-input-text-align: left !default;
+$form-item-tip-font-size: 10px !default;
+$form-item-tip-text-align: left !default;

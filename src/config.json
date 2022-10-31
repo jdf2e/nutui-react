@@ -581,6 +581,17 @@
           "show": true,
           "taro": true,
           "author": "hanyuxinting"
+        },
+        {
+          "version": "1.0.0",
+          "name": "FormItem",
+          "type": "component",
+          "cName": "表单元素",
+          "desc": "表单元素",
+          "sort": 20,
+          "show": false,
+          "taro": true,
+          "author": "hanyuxinting"
         }
       ]
     },
