@@ -30,9 +30,7 @@ export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
       {titleSlot || (
         <>{title ? <div className={b('title')}>{title}</div> : null}</>
       )}
-      {descSlot || (
-        <>{title ? <div className={b('desc')}>{desc}</div> : null}</>
-      )}
+      {descSlot || <>{desc ? <div className={b('desc')}>{desc}</div> : null}</>}
 
       <div className={b('wrap')}>{children}</div>
     </div>
