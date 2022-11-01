@@ -1,4 +1,11 @@
 @import '../icon/icon';
+.nut-theme-dark {
+  .nut-cell {
+    background: $dark-background2;
+    color: $dark-color;
+    box-shadow: none;
+  }
+}
 
 .nut-cell {
   position: relative;
