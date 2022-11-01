@@ -7,7 +7,7 @@
 ### 安装
 
 ```javascript
-import { BackTop } from '@nutui/nutui-react';
+import { BackTop } from '@/packages/nutui.react.taro'
 ```
 
 ## 代码演示
@@ -18,7 +18,7 @@ import { BackTop } from '@nutui/nutui-react';
 
 ```tsx
 import  React from "react";
-import { BackTop } from '@nutui/nutui-react';
+import { BackTop } from '@/packages/nutui.react.taro'
 
 const App = () => {
   const cellStyle = {
@@ -74,7 +74,7 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { BackTop } from '@nutui/nutui-react';
+import { BackTop} from '@/packages/nutui.react.taro'
 
 const App = () => {
     const cellStyle = {
@@ -129,7 +129,7 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { BackTop } from '@nutui/nutui-react';
+import { BackTop, Icon } from '@/packages/nutui.react.taro'
 
 const App = () => {
   const cellStyle = {
@@ -170,7 +170,19 @@ const App = () => {
         <div className="text-data" style={cellStyle}>我是测试数据22</div>
         <div className="text-data" style={cellStyle}>我是测试数据23</div>
         <div className="text-data" style={cellStyle}>我是测试数据24</div>
-        <BackTop  distance={200} bottom={50}><div>无</div></BackTop>
+        <BackTop  distance={200} bottom={50}>
+            <div
+            className="backtop-demo"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Icon size="12px" className="nut-backtop-main" name="top" />
+            <div style={{ fontSize: '12px' }}>顶部</div>
+          </div>
+        </BackTop>
     </div>
     </>
   );
@@ -185,7 +197,7 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { BackTop } from '@nutui/nutui-react';
+import { BackTop} from '@/packages/nutui.react.taro'
 
 const App = () => {
   const cellStyle = {
@@ -244,7 +256,6 @@ export default App;
 
 | 字段        | 说明                            | 类型    | 默认值 |
 | ----------- | ------------------------------- | ------- | ------ |
-| elId        | 获取监听元素的父级元素         | String  | -      |
 | bottom      | 距离页面底部距离                | Number  | `20`   |
 | right       | 距离页面右侧距离                | Number  | `10`   |
 | distance    | 页面垂直滚动多高后出现          | Number  | `200`  |

@@ -50,6 +50,7 @@ const subPackages = [
     root: 'feedback',
     pages: [
       'pages/actionsheet/index',
+      'pages/backtop/index',
       'pages/drag/index',
       'pages/dialog/index',
       'pages/notify/index',
