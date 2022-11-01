@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
+import autoprefixer from 'autoprefixer'
+
 const config = require('./package.json')
 const atImport = require('postcss-import')
 const path = require('path')
@@ -7,8 +9,8 @@ const path = require('path')
 const { resolve } = path
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/theme-react',
-  publicDir: './src/sites/',
+  base: '/theme-react/',
+  publicDir: './src/sites/assets',
   server: {
     port: 2022,
     host: '0.0.0.0',
@@ -26,9 +28,6 @@ export default defineConfig({
     },
     open: '/theme-react/theme.html#/',
   },
-  preview: {
-    open: '/theme.html',
-  },
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
@@ -42,7 +41,7 @@ export default defineConfig({
       postcss: {
         plugins: [
           atImport({ path: path.join(__dirname, 'src`') }),
-          require('autoprefixer')({
+          autoprefixer({
             overrideBrowserslist: [
               '> 0.5%',
               'last 2 versions',
@@ -59,10 +58,11 @@ export default defineConfig({
   build: {
     target: 'es2015',
     outDir: './dist/theme-react/',
+    emptyOutDir: true,
     cssCodeSplit: true,
     rollupOptions: {
       input: {
-        doc: resolve(__dirname, 'theme.html'),
+        theme: resolve(__dirname, 'theme.html'),
         mobile: resolve(__dirname, 'demo.html'),
       },
     },
