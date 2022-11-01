@@ -152,6 +152,42 @@ export default RadioGroupLast;
 
 :::
 
+## Render radios by configuring options
+
+:::demo
+
+```tsx
+import React, { useState } from 'react';
+import { Radio, RadioGroup } from '@nutui/nutui-react';
+
+const RadioGroupOptions = () => {
+  const [radioVal, setRadioVal] = useState('1')
+  const [optionsDemo1, setOptionsDemo1] = useState([
+    {
+      label: 'Option1',
+      value: '1',
+    },
+    {
+      label: 'Option2',
+      value: '2',
+      disabled: true,
+    },
+    {
+      label: 'Option3',
+      value: '3',
+    },
+  ])
+  const handleChange = (v) => {
+    console.log(v)
+    setRadioVal(v)
+  }
+  return <RadioGroup options={optionsDemo1} value={radioVal} onChange={handleChange}></RadioGroup>
+}
+export default RadioGroupOptions;
+```
+
+:::
+
 ## Prop
 
 ### Radio

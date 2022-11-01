@@ -53,18 +53,19 @@ const RadioDemo = () => {
 
   const [checked1] = useState(true)
   const [radioVal, setRadioVal] = useState(1)
+  const [radioVal1, setRadioVal1] = useState('1')
   const [optionsDemo1, setOptionsDemo1] = useState([
     {
-      label: '选项一',
+      label: '选项1',
       value: '1',
     },
     {
-      label: '选项二',
+      label: '选项2',
       value: '2',
       disabled: true,
     },
     {
-      label: '选项三',
+      label: '选项3',
       value: '3',
     },
   ])
@@ -72,6 +73,11 @@ const RadioDemo = () => {
   function handleChange(val: number | string | boolean) {
     console.log(val)
     setRadioVal(val as number)
+  }
+
+  function handleChange1(val: number | string | boolean) {
+    console.log(val)
+    setRadioVal1(val as string)
   }
 
   return (
@@ -188,7 +194,11 @@ const RadioDemo = () => {
         <h2>{translated.options}</h2>
         <CellGroup>
           <Cell>
-            <RadioGroup options={optionsDemo1} value={radioVal}></RadioGroup>
+            <RadioGroup
+              options={optionsDemo1}
+              value={radioVal1}
+              onChange={(e) => handleChange1(e)}
+            ></RadioGroup>
           </Cell>
         </CellGroup>
       </div>
