@@ -1,5 +1,27 @@
 @import '../../styles/mixins/index';
 @import '../tabpane/tabpane.scss';
+.nut-theme-dark {
+  .nut-tabs {
+    &__titles {
+      background: $dark-background3;
+      &-item {
+        color: $dark-color-gray;
+        &.active {
+          color: $dark-color;
+        }
+      }
+    }
+    &.vertical {
+      .nut-tabs__titles {
+        &-item {
+          &.active {
+            background-color: $dark-background2;
+          }
+        }
+      }
+    }
+  }
+}
 
 .nut-tabs {
   display: flex;
