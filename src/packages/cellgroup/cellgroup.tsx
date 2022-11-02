@@ -7,26 +7,26 @@ export interface CellGroupProps {
   desc: ReactNode
   titleSlot: ReactNode
   descSlot: ReactNode
-  classPrefix: string
+  className: string
   children?: ReactNode
 }
 const defaultProps = {
   title: '',
   desc: '',
+  className: '',
   titleSlot: null,
   descSlot: null,
-  classPrefix: 'nutui-cell-group',
 } as CellGroupProps
 export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
   props
 ) => {
-  const { children, classPrefix, title, desc, titleSlot, descSlot } = {
+  const { children, className, title, desc, titleSlot, descSlot } = {
     ...defaultProps,
     ...props,
   }
   const b = bem('cell-group')
   return (
-    <div className={b(null, [classPrefix])}>
+    <div className={b(null, [className])}>
       {titleSlot || (
         <>{title ? <div className={b('title')}>{title}</div> : null}</>
       )}
