@@ -42,7 +42,7 @@ export interface DatePickerProps {
     values: (string | number)[],
     options: PickerOption[]
   ) => void
-  onChange: (
+  onChange?: (
     columnIndex: string | number,
     values: (string | number)[],
     options: PickerOption[]
@@ -62,7 +62,8 @@ const defaultProps = {
 } as DatePickerProps
 
 export const DatePicker: FunctionComponent<
-  Partial<DatePickerProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<DatePickerProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const {
     minDate,
@@ -77,6 +78,7 @@ export const DatePicker: FunctionComponent<
     onCloseDatePicker,
     onConfirmDatePicker,
     filter,
+    onChange,
     threeDimensional,
     className,
     style,
