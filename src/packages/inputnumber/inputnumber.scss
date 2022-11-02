@@ -22,7 +22,7 @@
 }
 
 .nut-inputnumber {
-  display: flex;
+  display: $inputnumber-display;
   align-items: center;
 
   &--disabled {
@@ -47,8 +47,8 @@
     height: 100%;
     text-align: center;
     outline: none;
-    border: 0;
-    margin: 0 6px;
+    border: $inputnumber-input-border;
+    margin: $inputnumber-input-margin;
     background-color: $inputnumber-input-background-color;
     border-radius: $inputnumber-input-border-radius;
   }
