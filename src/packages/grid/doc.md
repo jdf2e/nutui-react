@@ -242,3 +242,9 @@ export default App
 | icon                 | [图标名称](#/icon) 或图片链接                                                              | string  \| ReactNode   | -          |
 | iconSize            | 图标大小，如 `20px` `2em` `2rem`                                                          | number \| string   | `28px`     |
 | iconColor           | 图标颜色                                                                                  | string            | -           |
+
+### GridItem Event
+
+| 参数                  | 说明                                                                                     | 回调参数    |
+|----------------------|-----------------------------------------------------------------------------------------|--------------------|
+| onClick                 | 点击格子时触发                                                                         | event: Event      |

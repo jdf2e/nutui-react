@@ -1,4 +1,25 @@
 @import '../icon/icon.scss';
+.nut-theme-dark {
+  .nut-collapse-item {
+    .collapse-item {
+      background: $dark-background;
+      color: $dark-color;
+      box-shadow: none;
+    }
+    .collapse-wrapper {
+      .collapse-content,
+      .collapse-extraRender {
+        background: $dark-background;
+        color: $dark-color;
+      }
+    }
+    .collapse-extraWrapper {
+      .collapse-extraRender {
+        background: $dark-background;
+      }
+    }
+  }
+}
 
 .nut-collapseitem {
 }
