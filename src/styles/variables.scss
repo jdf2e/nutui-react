@@ -17,11 +17,18 @@ $white: #fff;
 $black: #000;
 $required-color: #fa2c19 !default;
 
-$dark-background: #1a1919 !default;
-$dark-background2: #1d1b1c !default;
+$dark-background: #131313 !default;
+$dark-background2: #1b1b1b !default;
 $dark-background3: #141414 !default;
+$dark-background4: #323233 !default;
+$dark-background5: #646566 !default;
+$dark-background6: #380e08 !default;
+$dark-background7: #707070 !default;
 $dark-color: $white !default;
+$dark-color2: #f2270c !default;
+$dark-color3: rgba(232, 230, 227, 0.8) !default;
 $dark-color-gray: $text-color !default;
+$dark-calendar-choose-color: rgba(227, 227, 227, 0.2) !default;
 
 // padding
 $padding-xs: 12px;
@@ -698,3 +705,5 @@ $grid-item-content-bg-color: $white !default;
 $grid-item-text-margin: 8px !default;
 $grid-item-text-color: $title-color2 !default;
 $grid-item-text-font-size: $font-size-1 !default;
+
+$timeselect-timedetail-item-cur-text-color: $primary-color !default;

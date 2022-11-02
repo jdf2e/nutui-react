@@ -1,5 +1,23 @@
 @import '../timepannel/timepannel.scss';
 @import '../timedetail/timedetail.scss';
+.nut-theme-dark {
+  .nut-timeselect {
+    background-color: $dark-background2;
+    &__title {
+      background-color: $dark-background2;
+      color: $dark-color;
+    }
+    &__content {
+      &__pannel {
+        background-color: $dark-background3;
+        color: $dark-color;
+      }
+      &__detail {
+        background-color: $dark-background2;
+      }
+    }
+  }
+}
 
 .nut-timeselect {
   display: flex;
