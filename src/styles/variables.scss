@@ -112,7 +112,7 @@ $button-warning-background-color: linear-gradient(
   rgba(255, 182, 13, 1) 83%,
   rgba(255, 190, 13, 1) 100%
 ) !default;
-$button-plain-background-color: #fff !default;
+
 $button-plain-background-color: $white !default;
 $button-small-round-border-radius: $button-border-radius !default;
 
@@ -238,7 +238,7 @@ $actionsheet-item-font-color: $title-color !default;
 //shortpassword（✅）
 $shortpassword-background-color: rgba(245, 245, 245, 1) !default;
 $shortpassword-border-color: #ddd !default;
-$shortpassword-error: rgba(242, 39, 12, 1) !default;
+$shortpassword-error: $primary-color !default;
 $shortpassword-forget: rgba(128, 128, 128, 1) !default;
 
 //numberkeyboard（✅）
@@ -498,12 +498,11 @@ $checkbox-icon-disable-color2: $help-color !default;
 
 //radio（✅）
 $radio-label-font-color: #1d1e1e !default;
-$radio-label-font-active-color: #f0250f !default;
+$radio-label-font-active-color: $primary-color !default;
 $radio-label-disable-color: #999 !default;
 $radio-icon-disable-color: #d6d6d6 !default;
-
-$radio-label-button-border-color: #f0250f !default;
-$radio-label-button-background: rgba(240, 37, 15, 0.05) !default;
+$radio-label-button-border-color: $primary-color !default;
+$radio-label-button-background: rgba($primary-color, 0.05) !default;
 $radio-label-margin-left: 15px !default;
 $radio-button-border-radius: 15px !default;
 $radio-label-font-size: 14px !default;
@@ -525,8 +524,8 @@ $fixednav-font-color: $black !default;
 $fixednav-index: 201 !default;
 $fixednav-btn-bg: linear-gradient(
   135deg,
-  rgba(250, 25, 44, 1) 0%,
-  rgba(250, 63, 25, 1) 100%
+  $primary-color 0%,
+  $primary-color-end 100%
 ) !default;
 $fixednav-item-active-color: $primary-color !default;
 
@@ -592,7 +591,6 @@ $tag-danger-background-color-plain: #df3526 !default;
 $tag-warning-background-color: #f3812e !default;
 $tag-default-color: #ffffff !default;
 $tag-border-width: 1px !default;
-
 $tag-plain-background-color: #fff !default;
 $tag-plain-color: rgb(250, 36, 0) !default;
 $tag-height: auto !default;
@@ -638,6 +636,7 @@ $progress-inner-background-color: linear-gradient(
 $progress-insidetext-background: $progress-inner-background-color !default;
 $progress-outer-background-color: #f3f3f3 !default;
 $progress-outer-border-radius: 12px !default;
+$progress-insidetext-border-radius: 5px !default;
 $progress-insidetext-padding: 3px 5px 3px 6px !default;
 $progress-insidetext-top: -42% !default;
 $progress-small-text-top: -100% !default;
@@ -647,13 +646,14 @@ $progress-small-height: 5px !default;
 $progress-small-text-font-size: 7px !default;
 $progress-small-text-line-height: 10px !default;
 $progress-small-text-padding: 2px 4px !default;
+$progress-small-text-top: -100% !default;
 $progress-base-font-size: 9px !default;
 $progress-base-padding: 0 5px !default;
 $progress-base-height: 10px !default;
 $progress-base-text-font-size: 9px !default;
-$progress-base-text-top: $progress-insidetext-top !default;
-$progress-base-text-padding: $progress-insidetext-padding !default;
 $progress-base-text-line-height: 13px !default;
+$progress-base-text-padding: $progress-insidetext-padding !default;
+$progress-base-text-top: $progress-insidetext-top !default;
 $progress-large-font-size: 13px !default;
 $progress-large-padding: 0 5px !default;
 $progress-large-height: 15px !default;
@@ -668,10 +668,8 @@ $pagination-font-size: $font-size-2 !default;
 $pagination-item-border-color: #e4e7eb !default;
 $pagination-active-background-color: linear-gradient(
   135deg,
-  rgba(250, 44, 25, 1) 0%,
-  rgba(250, 63, 25, 1) 44.59259259%,
-  rgba(250, 89, 25, 1) 83.40740741%,
-  rgba(250, 100, 25, 1) 100%
+  $primary-color 0%,
+  $primary-color-end 100%
 ) !default;
 $pagination-disable-color: rgba(116, 116, 116, 0.31) !default;
 $pagination-disable-background-color: #f7f8fa !default;
@@ -772,22 +770,21 @@ $searchbar-input-bar-color: inherit !default;
 $searchbar-input-bar-placeholder-color: inherit !default;
 
 // empty（✅）
-$empty-description-line-height: 20px !default;
-$empty-description-padding: 0 40px !default;
+
 $empty-padding: 32px 0 !default;
 $empty-image-size: 170px !default;
 $empty-description-margin-top: 4px !default;
 $empty-description-color: #666666 !default;
 $empty-description-font-size: 14px !default;
+$empty-description-line-height: 20px !default;
+$empty-description-padding: 0 40px !default;
 
 // cascader（✅）
-$cascader-font-size: 14px !default;
+$cascader-font-size: $font-size-2 !default;
 $cascader-line-height: 22px !default;
 $cascader-title-padding: 24px 20px 17px !default;
 $cascader-title-font-size: 18px !default;
 $cascader-title-line-height: 20px !default;
-$cascader-item-font-size: 14px !default;
-$cascader-item-active-color: #fa2c19 !default;
 $cascader-pane-height: 342px !default;
 $cascader-pane-paddingTop: 10px !default;
 $cascader-icon-checklist-marginLeft: 10px !default;
@@ -798,6 +795,8 @@ $cascader-bar-line-height: 20px !default;
 $cascader-bar-color: $title-color !default;
 $cascader-item-padding: 10px 20px !default;
 $cascader-item-color: $title-color !default;
+$cascader-item-font-size: $font-size-2 !default;
+$cascader-item-active-color: $primary-color !default;
 
 // form（✅ todo：react版本该组件暂无，将变量先迁过来）
 $form-item-error-line-color: $required-color !default;
