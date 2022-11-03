@@ -17,11 +17,18 @@ $white: #fff;
 $black: #000;
 $required-color: #fa2c19 !default;
 
-$dark-background: #1a1919 !default;
-$dark-background2: #1d1b1c !default;
+$dark-background: #131313 !default;
+$dark-background2: #1b1b1b !default;
 $dark-background3: #141414 !default;
+$dark-background4: #323233 !default;
+$dark-background5: #646566 !default;
+$dark-background6: #380e08 !default;
+$dark-background7: #707070 !default;
 $dark-color: $white !default;
+$dark-color2: #f2270c !default;
+$dark-color3: rgba(232, 230, 227, 0.8) !default;
 $dark-color-gray: $text-color !default;
+$dark-calendar-choose-color: rgba(227, 227, 227, 0.2) !default;
 
 // padding
 $padding-xs: 12px;
@@ -34,71 +41,71 @@ $animation-duration: 0.25s !default;
 $animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
 
 // Font
-$font-size-0: 10px;
-$font-size-1: 12px;
-$font-size-2: 14px;
-$font-size-3: 16px;
-$font-size-4: 18px;
-$font-weight-bold: 400;
+$font-size-0: 10px !default;
+$font-size-1: 12px !default;
+$font-size-2: 14px !default;
+$font-size-3: 16px !default;
+$font-size-4: 18px !default;
+$font-weight-bold: 400 !default;
 
-$font-size-small: $font-size-1;
-$font-size-base: $font-size-2;
-$font-size-large: $font-size-3;
+$font-size-small: $font-size-1 !default;
+$font-size-base: $font-size-2 !default;
+$font-size-large: $font-size-3 !default;
 $line-height-base: 1.5 !default;
 // button
-$button-border-radius: 25px;
-$button-border-width: 1px;
-$button-default-bg-color: $white;
-$button-default-border-color: rgba(204, 204, 204, 1);
-$button-default-color: rgba(102, 102, 102, 1);
-$button-small-height: 28px;
-$button-default-height: 38px;
-$button-large-height: 48px;
-$button-large-line-height: 46px;
-$button-small-line-height: 26px;
-$button-block-height: 48px;
-$button-default-line-height: 36px;
-$button-block-line-height: 46px;
-$button-default-font-size: $font-size-2;
-$button-disabled-opacity: 0.68;
-$button-primary-color: $white;
-$button-primary-border-color: $primary-color;
+$button-border-radius: 25px !default;
+$button-border-width: 1px !default;
+$button-default-bg-color: $white !default;
+$button-default-border-color: rgba(204, 204, 204, 1) !default;
+$button-default-color: rgba(102, 102, 102, 1) !default;
+$button-small-height: 28px !default;
+$button-default-height: 38px !default;
+$button-large-height: 48px !default;
+$button-large-line-height: 46px !default;
+$button-small-line-height: 26px !default;
+$button-block-height: 48px !default;
+$button-default-line-height: 36px !default;
+$button-block-line-height: 46px !default;
+$button-default-font-size: $font-size-2 !default;
+$button-disabled-opacity: 0.68 !default;
+$button-primary-color: $white !default;
+$button-primary-border-color: $primary-color !default;
 $button-primary-background-color: linear-gradient(
   135deg,
   $primary-color 0%,
   $primary-color-end 100%
-);
-$button-info-color: $white;
-$button-info-border-color: #496af2;
+) !default;
+$button-info-color: $white !default;
+$button-info-border-color: #496af2 !default;
 $button-info-background-color: linear-gradient(
   315deg,
   rgba(73, 143, 242, 1) 0%,
   rgba(73, 101, 242, 1) 100%
-);
-$button-success-color: $white;
-$button-success-border-color: rgba(38, 191, 38, 1);
+) !default;
+$button-success-color: $white !default;
+$button-success-border-color: rgba(38, 191, 38, 1) !default;
 $button-success-background-color: linear-gradient(
   135deg,
   rgba(38, 191, 38, 1) 0%,
   rgba(39, 197, 48, 1) 45%,
   rgba(40, 207, 63, 1) 83%,
   rgba(41, 212, 70, 1) 100%
-);
+) !default;
 
-$button-danger-color: $white;
-$button-danger-border-color: rgba(250, 44, 25, 1);
-$button-danger-background-color: rgba(250, 44, 25, 1);
-$button-warning-color: $white;
-$button-warning-border-color: rgba(255, 158, 13, 1);
+$button-danger-color: $white !default;
+$button-danger-border-color: rgba(250, 44, 25, 1) !default;
+$button-danger-background-color: rgba(250, 44, 25, 1) !default;
+$button-warning-color: $white !default;
+$button-warning-border-color: rgba(255, 158, 13, 1) !default;
 $button-warning-background-color: linear-gradient(
   135deg,
   rgba(255, 158, 13, 1) 0%,
   rgba(255, 167, 13, 1) 45%,
   rgba(255, 182, 13, 1) 83%,
   rgba(255, 190, 13, 1) 100%
-);
-$button-plain-background-color: #fff;
-$button-plain-background-color: $white;
+) !default;
+$button-plain-background-color: #fff !default;
+$button-plain-background-color: $white !default;
 
 // cell
 
@@ -131,9 +138,9 @@ $cell-group-desc-line-height: 16px !default;
 $cell-group-background-color: $white !default;
 // icon
 
-$icon-height: 20px;
-$icon-width: 20px;
-$icon-line-height: 20px;
+$icon-height: 20px !default;
+$icon-width: 20px !default;
+$icon-line-height: 20px !default;
 
 // uploader
 
@@ -150,49 +157,49 @@ $input-padding: 10px 25px !default;
 
 // textarea
 
-$textarea-font: $font-size-2;
-$textarea-height: 100px;
-$textarea-limit-color: $text-color;
-$textarea-text-color: $title-color;
-$textarea-disabled-color: $disable-color;
+$textarea-font: $font-size-2 !default;
+$textarea-height: 100px !default;
+$textarea-limit-color: $text-color !default;
+$textarea-text-color: $title-color !default;
+$textarea-disabled-color: $disable-color !default;
 
 // inputnumber
 
-$inputnumber-icon-color: $title-color;
-$inputnumber-icon-void-color: $disable-color;
-$inputnumber-input-background-color: $help-color;
-$inputnumber-input-border-radius: 4px;
-$inputnumber-input-width: 40px;
-$inputnumber-icon-size: 20px;
+$inputnumber-icon-color: $title-color !default;
+$inputnumber-icon-void-color: $disable-color !default;
+$inputnumber-input-background-color: $help-color !default;
+$inputnumber-input-border-radius: 4px !default;
+$inputnumber-input-width: 40px !default;
+$inputnumber-icon-size: 20px !default;
 
 // actionsheet
 $zindex-actionsheet: 10001 !default;
 $body-background: #f6f6f6 !default;
 $light-color: #f6f6f6 !default;
-$font-size-base: $font-size-2;
-$font-size-small: $font-size-1;
+$font-size-base: $font-size-2 !default;
+$font-size-small: $font-size-1 !default;
 
 //shortpassword
-$shortpsd-background-color: rgba(245, 245, 245, 1);
-$shortpsd-border-color: #ddd;
-$shortpsd-error: rgba(242, 39, 12, 1);
-$shortpsd-forget: rgba(128, 128, 128, 1);
+$shortpsd-background-color: rgba(245, 245, 245, 1) !default;
+$shortpsd-border-color: #ddd !default;
+$shortpsd-error: rgba(242, 39, 12, 1) !default;
+$shortpsd-forget: rgba(128, 128, 128, 1) !default;
 
 //price
-$price-big-size: 24px;
+$price-big-size: 24px !default;
 
 //avatar
-$avatar-square: 5px;
-$avatar-large-width: 60px;
-$avatar-large-height: 60px;
-$avatar-small-width: 32px;
-$avatar-small-height: 32px;
-$avatar-normal-width: 40px;
-$avatar-normal-height: 40px;
+$avatar-square: 5px !default;
+$avatar-large-width: 60px !default;
+$avatar-large-height: 60px !default;
+$avatar-small-width: 32px !default;
+$avatar-small-height: 32px !default;
+$avatar-normal-width: 40px !default;
+$avatar-normal-height: 40px !default;
 
 //switch
-$switch-close-bg-color: #ebebeb;
-$switch-close--cline-bg-color: #f0f0f0;
+$switch-close-bg-color: #ebebeb !default;
+$switch-close--cline-bg-color: #f0f0f0 !default;
 
 // toast
 $toast-title-font-size: 16px !default;
@@ -204,7 +211,7 @@ $toast-inner-border-radius: 12px !default;
 $toast-cover-bg-color: rgba(0, 0, 0, 0) !default;
 
 //backtop
-$backtop-border-color: #e0e0e0;
+$backtop-border-color: #e0e0e0 !default;
 
 // calendar
 $calendar-primary-color: $primary-color !default;
@@ -226,17 +233,17 @@ $calendar-day67-font-color: $primary-color !default;
 $calendar-top-slot-height: 24px !default;
 
 //overlay
-$overlay-bg-color: rgba(0, 0, 0, 0.7);
+$overlay-bg-color: rgba(0, 0, 0, 0.7) !default;
 
 //popup
-$popup-close-icon-margin: 16px;
-$popup-border-radius: 20px;
+$popup-close-icon-margin: 16px !default;
+$popup-border-radius: 20px !default;
 
 // Notify
-$notify-text-color: $white;
-$notify-padding: 12px 0;
-$notify-font-size: 14px;
-$notify-height: 44px;
+$notify-text-color: $white !default;
+$notify-padding: 12px 0 !default;
+$notify-font-size: 14px !default;
+$notify-height: 44px !default;
 
 // NoticeBar
 $noticebar-background: rgba(251, 248, 220, 1) !default;
@@ -258,30 +265,30 @@ $notify-base-background-color: linear-gradient(
   rgba(250, 63, 25, 1) 45%,
   rgba(250, 89, 25, 1) 83%,
   rgba(250, 100, 25, 1) 100%
-);
+) !default;
 $notify-primary-background-color: linear-gradient(
   315deg,
   rgba(73, 143, 242, 1) 0%,
   rgba(73, 101, 242, 1) 100%
-);
+) !default;
 $notify-success-background-color: linear-gradient(
   135deg,
   rgba(38, 191, 38, 1) 0%,
   rgba(39, 197, 48, 1) 45%,
   rgba(40, 207, 63, 1) 83%,
   rgba(41, 212, 70, 1) 100%
-);
-$notify-danger-background-color: rgba(250, 50, 25, 1);
+) !default;
+$notify-danger-background-color: rgba(250, 50, 25, 1) !default;
 $notify-warning-background-color: linear-gradient(
   135deg,
   rgba(255, 93, 13, 1) 0%,
   rgba(255, 154, 13, 1) 100%
-);
+) !default;
 
 // rate
 
-$rate-icon-color: $primary-color;
-$rate-icon-void-color: $disable-color;
+$rate-icon-color: $primary-color !default;
+$rate-icon-void-color: $disable-color !default;
 
 // tabbar
 
@@ -294,7 +301,7 @@ $tabbar-item-text-font-size: $font-size-0 !default;
 $tabbar-item-text-line-height: initial !default;
 
 //infiniteloading
-$infinite-bottom-color: #c8c8c8;
+$infinite-bottom-color: #c8c8c8 !default;
 
 //range
 $range-tip-font-color: #333333 !default;
@@ -315,7 +322,7 @@ $address-region-tab-line: linear-gradient(
   90deg,
   $primary-color 0%,
   $primary-color-end 100%
-);
+) !default;
 
 //steps
 $steps-base-icon-width: 25px !default;
@@ -347,7 +354,7 @@ $steps-process-title-color: $primary-color !default;
 $steps-process-icon-text-color: $primary-color !default;
 
 // dialog
-$dialog-width: 296px;
+$dialog-width: 296px !default;
 
 // checkbox
 $checkbox-label-color: #1d1e1e !default;
@@ -367,21 +374,21 @@ $radio-label-button-border-color: #f0250f !default;
 $radio-label-button-background: rgba(240, 37, 15, 0.05) !default;
 
 // signature
-$signature-border-color: #dadada;
-$signature-border-width: 1px;
-$signature-height: 10rem;
-$signature-margin-bottom: 1rem;
-$signature-btn-margin-right: 15px;
+$signature-border-color: #dadada !default;
+$signature-border-width: 1px !default;
+$signature-height: 10rem !default;
+$signature-margin-bottom: 1rem !default;
+$signature-btn-margin-right: 15px !default;
 
 //fixednav
-$fixednav-bg-color: $white;
-$fixednav-font-color: $black;
-$fixednav-index: 201;
+$fixednav-bg-color: $white !default;
+$fixednav-font-color: $black !default;
+$fixednav-index: 201 !default;
 $fixednav-btn-bg: linear-gradient(
   135deg,
   rgba(250, 25, 44, 1) 0%,
   rgba(250, 63, 25, 1) 100%
-);
+) !default;
 
 // Tag
 $tag-font-size: 12px !default;
@@ -698,3 +705,5 @@ $grid-item-content-bg-color: $white !default;
 $grid-item-text-margin: 8px !default;
 $grid-item-text-color: $title-color2 !default;
 $grid-item-text-font-size: $font-size-1 !default;
+
+$timeselect-timedetail-item-cur-text-color: $primary-color !default;
