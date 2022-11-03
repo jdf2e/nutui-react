@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: yarn install
+      - run:  npm i fs-extra
       - run: node scripts/copy-docs.js
       - name : Sync
         uses : JamesIves/github-pages-deploy-action@4.1.7
