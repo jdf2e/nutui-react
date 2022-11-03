@@ -207,7 +207,7 @@ export default RadioGroupOptions;
 | value       | 當前選取的標識碼，與label值一致時呈選中狀態 | String、Number、Boolean | -          |
 | textPosition | 文本所在的位置，可選值：'left'，'right' | String                  | `right`    |
 | direction     | 使用橫縱方向 可選值 horizontal、vertical | String                  | `vertical` |
-| options `v1.3.9`     | 配置 options 渲染單選按鈕      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
+| options `v1.3.10`     | 配置 options 渲染單選按鈕      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 ## RadioGroup Event
 
