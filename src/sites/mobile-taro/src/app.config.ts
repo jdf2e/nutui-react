@@ -23,6 +23,7 @@ const subPackages = [
       'pages/tabs/index',
       'pages/indicator/index',
       'pages/menu/index',
+      'pages/elevator/index',
     ],
   },
   {
@@ -49,6 +50,7 @@ const subPackages = [
     root: 'feedback',
     pages: [
       'pages/actionsheet/index',
+      'pages/backtop/index',
       'pages/drag/index',
       'pages/dialog/index',
       'pages/notify/index',

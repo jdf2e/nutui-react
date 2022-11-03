@@ -1,5 +1,23 @@
 @import '../timepannel/timepannel.scss';
 @import '../timedetail/timedetail.scss';
+.nut-theme-dark {
+  .nut-timeselect {
+    background-color: $dark-background2;
+    &__title {
+      background-color: $dark-background2;
+      color: $dark-color;
+    }
+    &__content {
+      &__pannel {
+        background-color: $dark-background3;
+        color: $dark-color;
+      }
+      &__detail {
+        background-color: $dark-background2;
+      }
+    }
+  }
+}
 
 .nut-timeselect {
   display: flex;
@@ -7,11 +25,11 @@
   height: 100%;
 
   &__title {
-    height: 50px;
-    line-height: 50px;
+    height: $timeselect-title-height;
+    line-height: $timeselect-title-line-height;
     margin-bottom: 10px;
-    font-size: 14px;
-    color: #1a1a1a;
+    font-size: $timeselect-title-font-size;
+    color: $timeselect-title-color;
     text-align: center;
   }
 

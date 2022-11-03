@@ -1,4 +1,11 @@
 @import '../icon/icon';
+.nut-theme-dark {
+  .nut-cell {
+    background: $dark-background2;
+    color: $dark-color;
+    box-shadow: none;
+  }
+}
 
 .nut-cell {
   position: relative;
@@ -27,9 +34,6 @@
   &--large {
     font-size: $cell-large-title-font;
     padding: $cell-large-padding;
-    .nut-cell__title-desc {
-      font-size: $cell-large-title-desc-font;
-    }
     .nut-cell__subtitle {
       font-size: $cell-large-title-desc-font;
     }

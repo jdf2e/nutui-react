@@ -42,7 +42,7 @@ export interface DatePickerProps {
     values: (string | number)[],
     options: PickerOption[]
   ) => void
-  onChangeDatePicker: (
+  onChange?: (
     columnIndex: string | number,
     values: (string | number)[],
     options: PickerOption[]
@@ -62,7 +62,8 @@ const defaultProps = {
 } as DatePickerProps
 
 export const DatePicker: FunctionComponent<
-  Partial<DatePickerProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<DatePickerProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const {
     minDate,
@@ -77,6 +78,7 @@ export const DatePicker: FunctionComponent<
     onCloseDatePicker,
     onConfirmDatePicker,
     filter,
+    onChange,
     threeDimensional,
     className,
     style,
@@ -189,7 +191,7 @@ export const DatePicker: FunctionComponent<
 
   const ranges = (date?: Date) => {
     const curDate = date || currentDate
-    console.log(11, currentDate)
+
     if (!curDate) return []
     const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } =
       getBoundary('max', curDate)
@@ -305,8 +307,7 @@ export const DatePicker: FunctionComponent<
         setCurrentDate(formatValue(date as Date))
     }
 
-    props.onChangeDatePicker &&
-      props.onChangeDatePicker(index, selectedValue, cacheValueData)
+    props.onChange && props.onChange(index, selectedValue, cacheValueData)
   }
 
   const padZero = (num: number | string, targetLength = 2) => {
