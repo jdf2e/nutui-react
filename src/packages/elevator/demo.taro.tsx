@@ -505,27 +505,27 @@ const ElevatorDemo = () => {
             onClickIndex={(key: string) => onClickIndex(key)}
           />
         </div>
-        <h2>{translated.customContent}</h2>
+        {/* <h2>{translated.customContent}</h2>
         <div className="demo-component">
-          {/* <Elevator
-          className="test-elevator3"
-          indexList={dataList}
-          height="260"
-          onClickItem={(key: string, item: any) => onClickItem(key, item)}
-          onClickIndex={(key: string) => onClickIndex(key)}
-        >
-          <elevatorContext.Consumer>
-            {(value) => {
-              return (
-                <>
-                  <Icon name="JD" size="12" />
-                  <span style={{ marginLeft: '15px' }}>{value?.name}</span>
-                </>
-              )
-            }}
-          </elevatorContext.Consumer>
-        </Elevator> */}
-        </div>
+          <Elevator
+            className="test-elevator3"
+            indexList={dataList}
+            height="260"
+            onClickItem={(key: string, item: unknown) => onClickItem(key, item)}
+            onClickIndex={(key: string) => onClickIndex(key)}
+          >
+            <elevatorContext.Consumer>
+              {(value) => {
+                return (
+                  <>
+                    <Icon name="JD" size="12" />
+                    <span style={{ marginLeft: '15px' }}>{value?.name}</span>
+                  </>
+                )
+              }}
+            </elevatorContext.Consumer>
+          </Elevator>
+        </div> */}
       </div>
     </>
   )

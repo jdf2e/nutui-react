@@ -1,0 +1,52 @@
+.theme-setting {
+  .outline-btn {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 38px;
+    padding: 0 10px;
+    line-height: 1;
+    font-weight: 400;
+    font-size: 14px;
+    border: 1px dashed #2080f0;
+    border-radius: 3px;
+    color: #2080f0;
+    margin-right: 20px;
+  }
+
+  ul {
+    li {
+      list-style: none;
+      margin-bottom: 12px;
+      margin-left: 0px;
+      padding-left: 0px;
+
+      &::before {
+        display: none;
+      }
+
+      .color-picker {
+        width: 300px;
+        margin-left: 20px;
+      }
+
+      p {
+        font-size: 14px;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  .theme-input {
+    padding-left: 0;
+    border: 1px solid #dddbdb;
+    border-radius: 3px;
+
+    .nut-input__label {
+      display: none;
+    }
+
+    .input-text {
+    }
+  }
+}
