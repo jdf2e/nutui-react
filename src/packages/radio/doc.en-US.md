@@ -152,6 +152,42 @@ export default RadioGroupLast;
 
 :::
 
+## Render radios by configuring options
+
+:::demo
+
+```tsx
+import React, { useState } from 'react';
+import { Radio, RadioGroup } from '@nutui/nutui-react';
+
+const RadioGroupOptions = () => {
+  const [radioVal, setRadioVal] = useState('1')
+  const [optionsDemo1, setOptionsDemo1] = useState([
+    {
+      label: 'Option1',
+      value: '1',
+    },
+    {
+      label: 'Option2',
+      value: '2',
+      disabled: true,
+    },
+    {
+      label: 'Option3',
+      value: '3',
+    },
+  ])
+  const handleChange = (v) => {
+    console.log(v)
+    setRadioVal(v)
+  }
+  return <RadioGroup options={optionsDemo1} value={radioVal} onChange={handleChange}></RadioGroup>
+}
+export default RadioGroupOptions;
+```
+
+:::
+
 ## Prop
 
 ### Radio
@@ -172,6 +208,7 @@ export default RadioGroupLast;
 | value       | The identifier of the currently selected item, which is selected when the label value is consistent with the | String、Number、Boolean | -          |
 | textPosition | Where the text is located, optional values: 'left', 'right' | String                  | `right`    |
 | direction     | Use horizontal and vertical directions The optional values horizontal, vertical, | String                  | `vertical` |
+| options `v1.3.10`     | Render radios by configuring options      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 ## RadioGroup Event
 
