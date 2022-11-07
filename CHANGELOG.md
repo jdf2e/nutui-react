@@ -1,3 +1,17 @@
+# v1.3.9
+`2022-11-02`
+
+* :bug: fix: cellgroup组件自定义名称统一为className字段 (#399) @irisSong
+* :bug: fix: GridItem缺少onClick事件;DatePicker修改onChange名 (#394) @yangxiaolu1993
+* :bug: fix: 支持css粘性布局，引起的左右布局bug修复 (#393) @leiyu0932
+* :bug: fix: button 自定义 style 重复生效 (#391) @oasis-cloud
+* :sparkles: chore: 生成多语言用到的 key (#390) @oasis-cloud
+* :bug: fix: 修复cellgroup组件描述判断错误问题 (#389) @irisSong
+* :bug: fix: sass 变量增加 !default (#387) @oasis-cloud
+* :sparkles: docs: icon 大小展示按照从小到大顺序 (#386) @oasis-cloud
+* :bug: fix: elevator组件taro版本适配完成 (#372) @irisSong
+* :sparkles: feat: backtop 组件适配 taro (#376) @vickyYe
+
 # v1.3.8
 `2022-10-26`
 
