@@ -426,7 +426,8 @@ export default App;
 | ------------ | -------------------------------------- | -------------- | ------- |
 | defaultValue | 初始默认值                 | String         | -       |
 | type         | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `textarea` `number` `digit`      | String         | `text`  |
-| name`v1.3.9`  | 组件名字，用于表单提交获取数据 | String         | -       |
+| name`v1.3.10`  | 组件名字，用于表单提交获取数据 | String         | -       |
+| ref`v1.3.10`  | 用于获取内部input实例ref | RefAttributes         | -       |
 | placeholder  | 输入框为空时占位符                           | String         | -       |
 | label        | 左侧文本                               | String         | -       |
 | labelClass`v1.2.1`  | 左侧文本额外类名                        | String | -  |

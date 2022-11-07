@@ -432,7 +432,8 @@ export default App;
 | ------------ | -------------------------------------- | -------------- | ------- |
 | defaultValue | Input value                   | String         | -       |
 | type         | Input type, support all native types and `textarea` `number` `digit` type    | String         | `text`  |
-| name`v1.3.9`  | Used for form submission to obtain data | String         | -       |
+| name`v1.3.10`  | Used for form submission to obtain data | String         | -       |
+| ref`v1.3.10`  | Used to obtain internal input instance ref | RefAttributes         | -       |
 | placeholder  | Placeholder when the input box is empty         | String         | -       |
 | label        | Left text                               | String         | -       |
 | labelClass  | Left text extra class name                      | String | -  |
