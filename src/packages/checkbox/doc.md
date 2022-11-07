@@ -358,6 +358,42 @@ export default CheckBoxDemo;
 ```
 :::
 
+## 配置 options 渲染复选按钮
+
+:::demo
+
+```tsx
+import React, { useState } from 'react';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+
+const CheckboxGroupOptions = () => {
+  const [checkboxVal, setCheckboxValVal] = useState(['1'])
+  const [optionsDemo1, setOptionsDemo1] = useState([
+    {
+      label: '选项1',
+      value: '1',
+    },
+    {
+      label: '选项2',
+      value: '2',
+      disabled: true,
+    },
+    {
+      label: '选项3',
+      value: '3',
+    },
+  ])
+  const handleChange = (v) => {
+    console.log(v)
+    setCheckboxValVal(v)
+  }
+  return <CheckboxGroup options={optionsDemo1} checkedValue={radioVal} onChange={handleChange}></CheckboxGroup>
+}
+export default CheckboxGroupOptions;
+```
+
+:::
+
 ## Checkbox
 
 | 字段                            | 说明 | 类型 | 默认值 | 
@@ -380,6 +416,7 @@ export default CheckBoxDemo;
 | checkedValue | 当前选中项的标识符，和 `label` 相对应  | String      | -|
 | disabled     | 是否禁用选择,将用于其下的全部复选框 | Boolean     | `false`|
 | max`v1.2.1`           | 限制最大可选数 | `undefined|number` | `undefined`|
+| options `v1.3.10`     | 配置 options 渲染复选按钮      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 ## Checkbox Event
 

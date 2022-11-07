@@ -19,6 +19,8 @@ export interface CheckboxProps extends IComponent {
   indeterminate: boolean
   label: string
   onChange: (state: boolean, label: string) => void
+  getParentVals: () => string[] | undefined
+  max?: number | undefined
 }
 
 const defaultProps = {
