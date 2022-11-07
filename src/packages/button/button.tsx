@@ -157,7 +157,7 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
         ) : (
           ''
         )}
-        {children}
+        <div className="text">{children}</div>
       </div>
     </div>
   )

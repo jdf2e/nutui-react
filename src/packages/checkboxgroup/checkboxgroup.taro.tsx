@@ -35,7 +35,6 @@ export const CheckboxGroup = React.forwardRef(
           const childrenLabel: string[] = []
           React.Children.map(children, (child) => {
             const childProps = (child as any).props
-            console.log(child)
             childrenLabel.push(childProps.label || (child as any).children)
           })
           setInnerValue(childrenLabel)
