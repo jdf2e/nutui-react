@@ -8,6 +8,8 @@ import React, {
   useLayoutEffect,
   MouseEvent,
   HTMLInputTypeAttribute,
+  forwardRef,
+  useImperativeHandle,
 } from 'react'
 
 import { formatNumber } from './util'
@@ -127,7 +129,7 @@ export const Input: FunctionComponent<
       React.HTMLAttributes<HTMLDivElement>,
       'onChange' | 'onBlur' | 'onFocus' | 'onClick'
     >
-> = (props) => {
+> = forwardRef((props, ref) => {
   const { locale } = useConfig()
   const {
     children,
@@ -220,6 +222,10 @@ export const Input: FunctionComponent<
       resetValidation()
     }
   }, [inputValue])
+
+  useImperativeHandle(ref, () => {
+    return inputRef.current
+  })
 
   const inputClass = useCallback(() => {
     const prefixCls = 'nut-input'
@@ -509,7 +515,7 @@ export const Input: FunctionComponent<
       )}
     </div>
   )
-}
+})
 
 Input.defaultProps = defaultProps
 Input.displayName = 'NutInput'
