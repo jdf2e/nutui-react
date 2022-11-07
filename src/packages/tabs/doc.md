@@ -95,7 +95,7 @@ export default App;
 
 ### Css 粘性布局
 
-通过设置tab的style 例如：tabStyle={{ position: 'sticky', top: '0px', zIndex: 1 }} ，来实现Css的粘性布局，注意：在微信小程序里组件外层元素不能存在 overflow为 hidden、auto、scroll的设置。
+通过设置tab的style 例如：`tabStyle={{ position: 'sticky', top: '0px', zIndex: 1 }}` ，来实现Css的粘性布局，注意：在微信小程序里组件外层元素不能存在 overflow为 hidden、auto、scroll的设置。
 
 :::demo
 
