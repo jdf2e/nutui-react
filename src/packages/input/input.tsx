@@ -30,6 +30,7 @@ export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
 
 export interface InputProps extends IComponent {
   type: InputType
+  name: string
   defaultValue: any
   placeholder: string
   label: string
@@ -86,6 +87,7 @@ export interface InputProps extends IComponent {
 const defaultProps = {
   ...ComponentDefaults,
   type: 'text',
+  name: '',
   defaultValue: '',
   placeholder: '',
   label: '',
@@ -130,6 +132,7 @@ export const Input: FunctionComponent<
   const {
     children,
     type,
+    name,
     defaultValue,
     placeholder,
     label,
@@ -405,6 +408,7 @@ export const Input: FunctionComponent<
             >
               {type === 'textarea' ? (
                 <textarea
+                  name={name}
                   className="input-text"
                   ref={inputRef}
                   style={{
@@ -429,6 +433,7 @@ export const Input: FunctionComponent<
                 />
               ) : (
                 <input
+                  name={name}
                   className="input-text"
                   ref={inputRef}
                   style={{ textAlign: inputAlign }}
