@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form } from './form'
 import { FormItem } from '../formitem/formitem'
 import { Input } from '../input/input'
 import Cell from '@/packages/cell'
 import { useTranslate } from '../../sites/assets/locale'
+import TextArea from '../textarea'
+import Button from '../button'
+import Switch from '../switch'
+import Checkbox from '../checkbox'
+import Radio from '../radio'
+import Rate from '../rate'
+import InputNumber from '../inputnumber'
+import Range from '../range'
+import { Uploader, FileItem, FileType } from '../uploader/uploader'
+
+const { RadioGroup } = Radio
 
 interface T {
   basic: string
@@ -35,7 +46,7 @@ interface T {
   switch: string
   checkbox: string
   radiogroup: string
-  option: (v: string) => `选项${v}`
+  // option: (v: string) => `选项${v}`
   rate: string
   inputnumber: string
   range: string
@@ -77,7 +88,7 @@ const FormDemo = () => {
       switch: '开关',
       checkbox: '复选框',
       radiogroup: '单选按钮',
-      option: (v: string) => `选项${v}`,
+      // option: (v: string) => `选项${v}`,
       rate: '评分',
       inputnumber: '步进器',
       range: '滑块',
@@ -116,8 +127,8 @@ const FormDemo = () => {
       reset: 'Reset prompt status',
       switch: 'Switch',
       checkbox: 'Checkbox',
-      radiogroup: 'Radiogroup',
-      option: (v: string) => `Option${v}`,
+      radiogroup: 'RadioGroup',
+      // option: (v: string) => `Option${v}`,
       rate: 'Rate',
       inputnumber: 'Inputnumber',
       range: 'Range',
@@ -128,6 +139,86 @@ const FormDemo = () => {
     },
   })
 
+  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
+  const defaultFileList: FileType<string>[] = [
+    {
+      name: '文件1.png',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'success',
+      message: '上传成功',
+      type: 'image',
+      uid: '123',
+    },
+    {
+      name: '文件2.png',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'uploading',
+      message: '上传中...',
+      type: 'image',
+      uid: '125',
+    },
+  ]
+  const onDelete = (file: FileItem, fileList: FileItem[]) => {
+    // console.log(translated.ca3903f3, file, fileList)
+  }
+
+  const [text, setText] = useState('请选择地址')
+  const [normal, setNormal] = useState(false)
+  const [province, setProvince] = useState([
+    { id: 1, name: '北京', title: 'B' },
+    { id: 2, name: '广西', title: 'G' },
+    { id: 3, name: '江西', title: 'J' },
+    { id: 4, name: '四川', title: 'S' },
+    { id: 5, name: '浙江', title: 'Z' },
+  ])
+
+  const [city, setCity] = useState([])
+
+  const [country, setCountry] = useState([])
+  const [town, setTown] = useState([])
+
+  const [address, setAddress] = useState({
+    province,
+    city,
+    country,
+    town,
+  })
+
+  const onChange = (cal) => {
+    const name = address[cal.next]
+    setTimeout(() => {
+      switch (cal.next) {
+        case 'city':
+          setCity([
+            { id: 7, name: '朝阳区', title: 'C' },
+            { id: 8, name: '崇文区', title: 'C' },
+            { id: 9, name: '昌平区', title: 'C' },
+            { id: 6, name: '石景山区', title: 'S' },
+            { id: 3, name: '八里庄街道', title: 'B' },
+            { id: 10, name: '北苑', title: 'B' },
+          ])
+          break
+        case 'country':
+          setCountry([
+            { id: 3, name: '八里庄街道', title: 'B' },
+            { id: 9, name: '北苑', title: 'B' },
+            { id: 4, name: '常营乡', title: 'C' },
+          ])
+          break
+        default:
+          setNormal(false)
+      }
+    }, 200)
+  }
+  const close = (val) => {
+    console.log(val)
+    setNormal(false)
+
+    if ((val.data as AddressResult).addressStr) {
+      setText((val.data as AddressResult).addressStr)
+    }
+  }
+
   return (
     <>
       <div className="demo">
@@ -135,19 +226,14 @@ const FormDemo = () => {
         <Cell>
           <Form>
             <FormItem label={translated.name} required>
-              <Input placeholder={translated.nameTip} type="text" />
-            </FormItem>
-            <FormItem label={translated.age} required>
-              <Input placeholder={translated.ageTip} type="text" />
-            </FormItem>
-            <FormItem label={translated.tel} required>
-              <Input placeholder={translated.telTip} type="text" />
-            </FormItem>
-            <FormItem label={translated.address} required>
-              <Input placeholder={translated.addressTip} type="text" />
+              <Input
+                className="nut-input-text"
+                placeholder={translated.nameTip}
+                type="text"
+              />
             </FormItem>
             <FormItem label={translated.remarks} required>
-              <Input placeholder={translated.remarksTip} type="text" />
+              <TextArea placeholder={translated.remarksTip} />
             </FormItem>
           </Form>
         </Cell>
@@ -157,58 +243,117 @@ const FormDemo = () => {
             <FormItem label={translated.name} required>
               <Input placeholder={translated.nameTip} type="text" />
             </FormItem>
-            <FormItem label={translated.age} required>
-              <Input placeholder={translated.ageTip} type="text" />
-            </FormItem>
             <FormItem label={translated.tel} required>
               <Input placeholder={translated.telTip} type="text" />
             </FormItem>
-            <FormItem label={translated.address} required>
-              <Input placeholder={translated.addressTip} type="text" />
-            </FormItem>
-            <FormItem label={translated.remarks} required>
-              <Input placeholder={translated.remarksTip} type="text" />
-            </FormItem>
+            <Cell>
+              <Button
+                type="default"
+                size="small"
+                style={{ marginRight: '10px' }}
+              >
+                {translated.add}
+              </Button>
+              <Button
+                type="default"
+                size="small"
+                style={{ marginRight: '10px' }}
+              >
+                {translated.remove}
+              </Button>
+              <Button
+                type="primary"
+                size="small"
+                style={{ marginRight: '10px' }}
+              >
+                {translated.submit}
+              </Button>
+              <Button type="default" size="small">
+                {translated.reset}
+              </Button>
+            </Cell>
           </Form>
         </Cell>
         <h2>{translated.title2}</h2>
         <Cell>
           <Form>
             <FormItem label={translated.name} required>
-              <Input placeholder={translated.nameTip} type="text" />
+              <Input placeholder={translated.nameTip1} type="text" />
             </FormItem>
             <FormItem label={translated.age} required>
-              <Input placeholder={translated.ageTip} type="text" />
+              <Input placeholder={translated.ageTip1} type="text" />
             </FormItem>
             <FormItem label={translated.tel} required>
-              <Input placeholder={translated.telTip} type="text" />
+              <Input placeholder={translated.telTip2} type="text" />
             </FormItem>
             <FormItem label={translated.address} required>
               <Input placeholder={translated.addressTip} type="text" />
             </FormItem>
-            <FormItem label={translated.remarks} required>
-              <Input placeholder={translated.remarksTip} type="text" />
-            </FormItem>
+            <Cell>
+              <Button
+                type="primary"
+                size="small"
+                style={{ marginRight: '10px' }}
+              >
+                {translated.submit}
+              </Button>
+              <Button type="default" size="small">
+                {translated.reset}
+              </Button>
+            </Cell>
           </Form>
         </Cell>
         <h2>{translated.title3}</h2>
         <Cell>
           <Form>
-            <FormItem label={translated.name} required>
-              <Input placeholder={translated.nameTip} type="text" />
+            <FormItem label={translated.switch} required>
+              <Switch checked />
             </FormItem>
-            <FormItem label={translated.age} required>
-              <Input placeholder={translated.ageTip} type="text" />
+            <FormItem label={translated.checkbox} required>
+              <Checkbox
+                textPosition="right"
+                label={translated.checkbox}
+                checked={false}
+              />
             </FormItem>
-            <FormItem label={translated.tel} required>
-              <Input placeholder={translated.telTip} type="text" />
+            <FormItem label={translated.radiogroup} required>
+              <RadioGroup>
+                <Radio value="1">选项1</Radio>
+                <Radio value="2">选项2</Radio>
+                <Radio value="3">选项3</Radio>
+              </RadioGroup>
             </FormItem>
-            <FormItem label={translated.address} required>
-              <Input placeholder={translated.addressTip} type="text" />
+            <FormItem label={translated.rate} required>
+              <Rate modelValue={3} />
             </FormItem>
-            <FormItem label={translated.remarks} required>
-              <Input placeholder={translated.remarksTip} type="text" />
+            <FormItem label={translated.inputnumber} required>
+              <InputNumber modelValue={3} min="10" max="20" />
             </FormItem>
+            <FormItem label={translated.range} required>
+              <Range modelValue={0} max={10} min={-10} />
+            </FormItem>
+            <FormItem label={translated.uploader} required>
+              <Uploader
+                url={uploadUrl}
+                defaultFileList={defaultFileList}
+                onRemove={onDelete}
+                maximum="3"
+                multiple
+                uploadIcon="dongdong"
+              />
+            </FormItem>
+            {/* <FormItem label={translated.address} required>
+              <Address
+                modelValue={normal}
+                province={province}
+                city={city}
+                country={country}
+                town={town}
+                customAddressTitle="请选择所在地区"
+                onChange={onChange}
+                onClose={close}
+              />
+            </FormItem> */}
           </Form>
         </Cell>
       </div>

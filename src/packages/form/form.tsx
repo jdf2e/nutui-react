@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import './form.scss'
 import { useConfig } from '@/packages/configprovider'
+import CellGroup from '../cellgroup'
 
 export class FormItemRuleWithoutValidator {
   [key: string]: any
@@ -58,7 +59,11 @@ export const Form = React.forwardRef<
     console.log('onReset')
   }
 
-  return <div className="nut-form">{children}</div>
+  return (
+    <form className="nut-form" action="#">
+      <CellGroup>{children}</CellGroup>
+    </form>
+  )
 })
 
 Form.defaultProps = defaultProps

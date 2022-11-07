@@ -267,7 +267,7 @@
           "desc": "用于列表快速定位以及索引的显示",
           "sort": 4,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "songsong"
         },
         {
@@ -617,8 +617,9 @@
           "cName": "返回顶部",
           "desc": "提供较长的页面快捷返回顶部功能。",
           "sort": 2,
+          "tarodoc": true,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "vickyYe"
         },
         {

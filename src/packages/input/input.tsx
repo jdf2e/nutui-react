@@ -346,15 +346,17 @@ export const Input: FunctionComponent<
     >
       {slotInput ? (
         <>
-          <div
-            className={`nut-input-label ${labelClass}`}
-            style={{ width: `${labelWidth}px`, textAlign: labelAlign }}
-          >
-            <div className="label-string">
-              {label}
-              {colon ? ':' : ''}
+          {label ? (
+            <div
+              className={`nut-input-label ${labelClass}`}
+              style={{ width: `${labelWidth}px`, textAlign: labelAlign }}
+            >
+              <div className="label-string">
+                {label}
+                {colon ? ':' : ''}
+              </div>
             </div>
-          </div>
+          ) : null}
           <div className="nut-input-value">
             <div
               className="nut-input-inner"
@@ -383,15 +385,17 @@ export const Input: FunctionComponent<
               />
             </div>
           ) : null}
-          <div
-            className={`nut-input-label ${labelClass}`}
-            style={{ width: `${labelWidth}px`, textAlign: labelAlign }}
-          >
-            <div className="label-string">
-              {label}
-              {colon ? ':' : ''}
+          {label ? (
+            <div
+              className={`nut-input-label ${labelClass}`}
+              style={{ width: `${labelWidth}px`, textAlign: labelAlign }}
+            >
+              <div className="label-string">
+                {label}
+                {colon ? ':' : ''}
+              </div>
             </div>
-          </div>
+          ) : null}
           <div className="nut-input-value">
             <div
               className="nut-input-inner"

@@ -62,4 +62,31 @@ describe('radio', () => {
     fireEvent.click(screen.getByTestId('r3'))
     expect(changeFn).toBeCalledWith('3')
   })
+
+  test('Render radios by configuring options', () => {
+    const RadioGroupOptions = () => {
+      const [radioVal] = useState('1')
+      const [optionsDemo1, setOptionsDemo1] = useState([
+        {
+          label: '选项一',
+          value: '1',
+        },
+        {
+          label: '选项二',
+          value: '2',
+          disabled: true,
+        },
+        {
+          label: '选项三',
+          value: '3',
+        },
+      ])
+      return (
+        <>
+          <RadioGroup value={radioVal} options={optionsDemo1}></RadioGroup>
+        </>
+      )
+    }
+    const { container } = render(<RadioGroupOptions />)
+  })
 })

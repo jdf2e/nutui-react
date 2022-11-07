@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import './formitem.scss'
 import { useConfig } from '@/packages/configprovider'
+import Cell from '../cell'
 
 export class FormItemRuleWithoutValidator {
   [key: string]: any
@@ -25,9 +26,9 @@ export interface FormItemProps {
   prop: string
   rules: FormItemRule[]
   labelWidth: string | number
-  labelAlign: string
-  bodyAlign: string
-  errorMessageAlign: string
+  labelAlign: any
+  bodyAlign: any
+  errorMessageAlign: any
   showErrorLine: boolean
   showErrorMessage: boolean
   children: ReactNode
@@ -42,7 +43,7 @@ const defaultProps = {
   prop: '',
   rules: [],
   labelWidth: 90,
-  labelAlign: '',
+  labelAlign: 'start',
   bodyAlign: '',
   errorMessageAlign: 'left',
   showErrorLine: false,
@@ -76,30 +77,29 @@ export const FormItem = React.forwardRef<
     return Number.isNaN(Number(value)) ? String(value) : `${value}px`
   }
   return (
-    <div className={`nut-form-item ${showErrorLine ? 'line' : ''} ${'error'}`}>
+    <Cell className={`nut-form-item ${showErrorLine ? 'line' : ''} ${'error'}`}>
       {label ? (
         <div
-          className={`nut-cell_title nut-form-item__label ${
+          className={`nut-cell__title nut-form-item__label ${
             required ? 'required' : ''
           }`}
           style={{
             width: pxCheck(labelWidth),
             textAlign: labelAlign,
           }}
-          name="label"
         >
           {label}
         </div>
       ) : null}
       <div
-        className="nut-cell_value nut-form-item__body"
-        style={{ textAlign: `${bodyAlign}` }}
+        className="nut-cell__value nut-form-item__body"
+        style={{ textAlign: bodyAlign }}
       >
         <div className="nut-form-item__body__slots">{children}</div>
         {showErrorMessage ? (
           <div
             className="nut-form-item__body__tips"
-            style={{ textAlign: `${errorMessageAlign}` }}
+            style={{ textAlign: errorMessageAlign }}
           >
             {/* errormessage */}
           </div>
@@ -107,7 +107,7 @@ export const FormItem = React.forwardRef<
           ''
         )}
       </div>
-    </div>
+    </Cell>
   )
 })
 

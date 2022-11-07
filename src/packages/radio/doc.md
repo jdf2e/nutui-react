@@ -151,6 +151,42 @@ export default RadioGroupLast;
 
 :::
 
+## 配置 options 渲染单选按钮
+
+:::demo
+
+```tsx
+import React, { useState } from 'react';
+import { Radio, RadioGroup } from '@nutui/nutui-react';
+
+const RadioGroupOptions = () => {
+  const [radioVal, setRadioVal] = useState('1')
+  const [optionsDemo1, setOptionsDemo1] = useState([
+    {
+      label: '选项1',
+      value: '1',
+    },
+    {
+      label: '选项2',
+      value: '2',
+      disabled: true,
+    },
+    {
+      label: '选项3',
+      value: '3',
+    },
+  ])
+  const handleChange = (v) => {
+    console.log(v)
+    setRadioVal(v)
+  }
+  return <RadioGroup options={optionsDemo1} value={radioVal} onChange={handleChange}></RadioGroup>
+}
+export default RadioGroupOptions;
+```
+
+:::
+
 ## Prop
 
 ### Radio
@@ -171,6 +207,8 @@ export default RadioGroupLast;
 | value       | 当前选中项的标识符，与label值一致时呈选中状态 | String、Number、Boolean | -          |
 | textPosition | 文本所在的位置，可选值：`left`,`right`        | String                  | `right`    |
 | direction     | 使用横纵方向 可选值 horizontal、vertical      | String                  | `vertical` |
+| options `v1.3.10`     | 配置 options 渲染单选按钮      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
+
 
 ## RadioGroup Event
 

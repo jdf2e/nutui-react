@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import Taro from '@tarojs/taro'
 
+import { ScrollView } from '@tarojs/components'
 import bem from '@/utils/bem'
 
 export const elevatorContext = createContext({} as ElevatorData)
@@ -108,7 +109,8 @@ export const Elevator: FunctionComponent<
         .boundingClientRect()
       // eslint-disable-next-line no-loop-func
       query.exec((res: any) => {
-        height += res[0].height
+        height += res[0][0].height
+        // console.log(res, res[0][0].height, height, 'res')
         state.current.listHeight.push(height)
       })
     }
@@ -158,7 +160,6 @@ export const Elevator: FunctionComponent<
     touchState.current.y1 = firstTouch.pageY
     state.current.anchorIndex = +index
     setCodeIndex((codeIndex) => {
-      // console.log(codeIndex + index, 'touchStart')
       return codeIndex + index
     })
 
@@ -176,12 +177,10 @@ export const Elevator: FunctionComponent<
   }
 
   const setListGroup = () => {
-    console.log(Taro.createSelectorQuery().selectAll(`.${className}`))
     if (listview.current) {
       Taro.createSelectorQuery()
         .selectAll(`.${className} .nut-elevator__list__item`)
         .node((el) => {
-          console.log(el, 'el')
           state.current.listGroup = [...Object.keys(el)]
           calculateHeight()
         })
@@ -213,7 +212,9 @@ export const Elevator: FunctionComponent<
 
   useEffect(() => {
     if (listview.current) {
-      setListGroup()
+      Taro.nextTick(() => {
+        setListGroup()
+      })
     }
   }, [listview])
 
@@ -228,7 +229,6 @@ export const Elevator: FunctionComponent<
     if (state.current.fixedTop === fixedTop) return
     state.current.fixedTop = fixedTop
   }, [state.current.diff, titleHeight])
-  console.log(currentIndex, 'currentIndex')
   return (
     <div className={`${b()} ${className} `} {...rest}>
       {isSticky && scrollY > 0 ? (
@@ -242,10 +242,19 @@ export const Elevator: FunctionComponent<
         className={b('list')}
         style={{ height: Number.isNaN(+height) ? height : `${height}px` }}
       >
-        <div className={b('list__inner')} ref={listview}>
+        <ScrollView
+          scrollTop={scrollTop}
+          scrollY
+          className={b('list__inner')}
+          ref={listview}
+          onScroll={listViewScroll}
+        >
           {indexList.map((item: any, idx: number) => {
             return (
-              <div className={b('list__item')} key={idx}>
+              <div
+                className={`${b('list__item')} elevator__item__${idx}`}
+                key={idx}
+              >
                 <div className={b('list__item__code')}>{item[acceptKey]}</div>
                 <>
                   {item.list.map((subitem: ElevatorData) => {
@@ -277,7 +286,7 @@ export const Elevator: FunctionComponent<
               </div>
             )
           })}
-        </div>
+        </ScrollView>
       </div>
       {indexList.length && scrollStart ? (
         <div className={b('code--current', { current: true })}>
@@ -291,7 +300,6 @@ export const Elevator: FunctionComponent<
           onTouchMove={(event) => touchMove(event)}
           onTouchEnd={touchEnd}
           style={{ touchAction: 'pan-y' }}
-          onScroll={listViewScroll}
         >
           {indexList.map((item: any, index: number) => {
             return (
@@ -299,7 +307,7 @@ export const Elevator: FunctionComponent<
                 className={`${b('bars__inner__item', {
                   active:
                     item[acceptKey] === indexList[currentIndex][acceptKey],
-                })} elevator__item__${index}`}
+                })} `}
                 data-index={index}
                 key={index}
                 onClick={() => handleClickIndex(item[acceptKey])}
