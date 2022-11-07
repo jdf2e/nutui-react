@@ -167,7 +167,7 @@ const App = () => {
   const list5 = Array.from(new Array(2).keys());
   return (
     <>
-      <Tabs value={tab5value} onChange={({ paneKey }) => {
+      <Tabs style={{ height: '300px' }} value={tab5value} onChange={({ paneKey }) => {
         setTab5value(paneKey)
       }} titleScroll direction="vertical">
         {list5.map(item => <TabPane key={item}
@@ -194,7 +194,7 @@ const App = () => {
   const list5 = Array.from(new Array(2).keys());
   return (
     <>
-      <Tabs value={tab6value} onChange={({ paneKey }) => {
+      <Tabs style={{ height: '300px' }} value={tab6value} onChange={({ paneKey }) => {
         setTab6value(paneKey)
       }} type="smile" titleScroll direction="vertical">
         {list5.map(item => <TabPane key={item}
@@ -321,7 +321,7 @@ export default App;
 | ellipsis      | 是否省略过长的标题文字                        | boolean       | true       |
 | animatedTime | 切换动画时长,单位 ms 0 代表无动画              | number,string | 300        |
 | titleGutter  | 标签间隙                                      | number,string | 0          |
-| titleNode    | 自定义导航区域                                 | () => JSX.Element[] | 0          |
+| titleNode    | 自定义导航区域                                 | `() => JSX.Element[]` | 0          |
 | size         | 标签栏字体尺寸大小 可选值 large normal small | string        | normal     |
 
 ## Tabs Children

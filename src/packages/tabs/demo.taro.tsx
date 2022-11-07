@@ -229,6 +229,7 @@ const TabsDemo = () => {
         </Tabs>
         <h2>{translated.title5}</h2>
         <Tabs
+          style={{ height: '300px' }}
           value={tab5value}
           onChange={({ paneKey }) => {
             setTab5value(paneKey)
@@ -245,6 +246,7 @@ const TabsDemo = () => {
         </Tabs>
         <h2>{translated.title6}</h2>
         <Tabs
+          style={{ height: '300px' }}
           value={tab6value}
           onChange={({ paneKey }) => {
             setTab6value(paneKey)

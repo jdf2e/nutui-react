@@ -207,7 +207,7 @@ const CollapseDemo = () => {
         <h2>{translated.header2}</h2>
         <Collapse
           activeName={['1', '2']}
-          change={(isOpen, name) => changeEnv(isOpen, name)}
+          onChange={(isOpen, name) => changeEnv(isOpen, name)}
         >
           <CollapseItem title={translated.title1} name="1">
             {translated.content1}

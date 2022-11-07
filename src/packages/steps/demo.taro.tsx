@@ -108,7 +108,7 @@ const StepsDemo = () => {
       <div className="demo padding">
         <h2>{translated['74fc5d8a']}</h2>
         <div className="steps-wrapper">
-          <Steps current={stepState.current1} clickStep={handleClickStep}>
+          <Steps current={stepState.current1} onClickStep={handleClickStep}>
             <Step activeIndex={1} title={translated['606ae3f5']}>
               1
             </Step>

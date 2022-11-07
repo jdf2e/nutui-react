@@ -64,6 +64,7 @@ export const GridItem: FunctionComponent<
     direction,
     iconClassPrefix,
     iconFontClassName,
+    onClick,
     ...rest
   } = {
     ...defaultProps,
@@ -105,8 +106,12 @@ export const GridItem: FunctionComponent<
     return typeof icon === 'string'
   }
 
+  const handleClick = (e: any) => {
+    onClick && onClick(e)
+  }
+
   return (
-    <div className={b()} style={rootStyle()} {...rest}>
+    <div className={b()} style={rootStyle()} {...rest} onClick={handleClick}>
       <div className={contentClass()}>
         {icon && isIconName() ? (
           <Icon

@@ -95,7 +95,7 @@ export default App;
 
 ### Css 粘性布局
 
-通过设置tab的style 例如：tabStyle={{ position: 'sticky', top: '0px', zIndex: 1 }} ，来实现Css的粘性布局，注意：在微信小程序里组件外层元素不能存在 overflow为 hidden、auto、scroll的设置。
+通过设置tab的style 例如：`tabStyle={{ position: 'sticky', top: '0px', zIndex: 1 }}` ，来实现Css的粘性布局，注意：在微信小程序里组件外层元素不能存在 overflow为 hidden、auto、scroll的设置。
 
 :::demo
 
@@ -247,7 +247,7 @@ const App = () => {
   const list5 = Array.from(new Array(2).keys());
   return (
     <>
-      <Tabs value={tab5value} onChange={({ paneKey }) => {
+      <Tabs style={{ height: '300px' }} value={tab5value} onChange={({ paneKey }) => {
         setTab5value(paneKey)
       }} titleScroll direction="vertical">
         {list5.map(item => <TabPane key={item}
@@ -274,7 +274,7 @@ const App = () => {
   const list5 = Array.from(new Array(2).keys());
   return (
     <>
-      <Tabs value={tab6value} onChange={({ paneKey }) => {
+      <Tabs style={{ height: '300px' }} value={tab6value} onChange={({ paneKey }) => {
         setTab6value(paneKey)
       }} type="smile" titleScroll direction="vertical">
         {list5.map(item => <TabPane key={item}
@@ -390,21 +390,21 @@ export default App;
 
 ### Tabs Props
 
-| 参数             | 说明                                          | 类型          | 默认值     |
-|----------------|-----------------------------------------------|---------------|------------|
-| value          | 绑定当前选中标签的标识符                      | number,string | 0          |
-| color          | 标签选中色                                    | string        | #1a1a1a    |
-| background     | 标签栏背景颜色                                | string        | #f5f5f5    |
-| direction      | 使用横纵方向 可选值 horizontal、vertical      | string        | horizontal |
-| type           | 选中底部展示样式 可选值 line、smile           | string        | line       |
-| titleScroll    | 标签栏是否可以滚动                            | boolean       | false      |
-| ellipsis       | 是否省略过长的标题文字                        | boolean       | true       |
-| animatedTime   | 切换动画时长,单位 ms 0 代表无动画              | number,string | 300        |
-| titleGutter    | 标签间隙                                      | number,string | 0          |
-| titleNode      | 自定义导航区域                                 | () => JSX.Element[] | 0          |
-| size           | 标签栏字体尺寸大小 可选值 large normal small | string        | normal     |
-| autoHeight`v1.2.1` | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean        | false     |
-| tabStyle`v1.3.8` | 标签栏样式 | React.CSSProperties        | {}     |
+| 参数             | 说明                                          | 类型                  | 默认值     |
+|----------------|-----------------------------------------------|---------------------|------------|
+| value          | 绑定当前选中标签的标识符                      | number,string       | 0          |
+| color          | 标签选中色                                    | string              | #1a1a1a    |
+| background     | 标签栏背景颜色                                | string              | #f5f5f5    |
+| direction      | 使用横纵方向 可选值 horizontal、vertical      | string              | horizontal |
+| type           | 选中底部展示样式 可选值 line、smile           | string              | line       |
+| titleScroll    | 标签栏是否可以滚动                            | boolean             | false      |
+| ellipsis       | 是否省略过长的标题文字                        | boolean             | true       |
+| animatedTime   | 切换动画时长,单位 ms 0 代表无动画              | number,string       | 300        |
+| titleGutter    | 标签间隙                                      | number,string       | 0          |
+| titleNode      | 自定义导航区域                                 | `() => JSX.Element[]` | 0          |
+| size           | 标签栏字体尺寸大小 可选值 large normal small | string              | normal     |
+| autoHeight`v1.2.1` | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean             | false     |
+| tabStyle`v1.3.8` | 标签栏样式 | React.CSSProperties | {}     |
 
 ## Tabs Children
 

@@ -51,7 +51,7 @@ const SignatureDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <Signature confirm={confirm} clear={clear} />
+        <Signature onConfirm={confirm} onClear={clear} />
         <p className="demo-tips demo1" style={demoStyles}>
           {translated.tips}
         </p>
@@ -59,8 +59,8 @@ const SignatureDemo = () => {
         <Signature
           lineWidth={4}
           strokeStyle="green"
-          confirm={confirm}
-          clear={clear}
+          onConfirm={confirm}
+          onClear={clear}
           canvasId="testCanvas"
         />
         <p className="demo-tips demo2" style={demoStyles}>

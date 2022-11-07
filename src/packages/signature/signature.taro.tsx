@@ -20,6 +20,8 @@ export interface SignatureProps {
   className: string
   confirm?: (dataurl: string) => void
   clear?: () => void
+  onConfirm?: (dataurl: string) => void
+  onClear?: () => void
 }
 const defaultProps = {
   canvasId: 'weappCanvas',
@@ -40,6 +42,10 @@ export const Signature: FunctionComponent<
     strokeStyle,
     unSupportTpl,
     className,
+    confirm,
+    clear,
+    onConfirm,
+    onClear,
     ...rest
   } = {
     ...defaultProps,
@@ -74,15 +80,16 @@ export const Signature: FunctionComponent<
     event.preventDefault()
   }
 
-  const clear = () => {
+  const handleClearBtn = () => {
     if (ctx.current) {
       ctx.current.clearRect(0, 0, canvasWidth, canvasHeight)
       ctx.current.closePath()
     }
-    props.clear && props.clear()
+    clear && clear()
+    onClear && onClear()
   }
 
-  const confirm = () => {
+  const handleConfirmBtn = () => {
     onSave()
   }
 
@@ -98,8 +105,9 @@ export const Signature: FunctionComponent<
           canvas: res[0].node,
           fileType: props.type,
           success: (res) => {
-            clear()
-            props.confirm && props.confirm(res.tempFilePath)
+            handleClearBtn()
+            confirm && confirm(res.tempFilePath)
+            onConfirm && onConfirm(res.tempFilePath)
           },
           fail: (res) => {
             console.log('保存失败')
@@ -160,13 +168,17 @@ export const Signature: FunctionComponent<
         />
       </div>
 
-      <Button className={`${b('btn')}`} type="default" onClick={() => clear()}>
+      <Button
+        className={`${b('btn')}`}
+        type="default"
+        onClick={() => handleClearBtn()}
+      >
         {locale.signature.reSign}
       </Button>
       <Button
         className={`${b('btn')}`}
         type="primary"
-        onClick={() => confirm()}
+        onClick={() => handleConfirmBtn()}
       >
         {locale.confirm}
       </Button>
