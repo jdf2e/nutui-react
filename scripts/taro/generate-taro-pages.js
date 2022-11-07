@@ -44,20 +44,20 @@ const createIndexConfig = (enName, package) => {
             /import{1,}[\w\s\S]+(\'@\/packages\/nutui\.react\.taro\'){1,}/g
           let fileStrArr = fileString.match(reg)
           fileStrArr = fileStrArr[0].split('import')
-          let importScssStr = ''
-          for (let i = 0, lens = fileStrArr.length; i < lens; i++) {
-            if (fileStrArr[i].indexOf('@/packages/nutui.react.taro') != -1) {
-              let str = fileStrArr[i]
-              str = str.substring(str.indexOf('{') + 1, str.indexOf('}'))
-              let strs = str.split(',')
-              strs.forEach((namestr) => {
-                namestr = namestr.trim()
-                namestr &&
-                  (importScssStr += `import '@/packages/${namestr.toLowerCase()}/${namestr.toLowerCase()}.scss';\n`)
-              })
-            }
-          }
-          lines.splice(1, 0, importScssStr)
+          // let importScssStr = ''
+          // for (let i = 0, lens = fileStrArr.length; i < lens; i++) {
+          //   if (fileStrArr[i].indexOf('@/packages/nutui.react.taro') != -1) {
+          //     let str = fileStrArr[i]
+          //     str = str.substring(str.indexOf('{') + 1, str.indexOf('}'))
+          //     let strs = str.split(',')
+          //     strs.forEach((namestr) => {
+          //       namestr = namestr.trim()
+          //       namestr &&
+          //         (importScssStr += `import '@/packages/${namestr.toLowerCase()}/${namestr.toLowerCase()}.scss';\n`)
+          //     })
+          //   }
+          // }
+          // lines.splice(1, 0, importScssStr)
           fileString = lines.join('\n')
           fsExtra.outputFile(fileDemoPath, fileString, 'utf8', (error) => {
             if (error) console.log('Error', error)
