@@ -362,6 +362,41 @@ export default CheckBoxDemo;
 ```
 :::
 
+## Render checkboxs by configuring options
+
+:::demo
+
+```tsx
+import React, { useState } from 'react';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+
+const CheckboxGroupOptions = () => {
+  const [checkboxVal, setCheckboxValVal] = useState(['1'])
+  const [optionsDemo1, setOptionsDemo1] = useState([
+    {
+      label: 'Option1',
+      value: '1',
+    },
+    {
+      label: 'Option2',
+      value: '2',
+      disabled: true,
+    },
+    {
+      label: 'Option3',
+      value: '3',
+    },
+  ])
+  const handleChange = (v) => {
+    console.log(v)
+    setCheckboxValVal(v)
+  }
+  return <CheckboxGroup options={optionsDemo1} checkedValue={radioVal} onChange={handleChange}></CheckboxGroup>
+}
+export default CheckboxGroupOptions;
+```
+
+:::
 
 ## Checkbox
 
@@ -385,6 +420,7 @@ export default CheckBoxDemo;
 | checkedValue | The identifier of the currently selected item, corresponding to 'label'  | String | -|
 | disabled | Whether to disable the selection will be used for all check boxes under it | Boolean | `false`|
 | max           | Limit the maximum number of options | `undefined|number` | `undefined`|
+| options `v1.3.10`     | Render radios by configuring options      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 ## Checkbox Event
 

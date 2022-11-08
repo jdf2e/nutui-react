@@ -357,6 +357,43 @@ export default CheckBoxDemo;
 ```
 :::
 
+
+## 配置 options 渲染複選按鈕
+
+:::demo
+
+```tsx
+import React, { useState } from 'react';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+
+const CheckboxGroupOptions = () => {
+  const [checkboxVal, setCheckboxValVal] = useState(['1'])
+  const [optionsDemo1, setOptionsDemo1] = useState([
+    {
+      label: '選項1',
+      value: '1',
+    },
+    {
+      label: '選項2',
+      value: '2',
+      disabled: true,
+    },
+    {
+      label: '選項3',
+      value: '3',
+    },
+  ])
+  const handleChange = (v) => {
+    console.log(v)
+    setCheckboxValVal(v)
+  }
+  return <CheckboxGroup options={optionsDemo1} checkedValue={radioVal} onChange={handleChange}></CheckboxGroup>
+}
+export default CheckboxGroupOptions;
+```
+
+:::
+
 ## Checkbox
 
 | 字段                            | 說明 | 類型 | 默認值 | 

@@ -2,20 +2,36 @@
   font-size: $font-size-3;
   display: inline;
   color: $primary-color;
+  &__symbol,
+  &__integer,
+  &__decimal {
+    display: inline-block;
+  }
   &__symbol {
-    display: inline-block;
-    font-size: $font-size-3;
+    font-size: $price-symbol-medium-size;
+    &-large {
+      font-size: $price-symbol-big-size;
+    }
+    &-small {
+      font-size: $price-symbol-small-size;
+    }
   }
-  &__big {
-    display: inline-block;
-    font-size: $price-big-size;
+  &__integer {
+    font-size: $price-integer-medium-size;
+    &-large {
+      font-size: $price-integer-big-size;
+    }
+    &-small {
+      font-size: $price-integer-small-size;
+    }
   }
-  &__point {
-    display: inline-block;
-    font-size: $price-big-size;
-  }
-  &__small {
-    display: inline-block;
-    font-size: $font-size-4;
+  &__decimal {
+    font-size: $price-decimal-medium-size;
+    &-large {
+      font-size: $price-decimal-big-size;
+    }
+    &-small {
+      font-size: $price-decimal-small-size;
+    }
   }
 }

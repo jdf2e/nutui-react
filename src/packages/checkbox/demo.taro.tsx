@@ -23,6 +23,7 @@ interface T {
   '77fc8365': string
   '3a5040b6': string
   f4d4bae5: string
+  options: string
 }
 
 const CheckboxDemo = () => {
@@ -47,6 +48,7 @@ const CheckboxDemo = () => {
       '3a5040b6': '全选',
       f4d4bae5: '取消全选',
       '2cd0f3be1': '反选',
+      options: '配置 options 渲染复选按钮',
     },
     'zh-TW': {
       '74fc5d8a': '基本用法',
@@ -68,6 +70,7 @@ const CheckboxDemo = () => {
       '3a5040b6': '全選',
       f4d4bae5: '取消全選',
       '2cd0f3be1': '反選',
+      options: '配置 options 渲染複選按鈕',
     },
     'en-US': {
       '74fc5d8a': 'Basic Usage',
@@ -89,6 +92,7 @@ const CheckboxDemo = () => {
       '3a5040b6': 'Select All',
       '2cd0f3be1': 'reverse',
       f4d4bae5: 'Cancel All Selection',
+      options: 'Render radios by configuring options',
     },
   })
 
@@ -99,10 +103,26 @@ const CheckboxDemo = () => {
   const [checkboxgroup2] = useState(['1'])
   const [checkboxgroup3] = useState(['1'])
   const [checkboxgroup4] = useState([])
+  const [checkboxgroup5, setCheckboxgroup5] = useState<string[]>([])
   const checkboxgroup2Ref = useRef(null)
   const checkboxgroup3Ref = useRef(null)
   const [show, SetShow] = useState(false)
   const [toastMsg, SetToastMsg] = useState('')
+  const [optionsDemo1, setOptionsDemo1] = useState([
+    {
+      label: '选项1',
+      value: '1',
+    },
+    {
+      label: '选项2',
+      value: '2',
+      disabled: true,
+    },
+    {
+      label: '选项3',
+      value: '3',
+    },
+  ])
   const toastShow = (msg: any) => {
     SetToastMsg(msg)
     SetShow(true)
@@ -363,6 +383,17 @@ const CheckboxDemo = () => {
               {translated['4584d5bf']}
             </Checkbox>
           </Checkbox.Group>
+        </Cell>
+        <h2>{translated.options}</h2>
+        <Cell>
+          <CheckboxGroup
+            options={optionsDemo1}
+            checkedValue={checkboxgroup5}
+            onChange={(val) => {
+              console.log(val)
+              setCheckboxgroup5(val)
+            }}
+          ></CheckboxGroup>
         </Cell>
       </div>
     </>

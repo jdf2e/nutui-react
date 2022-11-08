@@ -6,6 +6,11 @@ import bem from '@/utils/bem'
 
 import { IComponent, ComponentDefaults } from '@/utils/typings'
 
+interface InheritParentProps {
+  getParentVals?: () => string[] | undefined
+  max?: number | undefined
+}
+
 export interface CheckboxProps extends IComponent {
   checked: boolean
   disabled: boolean
@@ -36,7 +41,8 @@ const defaultProps = {
 } as CheckboxProps
 export const Checkbox: FunctionComponent<
   Partial<CheckboxProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> &
+    InheritParentProps
 > & { Group: typeof CheckboxGroup } = (props) => {
   const { children } = {
     ...defaultProps,
