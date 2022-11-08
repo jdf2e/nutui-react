@@ -4,7 +4,6 @@ import './demo.scss'
 import Toast from '../toast'
 import { Cell } from '../cell/cell'
 import { Checkbox } from './checkbox'
-import { CheckboxGroup } from '@/packages/checkboxgroup/checkboxgroup'
 import Button from '@/packages/button'
 
 interface T {
@@ -182,9 +181,9 @@ const CheckboxDemo = () => {
             {translated['48b50759']}
           </Checkbox>
         </Cell>
-        <h2>checkboxGroup</h2>
+        <h2>Checkbox.Group</h2>
         <Cell>
-          <CheckboxGroup
+          <Checkbox.Group
             checkedValue={checkboxgroup1}
             onChange={(value) => {
               Toast.text(value)
@@ -203,7 +202,7 @@ const CheckboxDemo = () => {
             <Checkbox checked={false} label="4">
               {translated['4584d5bf']}
             </Checkbox>
-          </CheckboxGroup>
+          </Checkbox.Group>
         </Cell>
         <Cell>
           <span>
@@ -212,16 +211,16 @@ const CheckboxDemo = () => {
         </Cell>
         <h2>{translated['7df5c456']}</h2>
         <Cell>
-          <CheckboxGroup checkedValue={checkboxgroup1} disabled>
+          <Checkbox.Group checkedValue={checkboxgroup1} disabled>
             <Checkbox label="1">{translated['4584d5bf']}</Checkbox>
             <Checkbox label="2">{translated['4584d5bf']}</Checkbox>
             <Checkbox label="3">{translated['4584d5bf']}</Checkbox>
             <Checkbox label="4">{translated['4584d5bf']}</Checkbox>
-          </CheckboxGroup>
+          </Checkbox.Group>
         </Cell>
         <h2>{translated['77fc8365']}</h2>
         <Cell>
-          <CheckboxGroup
+          <Checkbox.Group
             style={{}}
             ref={checkboxgroup2Ref}
             checkedValue={checkboxgroup2}
@@ -247,7 +246,7 @@ const CheckboxDemo = () => {
             <Checkbox checked={false} label="4">
               {translated['4584d5bf']}
             </Checkbox>
-          </CheckboxGroup>
+          </Checkbox.Group>
         </Cell>
         <Cell>
           <Button
@@ -279,7 +278,7 @@ const CheckboxDemo = () => {
         </Cell>
         <h2>checkboxGroup使用，限制最大可选数（2个）</h2>
         <Cell>
-          <CheckboxGroup
+          <Checkbox.Group
             checkedValue={checkboxgroup3}
             max={2}
             onChange={(value) => {
@@ -298,7 +297,7 @@ const CheckboxDemo = () => {
             <Checkbox checked={false} label="4">
               {translated['4584d5bf']}
             </Checkbox>
-          </CheckboxGroup>
+          </Checkbox.Group>
         </Cell>
         <h2>全选/半选/取消</h2>
         <Cell>
@@ -315,7 +314,7 @@ const CheckboxDemo = () => {
           >
             {translated['3a5040b6']}
           </Checkbox>
-          <CheckboxGroup
+          <Checkbox.Group
             ref={checkboxgroup3Ref}
             checkedValue={checkboxgroup4}
             onChange={(value) => {
@@ -342,7 +341,7 @@ const CheckboxDemo = () => {
             <Checkbox checked={false} label="4">
               {translated['4584d5bf']}
             </Checkbox>
-          </CheckboxGroup>
+          </Checkbox.Group>
         </Cell>
       </div>
     </>
