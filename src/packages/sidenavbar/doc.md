@@ -165,7 +165,7 @@ export default App;
 
 | 事件名           | 说明                                                             | 回调参数     |
 |---------------|----------------------------------------------------------------|--------------|
-| onClick`v1.3.8` | 导航点击,对象形式返回点击{ title,ikey,isShow}, titleClick 事件从  之后改为 onClick | -           |
+| onClick`v1.3.8` | 导航点击,对象形式返回点击{ title,ikey,isShow}, titleClick 事件从 1.3.8 之后改为 onClick | -           |
 
 ### 3、SideNavBarItem Events
 
