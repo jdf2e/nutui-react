@@ -7,7 +7,7 @@ import bem from '@/utils/bem'
 import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 interface InheritParentProps {
-  getParentVals: () => string[] | undefined
+  getParentVals?: () => string[] | undefined
   max?: number | undefined
 }
 
