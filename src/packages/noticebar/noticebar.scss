@@ -127,6 +127,9 @@
     .go {
       align-self: center;
       display: flex;
+      justify-content: center;
+      width: $noticebar-right-icon-width;
+      margin: $noticebar-righticon-margin;
     }
   }
 }
