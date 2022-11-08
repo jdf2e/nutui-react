@@ -8,6 +8,8 @@ import React, {
   useLayoutEffect,
   MouseEvent,
   HTMLInputTypeAttribute,
+  forwardRef,
+  useImperativeHandle,
 } from 'react'
 
 import { formatNumber } from './util'
@@ -30,6 +32,7 @@ export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
 
 export interface InputProps extends IComponent {
   type: InputType
+  name: string
   defaultValue: any
   placeholder: string
   label: string
@@ -86,6 +89,7 @@ export interface InputProps extends IComponent {
 const defaultProps = {
   ...ComponentDefaults,
   type: 'text',
+  name: '',
   defaultValue: '',
   placeholder: '',
   label: '',
@@ -125,11 +129,12 @@ export const Input: FunctionComponent<
       React.HTMLAttributes<HTMLDivElement>,
       'onChange' | 'onBlur' | 'onFocus' | 'onClick'
     >
-> = (props) => {
+> = forwardRef((props, ref) => {
   const { locale } = useConfig()
   const {
     children,
     type,
+    name,
     defaultValue,
     placeholder,
     label,
@@ -217,6 +222,10 @@ export const Input: FunctionComponent<
       resetValidation()
     }
   }, [inputValue])
+
+  useImperativeHandle(ref, () => {
+    return inputRef.current
+  })
 
   const inputClass = useCallback(() => {
     const prefixCls = 'nut-input'
@@ -346,15 +355,17 @@ export const Input: FunctionComponent<
     >
       {slotInput ? (
         <>
-          <div
-            className={`nut-input-label ${labelClass}`}
-            style={{ width: `${labelWidth}px`, textAlign: labelAlign }}
-          >
-            <div className="label-string">
-              {label}
-              {colon ? ':' : ''}
+          {label ? (
+            <div
+              className={`nut-input-label ${labelClass}`}
+              style={{ width: `${labelWidth}px`, textAlign: labelAlign }}
+            >
+              <div className="label-string">
+                {label}
+                {colon ? ':' : ''}
+              </div>
             </div>
-          </div>
+          ) : null}
           <div className="nut-input-value">
             <div
               className="nut-input-inner"
@@ -383,15 +394,17 @@ export const Input: FunctionComponent<
               />
             </div>
           ) : null}
-          <div
-            className={`nut-input-label ${labelClass}`}
-            style={{ width: `${labelWidth}px`, textAlign: labelAlign }}
-          >
-            <div className="label-string">
-              {label}
-              {colon ? ':' : ''}
+          {label ? (
+            <div
+              className={`nut-input-label ${labelClass}`}
+              style={{ width: `${labelWidth}px`, textAlign: labelAlign }}
+            >
+              <div className="label-string">
+                {label}
+                {colon ? ':' : ''}
+              </div>
             </div>
-          </div>
+          ) : null}
           <div className="nut-input-value">
             <div
               className="nut-input-inner"
@@ -401,6 +414,7 @@ export const Input: FunctionComponent<
             >
               {type === 'textarea' ? (
                 <textarea
+                  name={name}
                   className="input-text"
                   ref={inputRef}
                   style={{
@@ -425,6 +439,7 @@ export const Input: FunctionComponent<
                 />
               ) : (
                 <input
+                  name={name}
                   className="input-text"
                   ref={inputRef}
                   style={{ textAlign: inputAlign }}
@@ -500,7 +515,7 @@ export const Input: FunctionComponent<
       )}
     </div>
   )
-}
+})
 
 Input.defaultProps = defaultProps
 Input.displayName = 'NutInput'

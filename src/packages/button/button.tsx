@@ -140,7 +140,7 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
       {...rest}
       onClick={(e) => handleClick(e)}
     >
-      <div className="nut-button__warp" style={getStyle()}>
+      <div className="nut-button__warp">
         {loading && (
           <Icon
             classPrefix={iconClassPrefix}
@@ -157,7 +157,7 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
         ) : (
           ''
         )}
-        {children}
+        <div className="text">{children}</div>
       </div>
     </div>
   )

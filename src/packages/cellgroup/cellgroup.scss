@@ -1,3 +1,11 @@
+.nut-theme-dark {
+  .nut-cell-group__wrap {
+    background: $dark-background2;
+    color: $dark-color;
+    box-shadow: none;
+  }
+}
+
 .nut-cell-group {
   display: block;
   &__title {

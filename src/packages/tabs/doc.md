@@ -95,7 +95,7 @@ export default App;
 
 ### Css 粘性布局
 
-通过设置tab的style 例如：tabStyle={{ position: 'sticky', top: '0px', zIndex: 1 }} ，来实现Css的粘性布局，注意：在微信小程序里组件外层元素不能存在 overflow为 hidden、auto、scroll的设置。
+通过设置tab的style 例如：`tabStyle={{ position: 'sticky', top: '0px', zIndex: 1 }}` ，来实现Css的粘性布局，注意：在微信小程序里组件外层元素不能存在 overflow为 hidden、auto、scroll的设置。
 
 :::demo
 
@@ -247,7 +247,7 @@ const App = () => {
   const list5 = Array.from(new Array(2).keys());
   return (
     <>
-      <Tabs value={tab5value} onChange={({ paneKey }) => {
+      <Tabs style={{ height: '300px' }} value={tab5value} onChange={({ paneKey }) => {
         setTab5value(paneKey)
       }} titleScroll direction="vertical">
         {list5.map(item => <TabPane key={item}
@@ -274,7 +274,7 @@ const App = () => {
   const list5 = Array.from(new Array(2).keys());
   return (
     <>
-      <Tabs value={tab6value} onChange={({ paneKey }) => {
+      <Tabs style={{ height: '300px' }} value={tab6value} onChange={({ paneKey }) => {
         setTab6value(paneKey)
       }} type="smile" titleScroll direction="vertical">
         {list5.map(item => <TabPane key={item}
