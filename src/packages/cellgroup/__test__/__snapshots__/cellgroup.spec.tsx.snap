@@ -3,7 +3,7 @@
 exports[`prop title desc subtitle 1`] = `
 <div>
   <div
-    class="nut-cell-group nutui-cell-group"
+    class="nut-cell-group"
   >
     <div
       class="nut-cell-group__title"
@@ -11,15 +11,10 @@ exports[`prop title desc subtitle 1`] = `
       链接 | 分组用法
     </div>
     <div
-      class="nut-cell-group__desc"
-    />
-    <div
       class="nut-cell-group__wrap"
     >
       <div
         class="nut-cell nut-cell--clickable "
-        iconclassprefix="nut-icon"
-        iconfontclassname="nutui-iconfont"
         style="border-radius: 6px;"
       >
         <div
@@ -37,8 +32,6 @@ exports[`prop title desc subtitle 1`] = `
       </div>
       <div
         class="nut-cell nut-cell--clickable "
-        iconclassprefix="nut-icon"
-        iconfontclassname="nutui-iconfont"
         style="border-radius: 6px;"
       >
         <div
@@ -61,8 +54,6 @@ exports[`prop title desc subtitle 1`] = `
       </div>
       <div
         class="nut-cell nut-cell--clickable "
-        iconclassprefix="nut-icon"
-        iconfontclassname="nutui-iconfont"
         style="border-radius: 6px;"
       >
         <div

@@ -12,7 +12,7 @@ import { Price } from '@nutui/nutui-react'
 
 ## Demo
 
-### Basic Usage
+### Support three sizes：small、normal、large
 
 :::demo
 
@@ -22,8 +22,41 @@ import { Price, Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
+<>
+        <Cell>
+            <Price price={0} size="small" needSymbol thousands />
+        </Cell>
+        <Cell>
+            <Price price={0} size="normal" needSymbol thousands />
+        </Cell>
+        <Cell>
+            <Price price={0} size="large" needSymbol thousands />
+        </Cell>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### No decimals
+:::demo
+
+```tsx
+import  React from "react"
+import { Price, Cell } from '@nutui/nutui-react'
+
+const App = () => {
+  return (
     <Cell>
-        <Price price={1010} needSymbol={false} thousands />
+        <Price
+          price={8888}
+          decimalDigits={0}
+          needSymbol
+          size="normal"
+          thousands
+        />
     </Cell>
   );
 };
@@ -43,7 +76,7 @@ import { Price, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <Price price={10010.01} needSymbol thousands={false} />
+        <Price price={10010.01} size="normal" needSymbol thousands={false} />
     </Cell>
   );
 };
@@ -63,7 +96,40 @@ import { Price, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <Price price={15213.1221} decimalDigits={3} needSymbol thousands />
+        <Price
+          price={15213.1221}
+          size="normal"
+          decimalDigits={3}
+          needSymbol
+          thousands
+        />
+    </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
+### Adjust the symbol position
+
+:::demo
+
+```tsx
+import  React from "react"
+import { Price, Cell } from '@nutui/nutui-react'
+
+const App = () => {
+  return (
+    <Cell>
+        <Price
+          price={8888.01}
+          size="normal"
+          position="after"
+          symbol="元"
+          needSymbol
+          thousands
+        />
     </Cell>
   );
 };
@@ -93,7 +159,13 @@ const App = () => {
   }, [])
   return (
     <Cell>
-      <Price price={price} decimalDigits={3} needSymbol thousands />
+        <Price
+          price={price}
+          decimalDigits={3}
+          size="normal"
+          needSymbol
+          thousands
+        />
     </Cell>
   );
 };
@@ -113,3 +185,5 @@ export default App;
 | symbol         | Symbol type                 | String  | &yen;  |
 | decimalDigits | Decimal digits               | Number  | 2      |
 | thousands      | Thousands separation   | Boolean | false  |
+| position`v1.3.9`   | The symbol appear before or after the price，`before`、`after` | String           | before |
+| size`v1.3.9`   | Size，`large`、`normal`、`small`                            | String           | large |
