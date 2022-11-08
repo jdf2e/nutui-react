@@ -9,7 +9,6 @@ import Icon from '@/packages/icon'
 import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface TagProps extends IComponent {
-  className: string
   type: TagType
   color: string
   textColor: string
@@ -27,7 +26,6 @@ export type TagType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
 
 const defaultProps = {
   ...ComponentDefaults,
-  className: '',
   type: 'default',
   color: '',
   textColor: '',
