@@ -386,14 +386,14 @@ const CheckboxDemo = () => {
         </Cell>
         <h2>{translated.options}</h2>
         <Cell>
-          <CheckboxGroup
+          <Checkbox.Group
             options={optionsDemo1}
             checkedValue={checkboxgroup5}
             onChange={(val) => {
               console.log(val)
               setCheckboxgroup5(val)
             }}
-          ></CheckboxGroup>
+          />
         </Cell>
       </div>
     </>
