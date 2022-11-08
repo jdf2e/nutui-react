@@ -240,14 +240,12 @@ export const NoticeBar: FunctionComponent<
   /**
    * 点击滚动单元
    */
-  const go = (item: any) => {
-    click && click(item)
-    onClick && onClick(item)
-  }
 
-  const handleClickIcon = () => {
-    close && close(scrollList[0])
-    onClose && onClose(scrollList[0])
+  const handleClickIcon = (event: MouseEvent) => {
+    event.stopPropagation()
+    SetShowNoticeBar(!closeMode)
+    close && close(event)
+    onClose && onClose(event)
   }
 
   const iconShow = () => {
@@ -345,8 +343,14 @@ export const NoticeBar: FunctionComponent<
           ) : null}
         </div>
       ) : null}
-      {scrollList.current.length > 0 && direction === 'vertical' ? (
-        <div className="nut-noticebar-vertical" style={barStyle}>
+      {showNoticeBar &&
+      scrollList.current.length > 0 &&
+      direction === 'vertical' ? (
+        <div
+          className="nut-noticebar-vertical"
+          style={barStyle}
+          onClick={handleClick}
+        >
           {children ? (
             <div className="horseLamp_list" style={horseLampStyle}>
               {scrollList.current.map((item: string, index: number) => {
@@ -362,9 +366,6 @@ export const NoticeBar: FunctionComponent<
                     className="horseLamp_list_item"
                     style={{ height }}
                     key={index}
-                    onClick={() => {
-                      go(item)
-                    }}
                   >
                     {item}
                   </li>
@@ -374,8 +375,8 @@ export const NoticeBar: FunctionComponent<
           )}
           <div
             className="go"
-            onClick={() => {
-              handleClickIcon()
+            onClick={(e) => {
+              handleClickIcon(e)
             }}
           >
             {rightIcon ||
@@ -383,7 +384,7 @@ export const NoticeBar: FunctionComponent<
                 <Icon
                   classPrefix={iconClassPrefix}
                   fontClassName={iconFontClassName}
-                  name="cross"
+                  name={rightIcon || 'close'}
                   color={color}
                   size="11px"
                 />
