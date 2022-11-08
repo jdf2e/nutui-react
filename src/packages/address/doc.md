@@ -613,7 +613,7 @@ export default App;
   * addressDetail 具体地址
   * selectedAddress 字段用于判断当前地址列表的选中项。
 
-注：Nutui-React-Taro 下，type 属性暂不支持 custom2 类型
+注：Nutui-React-Taro 下，自 `v1.3.10` 起 type 属性暂不支持 custom2 类型
 
 ## Event
 | 字段 | 说明 | 回调参数 |
