@@ -9,6 +9,7 @@ import Icon from '@/packages/icon/index.taro'
 import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface TagProps extends IComponent {
+  className: string
   type: TagType
   color: string
   textColor: string
@@ -26,6 +27,7 @@ export type TagType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
 
 const defaultProps = {
   ...ComponentDefaults,
+  className: '',
   type: 'default',
   color: '',
   textColor: '',
@@ -39,6 +41,8 @@ const defaultProps = {
 } as TagProps
 export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   const {
+    className,
+    style,
     color,
     plain,
     type,
@@ -106,8 +110,8 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
       {closeable ? (
         isTagShow && (
           <div
-            className={`${btnName}`}
-            style={getStyle()}
+            className={`${btnName} ${className}`}
+            style={{ ...style, ...getStyle() }}
             onClick={(e) => handleClick(e)}
           >
             {children && <span className="text">{children}</span>}
@@ -128,8 +132,8 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
         )
       ) : (
         <div
-          className={`${btnName}`}
-          style={getStyle()}
+          className={`${btnName} ${className}`}
+          style={{ ...style, ...getStyle() }}
           onClick={(e) => handleClick(e)}
         >
           {children && <span className="text">{children}</span>}
