@@ -72,11 +72,16 @@ export const TextArea: FunctionComponent<
     }
   }, [defaultValue])
 
+  useEffect(() => {
+    let initValue = inputValue
+    if (maxlength && initValue.length > Number(maxlength)) {
+      initValue = initValue.substring(0, Number(maxlength))
+    }
+    SetInputValue(initValue)
+  }, [inputValue])
+
   const textChange = (event: any) => {
     const text = event.detail as any
-    if (maxlength && text.value.length > Number(maxlength)) {
-      text.value = text.value.substring(0, Number(maxlength))
-    }
     SetInputValue(text.value)
     onChange && onChange(text.value, event)
   }
