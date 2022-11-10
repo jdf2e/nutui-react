@@ -11,20 +11,26 @@
     "dist/style.css",
     "dist/styles/font/*"
   ],
-  "description": "京东风格的轻量级移动端 React 组件库",
+  "description": "京东风格的轻量级移动端 React 组件库，支持一套代码生成 H5 和小程序",
   "keywords": [
     "nutui",
     "nutui2",
     "nutui3",
     "react",
+    "nutui-react",
     "webpack",
     "react component",
     "vite",
     "jdc",
-    "jdcfe"
+    "jdcfe",
+    "taro"
   ],
   "author": "jdcfe",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdf2e/nutui-react.git"
+  }
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
