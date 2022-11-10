@@ -115,9 +115,17 @@ NutUI 的共建方向主要分为：解决 issue、修复 bug、新增组件、�
 
 感谢以下所有给 NutUI 贡献过代码的 [开发者](https://github.com/jdf2e/nutui-react/graphs/contributors)。
 
-<!-- readme: collaborators,contributors -start -->
-<!-- readme: collaborators,contributors -end -->
+<a href="https://github.com/jdf2e/nutui-react/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=jdf2e/nutui-react" />
+</a>
 
+## Stargazers 
+
+[![Stargazers repo roster for @jdf2e/nutui-react](https://reporoster.com/stars/jdf2e/nutui-react)](https://github.com/jdf2e/nutui-react/stargazers)
+
+## Forkers
+
+[![Forkers repo roster for @jdf2e/nutui-react](https://reporoster.com/forks/jdf2e/nutui-react)](https://github.com/jdf2e/nutui-react/network/members)
 
 ## 开发计划
 
@@ -126,10 +134,6 @@ NutUI 的共建方向主要分为：解决 issue、修复 bug、新增组件、�
 ## 更新日志
 
 本项目遵从 [Angular Style Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)，更新日志请查阅 [Release](https://github.com/jdf2e/nutui-react/releases)。
-
-## github stargazers 
-
-![stargazers](https://starchart.cc/jdf2e/nutui-react.svg)
 
 ## 开源协议
 
