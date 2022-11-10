@@ -5,15 +5,11 @@ import React, {
   useEffect,
   useState,
 } from 'react'
-import { ButtonProps as MiniProgramButtonProps } from '@tarojs/components'
 import Icon from '@/packages/icon'
+
 import { IComponent, ComponentDefaults } from '@/utils/typings'
 
-type OmitMiniProgramButtonProps = Omit<
-  MiniProgramButtonProps,
-  'size' | 'type' | 'onClick'
->
-export interface ButtonProps extends IComponent, OmitMiniProgramButtonProps {
+export interface ButtonProps extends IComponent {
   className: string
   color: string
   shape: ButtonShape
@@ -138,8 +134,6 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
   }
 
   return (
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     // eslint-disable-next-line react/button-has-type
     <button
       className={`${btnName} ${className}`}
