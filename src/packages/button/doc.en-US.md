@@ -236,3 +236,5 @@ export default App;
 |--------|----------------|--------------|
 | onClick`v1.3.8`  | Triggered when the button is clicked | event: MouseEvent |
 
+### Support Native MiniProgram API
+Not supported native MiniProgram API before 1.3.11 version, if you are a user who needs to use the native MiniProgram button component capability，please upgrade to version 1.3.11 as soon as possible. For detailed API of native MiniProgram button components, please go to[more documents](https://taro-docs.jd.com/docs/components/forms/button)
