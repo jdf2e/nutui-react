@@ -36,7 +36,7 @@ const App = () => {
     const demoStyles: React.CSSProperties = { margin: '1em 0' }
     return (
     <>
-        <Signature confirm={confirm} clear={clear} />
+        <Signature onConfirm={confirm} onClear={clear} />
         <p className="demo-tips demo" style={demoStyles}>
             Tips: 点击确认按钮,下方显示签名图片
         </p>
@@ -75,8 +75,8 @@ const App = () => {
         <Signature
             lineWidth={4}
             strokeStyle="green"
-            confirm={confirm}
-            clear={clear}
+            onConfirm={confirm}
+            onClear={clear}
          />
         <p className="demo-tips demo" style={demoStyles}>
             Tips: 点击确认按钮,下方显示签名图片
@@ -105,5 +105,8 @@ export default App;
 
 | 字段    | 说明                         | 回调参数                         |
 | ------- | ---------------------------- | -------------------------------- |
-| confirm | 点击确认按钮触发事件回调函数 | canvas 和签名图片展示的 data URI |
-| clear   | 点击重签按钮触发事件回调函数 | -                              |
+| confirm`v1.3.8废弃` | 点击确认按钮触发事件回调函数 | canvas 和签名图片展示的 data URI |
+| clear`v1.3.8废弃`   | 点击重签按钮触发事件回调函数 | -                              |
+| onConfirm`v1.3.8` | 点击确认按钮触发事件回调函数 | canvas 和签名图片展示的 data URI |
+| onClear`v1.3.8`   | 点击重签按钮触发事件回调函数 | -                              |
+

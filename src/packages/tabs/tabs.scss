@@ -1,9 +1,30 @@
 @import '../../styles/mixins/index';
 @import '../tabpane/tabpane.scss';
+.nut-theme-dark {
+  .nut-tabs {
+    &__titles {
+      background: $dark-background3;
+      &-item {
+        color: $dark-color-gray;
+        &.active {
+          color: $dark-color;
+        }
+      }
+    }
+    &.vertical {
+      .nut-tabs__titles {
+        &-item {
+          &.active {
+            background-color: $dark-background2;
+          }
+        }
+      }
+    }
+  }
+}
 
 .nut-tabs {
   display: flex;
-  overflow: hidden;
 
   &.horizontal {
     flex-direction: column;
@@ -14,6 +35,7 @@
     width: 100%;
 
     .nut-tabs__titles {
+      box-sizing: border-box;
       flex-direction: column;
       height: 100%;
       padding: 10px 0 !important;
@@ -64,8 +86,11 @@
     }
 
     .nut-tabs__content {
-      flex: 1;
       flex-direction: column;
+      &__wrap {
+        flex: 1;
+      }
+      height: 100%;
 
       .nut-tabpane {
         height: 100%;
@@ -81,6 +106,7 @@
     background: $tabs-titles-background-color;
     border-radius: $tabs-titles-border-radius;
     flex-shrink: 0;
+    overflow: hidden;
 
     &.large {
       .nut-tabs__titles-item {
@@ -186,6 +212,9 @@
   }
 
   &__content {
+    &__wrap {
+      overflow: hidden;
+    }
     display: flex;
     box-sizing: border-box;
   }

@@ -134,8 +134,8 @@ const App = () => {
             list={horseLamp1}
             speed={10}
             standTime={1000}
-            click={(item: any) => {
-              go(item)
+            onClick={(e) => {
+              go(e.target.innerHtml)
             }}
             closeMode
           />
@@ -188,7 +188,10 @@ const App = () => {
 
     return (
       <>
-        <NoticeBar direction="vertical" height={50} speed={10} standTime={1000}>
+        <NoticeBar direction="vertical" height={50} speed={10} standTime={1000}
+        closeMode
+        onClose={() => {console.log('close')}}
+        onClick={(e) => {console.log(e)}}>
         {horseLamp3.map((item, index) => {
             return (
             <div
@@ -278,6 +281,6 @@ export default App
 
 | Attribute  | Description                             | Arguments     |
 | ---------- | --------------------------------------- | ------------ |
-| click      | Emitted when NoticeBar is clicked       | event: Event |
-| close      | Emitted when NoticeBar is closed        | event: Event |
+| onClick `v1.3.8`     | Emitted when NoticeBar is clicked       | event: Event |
+| onClose `v1.3.8`     | Emitted when NoticeBar is closed        | event: Event |
 

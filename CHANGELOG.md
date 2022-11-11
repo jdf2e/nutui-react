@@ -1,3 +1,79 @@
+# v1.3.10
+`2022-11-09`
+
+* :bug: fix: tabbarItem组件自定义名称统一为className字段 (#434) @cuicuiworld
+* :bug: fix: checkbox 内部类型可选 (#430) @oasis-cloud
+* :bug: fix: noticebar 关闭事件优化，小程序样式优化 (#424) @vickyYe
+* :bug: fix: 取消mixin样式文件引入 (#428) @libin0824
+* :bug: fix(button): add space between icon and text (#418) @Kwan
+* :bug: fix: cell 组件 icon marign 设置错误 (#423) @oasis-cloud
+* :bug: fix: cell组件删除冗余样式 (#401) @irisSong
+* :bug: fix: 变量提取、暗黑模式适配：cellgroup、demo主样式 (#404) @xiaoyatong
+* :sparkles: feat: tag组件添加自定义className和style属性 (#435) @cuicuiworld
+* :sparkles: feat: Address 增加Elevator Taro 适配 (#400) @yangxiaolu1993
+* :sparkles: feat: CheckboxGroup支持options设置子元素 (#425) @cuicuiworld
+* :sparkles: feat: price组件新增自定义大中小尺寸、自定义符号展示在价格前或后、支持没有小数 (#429) @irisSong
+* :sparkles: feat: input组件支持name属性 (#427) @simpleStyle
+* :sparkles: feat: 增加issue-helper入口 (#421) @Ymm0008
+* :sparkles: feat: 单选按钮组支持options设置子元素 (#374) @cuicuiworld
+* 📖 docs: tabs 文档中的粘性布局文案修改 (#403) @oasis-cloud
+* 📖 docs: radio和checkbox文档优化 (#431) @oasis-cloud
+* 📖 docs: 修复部分演示组件的文案显示问题 (#419) @Kwan
+
+# v1.3.9
+`2022-11-02`
+
+* :bug: fix: cellgroup组件自定义名称统一为className字段 (#399) @irisSong
+* :bug: fix: GridItem缺少onClick事件;DatePicker修改onChange名 (#394) @yangxiaolu1993
+* :bug: fix: 支持css粘性布局，引起的左右布局bug修复 (#393) @leiyu0932
+* :bug: fix: button 自定义 style 重复生效 (#391) @oasis-cloud
+* :sparkles: chore: 生成多语言用到的 key (#390) @oasis-cloud
+* :bug: fix: 修复cellgroup组件描述判断错误问题 (#389) @irisSong
+* :bug: fix: sass 变量增加 !default (#387) @oasis-cloud
+* :sparkles: docs: icon 大小展示按照从小到大顺序 (#386) @oasis-cloud
+* :bug: fix: elevator组件taro版本适配完成 (#372) @irisSong
+* :sparkles: feat: backtop 组件适配 taro (#376) @vickyYe
+
+# v1.3.8
+`2022-10-26`
+
+* :sparkles: feat: tabs 组件支持 css 粘性布局 (#346) @leiyu0932
+* :sparkles: feat: tabpane 组件增加 className 属性 (#343) @oasis-cloud
+* :sparkles: feat: sidenavbar 事件名修改为 onClick (#359) @oasis-cloud
+* :sparkles: feat: collapse 组件增加 className 和 style 支持 (#360) @oasis-cloud
+* :sparkles: feat: tabbar 组件增加 onSwitch 事件 (#361) @oasis-cloud
+* :sparkles: feat: timeselect 组件增加 onSelect onPannelChange onTimeChange 事件 (#362) @oasis-cloud
+* :sparkles: feat: virtuallist 组件增加 onScroll 事件 (#363) @oasis-cloud
+* :sparkles: feat: input、noticebar、range组件 event 事件修改, divider组件demo优化 (#365) @vickyYE
+* :sparkles: feat: avartar、steps、video、inputnumber 组件事件优化 (#371)  @junjun666
+* :bug: fix: 修改 signature 组件taro demo文案 (#344)  @irisSong
+* :bug: fix: switch 组件-事件命名修改 (#352)  @libin0824
+* :bug: fix: radio 组件中的 render 数组改成 fragment (#353) @oasis-cloud
+* :bug: fix: taro/components 组件的使用，taro:h5 启动报错 (#357) @oasis-cloud
+* :bug: fix: uploader 使用 isDeletable 无法隐藏 删除按钮 (#366)  @junjun666
+* :bug: fix: cell 和 signature 修改 Event (#367) @irisSong
+* :bug: fix: 修改 collapse 组件的事件名称 (#369)  @zhenyulei
+* 📖 docs: button 组件文档中事件 click 改为 onClick (#356) @oasis-cloud
+* 📖 docs: icon 组件文档中事件 click 改为 onClick (#358) @oasis-cloud
+* 📖 docs: input 数据变化控制例子补充 (#364) @vickyYE
+* 📖 docs: layout 文档修改 (#368) @Ymm0008 
+* 📖 docs: tabs 文档优化 (#370) @oasis-cloud
+
+
+# v1.3.7
+`2022-10-19`
+* :sparkles: feat: 优化 menu 组件的弹出动画效果 (#341) @oasis-cloud
+* :sparkles: chore: add issue template (#334) @oasis-cloud
+* :bug: fix: feat: Audio 组件 Demo 变量名修改 (#340) @libin0824
+* :bug: fix: Collapse 改变变量的名字 (#336) @zhenyulei
+
+# v1.3.6
+`2022-10-12`
+* :sparkles: feat: Swipe 组件适配小程序，Searchbar 增加 onCancel 回调函数 (#311) @Ymm0008
+* :sparkles: chore: Switch demo import 优化 (#332) @oasis-cloud
+* :bug: fix: Signature 和 Drag 组件 Taro 适配完成 (#322) @irisSong
+* :bug: fix: searchbar 组件样式兼容 (#333) @Ymm0008
+
 # v1.3.5
 `2022-09-28`
 * :sparkles: feat: cascader 组件适配 taro (#318) @ailululu

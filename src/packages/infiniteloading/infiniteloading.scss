@@ -1,4 +1,22 @@
 @import '../icon/icon.scss';
+.nut-theme-dark {
+  .nut-infiniteloading {
+    .nut-infinite-top {
+      .top-text {
+        color: $dark-color;
+      }
+    }
+
+    .nut-infinite-bottom {
+      color: $dark-color;
+
+      .bottom-text {
+        color: $dark-color;
+      }
+    }
+  }
+}
+
 .nut-infiniteloading {
   display: block;
   width: 100%;
@@ -30,7 +48,7 @@
     width: 100%;
     padding-top: 16px;
     font-size: $font-size-small;
-    color: $infinite-bottom-color;
+    color: $infiniteloading-bottom-color;
     text-align: center;
 
     .bottom-box {

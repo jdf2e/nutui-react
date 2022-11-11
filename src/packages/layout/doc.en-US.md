@@ -64,12 +64,12 @@ const App = () => {
   )
 };
 export default App;
-
 ```
+:::
+
 
 :::demo
 ### column interval
-
 
 ``` tsx
 import React from "react";
@@ -92,10 +92,11 @@ const App = () => {
 };
 export default App;
 ```
+:::
 
 
+:::demo
 ### Flex layout
-
 
 ``` tsx
 import React from "react";
@@ -179,7 +180,7 @@ const App = () => {
 }
 export default App;
 ```
-
+:::
 
 
 ## API

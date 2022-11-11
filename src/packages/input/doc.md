@@ -21,10 +21,12 @@ import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
-    const [value1, UpdateValue1] = useState('')
+    const [value, UpdateValue] = useState('')
   return (
     <>
-      <Input label="文本" defaultValue="{value1}"  placeholder="文本" />
+      <Input name="text" label="文本" defaultValue={value}  placeholder="文本" change={(val) => {
+            UpdateValue(val)
+          }}/>
     </>
   );
 };
@@ -51,29 +53,34 @@ const App = () => {
   return (
     <>
        <Input
+          name="text"
           label="文本" 
           placeholder="文本" 
           defaultValue={state.text}
         />
         <Input
+          name="password"
           label="密码" 
           placeholder="密码"
           defaultValue={state.password}
           type="password"
         />
         <Input
+          name="number"
           label="数字" 
           placeholder="数字"
           defaultValue={state.number}
           type="number"
         />
         <Input
+          name="digit"
           label="整数" 
           placeholder="整数"
           defaultValue={state.digit}
           type="digit"
         />
         <Input
+          name="tel"
           label="手机号" 
           placeholder="手机号"
           defaultValue={state.tel}
@@ -365,8 +372,8 @@ const App = () => {
     const  [state, setState] = useState({
         event: '',
     })
-    const change = (value: string | number) => {
-        console.log('change: ', value)
+    const change = (value: string | number, event: Event) => {
+        console.log('change: ', value, event)
     }
     const focus = (value: string | number, event: Event) => {
         console.log('focus:', value, event)
@@ -398,14 +405,14 @@ const App = () => {
           leftIcon="dongdong"
           rightIcon="ask2"
           clearable
-          change={change}
-          focus={focus}
-          blur={blur}
-          clear={clear}
-          click={click}
-          clickInput={clickInput}
-          clickLeftIcon={clickLeftIcon}
-          clickRightIcon={clickRightIcon}
+          onChange={change}
+          onFocus={focus}
+          onblur={blur}
+          onClear={clear}
+          onClick={click}
+          onClickInput={clickInput}
+          onClickLeftIcon={clickLeftIcon}
+          onClickRightIcon={clickRightIcon}
         />
     </>
   )
@@ -417,8 +424,10 @@ export default App;
 
 | 参数         | 说明                                   | 类型           | 默认值  |
 | ------------ | -------------------------------------- | -------------- | ------- |
-| defaultValue | 初始默认值，双向绑定                   | String         | -       |
+| defaultValue | 初始默认值                 | String         | -       |
 | type         | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `textarea` `number` `digit`      | String         | `text`  |
+| name`v1.3.10`  | 组件名字，用于表单提交获取数据 | String         | -       |
+| ref`v1.3.10`  | 用于获取内部input实例ref | RefAttributes         | -       |
 | placeholder  | 输入框为空时占位符                           | String         | -       |
 | label        | 左侧文本                               | String         | -       |
 | labelClass`v1.2.1`  | 左侧文本额外类名                        | String | -  |
@@ -449,14 +458,14 @@ export default App;
 
 | 名称   | 说明           | 回调参数    |
 |--------|----------------|-------------|
-| change | 输入框内容变化时触发 | val ,event |
-| focus  | 输入框聚焦时触发     | val  ,event |
-| blur   | 输入框失焦时触发     | val ,event  |
-| clear  | 点击清除按钮时触发   | val ,event  |
-| click`v1.2.1`  | 点击组件时触发      | val ,event  |
-| clickInput`v1.2.1`     | 点击输入区域时触发      | val ,event  |
-| clickLeftIcon`v1.2.1`  | 点击左侧图标时触发      | val ,event  |
-| clickRightIcon`v1.2.1` | 点击右侧图标时触发      | val ,event  |
+| onChange `v1.3.8` | 输入框内容变化时触发 | val ,event |
+| onFocus `v1.3.8`  | 输入框聚焦时触发     | val  ,event |
+| onBlur `v1.3.8`   | 输入框失焦时触发     | val ,event  |
+| onClear `v1.3.8`  | 点击清除按钮时触发   | val ,event  |
+| onClick `v1.3.8`  | 点击组件时触发      | val ,event  |
+| onClickInput `v1.3.8`     | 点击输入区域时触发      | val ,event  |
+| onClickLeftIcon `v1.3.8`  | 点击左侧图标时触发      | val ,event  |
+| onClickRightIcon `v1.3.8` | 点击右侧图标时触发      | val ,event  |
 
 ### Slots
 | 名称                 | 说明     | 

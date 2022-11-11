@@ -124,7 +124,7 @@ const RangeDemo = () => {
           <Range
             range
             modelValue={value0}
-            change={(value: any) => {
+            onChange={(value: any) => {
               change(value, 'value0')
             }}
           />
@@ -132,10 +132,10 @@ const RangeDemo = () => {
         <h2>{translated.title2}</h2>
         <Cell style={cellStyle}>
           <Range
-            modelValue={100}
+            modelValue={0}
             max={10}
             min={-10}
-            change={(value: any) => {
+            onChange={(value: any) => {
               change(value)
             }}
           />
@@ -145,7 +145,7 @@ const RangeDemo = () => {
           <Range
             modelValue={value1}
             step={5}
-            change={(value: any) => {
+            onChange={(value: any) => {
               change(value, 'value1')
             }}
           />
@@ -155,7 +155,7 @@ const RangeDemo = () => {
           <Range
             modelValue={30}
             hiddenRange
-            change={(value: any) => {
+            onChange={(value: any) => {
               change(value)
             }}
           />
@@ -165,7 +165,7 @@ const RangeDemo = () => {
           <Range
             modelValue={20}
             hiddenTag
-            change={(value: any) => {
+            onChange={(value: any) => {
               change(value)
             }}
           />
@@ -175,7 +175,7 @@ const RangeDemo = () => {
           <Range
             modelValue={50}
             disabled
-            change={(value: any) => {
+            onChange={(value: any) => {
               change(value)
             }}
           />
@@ -189,7 +189,7 @@ const RangeDemo = () => {
             buttonColor="rgba(52,96,250,1)"
             activeColor="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
             style={{ color: 'red' }}
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value)
             }}
           />
@@ -199,7 +199,7 @@ const RangeDemo = () => {
           <Range
             modelValue={value2}
             button={<div className="range-custom-button">{value2}</div>}
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value, 'value2')
             }}
           />
@@ -210,7 +210,7 @@ const RangeDemo = () => {
             <Range
               modelValue={value3}
               vertical
-              change={(value: number) => {
+              onChange={(value: number) => {
                 change(value, 'value3')
               }}
             />
@@ -220,7 +220,7 @@ const RangeDemo = () => {
               modelValue={value4}
               vertical
               range
-              change={(value: number) => {
+              onChange={(value: number) => {
                 change(value, 'value4')
               }}
             />
@@ -232,7 +232,7 @@ const RangeDemo = () => {
             modelValue={value5}
             hiddenRange
             marks={marks}
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value, 'value5')
             }}
           />
@@ -242,7 +242,7 @@ const RangeDemo = () => {
             modelValue={value6}
             marks={marks}
             range
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value, 'value6')
             }}
           />
@@ -254,7 +254,7 @@ const RangeDemo = () => {
             vertical
             hiddenRange
             marks={marks}
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value, 'value7')
             }}
           />
@@ -263,7 +263,7 @@ const RangeDemo = () => {
             vertical
             marks={marks}
             range
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value, 'value8')
             }}
           />

@@ -102,7 +102,7 @@ const InputDemo = () => {
       placeholder5: 'Input Align',
     },
   })
-  const [value1, UpdateValue1] = useState('')
+  const [value, UpdateValue] = useState('')
   const [state, setState] = useState({
     val1: '',
     text: '',
@@ -128,7 +128,7 @@ const InputDemo = () => {
     clear: '',
   })
 
-  const change = (value: string | number) => {
+  const change = (value: string | number, event: Event) => {
     console.log('change: ', value)
   }
   const focus = (value: string | number, event: Event) => {
@@ -159,35 +159,45 @@ const InputDemo = () => {
       <div className="demo" style={{ paddingBottom: '20px' }}>
         <h2>{translated.basic}</h2>
         <Input
+          name="text"
           label={translated.text}
           placeholder={translated.text}
-          defaultValue={value1}
+          defaultValue={value}
+          change={(val) => {
+            console.log('change value:', val)
+            UpdateValue(val)
+          }}
         />
         <h2>{translated.title1}</h2>
         <Input
+          name="text"
           label={translated.text}
           placeholder={translated.text}
-          defaultValue={value1}
+          defaultValue={state.val1}
         />
         <Input
+          name="password"
           label={translated.password}
           placeholder={translated.password}
           defaultValue={state.password}
           type="password"
         />
         <Input
+          name="number"
           label={translated.number}
           placeholder={translated.number}
           defaultValue={state.number}
           type="number"
         />
         <Input
+          name="digit"
           label={translated.digit}
           placeholder={translated.digit}
           defaultValue={state.digit}
           type="digit"
         />
         <Input
+          name="tel"
           label={translated.tel}
           placeholder={translated.tel}
           defaultValue={state.tel}
@@ -316,14 +326,14 @@ const InputDemo = () => {
           leftIcon="dongdong"
           rightIcon="ask2"
           clearable
-          change={change}
-          focus={focus}
-          blur={blur}
-          clear={clear}
-          click={click}
-          clickInput={clickInput}
-          clickLeftIcon={clickLeftIcon}
-          clickRightIcon={clickRightIcon}
+          onChange={change}
+          onFocus={focus}
+          onBlur={blur}
+          onClear={clear}
+          onClick={click}
+          onClickInput={clickInput}
+          onClickLeftIcon={clickLeftIcon}
+          onClickRightIcon={clickRightIcon}
         />
       </div>
     </>

@@ -38,6 +38,8 @@ const defaultProps = {
 } as RateProps
 export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   const {
+    className,
+    style,
     count,
     modelValue,
     minimizeValue,
@@ -100,7 +102,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     onChange && onChange(value)
   }
   return (
-    <div className={b()}>
+    <div className={`${b()} ${className}`} style={style}>
       {countArray.map((n) => {
         return (
           <div

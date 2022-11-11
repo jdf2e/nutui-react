@@ -44,6 +44,9 @@
   }
 
   .demo {
+    &.no-overflow {
+      overflow: unset;
+    }
     height: 100%;
     background: #f7f8fa;
     overflow-x: hidden;
@@ -82,4 +85,8 @@
       background: rgba(255, 255, 255, 1);
     }
   }
+}
+
+.nut-theme-dark .demo {
+  background: #000 !important;
 }

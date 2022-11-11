@@ -21,6 +21,7 @@ export type TabsSize = 'large' | 'normal' | 'small'
 export interface TabsProps extends IComponent {
   className: string
   style: React.CSSProperties
+  tabStyle: React.CSSProperties
   value: string | number
   color: string
   background: string
@@ -40,6 +41,7 @@ export interface TabsProps extends IComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
+  tabStyle: {},
   value: 0,
   color: '',
   background: '',
@@ -59,6 +61,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
   const {
     value,
     color,
+    tabStyle,
     background,
     direction,
     type,
@@ -150,7 +153,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
 
   return (
     <div className={classes} {...rest}>
-      <div className={classesTitle} style={{ background }}>
+      <div className={classesTitle} style={{ ...tabStyle, background }}>
         {!!titleNode && typeof titleNode === 'function'
           ? titleNode()
           : titles.current.map((item, index) => {
@@ -203,28 +206,30 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
               )
             })}
       </div>
-      <div className={`${b('')}__content`} style={contentStyle}>
-        {React.Children.map(children, (child, idx) => {
-          if (!React.isValidElement(child)) {
-            return null
-          }
-
-          let childProps = {
-            ...child.props,
-            activeKey: value,
-          }
-
-          if (
-            String(value) !== String(child.props?.paneKey || idx) &&
-            autoHeight
-          ) {
-            childProps = {
-              ...childProps,
-              autoHeightClassName: 'inactive',
+      <div className={`${b('')}__content__wrap`}>
+        <div className={`${b('')}__content`} style={contentStyle}>
+          {React.Children.map(children, (child, idx) => {
+            if (!React.isValidElement(child)) {
+              return null
             }
-          }
-          return React.cloneElement(child, childProps)
-        })}
+
+            let childProps = {
+              ...child.props,
+              activeKey: value,
+            }
+
+            if (
+              String(value) !== String(child.props?.paneKey || idx) &&
+              autoHeight
+            ) {
+              childProps = {
+                ...childProps,
+                autoHeightClassName: 'inactive',
+              }
+            }
+            return React.cloneElement(child, childProps)
+          })}
+        </div>
       </div>
     </div>
   )

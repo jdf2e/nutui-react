@@ -6,7 +6,6 @@ import React, {
   useState,
 } from 'react'
 import Icon from '@/packages/icon/index.taro'
-
 import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface ButtonProps extends IComponent {
@@ -134,7 +133,8 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
   }
 
   return (
-    <div
+    // eslint-disable-next-line react/button-has-type
+    <button
       className={`${btnName} ${className}`}
       style={{ ...btnStyle, ...style }}
       {...rest}
@@ -157,9 +157,9 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
         ) : (
           ''
         )}
-        {children}
+        <div className="text">{children}</div>
       </div>
-    </div>
+    </button>
   )
 }
 

@@ -35,6 +35,8 @@ export interface NoticeBarProps extends IComponent {
   rightIcon?: HTMLElement | any
   close?: (list?: any) => void
   click?: (item?: any) => void
+  onClose?: (list?: any) => void
+  onClick?: (item?: any) => void
 }
 
 const defaultProps = {
@@ -56,7 +58,8 @@ const defaultProps = {
   speed: 50,
 } as NoticeBarProps
 export const NoticeBar: FunctionComponent<
-  Partial<NoticeBarProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<NoticeBarProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const {
     children,
@@ -79,6 +82,8 @@ export const NoticeBar: FunctionComponent<
     rightIcon,
     close,
     click,
+    onClose,
+    onClick,
     iconClassPrefix,
     iconFontClassName,
   } = {
@@ -173,12 +178,14 @@ export const NoticeBar: FunctionComponent<
   }
   const handleClick = (event: MouseEvent) => {
     click && click(event)
+    onClick && onClick(event)
   }
 
   const onClickIcon = (event: MouseEvent) => {
     event.stopPropagation()
     SetShowNoticeBar(!closeMode)
     close && close(event)
+    onClose && onClose(event)
   }
 
   const onAnimationEnd = () => {
@@ -235,12 +242,12 @@ export const NoticeBar: FunctionComponent<
   /**
    * 点击滚动单元
    */
-  const go = (item: any) => {
-    click && click(item)
-  }
 
-  const handleClickIcon = () => {
-    close && close(scrollList[0])
+  const handleClickIcon = (event: MouseEvent) => {
+    event.stopPropagation()
+    SetShowNoticeBar(!closeMode)
+    close && close(event)
+    onClose && onClose(event)
   }
 
   const iconShow = () => {
@@ -338,8 +345,14 @@ export const NoticeBar: FunctionComponent<
           ) : null}
         </div>
       ) : null}
-      {scrollList.current.length > 0 && direction === 'vertical' ? (
-        <div className="nut-noticebar-vertical" style={barStyle}>
+      {showNoticeBar &&
+      scrollList.current.length > 0 &&
+      direction === 'vertical' ? (
+        <div
+          className="nut-noticebar-vertical"
+          style={barStyle}
+          onClick={handleClick}
+        >
           {children ? (
             <div className="horseLamp_list" style={horseLampStyle}>
               {scrollList.current.map((item: string, index: number) => {
@@ -355,9 +368,6 @@ export const NoticeBar: FunctionComponent<
                     className="horseLamp_list_item"
                     style={{ height }}
                     key={index}
-                    onClick={() => {
-                      go(item)
-                    }}
                   >
                     {item}
                   </li>
@@ -367,8 +377,8 @@ export const NoticeBar: FunctionComponent<
           )}
           <div
             className="go"
-            onClick={() => {
-              handleClickIcon()
+            onClick={(e) => {
+              handleClickIcon(e)
             }}
           >
             {rightIcon ||
@@ -376,7 +386,7 @@ export const NoticeBar: FunctionComponent<
                 <Icon
                   classPrefix={iconClassPrefix}
                   fontClassName={iconFontClassName}
-                  name="cross"
+                  name={rightIcon || 'close'}
                   color={color}
                   size="11px"
                 />

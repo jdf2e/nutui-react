@@ -47,7 +47,6 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
   const { locale } = useConfig()
   const mergedProps = { ...defaultProps, ...props }
   const {
-    className,
     style,
     options,
     value,
@@ -139,7 +138,7 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
       <div
         className={`placeholder-element ${classnames({
           up: direction === 'up',
-        })} ${className}`}
+        })}`}
         style={placeholderStyle()}
         onClick={() => parent.toggleItemShow(orderKey)}
       />
@@ -154,13 +153,21 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
         }}
       />
       <div
-        className="nut-menu-item__wrap"
+        className={
+          direction === 'down'
+            ? 'nut-menu-item__wrap'
+            : 'nut-menu-item__wrap-up'
+        }
         style={{
-          ...getPosition(),
+          // ...getPosition(),
           ...isShow(),
         }}
       >
-        <CSSTransition in={_showPopup} timeout={100} classNames="menu-item">
+        <CSSTransition
+          in={_showPopup}
+          timeout={100}
+          classNames={direction === 'down' ? 'menu-item' : 'menu-item-up'}
+        >
           <div className="nut-menu-item__content">
             {options?.map((item, index) => {
               return (

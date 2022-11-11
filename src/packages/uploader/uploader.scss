@@ -1,6 +1,14 @@
 @import '../icon/icon.scss';
 @import '../../styles/mixins/text-ellipsis.scss';
-
+.nut-theme-dark {
+  .nut-uploader__preview-list {
+    background: $dark-background2;
+    color: $dark-color;
+  }
+  .close {
+    color: $dark-color !important;
+  }
+}
 .nut-uploader {
   position: relative;
   display: flex;

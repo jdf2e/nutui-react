@@ -4,7 +4,6 @@ import './demo.scss'
 import Toast from '../toast'
 import { Cell } from '../cell/cell'
 import { Checkbox } from './checkbox'
-import { CheckboxGroup } from '@/packages/checkboxgroup/checkboxgroup'
 import Button from '@/packages/button'
 
 interface T {
@@ -27,6 +26,7 @@ interface T {
   '77fc8365': string
   '3a5040b6': string
   f4d4bae5: string
+  options: string
 }
 
 const CheckboxDemo = () => {
@@ -51,6 +51,7 @@ const CheckboxDemo = () => {
       '3a5040b6': '全选',
       f4d4bae5: '取消全选',
       '2cd0f3be1': '反选',
+      options: '配置 options 渲染复选按钮',
     },
     'zh-TW': {
       '74fc5d8a': '基本用法',
@@ -72,6 +73,7 @@ const CheckboxDemo = () => {
       '3a5040b6': '全選',
       f4d4bae5: '取消全選',
       '2cd0f3be1': '反選',
+      options: '配置 options 渲染複選按鈕',
     },
     'en-US': {
       '74fc5d8a': 'Basic Usage',
@@ -93,6 +95,7 @@ const CheckboxDemo = () => {
       '3a5040b6': 'Select All',
       '2cd0f3be1': 'reverse',
       f4d4bae5: 'Cancel All Selection',
+      options: 'Render radios by configuring options',
     },
   })
 
@@ -103,8 +106,25 @@ const CheckboxDemo = () => {
   const [checkboxgroup2] = useState(['1'])
   const [checkboxgroup3] = useState(['1'])
   const [checkboxgroup4] = useState([])
+  const [checkboxgroup5, setCheckboxgroup5] = useState<string[]>([])
   const checkboxgroup2Ref = useRef(null)
   const checkboxgroup3Ref = useRef(null)
+  const [optionsDemo1, setOptionsDemo1] = useState([
+    {
+      label: '选项1',
+      value: '1',
+    },
+    {
+      label: '选项2',
+      value: '2',
+      disabled: true,
+    },
+    {
+      label: '选项3',
+      value: '3',
+    },
+  ])
+
   return (
     <>
       <div className="demo">
@@ -182,9 +202,9 @@ const CheckboxDemo = () => {
             {translated['48b50759']}
           </Checkbox>
         </Cell>
-        <h2>checkboxGroup</h2>
+        <h2>Checkbox.Group</h2>
         <Cell>
-          <CheckboxGroup
+          <Checkbox.Group
             checkedValue={checkboxgroup1}
             onChange={(value) => {
               Toast.text(value)
@@ -203,7 +223,7 @@ const CheckboxDemo = () => {
             <Checkbox checked={false} label="4">
               {translated['4584d5bf']}
             </Checkbox>
-          </CheckboxGroup>
+          </Checkbox.Group>
         </Cell>
         <Cell>
           <span>
@@ -212,16 +232,16 @@ const CheckboxDemo = () => {
         </Cell>
         <h2>{translated['7df5c456']}</h2>
         <Cell>
-          <CheckboxGroup checkedValue={checkboxgroup1} disabled>
+          <Checkbox.Group checkedValue={checkboxgroup1} disabled>
             <Checkbox label="1">{translated['4584d5bf']}</Checkbox>
             <Checkbox label="2">{translated['4584d5bf']}</Checkbox>
             <Checkbox label="3">{translated['4584d5bf']}</Checkbox>
             <Checkbox label="4">{translated['4584d5bf']}</Checkbox>
-          </CheckboxGroup>
+          </Checkbox.Group>
         </Cell>
         <h2>{translated['77fc8365']}</h2>
         <Cell>
-          <CheckboxGroup
+          <Checkbox.Group
             style={{}}
             ref={checkboxgroup2Ref}
             checkedValue={checkboxgroup2}
@@ -247,7 +267,7 @@ const CheckboxDemo = () => {
             <Checkbox checked={false} label="4">
               {translated['4584d5bf']}
             </Checkbox>
-          </CheckboxGroup>
+          </Checkbox.Group>
         </Cell>
         <Cell>
           <Button
@@ -279,7 +299,7 @@ const CheckboxDemo = () => {
         </Cell>
         <h2>checkboxGroup使用，限制最大可选数（2个）</h2>
         <Cell>
-          <CheckboxGroup
+          <Checkbox.Group
             checkedValue={checkboxgroup3}
             max={2}
             onChange={(value) => {
@@ -298,7 +318,7 @@ const CheckboxDemo = () => {
             <Checkbox checked={false} label="4">
               {translated['4584d5bf']}
             </Checkbox>
-          </CheckboxGroup>
+          </Checkbox.Group>
         </Cell>
         <h2>全选/半选/取消</h2>
         <Cell>
@@ -315,7 +335,7 @@ const CheckboxDemo = () => {
           >
             {translated['3a5040b6']}
           </Checkbox>
-          <CheckboxGroup
+          <Checkbox.Group
             ref={checkboxgroup3Ref}
             checkedValue={checkboxgroup4}
             onChange={(value) => {
@@ -342,7 +362,18 @@ const CheckboxDemo = () => {
             <Checkbox checked={false} label="4">
               {translated['4584d5bf']}
             </Checkbox>
-          </CheckboxGroup>
+          </Checkbox.Group>
+        </Cell>
+        <h2>{translated.options}</h2>
+        <Cell>
+          <Checkbox.Group
+            options={optionsDemo1}
+            checkedValue={checkboxgroup5}
+            onChange={(val) => {
+              console.log(val)
+              setCheckboxgroup5(val)
+            }}
+          />
         </Cell>
       </div>
     </>

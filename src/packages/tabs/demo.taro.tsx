@@ -13,6 +13,7 @@ interface T {
   title7: string
   title8: string
   title9: string
+  title10: string
   custom1: string
   custom2: string
   custom3: string
@@ -31,6 +32,7 @@ const TabsDemo = () => {
       title7: '标签栏字体尺寸 large normal small',
       title8: '自定义标签栏',
       title9: 'Tabpane 自动高度',
+      title10: 'Css 粘性布局',
       custom1: '自定义 1',
       custom2: '自定义 2',
       custom3: '自定义 3',
@@ -46,6 +48,7 @@ const TabsDemo = () => {
       title7: 'tab bar font size large normal small',
       title8: 'custom tab bar',
       title9: 'Tabpane auto height',
+      title10: 'Css Sticky',
       custom1: 'custom 1',
       custom2: 'custom 2',
       custom3: 'custom 3',
@@ -88,7 +91,7 @@ const TabsDemo = () => {
   }, [])
   return (
     <>
-      <div className="demo full">
+      <div className="demo full no-overflow">
         <h2>{translated.basic}</h2>
         <Tabs
           value={tab1value}
@@ -98,7 +101,10 @@ const TabsDemo = () => {
             setTab1value(paneKey)
           }}
         >
-          <TabPane title="Tab 1"> Tab 1 </TabPane>
+          <TabPane title="Tab 1" className="custom-class">
+            {' '}
+            Tab 1{' '}
+          </TabPane>
           <TabPane title="Tab 2"> Tab 2 </TabPane>
           <TabPane title="Tab 3"> Tab 3 </TabPane>
         </Tabs>
@@ -128,6 +134,40 @@ const TabsDemo = () => {
           <TabPane title="Tab 2" pane-key="1" disabled>
             {' '}
             Tab 2{' '}
+          </TabPane>
+          <TabPane title="Tab 3" pane-key="2">
+            {' '}
+            Tab 3{' '}
+          </TabPane>
+        </Tabs>
+        <h2>{translated.title10}</h2>
+        <Tabs
+          value={tab2value}
+          tabStyle={{ position: 'sticky', top: '0px', zIndex: 1 }}
+          onChange={({ paneKey }) => {
+            setTab2value(paneKey)
+          }}
+        >
+          <TabPane title="Tab 1" pane-key="0">
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+          </TabPane>
+          <TabPane title="Tab 2" pane-key="1">
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
           </TabPane>
           <TabPane title="Tab 3" pane-key="2">
             {' '}
@@ -189,6 +229,7 @@ const TabsDemo = () => {
         </Tabs>
         <h2>{translated.title5}</h2>
         <Tabs
+          style={{ height: '300px' }}
           value={tab5value}
           onChange={({ paneKey }) => {
             setTab5value(paneKey)
@@ -205,6 +246,7 @@ const TabsDemo = () => {
         </Tabs>
         <h2>{translated.title6}</h2>
         <Tabs
+          style={{ height: '300px' }}
           value={tab6value}
           onChange={({ paneKey }) => {
             setTab6value(paneKey)
