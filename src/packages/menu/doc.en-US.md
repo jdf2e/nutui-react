@@ -307,3 +307,9 @@ export default App
 | Event      | Description                 | Arguments     |
 |----------|----------------------|--------------|
 | onChange | Emitted select option changed | Selected value |
+
+### MenuItem API
+
+| Event | Description                 | Arguments     |
+|-----|----------------------|--------------|
+| toggle   | Toggle menu display status, true to show，false to hide, no param is negated | show?: boolean |
