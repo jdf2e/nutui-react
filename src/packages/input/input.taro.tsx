@@ -206,9 +206,7 @@ export const Input: FunctionComponent<
   })
   useEffect(() => {
     setClasses(inputClass)
-    if (defaultValue) {
-      SetInputValue(defaultValue)
-    }
+    SetInputValue(defaultValue)
   }, [defaultValue])
 
   useEffect(() => {
