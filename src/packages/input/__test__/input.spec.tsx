@@ -6,7 +6,12 @@ import Button from '@/packages/button'
 
 test('input props test', () => {
   const { container } = render(
-    <Input label="文本" placeholder="请输入文字" defaultValue="初始文本" />
+    <Input
+      name="text"
+      label="文本"
+      placeholder="请输入文字"
+      defaultValue="初始文本"
+    />
   )
   expect(container.querySelector('.label-string')?.innerHTML).toBe('文本')
   expect(container.querySelector('.input-text')).toHaveAttribute(
@@ -17,6 +22,7 @@ test('input props test', () => {
     'value',
     '初始文本'
   )
+  expect(container.querySelector('.input-text')).toHaveAttribute('name', 'text')
   expect(container.querySelector('.input-text')).toHaveAttribute('type', 'text')
   expect(container).toMatchSnapshot()
 })
@@ -48,6 +54,7 @@ test('disabled test', () => {
 test('textarea test', () => {
   const { container } = render(
     <Input
+      name="textarea"
       label="留言"
       placeholder="留言"
       type="textarea"
@@ -55,6 +62,10 @@ test('textarea test', () => {
       rows="2"
       maxlength="50"
     />
+  )
+  expect(container.querySelector('.input-text')).toHaveAttribute(
+    'name',
+    'textarea'
   )
   expect(container.querySelector('.input-text')).toHaveAttribute(
     'maxlength',

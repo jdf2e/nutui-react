@@ -182,7 +182,8 @@ export default App;
 | href      | 標籤頁的跳轉鏈接；如果同時存在 `to`，優先級高於 to   | String | --     |
 | to        | 	標籤頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性 | any | --     |
 | num       | 頁簽右上角的數字角標，超出99之後為99+     | Number | --     |
-| classPrefix      | 自定義icon 類名前綴，用於使用自定義圖標   | String | 'nut-icon'     |
+| iconClassPrefix`v1.2.1`       | 自定義 icon 類名前綴，用於使用自定義圖標        | String                  | `nut-icon` |
+| iconFontClassName`v1.2.1`       | 自定義 icon 字體基礎類名        | String                  | 
 | dot      | 是否顯示圖標右上角小紅點   | Boolean | false     |
 
 

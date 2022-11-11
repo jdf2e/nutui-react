@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Menu, MenuItem, Button } from '@/packages/nutui.react.taro'
 
@@ -96,6 +96,8 @@ const MenuDemo = () => {
     ])
   }, [translated])
 
+  const itemRef = useRef(null)
+
   return (
     <>
       <style>{style}</style>
@@ -114,9 +116,11 @@ const MenuDemo = () => {
         <h2>{translated.customMenuContent}</h2>
         <Menu>
           <MenuItem options={options} value={0} />
-          <MenuItem title={translated.screen}>
+          <MenuItem title={translated.screen} ref={itemRef}>
             <div>{translated.customContent}</div>
-            <Button>{translated.confirm}</Button>
+            <Button onClick={() => (itemRef.current as any).toggle(false)}>
+              {translated.confirm}
+            </Button>
           </MenuItem>
         </Menu>
         <h2>{translated.twoColsInOneLine}</h2>

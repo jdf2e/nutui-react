@@ -9,7 +9,7 @@ import { IComponent, ComponentDefaults } from '@/utils/typings'
 export interface TabbarItemProps extends IComponent {
   dot: boolean
   size: string | number
-  classPrefix: string
+  className: string
   tabTitle: string
   icon: string
   href: string
@@ -26,7 +26,7 @@ const defaultProps = {
   ...ComponentDefaults,
   dot: false,
   size: '',
-  classPrefix: 'nut-icon',
+  className: '',
   tabTitle: '',
   icon: '',
   href: '',
@@ -45,7 +45,8 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
   const {
     dot,
     size,
-    classPrefix,
+    className,
+    style,
     tabTitle,
     icon,
     href,
@@ -78,8 +79,9 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
 
   return (
     <div
-      className={`${b({ active })}`}
+      className={`${b({ active })} ${className}`}
       style={{
+        ...style,
         color: active ? activeColor : unactiveColor,
       }}
       onClick={() => {

@@ -1,7 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import pkg from '@/config.json'
-import '@/sites/assets/styles/reset.scss'
 import './index.scss'
 
 const navs = pkg.nav

@@ -24,6 +24,7 @@ exports[`input props test 1`] = `
         <input
           class="input-text"
           maxlength="9999"
+          name="text"
           placeholder="请输入文字"
           style="text-align: left;"
           type="text"
