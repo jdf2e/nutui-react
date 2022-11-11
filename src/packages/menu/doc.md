@@ -56,7 +56,7 @@ export default App
 
 ```tsx
 import React from 'react';
-import { Menu, MenuItem } from '@nutui/nutui-react';
+import { Menu, MenuItem, Button } from '@nutui/nutui-react';
 
 const App = () => {
   const [options] = useState([
@@ -69,14 +69,15 @@ const App = () => {
     { text: '好评排序', value: 'b' },
     { text: '销量排序', value: 'c' },
   ])
+  const itemRef = useRef(null)
   return (
     <>
       <div className="demo full">
         <Menu>
           <MenuItem options={options} value={0} />
-          <MenuItem title="筛选">
+          <MenuItem title="筛选" ref={itemRef}>
             <div>自定义内容</div>
-            <Button>确认</Button>
+            <Button onClick={() => itemRef.current.toggle(false)}>确认</Button>
           </MenuItem>
         </Menu>
       </div>

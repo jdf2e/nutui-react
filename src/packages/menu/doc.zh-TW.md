@@ -69,14 +69,16 @@ const App = () => {
     { text: '好評排序', value: 'b' },
     { text: '銷量排序', value: 'c' },
   ])
+  const itemRef = useRef(null)
+  
   return (
     <>
       <div className="demo full">
         <Menu>
           <MenuItem options={options} value={0} />
-          <MenuItem title="篩選">
+          <MenuItem title="篩選" ref={itemRef}>
             <div>自定義內容</div>
-            <Button>確認</Button>
+            <Button onClick={() => itemRef.current.toggle(false)}>確認</Button>
           </MenuItem>
         </Menu>
       </div>
