@@ -131,7 +131,11 @@ const TabbarDemo = () => {
             // href="https://m.jd.com"
             icon="cart"
           />
-          <TabbarItem tabTitle={translated.e51e4582} to="/" icon="my" />
+          <TabbarItem
+            tabTitle={translated.e51e4582}
+            to="/pages/index/index"
+            icon="my"
+          />
         </Tabbar>
       </div>
     </>
