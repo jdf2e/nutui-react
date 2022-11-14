@@ -119,7 +119,7 @@ const App = () => {
                 <div className="flex-content">span:6</div>
             </Col>
         </Row>
-        <Row ttype="flex" justify="center">
+        <Row type="flex" justify="center">
             <Col span="6">
                 <div className="flex-content">span:6</div>
             </Col>
@@ -133,7 +133,7 @@ const App = () => {
                 <div className="flex-content">span:6</div>
             </Col>
         </Row>
-        <Row ttype="flex" justify="end">
+        <Row type="flex" justify="end">
             <Col span="6">
                 <div className="flex-content">span:6</div>
             </Col>
@@ -147,7 +147,7 @@ const App = () => {
                 <div className="flex-content">span:6</div>
             </Col>
         </Row>
-        <Row ttype="flex" justify="space-between">
+        <Row type="flex" justify="space-between">
             <Col span="6">
                 <div className="flex-content">span:6</div>
             </Col>
@@ -161,7 +161,7 @@ const App = () => {
                 <div className="flex-content">span:6</div>
             </Col>
         </Row>
-        <Row ttype="flex" justify="space-around">
+        <Row type="flex" justify="space-around">
             <Col span="6">
                 <div className="flex-content">span:6</div>
             </Col>
