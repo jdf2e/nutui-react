@@ -211,6 +211,7 @@ export default App;
 | url      | 設置圖片類型頭像的地址                           | String | -   |
 | alt      | 設置圖片類型頭像無法顯示時的替代文本                | String | -   |
 | icon     | 設置 Icon 類型頭像圖標, 類似 Icon 組件的 name 屬性  | String | -     |
+| iconSize`v1.2.11`     | [圖標尺寸](#/icon) | String、Number | `16`|
 
 ### avatarGroup
 | 字段     | 說明                                                             | 類型   | 默認值 |
