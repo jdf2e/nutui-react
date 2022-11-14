@@ -1,3 +1,25 @@
+# v1.3.10
+`2022-11-09`
+
+* :bug: fix: tabbarItem组件自定义名称统一为className字段 (#434) @cuicuiworld
+* :bug: fix: checkbox 内部类型可选 (#430) @oasis-cloud
+* :bug: fix: noticebar 关闭事件优化，小程序样式优化 (#424) @vickyYe
+* :bug: fix: 取消mixin样式文件引入 (#428) @libin0824
+* :bug: fix(button): add space between icon and text (#418) @Kwan
+* :bug: fix: cell 组件 icon marign 设置错误 (#423) @oasis-cloud
+* :bug: fix: cell组件删除冗余样式 (#401) @irisSong
+* :bug: fix: 变量提取、暗黑模式适配：cellgroup、demo主样式 (#404) @xiaoyatong
+* :sparkles: feat: tag组件添加自定义className和style属性 (#435) @cuicuiworld
+* :sparkles: feat: Address 增加Elevator Taro 适配 (#400) @yangxiaolu1993
+* :sparkles: feat: CheckboxGroup支持options设置子元素 (#425) @cuicuiworld
+* :sparkles: feat: price组件新增自定义大中小尺寸、自定义符号展示在价格前或后、支持没有小数 (#429) @irisSong
+* :sparkles: feat: input组件支持name属性 (#427) @simpleStyle
+* :sparkles: feat: 增加issue-helper入口 (#421) @Ymm0008
+* :sparkles: feat: 单选按钮组支持options设置子元素 (#374) @cuicuiworld
+* 📖 docs: tabs 文档中的粘性布局文案修改 (#403) @oasis-cloud
+* 📖 docs: radio和checkbox文档优化 (#431) @oasis-cloud
+* 📖 docs: 修复部分演示组件的文案显示问题 (#419) @Kwan
+
 # v1.3.9
 `2022-11-02`
 

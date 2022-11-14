@@ -55,7 +55,7 @@ Popup can be closed with toggle method in menu instance.
 
 ```tsx
 import React from 'react';
-import { Menu, MenuItem } from '@nutui/nutui-react';
+import { Menu, MenuItem, Button } from '@nutui/nutui-react';
 
 const App = () => {
   const [options] = useState([
@@ -63,14 +63,16 @@ const App = () => {
     { text: 'New Products', value: 1 },
     { text: 'Activity Products', value: 2 }
   ])
+  const itemRef = useRef(null)
+  
   return (
     <>
       <div className="demo full">
         <Menu>
           <MenuItem options={options} value={0} />
-          <MenuItem title="筛选">
+          <MenuItem title="筛选" ref={itemRef}>
             <div>Custom content</div>
-            <Button>Confirm</Button>
+            <Button onClick={() => itemRef.current.toggle(false)}>Confirm</Button>
           </MenuItem>
         </Menu>
       </div>
@@ -305,3 +307,9 @@ export default App
 | Event      | Description                 | Arguments     |
 |----------|----------------------|--------------|
 | onChange | Emitted select option changed | Selected value |
+
+### MenuItem API
+
+| Event | Description                 | Arguments     |
+|-----|----------------------|--------------|
+| toggle   | Toggle menu display status, true to show，false to hide, no param is negated | show?: boolean |
