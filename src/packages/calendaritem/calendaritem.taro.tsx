@@ -611,7 +611,7 @@ export const CalendarItem: FunctionComponent<
                             {day.type === 'curr' ? day.day : ''}
                           </div>
                           {isCurrDay(month, day.day) ? (
-                            <div className="calendar-curr-tips">
+                            <div className="calendar-curr-tip-curr">
                               {locale.calendaritem.today}
                             </div>
                           ) : (
