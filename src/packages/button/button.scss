@@ -1,4 +1,5 @@
 @import '../icon/icon.scss';
+
 .nut-button {
   position: relative;
   display: inline-block;
@@ -15,9 +16,11 @@
   -webkit-appearance: none;
   user-select: none;
   touch-action: manipulation;
+
   .text {
     margin-left: 5px;
   }
+
   &::before {
     position: absolute;
     top: 50%;
@@ -32,9 +35,11 @@
     opacity: 0;
     content: ' ';
   }
+
   &:active::before {
     opacity: 0.1;
   }
+
   &__warp {
     height: 100%;
     width: 100%;
@@ -49,6 +54,7 @@
       display: none;
     }
   }
+
   &--default {
     color: $button-default-color;
     background: $button-default-bg-color;
