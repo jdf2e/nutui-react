@@ -295,7 +295,7 @@ const App = () => {
   };
   return ( 
     <>   
-      <Cell title="时间选择" desc={desc6} onClick={() => setShow6(true)} />
+      <Cell title="时间选择" desc={desc7} onClick={() => setShow6(true)} />
       <DatePicker
           title="时间选择"
           type="datehour"
