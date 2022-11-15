@@ -160,7 +160,14 @@ export const Avatar: FunctionComponent<
           {(!parent?.propAvatarGroup?.maxCount ||
             avatarIndex <= parent?.propAvatarGroup?.maxCount) && (
             <>
-              {url && <img src={url} alt={alt} onError={errorEvent} />}
+              {url && (
+                <img
+                  className="avatar-img"
+                  src={url}
+                  alt={alt}
+                  onError={errorEvent}
+                />
+              )}
               {icon && (
                 <Icon
                   classPrefix={iconClassPrefix}
