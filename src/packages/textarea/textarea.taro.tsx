@@ -66,8 +66,8 @@ export const TextArea: FunctionComponent<
     let initValue = defaultValue
     if (initValue && maxlength && [...initValue].length > Number(maxlength)) {
       initValue = initValue.substring(0, Number(maxlength))
-      SetInputValue(initValue)
     }
+    SetInputValue(initValue)
   }, [defaultValue])
 
   const textChange = (event: any) => {
