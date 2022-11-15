@@ -7,38 +7,38 @@ Used to single select in a set of alternatives
 ### Install
 
 ``` ts
-import { Radio,RadioGroup } from '@nutui/nutui-react';
+import { Radio } from '@nutui/nutui-react';
 ```
 
 ## Basic Usage
 
 Tie the value of the current option by the label. And must be used in
-conjunction with RadioGroup and Radio
+conjunction with Radio.RadioGroup and Radio
 
 :::demo
 
 ```tsx
 import React, { useState } from 'react';
-import { Radio, RadioGroup } from '@nutui/nutui-react';
+import { Radio } from '@nutui/nutui-react';
 
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
-    <RadioGroup value={radioVal}>
+    <Radio.RadioGroup value={radioVal}>
       <Radio value="1">Option 1</Radio>
       <Radio disabled value="2">Option 2</Radio>
       <Radio value="3">Option 3</Radio>
-    </RadioGroup>
-    <RadioGroup value={radioVal} textPosition="left">
+    </Radio.RadioGroup>
+    <Radio.RadioGroup value={radioVal} textPosition="left">
       <Radio value="1">Option 1</Radio>
       <Radio disabled value="2">Option 2</Radio>
       <Radio value="3">Option 3</Radio>
-    </RadioGroup>
-    <RadioGroup value={radioVal}>
+    </Radio.RadioGroup>
+    <Radio.RadioGroup value={radioVal}>
       <Radio shape="button" value="1">Option 1</Radio>
       <Radio disabled shape="button" value="2">Option 2</Radio>
       <Radio shape="button" value="3">Option 3</Radio>
-    </RadioGroup>
+    </Radio.RadioGroup>
   </>
 }
 export default RadioGroupLast;
@@ -52,26 +52,26 @@ export default RadioGroupLast;
 
 ```tsx
 import React, { useState } from 'react';
-import { Radio, RadioGroup } from '@nutui/nutui-react';
+import { Radio } from '@nutui/nutui-react';
 
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
-    <RadioGroup value={radioVal} direction="horizontal">
+    <Radio.RadioGroup value={radioVal} direction="horizontal">
       <Radio value="1">Option 1</Radio>
       <Radio disabled value="2">Option 2</Radio>
       <Radio value="3">Option 3</Radio>
-    </RadioGroup>
-    <RadioGroup value={radioVal} textPosition="left" direction="horizontal">
+    </Radio.RadioGroup>
+    <Radio.RadioGroup value={radioVal} textPosition="left" direction="horizontal">
       <Radio value="1">Option 1</Radio>
       <Radio disabled value="2">Option 2</Radio>
       <Radio value="3">Option 3</Radio>
-    </RadioGroup>
-    <RadioGroup value={radioVal} direction="horizontal">
+    </Radio.RadioGroup>
+    <Radio.RadioGroup value={radioVal} direction="horizontal">
       <Radio value="1">Option 1</Radio>
       <Radio disabled value="2">Option 2</Radio>
       <Radio value="3">Option 3</Radio>
-    </RadioGroup>
+    </Radio.RadioGroup>
   </>
 }
 export default RadioGroupLast;
@@ -85,15 +85,15 @@ export default RadioGroupLast;
 
 ```tsx
 import React, { useState } from 'react';
-import { Radio, RadioGroup } from '@nutui/nutui-react';
+import { Radio } from '@nutui/nutui-react';
 
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
-    <RadioGroup value={radioVal}>
+    <Radio.RadioGroup value={radioVal}>
       <Radio value="1" iconSize="12">Size 12</Radio>
       <Radio value="2" iconSize="12">Size 12</Radio>
-    </RadioGroup>
+    </Radio.RadioGroup>
   </>
 }
 export default RadioGroupLast;
@@ -109,17 +109,17 @@ It is recommended that 'iconName' and 'iconActiveName' be modified together
 
 ```tsx
 import React, { useState } from 'react';
-import { Radio, RadioGroup } from '@nutui/nutui-react';
+import { Radio } from '@nutui/nutui-react';
 
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
-    <RadioGroup value={radioVal}>
+    <Radio.RadioGroup value={radioVal}>
       <Radio value="1" iconName="checklist" iconActiveName="checklist">Custom
         icons</Radio>
       <Radio value="2" iconName="checklist" iconActiveName="checklist">Custom
         icons</Radio>
-    </RadioGroup>
+    </Radio.RadioGroup>
   </>
 }
 export default RadioGroupLast;
@@ -133,7 +133,7 @@ export default RadioGroupLast;
 
 ```tsx
 import React, { useState } from 'react';
-import { Radio, RadioGroup } from '@nutui/nutui-react';
+import { Radio } from '@nutui/nutui-react';
 
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
@@ -141,13 +141,49 @@ const RadioGroupLast = () => {
     console.log(v)
   }
   return <>
-    <RadioGroup value={radioVal} onChange={handleChange}>
+    <Radio.RadioGroup value={radioVal} onChange={handleChange}>
       <Radio value="1">Trigger event</Radio>
       <Radio value="2">Trigger event</Radio>
-    </RadioGroup>
+    </Radio.RadioGroup>
   </>
 }
 export default RadioGroupLast;
+```
+
+:::
+
+## Render radios by configuring options
+
+:::demo
+
+```tsx
+import React, { useState } from 'react';
+import { Radio } from '@nutui/nutui-react';
+
+const RadioGroupOptions = () => {
+  const [radioVal, setRadioVal] = useState('1')
+  const [optionsDemo1, setOptionsDemo1] = useState([
+    {
+      label: 'Option1',
+      value: '1',
+    },
+    {
+      label: 'Option2',
+      value: '2',
+      disabled: true,
+    },
+    {
+      label: 'Option3',
+      value: '3',
+    },
+  ])
+  const handleChange = (v) => {
+    console.log(v)
+    setRadioVal(v)
+  }
+  return <Radio.RadioGroup options={optionsDemo1} value={radioVal} onChange={handleChange}></Radio.RadioGroup>
+}
+export default RadioGroupOptions;
 ```
 
 :::
@@ -165,15 +201,16 @@ export default RadioGroupLast;
 | value            | Value is carrying identification, used in Group mode | String、Number、Boolean | -                 |
 | shape            | Shape, with optional values of button, round, | String                  | round             |
 
-### RadioGroup
+### Radio.RadioGroup
 
 | Props          | Description | Type | Default          |
 |----------------| ----- | ----- |------------------|
 | value       | The identifier of the currently selected item, which is selected when the label value is consistent with the | String、Number、Boolean | -          |
 | textPosition | Where the text is located, optional values: 'left', 'right' | String                  | `right`    |
 | direction     | Use horizontal and vertical directions The optional values horizontal, vertical, | String                  | `vertical` |
+| options `v1.3.10`     | Render radios by configuring options      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
-## RadioGroup Event
+## Radio.RadioGroup Event
 
 | Props    | Description | Callback parameters|
 |----------| ----- | ----- |

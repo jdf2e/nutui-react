@@ -134,7 +134,8 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
   }
 
   return (
-    <div
+    // eslint-disable-next-line react/button-has-type
+    <button
       className={`${btnName} ${className}`}
       style={{ ...btnStyle, ...style }}
       {...rest}
@@ -157,9 +158,11 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
         ) : (
           ''
         )}
-        {children}
+        {children && (
+          <div className={icon || loading ? 'text' : ''}>{children}</div>
+        )}
       </div>
-    </div>
+    </button>
   )
 }
 

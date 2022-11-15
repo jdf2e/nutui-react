@@ -6,22 +6,22 @@ exports[`props decimalDigits test 1`] = `
     class="nut-price "
   >
     <div
-      class="nut-price__symbol"
+      class="nut-price__symbol nut-price__symbol-large"
     >
-      ￥
+      ¥
     </div>
     <div
-      class="nut-price__big"
+      class="nut-price__integer nut-price__integer-large"
     >
       15213
     </div>
     <div
-      class="nut-price__point"
+      class="nut-price__decimal nut-price__decimal-large"
     >
       .
     </div>
     <div
-      class="nut-price__small"
+      class="nut-price__decimal nut-price__decimal-large"
     >
       122
     </div>
@@ -35,22 +35,22 @@ exports[`props needSymbol and symbol test 1`] = `
     class="nut-price "
   >
     <div
-      class="nut-price__symbol"
+      class="nut-price__symbol nut-price__symbol-large"
     >
       $
     </div>
     <div
-      class="nut-price__big"
+      class="nut-price__integer nut-price__integer-large"
     >
       10010
     </div>
     <div
-      class="nut-price__point"
+      class="nut-price__decimal nut-price__decimal-large"
     >
       .
     </div>
     <div
-      class="nut-price__small"
+      class="nut-price__decimal nut-price__decimal-large"
     >
       00
     </div>
@@ -64,17 +64,17 @@ exports[`props test 1`] = `
     class="nut-price "
   >
     <div
-      class="nut-price__big"
+      class="nut-price__integer nut-price__integer-large"
     >
       1,010
     </div>
     <div
-      class="nut-price__point"
+      class="nut-price__decimal nut-price__decimal-large"
     >
       .
     </div>
     <div
-      class="nut-price__small"
+      class="nut-price__decimal nut-price__decimal-large"
     >
       00
     </div>
@@ -88,22 +88,22 @@ exports[`props thousands test 1`] = `
     class="nut-price "
   >
     <div
-      class="nut-price__symbol"
+      class="nut-price__symbol nut-price__symbol-large"
     >
       $
     </div>
     <div
-      class="nut-price__big"
+      class="nut-price__integer nut-price__integer-large"
     >
       10010
     </div>
     <div
-      class="nut-price__point"
+      class="nut-price__decimal nut-price__decimal-large"
     >
       .
     </div>
     <div
-      class="nut-price__small"
+      class="nut-price__decimal nut-price__decimal-large"
     >
       01
     </div>

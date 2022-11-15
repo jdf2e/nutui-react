@@ -24,7 +24,7 @@ const App = () => {
     const [value, UpdateValue] = useState('')
   return (
     <>
-      <Input label="文本" defaultValue={value}  placeholder="文本" change={(val) => {
+      <Input name="text" label="文本" defaultValue={value}  placeholder="文本" change={(val) => {
             UpdateValue(val)
           }}/>
     </>
@@ -53,29 +53,34 @@ const App = () => {
   return (
     <>
        <Input
+          name="text"
           label="文本" 
           placeholder="文本" 
           defaultValue={state.text}
         />
         <Input
+          name="password"
           label="密码" 
           placeholder="密码"
           defaultValue={state.password}
           type="password"
         />
         <Input
+          name="number"
           label="数字" 
           placeholder="数字"
           defaultValue={state.number}
           type="number"
         />
         <Input
+          name="digit"
           label="整数" 
           placeholder="整数"
           defaultValue={state.digit}
           type="digit"
         />
         <Input
+          name="tel"
           label="手机号" 
           placeholder="手机号"
           defaultValue={state.tel}
@@ -421,6 +426,8 @@ export default App;
 | ------------ | -------------------------------------- | -------------- | ------- |
 | defaultValue | 初始默认值                 | String         | -       |
 | type         | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `textarea` `number` `digit`      | String         | `text`  |
+| name`v1.3.10`  | 组件名字，用于表单提交获取数据 | String         | -       |
+| ref`v1.3.10`  | 用于获取内部input实例ref | RefAttributes         | -       |
 | placeholder  | 输入框为空时占位符                           | String         | -       |
 | label        | 左侧文本                               | String         | -       |
 | labelClass`v1.2.1`  | 左侧文本额外类名                        | String | -  |
