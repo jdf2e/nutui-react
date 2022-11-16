@@ -194,7 +194,7 @@ export const Infiniteloading: FunctionComponent<
       className={classes}
       scrollY
       id="scroller"
-      // style={{ height: '100%' }}
+      style={{ height: '100%' }}
       onScroll={scrollAction}
       onScrollToLower={lower}
       onTouchStart={touchStart}

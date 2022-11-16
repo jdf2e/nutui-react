@@ -104,7 +104,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     return style
   }
   return (
-    <div>
+    <>
       {closeable ? (
         isTagShow && (
           <div
@@ -137,7 +137,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
           {children && <span className="text">{children}</span>}
         </div>
       )}
-    </div>
+    </>
   )
 }
 

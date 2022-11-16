@@ -164,7 +164,9 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
         ) : (
           ''
         )}
-        <div className="text">{children}</div>
+        {children && (
+          <div className={icon || loading ? 'text' : ''}>{children}</div>
+        )}
       </div>
     </button>
   )

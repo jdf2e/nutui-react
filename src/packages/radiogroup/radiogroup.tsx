@@ -117,7 +117,7 @@ export const RadioGroup = React.forwardRef(
           />
         )
       })
-    }, [val2State])
+    }, [val2State, options])
 
     return (
       <RadioContext.Provider
