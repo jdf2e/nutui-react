@@ -16,6 +16,7 @@ import { IComponent, ComponentDefaults } from '@/utils/typings'
 export interface AvatarProps extends IComponent {
   size: string
   icon: string
+  iconSize?: string | number
   shape: AvatarShape
   bgColor: string
   color: string
@@ -35,6 +36,7 @@ const defaultProps = {
   ...ComponentDefaults,
   size: '',
   icon: '',
+  iconSize: '',
   bgColor: '#eee',
   color: '#666',
   prefixCls: 'nut-avatar',
@@ -54,6 +56,7 @@ export const Avatar: FunctionComponent<
     url,
     alt,
     icon,
+    iconSize,
     className,
     style,
     activeAvatar,
@@ -160,13 +163,21 @@ export const Avatar: FunctionComponent<
           {(!parent?.propAvatarGroup?.maxCount ||
             avatarIndex <= parent?.propAvatarGroup?.maxCount) && (
             <>
-              {url && <img src={url} alt={alt} onError={errorEvent} />}
+              {url && (
+                <img
+                  className="avatar-img"
+                  src={url}
+                  alt={alt}
+                  onError={errorEvent}
+                />
+              )}
               {icon && (
                 <Icon
                   classPrefix={iconClassPrefix}
                   fontClassName={iconFontClassName}
                   className="icon"
                   name={iconStyles}
+                  size={iconSize}
                 />
               )}
               {children && <span className="text">{children}</span>}
