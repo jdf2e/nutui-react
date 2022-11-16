@@ -43,7 +43,7 @@ test('color props', () => {
 })
 
 test('icon props', () => {
-  const { container } = render(<Avatar icon="my" />)
+  const { container } = render(<Avatar icon="my" iconSize={24} />)
   expect(container.querySelector('.nut-icon')).toHaveClass('nut-icon-my')
 })
 

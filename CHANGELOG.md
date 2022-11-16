@@ -1,3 +1,27 @@
+# v1.3.11
+`2022-11-16`
+
+* :bug: fix: CheckboxGroup和RadioGroup组件动态改变options没有导致子组件更新问题 (#464) @cuicuiworld
+* :sparkles: feat: avatar组件支持iconSize自定义图标大小 (#461) @cuicuiworld
+* :bug: fix: avatar img 标签增加 avatar-img (#462) @oasis-cloud
+* :bug: fix: button 组件中 icon 单独使用不居中  @oasis-cloud
+* :bug: fix: tag组件去除多余标签元素 (#459) @cuicuiworld
+* :bug: fix: calendar 今日标签样式错误 (#460) @Phyzait
+* :sparkles: feat: infiniteloading 组件适配 taro (#458) @junjun666
+* :bug: fix: 修复taro原生img标签无法重新渲染的问题 (#455) @junjun666
+* :sparkles: feat: swiperItem组件支持className和style属性 (#454) @cuicuiworld
+* :bug: fix: 修复TabBar组件demo演示页路由跳转失败问题 (#451) @cuicuiworld
+* :bug: fix: 修复Row组件的文档示例错误 (#453) @simpleStyle
+* 📖 docs: 修复 datepicker 文档中示例代码错误 (#449) @xxxnine
+* :sparkles: feat: 补全button的关于小程序API的typescript支持 (#447) @simpleStyle
+* :bug: fix: input组件defaultvalue值为空时不可清除问题修复 (#452) vickyYe*
+* :sparkles: feat: menuitem 支持 ref (#450) @oasis-cloud
+* :sparkles: feat: badge组件支持className和style属性 (#444) @cuicuiworld
+* :bug: fix: 引入样式文件运行报错(#439) (#441) @hydeia
+* :sparkles: feat: button组件支持原生小程序和H5的button特性 (#433) @simpleStyle
+* :sparkles: feat: row和col组件支持className和style属性 (#440) @cuicuiworld
+* :sparkles: feat: rate组件添加className和style属性 (#438) @cuicuiworld
+
 # v1.3.10
 `2022-11-09`
 
