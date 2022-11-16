@@ -68,9 +68,12 @@ export const Calendar: FunctionComponent<
           visible={visible}
           position="bottom"
           round
+          duration={0.5}
           closeable
+          destroyOnClose
           onClickOverlay={closePopup}
           onClickCloseIcon={closePopup}
+          style={{ height: '85vh' }}
         >
           <CalendarItem
             type={type}
