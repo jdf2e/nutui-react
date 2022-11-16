@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Form } from './form'
-import { FormItem } from '../formitem/formitem'
 import { Input } from '../input/input'
 import Cell from '@/packages/cell'
 import { useTranslate } from '../../sites/assets/locale'
@@ -13,8 +12,6 @@ import Rate from '../rate'
 import InputNumber from '../inputnumber'
 import Range from '../range'
 import { Uploader, FileItem, FileType } from '../uploader/uploader'
-
-const { RadioGroup } = Radio
 
 interface T {
   basic: string
@@ -139,6 +136,9 @@ const FormDemo = () => {
     },
   })
 
+  // 动态表单
+  const dynamicFormRef = useRef<any>(null)
+
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
   const defaultFileList: FileType<string>[] = [
     {
@@ -177,46 +177,50 @@ const FormDemo = () => {
   const [country, setCountry] = useState([])
   const [town, setTown] = useState([])
 
-  const [address, setAddress] = useState({
-    province,
-    city,
-    country,
-    town,
-  })
+  // const [address, setAddress] = useState({
+  //   province,
+  //   city,
+  //   country,
+  //   town,
+  // })
 
-  const onChange = (cal) => {
-    const name = address[cal.next]
-    setTimeout(() => {
-      switch (cal.next) {
-        case 'city':
-          setCity([
-            { id: 7, name: '朝阳区', title: 'C' },
-            { id: 8, name: '崇文区', title: 'C' },
-            { id: 9, name: '昌平区', title: 'C' },
-            { id: 6, name: '石景山区', title: 'S' },
-            { id: 3, name: '八里庄街道', title: 'B' },
-            { id: 10, name: '北苑', title: 'B' },
-          ])
-          break
-        case 'country':
-          setCountry([
-            { id: 3, name: '八里庄街道', title: 'B' },
-            { id: 9, name: '北苑', title: 'B' },
-            { id: 4, name: '常营乡', title: 'C' },
-          ])
-          break
-        default:
-          setNormal(false)
-      }
-    }, 200)
-  }
-  const close = (val) => {
-    console.log(val)
-    setNormal(false)
+  // const onChange = (cal) => {
+  //   const name = address[cal.next]
+  //   setTimeout(() => {
+  //     switch (cal.next) {
+  //       case 'city':
+  //         setCity([
+  //           { id: 7, name: '朝阳区', title: 'C' },
+  //           { id: 8, name: '崇文区', title: 'C' },
+  //           { id: 9, name: '昌平区', title: 'C' },
+  //           { id: 6, name: '石景山区', title: 'S' },
+  //           { id: 3, name: '八里庄街道', title: 'B' },
+  //           { id: 10, name: '北苑', title: 'B' },
+  //         ])
+  //         break
+  //       case 'country':
+  //         setCountry([
+  //           { id: 3, name: '八里庄街道', title: 'B' },
+  //           { id: 9, name: '北苑', title: 'B' },
+  //           { id: 4, name: '常营乡', title: 'C' },
+  //         ])
+  //         break
+  //       default:
+  //         setNormal(false)
+  //     }
+  //   }, 200)
+  // }
+  // const close = (val) => {
+  //   console.log(val)
+  //   setNormal(false)
 
-    if ((val.data as AddressResult).addressStr) {
-      setText((val.data as AddressResult).addressStr)
-    }
+  //   if ((val.data as AddressResult).addressStr) {
+  //     setText((val.data as AddressResult).addressStr)
+  //   }
+  // }
+
+  const submit = () => {
+    console.log('d')
   }
 
   return (
@@ -225,27 +229,31 @@ const FormDemo = () => {
         <h2>{translated.basic}</h2>
         <Cell>
           <Form>
-            <FormItem label={translated.name} required>
+            <Form.Item label={translated.name}>
               <Input
                 className="nut-input-text"
                 placeholder={translated.nameTip}
                 type="text"
               />
-            </FormItem>
-            <FormItem label={translated.remarks} required>
+            </Form.Item>
+            <Form.Item label={translated.remarks}>
               <TextArea placeholder={translated.remarksTip} />
-            </FormItem>
+            </Form.Item>
           </Form>
         </Cell>
         <h2>{translated.title1}</h2>
         <Cell>
-          <Form>
-            <FormItem label={translated.name} required>
+          <Form onFinishFailed={() => submit()}>
+            <Form.Item
+              label={translated.name}
+              name="username"
+              rules={[{ required: true, message: translated.nameTip }]}
+            >
               <Input placeholder={translated.nameTip} type="text" />
-            </FormItem>
-            <FormItem label={translated.tel} required>
-              <Input placeholder={translated.telTip} type="text" />
-            </FormItem>
+            </Form.Item>
+            <Form.Item label={translated.tel} name="tel">
+              <Input placeholder={translated.telTip} type="tel" />
+            </Form.Item>
             <Cell>
               <Button
                 type="default"
@@ -261,13 +269,15 @@ const FormDemo = () => {
               >
                 {translated.remove}
               </Button>
-              <Button
+              <input type="submit" value={translated.submit} />
+              {/* <Button
                 type="primary"
                 size="small"
                 style={{ marginRight: '10px' }}
+                // onClick={() => submit()}
               >
                 {translated.submit}
-              </Button>
+              </Button> */}
               <Button type="default" size="small">
                 {translated.reset}
               </Button>
@@ -277,18 +287,18 @@ const FormDemo = () => {
         <h2>{translated.title2}</h2>
         <Cell>
           <Form>
-            <FormItem label={translated.name} required>
+            <Form.Item label={translated.name}>
               <Input placeholder={translated.nameTip1} type="text" />
-            </FormItem>
-            <FormItem label={translated.age} required>
+            </Form.Item>
+            <Form.Item label={translated.age}>
               <Input placeholder={translated.ageTip1} type="text" />
-            </FormItem>
-            <FormItem label={translated.tel} required>
+            </Form.Item>
+            <Form.Item label={translated.tel}>
               <Input placeholder={translated.telTip2} type="text" />
-            </FormItem>
-            <FormItem label={translated.address} required>
+            </Form.Item>
+            <Form.Item label={translated.address}>
               <Input placeholder={translated.addressTip} type="text" />
-            </FormItem>
+            </Form.Item>
             <Cell>
               <Button
                 type="primary"
@@ -306,33 +316,33 @@ const FormDemo = () => {
         <h2>{translated.title3}</h2>
         <Cell>
           <Form>
-            <FormItem label={translated.switch} required>
+            <Form.Item label={translated.switch}>
               <Switch checked />
-            </FormItem>
-            <FormItem label={translated.checkbox} required>
+            </Form.Item>
+            <Form.Item label={translated.checkbox}>
               <Checkbox
                 textPosition="right"
                 label={translated.checkbox}
                 checked={false}
               />
-            </FormItem>
-            <FormItem label={translated.radiogroup} required>
-              <RadioGroup>
+            </Form.Item>
+            <Form.Item label={translated.radiogroup}>
+              <Radio.RadioGroup>
                 <Radio value="1">选项1</Radio>
                 <Radio value="2">选项2</Radio>
                 <Radio value="3">选项3</Radio>
-              </RadioGroup>
-            </FormItem>
-            <FormItem label={translated.rate} required>
+              </Radio.RadioGroup>
+            </Form.Item>
+            <Form.Item label={translated.rate}>
               <Rate modelValue={3} />
-            </FormItem>
-            <FormItem label={translated.inputnumber} required>
+            </Form.Item>
+            <Form.Item label={translated.inputnumber}>
               <InputNumber modelValue={3} min="10" max="20" />
-            </FormItem>
-            <FormItem label={translated.range} required>
+            </Form.Item>
+            <Form.Item label={translated.range}>
               <Range modelValue={0} max={10} min={-10} />
-            </FormItem>
-            <FormItem label={translated.uploader} required>
+            </Form.Item>
+            <Form.Item label={translated.uploader}>
               <Uploader
                 url={uploadUrl}
                 defaultFileList={defaultFileList}
@@ -341,8 +351,8 @@ const FormDemo = () => {
                 multiple
                 uploadIcon="dongdong"
               />
-            </FormItem>
-            {/* <FormItem label={translated.address} required>
+            </Form.Item>
+            {/* <Form.Item label={translated.address} >
               <Address
                 modelValue={normal}
                 province={province}
@@ -353,7 +363,7 @@ const FormDemo = () => {
                 onChange={onChange}
                 onClose={close}
               />
-            </FormItem> */}
+            </Form.Item> */}
           </Form>
         </Cell>
       </div>

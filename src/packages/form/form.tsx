@@ -1,70 +1,60 @@
-import React, { ReactNode } from 'react'
+import React, { FunctionComponent } from 'react'
 import './form.scss'
-import { useConfig } from '@/packages/configprovider'
 import CellGroup from '../cellgroup'
+import { FormFieldContext } from './FormFieldContext'
+import { useForm } from './useForm'
+import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { FormField } from './formField'
+import { BaseForm } from './types'
 
-export class FormItemRuleWithoutValidator {
-  [key: string]: any
+export interface FormProps extends IComponent, BaseForm {}
 
-  regex?: RegExp
+const defaultProps = {
+  ...ComponentDefaults,
+  className: '',
+  style: undefined,
+  form: {},
+  labelPosition: 'Right',
+  formGroupTitle: '',
+  onFinish: (obj) => {},
+  onFinishFailed: (value) => {},
+  starPositon: 'Left',
+} as FormProps
 
-  required?: boolean
-
-  message!: string
-}
-
-export interface FormItemRule {
-  onValidator?: (
-    value: any,
-    ruleCfg: FormItemRuleWithoutValidator
-  ) => boolean | string | Promise<boolean | string>
-}
-
-export interface FormProps {
-  modelValue?: {}
-  rules?: FormItemRule[]
-  children?: ReactNode
-  onValidate?: () => void
-  onSubmit?: () => void
-  onReset?: () => void
-}
-const defaultProps = {} as FormProps
-
-export const Form = React.forwardRef<
-  unknown,
-  Partial<FormProps> & Omit<React.HTMLAttributes<HTMLDivElement>, ''>
->((props, ref) => {
-  const { locale } = useConfig()
-  const { modelValue, rules, children } = { ...defaultProps, ...props }
-
-  console.log('FormProps')
-
-  const showErrorTip = () => {
-    console.log('showErrorTip')
+export const Form: FunctionComponent<
+  Partial<FormProps> & React.HTMLAttributes<HTMLFormElement>
+> & { Item: typeof FormField } = (props) => {
+  const { children, onFinish, onFinishFailed, ...rest } = {
+    ...defaultProps,
+    ...props,
   }
 
-  const checkRule = () => {
-    console.log('checkRule')
-  }
+  const [formInstance] = useForm()
+  const { setCallback, submit } = formInstance
 
-  const onValidate = () => {
-    console.log('onValidate')
-  }
-
-  const onSubmit = () => {
-    console.log('onSubmit')
-  }
-
-  const onReset = () => {
-    console.log('onReset')
-  }
+  setCallback({
+    onFinish,
+    onFinishFailed,
+  })
 
   return (
-    <form className="nut-form" action="#">
-      <CellGroup>{children}</CellGroup>
+    <form
+      className="nut-form"
+      onSubmit={(e) => {
+        e.preventDefault()
+        submit()
+      }}
+      // {...rest}
+    >
+      <CellGroup>
+        <FormFieldContext.Provider value={formInstance}>
+          {children}
+        </FormFieldContext.Provider>
+      </CellGroup>
     </form>
   )
-})
+}
 
 Form.defaultProps = defaultProps
 Form.displayName = 'NutForm'
+Form.Item = FormField
