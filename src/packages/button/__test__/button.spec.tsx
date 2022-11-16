@@ -8,12 +8,13 @@ import { useState } from 'react'
 import { Button } from '../button'
 
 test('should match snapshot', () => {
-  const { asFragment } = render(
+  const { container } = render(
     <Button className="aa" style={{ margin: 8 }} type="primary" shape="round">
       主要按钮
     </Button>
   )
-  expect(asFragment()).toMatchSnapshot()
+  expect(container.firstChild?.nodeName).toBe('BUTTON')
+  expect(container).toMatchSnapshot()
 })
 
 test('should children correctly', () => {

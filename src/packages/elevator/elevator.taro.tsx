@@ -109,7 +109,7 @@ export const Elevator: FunctionComponent<
         .boundingClientRect()
       // eslint-disable-next-line no-loop-func
       query.exec((res: any) => {
-        height += res[0][0].height
+        if (res[0][0]) height += res[0][0].height
         // console.log(res, res[0][0].height, height, 'res')
         state.current.listHeight.push(height)
       })

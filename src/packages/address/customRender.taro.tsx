@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
+import Elevator from '@/packages/elevator/index.taro'
 import { useConfig } from '@/packages/configprovider'
 import { SelectedRegionObj, RegionData, NextListObj } from './type'
 
@@ -369,7 +370,7 @@ export const CustomRender: FunctionComponent<
           </ul>
         </div>
       )}
-      {/*
+
       {privateType === 'custom2' && (
         <div className={b('elevator-group')}>
           <Elevator
@@ -378,7 +379,7 @@ export const CustomRender: FunctionComponent<
             onClickItem={handleElevatorItem}
           />
         </div>
-      )} */}
+      )}
     </div>
   )
 }

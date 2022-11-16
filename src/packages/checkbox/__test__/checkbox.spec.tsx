@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Checkbox } from '../checkbox'
@@ -68,4 +68,34 @@ test('should fireEvent correctly', () => {
   expect(handleChange).toBeCalledWith(['1', '3'])
 
   expect(getByTestId('group')).toHaveClass('test')
+})
+
+test('Render checkboxs by configuring options', () => {
+  const CheckboxGroupOptions = () => {
+    const [checkedValue] = useState(['1'])
+    const [optionsDemo1, setOptionsDemo1] = useState([
+      {
+        label: '选项一',
+        value: '1',
+      },
+      {
+        label: '选项二',
+        value: '2',
+        disabled: true,
+      },
+      {
+        label: '选项三',
+        value: '3',
+      },
+    ])
+    return (
+      <>
+        <CheckboxGroup
+          checkedValue={checkedValue}
+          options={optionsDemo1}
+        ></CheckboxGroup>
+      </>
+    )
+  }
+  const { container } = render(<CheckboxGroupOptions />)
 })

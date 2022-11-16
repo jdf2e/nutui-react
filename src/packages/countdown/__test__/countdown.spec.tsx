@@ -49,7 +49,9 @@ describe('Countdown', () => {
     )
     const button = container.querySelector('.nut-button') as Element
     const prevSnapShot = container.querySelector('.nut-countdown')?.innerHTML
-    expect(button?.querySelector('.nut-button__warp')?.innerHTML).toBe('stop')
+    expect(button?.querySelector('.nut-button__warp')?.innerHTML).toBe(
+      '<div class="text">stop</div>'
+    )
     fireEvent.click(button)
     expect(testClick).toBeCalled()
 
@@ -66,7 +68,7 @@ describe('Countdown', () => {
       const button1 = container.querySelector('.nut-button') as Element
       const laterShapShot = container.querySelector('.nut-countdown')?.innerHTML
       expect(button1?.querySelector('.nut-button__warp')?.innerHTML).toBe(
-        'start'
+        '<div class="text">start</div>'
       )
       expect(prevSnapShot === laterShapShot).toBeTruthy()
     })
