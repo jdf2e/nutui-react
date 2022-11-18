@@ -1,5 +1,4 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import { useHistory } from 'react-router-dom'
 import Taro from '@tarojs/taro'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
@@ -77,7 +76,6 @@ export const Cell: FunctionComponent<
     ...props,
   }
   const b = bem('cell')
-  const history = useHistory()
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onClick(event)
     const link = to || url
