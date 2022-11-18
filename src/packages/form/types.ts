@@ -12,6 +12,8 @@ export interface BaseForm {
    * 表单分组名称
    */
   formGroupTitle: string
+  // 必选项星标位置
+  starPositon: string
   /**
    * 表单校验成功回调
    */

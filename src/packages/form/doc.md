@@ -2,32 +2,114 @@
 
 ### 介绍
 
-用于数据录入、校验，支持输入框、单选框、复选框、文件上传等类型，需要与 Cell 组件搭配使用。
+用于数据录入、校验，支持输入框、单选框、复选框等类型。
 
 ### 安装
-
-
-
-## 代码演示
+```javascript
+import { Form } from '@nutui/nutui-react'
+```
 
 ### 基础用法
+:::demo
+```
+<Form>
+  <Form.Item label='姓名' name="username">
+    <Input
+      className="nut-input-text"
+      placeholder='请输入姓名'
+      type="text"
+    />
+  </Form.Item>
+  <Form.Item label='备注' name="remark">
+    <TextArea placeholder='请输入备注' />
+  </Form.Item>
+</Form>
+```
+:::
 
-### 动态表单
+### 顶部对齐
 
 :::demo
 ```
+<Form labelPosition="Top">
+  <Form.Item label='姓名' name="username">
+    <Input
+      className="nut-input-text"
+      placeholder='请输入姓名'
+      type="text"
+    />
+  </Form.Item>
+  <Form.Item label='备注' name="remark">
+    <TextArea placeholder='请输入备注' />
+  </Form.Item>
+</Form>
 ```
 :::
 
 ### 表单校验
 :::demo
 ```
+<Form
+  onFinish={(obj) => submitSucceed(obj)}
+  onFinishFailed={(error) => submitFailed(error)}
+>
+  <Form.Item label='姓名' name="username">
+    <Input
+      className="nut-input-text"
+      placeholder='请输入姓名'
+      type="text"
+    />
+  </Form.Item>
+  <Form.Item label='年龄' name="age">
+    <Input placeholder='请填写年龄' type="number" />
+  </Form.Item>
+  <Form.Item label='联系电话' name="tel">
+    <Input placeholder='请填写联系电话' type="number" />
+  </Form.Item>
+  <Form.Item label='地址' name="address">
+    <Input placeholder='请填写地址' type="text" />
+  </Form.Item>
+  <Cell>
+    <input type="submit" value='提交' />
+  </Cell>
+</Form>
 ```
 :::
 
 ### 表单类型
 :::demo
 ```
+<Form
+  onFinish={(obj) => submitSucceed(obj)}
+  onFinishFailed={(error) => submitFailed(error)}
+>
+  <Form.Item label='开关' name="switch">
+    <Switch />
+  </Form.Item>
+  <Form.Item label='复选框' name="checkbox">
+    <Checkbox
+      textPosition="right"
+      label='复选框'
+      checked={false}
+    />
+  </Form.Item>
+  <Form.Item label='单选按钮' name="radiogroup">
+    <Radio.RadioGroup>
+      <Radio value="1">选项1</Radio>
+      <Radio value="2">选项2</Radio>
+      <Radio value="3">选项3</Radio>
+    </Radio.RadioGroup>
+  </Form.Item>
+  <Form.Item label='评分' name="rate">
+    <Rate modelValue={0} />
+  </Form.Item>
+  <Form.Item label='滑块' name="range">
+    <Range modelValue={0} max={10} min={-10} />
+  </Form.Item>
+  <Cell>
+    <input type="submit" value='提交' />
+  </Cell>
+</Form>
 ```
 :::
 ## API
@@ -36,59 +118,36 @@
 
 | 参数        | 说明                                 | 类型   | 默认值 |
 |-------------|--------------------------------------|--------|--------|
-| modelValue | 表单数据对象(使用表单校验时，_必填_) | object |        |
+| labelPosition | 表单项 label 的位置，默认 Right，可设置为 Top、Left、Right | string |        |
+| starPositon | 必填表单项 label 的红色星标位置，默认 Left，可设置为 Left、Right | string |        |
 
 ### Form Events
 
 | 事件名   | 说明                       | 回调参数                                                   |
-|----------|----------------------------|------------------------------------------------------------|
-| onValidate | 任一表单项被校验失败后触发 | 被校验的表单项 prop 值，校验是否通过，错误消息（如果存在） |
+|----------|-------------------|---------------------------------------|
+| onFinish | 校验成功后触发 | 表单数据 |
+| onFinishFailed | 任一表单项被校验失败后触发 | 被校验的表单项 prop 值，校验是否通过，错误消息（如果存在） |
 
-### FormItem Props
+### Form.Item Props
 
-| 参数                | 说明                                                             | 类型             | 默认值  |
-|---------------------|------------------------------------------------------------------|------------------|---------|
-| required            | 是否显示必填字段的标签旁边的红色星号                             | boolean          | `false` |
-| prop                | 表单域 v-model 字段， 在使用表单校验功能的情况下，该属性是必填的 | string           | -       |
-| labelWidth         | 表单项 label 宽度，默认单位为`px`                                | number \| string | `90px`  |
-| labelAlign         | 表单项 label 对齐方式，可选值为 `center` `right`                 | string           | `left`  |
-| bodyAlign          | 输入框对齐方式，可选值为 `center` `right`                        | string           | `left`  |
+| 参数                | 说明                         | 类型             | 默认值  |
+|---------------------|--------------------------------|------------------|---------|
+| required            | 必填表单项 label 的红色星标 | boolean          | `false` |
+| name                | 在使用表单校验功能的情况下，该属性是必填的 | string           | -       |
+| labelWidth         | 表单项 label 宽度，默认单位为`px` | number \| string | `90px`  |
 | errorMessageAlign | 错误提示文案对齐方式，可选值为 `center` `right`                  | string           | `left`  |
-| showErrorLine     | 是否在校验不通过时标红输入框                                     | boolean          | `true`  |
-| showErrorMessage  | 是否在校验不通过时在输入框下方展示错误提示                       | boolean          | `true`  |
 
-### FormItem Rule 数据结构
+### Form.Item Rule 数据结构
 
-使用 FormItem 的`rules`属性可以定义校验规则，可选属性如下:
+使用 Form.Item 的`rules`属性可以定义校验规则，可选属性如下:
 
-| 键名      | 说明                   | 类型                                    |
-|-----------|------------------------|-----------------------------------------|
-| required  | 是否为必选字段         | boolean                                 |
-| message   | 错误提示文案           | string                                  |
-| onValidator | 通过函数进行校验       | (value) => boolean \| string \| Promise |
-| regex     | 通过正则表达式进行校验 | RegExp                                  |
+| 键名      | 说明                   | 类型 |
+|-----------|------------------------|----------|
+| required  | 是否为必选字段       | boolean |
+| message   | 错误提示文案           | string |
 
-### FormItem Slots
+### Form 实例 Methods
 
-| 名称            | 说明              |
-|-----------------|-------------------|
-| default         | 自定义内容        |
-| label | 自定义`label`区域 |
-
-
-``` html
-  插槽使用方式
-  <nut-form-item>
-    <template v-slot:label>slot label</template>
-  </nut-form-item>
-```
-
-### Methods
-
-通过 [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) 可以获取到 Form 实例并调用实例方法
-
-| 方法名            | 说明                                                               | 参数                | 返回值  |
-|-------------------|--------------------------------------------------------------------|---------------------|---------|
-| submit            | 提交表单进行校验的方法                                             | -                   | Promise |
-| reset             | 清空校验结果                                                       | -                   | -       |
-| validate`v3.1.13` | 用户主动触发校验，用于用户自定义场景时触发，例如 blur、change 事件 | 同 FormItem prop 值 | -       |
+| 方法名            | 说明 | 参数 | 返回值  |
+|-------------------|-----------------------------|-----|---------|
+| submit | 提交表单进行校验的方法 | - | Promise |

@@ -21,15 +21,29 @@ const defaultProps = {
   starPositon: 'Left',
 } as FormProps
 
+const PositionInfo: any = {
+  Top: 'form-layout-top',
+  Left: 'form-layout-left',
+  Right: 'form-layout-right',
+}
+
 export const Form: FunctionComponent<
   Partial<FormProps> & React.HTMLAttributes<HTMLFormElement>
 > & { Item: typeof FormField } = (props) => {
-  const { children, onFinish, onFinishFailed, ...rest } = {
+  const {
+    children,
+    onFinish,
+    onFinishFailed,
+    labelPosition,
+    starPositon,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }
 
   const [formInstance] = useForm()
+  formInstance.starPositon = starPositon
   const { setCallback, submit } = formInstance
 
   setCallback({
@@ -39,7 +53,7 @@ export const Form: FunctionComponent<
 
   return (
     <form
-      className="nut-form"
+      className={`nut-form ${PositionInfo[labelPosition]}`}
       onSubmit={(e) => {
         e.preventDefault()
         submit()

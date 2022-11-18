@@ -64,6 +64,8 @@ export class FormField extends React.Component<FieldProps> {
     const { name } = this.props
     const type = (children as any).type.NAME
 
+    console.log('type 67', type, children)
+
     return {
       value: getFieldValue(name),
       onChange: (
@@ -134,16 +136,12 @@ export class FormField extends React.Component<FieldProps> {
             className="nut-cell__title nut-form-item__label"
             style={{
               width: this.pxCheck(labelWidth),
-              textAlign: labelAlign,
             }}
           >
             {renderLabel}
           </div>
         ) : null}
-        <div
-          className="nut-cell__value nut-form-item__body"
-          style={{ textAlign: bodyAlign }}
-        >
+        <div className="nut-cell__value nut-form-item__body">
           <div className="nut-form-item__body__slots">{childNode}</div>
           {item.length > 0 && (
             <div

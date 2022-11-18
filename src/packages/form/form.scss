@@ -1,2 +1,29 @@
-.nut-form {
+.form-layout-right .nut-form-item__label {
+  text-align: right;
+  font-size: 14px;
+  padding-right: 24px;
+}
+
+.form-layout-left .nut-form-item__label {
+  text-align: left;
+  width: 80px;
+  font-size: 14px;
+  padding-right: 24px;
+}
+
+.form-layout-top .nut-form-item {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.form-layout-top .nut-form-item__label {
+  padding-bottom: 4px;
+  display: block;
+  width: 80px;
+  font-size: 14px;
+  padding-right: 24px;
+}
+
+.form-layout-top .nut-form-item__body {
+  margin-left: 0;
 }

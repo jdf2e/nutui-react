@@ -1,21 +1,21 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { Form } from './form'
 import { Input } from '../input/input'
 import Cell from '@/packages/cell'
 import { useTranslate } from '../../sites/assets/locale'
 import TextArea from '../textarea'
-import Button from '../button'
 import Switch from '../switch'
 import Checkbox from '../checkbox'
 import Radio from '../radio'
 import Rate from '../rate'
-import InputNumber from '../inputnumber'
 import Range from '../range'
-import { Uploader, FileItem, FileType } from '../uploader/uploader'
+import Toast from '@/packages/toast'
+import { FileItem, FileType } from '../uploader/uploader'
 
 interface T {
   basic: string
   title1: string
+  title10: string
   title2: string
   title3: string
   name: string
@@ -58,6 +58,7 @@ const FormDemo = () => {
     'zh-CN': {
       basic: '基本用法',
       title1: '动态表单',
+      title10: '顶部对齐',
       title2: '表单校验',
       title3: '表单类型',
       name: '姓名',
@@ -97,6 +98,7 @@ const FormDemo = () => {
     'en-US': {
       basic: 'Basic Usage',
       title1: 'Dynamic Form',
+      title10: 'Top Align',
       title2: 'Validate Form',
       title3: 'Form Type',
       name: 'Name',
@@ -162,187 +164,121 @@ const FormDemo = () => {
     // console.log(translated.ca3903f3, file, fileList)
   }
 
-  const [text, setText] = useState('请选择地址')
-  const [normal, setNormal] = useState(false)
-  const [province, setProvince] = useState([
-    { id: 1, name: '北京', title: 'B' },
-    { id: 2, name: '广西', title: 'G' },
-    { id: 3, name: '江西', title: 'J' },
-    { id: 4, name: '四川', title: 'S' },
-    { id: 5, name: '浙江', title: 'Z' },
-  ])
+  const submitFailed = (error: any) => {
+    Toast.fail('callback: submitFailed error')
+    console.log('failed error', error)
+  }
 
-  const [city, setCity] = useState([])
-
-  const [country, setCountry] = useState([])
-  const [town, setTown] = useState([])
-
-  // const [address, setAddress] = useState({
-  //   province,
-  //   city,
-  //   country,
-  //   town,
-  // })
-
-  // const onChange = (cal) => {
-  //   const name = address[cal.next]
-  //   setTimeout(() => {
-  //     switch (cal.next) {
-  //       case 'city':
-  //         setCity([
-  //           { id: 7, name: '朝阳区', title: 'C' },
-  //           { id: 8, name: '崇文区', title: 'C' },
-  //           { id: 9, name: '昌平区', title: 'C' },
-  //           { id: 6, name: '石景山区', title: 'S' },
-  //           { id: 3, name: '八里庄街道', title: 'B' },
-  //           { id: 10, name: '北苑', title: 'B' },
-  //         ])
-  //         break
-  //       case 'country':
-  //         setCountry([
-  //           { id: 3, name: '八里庄街道', title: 'B' },
-  //           { id: 9, name: '北苑', title: 'B' },
-  //           { id: 4, name: '常营乡', title: 'C' },
-  //         ])
-  //         break
-  //       default:
-  //         setNormal(false)
-  //     }
-  //   }, 200)
-  // }
-  // const close = (val) => {
-  //   console.log(val)
-  //   setNormal(false)
-
-  //   if ((val.data as AddressResult).addressStr) {
-  //     setText((val.data as AddressResult).addressStr)
-  //   }
-  // }
-
-  const submit = () => {
-    console.log('d')
+  const submitSucceed = (obj: any) => {
+    Toast.success('succeed')
+    console.log('succeed', obj)
   }
 
   return (
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <Cell>
-          <Form>
-            <Form.Item label={translated.name}>
-              <Input
-                className="nut-input-text"
-                placeholder={translated.nameTip}
-                type="text"
-              />
-            </Form.Item>
-            <Form.Item label={translated.remarks}>
-              <TextArea placeholder={translated.remarksTip} />
-            </Form.Item>
-          </Form>
-        </Cell>
-        <h2>{translated.title1}</h2>
-        <Cell>
-          <Form onFinishFailed={() => submit()}>
-            <Form.Item
-              label={translated.name}
-              name="username"
-              rules={[{ required: true, message: translated.nameTip }]}
-            >
-              <Input placeholder={translated.nameTip} type="text" />
-            </Form.Item>
-            <Form.Item label={translated.tel} name="tel">
-              <Input placeholder={translated.telTip} type="tel" />
-            </Form.Item>
-            <Cell>
-              <Button
-                type="default"
-                size="small"
-                style={{ marginRight: '10px' }}
-              >
-                {translated.add}
-              </Button>
-              <Button
-                type="default"
-                size="small"
-                style={{ marginRight: '10px' }}
-              >
-                {translated.remove}
-              </Button>
-              <input type="submit" value={translated.submit} />
-              {/* <Button
-                type="primary"
-                size="small"
-                style={{ marginRight: '10px' }}
-                // onClick={() => submit()}
-              >
-                {translated.submit}
-              </Button> */}
-              <Button type="default" size="small">
-                {translated.reset}
-              </Button>
-            </Cell>
-          </Form>
-        </Cell>
+        <Form>
+          <Form.Item label={translated.name} name="username">
+            <Input
+              className="nut-input-text"
+              placeholder={translated.nameTip}
+              type="text"
+            />
+          </Form.Item>
+          <Form.Item label={translated.remarks} name="remark">
+            <TextArea placeholder={translated.remarksTip} />
+          </Form.Item>
+        </Form>
+        <h2>{translated.title10}</h2>
+        <Form labelPosition="Top">
+          <Form.Item label={translated.name} name="username">
+            <Input
+              className="nut-input-text"
+              placeholder={translated.nameTip}
+              type="text"
+            />
+          </Form.Item>
+          <Form.Item label={translated.remarks} name="remark">
+            <TextArea placeholder={translated.remarksTip} />
+          </Form.Item>
+        </Form>
+        {/* <h2>{translated.title1}</h2>
+        <Form
+          onFinish={(obj) => submitSucceed(obj)}
+          onFinishFailed={(error) => submitFailed(error)}
+        >
+          <Form.Item
+            label={translated.name}
+            name="username"
+            rules={[{ required: true, message: translated.nameTip }]}
+          >
+            <Input placeholder={translated.nameTip} type="text" />
+          </Form.Item>
+          <Form.Item label={translated.tel} name="tel">
+            <Input placeholder={translated.telTip} type="tel" />
+          </Form.Item>
+          <Cell>
+            <input type="submit" value={translated.submit} />
+          </Cell>
+        </Form> */}
         <h2>{translated.title2}</h2>
-        <Cell>
-          <Form>
-            <Form.Item label={translated.name}>
-              <Input placeholder={translated.nameTip1} type="text" />
-            </Form.Item>
-            <Form.Item label={translated.age}>
-              <Input placeholder={translated.ageTip1} type="text" />
-            </Form.Item>
-            <Form.Item label={translated.tel}>
-              <Input placeholder={translated.telTip2} type="text" />
-            </Form.Item>
-            <Form.Item label={translated.address}>
-              <Input placeholder={translated.addressTip} type="text" />
-            </Form.Item>
-            <Cell>
-              <Button
-                type="primary"
-                size="small"
-                style={{ marginRight: '10px' }}
-              >
-                {translated.submit}
-              </Button>
-              <Button type="default" size="small">
-                {translated.reset}
-              </Button>
-            </Cell>
-          </Form>
-        </Cell>
+        <Form
+          onFinish={(obj) => submitSucceed(obj)}
+          onFinishFailed={(error) => submitFailed(error)}
+        >
+          <Form.Item
+            label={translated.name}
+            name="username"
+            rules={[{ required: true, message: translated.nameTip }]}
+          >
+            <Input placeholder={translated.nameTip1} type="text" />
+          </Form.Item>
+          <Form.Item label={translated.age} name="age">
+            <Input placeholder={translated.ageTip1} type="number" />
+          </Form.Item>
+          <Form.Item label={translated.tel} name="tel">
+            <Input placeholder={translated.telTip2} type="number" />
+          </Form.Item>
+          <Form.Item label={translated.address} name="address">
+            <Input placeholder={translated.addressTip} type="text" />
+          </Form.Item>
+          <Cell>
+            <input type="submit" value={translated.submit} />
+          </Cell>
+        </Form>
         <h2>{translated.title3}</h2>
-        <Cell>
-          <Form>
-            <Form.Item label={translated.switch}>
-              <Switch checked />
-            </Form.Item>
-            <Form.Item label={translated.checkbox}>
-              <Checkbox
-                textPosition="right"
-                label={translated.checkbox}
-                checked={false}
-              />
-            </Form.Item>
-            <Form.Item label={translated.radiogroup}>
-              <Radio.RadioGroup>
-                <Radio value="1">选项1</Radio>
-                <Radio value="2">选项2</Radio>
-                <Radio value="3">选项3</Radio>
-              </Radio.RadioGroup>
-            </Form.Item>
-            <Form.Item label={translated.rate}>
-              <Rate modelValue={3} />
-            </Form.Item>
-            <Form.Item label={translated.inputnumber}>
+        <Form
+          onFinish={(obj) => submitSucceed(obj)}
+          onFinishFailed={(error) => submitFailed(error)}
+        >
+          <Form.Item label={translated.switch} name="switch">
+            <Switch />
+          </Form.Item>
+          <Form.Item label={translated.checkbox} name="checkbox">
+            <Checkbox
+              textPosition="right"
+              label={translated.checkbox}
+              checked={false}
+            />
+          </Form.Item>
+          <Form.Item label={translated.radiogroup} name="radiogroup">
+            <Radio.RadioGroup>
+              <Radio value="1">选项1</Radio>
+              <Radio value="2">选项2</Radio>
+              <Radio value="3">选项3</Radio>
+            </Radio.RadioGroup>
+          </Form.Item>
+          <Form.Item label={translated.rate} name="rate">
+            <Rate modelValue={0} />
+          </Form.Item>
+          {/* <Form.Item label={translated.inputnumber} name="inputnumber">
               <InputNumber modelValue={3} min="10" max="20" />
-            </Form.Item>
-            <Form.Item label={translated.range}>
-              <Range modelValue={0} max={10} min={-10} />
-            </Form.Item>
-            <Form.Item label={translated.uploader}>
+            </Form.Item> */}
+          <Form.Item label={translated.range} name="range">
+            <Range modelValue={0} max={10} min={-10} />
+          </Form.Item>
+          {/* <Form.Item label={translated.uploader} name="uploader">
               <Uploader
                 url={uploadUrl}
                 defaultFileList={defaultFileList}
@@ -351,21 +287,11 @@ const FormDemo = () => {
                 multiple
                 uploadIcon="dongdong"
               />
-            </Form.Item>
-            {/* <Form.Item label={translated.address} >
-              <Address
-                modelValue={normal}
-                province={province}
-                city={city}
-                country={country}
-                town={town}
-                customAddressTitle="请选择所在地区"
-                onChange={onChange}
-                onClose={close}
-              />
             </Form.Item> */}
-          </Form>
-        </Cell>
+          <Cell>
+            <input type="submit" value={translated.submit} />
+          </Cell>
+        </Form>
       </div>
     </>
   )

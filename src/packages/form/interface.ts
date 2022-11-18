@@ -17,7 +17,7 @@ export interface FormInstance<Values = any> {
   // getFieldsValue(): Values
   setFieldsValue: (value: any) => void
   // validateFields: (nameList?: NamePath[]) => Promise<Store>
-  // resetFields: (fields?: NamePath[]) => void
+  resetFields: (fields?: NamePath[]) => void
   submit: () => void
   setCallback: (callbacks: Callbacks) => void
 }

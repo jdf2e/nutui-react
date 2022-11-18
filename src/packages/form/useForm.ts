@@ -75,7 +75,6 @@ class FormStore {
     this.errList.length = 0
     this.fieldEntities.forEach((entity: FieldEntity) => {
       const { name, rules = [] } = entity.props
-      console.log('name', name, rules)
       const descriptor: any = {}
       if (rules.length) {
         // 多条校验规则
@@ -88,7 +87,6 @@ class FormStore {
           descriptor[name] = rules[0]
         }
       }
-      console.log('descriptor', descriptor)
       const validator = new Schema(descriptor)
       validator.validate({ [name]: this.store[name] }, (errors) => {
         if (errors) {
@@ -117,6 +115,8 @@ class FormStore {
       this.callbacks.onFinishFailed?.(err)
     }
   }
+
+  resetFields = () => {}
 
   getForm = () => {
     return {
