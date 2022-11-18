@@ -22,7 +22,7 @@ const App = () => {
     const [value, UpdateValue] = useState('')
   return (
     <>
-      <Input label="Text" defaultValue={value} placeholder="Text" change={(val) => {
+      <Input name="text" label="Text" defaultValue={value} placeholder="Text" change={(val) => {
             UpdateValue(val)
           }}/>
     </>
@@ -50,29 +50,34 @@ const App = () => {
   return (
     <>
        <Input
+          name="text"
           label="Text" 
           placeholder="Text" 
           defaultValue={state.text}
         />
         <Input
+          name="password"
           label="Password" 
           placeholder="Password"
           defaultValue={state.password}
           type="password"
         />
         <Input
+          name="number"
           label="Number" 
           placeholder="Number"
           defaultValue={state.number}
           type="number"
         />
         <Input
+          name="digit"
           label="Digit" 
           placeholder="Digit"
           defaultValue={state.digit}
           type="digit"
         />
         <Input
+          name="tel"
           label="Tel" 
           placeholder="Tel"
           defaultValue={state.tel}
@@ -427,6 +432,8 @@ export default App;
 | ------------ | -------------------------------------- | -------------- | ------- |
 | defaultValue | Input value                   | String         | -       |
 | type         | Input type, support all native types and `textarea` `number` `digit` type    | String         | `text`  |
+| name`v1.3.10`  | Used for form submission to obtain data | String         | -       |
+| ref`v1.3.10`  | Used to obtain internal input instance ref | RefAttributes         | -       |
 | placeholder  | Placeholder when the input box is empty         | String         | -       |
 | label        | Left text                               | String         | -       |
 | labelClass  | Left text extra class name                      | String | -  |

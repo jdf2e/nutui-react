@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from 'react'
 import classnames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
@@ -43,11 +48,10 @@ const defaultProps = {
   fontClassName: 'nutui-iconfont',
   onChange: (value: OptionItem) => undefined,
 } as MenuItemProps
-export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
+export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   const { locale } = useConfig()
   const mergedProps = { ...defaultProps, ...props }
   const {
-    className,
     style,
     options,
     value,
@@ -75,6 +79,10 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
   useEffect(() => {
     getParentOffset()
   }, [_showPopup])
+
+  useImperativeHandle<any, any>(ref, () => ({
+    toggle: parent.toggleItemShow,
+  }))
 
   const getIconCName = (optionVal: string | number, value: string | number) => {
     return classnames({
@@ -139,7 +147,7 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
       <div
         className={`placeholder-element ${classnames({
           up: direction === 'up',
-        })} ${className}`}
+        })}`}
         style={placeholderStyle()}
         onClick={() => parent.toggleItemShow(orderKey)}
       />
@@ -210,7 +218,7 @@ export const MenuItem: FunctionComponent<Partial<MenuItemProps>> = (props) => {
       </div>
     </>
   )
-}
+})
 
 MenuItem.defaultProps = defaultProps
 MenuItem.displayName = 'NutMenuItem'

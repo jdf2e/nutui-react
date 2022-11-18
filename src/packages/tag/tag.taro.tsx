@@ -39,6 +39,8 @@ const defaultProps = {
 } as TagProps
 export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   const {
+    className,
+    style,
     color,
     plain,
     type,
@@ -102,12 +104,12 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     return style
   }
   return (
-    <div>
+    <>
       {closeable ? (
         isTagShow && (
           <div
-            className={`${btnName}`}
-            style={getStyle()}
+            className={`${btnName} ${className}`}
+            style={{ ...style, ...getStyle() }}
             onClick={(e) => handleClick(e)}
           >
             {children && <span className="text">{children}</span>}
@@ -128,14 +130,14 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
         )
       ) : (
         <div
-          className={`${btnName}`}
-          style={getStyle()}
+          className={`${btnName} ${className}`}
+          style={{ ...style, ...getStyle() }}
           onClick={(e) => handleClick(e)}
         >
           {children && <span className="text">{children}</span>}
         </div>
       )}
-    </div>
+    </>
   )
 }
 

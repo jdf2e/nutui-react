@@ -20,7 +20,17 @@ const defaultProps = {
 export const Row: FunctionComponent<
   Partial<RowProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
-  const { children, type, justify, align, wrap, gutter, onClick } = {
+  const {
+    className,
+    style = {},
+    children,
+    type,
+    justify,
+    align,
+    wrap,
+    gutter,
+    onClick,
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -51,7 +61,8 @@ export const Row: FunctionComponent<
       {React.createElement(
         'div',
         {
-          className: getClasses(),
+          className: `${getClasses()} ${className}`,
+          style,
           onClick: (e: any) => {
             onClick && onClick(e, 'row')
           },
