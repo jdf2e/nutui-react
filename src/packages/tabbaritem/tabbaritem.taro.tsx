@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import Taro from '@tarojs/taro'
 
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
@@ -9,7 +9,7 @@ import { IComponent, ComponentDefaults } from '@/utils/typings'
 export interface TabbarItemProps extends IComponent {
   dot: boolean
   size: string | number
-  classPrefix: string
+  className: string
   tabTitle: string
   icon: string
   href: string
@@ -26,7 +26,7 @@ const defaultProps = {
   ...ComponentDefaults,
   dot: false,
   size: '',
-  classPrefix: 'nutui-iconfont',
+  className: '',
   tabTitle: '',
   icon: '',
   href: '',
@@ -45,7 +45,8 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
   const {
     dot,
     size,
-    classPrefix,
+    className,
+    style,
     tabTitle,
     icon,
     href,
@@ -64,7 +65,6 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
   }
   const b = bem('tabbar-item')
   const bIcon = bem('tabbar-item__icon-box')
-  const history = useHistory()
 
   useEffect(() => {
     if (active && href) {
@@ -72,14 +72,17 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
       return
     }
     if (active && to) {
-      history.push(to)
+      Taro.navigateTo({
+        url: to,
+      })
     }
-  }, [active, history, href, to])
+  }, [active, href, to])
 
   return (
     <div
-      className={`${b({ active })}`}
+      className={`${b({ active })} ${className}`}
       style={{
+        ...style,
         color: active ? activeColor : unactiveColor,
       }}
       onClick={() => {

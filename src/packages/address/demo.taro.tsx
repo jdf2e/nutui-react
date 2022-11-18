@@ -330,18 +330,18 @@ const AddressDemo = () => {
           desc={text.one}
           onClick={() => showAddress('normal')}
         />
-        <h2>选中省市区</h2>
+        <h2>选中省市区1</h2>
         <Cell
           title="选择地址"
           desc={text.six}
           onClick={() => showAddress('select')}
         />
-        {/* <h2>选择自定义地址2</h2>
+        <h2>选择自定义地址2</h2>
         <Cell
           title="选择地址"
           desc={text.five}
           onClick={() => showAddress('normal2')}
-        /> */}
+        />
         <h2>选择已有地址</h2>
         <Cell
           title="选择地址"

@@ -4,8 +4,6 @@ import Radio from '@/packages/radio'
 import Cell from '@/packages/cell'
 import CellGroup from '@/packages/cellgroup'
 
-const { RadioGroup } = Radio
-
 interface T {
   '74fc5d8a': string
   bb7486f4: string
@@ -94,25 +92,25 @@ const RadioDemo = () => {
         <h2>{translated['74fc5d8a']}</h2>
         <CellGroup>
           <Cell>
-            <RadioGroup value="1">
+            <Radio.RadioGroup value="1">
               <Radio value="1">{translated.bb7486f4}1</Radio>
               <Radio disabled value="2">
                 {translated.bb7486f4}2
               </Radio>
               <Radio value="3">{translated.bb7486f4}3</Radio>
-            </RadioGroup>
+            </Radio.RadioGroup>
           </Cell>
           <Cell>
-            <RadioGroup value="2" textPosition="left">
+            <Radio.RadioGroup value="2" textPosition="left">
               <Radio value="1">{translated.bb7486f4}1</Radio>
               <Radio disabled value="2">
                 {translated.bb7486f4}2
               </Radio>
               <Radio value="3">{translated.bb7486f4}3</Radio>
-            </RadioGroup>
+            </Radio.RadioGroup>
           </Cell>
           <Cell>
-            <RadioGroup value="3">
+            <Radio.RadioGroup value="3">
               <Radio shape="button" value="1">
                 {translated.bb7486f4}1
               </Radio>
@@ -122,27 +120,31 @@ const RadioDemo = () => {
               <Radio shape="button" value="3">
                 {translated.bb7486f4}3
               </Radio>
-            </RadioGroup>
+            </Radio.RadioGroup>
           </Cell>
         </CellGroup>
         <h2>{translated.c1bae1ec}</h2>
         <CellGroup>
           <Cell>
-            <RadioGroup value="1" direction="horizontal">
+            <Radio.RadioGroup value="1" direction="horizontal">
               <Radio value="1">{translated.bb7486f4}1</Radio>
               <Radio value="2">{translated.bb7486f4}2</Radio>
               <Radio value="3">{translated.bb7486f4}3</Radio>
-            </RadioGroup>
+            </Radio.RadioGroup>
           </Cell>
           <Cell>
-            <RadioGroup value="2" textPosition="left" direction="horizontal">
+            <Radio.RadioGroup
+              value="2"
+              textPosition="left"
+              direction="horizontal"
+            >
               <Radio value="1">{translated.bb7486f4}1</Radio>
               <Radio value="2">{translated.bb7486f4}2</Radio>
               <Radio value="3">{translated.bb7486f4}3</Radio>
-            </RadioGroup>
+            </Radio.RadioGroup>
           </Cell>
           <Cell>
-            <RadioGroup value="3" direction="horizontal">
+            <Radio.RadioGroup value="3" direction="horizontal">
               <Radio shape="button" value="1">
                 {translated.bb7486f4}1
               </Radio>
@@ -152,53 +154,56 @@ const RadioDemo = () => {
               <Radio shape="button" value="3">
                 {translated.bb7486f4}3
               </Radio>
-            </RadioGroup>
+            </Radio.RadioGroup>
           </Cell>
         </CellGroup>
         <h2>{translated['8a2e2847']}</h2>
         <CellGroup>
           <Cell>
-            <RadioGroup value="2">
+            <Radio.RadioGroup value="2">
               <Radio value="1" iconSize="24">
                 {translated['8a2e2847']}24
               </Radio>
               <Radio value="2" iconSize="12">
                 {translated['8a2e2847']}12
               </Radio>
-            </RadioGroup>
+            </Radio.RadioGroup>
           </Cell>
         </CellGroup>
         <h2>Radio{translated['70ffa5d8']}</h2>
         <CellGroup>
           <Cell>
-            <RadioGroup value="1">
+            <Radio.RadioGroup value="1">
               <Radio value="1" iconName="checklist" iconActiveName="checklist">
                 {translated['70ffa5d8']}
               </Radio>
               <Radio value="2" iconName="checklist" iconActiveName="checklist">
                 {translated['70ffa5d8']}
               </Radio>
-            </RadioGroup>
+            </Radio.RadioGroup>
           </Cell>
         </CellGroup>
         <h2>{translated['0f261484']}</h2>
         <CellGroup>
           <Cell>
-            <RadioGroup value={radioVal} onChange={(e) => handleChange(e)}>
+            <Radio.RadioGroup
+              value={radioVal}
+              onChange={(e) => handleChange(e)}
+            >
               <Radio value={1}>{translated['0f261484']}</Radio>
               <Radio value={2}>{translated['0f261484']}</Radio>
-            </RadioGroup>
+            </Radio.RadioGroup>
           </Cell>
           <Cell title={translated['6b1f669d']} desc={radioVal.toString()} />
         </CellGroup>
         <h2>{translated.options}</h2>
         <CellGroup>
           <Cell>
-            <RadioGroup
+            <Radio.RadioGroup
               options={optionsDemo1}
               value={radioVal1}
               onChange={(e) => handleChange1(e)}
-            ></RadioGroup>
+            ></Radio.RadioGroup>
           </Cell>
         </CellGroup>
       </div>

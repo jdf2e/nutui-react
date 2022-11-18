@@ -69,14 +69,16 @@ const App = () => {
     { text: '好評排序', value: 'b' },
     { text: '銷量排序', value: 'c' },
   ])
+  const itemRef = useRef(null)
+  
   return (
     <>
       <div className="demo full">
         <Menu>
           <MenuItem options={options} value={0} />
-          <MenuItem title="篩選">
+          <MenuItem title="篩選" ref={itemRef}>
             <div>自定義內容</div>
-            <Button>確認</Button>
+            <Button onClick={() => itemRef.current.toggle(false)}>確認</Button>
           </MenuItem>
         </Menu>
       </div>
@@ -296,3 +298,9 @@ export default App
 | 事件名      | 說明                 | 回調參數     |
 |----------|----------------------|--------------|
 | onChange | 選擇 option 之後觸發 | 選擇的 value |
+
+### MenuItem API
+
+| 事件名 | 说明                 | 回调参数     |
+|-----|----------------------|--------------|
+| toggle   | 切换菜单展示状态，传 true 为显示，false 为隐藏，不传参为取反 | show?: boolean |
