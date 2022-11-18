@@ -1,10 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import './form.scss'
 import CellGroup from '../cellgroup'
-import { FormFieldContext } from './FormFieldContext'
+import { FormItemContext } from '../formitem/formitemcontext'
 import { useForm } from './useForm'
 import { IComponent, ComponentDefaults } from '@/utils/typings'
-import { FormField } from './formField'
+import { FormItem } from '../formitem/formitem'
 import { BaseForm } from './types'
 
 export interface FormProps extends IComponent, BaseForm {}
@@ -29,7 +28,7 @@ const PositionInfo: any = {
 
 export const Form: FunctionComponent<
   Partial<FormProps> & React.HTMLAttributes<HTMLFormElement>
-> & { Item: typeof FormField } = (props) => {
+> & { Item: typeof FormItem } = (props) => {
   const {
     children,
     onFinish,
@@ -53,7 +52,8 @@ export const Form: FunctionComponent<
 
   return (
     <form
-      className={`nut-form ${PositionInfo[labelPosition]}`}
+      className={`nut-form ${PositionInfo[labelPosition]} ${props.className}`}
+      style={props.style}
       onSubmit={(e) => {
         e.preventDefault()
         submit()
@@ -61,9 +61,9 @@ export const Form: FunctionComponent<
       // {...rest}
     >
       <CellGroup>
-        <FormFieldContext.Provider value={formInstance}>
+        <FormItemContext.Provider value={formInstance}>
           {children}
-        </FormFieldContext.Provider>
+        </FormItemContext.Provider>
       </CellGroup>
     </form>
   )
@@ -71,4 +71,4 @@ export const Form: FunctionComponent<
 
 Form.defaultProps = defaultProps
 Form.displayName = 'NutForm'
-Form.Item = FormField
+Form.Item = FormItem

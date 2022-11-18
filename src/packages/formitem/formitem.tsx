@@ -1,15 +1,12 @@
 import React from 'react'
 import { BaseFormField } from './types'
-import { FormFieldContext } from './FormFieldContext'
+import { FormItemContext } from './formitemcontext'
 import Cell from '../cell'
-import './formField.scss'
 import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface FormFieldProps extends IComponent, BaseFormField {
   labelWidth: string | number
-  labelAlign: any
-  bodyAlign: any
-  errorMessageAlign: any
+  errorMessageAlign: string
   showErrorLine: boolean
   showErrorMessage: boolean
 }
@@ -22,8 +19,6 @@ const defaultProps = {
   rules: [{ required: false, message: '' }],
   disabled: false,
   labelWidth: 90,
-  labelAlign: 'start',
-  bodyAlign: '',
   errorMessageAlign: 'left',
   showErrorLine: true,
   showErrorMessage: true,
@@ -31,12 +26,12 @@ const defaultProps = {
 
 export type FieldProps = typeof defaultProps & Partial<BaseFormField>
 
-export class FormField extends React.Component<FieldProps> {
+export class FormItem extends React.Component<FieldProps> {
   static defaultProps = defaultProps
 
-  static contextType: any = FormFieldContext
+  static contextType: any = FormItemContext
 
-  declare context: React.ContextType<typeof FormFieldContext>
+  declare context: React.ContextType<typeof FormItemContext>
 
   private cancelRegister: any
 
@@ -92,8 +87,6 @@ export class FormField extends React.Component<FieldProps> {
       rules = [{ required: false, message: '' }],
       className,
       labelWidth,
-      labelAlign,
-      bodyAlign,
       errorMessageAlign,
       showErrorLine,
       showErrorMessage,
