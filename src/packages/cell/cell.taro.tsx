@@ -79,21 +79,9 @@ export const Cell: FunctionComponent<
   const b = bem('cell')
   const history = useHistory()
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    click(event)
     onClick(event)
-    if (to && history) {
-      history[replace ? 'replace' : 'push'](to)
-    } else if (url) {
-      if (
-        url.startsWith('https://') ||
-        url.startsWith('http://') ||
-        url.startsWith('//')
-      ) {
-        replace ? window.location.replace(url) : (window.location.href = url)
-      } else {
-        Taro.navigateTo({ url })
-      }
-    }
+    const link = to || url
+    replace ? Taro.redirectTo({ url: link }) : Taro.navigateTo({ url: link })
   }
 
   const baseStyle = {
