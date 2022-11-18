@@ -245,8 +245,6 @@ export const Input: FunctionComponent<
   ) => {
     let val = value
 
-    console.log('input update value', val)
-
     if (type === 'digit' || type === 'tel') {
       val = formatNumber(val, false, false)
     }

@@ -26,7 +26,6 @@ class FormStore {
    * @param field
    */
   registerField = (field: any) => {
-    console.log('field', field)
     this.fieldEntities.push(field)
     return () => {
       this.fieldEntities = this.fieldEntities.filter((item) => item != field)

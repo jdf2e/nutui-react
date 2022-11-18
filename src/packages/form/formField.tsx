@@ -42,7 +42,6 @@ export class FormField extends React.Component<FieldProps> {
 
   constructor(props: FieldProps) {
     super(props)
-    console.log('3')
   }
 
   componentDidMount() {
@@ -64,8 +63,6 @@ export class FormField extends React.Component<FieldProps> {
     const { name } = this.props
     const type = (children as any).type.NAME
 
-    console.log('type 67', type, children)
-
     return {
       value: getFieldValue(name),
       onChange: (
@@ -79,7 +76,6 @@ export class FormField extends React.Component<FieldProps> {
             break
           default:
         }
-        console.log('type', type, name, newValue)
         setFieldsValue({ [name]: newValue })
       },
     }
