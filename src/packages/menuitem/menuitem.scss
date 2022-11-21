@@ -3,8 +3,9 @@
 
 .nut-theme-dark {
   .nut-menu-item__content {
+    background: $dark3;
     .nut-menu-item__option {
-      color: $dark-color;
+      color: $gray6;
     }
   }
 }

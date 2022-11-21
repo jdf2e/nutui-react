@@ -1,3 +1,13 @@
+.nut-theme-dark {
+  .nut-barrage {
+    background-color: $dark2;
+    color: $white;
+    .barrage-item {
+      background: linear-gradient(to right, $dark6, $dark9);
+    }
+  }
+}
+
 .nut-barrage {
   position: absolute;
   left: 0;

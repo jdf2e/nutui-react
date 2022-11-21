@@ -1,17 +1,16 @@
 @import '../icon/icon.scss';
 .nut-theme-dark {
   .nut-infiniteloading {
-    .nut-infinite-top {
-      .top-text {
-        color: $dark-color;
+    .nut-infinite-container {
+      .infiniteLi {
+        color: $white;
       }
     }
-
     .nut-infinite-bottom {
-      color: $dark-color;
-
-      .bottom-text {
-        color: $dark-color;
+      .bottom-box {
+        .bottom-text {
+          color: $dark1;
+        }
       }
     }
   }

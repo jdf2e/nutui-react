@@ -5,6 +5,11 @@
     padding-left: 27px !important;
   }
 }
+.nut-theme-dark {
+  .steps-wrapper {
+    background-color: $dark5;
+  }
+}
 .steps-wrapper {
   width: 100%;
   padding: 15px 0;

@@ -1,4 +1,17 @@
 @import '../button/button';
+.nut-theme-dark {
+  .nut-signature {
+    &__inner {
+      canvas {
+        background-color: $dark2;
+      }
+    }
+  }
+  .demo-tips {
+    background-color: $dark6;
+    color: $white;
+  }
+}
 .nut-signature {
   &__inner {
     height: $signature-height;

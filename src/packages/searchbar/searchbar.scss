@@ -1,7 +1,10 @@
 .nut-theme-dark {
   .nut-searchbar {
-    background: $black;
-    &__search-label {
+    background: $gray2;
+    &__label {
+      color: $white;
+    }
+    &__action-text {
       color: $white;
     }
     .nut-searchbar__input-clear {

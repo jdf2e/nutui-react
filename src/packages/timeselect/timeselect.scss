@@ -8,13 +8,21 @@
       color: $dark-color;
     }
     &__content {
-      &__pannel {
-        background-color: $dark-background3;
+      &-left {
+        background-color: $dark3;
         color: $dark-color;
+        .nut-timepannel-active {
+          background-color: $dark4;
+          color: $white;
+        }
       }
-      &__detail {
-        background-color: $dark-background2;
-      }
+    }
+  }
+  .nut-timedetail__item {
+    background-color: $dark4;
+    color: $white;
+    &-active {
+      background-color: $dark-brand-color;
     }
   }
 }
