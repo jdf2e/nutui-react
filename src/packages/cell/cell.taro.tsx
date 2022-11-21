@@ -1,5 +1,4 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import { useHistory } from 'react-router-dom'
 import Taro from '@tarojs/taro'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
@@ -51,7 +50,6 @@ export const Cell: FunctionComponent<
   Partial<CellProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
   const {
-    children,
     click,
     onClick,
     title,
@@ -77,23 +75,10 @@ export const Cell: FunctionComponent<
     ...props,
   }
   const b = bem('cell')
-  const history = useHistory()
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    click(event)
     onClick(event)
-    if (to && history) {
-      history[replace ? 'replace' : 'push'](to)
-    } else if (url) {
-      if (
-        url.startsWith('https://') ||
-        url.startsWith('http://') ||
-        url.startsWith('//')
-      ) {
-        replace ? window.location.replace(url) : (window.location.href = url)
-      } else {
-        Taro.navigateTo({ url })
-      }
-    }
+    const link = to || url
+    replace ? Taro.redirectTo({ url: link }) : Taro.navigateTo({ url: link })
   }
 
   const baseStyle = {
@@ -119,50 +104,44 @@ export const Cell: FunctionComponent<
       style={baseStyle}
       {...rest}
     >
-      {children || (
-        <>
-          {icon || iconSlot ? (
-            <div className={b('icon')}>
-              {iconSlot ||
-                (icon ? (
-                  <Icon
-                    classPrefix={iconClassPrefix}
-                    fontClassName={iconFontClassName}
-                    name={icon}
-                    className="icon"
-                  />
-                ) : null)}
-            </div>
-          ) : null}
-          {title || subTitle ? (
-            <div className={`${b('title')}`}>
-              {title ? <div className={b('maintitle')}>{title}</div> : null}
-              {subTitle ? (
-                <div className={b('subtitle')}>{subTitle}</div>
-              ) : null}
-            </div>
-          ) : null}
-          {desc ? (
-            <div
-              className={b('value', {
-                alone: !title && !subTitle,
-              })}
-              style={styles as React.CSSProperties}
-            >
-              {desc}
-            </div>
-          ) : null}
-          {!linkSlot && (isLink || to) ? (
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              name="right"
-              className={b('link')}
-            />
-          ) : (
-            linkSlot
-          )}
-        </>
+      {icon || iconSlot ? (
+        <div className={b('icon')}>
+          {iconSlot ||
+            (icon ? (
+              <Icon
+                classPrefix={iconClassPrefix}
+                fontClassName={iconFontClassName}
+                name={icon}
+                className="icon"
+              />
+            ) : null)}
+        </div>
+      ) : null}
+      {title || subTitle ? (
+        <div className={`${b('title')}`}>
+          {title ? <div className={b('maintitle')}>{title}</div> : null}
+          {subTitle ? <div className={b('subtitle')}>{subTitle}</div> : null}
+        </div>
+      ) : null}
+      {desc ? (
+        <div
+          className={b('value', {
+            alone: !title && !subTitle,
+          })}
+          style={styles as React.CSSProperties}
+        >
+          {desc}
+        </div>
+      ) : null}
+      {!linkSlot && (isLink || to) ? (
+        <Icon
+          classPrefix={iconClassPrefix}
+          fontClassName={iconFontClassName}
+          name="right"
+          className={b('link')}
+        />
+      ) : (
+        linkSlot
       )}
     </div>
   )
