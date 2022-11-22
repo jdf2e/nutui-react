@@ -24,6 +24,9 @@ export interface RangeProps {
   hiddenTag: boolean
   min: number | string
   max: number | string
+  minDesc: number | string
+  maxDesc: number | string
+  curValueDesc: number | string
   step: number | string
   modelValue: SliderValue
   button: React.ReactNode
@@ -75,6 +78,9 @@ export const Range: FunctionComponent<
     onChange,
     onDragStart,
     onDragEnd,
+    minDesc,
+    maxDesc,
+    curValueDesc,
   } = { ...defaultProps, ...props }
 
   let { min, max, step } = { ...defaultProps, ...props }
@@ -377,7 +383,7 @@ export const Range: FunctionComponent<
 
   return (
     <div className={`${containerName}`}>
-      {!hiddenRange ? <div className="min">{+min}</div> : null}
+      {!hiddenRange ? <div className="min">{minDesc || +min}</div> : null}
       <div
         ref={root}
         style={wrapperStyle()}
@@ -442,7 +448,9 @@ export const Range: FunctionComponent<
                   {button || (
                     <div className="nut-range-button" style={buttonStyle()}>
                       {!hiddenTag ? (
-                        <div className="number">{curValue(index)}</div>
+                        <div className="number">
+                          {curValueDesc || curValue(index)}
+                        </div>
                       ) : null}
                     </div>
                   )}
@@ -477,7 +485,7 @@ export const Range: FunctionComponent<
               {button || (
                 <div className="nut-range-button" style={buttonStyle()}>
                   {!hiddenTag ? (
-                    <div className="number">{curValue()}</div>
+                    <div className="number">{curValueDesc || curValue()}</div>
                   ) : null}
                 </div>
               )}
@@ -485,7 +493,7 @@ export const Range: FunctionComponent<
           )}
         </div>
       </div>
-      {!hiddenRange ? <div className="max">{+max}</div> : null}
+      {!hiddenRange ? <div className="max">{maxDesc || +max}</div> : null}
       <Toast
         type="text"
         visible={show}
