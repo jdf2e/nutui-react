@@ -12,7 +12,7 @@ type TextAlign =
   | 'center'
   | 'justify'
   | 'match-parent'
-export interface FormFieldProps extends IComponent, BaseFormField {
+export interface FormItemProps extends IComponent, BaseFormField {
   labelWidth: string | number
   errorMessageAlign: TextAlign
   showErrorLine: boolean
@@ -30,7 +30,7 @@ const defaultProps = {
   errorMessageAlign: 'left',
   showErrorLine: true,
   showErrorMessage: true,
-} as FormFieldProps
+} as FormItemProps
 
 export type FieldProps = typeof defaultProps & Partial<BaseFormField>
 
