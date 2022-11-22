@@ -1,12 +1,25 @@
 @import '../icon/icon.scss';
 @import '../../styles/mixins/text-ellipsis.scss';
 .nut-theme-dark {
+  .nut-uploader {
+    // background-color: $gray2;
+    &__preview {
+      margin-bottom: 0;
+      &-img {
+        i {
+          color: $dark1 !important;
+        }
+      }
+    }
+  }
+  .nut-progress {
+    .nut-progress-text__inner {
+      color: $white !important;
+    }
+  }
   .nut-uploader__preview-list {
     background: $dark-background2;
     color: $dark-color;
-  }
-  .close {
-    color: $dark-color !important;
   }
 }
 .nut-uploader {

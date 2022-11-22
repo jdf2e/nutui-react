@@ -9,6 +9,11 @@
     margin-right: 10px;
   }
 }
+.nut-theme-dark {
+  .demo__piece {
+    background-color: $dark2;
+  }
+}
 .demo__piece {
   display: flex;
   justify-content: center;

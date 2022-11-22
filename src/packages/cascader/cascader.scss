@@ -2,17 +2,24 @@
 @import '../tabs/tabs.scss';
 
 .nut-theme-dark {
-  .nut-cascader__bar {
-    background: $dark-background2;
-    color: $dark-color;
-  }
+  .nut-cascader {
+    .nut-cascader__bar {
+      background: $dark-background2;
+      color: $dark-color;
+    }
 
-  .nut-tabs__titles {
-    background: $dark-background3 !important;
-  }
-
-  .nut-cascader-item {
-    color: $dark-color-gray;
+    .nut-tabs__titles {
+      background: $dark-background3 !important;
+    }
+    &__title {
+      color: $white;
+    }
+    .nut-tabpane {
+      background-color: $dark2;
+    }
+    .nut-cascader-item {
+      color: $dark1;
+    }
   }
 }
 

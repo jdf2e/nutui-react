@@ -1,9 +1,23 @@
 .nut-theme-dark {
   .nut-numberkeyboard {
-    background-color: $dark-background4;
-    .number-board-body .key-board-wrapper .key {
-      background-color: $dark-background5;
+    background-color: $dark3;
+    &__body {
+      background-color: $dark3;
       color: $dark-color;
+      .key-board-wrapper {
+        .key {
+          background-color: $dark3;
+        }
+      }
+    }
+    &__header__tit {
+      color: $white;
+    }
+
+    &__header {
+      &__close {
+        color: $dark1 !important;
+      }
     }
   }
 }

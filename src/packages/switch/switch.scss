@@ -1,3 +1,17 @@
+.nut-theme-dark {
+  .nut-switch {
+    background-color: $dark5;
+    &.switch-close {
+      color: $dark4;
+    }
+    .switch-button {
+      .close {
+        color: $dark5;
+      }
+    }
+  }
+}
+
 .nut-switch {
   cursor: pointer;
   display: flex;

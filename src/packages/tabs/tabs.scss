@@ -2,6 +2,9 @@
 @import '../tabpane/tabpane.scss';
 .nut-theme-dark {
   .nut-tabs {
+    .nut-tabpane {
+      color: $white;
+    }
     &__titles {
       background: $dark-background3;
       &-item {

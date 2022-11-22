@@ -1,7 +1,40 @@
+.nut-theme-dark {
+  .nut-radiogroup {
+    &--vertical {
+      .nut-radio {
+        &__label {
+          margin-right: 5px;
+        }
+        &__button {
+          border: 1px solid $dark6;
+        }
+        &__button--active {
+          border-color: $radio-label-button-border-color;
+        }
+      }
+    }
+    &--horizontal {
+      .nut-radio {
+        &__label {
+          margin-right: 5px;
+        }
+        &__button {
+          border: 1px solid $dark6;
+        }
+        &__button--active {
+          border-color: $radio-label-button-border-color;
+        }
+      }
+    }
+  }
+}
 .nut-radiogroup {
   display: inline-block;
   .nut-radio {
     margin-bottom: 5px;
+    &__label {
+      margin-right: 5px;
+    }
   }
   &--vertical {
   }
