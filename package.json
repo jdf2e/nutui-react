@@ -1,6 +1,6 @@
 {
-  "name": "@nutui/nutui-react",
-  "version": "1.3.11",
+  "name": "@nutui/nutui-react-taro",
+  "version": "1.3.12-beta.3",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -64,6 +64,8 @@
     "lint": "eslint ./src/packages/calendar",
     "lint:fix": "eslint --fix ./src/packages/calendar",
     "publish:beta": "npm publish --tag beta",
+    "prepublishOnly": "node scripts/taro/prepublish.js",
+    "postpublish": "node scripts/taro/postpublish.js",
     "prepare": "husky install",
     "test": "jest",
     "test:demo": "jest  --testNamePattern=^should match snapshot$ --runTestsByPath ./src/packages/collapse/__test__/collapse.spec.tsx",
@@ -92,7 +94,6 @@
     "@react-spring/web": "^9.3.2",
     "@use-gesture/react": "^10.2.9",
     "classnames": "^2.3.1",
-    "mobx-react-lite": "^3.4.0",
     "react-router-dom": "^5.2.0",
     "react-transition-group": "^4.4.2"
   },
@@ -154,6 +155,7 @@
     "map-stream": "0.0.7",
     "marked": "^2.0.3",
     "mobx": "^6.6.2",
+    "mobx-react-lite": "^3.4.0",
     "postcss-import": "^14.0.2",
     "postcss-modules": "^4.2.2",
     "prettier": "2.3.0",
