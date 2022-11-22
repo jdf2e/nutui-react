@@ -64,6 +64,15 @@ test('range test', () => {
   }, 300)
 })
 
+test('range description test', () => {
+  const { container } = render(
+    <Range minDesc="0%" maxDesc="100%" curValueDesc="40%" />
+  )
+  expect(container.querySelector('.min')?.innerHTML).toBe('0%')
+  expect(container.querySelector('.max')?.innerHTML).toBe('100%')
+  expect(container.querySelector('.number')?.innerHTML).toBe('40%')
+})
+
 test('disabled test', () => {
   const state = {
     value0: 50,
