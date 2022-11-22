@@ -4,9 +4,17 @@ import { FormItemContext } from './formitemcontext'
 import Cell from '../cell'
 import { IComponent, ComponentDefaults } from '@/utils/typings'
 
+type TextAlign =
+  | 'start'
+  | 'end'
+  | 'left'
+  | 'right'
+  | 'center'
+  | 'justify'
+  | 'match-parent'
 export interface FormFieldProps extends IComponent, BaseFormField {
   labelWidth: string | number
-  errorMessageAlign: string
+  errorMessageAlign: TextAlign
   showErrorLine: boolean
   showErrorMessage: boolean
 }
@@ -35,10 +43,6 @@ export class FormItem extends React.Component<FieldProps> {
 
   private cancelRegister: any
 
-  constructor(props: FieldProps) {
-    super(props)
-  }
-
   componentDidMount() {
     // 注册组件实例到FormStore
     this.cancelRegister = this.context.registerField(this)
@@ -50,9 +54,7 @@ export class FormItem extends React.Component<FieldProps> {
     }
   }
 
-  /**
-   * children添加value属性和onChange事件
-   */
+  // children添加value属性和onChange事件
   getControlled = (children: React.ReactElement) => {
     const { getFieldValue, setFieldsValue } = this.context
     const { name } = this.props

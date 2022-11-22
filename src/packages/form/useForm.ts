@@ -41,7 +41,7 @@ class FormStore {
    * 存储组件数据
    * @param newStore { [name]: newValue }
    */
-  setFieldsValue = (newStore: object) => {
+  setFieldsValue = (newStore: any) => {
     this.store = {
       ...this.store,
       ...newStore,
