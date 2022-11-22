@@ -295,10 +295,10 @@ export const Range: FunctionComponent<
     }
     SetDragStatus('')
     const rect = await getRectByTaro(root.current)
-    let delta = event.detail.x - rect.left
+    let delta = (event.detail.x ? event.detail.x : event.clientX) - rect.left
     let total = rect.width
     if (vertical) {
-      delta = event.detail.y - rect.top
+      delta = (event.detail.y ? event.detail.y : event.clientY) - rect.top
       total = rect.height
     }
     const value = Number(min) + (delta / total) * scope()
