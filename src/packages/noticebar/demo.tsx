@@ -72,7 +72,9 @@ const NoticeBarDemo = () => {
         </NoticeBar>
         <br />
         <NoticeBar leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png">
-          <a href="https://www.jd.com">{translated.jd}</a>
+          <a href="https://www.jd.com" style={{ color: '#4d88ff' }}>
+            {translated.jd}
+          </a>
         </NoticeBar>
 
         <h2>{translated.multiline}</h2>

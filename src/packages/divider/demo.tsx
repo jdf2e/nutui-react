@@ -81,11 +81,11 @@ const DividerDemo = () => {
             {translated.text}
 
             <Divider direction="vertical" />
-            <a href="#/Divider" style={{ color: '#1989fa' }}>
+            <a href="#/Divider" style={{ color: '#4d88ff' }}>
               {translated.link}
             </a>
             <Divider direction="vertical" />
-            <a href="#/Divider" style={{ color: '#1989fa' }}>
+            <a href="#/Divider" style={{ color: '#4d88ff' }}>
               {translated.link}
             </a>
           </div>

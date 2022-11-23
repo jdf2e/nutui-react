@@ -1,4 +1,7 @@
 .nut-theme-dark {
+  a {
+    color: $primary-link-color !important;
+  }
   .nut-divider {
     color: $white;
   }
