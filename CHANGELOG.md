@@ -1,3 +1,16 @@
+# v1.3.12
+`2022-11-23`
+
+* :bug: fix: children 无数据时不展示cell，应在顶层判断 (#482) @xiaoyatong
+* :sparkles: chore: pulltorefresh 删除取用 console (#480) @oasis-cloud
+* :bug: fix: taro:h5启动时textare组件change时间获取数据报错问题修复 (#479) @vickyYe
+* :sparkles: feat: add form (#470) @xiaoyatong
+* :bug: fix: taro 包不需要依赖 react-router-dom (#475) @oasis-cloud
+* :bug: fix: calendar taro中Popup组件与h5中属性不一致问题 (#468) @Phyzait
+* :bug: fix: Cell组件当children为空数组时不渲染Cell组件问题 (#466) @cuicuiworld
+* :sparkles: feat: range组件新增描述属性 (#471) @simpleStyle
+* :bug: fix: textarea组件字数统计不准确问题修改，兼容emoji (#467) @vickyYe
+
 # v1.3.11
 `2022-11-16`
 
