@@ -1,7 +1,7 @@
 import React from 'react'
 import { BaseFormField } from './types'
 import { FormItemContext } from './formitemcontext'
-import Cell from '../cell'
+import Cell from '@/packages/cell'
 import { IComponent, ComponentDefaults } from '@/utils/typings'
 
 type TextAlign =

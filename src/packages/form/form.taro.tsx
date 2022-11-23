@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import './form.scss'
 import { useConfig } from '@/packages/configprovider'
 
 export interface FormProps {}
