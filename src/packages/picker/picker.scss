@@ -2,20 +2,46 @@
 
 .nut-theme-dark {
   .nut-picker {
+    background-color: $dark2;
     &__title {
       color: $dark-color;
     }
-
-    &-roller {
-      &-item {
-        color: $dark-color;
-      }
-
-      &-item-tile {
-        color: $dark-color;
+    &__confirm-btn {
+      color: $white;
+      cursor: pointer;
+    }
+    .nut-picker__control {
+      background-color: $dark10;
+    }
+    .nut-picker-indicator {
+      background-color: $dark7;
+      z-index: 0;
+      border-top: 1px solid $gray2;
+      border-bottom: 1px solid $gray2;
+    }
+    .nut-picker-mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: linear-gradient(180deg, $dark10, $dark7),
+        linear-gradient(0deg, $dark10, $dark7);
+      background-position: top, bottom;
+      background-size: 100% 108px;
+      background-repeat: no-repeat;
+      z-index: 3;
+    }
+    .nut-picker-list {
+      .nut-picker-roller {
+        &-item {
+          color: $white;
+          &-tile {
+            color: $white;
+          }
+        }
       }
     }
-
     &-roller-mask {
       background-image: linear-gradient(
           180deg,

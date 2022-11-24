@@ -15,6 +15,15 @@
     .disabled {
       background: $dark-background;
     }
+    .active {
+      background: $dark-pagination-active-background-color;
+    }
+    &__contain {
+      .nut-pagination__item {
+        background-color: $dark4;
+        border: 1px solid $dark3;
+      }
+    }
   }
 }
 .nut-pagination {

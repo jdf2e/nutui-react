@@ -1,9 +1,22 @@
 .nut-theme-dark {
   .nut-navbar {
-    background: $dark-background;
-    color: $dark-color;
+    background: $dark2;
+    color: $gray6;
+    box-shadow: none;
     .title {
-      color: $dark-color;
+      color: $gray6;
+    }
+    &__left {
+      color: $dark1;
+      i {
+        color: $dark1 !important;
+      }
+    }
+    &__right {
+      color: $dark1;
+    }
+    &--border {
+      border-bottom: none;
     }
   }
 }

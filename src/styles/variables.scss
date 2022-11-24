@@ -4,7 +4,7 @@ $brand-color: #fa2c19 !default;
 // 渐变色
 $brand-color-start: #ff404f !default;
 $brand-color-end: #fa2c19 !default;
-
+$primary-link-color: #396acc !default;
 $gray0: #000000 !default;
 // 灰阶
 // 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
@@ -38,6 +38,7 @@ $gray9: rgba(0, 0, 0, 0.08) !default;
 $gray10: rgba(0, 0, 0, 0.02) !default;
 
 // 暗黑映射
+$dark-brand-color: #fa3725 !default;
 $dark1: #e6e6e6 !default;
 $dark2: #828282 !default;
 $dark3: #404040 !default;
@@ -390,7 +391,7 @@ $calendar-top-slot-height: 24px !default;
 $calendar-month-title-font-size: inherit !default;
 
 //overlay（✅）
-$overlay-bg-color: rgba(0, 0, 0, 0.7) !default;
+$overlay-bg-color: $gray7 !default;
 
 //popup（✅）
 $popup-close-icon-margin: 16px !default;
@@ -722,6 +723,7 @@ $pagination-active-background-color: linear-gradient(
   $primary-color 0%,
   $primary-color-end 100%
 ) !default;
+$dark-pagination-active-background-color: $dark-brand-color !default;
 $pagination-disable-color: rgba(116, 116, 116, 0.31) !default;
 $pagination-disable-background-color: #f7f8fa !default;
 $pagination-item-border-width: 1px !default;
@@ -1068,14 +1070,6 @@ $countup-color: #ffffff !default;
 $countup-width: 24px !default;
 
 // layout（✅）
-$row-content-color: #fff !default;
-$row-content-background-color: #ff8881 !default;
-$row-content-light-background-color: #ffc7c4 !default;
-$row-content-border-radius: 6px !default;
-$row-content-height: 50px !default;
-$row-content-line-height: 40px !default;
-$col-default-margin-bottom: 15px !default;
-
 $row-content-color: #fff !default;
 $row-content-background-color: #ff8881 !default;
 $row-content-light-background-color: #ffc7c4 !default;

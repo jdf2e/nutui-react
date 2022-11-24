@@ -1,28 +1,44 @@
 @import '../icon/icon.scss';
 .nut-theme-dark {
-  .nut-collapse-item {
-    .collapse-item {
-      background: $dark-background;
-      color: $dark-color;
-      box-shadow: none;
-    }
-    .collapse-wrapper {
-      .collapse-content,
-      .collapse-extraRender {
-        background: $dark-background;
-        color: $dark-color;
+  .nut-collapse {
+    &-item__header {
+      background-color: $dark2;
+      .nut-collapse-item__title {
+        color: $white;
+      }
+      .nut-collapse-item__icon-box {
+        .nut-collapse-item__icon {
+          i {
+            color: $white !important;
+          }
+        }
+      }
+      .nut-collapse-item__sub-title {
+        color: $gray4;
       }
     }
-    .collapse-extraWrapper {
-      .collapse-extraRender {
-        background: $dark-background;
+    .nut-collapse-item__header::after {
+      border: none;
+    }
+    .nut-collapse-item__header--disabled {
+      .nut-collapse-item__title {
+        color: $gray3;
       }
+      .nut-collapse-item__icon-box {
+        .nut-collapse-item__icon {
+          i {
+            color: $gray2 !important;
+          }
+        }
+      }
+    }
+    &-item__content {
+      background-color: $dark3;
+      color: $dark1;
     }
   }
 }
 
-.nut-collapseitem {
-}
 .nut-collapse-item {
   &__header {
     position: relative;

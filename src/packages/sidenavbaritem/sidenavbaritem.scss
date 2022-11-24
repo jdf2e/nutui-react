@@ -1,9 +1,8 @@
 .nut-theme-dark {
-  .nut-sidenavbaritem {
-    background-color: $dark-background2;
-    &__title {
-      background-color: $dark-background2;
-      color: $dark-color;
+  .nut-subsidenavbar {
+    &__item {
+      background-color: $dark3;
+      color: $gray2;
     }
   }
 }
