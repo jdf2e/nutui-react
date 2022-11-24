@@ -570,6 +570,28 @@
           "show": true,
           "taro": true,
           "author": "Drjingfubo"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Form",
+          "type": "component",
+          "cName": "表单",
+          "desc": "用于数据录入、校验，支持输入框、单选框、复选框等类型。",
+          "sort": 19,
+          "show": true,
+          "taro": false,
+          "author": "hanyuxinting"
+        },
+        {
+          "version": "1.0.0",
+          "name": "FormItem",
+          "type": "component",
+          "cName": "表单项",
+          "desc": "用于数据录入、校验，支持输入框、单选框、复选框等类型。",
+          "sort": 19,
+          "show": false,
+          "exportEmpty": true,
+          "author": "hanyuxinting"
         }
       ]
     },
@@ -631,7 +653,7 @@
           "desc": "列表滚动到底部自动加载更多数据。",
           "sort": 5,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         },
         {
@@ -947,7 +969,7 @@
           "desc": "原生audio实现的音频播放器",
           "sort": 21,
           "show": true,
-          "taro":true,
+          "taro": true,
           "author": "libin"
         },
         {

@@ -113,7 +113,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
         >
           {React.Children.toArray(children).map((child, index) => {
             if (!child) return null
-            const { disabled, title, value, direction, options } = (
+            const { disabled, title, value, direction, options, className } = (
               child as any
             ).props as any
             const currentTitle = options?.filter(
@@ -133,7 +133,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
                 className={`nut-menu__item ${classnames({
                   active: itemShow[index],
                   disabled,
-                })}`}
+                })} ${className}`}
                 style={{ color: itemShow[index] ? activeColor : '' }}
                 key={index}
                 onClick={() => {

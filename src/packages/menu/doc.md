@@ -56,7 +56,7 @@ export default App
 
 ```tsx
 import React from 'react';
-import { Menu, MenuItem } from '@nutui/nutui-react';
+import { Menu, MenuItem, Button } from '@nutui/nutui-react';
 
 const App = () => {
   const [options] = useState([
@@ -69,14 +69,15 @@ const App = () => {
     { text: '好评排序', value: 'b' },
     { text: '销量排序', value: 'c' },
   ])
+  const itemRef = useRef(null)
   return (
     <>
       <div className="demo full">
         <Menu>
           <MenuItem options={options} value={0} />
-          <MenuItem title="筛选">
+          <MenuItem title="筛选" ref={itemRef}>
             <div>自定义内容</div>
-            <Button>确认</Button>
+            <Button onClick={() => itemRef.current.toggle(false)}>确认</Button>
           </MenuItem>
         </Menu>
       </div>
@@ -296,3 +297,9 @@ export default App
 | 事件名      | 说明                 | 回调参数     |
 |----------|----------------------|--------------|
 | onChange | 选择 option 之后触发 | 选择的 value |
+
+### MenuItem API
+
+| 事件名 | 说明                 | 回调参数     |
+|-----|----------------------|--------------|
+| toggle   | 切换菜单展示状态，传 true 为显示，false 为隐藏，不传参为取反 | show?: boolean |

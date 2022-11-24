@@ -1,11 +1,19 @@
-import React, { useEffect, useImperativeHandle, useState } from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from 'react'
 import bem from '@/utils/bem'
+import { RadioGroupOptionType } from '@/packages/radiogroup/type'
+import { Checkbox } from '../checkbox/checkbox.taro'
 
 export interface CheckboxGroupProps {
   disabled: boolean
   checkedValue: string[]
   max: number | undefined
   onChange: (value: string[]) => void
+  options: RadioGroupOptionType[]
 }
 
 const defaultProps = {
@@ -13,6 +21,7 @@ const defaultProps = {
   checkedValue: [],
   max: undefined,
   onChange: (value: string[]) => {},
+  options: [],
 } as CheckboxGroupProps
 export const CheckboxGroup = React.forwardRef(
   (
@@ -22,7 +31,15 @@ export const CheckboxGroup = React.forwardRef(
   ) => {
     const { children } = { ...defaultProps, ...props }
     const b = bem('checkboxgroup')
-    const { className, disabled, onChange, checkedValue, max, ...rest } = props
+    const {
+      className,
+      disabled,
+      onChange,
+      checkedValue,
+      max,
+      options,
+      ...rest
+    } = props
 
     const [innerDisabled, setInnerDisabled] = useState(disabled)
     const [innerValue, setInnerValue] = useState(checkedValue)
@@ -78,6 +95,11 @@ export const CheckboxGroup = React.forwardRef(
       return innerValue?.indexOf(child.props.label || child.children) > -1
     }
 
+    function validateChecked(value: any) {
+      if (innerValue === null) return false
+      return innerValue === value
+    }
+
     function getParentVals() {
       return innerValue
     }
@@ -98,9 +120,28 @@ export const CheckboxGroup = React.forwardRef(
       })
     }
 
+    const renderOptionsChildren = useCallback(() => {
+      return options?.map(({ label, value, disabled, onChange, ...rest }) => {
+        const childChecked = validateChecked(value)
+        return (
+          <Checkbox
+            key={value?.toString()}
+            children={label}
+            label={value}
+            disabled={innerDisabled ? true : disabled}
+            onChange={handleChildChange}
+            {...rest}
+            max={max}
+            getParentVals={getParentVals}
+            checked={childChecked}
+          />
+        )
+      })
+    }, [innerValue, options])
+
     return (
       <div className={`${b()} ${className || ''}`} {...rest}>
-        {cloneChildren()}
+        {options?.length ? renderOptionsChildren() : cloneChildren()}
       </div>
     )
   }
