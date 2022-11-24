@@ -123,6 +123,17 @@
           "show": true,
           "exportEmpty": true,
           "author": "hanyuxinting"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Image",
+          "type": "component",
+          "cName": "图片",
+          "desc": "增强版的 img 标签，提供多种图片填充模式，支持图片加载中提示、加载失败提示。",
+          "sort": 8,
+          "show": true,
+          "taro": true,
+          "author": "vickyYE"
         }
       ]
     },
