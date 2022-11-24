@@ -590,6 +590,7 @@
           "desc": "用于数据录入、校验，支持输入框、单选框、复选框等类型。",
           "sort": 19,
           "show": false,
+          "taro": false,
           "exportEmpty": true,
           "author": "hanyuxinting"
         }
