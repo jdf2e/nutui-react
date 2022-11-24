@@ -2,7 +2,7 @@
   .nut-table {
     margin-bottom: 3px;
     &__main {
-      color: $dark1;
+      color: $nut-color1;
       background-color: $dark6;
 
       &--striped {
@@ -28,7 +28,7 @@
     .nut-table__nodata {
       background-color: $dark6;
       .nut-table__nodata {
-        color: $dark1;
+        color: $nut-color1;
       }
     }
     &__summary {

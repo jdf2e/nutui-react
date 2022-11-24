@@ -45,6 +45,7 @@
   //--nutui-dark8: rgba(0, 0, 0, 0.4);
   //--nutui-dark9: rgba(0, 0, 0, 0.08);
   //--nutui-dark10: rgba(0, 0, 0, 0.02);
+  --box-shaow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
 }
 
 html[data-prefers-color-scheme='dark'] {
@@ -62,6 +63,7 @@ html[data-prefers-color-scheme='dark'] {
   --nutui-gray8: rgba(0, 0, 0, 0.4);
   --nutui-gray9: rgba(0, 0, 0, 0.08);
   --nutui-gray10: rgba(0, 0, 0, 0.02);
+  --box-shaow: 0px 1px 7px 0px #141414;
 }
 // 品牌色
 $brand-color: var(--nutui-brand-color) !default;
@@ -97,28 +99,37 @@ $dark8: var(--nutui-gray8) !default;
 $dark9: var(--nutui-gray9) !default;
 $dark10: var(--nutui-gray10) !default;
 
+$nut-color1: var(--nutui-gray1) !default;
+$nut-color2: var(--nutui-gray2) !default;
+$nut-color3: var(--nutui-gray3) !default;
+$nut-color4: var(--nutui-gray4) !default;
+$nut-color5: var(--nutui-gray5) !default;
+$nut-color6: var(--nutui-gray6) !default;
+$nut-color7: var(--nutui-gray7) !default;
+$nut-color8: var(--nutui-gray8) !default;
+$nut-color9: var(--nutui-gray9) !default;
 // color
 
 // 主色调
 $primary-color: $brand-color !default;
 $primary-color-end: $brand-color-end !default;
 // 辅助色
-$help-color: $gray5 !default;
+$help-color: $nut-color5 !default;
 // 标题常规文字
 $title-color: $gray1 !default;
 // 副标题
-$title-color2: $gray2 !default;
+$title-color2: $nut-color2 !default;
 // 次内容
-$text-color: $gray2 !default;
+$text-color: $nut-color2 !default;
 // 特殊禁用色
-$disable-color: $gray3 !default;
-$white: $gray6 !default;
+$disable-color: $nut-color3 !default;
+$white: $nut-color6 !default;
 $black: $gray0 !default;
 $required-color: #fa2c19 !default;
 
-$dark-background: $dark1 !default;
-$dark-background2: $dark2 !default;
-$dark-background3: $dark3 !default;
+$dark-background: $nut-color4 !default;
+$dark-background2: $nut-color5 !default;
+$dark-background3: $nut-color6 !default;
 $dark-background4: $dark4 !default;
 $dark-background5: $dark5 !default;
 $dark-background6: $dark6 !default;
@@ -156,7 +167,7 @@ $button-border-radius: 25px !default;
 $button-border-width: 1px !default;
 $button-default-bg-color: $white !default;
 $button-default-border-color: rgba(204, 204, 204, 1) !default;
-$button-default-color: rgba(102, 102, 102, 1) !default;
+$button-default-color: $nut-color1 !default;
 $button-default-padding: 0 18px !default;
 $button-mini-padding: 0 12px !default;
 $button-small-padding: 0 12px !default;
@@ -175,21 +186,21 @@ $button-small-font-size: $font-size-1 !default;
 $button-mini-font-size: $font-size-1 !default;
 $button-mini-line-height: 1.2 !default;
 $button-disabled-opacity: 0.68 !default;
-$button-primary-color: $white !default;
+$button-primary-color: $nut-color1 !default;
 $button-primary-border-color: $primary-color !default;
 $button-primary-background-color: linear-gradient(
   135deg,
   $primary-color 0%,
   $primary-color-end 100%
 ) !default;
-$button-info-color: $white !default;
+$button-info-color: $nut-color1 !default;
 $button-info-border-color: #496af2 !default;
 $button-info-background-color: linear-gradient(
   315deg,
   rgba(73, 143, 242, 1) 0%,
   rgba(73, 101, 242, 1) 100%
 ) !default;
-$button-success-color: $white !default;
+$button-success-color: $nut-color1 !default;
 $button-success-border-color: rgba(38, 191, 38, 1) !default;
 $button-success-background-color: linear-gradient(
   135deg,
@@ -199,10 +210,10 @@ $button-success-background-color: linear-gradient(
   rgba(41, 212, 70, 1) 100%
 ) !default;
 
-$button-danger-color: $white !default;
+$button-danger-color: $nut-color1 !default;
 $button-danger-border-color: rgba(250, 44, 25, 1) !default;
 $button-danger-background-color: rgba(250, 44, 25, 1) !default;
-$button-warning-color: $white !default;
+$button-warning-color: $nut-color1 !default;
 $button-warning-border-color: rgba(255, 158, 13, 1) !default;
 $button-warning-background-color: linear-gradient(
   135deg,
@@ -217,11 +228,12 @@ $button-small-round-border-radius: $button-border-radius !default;
 
 // cell（✅）
 
-$cell-color: $title-color2 !default;
+$cell-color: $nut-color1 !default;
 $cell-title-font: $font-size-2 !default;
 $cell-title-desc-font: $font-size-1 !default;
 $cell-desc-font: $font-size-2 !default;
 $cell-desc-color: $disable-color !default;
+$cell-subtitle-color: $nut-color2 !default;
 $cell-border-radius: 6px !default;
 $cell-padding: 13px 16px !default;
 $cell-line-height: 20px !default;
@@ -231,7 +243,8 @@ $cell-default-icon-margin: 0 4px 0 0px !default;
 $cell-large-title-font: $font-size-large !default;
 $cell-large-title-desc-font: $font-size-base !default;
 $cell-large-padding: 15px 16px !default;
-$cell-background: $white !default;
+$cell-background: $nut-color6 !default;
+$cell-box-shaow: var(--box-shaow) !default;
 
 // cell-group（✅）
 
@@ -410,9 +423,9 @@ $toast-title-font-size: 16px !default;
 $toast-text-font-size: 14px !default;
 $toast-font-color: $white !default;
 $toast-inner-padding: 24px 30px !default;
-$toast-inner-bg-color: $gray7 !default;
+$toast-inner-bg-color: $nut-color7 !default;
 $toast-inner-border-radius: 12px !default;
-$toast-cover-bg-color: $gray7 !default;
+$toast-cover-bg-color: $nut-color7 !default;
 
 //backtop（✅）
 $backtop-border-color: #e0e0e0 !default;
@@ -438,8 +451,9 @@ $calendar-top-slot-height: 24px !default;
 $calendar-month-title-font-size: inherit !default;
 
 //overlay（✅）
-$overlay-bg-color: $gray7 !default;
-
+$overlay-bg-color: $nut-color7 !default;
+$overlay-content-bg-color: $nut-color6 !default;
+$overlay-content-color: $nut-color1 !default;
 //popup（✅）
 $popup-close-icon-margin: 16px !default;
 $popup-border-radius: 20px !default;
@@ -496,7 +510,7 @@ $infiniteloading-bottom-color: #c8c8c8 !default;
 
 //range（✅）
 $range-tip-font-color: #333333 !default;
-$range-bg-color: rgba($primary-color, 0.5) !default;
+$range-bg-color: rgba(#fa2c19, 0.5) !default;
 $range-bg-color-tick: #fa958c !default;
 $range-bar-bg-color: linear-gradient(
   135deg,
@@ -598,8 +612,8 @@ $checkbox-icon-disable-color2: $help-color !default;
 //radio（✅）
 $radio-label-font-color: $gray1 !default;
 $radio-label-font-active-color: $primary-color !default;
-$radio-label-disable-color: $gray3 !default;
-$radio-icon-disable-color: $gray3 !default;
+$radio-label-disable-color: $nut-color3 !default;
+$radio-icon-disable-color: $nut-color3 !default;
 $radio-label-button-border-color: $primary-color !default;
 $radio-label-button-background: rgba($primary-color, 0.05) !default;
 $radio-label-margin-left: 15px !default;
@@ -618,8 +632,8 @@ $signature-margin-bottom: 1rem;
 $signature-btn-margin-right: 15px;
 
 //fixednav（✅）
-$fixednav-bg-color: $white !default;
-$fixednav-font-color: $black !default;
+$fixednav-bg-color: #fff !default;
+$fixednav-font-color: $nut-color1 !default;
 $fixednav-index: 201 !default;
 $fixednav-btn-bg: linear-gradient(
   135deg,
@@ -771,7 +785,7 @@ $pagination-active-background-color: linear-gradient(
   $primary-color-end 100%
 ) !default;
 $dark-pagination-active-background-color: $dark-brand-color !default;
-$pagination-disable-color: rgba(116, 116, 116, 0.31) !default;
+$pagination-disable-color: $disable-color !default;
 $pagination-disable-background-color: #f7f8fa !default;
 $pagination-item-border-width: 1px !default;
 $pagination-item-border-radius: 2px !default;
@@ -965,14 +979,15 @@ $grid-border-color: #f5f6f7 !default;
 $grid-item-content-padding: 16px 8px !default;
 $grid-item-content-bg-color: $white !default;
 $grid-item-text-margin: 8px !default;
-$grid-item-text-color: $title-color2 !default;
+$grid-item-text-color: $nut-color1 !default;
+$grid-item-icon-color: $nut-color1 !default;
 $grid-item-text-font-size: $font-size-1 !default;
 
 // table（✅）
 $table-border-color: #ececec !default;
 $table-cols-padding: 10px !default;
 $table-tr-even-bg-color: #f3f3f3 !default;
-$table-tr-odd-bg-color: $white !default;
+$table-tr-odd-bg-color: $nut-color6 !default;
 
 // navbar（✅）
 $navbar-height: 44px !default;
@@ -980,7 +995,7 @@ $navbar-margin-bottom: 20px !default;
 $navbar-padding: 13px 16px !default;
 $navbar-background: $white !default;
 $navbar-box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1) !default;
-$navbar-color: $title-color2 !default;
+$navbar-color: $nut-color1 !default;
 $navbar-title-base-font: $font-size-2 !default;
 $navbar-title-font: $font-size-2 !default;
 $navbar-title-font-weight: 0 !default;
@@ -1010,14 +1025,15 @@ $sidenavbar-item-line-height: 40px !default;
 $sidenavbar-item-font-size: 16px !default;
 
 // elevator（✅）
+$elevator-list-inner-bg-color: $nut-color4 !default;
 $elevator-list-item-highcolor: $primary-color !default;
 $elevator-list-item-font-size: 12px !default;
-$elevator-list-item-font-color: #333333 !default;
+$elevator-list-item-font-color: $nut-color1 !default;
 $elevator-list-item-name-padding: 0 20px !default;
 $elevator-list-item-name-height: 30px !default;
 $elevator-list-item-name-line-height: 30px !default;
 $elevator-list-item-code-font-size: 14px !default;
-$elevator-list-item-code-font-color: #1a1a1a !default;
+$elevator-list-item-code-font-color: $nut-color1 !default;
 $elevator-list-item-code-font-weight: 500 !default;
 $elevator-list-item-code-padding: 0 20px !default;
 $elevator-list-item-code-height: 35px !default;

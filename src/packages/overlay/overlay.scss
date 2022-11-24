@@ -30,6 +30,12 @@
 }
 .overlay-fade-enter-active {
   animation: nut-fade-in;
+  .wrapper {
+    .content {
+      background-color: $overlay-content-bg-color;
+      color: $overlay-content-color;
+    }
+  }
 }
 .overlay-fade-leave-active {
   animation: nut-fade-out;

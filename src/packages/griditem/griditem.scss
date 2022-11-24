@@ -31,7 +31,9 @@
     padding: $grid-item-content-padding;
     background: $grid-item-content-bg-color;
     border: 0 solid $grid-border-color;
-
+    i {
+      color: $grid-item-icon-color;
+    }
     &--border {
       border-right-width: 1px;
       border-bottom-width: 1px;
