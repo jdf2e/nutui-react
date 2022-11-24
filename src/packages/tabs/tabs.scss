@@ -167,6 +167,7 @@
       color: $tabs-titles-item-color;
 
       &__text {
+        color: $nut-color2;
         &.ellipsis {
           @include oneline-ellipsis();
         }
@@ -203,7 +204,9 @@
 
       &.active {
         font-weight: 600;
-
+        .nut-tabs__titles-item__text {
+          color: $nut-color1;
+        }
         .nut-tabs__titles-item__line {
           content: ' ';
           width: $tabs-horizontal-titles-item-active-line-width;

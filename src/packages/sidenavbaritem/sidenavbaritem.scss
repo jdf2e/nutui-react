@@ -13,4 +13,12 @@ $nutSidenavbarItemHeight: 40px;
     height: $nutSidenavbarItemHeight;
     padding: 10px 8px 10px 55px;
   }
+  &__title {
+    background-color: $nut-color5;
+    color: $nut-color1;
+  }
+  &__list {
+    background-color: $nut-color6;
+    color: $nut-color2;
+  }
 }

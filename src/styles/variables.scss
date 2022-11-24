@@ -262,7 +262,7 @@ $cell-group-background-color: $white !default;
 
 $divider-margin: 16px 0 !default;
 $divider-text-font-size: $font-size-2 !default;
-$divider-text-color: #909ca4 !default;
+$divider-text-color: $nut-color1 !default;
 $divider-line-height: 2px !default;
 $divider-before-margin-right: 16px !default;
 $divider-after-margin-left: 16px !default;
@@ -633,7 +633,7 @@ $signature-btn-margin-right: 15px;
 
 //fixednav（✅）
 $fixednav-bg-color: #fff !default;
-$fixednav-font-color: $nut-color1 !default;
+$fixednav-font-color: #000 !default;
 $fixednav-index: 201 !default;
 $fixednav-btn-bg: linear-gradient(
   135deg,
@@ -799,11 +799,11 @@ $tabs-titles-item-font-size: $font-size-2 !default;
 $tabs-titles-item-small-font-size: $font-size-1 !default;
 $tabs-titles-item-color: $title-color !default;
 $tabs-titles-item-active-color: $title-color !default;
-$tabs-titles-background-color: $help-color !default;
+$tabs-titles-background-color: $nut-color5 !default;
 $tabs-horizontal-tab-line-color: linear-gradient(
   90deg,
   $primary-color 0%,
-  rgba($primary-color, 0.15) 100%
+  rgba(#fa2c19, 0.15) 100%
 ) !default;
 $tabs-horizontal-titles-height: 46px !default;
 $tabs-horizontal-titles-item-min-width: 50px !default;
