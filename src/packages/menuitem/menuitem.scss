@@ -16,7 +16,7 @@
   overflow-y: auto;
   display: flex;
   flex-wrap: wrap;
-  background: #fff;
+  background: $menu-item-content-bg-color;
 
   &_fixed {
     width: 100%;

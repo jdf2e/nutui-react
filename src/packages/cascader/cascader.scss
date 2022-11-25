@@ -28,6 +28,7 @@
   font-size: $cascader-font-size;
   line-height: $cascader-line-height;
   &__title {
+    background-color: $nut-color6;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,12 +36,12 @@
     text-align: center;
     font-weight: bold;
     line-height: $cascader-title-line-height;
-    color: #1a1a1a;
+    color: $nut-color1;
     font-size: $cascader-title-font-size;
   }
   .nut-tabs__titles {
     padding: $cascader-tabs-item-padding;
-    background: #fff;
+    background: $nut-color6;
   }
   .nut-tabs__titles-item {
     flex: initial;

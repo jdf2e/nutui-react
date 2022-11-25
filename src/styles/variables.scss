@@ -46,6 +46,7 @@
   //--nutui-dark9: rgba(0, 0, 0, 0.08);
   //--nutui-dark10: rgba(0, 0, 0, 0.02);
   --box-shaow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
+  --input-bg-color: #f7f7f7;
 }
 
 html[data-prefers-color-scheme='dark'] {
@@ -64,6 +65,7 @@ html[data-prefers-color-scheme='dark'] {
   --nutui-gray9: rgba(0, 0, 0, 0.08);
   --nutui-gray10: rgba(0, 0, 0, 0.02);
   --box-shaow: 0px 1px 7px 0px #141414;
+  --input-bg-color: #404040;
 }
 // 品牌色
 $brand-color: var(--nutui-brand-color) !default;
@@ -108,6 +110,7 @@ $nut-color6: var(--nutui-gray6) !default;
 $nut-color7: var(--nutui-gray7) !default;
 $nut-color8: var(--nutui-gray8) !default;
 $nut-color9: var(--nutui-gray9) !default;
+$input-bg-color: var(--input-bg-color) !default;
 // color
 
 // 主色调
@@ -232,7 +235,7 @@ $cell-color: $nut-color1 !default;
 $cell-title-font: $font-size-2 !default;
 $cell-title-desc-font: $font-size-1 !default;
 $cell-desc-font: $font-size-2 !default;
-$cell-desc-color: $disable-color !default;
+$cell-desc-color: $nut-color2 !default;
 $cell-subtitle-color: $nut-color2 !default;
 $cell-border-radius: 6px !default;
 $cell-padding: 13px 16px !default;
@@ -281,7 +284,7 @@ $icon-line-height: 20px !default;
 
 $uploader-picture-width: 100px !default;
 $uploader-picture-height: 100px !default;
-$uploader-background: #f7f8fa !default;
+$uploader-background: $nut-color4 !default;
 
 // picker（✅）（todo:react版本picker组件dom元素类名变化较大，picker.scss暂不改动）
 $picker-cancel-color: #808080 !default;
@@ -320,8 +323,8 @@ $inputnumber-icon-color: $title-color !default;
 $inputnumber-icon-void-color: $disable-color !default;
 $inputnumber-icon-size: 20px !default;
 $inputnumber-input-font-size: 12px !default;
-$inputnumber-input-font-color: $title-color !default;
-$inputnumber-input-background-color: $help-color !default;
+$inputnumber-input-font-color: $nut-color1 !default;
+$inputnumber-input-background-color: $nut-color4 !default;
 $inputnumber-input-border-radius: 4px !default;
 $inputnumber-input-width: 40px !default;
 $inputnumber-input-margin: 0 6px !default;
@@ -421,7 +424,7 @@ $switch-inside-close-transform: translateX(30%) !default;
 // toast（✅）
 $toast-title-font-size: 16px !default;
 $toast-text-font-size: 14px !default;
-$toast-font-color: $white !default;
+$toast-font-color: #fff !default;
 $toast-inner-padding: 24px 30px !default;
 $toast-inner-bg-color: $nut-color7 !default;
 $toast-inner-border-radius: 12px !default;
@@ -509,7 +512,7 @@ $tabbar-word-margin-top: auto !default;
 $infiniteloading-bottom-color: #c8c8c8 !default;
 
 //range（✅）
-$range-tip-font-color: #333333 !default;
+$range-tip-font-color: $nut-color1 !default;
 $range-bg-color: rgba(#fa2c19, 0.5) !default;
 $range-bg-color-tick: #fa958c !default;
 $range-bar-bg-color: linear-gradient(
@@ -601,7 +604,7 @@ $dialog-footer-ok-max-width: 128px !default;
 //@import './animation/index';
 
 // checkbox（✅）
-$checkbox-label-color: #1d1e1e !default;
+$checkbox-label-color: $nut-color1 !default;
 $checkbox-label-disable-color: #999 !default;
 $checkbox-icon-disable-color: #d6d6d6 !default;
 $checkbox-label-margin-left: 15px !default;
@@ -612,8 +615,8 @@ $checkbox-icon-disable-color2: $help-color !default;
 //radio（✅）
 $radio-label-font-color: $gray1 !default;
 $radio-label-font-active-color: $primary-color !default;
-$radio-label-disable-color: $nut-color3 !default;
-$radio-icon-disable-color: $nut-color3 !default;
+$radio-label-disable-color: $nut-color2 !default;
+$radio-icon-disable-color: $nut-color2 !default;
 $radio-label-button-border-color: $primary-color !default;
 $radio-label-button-background: rgba($primary-color, 0.05) !default;
 $radio-label-margin-left: 15px !default;
@@ -622,7 +625,7 @@ $radio-label-font-size: 14px !default;
 $radio-button-font-size: 12px !default;
 $radio-button-padding: 5px 18px !default;
 $radio-icon-font-size: 18px !default;
-$radio-icon-disable-color2: $help-color !default;
+$radio-icon-disable-color2: $nut-color2 !default;
 
 // signature（✅）
 $signature-border-color: #dadada;
@@ -851,6 +854,7 @@ $menu-bar-box-shadow: 0 2px 12px rgba(89, 89, 89, 0.12) !default;
 $menu-scroll-fixed-top: 0 !default;
 $menu-scroll-fixed-z-index: 1000 !default;
 $menu-active-item-font-weight: 500 !default;
+$menu-item-content-bg-color: $nut-color4 !default;
 
 // collapse（✅）
 $collapse-item-padding: 13px 36px 13px 26px !default;
@@ -869,14 +873,15 @@ $collapse-wrapper-content-background-color: $white !default;
 
 // searchbar（✅）
 
-$searchbar-background: $white !default;
+$searchbar-background: $nut-color6 !default;
 $searchbar-right-out-color: $black !default;
 $searchbar-padding: 9px 16px !default;
 $searchbar-width: 100% !default;
-$searchbar-action-text-color: #323233 !default;
+$searchbar-action-text-color: $nut-color1 !default;
 $searchbar-input-height: 32px !default;
 $searchbar-input-padding: 0 28px !default;
-$searchbar-input-background: #f7f7f7 !default;
+$searchbar-input-background: $input-bg-color !default;
+$searchbar-input-text-color: $nut-color1 !default;
 $searchbar-input-width: 100% !default;
 $searchbar-input-border-radius: 16px !default;
 $searchbar-input-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04) !default;

@@ -35,8 +35,22 @@
     &__label {
       margin-right: 5px;
     }
+    &__button {
+      background-color: $nut-color4;
+    }
   }
   &--vertical {
+    .nut-radio {
+      &__label {
+        margin-right: 5px;
+      }
+      &__button {
+        border: 1px solid $nut-color6;
+      }
+      &__button--active {
+        border-color: $radio-label-button-border-color;
+      }
+    }
   }
   &--horizontal {
     .nut-radio {

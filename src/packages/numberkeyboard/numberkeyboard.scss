@@ -27,7 +27,7 @@
   padding: $numberkeyboard-padding;
   background-color: $numberkeyboard-background-color;
   user-select: none;
-
+  background-color: $nut-color4;
   .nut-numberkeyboard__header {
     position: relative;
     display: flex;
@@ -72,7 +72,7 @@
       flex-basis: 33%;
       box-sizing: border-box;
       padding: 0 6px 6px 0;
-
+      background-color: $nut-color5;
       .key {
         display: flex;
         align-items: center;

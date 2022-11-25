@@ -65,7 +65,7 @@
 }
 
 .nut-picker {
-  background-color: #fff;
+  background-color: $nut-color6;
   width: 100%;
 }
 .nut-picker__control {
@@ -166,7 +166,7 @@
       position: absolute;
       top: 0;
       width: 100%;
-      color: #262626;
+      color: $nut-color1;
     }
 
     .nut-picker-roller-item-tile {
@@ -174,7 +174,7 @@
       width: 100%;
       height: 36px;
       line-height: 36px;
-      color: #262626;
+      color: $nut-color1;
       font-size: 14px;
     }
     .nut-picker-roller-item-hidden {

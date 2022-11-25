@@ -11,6 +11,7 @@ $nutSidenavbarItemHeight: 40px;
 .nut-subsidenavbar {
   &__item {
     height: $nutSidenavbarItemHeight;
+    color: $nut-color2;
     padding: 10px 8px 10px 55px;
   }
   &__title {

@@ -34,6 +34,7 @@
   width: $searchbar-width;
   padding: $searchbar-padding;
   background: $searchbar-background;
+  color: $nut-color1;
   box-sizing: border-box;
   &__content {
     position: relative;
@@ -72,6 +73,7 @@
     font-size: $font-size-small;
     // box-shadow: $searchbar-input-box-shadow;
     background: $searchbar-input-background;
+    color: $searchbar-input-text-color;
   }
   &__round {
     border-radius: $searchbar-input-border-radius;
@@ -85,6 +87,9 @@
     right: 3px;
     top: 47%;
     transform: translate(-50%, -40%);
+    i {
+      color: $nut-color1 !important;
+    }
   }
   .pos-right {
     right: 40px;
