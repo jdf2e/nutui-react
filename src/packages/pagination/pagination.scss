@@ -3,17 +3,17 @@
     &-prev,
     &-item,
     &-next {
-      background: $dark-background;
-      border-color: $dark-color-gray;
+      background: $dark4;
+      border-color: $dark2;
     }
     &-simple {
-      background: $dark-background;
+      background: $dark4;
     }
     .simple-border {
-      border-color: $dark-color-gray;
+      border-color: $dark2;
     }
     .disabled {
-      background: $dark-background;
+      background: $dark4;
     }
     .active {
       background: $dark-pagination-active-background-color;

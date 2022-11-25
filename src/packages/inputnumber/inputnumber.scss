@@ -2,20 +2,20 @@
 .nut-theme-dark {
   .nut-inputnumber {
     &__icon {
-      color: $dark-color;
+      color: $dark1;
       &--disabled {
-        color: $dark-color-gray;
+        color: $dark2;
       }
     }
     input,
     &__text--readonly {
-      background-color: $dark-background;
-      color: $nut-color1;
-      border: 1px solid $dark-color-gray;
+      background-color: $dark4;
+      color: $gray1;
+      border: 1px solid $dark2;
     }
     &--disabled {
       input {
-        color: $dark-color-gray;
+        color: $dark2;
       }
     }
   }

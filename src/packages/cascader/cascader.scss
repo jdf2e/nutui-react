@@ -4,12 +4,12 @@
 .nut-theme-dark {
   .nut-cascader {
     .nut-cascader__bar {
-      background: $dark-background2;
-      color: $dark-color;
+      background: $dark5;
+      color: $dark1;
     }
 
     .nut-tabs__titles {
-      background: $dark-background3 !important;
+      background: $dark6 !important;
     }
     &__title {
       color: $white;
@@ -18,7 +18,7 @@
       background-color: $dark2;
     }
     .nut-cascader-item {
-      color: $nut-color1;
+      color: $gray1;
     }
   }
 }
@@ -28,7 +28,7 @@
   font-size: $cascader-font-size;
   line-height: $cascader-line-height;
   &__title {
-    background-color: $nut-color6;
+    background-color: $gray6;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,12 +36,12 @@
     text-align: center;
     font-weight: bold;
     line-height: $cascader-title-line-height;
-    color: $nut-color1;
+    color: $gray1;
     font-size: $cascader-title-font-size;
   }
   .nut-tabs__titles {
     padding: $cascader-tabs-item-padding;
-    background: $nut-color6;
+    background: $gray6;
   }
   .nut-tabs__titles-item {
     flex: initial;

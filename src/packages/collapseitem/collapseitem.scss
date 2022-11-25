@@ -14,7 +14,7 @@
         }
       }
       .nut-collapse-item__sub-title {
-        color: $nut-color3;
+        color: $gray3;
       }
     }
     .nut-collapse-item__header::after {
@@ -22,19 +22,19 @@
     }
     .nut-collapse-item__header--disabled {
       .nut-collapse-item__title {
-        color: $nut-color3;
+        color: $gray3;
       }
       .nut-collapse-item__icon-box {
         .nut-collapse-item__icon {
           i {
-            color: $nut-color2 !important;
+            color: $gray2 !important;
           }
         }
       }
     }
     &-item__content {
       background-color: $dark3;
-      color: $nut-color1;
+      color: $gray1;
     }
   }
 }

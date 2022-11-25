@@ -8,7 +8,7 @@
         background-color: $dark2;
         color: $white !important;
         .subdesc {
-          color: $nut-color1;
+          color: $gray1;
         }
       }
       .nut-actionsheet__item:hover {
@@ -17,17 +17,17 @@
     }
     .nut-actionsheet__cancel {
       background: $dark9;
-      color: $dark-color;
+      color: $dark1;
       border-top: none;
     }
     .nut-actionsheet__title {
       background: $dark9;
-      color: $dark-color;
+      color: $dark1;
       border-top: none;
     }
     .desc {
       background: $dark9;
-      color: $dark-color;
+      color: $dark1;
     }
   }
 }

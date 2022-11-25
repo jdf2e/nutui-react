@@ -1,6 +1,6 @@
 .nut-theme-dark {
   .nut-searchbar {
-    background: $nut-color2;
+    background: $gray2;
     &__label {
       color: $white;
     }
@@ -34,7 +34,7 @@
   width: $searchbar-width;
   padding: $searchbar-padding;
   background: $searchbar-background;
-  color: $nut-color1;
+  color: $gray1;
   box-sizing: border-box;
   &__content {
     position: relative;
@@ -88,7 +88,7 @@
     top: 47%;
     transform: translate(-50%, -40%);
     i {
-      color: $nut-color1 !important;
+      color: $gray1 !important;
     }
   }
   .pos-right {

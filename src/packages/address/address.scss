@@ -22,13 +22,13 @@
       .nut-address__region-group {
         .nut-address__region-item {
           div {
-            color: $nut-color1;
+            color: $gray1;
           }
         }
       }
     }
     .nut-address__exist-item-info {
-      color: $nut-color1;
+      color: $gray1;
     }
     .exist-address {
       .exist-address-group {
@@ -40,11 +40,11 @@
       }
 
       .choose-other {
-        border-top: 1px solid $dark-background;
+        border-top: 1px solid $dark4;
       }
     }
     &-custom-buttom {
-      border-top: 1px solid $dark-background;
+      border-top: 1px solid $dark4;
     }
   }
 }

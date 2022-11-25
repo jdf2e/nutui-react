@@ -1,15 +1,15 @@
 .nut-theme-dark {
   .nut-elevator {
-    background-color: $dark-background2;
+    background-color: $dark5;
     &__list {
       &__item {
-        color: $dark-color;
+        color: $dark1;
         &__code {
-          color: $dark-color;
+          color: $dark1;
         }
       }
       &__fixed {
-        background-color: $dark-background2;
+        background-color: $dark5;
       }
     }
   }

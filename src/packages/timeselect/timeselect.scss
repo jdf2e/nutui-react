@@ -2,15 +2,15 @@
 @import '../timedetail/timedetail.scss';
 .nut-theme-dark {
   .nut-timeselect {
-    background-color: $dark-background2;
+    background-color: $dark5;
     &__title {
-      background-color: $dark-background2;
-      color: $dark-color;
+      background-color: $dark5;
+      color: $dark1;
     }
     &__content {
       &-left {
         background-color: $dark3;
-        color: $dark-color;
+        color: $dark1;
         .nut-timepannel-active {
           background-color: $dark4;
           color: $white;

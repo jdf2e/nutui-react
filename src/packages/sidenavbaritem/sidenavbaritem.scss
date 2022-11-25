@@ -2,7 +2,7 @@
   .nut-subsidenavbar {
     &__item {
       background-color: $dark3;
-      color: $nut-color2;
+      color: $gray2;
     }
   }
 }
@@ -11,15 +11,15 @@ $nutSidenavbarItemHeight: 40px;
 .nut-subsidenavbar {
   &__item {
     height: $nutSidenavbarItemHeight;
-    color: $nut-color2;
+    color: $gray2;
     padding: 10px 8px 10px 55px;
   }
   &__title {
-    background-color: $nut-color5;
-    color: $nut-color1;
+    background-color: $gray5;
+    color: $gray1;
   }
   &__list {
-    background-color: $nut-color6;
-    color: $nut-color2;
+    background-color: $gray6;
+    color: $gray2;
   }
 }

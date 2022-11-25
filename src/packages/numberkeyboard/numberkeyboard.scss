@@ -3,7 +3,7 @@
     background-color: $dark3;
     &__body {
       background-color: $dark3;
-      color: $dark-color;
+      color: $dark1;
       .key-board-wrapper {
         .key {
           background-color: $dark3;
@@ -16,7 +16,7 @@
 
     &__header {
       &__close {
-        color: $nut-color1 !important;
+        color: $gray1 !important;
       }
     }
   }
@@ -27,7 +27,7 @@
   padding: $numberkeyboard-padding;
   background-color: $numberkeyboard-background-color;
   user-select: none;
-  background-color: $nut-color4;
+  background-color: $gray4;
   .nut-numberkeyboard__header {
     position: relative;
     display: flex;
@@ -72,7 +72,7 @@
       flex-basis: 33%;
       box-sizing: border-box;
       padding: 0 6px 6px 0;
-      background-color: $nut-color5;
+      background-color: $gray5;
       .key {
         display: flex;
         align-items: center;

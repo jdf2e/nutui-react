@@ -2,7 +2,7 @@
 @import '../../styles/mixins/text-ellipsis.scss';
 .nut-theme-dark {
   .nut-uploader {
-    // background-color:  $nut-color2;
+    // background-color:  $gray2;
     &__preview {
       margin-bottom: 0;
       &-img {
@@ -18,8 +18,8 @@
     }
   }
   .nut-uploader__preview-list {
-    background: $dark-background2;
-    color: $dark-color;
+    background: $dark5;
+    color: $dark1;
   }
 }
 .nut-uploader {
@@ -92,7 +92,7 @@
       flex-direction: column;
       position: relative;
       padding-right: 20px;
-      background-color: $nut-color4;
+      background-color: $gray4;
       .nut-uploader__preview-img__file__name {
         -webkit-line-clamp: 1;
         padding: 2px;
@@ -119,7 +119,7 @@
       width: $uploader-picture-width;
       height: $uploader-picture-height;
       i {
-        color: $nut-color1;
+        color: $gray1;
       }
       .close {
         position: absolute;

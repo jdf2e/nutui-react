@@ -1,19 +1,19 @@
 .nut-theme-dark {
   .nut-navbar {
-    background: $nut-color1;
+    background: $gray1;
     color: $gray6;
     box-shadow: none;
     .title {
       color: $gray6;
     }
     &__left {
-      color: $nut-color1;
+      color: $gray1;
       i {
         color: $dark1 !important;
       }
     }
     &__right {
-      color: $nut-color1;
+      color: $gray1;
     }
     &--border {
       border-bottom: none;
@@ -123,7 +123,7 @@
 
   &__left {
     font-size: $cell-desc-font;
-    color: $nut-color2;
+    color: $gray2;
     position: absolute;
     left: 0;
     top: 0;
@@ -135,7 +135,7 @@
   }
   &__right {
     font-size: $cell-desc-font;
-    color: $nut-color2;
+    color: $gray2;
     position: absolute;
     right: 0;
     top: 0;

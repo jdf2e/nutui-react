@@ -6,11 +6,11 @@
       color: $white;
     }
     &__titles {
-      background: $dark-background3;
+      background: $dark6;
       &-item {
-        color: $dark-color-gray;
+        color: $dark2;
         &.active {
-          color: $dark-color;
+          color: $dark1;
         }
       }
     }
@@ -18,7 +18,7 @@
       .nut-tabs__titles {
         &-item {
           &.active {
-            background-color: $dark-background2;
+            background-color: $dark5;
           }
         }
       }
@@ -167,7 +167,7 @@
       color: $tabs-titles-item-color;
 
       &__text {
-        color: $nut-color2;
+        color: $gray2;
         &.ellipsis {
           @include oneline-ellipsis();
         }
@@ -205,7 +205,7 @@
       &.active {
         font-weight: 600;
         .nut-tabs__titles-item__text {
-          color: $nut-color1;
+          color: $gray1;
         }
         .nut-tabs__titles-item__line {
           content: ' ';

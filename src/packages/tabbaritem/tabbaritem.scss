@@ -2,7 +2,7 @@
 .nut-theme-dark {
   .nut-tabbar-item {
     &__icon--unactive {
-      color: $dark-color-gray;
+      color: $dark2;
     }
   }
 }
@@ -11,7 +11,7 @@
   flex: 1;
   text-align: center;
   text-decoration: none;
-  color: $nut-color1;
+  color: $gray1;
   height: 100%;
   display: flex;
   justify-content: center;

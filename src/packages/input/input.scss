@@ -1,13 +1,13 @@
 @import '../icon/icon.scss';
 .nut-theme-dark {
   .nut-input {
-    background: $nut-color2;
+    background: $gray2;
     &-label {
-      color: $dark-color;
+      color: $dark1;
     }
     .input-text,
     &__text--readonly {
-      color: $dark-color;
+      color: $dark1;
     }
   }
 }
@@ -33,7 +33,7 @@ textarea {
   }
   input {
     width: 230px;
-    color: $nut-color1;
+    color: $gray1;
     flex: 1;
     padding: 0 10px;
     padding-right: 35px;
@@ -50,7 +50,7 @@ textarea {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      color: $nut-color1;
+      color: $gray1;
     }
   }
   &__clear {
@@ -86,7 +86,7 @@ textarea {
     text-decoration: none;
     background: transparent;
     resize: none;
-    color: $nut-color1;
+    color: $gray1;
   }
 
   &-label {
@@ -134,7 +134,7 @@ textarea {
     align-items: center;
     font-size: 0;
     i {
-      color: $nut-color1;
+      color: $gray1;
     }
   }
   &-clear,

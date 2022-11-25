@@ -4,7 +4,7 @@
   .nut-picker {
     background-color: $dark2;
     &__title {
-      color: $dark-color;
+      color: $dark1;
     }
     &__confirm-btn {
       color: $white;
@@ -16,8 +16,8 @@
     .nut-picker-indicator {
       background-color: $dark7;
       z-index: 0;
-      border-top: 1px solid $nut-color2;
-      border-bottom: 1px solid $nut-color2;
+      border-top: 1px solid $gray2;
+      border-bottom: 1px solid $gray2;
     }
     .nut-picker-mask {
       position: absolute;
@@ -56,16 +56,16 @@
     }
 
     &-content {
-      color: $dark-color;
+      color: $dark1;
     }
     &-item {
-      color: $dark-color;
+      color: $dark1;
     }
   }
 }
 
 .nut-picker {
-  background-color: $nut-color6;
+  background-color: $gray6;
   width: 100%;
 }
 .nut-picker__control {
@@ -166,7 +166,7 @@
       position: absolute;
       top: 0;
       width: 100%;
-      color: $nut-color1;
+      color: $gray1;
     }
 
     .nut-picker-roller-item-tile {
@@ -174,7 +174,7 @@
       width: 100%;
       height: 36px;
       line-height: 36px;
-      color: $nut-color1;
+      color: $gray1;
       font-size: 14px;
     }
     .nut-picker-roller-item-hidden {

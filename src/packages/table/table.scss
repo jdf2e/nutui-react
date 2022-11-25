@@ -2,25 +2,25 @@
   .nut-table {
     margin-bottom: 3px;
     &__main {
-      color: $nut-color1;
+      color: $gray1;
       background-color: $dark6;
 
       &--striped {
         .nut-table__main__head {
           &__tr {
-            background-color: $dark-background3;
+            background-color: $dark6;
           }
         }
 
         .nut-table__main__body {
           &__tr:nth-child(odd) {
-            background-color: $dark-color-gray;
+            background-color: $dark2;
           }
         }
 
         .nut-table__main__body {
           &__tr:nth-child(even) {
-            background-color: $dark-background3;
+            background-color: $dark6;
           }
         }
       }
@@ -28,17 +28,17 @@
     .nut-table__nodata {
       background-color: $dark6;
       .nut-table__nodata {
-        color: $nut-color1;
+        color: $gray1;
       }
     }
     &__summary {
-      color: $dark-color;
-      background-color: $dark-background;
+      color: $dark1;
+      background-color: $dark4;
     }
 
     &__nodata {
-      color: $dark-color;
-      background-color: $dark-background;
+      color: $dark1;
+      background-color: $dark4;
     }
   }
 }

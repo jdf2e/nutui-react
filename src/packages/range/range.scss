@@ -5,15 +5,15 @@
     background: $dark2;
     .min,
     .max {
-      color: $nut-color1;
+      color: $gray1;
     }
     .nut-range {
       &-mark-text {
-        color: $dark-color-gray;
+        color: $dark2;
       }
       &-button {
         .number {
-          color: $dark-color;
+          color: $dark1;
         }
       }
     }

@@ -36,7 +36,7 @@
       margin-right: 5px;
     }
     &__button {
-      background-color: $nut-color4;
+      background-color: $gray4;
     }
   }
   &--vertical {
@@ -45,7 +45,7 @@
         margin-right: 5px;
       }
       &__button {
-        border: 1px solid $nut-color6;
+        border: 1px solid $gray6;
       }
       &__button--active {
         border-color: $radio-label-button-border-color;
