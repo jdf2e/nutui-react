@@ -2,49 +2,28 @@
   --nutui-brand-color: #fa2c19;
   --nutui-brand-color-start: #ff404f;
   --nutui-brand-color-end: #fa2c19;
+  --nutui-brand-link-color: #396acc;
   --nutui-gray0: #000000;
-  // 灰阶
   // 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
   --nutui-gray1: #1a1a1a;
-
   // 次要文字色，用于次级标题、属性标示、非主要信息引导等。
   --nutui-gray2: #757575;
-
   // 不可操作内容色，用于预置内容、无效内容、特殊不可点击按钮、组件边框线等。
   --nutui-gray3: #bfbfbf;
-
   // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
   --nutui-gray4: #f4f4f4;
-
   // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
   --nutui-gray5: #f8f8f8;
-
   // 卡片背景色
   --nutui-gray6: #ffffff;
-
   // 页面全局蒙层，用于弹出层、弹窗、新功能引导出现的整页遮罩
   --nutui-gray7: rgba(0, 0, 0, 0.7);
-
   // 局部蒙层，用于非整页遮罩
   --nutui-gray8: rgba(0, 0, 0, 0.4);
-
   // 间隔线/容错线，用于结构或信息分割
   --nutui-gray9: rgba(0, 0, 0, 0.08);
-
   // 图片容错蒙层
   --nutui-gray10: rgba(0, 0, 0, 0.02);
-
-  // 暗黑映射
-  //--nutui-dark1: #e6e6e6;
-  //--nutui-dark2: #828282;
-  //--nutui-dark3: #404040;
-  //--nutui-dark4: #0a0a0a;
-  //--nutui-dark5: #141414;
-  //--nutui-dark6: #1f1f1f;
-  //--nutui-dark7: rgba(0, 0, 0, 0.7);
-  //--nutui-dark8: rgba(0, 0, 0, 0.4);
-  //--nutui-dark9: rgba(0, 0, 0, 0.08);
-  //--nutui-dark10: rgba(0, 0, 0, 0.02);
   --box-shaow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
   --input-bg-color: #f7f7f7;
 }
@@ -53,6 +32,7 @@ html[data-prefers-color-scheme='dark'] {
   --nutui-brand-color: #fa2c19;
   --nutui-brand-color-start: #ff404f;
   --nutui-brand-color-end: #fa2c19;
+  --nutui-brand-link-color: #396acc;
   --nutui-gray0: #000000;
   --nutui-gray1: #e6e6e6;
   --nutui-gray2: #828282;
@@ -69,67 +49,87 @@ html[data-prefers-color-scheme='dark'] {
 }
 // 品牌色
 $brand-color: var(--nutui-brand-color) !default;
-// 渐变色
+// 品牌渐变色
 $brand-color-start: var(--nutui-brand-color-start) !default;
 $brand-color-end: var(--nutui-brand-color-end) !default;
-
-$primary-link-color: #396acc !default;
+$brand-link-color: var(--nutui-brand-link-color);
 
 $gray0: var(--nutui-gray0) !default;
+// 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
 $gray1: var(--nutui-gray1) !default;
+// 次要文字色，用于次级标题、属性标示、非主要信息引导等。
 $gray2: var(--nutui-gray2) !default;
+// 不可操作内容色，用于预置内容、无效内容、特殊不可点击按钮、组件边框线等。
 $gray3: var(--nutui-gray3) !default;
+// 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
 $gray4: var(--nutui-gray4) !default;
+// 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
 $gray5: var(--nutui-gray5) !default;
+// 卡片背景色
 $gray6: var(--nutui-gray6) !default;
+// 页面全局蒙层，用于弹出层、弹窗、新功能引导出现的整页遮罩
 $gray7: var(--nutui-gray7) !default;
+// 局部蒙层，用于非整页遮罩
 $gray8: var(--nutui-gray8) !default;
+// 间隔线/容错线，用于结构或信息分割
 $gray9: var(--nutui-gray9) !default;
+// 图片容错蒙层
 $gray10: var(--nutui-gray10) !default;
 
-// 暗黑映射
-$dark-brand-color: var(--nutui-brand-color) !default;
-$dark0: var(--nutui-gray0) !default;
-$dark1: var(--nutui-gray1) !default;
-$dark2: var(--nutui-gray2) !default;
-$dark3: var(--nutui-gray3) !default;
-$dark4: var(--nutui-gray4) !default;
-$dark5: var(--nutui-gray5) !default;
-$dark6: var(--nutui-gray6) !default;
-$dark7: var(--nutui-gray7) !default;
-$dark8: var(--nutui-gray8) !default;
-$dark9: var(--nutui-gray9) !default;
-$dark10: var(--nutui-gray10) !default;
-
-$nut-color1: var(--nutui-gray1) !default;
-$nut-color2: var(--nutui-gray2) !default;
-$nut-color3: var(--nutui-gray3) !default;
-$nut-color4: var(--nutui-gray4) !default;
-$nut-color5: var(--nutui-gray5) !default;
-$nut-color6: var(--nutui-gray6) !default;
-$nut-color7: var(--nutui-gray7) !default;
-$nut-color8: var(--nutui-gray8) !default;
-$nut-color9: var(--nutui-gray9) !default;
-$input-bg-color: var(--input-bg-color) !default;
-// color
-
+// 暗黑映射,用于 nut-theme-dark 方式
+$dark-brand-color: #fa2c19 !default;
+$dark-brand-color-start: #ff404f !default;
+$dark-brand-color-end: #fa2c19 !default;
+$dark0: #000000 !default;
+$dark1: #e6e6e6 !default;
+$dark2: #828282 !default;
+$dark3: #404040 !default;
+$dark4: #0a0a0a !default;
+$dark5: #141414 !default;
+$dark6: #1f1f1f !default;
+$dark7: rgba(0, 0, 0, 0.7) !default;
+$dark8: rgba(0, 0, 0, 0.4) !default;
+$dark9: rgba(0, 0, 0, 0.08) !default;
+$dark10: rgba(0, 0, 0, 0.02) !default;
+// ----------------------------------------------------
 // 主色调
 $primary-color: $brand-color !default;
+$primary-color-start: $brand-color-start !default;
 $primary-color-end: $brand-color-end !default;
-// 辅助色
-$help-color: $nut-color5 !default;
+$primary-link-color: #396acc !default;
+// ----------------------------------------------------
 // 标题常规文字
 $title-color: $gray1 !default;
 // 副标题
-$title-color2: $nut-color2 !default;
+$title-color2: $gray2 !default;
 // 次内容
-$text-color: $nut-color2 !default;
+$text-color: $gray2 !default;
+// 辅助色
+$help-color: $gray5 !default;
 // 特殊禁用色
-$disable-color: $nut-color3 !default;
-$white: $nut-color6 !default;
-$black: $gray0 !default;
+$disable-color: $gray3 !default;
 $required-color: #fa2c19 !default;
+$white: $gray6 !default;
+$black: $gray0 !default;
+// ----------------------------------------------------
+// 蒙层颜色
+// 页面全局蒙层
+$mask-color: $gray7 !default;
+// 局部蒙层，用于非整页遮罩
+$mask-color2: $gray8 !default;
+// 图片容错蒙层
+$mask-color3: $gray10 !default;
 
+// 背景色
+$background-color: $gray4 !default;
+$background-color2: $gray5 !default;
+$background-color3: $gray6 !default;
+
+// 分割信息的颜色
+$divider-color: $gray9 !default;
+// ----------------------------------------------------
+// 下面的 dark-background 需要删掉
+// 然后将组件中的替换为正确的内容
 $dark-background: $nut-color4 !default;
 $dark-background2: $nut-color5 !default;
 $dark-background3: $nut-color6 !default;
@@ -142,10 +142,9 @@ $dark-color2: $dark2 !default;
 $dark-color3: $dark3 !default;
 $dark-color-gray: $dark2 !default;
 $dark-calendar-choose-color: $dark1 !default;
+// ----------------------------------------------------
 
-// padding
-$padding-xs: 12px;
-
+// ---- Font Family ----
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
   sans-serif !default;
 
@@ -165,6 +164,10 @@ $font-size-small: $font-size-1 !default;
 $font-size-base: $font-size-2 !default;
 $font-size-large: $font-size-3 !default;
 $line-height-base: 1.5 !default;
+
+// padding
+$padding-xs: 12px;
+
 // button（✅）
 $button-border-radius: 25px !default;
 $button-border-width: 1px !default;
