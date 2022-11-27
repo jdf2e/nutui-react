@@ -27,9 +27,12 @@
     text-align: center;
     margin-right: 10px;
     margin-bottom: 10px;
-    background-color: #f6f7f9;
+    background-color: $background-color;
+    color: $title-color;
+    &-active {
+      background-color: $dark-brand-color;
+    }
     border-radius: 5px;
-    color: #333;
     font-size: 14px;
     border: 1px solid transparent;
     font-weight: 700;

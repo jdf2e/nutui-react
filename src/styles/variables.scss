@@ -542,16 +542,16 @@ $steps-base-icon-line-height: 25px !default;
 $steps-base-icon-font-size: 13px !default;
 $steps-base-title-font-size: 14px !default;
 $steps-base-line-color: #909ca4 !default;
-$steps-base-title-color: #909ca4 !default;
+$steps-base-title-color: $title-color !default;
 $steps-base-title-margin-bottom: 10px !default;
 $steps-base-content-font-size: 14px !default;
-$steps-base-content-color: #666 !default;
+$steps-base-content-color: $title-color2 !default;
 
 $steps-wait-icon-bg-color: #959fb1 !default;
 $steps-wait-icon-color: $white !default;
 $steps-wait-head-color: #909ca4 !default;
 $steps-wait-head-border-color: #909ca4 !default;
-$steps-wait-content-color: #909ca4 !default;
+$steps-wait-content-color: $title-color2 !default;
 
 $steps-finish-head-color: $primary-color !default;
 $steps-finish-head-border-color: $primary-color !default;
@@ -572,7 +572,6 @@ $dialog-footer-justify-content: space-around !default;
 $dialog-min-height: 156px !default;
 $dialog-padding: 28px 24px 16px 24px !default;
 $dialog-header-height: 20px !default;
-$dialog-header-color: rgba(38, 38, 38, 1) !default;
 $dialog-content-margin: 20px 0 !default;
 $dialog-content-max-height: 268px !default;
 $dialog-content-line-height: 16px !default;
@@ -976,7 +975,7 @@ $grid-item-text-font-size: $font-size-1 !default;
 // table（✅）
 $table-border-color: #ececec !default;
 $table-cols-padding: 10px !default;
-$table-tr-even-bg-color: #f3f3f3 !default;
+$table-tr-even-bg-color: $gray4 !default;
 $table-tr-odd-bg-color: $gray6 !default;
 
 // navbar（✅）
@@ -1091,7 +1090,7 @@ $category-pane-title-color: rgba(51, 51, 51, 1) !default;
 // circleProgress（✅）
 $circleprogress-primary-color: $primary-color !default;
 $circleprogress-path-color: #e5e9f2 !default;
-$circleprogress-text-color: #000000 !default;
+$circleprogress-text-color: $title-color !default;
 $circleprogress-text-size: $font-size-3 !default;
 
 // Comment（✅ todo：react版本该组件暂无，将变量先迁过来）

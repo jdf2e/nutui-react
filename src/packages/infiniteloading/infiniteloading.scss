@@ -42,6 +42,11 @@
       }
     }
   }
+  .nut-infinite-container {
+    .infiniteLi {
+      color: $title-color;
+    }
+  }
   .nut-infinite-bottom {
     display: block;
     width: 100%;

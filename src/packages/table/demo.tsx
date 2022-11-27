@@ -227,46 +227,62 @@ const TableDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <Table columns={columns1} data={data1} style={{ background: '#fff' }} />
+        <Table
+          columns={columns1}
+          data={data1}
+          style={{ background: '$background-color' }}
+        />
         <h2>{translated.borderedAndAlign}</h2>
         <Table
           columns={columns2}
           data={data1}
           bordered={false}
-          style={{ background: '#fff' }}
+          style={{ background: '$background-color' }}
         />
         <h2>{translated.summaryTitle}</h2>
         <Table
           columns={columns1}
           data={data1}
           summary={translated.summary}
-          style={{ background: '#fff' }}
+          style={{ background: '$background-color' }}
         />
         <h2>{translated.striped}</h2>
         <Table
           columns={columns1}
           data={data1}
-          style={{ background: '#fff' }}
+          style={{ background: '$background-color' }}
           striped
         />
         <h2>{translated.noDataTitle}</h2>
-        <Table columns={columns1} data={data2} style={{ background: '#fff' }} />
         <Table
           columns={columns1}
           data={data2}
-          style={{ background: '#fff' }}
+          style={{ background: '$background-color' }}
+        />
+        <Table
+          columns={columns1}
+          data={data2}
+          style={{ background: '$background-color' }}
           noData={translated.customNoData}
         />
         <h2>{translated.customCell}</h2>
-        <Table columns={columns4} data={data4} style={{ background: '#fff' }} />
+        <Table
+          columns={columns4}
+          data={data4}
+          style={{ background: '$background-color' }}
+        />
         <h2>{translated.asynchronousRendering}</h2>
-        <Table columns={columns1} data={data3} style={{ background: '#fff' }} />
+        <Table
+          columns={columns1}
+          data={data3}
+          style={{ background: '$background-color' }}
+        />
         <h2>{translated.sorting}</h2>
         <Table
           columns={columns5}
           data={data5}
           onSorter={handleSorter}
-          style={{ background: '#fff' }}
+          style={{ background: '$background-color' }}
         />
       </div>
     </>

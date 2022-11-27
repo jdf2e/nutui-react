@@ -17,6 +17,6 @@
 .demo__piece {
   display: flex;
   justify-content: center;
-  background: rgba(255, 255, 255, 1);
+  background: $background-color;
   padding: 10px 0;
 }

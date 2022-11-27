@@ -75,9 +75,7 @@ const DividerDemo = () => {
         </Cell>
         <h2>{translated.verticalDivider}</h2>
         <Cell>
-          <div
-            style={{ fontSize: '14px', marginLeft: '27px', color: '#909ca4' }}
-          >
+          <div style={{ fontSize: '14px', marginLeft: '27px', color: '' }}>
             {translated.text}
 
             <Divider direction="vertical" />

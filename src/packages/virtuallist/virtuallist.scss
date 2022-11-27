@@ -15,7 +15,7 @@
   li {
     display: block;
     float: left;
-    background: #fff;
+    background: $background-color;
     padding: 10px;
     margin-right: 20px;
   }
@@ -29,7 +29,7 @@
 .nut-vertical-items {
   li {
     display: block;
-    background: rgba(255, 255, 255, 1);
+    background: $background-color;
     border-radius: 7px;
     box-shadow: 0 1px 6px 0 rgba(237, 238, 241, 1);
     margin-top: 20px;
@@ -38,7 +38,7 @@
     line-height: 18px;
     font-family: PingFangSC;
     font-weight: 500;
-    color: rgba(102, 102, 102, 1);
+    color: $title-color;
   }
 }
 

@@ -172,7 +172,7 @@ export const Progress: FunctionComponent<
           {textType === 'text' && (
             <span
               className={classesTextInner}
-              style={{ color: textColor || '#333' }}
+              style={{ color: textColor || '$title-color' }}
             >
               {percentage}
               {isShowPercentage ? '%' : ''}

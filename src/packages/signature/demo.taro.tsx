@@ -1,3 +1,4 @@
+import './demo.scss'
 import React from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Signature } from '@/packages/nutui.react.taro'

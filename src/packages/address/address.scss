@@ -60,11 +60,11 @@
     padding: 0 20px;
     text-align: center;
     font-weight: bold;
-    color: #333;
+    color: $title-color;
     line-height: 20px;
     &__title {
       display: block;
-      color: #262626;
+      color: $title-color;
       font-size: 18px;
     }
   }
@@ -78,13 +78,14 @@
       padding: 0 20px;
       display: flex;
       font-size: 13px;
-      color: #1d1e1e;
+      color: $title-color;
 
       .nut-address__tab-item {
         min-width: 2px;
         margin-right: 30px;
         display: block;
         &.active {
+          clear: $title-color;
           font-weight: bold;
         }
 
@@ -124,9 +125,10 @@
           align-items: center;
           margin-bottom: 20px;
           font-size: $font-size-1;
-          color: #333;
+          color: $title-color;
           &.active {
             font-weight: bold;
+            color: $title-color;
           }
 
           .nut-address__region-item--icon {
@@ -162,7 +164,7 @@
           margin-bottom: 20px;
           font-size: $font-size-1;
           line-height: 14px;
-          color: $black;
+          color: $title-color;
           &.active {
             font-weight: bold;
           }

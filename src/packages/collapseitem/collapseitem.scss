@@ -46,10 +46,9 @@
     width: 100%;
     overflow: hidden;
     padding: 13px 0px 13px 26px;
-    color: #666666;
     font-size: 14px;
     line-height: 24px;
-    background-color: #fff;
+    background-color: $background-color;
     box-sizing: border-box;
     &::after {
       position: absolute;
@@ -65,6 +64,7 @@
     }
   }
   &__title {
+    color: $title-color;
     display: flex;
     align-items: center;
     &-icon-left {
@@ -86,11 +86,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: $title-color2;
   }
   &__icon-box {
     display: flex;
     padding-right: 40px;
     position: relative;
+    .nut-collapse-item__icon {
+      i {
+        color: $title-color !important;
+      }
+    }
   }
   &__icon {
     display: flex;
@@ -111,9 +117,10 @@
     color: #666666;
     font-size: 14px;
     line-height: 1.5;
-    background-color: #fff;
+    background-color: $background-color3;
     transition: all 0.3s linear;
     &-text {
+      color: $title-color;
       padding: 12px 26px;
     }
   }

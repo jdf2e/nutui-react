@@ -28,6 +28,7 @@
 }
 
 .nut-timeselect {
+  background-color: $background-color2;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -37,7 +38,8 @@
     line-height: $timeselect-title-line-height;
     margin-bottom: 10px;
     font-size: $timeselect-title-font-size;
-    color: $timeselect-title-color;
+    background-color: $background-color2;
+    color: $title-color;
     text-align: center;
   }
 
@@ -51,12 +53,16 @@
     min-width: 140px;
     height: 100%;
     overflow: auto;
-    background-color: #f6f7f9;
+    background-color: $gray6;
+    color: $title-color;
+    .nut-timepannel-active {
+      background-color: red;
+    }
   }
 
   .nut-timepannel-active {
-    background-color: #fff;
-    color: #333;
+    background-color: $background-color;
+    color: $title-color;
     font-weight: 700;
   }
 }

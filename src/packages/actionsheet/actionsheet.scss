@@ -77,19 +77,19 @@
     font-size: $font-size-base;
     color: $title-color;
     text-align: center;
-    background-color: #fff;
+    background-color: $background-color;
     cursor: pointer;
   }
 
   .desc {
     font-size: $font-size-2;
-    color: #999;
+    color: $title-color2;
   }
 
   .subdesc {
     display: block;
     font-size: $font-size-small;
-    color: #999;
+    color: $title-color2;
   }
 
   .nut-actionsheet__item-disabled {

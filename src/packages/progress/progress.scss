@@ -16,6 +16,7 @@
   &-outer {
     flex: auto;
     .nut-progress-text {
+      color: red;
     }
     .nut-progress-active:before {
       content: '';
