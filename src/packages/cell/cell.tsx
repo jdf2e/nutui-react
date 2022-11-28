@@ -3,9 +3,9 @@ import { useHistory } from 'react-router-dom'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface CellProps extends IComponent {
+export interface CellProps extends BasicComponent {
   title: ReactNode
   subTitle: ReactNode
   desc: string

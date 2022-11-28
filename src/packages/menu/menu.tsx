@@ -3,9 +3,9 @@ import classnames from 'classnames'
 import Icon from '@/packages/icon'
 import { OptionItem } from '@/packages/menuitem/menuitem'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface MenuProps extends IComponent {
+export interface MenuProps extends BasicComponent {
   className: string
   style: React.CSSProperties
   activeColor: string

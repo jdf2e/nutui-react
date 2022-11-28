@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react'
 
-export interface IComponent {
+export interface BasicComponent {
   className?: string
   style?: CSSProperties
   iconFontClassName?: string

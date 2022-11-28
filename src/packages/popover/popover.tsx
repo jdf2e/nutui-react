@@ -10,7 +10,7 @@ import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
 import { getRect } from '../../utils/useClientRect'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type PopoverTheme = 'light' | 'dark'
 
@@ -34,7 +34,7 @@ export interface List {
   disabled?: boolean
 }
 
-export interface PopoverProps extends IComponent {
+export interface PopoverProps extends BasicComponent {
   list: List[]
   theme: PopoverTheme
   location: PopoverLocation | string
