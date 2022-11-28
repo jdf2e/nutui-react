@@ -24,6 +24,7 @@ import Tree from './tree'
 export interface CascaderProps {
   className: string
   style: CSSProperties
+  activeColor: string
   poppable: boolean
   visible: boolean // popup 显示状态
   options: CascaderOption[]
@@ -46,6 +47,7 @@ export interface CascaderProps {
 const defaultProps = {
   className: '',
   style: {},
+  activeColor: '#fa2c19',
   poppable: true,
   visible: false,
   options: [],
