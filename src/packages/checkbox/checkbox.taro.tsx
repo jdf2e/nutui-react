@@ -4,14 +4,14 @@ import CheckboxGroup from '@/packages/checkboxgroup/index.taro'
 
 import bem from '@/utils/bem'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 interface InheritParentProps {
   getParentVals?: () => string[] | undefined
   max?: number | undefined
 }
 
-export interface CheckboxProps extends IComponent {
+export interface CheckboxProps extends BasicComponent {
   checked: boolean
   disabled: boolean
   textPosition: 'left' | 'right'

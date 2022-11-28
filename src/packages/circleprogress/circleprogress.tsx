@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { isObject } from '@/utils'
 import bem from '@/utils/bem'
 
-export interface IColor {
+export interface Color {
   [key: string]: string
 }
 export interface CircleProgressProps {
@@ -80,7 +80,7 @@ export const CircleProgress: FunctionComponent<
     if (!isObject(circleColor)) {
       return
     }
-    const color = circleColor as IColor
+    const color = circleColor as Color
     const colorArr = Object.keys(color).sort(
       (a, b) => parseFloat(a) - parseFloat(b)
     )

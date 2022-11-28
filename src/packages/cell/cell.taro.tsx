@@ -3,9 +3,9 @@ import Taro from '@tarojs/taro'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface CellProps extends IComponent {
+export interface CellProps extends BasicComponent {
   title: ReactNode
   subTitle: ReactNode
   desc: string

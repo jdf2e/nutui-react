@@ -11,14 +11,14 @@ import { useConfig } from '@/packages/configprovider'
 import Icon from '@/packages/icon'
 import { Overlay } from '../overlay/overlay'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface OptionItem {
   text: string
   value: string | number
 }
 
-export interface MenuItemProps extends IComponent {
+export interface MenuItemProps extends BasicComponent {
   className: string
   style: React.CSSProperties
   title: React.ReactNode

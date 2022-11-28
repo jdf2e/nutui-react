@@ -4,9 +4,9 @@ import Taro from '@tarojs/taro'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface TabbarItemProps extends IComponent {
+export interface TabbarItemProps extends BasicComponent {
   dot: boolean
   size: string | number
   className: string
