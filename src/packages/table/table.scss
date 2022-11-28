@@ -2,8 +2,8 @@
   .nut-table {
     margin-bottom: 3px;
     &__main {
-      color: $gray1;
-      background-color: $dark6;
+      color: $dark1;
+      background-color: $dark5;
 
       &--striped {
         .nut-table__main__head {
@@ -14,7 +14,7 @@
 
         .nut-table__main__body {
           &__tr:nth-child(odd) {
-            background-color: $dark2;
+            background-color: $dark4;
           }
         }
 
@@ -28,7 +28,7 @@
     .nut-table__nodata {
       background-color: $dark6;
       .nut-table__nodata {
-        color: $gray1;
+        color: $dark1;
       }
     }
     &__summary {

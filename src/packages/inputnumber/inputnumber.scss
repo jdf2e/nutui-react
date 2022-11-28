@@ -10,12 +10,12 @@
     input,
     &__text--readonly {
       background-color: $dark4;
-      color: $gray1;
+      color: $dark1;
       border: 1px solid $dark2;
     }
     &--disabled {
       input {
-        color: $dark2;
+        color: $dark1;
       }
     }
   }

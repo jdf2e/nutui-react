@@ -1,22 +1,29 @@
 .nut-theme-dark {
   .nut-numberkeyboard {
-    background-color: $dark3;
+    background-color: $dark5;
     &__body {
-      background-color: $dark3;
+      background-color: $dark5;
       color: $dark1;
-      .key-board-wrapper {
-        .key {
-          background-color: $dark3;
+      .nut-numberkeyboard__body__keys,
+      .nut-numberkeyboard__sidebar {
+        .key-board-wrapper {
+          background-color: $dark5;
+          .key {
+            background-color: $dark4;
+            color: $dark1;
+          }
         }
       }
     }
-    &__header__tit {
-      color: $white;
+    .nut-numberkeyboard__header {
+      .nut-numberkeyboard__header__tit {
+        color: $dark1;
+      }
     }
 
     &__header {
       &__close {
-        color: $gray1 !important;
+        color: $dark1 !important;
       }
     }
   }

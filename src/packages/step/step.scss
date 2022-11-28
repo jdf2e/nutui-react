@@ -1,4 +1,35 @@
 @import '../icon/icon.scss';
+.nut-theme-dark {
+  .nut-step {
+    &-main {
+      .nut-step-content {
+        color: $dark1;
+      }
+    }
+    &.nut-step-wait {
+      .nut-step-main {
+        .nut-step-title {
+          color: $dark2;
+        }
+      }
+      .nut-step-head {
+        color: $dark2;
+      }
+      .nut-step-icon.is-text {
+        background-color: $dark5;
+      }
+      .nut-step-icon.is-icon {
+        background-color: $dark5;
+        .nut-icon {
+          color: $dark2;
+        }
+      }
+      .nut-step-content {
+        color: $dark2;
+      }
+    }
+  }
+}
 .nut-step {
   flex-grow: 0;
   flex-shrink: 0;

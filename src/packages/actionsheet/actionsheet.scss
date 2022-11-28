@@ -1,33 +1,33 @@
 @import '../popup/popup.scss';
 .nut-theme-dark {
   .nut-actionsheet {
-    background-color: $dark2;
-    color: $white;
+    background-color: $dark5;
+    color: $dark1;
     &__menu {
       .nut-actionsheet__item {
-        background-color: $dark2;
-        color: $white !important;
+        background-color: $dark5;
+        color: $dark1 !important;
         .subdesc {
-          color: $gray1;
+          color: $dark1;
         }
       }
       .nut-actionsheet__item:hover {
-        background-color: $dark3;
+        background-color: $dark5;
       }
     }
     .nut-actionsheet__cancel {
-      background: $dark9;
-      color: $dark1;
+      background-color: $dark5;
+      color: $dark2;
       border-top: none;
     }
     .nut-actionsheet__title {
-      background: $dark9;
+      background-color: $dark5;
       color: $dark1;
       border-top: none;
     }
     .desc {
-      background: $dark9;
-      color: $dark1;
+      background-color: $dark5;
+      color: $dark2;
     }
   }
 }

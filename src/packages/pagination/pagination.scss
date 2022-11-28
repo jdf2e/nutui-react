@@ -1,10 +1,10 @@
 .nut-theme-dark {
   .nut-pagination {
-    &-prev,
-    &-item,
-    &-next {
-      background: $dark4;
-      border-color: $dark2;
+    &__prev,
+    &__item,
+    &__next {
+      background: $dark5;
+      border: 1px solid $dark5;
     }
     &-simple {
       background: $dark4;
@@ -13,15 +13,17 @@
       border-color: $dark2;
     }
     .disabled {
-      background: $dark4;
+      background-color: $dark2;
+      color: $disable-color;
+      border: 1px solid $dark2;
     }
-    .active {
+    &.active {
       background: $dark-pagination-active-background-color;
     }
     &__contain {
       .nut-pagination__item {
-        background-color: $dark4;
-        border: 1px solid $dark3;
+        background-color: $dark5;
+        border: 1px solid $dark4;
       }
     }
   }

@@ -1,8 +1,9 @@
 @import '../icon/icon.scss';
 .nut-theme-dark {
   .nut-tabbar-item {
-    &__icon--unactive {
-      color: $dark2;
+    color: $dark1;
+    &--active {
+      color: $primary-color;
     }
   }
 }

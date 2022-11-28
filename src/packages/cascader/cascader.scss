@@ -9,16 +9,17 @@
     }
 
     .nut-tabs__titles {
-      background: $dark6 !important;
+      background: $dark5;
     }
     &__title {
-      color: $white;
+      color: $dark1;
+      background-color: $dark5;
     }
     .nut-tabpane {
-      background-color: $dark2;
+      background-color: $dark5;
     }
     .nut-cascader-item {
-      color: $gray1;
+      color: $dark1;
     }
   }
 }

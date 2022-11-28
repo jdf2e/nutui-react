@@ -1,13 +1,27 @@
 @import '../icon/icon.scss';
 .nut-theme-dark {
   .nut-input {
-    background: $gray2;
+    background: $dark4;
     &-label {
       color: $dark1;
+      .label-string {
+        color: $dark1;
+      }
     }
     .input-text,
     &__text--readonly {
       color: $dark1;
+    }
+    &-left-icon,
+    &-right-icon {
+      i {
+        color: $dark1;
+      }
+    }
+    &-inner {
+      .nut-input-clear {
+        color: $dark1;
+      }
     }
   }
 }

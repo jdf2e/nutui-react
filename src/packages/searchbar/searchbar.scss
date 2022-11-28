@@ -1,24 +1,30 @@
 .nut-theme-dark {
   .nut-searchbar {
-    background: $gray2;
+    background: $dark5;
     &__label {
-      color: $white;
+      color: $dark1;
     }
     &__action-text {
-      color: $white;
+      color: $dark1;
     }
     .nut-searchbar__input-clear {
       & .nut-searchbar__nut-icon-mask-close {
-        color: $white;
+        color: $dark1;
         &:hover {
           cursor: pointer;
-          color: $white;
+          color: $dark1;
         }
       }
     }
     &__right-search-icon,
     &__left-search-icon {
-      color: $white;
+      color: $dark1;
+    }
+    &__leftout-icon,
+    &__rightout-icon {
+      i {
+        color: $dark1;
+      }
     }
   }
 }

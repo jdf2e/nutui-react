@@ -2,7 +2,7 @@
 @import '../overlay/overlay.scss';
 .nut-theme-dark {
   .nut-popup {
-    background: $dark2;
+    background: $dark6;
   }
   .nutui-popup {
     &__close-icon {
@@ -10,7 +10,7 @@
     }
   }
   .popup-slide-center-enter-done {
-    color: $white;
+    color: $dark1;
   }
 }
 

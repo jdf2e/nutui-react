@@ -2,19 +2,19 @@
 .nut-theme-dark {
   .nut-collapse {
     &-item__header {
-      background-color: $dark2;
+      background-color: $dark4;
       .nut-collapse-item__title {
-        color: $white;
+        color: $dark1;
       }
       .nut-collapse-item__icon-box {
         .nut-collapse-item__icon {
           i {
-            color: $white !important;
+            color: $dark1 !important;
           }
         }
       }
       .nut-collapse-item__sub-title {
-        color: $gray3;
+        color: $dark2;
       }
     }
     .nut-collapse-item__header::after {
@@ -22,19 +22,22 @@
     }
     .nut-collapse-item__header--disabled {
       .nut-collapse-item__title {
-        color: $gray3;
+        color: $dark2;
       }
       .nut-collapse-item__icon-box {
         .nut-collapse-item__icon {
           i {
-            color: $gray2 !important;
+            color: $dark2 !important;
           }
         }
       }
     }
     &-item__content {
-      background-color: $dark3;
-      color: $gray1;
+      background-color: $dark5;
+      color: $dark1;
+      &-text {
+        color: $dark1;
+      }
     }
   }
 }

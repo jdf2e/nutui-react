@@ -1,8 +1,11 @@
 .nut-theme-dark {
   .nut-grid-item {
     &__content {
-      background: $dark2;
+      background: $dark5;
       color: $dark1;
+      i {
+        color: $dark1;
+      }
     }
     &__text {
       color: $dark1;

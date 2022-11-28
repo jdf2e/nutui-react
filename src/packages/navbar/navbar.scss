@@ -1,23 +1,27 @@
 .nut-theme-dark {
   .nut-navbar {
-    background: $gray1;
-    color: $gray6;
+    background: $dark5;
+    color: $dark1;
     box-shadow: none;
     .title {
-      color: $gray6;
+      color: $dark1;
     }
     &__left {
-      color: $gray1;
+      color: $dark2;
       i {
-        color: $dark1 !important;
+        color: $dark2 !important;
       }
     }
     &__right {
-      color: $gray1;
+      color: $dark1;
     }
     &--border {
       border-bottom: none;
     }
+  }
+  .nut-tabs__titles-item__text {
+    background: $dark5;
+    color: $dark1;
   }
 }
 .nut-navbar {
@@ -110,6 +114,9 @@
 
     .nut-tabs__titles {
       background: $white;
+      &-item__text {
+        color: $title-color;
+      }
     }
 
     .nut-tabpane {

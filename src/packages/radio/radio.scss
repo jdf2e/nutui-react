@@ -4,15 +4,18 @@
     &__label {
       color: $dark1;
       &--disabled {
-        color: $radio-label-disable-color;
+        color: $dark2;
       }
     }
     &__button {
-      background: $dark6;
+      background: $dark4;
       color: $dark1;
+      &--active {
+        color: $primary-color;
+      }
       &--disabled {
-        color: $radio-label-disable-color;
-        border: 1px solid $radio-label-disable-color;
+        color: $dark2;
+        border: 1px solid $dark2;
       }
     }
   }

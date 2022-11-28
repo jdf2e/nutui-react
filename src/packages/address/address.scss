@@ -3,11 +3,18 @@
 @import '../elevator/elevator.scss';
 .nut-theme-dark {
   .nut-address {
+    .nut-elevator {
+      &__list {
+        &__inner {
+          background-color: $dark6;
+        }
+      }
+    }
     &__header {
-      color: $white;
+      color: $dark1;
 
       &__title {
-        color: $white;
+        color: $dark1;
       }
     }
 
@@ -15,26 +22,39 @@
     }
     .nut-address__region-tab {
       .nut-address__tab-item {
-        color: $white;
+        color: $dark1;
       }
     }
     .nut-address__region-con {
       .nut-address__region-group {
         .nut-address__region-item {
           div {
-            color: $gray1;
+            color: $dark1;
           }
         }
       }
     }
     .nut-address__exist-item-info {
-      color: $gray1;
+      color: $dark1;
+    }
+    &__exist {
+      &-group {
+        .nut-address__exist-ul {
+          li {
+            div {
+              i {
+                color: $dark1;
+              }
+            }
+          }
+        }
+      }
     }
     .exist-address {
       .exist-address-group {
         .exist-ul {
           .exist-item {
-            color: $white;
+            color: $dark1;
           }
         }
       }

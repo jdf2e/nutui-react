@@ -9,18 +9,18 @@
     }
     &__content {
       &-left {
-        background-color: $dark3;
+        background-color: $dark6;
         color: $dark1;
         .nut-timepannel-active {
           background-color: $dark4;
-          color: $white;
+          color: $dark1;
         }
       }
     }
   }
   .nut-timedetail__item {
     background-color: $dark4;
-    color: $white;
+    color: $dark1;
     &-active {
       background-color: $dark-brand-color;
     }

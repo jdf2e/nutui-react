@@ -2,6 +2,9 @@
   .nut-elevator {
     background-color: $dark5;
     &__list {
+      &__inner {
+        background-color: $dark4;
+      }
       &__item {
         color: $dark1;
         &__code {

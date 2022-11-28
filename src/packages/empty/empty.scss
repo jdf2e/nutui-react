@@ -1,6 +1,9 @@
 .nut-theme-dark {
   .nut-empty {
     background: $dark4;
+    &__description {
+      color: $dark1;
+    }
   }
 }
 
