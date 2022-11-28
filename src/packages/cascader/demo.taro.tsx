@@ -7,6 +7,7 @@ interface T {
   title2: string
   title3: string
   title4: string
+  title5: string
   addressTip: string
   addressTip1: string
 }
@@ -19,6 +20,7 @@ const CascaderDemo = () => {
       title2: '动态加载',
       title3: '部分数据动态加载',
       title4: '自动转换',
+      title5: '自定义选中颜色',
       addressTip: '选择地址',
       addressTip1: '请选择地址',
     },
@@ -28,6 +30,7 @@ const CascaderDemo = () => {
       title2: '動態加載',
       title3: '部分數據動態加載',
       title4: '自動轉換',
+      title5: '自定義選中顏色',
       addressTip: '選擇地址',
       addressTip1: '請選擇地址',
     },
@@ -37,6 +40,7 @@ const CascaderDemo = () => {
       title2: 'Async loading',
       title3: 'Async loading of partial data',
       title4: 'Automatic data conversion',
+      title5: 'Customize selected color',
       addressTip: 'Select address',
       addressTip1: 'Please select an address',
     },
@@ -47,6 +51,7 @@ const CascaderDemo = () => {
   const [isVisibleDemo3, setIsVisibleDemo3] = useState(false)
   const [isVisibleDemo4, setIsVisibleDemo4] = useState(false)
   const [isVisibleDemo5, setIsVisibleDemo5] = useState(false)
+  const [isVisibleDemo6, setIsVisibleDemo6] = useState(false)
 
   const [text, setText] = useState({
     desc1: translated.addressTip1,
@@ -54,12 +59,14 @@ const CascaderDemo = () => {
     desc3: 'A0A12A23A32',
     desc4: translated.addressTip1,
     desc5: '广东省广州市',
+    desc6: translated.addressTip1,
   })
   useEffect(() => {
     setText({
       ...text,
       desc1: translated.addressTip1,
       desc4: translated.addressTip1,
+      desc6: translated.addressTip1,
     })
   }, [translated])
   const [value1, setValue1] = useState([])
@@ -67,6 +74,7 @@ const CascaderDemo = () => {
   const [value3, setValue3] = useState(['A0', 'A12', 'A23', 'A32'])
   const [value4, setValue4] = useState([])
   const [value5, setValue5] = useState(['广东省', '广州市'])
+  const [value6, setValue6] = useState([])
   const [optionsDemo1, setOptionsDemo1] = useState([
     {
       value: '浙江',
@@ -259,6 +267,14 @@ const CascaderDemo = () => {
     })
     setValue5(value)
   }
+  const change6 = (value: any, path: any) => {
+    console.log('onChange', value, path)
+    setText({
+      ...text,
+      desc6: value,
+    })
+    setValue6(value)
+  }
   const onPathChange = (value: any, path: any) => {
     console.log('onPathChange', value, path)
   }
@@ -407,6 +423,27 @@ const CascaderDemo = () => {
             setIsVisibleDemo5(false)
           }}
           onChange={change5}
+          onPathChange={onPathChange}
+        />
+        <h2>{translated.title5}</h2>
+        <Cell
+          title={translated.addressTip}
+          desc={text.desc6}
+          onClick={() => {
+            setIsVisibleDemo6(true)
+          }}
+        />
+        <Cascader
+          visible={isVisibleDemo6}
+          activeColor="#008000"
+          value={value6}
+          title={translated.addressTip}
+          options={optionsDemo1}
+          closeable
+          onClose={() => {
+            setIsVisibleDemo6(false)
+          }}
+          onChange={change6}
           onPathChange={onPathChange}
         />
       </div>
