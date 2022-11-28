@@ -10,12 +10,12 @@ import Icon from '@/packages/icon/index.taro'
 import RadioContext from './context'
 import RadioGroup from '@/packages/radiogroup/index.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type Shape = 'button' | 'round'
 type Position = 'right' | 'left'
 
-export interface RadioProps extends IComponent {
+export interface RadioProps extends BasicComponent {
   className: string
   style: React.CSSProperties
   disabled: boolean

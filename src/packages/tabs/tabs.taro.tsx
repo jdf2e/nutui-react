@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 class Title {
   title = ''
@@ -18,7 +18,7 @@ class Title {
 }
 export type TabsSize = 'large' | 'normal' | 'small'
 
-export interface TabsProps extends IComponent {
+export interface TabsProps extends BasicComponent {
   className: string
   style: React.CSSProperties
   tabStyle: React.CSSProperties
