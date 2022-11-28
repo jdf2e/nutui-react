@@ -10,9 +10,9 @@ import Popup from '@/packages/popup'
 import Icon from '@/packages/icon'
 import { useConfig } from '@/packages/configprovider'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface ShortPasswordProps extends IComponent {
+export interface ShortPasswordProps extends BasicComponent {
   title: string
   desc: string
   tips: string

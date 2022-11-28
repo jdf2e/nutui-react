@@ -10,9 +10,9 @@ import Popup from '@/packages/popup/index.taro'
 import Icon from '@/packages/icon/index.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface ShortPasswordProps extends IComponent {
+export interface ShortPasswordProps extends BasicComponent {
   title: string
   desc: string
   tips: string

@@ -10,7 +10,7 @@ export type DialogConfigType = {
   simple?: boolean
 }
 
-export interface IDialogProps {
+export interface BasicDialogProps {
   className?: string
   style?: CSSProperties
   visible?: boolean
@@ -41,7 +41,7 @@ export type DialogReturnProps = {
   close: () => void
 }
 
-export interface ConfirmProps extends IDialogProps {
+export interface ConfirmProps extends BasicDialogProps {
   content?: ReactNode
   icon?: ReactNode | null
   isNotice?: boolean
@@ -49,7 +49,7 @@ export interface ConfirmProps extends IDialogProps {
 }
 
 export interface DialogComponent
-  extends ForwardRefExoticComponent<PropsWithChildren<IDialogProps>> {
+  extends ForwardRefExoticComponent<PropsWithChildren<BasicDialogProps>> {
   confirm: (props: ConfirmProps) => DialogReturnProps
   alert: (props: ConfirmProps) => DialogReturnProps
   config: (config: DialogConfigType) => void
