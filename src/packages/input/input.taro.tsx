@@ -16,7 +16,7 @@ import { formatNumber } from './util'
 import Icon from '@/packages/icon/index.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type InputAlignType = 'left' | 'center' | 'right' // text-align
 export type InputFormatTrigger = 'onChange' | 'onBlur' // onChange: 在输入时执行格式化 ; onBlur: 在失焦时执行格式化
@@ -30,7 +30,7 @@ export type InputRule = {
 
 export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
 
-export interface InputProps extends IComponent {
+export interface InputProps extends BasicComponent {
   type: InputType
   name: string
   defaultValue: any

@@ -4,9 +4,9 @@ import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 import { useConfig } from '@/packages/configprovider'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface InfiniteloadingProps extends IComponent {
+export interface InfiniteloadingProps extends BasicComponent {
   hasMore: boolean
   threshold: number
   containerId: string

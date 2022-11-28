@@ -17,7 +17,7 @@ export interface PositionType {
   right: number
 }
 
-export interface IVirtualListProps {
+export interface BasicVirtualListProps {
   className?: string
   style?: React.CSSProperties
   sourceData: Array<Data> // 获取数据
