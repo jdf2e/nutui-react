@@ -234,6 +234,12 @@ export default App
 | reverse       | 内容翻转                                  | boolean                | `false`     |
 | direction     | 格子内容排列的方向，可选值为 `horizontal`    | string                 | `vertical`  |
 
+## Grid Event
+
+| 字段       | 说明         | 回调参数                                           |
+|----------|--------------|----------------------------------------------------|
+| onChange | 宫格子项点击事件 | 点击当前项, 索引 |
+
 ### GridItem Props
 
 | 参数                  | 说明                                                                                     | 类型               | 默认值      |

@@ -1,7 +1,13 @@
-import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  ReactNode,
+  useContext,
+} from 'react'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
+import GridContext from '../grid/grid.context'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -71,6 +77,7 @@ export const GridItem: FunctionComponent<
     ...props,
   }
   const b = bem('grid-item')
+  const { onChange } = useContext(GridContext)
 
   const pxCheck = (value: string | number): string => {
     return Number.isNaN(Number(value)) ? String(value) : `${value}px`
@@ -108,6 +115,26 @@ export const GridItem: FunctionComponent<
 
   const handleClick = (e: any) => {
     onClick && onClick(e)
+    onChange &&
+      onChange(
+        {
+          text,
+          icon,
+          iconSize,
+          iconColor,
+          parentIconSize,
+          parentIconColor,
+          index,
+          columnNum,
+          border,
+          gutter,
+          center,
+          square,
+          reverse,
+          direction,
+        },
+        index
+      )
   }
 
   return (
