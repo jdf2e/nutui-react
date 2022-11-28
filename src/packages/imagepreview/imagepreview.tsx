@@ -11,7 +11,7 @@ import Video from '@/packages/video'
 import Swiper from '@/packages/swiper'
 import SwiperItem from '@/packages/swiperitem'
 
-interface IStore {
+interface Store {
   scale: number
   moveable: boolean
   oriDistance: number
@@ -96,7 +96,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       scaleNow()
     }
 
-    const store1 = store as IStore
+    const store1 = store as Store
     store1.moveable = true
 
     if (events2) {
@@ -124,7 +124,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     if (!store.moveable) {
       return
     }
-    const store1 = store as IStore
+    const store1 = store as Store
 
     // 双指移动
     if (events2) {
@@ -157,7 +157,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
 
   const onTouchEnd = () => {
     setLastTouchEndTime(new Date().getTime())
-    const store1 = store as IStore
+    const store1 = store as Store
     store1.moveable = false
     if ((store1.scale < 1.1 && store1.scale > 1) || store1.scale < 1) {
       store1.scale = 1
