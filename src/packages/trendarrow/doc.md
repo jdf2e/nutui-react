@@ -156,7 +156,7 @@ const App = () => {
         rate={-0.2535}
         showSign
         textColor="rgb(39,197,48)"
-        dropColor="rgb(255, 190, 13)"
+        dropColor="rgb(39,197,48)"
         />
     </Cell>
   );
