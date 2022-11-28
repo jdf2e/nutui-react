@@ -12,9 +12,9 @@ import Icon from '@/packages/icon/index.taro'
 import bem from '@/utils/bem'
 import { getRectByTaro } from '../../utils/useClientRect'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface NoticeBarProps extends IComponent {
+export interface NoticeBarProps extends BasicComponent {
   // 滚动方向  across 横向 vertical 纵向
   direction: string
   className?: string

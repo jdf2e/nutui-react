@@ -3,11 +3,11 @@ import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type GridDirection = 'horizontal' | 'vertical'
 
-export interface GridItemProps extends IComponent {
+export interface GridItemProps extends BasicComponent {
   text: string | ReactNode
   icon: string | ReactNode
   iconSize?: string | number

@@ -3,9 +3,9 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface RateProps extends IComponent {
+export interface RateProps extends BasicComponent {
   count: string | number
   modelValue: string | number
   minimizeValue: string | number

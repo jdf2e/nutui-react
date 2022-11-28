@@ -11,12 +11,12 @@ import Range from '@/packages/range/index.taro'
 import Button from '@/packages/button/index.taro'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 const b = bem('audio')
 const warn = console.warn
 
-export interface AudioProps extends IComponent {
+export interface AudioProps extends BasicComponent {
   className?: string
   style?: CSSProperties
   url: string
