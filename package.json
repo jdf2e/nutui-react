@@ -67,7 +67,7 @@
     "prepublishOnly": "node scripts/taro/prepublish.js",
     "postpublish": "node scripts/taro/postpublish.js",
     "prepare": "husky install",
-    "test": "jest",
+    "test": "jest watermark",
     "test:demo": "jest  --testNamePattern=^should match snapshot$ --runTestsByPath ./src/packages/collapse/__test__/collapse.spec.tsx",
     "generate:file:taro": "node scripts/taro/generate-nutui-taro.js",
     "checked:taro": "npm run generate:file:taro && tsc --project ./tsconfig.taro.json",

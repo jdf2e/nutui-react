@@ -1,5 +1,4 @@
 import React, { useState, useEffect, FunctionComponent } from 'react'
-import './watermark.scss'
 import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
