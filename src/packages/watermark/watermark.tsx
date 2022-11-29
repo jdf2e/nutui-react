@@ -130,7 +130,7 @@ export const WaterMark: FunctionComponent<
         setBase64Url(canvas.toDataURL())
       }
     } else {
-      throw new Error('当前环境不支持Canvas')
+      throw new Error(locale.watermark.errorCanvasTips)
     }
   }
 
