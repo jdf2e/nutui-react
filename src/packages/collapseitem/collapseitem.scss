@@ -2,7 +2,7 @@
 .nut-theme-dark {
   .nut-collapse {
     &-item__header {
-      background-color: $dark4;
+      background-color: $dark6;
       .nut-collapse-item__title {
         color: $dark1;
       }
@@ -51,7 +51,7 @@
     padding: 13px 0px 13px 26px;
     font-size: 14px;
     line-height: 24px;
-    background-color: $background-color;
+    background-color: $background-color3;
     box-sizing: border-box;
     &::after {
       position: absolute;
@@ -113,6 +113,14 @@
   }
   &__header--disabled {
     color: #c2c2c2;
+    .nut-collapse-item__title {
+      color: $disable-color;
+    }
+    .nut-collapse-item__icon {
+      i {
+        color: $disable-color !important;
+      }
+    }
   }
   &__content {
     overflow: hidden;

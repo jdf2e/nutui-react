@@ -27,7 +27,7 @@
 
   &--disabled {
     input {
-      color: $inputnumber-icon-void-color;
+      color: $inputnumber-icon-void-color !important;
     }
   }
 
@@ -36,7 +36,7 @@
     font-size: $inputnumber-icon-size;
     cursor: pointer;
     &--disabled {
-      color: $inputnumber-icon-void-color;
+      color: $inputnumber-icon-disabled-color;
       cursor: not-allowed;
     }
   }

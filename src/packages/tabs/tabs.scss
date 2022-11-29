@@ -73,7 +73,7 @@
         }
 
         &.active {
-          background-color: $background-color;
+          background-color: $background-color3;
 
           .nut-tabs__titles-item__line {
             left: 10px;
@@ -173,7 +173,7 @@
       color: $tabs-titles-item-color;
 
       &__text {
-        color: $gray2;
+        color: $gray1;
         &.ellipsis {
           @include oneline-ellipsis();
         }

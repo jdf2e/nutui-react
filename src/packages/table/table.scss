@@ -53,6 +53,8 @@
     width: 100%;
     border-collapse: collapse;
     overflow-x: hidden;
+    color: $title-color;
+    background-color: $background-color3;
     &--striped {
       .nut-table__main__head {
         &__tr {
@@ -117,6 +119,8 @@
     padding: $table-cols-padding;
   }
   &__nodata {
+    color: $title-color;
+    background-color: $background-color3;
     display: flex;
     align-items: center;
     justify-content: center;

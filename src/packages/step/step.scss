@@ -149,8 +149,11 @@
         color: $steps-wait-icon-color;
       }
     }
-    .nut-step-content {
-      color: $steps-wait-content-color;
+    .nut-step-main {
+      .nut-step-title,
+      .nut-step-content {
+        color: $steps-wait-content-color;
+      }
     }
   }
 }
