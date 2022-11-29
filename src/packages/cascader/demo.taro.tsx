@@ -436,6 +436,7 @@ const CascaderDemo = () => {
         <Cascader
           visible={isVisibleDemo6}
           activeColor="#008000"
+          tabsColor="#008000"
           value={value6}
           title={translated.addressTip}
           options={optionsDemo1}
