@@ -4,7 +4,7 @@ import Icon from '@/packages/icon/index.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type Direction = 'right' | 'left'
 type Position = {
@@ -12,7 +12,7 @@ type Position = {
   bottom?: string
 }
 
-export interface FixedNavProps extends IComponent {
+export interface FixedNavProps extends BasicComponent {
   fixednavClass: string
   visible: boolean
   overlay: boolean

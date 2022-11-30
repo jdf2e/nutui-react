@@ -21,9 +21,9 @@ export type FileItemStatus =
   | 'error'
   | 'removed'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface UploaderProps extends IComponent {
+export interface UploaderProps extends BasicComponent {
   url: string
   maximum: string | number
   maximize: number

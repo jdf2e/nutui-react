@@ -4,7 +4,7 @@ import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type Direction = 'right' | 'left'
 type Position = {
@@ -12,7 +12,7 @@ type Position = {
   bottom?: string
 }
 
-export interface FixedNavProps extends IComponent {
+export interface FixedNavProps extends BasicComponent {
   fixednavClass: string
   visible: boolean
   overlay: boolean

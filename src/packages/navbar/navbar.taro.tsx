@@ -3,9 +3,9 @@ import classNames from 'classnames'
 import Icon from '@/packages/icon/index.taro'
 import bem from '@/utils/bem'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface NavBarProps extends IComponent {
+export interface NavBarProps extends BasicComponent {
   leftShow: boolean
   title: string
   titIcon: string

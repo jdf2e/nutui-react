@@ -12,9 +12,9 @@ import bem from '@/utils/bem'
 import Button from '@/packages/button'
 import { useConfig } from '@/packages/configprovider'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface AudioProps extends IComponent {
+export interface AudioProps extends BasicComponent {
   className: string
   style: CSSProperties
   url: string
