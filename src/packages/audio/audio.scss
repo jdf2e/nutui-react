@@ -88,4 +88,9 @@
   .disable {
     color: blue;
   }
+  .nut-audio__none-container {
+    .nut-voice {
+      border: 1px solid $title-color;
+    }
+  }
 }

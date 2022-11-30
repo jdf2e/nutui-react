@@ -16,9 +16,9 @@
       .nut-collapse-item__sub-title {
         color: $dark2;
       }
-    }
-    .nut-collapse-item__header::after {
-      border: none;
+      &::after {
+        border-bottom: 1px solid $dark4;
+      }
     }
     .nut-collapse-item__header--disabled {
       .nut-collapse-item__title {
@@ -33,7 +33,7 @@
       }
     }
     &-item__content {
-      background-color: $dark5;
+      background-color: $dark6;
       color: $dark1;
       &-text {
         color: $dark1;

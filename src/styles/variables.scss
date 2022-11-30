@@ -31,6 +31,8 @@
       rgba(255, 255, 255, 0.4)
     ),
     linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4));
+  --row-content-bg-color: #ff8881;
+  --row-content-light-bg-color: #ffc7c4;
 }
 
 html[data-prefers-color-scheme='dark'] {
@@ -56,6 +58,8 @@ html[data-prefers-color-scheme='dark'] {
       rgba(31, 31, 31, 0.4)
     ),
     linear-gradient(0deg, rgba(31, 31, 31, 1), rgba(31, 31, 31, 0.4));
+  --row-content-bg-color: #0a0a0a;
+  --row-content-light-bg-color: rgba(0, 0, 0, 0.4);
 }
 // 品牌色
 $brand-color: var(--nutui-brand-color) !default;
@@ -1136,8 +1140,8 @@ $countup-width: 24px !default;
 
 // layout（✅）
 $row-content-color: #fff !default;
-$row-content-background-color: #ff8881 !default;
-$row-content-light-background-color: #ffc7c4 !default;
+$row-content-background-color: var(--row-content-bg-color) !default;
+$row-content-light-background-color: var(--row-content-light-bg-color) !default;
 $row-content-border-radius: 6px !default;
 $row-content-height: 50px !default;
 $row-content-line-height: 40px !default;
