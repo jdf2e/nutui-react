@@ -48,7 +48,14 @@ const ImageDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Cell>
-          <Image src={src} width="100" height="100" />
+          <Image
+            src={src}
+            width="100"
+            height="100"
+            onClick={() => {
+              console.log('click image')
+            }}
+          />
         </Cell>
 
         <h2>{translated.fill}</h2>
@@ -130,7 +137,14 @@ const ImageDemo = () => {
         <Cell>
           <Row gutter={10}>
             <Col span="8">
-              <Image width="100" height="100" showLoading />
+              <Image
+                width="100"
+                height="100"
+                showLoading
+                onLoad={() => {
+                  console.log('image onload')
+                }}
+              />
               <div className="text">默认</div>
             </Col>
             <Col span="8">
@@ -152,7 +166,15 @@ const ImageDemo = () => {
         <Cell>
           <Row gutter={10}>
             <Col span="8">
-              <Image src="https://x" width="100" height="100" showError />
+              <Image
+                src="https://x"
+                width="100"
+                height="100"
+                showError
+                onError={() => {
+                  console.log('image error')
+                }}
+              />
               <div className="text">默认</div>
             </Col>
             <Col span="8">
