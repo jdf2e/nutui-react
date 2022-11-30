@@ -61,6 +61,15 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
       return component
     }
     console.log(getComponentName())
+    const handleSwitchDarkModel = () => {
+      const attr = document.documentElement.getAttribute(
+        'data-prefers-color-scheme'
+      )
+      document.documentElement.setAttribute(
+        'data-prefers-color-scheme',
+        attr ? '' : 'dark'
+      )
+    }
     return (
       <>
         <div id="nav">
@@ -68,8 +77,16 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
             <Icon name="left"></Icon>
           </div>
           {getComponentName()['name']}
-          <div className="translate" onClick={() => handleSwitchLocale()}>
-            <Icon name="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"></Icon>
+          <div className="translate">
+            <Icon
+              className={'dark-model'}
+              name="https://storage.360buyimg.com/imgtools/271d32e824-73a10700-6fda-11ed-8c77-dd3873dfe291.png"
+              onClick={() => handleSwitchDarkModel()}
+            />
+            <Icon
+              name="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"
+              onClick={() => handleSwitchLocale()}
+            />
           </div>
         </div>
         <C key={Math.random()} />
