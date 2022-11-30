@@ -1,5 +1,4 @@
 .content {
-  margin-bottom: 20px;
   .nut-switch {
     display: flex;
     margin: 0 16px 8px 0;
@@ -29,4 +28,11 @@
   .item {
     width: 47%;
   }
+}
+.ske-cell-single {
+  display: block;
+  padding-top: 3px;
+}
+.ske-cell-double {
+  display: block;
 }

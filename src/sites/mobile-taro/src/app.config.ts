@@ -82,6 +82,7 @@ const subPackages = [
       'pages/audio/index',
       'pages/imagepreview/index',
       'pages/trendarrow/index',
+      'pages/watermark/index',
     ],
   },
   {
