@@ -79,7 +79,9 @@ export const Cell: FunctionComponent<
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onClick(event)
     const link = to || url
-    replace ? Taro.redirectTo({ url: link }) : Taro.navigateTo({ url: link })
+    if (link) {
+      replace ? Taro.redirectTo({ url: link }) : Taro.navigateTo({ url: link })
+    }
   }
 
   const baseStyle = {
