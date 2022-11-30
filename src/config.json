@@ -983,6 +983,17 @@
           "show": true,
           "taro": true,
           "author": "yangjinjun3"
+        },
+        {
+          "version": "1.0.0",
+          "name": "WaterMark",
+          "type": "component",
+          "cName": "水印",
+          "desc": "页面上添加特定的文字或图案，可用于防止信息盗用。",
+          "sort": 25,
+          "show": true,
+          "taro": true,
+          "author": "swag~jun"
         }
       ]
     },
