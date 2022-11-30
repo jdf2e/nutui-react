@@ -986,6 +986,17 @@
         },
         {
           "version": "1.0.0",
+          "name": "TrendArrow",
+          "type": "component",
+          "cName": "趋势箭头",
+          "desc": "带有箭头指示的百分比数字,用以展示指标趋势",
+          "sort": 25,
+          "show": true,
+          "taro": true,
+          "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
           "name": "WaterMark",
           "type": "component",
           "cName": "水印",
