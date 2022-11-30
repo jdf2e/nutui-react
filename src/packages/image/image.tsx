@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
-import './image.scss'
 import { useConfig } from '@/packages/configprovider'
 import Icon from '@/packages/icon'
 

@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
-import './image.scss'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Icon from '@/packages/icon/index.taro'
 
