@@ -2,7 +2,7 @@ import React from 'react'
 import { BaseFormField } from './types'
 import { FormItemContext } from './formitemcontext'
 import Cell from '@/packages/cell'
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type TextAlign =
   | 'start'
@@ -12,7 +12,7 @@ type TextAlign =
   | 'center'
   | 'justify'
   | 'match-parent'
-export interface FormItemProps extends IComponent, BaseFormField {
+export interface FormItemProps extends BasicComponent, BaseFormField {
   labelWidth: string | number
   errorMessageAlign: TextAlign
   showErrorLine: boolean

@@ -19,9 +19,9 @@ import {
   AddressList,
 } from './type'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface AddressProps extends IComponent {
+export interface AddressProps extends BasicComponent {
   className?: string
   style?: CSSProperties
   modelValue: boolean

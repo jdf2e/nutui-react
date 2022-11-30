@@ -2,9 +2,9 @@ import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
 
 import Icon from '@/packages/icon/index.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface BadgeProps extends IComponent {
+export interface BadgeProps extends BasicComponent {
   value: any
   dot: boolean
   max: number
