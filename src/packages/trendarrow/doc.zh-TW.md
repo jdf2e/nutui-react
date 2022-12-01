@@ -7,7 +7,10 @@
 ### 安裝
 
 ```javascript
+// React
 import { TrendArrow } from '@nutui/nutui-react';
+// taro
+import { TrendArrow } from '@nutui/nutui-react-taro'
 ```
 
 ## 代碼演示
