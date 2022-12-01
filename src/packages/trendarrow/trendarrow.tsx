@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useRef } from 'react'
 import bem from '@/utils/bem'
-import Icon from '../icon'
+import Icon from '@/packages/icon'
 
 export interface TrendArrowProps {
   rate: number
