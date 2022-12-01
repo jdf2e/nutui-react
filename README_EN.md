@@ -92,39 +92,42 @@
 
 | Version | WeChat Group | JD Dongdong Group |
 | --- | --- |--- |
-| [NutUI React](https://github.com/jdf2e/nutui-react/issues) | <img src="https://storage.360buyimg.com/imgtools/17c67beff6-4acf07c0-609c-11ed-a6ef-69df15b605e4.png" width="100" />Reply 'NutUI' after following | 82957939
-| [NutUI x Taro](https://github.com/jdf2e/nutui/issues) | <img src="https://camo.githubusercontent.com/db4276b4ee4b443158195e943e9e678cb4d2afb7580f70d4d817ef0a90413aec/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f7461726f2d6a642d636f6d2f7374617469632f636f6e746163745f7461726f5f6e757475695f71722e706e67" width="100" /> Reply 'NutUI' after following | 1022545110 |
+| [NutUI React](https://github.com/jdf2e/nutui-react/issues) | <img src="https://storage.360buyimg.com/imgtools/17c67beff6-4acf07c0-609c-11ed-a6ef-69df15b605e4.png" width="100" /> Reply 「NutUI-React」 after following | 1025679314 |
+| [NutUI x Taro](https://github.com/jdf2e/nutui/issues) | <img src="https://camo.githubusercontent.com/db4276b4ee4b443158195e943e9e678cb4d2afb7580f70d4d817ef0a90413aec/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f7461726f2d6a642d636f6d2f7374617469632f636f6e746163745f7461726f5f6e757475695f71722e706e67" width="100" />Reply 「NutUI-React」 after following | 1022545110 |
 
 
-## 参与共建
+## Join Us
 
-#### NutUI 社区共建倡议
+#### NutUI Community
 
-[NutUI-React 邀您共建，Contributor 您好](https://github.com/jdf2e/nutui-react/discussions/348)
+[*Welcome To NutUI-React  Community*](https://github.com/jdf2e/nutui-react/discussions/348)
 
-#### 为 NutUI 贡献代码
+#### Contribute to NutUI
 
-NutUI 的共建方向主要分为：解决 issue、修复 bug、新增组件、增加国际化、UI 定制、平台适配、跨端扩展等。
+There are some choices of contributing to NutUI as follows, solving issues, fixing bugs, adding new components, i18n, UI customization, platform and cross-end adaptation, etc.
 
-欢迎社区开发者参与共建，在贡献您的代码之前请先阅读 [《NutUI 贡献指南》](https://github.com/jdf2e/nutui-react/discussions/348)。
+You are very welcome to contribute code to NutUI. Before your pull requests, please read [*NutUI Developer Contributing Guide*](https://github.com/jdf2e/nutui-react/discussions/348)。
 
-## 问题反馈与建议
 
-[给 NutUI 提 Issue](https://nutui.jd.com/nutui-issue-helper/?repo=jdf2e/nutui-react&lang=zh-cn)
+## Issue & Discussion
 
-> 在反馈问题之前，推荐阅读 [《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way)、[《如何向开源社区提问题》](https://github.com/seajs/seajs/issues/545)和[《如何有效地报告 Bug》](http://www.chiark.greenend.org.uk/%7Esgtatham/bugs-cn.html)，这样您能够更容易获得理解和帮助。
+[Report issues to NutUI](https://nutui.jd.com/nutui-issue-helper/?repo=jdf2e/nutui-react&lang=zh-cn)
 
-[参与 NutUI 社区讨论](https://github.com/jdf2e/nutui-react/discussions)
+> It is highly recommended to read [*How To Ask Questions The Smart Way*](https://github.com/ryanhanwu/, [*How To Ask Questions Of GitHub Community*](https://github.com/seajs/seajs/issues/545) and [*How to Report Bugs Effectively*](https://www.chiark.greenend.org.uk/~sgtatham/bugs.html), then you can get understanding and help more easily.
 
-如果您有任何想法、疑问或建议，都可以参与社区讨论分享您的观点。
+[NutUI Discussion](https://github.com/jdf2e/nutui-react/discussions)
 
-## 贡献者们
+If you have any ideas, questions or suggestions, you can share your opinions here.
 
-感谢以下所有给 NutUI 贡献过代码的 [开发者](https://github.com/jdf2e/nutui-react/graphs/contributors)。
+## Contributors
+
+Thanks to all the following [developers](https://github.com/jdf2e/nutui-react/graphs/contributors)。 who have contributed code to NutUI.
+
 
 <a href="https://github.com/jdf2e/nutui-react/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=jdf2e/nutui-react" />
+  <img src="https://contrib.rocks/image?repo=jdf2e/nutui-react" alt="contributors"/>
 </a>
+
 
 ## Stargazers 
 
@@ -134,14 +137,15 @@ NutUI 的共建方向主要分为：解决 issue、修复 bug、新增组件、�
 
 [![Forkers repo roster for @jdf2e/nutui-react](https://reporoster.com/forks/jdf2e/nutui-react)](https://github.com/jdf2e/nutui-react/network/members)
 
-## 开发计划
+## Milestones
 
 [Milestones](https://github.com/jdf2e/nutui-react/projects)
 
-## 更新日志
+## Release Notes
 
-本项目遵从 [Angular Style Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)，更新日志请查阅 [Release](https://github.com/jdf2e/nutui-react/releases)。
+NutUI follows [Angular Style Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153). The up-to-date release notes are available on [Release](https://github.com/jdf2e/nutui-react/releases)
 
-## 开源协议
 
-本项目基于 **MIT** 协议
+## Open Source License
+
+This project is based on **MIT** protocol
