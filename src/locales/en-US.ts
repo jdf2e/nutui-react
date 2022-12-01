@@ -123,5 +123,8 @@ const enUS: BaseLang = {
     refreshingText: 'Loading...',
     completeText: 'Refresh successful',
   },
+  watermark: {
+    errorCanvasTips: 'Canvas is not supported in the current environment',
+  },
 }
 export default enUS
