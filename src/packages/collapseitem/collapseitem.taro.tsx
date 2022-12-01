@@ -8,9 +8,9 @@ import React, {
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface CollapseItemProps extends IComponent {
+export interface CollapseItemProps extends BasicComponent {
   title: string
   name: string
   isOpen: boolean

@@ -1,3 +1,30 @@
+# v1.3.13
+`2022-11-30`
+* :sparkles: feat: 新增image组件，适配多语言，增加单元测试 (#498) @vickyYe
+* :sparkles: feat: trendarrow趋势箭头组件开发完成 (#491)  @irisSong
+* :bug: fix: 提交skeleton骨架屏白底修改 (#499) @junjun666
+* 📖 docs: pagination demo 增加白色底 (#496) @oasis-cloud
+* 📖 docs: popover demo 增加白色底 (#497) @oasis-cloud
+* :bug: fix: cell 空链接不需跳转 (#495) @oasis-cloud
+* :sparkles: feat: 新增cascader的tabs底部选中颜色 (#493) @simpleStyle
+* :bug: fix: taro demo 启动报 declare 错误 (#490) @oasis-cloud
+* :sparkles: feat: 增加 triangle 图标 (#489) @oasis-cloud
+* :sparkles: chore: interface 统一 @oasis-cloud
+* :sparkles: feat: cascader组件支持activeColor选中态属性 (#487) @simpleStyle
+
+# v1.3.12
+`2022-11-23`
+
+* :bug: fix: children 无数据时不展示cell，应在顶层判断 (#482) @xiaoyatong
+* :sparkles: chore: pulltorefresh 删除取用 console (#480) @oasis-cloud
+* :bug: fix: taro:h5启动时textare组件change时间获取数据报错问题修复 (#479) @vickyYe
+* :sparkles: feat: add form (#470) @xiaoyatong
+* :bug: fix: taro 包不需要依赖 react-router-dom (#475) @oasis-cloud
+* :bug: fix: calendar taro中Popup组件与h5中属性不一致问题 (#468) @Phyzait
+* :bug: fix: Cell组件当children为空数组时不渲染Cell组件问题 (#466) @cuicuiworld
+* :sparkles: feat: range组件新增描述属性 (#471) @simpleStyle
+* :bug: fix: textarea组件字数统计不准确问题修改，兼容emoji (#467) @vickyYe
+
 # v1.3.11
 `2022-11-16`
 

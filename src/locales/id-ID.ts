@@ -123,5 +123,8 @@ const idID: BaseLang = {
     refreshingText: 'Memuat...',
     completeText: 'Penyegaran berhasil',
   },
+  watermark: {
+    errorCanvasTips: 'Canvas is not supported in the current environment',
+  },
 }
 export default idID
