@@ -18,7 +18,7 @@ export interface GridProps {
   iconSize?: string | number
   iconColor?: string
   style?: CSSProperties
-  onChange: (item: GridItemProps, index: number) => void
+  onClick: (item: GridItemProps, index: number) => void
 }
 
 const defaultProps = {
@@ -34,7 +34,7 @@ const defaultProps = {
 } as GridProps
 
 export const Grid: FunctionComponent<
-  Partial<GridProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<GridProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const { locale } = useConfig()
   const {
@@ -50,7 +50,7 @@ export const Grid: FunctionComponent<
     iconSize,
     iconColor,
     className,
-    onChange,
+    onClick,
     ...rest
   } = { ...defaultProps, ...props }
   const childrenDom = React.Children.toArray(children)
@@ -82,7 +82,7 @@ export const Grid: FunctionComponent<
 
   return (
     <div className={rootClass()} style={rootStyle()} {...rest}>
-      <GridContext.Provider value={{ onChange }}>
+      <GridContext.Provider value={{ onClick }}>
         {childrenDom.map((item: any, idex: number) => {
           return React.cloneElement(item, {
             index: idex,

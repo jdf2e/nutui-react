@@ -60,7 +60,7 @@ const GridDemo = () => {
     Taro.showToast({ title: '点击了第几个' })
   }
 
-  const onChange = (item: any, index: number) => {
+  const onClick = (item: any, index: number) => {
     Taro.showToast({ title: `点击了${item.text}，第${index}个` })
   }
 
@@ -169,7 +169,7 @@ const GridDemo = () => {
         </Grid>
 
         <h2>{translated.event}</h2>
-        <Grid direction="horizontal" onChange={onChange}>
+        <Grid direction="horizontal" onClick={onClick}>
           <GridItem icon="dongdong" text={translated.text} />
           <GridItem icon="dongdong" text={translated.text} />
           <GridItem icon="dongdong" text={translated.text} />

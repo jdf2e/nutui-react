@@ -77,7 +77,7 @@ export const GridItem: FunctionComponent<
     ...props,
   }
   const b = bem('grid-item')
-  const { onChange } = useContext(GridContext)
+  const context = useContext(GridContext)
   const pxCheck = (value: string | number): string => {
     return Number.isNaN(Number(value)) ? String(value) : `${value}px`
   }
@@ -114,8 +114,8 @@ export const GridItem: FunctionComponent<
 
   const handleClick = (e: any) => {
     onClick && onClick(e)
-    onChange &&
-      onChange(
+    context.onClick &&
+      context.onClick(
         {
           text,
           icon,

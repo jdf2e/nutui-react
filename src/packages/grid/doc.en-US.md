@@ -238,7 +238,7 @@ export default App
 
 | 字段       | 说明         | 回调参数                                           |
 |----------|--------------|----------------------------------------------------|
-| onChange | GridItem Click Event | currentGridItem, index |
+| onClick | GridItem Click Event | currentGridItem, index |
 
 ### GridItem Props
 
@@ -253,4 +253,4 @@ export default App
 
 | Event                  | Description                                                                                     | Arguments    |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|
-| onClick                 | GridItem Click Event    
+| onClick `1.3.14`                 | GridItem Click Event    
