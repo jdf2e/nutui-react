@@ -82,9 +82,6 @@ const subPackages = [
       'pages/progress/index',
       'pages/audio/index',
       'pages/imagepreview/index',
-      'pages/trendarrow/index',
-      'pages/watermark/index',
-      'pages/ellipsis/index',
     ],
   },
   {

@@ -1026,7 +1026,7 @@
           "desc": "展示空间不足时，隐去部分内容并用“…”替代。",
           "sort": 27,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "vickyYE"
         }
       ]
