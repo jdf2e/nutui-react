@@ -94,7 +94,7 @@ config.nav.map((item) => {
       fse.outputFileSync(
         file,
         // `${rewrite}${'\n'}require('../../../packages/${nameLowerCase}/${nameLowerCase}.scss')`
-        `${rewrite}${'\n'}import '../../../packages/${nameLowerCase}/${nameLowerCase}.scss'`
+        `import '../../../styles/theme-default.scss'${'\n'}${rewrite}${'\n'}import '../../../packages/${nameLowerCase}/${nameLowerCase}.scss'`
       )
     }
   })
