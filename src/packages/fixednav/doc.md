@@ -7,7 +7,10 @@
 ### 安装
     
 ``` javascript
+// react
 import { FixedNav } from '@nutui/nutui-react';
+// taro
+import { FixedNav } from '@nutui/nutui-react-taro';
 ```
 
 

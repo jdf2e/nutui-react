@@ -6,8 +6,11 @@
 
 ### 安装
 
-```js
+```ts
+// react
 import { Cascader } from '@nutui/nutui-react';
+// taro
+import { Cascader } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示
