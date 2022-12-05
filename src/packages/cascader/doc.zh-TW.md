@@ -526,6 +526,7 @@ const App = () => {
     <Cascader
       visible={isVisibleDemo6}
       color="#008000"
+      tabsColor="#008000"
       value={value6}
       title="地址选择"
       options={optionsDemo6}
@@ -551,7 +552,8 @@ export default App;
 | options       | 級聯數據                                         | Array    | -      |
 | poppable      | 是否彈窗狀態展示                                  | Boolean  | true   |
 | visible       | 級聯顯示隱藏狀態                                  | Boolean  | false  |
-| activeColor`1.3.13` | 選中啟動態顏色                           | Boolean  | false  |
+| activeColor`1.3.13` | 選中啟動態顏色                           | String  | -  |
+| tabsColor`1.3.13` | tabs底部選中啟動態顏色                                  | String  | -  |
 | lazy          | 是否開啟動態加載                                  | Boolean  | false  |
 | lazyLoad      | 動態加載回調，開啟動態加載時生效                   | Function | -      |
 | valueKey      | 自定義`options`結構中`value`的字段               | String   | -      |
