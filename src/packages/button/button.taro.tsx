@@ -7,13 +7,15 @@ import React, {
 } from 'react'
 import { ButtonProps as MiniProgramButtonProps } from '@tarojs/components'
 import Icon from '@/packages/icon/index.taro'
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type OmitMiniProgramButtonProps = Omit<
   MiniProgramButtonProps,
   'size' | 'type' | 'onClick'
 >
-export interface ButtonProps extends IComponent, OmitMiniProgramButtonProps {
+export interface ButtonProps
+  extends BasicComponent,
+    OmitMiniProgramButtonProps {
   className: string
   color: string
   shape: ButtonShape

@@ -6,10 +6,10 @@ import React, {
 import classNames from 'classnames'
 import Button from '@/packages/button/index.taro'
 import { DialogWrapper } from './DialogWrapper'
-import { IDialogProps, DialogComponent } from './config'
+import { BasicDialogProps, DialogComponent } from './config'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
-export type DialogProps = IDialogProps
+export type DialogProps = BasicDialogProps
 const defaultProps = {
   okText: '',
   cancelText: '',

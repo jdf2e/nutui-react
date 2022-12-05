@@ -8,7 +8,7 @@ export interface SwiperItemProps {
   size?: 0
 }
 
-interface IStyle {
+interface Style {
   width?: string
   height?: string
   transform?: string
@@ -29,7 +29,7 @@ export const SwiperItem = React.forwardRef<
   const classes = classNames(b(''), className)
 
   const getStyle = () => {
-    const style: IStyle = {}
+    const style: Style = {}
     const _direction = parent?.propSwiper.direction || direction
     const _size = parent?.size || size
     if (_size) {

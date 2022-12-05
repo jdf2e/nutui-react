@@ -4,9 +4,9 @@ import { DataContext } from '@/packages/steps/UserContext'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface StepProps extends IComponent {
+export interface StepProps extends BasicComponent {
   title: string
   content: string
   activeIndex: number

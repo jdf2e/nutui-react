@@ -8,9 +8,9 @@ import React, {
 import { getScrollParent } from '@/utils/get-scroll-parent'
 import { getRect } from '@/utils/useClientRect'
 import useWatch from '@/utils/useWatch'
-import { IComponent } from '@/utils/typings'
+import { BasicComponent } from '@/utils/typings'
 
-export interface StickyProps extends IComponent {
+export interface StickyProps extends BasicComponent {
   container?: React.RefObject<HTMLElement>
   position?: 'top' | 'bottom'
   className?: string

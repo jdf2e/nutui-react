@@ -3,12 +3,12 @@ import classNames from 'classnames'
 import Icon from '@/packages/icon/index.taro'
 import bem from '@/utils/bem'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type ProgressSize = 'small' | 'base' | 'large'
 export type TextType = 'icon' | 'text'
 
-export interface ProgressProps extends IComponent {
+export interface ProgressProps extends BasicComponent {
   className: string
   style: CSSProperties
   isShowPercentage: boolean

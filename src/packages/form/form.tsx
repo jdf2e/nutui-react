@@ -2,11 +2,11 @@ import React, { FunctionComponent } from 'react'
 import CellGroup from '../cellgroup'
 import { FormItemContext } from '../formitem/formitemcontext'
 import { useForm } from './useForm'
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { FormItem } from '../formitem/formitem'
 import { BaseForm } from './types'
 
-export interface FormProps extends IComponent, BaseForm {}
+export interface FormProps extends BasicComponent, BaseForm {}
 
 const defaultProps = {
   ...ComponentDefaults,

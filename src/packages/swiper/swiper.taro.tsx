@@ -9,7 +9,7 @@ export type SwiperRef = {
   next: () => void
   prev: () => void
 }
-interface IStyle {
+interface Style {
   width?: string
   height?: string
   transform?: string
@@ -473,7 +473,7 @@ export const Swiper = React.forwardRef<
     })
   })
   const itemStyle = (index: any) => {
-    const style: IStyle = {}
+    const style: Style = {}
     const _direction = propSwiper.direction || direction
     const _size = size
     if (_size) {

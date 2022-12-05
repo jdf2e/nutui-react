@@ -12,9 +12,9 @@ import bem from '@/utils/bem'
 import { Image } from '@tarojs/components'
 import Icon from '@/packages/icon/index.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface AvatarProps extends IComponent {
+export interface AvatarProps extends BasicComponent {
   size: string
   icon: string
   iconSize?: string | number

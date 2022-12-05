@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 
 import Icon from '@/packages/icon'
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 declare const window: any
 
-export interface BackTopProps extends IComponent {
+export interface BackTopProps extends BasicComponent {
   className?: string
   bottom: number
   right: number

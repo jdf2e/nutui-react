@@ -11,9 +11,9 @@ import { AvatarContext } from '@/packages/avatargroup/AvatarContext'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface AvatarProps extends IComponent {
+export interface AvatarProps extends BasicComponent {
   size: string
   icon: string
   iconSize?: string | number

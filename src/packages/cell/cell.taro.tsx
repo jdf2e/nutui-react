@@ -3,9 +3,9 @@ import Taro from '@tarojs/taro'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface CellProps extends IComponent {
+export interface CellProps extends BasicComponent {
   title: ReactNode
   subTitle: ReactNode
   desc: string
@@ -79,7 +79,9 @@ export const Cell: FunctionComponent<
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onClick(event)
     const link = to || url
-    replace ? Taro.redirectTo({ url: link }) : Taro.navigateTo({ url: link })
+    if (link) {
+      replace ? Taro.redirectTo({ url: link }) : Taro.navigateTo({ url: link })
+    }
   }
 
   const baseStyle = {
