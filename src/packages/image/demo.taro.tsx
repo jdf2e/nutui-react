@@ -25,91 +25,12 @@ const ImageDemo = () => {
   const src =
     'https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
 
-  const fits = ['contain', 'cover', 'fill', 'none', 'scale-down']
-  const position1 = ['left', 'center', 'right']
-  const position2 = ['top', 'center', 'bottom']
-
   return (
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Cell>
           <Image src={src} width="80" height="80" />
-        </Cell>
-
-        <h2>{translated.fill}</h2>
-        <Cell>
-          <Row gutter={10} type="flex" wrap="wrap">
-            {fits.map((i) => {
-              return (
-                <Col span="8" key={i}>
-                  <Image src={src} width="80" height="80" fit={i} />
-                  <div className="text">{i}</div>
-                </Col>
-              )
-            })}
-          </Row>
-        </Cell>
-
-        <h2>{translated.position}</h2>
-        <Cell>
-          <Row gutter={10} type="flex" wrap="wrap">
-            {position2.map((i) => {
-              return (
-                <Col span="8" key={i}>
-                  <Image
-                    src={src}
-                    width="80"
-                    height="80"
-                    fit="contain"
-                    position={i}
-                  />
-                  <div className="text">contain</div>
-                  <div className="text">{i}</div>
-                </Col>
-              )
-            })}
-            {position1.map((i) => {
-              return (
-                <Col span="8" key={i}>
-                  <Image
-                    src={src}
-                    width="80"
-                    height="80"
-                    fit="cover"
-                    position={i}
-                  />
-                  <div className="text">cover</div>
-                  <div className="text">{i}</div>
-                </Col>
-              )
-            })}
-          </Row>
-        </Cell>
-
-        <h2>{translated.circle}</h2>
-        <Cell>
-          <Row gutter={10}>
-            <Col span="8">
-              <Image src={src} width="80" height="80" fit="contain" round />
-              <div className="text">contain</div>
-            </Col>
-            <Col span="8">
-              <Image src={src} width="80" height="80" fit="cover" round />
-              <div className="text">cover</div>
-            </Col>
-            <Col span="8">
-              <Image
-                src={src}
-                width="80"
-                height="80"
-                fit="cover"
-                radius="10"
-                round
-              />
-              <div className="text">cover</div>
-            </Col>
-          </Row>
         </Cell>
 
         <h2>{translated.loading}</h2>
