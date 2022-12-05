@@ -7,7 +7,10 @@
 ### 安裝
 
 ```javascript
+// react
 import { Swipe } from '@nutui/nutui-react';
+// taro
+import { Swipe } from '@nutui/nutui-react-taro';
 ```
 
 ## 程式碼演示

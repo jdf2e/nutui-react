@@ -7,8 +7,11 @@
 ### 安装
 
 
-```js
+```ts
+// react
 import { ImagePreview } from '@nutui/nutui-react'
+// taro
+import { ImagePreview } from '@nutui/nutui-react-taro'
 ```
 
 
