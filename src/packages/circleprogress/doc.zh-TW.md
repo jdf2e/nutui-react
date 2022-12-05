@@ -6,9 +6,13 @@
 
 ### 安裝
 
-``` ts
-import { CirecleProgress } from '@nutui/nutui-react';
+```ts
+// react
+import { CircleProgress } from '@nutui/nutui-react';
+// taro
+import { CircleProgress } from '@nutui/nutui-react-taro';
 ```
+
 ### 基礎用法
 
 :::demo

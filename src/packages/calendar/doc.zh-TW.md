@@ -7,7 +7,10 @@
 ### 安裝
 
 ```javascript
+// react
 import { Calendar } from '@nutui/nutui-react';
+// taro
+import { Calendar } from '@nutui/nutui-react-taro';
 ```
 
 ## 代碼演示

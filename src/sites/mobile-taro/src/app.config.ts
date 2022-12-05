@@ -7,6 +7,7 @@ const subPackages = [
       'pages/icon/index',
       'pages/overlay/index',
       'pages/popup/index',
+      'pages/image/index',
     ],
   },
   {
