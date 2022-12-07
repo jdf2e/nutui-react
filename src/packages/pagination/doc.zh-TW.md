@@ -6,7 +6,10 @@
     
 ### 安裝
 ``` javascript
+// react
 import { Pagination } from '@nutui/nutui-react';
+// taro
+import { Pagination } from '@nutui/nutui-react-taro';
 ```    
 
 ### 基礎用法

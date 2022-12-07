@@ -8,7 +8,10 @@
 ### 安裝
 
 ```ts
+// react
 import { NavBar } from '@nutui/nutui-react';
+// taro
+import { NavBar } from '@nutui/nutui-react-taro';
 ```
 
 ### 代碼示例
