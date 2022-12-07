@@ -7,7 +7,10 @@ Bottom Navigation Common Scenarios
 ### Install
 
 ```ts
+// react
 import { Tabbar, TabbarItem } from '@nutui/nutui-react';
+// taro
+import { Tabbar, TabbarItem } from '@nutui/nutui-react-taro';
 ```
 
 ## code demo

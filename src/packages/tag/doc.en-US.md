@@ -7,7 +7,10 @@ Label for labeling and classification.
 ### Install
 
 ``` javascript
+// react
 import { Tag } from '@nutui/nutui-react';
+// taro
+import { Tag } from '@nutui/nutui-react-taro';
 ```
 
 ## Code instance

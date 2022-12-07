@@ -6,7 +6,12 @@
 
 ### 安裝
 
-import { Card,Price, Tag} from '@nutui/nutui-react';
+```js
+// react
+import { Card, Price, Tag } from '@nutui/nutui-react';
+// taro
+import { Card, Price, Tag } from '@nutui/nutui-react-taro';
+```
 
 
 ## 代碼演示

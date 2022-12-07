@@ -7,7 +7,10 @@
 ### 安装
 
 ```ts
+// react
 import { Switch } from '@nutui/nutui-react';
+// taro
+import { Switch } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示

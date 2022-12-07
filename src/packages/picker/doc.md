@@ -6,7 +6,10 @@
 
 ### 安装
 ```ts
+// react
 import { Picker } from '@nutui/nutui-react';
+// taro
+import { Picker } from '@nutui/nutui-react-taro';
 ```
 
 

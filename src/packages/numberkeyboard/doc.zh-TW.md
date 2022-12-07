@@ -5,8 +5,11 @@
 虛擬數字鍵盤，用於輸入支付密碼的場景。
 
 ### 安裝
-```js
+```ts
+// react
 import { NumberKeyboard } from '@nutui/nutui-react';
+// taro
+import { NumberKeyboard } from '@nutui/nutui-react-taro';
 ```
 
 

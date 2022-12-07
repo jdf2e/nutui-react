@@ -5,9 +5,11 @@
 通過點擊按鈕控制數字增減。
 
 ### 安裝
-
 ``` ts
+// react
 import { InputNumber } from '@nutui/nutui-react';
+// taro
+import { InputNumber } from '@nutui/nutui-react-taro';
 ```
 ### 基礎用法
 
