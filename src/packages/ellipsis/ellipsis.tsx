@@ -8,6 +8,7 @@ import React, {
 // import './ellipsis.scss'
 import { useConfig } from '@/packages/configprovider'
 
+export type Direction = 'start' | 'end' | 'middle'
 type EllipsisedValue = {
   leading?: string | undefined
   tailing?: string | undefined
@@ -125,7 +126,6 @@ export const Ellipsis: FunctionComponent<
       ellipsis.current = ellipsised
 
       document.body.removeChild(container)
-      console.log(333, container, ellipsis)
     }
   }
   // 计算 start/end 省略
