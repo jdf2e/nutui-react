@@ -8,7 +8,10 @@
 
 
 ``` ts
+// react
 import { OverLay } from '@nutui/nutui-react';
+// taro
+import { OverLay } from '@nutui/nutui-react-taro';
 ```
 
 ## 代碼演示

@@ -7,8 +7,10 @@
 ### 安裝
 
 ```javascript
+// react
 import { SearchBar } from '@nutui/nutui-react';
-
+// taro
+import { SearchBar } from '@nutui/nutui-react-taro';
 ```
 
 ## 程式碼演示

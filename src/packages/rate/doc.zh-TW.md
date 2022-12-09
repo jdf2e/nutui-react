@@ -7,7 +7,10 @@
 ### 安裝
 
 ```ts
+// react
 import { Rate } from '@nutui/nutui-react';
+// taro
+import { Rate } from '@nutui/nutui-react-taro';
 ```
 
 ## 代碼演示

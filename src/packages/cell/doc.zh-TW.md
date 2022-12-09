@@ -6,8 +6,11 @@
 
 ### 安裝
 
-```javascript
+```ts
+// react
 import { Cell, CellGroup } from '@nutui/nutui-react'
+// taro
+import { Cell, CellGroup } from '@nutui/nutui-react-taro'
 ```
 
 ## 代碼演示

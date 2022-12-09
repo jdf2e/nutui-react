@@ -6,7 +6,7 @@
 
 ### 安装
 ```javascript
-import { Virtuallist } from '@nutui/nutui-react';
+import { VirtualList } from '@nutui/nutui-react';
 ```
 ## 代码演示
 
@@ -199,7 +199,7 @@ export default App;
 | 参数           | 说明                               | 类型       | 默认值                                   |
 |---------------|----------------------------------|----------|---------------------------------------|
 | sourceData    | 获取数据                             | Array    | -                                     |
-| containerSize | 容器高度                             | Number   | 获取元素的offsetWidth或offsetHeight，需要css给出 |
+| containerSize | 容器高度                             | Number   | 获取元素的 offsetWidth 或 offsetHeight，需要 css 给出 |
 | ItemRender    | virtual 列表父节点渲染的函数               | React.FC | -                                     |
 | itemSize      | item高度，如果不定高，则为首屏单个最大size        | String   | -                                     |
 | itemEqualSize | item大小是否一致                       | Boolean  | true                                  |

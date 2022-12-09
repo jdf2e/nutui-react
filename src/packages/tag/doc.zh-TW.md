@@ -7,7 +7,10 @@
 ### 安裝
 
 ``` javascript
+// react
 import { Tag } from '@nutui/nutui-react';
+// taro
+import { Tag } from '@nutui/nutui-react-taro';
 ```
 
 ## 代碼實例
