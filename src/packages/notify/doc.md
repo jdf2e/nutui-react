@@ -6,7 +6,10 @@
 
 ### 安装
 ```javascript
+// react
 import { Notify } from '@nutui/nutui-react';
+// taro
+import { Notify } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示

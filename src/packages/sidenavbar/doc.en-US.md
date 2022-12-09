@@ -7,6 +7,7 @@ For content selection and switching
 
 ### Install
 ```tsx
+// react
 import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 ```
 

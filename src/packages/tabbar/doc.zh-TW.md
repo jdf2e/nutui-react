@@ -7,7 +7,10 @@
 ### 安裝
 
 ```ts
+// react
 import { Tabbar, TabbarItem } from '@nutui/nutui-react';
+// taro
+import { Tabbar, TabbarItem } from '@nutui/nutui-react-taro';
 ```
 
 ## 代碼演示

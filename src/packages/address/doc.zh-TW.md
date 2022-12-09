@@ -7,7 +7,10 @@
 
 ### 安裝
 ``` javascript
+// react
 import { Address } from '@nutui/nutui-react';
+// taro
+import { Address } from '@nutui/nutui-react-taro';
 ```
 
 ## 代碼示例
@@ -141,7 +144,7 @@ const App = () => {
   const onChange = (cal) => {
     const name = address[cal.next]
 
-    if(cal.next == 'town') setNormal(false)
+    if(cal.next === 'town') setNormal(false)
   }
   const close = (val) => {
       console.log(val)
@@ -535,7 +538,7 @@ const App = () => {
   }
   const close = (val) => {
       setOther(false)
-      if (val.type == 'exist') {
+      if (val.type === 'exist') {
         const { provinceName, cityName, countyName, townName, addressDetail } = val.data as AddressResult
         if (provinceName) {
           setText(provinceName + cityName + countyName + townName + addressDetail)
@@ -545,7 +548,7 @@ const App = () => {
         }
   }
   const switchModule = (val) => {
-      if (val.type == 'custom') {
+      if (val.type === 'custom') {
         console.log('點擊了“選擇其他地址”按鈕')
       } else {
         console.log('點擊了自定義地址左上角的返回按鈕')

@@ -6,7 +6,8 @@
 
 ### 安裝
 
-``` javascript
+```ts
+// react
 import { ConfigProvider } from '@nutui/nutui-react';
 ```
 

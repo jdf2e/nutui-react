@@ -6,8 +6,11 @@ The cascader component is used for the selection of multi-level data. The typica
 
 ### Install
 
-```js
+```ts
+// react
 import { Cascader } from '@nutui/nutui-react';
+// taro
+import { Cascader } from '@nutui/nutui-react-taro';
 ```
 
 ## Demo

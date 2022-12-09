@@ -5,8 +5,11 @@
 短密碼輸入框，可用於輸入密碼、短信驗證碼等
 
 ### 安裝
-```js
+```ts
+// react
 import { ShortPassword } from '@nutui/nutui-react';
+// taro
+import { ShortPassword } from '@nutui/nutui-react-taro';
 ```
 
 

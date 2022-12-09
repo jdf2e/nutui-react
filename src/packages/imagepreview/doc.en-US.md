@@ -7,8 +7,11 @@ Support full screen preview videos and images, support functional call.
 ### Install
 
 
-```js
+```ts
+// react
 import { ImagePreview } from '@nutui/nutui-react'
+// taro
+import { ImagePreview } from '@nutui/nutui-react-taro'
 ```
 
 
