@@ -5,7 +5,6 @@ import React, {
   useEffect,
   useLayoutEffect,
 } from 'react'
-// import './ellipsis.scss'
 import { useConfig } from '@/packages/configprovider'
 
 export type Direction = 'start' | 'end' | 'middle'
@@ -213,7 +212,6 @@ export const Ellipsis: FunctionComponent<
     if (type === 1) {
       setExpanded(true)
       onChange && onChange('expand')
-      //   emit('change', 'expand')
     } else {
       setExpanded(false)
       onChange && onChange('collapse')

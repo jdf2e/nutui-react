@@ -5,7 +5,7 @@ import React, {
   useLayoutEffect,
 } from 'react'
 import Taro from '@tarojs/taro'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { getRectByTaro } from '@/utils/useClientRect'
 
 export type Direction = 'start' | 'end' | 'middle'
