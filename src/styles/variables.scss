@@ -1,31 +1,31 @@
 // 品牌色
-$brand-color: var(--nutui-brand-color) !default;
+$brand-color: var(--nutui-brand-color, #fa2c19) !default;
 // 品牌渐变色
-$brand-color-start: var(--nutui-brand-color-start) !default;
-$brand-color-end: var(--nutui-brand-color-end) !default;
-$brand-link-color: var(--nutui-brand-link-color);
+$brand-color-start: var(--nutui-brand-color-start, #ff404f) !default;
+$brand-color-end: var(--nutui-brand-color-end, #fa2c19) !default;
+$brand-link-color: var(--nutui-brand-link-color, #396acc);
 
-$gray0: var(--nutui-gray0) !default;
+$gray0: var(--nutui-gray0, #000000) !default;
 // 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
-$gray1: var(--nutui-gray1) !default;
+$gray1: var(--nutui-gray1, #1a1a1a) !default;
 // 次要文字色，用于次级标题、属性标示、非主要信息引导等。
-$gray2: var(--nutui-gray2) !default;
+$gray2: var(--nutui-gray2, #757575) !default;
 // 不可操作内容色，用于预置内容、无效内容、特殊不可点击按钮、组件边框线等。
-$gray3: var(--nutui-gray3) !default;
+$gray3: var(--nutui-gray3, #bfbfbf) !default;
 // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
-$gray4: var(--nutui-gray4) !default;
+$gray4: var(--nutui-gray4, #f4f4f4) !default;
 // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-$gray5: var(--nutui-gray5) !default;
+$gray5: var(--nutui-gray5, #f8f8f8) !default;
 // 卡片背景色
-$gray6: var(--nutui-gray6) !default;
+$gray6: var(--nutui-gray6, #ffffff) !default;
 // 页面全局蒙层，用于弹出层、弹窗、新功能引导出现的整页遮罩
-$gray7: var(--nutui-gray7) !default;
+$gray7: var(--nutui-gray7, rgba(0, 0, 0, 0.7)) !default;
 // 局部蒙层，用于非整页遮罩
-$gray8: var(--nutui-gray8) !default;
+$gray8: var(--nutui-gray8, rgba(0, 0, 0, 0.4)) !default;
 // 间隔线/容错线，用于结构或信息分割
-$gray9: var(--nutui-gray9) !default;
+$gray9: var(--nutui-gray9, rgba(0, 0, 0, 0.08)) !default;
 // 图片容错蒙层
-$gray10: var(--nutui-gray10) !default;
+$gray10: var(--nutui-gray10, rgba(0, 0, 0, 0.02)) !default;
 
 // 暗黑映射,用于 nut-theme-dark 方式
 $dark-brand-color: #fa2c19 !default;
@@ -185,7 +185,7 @@ $cell-large-title-font: $font-size-large !default;
 $cell-large-title-desc-font: $font-size-base !default;
 $cell-large-padding: 15px 16px !default;
 $cell-background: $gray6 !default;
-$cell-box-shaow: var(--box-shaow) !default;
+$cell-box-shaow: 0px 1px 7px 0px rgba(237, 238, 241, 1) !default;
 
 // cell-group（✅）
 
@@ -239,7 +239,11 @@ $picker-item-active-text-color: inherit !default;
 $picker-item-text-font-size: 14px !default;
 $picker-item-active-line-border: 1px solid #d8d8d8 !default;
 $picker-columns-item-color: $title-color !default;
-$picker-mask-bg-img: var(--picker-mask-bg-img) !default;
+$picker-mask-bg-img: var(
+  --picker-mask-bg-img,
+  linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),
+  linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))
+) !default;
 //input（✅）
 $input-border-bottom: #eaf0fb !default;
 $input-disabled-color: #c8c9cc !default;
@@ -1077,8 +1081,11 @@ $countup-width: 24px !default;
 
 // layout（✅）
 $row-content-color: #fff !default;
-$row-content-background-color: var(--row-content-bg-color) !default;
-$row-content-light-background-color: var(--row-content-light-bg-color) !default;
+$row-content-background-color: var(--row-content-bg-color, #ff8881) !default;
+$row-content-light-background-color: var(
+  --row-content-light-bg-color,
+  #ffc7c4
+) !default;
 $row-content-border-radius: 6px !default;
 $row-content-height: 50px !default;
 $row-content-line-height: 40px !default;

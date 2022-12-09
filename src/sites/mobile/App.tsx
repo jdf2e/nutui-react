@@ -1,5 +1,11 @@
 import './App.scss'
-import React, { FunctionComponent, PropsWithChildren, useState } from 'react'
+import React, {
+  FunctionComponent,
+  PropsWithChildren,
+  useCallback,
+  useContext,
+  useState,
+} from 'react'
 import {
   HashRouter,
   Switch,
@@ -12,7 +18,10 @@ import routes from './router'
 import Links from './Links'
 import logo from '@/sites/assets/images/logo-red.png'
 import useLocale, { getLocale } from '@/sites/assets/locale/uselocale'
-import Configprovider from '@/packages/configprovider'
+import Configprovider, {
+  getDefaultConfig,
+  useConfig,
+} from '@/packages/configprovider'
 import zhTW from '@/locales/zh-TW'
 import zhCN from '@/locales/zh-CN'
 import enUS from '@/locales/en-US'
@@ -31,8 +40,34 @@ const languages: Languages = {
   enUS,
 }
 
+const defaultTheme = {}
+const darkTheme = {
+  'nutui-brand-color': '#fa2c19',
+  'nutui-brand-color-start': '#ff404f',
+  'nutui-brand-color-end': '#fa2c19',
+  'nutui-brand-link-color': '#396acc',
+  'nutui-gray0': '#000000',
+  'nutui-gray1': '#e6e6e6',
+  'nutui-gray2': '#828282',
+  'nutui-gray3': '#404040',
+  'nutui-gray4': '#0a0a0a',
+  'nutui-gray5': '#141414',
+  'nutui-gray6': '#1f1f1f',
+  'nutui-gray7': 'rgba(0, 0, 0, 0.7)',
+  'nutui-gray8': 'rgba(0, 0, 0, 0.4)',
+  'nutui-gray9': 'rgba(0, 0, 0, 0.08)',
+  'nutui-gray10': 'rgba(0, 0, 0, 0.02)',
+  'box-shadow': '0px 1px 7px 0px #141414',
+  'picker-mask-bg-img':
+    'linear-gradient(180deg,rgba(31, 31, 31, 1),rgba(31, 31, 31, 0.4)),linear-gradient(0deg, rgba(31, 31, 31, 1), rgba(31, 31, 31, 0.4))',
+  'row-content-bg-color': '#0a0a0a',
+  'row-content-light-bg-color': 'rgba(0, 0, 0, 0.4)',
+}
+
 const WithNavRouter = (C: LoadableComponent<any>) => {
   const WithNav: FunctionComponent = (props: PropsWithChildren<any>) => {
+    const context = useConfig()
+    console.log(context)
     const handleSwitchLocale = () => {
       let href = ''
       let locale = getLocale()
@@ -44,7 +79,6 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
       }
       location.href = href
     }
-    const pathNames = props.location.pathname.split('/')
     const getComponentName = () => {
       const s = window.location.hash.split('/')
       const cname = s[s.length - 1].toLowerCase()
@@ -60,15 +94,15 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
       })
       return component
     }
-    console.log(getComponentName())
     const handleSwitchDarkModel = () => {
-      const attr = document.documentElement.getAttribute(
-        'data-prefers-color-scheme'
-      )
-      document.documentElement.setAttribute(
-        'data-prefers-color-scheme',
-        attr ? '' : 'dark'
-      )
+      context.changeTheme()
+      // const attr = document.documentElement.getAttribute(
+      //   'data-prefers-color-scheme'
+      // )
+      // document.documentElement.setAttribute(
+      //   'data-prefers-color-scheme',
+      //   attr ? '' : 'dark'
+      // )
     }
     return (
       <>
@@ -97,10 +131,19 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
 }
 const AppSwitch = () => {
   const [locale] = useLocale()
-
+  const [theme, setTheme] = useState({})
+  const changeTheme = useCallback(() => {
+    if (!theme || !Object.keys(theme).length) {
+      setTheme(darkTheme)
+    } else {
+      setTheme(defaultTheme)
+    }
+  }, [theme])
   return (
     <Configprovider
       locale={languages[((locale as string) || 'zh-CN').replace('-', '')]}
+      theme={theme}
+      changeTheme={changeTheme}
     >
       <Switch>
         <Route path="/" exact>
