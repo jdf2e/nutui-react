@@ -16,10 +16,10 @@
   animation: nut-fade-out;
 }
 .first-render {
-  display: none;
+  display: none !important;
 }
 .hidden-render {
-  display: none;
+  display: none !important;
 }
 @keyframes nut-fade-in {
   0% {
