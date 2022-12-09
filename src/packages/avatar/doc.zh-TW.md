@@ -6,7 +6,10 @@
 
 ### 安裝
 ``` ts
+// react
 import { Avatar } from '@nutui/nutui-react';
+// taro
+import { Avatar } from '@nutui/nutui-react-taro';
 ```
 
 ### 基本用法

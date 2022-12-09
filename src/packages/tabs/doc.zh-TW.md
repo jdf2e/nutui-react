@@ -7,7 +7,10 @@
 ### 安装
 
 ```ts
+// react
 import { Tabs, TabPane } from '@nutui/nutui-react';
+// taro
+import { Tabs, TabPane } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示

@@ -8,7 +8,10 @@ Create a mask layer that is typically used to prevent users from doing other thi
 
 
 ``` ts
+// react
 import { OverLay } from '@nutui/nutui-react';
+// taro
+import { OverLay } from '@nutui/nutui-react-taro';
 ```
 
 ## Code demo

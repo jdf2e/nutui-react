@@ -7,7 +7,10 @@ Used to separate into equal-width blocks for page navigation.
 ### Install
 
 ```javascript
+// react
 import { Grid ,GridItem } from '@nutui/nutui-react'
+// taro
+import { Grid ,GridItem } from '@nutui/nutui-react-taro'
 ```
 
 
@@ -233,6 +236,13 @@ export default App
 | reverse       | 	Whether to reverse the position of icon and text       | boolean                | `false`     |
 | direction     | 	Content arrangement direction, can be set to  `horizontal`    | string                 | `vertical`  |
 
+
+## Grid Event
+
+| 字段       | 说明         | 回调参数                                           |
+|----------|--------------|----------------------------------------------------|
+| onClick | GridItem Click Event | currentGridItem, index |
+
 ### GridItem Props
 
 | Attribute   | Description                                              | Type   | Default |
@@ -241,3 +251,9 @@ export default App
 | icon                 | Icon name or URL                                                            | string \| ReactNode     | -          |
 | iconSize            | Icon size,for example `20px` `2em` `2rem`      | number \| string  |`28px`  |
 | iconColor           | Icon color              | string            | -           |
+
+### GridItem Event
+
+| Event                  | Description                                                                                     | Arguments    |
+|----------------------|-----------------------------------------------------------------------------------------|--------------------|
+| onClick `1.3.14`                 | GridItem Click Event    

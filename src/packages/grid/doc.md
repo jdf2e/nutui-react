@@ -7,7 +7,10 @@
 ### 安装
 
 ```javascript
+// react
 import { Grid ,GridItem } from '@nutui/nutui-react'
+// taro
+import { Grid ,GridItem } from '@nutui/nutui-react-taro'
 ```
 
 ## 代码演示
@@ -234,6 +237,12 @@ export default App
 | reverse       | 内容翻转                                  | boolean                | `false`     |
 | direction     | 格子内容排列的方向，可选值为 `horizontal`    | string                 | `vertical`  |
 
+## Grid Event
+
+| 字段       | 说明         | 回调参数                                           |
+|----------|--------------|----------------------------------------------------|
+| onClick | 宫格子项点击事件 | 点击当前项, 索引 |
+
 ### GridItem Props
 
 | 参数                  | 说明                                                                                     | 类型               | 默认值      |
@@ -247,4 +256,4 @@ export default App
 
 | 参数                  | 说明                                                                                     | 回调参数    |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|
-| onClick                 | 点击格子时触发                                                                         | event: Event      |
+| onClick `1.3.14`                 | 点击格子时触发                                                                         | event: Event      |

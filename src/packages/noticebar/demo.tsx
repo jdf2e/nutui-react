@@ -85,6 +85,7 @@ const NoticeBarDemo = () => {
             list={horseLamp1}
             speed={10}
             standTime={1000}
+            height={30}
             onClick={(e) => {
               go(e.target.innerHTML)
             }}
