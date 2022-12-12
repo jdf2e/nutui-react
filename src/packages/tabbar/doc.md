@@ -175,16 +175,16 @@ export default App;
 
 ### tabbar-item
 
-| 字段      | 说明                                      | 类型   | 默认值 |
-|-----------|-------------------------------------------|--------|--------|
-| tabTitle | 标签页的标题                              | String | --     |
-| icon      | 标签页显示的[图标名称](#/icon) 或图片链接 | String | --     |
-| href      | 标签页的跳转链接；如果同时存在 `to`，优先级高于 to   | String | --     |
-| to        | 标签页的路由对象，等于 React Router 的 [to 属性](https://v5.reactrouter.com/web/api/Link/to-string) 属性 | any | --     |
-| num       | 页签右上角的数字角标，超出99之后为99+     | Number | --     |
-| iconClassPrefix`v1.2.1`       | 自定义 icon 类名前缀，用于使用自定义图标        | String                  | `nut-icon` |
-| iconFontClassName`v1.2.1`       | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
-| dot`v1.2.2`      | 是否显示图标右上角小红点   | Boolean | false     |
+| 字段      | 说明                                                                                                                      | 类型   | 默认值 |
+|-----------|-------------------------------------------------------------------------------------------------------------------------|--------|--------|
+| tabTitle | 标签页的标题                                                                                                                  | String | --     |
+| icon      | 标签页显示的[图标名称](#/icon) 或图片链接                                                                                              | String | --     |
+| href      | 标签页的跳转链接；如果同时存在 `to`，优先级高于 to                                                                                           | String | --     |
+| to        | 标签页的路由对象，等于 React Router 的 [to 属性](https://v5.reactrouter.com/web/api/Link/to-string) 属性, taro 版本中采用 Taro.navigateTo 实现 | any | --     |
+| num       | 页签右上角的数字角标，超出99之后为99+                                                                                                   | Number | --     |
+| iconClassPrefix`v1.2.1`       | 自定义 icon 类名前缀，用于使用自定义图标                                                                                                 | String                  | `nut-icon` |
+| iconFontClassName`v1.2.1`       | 自定义 icon 字体基础类名                                                                                                         | String                  | `nutui-iconfont` |
+| dot`v1.2.2`      | 是否显示图标右上角小红点                                                                                                            | Boolean | false     |
 
 ### Event
 
