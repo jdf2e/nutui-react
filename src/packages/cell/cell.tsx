@@ -1,8 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory } from '@/utils/useHistory'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface CellProps extends BasicComponent {
