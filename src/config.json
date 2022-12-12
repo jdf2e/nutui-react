@@ -1017,6 +1017,17 @@
           "show": true,
           "taro": true,
           "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Ellipsis",
+          "type": "component",
+          "cName": "文本省略",
+          "desc": "展示空间不足时，隐去部分内容并用“…”替代。",
+          "sort": 27,
+          "show": true,
+          "taro": true,
+          "author": "vickyYE"
         }
       ]
     },
