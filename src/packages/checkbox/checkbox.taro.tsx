@@ -4,9 +4,14 @@ import CheckboxGroup from '@/packages/checkboxgroup/index.taro'
 
 import bem from '@/utils/bem'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface CheckboxProps extends IComponent {
+interface InheritParentProps {
+  getParentVals?: () => string[] | undefined
+  max?: number | undefined
+}
+
+export interface CheckboxProps extends BasicComponent {
   checked: boolean
   disabled: boolean
   textPosition: 'left' | 'right'
@@ -36,7 +41,8 @@ const defaultProps = {
 } as CheckboxProps
 export const Checkbox: FunctionComponent<
   Partial<CheckboxProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> &
+    InheritParentProps
 > & { Group: typeof CheckboxGroup } = (props) => {
   const { children } = {
     ...defaultProps,

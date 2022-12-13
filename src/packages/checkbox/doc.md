@@ -6,9 +6,11 @@
 
 ### 安装
 
-``` ts
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
-
+```ts
+// react
+import { Checkbox } from '@nutui/nutui-react';
+// taro
+import { Checkbox } from '@nutui/nutui-react-taro';
 ```
 
 ## 基本用法
@@ -17,7 +19,7 @@ import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
 
 ```tsx
 import React, { useState } from "react";
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+import { Checkbox } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   const [checked, setChecked] = useState(true)
@@ -38,7 +40,7 @@ export default CheckBoxDemo;
 
 ```tsx
 import React from "react";
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+import { Checkbox } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   return (<>
@@ -67,7 +69,7 @@ export default CheckBoxDemo;
 
 ```tsx
 import React from "react";
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+import { Checkbox } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   return (<>
@@ -88,7 +90,7 @@ export default CheckBoxDemo;
 
 ```tsx
 import React from "react";
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+import { Checkbox } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   return (<>
@@ -108,7 +110,7 @@ export default CheckBoxDemo;
 
 ```tsx
 import React from "react";
-import { Checkbox, CheckboxGroup, Toast } from '@nutui/nutui-react';
+import { Checkbox, Toast } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   return (<>
@@ -127,18 +129,18 @@ export default CheckBoxDemo;
 
 :::
 
-## CheckBoxGroup 使用
+## Checkbox.Group 使用
 
 :::demo
 
 ```tsx
 import React, { useState } from "react";
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+import { Checkbox } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   const [checkboxgroup1, setCheckboxgroup1] = useState(['1'])
   return (
-    <CheckboxGroup
+    <Checkbox.Group
       checkedValue={checkboxgroup1}
       onChange={(value) => {
         console.log(value)
@@ -157,7 +159,7 @@ const CheckBoxDemo = () => {
       <Checkbox checked={false} label="4">
         组合复选框
       </Checkbox>
-    </CheckboxGroup>
+    </Checkbox.Group>
   )
 }
 export default CheckBoxDemo;
@@ -165,18 +167,18 @@ export default CheckBoxDemo;
 
 :::
 
-## CheckBoxGroup 禁用
+## Checkbox.Group 禁用
 
 :::demo
 
 ```tsx
 import React, { useState } from "react";
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+import { Checkbox } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   const [checkboxgroup1, setCheckboxgroup1] = useState(['1'])
   return (
-    <CheckboxGroup checkedValue={checkboxgroup1} disabled>
+    <Checkbox.Group checkedValue={checkboxgroup1} disabled>
       <Checkbox label="1">
         组合复选框
       </Checkbox>
@@ -189,7 +191,7 @@ const CheckBoxDemo = () => {
       <Checkbox label="4">
         组合复选框
       </Checkbox>
-    </CheckboxGroup>
+    </Checkbox.Group>
   )
 }
 export default CheckBoxDemo;
@@ -197,19 +199,19 @@ export default CheckBoxDemo;
 
 :::
 
-## CheckboxGroup 全选/取消
+## Checkbox.Group 全选/取消
 
 :::demo
 
 ```tsx
 import React, { useState, useRef } from "react";
-import { Checkbox, CheckboxGroup, Button, Toast } from '@nutui/nutui-react';
+import { Checkbox, Button, Toast } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   const [checkboxgroup2, setCheckboxgroup2] = useState(['1'])
   const checkboxgroup2Ref = useRef(null)
   return (<>
-    <CheckboxGroup
+    <Checkbox.Group
       style={{}}
       ref={checkboxgroup2Ref}
       checkedValue={checkboxgroup2}
@@ -229,7 +231,7 @@ const CheckBoxDemo = () => {
       <Checkbox checked={false} label="4">
         组合复选框
       </Checkbox>
-    </CheckboxGroup>
+    </Checkbox.Group>
     <Button
       type="primary"
       style={{ margin: '0 20px 0 0' }}
@@ -268,13 +270,13 @@ export default CheckBoxDemo;
 :::demo
 ```tsx
 import React, { useState, useRef } from "react";
-import { Checkbox, CheckboxGroup, Button, Toast } from '@nutui/nutui-react';
+import { Checkbox, Button, Toast } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   const [checkboxgroup2, setCheckboxgroup2] = useState(['1'])
   const checkboxgroup2Ref = useRef(null)
   return (<>
-    <CheckboxGroup
+    <Checkbox.Group
       checkedValue={checkboxgroup2}
       max={2}
       onChange={(value) => {
@@ -293,7 +295,7 @@ const CheckBoxDemo = () => {
       <Checkbox checked={false} label="4">
         组合复选框
       </Checkbox>
-    </CheckboxGroup>
+    </Checkbox.Group>
   </>)
 }
 export default CheckBoxDemo;
@@ -304,7 +306,7 @@ export default CheckBoxDemo;
 :::demo
 ```tsx
 import React, { useState, useRef } from "react";
-import { Checkbox, CheckboxGroup, Button, Toast } from '@nutui/nutui-react';
+import { Checkbox, Button, Toast } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   const [checkboxgroup2, setCheckboxgroup2] = useState(['1'])
@@ -324,7 +326,7 @@ const CheckBoxDemo = () => {
     >
       全选
     </Checkbox>
-    <CheckboxGroup
+    <Checkbox.Group
       ref={checkboxgroup2Ref}
       checkedValue={checkboxgroup2}
       onChange={(value) => {
@@ -351,11 +353,47 @@ const CheckBoxDemo = () => {
       <Checkbox checked={false} label="4">
         组合复选框
       </Checkbox>
-    </CheckboxGroup>
+    </Checkbox.Group>
   </>)
 }
 export default CheckBoxDemo;
 ```
+:::
+
+## 配置 options 渲染复选按钮
+
+:::demo
+
+```tsx
+import React, { useState } from 'react';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+
+const CheckboxGroupOptions = () => {
+  const [checkboxVal, setCheckboxValVal] = useState(['1'])
+  const [optionsDemo1, setOptionsDemo1] = useState([
+    {
+      label: '选项1',
+      value: '1',
+    },
+    {
+      label: '选项2',
+      value: '2',
+      disabled: true,
+    },
+    {
+      label: '选项3',
+      value: '3',
+    },
+  ])
+  const handleChange = (v) => {
+    console.log(v)
+    setCheckboxValVal(v)
+  }
+  return <CheckboxGroup options={optionsDemo1} checkedValue={radioVal} onChange={handleChange}></CheckboxGroup>
+}
+export default CheckboxGroupOptions;
+```
+
 :::
 
 ## Checkbox
@@ -373,13 +411,14 @@ export default CheckBoxDemo;
 | iconFontClassName`v1.2.1`       | 自定义 icon 字体基础类名        | String                  | `nutui-iconfont` |
 | label                         | 复选框的文本内容 | String | -|
 
-## CheckboxGroup
+## Checkbox.Group
 
 | 字段           | 说明 | 类型          | 默认值|
 |--------------| ----- |-------------| -- |
 | checkedValue | 当前选中项的标识符，和 `label` 相对应  | String      | -|
 | disabled     | 是否禁用选择,将用于其下的全部复选框 | Boolean     | `false`|
 | max`v1.2.1`           | 限制最大可选数 | `undefined|number` | `undefined`|
+| options `v1.3.10`     | 配置 options 渲染复选按钮      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 ## Checkbox Event
 
@@ -387,13 +426,13 @@ export default CheckBoxDemo;
 |----- | ----- | ----- |
 | onChange | 值变化时触发 | (state, label),`state`代表当前状态，`label`表示当前选中的值|
 
-## CheckboxGroup Event
+## Checkbox.Group Event
 
 | 字段 | 说明 | 回调参数|
 |----- | ----- | ----- |
 | onChange | 值变化时触发 | label,`label`返回一个数组，表示当前选中项的集合|
 
-## CheckboxGroup API
+## Checkbox.Group API
 
 | 方法名               | 说明 | 参数 |
 |-------------------| ----- | ----- |

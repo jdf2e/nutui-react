@@ -85,8 +85,9 @@ const NoticeBarDemo = () => {
             list={horseLamp1}
             speed={10}
             standTime={1000}
-            onClick={(item: any) => {
-              go(item)
+            height={30}
+            onClick={(e) => {
+              go(e.target.innerHTML)
             }}
             closeMode
           />
@@ -110,8 +111,12 @@ const NoticeBarDemo = () => {
             height={50}
             speed={10}
             standTime={1000}
-            onClick={(item: any) => {
-              go(item)
+            closeMode
+            onClose={() => {
+              console.log('close')
+            }}
+            onClick={(e) => {
+              console.log(e)
             }}
           >
             {horseLamp3.map((item, index) => {

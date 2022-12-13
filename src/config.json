@@ -123,6 +123,18 @@
           "show": true,
           "exportEmpty": true,
           "author": "hanyuxinting"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Image",
+          "type": "component",
+          "tarodoc": true,
+          "cName": "图片",
+          "desc": "增强版的 img 标签，提供多种图片填充模式，支持图片加载中提示、加载失败提示。",
+          "sort": 8,
+          "show": true,
+          "taro": true,
+          "author": "vickyYE"
         }
       ]
     },
@@ -570,6 +582,29 @@
           "show": true,
           "taro": true,
           "author": "Drjingfubo"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Form",
+          "type": "component",
+          "cName": "表单",
+          "desc": "用于数据录入、校验，支持输入框、单选框、复选框等类型。",
+          "sort": 19,
+          "show": true,
+          "taro": false,
+          "author": "hanyuxinting"
+        },
+        {
+          "version": "1.0.0",
+          "name": "FormItem",
+          "type": "component",
+          "cName": "表单项",
+          "desc": "用于数据录入、校验，支持输入框、单选框、复选框等类型。",
+          "sort": 19,
+          "show": false,
+          "taro": false,
+          "exportEmpty": true,
+          "author": "hanyuxinting"
         }
       ]
     },
@@ -631,7 +666,7 @@
           "desc": "列表滚动到底部自动加载更多数据。",
           "sort": 5,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         },
         {
@@ -947,7 +982,7 @@
           "desc": "原生audio实现的音频播放器",
           "sort": 21,
           "show": true,
-          "taro":true,
+          "taro": true,
           "author": "libin"
         },
         {
@@ -960,6 +995,50 @@
           "show": true,
           "taro": true,
           "author": "yangjinjun3"
+        },
+        {
+          "version": "1.0.0",
+          "name": "TrendArrow",
+          "type": "component",
+          "cName": "趋势箭头",
+          "desc": "带有箭头指示的百分比数字,用以展示指标趋势",
+          "sort": 25,
+          "show": true,
+          "taro": true,
+          "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "WaterMark",
+          "type": "component",
+          "cName": "水印",
+          "desc": "页面上添加特定的文字或图案，可用于防止信息盗用。",
+          "sort": 25,
+          "show": true,
+          "taro": true,
+          "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Animate",
+          "type": "component",
+          "cName": "动画/动效",
+          "desc": "给子元素添加动画效果",
+          "sort": 27,
+          "show": true,
+          "taro": true,
+          "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Ellipsis",
+          "type": "component",
+          "cName": "文本省略",
+          "desc": "展示空间不足时，隐去部分内容并用“…”替代。",
+          "sort": 27,
+          "show": true,
+          "taro": true,
+          "author": "vickyYE"
         }
       ]
     },

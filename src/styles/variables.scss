@@ -1,34 +1,85 @@
+// 品牌色
+// 纯色
+$brand-color: #fa2c19 !default;
+// 渐变色
+$brand-color-start: #ff404f !default;
+$brand-color-end: #fa2c19 !default;
+
+$gray0: #000000 !default;
+// 灰阶
+// 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
+$gray1: #1a1a1a !default;
+
+// 次要文字色，用于次级标题、属性标示、非主要信息引导等。
+$gray2: #757575 !default;
+
+// 不可操作内容色，用于预置内容、无效内容、特殊不可点击按钮、组件边框线等。
+$gray3: #bfbfbf !default;
+
+// 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
+$gray4: #f4f4f4 !default;
+
+// 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
+$gray5: #f8f8f8 !default;
+
+// 卡片背景色
+$gray6: #ffffff !default;
+
+// 页面全局蒙层，用于弹出层、弹窗、新功能引导出现的整页遮罩
+$gray7: rgba(0, 0, 0, 0.7) !default;
+
+// 局部蒙层，用于非整页遮罩
+$gray8: rgba(0, 0, 0, 0.4) !default;
+
+// 间隔线/容错线，用于结构或信息分割
+$gray9: rgba(0, 0, 0, 0.08) !default;
+
+// 图片容错蒙层
+$gray10: rgba(0, 0, 0, 0.02) !default;
+
+// 暗黑映射
+$dark1: #e6e6e6 !default;
+$dark2: #828282 !default;
+$dark3: #404040 !default;
+$dark4: #0a0a0a !default;
+$dark5: #141414 !default;
+$dark6: #1f1f1f !default;
+$dark7: rgba(0, 0, 0, 0.7) !default;
+$dark8: rgba(0, 0, 0, 0.4) !default;
+$dark9: rgba(0, 0, 0, 0.08) !default;
+$dark10: rgba(0, 0, 0, 0.02) !default;
+
 // color
 
 // 主色调
-$primary-color: #fa2c19 !default;
-$primary-color-end: #fa6419 !default;
+$primary-color: $brand-color !default;
+$primary-color-end: $brand-color-end !default;
 // 辅助色
-$help-color: #f5f5f5 !default;
+$help-color: $gray5 !default;
 // 标题常规文字
-$title-color: #1a1a1a !default;
+$title-color: $gray1 !default;
 // 副标题
-$title-color2: #666666 !default;
+$title-color2: $gray2 !default;
 // 次内容
-$text-color: #808080 !default;
+$text-color: $gray2 !default;
 // 特殊禁用色
-$disable-color: #cccccc !default;
-$white: #fff !default;
-$black: #000 !default;
+$disable-color: $gray3 !default;
+$white: $gray6 !default;
+$black: $gray0 !default;
 $required-color: #fa2c19 !default;
 
-$dark-background: #131313 !default;
-$dark-background2: #1b1b1b !default;
-$dark-background3: #141414 !default;
-$dark-background4: #323233 !default;
-$dark-background5: #646566 !default;
-$dark-background6: #380e08 !default;
-$dark-background7: #707070 !default;
-$dark-color: $white !default;
-$dark-color2: #f2270c !default;
-$dark-color3: rgba(232, 230, 227, 0.8) !default;
-$dark-color-gray: $text-color !default;
-$dark-calendar-choose-color: rgba(227, 227, 227, 0.2) !default;
+$dark-background: $dark1 !default;
+$dark-background2: $dark2 !default;
+$dark-background3: $dark3 !default;
+$dark-background4: $dark4 !default;
+$dark-background5: $dark5 !default;
+$dark-background6: $dark6 !default;
+$dark-background7: $dark7 !default;
+$dark-color: $dark1 !default;
+$dark-color2: $dark2 !default;
+$dark-color3: $dark3 !default;
+$dark-color-gray: $dark2 !default;
+$dark-calendar-choose-color: $dark1 !default;
 
 // padding
 $padding-xs: 12px;
@@ -272,17 +323,17 @@ $countdown-font-size: initial !default;
 
 //large price（✅）
 $price-symbol-big-size: 18px !default;
-$price-big-size: 24px !default;
+$price-integer-big-size: 24px !default;
 $price-decimal-big-size: 18px !default;
 
 //normal price（✅）
 $price-symbol-medium-size: 14px !default;
-$price-medium-size: 16px !default;
+$price-integer-medium-size: 16px !default;
 $price-decimal-medium-size: 14px !default;
 
 // small price（✅）
 $price-symbol-small-size: 10px !default;
-$price-small-size: 12px !default;
+$price-integer-small-size: 12px !default;
 $price-decimal-small-size: 10px !default;
 
 //avatar（✅）
@@ -311,9 +362,9 @@ $toast-title-font-size: 16px !default;
 $toast-text-font-size: 14px !default;
 $toast-font-color: $white !default;
 $toast-inner-padding: 24px 30px !default;
-$toast-inner-bg-color: rgba(0, 0, 0, 0.8) !default;
+$toast-inner-bg-color: $gray7 !default;
 $toast-inner-border-radius: 12px !default;
-$toast-cover-bg-color: rgba(0, 0, 0, 0) !default;
+$toast-cover-bg-color: $gray7 !default;
 
 //backtop（✅）
 $backtop-border-color: #e0e0e0 !default;
@@ -497,10 +548,10 @@ $checkbox-icon-font-size: 18px !default;
 $checkbox-icon-disable-color2: $help-color !default;
 
 //radio（✅）
-$radio-label-font-color: #1d1e1e !default;
+$radio-label-font-color: $gray1 !default;
 $radio-label-font-active-color: $primary-color !default;
-$radio-label-disable-color: #999 !default;
-$radio-icon-disable-color: #d6d6d6 !default;
+$radio-label-disable-color: $gray3 !default;
+$radio-icon-disable-color: $gray3 !default;
 $radio-label-button-border-color: $primary-color !default;
 $radio-label-button-background: rgba($primary-color, 0.05) !default;
 $radio-label-margin-left: 15px !default;
@@ -1033,4 +1084,6 @@ $row-content-height: 50px !default;
 $row-content-line-height: 40px !default;
 $col-default-margin-bottom: 15px !default;
 
-@import './mixins/index';
+// TrendArrow
+$trendarrow-font-size: 14px !default;
+$trendarrow-before-icon-margin: 4px !default;

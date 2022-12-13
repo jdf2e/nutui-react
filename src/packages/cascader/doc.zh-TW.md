@@ -6,8 +6,11 @@
 
 ### 安裝
 
-```js
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+```ts
+// react
+import { Cascader } from '@nutui/nutui-react';
+// taro
+import { Cascader } from '@nutui/nutui-react-taro';
 ```
 
 ## 代碼演示
@@ -17,7 +20,7 @@ import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
 :::demo
 ```jsx
 import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo1, setIsVisibleDemo1] = useState(false)
@@ -126,7 +129,7 @@ export default App;
 :::demo
 ```jsx
 import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo2, setIsVisibleDemo2] = useState(false)
@@ -238,7 +241,7 @@ export default App;
 :::demo
 ```jsx
 import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo3, setIsVisibleDemo3] = useState(false)
@@ -306,7 +309,7 @@ export default App;
 :::demo
 ```jsx
 import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo4, setIsVisibleDemo4] = useState(false)
@@ -379,7 +382,7 @@ export default App;
 :::demo
 ```jsx
 import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo5, setIsVisibleDemo5] = useState(false)
@@ -432,6 +435,116 @@ export default App;
 ```
 :::
 
+### 自定義選中顏色
+
+傳入`activeColor`指定選中的顏色。
+:::demo
+```jsx
+import  React from "react";
+import { Cell, Cascader } from '@nutui/nutui-react';
+
+const App = () => {
+  const [isVisibleDemo6, setIsVisibleDemo6] = useState(false)
+  const [value6, setValue6] = useState([])
+  const [optionsDemo6, setOptionsDemo6] = useState([
+    {
+      value: '浙江',
+      text: '浙江',
+      children: [
+        {
+          value: '杭州',
+          text: '杭州',
+          disabled: true,
+          children: [
+            { value: '西湖区', text: '西湖区', disabled: true },
+            { value: '余杭区', text: '余杭区' },
+          ],
+        },
+        {
+          value: '温州',
+          text: '温州',
+          children: [
+            { value: '鹿城区', text: '鹿城区' },
+            { value: '瓯海区', text: '瓯海区' },
+          ],
+        },
+      ],
+    },
+    {
+      value: '湖南',
+      text: '湖南',
+      disabled: true,
+      children: [
+        {
+          value: '长沙',
+          text: '长沙',
+          disabled: true,
+          children: [
+            { value: '西湖区', text: '西湖区' },
+            { value: '余杭区', text: '余杭区' },
+          ],
+        },
+        {
+          value: '温州',
+          text: '温州',
+          children: [
+            { value: '鹿城区', text: '鹿城区' },
+            { value: '瓯海区', text: '瓯海区' },
+          ],
+        },
+      ],
+    },
+    {
+      value: '福建',
+      text: '福建',
+      children: [
+        {
+          value: '福州',
+          text: '福州',
+          children: [
+            { value: '鼓楼区', text: '鼓楼区' },
+            { value: '台江区', text: '台江区' },
+          ],
+        },
+      ],
+    },
+  ])
+  const change6 = (value: any, path: any) => {
+    console.log('onChange', value, path)
+    setValue6(value)
+  }
+  const onPathChange = (value: any, path: any) => {
+    console.log('onPathChange', value, path)
+  }
+
+  return (
+    <>
+    <Cell
+      title="选择地址"
+      desc={value6 || '请选择地址'}
+      onClick={()=>{
+        setIsVisibleDemo6(true)
+      }}
+     />
+    <Cascader
+      visible={isVisibleDemo6}
+      color="#008000"
+      tabsColor="#008000"
+      value={value6}
+      title="地址选择"
+      options={optionsDemo6}
+      closeable
+      onClose={()=>{setIsVisibleDemo1(false)}}
+      onChange={change6}
+      onPathChange={onPathChange}
+    />
+    </>
+  );
+};
+export default App;
+```
+:::
+
 ## API
 
 ### Props
@@ -442,6 +555,8 @@ export default App;
 | options       | 級聯數據                                         | Array    | -      |
 | poppable      | 是否彈窗狀態展示                                  | Boolean  | true   |
 | visible       | 級聯顯示隱藏狀態                                  | Boolean  | false  |
+| activeColor`1.3.13` | 選中啟動態顏色                           | String  | -  |
+| tabsColor`1.3.13` | tabs底部選中啟動態顏色                                  | String  | -  |
 | lazy          | 是否開啟動態加載                                  | Boolean  | false  |
 | lazyLoad      | 動態加載回調，開啟動態加載時生效                   | Function | -      |
 | valueKey      | 自定義`options`結構中`value`的字段               | String   | -      |

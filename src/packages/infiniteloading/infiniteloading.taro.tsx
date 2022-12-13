@@ -5,9 +5,9 @@ import Taro from '@tarojs/taro'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface InfiniteloadingProps extends IComponent {
+export interface InfiniteloadingProps extends BasicComponent {
   hasMore: boolean
   upperThreshold: number
   containerId: string
@@ -194,7 +194,7 @@ export const Infiniteloading: FunctionComponent<
       className={classes}
       scrollY
       id="scroller"
-      // style={{ height: '100%' }}
+      style={{ height: '100%' }}
       onScroll={scrollAction}
       onScrollToLower={lower}
       onTouchStart={touchStart}

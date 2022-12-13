@@ -67,6 +67,18 @@ fs.outputFile(
   }
 )
 
+let taroScssfileStr = `
+${importScssStr}
+export default { "NutUI":"NutUI-Taro" };`
+fs.outputFile(
+  path.resolve(__dirname, '../../src/packages/nutui.react.taro.scss.ts'),
+  taroScssfileStr,
+  'utf8',
+  (error) => {
+    if (error) throw error
+  }
+)
+
 fs.outputFile(
   path.resolve(__dirname, '../../src/packages/nutui.react.scss.ts'),
   importScssStr,

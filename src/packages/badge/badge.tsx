@@ -2,9 +2,9 @@ import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
 
 import Icon from '@/packages/icon'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface BadgeProps extends IComponent {
+export interface BadgeProps extends BasicComponent {
   value: any
   dot: boolean
   max: number
@@ -31,6 +31,8 @@ const defaultProps = {
 } as BadgeProps
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   const {
+    className,
+    style,
     children,
     dot,
     top,
@@ -62,7 +64,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     return style
   }
   return (
-    <div className="nut-badge">
+    <div className={`nut-badge ${className}`} style={style}>
       {icons !== '' && (
         <div className="slot-icons">
           <Icon

@@ -12,9 +12,9 @@ import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 import { getRect } from '../../utils/useClientRect'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface NoticeBarProps extends IComponent {
+export interface NoticeBarProps extends BasicComponent {
   // 滚动方向  across 横向 vertical 纵向
   direction: string
   className?: string
@@ -199,19 +199,24 @@ export const NoticeBar: FunctionComponent<
    */
   const startRollEasy = () => {
     showhorseLamp()
-    const timerCurr = setInterval(
-      showhorseLamp,
-      ~~(height / speed / 4) * 1000 + Number(standTime)
-    )
+    const time =
+      height / speed / 4 < 1
+        ? Number((height / speed / 4).toFixed(1)) * 1000
+        : ~~(height / speed / 4) * 1000
+    const timerCurr = setInterval(showhorseLamp, time + Number(standTime))
     SetTimer(timerCurr)
   }
   const showhorseLamp = () => {
     SetAnimate(true)
+    const time =
+      height / speed / 4 < 1
+        ? Number((height / speed / 4).toFixed(1)) * 1000
+        : ~~(height / speed / 4) * 1000
     setTimeout(() => {
       scrollList.current.push(scrollList.current[0])
       scrollList.current.shift()
       SetAnimate(false)
-    }, ~~(height / speed / 4) * 1000)
+    }, time)
   }
 
   const startRoll = () => {
@@ -240,14 +245,12 @@ export const NoticeBar: FunctionComponent<
   /**
    * 点击滚动单元
    */
-  const go = (item: any) => {
-    click && click(item)
-    onClick && onClick(item)
-  }
 
-  const handleClickIcon = () => {
-    close && close(scrollList[0])
-    onClose && onClose(scrollList[0])
+  const handleClickIcon = (event: MouseEvent) => {
+    event.stopPropagation()
+    SetShowNoticeBar(!closeMode)
+    close && close(event)
+    onClose && onClose(event)
   }
 
   const iconShow = () => {
@@ -283,11 +286,16 @@ export const NoticeBar: FunctionComponent<
     height: direction === 'vertical' ? `${height}px` : '',
   }
 
-  const duringTime = ~~(height / speed / 4)
+  const duringTime =
+    height / speed / 4 < 1
+      ? Number((height / speed / 4).toFixed(1))
+      : ~~(height / speed / 4)
+  const noDuring =
+    height / speed < 1 ? (height / speed).toFixed(1) : ~~(height / speed)
   const horseLampStyle = {
     transform: complexAm ? `translateY(${distance}px)` : '',
     transition: animate
-      ? `all ${duringTime === 0 ? ~~(height / speed) : duringTime}s`
+      ? `all ${duringTime === 0 ? noDuring : duringTime}s`
       : '',
     marginTop: animate ? `-${height}px` : '',
   }
@@ -345,8 +353,12 @@ export const NoticeBar: FunctionComponent<
           ) : null}
         </div>
       ) : null}
-      {scrollList.current.length > 0 && direction === 'vertical' ? (
-        <div className="nut-noticebar-vertical" style={barStyle}>
+      {showNoticeBar && direction === 'vertical' ? (
+        <div
+          className="nut-noticebar-vertical"
+          style={barStyle}
+          onClick={handleClick}
+        >
           {children ? (
             <div className="horseLamp_list" style={horseLampStyle}>
               {scrollList.current.map((item: string, index: number) => {
@@ -362,9 +374,6 @@ export const NoticeBar: FunctionComponent<
                     className="horseLamp_list_item"
                     style={{ height }}
                     key={index}
-                    onClick={() => {
-                      go(item)
-                    }}
                   >
                     {item}
                   </li>
@@ -374,8 +383,8 @@ export const NoticeBar: FunctionComponent<
           )}
           <div
             className="go"
-            onClick={() => {
-              handleClickIcon()
+            onClick={(e) => {
+              handleClickIcon(e)
             }}
           >
             {rightIcon ||
@@ -383,7 +392,7 @@ export const NoticeBar: FunctionComponent<
                 <Icon
                   classPrefix={iconClassPrefix}
                   fontClassName={iconFontClassName}
-                  name="cross"
+                  name={rightIcon || 'close'}
                   color={color}
                   size="11px"
                 />

@@ -6,7 +6,8 @@ Used to configure NutUI-React components globally, providing internationalizatio
 
 ### Install
 
-``` javascript
+```ts
+// react
 import { ConfigProvider } from '@nutui/nutui-react';
 ```
 

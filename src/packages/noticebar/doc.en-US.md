@@ -7,7 +7,10 @@ Used to display a group of message notifications in a continuons loop.
 ### Install
 
 ```javascript
+// react
 import { NoticeBar } from '@nutui/nutui-react';
+// taro
+import { NoticeBar } from '@nutui/nutui-react-taro';
 ```
 
 ## Demo
@@ -134,8 +137,8 @@ const App = () => {
             list={horseLamp1}
             speed={10}
             standTime={1000}
-            onClick={(item: any) => {
-              go(item)
+            onClick={(e) => {
+              go(e.target.innerHtml)
             }}
             closeMode
           />
@@ -188,7 +191,10 @@ const App = () => {
 
     return (
       <>
-        <NoticeBar direction="vertical" height={50} speed={10} standTime={1000}>
+        <NoticeBar direction="vertical" height={50} speed={10} standTime={1000}
+        closeMode
+        onClose={() => {console.log('close')}}
+        onClick={(e) => {console.log(e)}}>
         {horseLamp3.map((item, index) => {
             return (
             <div

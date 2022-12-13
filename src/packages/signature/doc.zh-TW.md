@@ -7,7 +7,10 @@
 ### 安裝
 
 ```javascript
+// react
 import { Signature } from '@nutui/nutui-react'
+// taro
+import { Signature } from '@nutui/nutui-react-taro'
 ```
 
 ## 代碼演示

@@ -116,7 +116,6 @@
       padding: 0;
       display: block;
       flex: 1;
-
       .horseLamp_list_item {
         display: flex;
         align-items: center;
@@ -127,6 +126,9 @@
     .go {
       align-self: center;
       display: flex;
+      justify-content: center;
+      width: $noticebar-right-icon-width;
+      margin: $noticebar-righticon-margin;
     }
   }
 }

@@ -23,6 +23,8 @@ import Tree from './tree'
 export interface CascaderProps {
   className: string
   style: CSSProperties
+  activeColor: string
+  tabsColor: string
   poppable: boolean
   visible: boolean // popup 显示状态
   options: CascaderOption[]
@@ -45,6 +47,8 @@ export interface CascaderProps {
 const defaultProps = {
   className: '',
   style: {},
+  activeColor: '#fa2c19',
+  tabsColor: '',
   poppable: true,
   visible: false,
   options: [],
@@ -71,6 +75,7 @@ const InternalCascader: ForwardRefRenderFunction<
   const {
     className,
     style,
+    tabsColor,
     poppable,
     visible,
     options,
@@ -380,7 +385,10 @@ const InternalCascader: ForwardRefRenderFunction<
                     '请选择'}
                   {!(!state.initLoading && state.panes.length) && 'Loading...'}
                 </span>
-                <span className="nut-tabs__titles-item__line" />
+                <span
+                  className="nut-tabs__titles-item__line"
+                  style={{ background: tabsColor }}
+                />
               </div>
             ))
           }}
