@@ -1,4 +1,3 @@
-
 import { BaseLang } from './base'
 
 const zhUG: BaseLang = {
