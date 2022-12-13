@@ -7,8 +7,10 @@ The user can enter content in the text box.
 ### Install
 
 ```javascript
+// react
 import { Input } from '@nutui/nutui-react';
-
+// taro
+import { Input } from '@nutui/nutui-react-taro';
 ```
 
 ### Basic Usage

@@ -7,7 +7,10 @@
 ### 安裝
 
 ```javascript
+// react
 import { Grid ,GridItem } from '@nutui/nutui-react'
+// taro
+import { Grid ,GridItem } from '@nutui/nutui-react-taro'
 ```
 
 ## 代碼演示
@@ -234,6 +237,12 @@ export default App
 | reverse       | 內容翻轉                                  | boolean                | `false`     |
 | direction     | 格子內容排列的方向，可選值為 `horizontal`    | string                 | `vertical`  |
 
+## Grid Event
+
+| 字段       | 說明         | 回調參數                                           |
+|----------|--------------|----------------------------------------------------|
+| onClick | 宮格子項點擊事件 | 點擊當前項數據, 索引 |
+
 ### GridItem Props
 
 | 參數                  | 說明                                                                                     | 類型               | 默認值      |
@@ -242,3 +251,9 @@ export default App
 | icon                 | [圖標名稱](#/icon) 或圖片鏈接                                                              | string  \| ReactNode   | -          |
 | iconSize            | 圖標大小，如 `20px` `2em` `2rem`                                                          | number \| string   | `28px`     |
 | iconColor           | 圖標顏色                                                                                  | string            | -           |
+
+### GridItem Event
+
+| 參數                  | 說明                                                                                     | 回調參數    |
+|----------------------|-----------------------------------------------------------------------------------------|--------------------|
+| onClick `1.3.14`                 | 點擊格子時觸發                                                                         | event: Event      |

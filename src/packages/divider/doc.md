@@ -6,8 +6,11 @@
 
 ### 安装
 
-```js
+```ts
+// react
 import { Divider } from '@nutui/nutui-react';
+// taro
+import { Divider } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示

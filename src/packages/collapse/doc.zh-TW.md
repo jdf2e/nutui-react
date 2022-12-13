@@ -6,7 +6,12 @@
 
 ### 安裝
 
-`import { Collapse,CollapseItem } from 'nutui-react'`
+```ts
+// react
+import { Collapse,CollapseItem } from 'nutui-react'
+// taro
+import { Collapse,CollapseItem } from 'nutui-react-taro'
+```
 
 
 ## 代碼演示

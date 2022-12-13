@@ -77,11 +77,6 @@ export const CollapseItem: FunctionComponent<
   })
   const colBem = bem('collapse-item')
 
-  useEffect(() => {
-    setCurrHeight('auto')
-    setUpdate(!update)
-  }, [children])
-
   const measuredRef = useCallback(
     (node: HTMLDivElement) => {
       if (node !== null) {
@@ -104,6 +99,15 @@ export const CollapseItem: FunctionComponent<
     }, 10)
   }, [isOpen, domHeight, rotate])
 
+  useEffect(() => {
+    if (!isOpen) {
+      setCurrHeight('0px')
+    } else {
+      setCurrHeight('auto')
+    }
+
+    setUpdate(!update)
+  }, [children, isOpen])
   return (
     <div className={colBem()} {...rest}>
       <div

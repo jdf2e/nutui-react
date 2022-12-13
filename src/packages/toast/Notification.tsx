@@ -1,9 +1,9 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
+// import * as ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
-import { render } from '@/utils/render'
+import { render, unmount } from '@/utils/render'
 
 export interface NotificationProps {
   id?: string
@@ -158,7 +158,7 @@ Notification.newInstance = (properties, callback) => {
     callback({
       component: instance,
       destroy() {
-        ReactDOM.unmountComponentAtNode(element)
+        unmount(element)
         element && element.parentNode && element.parentNode.removeChild(element)
       },
     })
