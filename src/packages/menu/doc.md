@@ -7,7 +7,10 @@
 ### 安装
 
 ``` javascript
+// react
 import { Menu, MenuItem } from '@nutui/nutui-react';
+// taro
+import { Menu, MenuItem } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示

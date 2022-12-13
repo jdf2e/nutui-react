@@ -7,7 +7,10 @@
 ### 安装
 
 ```javascript
+// react
 import { AnimatingNumbers } from '@nutui/nutui-react'
+// taro
+import { AnimatingNumbers } from '@nutui/nutui-react-taro'
 ```
 
 ## 代码演示

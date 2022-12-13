@@ -7,7 +7,10 @@
 ### 安装
 
 ```javascript
+// react
 import { Price } from '@nutui/nutui-react'
+// taro
+import { Price } from '@nutui/nutui-react-taro'
 ```
 
 ## 代码演示
