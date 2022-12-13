@@ -345,7 +345,6 @@ export const Input: FunctionComponent<
     <div
       className={`${classes}  ${className || ''}`}
       style={style}
-      {...rest}
       onClick={(e) => {
         onClick && onClick(e)
         click && click(e)
@@ -412,6 +411,7 @@ export const Input: FunctionComponent<
             >
               {type === 'textarea' ? (
                 <textarea
+                  {...rest}
                   name={name}
                   className="input-text"
                   ref={inputRef}
@@ -437,6 +437,7 @@ export const Input: FunctionComponent<
                 />
               ) : (
                 <input
+                  {...rest}
                   name={name}
                   className="input-text"
                   ref={inputRef}
