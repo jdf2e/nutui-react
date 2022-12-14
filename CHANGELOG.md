@@ -1,3 +1,12 @@
+# v1.3.15
+`2022-12-14`
+
+* :sparkles: feat: 新增 animate 动画/动效组件 (#541) @junjun666
+* :sparkles: feat: 新增 ellipsis 组件 (#515) @vickyYe
+* :sparkles: feat: 新增维吾尔语言包 (#526) @MirGhojam
+* :bug: fix: 修复 publish 脚本执行时机错误的问题 (#540) @oasis-cloud
+* 📖 docs: 文档更新 tabbar 的 to 增加属性的说明 (#539)  @oasis-cloud
+
 # v1.3.14
 `2022-12-09`
 
