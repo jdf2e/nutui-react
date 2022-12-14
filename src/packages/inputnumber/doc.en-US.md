@@ -24,18 +24,11 @@ import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 1,
   })
   return (
     <>
-      <InputNumber modelValue={inputState.val1} />
+      <InputNumber modelValue={inputState.val} />
     </>
   )
 }
@@ -54,18 +47,11 @@ import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 0,
   })
   return (
     <>
-      <InputNumber modelValue={inputState.val2} step="5" />
+      <InputNumber modelValue={inputState.val} step="5" />
     </>
   )
 }
@@ -84,14 +70,7 @@ import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 10,
   })
   const overlimit = (e: MouseEvent) => {
     console.log(e)
@@ -99,7 +78,7 @@ const App = () => {
   }
   return (
     <>
-      <InputNumber modelValue={inputState.val3} min="10" max="20" onOverlimit={overlimit} />
+      <InputNumber modelValue={inputState.val} min="10" max="20" onOverlimit={overlimit} />
     </>
   )
 }
@@ -118,18 +97,11 @@ import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 0,
   })
   return (
     <>
-      <InputNumber modelValue={inputState.val4} disabled />
+      <InputNumber modelValue={inputState.val} disabled />
     </>
   )
 }
@@ -148,18 +120,11 @@ import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 1,
   })
   return (
     <>
-      <InputNumber modelValue={inputState.val5} readonly />
+      <InputNumber modelValue={inputState.val} readonly />
     </>
   )
 }
@@ -178,18 +143,11 @@ import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 5.5,
   })
   return (
     <>
-      <InputNumber modelValue={inputState.val6} step="0.1" decimalPlaces="1" readonly />
+      <InputNumber modelValue={inputState.val} step="0.1" decimalPlaces="1" readonly />
     </>
   )
 }
@@ -207,14 +165,7 @@ import { InputNumber, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 1,
   })
   const onChange = (value: string | number) => {
     Toast.loading('Asynchronous demo changes after 2 seconds')
@@ -226,7 +177,7 @@ const App = () => {
   }
   return (
     <>
-      <InputNumber modelValue={inputState.val7} onChangeFuc={onChange} isAsync />
+      <InputNumber modelValue={inputState.val} onChangeFuc={onChange} isAsync />
     </>
   )
 }
@@ -243,18 +194,11 @@ import { InputNumber, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 1,
   })
   return (
     <>
-      <InputNumber modelValue={inputState.val8} buttonSize="30" inputWidth="50" />
+      <InputNumber modelValue={inputState.val} buttonSize="30" inputWidth="50" />
     </>
   )
 }
