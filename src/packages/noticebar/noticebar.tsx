@@ -116,9 +116,8 @@ export const NoticeBar: FunctionComponent<
       } else {
         scrollList.current = [].concat(list)
       }
-      setTimeout(() => {
-        complexAm ? startRoll() : startRollEasy()
-      }, Number(standTime))
+
+      complexAm ? startRoll() : startRollEasy()
     } else {
       initScrollWrap(text)
     }
