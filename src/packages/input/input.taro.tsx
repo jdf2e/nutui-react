@@ -411,7 +411,6 @@ export const Input: FunctionComponent<
             >
               {type === 'textarea' ? (
                 <textarea
-                  {...rest}
                   name={name}
                   className="input-text"
                   ref={inputRef}
