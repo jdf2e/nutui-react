@@ -122,6 +122,7 @@
           "sort": 16,
           "show": true,
           "exportEmpty": true,
+          "taro": true,
           "author": "hanyuxinting"
         },
         {

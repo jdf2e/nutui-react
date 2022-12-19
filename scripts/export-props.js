@@ -10,7 +10,6 @@ const types = []
 exportComponentProps(process.env.npm_config_taro)
 
 function exportComponentProps(isTaro) {
-  console.log('taro props:', isTaro)
   const fileExt = isTaro ? '.taro' : ''
   config.nav.map((item) => {
     item.packages.forEach((element) => {
