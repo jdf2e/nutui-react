@@ -42,26 +42,26 @@ const languages: Languages = {
 
 const defaultTheme = {}
 const darkTheme = {
-  'nutui-brand-color': '#fa2c19',
-  'nutui-brand-color-start': '#ff404f',
-  'nutui-brand-color-end': '#fa2c19',
-  'nutui-brand-link-color': '#396acc',
-  'nutui-gray0': '#000000',
-  'nutui-gray1': '#e6e6e6',
-  'nutui-gray2': '#828282',
-  'nutui-gray3': '#404040',
-  'nutui-gray4': '#0a0a0a',
-  'nutui-gray5': '#141414',
-  'nutui-gray6': '#1f1f1f',
-  'nutui-gray7': 'rgba(0, 0, 0, 0.7)',
-  'nutui-gray8': 'rgba(0, 0, 0, 0.4)',
-  'nutui-gray9': 'rgba(0, 0, 0, 0.08)',
-  'nutui-gray10': 'rgba(0, 0, 0, 0.02)',
-  'box-shadow': '0px 1px 7px 0px #141414',
-  'picker-mask-bg-img':
+  nutuiBrandColor: '#fa2c19',
+  nutuiBrandColorStart: '#ff404f',
+  nutuiBrandColorEnd: '#fa2c19',
+  nutuiBrandLinkColor: '#396acc',
+  nutuiGray0: '#000000',
+  nutuiGray1: '#e6e6e6',
+  nutuiGray2: '#828282',
+  nutuiGray3: '#404040',
+  nutuiGray4: '#0a0a0a',
+  nutuiGray5: '#141414',
+  nutuiGray6: '#1f1f1f',
+  nutuiGray7: 'rgba(0, 0, 0, 0.7)',
+  nutuiGray8: 'rgba(0, 0, 0, 0.4)',
+  nutuiGray9: 'rgba(0, 0, 0, 0.08)',
+  nutuiGray10: 'rgba(0, 0, 0, 0.02)',
+  boxShadow: '0px 1px 7px 0px #141414',
+  pickerMaskBgImg:
     'linear-gradient(180deg,rgba(31, 31, 31, 1),rgba(31, 31, 31, 0.4)),linear-gradient(0deg, rgba(31, 31, 31, 1), rgba(31, 31, 31, 0.4))',
-  'row-content-bg-color': '#0a0a0a',
-  'row-content-light-bg-color': 'rgba(0, 0, 0, 0.4)',
+  rowContentBgColor: '#0a0a0a',
+  rowContentLightBgColor: 'rgba(0, 0, 0, 0.4)',
 }
 
 const WithNavRouter = (C: LoadableComponent<any>) => {

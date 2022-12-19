@@ -10,9 +10,9 @@ import {
 import enUS from '@/locales/en-US'
 
 const darkTheme = {
-  'nutui-brand-color': 'green',
-  'nutui-brand-color-start': 'green',
-  'nutui-brand-color-end': 'green',
+  nutuiBrandColor: 'green',
+  nutuiBrandColorStart: 'green',
+  nutuiBrandColorEnd: 'green',
 }
 const ConfigProviderDemo = () => {
   return (
