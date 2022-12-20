@@ -6,7 +6,10 @@
 
 ### 安裝
 ``` ts
+// react
 import { Skeleton } from '@nutui/nutui-react';
+// taro
+import { Skeleton } from '@nutui/nutui-react-taro';
 ```
 
 

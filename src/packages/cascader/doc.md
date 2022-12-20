@@ -6,8 +6,11 @@
 
 ### 安装
 
-```js
+```ts
+// react
 import { Cascader } from '@nutui/nutui-react';
+// taro
+import { Cascader } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示
@@ -526,6 +529,7 @@ const App = () => {
     <Cascader
       visible={isVisibleDemo6}
       color="#008000"
+      tabsColor="#008000"
       value={value6}
       title="地址选择"
       options={optionsDemo6}
@@ -551,7 +555,8 @@ export default App;
 | options       | 级联数据                                         | Array    | -      |
 | poppable      | 是否弹窗状态展示                                  | Boolean  | true   |
 | visible       | 级联显示隐藏状态                                  | Boolean  | false  |
-| activeColor`1.3.13` | 选中激活颜色                                  | Boolean  | false  |
+| activeColor`1.3.13` | 选中激活颜色                                  | String  | -  |
+| tabsColor`1.3.13` | tabs底部选中激活颜色                                    | String  | -  |
 | lazy          | 是否开启动态加载                                  | Boolean  | false  |
 | lazyLoad      | 动态加载回调，开启动态加载时生效                   | Function | -      |
 | valueKey      | 自定义`options`结构中`value`的字段               | String   | -      |

@@ -6,9 +6,11 @@
 
 ### 安裝
 
-``` ts
+```ts
+// react
 import { Checkbox } from '@nutui/nutui-react';
-
+// taro
+import { Checkbox } from '@nutui/nutui-react-taro';
 ```
 
 ## 基本用法

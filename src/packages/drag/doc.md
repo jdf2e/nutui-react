@@ -7,7 +7,10 @@
 ### 安装
 
 ```javascript
+// react
 import { Drag } from '@nutui/nutui-react'
+// taro
+import { Drag } from '@nutui/nutui-react-taro'
 ```
 
 ## 代码演示

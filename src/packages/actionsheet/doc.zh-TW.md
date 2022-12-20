@@ -7,7 +7,10 @@
 ### 安裝
 
 ```ts
+// react
 import { ActionSheet } from '@nutui/nutui-react';
+// taro
+import { ActionSheet } from '@nutui/nutui-react-taro';
 ```
 ## 代碼示例
 

@@ -2,7 +2,8 @@ const path = require('path')
 const packageData = require('../../package.json')
 const fsExtra = require('fs-extra')
 
-if (packageData.name.indexOf('-taro')) {
+if (packageData.name.indexOf('-taro') > -1) {
+  console.log('prepublish done')
   fsExtra.copySync(
     path.join(process.cwd(), 'package.json'),
     path.join(process.cwd(), 'node_modules/.cache/package.json.bk'),

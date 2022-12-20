@@ -2,20 +2,20 @@
 .nut-theme-dark {
   .nut-inputnumber {
     &__icon {
-      color: $dark-color;
+      color: $dark1;
       &--disabled {
-        color: $dark-color-gray;
+        color: $dark2;
       }
     }
     input,
     &__text--readonly {
-      background-color: $dark-background;
-      color: $dark-color;
-      border: 1px solid $dark-color-gray;
+      background-color: $dark4;
+      color: $dark1;
+      border: 1px solid $dark2;
     }
     &--disabled {
       input {
-        color: $dark-color-gray;
+        color: $dark3 !important;
       }
     }
   }
@@ -27,7 +27,7 @@
 
   &--disabled {
     input {
-      color: $inputnumber-icon-void-color;
+      color: $inputnumber-icon-void-color !important;
     }
   }
 
@@ -36,7 +36,7 @@
     font-size: $inputnumber-icon-size;
     cursor: pointer;
     &--disabled {
-      color: $inputnumber-icon-void-color;
+      color: $inputnumber-icon-disabled-color;
       cursor: not-allowed;
     }
   }
@@ -49,6 +49,7 @@
     outline: none;
     border: $inputnumber-input-border;
     margin: $inputnumber-input-margin;
+    color: $inputnumber-input-font-color;
     background-color: $inputnumber-input-background-color;
     border-radius: $inputnumber-input-border-radius;
   }

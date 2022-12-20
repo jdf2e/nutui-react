@@ -3,42 +3,68 @@
 @import '../elevator/elevator.scss';
 .nut-theme-dark {
   .nut-address {
+    .nut-elevator {
+      &__list {
+        &__inner {
+          background-color: $dark6;
+        }
+      }
+    }
     &__header {
-      color: $dark-color;
+      color: $dark1;
 
       &__title {
-        color: $dark-color;
+        color: $dark1;
       }
     }
 
-    .custom-address {
-      .region-tab {
-        color: $dark-color;
+    &__custom {
+    }
+    .nut-address__region-tab {
+      .nut-address__tab-item {
+        color: $dark1;
       }
-      .region-con {
-        .region-group {
-          .region-item {
-            color: $dark-color;
+    }
+    .nut-address__region-con {
+      .nut-address__region-group {
+        .nut-address__region-item {
+          div {
+            color: $dark1;
           }
         }
       }
     }
-
+    .nut-address__exist-item-info {
+      color: $dark1;
+    }
+    &__exist {
+      &-group {
+        .nut-address__exist-ul {
+          li {
+            div {
+              i {
+                color: $dark1;
+              }
+            }
+          }
+        }
+      }
+    }
     .exist-address {
       .exist-address-group {
         .exist-ul {
           .exist-item {
-            color: $dark-color;
+            color: $dark1;
           }
         }
       }
 
       .choose-other {
-        border-top: 1px solid $dark-background;
+        border-top: 1px solid $dark4;
       }
     }
     &-custom-buttom {
-      border-top: 1px solid $dark-background;
+      border-top: 1px solid $dark4;
     }
   }
 }
@@ -54,11 +80,11 @@
     padding: 0 20px;
     text-align: center;
     font-weight: bold;
-    color: #333;
+    color: $title-color;
     line-height: 20px;
     &__title {
       display: block;
-      color: #262626;
+      color: $title-color;
       font-size: 18px;
     }
   }
@@ -72,13 +98,14 @@
       padding: 0 20px;
       display: flex;
       font-size: 13px;
-      color: #1d1e1e;
+      color: $title-color;
 
       .nut-address__tab-item {
         min-width: 2px;
         margin-right: 30px;
         display: block;
         &.active {
+          clear: $title-color;
           font-weight: bold;
         }
 
@@ -118,9 +145,10 @@
           align-items: center;
           margin-bottom: 20px;
           font-size: $font-size-1;
-          color: #333;
+          color: $title-color;
           &.active {
             font-weight: bold;
+            color: $title-color;
           }
 
           .nut-address__region-item--icon {
@@ -156,7 +184,7 @@
           margin-bottom: 20px;
           font-size: $font-size-1;
           line-height: 14px;
-          color: $black;
+          color: $title-color;
           &.active {
             font-weight: bold;
           }
