@@ -46,7 +46,6 @@ const subPackages = [
       'pages/cascader/index',
       'pages/searchbar/index',
       'pages/numberkeyboard/index',
-      'pages/form/index',
     ],
   },
   {
