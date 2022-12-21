@@ -83,6 +83,10 @@ $divider-color: $gray9 !default;
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
   sans-serif !default;
 
+// --- z-index ----
+$mask-z-index: 1000;
+$mask-content-z-index: 1200;
+
 // ---- Animation ----
 $animation-duration: 0.25s !default;
 $animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
@@ -533,9 +537,9 @@ $dialog-header-height: 20px !default;
 $dialog-content-margin: 20px 0 !default;
 $dialog-content-max-height: 268px !default;
 $dialog-content-line-height: 16px !default;
-$dialog-mask-z-index: 1050 !default;
+$dialog-mask-z-index: $mask-z-index !default;
 $dialog-mask-background-color: $mask-color !default;
-$dialog-outer-z-index: 2000 !default;
+$dialog-outer-z-index: $mask-content-z-index !default;
 $dialog-outer-bordder-radius: 20px !default;
 $dialog-vertical-footer-ok-margin-top: 10px !default;
 $dialog-footer-button-min-width: 100px !default;
@@ -794,7 +798,7 @@ $menu-item-option-padding-bottom: 12px !default;
 $menu-item-option-i-margin-right: 6px !default;
 $menu-bar-box-shadow: 0 2px 12px rgba(89, 89, 89, 0.12) !default;
 $menu-scroll-fixed-top: 0 !default;
-$menu-scroll-fixed-z-index: 1000 !default;
+$menu-scroll-fixed-z-index: $mask-z-index !default;
 $menu-active-item-font-weight: 500 !default;
 $menu-item-content-bg-color: $gray6 !default;
 
@@ -1061,7 +1065,7 @@ $comment-shop-color: $primary-color !default;
 $ellipsis-expand-collapse-color: #3460fa !default;
 
 // WaterMark（✅ todo：react版本该组件暂无，将变量先迁过来）
-$watermark-z-index: 2000 !default;
+$watermark-z-index: $mask-content-z-index !default;
 
 // invoice（✅ todo：react版本该组件暂无，将变量先迁过来）
 $invoice-padding: 10px 10px 20px !default;
