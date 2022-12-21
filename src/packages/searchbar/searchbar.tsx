@@ -270,7 +270,7 @@ export const SearchBar: FunctionComponent<
   const renderRightLabel = () => {
     if (actionText) {
       return (
-        <div className={searchbarBem('action-text')} onClick={cancel}>
+        <div className={searchbarBem('action-text')} onClick={search}>
           {actionText}
         </div>
       )
@@ -286,6 +286,10 @@ export const SearchBar: FunctionComponent<
       }
       onSearch && onSearch(value as string)
     }
+  }
+
+  const search = () => {
+    onSearch && onSearch(value as string)
   }
 
   const cancel = () => {
