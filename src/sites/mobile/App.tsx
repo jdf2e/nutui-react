@@ -114,7 +114,7 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
           <div className="translate">
             <Icon
               className={'dark-model'}
-              name="https://storage.360buyimg.com/imgtools/271d32e824-73a10700-6fda-11ed-8c77-dd3873dfe291.png"
+              name="https://storage.360buyimg.com/imgtools/71a2689855-ba1f4000-80cb-11ed-aa68-651117499129.png"
               onClick={() => handleSwitchDarkModel()}
             />
             <Icon
