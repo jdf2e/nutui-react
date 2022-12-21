@@ -7,7 +7,10 @@ It is used to apply different styles to the parts before and after the decimal p
 ### Install
 
 ```javascript
+// react
 import { Price } from '@nutui/nutui-react'
+// taro
+import { Price } from '@nutui/nutui-react-taro'
 ```
 
 ## Demo

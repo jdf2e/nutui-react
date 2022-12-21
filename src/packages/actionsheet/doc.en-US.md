@@ -7,7 +7,10 @@ Action menu panel that pops up from the bottom.
 ### Install
 
 ```ts
+// react
 import { ActionSheet } from '@nutui/nutui-react';
+// taro
+import { ActionSheet } from '@nutui/nutui-react-taro';
 ```
 ## Demo
 

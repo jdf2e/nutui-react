@@ -11,7 +11,7 @@ import Video from '@/packages/video'
 import Swiper from '@/packages/swiper'
 import SwiperItem from '@/packages/swiperitem'
 
-interface Store {
+interface IStore {
   scale: number
   moveable: boolean
   oriDistance: number
@@ -70,6 +70,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
 
   const nutImagePreview = useRef(null)
 
+  const [innerNo, setInnerNo] = useState(initNo)
   const [showPop, setShowPop] = useState(false)
   const [active, setActive] = useState(1)
   const [maxNo, setMaxNo] = useState(1)
@@ -96,7 +97,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       scaleNow()
     }
 
-    const store1 = store as Store
+    const store1 = store as IStore
     store1.moveable = true
 
     if (events2) {
@@ -124,7 +125,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     if (!store.moveable) {
       return
     }
-    const store1 = store as Store
+    const store1 = store as IStore
 
     // 双指移动
     if (events2) {
@@ -157,7 +158,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
 
   const onTouchEnd = () => {
     setLastTouchEndTime(new Date().getTime())
-    const store1 = store as Store
+    const store1 = store as IStore
     store1.moveable = false
     if ((store1.scale < 1.1 && store1.scale > 1) || store1.scale < 1) {
       store1.scale = 1
@@ -172,15 +173,15 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   }
 
   useEffect(() => {
-    if (show !== undefined) {
-      setShowPop(show)
-      init()
-    }
-  }, [show])
+    setShowPop(show as boolean)
+    setInnerNo(initNo)
+    setActive(initNo as number)
+    init()
+  }, [show, initNo])
 
   useEffect(() => {
-    if (initNo !== undefined) {
-      setActive(initNo)
+    if (innerNo !== undefined) {
+      setActive(innerNo)
     }
 
     if (show !== undefined) {
@@ -253,7 +254,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           style={{ display: showPop ? 'block' : 'none' }}
           direction="horizontal"
           onChange={slideChangeEnd}
-          initPage={initNo && (initNo > maxNo ? maxNo - 1 : initNo - 1)}
+          initPage={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
           paginationColor={paginationColor}
           paginationVisible={paginationVisible}
         >

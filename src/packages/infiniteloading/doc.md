@@ -7,7 +7,10 @@
 ### 安装
 
 ```ts
+// react
 import { InfiniteLoading } from '@nutui/nutui-react';
+// taro
+import { InfiniteLoading } from '@nutui/nutui-react-taro';
 ```
 ### 基础用法
 

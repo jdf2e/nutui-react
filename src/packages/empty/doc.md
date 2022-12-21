@@ -7,7 +7,10 @@
 ### 安装
 
 ```javascript
+// react
 import { Empty } from '@nutui/nutui-react'
+// taro
+import { Empty } from '@nutui/nutui-react-taro'
 ```
 
 

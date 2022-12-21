@@ -1,3 +1,43 @@
+# v1.3.15
+`2022-12-14`
+
+* :sparkles: feat: 新增 animate 动画/动效组件 (#541) @junjun666
+* :sparkles: feat: 新增 ellipsis 组件 (#515) @vickyYe
+* :sparkles: feat: 新增维吾尔语言包 (#526) @MirGhojam
+* :bug: fix: 修复 publish 脚本执行时机错误的问题 (#540) @oasis-cloud
+* 📖 docs: 文档更新 tabbar 的 to 增加属性的说明 (#539)  @oasis-cloud
+
+# v1.3.14
+`2022-12-09`
+
+* :sparkles: feat: image 适配 taro (#507) @vickyYe
+* :sparkles: feat: Grid 组件添加 onClick 事件，统一管理子项点击事件，无需在GridItem组件中分别添加点击事件 (#492) @cuicuiworld
+* :bug: fix: react18 render 提示错误信息 (#524) @oasis-cloud
+* :bug: fix: noticebar 纵向滚动渲染慢问题修复，设置高度小于默认值时动效失效问题修复 (#528) @vickyYe
+* :bug: fix: icon 组件 mask-close 未展示叉号 (#527) @oasis-cloud
+* :bug: fix: #508 修改折叠面板组件修改后不刷新问题 (#521) @zhenyulei
+* :bug: fix: imagepreview 设置 initNo 后  active 计算错误 (#512) @oasis-cloud
+* :bug: fix: 移除 formitem 对 react-router-dom 的依赖 (#513) @oasis-cloud
+* :bug: fix: trendarrow 组件文档增加taro引入方式说明、css文件引入icon的scss文件、修改icon组件的引入方式 (#502) @irisSong
+* 📖 docs: 修正 virtualList 的文档错误 (#510) @Antee
+* 📖 docs: Readme 中英文修改 (#525) @vickyYe
+* 📖 docs: 文档中增加 nutui-react-taro的 import 方式 (#522) @oasis-cloud
+
+
+# v1.3.13
+`2022-11-30`
+* :sparkles: feat: 新增image组件，适配多语言，增加单元测试 (#498) @vickyYe
+* :sparkles: feat: trendarrow趋势箭头组件开发完成 (#491)  @irisSong
+* :bug: fix: 提交skeleton骨架屏白底修改 (#499) @junjun666
+* 📖 docs: pagination demo 增加白色底 (#496) @oasis-cloud
+* 📖 docs: popover demo 增加白色底 (#497) @oasis-cloud
+* :bug: fix: cell 空链接不需跳转 (#495) @oasis-cloud
+* :sparkles: feat: 新增cascader的tabs底部选中颜色 (#493) @simpleStyle
+* :bug: fix: taro demo 启动报 declare 错误 (#490) @oasis-cloud
+* :sparkles: feat: 增加 triangle 图标 (#489) @oasis-cloud
+* :sparkles: chore: interface 统一 @oasis-cloud
+* :sparkles: feat: cascader组件支持activeColor选中态属性 (#487) @simpleStyle
+
 # v1.3.12
 `2022-11-23`
 
@@ -27,7 +67,7 @@
 * :bug: fix: 修复Row组件的文档示例错误 (#453) @simpleStyle
 * 📖 docs: 修复 datepicker 文档中示例代码错误 (#449) @xxxnine
 * :sparkles: feat: 补全button的关于小程序API的typescript支持 (#447) @simpleStyle
-* :bug: fix: input组件defaultvalue值为空时不可清除问题修复 (#452) vickyYe*
+* :bug: fix: input组件defaultvalue值为空时不可清除问题修复 (#452) @vickyYe
 * :sparkles: feat: menuitem 支持 ref (#450) @oasis-cloud
 * :sparkles: feat: badge组件支持className和style属性 (#444) @cuicuiworld
 * :bug: fix: 引入样式文件运行报错(#439) (#441) @hydeia

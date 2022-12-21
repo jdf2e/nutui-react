@@ -7,7 +7,10 @@
 ### 安裝
 
 ```js
+// react
 import { Progress, Icon } from '@nutui/nutui-react';
+// taro
+import { Progress, Icon } from '@nutui/nutui-react-taro';
 ```
 
 ## 代碼演示

@@ -1,0 +1,28 @@
+.demo-watermark {
+  .wrap {
+    width: 100%;
+    height: 240px;
+    display: block;
+    position: relative;
+    background: #fff;
+    > img {
+      width: 100%;
+    }
+    .mark1 {
+      width: 100%;
+      top: 50px;
+    }
+    .mark1-taro {
+      width: 100%;
+      top: 0px;
+    }
+    .nut-button {
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+  }
+  .wrap2 {
+    position: relative;
+    z-index: 2;
+  }
+}

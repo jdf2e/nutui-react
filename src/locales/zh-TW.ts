@@ -122,5 +122,8 @@ const zhTW: BaseLang = {
     refreshingText: '加載中...',
     completeText: '刷新成功',
   },
+  watermark: {
+    errorCanvasTips: '當前環境不支持Canvas',
+  },
 }
 export default zhTW

@@ -6,8 +6,11 @@ The cascader component is used for the selection of multi-level data. The typica
 
 ### Install
 
-```js
+```ts
+// react
 import { Cascader } from '@nutui/nutui-react';
+// taro
+import { Cascader } from '@nutui/nutui-react-taro';
 ```
 
 ## Demo
@@ -526,6 +529,7 @@ const App = () => {
     <Cascader
       visible={isVisibleDemo6}
       color="#008000"
+      tabsColor="#008000"
       value={value6}
       title="地址选择"
       options={optionsDemo6}
@@ -551,7 +555,8 @@ export default App;
 | options       | Cascade data                                  | Array    | -      |
 | poppable      | Whether to display the pop-up window status   | Boolean  | true   |
 | visible       | Cascading show hidden states                  | Boolean  | false  |
-| activeColor`1.3.13` | Check the active color                  | Boolean  | false  |
+| activeColor`1.3.13` | Check the active color                  | String  | -  |
+| tabsColor`1.3.13` | Check the active color at the bottom of tabs  | String  | -  |
 | lazy          | Whether to enable dynamic loading             | Boolean  | false  |
 | lazyLoad      | Dynamic loading callback, which takes effect when dynamic loading is enabled   | Function | -      |
 | valueKey      | Customize the field of `value` in the `options` structure     | String   | -      |
