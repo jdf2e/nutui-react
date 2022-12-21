@@ -143,7 +143,6 @@ const App = () => {
           isLink
           url="https://jd.com"
         />
-        <Cell title="Router Jump ’/‘ " to="/" />
       </CellGroup>
     </>
   )
@@ -268,22 +267,22 @@ export default App
 
 ### Cell Prop
 
-| Attribute               | Description                                                                                              | Type             | Default          |
-|-------------------------|----------------------------------------------------------------------------------------------------------|------------------|------------------|
-| title            | Title                      |  React.ReactNode           | -      |
-| subTitle         | Subtitle                           |  React.ReactNode           | -      |
-| desc             | Description                                     | String      | -      |
-| descTextAlign    | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String | right  |
-| isLink           | Whether to show the right arrow and turn on click feedback            | Boolean          | false  |
-| to               | C Target route of the link | String  | -      |
-| replace          | If true, the navigation will not leave a history record                             | Boolean          | false  |
-| roundRadius`v1.2.0`    | Corner radius                                      | String            | 6px    |
-| url              | Link                                         | String           | -      |
-| icon             |  Left [icon name](#/icon) or image              | String           | -      |
-| center`v1.2.0`   | Whether to center content                                                                              | Boolean          | false  |
-| size`v1.2.0`     | Size, can be set to `large`                         | String          | -  |
-| iconSlot`v1.2.0` |  Custom Left `icon`                        | React.ReactNode          | -  |
-| linkSlot`v1.2.0` | Custom Right`link`                      | React.ReactNode          | -  |
+| Attribute         | Description                                                                                              | Type             | Default          |
+|-------------------|----------------------------------------------------------------------------------------------------------|------------------|------------------|
+| title             | Title                      |  React.ReactNode           | -      |
+| subTitle          | Subtitle                           |  React.ReactNode           | -      |
+| desc              | Description                                     | String      | -      |
+| descTextAlign     | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String | right  |
+| isLink            | Whether to show the right arrow and turn on click feedback            | Boolean          | false  |
+| to`v1.4.0(Abandon)`       | C Target route of the link | String  | -      |
+| replace           | If true, the navigation will not leave a history record                             | Boolean          | false  |
+| roundRadius`v1.2.0` | Corner radius                                      | String            | 6px    |
+| url               | Link                                         | String           | -      |
+| icon              |  Left [icon name](#/icon) or image              | String           | -      |
+| center`v1.2.0`    | Whether to center content                                                                              | Boolean          | false  |
+| size`v1.2.0`      | Size, can be set to `large`                         | String          | -  |
+| iconSlot`v1.2.0`  |  Custom Left `icon`                        | React.ReactNode          | -  |
+| linkSlot`v1.2.0`  | Custom Right`link`                      | React.ReactNode          | -  |
 
 
 
@@ -291,6 +290,5 @@ export default App
 
 | Event | Description                  | Arguments   |
 |-------|------------------------------|-------------|
-| click`v1.3.8废弃` | Emitted when cell is clicked | event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent> |
 | onClick`v1.3.8` | Emitted when cell is clicked | event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent> |
 
