@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react",
-  "version": "1.4.0-beta.0",
+  "version": "1.4.0",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -64,8 +64,6 @@
     "lint": "eslint ./src/packages/calendar",
     "lint:fix": "eslint --fix ./src/packages/calendar",
     "publish:beta": "npm publish --tag beta",
-    "prepublishOnly": "node scripts/taro/prepublish.js",
-    "postpublish": "node scripts/taro/postpublish.js",
     "prepare": "husky install",
     "test": "jest",
     "test:demo": "jest  --testNamePattern=^should match snapshot$ --runTestsByPath ./src/packages/collapse/__test__/collapse.spec.tsx",
