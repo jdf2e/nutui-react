@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import Taro from '@tarojs/taro'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Icon from '@/packages/icon/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import Taro from '@tarojs/taro'
 
 type TIconDirection = 'in-left' | 'out-left' | 'in-right' | 'out-right'
 
@@ -271,7 +271,7 @@ export const SearchBar: FunctionComponent<
   const renderRightLabel = () => {
     if (actionText) {
       return (
-        <div className={searchbarBem('action-text')} onClick={cancel}>
+        <div className={searchbarBem('action-text')} onClick={search}>
           {actionText}
         </div>
       )
@@ -279,14 +279,17 @@ export const SearchBar: FunctionComponent<
     return null
   }
 
-  const onKeypress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      const event = e.nativeEvent
-      if (typeof event.cancelable !== 'boolean' || event.cancelable) {
-        event.preventDefault()
+  const onKeypress = (e: any) => {
+    if (e.keyCode === 13) {
+      if (typeof e.cancelable !== 'boolean' || e.cancelable) {
+        e.preventDefault()
       }
       onSearch && onSearch(value as string)
     }
+  }
+
+  const search = () => {
+    onSearch && onSearch(value as string)
   }
 
   const cancel = () => {

@@ -21,12 +21,14 @@ function hash(str) {
 const pkg = process.argv[2]
 const locals = ['zh-CN', 'zh-TW', 'en-US']
 
-const demoFile = path.join(process.cwd(), `src/packages/${pkg.toLocaleLowerCase()}/demo.tsx`)
+const demoFile = path.join(
+  process.cwd(),
+  `src/packages/${pkg.toLocaleLowerCase()}/demo.tsx`
+)
 let demoContent = fs.readFileSync(demoFile).toString()
 
-console.log(demoContent.match(/([0-9a-z]*[\u4e00-\u9fa5]+[0-9]*[\u4e00-\u9fa5()（）0-9a-z\/]*)/gi))
-
-const matchingChinese = /([0-9a-z]*[\u4e00-\u9fa5]+[0-9]*[\u4e00-\u9fa5()（）0-9a-z\/]*)/gi
+const matchingChinese =
+  /([0-9a-z]*[\u4e00-\u9fa5]+[0-9]*[\u4e00-\u9fa5()（）0-9a-z\/]*)/gi
 const unrepeatedChinese = unique(demoContent.match(matchingChinese))
 
 const localTable = {}
@@ -37,7 +39,11 @@ unrepeatedChinese.forEach((item) => {
   localTable[k] = item
   interfaceType.push(`"${k}": string`)
   // 要处理重复
-  item = item.replace('(', '\\(').replace(')', '\\)').replace('（', '\\（').replace('）', '\\）')
+  item = item
+    .replace('(', '\\(')
+    .replace(')', '\\)')
+    .replace('（', '\\（')
+    .replace('）', '\\）')
   demoContent = demoContent
     .replace(new RegExp(`=\"${item}\"`, 'g'), `={translated['${k}']}`)
     .replace(new RegExp(`>\\s*${item}\\s*<`, 'g'), `>{translated['${k}']}<`)
@@ -68,7 +74,10 @@ demoContent =
 
 fse
   .outputFile(
-    path.join(process.cwd(), `src/packages/${pkg.toLocaleLowerCase()}/demo.locale.tsx`),
+    path.join(
+      process.cwd(),
+      `src/packages/${pkg.toLocaleLowerCase()}/demo.locale.tsx`
+    ),
     demoContent,
     'utf8'
   )

@@ -17,7 +17,7 @@ const AudioDemo = () => {
     })
   }
   return (
-    <div className="audio-demo">
+    <div className="demo">
       <h2>type=icon</h2>
       <Cell>
         <Audio

@@ -1,3 +1,11 @@
+.nut-theme-dark {
+  .nut-pulltorefresh {
+    &-head-content {
+      color: $dark1;
+    }
+  }
+}
+
 .nut-pulltorefresh {
   &-head {
     overflow: hidden;
@@ -9,7 +17,7 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      color: #000;
+      color: $title-color;
       display: flex;
       justify-content: center;
       align-items: center;

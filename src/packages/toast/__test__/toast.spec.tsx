@@ -32,7 +32,7 @@ test('event click-show-toast test', async () => {
   const { getByTestId } = render(
     <Cell
       data-testid="emit-click"
-      click={() => onClickToast('text', '文案', { id: 'custom1' })}
+      onClick={() => onClickToast('text', '文案', { id: 'custom1' })}
     />
   )
   fireEvent.click(getByTestId('emit-click'))
@@ -44,7 +44,7 @@ test('test toast props', async () => {
   const { getByTestId } = render(
     <Cell
       data-testid="emit-click"
-      click={() =>
+      onClick={() =>
         onClickToast('text', '文案', {
           id: 'custom2',
           duration: 5000,
@@ -76,7 +76,7 @@ test('event show-success-toast', async () => {
   const { getByTestId } = render(
     <Cell
       data-testid="emit-click"
-      click={() => onClickToast('success', 'success')}
+      onClick={() => onClickToast('success', 'success')}
     />
   )
   fireEvent.click(getByTestId('emit-click'))
@@ -87,7 +87,10 @@ test('event show-success-toast', async () => {
 
 test('event show-fail-toast', async () => {
   const { getByTestId } = render(
-    <Cell data-testid="emit-click" click={() => onClickToast('fail', 'fail')} />
+    <Cell
+      data-testid="emit-click"
+      onClick={() => onClickToast('fail', 'fail')}
+    />
   )
   fireEvent.click(getByTestId('emit-click'))
   expect(onClickToast).toBeCalled()
@@ -97,7 +100,10 @@ test('event show-fail-toast', async () => {
 
 test('event show-warn-toast', async () => {
   const { getByTestId } = render(
-    <Cell data-testid="emit-click" click={() => onClickToast('warn', 'warn')} />
+    <Cell
+      data-testid="emit-click"
+      onClick={() => onClickToast('warn', 'warn')}
+    />
   )
   fireEvent.click(getByTestId('emit-click'))
   expect(onClickToast).toBeCalled()
@@ -109,7 +115,7 @@ test('event show-loading-toast', async () => {
   const { getByTestId } = render(
     <Cell
       data-testid="emit-click"
-      click={() => onClickToast('loading', 'loading')}
+      onClick={() => onClickToast('loading', 'loading')}
     />
   )
   fireEvent.click(getByTestId('emit-click'))

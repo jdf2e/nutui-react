@@ -1,43 +1,37 @@
 // 品牌色
-// 纯色
-$brand-color: #fa2c19 !default;
-// 渐变色
-$brand-color-start: #ff404f !default;
-$brand-color-end: #fa2c19 !default;
+$brand-color: var(--nutui-brand-color, #fa2c19) !default;
+// 品牌渐变色
+$brand-color-start: var(--nutui-brand-color-start, #ff404f) !default;
+$brand-color-end: var(--nutui-brand-color-end, #fa2c19) !default;
+$brand-link-color: var(--nutui-brand-link-color, #396acc);
 
-$gray0: #000000 !default;
-// 灰阶
+$gray0: var(--nutui-gray-0, #000000) !default;
 // 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
-$gray1: #1a1a1a !default;
-
+$gray1: var(--nutui-gray-1, #1a1a1a) !default;
 // 次要文字色，用于次级标题、属性标示、非主要信息引导等。
-$gray2: #757575 !default;
-
+$gray2: var(--nutui-gray-2, #757575) !default;
 // 不可操作内容色，用于预置内容、无效内容、特殊不可点击按钮、组件边框线等。
-$gray3: #bfbfbf !default;
-
+$gray3: var(--nutui-gray-3, #bfbfbf) !default;
 // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
-$gray4: #f4f4f4 !default;
-
+$gray4: var(--nutui-gray-4, #f4f4f4) !default;
 // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-$gray5: #f8f8f8 !default;
-
+$gray5: var(--nutui-gray-5, #f8f8f8) !default;
 // 卡片背景色
-$gray6: #ffffff !default;
-
+$gray6: var(--nutui-gray-6, #ffffff) !default;
 // 页面全局蒙层，用于弹出层、弹窗、新功能引导出现的整页遮罩
-$gray7: rgba(0, 0, 0, 0.7) !default;
-
+$gray7: var(--nutui-gray-7, rgba(0, 0, 0, 0.7)) !default;
 // 局部蒙层，用于非整页遮罩
-$gray8: rgba(0, 0, 0, 0.4) !default;
-
+$gray8: var(--nutui-gray-8, rgba(0, 0, 0, 0.4)) !default;
 // 间隔线/容错线，用于结构或信息分割
-$gray9: rgba(0, 0, 0, 0.08) !default;
-
+$gray9: var(--nutui-gray-9, rgba(0, 0, 0, 0.08)) !default;
 // 图片容错蒙层
-$gray10: rgba(0, 0, 0, 0.02) !default;
+$gray10: var(--nutui-gray-10, rgba(0, 0, 0, 0.02)) !default;
 
-// 暗黑映射
+// 暗黑映射,用于 nut-theme-dark 方式
+$dark-brand-color: #fa2c19 !default;
+$dark-brand-color-start: #ff404f !default;
+$dark-brand-color-end: #fa2c19 !default;
+$dark0: #000000 !default;
 $dark1: #e6e6e6 !default;
 $dark2: #828282 !default;
 $dark3: #404040 !default;
@@ -48,44 +42,50 @@ $dark7: rgba(0, 0, 0, 0.7) !default;
 $dark8: rgba(0, 0, 0, 0.4) !default;
 $dark9: rgba(0, 0, 0, 0.08) !default;
 $dark10: rgba(0, 0, 0, 0.02) !default;
-
-// color
-
+// ----------------------------------------------------
 // 主色调
 $primary-color: $brand-color !default;
+$primary-color-start: $brand-color-start !default;
 $primary-color-end: $brand-color-end !default;
-// 辅助色
-$help-color: $gray5 !default;
+$primary-link-color: #396acc !default;
+// ----------------------------------------------------
 // 标题常规文字
 $title-color: $gray1 !default;
 // 副标题
 $title-color2: $gray2 !default;
 // 次内容
 $text-color: $gray2 !default;
+// 辅助色
+$help-color: $gray5 !default;
 // 特殊禁用色
 $disable-color: $gray3 !default;
+$required-color: #fa2c19 !default;
 $white: $gray6 !default;
 $black: $gray0 !default;
-$required-color: #fa2c19 !default;
+// ----------------------------------------------------
+// 蒙层颜色
+// 页面全局蒙层
+$mask-color: $gray7 !default;
+// 局部蒙层，用于非整页遮罩
+$mask-color2: $gray8 !default;
+// 图片容错蒙层
+$mask-color3: $gray10 !default;
 
-$dark-background: $dark1 !default;
-$dark-background2: $dark2 !default;
-$dark-background3: $dark3 !default;
-$dark-background4: $dark4 !default;
-$dark-background5: $dark5 !default;
-$dark-background6: $dark6 !default;
-$dark-background7: $dark7 !default;
-$dark-color: $dark1 !default;
-$dark-color2: $dark2 !default;
-$dark-color3: $dark3 !default;
-$dark-color-gray: $dark2 !default;
-$dark-calendar-choose-color: $dark1 !default;
+// 背景色
+$background-color: $gray4 !default;
+$background-color2: $gray5 !default;
+$background-color3: $gray6 !default;
 
-// padding
-$padding-xs: 12px;
+// 分割信息的颜色
+$divider-color: $gray9 !default;
 
+// ---- Font Family ----
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
   sans-serif !default;
+
+// --- z-index ----
+$mask-z-index: 1000;
+$mask-content-z-index: 1200;
 
 // ---- Animation ----
 $animation-duration: 0.25s !default;
@@ -103,12 +103,16 @@ $font-size-small: $font-size-1 !default;
 $font-size-base: $font-size-2 !default;
 $font-size-large: $font-size-3 !default;
 $line-height-base: 1.5 !default;
+
+// padding
+$padding-xs: 12px;
+
 // button（✅）
 $button-border-radius: 25px !default;
 $button-border-width: 1px !default;
 $button-default-bg-color: $white !default;
 $button-default-border-color: rgba(204, 204, 204, 1) !default;
-$button-default-color: rgba(102, 102, 102, 1) !default;
+$button-default-color: $gray1 !default;
 $button-default-padding: 0 18px !default;
 $button-mini-padding: 0 12px !default;
 $button-small-padding: 0 12px !default;
@@ -169,11 +173,12 @@ $button-small-round-border-radius: $button-border-radius !default;
 
 // cell（✅）
 
-$cell-color: $title-color2 !default;
+$cell-color: $gray1 !default;
 $cell-title-font: $font-size-2 !default;
 $cell-title-desc-font: $font-size-1 !default;
 $cell-desc-font: $font-size-2 !default;
-$cell-desc-color: $disable-color !default;
+$cell-desc-color: $gray2 !default;
+$cell-subtitle-color: $gray2 !default;
 $cell-border-radius: 6px !default;
 $cell-padding: 13px 16px !default;
 $cell-line-height: 20px !default;
@@ -183,7 +188,8 @@ $cell-default-icon-margin: 0 4px 0 0px !default;
 $cell-large-title-font: $font-size-large !default;
 $cell-large-title-desc-font: $font-size-base !default;
 $cell-large-padding: 15px 16px !default;
-$cell-background: $white !default;
+$cell-background: $gray6 !default;
+$cell-box-shaow: 0px 1px 7px 0px rgba(237, 238, 241, 1) !default;
 
 // cell-group（✅）
 
@@ -201,7 +207,7 @@ $cell-group-background-color: $white !default;
 
 $divider-margin: 16px 0 !default;
 $divider-text-font-size: $font-size-2 !default;
-$divider-text-color: #909ca4 !default;
+$divider-text-color: $gray1 !default;
 $divider-line-height: 2px !default;
 $divider-before-margin-right: 16px !default;
 $divider-after-margin-left: 16px !default;
@@ -220,7 +226,7 @@ $icon-line-height: 20px !default;
 
 $uploader-picture-width: 100px !default;
 $uploader-picture-height: 100px !default;
-$uploader-background: #f7f8fa !default;
+$uploader-background: $gray4 !default;
 
 // picker（✅）（todo:react版本picker组件dom元素类名变化较大，picker.scss暂不改动）
 $picker-cancel-color: #808080 !default;
@@ -237,7 +243,11 @@ $picker-item-active-text-color: inherit !default;
 $picker-item-text-font-size: 14px !default;
 $picker-item-active-line-border: 1px solid #d8d8d8 !default;
 $picker-columns-item-color: $title-color !default;
-
+$picker-mask-bg-img: var(
+  --picker-mask-bg-img,
+  linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),
+  linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))
+) !default;
 //input（✅）
 $input-border-bottom: #eaf0fb !default;
 $input-disabled-color: #c8c9cc !default;
@@ -257,10 +267,11 @@ $textarea-disabled-color: $disable-color !default;
 
 $inputnumber-icon-color: $title-color !default;
 $inputnumber-icon-void-color: $disable-color !default;
+$inputnumber-icon-disabled-color: $gray2 !default;
 $inputnumber-icon-size: 20px !default;
 $inputnumber-input-font-size: 12px !default;
-$inputnumber-input-font-color: $title-color !default;
-$inputnumber-input-background-color: $help-color !default;
+$inputnumber-input-font-color: $gray1 !default;
+$inputnumber-input-background-color: $gray4 !default;
 $inputnumber-input-border-radius: 4px !default;
 $inputnumber-input-width: 40px !default;
 $inputnumber-input-margin: 0 6px !default;
@@ -360,7 +371,7 @@ $switch-inside-close-transform: translateX(30%) !default;
 // toast（✅）
 $toast-title-font-size: 16px !default;
 $toast-text-font-size: 14px !default;
-$toast-font-color: $white !default;
+$toast-font-color: #fff !default;
 $toast-inner-padding: 24px 30px !default;
 $toast-inner-bg-color: $gray7 !default;
 $toast-inner-border-radius: 12px !default;
@@ -371,7 +382,7 @@ $backtop-border-color: #e0e0e0 !default;
 
 // calendar（✅）
 $calendar-primary-color: $primary-color !default;
-$calendar-choose-color: rgba($primary-color, 0.09) !default;
+$calendar-choose-color: rgba(#fa2c19, 0.09) !default;
 $calendar-choose-font-color: $primary-color !default;
 $calendar-base-color: #333333 !default;
 $calendar-disable-color: #d1d0d0 !default;
@@ -390,8 +401,9 @@ $calendar-top-slot-height: 24px !default;
 $calendar-month-title-font-size: inherit !default;
 
 //overlay（✅）
-$overlay-bg-color: rgba(0, 0, 0, 0.7) !default;
-
+$overlay-bg-color: $gray7 !default;
+$overlay-content-bg-color: $gray6 !default;
+$overlay-content-color: $gray1 !default;
 //popup（✅）
 $popup-close-icon-margin: 16px !default;
 $popup-border-radius: 20px !default;
@@ -447,8 +459,8 @@ $tabbar-word-margin-top: auto !default;
 $infiniteloading-bottom-color: #c8c8c8 !default;
 
 //range（✅）
-$range-tip-font-color: #333333 !default;
-$range-bg-color: rgba($primary-color, 0.5) !default;
+$range-tip-font-color: $gray1 !default;
+$range-bg-color: rgba(#fa2c19, 0.5) !default;
 $range-bg-color-tick: #fa958c !default;
 $range-bar-bg-color: linear-gradient(
   135deg,
@@ -492,16 +504,16 @@ $steps-base-icon-line-height: 25px !default;
 $steps-base-icon-font-size: 13px !default;
 $steps-base-title-font-size: 14px !default;
 $steps-base-line-color: #909ca4 !default;
-$steps-base-title-color: #909ca4 !default;
+$steps-base-title-color: $title-color !default;
 $steps-base-title-margin-bottom: 10px !default;
 $steps-base-content-font-size: 14px !default;
-$steps-base-content-color: #666 !default;
+$steps-base-content-color: $title-color2 !default;
 
 $steps-wait-icon-bg-color: #959fb1 !default;
 $steps-wait-icon-color: $white !default;
 $steps-wait-head-color: #909ca4 !default;
 $steps-wait-head-border-color: #909ca4 !default;
-$steps-wait-content-color: #909ca4 !default;
+$steps-wait-content-color: $title-color2 !default;
 
 $steps-finish-head-color: $primary-color !default;
 $steps-finish-head-border-color: $primary-color !default;
@@ -522,13 +534,12 @@ $dialog-footer-justify-content: space-around !default;
 $dialog-min-height: 156px !default;
 $dialog-padding: 28px 24px 16px 24px !default;
 $dialog-header-height: 20px !default;
-$dialog-header-color: rgba(38, 38, 38, 1) !default;
 $dialog-content-margin: 20px 0 !default;
 $dialog-content-max-height: 268px !default;
 $dialog-content-line-height: 16px !default;
-$dialog-mask-z-index: 1050 !default;
-$dialog-mask-background-color: rgba($black, 0.7) !default;
-$dialog-outer-z-index: 2000 !default;
+$dialog-mask-z-index: $mask-z-index !default;
+$dialog-mask-background-color: $mask-color !default;
+$dialog-outer-z-index: $mask-content-z-index !default;
 $dialog-outer-bordder-radius: 20px !default;
 $dialog-vertical-footer-ok-margin-top: 10px !default;
 $dialog-footer-button-min-width: 100px !default;
@@ -539,7 +550,7 @@ $dialog-footer-ok-max-width: 128px !default;
 //@import './animation/index';
 
 // checkbox（✅）
-$checkbox-label-color: #1d1e1e !default;
+$checkbox-label-color: $gray1 !default;
 $checkbox-label-disable-color: #999 !default;
 $checkbox-icon-disable-color: #d6d6d6 !default;
 $checkbox-label-margin-left: 15px !default;
@@ -551,16 +562,16 @@ $checkbox-icon-disable-color2: $help-color !default;
 $radio-label-font-color: $gray1 !default;
 $radio-label-font-active-color: $primary-color !default;
 $radio-label-disable-color: $gray3 !default;
-$radio-icon-disable-color: $gray3 !default;
+$radio-icon-disable-color: $gray2 !default;
 $radio-label-button-border-color: $primary-color !default;
-$radio-label-button-background: rgba($primary-color, 0.05) !default;
+$radio-label-button-background: rgba(250, 44, 25, 0.05) !default;
 $radio-label-margin-left: 15px !default;
 $radio-button-border-radius: 15px !default;
 $radio-label-font-size: 14px !default;
 $radio-button-font-size: 12px !default;
 $radio-button-padding: 5px 18px !default;
 $radio-icon-font-size: 18px !default;
-$radio-icon-disable-color2: $help-color !default;
+$radio-icon-disable-color2: $gray3 !default;
 
 // signature（✅）
 $signature-border-color: #dadada;
@@ -570,8 +581,8 @@ $signature-margin-bottom: 1rem;
 $signature-btn-margin-right: 15px;
 
 //fixednav（✅）
-$fixednav-bg-color: $white !default;
-$fixednav-font-color: $black !default;
+$fixednav-bg-color: #fff !default;
+$fixednav-font-color: #000 !default;
 $fixednav-index: 201 !default;
 $fixednav-btn-bg: linear-gradient(
   135deg,
@@ -722,7 +733,8 @@ $pagination-active-background-color: linear-gradient(
   $primary-color 0%,
   $primary-color-end 100%
 ) !default;
-$pagination-disable-color: rgba(116, 116, 116, 0.31) !default;
+$dark-pagination-active-background-color: $dark-brand-color !default;
+$pagination-disable-color: $disable-color !default;
 $pagination-disable-background-color: #f7f8fa !default;
 $pagination-item-border-width: 1px !default;
 $pagination-item-border-radius: 2px !default;
@@ -736,11 +748,11 @@ $tabs-titles-item-font-size: $font-size-2 !default;
 $tabs-titles-item-small-font-size: $font-size-1 !default;
 $tabs-titles-item-color: $title-color !default;
 $tabs-titles-item-active-color: $title-color !default;
-$tabs-titles-background-color: $help-color !default;
+$tabs-titles-background-color: $background-color2 !default;
 $tabs-horizontal-tab-line-color: linear-gradient(
   90deg,
   $primary-color 0%,
-  rgba($primary-color, 0.15) 100%
+  rgba(#fa2c19, 0.15) 100%
 ) !default;
 $tabs-horizontal-titles-height: 46px !default;
 $tabs-horizontal-titles-item-min-width: 50px !default;
@@ -786,8 +798,9 @@ $menu-item-option-padding-bottom: 12px !default;
 $menu-item-option-i-margin-right: 6px !default;
 $menu-bar-box-shadow: 0 2px 12px rgba(89, 89, 89, 0.12) !default;
 $menu-scroll-fixed-top: 0 !default;
-$menu-scroll-fixed-z-index: 1000 !default;
+$menu-scroll-fixed-z-index: $mask-z-index !default;
 $menu-active-item-font-weight: 500 !default;
+$menu-item-content-bg-color: $gray6 !default;
 
 // collapse（✅）
 $collapse-item-padding: 13px 36px 13px 26px !default;
@@ -806,14 +819,15 @@ $collapse-wrapper-content-background-color: $white !default;
 
 // searchbar（✅）
 
-$searchbar-background: $white !default;
+$searchbar-background: $gray6 !default;
 $searchbar-right-out-color: $black !default;
 $searchbar-padding: 9px 16px !default;
 $searchbar-width: 100% !default;
-$searchbar-action-text-color: #323233 !default;
+$searchbar-action-text-color: $gray1 !default;
 $searchbar-input-height: 32px !default;
 $searchbar-input-padding: 0 28px !default;
 $searchbar-input-background: #f7f7f7 !default;
+$searchbar-input-text-color: $gray1 !default;
 $searchbar-input-width: 100% !default;
 $searchbar-input-border-radius: 16px !default;
 $searchbar-input-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04) !default;
@@ -916,14 +930,15 @@ $grid-border-color: #f5f6f7 !default;
 $grid-item-content-padding: 16px 8px !default;
 $grid-item-content-bg-color: $white !default;
 $grid-item-text-margin: 8px !default;
-$grid-item-text-color: $title-color2 !default;
+$grid-item-text-color: $gray1 !default;
+$grid-item-icon-color: $gray1 !default;
 $grid-item-text-font-size: $font-size-1 !default;
 
 // table（✅）
 $table-border-color: #ececec !default;
 $table-cols-padding: 10px !default;
-$table-tr-even-bg-color: #f3f3f3 !default;
-$table-tr-odd-bg-color: $white !default;
+$table-tr-even-bg-color: $gray4 !default;
+$table-tr-odd-bg-color: $gray6 !default;
 
 // navbar（✅）
 $navbar-height: 44px !default;
@@ -931,7 +946,7 @@ $navbar-margin-bottom: 20px !default;
 $navbar-padding: 13px 16px !default;
 $navbar-background: $white !default;
 $navbar-box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1) !default;
-$navbar-color: $title-color2 !default;
+$navbar-color: $gray1 !default;
 $navbar-title-base-font: $font-size-2 !default;
 $navbar-title-font: $font-size-2 !default;
 $navbar-title-font-weight: 0 !default;
@@ -961,14 +976,15 @@ $sidenavbar-item-line-height: 40px !default;
 $sidenavbar-item-font-size: 16px !default;
 
 // elevator（✅）
+$elevator-list-inner-bg-color: $gray6 !default;
 $elevator-list-item-highcolor: $primary-color !default;
 $elevator-list-item-font-size: 12px !default;
-$elevator-list-item-font-color: #333333 !default;
+$elevator-list-item-font-color: $gray1 !default;
 $elevator-list-item-name-padding: 0 20px !default;
 $elevator-list-item-name-height: 30px !default;
 $elevator-list-item-name-line-height: 30px !default;
 $elevator-list-item-code-font-size: 14px !default;
-$elevator-list-item-code-font-color: #1a1a1a !default;
+$elevator-list-item-code-font-color: $gray1 !default;
 $elevator-list-item-code-font-weight: 500 !default;
 $elevator-list-item-code-padding: 0 20px !default;
 $elevator-list-item-code-height: 35px !default;
@@ -1036,7 +1052,7 @@ $category-pane-title-color: rgba(51, 51, 51, 1) !default;
 // circleProgress（✅）
 $circleprogress-primary-color: $primary-color !default;
 $circleprogress-path-color: #e5e9f2 !default;
-$circleprogress-text-color: #000000 !default;
+$circleprogress-text-color: $title-color !default;
 $circleprogress-text-size: $font-size-3 !default;
 
 // Comment（✅ todo：react版本该组件暂无，将变量先迁过来）
@@ -1049,7 +1065,7 @@ $comment-shop-color: $primary-color !default;
 $ellipsis-expand-collapse-color: #3460fa !default;
 
 // WaterMark（✅ todo：react版本该组件暂无，将变量先迁过来）
-$watermark-z-index: 2000 !default;
+$watermark-z-index: $mask-content-z-index !default;
 
 // invoice（✅ todo：react版本该组件暂无，将变量先迁过来）
 $invoice-padding: 10px 10px 20px !default;
@@ -1069,16 +1085,11 @@ $countup-width: 24px !default;
 
 // layout（✅）
 $row-content-color: #fff !default;
-$row-content-background-color: #ff8881 !default;
-$row-content-light-background-color: #ffc7c4 !default;
-$row-content-border-radius: 6px !default;
-$row-content-height: 50px !default;
-$row-content-line-height: 40px !default;
-$col-default-margin-bottom: 15px !default;
-
-$row-content-color: #fff !default;
-$row-content-background-color: #ff8881 !default;
-$row-content-light-background-color: #ffc7c4 !default;
+$row-content-background-color: var(--row-content-bg-color, #ff8881) !default;
+$row-content-light-background-color: var(
+  --row-content-light-bg-color,
+  #ffc7c4
+) !default;
 $row-content-border-radius: 6px !default;
 $row-content-height: 50px !default;
 $row-content-line-height: 40px !default;

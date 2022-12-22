@@ -1,17 +1,16 @@
 @import '../icon/icon.scss';
 .nut-theme-dark {
   .nut-infiniteloading {
-    .nut-infinite-top {
-      .top-text {
-        color: $dark-color;
+    .nut-infinite-container {
+      .infiniteLi {
+        color: $dark1;
       }
     }
-
     .nut-infinite-bottom {
-      color: $dark-color;
-
-      .bottom-text {
-        color: $dark-color;
+      .bottom-box {
+        .bottom-text {
+          color: $dark2;
+        }
       }
     }
   }
@@ -41,6 +40,11 @@
         font-size: 10px;
         color: $text-color;
       }
+    }
+  }
+  .nut-infinite-container {
+    .infiniteLi {
+      color: $title-color;
     }
   }
   .nut-infinite-bottom {

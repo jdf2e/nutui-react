@@ -1,15 +1,18 @@
 .nut-theme-dark {
   .nut-elevator {
-    background-color: $dark-background2;
+    background-color: $dark6;
     &__list {
+      &__inner {
+        background-color: $dark6;
+      }
       &__item {
-        color: $dark-color;
+        color: $dark1;
         &__code {
-          color: $dark-color;
+          color: $dark1;
         }
       }
       &__fixed {
-        background-color: $dark-background2;
+        background-color: $dark6;
       }
     }
   }
@@ -28,6 +31,7 @@
       height: 100%;
       width: 100%;
       display: block;
+      background-color: $elevator-list-inner-bg-color;
       //   overflow: auto;
     }
     &__item {

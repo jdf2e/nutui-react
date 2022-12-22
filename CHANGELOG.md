@@ -1,3 +1,13 @@
+# v1.4.0
+`2022-12-21`
+
+* :sparkles: feat: 新增动态主题定制能力 (#546) @oasis-cloud
+* :sparkles: feat: 新增 input 组件对小程序特性的支持 (#542) @simpleStyle
+* :sparkles: feat: 删除 react-router-dom 依赖，涉及的 to 属性不再支持 (#550)  @oasis-cloud
+* :bug: fix: 修复 searchBar 组件 onSearch 方法。 (#549) @xiaoyatong
+* :bug: fix: 修复 noticbar 垂直滚动延迟问题 (#545) @vickyYe
+
+
 # v1.3.15
 `2022-12-14`
 
