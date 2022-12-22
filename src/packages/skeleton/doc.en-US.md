@@ -8,8 +8,7 @@ Filling gray bitmap in the area to be loaded on the page is essentially the tran
 ``` ts
 // react
 import { Skeleton } from '@nutui/nutui-react';
-// taro
-import { Skeleton } from '@nutui/nutui-react-taro';
+
 ```
 
 

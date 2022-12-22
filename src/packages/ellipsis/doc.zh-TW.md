@@ -9,8 +9,7 @@
 ```js
 // react
 import { Ellipsis } from '@nutui/nutui-react';
-// taro
-import { Ellipsis } from '@nutui/nutui-react-taro';
+
 ```
 
 

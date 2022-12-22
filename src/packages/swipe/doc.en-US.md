@@ -8,8 +8,7 @@ It is often used for gesture operations such as sliding left and right to delete
 ```javascript
 // react
 import { Swipe } from '@nutui/nutui-react';
-// taro
-import { Swipe } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Code demonstration

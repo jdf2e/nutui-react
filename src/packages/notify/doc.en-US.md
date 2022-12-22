@@ -8,8 +8,7 @@ Show message tips at the top of the page
 ```javascript
 // react
 import { Notify } from '@nutui/nutui-react';
-// taro
-import { Notify } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Demo

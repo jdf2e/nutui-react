@@ -9,8 +9,7 @@ isplay space is insufficient, hidden part of the content and "..." Alternative.
 ```js
 // react
 import { Ellipsis } from '@nutui/nutui-react';
-// taro
-import { Ellipsis } from '@nutui/nutui-react-taro';
+
 ```
 
 

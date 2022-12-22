@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
-// taro
-import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代码演示

@@ -9,8 +9,7 @@ Add specific words or patterns on the page to prevent information theft.
 ```ts
 // react
 import { Watermark } from '@nutui/nutui-react';
-// taro
-import { Watermark } from '@nutui/nutui-react-taro';
+
 ```
 
 ### Install

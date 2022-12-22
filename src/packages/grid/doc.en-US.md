@@ -9,8 +9,7 @@ Used to separate into equal-width blocks for page navigation.
 ```javascript
 // react
 import { Grid ,GridItem } from '@nutui/nutui-react'
-// taro
-import { Grid ,GridItem } from '@nutui/nutui-react-taro'
+
 ```
 
 

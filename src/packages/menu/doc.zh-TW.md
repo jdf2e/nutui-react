@@ -9,8 +9,7 @@
 ``` javascript
 // react
 import { Menu, MenuItem } from '@nutui/nutui-react';
-// taro
-import { Menu, MenuItem } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代碼演示

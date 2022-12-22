@@ -10,8 +10,7 @@ Provides navigation capabilities.
 ```ts
 // react
 import { NavBar } from '@nutui/nutui-react';
-// taro
-import { NavBar } from '@nutui/nutui-react-taro';
+
 ```
 
 ### code example

@@ -10,8 +10,7 @@ It is used to quickly locate the list and display the index
 ```javascript
 // react
 import { Elevator } from '@nutui/nutui-react'
-// taro
-import { Elevator } from '@nutui/nutui-react-taro'
+
 ```
 
 ## Demo

@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { TextArea } from '@nutui/nutui-react';
-// taro
-import { TextArea } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代码演示

@@ -9,8 +9,7 @@ A percentage number with an arrow indicating the trend of the indicator
 ```javascript
 // React
 import { TrendArrow } from '@nutui/nutui-react';
-// taro
-import { TrendArrow } from '@nutui/nutui-react-taro'
+
 ```
 
 ## Demo

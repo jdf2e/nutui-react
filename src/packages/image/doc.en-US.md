@@ -9,8 +9,7 @@ Enhanced img tag with multiple image fill modes, support for loading hint, loadi
 ``` javascript
 // react
 import { Image } from '@nutui/nutui-react';
-// taro
-import { Image } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Code
