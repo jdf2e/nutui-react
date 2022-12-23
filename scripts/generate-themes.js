@@ -16,7 +16,7 @@ componentsScss.map((cs) => {
   )
 })
 
-let fileStr = `@import '../variables.scss';\n`
+let fileStr = `@import '../theme-default.scss';\n@import '../variables.scss';\n@import '../../styles/font/iconfont.css';\n`
 
 config.nav.map((item) => {
   item.packages.forEach((element) => {
@@ -26,7 +26,10 @@ config.nav.map((item) => {
 })
 
 tasks.push(
-  fs.copy(path.resolve(__dirname, '../src/styles'), path.resolve(__dirname, '../dist/styles'))
+  fs.copy(
+    path.resolve(__dirname, '../src/styles'),
+    path.resolve(__dirname, '../dist/styles')
+  )
 )
 
 Promise.all(tasks).then((res) => {

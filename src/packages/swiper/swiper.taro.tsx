@@ -9,7 +9,7 @@ export type SwiperRef = {
   next: () => void
   prev: () => void
 }
-interface IStyle {
+interface Style {
   width?: string
   height?: string
   transform?: string
@@ -22,6 +22,7 @@ export interface SwiperProps {
   autoPlay: number | string
   direction: 'horizontal' | 'vertical'
   paginationColor: string
+  paginationBgColor: string
   paginationVisible: boolean
   loop: boolean
   touchable: boolean
@@ -42,6 +43,7 @@ const defaultProps = {
   autoPlay: 0,
   direction: 'horizontal',
   paginationColor: '#fff',
+  paginationBgColor: '#ddd',
   paginationVisible: false,
   loop: true,
   touchable: true,
@@ -415,7 +417,7 @@ export const Swiper = React.forwardRef<
 
       query.select(`#${(element as any).id}`) &&
         query.select(`#${(element as any).id}`).boundingClientRect()
-      query.exec(function (res: any) {
+      query.exec((res: any) => {
         resolve(res[0])
       })
     })
@@ -473,7 +475,7 @@ export const Swiper = React.forwardRef<
     })
   })
   const itemStyle = (index: any) => {
-    const style: IStyle = {}
+    const style: Style = {}
     const _direction = propSwiper.direction || direction
     const _size = size
     if (_size) {
@@ -494,7 +496,7 @@ export const Swiper = React.forwardRef<
   }))
   return (
     <DataContext.Provider value={parent}>
-      <view
+      <div
         className={`${classes} ${className}`}
         ref={container}
         {...rest}
@@ -533,10 +535,11 @@ export const Swiper = React.forwardRef<
                       ? {
                           backgroundColor: propSwiper.paginationColor,
                         }
-                      : undefined
+                      : {
+                          backgroundColor: propSwiper.paginationBgColor,
+                        }
                   }
                   className={classNames({
-                    [`${b('pagination-item')}`]: true,
                     active: (active + childCount) % childCount === index,
                   })}
                   key={index}
@@ -547,7 +550,7 @@ export const Swiper = React.forwardRef<
         ) : (
           <div>{pageContent}</div>
         )}
-      </view>
+      </div>
     </DataContext.Provider>
   )
 })

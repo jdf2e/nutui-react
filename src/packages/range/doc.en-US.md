@@ -7,7 +7,10 @@ Slide the input bar to select a value within a given range.
 ### Install
 
 ```javascript
+// react
 import { Range } from '@nutui/nutui-react';
+// taro
+import { Range } from '@nutui/nutui-react-taro';
 ```
 
 ## Demo
@@ -35,6 +38,44 @@ const App = () => {
 
 export default App;
 
+```
+:::
+
+
+### Range Desc
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Range,Cell,Toast } from '@nutui/nutui-react';
+
+const App = () => {
+    const [value, SetValue] = useState(40)
+    const change = (value: number, name?: string) => {
+        Toast.text(`value：${value}`)
+        SetValue(value)
+    }
+    const cellStyle = {
+        padding: '40px 18px',
+    }
+    return (
+    <>
+        <Cell style={cellStyle}>
+           <Range
+            modelValue={value}
+            minDesc="0%"
+            maxDesc="100%"
+            curValueDesc={`${value}%`}
+            onChange={(value) => {
+              change(value)
+            }}
+          />
+        </Cell>
+    </>
+    )
+};
+export default App;
 ```
 :::
 ### Dual thumb
@@ -480,6 +521,9 @@ export default App;
 | range         | Whether to enable dual slider mode | Boolean          | `false`                  |
 | max           | maximum             | Number、String   | `100`                    |
 | min           | minimum             | Number、String   | `0`                      |
+| maxDesc`v1.3.12`     | maximum  description        | Number、String   | -                    |
+| minDesc`v1.3.12`     | minimum description          | Number、String   | -                      |
+| curValueDesc`v1.3.12` | current progress percentage description  | Number、String |-                    |
 | step          | step size               | Number、String   | `1`                      |
 | disabled      | Whether to disable the slider       | Boolean          | `false`                  |
 | vertical      | Whether to display vertically | Boolean | `false` |

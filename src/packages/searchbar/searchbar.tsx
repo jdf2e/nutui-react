@@ -2,11 +2,11 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
 import Icon from '@/packages/icon'
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type TIconDirection = 'in-left' | 'out-left' | 'in-right' | 'out-right'
 
-export interface SearchBarProps extends IComponent {
+export interface SearchBarProps extends BasicComponent {
   /** 文本值	 */
   value?: number | string
   /** 输入框占位提示文字	 */
@@ -270,7 +270,7 @@ export const SearchBar: FunctionComponent<
   const renderRightLabel = () => {
     if (actionText) {
       return (
-        <div className={searchbarBem('action-text')} onClick={cancel}>
+        <div className={searchbarBem('action-text')} onClick={search}>
           {actionText}
         </div>
       )
@@ -286,6 +286,10 @@ export const SearchBar: FunctionComponent<
       }
       onSearch && onSearch(value as string)
     }
+  }
+
+  const search = () => {
+    onSearch && onSearch(value as string)
   }
 
   const cancel = () => {

@@ -10,12 +10,12 @@ import Icon from '@/packages/icon'
 import RadioContext from './context'
 import RadioGroup from '@/packages/radiogroup'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type Shape = 'button' | 'round'
 type Position = 'right' | 'left'
 
-export interface RadioProps extends IComponent {
+export interface RadioProps extends BasicComponent {
   className: string
   style: React.CSSProperties
   disabled: boolean

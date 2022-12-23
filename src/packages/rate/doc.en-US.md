@@ -7,7 +7,10 @@ Use for quick rating actions, or to showcase reviews.
 ### Install
 
 ```ts
+// react
 import { Rate } from '@nutui/nutui-react';
+// taro
+import { Rate } from '@nutui/nutui-react-taro';
 ```
 
 ## Code demonstration

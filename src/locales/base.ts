@@ -125,4 +125,7 @@ export interface BaseLang {
     refreshingText: string
     completeText: string
   }
+  watermark: {
+    errorCanvasTips: string
+  }
 }

@@ -6,9 +6,9 @@ import React, {
 } from 'react'
 import Icon from '@/packages/icon/index.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface TagProps extends IComponent {
+export interface TagProps extends BasicComponent {
   type: TagType
   color: string
   textColor: string
@@ -104,7 +104,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     return style
   }
   return (
-    <div>
+    <>
       {closeable ? (
         isTagShow && (
           <div
@@ -137,7 +137,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
           {children && <span className="text">{children}</span>}
         </div>
       )}
-    </div>
+    </>
   )
 }
 

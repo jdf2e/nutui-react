@@ -8,7 +8,10 @@ Provides navigation capabilities.
 ### Install
 
 ```ts
+// react
 import { NavBar } from '@nutui/nutui-react';
+// taro
+import { NavBar } from '@nutui/nutui-react-taro';
 ```
 
 ### code example

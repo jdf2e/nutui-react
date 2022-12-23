@@ -15,11 +15,11 @@ import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
 import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
 import bem from '@/utils/bem'
-import { ComponentDefaults, IComponent } from '@/utils/typings'
+import { ComponentDefaults, BasicComponent } from '@/utils/typings'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
-export interface PopupProps extends OverlayProps, IComponent {
+export interface PopupProps extends OverlayProps, BasicComponent {
   position: string
   transition: string
   style: React.CSSProperties
@@ -63,7 +63,8 @@ const defaultProps = {
   ...defaultOverlayProps,
 } as PopupProps
 
-let _zIndex = 2000
+// 默认1000，参看variables
+let _zIndex = 1000
 
 export const Popup: FunctionComponent<
   Partial<PopupProps> & React.HTMLAttributes<HTMLDivElement>

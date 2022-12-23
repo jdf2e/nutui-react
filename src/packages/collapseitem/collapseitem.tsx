@@ -8,9 +8,9 @@ import React, {
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface CollapseItemProps extends IComponent {
+export interface CollapseItemProps extends BasicComponent {
   title: string
   name: string
   isOpen: boolean
@@ -80,11 +80,6 @@ export const CollapseItem: FunctionComponent<
   })
   const colBem = bem('collapse-item')
 
-  useEffect(() => {
-    setCurrHeight('auto')
-    setUpdate(!update)
-  }, [children])
-
   const measuredRef = useCallback(
     (node: HTMLDivElement) => {
       if (node !== null) {
@@ -106,6 +101,16 @@ export const CollapseItem: FunctionComponent<
       setIconStyle(newIconStyle)
     }, 10)
   }, [isOpen, domHeight, rotate])
+
+  useEffect(() => {
+    if (!isOpen) {
+      setCurrHeight('0px')
+    } else {
+      setCurrHeight('auto')
+    }
+
+    setUpdate(!update)
+  }, [children, isOpen])
 
   return (
     <div className={colBem()} {...rest}>

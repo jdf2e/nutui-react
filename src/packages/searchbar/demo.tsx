@@ -79,17 +79,19 @@ const SearchBarDemo = () => {
           background="linear-gradient(to right, #9866F0, #EB4D50)"
           inputBackground="#999"
           align="right"
+          onSearch={(value) => Toast.text(value)}
         />
         <h2>{translated.title4}</h2>
         <SearchBar
           label={translated.text}
           actionText={translated.test}
-          onSearch={() => Toast.text('搜索')}
+          onSearch={(value) => Toast.text(value)}
         />
         <h2>{translated.title5}</h2>
         <SearchBar
           leftoutIcon={<Icon name="heart-fill1" size="14" />}
           rightoutIcon={<Icon name="star-fill" size="14" />}
+          rightinIcon={<Icon name="star-fill" size="14" />}
         />
         <h2>{translated.title6}</h2>
         <SearchBar

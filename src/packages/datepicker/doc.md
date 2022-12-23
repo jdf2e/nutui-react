@@ -6,8 +6,11 @@
     
 ### 安装
     
-```javascript
+```ts
+// react
 import { DatePicker } from '@nutui/nutui';
+// taro
+import { DatePicker } from '@nutui/nutui-taro';
 ```
     
 ## 代码演示
@@ -295,7 +298,7 @@ const App = () => {
   };
   return ( 
     <>   
-      <Cell title="时间选择" desc={desc6} onClick={() => setShow6(true)} />
+      <Cell title="时间选择" desc={desc7} onClick={() => setShow6(true)} />
       <DatePicker
           title="时间选择"
           type="datehour"

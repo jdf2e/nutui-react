@@ -7,7 +7,10 @@ For light tips.
 ### Install
 
 ```javascript
+// react
 import { Toast } from '@nutui/nutui-react';
+// taro
+import { Toast } from '@nutui/nutui-react-taro';
 ```
 
 ## Demo

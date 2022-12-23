@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import Taro from '@tarojs/taro'
 
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface TabbarItemProps extends IComponent {
+export interface TabbarItemProps extends BasicComponent {
   dot: boolean
   size: string | number
   className: string
@@ -65,7 +65,6 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
   }
   const b = bem('tabbar-item')
   const bIcon = bem('tabbar-item__icon-box')
-  const history = useHistory()
 
   useEffect(() => {
     if (active && href) {
@@ -73,9 +72,11 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
       return
     }
     if (active && to) {
-      history.push(to)
+      Taro.navigateTo({
+        url: to,
+      })
     }
-  }, [active, history, href, to])
+  }, [active, href, to])
 
   return (
     <div

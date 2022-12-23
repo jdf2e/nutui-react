@@ -2,8 +2,8 @@
 .nut-theme-dark {
   .nut-backtop {
     &.show {
-      background: $dark-background;
-      color: $dark-color;
+      background: $dark6;
+      color: $dark1;
     }
   }
 }
@@ -13,7 +13,8 @@
   &.show {
     width: 40px;
     height: 40px;
-    background: $white;
+    background: $background-color3;
+    color: $title-color;
     border: 1px solid $backtop-border-color;
     border-radius: 50%;
     display: flex;

@@ -9,20 +9,21 @@ import React, {
 import classNames from 'classnames'
 import { AvatarContext } from '@/packages/avatargroup/AvatarContext'
 import bem from '@/utils/bem'
+import { Image } from '@tarojs/components'
 import Icon from '@/packages/icon/index.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface AvatarProps extends IComponent {
+export interface AvatarProps extends BasicComponent {
   size: string
   icon: string
+  iconSize?: string | number
   shape: AvatarShape
   bgColor: string
   color: string
   prefixCls: string
   url: string
   className: string
-  alt: string
   style: React.CSSProperties
   activeAvatar: (e: MouseEvent) => void
   onActiveAvatar: (e: MouseEvent) => void
@@ -35,11 +36,11 @@ const defaultProps = {
   ...ComponentDefaults,
   size: '',
   icon: '',
+  iconSize: '',
   bgColor: '#eee',
   color: '#666',
   prefixCls: 'nut-avatar',
   url: '',
-  alt: '',
 } as AvatarProps
 export const Avatar: FunctionComponent<
   Partial<AvatarProps> & React.HTMLAttributes<HTMLDivElement>
@@ -52,8 +53,8 @@ export const Avatar: FunctionComponent<
     bgColor,
     color,
     url,
-    alt,
     icon,
+    iconSize,
     className,
     style,
     activeAvatar,
@@ -166,13 +167,16 @@ export const Avatar: FunctionComponent<
           {(!parent?.propAvatarGroup?.maxCount ||
             avatarIndex <= parent?.propAvatarGroup?.maxCount) && (
             <>
-              {url && <img src={url} alt={alt} onError={errorEvent} />}
+              {url && (
+                <Image className="avatar-img" src={url} onError={errorEvent} />
+              )}
               {icon && (
                 <Icon
                   classPrefix={iconClassPrefix}
                   fontClassName={iconFontClassName}
                   className="icon"
                   name={iconStyles}
+                  size={iconSize}
                 />
               )}
               {children && <span className="text">{children}</span>}

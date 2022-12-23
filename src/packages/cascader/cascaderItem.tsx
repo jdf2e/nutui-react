@@ -26,6 +26,7 @@ export interface CascaderItemProps {
     children?: OptiosInfo[]
   }
   checked: boolean
+  activeColor: string
   chooseItem: (data: any) => void
 }
 
@@ -38,6 +39,7 @@ const defaultProps = {
     loading: false,
     children: [],
   },
+  activeColor: '#fa2c19',
   checked: false,
   chooseItem: () => {},
 } as CascaderItemProps
@@ -46,7 +48,7 @@ const InternalCascaderItem: ForwardRefRenderFunction<
   unknown,
   PropsWithChildren<Partial<CascaderItemProps>>
 > = (props) => {
-  const { data, checked, chooseItem } = {
+  const { data, checked, chooseItem, activeColor } = {
     ...defaultProps,
     ...props,
   }
@@ -75,6 +77,7 @@ const InternalCascaderItem: ForwardRefRenderFunction<
 
   return (
     <div
+      style={{ color: checked ? activeColor : '' }}
       className={classes}
       onClick={() => {
         chooseItem(data)

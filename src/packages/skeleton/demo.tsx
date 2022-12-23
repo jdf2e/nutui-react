@@ -3,6 +3,7 @@ import { useTranslate } from '../../sites/assets/locale'
 import { Skeleton } from './skeleton'
 import Switch from '@/packages/switch'
 import Avatar from '@/packages/avatar'
+import Cell from '@/packages/cell'
 import './demo.scss'
 
 interface T {
@@ -64,70 +65,82 @@ const SkeletonDemo = () => {
     <>
       <div className="demo">
         <h2>{translated['84aa6bce']}</h2>
-        <Skeleton width="250px" height="15px" animated />
-        <Skeleton width="250px" height="15px" />
+        <Cell className="ske-cell-single">
+          <Skeleton width="250px" height="15px" animated />
+          <Skeleton width="250px" height="15px" />
+        </Cell>
 
         <h2>{translated.ea3bc18a}</h2>
-        <Skeleton width="250px" height="15px" row={3} title animated />
+        <Cell className="ske-cell-double">
+          <Skeleton width="250px" height="15px" row={3} title animated />
+        </Cell>
 
         <h2>{translated['02a53df5']}</h2>
-        <Skeleton
-          width="250px"
-          height="15px"
-          row={3}
-          title
-          animated
-          avatar
-          avatarSize="100px"
-        />
-
-        <h2>{translated['0a001122']}</h2>
-        <Skeleton width="250px" height="15px" animated round />
-
-        <h2>{translated.a4ed11b5}</h2>
-        <div className="pic-compose">
+        <Cell>
           <Skeleton
             width="250px"
             height="15px"
-            title
-            animated
             row={3}
-            className="item"
-          />
-          <Skeleton
-            width="250px"
-            height="15px"
-            title
-            animated
-            row={3}
-            className="item"
-          />
-        </div>
-
-        <h2>{translated['07d62d5c']}</h2>
-        <div className="content">
-          <Switch onChange={(value, event) => changeStatus(value, event)} />
-          <Skeleton
-            width="250px"
-            height="15px"
             title
             animated
             avatar
-            row={3}
-            loading={checked}
-          >
-            <div className="container">
-              <Avatar
-                size="50"
-                icon="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
-              />
-              <div className="right-content">
-                <span className="title">NutUI-React</span>
-                <div className="desc">{translated['652c6725']}</div>
+            avatarSize="100px"
+          />
+        </Cell>
+
+        <h2>{translated['0a001122']}</h2>
+        <Cell className="ske-cell-single">
+          <Skeleton width="250px" height="15px" animated round />
+        </Cell>
+
+        <h2>{translated.a4ed11b5}</h2>
+        <Cell className="ske-cell-double">
+          <div className="pic-compose">
+            <Skeleton
+              width="250px"
+              height="15px"
+              title
+              animated
+              row={3}
+              className="item"
+            />
+            <Skeleton
+              width="250px"
+              height="15px"
+              title
+              animated
+              row={3}
+              className="item"
+            />
+          </div>
+        </Cell>
+
+        <h2>{translated['07d62d5c']}</h2>
+        <Cell>
+          <div className="content">
+            <Switch onChange={(value, event) => changeStatus(value, event)} />
+            <Skeleton
+              width="250px"
+              height="15px"
+              title
+              animated
+              avatar
+              row={3}
+              loading={checked}
+            >
+              <div className="container">
+                <Avatar
+                  size="50"
+                  icon="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
+                />
+                <div className="right-content">
+                  <span className="title">NutUI-React</span>
+                  <div className="desc">{translated['652c6725']}</div>
+                </div>
               </div>
-            </div>
-          </Skeleton>
-        </div>
+            </Skeleton>
+          </div>
+        </Cell>
       </div>
     </>
   )

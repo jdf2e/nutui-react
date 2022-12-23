@@ -7,9 +7,9 @@ import React, {
 } from 'react'
 import Icon from '@/packages/icon'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface ButtonProps extends IComponent {
+export interface ButtonProps extends BasicComponent {
   className: string
   color: string
   shape: ButtonShape
@@ -158,7 +158,9 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
         ) : (
           ''
         )}
-        <div className="text">{children}</div>
+        {children && (
+          <div className={icon || loading ? 'text' : ''}>{children}</div>
+        )}
       </div>
     </button>
   )
