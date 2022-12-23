@@ -16,7 +16,7 @@ componentsScss.map((cs) => {
   )
 })
 
-let fileStr = `@import '../theme-default.scss';\n@import '../variables.scss';\n`
+let fileStr = `@import '../theme-default.scss';\n@import '../variables.scss';\n@import '../../styles/font/iconfont.css';\n`
 
 config.nav.map((item) => {
   item.packages.forEach((element) => {
