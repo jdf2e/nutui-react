@@ -163,6 +163,7 @@
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
     "react-markdown": "^7.1.2",
+    "react-router-dom": "^5.3.4",
     "react-syntax-highlighter": "^15.4.5",
     "react-test-renderer": "^18.2.0",
     "reactcss": "^1.2.3",
