@@ -13,14 +13,13 @@ import { Swiper,SwiperItem } from '@nutui/nutui-react';
 import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 ```
 
-## 代码演示
-
 ### 基础用法
 
 `autoPlay` 自动轮播的时长
 `initPage` 初始索引值
 `paginationVisible` 是否显示分页指示器
 `paginationColor` 指示器颜色自定义
+`paginationBgColor` 指示器背景颜色自定义
 `onChange` 当卡片发生变化
 
 :::demo
@@ -39,6 +38,7 @@ const App = () => {
       <Swiper
         height={height}
         paginationColor="#426543"
+        paginationBgColor='#426ddd'
         autoPlay="3000"
         initPage={initPage1}
         paginationVisible
@@ -475,6 +475,7 @@ export default App;
 | direction         | 轮播方向,可选值`horizontal`,`vertical` | String                    | 'horizontal'      |
 | paginationVisible | 分页指示器是否展示                     | Boolean                   | false             |
 | paginationColor   | 分页指示器选中的颜色                   | String                    | '#fff'            |
+| paginationBgColor`v1.4.1` | 分页指示器的背景色 | String | '#ddd'            |
 | loop              | 是否循环轮播                           | Boolean                   | true              |
 | duration          | 动画时长（单位是ms）                   | Number \| String          | 500               |
 | autoPlay          | 自动轮播时长，0表示不会自动轮播        | Number \| String          | 0                 |
@@ -483,7 +484,7 @@ export default App;
 | pageContent       | 自定义指示器                           | String \| React.ReactNode | -                 |
 | isPreventDefault  | 滑动过程中是否禁用默认事件             | Boolean                   | true              |
 | isStopPropagation | 滑动过程中是否禁止冒泡                 | Boolean                   | true              |
-| isCenter`v1.3.0` | 是否居中展示，必须传对应的`width` 和 `height`                  | Boolean                   | false              |
+| isCenter`v1.3.0` | 是否居中展示，必须传对应的`width` 和 `height` | Boolean | false              |
 
 
 
@@ -492,7 +493,6 @@ export default App;
 | 事件名   | 说明             | 回调参数        |
 | -------- | ---------------- | --------------- |
 | onChange | 卡片切换后的回调 | 当前索引值index |
-
 
 
 ### API
