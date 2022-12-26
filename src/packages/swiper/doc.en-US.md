@@ -12,13 +12,13 @@ import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
 ```
 
-
 ### Basic Usage
 
 `autoPlay` Duration of automatic rotation
 `initPage` Initial index value
 `paginationVisible` Show paging indicator
 `paginationColor` Indicator color customization
+`paginationBgColor`  Indicator backgroundColor customization
 `onChange` When the card changes
 
 :::demo
@@ -37,6 +37,7 @@ const App = () => {
       <Swiper
         height={height}
         paginationColor="#426543"
+        paginationBgColor='#426ddd'
         autoPlay="3000"
         initPage={initPage1}
         paginationVisible
@@ -473,6 +474,7 @@ export default App;
 | direction         | Rotation direction, optional value：`horizontal`,`vertical` | String                    | 'horizontal'      |
 | paginationVisible | Whether the pagination indicator is displayed                     | Boolean                   | false             |
 | paginationColor   | Pagination indicator selected color                   | String                    | '#fff'            |
+| paginationBgColor`v1.4.1` | Pagination indicator backgroundcolor | String | '#ddd'            |
 | loop              | Whether to rotate                             | Boolean                   | true              |
 | duration          | Animation duration（Unit ms                 | Number \| String          | 500               |
 | autoPlay          | Automatic rotation duration, 0 means no automatic        | Number \| String          | 0                 |
