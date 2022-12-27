@@ -15,10 +15,6 @@ const config = {
   compiler: 'webpack5',
   alias: {
     react: path.resolve(__dirname, '../../../../node_modules/react'),
-    '@tarojs/taro': path.resolve(
-      __dirname,
-      '../../../../node_modules/@tarojs/taro'
-    ),
     '@/packages': path.resolve(__dirname, '../../../../src/packages'),
     '@/locales': path.resolve(__dirname, '../../../../src/locales'),
     '@/utils': path.resolve(__dirname, '../../../../src/utils'),
