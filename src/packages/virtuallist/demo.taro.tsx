@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Cell, CellGroup, Radio } from '@/packages/nutui.react.taro'
+import { Radio, VirtualList } from '@/packages/nutui.react.taro'
 
-import VirtualList from './index'
+// import VirtualList from './index'
 
 const { RadioGroup } = Radio
 
@@ -40,13 +40,16 @@ const ListDemo = () => {
     const pageSize = 10
     for (let i = (pageNo - 1) * pageSize; i < pageNo * pageSize; i++) {
       const num = i > 9 ? i : `0${i}`
-      datas.push(` list${num}`)
+      datas.push(`list${num}`)
     }
+
     if (pageNo === 1) {
+      console.log('datalist', datas)
       setsourceData(() => {
         return datas
       })
     } else {
+      console.log('data2', pageNo)
       setsourceData((sourceData: any) => {
         return [...sourceData, ...datas]
       })
@@ -136,7 +139,7 @@ const ListDemo = () => {
   return (
     <>
       <div className="demo">
-        <CellGroup>
+        {/* <CellGroup>
           <Cell>
             <RadioGroup
               value={radioVal}
@@ -149,9 +152,17 @@ const ListDemo = () => {
               <Radio value="4">{translated.text4}</Radio>
             </RadioGroup>
           </Cell>
-        </CellGroup>
-        <div key={radioVal} className="nut-virtualList-demo-box hideScrollbar">
-          {showNode()}
+        </CellGroup> */}
+        <div className="nut-virtualList-demo-box hideScrollbar">
+          {/* {showNode()} */}
+          111
+          <VirtualList
+            itemSize={66}
+            className="heigh1"
+            sourceData={sourceData}
+            ItemRender={ItemRenderMemo}
+            onScroll={onScroll}
+          />
         </div>
       </div>
     </>

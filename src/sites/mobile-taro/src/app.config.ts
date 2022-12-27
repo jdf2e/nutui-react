@@ -79,6 +79,7 @@ const subPackages = [
       'pages/collapse/index',
       'pages/animatingnumbers/index',
       'pages/empty/index',
+      'pages/virtuallist/index',
       'pages/table/index',
       'pages/progress/index',
       'pages/audio/index',

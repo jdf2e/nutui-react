@@ -938,7 +938,7 @@
           "desc": "长列表渲染",
           "sort": 20,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "hx"
         },
         {
