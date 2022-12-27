@@ -16,6 +16,7 @@ const config = {
   alias: {
     react: path.resolve(__dirname, '../../../../node_modules/react'),
     '@/packages': path.resolve(__dirname, '../../../../src/packages'),
+    '@/locales': path.resolve(__dirname, '../../../../src/locales'),
     '@/utils': path.resolve(__dirname, '../../../../src/utils'),
     '@': path.resolve(__dirname, '../../../../src'),
   },

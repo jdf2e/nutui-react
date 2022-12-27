@@ -1,11 +1,11 @@
 .nut-theme-dark {
   .nut-image {
     .nut-img-loading {
-      background: $dark-background;
+      background: $mask-color;
     }
 
     .nut-img-error {
-      background: $dark-background;
+      background: $mask-color;
     }
   }
 }

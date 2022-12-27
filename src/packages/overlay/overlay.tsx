@@ -18,7 +18,7 @@ export interface OverlayProps {
   lockScroll: boolean
 }
 export const defaultOverlayProps = {
-  zIndex: 2000,
+  zIndex: 1000,
   duration: 0.3,
   overlayClass: '',
   closeOnClickOverlay: true,

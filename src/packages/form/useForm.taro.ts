@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import Schema from 'async-validator'
+// import Schema from 'async-validator'
 import { Store, Callbacks, FormInstance, FieldEntity } from './types'
 /**
  * 用于存储表单的数据
@@ -41,7 +41,7 @@ class FormStore {
    * 存储组件数据
    * @param newStore { [name]: newValue }
    */
-  setFieldsValue = (newStore: object) => {
+  setFieldsValue = (newStore: any) => {
     this.store = {
       ...this.store,
       ...newStore,
@@ -86,15 +86,15 @@ class FormStore {
           descriptor[name] = rules[0]
         }
       }
-      const validator = new Schema(descriptor)
-      validator.validate({ [name]: this.store[name] }, (errors) => {
-        if (errors) {
-          err.push(...errors)
-          this.errList.push(...errors)
-          // 表单项更新
-        }
-        entity.onStoreChange()
-      })
+      // const validator = new Schema(descriptor)
+      // validator.validate({ [name]: this.store[name] }, (errors) => {
+      //   if (errors) {
+      //     err.push(...errors)
+      //     this.errList.push(...errors)
+      //     // 表单项更新
+      //   }
+      //   entity.onStoreChange()
+      // })
     })
     return err
   }

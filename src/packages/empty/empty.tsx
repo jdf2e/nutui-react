@@ -21,7 +21,7 @@ export interface EmptyProps {
 }
 
 const defaultProps = {
-  description: '无内容',
+  description: '',
   image: 'empty',
   imageSize: '',
   className: '',
@@ -31,7 +31,7 @@ export const Empty: FunctionComponent<
   Partial<EmptyProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { locale } = useConfig()
-  defaultProps.description = locale.noData || defaultProps.description
+  // defaultProps.description = locale.noData || defaultProps.description
   const { image, imageSize, description, children, className, ...rest } = {
     ...defaultProps,
     ...props,
@@ -73,7 +73,7 @@ export const Empty: FunctionComponent<
           {imageNode}
         </div>
         {typeof description === 'string' ? (
-          <div className={b('description')}>{description}</div>
+          <div className={b('description')}>{description || locale.noData}</div>
         ) : (
           { description }
         )}

@@ -44,6 +44,7 @@ const SwiperDemo = () => {
   const swiperRef = React.useRef<any>(null)
   const [height, setHeight] = useState<any>(150)
   const [paginationColor, setPaginationColor] = useState<string>('#426543')
+  const [paginationBgColor, setPaginationBgColor] = useState<string>('#426ddd')
   const [initPage1, setInitPage1] = useState<any>(0)
   const [initPage2, setInitPage2] = useState<any>(0)
   const [initPage3, setInitPage3] = useState<any>(0)
@@ -93,6 +94,7 @@ const SwiperDemo = () => {
         <Swiper
           height={height}
           paginationColor={paginationColor}
+          paginationBgColor={paginationBgColor}
           autoPlay="2000"
           initPage={initPage1}
           onChange={onChange}
