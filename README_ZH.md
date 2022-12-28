@@ -93,6 +93,8 @@
 
 ## 参与共建
 
+如果您对这个项目感兴趣，欢迎参与贡献，也欢迎 "Star" 支持一下 ^_^
+
 #### NutUI 社区共建倡议
 
 [NutUI-React 邀您共建，Contributor 您好](https://github.com/jdf2e/nutui-react/discussions/348)

@@ -113,6 +113,21 @@ textarea {
     flex: 1;
     vertical-align: middle;
   }
+  &-right-mark {
+    .nut-input-value {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nut-input-inner {
+      flex: 1;
+    }
+    .nut-input-button,
+    .nut-input-right-icon {
+      width: auto;
+    }
+  }
   &-inner {
     position: relative;
     display: flex;
