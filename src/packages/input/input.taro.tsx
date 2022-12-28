@@ -234,6 +234,7 @@ export const Input: FunctionComponent<
       `${required ? `${prefixCls}-required` : ''}`,
       `${error ? `${prefixCls}-error` : ''}`,
       `${border ? `${prefixCls}-border` : ''}`,
+      `${slotButton || rightIcon ? `${prefixCls}-right-mark` : ''}`,
     ]
       .filter(Boolean)
       .join(' ')
@@ -471,25 +472,25 @@ export const Input: FunctionComponent<
                   }}
                 />
               ) : null}
-              {rightIcon && rightIcon.length > 0 ? (
-                <div
-                  className="nut-input-right-icon"
-                  onClick={(e) => {
-                    handleClickRightIcon(e)
-                  }}
-                >
-                  <Icon
-                    classPrefix={iconClassPrefix}
-                    fontClassName={iconFontClassName}
-                    name={rightIcon}
-                    size={rightIconSize}
-                  />
-                </div>
-              ) : null}
-              {slotButton ? (
-                <div className="nut-input-button">{slotButton}</div>
-              ) : null}
             </div>
+            {rightIcon && rightIcon.length > 0 ? (
+              <div
+                className="nut-input-right-icon"
+                onClick={(e) => {
+                  handleClickRightIcon(e)
+                }}
+              >
+                <Icon
+                  classPrefix={iconClassPrefix}
+                  fontClassName={iconFontClassName}
+                  name={rightIcon}
+                  size={rightIconSize}
+                />
+              </div>
+            ) : null}
+            {slotButton ? (
+              <div className="nut-input-button">{slotButton}</div>
+            ) : null}
             {showWordLimit && maxlength ? (
               <div className="nut-input-word-limit">
                 <span className="nut-input-word-num">
