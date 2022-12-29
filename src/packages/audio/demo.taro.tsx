@@ -21,7 +21,7 @@ const AudioDemo = () => {
   const [duration, setDuration] = useState('0')
   const [voiceIcon, setVoiceIcon] = useState('play-circle-fill')
   return (
-    <div className="audio-demo">
+    <div className="demo audio-demo">
       <div>
         <h2>1.Taro原生的Audio组件,1.6.0版本开始，该组件不再维护</h2>
         <h2>

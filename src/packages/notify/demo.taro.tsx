@@ -86,7 +86,7 @@ const NotifyDemo = () => {
         <h2>{translated.basic}</h2>
         <Cell
           title={translated.basic}
-          click={(event: React.MouseEvent) => {
+          onClick={(event: React.MouseEvent) => {
             changeNotify(translated.basic)
             SetShowNotify(true)
           }}
@@ -95,28 +95,28 @@ const NotifyDemo = () => {
         <CellGroup>
           <Cell
             title={translated.primaryNotify}
-            click={(event: React.MouseEvent) => {
+            onClick={(event: React.MouseEvent) => {
               changeNotify(translated.primaryNotify, 'primary')
               SetShowNotify(true)
             }}
           />
           <Cell
             title={translated.successNotify}
-            click={(event: React.MouseEvent) => {
+            onClick={(event: React.MouseEvent) => {
               changeNotify(translated.successNotify, 'success')
               SetShowNotify(true)
             }}
           />
           <Cell
             title={translated.errorNotify}
-            click={(event: React.MouseEvent) => {
+            onClick={(event: React.MouseEvent) => {
               changeNotify(translated.errorNotify, 'danger')
               SetShowNotify(true)
             }}
           />
           <Cell
             title={translated.warningNotify}
-            click={(event: React.MouseEvent) => {
+            onClick={(event: React.MouseEvent) => {
               changeNotify(translated.warningNotify, 'warning')
               SetShowNotify(true)
             }}
@@ -135,21 +135,21 @@ const NotifyDemo = () => {
         />
         <Cell
           title={translated.cusBgNotify}
-          click={(event: React.MouseEvent) => {
+          onClick={(event: React.MouseEvent) => {
             SetCustomShow(true)
           }}
         />
         <h2>{translated.t3}</h2>
         <Cell
           title={translated.t3}
-          click={(event: React.MouseEvent) => {
+          onClick={(event: React.MouseEvent) => {
             changeNotify(translated.t3, 'base', 5000)
             SetShowNotify(true)
           }}
         />
         <Cell
           title={translated.cusPostion}
-          click={(event: React.MouseEvent) => {
+          onClick={(event: React.MouseEvent) => {
             changeNotify(translated.cusPostion, 'base', 2000, '', 'bottom')
             SetShowNotify(true)
           }}
