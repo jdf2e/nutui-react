@@ -10,7 +10,7 @@
 ### 安装
 
 ```javascript
-import { Toast } from '@nutui/nutui-react';
+import { Toast } from '@nutui/nutui-react-taro';
 ```
 ### 基本用法
 

@@ -7,7 +7,10 @@ Calendar, tileable/pop-up display
 ### Install
 
 ```javascript
+// react
 import { Calendar } from '@nutui/nutui-react';
+// taro
+import { Calendar } from '@nutui/nutui-react-taro';
 ```
 
 ## code demo

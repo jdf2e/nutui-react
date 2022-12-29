@@ -122,17 +122,19 @@
           "sort": 16,
           "show": true,
           "exportEmpty": true,
+          "taro": true,
           "author": "hanyuxinting"
         },
         {
           "version": "1.0.0",
           "name": "Image",
           "type": "component",
+          "tarodoc": true,
           "cName": "图片",
           "desc": "增强版的 img 标签，提供多种图片填充模式，支持图片加载中提示、加载失败提示。",
           "sort": 8,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "vickyYE"
         }
       ]
@@ -1016,6 +1018,28 @@
           "show": true,
           "taro": true,
           "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Animate",
+          "type": "component",
+          "cName": "动画/动效",
+          "desc": "给子元素添加动画效果",
+          "sort": 27,
+          "show": true,
+          "taro": true,
+          "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Ellipsis",
+          "type": "component",
+          "cName": "文本省略",
+          "desc": "展示空间不足时，隐去部分内容并用“…”替代。",
+          "sort": 27,
+          "show": true,
+          "taro": true,
+          "author": "vickyYE"
         }
       ]
     },

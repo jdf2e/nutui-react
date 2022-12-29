@@ -1,6 +1,22 @@
 @import '../button/button';
+.nut-theme-dark {
+  .nut-signature {
+    &__inner {
+      canvas {
+        background-color: $dark3;
+      }
+    }
+  }
+  .demo-tips {
+    background-color: $dark3;
+    color: $dark1;
+  }
+}
 .nut-signature {
   &__inner {
+    canvas {
+      background-color: #fff;
+    }
     height: $signature-height;
     margin-bottom: $signature-margin-bottom;
     border: $signature-border-width solid $signature-border-color;

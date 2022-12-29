@@ -7,6 +7,8 @@ const subPackages = [
       'pages/icon/index',
       'pages/overlay/index',
       'pages/popup/index',
+      'pages/configprovider/index',
+      'pages/image/index',
     ],
   },
   {
@@ -83,6 +85,8 @@ const subPackages = [
       'pages/imagepreview/index',
       'pages/trendarrow/index',
       'pages/watermark/index',
+      'pages/animate/index',
+      'pages/ellipsis/index',
     ],
   },
   {

@@ -61,7 +61,7 @@ export const ActionSheet: FunctionComponent<
     return props.chooseTagValue &&
       props.chooseTagValue === item[props.optionTag || 'name']
       ? props.color
-      : '#1a1a1a'
+      : '$dark1'
   }
 
   const cancelActionSheet = () => {

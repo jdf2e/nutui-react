@@ -101,42 +101,42 @@ const ToastDemo = () => {
         <Cell
           title={translated.toastText}
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => textToast(`${translated.toastText}`)}
         />
         <Cell
           title={translated.toastTitle}
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => titleToast(`${translated.toastTitle}`)}
         />
         <Cell
           title={translated.toastSuccess}
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => successToast(`${translated.toastSuccess}`)}
         />
         <Cell
           title={translated.toastError}
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => errorToast(`${translated.toastError}`)}
         />
         <Cell
           title={translated.toastWarning}
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => warningToast(`${translated.toastWarning}`)}
         />
         <Cell
           title={translated.toastLoading}
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => loadingToast(`${translated.toastLoading}`)}
         />
@@ -144,14 +144,14 @@ const ToastDemo = () => {
         <Cell
           title={translated.toastDurationText}
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => duringToast(`${translated.toastDurationText}`)}
         />
         <Cell
           title={translated.toastAll}
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
             Toast.text(translated.toastAll, { duration: 0 })
@@ -171,7 +171,7 @@ const ToastDemo = () => {
         <Cell
           title={translated.toastBottom}
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => toastBottom(`${translated.toastBottom}`)}
         />
@@ -179,7 +179,7 @@ const ToastDemo = () => {
         <Cell
           title={translated.toastTransparent}
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => iconToast(`${translated.toastTransparent}`)}
         />

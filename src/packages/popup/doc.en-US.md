@@ -7,7 +7,10 @@ Popup layer container, used to display pop-up windows, information prompts, etc.
 ### Install
 
 ``` javascript
+// react
 import { Popup } from '@nutui/nutui-react';
+// taro
+import { Popup } from '@nutui/nutui-react-taro';
 ```
 
 ## code demo

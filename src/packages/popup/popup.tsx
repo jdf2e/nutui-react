@@ -63,7 +63,8 @@ const defaultProps = {
   ...defaultOverlayProps,
 } as PopupProps
 
-let _zIndex = 2000
+// 默认1000，参看variables
+let _zIndex = 1000
 
 export const Popup: FunctionComponent<
   Partial<PopupProps> & React.HTMLAttributes<HTMLDivElement>
