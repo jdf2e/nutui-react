@@ -7,7 +7,10 @@
 ### 安装
 
 ``` ts
+// react
 import { Barrage } from '@nutui/nutui-react';
+// taro
+import { Barrage } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示

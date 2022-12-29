@@ -35,11 +35,14 @@
       top: 0;
       right: 0;
       height: 100%;
-      width: 50px;
+      width: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+    }
+    .dark-model {
+      margin-right: 10px;
     }
   }
 

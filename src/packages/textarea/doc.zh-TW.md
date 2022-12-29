@@ -7,9 +7,10 @@
 ### 安装
 
 ```javascript
-
+// react
 import { TextArea } from '@nutui/nutui-react';
-
+// taro
+import { TextArea } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示
@@ -62,7 +63,7 @@ const App = () => {
     const [value2, updateValue2] = useState('')
     return (
         <>
-            <TextArea defaultValue={value2} limitShow maxlength="20" />
+            <TextArea defaultValue={value2} limitshow maxlength="20" />
         </>
     )
 };
@@ -102,7 +103,7 @@ const App = () => {
     return (
         <>
             <TextArea readonly defaultValue="textarea只读状态" />
-            <TextArea disabled defaultValue="textarea禁用状态" limitShow maxlength="20" />
+            <TextArea disabled defaultValue="textarea禁用状态" limitshow maxlength="20" />
         </>
     )
 };
@@ -138,7 +139,7 @@ export default App
 | placeholder  | 设置占位提示文字                                  | String         | `'请输入内容'` |
 | maxlength    | 限制最长输入字符                                  | String、Number | -              |
 | rows         | textarea 的高度                                   | String、Number | `2`            |
-| limitShow    | textarea 是否展示输入字符。须配合`max-length`使用 | Boolean        | `false`        |
+| limitshow    | textarea 是否展示输入字符。须配合`max-length`使用 | Boolean        | `false`        |
 | autosize     | 高度是否可拉伸                                    | Boolean        | `false`        |
 | textAlign    | 文本位置,可选值`left`,`center`,`right`            | String         | `left`         |
 | readonly     | 只读属性                                          | Boolean        | `false`        |

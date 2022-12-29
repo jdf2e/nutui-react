@@ -1,5 +1,61 @@
 @import '../icon/icon.scss';
 
+.nut-theme-dark {
+  .nut-button {
+    &--default {
+      color: $dark1;
+      background: $dark6;
+    }
+
+    &--primary {
+      color: $dark6;
+    }
+
+    &--info {
+      color: $dark6;
+    }
+
+    &--success {
+      color: $dark6;
+    }
+
+    &--danger {
+      color: $dark6;
+    }
+
+    &--warning {
+      color: $dark6;
+    }
+    &--plain {
+      background: $dark6;
+
+      &.nut-button--primary {
+        color: $button-primary-border-color;
+        border-color: $button-primary-border-color;
+      }
+
+      &.nut-button--info {
+        color: $button-info-border-color;
+        border-color: $button-info-border-color;
+      }
+
+      &.nut-button--success {
+        color: $button-success-border-color;
+        border-color: $button-success-border-color;
+      }
+
+      &.nut-button--danger {
+        color: $button-danger-border-color;
+        border-color: $button-danger-border-color;
+      }
+
+      &.nut-button--warning {
+        color: $button-warning-border-color;
+        border-color: $button-warning-border-color;
+      }
+    }
+  }
+}
 .nut-button {
   position: relative;
   display: inline-block;

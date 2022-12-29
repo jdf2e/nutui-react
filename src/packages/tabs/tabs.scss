@@ -2,12 +2,21 @@
 @import '../tabpane/tabpane.scss';
 .nut-theme-dark {
   .nut-tabs {
+    .nut-tabpane {
+      color: $white;
+    }
     &__titles {
-      background: $dark-background3;
+      background: $dark5;
       &-item {
-        color: $dark-color-gray;
+        color: $dark1;
         &.active {
-          color: $dark-color;
+          color: $dark1;
+          .nut-tabs__titles-item__text {
+            color: $dark1;
+          }
+        }
+        &__text {
+          color: $dark1;
         }
       }
     }
@@ -15,7 +24,7 @@
       .nut-tabs__titles {
         &-item {
           &.active {
-            background-color: $dark-background2;
+            background-color: $dark5;
           }
         }
       }
@@ -64,7 +73,7 @@
         }
 
         &.active {
-          background-color: #fff;
+          background-color: $background-color3;
 
           .nut-tabs__titles-item__line {
             left: 10px;
@@ -164,6 +173,7 @@
       color: $tabs-titles-item-color;
 
       &__text {
+        color: $gray1;
         &.ellipsis {
           @include oneline-ellipsis();
         }
@@ -200,7 +210,9 @@
 
       &.active {
         font-weight: 600;
-
+        .nut-tabs__titles-item__text {
+          color: $gray1;
+        }
         .nut-tabs__titles-item__line {
           content: ' ';
           width: $tabs-horizontal-titles-item-active-line-width;

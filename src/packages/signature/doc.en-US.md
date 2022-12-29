@@ -7,7 +7,10 @@ Signature component based on canvas.
 ### Install
 
 ```javascript
+// react
 import { Signature } from '@nutui/nutui-react'
+// taro
+import { Signature } from '@nutui/nutui-react-taro'
 ```
 
 ## Demo

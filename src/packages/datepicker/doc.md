@@ -6,8 +6,11 @@
     
 ### 安装
     
-```javascript
+```ts
+// react
 import { DatePicker } from '@nutui/nutui';
+// taro
+import { DatePicker } from '@nutui/nutui-taro';
 ```
     
 ## 代码演示

@@ -6,9 +6,11 @@ Multi-select buttons are used for selection.
 
 ### Install
 
-``` ts
+```ts
+// react
 import { Checkbox } from '@nutui/nutui-react';
-
+// taro
+import { Checkbox } from '@nutui/nutui-react-taro';
 ```
 
 ## Basic Usage

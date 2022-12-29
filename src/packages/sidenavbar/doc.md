@@ -7,6 +7,7 @@
 
 ### 安装
 ```tsx
+// react
 import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 ```
 ## 代码演示

@@ -3,8 +3,9 @@
 
 .nut-theme-dark {
   .nut-menu-item__content {
+    background: $dark6;
     .nut-menu-item__option {
-      color: $dark-color;
+      color: $dark1;
     }
   }
 }
@@ -15,7 +16,7 @@
   overflow-y: auto;
   display: flex;
   flex-wrap: wrap;
-  background: #fff;
+  background: $menu-item-content-bg-color;
 
   &_fixed {
     width: 100%;

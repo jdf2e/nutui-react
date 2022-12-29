@@ -1,3 +1,22 @@
+.nut-theme-dark {
+  .nut-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $dark7;
+  }
+  .overlay-fade-enter-active {
+    .wrapper {
+      .content {
+        background-color: $dark2;
+        color: $white;
+      }
+    }
+  }
+}
+
 .nut-overlay {
   position: fixed;
   top: 0;
@@ -11,6 +30,12 @@
 }
 .overlay-fade-enter-active {
   animation: nut-fade-in;
+  .wrapper {
+    .content {
+      background-color: $overlay-content-bg-color;
+      color: $overlay-content-color;
+    }
+  }
 }
 .overlay-fade-leave-active {
   animation: nut-fade-out;
