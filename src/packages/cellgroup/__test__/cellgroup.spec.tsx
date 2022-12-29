@@ -16,7 +16,6 @@ test('prop title desc subtitle', () => {
         isLink
         url="https://jd.com"
       />
-      <Cell title="路由跳转 ’/‘ " to="/" />
     </CellGroup>
   )
   expect(

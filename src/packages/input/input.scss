@@ -1,13 +1,27 @@
 @import '../icon/icon.scss';
 .nut-theme-dark {
   .nut-input {
-    background: $dark-background;
+    background: $dark4;
     &-label {
-      color: $dark-color;
+      color: $dark1;
+      .label-string {
+        color: $dark1;
+      }
     }
     .input-text,
     &__text--readonly {
-      color: $dark-color;
+      color: $dark1;
+    }
+    &-left-icon,
+    &-right-icon {
+      i {
+        color: $dark1;
+      }
+    }
+    &-inner {
+      .nut-input-clear {
+        color: $dark1;
+      }
     }
   }
 }
@@ -33,6 +47,7 @@ textarea {
   }
   input {
     width: 230px;
+    color: $gray1;
     flex: 1;
     padding: 0 10px;
     padding-right: 35px;
@@ -40,7 +55,7 @@ textarea {
     border: 0;
     text-decoration: none;
   }
-  &__label {
+  &-label {
     width: 80px;
     overflow: hidden;
     text-align: left;
@@ -49,6 +64,7 @@ textarea {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      color: $gray1;
     }
   }
   &__clear {
@@ -84,6 +100,7 @@ textarea {
     text-decoration: none;
     background: transparent;
     resize: none;
+    color: $gray1;
   }
 
   &-label {
@@ -95,6 +112,21 @@ textarea {
   &-value {
     flex: 1;
     vertical-align: middle;
+  }
+  &-right-mark {
+    .nut-input-value {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nut-input-inner {
+      flex: 1;
+    }
+    .nut-input-button,
+    .nut-input-right-icon {
+      width: auto;
+    }
   }
   &-inner {
     position: relative;
@@ -130,6 +162,9 @@ textarea {
     display: flex;
     align-items: center;
     font-size: 0;
+    i {
+      color: $gray1;
+    }
   }
   &-clear,
   &-right-icon {

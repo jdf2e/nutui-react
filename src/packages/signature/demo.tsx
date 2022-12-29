@@ -1,4 +1,5 @@
 import React from 'react'
+import './demo.scss'
 import { Signature } from './signature'
 import { useTranslate } from '../../sites/assets/locale'
 

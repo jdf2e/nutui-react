@@ -30,18 +30,11 @@ config.nav.map((item) => {
       const matched = data.match(/@import.*?[;][\n\r]?/gi)
 
       let rewrite = ''
-      console.log(matched)
       if (matched && matched.length) {
         rewrite = matched.map((im) => {
           if (im.indexOf('../../styles/') > -1) {
             if (im.indexOf('.css') > -1) {
               data = data.replace(im, '')
-
-              // return im
-              //   .toLowerCase()
-              //   .replace('@import ', `require(`)
-              //   .replace('../../', '../../../')
-              //   .replace("';", "')")
 
               return im
                 .toLowerCase()
@@ -56,30 +49,17 @@ config.nav.map((item) => {
               im = im.replace("';", ".scss';")
             }
             // 引入的组件转换
-            // @import '../popup/popup.scss';
-            // require('../../Popup/style')
             const matchGroup = im.match(/\.\.\/(?<package>[a-z]+)\//)
             if (matchGroup && matchGroup.groups && matchGroup.groups.package) {
               const find = components.filter(
                 (c) => c.toLowerCase() == matchGroup.groups.package
               )[0]
               if (find) {
-                // return `require('../../${find}/style')`
                 return `import '../../${find}/style'`
               }
             }
 
             // 替换为 js 文件内容
-            // @import './countup.scss';
-            // require('../../../packages/animatingnumbers/countup.scss')
-
-            // return im
-            //   .toLowerCase()
-            //   .replace('@import ', `require(`)
-            //   .replace('../', '../../../packages/')
-            //   .replace("'./", `'../../../packages/${nameLowerCase}/`)
-            //   .replace("';", "')")
-
             return im
               .toLowerCase()
               .replace('@import ', `import`)
@@ -87,13 +67,14 @@ config.nav.map((item) => {
               .replace("'./", `'../../../packages/${nameLowerCase}/`)
           }
         })
-        console.log('rewrite', rewrite)
         rewrite = rewrite.join('\r\n')
         fse.outputFileSync(componentSassFile, data)
       }
+      if (nameLowerCase === 'icon') {
+        rewrite = `import '../../../styles/font/iconfont.css'\n` + rewrite
+      }
       fse.outputFileSync(
         file,
-        // `${rewrite}${'\n'}require('../../../packages/${nameLowerCase}/${nameLowerCase}.scss')`
         `${rewrite}${'\n'}import '../../../packages/${nameLowerCase}/${nameLowerCase}.scss'`
       )
     }

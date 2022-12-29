@@ -1,3 +1,10 @@
+.nut-theme-dark {
+  .nut-indicator {
+    .nut-indicator__number {
+      border: none;
+    }
+  }
+}
 .nut-indicator {
   &__block {
     display: block;

@@ -25,17 +25,14 @@ function download(content: string, filename: string) {
   document.body.removeChild(eleLink)
 }
 
-export const ThemeSetting: React.FC<unknown> = observer((props) => {
+export const ThemeSetting = observer((props) => {
   useThemeEditor()
   const history = useHistory()
   const [componentName, setComponentName] = useState('Base')
   console.log('componentName', componentName)
   history.listen((location) => {
-    // const name = location.pathname.replace('/', '')
     const path = location.pathname.split('/')
-    console.log(location.pathname, path)
     const name = path[path.length - 1]
-    console.log(name, store.formItems)
     setComponentName(name || 'Base')
   })
 
@@ -101,7 +98,7 @@ export const ThemeSetting: React.FC<unknown> = observer((props) => {
                     defaultValue={item.value}
                     clearable={false}
                     labelWidth={0}
-                    change={(val) => handleChange(val, item)}
+                    onBlur={(val) => handleChange(val, item)}
                   ></Input>
                 )}
               </div>

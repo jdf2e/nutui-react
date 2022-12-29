@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { SearchBar, Icon, Toast } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 
@@ -82,6 +83,7 @@ const SearchBarDemo = () => {
           background="linear-gradient(to right, #9866F0, #EB4D50)"
           inputBackground="#999"
           align="right"
+          onSearch={(value) => Taro.showToast({ title: value })}
         />
         <h2>{translated.title4}</h2>
         <SearchBar
@@ -104,7 +106,7 @@ const SearchBarDemo = () => {
       <Toast
         type="text"
         visible={show}
-        msg="搜索"
+        msg="search callback"
         onClose={() => {
           SetShow(false)
         }}

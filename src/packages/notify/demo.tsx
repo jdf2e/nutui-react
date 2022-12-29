@@ -84,7 +84,7 @@ const NotifyDemo = () => {
         <h2>{translated.basic}</h2>
         <Cell
           title={translated.basic}
-          click={(event: React.MouseEvent) => {
+          onClick={(event: React.MouseEvent) => {
             baseNotify(translated.basic)
           }}
         />
@@ -92,25 +92,25 @@ const NotifyDemo = () => {
         <CellGroup>
           <Cell
             title={translated.primaryNotify}
-            click={(event: React.MouseEvent) => {
+            onClick={(event: React.MouseEvent) => {
               primaryNotify(translated.primaryNotify)
             }}
           />
           <Cell
             title={translated.successNotify}
-            click={(event: React.MouseEvent) => {
+            onClick={(event: React.MouseEvent) => {
               successNotify(translated.successNotify)
             }}
           />
           <Cell
             title={translated.errorNotify}
-            click={(event: React.MouseEvent) => {
+            onClick={(event: React.MouseEvent) => {
               errorNotify(translated.errorNotify)
             }}
           />
           <Cell
             title={translated.warningNotify}
-            click={(event: React.MouseEvent) => {
+            onClick={(event: React.MouseEvent) => {
               warningNotify(translated.warningNotify)
             }}
           />
@@ -118,20 +118,20 @@ const NotifyDemo = () => {
         <h2>{translated.t2}</h2>
         <Cell
           title={translated.cusBgNotify}
-          click={(event: React.MouseEvent) => {
+          onClick={(event: React.MouseEvent) => {
             cusBgNotify(translated.cusBgNotify)
           }}
         />
         <h2>{translated.t3}</h2>
         <Cell
           title={translated.t3}
-          click={(event: React.MouseEvent) => {
+          onClick={(event: React.MouseEvent) => {
             timeNotify(translated.t3)
           }}
         />
         <Cell
           title={translated.cusPostion}
-          click={(event: React.MouseEvent) => {
+          onClick={(event: React.MouseEvent) => {
             positionNotify(translated.cusPostion)
           }}
         />

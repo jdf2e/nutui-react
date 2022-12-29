@@ -1,3 +1,35 @@
+# v1.4.1
+`2022-12-28`
+
+* :sparkles: feat: Swiper 组件增加指示器的默认背景色配置 (#552) @xiaoyatong
+* :sparkles: feat: docs 不展示demo问题修复 @oasis-cloud
+* :bug: fix: input taro显示右侧按钮时focus失效问题修复；textare limitshow属性名字更正 (#557) @vickyYe
+* :bug: fix: iconfont 在 dev 模式下加载多次 (#555) @oasis-cloud
+* :bug: fix: Address 组件适配Taro (#554) @xiaoyatong
+* :bug: fix: Searchbar 组件修复图标样式。 (#553) @xiaoyatong
+* :bug: fix: react-router-dom 安装到 devDependencies 中 @oasis-cloud
+* :bug: fix: Range 组件手动设置为0时，页面无法渲染的问题。 (#551) @xiaoyatong
+
+
+# v1.4.0
+`2022-12-21`
+
+* :sparkles: feat: 新增动态主题定制能力 (#546) @oasis-cloud
+* :sparkles: feat: 新增 input 组件对小程序特性的支持 (#542) @simpleStyle
+* :sparkles: feat: 删除 react-router-dom 依赖，涉及的 to 属性不再支持 (#550)  @oasis-cloud
+* :bug: fix: 修复 searchBar 组件 onSearch 方法。 (#549) @xiaoyatong
+* :bug: fix: 修复 noticbar 垂直滚动延迟问题 (#545) @vickyYe
+
+
+# v1.3.15
+`2022-12-14`
+
+* :sparkles: feat: 新增 animate 动画/动效组件 (#541) @junjun666
+* :sparkles: feat: 新增 ellipsis 组件 (#515) @vickyYe
+* :sparkles: feat: 新增维吾尔语言包 (#526) @MirGhojam
+* :bug: fix: 修复 publish 脚本执行时机错误的问题 (#540) @oasis-cloud
+* 📖 docs: 文档更新 tabbar 的 to 增加属性的说明 (#539)  @oasis-cloud
+
 # v1.3.14
 `2022-12-09`
 
