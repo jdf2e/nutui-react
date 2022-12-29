@@ -1,6 +1,7 @@
 import React, {
   useState,
   useRef,
+  useEffect,
   CSSProperties,
   FunctionComponent,
 } from 'react'
@@ -15,6 +16,21 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 const b = bem('audio')
 const warn = console.warn
+
+function formatSeconds(value: string): string {
+  if (!value) {
+    return '00:00:00'
+  }
+  const time = parseInt(value)
+  const hours = Math.floor(time / 3600)
+  const minutes = Math.floor((time - hours * 3600) / 60)
+  const seconds = time - hours * 3600 - minutes * 60
+  let result = ''
+  result += `${`0${hours.toString()}`.slice(-2)}:`
+  result += `${`0${minutes.toString()}`.slice(-2)}:`
+  result += `0${seconds.toString()}`.slice(-2)
+  return result
+}
 
 export interface AudioProps extends BasicComponent {
   className?: string
@@ -86,66 +102,88 @@ export const Audio: FunctionComponent<
 
   const audioRef = useRef(Taro.createInnerAudioContext())
   const audioCtx = audioRef.current
-  audioCtx.src = url
-  audioCtx.autoplay = autoplay || false
-  audioCtx.loop = loop || false
-  audioCtx.onPause(() => {
-    props.onPause && props.onPause(audioCtx)
-  })
-  audioCtx.onEnded(() => {
-    if (props.loop) {
-      warn(locale.audio.tips || 'onPlayEnd事件在loop=false时才会触发')
-    } else {
-      props.onPlayEnd && props.onPlayEnd(audioCtx)
-    }
-  })
 
-  audioCtx.onPlay(() => {
-    const { duration } = audioCtx
-    setTotalSeconds(Math.floor(duration))
-    props.onPlay && props.onPlay(audioCtx)
-  })
-  audioCtx.onCanplay(() => {
-    const intervalID = setInterval(function () {
-      if (audioCtx.duration !== 0) {
-        setTotalSeconds(audioCtx.duration)
-        clearInterval(intervalID)
+  useEffect(() => {
+    // initial
+    statusRef.current = {
+      currentTime: 0,
+      currentDuration: '00:00:00',
+      percent: 0,
+    }
+    setIsCanPlay(false)
+    setTotalSeconds(0)
+    setPercent(0)
+    setCurrentDuration('00:00:00')
+    setPlaying(false)
+
+    audioCtx.src = url
+    audioCtx.autoplay = autoplay || false
+    audioCtx.loop = loop || false
+    audioCtx.onPause(() => {
+      props.onPause && props.onPause(audioCtx)
+    })
+    audioCtx.onEnded(() => {
+      audioCtx.seek(0)
+      setPlaying(false)
+      setPercent(0)
+      setCurrentDuration(formatSeconds('0'))
+      if (props.loop) {
+        warn(locale.audio.tips || 'onPlayEnd事件在loop=false时才会触发')
+      } else {
+        props.onPlayEnd && props.onPlayEnd(audioCtx)
       }
-    }, 500)
-    setIsCanPlay(true)
-    props.onCanPlay && props.onCanPlay(audioCtx)
-  })
-  audioCtx.onTimeUpdate(() => {
-    const time = parseInt(`${audioCtx.currentTime}`)
-    const formated = formatSeconds(`${time}`)
-    statusRef.current.currentDuration = formated
-    setPercent((time / totalSeconds) * 100)
-    setCurrentDuration(formatSeconds(audioCtx.currentTime.toString()))
-  })
+    })
 
-  audioCtx.onError((res) => {
-    console.log('code', res.errCode)
-    console.log('message', res.errMsg)
-  })
+    audioCtx.onPlay(() => {
+      const { duration } = audioCtx
+      setTotalSeconds(Math.floor(duration))
+      props.onPlay && props.onPlay(audioCtx)
+    })
+    audioCtx.onCanplay(() => {
+      // hack: 在 onCanPlay 读取一次 paused 可以获取最新的 audioCtx 状态
+      const isPaused = audioCtx.paused
+      setPlaying(!isPaused)
+      const intervalID = setInterval(function () {
+        if (audioCtx.duration !== 0) {
+          setTotalSeconds(audioCtx.duration)
+          clearInterval(intervalID)
+        }
+      }, 500)
+      setIsCanPlay(true)
+      props.onCanPlay && props.onCanPlay(audioCtx)
+    })
+    audioCtx.onTimeUpdate(() => {
+      const time = parseInt(`${audioCtx.currentTime}`)
+      const formated = formatSeconds(`${time}`)
+      statusRef.current.currentDuration = formated
+      setPercent((time / totalSeconds) * 100)
+      setCurrentDuration(formatSeconds(audioCtx.currentTime.toString()))
+    })
 
-  function formatSeconds(value: string) {
-    if (!value) {
-      return '00:00:00'
+    audioCtx.onStop(() => {
+      setPlaying(false)
+      setCurrentDuration(formatSeconds('0'))
+      setPercent(0)
+      audioCtx.seek(0)
+    })
+
+    audioCtx.onError((res) => {
+      console.log('code', res.errCode)
+      console.log('message', res.errMsg)
+    })
+  }, [audioCtx, autoplay, url, loop])
+
+  useEffect(() => {
+    return () => {
+      audioCtx.stop()
+      audioCtx.destroy()
     }
-    const time = parseInt(value)
-    const hours = Math.floor(time / 3600)
-    const minutes = Math.floor((time - hours * 3600) / 60)
-    const secondss = time - hours * 3600 - minutes * 60
-    let result = ''
-    result += `${`0${hours.toString()}`.slice(-2)}:`
-    result += `${`0${minutes.toString()}`.slice(-2)}:`
-    result += `0${secondss.toString()}`.slice(-2)
-    return result
-  }
+  }, [])
 
   const handleBack = () => {
     const currentTime = Math.floor(audioCtx.currentTime)
     statusRef.current.currentTime = Math.max(currentTime - 1, 0)
+    setPercent((statusRef.current.currentTime / totalSeconds) * 100)
     setCurrentDuration(formatSeconds(statusRef.current.currentTime.toString()))
     audioCtx.seek(statusRef.current.currentTime)
     props.onFastBack && props.onFastBack(audioCtx)
@@ -154,6 +192,7 @@ export const Audio: FunctionComponent<
   const handleForward = () => {
     const currentTime = Math.floor(audioCtx.currentTime)
     statusRef.current.currentTime = Math.min(currentTime + 1, audioCtx.duration)
+    setPercent((statusRef.current.currentTime / totalSeconds) * 100)
     setCurrentDuration(formatSeconds(statusRef.current.currentTime.toString()))
     audioCtx.seek(statusRef.current.currentTime)
     props.onForward && props.onForward(audioCtx)
