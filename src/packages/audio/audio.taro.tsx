@@ -175,7 +175,6 @@ export const Audio: FunctionComponent<
 
   useEffect(() => {
     return () => {
-      audioCtx.stop()
       audioCtx.destroy()
     }
   }, [])
