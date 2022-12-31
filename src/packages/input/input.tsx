@@ -225,6 +225,7 @@ export const Input: FunctionComponent<
     return inputRef.current
   })
 
+  const hasRightMark = !!(slotButton || rightIcon)
   const inputClass = useCallback(() => {
     const prefixCls = 'nut-input'
     return [
@@ -234,11 +235,11 @@ export const Input: FunctionComponent<
       `${required ? `${prefixCls}-required` : ''}`,
       `${error ? `${prefixCls}-error` : ''}`,
       `${border ? `${prefixCls}-border` : ''}`,
-      `${slotButton || rightIcon ? `${prefixCls}-right-mark` : ''}`,
+      `${hasRightMark ? `${prefixCls}-right-mark` : ''}`,
     ]
       .filter(Boolean)
       .join(' ')
-  }, [disabled, required, error, border])
+  }, [disabled, required, error, border, hasRightMark, center])
 
   const updateValue = (
     value: any,
