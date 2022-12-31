@@ -207,7 +207,9 @@ export const Input: FunctionComponent<
     validateMessage: '', // 校验信息
   }
   useLayoutEffect(() => {
-    updateValue(getModelValue(), formatTrigger)
+    if (defaultValue) {
+      updateValue(getModelValue(), formatTrigger)
+    }
   })
   useEffect(() => {
     setClasses(inputClass)
@@ -224,6 +226,10 @@ export const Input: FunctionComponent<
   useImperativeHandle(ref, () => {
     return inputRef.current
   })
+  // 错误状态重置
+  useEffect(() => {
+    setClasses(inputClass)
+  }, [error])
 
   const inputClass = useCallback(() => {
     const prefixCls = 'nut-input'
@@ -242,7 +248,8 @@ export const Input: FunctionComponent<
 
   const updateValue = (
     value: any,
-    trigger: InputFormatTrigger = 'onChange'
+    trigger: InputFormatTrigger = 'onChange',
+    event?: any
   ) => {
     let val = value
 
@@ -271,6 +278,8 @@ export const Input: FunctionComponent<
     }
     // if (val !== defaultValue) {
     SetInputValue(val)
+    onChange && onChange(val, event)
+    change && change(val, event)
     // }
   }
 
@@ -287,9 +296,7 @@ export const Input: FunctionComponent<
     if (maxlength && val.length > Number(maxlength)) {
       val = val.slice(0, Number(maxlength))
     }
-    updateValue(val)
-    onChange && onChange(val, event)
-    change && change(val, event)
+    updateValue(val, 'onChange', event)
   }
 
   const handleBlur = (event: Event) => {
@@ -492,7 +499,6 @@ export const Input: FunctionComponent<
             {slotButton ? (
               <div className="nut-input-button">{slotButton}</div>
             ) : null}
-
             {showWordLimit && maxlength ? (
               <div className="nut-input-word-limit">
                 <span className="nut-input-word-num">
