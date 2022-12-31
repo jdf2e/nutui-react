@@ -64,7 +64,7 @@ const App = () => {
     const [value2, updateValue2] = useState('')
     return (
         <>
-            <TextArea defaultValue={value2} limitShow maxlength="20" />
+            <TextArea defaultValue={value2} limitshow maxlength="20" />
         </>
     )
 };
@@ -104,7 +104,7 @@ const App = () => {
     return (
         <>
             <TextArea readonly defaultValue="textarea readonly" />
-            <TextArea disabled defaultValue="textarea disabled" limitShow maxlength="20" />
+            <TextArea disabled defaultValue="textarea disabled" limitshow maxlength="20" />
         </>
     )
 };
@@ -141,7 +141,7 @@ export default App
 | placeholder  | set placeholder prompt text             | String         | ` 'please enter content' ` |
 | maxlength    | limit the maximum input characters              | String、Number | -              |
 | rows         | height of textarea, with priority higher than autosize attribute `Only H5 is supported`                                  | String、Number | `2`            |
-| limitShow    | whether textarea displays the input characters. Use | Boolean        | `false`        |
+| limitshow    | whether textarea displays the input characters. Use | Boolean        | `false`        |
 | autosize     | whether to adapt the content height. You can also pass in objects, such as {maxheight: 200, minheight: 100}. The unit is PX          | Boolean        | `false`    |
 | textAlign    | text position, optional values ` left ,  center,  right `     | String         | `left`         |
 | readonly     | read only attribute          | Boolean        | `false`        |
