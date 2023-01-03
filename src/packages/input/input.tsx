@@ -210,7 +210,6 @@ export const Input: FunctionComponent<
     updateValue(getModelValue(), formatTrigger)
   })
   useEffect(() => {
-    setClasses(inputClass)
     SetInputValue(defaultValue)
   }, [defaultValue])
 
@@ -240,6 +239,10 @@ export const Input: FunctionComponent<
       .filter(Boolean)
       .join(' ')
   }, [disabled, required, error, border, hasRightMark, center])
+
+  useEffect(() => {
+    setClasses(inputClass)
+  }, [inputClass])
 
   const updateValue = (
     value: any,
