@@ -1,7 +1,6 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Popup from '@/packages/popup/index.taro'
-import { handleClick } from './utils'
 import { OffsetContext } from './offsetContext'
 
 type NavBarProps = {
@@ -40,7 +39,10 @@ export const SideNavBar: FunctionComponent<SideNavBarProps> = (props) => {
     ...props,
   }
   const offset = props.offset ? Number(props.offset) : 20
-
+  const [sidenavbarShow, setSidenavbarShow] = useState(true)
+  const handleClick = () => {
+    setSidenavbarShow(!sidenavbarShow)
+  }
   return (
     <Popup
       visible={visible}
@@ -53,14 +55,22 @@ export const SideNavBar: FunctionComponent<SideNavBarProps> = (props) => {
         {...rest}
       >
         <div className="nut-sidenavbar__content">
-          {/* {showhead ? <div className="nut-sidenavbar__head">📈</div> : null} */}
-
-          <div className="nut-sidenavbar__list nutShow" onClick={handleClick}>
+          <div
+            className={`nut-sidenavbar__list ${
+              sidenavbarShow ? 'nutShow' : 'nutHide'
+            }`}
+            onClick={handleClick}
+          >
             <div
               className="nut-sidenavbar__title border-bt "
               style={{ paddingLeft: `${offset}px` }}
             >
-              {title} <i className="arrow-icon arrow-down" />
+              {title}
+              <i
+                className={`arrow-icon ${
+                  sidenavbarShow ? 'arrow-up' : 'arrow-down'
+                }`}
+              />
             </div>
             <OffsetContext.Provider value={offset}>
               <div className="nut-sidenavbar__content">{children}</div>

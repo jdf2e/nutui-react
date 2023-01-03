@@ -1,3 +1,16 @@
+# v1.4.1
+`2022-12-28`
+
+* :sparkles: feat: Swiper 组件增加指示器的默认背景色配置 (#552) @xiaoyatong
+* :sparkles: feat: docs 不展示demo问题修复 @oasis-cloud
+* :bug: fix: input taro显示右侧按钮时focus失效问题修复；textare limitshow属性名字更正 (#557) @vickyYe
+* :bug: fix: iconfont 在 dev 模式下加载多次 (#555) @oasis-cloud
+* :bug: fix: Address 组件适配Taro (#554) @xiaoyatong
+* :bug: fix: Searchbar 组件修复图标样式。 (#553) @xiaoyatong
+* :bug: fix: react-router-dom 安装到 devDependencies 中 @oasis-cloud
+* :bug: fix: Range 组件手动设置为0时，页面无法渲染的问题。 (#551) @xiaoyatong
+
+
 # v1.4.0
 `2022-12-21`
 
