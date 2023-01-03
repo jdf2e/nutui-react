@@ -23,6 +23,7 @@ const subPackages = [
       'pages/tabbar/index',
       'pages/elevator/index',
       'pages/pagination/index',
+      'pages/sidenavbar/index',
       'pages/tabs/index',
       'pages/indicator/index',
       'pages/menu/index',
