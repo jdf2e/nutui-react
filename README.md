@@ -42,14 +42,14 @@
 
 ## Features
 
-* 🚀 60+ High Quality Components
-* 📖 Based on JD APP 10.0 Visual Specifications
+* 🚀 70+ High Quality Components
+* 📖 Based on JD APP 11.0 Visual Specifications
 * 🍭 Support Tree Shaking
 * 📖 Extensive Documentation and Demos
 * 💪 Written in TypeScript
 * 💪 Support SSR (Experimental)
 * 🍭 Support Custom Themes
-* 🍭 80%+ Unit Test Coverage
+* 🍭 90%+ Unit Test Coverage
 * 📖 Provide Sketch Design Resources
 
 
