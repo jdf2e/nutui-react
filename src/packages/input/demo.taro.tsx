@@ -163,7 +163,7 @@ const InputDemo = () => {
           label={translated.text}
           placeholder={translated.text}
           defaultValue={value}
-          change={(val) => {
+          onChange={(val) => {
             console.log('change value:', val)
             UpdateValue(val)
           }}
