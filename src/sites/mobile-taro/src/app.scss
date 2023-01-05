@@ -4,6 +4,7 @@
 }
 
 .demo {
+  box-sizing: border-box;
   &.no-overflow {
     overflow: unset;
   }
