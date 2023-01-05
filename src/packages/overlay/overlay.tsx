@@ -90,7 +90,7 @@ export const Overlay: FunctionComponent<
     if (closeOnClickOverlay) {
       props.onClick && props.onClick(e)
       renderRef.current = false
-      const id = setTimeout(() => {
+      const id = window.setTimeout(() => {
         setShow(!visible)
       }, duration * 1000 * 0.8)
       intervalRef.current = id
