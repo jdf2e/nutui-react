@@ -3,7 +3,7 @@
     <img alt="logo" src="https://img11.360buyimg.com/imagetools/jfs/t1/211965/25/7152/22022/61b16785E433119bb/aa41d7a9f7e823f3.png" width="150" style="margin-bottom: 10px;">
 </p>
 
-<p align="center">京东风格的轻量级移动端 React 组件库，支持一套代码生成 H5 和小程序</p>
+<p align="center">京东风格的轻量级 React 组件库，支持移动端 H5 和小程序开发</p>
 
 <p align="center">
     <a href="http://makeapullrequest.com">
@@ -41,14 +41,14 @@
 
 ##  特性
 
-* 🚀 60+ 高质量组件, 覆盖移动端主流场景
-* 📖 基于京东APP 10.0 视觉规范
+* 🚀 70+ 高质量组件, 覆盖移动端主流场景
+* 📖 基于京东 APP 11.0 视觉规范
 * 🍭 支持按需引用
 * 📖 详尽的文档和示例
 * 💪 支持 TypeScript
 * 💪 支持服务端渲染（测试阶段）
 * 🍭 支持定制主题
-* 🍭 单元测试覆盖率超过80%, 保障稳定性
+* 🍭 单元测试覆盖率超过90%, 保障稳定性
 * 📖 提供 Sketch 设计资源
 
 ## 构建版本
