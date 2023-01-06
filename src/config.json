@@ -33,6 +33,12 @@
         "show": true
       },
       {
+        "name": "contributing-react",
+        "cName": "贡献指南",
+        "eName": "Contributing",
+        "show": true
+      },
+      {
         "name": "resource",
         "cName": "资源",
         "eName": "Resources",
