@@ -69,13 +69,13 @@ export const CircleProgress: FunctionComponent<
       const rate = progress * (endRate - startRate) + startRate
       setOldValue(Math.min(Math.max(+rate, 0), 100))
       if (endRate > startRate ? rate < endRate : rate > endRate) {
-        rafId = requestAnimationFrame(animate)
+        rafId = window.requestAnimationFrame(animate)
       }
     }
     if (rafId) {
       cancelAnimationFrame(rafId)
     }
-    rafId = requestAnimationFrame(animate)
+    rafId = window.requestAnimationFrame(animate)
   }, [progress])
 
   const requestAnimationFrame = function (callback: Function) {
