@@ -123,7 +123,7 @@ export const Drag: FunctionComponent<
 
   useEffect(() => {
     eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
-      timer.current = setTimeout(() => {
+      timer.current = window.setTimeout(() => {
         getInfo()
       }, 200)
     })
