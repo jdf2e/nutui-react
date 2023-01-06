@@ -92,7 +92,7 @@ const BaseDialog: ForwardRefRenderFunction<
             disabled={okBtnDisabled}
             onClick={(e) => handleOk(e)}
           >
-            {okText}
+            {okText || locale.confirm}
           </Button>
         )}
       </>
