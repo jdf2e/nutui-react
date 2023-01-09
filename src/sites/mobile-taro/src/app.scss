@@ -5,6 +5,8 @@
 
 .demo {
   box-sizing: border-box;
+  min-height: 100vh;
+
   &.no-overflow {
     overflow: unset;
   }
