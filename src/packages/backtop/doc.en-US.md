@@ -61,7 +61,7 @@ const App = () => {
         <div className="text-data" style={cellStyle}>test data22</div>
         <div className="text-data" style={cellStyle}>test data23</div>
         <div className="text-data" style={cellStyle}>test data24</div>
-        <BackTop elId="elId" />
+        <BackTop  />
     </div>
     </>
   );
@@ -117,7 +117,7 @@ const App = () => {
        <div className="text-data" style={cellStyle}>test data22</div>
        <div className="text-data" style={cellStyle}>test data23</div>
        <div className="text-data" style={cellStyle}>test data24</div>
-        <BackTop elId="elId" distance={200} bottom={50} />
+        <BackTop  distance={200} bottom={50} />
     </div>
     </>
   );
@@ -132,6 +132,7 @@ export default App;
 ```tsx
 import  React from "react";
 import { BackTop } from '@nutui/nutui-react';
+import Icon from '@/packages/icon'
 
 const App = () => {
     const cellStyle = {
@@ -172,7 +173,23 @@ const App = () => {
        <div className="text-data" style={cellStyle}>test data22</div>
        <div className="text-data" style={cellStyle}>test data23</div>
        <div className="text-data" style={cellStyle}>test data24</div>
-        <BackTop elId="elId" distance={200} bottom={50}><div>Text</div></BackTop>
+       <BackTop
+          className="custom-class"
+          distance={100}
+          bottom={110}
+        >
+          <div
+            className="backtop-demo"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Icon size="12px" className="nut-backtop-main" name="top" />
+            <div style={{ fontSize: '12px' }}>TOP</div>
+          </div>
+        </BackTop>
     </div>
     </>
   );
@@ -181,6 +198,61 @@ export default App;
 ```
 :::
 
+### Scroll Inside Parent Element
+
+:::demo
+
+```tsx
+import  React from "react";
+import { BackTop } from '@nutui/nutui-react';
+
+const App = () => {
+    const cellStyle = {
+    height: '46px',
+    lineHeight: '46px',
+    margin: '15px auto 20px',
+    paddingLeft: '16px',
+    backgroundColor: '#fff',
+    color: '#666',
+    borderRadius: '7px',
+    boxShadow: '0 1px 7px #edeef1',
+    fontSize: '13px',
+  }
+  return (
+    <>
+    <div className="demo" style={{ height: '800px', overflowY: 'auto' }} id="elId">
+       <div className="text-data" style={cellStyle}>test data1</div>
+       <div className="text-data" style={cellStyle}>test data2</div>
+       <div className="text-data" style={cellStyle}>test data3</div>
+       <div className="text-data" style={cellStyle}>test data4</div>
+       <div className="text-data" style={cellStyle}>test data5</div>
+       <div className="text-data" style={cellStyle}>test data6</div>
+       <div className="text-data" style={cellStyle}>test data7</div>
+       <div className="text-data" style={cellStyle}>test data8</div>
+       <div className="text-data" style={cellStyle}>test data9</div>
+       <div className="text-data" style={cellStyle}>test data10</div>
+       <div className="text-data" style={cellStyle}>test data11</div>
+       <div className="text-data" style={cellStyle}>test data12</div>
+       <div className="text-data" style={cellStyle}>test data13</div>
+       <div className="text-data" style={cellStyle}>test data14</div>
+       <div className="text-data" style={cellStyle}>test data15</div>
+       <div className="text-data" style={cellStyle}>test data16</div>
+       <div className="text-data" style={cellStyle}>test data17</div>
+       <div className="text-data" style={cellStyle}>test data18</div>
+       <div className="text-data" style={cellStyle}>test data19</div>
+       <div className="text-data" style={cellStyle}>test data20</div>
+       <div className="text-data" style={cellStyle}>test data21</div>
+       <div className="text-data" style={cellStyle}>test data22</div>
+       <div className="text-data" style={cellStyle}>test data23</div>
+       <div className="text-data" style={cellStyle}>test data24</div>
+        <BackTop elId="elId" distance={100} bottom={50} />
+    </div>
+    </>
+  );
+};
+export default App;
+```
+:::
 ### Click
 
 :::demo
@@ -231,7 +303,7 @@ const App = () => {
        <div className="text-data" style={cellStyle}>test data22</div>
        <div className="text-data" style={cellStyle}>test data23</div>
        <div className="text-data" style={cellStyle}>test data24</div>
-        <BackTop elId="elId" distance={200} bottom={50} onClick={handleClick} />
+        <BackTop  distance={100} bottom={50} onClick={handleClick} />
     </div>
     </>
   );
