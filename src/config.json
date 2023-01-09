@@ -122,6 +122,7 @@
           "sort": 16,
           "show": true,
           "exportEmpty": true,
+          "taro": true,
           "author": "hanyuxinting"
         },
         {
@@ -334,6 +335,7 @@
           "desc": "用于内容选择和切换",
           "sort": 9,
           "show": true,
+          "taro": true,
           "author": "hx"
         },
         {

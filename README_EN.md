@@ -38,18 +38,18 @@
 
 > Nut[nʌt]: the one Squirrel Scrat pursues resolutely for a lifetime and will never let go even if it causes a catastrophe from the animated film ***Ice Age***.
 
-[简体中文](./README_ZH.md) | English
+[简体中文](./README.md) | English
 
 ## Features
 
-* 🚀 70+ High Quality Components
-* 📖 Based on JD APP 11.0 Visual Specifications
+* 🚀 60+ High Quality Components
+* 📖 Based on JD APP 10.0 Visual Specifications
 * 🍭 Support Tree Shaking
 * 📖 Extensive Documentation and Demos
 * 💪 Written in TypeScript
 * 💪 Support SSR (Experimental)
 * 🍭 Support Custom Themes
-* 🍭 90%+ Unit Test Coverage
+* 🍭 80%+ Unit Test Coverage
 * 📖 Provide Sketch Design Resources
 
 

@@ -35,7 +35,7 @@ const CountDownDemo = () => {
   }
 
   useEffect(() => {
-    stateRef.current.timer = setTimeout(() => {
+    stateRef.current.timer = window.setTimeout(() => {
       setAsyncEnd(Date.now() + 30 * 1000)
     }, 3000)
     return () => {

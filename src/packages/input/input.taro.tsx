@@ -76,14 +76,6 @@ export interface InputProps extends BasicComponent {
   onClickLeftIcon?: (value: any) => void
   onClickRightIcon?: (value: any) => void
   onClick?: (value: any) => void
-  change?: (value: any, event: Event) => void
-  blur?: (value: any, event: Event) => void
-  focus?: (value: any, event: Event) => void
-  clear?: (value: any, event: Event) => void
-  clickInput?: (value: any) => void
-  clickLeftIcon?: (value: any) => void
-  clickRightIcon?: (value: any) => void
-  click?: (value: any) => void
 }
 
 const defaultProps = {
@@ -178,14 +170,6 @@ export const Input: FunctionComponent<
     onClickLeftIcon,
     onClickRightIcon,
     onClick,
-    change,
-    blur,
-    focus,
-    clear,
-    clickInput,
-    clickLeftIcon,
-    clickRightIcon,
-    click,
     iconClassPrefix,
     iconFontClassName,
     ...rest
@@ -207,7 +191,9 @@ export const Input: FunctionComponent<
     validateMessage: '', // 校验信息
   }
   useLayoutEffect(() => {
-    updateValue(getModelValue(), formatTrigger)
+    if (defaultValue) {
+      updateValue(getModelValue(), formatTrigger)
+    }
   })
   useEffect(() => {
     setClasses(inputClass)
@@ -234,14 +220,21 @@ export const Input: FunctionComponent<
       `${required ? `${prefixCls}-required` : ''}`,
       `${error ? `${prefixCls}-error` : ''}`,
       `${border ? `${prefixCls}-border` : ''}`,
+      `${slotButton || rightIcon ? `${prefixCls}-right-mark` : ''}`,
     ]
       .filter(Boolean)
       .join(' ')
-  }, [disabled, required, error, border])
+  }, [disabled, required, error, border, slotButton, rightIcon, center])
+
+  // 样式状态重置
+  useEffect(() => {
+    setClasses(inputClass)
+  }, [disabled, required, error, border, slotButton, rightIcon, center])
 
   const updateValue = (
     value: any,
-    trigger: InputFormatTrigger = 'onChange'
+    trigger: InputFormatTrigger = 'onChange',
+    event?: any
   ) => {
     let val = value
 
@@ -268,16 +261,14 @@ export const Input: FunctionComponent<
     if (inputRef?.current?.value !== val) {
       inputRef.current.value = val
     }
-    // if (val !== defaultValue) {
     SetInputValue(val)
-    // }
+    onChange && onChange(val, event)
   }
 
   const handleFocus = (event: Event) => {
     const val: any = (event.target as any).value
     SetActive(true)
     onFocus && onFocus(val, event)
-    focus && focus(val, event)
   }
 
   const handleInput = (event: Event) => {
@@ -286,9 +277,7 @@ export const Input: FunctionComponent<
     if (maxlength && val.length > Number(maxlength)) {
       val = val.slice(0, Number(maxlength))
     }
-    updateValue(val)
-    onChange && onChange(val, event)
-    change && change(val, event)
+    updateValue(val, 'onChange', event)
   }
 
   const handleBlur = (event: Event) => {
@@ -301,21 +290,17 @@ export const Input: FunctionComponent<
     }
     updateValue(getModelValue(), 'onBlur')
     onBlur && onBlur(val, event)
-    blur && blur(val, event)
   }
 
   const handleClickInput = (event: MouseEvent) => {
     onClickInput && onClickInput(event)
-    clickInput && clickInput(event)
   }
   const handleClickLeftIcon = (event: MouseEvent) => {
     onClickLeftIcon && onClickLeftIcon(event)
-    clickLeftIcon && clickLeftIcon(event)
   }
 
   const handleClickRightIcon = (event: MouseEvent) => {
     onClickRightIcon && onClickRightIcon(event)
-    clickRightIcon && clickRightIcon(event)
   }
 
   const resetValidation = () => {
@@ -338,7 +323,6 @@ export const Input: FunctionComponent<
   const handleClear = (event: Event) => {
     updateValue('')
     onClear && onClear('', event)
-    clear && clear('', event)
   }
 
   return (
@@ -347,7 +331,6 @@ export const Input: FunctionComponent<
       style={style}
       onClick={(e) => {
         onClick && onClick(e)
-        click && click(e)
       }}
     >
       {slotInput ? (
@@ -471,25 +454,25 @@ export const Input: FunctionComponent<
                   }}
                 />
               ) : null}
-              {rightIcon && rightIcon.length > 0 ? (
-                <div
-                  className="nut-input-right-icon"
-                  onClick={(e) => {
-                    handleClickRightIcon(e)
-                  }}
-                >
-                  <Icon
-                    classPrefix={iconClassPrefix}
-                    fontClassName={iconFontClassName}
-                    name={rightIcon}
-                    size={rightIconSize}
-                  />
-                </div>
-              ) : null}
-              {slotButton ? (
-                <div className="nut-input-button">{slotButton}</div>
-              ) : null}
             </div>
+            {rightIcon && rightIcon.length > 0 ? (
+              <div
+                className="nut-input-right-icon"
+                onClick={(e) => {
+                  handleClickRightIcon(e)
+                }}
+              >
+                <Icon
+                  classPrefix={iconClassPrefix}
+                  fontClassName={iconFontClassName}
+                  name={rightIcon}
+                  size={rightIconSize}
+                />
+              </div>
+            ) : null}
+            {slotButton ? (
+              <div className="nut-input-button">{slotButton}</div>
+            ) : null}
             {showWordLimit && maxlength ? (
               <div className="nut-input-word-limit">
                 <span className="nut-input-word-num">

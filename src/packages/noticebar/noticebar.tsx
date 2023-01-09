@@ -116,9 +116,8 @@ export const NoticeBar: FunctionComponent<
       } else {
         scrollList.current = [].concat(list)
       }
-      setTimeout(() => {
-        complexAm ? startRoll() : startRollEasy()
-      }, Number(standTime))
+
+      complexAm ? startRoll() : startRollEasy()
     } else {
       initScrollWrap(text)
     }
@@ -203,7 +202,10 @@ export const NoticeBar: FunctionComponent<
       height / speed / 4 < 1
         ? Number((height / speed / 4).toFixed(1)) * 1000
         : ~~(height / speed / 4) * 1000
-    const timerCurr = setInterval(showhorseLamp, time + Number(standTime))
+    const timerCurr = window.setInterval(
+      showhorseLamp,
+      time + Number(standTime)
+    )
     SetTimer(timerCurr)
   }
   const showhorseLamp = () => {
@@ -220,7 +222,7 @@ export const NoticeBar: FunctionComponent<
   }
 
   const startRoll = () => {
-    const timerCurr = setInterval(() => {
+    const timerCurr = window.setInterval(() => {
       const chunk = 100
       for (let i = 0; i < chunk; i++) {
         scroll(i, !(i < chunk - 1))

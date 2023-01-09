@@ -1,13 +1,19 @@
 @import '../icon/icon.scss';
 .nut-theme-dark {
-  .nut-noticebar-page {
-    background: $dark-background2;
-    color: $dark-color;
-  }
-
-  .nut-noticebar-vertical {
-    .horseLamp_list_item {
-      color: $dark-color;
+  .nut-noticebar {
+    .wrap {
+      .content {
+        a {
+          color: $noticebar-color;
+        }
+      }
+    }
+    .nut-noticebar-vertical {
+      .horseLamp_list {
+        .custom-item {
+          color: $noticebar-color;
+        }
+      }
     }
   }
 }

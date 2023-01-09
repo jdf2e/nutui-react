@@ -1,3 +1,33 @@
+# v1.4.2
+`2023-01-04`
+
+* :sparkles: feat: taro适配 sidenavbar 组件 (#558) @libin0824
+* :bug: fix: input error 状态重置失效问题修改；校验格式 onBlur 失效问题修改 (#567) @vickyYe
+* 🔨 chore: picker 组件删除无用的日志输出 (#566) @oasis-cloud
+
+# v1.4.1
+`2022-12-28`
+
+* :sparkles: feat: Swiper 组件增加指示器的默认背景色配置 (#552) @xiaoyatong
+* :sparkles: feat: docs 不展示demo问题修复 @oasis-cloud
+* :bug: fix: input taro显示右侧按钮时focus失效问题修复；textare limitshow属性名字更正 (#557) @vickyYe
+* :bug: fix: iconfont 在 dev 模式下加载多次 (#555) @oasis-cloud
+* :bug: fix: Address 组件适配Taro (#554) @xiaoyatong
+* :bug: fix: Searchbar 组件修复图标样式。 (#553) @xiaoyatong
+* :bug: fix: react-router-dom 安装到 devDependencies 中 @oasis-cloud
+* :bug: fix: Range 组件手动设置为0时，页面无法渲染的问题。 (#551) @xiaoyatong
+
+
+# v1.4.0
+`2022-12-21`
+
+* :sparkles: feat: 新增动态主题定制能力 (#546) @oasis-cloud
+* :sparkles: feat: 新增 input 组件对小程序特性的支持 (#542) @simpleStyle
+* :sparkles: feat: 删除 react-router-dom 依赖，涉及的 to 属性不再支持 (#550)  @oasis-cloud
+* :bug: fix: 修复 searchBar 组件 onSearch 方法。 (#549) @xiaoyatong
+* :bug: fix: 修复 noticbar 垂直滚动延迟问题 (#545) @vickyYe
+
+
 # v1.3.15
 `2022-12-14`
 
