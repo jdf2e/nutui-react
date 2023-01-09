@@ -120,7 +120,7 @@ export const Drag: FunctionComponent<
   }
 
   useEffect(() => {
-    timer.current = setTimeout(() => {
+    timer.current = window.setTimeout(() => {
       getInfo()
     }, 300)
 

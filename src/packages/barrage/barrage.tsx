@@ -70,7 +70,7 @@ const InternalBarrage: ForwardRefRenderFunction<
 
   const run = () => {
     clearInterval(timer.current)
-    timer.current = setInterval(() => {
+    timer.current = window.setInterval(() => {
       play()
       run()
     }, frequency)
