@@ -2,6 +2,8 @@ import React from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { TrendArrow, Cell, Icon } from '@/packages/nutui.react.taro'
 import '@/packages/trendarrow/demo.scss'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   basic: string
@@ -48,7 +50,8 @@ const TrendArrowDemo = () => {
   })
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Cell>
           <TrendArrow syncTextColor={false} rate={1} />

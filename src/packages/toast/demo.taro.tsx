@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Cell, Toast } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 const ToastDemo = () => {
   const [state, SetState] = useState({
@@ -32,7 +34,8 @@ const ToastDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <Toast
           msg={state.msg}
           visible={showToast}

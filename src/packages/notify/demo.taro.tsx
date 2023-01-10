@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Notify, Cell, CellGroup } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 interface T {
   basic: string
@@ -69,7 +71,11 @@ const NotifyDemo = () => {
 
   return (
     <>
-      <div className="demo" style={{ paddingBottom: '30px' }}>
+      <Header />
+      <div
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+        style={{ paddingBottom: '30px' }}
+      >
         <Notify
           visible={showNotify}
           msg={states.msg}

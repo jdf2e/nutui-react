@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Cell, DatePicker } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface PickerOption {
   text: string | number
@@ -120,7 +122,8 @@ const DatePickerDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>选择日期</h2>
         <Cell title="显示中文" desc={desc1} onClick={() => setShow1(true)} />
         <h2>选择月日</h2>

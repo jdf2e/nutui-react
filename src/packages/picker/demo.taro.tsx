@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { Cell, Picker } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 interface PickerOption {
   text: string | number
@@ -267,7 +269,8 @@ const PickerDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>基础用法</h2>
         <Cell
           title="请选择城市"

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Tabs, TabPane, Icon } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   basic: string
@@ -91,7 +93,12 @@ const TabsDemo = () => {
   }, [])
   return (
     <>
-      <div className="demo full no-overflow">
+      <Header />
+      <div
+        className={`demo ${
+          Taro.getEnv() === 'WEB' ? 'web' : ''
+        } full no-overflow`}
+      >
         <h2>{translated.basic}</h2>
         <Tabs
           value={tab1value}

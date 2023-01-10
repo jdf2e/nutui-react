@@ -6,6 +6,8 @@ import {
   SideNavBar,
 } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 type Position = 'left' | 'right'
 type NavBarState = {
@@ -111,7 +113,8 @@ const SideNavBarDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{text1}</h2>
         <Cell
           title={title1}

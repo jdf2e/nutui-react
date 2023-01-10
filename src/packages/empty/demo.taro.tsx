@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Tabs, TabPane, Empty } from '@/packages/nutui.react.taro'
 import '@/packages/empty/demo.scss'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   ce5c5446: string
@@ -67,7 +69,8 @@ const EmptyDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.ce5c5446}</h2>
         <div className="show">
           <Empty description={translated.cfbdc781} />

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Pagination, Icon, Cell } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   ce5c5446: string
@@ -54,7 +56,7 @@ const PaginationDemo = () => {
     return <div>{item.number === 3 ? 'hot' : item.text}</div>
   }
   return (
-    <div className="demo">
+    <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
       <h2>{translated.ce5c5446}</h2>
       <Cell>
         <Pagination
