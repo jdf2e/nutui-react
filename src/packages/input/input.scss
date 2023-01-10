@@ -55,18 +55,18 @@ textarea {
     border: 0;
     text-decoration: none;
   }
-  &-label {
-    width: 80px;
-    overflow: hidden;
-    text-align: left;
-    display: flex;
-    .label-string {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      color: $gray1;
-    }
-  }
+  //   &-label {
+  //     width: 80px;
+  //     overflow: hidden;
+  //     text-align: left;
+  //     display: flex;
+  //     .label-string {
+  //       overflow: hidden;
+  //       white-space: nowrap;
+  //       text-overflow: ellipsis;
+  //       color: $gray1;
+  //     }
+  //   }
   &__clear {
     width: 16px;
     height: 16px;
@@ -112,6 +112,21 @@ textarea {
   &-value {
     flex: 1;
     vertical-align: middle;
+  }
+  &-right-mark {
+    .nut-input-value {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nut-input-inner {
+      flex: 1;
+    }
+    .nut-input-button,
+    .nut-input-right-icon {
+      width: auto;
+    }
   }
   &-inner {
     position: relative;

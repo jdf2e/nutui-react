@@ -70,6 +70,9 @@ config.nav.map((item) => {
         rewrite = rewrite.join('\r\n')
         fse.outputFileSync(componentSassFile, data)
       }
+      if (nameLowerCase === 'icon') {
+        rewrite = `import '../../../styles/font/iconfont.css'\n` + rewrite
+      }
       fse.outputFileSync(
         file,
         `${rewrite}${'\n'}import '../../../packages/${nameLowerCase}/${nameLowerCase}.scss'`

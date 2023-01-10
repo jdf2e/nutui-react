@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "rootDir": ".",
     "target": "ESNext",
-    "types": ["vite/client", "jest"],
+    "types": ["vite/client", "jest", "node"],
     "allowJs": false,
     "declaration": true,
     "declarationDir": "./dist/esm/types",

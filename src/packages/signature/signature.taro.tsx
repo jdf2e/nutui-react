@@ -1,5 +1,6 @@
-import React, { FunctionComponent, useRef, useState } from 'react'
-import Taro, { CanvasContext, useReady } from '@tarojs/taro'
+/* eslint-disable react/no-unknown-property */
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import Taro, { CanvasContext } from '@tarojs/taro'
 // import { Canvas } from '@tarojs/components'
 import Button from '@/packages/button/index.taro'
 import bem from '@/utils/bem'
@@ -24,7 +25,7 @@ export interface SignatureProps {
   onClear?: () => void
 }
 const defaultProps = {
-  canvasId: 'weappCanvas',
+  canvasId: 'spcanvas',
   type: 'png',
   lineWidth: 2,
   strokeStyle: '#000',
@@ -57,9 +58,9 @@ export const Signature: FunctionComponent<
   const [canvasHeight, setCanvasHeight] = useState(0)
   const [canvasWidth, setCanvasWidth] = useState(0)
   const ctx = useRef<CanvasContext | null>(null)
+  const [disalbeScroll] = useState('true')
 
   const startEventHandler = (event: any) => {
-    event.preventDefault()
     if (ctx.current) {
       ctx.current.beginPath()
       ctx.current.lineWidth = lineWidth as number
@@ -68,17 +69,26 @@ export const Signature: FunctionComponent<
   }
 
   const moveEventHandler = (event: any) => {
-    event.preventDefault()
-
     if (ctx.current) {
-      ctx.current.lineTo(event.changedTouches[0].x, event.changedTouches[0].y)
-      ctx.current.stroke()
+      const evt = event.changedTouches[0]
+      let mouseX = evt.x || evt.clientX
+      let mouseY = evt.y || evt.clientY
+
+      if (Taro.getEnv() === 'WEB' && canvasRef.current) {
+        const coverPos = canvasRef.current.getBoundingClientRect()
+        mouseX = evt.clientX - coverPos.left
+        mouseY = evt.clientY - coverPos.top
+      }
+      Taro.nextTick(() => {
+        // ctx.current.lineCap = 'round'
+        // ctx.current.lineJoin = 'round'
+        ctx.current?.lineTo(mouseX, mouseY)
+        ctx.current?.stroke()
+      })
     }
   }
 
-  const endEventHandler = (event: any) => {
-    event.preventDefault()
-  }
+  const endEventHandler = (event: any) => {}
 
   const handleClearBtn = () => {
     if (ctx.current) {
@@ -104,6 +114,7 @@ export const Signature: FunctionComponent<
         Taro.canvasToTempFilePath({
           canvas: res[0].node,
           fileType: props.type,
+          canvasId: `${canvasId}`,
           success: (res) => {
             handleClearBtn()
             confirm && confirm(res.tempFilePath)
@@ -116,56 +127,92 @@ export const Signature: FunctionComponent<
       })
   }
 
-  useReady(() => {
-    initCanvas()
-  })
+  const canvasSetting = (canvasDom: any, width: number, height: number) => {
+    const canvas = canvasDom
+    canvas.current = canvas
 
-  //   useEffect(() => {
-  //     eventCenter.once((getCurrentInstanceTaro() as any).router.onReady, () => {
-  const initCanvas = () => {
-    Taro.createSelectorQuery()
-      .select(`#${canvasId}`)
-      .fields(
-        {
-          node: true,
-          size: true,
-        },
-        (res) => {
-          const canvas = res.node
-          canvas.current = canvas
-          ctx.current = canvas.getContext('2d')
-          setCanvasWidth(res.width)
-          setCanvasHeight(res.height)
-
-          if (ctx.current) {
-            ctx.current.clearRect(0, 0, canvasWidth, canvasHeight)
-            ctx.current.beginPath()
-            ctx.current.lineWidth = lineWidth as number
-            ctx.current.strokeStyle = strokeStyle as string
-          }
-        }
-      )
-      .exec()
+    ctx.current = canvas.getContext('2d')
+    setCanvasWidth(width)
+    setCanvasHeight(height)
+    canvas.width = width
+    canvas.height = height
+    if (ctx.current) {
+      ctx.current.clearRect(0, 0, width, height)
+      ctx.current.beginPath()
+      ctx.current.lineWidth = lineWidth as number
+      ctx.current.strokeStyle = strokeStyle as string
+    }
   }
-  //     })
-  //   }, [])
+
+  const initCanvas = () => {
+    Taro.nextTick(() => {
+      setTimeout(() => {
+        if (Taro.getEnv() === 'WEAPP' || Taro.getEnv() === 'JD') {
+          Taro.createSelectorQuery()
+            .select(`#${canvasId}`)
+            .fields(
+              {
+                node: true,
+                size: true,
+              },
+              (res) => {
+                const { node, width, height } = res
+                canvasSetting(node, width, height)
+              }
+            )
+            .exec()
+        } else {
+          const canvasDom: HTMLElement | null = document.getElementById(
+            `${canvasId}`
+          )
+          let canvas: HTMLCanvasElement = canvasDom as HTMLCanvasElement
+          if (canvasDom?.tagName !== 'CANVAS') {
+            canvas = canvasDom?.getElementsByTagName(
+              'canvas'
+            )[0] as HTMLCanvasElement
+          }
+          canvasSetting(
+            canvas,
+            canvasDom?.offsetWidth as number,
+            canvasDom?.offsetHeight as number
+          )
+        }
+      }, 1000)
+    })
+  }
+
+  useEffect(() => {
+    initCanvas()
+  }, [])
 
   return (
     <div className={`${b()} ${className}`} {...rest}>
-      <div className={`${b('inner')}`} ref={wrapRef}>
-        <canvas
-          id={canvasId}
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          // eslint-disable-next-line react/no-unknown-property
-          canvasId={canvasId}
-          // eslint-disable-next-line react/no-unknown-property
-          disableScroll
-          type="2d"
-          onTouchStart={startEventHandler}
-          onTouchMove={moveEventHandler}
-          onTouchEnd={endEventHandler}
-        />
+      <div className={`${b('inner')} spcanvas_WEAPP`} ref={wrapRef}>
+        {Taro.getEnv() === 'WEAPP' || Taro.getEnv() === 'JD' ? (
+          <canvas
+            id={canvasId}
+            ref={canvasRef}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            canvasId={canvasId}
+            disalbeScroll
+            type="2d"
+            onTouchStart={startEventHandler}
+            onTouchMove={moveEventHandler}
+            onTouchEnd={endEventHandler}
+          />
+        ) : (
+          <canvas
+            id={canvasId}
+            ref={canvasRef}
+            canvas-id={canvasId}
+            disalbe-scroll={disalbeScroll}
+            onTouchStart={startEventHandler}
+            onTouchMove={moveEventHandler}
+            onTouchEnd={endEventHandler}
+            onTouchCancel={endEventHandler}
+          />
+        )}
       </div>
 
       <Button

@@ -34,7 +34,6 @@
   padding: 0 20px;
 }
 .nut-searchbar {
-  position: relative;
   display: flex;
   align-items: center;
   width: $searchbar-width;
@@ -45,21 +44,19 @@
   &__content {
     position: relative;
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $searchbar-input-height;
   }
   &__icon {
     position: absolute !important;
-    z-index: 888;
-    transform: translate(-50%, -50%);
-    width: 15px;
-    overflow: hidden;
   }
   &__leftin-icon {
-    left: 15px;
-    top: 53%;
+    left: 10px;
   }
   &__rightin-icon {
     right: 5px;
-    top: 53%;
   }
   .nut-searchbar__input-box {
     display: flex;
@@ -70,14 +67,12 @@
     border: 0;
     outline: 0;
     box-sizing: border-box;
-
     width: $searchbar-input-width;
     height: $searchbar-input-height;
     width: 100%;
     padding: $searchbar-input-padding;
     border-radius: 0;
     font-size: $font-size-small;
-    // box-shadow: $searchbar-input-box-shadow;
     background: $searchbar-input-background;
     color: $searchbar-input-text-color;
   }
@@ -90,9 +85,7 @@
   &__clear {
     position: absolute !important;
     z-index: 888;
-    right: 3px;
-    top: 47%;
-    transform: translate(-50%, -40%);
+    right: 8px;
     i {
       color: $gray1 !important;
     }

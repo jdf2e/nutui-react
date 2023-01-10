@@ -3,7 +3,7 @@
     <img alt="logo" src="https://img11.360buyimg.com/imagetools/jfs/t1/211965/25/7152/22022/61b16785E433119bb/aa41d7a9f7e823f3.png" width="150" style="margin-bottom: 10px;">
 </p>
 
-<p align="center">京东风格的轻量级移动端 React 组件库，支持一套代码生成 H5 和小程序</p>
+<p align="center">京东风格的轻量级 React 组件库，支持移动端 H5 和小程序开发</p>
 
 <p align="center">
     <a href="http://makeapullrequest.com">
@@ -41,14 +41,14 @@
 
 ##  特性
 
-* 🚀 60+ 高质量组件, 覆盖移动端主流场景
-* 📖 基于京东APP 10.0 视觉规范
+* 🚀 70+ 高质量组件, 覆盖移动端主流场景
+* 📖 基于京东 APP 11.0 视觉规范
 * 🍭 支持按需引用
 * 📖 详尽的文档和示例
 * 💪 支持 TypeScript
 * 💪 支持服务端渲染（测试阶段）
 * 🍭 支持定制主题
-* 🍭 单元测试覆盖率超过80%, 保障稳定性
+* 🍭 单元测试覆盖率超过90%, 保障稳定性
 * 📖 提供 Sketch 设计资源
 
 ## 构建版本
@@ -92,6 +92,8 @@
 | [NutUI x Taro](https://github.com/jdf2e/nutui/issues) | <img src="https://camo.githubusercontent.com/db4276b4ee4b443158195e943e9e678cb4d2afb7580f70d4d817ef0a90413aec/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f7461726f2d6a642d636f6d2f7374617469632f636f6e746163745f7461726f5f6e757475695f71722e706e67" width="100" /> 关注后回复「NutUI-React」 | 1022545110 |
 
 ## 参与共建
+
+如果您对这个项目感兴趣，欢迎参与贡献，也欢迎 "Star" 支持一下 ^_^
 
 #### NutUI 社区共建倡议
 

@@ -22,6 +22,7 @@ export interface SwiperProps {
   autoPlay: number | string
   direction: 'horizontal' | 'vertical'
   paginationColor: string
+  paginationBgColor: string
   paginationVisible: boolean
   loop: boolean
   touchable: boolean
@@ -42,6 +43,7 @@ const defaultProps = {
   autoPlay: 0,
   direction: 'horizontal',
   paginationColor: '#fff',
+  paginationBgColor: '#ddd',
   paginationVisible: false,
   loop: true,
   touchable: true,
@@ -327,7 +329,6 @@ export const Swiper = React.forwardRef<
   })
   const getStyle = (moveOffset = offset) => {
     const target = innerRef.current
-
     let _offset = 0
     if (!isCenter) {
       _offset = moveOffset
@@ -340,10 +341,6 @@ export const Swiper = React.forwardRef<
         moveOffset +
         (active === childCount - 1 && !props.loop ? -val / 2 : val / 2)
     }
-
-    target.style.transform = `translate3D${
-      !isVertical ? `(${_offset}px,0,0)` : `(0,${_offset}px,0)`
-    }`
     target.style.transitionDuration = `${
       _swiper.current.moving ? 0 : props.duration
     }ms`
@@ -353,6 +350,9 @@ export const Swiper = React.forwardRef<
     target.style[isVertical ? 'width' : 'height'] = `${
       isVertical ? width : height
     }px`
+    target.style.transform = `translate3D${
+      !isVertical ? `(${_offset}px,0,0)` : `(0,${_offset}px,0)`
+    }`
   }
 
   const onTouchStart = (e: TouchEvent) => {
@@ -518,10 +518,11 @@ export const Swiper = React.forwardRef<
                       ? {
                           backgroundColor: propSwiper.paginationColor,
                         }
-                      : undefined
+                      : {
+                          backgroundColor: propSwiper.paginationBgColor,
+                        }
                   }
                   className={classNames({
-                    [`${b('pagination-item')}`]: true,
                     active: (active + childCount) % childCount === index,
                   })}
                   key={index}
