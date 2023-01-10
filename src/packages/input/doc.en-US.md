@@ -291,7 +291,7 @@ const App = () => {
           type="textarea"
           showWordLimit
           rows="2"
-          maxLength="50"
+          maxlength="50"
         />
     </>
   )
@@ -448,7 +448,7 @@ export default App;
 | disabled     | Whether to disable field            | Boolean        | `false` |
 | readonly     | Whether to be readonly              | Boolean        | `false` |
 | autofocus    | Whether to auto focus, unsupported in iOS     | Boolean        | `false` |
-| maxLength   | Max length of value                  | String、Number  | -       |
+| maxlength   | Max length of value                  | String、Number  | -       |
 | clearable    | Whether to be clearable              | Boolean        | `false`  |
 | clearIcon   | Clear Icon name, [name of icon](#/icon)           | String        | `mask-close`  |
 | clearSize   | Clear Icon `font-size`               | String        | `14`  |

@@ -288,7 +288,7 @@ const App = () => {
           type="textarea"
           showWordLimit
           rows="2"
-          maxLength="50"
+          maxlength="50"
         />
     </>
   )
@@ -442,7 +442,7 @@ export default App;
 | disabled     | 是否禁用                              | Boolean        | `false` |
 | readonly     | 是否只读                              | Boolean        | `false` |
 | autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | Boolean        | `false` |
-| maxLength      | 限制最长输入字符                       | String、Number  | -       |
+| maxlength      | 限制最长输入字符                       | String、Number  | -       |
 | clearable    | 展示清除 Icon                         | Boolean        | `false`  |
 | clearIcon   | 清除图标 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon)   | String        | `mask-close`  |
 | clearSize   | 清除图标的 `font-size` 大小           | String        | `14`  |

@@ -60,7 +60,7 @@ test('textarea test', () => {
       type="textarea"
       showWordLimit
       rows="2"
-      maxLength="50"
+      maxlength="50"
     />
   )
   expect(container.querySelector('.input-text')).toHaveAttribute(
@@ -68,7 +68,7 @@ test('textarea test', () => {
     'textarea'
   )
   expect(container.querySelector('.input-text')).toHaveAttribute(
-    'maxLength',
+    'maxlength',
     '50'
   )
   expect(container.querySelector('.nut-input-word-limit')?.innerHTML).toBe(

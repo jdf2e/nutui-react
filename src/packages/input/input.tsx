@@ -46,7 +46,7 @@ export interface InputProps extends BasicComponent {
   disabled: boolean
   readonly: boolean
   error: boolean
-  maxLength: any
+  maxlength: any
   leftIcon: string
   leftIconSize: string | number
   rightIcon: string
@@ -95,7 +95,7 @@ const defaultProps = {
   disabled: false,
   readonly: false,
   error: false,
-  maxLength: '9999',
+  maxlength: '9999',
   leftIcon: '',
   leftIconSize: '',
   rightIcon: '',
@@ -140,7 +140,7 @@ export const Input: FunctionComponent<
     disabled,
     readonly,
     error,
-    maxLength,
+    maxlength,
     leftIcon,
     leftIconSize,
     rightIcon,
@@ -273,8 +273,8 @@ export const Input: FunctionComponent<
   const handleInput = (event: Event) => {
     let val: any = (event.target as any).value
 
-    if (maxLength && val.length > Number(maxLength)) {
-      val = val.slice(0, Number(maxLength))
+    if (maxlength && val.length > Number(maxlength)) {
+      val = val.slice(0, Number(maxlength))
     }
     updateValue(val, 'onChange', event)
   }
@@ -284,8 +284,8 @@ export const Input: FunctionComponent<
       SetActive(false)
     }, 200)
     let val: any = (event.target as any).value
-    if (maxLength && val.length > Number(maxLength)) {
-      val = val.slice(0, Number(maxLength))
+    if (maxlength && val.length > Number(maxlength)) {
+      val = val.slice(0, Number(maxlength))
     }
     updateValue(getModelValue(), 'onBlur')
     onBlur && onBlur(val, event)
@@ -401,7 +401,7 @@ export const Input: FunctionComponent<
                     textAlign: inputAlign,
                     height: `${Number(rows) * 24}px`,
                   }}
-                  maxLength={maxLength}
+                  maxLength={maxlength}
                   placeholder={placeholder || locale.placeholder}
                   disabled={disabled}
                   readOnly={readonly}
@@ -424,7 +424,7 @@ export const Input: FunctionComponent<
                   ref={inputRef}
                   style={{ textAlign: inputAlign }}
                   type={inputType(type)}
-                  maxLength={maxLength}
+                  maxLength={maxlength}
                   placeholder={placeholder || locale.placeholder}
                   disabled={disabled}
                   readOnly={readonly}
@@ -473,12 +473,12 @@ export const Input: FunctionComponent<
             {slotButton ? (
               <div className="nut-input-button">{slotButton}</div>
             ) : null}
-            {showWordLimit && maxLength ? (
+            {showWordLimit && maxlength ? (
               <div className="nut-input-word-limit">
                 <span className="nut-input-word-num">
                   {inputValue ? inputValue.length : 0}
                 </span>
-                /{maxLength}
+                /{maxlength}
               </div>
             ) : null}
             {errorMessage ? (
