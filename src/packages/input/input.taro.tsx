@@ -104,7 +104,7 @@ const defaultProps = {
   clearIcon: 'mask-close',
   clearSize: '14',
   border: true,
-  formatTrigger: 'onChange',
+  formatTrigger: 'onBlur',
   rules: [],
   rows: null,
   errorMessage: '',
