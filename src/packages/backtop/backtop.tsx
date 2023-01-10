@@ -66,7 +66,7 @@ export const BackTop: FunctionComponent<
     if (elId && document.getElementById(elId)) {
       scrollEl.current = document.getElementById(elId) as HTMLElement | Window
     } else {
-      scrollEl.current = document.body
+      scrollEl.current = window
     }
     addEventListener()
     initCancelAniFrame()
@@ -90,6 +90,7 @@ export const BackTop: FunctionComponent<
       window.scrollTo(0, y)
     } else {
       scrollEl.current.scrollTop = y
+      window.scrollTo(0, y)
     }
   }
 
