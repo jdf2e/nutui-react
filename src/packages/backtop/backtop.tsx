@@ -65,6 +65,8 @@ export const BackTop: FunctionComponent<
   const init = () => {
     if (elId && document.getElementById(elId)) {
       scrollEl.current = document.getElementById(elId) as HTMLElement | Window
+    } else {
+      scrollEl.current = document.body
     }
     addEventListener()
     initCancelAniFrame()

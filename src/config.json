@@ -940,6 +940,7 @@
           "sort": 20,
           "show": true,
           "taro": true,
+          "tarodoc": true,
           "author": "hx"
         },
         {
