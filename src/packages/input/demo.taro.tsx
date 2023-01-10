@@ -290,7 +290,7 @@ const InputDemo = () => {
           type="textarea"
           showWordLimit
           rows="2"
-          maxlength="50"
+          maxLength="50"
         />
         <h2>{translated.title8}</h2>
         <Input
