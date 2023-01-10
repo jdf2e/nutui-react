@@ -56,48 +56,51 @@ const PaginationDemo = () => {
     return <div>{item.number === 3 ? 'hot' : item.text}</div>
   }
   return (
-    <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-      <h2>{translated.ce5c5446}</h2>
-      <Cell>
-        <Pagination
-          modelValue={currentPage1}
-          totalItems="20"
-          itemsPerPage="5"
-          onChange={pageChange1}
-        />
-      </Cell>
-      <h2>{translated.c38a08ef}</h2>
-      <Cell>
-        <Pagination
-          modelValue={currentPage2}
-          pageCount={12}
-          mode="simple"
-          onChange={pageChange2}
-        />
-      </Cell>
-      <h2>{translated.b840c88f}</h2>
-      <Cell>
-        <Pagination
-          modelValue={currentPage3}
-          totalItems="125"
-          showPageSize="3"
-          forceEllipses
-          onChange={pageChange3}
-        />
-      </Cell>
-      <h2>{translated.a74a1fd4}</h2>
-      <Cell>
-        <Pagination
-          modelValue={currentPage4}
-          totalItems="500"
-          showPageSize="5"
-          onChange={pageChange4}
-          prevText={<Icon name="left" />}
-          nextText={<Icon name="right" />}
-          pageNodeRender={pageNodeRender}
-        />
-      </Cell>
-    </div>
+    <>
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <h2>{translated.ce5c5446}</h2>
+        <Cell>
+          <Pagination
+            modelValue={currentPage1}
+            totalItems="20"
+            itemsPerPage="5"
+            onChange={pageChange1}
+          />
+        </Cell>
+        <h2>{translated.c38a08ef}</h2>
+        <Cell>
+          <Pagination
+            modelValue={currentPage2}
+            pageCount={12}
+            mode="simple"
+            onChange={pageChange2}
+          />
+        </Cell>
+        <h2>{translated.b840c88f}</h2>
+        <Cell>
+          <Pagination
+            modelValue={currentPage3}
+            totalItems="125"
+            showPageSize="3"
+            forceEllipses
+            onChange={pageChange3}
+          />
+        </Cell>
+        <h2>{translated.a74a1fd4}</h2>
+        <Cell>
+          <Pagination
+            modelValue={currentPage4}
+            totalItems="500"
+            showPageSize="5"
+            onChange={pageChange4}
+            prevText={<Icon name="left" />}
+            nextText={<Icon name="right" />}
+            pageNodeRender={pageNodeRender}
+          />
+        </Cell>
+      </div>
+    </>
   )
 }
 
