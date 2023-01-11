@@ -80,7 +80,7 @@ function init() {
         message:
           '请选择组件分类(输入编号)：1基础组件，2布局组件，3导航组件，4数据录入，5操作反馈，6展示组件，7特色组件',
         validate(value) {
-          const pass = /^[1-6]$/.test(value)
+          const pass = /^[1-7]$/.test(value)
           if (pass) {
             return true
           }

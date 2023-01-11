@@ -145,33 +145,11 @@
       "packages": [
         {
           "version": "0.1.0",
-          "name": "Layout",
-          "type": "component",
-          "cName": "布局",
-          "desc": "协助进行页面级整体布局。",
-          "sort": 1,
-          "show": true,
-          "taro": true,
-          "author": "yushuang24"
-        },
-        {
-          "version": "0.1.0",
           "name": "Col",
           "type": "component",
           "cName": "列",
           "desc": "布局组件中的列",
           "sort": 3,
-          "show": false,
-          "exportEmpty": true,
-          "author": "yushuang24"
-        },
-        {
-          "version": "0.1.0",
-          "name": "Row",
-          "type": "component",
-          "cName": "行",
-          "desc": "布局组件中的行",
-          "sort": 2,
           "show": false,
           "exportEmpty": true,
           "author": "yushuang24"
@@ -211,6 +189,28 @@
           "author": "yangxiaolu"
         },
         {
+          "version": "0.1.0",
+          "name": "Layout",
+          "type": "component",
+          "cName": "布局",
+          "desc": "协助进行页面级整体布局。",
+          "sort": 1,
+          "show": true,
+          "taro": true,
+          "author": "yushuang24"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Row",
+          "type": "component",
+          "cName": "行",
+          "desc": "布局组件中的行",
+          "sort": 2,
+          "show": false,
+          "exportEmpty": true,
+          "author": "yushuang24"
+        },
+        {
           "version": "1.0.0",
           "name": "Sticky",
           "type": "component",
@@ -229,14 +229,14 @@
       "packages": [
         {
           "version": "0.1.0",
-          "name": "NavBar",
+          "name": "Elevator",
           "type": "component",
-          "cName": "头部导航",
-          "desc": "提供导航功能。",
-          "sort": 1,
+          "cName": "电梯楼层",
+          "desc": "用于列表快速定位以及索引的显示",
+          "sort": 4,
           "show": true,
           "taro": true,
-          "author": "dsj"
+          "author": "songsong"
         },
         {
           "version": "0.1.0",
@@ -248,6 +248,95 @@
           "show": true,
           "taro": true,
           "author": "Ymm0008"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Indicator",
+          "type": "component",
+          "cName": "指示器",
+          "desc": "显示一个任务或流程的进度，常用于开通流程。",
+          "sort": 16,
+          "show": true,
+          "taro": true,
+          "author": "liukun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Menu",
+          "type": "component",
+          "cName": "菜单",
+          "desc": "向下弹出的菜单列表",
+          "sort": 13,
+          "show": true,
+          "taro": true,
+          "author": "oasis-cloud"
+        },
+        {
+          "version": "1.0.0",
+          "name": "MenuItem",
+          "type": "component",
+          "cName": "菜单子项",
+          "desc": "菜单子项",
+          "sort": 14,
+          "exportEmpty": true,
+          "show": false,
+          "taro": true,
+          "author": "oasis-cloud"
+        },
+        {
+          "version": "0.1.0",
+          "name": "NavBar",
+          "type": "component",
+          "cName": "头部导航",
+          "desc": "提供导航功能。",
+          "sort": 1,
+          "show": true,
+          "taro": true,
+          "author": "dsj"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Pagination",
+          "type": "component",
+          "cName": "分页",
+          "desc": "当数据量较多时，采用分页的形式分隔长列表。",
+          "sort": 6,
+          "show": true,
+          "taro": true,
+          "author": "lkjh3214"
+        },
+        {
+          "version": "1.0.0",
+          "name": "SideNavBar",
+          "type": "component",
+          "cName": "侧边栏导航",
+          "desc": "用于内容选择和切换",
+          "sort": 9,
+          "show": true,
+          "taro": true,
+          "author": "hx"
+        },
+        {
+          "version": "1.0.0",
+          "name": "SideNavBarItem",
+          "type": "component",
+          "cName": "侧边栏导航子组件",
+          "exportEmpty": true,
+          "desc": "用于侧边栏导航子组件",
+          "sort": 11,
+          "show": false,
+          "author": "hx"
+        },
+        {
+          "version": "1.0.0",
+          "name": "SubSideNavBar",
+          "type": "component",
+          "cName": "侧边栏导航子组件",
+          "desc": "用于侧边栏导航的子组件",
+          "exportEmpty": true,
+          "sort": 10,
+          "show": false,
+          "author": "hx"
         },
         {
           "version": "0.1.0",
@@ -274,39 +363,6 @@
         },
         {
           "version": "0.1.0",
-          "name": "Elevator",
-          "type": "component",
-          "cName": "电梯楼层",
-          "desc": "用于列表快速定位以及索引的显示",
-          "sort": 4,
-          "show": true,
-          "taro": true,
-          "author": "songsong"
-        },
-        {
-          "version": "0.1.0",
-          "name": "Pagination",
-          "type": "component",
-          "cName": "分页",
-          "desc": "当数据量较多时，采用分页的形式分隔长列表。",
-          "sort": 6,
-          "show": true,
-          "taro": true,
-          "author": "lkjh3214"
-        },
-        {
-          "version": "1.0.0",
-          "name": "Tabs",
-          "type": "component",
-          "cName": "选项卡切换",
-          "desc": "常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式",
-          "sort": 12,
-          "show": true,
-          "taro": true,
-          "author": "张晶发"
-        },
-        {
-          "version": "0.1.0",
           "name": "TabPane",
           "sort": 2,
           "cName": "选项卡切换子组件",
@@ -318,70 +374,14 @@
         },
         {
           "version": "1.0.0",
-          "name": "Indicator",
+          "name": "Tabs",
           "type": "component",
-          "cName": "指示器",
-          "desc": "显示一个任务或流程的进度，常用于开通流程。",
-          "sort": 16,
+          "cName": "选项卡切换",
+          "desc": "常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式",
+          "sort": 12,
           "show": true,
           "taro": true,
-          "author": "liukun"
-        },
-        {
-          "version": "1.0.0",
-          "name": "SideNavBar",
-          "type": "component",
-          "cName": "侧边栏导航",
-          "desc": "用于内容选择和切换",
-          "sort": 9,
-          "show": true,
-          "taro": true,
-          "author": "hx"
-        },
-        {
-          "version": "1.0.0",
-          "name": "SubSideNavBar",
-          "type": "component",
-          "cName": "侧边栏导航子组件",
-          "desc": "用于侧边栏导航的子组件",
-          "exportEmpty": true,
-          "sort": 10,
-          "show": false,
-          "author": "hx"
-        },
-        {
-          "version": "1.0.0",
-          "name": "SideNavBarItem",
-          "type": "component",
-          "cName": "侧边栏导航子组件",
-          "exportEmpty": true,
-          "desc": "用于侧边栏导航子组件",
-          "sort": 11,
-          "show": false,
-          "author": "hx"
-        },
-        {
-          "version": "1.0.0",
-          "name": "Menu",
-          "type": "component",
-          "cName": "菜单",
-          "desc": "向下弹出的菜单列表",
-          "sort": 13,
-          "show": true,
-          "taro": true,
-          "author": "oasis-cloud"
-        },
-        {
-          "version": "1.0.0",
-          "name": "MenuItem",
-          "type": "component",
-          "cName": "菜单子项",
-          "desc": "菜单子项",
-          "sort": 14,
-          "exportEmpty": true,
-          "show": false,
-          "taro": true,
-          "author": "oasis-cloud"
+          "author": "张晶发"
         }
       ]
     },
@@ -389,17 +389,6 @@
       "name": "数据录入",
       "enName": "dentry",
       "packages": [
-        {
-          "version": "0.1.0",
-          "name": "Range",
-          "type": "component",
-          "cName": "区间选择器",
-          "desc": "滑动输入条，用于在给定的范围内选择一个值。",
-          "sort": 3,
-          "show": true,
-          "taro": true,
-          "author": "vickyYe"
-        },
         {
           "name": "Calendar",
           "type": "component",
@@ -409,6 +398,27 @@
           "show": true,
           "taro": true,
           "author": "szg2008"
+        },
+        {
+          "name": "CalendarItem",
+          "type": "component",
+          "cName": "日历",
+          "desc": "日历，可平铺/弹窗展示",
+          "sort": 10,
+          "show": false,
+          "exportEmpty": true,
+          "author": "szg2008"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Cascader",
+          "type": "component",
+          "cName": "级联选择器",
+          "desc": "级联选择，用于多层级数据的选择，典型场景为省市区选择。",
+          "sort": 1,
+          "show": true,
+          "taro": true,
+          "author": "ailululu"
         },
         {
           "version": "0.1.0",
@@ -443,15 +453,27 @@
           "author": "dsj"
         },
         {
-          "version": "0.1.0",
-          "name": "InputNumber",
+          "version": "1.0.0",
+          "name": "Form",
           "type": "component",
-          "cName": "数字输入框",
-          "desc": "通过点击按钮控制数字增减。",
-          "sort": 3,
+          "cName": "表单",
+          "desc": "用于数据录入、校验，支持输入框、单选框、复选框等类型。",
+          "sort": 19,
           "show": true,
-          "taro": true,
-          "author": "swag~jun"
+          "taro": false,
+          "author": "hanyuxinting"
+        },
+        {
+          "version": "1.0.0",
+          "name": "FormItem",
+          "type": "component",
+          "cName": "表单项",
+          "desc": "用于数据录入、校验，支持输入框、单选框、复选框等类型。",
+          "sort": 19,
+          "show": false,
+          "taro": false,
+          "exportEmpty": true,
+          "author": "hanyuxinting"
         },
         {
           "version": "0.1.0",
@@ -463,6 +485,39 @@
           "show": true,
           "taro": true,
           "author": "VickyYe"
+        },
+        {
+          "version": "0.1.0",
+          "name": "InputNumber",
+          "type": "component",
+          "cName": "数字输入框",
+          "desc": "通过点击按钮控制数字增减。",
+          "sort": 3,
+          "show": true,
+          "taro": true,
+          "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "NumberKeyboard",
+          "type": "component",
+          "cName": "数字键盘",
+          "desc": "",
+          "sort": 16,
+          "show": true,
+          "taro": true,
+          "author": "Drjingfubo"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Picker",
+          "type": "component",
+          "cName": "选择器",
+          "desc": "提供多个选项集合供用户选择其中一项。",
+          "sort": 10,
+          "show": true,
+          "taro": true,
+          "author": "dsj"
         },
         {
           "version": "0.1.0",
@@ -488,6 +543,17 @@
         },
         {
           "version": "0.1.0",
+          "name": "Range",
+          "type": "component",
+          "cName": "区间选择器",
+          "desc": "滑动输入条，用于在给定的范围内选择一个值。",
+          "sort": 3,
+          "show": true,
+          "taro": true,
+          "author": "vickyYe"
+        },
+        {
+          "version": "0.1.0",
           "name": "Rate",
           "type": "component",
           "cName": "评分",
@@ -498,25 +564,15 @@
           "author": "dsj"
         },
         {
-          "name": "CalendarItem",
-          "type": "component",
-          "cName": "日历",
-          "desc": "日历，可平铺/弹窗展示",
-          "sort": 10,
-          "show": false,
-          "exportEmpty": true,
-          "author": "szg2008"
-        },
-        {
           "version": "1.0.0",
-          "name": "Picker",
+          "name": "SearchBar",
           "type": "component",
-          "cName": "选择器",
-          "desc": "提供多个选项集合供用户选择其中一项。",
-          "sort": 10,
+          "cName": "搜索栏",
+          "desc": "用于搜索场景的输入框组件",
+          "sort": 16,
           "show": true,
           "taro": true,
-          "author": "dsj"
+          "author": "Ymm0008"
         },
         {
           "version": "0.1.0",
@@ -551,62 +607,6 @@
           "show": true,
           "taro": true,
           "author": "swag~jun"
-        },
-        {
-          "version": "0.1.0",
-          "name": "Cascader",
-          "type": "component",
-          "cName": "级联选择器",
-          "desc": "级联选择，用于多层级数据的选择，典型场景为省市区选择。",
-          "sort": 1,
-          "show": true,
-          "taro": true,
-          "author": "ailululu"
-        },
-        {
-          "version": "1.0.0",
-          "name": "SearchBar",
-          "type": "component",
-          "cName": "搜索栏",
-          "desc": "用于搜索场景的输入框组件",
-          "sort": 16,
-          "show": true,
-          "taro": true,
-          "author": "Ymm0008"
-        },
-        {
-          "version": "1.0.0",
-          "name": "NumberKeyboard",
-          "type": "component",
-          "cName": "数字键盘",
-          "desc": "",
-          "sort": 16,
-          "show": true,
-          "taro": true,
-          "author": "Drjingfubo"
-        },
-        {
-          "version": "1.0.0",
-          "name": "Form",
-          "type": "component",
-          "cName": "表单",
-          "desc": "用于数据录入、校验，支持输入框、单选框、复选框等类型。",
-          "sort": 19,
-          "show": true,
-          "taro": false,
-          "author": "hanyuxinting"
-        },
-        {
-          "version": "1.0.0",
-          "name": "FormItem",
-          "type": "component",
-          "cName": "表单项",
-          "desc": "用于数据录入、校验，支持输入框、单选框、复选框等类型。",
-          "sort": 19,
-          "show": false,
-          "taro": false,
-          "exportEmpty": true,
-          "author": "hanyuxinting"
         }
       ]
     },
@@ -639,17 +639,6 @@
         },
         {
           "version": "0.1.0",
-          "name": "Drag",
-          "type": "component",
-          "cName": "拖拽",
-          "desc": "实现可拖拽的任意元素",
-          "sort": 1,
-          "show": true,
-          "taro": true,
-          "author": "songsong"
-        },
-        {
-          "version": "0.1.0",
           "name": "Dialog",
           "type": "component",
           "cName": "对话框",
@@ -658,6 +647,17 @@
           "show": true,
           "taro": true,
           "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Drag",
+          "type": "component",
+          "cName": "拖拽",
+          "desc": "实现可拖拽的任意元素",
+          "sort": 1,
+          "show": true,
+          "taro": true,
+          "author": "songsong"
         },
         {
           "version": "0.1.0",
@@ -684,6 +684,28 @@
           "author": "vickyYE"
         },
         {
+          "version": "1.0.0",
+          "name": "PullToRefresh",
+          "type": "component",
+          "cName": "下拉刷新",
+          "desc": "",
+          "sort": 10,
+          "show": true,
+          "taro": false,
+          "author": "oasis"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Swipe",
+          "type": "component",
+          "cName": "滑动手势",
+          "desc": "可以左右滑动来展示操作按钮的组件",
+          "sort": 9,
+          "show": true,
+          "taro": true,
+          "author": "Ymm0008"
+        },
+        {
           "version": "0.1.0",
           "name": "Switch",
           "type": "component",
@@ -705,28 +727,6 @@
           "show": true,
           "taro": true,
           "author": "VickyYe"
-        },
-        {
-          "version": "1.0.0",
-          "name": "Swipe",
-          "type": "component",
-          "cName": "滑动手势",
-          "desc": "可以左右滑动来展示操作按钮的组件",
-          "sort": 9,
-          "show": true,
-          "taro": true,
-          "author": "Ymm0008"
-        },
-        {
-          "version": "1.0.0",
-          "name": "PullToRefresh",
-          "type": "component",
-          "cName": "下拉刷新",
-          "desc": "",
-          "sort": 10,
-          "show": true,
-          "taro": false,
-          "author": "oasis"
         }
       ]
     },
@@ -735,70 +735,37 @@
       "enName": "exhibition",
       "packages": [
         {
-          "version": "0.1.0",
-          "name": "CircleProgress",
+          "version": "1.0.0",
+          "name": "Animate",
           "type": "component",
-          "cName": "环形进度条",
-          "desc": "展示操作或任务的当前进度。",
+          "cName": "动画/动效",
+          "desc": "给子元素添加动画效果",
+          "sort": 27,
+          "show": true,
+          "taro": true,
+          "author": "swag~jun"
+        },
+        {
+          "version": "0.1.0",
+          "name": "AnimatingNumbers",
+          "type": "component",
+          "cName": "数字动画",
+          "desc": "带特效的数字",
           "sort": 7,
           "show": true,
           "taro": true,
-          "author": "swag~jun"
-        },
-        {
-          "version": "0.1.0",
-          "name": "NoticeBar",
-          "type": "component",
-          "cName": "公告栏",
-          "desc": "用于循环播放展示一组消息通知。",
-          "sort": 11,
-          "show": true,
-          "taro": true,
-          "author": "vickyYe"
-        },
-        {
-          "version": "0.1.0",
-          "name": "Steps",
-          "type": "component",
-          "cName": "步骤条",
-          "desc": "拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。",
-          "sort": 7,
-          "show": true,
-          "taro": true,
-          "author": "swag~jun"
-        },
-        {
-          "version": "3.0.0",
-          "name": "Step",
-          "sort": 17,
-          "cName": "步骤条子组件",
-          "type": "component",
-          "show": false,
-          "exportEmpty": true,
-          "desc": "步骤条子组件",
-          "author": "swag~jun"
+          "author": "songsong"
         },
         {
           "version": "1.0.0",
-          "name": "Swiper",
+          "name": "Audio",
           "type": "component",
-          "cName": "轮播",
-          "desc": "轮播组件",
-          "sort": 14,
+          "cName": "音频播放器",
+          "desc": "原生audio实现的音频播放器",
+          "sort": 21,
           "show": true,
           "taro": true,
-          "author": "liukun"
-        },
-        {
-          "version": "1.0.0",
-          "name": "SwiperItem",
-          "type": "component",
-          "cName": "轮播子组件",
-          "desc": "轮播子组件",
-          "sort": 14,
-          "show": false,
-          "exportEmpty": true,
-          "author": "liukun"
+          "author": "libin"
         },
         {
           "version": "0.1.0",
@@ -824,17 +791,6 @@
         },
         {
           "version": "0.1.0",
-          "name": "Price",
-          "type": "component",
-          "cName": "价格",
-          "desc": "用来对商品价格数值的小数点前后部分应用不同样式，还支持人民币符号、千位分隔符、设置小数点位数等功能。",
-          "sort": 4,
-          "show": true,
-          "taro": true,
-          "author": "songsong"
-        },
-        {
-          "version": "0.1.0",
           "name": "Badge",
           "type": "component",
           "cName": "徽标",
@@ -846,46 +802,14 @@
         },
         {
           "version": "0.1.0",
-          "name": "Tag",
+          "name": "CircleProgress",
           "type": "component",
-          "cName": "标签",
-          "desc": "用于标记和分类。",
-          "sort": 4,
-          "show": true,
-          "taro": true,
-          "author": "lzz"
-        },
-        {
-          "version": "0.1.0",
-          "name": "Popover",
-          "type": "component",
-          "cName": "气泡弹出框",
-          "desc": "气泡弹出框",
-          "sort": 19,
-          "show": true,
-          "taro": true,
-          "author": "lzz"
-        },
-        {
-          "name": "Skeleton",
-          "type": "component",
-          "cName": "骨架屏",
-          "desc": "在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果。",
-          "sort": 15,
+          "cName": "环形进度条",
+          "desc": "展示操作或任务的当前进度。",
+          "sort": 7,
           "show": true,
           "taro": true,
           "author": "swag~jun"
-        },
-        {
-          "version": "1.0.0",
-          "name": "CountDown",
-          "type": "component",
-          "cName": "倒计时",
-          "desc": "用于实时展示倒计时数值，支持毫秒精度。",
-          "sort": 17,
-          "show": true,
-          "taro": true,
-          "author": "songsong"
         },
         {
           "version": "0.1.0",
@@ -910,15 +834,26 @@
           "author": "zhenyulei"
         },
         {
-          "version": "0.1.0",
-          "name": "AnimatingNumbers",
+          "version": "1.0.0",
+          "name": "CountDown",
           "type": "component",
-          "cName": "数字动画",
-          "desc": "带特效的数字",
-          "sort": 7,
+          "cName": "倒计时",
+          "desc": "用于实时展示倒计时数值，支持毫秒精度。",
+          "sort": 17,
           "show": true,
           "taro": true,
           "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Ellipsis",
+          "type": "component",
+          "cName": "文本省略",
+          "desc": "展示空间不足时，隐去部分内容并用“…”替代。",
+          "sort": 27,
+          "show": true,
+          "taro": true,
+          "author": "vickyYE"
         },
         {
           "version": "1.0.0",
@@ -933,14 +868,112 @@
         },
         {
           "version": "1.0.0",
-          "name": "VirtualList",
+          "name": "ImagePreview",
           "type": "component",
-          "cName": "虚拟列表",
-          "desc": "长列表渲染",
+          "cName": "图片预览",
+          "desc": "图片预览",
+          "sort": 23,
+          "show": true,
+          "taro": true,
+          "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "NoticeBar",
+          "type": "component",
+          "cName": "公告栏",
+          "desc": "用于循环播放展示一组消息通知。",
+          "sort": 11,
+          "show": true,
+          "taro": true,
+          "author": "vickyYe"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Popover",
+          "type": "component",
+          "cName": "气泡弹出框",
+          "desc": "气泡弹出框",
+          "sort": 19,
+          "show": true,
+          "taro": true,
+          "author": "lzz"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Price",
+          "type": "component",
+          "cName": "价格",
+          "desc": "用来对商品价格数值的小数点前后部分应用不同样式，还支持人民币符号、千位分隔符、设置小数点位数等功能。",
+          "sort": 4,
+          "show": true,
+          "taro": true,
+          "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Progress",
+          "type": "component",
+          "cName": "进度条",
+          "desc": "用来展示进度",
           "sort": 20,
           "show": true,
-          "taro": false,
-          "author": "hx"
+          "taro": true,
+          "author": "ailululu"
+        },
+        {
+          "name": "Skeleton",
+          "type": "component",
+          "cName": "骨架屏",
+          "desc": "在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果。",
+          "sort": 15,
+          "show": true,
+          "taro": true,
+          "author": "swag~jun"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Step",
+          "sort": 17,
+          "cName": "步骤条子组件",
+          "type": "component",
+          "show": false,
+          "exportEmpty": true,
+          "desc": "步骤条子组件",
+          "author": "swag~jun"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Steps",
+          "type": "component",
+          "cName": "步骤条",
+          "desc": "拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。",
+          "sort": 7,
+          "show": true,
+          "taro": true,
+          "author": "swag~jun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Swiper",
+          "type": "component",
+          "cName": "轮播",
+          "desc": "轮播组件",
+          "sort": 14,
+          "show": true,
+          "taro": true,
+          "author": "liukun"
+        },
+        {
+          "version": "1.0.0",
+          "name": "SwiperItem",
+          "type": "component",
+          "cName": "轮播子组件",
+          "desc": "轮播子组件",
+          "sort": 14,
+          "show": false,
+          "exportEmpty": true,
+          "author": "liukun"
         },
         {
           "version": "1.0.0",
@@ -952,6 +985,28 @@
           "show": true,
           "taro": true,
           "author": "yangjinjun3"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Tag",
+          "type": "component",
+          "cName": "标签",
+          "desc": "用于标记和分类。",
+          "sort": 4,
+          "show": true,
+          "taro": true,
+          "author": "lzz"
+        },
+        {
+          "version": "1.0.0",
+          "name": "TrendArrow",
+          "type": "component",
+          "cName": "趋势箭头",
+          "desc": "带有箭头指示的百分比数字,用以展示指标趋势",
+          "sort": 25,
+          "show": true,
+          "taro": true,
+          "author": "songsong"
         },
         {
           "version": "1.0.0",
@@ -967,47 +1022,14 @@
         },
         {
           "version": "1.0.0",
-          "name": "Progress",
+          "name": "VirtualList",
           "type": "component",
-          "cName": "进度条",
-          "desc": "用来展示进度",
+          "cName": "虚拟列表",
+          "desc": "长列表渲染",
           "sort": 20,
           "show": true,
-          "taro": true,
-          "author": "ailululu"
-        },
-        {
-          "version": "1.0.0",
-          "name": "Audio",
-          "type": "component",
-          "cName": "音频播放器",
-          "desc": "原生audio实现的音频播放器",
-          "sort": 21,
-          "show": true,
-          "taro": true,
-          "author": "libin"
-        },
-        {
-          "version": "1.0.0",
-          "name": "ImagePreview",
-          "type": "component",
-          "cName": "图片预览",
-          "desc": "图片预览",
-          "sort": 23,
-          "show": true,
-          "taro": true,
-          "author": "yangjinjun3"
-        },
-        {
-          "version": "1.0.0",
-          "name": "TrendArrow",
-          "type": "component",
-          "cName": "趋势箭头",
-          "desc": "带有箭头指示的百分比数字,用以展示指标趋势",
-          "sort": 25,
-          "show": true,
-          "taro": true,
-          "author": "songsong"
+          "taro": false,
+          "author": "hx"
         },
         {
           "version": "1.0.0",
@@ -1019,28 +1041,6 @@
           "show": true,
           "taro": true,
           "author": "swag~jun"
-        },
-        {
-          "version": "1.0.0",
-          "name": "Animate",
-          "type": "component",
-          "cName": "动画/动效",
-          "desc": "给子元素添加动画效果",
-          "sort": 27,
-          "show": true,
-          "taro": true,
-          "author": "swag~jun"
-        },
-        {
-          "version": "1.0.0",
-          "name": "Ellipsis",
-          "type": "component",
-          "cName": "文本省略",
-          "desc": "展示空间不足时，隐去部分内容并用“…”替代。",
-          "sort": 27,
-          "show": true,
-          "taro": true,
-          "author": "vickyYE"
         }
       ]
     },
@@ -1071,6 +1071,17 @@
           "author": "swag~jun"
         },
         {
+          "version": "1.0.0",
+          "name": "Card",
+          "type": "component",
+          "cName": "商品卡片",
+          "desc": "商品卡片，用于展示商品的图片、价格等信息",
+          "sort": 6,
+          "show": true,
+          "taro": true,
+          "author": "songsong"
+        },
+        {
           "version": "0.1.0",
           "name": "Signature",
           "type": "component",
@@ -1083,14 +1094,14 @@
         },
         {
           "version": "1.0.0",
-          "name": "Card",
+          "name": "TimeDetail",
           "type": "component",
-          "cName": "商品卡片",
-          "desc": "商品卡片，用于展示商品的图片、价格等信息",
-          "sort": 6,
-          "show": true,
-          "taro": true,
-          "author": "songsong"
+          "cName": "配送时间",
+          "desc": "配送时间上门时间选择",
+          "sort": 8,
+          "show": false,
+          "exportEmpty": true,
+          "author": "zhaoqian16"
         },
         {
           "version": "1.0.0",
@@ -1099,17 +1110,6 @@
           "cName": "配送时间",
           "desc": "配送时间日期选择",
           "sort": 7,
-          "show": false,
-          "exportEmpty": true,
-          "author": "zhaoqian16"
-        },
-        {
-          "version": "1.0.0",
-          "name": "TimeDetail",
-          "type": "component",
-          "cName": "配送时间",
-          "desc": "配送时间上门时间选择",
-          "sort": 8,
           "show": false,
           "exportEmpty": true,
           "author": "zhaoqian16"
