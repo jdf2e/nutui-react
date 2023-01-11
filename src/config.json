@@ -42,7 +42,7 @@
         "name": "resource",
         "cName": "资源",
         "eName": "Resources",
-        "show": true
+        "show": false
       },
       {
         "name": "https://github.com/jdf2e/nutui-react/releases",
