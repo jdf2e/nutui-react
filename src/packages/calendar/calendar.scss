@@ -1,18 +1,18 @@
 @import '../popup/popup.scss';
 .nut-theme-dark {
   .nut-calendar {
-    background: $dark-background;
-    color: $dark-color;
+    background: $dark5;
+    color: $dark1;
     .nut-calendar-header {
-      background: $dark-background;
-      color: $dark-color;
+      background: $dark5;
+      color: $dark1;
     }
     .nut-calendar-content {
       .calendar-months-panel {
         .calendar-month-con {
           .calendar-month-day {
             &-choose {
-              background-color: $dark-calendar-choose-color;
+              background-color: rgba(#fa2c19, 0.09);
               color: $calendar-choose-font-color;
             }
           }
@@ -20,8 +20,8 @@
       }
     }
     .nut-calendar-footer {
-      background: $dark-background2;
-      color: $dark-color;
+      background: $dark5;
+      color: $dark1;
     }
   }
 }
@@ -33,6 +33,7 @@
   color: $calendar-base-color;
   font-size: $calendar-base-font;
   background-color: $white;
+  color: $gray1;
   overflow: hidden;
   height: 100%;
   flex-direction: column;

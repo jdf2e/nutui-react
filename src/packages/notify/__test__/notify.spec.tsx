@@ -31,7 +31,7 @@ test('event click-show-Notify test', async () => {
   const { getByTestId } = render(
     <Cell
       data-testid="emit-click"
-      click={() => onClickNotify('text', '文案', { id: 'custom1' })}
+      onClick={() => onClickNotify('text', '文案', { id: 'custom1' })}
     />
   )
   fireEvent.click(getByTestId('emit-click'))
@@ -43,7 +43,7 @@ test('test toast props', async () => {
   const { getByTestId } = render(
     <Cell
       data-testid="emit-click"
-      click={() =>
+      onClick={() =>
         onClickNotify('text', '主要通知', {
           id: 'custom2',
           duration: 5000,
@@ -83,7 +83,7 @@ test('event show-primary-notify', async () => {
   const { getByTestId } = render(
     <Cell
       data-testid="emit-click"
-      click={() => onClickNotify('primary', 'primary')}
+      onClick={() => onClickNotify('primary', 'primary')}
     />
   )
   fireEvent.click(getByTestId('emit-click'))
@@ -100,7 +100,7 @@ test('event show-success-notify', async () => {
   const { getByTestId } = render(
     <Cell
       data-testid="emit-click"
-      click={() => onClickNotify('success', 'success')}
+      onClick={() => onClickNotify('success', 'success')}
     />
   )
   fireEvent.click(getByTestId('emit-click'))
@@ -117,7 +117,7 @@ test('event show-danger-notify', async () => {
   const { getByTestId } = render(
     <Cell
       data-testid="emit-click"
-      click={() => onClickNotify('danger', 'danger')}
+      onClick={() => onClickNotify('danger', 'danger')}
     />
   )
   fireEvent.click(getByTestId('emit-click'))
@@ -134,7 +134,7 @@ test('event show-warning-notify', async () => {
   const { getByTestId } = render(
     <Cell
       data-testid="emit-click"
-      click={() => onClickNotify('warn', 'warn')}
+      onClick={() => onClickNotify('warn', 'warn')}
     />
   )
   fireEvent.click(getByTestId('emit-click'))

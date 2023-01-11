@@ -6,8 +6,11 @@ Used to display the countdown value in real time, and precision supports millise
 
 ### Install
 
-```javascript
+```ts
+// react
 import { CountDown } from '@nutui/nutui-react'
+// taro
+import { CountDown } from '@nutui/nutui-react-taro'
 ```
 
 ## Demo

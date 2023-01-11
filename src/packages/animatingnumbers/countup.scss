@@ -1,3 +1,12 @@
+.nut-theme-dark {
+  .nut-countup {
+    &__list {
+      .nut-countup__listitem {
+        color: $dark1;
+      }
+    }
+  }
+}
 .nut-countup {
   &__list {
     display: inline-flex;
@@ -8,7 +17,7 @@
     height: $countup-height;
     overflow: hidden;
     font-size: $countup-base-size;
-    color: #000;
+    color: $title-color;
     font-weight: bold;
   }
   &__number,

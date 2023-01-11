@@ -7,7 +7,10 @@
 ### 安裝
 
 ```ts
+// react
 import { Watermark } from '@nutui/nutui-react';
+// taro
+import { Watermark } from '@nutui/nutui-react-taro';
 ```
 
 ### 基礎用法

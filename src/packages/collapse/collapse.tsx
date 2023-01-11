@@ -29,8 +29,9 @@ function areEqual(
   nextProps: Partial<CollapseProps>
 ) {
   return (
+    prevProps.children === nextProps.children &&
     JSON.stringify(prevProps.activeName) ===
-    JSON.stringify(nextProps.activeName)
+      JSON.stringify(nextProps.activeName)
   )
 }
 

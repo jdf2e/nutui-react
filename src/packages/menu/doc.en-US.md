@@ -7,7 +7,10 @@ The menu list that pops down downwards.
 ### Install
 
 ``` javascript
+// react
 import { Menu, MenuItem } from '@nutui/nutui-react';
+// taro
+import { Menu, MenuItem } from '@nutui/nutui-react-taro';
 ```
 
 ### Basic Usage

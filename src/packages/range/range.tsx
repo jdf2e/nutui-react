@@ -32,7 +32,6 @@ export interface RangeProps {
   button: React.ReactNode
   vertical: boolean
   marks: Record<string, unknown>
-  change?: (value: number) => void
   dragStart?: () => void
   dragEnd?: () => void
   onChange?: (value: number) => void
@@ -72,7 +71,6 @@ export const Range: FunctionComponent<
     button,
     vertical,
     marks,
-    change,
     dragStart,
     dragEnd,
     onChange,
@@ -87,18 +85,15 @@ export const Range: FunctionComponent<
   min = Number(min)
   max = Number(max)
   step = Number(step)
-
   const [buttonIndex, SetButtonIndex] = useState(0)
   const [initValue, SetInitValue] = useState<number | number[] | any>()
-
   const [dragStatus, SetDragStatus] = useState('start' || 'draging' || '')
   const touch = useTouch()
   const root = useRef<HTMLDivElement>(null)
-
   const [marksList, SetMarksList] = useState([])
 
   useEffect(() => {
-    if (modelValue) {
+    if (typeof modelValue === 'number') {
       if (!range && (modelValue < min || modelValue > max)) {
         SetInitValue(0)
         Toast.text(`${modelValue} ${locale.range.rangeText}`)
@@ -276,7 +271,6 @@ export const Range: FunctionComponent<
     }
 
     if ((marks || end) && !isSameValue(value, startValue)) {
-      change && change(value)
       onChange && onChange(value)
     }
   }

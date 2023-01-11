@@ -8,7 +8,10 @@
 ### 安装
 
 ```ts
+// react
 import { NavBar } from '@nutui/nutui-react';
+// taro
+import { NavBar } from '@nutui/nutui-react-taro';
 ```
 
 ### 代码示例
@@ -27,8 +30,8 @@ const App = () => {
           title="订单详情"
           leftShow
           leftText="返回"
-          onClickTitle={(e) => alert("返回")}
-          onClickBack={(e) => alert("标题")}
+          onClickTitle={(e) => alert("标题")}
+          onClickBack={(e) => alert("返回")}
           onClickRight={(e) => alert('icon')}
         >
           <Icon name="share" slot="right" />
@@ -53,8 +56,8 @@ const App = () => {
           title="浏览记录"
           desc="清空"
           leftShow
-          onClickTitle={(e) => alert("返回")}
-          onClickBack={(e) => alert("标题")}
+          onClickTitle={(e) => alert("标题")}
+          onClickBack={(e) => alert("返回")}
           onClickRight={(e) => alert('清空')}
       />
     </>
@@ -77,8 +80,8 @@ const App = () => {
           title="购物车"
           desc="编辑"
           titIcon="locationg3"
-          onClickTitle={(e) => alert("返回")}
-          onClickBack={(e) => alert("标题")}
+          onClickTitle={(e) => alert("标题")}
+          onClickBack={(e) => alert("返回")}
           onClickRight={(e) => alert('编辑')}
           onClickIcon={(e) => alert('icon')}
         >

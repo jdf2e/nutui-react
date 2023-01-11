@@ -2,18 +2,18 @@
 
 .nut-theme-dark {
   .nut-range-container {
-    background: $dark-background;
+    background: $dark5;
     .min,
     .max {
-      color: $dark-color-gray;
+      color: $dark1;
     }
     .nut-range {
       &-mark-text {
-        color: $dark-color-gray;
+        color: $dark2;
       }
       &-button {
         .number {
-          color: $dark-color;
+          color: $dark1;
         }
       }
     }

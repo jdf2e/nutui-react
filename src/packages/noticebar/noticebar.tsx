@@ -116,9 +116,8 @@ export const NoticeBar: FunctionComponent<
       } else {
         scrollList.current = [].concat(list)
       }
-      setTimeout(() => {
-        complexAm ? startRoll() : startRollEasy()
-      }, Number(standTime))
+
+      complexAm ? startRoll() : startRollEasy()
     } else {
       initScrollWrap(text)
     }
@@ -199,23 +198,31 @@ export const NoticeBar: FunctionComponent<
    */
   const startRollEasy = () => {
     showhorseLamp()
-    const timerCurr = setInterval(
+    const time =
+      height / speed / 4 < 1
+        ? Number((height / speed / 4).toFixed(1)) * 1000
+        : ~~(height / speed / 4) * 1000
+    const timerCurr = window.setInterval(
       showhorseLamp,
-      ~~(height / speed / 4) * 1000 + Number(standTime)
+      time + Number(standTime)
     )
     SetTimer(timerCurr)
   }
   const showhorseLamp = () => {
     SetAnimate(true)
+    const time =
+      height / speed / 4 < 1
+        ? Number((height / speed / 4).toFixed(1)) * 1000
+        : ~~(height / speed / 4) * 1000
     setTimeout(() => {
       scrollList.current.push(scrollList.current[0])
       scrollList.current.shift()
       SetAnimate(false)
-    }, ~~(height / speed / 4) * 1000)
+    }, time)
   }
 
   const startRoll = () => {
-    const timerCurr = setInterval(() => {
+    const timerCurr = window.setInterval(() => {
       const chunk = 100
       for (let i = 0; i < chunk; i++) {
         scroll(i, !(i < chunk - 1))
@@ -281,11 +288,16 @@ export const NoticeBar: FunctionComponent<
     height: direction === 'vertical' ? `${height}px` : '',
   }
 
-  const duringTime = ~~(height / speed / 4)
+  const duringTime =
+    height / speed / 4 < 1
+      ? Number((height / speed / 4).toFixed(1))
+      : ~~(height / speed / 4)
+  const noDuring =
+    height / speed < 1 ? (height / speed).toFixed(1) : ~~(height / speed)
   const horseLampStyle = {
     transform: complexAm ? `translateY(${distance}px)` : '',
     transition: animate
-      ? `all ${duringTime === 0 ? ~~(height / speed) : duringTime}s`
+      ? `all ${duringTime === 0 ? noDuring : duringTime}s`
       : '',
     marginTop: animate ? `-${height}px` : '',
   }
@@ -343,9 +355,7 @@ export const NoticeBar: FunctionComponent<
           ) : null}
         </div>
       ) : null}
-      {showNoticeBar &&
-      scrollList.current.length > 0 &&
-      direction === 'vertical' ? (
+      {showNoticeBar && direction === 'vertical' ? (
         <div
           className="nut-noticebar-vertical"
           style={barStyle}
