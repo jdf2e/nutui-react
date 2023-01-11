@@ -245,6 +245,8 @@ export default App
 | 參數                  | 說明                                                                                     | 類型               | 默認值      |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|------------|
 | text                 | 文字                                                                                     | string \| ReactNode   | -          |
+| fontSize `1.4.4`     | 文字大小                                                                                  | string \| number   | -          |
+| color `1.4.4`        | 文字顏色                                                                                  | string   | -          |
 | icon                 | [圖標名稱](#/icon) 或圖片鏈接                                                              | string  \| ReactNode   | -          |
 | iconSize            | 圖標大小，如 `20px` `2em` `2rem`                                                          | number \| string   | `28px`     |
 | iconColor           | 圖標顏色                                                                                  | string            | -           |

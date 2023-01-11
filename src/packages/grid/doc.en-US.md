@@ -245,6 +245,8 @@ export default App
 | Attribute   | Description                                              | Type   | Default |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|------------|
 | text                 | text                                                                                     | string\| ReactNode              | -          |
+| fontSize `1.4.4`     | text size                                                                                | string \| number   | -          |
+| color `1.4.4`        | text color                                                                               | string   | -          |
 | icon                 | Icon name or URL                                                            | string \| ReactNode     | -          |
 | iconSize            | Icon size,for example `20px` `2em` `2rem`      | number \| string  |`28px`  |
 | iconColor           | Icon color              | string            | -           |
