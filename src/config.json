@@ -81,6 +81,18 @@
           "author": "songsong"
         },
         {
+          "version": "1.0.0",
+          "name": "ConfigProvider",
+          "type": "component",
+          "cName": "全局配置",
+          "desc": "可以配置多语言等全局属性",
+          "sort": 16,
+          "show": true,
+          "exportEmpty": true,
+          "taro": true,
+          "author": "hanyuxinting"
+        },
+        {
           "version": "0.1.0",
           "name": "Icon",
           "type": "component",
@@ -90,6 +102,18 @@
           "show": true,
           "taro": true,
           "author": "oasis-cloud"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Image",
+          "type": "component",
+          "tarodoc": true,
+          "cName": "图片",
+          "desc": "增强版的 img 标签，提供多种图片填充模式，支持图片加载中提示、加载失败提示。",
+          "sort": 8,
+          "show": true,
+          "taro": true,
+          "author": "vickyYE"
         },
         {
           "version": "0.1.0",
@@ -112,30 +136,6 @@
           "taro": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008"
-        },
-        {
-          "version": "1.0.0",
-          "name": "ConfigProvider",
-          "type": "component",
-          "cName": "全局配置",
-          "desc": "可以配置多语言等全局属性",
-          "sort": 16,
-          "show": true,
-          "exportEmpty": true,
-          "taro": true,
-          "author": "hanyuxinting"
-        },
-        {
-          "version": "1.0.0",
-          "name": "Image",
-          "type": "component",
-          "tarodoc": true,
-          "cName": "图片",
-          "desc": "增强版的 img 标签，提供多种图片填充模式，支持图片加载中提示、加载失败提示。",
-          "sort": 8,
-          "show": true,
-          "taro": true,
-          "author": "vickyYE"
         }
       ]
     },
