@@ -219,6 +219,7 @@ export const InputNumber: FunctionComponent<
         onClick={reduceNumber}
       />
       <input
+        className="nut-number-input"
         type="number"
         min={min}
         max={max}
