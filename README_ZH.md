@@ -51,6 +51,40 @@
 * 🍭 单元测试覆盖率超过90%, 保障稳定性
 * 📖 提供 Sketch 设计资源
 
+
+## 项目运行
+
+### 本地运行H5
+```
+git clone https://github.com/jdf2e/nutui-react.git
+
+cd nutui-react
+
+npm install
+
+npm run dev
+
+访问：http://localhost:3000（如果已启动前台程序，则不需打开此地址）
+```
+### 本地运行小程序
+```
+git clone https://github.com/jdf2e/nutui-react.git
+
+cd nutui-react
+
+npm install
+
+npm run dev:taro:weapp
+
+访问：src/sites/mobile-taro/dist/weapp
+
+其他小程序类似，如
+
+npm run dev:taro:jd
+
+访问：src/sites/mobile-taro/dist/jd
+```
+
 ## 构建版本
 
 > AMD 环境、Webpack、Vite 等构建工具环境、服务端建议使用 es 版，非模块化环境（如通过 `<script>` 标签直接引用）建议使用 umd 压缩版。
