@@ -9,7 +9,7 @@ const { resolve } = path
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/react/',
+  base: '/h5/react/1x',
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
