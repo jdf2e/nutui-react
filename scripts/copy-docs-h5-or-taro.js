@@ -85,7 +85,6 @@ const copy = async () => {
     docsConfig.version = fromPkgConfig.version
     docsConfig.nav = fromConfig.nav
     docsConfig.docs = fromConfig.docs
-    docsConfig.demoUrl = 'https://nutui.jd.com/react/demo.html#'
     fse
       .writeJson(nutuiDocsConfigPath, docsConfig, {
         spaces: 2,
