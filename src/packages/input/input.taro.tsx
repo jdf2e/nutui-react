@@ -5,7 +5,6 @@ import React, {
   useState,
   useCallback,
   useRef,
-  useLayoutEffect,
   MouseEvent,
   HTMLInputTypeAttribute,
   forwardRef,
@@ -190,11 +189,7 @@ export const Input: FunctionComponent<
     validateFailed: false, // 校验失败
     validateMessage: '', // 校验信息
   }
-  useLayoutEffect(() => {
-    if (defaultValue) {
-      updateValue(getModelValue(), formatTrigger)
-    }
-  })
+
   useEffect(() => {
     setClasses(inputClass)
     SetInputValue(defaultValue)
@@ -233,8 +228,7 @@ export const Input: FunctionComponent<
 
   const updateValue = (
     value: any,
-    trigger: InputFormatTrigger = 'onChange',
-    event?: any
+    trigger: InputFormatTrigger = 'onChange'
   ) => {
     let val = value
 
@@ -262,7 +256,6 @@ export const Input: FunctionComponent<
       inputRef.current.value = val
     }
     SetInputValue(val)
-    onChange && onChange(val, event)
   }
 
   const handleFocus = (event: Event) => {
@@ -277,7 +270,8 @@ export const Input: FunctionComponent<
     if (maxlength && val.length > Number(maxlength)) {
       val = val.slice(0, Number(maxlength))
     }
-    updateValue(val, 'onChange', event)
+    updateValue(val, 'onChange')
+    onChange && onChange(val, event)
   }
 
   const handleBlur = (event: Event) => {
