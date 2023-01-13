@@ -53,6 +53,40 @@
 * 📖 Provide Sketch Design Resources
 
 
+
+## Local Run
+
+### local H5
+```
+git clone https://github.com/jdf2e/nutui-react.git
+
+cd nutui-react
+
+npm install
+
+npm run dev
+
+url：http://localhost:3000
+```
+### local mp
+```
+git clone https://github.com/jdf2e/nutui-react.git
+
+cd nutui-react
+
+npm install
+
+npm run dev:taro:weapp
+
+dir：src/sites/mobile-taro/dist/weapp
+
+OR jd
+
+npm run dev:taro:jd
+
+dir：src/sites/mobile-taro/dist/jd
+```
+
 ## Build Versions
 
 > If you are using AMD environment or build tools such as Webpack, Vite, etc., we recommend using the `es` version. If it is a non-module environment (such as direct reference through the `<script>` tag), it is recommended to use the `umd` compressed version.
