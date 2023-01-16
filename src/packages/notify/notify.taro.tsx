@@ -74,7 +74,7 @@ export const Notify: FunctionComponent<
   const show = () => {
     clearTimer()
     if (duration) {
-      timer = setTimeout(() => {
+      timer = window.setTimeout(() => {
         hide()
       }, duration)
     }

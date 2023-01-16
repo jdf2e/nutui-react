@@ -25,9 +25,7 @@ const BackTopDemo = () => {
       backText: 'Top',
     },
   })
-  const demoStyle = {
-    height: '1600px',
-  }
+
   const cellStyle = {
     height: '46px',
     lineHeight: '46px',
@@ -46,7 +44,11 @@ const BackTopDemo = () => {
 
   return (
     <>
-      <div className="demo" style={demoStyle} id="elId">
+      <div
+        className="demo"
+        style={{ height: '1300px', overflowY: 'auto' }}
+        id="elId"
+      >
         <h2>{translated.title}</h2>
         <div className="text-data" style={cellStyle}>
           {translated.content}1
@@ -122,7 +124,6 @@ const BackTopDemo = () => {
         </div>
         <BackTop
           className="custom-class"
-          elId="elId"
           distance={100}
           bottom={110}
           onClick={handleClick}

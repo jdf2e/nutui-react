@@ -3,7 +3,7 @@
     <img alt="logo" src="https://img11.360buyimg.com/imagetools/jfs/t1/211965/25/7152/22022/61b16785E433119bb/aa41d7a9f7e823f3.png" width="150" style="margin-bottom: 10px;">
 </p>
 
-<p align="center">京东风格的轻量级移动端 React 组件库，支持一套代码生成 H5 和小程序</p>
+<p align="center">京东风格的轻量级 React 组件库，支持移动端 H5 和小程序开发</p>
 
 <p align="center">
     <a href="http://makeapullrequest.com">
@@ -50,6 +50,40 @@
 * 🍭 支持定制主题
 * 🍭 单元测试覆盖率超过90%, 保障稳定性
 * 📖 提供 Sketch 设计资源
+
+
+## 项目运行
+
+### 本地运行H5
+```
+git clone https://github.com/jdf2e/nutui-react.git
+
+cd nutui-react
+
+npm install
+
+npm run dev
+
+访问：http://localhost:3000（如果已启动前台程序，则不需打开此地址）
+```
+### 本地运行小程序
+```
+git clone https://github.com/jdf2e/nutui-react.git
+
+cd nutui-react
+
+npm install
+
+npm run dev:taro:weapp
+
+访问：src/sites/mobile-taro/dist/weapp
+
+其他小程序类似，如
+
+npm run dev:taro:jd
+
+访问：src/sites/mobile-taro/dist/jd
+```
 
 ## 构建版本
 
