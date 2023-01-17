@@ -8,8 +8,7 @@ Add specific words or patterns on the page to prevent information theft.
 
 ```ts
 // react
-import { Watermark } from '@nutui/nutui-react';
-
+import { WaterMark } from '@nutui/nutui-react';
 ```
 
 ### Install
@@ -18,7 +17,7 @@ import { Watermark } from '@nutui/nutui-react';
 
 ```tsx
 import React, { useState, useRef } from "react";
-import { Watermark } from '@nutui/nutui-react';
+import { WaterMark, Cell, Button } from '@nutui/nutui-react';
 
 const App = () => {
   const [flag, setFlag] = useState(false)
@@ -36,14 +35,14 @@ const App = () => {
   return (
     <>
       <Cell className="wrap">
-        <Button onClick={showTextMark}>Text WaterMark<</Button>
+        <Button onClick={showTextMark}>Text WaterMark</Button>
         <Button onClick={showImageMark}>Image WaterMark</Button>
         {!flag && (
         <WaterMark
             className="mark1"
             zIndex={1}
             content="nut-ui-water-mark"
-        ></WaterMark>
+         />
         )}
         {flag && (
         <WaterMark
@@ -53,7 +52,7 @@ const App = () => {
             imageWidth={60}
             imageHeight={23}
             image={imgSrc.current}
-        ></WaterMark>
+         />
         )}
       </Cell>
     </>
@@ -69,7 +68,7 @@ export default App;
 
 ```tsx
 import React, { useRef } from "react";
-import { Watermark } from '@nutui/nutui-react';
+import { WaterMark, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const src = useRef(
@@ -84,7 +83,7 @@ const App = () => {
           fullPage={false}
           fontColor="#fa2c19"
           content="nut-ui"
-        ></WaterMark>
+         />
       </Cell>
     </>
   )

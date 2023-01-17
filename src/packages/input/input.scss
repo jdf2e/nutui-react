@@ -114,7 +114,12 @@ textarea {
     vertical-align: middle;
   }
   &-right-mark {
-    .nut-input-value {
+    // .nut-input-value {
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: space-between;
+    // }
+    .nut-input-main-con {
       display: flex;
       align-items: center;
       justify-content: space-between;
