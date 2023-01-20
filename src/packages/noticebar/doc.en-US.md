@@ -151,7 +151,7 @@ export default App
 
 
 
-### Vertical Scroll Complex Animation
+### Vertical Scroll Custom Left Icon
 
 :::demo
 
@@ -168,7 +168,14 @@ const App = () => {
             list={horseLamp2}
             speed={10}
             standTime={2000}
-            complexAm
+            leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+            onClick={(e) => {
+              console.log('listClick', e.target)
+            }}
+            onClickItem={(e, val) => {
+              console.log('dom', e.target)
+              console.log('value', val)
+            }}
         />
       </>
     )
@@ -193,14 +200,16 @@ const App = () => {
       <>
         <NoticeBar direction="vertical" height={50} speed={10} standTime={1000}
         closeMode
-        onClose={() => {console.log('close')}}
-        onClick={(e) => {console.log(e)}}>
+        onClose={() => {console.log('close')}}>
         {horseLamp3.map((item, index) => {
             return (
             <div
                 className="custom-item"
                 style={{ height: '50px', lineHeight: '50px' }}
                 key={index}
+                onClick={() => {
+                    console.log('custom-inner', item)
+                }}
             >
                 {item}
             </div>
@@ -234,6 +243,9 @@ const App = () => {
             list={horseLamp1}
             speed={10}
             standTime={1000}
+            onClickItem={(e, v) => {
+              console.log('onclick-custom', v)
+            }}
             rightIcon={<Icon name="fabulous" size="16" color="#f0250f" />}
         />
         </>
@@ -286,4 +298,5 @@ export default App
 | ---------- | --------------------------------------- | ------------ |
 | onClick `v1.3.8`     | Emitted when NoticeBar is clicked       | event: Event |
 | onClose `v1.3.8`     | Emitted when NoticeBar is closed        | event: Event |
+| onClickItm `v1.4.5` | Emitted when the currently displayed information is clicked when scrolling multiple pieces of data vertically | （event: Event,listItem） |
 
