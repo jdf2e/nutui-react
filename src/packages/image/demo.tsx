@@ -33,13 +33,13 @@ const ImageDemo = () => {
   const position2 = ['top', 'center', 'bottom']
 
   const style = `
- .demo .text {
+ .demo .image-text {
     margin-top: 5px;
     text-align: center;
     color: #999;
   }
  .demo .nut-row-flex-wrap .nut-col {
-    margin-bottom: 20px;   
+    margin-bottom: 20px;
   }
 `
   return (
@@ -65,7 +65,7 @@ const ImageDemo = () => {
               return (
                 <Col span="8" key={i}>
                   <Image src={src} width="100" height="100" fit={i} />
-                  <div className="text">{i}</div>
+                  <div className="image-text">{i}</div>
                 </Col>
               )
             })}
@@ -85,8 +85,8 @@ const ImageDemo = () => {
                     fit="contain"
                     position={i}
                   />
-                  <div className="text">contain</div>
-                  <div className="text">{i}</div>
+                  <div className="image-text">contain</div>
+                  <div className="image-text">{i}</div>
                 </Col>
               )
             })}
@@ -100,8 +100,8 @@ const ImageDemo = () => {
                     fit="cover"
                     position={i}
                   />
-                  <div className="text">cover</div>
-                  <div className="text">{i}</div>
+                  <div className="image-text">cover</div>
+                  <div className="image-text">{i}</div>
                 </Col>
               )
             })}
@@ -113,11 +113,11 @@ const ImageDemo = () => {
           <Row gutter={10}>
             <Col span="8">
               <Image src={src} width="100" height="100" fit="contain" round />
-              <div className="text">contain</div>
+              <div className="image-text">contain</div>
             </Col>
             <Col span="8">
               <Image src={src} width="100" height="100" fit="cover" round />
-              <div className="text">cover</div>
+              <div className="image-text">cover</div>
             </Col>
             <Col span="8">
               <Image
@@ -128,7 +128,7 @@ const ImageDemo = () => {
                 radius="10"
                 round
               />
-              <div className="text">cover</div>
+              <div className="image-text">cover</div>
             </Col>
           </Row>
         </Cell>
@@ -145,7 +145,7 @@ const ImageDemo = () => {
                   console.log('image onload')
                 }}
               />
-              <div className="text">默认</div>
+              <div className="image-text">默认</div>
             </Col>
             <Col span="8">
               <Image
@@ -157,7 +157,7 @@ const ImageDemo = () => {
                   </>
                 }
               />
-              <div className="text">自定义</div>
+              <div className="image-text">自定义</div>
             </Col>
           </Row>
         </Cell>
@@ -175,13 +175,13 @@ const ImageDemo = () => {
                   console.log('image error')
                 }}
               />
-              <div className="text">默认</div>
+              <div className="image-text">默认</div>
             </Col>
             <Col span="8">
               <Image src="https://x" width="100" height="100" showError>
                 <Icon name="circle-close" />
               </Image>
-              <div className="text">自定义</div>
+              <div className="image-text">自定义</div>
             </Col>
           </Row>
         </Cell>

@@ -9,8 +9,7 @@ Bottom Navigation Common Scenarios
 ```ts
 // react
 import { Tabbar, TabbarItem } from '@nutui/nutui-react';
-// taro
-import { Tabbar, TabbarItem } from '@nutui/nutui-react-taro';
+
 ```
 
 ## code demo

@@ -2,6 +2,8 @@ import React from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Cell, Col, Row, Indicator } from '@/packages/nutui.react.taro'
 import '@/packages/indicator/demo.scss'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   ce5c5446: string
@@ -36,7 +38,8 @@ const IndicatorDemo = () => {
   })
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.ce5c5446}</h2>
         <Cell>
           <Indicator className="demo1" size={3} current={3} />

@@ -9,8 +9,7 @@ Used to display product pictures, prices and other information.
 ```js
 // react
 import { Card, Price, Tag } from '@nutui/nutui-react';
-// taro
-import { Card, Price, Tag } from '@nutui/nutui-react-taro';
+
 ```
 
 

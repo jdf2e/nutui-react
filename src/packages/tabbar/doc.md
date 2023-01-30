@@ -9,8 +9,7 @@
 ```ts
 // react
 import { Tabbar, TabbarItem } from '@nutui/nutui-react';
-// taro
-import { Tabbar, TabbarItem } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代码演示

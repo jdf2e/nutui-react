@@ -9,8 +9,7 @@ Enter or edit text in the text box, and limit the number of entries is supported
 ```javascript
 // react
 import { TextArea } from '@nutui/nutui-react';
-// taro
-import { TextArea } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Demo

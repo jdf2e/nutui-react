@@ -6,7 +6,7 @@
 
 ### 安装
 ```javascript
-import { VirtualList } from '@/packages/nutui.react.taro'
+import { VirtualList } from '@nutui/nutui-react-taro';
 ```
 ## 代码演示
 
@@ -16,9 +16,7 @@ import { VirtualList } from '@/packages/nutui.react.taro'
 :::demo
 ``` tsx
 import React, { useState, useEffect, useCallback } from 'react'
-import {
-  VirtualList,
-} from '@/packages/nutui.react.taro'
+import { VirtualList } from '@nutui/nutui-react-taro';
 
 const App =() => {
   const [sourceData, setsourceData] = useState([])
@@ -77,15 +75,12 @@ const App =() => {
 export default App;
 ```
 :::
-
 ### 2、垂直不等高&无限下滑
 
 :::demo
 ``` tsx
 import React, { useState, useEffect, useCallback } from 'react'
-import {
-  VirtualList,
-} from '@/packages/nutui.react.taro'
+import { VirtualList } from '@nutui/nutui-react-taro';
 
 const App =() => {
   const [sourceData, setsourceData] = useState([])
@@ -153,7 +148,6 @@ const App =() => {
 export default App;
 ```
 :::
-
 
 ## API
 

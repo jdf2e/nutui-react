@@ -9,8 +9,7 @@
 ```ts
 // react
 import { ActionSheet } from '@nutui/nutui-react';
-// taro
-import { ActionSheet } from '@nutui/nutui-react-taro';
+
 ```
 ## 代码示例
 

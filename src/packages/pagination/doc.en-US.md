@@ -8,8 +8,7 @@ When the amount of data is too much, use pagination to separate the data.
 ``` javascript
 // react
 import { Pagination } from '@nutui/nutui-react';
-// taro
-import { Pagination } from '@nutui/nutui-react-taro';
+
 ```    
 
 ### Basic Usage

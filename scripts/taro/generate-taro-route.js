@@ -19,17 +19,15 @@ const createConfig = async () => {
           co.pages.push(`pages/${it.name.toLowerCase()}/index`)
         }
       })
-
+      co = { ...co, pages: co.pages.sort() }
       configRef.push(co)
     })
-
     res(configRef)
   })
 }
 
 const create = async () => {
   const subpackages = await createConfig()
-
   fse.writeFileSync(
     taroConfig,
     `

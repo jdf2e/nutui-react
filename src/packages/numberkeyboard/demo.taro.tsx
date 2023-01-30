@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell, Toast, NumberKeyboard } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 const NumberKeyboardDemo = () => {
   const [translated] = useTranslate({
@@ -52,92 +54,95 @@ const NumberKeyboardDemo = () => {
     SetShow(true)
   }
   return (
-    <div className="demo">
-      <h2>{translated.basic}</h2>
-      <Cell
-        title={translated.basic}
-        isLink
-        onClick={() => {
-          setVisible1(true)
-        }}
-      />
-      <NumberKeyboard
-        visible={visible1}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible1(false)}
-      />
-      <h2>{translated.sidebar}</h2>
-      <Cell
-        title={translated.sidebar}
-        isLink
-        onClick={() => {
-          setVisible2(true)
-        }}
-      />
-      <NumberKeyboard
-        visible={visible2}
-        type="rightColumn"
-        customKey={['.', 'x']}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible2(false)}
-      />
-      <h2>{translated.randomKeyOrder}</h2>
-      <Cell
-        title={translated.randomKeyOrder}
-        isLink
-        onClick={() => {
-          setVisible3(true)
-        }}
-      />
-      <NumberKeyboard
-        visible={visible3}
-        randomKeys
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible3(false)}
-      />
-      <h2>{translated.withTitle}</h2>
-      <Cell
-        title={translated.withTitle}
-        isLink
-        onClick={() => {
-          setVisible4(true)
-        }}
-      />
-      <NumberKeyboard
-        visible={visible4}
-        title={translated.title}
-        customKey={['.']}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible4(false)}
-      />
-      <h2>{translated.idNumberKeyboard}</h2>
-      <Cell
-        title={translated.idNumberKeyboard}
-        isLink
-        onClick={() => {
-          setVisible5(true)
-        }}
-      />
-      <NumberKeyboard
-        visible={visible5}
-        customKey={['X']}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible5(false)}
-      />
-      <Toast
-        type="text"
-        visible={show}
-        msg={toastMsg}
-        onClose={() => {
-          SetShow(false)
-        }}
-      />
-    </div>
+    <>
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <h2>{translated.basic}</h2>
+        <Cell
+          title={translated.basic}
+          isLink
+          onClick={() => {
+            setVisible1(true)
+          }}
+        />
+        <NumberKeyboard
+          visible={visible1}
+          onChange={onChange}
+          onDelete={onDelete}
+          onClose={() => setVisible1(false)}
+        />
+        <h2>{translated.sidebar}</h2>
+        <Cell
+          title={translated.sidebar}
+          isLink
+          onClick={() => {
+            setVisible2(true)
+          }}
+        />
+        <NumberKeyboard
+          visible={visible2}
+          type="rightColumn"
+          customKey={['.', 'x']}
+          onChange={onChange}
+          onDelete={onDelete}
+          onClose={() => setVisible2(false)}
+        />
+        <h2>{translated.randomKeyOrder}</h2>
+        <Cell
+          title={translated.randomKeyOrder}
+          isLink
+          onClick={() => {
+            setVisible3(true)
+          }}
+        />
+        <NumberKeyboard
+          visible={visible3}
+          randomKeys
+          onChange={onChange}
+          onDelete={onDelete}
+          onClose={() => setVisible3(false)}
+        />
+        <h2>{translated.withTitle}</h2>
+        <Cell
+          title={translated.withTitle}
+          isLink
+          onClick={() => {
+            setVisible4(true)
+          }}
+        />
+        <NumberKeyboard
+          visible={visible4}
+          title={translated.title}
+          customKey={['.']}
+          onChange={onChange}
+          onDelete={onDelete}
+          onClose={() => setVisible4(false)}
+        />
+        <h2>{translated.idNumberKeyboard}</h2>
+        <Cell
+          title={translated.idNumberKeyboard}
+          isLink
+          onClick={() => {
+            setVisible5(true)
+          }}
+        />
+        <NumberKeyboard
+          visible={visible5}
+          customKey={['X']}
+          onChange={onChange}
+          onDelete={onDelete}
+          onClose={() => setVisible5(false)}
+        />
+        <Toast
+          type="text"
+          visible={show}
+          msg={toastMsg}
+          onClose={() => {
+            SetShow(false)
+          }}
+        />
+      </div>
+    </>
   )
 }
 

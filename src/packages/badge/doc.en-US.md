@@ -9,8 +9,7 @@
 ``` javascript
 // react
 import { Badge } from '@nutui/nutui-react';
-// taro
-import { Badge } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Demo

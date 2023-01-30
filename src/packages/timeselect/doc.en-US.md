@@ -9,8 +9,7 @@ For delivery time selection
 ``` javascript
 // react
 import { TimeSelect } from '@nutui/nutui-react';
-// taro
-import { TimeSelect } from '@nutui/nutui-react-taro';
+
 ```
 
 ### Basic Usage

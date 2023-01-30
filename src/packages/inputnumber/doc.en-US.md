@@ -9,8 +9,7 @@ Control the number increase or decrease by clicking the button.
 ``` ts
 // react
 import { InputNumber } from '@nutui/nutui-react';
-// taro
-import { InputNumber } from '@nutui/nutui-react-taro';
+
 ```
 
 ### Basic Usage

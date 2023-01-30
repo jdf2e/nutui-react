@@ -60,7 +60,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     style.top = `${Number(top) || parseFloat(top) || 0}px`
     style.right = `${Number(right) || parseFloat(right) || 0}px`
     style.zIndex = zIndex
-    style.backgroundColor = color
+    style.background = color
     return style
   }
   return (

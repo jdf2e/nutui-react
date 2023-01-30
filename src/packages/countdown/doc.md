@@ -9,8 +9,7 @@
 ```ts
 // react
 import { CountDown } from '@nutui/nutui-react'
-// taro
-import { CountDown } from '@nutui/nutui-react-taro'
+
 ```
 
 ## 代码演示

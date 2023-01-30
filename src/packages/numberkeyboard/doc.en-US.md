@@ -8,8 +8,7 @@ Virtual numeric keypad, used for scenarios where payment passwords are entered.
 ```ts
 // react
 import { NumberKeyboard } from '@nutui/nutui-react';
-// taro
-import { NumberKeyboard } from '@nutui/nutui-react-taro';
+
 ```
 
 

@@ -8,9 +8,7 @@
 
 ```ts
 // react
-import { Watermark } from '@nutui/nutui-react';
-// taro
-import { Watermark } from '@nutui/nutui-react-taro';
+import { WaterMark } from '@nutui/nutui-react';
 ```
 
 ### 基础用法
@@ -19,7 +17,7 @@ import { Watermark } from '@nutui/nutui-react-taro';
 
 ```tsx
 import React, { useState, useRef } from "react";
-import { Watermark } from '@nutui/nutui-react';
+import { WaterMark, Button, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const [flag, setFlag] = useState(false)
@@ -44,7 +42,7 @@ const App = () => {
             className="mark1"
             zIndex={1}
             content="nut-ui-water-mark"
-        ></WaterMark>
+         />
         )}
         {flag && (
         <WaterMark
@@ -54,7 +52,7 @@ const App = () => {
             imageWidth={60}
             imageHeight={23}
             image={imgSrc.current}
-        ></WaterMark>
+         />
         )}
       </Cell>
     </>
@@ -70,7 +68,7 @@ export default App;
 
 ```tsx
 import React, { useRef } from "react";
-import { Watermark } from '@nutui/nutui-react';
+import { WaterMark, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const src = useRef(
@@ -85,7 +83,7 @@ const App = () => {
           fullPage={false}
           fontColor="#fa2c19"
           content="nut-ui"
-        ></WaterMark>
+         />
       </Cell>
     </>
   )

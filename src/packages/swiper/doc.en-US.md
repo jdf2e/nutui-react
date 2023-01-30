@@ -9,8 +9,7 @@ Often used in a group of pictures or card rotation.
 ```javascript
 // react
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
-// taro
-import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
+
 ```
 
 ### Basic Usage

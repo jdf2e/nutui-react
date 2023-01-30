@@ -8,8 +8,7 @@
 ```ts
 // react
 import { ShortPassword } from '@nutui/nutui-react';
-// taro
-import { ShortPassword } from '@nutui/nutui-react-taro';
+
 ```
 
 

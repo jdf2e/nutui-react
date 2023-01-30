@@ -9,8 +9,7 @@ Place the content in multiple folded panels, and click the panel title to expand
 ```ts
 // react
 import { Collapse,CollapseItem } from 'nutui-react'
-// taro
-import { Collapse,CollapseItem } from 'nutui-react-taro'
+
 ```
 
 
