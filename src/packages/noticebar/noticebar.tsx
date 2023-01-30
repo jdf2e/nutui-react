@@ -126,7 +126,7 @@ export const NoticeBar: FunctionComponent<
 
   const [childOffset, setChildOffset] = useState<any[]>([])
   const [offset, setOffset] = useState(0)
-
+  // 获取自定义slot数据内容和总条数
   const { childs, childCount } = useMemo(() => {
     let childCount = 0
     const childs: any = React.Children.map(children, (child) => {
@@ -139,9 +139,9 @@ export const NoticeBar: FunctionComponent<
       childCount,
     }
   }, [children])
-
+  // 滚动消息的总高度
   let trackSize = childCount * Number(height)
-
+  // 设置最小偏移量（最后一条的偏移位置）
   const minOffset = (() => {
     if (rect) {
       const base = isVertical ? rect.height : rect.width
@@ -373,10 +373,12 @@ export const NoticeBar: FunctionComponent<
   }, [ready])
 
   useEffect(() => {
-    init()
-    stopAutoPlay()
-    autoplay()
-  }, [children])
+    if (isVertical && children) {
+      init()
+      stopAutoPlay()
+      autoplay()
+    }
+  }, [children, container?.current])
 
   // 清除定时器
   const stopAutoPlay = () => {
@@ -399,8 +401,8 @@ export const NoticeBar: FunctionComponent<
     const targetActive = getActive(pace)
     // 父级容器偏移量
     const targetOffset = getOffset(targetActive, offset)
-    // 如果循环，调整开头结尾图片位置
 
+    // 循环滚动，调整开头结尾图片位置
     if (Array.isArray(children) && children[0] && targetOffset !== minOffset) {
       const rightBound = targetOffset < minOffset
       childOffset[0] = rightBound ? trackSize : 0
@@ -439,9 +441,9 @@ export const NoticeBar: FunctionComponent<
     const target = innerRef.current
 
     let _offset = 0
+    // 容器高度-元素高度
+    const val = rect.height - height
 
-    const _size = height
-    const val = height - _size
     _offset = moveOffset + Number(active === childCount - 1 && val / 2)
 
     target.style.transitionDuration = `${

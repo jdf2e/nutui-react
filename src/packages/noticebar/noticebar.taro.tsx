@@ -386,18 +386,14 @@ export const NoticeBar: FunctionComponent<
   }, [ready])
 
   useEffect(() => {
-    if (isVertical) {
+    if (isVertical && children) {
       setTimeout(() => {
         init()
         stopAutoPlay()
         autoplay()
       }, 300)
     }
-    return () => {
-      stopAutoPlay()
-      autoplay()
-    }
-  }, [children])
+  }, [children, container?.current])
 
   // 清除定时器
   const stopAutoPlay = () => {
@@ -461,8 +457,8 @@ export const NoticeBar: FunctionComponent<
 
     let _offset = 0
 
-    const _size = height
-    const val = height - _size
+    // 容器高度-元素高度
+    const val = rect.height - height
     _offset = moveOffset + Number(active === childCount - 1 && val / 2)
 
     target.style.transitionDuration = `${
@@ -518,7 +514,11 @@ export const NoticeBar: FunctionComponent<
       move({ pace: -childCount })
     }
   }
-
+  useEffect(() => {
+    return () => {
+      stopAutoPlay()
+    }
+  }, [])
   return (
     <div className={`${b()} ${className || ''}`} style={style}>
       {showNoticeBar && direction === 'across' ? (
