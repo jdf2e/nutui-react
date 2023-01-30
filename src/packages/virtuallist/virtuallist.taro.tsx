@@ -1,22 +1,38 @@
 import React, {
   FunctionComponent,
-  useCallback,
   useEffect,
   useRef,
   useState,
+  useCallback,
 } from 'react'
+import { ScrollView } from '@tarojs/components'
+import Taro from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { BasicVirtualListProps, VirtualListState, PositionType } from './type'
-import {
-  initPositinoCache,
-  getListTotalSize,
-  binarySearch,
-  getEndIndex,
-  updateItemSize,
-} from './utils'
+import { VirtualListState, PositionType } from './type'
+import { initPositinoCache, binarySearch, updateItemSize } from './utils'
 
-export type VirtualListProps = BasicVirtualListProps
-const defaultProps = {} as VirtualListProps
+export type VirtualListProps = {
+  className?: string | any
+  style?: React.CSSProperties
+  sourceData: any // 获取数据
+  containerSize?: number // 容器大小
+  ItemRender?: any // virtual 列表父节点渲染的函数，默认为 (items, ref) => <div ref={ref}>{items}</div>
+  itemEqualSize?: boolean // item 固定大小，默认是true
+  itemSize?: number // 预估元素高度
+  overscan?: number // 除了视窗里面默认的元素, 还需要额外渲染的, 避免滚动过快, 渲染不及时,默认是2
+  onScroll?: (...args: any[]) => any // 滑动到底部执行的函数
+  key?: any // 遍历时生成item 的唯一key,默认是index,建议传入resources的数据具体的某个唯一值的字段
+  locale?: any
+}
+const defaultProps = {
+  sourceData: [],
+  itemSize: 66,
+  itemEqualSize: true,
+  overscan: 2,
+} as VirtualListProps
+
+const clientHeight = Taro.getSystemInfoSync().windowHeight - 5 || 667
+const clientWidth = Taro.getSystemInfoSync().windowWidth || 375
 
 export const VirtualList: FunctionComponent<
   VirtualListProps & React.HTMLAttributes<HTMLDivElement>
@@ -24,27 +40,29 @@ export const VirtualList: FunctionComponent<
   const {
     sourceData = [],
     ItemRender,
+    itemSize = 66,
     itemEqualSize = true,
-    itemSize = 200,
-    horizontal = false,
     overscan = 2,
     key,
-    handleScroll,
     onScroll,
     className,
-    containerSize,
+    containerSize = clientHeight,
     ...rest
   } = props
-  const sizeKey = horizontal ? 'width' : 'height'
-  const scrollKey = horizontal ? 'scrollLeft' : 'scrollTop'
-  const offsetKey = horizontal ? 'left' : 'top'
+  //   const sizeKey = horizontal ? 'width' : 'height'
+  //   const scrollKey = horizontal ? 'scrollLeft' : 'scrollTop'
+  //   const offsetKey = horizontal ? 'left' : 'top'
+
+  const [startOffset, setStartOffset] = useState(0)
+  const [start, setStart] = useState(0)
+  const [list, setList] = useState(sourceData.slice())
 
   const { locale } = useConfig()
   // 虚拟列表容器ref
   const scrollRef = useRef<HTMLDivElement>(null)
   // 虚拟列表显示区域ref
-  const itemsRef = useRef<HTMLUListElement>(null)
-  const firstItemRef = useRef<HTMLLIElement>(null)
+  const itemsRef = useRef<HTMLDivElement>(null)
+  const firstItemRef = useRef(null)
   // 列表位置信息
   const [positions, setPositions] = useState<PositionType[]>([
     {
@@ -57,10 +75,7 @@ export const VirtualList: FunctionComponent<
       right: 0,
     },
   ])
-  // 列表总大小
-  const [listTotalSize, setListTotalSize] = useState<number>(99999999)
-  // 可视区域条数
-  const [visibleCount, setVisibleCount] = useState<number>(0)
+
   const [offSetSize, setOffSetSize] = useState<number>(containerSize || 0)
   const [options, setOptions] = useState<VirtualListState>({
     startOffset: 0, // 可视区域距离顶部的偏移量
@@ -69,97 +84,88 @@ export const VirtualList: FunctionComponent<
     endIndex: 10, // 可视区域结束索引
   })
 
-  // 列表位置信息
   useEffect(() => {
-    const pos = initPositinoCache(itemSize, sourceData.length)
-    setPositions(pos)
-    const totalSize = getListTotalSize(pos, horizontal)
-    setListTotalSize(totalSize)
-  }, [sourceData, itemSize, horizontal])
-  const getElement = useCallback(() => {
-    return scrollRef.current?.parentElement || document.body
-  }, [])
+    if (sourceData.length) {
+      setList(sourceData.slice())
+    }
+  }, [sourceData])
+
+  //   初始计算可视区域展示数量
+  useEffect(() => {
+    setPositions((options) => {
+      return { ...options, endIndex: visibleCount() }
+    })
+  }, [itemSize, overscan, offSetSize])
+
   useEffect(() => {
     if (containerSize) return
-    const size = horizontal
-      ? getElement().offsetWidth
-      : getElement().offsetHeight
-    setOffSetSize(size)
-  }, [getElement, horizontal, containerSize])
-  useEffect(() => {
-    // 初始-计算visibleCount
-    if (offSetSize === 0) return
-    const count = Math.ceil(offSetSize / itemSize) + overscan
 
-    setVisibleCount(count)
-    setOptions((options) => {
-      return { ...options, endIndex: count }
-    })
-  }, [getElement, horizontal, itemSize, overscan, offSetSize])
+    setOffSetSize(getContainerHeight())
+  }, [containerSize])
+
+  useEffect(() => {
+    const pos = initPositinoCache(itemSize, sourceData.length)
+
+    setPositions(pos)
+  }, [itemSize, sourceData])
+
+  // 可视区域总高度
+  const getContainerHeight = () => {
+    //初始首页列表高度
+    const initH = itemSize * sourceData.length
+    //未设置containerSize高度，判断首页高度小于设备高度时，滚动容器高度为首页数据高度，减5为分页触发的偏移量
+    let containerH =
+      initH < clientHeight
+        ? initH + overscan * itemSize - 5
+        : Math.min(containerSize, clientHeight)
+
+    return containerH // Math.min(containerSize, clientHeight)
+  }
+  // 可视区域条数
+  const visibleCount = () => {
+    return Math.ceil(getContainerHeight() / itemSize) + overscan
+  }
+
+  const end = () => {
+    return start + visibleCount()
+  }
+
+  const listHeight = () => {
+    return list.length * itemSize
+  }
+
+  const visibleData = () => {
+    return list.slice(start, Math.min(end(), list.length))
+  }
 
   const updateTotalSize = useCallback(() => {
     if (!itemsRef.current) return
     const items: HTMLCollection = itemsRef.current.children
     if (!items.length) return
     // 更新缓存
-    updateItemSize(positions, items, sizeKey)
-    const totalSize = getListTotalSize(positions, horizontal)
-    setListTotalSize(totalSize)
-  }, [positions, sizeKey, horizontal])
+    updateItemSize(positions, items, 'height')
+  }, [positions])
 
-  const scroll = useCallback(() => {
-    requestAnimationFrame((e) => {
-      const scrollSize = getElement()[scrollKey]
-      const startIndex = binarySearch(positions, scrollSize, horizontal)
-      const overStart = startIndex - overscan > -1 ? startIndex - overscan : 0
-      // const offSetSize = horizontal ? getElement().offsetWidth : getElement().offsetHeight
-      if (!itemEqualSize) {
-        updateTotalSize()
-      }
-      const endIndex = getEndIndex({
-        sourceData,
-        startIndex,
-        visibleCount,
-        itemEqualSize,
-        positions,
-        offSetSize,
-        sizeKey,
-        overscan,
-      })
-      const startOffset = positions[startIndex][offsetKey] as number
-      setOptions({ startOffset, startIndex, overStart, endIndex })
-      // 无限下滑
-      if (endIndex > sourceData.length - 1) {
-        if (onScroll) {
-          onScroll()
-        } else if (handleScroll) {
-          handleScroll()
-        }
-      }
-    })
-  }, [
-    positions,
-    getElement,
-    sourceData,
-    visibleCount,
-    itemEqualSize,
-    updateTotalSize,
-    offsetKey,
-    sizeKey,
-    scrollKey,
-    horizontal,
-    overscan,
-    handleScroll,
-    offSetSize,
-  ])
+  // 滚动监听
+  const listScroll = (e: any) => {
+    const scrollTop = e.detail ? e.detail.scrollTop : e.target.scrollTop
+    const scrollSize = Math.floor(scrollTop)
+    const startIndex = binarySearch(positions, scrollSize, false)
 
-  useEffect(() => {
-    const element = getElement()
-    element.addEventListener('scroll', scroll, false)
-    return () => {
-      element.removeEventListener('scroll', scroll, false)
+    const overStart = startIndex - overscan > -1 ? startIndex - overscan : 0
+    const endIndex = end()
+    if (!itemEqualSize) {
+      updateTotalSize()
     }
-  }, [getElement, scroll])
+    setStart(Math.floor(scrollTop / itemSize))
+
+    setOptions({ startOffset, startIndex, overStart, endIndex })
+
+    if (end() > list.length - 1) {
+      onScroll && onScroll()
+    }
+    setStartOffset(scrollTop - (scrollTop % itemSize))
+  }
 
   return (
     <div
@@ -168,60 +174,52 @@ export const VirtualList: FunctionComponent<
       }
       {...rest}
       style={{
-        [sizeKey]: containerSize ? `${offSetSize}px` : '',
+        height: containerSize ? `${offSetSize}px` : '',
       }}
     >
-      <div
+      <ScrollView
+        scrollTop={0}
+        scrollY
         ref={scrollRef}
-        className={horizontal ? 'nut-horizontal-box' : 'nut-vertical-box'}
+        className="nut-virtuallist"
         style={{
-          position: 'relative',
-          [sizeKey]: `${listTotalSize}px`,
+          height: `${getContainerHeight()}px`,
         }}
+        onScroll={listScroll}
       >
-        <ul
-          className={
-            horizontal
-              ? 'nut-virtuallist-items nut-horizontal-items'
-              : 'nut-virtuallist-items nut-vertical-items'
-          }
+        <div
+          className="nut-virtuallist-phantom"
+          style={{ height: `${listHeight()}px` }}
+        />
+        <div
+          className="nut-virtuallist-container"
           ref={itemsRef}
-          style={{
-            transform: horizontal
-              ? `translate3d(${options.startOffset}px,0,0)`
-              : `translate3d(0,${options.startOffset}px,0)`,
-          }}
+          style={{ transform: `translate3d(0, ${startOffset}px, 0)` }}
         >
-          {sourceData
-            .slice(options.overStart, options.endIndex)
-            .map((data, index) => {
-              const { startIndex, overStart } = options
-              const dataIndex = overStart + index
-              const styleVal = dataIndex < startIndex ? 'none' : 'block'
-              const keyVal = key && data[key] ? data[key] : dataIndex
-
-              return (
-                <li
-                  ref={dataIndex === 0 ? firstItemRef : null}
-                  data-index={`${dataIndex}`}
-                  className={
-                    dataIndex % 2 === 0
-                      ? 'nut-virtuallist-item even'
-                      : 'nut-virtuallist-item odd'
-                  }
-                  key={`${keyVal}`}
-                  style={{ display: styleVal }}
-                >
-                  {ItemRender ? (
-                    <ItemRender data={data} index={`${dataIndex}`} />
-                  ) : (
-                    data
-                  )}
-                </li>
-              )
-            })}
-        </ul>
-      </div>
+          {visibleData().map((data: any, index: number) => {
+            const { overStart } = options
+            const dataIndex = overStart + index
+            const keyVal = key && data[key] ? data[key] : dataIndex
+            return (
+              <div
+                ref={dataIndex === 0 ? firstItemRef : null}
+                data-index={`${dataIndex}`}
+                className="nut-virtuallist-item"
+                key={`${data}`}
+                style={{
+                  height: `${itemEqualSize ? `${itemSize}px` : 'auto'}`,
+                }}
+              >
+                {ItemRender ? (
+                  <ItemRender data={data} index={`${index}`} />
+                ) : (
+                  data
+                )}
+              </div>
+            )
+          })}
+        </div>
+      </ScrollView>
     </div>
   )
 }

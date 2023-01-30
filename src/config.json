@@ -1039,8 +1039,9 @@
           "cName": "虚拟列表",
           "desc": "长列表渲染",
           "sort": 20,
+          "tarodoc":true,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "hx"
         },
         {
