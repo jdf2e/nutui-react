@@ -80,7 +80,7 @@ function init() {
         message:
           '请选择组件分类(输入编号)：1基础组件，2布局组件，3导航组件，4数据录入，5操作反馈，6展示组件，7特色组件',
         validate(value) {
-          const pass = /^[1-6]$/.test(value)
+          const pass = /^[1-7]$/.test(value)
           if (pass) {
             return true
           }
@@ -207,6 +207,19 @@ function addToPackageJson() {
     let sort = newCpt.sort
     newCpt.sort = nav[sort - 1].packages.length + 1
     nav[sort - 1].packages.push(newCpt)
+    nav[sort - 1].packages = [
+      ...nav[sort - 1].packages.sort((a, b) => {
+        const nameA = a.name.toUpperCase()
+        const nameB = b.name.toUpperCase()
+        if (nameA < nameB) {
+          return -1
+        }
+        if (nameA > nameB) {
+          return 1
+        }
+        return 0
+      }),
+    ]
     config.nav = nav
     const dirPath = path.join(__dirname, `../`)
     const filePath = path.join(dirPath, `src/config.json`)

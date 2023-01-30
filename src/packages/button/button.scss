@@ -91,6 +91,9 @@
     opacity: 0;
     content: ' ';
   }
+  &::after {
+    border: none;
+  }
 
   &:active::before {
     opacity: 0.1;

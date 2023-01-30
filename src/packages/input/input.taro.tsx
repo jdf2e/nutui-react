@@ -5,7 +5,6 @@ import React, {
   useState,
   useCallback,
   useRef,
-  useLayoutEffect,
   MouseEvent,
   HTMLInputTypeAttribute,
   forwardRef,
@@ -190,11 +189,7 @@ export const Input: FunctionComponent<
     validateFailed: false, // 校验失败
     validateMessage: '', // 校验信息
   }
-  useLayoutEffect(() => {
-    if (defaultValue) {
-      updateValue(getModelValue(), formatTrigger)
-    }
-  })
+
   useEffect(() => {
     setClasses(inputClass)
     SetInputValue(defaultValue)
@@ -233,8 +228,7 @@ export const Input: FunctionComponent<
 
   const updateValue = (
     value: any,
-    trigger: InputFormatTrigger = 'onChange',
-    event?: any
+    trigger: InputFormatTrigger = 'onChange'
   ) => {
     let val = value
 
@@ -262,7 +256,6 @@ export const Input: FunctionComponent<
       inputRef.current.value = val
     }
     SetInputValue(val)
-    onChange && onChange(val, event)
   }
 
   const handleFocus = (event: Event) => {
@@ -277,7 +270,8 @@ export const Input: FunctionComponent<
     if (maxlength && val.length > Number(maxlength)) {
       val = val.slice(0, Number(maxlength))
     }
-    updateValue(val, 'onChange', event)
+    updateValue(val, 'onChange')
+    onChange && onChange(val, event)
   }
 
   const handleBlur = (event: Event) => {
@@ -386,101 +380,103 @@ export const Input: FunctionComponent<
             </div>
           ) : null}
           <div className="nut-input-value">
-            <div
-              className="nut-input-inner"
-              onClick={(e) => {
-                handleClickInput(e)
-              }}
-            >
-              {type === 'textarea' ? (
-                <textarea
-                  name={name}
-                  className="input-text"
-                  ref={inputRef}
-                  style={{
-                    textAlign: inputAlign,
-                    height: `${Number(rows) * 24}px`,
-                  }}
-                  maxLength={maxlength}
-                  placeholder={placeholder || locale.placeholder}
-                  disabled={disabled}
-                  readOnly={readonly}
-                  value={inputValue}
-                  autoFocus={autofocus}
-                  onBlur={(e: any) => {
-                    handleBlur(e)
-                  }}
-                  onFocus={(e: any) => {
-                    handleFocus(e)
-                  }}
-                  onInput={(e: any) => {
-                    handleInput(e)
-                  }}
-                />
-              ) : (
-                <input
-                  {...rest}
-                  name={name}
-                  className="input-text"
-                  ref={inputRef}
-                  style={{ textAlign: inputAlign }}
-                  type={inputType(type)}
-                  maxLength={maxlength}
-                  placeholder={placeholder || locale.placeholder}
-                  disabled={disabled}
-                  readOnly={readonly}
-                  value={inputValue}
-                  autoFocus={autofocus}
-                  onBlur={(e: any) => {
-                    handleBlur(e)
-                  }}
-                  onFocus={(e: any) => {
-                    handleFocus(e)
-                  }}
-                  onInput={(e: any) => {
-                    handleInput(e)
-                  }}
-                />
-              )}
-              {clearable && !readonly && active && inputValue.length > 0 ? (
-                <Icon
-                  classPrefix={iconClassPrefix}
-                  fontClassName={iconFontClassName}
-                  className="nut-input-clear"
-                  name={clearIcon}
-                  size={clearSize}
-                  onClick={(e) => {
-                    handleClear(e)
-                  }}
-                />
-              ) : null}
-            </div>
-            {rightIcon && rightIcon.length > 0 ? (
+            <div className="nut-input-main-con">
               <div
-                className="nut-input-right-icon"
+                className="nut-input-inner"
                 onClick={(e) => {
-                  handleClickRightIcon(e)
+                  handleClickInput(e)
                 }}
               >
-                <Icon
-                  classPrefix={iconClassPrefix}
-                  fontClassName={iconFontClassName}
-                  name={rightIcon}
-                  size={rightIconSize}
-                />
+                {type === 'textarea' ? (
+                  <textarea
+                    name={name}
+                    className="input-text"
+                    ref={inputRef}
+                    style={{
+                      textAlign: inputAlign,
+                      height: `${Number(rows) * 24}px`,
+                    }}
+                    maxLength={maxlength}
+                    placeholder={placeholder || locale.placeholder}
+                    disabled={disabled}
+                    readOnly={readonly}
+                    value={inputValue}
+                    autoFocus={autofocus}
+                    onBlur={(e: any) => {
+                      handleBlur(e)
+                    }}
+                    onFocus={(e: any) => {
+                      handleFocus(e)
+                    }}
+                    onInput={(e: any) => {
+                      handleInput(e)
+                    }}
+                  />
+                ) : (
+                  <input
+                    {...rest}
+                    name={name}
+                    className="input-text"
+                    ref={inputRef}
+                    style={{ textAlign: inputAlign }}
+                    type={inputType(type)}
+                    maxLength={maxlength}
+                    placeholder={placeholder || locale.placeholder}
+                    disabled={disabled}
+                    readOnly={readonly}
+                    value={inputValue}
+                    autoFocus={autofocus}
+                    onBlur={(e: any) => {
+                      handleBlur(e)
+                    }}
+                    onFocus={(e: any) => {
+                      handleFocus(e)
+                    }}
+                    onInput={(e: any) => {
+                      handleInput(e)
+                    }}
+                  />
+                )}
+                {clearable && !readonly && active && inputValue.length > 0 ? (
+                  <Icon
+                    classPrefix={iconClassPrefix}
+                    fontClassName={iconFontClassName}
+                    className="nut-input-clear"
+                    name={clearIcon}
+                    size={clearSize}
+                    onClick={(e) => {
+                      handleClear(e)
+                    }}
+                  />
+                ) : null}
               </div>
-            ) : null}
-            {slotButton ? (
-              <div className="nut-input-button">{slotButton}</div>
-            ) : null}
-            {showWordLimit && maxlength ? (
-              <div className="nut-input-word-limit">
-                <span className="nut-input-word-num">
-                  {inputValue ? inputValue.length : 0}
-                </span>
-                /{maxlength}
-              </div>
-            ) : null}
+              {rightIcon && rightIcon.length > 0 ? (
+                <div
+                  className="nut-input-right-icon"
+                  onClick={(e) => {
+                    handleClickRightIcon(e)
+                  }}
+                >
+                  <Icon
+                    classPrefix={iconClassPrefix}
+                    fontClassName={iconFontClassName}
+                    name={rightIcon}
+                    size={rightIconSize}
+                  />
+                </div>
+              ) : null}
+              {slotButton ? (
+                <div className="nut-input-button">{slotButton}</div>
+              ) : null}
+              {showWordLimit && maxlength ? (
+                <div className="nut-input-word-limit">
+                  <span className="nut-input-word-num">
+                    {inputValue ? inputValue.length : 0}
+                  </span>
+                  /{maxlength}
+                </div>
+              ) : null}
+            </div>
             {errorMessage ? (
               <div
                 className="nut-input-error-message"
