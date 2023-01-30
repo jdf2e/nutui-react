@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Cell, CellGroup, Radio } from '@/packages/nutui.react.taro'
+import {
+  Cell,
+  CellGroup,
+  Radio,
+  VirtualList,
+} from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import Taro from '@tarojs/taro'
-import VirtualList from './index'
 
 const { RadioGroup } = Radio
 

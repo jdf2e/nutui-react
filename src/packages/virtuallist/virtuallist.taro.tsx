@@ -31,7 +31,7 @@ const defaultProps = {
   overscan: 2,
 } as VirtualListProps
 
-const clientHeight = Taro.getSystemInfoSync().windowHeight || 667
+const clientHeight = Taro.getSystemInfoSync().windowHeight - 5 || 667
 const clientWidth = Taro.getSystemInfoSync().windowWidth || 375
 
 export const VirtualList: FunctionComponent<
@@ -85,7 +85,9 @@ export const VirtualList: FunctionComponent<
   })
 
   useEffect(() => {
-    setList(sourceData.slice())
+    if (sourceData.length) {
+      setList(sourceData.slice())
+    }
   }, [sourceData])
 
   //   初始计算可视区域展示数量
@@ -97,17 +99,27 @@ export const VirtualList: FunctionComponent<
 
   useEffect(() => {
     if (containerSize) return
+
     setOffSetSize(getContainerHeight())
   }, [containerSize])
 
   useEffect(() => {
     const pos = initPositinoCache(itemSize, sourceData.length)
+
     setPositions(pos)
   }, [itemSize, sourceData])
 
   // 可视区域总高度
   const getContainerHeight = () => {
-    return Math.min(containerSize, clientHeight)
+    //初始首页列表高度
+    const initH = itemSize * sourceData.length
+    //未设置containerSize高度，判断首页高度小于设备高度时，滚动容器高度为首页数据高度，减5为分页触发的偏移量
+    let containerH =
+      initH < clientHeight
+        ? initH + overscan * itemSize - 5
+        : Math.min(containerSize, clientHeight)
+
+    return containerH // Math.min(containerSize, clientHeight)
   }
   // 可视区域条数
   const visibleCount = () => {
