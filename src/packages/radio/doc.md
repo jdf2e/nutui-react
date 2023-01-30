@@ -9,8 +9,7 @@
 ``` ts
 // react
 import { Radio } from '@nutui/nutui-react';
-// taro
-import { Radio } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 基本用法

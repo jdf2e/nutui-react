@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { Grid ,GridItem } from '@nutui/nutui-react'
-// taro
-import { Grid ,GridItem } from '@nutui/nutui-react-taro'
+
 ```
 
 ## 代码演示
@@ -248,6 +247,8 @@ export default App
 | 参数                  | 说明                                                                                     | 类型               | 默认值      |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|------------|
 | text                 | 文字                                                                                     | string \| ReactNode   | -          |
+| fontSize `1.4.4`     | 文字大小                                                                                  | string \| number   | -          |
+| color `1.4.4`        | 文字颜色                                                                                  | string   | -          |
 | icon                 | [图标名称](#/icon) 或图片链接                                                              | string  \| ReactNode   | -          |
 | iconSize            | 图标大小，如 `20px` `2em` `2rem`                                                          | number \| string   | `28px`     |
 | iconColor           | 图标颜色                                                                                  | string            | -           |

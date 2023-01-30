@@ -1,7 +1,8 @@
 import React from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell, Badge, Avatar, AvatarGroup } from '@/packages/nutui.react.taro'
-
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 import '@/packages/avatar/demo.scss'
 
 interface T {
@@ -58,7 +59,12 @@ const AvatarDemo = () => {
   }
   return (
     <>
-      <div className="demo full avatar-demo">
+      <Header />
+      <div
+        className={`demo ${
+          Taro.getEnv() === 'WEB' ? 'web' : ''
+        } full avatar-demo`}
+      >
         <h2>{translated['67f78db5']}</h2>
         <Cell>
           <Avatar

@@ -4,6 +4,7 @@ import { useTranslate } from '@/sites/assets/locale/taro'
 import icons from '@/styles/font/config.json'
 import { Icon, Cell, CellGroup } from '@/packages/nutui.react.taro'
 import '@/packages/icon/demo.scss'
+import Header from '@/sites/components/header'
 
 interface T {
   '84aa6bce': string
@@ -87,8 +88,9 @@ const IconDemo = () => {
 
   return (
     <>
+      <Header />
       <style>{style}</style>
-      <div className="demo">
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated['84aa6bce']}</h2>
         <Cell>
           <Icon name="dongdong" />

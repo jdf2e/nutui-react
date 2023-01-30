@@ -1,6 +1,8 @@
 import React from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Animate, Button } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 import '@/packages/animate/demo.scss'
 
 interface T {
@@ -69,7 +71,8 @@ const AnimateDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.f7a61168}</h2>
         <div className="ani-demo-div">
           <Animate type="slide-right" action="click">

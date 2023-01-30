@@ -1,7 +1,9 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { NoticeBar, Icon } from '@/packages/nutui.react.taro'
 import '@/packages/noticebar/demo.scss'
+import Header from '@/sites/components/header'
 
 const NoticeBarDemo = () => {
   const [translated] = useTranslate({
@@ -52,7 +54,11 @@ const NoticeBarDemo = () => {
 
   return (
     <>
-      <div className="demo" style={{ paddingBottom: '30px' }}>
+      <Header />
+      <div
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+        style={{ paddingBottom: '30px' }}
+      >
         <h2>{translated.basic}</h2>
         <NoticeBar text={translated.text} />
 

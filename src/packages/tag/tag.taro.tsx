@@ -112,7 +112,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
             style={{ ...style, ...getStyle() }}
             onClick={(e) => handleClick(e)}
           >
-            {children && <span className="text">{children}</span>}
+            {children && <span className="nut-tag-text">{children}</span>}
             <Icon
               classPrefix={iconClassPrefix}
               fontClassName={iconFontClassName}
@@ -134,7 +134,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
           style={{ ...style, ...getStyle() }}
           onClick={(e) => handleClick(e)}
         >
-          {children && <span className="text">{children}</span>}
+          {children && <span className="nut-tag-text">{children}</span>}
         </div>
       )}
     </>

@@ -1,3 +1,25 @@
+# v1.4.4
+`2023-01-17`
+
+* :sparkles: feat: GridItem 支持自定义图标颜色、大小 (#588) @cuicuiworld
+* :bug: fix: 修复 inputnumber 无法清空输入框 (#587) @junjun666
+* :bug: fix: 修复input组件onChange事件循环问题；修复错误提示样式问题； (#593) @vickyYe
+* :bug: fix: 修复 button 组件在 taro 中被破坏的边框 (#589) @oasis-cloud
+* 📖 docs: watermark 文档更新 (#590) @oasis-cloud
+* 🔨 chore: 添加组件时，增加排序功能；已有组件已完成排序 (#586) @xiaoyatong
+
+# v1.4.3
+`2023-01-11`
+
+* :sparkles: feat: watermark水印组件taro编译h5环境下适配 (#570) @junjun666
+* :bug: fix: 修复 Badge 组件无法修改背景色问题 (#582) @xiaoyatong
+* :bug: fix: inputNumber 组件在 taro h5 环境样式缺失 (#577) @oasis-cloud
+* :bug: fix: drag 组件 Trao h5 适配 (#576) @irisSong
+* :bug: fix: backtop组件demo优化，父级元素内滚动方式优化 (#575) @vickyYe
+* :bug: fix: dialog 组件 okText 属性缺失默认值 (#573) @oasis-cloud
+* :bug: fix: signature组件适配taro:h5 (#571) @irisSong
+* 📖 docs: 更新多语言文档 (#584) @xiaoyatong
+
 # v1.4.2
 `2023-01-04`
 

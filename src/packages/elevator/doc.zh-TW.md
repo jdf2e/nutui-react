@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { Elevator } from '@nutui/nutui-react'
-// taro
-import { Elevator } from '@nutui/nutui-react-taro'
+
 ```
 
 ## 代碼演示

@@ -9,8 +9,7 @@ Used to show the current progress of the operation.
 ```js
 // react
 import { Progress, Icon } from '@nutui/nutui-react';
-// taro
-import { Progress, Icon } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Demo

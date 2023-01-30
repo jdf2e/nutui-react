@@ -9,8 +9,7 @@
 ``` javascript
 // react
 import { Popover } from '@nutui/nutui-react';
-// taro
-import { Popover } from '@nutui/nutui-react-taro';
+
 ```
 
 ### 代码实例

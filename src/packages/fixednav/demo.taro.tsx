@@ -1,5 +1,7 @@
 import React, { useState, MouseEvent } from 'react'
 import { FixedNav, Drag, Icon } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 const FixedNavDemo = () => {
   const navList = [
@@ -69,7 +71,8 @@ const FixedNavDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <FixedNav
           navList={navList}
           activeText="基础用法"
