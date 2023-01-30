@@ -9,8 +9,7 @@
 ```ts
 // react
 import { Cell, CellGroup } from '@nutui/nutui-react'
-// taro
-import { Cell, CellGroup } from '@nutui/nutui-react-taro'
+
 ```
 
 ## 代碼演示
@@ -274,7 +273,7 @@ export default App;
 | title        | 標題名稱                      |  React.ReactNode           | -      |
 | subTitle     | 左側副標題                           |  React.ReactNode           | -      |
 | desc         | 右側描述                                     | String      | -      |
-| descTextAlign | 右側描述文本對齊方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String | right  |
+| descTextAlign | 右側描述文本對齊方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)，只展示 desc 時可用 | String | right  |
 | isLink       | 是否展示右側箭頭並開啟點擊反饋            | Boolean          | false  |
 | to`v1.4.0废弃`  | 點擊後跳轉的目標路由對象 | String  | -      |
 | replace      | 是否在跳轉時替換當前頁面歷史                             | Boolean          | false  |

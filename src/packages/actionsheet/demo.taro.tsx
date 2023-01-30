@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { ActionSheet, Cell } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 export type ItemType<T> = { [key: string]: T }
 interface Item {
@@ -139,7 +141,8 @@ const ActionSheetDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated['74fc5d8a']}</h2>
         <Cell isLink onClick={() => setIsVisible1(!isVisible1)}>
           <span>

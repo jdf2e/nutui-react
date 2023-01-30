@@ -9,8 +9,7 @@
 ``` javascript
 // react
 import { TimeSelect } from '@nutui/nutui-react';
-// taro
-import { TimeSelect } from '@nutui/nutui-react-taro';
+
 ```
 
 ### 基本用法

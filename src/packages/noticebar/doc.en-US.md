@@ -9,8 +9,7 @@ Used to display a group of message notifications in a continuons loop.
 ```javascript
 // react
 import { NoticeBar } from '@nutui/nutui-react';
-// taro
-import { NoticeBar } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Demo

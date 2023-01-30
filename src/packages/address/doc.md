@@ -9,8 +9,7 @@
 ``` javascript
 // react
 import { Address } from '@nutui/nutui-react';
-// taro
-import { Address } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代码示例

@@ -9,8 +9,7 @@ Slide the input bar to select a value within a given range.
 ```javascript
 // react
 import { Range } from '@nutui/nutui-react';
-// taro
-import { Range } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Demo

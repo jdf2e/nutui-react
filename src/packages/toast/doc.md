@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { Toast } from '@nutui/nutui-react';
-// taro
-import { Toast } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代码演示

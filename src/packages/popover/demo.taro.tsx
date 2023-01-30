@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { Button, Icon, Popover, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/popover/demo.scss'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface List {
   name: string
@@ -128,7 +130,8 @@ const BadgeDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>基础用法</h2>
         <Cell>
           <Popover

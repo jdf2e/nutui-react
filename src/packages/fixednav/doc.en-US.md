@@ -9,8 +9,7 @@ Hovering and collecting experience interaction for quick navigation
 ``` javascript
 // react
 import { FixedNav } from '@nutui/nutui-react';
-// taro
-import { FixedNav } from '@nutui/nutui-react-taro';
+
 ```
 
 

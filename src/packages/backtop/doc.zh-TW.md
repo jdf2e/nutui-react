@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { BackTop } from '@nutui/nutui-react';
-// taro
-import { BackTop } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代碼演示

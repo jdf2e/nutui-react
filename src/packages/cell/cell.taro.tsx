@@ -21,7 +21,6 @@ export interface CellProps extends BasicComponent {
   className: string
   iconSlot: ReactNode
   linkSlot: ReactNode
-  click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
@@ -42,7 +41,6 @@ const defaultProps = {
   className: '',
   iconSlot: null,
   linkSlot: null,
-  click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
 
@@ -51,7 +49,6 @@ export const Cell: FunctionComponent<
 > = (props) => {
   const {
     children,
-    click,
     onClick,
     title,
     subTitle,
@@ -92,7 +89,7 @@ export const Cell: FunctionComponent<
 
   const styles =
     title || subTitle || icon
-      ? {}
+      ? { textAlign: descTextAlign }
       : {
           textAlign: descTextAlign,
           flex: 1,

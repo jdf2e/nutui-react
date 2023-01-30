@@ -9,8 +9,7 @@ The cell is a single display item in the list.
 ```ts
 // react
 import { Cell, CellGroup } from '@nutui/nutui-react'
-// taro
-import { Cell, CellGroup } from '@nutui/nutui-react-taro'
+
 ```
 
 ## Demo
@@ -272,7 +271,7 @@ export default App
 | title             | Title                      |  React.ReactNode           | -      |
 | subTitle          | Subtitle                           |  React.ReactNode           | -      |
 | desc              | Description                                     | String      | -      |
-| descTextAlign     | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String | right  |
+| descTextAlign     | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp), is only available when displaying desc | String | right  |
 | isLink            | Whether to show the right arrow and turn on click feedback            | Boolean          | false  |
 | to`v1.4.0(Abandon)`       | C Target route of the link | String  | -      |
 | replace           | If true, the navigation will not leave a history record                             | Boolean          | false  |

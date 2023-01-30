@@ -9,8 +9,7 @@ Icon set based on IconFont fonts, which can be used through the Icon component.
 ``` javascript
 // react
 import { Icon } from '@nutui/nutui-react';
-// taro
-import { Icon } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Demo

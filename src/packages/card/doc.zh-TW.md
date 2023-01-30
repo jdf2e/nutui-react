@@ -9,8 +9,7 @@
 ```js
 // react
 import { Card, Price, Tag } from '@nutui/nutui-react';
-// taro
-import { Card, Price, Tag } from '@nutui/nutui-react-taro';
+
 ```
 
 

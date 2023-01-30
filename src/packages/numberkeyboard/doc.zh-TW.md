@@ -8,8 +8,7 @@
 ```ts
 // react
 import { NumberKeyboard } from '@nutui/nutui-react';
-// taro
-import { NumberKeyboard } from '@nutui/nutui-react-taro';
+
 ```
 
 

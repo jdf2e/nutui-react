@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { Swipe } from '@nutui/nutui-react';
-// taro
-import { Swipe } from '@nutui/nutui-react-taro';
+
 ```
 
 

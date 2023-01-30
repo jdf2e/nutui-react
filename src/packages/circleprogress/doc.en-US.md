@@ -9,8 +9,7 @@ Circular progress bar component
 ```ts
 // react
 import { CircleProgress } from '@nutui/nutui-react';
-// taro
-import { CircleProgress } from '@nutui/nutui-react-taro';
+
 ```
 
 

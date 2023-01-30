@@ -9,8 +9,7 @@ Provides a quick return to the top function for long pages.
 ```javascript
 // react
 import { BackTop } from '@nutui/nutui-react';
-// taro
-import { BackTop } from '@nutui/nutui-react-taro';
+
 ```
 
 
