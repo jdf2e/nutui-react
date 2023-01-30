@@ -9,8 +9,6 @@
 ```ts
 // react
 import { WaterMark } from '@nutui/nutui-react';
-// taro
-import { WaterMark } from '@nutui/nutui-react-taro';
 ```
 
 ### 基础用法

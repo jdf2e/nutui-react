@@ -8,8 +8,7 @@ Load on demand Load the  Icon、Popup、Elevator dependent component
 ``` javascript
 // react
 import { Address } from '@nutui/nutui-react';
-// taro
-import { Address } from '@nutui/nutui-react-taro';
+
 ```
 
 ### Choose Custom Address

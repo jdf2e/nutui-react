@@ -10,8 +10,7 @@
 ```ts
 // react
 import { Dialog } from '@nutui/nutui-react'
-// taro
-import { Dialog } from '@nutui/nutui-react-taro'
+
 ```
 
 

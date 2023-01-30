@@ -9,8 +9,7 @@ Click or hover over the element to pop up the bubble card overlay.
 ``` javascript
 // react
 import { Popover } from '@nutui/nutui-react';
-// taro
-import { Popover } from '@nutui/nutui-react-taro';
+
 ```
 
 ### Basic Usage

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Cell, ImagePreview } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   basic: string
@@ -73,7 +75,8 @@ const ImagePreviewDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <ImagePreview images={images} show={showPreview1} onClose={hideFn1} />
         <Cell title={translated.showPreview} isLink onClick={showFn1} />

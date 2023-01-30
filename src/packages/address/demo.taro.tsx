@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { Address, Cell } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 interface CalBack {
   next: string
@@ -326,7 +328,8 @@ const AddressDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>选择自定义地址</h2>
         <Cell
           title="选择地址"

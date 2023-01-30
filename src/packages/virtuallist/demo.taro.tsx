@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell, CellGroup, Radio } from '@/packages/nutui.react.taro'
-
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 import VirtualList from './index'
 
 const { RadioGroup } = Radio
@@ -135,7 +136,8 @@ const ListDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <CellGroup>
           <Cell>
             <RadioGroup

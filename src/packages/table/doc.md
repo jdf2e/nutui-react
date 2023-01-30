@@ -8,8 +8,7 @@
 ```ts
 // react
 import { Table } from '@nutui/nutui-react';
-// taro
-import { Table } from '@nutui/nutui-react-taro';
+
 ```
 
 

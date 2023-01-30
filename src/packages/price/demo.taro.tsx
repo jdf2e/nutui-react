@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Cell, Price, CellGroup } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   title1: string
@@ -50,64 +52,67 @@ const PriceDemo = () => {
     }
   }, [])
   return (
-    <div className="demo">
-      <CellGroup title={translated.title1}>
+    <>
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <CellGroup title={translated.title1}>
+          <Cell>
+            <Price price={0} size="small" needSymbol thousands />
+          </Cell>
+          <Cell>
+            <Price price={0} size="normal" needSymbol thousands />
+          </Cell>
+          <Cell>
+            <Price price={0} size="large" needSymbol thousands />
+          </Cell>
+        </CellGroup>
+        <h2>{translated.title2}</h2>
         <Cell>
-          <Price price={0} size="small" needSymbol thousands />
+          <Price
+            price={8888}
+            decimalDigits={0}
+            needSymbol
+            size="normal"
+            thousands
+          />
         </Cell>
+        <h2>{translated.title3}</h2>
         <Cell>
-          <Price price={0} size="normal" needSymbol thousands />
+          <Price price={10010.01} size="normal" needSymbol thousands={false} />
         </Cell>
+        <h2>{translated.title4}</h2>
         <Cell>
-          <Price price={0} size="large" needSymbol thousands />
+          <Price
+            price={15213.1221}
+            size="normal"
+            decimalDigits={3}
+            needSymbol
+            thousands
+          />
         </Cell>
-      </CellGroup>
-      <h2>{translated.title2}</h2>
-      <Cell>
-        <Price
-          price={8888}
-          decimalDigits={0}
-          needSymbol
-          size="normal"
-          thousands
-        />
-      </Cell>
-      <h2>{translated.title3}</h2>
-      <Cell>
-        <Price price={10010.01} size="normal" needSymbol thousands={false} />
-      </Cell>
-      <h2>{translated.title4}</h2>
-      <Cell>
-        <Price
-          price={15213.1221}
-          size="normal"
-          decimalDigits={3}
-          needSymbol
-          thousands
-        />
-      </Cell>
-      <h2>{translated.title5}</h2>
-      <Cell>
-        <Price
-          price={8888.01}
-          size="normal"
-          position="after"
-          symbol="元"
-          needSymbol
-          thousands
-        />
-      </Cell>
-      <h2>{translated.title6}</h2>
-      <Cell>
-        <Price
-          price={price}
-          decimalDigits={3}
-          size="normal"
-          needSymbol
-          thousands
-        />
-      </Cell>
-    </div>
+        <h2>{translated.title5}</h2>
+        <Cell>
+          <Price
+            price={8888.01}
+            size="normal"
+            position="after"
+            symbol="元"
+            needSymbol
+            thousands
+          />
+        </Cell>
+        <h2>{translated.title6}</h2>
+        <Cell>
+          <Price
+            price={price}
+            decimalDigits={3}
+            size="normal"
+            needSymbol
+            thousands
+          />
+        </Cell>
+      </div>
+    </>
   )
 }
 

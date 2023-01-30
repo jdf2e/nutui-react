@@ -11,8 +11,7 @@ The pop -up box components support the function call and component call.
 ```ts
 // react
 import { Dialog } from '@nutui/nutui-react'
-// taro
-import { Dialog } from '@nutui/nutui-react-taro'
+
 ```
 
 

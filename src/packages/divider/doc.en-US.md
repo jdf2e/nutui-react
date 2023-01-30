@@ -9,8 +9,7 @@ Separate content into multiple areas.
 ```ts
 // react
 import { Divider } from '@nutui/nutui-react';
-// taro
-import { Divider } from '@nutui/nutui-react-taro';
+
 ```
 ### code demo
 ### Basic Usage

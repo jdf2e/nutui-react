@@ -2,6 +2,8 @@ import React, { createContext } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Elevator } from '@/packages/nutui.react.taro'
 import '@/packages/elevator/demo.scss'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 export const elevatorContext = createContext({} as ElevatorData)
 
@@ -473,7 +475,8 @@ const ElevatorDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <div className="demo-component">
           <Elevator

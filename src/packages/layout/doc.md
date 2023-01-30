@@ -8,8 +8,7 @@
 ```javascript
 // react
 import { Row, Col } from '@nutui/nutui-react'
-// taro
-import { Row, Col } from '@nutui/nutui-react-taro'
+
 ```
 
 

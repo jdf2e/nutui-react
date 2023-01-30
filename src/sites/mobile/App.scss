@@ -47,6 +47,8 @@
   }
 
   .demo {
+    min-height: 100vh;
+
     &.no-overflow {
       overflow: unset;
     }

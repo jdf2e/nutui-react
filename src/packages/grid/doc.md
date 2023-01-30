@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { Grid ,GridItem } from '@nutui/nutui-react'
-// taro
-import { Grid ,GridItem } from '@nutui/nutui-react-taro'
+
 ```
 
 ## 代码演示
