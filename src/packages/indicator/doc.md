@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { Indicator } from '@nutui/nutui-react'
-// taro
-import { Indicator } from '@nutui/nutui-react-taro'
+
 ```
 ### 基础用法
 :::demo

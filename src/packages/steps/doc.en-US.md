@@ -9,8 +9,7 @@ Split and display the steps of a process, guide users to complete tasks accordin
 ```ts
 // react
 import { Steps } from '@nutui/nutui-react';
-// taro
-import { Steps } from '@nutui/nutui-react-taro';
+
 ```
 
 ### Basic Usage

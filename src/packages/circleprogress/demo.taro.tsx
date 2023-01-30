@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import '@/packages/circleprogress/demo.scss'
 import { Button, CircleProgress } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   '84aa6bce': string
@@ -74,7 +76,12 @@ const CircleProgressDemo = () => {
 
   return (
     <>
-      <div className="demo demo-circleprogress">
+      <Header />
+      <div
+        className={`demo ${
+          Taro.getEnv() === 'WEB' ? 'web' : ''
+        } demo-circleprogress`}
+      >
         <h2>{translated['84aa6bce']}</h2>
         <div className="demo__piece">
           <CircleProgress progress={20} />

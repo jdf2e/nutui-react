@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { NavBar, Tabs, TabPane, Icon } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 interface T {
   ce5c5446: string
@@ -54,7 +55,8 @@ const NavBarDemo = () => {
   const [tab1value, setTab1value] = useState('Tab 1')
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.ce5c5446}</h2>
         <NavBar
           title={translated.c38a08ef}

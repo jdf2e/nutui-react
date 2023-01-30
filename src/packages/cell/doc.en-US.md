@@ -9,8 +9,7 @@ The cell is a single display item in the list.
 ```ts
 // react
 import { Cell, CellGroup } from '@nutui/nutui-react'
-// taro
-import { Cell, CellGroup } from '@nutui/nutui-react-taro'
+
 ```
 
 ## Demo

@@ -8,8 +8,7 @@
 ``` ts
 // react
 import { InputNumber } from '@nutui/nutui-react';
-// taro
-import { InputNumber } from '@nutui/nutui-react-taro';
+
 ```
 ### 基礎用法
 

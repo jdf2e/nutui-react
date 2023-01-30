@@ -9,8 +9,7 @@ Scrolling to the bottom of the list automatically loads more data.
 ```ts
 // react
 import { InfiniteLoading } from '@nutui/nutui-react';
-// taro
-import { InfiniteLoading } from '@nutui/nutui-react-taro';
+
 ```
 
 ### Basic Usage

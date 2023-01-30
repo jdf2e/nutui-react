@@ -8,8 +8,7 @@ Short password input box, which can be used to enter passwords, SMS verification
 ```ts
 // react
 import { ShortPassword } from '@nutui/nutui-react';
-// taro
-import { ShortPassword } from '@nutui/nutui-react-taro';
+
 ```
 
 

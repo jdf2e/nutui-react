@@ -9,8 +9,7 @@ Used to select time, support date and time dimensions, usually used with the Pop
 ```ts
 // react
 import { DatePicker } from '@nutui/nutui';
-// taro
-import { DatePicker } from '@nutui/nutui-taro';
+
 ```
     
 ### Choose Date

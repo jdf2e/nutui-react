@@ -9,8 +9,7 @@ Implement draggable arbitrary elements.
 ```javascript
 // react
 import { Drag } from '@nutui/nutui-react'
-// taro
-import { Drag } from '@nutui/nutui-react-taro'
+
 ```
 
 ## Demo

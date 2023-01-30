@@ -3,6 +3,7 @@ import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Infiniteloading, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/infiniteloading/demo.scss'
+import Header from '@/sites/components/header'
 
 interface T {
   '83913e71': string
@@ -74,7 +75,10 @@ const InfiniteloadingDemo = () => {
 
   return (
     <>
-      <div className="demo demo-infinite">
+      <Header />
+      <div
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-infinite`}
+      >
         <h2>{translated['84aa6bce']}</h2>
         <Cell>
           <ul

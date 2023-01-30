@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { TimeSelect, Cell } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 export interface TimeType {
   key?: string | number
@@ -77,8 +79,9 @@ const TimeSelectDemo = () => {
   }
   return (
     <>
-      <div className="demo">
-        <Cell title={translated.text2} click={handleClick} />
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <Cell title={translated.text2} onClick={handleClick} />
         <TimeSelect
           visible={visible1}
           height="50%"

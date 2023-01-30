@@ -9,8 +9,7 @@ Used for audio playback
 ```javascript
 // react
 import { Audio } from '@nutui/nutui-react'
-// taro
-import { Audio } from '@nutui/nutui-react-taro'
+
 ```
 
 ## Code demonstration

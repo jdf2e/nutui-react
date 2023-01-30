@@ -9,8 +9,7 @@ Digital animation collection
 ```javascript
 // react
 import { AnimatingNumbers } from '@nutui/nutui-react'
-// taro
-import { AnimatingNumbers } from '@nutui/nutui-react-taro'
+
 ```
 
 ## Demo
