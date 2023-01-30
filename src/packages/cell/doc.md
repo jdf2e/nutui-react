@@ -273,7 +273,7 @@ export default App;
 | title              | 标题名称                      |  React.ReactNode           | -      |
 | subTitle           | 左侧副标题                           |  React.ReactNode           | -      |
 | desc               | 右侧描述                                     | String      | -      |
-| descTextAlign      | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String | right  |
+| descTextAlign      | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)，只展示 desc 时可用 | String | right  |
 | isLink             | 是否展示右侧箭头并开启点击反馈            | Boolean          | false  |
 | to`v1.4.0废弃`        | 点击后跳转的目标路由对象 | String  | -      |
 | replace            | 是否在跳转时替换当前页面历史                             | Boolean          | false  |
