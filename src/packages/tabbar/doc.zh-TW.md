@@ -194,3 +194,22 @@ export default App;
 | 事件名稱   | 說明               | 回調參數           |
 |------------|--------------------|--------------------|
 | tabSwitch | 切換頁籤時觸發事件 | 點擊的數據和索引值 |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-tabbar-active-color | ` $primary-color` |
+| --nutui-tabbar-unactive-color | `  $primary-color` |
+| --nutui-tabbar-border-top | ` 1px solid #eee` |
+| --nutui-tabbar-border-bottom | `  1px solid #eee` |
+| --nutui-tabbar-box-shadow | ` none` |
+| --nutui-tabbar-item-text-font-size | `  $font-size-0` |
+| --nutui-tabbar-item-text-line-height | `  initial` |
+| --nutui-tabbar-height | ` 50px` |
+| --nutui-tabbar-word-margin-top | ` auto` |

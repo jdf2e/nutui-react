@@ -216,3 +216,25 @@ export default RadioGroupOptions;
 | 事件名稱     | 說明 | 回調參數 |
 |----------|--------------|----------------------------------------------------|
 | onChange | 值變化時觸發 | 當前選取的選項（label）【設置label後有值、預設為空】 |
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-radio-label-font-color | ` $gray1` |
+| --nutui-radio-label-font-active-color | `  $primary-color` |
+| --nutui-radio-label-disable-color | `  $gray3` |
+| --nutui-radio-icon-disable-color | `  $gray2` |
+| --nutui-radio-label-button-border-color | `  $primary-color` |
+| --nutui-radio-label-button-background | `  rgba(250, 44, 25, 0.05)` |
+| --nutui-radio-label-margin-left | ` 15px` |
+| --nutui-radio-button-border-radius | `  15px` |
+| --nutui-radio-label-font-size | ` 14px` |
+| --nutui-radio-button-font-size | ` 12px` |
+| --nutui-radio-button-padding | ` 5px 18px` |
+| --nutui-radio-icon-font-size | ` 18px` |
+| --nutui-radio-icon-disable-color2 | `  $gray3` |

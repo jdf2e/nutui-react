@@ -383,3 +383,16 @@ export default App;
 | onFileItemClick `v1.3.4`   | 文件上傳成功後點擊觸發     | fileItem       |
 | fileItemClick `v1.3.4廢棄`   | 文件上傳成功後點擊觸發     | fileItem       |
 
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-uploader-picture-width | ` 100px` |
+| --nutui-uploader-picture-height | ` 100px` |
+| --nutui-uploader-background | ` $gray4` |
