@@ -6,14 +6,18 @@ const subPackages = [
       'pages/cell/index',
       'pages/configprovider/index',
       'pages/icon/index',
-      'pages/image/index',
       'pages/overlay/index',
       'pages/popup/index',
     ],
   },
   {
     root: 'layout',
-    pages: ['pages/divider/index', 'pages/grid/index', 'pages/layout/index'],
+    pages: [
+      'pages/divider/index',
+      'pages/grid/index',
+      'pages/layout/index',
+      'pages/sticky/index',
+    ],
   },
   {
     root: 'nav',
@@ -68,7 +72,6 @@ const subPackages = [
     pages: [
       'pages/animate/index',
       'pages/animatingnumbers/index',
-      'pages/audio/index',
       'pages/avatar/index',
       'pages/badge/index',
       'pages/circleprogress/index',
