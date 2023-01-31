@@ -309,3 +309,26 @@ export default App
 | onClick `v1.3.8` | 外层点击事件回调 | event: Event |
 | onClose `v1.3.8` | 关闭通知栏时触发 | event: Event |
 | onClickItm `v1.4.5` | 垂直滚动多条数据时，点击当前展示的信息时触发 | （event: Event,listItem） |
+
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-noticebar-background | `  rgba(251, 248, 220, 1)` |
+| --nutui-noticebar-color | ` #d9500b` |
+| --nutui-noticebar-font-size | ` 14px` |
+| --nutui-noticebar-height | ` 40px` |
+| --nutui-noticebar-line-height | ` 24px` |
+| --nutui-noticebar-left-icon-width | `  16px` |
+| --nutui-noticebar-right-icon-width | `  16px` |
+| --nutui-noticebar-box-padding | ` 0 16px` |
+| --nutui-noticebar-wrapable-padding | `  16px` |
+| --nutui-noticebar-lefticon-margin | `  0px 10px` |
+| --nutui-noticebar-righticon-margin | `  0px 10px` |
+

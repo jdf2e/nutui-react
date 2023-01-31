@@ -111,3 +111,14 @@ export default App;
 | gapY        | Vertical spacing between watermarks                                   | `number`           | `48`                 |
 | fullPage    | Overwrite entire page                                     | `boolean`          | `true`               |
 | fontFamily  | Watermark text font family                  | `boolean`          | `true`               |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-watermark-z-index | `  $mask-content-z-index` |

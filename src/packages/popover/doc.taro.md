@@ -246,3 +246,21 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 
 
 
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-popover-white-background-color | `  rgba(255, 255, 255, 1)` |
+| --nutui-popover-dark-background-color | `  rgba(75, 76, 77, 1)` |
+| --nutui-popover-border-bottom-color | `  rgba(229, 229, 229, 1)` |
+| --nutui-popover-primary-text-color | `  rgba(51, 51, 51, 1)` |
+| --nutui-popover-disable-color | `  rgba(154, 155, 157, 1)` |
+| --nutui-popover-menu-item-padding | `  8px 0` |
+| --nutui-popover-menu-item-margin | `  0 8px` |
+| --nutui-popover-menu-name-line-height | `  normal` |

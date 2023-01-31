@@ -151,3 +151,26 @@ import { Form } from '@nutui/nutui-react-taro'
 | 方法名            | 说明 | 参数 | 返回值  |
 |-------------------|-----------------------------|-----|---------|
 | submit | 提交表单进行校验的方法 | - | Promise |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-form-item-error-line-color | `  $required-color` |
+| --nutui-form-item-required-color | `  $required-color` |
+| --nutui-form-item-error-message-color | `  $required-color` |
+| --nutui-form-item-label-font-size | `  14px` |
+| --nutui-form-item-label-width | ` 90px` |
+| --nutui-form-item-label-margin-right | `  10px` |
+| --nutui-form-item-label-text-align | `  left` |
+| --nutui-form-item-required-margin-right | `  4px` |
+| --nutui-form-item-body-font-size | ` 14px` |
+| --nutui-form-item-body-slots-text-align | `  left` |
+| --nutui-form-item-body-input-text-align | `  left` |
+| --nutui-form-item-tip-font-size | ` 10px` |
+| --nutui-form-item-tip-text-align | ` left` |

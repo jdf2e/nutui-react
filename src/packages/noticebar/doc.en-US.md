@@ -299,3 +299,24 @@ export default App
 | onClose `v1.3.8`     | Emitted when NoticeBar is closed        | event: Event |
 | onClickItm `v1.4.5` | Emitted when the currently displayed information is clicked when scrolling multiple pieces of data vertically | （event: Event,listItem） |
 
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-noticebar-background | `  rgba(251, 248, 220, 1)` |
+| --nutui-noticebar-color | ` #d9500b` |
+| --nutui-noticebar-font-size | ` 14px` |
+| --nutui-noticebar-height | ` 40px` |
+| --nutui-noticebar-line-height | ` 24px` |
+| --nutui-noticebar-left-icon-width | `  16px` |
+| --nutui-noticebar-right-icon-width | `  16px` |
+| --nutui-noticebar-box-padding | ` 0 16px` |
+| --nutui-noticebar-wrapable-padding | `  16px` |
+| --nutui-noticebar-lefticon-margin | `  0px 10px` |
+| --nutui-noticebar-righticon-margin | `  0px 10px` |
