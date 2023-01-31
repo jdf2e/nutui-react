@@ -1,10 +1,10 @@
-#  NoticeBar 公告栏
+#  NoticeBar 公告欄
 
-### 介绍
+### 介紹
 
-用于循环播放展示一组消息通知。
+用於循環播放展示一組消息通知。
 
-### 安装
+### 安裝
 
 ```javascript
 // react
@@ -12,7 +12,7 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 ```
 
-## 代码演示
+## 代碼演示
 
 ### 基本用法
 
@@ -23,7 +23,7 @@ import  React, {useState} from "react";
 import { NoticeBar } from '@nutui/nutui-react';
 
 const App = () => {
-    const text = 'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
+    const text = 'NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。'
     return (
       <>
         <NoticeBar text={text} />
@@ -34,8 +34,8 @@ export default App
 ```
 :::
 
-### 滚动播放
-通知栏的内容长度溢出时会自动开启滚动播放，可通过 scrollable 属性可以控制该行为
+### 滾動播放
+通知欄的內容長度溢出時會自動開啟滾動播放，可通過 scrollable 屬性可以控制該行為
 
 :::demo
 
@@ -47,12 +47,12 @@ const App = () => {
     return (
       <>
         <NoticeBar
-            text="NutUI 是京东风格的移动端组件库"
+            text="NutUI 是京東風格的移動端組件庫"
             scrollable
         />
 
         <NoticeBar 
-            text="NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。" scrollable={false} 
+            text="NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。" scrollable={false} 
         />
       </>
     )
@@ -62,7 +62,7 @@ export default App
 :::
 
 
-### 通告栏模式--关闭模式
+### 通告欄模式--關閉模式
 
 :::demo
 
@@ -77,11 +77,11 @@ const App = () => {
     return (
       <>
        <NoticeBar closeMode onClick={hello}>
-          NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
+          NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。
         </NoticeBar>
         <br />
         <NoticeBar closeMode rightIcon="circle-close" onClick={hello}>
-          NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
+          NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。
         </NoticeBar>
         <br />
         <NoticeBar leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png">
@@ -98,7 +98,7 @@ export default App
 
 ### 多行展示
 
-文字较长时，可以通过设置 wrapable 属性来开启多行展示。默认为不滚动，可以通过设置 scrollable 控制为滚动。
+文字較長時，可以通過設置 wrapable 屬性來開啟多行展示。默認為不滾動，可以通過設置 scrollable 控制為滾動。
 
 :::demo
 
@@ -107,7 +107,7 @@ import  React, {useState} from "react";
 import { NoticeBar } from '@nutui/nutui-react';
 
 const App = () => {
-    const text = 'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
+    const text = 'NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。'
     
     return (
       <NoticeBar text={text} wrapable />
@@ -117,7 +117,7 @@ export default App
 ```
 :::
 
-### 纵向滚动
+### 縱向滾動
 
 :::demo
 
@@ -127,10 +127,10 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 const App = () => {
     const horseLamp1 = [
-        'NoticeBar 公告栏',
-        'Cascader 级联选择',
-        'DatePicker 日期选择器',
-        'CheckBox 复选按钮',
+        'NoticeBar 公告欄',
+        'Cascader 級聯選擇',
+        'DatePicker 日期選擇器',
+        'CheckBox 複選按鈕',
       ]
     const go = (item: any) => {
         console.log(item)
@@ -156,7 +156,7 @@ export default App
 
 
 
-### 复杂滚动动画
+### 自定義左側圖標
 
 :::demo
 
@@ -165,7 +165,7 @@ import  React, {useState} from "react";
 import { NoticeBar } from '@nutui/nutui-react';
 
 const App = () => {
-     const horseLamp2 = ref(['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']);
+     const horseLamp2 = ref(['NoticeBar 公告欄', 'Cascader 級聯選擇', 'DatePicker 日期選擇器', 'CheckBox 複選按鈕']);
     return (
       <>
         <NoticeBar
@@ -173,7 +173,14 @@ const App = () => {
             list={horseLamp2}
             speed={10}
             standTime={2000}
-            complexAm
+            leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+            onClick={(e) => {
+              console.log('listClick', e.target)
+            }}
+            onClickItem={(e, val) => {
+              console.log('dom', e.target)
+              console.log('value', val)
+            }}
         />
       </>
     )
@@ -183,7 +190,7 @@ export default App
 :::
 
 
-### 自定义滚动内容
+### 自定義滾動內容
 
 :::demo
 
@@ -192,20 +199,22 @@ import  React, {useState} from "react";
 import { NoticeBar } from '@nutui/nutui-react';
 
 const App = () => {
-    const  horseLamp3 = ['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']
+    const  horseLamp3 = ['NoticeBar 公告欄', 'Cascader 級聯選擇', 'DatePicker 日期選擇器', 'CheckBox 複選按鈕']
 
     return (
       <>
         <NoticeBar direction="vertical" height={50} speed={10} standTime={1000} 
         closeMode
-        onClose={() => {console.log('close')}}
-        onClick={(e) => {console.log(e)}}>
+        onClose={() => {console.log('close')}}>
         {horseLamp3.map((item, index) => {
             return (
             <div
                 className="custom-item"
                 style={{ height: '50px', lineHeight: '50px' }}
                 key={index}
+                onClick={() => {
+                    console.log('custom-inner', item)
+                }}
             >
                 {item}
             </div>
@@ -231,10 +240,10 @@ import { NoticeBar,Icon } from '@nutui/nutui-react';
 
 const App = () => {
      const horseLamp1 = [
-        'NoticeBar 公告栏',
-        'Cascader 级联选择',
-        'DatePicker 日期选择器',
-        'CheckBox 复选按钮',
+        'NoticeBar 公告欄',
+        'Cascader 級聯選擇',
+        'DatePicker 日期選擇器',
+        'CheckBox 複選按鈕',
       ]
     return (
       <>
@@ -244,6 +253,9 @@ const App = () => {
             list={horseLamp1}
             speed={10}
             standTime={1000}
+            onClickItem={(e, v) => {
+              console.log('onclick-custom', v)
+            }}
             rightIcon={<Icon name="fabulous" size="16" color="#f0250f" />}
         />
         </>
@@ -279,7 +291,7 @@ export default App
 | list         | 纵向滚动数据列表               | Array | []               |
 | speed        | 滚动的速度                         | Number | 50               |
 | standTime         | 停留时间(毫秒) | Number | 1000                |
-| complexAm | 稍复杂的动画，耗能会高     | Boolean | false |
+| complexAm `即将废弃`| 稍复杂的动画，耗能会高     | Boolean | false |
 | height          | 每一个滚动列的高度(px)，注意：在使用 slot 插槽定义滚动单元时，按照实际高度修改此值                 | Number | 40              |
 | closeMode  | 是否启用右侧关闭图标，可以通过slot[name=rightIcon]自定义图标                                   | Boolean       | false  |
 
@@ -289,10 +301,11 @@ export default App
 |--------------|----------------------------------|
 | default         | 通知文本的内容               | 
 | rightIcon        | 自定义右侧图标    | 
-| leftIcon        | 自定义左侧图标    | 
+| leftIcon        | 自定义左侧图标，垂直滚动模式下默认无左侧图标，配置后展示，配置为"close"    | 
 ### Event
 
 | 字段  | 说明             | 回调参数     |
 | ----- | ---------------- | ------------ |
 | onClick `v1.3.8` | 外层点击事件回调 | event: Event |
 | onClose `v1.3.8` | 关闭通知栏时触发 | event: Event |
+| onClickItm `v1.4.5` | 垂直滚动多条数据时，点击当前展示的信息时触发 | （event: Event,listItem） |
