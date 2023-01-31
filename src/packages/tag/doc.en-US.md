@@ -226,6 +226,4 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-tag-warning-background-color | `  #f3812e` |
 | --nutui-tag-default-color | ` #ffffff` |
 | --nutui-tag-border-width | ` 1px` |
-| --nutui-tag-plain-background-color | `  #fff` |
-| --nutui-tag-plain-color | ` rgb(250, 36, 0)` |
 | --nutui-tag-height | ` auto` |
