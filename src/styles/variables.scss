@@ -1248,11 +1248,6 @@ $tag-warning-background-color: var(
 ) !default;
 $tag-default-color: var(--nutui-tag-default-color, #ffffff) !default;
 $tag-border-width: var(--nutui-tag-border-width, 1px) !default;
-$tag-plain-background-color: var(
-  --nutui-tag-plain-background-color,
-  #fff
-) !default;
-$tag-plain-color: var(--nutui-tag-plain-color, rgb(250, 36, 0)) !default;
 $tag-height: var(--nutui-tag-height, auto) !default;
 
 //badge（✅）
