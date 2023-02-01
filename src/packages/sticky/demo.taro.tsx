@@ -1,7 +1,9 @@
 import React, { useRef } from 'react'
 import { Button, Cell, Sticky } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import Header from '@/sites/components/header'
 
+import { getEnv } from '@tarojs/taro'
 interface T {
   basic: string
   title1: string
@@ -66,7 +68,8 @@ const StickyDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{basic}</h2>
         <Cell>
           <Sticky top={0} onChange={(val: boolean) => handleChange(val)}>

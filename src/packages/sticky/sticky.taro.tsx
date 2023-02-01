@@ -12,8 +12,10 @@ import {
   PageScrollObject,
   usePageScroll,
   getSystemInfoSync,
+  getEnv,
 } from '@tarojs/taro'
 
+import { Sticky as WebSticky } from './sticky'
 export interface StickyProps extends BasicComponent {
   container?: React.RefObject<HTMLElement>
   position?: 'top' | 'bottom'
@@ -129,7 +131,9 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
   usePageScroll((res: PageScrollObject) => {
     handleScroll(res.scrollTop)
   })
-  return (
+  return getEnv() === 'WEB' ? (
+    <WebSticky {...props} />
+  ) : (
     <div
       ref={rootRef}
       style={rootStyle}
