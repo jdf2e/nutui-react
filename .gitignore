@@ -18,7 +18,6 @@ package-lock.json
 /src/sites/doc/docs.taro.ts
 /src/sites/mobile-taro/dist
 /src/sites/mobile-taro/node_modules
-/src/sites/mobile-taro/src/app.scss
 /tsc/test
 /site_docs
 /coverage
