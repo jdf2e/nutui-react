@@ -76,7 +76,7 @@
     "dev:taro:weapp": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:weapp",
     "dev:taro:jd": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:jd",
     "dev:taro:h5": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:h5",
-    "dev:taro:jmapp": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:weapp",
+    "dev:taro:weapp:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:weapp:jmapp",
     "replace:taro:types": "node scripts/taro/replace-taro-types-alias.js",
     "build:taro": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run build:taro:es  && npm run build:css && npm run build:loader-style && npm run build:dts && npm run build:locales",
     "build:taro:es": "npx rollup -c rollup.config.taro.es.js",

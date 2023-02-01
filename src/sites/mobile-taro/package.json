@@ -18,7 +18,7 @@
     "build:qq": "taro build --type qq",
     "build:jd": "taro build --type jd",
     "build:quickapp": "taro build --type quickapp",
-    "dev:weapp": "VITE_APP_PROJECT_ID=jmapp npm run build:weapp -- --watch ",
+    "dev:weapp": "npm run build:weapp -- --watch ",
     "dev:swan": "npm run build:swan -- --watch",
     "dev:alipay": "npm run build:alipay -- --watch",
     "dev:tt": "npm run build:tt -- --watch",
@@ -26,7 +26,16 @@
     "dev:rn": "npm run build:rn -- --watch",
     "dev:qq": "npm run build:qq -- --watch",
     "dev:jd": "npm run build:jd -- --watch",
-    "dev:quickapp": "npm run build:quickapp -- --watch"
+    "dev:quickapp": "npm run build:quickapp -- --watch",
+    "dev:weapp:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:weapp -- --watch ",
+    "dev:swan:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:swan -- --watch",
+    "dev:alipay:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:alipay -- --watch",
+    "dev:tt:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:tt -- --watch",
+    "dev:h5:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:h5 -- --watch",
+    "dev:rn:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:rn -- --watch",
+    "dev:qq:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:qq -- --watch",
+    "dev:jd:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:jd -- --watch",
+    "dev:quickapp:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:quickapp -- --watch"
   },
   "browserslist": [
     "last 3 versions",
