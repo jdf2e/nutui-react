@@ -206,3 +206,18 @@ export default App;
 | onOpen   | 打开单元格侧边栏 | _name: string , position: `left \| right`_      |
 | onClose  | 收起单元格侧边栏 | _name: string , position: `left \| right`_    |
 | onActionClick  | 点击左侧或者右侧时触发 | _event: Event , position: `left \| right`_     |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-swiper-pagination-item-background-color | `  #ddd` |
+| --nutui-swiper-pagination-item-width | `  8px` |
+| --nutui-swiper-pagination-item-height | `  3px` |
+| --nutui-swiper-pagination-item-margin-right | `  7px` |
+| --nutui-swiper-pagination-item-border-radius | `  2px` |

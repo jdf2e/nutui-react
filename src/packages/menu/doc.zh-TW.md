@@ -306,3 +306,31 @@ export default App
 | 事件名 | 说明                 | 回调参数     |
 |-----|----------------------|--------------|
 | toggle   | 切换菜单展示状态，传 true 为显示，false 为隐藏，不传参为取反 | show?: boolean |
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-menu-bar-line-height | ` 48px` |
+| --nutui-menu-item-font-size | ` $font-size-2` |
+| --nutui-menu-item-text-color | ` $title-color` |
+| --nutui-menu-item-active-text-color | `  $primary-color` |
+| --nutui-menu-bar-border-bottom-color | `  #eaf0fb` |
+| --nutui-menu-bar-opened-z-index | ` 2001` |
+| --nutui-menu-item-disabled-color | `  #969799` |
+| --nutui-menu-title-text-padding-left | `  8px` |
+| --nutui-menu-title-text-padding-right | `  8px` |
+| --nutui-menu-item-content-padding | `  12px 24px` |
+| --nutui-menu-item-content-max-height | `  214px` |
+| --nutui-menu-item-option-padding-top | `  12px` |
+| --nutui-menu-item-option-padding-bottom | `  12px` |
+| --nutui-menu-item-option-i-margin-right | `  6px` |
+| --nutui-menu-bar-box-shadow | `  0 2px 12px rgba(89, 89, 89, 0.12)` |
+| --nutui-menu-scroll-fixed-top | ` 0` |
+| --nutui-menu-scroll-fixed-z-index | `  $mask-z-index` |
+| --nutui-menu-active-item-font-weight | `  500` |
+| --nutui-menu-item-content-bg-color | `  $gray6` |

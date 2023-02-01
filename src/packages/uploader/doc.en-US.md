@@ -382,3 +382,16 @@ export default App;
 | onFileItemClick `v1.3.4`   | File delete event     | fileItem       |
 | fileItemClick `v1.3.4(Abandon)`   | File delete event     | fileItem       |
 
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-uploader-picture-width | ` 100px` |
+| --nutui-uploader-picture-height | ` 100px` |
+| --nutui-uploader-background | ` $gray4` |

@@ -110,3 +110,20 @@ export default App;
 | description         | 图片下方的描述文字 | ReactNode | 无数据                |
 
 
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-empty-padding | ` 32px 0` |
+| --nutui-empty-image-size | ` 170px` |
+| --nutui-empty-description-margin-top | `  4px` |
+| --nutui-empty-description-color | `  #666666` |
+| --nutui-empty-description-font-size | `  14px` |
+| --nutui-empty-description-line-height | `  20px` |
+| --nutui-empty-description-padding | `  0 40px` |

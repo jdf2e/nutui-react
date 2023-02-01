@@ -85,7 +85,7 @@ export const Cell: FunctionComponent<
 
   const styles =
     title || subTitle || icon
-      ? {}
+      ? { textAlign: descTextAlign }
       : {
           textAlign: descTextAlign,
           flex: 1,

@@ -19,6 +19,7 @@ export default defineConfig({
   server: {
     port: 2022,
     host: '0.0.0.0',
+    open: '/theme-react/theme.html#/base',
     proxy: {
       '/devServer': {
         target: 'https://nutui.jd.com',
@@ -31,7 +32,6 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/devTheme/, ''),
       },
     },
-    open: '/theme-react/theme.html#/',
   },
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
