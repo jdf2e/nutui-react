@@ -1,4 +1,5 @@
 @import '../../../styles/font/iconfont.css';
+
 .h5-span {
   display: inline;
 }
@@ -14,6 +15,7 @@
   &.no-overflow {
     overflow: unset;
   }
+
   height: 100%;
   background: #f7f8fa;
   overflow-x: hidden;
@@ -22,6 +24,7 @@
 
   &-full {
     padding: 0 0 0 0 !important;
+
     h2 {
       padding-left: 17px;
     }
@@ -35,6 +38,7 @@
     width: 0;
     background: transparent;
   }
+
   > h2 {
     margin-top: 30px;
     margin-bottom: 10px;
@@ -43,6 +47,7 @@
     padding: 0 10px;
     font-weight: normal;
   }
+
   > p {
     font-size: 12px;
   }

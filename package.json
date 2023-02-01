@@ -9,7 +9,8 @@
     "*.scss",
     "dist/esm/**/style/*",
     "dist/style.css",
-    "dist/styles/font/*"
+    "dist/styles/font/*",
+    "dist/styles/font-jmapp/*"
   ],
   "description": "京东风格的轻量级移动端 React 组件库，支持一套代码生成 H5 和小程序",
   "keywords": [
@@ -44,11 +45,12 @@
   ],
   "scripts": {
     "add": "node scripts/createComponentMode.js",
-    "generate:file": "node scripts/generate-nutui.js",
+    "generate:file": "node scripts/generate-nutui.js ",
     "generate:themes": "node scripts/generate-themes.js",
     "generate:themes-dev": "node scripts/generate-themes-dev.js",
     "checked": "npm run generate:file && tsc",
     "dev": "npm run checked && vite --open --force",
+    "dev:jmapp": "npm run checked && VITE_APP_PROJECT_ID=jmapp vite --open --force",
     "dev:theme": "npm run generate:themes-dev && npm run checked && vite --config vite.config.theme.ts --open --force",
     "replace:scss": "node scripts/replace-scss-alias.js",
     "build:dts": "node scripts/export-props.js && npx rollup -c rollup.config.dts.js",
@@ -74,9 +76,11 @@
     "dev:taro:weapp": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:weapp",
     "dev:taro:jd": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:jd",
     "dev:taro:h5": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:h5",
+    "dev:taro:jmapp": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:weapp",
     "replace:taro:types": "node scripts/taro/replace-taro-types-alias.js",
-    "build:taro": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run build:taro:es  && npm run build:css && npm run build:loader-style && npm --taro run build:dts && npm run build:locales",
+    "build:taro": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run build:taro:es  && npm run build:css && npm run build:loader-style && npm run build:dts && npm run build:locales",
     "build:taro:es": "npx rollup -c rollup.config.taro.es.js",
+    "build:taro:jmapp": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run build:taro:es  && npm run build:css --projectid=jmapp && npm run build:loader-style --projectid=jmapp && npm run build:dts && npm run build:locales",
     "build:taro:weapp": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run build:weapp",
     "add:taro:config": "node scripts/taro/generate-taro-route.js"
   },

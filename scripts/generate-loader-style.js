@@ -2,7 +2,7 @@ const config = require('../src/config.json')
 const path = require('path')
 const fse = require('fs-extra')
 const fs = require('fs')
-
+const projectID = process.env.VITE_APP_PROJECT_ID
 const components = []
 
 config.nav.forEach((c) => {
@@ -71,7 +71,10 @@ config.nav.map((item) => {
         fse.outputFileSync(componentSassFile, data)
       }
       if (nameLowerCase === 'icon') {
-        rewrite = `import '../../../styles/font/iconfont.css'\n` + rewrite
+        rewrite =
+          `import '../../../styles/font${
+            projectID ? `-${projectID}` : ''
+          }/iconfont.css'\n` + rewrite
       }
       fse.outputFileSync(
         file,

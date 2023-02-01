@@ -2,7 +2,13 @@ import React from 'react'
 import * as ReactDOM from 'react-dom/client'
 import App from './App'
 import '@/sites/assets/styles/reset.scss'
-import '@/styles/font/iconfont.css'
+
+const projectID = import.meta.env.VITE_APP_PROJECT_ID
+if (projectID) {
+  import(`../../styles/font-${projectID}/iconfont.css`)
+} else {
+  import('../../styles/font/iconfont.css')
+}
 
 import('../../packages/nutui.react.scss')
 
