@@ -346,3 +346,29 @@ export default App;
 |--------|--------------------------|--------------------------|
 | click  | 点击标签时触发           | {title,paneKey,disabled} |
 | change | 当前激活的标签改变时触发 | {title,paneKey,disabled} |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-tabs-tab-smile-color | `  $primary-color` |
+| --nutui-tabs-titles-border-radius | ` 0` |
+| --nutui-tabs-titles-item-large-font-size | `  $font-size-3` |
+| --nutui-tabs-titles-item-font-size | `  $font-size-2` |
+| --nutui-tabs-titles-item-small-font-size | `  $font-size-1` |
+| --nutui-tabs-titles-item-color | `  $title-color` |
+| --nutui-tabs-titles-item-active-color | `  $title-color` |
+| --nutui-tabs-titles-background-color | `  $background-color2` |
+| --nutui-tabs-horizontal-titles-height | `  46px` |
+| --nutui-tabs-horizontal-titles-item-min-width | `  50px` |
+| --nutui-tabs-horizontal-titles-item-active-line-width | `  40px` |
+| --nutui-tabs-vertical-titles-item-height | `  40px` |
+| --nutui-tabs-vertical-titles-item-active-line-height | `  14px` |
+| --nutui-tabs-vertical-titles-width | `  100px` |
+| --nutui-tabs-titles-item-line-border-radius | `  0` |
+| --nutui-tabs-titles-item-line-opacity | `  1` |

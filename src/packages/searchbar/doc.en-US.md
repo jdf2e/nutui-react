@@ -184,3 +184,25 @@ export default App;
 |onClickLeftoutIcon | triggered when clicking the icon on the left outside of the input box | _val: string, event: Event_ |
 |onClickRightinIcon | triggered when clicking the icon on the right side of the input box | _val: string, event: Event_ |
 |onClickRightoutIcon | triggered when clicking the icon on the right side of the input box | _val: string, event: Event_ |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-searchbar-background | ` $gray6` |
+| --nutui-searchbar-right-out-color | `  $black` |
+| --nutui-searchbar-padding | ` 9px 16px` |
+| --nutui-searchbar-action-text-color | `  $gray1` |
+| --nutui-searchbar-input-height | ` 32px` |
+| --nutui-searchbar-input-padding | ` 0 28px` |
+| --nutui-searchbar-input-background | `  #f7f7f7` |
+| --nutui-searchbar-input-text-color | `  $gray1` |
+| --nutui-searchbar-input-border-radius | `  16px` |
+| --nutui-searchbar-input-box-shadow | `  0 0 8px 0 rgba(0, 0, 0, 0.04)` |
+| --nutui-searchbar-input-bar-color | `  inherit` |
+| --nutui-searchbar-input-bar-placeholder-color | `  inherit` |

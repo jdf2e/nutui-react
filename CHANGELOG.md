@@ -1,3 +1,18 @@
+# v.14.5
+`2023-02-01`
+
+* :sparkles: feat: virtuallist 组件适配 taro (#602) @vickyYe
+* :bug: fix: 修复 tag 组件 plain 与 type 同时使用时的样式错误 (#606) @eiinu
+* :bug: fix: 修复 noticebar 组件垂直滚动自定义内容点击问题，增加onClickItem事件 (#596) @vickyYe
+* :bug: fix: 修复 uploader 组件 beforeUpload 方法的 ts 类型 (#601) @junjun666
+* :bug: fix: 修复 cell 组件 descTextAlign 相关代码的注入时机和使用文档 (#598) @irisSong
+* :bug: fix: 修复 radio 组件横向排列选中后页面抖动 (#600) @oasis-cloud
+* 🔨 chore: nutui-react-taro 在 iOS 11 下和 taro 的 regenerator-runtime 冲突 (#604) @oasis-cloud
+* 🔨 chore: nutui-react-taro 版本移除 image 和 audio (#609) @oasis-cloud
+* 🔨 chore: 在线主题定制启动后默认打开基础样式 (#603) @oasis-cloud
+* 🔨 chore: 开发环境文档预览增加最小宽度 (#608) @oasis-cloud
+* 🔨 chore: 提取组件的 CSS Variables (#605) @oasis-cloud
+
 # v1.4.4
 `2023-01-17`
 
