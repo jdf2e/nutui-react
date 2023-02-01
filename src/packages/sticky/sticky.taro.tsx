@@ -120,24 +120,7 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
         }
       } else {
         const windowHeight = getSystemInfoSync().windowHeight
-        if (container?.current && curRootRect.height && curRootRect.bottom) {
-          const containerRect = await getRectByTaro(container.current)
-          const diff = containerRect.bottom - (windowHeight - bottom) //偏移距离
-          const transform = diff < 0 ? diff : 0
-          setTransform(transform)
-          const curFixed =
-            containerRect.bottom > 0 &&
-            windowHeight - bottom - stickyRect.height > containerRect.top
-          setFixed(curFixed)
-          console.log('difference', {
-            diffrence: diff,
-            fixed: curFixed,
-            stickyHeight: stickyRect.heght,
-            transform,
-          })
-        } else {
-          setFixed(windowHeight - offset < curRootRect.bottom)
-        }
+        setFixed(windowHeight - offset < curRootRect.bottom)
       }
     } else {
       console.log('getRectByTaro获取失败', { stickyRect, curRootRect })
