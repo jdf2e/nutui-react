@@ -15,22 +15,22 @@ $gray3: var(--nutui-gray-3, #bfbfbf) !default;
 // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
 $gray4: var(--nutui-gray-4, #f4f4f4) !default;
 // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-$gray5: var(--nutui-gray-5, #f7f7f7) !default;
+$gray5: var(--nutui-gray-5, #f8f8f8) !default;
 // 卡片背景色
 $gray6: var(--nutui-gray-6, #ffffff) !default;
 // 页面全局蒙层，用于弹出层、弹窗、新功能引导出现的整页遮罩
-$gray7: var(--nutui-gray-7, rgba(0, 0, 0, 0.7)) !default;
+$gray7: var(--nutui-gray-7, rgba(0, 0, 0, 0.65)) !default;
 // 局部蒙层，用于非整页遮罩
 $gray8: var(--nutui-gray-8, rgba(0, 0, 0, 0.4)) !default;
 // 间隔线/容错线，用于结构或信息分割
-$gray9: var(--nutui-gray-9, rgba(0, 0, 0, 0.08)) !default;
+$gray9: var(--nutui-gray-9, #f0f0f0) !default;
 // 图片容错蒙层
 $gray10: var(--nutui-gray-10, rgba(0, 0, 0, 0.02)) !default;
 
 // 暗黑映射,用于 nut-theme-dark 方式
-$dark-brand-color: #3768fa !default;
-$dark-brand-color-start: #3768fa !default;
-$dark-brand-color-end: #2c53c8 !default;
+$dark-brand-color: #fa2c19 !default;
+$dark-brand-color-start: #ff404f !default;
+$dark-brand-color-end: #fa2c19 !default;
 $dark0: #000000 !default;
 $dark1: #e6e6e6 !default;
 $dark2: #828282 !default;
@@ -54,7 +54,7 @@ $title-color: $gray1 !default;
 // 副标题
 $title-color2: $gray2 !default;
 // 次内容
-$text-color: #8c8c8c !default;
+$text-color: $gray2 !default;
 // 辅助色
 $help-color: $gray5 !default;
 // 特殊禁用色
@@ -108,18 +108,18 @@ $line-height-base: 1.5 !default;
 $padding-xs: 12px;
 
 // button（✅）
-$button-border-radius: 25px !default;
+$button-border-radius: 4px !default;
 $button-border-width: 1px !default;
 $button-default-bg-color: $white !default;
-$button-default-border-color: rgba(204, 204, 204, 1) !default;
-$button-default-color: $gray1 !default;
+$button-default-border-color: rgba(217, 217, 217, 1) !default;
+$button-default-color: rgba(89, 89, 89, 1) !default;
 $button-default-padding: 0 18px !default;
 $button-mini-padding: 0 12px !default;
 $button-small-padding: 0 12px !default;
-$button-small-height: 28px !default;
-$button-mini-height: 24px !default;
-$button-default-height: 38px !default;
-$button-large-height: 48px !default;
+$button-small-height: 32px !default;
+$button-mini-height: 28px !default;
+$button-default-height: 36px !default;
+$button-large-height: 45px !default;
 $button-large-line-height: 46px !default;
 $button-small-line-height: 26px !default;
 $button-block-height: 48px !default;
@@ -138,13 +138,9 @@ $button-primary-background-color: linear-gradient(
   $primary-color 0%,
   $primary-color-end 100%
 ) !default;
-$button-info-color: $white !default;
-$button-info-border-color: #496af2 !default;
-$button-info-background-color: linear-gradient(
-  315deg,
-  rgba(73, 143, 242, 1) 0%,
-  rgba(73, 101, 242, 1) 100%
-) !default;
+$button-info-color: #3768fa !default;
+$button-info-border-color: rgba(235, 240, 255, 1) !default;
+$button-info-background-color: #ebf0ff !default;
 $button-success-color: $white !default;
 $button-success-border-color: rgba(38, 191, 38, 1) !default;
 $button-success-background-color: linear-gradient(
@@ -173,28 +169,28 @@ $button-small-round-border-radius: $button-border-radius !default;
 
 // cell（✅）
 
-$cell-color: $gray1 !default;
+$cell-color: #262626 !default;
 $cell-title-font: $font-size-2 !default;
 $cell-title-desc-font: $font-size-1 !default;
 $cell-desc-font: $font-size-2 !default;
-$cell-desc-color: $gray2 !default;
+$cell-desc-color: $disable-color !default;
 $cell-subtitle-color: $gray2 !default;
-$cell-border-radius: 6px !default;
-$cell-padding: 13px 16px !default;
+$cell-border-radius: 4px !default;
+$cell-padding: 16px 16px !default;
 $cell-line-height: 20px !default;
 $cell-after-right: 16px !default;
-$cell-after-border-bottom: 2px solid #f5f6f7 !default;
+$cell-after-border-bottom: 1px solid #f5f6f7 !default;
 $cell-default-icon-margin: 0 4px 0 0px !default;
 $cell-large-title-font: $font-size-large !default;
 $cell-large-title-desc-font: $font-size-base !default;
-$cell-large-padding: 15px 16px !default;
-$cell-background: $gray6 !default;
+$cell-large-padding: 16px 16px !default;
+$cell-background: $white !default;
 $cell-box-shaow: 0px 1px 7px 0px rgba(237, 238, 241, 1) !default;
 
 // cell-group（✅）
 
 $cell-group-title-padding: 0 10px !default;
-$cell-group-title-color: #909ca4 !default;
+$cell-group-title-color: #262626 !default;
 $cell-group-title-font-size: $font-size-2 !default;
 $cell-group-title-line-height: 20px !default;
 $cell-group-desc-padding: 0 10px !default;
@@ -207,7 +203,7 @@ $cell-group-background-color: $white !default;
 
 $divider-margin: 16px 0 !default;
 $divider-text-font-size: $font-size-2 !default;
-$divider-text-color: $gray1 !default;
+$divider-text-color: #f0f0f0 !default;
 $divider-line-height: 2px !default;
 $divider-before-margin-right: 16px !default;
 $divider-after-margin-left: 16px !default;
@@ -237,7 +233,7 @@ $picker-bar-button-padding: 0 15px !default;
 $picker-bar-title-font-size: 16px !default;
 $picker-bar-title-color: $title-color !default;
 $picker-bar-title-font-weight: normal !default;
-$picker-item-height: 36px !default;
+$picker-item-height: 48px !default;
 $picker-item-text-color: $title-color !default;
 $picker-item-active-text-color: inherit !default;
 $picker-item-text-font-size: 14px !default;
@@ -271,7 +267,7 @@ $inputnumber-icon-disabled-color: $gray2 !default;
 $inputnumber-icon-size: 20px !default;
 $inputnumber-input-font-size: 12px !default;
 $inputnumber-input-font-color: $gray1 !default;
-$inputnumber-input-background-color: $gray4 !default;
+$inputnumber-input-background-color: #f7f7f7 !default;
 $inputnumber-input-border-radius: 4px !default;
 $inputnumber-input-width: 40px !default;
 $inputnumber-input-margin: 0 6px !default;
@@ -358,15 +354,15 @@ $avatar-normal-height: 40px !default;
 
 //switch（✅）
 $switch-close-bg-color: #ebebeb !default;
-$switch-close--cline-bg-color: #f0f0f0 !default;
-$switch-width: 36px !default;
-$switch-height: 21px !default;
+$switch-close--cline-bg-color: #d9d9d9 !default;
+$switch-width: 40px !default;
+$switch-height: 24px !default;
 $switch-line-height: 21px !default;
 $switch-border-radius: 21px !default;
-$switch-inside-width: 13px !default;
-$switch-inside-height: 13px !default;
-$switch-inside-open-transform: translateX(146%) !default;
-$switch-inside-close-transform: translateX(30%) !default;
+$switch-inside-width: 20px !default;
+$switch-inside-height: 20px !default;
+$switch-inside-open-transform: translateX(90%) !default;
+$switch-inside-close-transform: translateX(10%) !default;
 
 // toast（✅）
 $toast-title-font-size: 16px !default;
@@ -382,7 +378,7 @@ $backtop-border-color: #e0e0e0 !default;
 
 // calendar（✅）
 $calendar-primary-color: $primary-color !default;
-$calendar-choose-color: rgba(#fa2c19, 0.09) !default;
+$calendar-choose-color: rgba($primary-color, 0.09) !default;
 $calendar-choose-font-color: $primary-color !default;
 $calendar-base-color: #333333 !default;
 $calendar-disable-color: #d1d0d0 !default;
@@ -406,7 +402,7 @@ $overlay-content-bg-color: $gray6 !default;
 $overlay-content-color: $gray1 !default;
 //popup（✅）
 $popup-close-icon-margin: 16px !default;
-$popup-border-radius: 20px !default;
+$popup-border-radius: 8px !default;
 
 // Notify（✅）
 $notify-text-color: $white !default;
@@ -416,10 +412,8 @@ $notify-height: 44px !default;
 $notify-line-height: auto !default;
 $notify-base-background-color: linear-gradient(
   135deg,
-  rgba(250, 44, 25, 1) 0%,
-  rgba(250, 63, 25, 1) 45%,
-  rgba(250, 89, 25, 1) 83%,
-  rgba(250, 100, 25, 1) 100%
+  $primary-color 0%,
+  $primary-color-end 100%
 ) !default;
 $notify-primary-background-color: linear-gradient(
   315deg,
@@ -527,7 +521,7 @@ $steps-process-title-color: $primary-color !default;
 $steps-process-icon-text-color: $primary-color !default;
 
 // dialog（✅）
-$dialog-width: 296px !default;
+$dialog-width: 280px !default;
 $dialog-header-font-weight: normal !default;
 $dialog-header-color: rgba(38, 38, 38, 1) !default;
 $dialog-footer-justify-content: space-around !default;
@@ -551,15 +545,15 @@ $dialog-footer-ok-max-width: 128px !default;
 
 // checkbox（✅）
 $checkbox-label-color: $gray1 !default;
-$checkbox-label-disable-color: #999 !default;
-$checkbox-icon-disable-color: #d6d6d6 !default;
-$checkbox-label-margin-left: 15px !default;
+$checkbox-label-disable-color: #bfbfbf !default;
+$checkbox-icon-disable-color: #bfbfbf !default;
+$checkbox-label-margin-left: 8px !default;
 $checkbox-label-font-size: 14px !default;
 $checkbox-icon-font-size: 18px !default;
 $checkbox-icon-disable-color2: $help-color !default;
 
 //radio（✅）
-$radio-label-font-color: $gray1 !default;
+$radio-label-font-color: #1d1e1e !default;
 $radio-label-font-active-color: $primary-color !default;
 $radio-label-disable-color: $gray3 !default;
 $radio-icon-disable-color: $gray2 !default;
@@ -572,7 +566,7 @@ $radio-button-font-size: 12px !default;
 $radio-button-padding: 5px 18px !default;
 $radio-icon-font-size: 18px !default;
 $radio-icon-disable-color2: $gray3 !default;
-
+$radio-button-background: $white !default;
 // signature（✅）
 $signature-border-color: #dadada;
 $signature-border-width: 1px;
@@ -595,14 +589,14 @@ $fixednav-item-active-color: $primary-color !default;
 $noticebar-background: rgba(251, 248, 220, 1) !default;
 $noticebar-color: #d9500b !default;
 $noticebar-font-size: 14px !default;
-$noticebar-height: 40px !default;
-$noticebar-line-height: 24px !default;
+$noticebar-height: 36px !default;
+$noticebar-line-height: 20px !default;
 $noticebar-left-icon-width: 16px !default;
 $noticebar-right-icon-width: 16px !default;
 $noticebar-box-padding: 0 16px !default;
 $noticebar-wrapable-padding: 16px !default;
-$noticebar-lefticon-margin: 0px 10px !default;
-$noticebar-righticon-margin: 0px 10px !default;
+$noticebar-lefticon-margin: 0px 8px !default;
+$noticebar-righticon-margin: 0px 8px !default;
 
 // TimeSelect（✅）
 $timeselect-title-font-size: $font-size-2 !default;
@@ -641,7 +635,7 @@ $tag-font-size: 12px !default;
 $tag-default-border-radius: 4px !default;
 $tag-round-border-radius: 8px !default;
 $tag-default-background-color: #000000 !default;
-$tag-primary-background-color: #3460fa !default;
+$tag-primary-background-color: #ebf0ff !default;
 $tag-success-background-color: #4fc08d !default;
 $tag-danger-background-color: linear-gradient(
   135deg,
@@ -754,16 +748,16 @@ $tabs-horizontal-tab-line-color: linear-gradient(
   $primary-color 0%,
   rgba(#fa2c19, 0.15) 100%
 ) !default;
-$tabs-horizontal-titles-height: 46px !default;
+$tabs-horizontal-titles-height: 40px !default;
 $tabs-horizontal-titles-item-min-width: 50px !default;
-$tabs-horizontal-titles-item-active-line-width: 40px !default;
+$tabs-horizontal-titles-item-active-line-width: 24px !default;
 $tabs-vertical-tab-line-color: linear-gradient(
   180deg,
   $primary-color 0%,
   rgba($primary-color, 0.15) 100%
 ) !default;
 $tabs-vertical-titles-item-height: 40px !default;
-$tabs-vertical-titles-item-active-line-height: 14px !default;
+$tabs-vertical-titles-item-active-line-height: 24px !default;
 $tabs-vertical-titles-width: 100px !default;
 $tabs-titles-item-line-border-radius: 0 !default;
 $tabs-titles-item-line-opacity: 1 !default;
@@ -782,20 +776,20 @@ $indicator-dot-first-margin: 0px !default;
 $indicator-dot-last-margin: 0px !default;
 
 // menu（✅）
-$menu-bar-line-height: 48px !default;
+$menu-bar-line-height: 40px !default;
 $menu-item-font-size: $font-size-2 !default;
 $menu-item-text-color: $title-color !default;
 $menu-item-active-text-color: $primary-color !default;
 $menu-bar-border-bottom-color: #eaf0fb !default;
 $menu-bar-opened-z-index: 2001 !default;
 $menu-item-disabled-color: #969799 !default;
-$menu-title-text-padding-left: 8px !default;
+$menu-title-text-padding-left: 12px !default;
 $menu-title-text-padding-right: 8px !default;
-$menu-item-content-padding: 12px 24px !default;
+$menu-item-content-padding: 12px 16px !default;
 $menu-item-content-max-height: 214px !default;
 $menu-item-option-padding-top: 12px !default;
 $menu-item-option-padding-bottom: 12px !default;
-$menu-item-option-i-margin-right: 6px !default;
+$menu-item-option-i-margin-right: 8px !default;
 $menu-bar-box-shadow: 0 2px 12px rgba(89, 89, 89, 0.12) !default;
 $menu-scroll-fixed-top: 0 !default;
 $menu-scroll-fixed-z-index: $mask-z-index !default;
@@ -820,7 +814,7 @@ $collapse-wrapper-content-background-color: $white !default;
 // searchbar（✅）
 
 $searchbar-background: $gray6 !default;
-$searchbar-right-out-color: $black !default;
+$searchbar-right-out-color: $primary-color !default;
 $searchbar-padding: 9px 16px !default;
 $searchbar-width: 100% !default;
 $searchbar-action-text-color: $gray1 !default;
@@ -829,7 +823,7 @@ $searchbar-input-padding: 0 28px !default;
 $searchbar-input-background: #f7f7f7 !default;
 $searchbar-input-text-color: $gray1 !default;
 $searchbar-input-width: 100% !default;
-$searchbar-input-border-radius: 16px !default;
+$searchbar-input-border-radius: 4px !default;
 $searchbar-input-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04) !default;
 $searchbar-input-bar-color: inherit !default;
 $searchbar-input-bar-placeholder-color: inherit !default;
@@ -942,17 +936,17 @@ $table-tr-odd-bg-color: $gray6 !default;
 
 // navbar（✅）
 $navbar-height: 44px !default;
-$navbar-margin-bottom: 20px !default;
+$navbar-margin-bottom: 12px !default;
 $navbar-padding: 13px 16px !default;
 $navbar-background: $white !default;
-$navbar-box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1) !default;
+$navbar-box-shadow: none !default;
 $navbar-color: $gray1 !default;
-$navbar-title-base-font: $font-size-2 !default;
-$navbar-title-font: $font-size-2 !default;
+$navbar-title-base-font: $font-size-3 !default;
+$navbar-title-font: $font-size-3 !default;
 $navbar-title-font-weight: 0 !default;
 $navbar-title-font-color: $navbar-color !default;
 $navbar-title-width: 100px !default;
-$navbar-title-icon-margin: 0 0 0 13px !default;
+$navbar-title-icon-margin: 0 0 0 16px !default;
 
 // sidenavbar（✅）
 $sidenavbar-content-bg-color: $white !default;
