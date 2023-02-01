@@ -5,7 +5,7 @@ import React, {
   useMemo,
   CSSProperties,
 } from 'react'
-import _ from 'lodash'
+import kebabCase from 'lodash.kebabcase'
 import { BaseLang } from '@/locales/base'
 import zhCN from '@/locales/zh-CN'
 
@@ -46,7 +46,7 @@ export const useConfig = () => {
 function convertThemeVarsToCSSVars(themeVars: Record<string, string | number>) {
   const cssVars: Record<string, string | number> = {}
   Object.keys(themeVars).forEach((key) => {
-    cssVars[`--${_.kebabCase(key)}`] = themeVars[key]
+    cssVars[`--${kebabCase(key)}`] = themeVars[key]
   })
   return cssVars
 }

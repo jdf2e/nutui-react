@@ -9,10 +9,10 @@ test('color test', () => {
   const state = {
     color: 'rgb(250, 104, 93)',
   }
-  const { getByTestId, container } = render(<Tag color={state.color}>TEST</Tag>)
+  const { container } = render(<Tag color={state.color}>TEST</Tag>)
   expect(container.querySelector('.nut-tag--default')).toHaveAttribute(
     'style',
-    'color: rgb(255, 255, 255); background: rgb(250, 104, 93);'
+    'background: rgb(250, 104, 93);'
   )
 })
 test('type test', () => {
@@ -34,6 +34,21 @@ test('plain test', () => {
   const { container } = render(<Tag plain={state.plain}>TEST</Tag>)
   const el = container.querySelectorAll('.nut-tag--plain').length
   expect(el > 0).toBe(true)
+})
+
+test('color & plain test', () => {
+  const state = {
+    color: 'rgb(250, 104, 93)',
+  }
+  const { container } = render(
+    <Tag color={state.color} plain>
+      TEST
+    </Tag>
+  )
+  expect(container.querySelector('.nut-tag--plain')).toHaveAttribute(
+    'style',
+    'color: rgb(250, 104, 93); background: rgb(255, 255, 255); border-color: rgb(250, 104, 93);'
+  )
 })
 
 test('round test', () => {

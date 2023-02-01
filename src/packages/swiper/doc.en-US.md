@@ -502,3 +502,17 @@ export default App;
 | prev   | Switch to previous page   | -            |
 | next   | Switch to next page    | -            |
 | to     | Switch to the specified rotation | index:number |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-swiper-pagination-item-background-color | `  #ddd` |
+| --nutui-swiper-pagination-item-width | `  8px` |
+| --nutui-swiper-pagination-item-height | `  3px` |
+| --nutui-swiper-pagination-item-margin-right | `  7px` |
+| --nutui-swiper-pagination-item-border-radius | `  2px` |

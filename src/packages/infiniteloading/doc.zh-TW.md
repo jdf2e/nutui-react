@@ -286,3 +286,13 @@ export default App;
 | onScrollChange `v1.3.4` | 實時監聽滾動高度 | 滾動高度 |
 | refresh `v1.3.4廢棄` | 下拉刷新事件回調 | done() |
 | onRefresh `v1.3.4` | 下拉刷新事件回調 | done() |
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-infiniteloading-bottom-color | `  #c8c8c8` |

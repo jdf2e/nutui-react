@@ -321,3 +321,27 @@ export default App;
 | onChoose | 每一列值變更時調用 | 依次返回this、改變的列數，改變值，當前選中值
 | onCloseUpdate | 聯動時，關閉時回調 | 依次返回this、當前選中值
 | onClose | 關閉時觸發 | -
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-picker-cancel-color | ` #808080` |
+| --nutui-picker-ok-color | ` $primary-color` |
+| --nutui-picker-bar-cancel-font-size | `  14px` |
+| --nutui-picker-bar-ok-font-size | ` 14px` |
+| --nutui-picker-bar-button-padding | `  0 15px` |
+| --nutui-picker-bar-title-font-size | `  16px` |
+| --nutui-picker-bar-title-color | `  $title-color` |
+| --nutui-picker-bar-title-font-weight | `  normal` |
+| --nutui-picker-item-height | ` 36px` |
+| --nutui-picker-item-text-color | `  $title-color` |
+| --nutui-picker-item-active-text-color | `  inherit` |
+| --nutui-picker-item-text-font-size | `  14px` |
+| --nutui-picker-item-active-line-border | `  1px solid #d8d8d8` |
+| --nutui-picker-columns-item-color | `  $title-color` |
