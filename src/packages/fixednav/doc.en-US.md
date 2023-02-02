@@ -323,3 +323,16 @@ export default App;
 
 
     
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-fixednav-bg-color | ` #fff` |
+| --nutui-fixednav-font-color | ` #000` |
+| --nutui-fixednav-index | ` 201` |
+| --nutui-fixednav-item-active-color | `  $primary-color` |

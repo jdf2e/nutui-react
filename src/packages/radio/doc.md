@@ -217,3 +217,25 @@ export default RadioGroupOptions;
 | 字段       | 说明         | 回调参数                                           |
 |----------|--------------|----------------------------------------------------|
 | onChange | 值变化时触发 | 当前选中项值（label）【设置label后有值、默认为空】 |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-radio-label-font-color | ` $gray1` |
+| --nutui-radio-label-font-active-color | `  $primary-color` |
+| --nutui-radio-label-disable-color | `  $gray3` |
+| --nutui-radio-icon-disable-color | `  $gray2` |
+| --nutui-radio-label-button-border-color | `  $primary-color` |
+| --nutui-radio-label-button-background | `  rgba(250, 44, 25, 0.05)` |
+| --nutui-radio-label-margin-left | ` 15px` |
+| --nutui-radio-button-border-radius | `  15px` |
+| --nutui-radio-label-font-size | ` 14px` |
+| --nutui-radio-button-font-size | ` 12px` |
+| --nutui-radio-button-padding | ` 5px 18px` |
+| --nutui-radio-icon-font-size | ` 18px` |
+| --nutui-radio-icon-disable-color2 | `  $gray3` |
