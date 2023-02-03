@@ -4,6 +4,8 @@ import React, {
   useState,
   useMemo,
   CSSProperties,
+  useCallback,
+  useEffect,
 } from 'react'
 import { BasicComponent } from '@/utils/typings'
 import useWatch from '@/utils/useWatch'
@@ -15,7 +17,7 @@ import {
   getEnv,
 } from '@tarojs/taro'
 
-import { Sticky as WebSticky } from './sticky'
+import { getScrollParent } from '@/utils/get-scroll-parent'
 export interface StickyProps extends BasicComponent {
   container?: React.RefObject<HTMLElement>
   position?: 'top' | 'bottom'
@@ -104,7 +106,7 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
     return style
   }, [fixed, rootRect.height, rootRect.width, transform, position])
 
-  const handleScroll = async (scrollTop: number) => {
+  const handleScroll: any = async (scrollTop: number) => {
     const curRootRect = await getRectByTaro(rootRef.current)
     const stickyRect = await getRectByTaro(stickyRef.current)
     if (curRootRect && stickyRect) {
@@ -128,12 +130,27 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
       console.log('getRectByTaro获取失败', { stickyRect, curRootRect })
     }
   }
+  const getElement = useCallback(() => {
+    return getScrollParent(rootRef.current as HTMLElement)
+  }, [])
+
+  useEffect(() => {
+    if (getEnv() === 'WEB' && getElement() !== window) {
+      window.addEventListener('touchmove', handleScroll, false)
+      window.addEventListener('scroll', handleScroll, false)
+      return () => {
+        window.removeEventListener('touchmove', handleScroll)
+        window.removeEventListener('scroll', handleScroll)
+      }
+    }
+  }, [])
+
   usePageScroll((res: PageScrollObject) => {
-    handleScroll(res.scrollTop)
+    if (getEnv() === 'WEAPP') {
+      handleScroll(res.scrollTop)
+    }
   })
-  return getEnv() === 'WEB' ? (
-    <WebSticky {...props} />
-  ) : (
+  return (
     <div
       ref={rootRef}
       style={rootStyle}

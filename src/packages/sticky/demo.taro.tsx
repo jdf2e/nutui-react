@@ -72,7 +72,10 @@ const StickyDemo = () => {
       <div className={`demo ${getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{basic}</h2>
         <Cell>
-          <Sticky top={0} onChange={(val: boolean) => handleChange(val)}>
+          <Sticky
+            top={getEnv() === 'WEB' ? 60 : 0}
+            onChange={(val: boolean) => handleChange(val)}
+          >
             <Button type="primary">{button1}</Button>
           </Sticky>
         </Cell>
