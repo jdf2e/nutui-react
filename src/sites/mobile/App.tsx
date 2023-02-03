@@ -18,10 +18,7 @@ import routes from './router'
 import Links from './Links'
 import logo from '@/sites/assets/images/logo-red.png'
 import useLocale, { getLocale } from '@/sites/assets/locale/uselocale'
-import Configprovider, {
-  getDefaultConfig,
-  useConfig,
-} from '@/packages/configprovider'
+import Configprovider, { useConfig } from '@/packages/configprovider'
 import zhTW from '@/locales/zh-TW'
 import zhCN from '@/locales/zh-CN'
 import enUS from '@/locales/en-US'
@@ -67,7 +64,6 @@ const darkTheme = {
 const WithNavRouter = (C: LoadableComponent<any>) => {
   const WithNav: FunctionComponent = (props: PropsWithChildren<any>) => {
     const context = useConfig()
-    console.log(context)
     const handleSwitchLocale = () => {
       let href = ''
       let locale = getLocale()
@@ -96,13 +92,6 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
     }
     const handleSwitchDarkModel = () => {
       context.changeTheme()
-      // const attr = document.documentElement.getAttribute(
-      //   'data-prefers-color-scheme'
-      // )
-      // document.documentElement.setAttribute(
-      //   'data-prefers-color-scheme',
-      //   attr ? '' : 'dark'
-      // )
     }
     return (
       <>
@@ -118,6 +107,7 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
               onClick={() => handleSwitchDarkModel()}
             />
             <Icon
+              className={'translate-icon'}
               name="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"
               onClick={() => handleSwitchLocale()}
             />
