@@ -8,7 +8,9 @@ Provides navigation capabilities.
 ### Install
 
 ```ts
+// react
 import { NavBar } from '@nutui/nutui-react';
+
 ```
 
 ### code example
@@ -180,3 +182,24 @@ export default App;
 | onClickRight | Click on the event on the right | event:Event |
 | onClickBack | click back event | event:Event |
 | onClickIcon | Click the icon event on the right side of the title | event:Event |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-navbar-height | ` 44px` |
+| --nutui-navbar-margin-bottom | ` 20px` |
+| --nutui-navbar-padding | ` 13px 16px` |
+| --nutui-navbar-background | ` $white` |
+| --nutui-navbar-box-shadow | `  0px 1px 7px 0px rgba(237, 238, 241, 1)` |
+| --nutui-navbar-color | ` $gray1` |
+| --nutui-navbar-title-base-font | `  $font-size-2` |
+| --nutui-navbar-title-font | ` $font-size-2` |
+| --nutui-navbar-title-font-weight | ` 0` |
+| --nutui-navbar-title-font-color | `  $navbar-color` |
+| --nutui-navbar-title-width | ` 100px` |
+| --nutui-navbar-title-icon-margin | `  0 0 0 13px` |

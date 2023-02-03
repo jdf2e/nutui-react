@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { AnimatingNumbers } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   basic: string
@@ -37,7 +39,8 @@ const AnimatingNumbersDemo = () => {
   }, [])
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>CountUp-{translated.basic}</h2>
         <AnimatingNumbers.CountUp endNumber="678.94" />
         <h2>CountUp-{translated.custom}</h2>

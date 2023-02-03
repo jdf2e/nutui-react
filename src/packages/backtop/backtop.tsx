@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 
 import Icon from '@/packages/icon'
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 declare const window: any
 
-export interface BackTopProps extends IComponent {
+export interface BackTopProps extends BasicComponent {
   className?: string
   bottom: number
   right: number
@@ -65,6 +65,8 @@ export const BackTop: FunctionComponent<
   const init = () => {
     if (elId && document.getElementById(elId)) {
       scrollEl.current = document.getElementById(elId) as HTMLElement | Window
+    } else {
+      scrollEl.current = window
     }
     addEventListener()
     initCancelAniFrame()
@@ -88,6 +90,7 @@ export const BackTop: FunctionComponent<
       window.scrollTo(0, y)
     } else {
       scrollEl.current.scrollTop = y
+      window.scrollTo(0, y)
     }
   }
 

@@ -10,7 +10,7 @@
 ### 安装
 
 ```javascript
-import { Toast } from '@nutui/nutui-react';
+import { Toast } from '@nutui/nutui-react-taro';
 ```
 ### 基本用法
 
@@ -169,3 +169,20 @@ export default App
 | type                   | 弹框类型 可选值（text、success、fail、warn、loading）                   | String       | ""                            |
 | visible                   | 弹窗是否显示开关                   | Boolean       | false                            |
 
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-toast-title-font-size | ` 16px` |
+| --nutui-toast-text-font-size | ` 14px` |
+| --nutui-toast-font-color | ` #fff` |
+| --nutui-toast-inner-padding | ` 24px 30px` |
+| --nutui-toast-inner-bg-color | ` $gray7` |
+| --nutui-toast-inner-border-radius | `  12px` |
+| --nutui-toast-cover-bg-color | ` $gray7` |

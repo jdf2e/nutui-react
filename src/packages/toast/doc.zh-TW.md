@@ -7,7 +7,9 @@
 ### 安装
 
 ```javascript
+// react
 import { Toast } from '@nutui/nutui-react';
+
 ```
 
 ## 代码演示
@@ -328,3 +330,20 @@ export default App
 | onClose             | 关闭时触发的事件                                      | function      | null            |
 | closeOnClickOverlay | 是否在点击遮罩层后关闭提示                         | Boolean       | false     |
 
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-toast-title-font-size | ` 16px` |
+| --nutui-toast-text-font-size | ` 14px` |
+| --nutui-toast-font-color | ` #fff` |
+| --nutui-toast-inner-padding | ` 24px 30px` |
+| --nutui-toast-inner-bg-color | ` $gray7` |
+| --nutui-toast-inner-border-radius | `  12px` |
+| --nutui-toast-cover-bg-color | ` $gray7` |

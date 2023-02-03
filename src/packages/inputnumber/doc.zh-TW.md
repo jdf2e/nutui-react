@@ -5,9 +5,10 @@
 通過點擊按鈕控制數字增減。
 
 ### 安裝
-
 ``` ts
+// react
 import { InputNumber } from '@nutui/nutui-react';
+
 ```
 ### 基礎用法
 
@@ -20,18 +21,11 @@ import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 1,
   })
   return (
     <>
-      <InputNumber modelValue={inputState.val1} />
+      <InputNumber modelValue={inputState.val} />
     </>
   )
 }
@@ -50,18 +44,11 @@ import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 0,
   })
   return (
     <>
-      <InputNumber modelValue={inputState.val2} step="5" />
+      <InputNumber modelValue={inputState.val} step="5" />
     </>
   )
 }
@@ -80,14 +67,7 @@ import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 10,
   })
   const overlimit = (e: MouseEvent) => {
     console.log(e)
@@ -95,7 +75,7 @@ const App = () => {
   }
   return (
     <>
-      <InputNumber modelValue={inputState.val3} min="10" max="20" onOverlimit={overlimit} />
+      <InputNumber modelValue={inputState.val} min="10" max="20" onOverlimit={overlimit} />
     </>
   )
 }
@@ -114,18 +94,11 @@ import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 0,
   })
   return (
     <>
-      <InputNumber modelValue={inputState.val4} disabled />
+      <InputNumber modelValue={inputState.val} disabled />
     </>
   )
 }
@@ -144,18 +117,11 @@ import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 1,
   })
   return (
     <>
-      <InputNumber modelValue={inputState.val5} readonly />
+      <InputNumber modelValue={inputState.val} readonly />
     </>
   )
 }
@@ -174,18 +140,11 @@ import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 5.5,
   })
   return (
     <>
-      <InputNumber modelValue={inputState.val6} step="0.1" decimalPlaces="1" readonly />
+      <InputNumber modelValue={inputState.val} step="0.1" decimalPlaces="1" readonly />
     </>
   )
 }
@@ -203,14 +162,7 @@ import { InputNumber, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 1,
   })
   const onChange = (value: string | number) => {
     Toast.loading('異步演示 2 秒後更改')
@@ -222,7 +174,7 @@ const App = () => {
   }
   return (
     <>
-      <InputNumber modelValue={inputState.val7} onChangeFuc={onChange} isAsync />
+      <InputNumber modelValue={inputState.val} onChangeFuc={onChange} isAsync />
     </>
   )
 }
@@ -239,18 +191,11 @@ import { InputNumber, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
+    val: 1,
   })
   return (
     <>
-      <InputNumber modelValue={inputState.val8} buttonSize="30" inputWidth="50" />
+      <InputNumber modelValue={inputState.val} buttonSize="30" inputWidth="50" />
     </>
   )
 }
@@ -291,3 +236,29 @@ export default App;
 | onChangeFuc `v1.3.8`    | 值改變時觸發           | value:  number , event : Event |
 | onBlurFuc `v1.3.8`      | 輸入框失去焦點時觸發   | event: Event                   |
 | onFocus `v1.3.8`     | 輸入框獲得焦點時觸發   | event: Event                   |
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-inputnumber-icon-color | `  $title-color` |
+| --nutui-inputnumber-icon-void-color | `  $disable-color` |
+| --nutui-inputnumber-icon-disabled-color | `  $gray2` |
+| --nutui-inputnumber-icon-size | ` 20px` |
+| --nutui-inputnumber-input-font-size | `  12px` |
+| --nutui-inputnumber-input-font-color | `  $gray1` |
+| --nutui-inputnumber-input-background-color | `  $gray4` |
+| --nutui-inputnumber-input-border-radius | `  4px` |
+| --nutui-inputnumber-input-width | ` 40px` |
+| --nutui-inputnumber-input-margin | `  0 6px` |
+| --nutui-inputnumber-input-border | ` 0` |
+| --nutui-inputnumber-border | ` 0` |
+| --nutui-inputnumber-border-radius | ` 0` |
+| --nutui-inputnumber-height | ` auto` |
+| --nutui-inputnumber-line-height | ` normal` |
+| --nutui-inputnumber-border-box | `  content-box` |
+| --nutui-inputnumber-display | ` flex` |

@@ -6,7 +6,9 @@
 
 ### 安裝
 ``` ts
+// react
 import { Skeleton } from '@nutui/nutui-react';
+
 ```
 
 
@@ -142,3 +144,14 @@ export default App;
 | round  | 標題/段落是否採用圓角風格                                | Boolean | `false`  |
 | row    | 設置段落行數                                           | Number | 1       |
 | title  | 是否顯示段落標題                                        | Boolean | `false`   |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-skeleton-content-line-title-background-color | `  #efefef` |

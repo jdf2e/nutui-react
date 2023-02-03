@@ -1,0 +1,18 @@
+@import '../icon/icon.scss';
+.nut-trendarrow {
+  display: inline-block;
+  font-size: $trendarrow-font-size;
+  &__icon-before {
+    margin-right: $trendarrow-before-icon-margin;
+  }
+  &__icon-after {
+    margin-left: $trendarrow-before-icon-margin;
+  }
+  &__rate {
+    vertical-align: middle;
+    display: inline;
+  }
+  .nut-icon {
+    vertical-align: middle;
+  }
+}

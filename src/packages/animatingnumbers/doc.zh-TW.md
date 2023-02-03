@@ -7,7 +7,9 @@
 ### 安裝
 
 ```javascript
+// react
 import { AnimatingNumbers } from '@nutui/nutui-react'
+
 ```
 
 ## 代碼演示

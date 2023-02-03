@@ -6,7 +6,9 @@ When the amount of data is too much, use pagination to separate the data.
     
 ### Install
 ``` javascript
+// react
 import { Pagination } from '@nutui/nutui-react';
+
 ```    
 
 ### Basic Usage
@@ -144,3 +146,21 @@ export default App;
 | Event | Description           | Arguments |
 | -------- | -------------- | -------- |
 | onChange |  when the page number changes | value    |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-pagination-color | ` $primary-color` |
+| --nutui-pagination-font-size | ` $font-size-2` |
+| --nutui-pagination-item-border-color | `  #e4e7eb` |
+| --nutui-pagination-disable-color | `  $disable-color` |
+| --nutui-pagination-disable-background-color | `  #f7f8fa` |
+| --nutui-pagination-item-border-width | `  1px` |
+| --nutui-pagination-item-border-radius | `  2px` |
+| --nutui-pagination-prev-next-padding | `  0 11px` |

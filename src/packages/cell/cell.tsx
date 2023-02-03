@@ -1,11 +1,10 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import { useHistory } from 'react-router-dom'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface CellProps extends IComponent {
+export interface CellProps extends BasicComponent {
   title: ReactNode
   subTitle: ReactNode
   desc: string
@@ -14,14 +13,12 @@ export interface CellProps extends IComponent {
   icon: string
   roundRadius: string | number
   url: string
-  to: string
   replace: boolean
   center: boolean
   size: string
   className: string
   iconSlot: ReactNode
   linkSlot: ReactNode
-  click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
@@ -42,7 +39,6 @@ const defaultProps = {
   className: '',
   iconSlot: null,
   linkSlot: null,
-  click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
 
@@ -51,7 +47,6 @@ export const Cell: FunctionComponent<
 > = (props) => {
   const {
     children,
-    click,
     onClick,
     title,
     subTitle,
@@ -61,7 +56,6 @@ export const Cell: FunctionComponent<
     icon,
     roundRadius,
     url,
-    to,
     replace,
     center,
     size,
@@ -76,13 +70,9 @@ export const Cell: FunctionComponent<
     ...props,
   }
   const b = bem('cell')
-  const history = useHistory()
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    click(event)
     onClick(event)
-    if (to && history) {
-      history[replace ? 'replace' : 'push'](to)
-    } else if (url) {
+    if (url) {
       replace ? window.location.replace(url) : (window.location.href = url)
     }
   }
@@ -95,7 +85,7 @@ export const Cell: FunctionComponent<
 
   const styles =
     title || subTitle || icon
-      ? {}
+      ? { textAlign: descTextAlign }
       : {
           textAlign: descTextAlign,
           flex: 1,
@@ -103,7 +93,7 @@ export const Cell: FunctionComponent<
   return (
     <div
       className={`${b(
-        { clickable: !!(isLink || to), center, large: size === 'large' },
+        { clickable: !!isLink, center, large: size === 'large' },
         [className]
       )} `}
       onClick={(event) => handleClick(event)}
@@ -143,7 +133,7 @@ export const Cell: FunctionComponent<
               {desc}
             </div>
           ) : null}
-          {!linkSlot && (isLink || to) ? (
+          {!linkSlot && isLink ? (
             <Icon
               classPrefix={iconClassPrefix}
               fontClassName={iconFontClassName}

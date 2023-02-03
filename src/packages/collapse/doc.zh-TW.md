@@ -6,7 +6,11 @@
 
 ### 安裝
 
-`import { Collapse,CollapseItem } from 'nutui-react'`
+```ts
+// react
+import { Collapse,CollapseItem } from 'nutui-react'
+
+```
 
 
 ## 代碼演示
@@ -265,3 +269,25 @@ const App = () => {
 |--------|----------------|--------------|
 | change`廢棄`  | 切換面板時觸發 | isOpen:是否打開狀態；name：當前點擊的name值 |
 | onChange `v1.3.8` | 切換面板時觸發 | isOpen:是否打開狀態；name：當前點擊的name值 |
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-collapse-item-padding | `  13px 36px 13px 26px` |
+| --nutui-collapse-item-color | ` #666666` |
+| --nutui-collapse-item-disabled-color | `  #c8c9cc` |
+| --nutui-collapse-item-icon-color | `  #666666` |
+| --nutui-collapse-item-font-size | `  $font-size-2` |
+| --nutui-collapse-item-line-height | `  24px` |
+| --nutui-collapse-item-sub-title-color | `  #666666` |
+| --nutui-collapse-wrapper-content-padding | `  12px 26px` |
+| --nutui-collapse-wrapper-empty-content-padding | `  0 26px` |
+| --nutui-collapse-wrapper-content-color | `  #666666` |
+| --nutui-collapse-wrapper-content-font-size | `  $font-size-2` |
+| --nutui-collapse-wrapper-content-line-height | `  1.5` |
+| --nutui-collapse-wrapper-content-background-color | `  $white` |

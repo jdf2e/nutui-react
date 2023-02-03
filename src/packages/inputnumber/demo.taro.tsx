@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { InputNumber, Cell, Toast } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
-interface IValState {
+interface ValState {
   val1: number | string
   val2: number | string
   val3: number | string
@@ -65,7 +67,7 @@ const InputNumberDemo = () => {
     },
   })
 
-  const [inputState, setInputState] = useState<IValState>({
+  const [inputState, setInputState] = useState<ValState>({
     val1: 1,
     val2: 0,
     val3: 10,
@@ -100,7 +102,8 @@ const InputNumberDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated['84aa6bce']}</h2>
         <Cell>
           <InputNumber modelValue={inputState.val1} />

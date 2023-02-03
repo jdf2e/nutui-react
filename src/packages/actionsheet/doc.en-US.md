@@ -7,7 +7,9 @@ Action menu panel that pops up from the bottom.
 ### Install
 
 ```ts
+// react
 import { ActionSheet } from '@nutui/nutui-react';
+
 ```
 ## Demo
 
@@ -228,3 +230,19 @@ export default App;
 |--------|--------------------|-----------------------------------|
 | onChoose`v1.3.2` | Triggered after selection       | Selected list item item, selected index value index |
 | onCancel`v1.3.2` | Triggered when onCancel copy is clicked | none                                |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-actionsheet-light-color | `  #f6f6f6` |
+| --nutui-actionsheet-item-border-bottom | `  none` |
+| --nutui-actionsheet-item-font-size | `  $font-size-2` |
+| --nutui-actionsheet-item-subdesc-font-size | `  $font-size-1` |
+| --nutui-actionsheet-item-cancel-border-top | `  1px solid $actionsheet-light-color` |
+| --nutui-actionsheet-item-line-height | `  24px` |
+| --nutui-actionsheet-item-font-color | `  $title-color` |

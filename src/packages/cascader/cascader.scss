@@ -2,17 +2,25 @@
 @import '../tabs/tabs.scss';
 
 .nut-theme-dark {
-  .nut-cascader__bar {
-    background: $dark-background2;
-    color: $dark-color;
-  }
+  .nut-cascader {
+    .nut-cascader__bar {
+      background: $dark5;
+      color: $dark1;
+    }
 
-  .nut-tabs__titles {
-    background: $dark-background3 !important;
-  }
-
-  .nut-cascader-item {
-    color: $dark-color-gray;
+    .nut-tabs__titles {
+      background: $dark5;
+    }
+    &__title {
+      color: $dark1;
+      background-color: $dark5;
+    }
+    .nut-tabpane {
+      background-color: $dark5;
+    }
+    .nut-cascader-item {
+      color: $dark1;
+    }
   }
 }
 
@@ -21,6 +29,7 @@
   font-size: $cascader-font-size;
   line-height: $cascader-line-height;
   &__title {
+    background-color: $gray6;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,12 +37,12 @@
     text-align: center;
     font-weight: bold;
     line-height: $cascader-title-line-height;
-    color: #1a1a1a;
+    color: $gray1;
     font-size: $cascader-title-font-size;
   }
   .nut-tabs__titles {
     padding: $cascader-tabs-item-padding;
-    background: #fff;
+    background: $gray6;
   }
   .nut-tabs__titles-item {
     flex: initial;
@@ -73,7 +82,7 @@
       }
       .nut-cascader-item__icon-check {
         visibility: visible;
-        color: $cascader-item-active-color;
+        color: inherit;
       }
     }
   }

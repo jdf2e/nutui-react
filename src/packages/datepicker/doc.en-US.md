@@ -5,9 +5,11 @@
 Used to select time, support date and time dimensions, usually used with the Popup component.
     
 ### Install
-    
-```javascript
+
+```ts
+// react
 import { DatePicker } from '@nutui/nutui';
+
 ```
     
 ### Choose Date

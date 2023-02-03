@@ -7,7 +7,9 @@ Used to single select in a set of alternatives
 ### Install
 
 ``` ts
+// react
 import { Radio } from '@nutui/nutui-react';
+
 ```
 
 ## Basic Usage
@@ -215,3 +217,25 @@ export default RadioGroupOptions;
 | Props    | Description | Callback parameters|
 |----------| ----- | ----- |
 | onChange | Triggers | when the value changes The currently selected label value (label) [there is a value after setting the label, the default is empty] |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-radio-label-font-color | ` $gray1` |
+| --nutui-radio-label-font-active-color | `  $primary-color` |
+| --nutui-radio-label-disable-color | `  $gray3` |
+| --nutui-radio-icon-disable-color | `  $gray2` |
+| --nutui-radio-label-button-border-color | `  $primary-color` |
+| --nutui-radio-label-button-background | `  rgba(250, 44, 25, 0.05)` |
+| --nutui-radio-label-margin-left | ` 15px` |
+| --nutui-radio-button-border-radius | `  15px` |
+| --nutui-radio-label-font-size | ` 14px` |
+| --nutui-radio-button-font-size | ` 12px` |
+| --nutui-radio-button-padding | ` 5px 18px` |
+| --nutui-radio-icon-font-size | ` 18px` |
+| --nutui-radio-icon-disable-color2 | `  $gray3` |

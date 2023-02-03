@@ -13,6 +13,7 @@ export default {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   preset: 'ts-jest',
+  setupFiles: ['jest-canvas-mock'],
   testPathIgnorePatterns: [
     './node_modules',
     './dist',

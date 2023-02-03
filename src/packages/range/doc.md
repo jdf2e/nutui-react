@@ -7,7 +7,9 @@
 ### 安装
 
 ```javascript
+// react
 import { Range } from '@nutui/nutui-react';
+
 ```
 
 ## 代码演示
@@ -36,6 +38,44 @@ const App = () => {
 export default App;
 ```
 :::
+
+### 自定义描述
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Range,Cell,Toast } from '@nutui/nutui-react';
+
+const App = () => {
+    const [value, SetValue] = useState(40)
+    const change = (value: number, name?: string) => {
+        Toast.text(`当前值：${value}`)
+        SetValue(value)
+    }
+    const cellStyle = {
+        padding: '40px 18px',
+    }
+    return (
+    <>
+        <Cell style={cellStyle}>
+           <Range
+            modelValue={value}
+            minDesc="0%"
+            maxDesc="100%"
+            curValueDesc={`${value}%`}
+            onChange={(value) => {
+              change(value)
+            }}
+          />
+        </Cell>
+    </>
+    )
+};
+export default App;
+```
+:::
+
 ### 双滑块
 
 :::demo
@@ -479,6 +519,9 @@ export default App;
 | range         | 是否开启双滑块模式 | Boolean          | `false`                  |
 | max           | 最大值             | Number、String   | `100`                    |
 | min           | 最小值             | Number、String   | `0`                      |
+| maxDesc`v1.3.12`     | 最大值描述          | Number、String   | -                    |
+| minDesc`v1.3.12`     | 最小值描述          | Number、String   | -                      |
+| curValueDesc`v1.3.12` | 当前值描述          | Number、String   | -                    |
 | step          | 步长               | Number、String   | `1`                      |
 | disabled      | 是否禁用滑块       | Boolean          | `false`                  |
 | vertical`v1.2.2` | 是否竖向展示 | Boolean | `false` |
@@ -502,3 +545,20 @@ export default App;
 | 名称   | 说明           |
 | ------ | -------------- |
 | button | 自定义滑动按钮 |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-range-tip-font-color | ` $gray1` |
+| --nutui-range-bg-color | ` rgba(#fa2c19, 0.5)` |
+| --nutui-range-bg-color-tick | ` #fa958c` |
+| --nutui-range-bar-btn-bg-color | ` $white` |
+| --nutui-range-bar-btn-width | ` 24px` |
+| --nutui-range-bar-btn-height | ` 24px` |
+| --nutui-range-bar-btn-border | `  1px solid $primary-color` |

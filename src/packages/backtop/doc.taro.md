@@ -269,3 +269,14 @@ export default App;
 |--------------------------| ------------------ | ----------------- |
 | backTopClick`v1.2.1(废弃)` | 按钮点击时触发事件 | event: MouseEvent |
 | onClick`v1.2.1`          | 按钮点击时触发事件 | event: MouseEvent |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-backtop-border-color | ` #e0e0e0` |

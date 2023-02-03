@@ -8,8 +8,10 @@ The pop -up box components support the function call and component call.
 
 ### Install
 
-```js
+```ts
+// react
 import { Dialog } from '@nutui/nutui-react'
+
 ```
 
 
@@ -131,3 +133,31 @@ export default App;
 | onCancel  | Cancel button callback | () => void |
 | onClosed  | Turn off the callback, and the pop -up window will be triggered in any case | () => void |
 | onClickSelf  | Click yourself to call back | () => void |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-dialog-width | ` 296px` |
+| --nutui-dialog-header-font-weight | `  normal` |
+| --nutui-dialog-header-color | `  rgba(38, 38, 38, 1)` |
+| --nutui-dialog-footer-justify-content | `  space-around` |
+| --nutui-dialog-min-height | ` 156px` |
+| --nutui-dialog-padding | ` 28px 24px 16px 24px` |
+| --nutui-dialog-header-height | ` 20px` |
+| --nutui-dialog-content-margin | ` 20px 0` |
+| --nutui-dialog-content-max-height | `  268px` |
+| --nutui-dialog-content-line-height | `  16px` |
+| --nutui-dialog-mask-z-index | ` $mask-z-index` |
+| --nutui-dialog-mask-background-color | `  $mask-color` |
+| --nutui-dialog-outer-z-index | `  $mask-content-z-index` |
+| --nutui-dialog-outer-bordder-radius | `  20px` |
+| --nutui-dialog-vertical-footer-ok-margin-top | `  10px` |
+| --nutui-dialog-footer-button-min-width | `  100px` |
+| --nutui-dialog-footer-cancel-margin-right | `  20px` |
+| --nutui-dialog-footer-ok-max-width | `  128px` |

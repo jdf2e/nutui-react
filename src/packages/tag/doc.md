@@ -7,7 +7,9 @@
 ### 安装
 
 ``` javascript
+// react
 import { Tag } from '@nutui/nutui-react';
+
 ```
 
 ## 代码实例
@@ -205,3 +207,24 @@ export default App;
 | onClick`v1.2.2`    | 点击事件 | event    |
 | onClose    | 关闭事件 | event    |
 
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-tag-font-size | ` 12px` |
+| --nutui-tag-default-border-radius | `  4px` |
+| --nutui-tag-round-border-radius | ` 8px` |
+| --nutui-tag-default-background-color | `  #000000` |
+| --nutui-tag-primary-background-color | `  #3460fa` |
+| --nutui-tag-success-background-color | `  #4fc08d` |
+| --nutui-tag-danger-background-color-plain | `  #df3526` |
+| --nutui-tag-warning-background-color | `  #f3812e` |
+| --nutui-tag-default-color | ` #ffffff` |
+| --nutui-tag-border-width | ` 1px` |
+| --nutui-tag-height | ` auto` |

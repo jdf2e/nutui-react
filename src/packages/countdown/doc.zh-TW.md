@@ -6,8 +6,10 @@
 
 ### 安裝
 
-```javascript
+```ts
+// react
 import { CountDown } from '@nutui/nutui-react'
+
 ```
 
 ## 代碼演示
@@ -369,3 +371,16 @@ export default App;
 | reset | 重設倒計時，若 auto-start 為 true，重設後會自動開始倒計時 | 
 
 
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-countdown-display | ` flex` |
+| --nutui-countdown-color | ` inherit` |
+| --nutui-countdown-font-size | ` initial` |

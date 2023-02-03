@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Range, Cell, Toast } from '@/packages/nutui.react.taro'
 import '@/packages/range/demo.scss'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   title: string
@@ -15,6 +17,7 @@ interface T {
   title8: string
   title9: string
   title10: string
+  title11: string
 }
 
 const RangeDemo = () => {
@@ -31,6 +34,7 @@ const RangeDemo = () => {
       title8: '自定义按钮',
       title9: '垂直方向',
       title10: '刻度标记',
+      title11: '自定义描述',
     },
     'en-US': {
       title: 'Basic Usage',
@@ -44,6 +48,7 @@ const RangeDemo = () => {
       title8: 'Custom Button',
       title9: 'Vertical',
       title10: 'Marks',
+      title11: 'Range Desc',
     },
   })
   const cellStyle = {
@@ -62,6 +67,7 @@ const RangeDemo = () => {
   const [value6, SetValue6] = useState([20, 80])
   const [value7, SetValue7] = useState(60)
   const [value8, SetValue8] = useState([20, 80])
+  const [value9, SetValue9] = useState(40)
   const [marks, SetMarks] = useState({
     0: 0,
     20: 20,
@@ -107,6 +113,9 @@ const RangeDemo = () => {
       case 'value8':
         SetValue8(value)
         break
+      case 'value9':
+        SetValue9(value)
+        break
       default:
         break
     }
@@ -114,10 +123,23 @@ const RangeDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.title}</h2>
         <Cell style={cellStyle}>
           <Range modelValue={40} />
+        </Cell>
+        <h2>{translated.title11}</h2>
+        <Cell style={cellStyle}>
+          <Range
+            modelValue={value9}
+            minDesc="0%"
+            maxDesc="100%"
+            curValueDesc={`${value9}%`}
+            onChange={(value: any) => {
+              change(value, 'value9')
+            }}
+          />
         </Cell>
         <h2>{translated.title1}</h2>
         <Cell style={cellStyle}>

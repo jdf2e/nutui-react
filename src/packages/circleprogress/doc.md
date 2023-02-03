@@ -6,8 +6,10 @@
 
 ### 安装
 
-``` ts
+```ts
+// react
 import { CircleProgress } from '@nutui/nutui-react';
+
 ```
 
 ### 基础用法
@@ -159,3 +161,16 @@ export default App;
 | pathColor | 圆环轨道颜色| String | '#d9d9d9'
 | strokeLinecap | 圆环进度条端点形状可选值为 square butt| String | 'round'
 | clockwise| 是否顺时针展示| Boolean | true
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-circleprogress-primary-color | `  $primary-color` |
+| --nutui-circleprogress-path-color | `  #e5e9f2` |
+| --nutui-circleprogress-text-color | `  $title-color` |
+| --nutui-circleprogress-text-size | `  $font-size-3` |

@@ -7,9 +7,10 @@ Often used in a group of pictures or card rotation.
 ### Install
 
 ```javascript
+// react
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
-```
 
+```
 
 ### Basic Usage
 
@@ -17,6 +18,7 @@ import { Swiper,SwiperItem } from '@nutui/nutui-react';
 `initPage` Initial index value
 `paginationVisible` Show paging indicator
 `paginationColor` Indicator color customization
+`paginationBgColor`  Indicator backgroundColor customization
 `onChange` When the card changes
 
 :::demo
@@ -35,6 +37,7 @@ const App = () => {
       <Swiper
         height={height}
         paginationColor="#426543"
+        paginationBgColor='#426ddd'
         autoPlay="3000"
         initPage={initPage1}
         paginationVisible
@@ -471,6 +474,7 @@ export default App;
 | direction         | Rotation direction, optional value：`horizontal`,`vertical` | String                    | 'horizontal'      |
 | paginationVisible | Whether the pagination indicator is displayed                     | Boolean                   | false             |
 | paginationColor   | Pagination indicator selected color                   | String                    | '#fff'            |
+| paginationBgColor`v1.4.1` | Pagination indicator backgroundcolor | String | '#ddd'            |
 | loop              | Whether to rotate                             | Boolean                   | true              |
 | duration          | Animation duration（Unit ms                 | Number \| String          | 500               |
 | autoPlay          | Automatic rotation duration, 0 means no automatic        | Number \| String          | 0                 |
@@ -498,3 +502,17 @@ export default App;
 | prev   | Switch to previous page   | -            |
 | next   | Switch to next page    | -            |
 | to     | Switch to the specified rotation | index:number |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-swiper-pagination-item-background-color | `  #ddd` |
+| --nutui-swiper-pagination-item-width | `  8px` |
+| --nutui-swiper-pagination-item-height | `  3px` |
+| --nutui-swiper-pagination-item-margin-right | `  7px` |
+| --nutui-swiper-pagination-item-border-radius | `  2px` |

@@ -6,7 +6,9 @@
 
 ### 安裝
 ```javascript
+// react
 import { Row, Col } from '@nutui/nutui-react'
+
 ```
 
 

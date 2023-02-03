@@ -6,8 +6,10 @@
 
 ### 安装
 
-```js
+```ts
+// react
 import { Divider } from '@nutui/nutui-react';
+
 ```
 
 ## 代码演示
@@ -165,3 +167,23 @@ export default App;
 | 名称    | 说明 |
 | ------- | ---- |
 | default | 内容 |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-divider-margin | ` 16px 0` |
+| --nutui-divider-text-font-size | `  $font-size-2` |
+| --nutui-divider-text-color | ` $gray1` |
+| --nutui-divider-line-height | ` 2px` |
+| --nutui-divider-before-margin-right | `  16px` |
+| --nutui-divider-after-margin-left | `  16px` |
+| --nutui-divider-vertical-height | ` 12px` |
+| --nutui-divider-vertical-top | ` 2px` |
+| --nutui-divider-vertical-border-left | `  rgba(0, 0, 0, 0.06)` |
+| --nutui-divider-vertical-margin | ` 0 8px` |

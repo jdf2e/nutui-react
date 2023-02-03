@@ -7,7 +7,9 @@
 ### 安裝
 
 ```javascript
+// react
 import { Signature } from '@nutui/nutui-react'
+
 ```
 
 ## 代碼演示

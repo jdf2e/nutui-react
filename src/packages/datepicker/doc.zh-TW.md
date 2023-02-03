@@ -5,9 +5,11 @@
 時間選擇器，支持日期、年月、時分等維度，通常與彈出層組件配合使用。
     
 ### 安裝
-    
-```javascript
+
+```ts
+// react
 import { DatePicker } from '@nutui/nutui';
+
 ```
     
 ## 代碼演示

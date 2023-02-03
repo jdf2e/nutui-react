@@ -7,7 +7,9 @@ Used for audio playback
 ### Install
 
 ```javascript
+// react
 import { Audio } from '@nutui/nutui-react'
+
 ```
 
 ## Code demonstration

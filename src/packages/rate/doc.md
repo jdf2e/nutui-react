@@ -7,7 +7,9 @@
 ### 安装
 
 ```ts
+// react
 import { Rate } from '@nutui/nutui-react';
+
 ```
 
 ## 代码演示
@@ -220,3 +222,15 @@ export default App;
 | 字段   | 说明                       | 回调参数 |
 |--------|----------------------------|----------|
 | onChange `v1.3.3` | 当前分值修改时时触发的事件 | 当前值   |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-rate-icon-color | ` $primary-color` |
+| --nutui-rate-icon-void-color | `  $disable-color` |

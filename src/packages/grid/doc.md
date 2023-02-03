@@ -7,7 +7,9 @@
 ### 安装
 
 ```javascript
+// react
 import { Grid ,GridItem } from '@nutui/nutui-react'
+
 ```
 
 ## 代码演示
@@ -234,11 +236,19 @@ export default App
 | reverse       | 内容翻转                                  | boolean                | `false`     |
 | direction     | 格子内容排列的方向，可选值为 `horizontal`    | string                 | `vertical`  |
 
+## Grid Event
+
+| 字段       | 说明         | 回调参数                                           |
+|----------|--------------|----------------------------------------------------|
+| onClick | 宫格子项点击事件 | 点击当前项, 索引 |
+
 ### GridItem Props
 
 | 参数                  | 说明                                                                                     | 类型               | 默认值      |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|------------|
 | text                 | 文字                                                                                     | string \| ReactNode   | -          |
+| fontSize `1.4.4`     | 文字大小                                                                                  | string \| number   | -          |
+| color `1.4.4`        | 文字颜色                                                                                  | string   | -          |
 | icon                 | [图标名称](#/icon) 或图片链接                                                              | string  \| ReactNode   | -          |
 | iconSize            | 图标大小，如 `20px` `2em` `2rem`                                                          | number \| string   | `28px`     |
 | iconColor           | 图标颜色                                                                                  | string            | -           |
@@ -247,4 +257,21 @@ export default App
 
 | 参数                  | 说明                                                                                     | 回调参数    |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|
-| onClick                 | 点击格子时触发                                                                         | event: Event      |
+| onClick `1.3.14`                 | 点击格子时触发                                                                         | event: Event      |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-grid-border-color | ` #f5f6f7` |
+| --nutui-grid-item-content-padding | `  16px 8px` |
+| --nutui-grid-item-content-bg-color | `  $white` |
+| --nutui-grid-item-text-margin | ` 8px` |
+| --nutui-grid-item-text-color | ` $gray1` |
+| --nutui-grid-item-icon-color | ` $gray1` |
+| --nutui-grid-item-text-font-size | `  $font-size-1` |

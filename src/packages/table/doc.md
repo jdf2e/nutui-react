@@ -6,7 +6,9 @@
 
 ### 安装
 ```ts
+// react
 import { Table } from '@nutui/nutui-react';
+
 ```
 
 
@@ -577,3 +579,17 @@ export default App;
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
 | onSorter  | 点击排序按钮触发 | `item: TableColumnProps, data: Array<any>` |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-table-border-color | ` #ececec` |
+| --nutui-table-cols-padding | ` 10px` |
+| --nutui-table-tr-even-bg-color | ` $gray4` |
+| --nutui-table-tr-odd-bg-color | ` $gray6` |

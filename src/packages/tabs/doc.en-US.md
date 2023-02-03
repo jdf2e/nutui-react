@@ -7,7 +7,9 @@ It is often used for the storage and display of large blocks of content in the l
 ### Install
 
 ```ts
+// react
 import { Tabs, TabPane } from '@nutui/nutui-react';
+
 ```
 
 ### Basic Usage
@@ -378,3 +380,29 @@ export default App;
 |--------|--------------------------|--------------------------|
 | onClick  | Triggered when the label is clicked           | {title,paneKey,disabled} |
 | onChange | Fired when the currently active tab changes | {title,paneKey,disabled} |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-tabs-tab-smile-color | `  $primary-color` |
+| --nutui-tabs-titles-border-radius | ` 0` |
+| --nutui-tabs-titles-item-large-font-size | `  $font-size-3` |
+| --nutui-tabs-titles-item-font-size | `  $font-size-2` |
+| --nutui-tabs-titles-item-small-font-size | `  $font-size-1` |
+| --nutui-tabs-titles-item-color | `  $title-color` |
+| --nutui-tabs-titles-item-active-color | `  $title-color` |
+| --nutui-tabs-titles-background-color | `  $background-color2` |
+| --nutui-tabs-horizontal-titles-height | `  46px` |
+| --nutui-tabs-horizontal-titles-item-min-width | `  50px` |
+| --nutui-tabs-horizontal-titles-item-active-line-width | `  40px` |
+| --nutui-tabs-vertical-titles-item-height | `  40px` |
+| --nutui-tabs-vertical-titles-item-active-line-height | `  14px` |
+| --nutui-tabs-vertical-titles-width | `  100px` |
+| --nutui-tabs-titles-item-line-border-radius | `  0` |
+| --nutui-tabs-titles-item-line-opacity | `  1` |

@@ -102,7 +102,7 @@ export const Toast: FunctionComponent<
   const show = () => {
     clearTimer()
     if (duration) {
-      timer = setTimeout(() => {
+      timer = window.setTimeout(() => {
         hide()
       }, duration * 1000)
     }

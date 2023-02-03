@@ -4,7 +4,7 @@ import { InputNumber } from './inputnumber'
 import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'
 
-interface IValState {
+interface ValState {
   val1: number | string
   val2: number | string
   val3: number | string
@@ -67,7 +67,7 @@ const InputNumberDemo = () => {
     },
   })
 
-  const [inputState, setInputState] = useState<IValState>({
+  const [inputState, setInputState] = useState<ValState>({
     val1: 1,
     val2: 0,
     val3: 10,

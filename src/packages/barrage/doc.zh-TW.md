@@ -7,7 +7,9 @@
 ### 安裝
 
 ``` ts
+// react
 import { Barrage } from '@nutui/nutui-react';
+
 ```
 
 ## 代碼演示

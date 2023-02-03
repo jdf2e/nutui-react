@@ -7,7 +7,9 @@ Displays the progress of a task or process, often used for provisioning processe
 ### Install
 
 ```javascript
+// react
 import { Indicator } from '@nutui/nutui-react'
+
 ```
 ### Basic Usage
 :::demo
@@ -118,3 +120,22 @@ export default App;
 | align | Alignment, only valid when block is true, optional values 'left', 'right', 'center' | String | left |
 | fillZero     | Whether to add 0 in front of the singular number                      | Boolean | true        |
 | vertical | Whether to display vertically     | Boolean | false |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-indicator-color | ` $primary-color` |
+| --nutui-indicator-dot-color | ` $disable-color` |
+| --nutui-indicator-white | ` $white` |
+| --nutui-indicator-size | ` 18px` |
+| --nutui-indicator-number-font-size | `  10px` |
+| --nutui-indicator-dot-margin | ` 4px` |
+| --nutui-indicator-dot-vertical-margin | `  4px` |
+| --nutui-indicator-dot-first-margin | `  0px` |
+| --nutui-indicator-dot-last-margin | `  0px` |

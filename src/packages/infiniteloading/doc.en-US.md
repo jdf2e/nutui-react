@@ -7,7 +7,9 @@ Scrolling to the bottom of the list automatically loads more data.
 ### Install
 
 ```ts
+// react
 import { InfiniteLoading } from '@nutui/nutui-react';
+
 ```
 
 ### Basic Usage
@@ -286,3 +288,13 @@ export default App;
 | onScrollChange `v1.3.4` | Real-time monitoring of roll height | height |
 | refresh `v1.3.4(Abandon)` | Emitted when pull refresh | done() |
 | onRefresh `v1.3.4` | Emitted when pull refresh | done() |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-infiniteloading-bottom-color | `  #c8c8c8` |

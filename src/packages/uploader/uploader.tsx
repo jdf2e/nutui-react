@@ -21,9 +21,9 @@ export type FileItemStatus =
   | 'error'
   | 'removed'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface UploaderProps extends IComponent {
+export interface UploaderProps extends BasicComponent {
   url: string
   maximum: string | number
   maximize: number
@@ -70,7 +70,7 @@ export interface UploaderProps extends IComponent {
     fileList: FileItem[]
     event: React.ChangeEvent<HTMLInputElement>
   }) => void
-  onBeforeUpload?: (file: File[]) => Promise<File[]>
+  onBeforeUpload?: (file: File[]) => Promise<File[] | boolean>
   onBeforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
   onBeforeDelete?: (file: FileItem, files: FileItem[]) => boolean
   onFileItemClick?: (file: FileItem) => void
@@ -378,7 +378,7 @@ const InternalUploader: ForwardRefRenderFunction<
 
     if (onBeforeUpload) {
       onBeforeUpload(new Array<File>().slice.call(files)).then(
-        (f: Array<File>) => {
+        (f: Array<File> | boolean) => {
           const _files: File[] = filterFiles(new Array<File>().slice.call(f))
           readFile(_files)
         }

@@ -6,7 +6,9 @@ It is often used for gesture operations such as sliding left and right to delete
 ### Install
 
 ```javascript
+// react
 import { Swipe } from '@nutui/nutui-react';
+
 ```
 
 ## Code demonstration
@@ -215,3 +217,17 @@ export default App;
 |onOpen | open the cell sidebar |_name: string , position: `left \| right`_ |
 |onClose | collapse the cell sidebar |_name: string , position: `left \| right`_ |
 |onActionClick | triggered when clicking on the left or right |_event: Event , position: `left \| right`_ |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-swiper-pagination-item-background-color | `  #ddd` |
+| --nutui-swiper-pagination-item-width | `  8px` |
+| --nutui-swiper-pagination-item-height | `  3px` |
+| --nutui-swiper-pagination-item-margin-right | `  7px` |
+| --nutui-swiper-pagination-item-border-radius | `  2px` |

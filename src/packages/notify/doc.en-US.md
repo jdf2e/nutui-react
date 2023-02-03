@@ -6,7 +6,9 @@ Show message tips at the top of the page
 
 ### Install
 ```javascript
+// react
 import { Notify } from '@nutui/nutui-react';
+
 ```
 
 ## Demo
@@ -190,3 +192,19 @@ export default App
 |--------|--------------|----------|
 | onClick  | Emitted when notify is clicked | -       |
 | onClosed | Emitted when notify is closed | -       |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-notify-text-color | ` $white` |
+| --nutui-notify-padding | ` 12px 0` |
+| --nutui-notify-font-size | ` 14px` |
+| --nutui-notify-height | ` 44px` |
+| --nutui-notify-line-height | ` auto` |
+| --nutui-notify-danger-background-color | `  rgba(250, 50, 25, 1)` |

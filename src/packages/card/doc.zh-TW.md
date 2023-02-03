@@ -6,7 +6,11 @@
 
 ### 安裝
 
-import { Card,Price, Tag} from '@nutui/nutui-react';
+```js
+// react
+import { Card, Price, Tag } from '@nutui/nutui-react';
+
+```
 
 
 ## 代碼演示
@@ -254,3 +258,19 @@ export default App;
 
 
 
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-card-font-size-0 | ` $font-size-0` |
+| --nutui-card-font-size-1 | ` $font-size-1` |
+| --nutui-card-font-size-2 | ` $font-size-2` |
+| --nutui-card-font-size-3 | ` $font-size-3` |
+| --nutui-card-left-border-radius | ` 0` |
+| --nutui-card-left-background-color | `  inherit` |

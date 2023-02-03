@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 import { Button, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/button/demo.scss'
 
@@ -99,7 +101,8 @@ const ButtonDemo = () => {
   const [loading, setLoading] = useState(false)
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.ce5c5446}</h2>
         <Cell className="button-cell">
           <Button

@@ -7,7 +7,9 @@ Implement draggable arbitrary elements.
 ### Install
 
 ```javascript
+// react
 import { Drag } from '@nutui/nutui-react'
+
 ```
 
 ## Demo

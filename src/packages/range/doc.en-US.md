@@ -7,7 +7,9 @@ Slide the input bar to select a value within a given range.
 ### Install
 
 ```javascript
+// react
 import { Range } from '@nutui/nutui-react';
+
 ```
 
 ## Demo
@@ -35,6 +37,44 @@ const App = () => {
 
 export default App;
 
+```
+:::
+
+
+### Range Desc
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Range,Cell,Toast } from '@nutui/nutui-react';
+
+const App = () => {
+    const [value, SetValue] = useState(40)
+    const change = (value: number, name?: string) => {
+        Toast.text(`value：${value}`)
+        SetValue(value)
+    }
+    const cellStyle = {
+        padding: '40px 18px',
+    }
+    return (
+    <>
+        <Cell style={cellStyle}>
+           <Range
+            modelValue={value}
+            minDesc="0%"
+            maxDesc="100%"
+            curValueDesc={`${value}%`}
+            onChange={(value) => {
+              change(value)
+            }}
+          />
+        </Cell>
+    </>
+    )
+};
+export default App;
 ```
 :::
 ### Dual thumb
@@ -480,6 +520,9 @@ export default App;
 | range         | Whether to enable dual slider mode | Boolean          | `false`                  |
 | max           | maximum             | Number、String   | `100`                    |
 | min           | minimum             | Number、String   | `0`                      |
+| maxDesc`v1.3.12`     | maximum  description        | Number、String   | -                    |
+| minDesc`v1.3.12`     | minimum description          | Number、String   | -                      |
+| curValueDesc`v1.3.12` | current progress percentage description  | Number、String |-                    |
 | step          | step size               | Number、String   | `1`                      |
 | disabled      | Whether to disable the slider       | Boolean          | `false`                  |
 | vertical      | Whether to display vertically | Boolean | `false` |
@@ -503,3 +546,20 @@ export default App;
 | Name   | Description           |
 | ------ | -------------- |
 | button | custom slide button |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-range-tip-font-color | ` $gray1` |
+| --nutui-range-bg-color | ` rgba(#fa2c19, 0.5)` |
+| --nutui-range-bg-color-tick | ` #fa958c` |
+| --nutui-range-bar-btn-bg-color | ` $white` |
+| --nutui-range-bar-btn-width | ` 24px` |
+| --nutui-range-bar-btn-height | ` 24px` |
+| --nutui-range-bar-btn-border | `  1px solid $primary-color` |

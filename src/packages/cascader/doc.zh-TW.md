@@ -6,8 +6,10 @@
 
 ### 安裝
 
-```js
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+```ts
+// react
+import { Cascader } from '@nutui/nutui-react';
+
 ```
 
 ## 代碼演示
@@ -17,7 +19,7 @@ import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
 :::demo
 ```jsx
 import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo1, setIsVisibleDemo1] = useState(false)
@@ -126,7 +128,7 @@ export default App;
 :::demo
 ```jsx
 import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo2, setIsVisibleDemo2] = useState(false)
@@ -238,7 +240,7 @@ export default App;
 :::demo
 ```jsx
 import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo3, setIsVisibleDemo3] = useState(false)
@@ -306,7 +308,7 @@ export default App;
 :::demo
 ```jsx
 import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo4, setIsVisibleDemo4] = useState(false)
@@ -379,7 +381,7 @@ export default App;
 :::demo
 ```jsx
 import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo5, setIsVisibleDemo5] = useState(false)
@@ -432,6 +434,116 @@ export default App;
 ```
 :::
 
+### 自定義選中顏色
+
+傳入`activeColor`指定選中的顏色。
+:::demo
+```jsx
+import  React from "react";
+import { Cell, Cascader } from '@nutui/nutui-react';
+
+const App = () => {
+  const [isVisibleDemo6, setIsVisibleDemo6] = useState(false)
+  const [value6, setValue6] = useState([])
+  const [optionsDemo6, setOptionsDemo6] = useState([
+    {
+      value: '浙江',
+      text: '浙江',
+      children: [
+        {
+          value: '杭州',
+          text: '杭州',
+          disabled: true,
+          children: [
+            { value: '西湖区', text: '西湖区', disabled: true },
+            { value: '余杭区', text: '余杭区' },
+          ],
+        },
+        {
+          value: '温州',
+          text: '温州',
+          children: [
+            { value: '鹿城区', text: '鹿城区' },
+            { value: '瓯海区', text: '瓯海区' },
+          ],
+        },
+      ],
+    },
+    {
+      value: '湖南',
+      text: '湖南',
+      disabled: true,
+      children: [
+        {
+          value: '长沙',
+          text: '长沙',
+          disabled: true,
+          children: [
+            { value: '西湖区', text: '西湖区' },
+            { value: '余杭区', text: '余杭区' },
+          ],
+        },
+        {
+          value: '温州',
+          text: '温州',
+          children: [
+            { value: '鹿城区', text: '鹿城区' },
+            { value: '瓯海区', text: '瓯海区' },
+          ],
+        },
+      ],
+    },
+    {
+      value: '福建',
+      text: '福建',
+      children: [
+        {
+          value: '福州',
+          text: '福州',
+          children: [
+            { value: '鼓楼区', text: '鼓楼区' },
+            { value: '台江区', text: '台江区' },
+          ],
+        },
+      ],
+    },
+  ])
+  const change6 = (value: any, path: any) => {
+    console.log('onChange', value, path)
+    setValue6(value)
+  }
+  const onPathChange = (value: any, path: any) => {
+    console.log('onPathChange', value, path)
+  }
+
+  return (
+    <>
+    <Cell
+      title="选择地址"
+      desc={value6 || '请选择地址'}
+      onClick={()=>{
+        setIsVisibleDemo6(true)
+      }}
+     />
+    <Cascader
+      visible={isVisibleDemo6}
+      color="#008000"
+      tabsColor="#008000"
+      value={value6}
+      title="地址选择"
+      options={optionsDemo6}
+      closeable
+      onClose={()=>{setIsVisibleDemo1(false)}}
+      onChange={change6}
+      onPathChange={onPathChange}
+    />
+    </>
+  );
+};
+export default App;
+```
+:::
+
 ## API
 
 ### Props
@@ -442,6 +554,8 @@ export default App;
 | options       | 級聯數據                                         | Array    | -      |
 | poppable      | 是否彈窗狀態展示                                  | Boolean  | true   |
 | visible       | 級聯顯示隱藏狀態                                  | Boolean  | false  |
+| activeColor`1.3.13` | 選中啟動態顏色                           | String  | -  |
+| tabsColor`1.3.13` | tabs底部選中啟動態顏色                                  | String  | -  |
 | lazy          | 是否開啟動態加載                                  | Boolean  | false  |
 | lazyLoad      | 動態加載回調，開啟動態加載時生效                   | Function | -      |
 | valueKey      | 自定義`options`結構中`value`的字段               | String   | -      |
@@ -459,3 +573,28 @@ export default App;
 | ---------- | --------------- | ------------------ |
 | onChange     | 選中值改變時觸發   | (value, pathNodes) |
 | onPathChange | 選中項改變時觸發   | (pathNodes)        |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-cascader-font-size | ` $font-size-2` |
+| --nutui-cascader-line-height | ` 22px` |
+| --nutui-cascader-title-padding | `  24px 20px 17px` |
+| --nutui-cascader-title-font-size | ` 18px` |
+| --nutui-cascader-title-line-height | `  20px` |
+| --nutui-cascader-pane-height | ` 342px` |
+| --nutui-cascader-tabs-item-padding | `  0 10px` |
+| --nutui-cascader-bar-padding | `  24px 20px 17px` |
+| --nutui-cascader-bar-font-size | `  $font-size-4` |
+| --nutui-cascader-bar-line-height | ` 20px` |
+| --nutui-cascader-bar-color | ` $title-color` |
+| --nutui-cascader-item-padding | ` 10px 20px` |
+| --nutui-cascader-item-color | ` $title-color` |
+| --nutui-cascader-item-font-size | `  $font-size-2` |
+| --nutui-cascader-item-active-color | `  $primary-color` |

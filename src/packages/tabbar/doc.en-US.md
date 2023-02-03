@@ -7,7 +7,9 @@ Bottom Navigation Common Scenarios
 ### Install
 
 ```ts
+// react
 import { Tabbar, TabbarItem } from '@nutui/nutui-react';
+
 ```
 
 ## code demo
@@ -175,16 +177,16 @@ export default App;
 
 ### tabbar-item
 
-| Prop      | Description                                      | Type   | Default |
-|-----------|-------------------------------------------|--------|--------|
-| tabTitle | the title of the tab                              | String | --     |
-| icon      | [icon name](#/icon) or image link displayed on the tab page | String | --     |
-| href      | Jump link of tab page; if `to` exists at the same time, it takes precedence over to   | String | --     |
-| to       | 	The route object of the tab, equal to React Router's [to Prop](https://v5.reactrouter.com/web/api/Link/to-string) Prop | any | --     |
-| num       | The numerical corner mark in the upper right corner of the tab, if it exceeds 99, it will be 99+     | Number | --     |
-| iconClassPrefix`v1.2.1`       | Custom icon class name prefix, used to use custom icons        | String                  | `nut-icon` |
-| iconFontClassName`v1.2.1`     | Basic class name of custom icon font        | String                  | `nutui-iconfont` |
-| dot      | Whether to display the little red dot in the upper right corner of the icon   | Boolean | false     |
+| Prop                      | Description                                      | Type   | Default |
+|---------------------------|-------------------------------------------|--------|--------|
+| tabTitle                  | the title of the tab                              | String | --     |
+| icon                      | [icon name](#/icon) or image link displayed on the tab page | String | --     |
+| href                      | Jump link of tab page;   | String | --     |
+| to`v1.4.0(Abandon)`              | 	The route object of the tab, equal to React Router's [to Prop](https://v5.reactrouter.com/web/api/Link/to-string) Prop | any | --     |
+| num                       | The numerical corner mark in the upper right corner of the tab, if it exceeds 99, it will be 99+     | Number | --     |
+| iconClassPrefix`v1.2.1`   | Custom icon class name prefix, used to use custom icons        | String                  | `nut-icon` |
+| iconFontClassName`v1.2.1` | Basic class name of custom icon font        | String                  | `nutui-iconfont` |
+| dot                       | Whether to display the little red dot in the upper right corner of the icon   | Boolean | false     |
 
 
 ### Event
@@ -192,3 +194,22 @@ export default App;
 | Event               | Description               | callback parameter           |
 |---------------------|--------------------|--------------------|
 | onSwitch`v1.3.8`    | Trigger an event when switching tabs | Clicked data and index value |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-tabbar-active-color | ` $primary-color` |
+| --nutui-tabbar-unactive-color | `  $primary-color` |
+| --nutui-tabbar-border-top | ` 1px solid #eee` |
+| --nutui-tabbar-border-bottom | `  1px solid #eee` |
+| --nutui-tabbar-box-shadow | ` none` |
+| --nutui-tabbar-item-text-font-size | `  $font-size-0` |
+| --nutui-tabbar-item-text-line-height | `  initial` |
+| --nutui-tabbar-height | ` 50px` |
+| --nutui-tabbar-word-margin-top | ` auto` |

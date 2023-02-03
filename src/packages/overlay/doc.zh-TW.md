@@ -8,7 +8,9 @@
 
 
 ``` ts
+// react
 import { OverLay } from '@nutui/nutui-react';
+
 ```
 
 ## 代碼演示
@@ -108,3 +110,16 @@ export default App;
 | 事件名 | 說明       | 回調參數     |
 | ------ | ---------- | ------------ |
 | onClick  | 點擊時觸發 | event: Event |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-overlay-bg-color | ` $gray7` |
+| --nutui-overlay-content-bg-color | `  $gray6` |
+| --nutui-overlay-content-color | ` $gray1` |

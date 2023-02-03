@@ -8,7 +8,9 @@ Create a mask layer that is typically used to prevent users from doing other thi
 
 
 ``` ts
+// react
 import { OverLay } from '@nutui/nutui-react';
+
 ```
 
 ## Code demo
@@ -108,3 +110,16 @@ export default App;
 | Event | Description       | Callback parameters     |
 | ------ | ---------- | ------------ |
 | onClick  | Triggered when the button is clicked | event: Event |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-overlay-bg-color | ` $gray7` |
+| --nutui-overlay-content-bg-color | `  $gray6` |
+| --nutui-overlay-content-color | ` $gray1` |

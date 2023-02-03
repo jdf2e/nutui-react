@@ -7,7 +7,9 @@
 
 ### 安裝
 ``` javascript
+// react
 import { Address } from '@nutui/nutui-react';
+
 ```
 
 ## 代碼示例
@@ -141,7 +143,7 @@ const App = () => {
   const onChange = (cal) => {
     const name = address[cal.next]
 
-    if(cal.next == 'town') setNormal(false)
+    if(cal.next === 'town') setNormal(false)
   }
   const close = (val) => {
       console.log(val)
@@ -535,7 +537,7 @@ const App = () => {
   }
   const close = (val) => {
       setOther(false)
-      if (val.type == 'exist') {
+      if (val.type === 'exist') {
         const { provinceName, cityName, countyName, townName, addressDetail } = val.data as AddressResult
         if (provinceName) {
           setText(provinceName + cityName + countyName + townName + addressDetail)
@@ -545,7 +547,7 @@ const App = () => {
         }
   }
   const switchModule = (val) => {
-      if (val.type == 'custom') {
+      if (val.type === 'custom') {
         console.log('點擊了“選擇其他地址”按鈕')
       } else {
         console.log('點擊了自定義地址左上角的返回按鈕')
@@ -643,3 +645,34 @@ export default App;
 | type | 地址選擇類型 exist/custom/custom2  |  exist/custom/custom2 |
 | data | 選擇地址的值,custom 時，addressStr 為選擇的地址組合 | {}  |
     
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-address-icon-color | ` $primary-color` |
+| --nutui-address-header-title-font-size | `  18px` |
+| --nutui-address-header-title-color | `  #262626` |
+| --nutui-address-region-tab-font-size | `  13px` |
+| --nutui-address-region-tab-color | `  #1d1e1e` |
+| --nutui-address-region-tab-active-item-font-weight | `  bold` |
+| --nutui-address-region-tab-line-border-radius | `  0` |
+| --nutui-address-region-tab-line-opacity | `  1` |
+| --nutui-address-region-item-color | `  #333` |
+| --nutui-address-region-item-font-size | `  $font-size-1` |
+| --nutui-address-item-margin-right | `  9px` |
+| --nutui-addresslist-bg | ` #fff` |
+| --nutui-addresslist-border | ` #f0f0f0` |
+| --nutui-addresslist-font-color | ` #333333` |
+| --nutui-addresslist-font-size | ` 16px` |
+| --nutui-addresslist-mask-bg | `  rgba(0, 0, 0, 0.4)` |
+| --nutui-addresslist-addr-font-color | `  #666666` |
+| --nutui-addresslist-addr-font-size | `  12px` |
+| --nutui-addresslist-set-bg | ` #f5a623` |
+| --nutui-addresslist-del-bg | ` #e1251b` |
+| --nutui-addresslist-contnts-contact-default | `  $primary-color` |
+| --nutui-addresslist-contnts-contact-color | `  $white` |

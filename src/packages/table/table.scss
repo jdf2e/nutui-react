@@ -1,38 +1,44 @@
 .nut-theme-dark {
   .nut-table {
+    margin-bottom: 3px;
     &__main {
-      color: $dark-color;
-      background-color: $dark-background2;
+      color: $dark1;
+      background-color: $dark5;
 
       &--striped {
         .nut-table__main__head {
           &__tr {
-            background-color: $dark-background3;
+            background-color: $dark6;
           }
         }
 
         .nut-table__main__body {
           &__tr:nth-child(odd) {
-            background-color: $dark-color-gray;
+            background-color: $dark4;
           }
         }
 
         .nut-table__main__body {
           &__tr:nth-child(even) {
-            background-color: $dark-background3;
+            background-color: $dark6;
           }
         }
       }
     }
-
+    .nut-table__nodata {
+      background-color: $dark6;
+      .nut-table__nodata {
+        color: $dark1;
+      }
+    }
     &__summary {
-      color: $dark-color;
-      background-color: $dark-background;
+      color: $dark1;
+      background-color: $dark4;
     }
 
     &__nodata {
-      color: $dark-color;
-      background-color: $dark-background;
+      color: $dark1;
+      background-color: $dark4;
     }
   }
 }
@@ -41,11 +47,14 @@
   width: 100%;
   flex-direction: column;
   font-size: $font-size-2;
+  color: $title-color;
   &__main {
     display: table;
     width: 100%;
     border-collapse: collapse;
     overflow-x: hidden;
+    color: $title-color;
+    background-color: $background-color3;
     &--striped {
       .nut-table__main__head {
         &__tr {
@@ -110,6 +119,8 @@
     padding: $table-cols-padding;
   }
   &__nodata {
+    color: $title-color;
+    background-color: $background-color3;
     display: flex;
     align-items: center;
     justify-content: center;

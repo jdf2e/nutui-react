@@ -6,7 +6,9 @@
     
 ### 安装
 ``` javascript
+// react
 import { Pagination } from '@nutui/nutui-react';
+
 ```    
 
 ### 基础用法
@@ -142,3 +144,21 @@ export default App;
 | 事件名   | 说明           | 回调参数 |
 | -------- | -------------- | -------- |
 | onChange | 页码改变时触发 | value    |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-pagination-color | ` $primary-color` |
+| --nutui-pagination-font-size | ` $font-size-2` |
+| --nutui-pagination-item-border-color | `  #e4e7eb` |
+| --nutui-pagination-disable-color | `  $disable-color` |
+| --nutui-pagination-disable-background-color | `  #f7f8fa` |
+| --nutui-pagination-item-border-width | `  1px` |
+| --nutui-pagination-item-border-radius | `  2px` |
+| --nutui-pagination-prev-next-padding | `  0 11px` |

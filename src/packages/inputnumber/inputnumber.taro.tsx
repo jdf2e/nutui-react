@@ -9,9 +9,9 @@ import classNames from 'classnames'
 import Icon from '@/packages/icon/index.taro'
 import bem from '@/utils/bem'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface InputNumberProps extends IComponent {
+export interface InputNumberProps extends BasicComponent {
   disabled: boolean
   buttonSize: string | number
   min: string | number
@@ -219,6 +219,7 @@ export const InputNumber: FunctionComponent<
         onClick={reduceNumber}
       />
       <input
+        className="nut-number-input"
         type="number"
         min={min}
         max={max}

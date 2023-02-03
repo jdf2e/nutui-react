@@ -6,7 +6,9 @@ Used to display the basic table
 
 ### Install
 ```ts
+// react
 import { Table } from '@nutui/nutui-react';
+
 ```
 
 
@@ -567,3 +569,17 @@ export default App;
 | Event | Description           | Arguments     |
 |--------|----------------|--------------|
 | onSorter  | Click the sort button to trigger | `item: TableColumnProps, data: Array<any>` |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-table-border-color | ` #ececec` |
+| --nutui-table-cols-padding | ` 10px` |
+| --nutui-table-tr-even-bg-color | ` $gray4` |
+| --nutui-table-tr-odd-bg-color | ` $gray6` |

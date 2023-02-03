@@ -5,9 +5,11 @@
 for quick layout
 
 ### Install
-````javascript
-import { Layout,Row,Col } from '@nutui/nutui-react'
-````
+```javascript
+// react
+import { Row, Col } from '@nutui/nutui-react'
+
+```
 
 
 ## code demo

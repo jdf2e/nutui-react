@@ -7,7 +7,9 @@
 ### Install
 
 ``` javascript
+// react
 import { Badge } from '@nutui/nutui-react';
+
 ```
 
 ## Demo
@@ -201,3 +203,23 @@ export default App;
 
 
 
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-badge-color | ` #fff` |
+| --nutui-badge-font-size | ` $font-size-1` |
+| --nutui-badge-default-background-color | `  rgba(255, 255, 255, 1)` |
+| --nutui-badge-border-radius | ` 14px` |
+| --nutui-badge-padding | ` 0 5px` |
+| --nutui-badge-z-index | ` 1` |
+| --nutui-badge-dot-width | ` 7px` |
+| --nutui-badge-dot-height | ` 7px` |
+| --nutui-badge-dot-border-radius | ` 7px` |
+| --nutui-badge-dot-padding | ` 0px` |

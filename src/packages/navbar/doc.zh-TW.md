@@ -8,7 +8,9 @@
 ### 安裝
 
 ```ts
+// react
 import { NavBar } from '@nutui/nutui-react';
+
 ```
 
 ### 代碼示例
@@ -179,3 +181,24 @@ export default App;
 | onClickRight | 點擊右側事件 | event:Event |
 | onClickBack | 點擊返回事件 | event:Event |
 | onClickIcon | 點擊標題右側icon事件 | event:Event |
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-navbar-height | ` 44px` |
+| --nutui-navbar-margin-bottom | ` 20px` |
+| --nutui-navbar-padding | ` 13px 16px` |
+| --nutui-navbar-background | ` $white` |
+| --nutui-navbar-box-shadow | `  0px 1px 7px 0px rgba(237, 238, 241, 1)` |
+| --nutui-navbar-color | ` $gray1` |
+| --nutui-navbar-title-base-font | `  $font-size-2` |
+| --nutui-navbar-title-font | ` $font-size-2` |
+| --nutui-navbar-title-font-weight | ` 0` |
+| --nutui-navbar-title-font-color | `  $navbar-color` |
+| --nutui-navbar-title-width | ` 100px` |
+| --nutui-navbar-title-icon-margin | `  0 0 0 13px` |

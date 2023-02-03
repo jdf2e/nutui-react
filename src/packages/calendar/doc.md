@@ -7,7 +7,9 @@
 ### 安装
 
 ```javascript
+// react
 import { Calendar } from '@nutui/nutui-react';
+
 ```
 
 ## 代码演示
@@ -460,3 +462,30 @@ export default App;
 |-------------------|-----------------|
 | day   | string、number           |
 | type   | string          |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-calendar-primary-color | `  $primary-color` |
+| --nutui-calendar-choose-color | `  rgba(#fa2c19, 0.09)` |
+| --nutui-calendar-choose-font-color | `  $primary-color` |
+| --nutui-calendar-base-color | ` #333333` |
+| --nutui-calendar-disable-color | ` #d1d0d0` |
+| --nutui-calendar-base-font | ` $font-size-3` |
+| --nutui-calendar-title-font | ` $font-size-4` |
+| --nutui-calendar-title-font-weight | `  500` |
+| --nutui-calendar-sub-title-font | `  $font-size-2` |
+| --nutui-calendar-text-font | ` $font-size-1` |
+| --nutui-calendar-day-font | ` 16px` |
+| --nutui-calendar-day-active-border-radius | `  0px` |
+| --nutui-calendar-day-height | ` 64px` |
+| --nutui-calendar-day-font-weight | ` 500` |
+| --nutui-calendar-day67-font-color | `  $primary-color` |
+| --nutui-calendar-top-slot-height | ` 24px` |
+| --nutui-calendar-month-title-font-size | `  inherit` |

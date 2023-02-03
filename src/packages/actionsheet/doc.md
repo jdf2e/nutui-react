@@ -7,7 +7,9 @@
 ### 安装
 
 ```ts
+// react
 import { ActionSheet } from '@nutui/nutui-react';
+
 ```
 ## 代码示例
 
@@ -227,3 +229,19 @@ export default App;
 |--------|--------------------|-----------------------------------|
 | onChoose`v1.3.2` | 选择之后触发       | 选中列表项item, 选中的索引值index |
 | onCancel`v1.3.2` | 点击取消文案时触发 | 无                                |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-actionsheet-light-color | `  #f6f6f6` |
+| --nutui-actionsheet-item-border-bottom | `  none` |
+| --nutui-actionsheet-item-font-size | `  $font-size-2` |
+| --nutui-actionsheet-item-subdesc-font-size | `  $font-size-1` |
+| --nutui-actionsheet-item-cancel-border-top | `  1px solid $actionsheet-light-color` |
+| --nutui-actionsheet-item-line-height | `  24px` |
+| --nutui-actionsheet-item-font-color | `  $title-color` |

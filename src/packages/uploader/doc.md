@@ -382,3 +382,16 @@ export default App;
 | removeImage  `v1.3.4废弃` | 文件删除之前的状态     | files,fileList       |
 | onFileItemClick `v1.3.4`   | 文件上传成功后点击触发     | fileItem       |
 
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-uploader-picture-width | ` 100px` |
+| --nutui-uploader-picture-height | ` 100px` |
+| --nutui-uploader-background | ` $gray4` |

@@ -7,7 +7,9 @@ Calendar, tileable/pop-up display
 ### Install
 
 ```javascript
+// react
 import { Calendar } from '@nutui/nutui-react';
+
 ```
 
 ## code demo
@@ -460,3 +462,30 @@ export default App;
 |-------------------|-----------------|
 | day   | string、number           |
 | type   | string          |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-calendar-primary-color | `  $primary-color` |
+| --nutui-calendar-choose-color | `  rgba(#fa2c19, 0.09)` |
+| --nutui-calendar-choose-font-color | `  $primary-color` |
+| --nutui-calendar-base-color | ` #333333` |
+| --nutui-calendar-disable-color | ` #d1d0d0` |
+| --nutui-calendar-base-font | ` $font-size-3` |
+| --nutui-calendar-title-font | ` $font-size-4` |
+| --nutui-calendar-title-font-weight | `  500` |
+| --nutui-calendar-sub-title-font | `  $font-size-2` |
+| --nutui-calendar-text-font | ` $font-size-1` |
+| --nutui-calendar-day-font | ` 16px` |
+| --nutui-calendar-day-active-border-radius | `  0px` |
+| --nutui-calendar-day-height | ` 64px` |
+| --nutui-calendar-day-font-weight | ` 500` |
+| --nutui-calendar-day67-font-color | `  $primary-color` |
+| --nutui-calendar-top-slot-height | ` 24px` |
+| --nutui-calendar-month-title-font-size | `  inherit` |

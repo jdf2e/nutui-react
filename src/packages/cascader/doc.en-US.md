@@ -6,8 +6,10 @@ The cascader component is used for the selection of multi-level data. The typica
 
 ### Install
 
-```js
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+```ts
+// react
+import { Cascader } from '@nutui/nutui-react';
+
 ```
 
 ## Demo
@@ -17,7 +19,7 @@ Pass in the `options` list.
 :::demo
 ```jsx
 import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo1, setIsVisibleDemo1] = useState(false)
@@ -126,7 +128,7 @@ use `textKey`、`valueKey`、`childrenKey`Specify the property name.
 :::demo
 ```jsx
 import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo2, setIsVisibleDemo2] = useState(false)
@@ -238,7 +240,7 @@ Use `lazy` to identify whether data needs to be obtained dynamically. At this ti
 :::demo
 ```jsx
 import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo3, setIsVisibleDemo3] = useState(false)
@@ -306,7 +308,7 @@ export default App;
 :::demo
 ```jsx
 import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo4, setIsVisibleDemo4] = useState(false)
@@ -379,7 +381,7 @@ If your data is a flat structure that can be converted into a tree structure, yo
 :::demo
 ```jsx
 import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo5, setIsVisibleDemo5] = useState(false)
@@ -432,6 +434,116 @@ export default App;
 ```
 :::
 
+### Customize selected color
+
+Pass in `activeColor` to specify the selected color.
+:::demo
+```jsx
+import  React from "react";
+import { Cell, Cascader } from '@nutui/nutui-react';
+
+const App = () => {
+  const [isVisibleDemo6, setIsVisibleDemo6] = useState(false)
+  const [value6, setValue6] = useState([])
+  const [optionsDemo6, setOptionsDemo6] = useState([
+    {
+      value: '浙江',
+      text: '浙江',
+      children: [
+        {
+          value: '杭州',
+          text: '杭州',
+          disabled: true,
+          children: [
+            { value: '西湖区', text: '西湖区', disabled: true },
+            { value: '余杭区', text: '余杭区' },
+          ],
+        },
+        {
+          value: '温州',
+          text: '温州',
+          children: [
+            { value: '鹿城区', text: '鹿城区' },
+            { value: '瓯海区', text: '瓯海区' },
+          ],
+        },
+      ],
+    },
+    {
+      value: '湖南',
+      text: '湖南',
+      disabled: true,
+      children: [
+        {
+          value: '长沙',
+          text: '长沙',
+          disabled: true,
+          children: [
+            { value: '西湖区', text: '西湖区' },
+            { value: '余杭区', text: '余杭区' },
+          ],
+        },
+        {
+          value: '温州',
+          text: '温州',
+          children: [
+            { value: '鹿城区', text: '鹿城区' },
+            { value: '瓯海区', text: '瓯海区' },
+          ],
+        },
+      ],
+    },
+    {
+      value: '福建',
+      text: '福建',
+      children: [
+        {
+          value: '福州',
+          text: '福州',
+          children: [
+            { value: '鼓楼区', text: '鼓楼区' },
+            { value: '台江区', text: '台江区' },
+          ],
+        },
+      ],
+    },
+  ])
+  const change6 = (value: any, path: any) => {
+    console.log('onChange', value, path)
+    setValue6(value)
+  }
+  const onPathChange = (value: any, path: any) => {
+    console.log('onPathChange', value, path)
+  }
+
+  return (
+    <>
+    <Cell
+      title="选择地址"
+      desc={value6 || '请选择地址'}
+      onClick={()=>{
+        setIsVisibleDemo6(true)
+      }}
+     />
+    <Cascader
+      visible={isVisibleDemo6}
+      color="#008000"
+      tabsColor="#008000"
+      value={value6}
+      title="地址选择"
+      options={optionsDemo6}
+      closeable
+      onClose={()=>{setIsVisibleDemo1(false)}}
+      onChange={change6}
+      onPathChange={onPathChange}
+    />
+    </>
+  );
+};
+export default App;
+```
+:::
+
 ## API
 
 ### Props
@@ -442,6 +554,8 @@ export default App;
 | options       | Cascade data                                  | Array    | -      |
 | poppable      | Whether to display the pop-up window status   | Boolean  | true   |
 | visible       | Cascading show hidden states                  | Boolean  | false  |
+| activeColor`1.3.13` | Check the active color                  | String  | -  |
+| tabsColor`1.3.13` | Check the active color at the bottom of tabs  | String  | -  |
 | lazy          | Whether to enable dynamic loading             | Boolean  | false  |
 | lazyLoad      | Dynamic loading callback, which takes effect when dynamic loading is enabled   | Function | -      |
 | valueKey      | Customize the field of `value` in the `options` structure     | String   | -      |
@@ -459,3 +573,28 @@ export default App;
 | ---------- | ---------------- | ------------------ |
 | onChange     | Triggered when the selected value changes | (value, pathNodes) |
 | onPathChange | Triggered when the selected item changes | (pathNodes)        |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-cascader-font-size | ` $font-size-2` |
+| --nutui-cascader-line-height | ` 22px` |
+| --nutui-cascader-title-padding | `  24px 20px 17px` |
+| --nutui-cascader-title-font-size | ` 18px` |
+| --nutui-cascader-title-line-height | `  20px` |
+| --nutui-cascader-pane-height | ` 342px` |
+| --nutui-cascader-tabs-item-padding | `  0 10px` |
+| --nutui-cascader-bar-padding | `  24px 20px 17px` |
+| --nutui-cascader-bar-font-size | `  $font-size-4` |
+| --nutui-cascader-bar-line-height | ` 20px` |
+| --nutui-cascader-bar-color | ` $title-color` |
+| --nutui-cascader-item-padding | ` 10px 20px` |
+| --nutui-cascader-item-color | ` $title-color` |
+| --nutui-cascader-item-font-size | `  $font-size-2` |
+| --nutui-cascader-item-active-color | `  $primary-color` |

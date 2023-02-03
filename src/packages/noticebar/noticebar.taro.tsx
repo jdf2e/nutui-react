@@ -5,6 +5,7 @@ import React, {
   FunctionComponent,
   MouseEvent,
   CSSProperties,
+  useMemo,
 } from 'react'
 
 import classNames from 'classnames'
@@ -12,9 +13,9 @@ import Icon from '@/packages/icon/index.taro'
 import bem from '@/utils/bem'
 import { getRectByTaro } from '../../utils/useClientRect'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface NoticeBarProps extends IComponent {
+export interface NoticeBarProps extends BasicComponent {
   // 滚动方向  across 横向 vertical 纵向
   direction: string
   className?: string
@@ -33,10 +34,11 @@ export interface NoticeBarProps extends IComponent {
   scrollable: boolean | null
   speed: number
   rightIcon?: HTMLElement | any
-  close?: (list?: any) => void
-  click?: (item?: any) => void
-  onClose?: (list?: any) => void
-  onClick?: (item?: any) => void
+  close?: (event: any) => void
+  click?: (event: any) => void
+  onClose?: (event: any) => void
+  onClick?: (event: any) => void
+  onClickItem?: (event: any, value: any) => void
 }
 
 const defaultProps = {
@@ -84,6 +86,7 @@ export const NoticeBar: FunctionComponent<
     click,
     onClose,
     onClick,
+    onClickItem,
     iconClassPrefix,
     iconFontClassName,
   } = {
@@ -105,19 +108,67 @@ export const NoticeBar: FunctionComponent<
   const [timer, SetTimer] = useState(0)
   const [isCanScroll, SetIsCanScroll] = useState<null | boolean>(null)
 
+  const isVertical = direction === 'vertical'
+  const [rect, setRect] = useState(null as any | null)
+  let active = 0
+  const [vLeftIcon, setLeftIcon] = useState('')
+  const [ready, setReady] = useState(false)
+  const container = useRef<any>(null)
+  const innerRef = useRef<any>(null)
+  const _swiper = useRef<any>({
+    moving: false,
+    autoplayTimer: null,
+    width: 0,
+    height: 0,
+    offset: 0,
+    size: 0,
+  })
+
+  const [childOffset, setChildOffset] = useState<any[]>([])
+  const [offset, setOffset] = useState(0)
+
+  const { childs, childCount } = useMemo(() => {
+    let childCount = 0
+    const childs: any = React.Children.map(children, (child) => {
+      if (!React.isValidElement(child)) return null
+      childCount++
+      return child
+    })
+    return {
+      childs,
+      childCount,
+    }
+  }, [children])
+
+  let trackSize = childCount * Number(height)
+
+  const minOffset = (() => {
+    if (rect) {
+      const base = isVertical ? rect.height : rect.width
+      return base - Number(height) * childCount
+    }
+    return 0
+  })()
+
   useEffect(() => {
-    if (direction === 'vertical') {
+    if (isVertical) {
+      // 兼容老版本无左侧Icon问题
+      if (leftIcon !== '') {
+        setLeftIcon(leftIcon)
+      } else {
+        setLeftIcon('close')
+      }
       if (children) {
-        const arr: string[] | any = []
-        React.Children.map(children, (child) => {
-          arr.push((child as any).props.children)
-        })
-        scrollList.current = [].concat(arr)
+        scrollList.current = [].concat(childs)
       } else {
         scrollList.current = [].concat(list)
+        // startRollEasy()
+        setTimeout(() => {
+          startRollEasy()
+        }, Number(standTime))
       }
       setTimeout(() => {
-        complexAm ? startRoll() : startRollEasy()
+        complexAm && startRoll()
       }, Number(standTime))
     } else {
       initScrollWrap(text)
@@ -129,18 +180,6 @@ export const NoticeBar: FunctionComponent<
       startRollEasy()
     }
   }, [])
-
-  const cloneChild = (listItem: string, listIndex: number) => {
-    return React.Children.map(children, function (child: any, index: number) {
-      if (child && index === listIndex) {
-        return React.cloneElement(child, {
-          key: listIndex,
-          children: listItem,
-        })
-      }
-      return null
-    })
-  }
 
   useEffect(() => {
     initScrollWrap(text)
@@ -201,23 +240,31 @@ export const NoticeBar: FunctionComponent<
    */
   const startRollEasy = () => {
     showhorseLamp()
-    const timerCurr = setInterval(
+    const time =
+      height / speed / 4 < 1
+        ? Number((height / speed / 4).toFixed(1)) * 1000
+        : ~~(height / speed / 4) * 1000
+    const timerCurr = window.setInterval(
       showhorseLamp,
-      ~~(height / speed / 4) * 1000 + Number(standTime)
+      time + Number(standTime)
     )
     SetTimer(timerCurr)
   }
   const showhorseLamp = () => {
     SetAnimate(true)
+    const time =
+      height / speed / 4 < 1
+        ? Number((height / speed / 4).toFixed(1)) * 1000
+        : ~~(height / speed / 4) * 1000
     setTimeout(() => {
       scrollList.current.push(scrollList.current[0])
       scrollList.current.shift()
       SetAnimate(false)
-    }, ~~(height / speed / 4) * 1000)
+    }, time)
   }
 
   const startRoll = () => {
-    const timerCurr = setInterval(() => {
+    const timerCurr = window.setInterval(() => {
       const chunk = 100
       for (let i = 0; i < chunk; i++) {
         scroll(i, !(i < chunk - 1))
@@ -251,7 +298,7 @@ export const NoticeBar: FunctionComponent<
   }
 
   const iconShow = () => {
-    if (leftIcon === 'close') {
+    if (leftIcon === 'close' || vLeftIcon === 'close') {
       return false
     }
     return true
@@ -280,14 +327,19 @@ export const NoticeBar: FunctionComponent<
   const barStyle = {
     color,
     background,
-    height: direction === 'vertical' ? `${height}px` : '',
+    height: isVertical ? `${height}px` : '',
   }
 
-  const duringTime = ~~(height / speed / 4)
+  const duringTime =
+    height / speed / 4 < 1
+      ? Number((height / speed / 4).toFixed(1))
+      : ~~(height / speed / 4)
+  const noDuring =
+    height / speed < 1 ? (height / speed).toFixed(1) : ~~(height / speed)
   const horseLampStyle = {
     transform: complexAm ? `translateY(${distance}px)` : '',
     transition: animate
-      ? `all ${duringTime === 0 ? ~~(height / speed) : duringTime}s`
+      ? `all ${duringTime === 0 ? noDuring : duringTime}s`
       : '',
     marginTop: animate ? `-${height}px` : '',
   }
@@ -300,6 +352,173 @@ export const NoticeBar: FunctionComponent<
     wrapable,
   })
 
+  /**
+   * 垂直自定义滚动方式
+   */
+
+  const init = (active = +0) => {
+    if (!container?.current) return
+    setTimeout(async () => {
+      const rects = await getRectByTaro(container?.current)
+      const _active = Math.max(Math.min(childCount - 1, active), 0)
+      const _height = rects.height
+      trackSize = childCount * Number(_height)
+      const targetOffset = getOffset(_active)
+      _swiper.current.moving = true
+      if (ready) {
+        _swiper.current.moving = false
+      }
+      active = _active
+      setRect(rects)
+      setOffset(targetOffset)
+      setReady(true)
+    }, 0)
+  }
+
+  useEffect(() => {
+    if (ready) {
+      stopAutoPlay()
+      autoplay()
+    }
+    return () => {
+      setReady(false)
+    }
+  }, [ready])
+
+  useEffect(() => {
+    if (isVertical && children) {
+      setTimeout(() => {
+        init()
+        stopAutoPlay()
+        autoplay()
+      }, 300)
+    }
+  }, [children, container?.current])
+
+  // 清除定时器
+  const stopAutoPlay = () => {
+    clearTimeout(_swiper.current.autoplayTimer)
+    _swiper.current.autoplayTimer = null
+  }
+  // 定时轮播
+  const autoplay = () => {
+    if (childCount <= 1) return
+    stopAutoPlay()
+    _swiper.current.autoplayTimer = setTimeout(() => {
+      next()
+      autoplay()
+    }, Number(standTime) + 100 * speed)
+  }
+
+  // 切换方法
+  const move = ({ pace = 0, offset = 0 }) => {
+    if (childCount <= 1) return
+    const targetActive = getActive(pace)
+    // 父级容器偏移量
+    const targetOffset = getOffset(targetActive, offset)
+    // 如果循环，调整开头结尾图片位置
+
+    if (Array.isArray(children) && children[0] && targetOffset !== minOffset) {
+      const rightBound = targetOffset < minOffset
+      childOffset[0] = rightBound ? trackSize : 0
+    }
+    if (
+      Array.isArray(children) &&
+      children[childCount - 1] &&
+      targetOffset !== 0
+    ) {
+      const leftBound = targetOffset > 0
+      childOffset[childCount - 1] = leftBound ? -trackSize : 0
+    }
+    setChildOffset(childOffset)
+    active = targetActive
+    setOffset(targetOffset)
+    getStyle(targetOffset)
+  }
+
+  // 下一页
+  const next = () => {
+    resettPosition()
+    requestFrame(() => {
+      requestFrame(() => {
+        _swiper.current.moving = false
+        move({
+          pace: 1,
+        })
+      })
+    })
+  }
+  const handleItemClick = (event: MouseEvent, value: any) => {
+    onClickItem && onClickItem(event, value)
+  }
+
+  const getStyle = (moveOffset = offset) => {
+    const target = innerRef.current
+
+    let _offset = 0
+
+    // 容器高度-元素高度
+    const val = rect.height - height
+    _offset = moveOffset + Number(active === childCount - 1 && val / 2)
+
+    target.style.transitionDuration = `${
+      _swiper.current.moving ? 0 : standTime
+    }ms`
+    target.style.height = `${Number(height) * childCount}px`
+    target.style.transform = `translate3D(0,${_offset}px,0)`
+  }
+  // 无缝滚动第一个元素位移控制
+  const itemStyle = (index: any) => {
+    const style: any = {}
+    if (height) {
+      style.height = `${height}px`
+      style.lineHeight = `${height}px`
+    }
+    const offset = childOffset[index]
+    if (offset) {
+      style.transform = `translate3D(0,${offset}px,0)`
+    }
+    return style
+  }
+
+  // 确定当前active 元素
+  const getActive = (pace: number) => {
+    if (pace) {
+      const _active = active + pace
+
+      return range(_active, -1, childCount)
+    }
+    return active
+  }
+  // 计算位移
+  const getOffset = (active: number, offset = 0) => {
+    const currentPosition: any = active * Number(height)
+    const targetOffset: any = offset - currentPosition
+    return targetOffset
+  }
+  // 浏览器 帧 事件
+  const requestFrame = (fn: FrameRequestCallback) => {
+    window.requestAnimationFrame.call(window, fn)
+  }
+  // 取值 方法
+  const range = (num: number, min: number, max: number) => {
+    return Math.min(Math.max(num, min), max)
+  }
+  // 重置首尾位置信息
+  const resettPosition = () => {
+    _swiper.current.moving = true
+    if (active <= -1) {
+      move({ pace: childCount })
+    }
+    if (active >= childCount) {
+      move({ pace: -childCount })
+    }
+  }
+  useEffect(() => {
+    return () => {
+      stopAutoPlay()
+    }
+  }, [])
   return (
     <div className={`${b()} ${className || ''}`} style={style}>
       {showNoticeBar && direction === 'across' ? (
@@ -345,35 +564,66 @@ export const NoticeBar: FunctionComponent<
           ) : null}
         </div>
       ) : null}
-      {showNoticeBar &&
-      scrollList.current.length > 0 &&
-      direction === 'vertical' ? (
+      {showNoticeBar && scrollList.current.length > 0 && isVertical ? (
         <div
           className="nut-noticebar-vertical"
           style={barStyle}
+          ref={container}
           onClick={handleClick}
         >
-          {children ? (
-            <div className="horseLamp_list" style={horseLampStyle}>
-              {scrollList.current.map((item: string, index: number) => {
-                return cloneChild(item, index)
-              })}
+          {iconShow() ? (
+            <div
+              className="left-icon"
+              style={{ backgroundImage: `url(${iconBg() || ''})` }}
+            >
+              {!iconBg() ? (
+                <Icon
+                  classPrefix={iconClassPrefix}
+                  fontClassName={iconFontClassName}
+                  name="notice"
+                  size="16"
+                  color={color}
+                />
+              ) : null}
             </div>
+          ) : null}
+          {children ? (
+            <>
+              <div className="nut-noticebar__inner" ref={innerRef}>
+                {scrollList.current.map((item: string, index: number) => {
+                  return (
+                    <div
+                      className="scroll-inner "
+                      style={itemStyle(index)}
+                      key={index}
+                      onClick={(e) => {
+                        handleItemClick(e, item)
+                      }}
+                    >
+                      {item}
+                    </div>
+                  )
+                })}
+              </div>
+            </>
           ) : (
-            <ul className="horseLamp_list" style={horseLampStyle}>
+            <div className="horseLamp_list" style={horseLampStyle}>
               {scrollList.current.map((item: string, index: number) => {
                 return (
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-                  <li
+                  <div
                     className="horseLamp_list_item"
                     style={{ height }}
                     key={index}
+                    onClick={(e) => {
+                      handleItemClick(e, item)
+                    }}
                   >
                     {item}
-                  </li>
+                  </div>
                 )
               })}
-            </ul>
+            </div>
           )}
           <div
             className="go"

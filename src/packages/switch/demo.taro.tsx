@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Switch, Cell } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 const SwitchDemo = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
@@ -17,7 +19,8 @@ const SwitchDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>基础用法</h2>
         <Cell>
           <Switch checked />

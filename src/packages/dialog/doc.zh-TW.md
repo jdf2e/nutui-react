@@ -7,8 +7,10 @@
 
 ### 安裝
 
-```js
+```ts
+// react
 import { Dialog } from '@nutui/nutui-react'
+
 ```
 
 
@@ -130,3 +132,31 @@ export default App;
 | onCancel  | 取消按鈕回調 | () => void |
 | onClosed  | 關閉回調，任何情況關閉彈窗都會觸發 | () => void |
 | onClickSelf  | 點擊自身回調 | () => void |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-dialog-width | ` 296px` |
+| --nutui-dialog-header-font-weight | `  normal` |
+| --nutui-dialog-header-color | `  rgba(38, 38, 38, 1)` |
+| --nutui-dialog-footer-justify-content | `  space-around` |
+| --nutui-dialog-min-height | ` 156px` |
+| --nutui-dialog-padding | ` 28px 24px 16px 24px` |
+| --nutui-dialog-header-height | ` 20px` |
+| --nutui-dialog-content-margin | ` 20px 0` |
+| --nutui-dialog-content-max-height | `  268px` |
+| --nutui-dialog-content-line-height | `  16px` |
+| --nutui-dialog-mask-z-index | ` $mask-z-index` |
+| --nutui-dialog-mask-background-color | `  $mask-color` |
+| --nutui-dialog-outer-z-index | `  $mask-content-z-index` |
+| --nutui-dialog-outer-bordder-radius | `  20px` |
+| --nutui-dialog-vertical-footer-ok-margin-top | `  10px` |
+| --nutui-dialog-footer-button-min-width | `  100px` |
+| --nutui-dialog-footer-cancel-margin-right | `  20px` |
+| --nutui-dialog-footer-ok-max-width | `  128px` |

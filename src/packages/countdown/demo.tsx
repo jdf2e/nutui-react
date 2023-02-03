@@ -117,7 +117,7 @@ const CountDownDemo = () => {
   }
 
   useEffect(() => {
-    stateRef.current.timer = setTimeout(() => {
+    stateRef.current.timer = window.setTimeout(() => {
       setAsyncEnd(Date.now() + 30 * 1000)
     }, 3000)
     return () => {
@@ -253,7 +253,7 @@ const CountDownDemo = () => {
             ref={countDownRef}
           />
         </Cell>
-        <Grid columnNum="3">
+        <Grid columnNum="3" style={{ marginBottom: '5px' }}>
           <GridItem>
             <Button type="primary" onClick={start}>
               {translated.start}

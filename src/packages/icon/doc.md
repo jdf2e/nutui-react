@@ -7,7 +7,9 @@
 ### 安装
 
 ``` javascript
+// react
 import { Icon } from '@nutui/nutui-react';
+
 ```
 
 ## 代码演示
@@ -163,3 +165,16 @@ export default App;
 | 事件名           | 说明           | 回调参数     |
 |---------------|----------------|--------------|
 | onClick`v1.3.8` | 点击图标时触发 | event: Event |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-icon-height | ` 20px` |
+| --nutui-icon-width | ` 20px` |
+| --nutui-icon-line-height | ` 20px` |

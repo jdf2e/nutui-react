@@ -63,18 +63,16 @@ export const TextArea: FunctionComponent<
   const [inputValue, SetInputValue] = useState('')
 
   useEffect(() => {
-    if (defaultValue) {
-      let initValue = defaultValue
-      if (maxlength && initValue.length > Number(maxlength)) {
-        initValue = initValue.substring(0, Number(maxlength))
-      }
-      SetInputValue(initValue)
+    let initValue = defaultValue
+    if (initValue && maxlength && [...initValue].length > Number(maxlength)) {
+      initValue = initValue.substring(0, Number(maxlength))
     }
+    SetInputValue(initValue)
   }, [defaultValue])
 
   const textChange = (event: any) => {
-    const text = event.detail as any
-    if (maxlength && text.value.length > Number(maxlength)) {
+    const text = event.detail ? (event.detail as any) : (event.target as any)
+    if (maxlength && [...text.value].length > Number(maxlength)) {
       text.value = text.value.substring(0, Number(maxlength))
     }
     SetInputValue(text.value)
@@ -90,7 +88,7 @@ export const TextArea: FunctionComponent<
   const textBlur = (event: any) => {
     if (disabled) return
     if (readonly) return
-    const text = event.detail as any
+    const text = event.detail ? (event.detail as any) : (event.target as any)
     onChange && onChange(text.value, event)
     onBlur && onBlur(event)
   }
@@ -129,7 +127,7 @@ export const TextArea: FunctionComponent<
       />
       {limitshow ? (
         <div className={textareaBem('limit')}>
-          {inputValue.length}/{maxlength < 0 ? 0 : maxlength}
+          {[...inputValue].length}/{maxlength < 0 ? 0 : maxlength}
         </div>
       ) : null}
     </div>
