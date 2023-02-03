@@ -165,6 +165,55 @@ export default App;
 ```
 :::
 
+### Image LazyLoad
+
+The Image component provides lazy loading of images, which can be realized by configuring `isLazy`, which is not enabled by default.
+
+:::demo
+```tsx
+import React from "react";
+import { Image,Cell } from '@nutui/nutui-react';
+
+const App = () => {
+const src =
+    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+const imageData = [1, 2, 3, 4, 5, 6]
+const placeholderImg = 'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'
+const style = `
+  .lazy-box{
+    width:100%
+  }
+  .lazy-box .nut-image{
+    margin-bottom: 10px;
+  }
+`
+  return <>
+  <style>{style}</style>
+    <Cell>
+        <div className="lazy-box">
+        {imageData.map((item) => {
+            return (
+            <Image
+                key={item}
+                height="150"
+                src={src}
+                isLazy
+                showError
+                showLoading
+                loadingImg={placeholderImg}
+                errorImg={placeholderImg}
+            />
+            )
+        })}
+        </div>
+    </Cell>
+  </>
+}
+export default App;
+
+```
+:::
+
 ## API
 
 ### Props
@@ -181,6 +230,9 @@ export default App;
 | radius         | Border Raduis                | String \| Numer | -                |
 | showError         | Whether to show error placeholder| Boolean | true              |
 | showLoading         | Whether to show loading placeholder               | Boolean | true              |
+| isLazy `v1.4.6`  |  Whether to show image lazyload               | Boolean | false              |
+| loadingImg `v1.4.6`    | Set the prompt image during loading, which conflicts with `slotLoding` and has a higher priority than `slotLoding`     | String | -              |
+| errorImg   `v1.4.6`    | Set the error prompt image, which conflicts with `slotError` and has a higher priority than `slotError`         | String | -              |
 
 ### ImageFit 
 
