@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect } from 'react'
+import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import Icon from '@/packages/icon'
 
@@ -82,9 +82,11 @@ export const Image: FunctionComponent<
   } = { ...defaultProps, ...props }
   const [loading, setLoading] = useState(true)
   const [isError, setIsError] = useState(false)
+  const [_src, setSrc] = useState('')
 
   useEffect(() => {
     if (src) {
+      setSrc(src)
       setIsError(false)
       setLoading(true)
     }
@@ -120,7 +122,7 @@ export const Image: FunctionComponent<
   }
 
   // 图片懒加载
-  let observer: any = null // 监听保存
+  const observer: any = useRef(null)
   const initObserver = () => {
     const imgs = document.querySelectorAll('.nut-img.lazyload')
     const options = {
@@ -128,7 +130,7 @@ export const Image: FunctionComponent<
       rootMargin: '0px', // 对视口进行收缩和扩张
     }
     // 监听dom是否在视口内
-    observer = new IntersectionObserver((entires, self) => {
+    observer.current = new IntersectionObserver((entires, self) => {
       // entires为监听的节点数组对象
       entires.forEach((item) => {
         // isIntersecting是当前监听元素交叉区域是否在可视区域指定的阈值内返回的是一个布尔值
@@ -140,27 +142,26 @@ export const Image: FunctionComponent<
               img.removeAttribute('data-src')
             }
             // 资源加载后停止监听
-            observer.unobserve(item.target)
+            observer.current.unobserve(item.target)
           }, 300)
         }
       })
     }, options)
     imgs.forEach((item) => {
-      observer.observe(item)
+      observer.current.observe(item)
     })
   }
 
   // 使用disconnect将取消的Observer实例中的所有监听
   const resetObserver = () => {
-    observer.disconnect && observer.disconnect()
+    observer.current.disconnect && observer.current.disconnect()
   }
 
   useEffect(() => {
-    if (isLazy) {
-      initObserver()
-    }
+    isLazy && initObserver()
+
     return () => {
-      resetObserver()
+      isLazy && resetObserver()
     }
   }, [isLazy])
 
@@ -189,7 +190,7 @@ export const Image: FunctionComponent<
         <img
           className="nut-img lazyload"
           style={styles}
-          data-src={src}
+          data-src={_src}
           alt={alt}
           loading="lazy"
           onLoad={load}
@@ -199,7 +200,7 @@ export const Image: FunctionComponent<
         <img
           className="nut-img"
           style={styles}
-          src={src}
+          src={_src}
           alt={alt}
           onLoad={load}
           onError={error}
