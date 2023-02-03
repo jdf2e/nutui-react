@@ -265,3 +265,25 @@ Non accordion mode：(string | number)[] | - |
 |--------|----------------|--------------|
 | change`abandon`  | Triggered when the panel is switched | isOpen:Whether it is open status；name：Name value currently clicked |
 | onChange`v1.3.8`  | Triggered when the panel is switched | isOpen:Whether it is open status；name：Name value currently clicked |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-collapse-item-padding | `  13px 36px 13px 26px` |
+| --nutui-collapse-item-color | ` #666666` |
+| --nutui-collapse-item-disabled-color | `  #c8c9cc` |
+| --nutui-collapse-item-icon-color | `  #666666` |
+| --nutui-collapse-item-font-size | `  $font-size-2` |
+| --nutui-collapse-item-line-height | `  24px` |
+| --nutui-collapse-item-sub-title-color | `  #666666` |
+| --nutui-collapse-wrapper-content-padding | `  12px 26px` |
+| --nutui-collapse-wrapper-empty-content-padding | `  0 26px` |
+| --nutui-collapse-wrapper-content-color | `  #666666` |
+| --nutui-collapse-wrapper-content-font-size | `  $font-size-2` |
+| --nutui-collapse-wrapper-content-line-height | `  1.5` |
+| --nutui-collapse-wrapper-content-background-color | `  $white` |

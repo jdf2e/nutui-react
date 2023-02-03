@@ -87,6 +87,7 @@ const subPackages = [
       'pages/table/index',
       'pages/tag/index',
       'pages/trendarrow/index',
+      'pages/virtuallist/index',
       'pages/watermark/index',
     ],
   },

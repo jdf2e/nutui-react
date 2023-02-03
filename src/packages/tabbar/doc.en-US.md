@@ -194,3 +194,22 @@ export default App;
 | Event               | Description               | callback parameter           |
 |---------------------|--------------------|--------------------|
 | onSwitch`v1.3.8`    | Trigger an event when switching tabs | Clicked data and index value |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-tabbar-active-color | ` $primary-color` |
+| --nutui-tabbar-unactive-color | `  $primary-color` |
+| --nutui-tabbar-border-top | ` 1px solid #eee` |
+| --nutui-tabbar-border-bottom | `  1px solid #eee` |
+| --nutui-tabbar-box-shadow | ` none` |
+| --nutui-tabbar-item-text-font-size | `  $font-size-0` |
+| --nutui-tabbar-item-text-line-height | `  initial` |
+| --nutui-tabbar-height | ` 50px` |
+| --nutui-tabbar-word-margin-top | ` auto` |

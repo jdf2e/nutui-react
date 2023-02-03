@@ -184,3 +184,25 @@ export default App;
 | onClickLeftoutIcon |	点击输入框`外左侧`图标时触发 |	_val: string, event: Event_ |
 | onClickRightinIcon |	点击输入框`内右侧`图标时触发 |	_val: string, event: Event_ |
 | onClickRightoutIcon |	点击输入框`外右侧`图标时触发 |	_val: string, event: Event_ |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-searchbar-background | ` $gray6` |
+| --nutui-searchbar-right-out-color | `  $black` |
+| --nutui-searchbar-padding | ` 9px 16px` |
+| --nutui-searchbar-action-text-color | `  $gray1` |
+| --nutui-searchbar-input-height | ` 32px` |
+| --nutui-searchbar-input-padding | ` 0 28px` |
+| --nutui-searchbar-input-background | `  #f7f7f7` |
+| --nutui-searchbar-input-text-color | `  $gray1` |
+| --nutui-searchbar-input-border-radius | `  16px` |
+| --nutui-searchbar-input-box-shadow | `  0 0 8px 0 rgba(0, 0, 0, 0.04)` |
+| --nutui-searchbar-input-bar-color | `  inherit` |
+| --nutui-searchbar-input-bar-placeholder-color | `  inherit` |

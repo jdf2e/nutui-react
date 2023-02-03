@@ -214,9 +214,9 @@ const App = () => {
               })}
             </Switch>
           </div>
-          <div className="markdown-body">
-            <DemoPreview className={`${fixed ? 'fixed' : ''}`}></DemoPreview>
-          </div>
+          {/*<div className="markdown-body">*/}
+          <DemoPreview className={`${fixed ? 'fixed' : ''}`}></DemoPreview>
+          {/*</div>*/}
         </div>
       </HashRouter>
     </div>
