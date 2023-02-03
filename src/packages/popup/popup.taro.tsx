@@ -11,6 +11,7 @@ import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
+import { ITouchEvent } from '@tarojs/components'
 import {
   OverlayProps,
   defaultOverlayProps,
@@ -19,7 +20,6 @@ import Icon from '@/packages/icon/index.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import bem from '@/utils/bem'
 import { ComponentDefaults, BasicComponent } from '@/utils/typings'
-import { ITouchEvent } from '@tarojs/components'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
@@ -65,7 +65,7 @@ const defaultProps = {
   ...defaultOverlayProps,
 } as PopupProps
 
-let _zIndex = 1000
+let _zIndex = 2000
 
 export const Popup: FunctionComponent<
   Partial<PopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
