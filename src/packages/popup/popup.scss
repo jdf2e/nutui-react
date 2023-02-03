@@ -6,18 +6,25 @@
     background: $dark6;
   }
 
-  .nutui-popup {
+  .nut-popup {
     &__close-icon {
       color: $dark1;
     }
   }
 
-  .popup-slide-center-enter-done {
+  .nut-popup-slide-center-enter-done {
     color: $dark1;
   }
 }
 
-.nutui-popup {
+.nut-popup {
+  position: fixed;
+  max-height: 100%;
+  overflow-y: auto;
+  background-color: $white;
+  color: $gray1;
+  -webkit-overflow-scrolling: touch;
+
   &__close-icon {
     position: absolute !important;
     z-index: 1;
@@ -55,7 +62,7 @@
   }
 }
 
-.popup-center {
+.nut-popup-center {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -65,7 +72,7 @@
   }
 }
 
-.popup-bottom {
+.nut-popup-bottom {
   bottom: 0;
   left: 0;
   width: 100%;
@@ -75,7 +82,7 @@
   }
 }
 
-.popup-right {
+.nut-popup-right {
   top: 0;
   right: 0;
 
@@ -84,7 +91,7 @@
   }
 }
 
-.popup-left {
+.nut-popup-left {
   top: 0;
   left: 0;
 
@@ -93,7 +100,7 @@
   }
 }
 
-.popup-top {
+.nut-popup-top {
   top: 0;
   left: 0;
   width: 100%;
@@ -103,7 +110,7 @@
   }
 }
 
-.popup-slide {
+.nut-popup-slide {
   &-center-enter,
   &-center-exit {
     opacity: 0;
@@ -115,13 +122,10 @@
   }
 
   &-top-enter {
-    opacity: 0;
     transform: translate(0, -100%);
   }
 
-  &-top-enter-active,
-  &-top-enter-done {
-    opacity: 1;
+  &-top-enter-active {
     transform: translate(0, 0);
     transition: transform 0.5s;
   }
@@ -192,15 +196,6 @@
     transform: translate(-100%, 0);
     transition: transform 0.5s;
   }
-}
-
-.nut-popup {
-  position: fixed;
-  max-height: 100%;
-  overflow-y: auto;
-  background-color: $white;
-  color: $gray1;
-  -webkit-overflow-scrolling: touch;
 }
 
 .nut-overflow-hidden {
