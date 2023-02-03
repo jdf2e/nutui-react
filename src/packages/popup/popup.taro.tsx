@@ -19,6 +19,7 @@ import Icon from '@/packages/icon/index.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import bem from '@/utils/bem'
 import { ComponentDefaults, BasicComponent } from '@/utils/typings'
+import { ITouchEvent } from '@tarojs/components'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
@@ -36,10 +37,9 @@ export interface PopupProps extends OverlayProps, BasicComponent {
   round: boolean
   onOpen: () => void
   onClose: () => void
-  onClick: (e: MouseEvent) => void
   onOpened: (e: HTMLElement) => void
   onClosed: (e: HTMLElement) => void
-  onClickOverlay: (e: MouseEvent) => void
+  onClickOverlay: (e: ITouchEvent) => void
   onClickCloseIcon: (e: MouseEvent) => void
 }
 
@@ -58,10 +58,9 @@ const defaultProps = {
   round: false,
   onOpen: () => {},
   onClose: () => {},
-  onClick: (e: MouseEvent) => {},
   onOpened: (e: HTMLElement) => {},
   onClosed: (e: HTMLElement) => {},
-  onClickOverlay: (e: MouseEvent) => {},
+  onClickOverlay: (e: ITouchEvent) => {},
   onClickCloseIcon: (e: MouseEvent) => {},
   ...defaultOverlayProps,
 } as PopupProps
@@ -69,7 +68,7 @@ const defaultProps = {
 let _zIndex = 2000
 
 export const Popup: FunctionComponent<
-  Partial<PopupProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<PopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const {
     children,
@@ -163,7 +162,7 @@ export const Popup: FunctionComponent<
     }
   }
 
-  const onHandleClickOverlay = (e: MouseEvent) => {
+  const onHandleClickOverlay = (e: ITouchEvent) => {
     if (closeOnClickOverlay) {
       onClickOverlay && onClickOverlay(e)
       close()
@@ -171,7 +170,7 @@ export const Popup: FunctionComponent<
   }
 
   const onHandleClick: MouseEventHandler<HTMLDivElement> = (e: MouseEvent) => {
-    onClick && onClick(e)
+    onClick && onClick(e as any)
   }
 
   const onHandleClickCloseIcon: MouseEventHandler<HTMLDivElement> = (
