@@ -113,7 +113,7 @@
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.1",
     "@rollup/plugin-typescript": "^8.3.0",
-    "@tarojs/components": "^3.5.5",
+    "@tarojs/components": "^3.6.0",
     "@tarojs/plugin-framework-react": "^3.5.10",
     "@tarojs/plugin-platform-weapp": "^3.5.7",
     "@tarojs/react": "^3.5.10",

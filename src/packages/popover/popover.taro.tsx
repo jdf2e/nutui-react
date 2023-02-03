@@ -12,6 +12,8 @@ import { getRectByTaro } from '../../utils/useClientRect'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
+import { ITouchEvent } from '@tarojs/components'
+
 export type PopoverTheme = 'light' | 'dark'
 
 export type PopoverLocation =
@@ -43,7 +45,7 @@ export interface PopoverProps extends BasicComponent {
   className: string
   style?: CSSProperties
   children?: React.ReactNode
-  onClick: (e: React.MouseEvent) => void
+  onClick: (e: React.MouseEvent | ITouchEvent) => void
   onChoose: (item: List, index: number) => void
 }
 
@@ -55,7 +57,7 @@ const defaultProps = {
   visible: false,
   offset: 20,
   className: '',
-  onClick: (e: React.MouseEvent) => {},
+  onClick: (e: React.MouseEvent | ITouchEvent) => {},
   onChoose: (item, index) => {},
 } as PopoverProps
 export const Popover: FunctionComponent<
@@ -136,7 +138,7 @@ export const Popover: FunctionComponent<
     }`
   }
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = (e: React.MouseEvent | ITouchEvent) => {
     if (props.onClick) {
       props.onClick(e)
     }
