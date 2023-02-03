@@ -3,11 +3,14 @@ import config from '@/sites/config/env'
 
 export const getLocale = () => {
   let locale = 'zh-CN'
-  const matched = window.parent.location.href.match(/#\/([a-z-]+)/i)
-  if (matched) {
-    ;[, locale] = matched
-    if (config.locales.indexOf(locale) === -1) locale = 'zh-CN'
-  }
+  try {
+    const matched = window.parent.location.href.match(/#\/([a-z-]+)/i)
+    if (matched) {
+      ;[, locale] = matched
+      if (config.locales.indexOf(locale) === -1) locale = 'zh-CN'
+    }
+  } catch (e) {}
+
   return locale
 }
 
@@ -17,9 +20,13 @@ const useLocale = (): [string, any] => {
     setLocale(getLocale())
   }
   useEffect(() => {
-    window.parent.addEventListener('popstate', handlePopState)
+    try {
+      window.parent.addEventListener('popstate', handlePopState)
+    } catch (e) {}
     return () => {
-      window.parent.removeEventListener('popstate', handlePopState)
+      try {
+        window.parent.removeEventListener('popstate', handlePopState)
+      } catch (e) {}
     }
   }, [])
   return [locale, setLocale]

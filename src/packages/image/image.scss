@@ -1,11 +1,11 @@
 .nut-theme-dark {
   .nut-image {
     .nut-img-loading {
-      background: $dark-background;
+      background: $mask-color;
     }
 
     .nut-img-error {
-      background: $dark-background;
+      background: $mask-color;
     }
   }
 }
@@ -35,6 +35,7 @@
     align-items: center;
     justify-content: center;
     background: #f7f8fa;
+    background-size: 100% 100%;
   }
   .nut-img-error {
     width: 100%;
@@ -47,5 +48,6 @@
     align-items: center;
     justify-content: center;
     background: #f7f8fa;
+    background-size: 100% 100%;
   }
 }

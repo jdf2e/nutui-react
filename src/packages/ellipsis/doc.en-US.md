@@ -9,8 +9,7 @@ isplay space is insufficient, hidden part of the content and "..." Alternative.
 ```js
 // react
 import { Ellipsis } from '@nutui/nutui-react';
-// taro
-import { Ellipsis } from '@nutui/nutui-react-taro';
+
 ```
 
 
@@ -151,3 +150,13 @@ export default App;
 |--------|----------------|--------------|
 | onClick  | Emitted when the content is clicked | -- |
 | onChange  | Emitted when expand or collapse is clicked | -- |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-ellipsis-expand-collapse-color | `  #3460fa` |

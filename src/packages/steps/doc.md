@@ -9,8 +9,7 @@
 ```ts
 // react
 import { Steps } from '@nutui/nutui-react';
-// taro
-import { Steps } from '@nutui/nutui-react-taro';
+
 ```
 
 ### 基本用法
@@ -276,3 +275,36 @@ export default App;
 | size          | 图标尺寸大小(来自Icon组件的size属性)       | String | '' |
 | activeIndex          | 流程步骤的索引       | Number | 0 |
 | renderContent         | 流程步骤的描述性文字的html结构      | React.ReactNode | - |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-steps-base-icon-width | ` 25px` |
+| --nutui-steps-base-icon-height | ` 25px` |
+| --nutui-steps-base-icon-line-height | `  25px` |
+| --nutui-steps-base-icon-font-size | `  13px` |
+| --nutui-steps-base-title-font-size | `  14px` |
+| --nutui-steps-base-line-color | ` #909ca4` |
+| --nutui-steps-base-title-color | `  $title-color` |
+| --nutui-steps-base-title-margin-bottom | `  10px` |
+| --nutui-steps-base-content-font-size | `  14px` |
+| --nutui-steps-base-content-color | `  $title-color2` |
+| --nutui-steps-wait-icon-bg-color | `  #959fb1` |
+| --nutui-steps-wait-icon-color | ` $white` |
+| --nutui-steps-wait-head-color | ` #909ca4` |
+| --nutui-steps-wait-head-border-color | `  #909ca4` |
+| --nutui-steps-wait-content-color | `  $title-color2` |
+| --nutui-steps-finish-head-color | `  $primary-color` |
+| --nutui-steps-finish-head-border-color | `  $primary-color` |
+| --nutui-steps-finish-title-color | `  $primary-color` |
+| --nutui-steps-finish-line-background | `  $primary-color` |
+| --nutui-steps-finish-icon-text-color | `  $white` |
+| --nutui-steps-process-head-color | `  $white` |
+| --nutui-steps-process-head-border-color | `  $primary-color` |
+| --nutui-steps-process-title-color | `  $primary-color` |
+| --nutui-steps-process-icon-text-color | `  $primary-color` |

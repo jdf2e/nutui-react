@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Dialog, Cell } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   basic: string
@@ -46,53 +48,56 @@ const DialogDemo = () => {
   const [visible4, setVisible4] = useState(false)
 
   return (
-    <div className="demo">
-      <Cell title={translated.basic} onClick={() => setVisible1(true)} />
-      <Dialog
-        title={translated.title1}
-        visible={visible1}
-        okText={translated.okText}
-        cancelText={translated.cancelText}
-        onOk={() => setVisible1(false)}
-        onCancel={() => setVisible1(false)}
-      >
-        {translated.content}
-      </Dialog>
-      <Cell title={translated.noTitle} onClick={() => setVisible2(true)} />
-      <Dialog
-        visible={visible2}
-        okText={translated.okText}
-        cancelText={translated.cancelText}
-        onOk={() => setVisible2(false)}
-        onCancel={() => setVisible2(false)}
-      >
-        {translated.content}
-      </Dialog>
-      <Cell title={translated.tipDialog} onClick={() => setVisible3(true)} />
-      <Dialog
-        title={translated.title1}
-        visible={visible3}
-        okText={translated.okText}
-        noCancelBtn={true}
-        onOk={() => setVisible3(false)}
-        onCancel={() => setVisible3(false)}
-      >
-        {translated.content}
-      </Dialog>
-      <Cell title={translated.title} onClick={() => setVisible4(true)} />
-      <Dialog
-        title={translated.title1}
-        visible={visible4}
-        lockScroll
-        footerDirection="vertical"
-        okText={translated.okText}
-        cancelText={translated.cancelText}
-        onOk={() => setVisible4(false)}
-        onCancel={() => setVisible4(false)}
-      >
-        {translated.content}
-      </Dialog>
-    </div>
+    <>
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <Cell title={translated.basic} onClick={() => setVisible1(true)} />
+        <Dialog
+          title={translated.title1}
+          visible={visible1}
+          okText={translated.okText}
+          cancelText={translated.cancelText}
+          onOk={() => setVisible1(false)}
+          onCancel={() => setVisible1(false)}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell title={translated.noTitle} onClick={() => setVisible2(true)} />
+        <Dialog
+          visible={visible2}
+          okText={translated.okText}
+          cancelText={translated.cancelText}
+          onOk={() => setVisible2(false)}
+          onCancel={() => setVisible2(false)}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell title={translated.tipDialog} onClick={() => setVisible3(true)} />
+        <Dialog
+          title={translated.title1}
+          visible={visible3}
+          okText={translated.okText}
+          noCancelBtn={true}
+          onOk={() => setVisible3(false)}
+          onCancel={() => setVisible3(false)}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell title={translated.title} onClick={() => setVisible4(true)} />
+        <Dialog
+          title={translated.title1}
+          visible={visible4}
+          lockScroll
+          footerDirection="vertical"
+          okText={translated.okText}
+          cancelText={translated.cancelText}
+          onOk={() => setVisible4(false)}
+          onCancel={() => setVisible4(false)}
+        >
+          {translated.content}
+        </Dialog>
+      </div>
+    </>
   )
 }
 

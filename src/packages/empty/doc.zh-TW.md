@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { Empty } from '@nutui/nutui-react'
-// taro
-import { Empty } from '@nutui/nutui-react-taro'
+
 ```
 
 
@@ -113,3 +112,20 @@ export default App;
 | description         | 圖片下方的描述文字  | ReactNode |    無數據             |
 
 
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-empty-padding | ` 32px 0` |
+| --nutui-empty-image-size | ` 170px` |
+| --nutui-empty-description-margin-top | `  4px` |
+| --nutui-empty-description-color | `  #666666` |
+| --nutui-empty-description-font-size | `  14px` |
+| --nutui-empty-description-line-height | `  20px` |
+| --nutui-empty-description-padding | `  0 40px` |

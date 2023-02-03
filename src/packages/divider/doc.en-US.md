@@ -9,8 +9,7 @@ Separate content into multiple areas.
 ```ts
 // react
 import { Divider } from '@nutui/nutui-react';
-// taro
-import { Divider } from '@nutui/nutui-react-taro';
+
 ```
 ### code demo
 ### Basic Usage
@@ -166,3 +165,23 @@ export default App;
 | Name    | Description |
 | ------- | ---- |
 | default | Default slot |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-divider-margin | ` 16px 0` |
+| --nutui-divider-text-font-size | `  $font-size-2` |
+| --nutui-divider-text-color | ` $gray1` |
+| --nutui-divider-line-height | ` 2px` |
+| --nutui-divider-before-margin-right | `  16px` |
+| --nutui-divider-after-margin-left | `  16px` |
+| --nutui-divider-vertical-height | ` 12px` |
+| --nutui-divider-vertical-top | ` 2px` |
+| --nutui-divider-vertical-border-left | `  rgba(0, 0, 0, 0.06)` |
+| --nutui-divider-vertical-margin | ` 0 8px` |

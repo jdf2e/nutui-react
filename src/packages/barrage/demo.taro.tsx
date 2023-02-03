@@ -2,6 +2,8 @@ import React, { useRef } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Cell, Barrage } from '@/packages/nutui.react.taro'
 import '@/packages/barrage/demo.scss'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface barrageRefState {
   add: (word: string) => void
@@ -76,7 +78,10 @@ const BarrageDemo = () => {
 
   return (
     <>
-      <div className="demo demo-barrage">
+      <Header />
+      <div
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-barrage`}
+      >
         <h2>{translated['84aa6bce']}</h2>
         <Cell className="barrage-demo-wrap">
           <Barrage

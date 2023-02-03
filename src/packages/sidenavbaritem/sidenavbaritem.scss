@@ -1,9 +1,8 @@
 .nut-theme-dark {
-  .nut-sidenavbaritem {
-    background-color: $dark-background2;
-    &__title {
-      background-color: $dark-background2;
-      color: $dark-color;
+  .nut-subsidenavbar {
+    &__item {
+      background-color: $dark6;
+      color: $dark2;
     }
   }
 }
@@ -12,6 +11,15 @@ $nutSidenavbarItemHeight: 40px;
 .nut-subsidenavbar {
   &__item {
     height: $nutSidenavbarItemHeight;
+    color: $gray2;
     padding: 10px 8px 10px 55px;
+  }
+  &__title {
+    background-color: $gray5;
+    color: $gray1;
+  }
+  &__list {
+    background-color: $gray6;
+    color: $gray2;
   }
 }

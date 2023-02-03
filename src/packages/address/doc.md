@@ -9,8 +9,7 @@
 ``` javascript
 // react
 import { Address } from '@nutui/nutui-react';
-// taro
-import { Address } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代码示例
@@ -648,3 +647,34 @@ export default App;
 | type | 地址选择类型 exist/custom/custom2  |  exist/custom/custom2 |
 | data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | {}  |
     
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-address-icon-color | ` $primary-color` |
+| --nutui-address-header-title-font-size | `  18px` |
+| --nutui-address-header-title-color | `  #262626` |
+| --nutui-address-region-tab-font-size | `  13px` |
+| --nutui-address-region-tab-color | `  #1d1e1e` |
+| --nutui-address-region-tab-active-item-font-weight | `  bold` |
+| --nutui-address-region-tab-line-border-radius | `  0` |
+| --nutui-address-region-tab-line-opacity | `  1` |
+| --nutui-address-region-item-color | `  #333` |
+| --nutui-address-region-item-font-size | `  $font-size-1` |
+| --nutui-address-item-margin-right | `  9px` |
+| --nutui-addresslist-bg | ` #fff` |
+| --nutui-addresslist-border | ` #f0f0f0` |
+| --nutui-addresslist-font-color | ` #333333` |
+| --nutui-addresslist-font-size | ` 16px` |
+| --nutui-addresslist-mask-bg | `  rgba(0, 0, 0, 0.4)` |
+| --nutui-addresslist-addr-font-color | `  #666666` |
+| --nutui-addresslist-addr-font-size | `  12px` |
+| --nutui-addresslist-set-bg | ` #f5a623` |
+| --nutui-addresslist-del-bg | ` #e1251b` |
+| --nutui-addresslist-contnts-contact-default | `  $primary-color` |
+| --nutui-addresslist-contnts-contact-color | `  $white` |

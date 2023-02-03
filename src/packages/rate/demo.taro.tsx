@@ -1,6 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { Rate, Cell } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 const RateDemo = () => {
   const onChange = (val: any) => {
@@ -8,7 +9,8 @@ const RateDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>基础用法</h2>
         <Cell>
           <Rate modelValue={3} />

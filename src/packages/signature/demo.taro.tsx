@@ -1,6 +1,9 @@
+import '@/packages/signature/demo.scss'
 import React from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Signature } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   basic: string
@@ -49,7 +52,11 @@ const SignatureDemo = () => {
   const demoStyles: React.CSSProperties = { margin: '1em 0' }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+        style={{ position: 'fixed', width: '100%' }}
+      >
         <h2>{translated.basic}</h2>
         <Signature onConfirm={confirm} onClear={clear} />
         <p className="demo-tips demo1" style={demoStyles}>

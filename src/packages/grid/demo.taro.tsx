@@ -2,6 +2,7 @@ import React from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Avatar, Grid, GridItem } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 interface T {
   basic: string
@@ -66,7 +67,8 @@ const GridDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Grid>
           <GridItem icon="dongdong" text={translated.text} />
@@ -132,6 +134,7 @@ const GridDemo = () => {
             text={translated.text}
             iconColor="#478EF2"
             iconSize="40"
+            color="#478EF2"
           />
           <GridItem icon="dongdong" text={translated.text} />
         </Grid>

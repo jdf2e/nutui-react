@@ -9,8 +9,7 @@
 ``` javascript
 // react
 import { TimeSelect } from '@nutui/nutui-react';
-// taro
-import { TimeSelect } from '@nutui/nutui-react-taro';
+
 ```
 
 ### 基本用法
@@ -124,3 +123,38 @@ export default TimeSelectDemo
 | onSelect`v1.3.8`       | 关闭遮罩之后的回调 | 是 | `list: []` |
 | onPannelChange`v1.3.8` | 点击左栏日期回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `pannelKey: string 、number, list: []` |
 | onTimeChange`v1.3.8`   | 点击时间回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `time: string, list: []` |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-timeselect-title-font-size | `  $font-size-2` |
+| --nutui-timeselect-title-color | `  $title-color` |
+| --nutui-timeselect-title-height | ` 50px` |
+| --nutui-timeselect-title-line-height | `  50px` |
+| --nutui-timeselect-pannel-bg-color | `  #f6f7f9` |
+| --nutui-timeselect-timepannel-text-color | `  $title-color2` |
+| --nutui-timeselect-timepannel-font-size | `  $font-size-2` |
+| --nutui-timeselect-timepannel-cur-bg-color | `  $white` |
+| --nutui-timeselect-timepannel-cur-text-color | `  #333333` |
+| --nutui-timeselect-timepannel-width | `  140px` |
+| --nutui-timeselect-timepannel-height | `  40px` |
+| --nutui-timeselect-timepannel-padding | `  15px` |
+| --nutui-timeselect-timedetail-padding | `  0 5px 50px 13px` |
+| --nutui-timeselect-timedetail-item-width | `  100px` |
+| --nutui-timeselect-timedetail-item-height | `  50px` |
+| --nutui-timeselect-timedetail-item-line-height | `  50px` |
+| --nutui-timeselect-timedetail-item-bg-color | `  #f6f7f9` |
+| --nutui-timeselect-timedetail-item-border-radius | `  5px` |
+| --nutui-timeselect-timedetail-item-text-color | `  #333333` |
+| --nutui-timeselect-timedetail-item-text-font-size | `  $font-size-2` |
+| --nutui-timeselect-timedetail-item-cur-bg-color | `  rgba($primary-color, 0.15)` |
+| --nutui-timeselect-timedetail-item-cur-border | `  $primary-color` |
+| --nutui-timeselect-timedetail-item-cur-text-color | `  $primary-color` |
+| --nutui-timeselect-timedetail-time-text-color | `  #999` |
+| --nutui-timeselect-timedetail-time-font-size | `  $font-size-1` |

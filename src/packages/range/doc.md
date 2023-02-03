@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { Range } from '@nutui/nutui-react';
-// taro
-import { Range } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代码演示
@@ -546,3 +545,20 @@ export default App;
 | 名称   | 说明           |
 | ------ | -------------- |
 | button | 自定义滑动按钮 |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-range-tip-font-color | ` $gray1` |
+| --nutui-range-bg-color | ` rgba(#fa2c19, 0.5)` |
+| --nutui-range-bg-color-tick | ` #fa958c` |
+| --nutui-range-bar-btn-bg-color | ` $white` |
+| --nutui-range-bar-btn-width | ` 24px` |
+| --nutui-range-bar-btn-height | ` 24px` |
+| --nutui-range-bar-btn-border | `  1px solid $primary-color` |

@@ -9,8 +9,7 @@
 ```ts
 // react
 import { Checkbox } from '@nutui/nutui-react';
-// taro
-import { Checkbox } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 基本用法
@@ -438,3 +437,19 @@ export default CheckboxGroupOptions;
 |-------------------| ----- | ----- |
 | toggleAll`v1.2.1` | 全选/取消 | `f`,传 `true`,表示全选，传 `false`,表示取消全选 |
 | toggleReverse`v1.2.1`   | 反选 | - |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-checkbox-label-color | ` $gray1` |
+| --nutui-checkbox-label-disable-color | `  #999` |
+| --nutui-checkbox-icon-disable-color | `  #d6d6d6` |
+| --nutui-checkbox-label-margin-left | `  15px` |
+| --nutui-checkbox-label-font-size | ` 14px` |
+| --nutui-checkbox-icon-font-size | ` 18px` |
+| --nutui-checkbox-icon-disable-color2 | `  $help-color` |

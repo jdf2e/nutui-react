@@ -1,11 +1,14 @@
 .nut-theme-dark {
   .nut-grid-item {
     &__content {
-      background: $dark-background;
-      color: $dark-color;
+      background: $dark5;
+      color: $dark1;
+      i {
+        color: $dark1;
+      }
     }
     &__text {
-      color: $dark-color;
+      color: $dark1;
     }
   }
 }
@@ -31,7 +34,9 @@
     padding: $grid-item-content-padding;
     background: $grid-item-content-bg-color;
     border: 0 solid $grid-border-color;
-
+    i {
+      color: $grid-item-icon-color;
+    }
     &--border {
       border-right-width: 1px;
       border-bottom-width: 1px;

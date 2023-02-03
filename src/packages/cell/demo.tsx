@@ -156,7 +156,6 @@ const CellDemo = () => {
             isLink
             url="https://jd.com"
           />
-          <Cell title={translated.routerJump} to="/" />
         </CellGroup>
         <CellGroup title={translated.customRight}>
           <Cell title="Switch" linkSlot={<Switch checked />} />

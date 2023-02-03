@@ -18,7 +18,6 @@ const useLocale = () => {
     //   }
     // }
   }, [])
-  console.log(2)
   return [locale, setLocale]
 }
 

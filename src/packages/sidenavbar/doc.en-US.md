@@ -173,3 +173,27 @@ export default App;
 | Event  | Description                                | Arguments    |
 |--------|--------------------------------------------|--------------|
 | onClick | Navigation Click,return{ title,ikey}       | -           |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-sidenavbar-content-bg-color | `  $white` |
+| --nutui-sidenavbar-sub-title-border-color | `  #f6f6f6` |
+| --nutui-sidenavbar-sub-title-bg-color | `  #f6f6f6` |
+| --nutui-sidenavbar-sub-title-font-size | `  $font-size-large` |
+| --nutui-sidenavbar-sub-title-radius | `  0` |
+| --nutui-sidenavbar-sub-title-border | `  0` |
+| --nutui-sidenavbar-sub-title-height | `  40px` |
+| --nutui-sidenavbar-sub-title-text-line-height | `  40px` |
+| --nutui-sidenavbar-sub-title-text-color | `  $title-color` |
+| --nutui-sidenavbar-item-title-color | `  #333` |
+| --nutui-sidenavbar-item-title-bg-color | `  $white` |
+| --nutui-sidenavbar-item-height | ` 40px` |
+| --nutui-sidenavbar-item-line-height | `  40px` |
+| --nutui-sidenavbar-item-font-size | `  16px` |

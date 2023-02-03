@@ -9,8 +9,7 @@ Multi-select buttons are used for selection.
 ```ts
 // react
 import { Checkbox } from '@nutui/nutui-react';
-// taro
-import { Checkbox } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Basic Usage
@@ -442,3 +441,19 @@ export default CheckboxGroupOptions;
 |----- | ----- | ----- |
 | toggleAll | Select all / cancel | `f`,`true`,to select all，`false`,cancel the selection |
 | toggleReverse | Reverse selection | - |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-checkbox-label-color | ` $gray1` |
+| --nutui-checkbox-label-disable-color | `  #999` |
+| --nutui-checkbox-icon-disable-color | `  #d6d6d6` |
+| --nutui-checkbox-label-margin-left | `  15px` |
+| --nutui-checkbox-label-font-size | ` 14px` |
+| --nutui-checkbox-icon-font-size | ` 18px` |
+| --nutui-checkbox-icon-disable-color2 | `  $help-color` |

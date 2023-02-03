@@ -8,8 +8,7 @@
 ```ts
 // react
 import { ShortPassword } from '@nutui/nutui-react';
-// taro
-import { ShortPassword } from '@nutui/nutui-react-taro';
+
 ```
 
 
@@ -201,3 +200,17 @@ export default App;
 | onClose    | 點擊關閉圖標和遮罩時觸發事件 | -    |
 | onTips    | 點擊忘記密碼時觸發事件 | -    |
 | onComplete | 輸入完成的回調         | value    |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-shortpassword-background-color | `  rgba(245, 245, 245, 1)` |
+| --nutui-shortpassword-border-color | `  #ddd` |
+| --nutui-shortpassword-error | ` $primary-color` |
+| --nutui-shortpassword-forget | `  rgba(128, 128, 128, 1)` |

@@ -1,8 +1,16 @@
+@import '../../../styles/font/iconfont.css';
 .h5-span {
   display: inline;
 }
 
 .demo {
+  box-sizing: border-box;
+  min-height: 100vh;
+
+  &.web {
+    padding-top: 57px !important;
+  }
+
   &.no-overflow {
     overflow: unset;
   }

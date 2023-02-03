@@ -9,8 +9,7 @@
 ```ts
 // react
 import { DatePicker } from '@nutui/nutui';
-// taro
-import { DatePicker } from '@nutui/nutui-taro';
+
 ```
     
 ## 代碼演示

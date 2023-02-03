@@ -9,8 +9,7 @@ Popup layer container, used to display pop-up windows, information prompts, etc.
 ``` javascript
 // react
 import { Popup } from '@nutui/nutui-react';
-// taro
-import { Popup } from '@nutui/nutui-react-taro';
+
 ```
 
 ## code demo
@@ -217,3 +216,15 @@ export default App;
 | onOpend            | Fired when the mask opening animation ends | `event: HTMLElement` |
 | onClosed           | Fired when the mask closing animation ends | `event: HTMLElement` |
 | onClickOverlay    | Click on the mask to trigger           | `event: MouseEvent` |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-popup-close-icon-margin | ` 16px` |
+| --nutui-popup-border-radius | ` 20px` |
