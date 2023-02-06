@@ -27,6 +27,7 @@ export interface PopupProps extends OverlayProps, BasicComponent {
   closeable: boolean
   closeIconPosition: string
   closeIcon: string
+  closeIconSize: string
   destroyOnClose: boolean
   teleport: Teleport
   overlay: boolean
@@ -49,6 +50,7 @@ const defaultProps = {
   closeable: false,
   closeIconPosition: 'top-right',
   closeIcon: 'close',
+  closeIconSize: '12px',
   destroyOnClose: true,
   teleport: null,
   overlay: true,
@@ -99,6 +101,7 @@ export const Popup: FunctionComponent<
     onClick,
     iconClassPrefix,
     iconFontClassName,
+    closeIconSize,
   } = props
 
   const [index, setIndex] = useState(zIndex || _zIndex)
@@ -224,7 +227,7 @@ export const Popup: FunctionComponent<
                 classPrefix={iconClassPrefix}
                 fontClassName={iconFontClassName}
                 name={closeIcon}
-                size="12px"
+                size={closeIconSize}
               />
             </div>
           ) : (
