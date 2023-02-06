@@ -91,16 +91,16 @@ import { Indicator, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <view 
+      <div 
         style={{ height: '100px', width: '50%' }} 
       >
         <Indicator fillZero={false} size={6} current={5} vertical />
-      </view>
-      <view 
+      </div>
+      <div 
         style={{ height: '100px', width: '50%' }} 
       >
         <Indicator size={6} current={2} vertical />
-      </view>
+      </div>
     </Cell>
   );
 };

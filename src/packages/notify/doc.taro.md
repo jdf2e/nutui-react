@@ -45,7 +45,7 @@ const App = () => {
             />
             <Cell
                 title="基础用法"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     changeNotify(translated.basic)
                     SetShowNotify(true)
                 }}
@@ -87,28 +87,28 @@ const App = () => {
             />
             <Cell
                 title="主要通知"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     changeNotify('主要通知','primary')
                     SetShowNotify(true)
                 }}
             />
             <Cell
                 title="成功通知"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     changeNotify('成功通知','success')
                     SetShowNotify(true)
                 }}
             />
             <Cell
                 title="危险通知"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     changeNotify('危险通知','danger')
                     SetShowNotify(true)
                 }}
             />
             <Cell
                 title="警告通知"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     changeNotify('警告通知','warning')
                     SetShowNotify(true)
                 }}
@@ -147,7 +147,7 @@ const App = () => {
             />
             <Cell
                 title="自定义背景色和字体颜色"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     SetCustomShow(true)
                 }}
             />
@@ -191,14 +191,14 @@ const App = () => {
             />
             <Cell
                 title="自定义时长"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     changeNotify('自定义时长', 5000)
                     SetShowNotify(true)
                 }}
             />
             <Cell
                 title="自定义位置"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     changeNotify('自定义位置在底部', 5000,  'bottom')
                     SetShowNotify(true)
                 }}
