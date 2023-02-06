@@ -20,7 +20,6 @@ import Icon from '@/packages/icon/index.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import bem from '@/utils/bem'
 import { ComponentDefaults, BasicComponent } from '@/utils/typings'
-import { ITouchEvent } from '@tarojs/components'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
