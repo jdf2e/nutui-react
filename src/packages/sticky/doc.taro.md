@@ -16,14 +16,17 @@ import { Sticky } from '@nutui/nutui-react-taro';
 ### 基础用法
 :::demo
 ```tsx
-const App = () => {
+
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react-taro'
+
+
+const App = () => {
 
  const handleChange = (val: boolean) => {
     console.log('吸顶状态发生了改变,当前fixed为', val)
   }
-return(
+  return(
     <>
         <h2>基础用法</h2>
         <Cell style={{ height: '300px' }}>
@@ -44,8 +47,7 @@ return(
           </Sticky>
         </Cell>
     </>
-)
-   
+  )
 }
 export default App;
 ```
@@ -54,11 +56,13 @@ export default App;
 ### 指定容器内
 :::demo
 ```tsx
-const App = () => {
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react-taro'
 
-   return(
+const App = () => {
+  const containerTopRef = useRef(null)
+  const containerRef = useRef(null)
+  return(
     <>
         <h2>指定容器内吸顶</h2>
         <Cell>
@@ -90,13 +94,11 @@ import {Button,Cell, Sticky } from '@nutui/nutui-react-taro'
         </Cell>
       
     </>
-   )
+  )
 }
 export default App;
 ```
 :::
-
-
 
 ## API
 

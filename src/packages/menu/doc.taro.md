@@ -18,7 +18,7 @@ import { Menu, MenuItem } from '@nutui/nutui-react-taro';
 :::demo
 
 ```tsx
-import React from 'react';
+import React, {useState } from 'react'
 import { Menu, MenuItem } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -56,7 +56,7 @@ export default App
 :::demo
 
 ```tsx
-import React from 'react';
+import React, { useRef, useState } from 'react'
 import { Menu, MenuItem, Button } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -96,7 +96,7 @@ export default App
 :::demo
 
 ```tsx
-import React from 'react';
+import React, { useState } from 'react'
 import { Menu, MenuItem } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -127,7 +127,7 @@ export default App
 :::demo
 
 ```tsx
-import React from 'react';
+import React, { useState } from 'react'
 import { Menu, MenuItem } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -163,7 +163,7 @@ export default App
 :::demo
 
 ```tsx
-import React from 'react';
+import React, { useState } from 'react'
 import { Menu, MenuItem } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -199,7 +199,7 @@ export default App
 :::demo
 
 ```tsx
-import React from 'react';
+import React, { useState } from 'react'
 import { Menu, MenuItem } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -235,7 +235,7 @@ export default App
 :::demo
 
 ```tsx
-import React from 'react';
+import React, { useState } from 'react'
 import { Menu, MenuItem } from '@nutui/nutui-react-taro';
 
 const App = () => {

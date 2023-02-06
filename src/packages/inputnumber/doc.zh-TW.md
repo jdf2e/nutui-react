@@ -63,7 +63,7 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react';
+import { InputNumber,Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
@@ -187,7 +187,7 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { InputNumber, Toast } from '@nutui/nutui-react';
+import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({

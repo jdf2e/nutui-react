@@ -116,13 +116,13 @@ const IconDemo = () => {
         </Cell>
         {icons.data.map((item, index) => {
           return (
-            <CellGroup key={index} title={item.name}>
+            <CellGroup key={item.name} title={item.name}>
               <Cell>
                 <ul>
                   {item.icons.map((icon) => {
                     return (
                       <li
-                        key={icon}
+                        key={Math.random()}
                         onClick={() => copyTag(generateCopyText(icon))}
                       >
                         <Icon name={icon} />
@@ -137,7 +137,7 @@ const IconDemo = () => {
         })}
         {icons.style.map((item, index) => {
           return (
-            <CellGroup key={index} title={item.name}>
+            <CellGroup key={item.name} title={item.name}>
               <Cell>
                 <ul>
                   {item.icons.map((icon) => {

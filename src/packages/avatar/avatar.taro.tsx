@@ -146,12 +146,6 @@ export const Avatar: FunctionComponent<
     onActiveAvatar && onActiveAvatar(e)
   }
 
-  console.log(
-    '!parent?.propAvatarGroup?.maxCount',
-    !parent?.propAvatarGroup?.maxCount,
-    showMax
-  )
-
   return (
     <>
       {(showMax ||

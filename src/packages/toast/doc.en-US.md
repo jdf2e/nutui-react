@@ -33,7 +33,7 @@ const App = () => {
         <Cell
           title="Text"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => textToast('text message~')}
         />
@@ -61,7 +61,7 @@ const App = () => {
         <Cell
           title="Toast Title"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => titleToast('title message~')}
         />
@@ -89,7 +89,7 @@ const App = () => {
         <Cell
           title="Toast Success"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => successToast('Success')}
         />
@@ -118,7 +118,7 @@ const App = () => {
         <Cell
           title="Toast Fail"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => errorToast('Fail')}
         />
@@ -147,7 +147,7 @@ const App = () => {
             <Cell
             title="Toast Warn"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => warningToast('Warn')}
             />
@@ -176,7 +176,7 @@ const App = () => {
             <Cell
             title="Toast Loading"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => loadingToast('Loading')}
             />
@@ -205,14 +205,14 @@ const App = () => {
             <Cell
             title="Show for 10 seconds"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => duringToast('Show for 10 seconds')}
             />
             <Cell
             title="Toast Not Disappear"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => {Toast.text('Toast Not Disappear', { duration: 0 })}}
             />
@@ -250,7 +250,7 @@ const App = () => {
         <Cell
         title='Custom Bottom Height'
         isLink
-        click={(
+        onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => toastBottom('Custom Bottom Height')}
         />
@@ -286,7 +286,7 @@ const App = () => {
             <Cell
             title="Loading with transparent cover"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => iconToast('Loading')}
             />

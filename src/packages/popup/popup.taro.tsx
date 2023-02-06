@@ -11,6 +11,7 @@ import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
+import { ITouchEvent } from '@tarojs/components'
 import {
   OverlayProps,
   defaultOverlayProps,
@@ -127,7 +128,7 @@ export const Popup: FunctionComponent<
   const classes = classNames(
     {
       round,
-      [`popup-${position}`]: true,
+      [`nut-popup-${position}`]: true,
       [`${popClass}`]: true,
       [`${className}`]: true,
     },
@@ -135,8 +136,8 @@ export const Popup: FunctionComponent<
   )
 
   const closeClasses = classNames({
-    'nutui-popup__close-icon': true,
-    [`nutui-popup__close-icon--${closeIconPosition}`]: true,
+    'nut-popup__close-icon': true,
+    [`nut-popup__close-icon--${closeIconPosition}`]: true,
   })
 
   const open = () => {
@@ -266,7 +267,7 @@ export const Popup: FunctionComponent<
   }, [visible])
 
   useEffect(() => {
-    setTransitionName(transition || `popup-slide-${position}`)
+    setTransitionName(transition || `nut-popup-slide-${position}`)
   }, [position])
 
   return <>{renderToContainer(teleport as Teleport, renderNode())}</>

@@ -18,7 +18,7 @@ import { Cascader } from '@nutui/nutui-react';
 Pass in the `options` list.
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -127,7 +127,7 @@ use `textKey`、`valueKey`、`childrenKey`Specify the property name.
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -239,7 +239,7 @@ Use `lazy` to identify whether data needs to be obtained dynamically. At this ti
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -307,7 +307,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -380,7 +380,7 @@ If your data is a flat structure that can be converted into a tree structure, yo
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -439,7 +439,7 @@ export default App;
 Pass in `activeColor` to specify the selected color.
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
