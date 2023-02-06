@@ -65,6 +65,10 @@ export class FormItem extends React.Component<FieldProps> {
       onChange: (
         event: React.ChangeEvent<HTMLInputElement> | number | string | string[]
       ) => {
+        const originOnChange = (children as any).props.onChange
+        if(originOnChange){
+          originOnChange(event)
+        }
         let newValue = event
         switch (type) {
           case 'checkbox':

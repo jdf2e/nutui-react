@@ -216,3 +216,15 @@ export default App;
 | onOpend            | 遮罩打开动画结束时触发 | `event: HTMLElement` |
 | onClosed           | 遮罩关闭动画结束时触发 | `event: HTMLElement` |
 | onClickOverlay    | 点击遮罩触发           | `event: MouseEvent` |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-popup-close-icon-margin | ` 16px` |
+| --nutui-popup-border-radius | ` 20px` |

@@ -366,3 +366,16 @@ export default App;
 | start | Count Down Start | 
 | pause | Count Down Pause | 
 | reset | Count Down Reset | 
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-countdown-display | ` flex` |
+| --nutui-countdown-color | ` inherit` |
+| --nutui-countdown-font-size | ` initial` |

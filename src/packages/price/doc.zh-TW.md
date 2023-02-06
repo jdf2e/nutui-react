@@ -190,3 +190,22 @@ export default App;
 | thousands      | 是否按照千分號形式顯示   | Boolean | false  |
 | position`v1.3.9`  | 符號顯示在價格前或者後，`before`、`after`  | String           | before |
 | size`v1.3.9`   | 價格尺寸，`large`、`normal`、`small`     | String           | large |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-price-symbol-big-size | ` 18px` |
+| --nutui-price-integer-big-size | ` 24px` |
+| --nutui-price-decimal-big-size | ` 18px` |
+| --nutui-price-symbol-medium-size | ` 14px` |
+| --nutui-price-integer-medium-size | `  16px` |
+| --nutui-price-decimal-medium-size | `  14px` |
+| --nutui-price-symbol-small-size | ` 10px` |
+| --nutui-price-integer-small-size | ` 12px` |
+| --nutui-price-decimal-small-size | ` 10px` |

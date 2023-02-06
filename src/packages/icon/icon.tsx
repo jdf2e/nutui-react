@@ -26,7 +26,13 @@ const defaultProps = {
 } as IconProps
 
 function pxCheck(value: string | number): string {
-  return Number.isNaN(Number(value)) ? String(value) : `${value}px`
+  if (value === '') {
+    return value
+  }
+  if (Number.isNaN(Number(value))) {
+    return String(value)
+  }
+  return `${value}px`
 }
 
 export function Icon<T>(props: Partial<IconProps> & T): ReactElement {
@@ -59,6 +65,13 @@ export function Icon<T>(props: Partial<IconProps> & T): ReactElement {
     if (isImage) return { src: name }
     return {}
   }
+
+  const styles: any = {}
+  const checkedSize: any = pxCheck(size)
+  if (checkedSize) {
+    styles.width = styles.height = styles.fontSize = checkedSize
+  }
+
   return React.createElement<any>(
     type,
     {
@@ -69,9 +82,7 @@ export function Icon<T>(props: Partial<IconProps> & T): ReactElement {
           }`,
       style: {
         color,
-        fontSize: pxCheck(size),
-        width: pxCheck(size),
-        height: pxCheck(size),
+        ...styles,
         ...style,
       },
       ...rest,
