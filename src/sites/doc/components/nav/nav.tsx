@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { nav } from '@/config.json'
 import { NavLink } from 'react-router-dom'
 import './nav.scss'
@@ -24,7 +24,7 @@ const Nav = () => {
       <ol>
         {cNav.map((cn: any) => {
           return (
-            <>
+            <Fragment key={cn.name}>
               <li>{cn.name}</li>
               <ul>
                 {cn.packages.map((cp: any) => {
@@ -42,7 +42,7 @@ const Nav = () => {
                   )
                 })}
               </ul>
-            </>
+            </Fragment>
           )
         })}
       </ol>
