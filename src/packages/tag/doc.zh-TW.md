@@ -9,8 +9,7 @@
 ``` javascript
 // react
 import { Tag } from '@nutui/nutui-react';
-// taro
-import { Tag } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代碼實例
@@ -207,3 +206,23 @@ export default App;
 |----------|----------|----------|
 | onClick    | 點擊事件 | event    |
 | onClose    | 關閉事件 | event    |
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-tag-font-size | ` 12px` |
+| --nutui-tag-default-border-radius | `  4px` |
+| --nutui-tag-round-border-radius | ` 8px` |
+| --nutui-tag-default-background-color | `  #000000` |
+| --nutui-tag-primary-background-color | `  #3460fa` |
+| --nutui-tag-success-background-color | `  #4fc08d` |
+| --nutui-tag-danger-background-color-plain | `  #df3526` |
+| --nutui-tag-warning-background-color | `  #f3812e` |
+| --nutui-tag-default-color | ` #ffffff` |
+| --nutui-tag-border-width | ` 1px` |
+| --nutui-tag-height | ` auto` |

@@ -9,8 +9,7 @@
 ``` javascript
 // react
 import { Popup } from '@nutui/nutui-react';
-// taro
-import { Popup } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代碼演示
@@ -217,3 +216,15 @@ export default App;
 | onOpend            | 遮罩打開動畫結束時觸發 | `event: HTMLElement` |
 | onClosed           | 遮罩關閉動畫結束時觸發 | `event: HTMLElement` |
 | onClickOverlay    | 點擊遮罩觸發           | `event: MouseEvent` |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-popup-close-icon-margin | ` 16px` |
+| --nutui-popup-border-radius | ` 20px` |

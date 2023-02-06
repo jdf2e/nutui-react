@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell, Button, WaterMark } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 import '@/packages/watermark/demo.scss'
 
 interface T {
@@ -49,7 +51,10 @@ const WaterMarkDemo = () => {
 
   return (
     <>
-      <div className="demo demo-watermark">
+      <Header />
+      <div
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-watemark`}
+      >
         <h2>{translated['84aa6bce']}</h2>
         <Cell className="wrap">
           <Button onClick={showTextMark}>{translated.ddd76b7f}</Button>

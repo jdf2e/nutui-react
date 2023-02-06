@@ -9,8 +9,6 @@
 ```ts
 // react
 import { WaterMark } from '@nutui/nutui-react';
-// taro
-import { WaterMark } from '@nutui/nutui-react-taro';
 ```
 
 ### 基础用法
@@ -114,3 +112,14 @@ export default App;
 | gapY       | 水印之间的垂直间距                                   | `number`           | `48`                 |
 | fullPage    | 是否覆盖整个页面                                     | `boolean`          | `true`               |
 | fontFamily  | 水印文字字体                                     | `boolean`          | `true`               |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-watermark-z-index | `  $mask-content-z-index` |

@@ -5,37 +5,49 @@
       {
         "name": "intro-react",
         "cName": "介绍",
+        "eName": "Introduction",
         "show": true
       },
       {
         "name": "start-react",
-        "cName": "H5快速上手",
+        "cName": "快速上手",
+        "eName": "Quickstart",
         "show": true
       },
       {
         "name": "starttaro-react",
-        "cName": "小程序开发",
+        "cName": "快速上手",
         "eName": "WeChat",
         "show": true
       },
       {
         "name": "theme-react",
         "cName": "主题定制",
+        "eName": "Customize Theme",
         "show": true
       },
       {
         "name": "international-react",
         "cName": "国际化",
+        "eName": "Internationalization",
+        "show": true
+      },
+      {
+        "name": "contributing-react",
+        "cName": "贡献指南",
+        "eName": "Contributing",
         "show": true
       },
       {
         "name": "resource",
         "cName": "资源",
-        "show": true
+        "eName": "Resources",
+        "show": false
       },
       {
         "name": "https://github.com/jdf2e/nutui-react/releases",
         "cName": "更新日志",
+        "eName": "Changelog",
         "show": true,
         "isLink": true
       }
@@ -112,7 +124,7 @@
           "desc": "增强版的 img 标签，提供多种图片填充模式，支持图片加载中提示、加载失败提示。",
           "sort": 8,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "vickyYE"
         },
         {
@@ -764,7 +776,7 @@
           "desc": "原生audio实现的音频播放器",
           "sort": 21,
           "show": true,
-          "taro": true,
+          "taro": false,
           "author": "libin"
         },
         {
@@ -1027,8 +1039,9 @@
           "cName": "虚拟列表",
           "desc": "长列表渲染",
           "sort": 20,
+          "tarodoc":true,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "hx"
         },
         {

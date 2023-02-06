@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
-// taro
-import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
+
 ```
 
 ### 基础用法
@@ -494,3 +493,17 @@ export default App;
 | prev   | 切换到上一页   | -            |
 | next   | 切换到下一页   | -            |
 | to     | 切换到指定轮播 | index:number |
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-swiper-pagination-item-background-color | `  #ddd` |
+| --nutui-swiper-pagination-item-width | `  8px` |
+| --nutui-swiper-pagination-item-height | `  3px` |
+| --nutui-swiper-pagination-item-margin-right | `  7px` |
+| --nutui-swiper-pagination-item-border-radius | `  2px` |

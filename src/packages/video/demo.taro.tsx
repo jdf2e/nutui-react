@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell, Button, Video } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 import '@/packages/video/demo.scss'
 
 interface T {
@@ -89,7 +91,10 @@ const VideoDemo = () => {
   }
   return (
     <>
-      <div className="demo demo-video">
+      <Header />
+      <div
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-video`}
+      >
         <h2>{translated['84aa6bce']}</h2>
         <Cell className="video-cell">
           <Video

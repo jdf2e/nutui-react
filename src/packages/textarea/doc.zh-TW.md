@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { TextArea } from '@nutui/nutui-react';
-// taro
-import { TextArea } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代码演示
@@ -152,3 +151,18 @@ export default App
 | onChange | 输入内容时触发 | val      |
 | onFocus  | 聚焦时触发     | val      |
 | onBlur   | 失焦时触发     | val      |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-textarea-font | ` $font-size-2` |
+| --nutui-textarea-height | ` 100px` |
+| --nutui-textarea-limit-color | ` $text-color` |
+| --nutui-textarea-text-color | ` $title-color` |
+| --nutui-textarea-disabled-color | `  $disable-color` |

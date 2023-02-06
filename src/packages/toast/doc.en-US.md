@@ -9,8 +9,7 @@ For light tips.
 ```javascript
 // react
 import { Toast } from '@nutui/nutui-react';
-// taro
-import { Toast } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Demo
@@ -332,3 +331,20 @@ export default App
 | onClose             |Callback function after close             | function      | null         |
 | closeOnClickOverlay | Whether to close when overlay is clicked         | Boolean       | false         |
 
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-toast-title-font-size | ` 16px` |
+| --nutui-toast-text-font-size | ` 14px` |
+| --nutui-toast-font-color | ` #fff` |
+| --nutui-toast-inner-padding | ` 24px 30px` |
+| --nutui-toast-inner-bg-color | ` $gray7` |
+| --nutui-toast-inner-border-radius | `  12px` |
+| --nutui-toast-cover-bg-color | ` $gray7` |

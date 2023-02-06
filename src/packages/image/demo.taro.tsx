@@ -2,6 +2,8 @@ import React from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Image, Cell, Row, Col, Icon } from '@/packages/nutui.react.taro'
 import '@/packages/image/demo.scss'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 const ImageDemo = () => {
   const [translated] = useTranslate({
@@ -27,7 +29,8 @@ const ImageDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Cell>
           <Image src={src} width="80" height="80" />
@@ -38,7 +41,7 @@ const ImageDemo = () => {
           <Row gutter={10}>
             <Col span="8">
               <Image width="80" height="80" showLoading />
-              <div className="text">默认</div>
+              <div className="image-text">默认</div>
             </Col>
             <Col span="8">
               <Image
@@ -50,7 +53,7 @@ const ImageDemo = () => {
                   </>
                 }
               />
-              <div className="text">自定义</div>
+              <div className="image-text">自定义</div>
             </Col>
           </Row>
         </Cell>
@@ -60,13 +63,13 @@ const ImageDemo = () => {
           <Row gutter={10}>
             <Col span="8">
               <Image src="#" width="80" height="80" showError />
-              <div className="text">默认</div>
+              <div className="image-text">默认</div>
             </Col>
             <Col span="8">
               <Image src="#" width="80" height="80" showError>
                 <Icon name="circle-close" />
               </Image>
-              <div className="text">自定义</div>
+              <div className="image-text">自定义</div>
             </Col>
           </Row>
         </Cell>

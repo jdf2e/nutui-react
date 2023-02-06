@@ -6,7 +6,6 @@ const subPackages = [
       'pages/cell/index',
       'pages/configprovider/index',
       'pages/icon/index',
-      'pages/image/index',
       'pages/overlay/index',
       'pages/popup/index',
     ],
@@ -68,7 +67,6 @@ const subPackages = [
     pages: [
       'pages/animate/index',
       'pages/animatingnumbers/index',
-      'pages/audio/index',
       'pages/avatar/index',
       'pages/badge/index',
       'pages/circleprogress/index',
@@ -87,6 +85,7 @@ const subPackages = [
       'pages/table/index',
       'pages/tag/index',
       'pages/trendarrow/index',
+      'pages/virtuallist/index',
       'pages/watermark/index',
     ],
   },

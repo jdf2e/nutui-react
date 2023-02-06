@@ -8,8 +8,7 @@ Short password input box, which can be used to enter passwords, SMS verification
 ```ts
 // react
 import { ShortPassword } from '@nutui/nutui-react';
-// taro
-import { ShortPassword } from '@nutui/nutui-react-taro';
+
 ```
 
 
@@ -203,3 +202,17 @@ export default App;
 | onClose    | Trigger an event when the close icon is clicked | -    |
 | onTips    | Trigger an event when the forget password  is clicked | -    |
 | onComplete | Input complete callback          | value    |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-shortpassword-background-color | `  rgba(245, 245, 245, 1)` |
+| --nutui-shortpassword-border-color | `  #ddd` |
+| --nutui-shortpassword-error | ` $primary-color` |
+| --nutui-shortpassword-forget | `  rgba(128, 128, 128, 1)` |

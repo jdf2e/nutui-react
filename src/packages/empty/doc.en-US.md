@@ -9,8 +9,7 @@ Placeholder prompt when empty
 ```javascript
 // react
 import { Empty } from '@nutui/nutui-react'
-// taro
-import { Empty } from '@nutui/nutui-react-taro'
+
 ```
 
 
@@ -113,3 +112,20 @@ export default App;
 | description         | Description text below the image | ReactNode | No Data                |
 
 
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-empty-padding | ` 32px 0` |
+| --nutui-empty-image-size | ` 170px` |
+| --nutui-empty-description-margin-top | `  4px` |
+| --nutui-empty-description-color | `  #666666` |
+| --nutui-empty-description-font-size | `  14px` |
+| --nutui-empty-description-line-height | `  20px` |
+| --nutui-empty-description-padding | `  0 40px` |

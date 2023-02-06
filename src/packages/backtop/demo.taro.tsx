@@ -1,6 +1,8 @@
 import React from 'react'
 import { BackTop, Icon } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   title: string
@@ -45,7 +47,12 @@ const BackTopDemo = () => {
 
   return (
     <>
-      <div className="demo" style={demoStyle} id="elId">
+      <Header />
+      <div
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+        style={demoStyle}
+        id="elId"
+      >
         <h2>{translated.title}</h2>
         <div className="text-data" style={cellStyle}>
           {translated.content}1

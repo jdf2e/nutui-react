@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Skeleton, Switch, Avatar, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/skeleton/demo.scss'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   '3b02fdee': string
@@ -60,7 +62,8 @@ const SkeletonDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated['84aa6bce']}</h2>
         <Cell className="ske-cell-single">
           <Skeleton width="250px" height="15px" animated />

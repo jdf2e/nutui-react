@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { Grid ,GridItem } from '@nutui/nutui-react'
-// taro
-import { Grid ,GridItem } from '@nutui/nutui-react-taro'
+
 ```
 
 ## 代码演示
@@ -259,3 +258,20 @@ export default App
 | 参数                  | 说明                                                                                     | 回调参数    |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|
 | onClick `1.3.14`                 | 点击格子时触发                                                                         | event: Event      |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-grid-border-color | ` #f5f6f7` |
+| --nutui-grid-item-content-padding | `  16px 8px` |
+| --nutui-grid-item-content-bg-color | `  $white` |
+| --nutui-grid-item-text-margin | ` 8px` |
+| --nutui-grid-item-text-color | ` $gray1` |
+| --nutui-grid-item-icon-color | ` $gray1` |
+| --nutui-grid-item-text-font-size | `  $font-size-1` |

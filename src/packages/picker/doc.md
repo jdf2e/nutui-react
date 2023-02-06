@@ -8,8 +8,7 @@
 ```ts
 // react
 import { Picker } from '@nutui/nutui-react';
-// taro
-import { Picker } from '@nutui/nutui-react-taro';
+
 ```
 
 
@@ -394,3 +393,27 @@ export default App;
 | onChange`v1.2.2`     | 每一列值变更时调用   | 改变的列数，改变值 value，当前选中值 |
 | onCloseUpdate        | 联动时，关闭时回调   | 当前选中值，依次返回this |
 | onClose              | 关闭时触发          | 返回选中值 value，选中值对象 |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-picker-cancel-color | ` #808080` |
+| --nutui-picker-ok-color | ` $primary-color` |
+| --nutui-picker-bar-cancel-font-size | `  14px` |
+| --nutui-picker-bar-ok-font-size | ` 14px` |
+| --nutui-picker-bar-button-padding | `  0 15px` |
+| --nutui-picker-bar-title-font-size | `  16px` |
+| --nutui-picker-bar-title-color | `  $title-color` |
+| --nutui-picker-bar-title-font-weight | `  normal` |
+| --nutui-picker-item-height | ` 36px` |
+| --nutui-picker-item-text-color | `  $title-color` |
+| --nutui-picker-item-active-text-color | `  inherit` |
+| --nutui-picker-item-text-font-size | `  14px` |
+| --nutui-picker-item-active-line-border | `  1px solid #d8d8d8` |
+| --nutui-picker-columns-item-color | `  $title-color` |

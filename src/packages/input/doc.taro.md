@@ -1,0 +1,504 @@
+# Input 输入框
+
+### 介绍
+
+用户可以在文本框里输入内容。
+
+### 安装
+
+```javascript
+import { Input } from '@nutui/nutui-react-taro';
+```
+
+## 代码演示
+
+### 基础用法
+
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Input } from '@nutui/nutui-react-taro';
+
+const App = () => {
+    const [value, UpdateValue] = useState('')
+  return (
+    <>
+      <Input name="text" label="文本" defaultValue={value}  placeholder="文本" change={(val) => {
+            UpdateValue(val)
+          }}/>
+    </>
+  );
+};
+export default App;
+```
+:::
+
+
+### 自定义类型
+
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Input } from '@nutui/nutui-react-taro';
+
+const App = () => {
+    const  [state, setState] = useState({
+        text: '',
+        password: '',
+        number: '',
+        digit: '',
+        tel: ''
+    })
+  return (
+    <>
+       <Input
+          name="text"
+          label="文本" 
+          placeholder="文本" 
+          defaultValue={state.text}
+        />
+        <Input
+          name="password"
+          label="密码" 
+          placeholder="密码"
+          defaultValue={state.password}
+          type="password"
+        />
+        <Input
+          name="number"
+          label="数字" 
+          placeholder="数字"
+          defaultValue={state.number}
+          type="number"
+        />
+        <Input
+          name="digit"
+          label="整数" 
+          placeholder="整数"
+          defaultValue={state.digit}
+          type="digit"
+        />
+        <Input
+          name="tel"
+          label="手机号" 
+          placeholder="手机号"
+          defaultValue={state.tel}
+          type="tel"
+        />
+    </>
+  )
+}
+export default App;
+```
+:::
+### 禁用和只读
+
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Input } from '@nutui/nutui-react-taro';
+
+const App = () => {
+    const  [state, setState] = useState({
+        readonly:'',
+        disabled: '',
+    })
+  return (
+    <>
+       <Input
+          label="文本" 
+          placeholder="只读" 
+          defaultValue={state.readonly}
+          readonly
+        />
+        <Input
+          label="文本" 
+          placeholder="禁用"
+          defaultValue={state.disabled}
+          disabled
+        />
+    </>
+  )
+}
+export default App;
+```
+:::
+### 显示图标
+
+通过 `left-icon` 和 `right-icon` 配置输入框两侧的图标，通过设置 `clearable` 在输入过程中展示清除图标。需要引用 `Icon` 组件
+
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Input } from '@nutui/nutui-react-taro';
+
+const App = () => {
+    const  [state, setState] = useState({
+        showIcon: '',
+        clear: '',
+    })
+  return (
+    <>
+       <Input
+          label="文本" 
+          placeholder="显示图标" 
+          defaultValue={state.showIcon}
+          leftIcon="dongdong"
+          rightIcon="ask2"
+        />
+        <Input
+          label="文本" 
+          placeholder="显示清除图标"
+          defaultValue={state.clear}
+          clearable
+          clearSize="14"
+        />
+    </>
+  )
+}
+export default App;
+```
+:::
+
+### 错误提示
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Input } from '@nutui/nutui-react-taro';
+
+const App = () => {
+    const  [state, setState] = useState({
+        required: '',
+        error1: '',
+        error2: '',
+    })
+  return (
+    <>
+       <Input
+          label="文本" 
+          placeholder="必填项" 
+          defaultValue={state.required}
+          required
+        />
+        <Input
+          label="文本" 
+          placeholder="输入内容标红"
+          defaultValue={state.error1}
+          error
+        />
+         <Input
+          label="文本" 
+          placeholder="底部错误提示文案"
+          defaultValue={state.error2}
+          errorMessage="底部错误提示文案"
+        />
+    </>
+  )
+}
+export default App;
+```
+:::
+### 插入按钮
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Input, Button } from '@nutui/nutui-react-taro';
+
+const App = () => {
+    const  [state, setState] = useState({
+        buttonVal: '',
+    })
+    
+  return (
+    <>
+       <Input
+          label="短信验证码"
+          placeholder="请输入短信验证码"
+          defaultValue={state.buttonVal}
+          clearable
+          center
+          slotButton={<Button size="small" type="primary">发送验证码</Button>}
+        />
+    </>
+  )
+}
+export default App;
+```
+:::
+### 格式化输入内容
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Input } from '@nutui/nutui-react-taro';
+
+const App = () => {
+    const  [state, setState] = useState({
+        format1: '',
+        format2: '',
+    })
+    const formatter = (value: string) => value.replace(/\d/g, '')
+  return (
+    <>
+       <Input
+          label="文本"
+          placeholder="在输入时执行格式化"
+          defaultValue={state.format1}
+          formatter={formatter}
+        />
+        <Input
+          label="文本"
+          placeholder="在失焦时执行格式化"
+          defaultValue={state.format2}
+          formatter={formatter}
+          formatTrigger="onBlur"
+        />
+    </>
+  )
+}
+export default App;
+```
+:::
+### 显示字数统计
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Input } from '@nutui/nutui-react-taro';
+
+const App = () => {
+    const  [state, setState] = useState({
+        textarea: '',
+    })
+  return (
+    <>
+       <Input
+          label="留言"
+          placeholder="请输入留言"
+          defaultValue={state.textarea}
+          type="textarea"
+          showWordLimit
+          rows="2"
+          maxlength="50"
+        />
+    </>
+  )
+}
+export default App;
+```
+:::
+### 对齐方式
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Input } from '@nutui/nutui-react-taro';
+
+const App = () => {
+    const  [state, setState] = useState({
+        align1: '',
+        align2: '',
+    })
+  return (
+    <>
+       <Input
+          label="文本"
+          placeholder="文本内容对齐"
+          defaultValue={state.align1}
+          labelAlign="right"
+        />
+        <Input
+          label="文本"
+          placeholder="输入框内容对齐"
+          defaultValue={state.align2}
+          labelAlign="right"
+        />
+    </>
+  )
+}
+export default App;
+```
+:::
+### 无边框
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Input } from '@nutui/nutui-react-taro';
+
+const App = () => {
+    const  [state, setState] = useState({
+        noBorder1: '',
+        noBorder2: '',
+    })
+  return (
+    <>
+       <Input
+          label="无边框"
+          defaultValue={state.noBorder1}
+          placeholder="无边框"
+          border={false}
+        />
+        <Input
+          label="无边框"
+          defaultValue={state.noBorder2}
+           placeholder="无边框"
+          border={false}
+        />
+    </>
+  )
+}
+export default App;
+```
+:::
+### 点击事件
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Input } from '@nutui/nutui-react-taro';
+
+const App = () => {
+    const  [state, setState] = useState({
+        event: '',
+    })
+    const change = (value: string | number, event: Event) => {
+        console.log('change: ', value, event)
+    }
+    const focus = (value: string | number, event: Event) => {
+        console.log('focus:', value, event)
+    }
+    const blur = (value: string | number, event: Event) => {
+        console.log('blur:', value, event)
+    }
+    const clear = (value: string | number, event: Event) => {
+        console.log('clear:', value, event)
+    }
+    const click = (value: string | number) => {
+        console.log('click:', value)
+    }
+    const clickInput = (value: string | number) => {
+        console.log('clickInput:', value)
+    }
+    const clickLeftIcon = (value: string | number) => {
+        console.log('clickLeftIcon:', value)
+    }
+    const clickRightIcon = (value: string | number) => {
+        console.log('clickRightIcon:', value)
+    }
+  return (
+    <>
+       <Input
+          label="点击"
+          placeholder="点击"
+          defaultValue={state.event}
+          leftIcon="dongdong"
+          rightIcon="ask2"
+          clearable
+          onChange={change}
+          onFocus={focus}
+          onblur={blur}
+          onClear={clear}
+          onClick={click}
+          onClickInput={clickInput}
+          onClickLeftIcon={clickLeftIcon}
+          onClickRightIcon={clickRightIcon}
+        />
+    </>
+  )
+}
+export default App;
+```
+:::
+### Prop
+
+| 参数         | 说明                                   | 类型           | 默认值  |
+| ------------ | -------------------------------------- | -------------- | ------- |
+| defaultValue | 初始默认值                 | String         | -       |
+| type         | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `textarea` `number` `digit`      | String         | `text`  |
+| name`v1.3.10`  | 组件名字，用于表单提交获取数据 | String         | -       |
+| ref`v1.3.10`  | 用于获取内部input实例ref | RefAttributes         | -       |
+| placeholder  | 输入框为空时占位符                           | String         | -       |
+| label        | 左侧文本                               | String         | -       |
+| labelClass`v1.2.1`  | 左侧文本额外类名                        | String | -  |
+| labelWidth`v1.2.1`  | 左侧文本宽度，默认单位为 `px`            | String、Number | `80`    |
+| labelAlign`v1.2.1`  | 左侧文本对齐方式，可选值 `left`、`center`、`right`   | String | `left` |
+| inputAlign`v1.2.1`  | 输入框内容对齐方式，可选值 `left`、`center`、`right` | String | `left` |
+| colon`v1.2.1`        | 是否在 label 后面添加冒号               | Boolean        | `false` |
+| required`v1.2.1`     | 左侧*号是否展示                        | Boolean        | `false` |
+| border`v1.2.1`       | 是否显示下边框                         | Boolean        | `true` |
+| disabled     | 是否禁用                              | Boolean        | `false` |
+| readonly     | 是否只读                              | Boolean        | `false` |
+| autofocus`v1.2.1`    | 是否自动获得焦点，iOS 系统不支持该属性     | Boolean        | `false` |
+| maxlength      | 限制最长输入字符                       | String、Number  | -       |
+| clearable    | 展示清除 Icon                         | Boolean        | `false`  |
+| clearIcon`v1.2.1`   | 清除图标 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon)   | String        | `mask-close`  |
+| clearSize`v1.2.1`   | 清除图标的 `font-size` 大小           | String        | `14`  |
+| leftIcon`v1.2.1`    | 左侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
+| rightIcon`v1.2.1`   | 右侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
+| leftIconSize`v1.2.1`    | 左侧 Icon 的 `font-size` 大小           | String        | `14`  |
+| rightIconSize`v1.2.1`   | 右侧 Icon 的 `font-size` 大小           | String        | `14`  |
+| showWordLimit`v1.2.1` | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | Boolean | `false`  |
+| error`v1.2.1`         | 是否标红                                | Boolean | `false`  |
+| errorMessage`v1.2.1` | 底部错误提示文案，为空时不展示            | String、Number | - |
+| errorMessageAlign`v1.2.1` | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`          | String | - |
+| formatter`v1.2.1`      | 输入内容格式化函数    | `(val: string) => string` | - |
+| formatTrigger`v1.2.1` | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | String | - |
+### Events
+
+| 名称   | 说明           | 回调参数    |
+|--------|----------------|-------------|
+| onChange `v1.3.8` | 输入框内容变化时触发 | val ,event |
+| onFocus `v1.3.8`  | 输入框聚焦时触发     | val  ,event |
+| onBlur `v1.3.8`   | 输入框失焦时触发     | val ,event  |
+| onClear `v1.3.8`  | 点击清除按钮时触发   | val ,event  |
+| onClick `v1.3.8`  | 点击组件时触发      | val ,event  |
+| onClickInput `v1.3.8`     | 点击输入区域时触发      | val ,event  |
+| onClickLeftIcon `v1.3.8`  | 点击左侧图标时触发      | val ,event  |
+| onClickRightIcon `v1.3.8` | 点击右侧图标时触发      | val ,event  |
+
+### Slots
+| 名称                 | 说明     | 
+|--------------------|----------|
+| slotButton`v1.2.1`       | 自定义输入框尾部按钮 |
+| slotInput`v1.2.1` | 自定义输入框，使用此插槽后，与输入框相关的属性和事件将失效 |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-input-border-bottom | ` #eaf0fb` |
+| --nutui-input-disabled-color | ` #c8c9cc` |
+| --nutui-input-required-color | `  $required-color` |
+| --nutui-input-font-size | ` $font-size-2` |
+| --nutui-input-padding | ` 10px 25px` |
+| --nutui-inputnumber-icon-color | `  $title-color` |
+| --nutui-inputnumber-icon-void-color | `  $disable-color` |
+| --nutui-inputnumber-icon-disabled-color | `  $gray2` |
+| --nutui-inputnumber-icon-size | ` 20px` |
+| --nutui-inputnumber-input-font-size | `  12px` |
+| --nutui-inputnumber-input-font-color | `  $gray1` |
+| --nutui-inputnumber-input-background-color | `  $gray4` |
+| --nutui-inputnumber-input-border-radius | `  4px` |
+| --nutui-inputnumber-input-width | ` 40px` |
+| --nutui-inputnumber-input-margin | `  0 6px` |
+| --nutui-inputnumber-input-border | ` 0` |
+| --nutui-inputnumber-border | ` 0` |
+| --nutui-inputnumber-border-radius | ` 0` |
+| --nutui-inputnumber-height | ` auto` |
+| --nutui-inputnumber-line-height | ` normal` |
+| --nutui-inputnumber-border-box | `  content-box` |
+| --nutui-inputnumber-display | ` flex` |

@@ -9,8 +9,7 @@ A percentage number with an arrow indicating the trend of the indicator
 ```javascript
 // React
 import { TrendArrow } from '@nutui/nutui-react';
-// taro
-import { TrendArrow } from '@nutui/nutui-react-taro'
+
 ```
 
 ## Demo
@@ -212,3 +211,17 @@ export default App;
 | iconSize         | arrow size               | String | '12px'               |
 | upIconName         | custom up arrow icon               | String | 'triangle-up'               |
 | downIconName           | custom down arrow icon               | String | 'triangle-down'               |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-trendarrow-font-size | ` 14px` |
+| --nutui-trendarrow-before-icon-margin | `  4px` |
+| --nutui-trendarrow-font-size | ` 14px` |
+| --nutui-trendarrow-before-icon-margin | `  4px` |

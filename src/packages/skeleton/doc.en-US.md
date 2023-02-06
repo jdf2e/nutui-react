@@ -8,8 +8,7 @@ Filling gray bitmap in the area to be loaded on the page is essentially the tran
 ``` ts
 // react
 import { Skeleton } from '@nutui/nutui-react';
-// taro
-import { Skeleton } from '@nutui/nutui-react-taro';
+
 ```
 
 
@@ -146,3 +145,14 @@ export default App;
 | round  | Is the title / paragraph rounded                                | Boolean | `false`  |
 | row    | Set the number of paragraph lines                                           | Number | 1       |
 | title  | Show paragraph titles                                        | Boolean | `false`   |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-skeleton-content-line-title-background-color | `  #efefef` |

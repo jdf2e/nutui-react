@@ -9,8 +9,7 @@
 ``` javascript
 // react
 import { Badge } from '@nutui/nutui-react';
-// taro
-import { Badge } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代码实例
@@ -201,3 +200,23 @@ export default App;
 | right   | 左右偏移量，支持单位设置，可设置为：5 等 | Number  | `0`       |
 | color   | 徽标背景颜色 | String  | `#fa2c19` |
 | icons   | 徽标自定义 | String  | - |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-badge-color | ` #fff` |
+| --nutui-badge-font-size | ` $font-size-1` |
+| --nutui-badge-default-background-color | `  rgba(255, 255, 255, 1)` |
+| --nutui-badge-border-radius | ` 14px` |
+| --nutui-badge-padding | ` 0 5px` |
+| --nutui-badge-z-index | ` 1` |
+| --nutui-badge-dot-width | ` 7px` |
+| --nutui-badge-dot-height | ` 7px` |
+| --nutui-badge-dot-border-radius | ` 7px` |
+| --nutui-badge-dot-padding | ` 0px` |

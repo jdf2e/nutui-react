@@ -43,10 +43,12 @@
     align-items: center;
     padding: $radio-button-padding;
     font-size: $radio-button-font-size;
-    background: #f6f7f9;
+    background: $radio-button-background;
     border-radius: $radio-button-border-radius;
     color: $radio-label-font-color;
     box-sizing: border-box;
+    border: 1px solid $radio-button-background;
+
     &--active {
       background: $radio-label-button-background;
       color: $radio-label-font-active-color;

@@ -8,8 +8,7 @@
 ``` ts
 // react
 import { Avatar } from '@nutui/nutui-react';
-// taro
-import { Avatar } from '@nutui/nutui-react-taro';
+
 ```
 
 ### 基本用法
@@ -234,3 +233,19 @@ export default App;
 | activeAvatar `v1.3.8廢棄` | 點擊頭像觸發事件    | Function | event    |
 | onActiveAvatar `v1.3.8` | 點擊頭像觸發事件    | Function | event    |
 | onError       | 圖片加載失敗的事件   | Function | event    |
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-avatar-square | ` 5px` |
+| --nutui-avatar-large-width | ` 60px` |
+| --nutui-avatar-large-height | ` 60px` |
+| --nutui-avatar-small-width | ` 32px` |
+| --nutui-avatar-small-height | ` 32px` |
+| --nutui-avatar-normal-width | ` 40px` |
+| --nutui-avatar-normal-height | ` 40px` |

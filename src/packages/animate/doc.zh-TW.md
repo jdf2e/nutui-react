@@ -9,8 +9,7 @@
 ```ts
 // react
 import { Animate } from '@nutui/nutui-react';
-// taro
-import { Animate } from '@nutui/nutui-react-taro';
+
 ```
 
 ### 點擊觸發

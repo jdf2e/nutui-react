@@ -92,7 +92,6 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
 
     // 选中值进行修改
     useEffect(() => {
-      console.log('修改')
       onChange && onChange(columnIndex, chooseValueData, selectedOptions())
       if (isConfirmEvent.current) {
         isConfirmEvent.current = false

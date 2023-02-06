@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Step, Steps } from '@/packages/nutui.react.taro'
 import '@/packages/steps/demo.scss'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   '74fc5d8a': string
@@ -105,7 +107,8 @@ const StepsDemo = () => {
   }
   return (
     <>
-      <div className="demo padding">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} padding`}>
         <h2>{translated['74fc5d8a']}</h2>
         <div className="steps-wrapper">
           <Steps current={stepState.current1} onClickStep={handleClickStep}>

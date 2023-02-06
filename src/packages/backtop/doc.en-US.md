@@ -9,8 +9,7 @@ Provides a quick return to the top function for long pages.
 ```javascript
 // react
 import { BackTop } from '@nutui/nutui-react';
-// taro
-import { BackTop } from '@nutui/nutui-react-taro';
+
 ```
 
 
@@ -331,3 +330,14 @@ export default App;
 | Event         | Description               | Arguments          |
 | ------------ | ------------------ | ----------------- |
 | onClick | Emitted when component is clicked | event: MouseEvent |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-backtop-border-color | ` #e0e0e0` |

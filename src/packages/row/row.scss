@@ -20,6 +20,8 @@
   text-align: center;
   border-radius: $row-content-border-radius;
   background: $row-content-background-color;
+  font-size: 14px;
+
   &.flex-content-light {
     background: $row-content-light-background-color;
   }
