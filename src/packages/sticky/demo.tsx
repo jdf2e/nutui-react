@@ -98,7 +98,7 @@ const StickyDemo = () => {
           <div
             className="sticky-container"
             ref={containerTopRef}
-            style={{ height: '300px' }}
+            style={{ height: '600px' }}
           >
             <Sticky container={containerTopRef} top={57}>
               <Button style={{ marginLeft: '100px' }} type="info">

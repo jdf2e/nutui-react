@@ -93,7 +93,10 @@ const StickyDemo = () => {
             ref={containerTopRef}
             style={{ height: '600px' }}
           >
-            <Sticky container={containerTopRef} top={0}>
+            <Sticky
+              container={containerTopRef}
+              top={getEnv() === 'WEB' ? 60 : 0}
+            >
               <Button style={{ marginLeft: '100px' }} type="info">
                 {button3}
               </Button>

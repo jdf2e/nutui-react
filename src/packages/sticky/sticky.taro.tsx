@@ -49,6 +49,13 @@ interface StickyStyle extends RootStyle {
   zIndex?: number
 }
 
+const defaultProps = {
+  position: 'top',
+  top: 0,
+  bottom: 0,
+  zIndex: 2000,
+} as StickyProps
+
 export const Sticky: FunctionComponent<StickyProps> = (props) => {
   const {
     position = 'top',
@@ -100,7 +107,7 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
     let style: StickyStyle = {}
     if (rootRect.height) style.height = rootRect.height
     if (rootRect.width) style.width = rootRect.width
-    style.transform = transform ? `translate3d(0, ${transform}, 0)` : ''
+    style.transform = `translate3d(0, ${transform}px, 0)`
     style[position] = offset
     style.zIndex = zIndex
     return style
@@ -136,8 +143,8 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
 
   useEffect(() => {
     if (getEnv() === 'WEB' && getElement() !== window) {
-      window.addEventListener('touchmove', handleScroll, false)
-      window.addEventListener('scroll', handleScroll, false)
+      window.addEventListener('touchmove', handleScroll, true)
+      window.addEventListener('scroll', handleScroll, true)
       return () => {
         window.removeEventListener('touchmove', handleScroll)
         window.removeEventListener('scroll', handleScroll)
@@ -168,5 +175,5 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
   )
 }
 
-// Sticky.defaultProps = defaultProps
+Sticky.defaultProps = defaultProps
 Sticky.displayName = 'NutSticky'
