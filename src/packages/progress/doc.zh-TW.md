@@ -227,7 +227,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React, {useState} from "react";
 import { Progress, Cell, Button } from '@nutui/nutui-react';
 
 const App = () => {

@@ -16,11 +16,12 @@ import { Sticky } from '@nutui/nutui-react';
 ### 基础用法
 :::demo
 ```tsx
-const App = () => {
+
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react'
 
- const handleChange = (val: boolean) => {
+const App = () => {
+  const handleChange = (val: boolean) => {
     console.log('吸顶状态发生了改变,当前fixed为', val)
   }
 return(
@@ -54,9 +55,12 @@ export default App;
 ### 指定容器内
 :::demo
 ```tsx
-const App = () => {
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react'
+
+const App = () => {
+  const containerTopRef = useRef(null)
+  const containerRef = useRef(null)
 
    return(
     <>
@@ -95,8 +99,6 @@ import {Button,Cell, Sticky } from '@nutui/nutui-react'
 export default App;
 ```
 :::
-
-
 
 ## API
 

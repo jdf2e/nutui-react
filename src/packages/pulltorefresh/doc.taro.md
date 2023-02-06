@@ -17,7 +17,7 @@ import { PullToRefresh } from '@nutui/nutui-react-taro';
 :::demo
 
 ```tsx
-import React from "react";
+import React, {useState}  from "react";
 import { PullToRefresh, Cell } from '@nutui/nutui-react-taro'
 
 const App = () => {

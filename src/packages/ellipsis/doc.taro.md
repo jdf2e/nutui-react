@@ -19,8 +19,7 @@ import { Ellipsis } from '@nutui/nutui-react-taro';
 
 ```tsx
 import  React from "react";
-import { Ellipsis } from '@nutui/nutui-react-taro';
-import Cell from '@/packages/cell'
+import { Ellipsis, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const content =
@@ -41,8 +40,7 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { Ellipsis } from '@nutui/nutui-react-taro';
-import Cell from '@/packages/cell'
+import { Ellipsis, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const content =
@@ -85,8 +83,7 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { Ellipsis } from '@nutui/nutui-react-taro';
-import Cell from '@/packages/cell'
+import { Ellipsis, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const content =
@@ -107,8 +104,7 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { Ellipsis } from '@nutui/nutui-react-taro';
-import Cell from '@/packages/cell'
+import { Ellipsis, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const content =
