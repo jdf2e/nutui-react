@@ -18,7 +18,7 @@ import { Cascader } from '@nutui/nutui-react';
 傳入`options`列表。
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -127,7 +127,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -239,7 +239,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -307,7 +307,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -380,7 +380,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -439,7 +439,7 @@ export default App;
 傳入`activeColor`指定選中的顏色。
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {

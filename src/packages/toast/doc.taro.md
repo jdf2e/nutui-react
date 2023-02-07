@@ -54,14 +54,14 @@ const App = () => {
         <Cell
           title="Text文字提示"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => textToast('网络失败，请稍后再试~')}
         />
         <Cell
           title="Text文字提示"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
             openToast('text', '网络失败，请稍后再试~')
@@ -71,7 +71,7 @@ const App = () => {
        <Cell
           title="Success 成功提示"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
             openToast('success', '成功提示')
@@ -81,7 +81,7 @@ const App = () => {
         <Cell
           title="Error 失败提示"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
             openToast('fail', '失败提示')
@@ -91,7 +91,7 @@ const App = () => {
         <Cell
           title=" Warning 警告提示"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
             openToast('warn', '警告提示')
@@ -101,7 +101,7 @@ const App = () => {
         <Cell
           title=" Loading 加载提示"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
             openToast('loading', '加载中')
@@ -111,7 +111,7 @@ const App = () => {
         <Cell
           title="设置展示时长为10秒提示"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
             openToast('text', '设置展示时长为10秒', 10)
@@ -121,7 +121,7 @@ const App = () => {
         <Cell
           title="关闭正在显示的toast"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
             SetShowToast(false)
@@ -130,7 +130,7 @@ const App = () => {
         <Cell
           title="传入icon组件中的'JD'图标"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
             openToast('text', '设置icon为JD', 2, 'JD')

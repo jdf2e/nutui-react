@@ -18,7 +18,7 @@ import { ImagePreview } from '@nutui/nutui-react-taro'
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -61,7 +61,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -104,7 +104,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -147,7 +147,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -208,7 +208,6 @@ const App = () => {
 export default App;
 ```
 :::
-
 
 
 ## API

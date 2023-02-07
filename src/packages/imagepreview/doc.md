@@ -13,14 +13,13 @@ import { ImagePreview } from '@nutui/nutui-react'
 
 ```
 
-
 ## 代码演示
 
 ### 基础用法
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -63,7 +62,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -106,7 +105,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -149,7 +148,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {

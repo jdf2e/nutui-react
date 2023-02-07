@@ -34,7 +34,7 @@ const App = () => {
         <>
             <Cell
             title="基础用法"
-            click={(event: React.MouseEvent) => {
+            onClick={(event: React.MouseEvent) => {
                 baseNotify('基础用法')
             }}
             />
@@ -70,25 +70,25 @@ const App = () => {
         <>
             <Cell
                 title="主要通知"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                 primaryNotify('主要通知')
                 }}
             />
             <Cell
                 title="成功通知"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                 successNotify('成功通知')
                 }}
             />
             <Cell
                 title="危险通知"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                 errorNotify('危险通知')
                 }}
             />
             <Cell
                 title="警告通知"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                 warningNotify('警告通知')
                 }}
             />
@@ -118,7 +118,7 @@ const App = () => {
         <>
             <Cell
                 title="自定义背景色和字体颜色"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     cusBgNotify('自定义背景色和字体颜色')
                 }}
             />
@@ -150,13 +150,13 @@ const App = () => {
         <>
              <Cell
                 title="自定义时长"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     timeNotify('自定义时长')
                 }}
             />
             <Cell
                 title="自定义位置"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     positionNotify('自定义位置')
                 }}
             />
