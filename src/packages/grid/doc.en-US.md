@@ -179,7 +179,7 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid,GridItem } from '@nutui/nutui-react'
+import { Grid,GridItem,Avatar } from '@nutui/nutui-react'
 
 const App = () => {
   return (

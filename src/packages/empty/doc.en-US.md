@@ -12,7 +12,6 @@ import { Empty } from '@nutui/nutui-react'
 
 ```
 
-
 ## Demo
 
 ### Basic usage
@@ -87,14 +86,14 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import { Empty } from '@nutui/nutui-react';
+import { Empty, Button } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <Empty image="error" description="Failed to load">
-        <div style="margin-top: 10px">
-            <nut-button icon="refresh" type="primary">Retry</nut-button>
-        </div>
+      <div style={{marginTop: "10px"}}>
+        <Button icon="refresh" type="primary">重试</Button>
+      </div>
     </Empty>
   );
 };

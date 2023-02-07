@@ -159,7 +159,7 @@ import  React, {useState} from "react";
 import { NoticeBar } from '@nutui/nutui-react';
 
 const App = () => {
-     const horseLamp2 = ref(['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox']);
+     const horseLamp2 = ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox'];
     return (
       <>
         <NoticeBar

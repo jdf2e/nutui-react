@@ -12,7 +12,6 @@ import { Empty } from '@nutui/nutui-react'
 
 ```
 
-
 ## 代碼演示
 
 ### 基礎用法
@@ -87,14 +86,14 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import { Empty } from '@nutui/nutui-react';
+import { Empty, Button } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <Empty image="error" description="加載失敗">
-        <div style="margin-top: 10px">
-            <nut-button icon="refresh" type="primary">重試</nut-button>
-        </div>
+      <div style={{marginTop: "10px"}}>
+        <Button icon="refresh" type="primary">重试</Button>
+      </div>
     </Empty>
   );
 };
@@ -110,8 +109,6 @@ export default App;
 | image         | 圖片類型，可選值為 error network empty，支持傳入圖片 URL              | ReactNode       |
 | imageSize        | 圖片大小，Number 類型單位為 px                    | Number \| String | -       |
 | description         | 圖片下方的描述文字  | ReactNode |    無數據             |
-
-
 
 
 ## 主題定制
