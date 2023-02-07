@@ -16,7 +16,7 @@ import { Cascader } from '@nutui/nutui-react-taro';
 传入`options`列表。
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cascader, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -125,7 +125,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cascader, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -237,7 +237,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cascader, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -305,7 +305,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cascader, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -378,7 +378,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cascader, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -437,7 +437,7 @@ export default App;
 传入`activeColor`指定选中的颜色。
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react-taro';
 
 const App = () => {

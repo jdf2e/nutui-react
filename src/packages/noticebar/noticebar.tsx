@@ -172,8 +172,6 @@ export const NoticeBar: FunctionComponent<
     return () => {
       // 销毁事件
       clearInterval(timer)
-      startRoll()
-      startRollEasy()
     }
   }, [])
 

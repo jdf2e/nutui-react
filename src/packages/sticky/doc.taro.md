@@ -19,6 +19,7 @@ import { Sticky } from '@nutui/nutui-react-taro'
 :::demo
 
 ```tsx
+
 const App = () => {
   import React, { useEffect, useRef, useState } from 'react'
   import { Button, Cell, Sticky } from '@nutui/nutui-react-taro'
@@ -59,6 +60,7 @@ export default App
 :::demo
 
 ```tsx
+
 const App = () => {
   import React, { useEffect, useRef, useState } from 'react'
   import { Button, Cell, Sticky } from '@nutui/nutui-react-taro'

@@ -187,7 +187,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React, {useState} from "react";
+import  React from "react";
 import { Range,Cell,Toast } from '@nutui/nutui-react';
 
 const App = () => {
@@ -221,7 +221,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React, {useState} from "react";
+import  React  from "react";
 import { Range,Cell,Toast } from '@nutui/nutui-react';
 
 const App = () => {
@@ -255,7 +255,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React, {useState} from "react";
+import  React from "react";
 import { Range,Cell,Toast } from '@nutui/nutui-react';
 
 const App = () => {
@@ -288,7 +288,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React, {useState} from "react";
+import  React from "react";
 import { Range,Cell,Toast } from '@nutui/nutui-react';
 
 const App = () => {

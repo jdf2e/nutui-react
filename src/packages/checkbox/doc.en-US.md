@@ -392,7 +392,7 @@ const CheckboxGroupOptions = () => {
     console.log(v)
     setCheckboxValVal(v)
   }
-  return <CheckboxGroup options={optionsDemo1} checkedValue={radioVal} onChange={handleChange}></CheckboxGroup>
+  return <Checkbox.Group options={optionsDemo1} checkedValue={checkboxVal} onChange={handleChange} />
 }
 export default CheckboxGroupOptions;
 ```

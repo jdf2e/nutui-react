@@ -130,7 +130,7 @@ test('should render close icon when using closeable prop', () => {
     </>
   )
   const closeIcon = container.querySelector(
-    '.nutui-popup__close-icon'
+    '.nut-popup__close-icon'
   ) as HTMLElement
   expect(closeIcon).toBeTruthy()
 })
@@ -143,7 +143,7 @@ test('should render correct close icon when using close-icon prop', () => {
   )
 
   const closeIcon = container.querySelector(
-    '.nutui-popup__close-icon'
+    '.nut-popup__close-icon'
   ) as HTMLElement
   expect(closeIcon.innerHTML).toMatchSnapshot()
 })
@@ -187,7 +187,7 @@ test('event click-close-icon test', () => {
     </>
   )
   const closeIcon = container.querySelector(
-    '.nutui-popup__close-icon'
+    '.nut-popup__close-icon'
   ) as HTMLElement
   const overlay = container.querySelector('.nut-overlay') as Element
   fireEvent.click(closeIcon)

@@ -15,6 +15,7 @@ const ImageDemo = () => {
       circle: '圆形图片',
       loading: '加载中提示',
       error: '加载失败',
+      lazyload: '图片懒加载',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -23,14 +24,18 @@ const ImageDemo = () => {
       circle: 'Round',
       loading: 'Loading',
       error: 'Error',
+      lazyload: 'Lazyload',
     },
   })
   const src =
-    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+    'https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+  const placeholderImg =
+    'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'
 
   const fits = ['contain', 'cover', 'fill', 'none', 'scale-down']
   const position1 = ['left', 'center', 'right']
   const position2 = ['top', 'center', 'bottom']
+  const imageData = [1, 2, 3, 4, 5, 6]
 
   const style = `
  .demo .image-text {
@@ -41,6 +46,10 @@ const ImageDemo = () => {
  .demo .nut-row-flex-wrap .nut-col {
     margin-bottom: 20px;
   }
+   .lazy-box .nut-image{
+    margin-bottom: 10px;
+  }
+  .lazy-box{width:100%}
 `
   return (
     <>
@@ -141,6 +150,7 @@ const ImageDemo = () => {
                 width="100"
                 height="100"
                 showLoading
+                isLazy
                 onLoad={() => {
                   console.log('image onload')
                 }}
@@ -151,6 +161,7 @@ const ImageDemo = () => {
               <Image
                 width="100"
                 height="100"
+                isLazy
                 slotLoding={
                   <>
                     <Icon name="loading" />
@@ -184,6 +195,25 @@ const ImageDemo = () => {
               <div className="image-text">自定义</div>
             </Col>
           </Row>
+        </Cell>
+        <h2>{translated.lazyload}</h2>
+        <Cell>
+          <div className="lazy-box">
+            {imageData.map((item) => {
+              return (
+                <Image
+                  key={item}
+                  height="150"
+                  src={src}
+                  isLazy
+                  showError
+                  showLoading
+                  loadingImg={placeholderImg}
+                  errorImg={placeholderImg}
+                />
+              )
+            })}
+          </div>
         </Cell>
       </div>
     </>

@@ -437,8 +437,6 @@ $inputnumber-display: var(--nutui-inputnumber-display, flex) !default;
 $zindex-actionsheet: var(--nutui-zindex-actionsheet, 10001) !default;
 $body-background: var(--nutui-body-background, #f6f6f6) !default;
 $light-color: var(--nutui-light-color, #f6f6f6) !default;
-$font-size-base: $font-size-2;
-$font-size-small: $font-size-1;
 $actionsheet-light-color: var(
   --nutui-actionsheet-light-color,
   #f6f6f6
@@ -1667,7 +1665,7 @@ $searchbar-action-text-color: var(
   $gray1
 ) !default;
 $searchbar-input-height: var(--nutui-searchbar-input-height, 32px) !default;
-$searchbar-input-padding: var(--nutui-searchbar-input-padding, 0 28px) !default;
+$searchbar-input-padding: var(--nutui-searchbar-input-padding, 0 5px) !default;
 $searchbar-input-background: var(
   --nutui-searchbar-input-background,
   #f7f7f7
