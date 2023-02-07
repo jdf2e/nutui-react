@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import Taro from '@tarojs/taro'
+import { getEnv } from '@tarojs/taro'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Icon from '@/packages/icon/index.taro'
@@ -303,7 +303,7 @@ export const SearchBar: FunctionComponent<
   }
 
   const envClass = () => {
-    return Taro.getEnv() === 'WEB' ? 'nut-searchbar-taro' : ''
+    return getEnv() === 'WEB' ? 'nut-searchbar-taro' : ''
   }
 
   return (
