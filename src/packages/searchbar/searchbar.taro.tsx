@@ -164,7 +164,7 @@ export const SearchBar: FunctionComponent<
           shape === 'round' ? searchbarBem('round') : ''
         } ${clearable ? searchbarBem('input-clear') : ''}`}
         ref={searchRef}
-        style={{ ...props.style, background: props.inputBackground }}
+        style={{ ...props.style }}
         value={value || ''}
         placeholder={placeholder || locale.placeholder}
         disabled={disabled}
@@ -315,7 +315,10 @@ export const SearchBar: FunctionComponent<
     >
       {renderLeftoutIcon()}
       {renderLabel()}
-      <div className={`${searchbarBem('content')}`}>
+      <div
+        className={`${searchbarBem('content')}`}
+        style={{ background: props.inputBackground }}
+      >
         {renderLeftinIcon()}
         <div className="nut-searchbar__input-box">{renderField()}</div>
         {renderRightinIcon()}
