@@ -21,6 +21,13 @@ export interface StickyProps extends BasicComponent {
   onChange?: (val: boolean) => void
 }
 
+const defaultProps = {
+  position: 'top',
+  top: 0,
+  bottom: 0,
+  zIndex: 2000,
+} as StickyProps
+
 export const Sticky: FunctionComponent<StickyProps> = (props) => {
   const {
     position = 'top',
@@ -31,7 +38,6 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
     container,
     className,
     onChange,
-
     ...rest
   } = props
   // const { locale } = useConfig()
@@ -178,5 +184,5 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
   )
 }
 
-// Sticky.defaultProps = defaultProps
+Sticky.defaultProps = defaultProps
 Sticky.displayName = 'NutSticky'
