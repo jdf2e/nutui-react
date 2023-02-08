@@ -1,6 +1,7 @@
 import * as React from 'react'
-import { render } from '@testing-library/react'
+import { act, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { useEffect, useState } from 'react'
 import Ellipsis from '@/packages/ellipsis'
 
 const content =
@@ -23,4 +24,25 @@ test('Ellipsis Props Rows', () => {
     <Ellipsis content={content} direction="start" rows="3" />
   )
   expect(container).toMatchSnapshot()
+})
+
+jest.useFakeTimers()
+test('Ellipsis Memory Leak', () => {
+  const App = () => {
+    const [count, setCount] = useState(0)
+    useEffect(() => {
+      const timer = setInterval(() => {
+        act(() => {
+          setCount(count + 1)
+        })
+      }, 1000)
+      return () => clearInterval(timer)
+    })
+    return <Ellipsis content={`${count}`} direction="end" />
+  }
+  const { baseElement } = render(<App />)
+  const elementCount = baseElement.children.length
+  jest.advanceTimersByTime(2000)
+  const newElementCount = baseElement.children.length
+  expect(newElementCount).toBe(elementCount)
 })
