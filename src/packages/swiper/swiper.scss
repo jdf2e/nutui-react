@@ -1,4 +1,5 @@
 @import '../swiperitem/swiperitem.scss';
+
 .nut-swiper {
   position: relative;
   z-index: 1;
@@ -6,31 +7,37 @@
   transition-property: transform;
   box-sizing: content-box;
   overflow: hidden;
+
   &__inner {
     display: flex;
     height: 100%;
   }
+
   &__vertical {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     flex-direction: column;
   }
+
   &__pagination {
     display: flex;
     position: absolute;
     left: 50%;
-    bottom: 12px;
+    bottom: $swiper-pagination-bottom;
     transform: translateX(-50%);
+
     i {
       width: $swiper-pagination-item-width;
       height: $swiper-pagination-item-height;
       margin-right: $swiper-pagination-item-margin-right;
       border-radius: $swiper-pagination-item-border-radius;
+
       &:last-child {
         margin-right: 0;
       }
     }
   }
+
   &__pagination-vertical {
     top: 50%;
     left: 12px;
@@ -39,6 +46,7 @@
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     transform: translateY(-50%);
+
     i {
       margin-bottom: 5px;
     }
