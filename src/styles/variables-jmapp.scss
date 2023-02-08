@@ -1493,6 +1493,14 @@ $tabs-horizontal-tab-line-color: linear-gradient(
   $primary-color 0%,
   rgba(#fa2c19, 0.15) 100%
 ) !default;
+$tabs-horizontal-tab-line-bottom: var(
+  --nutui-tabs-horizontal-line-bottom,
+  15%
+) !default;
+$tabs-horizontal-tab-line-border-radius: var(
+  --nutui-tabs-horizontal-line-bottom,
+  15px
+) !default;
 $tabs-horizontal-titles-height: var(
   --nutui-tabs-horizontal-titles-height,
   40px

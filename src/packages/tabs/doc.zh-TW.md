@@ -68,7 +68,34 @@ export default App;
 
 :::
 
-### 通过 pane-key 匹配
+### 基础用法-Title 左对齐
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs, TabPane } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value} onChange={({ paneKey }) => {
+        setTab1value(paneKey)
+      }} leftAlign>
+        <TabPane title="Tab 1"> Tab 1 </TabPane>
+        <TabPane title="Tab 2"> Tab 2 </TabPane>
+        <TabPane title="Tab 3"> Tab 3 </TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 通过 paneKey 匹配
 
 :::demo
 
@@ -83,9 +110,9 @@ const App = () => {
       <Tabs value={tab2value} onChange={({ paneKey }) => {
         setTab2value(paneKey)
       }}>
-        <TabPane title="Tab 1" pane-key="0"> Tab 1 </TabPane>
-        <TabPane title="Tab 2" pane-key="1" disabled> Tab 2 </TabPane>
-        <TabPane title="Tab 3" pane-key="2"> Tab 3 </TabPane>
+        <TabPane title="Tab 1" paneKey="0"> Tab 1 </TabPane>
+        <TabPane title="Tab 2" paneKey="1" disabled> Tab 2 </TabPane>
+        <TabPane title="Tab 3" paneKey="2"> Tab 3 </TabPane>
       </Tabs>
     </>
   );
@@ -325,6 +352,7 @@ export default App;
 | titleGutter  | 标签间隙                                      | number,string | 0          |
 | titleNode    | 自定义导航区域                                 | `() => JSX.Element[]` | 0          |
 | size         | 标签栏字体尺寸大小 可选值 large normal small | string        | normal     |
+| leftAlign | 标题左对齐 | boolean | false |
 
 ## Tabs Children
 
