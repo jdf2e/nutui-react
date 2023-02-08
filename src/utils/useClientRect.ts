@@ -44,6 +44,9 @@ export const getRect = (elementRef: Element | Window | undefined) => {
 }
 
 export const getRectByTaro = async (element: any) => {
-  const res = await element.getBoundingClientRect()
-  return res
+  if (element) {
+    const res = await element.getBoundingClientRect()
+    return res
+  }
+  return Promise.resolve({})
 }
