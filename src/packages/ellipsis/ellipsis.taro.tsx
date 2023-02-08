@@ -4,7 +4,7 @@ import React, {
   useRef,
   useLayoutEffect,
 } from 'react'
-import Taro from '@tarojs/taro'
+import { createSelectorQuery } from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { getRectByTaro } from '@/utils/useClientRect'
 
@@ -100,7 +100,7 @@ export const Ellipsis: FunctionComponent<
   const getReference = async () => {
     const element = root.current
 
-    const query = Taro.createSelectorQuery()
+    const query = createSelectorQuery()
     query.select(`#${(element as any).id}`) &&
       query
         .select(`#${(element as any).id}`)

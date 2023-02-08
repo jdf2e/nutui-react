@@ -132,8 +132,8 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { BackTop } from '@nutui/nutui-react';
-import Icon from '@/packages/icon'
+import { BackTop,Icon } from '@nutui/nutui-react';
+
 
 const App = () => {
   const cellStyle = {

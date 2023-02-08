@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import Taro from '@tarojs/taro'
+import { redirectTo, navigateTo } from '@tarojs/taro'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
 
@@ -77,7 +77,7 @@ export const Cell: FunctionComponent<
     onClick(event)
     const link = to || url
     if (link) {
-      replace ? Taro.redirectTo({ url: link }) : Taro.navigateTo({ url: link })
+      replace ? redirectTo({ url: link }) : navigateTo({ url: link })
     }
   }
 

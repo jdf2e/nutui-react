@@ -184,6 +184,9 @@ const FormDemo = () => {
               className="nut-input-text"
               placeholder={translated.nameTip}
               type="text"
+              onChange={(val) => {
+                console.log('change value:', val)
+              }}
             />
           </Form.Item>
           <Form.Item label={translated.remarks} name="remark">
