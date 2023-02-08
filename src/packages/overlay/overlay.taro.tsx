@@ -34,6 +34,8 @@ export const Overlay: FunctionComponent<
     visible,
     lockScroll,
     overlayStyle,
+    onClick,
+    ...rest
   } = {
     ...defaultOverlayProps,
     ...props,
@@ -83,7 +85,7 @@ export const Overlay: FunctionComponent<
 
   const handleClick = (event: ITouchEvent) => {
     if (closeOnClickOverlay) {
-      props.onClick && props.onClick(event)
+      onClick && onClick(event)
       renderRef.current = false
       const id = window.setTimeout(() => {
         setShow(!visible)
@@ -97,6 +99,7 @@ export const Overlay: FunctionComponent<
       <View
         className={classes}
         style={styles}
+        {...(rest as any)}
         catchMove={lockScroll}
         onClick={handleClick}
       >
