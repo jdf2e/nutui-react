@@ -1,12 +1,14 @@
 @import '../icon/icon.scss';
+
 .nut-tag {
-  padding: 0 4px;
+  padding: $tag-padding;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   font-size: $tag-font-size;
   border-radius: $tag-default-border-radius;
   height: $tag-height;
+
   ._icon {
     vertical-align: middle;
     margin-left: 4px;
@@ -53,12 +55,15 @@
     border: $tag-border-width solid transparent;
     @include plain;
   }
+
   &--round {
     border-radius: 8px;
   }
+
   &--mark {
     border-radius: 0 12px 12px 0;
   }
+
   &--close {
     margin-left: 4px;
     cursor: pointer;

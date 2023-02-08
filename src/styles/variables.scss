@@ -1232,6 +1232,7 @@ $timeselect-timedetail-time-font-size: var(
 ) !default;
 
 //tag（✅）
+$tag-padding: var(--nutui-tag-padding, 0 4px) !default;
 $tag-font-size: var(--nutui-tag-font-size, 12px) !default;
 $tag-default-border-radius: var(
   --nutui-tag-default-border-radius,

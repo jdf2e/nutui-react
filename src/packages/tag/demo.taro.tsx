@@ -40,6 +40,7 @@ const TagDemo = () => {
             linkSlot={
               <Tag
                 closeable
+                iconSize="14px"
                 onClose={() => Taro.showToast({ title: 'Tag closed' })}
                 type="primary"
               >

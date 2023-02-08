@@ -27,7 +27,7 @@ export interface PopupProps extends OverlayProps, BasicComponent {
   closeable: boolean
   closeIconPosition: string
   closeIcon: string
-  closeIconSize: string
+  closeIconSize?: string | number
   destroyOnClose: boolean
   teleport: Teleport
   overlay: boolean
