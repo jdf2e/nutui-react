@@ -23,7 +23,7 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () =>(
   <Tabbar
-    tabSwitch={(child, idx) => {
+    onSwitch={(child, idx) => {
       console.log(idx)
     }}
   >

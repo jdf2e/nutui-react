@@ -90,7 +90,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
             )}
           </>
         ) : (
-          <div className={`${bIcon('dot')}`} />
+          <div className={`${bIcon('tips', [bIcon('dot')])}`} />
         )}
 
         {icon && (
@@ -103,6 +103,8 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
             />
           </div>
         )}
+      </div>
+      <div>
         <div
           className={bIcon({ 'nav-word': true }, [
             bIcon({ 'big-word': !icon }),

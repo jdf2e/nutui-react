@@ -1,8 +1,8 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import { TabbarItem, Tabbar } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface T {
   ce5c5446: string
@@ -70,9 +70,10 @@ const TabbarDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.ce5c5446}</h2>
         <Tabbar
-          tabSwitch={(child, idx) => {
+          onSwitch={(child, idx) => {
             console.log(idx)
           }}
+          size={18}
         >
           <TabbarItem tabTitle={translated.c3a3a1d2} icon="home" />
           <TabbarItem tabTitle={translated.d04fcbda} icon="category" />

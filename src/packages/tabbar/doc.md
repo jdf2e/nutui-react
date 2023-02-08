@@ -22,7 +22,7 @@ import  React from "react";
 import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
-<Tabbar tabSwitch={(child, idx) => {console.log(idx)}}>
+<Tabbar onSwitch={(child, idx) => {console.log(idx)}}>
     <TabbarItem tabTitle="首页" icon="home" />
     <TabbarItem tabTitle="分类" icon="category" />
     <TabbarItem tabTitle="发现" icon="find" />

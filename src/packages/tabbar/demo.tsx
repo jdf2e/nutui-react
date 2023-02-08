@@ -71,6 +71,7 @@ const TabbarDemo = () => {
           onSwitch={(child, idx) => {
             console.log(idx)
           }}
+          size={18}
         >
           <TabbarItem tabTitle={translated.c3a3a1d2} icon="home" />
           <TabbarItem tabTitle={translated.d04fcbda} icon="category" />
