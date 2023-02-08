@@ -43,6 +43,7 @@ const ListDemo = () => {
     justifyContent: 'center',
     width: '100%',
     height: '50px',
+    fontSize: '14px',
     background: '#fff',
     borderRadius: '10px',
   }
@@ -51,6 +52,7 @@ const ListDemo = () => {
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
+    fontSize: '14px',
     background: '#fff',
     borderRadius: '10px',
   }
