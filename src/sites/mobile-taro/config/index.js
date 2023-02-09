@@ -101,6 +101,12 @@ const config = {
         // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
         config: { selectorBlackList: ['nut-', 'demo', 'index', 'flex-'] },
       },
+      url: {
+        enable: true,
+        config: {
+          limit: 1024, // 设定转换尺寸上限
+        },
+      },
       autoprefixer: {
         enable: true,
         config: {},
