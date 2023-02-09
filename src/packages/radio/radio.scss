@@ -1,18 +1,23 @@
 @import '../icon/icon.scss';
+
 .nut-theme-dark {
   .nut-radio {
     &__label {
       color: $dark1;
+
       &--disabled {
         color: $dark2;
       }
     }
+
     &__button {
       background: $dark4;
       color: $dark1;
+
       &--active {
         color: $primary-color;
       }
+
       &--disabled {
         color: $dark2;
         border: 1px solid $dark2;
@@ -31,7 +36,7 @@
     margin-right: 0 !important;
   }
 
-  &--reverse {
+  &.nut-radio--reverse {
     .nut-radio__label {
       margin-right: $radio-label-margin-left;
       margin-left: 0;
@@ -54,6 +59,7 @@
       color: $radio-label-font-active-color;
       border: 1px solid $radio-label-button-border-color;
     }
+
     &--disabled {
       color: $radio-label-disable-color;
       border: none;
@@ -64,6 +70,7 @@
     margin-left: $radio-label-margin-left;
     font-size: $radio-label-font-size;
     color: $radio-label-font-color;
+
     &--disabled {
       color: $radio-label-disable-color;
     }
@@ -75,9 +82,11 @@
     transition-property: color, border-color, background-color;
     font-size: $radio-icon-font-size;
   }
+
   &__icon--unchecked {
     color: $radio-icon-disable-color;
   }
+
   &__icon--disable {
     color: $radio-icon-disable-color2;
   }
