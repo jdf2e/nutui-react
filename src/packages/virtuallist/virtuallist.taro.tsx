@@ -1,15 +1,15 @@
 import React, {
   FunctionComponent,
+  useCallback,
   useEffect,
   useRef,
   useState,
-  useCallback,
 } from 'react'
 import { ScrollView } from '@tarojs/components'
-import Taro from '@tarojs/taro'
+import { getSystemInfoSync } from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { VirtualListState, PositionType } from './type'
-import { initPositinoCache, binarySearch, updateItemSize } from './utils'
+import { PositionType, VirtualListState } from './type'
+import { binarySearch, initPositinoCache, updateItemSize } from './utils'
 
 export type VirtualListProps = {
   className?: string | any
@@ -31,8 +31,8 @@ const defaultProps = {
   overscan: 2,
 } as VirtualListProps
 
-const clientHeight = Taro.getSystemInfoSync().windowHeight - 5 || 667
-const clientWidth = Taro.getSystemInfoSync().windowWidth || 375
+const clientHeight = getSystemInfoSync().windowHeight - 5 || 667
+const clientWidth = getSystemInfoSync().windowWidth || 375
 
 export const VirtualList: FunctionComponent<
   VirtualListProps & React.HTMLAttributes<HTMLDivElement>
@@ -111,15 +111,12 @@ export const VirtualList: FunctionComponent<
 
   // 可视区域总高度
   const getContainerHeight = () => {
-    //初始首页列表高度
+    // 初始首页列表高度
     const initH = itemSize * sourceData.length
-    //未设置containerSize高度，判断首页高度小于设备高度时，滚动容器高度为首页数据高度，减5为分页触发的偏移量
-    let containerH =
-      initH < clientHeight
-        ? initH + overscan * itemSize - 5
-        : Math.min(containerSize, clientHeight)
-
-    return containerH // Math.min(containerSize, clientHeight)
+    // 未设置containerSize高度，判断首页高度小于设备高度时，滚动容器高度为首页数据高度，减5为分页触发的偏移量
+    return initH < clientHeight
+      ? initH + overscan * itemSize - 5
+      : Math.min(containerSize, clientHeight) // Math.min(containerSize, clientHeight)
   }
   // 可视区域条数
   const visibleCount = () => {

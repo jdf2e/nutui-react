@@ -12,7 +12,12 @@ const subPackages = [
   },
   {
     root: 'layout',
-    pages: ['pages/divider/index', 'pages/grid/index', 'pages/layout/index'],
+    pages: [
+      'pages/divider/index',
+      'pages/grid/index',
+      'pages/layout/index',
+      'pages/sticky/index',
+    ],
   },
   {
     root: 'nav',
