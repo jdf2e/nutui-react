@@ -195,14 +195,23 @@ export default App;
 | 名称 | 默认值 |
 | --- | --- |
 | --nutui-searchbar-background | ` $gray6` |
+| --nutui-searchbar-content-border-radius | ` 2px` |
 | --nutui-searchbar-right-out-color | `  $black` |
 | --nutui-searchbar-padding | ` 9px 16px` |
+| --nutui-searchbar-width | ` 100%` |
+| --nutui-searchbar-label-fontsize | ` 12px` | 
+| --nutui-searchbar-label-padding | ` 0 12px 0 0`| 
+| --nutui-searchbar-label-color | ` $gray1` |
+| --nutui-searchbar-action-text-fontsize | ` 14px`| 
+| --nutui-searchbar-action-text-padding | ` 0 0 0 8px`|
 | --nutui-searchbar-action-text-color | `  $gray1` |
 | --nutui-searchbar-input-height | ` 32px` |
 | --nutui-searchbar-input-padding | ` 0 28px` |
 | --nutui-searchbar-input-background | `  #f7f7f7` |
 | --nutui-searchbar-input-text-color | `  $gray1` |
+| --nutui-searchbar-input-width | ` 100%` |
 | --nutui-searchbar-input-border-radius | `  16px` |
 | --nutui-searchbar-input-box-shadow | `  0 0 8px 0 rgba(0, 0, 0, 0.04)` |
 | --nutui-searchbar-input-bar-color | `  inherit` |
 | --nutui-searchbar-input-bar-placeholder-color | `  inherit` |
+| --nutui-searchbar-clear-icon-padding | ` 0 10px 0 5px` |

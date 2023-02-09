@@ -228,3 +228,5 @@ export default App;
 | --- | --- |
 | --nutui-popup-close-icon-margin | ` 16px` |
 | --nutui-popup-border-radius | ` 20px` |
+| --nutui-popup-close-icon-color | ` #969799`|
+| --nutui-popup-close-icon-size | ` 30px` |

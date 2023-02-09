@@ -282,11 +282,11 @@ export default App;
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| loadMore `v1.3.4(Abandon)` | Emitted when continues to load | done() |
+| loadMore `v1.3.4 Abandon` | Emitted when continues to load | done() |
 | onLoadMore `v1.3.4` | Emitted when continues to load | done() |
-| scrollChange `v1.3.4(Abandon)` | Real-time monitoring of roll height | height |
+| scrollChange `v1.3.4 Abandon` | Real-time monitoring of roll height | height |
 | onScrollChange `v1.3.4` | Real-time monitoring of roll height | height |
-| refresh `v1.3.4(Abandon)` | Emitted when pull refresh | done() |
+| refresh `v1.3.4 Abandon` | Emitted when pull refresh | done() |
 | onRefresh `v1.3.4` | Emitted when pull refresh | done() |
 
 ## Theming

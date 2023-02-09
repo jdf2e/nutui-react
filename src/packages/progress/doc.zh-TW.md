@@ -47,7 +47,7 @@ const App = () => {
       <Progress
         percentage="30"
         strokeColor="rgba(250,44,25,0.47)"
-        stroke-width="20"
+        strokeWidth="20"
         textColor="red"
       />
     </Cell>
@@ -297,9 +297,7 @@ export default App;
 | iconName | Icon 名称 | String | checked
 | iconColor | Icon 颜色 | String | #439422
 | iconSize | Icon 大小 | String | 16px
-| rounded | 是否圆角 | boolean｜String | true
-
-
+| rounded ` 废弃`| 是否圆角 | boolean｜String | true
 
 ## 主題定制
 

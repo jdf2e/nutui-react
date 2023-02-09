@@ -182,7 +182,7 @@ export default App;
 | tabTitle                 | 標籤頁的標題                              | String | --     |
 | icon                     | 標籤頁顯示的[圖標名稱](#/icon) 或圖片鏈接 | String | --     |
 | href                     | 標籤頁的跳轉鏈接   | String | --     |
-| to`v1.4.0废弃`              | 	標籤頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性 | any | --     |
+| to`v1.4.0 废弃`              | 	標籤頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性 | any | --     |
 | num                      | 頁簽右上角的數字角標，超出99之後為99+     | Number | --     |
 | iconClassPrefix`v1.2.1`  | 自定義 icon 類名前綴，用於使用自定義圖標        | String                  | `nut-icon` |
 | iconFontClassName`v1.2.1` | 自定義 icon 字體基礎類名        | String                  | 

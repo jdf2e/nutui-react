@@ -148,9 +148,9 @@ export default App
 
 | 名称                 | 说明           | 回调参数 |
 |--------------------| -------------- | -------- |
-| change`v1.2.0（废弃）` | 输入内容时触发 | val      |
-| focus`v1.2.0（废弃）`             | 聚焦时触发     | val      |
-| blur`v1.2.0（废弃）`             | 失焦时触发     | val      |
+| change`v1.2.0 废弃` | 输入内容时触发 | val      |
+| focus`v1.2.0 废弃`             | 聚焦时触发     | val      |
+| blur`v1.2.0 废弃`             | 失焦时触发     | val      |
 | onChange           | 输入内容时触发 | val      |
 | onFocus            | 聚焦时触发     | val      |
 | onBlur             | 失焦时触发     | val      |

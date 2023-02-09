@@ -291,7 +291,7 @@ export default App
 | list         | 纵向滚动数据列表               | Array | []               |
 | speed        | 滚动的速度                         | Number | 50               |
 | standTime         | 停留时间(毫秒) | Number | 1000                |
-| complexAm `即将废弃`| 稍复杂的动画，耗能会高     | Boolean | false |
+| complexAm `即将 废弃`| 稍复杂的动画，耗能会高     | Boolean | false |
 | height          | 每一个滚动列的高度(px)，注意：在使用 slot 插槽定义滚动单元时，按照实际高度修改此值                 | Number | 40              |
 | closeMode  | 是否启用右侧关闭图标，可以通过slot[name=rightIcon]自定义图标                                   | Boolean       | false  |
 

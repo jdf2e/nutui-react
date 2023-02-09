@@ -223,17 +223,17 @@ export default App;
 
 | 事件名    | 说明                   | 回调参数                       |
 |-----------|------------------------|--------------------------------|
-| add  `v1.3.8废弃`     | 点击增加按钮时触发     | event: Event                   |
+| add  `v1.3.8 废弃`     | 点击增加按钮时触发     | event: Event                   |
 | onAdd  `v1.3.8`     | 点击增加按钮时触发     | event: Event                   |
-| reduce   `v1.3.8废弃` | 点击减少按钮时触发     | event: Event                   |
+| reduce   `v1.3.8 废弃` | 点击减少按钮时触发     | event: Event                   |
 | onReduce   `v1.3.8` | 点击减少按钮时触发     | event: Event                   |
-| overlimit `v1.3.8废弃` | 点击不可用的按钮时触发 | event: Event                   |
+| overlimit `v1.3.8 废弃` | 点击不可用的按钮时触发 | event: Event                   |
 | onOverlimit `v1.3.8` | 点击不可用的按钮时触发 | event: Event                   |
-| change `v1.3.8废弃`    | 值改变时触发           | value:  number , event : Event |
+| change `v1.3.8 废弃`    | 值改变时触发           | value:  number , event : Event |
 | onChangeFuc `v1.3.8`    | 值改变时触发           | value:  number , event : Event |
-| blur `v1.3.8废弃`      | 输入框失去焦点时触发   | event: Event                   |
+| blur `v1.3.8 废弃`      | 输入框失去焦点时触发   | event: Event                   |
 | onBlurFuc `v1.3.8`      | 输入框失去焦点时触发   | event: Event                   |
-| focus `v1.3.8废弃`     | 输入框获得焦点时触发   | event: Event                   |
+| focus `v1.3.8 废弃`     | 输入框获得焦点时触发   | event: Event                   |
 | onFocus `v1.3.8`     | 输入框获得焦点时触发   | event: Event                   |
 
 ## 主题定制

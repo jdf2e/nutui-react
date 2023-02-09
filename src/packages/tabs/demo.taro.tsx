@@ -16,6 +16,7 @@ interface T {
   title8: string
   title9: string
   title10: string
+  title11: string
   custom1: string
   custom2: string
   custom3: string

@@ -335,8 +335,8 @@ export default App;
 | millisecond `v1.3.3` |  Whether to enable millisecond render | Boolean | false
 | autoStart `v1.3.3` |  Whether to auto start count down | Boolean | true
 | time `v1.3.3` | Total time, unit milliseconds | Number | 0
-| showDays `v1.3.3(Abandon)` | Show Text Day | Boolean | false
-| showPlainText `v1.3.3(Abandon)` | Show Text | Boolean | false
+| showDays `v1.3.3 Abandon` | Show Text Day | Boolean | false
+| showPlainText `v1.3.3 Abandon` | Show Text | Boolean | false
 
 ### Format
 

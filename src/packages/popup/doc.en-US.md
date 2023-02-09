@@ -228,3 +228,5 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- |
 | --nutui-popup-close-icon-margin | ` 16px` |
 | --nutui-popup-border-radius | ` 20px` |
+| --nutui-popup-close-icon-color | ` #969799`|
+| --nutui-popup-close-icon-size | ` 30px` |

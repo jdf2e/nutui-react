@@ -182,7 +182,7 @@ export default App;
 | tabTitle                  | the title of the tab                              | String | --     |
 | icon                      | [icon name](#/icon) or image link displayed on the tab page | String | --     |
 | href                      | Jump link of tab page;   | String | --     |
-| to`v1.4.0(Abandon)`              | 	The route object of the tab, equal to React Router's [to Prop](https://v5.reactrouter.com/web/api/Link/to-string) Prop | any | --     |
+| to`v1.4.0 Abandon`              | 	The route object of the tab, equal to React Router's [to Prop](https://v5.reactrouter.com/web/api/Link/to-string) Prop | any | --     |
 | num                       | The numerical corner mark in the upper right corner of the tab, if it exceeds 99, it will be 99+     | Number | --     |
 | iconClassPrefix`v1.2.1`   | Custom icon class name prefix, used to use custom icons        | String                  | `nut-icon` |
 | iconFontClassName`v1.2.1` | Basic class name of custom icon font        | String                  | `nutui-iconfont` |

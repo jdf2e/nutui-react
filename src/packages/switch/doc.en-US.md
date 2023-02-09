@@ -175,7 +175,7 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Default Value |
 | --- | --- |
 | --nutui-switch-close-bg-color | ` #ebebeb` |
-| --nutui-switch-close--cline-bg-color | `  #f0f0f0` |
+| --nutui-switch-close--line-bg-color | `  #f0f0f0` |
 | --nutui-switch-width | ` 36px` |
 | --nutui-switch-height | ` 21px` |
 | --nutui-switch-line-height | ` 21px` |
