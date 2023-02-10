@@ -28,7 +28,7 @@ test('props test', () => {
       shopName={state.shopName}
     />
   )
-  const priceDoms = container.querySelectorAll('.nut-price__big')
+  const priceDoms = container.querySelectorAll('.nut-price__integer-large')
   const tagDoms = container.querySelectorAll('.nut-tag')
   expect(
     container.querySelector('.nut-card__left img')?.getAttribute('src')
@@ -39,10 +39,10 @@ test('props test', () => {
   expect(priceDoms[0].innerHTML).toBe(state.price)
   expect(priceDoms[1].innerHTML).toBe(state.vipPrice)
   expect(tagDoms[0]).toContainHTML(
-    `<span class="text">${state.shopDesc}</span>`
+    `<div class="nut-tag nut-tag--danger"><span class="nut-tag-text">${state.shopDesc}</span></div>`
   )
   expect(tagDoms[1]).toContainHTML(
-    `<span class="text">${state.delivery}</span>`
+    `<div class="nut-tag nut-tag--default nut-tag--plain" style="background: rgb(255, 255, 255);"><span class="nut-tag-text">${state.delivery}</span></div>`
   )
   expect(container.querySelector('.nut-card__right__shop__name')).toContainHTML(
     state.shopName

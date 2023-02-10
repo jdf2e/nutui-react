@@ -89,7 +89,7 @@ test('pop from top', () => {
       <Popup visible position="top" />
     </>
   )
-  const pop = container.querySelector('.popup-top') as HTMLElement
+  const pop = container.querySelector('.nut-popup-top') as HTMLElement
   expect(pop).toBeTruthy()
 })
 
@@ -99,7 +99,7 @@ test('pop from bottom', () => {
       <Popup visible position="bottom" />
     </>
   )
-  const pop = container.querySelector('.popup-bottom') as HTMLElement
+  const pop = container.querySelector('.nut-popup-bottom') as HTMLElement
   expect(pop).toBeTruthy()
 })
 
@@ -109,7 +109,7 @@ test('pop from left', () => {
       <Popup visible position="left" />
     </>
   )
-  const pop = container.querySelector('.popup-left') as HTMLElement
+  const pop = container.querySelector('.nut-popup-left') as HTMLElement
   expect(pop).toBeTruthy()
 })
 
@@ -119,7 +119,7 @@ test('pop from right', () => {
       <Popup visible position="right" />
     </>
   )
-  const pop = container.querySelector('.popup-right') as HTMLElement
+  const pop = container.querySelector('.nut-popup-right') as HTMLElement
   expect(pop).toBeTruthy()
 })
 
