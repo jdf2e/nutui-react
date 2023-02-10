@@ -502,7 +502,7 @@ export default App;
 | prev   | Switch to previous page   | -            |
 | next   | Switch to next page    | -            |
 | to     | Switch to the specified rotation | index:number |
-| resize     | This method can be called to trigger redraw when the size of the outer element or the display state of the component changes | - |
+| resize`1.4.7`     | This method can be called to trigger redraw when the size of the outer element or the display state of the component changes | - |
 
 ## Theming
 
