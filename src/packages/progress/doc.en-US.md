@@ -47,7 +47,7 @@ const App = () => {
       <Progress
         percentage="30"
         strokeColor="rgba(250,44,25,0.47)"
-        stroke-width="20"
+        strokeWidth="20"
         textColor="red"
       />
     </Cell>
@@ -299,8 +299,7 @@ export default App;
 | iconName | Icon Name | String | checked
 | iconColor | Icon Color | String | #439422
 | iconSize | Icon Size | String | 16px
-| rounded | Whether the corners are rounded | boolean｜String | true
-
+| rounded `v1.4.7 Abandon`| Whether the corners are rounded | boolean｜String | true
 
 
 ## Theming
