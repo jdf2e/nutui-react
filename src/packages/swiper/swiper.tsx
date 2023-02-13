@@ -214,7 +214,9 @@ export const Swiper = React.forwardRef<
       })
     })
   }
-
+  const resize = () => {
+    init(active)
+  }
   // 切换方法
   const move = ({
     pace = 0,
@@ -487,6 +489,7 @@ export const Swiper = React.forwardRef<
     to,
     next,
     prev,
+    resize,
   }))
   return (
     <DataContext.Provider value={parent}>

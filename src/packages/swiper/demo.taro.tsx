@@ -152,7 +152,7 @@ const SwiperDemo = () => {
 
         <h2>{translated.size}</h2>
         <div className="demo-box" style={{ height: 150 }}>
-          <Swiper initPage={initPage4} width="300" loop={false}>
+          <Swiper initPage={initPage4} height={height} width="300" loop={false}>
             {list.map((item) => {
               return (
                 <SwiperItem key={item}>
@@ -166,6 +166,7 @@ const SwiperDemo = () => {
         <div className="demo-box" style={{ height: 150 }}>
           <Swiper
             loop
+            height={height}
             initPage={initPage5}
             onChange={(e) => setCurrent(e + 1)}
             pageContent={<div className="page"> {current}/4 </div>}
@@ -182,6 +183,7 @@ const SwiperDemo = () => {
         <h2>{translated.btns}</h2>
         <div className="demo-box" style={{ height: 150 }}>
           <Swiper
+            height={height}
             ref={swiperRef}
             loop
             initPage={initPage6}
