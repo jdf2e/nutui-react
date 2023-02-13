@@ -4,11 +4,11 @@ exports[`timeselect props test 1`] = `
 <div>
   <div
     class="overlay-fade-enter-active nut-overlay"
-    style="z-index: 2000; animation-duration: 0.3s;"
+    style="z-index: 1000; animation-duration: 0.3s;"
   />
   <div
-    class="round popup-bottom  undefined nut-popup"
-    style="width: 100%; height: 50%; z-index: 2000; animation-duration: 0.3s;"
+    class="round nut-popup-bottom  undefined nut-popup"
+    style="width: 100%; height: 50%; z-index: 1000; animation-duration: 0.3s;"
   >
     <div
       class="nut-timeselect "
@@ -57,11 +57,11 @@ exports[`timeselect props test 1`] = `
       </div>
     </div>
     <div
-      class="nutui-popup__close-icon nutui-popup__close-icon--top-right"
+      class="nut-popup__close-icon nut-popup__close-icon--top-right"
     >
       <i
         class="nutui-iconfont nut-icon nut-icon-close "
-        style="font-size: 12px; width: 12px; height: 12px;"
+        style="font-size: 12px; height: 12px; width: 12px;"
       />
     </div>
   </div>

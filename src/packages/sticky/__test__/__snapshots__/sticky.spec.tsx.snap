@@ -5,23 +5,28 @@ exports[`should match snapshot 1`] = `
   <div
     class="nut-cell "
     style="border-radius: 6px;"
+    to=""
   >
     <div
-      class="nut-sticky"
+      class="nut-sticky undefined"
     >
       <div
         class="nut-sticky-box"
         style="top: 0px; z-index: 2000;"
       >
-        <div
+        <button
           class="nut-button nut-button--primary nut-button--normal nut-button--round "
         >
           <div
             class="nut-button__warp"
           >
-            吸顶
+            <div
+              class=""
+            >
+              吸顶
+            </div>
           </div>
-        </div>
+        </button>
       </div>
     </div>
   </div>

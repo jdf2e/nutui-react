@@ -55,13 +55,13 @@ test('spacing & count & modelValue & checkedIcon & uncheckedIcon & readonly & ic
     expect(el[0].childNodes[0]).toHaveAttribute(
       // activeColor && iconSize
       'style',
-      'color: red; font-size: 18px; width: 18px; height: 18px;'
+      'color: red; font-size: 18px; height: 18px; width: 18px;'
     )
     expect(el[1].childNodes[0]).toHaveClass(`${publicCls} nut-icon-star-n`)
     expect(el[1].childNodes[0]).toHaveAttribute(
       // voidColor
       'style',
-      'color: rgb(250, 104, 93); font-size: 18px; width: 18px; height: 18px;'
+      'color: rgb(250, 104, 93); font-size: 18px; height: 18px; width: 18px;'
     )
     expect(el[0]).toHaveAttribute('style', 'margin-right: 12px;') // spacing
 
