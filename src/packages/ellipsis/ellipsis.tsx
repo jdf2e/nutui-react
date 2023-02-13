@@ -63,9 +63,6 @@ export const Ellipsis: FunctionComponent<
 
   useEffect(() => {
     if (content) {
-      if (container) {
-        document.body.appendChild(container)
-      }
       createContainer()
     }
   }, [content])
@@ -105,6 +102,7 @@ export const Ellipsis: FunctionComponent<
     container.innerText = content
     document.body.appendChild(container)
     calcEllipse()
+    document.body.removeChild(container)
   }
 
   // 计算省略号的位置
@@ -123,8 +121,6 @@ export const Ellipsis: FunctionComponent<
           : tailor(0, end)
 
       ellipsis.current = ellipsised
-
-      document.body.removeChild(container)
     }
   }
   // 计算 start/end 省略
