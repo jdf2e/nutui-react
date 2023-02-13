@@ -1,5 +1,5 @@
 import React from 'react'
-import { Elevator, elevatorContext } from './elevator'
+import { Elevator } from './elevator'
 import { useTranslate } from '../../sites/assets/locale'
 import Icon from '../icon'
 import './demo.scss'
@@ -505,7 +505,7 @@ const ElevatorDemo = () => {
             onClickItem={(key: string, item: any) => onClickItem(key, item)}
             onClickIndex={(key: string) => onClickIndex(key)}
           >
-            <elevatorContext.Consumer>
+            <Elevator.Context.Consumer>
               {(value) => {
                 return (
                   <>
@@ -514,7 +514,7 @@ const ElevatorDemo = () => {
                   </>
                 )
               }}
-            </elevatorContext.Consumer>
+            </Elevator.Context.Consumer>
           </Elevator>
         </div>
       </div>
