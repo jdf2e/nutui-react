@@ -163,7 +163,7 @@ export default App;
 | title                    | 标题名称                                                                                       | String  | -       |
 | desc                     | 右侧描述                                                                                       | String  | -       |
 | leftShow                 | 是否展示左侧箭头                                                                              | Boolean | true   |
-| icon`v1.2.1(废弃)`         | 左侧 [图标名称](#/icon) 或图片链接                                                             | String  | -       |
+| icon`v1.2.1 废弃`         | 左侧 [图标名称](#/icon) 或图片链接                                                             | String  | -       |
 | titIcon                  | 标题带icon                                                         | String  | -       |   
 | leftText`v1.2.1`         | 左侧文案                                                         | String  | -       |   
 | fixed`v1.2.1`            | 是否固定                                                         | Boolean  | false       |   
@@ -178,7 +178,7 @@ export default App;
 | 名称                      | 说明     | 回调参数    |
 |-------------------------|----------|-------------|
 | onClickTitle            | 点击标题事件 | event:Event |
-| onClickClear`v1.2.1(废弃)` | 点击右侧文案事件 | event:Event |
+| onClickClear`v1.2.1 废弃` | 点击右侧文案事件 | event:Event |
 | onClickRight`v1.2.1`    | 点击右侧事件 | event:Event |
 | onClickBack`v1.2.1`             | 点击返回事件 | event:Event |
 | onClickIcon`v1.2.1`             | 点击标题右侧icon事件 | event:Event |

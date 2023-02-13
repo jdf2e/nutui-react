@@ -226,12 +226,12 @@ export default App;
 
 | Event    | Description                   | Arguments                       |
 |-----------|------------------------|--------------------------------|
-| add    `v1.3.8(Abandon)`   | Triggered when the Add button is clicked     | event: Event                   |
-| reduce   `v1.3.8(Abandon)` | Triggered when the decrease button is clicked     | event: Event                   |
-| overlimit `v1.3.8(Abandon)` | Triggered when an unavailable button is clicked | event: Event                   |
-| change `v1.3.8(Abandon)`    | Triggered when the value changes           | value:  number , event : Event |
-| blur `v1.3.8(Abandon)`      | Triggered when the input box blur   | event: Event                   |
-| focus `v1.3.8(Abandon)`     | Triggered when the input box focus   | event: Event                   |
+| add    `v1.3.8 Abandon`   | Triggered when the Add button is clicked     | event: Event                   |
+| reduce   `v1.3.8 Abandon` | Triggered when the decrease button is clicked     | event: Event                   |
+| overlimit `v1.3.8 Abandon` | Triggered when an unavailable button is clicked | event: Event                   |
+| change `v1.3.8 Abandon`    | Triggered when the value changes           | value:  number , event : Event |
+| blur `v1.3.8 Abandon`      | Triggered when the input box blur   | event: Event                   |
+| focus `v1.3.8 Abandon`     | Triggered when the input box focus   | event: Event                   |
 | onAdd `v1.3.8`       | Triggered when the Add button is clicked     | event: Event                   |
 | onReduce `v1.3.8`    | Triggered when the decrease button is clicked     | event: Event                   |
 | onOverlimit `v1.3.8` | Triggered when an unavailable button is clicked | event: Event                   |
