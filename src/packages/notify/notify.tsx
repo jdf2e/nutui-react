@@ -11,7 +11,6 @@ export interface NotifyProps {
   background?: string
   type: string
   position: string
-  isWrapTeleport: boolean
   onClick: () => void
   onClosed: () => void
 }
@@ -24,7 +23,6 @@ const options: NotifyProps = {
   type: 'danger',
   className: '',
   position: 'top',
-  isWrapTeleport: true,
   onClosed: () => {},
   onClick: () => {},
 }

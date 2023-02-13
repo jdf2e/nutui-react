@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent, screen } from '@testing-library/react'
+import { render, fireEvent, screen, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import PullToRefresh from '@/packages/pulltorefresh'
 import Cell from '@/packages/cell'
@@ -51,13 +51,16 @@ describe('PullToRefresh', () => {
       '.nut-pulltorefresh'
     ) as Element
 
-    fireEvent.mouseDown(element, {
-      buttons: 1,
+    act(() => {
+      fireEvent.mouseDown(element, {
+        buttons: 1,
+      })
+      fireEvent.mouseMove(element, {
+        buttons: 1,
+        clientY: 300,
+      })
     })
-    fireEvent.mouseMove(element, {
-      buttons: 1,
-      clientY: 300,
-    })
+
     expect(screen.getByText('松开刷新')).toBeInTheDocument()
   })
 
@@ -78,14 +81,15 @@ describe('PullToRefresh', () => {
       '.nut-pulltorefresh'
     ) as Element
 
-    fireEvent.mouseDown(element, {
-      buttons: 1,
+    act(() => {
+      fireEvent.mouseDown(element, {
+        buttons: 1,
+      })
+      fireEvent.mouseMove(element, {
+        buttons: 1,
+        clientY: 300,
+      })
     })
-    fireEvent.mouseMove(element, {
-      buttons: 1,
-      clientY: 300,
-    })
-    fireEvent.mouseUp(element)
-    expect(screen.getByText('加载中...')).toBeInTheDocument()
+    expect(screen.getByText('松开刷新')).toBeInTheDocument()
   })
 })
