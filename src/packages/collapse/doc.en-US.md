@@ -263,7 +263,7 @@ Non accordion mode：(string | number)[] | - |
 
 | Attribute | Description  | Callback Arguments     |
 |--------|----------------|--------------|
-| change`abandon`  | Triggered when the panel is switched | isOpen:Whether it is open status；name：Name value currently clicked |
+| change`Abandon`  | Triggered when the panel is switched | isOpen:Whether it is open status；name：Name value currently clicked |
 | onChange`v1.3.8`  | Triggered when the panel is switched | isOpen:Whether it is open status；name：Name value currently clicked |
 
 ## Theming

@@ -111,7 +111,6 @@ export const Notify: FunctionComponent<
         unmountOnExit
         appear
         position={position}
-        isWrapTeleport={isWrapTeleport}
         id={id}
       >
         <div

@@ -1,11 +1,9 @@
-import React, { createContext } from 'react'
+import React from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Elevator } from '@/packages/nutui.react.taro'
+import { Elevator, Icon } from '@/packages/nutui.react.taro'
 import '@/packages/elevator/demo.scss'
 import Header from '@/sites/components/header'
 import Taro from '@tarojs/taro'
-
-export const elevatorContext = createContext({} as ElevatorData)
 
 interface ElevatorData {
   name: string
@@ -508,7 +506,7 @@ const ElevatorDemo = () => {
             onClickIndex={(key: string) => onClickIndex(key)}
           />
         </div>
-        {/* <h2>{translated.customContent}</h2>
+        <h2>{translated.customContent}</h2>
         <div className="demo-component">
           <Elevator
             className="test-elevator3"
@@ -517,7 +515,7 @@ const ElevatorDemo = () => {
             onClickItem={(key: string, item: unknown) => onClickItem(key, item)}
             onClickIndex={(key: string) => onClickIndex(key)}
           >
-            <elevatorContext.Consumer>
+            <Elevator.Context.Consumer>
               {(value) => {
                 return (
                   <>
@@ -526,9 +524,9 @@ const ElevatorDemo = () => {
                   </>
                 )
               }}
-            </elevatorContext.Consumer>
+            </Elevator.Context.Consumer>
           </Elevator>
-        </div> */}
+        </div>
       </div>
     </>
   )

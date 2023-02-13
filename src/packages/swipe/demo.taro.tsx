@@ -164,6 +164,9 @@ const SwipeDemo = () => {
               {translated.del}
             </Button>
           }
+          onTouchEnd={(e) => console.log(e)}
+          onTouchMove={(e) => console.log(e)}
+          onTouchStart={(e) => console.log(e)}
         >
           <Cell title={translated.leftDel} roundRadius={0} />
         </Swipe>

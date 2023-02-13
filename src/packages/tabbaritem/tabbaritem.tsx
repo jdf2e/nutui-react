@@ -8,6 +8,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export interface TabbarItemProps extends BasicComponent {
   dot: boolean
   size: string | number
+  iconSize: string | number
   className: string
   tabTitle: string
   icon: string
@@ -24,6 +25,7 @@ const defaultProps = {
   ...ComponentDefaults,
   dot: false,
   size: '',
+  iconSize: '',
   className: '',
   tabTitle: '',
   icon: '',
@@ -42,6 +44,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
   const {
     dot,
     size,
+    iconSize,
     className,
     style,
     tabTitle,
@@ -94,17 +97,15 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
         )}
 
         {icon && (
-          <div>
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              size={size}
-              name={icon}
-            />
-          </div>
+          <Icon
+            classPrefix={iconClassPrefix}
+            fontClassName={iconFontClassName}
+            size={iconSize || size}
+            name={icon}
+          />
         )}
       </div>
-      <div>
+      {tabTitle && (
         <div
           className={bIcon({ 'nav-word': true }, [
             bIcon({ 'big-word': !icon }),
@@ -112,7 +113,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
         >
           {tabTitle}
         </div>
-      </div>
+      )}
     </div>
   )
 }

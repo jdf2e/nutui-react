@@ -217,7 +217,9 @@ export default App;
 |onOpen | open the cell sidebar |_name: string , position: `left \| right`_ |
 |onClose | collapse the cell sidebar |_name: string , position: `left \| right`_ |
 |onActionClick | triggered when clicking on the left or right |_event: Event , position: `left \| right`_ |
-
+| onTouchStart`v1.4.7` | ontouchStart | _event: Event      |
+| onTouchMove`v1.4.7`         | ontouchmove  | _event: Event     |
+| onTouchEnd`v1.4.7`          | ontouchend   | _event: Event     |
 ## Theming
 
 ### CSS Variables

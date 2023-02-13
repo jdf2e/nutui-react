@@ -754,6 +754,7 @@ $rate-icon-void-color: var(
 ) !default;
 
 // tabbar（✅）
+$tabbar-height: var(--nutui-tabbar-height, 50px) !default;
 $tabbar-active-color: var(--nutui-tabbar-active-color, $primary-color) !default;
 $tabbar-unactive-color: var(
   --nutui-tabbar-unactive-color,
@@ -774,7 +775,7 @@ $tabbar-item-text-line-height: var(
   20px
 ) !default;
 $tabbar-height: var(--nutui-tabbar-height, 50px) !default;
-$tabbar-word-margin-top: var(--nutui-tabbar-word-margin-top, auto) !default;
+$tabbar-word-margin-top: var(--nutui-tabbar-word-margin-top, 3px) !default;
 $tabbar-dot-right: var(--nutui-tabbar-dot-right, 12px) !default;
 $tabbar-dot-top: var(--nutui-tabbar-dot-top, 0) !default;
 

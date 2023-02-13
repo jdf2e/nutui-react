@@ -121,7 +121,7 @@ const App = () => {
             onClick={() => {
               setTimeout(() => {
                 setLoading(false)
-              }, 1500),
+              }, 1500);
                 setLoading(!loading)
             }}
             style={{ margin: 8 }}
@@ -146,6 +146,15 @@ const App = () => {
     <>
       <Button shape="square" plain type="primary" icon="star-fill" />
       <Button shape="square" type="primary" icon="star">收藏</Button>
+      <Button
+        shape="round"
+        type="primary"
+        size="large"
+        icon="star"
+        iconSize={20}
+      >
+        收藏
+      </Button>
     </>
   );
 };
@@ -230,6 +239,7 @@ export default App;
 | disabled          | 	是否禁用按钮                       | Boolean | `false`              |
 | block          | 是否为块级元素                        | Boolean | `false`               |
 | icon          | 按钮图标，同Icon组件name属性                        | String | -     |
+| iconSize`v1.4.7` | 按钮图标大小，同Icon组件的size属性 | string、number | 16 |
 | loading          | 按钮loading状态                        | Boolean | `false`               |
 
 ### Events
@@ -271,6 +281,10 @@ export default App;
 | --nutui-button-small-font-size | `  $font-size-1` |
 | --nutui-button-mini-font-size | `  $font-size-1` |
 | --nutui-button-mini-line-height | ` 1.2` |
+| --nutui-button-text-icon-width | ` 5px` |
+| --nutui-button-text-icon--large-width | ` 10px` |
+| --nutui-button-text-icon-small-width | ` 2px` |
+| --nutui-button-text-icon-mini-width | ` 1px` |
 | --nutui-button-disabled-opacity | ` 0.68` |
 | --nutui-button-primary-color | ` $white` |
 | --nutui-button-primary-border-color | `  $primary-color` |
