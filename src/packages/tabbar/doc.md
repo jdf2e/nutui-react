@@ -22,7 +22,7 @@ import  React from "react";
 import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
-<Tabbar tabSwitch={(child, idx) => {console.log(idx)}}>
+<Tabbar onSwitch={(child, idx) => {console.log(idx)}}>
     <TabbarItem tabTitle="首页" icon="home" />
     <TabbarItem tabTitle="分类" icon="category" />
     <TabbarItem tabTitle="发现" icon="find" />
@@ -167,7 +167,7 @@ export default App;
 | bottom          | 是否固定在页面底部 | Boolean | false   |
 | unactiveColor  | icon未激活的颜色   | String | #7d7e80 |
 | activeColor    | icon激活的颜色     | String | #1989fa |
-| size`v1.2.2`    | icon的尺寸     | String 、Boolean | 20 |
+| size`v1.2.2`    | icon的统一尺寸     | String 、Boolean | 20 |
 | safeAreaInsetBottom`v1.2.2`    | 是否开启iphone系列全面屏底部安全区适配     | Boolean | false |
 | style`v1.2.2`    | 组件样式     | React.CSSProperties | {} |
 | clsssName`v1.2.2`    | 组件类名     | String | - |
@@ -175,15 +175,16 @@ export default App;
 ### tabbar-item
 
 | 字段                        | 说明                                                                                                                      | 类型   | 默认值 |
-|---------------------------|-------------------------------------------------------------------------------------------------------------------------|--------|--------|
-| tabTitle                  | 标签页的标题                                                                                                                  | String | --     |
-| icon                      | 标签页显示的[图标名称](#/icon) 或图片链接                                                                                              | String | --     |
-| href                      | 标签页的跳转链接；                                                                                           | String | --     |
-| to`v1.4.0 废弃`              | 标签页的路由对象，等于 React Router 的 [to 属性](https://v5.reactrouter.com/web/api/Link/to-string) 属性, taro 版本中采用 Taro.navigateTo 实现 | any | --     |
-| num                       | 页签右上角的数字角标，超出99之后为99+                                                                                                   | Number | --     |
-| iconClassPrefix`v1.2.1`   | 自定义 icon 类名前缀，用于使用自定义图标                                                                                                 | String                  | `nut-icon` |
-| iconFontClassName`v1.2.1` | 自定义 icon 字体基础类名                                                                                                         | String                  | `nutui-iconfont` |
-| dot`v1.2.2`               | 是否显示图标右上角小红点                                                                                                            | Boolean | false     |
+|---------------|------------|--------|--------|
+| tabTitle | 标签页的标题 | String | --     |
+| icon | 标签页显示的[图标名称](#/icon) 或图片链接 | String | -- |
+| href | 标签页的跳转链接； | String | --     |
+| to`v1.4.0 废弃` | 标签页的路由对象，等于 React Router 的 [to 属性](https://v5.reactrouter.com/web/api/Link/to-string) 属性, taro 版本中采用 Taro.navigateTo 实现 | any | --     |
+| num | 页签右上角的数字角标，超出99之后为99+ | Number | -- |
+| iconClassPrefix`v1.2.1`   | 自定义 icon 类名前缀，用于使用自定义图标 | String | `nut-icon` |
+| iconFontClassName`v1.2.1` | 自定义 icon 字体基础类名 | String | `nutui-iconfont` |
+| dot`v1.2.2`| 是否显示图标右上角小红点 | Boolean | false     |
+| iconSize`v1.4.7`    | icon的单个尺寸     | String 、Boolean | 20 |
 
 ### Event
 
@@ -201,6 +202,7 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
+| --nutui-tabbar-height | ` 50px`|
 | --nutui-tabbar-active-color | ` $primary-color` |
 | --nutui-tabbar-unactive-color | `  $primary-color` |
 | --nutui-tabbar-border-top | ` 1px solid #eee` |
@@ -210,3 +212,6 @@ export default App;
 | --nutui-tabbar-item-text-line-height | `  initial` |
 | --nutui-tabbar-height | ` 50px` |
 | --nutui-tabbar-word-margin-top | ` auto` |
+| --nutui-tabbar-dot-right | ` 12px`|
+| --nutui-tabbar-dot-top | ` 0` |
+| --nutui-tabbar-word-margin-top | ` 3px` |

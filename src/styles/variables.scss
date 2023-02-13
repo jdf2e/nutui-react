@@ -148,6 +148,21 @@ $button-mini-font-size: var(
   $font-size-1
 ) !default;
 $button-mini-line-height: var(--nutui-button-mini-line-height, 1.2) !default;
+
+$button-text-icon-width: var(--nutui-button-text-icon-width, 5px) !default;
+$button-text-icon-large-width: var(
+  --nutui-button-text-icon--large-width,
+  10px
+) !default;
+$button-text-icon-small-width: var(
+  --nutui-button-text-icon-small-width,
+  2px
+) !default;
+$button-text-icon-mini-width: var(
+  --nutui-button-text-icon-mini-width,
+  1px
+) !default;
+
 $button-disabled-opacity: var(--nutui-button-disabled-opacity, 0.68) !default;
 $button-primary-color: var(--nutui-button-primary-color, $white) !default;
 $button-primary-border-color: var(
@@ -737,6 +752,7 @@ $rate-icon-void-color: var(
 ) !default;
 
 // tabbar（✅）
+$tabbar-height: var(--nutui-tabbar-height, 50px) !default;
 $tabbar-active-color: var(--nutui-tabbar-active-color, $primary-color) !default;
 $tabbar-unactive-color: var(
   --nutui-tabbar-unactive-color,
@@ -754,10 +770,12 @@ $tabbar-item-text-font-size: var(
 ) !default;
 $tabbar-item-text-line-height: var(
   --nutui-tabbar-item-text-line-height,
-  initial
+  20px
 ) !default;
 $tabbar-height: var(--nutui-tabbar-height, 50px) !default;
-$tabbar-word-margin-top: var(--nutui-tabbar-word-margin-top, auto) !default;
+$tabbar-word-margin-top: var(--nutui-tabbar-word-margin-top, 3px) !default;
+$tabbar-dot-right: var(--nutui-tabbar-dot-right, 12px) !default;
+$tabbar-dot-top: var(--nutui-tabbar-dot-top, 0) !default;
 
 //infiniteloading（✅）
 $infiniteloading-bottom-color: var(

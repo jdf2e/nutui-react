@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 import { Button, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/button/demo.scss'
 
@@ -17,6 +17,7 @@ interface T {
   '7db1a8b2': string
   a52bef0c: string
   d04fcbda: string
+  '0aaad622': string
   '0aaad620': string
   '60a53514': string
   b8a453e3: string
@@ -42,6 +43,7 @@ const ButtonDemo = () => {
       '7db1a8b2': '禁用状态',
       a52bef0c: '加载状态',
       d04fcbda: '加载中',
+      '0aaad622': '图标按钮',
       '0aaad620': '按钮尺寸',
       '60a53514': '收藏',
       b8a453e3: '大号按钮',
@@ -64,6 +66,7 @@ const ButtonDemo = () => {
       '7db1a8b2': '禁用狀態',
       a52bef0c: '載入狀態',
       d04fcbda: '載入中',
+      '0aaad622': '图标按钮',
       '0aaad620': '按鈕尺寸',
       '60a53514': '收藏',
       b8a453e3: '大號按鈕',
@@ -86,6 +89,7 @@ const ButtonDemo = () => {
       '7db1a8b2': 'Disabled State',
       a52bef0c: 'Load State',
       d04fcbda: 'Loading',
+      '0aaad622': 'Icon Button',
       '0aaad620': 'Button size',
       '60a53514': 'Favorite',
       b8a453e3: 'Large button',
@@ -173,7 +177,7 @@ const ButtonDemo = () => {
           </Button>
         </Cell>
 
-        <h2>{translated['0aaad620']}</h2>
+        <h2>{translated['0aaad622']}</h2>
 
         <Cell className="button-cell">
           <Button
@@ -187,6 +191,16 @@ const ButtonDemo = () => {
             shape="square"
             type="primary"
             icon="star"
+            style={{ margin: 8 }}
+          >
+            {translated['60a53514']}
+          </Button>
+          <Button
+            shape="round"
+            type="primary"
+            size="large"
+            icon="star"
+            iconSize={20}
             style={{ margin: 8 }}
           >
             {translated['60a53514']}

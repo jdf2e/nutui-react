@@ -60,7 +60,7 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
       className={[
         `${b()}`,
         bottom ? `${b('bottom')}` : '',
-        safeAreaInsetBottom ? `${b('safebottom')}` : '',
+        safeAreaInsetBottom ? `${b('bottom')} ${b('safebottom')}` : '',
         className,
       ].join(' ')}
       style={style}
