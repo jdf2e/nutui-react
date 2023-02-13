@@ -201,12 +201,14 @@ export default App;
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| onOpen   | 打开单元格侧边栏 | _name: string , position: `left \| right`_      |
-| onClose  | 收起单元格侧边栏 | _name: string , position: `left \| right`_    |
-| onActionClick  | 点击左侧或者右侧时触发 | _event: Event , position: `left \| right`_     |
-
+| 事件名           | 说明           | 回调参数     |
+|---------------|--------------|--------------|
+| onOpen        | 打开单元格侧边栏     | _name: string , position: `left \| right`_      |
+| onClose       | 收起单元格侧边栏     | _name: string , position: `left \| right`_    |
+| onActionClick | 点击左侧或者右侧时触发  | _event: Event , position: `left \| right`_     |
+| onTouchStart`v1.4.7` | ontouchStart | _event: Event      |
+| onTouchMove`v1.4.7`         | ontouchmove  | _event: Event     |
+| onTouchEnd`v1.4.7`          | ontouchend   | _event: Event     |
 
 ## 主题定制
 
