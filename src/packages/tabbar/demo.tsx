@@ -1,11 +1,14 @@
 import React from 'react'
 import { Tabbar } from './tabbar'
 import TabbarItem from '../tabbaritem'
+import './demo.scss'
 import { useTranslate } from '../../sites/assets/locale'
 
 interface T {
   ce5c5446: string
   c38a08ef: string
+  ce5c5448: string
+  ce5c5440: string
   b840c88f: string
   a74a1fd4: string
   '8dab2f66': string
@@ -23,6 +26,8 @@ const TabbarDemo = () => {
     'zh-CN': {
       ce5c5446: '基础用法',
       c38a08ef: '自定义选中',
+      ce5c5448: '只配图标',
+      ce5c5440: '无图标',
       b840c88f: '徽标提示',
       a74a1fd4: '自定义颜色',
       '8dab2f66': '可自定义icon个数的tabbar',
@@ -37,6 +42,8 @@ const TabbarDemo = () => {
     'zh-TW': {
       ce5c5446: '基礎用法',
       c38a08ef: '自定義選中',
+      ce5c5448: '只配图标',
+      ce5c5440: '无图标',
       b840c88f: '徽標提示',
       a74a1fd4: '自定義顏色',
       '8dab2f66': '可自定義icon個數的tabbar',
@@ -51,6 +58,8 @@ const TabbarDemo = () => {
     'en-US': {
       ce5c5446: 'Basic usage',
       c38a08ef: 'custom check',
+      ce5c5448: 'some only Icon',
+      ce5c5440: 'no icon',
       b840c88f: 'Logo Tips',
       a74a1fd4: 'custom color',
       '8dab2f66': 'Tabbar with customizable number of icons',
@@ -71,6 +80,7 @@ const TabbarDemo = () => {
           onSwitch={(child, idx) => {
             console.log(idx)
           }}
+          size={18}
         >
           <TabbarItem tabTitle={translated.c3a3a1d2} icon="home" />
           <TabbarItem tabTitle={translated.d04fcbda} icon="category" />
@@ -86,6 +96,33 @@ const TabbarDemo = () => {
           <TabbarItem tabTitle={translated.a52bef0c} icon="find" />
           <TabbarItem tabTitle={translated['7db1a8b2']} icon="cart" />
           <TabbarItem tabTitle={translated.e51e4582} icon="my" />
+        </Tabbar>
+
+        <h2>{translated.ce5c5448}</h2>
+        <Tabbar
+          onSwitch={(child, idx) => {
+            console.log(idx)
+          }}
+          size={12}
+        >
+          <TabbarItem tabTitle={translated.c3a3a1d2} icon="home" />
+          <TabbarItem tabTitle={translated.d04fcbda} icon="category" />
+          <TabbarItem icon="find" iconSize={24} />
+          <TabbarItem tabTitle={translated['7db1a8b2']} icon="cart" />
+          <TabbarItem tabTitle={translated.e51e4582} icon="my" />
+        </Tabbar>
+
+        <h2>{translated.ce5c5440}</h2>
+        <Tabbar
+          onSwitch={(child, idx) => {
+            console.log(idx)
+          }}
+        >
+          <TabbarItem tabTitle={translated.c3a3a1d2} />
+          <TabbarItem tabTitle={translated.d04fcbda} />
+          <TabbarItem tabTitle={translated.a52bef0c} />
+          <TabbarItem tabTitle={translated['7db1a8b2']} />
+          <TabbarItem tabTitle={translated.e51e4582} />
         </Tabbar>
 
         <h2>{translated.b840c88f}</h2>
@@ -122,7 +159,7 @@ const TabbarDemo = () => {
           <TabbarItem tabTitle={translated.a52bef0c} icon="find" />
         </Tabbar>
 
-        <h2>{translated.cfbdc781}</h2>
+        <h2 className="bottom-h2">{translated.cfbdc781}</h2>
         <Tabbar bottom>
           <TabbarItem tabTitle={translated.c3a3a1d2} href="" icon="home" />
           <TabbarItem tabTitle={translated.d04fcbda} icon="category" />
