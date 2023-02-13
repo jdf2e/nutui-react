@@ -146,6 +146,15 @@ const App = () => {
     <>
   <Button shape="square" plain type="primary" icon="star-fill" />
   <Button shape="square" type="primary" icon="star">收藏</Button>
+  <Button
+        shape="round"
+        type="primary"
+        size="large"
+        icon="star"
+        iconSize={20}
+      >
+        收藏
+      </Button>
     </>
   );
 };
@@ -222,15 +231,16 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 預設值           |
 |--------------|----------------------------------|--------|------------------|
-| type         | 類型，可選值為 `primary` `info` `warning` `danger` `success` | String |`default`         |
-| size        | 尺寸，可選值為 `large` `small`  | String | `normal`      |
-| shape         | 形狀，可選值為 `square` | String | `round`             |
+| type | 類型，可選值為 `primary` `info` `warning` `danger` `success` | String |`default` |
+| size | 尺寸，可選值為 `large` `small`  | String | `normal`      |
+| shape | 形狀，可選值為 `square` | String | `round`             |
 | color | 按鈕顏色，支持傳入linear-gradient漸變色     | String | - |
-| plain          | 	是否為樸素按鈕                       | Boolean | `false`             |
-| disabled          | 	是否禁用按鈕                       | Boolean | `false`              |
-| block          | 是否為塊級元素                        | Boolean | `false`               |
-| icon          | 按鈕圖示，同Icon元件name屬性                        | String | -     |
-| loading          | 按鈕loading狀態                        | Boolean | `false`               |
+| plain | 	是否為樸素按鈕 | Boolean | `false` |
+| disabled | 	是否禁用按鈕 | Boolean | `false` |
+| block | 是否為塊級元素 | Boolean | `false` |
+| icon | 按鈕圖示，同Icon元件name屬性 | String | -     |
+| iconSize`v1.4.7` | 按鈕圖示大小，同 Icon 的size属性 | string、number | 16 |
+| loading | 按鈕loading狀態 | Boolean | `false` |
 
 ### Events
 
@@ -271,6 +281,10 @@ export default App;
 | --nutui-button-small-font-size | `  $font-size-1` |
 | --nutui-button-mini-font-size | `  $font-size-1` |
 | --nutui-button-mini-line-height | ` 1.2` |
+| --nutui-button-text-icon-width | ` 5px` |
+| --nutui-button-text-icon--large-width | ` 10px` |
+| --nutui-button-text-icon-small-width | ` 2px` |
+| --nutui-button-text-icon-mini-width | ` 1px` |
 | --nutui-button-disabled-opacity | ` 0.68` |
 | --nutui-button-primary-color | ` $white` |
 | --nutui-button-primary-border-color | `  $primary-color` |
