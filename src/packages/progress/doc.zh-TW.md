@@ -9,8 +9,7 @@
 ```js
 // react
 import { Progress, Icon } from '@nutui/nutui-react';
-// taro
-import { Progress, Icon } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代碼演示
@@ -228,7 +227,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React, {useState} from "react";
 import { Progress, Cell, Button } from '@nutui/nutui-react';
 
 const App = () => {
@@ -300,3 +299,42 @@ export default App;
 | iconSize | Icon 大小 | String | 16px
 | rounded | 是否圆角 | boolean｜String | true
 
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-progress-border-radius | ` 12px` |
+| --nutui-progress-text-padding | ` 0 5px` |
+| --nutui-progress-text-font-size | ` 13px` |
+| --nutui-progress-insidetext-border-radius | `  5px` |
+| --nutui-progress-insidetext-background | `  $progress-inner-background-color` |
+| --nutui-progress-outer-background-color | `  #f3f3f3` |
+| --nutui-progress-outer-border-radius | `  12px` |
+| --nutui-progress-insidetext-border-radius | `  5px` |
+| --nutui-progress-insidetext-padding | `  3px 5px 3px 6px` |
+| --nutui-progress-small-font-size | ` 7px` |
+| --nutui-progress-small-padding | ` 0 4px` |
+| --nutui-progress-small-height | ` 5px` |
+| --nutui-progress-small-text-font-size | `  7px` |
+| --nutui-progress-small-text-line-height | `  10px` |
+| --nutui-progress-small-text-padding | `  2px 4px` |
+| --nutui-progress-base-font-size | ` 9px` |
+| --nutui-progress-base-padding | ` 0 5px` |
+| --nutui-progress-base-height | ` 10px` |
+| --nutui-progress-base-text-font-size | `  9px` |
+| --nutui-progress-base-text-line-height | `  13px` |
+| --nutui-progress-base-text-padding | `  $progress-insidetext-padding` |
+| --nutui-progress-base-text-top | `  $progress-insidetext-top` |
+| --nutui-progress-large-font-size | ` 13px` |
+| --nutui-progress-large-padding | ` 0 5px` |
+| --nutui-progress-large-height | ` 15px` |
+| --nutui-progress-large-text-font-size | `  13px` |
+| --nutui-progress-large-text-line-height | `  18px` |
+| --nutui-progress-large-text-padding | `  $progress-insidetext-padding` |
+| --nutui-progress-large-text-top | `  $progress-insidetext-top` |

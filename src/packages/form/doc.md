@@ -10,106 +10,156 @@ import { Form } from '@nutui/nutui-react'
 ```
 
 ### 基础用法
+
 :::demo
-```
-<Form>
-  <Form.Item label='姓名' name="username">
-    <Input
-      className="nut-input-text"
-      placeholder='请输入姓名'
-      type="text"
-    />
-  </Form.Item>
-  <Form.Item label='备注' name="remark">
-    <TextArea placeholder='请输入备注' />
-  </Form.Item>
-</Form>
+```tsx
+import  React from "react";
+import { Form, Input, TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Form>
+        <Form.Item label='姓名' name="username">
+          <Input
+            className="nut-input-text"
+            placeholder='请输入姓名'
+            type="text"
+          />
+        </Form.Item>
+        <Form.Item label='备注' name="remark">
+          <TextArea placeholder='请输入备注' />
+        </Form.Item>
+      </Form>
+    </>
+  )
+}
+
+export default App;
 ```
 :::
 
 ### 顶部对齐
 
 :::demo
-```
-<Form labelPosition="Top">
-  <Form.Item label='姓名' name="username">
-    <Input
-      className="nut-input-text"
-      placeholder='请输入姓名'
-      type="text"
-    />
-  </Form.Item>
-  <Form.Item label='备注' name="remark">
-    <TextArea placeholder='请输入备注' />
-  </Form.Item>
-</Form>
+```tsx
+import  React from "react";
+import { Form, Input, TextArea } from '@nutui/nutui-react';
+
+
+const App = () => {
+  return (
+    <>
+      <Form labelPosition="Top">
+        <Form.Item label='姓名' name="username">
+          <Input
+            className="nut-input-text"
+            placeholder='请输入姓名'
+            type="text"
+          />
+        </Form.Item>
+        <Form.Item label='备注' name="remark">
+          <TextArea placeholder='请输入备注' />
+        </Form.Item>
+      </Form>
+    </>
+  )
+}
+
+export default App;
 ```
 :::
 
 ### 表单校验
 :::demo
-```
-<Form
-  onFinish={(obj) => submitSucceed(obj)}
-  onFinishFailed={(error) => submitFailed(error)}
->
-  <Form.Item label='姓名' name="username">
-    <Input
-      className="nut-input-text"
-      placeholder='请输入姓名'
-      type="text"
-    />
-  </Form.Item>
-  <Form.Item label='年龄' name="age">
-    <Input placeholder='请填写年龄' type="number" />
-  </Form.Item>
-  <Form.Item label='联系电话' name="tel">
-    <Input placeholder='请填写联系电话' type="number" />
-  </Form.Item>
-  <Form.Item label='地址' name="address">
-    <Input placeholder='请填写地址' type="text" />
-  </Form.Item>
-  <Cell>
-    <input type="submit" value='提交' />
-  </Cell>
-</Form>
+
+```tsx
+import  React from "react";
+import { Form, Input, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Form
+        onFinish={(obj) => submitSucceed(obj)}
+        onFinishFailed={(error) => submitFailed(error)}
+      >
+        <Form.Item label='姓名' name="username">
+          <Input
+            className="nut-input-text"
+            placeholder='请输入姓名'
+            type="text"
+          />
+        </Form.Item>
+        <Form.Item label='年龄' name="age">
+          <Input placeholder='请填写年龄' type="number" />
+        </Form.Item>
+        <Form.Item label='联系电话' name="tel">
+          <Input placeholder='请填写联系电话' type="number" />
+        </Form.Item>
+        <Form.Item label='地址' name="address">
+          <Input placeholder='请填写地址' type="text" />
+        </Form.Item>
+        <Cell>
+          <input type="submit" value='提交' />
+        </Cell>
+      </Form>
+    </>
+  )
+}
+
+
+export default App;
 ```
 :::
 
 ### 表单类型
+
 :::demo
-```
-<Form
-  onFinish={(obj) => submitSucceed(obj)}
-  onFinishFailed={(error) => submitFailed(error)}
->
-  <Form.Item label='开关' name="switch">
-    <Switch />
-  </Form.Item>
-  <Form.Item label='复选框' name="checkbox">
-    <Checkbox
-      textPosition="right"
-      label='复选框'
-      checked={false}
-    />
-  </Form.Item>
-  <Form.Item label='单选按钮' name="radiogroup">
-    <Radio.RadioGroup>
-      <Radio value="1">选项1</Radio>
-      <Radio value="2">选项2</Radio>
-      <Radio value="3">选项3</Radio>
-    </Radio.RadioGroup>
-  </Form.Item>
-  <Form.Item label='评分' name="rate">
-    <Rate modelValue={0} />
-  </Form.Item>
-  <Form.Item label='滑块' name="range">
-    <Range modelValue={0} max={10} min={-10} />
-  </Form.Item>
-  <Cell>
-    <input type="submit" value='提交' />
-  </Cell>
-</Form>
+```tsx
+import  React from "react";
+import { Form, Input, Cell, Switch, Checkbox, Radio, Rate, Range } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Form
+        onFinish={(obj) => submitSucceed(obj)}
+        onFinishFailed={(error) => submitFailed(error)}
+      >
+        <Form.Item label='开关' name="switch">
+          <Switch />
+        </Form.Item>
+        <Form.Item label='复选框' name="checkbox">
+          <Checkbox
+            textPosition="right"
+            label='复选框'
+            checked={false}
+          />
+        </Form.Item>
+        <Form.Item label='单选按钮' name="radiogroup">
+          <Radio.RadioGroup>
+            <Radio value="1">选项1</Radio>
+            <Radio value="2">选项2</Radio>
+            <Radio value="3">选项3</Radio>
+          </Radio.RadioGroup>
+        </Form.Item>
+        <Form.Item label='评分' name="rate">
+          <Rate modelValue={0} />
+        </Form.Item>
+        <Form.Item label='滑块' name="range">
+          <Range modelValue={0} max={10} min={-10} />
+        </Form.Item>
+        <Cell>
+          <input type="submit" value='提交' />
+        </Cell>
+      </Form>
+    </>
+  )
+}
+
+
+export default App;
 ```
 :::
 ## API
@@ -151,3 +201,26 @@ import { Form } from '@nutui/nutui-react'
 | 方法名            | 说明 | 参数 | 返回值  |
 |-------------------|-----------------------------|-----|---------|
 | submit | 提交表单进行校验的方法 | - | Promise |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-form-item-error-line-color | `  $required-color` |
+| --nutui-form-item-required-color | `  $required-color` |
+| --nutui-form-item-error-message-color | `  $required-color` |
+| --nutui-form-item-label-font-size | `  14px` |
+| --nutui-form-item-label-width | ` 90px` |
+| --nutui-form-item-label-margin-right | `  10px` |
+| --nutui-form-item-label-text-align | `  left` |
+| --nutui-form-item-required-margin-right | `  4px` |
+| --nutui-form-item-body-font-size | ` 14px` |
+| --nutui-form-item-body-slots-text-align | `  left` |
+| --nutui-form-item-body-input-text-align | `  left` |
+| --nutui-form-item-tip-font-size | ` 10px` |
+| --nutui-form-item-tip-text-align | ` left` |

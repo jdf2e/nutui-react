@@ -113,12 +113,20 @@ export const InputNumber: FunctionComponent<
     height: pxCheck(buttonSize),
     ...style,
   }
-  const addAllow = (value = Number(inputValue)) => {
-    return value < Number(max) && !disabled
+  const addAllow = (value = inputValue) => {
+    if (value || typeof value === 'number') {
+      return value < Number(max) && !disabled
+    } else {
+      return false
+    }
   }
 
-  const reduceAllow = (value = Number(inputValue)) => {
-    return value > Number(min) && !disabled
+  const reduceAllow = (value = inputValue) => {
+    if (value || typeof value === 'number') {
+      return value > Number(min) && !disabled
+    } else {
+      return false
+    }
   }
 
   const iconMinusClasses = classNames('nut-inputnumber__icon', {
@@ -181,7 +189,7 @@ export const InputNumber: FunctionComponent<
     onChangeFuc && onChangeFuc(input.valueAsNumber, e)
     if (!isAsync) {
       if (Number.isNaN(input.valueAsNumber)) {
-        setInputValue(inputValue)
+        setInputValue('')
       } else {
         setInputValue(input.valueAsNumber)
       }

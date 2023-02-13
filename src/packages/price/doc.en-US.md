@@ -9,8 +9,7 @@ It is used to apply different styles to the parts before and after the decimal p
 ```javascript
 // react
 import { Price } from '@nutui/nutui-react'
-// taro
-import { Price } from '@nutui/nutui-react-taro'
+
 ```
 
 ## Demo
@@ -190,3 +189,22 @@ export default App;
 | thousands      | Thousands separation   | Boolean | false  |
 | position`v1.3.9`   | The symbol appear before or after the price，`before`、`after` | String           | before |
 | size`v1.3.9`   | Size，`large`、`normal`、`small`                            | String           | large |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-price-symbol-big-size | ` 18px` |
+| --nutui-price-integer-big-size | ` 24px` |
+| --nutui-price-decimal-big-size | ` 18px` |
+| --nutui-price-symbol-medium-size | ` 14px` |
+| --nutui-price-integer-medium-size | `  16px` |
+| --nutui-price-decimal-medium-size | `  14px` |
+| --nutui-price-symbol-small-size | ` 10px` |
+| --nutui-price-integer-small-size | ` 12px` |
+| --nutui-price-decimal-small-size | ` 10px` |

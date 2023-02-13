@@ -11,19 +11,17 @@ import { Sticky } from '@nutui/nutui-react';
 
 ```
 
-
-
 ### Basic Usage
 :::demo
 ```tsx
-const App = () => {
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react'
 
- const handleChange = (val: boolean) => {
+const App = () => {
+  const handleChange = (val: boolean) => {
     console.log('The ceiling state has changed, and the current fixed is', val)
   }
-return(
+  return(
     <>
         <h2>Ceiling</h2>
         <Cell style={{ height: '300px' }}>
@@ -44,8 +42,7 @@ return(
           </Sticky>
         </Cell>
     </>
-)
-   
+  )
 }
 export default App;
 ```
@@ -54,11 +51,13 @@ export default App;
 ### 指定容器内
 :::demo
 ```tsx
-const App = () => {
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react'
 
-   return(
+const App = () => {
+  const containerTopRef = useRef(null)
+  const containerRef = useRef(null)
+  return(
     <>
         <h2>Specify container</h2>
         <Cell>
@@ -88,15 +87,12 @@ import {Button,Cell, Sticky } from '@nutui/nutui-react'
             </Sticky>
           </div>
         </Cell>
-      
     </>
-   )
+  )
 }
 export default App;
 ```
 :::
-
-
 
 ## API
 

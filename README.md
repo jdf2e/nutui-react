@@ -42,16 +42,50 @@
 
 ## Features
 
-* 🚀 60+ High Quality Components
-* 📖 Based on JD APP 10.0 Visual Specifications
+* 🚀 70+ High Quality Components
+* 📖 Based on JD APP 11.0 Visual Specifications
 * 🍭 Support Tree Shaking
 * 📖 Extensive Documentation and Demos
 * 💪 Written in TypeScript
 * 💪 Support SSR (Experimental)
 * 🍭 Support Custom Themes
-* 🍭 80%+ Unit Test Coverage
+* 🍭 90%+ Unit Test Coverage
 * 📖 Provide Sketch Design Resources
 
+
+
+## Local Run
+
+### local H5
+```
+git clone https://github.com/jdf2e/nutui-react.git
+
+cd nutui-react
+
+npm install
+
+npm run dev
+
+url：http://localhost:3000
+```
+### local mp
+```
+git clone https://github.com/jdf2e/nutui-react.git
+
+cd nutui-react
+
+npm install
+
+npm run dev:taro:weapp
+
+dir：src/sites/mobile-taro/dist/weapp
+
+OR jd
+
+npm run dev:taro:jd
+
+dir：src/sites/mobile-taro/dist/jd
+```
 
 ## Build Versions
 

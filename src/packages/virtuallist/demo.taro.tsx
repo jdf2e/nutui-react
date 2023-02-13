@@ -1,8 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Cell, CellGroup, Radio } from '@/packages/nutui.react.taro'
-
-import VirtualList from './index'
+import {
+  Cell,
+  CellGroup,
+  Radio,
+  VirtualList,
+} from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 const { RadioGroup } = Radio
 
@@ -31,6 +36,27 @@ const ListDemo = () => {
   const [pageNo, setPageNo] = useState(1)
   const [radioVal, setRadioVal] = useState('1')
   const [isLoading, setIsLoading] = useState(false)
+
+  const itemStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '50px',
+    fontSize: '14px',
+    background: '#fff',
+    borderRadius: '10px',
+  }
+  const itemStyel2 = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    fontSize: '14px',
+    background: '#fff',
+    borderRadius: '10px',
+  }
+
   const handleChange = (v: any) => {
     setRadioVal(v)
     setPageNo(1)
@@ -52,16 +78,26 @@ const ListDemo = () => {
       })
     }
   }, [pageNo])
+
+  useEffect(() => {
+    getData()
+  }, [getData])
+
   const ItemRender = ({ data }: any) => {
-    return <p>{data}</p>
+    return <div style={itemStyle}>{data}</div>
   }
   const ItemRenderMemo = React.memo(ItemRender)
 
   const ItemVariable = ({ data, index }: any) => {
     return (
-      <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>
+      <div
+        style={{
+          height: `${index % 2 === 0 ? '100px' : '50px'}`,
+          ...itemStyel2,
+        }}
+      >
         {data}
-      </p>
+      </div>
     )
   }
   const ItemVariableDemo = React.memo(ItemVariable)
@@ -73,16 +109,13 @@ const ListDemo = () => {
       setIsLoading(false)
     }, 30)
   }
-  useEffect(() => {
-    getData()
-  }, [getData])
+
   const showNode = () => {
     switch (radioVal) {
       case '1':
         return (
           <VirtualList
-            itemSize={66}
-            className="heigh1"
+            itemSize={50}
             sourceData={sourceData}
             ItemRender={ItemRenderMemo}
             onScroll={onScroll}
@@ -91,41 +124,18 @@ const ListDemo = () => {
       case '2':
         return (
           <VirtualList
+            itemSize={80}
             sourceData={sourceData}
             ItemRender={ItemVariableDemo}
-            itemSize={128}
+            onScroll={onScroll}
+            itemEqualSize={false}
             containerSize={500}
-            itemEqualSize={false}
-            onScroll={onScroll}
-          />
-        )
-      case '3':
-        return (
-          <VirtualList
-            sourceData={sourceData}
-            ItemRender={ItemRenderMemo}
-            itemSize={124}
-            containerSize={341}
-            onScroll={onScroll}
-            horizontal
-          />
-        )
-      case '4':
-        return (
-          <VirtualList
-            sourceData={sourceData}
-            itemSize={300}
-            ItemRender={ItemVariableDemo}
-            horizontal
-            itemEqualSize={false}
-            onScroll={onScroll}
           />
         )
       default:
         return (
           <VirtualList
-            itemSize={66}
-            className="heigh1"
+            itemSize={50}
             sourceData={sourceData}
             ItemRender={ItemRenderMemo}
             onScroll={onScroll}
@@ -135,7 +145,8 @@ const ListDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <CellGroup>
           <Cell>
             <RadioGroup
@@ -145,14 +156,10 @@ const ListDemo = () => {
             >
               <Radio value="1">{translated.text1}</Radio>
               <Radio value="2">{translated.text2}</Radio>
-              <Radio value="3">{translated.text3}</Radio>
-              <Radio value="4">{translated.text4}</Radio>
             </RadioGroup>
           </Cell>
         </CellGroup>
-        <div key={radioVal} className="nut-virtualList-demo-box hideScrollbar">
-          {showNode()}
-        </div>
+        <div style={{ height: '100%' }}>{showNode()}</div>
       </div>
     </>
   )

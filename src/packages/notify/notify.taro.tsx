@@ -74,7 +74,7 @@ export const Notify: FunctionComponent<
   const show = () => {
     clearTimer()
     if (duration) {
-      timer = setTimeout(() => {
+      timer = window.setTimeout(() => {
         hide()
       }, duration)
     }
@@ -111,7 +111,6 @@ export const Notify: FunctionComponent<
         unmountOnExit
         appear
         position={position}
-        isWrapTeleport={isWrapTeleport}
         id={id}
       >
         <div

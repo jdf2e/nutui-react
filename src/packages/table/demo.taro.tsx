@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Toast, Icon, Table } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   basic: string
@@ -240,7 +242,8 @@ const TableDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <Toast
           type="text"
           visible={show}

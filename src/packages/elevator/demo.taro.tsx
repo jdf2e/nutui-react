@@ -1,9 +1,9 @@
-import React, { createContext } from 'react'
+import React from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Elevator } from '@/packages/nutui.react.taro'
+import { Elevator, Icon } from '@/packages/nutui.react.taro'
 import '@/packages/elevator/demo.scss'
-
-export const elevatorContext = createContext({} as ElevatorData)
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface ElevatorData {
   name: string
@@ -473,7 +473,8 @@ const ElevatorDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <div className="demo-component">
           <Elevator
@@ -505,7 +506,7 @@ const ElevatorDemo = () => {
             onClickIndex={(key: string) => onClickIndex(key)}
           />
         </div>
-        {/* <h2>{translated.customContent}</h2>
+        <h2>{translated.customContent}</h2>
         <div className="demo-component">
           <Elevator
             className="test-elevator3"
@@ -514,7 +515,7 @@ const ElevatorDemo = () => {
             onClickItem={(key: string, item: unknown) => onClickItem(key, item)}
             onClickIndex={(key: string) => onClickIndex(key)}
           >
-            <elevatorContext.Consumer>
+            <Elevator.Context.Consumer>
               {(value) => {
                 return (
                   <>
@@ -523,9 +524,9 @@ const ElevatorDemo = () => {
                   </>
                 )
               }}
-            </elevatorContext.Consumer>
+            </Elevator.Context.Consumer>
           </Elevator>
-        </div> */}
+        </div>
       </div>
     </>
   )

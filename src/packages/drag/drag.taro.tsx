@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro'
+import { getSystemInfoSync, createSelectorQuery } from '@tarojs/taro'
 import bem from '@/utils/bem'
-// import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro'
 
 export interface DragProps {
   attract: boolean
@@ -51,12 +50,11 @@ export const Drag: FunctionComponent<
     const el = myDrag.current
     if (el) {
       const { top, left, bottom, right } = boundary
-      const { screenWidth, windowHeight } = Taro.getSystemInfoSync()
+      const { screenWidth, windowHeight } = getSystemInfoSync()
 
-      Taro.createSelectorQuery()
+      createSelectorQuery()
         .select(`.${className}`)
         .boundingClientRect((rec: any) => {
-          // console.log(rec.height, rec.width)
           setBoundaryState({
             top: -rec.top + top,
             left: -rec.left + left,
@@ -79,7 +77,6 @@ export const Drag: FunctionComponent<
   }
 
   const touchMove = (e: React.TouchEvent) => {
-    e.preventDefault()
     if (e.touches.length === 1 && dragRef.current) {
       const touch = e.touches[0]
       const x = touch.clientX - axisCache.current.x
@@ -122,11 +119,9 @@ export const Drag: FunctionComponent<
   }
 
   useEffect(() => {
-    eventCenter.once((getCurrentInstance() as any).router.onReady, () => {
-      timer.current = setTimeout(() => {
-        getInfo()
-      }, 200)
-    })
+    timer.current = window.setTimeout(() => {
+      getInfo()
+    }, 300)
 
     return () => {
       clearTimeout(timer.current)

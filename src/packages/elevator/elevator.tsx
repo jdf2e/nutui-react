@@ -40,7 +40,7 @@ interface ElevatorData {
 }
 export const Elevator: FunctionComponent<
   Partial<ElevatorProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+> & { Context: typeof elevatorContext } = (props) => {
   const {
     height,
     acceptKey,
@@ -296,3 +296,4 @@ export const Elevator: FunctionComponent<
 
 Elevator.defaultProps = defaultProps
 Elevator.displayName = 'NutElevator'
+Elevator.Context = elevatorContext

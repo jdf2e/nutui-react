@@ -8,8 +8,7 @@
 ```javascript
 // react
 import { Notify } from '@nutui/nutui-react';
-// taro
-import { Notify } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代码演示
@@ -37,7 +36,7 @@ const App = () => {
         <>
             <Cell
             title="基础用法"
-            click={(event: React.MouseEvent) => {
+            onClick={(event: React.MouseEvent) => {
                 baseNotify('基础用法')
             }}
             />
@@ -73,25 +72,25 @@ const App = () => {
         <>
             <Cell
                 title="主要通知"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                 primaryNotify('主要通知')
                 }}
             />
             <Cell
                 title="成功通知"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                 successNotify('成功通知')
                 }}
             />
             <Cell
                 title="危险通知"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                 errorNotify('危险通知')
                 }}
             />
             <Cell
                 title="警告通知"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                 warningNotify('警告通知')
                 }}
             />
@@ -121,7 +120,7 @@ const App = () => {
         <>
             <Cell
                 title="自定义背景色和字体颜色"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     cusBgNotify('自定义背景色和字体颜色')
                 }}
             />
@@ -153,13 +152,13 @@ const App = () => {
         <>
              <Cell
                 title="自定义时长"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     timeNotify('自定义时长')
                 }}
             />
             <Cell
                 title="自定义位置"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     positionNotify('自定义位置')
                 }}
             />
@@ -193,3 +192,19 @@ export default App
 |--------|--------------|----------|
 | onClick  | 点击事件回调 | 无       |
 | onClosed | 关闭事件回调 | 无       |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-notify-text-color | ` $white` |
+| --nutui-notify-padding | ` 12px 0` |
+| --nutui-notify-font-size | ` 14px` |
+| --nutui-notify-height | ` 44px` |
+| --nutui-notify-line-height | ` auto` |
+| --nutui-notify-danger-background-color | `  rgba(250, 50, 25, 1)` |

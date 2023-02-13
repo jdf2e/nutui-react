@@ -1,3 +1,87 @@
+# v1.4.6
+`2023-02-08`
+
+* :sparkles: feat: image 组件增加懒加载 (#615) @vickyYe
+* :sparkles: feat: sticky 适配 taro (#613) @libin0824
+* :bug: fix: 修复 fixednav 组件的 zIndex (#643) @oasis-cloud
+* :bug: fix: 修复 taro h5 有些 api 未导出导致报错 (#642) @oasis-cloud
+* :bug: fix: 修复 overlay 组件 style 不生效的问题 (#641) @oasis-cloud
+* :bug: fix: 修复获取元素的大小和位置信息未判断元素是否存在 (#640) @oasis-cloud
+* :bug: fix: 修复 taro h5 virtualList 组件demo中的字号 (#639) @oasis-cloud
+* :bug: fix: 修复 taro h5 有些 api 未导出导致报错 (#637) @oasis-cloud
+* :bug: fix: 修复 address 组件无法设置标题 (#622) @yangxiaolu1993
+* :bug: fix: 修复小程序环境下 overlay 组件滚动穿透的问题 (#621) @junjun666
+* :bug: fix: 修复 docs 在线调试问题。 (#631) @xiaoyatong
+* :bug: fix: 修复 FormItem 代理子元素 onChange 后忽略了原属性的问题 (#619) @sun
+* :bug: fix: SearchBar 组件样式修改，排版错误问题处理 (#632) @Ymm
+* :bug: fix: 补充 tag 组件缺少的样式变量，修复在线调试问题 (#635) @eiinu
+* :bug: fix: image 组件 demo 优化 (#636) @vickyYe
+* :bug: fix: noticebar 组件在卸载时不应该初始化动画 (#634) @oasis-cloud
+* :bug: fix: icon 组件未设置 width、height 时，不应出现在 style 上 (#628) @oasis-cloud
+* :bug: fix: input 组件在暗黑模式下 label 颜色错误 (#627) @oasis-cloud
+* :bug: fix: popup 动效优化 (#620) @xiaoyatong
+* :bug: fix: image 组件更新后无法移除 loading 状态 (#625) @oasis-cloud
+* 🔨 chore: 删除 avatar 不必要的打印日志 (#623) @Antee
+* 🔨 chore: 开发环境优化 (#626) @oasis-cloud
+
+
+# v.1.4.5
+`2023-02-01`
+
+* :sparkles: feat: virtuallist 组件适配 taro (#602) @vickyYe
+* :bug: fix: 修复 tag 组件 plain 与 type 同时使用时的样式错误 (#606) @eiinu
+* :bug: fix: 修复 noticebar 组件垂直滚动自定义内容点击问题，增加onClickItem事件 (#596) @vickyYe
+* :bug: fix: 修复 uploader 组件 beforeUpload 方法的 ts 类型 (#601) @junjun666
+* :bug: fix: 修复 cell 组件 descTextAlign 相关代码的注入时机和使用文档 (#598) @irisSong
+* :bug: fix: 修复 radio 组件横向排列选中后页面抖动 (#600) @oasis-cloud
+* 🔨 chore: nutui-react-taro 在 iOS 11 下和 taro 的 regenerator-runtime 冲突 (#604) @oasis-cloud
+* 🔨 chore: nutui-react-taro 版本移除 image 和 audio (#609) @oasis-cloud
+* 🔨 chore: 在线主题定制启动后默认打开基础样式 (#603) @oasis-cloud
+* 🔨 chore: 开发环境文档预览增加最小宽度 (#608) @oasis-cloud
+* 🔨 chore: 提取组件的 CSS Variables (#605) @oasis-cloud
+
+# v1.4.4
+`2023-01-17`
+
+* :sparkles: feat: GridItem 支持自定义图标颜色、大小 (#588) @cuicuiworld
+* :bug: fix: 修复 inputnumber 无法清空输入框 (#587) @junjun666
+* :bug: fix: 修复input组件onChange事件循环问题；修复错误提示样式问题； (#593) @vickyYe
+* :bug: fix: 修复 button 组件在 taro 中被破坏的边框 (#589) @oasis-cloud
+* 📖 docs: watermark 文档更新 (#590) @oasis-cloud
+* 🔨 chore: 添加组件时，增加排序功能；已有组件已完成排序 (#586) @xiaoyatong
+
+# v1.4.3
+`2023-01-11`
+
+* :sparkles: feat: watermark水印组件taro编译h5环境下适配 (#570) @junjun666
+* :bug: fix: 修复 Badge 组件无法修改背景色问题 (#582) @xiaoyatong
+* :bug: fix: inputNumber 组件在 taro h5 环境样式缺失 (#577) @oasis-cloud
+* :bug: fix: drag 组件 Trao h5 适配 (#576) @irisSong
+* :bug: fix: backtop组件demo优化，父级元素内滚动方式优化 (#575) @vickyYe
+* :bug: fix: dialog 组件 okText 属性缺失默认值 (#573) @oasis-cloud
+* :bug: fix: signature组件适配taro:h5 (#571) @irisSong
+* 📖 docs: 更新多语言文档 (#584) @xiaoyatong
+
+# v1.4.2
+`2023-01-04`
+
+* :sparkles: feat: taro适配 sidenavbar 组件 (#558) @libin0824
+* :bug: fix: input error 状态重置失效问题修改；校验格式 onBlur 失效问题修改 (#567) @vickyYe
+* 🔨 chore: picker 组件删除无用的日志输出 (#566) @oasis-cloud
+
+# v1.4.1
+`2022-12-28`
+
+* :sparkles: feat: Swiper 组件增加指示器的默认背景色配置 (#552) @xiaoyatong
+* :sparkles: feat: docs 不展示demo问题修复 @oasis-cloud
+* :bug: fix: input taro显示右侧按钮时focus失效问题修复；textare limitshow属性名字更正 (#557) @vickyYe
+* :bug: fix: iconfont 在 dev 模式下加载多次 (#555) @oasis-cloud
+* :bug: fix: Address 组件适配Taro (#554) @xiaoyatong
+* :bug: fix: Searchbar 组件修复图标样式。 (#553) @xiaoyatong
+* :bug: fix: react-router-dom 安装到 devDependencies 中 @oasis-cloud
+* :bug: fix: Range 组件手动设置为0时，页面无法渲染的问题。 (#551) @xiaoyatong
+
+
 # v1.4.0
 `2022-12-21`
 

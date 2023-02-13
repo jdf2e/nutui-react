@@ -27,7 +27,7 @@ const defaultProps = {
   defaultIcon: 'location2',
   selectedIcon: 'Check',
   isShowCustomAddress: true,
-  customAndExistTitle: '选择其他地址',
+  customAndExistTitle: '',
 } as ExistRenderProps
 
 export const ExistRender: FunctionComponent<
@@ -122,7 +122,7 @@ export const ExistRender: FunctionComponent<
       {isShowCustomAddress && (
         <div className={b('choose-other')} onClick={switchModule}>
           <div className={b('choose-other-btn')}>
-            {locale.address.chooseAnotherAddress || customAndExistTitle}
+            {customAndExistTitle || locale.address.chooseAnotherAddress}
           </div>
         </div>
       )}

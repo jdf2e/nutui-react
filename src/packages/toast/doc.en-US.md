@@ -9,8 +9,7 @@ For light tips.
 ```javascript
 // react
 import { Toast } from '@nutui/nutui-react';
-// taro
-import { Toast } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Demo
@@ -34,7 +33,7 @@ const App = () => {
         <Cell
           title="Text"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => textToast('text message~')}
         />
@@ -62,7 +61,7 @@ const App = () => {
         <Cell
           title="Toast Title"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => titleToast('title message~')}
         />
@@ -90,7 +89,7 @@ const App = () => {
         <Cell
           title="Toast Success"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => successToast('Success')}
         />
@@ -119,7 +118,7 @@ const App = () => {
         <Cell
           title="Toast Fail"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => errorToast('Fail')}
         />
@@ -148,7 +147,7 @@ const App = () => {
             <Cell
             title="Toast Warn"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => warningToast('Warn')}
             />
@@ -177,7 +176,7 @@ const App = () => {
             <Cell
             title="Toast Loading"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => loadingToast('Loading')}
             />
@@ -206,14 +205,14 @@ const App = () => {
             <Cell
             title="Show for 10 seconds"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => duringToast('Show for 10 seconds')}
             />
             <Cell
             title="Toast Not Disappear"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => {Toast.text('Toast Not Disappear', { duration: 0 })}}
             />
@@ -251,7 +250,7 @@ const App = () => {
         <Cell
         title='Custom Bottom Height'
         isLink
-        click={(
+        onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => toastBottom('Custom Bottom Height')}
         />
@@ -287,7 +286,7 @@ const App = () => {
             <Cell
             title="Loading with transparent cover"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => iconToast('Loading')}
             />
@@ -332,3 +331,20 @@ export default App
 | onClose             |Callback function after close             | function      | null         |
 | closeOnClickOverlay | Whether to close when overlay is clicked         | Boolean       | false         |
 
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-toast-title-font-size | ` 16px` |
+| --nutui-toast-text-font-size | ` 14px` |
+| --nutui-toast-font-color | ` #fff` |
+| --nutui-toast-inner-padding | ` 24px 30px` |
+| --nutui-toast-inner-bg-color | ` $gray7` |
+| --nutui-toast-inner-border-radius | `  12px` |
+| --nutui-toast-cover-bg-color | ` $gray7` |

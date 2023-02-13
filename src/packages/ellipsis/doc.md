@@ -9,8 +9,7 @@
 ```js
 // react
 import { Ellipsis } from '@nutui/nutui-react';
-// taro
-import { Ellipsis } from '@nutui/nutui-react-taro';
+
 ```
 
 
@@ -22,8 +21,7 @@ import { Ellipsis } from '@nutui/nutui-react-taro';
 
 ```tsx
 import  React from "react";
-import { Ellipsis } from '@nutui/nutui-react';
-import Cell from '@/packages/cell'
+import { Ellipsis, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const content =
@@ -44,8 +42,7 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { Ellipsis } from '@nutui/nutui-react';
-import Cell from '@/packages/cell'
+import { Ellipsis, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const content =
@@ -66,8 +63,7 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { Ellipsis } from '@nutui/nutui-react';
-import Cell from '@/packages/cell'
+import { Ellipsis, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const content =
@@ -88,8 +84,7 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { Ellipsis } from '@nutui/nutui-react';
-import Cell from '@/packages/cell'
+import { Ellipsis, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const content =
@@ -110,8 +105,7 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { Ellipsis } from '@nutui/nutui-react';
-import Cell from '@/packages/cell'
+import { Ellipsis, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const content =
@@ -151,3 +145,14 @@ export default App;
 |--------|----------------|--------------|
 | onClick  | 文本点击是触发 | -- |
 | onChange  | 点击展开收起时触发 | -- |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-ellipsis-expand-collapse-color | `  #3460fa` |

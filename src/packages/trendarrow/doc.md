@@ -9,8 +9,7 @@
 ```javascript
 // React
 import { TrendArrow } from '@nutui/nutui-react';
-// taro
-import { TrendArrow } from '@nutui/nutui-react-taro'
+
 ```
 
 ## 代码演示
@@ -214,3 +213,17 @@ export default App;
 | downIconName         | 自定义向下箭头icon               | String | 'triangle-down'               |
 
 
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-trendarrow-font-size | ` 14px` |
+| --nutui-trendarrow-before-icon-margin | `  4px` |
+| --nutui-trendarrow-font-size | ` 14px` |
+| --nutui-trendarrow-before-icon-margin | `  4px` |

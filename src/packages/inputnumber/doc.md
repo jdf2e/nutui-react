@@ -9,8 +9,7 @@
 ``` ts
 // react
 import { InputNumber } from '@nutui/nutui-react';
-// taro
-import { InputNumber } from '@nutui/nutui-react-taro';
+
 ```
 ### 基础用法
 
@@ -65,7 +64,7 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react';
+import { InputNumber, Toast} from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
@@ -189,7 +188,7 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { InputNumber, Toast } from '@nutui/nutui-react';
+import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
@@ -226,15 +225,41 @@ export default App;
 
 | 事件名    | 说明                   | 回调参数                       |
 |-----------|------------------------|--------------------------------|
-| add  `v1.3.8废弃`     | 点击增加按钮时触发     | event: Event                   |
+| add  `v1.3.8 废弃`     | 点击增加按钮时触发     | event: Event                   |
 | onAdd  `v1.3.8`     | 点击增加按钮时触发     | event: Event                   |
-| reduce   `v1.3.8废弃` | 点击减少按钮时触发     | event: Event                   |
+| reduce   `v1.3.8 废弃` | 点击减少按钮时触发     | event: Event                   |
 | onReduce   `v1.3.8` | 点击减少按钮时触发     | event: Event                   |
-| overlimit `v1.3.8废弃` | 点击不可用的按钮时触发 | event: Event                   |
+| overlimit `v1.3.8 废弃` | 点击不可用的按钮时触发 | event: Event                   |
 | onOverlimit `v1.3.8` | 点击不可用的按钮时触发 | event: Event                   |
-| change `v1.3.8废弃`    | 值改变时触发           | value:  number , event : Event |
+| change `v1.3.8 废弃`    | 值改变时触发           | value:  number , event : Event |
 | onChangeFuc `v1.3.8`    | 值改变时触发           | value:  number , event : Event |
-| blur `v1.3.8废弃`      | 输入框失去焦点时触发   | event: Event                   |
+| blur `v1.3.8 废弃`      | 输入框失去焦点时触发   | event: Event                   |
 | onBlurFuc `v1.3.8`      | 输入框失去焦点时触发   | event: Event                   |
-| focus `v1.3.8废弃`     | 输入框获得焦点时触发   | event: Event                   |
+| focus `v1.3.8 废弃`     | 输入框获得焦点时触发   | event: Event                   |
 | onFocus `v1.3.8`     | 输入框获得焦点时触发   | event: Event                   |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-inputnumber-icon-color | `  $title-color` |
+| --nutui-inputnumber-icon-void-color | `  $disable-color` |
+| --nutui-inputnumber-icon-disabled-color | `  $gray2` |
+| --nutui-inputnumber-icon-size | ` 20px` |
+| --nutui-inputnumber-input-font-size | `  12px` |
+| --nutui-inputnumber-input-font-color | `  $gray1` |
+| --nutui-inputnumber-input-background-color | `  $gray4` |
+| --nutui-inputnumber-input-border-radius | `  4px` |
+| --nutui-inputnumber-input-width | ` 40px` |
+| --nutui-inputnumber-input-margin | `  0 6px` |
+| --nutui-inputnumber-input-border | ` 0` |
+| --nutui-inputnumber-border | ` 0` |
+| --nutui-inputnumber-border-radius | ` 0` |
+| --nutui-inputnumber-height | ` auto` |
+| --nutui-inputnumber-line-height | ` normal` |
+| --nutui-inputnumber-border-box | `  content-box` |
+| --nutui-inputnumber-display | ` flex` |

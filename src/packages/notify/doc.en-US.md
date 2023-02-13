@@ -8,8 +8,7 @@ Show message tips at the top of the page
 ```javascript
 // react
 import { Notify } from '@nutui/nutui-react';
-// taro
-import { Notify } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Demo
@@ -37,7 +36,7 @@ const App = () => {
         <>
             <Cell
             title="Basic Usage"
-            click={(event: React.MouseEvent) => {
+            onClick={(event: React.MouseEvent) => {
                 baseNotify('Basic Usage')
             }}
             />
@@ -74,25 +73,25 @@ const App = () => {
         <>
             <Cell
                 title="Primary Notify"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     primaryNotify('Primary Notify')
                 }}
             />
             <Cell
                 title="Success Notify"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                 successNotify('Success Notify')
                 }}
             />
             <Cell
                 title="Error Notify"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                 errorNotify('Error Notify')
                 }}
             />
             <Cell
                 title="Warning Notify"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                 warningNotify('Warning Notify')
                 }}
             />
@@ -121,7 +120,7 @@ const App = () => {
         <>
             <Cell
                 title="Customize background and font colors"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     cusBgNotify('Customize background and font colors')
                 }}
             />
@@ -153,13 +152,13 @@ const App = () => {
         <>
              <Cell
                 title="Custom Duration"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     timeNotify('Custom Duration')
                 }}
             />
             <Cell
                 title="Custom Position"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     positionNotify('Custom Postion')
                 }}
             />
@@ -193,3 +192,19 @@ export default App
 |--------|--------------|----------|
 | onClick  | Emitted when notify is clicked | -       |
 | onClosed | Emitted when notify is closed | -       |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-notify-text-color | ` $white` |
+| --nutui-notify-padding | ` 12px 0` |
+| --nutui-notify-font-size | ` 14px` |
+| --nutui-notify-height | ` 44px` |
+| --nutui-notify-line-height | ` auto` |
+| --nutui-notify-danger-background-color | `  rgba(250, 50, 25, 1)` |

@@ -9,8 +9,7 @@
 ```js
 // react
 import { Card, Price, Tag } from '@nutui/nutui-react';
-// taro
-import { Card, Price, Tag } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代码演示
@@ -284,3 +283,19 @@ const App = () => {
 
 
 
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-card-font-size-0 | ` $font-size-0` |
+| --nutui-card-font-size-1 | ` $font-size-1` |
+| --nutui-card-font-size-2 | ` $font-size-2` |
+| --nutui-card-font-size-3 | ` $font-size-3` |
+| --nutui-card-left-border-radius | ` 0` |
+| --nutui-card-left-background-color | `  inherit` |

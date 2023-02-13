@@ -7,9 +7,9 @@ import React, {
   MouseEventHandler,
 } from 'react'
 import classNames from 'classnames'
+import { Image } from '@tarojs/components'
 import { AvatarContext } from '@/packages/avatargroup/AvatarContext'
 import bem from '@/utils/bem'
-import { Image } from '@tarojs/components'
 import Icon from '@/packages/icon/index.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -145,12 +145,6 @@ export const Avatar: FunctionComponent<
     activeAvatar && activeAvatar(e)
     onActiveAvatar && onActiveAvatar(e)
   }
-
-  console.log(
-    '!parent?.propAvatarGroup?.maxCount',
-    !parent?.propAvatarGroup?.maxCount,
-    showMax
-  )
 
   return (
     <>

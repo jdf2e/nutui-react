@@ -10,10 +10,8 @@
 ```ts
 // react
 import { ImagePreview } from '@nutui/nutui-react'
-// taro
-import { ImagePreview } from '@nutui/nutui-react-taro'
-```
 
+```
 
 ## 代码演示
 
@@ -21,7 +19,7 @@ import { ImagePreview } from '@nutui/nutui-react-taro'
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -64,7 +62,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -107,7 +105,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -150,7 +148,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {

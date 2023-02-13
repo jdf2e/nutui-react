@@ -9,8 +9,7 @@
 ``` javascript
 // react
 import { Popover } from '@nutui/nutui-react';
-// taro
-import { Popover } from '@nutui/nutui-react-taro';
+
 ```
 
 ### 代碼實例
@@ -248,3 +247,21 @@ List 屬性是一個由對象構成的數組，數組中的每個對象配置一
 
 
 
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-popover-white-background-color | `  rgba(255, 255, 255, 1)` |
+| --nutui-popover-dark-background-color | `  rgba(75, 76, 77, 1)` |
+| --nutui-popover-border-bottom-color | `  rgba(229, 229, 229, 1)` |
+| --nutui-popover-primary-text-color | `  rgba(51, 51, 51, 1)` |
+| --nutui-popover-disable-color | `  rgba(154, 155, 157, 1)` |
+| --nutui-popover-menu-item-padding | `  8px 0` |
+| --nutui-popover-menu-item-margin | `  0 8px` |
+| --nutui-popover-menu-name-line-height | `  normal` |

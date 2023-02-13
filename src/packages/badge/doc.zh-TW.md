@@ -9,8 +9,7 @@
 ``` javascript
 // react
 import { Badge } from '@nutui/nutui-react';
-// taro
-import { Badge } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代碼實例
@@ -116,3 +115,23 @@ import { Badge } from '@nutui/nutui-react-taro';
 
 
 
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-badge-color | ` #fff` |
+| --nutui-badge-font-size | ` $font-size-1` |
+| --nutui-badge-default-background-color | `  rgba(255, 255, 255, 1)` |
+| --nutui-badge-border-radius | ` 14px` |
+| --nutui-badge-padding | ` 0 5px` |
+| --nutui-badge-z-index | ` 1` |
+| --nutui-badge-dot-width | ` 7px` |
+| --nutui-badge-dot-height | ` 7px` |
+| --nutui-badge-dot-border-radius | ` 7px` |
+| --nutui-badge-dot-padding | ` 0px` |

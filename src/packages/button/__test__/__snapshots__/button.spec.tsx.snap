@@ -10,7 +10,7 @@ exports[`should match snapshot 1`] = `
       class="nut-button__warp"
     >
       <div
-        class="text"
+        class=""
       >
         主要按钮
       </div>

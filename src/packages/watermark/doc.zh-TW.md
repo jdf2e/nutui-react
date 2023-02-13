@@ -8,9 +8,7 @@
 
 ```ts
 // react
-import { Watermark } from '@nutui/nutui-react';
-// taro
-import { Watermark } from '@nutui/nutui-react-taro';
+import { WaterMark } from '@nutui/nutui-react';
 ```
 
 ### 基礎用法
@@ -19,7 +17,7 @@ import { Watermark } from '@nutui/nutui-react-taro';
 
 ```tsx
 import React, { useState, useRef } from "react";
-import { Watermark } from '@nutui/nutui-react';
+import { WaterMark, Cell, Button } from '@nutui/nutui-react';
 
 const App = () => {
   const [flag, setFlag] = useState(false)
@@ -44,7 +42,7 @@ const App = () => {
             className="mark1"
             zIndex={1}
             content="nut-ui-water-mark"
-        ></WaterMark>
+         />
         )}
         {flag && (
         <WaterMark
@@ -54,7 +52,7 @@ const App = () => {
             imageWidth={60}
             imageHeight={23}
             image={imgSrc.current}
-        ></WaterMark>
+         />
         )}
       </Cell>
     </>
@@ -70,7 +68,7 @@ export default App;
 
 ```tsx
 import React, { useRef } from "react";
-import { Watermark } from '@nutui/nutui-react';
+import { WaterMark, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const src = useRef(
@@ -85,7 +83,7 @@ const App = () => {
           fullPage={false}
           fontColor="#fa2c19"
           content="nut-ui"
-        ></WaterMark>
+         />
       </Cell>
     </>
   )
@@ -114,3 +112,14 @@ export default App;
 | gapY       | 浮水印之間的垂直間距                                   | `number`           | `48`                 |
 | fullPage    | 是否覆蓋整個頁面                                     | `boolean`          | `true`               |
 | fontFamily  | 浮水印文字字體                                     | `boolean`          | `true`               |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-watermark-z-index | `  $mask-content-z-index` |

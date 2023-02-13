@@ -5,7 +5,7 @@ import React, {
   FunctionComponent,
 } from 'react'
 
-import Taro from '@tarojs/taro'
+import { createInnerAudioContext, InnerAudioContext } from '@tarojs/taro'
 import Icon from '@/packages/icon/index.taro'
 import Range from '@/packages/range/index.taro'
 import Button from '@/packages/button/index.taro'
@@ -23,12 +23,12 @@ export interface AudioProps extends BasicComponent {
   autoplay?: boolean
   loop?: boolean
   type: string
-  onFastBack?: (ctx: Taro.InnerAudioContext) => void
-  onForward?: (ctx: Taro.InnerAudioContext) => void
+  onFastBack?: (ctx: InnerAudioContext) => void
+  onForward?: (ctx: InnerAudioContext) => void
   onPause?: any
   onPlay?: any
-  onPlayEnd?: (ctx: Taro.InnerAudioContext) => void
-  onCanPlay?: (ctx: Taro.InnerAudioContext) => void
+  onPlayEnd?: (ctx: InnerAudioContext) => void
+  onCanPlay?: (ctx: InnerAudioContext) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -38,16 +38,16 @@ const defaultProps = {
   autoplay: false,
   loop: false,
   type: 'progress',
-  onFastBack: (ctx: Taro.InnerAudioContext) => {}, // type 为 progress时生效
-  onForward: (ctx: Taro.InnerAudioContext) => {}, // type 为 progress时生效
-  onPause: (ctx: Taro.InnerAudioContext) => {},
-  onPlay: (ctx: Taro.InnerAudioContext) => {},
-  onPlayEnd: (ctx: Taro.InnerAudioContext) => {},
-  onCanPlay: (ctx: Taro.InnerAudioContext) => {},
+  onFastBack: (ctx: InnerAudioContext) => {}, // type 为 progress时生效
+  onForward: (ctx: InnerAudioContext) => {}, // type 为 progress时生效
+  onPause: (ctx: InnerAudioContext) => {},
+  onPlay: (ctx: InnerAudioContext) => {},
+  onPlayEnd: (ctx: InnerAudioContext) => {},
+  onCanPlay: (ctx: InnerAudioContext) => {},
 } as AudioProps
 export const Audio: FunctionComponent<
   Partial<AudioProps> &
-    (React.HTMLAttributes<HTMLDivElement> | Taro.InnerAudioContext)
+    (React.HTMLAttributes<HTMLDivElement> | InnerAudioContext)
 > = (props) => {
   const { locale } = useConfig()
   const {
@@ -84,7 +84,7 @@ export const Audio: FunctionComponent<
     percent: 0,
   })
 
-  const audioRef = useRef(Taro.createInnerAudioContext())
+  const audioRef = useRef(createInnerAudioContext())
   const audioCtx = audioRef.current
   audioCtx.src = url
   audioCtx.autoplay = autoplay || false

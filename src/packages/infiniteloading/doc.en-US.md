@@ -9,8 +9,7 @@ Scrolling to the bottom of the list automatically loads more data.
 ```ts
 // react
 import { InfiniteLoading } from '@nutui/nutui-react';
-// taro
-import { InfiniteLoading } from '@nutui/nutui-react-taro';
+
 ```
 
 ### Basic Usage
@@ -283,9 +282,19 @@ export default App;
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| loadMore `v1.3.4(Abandon)` | Emitted when continues to load | done() |
+| loadMore `v1.3.4 Abandon` | Emitted when continues to load | done() |
 | onLoadMore `v1.3.4` | Emitted when continues to load | done() |
-| scrollChange `v1.3.4(Abandon)` | Real-time monitoring of roll height | height |
+| scrollChange `v1.3.4 Abandon` | Real-time monitoring of roll height | height |
 | onScrollChange `v1.3.4` | Real-time monitoring of roll height | height |
-| refresh `v1.3.4(Abandon)` | Emitted when pull refresh | done() |
+| refresh `v1.3.4 Abandon` | Emitted when pull refresh | done() |
 | onRefresh `v1.3.4` | Emitted when pull refresh | done() |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-infiniteloading-bottom-color | `  #c8c8c8` |

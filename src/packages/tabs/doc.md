@@ -9,8 +9,7 @@
 ```ts
 // react
 import { Tabs, TabPane } from '@nutui/nutui-react';
-// taro
-import { Tabs, TabPane } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代码演示
@@ -181,7 +180,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Tabs, TabPane } from '@nutui/nutui-react';
 
 const App = () => {
@@ -429,3 +428,29 @@ export default App;
 |--------|--------------------------|--------------------------|
 | onClick  | 点击标签时触发           | {title,paneKey,disabled} |
 | onChange | 当前激活的标签改变时触发 | {title,paneKey,disabled} |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-tabs-tab-smile-color | `  $primary-color` |
+| --nutui-tabs-titles-border-radius | ` 0` |
+| --nutui-tabs-titles-item-large-font-size | `  $font-size-3` |
+| --nutui-tabs-titles-item-font-size | `  $font-size-2` |
+| --nutui-tabs-titles-item-small-font-size | `  $font-size-1` |
+| --nutui-tabs-titles-item-color | `  $title-color` |
+| --nutui-tabs-titles-item-active-color | `  $title-color` |
+| --nutui-tabs-titles-background-color | `  $background-color2` |
+| --nutui-tabs-horizontal-titles-height | `  46px` |
+| --nutui-tabs-horizontal-titles-item-min-width | `  50px` |
+| --nutui-tabs-horizontal-titles-item-active-line-width | `  40px` |
+| --nutui-tabs-vertical-titles-item-height | `  40px` |
+| --nutui-tabs-vertical-titles-item-active-line-height | `  14px` |
+| --nutui-tabs-vertical-titles-width | `  100px` |
+| --nutui-tabs-titles-item-line-border-radius | `  0` |
+| --nutui-tabs-titles-item-line-opacity | `  1` |

@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { PullToRefresh, Cell, Toast } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 const PullToRefreshDemo = () => {
   const [list] = useState([1, 2, 3, 4, 5, 6, 7])
@@ -11,7 +13,8 @@ const PullToRefreshDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>基础用法</h2>
         <PullToRefresh
           onRefresh={() =>

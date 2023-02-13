@@ -9,8 +9,7 @@ Split and display the steps of a process, guide users to complete tasks accordin
 ```ts
 // react
 import { Steps } from '@nutui/nutui-react';
-// taro
-import { Steps } from '@nutui/nutui-react-taro';
+
 ```
 
 ### Basic Usage
@@ -269,3 +268,36 @@ export default App;
 | size          | Icon size       | String | '' |
 | activeIndex          | Index of process steps       | Number | 0 |
 | renderContent         | The html structure of the descriptive text of the process steps      | React.ReactNode | - |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-steps-base-icon-width | ` 25px` |
+| --nutui-steps-base-icon-height | ` 25px` |
+| --nutui-steps-base-icon-line-height | `  25px` |
+| --nutui-steps-base-icon-font-size | `  13px` |
+| --nutui-steps-base-title-font-size | `  14px` |
+| --nutui-steps-base-line-color | ` #909ca4` |
+| --nutui-steps-base-title-color | `  $title-color` |
+| --nutui-steps-base-title-margin-bottom | `  10px` |
+| --nutui-steps-base-content-font-size | `  14px` |
+| --nutui-steps-base-content-color | `  $title-color2` |
+| --nutui-steps-wait-icon-bg-color | `  #959fb1` |
+| --nutui-steps-wait-icon-color | ` $white` |
+| --nutui-steps-wait-head-color | ` #909ca4` |
+| --nutui-steps-wait-head-border-color | `  #909ca4` |
+| --nutui-steps-wait-content-color | `  $title-color2` |
+| --nutui-steps-finish-head-color | `  $primary-color` |
+| --nutui-steps-finish-head-border-color | `  $primary-color` |
+| --nutui-steps-finish-title-color | `  $primary-color` |
+| --nutui-steps-finish-line-background | `  $primary-color` |
+| --nutui-steps-finish-icon-text-color | `  $white` |
+| --nutui-steps-process-head-color | `  $white` |
+| --nutui-steps-process-head-border-color | `  $primary-color` |
+| --nutui-steps-process-title-color | `  $primary-color` |
+| --nutui-steps-process-icon-text-color | `  $primary-color` |

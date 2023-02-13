@@ -1,12 +1,7 @@
-import React, {
-  FunctionComponent,
-  MouseEventHandler,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
+import { View, ITouchEvent } from '@tarojs/components'
 
 export interface OverlayProps {
   zIndex: number
@@ -16,6 +11,7 @@ export interface OverlayProps {
   closeOnClickOverlay: boolean
   visible: boolean
   lockScroll: boolean
+  onClick: (event: ITouchEvent) => void
 }
 export const defaultOverlayProps = {
   zIndex: 2000,
@@ -27,7 +23,7 @@ export const defaultOverlayProps = {
   overlayStyle: {},
 } as OverlayProps
 export const Overlay: FunctionComponent<
-  Partial<OverlayProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<OverlayProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const {
     children,
@@ -38,6 +34,7 @@ export const Overlay: FunctionComponent<
     visible,
     lockScroll,
     overlayStyle,
+    onClick,
     ...rest
   } = {
     ...defaultOverlayProps,
@@ -86,11 +83,11 @@ export const Overlay: FunctionComponent<
     }
   }
 
-  const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
+  const handleClick = (event: ITouchEvent) => {
     if (closeOnClickOverlay) {
-      props.onClick && props.onClick(e)
+      onClick && onClick(event)
       renderRef.current = false
-      const id = setTimeout(() => {
+      const id = window.setTimeout(() => {
         setShow(!visible)
       }, duration * 1000 * 0.8)
       intervalRef.current = id
@@ -99,9 +96,15 @@ export const Overlay: FunctionComponent<
 
   return (
     <>
-      <div className={classes} style={styles} {...rest} onClick={handleClick}>
+      <View
+        className={classes}
+        style={styles}
+        {...(rest as any)}
+        catchMove={lockScroll}
+        onClick={handleClick}
+      >
         {children}
-      </div>
+      </View>
     </>
   )
 }

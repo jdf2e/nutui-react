@@ -9,8 +9,7 @@
 ```ts
 // react
 import { Cascader } from '@nutui/nutui-react';
-// taro
-import { Cascader } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代码演示
@@ -19,7 +18,7 @@ import { Cascader } from '@nutui/nutui-react-taro';
 传入`options`列表。
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cascader, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -128,7 +127,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cascader, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -240,7 +239,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cascader, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -308,7 +307,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cascader, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -381,7 +380,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cascader, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -440,7 +439,7 @@ export default App;
 传入`activeColor`指定选中的颜色。
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -574,3 +573,28 @@ export default App;
 | ---------- | ---------------- | ------------------ |
 | onChange     | 选中值改变时触发 | (value, pathNodes) |
 | onPathChange | 选中项改变时触发 | (pathNodes)        |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-cascader-font-size | ` $font-size-2` |
+| --nutui-cascader-line-height | ` 22px` |
+| --nutui-cascader-title-padding | `  24px 20px 17px` |
+| --nutui-cascader-title-font-size | ` 18px` |
+| --nutui-cascader-title-line-height | `  20px` |
+| --nutui-cascader-pane-height | ` 342px` |
+| --nutui-cascader-tabs-item-padding | `  0 10px` |
+| --nutui-cascader-bar-padding | `  24px 20px 17px` |
+| --nutui-cascader-bar-font-size | `  $font-size-4` |
+| --nutui-cascader-bar-line-height | ` 20px` |
+| --nutui-cascader-bar-color | ` $title-color` |
+| --nutui-cascader-item-padding | ` 10px 20px` |
+| --nutui-cascader-item-color | ` $title-color` |
+| --nutui-cascader-item-font-size | `  $font-size-2` |
+| --nutui-cascader-item-active-color | `  $primary-color` |

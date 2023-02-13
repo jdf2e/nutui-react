@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { ScrollView } from '@tarojs/components'
-import Taro from '@tarojs/taro'
+import { createSelectorQuery } from '@tarojs/taro'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
@@ -114,7 +114,7 @@ export const Infiniteloading: FunctionComponent<
   }
 
   const getParentElement = (el: string) => {
-    return Taro.createSelectorQuery().select(
+    return createSelectorQuery().select(
       containerId ? `#${containerId} #${el}` : `#${el}`
     )
   }
