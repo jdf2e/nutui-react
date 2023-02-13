@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useTranslate } from '../../sites/assets/locale'
 import Cell from '@/packages/cell'
 import Popup from '@/packages/popup'
+import Input from '@/packages/input'
+import Button from '@/packages/button'
 import './demo.scss'
 
 interface T {
@@ -138,7 +140,14 @@ const PopupDemo = () => {
           onClose={() => {
             setShowBottom(false)
           }}
-        />
+        >
+          <div>
+            <Input placeholder="测试京麦的哦" type="number" />
+          </div>
+          <div>
+            <Button>chuxian</Button>
+          </div>
+        </Popup>
         <Cell
           title={translated.c3a3a1d2}
           isLink

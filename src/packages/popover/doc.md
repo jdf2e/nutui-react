@@ -257,6 +257,7 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 
 | 名称 | 默认值 |
 | --- | --- |
+| --nutui-popover-border-radius | ` 8px`|
 | --nutui-popover-white-background-color | `  rgba(255, 255, 255, 1)` |
 | --nutui-popover-dark-background-color | `  rgba(75, 76, 77, 1)` |
 | --nutui-popover-border-bottom-color | `  rgba(229, 229, 229, 1)` |

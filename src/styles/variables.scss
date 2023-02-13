@@ -1294,6 +1294,17 @@ $badge-dot-border-radius: var(--nutui-badge-dot-border-radius, 7px) !default;
 $badge-dot-padding: var(--nutui-badge-dot-padding, 0px) !default;
 
 //popover（✅）
+$popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;
+$popover-font-size: var(--nutui-popover-font-size, $font-size-1) !default;
+$popover-menu-item-height: var(--nutui-popover-menu-item-height, 30px) !default;
+$popover-menu-item-name-margin: var(
+  --nutui-popover-menu-item-name-margin,
+  0px 10px
+) !default;
+$popover-menu-item-hover-background-color: var(
+  --nutui-popover-menu-item-hover-background-color,
+  rgba($primary-color, 0.15)
+) !default;
 $popover-white-background-color: var(
   --nutui-popover-white-background-color,
   rgba(255, 255, 255, 1)

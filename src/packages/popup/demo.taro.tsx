@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import '@/packages/popup/demo.scss'
-import { Cell, Popup } from '@/packages/nutui.react.taro'
+import { Cell, Popup, Input, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import Taro from '@tarojs/taro'
 
@@ -134,12 +134,19 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showBottom}
-          style={{ height: '20%' }}
+          style={{ height: '40%' }}
           position="bottom"
           onClose={() => {
             setShowBottom(false)
           }}
-        />
+        >
+          <div>
+            <Input placeholder="测试京麦的哦" type="number" />
+          </div>
+          <div>
+            <Button>chuxian</Button>
+          </div>
+        </Popup>
         <Cell
           title={translated.c3a3a1d2}
           isLink
