@@ -17,6 +17,7 @@ export interface NumberKeyboardProps {
   confirmText: string
   title: string
   visible: boolean
+  overlay: boolean
   type: string
   customKey: Array<string>
   randomKeys: boolean
@@ -31,6 +32,7 @@ const defaultProps = {
   confirmText: '',
   title: '',
   visible: false,
+  overlay: true,
   type: 'default',
   customKey: [],
   className: '',
@@ -47,6 +49,7 @@ export const NumberKeyboard: FunctionComponent<
     title,
     confirmText,
     visible,
+    overlay,
     type,
     customKey,
     randomKeys,
@@ -176,6 +179,7 @@ export const NumberKeyboard: FunctionComponent<
         position="bottom"
         popClass={popClass}
         onClickOverlay={onClose}
+        overlay={overlay}
         onClickCloseIcon={onClose}
         overlayStyle={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
       >
