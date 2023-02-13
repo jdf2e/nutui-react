@@ -18,7 +18,6 @@ interface T {
   a52bef0c: string
   d04fcbda: string
   '0aaad622': string
-
   '0aaad620': string
   '60a53514': string
   b8a453e3: string

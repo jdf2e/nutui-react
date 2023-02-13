@@ -119,7 +119,7 @@ const App = () => {
             onClick={() => {
               setTimeout(() => {
                 setLoading(false)
-              }, 1500),
+              }, 1500);
                 setLoading(!loading)
             }}
             style={{ margin: 8 }}
