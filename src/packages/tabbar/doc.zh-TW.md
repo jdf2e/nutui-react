@@ -171,7 +171,6 @@ export default App;
 | unactiveColor  | icon未激活的顏色   | String | #7d7e80 |
 | activeColor    | icon激活的顏色     | String | #1989fa |
 | size`v1.2.2`    | icon的统一尺寸     | String 、Boolean | 20 |
-| iconSize`v1.4.7`   | icon的单个尺寸     | String 、Boolean | 20 |
 | safeAreaInsetBottom    | 是否開啟iphone系列全面屏底部安全區適配     | Boolean | false |
 | style    | 組件樣式     | React.CSSProperties | {} |
 | clsssName    | 組件類名     | String | - |
@@ -180,14 +179,15 @@ export default App;
 
 | 字段 | 說明 | 類型   | 默認值 |
 |-----------|-------------------|--------|--------|
-| tabTitle                 | 標籤頁的標題                              | String | --     |
-| icon                     | 標籤頁顯示的[圖標名稱](#/icon) 或圖片鏈接 | String | --     |
-| href                     | 標籤頁的跳轉鏈接   | String | --     |
-| to`v1.4.0 废弃`              | 	標籤頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性 | any | --     |
-| num                      | 頁簽右上角的數字角標，超出99之後為99+     | Number | --     |
-| iconClassPrefix`v1.2.1`  | 自定義 icon 類名前綴，用於使用自定義圖標        | String                  | `nut-icon` |
-| iconFontClassName`v1.2.1` | 自定義 icon 字體基礎類名        | String                  | 
-| dot                      | 是否顯示圖標右上角小紅點   | Boolean | false     |
+| tabTitle | 標籤頁的標題 | String | --     |
+| icon | 標籤頁顯示的[圖標名稱](#/icon) 或圖片鏈接 | String | --     |
+| href | 標籤頁的跳轉鏈接   | String | --     |
+| to`v1.4.0 废弃` | 	標籤頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性 | any | --     |
+| num | 頁簽右上角的數字角標，超出99之後為99+     | Number | --     |
+| iconClassPrefix`v1.2.1`  | 自定義 icon 類名前綴，用於使用自定義圖標 | String | `nut-icon` |
+| iconFontClassName`v1.2.1` | 自定義 icon 字體基礎類名 | String | 
+| dot | 是否顯示圖標右上角小紅點   | Boolean | false     |
+| iconSize`v1.4.7`   | icon的单个尺寸     | String 、Boolean | 20 |
 
 
 ### Event

@@ -171,23 +171,23 @@ export default App;
 | unactiveColor  | Icon inactive color   | String | #7d7e80 |
 | activeColor    | icon active color     | String | #1989fa |
 | size    | icon size for all icons     | String 、Boolean | 20 |
-| iconSize`v1.4.7`    | icon size for some icon    | String 、Boolean | 20 |
 | safeAreaInsetBottom    | Whether to enable the full screen bottom safety zone adaptation of the iphone series     | Boolean | false |
 | style    | component style     | React.CSSProperties | {} |
 | clsssName    | component class name     | String | - |
 
 ### tabbar-item
 
-| Prop                      | Description                                      | Type   | Default |
-|---------------------------|-------------------------------------------|--------|--------|
-| tabTitle                  | the title of the tab                              | String | --     |
-| icon                      | [icon name](#/icon) or image link displayed on the tab page | String | --     |
-| href                      | Jump link of tab page;   | String | --     |
+| Prop | Description | Type   | Default |
+|-----------|--------------|--------|--------|
+| tabTitle | the title of the tab | String | --     |
+| icon | [icon name](#/icon) or image link displayed on the tab page | String | --     |
+| href | Jump link of tab page;   | String | --     |
 | to`v1.4.0 Abandon`              | 	The route object of the tab, equal to React Router's [to Prop](https://v5.reactrouter.com/web/api/Link/to-string) Prop | any | --     |
-| num                       | The numerical corner mark in the upper right corner of the tab, if it exceeds 99, it will be 99+     | Number | --     |
-| iconClassPrefix`v1.2.1`   | Custom icon class name prefix, used to use custom icons        | String                  | `nut-icon` |
-| iconFontClassName`v1.2.1` | Basic class name of custom icon font        | String                  | `nutui-iconfont` |
-| dot                       | Whether to display the little red dot in the upper right corner of the icon   | Boolean | false     |
+| num | The numerical corner mark in the upper right corner of the tab, if it exceeds 99, it will be 99+     | Number | --     |
+| iconClassPrefix`v1.2.1`   | Custom icon class name prefix, used to use custom icons | String | `nut-icon` |
+| iconFontClassName`v1.2.1` | Basic class name of custom icon font        | String | `nutui-iconfont` |
+| dot | Whether to display the little red dot in the upper right corner of the icon   | Boolean | false     |
+| iconSize`v1.4.7`    | icon size for some icon    | String 、Boolean | 20 |
 
 
 ### Event

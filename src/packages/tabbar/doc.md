@@ -168,7 +168,6 @@ export default App;
 | unactiveColor  | icon未激活的颜色   | String | #7d7e80 |
 | activeColor    | icon激活的颜色     | String | #1989fa |
 | size`v1.2.2`    | icon的统一尺寸     | String 、Boolean | 20 |
-| iconSize`v1.4.7`    | icon的单个尺寸     | String 、Boolean | 20 |
 | safeAreaInsetBottom`v1.2.2`    | 是否开启iphone系列全面屏底部安全区适配     | Boolean | false |
 | style`v1.2.2`    | 组件样式     | React.CSSProperties | {} |
 | clsssName`v1.2.2`    | 组件类名     | String | - |
@@ -185,6 +184,7 @@ export default App;
 | iconClassPrefix`v1.2.1`   | 自定义 icon 类名前缀，用于使用自定义图标 | String | `nut-icon` |
 | iconFontClassName`v1.2.1` | 自定义 icon 字体基础类名 | String | `nutui-iconfont` |
 | dot`v1.2.2`| 是否显示图标右上角小红点 | Boolean | false     |
+| iconSize`v1.4.7`    | icon的单个尺寸     | String 、Boolean | 20 |
 
 ### Event
 
