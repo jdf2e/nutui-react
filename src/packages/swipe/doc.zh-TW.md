@@ -200,16 +200,14 @@ export default App;
 
 ### Events
 
-|事件名|說明|回檔參數|
-
-|--------|----------------|--------------|
-
-| onOpen |打開儲存格側邊欄| _name: string，position: `left \| right`_ |
-
-| onClose |收起儲存格側邊欄| _name: string，position: `left \| right`_ |
-
-| onActionClick |點擊左側或者右側時觸發| _event: Event，position: `left \| right`_ |
-
+| 事件名                 | 說明           |回檔參數|
+|---------------------|--------------|--------------|
+| onOpen              | 打開儲存格側邊欄     | _name: string，position: `left \| right`_ |
+| onClose             | 收起儲存格側邊欄     | _name: string，position: `left \| right`_ |
+| onActionClick       | 點擊左側或者右側時觸發  | _event: Event，position: `left \| right`_ |
+| onTouchStart`v1.4.7` | ontouchStart | _event: Event      |
+| onTouchMove`v1.4.7`         | ontouchmove  | _event: Event     |
+| onTouchEnd`v1.4.7`          | ontouchend   | _event: Event     |
 
 ## 主題定制
 
