@@ -7,7 +7,7 @@ exports[`should match snapshot 1`] = `
   >
     <i
       class="nutui-iconfont nut-icon nut-icon-checked nut-checkbox__icon"
-      style="font-size: 18px; width: 18px; height: 18px;"
+      style="font-size: 18px; height: 18px; width: 18px;"
     />
     <span
       class="nut-checkbox__label "

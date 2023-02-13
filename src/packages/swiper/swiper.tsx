@@ -78,6 +78,7 @@ export const Swiper = React.forwardRef<
     isStopPropagation,
     autoPlay,
     isCenter,
+    paginationBgColor,
     ...rest
   } = propSwiper
   const container = useRef<any>(null)

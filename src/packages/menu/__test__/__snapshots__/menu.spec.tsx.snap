@@ -4,78 +4,80 @@ exports[`should match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="nut-menu  "
-    iconclassprefix="nut-icon"
-    iconfontclassname="nutui-iconfont"
   >
     <div
-      class="nut-menu__bar  "
+      class="nut-menu-relative"
     >
       <div
-        class="nut-menu__item "
+        class="nut-menu__bar  "
       >
         <div
-          class="nut-menu__title "
+          class="nut-menu__item  "
         >
           <div
-            class="nut-menu__title-text"
+            class="nut-menu__title "
           >
-            全部商品
+            <div
+              class="nut-menu__title-text"
+            >
+              全部商品
+            </div>
+            <i
+              class="nutui-iconfont nut-icon nut-icon-down-arrow nut-menu__title-icon"
+              style="font-size: 10px; height: 10px; width: 10px;"
+            />
           </div>
-          <i
-            class="nutui-iconfont nut-icon nut-icon-down-arrow nut-menu__title-icon"
-            style="font-size: 10px; width: 10px; height: 10px;"
-          />
         </div>
       </div>
-    </div>
-    <div
-      class="placeholder-element  "
-      style="height: 0px; display: none;"
-    />
-    <div
-      class="first-render hidden-render nut-menu__overlay nut-overlay"
-      style="top: 0px;"
-    />
-    <div
-      class="nut-menu-item__wrap"
-      style="top: 0px; display: none;"
-    >
       <div
-        class="nut-menu-item__content"
+        class="placeholder-element "
+        style="height: 0px; display: none;"
+      />
+      <div
+        class="first-render hidden-render nut-menu__overlay nut-overlay"
+        style="top: 0px;"
+      />
+      <div
+        class="nut-menu-item__wrap"
+        style="display: none;"
       >
         <div
-          class="nut-menu-item__option active"
-          style="flex-basis: 100%;"
+          class="nut-menu-item__content"
         >
-          <i
-            class="nutui-iconfont nut-icon nut-icon-Check "
-            style="color: rgb(242, 39, 12);"
-          />
           <div
-            class=""
-            style="color: rgb(242, 39, 12);"
+            class="nut-menu-item__option active"
+            style="flex-basis: 100%;"
           >
-            全部商品
+            <i
+              class="nutui-iconfont nut-icon nut-icon-Check "
+              style="color: rgb(242, 39, 12);"
+            />
+            <div
+              class=""
+              style="color: rgb(242, 39, 12);"
+            >
+              全部商品
+            </div>
           </div>
-        </div>
-        <div
-          class="nut-menu-item__option "
-          style="flex-basis: 100%;"
-        >
           <div
-            class=""
+            class="nut-menu-item__option "
+            style="flex-basis: 100%;"
           >
-            新款商品
+            <div
+              class=""
+            >
+              新款商品
+            </div>
           </div>
-        </div>
-        <div
-          class="nut-menu-item__option "
-          style="flex-basis: 100%;"
-        >
           <div
-            class=""
+            class="nut-menu-item__option "
+            style="flex-basis: 100%;"
           >
-            活动商品
+            <div
+              class=""
+            >
+              活动商品
+            </div>
           </div>
         </div>
       </div>

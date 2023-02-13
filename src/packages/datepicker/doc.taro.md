@@ -340,7 +340,7 @@ export default App;
     
 | 事件名                         | 说明               | 回调参数     |
 |-----------------------------|--------------------|--------------|
-| confirm`v1.2.2(废弃)`         | 点击确定按钮时触发 | event: Event |
+| confirm`v1.2.2 废弃`         | 点击确定按钮时触发 | event: Event |
 | onConfirmDatePicker`v1.2.2` | 点击确定按钮时触发 | values, options |
 | onCloseDatePicker           | 关闭时触发         | -- |
 | onChange`v1.2.2`                  | 选项改变时触发         |  columnIndex, values, options  |

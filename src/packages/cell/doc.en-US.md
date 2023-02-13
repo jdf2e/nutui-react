@@ -273,7 +273,7 @@ export default App
 | desc              | Description                                     | String      | -      |
 | descTextAlign     | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp), is only available when displaying desc | String | right  |
 | isLink            | Whether to show the right arrow and turn on click feedback            | Boolean          | false  |
-| to`v1.4.0(Abandon)`       | C Target route of the link | String  | -      |
+| to`v1.4.0 Abandon`       | C Target route of the link | String  | -      |
 | replace           | If true, the navigation will not leave a history record                             | Boolean          | false  |
 | roundRadius`v1.2.0` | Corner radius                                      | String            | 6px    |
 | url               | Link                                         | String           | -      |

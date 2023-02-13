@@ -7,9 +7,9 @@ import React, {
   MouseEventHandler,
 } from 'react'
 import classNames from 'classnames'
+import { Image } from '@tarojs/components'
 import { AvatarContext } from '@/packages/avatargroup/AvatarContext'
 import bem from '@/utils/bem'
-import { Image } from '@tarojs/components'
 import Icon from '@/packages/icon/index.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
