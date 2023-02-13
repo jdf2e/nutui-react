@@ -21,6 +21,7 @@ export interface ButtonProps extends BasicComponent {
   size: ButtonSize
   block: boolean
   icon: string
+  iconSize: string | number
   children: any
   onClick: (e: MouseEvent) => void
 }
@@ -47,6 +48,7 @@ const defaultProps = {
   size: 'normal',
   block: false,
   icon: '',
+  iconSize: '16',
   style: {},
   children: undefined,
   onClick: (e: MouseEvent) => {},
@@ -62,6 +64,7 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
     size,
     block,
     icon,
+    iconSize,
     children,
     onClick,
     className,
@@ -121,6 +124,7 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
     size,
     block,
     icon,
+    iconSize,
     children,
     onClick,
     classes,
@@ -154,6 +158,7 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
             classPrefix={iconClassPrefix}
             fontClassName={iconFontClassName}
             name={icon}
+            size={iconSize}
           />
         ) : (
           ''
