@@ -161,8 +161,8 @@ const RadioDemo = () => {
         <CellGroup>
           <Cell>
             <Radio.RadioGroup value="2">
-              <Radio value="1" iconSize="24">
-                {translated['8a2e2847']}24
+              <Radio value="1" iconSize="15">
+                {translated['8a2e2847']}15
               </Radio>
               <Radio value="2" iconSize="12">
                 {translated['8a2e2847']}12
@@ -178,7 +178,10 @@ const RadioDemo = () => {
                 {translated['70ffa5d8']}
               </Radio>
               <Radio value="2" iconName="checklist" iconActiveName="checklist">
-                {translated['70ffa5d8']}
+                <div>{translated['70ffa5d8']}</div>
+                <div style={{ fontSize: '12px', color: '#8c8c8c' }}>
+                  {translated['70ffa5d8']}
+                </div>
               </Radio>
             </Radio.RadioGroup>
           </Cell>
@@ -203,7 +206,7 @@ const RadioDemo = () => {
               options={optionsDemo1}
               value={radioVal1}
               onChange={(e) => handleChange1(e)}
-            ></Radio.RadioGroup>
+            />
           </Cell>
         </CellGroup>
       </div>
