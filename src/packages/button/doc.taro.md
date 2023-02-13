@@ -237,6 +237,7 @@ export default App;
 | disabled          | 	是否禁用按钮                       | Boolean | `false`              |
 | block          | 是否为块级元素                        | Boolean | `false`               |
 | icon          | 按钮图标，同Icon组件name属性                        | String | -     |
+| iconSize`v1.4.7` | 按钮图标大小，同Icon组件的size属性 | string、number | 16 |
 | loading          | 按钮loading状态                        | Boolean | `false`               |
 
 ### Events

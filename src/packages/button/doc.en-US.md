@@ -239,6 +239,7 @@ export default App;
 | disabled | 	Whether to disable the button                       | Boolean | `false`              |
 | block    | Whether it is a block-level element                        | Boolean | `false`               |
 | icon     | Button icon, with the Icon component name property                        | String | -     |
+| iconSize`v1.4.7` | Button icon size, with the Icon's size property | string、number | 16 |
 | loading  | loading status                        | Boolean | `false`               |
 
 ### Events
