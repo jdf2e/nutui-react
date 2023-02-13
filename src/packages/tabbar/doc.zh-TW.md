@@ -23,7 +23,7 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar
-    tabSwitch={(child, idx) => {
+    onSwitch={(child, idx) => {
       console.log(idx)
     }}
   >
@@ -170,15 +170,16 @@ export default App;
 | bottom          | 是否固定在頁面底部 | Boolean | false   |
 | unactiveColor  | icon未激活的顏色   | String | #7d7e80 |
 | activeColor    | icon激活的顏色     | String | #1989fa |
-| size    | icon的尺寸     | String 、Boolean | 20 |
+| size`v1.2.2`    | icon的统一尺寸     | String 、Boolean | 20 |
+| iconSize`v1.4.7`   | icon的单个尺寸     | String 、Boolean | 20 |
 | safeAreaInsetBottom    | 是否開啟iphone系列全面屏底部安全區適配     | Boolean | false |
 | style    | 組件樣式     | React.CSSProperties | {} |
 | clsssName    | 組件類名     | String | - |
 
 ### tabbar-item
 
-| 字段                       | 說明                                      | 類型   | 默認值 |
-|--------------------------|-------------------------------------------|--------|--------|
+| 字段 | 說明 | 類型   | 默認值 |
+|-----------|-------------------|--------|--------|
 | tabTitle                 | 標籤頁的標題                              | String | --     |
 | icon                     | 標籤頁顯示的[圖標名稱](#/icon) 或圖片鏈接 | String | --     |
 | href                     | 標籤頁的跳轉鏈接   | String | --     |
@@ -204,6 +205,7 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
+| --nutui-tabbar-height | ` 50px`|
 | --nutui-tabbar-active-color | ` $primary-color` |
 | --nutui-tabbar-unactive-color | `  $primary-color` |
 | --nutui-tabbar-border-top | ` 1px solid #eee` |
@@ -213,3 +215,6 @@ export default App;
 | --nutui-tabbar-item-text-line-height | `  initial` |
 | --nutui-tabbar-height | ` 50px` |
 | --nutui-tabbar-word-margin-top | ` auto` |
+| --nutui-tabbar-dot-right | ` 12px`|
+| --nutui-tabbar-dot-top | ` 0` |
+| --nutui-tabbar-word-margin-top | ` 3px` |

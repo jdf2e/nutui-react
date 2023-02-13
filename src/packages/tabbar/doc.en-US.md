@@ -23,7 +23,7 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () =>(
   <Tabbar
-    tabSwitch={(child, idx) => {
+    onSwitch={(child, idx) => {
       console.log(idx)
     }}
   >
@@ -170,7 +170,8 @@ export default App;
 | bottom          | Whether it is fixed at the bottom of the page | Boolean | false   |
 | unactiveColor  | Icon inactive color   | String | #7d7e80 |
 | activeColor    | icon active color     | String | #1989fa |
-| size    | icon size     | String 、Boolean | 20 |
+| size    | icon size for all icons     | String 、Boolean | 20 |
+| iconSize`v1.4.7`    | icon size for some icon    | String 、Boolean | 20 |
 | safeAreaInsetBottom    | Whether to enable the full screen bottom safety zone adaptation of the iphone series     | Boolean | false |
 | style    | component style     | React.CSSProperties | {} |
 | clsssName    | component class name     | String | - |
@@ -204,6 +205,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
+| --nutui-tabbar-height | ` 50px`|
 | --nutui-tabbar-active-color | ` $primary-color` |
 | --nutui-tabbar-unactive-color | `  $primary-color` |
 | --nutui-tabbar-border-top | ` 1px solid #eee` |
@@ -213,3 +215,6 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-tabbar-item-text-line-height | `  initial` |
 | --nutui-tabbar-height | ` 50px` |
 | --nutui-tabbar-word-margin-top | ` auto` |
+| --nutui-tabbar-dot-right | ` 12px`|
+| --nutui-tabbar-dot-top | ` 0` |
+| --nutui-tabbar-word-margin-top | ` 3px` |
