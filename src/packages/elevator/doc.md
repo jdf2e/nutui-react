@@ -380,7 +380,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Elevator, elevatorContext, Icon } from '@nutui/nutui-react'
+import { Elevator, Icon } from '@nutui/nutui-react'
 
 const App = () => {
   const dataList = [
@@ -447,7 +447,7 @@ const App = () => {
       onClickItem={(key: string, item: any) => onClickItem(key, item)}
       onClickIndex={(key: string) => onClickIndex(key)}
     >
-      <elevatorContext.Consumer>
+      <Elevator.Context.Consumer>
         {(value) => {
           return (
             <>
@@ -456,7 +456,7 @@ const App = () => {
             </>
           )
         }}
-      </elevatorContext.Consumer>
+      </Elevator.Context.Consumer>
     </Elevator>
   )
 }
