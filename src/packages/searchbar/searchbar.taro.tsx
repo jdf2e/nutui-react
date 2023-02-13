@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import Taro from '@tarojs/taro'
+import { getEnv } from '@tarojs/taro'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Icon from '@/packages/icon/index.taro'
@@ -164,7 +164,7 @@ export const SearchBar: FunctionComponent<
           shape === 'round' ? searchbarBem('round') : ''
         } ${clearable ? searchbarBem('input-clear') : ''}`}
         ref={searchRef}
-        style={{ ...props.style, background: props.inputBackground }}
+        style={{ ...props.style }}
         value={value || ''}
         placeholder={placeholder || locale.placeholder}
         disabled={disabled}
@@ -303,7 +303,7 @@ export const SearchBar: FunctionComponent<
   }
 
   const envClass = () => {
-    return Taro.getEnv() === 'WEB' ? 'nut-searchbar-taro' : ''
+    return getEnv() === 'WEB' ? 'nut-searchbar-taro' : ''
   }
 
   return (
@@ -315,7 +315,10 @@ export const SearchBar: FunctionComponent<
     >
       {renderLeftoutIcon()}
       {renderLabel()}
-      <div className={`${searchbarBem('content')}`}>
+      <div
+        className={`${searchbarBem('content')}`}
+        style={{ background: props.inputBackground }}
+      >
         {renderLeftinIcon()}
         <div className="nut-searchbar__input-box">{renderField()}</div>
         {renderRightinIcon()}

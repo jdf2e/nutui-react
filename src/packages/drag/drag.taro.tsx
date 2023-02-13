@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-import Taro from '@tarojs/taro'
+import { getSystemInfoSync, createSelectorQuery } from '@tarojs/taro'
 import bem from '@/utils/bem'
-// import Taro, { eventCenter, getCurrentInstance } from '@tarojs/taro'
 
 export interface DragProps {
   attract: boolean
@@ -51,9 +50,9 @@ export const Drag: FunctionComponent<
     const el = myDrag.current
     if (el) {
       const { top, left, bottom, right } = boundary
-      const { screenWidth, windowHeight } = Taro.getSystemInfoSync()
+      const { screenWidth, windowHeight } = getSystemInfoSync()
 
-      Taro.createSelectorQuery()
+      createSelectorQuery()
         .select(`.${className}`)
         .boundingClientRect((rec: any) => {
           setBoundaryState({

@@ -106,8 +106,8 @@ const App = () => {
             changeNarBar(false)
           }}
         >
-          <SubSideNavBar title="Level 1 title" ikey="1-0" titleClick={clickTitle}>
-            <SideNavBarItem title="Level 1 content-1" ikey="1-01" click={clickItem} />
+          <SubSideNavBar title="Level 1 title" ikey="1-0" onClick={clickTitle}>
+            <SideNavBarItem title="Level 1 content-1" ikey="1-01" onClick={clickItem} />
             <SideNavBarItem title="Level 1 content-2" ikey="1-02" />
             <SubSideNavBar title="Level 2 title" ikey="2-0">
               <SideNavBarItem title="Level 2 content-1" ikey="2-01" />

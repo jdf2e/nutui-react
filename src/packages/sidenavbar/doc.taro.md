@@ -106,8 +106,8 @@ const App = () => {
             changeNarBar(false)
           }}
         >
-          <SubSideNavBar title="一级标题" ikey="1-0" titleClick={clickTitle}>
-            <SideNavBarItem title="一级内容1" ikey="1-01" click={clickItem} />
+          <SubSideNavBar title="一级标题" ikey="1-0" onClick={clickTitle}>
+            <SideNavBarItem title="一级内容1" ikey="1-01" onClick={clickItem} />
             <SideNavBarItem title="一级内容2" ikey="1-02" />
             <SubSideNavBar title="二级标题" ikey="2-0">
               <SideNavBarItem title="二级内容1" ikey="2-01" />
