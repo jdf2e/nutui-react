@@ -4,8 +4,6 @@ exports[`should render progress when use props 1`] = `
 <DocumentFragment>
   <div
     class="nut-progress "
-    iconclassprefix="nut-icon"
-    iconfontclassname="nutui-iconfont"
   >
     <div
       class="nut-progress-outer nut-progress-base"
@@ -21,7 +19,6 @@ exports[`should render progress when use props 1`] = `
     >
       <span
         class="nut-progress-text__inner"
-        style="color: rgb(51, 51, 51);"
       >
         100%
       </span>

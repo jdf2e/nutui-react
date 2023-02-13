@@ -7,8 +7,6 @@ exports[`render with custom content 1`] = `
   >
     <div
       class="nut-grid-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -17,7 +15,7 @@ exports[`render with custom content 1`] = `
       >
         <i
           class="nutui-iconfont nut-icon nut-icon-dongdong "
-          style="font-size: 28px; width: 28px; height: 28px;"
+          style="font-size: 28px; height: 28px; width: 28px;"
         />
         <div
           class="nut-grid-item__text"
@@ -30,8 +28,6 @@ exports[`render with custom content 1`] = `
     </div>
     <div
       class="nut-grid-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -43,8 +39,6 @@ exports[`render with custom content 1`] = `
         >
           <div
             class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
-            iconclassprefix="nut-icon"
-            iconfontclassname="nutui-iconfont"
             style="background-color: rgb(250, 44, 25); color: rgb(255, 255, 255);"
           >
             <i
@@ -56,8 +50,6 @@ exports[`render with custom content 1`] = `
     </div>
     <div
       class="nut-grid-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -66,8 +58,6 @@ exports[`render with custom content 1`] = `
       >
         <div
           class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
-          iconclassprefix="nut-icon"
-          iconfontclassname="nutui-iconfont"
           style="background-color: rgb(250, 44, 25); color: rgb(255, 255, 255);"
         >
           <i
@@ -78,8 +68,6 @@ exports[`render with custom content 1`] = `
     </div>
     <div
       class="nut-grid-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -88,8 +76,6 @@ exports[`render with custom content 1`] = `
       >
         <div
           class="nut-avatar nut-avatar-large nut-avatar-round"
-          iconclassprefix="nut-icon"
-          iconfontclassname="nutui-iconfont"
           style="background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);"
         >
           <img
@@ -110,8 +96,6 @@ exports[`should match snapshot 1`] = `
   >
     <div
       class="nut-grid-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -120,7 +104,7 @@ exports[`should match snapshot 1`] = `
       >
         <i
           class="nutui-iconfont nut-icon nut-icon-dongdong "
-          style="font-size: 28px; width: 28px; height: 28px;"
+          style="font-size: 28px; height: 28px; width: 28px;"
         />
         <div
           class="nut-grid-item__text"
@@ -131,8 +115,6 @@ exports[`should match snapshot 1`] = `
     </div>
     <div
       class="nut-grid-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -141,7 +123,7 @@ exports[`should match snapshot 1`] = `
       >
         <i
           class="nutui-iconfont nut-icon nut-icon-dongdong "
-          style="font-size: 28px; width: 28px; height: 28px;"
+          style="font-size: 28px; height: 28px; width: 28px;"
         />
         <div
           class="nut-grid-item__text"
@@ -152,8 +134,6 @@ exports[`should match snapshot 1`] = `
     </div>
     <div
       class="nut-grid-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -162,7 +142,7 @@ exports[`should match snapshot 1`] = `
       >
         <i
           class="nutui-iconfont nut-icon nut-icon-dongdong "
-          style="font-size: 28px; width: 28px; height: 28px;"
+          style="font-size: 28px; height: 28px; width: 28px;"
         />
         <div
           class="nut-grid-item__text"
