@@ -335,8 +335,8 @@ export default App;
 | millisecond `v1.3.3` |  是否开启毫秒级渲染 | Boolean | false
 | autoStart `v1.3.3` |  是否自动开始倒计时 | Boolean | true
 | time `v1.3.3` | 倒计时显示时间，单位是毫秒。autoStart 为 false 时生效 | Number | 0
-| showDays `v1.3.3废弃` | 是否显示天 | Boolean | false
-| showPlainText `v1.3.3废弃` | 显示为纯文本 | Boolean | false
+| showDays `v1.3.3 废弃` | 是否显示天 | Boolean | false
+| showPlainText `v1.3.3 废弃` | 显示为纯文本 | Boolean | false
 
 ### format 格式
 

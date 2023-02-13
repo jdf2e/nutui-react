@@ -312,9 +312,9 @@ export default App;
 
 | Event | Description	         | Arguments |
 | -------- | ------------ | -------- |
-| play `v1.3.8(Abandon)`     | play event         | --       |
-| pause `v1.3.8(Abandon)`    | pause event         | --       |
-| playend `v1.3.8(Abandon)`  | Playback completion callback | --       |
+| play `v1.3.8 Abandon`     | play event         | --       |
+| pause `v1.3.8 Abandon`    | pause event         | --       |
+| playend `v1.3.8 Abandon`  | Playback completion callback | --       |
 | onPlayFuc `v1.3.8`     | play event         | --       |
 | onPauseFuc `v1.3.8`    | pause event         | --       |
 | onPlayend `v1.3.8`  | Playback completion callback | --       |
