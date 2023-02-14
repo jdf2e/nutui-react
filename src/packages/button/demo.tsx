@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Star, StarFill } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Button } from './button'
 import Cell from '../cell'
@@ -182,13 +183,13 @@ const ButtonDemo = () => {
             shape="square"
             plain
             type="primary"
-            icon="star-fill"
+            icon={<StarFill />}
             style={{ margin: 8 }}
           />
           <Button
             shape="square"
             type="primary"
-            icon="star"
+            icon={<Star />}
             style={{ margin: 8 }}
           >
             {translated['60a53514']}
@@ -197,8 +198,7 @@ const ButtonDemo = () => {
             shape="round"
             type="primary"
             size="large"
-            icon="star"
-            iconSize={20}
+            icon={<Star width={20} height={20} />}
             style={{ margin: 8 }}
           >
             {translated['60a53514']}

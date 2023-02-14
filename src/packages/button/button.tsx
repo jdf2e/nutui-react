@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react'
-import Icon from '@/packages/icon'
+import { Loading } from '@nutui/icons-react'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -20,7 +20,7 @@ export interface ButtonProps extends BasicComponent {
   type: ButtonType
   size: ButtonSize
   block: boolean
-  icon: string
+  icon: React.ReactNode
   iconSize: string | number
   children: any
   onClick: (e: MouseEvent) => void
@@ -146,23 +146,14 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
       onClick={(e) => handleClick(e)}
     >
       <div className="nut-button__warp">
-        {loading && (
-          <Icon
-            classPrefix={iconClassPrefix}
-            fontClassName={iconFontClassName}
-            name="loading"
+        {loading ? (
+          <Loading
+            className="nut-icon-loading"
+            width={iconSize}
+            height={iconSize}
           />
-        )}
-        {!loading && icon ? (
-          <Icon
-            classPrefix={iconClassPrefix}
-            fontClassName={iconFontClassName}
-            name={icon}
-            size={iconSize}
-          />
-        ) : (
-          ''
-        )}
+        ) : null}
+        {!loading && icon ? icon : null}
         {children && (
           <div className={icon || loading ? 'text' : ''}>{children}</div>
         )}

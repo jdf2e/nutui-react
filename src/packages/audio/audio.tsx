@@ -6,7 +6,7 @@ import React, {
   FunctionComponent,
   ReactEventHandler,
 } from 'react'
-import Icon from '@/packages/icon'
+import { Service } from '@nutui/icons-react'
 import Range from '@/packages/range'
 import bem from '@/utils/bem'
 import Button from '@/packages/button'
@@ -134,20 +134,7 @@ export const Audio: FunctionComponent<
             }`}
             onClick={handleStatusChange}
           >
-            {playing ? (
-              <Icon
-                classPrefix={iconClassPrefix}
-                fontClassName={iconFontClassName}
-                name="service"
-                className="nut-icon-loading"
-              />
-            ) : (
-              <Icon
-                classPrefix={iconClassPrefix}
-                fontClassName={iconFontClassName}
-                name="service"
-              />
-            )}
+            <Service className={playing ? 'nut-icon-loading' : ''} />
           </div>
         </div>
       </>

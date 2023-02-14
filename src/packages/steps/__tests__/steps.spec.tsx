@@ -47,8 +47,6 @@ test('should render horizontal class when props direction is to be horizontal', 
         title="已完成"
         content="您的订单已经打包完成，商品已发出"
         icon="service"
-        iconColor="blue"
-        size="14px"
       >
         1
       </Step>
@@ -57,8 +55,6 @@ test('should render horizontal class when props direction is to be horizontal', 
         title="进行中"
         content="您的订单正在配送途中"
         icon="people"
-        iconColor="blue"
-        size="14px"
       >
         2
       </Step>
@@ -67,8 +63,6 @@ test('should render horizontal class when props direction is to be horizontal', 
         title="未开始"
         content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
         icon="location2"
-        iconColor="blue"
-        size="14px"
       >
         3
       </Step>

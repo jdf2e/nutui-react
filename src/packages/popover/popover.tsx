@@ -6,7 +6,6 @@ import React, {
   useState,
 } from 'react'
 import Trigger from './Trigger'
-import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
 import { getRect } from '../../utils/useClientRect'
 
@@ -30,7 +29,7 @@ export type PopoverLocation =
 
 export interface List {
   name: string
-  icon?: string
+  icon?: React.ReactNode
   disabled?: boolean
 }
 
@@ -172,16 +171,7 @@ export const Popover: FunctionComponent<
                         handleChoose(item, i)
                       }}
                     >
-                      {item.icon ? (
-                        <Icon
-                          classPrefix={iconClassPrefix}
-                          fontClassName={iconFontClassName}
-                          className="popover-menu-item-img"
-                          name={item.icon}
-                        />
-                      ) : (
-                        ''
-                      )}
+                      {item.icon ? item.icon : null}
                       <div className="popover-menu-item-name">{item.name}</div>
                     </div>
                   )
@@ -198,9 +188,7 @@ export const Popover: FunctionComponent<
           onClick={(e) => handleClick(e)}
           style={{ background: 'transparent' }}
         />
-      ) : (
-        ''
-      )}
+      ) : null}
     </>
   )
 }

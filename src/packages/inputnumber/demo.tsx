@@ -138,8 +138,8 @@ const InputNumberDemo = () => {
         <Cell>
           <InputNumber
             modelValue={inputState.val8}
-            buttonSize="30"
-            inputWidth="50"
+            iconSize="25px"
+            inputWidth="150px"
           />
         </Cell>
       </div>

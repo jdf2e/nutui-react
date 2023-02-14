@@ -252,29 +252,27 @@ export default App;
 
 | 参数                   | 说明                                                        | 类型           | 默认值      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| direction	             | 	显示方向，`horizontal`,`vertical`  | String        | 'horizontal'  | 
-| current	               | 	当前所在的步骤           | Number        | 0      |
-| progressDot            |  点状步骤条     | Boolean | false         |
+| direction	             | 	显示方向，`horizontal`,`vertical`  | `string`        | `horizontal`  | 
+| current	               | 	当前所在的步骤           | `number`        | `0`      |
+| progressDot            |  点状步骤条     | `boolean` | `false`       |
 
 
 #### nut-steps events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| clickStep `v1.3.8 废弃` | 点击步骤的标题或图标时触发 | index: number |
-| onClickStep `v1.3.8`  | 点击步骤的标题或图标时触发 | index: number |
+| clickStep `v1.3.8 废弃` | 点击步骤的标题或图标时触发 | `index: number` |
+| onClickStep `v1.3.8`  | 点击步骤的标题或图标时触发 | `index: number` |
 
 #### Step
 
 | 参数           | 说明                   | 类型     | 默认值      |
 | ---------------- | ---------------------- | ------------ | ----------- |
-| title            | 流程步骤的标题         | String | '' |
-| content          | 流程步骤的描述性文字       | String | '' |
-| icon          | 图标(来自Icon组件的name属性)       | String | '' |
-| iconColor          | 图标颜色       | String | null |
-| size          | 图标尺寸大小(来自Icon组件的size属性)       | String | '' |
-| activeIndex          | 流程步骤的索引       | Number | 0 |
-| renderContent         | 流程步骤的描述性文字的html结构      | React.ReactNode | - |
+| title            | 流程步骤的标题         | `string` | '' |
+| content          | 流程步骤的描述性文字       | `string` | '' |
+| icon          | 图标(来自Icon组件的name属性)       | `string` | '' |
+| activeIndex          | 流程步骤的索引       | `number` | 0 |
+| renderContent         | 流程步骤的描述性文字的html结构      | `React.ReactNode` | - |
 
 ## 主题定制
 

@@ -184,27 +184,26 @@ export default App;
 
 ### Props
 
-| 参数                   | 说明 | 类型           | 默认值        |
-|------------------------|----------------|----------------|---------------|
-| visible | 当前组件是否显示 | Boolean        | `false`       |
-| zIndex | 遮罩层级 | String、Number | `2000`        |
-| duration | 遮罩动画时长，单位秒 | Number | `0.3`         |
-| overlayClass | 自定义遮罩类名 | String         | -             |
-| overlayStyle | 自定义遮罩样式 | CSSProperties  | -             |
-| lockScroll | 背景是否锁定 | Boolean        | `true`       |
-| overlay | 是否显示遮罩 | Boolean        | `true`        |
-| closeOnClickOverlay | 是否点击遮罩关闭 | Boolean        | `true`        |
-| position | 弹出位置（top,bottom,left,right,center）                    | String         | `"center"`    |
-| transition | 动画名 | String         | -             |
-| style | 自定义弹框样式 | CSSProperties  | -             |
-| popClass | 自定义弹框类名 | String         | -             |
-| closeable | 是否显示关闭按钮 | Boolean        | `false`        |
-| closeIconPosition    | 关闭按钮位置（top-left,top-right,bottom-left,bottom-right） | String | `"top-right"` |
-| closeIcon | 自定义 Icon | String         | `"close"`     |
-| closeIconSize`v1.4.7` | 关闭按钮大小 | string | `"12px"` |
-| destroyOnClose | 组件销毁后是否关闭 | Boolean        | `true`        |
-| round | 是否显示圆角 | Boolean        | `false`       |
-| teleport`v1.3.0` | 指定节点挂载 | HTMLElement、(() => HTMLElement) 、null        | `null`       |
+| 参数                  | 说明 | 类型                                      | 默认值         |
+|---------------------|----------------|-----------------------------------------|-------------|
+| visible             | 当前组件是否显示 | `boolean`                               | `false`     |
+| zIndex              | 遮罩层级 | `string`、`number`                       | `2000`      |
+| duration            | 遮罩动画时长，单位秒 | `number`                                | `0.3`       |
+| overlayClass        | 自定义遮罩类名 | `string`                                | -           |
+| overlayStyle        | 自定义遮罩样式 | `CSSProperties`                         | -           |
+| lockScroll          | 背景是否锁定 | `boolean`                               | `true`      |
+| overlay             | 是否显示遮罩 | `boolean`                               | `true`      |
+| closeOnClickOverlay | 是否点击遮罩关闭 | `boolean`                               | `true`      |
+| position            | 弹出位置（top,bottom,left,right,center）                    | `string`                                | `center`    |
+| transition          | 动画名 | `string`                                | -           |
+| style               | 自定义弹框样式 | `CSSProperties`                         | -           |
+| popClass            | 自定义弹框类名 | `string`                                | -           |
+| closeable           | 是否显示关闭按钮 | `boolean \| ReactNode`      | `false`        |
+| closeIconPosition   | 关闭按钮位置（top-left,top-right,bottom-left,bottom-right） | `string`                                | `top-right` |
+| iconSize`v1.4.7`    | 关闭按钮大小 | string                                  | `"12px"`    |
+| destroyOnClose      | 组件销毁后是否关闭 | `boolean`                               | `true`      |
+| round               | 是否显示圆角 | `boolean`                               | `false`     |
+| teleport`v1.3.0`    | 指定节点挂载 | `HTMLElement、(() => HTMLElement) 、null` | `null`      |
 
 ### Events
 

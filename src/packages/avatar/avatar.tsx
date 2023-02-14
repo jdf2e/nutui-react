@@ -9,13 +9,12 @@ import React, {
 import classNames from 'classnames'
 import { AvatarContext } from '@/packages/avatargroup/AvatarContext'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface AvatarProps extends BasicComponent {
   size: string
-  icon: string
+  icon: React.ReactNode
   iconSize?: string | number
   shape: AvatarShape
   bgColor: string
@@ -171,15 +170,7 @@ export const Avatar: FunctionComponent<
                   onError={errorEvent}
                 />
               )}
-              {icon && (
-                <Icon
-                  classPrefix={iconClassPrefix}
-                  fontClassName={iconFontClassName}
-                  className="icon"
-                  name={iconStyles}
-                  size={iconSize}
-                />
-              )}
+              {React.isValidElement(icon) ? icon : null}
               {children && <span className="text">{children}</span>}
             </>
           )}

@@ -39,7 +39,7 @@ const TagDemo = () => {
             linkSlot={
               <Tag
                 closeable
-                iconSize="14px"
+                iconSize={12}
                 onClose={() => alert('Tag closed')}
                 type="primary"
               >

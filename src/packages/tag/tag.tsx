@@ -4,8 +4,8 @@ import React, {
   useEffect,
   useState,
 } from 'react'
+import { Close } from '@nutui/icons-react'
 import classNames from 'classnames'
-import Icon from '@/packages/icon'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -16,8 +16,8 @@ export interface TagProps extends BasicComponent {
   plain: boolean
   round: boolean
   mark: boolean
-  closeable: boolean
-  iconSize?: string | number
+  closeable: boolean | React.ReactNode
+  iconSize: string | number
   prefixCls: string
   onClick: (e: MouseEvent) => void
   onClose: (e?: any) => void
@@ -35,7 +35,7 @@ const defaultProps = {
   round: false,
   mark: false,
   closeable: false,
-  iconSize: '12px',
+  iconSize: 12,
   prefixCls: 'nut-tag',
   onClose: (e: any) => {},
   onClick: (e: MouseEvent) => {},
@@ -56,8 +56,6 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     textColor,
     onClick,
     onClose,
-    iconClassPrefix,
-    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -74,7 +72,6 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     round,
     mark,
     closeable,
-    iconSize,
     prefixCls,
     onClick,
     onClose,
@@ -124,19 +121,18 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
             onClick={(e) => handleClick(e)}
           >
             {children && <span className="nut-tag-text">{children}</span>}
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              className="_icon"
-              name="close"
-              size={iconSize}
-              onClick={(e) => {
-                setIsTagShow(false)
-                if (props.onClose) {
-                  props.onClose(e)
-                }
-              }}
-            />
+            {React.isValidElement(closeable) ? (
+              closeable
+            ) : (
+              <Close
+                width={iconSize}
+                height={iconSize}
+                onClick={(e) => {
+                  setIsTagShow(false)
+                  props.onClose && props.onClose(e)
+                }}
+              />
+            )}
           </div>
         )
       ) : (

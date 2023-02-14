@@ -2,7 +2,6 @@ import React, { FunctionComponent, useContext } from 'react'
 import classNames from 'classnames'
 import { DataContext } from '@/packages/steps/UserContext'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -10,9 +9,7 @@ export interface StepProps extends BasicComponent {
   title: string
   content: string
   activeIndex: number
-  icon: string
-  iconColor: string
-  size: string
+  icon: React.ReactNode
   className: string
   style: React.CSSProperties
   renderContent: () => React.ReactNode
@@ -24,8 +21,6 @@ const defaultProps = {
   content: '',
   activeIndex: 0,
   icon: '',
-  iconColor: '',
-  size: '12px',
 } as StepProps
 export const Step: FunctionComponent<
   Partial<StepProps> & React.HTMLAttributes<HTMLDivElement>
@@ -36,12 +31,8 @@ export const Step: FunctionComponent<
     content,
     activeIndex,
     icon,
-    iconColor,
-    size,
     className,
     renderContent,
-    iconClassPrefix,
-    iconFontClassName,
     ...restProps
   } = {
     ...defaultProps,
@@ -83,18 +74,9 @@ export const Step: FunctionComponent<
       <div className="nut-step-head">
         <div className="nut-step-line" />
         <div className={renderIconClass()}>
-          {icon ? (
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              className="nut-step-icon-inner"
-              color={iconColor}
-              name={icon}
-              size={size}
-            />
-          ) : (
-            !dot && <span className="nut-step-inner">{activeIndex}</span>
-          )}
+          {React.isValidElement(icon)
+            ? icon
+            : !dot && <span className="nut-step-inner">{activeIndex}</span>}
         </div>
       </div>
       <div className="nut-step-main">

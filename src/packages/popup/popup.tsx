@@ -10,9 +10,9 @@ import React, {
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
+import { Close } from '@nutui/icons-react'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
-import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
 import bem from '@/utils/bem'
 import { ComponentDefaults, BasicComponent } from '@/utils/typings'
@@ -26,8 +26,8 @@ export interface PopupProps extends OverlayProps, BasicComponent {
   popClass: string
   closeable: boolean
   closeIconPosition: string
-  closeIcon: string
-  closeIconSize?: string | number
+  closeIcon: React.ReactNode
+  iconSize?: string | number
   destroyOnClose: boolean
   teleport: Teleport
   overlay: boolean
@@ -49,8 +49,8 @@ const defaultProps = {
   popClass: '',
   closeable: false,
   closeIconPosition: 'top-right',
-  closeIcon: 'close',
-  closeIconSize: '12px',
+  closeIcon: '',
+  iconSize: '12px',
   destroyOnClose: true,
   teleport: null,
   overlay: true,
@@ -99,9 +99,7 @@ export const Popup: FunctionComponent<
     onOpened,
     onClosed,
     onClick,
-    iconClassPrefix,
-    iconFontClassName,
-    closeIconSize,
+    iconSize,
   } = props
 
   const [index, setIndex] = useState(zIndex || _zIndex)
@@ -208,7 +206,19 @@ export const Popup: FunctionComponent<
 
     return node
   }
-
+  const renderIcon = () => {
+    if (React.isValidElement(closeable)) {
+      return closeable
+    }
+    if (closeable === true) {
+      return (
+        <div className={closeClasses} onClick={onHandleClickCloseIcon}>
+          <Close width={iconSize} height={iconSize} />
+        </div>
+      )
+    }
+    return null
+  }
   const renderPop = () => {
     return (
       <CSSTransition
@@ -221,18 +231,7 @@ export const Popup: FunctionComponent<
       >
         <div style={popStyles} className={classes} onClick={onHandleClick}>
           {showChildren ? children : ''}
-          {closeable ? (
-            <div className={closeClasses} onClick={onHandleClickCloseIcon}>
-              <Icon
-                classPrefix={iconClassPrefix}
-                fontClassName={iconFontClassName}
-                name={closeIcon}
-                size={closeIconSize}
-              />
-            </div>
-          ) : (
-            ''
-          )}
+          {renderIcon()}
         </div>
       </CSSTransition>
     )

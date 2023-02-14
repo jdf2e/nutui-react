@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react'
+import { My2, Cart2, Location2 } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Popover } from './popover'
 import Button from '@/packages/button'
-import Icon from '@/packages/icon'
 import Cell from '@/packages/cell'
 
 interface T {
@@ -10,7 +10,7 @@ interface T {
 }
 interface List {
   name: string
-  icon?: string
+  icon?: React.ReactNode
   disabled?: boolean
 }
 
@@ -87,15 +87,15 @@ const BadgeDemo = () => {
   const iconItemList = [
     {
       name: 'option1',
-      icon: 'my2',
+      icon: <My2 />,
     },
     {
       name: 'option2',
-      icon: 'cart2',
+      icon: <Cart2 />,
     },
     {
       name: 'option3',
-      icon: 'location2',
+      icon: <Location2 />,
     },
   ]
   const itemListDisabled = [
@@ -275,7 +275,7 @@ const BadgeDemo = () => {
                       style={selfContentItem}
                       key={item.name}
                     >
-                      <Icon name={item.name} size="15" />
+                      <Location2 />
                       <div
                         className="self-content-desc"
                         style={selfContentDesc}
