@@ -708,6 +708,8 @@ $overlay-content-color: var(--nutui-overlay-content-color, $gray1) !default;
 //popup（✅）
 $popup-close-icon-margin: var(--nutui-popup-close-icon-margin, 16px) !default;
 $popup-border-radius: var(--nutui-popup-border-radius, 20px) !default;
+$popup-close-icon-color: var(--nutui-popup-close-icon-color, #969799) !default;
+$popup-close-icon-size: var(--nutui-popup-close-icon-size, 30px) !default;
 
 // Notify（✅）
 $notify-text-color: var(--nutui-notify-text-color, $white) !default;
@@ -1058,7 +1060,7 @@ $radio-label-button-background: var(
   --nutui-radio-label-button-background,
   rgba(250, 44, 25, 0.05)
 ) !default;
-$radio-label-margin-left: var(--nutui-radio-label-margin-left, 15px) !default;
+$radio-label-margin-left: var(--nutui-radio-label-margin-left, 6px) !default;
 $radio-button-border-radius: var(
   --nutui-radio-button-border-radius,
   15px
@@ -1230,6 +1232,7 @@ $timeselect-timedetail-time-font-size: var(
 ) !default;
 
 //tag（✅）
+$tag-padding: var(--nutui-tag-padding, 0 4px) !default;
 $tag-font-size: var(--nutui-tag-font-size, 12px) !default;
 $tag-default-border-radius: var(
   --nutui-tag-default-border-radius,
@@ -1685,12 +1688,30 @@ $collapse-wrapper-content-background-color: var(
 // searchbar（✅）
 
 $searchbar-background: var(--nutui-searchbar-background, $gray6) !default;
+$searchbar-content-border-radius: var(
+  --nutui-searchbar-content-border-radius,
+  2px
+) !default;
 $searchbar-right-out-color: var(
   --nutui-searchbar-right-out-color,
   $black
 ) !default;
 $searchbar-padding: var(--nutui-searchbar-padding, 9px 16px) !default;
 $searchbar-width: var(--nutui-searchbar-width, 100%) !default;
+$searchbar-label-fontsize: var(--nutui-searchbar-label-fontsize, 12px) !default;
+$searchbar-label-padding: var(
+  --nutui-searchbar-label-padding,
+  0 12px 0 0
+) !default;
+$searchbar-label-color: var(--nutui-searchbar-label-color, $gray1) !default;
+$searchbar-action-text-fontsize: var(
+  --nutui-searchbar-action-text-fontsize,
+  14px
+) !default;
+$searchbar-action-text-padding: var(
+  --nutui-searchbar-action-text-padding,
+  0 0 0 8px
+) !default;
 $searchbar-action-text-color: var(
   --nutui-searchbar-action-text-color,
   $gray1
@@ -1703,6 +1724,10 @@ $searchbar-input-background: var(
 ) !default;
 $searchbar-input-text-color: var(
   --nutui-searchbar-input-text-color,
+  $gray1
+) !default;
+$searchbar-input-curror-color: var(
+  --nutui-searchbar-input-curror-color,
   $gray1
 ) !default;
 $searchbar-input-width: var(--nutui-searchbar-input-width, 100%) !default;
@@ -1721,6 +1746,10 @@ $searchbar-input-bar-color: var(
 $searchbar-input-bar-placeholder-color: var(
   --nutui-searchbar-input-bar-placeholder-color,
   inherit
+) !default;
+$searchbar-clear-icon-padding: var(
+  --nutui-searchbar-clear-icon-padding,
+  0 10px 0 5px
 ) !default;
 
 // empty（✅）

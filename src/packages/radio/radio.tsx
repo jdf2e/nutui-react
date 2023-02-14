@@ -91,7 +91,9 @@ export const Radio: FunctionComponent<
     return (
       <div
         className={`${componentName}__button ${
-          checkedStatement && `${componentName}__button--active`
+          !disabledStatement &&
+          checkedStatement &&
+          `${componentName}__button--active`
         } ${disabledStatement ? `${componentName}__button--disabled` : ''}`}
       >
         {children}
@@ -114,12 +116,15 @@ export const Radio: FunctionComponent<
       <Icon
         classPrefix={iconClassPrefix}
         fontClassName={iconFontClassName}
-        name={checkedStatement ? iconActiveName : iconName}
+        name={
+          !disabledStatement && checkedStatement ? iconActiveName : iconName
+        }
         size={iconSize}
         className={color()}
       />
     )
   }
+  const reverseState = textPosition === 'left'
   const renderRadioItem = () => {
     if (shape === 'button') {
       return renderButton()
@@ -145,9 +150,15 @@ export const Radio: FunctionComponent<
     onChange && onChange(e)
     context && context.onChange(valueStatement)
   }
-  const reverseState = textPosition === 'left'
+
   return (
-    <div className={`nut-radio ${className}`} onClick={handleClick} {...rest}>
+    <div
+      className={`nut-radio ${className} ${
+        reverseState ? `${componentName}--reverse` : ''
+      }`}
+      onClick={handleClick}
+      {...rest}
+    >
       {renderRadioItem()}
     </div>
   )
