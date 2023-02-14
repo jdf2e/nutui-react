@@ -708,6 +708,8 @@ $overlay-content-color: var(--nutui-overlay-content-color, $gray1) !default;
 //popup（✅）
 $popup-close-icon-margin: var(--nutui-popup-close-icon-margin, 16px) !default;
 $popup-border-radius: var(--nutui-popup-border-radius, 20px) !default;
+$popup-close-icon-color: var(--nutui-popup-close-icon-color, #969799) !default;
+$popup-close-icon-size: var(--nutui-popup-close-icon-size, 30px) !default;
 
 // Notify（✅）
 $notify-text-color: var(--nutui-notify-text-color, $white) !default;
