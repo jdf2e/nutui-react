@@ -310,6 +310,10 @@ export default App;
 | --nutui-progress-border-radius | ` 12px` |
 | --nutui-progress-text-padding | ` 0 5px` |
 | --nutui-progress-text-font-size | ` 13px` |
+| --nutui-progress-text-color | ` $title-color` |
+| --nutui-progress-text-inner-color | ` $gray6` |
+| --nutui-progress-insidetext-position-top | ` -4px`|
+| --nutui-progress-insidetext-position-bottom | ` -4px`|
 | --nutui-progress-insidetext-border-radius | `  5px` |
 | --nutui-progress-insidetext-background | `  $progress-inner-background-color` |
 | --nutui-progress-outer-background-color | `  #f3f3f3` |

@@ -151,7 +151,7 @@ export const Progress: FunctionComponent<
                 <div className={classesInsideText} style={stylesInsideText}>
                   <span
                     className={classesTextInner}
-                    style={{ color: textColor || '#fff' }}
+                    style={{ color: textColor }}
                   >
                     {percentage}
                     {isShowPercentage ? '%' : ''}
@@ -165,10 +165,7 @@ export const Progress: FunctionComponent<
       {showText && !textInside && (
         <div className={classesText} style={stylesText}>
           {textType === 'text' && (
-            <span
-              className={classesTextInner}
-              style={{ color: textColor || '$title-color' }}
-            >
+            <span className={classesTextInner} style={{ color: textColor }}>
               {percentage}
               {isShowPercentage ? '%' : ''}
             </span>
