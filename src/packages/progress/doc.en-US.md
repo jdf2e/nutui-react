@@ -47,7 +47,7 @@ const App = () => {
       <Progress
         percentage="30"
         strokeColor="rgba(250,44,25,0.47)"
-        stroke-width="20"
+        strokeWidth="20"
         textColor="red"
       />
     </Cell>
@@ -299,8 +299,7 @@ export default App;
 | iconName | Icon Name | String | checked
 | iconColor | Icon Color | String | #439422
 | iconSize | Icon Size | String | 16px
-| rounded | Whether the corners are rounded | boolean｜String | true
-
+| rounded `v1.4.7 Abandon`| Whether the corners are rounded | boolean｜String | true
 
 
 ## Theming
@@ -314,6 +313,10 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-progress-border-radius | ` 12px` |
 | --nutui-progress-text-padding | ` 0 5px` |
 | --nutui-progress-text-font-size | ` 13px` |
+| --nutui-progress-text-color | ` $title-color` |
+| --nutui-progress-text-inner-color | ` $gray6` |
+| --nutui-progress-insidetext-position-top | ` -4px`|
+| --nutui-progress-insidetext-position-bottom | ` -4px`|
 | --nutui-progress-insidetext-border-radius | `  5px` |
 | --nutui-progress-insidetext-background | `  $progress-inner-background-color` |
 | --nutui-progress-outer-background-color | `  #f3f3f3` |
