@@ -158,6 +158,7 @@ export default App;
 |readonly | the input box is read-only | _boolean_ | ` false` |
 |maxLength | maximum input length | _number_ | ` 9999` |
 |clearable | whether to display the clear button | _boolean_ | ` true` |
+| clearIconSize`v1.4.7` | the size of clear button，same as Icon's size | string/number | `12px` |
 |background | search box external background color |_string_ | - |
 |inputbackground | search box background color |_string_ | - |
 |inputalign | alignment, optional `center` `right` | _string_ | ` left` |
@@ -195,14 +196,24 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Default Value |
 | --- | --- |
 | --nutui-searchbar-background | ` $gray6` |
+| --nutui-searchbar-content-border-radius | ` 2px` |
 | --nutui-searchbar-right-out-color | `  $black` |
 | --nutui-searchbar-padding | ` 9px 16px` |
+| --nutui-searchbar-width | ` 100%` |
+| --nutui-searchbar-label-fontsize | ` 12px` | 
+| --nutui-searchbar-label-padding | ` 0 12px 0 0`| 
+| --nutui-searchbar-label-color | ` $gray1` |
+| --nutui-searchbar-action-text-fontsize | ` 14px`| 
+| --nutui-searchbar-action-text-padding | ` 0 0 0 8px`|
 | --nutui-searchbar-action-text-color | `  $gray1` |
 | --nutui-searchbar-input-height | ` 32px` |
 | --nutui-searchbar-input-padding | ` 0 28px` |
 | --nutui-searchbar-input-background | `  #f7f7f7` |
 | --nutui-searchbar-input-text-color | `  $gray1` |
+| --nutui-searchbar-input-curror-color | `  $gray1` |
+| --nutui-searchbar-input-width | ` 100%` |
 | --nutui-searchbar-input-border-radius | `  16px` |
 | --nutui-searchbar-input-box-shadow | `  0 0 8px 0 rgba(0, 0, 0, 0.04)` |
 | --nutui-searchbar-input-bar-color | `  inherit` |
 | --nutui-searchbar-input-bar-placeholder-color | `  inherit` |
+| --nutui-searchbar-clear-icon-padding | ` 0 10px 0 5px` |

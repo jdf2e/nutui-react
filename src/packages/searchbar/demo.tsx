@@ -85,6 +85,7 @@ const SearchBarDemo = () => {
         <SearchBar
           label={translated.text}
           actionText={translated.test}
+          clearIconSize="14px"
           onSearch={(value) => Toast.text(value)}
         />
         <h2>{translated.title5}</h2>
