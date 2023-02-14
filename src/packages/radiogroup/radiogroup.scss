@@ -31,18 +31,30 @@
   }
 }
 .nut-radiogroup {
-  display: inline-block;
+  display: flex;
+  align-items: flex-start;
+
   .nut-radio {
     margin-bottom: 5px;
+
     &__label {
       margin-right: 5px;
     }
+
     &__button {
       background-color: $gray4;
     }
   }
+
   &--vertical {
+    flex-direction: column;
+
     .nut-radio {
+      &.nut-radio--reverse {
+        width: 100%;
+        justify-content: space-between;
+      }
+
       &__label {
         margin-right: 5px;
       }
@@ -57,7 +69,8 @@
   &--horizontal {
     .nut-radio {
       display: inline-flex;
-      margin-right: 10px;
+      margin-right: 20px;
+
       &--round {
         .nut-radio__label {
           margin: 0 6px;

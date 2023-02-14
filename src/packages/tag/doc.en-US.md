@@ -199,6 +199,7 @@ export default App;
 | round      | Whether it is a rounded style                      | Boolean | `false`   |
 | mark       | Whether it is a tag style                          | Boolean | `false`   |
 | closeable  | Whether it can be closed label                     | Boolean | `false`   |
+| iconSize`v1.4.7` | the size of closed label  | string | number | ` 12px`|
 
 ### Event
 
@@ -216,6 +217,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
+| --nutui-tag-padding | ` 0 4px`|
 | --nutui-tag-font-size | ` 12px` |
 | --nutui-tag-default-border-radius | `  4px` |
 | --nutui-tag-round-border-radius | ` 8px` |
