@@ -4,10 +4,10 @@ import React, {
   useEffect,
   useState,
 } from 'react'
+import classNames from 'classnames'
 import Icon from '@/packages/icon'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import classNames from 'classnames'
 
 export interface TagProps extends BasicComponent {
   type: TagType
@@ -17,6 +17,7 @@ export interface TagProps extends BasicComponent {
   round: boolean
   mark: boolean
   closeable: boolean
+  iconSize?: string | number
   prefixCls: string
   onClick: (e: MouseEvent) => void
   onClose: (e?: any) => void
@@ -34,6 +35,7 @@ const defaultProps = {
   round: false,
   mark: false,
   closeable: false,
+  iconSize: '12px',
   prefixCls: 'nut-tag',
   onClose: (e: any) => {},
   onClick: (e: MouseEvent) => {},
@@ -50,6 +52,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     children,
     mark,
     closeable,
+    iconSize,
     textColor,
     onClick,
     onClose,
@@ -71,6 +74,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     round,
     mark,
     closeable,
+    iconSize,
     prefixCls,
     onClick,
     onClose,
@@ -125,7 +129,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
               fontClassName={iconFontClassName}
               className="_icon"
               name="close"
-              size="12"
+              size={iconSize}
               onClick={(e) => {
                 setIsTagShow(false)
                 if (props.onClose) {

@@ -199,6 +199,7 @@ export default App;
 | round      | 是否为圆角样式                                   | Boolean | `false`   |
 | mark       | 是否为标记样式                                   | Boolean | `false`   |
 | closeable  | 是否为可关闭标签                                 | Boolean | `false`   |
+| iconSize`v1.4.7` | 关闭标签的尺寸 | string | number | ` 12px`|
 
 ### Event
 
@@ -217,6 +218,7 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
+| --nutui-tag-padding | ` 0 4px`|
 | --nutui-tag-font-size | ` 12px` |
 | --nutui-tag-default-border-radius | `  4px` |
 | --nutui-tag-round-border-radius | ` 8px` |
