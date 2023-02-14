@@ -135,7 +135,7 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showBottom}
-          style={{ height: '20%' }}
+          style={{ height: '40%' }}
           position="bottom"
           onClose={() => {
             setShowBottom(false)
@@ -223,6 +223,7 @@ const PopupDemo = () => {
         />
         <Popup
           closeable
+          closeIconSize="15px"
           visible={showIconDefine}
           style={{ height: '20%' }}
           closeIcon="heart"

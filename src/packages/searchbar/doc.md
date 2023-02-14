@@ -159,6 +159,7 @@ export default App;
 | readonly | 输入框只读 | _boolean_ | `false` |
 | maxLength         | 最大输入长度   | _number_ | `9999`   |
 | clearable          | 是否展示清除按钮 | _boolean_ | `true`     |
+| clearIconSize`v1.4.7` | 清除按钮尺寸大小，同Icon的size | string/number | `12px` |
 | background          | 搜索框外部背景色 | _string_ | -     |
 | inputBackground          | 搜索框背景色 | _string_ | -     |
 | inputAlign | 对齐方式，可选 `center` `right` | _string_ | `left` |
@@ -210,6 +211,7 @@ export default App;
 | --nutui-searchbar-input-padding | ` 0 28px` |
 | --nutui-searchbar-input-background | `  #f7f7f7` |
 | --nutui-searchbar-input-text-color | `  $gray1` |
+| --nutui-searchbar-input-curror-color | `  $gray1` |
 | --nutui-searchbar-input-width | ` 100%` |
 | --nutui-searchbar-input-border-radius | `  16px` |
 | --nutui-searchbar-input-box-shadow | `  0 0 8px 0 rgba(0, 0, 0, 0.04)` |

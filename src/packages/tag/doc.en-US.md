@@ -199,7 +199,7 @@ export default App;
 | round      | Whether it is a rounded style                      | Boolean | `false`   |
 | mark       | Whether it is a tag style                          | Boolean | `false`   |
 | closeable  | Whether it can be closed label                     | Boolean | `false`   |
-| iconSize | the size of closed label  | string | number | ` 12px`|
+| iconSize`v1.4.7` | the size of closed label  | string | number | ` 12px`|
 
 ### Event
 
