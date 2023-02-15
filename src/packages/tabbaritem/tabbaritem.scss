@@ -42,7 +42,7 @@
       right: calc(50% - 16px);
       box-shadow: 0 0 0 1px $white;
       font-size: $font-size-1;
-      color: $white;
+      color: $primary-text-color;
       z-index: 1;
     }
 
@@ -62,7 +62,7 @@
     &__num {
       line-height: 1;
       font-size: $tabbar-item-text-font-size;
-      color: $white;
+      color: $primary-text-color;
       padding: 1px 2px 2px 3px;
       top: calc(-50% + 6px);
       right: calc(-50%);
@@ -71,7 +71,7 @@
     &__nums {
       line-height: 1;
       font-size: $tabbar-item-text-font-size;
-      color: $white;
+      color: $primary-text-color;
       padding: 2px 1px 2px 2px;
       top: calc(-50% + 6px);
       right: calc(-50% - 8px);
