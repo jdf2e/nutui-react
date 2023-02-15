@@ -1331,6 +1331,19 @@ $popover-menu-name-line-height: var(
 $progress-border-radius: var(--nutui-progress-border-radius, 12px) !default;
 $progress-text-padding: var(--nutui-progress-text-padding, 0 5px) !default;
 $progress-text-font-size: var(--nutui-progress-text-font-size, 13px) !default;
+$progress-text-color: var(--nutui-progress-text-color, $title-color) !default;
+$progress-text-inner-color: var(
+  --nutui-progress-text-inner-color,
+  $gray6
+) !default;
+$progress-insidetext-position-top: var(
+  --nutui-progress-insidetext-position-top,
+  -4px
+) !default;
+$progress-insidetext-position-bottom: var(
+  --nutui-progress-insidetext-position-bottom,
+  -4px
+) !default;
 $progress-insidetext-border-radius: var(
   --nutui-progress-insidetext-border-radius,
   5px
