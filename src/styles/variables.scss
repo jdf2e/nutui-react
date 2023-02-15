@@ -620,12 +620,12 @@ $avatar-normal-height: var(--nutui-avatar-normal-height, 40px) !default;
 
 //switch（✅）
 $switch-close-bg-color: var(--nutui-switch-close-bg-color, #ebebeb) !default;
-$switch-close--cline-bg-color: var(
-  --nutui-switch-close--cline-bg-color,
+$switch-close--line-bg-color: var(
+  --nutui-switch-close--line-bg-color,
   #f0f0f0
 ) !default;
 $switch-width: var(--nutui-switch-width, 36px) !default;
-$switch-height: var(--nutui-switch-height, 21px) !default;
+$switch-height: var(--nutui-switch-height, 18px) !default;
 $switch-line-height: var(--nutui-switch-line-height, 21px) !default;
 $switch-border-radius: var(--nutui-switch-border-radius, 21px) !default;
 $switch-inside-width: var(--nutui-switch-inside-width, 13px) !default;

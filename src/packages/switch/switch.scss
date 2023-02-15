@@ -1,9 +1,11 @@
 .nut-theme-dark {
   .nut-switch {
     background-color: $dark4;
+
     &.switch-close {
       color: $dark1;
     }
+
     .switch-button {
       .close {
         color: $dark4;
@@ -22,52 +24,98 @@
   background-repeat: no-repeat;
   background-position: center center;
   flex: 0 0 auto; // 防止被压缩
+
   &.switch-close {
     background-color: $switch-close-bg-color;
+
     .close-line {
-      background: $switch-close--cline-bg-color;
+      background: $switch-close--line-bg-color;
       border-radius: 2px;
     }
   }
-  .switch-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: $white;
-    transition: transform 0.3s;
-    .nut-switch__label {
-      color: $white;
-      font-size: $font-size-1;
-      &.open {
-        transform: translateX(-16px);
-      }
-      &.close {
-        transform: translateX(16px);
-      }
-    }
-  }
+
   &-disable {
     opacity: 0.6;
   }
+
   &-base {
     width: $switch-width;
     height: $switch-height;
     line-height: $switch-line-height;
+
     .switch-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: $white;
       height: $switch-inside-height;
       width: $switch-inside-width;
-      transform: $switch-inside-close-transform;
+      inset-inline-start: 2px;
+      transition: all 0.2s ease-in-out;
     }
-    &.switch-open {
-      .switch-button {
-        transform: $switch-inside-open-transform;
+
+    .switch-label {
+      display: block;
+      overflow: hidden;
+      border-radius: 100px;
+      height: 100%;
+      padding-inline-start: 24px;
+      padding-inline-end: 9px;
+      transition: padding-inline-start 0.2s ease-in-out,
+        padding-inline-end 0.2s ease-in-out;
+
+      .nut-switch__label {
+        color: $white;
+        font-size: $font-size-1;
+
+        &.open {
+          margin-inline-start: calc(-100% + 22px);
+          margin-inline-end: calc(100% - 22px + 48px);
+        }
+
+        &.close {
+          margin-top: -22px;
+          margin-inline-start: 0;
+          margin-inline-end: 0;
+        }
       }
     }
+
+    &.switch-open {
+      .switch-button {
+        inset-inline-start: calc(100% - 15px);
+      }
+
+      .nut-switch__label {
+        &.open {
+          margin-inline-start: 0;
+          margin-inline-end: 0;
+        }
+
+        &.close {
+          margin-inline-start: calc(100% - 22px + 48px);
+          margin-inline-end: calc(-100% + 22px - 48px);
+        }
+      }
+    }
+
     &.switch-close {
       .close-line {
         width: 8px;
         height: 2px;
+      }
+
+      .nut-switch__label {
+        &.open {
+          margin-inline-start: 0;
+          margin-inline-end: 0;
+        }
+
+        &.close {
+          margin-inline-start: calc(100% - 22px + 48px);
+          margin-inline-end: calc(-100% + 22px - 48px);
+        }
       }
     }
   }
