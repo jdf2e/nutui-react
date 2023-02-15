@@ -84,7 +84,7 @@ const App = () => {
         onFinish={(obj) => submitSucceed(obj)}
         onFinishFailed={(error) => submitFailed(error)}
       >
-        <Form.Item label='姓名' name="username" initialValue="张三">
+        <Form.Item label='姓名' name="username">
           <Input
             className="nut-input-text"
             placeholder='请输入姓名'
@@ -92,7 +92,7 @@ const App = () => {
           />
         </Form.Item>
         <Form.Item label='年龄' name="age">
-          <Input placeholder='请填写年龄' type="number" defaultValue="18" />
+          <Input placeholder='请填写年龄' type="number" />
         </Form.Item>
         <Form.Item label='联系电话' name="tel">
           <Input placeholder='请填写联系电话' type="number" />
@@ -112,6 +112,43 @@ const App = () => {
 export default App;
 ```
 :::
+
+### 带有初始值表单校验
+:::demo
+
+```tsx
+import  React from "react";
+import { Form, Input, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Form
+        onFinish={(obj) => submitSucceed(obj)}
+        onFinishFailed={(error) => submitFailed(error)}
+      >
+        <Form.Item label='姓名' name="username" initialValue="张三">
+          <Input
+            className="nut-input-text"
+            placeholder='请输入姓名'
+            type="text"
+          />
+        </Form.Item>
+        <Form.Item label='年龄' name="age">
+          <Input placeholder='请填写年龄' type="number" defaultValue="18" />
+        </Form.Item>
+        <Cell>
+          <input type="submit" value='提交' />
+        </Cell>
+      </Form>
+    </>
+  )
+}
+
+export default App;
+```
+:::
+
 
 ### 表单类型
 

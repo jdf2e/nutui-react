@@ -75,7 +75,49 @@ const App = () => {
         onFinish={(obj) => submitSucceed(obj)}
         onFinishFailed={(error) => submitFailed(error)}
       >
-        <Form.Item label='Name' name="username" initialValue="张三">
+        <Form.Item label='Name' name="username">
+          <Input
+            className="nut-input-text"
+            placeholder='Please enter your name'
+            type="text"
+          />
+        </Form.Item>
+        <Form.Item label='Age' name="age">
+          <Input placeholder='Please enter age' type="number" />
+        </Form.Item>
+        <Form.Item label='Tel' name="tel">
+          <Input placeholder='Please enter tel number' type="number" />
+        </Form.Item>
+        <Form.Item label='Address' name="address">
+          <Input placeholder='Please enter address' type="text" />
+        </Form.Item>
+        <Cell>
+          <input type="submit" value='Submit' />
+        </Cell>
+      </Form>
+    </>
+  )
+}
+
+export default App;
+```
+:::
+
+### InitialValue Validate Type
+:::demo
+
+```tsx
+import  React from "react";
+import { Form, Input, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Form
+        onFinish={(obj) => submitSucceed(obj)}
+        onFinishFailed={(error) => submitFailed(error)}
+      >
+        <Form.Item label='Name' name="username" initialValue="zhangsan">
           <Input
             className="nut-input-text"
             placeholder='Please enter your name'
@@ -84,12 +126,6 @@ const App = () => {
         </Form.Item>
         <Form.Item label='Age' name="age">
           <Input placeholder='Please enter age' type="number" defaultValue="18" />
-        </Form.Item>
-        <Form.Item label='Tel' name="tel">
-          <Input placeholder='Please enter tel number' type="number" />
-        </Form.Item>
-        <Form.Item label='Address' name="address">
-          <Input placeholder='Please enter address' type="text" />
         </Form.Item>
         <Cell>
           <input type="submit" value='Submit' />
