@@ -1,3 +1,29 @@
+# v1.4.7
+`2023-02-15`
+
+* :sparkles: feat: swiper 新增重新计算尺寸方法，文档修改 (#649) @lkjh3214
+* :sparkles: feat: button 增加iconSize 属性，提取视觉元素变量 (#654) @xiaoyatong
+* :sparkles: feat: form表单组件新增initialValue初始值属性 (#671) @junjun666
+* :sparkles: feat: popup增加closeiconsize属性，提取元素变量 (#663) @xiaoyatong
+* :sparkles: feat: progress 提取元素变量，去掉无意义属性，增加fillcolor demo (#662) @xiaoyatong
+* :sparkles: feat: searchbar 新增 cleariconsize，提取元素变量 (#660) @xiaoyatong
+* :sparkles: feat: swipe 组件对外暴露 onTouchStart onTouchMove onTouchEnd 事件 (#656) @oasis-cloud
+* :sparkles: feat: swiper 增加元素变量提取 (#666) @xiaoyatong
+* :sparkles: feat: tabbar增加视觉变量，调整样式布局，支持独立配置icon大小 (#653) @xiaoyatong
+* :sparkles: feat: tag 增加iconSize属性，提取元素变量 (#657) @xiaoyatong
+* :bug: fix: ellipsis内存泄露 (#646) @Kason Yang
+* :bug: fix: numberkeyboard add new props overlay (#661) @Drjingfubo
+* :bug: fix: checkboxgroup options渲染 (#638) @Kason Yang
+* :bug: fix: docs “废弃”格式不一致，统一修复 (#652) @xiaoyatong
+* :bug: fix: jest waring (#651) @oasis-cloud
+* :bug: fix: radio 反转样式，不可选状态默认也不可选 (#659) @xiaoyatong
+* :bug: fix: 修改elevator组件自定义内容使用方式 (#630) @拧巴的猫
+* :bug: fix: 暗黑模式下部分组件样式问题 (#670) @xiaoyatong
+* 🔨 chore: 本地开发切换到模拟器后，刷新页面跳转到demo (#669) @oasis-cloud
+* 📖 docs: button 文档 (#655) @xiaoyatong
+* 📖 docs: progress 文档修改 (#673) @xiaoyatong
+
+
 # v1.4.6
 `2023-02-08`
 
