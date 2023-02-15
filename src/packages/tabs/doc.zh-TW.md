@@ -68,7 +68,34 @@ export default App;
 
 :::
 
-### 通过 pane-key 匹配
+### 基础用法-Title 左对齐
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs, TabPane } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value} onChange={({ paneKey }) => {
+        setTab1value(paneKey)
+      }} leftAlign>
+        <TabPane title="Tab 1"> Tab 1 </TabPane>
+        <TabPane title="Tab 2"> Tab 2 </TabPane>
+        <TabPane title="Tab 3"> Tab 3 </TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 通过 paneKey 匹配
 
 :::demo
 
@@ -83,9 +110,9 @@ const App = () => {
       <Tabs value={tab2value} onChange={({ paneKey }) => {
         setTab2value(paneKey)
       }}>
-        <TabPane title="Tab 1" pane-key="0"> Tab 1 </TabPane>
-        <TabPane title="Tab 2" pane-key="1" disabled> Tab 2 </TabPane>
-        <TabPane title="Tab 3" pane-key="2"> Tab 3 </TabPane>
+        <TabPane title="Tab 1" paneKey="0"> Tab 1 </TabPane>
+        <TabPane title="Tab 2" paneKey="1" disabled> Tab 2 </TabPane>
+        <TabPane title="Tab 3" paneKey="2"> Tab 3 </TabPane>
       </Tabs>
     </>
   );
@@ -325,6 +352,9 @@ export default App;
 | titleGutter  | 标签间隙                                      | number,string | 0          |
 | titleNode    | 自定义导航区域                                 | `() => JSX.Element[]` | 0          |
 | size         | 标签栏字体尺寸大小 可选值 large normal small | string        | normal     |
+| leftAlign`v1.4.8` | 标题左对齐 | boolean | false |
+| autoHeight`v1.2.1` | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean             | false     |
+| tabStyle`v1.3.8` | 标签栏样式 | React.CSSProperties | {}     |
 
 ## Tabs Children
 
@@ -364,6 +394,8 @@ export default App;
 | --nutui-tabs-titles-item-color | `  $title-color` |
 | --nutui-tabs-titles-item-active-color | `  $title-color` |
 | --nutui-tabs-titles-background-color | `  $background-color2` |
+| --nutui-tabs-horizontal-line-bottom | ` 15%` |
+| --nutui-tabs-horizontal-line-border-radius |` 0px`|
 | --nutui-tabs-horizontal-titles-height | `  46px` |
 | --nutui-tabs-horizontal-titles-item-min-width | `  50px` |
 | --nutui-tabs-horizontal-titles-item-active-line-width | `  40px` |
