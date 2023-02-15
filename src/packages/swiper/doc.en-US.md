@@ -512,6 +512,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
+| --nutui-swiper-pagination-bottom | ` 12px`|
 | --nutui-swiper-pagination-item-background-color | `  #ddd` |
 | --nutui-swiper-pagination-item-width | `  8px` |
 | --nutui-swiper-pagination-item-height | `  3px` |
