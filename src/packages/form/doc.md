@@ -84,7 +84,7 @@ const App = () => {
         onFinish={(obj) => submitSucceed(obj)}
         onFinishFailed={(error) => submitFailed(error)}
       >
-        <Form.Item label='姓名' name="username">
+        <Form.Item label='姓名' name="username" initialValue="张三">
           <Input
             className="nut-input-text"
             placeholder='请输入姓名'
@@ -92,7 +92,7 @@ const App = () => {
           />
         </Form.Item>
         <Form.Item label='年龄' name="age">
-          <Input placeholder='请填写年龄' type="number" />
+          <Input placeholder='请填写年龄' type="number" defaultValue="18" />
         </Form.Item>
         <Form.Item label='联系电话' name="tel">
           <Input placeholder='请填写联系电话' type="number" />
@@ -186,6 +186,7 @@ export default App;
 | name                | 在使用表单校验功能的情况下，该属性是必填的 | string           | -       |
 | labelWidth         | 表单项 label 宽度，默认单位为`px` | number \| string | `90px`  |
 | errorMessageAlign | 错误提示文案对齐方式，可选值为 `center` `right`                  | string           | `left`  |
+| initialValue`v1.4.7` | 设置子元素默认值                  | string           | -  |
 
 ### Form.Item Rule 数据结构
 

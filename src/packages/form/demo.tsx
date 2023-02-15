@@ -234,11 +234,16 @@ const FormDemo = () => {
             label={translated.name}
             name="username"
             rules={[{ required: true, message: translated.nameTip }]}
+            initialValue="张三"
           >
             <Input placeholder={translated.nameTip1} type="text" />
           </Form.Item>
           <Form.Item label={translated.age} name="age">
-            <Input placeholder={translated.ageTip1} type="number" />
+            <Input
+              placeholder={translated.ageTip1}
+              type="number"
+              defaultValue="18"
+            />
           </Form.Item>
           <Form.Item label={translated.tel} name="tel">
             <Input placeholder={translated.telTip2} type="number" />
