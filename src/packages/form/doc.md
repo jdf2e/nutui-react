@@ -113,6 +113,43 @@ export default App;
 ```
 :::
 
+### 带有初始值表单校验
+:::demo
+
+```tsx
+import  React from "react";
+import { Form, Input, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Form
+        onFinish={(obj) => submitSucceed(obj)}
+        onFinishFailed={(error) => submitFailed(error)}
+      >
+        <Form.Item label='姓名' name="username" initialValue="张三">
+          <Input
+            className="nut-input-text"
+            placeholder='请输入姓名'
+            type="text"
+          />
+        </Form.Item>
+        <Form.Item label='年龄' name="age">
+          <Input placeholder='请填写年龄' type="number" defaultValue="18" />
+        </Form.Item>
+        <Cell>
+          <input type="submit" value='提交' />
+        </Cell>
+      </Form>
+    </>
+  )
+}
+
+export default App;
+```
+:::
+
+
 ### 表单类型
 
 :::demo
@@ -186,6 +223,7 @@ export default App;
 | name                | 在使用表单校验功能的情况下，该属性是必填的 | string           | -       |
 | labelWidth         | 表单项 label 宽度，默认单位为`px` | number \| string | `90px`  |
 | errorMessageAlign | 错误提示文案对齐方式，可选值为 `center` `right`                  | string           | `left`  |
+| initialValue`v1.4.7` | 设置子元素默认值                  | string           | -  |
 
 ### Form.Item Rule 数据结构
 

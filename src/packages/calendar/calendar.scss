@@ -207,7 +207,7 @@
 
           &-active {
             background-color: $calendar-primary-color;
-            color: $white !important;
+            color: $primary-text-color !important;
             border-radius: $calendar-day-active-border-radius;
 
             .calendar-curr-tips {
@@ -219,7 +219,7 @@
             }
 
             .calendar-day-tip {
-              color: $white;
+              color: $primary-text-color;
             }
           }
 
@@ -254,7 +254,7 @@
       margin: 10px 18px;
       border-radius: 22px;
       background: $button-primary-background-color;
-      color: $white;
+      color: $primary-text-color;
       text-align: center;
       line-height: 44px;
     }
