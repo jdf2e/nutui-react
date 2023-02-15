@@ -7,11 +7,7 @@ import '@/sites/assets/styles/md-style.scss'
 import App from './App'
 
 if (isMobile) {
-  let url = location.hash
-    .replace('/zh-CN/', '')
-    .replace('/en-US/', '')
-    .replace('component/', '')
-  location.replace('demo.html' + url)
+  location.replace('demo.html')
 }
 
 const rootElement = document.querySelector('#doc')
