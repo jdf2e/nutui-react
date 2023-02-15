@@ -96,6 +96,8 @@ const RadioDemo = () => {
             <Radio.RadioGroup value="1">
               <Radio value="1">{translated.bb7486f4}1</Radio>
               <Radio disabled value="2">
+                {translated.bb7486f4}
+                {translated.bb7486f4}
                 {translated.bb7486f4}2
               </Radio>
               <Radio value="3">{translated.bb7486f4}3</Radio>
@@ -129,7 +131,13 @@ const RadioDemo = () => {
           <Cell>
             <Radio.RadioGroup value="1" direction="horizontal">
               <Radio value="1">{translated.bb7486f4}1</Radio>
-              <Radio value="2">{translated.bb7486f4}2</Radio>
+              <Radio value="2">
+                {translated.bb7486f4}
+                {translated.bb7486f4}
+                {translated.bb7486f4}
+                {translated.bb7486f4}
+                {translated.bb7486f4}2
+              </Radio>
               <Radio value="3">{translated.bb7486f4}3</Radio>
             </Radio.RadioGroup>
           </Cell>
