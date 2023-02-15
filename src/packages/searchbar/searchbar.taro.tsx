@@ -22,6 +22,7 @@ export interface SearchBarProps extends BasicComponent {
   maxLength?: number
   /** 是否启用清除图标，点击清除图标后会清空输入框	 */
   clearable?: boolean
+  clearIconSize?: string | number
   /** 搜索框外部背景色	 */
   background?: string
   /** 搜索框背景色	 */
@@ -75,6 +76,7 @@ const defaultProps = {
   disabled: false,
   maxLength: 9999,
   clearable: true,
+  clearIconSize: '12px',
   align: 'left',
   readonly: true,
   autoFocus: false,
@@ -101,6 +103,7 @@ export const SearchBar: FunctionComponent<
     disabled,
     maxLength,
     clearable,
+    clearIconSize,
     align,
     readOnly,
     autoFocus,
@@ -253,7 +256,7 @@ export const SearchBar: FunctionComponent<
           classPrefix={iconClassPrefix}
           fontClassName={iconFontClassName}
           name="circle-close"
-          size="12"
+          size={clearIconSize}
           color="#555"
         />
       </div>

@@ -119,6 +119,7 @@ const PopupDemo = () => {
           visible={showTop}
           style={{ height: '20%' }}
           position="top"
+          round
           onClose={() => {
             setShowTop(false)
           }}
@@ -132,7 +133,7 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showBottom}
-          style={{ height: '20%' }}
+          style={{ height: '40%' }}
           position="bottom"
           onClose={() => {
             setShowBottom(false)
@@ -182,6 +183,7 @@ const PopupDemo = () => {
           visible={showIcon}
           style={{ height: '20%' }}
           position="bottom"
+          closeIconSize="12px"
           onClose={() => {
             setShowIcon(false)
           }}
@@ -212,6 +214,7 @@ const PopupDemo = () => {
         />
         <Popup
           closeable
+          closeIconSize="15px"
           visible={showIconDefine}
           style={{ height: '20%' }}
           closeIcon="heart"

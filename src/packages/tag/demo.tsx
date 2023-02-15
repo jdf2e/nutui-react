@@ -37,7 +37,12 @@ const TagDemo = () => {
           <Cell
             title="可关闭标签"
             linkSlot={
-              <Tag closeable onClose={() => alert('Tag closed')} type="primary">
+              <Tag
+                closeable
+                iconSize="14px"
+                onClose={() => alert('Tag closed')}
+                type="primary"
+              >
                 标签
               </Tag>
             }

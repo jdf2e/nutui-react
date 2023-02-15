@@ -184,26 +184,27 @@ export default App;
 
 ### Props
 
-| Props                   | Description                                      | Type           | Default        |
-|------------------------|-------------------------------------------------------------|----------------|---------------|
-| visible                | Whether the current component is displayed                | Boolean        | `false`       |
-| zIndex                | mask level                                                    | String、Number | `2000`        |
-| duration               | Mask animation duration, in seconds                                 | Number | `0.3`         |
-| overlayClass          | custom mask class name                                              | String         | -             |
-| overlayStyle          | custom mask style                                              | CSSProperties  | -             |
-| lockScroll            | Whether the background is locked                                                | Boolean        | `true`       |
-| overlay                | Whether to show the mask                                                | Boolean        | `true`        |
-| closeOnClickOverlay | Whether to click the mask to close                                            | Boolean        | `true`        |
-| position               | popup location（top,bottom,left,right,center）                    | String         | `"center"`    |
-| transition             | animation name                                                      | String         | -             |
-| style                  | Custom popup style                                              | CSSProperties  | -             |
-| popClass              | Custom popup class name                                              | String         | -             |
-| closeable              | whether to show the close button                                            | Boolean        | `false`        |
-| closeIconPosition    | close button position（top-left,top-right,bottom-left,bottom-right） | String         | `"top-right"` |
-| closeIcon             | Custom Icon                                                 | String         | `"close"`     |
-| destroyOnClose       | Whether to close after the component is destroyed                                          | Boolean        | `true`        |
-| round                  | Whether to show rounded corners                                                | Boolean        | `false`       |
-| teleport                  | Mount the specified node                                                | HTMLElement、(() => HTMLElement) 、null        | `null`       |
+| Props | Description | Type | Default        |
+|------------------------|-----------------|----------------|---------------|
+| visible | Whether the current component is displayed | Boolean | `false` |
+| zIndex | mask level | String、Number | `2000` |
+| duration | Mask animation duration, in seconds | Number | `0.3` |
+| overlayClass | custom mask class | String | - |
+| overlayStyle | custom mask style | CSSProperties  | - |
+| lockScroll | Whether the background is locked | Boolean | `true`       |
+| overlay | Whether to show the mask | Boolean | `true` |
+| closeOnClickOverlay | Whether to click the mask to close | Boolean | `true` |
+| position | popup location（top,bottom,left,right,center） | String | `"center"` |
+| transition | animation name | String | - |
+| style | Custom popup style | CSSProperties  | - |
+| popClass | Custom popup class name | String | -             |
+| closeable | whether to show the close button | Boolean | `false`        |
+| closeIconPosition | close button position（top-left,top-right,bottom-left,bottom-right） | String | `"top-right"` |
+| closeIcon | Custom Icon | String | `"close"`     |
+| closeIconSize`v1.4.7` | Custom Icon Size | string | `"12px"` |
+| destroyOnClose | Whether to close after the component is destroyed | Boolean | `true`        |
+| round | Whether to show rounded corners | Boolean | `false`       |
+| teleport | Mount the specified node | HTMLElement、(() => HTMLElement) 、null | `null`       |
 
 ### Events
 
@@ -228,3 +229,5 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- |
 | --nutui-popup-close-icon-margin | ` 16px` |
 | --nutui-popup-border-radius | ` 20px` |
+| --nutui-popup-close-icon-color | ` #969799`|
+| --nutui-popup-close-icon-size | ` 30px` |
