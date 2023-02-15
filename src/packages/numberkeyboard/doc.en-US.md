@@ -253,7 +253,7 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-numberkeyboard-key-line-height | `  1.5` |
 | --nutui-numberkeyboard-key-border-radius | `  8px` |
 | --nutui-numberkeyboard-key-font-size | `  28px` |
-| --nutui-numberkeyboard-key-font-size-color | `  #333` |
+| --nutui-numberkeyboard-key-font-color | `  #333` |
 | --nutui-numberkeyboard-key-finish-font-size | `  16px` |
-| --nutui-numberkeyboard-key-finish-font-size-color | `  #fff` |
+| --nutui-numberkeyboard-key-finish-font-color | `  #fff` |
 | --nutui-numberkeyboard-key-finish-background-color | `  #1989fa` |
