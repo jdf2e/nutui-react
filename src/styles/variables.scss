@@ -823,6 +823,7 @@ $range-bar-btn-border: var(
 ) !default;
 
 //swiper（✅）
+$swiper-pagination-bottom: var(--nutui-swiper-pagination-bottom, 12px);
 $swiper-pagination-item-background-color: var(
   --nutui-swiper-pagination-item-background-color,
   #ddd
