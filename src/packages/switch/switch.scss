@@ -39,11 +39,11 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: $white;
+    background: $primary-text-color;
     transition: transform 0.3s;
 
     .nut-switch__label {
-      color: $white;
+      color: $primary-text-color;
       font-size: $font-size-1;
 
       &.open {

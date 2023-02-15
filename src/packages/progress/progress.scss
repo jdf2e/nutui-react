@@ -16,12 +16,16 @@
   position: relative;
   width: 100%;
 
+  .nut-progress-text {
+    color: $progress-text-color;
+  }
+
   &-outer {
     flex: auto;
     border-radius: $progress-border-radius;
 
     .nut-progress-text {
-      color: red;
+      color: $progress-text-inner-color;
     }
 
     .nut-progress-active:before {
@@ -82,8 +86,8 @@
 
   &-insidetext {
     position: absolute;
-    top: -4px;
-    bottom: -4px;
+    top: $progress-insidetext-position-top;
+    bottom: $progress-insidetext-position-bottom;
     display: flex;
     align-items: center;
     min-width: 0px;

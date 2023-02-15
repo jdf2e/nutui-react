@@ -12,7 +12,7 @@ import { Form } from '@nutui/nutui-react'
 
 ### Basic Usage
 :::demo
-```
+```tsx
 import  React from "react";
 import { Form, Input, TextArea } from '@nutui/nutui-react';
 const App = () => {
@@ -40,7 +40,7 @@ export default App;
 ### Top Align
 
 :::demo
-```
+```tsx
 import  React from "react";
 import { Form, Input, TextArea } from '@nutui/nutui-react';
 const App = () => (
@@ -64,7 +64,7 @@ export default App;
 
 ### Validate Form
 :::demo
-```
+```tsx
 import  React from "react";
 import { Form, Input, Cell } from '@nutui/nutui-react';
 
@@ -103,10 +103,46 @@ export default App;
 ```
 :::
 
+### InitialValue Validate Type
+:::demo
+
+```tsx
+import  React from "react";
+import { Form, Input, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Form
+        onFinish={(obj) => submitSucceed(obj)}
+        onFinishFailed={(error) => submitFailed(error)}
+      >
+        <Form.Item label='Name' name="username" initialValue="zhangsan">
+          <Input
+            className="nut-input-text"
+            placeholder='Please enter your name'
+            type="text"
+          />
+        </Form.Item>
+        <Form.Item label='Age' name="age">
+          <Input placeholder='Please enter age' type="number" defaultValue="18" />
+        </Form.Item>
+        <Cell>
+          <input type="submit" value='Submit' />
+        </Cell>
+      </Form>
+    </>
+  )
+}
+
+export default App;
+```
+:::
+
 ### Form Type
 
 :::demo
-```
+```tsx
 import  React from "react";
 import { Form, Input, Cell, Switch, Checkbox, Radio, Rate, Range } from '@nutui/nutui-react';
 
@@ -176,6 +212,7 @@ export default App;
 | name | the field of the form field is required when the form verification function is used | string | - |
 | labelWidth | The width of the form item label. The default unit is `px` | number \| string | `90px`  |
 | errorMessageAlign | Error prompt text alignment. The optional values are `center` and `right`  | string           | `left`  |
+| initialValue`v1.4.7` | Set child element default value                  | string           | -  |
 
 ### Form.Item Rule Data Structure
 
