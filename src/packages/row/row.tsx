@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import { DataContext } from './UserContext'
 
 type EventType = 'row' | 'col'
@@ -62,7 +62,7 @@ export const Row: FunctionComponent<
       {React.createElement(
         'div',
         {
-          className: classnames(getClasses(), className),
+          className: classNames(getClasses(), className),
           style,
           onClick: (e: any) => {
             onClick && onClick(e, 'row')
