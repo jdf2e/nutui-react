@@ -24,7 +24,7 @@ test('base tabs props', () => {
       size="large"
       titleScroll
     >
-      <TabPane title="Tab 1" pane-key="0">
+      <TabPane title="Tab 1" paneKey="0">
         {' '}
         Tab 1{' '}
       </TabPane>
@@ -66,15 +66,15 @@ test('base other props', () => {
 test('base Tabpane Props', () => {
   const { container } = render(
     <Tabs value="0">
-      <TabPane title="Tab 1" pane-key="0">
+      <TabPane title="Tab 1" paneKey="0">
         {' '}
         Tab 1{' '}
       </TabPane>
-      <TabPane title="Tab 2" pane-key="1" disabled>
+      <TabPane title="Tab 2" paneKey="1" disabled>
         {' '}
         Tab 2{' '}
       </TabPane>
-      <TabPane title="Tab 3" pane-key="2">
+      <TabPane title="Tab 3" paneKey="2">
         {' '}
         Tab 3{' '}
       </TabPane>
@@ -93,15 +93,15 @@ test('base click', () => {
   const handleClick = jest.fn(() => {})
   const { container } = render(
     <Tabs value="0" onClick={handleClick}>
-      <TabPane title="Tab 1" pane-key="0">
+      <TabPane title="Tab 1" paneKey="0">
         {' '}
         Tab 1{' '}
       </TabPane>
-      <TabPane title="Tab 2" pane-key="1">
+      <TabPane title="Tab 2" paneKey="1">
         {' '}
         Tab 2{' '}
       </TabPane>
-      <TabPane title="Tab 3" pane-key="2">
+      <TabPane title="Tab 3" paneKey="2">
         {' '}
         Tab 3{' '}
       </TabPane>

@@ -1,25 +1,32 @@
 @import '../../styles/mixins/index';
 @import '../tabpane/tabpane.scss';
+
 .nut-theme-dark {
   .nut-tabs {
     .nut-tabpane {
       color: $white;
     }
+
     &__titles {
       background: $dark5;
+
       &-item {
         color: $dark1;
+
         &.active {
           color: $dark1;
+
           .nut-tabs__titles-item__text {
             color: $dark1;
           }
         }
+
         &__text {
           color: $dark1;
         }
       }
     }
+
     &.vertical {
       .nut-tabs__titles {
         &-item {
@@ -96,9 +103,11 @@
 
     .nut-tabs__content {
       flex-direction: column;
+
       &__wrap {
         flex: 1;
       }
+
       height: 100%;
 
       .nut-tabpane {
@@ -164,16 +173,21 @@
     &-item {
       position: relative;
       font-size: $tabs-titles-item-font-size;
-      flex: 1 0 auto;
       min-width: $tabs-horizontal-titles-item-min-width;
       width: 0;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex: 1 0 auto;
       color: $tabs-titles-item-color;
+
+      &-left-align {
+        flex: none;
+      }
 
       &__text {
         color: $gray1;
+
         &.ellipsis {
           @include oneline-ellipsis();
         }
@@ -188,10 +202,11 @@
         width: 0;
         height: 0;
         content: ' ';
-        bottom: 15%;
+        bottom: $tabs-horizontal-tab-line-bottom;
         left: 50%;
         transform: translate(-50%, 0);
         overflow: hidden;
+        border-radius: $tabs-horizontal-tab-line-border-radius;
       }
 
       &__smile {
@@ -206,13 +221,19 @@
 
       &.disabled {
         color: $disable-color;
+
+        .nut-tabs__titles-item__text {
+          color: $disable-color;
+        }
       }
 
       &.active {
         font-weight: 600;
+
         .nut-tabs__titles-item__text {
           color: $gray1;
         }
+
         .nut-tabs__titles-item__line {
           content: ' ';
           width: $tabs-horizontal-titles-item-active-line-width;
@@ -227,6 +248,7 @@
     &__wrap {
       overflow: hidden;
     }
+
     display: flex;
     box-sizing: border-box;
   }
