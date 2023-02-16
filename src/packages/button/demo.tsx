@@ -134,10 +134,10 @@ const ButtonDemo = () => {
 
         <h2>{translated.e51e4582}</h2>
         <Cell className="button-cell">
-          <Button plain style={{ margin: 8 }} type="primary">
+          <Button plain style={{ margin: 8 }}>
             {translated.e51e4582}
           </Button>
-          <Button plain style={{ margin: 8 }} type="info">
+          <Button plain color="red" style={{ margin: 8 }}>
             {translated.e51e4582}
           </Button>
         </Cell>

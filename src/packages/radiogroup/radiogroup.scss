@@ -37,9 +37,6 @@
 }
 
 .nut-radiogroup {
-  display: flex;
-  align-items: flex-start;
-
   .nut-radio {
     margin-bottom: 5px;
 
@@ -53,8 +50,6 @@
   }
 
   &--vertical {
-    flex-direction: column;
-
     .nut-radio {
       &.nut-radio--reverse {
         width: 100%;

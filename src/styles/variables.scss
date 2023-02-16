@@ -118,6 +118,7 @@ $button-default-border-color: var(
   rgba(204, 204, 204, 1)
 ) !default;
 $button-default-color: var(--nutui-button-default-color, $gray1) !default;
+$button-plain-color: var(--nutui-button-plain-color, $gray2) !default;
 $button-default-padding: var(--nutui-button-default-padding, 0 18px) !default;
 $button-mini-padding: var(--nutui-button-mini-padding, 0 12px) !default;
 $button-small-padding: var(--nutui-button-small-padding, 0 12px) !default;
@@ -1527,7 +1528,7 @@ $tabs-titles-item-active-color: var(
 ) !default;
 $tabs-titles-background-color: var(
   --nutui-tabs-titles-background-color,
-  $background-color2
+  $background-color
 ) !default;
 $tabs-horizontal-tab-line-color: linear-gradient(
   90deg,
@@ -1539,7 +1540,7 @@ $tabs-horizontal-tab-line-bottom: var(
   15%
 ) !default;
 $tabs-horizontal-tab-line-border-radius: var(
-  --nutui-tabs-horizontal-line-bottom,
+  --nutui-tabs-horizontal-line-border-radius,
   0px
 ) !default;
 $tabs-horizontal-titles-height: var(

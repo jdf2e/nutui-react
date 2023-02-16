@@ -385,7 +385,7 @@ export default App;
 | titleGutter  | Label gap                                      | number,string | 0          |
 | titleNode    | Custom Titles Area                     | `() => JSX.Element[]` | 0          |
 | size         | Tab bar font size optional value `large` `normal` `small` | string        | normal     |
-| leftAlign | Title Left Align | boolean | false |
+| leftAlign`v1.4.8` | Title Left Align | boolean | false |
 | autoHeight`v1.2.1` | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tabpane`. | boolean        | false     |
 
 ## Tabs Children
@@ -426,6 +426,8 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-tabs-titles-item-color | `  $title-color` |
 | --nutui-tabs-titles-item-active-color | `  $title-color` |
 | --nutui-tabs-titles-background-color | `  $background-color2` |
+| --nutui-tabs-horizontal-line-bottom`v1.4.8` | ` 15%` |
+| --nutui-tabs-horizontal-line-border-radius`v1.4.8` |` 0px`|
 | --nutui-tabs-horizontal-titles-height | `  46px` |
 | --nutui-tabs-horizontal-titles-item-min-width | `  50px` |
 | --nutui-tabs-horizontal-titles-item-active-line-width | `  40px` |

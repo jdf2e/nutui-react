@@ -352,7 +352,9 @@ export default App;
 | titleGutter  | 标签间隙                                      | number,string | 0          |
 | titleNode    | 自定义导航区域                                 | `() => JSX.Element[]` | 0          |
 | size         | 标签栏字体尺寸大小 可选值 large normal small | string        | normal     |
-| leftAlign | 标题左对齐 | boolean | false |
+| leftAlign`v1.4.8` | 标题左对齐 | boolean | false |
+| autoHeight`v1.2.1` | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean             | false     |
+| tabStyle`v1.3.8` | 标签栏样式 | React.CSSProperties | {}     |
 
 ## Tabs Children
 
@@ -392,6 +394,8 @@ export default App;
 | --nutui-tabs-titles-item-color | `  $title-color` |
 | --nutui-tabs-titles-item-active-color | `  $title-color` |
 | --nutui-tabs-titles-background-color | `  $background-color2` |
+| --nutui-tabs-horizontal-line-bottom`v1.4.8` | ` 15%` |
+| --nutui-tabs-horizontal-line-border-radius`v1.4.8` |` 0px`|
 | --nutui-tabs-horizontal-titles-height | `  46px` |
 | --nutui-tabs-horizontal-titles-item-min-width | `  50px` |
 | --nutui-tabs-horizontal-titles-item-active-line-width | `  40px` |
