@@ -92,6 +92,7 @@ page {
   --nutui-brand-color-start: #ff404f;
   --nutui-brand-color-end: #fa2c19;
   --nutui-brand-link-color: #396acc;
+  --nutui-brand-text-color: #ffffff;
   --nutui-gray-0: #000000;
   // The main content is colored, common words, general title content, detailed text browsing, general button text and chart guidance
   --nutui-gray-1: #1a1a1a;

@@ -18,6 +18,7 @@ interface T {
   title10: string
   title2: string
   title3: string
+  title4: string
   name: string
   nameTip: string
   nameTip1: string
@@ -60,7 +61,8 @@ const FormDemo = () => {
       title1: '动态表单',
       title10: '顶部对齐',
       title2: '表单校验',
-      title3: '表单类型',
+      title3: '带有初始值表单校验',
+      title4: '表单类型',
       name: '姓名',
       nameTip: '请输入姓名',
       nameTip1: '请输入姓名',
@@ -100,7 +102,8 @@ const FormDemo = () => {
       title1: 'Dynamic Form',
       title10: 'Top Align',
       title2: 'Validate Form',
-      title3: 'Form Type',
+      title3: 'InitialValue Validate Type',
+      title4: 'Form Type',
       name: 'Name',
       nameTip: 'Please enter your name',
       nameTip1: 'Please enter name',
@@ -250,7 +253,32 @@ const FormDemo = () => {
             <input type="submit" value={translated.submit} />
           </Cell>
         </Form>
+
         <h2>{translated.title3}</h2>
+        <Form
+          onFinish={(obj) => submitSucceed(obj)}
+          onFinishFailed={(error) => submitFailed(error)}
+        >
+          <Form.Item
+            label={translated.name}
+            name="username"
+            rules={[{ required: true, message: translated.nameTip }]}
+            initialValue="张三"
+          >
+            <Input placeholder={translated.nameTip1} type="text" />
+          </Form.Item>
+          <Form.Item label={translated.age} name="age">
+            <Input
+              placeholder={translated.ageTip1}
+              type="number"
+              defaultValue="18"
+            />
+          </Form.Item>
+          <Cell>
+            <input type="submit" value={translated.submit} />
+          </Cell>
+        </Form>
+        <h2>{translated.title4}</h2>
         <Form
           onFinish={(obj) => submitSucceed(obj)}
           onFinishFailed={(error) => submitFailed(error)}

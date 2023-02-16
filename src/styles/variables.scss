@@ -4,6 +4,7 @@ $brand-color: var(--nutui-brand-color, #fa2c19) !default;
 $brand-color-start: var(--nutui-brand-color-start, #ff404f) !default;
 $brand-color-end: var(--nutui-brand-color-end, #fa2c19) !default;
 $brand-link-color: var(--nutui-brand-link-color, #396acc);
+$brand-text-color: var(--nutui-brand-text-color, #ffffff);
 
 $gray0: var(--nutui-gray-0, #000000) !default;
 // 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
@@ -48,6 +49,7 @@ $primary-color: $brand-color !default;
 $primary-color-start: $brand-color-start !default;
 $primary-color-end: $brand-color-end !default;
 $primary-link-color: #396acc !default;
+$primary-text-color: $brand-text-color !default;
 // ----------------------------------------------------
 // 标题常规文字
 $title-color: $gray1 !default;
@@ -116,6 +118,7 @@ $button-default-border-color: var(
   rgba(204, 204, 204, 1)
 ) !default;
 $button-default-color: var(--nutui-button-default-color, $gray1) !default;
+$button-plain-color: var(--nutui-button-plain-color, $gray2) !default;
 $button-default-padding: var(--nutui-button-default-padding, 0 18px) !default;
 $button-mini-padding: var(--nutui-button-mini-padding, 0 12px) !default;
 $button-small-padding: var(--nutui-button-small-padding, 0 12px) !default;
@@ -164,7 +167,10 @@ $button-text-icon-mini-width: var(
 ) !default;
 
 $button-disabled-opacity: var(--nutui-button-disabled-opacity, 0.68) !default;
-$button-primary-color: var(--nutui-button-primary-color, $white) !default;
+$button-primary-color: var(
+  --nutui-button-primary-color,
+  $primary-text-color
+) !default;
 $button-primary-border-color: var(
   --nutui-button-primary-border-color,
   $primary-color
@@ -174,7 +180,10 @@ $button-primary-background-color: linear-gradient(
   $primary-color 0%,
   $primary-color-end 100%
 ) !default;
-$button-info-color: var(--nutui-button-info-color, $white) !default;
+$button-info-color: var(
+  --nutui-button-info-color,
+  $primary-text-color
+) !default;
 $button-info-border-color: var(
   --nutui-button-info-border-color,
   #496af2
@@ -184,7 +193,10 @@ $button-info-background-color: linear-gradient(
   rgba(73, 143, 242, 1) 0%,
   rgba(73, 101, 242, 1) 100%
 ) !default;
-$button-success-color: var(--nutui-button-success-color, $white) !default;
+$button-success-color: var(
+  --nutui-button-success-color,
+  $primary-text-color
+) !default;
 $button-success-border-color: var(
   --nutui-button-success-border-color,
   rgba(38, 191, 38, 1)
@@ -197,7 +209,10 @@ $button-success-background-color: linear-gradient(
   rgba(41, 212, 70, 1) 100%
 ) !default;
 
-$button-danger-color: var(--nutui-button-danger-color, $white) !default;
+$button-danger-color: var(
+  --nutui-button-danger-color,
+  $primary-text-color
+) !default;
 $button-danger-border-color: var(
   --nutui-button-danger-border-color,
   rgba(250, 44, 25, 1)
@@ -206,7 +221,10 @@ $button-danger-background-color: var(
   --nutui-button-danger-background-color,
   rgba(250, 44, 25, 1)
 ) !default;
-$button-warning-color: var(--nutui-button-warning-color, $white) !default;
+$button-warning-color: var(
+  --nutui-button-warning-color,
+  $primary-text-color
+) !default;
 $button-warning-border-color: var(
   --nutui-button-warning-border-color,
   rgba(255, 158, 13, 1)
@@ -221,7 +239,7 @@ $button-warning-background-color: linear-gradient(
 
 $button-plain-background-color: var(
   --nutui-button-plain-background-color,
-  $white
+  $primary-text-color
 ) !default;
 $button-small-round-border-radius: var(
   --nutui-button-small-round-border-radius,
@@ -528,7 +546,7 @@ $numberkeyboard-header-close-padding: var(
 ) !default;
 $numberkeyboard-header-close-color: var(
   --nutui-numberkeyboard-header-close-color,
-  #576b95
+  $text-color
 ) !default;
 $numberkeyboard-header-close-font-size: var(
   --nutui-numberkeyboard-header-close-font-size,
@@ -562,25 +580,25 @@ $numberkeyboard-key-font-size: var(
   --nutui-numberkeyboard-key-font-size,
   28px
 ) !default;
-$numberkeyboard-key-font-size-color: var(
-  --nutui-numberkeyboard-key-font-size-color,
+$numberkeyboard-key-font-color: var(
+  --nutui-numberkeyboard-key-font-color,
   #333
 ) !default;
 $numberkeyboard-key-finish-font-size: var(
   --nutui-numberkeyboard-key-finish-font-size,
   16px
 ) !default;
-$numberkeyboard-key-finish-font-size-color: var(
-  --nutui-numberkeyboard-key-finish-font-size-color,
+$numberkeyboard-key-finish-font-color: var(
+  --nutui-numberkeyboard-key-finish-font-color,
   #fff
 ) !default;
 $numberkeyboard-key-finish-background-color: var(
   --nutui-numberkeyboard-key-finish-background-color,
-  #1989fa
+  $brand-color
 ) !default;
 $numberkeyboard-key-activeFinsh-background-color: var(
   --nutui-numberkeyboard-key-activeFinsh-background-color,
-  #0570db
+  $brand-color
 ) !default;
 
 // countdown（✅）
@@ -794,7 +812,10 @@ $range-bar-bg-color: linear-gradient(
   $primary-color 0%,
   $primary-color-end 100%
 ) !default;
-$range-bar-btn-bg-color: var(--nutui-range-bar-btn-bg-color, $white) !default;
+$range-bar-btn-bg-color: var(
+  --nutui-range-bar-btn-bg-color,
+  $primary-text-color
+) !default;
 $range-bar-btn-width: var(--nutui-range-bar-btn-width, 24px) !default;
 $range-bar-btn-height: var(--nutui-range-bar-btn-height, 24px) !default;
 $range-bar-btn-border: var(
@@ -944,7 +965,7 @@ $steps-finish-icon-text-color: var(
 
 $steps-process-head-color: var(
   --nutui-steps-process-head-color,
-  $white
+  $primary-text-color
 ) !default;
 $steps-process-head-border-color: var(
   --nutui-steps-process-head-border-color,
@@ -1335,7 +1356,7 @@ $progress-text-font-size: var(--nutui-progress-text-font-size, 13px) !default;
 $progress-text-color: var(--nutui-progress-text-color, $title-color) !default;
 $progress-text-inner-color: var(
   --nutui-progress-text-inner-color,
-  $gray6
+  $primary-text-color
 ) !default;
 $progress-insidetext-position-top: var(
   --nutui-progress-insidetext-position-top,
@@ -1496,12 +1517,20 @@ $tabs-titles-item-active-color: var(
 ) !default;
 $tabs-titles-background-color: var(
   --nutui-tabs-titles-background-color,
-  $background-color2
+  $background-color
 ) !default;
 $tabs-horizontal-tab-line-color: linear-gradient(
   90deg,
   $primary-color 0%,
   rgba(#fa2c19, 0.15) 100%
+) !default;
+$tabs-horizontal-tab-line-bottom: var(
+  --nutui-tabs-horizontal-line-bottom,
+  15%
+) !default;
+$tabs-horizontal-tab-line-border-radius: var(
+  --nutui-tabs-horizontal-line-border-radius,
+  0px
 ) !default;
 $tabs-horizontal-titles-height: var(
   --nutui-tabs-horizontal-titles-height,
@@ -1544,7 +1573,7 @@ $tabs-titles-item-line-opacity: var(
 // indicator（✅）
 $indicator-color: var(--nutui-indicator-color, $primary-color) !default;
 $indicator-dot-color: var(--nutui-indicator-dot-color, $disable-color) !default;
-$indicator-white: var(--nutui-indicator-white, $white) !default;
+$indicator-white: var(--nutui-indicator-white, $primary-text-color) !default;
 $indicator-size: var(--nutui-indicator-size, 18px) !default;
 $indicator-dot-size: var(
   --nutui-indicator-dot-size,
