@@ -159,7 +159,6 @@ import { Form, Input, Cell } from '@nutui/nutui-react';
 const App = () => {
   const [form] = Form.useForm()
   const onMenuChange = (value: string | number | boolean) => {
-    console.log("1")
     switch (value) {
       case 'male':
         form.setFieldsValue({ note: 'Hi, man!' })
@@ -176,9 +175,17 @@ const App = () => {
   return (
     <>
       <Form
+        form={form}
         onFinish={(obj) => submitSucceed(obj)}
         onFinishFailed={(error) => submitFailed(error)}
       >
+        <Form.Item
+          label={translated.name}
+          name="username"
+          rules={[{ required: true, message: translated.nameTip }]}
+        >
+          <Input placeholder={translated.nameTip1} type="text" />
+        </Form.Item>
         <Form.Item label="标注" name="note">
           <Input placeholder="请输入标注" type="string" />
         </Form.Item>
@@ -257,6 +264,7 @@ export default App;
 
 | 参数        | 说明                                 | 类型   | 默认值 |
 |-------------|--------------------------------------|--------|--------|
+| form`v1.4.8` | 经 Form.useForm() 创建的 form 控制实例，不提供时会自动创建 | FormInstance |        |
 | labelPosition | 表单项 label 的位置，默认 Right，可设置为 Top、Left、Right | string |        |
 | starPositon | 必填表单项 label 的红色星标位置，默认 Left，可设置为 Left、Right | string |        |
 
@@ -288,8 +296,12 @@ export default App;
 
 ### Form 实例 Methods
 
+Form.useForm()创建 Form 实例，用于管理所有数据状态。
+
 | 方法名            | 说明 | 参数 | 返回值  |
 |-------------------|-----------------------------|-----|---------|
+| getFieldValue | 获取对应字段名的值 | - | (name: NamePath) => any |
+| setFieldsValue | 设置表单的值 | - | (values) => void |
 | submit | 提交表单进行校验的方法 | - | Promise |
 
 

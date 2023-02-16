@@ -132,21 +132,14 @@ class FormStore {
   }
 }
 
-export let isExistForm: any[] = []
-
-export const useForm = (form?: FormInstance, source?: string) => {
+export const useForm = (form?: FormInstance) => {
   const formRef = useRef<any>()
   if (!formRef.current) {
     if (form) {
       formRef.current = form
-      isExistForm = [formRef.current]
     } else {
       const formStore = new FormStore()
       formRef.current = formStore.getForm()
-
-      if (!(source === 'form' && isExistForm.length === 0)) {
-        isExistForm = [formRef.current]
-      }
     }
   }
   return [formRef.current]

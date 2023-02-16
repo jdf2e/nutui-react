@@ -149,7 +149,6 @@ import { Form, Input, Cell } from '@nutui/nutui-react';
 const App = () => {
   const [form] = Form.useForm()
   const onMenuChange = (value: string | number | boolean) => {
-    console.log("1")
     switch (value) {
       case 'male':
         form.setFieldsValue({ note: 'Hi, man!' })
@@ -166,6 +165,7 @@ const App = () => {
   return (
     <>
       <Form
+        form={form}
         onFinish={(obj) => submitSucceed(obj)}
         onFinishFailed={(error) => submitFailed(error)}
       >
@@ -245,6 +245,7 @@ export default App;
 
 | Attribute        | Description | TYPE   | DEFAULT |
 |-------------|--------------------------|--------|--------|
+| form`v1.4.8` | The form control instance created by Form.useForm() will be created automatically if not provided | FormInstance |        |
 | labelPosition | label's position，the default value is Right，can be Top、Left、Right | string |        |
 | starPositon | the position of the red asterisk next to the label of the required filed ，the default is Left，can be Left、Right | string |        |
 
@@ -276,8 +277,12 @@ Use the `rules` attribute of Form.Item to define verification rules. The optiona
 
 ### Form Instance Methods
 
+Form.useForm() creates a Form instance, which is used to manage all data states.
+
 | Name           | Description | Attribute | Callback  |
 |-------------------|-----------------------------|-----|---------|
+| getFieldValue | Get the value of the corresponding field name | - | (name: NamePath) => any |
+| setFieldsValue | Set the value of the form | - | (values) => void |
 | submit | the function of submit the form | - | Promise |
 
 

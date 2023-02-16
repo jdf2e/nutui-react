@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import CellGroup from '../cellgroup'
 import { FormItemContext } from '../formitem/formitemcontext'
-import { useForm, isExistForm } from './useForm'
+import { useForm } from './useForm'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { FormItem } from '../formitem/formitem'
 import { BaseForm } from './types'
@@ -35,6 +35,7 @@ export const Form: FunctionComponent<
     onFinishFailed,
     labelPosition,
     starPositon,
+    form,
     ...rest
   } = {
     ...defaultProps,
@@ -43,10 +44,10 @@ export const Form: FunctionComponent<
 
   let formInstance: any = {}
 
-  if (isExistForm.length !== 0) {
-    ;[formInstance] = isExistForm
+  if (Object.keys(form).length !== 0) {
+    formInstance = form
   } else {
-    ;[formInstance] = useForm(undefined, 'form')
+    ;[formInstance] = useForm()
   }
 
   formInstance.starPositon = starPositon
