@@ -9,8 +9,7 @@ Used to open or close the options.
 ```ts
 // react
 import { Switch } from '@nutui/nutui-react';
-// taro
-import { Switch } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Code demonstration
@@ -165,3 +164,21 @@ export default App;
 | Incident name | illustrate           | Callback parameter       |
 |--------|----------------|-------------------------------|
 | onChange `v1.3.8` | Trigger when switching switches | (value: boolean,event: Event) |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-switch-close-bg-color | ` #ebebeb` |
+| --nutui-switch-close--cline-bg-color | `  #f0f0f0` |
+| --nutui-switch-width | ` 36px` |
+| --nutui-switch-height | ` 21px` |
+| --nutui-switch-line-height | ` 21px` |
+| --nutui-switch-border-radius | ` 21px` |
+| --nutui-switch-inside-width | ` 13px` |
+| --nutui-switch-inside-height | ` 13px` |

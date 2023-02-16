@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useState,
 } from 'react'
+import classNames from 'classnames'
 import Icon from '@/packages/icon/index.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -16,6 +17,7 @@ export interface TagProps extends BasicComponent {
   round: boolean
   mark: boolean
   closeable: boolean
+  iconSize?: string | number
   prefixCls: string
   onClick: (e: MouseEvent) => void
   onClose: (e?: any) => void
@@ -33,6 +35,7 @@ const defaultProps = {
   round: false,
   mark: false,
   closeable: false,
+  iconSize: '12px',
   prefixCls: 'nut-tag',
   onClose: (e: any) => {},
   onClick: (e: MouseEvent) => {},
@@ -49,6 +52,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     children,
     mark,
     closeable,
+    iconSize,
     textColor,
     onClick,
     onClose,
@@ -70,35 +74,42 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     round,
     mark,
     closeable,
+    iconSize,
     prefixCls,
     onClick,
     onClose,
   ])
   const classes = () => {
     const prefixCls = 'nut-tag'
-    return `${prefixCls}
-    ${type ? `${prefixCls}--${type}` : ''}
-    ${plain ? `${prefixCls}--plain` : ''}
-    ${round ? `${prefixCls}--round` : ''}
-    ${mark ? `${prefixCls}--mark` : ''}
-    ${closeable ? `${prefixCls}--close` : ''}`
+    return classNames({
+      [prefixCls]: true,
+      [`${prefixCls}--${type}`]: type,
+      [`${prefixCls}--plain`]: plain,
+      [`${prefixCls}--round`]: round,
+      [`${prefixCls}--mark`]: mark,
+      [`${prefixCls}--close`]: closeable,
+      [`${className}`]: className,
+    })
   }
   const handleClick = (e: any) => {
     if (props.onClick) {
       props.onClick(e)
     }
   }
-  const getStyle = () => {
+  // 综合考虑 textColor、color、plain 组合使用时的效果
+  const getStyle = (): CSSProperties => {
     const style: CSSProperties = {}
+    // 标签内字体颜色
     if (textColor) {
       style.color = textColor
-      if (plain) {
-        style.background = '#fff'
-      } else if (color) {
-        style.background = color
-      }
+    } else if (color && plain) {
+      style.color = color
+    }
+    // 标签背景与边框颜色
+    if (plain) {
+      style.background = '#fff'
+      style.borderColor = color
     } else if (color) {
-      style.color = '#fff'
       style.background = color
     }
     return style
@@ -108,17 +119,17 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
       {closeable ? (
         isTagShow && (
           <div
-            className={`${btnName} ${className}`}
+            className={btnName}
             style={{ ...style, ...getStyle() }}
             onClick={(e) => handleClick(e)}
           >
-            {children && <span className="text">{children}</span>}
+            {children && <span className="nut-tag-text">{children}</span>}
             <Icon
               classPrefix={iconClassPrefix}
               fontClassName={iconFontClassName}
               className="_icon"
               name="close"
-              size="12"
+              size={iconSize}
               onClick={(e) => {
                 setIsTagShow(false)
                 if (props.onClose) {
@@ -130,11 +141,11 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
         )
       ) : (
         <div
-          className={`${btnName} ${className}`}
+          className={btnName}
           style={{ ...style, ...getStyle() }}
           onClick={(e) => handleClick(e)}
         >
-          {children && <span className="text">{children}</span>}
+          {children && <span className="nut-tag-text">{children}</span>}
         </div>
       )}
     </>

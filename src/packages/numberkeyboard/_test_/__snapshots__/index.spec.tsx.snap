@@ -5,11 +5,11 @@ exports[`should match customKey snapshot 1`] = `
   <div>
     <div
       class="overlay-fade-enter-active nut-overlay"
-      style="background-color: rgba(0, 0, 0, 0); z-index: 2000; animation-duration: 0.3s;"
+      style="background-color: rgba(0, 0, 0, 0); z-index: 1000; animation-duration: 0.3s;"
     />
     <div
-      class="popup-bottom  undefined nut-popup"
-      style="z-index: 2000; animation-duration: 0.3s;"
+      class="nut-popup-bottom  undefined nut-popup"
+      style="z-index: 1000; animation-duration: 0.3s;"
     >
       <div
         class="nut-numberkeyboard "
@@ -190,11 +190,11 @@ exports[`should match snapshot 1`] = `
   <div>
     <div
       class="overlay-fade-enter-active nut-overlay"
-      style="background-color: rgba(0, 0, 0, 0); z-index: 2000; animation-duration: 0.3s;"
+      style="background-color: rgba(0, 0, 0, 0); z-index: 1000; animation-duration: 0.3s;"
     />
     <div
-      class="popup-bottom  undefined nut-popup"
-      style="z-index: 2000; animation-duration: 0.3s;"
+      class="nut-popup-bottom  undefined nut-popup"
+      style="z-index: 1000; animation-duration: 0.3s;"
     >
       <div
         class="nut-numberkeyboard "

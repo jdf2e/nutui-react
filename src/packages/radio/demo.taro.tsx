@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Radio, Cell, CellGroup } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 interface T {
   '74fc5d8a': string
@@ -78,7 +80,8 @@ const RadioDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated['74fc5d8a']}</h2>
         <CellGroup>
           <Cell>
@@ -93,6 +96,8 @@ const RadioDemo = () => {
             <Radio.RadioGroup value="1">
               <Radio value="1">{translated.bb7486f4}1</Radio>
               <Radio disabled value="2">
+                {translated.bb7486f4}
+                {translated.bb7486f4}
                 {translated.bb7486f4}2
               </Radio>
               <Radio value="3">{translated.bb7486f4}3</Radio>
@@ -126,7 +131,13 @@ const RadioDemo = () => {
           <Cell>
             <Radio.RadioGroup value="1" direction="horizontal">
               <Radio value="1">{translated.bb7486f4}1</Radio>
-              <Radio value="2">{translated.bb7486f4}2</Radio>
+              <Radio value="2">
+                {translated.bb7486f4}
+                {translated.bb7486f4}
+                {translated.bb7486f4}
+                {translated.bb7486f4}
+                {translated.bb7486f4}2
+              </Radio>
               <Radio value="3">{translated.bb7486f4}3</Radio>
             </Radio.RadioGroup>
           </Cell>
@@ -159,8 +170,8 @@ const RadioDemo = () => {
         <CellGroup>
           <Cell>
             <Radio.RadioGroup value="2">
-              <Radio value="1" iconSize="24">
-                {translated['8a2e2847']}24
+              <Radio value="1" iconSize="15">
+                {translated['8a2e2847']}15
               </Radio>
               <Radio value="2" iconSize="12">
                 {translated['8a2e2847']}12
@@ -176,7 +187,10 @@ const RadioDemo = () => {
                 {translated['70ffa5d8']}
               </Radio>
               <Radio value="2" iconName="checklist" iconActiveName="checklist">
-                {translated['70ffa5d8']}
+                <div>{translated['70ffa5d8']}</div>
+                <div style={{ fontSize: '12px', color: '#8c8c8c' }}>
+                  {translated['70ffa5d8']}
+                </div>
               </Radio>
             </Radio.RadioGroup>
           </Cell>
@@ -201,7 +215,7 @@ const RadioDemo = () => {
               options={optionsDemo1}
               value={radioVal1}
               onChange={(e) => handleChange1(e)}
-            ></Radio.RadioGroup>
+            />
           </Cell>
         </CellGroup>
       </div>

@@ -4,8 +4,6 @@ exports[`icon type test 1`] = `
 <div>
   <div
     class="nut-audio "
-    iconclassprefix="nut-icon"
-    iconfontclassname="nutui-iconfont"
   >
     <div
       class="nut-audio__icon"
@@ -35,8 +33,6 @@ exports[`none type test 1`] = `
 <div>
   <div
     class="nut-audio "
-    iconclassprefix="nut-icon"
-    iconfontclassname="nutui-iconfont"
   >
     <div
       class="nut-audio__none-container"

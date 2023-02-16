@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { Toast } from '@nutui/nutui-react';
-// taro
-import { Toast } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代码演示
@@ -34,7 +33,7 @@ const App = () => {
         <Cell
           title="Text文字提示"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => textToast('网络失败，请稍后再试~')}
         />
@@ -62,7 +61,7 @@ const App = () => {
         <Cell
           title="Toast 标题提示"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => titleToast('Toast 标题提示')}
         />
@@ -89,7 +88,7 @@ const App = () => {
         <Cell
           title="Success 成功提示"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => successToast('成功提示')}
         />
@@ -118,7 +117,7 @@ const App = () => {
         <Cell
           title="Error 失败提示"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => errorToast('失败提示')}
         />
@@ -147,7 +146,7 @@ const App = () => {
             <Cell
             title=" Warning 警告提示"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => warningToast('警告提示')}
             />
@@ -176,7 +175,7 @@ const App = () => {
             <Cell
             title=" Loading 加载提示"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => loadingToast('加载中')}
             />
@@ -206,14 +205,14 @@ const App = () => {
             <Cell
             title="设置展示时长为10秒提示"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => duringToast('设置展示时长为10秒')}
             />
             <Cell
             title="Toast 不消失"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => {Toast.text('Toast 不消失', { duration: 0 })}}
             />
@@ -251,7 +250,7 @@ const App = () => {
         <Cell
         title='Toast 自定义底部高度'
         isLink
-        click={(
+        onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => toastBottom('自定义距离')}
         />
@@ -286,7 +285,7 @@ const App = () => {
             <Cell
             title="Loading状态透明遮罩"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => iconToast('加载状态透明遮罩')}
             />
@@ -331,3 +330,20 @@ export default App
 | onClose             | 关闭时触发的事件                                      | function      | null            |
 | closeOnClickOverlay | 是否在点击遮罩层后关闭提示                         | Boolean       | false     |
 
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-toast-title-font-size | ` 16px` |
+| --nutui-toast-text-font-size | ` 14px` |
+| --nutui-toast-font-color | ` #fff` |
+| --nutui-toast-inner-padding | ` 24px 30px` |
+| --nutui-toast-inner-bg-color | ` $gray7` |
+| --nutui-toast-inner-border-radius | `  12px` |
+| --nutui-toast-cover-bg-color | ` $gray7` |

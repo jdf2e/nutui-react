@@ -137,7 +137,7 @@ export const CheckboxGroup = React.forwardRef(
           />
         )
       })
-    }, [innerValue, options])
+    }, [innerValue, options, innerDisabled])
 
     return (
       <div className={`${b()} ${className || ''}`} {...rest}>

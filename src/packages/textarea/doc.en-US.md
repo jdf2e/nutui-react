@@ -9,8 +9,7 @@ Enter or edit text in the text box, and limit the number of entries is supported
 ```javascript
 // react
 import { TextArea } from '@nutui/nutui-react';
-// taro
-import { TextArea } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Demo
@@ -154,3 +153,18 @@ export default App
 | onChange | Triggered when the value of the input box changes | val      |
 | onFocus  | Triggered when focusing     | val      |
 | onBlur   | Triggered when out of focus     | val      |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-textarea-font | ` $font-size-2` |
+| --nutui-textarea-height | ` 100px` |
+| --nutui-textarea-limit-color | ` $text-color` |
+| --nutui-textarea-text-color | ` $title-color` |
+| --nutui-textarea-disabled-color | `  $disable-color` |

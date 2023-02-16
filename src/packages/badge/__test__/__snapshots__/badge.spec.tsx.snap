@@ -3,14 +3,14 @@
 exports[`should match custom icons 1`] = `
 <DocumentFragment>
   <div
-    class="nut-badge"
+    class="nut-badge undefined"
   >
     <div
       class="slot-icons"
     >
       <i
         class="nutui-iconfont nut-icon nut-icon-link _icon"
-        style="color: rgb(255, 255, 255); font-size: 12px; width: 12px; height: 12px;"
+        style="color: rgb(255, 255, 255); font-size: 12px; height: 12px; width: 12px;"
       />
     </div>
     <div />
@@ -27,7 +27,7 @@ exports[`should match custom icons 1`] = `
 exports[`should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="nut-badge"
+    class="nut-badge undefined"
   >
     <div />
     <div

@@ -10,8 +10,7 @@ Support full screen preview videos and images, support functional call.
 ```ts
 // react
 import { ImagePreview } from '@nutui/nutui-react'
-// taro
-import { ImagePreview } from '@nutui/nutui-react-taro'
+
 ```
 
 
@@ -21,7 +20,7 @@ import { ImagePreview } from '@nutui/nutui-react-taro'
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -64,7 +63,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -107,7 +106,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -150,7 +149,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {

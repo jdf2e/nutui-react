@@ -1,23 +1,22 @@
-#  Image组件
+#  Image組件
 
-### 介绍
+### 介紹
 
-增强版的 img 标签，提供多种图片填充模式，支持图片加载中提示、加载失败提示。
+增強版的 img 標籤，提供多種圖片填充模式，支持圖片加載中提示、加載失敗提示。
 
-### 安装
+### 安裝
 
 ``` javascript
 // react
 import { Image } from '@nutui/nutui-react';
-// taro
-import { Image } from '@nutui/nutui-react-taro';
+
 ```
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
 
-基础用法与原生 img 标签一致，可以设置 src、width、height、alt 等原生属性。
+基礎用法與原生 img 標籤一致，可以設置 src、width、height、alt 等原生屬性。
 
 :::demo
 ```tsx
@@ -38,7 +37,7 @@ export default App;
 
 ### 填充模式
 
-通过 fit 属性可以设置图片填充模式，等同于原生的 object-fit 属性，可选值见下方表格。
+通過 fit 屬性可以設置圖片填充模式，等同於原生的 object-fit 屬性，可選值見下方表格。
 
 :::demo
 ```tsx
@@ -62,9 +61,9 @@ export default App;
 ```
 :::
 
-### 图片位置
+### 圖片位置
 
-通过 position 属性可以设置图片位置，结合 fit 属性使用，等同于原生的 object-position 属性。
+通過 position 屬性可以設置圖片位置，結合 fit 屬性使用，等同於原生的 object-position 屬性。
 
 :::demo
 ```tsx
@@ -89,9 +88,9 @@ export default App;
 ```
 :::
 
-### 圆形图片
+### 圓形圖片
 
-通过 round 属性可以设置图片变圆，注意当图片宽高不相等且 fit 为 contain 或 scale-down 时，将无法填充一个完整的圆形。
+通過 round 屬性可以設置圖片變圓，注意當圖片寬高不相等且 fit 為 contain 或 scale-down 時，將無法填充一個完整的圓形。
 
 :::demo
 ```tsx
@@ -115,9 +114,9 @@ export default App;
 ```
 :::
 
-### 加载中图片
+### 加載中圖片
 
-`Image` 组件提供了默认的加载中提示，支持通过 `loading` 插槽自定义内容。
+`Image` 組件提供了默認的加載中提示，支持通過 `loading` 插槽自定義內容。
 
 :::demo
 ```tsx
@@ -144,10 +143,9 @@ export default App;
 
 ```
 :::
+### 加載失敗
 
-### 加载失败
-
-`Image` 组件提供了默认的加载失败提示，支持通过 `error` 插槽自定义内容。
+`Image` 組件提供了默認的加載失敗提示，支持通過 `error` 插槽自定義內容。
 
 :::demo
 ```tsx
@@ -166,55 +164,107 @@ export default App;
 ```
 :::
 
+### 圖片懶加載
+
+`Image` 組件提供了懶加載圖片功能，支持通過配置 `isLazy` 來實現，默認不開啟。
+
+:::demo
+```tsx
+import React from "react";
+import { Image,Cell } from '@nutui/nutui-react';
+
+const App = () => {
+const src =
+    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+const imageData = [1, 2, 3, 4, 5, 6]
+const placeholderImg = 'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'
+const style = `
+  .lazy-box{
+    width:100%
+  }
+  .lazy-box .nut-image{
+    margin-bottom: 10px;
+  }
+`
+  return <>
+  <style>{style}</style>
+    <Cell>
+        <div className="lazy-box">
+        {imageData.map((item) => {
+            return (
+            <Image
+                key={item}
+                height="150"
+                src={src}
+                isLazy
+                showError
+                showLoading
+                loadingImg={placeholderImg}
+                errorImg={placeholderImg}
+            />
+            )
+        })}
+        </div>
+    </Cell>
+  </>
+}
+export default App;
+
+```
+:::
+
+
 ## API
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| 參數         | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
-| src         | 图片链接               | String | -                |
-| fit         | 图片填充模式，等同于原生的 object-fit 属性     | ImageFit | 'fill'                |
-| position    | 图片位置，等同于原生的 object-position 属性  | ImagePosition | 'center'              |
+| src         | 圖片鏈接               | String | -                |
+| fit         | 圖片填充模式，等同於原生的 object-fit 屬性     | ImageFit | 'fill'                |
+| position    | 圖片位置，等同於原生的 object-position 屬性  | ImagePosition | 'center'              |
 | alt         | 替代文本               | String | -                |
-| width         | 宽度，默认单位`px`               | String | -                |
-| height         | 高度，默认单位`px`               | String | -                |
-| round         | 是否显示为圆角               | Boolean | false              |
-| radius         | 圆角大小               | String \| Numer | -                |
-| showError         | 是否展示图片加载失败| Boolean | true              |
-| showLoading         | 是否展示加载中图片               | Boolean | true              |
+| width         | 寬度，默認單位`px`               | String | -                |
+| height         | 高度，默認單位`px`               | String | -                |
+| round         | 是否顯示為圓角               | Boolean | false              |
+| radius         | 圓角大小               | String \| Numer | -                |
+| showError         | 是否展示圖片加載失敗| Boolean | true              |
+| showLoading         | 是否展示加載中圖片               | Boolean | true              |
+| isLazy `v1.4.6`  | 是否為懶加載圖片               | Boolean | false              |
+| loadingImg `v1.4.6`    | 設置加載中提示圖片，與slotLoding衝突，優先級高於slotLoding       | String | -              |
+| errorImg   `v1.4.6`    | 設置錯誤提示圖片，與slotError衝突，優先級高於slotError         | String | -              |
 
-### ImageFit 图片填充模式
+### ImageFit 圖片填充模
 
-| 参数         | 说明                             |
+| 參數         | 說明                             |
 |--------------|----------------------------------|
-| contain         | 保持宽高缩放图片，使图片的长边能完全显示出来    |
-| cover         | 保持宽高缩放图片，使图片的短边能完全显示出来，裁剪长边     |
-| fill    | 拉伸图片，使图片填满元素  |
-| none    | 保持图片原有尺寸  |
-| scale-down    | 取 none 或 contain 中较小的一个  |
+| contain         | 保持寬高縮放圖片，使圖片的長邊能完全顯示出來    |
+| cover         | 保持寬高縮放圖片，使圖片的短邊能完全顯示出來，裁剪長邊     |
+| fill    | 拉伸圖片，使圖片填滿元素  |
+| none    | 保持圖片原有尺寸  |
+| scale-down    | 取 none 或 contain 中較小的一個  |
 
-### ImagePosition 图片位置
+### ImagePosition 圖片位置
 
-| 参数         | 说明                             |
+| 參數         | 說明                             |
 |--------------|----------------------------------|
-| center         | 居中对齐    |
-| top         | 顶部对齐     |
-| right    | 右侧对齐  |
-| bottom    | 底部对齐  |
-| left   | 左侧对齐  |
+| center         | 居中對齊    |
+| top         | 頂部對齊     |
+| right    | 右側對齊  |
+| bottom    | 底部對齊  |
+| left   | 左側對齊  |
 
 
 ### Slots
-| 参数         | 说明                             |
+| 參數         | 說明                             |
 |--------------|----------------------------------|
-| slotLoding      | 自定义加载中的提示内容     |
-| slotError    | 自定义记载失败的提示内容  |
+| slotLoding      | 自定義加載中的提示內容     |
+| slotError    | 自定義記載失敗的提示內容  |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
+| 事件名 | 說明           | 回調參數     |
 |--------|----------------|--------------|
-| onClick  | 点击图片时触发 | event: Event |
-| onLoad  | 图片加载完后触发 | -- |
-| onError  | 图片加载失败后触发 | -- |
-
+| onClick  | 點擊圖片時觸發 | event: Event |
+| onLoad  | 圖片加載完後觸發 | -- |
+| onError  | 圖片加載失敗後觸發 | -- |

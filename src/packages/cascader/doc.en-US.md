@@ -9,8 +9,7 @@ The cascader component is used for the selection of multi-level data. The typica
 ```ts
 // react
 import { Cascader } from '@nutui/nutui-react';
-// taro
-import { Cascader } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Demo
@@ -19,7 +18,7 @@ import { Cascader } from '@nutui/nutui-react-taro';
 Pass in the `options` list.
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -128,7 +127,7 @@ use `textKey`、`valueKey`、`childrenKey`Specify the property name.
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -240,7 +239,7 @@ Use `lazy` to identify whether data needs to be obtained dynamically. At this ti
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -308,7 +307,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -381,7 +380,7 @@ If your data is a flat structure that can be converted into a tree structure, yo
 
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -440,7 +439,7 @@ export default App;
 Pass in `activeColor` to specify the selected color.
 :::demo
 ```jsx
-import  React from "react";
+import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
@@ -574,3 +573,28 @@ export default App;
 | ---------- | ---------------- | ------------------ |
 | onChange     | Triggered when the selected value changes | (value, pathNodes) |
 | onPathChange | Triggered when the selected item changes | (pathNodes)        |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-cascader-font-size | ` $font-size-2` |
+| --nutui-cascader-line-height | ` 22px` |
+| --nutui-cascader-title-padding | `  24px 20px 17px` |
+| --nutui-cascader-title-font-size | ` 18px` |
+| --nutui-cascader-title-line-height | `  20px` |
+| --nutui-cascader-pane-height | ` 342px` |
+| --nutui-cascader-tabs-item-padding | `  0 10px` |
+| --nutui-cascader-bar-padding | `  24px 20px 17px` |
+| --nutui-cascader-bar-font-size | `  $font-size-4` |
+| --nutui-cascader-bar-line-height | ` 20px` |
+| --nutui-cascader-bar-color | ` $title-color` |
+| --nutui-cascader-item-padding | ` 10px 20px` |
+| --nutui-cascader-item-color | ` $title-color` |
+| --nutui-cascader-item-font-size | `  $font-size-2` |
+| --nutui-cascader-item-active-color | `  $primary-color` |

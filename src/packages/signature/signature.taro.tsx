@@ -1,7 +1,12 @@
 /* eslint-disable react/no-unknown-property */
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import Taro, { CanvasContext } from '@tarojs/taro'
-// import { Canvas } from '@tarojs/components'
+import {
+  getEnv,
+  nextTick,
+  createSelectorQuery,
+  canvasToTempFilePath,
+  CanvasContext,
+} from '@tarojs/taro'
 import Button from '@/packages/button/index.taro'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
@@ -74,12 +79,12 @@ export const Signature: FunctionComponent<
       let mouseX = evt.x || evt.clientX
       let mouseY = evt.y || evt.clientY
 
-      if (Taro.getEnv() === 'WEB' && canvasRef.current) {
+      if (getEnv() === 'WEB' && canvasRef.current) {
         const coverPos = canvasRef.current.getBoundingClientRect()
         mouseX = evt.clientX - coverPos.left
         mouseY = evt.clientY - coverPos.top
       }
-      Taro.nextTick(() => {
+      nextTick(() => {
         // ctx.current.lineCap = 'round'
         // ctx.current.lineJoin = 'round'
         ctx.current?.lineTo(mouseX, mouseY)
@@ -104,14 +109,14 @@ export const Signature: FunctionComponent<
   }
 
   const onSave = () => {
-    Taro.createSelectorQuery()
+    createSelectorQuery()
       .select(`#${canvasId}`)
       .fields({
         node: true,
         size: true,
       })
       .exec((res) => {
-        Taro.canvasToTempFilePath({
+        canvasToTempFilePath({
           canvas: res[0].node,
           fileType: props.type,
           canvasId: `${canvasId}`,
@@ -145,10 +150,10 @@ export const Signature: FunctionComponent<
   }
 
   const initCanvas = () => {
-    Taro.nextTick(() => {
+    nextTick(() => {
       setTimeout(() => {
-        if (Taro.getEnv() === 'WEAPP' || Taro.getEnv() === 'JD') {
-          Taro.createSelectorQuery()
+        if (getEnv() === 'WEAPP' || getEnv() === 'JD') {
+          createSelectorQuery()
             .select(`#${canvasId}`)
             .fields(
               {
@@ -188,7 +193,7 @@ export const Signature: FunctionComponent<
   return (
     <div className={`${b()} ${className}`} {...rest}>
       <div className={`${b('inner')} spcanvas_WEAPP`} ref={wrapRef}>
-        {Taro.getEnv() === 'WEAPP' || Taro.getEnv() === 'JD' ? (
+        {getEnv() === 'WEAPP' || getEnv() === 'JD' ? (
           <canvas
             id={canvasId}
             ref={canvasRef}

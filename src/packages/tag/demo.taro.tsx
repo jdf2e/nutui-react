@@ -1,11 +1,13 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { CellGroup, Cell, Tag } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 const TagDemo = () => {
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>基础用法</h2>
         <CellGroup>
           <Cell title="primary类型" linkSlot={<Tag type="primary">标签</Tag>} />
@@ -38,6 +40,7 @@ const TagDemo = () => {
             linkSlot={
               <Tag
                 closeable
+                iconSize="14px"
                 onClose={() => Taro.showToast({ title: 'Tag closed' })}
                 type="primary"
               >

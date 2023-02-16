@@ -9,8 +9,7 @@ Used to display the countdown value in real time, and precision supports millise
 ```ts
 // react
 import { CountDown } from '@nutui/nutui-react'
-// taro
-import { CountDown } from '@nutui/nutui-react-taro'
+
 ```
 
 ## Demo
@@ -336,8 +335,8 @@ export default App;
 | millisecond `v1.3.3` |  Whether to enable millisecond render | Boolean | false
 | autoStart `v1.3.3` |  Whether to auto start count down | Boolean | true
 | time `v1.3.3` | Total time, unit milliseconds | Number | 0
-| showDays `v1.3.3(Abandon)` | Show Text Day | Boolean | false
-| showPlainText `v1.3.3(Abandon)` | Show Text | Boolean | false
+| showDays `v1.3.3 Abandon` | Show Text Day | Boolean | false
+| showPlainText `v1.3.3 Abandon` | Show Text | Boolean | false
 
 ### Format
 
@@ -367,3 +366,16 @@ export default App;
 | start | Count Down Start | 
 | pause | Count Down Pause | 
 | reset | Count Down Reset | 
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-countdown-display | ` flex` |
+| --nutui-countdown-color | ` inherit` |
+| --nutui-countdown-font-size | ` initial` |

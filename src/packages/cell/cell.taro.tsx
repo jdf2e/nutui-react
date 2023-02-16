@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import Taro from '@tarojs/taro'
+import { redirectTo, navigateTo } from '@tarojs/taro'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
 
@@ -21,7 +21,6 @@ export interface CellProps extends BasicComponent {
   className: string
   iconSlot: ReactNode
   linkSlot: ReactNode
-  click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
@@ -42,7 +41,6 @@ const defaultProps = {
   className: '',
   iconSlot: null,
   linkSlot: null,
-  click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
 
@@ -51,7 +49,6 @@ export const Cell: FunctionComponent<
 > = (props) => {
   const {
     children,
-    click,
     onClick,
     title,
     subTitle,
@@ -80,7 +77,7 @@ export const Cell: FunctionComponent<
     onClick(event)
     const link = to || url
     if (link) {
-      replace ? Taro.redirectTo({ url: link }) : Taro.navigateTo({ url: link })
+      replace ? redirectTo({ url: link }) : navigateTo({ url: link })
     }
   }
 
@@ -92,7 +89,7 @@ export const Cell: FunctionComponent<
 
   const styles =
     title || subTitle || icon
-      ? {}
+      ? { textAlign: descTextAlign }
       : {
           textAlign: descTextAlign,
           flex: 1,

@@ -8,6 +8,8 @@ import {
   Rate,
 } from '@/packages/nutui.react.taro'
 import enUS from '@/locales/en-US'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 const darkTheme = {
   nutuiBrandColor: 'green',
@@ -17,7 +19,8 @@ const darkTheme = {
 const ConfigProviderDemo = () => {
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>Textarea 默认</h2>
         <ConfigProvider>
           <TextArea disabled limitshow maxlength="20" />

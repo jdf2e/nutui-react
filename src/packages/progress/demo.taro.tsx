@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import {
   Cell,
@@ -7,6 +8,7 @@ import {
   Button,
   Toast,
 } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 interface T {
   basic: string
@@ -77,7 +79,8 @@ const ProgressDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Cell style={cellStyles}>
           <Progress percentage={30} />
@@ -86,8 +89,9 @@ const ProgressDemo = () => {
         <Cell style={cellStyles}>
           <Progress
             percentage={30}
-            strokeColor="rgba(250,44,25,0.47)"
-            stroke-width="20"
+            fillColor="rgba(250,44,25,0.2)"
+            strokeColor="rgba(250,44,25,0.9)"
+            strokeWidth="15"
             textColor="red"
           />
         </Cell>

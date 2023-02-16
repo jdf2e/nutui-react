@@ -9,8 +9,7 @@
 ```javascript
 // react
 import { Grid ,GridItem } from '@nutui/nutui-react'
-// taro
-import { Grid ,GridItem } from '@nutui/nutui-react-taro'
+
 ```
 
 ## 代碼演示
@@ -181,7 +180,7 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid,GridItem } from '@nutui/nutui-react'
+import { Grid,GridItem,Avatar } from '@nutui/nutui-react'
 
 const App = () => {
   return (
@@ -259,3 +258,20 @@ export default App
 | 參數                  | 說明                                                                                     | 回調參數    |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|
 | onClick `1.3.14`                 | 點擊格子時觸發                                                                         | event: Event      |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-grid-border-color | ` #f5f6f7` |
+| --nutui-grid-item-content-padding | `  16px 8px` |
+| --nutui-grid-item-content-bg-color | `  $white` |
+| --nutui-grid-item-text-margin | ` 8px` |
+| --nutui-grid-item-text-color | ` $gray1` |
+| --nutui-grid-item-icon-color | ` $gray1` |
+| --nutui-grid-item-text-font-size | `  $font-size-1` |

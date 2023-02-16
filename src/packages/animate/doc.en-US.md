@@ -9,8 +9,7 @@ Add animation effects to child elements
 ```ts
 // react
 import { Animate } from '@nutui/nutui-react';
-// taro
-import { Animate } from '@nutui/nutui-react-taro';
+
 ```
 
 ### Clicking to trigger

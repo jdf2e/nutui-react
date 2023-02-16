@@ -73,12 +73,12 @@ const IndicatorDemo = () => {
         </Cell>
         <h2>{translated.c123sda1}</h2>
         <Cell>
-          <view className="vertical_cell">
+          <div className="vertical_cell">
             <Indicator fillZero={false} size={6} current={5} vertical />
-          </view>
-          <view className="vertical_cell">
+          </div>
+          <div className="vertical_cell">
             <Indicator size={6} current={2} vertical />
-          </view>
+          </div>
         </Cell>
       </div>
     </>

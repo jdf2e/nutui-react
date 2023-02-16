@@ -16,6 +16,7 @@ exports[`prop title desc subtitle 1`] = `
       <div
         class="nut-cell nut-cell--clickable "
         style="border-radius: 6px;"
+        to=""
       >
         <div
           class="nut-cell__title"
@@ -33,6 +34,7 @@ exports[`prop title desc subtitle 1`] = `
       <div
         class="nut-cell nut-cell--clickable "
         style="border-radius: 6px;"
+        to=""
       >
         <div
           class="nut-cell__title"
@@ -45,25 +47,9 @@ exports[`prop title desc subtitle 1`] = `
         </div>
         <div
           class="nut-cell__value"
+          style="text-align: right;"
         >
           https://jd.com
-        </div>
-        <i
-          class="nutui-iconfont nut-icon nut-icon-right nut-cell__link"
-        />
-      </div>
-      <div
-        class="nut-cell nut-cell--clickable "
-        style="border-radius: 6px;"
-      >
-        <div
-          class="nut-cell__title"
-        >
-          <div
-            class="nut-cell__maintitle"
-          >
-            路由跳转 ’/‘ 
-          </div>
         </div>
         <i
           class="nutui-iconfont nut-icon nut-icon-right nut-cell__link"

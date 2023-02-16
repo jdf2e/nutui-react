@@ -1,44 +1,59 @@
 @import '../icon/icon.scss';
+
 .nut-tag {
-  padding: 0 4px;
-  border-radius: 4px;
+  padding: $tag-padding;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $tag-font-size;
+  border-radius: $tag-default-border-radius;
+  height: $tag-height;
+
   ._icon {
     vertical-align: middle;
     margin-left: 4px;
   }
+
+  @mixin plain {
+    &.nut-tag--plain {
+      color: $tag-default-background-color;
+      border: $tag-border-width solid $tag-default-background-color;
+    }
+  }
+
   &--default {
     color: $tag-default-color;
     background: $tag-default-background-color;
     border: $tag-border-width solid transparent;
+    @include plain;
   }
 
   &--primary {
     color: $tag-default-color;
     background: $tag-primary-background-color;
     border: $tag-border-width solid transparent;
+    @include plain;
   }
 
   &--success {
     color: $tag-default-color;
     background: $tag-success-background-color;
     border: $tag-border-width solid transparent;
+    @include plain;
   }
 
   &--danger {
     color: $tag-default-color;
     background: $tag-danger-background-color;
     border: $tag-border-width solid transparent;
+    @include plain;
   }
 
   &--warning {
     color: $tag-default-color;
     background: $tag-warning-background-color;
     border: $tag-border-width solid transparent;
-  }
-  &--plain {
-    color: $tag-plain-color;
-    background: $tag-plain-background-color;
-    border: $tag-border-width solid $tag-plain-color;
+    @include plain;
   }
   &--round {
     border-radius: 8px;

@@ -23,7 +23,7 @@ test('default props', () => {
       </Sidenavbar>
     </>
   )
-  expect(container.querySelector('.nut-popup')).toHaveClass('popup-left')
+  expect(container.querySelector('.nut-popup')).toHaveClass('nut-popup-left')
   expect(container.querySelector('.nut-sidenavbar__title')).toHaveAttribute(
     'style',
     'padding-left: 20px;'
@@ -44,7 +44,7 @@ test('position  should be right', () => {
       </Sidenavbar>
     </>
   )
-  expect(container.querySelector('.nut-popup')).toHaveClass('popup-right')
+  expect(container.querySelector('.nut-popup')).toHaveClass('nut-popup-right')
 })
 test('offset  should be 30', () => {
   const { container } = render(

@@ -11,6 +11,7 @@ import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
+import { ITouchEvent } from '@tarojs/components'
 import {
   OverlayProps,
   defaultOverlayProps,
@@ -30,16 +31,16 @@ export interface PopupProps extends OverlayProps, BasicComponent {
   closeable: boolean
   closeIconPosition: string
   closeIcon: string
+  closeIconSize?: string | number
   destroyOnClose: boolean
   teleport: Teleport
   overlay: boolean
   round: boolean
   onOpen: () => void
   onClose: () => void
-  onClick: (e: MouseEvent) => void
   onOpened: (e: HTMLElement) => void
   onClosed: (e: HTMLElement) => void
-  onClickOverlay: (e: MouseEvent) => void
+  onClickOverlay: (e: ITouchEvent) => void
   onClickCloseIcon: (e: MouseEvent) => void
 }
 
@@ -52,16 +53,16 @@ const defaultProps = {
   closeable: false,
   closeIconPosition: 'top-right',
   closeIcon: 'close',
+  closeIconSize: '12px',
   destroyOnClose: true,
   teleport: null,
   overlay: true,
   round: false,
   onOpen: () => {},
   onClose: () => {},
-  onClick: (e: MouseEvent) => {},
   onOpened: (e: HTMLElement) => {},
   onClosed: (e: HTMLElement) => {},
-  onClickOverlay: (e: MouseEvent) => {},
+  onClickOverlay: (e: ITouchEvent) => {},
   onClickCloseIcon: (e: MouseEvent) => {},
   ...defaultOverlayProps,
 } as PopupProps
@@ -69,7 +70,7 @@ const defaultProps = {
 let _zIndex = 2000
 
 export const Popup: FunctionComponent<
-  Partial<PopupProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<PopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const {
     children,
@@ -101,6 +102,7 @@ export const Popup: FunctionComponent<
     onClick,
     iconClassPrefix,
     iconFontClassName,
+    closeIconSize,
   } = props
 
   const [index, setIndex] = useState(zIndex || _zIndex)
@@ -128,7 +130,7 @@ export const Popup: FunctionComponent<
   const classes = classNames(
     {
       round,
-      [`popup-${position}`]: true,
+      [`nut-popup-${position}`]: true,
       [`${popClass}`]: true,
       [`${className}`]: true,
     },
@@ -136,8 +138,8 @@ export const Popup: FunctionComponent<
   )
 
   const closeClasses = classNames({
-    'nutui-popup__close-icon': true,
-    [`nutui-popup__close-icon--${closeIconPosition}`]: true,
+    'nut-popup__close-icon': true,
+    [`nut-popup__close-icon--${closeIconPosition}`]: true,
   })
 
   const open = () => {
@@ -163,7 +165,7 @@ export const Popup: FunctionComponent<
     }
   }
 
-  const onHandleClickOverlay = (e: MouseEvent) => {
+  const onHandleClickOverlay = (e: ITouchEvent) => {
     if (closeOnClickOverlay) {
       onClickOverlay && onClickOverlay(e)
       close()
@@ -171,7 +173,7 @@ export const Popup: FunctionComponent<
   }
 
   const onHandleClick: MouseEventHandler<HTMLDivElement> = (e: MouseEvent) => {
-    onClick && onClick(e)
+    onClick && onClick(e as any)
   }
 
   const onHandleClickCloseIcon: MouseEventHandler<HTMLDivElement> = (
@@ -226,7 +228,7 @@ export const Popup: FunctionComponent<
                 classPrefix={iconClassPrefix}
                 fontClassName={iconFontClassName}
                 name={closeIcon}
-                size="12px"
+                size={closeIconSize}
               />
             </div>
           ) : (
@@ -267,7 +269,7 @@ export const Popup: FunctionComponent<
   }, [visible])
 
   useEffect(() => {
-    setTransitionName(transition || `popup-slide-${position}`)
+    setTransitionName(transition || `nut-popup-slide-${position}`)
   }, [position])
 
   return <>{renderToContainer(teleport as Teleport, renderNode())}</>

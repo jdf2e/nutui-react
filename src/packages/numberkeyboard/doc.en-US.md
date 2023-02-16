@@ -8,8 +8,7 @@ Virtual numeric keypad, used for scenarios where payment passwords are entered.
 ```ts
 // react
 import { NumberKeyboard } from '@nutui/nutui-react';
-// taro
-import { NumberKeyboard } from '@nutui/nutui-react-taro';
+
 ```
 
 
@@ -228,3 +227,33 @@ export default App;
 | onChange  | Emitted when a key is pressed                   | value: string |
 | onDelete | 	Emitted when the delete key is pressed                | -             |
 | onClose  | Emitted when the close button or non-keyboard area is clicked is clicked   | -             |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-numberkeyboard-padding | `  0 0 22px 0` |
+| --nutui-numberkeyboard-background-color | `  #f2f3f5` |
+| --nutui-numberkeyboard-header-height | `  34px` |
+| --nutui-numberkeyboard-header-padding | `  6px 0 0 0` |
+| --nutui-numberkeyboard-header-color | `  #646566` |
+| --nutui-numberkeyboard-header-font-size | `  16px` |
+| --nutui-numberkeyboard-header-close-padding | `  0 16px` |
+| --nutui-numberkeyboard-header-close-color | `  #576b95` |
+| --nutui-numberkeyboard-header-close-font-size | `  14px` |
+| --nutui-numberkeyboard-header-close-background-color | `  transparent` |
+| --nutui-numberkeyboard-key-background-color | `  #fff` |
+| --nutui-numberkeyboard-key-active-background-color | `  #ebedf0` |
+| --nutui-numberkeyboard-key-height | `  48px` |
+| --nutui-numberkeyboard-key-line-height | `  1.5` |
+| --nutui-numberkeyboard-key-border-radius | `  8px` |
+| --nutui-numberkeyboard-key-font-size | `  28px` |
+| --nutui-numberkeyboard-key-font-color | `  #333` |
+| --nutui-numberkeyboard-key-finish-font-size | `  16px` |
+| --nutui-numberkeyboard-key-finish-font-color | `  #fff` |
+| --nutui-numberkeyboard-key-finish-background-color | `  #1989fa` |

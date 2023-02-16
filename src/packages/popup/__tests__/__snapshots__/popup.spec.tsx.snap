@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render correct close icon when using close-icon prop 1`] = `"<i class=\\"nutui-iconfont nut-icon nut-icon-success \\" style=\\"font-size: 12px; width: 12px; height: 12px;\\"></i>"`;
+exports[`should render correct close icon when using close-icon prop 1`] = `"<i class=\\"nutui-iconfont nut-icon nut-icon-success \\" style=\\"font-size: 12px; height: 12px; width: 12px;\\"></i>"`;

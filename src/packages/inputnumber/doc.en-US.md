@@ -9,8 +9,7 @@ Control the number increase or decrease by clicking the button.
 ``` ts
 // react
 import { InputNumber } from '@nutui/nutui-react';
-// taro
-import { InputNumber } from '@nutui/nutui-react-taro';
+
 ```
 
 ### Basic Usage
@@ -66,7 +65,7 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react';
+import { InputNumber, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
@@ -190,7 +189,7 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { InputNumber, Toast } from '@nutui/nutui-react';
+import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
@@ -227,15 +226,41 @@ export default App;
 
 | Event    | Description                   | Arguments                       |
 |-----------|------------------------|--------------------------------|
-| add    `v1.3.8(Abandon)`   | Triggered when the Add button is clicked     | event: Event                   |
-| reduce   `v1.3.8(Abandon)` | Triggered when the decrease button is clicked     | event: Event                   |
-| overlimit `v1.3.8(Abandon)` | Triggered when an unavailable button is clicked | event: Event                   |
-| change `v1.3.8(Abandon)`    | Triggered when the value changes           | value:  number , event : Event |
-| blur `v1.3.8(Abandon)`      | Triggered when the input box blur   | event: Event                   |
-| focus `v1.3.8(Abandon)`     | Triggered when the input box focus   | event: Event                   |
+| add    `v1.3.8 Abandon`   | Triggered when the Add button is clicked     | event: Event                   |
+| reduce   `v1.3.8 Abandon` | Triggered when the decrease button is clicked     | event: Event                   |
+| overlimit `v1.3.8 Abandon` | Triggered when an unavailable button is clicked | event: Event                   |
+| change `v1.3.8 Abandon`    | Triggered when the value changes           | value:  number , event : Event |
+| blur `v1.3.8 Abandon`      | Triggered when the input box blur   | event: Event                   |
+| focus `v1.3.8 Abandon`     | Triggered when the input box focus   | event: Event                   |
 | onAdd `v1.3.8`       | Triggered when the Add button is clicked     | event: Event                   |
 | onReduce `v1.3.8`    | Triggered when the decrease button is clicked     | event: Event                   |
 | onOverlimit `v1.3.8` | Triggered when an unavailable button is clicked | event: Event                   |
 | onChangeFuc `v1.3.8`    | Triggered when the value changes           | value:  number , event : Event |
 | onBlurFuc `v1.3.8`      | Triggered when the input box blur   | event: Event                   |
 | onFocus `v1.3.8`     | Triggered when the input box focus   | event: Event                   |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-inputnumber-icon-color | `  $title-color` |
+| --nutui-inputnumber-icon-void-color | `  $disable-color` |
+| --nutui-inputnumber-icon-disabled-color | `  $gray2` |
+| --nutui-inputnumber-icon-size | ` 20px` |
+| --nutui-inputnumber-input-font-size | `  12px` |
+| --nutui-inputnumber-input-font-color | `  $gray1` |
+| --nutui-inputnumber-input-background-color | `  $gray4` |
+| --nutui-inputnumber-input-border-radius | `  4px` |
+| --nutui-inputnumber-input-width | ` 40px` |
+| --nutui-inputnumber-input-margin | `  0 6px` |
+| --nutui-inputnumber-input-border | ` 0` |
+| --nutui-inputnumber-border | ` 0` |
+| --nutui-inputnumber-border-radius | ` 0` |
+| --nutui-inputnumber-height | ` auto` |
+| --nutui-inputnumber-line-height | ` normal` |
+| --nutui-inputnumber-border-box | `  content-box` |
+| --nutui-inputnumber-display | ` flex` |

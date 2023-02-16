@@ -17,6 +17,7 @@ export interface FormItemProps extends BasicComponent, BaseFormField {
   errorMessageAlign: TextAlign
   showErrorLine: boolean
   showErrorMessage: boolean
+  initialValue: string
 }
 
 const defaultProps = {
@@ -30,6 +31,7 @@ const defaultProps = {
   errorMessageAlign: 'left',
   showErrorLine: true,
   showErrorMessage: true,
+  initialValue: '',
 } as FormItemProps
 
 export type FieldProps = typeof defaultProps & Partial<BaseFormField>
@@ -60,11 +62,21 @@ export class FormItem extends React.Component<FieldProps> {
     const { name } = this.props
     const type = (children as any).type.NAME
 
+    const defaultvalue =
+      this.props.initialValue || (children as any).props?.defaultValue
+    if (defaultvalue) {
+      setFieldsValue({ [name]: defaultvalue })
+    }
+
     return {
       value: getFieldValue(name),
       onChange: (
         event: React.ChangeEvent<HTMLInputElement> | number | string | string[]
       ) => {
+        const originOnChange = (children as any).props.onChange
+        if (originOnChange) {
+          originOnChange(event)
+        }
         let newValue = event
         switch (type) {
           case 'checkbox':
@@ -79,7 +91,7 @@ export class FormItem extends React.Component<FieldProps> {
   }
 
   onStoreChange = () => {
-    this.forceUpdate()
+    // this.forceUpdate()
   }
 
   renderLayout = (childNode: React.ReactNode) => {
@@ -152,10 +164,17 @@ export class FormItem extends React.Component<FieldProps> {
   }
 
   render() {
-    const { children } = this.props
+    const { children, initialValue } = this.props
     const c = Array.isArray(children) ? children[0] : children
+
+    let restCNode = c as React.ReactElement
+    if (initialValue) {
+      restCNode = React.cloneElement(c as React.ReactElement, {
+        defaultValue: initialValue,
+      })
+    }
     const returnChildNode = React.cloneElement(
-      c as React.ReactElement,
+      restCNode,
       this.getControlled(c as React.ReactElement)
     )
     return this.renderLayout(returnChildNode)

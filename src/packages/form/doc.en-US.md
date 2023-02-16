@@ -12,106 +12,180 @@ import { Form } from '@nutui/nutui-react'
 
 ### Basic Usage
 :::demo
-```
-<Form>
-  <Form.Item label='Name' name="username">
-    <Input
-      className="nut-input-text"
-      placeholder='Please enter your name'
-      type="text"
-    />
-  </Form.Item>
-  <Form.Item label='Remark' name="remark">
-    <TextArea placeholder='Please enter remarks' />
-  </Form.Item>
-</Form>
+```tsx
+import  React from "react";
+import { Form, Input, TextArea } from '@nutui/nutui-react';
+const App = () => {
+  return (
+    <>
+      <Form>
+        <Form.Item label='Name' name="username">
+          <Input
+            className="nut-input-text"
+            placeholder='Please enter your name'
+            type="text"
+          />
+        </Form.Item>
+        <Form.Item label='Remark' name="remark">
+          <TextArea placeholder='Please enter remarks' />
+        </Form.Item>
+      </Form>
+    </>
+  )
+}
+export default App;
 ```
 :::
 
 ### Top Align
 
 :::demo
-```
-<Form labelPosition="Top">
-  <Form.Item label='Name' name="username">
-    <Input
-      className="nut-input-text"
-      placeholder='Please enter your name'
-      type="text"
-    />
-  </Form.Item>
-  <Form.Item label='Remark' name="remark">
-    <TextArea placeholder='Please enter remarks' />
-  </Form.Item>
-</Form>
+```tsx
+import  React from "react";
+import { Form, Input, TextArea } from '@nutui/nutui-react';
+const App = () => (
+  <Form labelPosition="Top">
+    <Form.Item label='Name' name="username">
+      <Input
+        className="nut-input-text"
+        placeholder='Please enter your name'
+        type="text"
+      />
+    </Form.Item>
+    <Form.Item label='Remark' name="remark">
+      <TextArea placeholder='Please enter remarks' />
+    </Form.Item>
+  </Form>
+)
+
+export default App;
 ```
 :::
 
 ### Validate Form
 :::demo
+```tsx
+import  React from "react";
+import { Form, Input, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Form
+        onFinish={(obj) => submitSucceed(obj)}
+        onFinishFailed={(error) => submitFailed(error)}
+      >
+        <Form.Item label='Name' name="username">
+          <Input
+            className="nut-input-text"
+            placeholder='Please enter your name'
+            type="text"
+          />
+        </Form.Item>
+        <Form.Item label='Age' name="age">
+          <Input placeholder='Please enter age' type="number" />
+        </Form.Item>
+        <Form.Item label='Tel' name="tel">
+          <Input placeholder='Please enter tel number' type="number" />
+        </Form.Item>
+        <Form.Item label='Address' name="address">
+          <Input placeholder='Please enter address' type="text" />
+        </Form.Item>
+        <Cell>
+          <input type="submit" value='Submit' />
+        </Cell>
+      </Form>
+    </>
+  )
+}
+
+export default App;
 ```
-<Form
-  onFinish={(obj) => submitSucceed(obj)}
-  onFinishFailed={(error) => submitFailed(error)}
->
-  <Form.Item label='Name' name="username">
-    <Input
-      className="nut-input-text"
-      placeholder='Please enter your name'
-      type="text"
-    />
-  </Form.Item>
-  <Form.Item label='Age' name="age">
-    <Input placeholder='Please enter age' type="number" />
-  </Form.Item>
-  <Form.Item label='Tel' name="tel">
-    <Input placeholder='Please enter tel number' type="number" />
-  </Form.Item>
-  <Form.Item label='Address' name="address">
-    <Input placeholder='Please enter address' type="text" />
-  </Form.Item>
-  <Cell>
-    <input type="submit" value='Submit' />
-  </Cell>
-</Form>
+:::
+
+### InitialValue Validate Type
+:::demo
+
+```tsx
+import  React from "react";
+import { Form, Input, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Form
+        onFinish={(obj) => submitSucceed(obj)}
+        onFinishFailed={(error) => submitFailed(error)}
+      >
+        <Form.Item label='Name' name="username" initialValue="zhangsan">
+          <Input
+            className="nut-input-text"
+            placeholder='Please enter your name'
+            type="text"
+          />
+        </Form.Item>
+        <Form.Item label='Age' name="age">
+          <Input placeholder='Please enter age' type="number" defaultValue="18" />
+        </Form.Item>
+        <Cell>
+          <input type="submit" value='Submit' />
+        </Cell>
+      </Form>
+    </>
+  )
+}
+
+export default App;
 ```
 :::
 
 ### Form Type
 
 :::demo
-```
-<Form
-  onFinish={(obj) => submitSucceed(obj)}
-  onFinishFailed={(error) => submitFailed(error)}
->
-  <Form.Item label='Switch' name="switch">
-    <Switch />
-  </Form.Item>
-  <Form.Item label='Checkbox' name="checkbox">
-    <Checkbox
-      textPosition="right"
-      label='Checkbox'
-      checked={false}
-    />
-  </Form.Item>
-  <Form.Item label='Radio' name="radiogroup">
-    <Radio.RadioGroup>
-      <Radio value="1">Value1</Radio>
-      <Radio value="2">Value2</Radio>
-      <Radio value="3">Value3</Radio>
-    </Radio.RadioGroup>
-  </Form.Item>
-  <Form.Item label='Rate' name="rate">
-    <Rate modelValue={0} />
-  </Form.Item>
-  <Form.Item label='Range' name="range">
-    <Range modelValue={0} max={10} min={-10} />
-  </Form.Item>
-  <Cell>
-    <input type="submit" value='Submit' />
-  </Cell>
-</Form>
+```tsx
+import  React from "react";
+import { Form, Input, Cell, Switch, Checkbox, Radio, Rate, Range } from '@nutui/nutui-react';
+
+
+const App = () => {
+  return (
+    <>
+      <Form
+        onFinish={(obj) => submitSucceed(obj)}
+        onFinishFailed={(error) => submitFailed(error)}
+      >
+        <Form.Item label='Switch' name="switch">
+          <Switch />
+        </Form.Item>
+        <Form.Item label='Checkbox' name="checkbox">
+          <Checkbox
+            textPosition="right"
+            label='Checkbox'
+            checked={false}
+          />
+        </Form.Item>
+        <Form.Item label='Radio' name="radiogroup">
+          <Radio.RadioGroup>
+            <Radio value="1">Value1</Radio>
+            <Radio value="2">Value2</Radio>
+            <Radio value="3">Value3</Radio>
+          </Radio.RadioGroup>
+        </Form.Item>
+        <Form.Item label='Rate' name="rate">
+          <Rate modelValue={0} />
+        </Form.Item>
+        <Form.Item label='Range' name="range">
+          <Range modelValue={0} max={10} min={-10} />
+        </Form.Item>
+        <Cell>
+          <input type="submit" value='Submit' />
+        </Cell>
+      </Form>
+    </>
+  )
+}
+
+export default App;
 ```
 :::
 ## API
@@ -138,6 +212,7 @@ import { Form } from '@nutui/nutui-react'
 | name | the field of the form field is required when the form verification function is used | string | - |
 | labelWidth | The width of the form item label. The default unit is `px` | number \| string | `90px`  |
 | errorMessageAlign | Error prompt text alignment. The optional values are `center` and `right`  | string           | `left`  |
+| initialValue`v1.4.7` | Set child element default value                  | string           | -  |
 
 ### Form.Item Rule Data Structure
 
@@ -153,3 +228,26 @@ Use the `rules` attribute of Form.Item to define verification rules. The optiona
 | Name           | Description | Attribute | Callback  |
 |-------------------|-----------------------------|-----|---------|
 | submit | the function of submit the form | - | Promise |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-form-item-error-line-color | `  $required-color` |
+| --nutui-form-item-required-color | `  $required-color` |
+| --nutui-form-item-error-message-color | `  $required-color` |
+| --nutui-form-item-label-font-size | `  14px` |
+| --nutui-form-item-label-width | ` 90px` |
+| --nutui-form-item-label-margin-right | `  10px` |
+| --nutui-form-item-label-text-align | `  left` |
+| --nutui-form-item-required-margin-right | `  4px` |
+| --nutui-form-item-body-font-size | ` 14px` |
+| --nutui-form-item-body-slots-text-align | `  left` |
+| --nutui-form-item-body-input-text-align | `  left` |
+| --nutui-form-item-tip-font-size | ` 10px` |
+| --nutui-form-item-tip-text-align | ` left` |

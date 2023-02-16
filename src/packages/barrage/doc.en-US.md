@@ -9,8 +9,7 @@ It is used for the rotation display of words and phrases, which is suitable for 
 ``` ts
 // react
 import { Barrage } from '@nutui/nutui-react';
-// taro
-import { Barrage } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Code demonstration

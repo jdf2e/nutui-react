@@ -106,8 +106,8 @@ const App = () => {
             changeNarBar(false)
           }}
         >
-          <SubSideNavBar title="一级标题" ikey="1-0" titleClick={clickTitle}>
-            <SideNavBarItem title="一级内容1" ikey="1-01" click={clickItem} />
+          <SubSideNavBar title="一级标题" ikey="1-0" onClick={clickTitle}>
+            <SideNavBarItem title="一级内容1" ikey="1-01" onClick={clickItem} />
             <SideNavBarItem title="一级内容2" ikey="1-02" />
             <SubSideNavBar title="二级标题" ikey="2-0">
               <SideNavBarItem title="二级内容1" ikey="2-01" />
@@ -173,3 +173,27 @@ export default App;
 | 事件名    | 说明                                                  | 回调参数     |
 |--------|-----------------------------------------------------|--------------|
 | onClick | 导航点击,对象形式返回点击{ title,ikey} , click 事件从 1.3.8 之后改为 onClick | -           |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-sidenavbar-content-bg-color | `  $white` |
+| --nutui-sidenavbar-sub-title-border-color | `  #f6f6f6` |
+| --nutui-sidenavbar-sub-title-bg-color | `  #f6f6f6` |
+| --nutui-sidenavbar-sub-title-font-size | `  $font-size-large` |
+| --nutui-sidenavbar-sub-title-radius | `  0` |
+| --nutui-sidenavbar-sub-title-border | `  0` |
+| --nutui-sidenavbar-sub-title-height | `  40px` |
+| --nutui-sidenavbar-sub-title-text-line-height | `  40px` |
+| --nutui-sidenavbar-sub-title-text-color | `  $title-color` |
+| --nutui-sidenavbar-item-title-color | `  #333` |
+| --nutui-sidenavbar-item-title-bg-color | `  $white` |
+| --nutui-sidenavbar-item-height | ` 40px` |
+| --nutui-sidenavbar-item-line-height | `  40px` |
+| --nutui-sidenavbar-item-font-size | `  16px` |

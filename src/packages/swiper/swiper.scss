@@ -19,7 +19,7 @@
     display: flex;
     position: absolute;
     left: 50%;
-    bottom: 12px;
+    bottom: $swiper-pagination-bottom;
     transform: translateX(-50%);
     i {
       width: $swiper-pagination-item-width;

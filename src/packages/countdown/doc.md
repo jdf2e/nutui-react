@@ -9,8 +9,7 @@
 ```ts
 // react
 import { CountDown } from '@nutui/nutui-react'
-// taro
-import { CountDown } from '@nutui/nutui-react-taro'
+
 ```
 
 ## 代码演示
@@ -336,8 +335,8 @@ export default App;
 | millisecond `v1.3.3` |  是否开启毫秒级渲染 | Boolean | false
 | autoStart `v1.3.3` |  是否自动开始倒计时 | Boolean | true
 | time `v1.3.3` | 倒计时显示时间，单位是毫秒。autoStart 为 false 时生效 | Number | 0
-| showDays `v1.3.3废弃` | 是否显示天 | Boolean | false
-| showPlainText `v1.3.3废弃` | 显示为纯文本 | Boolean | false
+| showDays `v1.3.3 废弃` | 是否显示天 | Boolean | false
+| showPlainText `v1.3.3 废弃` | 显示为纯文本 | Boolean | false
 
 ### format 格式
 
@@ -371,3 +370,16 @@ export default App;
 | pause | 暂停倒计时 | 
 | reset | 重设倒计时，若 auto-start 为 true，重设后会自动开始倒计时 | 
 
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-countdown-display | ` flex` |
+| --nutui-countdown-color | ` inherit` |
+| --nutui-countdown-font-size | ` initial` |

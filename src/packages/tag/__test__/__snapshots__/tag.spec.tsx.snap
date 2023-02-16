@@ -2,22 +2,14 @@
 
 exports[`type test 1`] = `
 <div>
-  <div>
-    <div
-      class="nut-tag
-    nut-tag--primary
-    
-    
-    
-    "
+  <div
+    class="nut-tag nut-tag--primary"
+  >
+    <span
+      class="nut-tag-text"
     >
-      <span
-        class="text"
-      >
-        TEST
-      </span>
-    </div>
+      TEST
+    </span>
   </div>
 </div>
 `;
-

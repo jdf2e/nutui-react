@@ -4,6 +4,7 @@ page {
   --nutui-brand-color-start: #ff404f;
   --nutui-brand-color-end: #fa2c19;
   --nutui-brand-link-color: #396acc;
+  --nutui-brand-text-color: #ffffff;
   --nutui-gray-0: #000000;
   // 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
   --nutui-gray-1: #1a1a1a;
@@ -25,4 +26,15 @@ page {
   --nutui-gray-9: rgba(0, 0, 0, 0.08);
   // 图片容错蒙层
   --nutui-gray-10: rgba(0, 0, 0, 0.02);
+
+  // 字体
+  --nutui-font-size-0: 10px;
+  --nutui-font-size-1: 12px;
+  --nutui-font-size-2: 14px;
+  --nutui-font-size-3: 16px;
+  --nutui-font-size-4: 18px;
+  // 字重
+  --nutui-font-weight-bold: 400;
+  // 行高
+  --nutui-line-height-base: 1.5;
 }

@@ -9,8 +9,7 @@
 ``` javascript
 // react
 import { Button } from '@nutui/nutui-react';
-// taro
-import { Button } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 代碼演示
@@ -147,6 +146,15 @@ const App = () => {
     <>
   <Button shape="square" plain type="primary" icon="star-fill" />
   <Button shape="square" type="primary" icon="star">收藏</Button>
+  <Button
+        shape="round"
+        type="primary"
+        size="large"
+        icon="star"
+        iconSize={20}
+      >
+        收藏
+      </Button>
     </>
   );
 };
@@ -223,15 +231,16 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 預設值           |
 |--------------|----------------------------------|--------|------------------|
-| type         | 類型，可選值為 `primary` `info` `warning` `danger` `success` | String |`default`         |
-| size        | 尺寸，可選值為 `large` `small`  | String | `normal`      |
-| shape         | 形狀，可選值為 `square` | String | `round`             |
+| type | 類型，可選值為 `primary` `info` `warning` `danger` `success` | String |`default` |
+| size | 尺寸，可選值為 `large` `small`  | String | `normal`      |
+| shape | 形狀，可選值為 `square` | String | `round`             |
 | color | 按鈕顏色，支持傳入linear-gradient漸變色     | String | - |
-| plain          | 	是否為樸素按鈕                       | Boolean | `false`             |
-| disabled          | 	是否禁用按鈕                       | Boolean | `false`              |
-| block          | 是否為塊級元素                        | Boolean | `false`               |
-| icon          | 按鈕圖示，同Icon元件name屬性                        | String | -     |
-| loading          | 按鈕loading狀態                        | Boolean | `false`               |
+| plain | 	是否為樸素按鈕 | Boolean | `false` |
+| disabled | 	是否禁用按鈕 | Boolean | `false` |
+| block | 是否為塊級元素 | Boolean | `false` |
+| icon | 按鈕圖示，同Icon元件name屬性 | String | -     |
+| iconSize`v1.4.7` | 按鈕圖示大小，同 Icon 的size属性 | string、number | 16 |
+| loading | 按鈕loading狀態 | Boolean | `false` |
 
 ### Events
 
@@ -241,3 +250,52 @@ export default App;
 
 ### 支持小程序API能力
 目前1.3.11版本以前不支持原生小程序API, 如果你是需要使用原生小程序button组件能力的用户，请尽快升级至1.3.11版本，关于原生小程序button组件的详细API请前往[查阅更多文档](https://taro-docs.jd.com/docs/components/forms/button)
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-button-border-radius | ` 25px` |
+| --nutui-button-border-width | ` 1px` |
+| --nutui-button-default-bg-color | ` $white` |
+| --nutui-button-default-border-color | `  rgba(204, 204, 204, 1)` |
+| --nutui-button-default-color | ` $gray1` |
+| --nutui-button-default-padding | ` 0 18px` |
+| --nutui-button-mini-padding | ` 0 12px` |
+| --nutui-button-small-padding | ` 0 12px` |
+| --nutui-button-small-height | ` 28px` |
+| --nutui-button-mini-height | ` 24px` |
+| --nutui-button-default-height | ` 38px` |
+| --nutui-button-large-height | ` 48px` |
+| --nutui-button-large-line-height | ` 46px` |
+| --nutui-button-small-line-height | ` 26px` |
+| --nutui-button-block-height | ` 48px` |
+| --nutui-button-default-line-height | `  36px` |
+| --nutui-button-block-line-height | ` 46px` |
+| --nutui-button-default-font-size | `  $font-size-2` |
+| --nutui-button-large-font-size | `  $button-default-font-size` |
+| --nutui-button-small-font-size | `  $font-size-1` |
+| --nutui-button-mini-font-size | `  $font-size-1` |
+| --nutui-button-mini-line-height | ` 1.2` |
+| --nutui-button-text-icon-width | ` 5px` |
+| --nutui-button-text-icon--large-width | ` 10px` |
+| --nutui-button-text-icon-small-width | ` 2px` |
+| --nutui-button-text-icon-mini-width | ` 1px` |
+| --nutui-button-disabled-opacity | ` 0.68` |
+| --nutui-button-primary-color | ` $white` |
+| --nutui-button-primary-border-color | `  $primary-color` |
+| --nutui-button-info-color | ` $white` |
+| --nutui-button-info-border-color | `  #496af2` |
+| --nutui-button-success-color | ` $white` |
+| --nutui-button-success-border-color | `  rgba(38, 191, 38, 1)` |
+| --nutui-button-danger-color | ` $white` |
+| --nutui-button-danger-border-color | `  rgba(250, 44, 25, 1)` |
+| --nutui-button-danger-background-color | `  rgba(250, 44, 25, 1)` |
+| --nutui-button-warning-color | ` $white` |
+| --nutui-button-warning-border-color | `  rgba(255, 158, 13, 1)` |
+| --nutui-button-plain-background-color | `  $white` |
+| --nutui-button-small-round-border-radius | `  $button-border-radius` |

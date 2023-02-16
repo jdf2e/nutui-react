@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cascader, Cell } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
+
 interface T {
   basic: string
   title1: string
@@ -317,7 +320,8 @@ const CascaderDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Cell
           title={translated.addressTip}

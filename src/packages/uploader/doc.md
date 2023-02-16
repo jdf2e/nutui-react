@@ -343,10 +343,10 @@ export default App;
 | multiple          | 是否支持文件多选                                                                                                                                                                       | Boolean                           | false            |
 | disabled          | 是否禁用文件上传                                                                                                                                                                       | Boolean                           | false            |
 | timeout           | 超时时间，单位为毫秒                                                                                                   | Number丨String                    | 1000 * 30                 |
-| beforeUpload `v1.3.4废弃`     | 上传前的函数需要返回一个`Promise`对象                                                                                                                                                  | Function                          | null             |
+| beforeUpload `v1.3.4 废弃`     | 上传前的函数需要返回一个`Promise`对象                                                                                                                                                  | Function                          | null             |
 | onBeforeUpload `v1.3.4`     | 上传前的函数需要返回一个`Promise`对象                                                                                                                                                  | Function                          | null             |
 | onBeforeXhrUpload `v1.3.4`     | 执行 XHR 上传时，自定义方式                                                                                                                                                  | Function(xhr，option)                          | null             |
-| beforeDelete  `v1.3.4废弃`   | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除                                                                 | Function(file): boolean 丨Promise | -                |
+| beforeDelete  `v1.3.4 废弃`   | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除                                                                 | Function(file): boolean 丨Promise | -                |
 | onBeforeDelete  `v1.3.4`  | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除                                                                 | Function(file): boolean 丨Promise | -                |
 
 
@@ -366,19 +366,32 @@ export default App;
 
 | 名称     | 说明                   | 回调参数             |
 |----------|------------------------|----------------------|
-| start `v1.3.4废弃`    | 文件上传开始           | options              |
+| start `v1.3.4 `    | 文件上传开始           | options              |
 | onStart `v1.3.4`    | 文件上传开始           | options              |
-| progress `v1.3.4废弃` | 文件上传的进度         | event,options        |
+| progress `v1.3.4 废弃` | 文件上传的进度         | event,options        |
 | onProgress `v1.3.4` | 文件上传的进度         | event,options,percentage        |
-| oversize `v1.3.4废弃` | 文件大小超过限制时触发 | files                |
+| oversize `v1.3.4 废弃` | 文件大小超过限制时触发 | files                |
 | onOversize `v1.3.4` | 文件大小超过限制时触发 | files                |
-| success `v1.3.4废弃`  | 上传成功               | responseText,options |
+| success `v1.3.4 废弃`  | 上传成功               | responseText,options |
 | onSuccess `v1.3.4`  | 上传成功               | responseText,options |
-| failure `v1.3.4废弃`  | 上传失败               | responseText,options |
+| failure `v1.3.4 废弃`  | 上传失败               | responseText,options |
 | onFailure `v1.3.4`  | 上传失败               | responseText,options |
 | onChange `v1.3.4`   | 上传文件改变时的状态   | fileList,event       |
-| change `v1.3.4废弃`  | 上传文件改变时的状态   | fileList,event       |
+| change `v1.3.4 废弃`  | 上传文件改变时的状态   | fileList,event       |
 | onRemove `v1.3.4`   | 文件删除之前的状态     | files,fileList       |
-| removeImage  `v1.3.4废弃` | 文件删除之前的状态     | files,fileList       |
+| removeImage  `v1.3.4 废弃` | 文件删除之前的状态     | files,fileList       |
 | onFileItemClick `v1.3.4`   | 文件上传成功后点击触发     | fileItem       |
 
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-uploader-picture-width | ` 100px` |
+| --nutui-uploader-picture-height | ` 100px` |
+| --nutui-uploader-background | ` $gray4` |

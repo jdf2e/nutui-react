@@ -8,6 +8,8 @@ import {
   InputNumber,
   Swipe,
 } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 type TSwipeDemo = {
   title1: string
@@ -153,7 +155,8 @@ const SwipeDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.title1}</h2>
         <Swipe
           rightAction={
@@ -161,6 +164,9 @@ const SwipeDemo = () => {
               {translated.del}
             </Button>
           }
+          onTouchEnd={(e) => console.log(e)}
+          onTouchMove={(e) => console.log(e)}
+          onTouchStart={(e) => console.log(e)}
         >
           <Cell title={translated.leftDel} roundRadius={0} />
         </Swipe>

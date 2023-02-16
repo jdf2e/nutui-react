@@ -55,18 +55,9 @@ textarea {
     border: 0;
     text-decoration: none;
   }
-  //   &-label {
-  //     width: 80px;
-  //     overflow: hidden;
-  //     text-align: left;
-  //     display: flex;
-  //     .label-string {
-  //       overflow: hidden;
-  //       white-space: nowrap;
-  //       text-overflow: ellipsis;
-  //       color: $gray1;
-  //     }
-  //   }
+  .label-string {
+    color: $gray1;
+  }
   &__clear {
     width: 16px;
     height: 16px;
@@ -114,7 +105,7 @@ textarea {
     vertical-align: middle;
   }
   &-right-mark {
-    .nut-input-value {
+    .nut-input-main-con {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -155,7 +146,6 @@ textarea {
     margin-top: 4px;
     color: #808080;
     font-size: 12px;
-    // line-height: var(--van-field-word-limit-line-height);
   }
   &-left-icon,
   &-right-icon {

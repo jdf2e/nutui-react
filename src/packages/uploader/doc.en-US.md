@@ -342,10 +342,10 @@ export default App;
 | multiple          | Whether to support multiple file selection                                                                                                                                                                       | Boolean                           | false            |
 | disabled          | Whether to disable file upload                                                                                                                                                                       | Boolean                           | false            |
 | timeout           | timeout, in milliseconds                                                                                                   | Number丨String                    | 1000 * 30                 |
-| beforeUpload `v1.3.4(Abandon)`     | The pre-upload function needs to return a `Promise` object                                                                                                                                                  | Function                          | null             |
+| beforeUpload `v1.3.4 Abandon`     | The pre-upload function needs to return a `Promise` object                                                                                                                                                  | Function                          | null             |
 | onBeforeUpload `v1.3.4`     | The pre-upload function needs to return a `Promise` object                                                                                                                                                  | Function                          | null             |
 | onBeforeXhrUpload `v1.3.4`     | When performing an XHR upload, the custom method                                                                                                                                                  | Function(xhr，option)                          | null             |
-| beforeDelete `v1.3.4(Abandon)`     | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects                                                                 | Function(file): boolean 丨Promise | -                |
+| beforeDelete `v1.3.4 Abandon`     | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects                                                                 | Function(file): boolean 丨Promise | -                |
 | onBeforeDelete `v1.3.4`     | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects                                                                 | Function(file): boolean 丨Promise | -                |
 
 
@@ -366,19 +366,32 @@ export default App;
 | Event	     | Description                   | Arguments             |
 |----------|------------------------|----------------------|
 | onStart `v1.3.4`    | File upload starts           | options              |
-| start `v1.3.4(Abandon)`    | File upload starts           | options              |
+| start `v1.3.4 Abandon`    | File upload starts           | options              |
 | onProgress `v1.3.4` | The progress of the file upload         | event,options,percentage        |
-| progress `v1.3.4(Abandon)` | The progress of the file upload         | event,options,percentage        |
+| progress `v1.3.4 Abandon` | The progress of the file upload         | event,options,percentage        |
 | onOversize `v1.3.4`  | Triggered when the file size exceeds the limit | files                |
-| oversize `v1.3.4(Abandon)`  | Triggered when the file size exceeds the limit | files                |
+| oversize `v1.3.4 Abandon`  | Triggered when the file size exceeds the limit | files                |
 | onSuccess `v1.3.4`  | Uploaded successfully               | responseText,options |
-| success `v1.3.4(Abandon)`  | Uploaded successfully               | responseText,options |
+| success `v1.3.4 Abandon`  | Uploaded successfully               | responseText,options |
 | onFailure `v1.3.4`  | Upload failed               | responseText,options |
-| failure `v1.3.4(Abandon)`  | Upload failed               | responseText,options |
+| failure `v1.3.4 Abandon`  | Upload failed               | responseText,options |
 | onChange `v1.3.4`   | The state when the uploaded file changes   | fileList,event       |
-| change `v1.3.4(Abandon)`   | The state when the uploaded file changes   | fileList,event       |
+| change `v1.3.4 Abandon`   | The state when the uploaded file changes   | fileList,event       |
 | onRemove `v1.3.4`   | The state before the file was deleted    | files,fileList       |
-| remove `v1.3.4(Abandon)`   | The state before the file was deleted    | files,fileList       |
+| remove `v1.3.4 Abandon`   | The state before the file was deleted    | files,fileList       |
 | onFileItemClick `v1.3.4`   | File delete event     | fileItem       |
-| fileItemClick `v1.3.4(Abandon)`   | File delete event     | fileItem       |
+| fileItemClick `v1.3.4 Abandon`   | File delete event     | fileItem       |
 
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-uploader-picture-width | ` 100px` |
+| --nutui-uploader-picture-height | ` 100px` |
+| --nutui-uploader-background | ` $gray4` |

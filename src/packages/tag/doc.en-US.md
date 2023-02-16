@@ -9,8 +9,7 @@ Label for labeling and classification.
 ``` javascript
 // react
 import { Tag } from '@nutui/nutui-react';
-// taro
-import { Tag } from '@nutui/nutui-react-taro';
+
 ```
 
 ## Code instance
@@ -200,6 +199,7 @@ export default App;
 | round      | Whether it is a rounded style                      | Boolean | `false`   |
 | mark       | Whether it is a tag style                          | Boolean | `false`   |
 | closeable  | Whether it can be closed label                     | Boolean | `false`   |
+| iconSize`v1.4.7` | the size of closed label  | string | number | ` 12px`|
 
 ### Event
 
@@ -207,3 +207,25 @@ export default App;
 |----------|----------|----------|
 | onClick    | Click event | event    |
 | onClose    | Close event | event    |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-tag-padding | ` 0 4px`|
+| --nutui-tag-font-size | ` 12px` |
+| --nutui-tag-default-border-radius | `  4px` |
+| --nutui-tag-round-border-radius | ` 8px` |
+| --nutui-tag-default-background-color | `  #000000` |
+| --nutui-tag-primary-background-color | `  #3460fa` |
+| --nutui-tag-success-background-color | `  #4fc08d` |
+| --nutui-tag-danger-background-color-plain | `  #df3526` |
+| --nutui-tag-warning-background-color | `  #f3812e` |
+| --nutui-tag-default-color | ` #ffffff` |
+| --nutui-tag-border-width | ` 1px` |
+| --nutui-tag-height | ` auto` |

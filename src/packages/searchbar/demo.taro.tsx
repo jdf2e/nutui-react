@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { SearchBar, Icon, Toast } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import Header from '@/sites/components/header'
 
 type TSearchDemo = {
   basePlaceholder: string
@@ -73,7 +74,8 @@ const SearchBarDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.title1}</h2>
         <SearchBar placeholder={translated.basePlaceholder} />
         <h2>{translated.title2}</h2>
@@ -89,12 +91,14 @@ const SearchBarDemo = () => {
         <SearchBar
           label={translated.text}
           actionText={translated.test}
+          clearIconSize="14px"
           onSearch={() => toastShow()}
         />
         <h2>{translated.title5}</h2>
         <SearchBar
           leftoutIcon={<Icon name="heart-fill1" size="14" />}
           rightoutIcon={<Icon name="star-fill" size="14" />}
+          rightinIcon={<Icon name="star-fill" size="14" />}
         />
         <h2>{translated.title6}</h2>
         <SearchBar

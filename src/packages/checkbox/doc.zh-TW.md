@@ -9,8 +9,7 @@
 ```ts
 // react
 import { Checkbox } from '@nutui/nutui-react';
-// taro
-import { Checkbox } from '@nutui/nutui-react-taro';
+
 ```
 
 ## 基本用法
@@ -389,7 +388,7 @@ const CheckboxGroupOptions = () => {
     console.log(v)
     setCheckboxValVal(v)
   }
-  return <CheckboxGroup options={optionsDemo1} checkedValue={radioVal} onChange={handleChange}></CheckboxGroup>
+  return <Checkbox.Group options={optionsDemo1} checkedValue={checkboxVal} onChange={handleChange} />
 }
 export default CheckboxGroupOptions;
 ```
@@ -437,3 +436,19 @@ export default CheckboxGroupOptions;
 |-------------------| ----- | ----- |
 | toggleAll`v1.2.1` | 全選/取消 | `f`,傳 `true`,表示全選，傳 `false`,表示取消全選 |
 | toggleReverse`v1.2.1`   | 反選 | - |
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-checkbox-label-color | ` $gray1` |
+| --nutui-checkbox-label-disable-color | `  #999` |
+| --nutui-checkbox-icon-disable-color | `  #d6d6d6` |
+| --nutui-checkbox-label-margin-left | `  15px` |
+| --nutui-checkbox-label-font-size | ` 14px` |
+| --nutui-checkbox-icon-font-size | ` 18px` |
+| --nutui-checkbox-icon-disable-color2 | `  $help-color` |
