@@ -118,6 +118,7 @@ $button-default-border-color: var(
   rgba(204, 204, 204, 1)
 ) !default;
 $button-default-color: var(--nutui-button-default-color, $gray1) !default;
+$button-plain-color: var(--nutui-button-plain-color, $gray2) !default;
 $button-default-padding: var(--nutui-button-default-padding, 0 18px) !default;
 $button-mini-padding: var(--nutui-button-mini-padding, 0 12px) !default;
 $button-small-padding: var(--nutui-button-small-padding, 0 12px) !default;
