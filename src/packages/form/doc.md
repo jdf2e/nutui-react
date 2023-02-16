@@ -149,6 +149,58 @@ export default App;
 ```
 :::
 
+### 通过 Form.useForm 对表单数据域进行交互。
+:::demo
+
+```tsx
+import  React from "react";
+import { Form, Input, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const [form] = Form.useForm()
+  const onMenuChange = (value: string | number | boolean) => {
+    console.log("1")
+    switch (value) {
+      case 'male':
+        form.setFieldsValue({ note: 'Hi, man!' })
+        break
+      case 'female':
+        form.setFieldsValue({ note: 'Hi, lady!' })
+        break
+      case 'other':
+        form.setFieldsValue({ note: 'Hi there!' })
+        break
+      default:
+    }
+  }
+  return (
+    <>
+      <Form
+        onFinish={(obj) => submitSucceed(obj)}
+        onFinishFailed={(error) => submitFailed(error)}
+      >
+        <Form.Item label="标注" name="note">
+          <Input placeholder="请输入标注" type="string" />
+        </Form.Item>
+        <Form.Item label={translated.radiogroup} name="radiogroup">
+          <Radio.RadioGroup onChange={onMenuChange}>
+            <Radio value="male">male</Radio>
+            <Radio value="female">female</Radio>
+            <Radio value="other">other</Radio>
+          </Radio.RadioGroup>
+        </Form.Item>
+        <Cell>
+          <input type="submit" value={translated.submit} />
+        </Cell>
+      </Form>
+    </>
+  )
+}
+
+export default App;
+```
+:::
+
 
 ### 表单类型
 

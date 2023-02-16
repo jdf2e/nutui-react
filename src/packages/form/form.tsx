@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import CellGroup from '../cellgroup'
 import { FormItemContext } from '../formitem/formitemcontext'
-import { useForm } from './useForm'
+import { useForm, isExistForm } from './useForm'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { FormItem } from '../formitem/formitem'
 import { BaseForm } from './types'
@@ -28,7 +28,7 @@ const PositionInfo: any = {
 
 export const Form: FunctionComponent<
   Partial<FormProps> & React.HTMLAttributes<HTMLFormElement>
-> & { Item: typeof FormItem } = (props) => {
+> & { Item: typeof FormItem } & { useForm: typeof useForm } = (props) => {
   const {
     children,
     onFinish,
@@ -41,7 +41,14 @@ export const Form: FunctionComponent<
     ...props,
   }
 
-  const [formInstance] = useForm()
+  let formInstance: any = {}
+
+  if (isExistForm.length !== 0) {
+    ;[formInstance] = isExistForm
+  } else {
+    ;[formInstance] = useForm(undefined, 'form')
+  }
+
   formInstance.starPositon = starPositon
   const { setCallback, submit } = formInstance
 
@@ -72,3 +79,4 @@ export const Form: FunctionComponent<
 Form.defaultProps = defaultProps
 Form.displayName = 'NutForm'
 Form.Item = FormItem
+Form.useForm = useForm

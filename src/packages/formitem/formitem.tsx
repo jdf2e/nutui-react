@@ -45,6 +45,8 @@ export class FormItem extends React.Component<FieldProps> {
 
   private cancelRegister: any
 
+  private isInitialValue: boolean = false
+
   componentDidMount() {
     // 注册组件实例到FormStore
     this.cancelRegister = this.context.registerField(this)
@@ -64,12 +66,13 @@ export class FormItem extends React.Component<FieldProps> {
 
     const defaultvalue =
       this.props.initialValue || (children as any).props?.defaultValue
-    if (defaultvalue) {
+    if (defaultvalue && !this.isInitialValue) {
       setFieldsValue({ [name]: defaultvalue })
+      this.isInitialValue = true
     }
 
     return {
-      value: getFieldValue(name),
+      defaultValue: getFieldValue(name),
       onChange: (
         event: React.ChangeEvent<HTMLInputElement> | number | string | string[]
       ) => {
@@ -91,7 +94,7 @@ export class FormItem extends React.Component<FieldProps> {
   }
 
   onStoreChange = () => {
-    // this.forceUpdate()
+    this.forceUpdate()
   }
 
   renderLayout = (childNode: React.ReactNode) => {
@@ -175,7 +178,7 @@ export class FormItem extends React.Component<FieldProps> {
     }
     const returnChildNode = React.cloneElement(
       restCNode,
-      this.getControlled(c as React.ReactElement)
+      this.getControlled(restCNode as React.ReactElement)
     )
     return this.renderLayout(returnChildNode)
   }

@@ -46,14 +46,15 @@ class FormStore {
       ...this.store,
       ...newStore,
     }
-    // this.fieldEntities.forEach((enetity: FieldEntity) => {
-    //   const { name } = enetity.props
-    //   Object.keys(newStore).forEach((key) => {
-    //     if (key === name) {
-    //       enetity.onStoreChange()
-    //     }
-    //   })
-    // })
+
+    this.fieldEntities.forEach((enetity: FieldEntity) => {
+      const { name } = enetity.props
+      Object.keys(newStore).forEach((key) => {
+        if (key === name) {
+          enetity.onStoreChange()
+        }
+      })
+    })
   }
 
   /**
@@ -93,7 +94,7 @@ class FormStore {
           this.errList.push(...errors)
           // 表单项更新
         }
-        // entity.onStoreChange()
+        entity.onStoreChange()
       })
     })
     return err
@@ -131,14 +132,21 @@ class FormStore {
   }
 }
 
-export const useForm = (form?: FormInstance) => {
+export let isExistForm: any[] = []
+
+export const useForm = (form?: FormInstance, source?: string) => {
   const formRef = useRef<any>()
   if (!formRef.current) {
     if (form) {
       formRef.current = form
+      isExistForm = [formRef.current]
     } else {
       const formStore = new FormStore()
       formRef.current = formStore.getForm()
+
+      if (!(source === 'form' && isExistForm.length === 0)) {
+        isExistForm = [formRef.current]
+      }
     }
   }
   return [formRef.current]
