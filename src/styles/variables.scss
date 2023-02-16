@@ -1517,12 +1517,20 @@ $tabs-titles-item-active-color: var(
 ) !default;
 $tabs-titles-background-color: var(
   --nutui-tabs-titles-background-color,
-  $background-color2
+  $background-color
 ) !default;
 $tabs-horizontal-tab-line-color: linear-gradient(
   90deg,
   $primary-color 0%,
   rgba(#fa2c19, 0.15) 100%
+) !default;
+$tabs-horizontal-tab-line-bottom: var(
+  --nutui-tabs-horizontal-line-bottom,
+  15%
+) !default;
+$tabs-horizontal-tab-line-border-radius: var(
+  --nutui-tabs-horizontal-line-border-radius,
+  0px
 ) !default;
 $tabs-horizontal-titles-height: var(
   --nutui-tabs-horizontal-titles-height,
