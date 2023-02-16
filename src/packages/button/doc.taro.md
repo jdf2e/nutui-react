@@ -262,6 +262,7 @@ export default App;
 | --nutui-button-default-bg-color | ` $white` |
 | --nutui-button-default-border-color | `  rgba(204, 204, 204, 1)` |
 | --nutui-button-default-color | ` $gray1` |
+| --nutui-button-plain-color | ` $gray2` |
 | --nutui-button-default-padding | ` 0 18px` |
 | --nutui-button-mini-padding | ` 0 12px` |
 | --nutui-button-small-padding | ` 0 12px` |
