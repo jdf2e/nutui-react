@@ -474,8 +474,8 @@ export default App;
 | --nutui-tabs-titles-item-color | `  $title-color` |
 | --nutui-tabs-titles-item-active-color | `  $title-color` |
 | --nutui-tabs-titles-background-color | `  $background-color2` |
-| --nutui-tabs-horizontal-line-bottom | ` 15%` |
-| --nutui-tabs-horizontal-line-border-radius |` 0px`|
+| --nutui-tabs-horizontal-line-bottom`v1.4.8` | ` 15%` |
+| --nutui-tabs-horizontal-line-border-radius`v1.4.8` |` 0px`|
 | --nutui-tabs-horizontal-titles-height | `  46px` |
 | --nutui-tabs-horizontal-titles-item-min-width | `  50px` |
 | --nutui-tabs-horizontal-titles-item-active-line-width | `  40px` |
