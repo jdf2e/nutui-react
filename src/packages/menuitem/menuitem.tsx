@@ -5,7 +5,7 @@ import React, {
   useImperativeHandle,
   useState,
 } from 'react'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { useConfig } from '@/packages/configprovider'
 import Icon from '@/packages/icon'
@@ -86,7 +86,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   }))
 
   const getIconCName = (optionVal: string | number, value: string | number) => {
-    return classnames({
+    return classNames({
       [activeTitleClass]: optionVal === value,
       [inactiveTitleClass]: optionVal !== value,
     })
@@ -146,7 +146,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   return (
     <>
       <div
-        className={`placeholder-element ${classnames({
+        className={`placeholder-element ${classNames({
           up: direction === 'up',
         })}`}
         style={placeholderStyle()}
@@ -182,7 +182,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
             {options?.map((item, index) => {
               return (
                 <div
-                  className={`nut-menu-item__option ${classnames({
+                  className={`nut-menu-item__option ${classNames({
                     active: item.value === _value,
                   })}`}
                   key={item.text}

@@ -160,22 +160,26 @@ export const Popover: FunctionComponent<
               <div className={`${popoverContent}`} style={getStyle()}>
                 <div className={`${popoverArrow}`} />
                 {Array.isArray(children) ? children[1] : ''}
-                {list.map((item: List, i: number) => {
-                  return (
-                    <div
-                      key={item.name}
-                      className={`popover-menu-item ${
-                        item.disabled ? 'disabled' : ''
-                      }`}
-                      onClick={() => {
-                        handleChoose(item, i)
-                      }}
-                    >
-                      {item.icon ? item.icon : null}
-                      <div className="popover-menu-item-name">{item.name}</div>
-                    </div>
-                  )
-                })}
+                <div>
+                  {list.map((item: List, i: number) => {
+                    return (
+                      <div
+                        key={item.name}
+                        className={`popover-menu-item ${
+                          item.disabled ? 'disabled' : ''
+                        }`}
+                        onClick={() => {
+                          handleChoose(item, i)
+                        }}
+                      >
+                        {item.icon ? item.icon : null}
+                        <div className="popover-menu-item-name">
+                          {item.name}
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             ) : null}
           </div>

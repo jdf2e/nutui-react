@@ -194,12 +194,14 @@ export const InputNumber: FunctionComponent<
   }
   return (
     <div className={classes} style={styles} {...restProps}>
-      <Minus
-        className={iconMinusClasses}
-        onClick={(e: any) => reduceNumber(e)}
-        width={iconSize}
-        height={iconSize}
-      />
+      <div className="nut-input-minus">
+        <Minus
+          className={iconMinusClasses}
+          onClick={(e: any) => reduceNumber(e)}
+          width={iconSize}
+          height={iconSize}
+        />
+      </div>
       <input
         type="number"
         min={min}
@@ -212,12 +214,14 @@ export const InputNumber: FunctionComponent<
         onBlur={burValue}
         onFocus={focusValue}
       />
-      <Plus
-        className={iconAddClasses}
-        onClick={(e: any) => addNumber(e)}
-        width={iconSize}
-        height={iconSize}
-      />
+      <div className="nut-input-add">
+        <Plus
+          className={iconAddClasses}
+          onClick={(e: any) => addNumber(e)}
+          width={iconSize}
+          height={iconSize}
+        />
+      </div>
     </div>
   )
 }
