@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import Icon from '@/packages/icon/index.taro'
 import { OptionItem } from '@/packages/menuitem/menuitem.taro'
 
@@ -116,7 +116,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
 
             return (
               <div
-                className={`nut-menu__item ${classnames({
+                className={`nut-menu__item ${classNames({
                   active: itemShow[index],
                   disabled,
                 })} ${className}`}
@@ -127,7 +127,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
                 }}
               >
                 <div
-                  className={`nut-menu__title ${classnames({
+                  className={`nut-menu__title ${classNames({
                     active: itemShow[index],
                     disabled,
                   })}`}
