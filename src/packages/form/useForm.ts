@@ -116,7 +116,13 @@ class FormStore {
     }
   }
 
-  resetFields = () => {}
+  resetFields = () => {
+    this.errList.length = 0
+
+    this.fieldEntities.forEach((enetity: FieldEntity) => {
+      enetity.onStoreChange()
+    })
+  }
 
   getForm = () => {
     return {
@@ -124,6 +130,7 @@ class FormStore {
       registerField: this.registerField,
       getFieldValue: this.getFieldValue,
       setFieldsValue: this.setFieldsValue,
+      resetFields: this.resetFields,
       submit: this.submit,
       store: this.store,
       errList: this.errList,
