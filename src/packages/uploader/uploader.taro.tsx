@@ -58,6 +58,7 @@ export interface UploaderProps extends BasicComponent {
   name: string
   disabled: boolean
   autoUpload: boolean
+  multiple: boolean
   timeout: number
   data: object
   method: string
@@ -104,6 +105,7 @@ const defaultProps = {
   name: 'file',
   disabled: false,
   autoUpload: true,
+  multiple: false,
   maximize: Number.MAX_VALUE,
   data: {},
   headers: {},
@@ -161,6 +163,7 @@ const InternalUploader: ForwardRefRenderFunction<
     isDeletable,
     maximum,
     maximize,
+    multiple,
     className,
     autoUpload,
     sizeType,
@@ -214,7 +217,7 @@ const InternalUploader: ForwardRefRenderFunction<
     }
     chooseImage({
       // 选择数量
-      count: (maximum as number) * 1 - fileList.length,
+      count: multiple ? (maximum as number) * 1 - fileList.length : 1,
       // 可以指定是原图还是压缩图，默认二者都有
       sizeType,
       sourceType,
