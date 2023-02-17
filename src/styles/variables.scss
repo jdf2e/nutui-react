@@ -429,7 +429,19 @@ $textarea-disabled-color: var(
 ) !default;
 
 // inputnumber（✅）
-
+$inputnumber-button-width: var(--nutui-inputnumber-button-width, 12px) !default;
+$inputnumber-button-height: var(
+  --nutui-inputnumber-button-height,
+  12px
+) !default;
+$inputnumber-button-border-radius: var(
+  --nutui-inputnumber-button-border-radius,
+  30px
+) !default;
+$inputnumber-button-background-color: var(
+  --nutui-inputnumber-button-background-color,
+  $gray6
+) !default;
 $inputnumber-icon-color: var(
   --nutui-inputnumber-icon-color,
   $title-color
@@ -460,6 +472,7 @@ $inputnumber-input-border-radius: var(
   4px
 ) !default;
 $inputnumber-input-width: var(--nutui-inputnumber-input-width, 40px) !default;
+$inputnumber-input-height: var(--nutui-inputnumber-input-height, 24px) !default;
 $inputnumber-input-margin: var(
   --nutui-inputnumber-input-margin,
   0 6px
@@ -1325,6 +1338,37 @@ $badge-dot-border-radius: var(--nutui-badge-dot-border-radius, 7px) !default;
 $badge-dot-padding: var(--nutui-badge-dot-padding, 0px) !default;
 
 //popover（✅）
+$popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;
+$popover-font-size: var(--nutui-popover-font-size, $font-size-1) !default;
+$popover-menu-item-height: var(--nutui-popover-menu-item-height, 30px) !default;
+$popover-menu-item-name-margin: var(
+  --nutui-popover-menu-item-name-margin,
+  0px 10px
+) !default;
+$popover-menu-item-hover-background-color: var(
+  --nutui-popover-menu-item-hover-background-color,
+  $primary-color
+) !default;
+$popover-menu-item-hover-text-color: var(
+  --nutui-popover-menu-item-hover-text-color,
+  $primary-text-color
+) !default;
+$popover-menu-item-border-width: var(
+  --nutui-popover-menu-item-border-width,
+  80%
+) !default;
+$popover-menu-item-border-height: var(
+  --nutui-popover-menu-item-border-height,
+  1px
+) !default;
+$popover-menu-item-border-left: var(
+  --nutui-popover-menu-item-border-left,
+  10%
+) !default;
+$popover-menu-item-border-bottom: var(
+  --nutui-popover-menu-item-border-bottom,
+  2%
+) !default;
 $popover-white-background-color: var(
   --nutui-popover-white-background-color,
   rgba(255, 255, 255, 1)

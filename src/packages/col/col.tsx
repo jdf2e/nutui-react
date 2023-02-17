@@ -5,6 +5,7 @@ import React, {
   CSSProperties,
   useContext,
 } from 'react'
+import classNames from 'classnames'
 import { DataContext } from '@/packages/row/UserContext'
 
 type EventType = 'row' | 'col'
@@ -56,7 +57,7 @@ export const Col: FunctionComponent<
 
   return (
     <div
-      className={`${colName} ${className}`}
+      className={classNames(colName, className)}
       style={{ ...style, ...colStyle }}
       onClick={(e) => {
         onClick && onClick(e, 'col')
