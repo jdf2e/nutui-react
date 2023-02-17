@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Dongdong, Ask2 } from '@nutui/icons-react'
 import { Input } from './input'
 import { useTranslate } from '../../sites/assets/locale'
 import Button from '@/packages/button'
@@ -222,8 +223,8 @@ const InputDemo = () => {
           label={translated.text}
           placeholder={translated.icon}
           defaultValue={state.showIcon}
-          leftIcon="dongdong"
-          rightIcon="ask2"
+          leftIcon={<Dongdong />}
+          rightIcon={<Ask2 />}
         />
         <Input
           label={translated.text}
@@ -324,8 +325,8 @@ const InputDemo = () => {
           label={translated.click}
           placeholder={translated.click}
           defaultValue={state.event}
-          leftIcon="dongdong"
-          rightIcon="ask2"
+          leftIcon={<Dongdong />}
+          rightIcon={<Ask2 />}
           clearable
           onChange={change}
           onFocus={focus}

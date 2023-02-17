@@ -133,6 +133,7 @@ The user can enter content in the text box. Configure the icons on both sides of
 ```tsx
 import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
+import { Dongdong, Ask2 } from "@nutui/icons-react";
 
 const App = () => {
     const  [state, setState] = useState({
@@ -145,8 +146,8 @@ const App = () => {
           label="Text" 
           placeholder="Show Icon" 
           defaultValue={state.showIcon}
-          leftIcon="dongdong"
-          rightIcon="ask2"
+          leftIcon={<Dongdong/>}
+          rightIcon={<Ask2/>}
         />
         <Input
           label="Text" 
@@ -374,13 +375,14 @@ export default App;
 ```tsx
 import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
+import { Dongdong, Ask2 } from '@nutui/icons-react'
 
 const App = () => {
     const  [state, setState] = useState({
         event:'',
     })
-    const change = (value: string | number) => {
-        console.log('change: ', value)
+    const change = (value: string | number, event: Event) => {
+        console.log('change: ', value, event)
     }
     const focus = (value: string | number, event: Event) => {
         console.log('focus:', value, event)
@@ -409,8 +411,8 @@ const App = () => {
           label="Click"
           placeholder="Click"
           defaultValue={state.event}
-          leftIcon="dongdong"
-          rightIcon="ask2"
+          leftIcon={<Dongdong/>}
+          rightIcon={<Ask2/>}
           clearable
           onChange={change}
           onFocus={focus}
@@ -429,38 +431,36 @@ export default App;
 :::
 ### Prop
 
-| Attribute         | Description                                   | Type           | Default  |
-| ------------ | -------------------------------------- | -------------- | ------- |
-| defaultValue | Input value                   | String         | -       |
-| type         | Input type, support all native types and `textarea` `number` `digit` type    | String         | `text`  |
-| name`v1.3.10`  | Used for form submission to obtain data | String         | -       |
-| ref`v1.3.10`  | Used to obtain internal input instance ref | RefAttributes         | -       |
-| placeholder  | Placeholder when the input box is empty         | String         | -       |
-| label        | Left text                               | String         | -       |
-| labelClass  | Left text extra class name                      | String | -  |
-| labelWidth  | Label width, default unit is `px`            | String、Number | `80`    |
-| labelAlign  | Label align,  eg `left`、`center`、`right`   | String | `left` |
-| inputAlign  | Input align, eg `left`、`center`、`right` | String | `left` |
-| colon        | Whether to display colon after label     | Boolean        | `false` |
-| required     | Whether to show required mark            | Boolean        | `false` |
-| border       | Whether to show inner borde         | Boolean        | `true` |
-| disabled     | Whether to disable field            | Boolean        | `false` |
-| readonly     | Whether to be readonly              | Boolean        | `false` |
-| autofocus    | Whether to auto focus, unsupported in iOS     | Boolean        | `false` |
-| maxlength   | Max length of value                  | String、Number  | -       |
-| clearable    | Whether to be clearable              | Boolean        | `false`  |
-| clearIcon   | Clear Icon name, [name of icon](#/icon)           | String        | `mask-close`  |
-| clearSize   | Clear Icon `font-size`               | String        | `14`  |
-| leftIcon    | Left side Icon name, [name of icon](#/icon) | String        | - |
-| rightIcon   | Right side Icon name, [name of icon](#/icon) | String        | - |
-| leftIconSize    | Left side Icon `font-size`    | String        | `14`  |
-| rightIconSize   | Right side Icon `font-size`   | String        | `14`  |
-| showWordLimit | Whether to show word limit, need to set the `max-length` prop | Boolean | `false`  |
-| error         | Whether to mark the input content in red   | Boolean | `false`  |
-| errorMessage | Error message            | String、Number | - |
-| errorMessageAlign | Error message align, eg `left`、`center`、`right`          | String | - |
-| formatter      | Input value formatter    | `(val: string) => string` | - |
-| formatTrigger | When to format value, eg `onChange`、`onBlur` | String | - |
+| Attribute         | Description                                                               | Type                      | Default     |
+| ------------ |---------------------------------------------------------------------------|---------------------------|-------------|
+| defaultValue | Input value                                                               | String                    | -           |
+| type         | Input type, support all native types and `textarea` `number` `digit` type | String                    | `text`      |
+| name`v1.3.10`  | Used for form submission to obtain data                                   | String                    | -           |
+| ref`v1.3.10`  | Used to obtain internal input instance ref                                | RefAttributes             | -           |
+| placeholder  | Placeholder when the input box is empty                                   | String                    | -           |
+| label        | Left text                                                                 | String                    | -           |
+| labelClass  | Left text extra class name                                                | String                    | -           |
+| labelWidth  | Label width, default unit is `px`                                         | String、Number             | `80`        |
+| labelAlign  | Label align,  eg `left`、`center`、`right`                                  | String                    | `left`      |
+| inputAlign  | Input align, eg `left`、`center`、`right`                                   | String                    | `left`      |
+| colon        | Whether to display colon after label                                      | Boolean                   | `false`     |
+| required     | Whether to show required mark                                             | Boolean                   | `false`     |
+| border       | Whether to show inner borde                                               | Boolean                   | `true`      |
+| disabled     | Whether to disable field                                                  | Boolean                   | `false`     |
+| readonly     | Whether to be readonly                                                    | Boolean                   | `false`     |
+| autofocus    | Whether to auto focus, unsupported in iOS                                 | Boolean                   | `false`     |
+| maxlength   | Max length of value                                                       | String、Number             | -           |
+| clearable    | Whether to be clearable                                                   | Boolean                   | `false`     |
+| clearIcon   | Clear Icon name, [icon](#/icon)                                   | ReactNode                 | `MaskClose` |
+| clearSize   | Default Clear Icon `font-size`                                            | String                    | `14`        |
+| leftIcon    | Left side Icon name, [icon](#/icon)                               | ReactNode                    | -           |
+| rightIcon   | Right side Icon name, [icon](#/icon)                              | ReactNode                    | -           |
+| showWordLimit | Whether to show word limit, need to set the `max-length` prop             | Boolean                   | `false`     |
+| error         | Whether to mark the input content in red                                  | Boolean                   | `false`     |
+| errorMessage | Error message                                                             | String、Number             | -           |
+| errorMessageAlign | Error message align, eg `left`、`center`、`right`                           | String                    | -           |
+| formatter      | Input value formatter                                                     | `(val: string) => string` | -           |
+| formatTrigger | When to format value, eg `onChange`、`onBlur`                              | String                    | -           |
 
 ### Events
 

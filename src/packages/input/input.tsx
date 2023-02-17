@@ -10,11 +10,9 @@ import React, {
   forwardRef,
   useImperativeHandle,
 } from 'react'
-
+import { MaskClose } from '@nutui/icons-react'
 import { formatNumber } from './util'
-import Icon from '@/packages/icon'
 import { useConfig } from '@/packages/configprovider'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type InputAlignType = 'left' | 'center' | 'right' // text-align
@@ -46,12 +44,10 @@ export interface InputProps extends BasicComponent {
   readonly: boolean
   error: boolean
   maxlength: any
-  leftIcon: string
-  leftIconSize: string | number
-  rightIcon: string
-  rightIconSize: string | number
+  leftIcon: React.ReactNode
+  rightIcon: React.ReactNode
   clearable: boolean
-  clearIcon: string
+  clearIcon: React.ReactNode
   clearSize: string | number
   border: boolean
   formatTrigger: InputFormatTrigger
@@ -95,12 +91,10 @@ const defaultProps = {
   readonly: false,
   error: false,
   maxlength: '9999',
-  leftIcon: '',
-  leftIconSize: '',
-  rightIcon: '',
-  rightIconSize: '',
+  leftIcon: null,
+  rightIcon: null,
   clearable: false,
-  clearIcon: 'mask-close',
+  clearIcon: null,
   clearSize: '14',
   border: true,
   formatTrigger: 'onChange',
@@ -141,9 +135,7 @@ export const Input: FunctionComponent<
     error,
     maxlength,
     leftIcon,
-    leftIconSize,
     rightIcon,
-    rightIconSize,
     clearable,
     clearIcon,
     clearSize,
@@ -354,19 +346,14 @@ export const Input: FunctionComponent<
         </>
       ) : (
         <>
-          {leftIcon && leftIcon.length > 0 ? (
+          {React.isValidElement(leftIcon) ? (
             <div
               className="nut-input-left-icon"
               onClick={(e) => {
                 handleClickLeftIcon(e)
               }}
             >
-              <Icon
-                classPrefix={iconClassPrefix}
-                fontClassName={iconFontClassName}
-                name={leftIcon}
-                size={leftIconSize}
-              />
+              {leftIcon}
             </div>
           ) : null}
           {label ? (
@@ -438,32 +425,23 @@ export const Input: FunctionComponent<
                   />
                 )}
                 {clearable && !readonly && active && inputValue.length > 0 ? (
-                  <Icon
-                    classPrefix={iconClassPrefix}
-                    fontClassName={iconFontClassName}
-                    className="nut-input-clear"
-                    name={clearIcon}
-                    size={clearSize}
-                    onClick={(e) => {
-                      handleClear(e)
-                    }}
-                  />
+                  <span
+                    className="nut-input-clear-wrap"
+                    onClick={(e: any) => handleClear(e)}
+                  >
+                    {clearIcon || <MaskClose className="nut-input-clear" />}
+                  </span>
                 ) : null}
               </div>
 
-              {rightIcon && rightIcon.length > 0 ? (
+              {React.isValidElement(rightIcon) ? (
                 <div
                   className="nut-input-right-icon"
                   onClick={(e) => {
                     handleClickRightIcon(e)
                   }}
                 >
-                  <Icon
-                    classPrefix={iconClassPrefix}
-                    fontClassName={iconFontClassName}
-                    name={rightIcon}
-                    size={rightIconSize}
-                  />
+                  {rightIcon}
                 </div>
               ) : null}
               {slotButton ? (

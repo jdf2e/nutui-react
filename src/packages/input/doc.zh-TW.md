@@ -133,6 +133,7 @@ export default App;
 ```tsx
 import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
+import { Dongdong, Ask2 } from "@nutui/icons-react";
 
 const App = () => {
     const  [state, setState] = useState({
@@ -145,8 +146,8 @@ const App = () => {
           label="文本" 
           placeholder="显示图标" 
           defaultValue={state.showIcon}
-          leftIcon="dongdong"
-          rightIcon="ask2"
+          leftIcon={<Dongdong/>}
+          rightIcon={<Ask2/>}
         />
         <Input
           label="文本" 
@@ -368,6 +369,7 @@ export default App;
 ```tsx
 import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
+import { Dongdong, Ask2 } from '@nutui/icons-react'
 
 const App = () => {
     const  [state, setState] = useState({
@@ -403,8 +405,8 @@ const App = () => {
           label="点击"
           placeholder="点击"
           defaultValue={state.event}
-          leftIcon="dongdong"
-          rightIcon="ask2"
+          leftIcon={<Dongdong/>}
+          rightIcon={<Ask2/>}
           clearable
           onChange={change}
           onFocus={focus}
@@ -443,18 +445,16 @@ export default App;
 | autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | Boolean        | `false` |
 | maxlength      | 限制最长输入字符                       | String、Number  | -       |
 | clearable    | 展示清除 Icon                         | Boolean        | `false`  |
-| clearIcon   | 清除图标 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon)   | String        | `mask-close`  |
-| clearSize   | 清除图标的 `font-size` 大小           | String        | `14`  |
-| leftIcon    | 左侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
-| rightIcon   | 右侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
-| leftIconSize    | 左侧 Icon 的 `font-size` 大小           | String        | `14`  |
-| rightIconSize   | 右侧 Icon 的 `font-size` 大小           | String        | `14`  |
-| showWordLimit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | Boolean | `false`  |
-| error         | 是否标红                                | Boolean | `false`  |
-| errorMessage | 底部错误提示文案，为空时不展示            | String、Number | - |
-| errorMessageAlign | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`          | String | - |
-| formatter      | 输入内容格式化函数    | `(val: string) => string` | - |
-| formatTrigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | String | - |
+| clearIcon`v1.5.0`   | 清除图标 Icon [可参考 Icon ](#/icon)                             | ReactNode                 | `MaskClose`  |
+| clearSize`v1.5.0`   | 默认清除图标的 `font-size` 大小                                                 | String                    | `14` |
+| leftIcon`v1.5.0`    | 左侧 Icon [可参考 Icon ](#/icon)                                          | ReactNode                 | - |
+| rightIcon`v1.5.0`   | 右侧 Icon [可参考 Icon ](#/icon)                                          | ReactNode                 | - |
+| showWordLimit`v1.2.1` | 是否显示限制最长输入字符，需要设置 `max-length` 属性                                    | Boolean                   | `false` |
+| error`v1.2.1`         | 是否标红                                                                 | Boolean                   | `false` |
+| errorMessage`v1.2.1` | 底部错误提示文案，为空时不展示                                                      | String、Number             | - |
+| errorMessageAlign`v1.2.1` | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`                             | String                    | - |
+| formatter`v1.2.1`      | 输入内容格式化函数                                                            | `(val: string) => string` | - |
+| formatTrigger`v1.2.1` | 格式化函数触发的时机，可选值为 `onChange`、`onBlur`                                  | String                    | - |
 ### Events
 
 | 名称   | 说明           | 回调参数    |
@@ -469,10 +469,10 @@ export default App;
 | onClickRightIcon `v1.3.8` | 点击右侧图标时触发      | val ,event  |
 
 ### Slots
-| 名称  | 说明     | 
-|-------|----------|
-| slotButton | 自定义输入框尾部按钮 |
-| slotInput `v3.1.22` | 自定义输入框，使用此插槽后，与输入框相关的属性和事件将失效 |
+| 名称                 | 说明     | 
+|--------------------|----------|
+| slotButton         | 自定义输入框尾部按钮 |
+| slotInput `v1.2.1` | 自定义输入框，使用此插槽后，与输入框相关的属性和事件将失效 |
 
 ## 主題定制
 

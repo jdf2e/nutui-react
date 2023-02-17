@@ -1,9 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import Icon from '@/packages/icon'
-import CheckboxGroup from '@/packages/checkboxgroup'
-
 import bem from '@/utils/bem'
-
+import CheckboxGroup from '@/packages/checkboxgroup'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 interface InheritParentProps {

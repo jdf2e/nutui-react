@@ -131,6 +131,7 @@ export default App;
 ```tsx
 import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react-taro';
+import { Dongdong, Ask2 } from "@nutui/icons-react";
 
 const App = () => {
     const  [state, setState] = useState({
@@ -143,8 +144,8 @@ const App = () => {
           label="文本" 
           placeholder="显示图标" 
           defaultValue={state.showIcon}
-          leftIcon="dongdong"
-          rightIcon="ask2"
+          leftIcon={<Dongdong/>}
+          rightIcon={<Ask2/>}
         />
         <Input
           label="文本" 
@@ -366,6 +367,7 @@ export default App;
 ```tsx
 import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react-taro';
+import { Dongdong, Ask2 } from '@nutui/icons-react'
 
 const App = () => {
     const  [state, setState] = useState({
@@ -401,8 +403,8 @@ const App = () => {
           label="点击"
           placeholder="点击"
           defaultValue={state.event}
-          leftIcon="dongdong"
-          rightIcon="ask2"
+          leftIcon={<Dongdong/>}
+          rightIcon={<Ask2/>}
           clearable
           onChange={change}
           onFocus={focus}
@@ -441,12 +443,10 @@ export default App;
 | autofocus`v1.2.1`    | 是否自动获得焦点，iOS 系统不支持该属性     | Boolean        | `false` |
 | maxlength      | 限制最长输入字符                       | String、Number  | -       |
 | clearable    | 展示清除 Icon                         | Boolean        | `false`  |
-| clearIcon`v1.2.1`   | 清除图标 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon)   | String        | `mask-close`  |
-| clearSize`v1.2.1`   | 清除图标的 `font-size` 大小           | String        | `14`  |
-| leftIcon`v1.2.1`    | 左侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
-| rightIcon`v1.2.1`   | 右侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
-| leftIconSize`v1.2.1`    | 左侧 Icon 的 `font-size` 大小           | String        | `14`  |
-| rightIconSize`v1.2.1`   | 右侧 Icon 的 `font-size` 大小           | String        | `14`  |
+| clearIcon`v1.2.1`   | 清除图标 Icon [可参考 Icon ](#/icon)                             | ReactNode                 | `MaskClose`  |
+| clearSize`v1.2.1`   | 默认清除图标的 `font-size` 大小                                                 | String                    | `14` |
+| leftIcon`v1.2.1`    | 左侧 Icon [可参考 Icon ](#/icon)                                          | ReactNode                 | - |
+| rightIcon`v1.2.1`   | 右侧 Icon [可参考 Icon ](#/icon)                                          | ReactNode                 | - |
 | showWordLimit`v1.2.1` | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | Boolean | `false`  |
 | error`v1.2.1`         | 是否标红                                | Boolean | `false`  |
 | errorMessage`v1.2.1` | 底部错误提示文案，为空时不展示            | String、Number | - |

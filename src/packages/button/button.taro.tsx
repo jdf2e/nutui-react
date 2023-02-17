@@ -6,7 +6,8 @@ import React, {
   useState,
 } from 'react'
 import { ButtonProps as MiniProgramButtonProps } from '@tarojs/components'
-import Icon from '@/packages/icon/index.taro'
+// import Icon from '@/packages/icon/index.taro'
+import { Loading } from '@nutui/icons-react-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type OmitMiniProgramButtonProps = Omit<
@@ -26,7 +27,7 @@ export interface ButtonProps
   type: ButtonType
   size: ButtonSize
   block: boolean
-  icon: string
+  icon: React.ReactNode
   iconSize: string | number
   children: any
   onClick: (e: MouseEvent) => void
@@ -155,22 +156,13 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
     >
       <div className="nut-button__warp" style={getStyle()}>
         {loading && (
-          <Icon
-            classPrefix={iconClassPrefix}
-            fontClassName={iconFontClassName}
-            name="loading"
+          <Loading
+            className="nut-icon-loading"
+            width={iconSize}
+            height={iconSize}
           />
         )}
-        {!loading && icon ? (
-          <Icon
-            classPrefix={iconClassPrefix}
-            fontClassName={iconFontClassName}
-            name={icon}
-            size={iconSize}
-          />
-        ) : (
-          ''
-        )}
+        {!loading && icon ? icon : null}
         {children && (
           <div className={icon || loading ? 'text' : ''}>{children}</div>
         )}
