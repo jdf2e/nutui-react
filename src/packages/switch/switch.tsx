@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
 
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -13,8 +12,6 @@ export interface SwitchProps extends BasicComponent {
   inactiveColor: string
   activeText: string
   inactiveText: string
-  icon: string
-  iconSize: string
   className: string
   style: React.CSSProperties
   onChange: (val: boolean, event: React.MouseEvent) => void
@@ -28,8 +25,6 @@ const defaultProps = {
   inactiveColor: '',
   activeText: '',
   inactiveText: '',
-  icon: '',
-  iconSize: '12',
   className: '',
 } as SwitchProps
 export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
@@ -41,13 +36,9 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
     inactiveColor,
     activeText,
     inactiveText,
-    icon,
-    iconSize,
     onChange,
     className,
     style,
-    iconClassPrefix,
-    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -86,22 +77,16 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
     <div className={classes()} onClick={(e) => onClick(e)} style={styles()}>
       <div className="switch-button">
         {!value && <div className="close-line" />}
-        {value && icon && (
-          <Icon
-            className={`${b('icon')} open`}
-            classPrefix={iconClassPrefix}
-            fontClassName={iconFontClassName}
-            name={icon}
-            size={iconSize}
-          />
+        {activeText && (
+          <>
+            {value ? (
+              <div className={`${b('label')} open`}>{activeText}</div>
+            ) : (
+              <div className={`${b('label')} close`}>{inactiveText}</div>
+            )}
+          </>
         )}
       </div>
-      {activeText && (
-        <div className="switch-label">
-          <div className={`${b('label')} open`}>{activeText}</div>
-          <div className={`${b('label')} close`}>{inactiveText}</div>
-        </div>
-      )}
     </div>
   )
 }

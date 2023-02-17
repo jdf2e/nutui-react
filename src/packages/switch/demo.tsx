@@ -47,19 +47,6 @@ const SwitchDemo = () => {
         <Cell>
           <Switch activeText="开" inactiveText="关" />
         </Cell>
-        <h2>支持图标</h2>
-        <Cell>
-          <Switch icon="loading" />
-        </Cell>
-        <h2>支持图标和文字</h2>
-        <Cell>
-          <Switch activeText="开" inactiveText="关" icon="loading" />
-          <Switch checked activeText="开" inactiveText="关" icon="loading" />
-          <Switch checked activeText="开" inactiveText="关" icon="star" />
-          <Switch checked />
-          <Switch checked icon="star" />
-          <Switch checked icon="loading" />
-        </Cell>
       </div>
     </>
   )

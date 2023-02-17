@@ -18,6 +18,8 @@ interface T {
   title10: string
   title2: string
   title3: string
+  title4: string
+  title5: string
   name: string
   nameTip: string
   nameTip1: string
@@ -60,7 +62,9 @@ const FormDemo = () => {
       title1: '动态表单',
       title10: '顶部对齐',
       title2: '表单校验',
-      title3: '表单类型',
+      title3: '带有初始值表单校验',
+      title4: 'Form.useForm 对表单数据域进行交互。',
+      title5: '表单类型',
       name: '姓名',
       nameTip: '请输入姓名',
       nameTip1: '请输入姓名',
@@ -100,7 +104,9 @@ const FormDemo = () => {
       title1: 'Dynamic Form',
       title10: 'Top Align',
       title2: 'Validate Form',
-      title3: 'Form Type',
+      title3: 'InitialValue Validate Type',
+      title4: 'Interact with form data fields via Form.useForm',
+      title5: 'Form Type',
       name: 'Name',
       nameTip: 'Please enter your name',
       nameTip1: 'Please enter name',
@@ -172,6 +178,23 @@ const FormDemo = () => {
   const submitSucceed = (obj: any) => {
     Toast.success('succeed')
     console.log('succeed', obj)
+  }
+
+  const [form] = Form.useForm()
+
+  const onMenuChange = (value: string | number | boolean) => {
+    switch (value) {
+      case 'male':
+        form.setFieldsValue({ note: 'Hi, man!' })
+        break
+      case 'female':
+        form.setFieldsValue({ note: 'Hi, lady!' })
+        break
+      case 'other':
+        form.setFieldsValue({ note: 'Hi there!' })
+        break
+      default:
+    }
   }
 
   return (
@@ -250,7 +273,59 @@ const FormDemo = () => {
             <input type="submit" value={translated.submit} />
           </Cell>
         </Form>
+
         <h2>{translated.title3}</h2>
+        <Form
+          onFinish={(obj) => submitSucceed(obj)}
+          onFinishFailed={(error) => submitFailed(error)}
+        >
+          <Form.Item
+            label={translated.name}
+            name="username"
+            rules={[{ required: true, message: translated.nameTip }]}
+            initialValue="张三"
+          >
+            <Input placeholder={translated.nameTip1} type="text" />
+          </Form.Item>
+          <Form.Item label={translated.age} name="age">
+            <Input
+              placeholder={translated.ageTip1}
+              type="number"
+              defaultValue="18"
+            />
+          </Form.Item>
+          <Cell>
+            <input type="submit" value={translated.submit} />
+          </Cell>
+        </Form>
+        <h2>{translated.title4}</h2>
+        <Form
+          form={form}
+          onFinish={(obj) => submitSucceed(obj)}
+          onFinishFailed={(error) => submitFailed(error)}
+        >
+          <Form.Item
+            label={translated.name}
+            name="username"
+            rules={[{ required: true, message: translated.nameTip }]}
+          >
+            <Input placeholder={translated.nameTip1} type="text" />
+          </Form.Item>
+          <Form.Item label="标注" name="note">
+            <Input placeholder="请输入标注" type="string" />
+          </Form.Item>
+          <Form.Item label={translated.radiogroup} name="radiogroup">
+            <Radio.RadioGroup onChange={onMenuChange}>
+              <Radio value="male">male</Radio>
+              <Radio value="female">female</Radio>
+              <Radio value="other">other</Radio>
+            </Radio.RadioGroup>
+          </Form.Item>
+          <Cell>
+            <input type="submit" value={translated.submit} />
+          </Cell>
+        </Form>
+        <h2>{translated.title5}</h2>
         <Form
           onFinish={(obj) => submitSucceed(obj)}
           onFinishFailed={(error) => submitFailed(error)}

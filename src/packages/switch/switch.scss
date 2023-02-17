@@ -34,6 +34,28 @@
     }
   }
 
+  .switch-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: $primary-text-color;
+    transition: transform 0.3s;
+
+    .nut-switch__label {
+      color: $primary-text-color;
+      font-size: $font-size-1;
+
+      &.open {
+        transform: translateX(-16px);
+      }
+
+      &.close {
+        transform: translateX(16px);
+      }
+    }
+  }
+
   &-disable {
     opacity: 0.6;
   }
@@ -44,59 +66,14 @@
     line-height: $switch-line-height;
 
     .switch-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: $white;
       height: $switch-inside-height;
       width: $switch-inside-width;
-      inset-inline-start: 2px;
-      transition: all 0.2s ease-in-out;
-    }
-
-    .switch-label {
-      display: block;
-      overflow: hidden;
-      border-radius: 100px;
-      height: 100%;
-      padding-inline-start: 24px;
-      padding-inline-end: 9px;
-      transition: padding-inline-start 0.2s ease-in-out,
-        padding-inline-end 0.2s ease-in-out;
-
-      .nut-switch__label {
-        color: $white;
-        font-size: $font-size-1;
-
-        &.open {
-          margin-inline-start: calc(-100% + 22px);
-          margin-inline-end: calc(100% - 22px + 48px);
-        }
-
-        &.close {
-          margin-top: -22px;
-          margin-inline-start: 0;
-          margin-inline-end: 0;
-        }
-      }
+      transform: $switch-inside-close-transform;
     }
 
     &.switch-open {
       .switch-button {
-        inset-inline-start: calc(100% - 15px);
-      }
-
-      .nut-switch__label {
-        &.open {
-          margin-inline-start: 0;
-          margin-inline-end: 0;
-        }
-
-        &.close {
-          margin-inline-start: calc(100% - 22px + 48px);
-          margin-inline-end: calc(-100% + 22px - 48px);
-        }
+        transform: $switch-inside-open-transform;
       }
     }
 
@@ -104,18 +81,6 @@
       .close-line {
         width: 8px;
         height: 2px;
-      }
-
-      .nut-switch__label {
-        &.open {
-          margin-inline-start: 0;
-          margin-inline-end: 0;
-        }
-
-        &.close {
-          margin-inline-start: calc(100% - 22px + 48px);
-          margin-inline-end: calc(-100% + 22px - 48px);
-        }
       }
     }
   }

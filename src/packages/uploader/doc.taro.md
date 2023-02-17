@@ -75,6 +75,7 @@ const App = () => {
         defaultFileList={defaultFileList}
         onRemove={onDelete}
         maximum="3"
+        multiple
         uploadIcon="dongdong"
       />
     </>
@@ -344,6 +345,7 @@ export default App;
 | uploadIconSize        | 上传区域[图标尺寸](#/icon)大小，如 `20px` `2em` `2rem`                                                                                                                                             | String or Number                            | -     |
 | xhrState         | 接口响应的成功状态（status）值                                                                                                                                                         | Number                            | 200              |
 | disabled          | 是否禁用文件上传                                                                                                                                                                       | Boolean                           | false            |
+| multiple`v1.4.8`         | 是否支持文件多选                                                                                                                                                                       | Boolean                           | false            |
 | timeout           | 超时时间，单位为毫秒                                                                                                   | Number丨String                    | 1000 * 30                 |
 | onBeforeUpload      | 上传前的函数需要返回一个`Promise`对象                                                                                                                                                  | Function                          | null             |
 | onBeforeXhrUpload      | 执行 XHR 上传时，自定义方式                                                                                                                                                  | Function(xhr，option)                          | null             |

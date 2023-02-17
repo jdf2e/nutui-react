@@ -502,6 +502,7 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
+| --nutui-swiper-pagination-bottom | ` 12px`|
 | --nutui-swiper-pagination-item-background-color | `  #ddd` |
 | --nutui-swiper-pagination-item-width | `  8px` |
 | --nutui-swiper-pagination-item-height | `  3px` |

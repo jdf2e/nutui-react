@@ -227,6 +227,16 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
+| --nutui-popover-border-radius`v1.4.8` | ` 8px`|
+| --nutui-popover-font-size`v1.4.8` | ` $font-size-1` |
+| --nutui-popover-menu-item-height`v1.4.8` | ` 30px` |
+| --nutui-popover-menu-item-name-margin`v1.4.8` | ` 0px 10px` |
+| --nutui-popover-menu-item-hover-background-color`v1.4.8` | `  $primary-color`|
+| --nutui-popover-menu-item-hover-text-color`v1.4.8` | ` $primary-text-color`|
+| --nutui-popover-menu-item-border-width`v1.4.8` | ` 80%`|
+| --nutui-popover-menu-item-border-height`v1.4.8` | ` 1px`|
+| --nutui-popover-menu-item-border-left`v1.4.8` | ` 10%`|
+| --nutui-popover-menu-item-border-bottom`v1.4.8` | ` 2%`|
 | --nutui-popover-white-background-color | `  rgba(255, 255, 255, 1)` |
 | --nutui-popover-dark-background-color | `  rgba(75, 76, 77, 1)` |
 | --nutui-popover-border-bottom-color | `  rgba(229, 229, 229, 1)` |
