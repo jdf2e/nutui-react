@@ -417,7 +417,7 @@ $textarea-limit-color: var(--nutui-textarea-limit-color, $text-color) !default;
 $textarea-text-color: var(--nutui-textarea-text-color, $title-color) !default;
 $textarea-text-curror-color: var(
   --nutui-textarea-text-curror-color,
-  $title-color
+  '$title-color'
 ) !default;
 $textarea-text-line-height: var(
   --nutui-textarea-text-line-height,
