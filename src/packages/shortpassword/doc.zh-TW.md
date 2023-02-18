@@ -189,6 +189,7 @@ export default App;
 | noButton              | 是否隱藏底部按鈕    | Boolean        | true                         |
 | length                 | 密碼長度，取值為4~6 | String｜Number | 6                            |
 | errorMsg              | 錯誤信息提示        | String         | ''                           |
+| autoFocus              | 自動聚焦        | Boolean         | false                           |
 
 ### Events
 

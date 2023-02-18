@@ -8,6 +8,7 @@ const ShortPasswordDemo = () => {
   const [visible2, setVisible2] = useState(false)
   const [visible3, setVisible3] = useState(false)
   const [visible4, setVisible4] = useState(false)
+  const [visible5, setVisible5] = useState(false)
   const [value, setValue] = useState<string | number>('')
   const change = (value: number | string) => {
     console.log(value)
@@ -87,6 +88,23 @@ const ShortPasswordDemo = () => {
           setValue('')
         }}
         onTips={() => onTips()}
+      />
+      <h2>自动聚焦</h2>
+      <Cell
+        title="自动聚焦"
+        isLink
+        onClick={() => {
+          setVisible5(true)
+        }}
+      />
+      <ShortPassword
+        visible={visible5}
+        modelValue={value}
+        onClose={() => {
+          setVisible5(false)
+          setValue('')
+        }}
+        autoFocus
       />
     </div>
   )
