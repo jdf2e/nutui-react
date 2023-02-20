@@ -191,6 +191,7 @@ export default App;
 | noButton              | whether to hide the bottom button    | Boolean        | true                         |
 | length                 | ShortPassword lenght The value is 4~6 | String｜Number | 6                            |
 | errorMsg              | Error message         | String         | ''                           |
+| autoFocus              | Be focused when ShortPassword is displayed | Boolean         | false                           |
 
 ### Events
 
