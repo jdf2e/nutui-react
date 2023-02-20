@@ -18,13 +18,17 @@ import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 :::demo
 ```tsx
-import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import React, { useState } from "react";
+import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 
-const App = () =>(
-  <Tabbar
-    onSwitch={(child, idx) => {
-      console.log(idx)
+const App = () => {
+  const [activeIndex, setActiveIndex] = useState(2)
+
+  return <Tabbar
+    visible={0}
+    activeVisible={activeIndex}
+    onSwitch={(child, id) => {
+      setActiveIndex(id)
     }}
   >
     <TabbarItem tabTitle="first" icon="home" />
@@ -33,7 +37,7 @@ const App = () =>(
     <TabbarItem tabTitle="cart" icon="cart" />
     <TabbarItem tabTitle="mine" icon="my" />
   </Tabbar>
-);
+}
 
 export default App;
 ```
@@ -164,16 +168,17 @@ export default App;
 
 ### nut-tabbar
 
-| Prop            | Description                | Type   | Default  |
-|-----------------|--------------------|--------|---------|
-| visible | The index value of the selected label   | Number | 0       |
-| bottom          | Whether it is fixed at the bottom of the page | Boolean | false   |
-| unactiveColor  | Icon inactive color   | String | #7d7e80 |
-| activeColor    | icon active color     | String | #1989fa |
-| size    | icon size for all icons     | String 、Boolean | 20 |
-| safeAreaInsetBottom    | Whether to enable the full screen bottom safety zone adaptation of the iphone series     | Boolean | false |
-| style    | component style     | React.CSSProperties | {} |
-| clsssName    | component class name     | String | - |
+| Prop            | Description                                                                          | Type   | Default |
+|-----------------|--------------------------------------------------------------------------------------|--------|---------|
+| visible | The default index value of the selected label                                        | Number | 0       |
+| activeVisible | The index value of the selected label                                                | Number | -       |
+| bottom          | Whether it is fixed at the bottom of the page                                        | Boolean | false   |
+| unactiveColor  | Icon inactive color                                                                  | String | #7d7e80 |
+| activeColor    | icon active color                                                                    | String | #1989fa |
+| size    | icon size for all icons                                                              | String 、Boolean | 20      |
+| safeAreaInsetBottom    | Whether to enable the full screen bottom safety zone adaptation of the iphone series | Boolean | false   |
+| style    | component style                                                                      | React.CSSProperties | {}      |
+| clsssName    | component class name                                                                 | String | -       |
 
 ### tabbar-item
 
