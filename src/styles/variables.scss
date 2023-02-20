@@ -1720,9 +1720,9 @@ $menu-item-content-bg-color: var(
 // collapse（✅）
 $collapse-item-padding: var(
   --nutui-collapse-item-padding,
-  13px 36px 13px 26px
+  13px 0px 13px 26px
 ) !default;
-$collapse-item-color: var(--nutui-collapse-item-color, #666666) !default;
+$collapse-item-color: var(--nutui-collapse-item-color, $title-color) !default;
 $collapse-item-disabled-color: var(
   --nutui-collapse-item-disabled-color,
   #c8c9cc
@@ -1730,6 +1730,14 @@ $collapse-item-disabled-color: var(
 $collapse-item-icon-color: var(
   --nutui-collapse-item-icon-color,
   #666666
+) !default;
+$collapse-item-icon-margin-right: var(
+  --nutui-collapse-item-icon-margin-right,
+  5px
+) !default;
+$collapse-item-icon-margin-left: var(
+  --nutui-collapse-item-icon-margin-left,
+  5px
 ) !default;
 $collapse-item-font-size: var(
   --nutui-collapse-item-font-size,
