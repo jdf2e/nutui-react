@@ -2,17 +2,20 @@
   text-align: right;
   font-size: 14px;
   padding-right: 24px;
+  white-space: nowrap;
 }
 
 .form-layout-left .nut-form-item__label {
   text-align: left;
   font-size: 14px;
   padding-right: 24px;
+  white-space: nowrap;
 }
 
 .form-layout-top .nut-form-item {
   flex-direction: column;
   align-items: flex-start;
+  white-space: nowrap;
 }
 
 .form-layout-top .nut-form-item__label {

@@ -16,6 +16,8 @@ const ImageDemo = () => {
       loading: '加载中提示',
       error: '加载失败',
       lazyload: '图片懒加载',
+      default: '默认',
+      custom: '自定义',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -25,6 +27,8 @@ const ImageDemo = () => {
       loading: 'Loading',
       error: 'Error',
       lazyload: 'Lazyload',
+      default: 'Default',
+      custom: 'Custom',
     },
   })
   const src =
@@ -155,7 +159,7 @@ const ImageDemo = () => {
                   console.log('image onload')
                 }}
               />
-              <div className="image-text">默认</div>
+              <div className="image-text">{translated.default}</div>
             </Col>
             <Col span="8">
               <Image
@@ -168,7 +172,7 @@ const ImageDemo = () => {
                   </>
                 }
               />
-              <div className="image-text">自定义</div>
+              <div className="image-text">{translated.custom}</div>
             </Col>
           </Row>
         </Cell>
@@ -186,13 +190,13 @@ const ImageDemo = () => {
                   console.log('image error')
                 }}
               />
-              <div className="image-text">默认</div>
+              <div className="image-text">{translated.default}</div>
             </Col>
             <Col span="8">
               <Image src="https://x" width="100" height="100" showError>
                 <Icon name="circle-close" />
               </Image>
-              <div className="image-text">自定义</div>
+              <div className="image-text">{translated.custom}</div>
             </Col>
           </Row>
         </Cell>
