@@ -59,6 +59,7 @@ const DialogDemo = () => {
               content: translated.content,
               okText: translated.okText,
               cancelText: translated.cancelText,
+              lockScroll: true,
             })
           }}
         />

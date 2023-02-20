@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { Dialog, Cell } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface T {
   basic: string
@@ -54,6 +54,7 @@ const DialogDemo = () => {
         <Cell title={translated.basic} onClick={() => setVisible1(true)} />
         <Dialog
           title={translated.title1}
+          lockScroll
           visible={visible1}
           okText={translated.okText}
           cancelText={translated.cancelText}
@@ -77,7 +78,7 @@ const DialogDemo = () => {
           title={translated.title1}
           visible={visible3}
           okText={translated.okText}
-          noCancelBtn={true}
+          noCancelBtn
           onOk={() => setVisible3(false)}
           onCancel={() => setVisible3(false)}
         >
