@@ -175,7 +175,7 @@ export default App;
 | 字段            | 說明                     | 類型   | 默認值  |
 |-----------------|------------------------|--------|---------|
 | visible | 默认選中的標籤的索引值            | number | 0       |
-| activeVisible | 選中的標籤的索引值              | number | -       |
+| activeVisible`1.4.8` | 選中的標籤的索引值              | number | -       |
 | bottom          | 是否固定在頁面底部              | Boolean | false   |
 | unactiveColor  | icon未激活的顏色             | String | #7d7e80 |
 | activeColor    | icon激活的顏色              | String | #1989fa |

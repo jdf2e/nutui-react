@@ -171,7 +171,7 @@ export default App;
 | Prop            | Description                                                                          | Type   | Default |
 |-----------------|--------------------------------------------------------------------------------------|--------|---------|
 | visible | The default index value of the selected label                                        | Number | 0       |
-| activeVisible | The index value of the selected label                                                | Number | -       |
+| activeVisible`1.4.8` | The index value of the selected label                                                | Number | -       |
 | bottom          | Whether it is fixed at the bottom of the page                                        | Boolean | false   |
 | unactiveColor  | Icon inactive color                                                                  | String | #7d7e80 |
 | activeColor    | icon active color                                                                    | String | #1989fa |
