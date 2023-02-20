@@ -2,6 +2,7 @@ import React from 'react'
 import { Ellipsis } from './ellipsis'
 import Cell from '@/packages/cell'
 import { useTranslate } from '../../sites/assets/locale'
+import Toast from '@/packages/toast'
 
 interface T {
   basic: string
@@ -56,6 +57,10 @@ const EllipsisDemo = () => {
         <Cell>
           <Ellipsis
             content={content}
+            onClick={() => {
+              Toast.text('Clicked!')
+            }}
+            onChange={(type) => Toast.text(type)}
             direction="start"
             expandText="展开"
             collapseText="收起"
