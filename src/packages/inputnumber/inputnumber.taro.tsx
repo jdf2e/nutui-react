@@ -141,13 +141,7 @@ export const InputNumber: FunctionComponent<
     onChangeFuc && onChangeFuc(outputValue, e)
     change && change(outputValue, e)
     if (!isAsync) {
-      if (Number(outputValue) < Number(min)) {
-        setInputValue(Number(min))
-      } else if (Number(outputValue) > Number(max)) {
-        setInputValue(Number(max))
-      } else {
-        setInputValue(outputValue)
-      }
+      setInputValue(outputValue)
     }
   }
 
@@ -175,16 +169,12 @@ export const InputNumber: FunctionComponent<
     }
   }
 
-  const changeValue = (e: any) => {
-    const value = Number(e.detail.value)
-    change && change(value, e)
-    onChangeFuc && onChangeFuc(value, e)
+  const changeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.target as HTMLInputElement
+    change && change(input.value, e)
+    onChangeFuc && onChangeFuc(input.value, e)
     if (!isAsync) {
-      if (Number.isNaN(value)) {
-        setInputValue(inputValue)
-      } else {
-        setInputValue(value)
-      }
+      setInputValue(input.value)
     }
   }
 
@@ -195,10 +185,11 @@ export const InputNumber: FunctionComponent<
     focus && focus(e)
   }
 
-  const burValue = (e: any) => {
+  const burValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (disabled) return
     if (readonly) return
-    let value = Number(e.detail.value)
+    const input = e.target as HTMLInputElement
+    let value = +input.value
     if (value < Number(min)) {
       value = Number(min)
     } else if (value > Number(max)) {
