@@ -1358,16 +1358,19 @@ $tag-border-width: var(--nutui-tag-border-width, 1px) !default;
 $tag-height: var(--nutui-tag-height, auto) !default;
 
 //badge（✅）
-$badge-background-color: linear-gradient(
-  135deg,
-  $primary-color 0%,
-  $primary-color-end 100%
+$badge-background-color: var(
+  --nutui-badge-background-color,
+  linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%)
 ) !default;
 $badge-color: var(--nutui-badge-color, #fff) !default;
 $badge-font-size: var(--nutui-badge-font-size, $font-size-1) !default;
 $badge-default-background-color: var(
   --nutui-badge-default-background-color,
   rgba(255, 255, 255, 1)
+) !default;
+$badge-border: var(
+  --nutui-badge-border,
+  0px solid $primary-text-color
 ) !default;
 $badge-border-radius: var(--nutui-badge-border-radius, 14px) !default;
 $badge-padding: var(--nutui-badge-padding, 0 5px) !default;
