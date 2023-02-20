@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import Taro from '@tarojs/taro'
 import { Tabs, TabPane, Icon } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface T {
   basic: string
@@ -16,6 +16,7 @@ interface T {
   title8: string
   title9: string
   title10: string
+  title11: string
   custom1: string
   custom2: string
   custom3: string
@@ -26,15 +27,16 @@ const TabsDemo = () => {
     'zh-CN': {
       basic: '基本用法',
       title1: '基础用法-微笑曲线',
-      title2: '通过 pane-key 匹配',
+      title2: '通过 paneKey 匹配',
       title3: '数据异步渲染 3s',
       title4: '数量多,滚动操作',
       title5: '左右布局',
       title6: '左右布局-微笑曲线',
-      title7: '标签栏字体尺寸 large normal small',
+      title7: 'Title 字体尺寸：large normal small',
       title8: '自定义标签栏',
       title9: 'Tabpane 自动高度',
-      title10: 'Css 粘性布局',
+      title10: 'CSS 粘性布局',
+      title11: 'Title 左对齐',
       custom1: '自定义 1',
       custom2: '自定义 2',
       custom3: '自定义 3',
@@ -42,15 +44,16 @@ const TabsDemo = () => {
     'en-US': {
       basic: 'Basic Usage',
       title1: 'Basic Usage - Smile Curve',
-      title2: 'Match by pane-key',
+      title2: 'Match by paneKey',
       title3: 'Data is rendered asynchronously for 3s',
       title4: 'A large number of scrolling operations',
       title5: 'Left and right layout',
       title6: 'Left and Right Layout - Smile Curve',
-      title7: 'tab bar font size large normal small',
+      title7: 'Title font size: large normal small',
       title8: 'custom tab bar',
       title9: 'Tabpane auto height',
-      title10: 'Css Sticky',
+      title10: 'CSS Sticky',
+      title11: 'Title left align',
       custom1: 'custom 1',
       custom2: 'custom 2',
       custom3: 'custom 3',
@@ -127,6 +130,23 @@ const TabsDemo = () => {
           <TabPane title="Tab 2"> Tab 2 </TabPane>
           <TabPane title="Tab 3"> Tab 3 </TabPane>
         </Tabs>
+        <h2>{translated.title11}</h2>
+        <Tabs
+          value={tab1value}
+          className="test"
+          style={{ color: 'red' }}
+          leftAlign
+          onChange={({ paneKey }) => {
+            setTab1value(paneKey)
+          }}
+        >
+          <TabPane title="Tab 1" className="custom-class">
+            {' '}
+            Tab 1{' '}
+          </TabPane>
+          <TabPane title="Tab 2"> Tab 2 </TabPane>
+          <TabPane title="Tab 3"> Tab 3 </TabPane>
+        </Tabs>
         <h2>{translated.title2}</h2>
         <Tabs
           value={tab2value}
@@ -134,15 +154,15 @@ const TabsDemo = () => {
             setTab2value(paneKey)
           }}
         >
-          <TabPane title="Tab 1" pane-key="0">
+          <TabPane title="Tab 1" paneKey="0">
             {' '}
             Tab 1{' '}
           </TabPane>
-          <TabPane title="Tab 2" pane-key="1" disabled>
+          <TabPane title="Tab 2" paneKey="1" disabled>
             {' '}
             Tab 2{' '}
           </TabPane>
-          <TabPane title="Tab 3" pane-key="2">
+          <TabPane title="Tab 3" paneKey="2">
             {' '}
             Tab 3{' '}
           </TabPane>
@@ -155,7 +175,7 @@ const TabsDemo = () => {
             setTab2value(paneKey)
           }}
         >
-          <TabPane title="Tab 1" pane-key="0">
+          <TabPane title="Tab 1" paneKey="0">
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
@@ -166,7 +186,7 @@ const TabsDemo = () => {
             <p>Tab 1</p>
             <p>Tab 1</p>
           </TabPane>
-          <TabPane title="Tab 2" pane-key="1">
+          <TabPane title="Tab 2" paneKey="1">
             <p>Tab 2</p>
             <p>Tab 2</p>
             <p>Tab 2</p>
@@ -176,7 +196,7 @@ const TabsDemo = () => {
             <p>Tab 2</p>
             <p>Tab 2</p>
           </TabPane>
-          <TabPane title="Tab 3" pane-key="2">
+          <TabPane title="Tab 3" paneKey="2">
             {' '}
             Tab 3{' '}
           </TabPane>
@@ -189,17 +209,17 @@ const TabsDemo = () => {
             setTab2value(paneKey)
           }}
         >
-          <TabPane title="Tab 1" pane-key="0">
+          <TabPane title="Tab 1" paneKey="0">
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
           </TabPane>
-          <TabPane title="Tab 2" pane-key="1">
+          <TabPane title="Tab 2" paneKey="1">
             {' '}
             Tab 2{' '}
           </TabPane>
-          <TabPane title="Tab 3" pane-key="2">
+          <TabPane title="Tab 3" paneKey="2">
             {' '}
             Tab 3{' '}
           </TabPane>

@@ -1,25 +1,31 @@
 .nut-theme-dark {
   .nut-searchbar {
     background: $dark5;
+
     &__label {
       color: $dark1;
     }
+
     &__action-text {
       color: $dark1;
     }
+
     .nut-searchbar__input-clear {
       & .nut-searchbar__nut-icon-mask-close {
         color: $dark1;
+
         &:hover {
           cursor: pointer;
           color: $dark1;
         }
       }
     }
+
     &__right-search-icon,
     &__left-search-icon {
       color: $dark1;
     }
+
     &__leftout-icon,
     &__rightout-icon {
       i {
@@ -28,11 +34,13 @@
     }
   }
 }
+
 .val-text {
   font-size: 12px;
   color: $title-color2;
   padding: 0 20px;
 }
+
 .nut-searchbar {
   display: flex;
   align-items: center;
@@ -41,6 +49,7 @@
   background: $searchbar-background;
   color: $gray1;
   box-sizing: border-box;
+
   &__content {
     position: relative;
     flex: 1;
@@ -48,84 +57,89 @@
     align-items: center;
     justify-content: center;
     height: $searchbar-input-height;
+    background: $searchbar-input-background;
+    border-radius: $searchbar-content-border-radius;
   }
+
   &__icon {
-    position: absolute !important;
+    padding: 0 5px 0 10px;
   }
-  &__leftin-icon {
-    left: 10px;
-  }
+
   &__rightin-icon {
-    right: 5px;
+    padding: 0 5px;
   }
+
   .nut-searchbar__input-box {
     display: flex;
     align-items: center;
     flex: 1;
   }
+
   &__input {
     border: 0;
     outline: 0;
     box-sizing: border-box;
     width: $searchbar-input-width;
     height: $searchbar-input-height;
+    line-height: $searchbar-input-height;
     width: 100%;
     padding: $searchbar-input-padding;
     border-radius: 0;
     font-size: $font-size-small;
-    background: $searchbar-input-background;
     color: $searchbar-input-text-color;
+    caret-color: $searchbar-input-curror-color;
+    background: transparent;
   }
+
   &__round {
     border-radius: $searchbar-input-border-radius;
   }
+
   &__disabled {
     cursor: not-allowed;
   }
+
   &__clear {
-    position: absolute !important;
-    z-index: 888;
-    right: 8px;
+    padding: $searchbar-clear-icon-padding;
+
     i {
       color: $gray1 !important;
     }
   }
+
   .pos-right {
     right: 40px;
   }
+
   &__left {
     text-align: left;
   }
+
   &__right {
     text-align: right;
   }
+
   &__center {
     text-align: center;
   }
-  &__label,
+
+  &__label {
+    padding: $searchbar-label-padding;
+    font-size: $searchbar-label-fontsize;
+    color: $searchbar-label-color;
+  }
+
   &__action-text {
-    padding: 0 8px 0 0;
-    font-size: 12px;
+    padding: $searchbar-action-text-padding;
+    font-size: $searchbar-action-text-fontsize;
     color: $searchbar-action-text-color;
   }
-  &__action-text {
-    padding: 0 0 0 8px;
-  }
+
   &__leftout-icon {
     margin-right: 10px;
   }
+
   &__rightout-icon {
     margin-left: 10px;
-  }
-}
-.nut-searchbar-taro {
-  .nut-searchbar__leftin-icon {
-    //top: 41%;
-  }
-  .nut-searchbar__rightin-icon {
-    top: 41%;
-  }
-  .nut-searchbar__clear {
-    top: 33%;
   }
 }

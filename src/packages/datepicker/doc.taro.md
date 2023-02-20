@@ -16,7 +16,7 @@ import { DatePicker } from '@nutui/nutui-taro';
 :::demo
 ```tsx
 import  React, { useState  } from "react";
-import { DatePicker,Cell,Popup,Picker } from '@nutui/nutui-react-taro';
+import { DatePicker,Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [show1, setShow1] = useState(false)
@@ -48,7 +48,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 :::demo
 ```tsx
 import  React, { useState  } from "react";
-import { DatePicker,Cell,Popup,Picker } from '@nutui/nutui-react-taro';
+import { DatePicker,Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [show2, setShow2] = useState(false)
@@ -82,7 +82,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState  } from "react";
-import { DatePicker,Cell,Popup,Picker } from '@nutui/nutui-react-taro';
+import { DatePicker,Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const minDate = new Date(2020, 0, 1)
@@ -117,7 +117,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState  } from "react";
-import { DatePicker,Cell,Popup,Picker  } from '@nutui/nutui-react-taro';
+import { DatePicker,Cell  } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const minDate = new Date(2020, 0, 1)
@@ -154,7 +154,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState  } from "react";
-import { DatePicker,Cell,Popup,Picker } from '@nutui/nutui-react-taro';
+import { DatePicker,Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const minDate = new Date(2020, 0, 1)
@@ -218,7 +218,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState  } from "react";
-import { DatePicker,Cell,Popup,Picker } from '@nutui/nutui-react-taro';
+import { DatePicker,Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const minDate = new Date(2020, 0, 1)
@@ -257,7 +257,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState  } from "react";
-import { DatePicker,Cell,Popup,Picker } from '@nutui/nutui-react-taro';
+import { DatePicker,Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const minDate = new Date(2020, 0, 1)
@@ -269,7 +269,7 @@ const App = () => {
     setDesc7(options.map((option) => option.text).join(' '))
   }
   const filter = (type: string, options:PickerOption[]) => {
-    if (type == 'hour') {
+    if (type === 'hour') {
       return options.filter((option) => Number(option.value) % 6 === 0);
     }
     return options;
@@ -340,7 +340,7 @@ export default App;
     
 | 事件名                         | 说明               | 回调参数     |
 |-----------------------------|--------------------|--------------|
-| confirm`v1.2.2(废弃)`         | 点击确定按钮时触发 | event: Event |
+| confirm`v1.2.2 废弃`         | 点击确定按钮时触发 | event: Event |
 | onConfirmDatePicker`v1.2.2` | 点击确定按钮时触发 | values, options |
 | onCloseDatePicker           | 关闭时触发         | -- |
 | onChange`v1.2.2`                  | 选项改变时触发         |  columnIndex, values, options  |

@@ -230,7 +230,7 @@
           "desc": "效果同 css 中的 position: sticky",
           "sort": 7,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "hx"
         }
       ]

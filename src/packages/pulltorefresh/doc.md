@@ -17,7 +17,7 @@ import { PullToRefresh } from '@nutui/nutui-react';
 :::demo
 
 ```tsx
-import React from "react";
+import React, {useState} from "react";
 import { PullToRefresh, Cell } from '@nutui/nutui-react'
 
 const App = () => {

@@ -65,7 +65,7 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react';
+import { InputNumber, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
@@ -189,7 +189,7 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { InputNumber, Toast } from '@nutui/nutui-react';
+import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
@@ -226,12 +226,12 @@ export default App;
 
 | Event    | Description                   | Arguments                       |
 |-----------|------------------------|--------------------------------|
-| add    `v1.3.8(Abandon)`   | Triggered when the Add button is clicked     | event: Event                   |
-| reduce   `v1.3.8(Abandon)` | Triggered when the decrease button is clicked     | event: Event                   |
-| overlimit `v1.3.8(Abandon)` | Triggered when an unavailable button is clicked | event: Event                   |
-| change `v1.3.8(Abandon)`    | Triggered when the value changes           | value:  number , event : Event |
-| blur `v1.3.8(Abandon)`      | Triggered when the input box blur   | event: Event                   |
-| focus `v1.3.8(Abandon)`     | Triggered when the input box focus   | event: Event                   |
+| add    `v1.3.8 Abandon`   | Triggered when the Add button is clicked     | event: Event                   |
+| reduce   `v1.3.8 Abandon` | Triggered when the decrease button is clicked     | event: Event                   |
+| overlimit `v1.3.8 Abandon` | Triggered when an unavailable button is clicked | event: Event                   |
+| change `v1.3.8 Abandon`    | Triggered when the value changes           | value:  number , event : Event |
+| blur `v1.3.8 Abandon`      | Triggered when the input box blur   | event: Event                   |
+| focus `v1.3.8 Abandon`     | Triggered when the input box focus   | event: Event                   |
 | onAdd `v1.3.8`       | Triggered when the Add button is clicked     | event: Event                   |
 | onReduce `v1.3.8`    | Triggered when the decrease button is clicked     | event: Event                   |
 | onOverlimit `v1.3.8` | Triggered when an unavailable button is clicked | event: Event                   |
@@ -247,6 +247,10 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
+| --nutui-inputnumber-button-width`v1.4.8` | `12px` |
+| --nutui-inputnumber-button-height`v1.4.8` | `12px` |
+| --nutui-inputnumber-button-border-radius`v1.4.8` | `30px` |
+| --nutui-inputnumber-button-background-color`v1.4.8` | ` $gray6` |
 | --nutui-inputnumber-icon-color | `  $title-color` |
 | --nutui-inputnumber-icon-void-color | `  $disable-color` |
 | --nutui-inputnumber-icon-disabled-color | `  $gray2` |
@@ -256,6 +260,7 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-inputnumber-input-background-color | `  $gray4` |
 | --nutui-inputnumber-input-border-radius | `  4px` |
 | --nutui-inputnumber-input-width | ` 40px` |
+| --nutui-inputnumber-input-height | ` 24px`|
 | --nutui-inputnumber-input-margin | `  0 6px` |
 | --nutui-inputnumber-input-border | ` 0` |
 | --nutui-inputnumber-border | ` 0` |

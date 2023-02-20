@@ -1,7 +1,7 @@
 import React, { useState, useEffect, FunctionComponent } from 'react'
-import { useConfig } from '@/packages/configprovider'
-import Taro from '@tarojs/taro'
+import { getSystemInfo, createOffscreenCanvas } from '@tarojs/taro'
 import classNames from 'classnames'
+import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 
 export interface WaterMarkProps {
@@ -86,7 +86,7 @@ export const WaterMark: FunctionComponent<
 
   const init = () => {
     let ratio = 1
-    Taro.getSystemInfo().then((res) => {
+    getSystemInfo().then((res) => {
       ratio = res.pixelRatio
       const canvasWidth = `${(gapX + width) * ratio}px`
       const canvasHeight = `${(gapY + height) * ratio}px`
@@ -100,7 +100,7 @@ export const WaterMark: FunctionComponent<
         canvas.setAttribute('width', canvasWidth)
         canvas.setAttribute('height', canvasHeight)
       } else {
-        canvas = Taro.createOffscreenCanvas({
+        canvas = createOffscreenCanvas({
           type: '2d',
           width: Number(canvasWidth),
           height: Number(canvasHeight),

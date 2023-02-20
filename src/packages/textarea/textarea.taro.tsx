@@ -106,8 +106,7 @@ export const TextArea: FunctionComponent<
           resize: `${autosize ? 'vertical' : 'none'}` as any,
           ...style,
         }}
-        disabled={disabled}
-        readOnly={readonly}
+        readOnly={disabled || readonly}
         value={inputValue}
         onInput={(e: any) => {
           textChange(e)

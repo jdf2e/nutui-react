@@ -1,13 +1,16 @@
 .nut-theme-dark {
   .nut-numberkeyboard {
     background-color: $dark5;
+
     &__body {
       background-color: $dark5;
       color: $dark1;
+
       .nut-numberkeyboard__body__keys,
       .nut-numberkeyboard__sidebar {
         .key-board-wrapper {
           background-color: $dark5;
+
           .key {
             background-color: $dark4;
             color: $dark1;
@@ -15,6 +18,7 @@
         }
       }
     }
+
     .nut-numberkeyboard__header {
       .nut-numberkeyboard__header__tit {
         color: $dark1;
@@ -35,6 +39,7 @@
   background-color: $numberkeyboard-background-color;
   user-select: none;
   background-color: $gray4;
+
   .nut-numberkeyboard__header {
     position: relative;
     display: flex;
@@ -81,6 +86,7 @@
       box-sizing: border-box;
       padding: 0 6px 6px 0;
       background-color: $gray5;
+
       .key {
         display: flex;
         align-items: center;
@@ -89,7 +95,7 @@
         font-size: $numberkeyboard-key-font-size;
         line-height: $numberkeyboard-key-line-height;
         background-color: $numberkeyboard-key-background-color;
-        color: $numberkeyboard-key-font-size-color;
+        color: $numberkeyboard-key-font-color;
         border-radius: $numberkeyboard-key-border-radius;
         cursor: pointer;
       }
@@ -125,11 +131,13 @@
 
         .finish {
           font-size: $numberkeyboard-key-finish-font-size;
-          color: $numberkeyboard-key-finish-font-size-color;
+          color: $numberkeyboard-key-finish-font-color;
           background-color: $numberkeyboard-key-finish-background-color;
         }
 
         .activeFinsh {
+          font-size: $numberkeyboard-key-finish-font-size;
+          color: $numberkeyboard-key-finish-font-color;
           background-color: $numberkeyboard-key-activeFinsh-background-color;
         }
       }

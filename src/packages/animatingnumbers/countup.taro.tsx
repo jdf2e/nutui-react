@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import Taro from '@tarojs/taro'
+import { createSelectorQuery } from '@tarojs/taro'
 import bem from '@/utils/bem'
 
 export interface CountUpProps {
@@ -62,7 +62,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
 
   const setNumberTransform = () => {
     if (countupRef.current && numerArr.length) {
-      const query = Taro.createSelectorQuery()
+      const query = createSelectorQuery()
         .selectAll('.nut-countup__listitem')
         .node((numberItems: any) => {
           const transformArrCache: string[] = []

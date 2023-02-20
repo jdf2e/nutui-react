@@ -3,12 +3,10 @@
 exports[`should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="nut-collapse"
+    class="nut-collapse undefined"
   >
     <div
       class="nut-collapse-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
     >
       <div
         class="nut-collapse-item__header"
@@ -30,7 +28,7 @@ exports[`should match snapshot 1`] = `
           >
             <i
               class="nutui-iconfont nut-icon nut-icon-arrow-down "
-              style="color: rgb(153, 153, 153); font-size: 16px; width: 16px; height: 16px;"
+              style="color: rgb(153, 153, 153); font-size: 16px; height: 16px; width: 16px;"
             />
           </div>
         </div>
@@ -48,8 +46,6 @@ exports[`should match snapshot 1`] = `
     </div>
     <div
       class="nut-collapse-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
     >
       <div
         class="nut-collapse-item__header"
@@ -71,7 +67,7 @@ exports[`should match snapshot 1`] = `
           >
             <i
               class="nutui-iconfont nut-icon nut-icon-arrow-down "
-              style="color: rgb(153, 153, 153); font-size: 16px; width: 16px; height: 16px;"
+              style="color: rgb(153, 153, 153); font-size: 16px; height: 16px; width: 16px;"
             />
           </div>
         </div>
@@ -89,8 +85,6 @@ exports[`should match snapshot 1`] = `
     </div>
     <div
       class="nut-collapse-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
     >
       <div
         class="nut-collapse-item__header nut-collapse-item__header--disabled"
@@ -112,14 +106,14 @@ exports[`should match snapshot 1`] = `
           >
             <i
               class="nutui-iconfont nut-icon nut-icon-arrow-down "
-              style="color: rgb(194, 194, 194); font-size: 16px; width: 16px; height: 16px;"
+              style="color: rgb(194, 194, 194); font-size: 16px; height: 16px; width: 16px;"
             />
           </div>
         </div>
       </div>
       <div
         class="nut-collapse-item__content"
-        style="height: auto;"
+        style="height: 0px;"
       >
         <div
           class="nut-collapse-item__content-text"

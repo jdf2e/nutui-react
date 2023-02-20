@@ -62,7 +62,7 @@ const TimeSelectDemo = () => {
     <>
       <div className="demo">
         <h2>用法</h2>
-        <Cell title="请选择配送时间" click={handleClick} />
+        <Cell title="请选择配送时间" onClick={handleClick} />
         <TimeSelect
           visible={visible1}
           height="50%"

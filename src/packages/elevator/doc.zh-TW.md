@@ -483,8 +483,8 @@ export default App
 | ---------- | -------- | -------------------------------------- |
 | onClickItem`v1.3.2`  | 點擊內容 | key: string, item: { id: 0, name: '' } |
 | onClickIndex`v1.3.2` | 點擊索引 | key: string                            |
-| clickItem`v1.3.2(废弃)`  | 點擊內容 | key: string, item: { id: 0, name: '' } |
-| clickIndex`v1.3.2(废弃)` | 點擊索引 | key: string                            |
+| clickItem`v1.3.2 废弃`  | 點擊內容 | key: string, item: { id: 0, name: '' } |
+| clickIndex`v1.3.2 废弃` | 點擊索引 | key: string                            |
 
 
 ## 主題定制

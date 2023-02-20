@@ -91,12 +91,14 @@ const SearchBarDemo = () => {
         <SearchBar
           label={translated.text}
           actionText={translated.test}
+          clearIconSize="14px"
           onSearch={() => toastShow()}
         />
         <h2>{translated.title5}</h2>
         <SearchBar
           leftoutIcon={<Icon name="heart-fill1" size="14" />}
           rightoutIcon={<Icon name="star-fill" size="14" />}
+          rightinIcon={<Icon name="star-fill" size="14" />}
         />
         <h2>{translated.title6}</h2>
         <SearchBar

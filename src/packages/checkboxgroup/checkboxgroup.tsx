@@ -96,8 +96,8 @@ export const CheckboxGroup = React.forwardRef(
     }
 
     function validateChecked(value: any) {
-      if (innerValue === null) return false
-      return innerValue === value
+      if (!innerValue) return false
+      return innerValue?.indexOf(value) > -1
     }
 
     function getParentVals() {
@@ -137,7 +137,7 @@ export const CheckboxGroup = React.forwardRef(
           />
         )
       })
-    }, [innerValue, options])
+    }, [innerValue, options, innerDisabled, max])
 
     return (
       <div className={`${b()} ${className || ''}`} {...rest}>

@@ -170,7 +170,7 @@ test('slotButton test', () => {
     />
   )
   expect(container.querySelector('.nut-button__warp')?.innerHTML).toBe(
-    '<div class="text">发送验证码</div>'
+    '<div class="">发送验证码</div>'
   )
 })
 

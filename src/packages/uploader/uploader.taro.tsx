@@ -6,13 +6,15 @@ import React, {
   useEffect,
 } from 'react'
 import classNames from 'classnames'
+import Taro, { chooseImage, uploadFile, getEnv } from '@tarojs/taro'
 import Icon from '@/packages/icon/index.taro'
 import Button from '@/packages/button/index.taro'
 import Progress from '@/packages/progress/index.taro'
-import Taro from '@tarojs/taro'
 import { Upload, UploadOptions } from './upload'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
+
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type FileType<T> = { [key: string]: T }
 
@@ -43,8 +45,6 @@ interface sourceType {
   environment: string
 }
 
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
 export interface UploaderProps extends BasicComponent {
   url: string
   maximum: string | number
@@ -58,6 +58,7 @@ export interface UploaderProps extends BasicComponent {
   name: string
   disabled: boolean
   autoUpload: boolean
+  multiple: boolean
   timeout: number
   data: object
   method: string
@@ -104,6 +105,7 @@ const defaultProps = {
   name: 'file',
   disabled: false,
   autoUpload: true,
+  multiple: false,
   maximize: Number.MAX_VALUE,
   data: {},
   headers: {},
@@ -121,7 +123,7 @@ const defaultProps = {
 export class FileItem {
   status: FileItemStatus = 'ready'
 
-  message: string = '准备中..'
+  message = '准备中..'
 
   uid: string = new Date().getTime().toString()
 
@@ -161,6 +163,7 @@ const InternalUploader: ForwardRefRenderFunction<
     isDeletable,
     maximum,
     maximize,
+    multiple,
     className,
     autoUpload,
     sizeType,
@@ -194,7 +197,7 @@ const InternalUploader: ForwardRefRenderFunction<
   useImperativeHandle(ref, () => ({
     submit: () => {
       Promise.all(uploadQueue).then((res) => {
-        res.forEach((i) => i.uploadTaro(Taro.uploadFile, Taro.getEnv()))
+        res.forEach((i) => i.uploadTaro(uploadFile, getEnv()))
       })
     },
   }))
@@ -208,16 +211,16 @@ const InternalUploader: ForwardRefRenderFunction<
     }
   }
 
-  const chooseImage = () => {
+  const _chooseImage = () => {
     if (disabled) {
       return
     }
-    Taro.chooseImage({
+    chooseImage({
       // 选择数量
-      count: (maximum as number) * 1 - fileList.length,
+      count: multiple ? (maximum as number) * 1 - fileList.length : 1,
       // 可以指定是原图还是压缩图，默认二者都有
-      sizeType: sizeType,
-      sourceType: sourceType,
+      sizeType,
+      sourceType,
       success: onChangeFn,
     })
   }
@@ -306,7 +309,7 @@ const InternalUploader: ForwardRefRenderFunction<
 
     const task = new Upload(uploadOption)
     if (props.autoUpload) {
-      task.uploadTaro(Taro.uploadFile, Taro.getEnv())
+      task.uploadTaro(uploadFile, getEnv())
     } else {
       uploadQueue.push(
         new Promise((resolve, reject) => {
@@ -332,7 +335,7 @@ const InternalUploader: ForwardRefRenderFunction<
       fileItem.message = locale.uploader.readyUpload
       fileItem.type = fileType
 
-      if (Taro.getEnv() == 'WEB') {
+      if (getEnv() === 'WEB') {
         const formData = new FormData()
         for (const [key, value] of Object.entries(data)) {
           formData.append(key, value)
@@ -369,7 +372,7 @@ const InternalUploader: ForwardRefRenderFunction<
       onOversize && onOversize(files)
     }
 
-    let currentFileLength = filterFile.length + fileList.length
+    const currentFileLength = filterFile.length + fileList.length
     if (currentFileLength > maximum) {
       filterFile.splice(filterFile.length - (currentFileLength - maximum))
     }
@@ -414,7 +417,7 @@ const InternalUploader: ForwardRefRenderFunction<
           <>
             {children}
             {maximum > fileList.length && (
-              <Button className="nut-uploader__input" onClick={chooseImage} />
+              <Button className="nut-uploader__input" onClick={_chooseImage} />
             )}
           </>
         </div>
@@ -424,7 +427,7 @@ const InternalUploader: ForwardRefRenderFunction<
         fileList.map((item: any, index: number) => {
           return (
             <div className={`nut-uploader__preview ${listType}`} key={item.uid}>
-              {listType == 'picture' && !children && (
+              {listType === 'picture' && !children && (
                 <div className="nut-uploader__preview-img">
                   {item.status === 'ready' ? (
                     <div className="nut-uploader__preview__progress">
@@ -440,7 +443,7 @@ const InternalUploader: ForwardRefRenderFunction<
                           fontClassName={props.iconFontClassName}
                           color="#fff"
                           name={`${
-                            item.status == 'error' ? 'failure' : 'loading'
+                            item.status === 'error' ? 'failure' : 'loading'
                           }`}
                         />
                         <div className="nut-uploader__preview__progress__msg">
@@ -467,6 +470,7 @@ const InternalUploader: ForwardRefRenderFunction<
                         <img
                           className="nut-uploader__preview-img__c"
                           src={item.url}
+                          alt=""
                           onClick={() => handleItemClick(item)}
                         />
                       )}
@@ -477,6 +481,7 @@ const InternalUploader: ForwardRefRenderFunction<
                         <img
                           className="nut-uploader__preview-img__c"
                           src={defaultImg}
+                          alt=""
                           onClick={() => handleItemClick(item)}
                         />
                       ) : (
@@ -548,7 +553,7 @@ const InternalUploader: ForwardRefRenderFunction<
             color="#808080"
             name={uploadIcon}
           />
-          <Button className="nut-uploader__input" onClick={chooseImage} />
+          <Button className="nut-uploader__input" onClick={_chooseImage} />
         </div>
       )}
     </div>

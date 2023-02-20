@@ -36,7 +36,7 @@ const App = () => {
         <>
             <Cell
             title="Basic Usage"
-            click={(event: React.MouseEvent) => {
+            onClick={(event: React.MouseEvent) => {
                 baseNotify('Basic Usage')
             }}
             />
@@ -73,25 +73,25 @@ const App = () => {
         <>
             <Cell
                 title="Primary Notify"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     primaryNotify('Primary Notify')
                 }}
             />
             <Cell
                 title="Success Notify"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                 successNotify('Success Notify')
                 }}
             />
             <Cell
                 title="Error Notify"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                 errorNotify('Error Notify')
                 }}
             />
             <Cell
                 title="Warning Notify"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                 warningNotify('Warning Notify')
                 }}
             />
@@ -120,7 +120,7 @@ const App = () => {
         <>
             <Cell
                 title="Customize background and font colors"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     cusBgNotify('Customize background and font colors')
                 }}
             />
@@ -152,13 +152,13 @@ const App = () => {
         <>
              <Cell
                 title="Custom Duration"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     timeNotify('Custom Duration')
                 }}
             />
             <Cell
                 title="Custom Position"
-                click={(event: React.MouseEvent) => {
+                onClick={(event: React.MouseEvent) => {
                     positionNotify('Custom Postion')
                 }}
             />

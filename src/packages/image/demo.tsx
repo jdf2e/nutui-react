@@ -150,6 +150,7 @@ const ImageDemo = () => {
                 width="100"
                 height="100"
                 showLoading
+                isLazy
                 onLoad={() => {
                   console.log('image onload')
                 }}
@@ -160,6 +161,7 @@ const ImageDemo = () => {
               <Image
                 width="100"
                 height="100"
+                isLazy
                 slotLoding={
                   <>
                     <Icon name="loading" />

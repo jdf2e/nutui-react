@@ -12,106 +12,231 @@ import { Form } from '@nutui/nutui-react'
 
 ### Basic Usage
 :::demo
-```
-<Form>
-  <Form.Item label='Name' name="username">
-    <Input
-      className="nut-input-text"
-      placeholder='Please enter your name'
-      type="text"
-    />
-  </Form.Item>
-  <Form.Item label='Remark' name="remark">
-    <TextArea placeholder='Please enter remarks' />
-  </Form.Item>
-</Form>
+```tsx
+import  React from "react";
+import { Form, Input, TextArea } from '@nutui/nutui-react';
+const App = () => {
+  return (
+    <>
+      <Form>
+        <Form.Item label='Name' name="username">
+          <Input
+            className="nut-input-text"
+            placeholder='Please enter your name'
+            type="text"
+          />
+        </Form.Item>
+        <Form.Item label='Remark' name="remark">
+          <TextArea placeholder='Please enter remarks' />
+        </Form.Item>
+      </Form>
+    </>
+  )
+}
+export default App;
 ```
 :::
 
 ### Top Align
 
 :::demo
-```
-<Form labelPosition="Top">
-  <Form.Item label='Name' name="username">
-    <Input
-      className="nut-input-text"
-      placeholder='Please enter your name'
-      type="text"
-    />
-  </Form.Item>
-  <Form.Item label='Remark' name="remark">
-    <TextArea placeholder='Please enter remarks' />
-  </Form.Item>
-</Form>
+```tsx
+import  React from "react";
+import { Form, Input, TextArea } from '@nutui/nutui-react';
+const App = () => (
+  <Form labelPosition="Top">
+    <Form.Item label='Name' name="username">
+      <Input
+        className="nut-input-text"
+        placeholder='Please enter your name'
+        type="text"
+      />
+    </Form.Item>
+    <Form.Item label='Remark' name="remark">
+      <TextArea placeholder='Please enter remarks' />
+    </Form.Item>
+  </Form>
+)
+
+export default App;
 ```
 :::
 
 ### Validate Form
 :::demo
-```
-<Form
-  onFinish={(obj) => submitSucceed(obj)}
-  onFinishFailed={(error) => submitFailed(error)}
->
-  <Form.Item label='Name' name="username">
-    <Input
-      className="nut-input-text"
-      placeholder='Please enter your name'
-      type="text"
-    />
-  </Form.Item>
-  <Form.Item label='Age' name="age">
-    <Input placeholder='Please enter age' type="number" />
-  </Form.Item>
-  <Form.Item label='Tel' name="tel">
-    <Input placeholder='Please enter tel number' type="number" />
-  </Form.Item>
-  <Form.Item label='Address' name="address">
-    <Input placeholder='Please enter address' type="text" />
-  </Form.Item>
-  <Cell>
-    <input type="submit" value='Submit' />
-  </Cell>
-</Form>
+```tsx
+import  React from "react";
+import { Form, Input, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Form
+        onFinish={(obj) => submitSucceed(obj)}
+        onFinishFailed={(error) => submitFailed(error)}
+      >
+        <Form.Item label='Name' name="username">
+          <Input
+            className="nut-input-text"
+            placeholder='Please enter your name'
+            type="text"
+          />
+        </Form.Item>
+        <Form.Item label='Age' name="age">
+          <Input placeholder='Please enter age' type="number" />
+        </Form.Item>
+        <Form.Item label='Tel' name="tel">
+          <Input placeholder='Please enter tel number' type="number" />
+        </Form.Item>
+        <Form.Item label='Address' name="address">
+          <Input placeholder='Please enter address' type="text" />
+        </Form.Item>
+        <Cell>
+          <input type="submit" value='Submit' />
+        </Cell>
+      </Form>
+    </>
+  )
+}
+
+export default App;
 ```
 :::
 
+### InitialValue Validate Type
+:::demo
+
+```tsx
+import  React from "react";
+import { Form, Input, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Form
+        onFinish={(obj) => submitSucceed(obj)}
+        onFinishFailed={(error) => submitFailed(error)}
+      >
+        <Form.Item label='Name' name="username" initialValue="zhangsan">
+          <Input
+            className="nut-input-text"
+            placeholder='Please enter your name'
+            type="text"
+          />
+        </Form.Item>
+        <Form.Item label='Age' name="age">
+          <Input placeholder='Please enter age' type="number" defaultValue="18" />
+        </Form.Item>
+        <Cell>
+          <input type="submit" value='Submit' />
+        </Cell>
+      </Form>
+    </>
+  )
+}
+
+export default App;
+```
+:::
+
+### Interact with form data fields via Form.useForm
+:::demo
+
+```tsx
+import  React from "react";
+import { Form, Input, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const [form] = Form.useForm()
+  const onMenuChange = (value: string | number | boolean) => {
+    switch (value) {
+      case 'male':
+        form.setFieldsValue({ note: 'Hi, man!' })
+        break
+      case 'female':
+        form.setFieldsValue({ note: 'Hi, lady!' })
+        break
+      case 'other':
+        form.setFieldsValue({ note: 'Hi there!' })
+        break
+      default:
+    }
+  }
+  return (
+    <>
+      <Form
+        form={form}
+        onFinish={(obj) => submitSucceed(obj)}
+        onFinishFailed={(error) => submitFailed(error)}
+      >
+        <Form.Item label="Note" name="note">
+          <Input placeholder="please input note" type="string" />
+        </Form.Item>
+        <Form.Item label={translated.radiogroup} name="radiogroup">
+          <Radio.RadioGroup onChange={onMenuChange}>
+            <Radio value="male">male</Radio>
+            <Radio value="female">female</Radio>
+            <Radio value="other">other</Radio>
+          </Radio.RadioGroup>
+        </Form.Item>
+        <Cell>
+          <input type="submit" value={translated.submit} />
+        </Cell>
+      </Form>
+    </>
+  )
+}
+
+export default App;
+```
+:::
 ### Form Type
 
 :::demo
-```
-<Form
-  onFinish={(obj) => submitSucceed(obj)}
-  onFinishFailed={(error) => submitFailed(error)}
->
-  <Form.Item label='Switch' name="switch">
-    <Switch />
-  </Form.Item>
-  <Form.Item label='Checkbox' name="checkbox">
-    <Checkbox
-      textPosition="right"
-      label='Checkbox'
-      checked={false}
-    />
-  </Form.Item>
-  <Form.Item label='Radio' name="radiogroup">
-    <Radio.RadioGroup>
-      <Radio value="1">Value1</Radio>
-      <Radio value="2">Value2</Radio>
-      <Radio value="3">Value3</Radio>
-    </Radio.RadioGroup>
-  </Form.Item>
-  <Form.Item label='Rate' name="rate">
-    <Rate modelValue={0} />
-  </Form.Item>
-  <Form.Item label='Range' name="range">
-    <Range modelValue={0} max={10} min={-10} />
-  </Form.Item>
-  <Cell>
-    <input type="submit" value='Submit' />
-  </Cell>
-</Form>
+```tsx
+import  React from "react";
+import { Form, Input, Cell, Switch, Checkbox, Radio, Rate, Range } from '@nutui/nutui-react';
+
+
+const App = () => {
+  return (
+    <>
+      <Form
+        onFinish={(obj) => submitSucceed(obj)}
+        onFinishFailed={(error) => submitFailed(error)}
+      >
+        <Form.Item label='Switch' name="switch">
+          <Switch />
+        </Form.Item>
+        <Form.Item label='Checkbox' name="checkbox">
+          <Checkbox
+            textPosition="right"
+            label='Checkbox'
+            checked={false}
+          />
+        </Form.Item>
+        <Form.Item label='Radio' name="radiogroup">
+          <Radio.RadioGroup>
+            <Radio value="1">Value1</Radio>
+            <Radio value="2">Value2</Radio>
+            <Radio value="3">Value3</Radio>
+          </Radio.RadioGroup>
+        </Form.Item>
+        <Form.Item label='Rate' name="rate">
+          <Rate modelValue={0} />
+        </Form.Item>
+        <Form.Item label='Range' name="range">
+          <Range modelValue={0} max={10} min={-10} />
+        </Form.Item>
+        <Cell>
+          <input type="submit" value='Submit' />
+        </Cell>
+      </Form>
+    </>
+  )
+}
+
+export default App;
 ```
 :::
 ## API
@@ -120,6 +245,7 @@ import { Form } from '@nutui/nutui-react'
 
 | Attribute        | Description | TYPE   | DEFAULT |
 |-------------|--------------------------|--------|--------|
+| form`v1.4.8` | The form control instance created by Form.useForm() will be created automatically if not provided | FormInstance |        |
 | labelPosition | label's position，the default value is Right，can be Top、Left、Right | string |        |
 | starPositon | the position of the red asterisk next to the label of the required filed ，the default is Left，can be Left、Right | string |        |
 
@@ -138,6 +264,7 @@ import { Form } from '@nutui/nutui-react'
 | name | the field of the form field is required when the form verification function is used | string | - |
 | labelWidth | The width of the form item label. The default unit is `px` | number \| string | `90px`  |
 | errorMessageAlign | Error prompt text alignment. The optional values are `center` and `right`  | string           | `left`  |
+| initialValue`v1.4.7` | Set child element default value                  | string           | -  |
 
 ### Form.Item Rule Data Structure
 
@@ -150,8 +277,12 @@ Use the `rules` attribute of Form.Item to define verification rules. The optiona
 
 ### Form Instance Methods
 
+Form.useForm() creates a Form instance, which is used to manage all data states.
+
 | Name           | Description | Attribute | Callback  |
 |-------------------|-----------------------------|-----|---------|
+| getFieldValue | Get the value of the corresponding field name | - | (name: NamePath) => any |
+| setFieldsValue | Set the value of the form | - | (values) => void |
 | submit | the function of submit the form | - | Promise |
 
 

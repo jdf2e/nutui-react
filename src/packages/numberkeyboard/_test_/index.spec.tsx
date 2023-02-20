@@ -1,13 +1,15 @@
 import * as React from 'react'
-import { render } from '@testing-library/react'
+import { act, render } from '@testing-library/react'
 import { trigger } from '@/utils/test/event'
 import '@testing-library/jest-dom'
 
 import { NumberKeyboard } from '../numberkeyboard'
 
 function clickKey(key: Parameters<typeof trigger>[0]) {
-  trigger(key, 'touchstart')
-  trigger(key, 'touchend')
+  return act(() => {
+    trigger(key, 'touchstart')
+    trigger(key, 'touchend')
+  })
 }
 test('should match snapshot', async () => {
   const { container } = render(<NumberKeyboard visible />)

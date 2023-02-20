@@ -28,13 +28,13 @@
   &__close-icon {
     position: absolute !important;
     z-index: 1;
-    color: #969799;
-    font-size: 18px;
+    color: $popup-close-icon-color;
     cursor: pointer;
     width: 30px;
     height: 30px;
-    line-height: 30px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:active {
       opacity: 0.7;

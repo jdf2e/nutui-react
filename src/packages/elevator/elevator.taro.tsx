@@ -5,7 +5,7 @@ import React, {
   useState,
   createContext,
 } from 'react'
-import Taro from '@tarojs/taro'
+import { nextTick, createSelectorQuery } from '@tarojs/taro'
 
 import { ScrollView } from '@tarojs/components'
 import bem from '@/utils/bem'
@@ -103,7 +103,7 @@ export const Elevator: FunctionComponent<
 
     state.current.listHeight.push(height)
     for (let i = 0; i < state.current.listGroup.length; i++) {
-      const query = Taro.createSelectorQuery()
+      const query = createSelectorQuery()
       query
         .selectAll(`.${className} .elevator__item__${i}`)
         .boundingClientRect()
@@ -178,7 +178,7 @@ export const Elevator: FunctionComponent<
 
   const setListGroup = () => {
     if (listview.current) {
-      Taro.createSelectorQuery()
+      createSelectorQuery()
         .selectAll(`.${className} .nut-elevator__list__item`)
         .node((el) => {
           state.current.listGroup = [...Object.keys(el)]
@@ -212,7 +212,7 @@ export const Elevator: FunctionComponent<
 
   useEffect(() => {
     if (listview.current) {
-      Taro.nextTick(() => {
+      nextTick(() => {
         setListGroup()
       })
     }

@@ -28,22 +28,22 @@ exports[`footerTpl slot test 1`] = `
           class="nut-price "
         >
           <div
-            class="nut-price__symbol"
+            class="nut-price__symbol nut-price__symbol-large"
           >
-            ￥
+            ¥
           </div>
           <div
-            class="nut-price__big"
+            class="nut-price__integer nut-price__integer-large"
           >
             388
           </div>
           <div
-            class="nut-price__point"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             .
           </div>
           <div
-            class="nut-price__small"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             00
           </div>
@@ -52,22 +52,22 @@ exports[`footerTpl slot test 1`] = `
           class="nut-price nut-card__right__price__origin"
         >
           <div
-            class="nut-price__symbol"
+            class="nut-price__symbol nut-price__symbol-large"
           >
-            ￥
+            ¥
           </div>
           <div
-            class="nut-price__big"
+            class="nut-price__integer nut-price__integer-large"
           >
             378
           </div>
           <div
-            class="nut-price__point"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             .
           </div>
           <div
-            class="nut-price__small"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             00
           </div>
@@ -76,37 +76,24 @@ exports[`footerTpl slot test 1`] = `
       <div
         class="nut-card__right__other"
       >
-        <div>
-          <div
-            class="nut-tag
-    nut-tag--danger
-    
-    
-    
-    "
+        <div
+          class="nut-tag nut-tag--danger"
+        >
+          <span
+            class="nut-tag-text"
           >
-            <span
-              class="text"
-            >
-              自营
-            </span>
-          </div>
+            自营
+          </span>
         </div>
-        <div>
-          <div
-            class="nut-tag
-    nut-tag--default
-    nut-tag--plain
-    
-    
-    "
+        <div
+          class="nut-tag nut-tag--default nut-tag--plain"
+          style="background: rgb(255, 255, 255);"
+        >
+          <span
+            class="nut-tag-text"
           >
-            <span
-              class="text"
-            >
-              厂商配送
-            </span>
-          </div>
+            厂商配送
+          </span>
         </div>
       </div>
       <div
@@ -156,22 +143,22 @@ exports[`originTpl slot test 1`] = `
           class="nut-price "
         >
           <div
-            class="nut-price__symbol"
+            class="nut-price__symbol nut-price__symbol-large"
           >
-            ￥
+            ¥
           </div>
           <div
-            class="nut-price__big"
+            class="nut-price__integer nut-price__integer-large"
           >
             388
           </div>
           <div
-            class="nut-price__point"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             .
           </div>
           <div
-            class="nut-price__small"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             00
           </div>
@@ -184,37 +171,24 @@ exports[`originTpl slot test 1`] = `
       <div
         class="nut-card__right__other"
       >
-        <div>
-          <div
-            class="nut-tag
-    nut-tag--danger
-    
-    
-    
-    "
+        <div
+          class="nut-tag nut-tag--danger"
+        >
+          <span
+            class="nut-tag-text"
           >
-            <span
-              class="text"
-            >
-              自营
-            </span>
-          </div>
+            自营
+          </span>
         </div>
-        <div>
-          <div
-            class="nut-tag
-    nut-tag--default
-    nut-tag--plain
-    
-    
-    "
+        <div
+          class="nut-tag nut-tag--default nut-tag--plain"
+          style="background: rgb(255, 255, 255);"
+        >
+          <span
+            class="nut-tag-text"
           >
-            <span
-              class="text"
-            >
-              厂商配送
-            </span>
-          </div>
+            厂商配送
+          </span>
         </div>
       </div>
       <div
@@ -278,22 +252,22 @@ exports[`prolistTpl slot test 1`] = `
           class="nut-price "
         >
           <div
-            class="nut-price__symbol"
+            class="nut-price__symbol nut-price__symbol-large"
           >
-            ￥
+            ¥
           </div>
           <div
-            class="nut-price__big"
+            class="nut-price__integer nut-price__integer-large"
           >
             388
           </div>
           <div
-            class="nut-price__point"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             .
           </div>
           <div
-            class="nut-price__small"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             00
           </div>
@@ -302,22 +276,22 @@ exports[`prolistTpl slot test 1`] = `
           class="nut-price nut-card__right__price__origin"
         >
           <div
-            class="nut-price__symbol"
+            class="nut-price__symbol nut-price__symbol-large"
           >
-            ￥
+            ¥
           </div>
           <div
-            class="nut-price__big"
+            class="nut-price__integer nut-price__integer-large"
           >
             378
           </div>
           <div
-            class="nut-price__point"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             .
           </div>
           <div
-            class="nut-price__small"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             00
           </div>
@@ -326,37 +300,24 @@ exports[`prolistTpl slot test 1`] = `
       <div
         class="nut-card__right__other"
       >
-        <div>
-          <div
-            class="nut-tag
-    nut-tag--danger
-    
-    
-    
-    "
+        <div
+          class="nut-tag nut-tag--danger"
+        >
+          <span
+            class="nut-tag-text"
           >
-            <span
-              class="text"
-            >
-              自营
-            </span>
-          </div>
+            自营
+          </span>
         </div>
-        <div>
-          <div
-            class="nut-tag
-    nut-tag--default
-    nut-tag--plain
-    
-    
-    "
+        <div
+          class="nut-tag nut-tag--default nut-tag--plain"
+          style="background: rgb(255, 255, 255);"
+        >
+          <span
+            class="nut-tag-text"
           >
-            <span
-              class="text"
-            >
-              厂商配送
-            </span>
-          </div>
+            厂商配送
+          </span>
         </div>
       </div>
       <div
@@ -401,22 +362,22 @@ exports[`props test 1`] = `
           class="nut-price "
         >
           <div
-            class="nut-price__symbol"
+            class="nut-price__symbol nut-price__symbol-large"
           >
-            ￥
+            ¥
           </div>
           <div
-            class="nut-price__big"
+            class="nut-price__integer nut-price__integer-large"
           >
             388
           </div>
           <div
-            class="nut-price__point"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             .
           </div>
           <div
-            class="nut-price__small"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             00
           </div>
@@ -425,22 +386,22 @@ exports[`props test 1`] = `
           class="nut-price nut-card__right__price__origin"
         >
           <div
-            class="nut-price__symbol"
+            class="nut-price__symbol nut-price__symbol-large"
           >
-            ￥
+            ¥
           </div>
           <div
-            class="nut-price__big"
+            class="nut-price__integer nut-price__integer-large"
           >
             378
           </div>
           <div
-            class="nut-price__point"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             .
           </div>
           <div
-            class="nut-price__small"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             00
           </div>
@@ -449,37 +410,24 @@ exports[`props test 1`] = `
       <div
         class="nut-card__right__other"
       >
-        <div>
-          <div
-            class="nut-tag
-    nut-tag--danger
-    
-    
-    
-    "
+        <div
+          class="nut-tag nut-tag--danger"
+        >
+          <span
+            class="nut-tag-text"
           >
-            <span
-              class="text"
-            >
-              自营
-            </span>
-          </div>
+            自营
+          </span>
         </div>
-        <div>
-          <div
-            class="nut-tag
-    nut-tag--default
-    nut-tag--plain
-    
-    
-    "
+        <div
+          class="nut-tag nut-tag--default nut-tag--plain"
+          style="background: rgb(255, 255, 255);"
+        >
+          <span
+            class="nut-tag-text"
           >
-            <span
-              class="text"
-            >
-              厂商配送
-            </span>
-          </div>
+            厂商配送
+          </span>
         </div>
       </div>
       <div
@@ -524,22 +472,22 @@ exports[`shopTagTpl slot test 1`] = `
           class="nut-price "
         >
           <div
-            class="nut-price__symbol"
+            class="nut-price__symbol nut-price__symbol-large"
           >
-            ￥
+            ¥
           </div>
           <div
-            class="nut-price__big"
+            class="nut-price__integer nut-price__integer-large"
           >
             388
           </div>
           <div
-            class="nut-price__point"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             .
           </div>
           <div
-            class="nut-price__small"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             00
           </div>
@@ -548,22 +496,22 @@ exports[`shopTagTpl slot test 1`] = `
           class="nut-price nut-card__right__price__origin"
         >
           <div
-            class="nut-price__symbol"
+            class="nut-price__symbol nut-price__symbol-large"
           >
-            ￥
+            ¥
           </div>
           <div
-            class="nut-price__big"
+            class="nut-price__integer nut-price__integer-large"
           >
             378
           </div>
           <div
-            class="nut-price__point"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             .
           </div>
           <div
-            class="nut-price__small"
+            class="nut-price__decimal nut-price__decimal-large"
           >
             00
           </div>

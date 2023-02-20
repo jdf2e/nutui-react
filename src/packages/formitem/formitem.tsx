@@ -17,6 +17,7 @@ export interface FormItemProps extends BasicComponent, BaseFormField {
   errorMessageAlign: TextAlign
   showErrorLine: boolean
   showErrorMessage: boolean
+  initialValue: string
 }
 
 const defaultProps = {
@@ -30,6 +31,7 @@ const defaultProps = {
   errorMessageAlign: 'left',
   showErrorLine: true,
   showErrorMessage: true,
+  initialValue: '',
 } as FormItemProps
 
 export type FieldProps = typeof defaultProps & Partial<BaseFormField>
@@ -42,6 +44,8 @@ export class FormItem extends React.Component<FieldProps> {
   declare context: React.ContextType<typeof FormItemContext>
 
   private cancelRegister: any
+
+  private isInitialValue: boolean = false
 
   componentDidMount() {
     // 注册组件实例到FormStore
@@ -60,13 +64,20 @@ export class FormItem extends React.Component<FieldProps> {
     const { name } = this.props
     const type = (children as any).type.NAME
 
+    const defaultvalue =
+      this.props.initialValue || (children as any).props?.defaultValue
+    if (defaultvalue && !this.isInitialValue) {
+      setFieldsValue({ [name]: defaultvalue })
+      this.isInitialValue = true
+    }
+
     return {
-      value: getFieldValue(name),
+      defaultValue: getFieldValue(name),
       onChange: (
         event: React.ChangeEvent<HTMLInputElement> | number | string | string[]
       ) => {
         const originOnChange = (children as any).props.onChange
-        if(originOnChange){
+        if (originOnChange) {
           originOnChange(event)
         }
         let newValue = event
@@ -156,11 +167,18 @@ export class FormItem extends React.Component<FieldProps> {
   }
 
   render() {
-    const { children } = this.props
+    const { children, initialValue } = this.props
     const c = Array.isArray(children) ? children[0] : children
+
+    let restCNode = c as React.ReactElement
+    if (initialValue) {
+      restCNode = React.cloneElement(c as React.ReactElement, {
+        defaultValue: initialValue,
+      })
+    }
     const returnChildNode = React.cloneElement(
-      c as React.ReactElement,
-      this.getControlled(c as React.ReactElement)
+      restCNode,
+      this.getControlled(restCNode as React.ReactElement)
     )
     return this.renderLayout(returnChildNode)
   }

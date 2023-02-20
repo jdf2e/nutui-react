@@ -46,6 +46,7 @@ class FormStore {
       ...this.store,
       ...newStore,
     }
+
     this.fieldEntities.forEach((enetity: FieldEntity) => {
       const { name } = enetity.props
       Object.keys(newStore).forEach((key) => {

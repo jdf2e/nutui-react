@@ -502,6 +502,7 @@ export default App;
 | prev   | Switch to previous page   | -            |
 | next   | Switch to next page    | -            |
 | to     | Switch to the specified rotation | index:number |
+| resize`1.4.7`     | This method can be called to trigger redraw when the size of the outer element or the display state of the component changes | - |
 
 ## Theming
 
@@ -511,6 +512,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
+| --nutui-swiper-pagination-bottom | ` 12px`|
 | --nutui-swiper-pagination-item-background-color | `  #ddd` |
 | --nutui-swiper-pagination-item-width | `  8px` |
 | --nutui-swiper-pagination-item-height | `  3px` |

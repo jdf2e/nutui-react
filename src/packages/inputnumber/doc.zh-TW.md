@@ -63,7 +63,7 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react';
+import { InputNumber,Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
@@ -187,7 +187,7 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { InputNumber, Toast } from '@nutui/nutui-react';
+import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
   const [inputState, setInputState] = useState({
@@ -245,6 +245,10 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
+| --nutui-inputnumber-button-width`v1.4.8` | `12px` |
+| --nutui-inputnumber-button-height`v1.4.8` | `12px` |
+| --nutui-inputnumber-button-border-radius`v1.4.8` | `30px` |
+| --nutui-inputnumber-button-background-color`v1.4.8` | ` $gray6` |
 | --nutui-inputnumber-icon-color | `  $title-color` |
 | --nutui-inputnumber-icon-void-color | `  $disable-color` |
 | --nutui-inputnumber-icon-disabled-color | `  $gray2` |
@@ -254,6 +258,7 @@ export default App;
 | --nutui-inputnumber-input-background-color | `  $gray4` |
 | --nutui-inputnumber-input-border-radius | `  4px` |
 | --nutui-inputnumber-input-width | ` 40px` |
+| --nutui-inputnumber-input-height | ` 24px`|
 | --nutui-inputnumber-input-margin | `  0 6px` |
 | --nutui-inputnumber-input-border | ` 0` |
 | --nutui-inputnumber-border | ` 0` |

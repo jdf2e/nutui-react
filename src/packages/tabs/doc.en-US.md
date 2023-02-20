@@ -66,7 +66,34 @@ export default App;
 
 :::
 
-### Match by pane-key
+### Basic Usage - Title Left Align
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs, TabPane } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value} onChange={({ paneKey }) => {
+        setTab1value(paneKey)
+      }} leftAlign>
+        <TabPane title="Tab 1"> Tab 1 </TabPane>
+        <TabPane title="Tab 2"> Tab 2 </TabPane>
+        <TabPane title="Tab 3"> Tab 3 </TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### Match by paneKey
 
 :::demo
 
@@ -81,9 +108,9 @@ const App = () => {
       <Tabs value={tab2value} onChange={({ paneKey }) => {
         setTab2value(paneKey)
       }}>
-        <TabPane title="Tab 1" pane-key="0"> Tab 1 </TabPane>
-        <TabPane title="Tab 2" pane-key="1" disabled> Tab 2 </TabPane>
-        <TabPane title="Tab 3" pane-key="2"> Tab 3 </TabPane>
+        <TabPane title="Tab 1" paneKey="0"> Tab 1 </TabPane>
+        <TabPane title="Tab 2" paneKey="1" disabled> Tab 2 </TabPane>
+        <TabPane title="Tab 3" paneKey="2"> Tab 3 </TabPane>
       </Tabs>
     </>
   );
@@ -110,14 +137,14 @@ const App = () => {
       <Tabs value={tab2value} autoHeight onChange={({ paneKey }) => {
         setTab2value(paneKey)
       }}>
-        <TabPane title="Tab 1" pane-key="0">
+        <TabPane title="Tab 1" paneKey="0">
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
         </TabPane>
-        <TabPane title="Tab 2" pane-key="1"> Tab 2 </TabPane>
-        <TabPane title="Tab 3" pane-key="2"> Tab 3 </TabPane>
+        <TabPane title="Tab 2" paneKey="1"> Tab 2 </TabPane>
+        <TabPane title="Tab 3" paneKey="2"> Tab 3 </TabPane>
       </Tabs>
     </>
   );
@@ -133,7 +160,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Tabs, TabPane } from '@nutui/nutui-react';
 
 const App = () => {
@@ -358,6 +385,7 @@ export default App;
 | titleGutter  | Label gap                                      | number,string | 0          |
 | titleNode    | Custom Titles Area                     | `() => JSX.Element[]` | 0          |
 | size         | Tab bar font size optional value `large` `normal` `small` | string        | normal     |
+| leftAlign`v1.4.8` | Title Left Align | boolean | false |
 | autoHeight`v1.2.1` | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tabpane`. | boolean        | false     |
 
 ## Tabs Children
@@ -398,6 +426,8 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-tabs-titles-item-color | `  $title-color` |
 | --nutui-tabs-titles-item-active-color | `  $title-color` |
 | --nutui-tabs-titles-background-color | `  $background-color2` |
+| --nutui-tabs-horizontal-line-bottom`v1.4.8` | ` 15%` |
+| --nutui-tabs-horizontal-line-border-radius`v1.4.8` |` 0px`|
 | --nutui-tabs-horizontal-titles-height | `  46px` |
 | --nutui-tabs-horizontal-titles-item-min-width | `  50px` |
 | --nutui-tabs-horizontal-titles-item-active-line-width | `  40px` |

@@ -26,6 +26,7 @@
     &--warning {
       color: $dark6;
     }
+
     &--plain {
       background: $dark6;
 
@@ -56,6 +57,7 @@
     }
   }
 }
+
 .nut-button {
   position: relative;
   display: inline-block;
@@ -74,7 +76,7 @@
   touch-action: manipulation;
 
   .text {
-    margin-left: 5px;
+    margin-left: $button-text-icon-width;
   }
 
   &::before {
@@ -91,6 +93,7 @@
     opacity: 0;
     content: ' ';
   }
+
   &::after {
     border: none;
   }
@@ -151,6 +154,7 @@
   }
 
   &--plain {
+    color: $button-plain-color;
     background: $button-plain-background-color;
 
     &.nut-button--primary {
@@ -183,6 +187,10 @@
     width: 100%;
     height: $button-large-height;
     line-height: $button-large-line-height;
+
+    .text {
+      margin-left: $button-text-icon-large-width;
+    }
   }
 
   &--normal {
@@ -195,6 +203,21 @@
     line-height: $button-small-line-height;
     padding: $button-small-padding;
     font-size: $button-small-font-size;
+
+    .text {
+      margin-left: $button-text-icon-small-width;
+    }
+  }
+
+  &--mini {
+    height: $button-mini-height;
+    line-height: $button-mini-line-height;
+    padding: $button-mini-padding;
+    font-size: $button-mini-font-size;
+
+    .text {
+      margin-left: $button-text-icon-mini-width;
+    }
   }
 
   &--block {

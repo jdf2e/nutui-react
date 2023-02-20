@@ -1,4 +1,57 @@
-# v.14.5
+# v1.4.7
+`2023-02-15`
+
+* :sparkles: feat: swiper 新增重新计算尺寸方法，文档修改 (#649) @lkjh3214
+* :sparkles: feat: button 增加iconSize 属性，提取视觉元素变量 (#654) @xiaoyatong
+* :sparkles: feat: form表单组件新增initialValue初始值属性 (#671) @junjun666
+* :sparkles: feat: popup增加closeiconsize属性，提取元素变量 (#663) @xiaoyatong
+* :sparkles: feat: progress 提取元素变量，去掉无意义属性，增加fillcolor demo (#662) @xiaoyatong
+* :sparkles: feat: searchbar 新增 cleariconsize，提取元素变量 (#660) @xiaoyatong
+* :sparkles: feat: swipe 组件对外暴露 onTouchStart onTouchMove onTouchEnd 事件 (#656) @oasis-cloud
+* :sparkles: feat: swiper 增加元素变量提取 (#666) @xiaoyatong
+* :sparkles: feat: tabbar增加视觉变量，调整样式布局，支持独立配置icon大小 (#653) @xiaoyatong
+* :sparkles: feat: tag 增加iconSize属性，提取元素变量 (#657) @xiaoyatong
+* :bug: fix: ellipsis内存泄露 (#646) @Kason Yang
+* :bug: fix: numberkeyboard add new props overlay (#661) @Drjingfubo
+* :bug: fix: checkboxgroup options渲染 (#638) @Kason Yang
+* :bug: fix: docs “废弃”格式不一致，统一修复 (#652) @xiaoyatong
+* :bug: fix: jest waring (#651) @oasis-cloud
+* :bug: fix: radio 反转样式，不可选状态默认也不可选 (#659) @xiaoyatong
+* :bug: fix: 修改elevator组件自定义内容使用方式 (#630) @拧巴的猫
+* :bug: fix: 暗黑模式下部分组件样式问题 (#670) @xiaoyatong
+* 🔨 chore: 本地开发切换到模拟器后，刷新页面跳转到demo (#669) @oasis-cloud
+* 📖 docs: button 文档 (#655) @xiaoyatong
+* 📖 docs: progress 文档修改 (#673) @xiaoyatong
+
+
+# v1.4.6
+`2023-02-08`
+
+* :sparkles: feat: image 组件增加懒加载 (#615) @vickyYe
+* :sparkles: feat: sticky 适配 taro (#613) @libin0824
+* :bug: fix: 修复 fixednav 组件的 zIndex (#643) @oasis-cloud
+* :bug: fix: 修复 taro h5 有些 api 未导出导致报错 (#642) @oasis-cloud
+* :bug: fix: 修复 overlay 组件 style 不生效的问题 (#641) @oasis-cloud
+* :bug: fix: 修复获取元素的大小和位置信息未判断元素是否存在 (#640) @oasis-cloud
+* :bug: fix: 修复 taro h5 virtualList 组件demo中的字号 (#639) @oasis-cloud
+* :bug: fix: 修复 taro h5 有些 api 未导出导致报错 (#637) @oasis-cloud
+* :bug: fix: 修复 address 组件无法设置标题 (#622) @yangxiaolu1993
+* :bug: fix: 修复小程序环境下 overlay 组件滚动穿透的问题 (#621) @junjun666
+* :bug: fix: 修复 docs 在线调试问题。 (#631) @xiaoyatong
+* :bug: fix: 修复 FormItem 代理子元素 onChange 后忽略了原属性的问题 (#619) @sun
+* :bug: fix: SearchBar 组件样式修改，排版错误问题处理 (#632) @Ymm
+* :bug: fix: 补充 tag 组件缺少的样式变量，修复在线调试问题 (#635) @eiinu
+* :bug: fix: image 组件 demo 优化 (#636) @vickyYe
+* :bug: fix: noticebar 组件在卸载时不应该初始化动画 (#634) @oasis-cloud
+* :bug: fix: icon 组件未设置 width、height 时，不应出现在 style 上 (#628) @oasis-cloud
+* :bug: fix: input 组件在暗黑模式下 label 颜色错误 (#627) @oasis-cloud
+* :bug: fix: popup 动效优化 (#620) @xiaoyatong
+* :bug: fix: image 组件更新后无法移除 loading 状态 (#625) @oasis-cloud
+* 🔨 chore: 删除 avatar 不必要的打印日志 (#623) @Antee
+* 🔨 chore: 开发环境优化 (#626) @oasis-cloud
+
+
+# v.1.4.5
 `2023-02-01`
 
 * :sparkles: feat: virtuallist 组件适配 taro (#602) @vickyYe

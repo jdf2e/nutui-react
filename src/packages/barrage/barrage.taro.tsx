@@ -4,7 +4,7 @@ import React, {
   useRef,
   useImperativeHandle,
 } from 'react'
-import Taro from '@tarojs/taro'
+import { createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 
@@ -80,7 +80,7 @@ const InternalBarrage: ForwardRefRenderFunction<
     el.classList.add('barrage-item')
     ;(barrageContainer.current as HTMLDivElement).appendChild(el)
 
-    Taro.createSelectorQuery()
+    createSelectorQuery()
       .select('.barrage-item')
       .boundingClientRect((res) => {
         console.log('res', res)

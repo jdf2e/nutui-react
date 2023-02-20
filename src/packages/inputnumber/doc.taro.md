@@ -62,7 +62,7 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react-taro';
+import { InputNumber,Toast } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [inputState, setInputState] = useState({
@@ -128,6 +128,53 @@ export default App;
 ```
 :::
 
+
+### 设置按钮样式
+
+可使用`ConfigProvider`组件来设置按钮样式。
+
+:::demo
+```tsx
+import React, { useState } from "react";
+import { InputNumber, ConfigProvider } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [inputState, setInputState] = useState({
+    val: 1,
+  })
+
+  const customTheme = {
+    nutuiInputnumberButtonWidth: '30px',
+    nutuiInputnumberButtonHeight: '30px',
+    nutuiInputnumberButtonBorderRadius: '2px',
+    nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
+    nutuiInputnumberInputHeight: '30px',
+    nutuiInputnumberInputMargin: '0 2px',
+  }
+
+  const customTheme2 = {
+    nutuiInputnumberButtonWidth: '30px',
+    nutuiInputnumberButtonHeight: '30px',
+    nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
+    nutuiInputnumberInputBackgroundColor: '#fff',
+    nutuiInputnumberInputMargin: '0 2px',
+  }
+
+  return (
+    <>
+      <ConfigProvider theme={customTheme}>
+        <InputNumber modelValue={inputState.val5} />
+      </ConfigProvider>
+      <ConfigProvider theme={customTheme2}>
+        <InputNumber modelValue={inputState.val5} />
+      </ConfigProvider>
+    </>
+  )
+}
+export default App;
+```
+:::
+
 ### 支持小数点
 
 设置步长 `step` 0.1  `decimal-places` 小数保留1位
@@ -186,7 +233,7 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { InputNumber, Toast } from '@nutui/nutui-react-taro';
+import { InputNumber } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [inputState, setInputState] = useState({
@@ -223,17 +270,17 @@ export default App;
 
 | 事件名    | 说明                   | 回调参数                       |
 |-----------|------------------------|--------------------------------|
-| add  `v1.3.8废弃`     | 点击增加按钮时触发     | event: Event                   |
+| add  `v1.3.8 废弃`     | 点击增加按钮时触发     | event: Event                   |
 | onAdd  `v1.3.8`     | 点击增加按钮时触发     | event: Event                   |
-| reduce   `v1.3.8废弃` | 点击减少按钮时触发     | event: Event                   |
+| reduce   `v1.3.8 废弃` | 点击减少按钮时触发     | event: Event                   |
 | onReduce   `v1.3.8` | 点击减少按钮时触发     | event: Event                   |
-| overlimit `v1.3.8废弃` | 点击不可用的按钮时触发 | event: Event                   |
+| overlimit `v1.3.8 废弃` | 点击不可用的按钮时触发 | event: Event                   |
 | onOverlimit `v1.3.8` | 点击不可用的按钮时触发 | event: Event                   |
-| change `v1.3.8废弃`    | 值改变时触发           | value:  number , event : Event |
+| change `v1.3.8 废弃`    | 值改变时触发           | value:  number , event : Event |
 | onChangeFuc `v1.3.8`    | 值改变时触发           | value:  number , event : Event |
-| blur `v1.3.8废弃`      | 输入框失去焦点时触发   | event: Event                   |
+| blur `v1.3.8 废弃`      | 输入框失去焦点时触发   | event: Event                   |
 | onBlurFuc `v1.3.8`      | 输入框失去焦点时触发   | event: Event                   |
-| focus `v1.3.8废弃`     | 输入框获得焦点时触发   | event: Event                   |
+| focus `v1.3.8 废弃`     | 输入框获得焦点时触发   | event: Event                   |
 | onFocus `v1.3.8`     | 输入框获得焦点时触发   | event: Event                   |
 
 ## 主题定制
@@ -244,6 +291,10 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
+| --nutui-inputnumber-button-width`v1.4.8` | `12px` |
+| --nutui-inputnumber-button-height`v1.4.8` | `12px` |
+| --nutui-inputnumber-button-border-radius`v1.4.8` | `30px` |
+| --nutui-inputnumber-button-background-color`v1.4.8` | ` $gray6` |
 | --nutui-inputnumber-icon-color | `  $title-color` |
 | --nutui-inputnumber-icon-void-color | `  $disable-color` |
 | --nutui-inputnumber-icon-disabled-color | `  $gray2` |
@@ -253,6 +304,7 @@ export default App;
 | --nutui-inputnumber-input-background-color | `  $gray4` |
 | --nutui-inputnumber-input-border-radius | `  4px` |
 | --nutui-inputnumber-input-width | ` 40px` |
+| --nutui-inputnumber-input-height | ` 24px`|
 | --nutui-inputnumber-input-margin | `  0 6px` |
 | --nutui-inputnumber-input-border | ` 0` |
 | --nutui-inputnumber-border | ` 0` |

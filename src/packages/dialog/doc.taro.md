@@ -4,7 +4,7 @@
 
 模态对话框，在浮层中显示，引导用户进行相关操作，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。
 
-弹出框组件支持函数调用和组件调用两种方式。
+弹出框组件支持组件调用。
 
 ### 安装
 
@@ -14,50 +14,6 @@ import { Dialog } from '@nutui/nutui-react-taro'
 
 
 ## 代码演示
-
-### 函数式调用
-
-:::demo
-
-```tsx
-import React from "react";
-import { Cell,Dialog } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Cell title="基础弹框" onClick={() => {
-        Dialog.alert({
-            title: '基础弹框',
-            content: '支持函数调用和组件调用两种方式。'
-        });
-        }} />
-      <Cell title="无标题弹框" onClick={() => {
-            Dialog.alert({
-            content: '无标题弹框'
-        });
-        }} />
-      <Cell title="提示弹框" onClick={() => {
-        Dialog.alert({
-            title: '温馨提示',
-            content: '支持函数调用和组件调用两种方式。',
-            noCancelBtn: true
-        });
-        }} />
-      <Cell title="底部按钮 垂直调用" onClick={() => {
-        Dialog.alert({
-            title: '温馨提示',
-            content: '支持函数调用和组件调用两种方式。',
-            footerDirection: 'vertical'
-        });
-        }} />
-    </>
-  )
-}
-export default App;
-```
-
-:::
 
 ### 组件调用
 
