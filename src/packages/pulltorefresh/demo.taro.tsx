@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { PullToRefresh, Cell, Toast } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 
 const PullToRefreshDemo = () => {
-  const [translated] = useTranslate<TSideNavBarDemo>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
     },
