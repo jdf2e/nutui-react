@@ -175,10 +175,12 @@ export default App;
 | 名称 | 默认值 |
 | --- | --- |
 | --nutui-switch-close-bg-color | ` #ebebeb` |
-| --nutui-switch-close--cline-bg-color | `  #f0f0f0` |
+| --nutui-switch-close--line-bg-color | `  #f0f0f0` |
 | --nutui-switch-width | ` 36px` |
 | --nutui-switch-height | ` 21px` |
 | --nutui-switch-line-height | ` 21px` |
 | --nutui-switch-border-radius | ` 21px` |
 | --nutui-switch-inside-width | ` 13px` |
 | --nutui-switch-inside-height | ` 13px` |
+| --nutui-switch-inside-open-transform | ` translateX(146%)` |
+| --nutui-switch-inside-close-transform | ` translateX(30%)` |

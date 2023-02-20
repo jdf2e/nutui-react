@@ -2,7 +2,9 @@ import React, { FunctionComponent, useState, useEffect } from 'react'
 
 import bem from '@/utils/bem'
 
-export interface SwitchProps {
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface SwitchProps extends BasicComponent {
   isAsync: boolean
   checked: boolean
   disable: boolean
@@ -15,6 +17,7 @@ export interface SwitchProps {
   onChange: (val: boolean, event: React.MouseEvent) => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   isAsync: false,
   checked: false,
   disable: false,
