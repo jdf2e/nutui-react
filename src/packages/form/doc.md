@@ -78,36 +78,50 @@ import  React from "react";
 import { Form, Input, Cell } from '@nutui/nutui-react';
 
 const App = () => {
+  // 函数校验
+  const customValidator = (rule: FormItemRuleWithoutValidator, value: string) => {
+    return /^\d+$/.test(value)
+  }
+
+  const valueRangeValidator = (rule: FormItemRuleWithoutValidator, value: string) => {
+    return /^(\d{1,2}|1\d{2}|200)$/.test(value)
+  }
   return (
     <>
       <Form
         onFinish={(obj) => submitSucceed(obj)}
         onFinishFailed={(error) => submitFailed(error)}
       >
-        <Form.Item label='姓名' name="username">
+        <Form.Item label='姓名' name="username" rules={[{ required: true, message: '请输入姓名' }]}>
           <Input
             className="nut-input-text"
             placeholder='请输入姓名'
             type="text"
           />
         </Form.Item>
-        <Form.Item label='年龄' name="age">
-          <Input placeholder='请填写年龄' type="number" />
+        <Form.Item label='年龄' name="age" rules={[
+          { required: true, message: '请输入年龄' },
+          { validator: customValidator, message: '必须输入数字' },
+          { validator: valueRangeValidator, message: '必须输入0-200区间' },
+        ]}>
+          <Input placeholder='请输入年龄，必须数字且0-200区间' type="number" />
         </Form.Item>
-        <Form.Item label='联系电话' name="tel">
+        <Form.Item label='联系电话' name="tel" rules={[{ required: true, message: '请输入联系电话' }]}>
           <Input placeholder='请填写联系电话' type="number" />
         </Form.Item>
-        <Form.Item label='地址' name="address">
+        <Form.Item label='地址' name="address" rules={[{ required: true, message: '请输入地址' }]}>
           <Input placeholder='请填写地址' type="text" />
         </Form.Item>
         <Cell>
           <input type="submit" value='提交' />
+          <input type="reset" style={{ marginLeft: '15px' }}
+            value="重置提示状态"
+          />
         </Cell>
       </Form>
     </>
   )
 }
-
 
 export default App;
 ```
@@ -302,6 +316,7 @@ Form.useForm()创建 Form 实例，用于管理所有数据状态。
 |-------------------|-----------------------------|-----|---------|
 | getFieldValue | 获取对应字段名的值 | - | (name: NamePath) => any |
 | setFieldsValue | 设置表单的值 | - | (values) => void |
+| resetFields`1.4.8` | 重置表单提示状态 | - | () => void |
 | submit | 提交表单进行校验的方法 | - | Promise |
 
 

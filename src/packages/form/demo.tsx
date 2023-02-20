@@ -10,6 +10,7 @@ import Radio from '../radio'
 import Rate from '../rate'
 import Range from '../range'
 import Toast from '@/packages/toast'
+import { FormItemRuleWithoutValidator } from './types'
 import { FileItem, FileType } from '../uploader/uploader'
 
 interface T {
@@ -70,7 +71,7 @@ const FormDemo = () => {
       nameTip1: '请输入姓名',
       age: '年龄',
       ageTip: '请输入年龄',
-      ageTip1: '请输入年龄',
+      ageTip1: '请输入年龄，必须数字且0-200区间',
       ageTip2: '必须输入数字',
       ageTip3: '必须输入0-200区间',
       tel: '联系电话',
@@ -129,7 +130,7 @@ const FormDemo = () => {
       add: 'Add',
       remove: 'Remove',
       submit: 'Submit',
-      reset: 'Reset prompt status',
+      reset: 'Reset alert state',
       switch: 'Switch',
       checkbox: 'Checkbox',
       radiogroup: 'RadioGroup',
@@ -197,6 +198,21 @@ const FormDemo = () => {
     }
   }
 
+  // 函数校验
+  const customValidator = (
+    rule: FormItemRuleWithoutValidator,
+    value: string
+  ) => {
+    return /^\d+$/.test(value)
+  }
+
+  const valueRangeValidator = (
+    rule: FormItemRuleWithoutValidator,
+    value: string
+  ) => {
+    return /^(\d{1,2}|1\d{2}|200)$/.test(value)
+  }
+
   return (
     <>
       <div className="demo">
@@ -260,17 +276,38 @@ const FormDemo = () => {
           >
             <Input placeholder={translated.nameTip1} type="text" />
           </Form.Item>
-          <Form.Item label={translated.age} name="age">
-            <Input placeholder={translated.ageTip1} type="number" />
+          <Form.Item
+            label={translated.age}
+            name="age"
+            rules={[
+              { required: true, message: translated.ageTip },
+              { validator: customValidator, message: translated.ageTip2 },
+              { validator: valueRangeValidator, message: translated.ageTip3 },
+            ]}
+          >
+            <Input placeholder={translated.ageTip1} type="text" />
           </Form.Item>
-          <Form.Item label={translated.tel} name="tel">
+          <Form.Item
+            label={translated.tel}
+            name="tel"
+            rules={[{ required: true, message: translated.telTip }]}
+          >
             <Input placeholder={translated.telTip2} type="number" />
           </Form.Item>
-          <Form.Item label={translated.address} name="address">
+          <Form.Item
+            label={translated.address}
+            name="address"
+            rules={[{ required: true, message: translated.addressTip }]}
+          >
             <Input placeholder={translated.addressTip} type="text" />
           </Form.Item>
           <Cell>
             <input type="submit" value={translated.submit} />
+            <input
+              type="reset"
+              style={{ marginLeft: '15px' }}
+              value={translated.reset}
+            />
           </Cell>
         </Form>
 
@@ -298,6 +335,7 @@ const FormDemo = () => {
             <input type="submit" value={translated.submit} />
           </Cell>
         </Form>
+
         <h2>{translated.title4}</h2>
         <Form
           form={form}
@@ -325,6 +363,7 @@ const FormDemo = () => {
             <input type="submit" value={translated.submit} />
           </Cell>
         </Form>
+
         <h2>{translated.title5}</h2>
         <Form
           onFinish={(obj) => submitSucceed(obj)}
