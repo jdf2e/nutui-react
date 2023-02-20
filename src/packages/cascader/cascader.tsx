@@ -71,7 +71,7 @@ const defaultProps = {
 const InternalCascader: ForwardRefRenderFunction<
   unknown,
   PropsWithChildren<Partial<CascaderProps>>
-> = (props) => {
+> = (props, ref) => {
   const {
     className,
     style,
@@ -96,7 +96,7 @@ const InternalCascader: ForwardRefRenderFunction<
   } = { ...defaultProps, ...props }
 
   const [tabvalue, setTabvalue] = useState('c1')
-  const [optiosData, setOptiosData] = useState<CascaderPane[]>([])
+  const [optionsData, setOptionsData] = useState<CascaderPane[]>([])
 
   const isLazy = () => state.configs.lazy && Boolean(state.configs.lazyLoad)
 
@@ -182,7 +182,7 @@ const InternalCascader: ForwardRefRenderFunction<
     ]
     syncValue()
 
-    setOptiosData(state.panes)
+    setOptionsData(state.panes)
   }
   // 处理有默认值时的数据
   const syncValue = async () => {
@@ -193,7 +193,6 @@ const InternalCascader: ForwardRefRenderFunction<
 
     if (currentValue.length === 0) {
       state.tabsCursor = 0
-      // state.panes = [{ nodes: state.tree.nodes, selectedNode: null }];
       return
     }
 
@@ -310,12 +309,11 @@ const InternalCascader: ForwardRefRenderFunction<
         onChange(optionParams, pathNodes)
         onPathChange(optionParams, pathNodes)
       }
-      setOptiosData(state.panes)
+      setOptionsData(state.panes)
       close()
       return
     }
     // 如果有子节点，滑到下一个
-    // if (node.children && node.children.length > 0) {
     if (state.tree.hasChildren(node, isLazy())) {
       const level = (node.level as number) + 1
 
@@ -328,7 +326,7 @@ const InternalCascader: ForwardRefRenderFunction<
         paneKey: `c${state.tabsCursor + 1}`,
       })
       setTabvalue(`c${state.tabsCursor + 1}`)
-      setOptiosData(state.panes)
+      setOptionsData(state.panes)
 
       if (!type) {
         const pathNodes = state.panes.map((item) => item.selectedNode)
@@ -349,7 +347,7 @@ const InternalCascader: ForwardRefRenderFunction<
       state.panes[state.tabsCursor].selectedNode = node
       chooseItem(node, type)
     }
-    setOptiosData(state.panes)
+    setOptionsData(state.panes)
   }
 
   const renderItem = () => {
@@ -359,7 +357,7 @@ const InternalCascader: ForwardRefRenderFunction<
         <Tabs
           value={tabvalue}
           titleNode={() => {
-            return optiosData.map((pane, index) => (
+            return optionsData.map((pane, index) => (
               <div
                 onClick={() => {
                   setTabvalue(pane.paneKey)
@@ -371,11 +369,6 @@ const InternalCascader: ForwardRefRenderFunction<
                 key={pane.paneKey}
               >
                 <span className="nut-tabs__titles-item__text">
-                  {/* {!state.initLoading && state.panes.length
-                    ? pane?.selectedNode?.text
-                      ? pane.selectedNode.text
-                      : '请选择'
-                    : 'Loading...'} */}
                   {!state.initLoading &&
                     state.panes.length &&
                     pane?.selectedNode?.text}
@@ -394,7 +387,7 @@ const InternalCascader: ForwardRefRenderFunction<
           }}
         >
           {!state.initLoading && state.panes.length ? (
-            optiosData.map((pane) => (
+            optionsData.map((pane) => (
               <TabPane key={pane.paneKey} paneKey={pane.paneKey}>
                 <div className={classesPane}>
                   {pane.nodes &&
