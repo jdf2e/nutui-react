@@ -111,24 +111,45 @@ import  React from "react";
 import { Form, Input, Cell } from '@nutui/nutui-react';
 
 const App = () => {
+  // 函数校验
+  const customValidator = (rule: FormItemRuleWithoutValidator, value: string) => {
+    return /^\d+$/.test(value)
+  }
+
+  const valueRangeValidator = (rule: FormItemRuleWithoutValidator, value: string) => {
+    return /^(\d{1,2}|1\d{2}|200)$/.test(value)
+  }
   return (
     <>
       <Form
         onFinish={(obj) => submitSucceed(obj)}
         onFinishFailed={(error) => submitFailed(error)}
       >
-        <Form.Item label='Name' name="username" initialValue="zhangsan">
+        <Form.Item label='Name' name="username" rules={[{ required: true, message: 'Please enter your name' }]}>
           <Input
             className="nut-input-text"
             placeholder='Please enter your name'
             type="text"
           />
         </Form.Item>
-        <Form.Item label='Age' name="age">
-          <Input placeholder='Please enter age' type="number" defaultValue="18" />
+        <Form.Item label='Age' name="age" rules={[
+          { required: true, message: 'Please enter age' },
+          { validator: customValidator, message: 'must enter number' },
+          { validator: valueRangeValidator, message: '0-200 range must be entered' },
+        ]}>
+          <Input placeholder='Please enter the age, it must be a number and the range is 0-200' type="number" />
+        </Form.Item>
+        <Form.Item label='Tel' name="tel" rules={[{ required: true, message: 'please enter tel' }]}>
+          <Input placeholder='please enter tel' type="number" />
+        </Form.Item>
+        <Form.Item label='Address' name="address" rules={[{ required: true, message: 'Please enter address' }]}>
+          <Input placeholder='Please enter address' type="text" />
         </Form.Item>
         <Cell>
           <input type="submit" value='Submit' />
+          <input type="reset" style={{ marginLeft: '15px' }}
+            value="Reset notification status"
+          />
         </Cell>
       </Form>
     </>
@@ -283,6 +304,7 @@ Form.useForm() creates a Form instance, which is used to manage all data states.
 |-------------------|-----------------------------|-----|---------|
 | getFieldValue | Get the value of the corresponding field name | - | (name: NamePath) => any |
 | setFieldsValue | Set the value of the form | - | (values) => void |
+| resetFields`1.4.8` | Reset form prompt state | - | () => void |
 | submit | the function of submit the form | - | Promise |
 
 

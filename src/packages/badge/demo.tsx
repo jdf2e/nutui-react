@@ -4,15 +4,28 @@ import { Badge } from './badge'
 import Cell from '@/packages/cell'
 import CellGroup from '@/packages/cellgroup'
 import Avatar from '@/packages/avatar'
+import ConfigProvider from '@/packages/configprovider'
 
 interface T {
   '8ab98966': string
   '1e7a2282': string
   '781b07fd': string
   '1c730245': string
+  '1c730248': string
   '915d7b01': string
   f1089312: string
 }
+
+const customTheme = {
+  nutuiBadgeBorderRadius: '12px 12px 12px 0',
+}
+
+const customTheme2 = {
+  nutuiBadgeDotWidth: '14px',
+  nutuiBadgeDotHeight: '14px',
+  nutuiBadgeBorder: '2px solid #fff',
+}
+
 const BadgeDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -20,6 +33,7 @@ const BadgeDemo = () => {
       '1e7a2282': '最大值',
       '781b07fd': '自定义颜色',
       '1c730245': '自定义徽标内容',
+      '1c730248': '自定义徽标样式',
       '915d7b01': '自定义位置',
       f1089312: '独立展示',
     },
@@ -28,16 +42,18 @@ const BadgeDemo = () => {
       '1e7a2282': '最大值',
       '781b07fd': '自定义颜色',
       '1c730245': '自定义徽标内容',
+      '1c730248': '自定义徽标样式',
       '915d7b01': '自定义位置',
       f1089312: '独立展示',
     },
     'en-US': {
-      '8ab98966': '默认用法',
-      '1e7a2282': '最大值',
-      '781b07fd': '自定义颜色',
-      '1c730245': '自定义徽标内容',
-      '915d7b01': '自定义位置',
-      f1089312: '独立展示',
+      '8ab98966': 'Basic usage',
+      '1e7a2282': 'Max Size',
+      '781b07fd': 'Custom Color',
+      '1c730245': ' Custom Context',
+      '1c730248': 'Custom CSS',
+      '915d7b01': 'Custom Position',
+      f1089312: 'Display Alone',
     },
   })
 
@@ -119,6 +135,23 @@ const BadgeDemo = () => {
             <Badge icons="download">
               <Avatar icon="my" shape="square" />
             </Badge>
+          </Cell>
+        </CellGroup>
+
+        <h2>{translated['1c730248']}</h2>
+        <CellGroup>
+          <Cell>
+            <ConfigProvider theme={customTheme}>
+              <Badge value="NEW">
+                <Avatar icon="my" shape="square" />
+              </Badge>
+            </ConfigProvider>
+
+            <ConfigProvider theme={customTheme2}>
+              <Badge dot top="2" right="8">
+                <Avatar icon="my" shape="square" />
+              </Badge>
+            </ConfigProvider>
           </Cell>
         </CellGroup>
 
