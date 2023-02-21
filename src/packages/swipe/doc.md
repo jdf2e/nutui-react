@@ -39,6 +39,68 @@ export default App;
 ```
 :::
 
+### 通过实例方法控制
+
+:::demo
+```tsx
+import React from "react";
+import { Swipe, Cell, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const closeRef = useRef(null)
+  const openRef = useRef(null)
+  return <>
+    <Swipe
+      ref={openRef}
+      rightAction={
+        <Button shape="square" type="danger">
+          删除
+        </Button>
+      }
+    >
+      <Cell title='点击下方按钮打开或关闭' roundRadius={0} />
+    </Swipe>
+    <Button onClick={() => openRef.current?.open()}>
+      打开
+    </Button>
+    <Button onClick={() => openRef.current?.close()}>
+      关闭
+    </Button>
+  </>
+}
+export default App;
+```
+:::
+
+### 点击关闭
+
+:::demo
+```tsx
+import React from "react";
+import { Swipe, Cell, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const closeRef = useRef(null)
+  return <>
+    <Swipe
+      ref={openRef}
+      rightAction={
+        <Button shape="square" type="danger">
+          删除
+        </Button>
+      }
+      onActionClick={() => {
+        closeRef.current.close()
+      }}
+    >
+      <Cell title='点击右侧按钮关闭' roundRadius={0} />
+    </Swipe>
+  </>
+}
+export default App;
+```
+:::
+
 ### 禁用滑动
 
 :::demo
@@ -209,6 +271,13 @@ export default App;
 | onTouchStart`v1.4.7` | ontouchStart | _event: Event      |
 | onTouchMove`v1.4.7`         | ontouchmove  | _event: Event     |
 | onTouchEnd`v1.4.7`          | ontouchend   | _event: Event     |
+
+## Swipe 实例方法
+
+| 方法名   | 说明 | 参数 |
+|-------|--| ----- |
+| open | 打开 | `left\|right` |
+| close | 关闭 | - |
 
 ## 主题定制
 
