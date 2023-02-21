@@ -87,7 +87,9 @@ const CalendarDemo = () => {
       '6ab47cd2': 'This Month',
     },
   })
-  const [date, setDate] = useState('2022-08-10')
+  const d = new Date()
+  const currDay = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
+  const [date, setDate] = useState(currDay)
   const [date1, setDate1] = useState(['2020-01-23', '2020-01-26'])
   const [date2, setDate2] = useState('2020-07-08')
   const [date3, setDate3] = useState('')
@@ -227,13 +229,18 @@ const CalendarDemo = () => {
   const onDay = (date: Day) => {
     return <span>{date.day <= 9 ? `0${date.day}` : date.day}</span>
   }
+  const onTopInfo = (date: Day) => {
+    let currDate = ''
+    if (date && date.day === 10) {
+      currDate = '☺'
+    }
+    return <span className="info">{currDate}</span>
+  }
 
   const onBottomInfo = (date: Day) => {
     let currDate = ''
-    if (date && date.day <= 10 && date.day > 20) {
-      currDate = ''
-    } else {
-      currDate = 'mid'
+    if (date && date.day === 10) {
+      currDate = '纪念日'
     }
     return <span className="info">{currDate}</span>
   }
@@ -273,7 +280,7 @@ const CalendarDemo = () => {
           visible={isVisible}
           showTitle={false}
           defaultValue={date}
-          startDate="2022-01-11"
+          // startDate="2022-01-11"
           endDate="2029-11-30"
           onClose={closeSwitch}
           onChoose={setChooseValue}
@@ -374,6 +381,7 @@ const CalendarDemo = () => {
           startText="enter"
           endText="leave"
           onDay={onDay}
+          onTopInfo={onTopInfo}
           onBottomInfo={onBottomInfo}
           onClose={closeSwitch6}
           onChoose={setChooseValue6}
