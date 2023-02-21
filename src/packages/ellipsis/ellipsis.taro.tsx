@@ -52,7 +52,6 @@ export const Ellipsis: FunctionComponent<
     onClick,
     onChange,
   } = { ...defaultProps, ...props }
-  const container: any = null
   let maxHeight: any = 0 // 当行的最大高度
   const [exceeded, setExceeded] = useState(false)
   const [expanded, setExpanded] = useState(false)
@@ -274,7 +273,6 @@ export const Ellipsis: FunctionComponent<
     if (type === 1) {
       setExpanded(true)
       onChange && onChange('expand')
-      //   emit('change', 'expand')
     } else {
       setExpanded(false)
       onChange && onChange('collapse')
@@ -305,7 +303,8 @@ export const Ellipsis: FunctionComponent<
                 {expandText ? (
                   <span
                     className="nut-ellipsis-text"
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.stopPropagation()
                       clickHandle(1)
                     }}
                   >
@@ -323,7 +322,8 @@ export const Ellipsis: FunctionComponent<
               {expandText ? (
                 <span
                   className="nut-ellipsis-text"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation()
                     clickHandle(2)
                   }}
                 >
