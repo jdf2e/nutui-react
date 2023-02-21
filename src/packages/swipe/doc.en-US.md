@@ -31,7 +31,70 @@ const App = () => {
         </Button>
       }
     >
-      <cell title= "left slide delete" roundradius={0} / >
+      <cell title= "left slide delete" />
+    </Swipe>
+  </>
+}
+export default App;
+```
+:::
+
+
+### Control via instance method
+
+:::demo
+```tsx
+import React from "react";
+import { Swipe, Cell, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const closeRef = useRef(null)
+  const openRef = useRef(null)
+  return <>
+    <Swipe
+      ref={openRef}
+      rightAction={
+        <Button shape="square" type="danger">
+          Delete
+        </Button>
+      }
+    >
+      <Cell title='Click the button below to open or close' roundRadius={0} />
+    </Swipe>
+    <Button onClick={() => openRef.current?.open()}>
+      Open
+    </Button>
+    <Button onClick={() => openRef.current?.close()}>
+      Close
+    </Button>
+  </>
+}
+export default App;
+```
+:::
+
+### Click to close
+
+:::demo
+```tsx
+import React from "react";
+import { Swipe, Cell, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const closeRef = useRef(null)
+  return <>
+    <Swipe
+      ref={openRef}
+      rightAction={
+        <Button shape="square" type="danger">
+          Delete
+        </Button>
+      }
+      onActionClick={() => {
+        closeRef.current.close()
+      }}
+    >
+      <Cell title='Click the right button to close' roundRadius={0} />
     </Swipe>
   </>
 }
@@ -58,7 +121,7 @@ const App = () => {
       }
       disabled
     >
-      <cell title= "disable sliding" roundradius={0} / >
+      <cell title= "disable sliding" />
     </Swipe>
   </>
 }
@@ -220,6 +283,14 @@ export default App;
 | onTouchStart`v1.4.7` | ontouchStart | _event: Event      |
 | onTouchMove`v1.4.7`         | ontouchmove  | _event: Event     |
 | onTouchEnd`v1.4.7`          | ontouchend   | _event: Event     |
+
+## Swipe 实例方法
+
+| API           | Description | Callback parameters |
+|---------------|-------------| ----- |
+| open | open swipe  | `left\|right` |
+| close | close swipe    | - |
+
 ## Theming
 
 ### CSS Variables

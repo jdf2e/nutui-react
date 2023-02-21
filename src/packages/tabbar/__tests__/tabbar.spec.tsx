@@ -93,10 +93,10 @@ test('should match active tabbar by click', async () => {
 })
 
 test('should show sure emitted when click', async () => {
-  const tabSwitch = jest.fn()
+  const onSwitch = jest.fn()
   const { container } = render(
     <>
-      <Tabbar unactiveColor="grey" activeColor="blue" tabSwitch={tabSwitch}>
+      <Tabbar unactiveColor="grey" activeColor="blue" onSwitch={onSwitch}>
         <TabbarItem tabTitle="首页" icon="home" num="11" />
         <TabbarItem tabTitle="分类" icon="category" />
         <TabbarItem tabTitle="发现" icon="find" />
@@ -107,5 +107,5 @@ test('should show sure emitted when click', async () => {
   const tabbarItem: NodeListOf<HTMLElement> =
     container.querySelectorAll('.nut-tabbar-item')
   fireEvent.click(tabbarItem[1])
-  expect(tabSwitch).toBeCalled()
+  expect(onSwitch).toBeCalled()
 })

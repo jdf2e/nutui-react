@@ -437,9 +437,9 @@ export default CheckboxGroupOptions;
 
 ## Checkbox.Group API
 
-| 方法名 | 说明 | 参数 |
-|----- | ----- | ----- |
-| toggleAll | Select all / cancel | `f`,`true`,to select all，`false`,cancel the selection |
+| API           | Description | Callback parameters |
+|---------------| ----- | ----- |
+| toggleAll     | Select all / cancel | `f`,`true`,to select all，`false`,cancel the selection |
 | toggleReverse | Reverse selection | - |
 
 ## Theming
