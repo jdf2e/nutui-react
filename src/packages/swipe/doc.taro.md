@@ -176,6 +176,9 @@ import { SwipeInstance } from '@/packages/Swipe'
 
 const App = () => {
   const refDom = useRef<SwipeInstance>(null)
+  const pRef = useRef('left')
+  const [showDialog, setShowDialog] = useState(false)
+  
   const beforeClose = (postion: string) => {
     Dialog.alert({
       title: '提示',
@@ -204,6 +207,11 @@ const App = () => {
     >
       <Cell title="事件" />
     </Swipe>
+    <Dialog visible={showDialog} title="提示"
+            onOk={() => {
+              refDom.current && refDom.current.close();
+              setShowDialog(false)
+            }}>{postion === 'left' ? '确定选择吗？' : '确定删除吗？'}</Dialog>
   </>
 }
 export default App;

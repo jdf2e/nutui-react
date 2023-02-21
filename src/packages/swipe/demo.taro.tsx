@@ -147,6 +147,7 @@ const SwipeDemo = () => {
   })
   const [show, SetShow] = useState(false)
   const [toastMsg, SetToastMsg] = useState('')
+  const [showDialog, setShowDialog] = useState(false)
   const toastShow = (msg: any) => {
     SetToastMsg(msg)
     SetShow(true)
@@ -156,15 +157,18 @@ const SwipeDemo = () => {
   const handleChange = () => {
     toastShow(translated.click)
   }
+  const pRef = useRef('left')
   const beforeClose = (postion: string) => {
-    Dialog.alert({
-      title: translated.tips,
-      content:
-        postion === 'left' ? translated.chooseTips : translated.deleteTips,
-      onOk: () => {
-        refDom.current && refDom.current.close()
-      },
-    })
+    // Dialog.alert({
+    //   title: translated.tips,
+    //   content:
+    //     postion === 'left' ? translated.chooseTips : translated.deleteTips,
+    //   onOk: () => {
+    //     refDom.current && refDom.current.close()
+    //   },
+    // })
+    pRef.current = postion
+    setShowDialog(true)
   }
 
   const handleClose = () => {
@@ -309,6 +313,18 @@ const SwipeDemo = () => {
             SetShow(false)
           }}
         />
+        <Dialog
+          visible={showDialog}
+          title={translated.tips}
+          onClosed={() => {
+            refDom.current && refDom.current.close()
+            setShowDialog(false)
+          }}
+        >
+          {pRef.current === 'left'
+            ? translated.chooseTips
+            : translated.deleteTips}
+        </Dialog>
       </div>
     </>
   )
