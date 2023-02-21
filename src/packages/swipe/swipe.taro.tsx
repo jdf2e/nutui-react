@@ -7,7 +7,7 @@ import React, {
   useImperativeHandle,
   useEffect,
 } from 'react'
-import { createSelectorQuery, nextTick, useReady } from '@tarojs/taro'
+import { nextTick, useReady } from '@tarojs/taro'
 import bem from '@/utils/bem'
 import { useTouch } from '@/utils/useTouch'
 import { getRectByTaro } from '@/utils/useClientRect'
@@ -133,15 +133,6 @@ export const Swipe = forwardRef<
   )
 
   const onTouchStart = async (event: Event) => {
-    // if (leftWrapper.current) {
-    //   const leftRect = await getRectByTaro(leftWrapper.current)
-    //   setActionWidth((v) => ({ ...v, left: leftRect.width }))
-    // }
-    // if (rightWrapper.current) {
-    //   const rightRect = await getRectByTaro(rightWrapper.current)
-    //   setActionWidth((v) => ({ ...v, right: rightRect.width }))
-    // }
-
     if (!props.disabled) {
       startOffset.current = state.offset
       touch.start(event)
