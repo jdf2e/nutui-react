@@ -97,6 +97,7 @@ const DialogDemo = () => {
         >
           {translated.content}
         </Dialog>
+        <div style={{ height: '200vh' }}></div>
       </div>
     </>
   )
