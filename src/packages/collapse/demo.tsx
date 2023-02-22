@@ -1,16 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Collapse } from './collapse'
 import CollapseItem from '../collapseitem'
 import { Button } from '../button/button'
 import { useTranslate } from '../../sites/assets/locale'
 
-interface T {
-  [key: string]: string | any
-}
 interface itemObj {
   title: string
   name: string
   data: string
+}
+interface T {
+  header1: string
+  header2: string
+  header3: string
+  header4: string
+  header5: string
+  header6: string
+  title1: string
+  title2: string
+  title3: string
+  content1: string
+  content2: string
+  content3: string
+  subTitle: string
+  buttonTextOne: string
+  buttonTextSec: string
 }
 const CollapseDemo = () => {
   const [translated] = useTranslate<T>({
@@ -30,40 +44,6 @@ const CollapseDemo = () => {
       subTitle: '文本内容',
       buttonTextOne: '改变数据',
       buttonTextSec: '还原数据',
-      oldDate: [
-        {
-          title: '标题1',
-          name: '1',
-          data: 'NutUI-React是一套拥有京东风格的轻量级的 React 组件库',
-        },
-        {
-          title: '标题12',
-          name: '2',
-          data: 'NutUI-React是一套拥有京东风格的轻量级的 React 组件库',
-        },
-        {
-          title: '标题13',
-          name: '3',
-          data: 'NutUI-React是一套拥有京东风格的轻量级的 React 组件库',
-        },
-      ],
-      newDate: [
-        {
-          title: '标题21',
-          name: '1',
-          data: '在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！',
-        },
-        {
-          title: '标题22',
-          name: '2',
-          data: '在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！',
-        },
-        {
-          title: '标题23',
-          name: '3',
-          data: '在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！',
-        },
-      ],
     },
     'zh-TW': {
       header1: '基礎用法',
@@ -81,40 +61,6 @@ const CollapseDemo = () => {
       subTitle: '文本內容',
       buttonTextOne: '改變數據',
       buttonTextSec: '還原數據',
-      oldDate: [
-        {
-          title: '標題1',
-          name: '1',
-          data: 'Nutui-React 是一套擁有京東風格的輕量級的 React 組件庫',
-        },
-        {
-          title: '標題2',
-          name: '2',
-          data: 'Nutui-React 是一套擁有京東風格的輕量級的 React 組件庫',
-        },
-        {
-          title: '標題3',
-          name: '3',
-          data: 'Nutui-React 是一套擁有京東風格的輕量級的 React 組件庫',
-        },
-      ],
-      newDate: [
-        {
-          title: '標題21',
-          name: '1',
-          data: '在產品的功能、體驗、易用性和靈活性等各個方面做了全面的升級！',
-        },
-        {
-          title: '標題22',
-          name: '2',
-          data: '在產品的功能、體驗、易用性和靈活性等各個方面做了全面的升級！',
-        },
-        {
-          title: '標題23',
-          name: '3',
-          data: '在產品的功能、體驗、易用性和靈活性等各個方面做了全面的升級！',
-        },
-      ],
     },
     'en-US': {
       header1: 'Basic Usage',
@@ -134,53 +80,59 @@ const CollapseDemo = () => {
       subTitle: 'text content',
       buttonTextOne: 'change data',
       buttonTextSec: 'return data',
-      oldDate: [
-        {
-          title: 'title1',
-          name: '1',
-          data: 'Nutui-React is a lightweight React component library with JD style',
-        },
-        {
-          title: 'title2',
-          name: '2',
-          data: 'Nutui-React is a lightweight React component library with JD style',
-        },
-        {
-          title: 'title3',
-          name: '3',
-          data: 'Nutui-React is a lightweight React component library with JD style',
-        },
-      ],
-      newDate: [
-        {
-          title: 'title21',
-          name: '1',
-          data: 'The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!',
-        },
-        {
-          title: 'title22',
-          name: '2',
-          data: 'The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!',
-        },
-        {
-          title: 'title23',
-          name: '3',
-          data: 'The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!',
-        },
-      ],
     },
   })
+
+  const oldDate = [
+    {
+      title: translated.title1,
+      name: '1',
+      data: translated.content1,
+    },
+    {
+      title: translated.title2,
+      name: '2',
+      data: translated.content1,
+    },
+    {
+      title: translated.title3,
+      name: '3',
+      data: translated.content1,
+    },
+  ]
+
+  const newDate = [
+    {
+      title: `${translated.title1}1`,
+      name: '1',
+      data: translated.content2,
+    },
+    {
+      title: `${translated.title2}2`,
+      name: '2',
+      data: translated.content2,
+    },
+    {
+      title: `${translated.title3}3`,
+      name: '3',
+      data: translated.content2,
+    },
+  ]
   const [currIndex, setCurrIndex] = useState(2)
-  const [domData, setDomData] = useState(translated.oldDate)
+  const [domData, setDomData] = useState(oldDate)
+
+  useEffect(() => {
+    setDomData(oldDate)
+  }, [translated])
   const changeEnv = (isOpen: boolean, name: string) => {
     console.log(isOpen, name)
   }
   const changeNewData = () => {
-    setDomData(translated.newDate)
+    setDomData(newDate)
     setCurrIndex(3)
   }
   const changeOldData = () => {
-    setDomData(translated.oldDate)
+    setDomData(oldDate)
     setCurrIndex(2)
   }
   return (
@@ -248,13 +200,12 @@ const CollapseDemo = () => {
           </CollapseItem>
         </Collapse>
         <h2>{translated.header5}</h2>
-        <Collapse activeName={['1']} accordion icon="arrow-down">
+        <Collapse activeName={['1']} accordion icon="star">
           <CollapseItem
             title={translated.title1}
             name="1"
             titleIcon="checked"
             titleIconSize="16"
-            titleIconColor="red"
             titleIconPosition="left"
           >
             {translated.content1}

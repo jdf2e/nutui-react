@@ -28,22 +28,30 @@ const PositionInfo: any = {
 
 export const Form: FunctionComponent<
   Partial<FormProps> & React.HTMLAttributes<HTMLFormElement>
-> & { Item: typeof FormItem } = (props) => {
+> & { Item: typeof FormItem } & { useForm: typeof useForm } = (props) => {
   const {
     children,
     onFinish,
     onFinishFailed,
     labelPosition,
     starPositon,
+    form,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
 
-  const [formInstance] = useForm()
+  let formInstance: any = {}
+
+  if (Object.keys(form).length !== 0) {
+    formInstance = form
+  } else {
+    ;[formInstance] = useForm()
+  }
+
   formInstance.starPositon = starPositon
-  const { setCallback, submit } = formInstance
+  const { setCallback, submit, resetFields } = formInstance
 
   setCallback({
     onFinish,
@@ -57,6 +65,10 @@ export const Form: FunctionComponent<
       onSubmit={(e) => {
         e.preventDefault()
         submit()
+      }}
+      onReset={(e) => {
+        e.preventDefault()
+        resetFields()
       }}
       // {...rest}
     >
@@ -72,3 +84,4 @@ export const Form: FunctionComponent<
 Form.defaultProps = defaultProps
 Form.displayName = 'NutForm'
 Form.Item = FormItem
+Form.useForm = useForm

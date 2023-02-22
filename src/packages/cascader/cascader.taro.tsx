@@ -72,7 +72,7 @@ const defaultProps = {
 const InternalCascader: ForwardRefRenderFunction<
   unknown,
   PropsWithChildren<Partial<CascaderProps>>
-> = (props) => {
+> = (props, ref) => {
   const {
     className,
     style,

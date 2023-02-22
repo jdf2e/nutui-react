@@ -6,41 +6,47 @@
     }
   }
 }
+
 .nut-badge {
   position: relative;
   display: inline-block;
   width: 40px;
   height: 40px;
   margin-right: 40px;
+
   .slot-icons {
     position: absolute;
     background: $badge-background-color;
-    border-radius: 7px;
     top: -20%;
     right: -20%;
     padding: $badge-padding;
     text-align: center;
+    border: $badge-border;
     border-radius: $badge-border-radius;
     z-index: $badge-z-index;
   }
+
   .sup {
     position: absolute;
     background: $badge-background-color;
-    border-radius: 7px;
+    color: $badge-default-background-color;
     padding: $badge-padding;
-    text-align: center;
-    border-radius: $badge-border-radius;
     font-size: $badge-font-size;
     font-weight: normal;
-    color: $badge-default-background-color;
+    text-align: center;
     line-height: 16px;
+    border: $badge-border;
+    border-radius: $badge-border-radius;
   }
+
   .nut-badge__content {
     transform: $badge-content-transform;
   }
+
   .is-dot {
     width: $badge-dot-width;
     height: $badge-dot-height;
+    border: $badge-border;
     border-radius: $badge-dot-border-radius;
     padding: $badge-dot-padding;
   }

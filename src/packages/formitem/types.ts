@@ -32,8 +32,8 @@ export interface FormItemRuleWithoutValidator {
 }
 export interface FormItemRule extends FormItemRuleWithoutValidator {
   validator?: (
-    value: any,
-    ruleCfg: FormItemRuleWithoutValidator
+    ruleCfg: FormItemRuleWithoutValidator,
+    value: string
   ) => boolean | string | Promise<boolean | string>
 }
 

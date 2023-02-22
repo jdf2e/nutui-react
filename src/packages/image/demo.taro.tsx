@@ -14,6 +14,8 @@ const ImageDemo = () => {
       circle: '圆形图片',
       loading: '加载中提示',
       error: '加载失败',
+      default: '默认',
+      custom: '自定义',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -22,6 +24,8 @@ const ImageDemo = () => {
       circle: 'Round',
       loading: 'Loading',
       error: 'Error',
+      default: 'Default',
+      custom: 'Custom',
     },
   })
   const src =
@@ -41,7 +45,7 @@ const ImageDemo = () => {
           <Row gutter={10}>
             <Col span="8">
               <Image width="80" height="80" showLoading />
-              <div className="image-text">默认</div>
+              <div className="image-text">{translated.default}</div>
             </Col>
             <Col span="8">
               <Image
@@ -53,7 +57,7 @@ const ImageDemo = () => {
                   </>
                 }
               />
-              <div className="image-text">自定义</div>
+              <div className="image-text">{translated.custom}</div>
             </Col>
           </Row>
         </Cell>
@@ -63,13 +67,13 @@ const ImageDemo = () => {
           <Row gutter={10}>
             <Col span="8">
               <Image src="#" width="80" height="80" showError />
-              <div className="image-text">默认</div>
+              <div className="image-text">{translated.default}</div>
             </Col>
             <Col span="8">
               <Image src="#" width="80" height="80" showError>
                 <Icon name="circle-close" />
               </Image>
-              <div className="image-text">自定义</div>
+              <div className="image-text">{translated.custom}</div>
             </Col>
           </Row>
         </Cell>

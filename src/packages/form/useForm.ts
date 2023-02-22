@@ -46,14 +46,15 @@ class FormStore {
       ...this.store,
       ...newStore,
     }
-    // this.fieldEntities.forEach((enetity: FieldEntity) => {
-    //   const { name } = enetity.props
-    //   Object.keys(newStore).forEach((key) => {
-    //     if (key === name) {
-    //       enetity.onStoreChange()
-    //     }
-    //   })
-    // })
+
+    this.fieldEntities.forEach((enetity: FieldEntity) => {
+      const { name } = enetity.props
+      Object.keys(newStore).forEach((key) => {
+        if (key === name) {
+          enetity.onStoreChange()
+        }
+      })
+    })
   }
 
   /**
@@ -93,7 +94,7 @@ class FormStore {
           this.errList.push(...errors)
           // 表单项更新
         }
-        // entity.onStoreChange()
+        entity.onStoreChange()
       })
     })
     return err
@@ -115,7 +116,13 @@ class FormStore {
     }
   }
 
-  resetFields = () => {}
+  resetFields = () => {
+    this.errList.length = 0
+
+    this.fieldEntities.forEach((enetity: FieldEntity) => {
+      enetity.onStoreChange()
+    })
+  }
 
   getForm = () => {
     return {
@@ -123,6 +130,7 @@ class FormStore {
       registerField: this.registerField,
       getFieldValue: this.getFieldValue,
       setFieldsValue: this.setFieldsValue,
+      resetFields: this.resetFields,
       submit: this.submit,
       store: this.store,
       errList: this.errList,

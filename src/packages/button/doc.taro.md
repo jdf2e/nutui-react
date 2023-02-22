@@ -12,6 +12,24 @@ import { Button } from '@nutui/nutui-react-taro';
 
 ## 代码演示
 
+### 设置 open-type
+:::demo
+```tsx
+import  React from "react";
+import { Button } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  return (
+    <>
+      <Button openType='share'>分享给好友</Button>
+      <Button openType='openSetting'>打开授权设置页</Button>
+    </>
+  );
+};
+export default App;
+```
+:::
+
 ### 按钮类型
 
 按钮支持 `default`、`primary`、`info`、`warning`、`danger`、`success` 六种类型，默认为 `default`。
