@@ -47,7 +47,7 @@ const defaultProps = {
 const InternalCascaderItem: ForwardRefRenderFunction<
   unknown,
   PropsWithChildren<Partial<CascaderItemProps>>
-> = (props) => {
+> = (props, ref) => {
   const { data, checked, chooseItem, activeColor } = {
     ...defaultProps,
     ...props,

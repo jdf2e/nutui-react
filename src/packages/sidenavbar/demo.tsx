@@ -4,13 +4,94 @@ import SubSideNavBar from '@/packages/subsidenavbar'
 import SideNavBarItem from '@/packages/sidenavbaritem'
 import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'
+import { useTranslate } from '@/sites/assets/locale'
 
 type Position = 'left' | 'right'
 type NavBarState = {
   visible: boolean
   position: Position
 }
+type TSideNavBarDemo = {
+  text1: string
+  text2: string
+  level1: string
+  level2: string
+  level3: string
+  title: string
+  title1: string
+  title2: string
+  title3: string
+  title4: string
+  content: string
+}
 const SideNavBarDemo = () => {
+  const [translated] = useTranslate<TSideNavBarDemo>({
+    'zh-CN': {
+      text1: '基础用法',
+      text2: '导航嵌套（建议最多三层）',
+      level1: '一级',
+      level2: '二级',
+      level3: '三级',
+      title: '标题',
+      title1: '左侧弹出',
+      title2: '右侧弹出',
+      title3: '显示',
+      title4: '首页',
+      content: '内容',
+    },
+    'zh-TW': {
+      text1: '基礎用法',
+      text2: '導航嵌套（建議最多三層）',
+      level1: '一級',
+      level2: '二級',
+      level3: '三級',
+      title: '標題',
+      title1: '左側彈出',
+      title2: '右側彈出',
+      title3: '顯示',
+      title4: '首頁',
+      content: '內容',
+    },
+    'en-US': {
+      text1: 'Basic Usage',
+      text2: 'Navigation nesting (recommended up to three levels)',
+      level1: 'Level One',
+      level2: 'Level Two',
+      level3: 'Level Three',
+      title: 'title',
+      title1: 'left pop up',
+      title2: 'right pop up',
+      title3: 'show',
+      title4: 'front page',
+      content: 'content',
+    },
+    'id-ID': {
+      text1: 'Penggunaan dasar',
+      text2: 'Sarang navigasi (disarankan hingga tiga tingkat)',
+      level1: 'tingkat satu',
+      level2: 'Sekunder',
+      level3: 'Tingkat tiga',
+      title: 'judul',
+      title1: 'munculan kiri',
+      title2: 'sisi kanan muncul',
+      title3: 'menunjukkan',
+      title4: 'halaman Depan',
+      content: 'isi',
+    },
+  })
+  const {
+    text1,
+    text2,
+    level1,
+    level2,
+    level3,
+    title,
+    title1,
+    title2,
+    title3,
+    title4,
+    content,
+  } = translated
   const [navBarState, setNavBarState] = useState<NavBarState>({
     visible: false,
     position: 'left',
@@ -38,24 +119,24 @@ const SideNavBarDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>基础用法</h2>
+        <h2>{text1}</h2>
         <Cell
-          title="左侧弹出"
+          title={title1}
           isLink
           onClick={() => {
             changeNarBar(true, 'left')
           }}
         />
         <Cell
-          title="右侧弹出"
+          title={title2}
           isLink
           onClick={() => {
             changeNarBar(true, 'right')
           }}
         />
-        <h2>导航嵌套（建议最多三层）,点击一级标题和一级内容1回调</h2>
+        <h2>{text2}</h2>
         <Cell
-          title="显示"
+          title={title3}
           isLink
           onClick={() => {
             changeNarBar(true, 'right')
@@ -63,30 +144,38 @@ const SideNavBarDemo = () => {
           }}
         />
         <SideNavBar
-          title="首页"
+          title={title4}
           visible={navBarState.visible}
           position={navBarState.position}
           onClose={() => {
             changeNarBar(false)
           }}
         >
-          <SubSideNavBar title="一级标题" ikey="1-0" onClick={clickTitle}>
-            <SideNavBarItem title="一级内容1" ikey="1-01" onClick={clickItem} />
-            <SideNavBarItem title="一级内容2" ikey="1-02" />
-            <SubSideNavBar title="二级标题" ikey="2-0">
-              <SideNavBarItem title="二级内容1" ikey="2-01" />
-              <SideNavBarItem title="二级内容2" ikey="2-02" />
+          <SubSideNavBar
+            title={`${level1}${title}`}
+            ikey="1-0"
+            onClick={clickTitle}
+          >
+            <SideNavBarItem
+              title={`${level1}${content}1`}
+              ikey="1-01"
+              onClick={clickItem}
+            />
+            <SideNavBarItem title={`${level1}${content}2`} ikey="1-02" />
+            <SubSideNavBar title={`${level2}${title}`} ikey="2-0">
+              <SideNavBarItem title={`${level2}${content}1`} ikey="2-01" />
+              <SideNavBarItem title={`${level2}${content}2`} ikey="2-02" />
               {showThird ? (
-                <SubSideNavBar title="三级标题" ikey="3-0">
-                  <SideNavBarItem title="三级内容1" ikey="3-01" />
-                  <SideNavBarItem title="三级内容2" ikey="3-02" />
+                <SubSideNavBar title={`${level3}${title}`} ikey="3-0">
+                  <SideNavBarItem title={`${level3}${content}1`} ikey="3-01" />
+                  <SideNavBarItem title={`${level3}${content}2`} ikey="3-02" />
                 </SubSideNavBar>
               ) : null}
             </SubSideNavBar>
           </SubSideNavBar>
-          <SubSideNavBar open={false} title="一级标题-2" ikey="1-1">
-            <SideNavBarItem title="一级内容2-1" ikey="1-11" />
-            <SideNavBarItem title="一级内容2-2" ikey="1-12" />
+          <SubSideNavBar open={false} title={`${level1}${title}-2`} ikey="1-1">
+            <SideNavBarItem title={`${level1}${content}2-1`} ikey="1-11" />
+            <SideNavBarItem title={`${level1}${content}2-2`} ikey="1-12" />
           </SubSideNavBar>
         </SideNavBar>
       </div>
