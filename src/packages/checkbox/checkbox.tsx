@@ -113,8 +113,6 @@ export const Checkbox: FunctionComponent<
       return 'nut-checkbox__icon'
     }
     return 'nut-checkbox__icon--unchecked'
-
-    // return !innerDisabled ? (!innerChecked ? '#d6d6d6' : '#fa2c19') : '#f5f5f5'
   }
   const renderLabel = () => {
     return (
