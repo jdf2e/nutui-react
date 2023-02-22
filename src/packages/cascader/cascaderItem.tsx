@@ -1,8 +1,4 @@
-import React, {
-  ForwardRefRenderFunction,
-  PropsWithChildren,
-  useEffect,
-} from 'react'
+import React, { ForwardRefRenderFunction, PropsWithChildren } from 'react'
 import classNames from 'classnames'
 import { Icon } from '@/packages/icon/icon'
 import bem from '@/utils/bem'
@@ -47,7 +43,7 @@ const defaultProps = {
 const InternalCascaderItem: ForwardRefRenderFunction<
   unknown,
   PropsWithChildren<Partial<CascaderItemProps>>
-> = (props) => {
+> = (props, ref) => {
   const { data, checked, chooseItem, activeColor } = {
     ...defaultProps,
     ...props,
@@ -66,14 +62,6 @@ const InternalCascaderItem: ForwardRefRenderFunction<
   const classesTitle = classNames({
     [`${b('')}__title`]: true,
   })
-
-  useEffect(() => {
-    initData()
-  }, [data])
-
-  const initData = () => {
-    // console.log('------data', data)
-  }
 
   return (
     <div

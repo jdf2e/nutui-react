@@ -42,18 +42,26 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import React, { useState } from "react";
+import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 
-const App = () => (
-  <Tabbar visible={2}>
+const App = () => {
+  const [activeIndex, setActiveIndex] = useState(2)
+
+  return <Tabbar
+    visible={0}
+    activeVisible={activeIndex}
+    onSwitch={(child, id) => {
+      setActiveIndex(id)
+    }}
+  >
     <TabbarItem tabTitle="首頁" icon="首頁" />
     <TabbarItem tabTitle="分類" icon="category" />
     <TabbarItem tabTitle="發現" icon="find" />
     <TabbarItem tabTitle="購物車" icon="cart" />
     <TabbarItem tabTitle="我的" icon="我的" />
   </Tabbar>
-);
+}
 
 export default App;
 ```
@@ -164,16 +172,17 @@ export default App;
 
 ### nut-tabbar
 
-| 字段            | 說明               | 類型   | 默認值  |
-|-----------------|--------------------|--------|---------|
-| visible | 選中標籤的索引值   | number | 0       |
-| bottom          | 是否固定在頁面底部 | Boolean | false   |
-| unactiveColor  | icon未激活的顏色   | String | #7d7e80 |
-| activeColor    | icon激活的顏色     | String | #1989fa |
-| size`v1.2.2`    | icon的统一尺寸     | String 、Boolean | 20 |
-| safeAreaInsetBottom    | 是否開啟iphone系列全面屏底部安全區適配     | Boolean | false |
-| style    | 組件樣式     | React.CSSProperties | {} |
-| clsssName    | 組件類名     | String | - |
+| 字段            | 說明                     | 類型   | 默認值  |
+|-----------------|------------------------|--------|---------|
+| visible | 默认選中的標籤的索引值            | number | 0       |
+| activeVisible`1.4.8` | 選中的標籤的索引值              | number | -       |
+| bottom          | 是否固定在頁面底部              | Boolean | false   |
+| unactiveColor  | icon未激活的顏色             | String | #7d7e80 |
+| activeColor    | icon激活的顏色              | String | #1989fa |
+| size`v1.2.2`    | icon的统一尺寸              | String 、Boolean | 20 |
+| safeAreaInsetBottom    | 是否開啟iphone系列全面屏底部安全區適配 | Boolean | false |
+| style    | 組件樣式                   | React.CSSProperties | {} |
+| clsssName    | 組件類名                   | String | - |
 
 ### tabbar-item
 

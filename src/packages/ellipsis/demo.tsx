@@ -2,6 +2,7 @@ import React from 'react'
 import { Ellipsis } from './ellipsis'
 import Cell from '@/packages/cell'
 import { useTranslate } from '../../sites/assets/locale'
+import Toast from '@/packages/toast'
 
 interface T {
   basic: string
@@ -9,7 +10,9 @@ interface T {
   end: string
   middle: string
   rows: string
+  expandCollapse: string
   expand: string
+  collapse: string
 }
 const EllipsisDemo = () => {
   const [translated] = useTranslate<T>({
@@ -19,7 +22,9 @@ const EllipsisDemo = () => {
       end: '尾部省略',
       middle: '中间省略',
       rows: '多行省略',
-      expand: '展开收起',
+      expandCollapse: '展开收起',
+      expand: '展开',
+      collapse: '收起',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -27,7 +32,9 @@ const EllipsisDemo = () => {
       end: 'Tailing',
       middle: 'Middle',
       rows: 'Multi-line',
-      expand: 'Expand & Collapse',
+      expandCollapse: 'Expand & Collapse',
+      expand: 'expand',
+      collapse: 'collapse',
     },
   })
   const content =
@@ -52,21 +59,25 @@ const EllipsisDemo = () => {
         <Cell>
           <Ellipsis content={content} direction="start" rows="3" />
         </Cell>
-        <h2>{translated.expand}</h2>
+        <h2>{translated.expandCollapse}</h2>
         <Cell>
           <Ellipsis
             content={content}
+            onClick={() => {
+              Toast.text('Clicked!')
+            }}
+            onChange={(type) => Toast.text(type)}
             direction="start"
-            expandText="展开"
-            collapseText="收起"
+            expandText={translated.expand}
+            collapseText={translated.collapse}
           />
         </Cell>
         <Cell>
           <Ellipsis
             content={content}
             direction="middle"
-            expandText="展开"
-            collapseText="收起"
+            expandText={translated.expand}
+            collapseText={translated.collapse}
           />
         </Cell>
         <Cell>
@@ -74,8 +85,8 @@ const EllipsisDemo = () => {
             content={content}
             direction="end"
             rows="3"
-            expandText="展开"
-            collapseText="收起"
+            expandText={translated.expand}
+            collapseText={translated.collapse}
           />
         </Cell>
       </div>

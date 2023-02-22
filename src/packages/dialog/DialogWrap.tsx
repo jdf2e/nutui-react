@@ -15,7 +15,7 @@ interface DialogWrapProps {
 }
 
 export const DialogWrap: FunctionComponent<
-  Partial<DialogWrapProps> & HTMLAttributes<HTMLDivElement>
+  Partial<DialogWrapProps> & Omit<HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
   const {
     className,

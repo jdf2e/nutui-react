@@ -228,7 +228,8 @@ export const Ellipsis: FunctionComponent<
             {expandText ? (
               <span
                 className="nut-ellipsis-text"
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation()
                   clickHandle(1)
                 }}
               >
@@ -244,7 +245,8 @@ export const Ellipsis: FunctionComponent<
             {expandText ? (
               <span
                 className="nut-ellipsis-text"
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation()
                   clickHandle(2)
                 }}
               >

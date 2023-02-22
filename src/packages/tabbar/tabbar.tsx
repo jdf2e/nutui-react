@@ -1,9 +1,10 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 
 import bem from '@/utils/bem'
 
 export interface TabbarProps {
   visible: number | string
+  activeVisible?: number | string
   bottom: boolean
   size: string | number
   unactiveColor: string
@@ -11,7 +12,6 @@ export interface TabbarProps {
   safeAreaInsetBottom: boolean
   className: string
   style: React.CSSProperties
-  tabSwitch: (child: React.ReactElement<any>, active: number) => void
   onSwitch: (child: React.ReactElement<any>, active: number) => void
   children?: React.ReactNode
 }
@@ -25,14 +25,14 @@ const defaultProps = {
   safeAreaInsetBottom: false,
   className: '',
   style: {},
-  tabSwitch: () => {},
-  onSwitch: () => {},
+  onSwitch: (child, activeVisible) => {},
 } as TabbarProps
 
 export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
   const {
     children,
     visible,
+    activeVisible,
     bottom,
     size,
     activeColor,
@@ -40,7 +40,6 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
     safeAreaInsetBottom,
     className,
     style,
-    tabSwitch,
     onSwitch,
   } = {
     ...defaultProps,
@@ -49,11 +48,19 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
 
   const b = bem('tabbar')
 
-  const [selectIndex, setSelectIndex] = useState(visible)
+  const [selectIndex, setSelectIndex] = useState(activeVisible || visible)
 
   const handleClick = (idx: number) => {
-    setSelectIndex(idx)
+    if (!('activeVisible' in props)) {
+      setSelectIndex(idx)
+    }
   }
+
+  useEffect(() => {
+    if (activeVisible !== undefined) {
+      setSelectIndex(activeVisible)
+    }
+  }, [activeVisible])
 
   return (
     <div
@@ -78,7 +85,6 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
           size,
           handleClick: () => {
             handleClick(idx)
-            tabSwitch(child, idx)
             onSwitch(child, idx)
           },
         }
