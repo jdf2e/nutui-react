@@ -5,6 +5,7 @@ import { DialogWrapper } from './DialogWrapper.taro'
 import { BasicDialogProps } from './config'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
+export type DialogProps = BasicDialogProps
 const defaultProps = {
   okText: '',
   cancelText: '',
