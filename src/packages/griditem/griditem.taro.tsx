@@ -4,6 +4,7 @@ import React, {
   ReactNode,
   useContext,
 } from 'react'
+import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
@@ -106,12 +107,27 @@ export const GridItem: FunctionComponent<
   }
 
   const contentClass = () => {
-    return `${b('content')} ${border && b('content--border')} ${
-      border && gutter && b('content--surround')
-    }  ${center && b('content--center')} ${square && b('content--square')} ${
-      reverse && b('content--reverse')
-    } ${!!direction && b(`content--${direction}`)}
-      `
+    return classNames(
+      b('content'),
+      {
+        [b('content--border')]: border,
+      },
+      {
+        [b('content--surround')]: border && gutter,
+      },
+      {
+        [b('content--center')]: center,
+      },
+      {
+        [b('content--square')]: square,
+      },
+      {
+        [b('content--reverse')]: reverse,
+      },
+      {
+        [b(`content--${direction}`)]: !!direction,
+      }
+    )
   }
 
   const isIconName = () => {
