@@ -1,9 +1,8 @@
 import React, { useRef, useState } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Cell, Checkbox, Toast } from '@/packages/nutui.react.taro'
-import '@/packages/checkbox/demo.scss'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface T {
   '74fc5d8a': string
