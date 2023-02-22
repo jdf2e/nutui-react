@@ -107,27 +107,14 @@ export const GridItem: FunctionComponent<
   }
 
   const contentClass = () => {
-    return classNames(
-      b('content'),
-      {
-        [b('content--border')]: border,
-      },
-      {
-        [b('content--surround')]: border && gutter,
-      },
-      {
-        [b('content--center')]: center,
-      },
-      {
-        [b('content--square')]: square,
-      },
-      {
-        [b('content--reverse')]: reverse,
-      },
-      {
-        [b(`content--${direction}`)]: !!direction,
-      }
-    )
+    return classNames(b('content'), {
+      [b('content--border')]: border,
+      [b('content--surround')]: border && gutter,
+      [b('content--center')]: center,
+      [b('content--square')]: square,
+      [b('content--reverse')]: reverse,
+      [b(`content--${direction}`)]: !!direction,
+    })
   }
 
   const isIconName = () => {
