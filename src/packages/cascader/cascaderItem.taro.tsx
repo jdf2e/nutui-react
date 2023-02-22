@@ -1,8 +1,4 @@
-import React, {
-  ForwardRefRenderFunction,
-  PropsWithChildren,
-  useEffect,
-} from 'react'
+import React, { ForwardRefRenderFunction, PropsWithChildren } from 'react'
 import classNames from 'classnames'
 import { Icon } from '../icon/icon.taro'
 import bem from '@/utils/bem'
@@ -26,6 +22,7 @@ export interface CascaderItemProps {
     children?: OptiosInfo[]
   }
   checked: boolean
+  checkedIcon: string
   activeColor: string
   chooseItem: (data: any) => void
 }
@@ -41,6 +38,7 @@ const defaultProps = {
   },
   activeColor: '#fa2c19',
   checked: false,
+  checkedIcon: 'checklist',
   chooseItem: () => {},
 } as CascaderItemProps
 
@@ -48,7 +46,7 @@ const InternalCascaderItem: ForwardRefRenderFunction<
   unknown,
   PropsWithChildren<Partial<CascaderItemProps>>
 > = (props, ref) => {
-  const { data, checked, chooseItem, activeColor } = {
+  const { data, checked, checkedIcon, chooseItem, activeColor } = {
     ...defaultProps,
     ...props,
   }
@@ -66,14 +64,6 @@ const InternalCascaderItem: ForwardRefRenderFunction<
   const classesTitle = classNames({
     [`${b('')}__title`]: true,
   })
-
-  useEffect(() => {
-    initData()
-  }, [data])
-
-  const initData = () => {
-    // console.log('------data', data)
-  }
 
   return (
     <div
@@ -93,7 +83,7 @@ const InternalCascaderItem: ForwardRefRenderFunction<
       ) : (
         <Icon
           className={`${checked ? b('icon-check') : ''}`}
-          name="checklist"
+          name={checked ? checkedIcon : ''}
         />
       )}
     </div>
