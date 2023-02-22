@@ -1914,7 +1914,6 @@ $empty-description-padding: var(
   --nutui-empty-description-padding,
   0 40px
 ) !default;
-
 // cascader（✅）
 $cascader-font-size: var(--nutui-cascader-font-size, $font-size-2) !default;
 $cascader-line-height: var(--nutui-cascader-line-height, 22px) !default;
@@ -1947,7 +1946,13 @@ $cascader-bar-font-size: var(
 ) !default;
 $cascader-bar-line-height: var(--nutui-cascader-bar-line-height, 20px) !default;
 $cascader-bar-color: var(--nutui-cascader-bar-color, $title-color) !default;
+$cascader-item-height: var(--nutui-cascader-item-height, 40px) !default;
 $cascader-item-padding: var(--nutui-cascader-item-padding, 10px 20px) !default;
+$cascader-item-margin: var(--nutui-cascader-item-margin, 0px) !default;
+$cascader-item-border-bottom: var(
+  --nutui-cascader-item-border-bottom,
+  0px solid #ddd
+) !default;
 $cascader-item-color: var(--nutui-cascader-item-color, $title-color) !default;
 $cascader-item-font-size: var(
   --nutui-cascader-item-font-size,

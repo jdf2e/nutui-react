@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Cascader } from './cascader'
 import { Cell } from '@/packages/cell/cell'
+import ConfigProvider from '@/packages/configprovider'
 
 interface T {
   basic: string
@@ -14,6 +15,13 @@ interface T {
   addressTip1: string
 }
 
+const customTheme = {
+  nutuiCascaderItemHeight: '48px',
+  nutuiCascaderItemMargin: '0 10px',
+  nutuiCascaderItemPadding: '10px',
+  nutuiCascaderItemBorderBottom: '1px solid #F0F0F0',
+}
+
 const CascaderDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -22,7 +30,7 @@ const CascaderDemo = () => {
       title2: '动态加载',
       title3: '部分数据动态加载',
       title4: '自动转换',
-      title5: '自定义选中颜色',
+      title5: '自定义样式',
       addressTip: '选择地址',
       addressTip1: '请选择地址',
     },
@@ -32,7 +40,7 @@ const CascaderDemo = () => {
       title2: '動態加載',
       title3: '部分數據動態加載',
       title4: '自動轉換',
-      title5: '自定義選中顏色',
+      title5: '自定義样式',
       addressTip: '選擇地址',
       addressTip1: '請選擇地址',
     },
@@ -42,7 +50,7 @@ const CascaderDemo = () => {
       title2: 'Async loading',
       title3: 'Async loading of partial data',
       title4: 'Automatic data conversion',
-      title5: 'Customize selected color',
+      title5: 'Customize CSS',
       addressTip: 'Select address',
       addressTip1: 'Please select an address',
     },
@@ -435,20 +443,23 @@ const CascaderDemo = () => {
             setIsVisibleDemo6(true)
           }}
         />
-        <Cascader
-          visible={isVisibleDemo6}
-          activeColor="#008000"
-          tabsColor="#008000"
-          value={value6}
-          title={translated.addressTip}
-          options={optionsDemo1}
-          closeable
-          onClose={() => {
-            setIsVisibleDemo6(false)
-          }}
-          onChange={change6}
-          onPathChange={onPathChange}
-        />
+        <ConfigProvider theme={customTheme}>
+          <Cascader
+            visible={isVisibleDemo6}
+            activeColor="#3768FA"
+            tabsColor="#3768FA"
+            value={value6}
+            title={translated.addressTip}
+            options={optionsDemo1}
+            closeable
+            checkedIcon="star"
+            onClose={() => {
+              setIsVisibleDemo6(false)
+            }}
+            onChange={change6}
+            onPathChange={onPathChange}
+          />{' '}
+        </ConfigProvider>
       </div>
     </>
   )
