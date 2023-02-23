@@ -317,20 +317,24 @@ const CheckBoxDemo = () => {
   const [checkbox1, setCheckbox1] = useState(false)
   const [indeterminate, setIndeterminate] = useState(false)
   return (<>
-    <Checkbox
-      checked={checkbox1}
-      indeterminate={indeterminate}
-      onChange={(state, label) => {
-        if (state) {
-          setIndeterminate(false)
-        }
-        ;(checkboxgroup2Ref.current as any).toggleAll(state)
-      }}
-    >
-      selectAll
-    </Checkbox>
+      <div style={{ width: '50%' }}>
+      <Checkbox
+        checked={checkbox1}
+        indeterminate={indeterminate}
+        onChange={(state, label) => {
+          if (state) {
+            setIndeterminate(false)
+          }
+          ;(checkboxgroup2Ref.current as any).toggleAll(state)
+        }}
+      >
+        Select All
+      </Checkbox>
+    </div>
+
     <Checkbox.Group
       ref={checkboxgroup2Ref}
+      direction="horizontal"
       checkedValue={checkboxgroup2}
       onChange={(value) => {
         if (value.length === 4) {
@@ -345,16 +349,16 @@ const CheckBoxDemo = () => {
       }}
     >
       <Checkbox checked={false} label="1">
-        Combined check box
+        Option
       </Checkbox>
       <Checkbox checked={false} label="2">
-        Combined check box
+        Option
       </Checkbox>
       <Checkbox checked={false} label="3">
-        Combined check box
+        Option
       </Checkbox>
       <Checkbox checked={false} label="4">
-        Combined check box
+        Option
       </Checkbox>
     </Checkbox.Group>
   </>)
@@ -420,7 +424,9 @@ export default CheckboxGroupOptions;
 |----- | ----- | ----- | ----- |
 | checkedValue | The identifier of the currently selected item, corresponding to 'label'  | String | -|
 | disabled | Whether to disable the selection will be used for all check boxes under it | Boolean | `false`|
-| max           | Limit the maximum number of options | `undefined|number` | `undefined`|
+| max | Limit the maximum number of options | `undefined|number` | `undefined`|
+| textPosition | Where the text is located, optional values: 'left', 'right' | String | `right` |
+| direction | Use horizontal and vertical directions The optional values horizontal, vertical, | String | `vertical` |
 | options `v1.3.10`     | Render radios by configuring options      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 ## Checkbox Event

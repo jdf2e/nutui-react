@@ -311,20 +311,24 @@ const CheckBoxDemo = () => {
   const [checkbox1, setCheckbox1] = useState(false)
   const [indeterminate, setIndeterminate] = useState(false)
   return (<>
-    <Checkbox
-      checked={checkbox1}
-      indeterminate={indeterminate}
-      onChange={(state, label) => {
-        if (state) {
-          setIndeterminate(false)
-        }
-        ;(checkboxgroup2Ref.current as any).toggleAll(state)
-      }}
-    >
-      全选
-    </Checkbox>
+      <div style={{ width: '50%' }}>
+      <Checkbox
+        checked={checkbox1}
+        indeterminate={indeterminate}
+        onChange={(state, label) => {
+          if (state) {
+            setIndeterminate(false)
+          }
+          ;(checkboxgroup2Ref.current as any).toggleAll(state)
+        }}
+      >
+        全选
+      </Checkbox>
+    </div>
+
     <Checkbox.Group
       ref={checkboxgroup2Ref}
+      direction="horizontal"
       checkedValue={checkboxgroup2}
       onChange={(value) => {
         if (value.length === 4) {
@@ -339,16 +343,16 @@ const CheckBoxDemo = () => {
       }}
     >
       <Checkbox checked={false} label="1">
-        组合复选框
+        选项
       </Checkbox>
       <Checkbox checked={false} label="2">
-        组合复选框
+        选项
       </Checkbox>
       <Checkbox checked={false} label="3">
-        组合复选框
+        选项
       </Checkbox>
       <Checkbox checked={false} label="4">
-        组合复选框
+        选项
       </Checkbox>
     </Checkbox.Group>
   </>)
@@ -415,6 +419,8 @@ export default CheckboxGroupOptions;
 | checkedValue | 当前选中项的标识符，和 `label` 相对应  | String      | -|
 | disabled     | 是否禁用选择,将用于其下的全部复选框 | Boolean     | `false`|
 | max`v1.2.1`           | 限制最大可选数 | `undefined|number` | `undefined`|
+| textPosition`v1.4.8` | 文本所在的位置，可选值：`left`,`right`| String| `right` |
+| direction`v1.4.8` | 使用横纵方向 可选值 horizontal、vertical| String| `vertical` |
 | options `v1.3.10`     | 配置 options 渲染复选按钮      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 ## Checkbox Event

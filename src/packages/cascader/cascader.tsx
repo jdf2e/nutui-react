@@ -24,6 +24,7 @@ export interface CascaderProps {
   className: string
   style: CSSProperties
   activeColor: string
+  checkedIcon: string
   tabsColor: string
   poppable: boolean
   visible: boolean // popup 显示状态
@@ -48,6 +49,7 @@ const defaultProps = {
   className: '',
   style: {},
   activeColor: '#fa2c19',
+  checkedIcon: 'checklist',
   tabsColor: '',
   poppable: true,
   visible: false,

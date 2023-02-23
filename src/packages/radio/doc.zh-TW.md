@@ -182,7 +182,7 @@ const RadioGroupOptions = () => {
     console.log(v)
     setRadioVal(v)
   }
-  return <Radio.RadioGroup options={optionsDemo1} value={radioVal} onChange={handleChange}></Radio.RadioGroup>
+  return <Radio.RadioGroup options={optionsDemo1} value={radioVal} onChange={handleChange} />
 }
 export default RadioGroupOptions;
 ```
