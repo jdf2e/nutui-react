@@ -24,6 +24,7 @@ const b = bem('badge')
 
 const defaultProps = {
   ...ComponentDefaults,
+  className: '',
   value: '',
   dot: false,
   max: 10000,

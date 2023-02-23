@@ -1,3 +1,47 @@
+# v1.4.8
+`2023-02-15`
+
+* :sparkles: feat(configprovider): demo 增加国际化 (#706) @eiinu
+* :sparkles: feat(rate): demo 增加国际化 (#704) @eiinu
+* :sparkles: feat(shortpassword): demo 增加国际化 (#705) @eiinu
+* :sparkles: feat(shortpassword): 支持自动聚焦 (#693) @Kason Yang
+* :sparkles: feat(sidenavbar): demo 增加国际化 (#709) @eiinu
+* :sparkles: feat(switch): demo 增加国际化 (#708) @eiinu
+* :sparkles: feat(tag): demo 增加国际化 (#707) @eiinu
+* :sparkles: feat: badge组件增加元素提取，增加徽章border设置，完善文档，补充多语言支持 (#697) @xiaoyatong
+* :sparkles: feat: calendar 适配taro 功能增强 (#715) @xiaoyatong
+* :sparkles: feat: cascader 增加checkedIcon属性，增加视觉元素提取，增加自定义样式demo (#719) @xiaoyatong
+* :sparkles: feat: checkbox 增加group样式 (#721) @xiaoyatong
+* :sparkles: feat: collapse 提取变量，增加多语言支持，补充demo (#691) @xiaoyatong
+* :sparkles: feat: inputnumber 增加 buttons 的样式，提取元素变量，增加demo (#685) @xiaoyatong
+* :sparkles: feat: popover 增加交互样式，提取元素变量 (#681) @xiaoyatong
+* :sparkles: feat: steps组件调整样式布局，增加点状样式等，提取元素变量，增加demo (#712) @xiaoyatong
+* :sparkles: feat: swipe 组件对外暴露 open 和 close 方法，优化 taro 版本下 width 的计算时机 (#714) @oasis-cloud
+* :sparkles: feat: tabbar 组件增加受控的 activeVisible 属性 (#711) @oasis-cloud
+* :sparkles: feat: tabs 组件增加 leftAlign 属性；提取视觉元素变量；修复disable 时有 active 状态的问题 (#674) @xiaoyatong
+* :sparkles: feat: textarea 提取元素变量，增加demo演示 (#688) @xiaoyatong
+* :sparkles: feat: 多个组件 demo 完善国际化 (#710) @eiinu
+* :sparkles: feat: 新增form-item的validator校验和重置提示状态功能 (#689) @junjun666
+* :sparkles: feat: 新增taro uploader的multiple属性 (#686) @junjun666
+* :sparkles: feat: 新增表单组件Form.useForm()创建form控制实例的功能 (#679) @junjun666
+* :bug: fix(layout): 修复布局组件 `Row` 和 `Col` 的 className 设置问题 (#683) @AnteeHub
+* :bug: fix: badge初始化classname (#722) @xiaoyatong
+* :bug: fix: button plain的样式 (#678) @xiaoyatong
+* :bug: fix: cascader 没有传递 ref 参数 (#699) @oasis-cloud
+* :bug: fix: checkboxgroup组件通过options渲染时组件选中值反填问题 (#680) @cuicuiworld
+* :bug: fix: ellipsis 展开和关闭操作应该阻止事件冒泡 (#700) @oasis-cloud
+* :bug: fix: radio 支持 换行 (#675) @xiaoyatong
+* :bug: fix: switch 组件的元素变量修改 (#690) @xiaoyatong
+* :bug: fix: textarea 禁用状态仍然可以输入 (#687) @oasis-cloud
+* :bug: fix: 修复 taro 版本中 dialog 组件的 lockScroll 属性，重构 taro 版本的 dialog 类型，去掉函数调… (#702) @oasis-cloud
+* :bug: fix: 修改taro的inputnumber输入框键盘输入异常问题 (#703) @junjun666
+* :bug: fix: 类型错误，修复 @hanyuxinting
+* 🔨 chore: button 组件增加 opentype 示例 @oasis-cloud
+* 🔨 chore: 统一 classnames 导出名称 (#684) @eiinu
+* 🔨 chore: 重构h5和taro环境下 barrage组件代码并修复loop循环的问题 (#717) @junjun666
+* 📖 docs: dialog 组件的 taro 文档去掉函数调用方式 (#677) @oasis-cloud
+
+
 # v1.4.7
 `2023-02-15`
 
