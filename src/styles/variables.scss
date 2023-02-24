@@ -372,6 +372,7 @@ $picker-bar-title-font-weight: var(
   --nutui-picker-bar-title-font-weight,
   normal
 ) !default;
+$picker-list-height: var(--nutui-picker-list-height, 252px) !default;
 $picker-item-height: var(--nutui-picker-item-height, 36px) !default;
 $picker-item-text-color: var(
   --nutui-picker-item-text-color,
@@ -398,6 +399,7 @@ $picker-mask-bg-img: var(
   linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),
   linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))
 ) !default;
+
 //input（✅）
 $input-border-bottom: var(--nutui-input-border-bottom, #eaf0fb) !default;
 $input-disabled-color: var(--nutui-input-disabled-color, #c8c9cc) !default;
