@@ -51,7 +51,7 @@ export const Form: FunctionComponent<
   }
 
   formInstance.starPositon = starPositon
-  const { setCallback, submit } = formInstance
+  const { setCallback, submit, resetFields } = formInstance
 
   setCallback({
     onFinish,
@@ -65,6 +65,10 @@ export const Form: FunctionComponent<
       onSubmit={(e) => {
         e.preventDefault()
         submit()
+      }}
+      onReset={(e) => {
+        e.preventDefault()
+        resetFields()
       }}
       // {...rest}
     >

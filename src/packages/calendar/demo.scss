@@ -2,8 +2,10 @@
   display: flex;
   padding: 0 40px;
 }
+
 .d_div {
   margin: 0px 5px;
+
   .d_btn {
     background: #fa3f19;
     color: #fff;
@@ -16,6 +18,8 @@
 }
 
 .info {
+  display: block;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 16px;
+  color: #999;
 }

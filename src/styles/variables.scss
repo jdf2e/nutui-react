@@ -412,8 +412,17 @@ $input-padding: var(--nutui-input-padding, 10px 25px) !default;
 
 $textarea-font: var(--nutui-textarea-font, $font-size-2) !default;
 $textarea-height: var(--nutui-textarea-height, 100px) !default;
+$textarea-padding: var(--nutui-textarea-padding, 16px 10px 16px 16px) !default;
 $textarea-limit-color: var(--nutui-textarea-limit-color, $text-color) !default;
 $textarea-text-color: var(--nutui-textarea-text-color, $title-color) !default;
+$textarea-text-curror-color: var(
+  --nutui-textarea-text-curror-color,
+  '$title-color'
+) !default;
+$textarea-text-line-height: var(
+  --nutui-textarea-text-line-height,
+  30px
+) !default;
 $textarea-disabled-color: var(
   --nutui-textarea-disabled-color,
   $disable-color
@@ -651,8 +660,8 @@ $avatar-normal-height: var(--nutui-avatar-normal-height, 40px) !default;
 
 //switch（✅）
 $switch-close-bg-color: var(--nutui-switch-close-bg-color, #ebebeb) !default;
-$switch-close--cline-bg-color: var(
-  --nutui-switch-close--cline-bg-color,
+$switch-close--line-bg-color: var(
+  --nutui-switch-close--line-bg-color,
   #f0f0f0
 ) !default;
 $switch-width: var(--nutui-switch-width, 36px) !default;
@@ -914,15 +923,24 @@ $steps-base-icon-line-height: var(
   --nutui-steps-base-icon-line-height,
   25px
 ) !default;
+$steps-base-icon-margin-bottom: var(
+  --nutui-steps-base-icon-margin-bottom,
+  12px
+) !default;
 $steps-base-icon-font-size: var(
   --nutui-steps-base-icon-font-size,
   13px
+) !default;
+$steps-base-line-width: var(--nutui-steps-base-line-width, 100%) !default;
+$steps-base-line-height: var(--nutui-steps-base-line-height, 1px) !default;
+$steps-base-line-background: var(
+  --nutui-steps-base-line-background,
+  #909ca4
 ) !default;
 $steps-base-title-font-size: var(
   --nutui-steps-base-title-font-size,
   14px
 ) !default;
-$steps-base-line-color: var(--nutui-steps-base-line-color, #909ca4) !default;
 $steps-base-title-color: var(
   --nutui-steps-base-title-color,
   $title-color
@@ -933,7 +951,7 @@ $steps-base-title-margin-bottom: var(
 ) !default;
 $steps-base-content-font-size: var(
   --nutui-steps-base-content-font-size,
-  14px
+  12px
 ) !default;
 $steps-base-content-color: var(
   --nutui-steps-base-content-color,
@@ -950,11 +968,56 @@ $steps-wait-head-border-color: var(
   --nutui-steps-wait-head-border-color,
   #909ca4
 ) !default;
+$steps-wait-title-color: var(
+  --nutui-steps-wait-title-color,
+  $title-color2
+) !default;
 $steps-wait-content-color: var(
   --nutui-steps-wait-content-color,
   $title-color2
 ) !default;
 
+$steps-process-icon-bg-color: var(
+  --nutui-steps-process-icon-bg-color,
+  $primary-color
+) !default;
+$steps-process-icon-color: var(
+  --nutui-steps-process-icon-color,
+  $white
+) !default;
+$steps-process-head-color: var(
+  --nutui-steps-process-head-color,
+  $primary-color
+) !default;
+$steps-process-head-border-color: var(
+  --nutui-steps-process-head-border-color,
+  $primary-color
+) !default;
+$steps-process-title-color: var(
+  --nutui-steps-process-title-color,
+  $primary-color
+) !default;
+$steps-process-title-font-size: var(
+  --nutui-steps-process-title-font-size,
+  14px
+) !default;
+$steps-process-title-font-weight: var(
+  --nutui-steps-process-title-font-weight,
+  400
+) !default;
+$steps-process-content-color: var(
+  --nutui-steps-process-content-color,
+  $title-color2
+) !default;
+
+$steps-finish-icon-bg-color: var(
+  --nutui-steps-finish-icon-bg-color,
+  $primary-text-color
+) !default;
+$steps-finish-icon-color: var(
+  --nutui-steps-finish-icon-color,
+  $primary-color
+) !default;
 $steps-finish-head-color: var(
   --nutui-steps-finish-head-color,
   $primary-color
@@ -967,30 +1030,20 @@ $steps-finish-title-color: var(
   --nutui-steps-finish-title-color,
   $primary-color
 ) !default;
+$steps-finish-content-color: var(
+  --nutui-steps-finish-content-color,
+  $title-color2
+) !default;
 $steps-finish-line-background: var(
   --nutui-steps-finish-line-background,
   $primary-color
 ) !default;
-$steps-finish-icon-text-color: var(
-  --nutui-steps-finish-icon-text-color,
-  $white
-) !default;
 
-$steps-process-head-color: var(
-  --nutui-steps-process-head-color,
-  $primary-text-color
-) !default;
-$steps-process-head-border-color: var(
-  --nutui-steps-process-head-border-color,
-  $primary-color
-) !default;
-$steps-process-title-color: var(
-  --nutui-steps-process-title-color,
-  $primary-color
-) !default;
-$steps-process-icon-text-color: var(
-  --nutui-steps-process-icon-text-color,
-  $primary-color
+$steps-dot-icon-width: var(--nutui-steps-dot-icon-width, 6px) !default;
+$steps-dot-icon-height: var(--nutui-steps-dot-icon-height, 6px) !default;
+$steps-dot-icon-border: var(
+  --nutui-steps-dot-icon-border,
+  2px solid $primary-text-color
 ) !default;
 
 // dialog（✅）
@@ -1064,7 +1117,7 @@ $checkbox-icon-disable-color: var(
 ) !default;
 $checkbox-label-margin-left: var(
   --nutui-checkbox-label-margin-left,
-  15px
+  10px
 ) !default;
 $checkbox-label-font-size: var(--nutui-checkbox-label-font-size, 14px) !default;
 $checkbox-icon-font-size: var(--nutui-checkbox-icon-font-size, 18px) !default;
@@ -1305,16 +1358,19 @@ $tag-border-width: var(--nutui-tag-border-width, 1px) !default;
 $tag-height: var(--nutui-tag-height, auto) !default;
 
 //badge（✅）
-$badge-background-color: linear-gradient(
-  135deg,
-  $primary-color 0%,
-  $primary-color-end 100%
+$badge-background-color: var(
+  --nutui-badge-background-color,
+  linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%)
 ) !default;
 $badge-color: var(--nutui-badge-color, #fff) !default;
 $badge-font-size: var(--nutui-badge-font-size, $font-size-1) !default;
 $badge-default-background-color: var(
   --nutui-badge-default-background-color,
   rgba(255, 255, 255, 1)
+) !default;
+$badge-border: var(
+  --nutui-badge-border,
+  0px solid $primary-text-color
 ) !default;
 $badge-border-radius: var(--nutui-badge-border-radius, 14px) !default;
 $badge-padding: var(--nutui-badge-padding, 0 5px) !default;
@@ -1711,9 +1767,9 @@ $menu-item-content-bg-color: var(
 // collapse（✅）
 $collapse-item-padding: var(
   --nutui-collapse-item-padding,
-  13px 36px 13px 26px
+  13px 0px 13px 26px
 ) !default;
-$collapse-item-color: var(--nutui-collapse-item-color, #666666) !default;
+$collapse-item-color: var(--nutui-collapse-item-color, $title-color) !default;
 $collapse-item-disabled-color: var(
   --nutui-collapse-item-disabled-color,
   #c8c9cc
@@ -1721,6 +1777,14 @@ $collapse-item-disabled-color: var(
 $collapse-item-icon-color: var(
   --nutui-collapse-item-icon-color,
   #666666
+) !default;
+$collapse-item-icon-margin-right: var(
+  --nutui-collapse-item-icon-margin-right,
+  5px
+) !default;
+$collapse-item-icon-margin-left: var(
+  --nutui-collapse-item-icon-margin-left,
+  5px
 ) !default;
 $collapse-item-font-size: var(
   --nutui-collapse-item-font-size,
@@ -1850,7 +1914,6 @@ $empty-description-padding: var(
   --nutui-empty-description-padding,
   0 40px
 ) !default;
-
 // cascader（✅）
 $cascader-font-size: var(--nutui-cascader-font-size, $font-size-2) !default;
 $cascader-line-height: var(--nutui-cascader-line-height, 22px) !default;
@@ -1883,7 +1946,13 @@ $cascader-bar-font-size: var(
 ) !default;
 $cascader-bar-line-height: var(--nutui-cascader-bar-line-height, 20px) !default;
 $cascader-bar-color: var(--nutui-cascader-bar-color, $title-color) !default;
+$cascader-item-height: var(--nutui-cascader-item-height, 40px) !default;
 $cascader-item-padding: var(--nutui-cascader-item-padding, 10px 20px) !default;
+$cascader-item-margin: var(--nutui-cascader-item-margin, 0px) !default;
+$cascader-item-border-bottom: var(
+  --nutui-cascader-item-border-bottom,
+  0px solid #ddd
+) !default;
 $cascader-item-color: var(--nutui-cascader-item-color, $title-color) !default;
 $cascader-item-font-size: var(
   --nutui-cascader-item-font-size,

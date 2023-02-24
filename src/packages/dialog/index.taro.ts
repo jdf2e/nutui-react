@@ -1,3 +1,3 @@
-import { Dialog } from './dialog.taro'
+import { BaseDialog } from './dialog.taro'
 
-export default Dialog
+export default BaseDialog
