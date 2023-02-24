@@ -1594,6 +1594,10 @@ $tabs-tab-smile-color: var(
   --nutui-tabs-tab-smile-color,
   $primary-color
 ) !default;
+$tabs-titles-background-color: var(
+  --nutui-tabs-titles-background-color,
+  $background-color
+) !default;
 $tabs-titles-border-radius: var(--nutui-tabs-titles-border-radius, 0) !default;
 $tabs-titles-item-large-font-size: var(
   --nutui-tabs-titles-item-large-font-size,
@@ -1613,16 +1617,15 @@ $tabs-titles-item-color: var(
 ) !default;
 $tabs-titles-item-active-color: var(
   --nutui-tabs-titles-item-active-color,
-  $title-color
+  $primary-color
 ) !default;
-$tabs-titles-background-color: var(
-  --nutui-tabs-titles-background-color,
-  $background-color
+$tabs-titles-item-active-font-weight: var(
+  --nutui-tabs-titles-item-active-font-weight,
+  600
 ) !default;
-$tabs-horizontal-tab-line-color: linear-gradient(
-  90deg,
-  $primary-color 0%,
-  rgba(#fa2c19, 0.15) 100%
+$tabs-horizontal-tab-line-color: var(
+  --nutui-tabs-horizontal-tab-line-color,
+  linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)
 ) !default;
 $tabs-horizontal-tab-line-bottom: var(
   --nutui-tabs-horizontal-line-bottom,
@@ -1630,7 +1633,11 @@ $tabs-horizontal-tab-line-bottom: var(
 ) !default;
 $tabs-horizontal-tab-line-border-radius: var(
   --nutui-tabs-horizontal-line-border-radius,
-  0px
+  2px
+) !default;
+$tabs-horizontal-tab-line-opacity: var(
+  --nutui-tabs-horizontal-tab-line-opacity,
+  1
 ) !default;
 $tabs-horizontal-titles-height: var(
   --nutui-tabs-horizontal-titles-height,
@@ -1640,18 +1647,29 @@ $tabs-horizontal-titles-item-min-width: var(
   --nutui-tabs-horizontal-titles-item-min-width,
   50px
 ) !default;
+$tabs-horizontal-titles-item-active-background-color: var(
+  --nutui-tabs-horizontal-titles-item-active-background-color,
+  $background-color3
+) !default;
 $tabs-horizontal-titles-item-active-line-width: var(
   --nutui-tabs-horizontal-titles-item-active-line-width,
   40px
 ) !default;
-$tabs-vertical-tab-line-color: linear-gradient(
-  180deg,
-  $primary-color 0%,
-  rgba($primary-color, 0.15) 100%
+$tabs-horizontal-titles-item-active-line-height: var(
+  --nutui-tabs-horizontal-titles-item-active-line-height,
+  3px
+) !default;
+$tabs-vertical-tab-line-color: var(
+  --nutui-tabs-vertical-tab-line-color,
+  linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)
 ) !default;
 $tabs-vertical-titles-item-height: var(
   --nutui-tabs-vertical-titles-item-height,
   40px
+) !default;
+$tabs-vertical-titles-item-active-line-width: var(
+  --nutui-tabs-vertical-titles-item-active-line-width,
+  3px
 ) !default;
 $tabs-vertical-titles-item-active-line-height: var(
   --nutui-tabs-vertical-titles-item-active-line-height,
@@ -1660,14 +1678,6 @@ $tabs-vertical-titles-item-active-line-height: var(
 $tabs-vertical-titles-width: var(
   --nutui-tabs-vertical-titles-width,
   100px
-) !default;
-$tabs-titles-item-line-border-radius: var(
-  --nutui-tabs-titles-item-line-border-radius,
-  0
-) !default;
-$tabs-titles-item-line-opacity: var(
-  --nutui-tabs-titles-item-line-opacity,
-  1
 ) !default;
 
 // indicator（✅）
