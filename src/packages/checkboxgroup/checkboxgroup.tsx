@@ -8,10 +8,15 @@ import bem from '@/utils/bem'
 import { RadioGroupOptionType } from '@/packages/radiogroup/type'
 import { Checkbox } from '../checkbox/checkbox'
 
+type Position = 'left' | 'right'
+type Direction = 'horizontal' | 'vertical'
+
 export interface CheckboxGroupProps {
   disabled: boolean
   checkedValue: string[]
   max: number | undefined
+  textPosition: Position
+  direction: Direction
   onChange: (value: string[]) => void
   options: RadioGroupOptionType[]
 }
@@ -20,6 +25,8 @@ const defaultProps = {
   disabled: false,
   checkedValue: [],
   max: undefined,
+  textPosition: 'right',
+  direction: 'vertical',
   onChange: (value: string[]) => {},
   options: [],
 } as CheckboxGroupProps
@@ -37,6 +44,8 @@ export const CheckboxGroup = React.forwardRef(
       onChange,
       checkedValue,
       max,
+      textPosition,
+      direction,
       options,
       ...rest
     } = props
@@ -116,6 +125,7 @@ export const CheckboxGroup = React.forwardRef(
           onChange: handleChildChange,
           getParentVals,
           max,
+          textPosition,
         })
       })
     }
@@ -132,6 +142,7 @@ export const CheckboxGroup = React.forwardRef(
             onChange={handleChildChange}
             {...rest}
             max={max}
+            textPosition={textPosition}
             getParentVals={getParentVals}
             checked={childChecked}
           />
@@ -140,7 +151,12 @@ export const CheckboxGroup = React.forwardRef(
     }, [innerValue, options, innerDisabled, max])
 
     return (
-      <div className={`${b()} ${className || ''}`} {...rest}>
+      <div
+        className={`${b()} nut-checkboxgroup--${props.direction} ${
+          className || ''
+        }`}
+        {...rest}
+      >
         {options?.length ? renderOptionsChildren() : cloneChildren()}
       </div>
     )
