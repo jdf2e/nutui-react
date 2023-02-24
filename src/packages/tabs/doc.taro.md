@@ -467,20 +467,27 @@ export default App;
 | 名称 | 默认值 |
 | --- | --- |
 | --nutui-tabs-tab-smile-color | `  $primary-color` |
+| --nutui-tabs-titles-background-color | `  $background-color` |
 | --nutui-tabs-titles-border-radius | ` 0` |
 | --nutui-tabs-titles-item-large-font-size | `  $font-size-3` |
 | --nutui-tabs-titles-item-font-size | `  $font-size-2` |
 | --nutui-tabs-titles-item-small-font-size | `  $font-size-1` |
 | --nutui-tabs-titles-item-color | `  $title-color` |
 | --nutui-tabs-titles-item-active-color | `  $title-color` |
-| --nutui-tabs-titles-background-color | `  $background-color2` |
+| --nutui-tabs-titles-item-active-font-weight`v1.4.9` | ` 600` |
+| --nutui-tabs-horizontal-tab-line-color`v1.4.9` | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
 | --nutui-tabs-horizontal-line-bottom`v1.4.8` | ` 15%` |
 | --nutui-tabs-horizontal-line-border-radius`v1.4.8` |` 0px`|
+| --nutui-tabs-horizontal-tab-line-opacity`v1.4.9` | ` 1`|
 | --nutui-tabs-horizontal-titles-height | `  46px` |
 | --nutui-tabs-horizontal-titles-item-min-width | `  50px` |
+| --nutui-tabs-horizontal-titles-item-active-background-color`v1.4.9` | ` $background-color3` |
 | --nutui-tabs-horizontal-titles-item-active-line-width | `  40px` |
+| --nutui-tabs-horizontal-titles-item-active-line-height`v1.4.9` | `  3px` |
+| --nutui-tabs-vertical-tab-line-color`v1.4.9` | `linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
 | --nutui-tabs-vertical-titles-item-height | `  40px` |
+| --nutui-tabs-vertical-titles-item-active-line-width`v1.4.9` | `  3px` |
 | --nutui-tabs-vertical-titles-item-active-line-height | `  14px` |
 | --nutui-tabs-vertical-titles-width | `  100px` |
-| --nutui-tabs-titles-item-line-border-radius | `  0` |
-| --nutui-tabs-titles-item-line-opacity | `  1` |
+| --nutui-tabs-titles-item-line-border-radius`v1.4.9 废弃` | `  0` |
+| --nutui-tabs-titles-item-line-opacity`v1.4.9 废弃` | `  1` |
