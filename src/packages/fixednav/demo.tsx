@@ -11,6 +11,10 @@ type TFixedNavDemo = {
   title4: string
   title5: string
   title6: string
+  home: string
+  category: string
+  cart: string
+  mine: string
 }
 
 const FixedNavDemo = () => {
@@ -22,6 +26,10 @@ const FixedNavDemo = () => {
       title4: '自定义开',
       title5: '自定义关',
       title6: '支持拖拽',
+      home: '首页',
+      category: '分类',
+      cart: '购物车',
+      mine: '我的',
     },
     'zh-TW': {
       title1: '基礎用法',
@@ -30,6 +38,10 @@ const FixedNavDemo = () => {
       title4: '自定義開',
       title5: '自定義關',
       title6: '支持拖拽',
+      home: '首頁',
+      category: '分類',
+      cart: '購物車',
+      mine: '我的',
     },
     'en-US': {
       title1: 'Basic usage',
@@ -38,28 +50,32 @@ const FixedNavDemo = () => {
       title4: 'Custom On',
       title5: 'Custom Off',
       title6: 'Support drag and drop',
+      home: 'Home',
+      category: 'Category',
+      cart: 'Cart',
+      mine: 'Mine',
     },
   })
   const navList = [
     {
       id: 1,
-      text: '首页',
+      text: translated.home,
       icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/117646/2/11112/1297/5ef83e95E81d77f05/daf8e3b1c81e3c98.png',
     },
     {
       id: 2,
-      text: '分类',
+      text: translated.category,
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png',
     },
     {
       id: 3,
-      text: '购物车',
+      text: translated.cart,
       num: 2,
       icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/130725/4/3157/1704/5ef83e95Eb976644f/b36c6cfc1cc1a99d.png',
     },
     {
       id: 4,
-      text: '我的',
+      text: translated.mine,
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/147573/29/1603/1721/5ef83e94E1393a678/5ddf1695ec989373.png',
     },
   ]

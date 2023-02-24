@@ -301,7 +301,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
           listData.map((item, index) => {
             return (
               <div
-                className="nut-picker-roller-item-tile"
+                className="nut-picker-roller-item-title"
                 key={item.value ? item.value : index}
                 style={{
                   height: `${lineSpacing.current}px`,

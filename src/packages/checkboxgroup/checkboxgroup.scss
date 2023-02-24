@@ -1,0 +1,33 @@
+.nut-checkboxgroup {
+  .nut-checkbox {
+    margin-bottom: 5px;
+
+    &__label {
+      margin-right: 5px;
+    }
+
+    &__button {
+      background-color: $gray4;
+    }
+  }
+
+  &--vertical {
+    .nut-checkbox {
+      &.nut-checkbox--reverse {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      &__label {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &--horizontal {
+    .nut-checkbox {
+      display: inline-flex;
+      margin-right: 20px;
+    }
+  }
+}

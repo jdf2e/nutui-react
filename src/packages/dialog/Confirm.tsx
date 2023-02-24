@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Dialog } from './dialog'
 import { destroyList, ConfirmProps } from './config'
+import { render as reactRender } from '@/utils/render'
 
 function ConfirmDialog(props: ConfirmProps) {
   return <Dialog {...props}>{props.content}</Dialog>
@@ -33,7 +34,7 @@ function confirm(
   document.body.appendChild(div)
 
   function render(props: ConfirmProps) {
-    ReactDOM.render(<ConfirmDialog {...props} onCancel={onCancel} />, div)
+    reactRender(<ConfirmDialog {...props} onCancel={onCancel} />, div)
   }
 
   const renderFunction = renderFunc || render

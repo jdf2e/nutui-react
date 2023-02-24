@@ -10,6 +10,7 @@ import Radio from '../radio'
 import Rate from '../rate'
 import Range from '../range'
 import Toast from '@/packages/toast'
+import { FormItemRuleWithoutValidator } from './types'
 import { FileItem, FileType } from '../uploader/uploader'
 
 interface T {
@@ -19,6 +20,7 @@ interface T {
   title2: string
   title3: string
   title4: string
+  title5: string
   name: string
   nameTip: string
   nameTip1: string
@@ -62,13 +64,14 @@ const FormDemo = () => {
       title10: '顶部对齐',
       title2: '表单校验',
       title3: '带有初始值表单校验',
-      title4: '表单类型',
+      title4: 'Form.useForm 对表单数据域进行交互。',
+      title5: '表单类型',
       name: '姓名',
       nameTip: '请输入姓名',
       nameTip1: '请输入姓名',
       age: '年龄',
       ageTip: '请输入年龄',
-      ageTip1: '请输入年龄',
+      ageTip1: '请输入年龄，必须数字且0-200区间',
       ageTip2: '必须输入数字',
       ageTip3: '必须输入0-200区间',
       tel: '联系电话',
@@ -103,7 +106,8 @@ const FormDemo = () => {
       title10: 'Top Align',
       title2: 'Validate Form',
       title3: 'InitialValue Validate Type',
-      title4: 'Form Type',
+      title4: 'Interact with form data fields via Form.useForm',
+      title5: 'Form Type',
       name: 'Name',
       nameTip: 'Please enter your name',
       nameTip1: 'Please enter name',
@@ -126,7 +130,7 @@ const FormDemo = () => {
       add: 'Add',
       remove: 'Remove',
       submit: 'Submit',
-      reset: 'Reset prompt status',
+      reset: 'Reset alert state',
       switch: 'Switch',
       checkbox: 'Checkbox',
       radiogroup: 'RadioGroup',
@@ -175,6 +179,38 @@ const FormDemo = () => {
   const submitSucceed = (obj: any) => {
     Toast.success('succeed')
     console.log('succeed', obj)
+  }
+
+  const [form] = Form.useForm()
+
+  const onMenuChange = (value: string | number | boolean) => {
+    switch (value) {
+      case 'male':
+        form.setFieldsValue({ note: 'Hi, man!' })
+        break
+      case 'female':
+        form.setFieldsValue({ note: 'Hi, lady!' })
+        break
+      case 'other':
+        form.setFieldsValue({ note: 'Hi there!' })
+        break
+      default:
+    }
+  }
+
+  // 函数校验
+  const customValidator = (
+    rule: FormItemRuleWithoutValidator,
+    value: string
+  ) => {
+    return /^\d+$/.test(value)
+  }
+
+  const valueRangeValidator = (
+    rule: FormItemRuleWithoutValidator,
+    value: string
+  ) => {
+    return /^(\d{1,2}|1\d{2}|200)$/.test(value)
   }
 
   return (
@@ -240,17 +276,38 @@ const FormDemo = () => {
           >
             <Input placeholder={translated.nameTip1} type="text" />
           </Form.Item>
-          <Form.Item label={translated.age} name="age">
-            <Input placeholder={translated.ageTip1} type="number" />
+          <Form.Item
+            label={translated.age}
+            name="age"
+            rules={[
+              { required: true, message: translated.ageTip },
+              { validator: customValidator, message: translated.ageTip2 },
+              { validator: valueRangeValidator, message: translated.ageTip3 },
+            ]}
+          >
+            <Input placeholder={translated.ageTip1} type="text" />
           </Form.Item>
-          <Form.Item label={translated.tel} name="tel">
+          <Form.Item
+            label={translated.tel}
+            name="tel"
+            rules={[{ required: true, message: translated.telTip }]}
+          >
             <Input placeholder={translated.telTip2} type="number" />
           </Form.Item>
-          <Form.Item label={translated.address} name="address">
+          <Form.Item
+            label={translated.address}
+            name="address"
+            rules={[{ required: true, message: translated.addressTip }]}
+          >
             <Input placeholder={translated.addressTip} type="text" />
           </Form.Item>
           <Cell>
             <input type="submit" value={translated.submit} />
+            <input
+              type="reset"
+              style={{ marginLeft: '15px' }}
+              value={translated.reset}
+            />
           </Cell>
         </Form>
 
@@ -278,7 +335,36 @@ const FormDemo = () => {
             <input type="submit" value={translated.submit} />
           </Cell>
         </Form>
+
         <h2>{translated.title4}</h2>
+        <Form
+          form={form}
+          onFinish={(obj) => submitSucceed(obj)}
+          onFinishFailed={(error) => submitFailed(error)}
+        >
+          <Form.Item
+            label={translated.name}
+            name="username"
+            rules={[{ required: true, message: translated.nameTip }]}
+          >
+            <Input placeholder={translated.nameTip1} type="text" />
+          </Form.Item>
+          <Form.Item label="标注" name="note">
+            <Input placeholder="请输入标注" type="string" />
+          </Form.Item>
+          <Form.Item label={translated.radiogroup} name="radiogroup">
+            <Radio.RadioGroup onChange={onMenuChange}>
+              <Radio value="male">male</Radio>
+              <Radio value="female">female</Radio>
+              <Radio value="other">other</Radio>
+            </Radio.RadioGroup>
+          </Form.Item>
+          <Cell>
+            <input type="submit" value={translated.submit} />
+          </Cell>
+        </Form>
+
+        <h2>{translated.title5}</h2>
         <Form
           onFinish={(obj) => submitSucceed(obj)}
           onFinishFailed={(error) => submitFailed(error)}

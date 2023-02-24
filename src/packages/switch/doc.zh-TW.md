@@ -182,3 +182,5 @@ export default App;
 | --nutui-switch-border-radius | ` 21px` |
 | --nutui-switch-inside-width | ` 13px` |
 | --nutui-switch-inside-height | ` 13px` |
+| --nutui-switch-inside-open-transform | ` translateX(146%)` |
+| --nutui-switch-inside-close-transform | ` translateX(30%)` |

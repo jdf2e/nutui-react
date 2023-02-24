@@ -20,6 +20,7 @@ export type BadgeType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
 
 const defaultProps = {
   ...ComponentDefaults,
+  className: '',
   value: '',
   dot: false,
   max: 10000,

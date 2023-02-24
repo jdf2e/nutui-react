@@ -3,16 +3,21 @@ import { useTranslate } from '../../sites/assets/locale'
 import { Steps } from './steps'
 import Button from '@/packages/button'
 import Step from '@/packages/step'
+import ConfigProvider from '@/packages/configprovider'
+
 import './demo.scss'
 
 interface T {
   '74fc5d8a': string
+  '74fc5d8b': string
   '606ae3f5': string
   '3c6225eb': string
   '979df428': string
   acfc4e74: string
   '0533b453': string
   db1b4ed6: string
+  '0533b454': string
+  '0533b455': string
   '70ffa5d8': string
   f28461bb: string
   dc9591e5: string
@@ -24,16 +29,42 @@ interface T {
   '34c1d5cc': string
   d98503f5: string
 }
+
+const customTheme = {
+  nutuiStepsBaseLineWidth: '70%',
+  nutuiStepsProcessIconBgColor: '#3768FA',
+  nutuiStepsProcessIconColor: '#fff',
+  nutuiStepsProcessTitleColor: '#3768FA',
+  nutuiStepsProcessTitleFontSize: '15px',
+  nutuiStepsProcessTitleFontWeight: '500',
+  nutuiStepsFinishIconColor: '#3768FA',
+  nutuiStepsFinishTitleColor: '#3768FA',
+  nutuiStepsFinishLineBackground: '#3768FA',
+}
+
+const customTheme2 = {
+  nutuiStepsBaseLineWidth: '70%',
+  nutuiStepsBaseLineHeight: '2px',
+  nutuiStepsFinishLineBackground: `linear-gradient(135deg,
+    rgba(250, 250, 25, 1) 0%,
+    rgba(250, 63, 25, 1) 45%,
+    rgba(250, 89, 25, 1) 83%,
+    rgba(250, 100, 25, 1) 100%)`,
+}
+
 const StepsDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
       '74fc5d8a': '基本用法',
+      '74fc5d8b': '基本用法：点状',
       '606ae3f5': '步骤一',
       '3c6225eb': '步骤二',
       '979df428': '步骤三',
       acfc4e74: '下一步',
       '0533b453': '标题和描述信息',
       db1b4ed6: '步骤描述',
+      '0533b454': '自定义步骤条',
+      '0533b455': '自定义步骤条：点状',
       '70ffa5d8': '自定义图标',
       f28461bb: '已完成',
       dc9591e5: '进行中',
@@ -47,12 +78,15 @@ const StepsDemo = () => {
     },
     'zh-TW': {
       '74fc5d8a': '基本用法',
+      '74fc5d8b': '基本用法：点状',
       '606ae3f5': '步驟一',
       '3c6225eb': '步驟二',
       '979df428': '步驟三',
       acfc4e74: '下一步',
       '0533b453': '標題和描述信息',
       db1b4ed6: '步驟描述',
+      '0533b454': '自定義步驟条',
+      '0533b455': '自定義步驟条：点状',
       '70ffa5d8': '自定義圖標',
       f28461bb: '已完成',
       dc9591e5: '進行中',
@@ -66,13 +100,16 @@ const StepsDemo = () => {
     },
     'en-US': {
       '74fc5d8a': 'Basic usage',
+      '74fc5d8b': 'Basic usage: Dot',
       '606ae3f5': 'step one',
       '3c6225eb': 'Step 2',
       '979df428': 'Step 3',
       acfc4e74: 'Next step',
       '0533b453': 'Title and description information',
-      db1b4ed6: 'Step description',
-      '70ffa5d8': 'custom icon',
+      db1b4ed6: 'Step Description',
+      '0533b454': 'Custom Step Bar',
+      '0533b455': 'Custom Step Bar: Dot',
+      '70ffa5d8': 'custom Icon',
       f28461bb: 'completed',
       dc9591e5: 'in progress',
       f6e0d691: 'has not started',
@@ -122,7 +159,33 @@ const StepsDemo = () => {
             </Step>
           </Steps>
           <div className="steps-button">
-            <Button type="danger" onClick={() => handleStep('current1')}>
+            <Button
+              type="primary"
+              size="small"
+              onClick={() => handleStep('current1')}
+            >
+              {translated.acfc4e74}
+            </Button>
+          </div>
+        </div>
+
+        <h2>{translated['74fc5d8b']}</h2>
+        <div className="steps-wrapper">
+          <Steps
+            current={stepState.current1}
+            progressDot
+            onClickStep={handleClickStep}
+          >
+            <Step activeIndex={1}>1</Step>
+            <Step activeIndex={2}>2</Step>
+            <Step activeIndex={3}>3</Step>
+          </Steps>
+          <div className="steps-button">
+            <Button
+              type="primary"
+              size="small"
+              onClick={() => handleStep('current1')}
+            >
               {translated.acfc4e74}
             </Button>
           </div>
@@ -149,7 +212,69 @@ const StepsDemo = () => {
             />
           </Steps>
           <div className="steps-button" style={{ marginTop: '10px' }}>
-            <Button type="danger" onClick={() => handleStep('current2')}>
+            <Button
+              type="primary"
+              size="small"
+              onClick={() => handleStep('current2')}
+            >
+              {translated.acfc4e74}
+            </Button>
+          </div>
+        </div>
+
+        <h2>{translated['0533b454']}</h2>
+        <div className="steps-wrapper">
+          <ConfigProvider theme={customTheme}>
+            <Steps current={stepState.current2}>
+              <Step
+                activeIndex={1}
+                title={translated['606ae3f5']}
+                content={translated.db1b4ed6}
+              >
+                1
+              </Step>
+              <Step
+                activeIndex={2}
+                title={translated['3c6225eb']}
+                content={translated.db1b4ed6}
+              />
+              <Step
+                activeIndex={3}
+                title={translated['979df428']}
+                content={translated.db1b4ed6}
+              />
+            </Steps>
+          </ConfigProvider>
+          <div className="steps-button" style={{ marginTop: '10px' }}>
+            <Button
+              type="primary"
+              size="small"
+              onClick={() => handleStep('current2')}
+            >
+              {translated.acfc4e74}
+            </Button>
+          </div>
+        </div>
+
+        <h2>{translated['0533b455']}</h2>
+        <div className="steps-wrapper">
+          <ConfigProvider theme={customTheme2}>
+            <Steps
+              current={stepState.current1}
+              progressDot
+              onClickStep={handleClickStep}
+            >
+              <Step activeIndex={1}>1</Step>
+              <Step activeIndex={2}>2</Step>
+              <Step activeIndex={3}>3</Step>
+            </Steps>
+          </ConfigProvider>
+          <div className="steps-button">
+            <Button
+              type="primary"
+              size="small"
+              onClick={() => handleStep('current1')}
+            >
               {translated.acfc4e74}
             </Button>
           </div>

@@ -20,6 +20,7 @@
 
   .popover-arrow {
     position: absolute;
+    z-index: -1;
     width: 0;
     height: 0;
     border: 8px solid transparent;
@@ -43,12 +44,11 @@
     }
 
     .popover-menu-item {
+      position: relative;
       padding: 0 8px;
       display: flex;
       align-items: center;
       height: $popover-menu-item-height;
-      border-bottom: 1px solid $popover-border-bottom-color;
-      // background-color: red;
 
       .popover-menu-item-name {
         margin: $popover-menu-item-name-margin;
@@ -62,16 +62,32 @@
       &:last-child {
         border-bottom: none;
         border-radius: 0 0 $popover-border-radius $popover-border-radius;
+
+        &::after {
+          height: 0;
+        }
       }
 
       &:hover {
+        cursor: pointer;
+        color: $popover-menu-item-hover-text-color;
         background-color: $popover-menu-item-hover-background-color;
+      }
+
+      &::after {
+        position: absolute;
+        left: $popover-menu-item-border-left;
+        bottom: $popover-menu-item-border-bottom;
+        content: ' ';
+        display: inline-block;
+        width: $popover-menu-item-border-width;
+        height: $popover-menu-item-border-height;
+        background-color: $popover-border-bottom-color;
       }
     }
   }
 
   // top
-
   .popover-arrow-top {
     bottom: 0;
     border-top-color: $popover-white-background-color;
@@ -218,9 +234,15 @@
     transform: translateY(0%);
   }
 
-  .disabled {
+  .popover-menu-item.disabled {
     color: $popover-disable-color;
     cursor: not-allowed;
+
+    &:hover {
+      cursor: not-allowed;
+      color: $popover-disable-color;
+      background-color: $popover-white-background-color;
+    }
   }
 }
 

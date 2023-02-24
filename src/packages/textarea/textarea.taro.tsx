@@ -71,6 +71,8 @@ export const TextArea: FunctionComponent<
   }, [defaultValue])
 
   const textChange = (event: any) => {
+    if (disabled) return
+    if (readonly) return
     const text = event.detail ? (event.detail as any) : (event.target as any)
     if (maxlength && [...text.value].length > Number(maxlength)) {
       text.value = text.value.substring(0, Number(maxlength))
@@ -106,8 +108,7 @@ export const TextArea: FunctionComponent<
           resize: `${autosize ? 'vertical' : 'none'}` as any,
           ...style,
         }}
-        disabled={disabled}
-        readOnly={readonly}
+        readOnly={disabled || readonly}
         value={inputValue}
         onInput={(e: any) => {
           textChange(e)

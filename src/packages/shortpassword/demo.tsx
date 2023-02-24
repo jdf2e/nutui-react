@@ -2,25 +2,47 @@ import React, { useState } from 'react'
 import Cell from '../cell'
 import Toast from '../toast'
 import { ShortPassword } from './shortpassword'
+import { useTranslate } from '@/sites/assets/locale'
 
 const ShortPasswordDemo = () => {
+  const [translated] = useTranslate({
+    'zh-CN': {
+      basic: '基础用法',
+      displayButton: '显示按钮组',
+      customLength: '自定义密码长度: 4',
+      forgetPassword: '忘记密码提示语事件回调',
+    },
+    'zh-TW': {
+      basic: '基礎用法',
+      displayButton: '顯示按鈕組',
+      customLength: '自定義密碼長度: 4',
+      forgetPassword: '忘記密碼提示語事件回調',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      displayButton: 'Display Button',
+      customLength: 'Custome Code Length: 4',
+      forgetPassword: 'Forget Password Tips',
+    },
+  })
   const [visible1, setVisible1] = useState(false)
   const [visible2, setVisible2] = useState(false)
   const [visible3, setVisible3] = useState(false)
   const [visible4, setVisible4] = useState(false)
+  const [visible5, setVisible5] = useState(false)
   const [value, setValue] = useState<string | number>('')
   const change = (value: number | string) => {
     console.log(value)
     setValue(value)
   }
   const onTips = () => {
-    Toast.text('执行忘记密码提示语')
+    Toast.text(translated.forgetPassword)
   }
   return (
     <div className="demo">
-      <h2>基础用法</h2>
+      <h2>{translated.basic}</h2>
       <Cell
-        title="基础用法"
+        title={translated.basic}
         isLink
         onClick={() => {
           setVisible1(true)
@@ -35,9 +57,9 @@ const ShortPasswordDemo = () => {
         }}
         onChange={(value) => change(value)}
       />
-      <h2>显示按钮组</h2>
+      <h2>{translated.displayButton}</h2>
       <Cell
-        title="显示按钮组"
+        title={translated.displayButton}
         isLink
         onClick={() => {
           setVisible2(true)
@@ -54,9 +76,9 @@ const ShortPasswordDemo = () => {
         onOk={() => setVisible2(false)}
         onCancel={() => setVisible2(false)}
       />
-      <h2>自定义密码长度4</h2>
+      <h2>{translated.customLength}</h2>
       <Cell
-        title="自定义密码长度4"
+        title={translated.customLength}
         isLink
         onClick={() => {
           setVisible3(true)
@@ -71,9 +93,9 @@ const ShortPasswordDemo = () => {
         }}
         length={4}
       />
-      <h2>忘记密码提示语事件回调</h2>
+      <h2>{translated.forgetPassword}</h2>
       <Cell
-        title="忘记密码提示语事件回调"
+        title={translated.forgetPassword}
         isLink
         onClick={() => {
           setVisible4(true)
@@ -87,6 +109,23 @@ const ShortPasswordDemo = () => {
           setValue('')
         }}
         onTips={() => onTips()}
+      />
+      <h2>自动聚焦</h2>
+      <Cell
+        title="自动聚焦"
+        isLink
+        onClick={() => {
+          setVisible5(true)
+        }}
+      />
+      <ShortPassword
+        visible={visible5}
+        modelValue={value}
+        onClose={() => {
+          setVisible5(false)
+          setValue('')
+        }}
+        autoFocus
       />
     </div>
   )
