@@ -2,11 +2,18 @@ import React from 'react'
 import { render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { AnimatingNumbers } from '../animatingnumbers'
+import { CountUp } from '@/packages/animatingnumbers/countup'
 
+jest.useFakeTimers()
 test('test endNumber props', () => {
   const { container } = render(<AnimatingNumbers.CountUp endNumber="678.94" />)
 
   const listNumbers = container.querySelectorAll('.nut-countup__number')
+  expect(listNumbers[0]).toHaveAttribute(
+    'style',
+    'transition: transform 1s ease-in-out;'
+  )
+  jest.advanceTimersByTime(CountUp.defaultProps?.delaySpeed ?? 0)
   expect(listNumbers[0]).toHaveAttribute(
     'style',
     'transition: transform 1s ease-in-out; transform: translate(0, -30%); webkit-transform: translate(0, -30%);'
@@ -26,6 +33,7 @@ test('test aysnc endNumber and  easeSpeed props', async () => {
   )
   const listNumbers = container.querySelectorAll('.nut-countup__number')
   expect(listNumbers.length).toBe(8)
+  jest.advanceTimersByTime(CountUp.defaultProps?.delaySpeed ?? 0)
   expect(listNumbers[0]).toHaveAttribute(
     'style',
     'transition: transform 1.2s ease-in-out; transform: translate(0, -50%); webkit-transform: translate(0, -50%);'
