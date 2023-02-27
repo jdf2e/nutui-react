@@ -7,6 +7,7 @@ import React, {
   useImperativeHandle,
   useEffect,
 } from 'react'
+import classNames from 'classnames'
 import { nextTick, useReady } from '@tarojs/taro'
 import bem from '@/utils/bem'
 import { useTouch } from '@/utils/useTouch'
@@ -278,7 +279,7 @@ export const Swipe = forwardRef<
   return (
     <div
       ref={root}
-      className={`${swipeBem()} ${className}`}
+      className={classNames(swipeBem(), className)}
       onTouchStart={(e: any) => onTouchStart(e)}
       onTouchMove={(e: any) => onTouchMove(e)}
       onTouchEnd={(e: any) => onTouchEnd(e)}

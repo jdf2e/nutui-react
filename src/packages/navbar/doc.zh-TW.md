@@ -10,7 +10,6 @@
 ```ts
 // react
 import { NavBar } from '@nutui/nutui-react';
-
 ```
 
 ### 代碼示例
@@ -161,26 +160,26 @@ export default App;
 
 | 字段            | 說明                                                                                           | 類型    | 默認值  |
 |-----------------|------------------------------------------------------------------------------------------------|---------|---------|
-| title           | 標題名稱                                                                                       | String  | -       |
-| desc            | 右側描述                                                                                       | String  | -       |
-| leftShow        | 是否展示左側箭頭                                                                              | Boolean | true   |
-| titIcon         | 標題帶icon                                                         | String  | -       |   
-| leftText         | 左側文案                                                         | String  | -       |  
-| fixed         | 是否固定                                                         | Boolean  | false       |   
-| safeAreaInsetTop         | 是否適配安全區                                                         | Boolean  | false       |   
-| border         | 是否顯示底部邊框                                      | Boolean  | false    | 
-| placeholder         | 固定在頂部時，是否在標籤位置生成一個等高的佔位元素           | Boolean  | false    |
-| zIndex         | 導航欄層級           | Number、String  | 10    |
-| style         | 容器樣式           | React.CSSProperties  | {}    |
-| className         | 容器類名           | String  | ""    |                                         
+| title           | 標題名稱                                                                                       | string  | -       |
+| desc            | 右側描述                                                                                       | string  | -       |
+| leftShow        | 是否展示左側箭頭                                                                              | boolean | `true`   |
+| titIcon         | 標題帶icon                                                         | string  | -       |   
+| leftText         | 左側文案                                                         | string  | -       |  
+| fixed         | 是否固定                                                         | boolean  | `false`       |   
+| safeAreaInsetTop         | 是否適配安全區                                                         | boolean  | `false`       |   
+| border         | 是否顯示底部邊框                                      | boolean  | `false`    | 
+| placeholder         | 固定在頂部時，是否在標籤位置生成一個等高的佔位元素           | boolean  | `false`    |
+| zIndex         | 導航欄層級           | number \| string  | `10`    |
+| style         | 容器樣式           | CSSProperties  | `{}`    |
+| className         | 容器類名           | string  | -    |                                         
 
 ### Event
 | 名稱  | 說明     | 回調參數    |
 |-------|----------|-------------|
-| onClickTitle | 點擊標題事件 | event:Event |
-| onClickRight | 點擊右側事件 | event:Event |
-| onClickBack | 點擊返回事件 | event:Event |
-| onClickIcon | 點擊標題右側icon事件 | event:Event |
+| onClickTitle | 點擊標題事件 | `event: Event` |
+| onClickRight | 點擊右側事件 | `event: Event` |
+| onClickBack | 點擊返回事件 | `event: Event` |
+| onClickIcon | 點擊標題右側icon事件 | `event: Event` |
 
 ## 主題定制
 
@@ -190,15 +189,15 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-navbar-height | ` 44px` |
-| --nutui-navbar-margin-bottom | ` 20px` |
-| --nutui-navbar-padding | ` 13px 16px` |
-| --nutui-navbar-background | ` $white` |
-| --nutui-navbar-box-shadow | `  0px 1px 7px 0px rgba(237, 238, 241, 1)` |
-| --nutui-navbar-color | ` $gray1` |
-| --nutui-navbar-title-base-font | `  $font-size-2` |
-| --nutui-navbar-title-font | ` $font-size-2` |
-| --nutui-navbar-title-font-weight | ` 0` |
-| --nutui-navbar-title-font-color | `  $navbar-color` |
-| --nutui-navbar-title-width | ` 100px` |
-| --nutui-navbar-title-icon-margin | `  0 0 0 13px` |
+| --nutui-navbar-height | `44px` |
+| --nutui-navbar-margin-bottom | `20px` |
+| --nutui-navbar-padding | `13px 16px` |
+| --nutui-navbar-background | `$white` |
+| --nutui-navbar-box-shadow | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
+| --nutui-navbar-color | `$gray1` |
+| --nutui-navbar-title-base-font | `$font-size-2` |
+| --nutui-navbar-title-font | `$font-size-2` |
+| --nutui-navbar-title-font-weight | `0` |
+| --nutui-navbar-title-font-color | `$navbar-color` |
+| --nutui-navbar-title-width | `100px` |
+| --nutui-navbar-title-icon-margin | `0 0 0 13px` |

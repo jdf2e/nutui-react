@@ -9,7 +9,6 @@ The menu list that pops down downwards.
 ``` javascript
 // react
 import { Menu, MenuItem } from '@nutui/nutui-react';
-
 ```
 
 ### Basic Usage
@@ -283,24 +282,24 @@ export default App
 
 | 参数                  | 说明                           | 类型                    | 默认值  |
 |---------------------|--------------------------------|-------------------------|---------|
-| activeColor         | Active color of title and option           | String                  | #F2270C |
-| closeOnClickOverlay | Whether to close when overlay is clicked     | Boolean                 | true    |
-| lockScroll          | Whether the background is locked                   | Boolean                 | true    |
-| scrollFixed         | Whether to fixed when window is scrolled, fixed position can be set                   | Boolean、String、Number                 | true    |
-| titleIcon           | Custome title icon                 | String                  | -       |
+| activeColor         | Active color of title and option           | string                  | `#F2270C` |
+| closeOnClickOverlay | Whether to close when overlay is clicked     | boolean                 | `true`    |
+| lockScroll          | Whether the background is locked                   | boolean                 | `true`    |
+| scrollFixed         | Whether to fixed when window is scrolled, fixed position can be set                   | boolean \| string \| number                 | `true`    |
+| titleIcon           | Custome title icon                 | string                  | -       |
 
 ### MenuItem Props
 
 | 参数                          | 说明                                    | 类型    | 默认值           |
 |-------------------------------|-----------------------------------------|---------|------------------|
-| title                         | Item title                              | String  | 当前选中项文字   |
+| title                         | Item title                              | string  | Current selected value   |
 | options                       | Options                                | Array   | -                |
-| disabled                      | Whether to disable dropdown item                            | Boolean | false            |
-| columns                          | Display how many options in one line          | Number  | 1                |
-| optionsIcon          | Custome option icon                          | String  | 'Check'          |
-| direction            | Expand direction, can be set to up                | String  | 'down'           |
-| activeClassName    | Active custome title class              | String  | -                |
-| inactiveClassName  | Inactive custome title class            | String  | -                |
+| disabled                      | Whether to disable dropdown item                            | boolean | `false`            |
+| columns                          | Display how many options in one line          | number  | `1`                |
+| optionsIcon          | Custome option icon                          | string  | `Check`          |
+| direction            | Expand direction, can be set to up                | string  | `down`           |
+| activeClassName    | Active custome title class              | string  | -                |
+| inactiveClassName  | Inactive custome title class            | string  | -                |
 | fontClassName       | Custom icon font base class name                 | string  | `nutui-iconfont` |
 | iconClassPrefix          | Custom icon class name prefix for using custom icons | string  | `nut-icon`       |
 
@@ -314,7 +313,7 @@ export default App
 
 | Event | Description                 | Arguments     |
 |-----|----------------------|--------------|
-| toggle   | Toggle menu display status, true to show，false to hide, no param is negated | show?: boolean |
+| toggle   | Toggle menu display status, true to show，false to hide, no param is negated | `show?: boolean` |
 
 ## Theming
 
@@ -324,22 +323,22 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-menu-bar-line-height | ` 48px` |
-| --nutui-menu-item-font-size | ` $font-size-2` |
-| --nutui-menu-item-text-color | ` $title-color` |
-| --nutui-menu-item-active-text-color | `  $primary-color` |
-| --nutui-menu-bar-border-bottom-color | `  #eaf0fb` |
-| --nutui-menu-bar-opened-z-index | ` 2001` |
-| --nutui-menu-item-disabled-color | `  #969799` |
-| --nutui-menu-title-text-padding-left | `  8px` |
-| --nutui-menu-title-text-padding-right | `  8px` |
-| --nutui-menu-item-content-padding | `  12px 24px` |
-| --nutui-menu-item-content-max-height | `  214px` |
-| --nutui-menu-item-option-padding-top | `  12px` |
-| --nutui-menu-item-option-padding-bottom | `  12px` |
-| --nutui-menu-item-option-i-margin-right | `  6px` |
-| --nutui-menu-bar-box-shadow | `  0 2px 12px rgba(89, 89, 89, 0.12)` |
-| --nutui-menu-scroll-fixed-top | ` 0` |
-| --nutui-menu-scroll-fixed-z-index | `  $mask-z-index` |
-| --nutui-menu-active-item-font-weight | `  500` |
-| --nutui-menu-item-content-bg-color | `  $gray6` |
+| --nutui-menu-bar-line-height | `48px` |
+| --nutui-menu-item-font-size | `$font-size-2` |
+| --nutui-menu-item-text-color | `$title-color` |
+| --nutui-menu-item-active-text-color | `$primary-color` |
+| --nutui-menu-bar-border-bottom-color | `#eaf0fb` |
+| --nutui-menu-bar-opened-z-index | `2001` |
+| --nutui-menu-item-disabled-color | `#969799` |
+| --nutui-menu-title-text-padding-left | `8px` |
+| --nutui-menu-title-text-padding-right | `8px` |
+| --nutui-menu-item-content-padding | `12px 24px` |
+| --nutui-menu-item-content-max-height | `214px` |
+| --nutui-menu-item-option-padding-top | `12px` |
+| --nutui-menu-item-option-padding-bottom | `12px` |
+| --nutui-menu-item-option-i-margin-right | `6px` |
+| --nutui-menu-bar-box-shadow | `0 2px 12px rgba(89, 89, 89, 0.12)` |
+| --nutui-menu-scroll-fixed-top | `0` |
+| --nutui-menu-scroll-fixed-z-index | `$mask-z-index` |
+| --nutui-menu-active-item-font-weight | `500` |
+| --nutui-menu-item-content-bg-color | `$gray6` |

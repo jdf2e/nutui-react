@@ -62,7 +62,7 @@ export const Indicator: FunctionComponent<
   }
   useEffect(() => {}, [])
   return (
-    <div className={`${classes} ${className}`} {...rest}>
+    <div className={classNames(classes, className)} {...rest}>
       {renderEles()}
     </div>
   )
