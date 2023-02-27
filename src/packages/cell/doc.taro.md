@@ -259,29 +259,29 @@ export default App;
 
 | 字段  | 说明     | 类型   | 默认值 |
 |-------|----------|--------|--------|
-| title | 分组标题 | String | -      |
-| desc  | 分组描述 | String | -      |
-| titleSlot        | 自定义`title`标题区域                         | React.ReactNode          | -  |
-| descSlot        | 自定义`desc`描述区域                         | React.ReactNode          | -  |
+| title | 分组标题 | string | -      |
+| desc  | 分组描述 | string | -      |
+| titleSlot        | 自定义`title`标题区域                         | ReactNode          | -  |
+| descSlot        | 自定义`desc`描述区域                         | ReactNode          | -  |
 
 ### Cell Prop
 
 | 字段                 | 说明                                                                                           | 类型             | 默认值 |
 |--------------------|------------------------------------------------------------------------------------------------|------------------|--------|
-| title              | 标题名称                      |  React.ReactNode           | -      |
-| subTitle           | 左侧副标题                           |  React.ReactNode           | -      |
-| desc               | 右侧描述                                     | String      | -      |
-| descTextAlign      | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | String | right  |
-| isLink             | 是否展示右侧箭头并开启点击反馈            | Boolean          | false  |
-| to`v1.4.0 废弃`        | 点击后跳转的目标路由对象 | String  | -      |
-| replace            | 是否在跳转时替换当前页面历史                             | Boolean          | false  |
-| roundRadius`v1.2.0` | 圆角半径                                      | String            | 6px    |
-| url                | 点击后跳转的链接地址                                         | String           | -      |
-| icon               | 左侧 [图标名称](#/icon) 或图片链接              | String           | -      |
-| center`v1.2.0`     | 是否使内容垂直居中                                                                             | Boolean          | false  |
-| size`v1.2.0`       | 单元格大小，可选值为 `large`                           | String          | -  |
-| iconSlot`v1.2.0`   | 自定义左侧`icon`区域                          | React.ReactNode          | -  |
-| linkSlot`v1.2.0`   | 自定义右侧`link`区域                         | React.ReactNode          | -  |
+| title              | 标题名称                      |  ReactNode           | -      |
+| subTitle           | 左侧副标题                           |  ReactNode           | -      |
+| desc               | 右侧描述                                     | string      | -      |
+| descTextAlign      | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp) | string | `right`  |
+| isLink             | 是否展示右侧箭头并开启点击反馈            | boolean          | `false`  |
+| to`v1.4.0 废弃`        | 点击后跳转的目标路由对象 | string  | -      |
+| replace            | 是否在跳转时替换当前页面历史                             | boolean          | `false`  |
+| roundRadius`v1.2.0` | 圆角半径                                      | string            | `6px`    |
+| url                | 点击后跳转的链接地址                                         | string           | -      |
+| icon               | 左侧 [图标名称](#/icon) 或图片链接              | string           | -      |
+| center`v1.2.0`     | 是否使内容垂直居中                                                                             | boolean          | `false`  |
+| size`v1.2.0`       | 单元格大小，可选值为 `large`                           | string          | -  |
+| iconSlot`v1.2.0`   | 自定义左侧`icon`区域                          | ReactNode          | -  |
+| linkSlot`v1.2.0`   | 自定义右侧`link`区域                         | ReactNode          | -  |
 
 
 

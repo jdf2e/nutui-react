@@ -9,7 +9,6 @@ The cell is a single display item in the list.
 ```ts
 // react
 import { Cell, CellGroup } from '@nutui/nutui-react'
-
 ```
 
 ## Demo
@@ -259,29 +258,29 @@ export default App
 
 | Attribute | Description | Type   | Default |
 |-------|----------|--------|--------|
-| title | Title | String | -      |
-| desc  | Description | String | -      |
-| titleSlot        | Custom`title`slot                        | React.ReactNode          | -  |
-| descSlot        | Custom`desc`slot                         | React.ReactNode          | -  |
+| title | Title | string | -      |
+| desc  | Description | string | -      |
+| titleSlot        | Custom`title`slot                        | ReactNode          | -  |
+| descSlot        | Custom`desc`slot                         | ReactNode          | -  |
 
 ### Cell Prop
 
 | Attribute         | Description                                                                                              | Type             | Default          |
 |-------------------|----------------------------------------------------------------------------------------------------------|------------------|------------------|
-| title             | Title                      |  React.ReactNode           | -      |
-| subTitle          | Subtitle                           |  React.ReactNode           | -      |
-| desc              | Description                                     | String      | -      |
-| descTextAlign     | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp), is only available when displaying desc | String | right  |
-| isLink            | Whether to show the right arrow and turn on click feedback            | Boolean          | false  |
-| to`v1.4.0 Abandon`       | C Target route of the link | String  | -      |
-| replace           | If true, the navigation will not leave a history record                             | Boolean          | false  |
-| roundRadius`v1.2.0` | Corner radius                                      | String            | 6px    |
-| url               | Link                                         | String           | -      |
-| icon              |  Left [icon name](#/icon) or image              | String           | -      |
-| center`v1.2.0`    | Whether to center content                                                                              | Boolean          | false  |
-| size`v1.2.0`      | Size, can be set to `large`                         | String          | -  |
-| iconSlot`v1.2.0`  |  Custom Left `icon`                        | React.ReactNode          | -  |
-| linkSlot`v1.2.0`  | Custom Right`link`                      | React.ReactNode          | -  |
+| title             | Title                      |  ReactNode           | -      |
+| subTitle          | Subtitle                           |  ReactNode           | -      |
+| desc              | Description                                     | string      | -      |
+| descTextAlign     | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp), is only available when displaying desc | string | `right`  |
+| isLink            | Whether to show the right arrow and turn on click feedback            | boolean          | `false`  |
+| to`v1.4.0 Abandon`       | C Target route of the link | string  | -      |
+| replace           | If true, the navigation will not leave a history record                             | boolean          | `false`  |
+| roundRadius`v1.2.0` | Corner radius                                      | string            | `6px`    |
+| url               | Link                                         | string           | -      |
+| icon              |  Left [icon name](#/icon) or image              | string           | -      |
+| center`v1.2.0`    | Whether to center content                                                                              | boolean          | `false`  |
+| size`v1.2.0`      | Size, can be set to `large`                         | string          | -  |
+| iconSlot`v1.2.0`  |  Custom Left `icon`                        | ReactNode          | -  |
+| linkSlot`v1.2.0`  | Custom Right`link`                      | ReactNode          | -  |
 
 
 
