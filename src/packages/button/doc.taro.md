@@ -229,16 +229,16 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| type         | 类型，可选值为 `primary` `info` `warning` `danger` `success` | String |`default`         |
-| size        | 尺寸，可选值为 `large` `small`  | String | `normal`      |
-| shape         | 形状，可选值为 `square` | String | `round`             |
-| color | 按钮颜色，支持传入 linear-gradient 渐变色     | String | - |
-| plain          | 	是否为朴素按钮                       | Boolean | `false`             |
-| disabled          | 	是否禁用按钮                       | Boolean | `false`              |
-| block          | 是否为块级元素                        | Boolean | `false`               |
-| icon          | 按钮图标，同Icon组件name属性                        | String | -     |
-| iconSize`v1.4.7` | 按钮图标大小，同Icon组件的size属性 | string、number | 16 |
-| loading          | 按钮loading状态                        | Boolean | `false`               |
+| type         | 类型，可选值为 `primary` `info` `warning` `danger` `success` | string |`default`         |
+| size        | 尺寸，可选值为 `large` `small`  | string | `normal`      |
+| shape         | 形状，可选值为 `square` | string | `round`             |
+| color | 按钮颜色，支持传入 linear-gradient 渐变色     | string | - |
+| plain          | 	是否为朴素按钮                       | boolean | `false`             |
+| disabled          | 	是否禁用按钮                       | boolean | `false`              |
+| block          | 是否为块级元素                        | boolean | `false`               |
+| icon          | 按钮图标，同Icon组件name属性                        | string | -     |
+| iconSize`v1.4.7` | 按钮图标大小，同Icon组件的size属性 | string \| number | `16` |
+| loading          | 按钮loading状态                        | boolean | `false`               |
 
 ### Events
 

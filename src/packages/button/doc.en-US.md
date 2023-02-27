@@ -9,7 +9,6 @@ Buttons are used to trigger an action, such as submitting a form.
 ``` javascript
 // react
 import { Button } from '@nutui/nutui-react';
-
 ```
 
 ## Demo
@@ -231,16 +230,16 @@ export default App;
 
 | Props    | Description                             | Type   | Default           |
 |----------|----------------------------------|--------|------------------|
-| type     | Type, optionally `primary` `info` `warning` `danger` `success` | String |`default`         |
-| size     | Dimensions, optionally `large` `small`  | String | `normal`      |
-| shape    | Shape, optionally `square` | String | `round`             |
-| color    | Button color, which supports incoming linear-gradient gradients     | String | - |
-| plain    | 	Whether it is a naïve button or not                       | Boolean | `false`             |
-| disabled | 	Whether to disable the button                       | Boolean | `false`              |
-| block    | Whether it is a block-level element                        | Boolean | `false`               |
-| icon     | Button icon, with the Icon component name property                        | String | -     |
-| iconSize`v1.4.7` | Button icon size, with the Icon's size property | string、number | 16 |
-| loading  | loading status                        | Boolean | `false`               |
+| type     | Type, optionally `primary` `info` `warning` `danger` `success` | string |`default`         |
+| size     | Dimensions, optionally `large` `small`  | string | `normal`      |
+| shape    | Shape, optionally `square` | string | `round`             |
+| color    | Button color, which supports incoming linear-gradient gradients     | string | - |
+| plain    | 	Whether it is a naïve button or not                       | boolean | `false`             |
+| disabled | 	Whether to disable the button                       | boolean | `false`              |
+| block    | Whether it is a block-level element                        | boolean | `false`               |
+| icon     | Button icon, with the Icon component name property                        | string | -     |
+| iconSize`v1.4.7` | Button icon size, with the Icon's size property | string \| number | `16` |
+| loading  | loading status                        | boolean | `false`               |
 
 ### Events
 
