@@ -9,7 +9,6 @@ Displays the progress of a task or process, often used for provisioning processe
 ```javascript
 // react
 import { Indicator } from '@nutui/nutui-react'
-
 ```
 ### Basic Usage
 :::demo
@@ -114,12 +113,12 @@ export default App;
 
 | Attribute           | Description                             | Type                      | Default            |
 |--------------|----------------------------------|--------|------------------|
-| current  | current step               | Number | 1              |
-| size       | step length                         | Number | 3               |
-| block | Whether to enable block level layout     | Boolean | false |
-| align | Alignment, only valid when block is true, optional values 'left', 'right', 'center' | String | left |
-| fillZero     | Whether to add 0 in front of the singular number                      | Boolean | true        |
-| vertical | Whether to display vertically     | Boolean | false |
+| current  | current step               | number | `1`              |
+| size       | step length                         | number | `3`               |
+| block | Whether to enable block level layout     | boolean | `false` |
+| align | Alignment, only valid when block is true, optional values 'left', 'right', 'center' | string | `left` |
+| fillZero     | Whether to add 0 in front of the singular number                      | boolean | `true`        |
+| vertical | Whether to display vertically     | boolean | `false` |
 
 
 ## Theming
@@ -130,12 +129,12 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-indicator-color | ` $primary-color` |
-| --nutui-indicator-dot-color | ` $disable-color` |
-| --nutui-indicator-white | ` $white` |
-| --nutui-indicator-size | ` 18px` |
-| --nutui-indicator-number-font-size | `  10px` |
-| --nutui-indicator-dot-margin | ` 4px` |
-| --nutui-indicator-dot-vertical-margin | `  4px` |
-| --nutui-indicator-dot-first-margin | `  0px` |
-| --nutui-indicator-dot-last-margin | `  0px` |
+| --nutui-indicator-color | `$primary-color` |
+| --nutui-indicator-dot-color | `$disable-color` |
+| --nutui-indicator-white | `$white` |
+| --nutui-indicator-size | `18px` |
+| --nutui-indicator-number-font-size | `10px` |
+| --nutui-indicator-dot-margin | `4px` |
+| --nutui-indicator-dot-vertical-margin | `4px` |
+| --nutui-indicator-dot-first-margin | `0px` |
+| --nutui-indicator-dot-last-margin | `0px` |

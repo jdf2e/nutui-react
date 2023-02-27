@@ -113,12 +113,12 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| current  | 当前步骤               | Number | 1              |
-| size       | 步骤长度                         | Number | 3               |
-| block | 是否启用块级布局     | Boolean | false |
-| align | 对齐方式，仅在block为true时生效, 可选值 'left', 'right', 'center'| String | left |
-| fillZero     | 单数前面是否补0                      | Boolean | true        |
-| vertical | 是否竖向展示     | Boolean | false |
+| current  | 当前步骤               | number | `1`              |
+| size       | 步骤长度                         | number | `3`               |
+| block | 是否启用块级布局     | boolean | `false` |
+| align | 对齐方式，仅在block为true时生效, 可选值 'left', 'right', 'center'| string | `left` |
+| fillZero     | 单数前面是否补0                      | boolean | `true`        |
+| vertical | 是否竖向展示     | boolean | `false` |
 
 
 ## 主题定制
@@ -129,12 +129,12 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-indicator-color | ` $primary-color` |
-| --nutui-indicator-dot-color | ` $disable-color` |
-| --nutui-indicator-white | ` $white` |
-| --nutui-indicator-size | ` 18px` |
-| --nutui-indicator-number-font-size | `  10px` |
-| --nutui-indicator-dot-margin | ` 4px` |
-| --nutui-indicator-dot-vertical-margin | `  4px` |
-| --nutui-indicator-dot-first-margin | `  0px` |
-| --nutui-indicator-dot-last-margin | `  0px` |
+| --nutui-indicator-color | `$primary-color` |
+| --nutui-indicator-dot-color | `$disable-color` |
+| --nutui-indicator-white | `$white` |
+| --nutui-indicator-size | `18px` |
+| --nutui-indicator-number-font-size | `10px` |
+| --nutui-indicator-dot-margin | `4px` |
+| --nutui-indicator-dot-vertical-margin | `4px` |
+| --nutui-indicator-dot-first-margin | `0px` |
+| --nutui-indicator-dot-last-margin | `0px` |

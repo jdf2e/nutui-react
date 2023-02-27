@@ -135,25 +135,25 @@ export default App;
 
 | Attribute    | Description                      | Type   | Default          |
 |--------------|----------------------------------|--------|------------------|
-| visible      |Whether the current component is displayed | boolean | false   |
-| title        | Navigation title                           | String  | -               |
-| width        | Eject width  -percentage          | String   | '80%'          |
-| position     | Eject position                    | 'left'、'right' | 'left'  |
-| offset       | Navigation indent width           | number  | 20              |
+| visible      | Whether the current component is displayed | boolean | `false`   |
+| title        | Navigation title                           | string  | -               |
+| width        | Eject width  -percentage          | string   | `80%`          |
+| position     | Eject position                    | 'left' \| 'right' | `left`  |
+| offset       | Navigation indent width           | number  | `20`              |
 
 ### 2、SubSideNavBar
 
 | Attribute    | Description                      | Type   | Default         |
 |--------------|----------------------------------|--------|------------------|
-| ikey         | Navigation unique identifier     | String、Number |          |
-| title        | Navigation title                 | String  | -              |
-| open         | Whether navigation is expanded by default | Boolean  | true  |
+| ikey         | Navigation unique identifier     | string \| number |          |
+| title        | Navigation title                 | string  | -              |
+| open         | Whether navigation is expanded by default | boolean  | `true`  |
 ### 3、SideNavBarItem
 
 | Attribute    | Description                      | Type   | Default          |
 |--------------|----------------------------------|--------|------------------|
-| ikey         | Navigation unique identifier     | String、Number |          |
-| title        | Navigation title                 | String  | -               |
+| ikey         | Navigation unique identifier     | string \| number |          |
+| title        | Navigation title                 | string  | -               |
 
 ## Events
 ### 1、SideNavBar Events
@@ -166,13 +166,13 @@ export default App;
 
 | Event | Description                                | Arguments    |
 |-------|--------------------------------------------|--------------|
-| onClick     | Navigation Click,return{ title,ikey,isShow}| -           |
+| onClick     | Navigation Click | `data: {title: string, ikey: string \| number, isShow: boolean}`           |
 
 ### 3、SideNavBarItem Events
 
 | Event  | Description                                | Arguments    |
 |--------|--------------------------------------------|--------------|
-| onClick | Navigation Click,return{ title,ikey}       | -           |
+| onClick | Navigation Click       | `data: {title: string, ikey: string \| number}`           |
 
 
 ## Theming
@@ -183,17 +183,17 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-sidenavbar-content-bg-color | `  $white` |
-| --nutui-sidenavbar-sub-title-border-color | `  #f6f6f6` |
-| --nutui-sidenavbar-sub-title-bg-color | `  #f6f6f6` |
-| --nutui-sidenavbar-sub-title-font-size | `  $font-size-large` |
-| --nutui-sidenavbar-sub-title-radius | `  0` |
-| --nutui-sidenavbar-sub-title-border | `  0` |
-| --nutui-sidenavbar-sub-title-height | `  40px` |
-| --nutui-sidenavbar-sub-title-text-line-height | `  40px` |
-| --nutui-sidenavbar-sub-title-text-color | `  $title-color` |
-| --nutui-sidenavbar-item-title-color | `  #333` |
-| --nutui-sidenavbar-item-title-bg-color | `  $white` |
-| --nutui-sidenavbar-item-height | ` 40px` |
-| --nutui-sidenavbar-item-line-height | `  40px` |
-| --nutui-sidenavbar-item-font-size | `  16px` |
+| --nutui-sidenavbar-content-bg-color | `$white` |
+| --nutui-sidenavbar-sub-title-border-color | `#f6f6f6` |
+| --nutui-sidenavbar-sub-title-bg-color | `#f6f6f6` |
+| --nutui-sidenavbar-sub-title-font-size | `$font-size-large` |
+| --nutui-sidenavbar-sub-title-radius | `0` |
+| --nutui-sidenavbar-sub-title-border | `0` |
+| --nutui-sidenavbar-sub-title-height | `40px` |
+| --nutui-sidenavbar-sub-title-text-line-height | `40px` |
+| --nutui-sidenavbar-sub-title-text-color | `$title-color` |
+| --nutui-sidenavbar-item-title-color | `#333` |
+| --nutui-sidenavbar-item-title-bg-color | `$white` |
+| --nutui-sidenavbar-item-height | `40px` |
+| --nutui-sidenavbar-item-line-height | `40px` |
+| --nutui-sidenavbar-item-font-size | `16px` |

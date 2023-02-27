@@ -49,11 +49,13 @@ const DragDemo = () => {
   })
   const { screenWidth, windowHeight } = Taro.getSystemInfoSync()
 
+  const isTaroWeb = Taro.getEnv() === 'WEB'
+
   const right = () => {
     return screenWidth - 300 - 9
   }
   const bottom = () => {
-    return windowHeight - 501
+    return windowHeight - 501 - (isTaroWeb ? 57 : 0)
   }
   const btnStyle = {
     borderRadius: '25px',
@@ -67,10 +69,7 @@ const DragDemo = () => {
   return (
     <>
       <Header />
-      <div
-        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
-        style={{ height: `${windowHeight - 20}px` }}
-      >
+      <div className={`demo ${isTaroWeb ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Drag style={{ left: '8px' }}>
           <span style={btnStyle}>{translated.dragBasic}</span>
@@ -80,14 +79,20 @@ const DragDemo = () => {
         </h2>
         <Drag
           direction="x"
-          style={{ top: '140px', left: '8px' }}
+          style={{
+            top: isTaroWeb ? '197px' : '140px',
+            left: '8px',
+          }}
           className="weapp-drag1"
         >
           <span style={btnStyle}> {translated.directionX}</span>
         </Drag>
         <Drag
           direction="y"
-          style={{ top: '140px', right: '50px' }}
+          style={{
+            top: isTaroWeb ? '197px' : '140px',
+            right: '50px',
+          }}
           className="weapp-drag2"
         >
           <span style={btnStyle}> {translated.directionY}</span>
@@ -98,7 +103,10 @@ const DragDemo = () => {
         <Drag
           direction="x"
           attract
-          style={{ top: '220px', left: '8px' }}
+          style={{
+            top: isTaroWeb ? '277px' : '220px',
+            left: '8px',
+          }}
           className="weapp-drag3"
         >
           <span style={btnStyle}>{translated.attractText}</span>
@@ -110,7 +118,7 @@ const DragDemo = () => {
           className="drag-boundary"
           style={{
             position: 'absolute',
-            top: '300px',
+            top: isTaroWeb ? '357px' : '300px',
             left: '8px',
             width: '300px',
             height: '200px',
@@ -118,8 +126,16 @@ const DragDemo = () => {
           }}
         />
         <Drag
-          boundary={{ top: 301, left: 9, bottom: bottom(), right: right() }}
-          style={{ top: '360px', left: '50px' }}
+          boundary={{
+            top: isTaroWeb ? 358 : 301,
+            left: 9,
+            bottom: bottom(),
+            right: right(),
+          }}
+          style={{
+            top: isTaroWeb ? '417px' : '360px',
+            left: '50px',
+          }}
           className="weapp-drag4"
         >
           <span style={btnStyle}>{translated.limitBoundaries}</span>
