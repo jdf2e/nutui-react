@@ -8,7 +8,6 @@ When the amount of data is too much, use pagination to separate the data.
 ``` javascript
 // react
 import { Pagination } from '@nutui/nutui-react';
-
 ```    
 
 ### Basic Usage
@@ -129,23 +128,23 @@ export default App;
     
 | Attribute           | Description                             | Type                      | Default            |
 | -------------- | -------------------------------- | ------------------------- | ----------------- |
-| modelValue     | current page number                         | Number                    | -                 |
-| defaultValue   | default page number                         | Number                    | 1                 |
-| mode           | Display mode, optional values are: `multi`,`simple` | String                    | multi             |
-| prevText       | Customize previous page button content             | String \| React.ReactNode | Previous            |
-| nextText       | Customize next page button content             | String \| React.ReactNode | Next             |
-| pageCount      | total pages                           | String \| Number          | Incoming/calculating based on page count |
-| totalItems     | total                         | String \| Number          | 0                 |
-| itemsPerPage   | records per page                       | String \| Number          | 10                |
-| showPageSize   | number of pages displayed                   | String \| Number          | 5                 |
-| forceEllipses  | Whether to show ellipsis                   | Boolean                   | false             |
-| pageNodeRender | Used to customize page number content             | (page) => React.ReactNode | -                 |
+| modelValue     | current page number                         | number                    | -                 |
+| defaultValue   | default page number                         | number                    | `1`                 |
+| mode           | Display mode, optional values are: `multi`,`simple` | string                    | `multi`             |
+| prevText       | Customize previous page button content             | string \| ReactNode | `Previous`            |
+| nextText       | Customize next page button content             | string \| ReactNode | `Next`             |
+| pageCount      | total pages                           | string \| number          | Incoming/calculating based on page count |
+| totalItems     | total                         | string \| number          | `0`                 |
+| itemsPerPage   | records per page                       | string \| number          | `10`                |
+| showPageSize   | number of pages displayed                   | string \| number          | `5`                 |
+| forceEllipses  | Whether to show ellipsis                   | boolean                   | `false`             |
+| pageNodeRender | Used to customize page number content             | (page) => ReactNode | -                 |
     
 ### Events
     
 | Event | Description           | Arguments |
 | -------- | -------------- | -------- |
-| onChange |  when the page number changes | value    |
+| onChange |  when the page number changes | `value`    |
 
 
 ## Theming
@@ -156,11 +155,11 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-pagination-color | ` $primary-color` |
-| --nutui-pagination-font-size | ` $font-size-2` |
-| --nutui-pagination-item-border-color | `  #e4e7eb` |
-| --nutui-pagination-disable-color | `  $disable-color` |
-| --nutui-pagination-disable-background-color | `  #f7f8fa` |
-| --nutui-pagination-item-border-width | `  1px` |
-| --nutui-pagination-item-border-radius | `  2px` |
-| --nutui-pagination-prev-next-padding | `  0 11px` |
+| --nutui-pagination-color | `$primary-color` |
+| --nutui-pagination-font-size | `$font-size-2` |
+| --nutui-pagination-item-border-color | `#e4e7eb` |
+| --nutui-pagination-disable-color | `$disable-color` |
+| --nutui-pagination-disable-background-color | `#f7f8fa` |
+| --nutui-pagination-item-border-width | `1px` |
+| --nutui-pagination-item-border-radius | `2px` |
+| --nutui-pagination-prev-next-padding | `0 11px` |

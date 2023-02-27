@@ -9,7 +9,6 @@
 ```ts
 // react
 import { Tabs, TabPane } from '@nutui/nutui-react';
-
 ```
 
 ## 代码演示
@@ -341,20 +340,20 @@ export default App;
 
 | 参数          | 说明                                          | 类型          | 默认值     |
 |---------------|-----------------------------------------------|---------------|------------|
-| value         | 绑定当前选中标签的标识符                      | number,string | 0          |
-| color         | 标签选中色                                    | string        | #1a1a1a    |
-| background    | 标签栏背景颜色                                | string        | #f5f5f5    |
-| direction     | 使用横纵方向 可选值 horizontal、vertical      | string        | horizontal |
-| type          | 选中底部展示样式 可选值 line、smile           | string        | line       |
-| titleScroll  | 标签栏是否可以滚动                            | boolean       | false      |
-| ellipsis      | 是否省略过长的标题文字                        | boolean       | true       |
-| animatedTime | 切换动画时长,单位 ms 0 代表无动画              | number,string | 300        |
-| titleGutter  | 标签间隙                                      | number,string | 0          |
-| titleNode    | 自定义导航区域                                 | `() => JSX.Element[]` | 0          |
-| size         | 标签栏字体尺寸大小 可选值 large normal small | string        | normal     |
-| leftAlign`v1.4.8` | 标题左对齐 | boolean | false |
-| autoHeight`v1.2.1` | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean             | false     |
-| tabStyle`v1.3.8` | 标签栏样式 | React.CSSProperties | {}     |
+| value         | 绑定当前选中标签的标识符                      | number \| string | `0`          |
+| color         | 标签选中色                                    | string        | `#1a1a1a`    |
+| background    | 标签栏背景颜色                                | string        | `#f5f5f5`    |
+| direction     | 使用横纵方向 可选值 `horizontal`、`vertical`      | string        | `horizontal` |
+| type          | 选中底部展示样式 可选值 `line`、`smile`           | string        | `line`       |
+| titleScroll  | 标签栏是否可以滚动                            | boolean       | `false`      |
+| ellipsis      | 是否省略过长的标题文字                        | boolean       | `true`       |
+| animatedTime | 切换动画时长,单位 ms 0 代表无动画              | number \| string | `300`        |
+| titleGutter  | 标签间隙                                      | number \| string | `0`          |
+| titleNode    | 自定义导航区域                                 | ReactNode | -          |
+| size         | 标签栏字体尺寸大小 可选值 `large`、`normal`、`small` | string        | `normal`     |
+| leftAlign`v1.4.8` | 标题左对齐 | boolean | `false` |
+| autoHeight`v1.2.1` | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean             | `false`     |
+| tabStyle`v1.3.8` | 标签栏样式 | CSSProperties | `{}`     |
 
 ## Tabs Children
 
@@ -366,16 +365,16 @@ export default App;
 
 | 参数     | 说明                    | 类型    | 默认值           |
 |----------|-------------------------|---------|------------------|
-| title    | 标题                    | string  |                  |
+| title    | 标题                    | string  |   -               |
 | paneKey  | 标签 Key , 匹配的标识符 | string  | 默认索引0,1,2... |
-| disabled | 是否禁用标签            | boolean | false            |
+| disabled | 是否禁用标签            | boolean | `false`            |
 
 ### Tabs Events
 
 | 事件名 | 说明                     | 回调参数                 |
 |--------|--------------------------|--------------------------|
-| click  | 点击标签时触发           | {title,paneKey,disabled} |
-| change | 当前激活的标签改变时触发 | {title,paneKey,disabled} |
+| click  | 点击标签时触发           | `{title, paneKey, disabled}` |
+| change | 当前激活的标签改变时触发 | `{title, paneKey, disabled}` |
 
 
 ## 主題定制
@@ -386,28 +385,28 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-tabs-tab-smile-color | `  $primary-color` |
-| --nutui-tabs-titles-background-color | `  $background-color` |
-| --nutui-tabs-titles-border-radius | ` 0` |
-| --nutui-tabs-titles-item-large-font-size | `  $font-size-3` |
-| --nutui-tabs-titles-item-font-size | `  $font-size-2` |
-| --nutui-tabs-titles-item-small-font-size | `  $font-size-1` |
-| --nutui-tabs-titles-item-color | `  $title-color` |
-| --nutui-tabs-titles-item-active-color | `  $title-color` |
-| --nutui-tabs-titles-item-active-font-weight`v1.4.9` | ` 600` |
+| --nutui-tabs-tab-smile-color | `$primary-color` |
+| --nutui-tabs-titles-background-color | `$background-color` |
+| --nutui-tabs-titles-border-radius | `0` |
+| --nutui-tabs-titles-item-large-font-size | `$font-size-3` |
+| --nutui-tabs-titles-item-font-size | `$font-size-2` |
+| --nutui-tabs-titles-item-small-font-size | `$font-size-1` |
+| --nutui-tabs-titles-item-color | `$title-color` |
+| --nutui-tabs-titles-item-active-color | `$title-color` |
+| --nutui-tabs-titles-item-active-font-weight`v1.4.9` | `600` |
 | --nutui-tabs-horizontal-tab-line-color`v1.4.9` | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
-| --nutui-tabs-horizontal-line-bottom`v1.4.8` | ` 15%` |
+| --nutui-tabs-horizontal-line-bottom`v1.4.8` | `15%` |
 | --nutui-tabs-horizontal-line-border-radius`v1.4.8` |` 0px`|
-| --nutui-tabs-horizontal-tab-line-opacity`v1.4.9` | ` 1`|
-| --nutui-tabs-horizontal-titles-height | `  46px` |
-| --nutui-tabs-horizontal-titles-item-min-width | `  50px` |
-| --nutui-tabs-horizontal-titles-item-active-background-color`v1.4.9` | ` $background-color3` |
-| --nutui-tabs-horizontal-titles-item-active-line-width | `  40px` |
-| --nutui-tabs-horizontal-titles-item-active-line-height`v1.4.9` | `  3px` |
+| --nutui-tabs-horizontal-tab-line-opacity`v1.4.9` | `1`|
+| --nutui-tabs-horizontal-titles-height | `46px` |
+| --nutui-tabs-horizontal-titles-item-min-width | `50px` |
+| --nutui-tabs-horizontal-titles-item-active-background-color`v1.4.9` | `$background-color3` |
+| --nutui-tabs-horizontal-titles-item-active-line-width | `40px` |
+| --nutui-tabs-horizontal-titles-item-active-line-height`v1.4.9` | `3px` |
 | --nutui-tabs-vertical-tab-line-color`v1.4.9` | `linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
-| --nutui-tabs-vertical-titles-item-height | `  40px` |
-| --nutui-tabs-vertical-titles-item-active-line-width`v1.4.9` | `  3px` |
-| --nutui-tabs-vertical-titles-item-active-line-height | `  14px` |
-| --nutui-tabs-vertical-titles-width | `  100px` |
-| --nutui-tabs-titles-item-line-border-radius`v1.4.9 废弃` | `  0` |
-| --nutui-tabs-titles-item-line-opacity`v1.4.9 废弃` | `  1` |
+| --nutui-tabs-vertical-titles-item-height | `40px` |
+| --nutui-tabs-vertical-titles-item-active-line-width`v1.4.9` | `3px` |
+| --nutui-tabs-vertical-titles-item-active-line-height | `14px` |
+| --nutui-tabs-vertical-titles-width | `100px` |
+| --nutui-tabs-titles-item-line-border-radius`v1.4.9 废弃` | `0` |
+| --nutui-tabs-titles-item-line-opacity`v1.4.9 废弃` | `1` |

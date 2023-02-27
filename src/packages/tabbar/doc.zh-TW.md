@@ -9,7 +9,6 @@
 ```ts
 // react
 import { Tabbar, TabbarItem } from '@nutui/nutui-react';
-
 ```
 
 ## 代碼演示
@@ -174,29 +173,29 @@ export default App;
 
 | 字段            | 說明                     | 類型   | 默認值  |
 |-----------------|------------------------|--------|---------|
-| visible | 默认選中的標籤的索引值            | number | 0       |
+| visible | 默认選中的標籤的索引值            | number | `0`       |
 | activeVisible`1.4.8` | 選中的標籤的索引值              | number | -       |
-| bottom          | 是否固定在頁面底部              | Boolean | false   |
-| unactiveColor  | icon未激活的顏色             | String | #7d7e80 |
-| activeColor    | icon激活的顏色              | String | #1989fa |
-| size`v1.2.2`    | icon的统一尺寸              | String 、Boolean | 20 |
-| safeAreaInsetBottom    | 是否開啟iphone系列全面屏底部安全區適配 | Boolean | false |
-| style    | 組件樣式                   | React.CSSProperties | {} |
-| clsssName    | 組件類名                   | String | - |
+| bottom          | 是否固定在頁面底部              | boolean | `false`   |
+| unactiveColor  | icon未激活的顏色             | string | `#7d7e80` |
+| activeColor    | icon激活的顏色              | string | `#1989fa` |
+| size`v1.2.2`    | icon的统一尺寸              | string \| boolean | `20` |
+| safeAreaInsetBottom    | 是否開啟iphone系列全面屏底部安全區適配 | boolean | `false` |
+| style    | 組件樣式                   | CSSProperties | `{}` |
+| clsssName    | 組件類名                   | string | - |
 
 ### tabbar-item
 
 | 字段 | 說明 | 類型   | 默認值 |
 |-----------|-------------------|--------|--------|
-| tabTitle | 標籤頁的標題 | String | --     |
-| icon | 標籤頁顯示的[圖標名稱](#/icon) 或圖片鏈接 | String | --     |
-| href | 標籤頁的跳轉鏈接   | String | --     |
-| to`v1.4.0 废弃` | 	標籤頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性 | any | --     |
-| num | 頁簽右上角的數字角標，超出99之後為99+     | Number | --     |
-| iconClassPrefix`v1.2.1`  | 自定義 icon 類名前綴，用於使用自定義圖標 | String | `nut-icon` |
-| iconFontClassName`v1.2.1` | 自定義 icon 字體基礎類名 | String | 
-| dot | 是否顯示圖標右上角小紅點   | Boolean | false     |
-| iconSize`v1.4.7`   | icon的单个尺寸     | String 、Boolean | 20 |
+| tabTitle | 標籤頁的標題 | string | -     |
+| icon | 標籤頁顯示的[圖標名稱](#/icon) 或圖片鏈接 | string | -     |
+| href | 標籤頁的跳轉鏈接   | string | -     |
+| to`v1.4.0 废弃` | 	標籤頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性 | any | -     |
+| num | 頁簽右上角的數字角標，超出99之後為99+     | number | -     |
+| iconClassPrefix`v1.2.1`  | 自定義 icon 類名前綴，用於使用自定義圖標 | string | `nut-icon` |
+| iconFontClassName`v1.2.1` | 自定義 icon 字體基礎類名 | string | 
+| dot | 是否顯示圖標右上角小紅點   | boolean | `false`     |
+| iconSize`v1.4.7`   | icon的单个尺寸     | string \| boolean | `20` |
 
 
 ### Event
@@ -214,16 +213,16 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-tabbar-height | ` 50px`|
-| --nutui-tabbar-active-color | ` $primary-color` |
-| --nutui-tabbar-unactive-color | `  $primary-color` |
-| --nutui-tabbar-border-top | ` 1px solid #eee` |
-| --nutui-tabbar-border-bottom | `  1px solid #eee` |
-| --nutui-tabbar-box-shadow | ` none` |
-| --nutui-tabbar-item-text-font-size | `  $font-size-0` |
-| --nutui-tabbar-item-text-line-height | `  initial` |
-| --nutui-tabbar-height | ` 50px` |
-| --nutui-tabbar-word-margin-top | ` auto` |
-| --nutui-tabbar-dot-right | ` 12px`|
-| --nutui-tabbar-dot-top | ` 0` |
-| --nutui-tabbar-word-margin-top | ` 3px` |
+| --nutui-tabbar-height | `50px`|
+| --nutui-tabbar-active-color | `$primary-color` |
+| --nutui-tabbar-unactive-color | `$primary-color` |
+| --nutui-tabbar-border-top | `1px solid #eee` |
+| --nutui-tabbar-border-bottom | `1px solid #eee` |
+| --nutui-tabbar-box-shadow | `none` |
+| --nutui-tabbar-item-text-font-size | `$font-size-0` |
+| --nutui-tabbar-item-text-line-height | `initial` |
+| --nutui-tabbar-height | `50px` |
+| --nutui-tabbar-word-margin-top | `auto` |
+| --nutui-tabbar-dot-right | `12px`|
+| --nutui-tabbar-dot-top | `0` |
+| --nutui-tabbar-word-margin-top | `3px` |
