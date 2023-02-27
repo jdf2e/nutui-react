@@ -9,7 +9,6 @@
 ``` javascript
 // react
 import { Address } from '@nutui/nutui-react';
-
 ```
 
 ## 代碼示例
@@ -589,23 +588,23 @@ export default App;
 
 | 字段 | 說明 | 類型 | 默認值 |
 |----- | ----- | ----- | -----  |
-| modelValue | 是否打開地址選擇 | String | '' |
-| modelSelect`v1.2.3` | 設置默認選中地址 | String\|Number[] | [] |
-| type | 地址選擇類型 exist/custom/custom2  | String | 'custom' |
-| province | 省，每個省的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | [] |
-| city | 市，每個市的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | [] |
-| country | 縣，每個縣的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | [] |
-| town | 鄉/鎮，每個鄉/鎮的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | [] |
-| height | 彈層中內容容器的高度，僅在type="custom2"時有效 | String、Number | '200px' |
-| existAddress | 已存在地址列錶，每個地址對象中，必傳值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解釋見下） | Array | [] |
-| defaultIcon | 已有地址列錶默認圖標，type=‘exist’ 時生效 | String | '' |
-| selectedIcon | 已有地址列錶選中圖標，type=‘exist’ 時生效 | String | '' |
+| modelValue | 是否打開地址選擇 | string | - |
+| modelSelect`v1.2.3` | 設置默認選中地址 | string[] \| number[] | `[]` |
+| type | 地址選擇類型 exist/custom/custom2  | string | `custom` |
+| province | 省，每個省的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | `[]` |
+| city | 市，每個市的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | `[]` |
+| country | 縣，每個縣的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | `[]` |
+| town | 鄉/鎮，每個鄉/鎮的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | `[]` |
+| height | 彈層中內容容器的高度，僅在type="custom2"時有效 | string \| number | `200px` |
+| existAddress | 已存在地址列錶，每個地址對象中，必傳值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解釋見下） | Array | `[]` |
+| defaultIcon | 已有地址列錶默認圖標，type='exist' 時生效 | string | - |
+| selectedIcon | 已有地址列錶選中圖標，type='exist' 時生效 | string | - |
 | closeBtnIcon | 自定義關閉彈框按鈕圖標 | string | - |
-| backBtnIcon | 自定義地址與已有地址切換時，自定義返回的按鈕圖標 | String | - |
-| isShowCustomAddress | 是否可以切換自定義地址選擇，type=‘exist’ 時生效 | Boolean | true |
-| customAddressTitle  | 自定義地址選擇文案，type='custom' 時生效 | String | '請選擇所在地區' |
-| existAddressTitle| 已有地址文案 ，type=‘exist’ 時生效| String | '配送至' |
-| customAndExistTitle| 自定義地址與已有地址切換按鈕文案 ，type=‘exist’ 時生效| String | '選擇其他地址' |
+| backBtnIcon | 自定義地址與已有地址切換時，自定義返回的按鈕圖標 | string | - |
+| isShowCustomAddress | 是否可以切換自定義地址選擇，type='exist' 時生效 | boolean | `true` |
+| customAddressTitle  | 自定義地址選擇文案，type='custom' 時生效 | string | `請選擇所在地區` |
+| existAddressTitle| 已有地址文案 ，type='exist' 時生效| string | `配送至` |
+| customAndExistTitle| 自定義地址與已有地址切換按鈕文案 ，type='exist' 時生效| string | `選擇其他地址` |
 
 
   * provinceName 省的名字
@@ -621,29 +620,29 @@ export default App;
 | onChange | 自定義選擇地址時，選擇地區時觸發 |  參考 onChange |
 | onSelected | 選擇已有地址列錶時觸發 | 參考 selected |
 | onClose | 地址選擇彈框關閉時觸發 | 參考 close |
-| closeMask |點擊遮罩層或點擊右上角叉號關閉時觸發 | {closeWay:'mask'/'cross'} |
-| switchModule | 點擊‘選擇其他地址’或自定義地址選擇左上角返回按鈕觸發 | {type:'exist'/'custom'/'custom2'} |
+| closeMask |點擊遮罩層或點擊右上角叉號關閉時觸發 | `closeWay: 'mask' \| 'cross'` |
+| switchModule | 點擊'選擇其他地址'或自定義地址選擇左上角返回按鈕觸發 | `type: 'exist' \| 'custom' \| 'custom2'` |
 
 
 ## change 回調參數
 | 參數 | 說明 | 可能值  |
 |----- | ----- | ----- |
-| custom | 當前點擊的行政區域  |  province(省) / city(市) / country(縣) / town(鄉) |
-| next | 當前點擊的行政區域的下一級 | province(省) / city(市) / country(縣) / town(鄉) |
-| value | 當前點擊的行政區域的值（返回傳入的值） | {} |
+| custom | 當前點擊的行政區域  |  `province`(省) \| `city`(市) \| `country`(縣) \| `town`(鄉) |
+| next | 當前點擊的行政區域的下一級 | `province`(省) \| `city`(市) \| `country`(縣) \| `town`(鄉) |
+| value | 當前點擊的行政區域的值（返回傳入的值） | `{}` |
 
 ## selected 回調參數
 | 參數 | 說明 | 可能值  |
 |----- | ----- | ----- |
-| 第一個參數（prevExistAdd） |  選擇前選中的地址 |  {} |
-| 第二個參數（nowExistAdd） |  當前選中的地址 |  {} |
-| 第三個參數（arr） |  選擇完之後的已有地址列錶（selectedAddress 值發生改變） |  {} |
+| 第一個參數（prevExistAdd） |  選擇前選中的地址 |  `{}` |
+| 第二個參數（nowExistAdd） |  當前選中的地址 |  `{}` |
+| 第三個參數（arr） |  選擇完之後的已有地址列錶（selectedAddress 值發生改變） |  `{}` |
 
 ## close 回調參數
 | 參數 | 說明 | 可能值 |
 |----- | ----- | ----- |
-| type | 地址選擇類型 exist/custom/custom2  |  exist/custom/custom2 |
-| data | 選擇地址的值,custom 時，addressStr 為選擇的地址組合 | {}  |
+| type | 地址選擇類型 exist/custom/custom2  |  `exist` \| `custom` \| `custom2` |
+| data | 選擇地址的值,custom 時，addressStr 為選擇的地址組合 | `{}`  |
     
 
 ## 主題定制
@@ -654,25 +653,25 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-address-icon-color | ` $primary-color` |
-| --nutui-address-header-title-font-size | `  18px` |
-| --nutui-address-header-title-color | `  #262626` |
-| --nutui-address-region-tab-font-size | `  13px` |
-| --nutui-address-region-tab-color | `  #1d1e1e` |
-| --nutui-address-region-tab-active-item-font-weight | `  bold` |
-| --nutui-address-region-tab-line-border-radius | `  0` |
-| --nutui-address-region-tab-line-opacity | `  1` |
-| --nutui-address-region-item-color | `  #333` |
-| --nutui-address-region-item-font-size | `  $font-size-1` |
-| --nutui-address-item-margin-right | `  9px` |
-| --nutui-addresslist-bg | ` #fff` |
-| --nutui-addresslist-border | ` #f0f0f0` |
-| --nutui-addresslist-font-color | ` #333333` |
-| --nutui-addresslist-font-size | ` 16px` |
-| --nutui-addresslist-mask-bg | `  rgba(0, 0, 0, 0.4)` |
-| --nutui-addresslist-addr-font-color | `  #666666` |
-| --nutui-addresslist-addr-font-size | `  12px` |
-| --nutui-addresslist-set-bg | ` #f5a623` |
-| --nutui-addresslist-del-bg | ` #e1251b` |
-| --nutui-addresslist-contnts-contact-default | `  $primary-color` |
-| --nutui-addresslist-contnts-contact-color | `  $white` |
+| --nutui-address-icon-color | `$primary-color` |
+| --nutui-address-header-title-font-size | `18px` |
+| --nutui-address-header-title-color | `#262626` |
+| --nutui-address-region-tab-font-size | `13px` |
+| --nutui-address-region-tab-color | `#1d1e1e` |
+| --nutui-address-region-tab-active-item-font-weight | `bold` |
+| --nutui-address-region-tab-line-border-radius | `0` |
+| --nutui-address-region-tab-line-opacity | `1` |
+| --nutui-address-region-item-color | `#333` |
+| --nutui-address-region-item-font-size | `$font-size-1` |
+| --nutui-address-item-margin-right | `9px` |
+| --nutui-addresslist-bg | `#fff` |
+| --nutui-addresslist-border | `#f0f0f0` |
+| --nutui-addresslist-font-color | `#333333` |
+| --nutui-addresslist-font-size | `16px` |
+| --nutui-addresslist-mask-bg | `rgba(0, 0, 0, 0.4)` |
+| --nutui-addresslist-addr-font-color | `#666666` |
+| --nutui-addresslist-addr-font-size | `12px` |
+| --nutui-addresslist-set-bg | `#f5a623` |
+| --nutui-addresslist-del-bg | `#e1251b` |
+| --nutui-addresslist-contnts-contact-default | `$primary-color` |
+| --nutui-addresslist-contnts-contact-color | `$white` |
