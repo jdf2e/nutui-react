@@ -1,8 +1,8 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Ellipsis, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface T {
   basic: string
@@ -64,6 +64,8 @@ const EllipsisDemo = () => {
         <Cell>
           <Ellipsis
             content={content}
+            onClick={() => Taro.showToast({ title: 'Clicked!' })}
+            onChange={(type) => Taro.showToast({ title: type })}
             direction="start"
             expandText={translated.expand}
             collapseText={translated.collapse}

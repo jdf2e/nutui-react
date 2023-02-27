@@ -7,6 +7,8 @@ import React, {
   useImperativeHandle,
   useEffect,
 } from 'react'
+import classNames from 'classnames'
+import { nextTick, useReady } from '@tarojs/taro'
 import bem from '@/utils/bem'
 import { useTouch } from '@/utils/useTouch'
 import { getRectByTaro } from '@/utils/useClientRect'
@@ -87,6 +89,21 @@ export const Swipe = forwardRef<
   const swipeBem = bem('swipe')
   const touch: any = useTouch()
 
+  // 获取元素的时候要在页面 onReady 后，需要参考小程序的事件周期
+  useReady(() => {
+    const getWidth = async () => {
+      if (leftWrapper.current) {
+        const leftRect = await getRectByTaro(leftWrapper.current)
+        setActionWidth((v) => ({ ...v, left: leftRect.width }))
+      }
+      if (rightWrapper.current) {
+        const rightRect = await getRectByTaro(rightWrapper.current)
+        setActionWidth((v) => ({ ...v, right: rightRect.width }))
+      }
+    }
+    nextTick(() => getWidth())
+  })
+
   const { children, className, style } = { ...defaultProps, ...props }
 
   const root: any = useRef<HTMLDivElement>()
@@ -125,7 +142,6 @@ export const Swipe = forwardRef<
       const rightRect = await getRectByTaro(rightWrapper.current)
       setActionWidth((v) => ({ ...v, right: rightRect.width }))
     }
-
     if (!props.disabled) {
       startOffset.current = state.offset
       touch.start(event)
@@ -208,35 +224,13 @@ export const Swipe = forwardRef<
     return Math.min(Math.max(Number(num), Number(min)), Number(max))
   }
 
-  // const getNodeWidth = (node: Element) => {
-  //   if (node) {
-  //     const ele: any = getRectByTaro(node)
-  //     return ele.width
-  //   }
-  //   return 0
-  // }
-  // const leftRef = useCallback(
-  //   (node: Element | null) => {
-  //     if (node !== null) {
-  //       setActionWidth((v) => ({ ...v, left: getNodeWidth(node) }))
-  //     }
-  //   },
-  //   [props.leftAction]
-  // )
-  // const rightRef = useCallback(
-  //   (node: Element | null) => {
-  //     if (node !== null) {
-  //       setActionWidth((v) => ({ ...v, right: getNodeWidth(node) }))
-  //     }
-  //   },
-  //   [props.rightAction]
-  // )
   const leftWrapper = useRef(null)
   const rightWrapper = useRef(null)
   const renderActionContent = (side: SwipeSide) => {
     if (props[`${side}Action`]) {
       return (
         <div
+          id="left"
           ref={side === 'left' ? leftWrapper : rightWrapper}
           className={`${swipeBem(side)}`}
           onClick={(e: any) => handleOperate(e, side)}
@@ -285,7 +279,7 @@ export const Swipe = forwardRef<
   return (
     <div
       ref={root}
-      className={`${swipeBem()} ${className}`}
+      className={classNames(swipeBem(), className)}
       onTouchStart={(e: any) => onTouchStart(e)}
       onTouchMove={(e: any) => onTouchMove(e)}
       onTouchEnd={(e: any) => onTouchEnd(e)}

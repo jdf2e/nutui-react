@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Dialog } from './dialog'
 import Cell from '../cell'
-import { useTranslate } from '../../sites/assets/locale'
+import { useTranslate } from '@/sites/assets/locale'
 
 interface T {
   funUse: string
@@ -59,6 +59,7 @@ const DialogDemo = () => {
               content: translated.content,
               okText: translated.okText,
               cancelText: translated.cancelText,
+              lockScroll: true,
             })
           }}
         />
@@ -120,6 +121,7 @@ const DialogDemo = () => {
         >
           {translated.content}
         </Dialog>
+        <div style={{ height: '200vh' }}></div>
       </div>
     </>
   )

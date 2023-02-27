@@ -8,7 +8,6 @@ The effect is the same as position: sticky in CSS, which can be used for compati
 ### Install
 ```tsx
 import { Sticky } from '@nutui/nutui-react';
-
 ```
 
 ### Basic Usage
@@ -100,14 +99,14 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| position     | Adsorption position（top、bottom）| String | top             |
-| top          | Ceiling distance                 | Number | 0               |
-| bottom       | Suction distance                 | Number | 0               |
-| z-index      | Level of adsorption              | Number | 2000            |
-| container    | container ref                    | `React.RefObject<HTMLElement>` |
+| position     | Adsorption position（top、bottom）| string | `top`             |
+| top          | Ceiling distance                 | number | `0`               |
+| bottom       | Suction distance                 | number | `0`               |
+| z-index      | Level of adsorption              | number | `2000`            |
+| container    | container ref                    | `React.RefObject<HTMLElement>` | - |
 
 ### Events
 
 | 事件名 | 说明                                            | 回调参数     |
 |--------|------------------------------------------------|--------------|
-| onChange  | Triggered when the adsorption state changes   | val: Boolean |
+| onChange  | Triggered when the adsorption state changes   | `val: boolean` |

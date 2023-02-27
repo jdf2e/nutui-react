@@ -9,7 +9,6 @@
 ```javascript
 // react
 import { Swipe } from '@nutui/nutui-react';
-
 ```
 
 ## 程式碼演示
@@ -31,6 +30,69 @@ const App = () => {
       }
     >
       <Cell title="左滑删除" roundRadius={0} />
+    </Swipe>
+  </>
+}
+export default App;
+```
+:::
+
+
+### 通過實例方法控制
+
+:::demo
+```tsx
+import React from "react";
+import { Swipe, Cell, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const closeRef = useRef(null)
+  const openRef = useRef(null)
+  return <>
+    <Swipe
+      ref={openRef}
+      rightAction={
+        <Button shape="square" type="danger">
+          删除
+        </Button>
+      }
+    >
+      <Cell title='點擊下方按鈕打開或關閉' roundRadius={0} />
+    </Swipe>
+    <Button onClick={() => openRef.current?.open()}>
+      打開
+    </Button>
+    <Button onClick={() => openRef.current?.close()}>
+      關閉
+    </Button>
+  </>
+}
+export default App;
+```
+:::
+
+### 點擊關閉
+
+:::demo
+```tsx
+import React from "react";
+import { Swipe, Cell, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const closeRef = useRef(null)
+  return <>
+    <Swipe
+      ref={openRef}
+      rightAction={
+        <Button shape="square" type="danger">
+          删除
+        </Button>
+      }
+      onActionClick={() => {
+        closeRef.current.close()
+      }}
+    >
+      <Cell title='點擊右側按鈕關閉' roundRadius={0} />
     </Swipe>
   </>
 }
@@ -190,35 +252,21 @@ export default App;
 
 |參數|說明|類型|預設值|
 |--------------|----------------------------------|--------|------------------|
-| name |識別字，可以在事件參數中獲取到| _number \| string_ | `''` |
-| leftWidth |指定左側滑動區域寬度，組織為`px` | _number \| string_ | ` 0` |
-| rightWidth |指定右側滑動區域寬度，組織為`px` | _number \| string_ | ` 0` |
-| leftAction |左側滑動區域的內容| _ReactNode_ | - |
-| rightAction |右側滑動區域的內容| _ReactNode_ | - |
-| beforeClose |關閉前的回呼函數，返回`position` | _string_ | `left` |
-| disabled |是否禁用滑動| _boolean_ | ` false` |
+| name |識別字，可以在事件參數中獲取到| number \| string | - |
+| leftWidth |指定左側滑動區域寬度，組織為`px` | number \| string | `0` |
+| rightWidth |指定右側滑動區域寬度，組織為`px` | number \| string | `0` |
+| leftAction |左側滑動區域的內容| ReactNode | - |
+| rightAction |右側滑動區域的內容| ReactNode | - |
+| beforeClose |關閉前的回呼函數，返回`position` | string | `left` |
+| disabled |是否禁用滑動| boolean | `false` |
 
 ### Events
 
 | 事件名                 | 說明           |回檔參數|
 |---------------------|--------------|--------------|
-| onOpen              | 打開儲存格側邊欄     | _name: string，position: `left \| right`_ |
-| onClose             | 收起儲存格側邊欄     | _name: string，position: `left \| right`_ |
-| onActionClick       | 點擊左側或者右側時觸發  | _event: Event，position: `left \| right`_ |
-| onTouchStart`v1.4.7` | ontouchStart | _event: Event      |
-| onTouchMove`v1.4.7`         | ontouchmove  | _event: Event     |
-| onTouchEnd`v1.4.7`          | ontouchend   | _event: Event     |
-
-## 主題定制
-
-### 樣式變量
-
-組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
-
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-swiper-pagination-item-background-color | `  #ddd` |
-| --nutui-swiper-pagination-item-width | `  8px` |
-| --nutui-swiper-pagination-item-height | `  3px` |
-| --nutui-swiper-pagination-item-margin-right | `  7px` |
-| --nutui-swiper-pagination-item-border-radius | `  2px` |
+| onOpen              | 打開儲存格側邊欄     | `name: string, position: 'left' \| 'right'` |
+| onClose             | 收起儲存格側邊欄     | `name: string, position: 'left' \| 'right'` |
+| onActionClick       | 點擊左側或者右側時觸發  | `event: Event, position: 'left' \| 'right'` |
+| onTouchStart`v1.4.7` | onTouchStart | `event: Event`      |
+| onTouchMove`v1.4.7`         | onTouchMove  | `event: Event`     |
+| onTouchEnd`v1.4.7`          | onTouchEnd   | `event: Event`     |

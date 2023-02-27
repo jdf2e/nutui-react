@@ -1,6 +1,8 @@
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
+import classNames from 'classnames'
 
 import Icon from '@/packages/icon'
+import bem from '@/utils/bem'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -20,6 +22,7 @@ export type BadgeType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
 
 const defaultProps = {
   ...ComponentDefaults,
+  className: '',
   value: '',
   dot: false,
   max: 10000,
@@ -29,6 +32,9 @@ const defaultProps = {
   color: '',
   icons: '',
 } as BadgeProps
+
+const b = bem('badge')
+
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   const {
     className,
@@ -64,7 +70,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     return style
   }
   return (
-    <div className={`nut-badge ${className}`} style={style}>
+    <div className={classNames(b(), className)} style={style}>
       {icons !== '' && (
         <div className="slot-icons">
           <Icon
@@ -79,7 +85,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
       )}
       <div>{children}</div>
       <div
-        className={`${dot ? 'is-dot' : ''} nut-badge__content sup`}
+        className={classNames({ 'is-dot': dot }, b('content'), 'sup')}
         style={getStyle()}
       >
         {content()}

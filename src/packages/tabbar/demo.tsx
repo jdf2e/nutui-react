@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Tabbar } from './tabbar'
 import TabbarItem from '../tabbaritem'
 import './demo.scss'
@@ -72,16 +72,14 @@ const TabbarDemo = () => {
       c9e6df49: 'Red dot',
     },
   })
+
+  const [activeIndex, setActiveIndex] = useState(2)
+
   return (
     <>
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
-        <Tabbar
-          onSwitch={(child, idx) => {
-            console.log(idx)
-          }}
-          size={18}
-        >
+        <Tabbar size={18} visible={0}>
           <TabbarItem tabTitle={translated.c3a3a1d2} icon="home" />
           <TabbarItem tabTitle={translated.d04fcbda} icon="category" />
           <TabbarItem tabTitle={translated.a52bef0c} icon="find" />
@@ -90,7 +88,13 @@ const TabbarDemo = () => {
         </Tabbar>
 
         <h2>{translated.c38a08ef}</h2>
-        <Tabbar visible={2}>
+        <Tabbar
+          visible={0}
+          activeVisible={activeIndex}
+          onSwitch={(child, id) => {
+            setActiveIndex(id)
+          }}
+        >
           <TabbarItem tabTitle={translated.c3a3a1d2} icon="home" />
           <TabbarItem tabTitle={translated.d04fcbda} icon="category" />
           <TabbarItem tabTitle={translated.a52bef0c} icon="find" />

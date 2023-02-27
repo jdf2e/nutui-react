@@ -5,7 +5,7 @@ import Toast from '@/packages/toast'
 import { useTranslate } from '@/sites/assets/locale'
 
 const PullToRefreshDemo = () => {
-  const [translated] = useTranslate<TSideNavBarDemo>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
     },

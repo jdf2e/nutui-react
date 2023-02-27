@@ -8,7 +8,6 @@ It is often used for gesture operations such as sliding left and right to delete
 ```javascript
 // react
 import { Swipe } from '@nutui/nutui-react';
-
 ```
 
 ## Code demonstration
@@ -31,7 +30,70 @@ const App = () => {
         </Button>
       }
     >
-      <cell title= "left slide delete" roundradius={0} / >
+      <cell title= "left slide delete" />
+    </Swipe>
+  </>
+}
+export default App;
+```
+:::
+
+
+### Control via instance method
+
+:::demo
+```tsx
+import React from "react";
+import { Swipe, Cell, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const closeRef = useRef(null)
+  const openRef = useRef(null)
+  return <>
+    <Swipe
+      ref={openRef}
+      rightAction={
+        <Button shape="square" type="danger">
+          Delete
+        </Button>
+      }
+    >
+      <Cell title='Click the button below to open or close' roundRadius={0} />
+    </Swipe>
+    <Button onClick={() => openRef.current?.open()}>
+      Open
+    </Button>
+    <Button onClick={() => openRef.current?.close()}>
+      Close
+    </Button>
+  </>
+}
+export default App;
+```
+:::
+
+### Click to close
+
+:::demo
+```tsx
+import React from "react";
+import { Swipe, Cell, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const closeRef = useRef(null)
+  return <>
+    <Swipe
+      ref={openRef}
+      rightAction={
+        <Button shape="square" type="danger">
+          Delete
+        </Button>
+      }
+      onActionClick={() => {
+        closeRef.current.close()
+      }}
+    >
+      <Cell title='Click the right button to close' roundRadius={0} />
     </Swipe>
   </>
 }
@@ -58,7 +120,7 @@ const App = () => {
       }
       disabled
     >
-      <cell title= "disable sliding" roundradius={0} / >
+      <cell title= "disable sliding" />
     </Swipe>
   </>
 }
@@ -202,34 +264,21 @@ export default App;
 
 |Parameter | description | type | default value|
 |--------------|----------------------------------|--------|------------------|
-|name | identifier, which can be obtained in the event parameters |_number \| string_ | `''` |
-|leftwidth | specifies the width of the left sliding area, in 'PX'|_number \| string_ | `0` |
-|rightwidth | specifies the width of the sliding area on the right, in 'PX'|_number \| string_ | `0` |
-|leftaction | contents of the left sliding area |_ReactNode_ | - |
-|rightaction | content of right sliding area |_ReactNode_ | - |
-|beforeclose | the callback function before closing returns `position` | _string_ | `left`|
-|disabled | disable sliding |_boolean_ | `false` |
+|name | identifier, which can be obtained in the event parameters | number \| string | - |
+|leftwidth | specifies the width of the left sliding area, in 'PX'| number \| string | `0` |
+|rightwidth | specifies the width of the sliding area on the right, in 'PX'| number \| string | `0` |
+|leftaction | contents of the left sliding area | ReactNode | - |
+|rightaction | content of right sliding area | ReactNode | - |
+|beforeclose | the callback function before closing returns `position` | string | `left`|
+|disabled | disable sliding | boolean | `false` |
 
 ### Events
 
 |Event name | description | callback parameters|
 |--------|----------------|--------------|
-|onOpen | open the cell sidebar |_name: string , position: `left \| right`_ |
-|onClose | collapse the cell sidebar |_name: string , position: `left \| right`_ |
-|onActionClick | triggered when clicking on the left or right |_event: Event , position: `left \| right`_ |
-| onTouchStart`v1.4.7` | ontouchStart | _event: Event      |
-| onTouchMove`v1.4.7`         | ontouchmove  | _event: Event     |
-| onTouchEnd`v1.4.7`          | ontouchend   | _event: Event     |
-## Theming
-
-### CSS Variables
-
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
-
-| Name | Default Value |
-| --- | --- |
-| --nutui-swiper-pagination-item-background-color | `  #ddd` |
-| --nutui-swiper-pagination-item-width | `  8px` |
-| --nutui-swiper-pagination-item-height | `  3px` |
-| --nutui-swiper-pagination-item-margin-right | `  7px` |
-| --nutui-swiper-pagination-item-border-radius | `  2px` |
+|onOpen | open the cell sidebar | `name: string, position: 'left' \| 'right'` |
+|onClose | collapse the cell sidebar | `name: string, position: 'left' \| 'right'` |
+|onActionClick | triggered when clicking on the left or right | `event: Event, position: 'left' \| 'right'` |
+| onTouchStart`v1.4.7` | onTouchStart | `event: Event`      |
+| onTouchMove`v1.4.7`         | onTouchMove  | `event: Event`     |
+| onTouchEnd`v1.4.7`          | onTouchEnd   | `event: Event`     |
