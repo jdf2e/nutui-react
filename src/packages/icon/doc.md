@@ -9,7 +9,6 @@
 ``` javascript
 // react
 import { Icon } from '@nutui/nutui-react';
-
 ```
 
 ## 代码演示
@@ -153,12 +152,12 @@ export default App;
 
 | 参数          | 说明                             | 类型             | 默认值           |
 |-------------|----------------------------------|------------------|------------------|
-| name        | 图标名称或图片链接               | String           | -                |
-| color       | 图标颜色                         | String           | -                |
-| size        | 图标大小，如 `20px` `2em` `2rem` | String or Number | -                |
-| classPrefix | 类名前缀，用于使用自定义图标     | String           | `nut-iconfont` |
-| fontClassName           | 自定义 icon 字体基础类名                        | String           | `nutui-iconfonti`              |
-| tag         | tsx 标签                        | String           | `i`              |
+| name        | 图标名称或图片链接               | string           | -                |
+| color       | 图标颜色                         | string           | -                |
+| size        | 图标大小，如 `20px` `2em` `2rem` | string \| number | -                |
+| classPrefix | 类名前缀，用于使用自定义图标     | string           | `nut-iconfont` |
+| fontClassName           | 自定义 icon 字体基础类名                        | string           | `nutui-iconfont`              |
+| tag         | tsx 标签                        | string           | `i`              |
 
 ### Events
 

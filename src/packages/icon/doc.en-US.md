@@ -9,7 +9,6 @@ Icon set based on IconFont fonts, which can be used through the Icon component.
 ``` javascript
 // react
 import { Icon } from '@nutui/nutui-react';
-
 ```
 
 ## Demo
@@ -158,11 +157,12 @@ export default App;
 
 | Props        | Description                                                  | Type             | Default          |
 |--------------|-----------------------------------------------------|------------------|------------------|
-| name         | Icon name or picture link                           | String           | -                |
-| color        | Icon color                                          | String           | -                |
-| size         | Icon size, such as:  `20px` `2em` `2rem`            | String or Number | -                |
-| class-prefix | A class name prefix that is used to use custom icons | String           | `nutui-iconfont` |
-| tag          | tsx tag                                             | String           | `i`              |
+| name         | Icon name or picture link                           | string           | -                |
+| color        | Icon color                                          | string           | -                |
+| size         | Icon size, such as:  `20px` `2em` `2rem`            | string \| number | -                |
+| classPrefix | A class name prefix that is used to use custom icons | string           | `nut-iconfont` |
+| fontClassName           | Custom icon font base class name                        | string           | `nutui-iconfont`              |
+| tag          | tsx tag                                             | string           | `i`              |
 
 ### Events
 
