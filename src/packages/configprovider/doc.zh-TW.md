@@ -160,5 +160,5 @@ export default App;
 
 | 參數 | 說明 | 類型 | 預設值 |
 |--------|--------|---------|------|
-| locale | 設置多語言包 | `BaseLang` | zhCN |
-| theme      | 設置主題 |    `Record<string, string>`     | -    |
+| locale | 設置多語言包 | BaseLang | zhCN |
+| theme      | 設置主題 |    Record<string, string>     | -    |

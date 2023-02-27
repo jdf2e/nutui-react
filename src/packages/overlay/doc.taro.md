@@ -8,7 +8,6 @@
 
 
 ``` ts
-
 import { OverLay } from '@nutui/nutui-react-taro';
 ```
 
@@ -96,19 +95,19 @@ export default App;
 
 | 参数                   | 说明             | 类型           | 默认值 |
 | ---------------------- | ---------------- | -------------- | ------ |
-| visible                   | 当前组件是否显示 | Boolean        | `false`  |
-| zIndex                | 遮罩层级         | Number | 2000   |
-| duration               | 动画时长，单位秒 | Number | 0.3    |
-| overlayClass          | 自定义遮罩类名   | String         | -      |
+| visible                   | 当前组件是否显示 | boolean        | `false`  |
+| zIndex                | 遮罩层级         | number | `2000`   |
+| duration               | 动画时长，单位秒 | number | `0.3`    |
+| overlayClass          | 自定义遮罩类名   | string         | -      |
 | overlayStyle          | 自定义遮罩样式   | CSSProperties  | -      |
-| lockScroll          | 背景是否锁定   | Boolean  | `false`     |
-| closeOnClickOverlay | 是否点击遮罩关闭 | Boolean        | `true`   |
+| lockScroll          | 背景是否锁定   | boolean  | `false`     |
+| closeOnClickOverlay | 是否点击遮罩关闭 | boolean        | `true`   |
 
 ### Events
 
 | 事件名 | 说明       | 回调参数     |
 | ------ | ---------- | ------------ |
-| onClick  | 点击时触发 | event: Event |
+| onClick  | 点击时触发 | `event: Event` |
 
 
 ## 主题定制
@@ -119,6 +118,6 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-overlay-bg-color | ` $gray7` |
-| --nutui-overlay-content-bg-color | `  $gray6` |
-| --nutui-overlay-content-color | ` $gray1` |
+| --nutui-overlay-bg-color | `$gray7` |
+| --nutui-overlay-content-bg-color | `$gray6` |
+| --nutui-overlay-content-color | `$gray1` |

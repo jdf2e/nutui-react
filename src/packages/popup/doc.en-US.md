@@ -9,7 +9,6 @@ Popup layer container, used to display pop-up windows, information prompts, etc.
 ``` javascript
 // react
 import { Popup } from '@nutui/nutui-react';
-
 ```
 
 ## code demo
@@ -186,25 +185,25 @@ export default App;
 
 | Props | Description | Type | Default        |
 |------------------------|-----------------|----------------|---------------|
-| visible | Whether the current component is displayed | Boolean | `false` |
-| zIndex | mask level | String、Number | `2000` |
-| duration | Mask animation duration, in seconds | Number | `0.3` |
-| overlayClass | custom mask class | String | - |
+| visible | Whether the current component is displayed | boolean | `false` |
+| zIndex | mask level | string \| number | `2000` |
+| duration | Mask animation duration, in seconds | number | `0.3` |
+| overlayClass | custom mask class | string | - |
 | overlayStyle | custom mask style | CSSProperties  | - |
-| lockScroll | Whether the background is locked | Boolean | `true`       |
-| overlay | Whether to show the mask | Boolean | `true` |
-| closeOnClickOverlay | Whether to click the mask to close | Boolean | `true` |
-| position | popup location（top,bottom,left,right,center） | String | `"center"` |
-| transition | animation name | String | - |
+| lockScroll | Whether the background is locked | boolean | `true`       |
+| overlay | Whether to show the mask | boolean | `true` |
+| closeOnClickOverlay | Whether to click the mask to close | boolean | `true` |
+| position | popup location（top,bottom,left,right,center） | string | `center` |
+| transition | animation name | string | - |
 | style | Custom popup style | CSSProperties  | - |
-| popClass | Custom popup class name | String | -             |
-| closeable | whether to show the close button | Boolean | `false`        |
-| closeIconPosition | close button position（top-left,top-right,bottom-left,bottom-right） | String | `"top-right"` |
-| closeIcon | Custom Icon | String | `"close"`     |
-| closeIconSize`v1.4.7` | Custom Icon Size | string | `"12px"` |
-| destroyOnClose | Whether to close after the component is destroyed | Boolean | `true`        |
-| round | Whether to show rounded corners | Boolean | `false`       |
-| teleport | Mount the specified node | HTMLElement、(() => HTMLElement) 、null | `null`       |
+| popClass | Custom popup class name | string | -             |
+| closeable | whether to show the close button | boolean | `false`        |
+| closeIconPosition | close button position（top-left,top-right,bottom-left,bottom-right） | string | `top-right` |
+| closeIcon | Custom Icon | string | `close`     |
+| closeIconSize`v1.4.7` | Custom Icon Size | string | `12px` |
+| destroyOnClose | Whether to close after the component is destroyed | boolean | `true`        |
+| round | Whether to show rounded corners | boolean | `false`       |
+| teleport | Mount the specified node | HTMLElement \| (() => HTMLElement) \| null | `null`       |
 
 ### Events
 
@@ -227,7 +226,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-popup-close-icon-margin | ` 16px` |
-| --nutui-popup-border-radius | ` 20px` |
-| --nutui-popup-close-icon-color | ` #969799`|
-| --nutui-popup-close-icon-size | ` 30px` |
+| --nutui-popup-close-icon-margin | `16px` |
+| --nutui-popup-border-radius | `20px` |
+| --nutui-popup-close-icon-color | `#969799`|
+| --nutui-popup-close-icon-size | `30px` |

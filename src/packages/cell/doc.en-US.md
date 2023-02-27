@@ -9,7 +9,6 @@ The cell is a single display item in the list.
 ```ts
 // react
 import { Cell, CellGroup } from '@nutui/nutui-react'
-
 ```
 
 ## Demo
@@ -259,29 +258,29 @@ export default App
 
 | Attribute | Description | Type   | Default |
 |-------|----------|--------|--------|
-| title | Title | String | -      |
-| desc  | Description | String | -      |
-| titleSlot        | Custom`title`slot                        | React.ReactNode          | -  |
-| descSlot        | Custom`desc`slot                         | React.ReactNode          | -  |
+| title | Title | string | -      |
+| desc  | Description | string | -      |
+| titleSlot        | Custom`title`slot                        | ReactNode          | -  |
+| descSlot        | Custom`desc`slot                         | ReactNode          | -  |
 
 ### Cell Prop
 
 | Attribute         | Description                                                                                              | Type             | Default          |
 |-------------------|----------------------------------------------------------------------------------------------------------|------------------|------------------|
-| title             | Title                      |  React.ReactNode           | -      |
-| subTitle          | Subtitle                           |  React.ReactNode           | -      |
-| desc              | Description                                     | String      | -      |
-| descTextAlign     | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp), is only available when displaying desc | String | right  |
-| isLink            | Whether to show the right arrow and turn on click feedback            | Boolean          | false  |
-| to`v1.4.0 Abandon`       | C Target route of the link | String  | -      |
-| replace           | If true, the navigation will not leave a history record                             | Boolean          | false  |
-| roundRadius`v1.2.0` | Corner radius                                      | String            | 6px    |
-| url               | Link                                         | String           | -      |
-| icon              |  Left [icon name](#/icon) or image              | String           | -      |
-| center`v1.2.0`    | Whether to center content                                                                              | Boolean          | false  |
-| size`v1.2.0`      | Size, can be set to `large`                         | String          | -  |
-| iconSlot`v1.2.0`  |  Custom Left `icon`                        | React.ReactNode          | -  |
-| linkSlot`v1.2.0`  | Custom Right`link`                      | React.ReactNode          | -  |
+| title             | Title                      |  ReactNode           | -      |
+| subTitle          | Subtitle                           |  ReactNode           | -      |
+| desc              | Description                                     | string      | -      |
+| descTextAlign     | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp), is only available when displaying desc | string | `right`  |
+| isLink            | Whether to show the right arrow and turn on click feedback            | boolean          | `false`  |
+| to`v1.4.0 Abandon`       | C Target route of the link | string  | -      |
+| replace           | If true, the navigation will not leave a history record                             | boolean          | `false`  |
+| roundRadius`v1.2.0` | Corner radius                                      | string            | `6px`    |
+| url               | Link                                         | string           | -      |
+| icon              |  Left [icon name](#/icon) or image              | string           | -      |
+| center`v1.2.0`    | Whether to center content                                                                              | boolean          | `false`  |
+| size`v1.2.0`      | Size, can be set to `large`                         | string          | -  |
+| iconSlot`v1.2.0`  |  Custom Left `icon`                        | ReactNode          | -  |
+| linkSlot`v1.2.0`  | Custom Right`link`                      | ReactNode          | -  |
 
 
 
@@ -289,7 +288,7 @@ export default App
 
 | Event | Description                  | Arguments   |
 |-------|------------------------------|-------------|
-| onClick`v1.3.8` | Emitted when cell is clicked | event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent> |
+| onClick`v1.3.8` | Emitted when cell is clicked | `event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>` |
 
 
 
@@ -301,29 +300,29 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-cell-color | ` $gray1` |
-| --nutui-cell-title-font | ` $font-size-2` |
-| --nutui-cell-title-desc-font | ` $font-size-1` |
-| --nutui-cell-desc-font | ` $font-size-2` |
-| --nutui-cell-desc-color | ` $gray2` |
-| --nutui-cell-subtitle-color | ` $gray2` |
-| --nutui-cell-border-radius | ` 6px` |
-| --nutui-cell-padding | ` 13px 16px` |
-| --nutui-cell-line-height | ` 20px` |
-| --nutui-cell-after-right | ` 16px` |
-| --nutui-cell-after-border-bottom | `  2px solid #f5f6f7` |
-| --nutui-cell-default-icon-margin | `  0 4px 0 0px` |
-| --nutui-cell-large-title-font | `  $font-size-large` |
-| --nutui-cell-large-title-desc-font | `  $font-size-base` |
-| --nutui-cell-large-padding | ` 15px 16px` |
-| --nutui-cell-background | ` $gray6` |
-| --nutui-cell-box-shaow | `  0px 1px 7px 0px rgba(237, 238, 241, 1)` |
-| --nutui-cell-group-title-padding | `  0 10px` |
-| --nutui-cell-group-title-color | ` #909ca4` |
-| --nutui-cell-group-title-font-size | `  $font-size-2` |
-| --nutui-cell-group-title-line-height | `  20px` |
-| --nutui-cell-group-desc-padding | ` 0 10px` |
-| --nutui-cell-group-desc-color | ` #909ca4` |
-| --nutui-cell-group-desc-font-size | `  $font-size-1` |
-| --nutui-cell-group-desc-line-height | `  16px` |
-| --nutui-cell-group-background-color | `  $white` |
+| --nutui-cell-color | `$gray1` |
+| --nutui-cell-title-font | `$font-size-2` |
+| --nutui-cell-title-desc-font | `$font-size-1` |
+| --nutui-cell-desc-font | `$font-size-2` |
+| --nutui-cell-desc-color | `$gray2` |
+| --nutui-cell-subtitle-color | `$gray2` |
+| --nutui-cell-border-radius | `6px` |
+| --nutui-cell-padding | `13px 16px` |
+| --nutui-cell-line-height | `20px` |
+| --nutui-cell-after-right | `16px` |
+| --nutui-cell-after-border-bottom | `2px solid #f5f6f7` |
+| --nutui-cell-default-icon-margin | `0 4px 0 0px` |
+| --nutui-cell-large-title-font | `$font-size-large` |
+| --nutui-cell-large-title-desc-font | `$font-size-base` |
+| --nutui-cell-large-padding | `15px 16px` |
+| --nutui-cell-background | `$gray6` |
+| --nutui-cell-box-shaow | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
+| --nutui-cell-group-title-padding | `0 10px` |
+| --nutui-cell-group-title-color | `#909ca4` |
+| --nutui-cell-group-title-font-size | `$font-size-2` |
+| --nutui-cell-group-title-line-height | `20px` |
+| --nutui-cell-group-desc-padding | `0 10px` |
+| --nutui-cell-group-desc-color | `#909ca4` |
+| --nutui-cell-group-desc-font-size | `$font-size-1` |
+| --nutui-cell-group-desc-line-height | `16px` |
+| --nutui-cell-group-background-color | `$white` |

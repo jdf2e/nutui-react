@@ -9,7 +9,6 @@
 ``` ts
 // react
 import { Barrage } from '@nutui/nutui-react';
-
 ```
 
 ## 代碼演示
@@ -60,12 +59,12 @@ export default App;
 
 | 參數         | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
-| barrageList         | 彈幕列表數據               | Array | []              |
-| frequency        | 可視區域內每個彈幕出現的時間間隔                         | Number | 500               |
-| speeds         | 每個彈幕的滾動時間 | Number |  2000               |
-| rows  | 彈幕行數，分幾行展示     | Number | 1 |
-| top  | 彈幕垂直距離    | Number | 10 |
-| loop  | 是否循環播放     | Boolean | true |
+| barrageList         | 彈幕列表數據               | Array | `[]`              |
+| frequency        | 可視區域內每個彈幕出現的時間間隔                         | number | `500`               |
+| speeds         | 每個彈幕的滾動時間 | number |  `2000`               |
+| rows  | 彈幕行數，分幾行展示     | number | `1` |
+| top  | 彈幕垂直距離    | number | `10` |
+| loop  | 是否循環播放     | boolean | `true` |
 
 ### Events API
 
