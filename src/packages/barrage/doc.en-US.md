@@ -59,7 +59,7 @@ export default App;
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| barrageList         | Barrage list data               | Array | []              |
+| barrageList         | Barrage list data               | Array | `[]`              |
 | frequency        | The time interval between the occurrence of each barrage in the visual area                         | number | `500`               |
 | speeds         | Rolling time of each barrage | number |  `2000`               |
 | rows  | The number of bullet screen lines is displayed in several lines     | number | `1` |

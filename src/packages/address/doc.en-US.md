@@ -587,14 +587,14 @@ export default App;
 | Attribute            | Description               | Type   | Default  |
 |----- | ----- | ----- | -----  |
 | modelValue | Whether to open address | string | - |
-| modelSelect`v1.2.3` | Default address value | string[] \| number[] | [] |
+| modelSelect`v1.2.3` | Default address value | string[] \| number[] | `[]` |
 | type | Choose type: exist/custom/custom2  | string | `custom` |
-| province | Province data | Array | [] |
-| city | City data | Array | [] |
-| country | Country data | Array | [] |
-| town | Town data | Array | [] |
+| province | Province data | Array | `[]` |
+| city | City data | Array | `[]` |
+| country | Country data | Array | `[]` |
+| town | Town data | Array | `[]` |
 | height | Popup height | string \| number | `200px` |
-| existAddress | Exist address list data | Array | [] |
+| existAddress | Exist address list data | Array | `[]` |
 | defaultIcon | Exist address default icon | string | - |
 | selectedIcon | Exist address selected icon | string | - |
 | closeBtnIcon | Custom close button icon | string | - |
@@ -620,20 +620,20 @@ export default App;
 |----- | ----- | ----- |
 | custom | The administrative region currently clicked  |  `province` \| `city` \| `country` \| `town` |
 | next | The next level of the administrative region currently clicked | `province` \| `city` \| `country` \| `town` |
-| value | The value of the currently clicked administrative region | {} |
+| value | The value of the currently clicked administrative region | `{}` |
 
 ## selected 
 | Attribute            | Description               | Options   |
 |----- | ----- | ----- |
-| First Option（prevExistAdd） |  Select the previously selected address |  {} |
-| Second Option（nowExistAdd） |  Currently selected address |  {} |
-| Third Option（arr） |  After selecting the existing address list |  {} |
+| First Option（prevExistAdd） |  Select the previously selected address |  `{}` |
+| Second Option（nowExistAdd） |  Currently selected address |  `{}` |
+| Third Option（arr） |  After selecting the existing address list |  `{}` |
 
 ## close 
 | Attribute            | Description               | Options   |
 |----- | ----- | ----- 
 | type | Selected Type  |  `exist` \| `custom` \| `custom2` |
-| data | Selected Data | {} |
+| data | Selected Data | `{}` |
     
 
 ## Theming

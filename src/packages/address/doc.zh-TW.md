@@ -589,14 +589,14 @@ export default App;
 | 字段 | 說明 | 類型 | 默認值 |
 |----- | ----- | ----- | -----  |
 | modelValue | 是否打開地址選擇 | string | - |
-| modelSelect`v1.2.3` | 設置默認選中地址 | string[] \| number[] | [] |
+| modelSelect`v1.2.3` | 設置默認選中地址 | string[] \| number[] | `[]` |
 | type | 地址選擇類型 exist/custom/custom2  | string | `custom` |
-| province | 省，每個省的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | [] |
-| city | 市，每個市的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | [] |
-| country | 縣，每個縣的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | [] |
-| town | 鄉/鎮，每個鄉/鎮的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | [] |
+| province | 省，每個省的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | `[]` |
+| city | 市，每個市的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | `[]` |
+| country | 縣，每個縣的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | `[]` |
+| town | 鄉/鎮，每個鄉/鎮的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | `[]` |
 | height | 彈層中內容容器的高度，僅在type="custom2"時有效 | string \| number | `200px` |
-| existAddress | 已存在地址列錶，每個地址對象中，必傳值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解釋見下） | Array | [] |
+| existAddress | 已存在地址列錶，每個地址對象中，必傳值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解釋見下） | Array | `[]` |
 | defaultIcon | 已有地址列錶默認圖標，type='exist' 時生效 | string | - |
 | selectedIcon | 已有地址列錶選中圖標，type='exist' 時生效 | string | - |
 | closeBtnIcon | 自定義關閉彈框按鈕圖標 | string | - |
@@ -629,20 +629,20 @@ export default App;
 |----- | ----- | ----- |
 | custom | 當前點擊的行政區域  |  `province`(省) \| `city`(市) \| `country`(縣) \| `town`(鄉) |
 | next | 當前點擊的行政區域的下一級 | `province`(省) \| `city`(市) \| `country`(縣) \| `town`(鄉) |
-| value | 當前點擊的行政區域的值（返回傳入的值） | {} |
+| value | 當前點擊的行政區域的值（返回傳入的值） | `{}` |
 
 ## selected 回調參數
 | 參數 | 說明 | 可能值  |
 |----- | ----- | ----- |
-| 第一個參數（prevExistAdd） |  選擇前選中的地址 |  {} |
-| 第二個參數（nowExistAdd） |  當前選中的地址 |  {} |
-| 第三個參數（arr） |  選擇完之後的已有地址列錶（selectedAddress 值發生改變） |  {} |
+| 第一個參數（prevExistAdd） |  選擇前選中的地址 |  `{}` |
+| 第二個參數（nowExistAdd） |  當前選中的地址 |  `{}` |
+| 第三個參數（arr） |  選擇完之後的已有地址列錶（selectedAddress 值發生改變） |  `{}` |
 
 ## close 回調參數
 | 參數 | 說明 | 可能值 |
 |----- | ----- | ----- |
 | type | 地址選擇類型 exist/custom/custom2  |  `exist` \| `custom` \| `custom2` |
-| data | 選擇地址的值,custom 時，addressStr 為選擇的地址組合 | {}  |
+| data | 選擇地址的值,custom 時，addressStr 為選擇的地址組合 | `{}`  |
     
 
 ## 主題定制

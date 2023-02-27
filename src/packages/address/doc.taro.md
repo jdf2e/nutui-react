@@ -588,14 +588,14 @@ export default App;
 | 字段 | 说明 | 类型 | 默认值 |
 |----- | ----- | ----- | -----  |
 | modelValue | 是否打开地址选择 | string | - |
-| modelSelect`v1.3.0` | 设置默认选中地址 | string[] \| number[] | [] |
+| modelSelect`v1.3.0` | 设置默认选中地址 | string[] \| number[] | `[]` |
 | type | 地址选择类型 exist/custom/custom2  | string | `custom` |
-| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
-| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
-| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
-| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | [] |
+| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |
+| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |
+| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |
+| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |
 | height | 弹层中内容容器的高度，仅在type="custom2"时有效 | string \| number | `200px` |
-| existAddress | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | [] |
+| existAddress | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | `[]` |
 | defaultIcon | 已有地址列表默认图标，type='exist' 时生效 | string | - |
 | selectedIcon | 已有地址列表选中图标，type='exist' 时生效 | string | - |
 | closeBtnIcon | 自定义关闭弹框按钮图标 | string | - |
@@ -630,20 +630,20 @@ export default App;
 |----- | ----- | ----- |
 | custom | 当前点击的行政区域  |  `province`(省) \| `city`(市) \| `country`(县) \| `town`(乡) |
 | next | 当前点击的行政区域的下一级 | `province`(省) \| `city`(市) \| `country`(县) \| `town`(乡) |
-| value | 当前点击的行政区域的值（返回传入的值） | {} |
+| value | 当前点击的行政区域的值（返回传入的值） | `{}` |
 
 ## selected 回调参数
 | 参数 | 说明 | 可能值  |
 |----- | ----- | ----- |
-| 第一个参数（prevExistAdd） |  选择前选中的地址 |  {} |
-| 第二个参数（nowExistAdd） |  当前选中的地址 |  {} |
-| 第三个参数（arr） |  选择完之后的已有地址列表（selectedAddress 值发生改变） |  {} |
+| 第一个参数（prevExistAdd） |  选择前选中的地址 |  `{}` |
+| 第二个参数（nowExistAdd） |  当前选中的地址 |  `{}` |
+| 第三个参数（arr） |  选择完之后的已有地址列表（selectedAddress 值发生改变） |  `{}` |
 
 ## close 回调参数
 | 参数 | 说明 | 可能值 |
 |----- | ----- | ----- |
 | type | 地址选择类型 exist/custom/custom2  |  `exist` \| `custom` \| `custom2` |
-| data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | {}  |
+| data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | `{}`  |
     
 
 ## 主题定制
