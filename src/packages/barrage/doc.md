@@ -9,7 +9,6 @@
 ``` ts
 // react
 import { Barrage } from '@nutui/nutui-react';
-
 ```
 
 ## 代码演示
@@ -61,11 +60,11 @@ export default App;
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | barrageList         | 弹幕列表数据               | Array | []              |
-| frequency        | 可视区域内每个弹幕出现的时间间隔                         | Number | 500               |
-| speeds         | 每个弹幕的滚动时间 | Number |  2000               |
-| rows  | 弹幕行数，分几行展示     | Number | 1 |
-| top  | 弹幕垂直距离    | Number | 10 |
-| loop  | 是否循环播放     | Boolean | true |
+| frequency        | 可视区域内每个弹幕出现的时间间隔                         | number | `500`               |
+| speeds         | 每个弹幕的滚动时间 | number |  `2000`               |
+| rows  | 弹幕行数，分几行展示     | number | `1` |
+| top  | 弹幕垂直距离    | number | `10` |
+| loop  | 是否循环播放     | boolean | `true` |
 
 ### Events API
 
