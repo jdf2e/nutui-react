@@ -3,7 +3,7 @@
 exports[`footerTpl slot test 1`] = `
 <div>
   <div
-    class="nut-card undefined"
+    class="nut-card"
   >
     <div
       class="nut-card__left"
@@ -118,7 +118,7 @@ exports[`footerTpl slot test 1`] = `
 exports[`originTpl slot test 1`] = `
 <div>
   <div
-    class="nut-card undefined"
+    class="nut-card"
   >
     <div
       class="nut-card__left"
@@ -208,7 +208,7 @@ exports[`originTpl slot test 1`] = `
 exports[`prolistTpl slot test 1`] = `
 <div>
   <div
-    class="nut-card undefined"
+    class="nut-card"
   >
     <div
       class="nut-card__left"
@@ -337,7 +337,7 @@ exports[`prolistTpl slot test 1`] = `
 exports[`props test 1`] = `
 <div>
   <div
-    class="nut-card undefined"
+    class="nut-card"
   >
     <div
       class="nut-card__left"
@@ -447,7 +447,7 @@ exports[`props test 1`] = `
 exports[`shopTagTpl slot test 1`] = `
 <div>
   <div
-    class="nut-card undefined"
+    class="nut-card"
   >
     <div
       class="nut-card__left"

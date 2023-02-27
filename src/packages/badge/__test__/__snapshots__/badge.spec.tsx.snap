@@ -3,7 +3,7 @@
 exports[`should match custom icons 1`] = `
 <DocumentFragment>
   <div
-    class="nut-badge undefined"
+    class="nut-badge"
   >
     <div
       class="slot-icons"
@@ -15,7 +15,7 @@ exports[`should match custom icons 1`] = `
     </div>
     <div />
     <div
-      class=" nut-badge__content sup"
+      class="nut-badge__content sup"
       style="top: 0px; right: 0px; z-index: 0;"
     >
       200
@@ -27,11 +27,11 @@ exports[`should match custom icons 1`] = `
 exports[`should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="nut-badge undefined"
+    class="nut-badge"
   >
     <div />
     <div
-      class=" nut-badge__content sup"
+      class="nut-badge__content sup"
       style="top: 0px; right: 0px; z-index: 0;"
     >
       8

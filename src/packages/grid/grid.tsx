@@ -1,9 +1,11 @@
 import React, { CSSProperties, FunctionComponent } from 'react'
+import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 
 import { GridItemProps } from '../griditem/griditem'
 import GridContext from './grid.context'
+
 export type GridDirection = 'horizontal' | 'vertical'
 
 export interface GridProps {
@@ -63,9 +65,9 @@ export const Grid: FunctionComponent<
 
   const rootClass = () => {
     const prefixCls = b()
-    return `${className} ${prefixCls} ${
-      border && !gutter ? `${b('border')}` : ''
-    }`
+    return classNames(className, prefixCls, {
+      [b('border')]: border && !gutter,
+    })
   }
 
   const rootStyle = () => {
