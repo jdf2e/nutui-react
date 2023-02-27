@@ -9,7 +9,6 @@
 ``` javascript
 // react
 import { Image } from '@nutui/nutui-react';
-
 ```
 
 ## 代碼演示
@@ -220,19 +219,19 @@ export default App;
 
 | 參數         | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
-| src         | 圖片鏈接               | String | -                |
-| fit         | 圖片填充模式，等同於原生的 object-fit 屬性     | ImageFit | 'fill'                |
-| position    | 圖片位置，等同於原生的 object-position 屬性  | ImagePosition | 'center'              |
-| alt         | 替代文本               | String | -                |
-| width         | 寬度，默認單位`px`               | String | -                |
-| height         | 高度，默認單位`px`               | String | -                |
-| round         | 是否顯示為圓角               | Boolean | false              |
-| radius         | 圓角大小               | String \| Numer | -                |
-| showError         | 是否展示圖片加載失敗| Boolean | true              |
-| showLoading         | 是否展示加載中圖片               | Boolean | true              |
-| isLazy `v1.4.6`  | 是否為懶加載圖片               | Boolean | false              |
-| loadingImg `v1.4.6`    | 設置加載中提示圖片，與slotLoding衝突，優先級高於slotLoding       | String | -              |
-| errorImg   `v1.4.6`    | 設置錯誤提示圖片，與slotError衝突，優先級高於slotError         | String | -              |
+| src         | 圖片鏈接               | string | -                |
+| fit         | 圖片填充模式，等同於原生的 object-fit 屬性     | ImageFit | `fill`                |
+| position    | 圖片位置，等同於原生的 object-position 屬性  | ImagePosition | `center`              |
+| alt         | 替代文本               | string | -                |
+| width         | 寬度，默認單位`px`               | string | -                |
+| height         | 高度，默認單位`px`               | string | -                |
+| round         | 是否顯示為圓角               | boolean | `false`              |
+| radius         | 圓角大小               | string \| number | -                |
+| showError         | 是否展示圖片加載失敗| boolean | `true`              |
+| showLoading         | 是否展示加載中圖片               | boolean | `true`              |
+| isLazy `v1.4.6`  | 是否為懶加載圖片               | boolean | `false`              |
+| loadingImg `v1.4.6`    | 設置加載中提示圖片，與slotLoding衝突，優先級高於slotLoding       | string | -              |
+| errorImg   `v1.4.6`    | 設置錯誤提示圖片，與slotError衝突，優先級高於slotError         | string | -              |
 
 ### ImageFit 圖片填充模
 
