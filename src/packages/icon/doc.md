@@ -163,7 +163,7 @@ export default App;
 
 | 事件名           | 说明           | 回调参数     |
 |---------------|----------------|--------------|
-| onClick`v1.3.8` | 点击图标时触发 | event: Event |
+| onClick`v1.3.8` | 点击图标时触发 | `event: Event` |
 
 
 ## 主题定制
@@ -174,6 +174,6 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-icon-height | ` 20px` |
-| --nutui-icon-width | ` 20px` |
-| --nutui-icon-line-height | ` 20px` |
+| --nutui-icon-height | `20px` |
+| --nutui-icon-width | `20px` |
+| --nutui-icon-line-height | `20px` |

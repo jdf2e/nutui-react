@@ -168,7 +168,7 @@ export default App;
 
 | Event | Description           | callback parameters |
 |-------|----------------|---------------------|
-| onClick`v1.3.8` | Triggered when the icon is tapped | event: Event        |
+| onClick`v1.3.8` | Triggered when the icon is tapped | `event: Event`        |
 
 
 ## Theming
@@ -179,6 +179,6 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-icon-height | ` 20px` |
-| --nutui-icon-width | ` 20px` |
-| --nutui-icon-line-height | ` 20px` |
+| --nutui-icon-height | `20px` |
+| --nutui-icon-width | `20px` |
+| --nutui-icon-line-height | `20px` |

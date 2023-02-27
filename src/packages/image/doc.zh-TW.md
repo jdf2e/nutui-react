@@ -264,6 +264,6 @@ export default App;
 
 | 事件名 | 說明           | 回調參數     |
 |--------|----------------|--------------|
-| onClick  | 點擊圖片時觸發 | event: Event |
+| onClick  | 點擊圖片時觸發 | `event: Event` |
 | onLoad  | 圖片加載完後觸發 | -- |
 | onError  | 圖片加載失敗後觸發 | -- |

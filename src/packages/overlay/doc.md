@@ -108,7 +108,7 @@ export default App;
 
 | 事件名 | 说明       | 回调参数     |
 | ------ | ---------- | ------------ |
-| onClick  | 点击时触发 | event: Event |
+| onClick  | 点击时触发 | `event: Event` |
 
 
 ## 主题定制
@@ -119,6 +119,6 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-overlay-bg-color | ` $gray7` |
-| --nutui-overlay-content-bg-color | `  $gray6` |
-| --nutui-overlay-content-color | ` $gray1` |
+| --nutui-overlay-bg-color | `$gray7` |
+| --nutui-overlay-content-bg-color | `$gray6` |
+| --nutui-overlay-content-color | `$gray1` |

@@ -245,7 +245,7 @@ export default App;
 
 | Event | Description           | Callback parameters     |
 |--------|----------------|--------------|
-| onClick`v1.3.8`  | Triggered when the button is clicked | event: MouseEvent |
+| onClick`v1.3.8`  | Triggered when the button is clicked | `event: MouseEvent` |
 
 ### Support Native MiniProgram API
 Not supported native MiniProgram API before 1.3.11 version, if you are a user who needs to use the native MiniProgram button component capability，please upgrade to version 1.3.11 as soon as possible. For detailed API of native MiniProgram button components, please go to[more documents](https://taro-docs.jd.com/docs/components/forms/button)
@@ -258,44 +258,44 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-button-border-radius | ` 25px` |
-| --nutui-button-border-width | ` 1px` |
-| --nutui-button-default-bg-color | ` $white` |
-| --nutui-button-default-border-color | `  rgba(204, 204, 204, 1)` |
-| --nutui-button-default-color | ` $gray1` |
-| --nutui-button-plain-color`v1.4.8` | ` $gray2` |
-| --nutui-button-default-padding | ` 0 18px` |
-| --nutui-button-mini-padding | ` 0 12px` |
-| --nutui-button-small-padding | ` 0 12px` |
-| --nutui-button-small-height | ` 28px` |
-| --nutui-button-mini-height | ` 24px` |
-| --nutui-button-default-height | ` 38px` |
-| --nutui-button-large-height | ` 48px` |
-| --nutui-button-large-line-height | ` 46px` |
-| --nutui-button-small-line-height | ` 26px` |
-| --nutui-button-block-height | ` 48px` |
-| --nutui-button-default-line-height | `  36px` |
-| --nutui-button-block-line-height | ` 46px` |
-| --nutui-button-default-font-size | `  $font-size-2` |
-| --nutui-button-large-font-size | `  $button-default-font-size` |
-| --nutui-button-small-font-size | `  $font-size-1` |
-| --nutui-button-mini-font-size | `  $font-size-1` |
-| --nutui-button-mini-line-height | ` 1.2` |
-| --nutui-button-text-icon-width | ` 5px` |
-| --nutui-button-text-icon--large-width | ` 10px` |
-| --nutui-button-text-icon-small-width | ` 2px` |
-| --nutui-button-text-icon-mini-width | ` 1px` |
-| --nutui-button-disabled-opacity | ` 0.68` |
-| --nutui-button-primary-color | ` $white` |
-| --nutui-button-primary-border-color | `  $primary-color` |
-| --nutui-button-info-color | ` $white` |
-| --nutui-button-info-border-color | `  #496af2` |
-| --nutui-button-success-color | ` $white` |
-| --nutui-button-success-border-color | `  rgba(38, 191, 38, 1)` |
-| --nutui-button-danger-color | ` $white` |
-| --nutui-button-danger-border-color | `  rgba(250, 44, 25, 1)` |
-| --nutui-button-danger-background-color | `  rgba(250, 44, 25, 1)` |
-| --nutui-button-warning-color | ` $white` |
-| --nutui-button-warning-border-color | `  rgba(255, 158, 13, 1)` |
-| --nutui-button-plain-background-color | `  $white` |
-| --nutui-button-small-round-border-radius | `  $button-border-radius` |
+| --nutui-button-border-radius | `25px` |
+| --nutui-button-border-width | `1px` |
+| --nutui-button-default-bg-color | `$white` |
+| --nutui-button-default-border-color | `rgba(204, 204, 204, 1)` |
+| --nutui-button-default-color | `$gray1` |
+| --nutui-button-plain-color`v1.4.8` | `$gray2` |
+| --nutui-button-default-padding | `0 18px` |
+| --nutui-button-mini-padding | `0 12px` |
+| --nutui-button-small-padding | `0 12px` |
+| --nutui-button-small-height | `28px` |
+| --nutui-button-mini-height | `24px` |
+| --nutui-button-default-height | `38px` |
+| --nutui-button-large-height | `48px` |
+| --nutui-button-large-line-height | `46px` |
+| --nutui-button-small-line-height | `26px` |
+| --nutui-button-block-height | `48px` |
+| --nutui-button-default-line-height | `36px` |
+| --nutui-button-block-line-height | `46px` |
+| --nutui-button-default-font-size | `$font-size-2` |
+| --nutui-button-large-font-size | `$button-default-font-size` |
+| --nutui-button-small-font-size | `$font-size-1` |
+| --nutui-button-mini-font-size | `$font-size-1` |
+| --nutui-button-mini-line-height | `1.2` |
+| --nutui-button-text-icon-width | `5px` |
+| --nutui-button-text-icon--large-width | `10px` |
+| --nutui-button-text-icon-small-width | `2px` |
+| --nutui-button-text-icon-mini-width | `1px` |
+| --nutui-button-disabled-opacity | `0.68` |
+| --nutui-button-primary-color | `$white` |
+| --nutui-button-primary-border-color | `$primary-color` |
+| --nutui-button-info-color | `$white` |
+| --nutui-button-info-border-color | `#496af2` |
+| --nutui-button-success-color | `$white` |
+| --nutui-button-success-border-color | `rgba(38, 191, 38, 1)` |
+| --nutui-button-danger-color | `$white` |
+| --nutui-button-danger-border-color | `rgba(250, 44, 25, 1)` |
+| --nutui-button-danger-background-color | `rgba(250, 44, 25, 1)` |
+| --nutui-button-warning-color | `$white` |
+| --nutui-button-warning-border-color | `rgba(255, 158, 13, 1)` |
+| --nutui-button-plain-background-color | `$white` |
+| --nutui-button-small-round-border-radius | `$button-border-radius` |

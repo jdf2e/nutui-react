@@ -264,7 +264,7 @@ export default App;
 
 | Event | Description           | Arguments     |
 |--------|----------------|--------------|
-| onClick  | Emitted when image is clicked | event: Event |
+| onClick  | Emitted when image is clicked | `event: Event` |
 | onLoad  | Emitted when image loaded | - |
 | onError  | Emitted when image load failed | event: Event |
 
