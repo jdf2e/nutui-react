@@ -9,7 +9,6 @@ Action menu panel that pops up from the bottom.
 ```ts
 // react
 import { ActionSheet } from '@nutui/nutui-react';
-
 ```
 ## Demo
 
@@ -213,15 +212,15 @@ export default App;
 
 | Attribute             | Description                                   | Type    | Default    |
 |------------------|----------------------------------------|---------|-----------|
-| visible       | Mask layer visible  | Boolean | false     |
-| cancelTxt       | Cancel Text                               | String  | 'Cancel'    |
-| menuItems       | Menu Item                                 | Array   | [ ]       |
-| optionTag       | Set menu item display usage parameters                 | String  | 'name'    |
-| optionSubTag   | Set menu item description display usage parameters             | String  | 'subname' |
-| title            | Set panel title                         | String  | ''        |
-| description      | Set panel subtitle/description                  | String  | ''        |
-| chooseTagValue | Set selected item'value, corresponds to the value of 'option-tag' | String  | ''        |
-| color            | highlight color                               | String  | '#ee0a24' |
+| visible       | Mask layer visible  | boolean | `false`     |
+| cancelTxt       | Cancel Text                               | string  | `Cancel`    |
+| menuItems       | Menu Item                                 | Array   | `[]`       |
+| optionTag       | Set menu item display usage parameters                 | string  | `name`    |
+| optionSubTag   | Set menu item description display usage parameters             | string  | `subname` |
+| title            | Set panel title                         | string  | -        |
+| description      | Set panel subtitle/description                  | string  | -        |
+| chooseTagValue | Set selected item'value, corresponds to the value of 'option-tag' | string  | -        |
+| color            | highlight color                               | string  | `#ee0a24` |
 
 
 ## Event
@@ -239,10 +238,10 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-actionsheet-light-color | `  #f6f6f6` |
-| --nutui-actionsheet-item-border-bottom | `  none` |
-| --nutui-actionsheet-item-font-size | `  $font-size-2` |
-| --nutui-actionsheet-item-subdesc-font-size | `  $font-size-1` |
-| --nutui-actionsheet-item-cancel-border-top | `  1px solid $actionsheet-light-color` |
-| --nutui-actionsheet-item-line-height | `  24px` |
-| --nutui-actionsheet-item-font-color | `  $title-color` |
+| --nutui-actionsheet-light-color | `#f6f6f6` |
+| --nutui-actionsheet-item-border-bottom | `none` |
+| --nutui-actionsheet-item-font-size | `$font-size-2` |
+| --nutui-actionsheet-item-subdesc-font-size | `$font-size-1` |
+| --nutui-actionsheet-item-cancel-border-top | `1px solid $actionsheet-light-color` |
+| --nutui-actionsheet-item-line-height | `24px` |
+| --nutui-actionsheet-item-font-color | `$title-color` |

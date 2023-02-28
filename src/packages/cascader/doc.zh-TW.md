@@ -9,7 +9,6 @@
 ```ts
 // react
 import { Cascader } from '@nutui/nutui-react';
-
 ```
 
 ## 代碼演示
@@ -561,28 +560,28 @@ export default App;
 | ------------- | ---------------------------------------------- | -------- | ------ |
 | value         | 選中值                                          | Array    | -      |
 | options       | 級聯數據                                         | Array    | -      |
-| poppable      | 是否彈窗狀態展示                                  | Boolean  | true   |
-| visible       | 級聯顯示隱藏狀態                                  | Boolean  | false  |
-| activeColor`1.3.13` | 選中啟動態顏色                           | String  | -  |
-| checkedIcon`1.4.8` | 標記選中的Icon | string | ` checklist` |
-| tabsColor`1.3.13` | tabs底部選中啟動態顏色                                  | String  | -  |
-| lazy          | 是否開啟動態加載                                  | Boolean  | false  |
+| poppable      | 是否彈窗狀態展示                                  | boolean  | `true`   |
+| visible       | 級聯顯示隱藏狀態                                  | boolean  | `false`  |
+| activeColor`1.3.13` | 選中啟動態顏色                           | string  | -  |
+| checkedIcon`1.4.8` | 標記選中的Icon | string | `checklist` |
+| tabsColor`1.3.13` | tabs底部選中啟動態顏色                                  | string  | -  |
+| lazy          | 是否開啟動態加載                                  | boolean  | `false`  |
 | lazyLoad      | 動態加載回調，開啟動態加載時生效                   | Function | -      |
-| valueKey      | 自定義`options`結構中`value`的字段               | String   | -      |
-| textKey       | 自定義`options`結構中`text`的字段                | String   | -      |
-| childrenKey   | 自定義`options`結構中`children`的字段            | String   | -      |
+| valueKey      | 自定義`options`結構中`value`的字段               | string   | -      |
+| textKey       | 自定義`options`結構中`text`的字段                | string   | -      |
+| childrenKey   | 自定義`options`結構中`children`的字段            | string   | -      |
 | convertConfig | 當options為可轉換為樹形結構的扁平結構時，配置轉換規則 | Object   | -      |
-| title          | 標題 | String   | ''      |
-| closeIconPosition | 取消按鈕位置，繼承 Popup 組件 | String   | "top-right"      |
-| close-icon | 自定義關閉按鈕，繼承 Popup 組件 | String   | "close"     |
-| closeable | 是否顯示關閉按鈕，繼承 Popup 組件 | Boolean   | true     |
+| title          | 標題 | string   | -      |
+| closeIconPosition | 取消按鈕位置，繼承 Popup 組件 | string   | `top-right`      |
+| close-icon | 自定義關閉按鈕，繼承 Popup 組件 | string   | `close`     |
+| closeable | 是否顯示關閉按鈕，繼承 Popup 組件 | boolean   | `true`     |
 
 ### Events
 
 | 事件名      | 說明             | 回調參數           |
 | ---------- | --------------- | ------------------ |
-| onChange     | 選中值改變時觸發   | (value, pathNodes) |
-| onPathChange | 選中項改變時觸發   | (pathNodes)        |
+| onChange     | 選中值改變時觸發   | `value, pathNodes` |
+| onPathChange | 選中項改變時觸發   | `pathNodes`        |
 
 
 ## 主題定制
@@ -593,21 +592,21 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-cascader-font-size | ` $font-size-2` |
-| --nutui-cascader-line-height | ` 22px` |
-| --nutui-cascader-title-padding | `  24px 20px 17px` |
-| --nutui-cascader-title-font-size | ` 18px` |
-| --nutui-cascader-title-line-height | `  20px` |
-| --nutui-cascader-pane-height | ` 342px` |
-| --nutui-cascader-tabs-item-padding | `  0 10px` |
-| --nutui-cascader-bar-padding | `  24px 20px 17px` |
-| --nutui-cascader-bar-font-size | `  $font-size-4` |
-| --nutui-cascader-bar-line-height | ` 20px` |
-| --nutui-cascader-bar-color | ` $title-color` |
-| --nutui-cascader-item-height`v1.4.8` | ` 40px` |
-| --nutui-cascader-item-padding | ` 10px 20px` |
-| --nutui-cascader-item-margin`v1.4.8` | ` 0px`|
-| --nutui-cascader-item-border-bottom`v1.4.8` | ` 0px solid #ddd` |
-| --nutui-cascader-item-color | ` $title-color` |
-| --nutui-cascader-item-font-size | `  $font-size-2` |
-| --nutui-cascader-item-active-color | `  $primary-color` |
+| --nutui-cascader-font-size | `$font-size-2` |
+| --nutui-cascader-line-height | `22px` |
+| --nutui-cascader-title-padding | `24px 20px 17px` |
+| --nutui-cascader-title-font-size | `18px` |
+| --nutui-cascader-title-line-height | `20px` |
+| --nutui-cascader-pane-height | `342px` |
+| --nutui-cascader-tabs-item-padding | `0 10px` |
+| --nutui-cascader-bar-padding | `24px 20px 17px` |
+| --nutui-cascader-bar-font-size | `$font-size-4` |
+| --nutui-cascader-bar-line-height | `20px` |
+| --nutui-cascader-bar-color | `$title-color` |
+| --nutui-cascader-item-height`v1.4.8` | `40px` |
+| --nutui-cascader-item-padding | `10px 20px` |
+| --nutui-cascader-item-margin`v1.4.8` | `0px`|
+| --nutui-cascader-item-border-bottom`v1.4.8` | `0px solid #ddd` |
+| --nutui-cascader-item-color | `$title-color` |
+| --nutui-cascader-item-font-size | `$font-size-2` |
+| --nutui-cascader-item-active-color | `$primary-color` |

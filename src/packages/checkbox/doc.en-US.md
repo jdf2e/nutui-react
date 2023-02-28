@@ -9,7 +9,6 @@ Multi-select buttons are used for selection.
 ```ts
 // react
 import { Checkbox } from '@nutui/nutui-react';
-
 ```
 
 ## Basic Usage
@@ -407,33 +406,33 @@ export default CheckboxGroupOptions;
 
 | Props          | Description | Type | Default          |
 |----------------| ----- | ----- |------------------|
-| checked        | Whether it is selected | Boolean | `false`          |
-| disabled       | Whether to disable the selection | Boolean | `false`          |
-| textPosition   | The location of the text, optionally：`left`,`right` | String | `right`          |
-| iconSize       | [Icon size](#/icon) | String、Number | `18`             |
-| iconName       | [Icon name](#/icon)，Before selecting (it is recommended to modify it with 'iconActiveName') | String | `'check-normal'` |
-| iconActiveName | [Icon name](#/icon)，Once selected (it is recommended to modify it together with 'iconName') | String | `'checked'`      |
-| iconIndeterminateName | [Icon Name](#/en-US/icon)，Semi selected state | String | `'check-disabled'`|
-| iconClassPrefix       | Custom icon class name prefix, used to use custom icons        | String                  | `nut-icon` |
-| iconFontClassName     | Basic class name of custom icon font        | String                  | `nutui-iconfont` |
-| label          | The text content of the check box | String | -                |
+| checked        | Whether it is selected | boolean | `false`          |
+| disabled       | Whether to disable the selection | boolean | `false`          |
+| textPosition   | The location of the text, optionally：`left`,`right` | string | `right`          |
+| iconSize       | [Icon size](#/icon) | string \| number | `18`             |
+| iconName       | [Icon name](#/icon)，Before selecting (it is recommended to modify it with 'iconActiveName') | string | `check-normal` |
+| iconActiveName | [Icon name](#/icon)，Once selected (it is recommended to modify it together with 'iconName') | string | `checked`      |
+| iconIndeterminateName | [Icon Name](#/en-US/icon)，Semi selected state | string | `check-disabled`|
+| iconClassPrefix       | Custom icon class name prefix, used to use custom icons        | string                  | `nut-icon` |
+| iconFontClassName     | Basic class name of custom icon font        | string                  | `nutui-iconfont` |
+| label          | The text content of the check box | string | -                |
 
 ## Checkbox.Group
 
 | Props          | Description | Type | Default|
 |----- | ----- | ----- | ----- |
-| checkedValue | The identifier of the currently selected item, corresponding to 'label'  | String | -|
-| disabled | Whether to disable the selection will be used for all check boxes under it | Boolean | `false`|
-| max | Limit the maximum number of options | `undefined|number` | `undefined`|
-| textPosition | Where the text is located, optional values: 'left', 'right' | String | `right` |
-| direction | Use horizontal and vertical directions The optional values horizontal, vertical, | String | `vertical` |
+| checkedValue | The identifier of the currently selected item, corresponding to 'label'  | string | -|
+| disabled | Whether to disable the selection will be used for all check boxes under it | boolean | `false`|
+| max | Limit the maximum number of options | undefined \| number | `undefined`|
+| textPosition | Where the text is located, optional values: 'left', 'right' | string | `right` |
+| direction | Use horizontal and vertical directions The optional values horizontal, vertical, | string | `vertical` |
 | options `v1.3.10`     | Render radios by configuring options      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 ## Checkbox Event
 
 | Props          | Description | Callback parameters|
 |----- | ----- | ----- |
-| onChange | Triggers | when the value changes (state, label), 'state' represents the current state, and 'label' represents the currently selected value|
+| onChange | Triggers when the value changes | `state, label`, 'state' represents the current state, and 'label' represents the currently selected value|
 
 ## Checkbox.Group Event
 
@@ -456,10 +455,10 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-checkbox-label-color | ` $gray1` |
-| --nutui-checkbox-label-disable-color | `  #999` |
-| --nutui-checkbox-icon-disable-color | `  #d6d6d6` |
-| --nutui-checkbox-label-margin-left | `  15px` |
-| --nutui-checkbox-label-font-size | ` 14px` |
-| --nutui-checkbox-icon-font-size | ` 18px` |
-| --nutui-checkbox-icon-disable-color2 | `  $help-color` |
+| --nutui-checkbox-label-color | `$gray1` |
+| --nutui-checkbox-label-disable-color | `#999` |
+| --nutui-checkbox-icon-disable-color | `#d6d6d6` |
+| --nutui-checkbox-label-margin-left | `15px` |
+| --nutui-checkbox-label-font-size | `14px` |
+| --nutui-checkbox-icon-font-size | `18px` |
+| --nutui-checkbox-icon-disable-color2 | `$help-color` |

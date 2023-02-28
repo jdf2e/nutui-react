@@ -9,7 +9,6 @@ The input box component used to search the scene.
 ```javascript
 // react
 import { SearchBar } from '@nutui/nutui-react';
-
 ```
 
 ## Code demonstration
@@ -150,41 +149,41 @@ export default App;
 
 |Parameter | description | type | default value|
 |--------------|----------------------------------|--------|------------------|
-|value | current input value | _string_ | - |
-|placeholder | input box default dark texture | _string_ | ` Please enter `|
-|classname | custom class name | _string_ | '' |
-|shape | search box shape, the optional value is 'round '| _string_ | ` square` |
-|disabled | whether to disable the input box | _boolean_ | ` false` |
-|readonly | the input box is read-only | _boolean_ | ` false` |
-|maxLength | maximum input length | _number_ | ` 9999` |
-|clearable | whether to display the clear button | _boolean_ | ` true` |
-| clearIconSize`v1.4.7` | the size of clear button，same as Icon's size | string/number | `12px` |
-|background | search box external background color |_string_ | - |
-|inputbackground | search box background color |_string_ | - |
-|inputalign | alignment, optional `center` `right` | _string_ | ` left` |
-|autofocus | auto focus | _boolean_ | ` false` |
-|label | left text of search box | _string_ | '' |
-|actiontext | cancel button text | _ReactNode_ | '' |
-|leftinicon | input box, left Icon | _ReactNode_ | `< Icon name="search" size="12" />` |
-|rightinicon | input box, right icon | _ReactNode_ | - |
-|leftouticon | outside the input box, left Icon | _ReactNode_ | - |
-|rightouticon | outside the input box, right icon | _ReactNode_ | - |
+|value | current input value | string | - |
+|placeholder | input box default dark texture | string | `Please enter `|
+|classname | custom class name | string | - |
+|shape | search box shape, the optional value is 'round '| string | `square` |
+|disabled | whether to disable the input box | boolean | `false` |
+|readonly | the input box is read-only | boolean | `false` |
+|maxLength | maximum input length | number | `9999` |
+|clearable | whether to display the clear button | boolean | `true` |
+| clearIconSize`v1.4.7` | the size of clear button，same as Icon's size | string \| number | `12px` |
+|background | search box external background color |string | - |
+|inputbackground | search box background color |string | - |
+|inputalign | alignment, optional `center` `right` | string | `left` |
+|autofocus | auto focus | boolean | `false` |
+|label | left text of search box | string | - |
+|actiontext | cancel button text | ReactNode | - |
+|leftinicon | input box, left Icon | ReactNode | `< Icon name="search" size="12" />` |
+|rightinicon | input box, right icon | ReactNode | - |
+|leftouticon | outside the input box, left Icon | ReactNode | - |
+|rightouticon | outside the input box, right icon | ReactNode | - |
 
 ### Events
 
 |Event name | description | callback parameters|
 |--------|----------------|--------------|
-|onChange | triggered when entering content | _val: string, event: Event_ |
-|onFocus | triggered when focusing | _val: string, event: Event_ |
-|onBlur | triggered when out of focus | _val: string, event: Event_ |
-|onClear | triggered when clicking clear | _event: Event_ |
+|onChange | triggered when entering content | `val: string, event: Event` |
+|onFocus | triggered when focusing | `val: string, event: Event` |
+|onBlur | triggered when out of focus | `val: string, event: Event` |
+|onClear | triggered when clicking clear | `event: Event` |
 |onCancel `v1.3.6`| Fired when the cancel button is clicked | - |
-|onSearch | trigger when confirming search | _val: string, event: Event_ |
-|onClickInput | triggered when clicking the input area | _event: Event_ |
-|onClickLeftinIcon | triggered when clicking the icon on the left side of the input box | _val: string, event: Event_ |
-|onClickLeftoutIcon | triggered when clicking the icon on the left outside of the input box | _val: string, event: Event_ |
-|onClickRightinIcon | triggered when clicking the icon on the right side of the input box | _val: string, event: Event_ |
-|onClickRightoutIcon | triggered when clicking the icon on the right side of the input box | _val: string, event: Event_ |
+|onSearch | trigger when confirming search | `val: string, event: Event` |
+|onClickInput | triggered when clicking the input area | event: Event |
+|onClickLeftinIcon | triggered when clicking the icon on the left side of the input box | `val: string, event: Event` |
+|onClickLeftoutIcon | triggered when clicking the icon on the left outside of the input box | `val: string, event: Event` |
+|onClickRightinIcon | triggered when clicking the icon on the right side of the input box | `val: string, event: Event` |
+|onClickRightoutIcon | triggered when clicking the icon on the right side of the input box | `val: string, event: Event` |
 
 
 ## Theming
@@ -195,25 +194,25 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-searchbar-background | ` $gray6` |
-| --nutui-searchbar-content-border-radius | ` 2px` |
-| --nutui-searchbar-right-out-color | `  $black` |
-| --nutui-searchbar-padding | ` 9px 16px` |
-| --nutui-searchbar-width | ` 100%` |
-| --nutui-searchbar-label-fontsize | ` 12px` | 
-| --nutui-searchbar-label-padding | ` 0 12px 0 0`| 
-| --nutui-searchbar-label-color | ` $gray1` |
-| --nutui-searchbar-action-text-fontsize | ` 14px`| 
-| --nutui-searchbar-action-text-padding | ` 0 0 0 8px`|
-| --nutui-searchbar-action-text-color | `  $gray1` |
-| --nutui-searchbar-input-height | ` 32px` |
-| --nutui-searchbar-input-padding | ` 0 28px` |
-| --nutui-searchbar-input-background | `  #f7f7f7` |
-| --nutui-searchbar-input-text-color | `  $gray1` |
-| --nutui-searchbar-input-curror-color | `  $gray1` |
-| --nutui-searchbar-input-width | ` 100%` |
-| --nutui-searchbar-input-border-radius | `  16px` |
-| --nutui-searchbar-input-box-shadow | `  0 0 8px 0 rgba(0, 0, 0, 0.04)` |
-| --nutui-searchbar-input-bar-color | `  inherit` |
-| --nutui-searchbar-input-bar-placeholder-color | `  inherit` |
-| --nutui-searchbar-clear-icon-padding | ` 0 10px 0 5px` |
+| --nutui-searchbar-background | `$gray6` |
+| --nutui-searchbar-content-border-radius | `2px` |
+| --nutui-searchbar-right-out-color | `$black` |
+| --nutui-searchbar-padding | `9px 16px` |
+| --nutui-searchbar-width | `100%` |
+| --nutui-searchbar-label-fontsize | `12px` | 
+| --nutui-searchbar-label-padding | `0 12px 0 0`| 
+| --nutui-searchbar-label-color | `$gray1` |
+| --nutui-searchbar-action-text-fontsize | `14px`| 
+| --nutui-searchbar-action-text-padding | `0 0 0 8px`|
+| --nutui-searchbar-action-text-color | `$gray1` |
+| --nutui-searchbar-input-height | `32px` |
+| --nutui-searchbar-input-padding | `0 28px` |
+| --nutui-searchbar-input-background | `#f7f7f7` |
+| --nutui-searchbar-input-text-color | `$gray1` |
+| --nutui-searchbar-input-curror-color | `$gray1` |
+| --nutui-searchbar-input-width | `100%` |
+| --nutui-searchbar-input-border-radius | `16px` |
+| --nutui-searchbar-input-box-shadow | `0 0 8px 0 rgba(0, 0, 0, 0.04)` |
+| --nutui-searchbar-input-bar-color | `inherit` |
+| --nutui-searchbar-input-bar-placeholder-color | `inherit` |
+| --nutui-searchbar-clear-icon-padding | `0 10px 0 5px` |

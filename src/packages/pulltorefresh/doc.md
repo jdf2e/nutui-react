@@ -47,7 +47,7 @@ export default App
 
 | 字段 | 说明 | 类型 | 默认值 |
 |--------------|----------------------------------|-----------|--|
-| canReleaseText | 释放的提示文案 | `ReactNode` | `释放立即刷新` |
+| canReleaseText | 释放的提示文案 | ReactNode | `释放立即刷新` |
 | completeText | 完成时的提示文案 | ReactNode | `刷新成功` |
 | completeDelay | 完成后延迟消失的时间，单位为 ms | number | `500` |
 | disabled | 是否禁用下拉刷新 | boolean | `false` |

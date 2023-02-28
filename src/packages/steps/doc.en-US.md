@@ -9,7 +9,6 @@ Split and display the steps of a process, guide users to complete tasks accordin
 ```ts
 // react
 import { Steps } from '@nutui/nutui-react';
-
 ```
 
 ### Basic Usage
@@ -425,9 +424,9 @@ export default App;
 
 | Attribute                   | Description                                                        | Type           | Default      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| direction	             | 	Show direction，`horizontal`,`vertical`  | String        | 'horizontal'  | 
-| current	               | 	Current step           | Number        | 0      |
-| progressDot            |  Dot step bar     | Boolean | false         |
+| direction	             | 	Show direction，`horizontal`,`vertical`  | string        | `horizontal`  | 
+| current	               | 	Current step           | number        | `0`      |
+| progressDot            |  Dot step bar     | boolean | `false`         |
 
 
 
@@ -435,12 +434,12 @@ export default App;
 
 | Attribute           | Description                   | Type     | Default      |
 | ---------------- | ---------------------- | ------------ | ----------- |
-| title            | Title of the process step         | String | '' |
-| content          | Descriptive text of process steps (supporting HTML structure)       | String | '' |
-| icon          | Icon       | String | '' |
-| size          | Icon size       | String | '' |
-| activeIndex          | Index of process steps       | Number | 0 |
-| renderContent         | The html structure of the descriptive text of the process steps      | React.ReactNode | - |
+| title            | Title of the process step         | string | - |
+| content          | Descriptive text of process steps (supporting HTML structure)       | string | - |
+| icon          | Icon       | string | - |
+| size          | Icon size       | string | - |
+| activeIndex          | Index of process steps       | number | `0` |
+| renderContent         | The html structure of the descriptive text of the process steps      | ReactNode | - |
 
 ## Theming
 
@@ -450,44 +449,40 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-steps-base-icon-width | ` 25px` |
-| --nutui-steps-base-icon-height | ` 25px` |
-| --nutui-steps-base-icon-line-height | `  25px` |
-| --nutui-steps-base-icon-margin-bottom`v1.4.8` | ` 12px`|
-| --nutui-steps-base-icon-font-size | `  13px` |
-| --nutui-steps-base-line-width`v1.4.8` | ` 100%`|
-| --nutui-steps-base-line-color`废弃 v1.4.8` | ` #909ca4` |
-| --nutui-steps-base-line-background`v1.4.8` | ` #909ca4`|
-| --nutui-steps-base-title-font-size | `  14px` |
-| --nutui-steps-base-title-color | `  $title-color` |
-| --nutui-steps-base-title-margin-bottom | `  10px` |
-| --nutui-steps-base-content-font-size | `  14px` |
-| --nutui-steps-base-content-color | `  $title-color2` |
-
-| --nutui-steps-wait-icon-bg-color | `  #959fb1` |
-| --nutui-steps-wait-icon-color | ` $white` |
-| --nutui-steps-wait-head-color | ` #909ca4` |
-| --nutui-steps-wait-head-border-color | `  #909ca4` |
-| --nutui-steps-wait-title-color`v1.4.8` | `  $title-color2` |
-| --nutui-steps-wait-content-color | `  $title-color2` |
-
-| --nutui-steps-process-icon-bg-color`v1.4.8` | `  $primary-color` |
-| --nutui-steps-process-icon-color`v1.4.8` | ` $white` |
-| --nutui-steps-process-head-color | ` $primary-color` |
-| --nutui-steps-process-head-border-color | ` $primary-color` |
-| --nutui-steps-process-title-color | `  $primary-color` |
-| --nutui-steps-process-title-font-size`v1.4.8` | ` 14px`|
-| --nutui-steps-process-title-font-weight`v1.4.8` | ` 400`|
-| --nutui-steps-process-content-color`v1.4.8` | `  $primary-color` |
-
-| --nutui-steps-finish-icon-bg-color`v1.4.8` | `  $primary-text-color` |
-| --nutui-steps-finish-icon-color`v1.4.8` | ` $primary-color` |
-| --nutui-steps-finish-head-color | ` $primary-color` |
-| --nutui-steps-finish-head-border-color | ` $primary-color` |
-| --nutui-steps-finish-title-color | `  $primary-color` |
-| --nutui-steps-finish-content-color`v1.4.8` | `  $title-color2` |
-| --nutui-steps-finish-line-background | `  $primary-color` |
-
-| --nutui-steps-dot-icon-width`v1.4.8` | `  6px` |
-| --nutui-steps-dot-icon-height`v1.4.8` | `  6px` |
-| --nutui-steps-dot-icon-border`v1.4.8` | `  2px solid $primary-text-color` |
+| --nutui-steps-base-icon-width | `25px` |
+| --nutui-steps-base-icon-height | `25px` |
+| --nutui-steps-base-icon-line-height | `25px` |
+| --nutui-steps-base-icon-margin-bottom`v1.4.8` | `12px`|
+| --nutui-steps-base-icon-font-size | `13px` |
+| --nutui-steps-base-line-width`v1.4.8` | `100%`|
+| --nutui-steps-base-line-color`废弃 v1.4.8` | `#909ca4` |
+| --nutui-steps-base-line-background`v1.4.8` | `#909ca4`|
+| --nutui-steps-base-title-font-size | `14px` |
+| --nutui-steps-base-title-color | `$title-color` |
+| --nutui-steps-base-title-margin-bottom | `10px` |
+| --nutui-steps-base-content-font-size | `14px` |
+| --nutui-steps-base-content-color | `$title-color2` |
+| --nutui-steps-wait-icon-bg-color | `#959fb1` |
+| --nutui-steps-wait-icon-color | `$white` |
+| --nutui-steps-wait-head-color | `#909ca4` |
+| --nutui-steps-wait-head-border-color | `#909ca4` |
+| --nutui-steps-wait-title-color`v1.4.8` | `$title-color2` |
+| --nutui-steps-wait-content-color | `$title-color2` |
+| --nutui-steps-process-icon-bg-color`v1.4.8` | `$primary-color` |
+| --nutui-steps-process-icon-color`v1.4.8` | `$white` |
+| --nutui-steps-process-head-color | `$primary-color` |
+| --nutui-steps-process-head-border-color | `$primary-color` |
+| --nutui-steps-process-title-color | `$primary-color` |
+| --nutui-steps-process-title-font-size`v1.4.8` | `14px`|
+| --nutui-steps-process-title-font-weight`v1.4.8` | `400`|
+| --nutui-steps-process-content-color`v1.4.8` | `$primary-color` |
+| --nutui-steps-finish-icon-bg-color`v1.4.8` | `$primary-text-color` |
+| --nutui-steps-finish-icon-color`v1.4.8` | `$primary-color` |
+| --nutui-steps-finish-head-color | `$primary-color` |
+| --nutui-steps-finish-head-border-color | `$primary-color` |
+| --nutui-steps-finish-title-color | `$primary-color` |
+| --nutui-steps-finish-content-color`v1.4.8` | `$title-color2` |
+| --nutui-steps-finish-line-background | `$primary-color` |
+| --nutui-steps-dot-icon-width`v1.4.8` | `6px` |
+| --nutui-steps-dot-icon-height`v1.4.8` | `6px` |
+| --nutui-steps-dot-icon-border`v1.4.8` | `2px solid $primary-text-color` |

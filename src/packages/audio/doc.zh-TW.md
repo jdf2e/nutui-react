@@ -9,7 +9,6 @@
 ```javascript
 // react
 import { Audio } from '@nutui/nutui-react'
-
 ```
 
 ## 代碼演示
@@ -151,23 +150,23 @@ export default App;
 
 | 參數         | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
-| className       | 類名               | String | ''              |
-| style       | css樣式               | CSSProperties | {}           |
-| url         | 語音資源鏈接               | String | ''              |
-| muted        | 是否靜音                         | Boolean | false             |
-| autoplay         | 是否自動播放 | Boolean | false               |
-| loop | 是否循環播放     | Boolean | false |
-| preload          | 是否預加載語音 枚舉值：'none'、'metadata'、'auto'、''   | String | 'auto'              |
-| type         | 展示形式，可選值：controls 控制面板   progress 進度條  icon 圖標 none 自定義 | String | 'progress'              |
+| className       | 類名               | string | -              |
+| style       | css樣式               | CSSProperties | `{}`           |
+| url         | 語音資源鏈接               | string | -              |
+| muted        | 是否靜音                         | boolean | `false`             |
+| autoplay         | 是否自動播放 | boolean | `false`               |
+| loop | 是否循環播放     | boolean | `false` |
+| preload          | 是否預加載語音 枚舉值：'none'、'metadata'、'auto'、''   | string | `auto`              |
+| type         | 展示形式，可選值：controls 控制面板   progress 進度條  icon 圖標 none 自定義 | string | `progress`              |
 
 
 ### Events
 
 | 事件名 | 說明           | 回調參數     |
 |--------|----------------|--------------|
-| onFastBack  | 語音快退回調,type=progress時生效 | event：HTMLAudioElement |
-| onForward  | 语音快进回调,type=progress時生效 | event：HTMLAudioElement |
-| onPause  | 暫停回調 | event：HTMLAudioElement |
-| onPlayEnd  | 語音播放完成，loop=false時生效 | event：HTMLAudioElement|
-| onMute  | 靜音回調 | event：HTMLAudioElement|
-| onCanPlay  | 可以播放媒體時觸發 | event：HTMLAudioElement |
+| onFastBack  | 語音快退回調,type=progress時生效 | `event：HTMLAudioElement` |
+| onForward  | 语音快进回调,type=progress時生效 | `event：HTMLAudioElement` |
+| onPause  | 暫停回調 | `event：HTMLAudioElement` |
+| onPlayEnd  | 語音播放完成，loop=false時生效 | `event：HTMLAudioElement`|
+| onMute  | 靜音回調 | `event：HTMLAudioElement`|
+| onCanPlay  | 可以播放媒體時觸發 | `event：HTMLAudioElement` |

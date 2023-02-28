@@ -9,7 +9,6 @@ isplay space is insufficient, hidden part of the content and "..." Alternative.
 ```js
 // react
 import { Ellipsis } from '@nutui/nutui-react';
-
 ```
 
 
@@ -131,13 +130,13 @@ export default App;
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| content         | Content               | String | -                |
-| direction         | Direction                | 'start' | 'end' | 'middle' | 'end'               |
-| rows         | Rows               | Number | 1              |
-| expandText         | Expand text               | String | ''              |
-| collapseText         | Collapse text               | String | ''               |
-| symbol         | Symbol     | String | '...'       |
-| lineHeight         | the row height of the container     | String、Number | 20       |
+| content         | Content               | string | -                |
+| direction         | Direction                | 'start' \| 'end' \| 'middle' | `end`               |
+| rows         | Rows               | number | `1`              |
+| expandText         | Expand text               | string | -              |
+| collapseText         | Collapse text               | string | -               |
+| symbol         | Symbol     | string | `...`       |
+| lineHeight         | the row height of the container     | string \| number | `20`       |
 
 ### Events
 
@@ -154,4 +153,4 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-ellipsis-expand-collapse-color | `  #3460fa` |
+| --nutui-ellipsis-expand-collapse-color | `#3460fa` |
