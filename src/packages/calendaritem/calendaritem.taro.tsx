@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import classNames from 'classnames'
+import { ScrollView } from '@tarojs/components'
 import bem from '@/utils/bem'
 import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
@@ -125,6 +126,7 @@ export const CalendarItem = React.forwardRef<
   const [monthsData, setMonthsData] = useState<any[]>([])
   const [translateY, setTranslateY] = useState(0)
   const [monthDefaultRange, setMonthDefaultRange] = useState<number[]>([])
+  const [scrollTop, setScrollTop] = useState(0)
 
   const [state] = useState<CalendarState>({
     currDate: '',
@@ -476,7 +478,6 @@ export const CalendarItem = React.forwardRef<
     ) {
       state.monthsData.unshift(monthInfo)
     }
-
     setMonthsData(state.monthsData)
   }
 
@@ -502,7 +503,7 @@ export const CalendarItem = React.forwardRef<
     setTranslateY(state.monthsData[start].cssScrollHeight)
   }
 
-  const mothsViewScroll = (e: any) => {
+  const monthsViewScroll = (e: any) => {
     if (state.monthsData.length <= 1) {
       return
     }
@@ -748,6 +749,7 @@ export const CalendarItem = React.forwardRef<
     state.monthsData.splice(0)
     initData()
   }
+
   // 暴露出的API
   const scrollToDate = (date: string) => {
     if (Utils.compareDate(date, state.propStartDate)) {
@@ -777,11 +779,13 @@ export const CalendarItem = React.forwardRef<
                 if (months.current) {
                   months.current.scrollTop =
                     state.monthsData[index].cssScrollHeight
+                  setScrollTop(months.current.scrollTop)
                 }
               }
             }, 40)
           } else {
             months.current.scrollTop = state.monthsData[index].cssScrollHeight
+            setScrollTop(months.current.scrollTop)
           }
         }
       }
@@ -823,9 +827,12 @@ export const CalendarItem = React.forwardRef<
           </div>
         </div>
         {/* content */}
-        <div
+        <ScrollView
+          scrollTop={scrollTop}
+          scrollY
+          scrollWithAnimation
           className="nut-calendar-content"
-          onScroll={mothsViewScroll}
+          onScroll={monthsViewScroll}
           ref={months}
         >
           <div className="calendar-months-panel" ref={monthsPanel}>
@@ -896,7 +903,7 @@ export const CalendarItem = React.forwardRef<
                 })}
             </div>
           </div>
-        </div>
+        </ScrollView>
         {/* footer */}
         {poppable && !isAutoBackFill ? (
           <div className="nut-calendar-footer">

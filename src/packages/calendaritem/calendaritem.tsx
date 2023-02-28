@@ -504,7 +504,7 @@ export const CalendarItem = React.forwardRef<
     setTranslateY(state.monthsData[start].cssScrollHeight)
   }
 
-  const mothsViewScroll = (e: any) => {
+  const monthsViewScroll = (e: any) => {
     if (state.monthsData.length <= 1) {
       return
     }
@@ -767,6 +767,7 @@ export const CalendarItem = React.forwardRef<
         if (months.current) {
           const distance =
             state.monthsData[index].cssScrollHeight - months.current.scrollTop
+
           if (toDateAnimation) {
             let flag = 0
             const interval = setInterval(() => {
@@ -829,7 +830,7 @@ export const CalendarItem = React.forwardRef<
         {/* content */}
         <div
           className="nut-calendar-content"
-          onScroll={mothsViewScroll}
+          onScroll={monthsViewScroll}
           ref={months}
         >
           <div className="calendar-months-panel" ref={monthsPanel}>

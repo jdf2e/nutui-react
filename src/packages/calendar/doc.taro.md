@@ -332,13 +332,16 @@ const App = () => {
 
     const goDate = () => {
         if (calendarRef.current) {
-            calendarRef.current.scrollToDate('2022-04-01');
+            calendarRef.current.scrollToDate('2023-04-01');
         }
     };
 
     const clickBtn = () => {
         const date = [Utils.date2Str(new Date()), Utils.getDay(6)];
         setDate3(date);
+        if (calendarRef.current) {
+          calendarRef.current.scrollToDate(date[0])
+        }
     }
 
     const clickBtn1 = () => {
@@ -349,6 +352,9 @@ const App = () => {
         const yearMonth = `${year}-${month}`;
         const currMonthDays = Utils.getMonthDays(`${year  }`, `${month  }`);
         setDate3([`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`]);
+        if (calendarRef.current) {
+          calendarRef.current.scrollToDate(`${yearMonth}-01`)
+        }
     }
 
     const onBtn = () => {
@@ -422,6 +428,13 @@ export default App;
 :::
 
 ## API
+
+通过 ref 可以获取到 Calendar 实例并调用实例方法。
+
+| 方法名 | 说明 | 参数 |
+| ----- | ----- | -- |
+| scrollToDate | 滚动到指定日期所在月,如：'2023-06-30' | `string` |
+
 
 ### Props
 
