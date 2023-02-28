@@ -9,7 +9,6 @@ Used to select time, support date and time dimensions, usually used with the Pop
 ```ts
 // react
 import { DatePicker } from '@nutui/nutui';
-
 ```
     
 ### Choose Date
@@ -319,22 +318,22 @@ export default App;
 | Attribute         | Description                             | Type   | Default           |
 |---------------------------|---------------------------------------------------|---------|----------|
 | modelValue                | Default Date                                                | Date    | `null`   |
-| visible                   | Is Show                                          | Boolean | `false`  |
-| type                      | Can be set to date time year-month month-day datehour | String  | `'date'` |
-| minuteStep                | Option minute step                                        | Number  | `1`      |
-| isShowChinese             | Show Chinese                                  | Boolean | `false`  |
-| title                     | Title                                          | String  | `null`   |
+| visible                   | Is Show                                          | boolean | `false`  |
+| type                      | Can be set to date time year-month month-day datehour | string  | `date` |
+| minuteStep                | Option minute step                                        | number | `1`      |
+| isShowChinese             | Show Chinese                                  | boolean | `false`  |
+| title                     | Title                                          | string  | `null`   |
 | minDate                   | Start date                                          | Date    | `Ten years ago on January 1` |
 | maxDate                   | End date                                         | Date    | `Ten years later on December 31` |
-| formatter`v1.2.2`         | Option text formatter                                           | (type: string, option: PickerOption) => PickerOption    |  |
-| filter`v1.2.2`            | Option filter                                          | (type: string, option: PickerOption) => PickerOption[]    |  |
-| three-dimensional`v1.2.2` | Turn on 3D effects               | Boolean  | true   |
+| formatter`v1.2.2`         | Option text formatter                                           | (type: string, option: PickerOption) => PickerOption    | - |
+| filter`v1.2.2`            | Option filter                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
+| three-dimensional`v1.2.2` | Turn on 3D effects               | boolean  | `true`   |
 
 
 ### Events
     
 | Event | Description           | Arguments     |
 |-----------------------------|--------------------|--------------|
-| onConfirmDatePicker`v1.2.2` | Emitted when click confirm button.  | values, options |
-| onCloseDatePicker           | Emitted when click close button.          | -- |
-| onChange`v1.2.2`            | Emitted when current option changed.         |  columnIndex, values, options  |
+| onConfirmDatePicker`v1.2.2` | Emitted when click confirm button.  | `values, options` |
+| onCloseDatePicker           | Emitted when click close button.          | - |
+| onChange`v1.2.2`            | Emitted when current option changed.         |  `columnIndex, values, options`  |
