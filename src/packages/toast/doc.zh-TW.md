@@ -326,7 +326,7 @@ export default App
 | cover               | 是否显示遮罩层                                          | boolean       | `false` |
 | coverColor          | 遮罩层颜色，默认透明                                   | string        | `rgba(0,0,0,0)`    |
 | loadingRotate       | loading图标是否旋转，仅对loading类型生效                   | boolean       | `true`          |
-| onClose             | 关闭时触发的事件                                      | function      | `null`            |
+| onClose             | 关闭时触发的事件                                      | Function      | `null`            |
 | closeOnClickOverlay | 是否在点击遮罩层后关闭提示                         | boolean       | `false`     |
 
 
