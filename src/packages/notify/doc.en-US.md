@@ -8,7 +8,6 @@ Show message tips at the top of the page
 ```javascript
 // react
 import { Notify } from '@nutui/nutui-react';
-
 ```
 
 ## Demo
@@ -178,13 +177,13 @@ export default App
     
 | Attribute      | Description                                    | Type          | Default   |
 |------------|-------------------------------------------------------|---------------|----------|
-| type       | Display Type（primary,success ,danger,warning）      | String        | 'danger' |
-| message    | Display copy, support line feed through \n              | Boolean       | false    |
-| duration   | Display duration (ms),value is 0 ,notify not disappear | String        | 3000     |
-| color      | Font Color                                               | String        | -        |
-| background | Background color                                         | String        | -        |
-| className | Custom class name                                        | String/Number | 1        |
-| position `v1.3.0` | Custom Position (top, bottom)                               | String | 'top'        |
+| type       | Display Type（primary,success ,danger,warning）      | string        | `danger` |
+| message    | Display copy, support line feed through \n              | boolean       | `false`    |
+| duration   | Display duration (ms),value is 0 ,notify not disappear | string        | `3000`     |
+| color      | Font Color                                               | string        | -        |
+| background | Background color                                         | string        | -        |
+| className | Custom class name                                        | string \| number | `1`        |
+| position `v1.3.0` | Custom Position (top, bottom)                               | string | `top`        |
 
 ### Events
 
@@ -202,9 +201,9 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-notify-text-color | ` $white` |
-| --nutui-notify-padding | ` 12px 0` |
-| --nutui-notify-font-size | ` 14px` |
-| --nutui-notify-height | ` 44px` |
-| --nutui-notify-line-height | ` auto` |
-| --nutui-notify-danger-background-color | `  rgba(250, 50, 25, 1)` |
+| --nutui-notify-text-color | `$white` |
+| --nutui-notify-padding | `12px 0` |
+| --nutui-notify-font-size | `14px` |
+| --nutui-notify-height | `44px` |
+| --nutui-notify-line-height | `auto` |
+| --nutui-notify-danger-background-color | `rgba(250, 50, 25, 1)` |
