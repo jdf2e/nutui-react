@@ -1,9 +1,10 @@
 @import '../icon/icon.scss';
-@import '../popup/popup.scss';
+@import '../overlay/overlay.scss';
 
 .nut-theme-dark {
   .nut-menu-item__content {
     background: $dark6;
+
     .nut-menu-item__option {
       color: $dark1;
     }
@@ -50,6 +51,7 @@
   z-index: 2052;
   overflow: hidden;
 }
+
 .nut-menu-item__wrap-up {
   bottom: $menu-bar-line-height;
 }
@@ -102,11 +104,13 @@
   opacity: 0;
   transform: translate(0, 30px);
 }
+
 .menu-item-up-enter-done {
   opacity: 1;
   transform: translate(0, 0);
   transition: all 100ms;
 }
+
 .menu-item-up-exit {
   opacity: 1;
   transition: all 100ms;

@@ -1,13 +1,11 @@
 import React, {
   forwardRef,
-  FunctionComponent,
   useEffect,
   useImperativeHandle,
   useState,
 } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
-import { useConfig } from '@/packages/configprovider'
 import Icon from '@/packages/icon'
 import { Overlay } from '../overlay/overlay'
 
@@ -50,7 +48,6 @@ const defaultProps = {
   onChange: (value: OptionItem) => undefined,
 } as MenuItemProps
 export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
-  const { locale } = useConfig()
   const mergedProps = { ...defaultProps, ...props }
   const {
     style,

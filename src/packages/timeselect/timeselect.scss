@@ -1,16 +1,21 @@
+@import '../popup/popup.scss';
 @import '../timepannel/timepannel.scss';
 @import '../timedetail/timedetail.scss';
+
 .nut-theme-dark {
   .nut-timeselect {
     background-color: $dark6;
+
     &__title {
       background-color: $dark6;
       color: $dark1;
     }
+
     &__content {
       &-left {
         background-color: $dark5;
         color: $dark1;
+
         .nut-timepannel-active {
           background-color: $dark6;
           color: $dark1;
@@ -18,9 +23,11 @@
       }
     }
   }
+
   .nut-timedetail__item {
     background-color: $dark4;
     color: $dark1;
+
     &-active {
       background-color: $dark-brand-color;
     }
@@ -55,6 +62,7 @@
     overflow: auto;
     background-color: $background-color2;
     color: $title-color;
+
     .nut-timepannel-active {
       background-color: red;
     }
