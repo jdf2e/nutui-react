@@ -14,4 +14,4 @@
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-infiniteloading-bottom-color | `  #c8c8c8` |
+| --nutui-infiniteloading-bottom-color | `#c8c8c8` |
