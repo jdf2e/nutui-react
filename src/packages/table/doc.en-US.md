@@ -8,7 +8,6 @@ Used to display the basic table
 ```ts
 // react
 import { Table } from '@nutui/nutui-react';
-
 ```
 
 
@@ -545,21 +544,21 @@ export default App;
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| bordered         | Show border | 	Boolean | true                |
-| columns         | Header data | 	TableColumnProps[] | []                |
-| data         | Table data | 	Object[] | []                |
-| summary         | Show profile | 	React.ReactNode | -                |
-| striped         | Whether the stripes alternate light and dark | 	Boolean | false                |
-| noData         | Custom noData | 	React.ReactNode | -                |
+| bordered         | Show border | 	boolean | `true`                |
+| columns         | Header data | 	TableColumnProps[] | `[]`                |
+| data         | Table data | 	Object[] | `[]`                |
+| summary         | Show profile | 	ReactNode | -                |
+| striped         | Whether the stripes alternate light and dark | 	boolean | `false`                |
+| noData         | Custom noData | 	ReactNode | -                |
 
 ### TableColumnProps
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| key         | Unique identification of the column | 	String | ''                |
-| title         | Header title | 	String | ''                |
-| align         |Alignment of columns, optional values`left`,`center`,`right`  | 	String | left                |
-| sorter         | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | 	Boolean、Function、String | -                |
+| key         | Unique identification of the column | 	string | -                |
+| title         | Header title | 	string | -                |
+| align         |Alignment of columns, optional values`left`,`center`,`right`  | 	string | `left`                |
+| sorter         | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | 	boolean \| Function \| string | -                |
 | render         | Custom render column data, high priority | 	Function(record) | -                |
 
 
@@ -579,7 +578,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-table-border-color | ` #ececec` |
-| --nutui-table-cols-padding | ` 10px` |
-| --nutui-table-tr-even-bg-color | ` $gray4` |
-| --nutui-table-tr-odd-bg-color | ` $gray6` |
+| --nutui-table-border-color | `#ececec` |
+| --nutui-table-cols-padding | `10px` |
+| --nutui-table-tr-even-bg-color | `$gray4` |
+| --nutui-table-tr-odd-bg-color | `$gray6` |
