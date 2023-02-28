@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-// import { useTranslate } from '../../sites/assets/locale'
 import Picker from '@/packages/picker'
 import { useConfig } from '@/packages/configprovider'
 

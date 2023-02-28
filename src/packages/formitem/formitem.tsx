@@ -45,7 +45,7 @@ export class FormItem extends React.Component<FieldProps> {
 
   private cancelRegister: any
 
-  private isInitialValue: boolean = false
+  private isInitialValue = false
 
   componentDidMount() {
     // 注册组件实例到FormStore
