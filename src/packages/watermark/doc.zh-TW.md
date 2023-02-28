@@ -98,20 +98,20 @@ export default App;
 
 | 參數          | 說明                             | 類型   | 預設值           |
 |--------------|----------------------------------|--------|------------------|
-| width       | 浮水印的寬度                                           | `number`           | `120`                |
-| height      | 浮水印的高度                                           | `number`           | `64`                 |
-| rotate      | 浮水印繪製時，旋轉的角度                  | `number`           | `-22`                |
-| image       | 圖片源，建議匯出2倍或3倍圖，優先使用圖片渲染浮水印 | `string`           | -                    |
-| imageWidth  | 圖片寬度                                             | `number`           | `120`                |
-| imageHeight | 圖片高度                                             | `number`           | `64`                 |
-| zIndex      | 追加的浮水印元素的z-index                             | `number`           | `2000`               |
-| content     | 浮水印文字內容                                       | `string`           | -                    |
-| fontColor   | 浮水印文字顏色                                         | `string`           | `rgba(0, 0, 0, .15)` |
-| fontSize    | 文字大小                                             | `string \| number` | `16`                 |
-| gapX        | 浮水印之間的水准間距                                   | `number`           | `24`                 |
-| gapY       | 浮水印之間的垂直間距                                   | `number`           | `48`                 |
-| fullPage    | 是否覆蓋整個頁面                                     | `boolean`          | `true`               |
-| fontFamily  | 浮水印文字字體                                     | `boolean`          | `true`               |
+| width       | 浮水印的寬度                                           | number           | `120`                |
+| height      | 浮水印的高度                                           | number           | `64`                 |
+| rotate      | 浮水印繪製時，旋轉的角度                  | number           | `-22`                |
+| image       | 圖片源，建議匯出2倍或3倍圖，優先使用圖片渲染浮水印 | string           | -                    |
+| imageWidth  | 圖片寬度                                             | number           | `120`                |
+| imageHeight | 圖片高度                                             | number           | `64`                 |
+| zIndex      | 追加的浮水印元素的z-index                             | number           | `2000`               |
+| content     | 浮水印文字內容                                       | string           | -                    |
+| fontColor   | 浮水印文字顏色                                         | string           | `rgba(0, 0, 0, .15)` |
+| fontSize    | 文字大小                                             | string \| number | `16`                 |
+| gapX        | 浮水印之間的水准間距                                   | number           | `24`                 |
+| gapY       | 浮水印之間的垂直間距                                   | number           | `48`                 |
+| fullPage    | 是否覆蓋整個頁面                                     | boolean          | `true`               |
+| fontFamily  | 浮水印文字字體                                     | boolean          | `true`               |
 
 
 ## 主題定制
@@ -122,4 +122,4 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-watermark-z-index | `  $mask-content-z-index` |
+| --nutui-watermark-z-index | `$mask-content-z-index` |

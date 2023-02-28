@@ -9,7 +9,6 @@
 ```javascript
 // react
 import { BackTop } from '@nutui/nutui-react';
-
 ```
 
 ## 代碼演示
@@ -320,20 +319,20 @@ export default App;
 
 | 字段        | 說明                            | 類型    | 默認值 |
 | ----------- | ------------------------------- | ------- | ------ |
-| elId        | 獲取監聽元素的父級元素         | String  | -      |
-| bottom      | 距離頁面底部距離                | Number  | `20`   |
-| right       | 距離頁面右側距離                | Number  | `10`   |
-| distance    | 頁面垂直滾動多高後出現          | Number  | `200`  |
-| zIndex      | 設置組件頁面層級                | Number  | `10`   |
-| isAnimation | 是否有動畫,和 duration 參數互斥 | Boolean | `true` |
-| duration    | 設置動畫持續時間                | Number  | `1000` |
+| elId        | 獲取監聽元素的父級元素         | string  | -      |
+| bottom      | 距離頁面底部距離                | number | `20`   |
+| right       | 距離頁面右側距離                | number | `10`   |
+| distance    | 頁面垂直滾動多高後出現          | number | `200`  |
+| zIndex      | 設置組件頁面層級                | number | `10`   |
+| isAnimation | 是否有動畫,和 duration 參數互斥 | boolean | `true` |
+| duration    | 設置動畫持續時間                | number | `1000` |
 
 ### Events
 
 | 名稱                       | 說明               | 回調參數          |
 |--------------------------| ------------------ | ----------------- |
-| backTopClick`v1.2.1(廢棄)` | 按鈕點擊時觸發事件 | event: MouseEvent |
-| onClick`v1.2.1`          | 按鈕點擊時觸發事件 | event: MouseEvent |
+| backTopClick`v1.2.1(廢棄)` | 按鈕點擊時觸發事件 | `event: MouseEvent` |
+| onClick`v1.2.1`          | 按鈕點擊時觸發事件 | `event: MouseEvent` |
 
 ## 主題定制
 
@@ -343,4 +342,4 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-backtop-border-color | ` #e0e0e0` |
+| --nutui-backtop-border-color | `#e0e0e0` |

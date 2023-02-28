@@ -9,7 +9,6 @@
 ```javascript
 // React
 import { TrendArrow } from '@nutui/nutui-react';
-
 ```
 
 ## 代碼演示
@@ -199,18 +198,18 @@ export default App;
 
 | 參數         | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
-| rate         | 數值，大於0時箭頭向上，小於0時箭頭向下    | Number | -                |
-| digits         | 小數位精度               | Number | 2               |
-| showSign         | 是否顯示加減號               | Boolean | false               |
-| showZero         | 是否顯示 0               | Boolean | false               |
-| arrowLeft        | 是否在數字左側顯示箭頭     | Boolean | false               |
-| syncTextColor   | 文字顏色是否與箭頭同步               | Boolean | true   |
-| textColor        | 文字顏色               | String | '#333333'               |
-| riseColor         | 向上箭頭顏色               | String | '#fa2c19'               |
-| dropColor         | 向下箭頭顏色               | String | 『#64b578』               |
-| iconSize         | 箭頭大小               | String | '12px'               |
-| upIconName         | 自定義向上箭頭icon               | String | 'triangle-up'               |
-| downIconName         | 自定義向下箭頭icon               | String | 'triangle-down'               |
+| rate         | 數值，大於0時箭頭向上，小於0時箭頭向下    | number | -                |
+| digits         | 小數位精度               | number | `2`               |
+| showSign         | 是否顯示加減號               | boolean | `false`               |
+| showZero         | 是否顯示 0               | boolean | `false`               |
+| arrowLeft        | 是否在數字左側顯示箭頭     | boolean | `false`               |
+| syncTextColor   | 文字顏色是否與箭頭同步               | boolean | `true`   |
+| textColor        | 文字顏色               | string | `#333333`               |
+| riseColor         | 向上箭頭顏色               | string | `#fa2c19`               |
+| dropColor         | 向下箭頭顏色               | string | `#64b578`               |
+| iconSize         | 箭頭大小               | string | `12px`               |
+| upIconName         | 自定義向上箭頭icon               | string | `triangle-up`               |
+| downIconName         | 自定義向下箭頭icon               | string | `triangle-down`               |
 
 
 
@@ -223,7 +222,7 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-trendarrow-font-size | ` 14px` |
-| --nutui-trendarrow-before-icon-margin | `  4px` |
-| --nutui-trendarrow-font-size | ` 14px` |
-| --nutui-trendarrow-before-icon-margin | `  4px` |
+| --nutui-trendarrow-font-size | `14px` |
+| --nutui-trendarrow-before-icon-margin | `4px` |
+| --nutui-trendarrow-font-size | `14px` |
+| --nutui-trendarrow-before-icon-margin | `4px` |

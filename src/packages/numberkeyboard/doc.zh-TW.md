@@ -8,7 +8,6 @@
 ```ts
 // react
 import { NumberKeyboard } from '@nutui/nutui-react';
-
 ```
 
 
@@ -211,20 +210,20 @@ export default App;
 
 | 字段 | 說明 | 類型 | 預設值           |
 |----- | ----- | ----- | ----- |
-| visible | 是否顯示鍵盤 | Boolean | false | 
-| title | 鍵盤標題 | String | - |
-| type | 鍵盤模式  | String | `default`：默認樣式 `rightColumn`：帶右側欄 |
-| randomKeys | 隨機數  | Boolean | false |
-| customKey | 自定義鍵盤額外的鍵  | String [] | 數組形式最多支持添加2個,超出默認取前2項 |
-| confirmText  | 自定義完成按鈕文字，如"支付"，"下一步"，"提交"等 | String | 完成 |
-| pop-class    | 自定義彈框類名     | String         | -             |
+| visible | 是否顯示鍵盤 | boolean | `false` | 
+| title | 鍵盤標題 | string | - |
+| type | 鍵盤模式  | string | `default`：默認樣式 `rightColumn`：帶右側欄 |
+| randomKeys | 隨機數  | boolean | `false` |
+| customKey | 自定義鍵盤額外的鍵  | string[] | 數組形式最多支持添加2個,超出默認取前2項 |
+| confirmText  | 自定義完成按鈕文字，如"支付"，"下一步"，"提交"等 | string | `完成` |
+| pop-class    | 自定義彈框類名     | string         | -             |
 
 
 ### Event
 
 | 字段 | 說明 | 回調參數
 |----- | ----- | -----
-| onChange  | 點擊按鍵時觸發                 | value: string |
+| onChange  | 點擊按鍵時觸發                 | `value: string` |
 | onDelete | 點擊刪除鍵時觸發               | -             |
 | onClose  | 點擊關閉按鈕或非鍵盤區域時觸發  | -             |
 
@@ -237,23 +236,23 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-numberkeyboard-padding | `  0 0 22px 0` |
-| --nutui-numberkeyboard-background-color | `  #f2f3f5` |
-| --nutui-numberkeyboard-header-height | `  34px` |
-| --nutui-numberkeyboard-header-padding | `  6px 0 0 0` |
-| --nutui-numberkeyboard-header-color | `  #646566` |
-| --nutui-numberkeyboard-header-font-size | `  16px` |
-| --nutui-numberkeyboard-header-close-padding | `  0 16px` |
-| --nutui-numberkeyboard-header-close-color | `  #576b95` |
-| --nutui-numberkeyboard-header-close-font-size | `  14px` |
-| --nutui-numberkeyboard-header-close-background-color | `  transparent` |
-| --nutui-numberkeyboard-key-background-color | `  #fff` |
-| --nutui-numberkeyboard-key-active-background-color | `  #ebedf0` |
-| --nutui-numberkeyboard-key-height | `  48px` |
-| --nutui-numberkeyboard-key-line-height | `  1.5` |
-| --nutui-numberkeyboard-key-border-radius | `  8px` |
-| --nutui-numberkeyboard-key-font-size | `  28px` |
-| --nutui-numberkeyboard-key-font-color | `  #333` |
-| --nutui-numberkeyboard-key-finish-font-size | `  16px` |
-| --nutui-numberkeyboard-key-finish-font-color | `  #fff` |
-| --nutui-numberkeyboard-key-finish-background-color | `  #1989fa` |
+| --nutui-numberkeyboard-padding | `0 0 22px 0` |
+| --nutui-numberkeyboard-background-color | `#f2f3f5` |
+| --nutui-numberkeyboard-header-height | `34px` |
+| --nutui-numberkeyboard-header-padding | `6px 0 0 0` |
+| --nutui-numberkeyboard-header-color | `#646566` |
+| --nutui-numberkeyboard-header-font-size | `16px` |
+| --nutui-numberkeyboard-header-close-padding | `0 16px` |
+| --nutui-numberkeyboard-header-close-color | `#576b95` |
+| --nutui-numberkeyboard-header-close-font-size | `14px` |
+| --nutui-numberkeyboard-header-close-background-color | `transparent` |
+| --nutui-numberkeyboard-key-background-color | `#fff` |
+| --nutui-numberkeyboard-key-active-background-color | `#ebedf0` |
+| --nutui-numberkeyboard-key-height | `48px` |
+| --nutui-numberkeyboard-key-line-height | `1.5` |
+| --nutui-numberkeyboard-key-border-radius | `8px` |
+| --nutui-numberkeyboard-key-font-size | `28px` |
+| --nutui-numberkeyboard-key-font-color | `#333` |
+| --nutui-numberkeyboard-key-finish-font-size | `16px` |
+| --nutui-numberkeyboard-key-finish-font-color | `#fff` |
+| --nutui-numberkeyboard-key-finish-background-color | `#1989fa` |

@@ -8,7 +8,6 @@
 ```ts
 // react
 import { ShortPassword } from '@nutui/nutui-react';
-
 ```
 
 
@@ -180,16 +179,16 @@ export default App;
 
 | 參數         | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
-| modelValue         | 內容               | String｜Number | -                |
-| visible        | 是否展示短密碼框                         | Boolean | false              |
-| title                  | 標題                | String         | 請輸入密碼                   |
-| desc                   | 密碼框描述          | String         | 您使用了虛擬資產，請進行驗證|
-| tips                   | 提示語              | String         | 忘記密碼                     |
-| closeOnClickOverlay | 是否點擊遮罩關閉    | Boolean        | true                         |
-| noButton              | 是否隱藏底部按鈕    | Boolean        | true                         |
-| length                 | 密碼長度，取值為4~6 | String｜Number | 6                            |
-| errorMsg              | 錯誤信息提示        | String         | ''                           |
-| autoFocus              | 自動聚焦        | Boolean         | false                           |
+| modelValue         | 內容               | string \| number | -                |
+| visible        | 是否展示短密碼框                         | boolean | `false`              |
+| title                  | 標題                | string         | `請輸入密碼`                   |
+| desc                   | 密碼框描述          | string         | `您使用了虛擬資產，請進行驗證`|
+| tips                   | 提示語              | string         | `忘記密碼`                     |
+| closeOnClickOverlay | 是否點擊遮罩關閉    | boolean        | `true`                         |
+| noButton              | 是否隱藏底部按鈕    | boolean        | `true`                         |
+| length                 | 密碼長度，取值為4~6 | string \| number | `6`                            |
+| errorMsg              | 錯誤信息提示        | string         | -                           |
+| autoFocus              | 自動聚焦        | boolean         | `false`                           |
 
 ### Events
 
@@ -211,7 +210,7 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-shortpassword-background-color | `  rgba(245, 245, 245, 1)` |
-| --nutui-shortpassword-border-color | `  #ddd` |
-| --nutui-shortpassword-error | ` $primary-color` |
-| --nutui-shortpassword-forget | `  rgba(128, 128, 128, 1)` |
+| --nutui-shortpassword-background-color | `rgba(245, 245, 245, 1)` |
+| --nutui-shortpassword-border-color | `#ddd` |
+| --nutui-shortpassword-error | `$primary-color` |
+| --nutui-shortpassword-forget | `rgba(128, 128, 128, 1)` |

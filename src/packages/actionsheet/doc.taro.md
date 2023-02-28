@@ -210,15 +210,15 @@ export default App;
 
 | 字段             | 说明                                   | 类型    | 默认值    |
 |------------------|----------------------------------------|---------|-----------|
-| visible       | 遮罩层可见 | Boolean | false     |
-| cancelTxt       | 取消文案 | String  | '取消'    |
-| menuItems       | 列表项 | Array   | [ ]       |
-| optionTag       | 设置列表项展示使用参数 | String  | 'name'    |
-| optionSubTag   | 设置列表项描述展示使用参数 | String  | 'subname' |
-| title            | 设置列表面板标题 | String  | ''        |
-| description      | 设置列表面板副标题/描述 | String  | ''        |
-| chooseTagValue | 设置选中项的值，和'option-tag'的值对应 | String  | ''        |
-| color            | 高亮颜色 | String  | '#ee0a24' |
+| visible       | 遮罩层可见 | boolean | `false`     |
+| cancelTxt       | 取消文案 | string  | `取消`    |
+| menuItems       | 列表项 | Array   | `[]`       |
+| optionTag       | 设置列表项展示使用参数 | string  | `name`    |
+| optionSubTag   | 设置列表项描述展示使用参数 | string  | `subname` |
+| title            | 设置列表面板标题 | string  | -        |
+| description      | 设置列表面板副标题/描述 | string  | -        |
+| chooseTagValue | 设置选中项的值，和'option-tag'的值对应 | string  | -        |
+| color            | 高亮颜色 | string  | `#ee0a24` |
 
 
 ## Event
@@ -236,10 +236,10 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-actionsheet-light-color | `  #f6f6f6` |
-| --nutui-actionsheet-item-border-bottom | `  none` |
-| --nutui-actionsheet-item-font-size | `  $font-size-2` |
-| --nutui-actionsheet-item-subdesc-font-size | `  $font-size-1` |
-| --nutui-actionsheet-item-cancel-border-top | `  1px solid $actionsheet-light-color` |
-| --nutui-actionsheet-item-line-height | `  24px` |
-| --nutui-actionsheet-item-font-color | `  $title-color` |
+| --nutui-actionsheet-light-color | `#f6f6f6` |
+| --nutui-actionsheet-item-border-bottom | `none` |
+| --nutui-actionsheet-item-font-size | `$font-size-2` |
+| --nutui-actionsheet-item-subdesc-font-size | `$font-size-1` |
+| --nutui-actionsheet-item-cancel-border-top | `1px solid $actionsheet-light-color` |
+| --nutui-actionsheet-item-line-height | `24px` |
+| --nutui-actionsheet-item-font-color | `$title-color` |

@@ -9,7 +9,6 @@
 ``` javascript
 // react
 import { Popover } from '@nutui/nutui-react';
-
 ```
 
 ### 代碼實例
@@ -224,11 +223,11 @@ export default App;
 
 | 字段            | 說明                            | 類型     | 默認值      |
 |----------------|---------------------------------|---------|------------|
-| list          | 選項列表                          | List[]   | []        |
-| visible      | 是否展示氣泡彈出層                 | boolean  | false     |
+| list          | 選項列表                          | List[]   | `[]`        |
+| visible      | 是否展示氣泡彈出層                 | boolean  | `false`     |
 | theme          | 主題風格，可選值為 dark            | string   | `light`   |
 | location       | 彈出位置  | string   | `bottom`  |
-| offset `v1.3.0`       | 出現位置的偏移量  | number   | 20  |
+| offset `v1.3.0`       | 出現位置的偏移量  | number   | `20`  |
 
 ### List 數據結構  
 
@@ -238,7 +237,7 @@ List 屬性是一個由對象構成的數組，數組中的每個對象配置一
 |----------------|----------------------|----------|--------|
 | name           | 選項文字               | string   | -      |
 | icon           | nut-icon 圖標名稱      | string   | -      |
-| disabled       | 是否為禁用狀態          | boolean  | false  | 
+| disabled       | 是否為禁用狀態          | boolean  | `false`  | 
 
 ### Events
 
@@ -259,21 +258,21 @@ List 屬性是一個由對象構成的數組，數組中的每個對象配置一
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-popover-border-radius`v1.4.8` | ` 8px`|
-| --nutui-popover-font-size`v1.4.8` | ` $font-size-1` |
-| --nutui-popover-menu-item-height`v1.4.8` | ` 30px` |
-| --nutui-popover-menu-item-name-margin`v1.4.8` | ` 0px 10px` |
-| --nutui-popover-menu-item-hover-background-color`v1.4.8` | `  $primary-color`|
-| --nutui-popover-menu-item-hover-text-color`v1.4.8` | ` $primary-text-color`|
-| --nutui-popover-menu-item-border-width`v1.4.8` | ` 80%`|
-| --nutui-popover-menu-item-border-height`v1.4.8` | ` 1px`|
-| --nutui-popover-menu-item-border-left`v1.4.8` | ` 10%`|
-| --nutui-popover-menu-item-border-bottom`v1.4.8` | ` 2%`|
-| --nutui-popover-white-background-color | `  rgba(255, 255, 255, 1)` |
-| --nutui-popover-dark-background-color | `  rgba(75, 76, 77, 1)` |
-| --nutui-popover-border-bottom-color | `  rgba(229, 229, 229, 1)` |
-| --nutui-popover-primary-text-color | `  rgba(51, 51, 51, 1)` |
-| --nutui-popover-disable-color | `  rgba(154, 155, 157, 1)` |
-| --nutui-popover-menu-item-padding | `  8px 0` |
-| --nutui-popover-menu-item-margin | `  0 8px` |
-| --nutui-popover-menu-name-line-height | `  normal` |
+| --nutui-popover-border-radius`v1.4.8` | `8px`|
+| --nutui-popover-font-size`v1.4.8` | `$font-size-1` |
+| --nutui-popover-menu-item-height`v1.4.8` | `30px` |
+| --nutui-popover-menu-item-name-margin`v1.4.8` | `0px 10px` |
+| --nutui-popover-menu-item-hover-background-color`v1.4.8` | `$primary-color`|
+| --nutui-popover-menu-item-hover-text-color`v1.4.8` | `$primary-text-color`|
+| --nutui-popover-menu-item-border-width`v1.4.8` | `80%`|
+| --nutui-popover-menu-item-border-height`v1.4.8` | `1px`|
+| --nutui-popover-menu-item-border-left`v1.4.8` | `10%`|
+| --nutui-popover-menu-item-border-bottom`v1.4.8` | `2%`|
+| --nutui-popover-white-background-color | `rgba(255, 255, 255, 1)` |
+| --nutui-popover-dark-background-color | `rgba(75, 76, 77, 1)` |
+| --nutui-popover-border-bottom-color | `rgba(229, 229, 229, 1)` |
+| --nutui-popover-primary-text-color | `rgba(51, 51, 51, 1)` |
+| --nutui-popover-disable-color | `rgba(154, 155, 157, 1)` |
+| --nutui-popover-menu-item-padding | `8px 0` |
+| --nutui-popover-menu-item-margin | `0 8px` |
+| --nutui-popover-menu-name-line-height | `normal` |
