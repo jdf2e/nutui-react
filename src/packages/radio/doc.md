@@ -111,15 +111,16 @@ export default RadioGroupLast;
 ```tsx
 import React, { useState } from 'react';
 import { Radio } from '@nutui/nutui-react';
+import { CheckList } from '@nutui/icons-react'
 
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <Radio.RadioGroup value={radioVal}>
-      <Radio value="1" iconName="checklist"
-             iconActiveName="checklist">自定义图标</Radio>
-      <Radio value="2" iconName="checklist"
-             iconActiveName="checklist">自定义图标</Radio>
+      <Radio value="1" iconName={<CheckList/>}
+             iconActiveName={<CheckList/>}>自定义图标</Radio>
+      <Radio value="2" iconName={<CheckList/>}
+             iconActiveName={<CheckList/>}>自定义图标</Radio>
     </Radio.RadioGroup>
   </>
 }
@@ -182,7 +183,7 @@ const RadioGroupOptions = () => {
     console.log(v)
     setRadioVal(v)
   }
-  return <Radio.RadioGroup options={optionsDemo1} value={radioVal} onChange={handleChange}></Radio.RadioGroup>
+  return <Radio.RadioGroup options={optionsDemo1} value={radioVal} onChange={handleChange} />
 }
 export default RadioGroupOptions;
 ```
@@ -193,22 +194,22 @@ export default RadioGroupOptions;
 
 ### Radio
 
-| 字段             | 说明                                                         | 类型                    | 默认值            |
-|------------------|--------------------------------------------------------------|-------------------------|-------------------|
-| disabled         | 是否禁用选择                                                 | Boolean                 | `false`           |
-| iconSize        | [图标尺寸](#/icon)                                           | String、Number          | `18`              |
-| iconName        | [图标名称](#/icon)，选中前(建议和`iconActiveName`一起修改) | String                  | `'check-normal'`  |
-| iconActiveName | [图标名称](#/icon)，选中后(建议和`iconName`一起修改)        | String                  | `'check-checked'` |
-| value            | 携带的标识值，用于 Group 模式                                                   | String、Number、Boolean | -                 |
-| shape            | 形状，可选值为 button、round                                 | String                  | round             |
+| 字段             | 说明                                                         | 类型                    | 默认值              |
+|------------------|--------------------------------------------------------------|-----------------------|------------------|
+| disabled         | 是否禁用选择                                                 | `boolean`               | `false`          |
+| iconSize        | [图标尺寸](#/icon)                                           | `string`、`number`         | `18`             |
+| iconName        | [图标名称](#/icon)，选中前(建议和`iconActiveName`一起修改) | `ReactNode`           | `'CheckNormal'`  |
+| iconActiveName | [图标名称](#/icon)，选中后(建议和`iconName`一起修改)        | `ReactNode`                 | `'CheckChecked'` |
+| value            | 携带的标识值，用于 Group 模式                                                   | `string`、`number`、`boolean` | -                |
+| shape            | 形状，可选值为 button、round                                 | `string`                | round            |
 
 ### Radio.RadioGroup
 
 | 字段          | 说明                                          | 类型                    | 默认值     |
 |---------------|-----------------------------------------------|-------------------------|------------|
-| value       | 当前选中项的标识符，与label值一致时呈选中状态 | String、Number、Boolean | -          |
-| textPosition | 文本所在的位置，可选值：`left`,`right`        | String                  | `right`    |
-| direction     | 使用横纵方向 可选值 horizontal、vertical      | String                  | `vertical` |
+| value       | 当前选中项的标识符，与label值一致时呈选中状态 | `string`、`number`、`boolean` | -          |
+| textPosition | 文本所在的位置，可选值：`left`,`right`        | `string`                  | `right`    |
+| direction     | 使用横纵方向 可选值 horizontal、vertical      | `string`                  | `vertical` |
 | options `v1.3.10`     | 配置 options 渲染单选按钮      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 

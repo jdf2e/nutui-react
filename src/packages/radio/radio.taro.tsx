@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react'
-import Icon from '@/packages/icon/index.taro'
+import { CheckChecked, CheckNormal } from '@nutui/icons-react-taro'
 
 import RadioContext from './context'
 import RadioGroup from '@/packages/radiogroup/index.taro'
@@ -23,8 +23,8 @@ export interface RadioProps extends BasicComponent {
   shape: Shape
   textPosition: Position
   value: string | number | boolean
-  iconName: string
-  iconActiveName: string
+  iconName: React.ReactNode
+  iconActiveName: React.ReactNode
   iconSize: string | number
   onChange: MouseEventHandler<HTMLDivElement>
 }
@@ -112,16 +112,23 @@ export const Radio: FunctionComponent<
   const renderIcon = () => {
     const { iconName, iconSize, iconActiveName } = props
 
-    return (
-      <Icon
-        classPrefix={iconClassPrefix}
-        fontClassName={iconFontClassName}
-        name={
-          !disabledStatement && checkedStatement ? iconActiveName : iconName
-        }
-        size={iconSize}
-        className={color()}
-      />
+    if (!disabledStatement && checkedStatement) {
+      return React.isValidElement(iconActiveName) ? (
+        React.cloneElement<any>(iconActiveName, {
+          size: iconSize,
+          className: color(),
+        })
+      ) : (
+        <CheckChecked width={iconSize} height={iconSize} className={color()} />
+      )
+    }
+    return React.isValidElement(iconName) ? (
+      React.cloneElement<any>(iconName, {
+        size: iconSize,
+        className: color(),
+      })
+    ) : (
+      <CheckNormal width={iconSize} height={iconSize} className={color()} />
     )
   }
   const reverseState = textPosition === 'left'

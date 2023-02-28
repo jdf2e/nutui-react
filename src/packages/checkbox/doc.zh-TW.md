@@ -403,26 +403,26 @@ export default CheckboxGroupOptions;
 
 | 字段                            | 說明 | 類型 | 默認值 | 
 |-------------------------------| ----- | ----- | -----|
-| checked                       | 是否處於選中狀態 | Boolean | `false`|
-| disabled                      | 是否禁用選擇 | Boolean | `false`|
-| textPosition                  | 文本所在的位置，可選值：`left`,`right` | String | `right`|
-| iconSize                      | [圖標尺寸](#/icon) | String、Number | `18`|
-| iconName                      | [圖標名稱](#/icon)，選中前(建議和`iconActiveName`一起修改) | String | `'check-normal'`|
-| iconActiveName                | [圖標名稱](#/icon)，選中後(建議和`iconName`一起修改) | String | `'checked'`|
-| iconIndeterminateName`v1.2.1` | [圖標名稱](#/icon)，半選狀態 | String | `'check-disabled'`|
-| iconClassPrefix`v1.2.1`       | 自定義 icon 類名前綴，用於使用自定義圖標        | String                  | `nut-icon` |
-| iconFontClassName`v1.2.1`       | 自定義 icon 字體基礎類名        | String                  | `nutui-iconfont` |
-| label                         | 複選框的文本內容 | String | -|
+| checked                       | 是否處於選中狀態 | `boolean` | `false`|
+| disabled                      | 是否禁用選擇 | `boolean` | `false`|
+| textPosition                  | 文本所在的位置，可選值：`left`,`right` | `string` | `right`|
+| iconSize                      | [圖標尺寸](#/icon) | `string`、Number | `18`|
+| iconName                      | [圖標名稱](#/icon)，選中前(建議和`iconActiveName`一起修改) | `string` | `'CheckNormal'`|
+| iconActiveName                | [圖標名稱](#/icon)，選中後(建議和`iconName`一起修改) | `string` | `'Checked'`|
+| iconIndeterminateName`v1.2.1` | [圖標名稱](#/icon)，半選狀態 | `string` | `'CheckDisabled'`|
+| iconClassPrefix`v1.2.1`       | 自定義 icon 類名前綴，用於使用自定義圖標        | `string`                  | `nut-icon` |
+| iconFontClassName`v1.2.1`       | 自定義 icon 字體基礎類名        | `string`                  | `nutui-iconfont` |
+| label                         | 複選框的文本內容 | `string` | -|
 
 ## Checkbox.Group
 
 | 字段           | 說明 | 類型          | 默認值|
 |--------------| ----- |-------------| -- |
-| checkedValue | 當前選中項的標識符，和 `label` 相對應  | String      | -|
-| disabled     | 是否禁用選擇,將用於其下的全部複選框 | Boolean     | `false`|
+| checkedValue | 當前選中項的標識符，和 `label` 相對應  | `string`      | -|
+| disabled     | 是否禁用選擇,將用於其下的全部複選框 | `boolean`     | `false`|
 | max`v1.2.1`           | 限制最大可選數 | `undefined|number` | `undefined`|
-| textPosition | 文本所在的位置，可選值：'left'，'right' | String | `right`    |
-| direction     | 使用橫縱方向 可選值 horizontal、vertical | String | `vertical` |
+| textPosition | 文本所在的位置，可選值：'left'，'right' | `string` | `right`    |
+| direction     | 使用橫縱方向 可選值 horizontal、vertical | `string` | `vertical` |
 | options `v1.3.10`     | 配置 options 渲染复选按钮      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 ## Checkbox Event

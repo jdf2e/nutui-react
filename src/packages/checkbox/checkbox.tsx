@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import Icon from '@/packages/icon'
+import { Checked, CheckDisabled, CheckNormal } from '@nutui/icons-react'
 import bem from '@/utils/bem'
 import CheckboxGroup from '@/packages/checkboxgroup'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -14,9 +14,9 @@ export interface CheckboxProps extends BasicComponent {
   disabled: boolean
   textPosition: 'left' | 'right'
   iconSize: string | number
-  iconName: string
-  iconActiveName: string
-  iconIndeterminateName: string
+  iconName: React.ReactNode
+  iconActiveName: React.ReactNode
+  iconIndeterminateName: React.ReactNode
   iconClassPrefix: string
   iconFontClassName: string
   indeterminate: boolean
@@ -78,26 +78,36 @@ export const Checkbox: FunctionComponent<
   useEffect(() => {
     setIndeterminate(indeterminate)
   }, [indeterminate])
-
-  const getIconName = () => {
-    if (!innerChecked) {
-      return iconName
-    }
-    if (_indeterminate) {
-      return iconIndeterminateName
-    }
-    return iconActiveName
-  }
+  //
+  // const getIconName = () => {
+  //   if (!innerChecked) {
+  //     return iconName
+  //   }
+  //   if (_indeterminate) {
+  //     return iconIndeterminateName
+  //   }
+  //   return iconActiveName
+  // }
 
   const renderIcon = () => {
-    return (
-      <Icon
-        classPrefix={iconClassPrefix}
-        fontClassName={iconFontClassName}
-        name={getIconName()}
-        size={iconSize}
-        className={color()}
-      />
+    if (!innerChecked) {
+      return React.isValidElement(iconName) ? (
+        React.cloneElement<any>(iconName, {})
+      ) : (
+        <CheckNormal width={iconSize} height={iconSize} className={color()} />
+      )
+    }
+    if (_indeterminate) {
+      return React.isValidElement(iconIndeterminateName) ? (
+        React.cloneElement<any>(iconIndeterminateName, {})
+      ) : (
+        <CheckDisabled width={iconSize} height={iconSize} className={color()} />
+      )
+    }
+    return React.isValidElement(iconActiveName) ? (
+      React.cloneElement<any>(iconActiveName, {})
+    ) : (
+      <Checked width={iconSize} height={iconSize} className={color()} />
     )
   }
   const color = () => {

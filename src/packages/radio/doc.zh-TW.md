@@ -111,15 +111,16 @@ export default RadioGroupLast;
 ```tsx
 import React, { useState } from 'react'
 import { Radio } from '@nutui/nutui-react';
+import { CheckList } from '@nutui/icons-react'
 
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <Radio.RadioGroup value={radioVal}>
-      <Radio value="1" iconName="checklist"
-             iconActiveName="checklist">自訂圖示</Radio>
-      <Radio value="2" iconName="checklist"
-             iconActiveName="checklist">自訂圖示</Radio>
+      <Radio value="1" iconName={<CheckList/>}
+             iconActiveName={<CheckList/>}>自定义图标</Radio>
+      <Radio value="2" iconName={<CheckList/>}
+             iconActiveName={<CheckList/>}>自定义图标</Radio>
     </Radio.RadioGroup>
   </>
 }
@@ -195,20 +196,20 @@ export default RadioGroupOptions;
 
 | 屬性         | 說明                             | 類型             | 預設值           |
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
-| disabled         | 是否禁用選擇                                                 | Boolean                 | `false`           |
-| iconSize        | [圖示尺寸](#/icon)                                           | String、Number          | `18`              |
-| iconName        | [圖示名稱](#/icon)，選中前（建議和'iconActiveName'一起修改） | String                  | `'check-normal'`  |
-| iconActiveName | [圖示名稱](#/icon)，選取後（建議和'iconName'一起修改）        | String                  | `'check-checked'` |
-| value            | 攜帶的標識值，用於 Group 模式                                                   | String、Number、Boolean | -                 |
-| shape            | 形狀，可選值為 button、round                                 | String                  | round             |
+| disabled         | 是否禁用選擇                                                 | `boolean`                 | `false`           |
+| iconSize        | [圖示尺寸](#/icon)                                           | `string`、`number`          | `18`              |
+| iconName        | [圖示名稱](#/icon)，選中前（建議和'iconActiveName'一起修改） | `string`                  | `'check-normal'`  |
+| iconActiveName | [圖示名稱](#/icon)，選取後（建議和'iconName'一起修改）        | `string`                  | `'check-checked'` |
+| value            | 攜帶的標識值，用於 Group 模式                                                   | `string`、`number`、`boolean` | -                 |
+| shape            | 形狀，可選值為 button、round                                 | `string`                  | round             |
 
 ### Radio.RadioGroup
 
 | 屬性 | 說明 | 類型 | 預設值 |
 |---------------|-----------------------------------------------|-------------------------|------------|
-| value       | 當前選取的標識碼，與label值一致時呈選中狀態 | String、Number、Boolean | -          |
-| textPosition | 文本所在的位置，可選值：'left'，'right' | String                  | `right`    |
-| direction     | 使用橫縱方向 可選值 horizontal、vertical | String                  | `vertical` |
+| value       | 當前選取的標識碼，與label值一致時呈選中狀態 | `string`、`number`、`boolean` | -          |
+| textPosition | 文本所在的位置，可選值：'left'，'right' | `string`                  | `right`    |
+| direction     | 使用橫縱方向 可選值 horizontal、vertical | `string`                  | `vertical` |
 | options `v1.3.10`     | 配置 options 渲染單選按鈕      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 ## Radio.RadioGroup Event

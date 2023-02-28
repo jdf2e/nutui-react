@@ -112,15 +112,16 @@ It is recommended that 'iconName' and 'iconActiveName' be modified together
 ```tsx
 import React, { useState } from 'react';
 import { Radio } from '@nutui/nutui-react';
+import { CheckList } from '@nutui/icons-react'
 
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <Radio.RadioGroup value={radioVal}>
-      <Radio value="1" iconName="checklist" iconActiveName="checklist">Custom
-        icons</Radio>
-      <Radio value="2" iconName="checklist" iconActiveName="checklist">Custom
-        icons</Radio>
+      <Radio value="1" iconName={<CheckList/>}
+             iconActiveName={<CheckList/>}>Custom icons</Radio>
+      <Radio value="2" iconName={<CheckList/>}
+             iconActiveName={<CheckList/>}>Custom icons</Radio>
     </Radio.RadioGroup>
   </>
 }
@@ -196,20 +197,20 @@ export default RadioGroupOptions;
 
 | Props          | Description | Type | Default          |
 |----------------| ----- | ----- |------------------|
-| disabled         | Disable the selection | Boolean                 | `false`           |
-| iconSize        | [Icon size] (#/icon)                                           | String、Number          | `18`              |
-| iconName        | [Icon Name] (#/icon), before selecting (it is recommended to modify it with 'iconActiveName') | String                  | `'check-normal'`  |
-| iconActiveName | [Icon Name] (#/icon), selected (it is recommended to modify it with 'iconName') | String                  | `'check-checked'` |
-| value            | Value is carrying identification, used in Group mode | String、Number、Boolean | -                 |
-| shape            | Shape, with optional values of button, round, | String                  | round             |
+| disabled         | Disable the selection | `boolean`                 | `false`           |
+| iconSize        | [Icon size] (#/icon)                                           | `string`、`number`          | `18`              |
+| iconName        | [Icon Name] (#/icon), before selecting (it is recommended to modify it with 'iconActiveName') | `string`                  | `'check-normal'`  |
+| iconActiveName | [Icon Name] (#/icon), selected (it is recommended to modify it with 'iconName') | `string`                  | `'check-checked'` |
+| value            | Value is carrying identification, used in Group mode | `string`、`number`、`boolean` | -                 |
+| shape            | Shape, with optional values of button, round, | `string`                  | round             |
 
 ### Radio.RadioGroup
 
 | Props          | Description | Type | Default          |
 |----------------| ----- | ----- |------------------|
-| value       | The identifier of the currently selected item, which is selected when the label value is consistent with the | String、Number、Boolean | -          |
-| textPosition | Where the text is located, optional values: 'left', 'right' | String                  | `right`    |
-| direction     | Use horizontal and vertical directions The optional values horizontal, vertical, | String                  | `vertical` |
+| value       | The identifier of the currently selected item, which is selected when the label value is consistent with the | `string`、`number`、`boolean` | -          |
+| textPosition | Where the text is located, optional values: 'left', 'right' | `string`                  | `right`    |
+| direction     | Use horizontal and vertical directions The optional values horizontal, vertical, | `string`                  | `vertical` |
 | options `v1.3.10`     | Render radios by configuring options      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 ## Radio.RadioGroup Event
