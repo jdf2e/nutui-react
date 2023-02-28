@@ -9,7 +9,6 @@
 ```ts
 // react
 import { DatePicker } from '@nutui/nutui';
-
 ```
     
 ## 代碼演示
@@ -326,22 +325,22 @@ export default App;
 | 參數                        | 說明                                              | 類型    | 默認值   |
 |---------------------------|---------------------------------------------------|---------|----------|
 | modelValue                | 初始值                                            | Date    | `null`   |
-| visible                   | 是否可見                                          | Boolean | `false`  |
-| type                      | 類時間類型，可選值 date time year-month month-day datehour datetime | String  | `'date'` |
-| minuteStep                | 分鐘步進值                                        | Number  | `1`      |
-| isShowChinese             | 每列是否展示中文                                  | Boolean | `false`  |
-| title                     | 設置標題                                          | String  | `null`   |
+| visible                   | 是否可見                                          | boolean | `false`  |
+| type                      | 類時間類型，可選值 date time year-month month-day datehour datetime | string  | `date` |
+| minuteStep                | 分鐘步進值                                        | number | `1`      |
+| isShowChinese             | 每列是否展示中文                                  | boolean | `false`  |
+| title                     | 設置標題                                          | string  | `null`   |
 | minDate                   | 開始日期                                          | Date    | `十年前` |
 | maxDate                   | 結束日期                                          | Date    | `十年後` |
-| formatter`v1.2.2`         | 選項格式化函數                                          | (type: string, option: PickerOption) => PickerOption    |  |
-| filter`v1.2.2`            | 選項過濾函數                                          | (type: string, option: PickerOption) => PickerOption[]    |  |
-| three-dimensional`v1.2.2` | 是否開啟3D效果               | Boolean  | true   |
+| formatter`v1.2.2`         | 選項格式化函數                                          | (type: string, option: PickerOption) => PickerOption    | - |
+| filter`v1.2.2`            | 選項過濾函數                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
+| three-dimensional`v1.2.2` | 是否開啟3D效果               | boolean  | `true`   |
 
 
 ### Events
     
 | 事件名                         | 說明               | 回調參數     |
 |-----------------------------|--------------------|--------------|
-| onConfirmDatePicker`v1.2.2` | 點擊確定按鈕時觸發 | values, options |
+| onConfirmDatePicker`v1.2.2` | 點擊確定按鈕時觸發 | `values, options` |
 | onCloseDatePicker           | 關閉時觸發         | -- |
-| onChange`v1.2.2`                  | 選項改變時觸發         |  columnIndex, values, options  |
+| onChange`v1.2.2`                  | 選項改變時觸發         |  `columnIndex, values, options`  |

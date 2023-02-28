@@ -9,7 +9,6 @@ A percentage number with an arrow indicating the trend of the indicator
 ```javascript
 // React
 import { TrendArrow } from '@nutui/nutui-react';
-
 ```
 
 ## Demo
@@ -199,18 +198,18 @@ export default App;
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| rate         | Value, the arrow is up when it is greater than 0, and the arrow is down when it is less than 0    | Number | -                |
-| digits         | decimal precision               | Number | 2               |
-| showSign         | Whether to display plus and minus signs               | Boolean | false               |
-| showZero         |whether to show 0               | Boolean | false               |
-| arrowLeft        | whether to show an arrow to the left of the number     | Boolean | false               |
-| syncTextColor   | Whether the text color is in sync with the arrow               | Boolean | true   |
-| textColor        | text color               | String | '#333333'               |
-| riseColor         | up arrow color               | String | '#fa2c19'               |
-| dropColor         | down arrow color               | String | ‘#64b578’               |
-| iconSize         | arrow size               | String | '12px'               |
-| upIconName         | custom up arrow icon               | String | 'triangle-up'               |
-| downIconName           | custom down arrow icon               | String | 'triangle-down'               |
+| rate         | Value, the arrow is up when it is greater than 0, and the arrow is down when it is less than 0    | number | -                |
+| digits         | decimal precision               | number | `2`               |
+| showSign         | Whether to display plus and minus signs               | boolean | `false`               |
+| showZero         |whether to show 0               | boolean | `false`               |
+| arrowLeft        | whether to show an arrow to the left of the number     | boolean | `false`               |
+| syncTextColor   | Whether the text color is in sync with the arrow               | boolean | `true`   |
+| textColor        | text color               | string | `#333333`               |
+| riseColor         | up arrow color               | string | `#fa2c19`               |
+| dropColor         | down arrow color               | string | `#64b578`               |
+| iconSize         | arrow size               | string | `12px`               |
+| upIconName         | custom up arrow icon               | string | `triangle-up`               |
+| downIconName           | custom down arrow icon               | string | `triangle-down`               |
 
 
 ## Theming
@@ -221,7 +220,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-trendarrow-font-size | ` 14px` |
-| --nutui-trendarrow-before-icon-margin | `  4px` |
-| --nutui-trendarrow-font-size | ` 14px` |
-| --nutui-trendarrow-before-icon-margin | `  4px` |
+| --nutui-trendarrow-font-size | `14px` |
+| --nutui-trendarrow-before-icon-margin | `4px` |
+| --nutui-trendarrow-font-size | `14px` |
+| --nutui-trendarrow-before-icon-margin | `4px` |

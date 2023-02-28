@@ -9,7 +9,6 @@ Used to open or close the options.
 ```ts
 // react
 import { Switch } from '@nutui/nutui-react';
-
 ```
 
 ## Code demonstration
@@ -150,20 +149,20 @@ export default App;
 
 | parameter            | illustrate             | type    | Defaults   |
 |----------------|------------------|---------|-----------------------|
-| checked        | switch status              | Boolean | `false`    |
-| disable        | Disable                     | Boolean | `false`   |
-| activeColor   | Background color when opening | String  | `#fa2c19`|
-| inactiveColor | Background color when closed | String  | `#ebebeb` |
-| activeText    | Text description when opening | String  | -        |
-| inactiveText  | Text description when closed  | String  | -        |
-| isAsync  | Whether the switch state is modified asynchronous   | Boolean  | `false`                     |
+| checked        | switch status              | boolean | `false`    |
+| disable        | Disable                     | boolean | `false`   |
+| activeColor   | Background color when opening | string  | `#fa2c19`|
+| inactiveColor | Background color when closed | string  | `#ebebeb` |
+| activeText    | Text description when opening | string  | -        |
+| inactiveText  | Text description when closed  | string  | -        |
+| isAsync  | Whether the switch state is modified asynchronous   | boolean  | `false`                     |
 
 
 ### Events
 
 | Incident name | illustrate           | Callback parameter       |
 |--------|----------------|-------------------------------|
-| onChange `v1.3.8` | Trigger when switching switches | (value: boolean,event: Event) |
+| onChange `v1.3.8` | Trigger when switching switches | `value: boolean, event: Event` |
 
 
 ## Theming
@@ -174,13 +173,13 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-switch-close-bg-color | ` #ebebeb` |
-| --nutui-switch-close--line-bg-color | `  #f0f0f0` |
-| --nutui-switch-width | ` 36px` |
-| --nutui-switch-height | ` 21px` |
-| --nutui-switch-line-height | ` 21px` |
-| --nutui-switch-border-radius | ` 21px` |
-| --nutui-switch-inside-width | ` 13px` |
-| --nutui-switch-inside-height | ` 13px` |
-| --nutui-switch-inside-open-transform | ` translateX(146%)` |
-| --nutui-switch-inside-close-transform | ` translateX(30%)` |
+| --nutui-switch-close-bg-color | `#ebebeb` |
+| --nutui-switch-close--line-bg-color | `#f0f0f0` |
+| --nutui-switch-width | `36px` |
+| --nutui-switch-height | `21px` |
+| --nutui-switch-line-height | `21px` |
+| --nutui-switch-border-radius | `21px` |
+| --nutui-switch-inside-width | `13px` |
+| --nutui-switch-inside-height | `13px` |
+| --nutui-switch-inside-open-transform | `translateX(146%)` |
+| --nutui-switch-inside-close-transform | `translateX(30%)` |

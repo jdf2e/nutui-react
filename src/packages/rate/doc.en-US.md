@@ -9,7 +9,6 @@ Use for quick rating actions, or to showcase reviews.
 ```ts
 // react
 import { Rate } from '@nutui/nutui-react';
-
 ```
 
 ## Code demonstration
@@ -205,18 +204,18 @@ export default App;
 
 | field           | explain                                 | type    | default    |
 |----------------|-------------------------------------------|---------|-------------|
-| modelValue     | The current number of stars <= count     | Number    | -           |
-| count          | total number of stars                    | Number  | 5           |
-| minimizeValue  | At least the number of STAR              | Number  | 0           |
-| iconSize      | size of star                              | Number  | 18          |
-| activeColor   | Icon selection color                      | String  | #fa200c     |
-| voidColor     | Icon unselected color                    | String  | #ccc        |
-| uncheckedIcon | Use icon (unchecked)                    | String  | star-n      |
-| checkedIcon   | Use icon (checked)                       | String  | star-fill-n |
-| allowHalf     | Half star or not                         | Boolean | false       |
-| readonly       |Read only                              | Boolean | false       |
-| disabled       | Disable or not                          | Boolean | false       |
-| spacing        | spacing                                  | Number  | 20          |
+| modelValue     | The current number of stars <= count     | number   | -           |
+| count          | total number of stars                    | number | `5`           |
+| minimizeValue  | At least the number of STAR              | number | `0`           |
+| iconSize      | size of star                              | number | `18`          |
+| activeColor   | Icon selection color                      | string  | `#fa200c`     |
+| voidColor     | Icon unselected color                    | string  | `#ccc`        |
+| uncheckedIcon | Use icon (unchecked)                    | string  | `star-n`      |
+| checkedIcon   | Use icon (checked)                       | string  | `star-fill-n` |
+| allowHalf     | Half star or not                         | boolean | `false`       |
+| readonly       |Read only                              | boolean | `false`       |
+| disabled       | Disable or not                          | boolean | `false`       |
+| spacing        | spacing                                  | number | `20`          |
 
 ## Event
 | field   | explain                                          | Callback Arguments  |
@@ -232,5 +231,5 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-rate-icon-color | ` $primary-color` |
-| --nutui-rate-icon-void-color | `  $disable-color` |
+| --nutui-rate-icon-color | `$primary-color` |
+| --nutui-rate-icon-void-color | `$disable-color` |

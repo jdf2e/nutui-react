@@ -9,7 +9,6 @@
 ```javascript
 // react
 import { AnimatingNumbers } from '@nutui/nutui-react'
-
 ```
 
 ## 代碼演示
@@ -69,8 +68,8 @@ export default App
 
 | 參數       | 說明                               | 類型    | 默認值 |
 | ---------- | ---------------------------------- | ------- | ------ |
-| maxLen     | 設置最大展示長度，長度不夠按位補 0 | Number  | 0      |
-| endNumer   | 結束值,必填項                      | String  | ''     |
-| delaySpeed | 等待動畫執行時間，單位 ms          | Number  | 300    |
-| easeSpeed  | 動畫執行時間，單位 s               | Number  | 1      |
-| thousands  | 是否有千位分隔符                   | Boolean | false  |
+| maxLen     | 設置最大展示長度，長度不夠按位補 0 | number  | `0`      |
+| endNumer   | 結束值,必填項                      | string  | -     |
+| delaySpeed | 等待動畫執行時間，單位 ms          | number  | `300`    |
+| easeSpeed  | 動畫執行時間，單位 s               | number  | `1`      |
+| thousands  | 是否有千位分隔符                   | boolean | `false`  |

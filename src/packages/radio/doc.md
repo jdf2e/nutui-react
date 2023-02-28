@@ -9,7 +9,6 @@
 ``` ts
 // react
 import { Radio } from '@nutui/nutui-react';
-
 ```
 
 ## 基本用法
@@ -195,20 +194,20 @@ export default RadioGroupOptions;
 
 | 字段             | 说明                                                         | 类型                    | 默认值            |
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
-| disabled         | 是否禁用选择                                                 | Boolean                 | `false`           |
-| iconSize        | [图标尺寸](#/icon)                                           | String、Number          | `18`              |
-| iconName        | [图标名称](#/icon)，选中前(建议和`iconActiveName`一起修改) | String                  | `'check-normal'`  |
-| iconActiveName | [图标名称](#/icon)，选中后(建议和`iconName`一起修改)        | String                  | `'check-checked'` |
-| value            | 携带的标识值，用于 Group 模式                                                   | String、Number、Boolean | -                 |
-| shape            | 形状，可选值为 button、round                                 | String                  | round             |
+| disabled         | 是否禁用选择                                                 | boolean                 | `false`           |
+| iconSize        | [图标尺寸](#/icon)                                           | string \| number          | `18`              |
+| iconName        | [图标名称](#/icon)，选中前(建议和`iconActiveName`一起修改) | string                  | `check-normal`  |
+| iconActiveName | [图标名称](#/icon)，选中后(建议和`iconName`一起修改)        | string                  | `check-checked` |
+| value            | 携带的标识值，用于 Group 模式                                                   | string \| number \| boolean | -                 |
+| shape            | 形状，可选值为 button、round                                 | string                  | `round`             |
 
 ### Radio.RadioGroup
 
 | 字段          | 说明                                          | 类型                    | 默认值     |
 |---------------|-----------------------------------------------|-------------------------|------------|
-| value       | 当前选中项的标识符，与label值一致时呈选中状态 | String、Number、Boolean | -          |
-| textPosition | 文本所在的位置，可选值：`left`,`right`        | String                  | `right`    |
-| direction     | 使用横纵方向 可选值 horizontal、vertical      | String                  | `vertical` |
+| value       | 当前选中项的标识符，与label值一致时呈选中状态 | string \| number \| boolean | -          |
+| textPosition | 文本所在的位置，可选值：`left`,`right`        | string                  | `right`    |
+| direction     | 使用横纵方向 可选值 horizontal、vertical      | string                  | `vertical` |
 | options `v1.3.10`     | 配置 options 渲染单选按钮      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 
@@ -226,16 +225,16 @@ export default RadioGroupOptions;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-radio-label-font-color | ` $gray1` |
-| --nutui-radio-label-font-active-color | `  $primary-color` |
-| --nutui-radio-label-disable-color | `  $gray3` |
-| --nutui-radio-icon-disable-color | `  $gray2` |
-| --nutui-radio-label-button-border-color | `  $primary-color` |
-| --nutui-radio-label-button-background | `  rgba(250, 44, 25, 0.05)` |
-| --nutui-radio-label-margin-left | ` 15px` |
-| --nutui-radio-button-border-radius | `  15px` |
-| --nutui-radio-label-font-size | ` 14px` |
-| --nutui-radio-button-font-size | ` 12px` |
-| --nutui-radio-button-padding | ` 5px 18px` |
-| --nutui-radio-icon-font-size | ` 18px` |
-| --nutui-radio-icon-disable-color2 | `  $gray3` |
+| --nutui-radio-label-font-color | `$gray1` |
+| --nutui-radio-label-font-active-color | `$primary-color` |
+| --nutui-radio-label-disable-color | `$gray3` |
+| --nutui-radio-icon-disable-color | `$gray2` |
+| --nutui-radio-label-button-border-color | `$primary-color` |
+| --nutui-radio-label-button-background | `rgba(250, 44, 25, 0.05)` |
+| --nutui-radio-label-margin-left | `15px` |
+| --nutui-radio-button-border-radius | `15px` |
+| --nutui-radio-label-font-size | `14px` |
+| --nutui-radio-button-font-size | `12px` |
+| --nutui-radio-button-padding | `5px 18px` |
+| --nutui-radio-icon-font-size | `18px` |
+| --nutui-radio-icon-disable-color2 | `$gray3` |

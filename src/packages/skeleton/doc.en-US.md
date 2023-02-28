@@ -8,7 +8,6 @@ Filling gray bitmap in the area to be loaded on the page is essentially the tran
 ``` ts
 // react
 import { Skeleton } from '@nutui/nutui-react';
-
 ```
 
 
@@ -135,16 +134,16 @@ export default App;
 
 | Attribute       | Description                                             | Type    | Default    |
 |------------|-------------------------------------------------|---------|----------|
-| loading    | Whether to display skeleton screen                                    | Boolean | `false`    | 
-| width       | Width per row                                        | Number  | 100 |
-| height      | Height of each row                                        | Number  | 100   |
-| animated    | Whether to turn on skeleton screen animation                                | Boolean  | `false`  |
-| avatar      | Show avatar                                     | Boolean | `false`   |
-| avatarShape      | Avatar shape: square / round                        | String | `round`   |
-| avatarSize       | Avatar size                                   | String | `50px`    |
-| round  | Is the title / paragraph rounded                                | Boolean | `false`  |
-| row    | Set the number of paragraph lines                                           | Number | 1       |
-| title  | Show paragraph titles                                        | Boolean | `false`   |
+| loading    | Whether to display skeleton screen                                    | boolean | `false`    | 
+| width       | Width per row                                        | number  | `100` |
+| height      | Height of each row                                        | number  | `100`   |
+| animated    | Whether to turn on skeleton screen animation                                | boolean  | `false`  |
+| avatar      | Show avatar                                     | boolean | `false`   |
+| avatarShape      | Avatar shape: square / round                        | string | `round`   |
+| avatarSize       | Avatar size                                   | string | `50px`    |
+| round  | Is the title / paragraph rounded                                | boolean | `false`  |
+| row    | Set the number of paragraph lines                                           | number | `1`       |
+| title  | Show paragraph titles                                        | boolean | `false`   |
 
 
 ## Theming
@@ -155,4 +154,4 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-skeleton-content-line-title-background-color | `  #efefef` |
+| --nutui-skeleton-content-line-title-background-color | `#efefef` |

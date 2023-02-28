@@ -8,7 +8,6 @@
 ```ts
 // react
 import { Picker } from '@nutui/nutui-react';
-
 ```
 
 
@@ -308,10 +307,10 @@ export default App;
 
 | 字段 | 說明 | 類型 | 默認值
 |----- | ----- | ----- | ----- 
-| isVisible | 是否可見 | Boolean | false
-| title | 設置標題 | String | null
-| listData | 列錶數據 | Array | []
-| defaultValueData | 默認選中 | Array | []
+| isVisible | 是否可見 | boolean | `false`
+| title | 設置標題 | string | -
+| listData | 列錶數據 | Array | `[]`
+| defaultValueData | 默認選中 | Array | `[]`
 
 ## Events
 
@@ -331,19 +330,19 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-picker-cancel-color | ` #808080` |
-| --nutui-picker-ok-color | ` $primary-color` |
-| --nutui-picker-bar-cancel-font-size | `  14px` |
-| --nutui-picker-bar-ok-font-size | ` 14px` |
-| --nutui-picker-bar-button-padding | `  0 15px` |
-| --nutui-picker-bar-title-font-size | `  16px` |
-| --nutui-picker-bar-title-color | `  $title-color` |
-| --nutui-picker-bar-title-font-weight | `  normal` |
-| --nutui-picker-list-height`v1.4.9` | ` 252px` |
-| --nutui-picker-item-height | ` 36px` |
-| --nutui-picker-item-text-color | `  $title-color` |
-| --nutui-picker-item-active-text-color | `  inherit` |
-| --nutui-picker-item-text-font-size | `  14px` |
-| --nutui-picker-item-active-line-border | `  1px solid #d8d8d8` |
-| --nutui-picker-columns-item-color | `  $title-color` |
-| --nutui-picker-mask-bg-img`v1.4.9` | `  linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |
+| --nutui-picker-cancel-color | `#808080` |
+| --nutui-picker-ok-color | `$primary-color` |
+| --nutui-picker-bar-cancel-font-size | `14px` |
+| --nutui-picker-bar-ok-font-size | `14px` |
+| --nutui-picker-bar-button-padding | `0 15px` |
+| --nutui-picker-bar-title-font-size | `16px` |
+| --nutui-picker-bar-title-color | `$title-color` |
+| --nutui-picker-bar-title-font-weight | `normal` |
+| --nutui-picker-list-height`v1.4.9` | `252px` |
+| --nutui-picker-item-height | `36px` |
+| --nutui-picker-item-text-color | `$title-color` |
+| --nutui-picker-item-active-text-color | `inherit` |
+| --nutui-picker-item-text-font-size | `14px` |
+| --nutui-picker-item-active-line-border | `1px solid #d8d8d8` |
+| --nutui-picker-columns-item-color | `$title-color` |
+| --nutui-picker-mask-bg-img`v1.4.9` | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |
