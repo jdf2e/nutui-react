@@ -1,10 +1,14 @@
+@import '../avatar/avatar.scss';
+
 .nut-skeleton {
   display: inline-block;
   position: relative;
   overflow: hidden;
   vertical-align: middle;
+
   .nut-skeleton-content {
     display: flex;
+
     .avatarClass {
       margin-right: 20px;
       background: rgb(239, 239, 239);
@@ -16,6 +20,7 @@
       height: 100%;
       background: rgb(239, 239, 239);
       margin-top: 10px;
+
       &:last-child {
         width: 70% !important;
       }
@@ -28,6 +33,7 @@
     .skeleton-content-line {
       display: flex;
       flex-direction: column;
+
       .skeleton-title {
         width: 30%;
         height: 15px;
@@ -52,10 +58,12 @@
     background-repeat: no-repeat;
     animation: backpos 2s ease-in-out 0s infinite;
   }
+
   @keyframes backpos {
     0% {
       background-position-x: -500px;
     }
+
     to {
       background-position-x: calc(500px + 100%);
     }

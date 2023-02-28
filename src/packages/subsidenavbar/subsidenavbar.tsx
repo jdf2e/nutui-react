@@ -6,7 +6,6 @@ import React, {
   MouseEventHandler,
   useContext,
 } from 'react'
-// import { SubNavBarProps } from '../sidenavbar/type'
 import { handleClick } from '../sidenavbar/utils'
 import { OffsetContext } from '../sidenavbar/offsetContext'
 
