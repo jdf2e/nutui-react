@@ -425,21 +425,21 @@ export default App;
 
 | Attribute                   | Description                                                        | Type           | Default      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| direction	             | 	Show direction，`horizontal`,`vertical`  | String        | 'horizontal'  | 
-| current	               | 	Current step           | Number        | 0      |
-| progressDot            |  Dot step bar     | Boolean | false         |
+| direction	             | 	Show direction，`horizontal`,`vertical`  | `string`        | 'horizontal'  | 
+| current	               | 	Current step           | `number`        | 0      |
+| progressDot            |  Dot step bar     | `boolean` | false         |
 
 
 
 #### Step
 
-| Attribute           | Description                   | Type     | Default      |
-| ---------------- | ---------------------- | ------------ | ----------- |
-| title            | Title of the process step         | String | '' |
-| content          | Descriptive text of process steps (supporting HTML structure)       | String | '' |
-| icon          | Icon       | String | '' |
-| size          | Icon size       | String | '' |
-| activeIndex          | Index of process steps       | Number | 0 |
+| Attribute           | Description                   | Type            | Default      |
+| ---------------- | ---------------------- |-----------------| ----------- |
+| title            | Title of the process step         | `string`        | '' |
+| content          | Descriptive text of process steps (supporting HTML structure)       | `string`        | '' |
+| icon          | Icon       | `ReactNode`         | '' |
+| size          | Icon size       | `string`        | '' |
+| activeIndex          | Index of process steps       | `number`        | 0 |
 | renderContent         | The html structure of the descriptive text of the process steps      | React.ReactNode | - |
 
 ## Theming

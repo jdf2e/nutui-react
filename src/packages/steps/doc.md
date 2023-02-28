@@ -438,13 +438,15 @@ export default App;
 
 #### Step
 
-| 参数           | 说明                   | 类型     | 默认值      |
-| ---------------- | ---------------------- | ------------ | ----------- |
-| title            | 流程步骤的标题         | `string` | '' |
-| content          | 流程步骤的描述性文字       | `string` | '' |
-| icon          | 图标(来自Icon组件的name属性)       | `string` | '' |
-| activeIndex          | 流程步骤的索引       | `number` | 0 |
-| renderContent         | 流程步骤的描述性文字的html结构      | `React.ReactNode` | - |
+| 参数           | 说明                | 类型                | 默认值 |
+| ---------------- |-------------------|-------------------|-----|
+| title            | 流程步骤的标题           | `string`          | ''  |
+| content          | 流程步骤的描述性文字        | `string`          | ''  |
+| icon          | 图标(来自Icon组件的name属性)       | `ReactNode`       | ''  |
+| iconColor          | 图标颜色       | `string`          | -   |
+| size          | 图标尺寸大小(来自Icon组件的size属性)       | `string`              | ''  |
+| activeIndex          | 流程步骤的索引           | `number`          | 0   |
+| renderContent         | 流程步骤的描述性文字的html结构 | `React.ReactNode` | -   |
 
 ## 主题定制
 

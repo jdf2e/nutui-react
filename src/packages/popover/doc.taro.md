@@ -58,15 +58,16 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState, useRef  } from "react";
-import { Popover,Button,Icon } from '@nutui/nutui-react-taro';
+import { Popover,Button } from '@nutui/nutui-react-taro';
+import { My2, Cart2, Location2 } from '@nutui/icons-react-taro'
 
 const App = () => {
   const [showIcon, setShowIcon] = useState(false)
   const [disableAction, setDisableAction] = useState(false)
   const iconItemList= [
-    {name: 'option1',icon: 'my2'},
-    {name: 'option2',icon: 'cart2'},
-    {name: 'option3',icon: 'location2'}
+    {name: 'option1',icon: <My2/>},
+    {name: 'option2',icon: <Cart2/>},
+    {name: 'option3',icon: <Location2/>}
   ];
   const itemListDisabled=[
     {name: 'option1',disabled: true},
@@ -100,57 +101,63 @@ export default App;
 ### 自定义内容
 
 :::demo
+
 ```tsx
-import  React, { useState, useRef  } from "react";
-import { Popover,Button, Icon } from '@nutui/nutui-react-taro';
+import React, { useState, useRef } from "react";
+import { Popover, Button } from '@nutui/nutui-react-taro';
+import { Service, Notice, Location, Category, Scan2, Message} from "@nutui/icons-react-taro";
 
 const App = () => {
   const [customized, setCustomized] = useState(false)
-  const selfContent= [
+  const selfContent = [
     {
-      name: 'service',
+      name: <Service size={15}/>,
       desc: 'option1'
     },
     {
-      name: 'notice',
+      name: <Notice  size={15}/>,
       desc: 'option2'
     },
     {
-      name: 'location',
+      name: <Location size={15}/>,
       desc: 'option3'
     },
     {
-      name: 'category',
+      name: <Category size={15}/>,
       desc: 'option4'
     },
     {
-      name: 'scan2',
+      name: <Scan2 size={15}/>,
       desc: 'option5'
     },
     {
-      name: 'message',
+      name: <Message size={15}/>,
       desc: 'option6'
     }
   ];
 
   return (
     <>
-      <Popover 
-        visible={customized} 
-        onClick={()=>{customized ? setCustomized(false) : setCustomized(true)}}>
+      <Popover
+        visible={customized}
+        onClick={() => {
+          customized ? setCustomized(false) : setCustomized(true)
+        }}>
         <Button type="primary" shape="square">自定义内容</Button>
         {
-          customized ? 
-          <div className="self-content" style={selfContentStyle}>
-          {
-            selfContent.map((item: any)=>{
-              return <div className="self-content-item" style={selfContentItem} key={item.name}>
-                <Icon name={item.name} size="15" />
-                <div className="self-content-desc" style={selfContentDesc}>{ item.desc }</div>
-              </div>
-            })
-          }
-        </div> : ''
+          customized ?
+            <div className="self-content" style={selfContentStyle}>
+              {
+                selfContent.map((item: any) => {
+                  return <div className="self-content-item"
+                              style={selfContentItem} key={item.name}>
+                    {item.name}
+                    <div className="self-content-desc"
+                         style={selfContentDesc}>{item.desc}</div>
+                  </div>
+                })
+              }
+        </div> : null
         }
       </Popover>
     </>

@@ -6,7 +6,6 @@ import React, {
   useState,
 } from 'react'
 import { ButtonProps as MiniProgramButtonProps } from '@tarojs/components'
-// import Icon from '@/packages/icon/index.taro'
 import { Loading } from '@nutui/icons-react-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 

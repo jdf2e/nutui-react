@@ -13,7 +13,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface InputNumberProps extends BasicComponent {
   disabled: boolean
-  iconSize: string | number
+  buttonSize: string | number
   min: string | number
   max: string | number
   inputWidth: string | number
@@ -38,7 +38,7 @@ export interface InputNumberProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   disabled: false,
-  iconSize: '',
+  buttonSize: '',
   min: 1,
   max: 9999,
   inputWidth: '',
@@ -59,7 +59,7 @@ export const InputNumber: FunctionComponent<
   const {
     children,
     disabled,
-    iconSize,
+    buttonSize,
     min,
     max,
     inputWidth,
@@ -95,7 +95,7 @@ export const InputNumber: FunctionComponent<
     b('')
   )
   const styles = {
-    height: pxCheck(iconSize),
+    height: pxCheck(buttonSize),
     ...style,
   }
   const addAllow = (value = inputValue) => {
@@ -198,8 +198,8 @@ export const InputNumber: FunctionComponent<
         <Minus
           className={iconMinusClasses}
           onClick={(e: any) => reduceNumber(e)}
-          width={iconSize}
-          height={iconSize}
+          width={buttonSize}
+          height={buttonSize}
         />
       </div>
       <input
@@ -218,8 +218,8 @@ export const InputNumber: FunctionComponent<
         <Plus
           className={iconAddClasses}
           onClick={(e: any) => addNumber(e)}
-          width={iconSize}
-          height={iconSize}
+          width={buttonSize}
+          height={buttonSize}
         />
       </div>
     </div>

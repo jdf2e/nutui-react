@@ -126,7 +126,7 @@ test('should render decimal when step props to be 0.2', () => {
 
 test('should render size when buttonSize and inputWidth props setted', () => {
   const { container } = render(
-    <InputNumber iconSize="30px" inputWidth="120px" modelValue={2} />
+    <InputNumber buttonSize="30px" inputWidth="120px" modelValue={2} />
   )
   const iconPlus = container.querySelectorAll('.nut-icon-plus')[0]
   const input = container.querySelectorAll('input')[0]

@@ -427,21 +427,22 @@ export default App;
 
 | 參數                   | 說明                                                        | 類型           | 默認值      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| direction	             | 	顯示方向，`horizontal`,`vertical`  | String        | 'horizontal'  | 
-| current	               | 	當前所在的步驟           | Number        | 0      |
-| progressDot            |  點狀步驟條     | Boolean | false         |
+| direction	             | 	顯示方向，`horizontal`,`vertical`  | `string`        | 'horizontal'  | 
+| current	               | 	當前所在的步驟           | `number`        | 0      |
+| progressDot            |  點狀步驟條     | `boolean` | false         |
 
 
 
 #### Step
 
-| 參數           | 說明                   | 類型     | 默認值      |
-| ---------------- | ---------------------- | ------------ | ----------- |
-| title            | 流程步驟的標題         | String | '' |
-| content          | 流程步驟的描述性文字       | String | '' |
-| icon          | 圖標       | String | '' |
-| size          | 圖標尺寸大小       | String | '' |
-| activeIndex          | 流程步驟的索引       | Number | 0 |
+| 參數           | 說明                   | 類型              | 默認值      |
+| ---------------- | ---------------------- |-----------------| ----------- |
+| title            | 流程步驟的標題         | `string`        | '' |
+| content          | 流程步驟的描述性文字       | `string`        | '' |
+| icon          | 圖標       | `ReactNode`           | '' |
+| size          | 圖標尺寸大小       | `string`        | '' |
+| iconColor          | 图标颜色       | `string`        | -   |
+| activeIndex          | 流程步驟的索引       | `number`        | 0 |
 | renderContent         | 流程步驟的描述性文字的html結構      | React.ReactNode | - |
 
 ## 主題定制

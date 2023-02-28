@@ -10,13 +10,13 @@ import React, {
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
+import { Close } from '@nutui/icons-react-taro'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import { ITouchEvent } from '@tarojs/components'
 import {
   OverlayProps,
   defaultOverlayProps,
 } from '@/packages/overlay/overlay.taro'
-import Icon from '@/packages/icon/index.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import bem from '@/utils/bem'
 import { ComponentDefaults, BasicComponent } from '@/utils/typings'
@@ -30,7 +30,7 @@ export interface PopupProps extends OverlayProps, BasicComponent {
   popClass: string
   closeable: boolean
   closeIconPosition: string
-  closeIcon: string
+  closeIcon: React.ReactNode
   closeIconSize?: string | number
   destroyOnClose: boolean
   teleport: Teleport
@@ -52,7 +52,7 @@ const defaultProps = {
   popClass: '',
   closeable: false,
   closeIconPosition: 'top-right',
-  closeIcon: 'close',
+  closeIcon: '',
   closeIconSize: '12px',
   destroyOnClose: true,
   teleport: null,
@@ -209,7 +209,19 @@ export const Popup: FunctionComponent<
 
     return node
   }
-
+  const renderIcon = () => {
+    if (React.isValidElement(closeable)) {
+      return closeable
+    }
+    if (closeable === true) {
+      return (
+        <div className={closeClasses} onClick={onHandleClickCloseIcon}>
+          <Close width={closeIconSize} height={closeIconSize} />
+        </div>
+      )
+    }
+    return null
+  }
   const renderPop = () => {
     return (
       <CSSTransition
@@ -222,18 +234,7 @@ export const Popup: FunctionComponent<
       >
         <div style={popStyles} className={classes} onClick={onHandleClick}>
           {showChildren ? children : ''}
-          {closeable ? (
-            <div className={closeClasses} onClick={onHandleClickCloseIcon}>
-              <Icon
-                classPrefix={iconClassPrefix}
-                fontClassName={iconFontClassName}
-                name={closeIcon}
-                size={closeIconSize}
-              />
-            </div>
-          ) : (
-            ''
-          )}
+          {renderIcon()}
         </div>
       </CSSTransition>
     )

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
+import { Dongdong, Ask2 } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Input, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface Idata {
   val1: string
@@ -227,8 +228,8 @@ const InputDemo = () => {
           label={translated.text}
           placeholder={translated.icon}
           defaultValue={state.showIcon}
-          leftIcon="dongdong"
-          rightIcon="ask2"
+          leftIcon={<Dongdong />}
+          rightIcon={<Ask2 />}
         />
         <Input
           label={translated.text}
@@ -329,8 +330,8 @@ const InputDemo = () => {
           label={translated.click}
           placeholder={translated.click}
           defaultValue={state.event}
-          leftIcon="dongdong"
-          rightIcon="ask2"
+          leftIcon={<Dongdong />}
+          rightIcon={<Ask2 />}
           clearable
           onChange={change}
           onFocus={focus}

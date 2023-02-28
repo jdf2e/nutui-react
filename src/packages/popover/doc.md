@@ -59,15 +59,16 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState, useRef  } from "react";
-import { Popover,Button,Icon } from '@nutui/nutui-react';
+import { Popover,Button } from '@nutui/nutui-react';
+import { My2, Cart2, Location2 } from '@nutui/icons-react'
 
 const App = () => {
   const [showIcon, setShowIcon] = useState(false)
   const [disableAction, setDisableAction] = useState(false)
   const iconItemList= [
-    {name: 'option1',icon: 'my2'},
-    {name: 'option2',icon: 'cart2'},
-    {name: 'option3',icon: 'location2'}
+    {name: 'option1',icon: <My2/>},
+    {name: 'option2',icon: <Cart2/>},
+    {name: 'option3',icon: <Location2/>}
   ];
   const itemListDisabled=[
     {name: 'option1',disabled: true},
@@ -103,33 +104,34 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState, useRef  } from "react";
-import { Popover,Button, Icon } from '@nutui/nutui-react';
+import { Popover,Button } from '@nutui/nutui-react';
+import { Service, Notice, Location, Category, Scan2, Message} from "@nutui/icons-react";
 
 const App = () => {
   const [customized, setCustomized] = useState(false)
   const selfContent= [
     {
-      name: 'service',
+      name: <Service size={15}/>,
       desc: 'option1'
     },
     {
-      name: 'notice',
+      name: <Notice  size={15}/>,
       desc: 'option2'
     },
     {
-      name: 'location',
+      name: <Location size={15}/>,
       desc: 'option3'
     },
     {
-      name: 'category',
+      name: <Category size={15}/>,
       desc: 'option4'
     },
     {
-      name: 'scan2',
+      name: <Scan2 size={15}/>,
       desc: 'option5'
     },
     {
-      name: 'message',
+      name: <Message size={15}/>,
       desc: 'option6'
     }
   ];
@@ -146,12 +148,12 @@ const App = () => {
           {
             selfContent.map((item: any)=>{
               return <div className="self-content-item" style={selfContentItem} key={item.name}>
-                <Icon name={item.name} size="15" />
+                    {item.name}
                 <div className="self-content-desc" style={selfContentDesc}>{ item.desc }</div>
               </div>
             })
           }
-        </div> : ''
+        </div> : null
         }
       </Popover>
     </>
@@ -232,11 +234,11 @@ export default App;
 
 List 属性是一个由对象构成的数组，数组中的每个对象配置一列，对象可以包含以下值：
 
-| 键名            | 说明                 | 类型      | 默认值  |
-|----------------|----------------------|----------|--------|
-| name           | 选项文字               | string   | -      |
-| icon           | nut-icon 图标名称      | string   | -      |
-| disabled       | 是否为禁用状态          | boolean  | false  | 
+| 键名            | 说明         | 类型      | 默认值  |
+|----------------|------------|---------|--------|
+| name           | 选项文字       | string  | -      |
+| icon           | 参考 Icon 组件 | ReactNode    | -      |
+| disabled       | 是否为禁用状态    | boolean | false  | 
 
 ### Events
 

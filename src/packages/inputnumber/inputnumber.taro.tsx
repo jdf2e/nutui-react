@@ -5,8 +5,8 @@ import React, {
   ChangeEvent,
   FocusEvent,
 } from 'react'
+import { Minus, Plus } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
-import Icon from '@/packages/icon/index.taro'
 import bem from '@/utils/bem'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -24,15 +24,6 @@ export interface InputNumberProps extends BasicComponent {
   isAsync: boolean
   className: string
   style: React.CSSProperties
-  add: (e: MouseEvent) => void
-  reduce: (e: MouseEvent) => void
-  overlimit: (e: MouseEvent) => void
-  blur: (e: ChangeEvent<HTMLInputElement>) => void
-  focus: (e: FocusEvent<HTMLInputElement>) => void
-  change: (
-    param: string | number,
-    e: MouseEvent | ChangeEvent<HTMLInputElement>
-  ) => void
   onAdd: (e: MouseEvent) => void
   onReduce: (e: MouseEvent) => void
   onOverlimit: (e: MouseEvent) => void
@@ -77,20 +68,12 @@ export const InputNumber: FunctionComponent<
     isAsync,
     className,
     style,
-    add,
-    reduce,
-    change,
-    overlimit,
-    blur,
-    focus,
     onAdd,
     onReduce,
     onOverlimit,
     onBlurFuc,
     onFocus,
     onChangeFuc,
-    iconClassPrefix,
-    iconFontClassName,
     ...restProps
   } = {
     ...defaultProps,
@@ -139,7 +122,6 @@ export const InputNumber: FunctionComponent<
   ) => {
     const outputValue: number | string = fixedDecimalPlaces(value)
     onChangeFuc && onChangeFuc(outputValue, e)
-    change && change(outputValue, e)
     if (!isAsync) {
       setInputValue(outputValue)
     }
@@ -147,31 +129,26 @@ export const InputNumber: FunctionComponent<
 
   const reduceNumber = (e: MouseEvent) => {
     onReduce && onReduce(e)
-    reduce && reduce(e)
     if (reduceAllow()) {
       const outputValue = Number(inputValue) - Number(step)
       emitChange(outputValue, e)
     } else {
       onOverlimit && onOverlimit(e)
-      overlimit && overlimit(e)
     }
   }
 
   const addNumber = (e: MouseEvent) => {
     onAdd && onAdd(e)
-    add && add(e)
     if (addAllow()) {
       const outputValue = Number(inputValue) + Number(step)
       emitChange(outputValue, e)
     } else {
       onOverlimit && onOverlimit(e)
-      overlimit && overlimit(e)
     }
   }
 
   const changeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target as HTMLInputElement
-    change && change(input.value, e)
     onChangeFuc && onChangeFuc(input.value, e)
     if (!isAsync) {
       setInputValue(input.value)
@@ -182,7 +159,6 @@ export const InputNumber: FunctionComponent<
     if (disabled) return
     if (readonly) return
     onFocus && onFocus(e)
-    focus && focus(e)
   }
 
   const burValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -197,14 +173,11 @@ export const InputNumber: FunctionComponent<
     }
     emitChange(value, e)
     onBlurFuc && onBlurFuc(e)
-    blur && blur(e)
   }
   return (
     <div className={classes} style={styles} {...restProps}>
       <div className="nut-input-minus">
-        <Icon
-          classPrefix={iconClassPrefix}
-          fontClassName={iconFontClassName}
+        <Minus
           className={iconMinusClasses}
           size={buttonSize}
           name="minus"
@@ -225,12 +198,10 @@ export const InputNumber: FunctionComponent<
         onFocus={focusValue}
       />
       <div className="nut-input-add">
-        <Icon
-          classPrefix={iconClassPrefix}
-          fontClassName={iconFontClassName}
+        <Plus
           className={iconAddClasses}
-          size={buttonSize}
-          name="plus"
+          width={buttonSize}
+          height={buttonSize}
           onClick={addNumber}
         />
       </div>

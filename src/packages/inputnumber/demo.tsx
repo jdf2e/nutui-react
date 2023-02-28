@@ -177,7 +177,7 @@ const InputNumberDemo = () => {
         <Cell>
           <InputNumber
             modelValue={inputState.val8}
-            iconSize="25px"
+            buttonSize="25px"
             inputWidth="150px"
           />
         </Cell>

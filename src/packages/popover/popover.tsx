@@ -7,8 +7,7 @@ import React, {
 } from 'react'
 import Trigger from './Trigger'
 import Overlay from '@/packages/overlay'
-import { getRect } from '../../utils/useClientRect'
-
+import { getRect } from '@/utils/useClientRect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type PopoverTheme = 'light' | 'dark'

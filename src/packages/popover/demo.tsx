@@ -1,5 +1,15 @@
 import React, { useRef, useState } from 'react'
-import { My2, Cart2, Location2 } from '@nutui/icons-react'
+import {
+  My2,
+  Cart2,
+  Location2,
+  Service,
+  Notice,
+  Category,
+  Scan2,
+  Location,
+  Message,
+} from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Popover } from './popover'
 import Button from '@/packages/button'
@@ -113,27 +123,27 @@ const BadgeDemo = () => {
   ]
   const selfContent = [
     {
-      name: 'service',
+      name: <Service />,
       desc: 'option1',
     },
     {
-      name: 'notice',
+      name: <Notice />,
       desc: 'option2',
     },
     {
-      name: 'location',
+      name: <Location />,
       desc: 'option3',
     },
     {
-      name: 'category',
+      name: <Category />,
       desc: 'option4',
     },
     {
-      name: 'scan2',
+      name: <Scan2 />,
       desc: 'option5',
     },
     {
-      name: 'message',
+      name: <Message />,
       desc: 'option6',
     },
   ]

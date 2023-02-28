@@ -12,6 +12,7 @@ import Button from '@/packages/button/index.taro'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { Service } from '@nutui/icons-react'
 
 const b = bem('audio')
 const warn = console.warn
@@ -178,20 +179,7 @@ export const Audio: FunctionComponent<
             }`}
             onClick={handleStatusChange}
           >
-            {playing ? (
-              <Icon
-                classPrefix={iconClassPrefix}
-                fontClassName={iconFontClassName}
-                name="service"
-                className="nut-icon-loading"
-              />
-            ) : (
-              <Icon
-                classPrefix={iconClassPrefix}
-                fontClassName={iconFontClassName}
-                name="service"
-              />
-            )}
+            <Service className={playing ? 'nut-icon-loading' : ''} />
           </div>
         </div>
       </>

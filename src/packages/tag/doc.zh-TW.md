@@ -189,16 +189,16 @@ export default App;
 
 ### Props
 
-| 字段       | 說明                                             | 類型    | 默認值    |
-|------------|--------------------------------------------------|---------|-----------|
-| type       | 標籤类型，可选值为primary success danger warning | String  | `default` |
-| color      | 標籤颜色                                         | String  | -         |
-| textColor | 文本顏色，優先級高於color屬性                    | String  | `white`   |
-| plain      | 是否為空心樣式                                   | Boolean | `false`   |
-| round      | 是否為圓角樣式                                   | Boolean | `false`   |
-| mark       | 是否為標記樣式                                   | Boolean | `false`   |
-| closeable  | 是否为可关闭標籤                                 | Boolean | `false`   |
-| iconSize`v1.4.7` | 关闭标签的尺寸 | string | number | ` 12px`|
+| 字段       | 說明                                             | 類型         | 默認值       |
+|------------|--------------------------------------------------|------------|-----------|
+| type       | 標籤类型，可选值为primary success danger warning | `string`   | `default` |
+| color      | 標籤颜色                                         | `string`   | -         |
+| textColor | 文本顏色，優先級高於color屬性                    | `string`   | `white`   |
+| plain      | 是否為空心樣式                                   | `boolean`  | `false`   |
+| round      | 是否為圓角樣式                                   | `boolean`  | `false`   |
+| mark       | 是否為標記樣式                                   | `boolean`  | `false`   |
+| closeable  | 是否为可关闭標籤                                 | `boolean\| ReactNode`     | `false`   |
+| iconSize`v1.4.7` | 关闭标签的尺寸 | `string \  | number`   | ` 12px`|
 
 ### Event
 

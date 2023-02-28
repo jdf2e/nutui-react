@@ -7,9 +7,8 @@ import React, {
 } from 'react'
 import { ITouchEvent } from '@tarojs/components'
 import Trigger from './Trigger'
-import Icon from '@/packages/icon/index.taro'
 import Overlay from '@/packages/overlay/index.taro'
-import { getRectByTaro } from '../../utils/useClientRect'
+import { getRectByTaro } from '@/utils/useClientRect'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -31,7 +30,7 @@ export type PopoverLocation =
 
 export interface List {
   name: string
-  icon?: string
+  icon?: React.ReactNode
   disabled?: boolean
 }
 
@@ -165,7 +164,6 @@ export const Popover: FunctionComponent<
                 {Array.isArray(children) ? children[1] : ''}
 
                 <div>
-                  {' '}
                   {list.map((item: List, i: number) => {
                     return (
                       <div
@@ -177,16 +175,7 @@ export const Popover: FunctionComponent<
                           handleChoose(item, i)
                         }}
                       >
-                        {item.icon ? (
-                          <Icon
-                            classPrefix={iconClassPrefix}
-                            fontClassName={iconFontClassName}
-                            className="popover-menu-item-img"
-                            name={item.icon}
-                          />
-                        ) : (
-                          ''
-                        )}
+                        {item.icon ? item.icon : null}
                         <div className="popover-menu-item-name">
                           {item.name}
                         </div>
@@ -206,9 +195,7 @@ export const Popover: FunctionComponent<
           onClick={(e) => handleClick(e)}
           style={{ background: 'transparent' }}
         />
-      ) : (
-        ''
-      )}
+      ) : null}
     </>
   )
 }

@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
+import { Location2, People, Service } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import {
   Button,
@@ -8,7 +10,6 @@ import {
 } from '@/packages/nutui.react.taro'
 import '@/packages/steps/demo.scss'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface T {
   '74fc5d8a': string
@@ -284,13 +285,21 @@ const StepsDemo = () => {
         <h2>{translated['70ffa5d8']}</h2>
         <div className="steps-wrapper">
           <Steps current={1}>
-            <Step activeIndex={1} title={translated.f28461bb} icon="service">
+            <Step
+              activeIndex={1}
+              title={translated.f28461bb}
+              icon={<Service />}
+            >
               1
             </Step>
-            <Step activeIndex={2} title={translated.dc9591e5} icon="people">
+            <Step activeIndex={2} title={translated.dc9591e5} icon={<People />}>
               2
             </Step>
-            <Step activeIndex={3} title={translated.f6e0d691} icon="location2">
+            <Step
+              activeIndex={3}
+              title={translated.f6e0d691}
+              icon={<Location2 />}
+            >
               3
             </Step>
           </Steps>

@@ -151,14 +151,14 @@ export default App;
 
 | parameter         | illustrate                             | type   | Defaults           |
 |--------------|----------------------------------|--------|------------------|
-| className       | Classification               | String | ''              |
+| className       | Classification               | string | ''              |
 | style       | CSS Properties              | CSSProperties | {}           |
-| url         | Voice resource link               | String | ''              |
-| muted        | Whether it is mute                         | Boolean | false             |
-| autoplay         | Whether to play automatically | Boolean | false               |
-| loop | Whether to circulate     | Boolean | false |
-| preload          | Whether the pronunciation is pre -loaded: 'None', 'Metadata', 'Auto', ''  | String | 'auto'              |
-| type         | Display form, optional value：controls、panel、progress、icon、none  | String | 'progress'              |
+| url         | Voice resource link               | string | ''              |
+| muted        | Whether it is mute                         | boolean | false             |
+| autoplay         | Whether to play automatically | boolean | false               |
+| loop | Whether to circulate     | boolean | false |
+| preload          | Whether the pronunciation is pre -loaded: 'None', 'Metadata', 'Auto', ''  | string | 'auto'              |
+| type         | Display form, optional value：controls、panel、progress、icon、none  | string | 'progress'              |
 
 
 ### Events

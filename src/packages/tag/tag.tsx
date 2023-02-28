@@ -72,6 +72,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     round,
     mark,
     closeable,
+    iconSize,
     prefixCls,
     onClick,
     onClose,

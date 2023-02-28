@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from 'react'
+import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
 import { DataContext } from '@/packages/steps/UserContext'
 import bem from '@/utils/bem'
@@ -9,7 +9,9 @@ export interface StepProps extends BasicComponent {
   title: string
   content: string
   activeIndex: number
-  icon: React.ReactNode
+  icon: ReactNode
+  iconColor: string
+  size: string
   className: string
   style: React.CSSProperties
   renderContent: () => React.ReactNode
@@ -21,6 +23,8 @@ const defaultProps = {
   content: '',
   activeIndex: 0,
   icon: '',
+  iconColor: '',
+  size: '12px',
 } as StepProps
 export const Step: FunctionComponent<
   Partial<StepProps> & React.HTMLAttributes<HTMLDivElement>
@@ -31,6 +35,8 @@ export const Step: FunctionComponent<
     content,
     activeIndex,
     icon,
+    iconColor,
+    size,
     className,
     renderContent,
     ...restProps
@@ -75,7 +81,7 @@ export const Step: FunctionComponent<
         <div className="nut-step-line" />
         <div className={renderIconClass()}>
           {React.isValidElement(icon)
-            ? icon
+            ? React.cloneElement<any>(icon, { size, color: iconColor })
             : !dot && <span className="nut-step-inner">{activeIndex}</span>}
         </div>
       </div>
