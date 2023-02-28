@@ -9,7 +9,6 @@ Separate content into multiple areas.
 ```ts
 // react
 import { Divider } from '@nutui/nutui-react';
-
 ```
 ### code demo
 ### Basic Usage
@@ -154,11 +153,11 @@ export default App;
 
 | Attribute            | Description                       | Type    | Default |
 | --------------- | ----------------------------- | ------- | ------ |
-| dashed          | Whether to use dashed border                  | Boolean | false  |
-| hairline        | Whether to use hairline             | Boolean | true   |
-| contentPosition | Content position, can be set to left or right   | String  | center |
-| styles          | Modify custom styles                | CSS     | -      |
-| direction           | The direction of divider, can be set to horizontal or vertical            | String     | 'horizontal'      |
+| dashed          | Whether to use dashed border                  | boolean | `false`  |
+| hairline        | Whether to use hairline             | boolean | `true`   |
+| contentPosition | Content position, can be set to left or right   | string  | `center` |
+| styles          | Modify custom styles                | CSSProperties     | -      |
+| direction           | The direction of divider, can be set to horizontal or vertical            | string     | `horizontal`      |
 
 ### Slots
 
@@ -175,13 +174,13 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-divider-margin | ` 16px 0` |
-| --nutui-divider-text-font-size | `  $font-size-2` |
-| --nutui-divider-text-color | ` $gray1` |
-| --nutui-divider-line-height | ` 2px` |
-| --nutui-divider-before-margin-right | `  16px` |
-| --nutui-divider-after-margin-left | `  16px` |
-| --nutui-divider-vertical-height | ` 12px` |
-| --nutui-divider-vertical-top | ` 2px` |
-| --nutui-divider-vertical-border-left | `  rgba(0, 0, 0, 0.06)` |
-| --nutui-divider-vertical-margin | ` 0 8px` |
+| --nutui-divider-margin | `16px 0` |
+| --nutui-divider-text-font-size | `$font-size-2` |
+| --nutui-divider-text-color | `$gray1` |
+| --nutui-divider-line-height | `2px` |
+| --nutui-divider-before-margin-right | `16px` |
+| --nutui-divider-after-margin-left | `16px` |
+| --nutui-divider-vertical-height | `12px` |
+| --nutui-divider-vertical-top | `2px` |
+| --nutui-divider-vertical-border-left | `rgba(0, 0, 0, 0.06)` |
+| --nutui-divider-vertical-margin | `0 8px` |

@@ -8,7 +8,7 @@ exports[`should match snapshot 1`] = `
     to=""
   >
     <div
-      class="nut-sticky undefined"
+      class="nut-sticky"
     >
       <div
         class="nut-sticky-box"

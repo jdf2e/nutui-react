@@ -346,7 +346,68 @@ $icon-line-height: var(--nutui-icon-line-height, 20px) !default;
 
 $uploader-picture-width: var(--nutui-uploader-picture-width, 100px) !default;
 $uploader-picture-height: var(--nutui-uploader-picture-height, 100px) !default;
+$uploader-picture-border: var(--nutui-uploader-picture-border, 0px) !default;
+$uploader-picture-border-radius: var(
+  --nutui-uploader-picture-border-radius,
+  2px
+) !default;
 $uploader-background: var(--nutui-uploader-background, $gray4) !default;
+$uploader-background-disabled: var(
+  --nutui-uploader-background-disabled,
+  $gray4
+) !default;
+$uploader-picture-icon-opacity: var(
+  --nutui-uploader-picture-icon-opacity,
+  0.7
+) !default;
+$uploader-picture-icon-opacity-disabled: var(
+  --nutui-uploader-picture-icon-opacity-disabled,
+  0.3
+) !default;
+$uploader-picture-icon-margin-bottom: var(
+  --nutui-uploader-picture-icon-margin-bottom,
+  6px
+) !default;
+$uploader-picture-icon-tip-font-size: var(
+  --nutui-uploader-picture-icon-tip-font-size,
+  12px
+) !default;
+$uploader-picture-icon-tip-color: var(
+  --nutui-uploader-picture-icon-tip-color,
+  #bfbfbf
+) !default;
+$uploader-preview-progress-background: var(
+  --nutui-uploader-preview-progress-background,
+  rgba(0, 0, 0, 0.65)
+) !default;
+$uploader-preview-margin-right: var(
+  --nutui-uploader-preview-margin-right,
+  10px
+) !default;
+$uploader-preview-margin-bottom: var(
+  --nutui-uploader-preview-margin-bottom,
+  10px
+) !default;
+$uploader-preview-tips-height: var(
+  --nutui-uploader-preview-tips-height,
+  24px
+) !default;
+$uploader-preview-tips-background: var(
+  --nutui-uploader-preview-tips-background,
+  rgba(0, 0, 0, 0.45)
+) !default;
+$uploader-preview-tips-padding: var(
+  --nutui-uploader-preview-tips-padding,
+  0 5px
+) !default;
+$uploader-preview-close-right: var(
+  --nutui-uploader-preview-close-right,
+  0px
+) !default;
+$uploader-preview-close-top: var(
+  --nutui-uploader-preview-close-top,
+  0px
+) !default;
 
 // picker（✅）（todo:react版本picker组件dom元素类名变化较大，picker.scss暂不改动）
 $picker-cancel-color: var(--nutui-picker-cancel-color, #808080) !default;

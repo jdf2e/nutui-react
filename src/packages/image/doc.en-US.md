@@ -9,7 +9,6 @@ Enhanced img tag with multiple image fill modes, support for loading hint, loadi
 ``` javascript
 // react
 import { Image } from '@nutui/nutui-react';
-
 ```
 
 ## Code
@@ -220,19 +219,19 @@ export default App;
 
 | Attribute         | Description                             | Type   | Default          |
 |--------------|----------------------------------|--------|------------------|
-| src         | Src               | String | -                |
-| fit         | Fit mode, same as object-fit    | ImageFit | 'fill'                |
-| position    | Position, same as object-position  | ImagePosition | 'center'              |
-| alt         | Alt               | String | -                |
-| width         | Width，Default unit px                   | String | -                |
-| height         | Height，Default unit px                | String | -                |
-| round         | Whether to be round               | Boolean | false              |
-| radius         | Border Raduis                | String \| Numer | -                |
-| showError         | Whether to show error placeholder| Boolean | true              |
-| showLoading         | Whether to show loading placeholder               | Boolean | true              |
-| isLazy `v1.4.6`  |  Whether to show image lazyload               | Boolean | false              |
-| loadingImg `v1.4.6`    | Set the prompt image during loading, which conflicts with `slotLoding` and has a higher priority than `slotLoding`     | String | -              |
-| errorImg   `v1.4.6`    | Set the error prompt image, which conflicts with `slotError` and has a higher priority than `slotError`         | String | -              |
+| src         | Src               | string | -                |
+| fit         | Fit mode, same as object-fit    | ImageFit | `fill`                |
+| position    | Position, same as object-position  | ImagePosition | `center`              |
+| alt         | Alt               | string | -                |
+| width         | Width，Default unit px                   | string | -                |
+| height         | Height，Default unit px                | string | -                |
+| round         | Whether to be round               | boolean | `false`              |
+| radius         | Border Raduis                | string \| number | -                |
+| showError         | Whether to show error placeholder| boolean | `true`              |
+| showLoading         | Whether to show loading placeholder               | boolean | `true`              |
+| isLazy `v1.4.6`  |  Whether to show image lazyload               | boolean | `false`              |
+| loadingImg `v1.4.6`    | Set the prompt image during loading, which conflicts with `slotLoding` and has a higher priority than `slotLoding`     | string | -              |
+| errorImg   `v1.4.6`    | Set the error prompt image, which conflicts with `slotError` and has a higher priority than `slotError`         | string | -              |
 
 ### ImageFit 
 
@@ -265,7 +264,7 @@ export default App;
 
 | Event | Description           | Arguments     |
 |--------|----------------|--------------|
-| onClick  | Emitted when image is clicked | event: Event |
+| onClick  | Emitted when image is clicked | `event: Event` |
 | onLoad  | Emitted when image loaded | - |
 | onError  | Emitted when image load failed | event: Event |
 

@@ -9,7 +9,6 @@
 ```js
 // react
 import { Card, Price, Tag } from '@nutui/nutui-react';
-
 ```
 
 ## 代码演示
@@ -269,17 +268,17 @@ const App = () => {
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| imgUrl   | 左侧图片Url                                 | String  | -         |
-| title     | 标题                   | String  | -    |
-| price | 商品价格                         | String  | -      |
-| vipPrice     | 会员价格                               | String | -    |
-| shopDesc  | 店铺介绍                                  | String | -    |
-| delivery     | 配送方式 | String  | -      |
-| shopName   | 店铺名称| String  | -      |
-| prolistTpl   | 自定义商品介绍| React.ReactNode  | -      |
-| originTpl   | 价格后方自定义内容| React.ReactNode  | -      |
-| shopTagTpl   | 店铺介绍自定义| React.ReactNode  | -      |
-| footerTpl   | 右下角内容自定义| React.ReactNode  | -      |
+| imgUrl   | 左侧图片Url                                 | string  | -         |
+| title     | 标题                   | string  | -    |
+| price | 商品价格                         | string  | -      |
+| vipPrice     | 会员价格                               | string | -    |
+| shopDesc  | 店铺介绍                                  | string | -    |
+| delivery     | 配送方式 | string  | -      |
+| shopName   | 店铺名称| string  | -      |
+| prolistTpl   | 自定义商品介绍| ReactNode  | -      |
+| originTpl   | 价格后方自定义内容| ReactNode  | -      |
+| shopTagTpl   | 店铺介绍自定义| ReactNode  | -      |
+| footerTpl   | 右下角内容自定义| ReactNode  | -      |
 
 
 
@@ -293,9 +292,9 @@ const App = () => {
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-card-font-size-0 | ` $font-size-0` |
-| --nutui-card-font-size-1 | ` $font-size-1` |
-| --nutui-card-font-size-2 | ` $font-size-2` |
-| --nutui-card-font-size-3 | ` $font-size-3` |
-| --nutui-card-left-border-radius | ` 0` |
-| --nutui-card-left-background-color | `  inherit` |
+| --nutui-card-font-size-0 | `$font-size-0` |
+| --nutui-card-font-size-1 | `$font-size-1` |
+| --nutui-card-font-size-2 | `$font-size-2` |
+| --nutui-card-font-size-3 | `$font-size-3` |
+| --nutui-card-left-border-radius | `0` |
+| --nutui-card-left-background-color | `inherit` |

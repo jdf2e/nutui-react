@@ -9,7 +9,6 @@
 ``` javascript
 // react
 import { Menu, MenuItem } from '@nutui/nutui-react';
-
 ```
 
 ## 代码演示
@@ -273,24 +272,24 @@ export default App
 
 | 参数                  | 说明                           | 类型                    | 默认值  |
 |---------------------|--------------------------------|-------------------------|---------|
-| activeColor         | 选项的选中态图标颜色           | String                  | #F2270C |
-| closeOnClickOverlay | 是否在点击遮罩层后关闭菜单     | Boolean                 | true    |
-| lockScroll          | 背景是否锁定                   | Boolean                 | true    |
-| scrollFixed         | 滚动后是否固定，可设置固定位置                   | Boolean、String、Number                 | true    |
-| titleIcon           | 自定义标题图标                 | String                  | -       |
+| activeColor         | 选项的选中态图标颜色           | string                  | `#F2270C` |
+| closeOnClickOverlay | 是否在点击遮罩层后关闭菜单     | boolean                 | `true`    |
+| lockScroll          | 背景是否锁定                   | boolean                 | `true`    |
+| scrollFixed         | 滚动后是否固定，可设置固定位置                   | boolean \| string \| number                 | `true`    |
+| titleIcon           | 自定义标题图标                 | string                  | -       |
 
 ### MenuItem Props
 
 | 参数                          | 说明                                    | 类型    | 默认值           |
 |-------------------------------|-----------------------------------------|---------|------------------|
-| title                         | 菜单项标题                              | String  | 当前选中项文字   |
+| title                         | 菜单项标题                              | string  | 当前选中项文字   |
 | options                       | 选项数组                                | Array   | -                |
-| disabled                      | 是否禁用菜单                            | Boolean | false            |
-| columns                          | 可以设置一行展示多少列 options          | Number  | 1                |
-| optionsIcon          | 自定义选项图标                          | String  | 'Check'          |
-| direction            | 菜单展开方向，可选值为up                | String  | 'down'           |
-| activeClassName    | 选项选中时自定义标题样式类              | String  | -                |
-| inactiveClassName  | 选项非选中时自定义标题样式类            | String  | -                |
+| disabled                      | 是否禁用菜单                            | boolean | `false`            |
+| columns                          | 可以设置一行展示多少列 options          | number  | `1`                |
+| optionsIcon          | 自定义选项图标                          | string  | `Check`          |
+| direction            | 菜单展开方向，可选值为up                | string  | `down`           |
+| activeClassName    | 选项选中时自定义标题样式类              | string  | -                |
+| inactiveClassName  | 选项非选中时自定义标题样式类            | string  | -                |
 | fontClassName       | 自定义icon 字体基础类名                 | string  | `nutui-iconfont` |
 | iconClassPrefix          | 自定义icon 类名前缀，用于使用自定义图标 | string  | `nut-icon`       |
 
@@ -304,7 +303,7 @@ export default App
 
 | 事件名 | 说明                 | 回调参数     |
 |-----|----------------------|--------------|
-| toggle   | 切换菜单展示状态，传 true 为显示，false 为隐藏，不传参为取反 | show?: boolean |
+| toggle   | 切换菜单展示状态，传 true 为显示，false 为隐藏，不传参为取反 | `show?: boolean` |
 
 ## 主题定制
 
@@ -314,22 +313,22 @@ export default App
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-menu-bar-line-height | ` 48px` |
-| --nutui-menu-item-font-size | ` $font-size-2` |
-| --nutui-menu-item-text-color | ` $title-color` |
-| --nutui-menu-item-active-text-color | `  $primary-color` |
-| --nutui-menu-bar-border-bottom-color | `  #eaf0fb` |
-| --nutui-menu-bar-opened-z-index | ` 2001` |
-| --nutui-menu-item-disabled-color | `  #969799` |
-| --nutui-menu-title-text-padding-left | `  8px` |
-| --nutui-menu-title-text-padding-right | `  8px` |
-| --nutui-menu-item-content-padding | `  12px 24px` |
-| --nutui-menu-item-content-max-height | `  214px` |
-| --nutui-menu-item-option-padding-top | `  12px` |
-| --nutui-menu-item-option-padding-bottom | `  12px` |
-| --nutui-menu-item-option-i-margin-right | `  6px` |
-| --nutui-menu-bar-box-shadow | `  0 2px 12px rgba(89, 89, 89, 0.12)` |
-| --nutui-menu-scroll-fixed-top | ` 0` |
-| --nutui-menu-scroll-fixed-z-index | `  $mask-z-index` |
-| --nutui-menu-active-item-font-weight | `  500` |
-| --nutui-menu-item-content-bg-color | `  $gray6` |
+| --nutui-menu-bar-line-height | `48px` |
+| --nutui-menu-item-font-size | `$font-size-2` |
+| --nutui-menu-item-text-color | `$title-color` |
+| --nutui-menu-item-active-text-color | `$primary-color` |
+| --nutui-menu-bar-border-bottom-color | `#eaf0fb` |
+| --nutui-menu-bar-opened-z-index | `2001` |
+| --nutui-menu-item-disabled-color | `#969799` |
+| --nutui-menu-title-text-padding-left | `8px` |
+| --nutui-menu-title-text-padding-right | `8px` |
+| --nutui-menu-item-content-padding | `12px 24px` |
+| --nutui-menu-item-content-max-height | `214px` |
+| --nutui-menu-item-option-padding-top | `12px` |
+| --nutui-menu-item-option-padding-bottom | `12px` |
+| --nutui-menu-item-option-i-margin-right | `6px` |
+| --nutui-menu-bar-box-shadow | `0 2px 12px rgba(89, 89, 89, 0.12)` |
+| --nutui-menu-scroll-fixed-top | `0` |
+| --nutui-menu-scroll-fixed-z-index | `$mask-z-index` |
+| --nutui-menu-active-item-font-weight | `500` |
+| --nutui-menu-item-content-bg-color | `$gray6` |

@@ -135,25 +135,25 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| visible      | 组件是否显示                       | boolean | false           |
-| title        | 整体标题                           | String  | -               |
-| width        | 遮罩宽度百分比                      | String   | '80%'          |
-| position     | 弹出位置                           | 'left'、'right' | 'left'  |
-| offset       | 缩进宽度                           | number  | 20              |
+| visible      | 组件是否显示                       | boolean | `false`           |
+| title        | 整体标题                           | string  | -               |
+| width        | 遮罩宽度百分比                      | string   | `80%`          |
+| position     | 弹出位置                           | 'left' \| 'right' | `left`  |
+| offset       | 缩进宽度                           | number  | `20`              |
 
 ### 2、SubSideNavBar
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| ikey         | 导航唯一标识                       | String、Number |          |
-| title        | 整体标题                           | String  | -              |
-| open         | 导航是否默认展开                     | Boolean  | true         |
+| ikey         | 导航唯一标识                       | string \| number |          |
+| title        | 整体标题                           | string  | -              |
+| open         | 导航是否默认展开                     | boolean  | `true`         |
 ### 3、SideNavBarItem
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| ikey         | 导航唯一标识                       | String、Number |          |
-| title        | 整体标题                           | String  | -               |
+| ikey         | 导航唯一标识                       | string \| number |          |
+| title        | 整体标题                           | string  | -               |
 
 ## Events
 ### 1、SideNavBar Events
@@ -166,13 +166,13 @@ export default App;
 
 | 事件名           | 说明                                                             | 回调参数     |
 |---------------|----------------------------------------------------------------|--------------|
-| onClick`v1.3.8` | 导航点击,对象形式返回点击{ title,ikey,isShow}, titleClick 事件从 1.3.8 之后改为 onClick | -           |
+| onClick`v1.3.8` | 导航点击, titleClick 事件从 1.3.8 之后改为 onClick | `data: {title: string, ikey: string \| number, isShow: boolean}`           |
 
 ### 3、SideNavBarItem Events
 
 | 事件名    | 说明                                                  | 回调参数     |
 |--------|-----------------------------------------------------|--------------|
-| onClick | 导航点击,对象形式返回点击{ title,ikey} , click 事件从 1.3.8 之后改为 onClick | -           |
+| onClick | 导航点击, click 事件从 1.3.8 之后改为 onClick | `data: {title: string, ikey: string \| number}`           |
 
 
 ## 主题定制
@@ -183,17 +183,17 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-sidenavbar-content-bg-color | `  $white` |
-| --nutui-sidenavbar-sub-title-border-color | `  #f6f6f6` |
-| --nutui-sidenavbar-sub-title-bg-color | `  #f6f6f6` |
-| --nutui-sidenavbar-sub-title-font-size | `  $font-size-large` |
-| --nutui-sidenavbar-sub-title-radius | `  0` |
-| --nutui-sidenavbar-sub-title-border | `  0` |
-| --nutui-sidenavbar-sub-title-height | `  40px` |
-| --nutui-sidenavbar-sub-title-text-line-height | `  40px` |
-| --nutui-sidenavbar-sub-title-text-color | `  $title-color` |
-| --nutui-sidenavbar-item-title-color | `  #333` |
-| --nutui-sidenavbar-item-title-bg-color | `  $white` |
-| --nutui-sidenavbar-item-height | ` 40px` |
-| --nutui-sidenavbar-item-line-height | `  40px` |
-| --nutui-sidenavbar-item-font-size | `  16px` |
+| --nutui-sidenavbar-content-bg-color | `$white` |
+| --nutui-sidenavbar-sub-title-border-color | `#f6f6f6` |
+| --nutui-sidenavbar-sub-title-bg-color | `#f6f6f6` |
+| --nutui-sidenavbar-sub-title-font-size | `$font-size-large` |
+| --nutui-sidenavbar-sub-title-radius | `0` |
+| --nutui-sidenavbar-sub-title-border | `0` |
+| --nutui-sidenavbar-sub-title-height | `40px` |
+| --nutui-sidenavbar-sub-title-text-line-height | `40px` |
+| --nutui-sidenavbar-sub-title-text-color | `$title-color` |
+| --nutui-sidenavbar-item-title-color | `#333` |
+| --nutui-sidenavbar-item-title-bg-color | `$white` |
+| --nutui-sidenavbar-item-height | `40px` |
+| --nutui-sidenavbar-item-line-height | `40px` |
+| --nutui-sidenavbar-item-font-size | `16px` |

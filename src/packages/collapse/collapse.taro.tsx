@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState, memo } from 'react'
+import classNames from 'classnames'
 
 import bem from '@/utils/bem'
 
@@ -97,7 +98,7 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo(
       onChange && onChange(!isOpen, name)
     }
     return (
-      <div className={`${colBem()} ${className}`} style={style}>
+      <div className={classNames(colBem(), className)} style={style}>
         {childrenDom.map((item: any) => {
           return React.cloneElement(item, {
             isOpen: defaultOpenIndex.includes(item.props.name),

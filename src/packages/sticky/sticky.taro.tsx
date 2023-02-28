@@ -7,17 +7,19 @@ import React, {
   useCallback,
   useEffect,
 } from 'react'
-import { BasicComponent } from '@/utils/typings'
-import useWatch from '@/utils/useWatch'
-import { getRectByTaro } from '@/utils/useClientRect'
+import classNames from 'classnames'
 import {
   PageScrollObject,
   usePageScroll,
   getSystemInfoSync,
   getEnv,
 } from '@tarojs/taro'
-
+import { BasicComponent } from '@/utils/typings'
+import useWatch from '@/utils/useWatch'
+import { getRectByTaro } from '@/utils/useClientRect'
 import { getScrollParent } from '@/utils/get-scroll-parent'
+import bem from '@/utils/bem'
+
 export interface StickyProps extends BasicComponent {
   container?: React.RefObject<HTMLElement>
   position?: 'top' | 'bottom'
@@ -56,6 +58,8 @@ const defaultProps = {
   zIndex: 2000,
 } as StickyProps
 
+const b = bem('sticky')
+
 export const Sticky: FunctionComponent<StickyProps> = (props) => {
   const {
     position = 'top',
@@ -74,7 +78,7 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
   const offset = position === 'top' ? top : bottom
   const [rootRect, setRootRect] = useState<Partial<StickyRect>>({})
   const [fixed, setFixed] = useState(false)
-  const [transform, setTransform] = useState(0) //相对容器偏移距离
+  const [transform, setTransform] = useState(0) // 相对容器偏移距离
 
   useWatch(fixed, () => {
     onChange && onChange(fixed)
@@ -161,11 +165,12 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
     <div
       ref={rootRef}
       style={rootStyle}
-      className={`nut-sticky ${className}`}
+      className={classNames(b(), className)}
       {...rest}
     >
       <div
-        className={`nut-sticky-box ${fixed ? 'nut-sticky-fixed' : ''}`}
+        // 应符合 bem 规范
+        className={classNames('nut-sticky-box', { 'nut-sticky-fixed': fixed })}
         ref={stickyRef}
         style={stickyStyle}
       >

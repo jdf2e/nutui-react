@@ -7,7 +7,7 @@
 ### 安装
 
 ```javascript
-import { Grid ,GridItem } from '@nutui/nutui-react-taro'
+import { Grid, GridItem } from '@nutui/nutui-react-taro'
 ```
 
 ## 代码演示
@@ -253,7 +253,7 @@ export default App
 
 | 参数                  | 说明                                                                                     | 回调参数    |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|
-| onClick `1.3.14`                 | 点击格子时触发                                                                         | event: Event      |
+| onClick `1.3.14`                 | 点击格子时触发                                                                         | `event: Event`      |
 
 
 ## 主题定制
