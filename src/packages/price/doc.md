@@ -9,7 +9,6 @@
 ```javascript
 // react
 import { Price } from '@nutui/nutui-react'
-
 ```
 
 ## 代码演示
@@ -183,13 +182,13 @@ export default App;
 
 | 参数           | 说明                     | 类型    | 默认值 |
 | -------------- | ------------------------ | ------- | ------ |
-| price          | 价格数量                 | Number  | 0      |
-| needSymbol    | 是否需要加上 symbol 符号 | Boolean | true   |
-| symbol         | 符号类型                 | String  | &yen;  |
-| decimalDigits | 小数位位数               | Number  | 2      |
-| thousands      | 是否按照千分号形式显示   | Boolean | false  |
-| position`v1.3.9`   | 符号显示在价格前或者后，`before`、`after`  | String           | before |
-| size `v1.3.9`   | 价格尺寸，`large`、`normal`、`small`     | String           | large |
+| price          | 价格数量                 | number  | `0`      |
+| needSymbol    | 是否需要加上 symbol 符号 | boolean | `true`   |
+| symbol         | 符号类型                 | string  | `&yen;`  |
+| decimalDigits | 小数位位数               | number  | `2`      |
+| thousands      | 是否按照千分号形式显示   | boolean | `false`  |
+| position`v1.3.9`   | 符号显示在价格前或者后，`before`、`after`  | string           | `before` |
+| size `v1.3.9`   | 价格尺寸，`large`、`normal`、`small`     | string           | `large` |
 
 
 ## 主题定制
@@ -200,12 +199,12 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-price-symbol-big-size | ` 18px` |
-| --nutui-price-integer-big-size | ` 24px` |
-| --nutui-price-decimal-big-size | ` 18px` |
-| --nutui-price-symbol-medium-size | ` 14px` |
-| --nutui-price-integer-medium-size | `  16px` |
-| --nutui-price-decimal-medium-size | `  14px` |
-| --nutui-price-symbol-small-size | ` 10px` |
-| --nutui-price-integer-small-size | ` 12px` |
-| --nutui-price-decimal-small-size | ` 10px` |
+| --nutui-price-symbol-big-size | `18px` |
+| --nutui-price-integer-big-size | `24px` |
+| --nutui-price-decimal-big-size | `18px` |
+| --nutui-price-symbol-medium-size | `14px` |
+| --nutui-price-integer-medium-size | `16px` |
+| --nutui-price-decimal-medium-size | `14px` |
+| --nutui-price-symbol-small-size | `10px` |
+| --nutui-price-integer-small-size | `12px` |
+| --nutui-price-decimal-small-size | `10px` |
