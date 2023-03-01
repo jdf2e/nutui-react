@@ -1,6 +1,6 @@
 import React, { useState, FunctionComponent } from 'react'
-import { AnimateType, AnimateAction } from './type'
 import classNames from 'classnames'
+import { AnimateType, AnimateAction } from './type'
 import bem from '@/utils/bem'
 
 export interface AnimateProps {
@@ -31,13 +31,13 @@ export const Animate: FunctionComponent<
   const classes = classNames({
     'nut-ani-container': true,
     [`${b('')}-${type}`]: action === 'initial' || clicked ? type : false,
-    loop: loop,
+    loop,
   })
   const cls = classNames(classes, className)
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     setClicked(true)
-    //如果不是无限循环，清除类名
+    // 如果不是无限循环，清除类名
     if (!loop) {
       setTimeout(() => {
         setClicked(false)

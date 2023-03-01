@@ -9,7 +9,6 @@
 ```ts
 // react
 import { Steps } from '@nutui/nutui-react';
-
 ```
 
 ### 基本用法
@@ -427,9 +426,9 @@ export default App;
 
 | 參數                   | 說明                                                        | 類型           | 默認值      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| direction	             | 	顯示方向，`horizontal`,`vertical`  | String        | 'horizontal'  | 
-| current	               | 	當前所在的步驟           | Number        | 0      |
-| progressDot            |  點狀步驟條     | Boolean | false         |
+| direction	             | 	顯示方向，`horizontal`,`vertical`  | string        | `horizontal`  | 
+| current	               | 	當前所在的步驟           | number        | `0`      |
+| progressDot            |  點狀步驟條     | boolean | `false`         |
 
 
 
@@ -437,12 +436,12 @@ export default App;
 
 | 參數           | 說明                   | 類型     | 默認值      |
 | ---------------- | ---------------------- | ------------ | ----------- |
-| title            | 流程步驟的標題         | String | '' |
-| content          | 流程步驟的描述性文字       | String | '' |
-| icon          | 圖標       | String | '' |
-| size          | 圖標尺寸大小       | String | '' |
-| activeIndex          | 流程步驟的索引       | Number | 0 |
-| renderContent         | 流程步驟的描述性文字的html結構      | React.ReactNode | - |
+| title            | 流程步驟的標題         | string | - |
+| content          | 流程步驟的描述性文字       | string | - |
+| icon          | 圖標       | string | - |
+| size          | 圖標尺寸大小       | string | - |
+| activeIndex          | 流程步驟的索引       | number | `0` |
+| renderContent         | 流程步驟的描述性文字的html結構      | ReactNode | - |
 
 ## 主題定制
 
@@ -452,45 +451,41 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-steps-base-icon-width | ` 25px` |
-| --nutui-steps-base-icon-height | ` 25px` |
-| --nutui-steps-base-icon-line-height | `  25px` |
-| --nutui-steps-base-icon-margin-bottom`v1.4.8` | ` 12px`|
-| --nutui-steps-base-icon-font-size | `  13px` |
-| --nutui-steps-base-line-width`v1.4.8` | ` 100%`|
-| --nutui-steps-base-line-color`废弃 v1.4.8` | ` #909ca4` |
-| --nutui-steps-base-line-background`v1.4.8` | ` #909ca4`|
-| --nutui-steps-base-title-font-size | `  14px` |
-| --nutui-steps-base-title-color | `  $title-color` |
-| --nutui-steps-base-title-margin-bottom | `  10px` |
-| --nutui-steps-base-content-font-size | `  14px` |
-| --nutui-steps-base-content-color | `  $title-color2` |
-
-| --nutui-steps-wait-icon-bg-color | `  #959fb1` |
-| --nutui-steps-wait-icon-color | ` $white` |
-| --nutui-steps-wait-head-color | ` #909ca4` |
-| --nutui-steps-wait-head-border-color | `  #909ca4` |
-| --nutui-steps-wait-title-color`v1.4.8` | `  $title-color2` |
-| --nutui-steps-wait-content-color | `  $title-color2` |
-
-| --nutui-steps-process-icon-bg-color`v1.4.8` | `  $primary-color` |
-| --nutui-steps-process-icon-color`v1.4.8` | ` $white` |
-| --nutui-steps-process-head-color | ` $primary-color` |
-| --nutui-steps-process-head-border-color | ` $primary-color` |
-| --nutui-steps-process-title-color | `  $primary-color` |
-| --nutui-steps-process-title-font-size`v1.4.8` | ` 14px`|
-| --nutui-steps-process-title-font-weight`v1.4.8` | ` 400`|
-| --nutui-steps-process-content-color`v1.4.8` | `  $primary-color` |
-
-| --nutui-steps-finish-icon-bg-color`v1.4.8` | `  $primary-text-color` |
-| --nutui-steps-finish-icon-color`v1.4.8` | ` $primary-color` |
-| --nutui-steps-finish-head-color | ` $primary-color` |
-| --nutui-steps-finish-head-border-color | ` $primary-color` |
-| --nutui-steps-finish-title-color | `  $primary-color` |
-| --nutui-steps-finish-content-color`v1.4.8` | `  $title-color2` |
-| --nutui-steps-finish-line-background | `  $primary-color` |
-
-| --nutui-steps-dot-icon-width`v1.4.8` | `  6px` |
-| --nutui-steps-dot-icon-height`v1.4.8` | `  6px` |
-| --nutui-steps-dot-icon-border`v1.4.8` | `  2px solid $primary-text-color` |
+| --nutui-steps-base-icon-width | `25px` |
+| --nutui-steps-base-icon-height | `25px` |
+| --nutui-steps-base-icon-line-height | `25px` |
+| --nutui-steps-base-icon-margin-bottom`v1.4.8` | `12px`|
+| --nutui-steps-base-icon-font-size | `13px` |
+| --nutui-steps-base-line-width`v1.4.8` | `100%`|
+| --nutui-steps-base-line-color`废弃 v1.4.8` | `#909ca4` |
+| --nutui-steps-base-line-background`v1.4.8` | `#909ca4`|
+| --nutui-steps-base-title-font-size | `14px` |
+| --nutui-steps-base-title-color | `$title-color` |
+| --nutui-steps-base-title-margin-bottom | `10px` |
+| --nutui-steps-base-content-font-size | `14px` |
+| --nutui-steps-base-content-color | `$title-color2` |
+| --nutui-steps-wait-icon-bg-color | `#959fb1` |
+| --nutui-steps-wait-icon-color | `$white` |
+| --nutui-steps-wait-head-color | `#909ca4` |
+| --nutui-steps-wait-head-border-color | `#909ca4` |
+| --nutui-steps-wait-title-color`v1.4.8` | `$title-color2` |
+| --nutui-steps-wait-content-color | `$title-color2` |
+| --nutui-steps-process-icon-bg-color`v1.4.8` | `$primary-color` |
+| --nutui-steps-process-icon-color`v1.4.8` | `$white` |
+| --nutui-steps-process-head-color | `$primary-color` |
+| --nutui-steps-process-head-border-color | `$primary-color` |
+| --nutui-steps-process-title-color | `$primary-color` |
+| --nutui-steps-process-title-font-size`v1.4.8` | `14px`|
+| --nutui-steps-process-title-font-weight`v1.4.8` | `400`|
+| --nutui-steps-process-content-color`v1.4.8` | `$primary-color` |
+| --nutui-steps-finish-icon-bg-color`v1.4.8` | `$primary-text-color` |
+| --nutui-steps-finish-icon-color`v1.4.8` | `$primary-color` |
+| --nutui-steps-finish-head-color | `$primary-color` |
+| --nutui-steps-finish-head-border-color | `$primary-color` |
+| --nutui-steps-finish-title-color | `$primary-color` |
+| --nutui-steps-finish-content-color`v1.4.8` | `$title-color2` |
+| --nutui-steps-finish-line-background | `$primary-color` |
+| --nutui-steps-dot-icon-width`v1.4.8` | `6px` |
+| --nutui-steps-dot-icon-height`v1.4.8` | `6px` |
+| --nutui-steps-dot-icon-border`v1.4.8` | `2px solid $primary-text-color` |
 

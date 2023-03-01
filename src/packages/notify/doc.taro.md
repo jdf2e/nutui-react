@@ -6,7 +6,6 @@
 
 ### 安装
 ```javascript
-
 import { Notify } from '@nutui/nutui-react-taro';
 ```
 
@@ -219,14 +218,14 @@ export default App
     
 | 字段       | 说明                                                  | 类型          | 默认值   |
 |------------|-------------------------------------------------------|---------------|----------|
-| visible       | 消息框是否展示 | Boolean        | false |
-| type       | 提示的信息类型（primary，success  ，danger，warning） | String        | 'danger' |
-| msg    | 展示文案，支持通过\n换行                              | Boolean       | false    |
-| duration   | 展示时长(ms)，值为 0 时，notify 不会消失              | String        | 3000     |
-| color      | 字体颜色                                              | String        | 空       |
-| background | 背景颜色                                              | String        | 空       |
-| className | 自定义类名                                            | String/Number | 1        |
-| position `v1.3.0` | 自定义位置 (top, bottom)                | String | 'top'        |
+| visible       | 消息框是否展示 | boolean        | `false` |
+| type       | 提示的信息类型（primary，success  ，danger，warning） | string        | `danger` |
+| msg    | 展示文案，支持通过\n换行                              | boolean       | `false`    |
+| duration   | 展示时长(ms)，值为 0 时，notify 不会消失              | string        | `3000`     |
+| color      | 字体颜色                                              | string        | -       |
+| background | 背景颜色                                              | string        | -       |
+| className | 自定义类名                                            | string \| number | `1`        |
+| position `v1.3.0` | 自定义位置 (top, bottom)                | string | `top`        |
 
 ### Events
 
@@ -244,9 +243,9 @@ export default App
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-notify-text-color | ` $white` |
-| --nutui-notify-padding | ` 12px 0` |
-| --nutui-notify-font-size | ` 14px` |
-| --nutui-notify-height | ` 44px` |
-| --nutui-notify-line-height | ` auto` |
-| --nutui-notify-danger-background-color | `  rgba(250, 50, 25, 1)` |
+| --nutui-notify-text-color | `$white` |
+| --nutui-notify-padding | `12px 0` |
+| --nutui-notify-font-size | `14px` |
+| --nutui-notify-height | `44px` |
+| --nutui-notify-line-height | `auto` |
+| --nutui-notify-danger-background-color | `rgba(250, 50, 25, 1)` |

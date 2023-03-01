@@ -1,6 +1,6 @@
 import React, { useState, useEffect, FunctionComponent } from 'react'
-import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames'
+import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 
 export interface WaterMarkProps {
@@ -143,7 +143,7 @@ export const WaterMark: FunctionComponent<
         backgroundImage: `url('${base64Url}')`,
         ...style,
       }}
-    ></div>
+    />
   )
 }
 

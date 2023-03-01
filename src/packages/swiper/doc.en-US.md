@@ -8,8 +8,7 @@ Often used in a group of pictures or card rotation.
 
 ```javascript
 // react
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
-
+import { Swiper, SwiperItem } from '@nutui/nutui-react';
 ```
 
 ### Basic Usage
@@ -469,21 +468,21 @@ export default App;
 
 | Attribute                   | Description          | Type           | Default      |
 | ----------------- | -------------------------------------- | ------------------------- | ----------------- |
-| width             | Width of rotation car                         | Number \| String          | window.innerWidth |
-| height            | Height of rotation card                         | String \| Number          | 0                 |
-| direction         | Rotation direction, optional value：`horizontal`,`vertical` | String                    | 'horizontal'      |
-| paginationVisible | Whether the pagination indicator is displayed                     | Boolean                   | false             |
-| paginationColor   | Pagination indicator selected color                   | String                    | '#fff'            |
-| paginationBgColor`v1.4.1` | Pagination indicator backgroundcolor | String | '#ddd'            |
-| loop              | Whether to rotate                             | Boolean                   | true              |
-| duration          | Animation duration（Unit ms                 | Number \| String          | 500               |
-| autoPlay          | Automatic rotation duration, 0 means no automatic        | Number \| String          | 0                 |
-| initPage          | Initialize index value                          | Number \| String          | 0                 |
-| touchable         | Is it possible to touch swipe                         | Boolean                   | true              |
-| pageContent       | Custom indicator                           | String \| React.ReactNode | -                 |
-| isPreventDefault  | Whether to disable default events during swipe             | Boolean                   | true              |
-| isStopPropagation | Whether to prohibit bubbling during sliding                 | Boolean                   | true              |
-| isCenter | Whether to display in the center, the corresponding `width` and `height` must be passed                 | Boolean                   | false              |
+| width             | Width of rotation car                         | number \| string          | `window.innerWidth` |
+| height            | Height of rotation card                         | string \| number          | `0`                 |
+| direction         | Rotation direction, optional value：`horizontal`,`vertical` | string                    | `horizontal`      |
+| paginationVisible | Whether the pagination indicator is displayed                     | boolean                   | `false`             |
+| paginationColor   | Pagination indicator selected color                   | string                    | `#fff`            |
+| paginationBgColor`v1.4.1` | Pagination indicator backgroundcolor | string | `#ddd`            |
+| loop              | Whether to rotate                             | boolean                   | `true`              |
+| duration          | Animation duration（Unit ms                 | number \| string          | `500`               |
+| autoPlay          | Automatic rotation duration, 0 means no automatic        | number \| string          | `0`                 |
+| initPage          | Initialize index value                          | number \| string          | `0`                 |
+| touchable         | Is it possible to touch swipe                         | boolean                   | `true`              |
+| pageContent       | Custom indicator                           | string \| ReactNode | -                 |
+| isPreventDefault  | Whether to disable default events during swipe             | boolean                   | `true`              |
+| isStopPropagation | Whether to prohibit bubbling during sliding                 | boolean                   | `true`              |
+| isCenter | Whether to display in the center, the corresponding `width` and `height` must be passed                 | boolean                   | `false`              |
 
 
 
@@ -501,7 +500,7 @@ export default App;
 | ------ | -------------- | ------------ |
 | prev   | Switch to previous page   | -            |
 | next   | Switch to next page    | -            |
-| to     | Switch to the specified rotation | index:number |
+| to     | Switch to the specified rotation | `index: number` |
 | resize`1.4.7`     | This method can be called to trigger redraw when the size of the outer element or the display state of the component changes | - |
 
 ## Theming
@@ -512,9 +511,9 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-swiper-pagination-bottom | ` 12px`|
-| --nutui-swiper-pagination-item-background-color | `  #ddd` |
-| --nutui-swiper-pagination-item-width | `  8px` |
-| --nutui-swiper-pagination-item-height | `  3px` |
-| --nutui-swiper-pagination-item-margin-right | `  7px` |
-| --nutui-swiper-pagination-item-border-radius | `  2px` |
+| --nutui-swiper-pagination-bottom | `12px`|
+| --nutui-swiper-pagination-item-background-color | `#ddd` |
+| --nutui-swiper-pagination-item-width | `8px` |
+| --nutui-swiper-pagination-item-height | `3px` |
+| --nutui-swiper-pagination-item-margin-right | `7px` |
+| --nutui-swiper-pagination-item-border-radius | `2px` |

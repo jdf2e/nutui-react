@@ -8,7 +8,6 @@ Short password input box, which can be used to enter passwords, SMS verification
 ```ts
 // react
 import { ShortPassword } from '@nutui/nutui-react';
-
 ```
 
 
@@ -182,16 +181,16 @@ export default App;
 
 | Attribute      | Description                                      | Type   | Default |
 |--------------|----------------------------------|--------|------------------|
-| modelValue         | Current value                | String｜Number | -                |
-| visible        | Whether to show shortpassword                         | Boolean | false              |
-| title                  | title                | String         | Please input a password                   |
-| desc                   | desc          | String         | Verify |
-| tips                   | tips              | String         | Forget password                     |
-| closeOnClickOverlay | Click to close the mask      | Boolean        | true                         |
-| noButton              | whether to hide the bottom button    | Boolean        | true                         |
-| length                 | ShortPassword lenght The value is 4~6 | String｜Number | 6                            |
-| errorMsg              | Error message         | String         | ''                           |
-| autoFocus              | Be focused when ShortPassword is displayed | Boolean         | false                           |
+| modelValue         | Current value                | string \| number | -                |
+| visible        | Whether to show shortpassword                         | boolean | `false`              |
+| title                  | title                | string         | `Please input a password`                   |
+| desc                   | desc          | string         | `Verify` |
+| tips                   | tips              | string         | `Forget password`                     |
+| closeOnClickOverlay | Click to close the mask      | boolean        | `true`                         |
+| noButton              | whether to hide the bottom button    | boolean        | `true`                         |
+| length                 | ShortPassword lenght The value is 4~6 | string \| number | `6`                            |
+| errorMsg              | Error message         | string         | -                           |
+| autoFocus              | Be focused when ShortPassword is displayed | boolean         | `false`                           |
 
 ### Events
 
@@ -213,7 +212,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-shortpassword-background-color | `  rgba(245, 245, 245, 1)` |
-| --nutui-shortpassword-border-color | `  #ddd` |
-| --nutui-shortpassword-error | ` $primary-color` |
-| --nutui-shortpassword-forget | `  rgba(128, 128, 128, 1)` |
+| --nutui-shortpassword-background-color | `rgba(245, 245, 245, 1)` |
+| --nutui-shortpassword-border-color | `#ddd` |
+| --nutui-shortpassword-error | `$primary-color` |
+| --nutui-shortpassword-forget | `rgba(128, 128, 128, 1)` |

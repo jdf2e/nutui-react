@@ -9,7 +9,6 @@
 ```js
 // react
 import { Ellipsis } from '@nutui/nutui-react';
-
 ```
 
 
@@ -131,13 +130,13 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| content         | 文本内容               | String | -                |
-| direction         | 省略位置               | 'start' | 'end' | 'middle' | 'end'               |
-| rows         | 展示几行               | Number | 1              |
-| expandText         | 展开操作的文案               | String | ''              |
-| collapseText         | 收起操作的文案               | String | ''               |
-| symbol         | 省略的符号     | String | '...'       |
-| lineHeight          | 容器的行高     | String、Number | 20       |
+| content         | 文本内容               | string | -                |
+| direction         | 省略位置               | 'start' \| 'end' \| 'middle' | `end`               |
+| rows         | 展示几行               | number | `1`              |
+| expandText         | 展开操作的文案               | string | -              |
+| collapseText         | 收起操作的文案               | string | -               |
+| symbol         | 省略的符号     | string | `...`       |
+| lineHeight          | 容器的行高     | string \| number | `20`       |
 
 ### Events
 
@@ -155,4 +154,4 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-ellipsis-expand-collapse-color | `  #3460fa` |
+| --nutui-ellipsis-expand-collapse-color | `#3460fa` |

@@ -364,55 +364,55 @@ export default App;
 
 | 字段| 说明| 类型| 默认值|
 |-------------------|--------------|------------------|------------------|
-| autoUpload| 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传| Boolean  | true|
-| name   | `input` 标签 `name` 的名称，发到后台的文件参数名| String  | "file"|
-| url| 上传服务器的接口地址    | String  | - |
-| defaultFileList| 默认已经上传的文件列表    | FileItem[]  | [] |
-| isPreview        | 是否上传成功后展示预览图| Boolean | true  |
-| defaultImg        | 当上传非图片('image')格式的默认图片地址| String | ''  |
-| isDeletable      | 是否展示删除按钮| Boolean | true  |
-| method | 上传请求的 http method  | String  | "post"|
-| listType  | 上传列表的内建样式，支持两种基本样式 picture、list  | String  | "picture"|
-| maximize          | 可以设定最大上传文件的大小（字节）   | Number丨String     | Number.MAX_VALUE |
-| maximum| 文件上传数量限制| Number丨String     | 1 |
-| clearInput       | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件  | Boolean | true |
-| headers| 设置上传的请求头部      | Object  | {}|
-| data   | 附加上传的信息 formData | Object  | {}|
-| uploadIcon       | 上传区域[图标名称](#/zh-CN/icon)或图片链接      | String  | "photograph"     |
-| uploadIconSize        | 上传区域[图标尺寸](#/icon)大小，如 `20px` `2em` `2rem`      | String or Number  | -     |
-| uploadIconTip`v1.4.9`| 上传区域图片下方文字| String| ""|
-| xhrState         | 接口响应的成功状态（status）值   | Number  | 200   |
-| disabled          | 是否禁用文件上传| Boolean | false |
-| multiple`v1.4.8`         | 是否支持文件多选| Boolean | false |
-| timeout| 超时时间，单位为毫秒         | Number丨String     | 1000 * 30  |
-| onBeforeUpload      | 上传前的函数需要返回一个`Promise`对象| Function| null  |
-| onBeforeXhrUpload      | 执行 XHR 上传时，自定义方式| Function(xhr，option)| null  |
-| onBeforeDelete    | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除     | Function(file): boolean 丨Promise | - |
+| autoUpload| 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传| boolean  | `true`|
+| name   | `input` 标签 `name` 的名称，发到后台的文件参数名| string  | `file` |
+| url| 上传服务器的接口地址    | string  | - |
+| defaultFileList| 默认已经上传的文件列表    | FileItem[]  | `[]` |
+| isPreview        | 是否上传成功后展示预览图| boolean | `true`  |
+| defaultImg        | 当上传非图片('image')格式的默认图片地址| string | -  |
+| isDeletable      | 是否展示删除按钮| boolean | `true`  |
+| method | 上传请求的 http method  | string  | `post`|
+| listType  | 上传列表的内建样式，支持两种基本样式 picture、list  | string  | `picture`|
+| maximize          | 可以设定最大上传文件的大小（字节）   | number \| string     | `Number.MAX_VALUE` |
+| maximum| 文件上传数量限制| number \| string     | `1` |
+| clearInput       | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件  | boolean | `true` |
+| headers| 设置上传的请求头部      | Object  | `{}`|
+| data   | 附加上传的信息 formData | Object  | `{}`|
+| uploadIcon       | 上传区域[图标名称](#/zh-CN/icon)或图片链接      | string  | `photograph`     |
+| uploadIconSize        | 上传区域[图标尺寸](#/icon)大小，如 `20px` `2em` `2rem`      | string \| number | -     |
+| uploadIconTip`v1.4.9`| 上传区域图片下方文字| string | - |
+| xhrState         | 接口响应的成功状态（status）值   | number | `200`   |
+| disabled          | 是否禁用文件上传| boolean | `false` |
+| multiple`v1.4.8`         | 是否支持文件多选| boolean | `false` |
+| timeout| 超时时间，单位为毫秒         | number |string     | `1000 * 30`  |
+| onBeforeUpload      | 上传前的函数需要返回一个`Promise`对象| Function| `null`  |
+| onBeforeXhrUpload      | 执行 XHR 上传时，自定义方式| Function(xhr，option)| `null`  |
+| onBeforeDelete    | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除     | Function(file): boolean \| Promise | - |
 
 
 ### FileItem
 
 | 名称     | 说明       | 默认值|
 |----------|---------------------------------------------------------|---------------------------------|
-| status   | 文件状态值，可选'ready,uploading,success,error,removed' | "ready"          |
-| uid      | 文件的唯一标识 | new Date().getTime().toString() |
-| name     | 文件名称   | ""|
-| url      | 文件路径   | ""|
-| type     | 文件类型   | "image/jpeg"     |
-| formData | 上传所需的data | new FormData()   |
+| status   | 文件状态值，可选'ready,uploading,success,error,removed' | `ready`          |
+| uid      | 文件的唯一标识 | `new Date().getTime().toString()` |
+| name     | 文件名称   | - |
+| url      | 文件路径   | - |
+| type     | 文件类型   | `image/jpeg`     |
+| formData | 上传所需的data | `new FormData()`   |
 
 ### Event
 
 | 名称     | 说明    | 回调参数  |
 |----------|------------------------|----------------------|
-| onStart     | 文件上传开始| options   |
-| onProgress  | 文件上传的进度         | event,options,percentage        |
-| onOversize  | 文件大小超过限制时触发 | files |
-| onSuccess   | 上传成功| responseText,options |
-| onFailure   | 上传失败| responseText,options |
-| onChange    | 上传文件改变时的状态   | fileList,event       |
-| onRemove    | 文件删除之前的状态     | files,fileList       |
-| onFileItemClick    | 文件上传成功后点击触发     | fileItem       |
+| onStart     | 文件上传开始| `options`   |
+| onProgress  | 文件上传的进度         | `event, options, percentage`        |
+| onOversize  | 文件大小超过限制时触发 | `files` |
+| onSuccess   | 上传成功| `responseText, options` |
+| onFailure   | 上传失败| `responseText, options` |
+| onChange    | 上传文件改变时的状态   | `fileList, event`       |
+| onRemove    | 文件删除之前的状态     | `files, fileList`       |
+| onFileItemClick    | 文件上传成功后点击触发     | `fileItem`       |
 
 
 
@@ -424,22 +424,22 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-uploader-picture-width | ` 100px` |
-| --nutui-uploader-picture-height | ` 100px` |
-| --nutui-uploader-picture-border`v1.4.9` | ` 0px` |
-| --nutui-uploader-picture-border-radius`v1.4.9` | ` 4px` |
-| --nutui-uploader-background | ` $gray4` |
-| --nutui-uploader-background-disabled`v1.4.9` | ` $gray4` |
-| --nutui-uploader-picture-icon-opacity`v1.4.9` | ` 0.7` |
-| --nutui-uploader-picture-icon-opacity-disabled`v1.4.9` | ` 0.3`|
-| --nutui-uploader-picture-icon-margin-bottom`v1.4.9` | ` 6px`|
-| --nutui-uploader-picture-icon-tip-font-size`v1.4.9` | ` 12px`|
-| --nutui-uploader-picture-icon-tip-color`v1.4.9` | ` #BFBFBF`|
-| --nutui-uploader-preview-progress-background`v1.4.9` | ` rgba(0, 0, 0, 0.65)`|
-| --nutui-uploader-preview-margin-right`v1.4.9` | ` 10px`|
-| --nutui-uploader-preview-margin-bottom`v1.4.9` | ` 10px`|
-| --nutui-uploader-preview-tips-height`v1.4.9` | ` 24px`|
-| --nutui-uploader-preview-tips-background`v1.4.9` | ` rgba(0, 0, 0, 0.45)`|
-| --nutui-uploader-preview-tips-padding`v1.4.9` | ` 0 5px`|
-| --nutui-uploader-preview-close-right`v1.4.9` | ` 0px`|
-| --nutui-uploader-preview-close-top`v1.4.9` | ` 0px`|
+| --nutui-uploader-picture-width | `100px` |
+| --nutui-uploader-picture-height | `100px` |
+| --nutui-uploader-picture-border`v1.4.9` | `0px` |
+| --nutui-uploader-picture-border-radius`v1.4.9` | `4px` |
+| --nutui-uploader-background | `$gray4` |
+| --nutui-uploader-background-disabled`v1.4.9` | `$gray4` |
+| --nutui-uploader-picture-icon-opacity`v1.4.9` | `0.7` |
+| --nutui-uploader-picture-icon-opacity-disabled`v1.4.9` | `0.3`|
+| --nutui-uploader-picture-icon-margin-bottom`v1.4.9` | `6px`|
+| --nutui-uploader-picture-icon-tip-font-size`v1.4.9` | `12px`|
+| --nutui-uploader-picture-icon-tip-color`v1.4.9` | `#BFBFBF`|
+| --nutui-uploader-preview-progress-background`v1.4.9` | `rgba(0, 0, 0, 0.65)`|
+| --nutui-uploader-preview-margin-right`v1.4.9` | `10px`|
+| --nutui-uploader-preview-margin-bottom`v1.4.9` | `10px`|
+| --nutui-uploader-preview-tips-height`v1.4.9` | `24px`|
+| --nutui-uploader-preview-tips-background`v1.4.9` | `rgba(0, 0, 0, 0.45)`|
+| --nutui-uploader-preview-tips-padding`v1.4.9` | `0 5px`|
+| --nutui-uploader-preview-close-right`v1.4.9` | `0px`|
+| --nutui-uploader-preview-close-top`v1.4.9` | `0px`|

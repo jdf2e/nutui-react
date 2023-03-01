@@ -9,7 +9,6 @@
 ``` ts
 // react
 import { InputNumber } from '@nutui/nutui-react';
-
 ```
 ### 基础用法
 
@@ -256,33 +255,33 @@ export default App;
 
 | 参数           | 说明                       | 类型           | 默认值     |
 |----------------|----------------------------|----------------|------------|
-| modelValue        | 初始值                     | String、Number | -          |
-| inputWidth    | 输入框宽度                 | String         | `40px`     |
-| buttonSize    | 操作符+、-尺寸             | String         | `20px`     |
-| min            | 最小值限制                 | String、Number | `1`        |
-| max            | 最大值限制                 | String、Number | `9999` |
-| step           | 步长                       | String、Number | `1`        |
-| decimalPlaces | 设置保留的小数位           | String、Number | `0`        |
-| disabled       | 禁用所有功能               | Boolean        | false      |
-| readonly       | 只读状态禁用输入框操作行为 | Boolean        | false      |
-| isAsync       | 支持异步修改 | Boolean        | false      |
+| modelValue        | 初始值                     | string \| number | -          |
+| inputWidth    | 输入框宽度                 | string         | `40px`     |
+| buttonSize    | 操作符+、-尺寸             | string         | `20px`     |
+| min            | 最小值限制                 | string \| number | `1`        |
+| max            | 最大值限制                 | string \| number | `9999` |
+| step           | 步长                       | string \| number | `1`        |
+| decimalPlaces | 设置保留的小数位           | string \| number | `0`        |
+| disabled       | 禁用所有功能               | boolean        | `false`      |
+| readonly       | 只读状态禁用输入框操作行为 | boolean        | `false`      |
+| isAsync       | 支持异步修改 | boolean        | `false`      |
 
 ### Events
 
 | 事件名    | 说明                   | 回调参数                       |
 |-----------|------------------------|--------------------------------|
-| add  `v1.3.8 废弃`     | 点击增加按钮时触发     | event: Event                   |
-| onAdd  `v1.3.8`     | 点击增加按钮时触发     | event: Event                   |
-| reduce   `v1.3.8 废弃` | 点击减少按钮时触发     | event: Event                   |
-| onReduce   `v1.3.8` | 点击减少按钮时触发     | event: Event                   |
-| overlimit `v1.3.8 废弃` | 点击不可用的按钮时触发 | event: Event                   |
-| onOverlimit `v1.3.8` | 点击不可用的按钮时触发 | event: Event                   |
-| change `v1.3.8 废弃`    | 值改变时触发           | value:  number , event : Event |
-| onChangeFuc `v1.3.8`    | 值改变时触发           | value:  number , event : Event |
-| blur `v1.3.8 废弃`      | 输入框失去焦点时触发   | event: Event                   |
-| onBlurFuc `v1.3.8`      | 输入框失去焦点时触发   | event: Event                   |
-| focus `v1.3.8 废弃`     | 输入框获得焦点时触发   | event: Event                   |
-| onFocus `v1.3.8`     | 输入框获得焦点时触发   | event: Event                   |
+| add  `v1.3.8 废弃`     | 点击增加按钮时触发     | `event: Event`                   |
+| onAdd  `v1.3.8`     | 点击增加按钮时触发     | `event: Event`                   |
+| reduce   `v1.3.8 废弃` | 点击减少按钮时触发     | `event: Event`                   |
+| onReduce   `v1.3.8` | 点击减少按钮时触发     | `event: Event`                   |
+| overlimit `v1.3.8 废弃` | 点击不可用的按钮时触发 | `event: Event`                   |
+| onOverlimit `v1.3.8` | 点击不可用的按钮时触发 | `event: Event`                   |
+| change `v1.3.8 废弃`    | 值改变时触发           | `value: number, event: Event` |
+| onChangeFuc `v1.3.8`    | 值改变时触发           | `value: number, event: Event` |
+| blur `v1.3.8 废弃`      | 输入框失去焦点时触发   | `event: Event`                   |
+| onBlurFuc `v1.3.8`      | 输入框失去焦点时触发   | `event: Event`                   |
+| focus `v1.3.8 废弃`     | 输入框获得焦点时触发   | `event: Event`                   |
+| onFocus `v1.3.8`     | 输入框获得焦点时触发   | `event: Event`                   |
 
 ## 主题定制
 
@@ -295,22 +294,22 @@ export default App;
 | --nutui-inputnumber-button-width`v1.4.8` | `12px` |
 | --nutui-inputnumber-button-height`v1.4.8` | `12px` |
 | --nutui-inputnumber-button-border-radius`v1.4.8` | `30px` |
-| --nutui-inputnumber-button-background-color`v1.4.8` | ` $gray6` |
-| --nutui-inputnumber-icon-color | `  $title-color` |
-| --nutui-inputnumber-icon-void-color | `  $disable-color` |
-| --nutui-inputnumber-icon-disabled-color | `  $gray2` |
-| --nutui-inputnumber-icon-size | ` 20px` |
-| --nutui-inputnumber-input-font-size | `  12px` |
-| --nutui-inputnumber-input-font-color | `  $gray1` |
-| --nutui-inputnumber-input-background-color | `  $gray4` |
-| --nutui-inputnumber-input-border-radius | `  4px` |
-| --nutui-inputnumber-input-width | ` 40px` |
-| --nutui-inputnumber-input-height | ` 24px`|
-| --nutui-inputnumber-input-margin | `  0 6px` |
-| --nutui-inputnumber-input-border | ` 0` |
-| --nutui-inputnumber-border | ` 0` |
-| --nutui-inputnumber-border-radius | ` 0` |
-| --nutui-inputnumber-height | ` auto` |
-| --nutui-inputnumber-line-height | ` normal` |
-| --nutui-inputnumber-border-box | `  content-box` |
-| --nutui-inputnumber-display | ` flex` |
+| --nutui-inputnumber-button-background-color`v1.4.8` | `$gray6` |
+| --nutui-inputnumber-icon-color | `$title-color` |
+| --nutui-inputnumber-icon-void-color | `$disable-color` |
+| --nutui-inputnumber-icon-disabled-color | `$gray2` |
+| --nutui-inputnumber-icon-size | `20px` |
+| --nutui-inputnumber-input-font-size | `12px` |
+| --nutui-inputnumber-input-font-color | `$gray1` |
+| --nutui-inputnumber-input-background-color | `$gray4` |
+| --nutui-inputnumber-input-border-radius | `4px` |
+| --nutui-inputnumber-input-width | `40px` |
+| --nutui-inputnumber-input-height | `24px`|
+| --nutui-inputnumber-input-margin | `0 6px` |
+| --nutui-inputnumber-input-border | `0` |
+| --nutui-inputnumber-border | `0` |
+| --nutui-inputnumber-border-radius | `0` |
+| --nutui-inputnumber-height | `auto` |
+| --nutui-inputnumber-line-height | `normal` |
+| --nutui-inputnumber-border-box | `content-box` |
+| --nutui-inputnumber-display | `flex` |

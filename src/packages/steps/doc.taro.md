@@ -422,29 +422,29 @@ export default App;
 
 | 参数                   | 说明                                                        | 类型           | 默认值      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| direction	             | 	显示方向，`horizontal`,`vertical`  | String        | 'horizontal'  | 
-| current	               | 	当前所在的步骤           | Number        | 0      |
-| progressDot            |  点状步骤条     | Boolean | false         |
+| direction	             | 	显示方向，`horizontal`,`vertical`  | string        | `horizontal`  | 
+| current	               | 	当前所在的步骤           | number        | `0`      |
+| progressDot            |  点状步骤条     | boolean | `false`         |
 
 
 #### nut-steps events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| clickStep `v1.3.8 废弃` | 点击步骤的标题或图标时触发 | index: number |
-| onClickStep `v1.3.8`  | 点击步骤的标题或图标时触发 | index: number |
+| clickStep `v1.3.8 废弃` | 点击步骤的标题或图标时触发 | `index: number` |
+| onClickStep `v1.3.8`  | 点击步骤的标题或图标时触发 | `index: number` |
 
 #### Step
 
 | 参数           | 说明                   | 类型     | 默认值      |
 | ---------------- | ---------------------- | ------------ | ----------- |
-| title            | 流程步骤的标题         | String | '' |
-| content          | 流程步骤的描述性文字       | String | '' |
-| icon          | 图标(来自Icon组件的name属性)       | String | '' |
-| iconColor          | 图标颜色       | String | null |
-| size          | 图标尺寸大小(来自Icon组件的size属性)       | String | '' |
-| activeIndex          | 流程步骤的索引       | Number | 0 |
-| renderContent         | 流程步骤的描述性文字的html结构      | React.ReactNode | - |
+| title            | 流程步骤的标题         | string | - |
+| content          | 流程步骤的描述性文字       | string | - |
+| icon          | 图标(来自Icon组件的name属性)       | string | - |
+| iconColor          | 图标颜色       | string \| null |
+| size          | 图标尺寸大小(来自Icon组件的size属性)       | string | - |
+| activeIndex          | 流程步骤的索引       | number | `0` |
+| renderContent         | 流程步骤的描述性文字的html结构      | ReactNode | - |
 
 ## 主题定制
 
@@ -454,44 +454,40 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-steps-base-icon-width | ` 25px` |
-| --nutui-steps-base-icon-height | ` 25px` |
-| --nutui-steps-base-icon-line-height | `  25px` |
-| --nutui-steps-base-icon-margin-bottom`v1.4.8` | ` 12px`|
-| --nutui-steps-base-icon-font-size | `  13px` |
-| --nutui-steps-base-line-width`v1.4.8` | ` 100%`|
-| --nutui-steps-base-line-color`废弃 v1.4.8` | ` #909ca4` |
-| --nutui-steps-base-line-background`v1.4.8` | ` #909ca4`|
-| --nutui-steps-base-title-font-size | `  14px` |
-| --nutui-steps-base-title-color | `  $title-color` |
-| --nutui-steps-base-title-margin-bottom | `  10px` |
-| --nutui-steps-base-content-font-size | `  14px` |
-| --nutui-steps-base-content-color | `  $title-color2` |
-
-| --nutui-steps-wait-icon-bg-color | `  #959fb1` |
-| --nutui-steps-wait-icon-color | ` $white` |
-| --nutui-steps-wait-head-color | ` #909ca4` |
-| --nutui-steps-wait-head-border-color | `  #909ca4` |
-| --nutui-steps-wait-title-color`v1.4.8` | `  $title-color2` |
-| --nutui-steps-wait-content-color | `  $title-color2` |
-
-| --nutui-steps-process-icon-bg-color`v1.4.8` | `  $primary-color` |
-| --nutui-steps-process-icon-color`v1.4.8` | ` $white` |
-| --nutui-steps-process-head-color | ` $primary-color` |
-| --nutui-steps-process-head-border-color | ` $primary-color` |
-| --nutui-steps-process-title-color | `  $primary-color` |
-| --nutui-steps-process-title-font-size`v1.4.8` | ` 14px`|
-| --nutui-steps-process-title-font-weight`v1.4.8` | ` 400`|
-| --nutui-steps-process-content-color`v1.4.8` | `  $primary-color` |
-
-| --nutui-steps-finish-icon-bg-color`v1.4.8` | `  $primary-text-color` |
-| --nutui-steps-finish-icon-color`v1.4.8` | ` $primary-color` |
-| --nutui-steps-finish-head-color | ` $primary-color` |
-| --nutui-steps-finish-head-border-color | ` $primary-color` |
-| --nutui-steps-finish-title-color | `  $primary-color` |
-| --nutui-steps-finish-content-color`v1.4.8` | `  $title-color2` |
-| --nutui-steps-finish-line-background | `  $primary-color` |
-
-| --nutui-steps-dot-icon-width`v1.4.8` | `  6px` |
-| --nutui-steps-dot-icon-height`v1.4.8` | `  6px` |
-| --nutui-steps-dot-icon-border`v1.4.8` | `  2px solid $primary-text-color` |
+| --nutui-steps-base-icon-width | `25px` |
+| --nutui-steps-base-icon-height | `25px` |
+| --nutui-steps-base-icon-line-height | `25px` |
+| --nutui-steps-base-icon-margin-bottom`v1.4.8` | `12px`|
+| --nutui-steps-base-icon-font-size | `13px` |
+| --nutui-steps-base-line-width`v1.4.8` | `100%`|
+| --nutui-steps-base-line-color`废弃 v1.4.8` | `#909ca4` |
+| --nutui-steps-base-line-background`v1.4.8` | `#909ca4`|
+| --nutui-steps-base-title-font-size | `14px` |
+| --nutui-steps-base-title-color | `$title-color` |
+| --nutui-steps-base-title-margin-bottom | `10px` |
+| --nutui-steps-base-content-font-size | `14px` |
+| --nutui-steps-base-content-color | `$title-color2` |
+| --nutui-steps-wait-icon-bg-color | `#959fb1` |
+| --nutui-steps-wait-icon-color | `$white` |
+| --nutui-steps-wait-head-color | `#909ca4` |
+| --nutui-steps-wait-head-border-color | `#909ca4` |
+| --nutui-steps-wait-title-color`v1.4.8` | `$title-color2` |
+| --nutui-steps-wait-content-color | `$title-color2` |
+| --nutui-steps-process-icon-bg-color`v1.4.8` | `$primary-color` |
+| --nutui-steps-process-icon-color`v1.4.8` | `$white` |
+| --nutui-steps-process-head-color | `$primary-color` |
+| --nutui-steps-process-head-border-color | `$primary-color` |
+| --nutui-steps-process-title-color | `$primary-color` |
+| --nutui-steps-process-title-font-size`v1.4.8` | `14px`|
+| --nutui-steps-process-title-font-weight`v1.4.8` | `400`|
+| --nutui-steps-process-content-color`v1.4.8` | `$primary-color` |
+| --nutui-steps-finish-icon-bg-color`v1.4.8` | `$primary-text-color` |
+| --nutui-steps-finish-icon-color`v1.4.8` | `$primary-color` |
+| --nutui-steps-finish-head-color | `$primary-color` |
+| --nutui-steps-finish-head-border-color | `$primary-color` |
+| --nutui-steps-finish-title-color | `$primary-color` |
+| --nutui-steps-finish-content-color`v1.4.8` | `$title-color2` |
+| --nutui-steps-finish-line-background | `$primary-color` |
+| --nutui-steps-dot-icon-width`v1.4.8` | `6px` |
+| --nutui-steps-dot-icon-height`v1.4.8` | `6px` |
+| --nutui-steps-dot-icon-border`v1.4.8` | `2px solid $primary-text-color` |

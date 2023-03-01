@@ -11,7 +11,6 @@ The pop -up box components support the function call and component call.
 ```ts
 // react
 import { Dialog } from '@nutui/nutui-react'
-
 ```
 
 
@@ -112,18 +111,18 @@ export default App;
 | title        | title                         | ReactNode | -                |
 | content         | The content of the dialog box is suitable for function calls | ReactNode | -                |
 | footer | Customize the notes, but it will not be displayed in NULL     | ReactNode | - |
-| okText          | Confirm the button copywriting                        | ReactNode | 'Sure'              |
-| cancelText          | Cancellation of buttons                        | ReactNode | 'Cancel'              |
-| mask          | Whether to show a mask                        | boolean | true              |
-| noOkBtn          | Whether to hide the OK button                        | boolean | false              |
-| noCancelBtn          | Whether to hide the cancel button                        | boolean | false              |
-| okBtnDisabled          | Disable the OK button                        | boolean | false              |
-| noFooter          | Whether to hide the bottom button bar                        | boolean | false              |
-| closeOnClickOverlay          | Click on whether to close the dialog box                        | boolean | true              |
-| cancelAutoClose          | Cancel the button to close the pop -up window by default                        | boolean | true              |
-| textAlign          | Text alignment direction, optional value is the same as CSS Text-Align           | string | 'center'              |
-| footerDirection          |Use horizontal and vertical direction value selection horizontal、vertical  | string | 'horizontal'             |
-| lockScroll          | Whether the background is locked                        | boolean | false              |
+| okText          | Confirm the button copywriting                        | ReactNode | `Sure`              |
+| cancelText          | Cancellation of buttons                        | ReactNode | `Cancel`              |
+| mask          | Whether to show a mask                        | boolean | `true`              |
+| noOkBtn          | Whether to hide the OK button                        | boolean | `false`              |
+| noCancelBtn          | Whether to hide the cancel button                        | boolean | `false`              |
+| okBtnDisabled          | Disable the OK button                        | boolean | `false`              |
+| noFooter          | Whether to hide the bottom button bar                        | boolean | `false`              |
+| closeOnClickOverlay          | Click on whether to close the dialog box                        | boolean | `true`              |
+| cancelAutoClose          | Cancel the button to close the pop -up window by default                        | boolean | `true`              |
+| textAlign          | Text alignment direction, optional value is the same as CSS Text-Align           | string | `center`              |
+| footerDirection          |Use horizontal and vertical direction value selection horizontal、vertical  | string | `horizontal`             |
+| lockScroll          | Whether the background is locked                        | boolean | `false`              |
 
 ### Events
 
@@ -143,21 +142,21 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-dialog-width | ` 296px` |
-| --nutui-dialog-header-font-weight | `  normal` |
-| --nutui-dialog-header-color | `  rgba(38, 38, 38, 1)` |
-| --nutui-dialog-footer-justify-content | `  space-around` |
-| --nutui-dialog-min-height | ` 156px` |
-| --nutui-dialog-padding | ` 28px 24px 16px 24px` |
-| --nutui-dialog-header-height | ` 20px` |
-| --nutui-dialog-content-margin | ` 20px 0` |
-| --nutui-dialog-content-max-height | `  268px` |
-| --nutui-dialog-content-line-height | `  16px` |
-| --nutui-dialog-mask-z-index | ` $mask-z-index` |
-| --nutui-dialog-mask-background-color | `  $mask-color` |
-| --nutui-dialog-outer-z-index | `  $mask-content-z-index` |
-| --nutui-dialog-outer-bordder-radius | `  20px` |
-| --nutui-dialog-vertical-footer-ok-margin-top | `  10px` |
-| --nutui-dialog-footer-button-min-width | `  100px` |
-| --nutui-dialog-footer-cancel-margin-right | `  20px` |
-| --nutui-dialog-footer-ok-max-width | `  128px` |
+| --nutui-dialog-width | `296px` |
+| --nutui-dialog-header-font-weight | `normal` |
+| --nutui-dialog-header-color | `rgba(38, 38, 38, 1)` |
+| --nutui-dialog-footer-justify-content | `space-around` |
+| --nutui-dialog-min-height | `156px` |
+| --nutui-dialog-padding | `28px 24px 16px 24px` |
+| --nutui-dialog-header-height | `20px` |
+| --nutui-dialog-content-margin | `20px 0` |
+| --nutui-dialog-content-max-height | `268px` |
+| --nutui-dialog-content-line-height | `16px` |
+| --nutui-dialog-mask-z-index | `$mask-z-index` |
+| --nutui-dialog-mask-background-color | `$mask-color` |
+| --nutui-dialog-outer-z-index | `$mask-content-z-index` |
+| --nutui-dialog-outer-bordder-radius | `20px` |
+| --nutui-dialog-vertical-footer-ok-margin-top | `10px` |
+| --nutui-dialog-footer-button-min-width | `100px` |
+| --nutui-dialog-footer-cancel-margin-right | `20px` |
+| --nutui-dialog-footer-ok-max-width | `128px` |
