@@ -275,6 +275,77 @@ export default App;
 
 :::
 
+### Tabs in Tabs
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab8value, setTab8value] = useState('0')
+  const [tab9value, setTab9value] = useState('0')
+  return (
+    <>
+      <Tabs
+        value={tab8value}
+        onChange={({ paneKey }) => {
+          setTab8value(paneKey)
+        }}
+        type="smile"
+        direction="vertical"
+      >
+        <Tabs.TabPane title="Tab 1">
+          <Tabs
+            value={tab9value}
+            onChange={({ paneKey }) => {
+              setTab9value(paneKey)
+            }}
+            type="smile"
+            direction="horizontal"
+          >
+            <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+          </Tabs>
+        </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+
+      <Tabs
+        value={tab8value}
+        onChange={({ paneKey }) => {
+          setTab8value(paneKey)
+        }}
+        autoHeight
+        type="smile"
+      >
+        <Tabs.TabPane title="Tab 1">
+          <Tabs
+            value={tab9value}
+            onChange={({ paneKey }) => {
+              setTab9value(paneKey)
+            }}
+            direction="vertical"
+          >
+            <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+          </Tabs>
+        </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
 ### tab bar font size large normal small
 
 :::demo
