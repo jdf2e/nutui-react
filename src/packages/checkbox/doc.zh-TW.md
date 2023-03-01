@@ -24,6 +24,31 @@ const CheckBoxDemo = () => {
   return (<>
       <Checkbox textPosition="left" label="複選框" checked={checked} />
       <Checkbox textPosition="right" label="複選框" checked={false} />
+      <Checkbox.Group textPosition="left" checkedValue='选项1'>
+        <span>
+          <Checkbox label='选项1' checked={false} />
+        </span>
+        <Checkbox label='选项2' checked={false} />
+        <Checkbox label='选项3' checked={false} />
+      </Checkbox.Group>
+    </>
+  )
+}
+export default CheckBoxDemo;
+```
+
+## 半选状态
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Checkbox } from '@nutui/nutui-react';
+
+const CheckBoxDemo = () => {
+  const [checked, setChecked] = useState(true)
+  return (<>
+      <Checkbox label='複選框1' checked indeterminate />
     </>
   )
 }
