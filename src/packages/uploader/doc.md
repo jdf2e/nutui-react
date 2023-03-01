@@ -60,7 +60,7 @@ const App = () => {
       status: 'success',
       message: '上传成功',
       type: 'image',
-      uid: '123',
+      uid: '122',
     },
     {
       name: '文件1.png',
@@ -80,7 +80,7 @@ const App = () => {
       errorIcon: 'star',
     },
     {
-      name: '文件4.png',
+      name: '文件5.png',
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
       status: 'uploading',
       message: '上传中',
@@ -88,21 +88,21 @@ const App = () => {
       uid: '125',
     },
     {
-      name: '文件4.png',
+      name: '文件6.png',
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
       status: 'uploading',
       message: '上传中',
       type: 'image',
-      uid: '125',
+      uid: '126',
       loadingIcon: 'loading1',
     },
     {
-      name: '文件4.png',
+      name: '文件7.png',
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
       status: 'uploading',
       message: '上传中',
       type: 'image',
-      uid: '125',
+      uid: '127',
       loadingIcon: ' ',
     },
   ]
@@ -319,6 +319,9 @@ const App = () => {
   const submitUpload = () => {
     uploadRef.current.submit()
   }
+  const clearUpload = () => {
+    uploadRef.current.clear()
+  };
   return (
     <>
       <h2>手动上传</h2>
@@ -326,6 +329,9 @@ const App = () => {
       <br />
       <Button type="success" size="small" onClick={submitUpload}>
         执行上传
+      </Button>
+      <Button type="danger" size="small" onClick={clearUpload}>
+        手动清空上传
       </Button>
     </>
   )
@@ -357,35 +363,37 @@ export default App;
 
 | 字段| 说明| 类型| 默认值|
 |---------|------|--------|----------|
-| autoUpload `v1.3.4`| 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传| boolean | `true`           |
-| name| `input` 标签 `name` 的名称，发到后台的文件参数名| string | `file`|
-| url| 上传服务器的接口地址| string                            | -|
-| defaultFileList| 默认已经上传的文件列表| FileItem[]| `[]`                |
-| isPreview| 是否上传成功后展示预览图| boolean                           | `true`|
-| defaultImg| 当上传非图片('image')格式的默认图片地址| string | -             |
-| isDeletable| 是否展示删除按钮| boolean | `true`|
-| method| 上传请求的 http method| string | `post`           |
-| listType `v1.3.4`| 上传列表的内建样式，支持两种基本样式 picture、list| string | `picture`|
-| capture| 图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接调起摄像头| string | `false`            |
-| maximize| 可以设定最大上传文件的大小（字节）| number \| string | `Number.MAX_VALUE` |
-| maximum| 文件上传数量限制| number \| string | `1`|
-| clearInput       | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件| boolean | `true`            |
-| accept            | 允许上传的文件类型，[详细说明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | string | `*`|
-| headers           | 设置上传的请求头部| Object| `{}`|
-| data| 附加上传的信息 formData| Object| `{}`|
-| uploadIcon| 上传区域[图标名称](#/zh-CN/icon)或图片链接| string | `photograph`|
-| uploadIconSize `v1.3.4`| 上传区域[图标尺寸](#/icon)大小，如 `20px` `2em` `2rem`| string \| number | -     |
-| uploadIconTip`v1.4.9`| 上传区域图片下方文字| string | -|
-| xhrState| 接口响应的成功状态（status）值| number | `200`|
-| withCredentials  | 支持发送 cookie 凭证信息| boolean | `false`|
-| multiple| 是否支持文件多选| boolean | `false`|
-| disabled| 是否禁用文件上传| boolean | `false`|
-| timeout| 超时时间，单位为毫秒| number \| string | `1000 * 30`|
-| beforeUpload `v1.3.4 废弃`| 上传前的函数需要返回一个`Promise`对象| Function| `null`|
-| onBeforeUpload `v1.3.4`| 上传前的函数需要返回一个`Promise`对象| Function| `null`|
-| onBeforeXhrUpload `v1.3.4`     | 执行 XHR 上传时，自定义方式| Function(xhr，option)| `null`|
-| beforeDelete  `v1.3.4 废弃`   | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除| Function(file): boolean \| Promise | -                |
-| onBeforeDelete  `v1.3.4`  | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除| Function(file): boolean \| Promise | -|
+| autoUpload `v1.3.4`| 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传| Boolean| true           |
+| name| `input` 标签 `name` 的名称，发到后台的文件参数名| String| "file"|
+| url| 上传服务器的接口地址| String                            | -|
+| defaultFileList| 默认已经上传的文件列表| FileItem[]| []                |
+| isPreview| 是否上传成功后展示预览图| Boolean                           | true|
+| defaultImg| 当上传非图片('image')格式的默认图片地址| String| ''             |
+| isDeletable| 是否展示删除按钮| Boolean| true|
+| method| 上传请求的 http method| String| "post"           |
+| listType `v1.3.4`| 上传列表的内建样式，支持两种基本样式 picture、list| String| "picture"|
+| capture| 图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接调起摄像头| String| false            |
+| maximize| 可以设定最大上传文件的大小（字节）| Number丨String| Number.MAX_VALUE |
+| maximum| 文件上传数量限制| Number丨String| 1|
+| clearInput       | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件| Boolean| true            |
+| accept            | 允许上传的文件类型，[详细说明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | String| *|
+| headers           | 设置上传的请求头部| Object| {}|
+| data| 附加上传的信息 formData| Object| {}|
+| uploadIcon| 上传区域[图标名称](#/zh-CN/icon)或图片链接| String| "photograph"|
+| uploadIconSize `v1.3.4`| 上传区域[图标尺寸](#/icon)大小，如 `20px` `2em` `2rem`| String or Number| -     |
+| uploadIconTip`v1.4.9`| 上传区域图片下方文字| String| ""|
+| xhrState| 接口响应的成功状态（status）值| Number| 200|
+| withCredentials  | 支持发送 cookie 凭证信息| Boolean| false|
+| multiple| 是否支持文件多选| Boolean| false|
+| disabled| 是否禁用文件上传| Boolean| false|
+| timeout| 超时时间，单位为毫秒| Number丨String| 1000 * 30|
+| beforeUpload `v1.3.4 废弃`| 上传前的函数需要返回一个`Promise`对象| Function| null|
+| onBeforeUpload `v1.3.4`| 上传前的函数需要返回一个`Promise`对象| Function| null|
+| onBeforeXhrUpload `v1.3.4`     | 执行 XHR 上传时，自定义方式| Function(xhr，option)| null|
+| beforeDelete  `v1.3.4 废弃`   | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除| Function(file): boolean 丨Promise | -                |
+| onBeforeDelete  `v1.3.4`  | 删除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除| Function(file): boolean 丨Promise | -|
+
+> 注意：accept、capture 和 multiple 为浏览器 input 标签的原生属性，移动端各种机型对这些属性的支持程度有所差异，因此在不同机型和 WebView 下可能出现一些兼容性问题。
 
 
 ### FileItem
@@ -399,7 +407,7 @@ export default App;
 | type     | 文件类型| `image/jpeg`|
 | formData | 上传所需的data| `new FormData()`|
 
-### Event
+### Events
 
 | 名称     | 说明                   | 回调参数             |
 |----------|------------------------|----------------------|
@@ -418,6 +426,15 @@ export default App;
 | onRemove `v1.3.4`   | 文件删除之前的状态     | `files, fileList`       |
 | removeImage  `v1.3.4 废弃` | 文件删除之前的状态     | `files, fileList`       |
 | onFileItemClick `v1.3.4`   | 文件上传成功后点击触发     | `fileItem`       |
+
+### Methods
+
+通过ref可以获取到 Uploader 实例并调用实例方法
+
+| 方法名           | 说明                                                       | 参数  | 返回值 |
+|------------------|------------------------------------------------------------|-------|--------|
+| submit           | 手动上传模式，执行上传操作                                 | -     | -      |
+| clear | 清空已选择的文件队列（该方法一般配合在手动模式上传时使用） | index | -      |
 
 
 ## 主题定制
