@@ -432,7 +432,7 @@ Use ref to get Uploader instance and call instance methods.
 | Name             | Description                                                                                 | Arguments | Return value |
 |------------------|---------------------------------------------------------------------------------------------|-----------|--------------|
 | submit           | Manual upload mode, perform upload operation                                                | -         | -            |
-| clear | Empty the selected file queue (this method is generally used when uploading in manual mode) | index     | -            |
+| clear `v1.4.9` | Empty the selected file queue (this method is generally used when uploading in manual mode) | index     | -            |
 
 
 ## Theming

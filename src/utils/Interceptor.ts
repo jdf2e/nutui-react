@@ -3,7 +3,7 @@ export type Interceptor = (
   ...args: any[]
 ) => Promise<boolean> | boolean | undefined | void
 
-export const funInterceptor = (
+export const funcInterceptor = (
   interceptor: Interceptor | undefined,
   {
     args = [],

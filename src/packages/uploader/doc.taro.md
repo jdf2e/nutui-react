@@ -399,10 +399,10 @@ export default App;
 | maximize          | 可以设定最大上传文件的大小（字节）   | Number丨String     | Number.MAX_VALUE |
 | maximum| 文件上传数量限制| Number丨String     | 1 |
 | sourceType               | [选择文件的来源](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html)   | Array                             | `['album','camera']`        |
-| camera`仅支持WEAPP`       | 仅在 `source-type` 为 `camera` 时生效，使用前置或后置摄像头                                               | String                            | `back`                      |
+| camera`仅支持WEAPP` `v1.4.9`       | 仅在 `source-type` 为 `camera` 时生效，使用前置或后置摄像头                                               | String                            | `back`                      |
 | sizeType                 | [是否压缩所选文件](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html) | Array                             | `['original','compressed']` |
-| mediaType`仅支持WEAPP`   | [选择文件类型](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html)     | Array                             | `['image', 'video', 'mix']`        |
-| maxDuration`仅支持WEAPP` | 拍摄视频最长拍摄时间，单位秒。时间范围为 3s 至 60s 之间。不限制相册。                                    | Number                            | 10                          |
+| mediaType`仅支持WEAPP` `v1.4.9`   | [选择文件类型](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html)     | Array                             | `['image', 'video', 'mix']`        |
+| maxDuration`仅支持WEAPP` `v1.4.9` | 拍摄视频最长拍摄时间，单位秒。时间范围为 3s 至 60s 之间。不限制相册。                                    | Number                            | 10                          |
 | headers| 设置上传的请求头部      | Object  | {}|
 | data   | 附加上传的信息 formData | Object  | {}|
 | uploadIcon       | 上传区域[图标名称](#/zh-CN/icon)或图片链接      | String  | "photograph"     |
@@ -447,7 +447,7 @@ export default App;
 | 方法名           | 说明                                                       | 参数  | 返回值 |
 |------------------|------------------------------------------------------------|-------|--------|
 | submit           | 手动上传模式，执行上传操作                                 | -     | `-`    |
-| clear | 清空已选择的文件队列（该方法一般配合在手动模式上传时使用） | index | `-`    |
+| clear `v1.4.9` | 清空已选择的文件队列（该方法一般配合在手动模式上传时使用） | index | `-`    |
 
 ## 主题定制
 

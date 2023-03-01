@@ -11,7 +11,7 @@ import Progress from '@/packages/progress'
 import { Upload, UploadOptions } from './upload'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
-import { funInterceptor } from '@/utils/Interceptor'
+import { funcInterceptor } from '@/utils/Interceptor'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -56,6 +56,7 @@ export interface UploaderProps extends BasicComponent {
   onSuccess?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
+    fileList: FileItem[]
   }) => void
   onProgress?: (param: {
     e: ProgressEvent<XMLHttpRequestEventTarget>
@@ -65,6 +66,7 @@ export interface UploaderProps extends BasicComponent {
   onFailure?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
+    fileList: FileItem[]
   }) => void
   onUpdate?: (fileList: FileItem[]) => void
   onOversize?: (file: File[]) => void
@@ -279,6 +281,7 @@ const InternalUploader: ForwardRefRenderFunction<
         onSuccess({
           responseText,
           option,
+          fileList,
         })
     }
     uploadOption.onFailure = (
@@ -299,6 +302,7 @@ const InternalUploader: ForwardRefRenderFunction<
         onFailure({
           responseText,
           option,
+          fileList,
         })
     }
     const task = new Upload(uploadOption)
@@ -381,7 +385,7 @@ const InternalUploader: ForwardRefRenderFunction<
 
   const onDelete = (file: FileItem, index: number) => {
     clearUploadQueue(index)
-    funInterceptor(onBeforeDelete, {
+    funcInterceptor(onBeforeDelete, {
       args: [file, fileList],
       done: () => deleted(file, index),
     })

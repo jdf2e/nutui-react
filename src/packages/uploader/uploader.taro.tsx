@@ -19,7 +19,7 @@ import { UploaderTaro, UploadOptions } from './upload'
 import { Image } from '@tarojs/components'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { funInterceptor } from '@/utils/Interceptor'
+import { funcInterceptor } from '@/utils/Interceptor'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -100,6 +100,7 @@ export interface UploaderProps extends BasicComponent {
   onSuccess?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
+    fileList: FileType<string>[]
   }) => void
   onProgress?: (param: {
     e: ProgressEvent<XMLHttpRequestEventTarget>
@@ -109,6 +110,7 @@ export interface UploaderProps extends BasicComponent {
   onFailure?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
+    fileList: FileType<string>[]
   }) => void
   onUpdate?: (fileList: FileType<string>[]) => void
   onOversize?: (
@@ -370,6 +372,7 @@ const InternalUploader: ForwardRefRenderFunction<
         onSuccess({
           responseText,
           option,
+          fileList,
         })
     }
 
@@ -390,6 +393,7 @@ const InternalUploader: ForwardRefRenderFunction<
         onFailure({
           responseText,
           option,
+          fileList,
         })
     }
 
@@ -486,7 +490,7 @@ const InternalUploader: ForwardRefRenderFunction<
 
   const onDelete = (file: FileItem, index: number) => {
     clearUploadQueue(index)
-    funInterceptor(onBeforeDelete, {
+    funcInterceptor(onBeforeDelete, {
       args: [file, fileList],
       done: () => deleted(file, index),
     })
