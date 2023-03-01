@@ -12,11 +12,6 @@ import bem from '@/utils/bem'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
 
-interface InheritParentProps {
-  getParentVals?: () => string[] | undefined
-  max?: number | undefined
-}
-
 export interface CheckboxProps extends BasicComponent {
   checked: boolean
   disabled: boolean
@@ -28,7 +23,7 @@ export interface CheckboxProps extends BasicComponent {
   iconClassPrefix: string
   iconFontClassName: string
   indeterminate: boolean
-  label: string
+  label: string | number
   onChange: (state: boolean, label: string) => void
 }
 
@@ -47,8 +42,7 @@ const defaultProps = {
 } as CheckboxProps
 export const Checkbox: FunctionComponent<
   Partial<CheckboxProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> &
-    InheritParentProps
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > & { Group: typeof CheckboxGroup } = (props) => {
   const { children } = {
     ...defaultProps,
@@ -68,12 +62,10 @@ export const Checkbox: FunctionComponent<
     iconClassPrefix,
     iconFontClassName,
     iconIndeterminateName,
-    getParentVals,
-    max,
-    ...ohters
+    ...others
   } = props as any
   // eslint-disable-next-line prefer-const
-  let { textPosition, ...rest } = ohters
+  let { textPosition, ...rest } = others
   const ctx = useContext(Context)
 
   let [innerChecked, setInnerChecked] = useState(checked)
