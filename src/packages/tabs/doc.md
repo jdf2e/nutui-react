@@ -328,7 +328,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react';
+import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab8value, setTab8value] = useState('0')
@@ -343,7 +343,7 @@ const App = () => {
         type="smile"
         direction="vertical"
       >
-        <TabPane title="Tab 1">
+        <Tabs.TabPane title="Tab 1">
           <Tabs
             value={tab9value}
             onChange={({ paneKey }) => {
@@ -352,13 +352,13 @@ const App = () => {
             type="smile"
             direction="horizontal"
           >
-            <TabPane title="Tab 1"> Tab 1 </TabPane>
-            <TabPane title="Tab 2"> Tab 2 </TabPane>
-            <TabPane title="Tab 3"> Tab 3 </TabPane>
+            <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
           </Tabs>
-        </TabPane>
-        <TabPane title="Tab 2"> Tab 2 </TabPane>
-        <TabPane title="Tab 3"> Tab 3 </TabPane>
+        </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
 
       <Tabs
@@ -369,7 +369,7 @@ const App = () => {
         autoHeight
         type="smile"
       >
-        <TabPane title="Tab 1">
+        <Tabs.TabPane title="Tab 1">
           <Tabs
             value={tab9value}
             onChange={({ paneKey }) => {
@@ -377,13 +377,13 @@ const App = () => {
             }}
             direction="vertical"
           >
-            <TabPane title="Tab 1"> Tab 1 </TabPane>
-            <TabPane title="Tab 2"> Tab 2 </TabPane>
-            <TabPane title="Tab 3"> Tab 3 </TabPane>
+            <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
           </Tabs>
-        </TabPane>
-        <TabPane title="Tab 2"> Tab 2 </TabPane>
-        <TabPane title="Tab 3"> Tab 3 </TabPane>
+        </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );

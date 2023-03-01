@@ -306,7 +306,7 @@ const TabsDemo = () => {
           type="smile"
           direction="vertical"
         >
-          <TabPane title="Tab 1">
+          <Tabs.TabPane title="Tab 1">
             <Tabs
               value={tab9value}
               onChange={({ paneKey }) => {
@@ -315,13 +315,13 @@ const TabsDemo = () => {
               type="smile"
               direction="horizontal"
             >
-              <TabPane title="Tab 1"> Tab 1 </TabPane>
-              <TabPane title="Tab 2"> Tab 2 </TabPane>
-              <TabPane title="Tab 3"> Tab 3 </TabPane>
+              <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+              <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+              <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
             </Tabs>
-          </TabPane>
-          <TabPane title="Tab 2"> Tab 2 </TabPane>
-          <TabPane title="Tab 3"> Tab 3 </TabPane>
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
 
         <h2>{translated.title13}</h2>
@@ -333,7 +333,7 @@ const TabsDemo = () => {
           autoHeight
           type="smile"
         >
-          <TabPane title="Tab 1">
+          <Tabs.TabPane title="Tab 1">
             <Tabs
               value={tab9value}
               onChange={({ paneKey }) => {
@@ -341,13 +341,13 @@ const TabsDemo = () => {
               }}
               direction="vertical"
             >
-              <TabPane title="Tab 1"> Tab 1 </TabPane>
-              <TabPane title="Tab 2"> Tab 2 </TabPane>
-              <TabPane title="Tab 3"> Tab 3 </TabPane>
+              <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+              <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+              <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
             </Tabs>
-          </TabPane>
-          <TabPane title="Tab 2"> Tab 2 </TabPane>
-          <TabPane title="Tab 3"> Tab 3 </TabPane>
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
 
         <h2>{translated.title7}</h2>
