@@ -14,7 +14,6 @@ import { Checkbox } from '@nutui/nutui-react';
 ## Basic Usage
 
 :::demo
-
 ```tsx
 import React, {useState} from "react";
 import { Checkbox } from '@nutui/nutui-react';
@@ -36,6 +35,7 @@ const CheckBoxDemo = () => {
 }
 export default CheckBoxDemo;
 ```
+:::
 
 ## Indeterminate
 
