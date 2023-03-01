@@ -11,6 +11,7 @@ import Progress from '@/packages/progress'
 import { Upload, UploadOptions } from './upload'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
+import { funcInterceptor } from '@/utils/Interceptor'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -55,6 +56,7 @@ export interface UploaderProps extends BasicComponent {
   onSuccess?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
+    fileList: FileItem[]
   }) => void
   onProgress?: (param: {
     e: ProgressEvent<XMLHttpRequestEventTarget>
@@ -64,6 +66,7 @@ export interface UploaderProps extends BasicComponent {
   onFailure?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
+    fileList: FileItem[]
   }) => void
   onUpdate?: (fileList: FileItem[]) => void
   onOversize?: (file: File[]) => void
@@ -192,6 +195,9 @@ const InternalUploader: ForwardRefRenderFunction<
         res.forEach((i) => i.upload())
       })
     },
+    clear: () => {
+      clearUploadQueue()
+    },
   }))
 
   const clearUploadQueue = (index = -1) => {
@@ -200,6 +206,8 @@ const InternalUploader: ForwardRefRenderFunction<
       setUploadQueue(uploadQueue)
     } else {
       setUploadQueue([])
+      fileList.splice(0, fileList.length)
+      setFileList([...fileList])
     }
   }
 
@@ -273,6 +281,7 @@ const InternalUploader: ForwardRefRenderFunction<
         onSuccess({
           responseText,
           option,
+          fileList,
         })
     }
     uploadOption.onFailure = (
@@ -293,6 +302,7 @@ const InternalUploader: ForwardRefRenderFunction<
         onFailure({
           responseText,
           option,
+          fileList,
         })
     }
     const task = new Upload(uploadOption)
@@ -318,7 +328,13 @@ const InternalUploader: ForwardRefRenderFunction<
       fileItem.type = file.type
       fileItem.formData = formData
       fileItem.uid = file.lastModified + fileItem.uid
-      fileItem.message = locale.uploader.readyUpload
+
+      if (autoUpload) {
+        fileItem.message = locale.uploader.readyUpload
+      } else {
+        fileItem.message = locale.uploader.waitingUpload
+      }
+
       executeUpload(fileItem, index)
 
       if (isPreview && file.type.includes('image')) {
@@ -361,15 +377,18 @@ const InternalUploader: ForwardRefRenderFunction<
     return filterFile
   }
 
+  const deleted = (file: FileItem, index: number) => {
+    fileList.splice(index, 1)
+    onRemove && onRemove(file, fileList)
+    setFileList([...fileList])
+  }
+
   const onDelete = (file: FileItem, index: number) => {
     clearUploadQueue(index)
-    if (onBeforeDelete && onBeforeDelete(file, fileList)) {
-      fileList.splice(index, 1)
-      onRemove && onRemove(file, fileList)
-      setFileList([...fileList])
-    } else {
-      console.log(locale.uploader.deleteWord)
-    }
+    funcInterceptor(onBeforeDelete, {
+      args: [file, fileList],
+      done: () => deleted(file, index),
+    })
   }
 
   const fileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
