@@ -316,6 +316,77 @@ export default App;
 
 :::
 
+### 嵌套布局
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs, TabPane } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [tab8value, setTab8value] = useState('0')
+  const [tab9value, setTab9value] = useState('0')
+  return (
+    <>
+      <Tabs
+        value={tab8value}
+        onChange={({ paneKey }) => {
+          setTab8value(paneKey)
+        }}
+        type="smile"
+        direction="vertical"
+      >
+        <TabPane title="Tab 1">
+          <Tabs
+            value={tab9value}
+            onChange={({ paneKey }) => {
+              setTab9value(paneKey)
+            }}
+            type="smile"
+            direction="horizontal"
+          >
+            <TabPane title="Tab 1"> Tab 1 </TabPane>
+            <TabPane title="Tab 2"> Tab 2 </TabPane>
+            <TabPane title="Tab 3"> Tab 3 </TabPane>
+          </Tabs>
+        </TabPane>
+        <TabPane title="Tab 2"> Tab 2 </TabPane>
+        <TabPane title="Tab 3"> Tab 3 </TabPane>
+      </Tabs>
+
+      <Tabs
+        value={tab8value}
+        onChange={({ paneKey }) => {
+          setTab8value(paneKey)
+        }}
+        autoHeight
+        type="smile"
+      >
+        <TabPane title="Tab 1">
+          <Tabs
+            value={tab9value}
+            onChange={({ paneKey }) => {
+              setTab9value(paneKey)
+            }}
+            direction="vertical"
+          >
+            <TabPane title="Tab 1"> Tab 1 </TabPane>
+            <TabPane title="Tab 2"> Tab 2 </TabPane>
+            <TabPane title="Tab 3"> Tab 3 </TabPane>
+          </Tabs>
+        </TabPane>
+        <TabPane title="Tab 2"> Tab 2 </TabPane>
+        <TabPane title="Tab 3"> Tab 3 </TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
 ### 标签栏字体尺寸 large normal small
 
 :::demo
