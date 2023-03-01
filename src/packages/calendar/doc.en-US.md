@@ -333,13 +333,16 @@ const App = () => {
 
     const goDate = () => {
         if (calendarRef.current) {
-            calendarRef.current.scrollToDate('2022-04-01');
+            calendarRef.current.scrollToDate('2023-04-01');
         }
     };
 
     const clickBtn = () => {
         const date = [Utils.date2Str(new Date()), Utils.getDay(6)];
         setDate3(date);
+        if (calendarRef.current) {
+          calendarRef.current.scrollToDate(date[0])
+        }
     }
 
     const clickBtn1 = () => {
@@ -350,6 +353,9 @@ const App = () => {
         const yearMonth = `${year}-${month}`;
         const currMonthDays = Utils.getMonthDays(`${year  }`, `${month  }`);
         setDate3([`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`]);
+        if (calendarRef.current) {
+          calendarRef.current.scrollToDate(`${yearMonth}-01`)
+        }
     }
 
     const onBtn = () => {
@@ -424,9 +430,16 @@ export default App;
 
 ## API
 
+Through ref, you can get the Calendar instance and call the instance method.
+
+| Name | Description | Arguments |
+| ----- | ----- | -- |
+| scrollToDate | Scroll to the month of the specified date:'2023-06-30' | `string` |
+
+
 ### Props
 
-| Params              | Description                                              | Type            | Default          |
+| Params| Description    | Type            | Default          |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
 | visible   | Is it visible                                          | boolean         | `false`           |
 | type              | Type, select 'one' for date and 'range' for interval              | string          | `one`           |
@@ -450,14 +463,14 @@ export default App;
 
 ### Events
 
-| Events | Description                         | callback parameter                     |
+| Events | Description           | callback parameter       |
 |--------|------------------------------|------------------------------|
 | onChoose | Triggered after selection or by clicking the confirm button | Array of dates (including year, month, day and week) |
 | onClose  | Triggered when closed                   | -                            |
 | onSelected  | Triggered after click/select              |  `Day: Day`                          |
 
 ### Day
-| Params              | Description            |
+| Params| Description            |
 |-------------------|-----------------|
 | day   | string \| number           |
 | type   | string          |
