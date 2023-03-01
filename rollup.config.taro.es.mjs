@@ -1,12 +1,18 @@
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
+import path from 'path'
+import { createRequire } from "module";
+import { fileURLToPath } from 'url';
 
-const path = require('path')
-const config = require('./src/config.json')
+const require = createRequire(import.meta.url);
+const config = require('./src/config.json');
+
+const __filenameNew = fileURLToPath(import.meta.url)
+const __dirnameNew = path.dirname(__filenameNew)
 
 const entries = {
   'nutui-react.es': path.join(
-    __dirname,
+    __dirnameNew,
     `./src/packages/nutui.taro.react.build.ts`
   ),
 }
@@ -18,7 +24,7 @@ config.nav.map((item) => {
     if (show || exportEmpty) {
       outputEntries[`./${name.toLowerCase()}`] = `./${name}`
       entries[name] = path.join(
-        __dirname,
+        __dirnameNew,
         `./src/packages/${name.toLowerCase()}/index.taro.ts`
       )
     }
