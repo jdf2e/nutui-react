@@ -300,21 +300,21 @@ export default App;
 | Attribute                | Description                                       | Type    | Default   |
 | ------------------- | ------------------------------------------ | ------- | -------- |
 | source             | Video url and type settings                         | Object   | -        |
-| options             | Control video playback properties                          | Object  | required |
-| options.autoplay    | Auto play                               | Boolean | false    |
-| options.poster      | Poster settings                                | String  | -        |
-| options.loop        | Poster loop                             | Boolean | false    |
-| options.controls    | Show operation control                             | Boolean | true     |
-| options.muted       | Mute                                   | Boolean | false    |
-| options.playsinline | Whether to set as inline playback element (solve Android compatibility problem) | Boolean | false    |
+| options             | Control video playback properties                          | Object  | - |
+| options.autoplay    | Auto play                               | boolean | `false`    |
+| options.poster      | Poster settings                                | string  | -        |
+| options.loop        | Poster loop                             | boolean | `false`    |
+| options.controls    | Show operation control                             | boolean | `true`     |
+| options.muted       | Mute                                   | boolean | `false`    |
+| options.playsinline | Whether to set as inline playback element (solve Android compatibility problem) | boolean | `false`    |
 
 ### Events
 
 | Event | Description	         | Arguments |
 | -------- | ------------ | -------- |
-| play `v1.3.8 Abandon`     | play event         | --       |
-| pause `v1.3.8 Abandon`    | pause event         | --       |
-| playend `v1.3.8 Abandon`  | Playback completion callback | --       |
-| onPlayFuc `v1.3.8`     | play event         | --       |
-| onPauseFuc `v1.3.8`    | pause event         | --       |
-| onPlayend `v1.3.8`  | Playback completion callback | --       |
+| play `v1.3.8 Abandon`     | play event         | -       |
+| pause `v1.3.8 Abandon`    | pause event         | -       |
+| playend `v1.3.8 Abandon`  | Playback completion callback | -       |
+| onPlayFuc `v1.3.8`     | play event         | -       |
+| onPauseFuc `v1.3.8`    | pause event         | -       |
+| onPlayend `v1.3.8`  | Playback completion callback | -       |

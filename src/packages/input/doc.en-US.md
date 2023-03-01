@@ -431,49 +431,49 @@ export default App;
 
 | Attribute         | Description                                   | Type           | Default  |
 | ------------ | -------------------------------------- | -------------- | ------- |
-| defaultValue | Input value                   | String         | -       |
-| type         | Input type, support all native types and `textarea` `number` `digit` type    | String         | `text`  |
-| name`v1.3.10`  | Used for form submission to obtain data | String         | -       |
+| defaultValue | Input value                   | string         | -       |
+| type         | Input type, support all native types and `textarea` `number` `digit` type    | string         | `text`  |
+| name`v1.3.10`  | Used for form submission to obtain data | string         | -       |
 | ref`v1.3.10`  | Used to obtain internal input instance ref | RefAttributes         | -       |
-| placeholder  | Placeholder when the input box is empty         | String         | -       |
-| label        | Left text                               | String         | -       |
-| labelClass  | Left text extra class name                      | String | -  |
-| labelWidth  | Label width, default unit is `px`            | String、Number | `80`    |
-| labelAlign  | Label align,  eg `left`、`center`、`right`   | String | `left` |
-| inputAlign  | Input align, eg `left`、`center`、`right` | String | `left` |
-| colon        | Whether to display colon after label     | Boolean        | `false` |
-| required     | Whether to show required mark            | Boolean        | `false` |
-| border       | Whether to show inner borde         | Boolean        | `true` |
-| disabled     | Whether to disable field            | Boolean        | `false` |
-| readonly     | Whether to be readonly              | Boolean        | `false` |
-| autofocus    | Whether to auto focus, unsupported in iOS     | Boolean        | `false` |
-| maxlength   | Max length of value                  | String、Number  | -       |
-| clearable    | Whether to be clearable              | Boolean        | `false`  |
-| clearIcon   | Clear Icon name, [name of icon](#/icon)           | String        | `mask-close`  |
-| clearSize   | Clear Icon `font-size`               | String        | `14`  |
-| leftIcon    | Left side Icon name, [name of icon](#/icon) | String        | - |
-| rightIcon   | Right side Icon name, [name of icon](#/icon) | String        | - |
-| leftIconSize    | Left side Icon `font-size`    | String        | `14`  |
-| rightIconSize   | Right side Icon `font-size`   | String        | `14`  |
-| showWordLimit | Whether to show word limit, need to set the `max-length` prop | Boolean | `false`  |
-| error         | Whether to mark the input content in red   | Boolean | `false`  |
-| errorMessage | Error message            | String、Number | - |
-| errorMessageAlign | Error message align, eg `left`、`center`、`right`          | String | - |
+| placeholder  | Placeholder when the input box is empty         | string         | -       |
+| label        | Left text                               | string         | -       |
+| labelClass  | Left text extra class name                      | string | -  |
+| labelWidth  | Label width, default unit is `px`            | string \| number | `80`    |
+| labelAlign  | Label align,  eg `left`、`center`、`right`   | string | `left` |
+| inputAlign  | Input align, eg `left`、`center`、`right` | string | `left` |
+| colon        | Whether to display colon after label     | boolean        | `false` |
+| required     | Whether to show required mark            | boolean        | `false` |
+| border       | Whether to show inner borde         | boolean        | `true` |
+| disabled     | Whether to disable field            | boolean        | `false` |
+| readonly     | Whether to be readonly              | boolean        | `false` |
+| autofocus    | Whether to auto focus, unsupported in iOS     | boolean        | `false` |
+| maxlength   | Max length of value                  | string \| number  | -       |
+| clearable    | Whether to be clearable              | boolean        | `false`  |
+| clearIcon   | Clear Icon name, [name of icon](#/icon)           | string        | `mask-close`  |
+| clearSize   | Clear Icon `font-size`               | string        | `14`  |
+| leftIcon    | Left side Icon name, [name of icon](#/icon) | string        | - |
+| rightIcon   | Right side Icon name, [name of icon](#/icon) | string        | - |
+| leftIconSize    | Left side Icon `font-size`    | string        | `14`  |
+| rightIconSize   | Right side Icon `font-size`   | string        | `14`  |
+| showWordLimit | Whether to show word limit, need to set the `max-length` prop | boolean | `false`  |
+| error         | Whether to mark the input content in red   | boolean | `false`  |
+| errorMessage | Error message            | string \| number | - |
+| errorMessageAlign | Error message align, eg `left`、`center`、`right`          | string | - |
 | formatter      | Input value formatter    | `(val: string) => string` | - |
-| formatTrigger | When to format value, eg `onChange`、`onBlur` | String | - |
+| formatTrigger | When to format value, eg `onChange`、`onBlur` | string | - |
 
 ### Events
 
 | Event   | Description      | Arguments    |
 |--------|----------------|-------------|
-| onChange `v1.3.8` | Emitted when input value changed | val ,event  |
-| onFocus `v1.3.8`  | Emitted when input is focused     | val  ,event |
-| onBlur `v1.3.8`   | Emitted when input is blurred     | val ,event  |
-| onClear `v1.3.8` | Emitted when the clear icon is clicked   | val ,event  |
-| onClick `v1.3.8`  | Emitted when component is clicked	      | val ,event  |
-| onClickInput `v1.3.8`      | Emitted when the input is clicked      | val ,event  |
-| onClickLeftIcon `v1.3.8`  | Emitted when the left icon is clicked      | val ,event  |
-| onClickRightIcon `v1.3.8` | Emitted when the right icon is clicked      | val ,event  |
+| onChange `v1.3.8` | Emitted when input value changed | `val, event`  |
+| onFocus `v1.3.8`  | Emitted when input is focused     | `val, event` |
+| onBlur `v1.3.8`   | Emitted when input is blurred     | `val, event`  |
+| onClear `v1.3.8` | Emitted when the clear icon is clicked   | `val, event`  |
+| onClick `v1.3.8`  | Emitted when component is clicked	      | `val, event`  |
+| onClickInput `v1.3.8`      | Emitted when the input is clicked      | `val, event`  |
+| onClickLeftIcon `v1.3.8`  | Emitted when the left icon is clicked      | `val, event`  |
+| onClickRightIcon `v1.3.8` | Emitted when the right icon is clicked      | `val, event`  |
 
 ### Slots
 
@@ -490,25 +490,25 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-input-border-bottom | ` #eaf0fb` |
-| --nutui-input-disabled-color | ` #c8c9cc` |
-| --nutui-input-required-color | `  $required-color` |
-| --nutui-input-font-size | ` $font-size-2` |
-| --nutui-input-padding | ` 10px 25px` |
-| --nutui-inputnumber-icon-color | `  $title-color` |
-| --nutui-inputnumber-icon-void-color | `  $disable-color` |
-| --nutui-inputnumber-icon-disabled-color | `  $gray2` |
-| --nutui-inputnumber-icon-size | ` 20px` |
-| --nutui-inputnumber-input-font-size | `  12px` |
-| --nutui-inputnumber-input-font-color | `  $gray1` |
-| --nutui-inputnumber-input-background-color | `  $gray4` |
-| --nutui-inputnumber-input-border-radius | `  4px` |
-| --nutui-inputnumber-input-width | ` 40px` |
-| --nutui-inputnumber-input-margin | `  0 6px` |
-| --nutui-inputnumber-input-border | ` 0` |
-| --nutui-inputnumber-border | ` 0` |
-| --nutui-inputnumber-border-radius | ` 0` |
-| --nutui-inputnumber-height | ` auto` |
-| --nutui-inputnumber-line-height | ` normal` |
-| --nutui-inputnumber-border-box | `  content-box` |
-| --nutui-inputnumber-display | ` flex` |
+| --nutui-input-border-bottom | `#eaf0fb` |
+| --nutui-input-disabled-color | `#c8c9cc` |
+| --nutui-input-required-color | `$required-color` |
+| --nutui-input-font-size | `$font-size-2` |
+| --nutui-input-padding | `10px 25px` |
+| --nutui-inputnumber-icon-color | `$title-color` |
+| --nutui-inputnumber-icon-void-color | `$disable-color` |
+| --nutui-inputnumber-icon-disabled-color | `$gray2` |
+| --nutui-inputnumber-icon-size | `20px` |
+| --nutui-inputnumber-input-font-size | `12px` |
+| --nutui-inputnumber-input-font-color | `$gray1` |
+| --nutui-inputnumber-input-background-color | `$gray4` |
+| --nutui-inputnumber-input-border-radius | `4px` |
+| --nutui-inputnumber-input-width | `40px` |
+| --nutui-inputnumber-input-margin | `0 6px` |
+| --nutui-inputnumber-input-border | `0` |
+| --nutui-inputnumber-border | `0` |
+| --nutui-inputnumber-border-radius | `0` |
+| --nutui-inputnumber-height | `auto` |
+| --nutui-inputnumber-line-height | `normal` |
+| --nutui-inputnumber-border-box | `content-box` |
+| --nutui-inputnumber-display | `flex` |

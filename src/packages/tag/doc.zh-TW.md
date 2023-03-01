@@ -9,7 +9,6 @@
 ``` javascript
 // react
 import { Tag } from '@nutui/nutui-react';
-
 ```
 
 ## 代碼實例
@@ -191,21 +190,21 @@ export default App;
 
 | 字段       | 說明                                             | 類型    | 默認值    |
 |------------|--------------------------------------------------|---------|-----------|
-| type       | 標籤类型，可选值为primary success danger warning | String  | `default` |
-| color      | 標籤颜色                                         | String  | -         |
-| textColor | 文本顏色，優先級高於color屬性                    | String  | `white`   |
-| plain      | 是否為空心樣式                                   | Boolean | `false`   |
-| round      | 是否為圓角樣式                                   | Boolean | `false`   |
-| mark       | 是否為標記樣式                                   | Boolean | `false`   |
-| closeable  | 是否为可关闭標籤                                 | Boolean | `false`   |
-| iconSize`v1.4.7` | 关闭标签的尺寸 | string | number | ` 12px`|
+| type       | 標籤类型，可选值为primary success danger warning | string  | `default` |
+| color      | 標籤颜色                                         | string  | -         |
+| textColor | 文本顏色，優先級高於color屬性                    | string  | `white`   |
+| plain      | 是否為空心樣式                                   | boolean | `false`   |
+| round      | 是否為圓角樣式                                   | boolean | `false`   |
+| mark       | 是否為標記樣式                                   | boolean | `false`   |
+| closeable  | 是否为可关闭標籤                                 | boolean | `false`   |
+| iconSize`v1.4.7` | 关闭标签的尺寸 | string \| number | `12px`|
 
 ### Event
 
 | 事件名稱| 說明     | 回調參數 |
 |----------|----------|----------|
-| onClick    | 點擊事件 | event    |
-| onClose    | 關閉事件 | event    |
+| onClick    | 點擊事件 | `event`    |
+| onClose    | 關閉事件 | `event`    |
 
 ## 主題定制
 
@@ -215,15 +214,15 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-tag-padding | ` 0 4px`|
-| --nutui-tag-font-size | ` 12px` |
-| --nutui-tag-default-border-radius | `  4px` |
-| --nutui-tag-round-border-radius | ` 8px` |
-| --nutui-tag-default-background-color | `  #000000` |
-| --nutui-tag-primary-background-color | `  #3460fa` |
-| --nutui-tag-success-background-color | `  #4fc08d` |
-| --nutui-tag-danger-background-color-plain | `  #df3526` |
-| --nutui-tag-warning-background-color | `  #f3812e` |
-| --nutui-tag-default-color | ` #ffffff` |
-| --nutui-tag-border-width | ` 1px` |
-| --nutui-tag-height | ` auto` |
+| --nutui-tag-padding | `0 4px`|
+| --nutui-tag-font-size | `12px` |
+| --nutui-tag-default-border-radius | `4px` |
+| --nutui-tag-round-border-radius | `8px` |
+| --nutui-tag-default-background-color | `#000000` |
+| --nutui-tag-primary-background-color | `#3460fa` |
+| --nutui-tag-success-background-color | `#4fc08d` |
+| --nutui-tag-danger-background-color-plain | `#df3526` |
+| --nutui-tag-warning-background-color | `#f3812e` |
+| --nutui-tag-default-color | `#ffffff` |
+| --nutui-tag-border-width | `1px` |
+| --nutui-tag-height | `auto` |

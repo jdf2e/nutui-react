@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
 import Picker from '@/packages/picker/index.taro'
+import { useConfig } from '@/packages/configprovider'
 
 export interface PickerOption {
   text: string | number
@@ -81,6 +82,7 @@ export const DatePicker: FunctionComponent<
     ...defaultProps,
     ...props,
   }
+  const { locale } = useConfig()
 
   const [show, setShow] = useState(false)
   const [currentDate, setCurrentDate] = useState<Date | null>(modelValue)
@@ -95,13 +97,14 @@ export const DatePicker: FunctionComponent<
     )
   }
 
+  const datepickerLang = locale.datepicker
   const zhCNType: { [key: string]: string } = {
-    day: '日',
-    year: '年',
-    month: '月',
-    hour: '时',
-    minute: '分',
-    seconds: '秒',
+    day: datepickerLang.day,
+    year: datepickerLang.year,
+    month: datepickerLang.month,
+    hour: datepickerLang.hour,
+    minute: datepickerLang.min,
+    seconds: datepickerLang.seconds,
   }
   const formatValue = (value: Date | null) => {
     let cvalue = value
@@ -157,7 +160,6 @@ export const DatePicker: FunctionComponent<
 
   const ranges = (date?: Date) => {
     const curDate = date || currentDate
-    console.log(11, currentDate)
     if (!curDate) return []
     const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } =
       getBoundary('max', curDate)
@@ -369,8 +371,6 @@ export const DatePicker: FunctionComponent<
 
   useEffect(() => {
     setCurrentDate(formatValue(modelValue))
-
-    // initDefault()
   }, [])
 
   useEffect(() => {
@@ -395,6 +395,7 @@ export const DatePicker: FunctionComponent<
     >
       {listData.length > 0 && (
         <Picker
+          title={title}
           isVisible={show}
           listData={listData}
           onClose={onCloseDatePicker}

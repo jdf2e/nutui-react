@@ -316,16 +316,16 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-form-item-error-line-color | `  $required-color` |
-| --nutui-form-item-required-color | `  $required-color` |
-| --nutui-form-item-error-message-color | `  $required-color` |
-| --nutui-form-item-label-font-size | `  14px` |
-| --nutui-form-item-label-width | ` 90px` |
-| --nutui-form-item-label-margin-right | `  10px` |
-| --nutui-form-item-label-text-align | `  left` |
-| --nutui-form-item-required-margin-right | `  4px` |
-| --nutui-form-item-body-font-size | ` 14px` |
-| --nutui-form-item-body-slots-text-align | `  left` |
-| --nutui-form-item-body-input-text-align | `  left` |
-| --nutui-form-item-tip-font-size | ` 10px` |
-| --nutui-form-item-tip-text-align | ` left` |
+| --nutui-form-item-error-line-color | `$required-color` |
+| --nutui-form-item-required-color | `$required-color` |
+| --nutui-form-item-error-message-color | `$required-color` |
+| --nutui-form-item-label-font-size | `14px` |
+| --nutui-form-item-label-width | `90px` |
+| --nutui-form-item-label-margin-right | `10px` |
+| --nutui-form-item-label-text-align | `left` |
+| --nutui-form-item-required-margin-right | `4px` |
+| --nutui-form-item-body-font-size | `14px` |
+| --nutui-form-item-body-slots-text-align | `left` |
+| --nutui-form-item-body-input-text-align | `left` |
+| --nutui-form-item-tip-font-size | `10px` |
+| --nutui-form-item-tip-text-align | `left` |

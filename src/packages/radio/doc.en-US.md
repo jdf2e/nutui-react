@@ -9,7 +9,6 @@ Used to single select in a set of alternatives
 ``` ts
 // react
 import { Radio } from '@nutui/nutui-react';
-
 ```
 
 ## Basic Usage
@@ -196,20 +195,20 @@ export default RadioGroupOptions;
 
 | Props          | Description | Type | Default          |
 |----------------| ----- | ----- |------------------|
-| disabled         | Disable the selection | Boolean                 | `false`           |
-| iconSize        | [Icon size] (#/icon)                                           | String、Number          | `18`              |
-| iconName        | [Icon Name] (#/icon), before selecting (it is recommended to modify it with 'iconActiveName') | String                  | `'check-normal'`  |
-| iconActiveName | [Icon Name] (#/icon), selected (it is recommended to modify it with 'iconName') | String                  | `'check-checked'` |
-| value            | Value is carrying identification, used in Group mode | String、Number、Boolean | -                 |
-| shape            | Shape, with optional values of button, round, | String                  | round             |
+| disabled         | Disable the selection | boolean                 | `false`           |
+| iconSize        | [Icon size] (#/icon)                                           | string \| number          | `18`              |
+| iconName        | [Icon Name] (#/icon), before selecting (it is recommended to modify it with 'iconActiveName') | string                  | `check-normal`  |
+| iconActiveName | [Icon Name] (#/icon), selected (it is recommended to modify it with 'iconName') | string                  | `check-checked` |
+| value            | Value is carrying identification, used in Group mode | string \| number \| boolean | -                 |
+| shape            | Shape, with optional values of button, round, | string                  | `round`             |
 
 ### Radio.RadioGroup
 
 | Props          | Description | Type | Default          |
 |----------------| ----- | ----- |------------------|
-| value       | The identifier of the currently selected item, which is selected when the label value is consistent with the | String、Number、Boolean | -          |
-| textPosition | Where the text is located, optional values: 'left', 'right' | String                  | `right`    |
-| direction     | Use horizontal and vertical directions The optional values horizontal, vertical, | String                  | `vertical` |
+| value       | The identifier of the currently selected item, which is selected when the label value is consistent with the | string \| number \| boolean | -          |
+| textPosition | Where the text is located, optional values: 'left', 'right' | string                  | `right`    |
+| direction     | Use horizontal and vertical directions The optional values horizontal, vertical, | string                  | `vertical` |
 | options `v1.3.10`     | Render radios by configuring options      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 ## Radio.RadioGroup Event
@@ -226,16 +225,16 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-radio-label-font-color | ` $gray1` |
-| --nutui-radio-label-font-active-color | `  $primary-color` |
-| --nutui-radio-label-disable-color | `  $gray3` |
-| --nutui-radio-icon-disable-color | `  $gray2` |
-| --nutui-radio-label-button-border-color | `  $primary-color` |
-| --nutui-radio-label-button-background | `  rgba(250, 44, 25, 0.05)` |
-| --nutui-radio-label-margin-left | ` 15px` |
-| --nutui-radio-button-border-radius | `  15px` |
-| --nutui-radio-label-font-size | ` 14px` |
-| --nutui-radio-button-font-size | ` 12px` |
-| --nutui-radio-button-padding | ` 5px 18px` |
-| --nutui-radio-icon-font-size | ` 18px` |
-| --nutui-radio-icon-disable-color2 | `  $gray3` |
+| --nutui-radio-label-font-color | `$gray1` |
+| --nutui-radio-label-font-active-color | `$primary-color` |
+| --nutui-radio-label-disable-color | `$gray3` |
+| --nutui-radio-icon-disable-color | `$gray2` |
+| --nutui-radio-label-button-border-color | `$primary-color` |
+| --nutui-radio-label-button-background | `rgba(250, 44, 25, 0.05)` |
+| --nutui-radio-label-margin-left | `15px` |
+| --nutui-radio-button-border-radius | `15px` |
+| --nutui-radio-label-font-size | `14px` |
+| --nutui-radio-button-font-size | `12px` |
+| --nutui-radio-button-padding | `5px 18px` |
+| --nutui-radio-icon-font-size | `18px` |
+| --nutui-radio-icon-disable-color2 | `$gray3` |

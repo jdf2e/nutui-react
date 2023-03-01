@@ -152,13 +152,13 @@ export default App;
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
-| progress | 百分比 | Number,String | 必传项，无默认值
-| strokeWidth | 圆弧的宽度 | Number,String | 5
-| radius | 半径 | Number,String | 50
-| circleColor | 圆环进度条颜色 | Number,String | '#fa2c19'
-| pathColor | 圆环轨道颜色| String | '#d9d9d9'
-| strokeLinecap | 圆环进度条端点形状可选值为 square butt| String | 'round'
-| clockwise| 是否顺时针展示| Boolean | true
+| progress | 百分比 | number \| string | 必传项，无默认值
+| strokeWidth | 圆弧的宽度 | number \| string | `5`
+| radius | 半径 | number \| string | `50`
+| circleColor | 圆环进度条颜色 | number \| string | `#fa2c19`
+| pathColor | 圆环轨道颜色| string | `#d9d9d9`
+| strokeLinecap | 圆环进度条端点形状可选值为 square butt| string | `round`
+| clockwise| 是否顺时针展示| boolean | `true`
 
 ## 主题定制
 
@@ -168,7 +168,7 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-circleprogress-primary-color | `  $primary-color` |
-| --nutui-circleprogress-path-color | `  #e5e9f2` |
-| --nutui-circleprogress-text-color | `  $title-color` |
-| --nutui-circleprogress-text-size | `  $font-size-3` |
+| --nutui-circleprogress-primary-color | `$primary-color` |
+| --nutui-circleprogress-path-color | `#e5e9f2` |
+| --nutui-circleprogress-text-color | `$title-color` |
+| --nutui-circleprogress-text-size | `$font-size-3` |

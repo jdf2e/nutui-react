@@ -9,7 +9,6 @@
 ```ts
 // react
 import { Switch } from '@nutui/nutui-react';
-
 ```
 
 ## 代码演示
@@ -150,20 +149,20 @@ export default App;
 
 | 参数           | 说明             | 类型    | 默认值                |
 |----------------|------------------|---------|-----------------------|
-| checked        | 开关状态         | Boolean | `false`               |
-| disable        | 禁用状态         | Boolean | `false`               |
-| activeColor   | 打开时的背景颜色 | String  | `#fa2c19`    |
-| inactiveColor | 关闭时的背景颜色 | String  | `#ebebeb` |
-| activeText    | 打开时文字描述   | String  | -                     |
-| inactiveText  | 关闭时文字描述   | String  | -                     |
-| isAsync  | 开关状态是否异步修改   | Boolean  | `false`                     |
+| checked        | 开关状态         | boolean | `false`               |
+| disable        | 禁用状态         | boolean | `false`               |
+| activeColor   | 打开时的背景颜色 | string  | `#fa2c19`    |
+| inactiveColor | 关闭时的背景颜色 | string  | `#ebebeb` |
+| activeText    | 打开时文字描述   | string  | -                     |
+| inactiveText  | 关闭时文字描述   | string  | -                     |
+| isAsync  | 开关状态是否异步修改   | boolean  | `false`                     |
 
 
 ### Events
 
 | 事件名 | 说明           | 回调参数                      |
 |--------|----------------|-------------------------------|
-| onChange `v1.3.8` | 切换开关时触发 | (value: boolean,event: Event) |
+| onChange `v1.3.8` | 切换开关时触发 | `value: boolean, event: Event` |
 
 
 ## 主题定制
@@ -174,13 +173,13 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-switch-close-bg-color | ` #ebebeb` |
-| --nutui-switch-close--line-bg-color | `  #f0f0f0` |
-| --nutui-switch-width | ` 36px` |
-| --nutui-switch-height | ` 21px` |
-| --nutui-switch-line-height | ` 21px` |
-| --nutui-switch-border-radius | ` 21px` |
-| --nutui-switch-inside-width | ` 13px` |
-| --nutui-switch-inside-height | ` 13px` |
-| --nutui-switch-inside-open-transform | ` translateX(146%)` |
-| --nutui-switch-inside-close-transform | ` translateX(30%)` |
+| --nutui-switch-close-bg-color | `#ebebeb` |
+| --nutui-switch-close--line-bg-color | `#f0f0f0` |
+| --nutui-switch-width | `36px` |
+| --nutui-switch-height | `21px` |
+| --nutui-switch-line-height | `21px` |
+| --nutui-switch-border-radius | `21px` |
+| --nutui-switch-inside-width | `13px` |
+| --nutui-switch-inside-height | `13px` |
+| --nutui-switch-inside-open-transform | `translateX(146%)` |
+| --nutui-switch-inside-close-transform | `translateX(30%)` |

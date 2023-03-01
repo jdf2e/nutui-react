@@ -9,7 +9,6 @@
 ```ts
 // react
 import { CircleProgress } from '@nutui/nutui-react';
-
 ```
 
 ### 基礎用法
@@ -138,13 +137,13 @@ export default App;
 
 | 字段 | 說明 | 類型 | 默認值
 |----- | ----- | ----- | -----
-| progress | 百分比 | Number,String | 必傳項，無默認值
-| strokeWidth | 圓弧的寬度 | Number,String | 5
-| radius | 半徑 | Number,String | 50
-| circleColor | 圓環進度條顏色 | Number,String | '#fa2c19'
-| pathColor | 圓環軌道顏色 | String | '#d9d9d9'
-| strokeLinecap | 圓環進度條端點形狀可選值為 square butt | String | 'round'
-| clockwise| 是否順時針展示 | Boolean | true
+| progress | 百分比 | number \| string | 必傳項，無默認值
+| strokeWidth | 圓弧的寬度 | number \| string | `5`
+| radius | 半徑 | number \| string | `50`
+| circleColor | 圓環進度條顏色 | number \| string | `#fa2c19`
+| pathColor | 圓環軌道顏色 | string | `#d9d9d9`
+| strokeLinecap | 圓環進度條端點形狀可選值為 square butt | string | `round`
+| clockwise| 是否順時針展示 | boolean | `true`
 
 ## 主題定制
 
@@ -154,7 +153,7 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-circleprogress-primary-color | `  $primary-color` |
-| --nutui-circleprogress-path-color | `  #e5e9f2` |
-| --nutui-circleprogress-text-color | `  $title-color` |
-| --nutui-circleprogress-text-size | `  $font-size-3` |
+| --nutui-circleprogress-primary-color | `$primary-color` |
+| --nutui-circleprogress-path-color | `#e5e9f2` |
+| --nutui-circleprogress-text-color | `$title-color` |
+| --nutui-circleprogress-text-size | `$font-size-3` |

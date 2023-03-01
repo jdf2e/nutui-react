@@ -9,7 +9,6 @@ Scrolling to the bottom of the list automatically loads more data.
 ```ts
 // react
 import { InfiniteLoading } from '@nutui/nutui-react';
-
 ```
 
 ### Basic Usage
@@ -266,17 +265,17 @@ export default App;
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| hasMore         | Has more data               | Boolean | `true`                |
-| threshold         | The loadMore event will be Emitted when the distance between the scrollbar and the bottom is less than threshold | Number | `200`               |
-| useWindow | Add the scroll listener to the window or the parent of the listening component    | Boolean | `true` |
-| useCapture          | Whether to use capture mode                        | Boolean | `false`            |
-| containerId          | When useWindow is false, set the node ID by default                        | String | `''`            |
-| loadMoreTxt          | “No more” text                        | String | `‘Oops, this is the bottom’`            |
-| isOpenRefresh        | Enable pull refresh                         | Boolean | `false`                |
-| pullIcon        | Pull refresh[icon name](#/icon)                        | String | ''                |
-| pullTxt        | Pull refresh text                        | String | `Loose to refresh`                |
-| loadIcon        | Pull on loading[icon name](#/icon)                       | String | ''            |
-| loadTxt        | Pull on loading text                         | String | `Loading...`                |
+| hasMore         | Has more data               | boolean | `true`                |
+| threshold         | The loadMore event will be Emitted when the distance between the scrollbar and the bottom is less than threshold | number| `200`               |
+| useWindow | Add the scroll listener to the window or the parent of the listening component    | boolean | `true` |
+| useCapture          | Whether to use capture mode                        | boolean | `false`            |
+| containerId          | When useWindow is false, set the node ID by default                        | string | -            |
+| loadMoreTxt          | “No more” text                        | string | `Oops, this is the bottom`            |
+| isOpenRefresh        | Enable pull refresh                         | boolean | `false`                |
+| pullIcon        | Pull refresh[icon name](#/icon)                        | string | -                |
+| pullTxt        | Pull refresh text                        | string | `Loose to refresh`                |
+| loadIcon        | Pull on loading[icon name](#/icon)                       | string | -            |
+| loadTxt        | Pull on loading text                         | string | `Loading...`                |
 
 ### Events
 
@@ -297,4 +296,4 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-infiniteloading-bottom-color | `  #c8c8c8` |
+| --nutui-infiniteloading-bottom-color | `#c8c8c8` |

@@ -9,7 +9,6 @@ Provides a quick return to the top function for long pages.
 ```javascript
 // react
 import { BackTop } from '@nutui/nutui-react';
-
 ```
 
 
@@ -316,19 +315,19 @@ export default App;
 
 | Attribute        | Description                            | Type    | Default |
 | ----------- | ------------------------------- | ------- | ------ |
-| elId        | Get the parent element of the listening element          | String  | -      |
-| bottom      | Distance from bottom of page                | Number  | `20`   |
-| right       | Distance from the right side of the page                | Number  | `10`   |
-| distance    | How high to scroll the page vertically          | Number  | `200`  |
-| zIndex      | Set the component z-index                | Number  | `10`   |
-| isAnimation | Whether there is animation, mutually exclusive with the duration parameter | Boolean | `true` |
-| duration    | Set animation duration                | Number  | `1000` |
+| elId        | Get the parent element of the listening element          | string  | -      |
+| bottom      | Distance from bottom of page                | number | `20`   |
+| right       | Distance from the right side of the page                | number | `10`   |
+| distance    | How high to scroll the page vertically          | number | `200`  |
+| zIndex      | Set the component z-index                | number | `10`   |
+| isAnimation | Whether there is animation, mutually exclusive with the duration parameter | boolean | `true` |
+| duration    | Set animation duration                | number | `1000` |
 
 ### Event
 
 | Event         | Description               | Arguments          |
 | ------------ | ------------------ | ----------------- |
-| onClick | Emitted when component is clicked | event: MouseEvent |
+| onClick | Emitted when component is clicked | `event: MouseEvent` |
 
 
 ## Theming
@@ -339,4 +338,4 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-backtop-border-color | ` #e0e0e0` |
+| --nutui-backtop-border-color | `#e0e0e0` |

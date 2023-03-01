@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-// import { useTranslate } from '../../sites/assets/locale'
 import Picker from '@/packages/picker'
 import { useConfig } from '@/packages/configprovider'
 
@@ -17,10 +16,6 @@ interface pickerRefState {
     value: string,
     cacheValueData: PickerOption[]
   ) => void
-}
-
-interface T {
-  [props: string]: string
 }
 
 export interface DatePickerProps {
@@ -88,39 +83,11 @@ export const DatePicker: FunctionComponent<
     ...props,
   }
   const { locale } = useConfig()
-  // const [translated] = useTranslate<T>({
-  //   'zh-CN': {
-  //     year: '年',
-  //     month: '月',
-  //     day: '日',
-  //     hour: '时',
-  //     min: '分',
-  //     seconds: '秒',
-  //   },
-  //   'zh-TW': {
-  //     year: '年',
-  //     month: '月',
-  //     day: '日',
-  //     hour: '時',
-  //     min: '分',
-  //     seconds: '秒',
-  //   },
-  //   'en-US': {
-  //     year: 'Year',
-  //     month: 'Month',
-  //     day: 'Day',
-  //     hour: 'Hour',
-  //     min: 'Minute',
-  //     seconds: 'Second',
-  //   },
-  // })
-
   const [show, setShow] = useState(false)
   const [currentDate, setCurrentDate] = useState<Date | null>(modelValue)
   const [defaultValue, setDefaultValue] = useState<(string | number)[]>([])
   const [listData, setListData] = useState<PickerOption[][]>([])
   const pickerRef = useRef<pickerRefState>(null)
-
   const isDate = (val: Date): val is Date => {
     return (
       Object.prototype.toString.call(val) === '[object Date]' &&
@@ -403,8 +370,6 @@ export const DatePicker: FunctionComponent<
 
   useEffect(() => {
     setCurrentDate(formatValue(modelValue))
-
-    // initDefault()
   }, [])
 
   useEffect(() => {
@@ -429,6 +394,7 @@ export const DatePicker: FunctionComponent<
     >
       {listData.length > 0 && (
         <Picker
+          title={title}
           isVisible={show}
           listData={listData}
           onClose={onCloseDatePicker}

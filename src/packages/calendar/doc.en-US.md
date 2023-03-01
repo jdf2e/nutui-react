@@ -9,7 +9,6 @@ Calendar, tileable/pop-up display
 ```javascript
 // react
 import { Calendar } from '@nutui/nutui-react';
-
 ```
 
 ## code demo
@@ -442,38 +441,38 @@ Through ref, you can get the Calendar instance and call the instance method.
 
 | Params| Description    | Type            | Default          |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
-| visible   | Is it visible| Boolean         | false           |
-| type| Type, select 'one' for date and 'range' for interval| String          | 'one'           |
-| poppable          | Whether to display the pop-up window status      | Boolean         | true            |
-| isAutoBackFill | Automatic backfill| Boolean         | false           |
-| title             | show title| String          | ‘Date Pick’      |
-| defaultValue     | Default value, select String format for date, select Array format for interval | String 、 Array | null            |
-| startDate        | The start date, or null if the start date is not limited| String          | Today            |
-| endDate          | The end date, or null if the end date is not limited | String          | 365 days from today |
-| showToday          | Whether to show today's mark | Boolean          | true |
-| startText         | Scope selection, start message copying | String          | ’开始‘ |
-| endText         | Scope selection, closing message copy | String          | ‘结束’ |
-| confirmText          | Bottom confirm button copy | String          | ’确认‘ |
-| showTitle          | Whether to show the calendar title | Boolean          | true |
-| showSubTitle          | Whether to display the date title| Boolean          | true |
-| toDateAnimation          | Whether to start scroll animation| Boolean          | true |
-| onBtn | Below the custom calendar header, you can add custom actions|  (() => string \| JSX.Element) 、 undefined      | - |
-| onDay  | date information|  ((date: Day) => string \| JSX.Element) 、 undefined            | - |
-| onTopInfo  | Date Top Information             |  ((date: Day) => string \| JSX.Element) 、 undefined            | - |
-| onBottomInfo  | date bottom information             |  ((date: Day) => string \| JSX.Element) 、 undefined           | - |
+| visible   | Is it visible                                          | boolean         | `false`           |
+| type              | Type, select 'one' for date and 'range' for interval              | string          | `one`           |
+| poppable          | Whether to display the pop-up window status                                  | boolean         | `true`            |
+| isAutoBackFill | Automatic backfill                                          | boolean         | `false`           |
+| title             | show title                                          | string          | `Date Pick`      |
+| defaultValue     | Default value, select string format for date, select Array format for interval | string \| Array | -            |
+| startDate        | The start date, or null if the start date is not limited              | string          | Today            |
+| endDate          | The end date, or null if the end date is not limited               | string          | 365 days from today |
+| showToday          | Whether to show today's mark               | boolean          | `true` |
+| startText         | Scope selection, start message copying               | string          | `开始` |
+| endText         | Scope selection, closing message copy               | string          | `结束` |
+| confirmText          | Bottom confirm button copy               | string          | `确认` |
+| showTitle          | Whether to show the calendar title               | boolean          | `true` |
+| showSubTitle          | Whether to display the date title              | boolean          | `true` |
+| toDateAnimation          | Whether to start scroll animation              | boolean          | `true` |
+| onBtn | Below the custom calendar header, you can add custom actions              |  (() => string \| JSX.Element) \| undefined      | - |
+| onDay  | date information              |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
+| onTopInfo  | Date Top Information             |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
+| onBottomInfo  | date bottom information             |  ((date: Day) => string \| JSX.Element) \| undefined                         | - |
 
 ### Events
 
 | Events | Description           | callback parameter       |
 |--------|------------------------------|------------------------------|
 | onChoose | Triggered after selection or by clicking the confirm button | Array of dates (including year, month, day and week) |
-| onClose  | Triggered when closed     | -|
-| onSelected  | Triggered after click/select|  Day: Day            |
+| onClose  | Triggered when closed                   | -                            |
+| onSelected  | Triggered after click/select              |  `Day: Day`                          |
 
 ### Day
 | Params| Description            |
 |-------------------|-----------------|
-| day   | string、number           |
+| day   | string \| number           |
 | type   | string          |
 
 
@@ -485,20 +484,20 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-calendar-primary-color | `  $primary-color` |
-| --nutui-calendar-choose-color | `  rgba(#fa2c19, 0.09)` |
-| --nutui-calendar-choose-font-color | `  $primary-color` |
-| --nutui-calendar-base-color | ` #333333` |
-| --nutui-calendar-disable-color | ` #d1d0d0` |
-| --nutui-calendar-base-font | ` $font-size-3` |
-| --nutui-calendar-title-font | ` $font-size-4` |
-| --nutui-calendar-title-font-weight | `  500` |
-| --nutui-calendar-sub-title-font | `  $font-size-2` |
-| --nutui-calendar-text-font | ` $font-size-1` |
-| --nutui-calendar-day-font | ` 16px` |
-| --nutui-calendar-day-active-border-radius | `  0px` |
-| --nutui-calendar-day-height | ` 64px` |
-| --nutui-calendar-day-font-weight | ` 500` |
-| --nutui-calendar-day67-font-color | `  $primary-color` |
-| --nutui-calendar-top-slot-height | ` 24px` |
-| --nutui-calendar-month-title-font-size | `  inherit` |
+| --nutui-calendar-primary-color | `$primary-color` |
+| --nutui-calendar-choose-color | `rgba(#fa2c19, 0.09)` |
+| --nutui-calendar-choose-font-color | `$primary-color` |
+| --nutui-calendar-base-color | `#333333` |
+| --nutui-calendar-disable-color | `#d1d0d0` |
+| --nutui-calendar-base-font | `$font-size-3` |
+| --nutui-calendar-title-font | `$font-size-4` |
+| --nutui-calendar-title-font-weight | `500` |
+| --nutui-calendar-sub-title-font | `$font-size-2` |
+| --nutui-calendar-text-font | `$font-size-1` |
+| --nutui-calendar-day-font | `16px` |
+| --nutui-calendar-day-active-border-radius | `0px` |
+| --nutui-calendar-day-height | `64px` |
+| --nutui-calendar-day-font-weight | `500` |
+| --nutui-calendar-day67-font-color | `$primary-color` |
+| --nutui-calendar-top-slot-height | `24px` |
+| --nutui-calendar-month-title-font-size | `inherit` |

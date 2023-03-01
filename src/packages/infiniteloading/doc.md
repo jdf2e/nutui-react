@@ -9,7 +9,6 @@
 ```ts
 // react
 import { InfiniteLoading } from '@nutui/nutui-react';
-
 ```
 ### 基础用法
 
@@ -265,17 +264,17 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| hasMore         | 是否还有更多数据               | Boolean | `true`                |
-| threshold         | 距离底部多远加载 | Number | `200`               |
-| useWindow | 将滚动侦听器添加到 window 否则侦听组件的父节点     | Boolean | `true` |
-| useCapture          | 是否使用捕获模式 true 捕获 false 冒泡                        | Boolean | `false`            |
-| containerId          | 在 useWindow 属性为 false 的时候，自定义设置节点ID                        | String | `''`            |
-| loadMoreTxt          | “没有更多数”据展示文案                        | String | `'哎呀，这里是底部了啦'`            |
-| isOpenRefresh        | 是否开启下拉刷新                         | Boolean | `false`                |
-| pullIcon        | 下拉刷新[图标名称](#/icon)                        | String | ''                |
-| pullTxt        | 下拉刷新提示文案                         | String | `松手刷新`                |
-| loadIcon        | 上拉加载[图标名称](#/icon)                       | String | ''            |
-| loadTxt        | 上拉加载提示文案                         | String | `加载中...`                |
+| hasMore         | 是否还有更多数据               | boolean | `true`                |
+| threshold         | 距离底部多远加载 | number| `200`               |
+| useWindow | 将滚动侦听器添加到 window 否则侦听组件的父节点     | boolean | `true` |
+| useCapture          | 是否使用捕获模式 true 捕获 false 冒泡                        | boolean | `false`            |
+| containerId          | 在 useWindow 属性为 false 的时候，自定义设置节点ID                        | string | -            |
+| loadMoreTxt          | “没有更多数”据展示文案                        | string | `哎呀，这里是底部了啦`            |
+| isOpenRefresh        | 是否开启下拉刷新                         | boolean | `false`                |
+| pullIcon        | 下拉刷新[图标名称](#/icon)                        | string | -                |
+| pullTxt        | 下拉刷新提示文案                         | string | `松手刷新`                |
+| loadIcon        | 上拉加载[图标名称](#/icon)                       | string | -            |
+| loadTxt        | 上拉加载提示文案                         | string | `加载中...`                |
 
 ### Events
 
@@ -296,4 +295,4 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-infiniteloading-bottom-color | `  #c8c8c8` |
+| --nutui-infiniteloading-bottom-color | `#c8c8c8` |

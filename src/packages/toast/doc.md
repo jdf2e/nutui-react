@@ -9,7 +9,6 @@
 ```javascript
 // react
 import { Toast } from '@nutui/nutui-react';
-
 ```
 
 ## 代码演示
@@ -306,29 +305,29 @@ export default App
 | Toast.success             | 展示成功提示       | message｜ options| toast 实例 |
 | Toast.fail                | 展示失败提示     | message｜ options| toast 实例 |
 | Toast.warn                | 展示警告提示        | message｜ options | toast 实例 |
-| Toast.hide                | 关闭提示          | force:boolean   | void       |
+| Toast.hide                | 关闭提示          | force\: boolean   | void       |
 | Toast.loading             | 展示加载提示       | message｜ options | toast 实例 |
 
 ### Props
 
 | 字段                | 说明              | 类型          | 默认值                        |
 | ------------------- | -------------- | ------------- | ----------------------------- |
-| id                  | 标识符，相同者共用一个实例<br>loading类型默认使用一个实例，其他类型默认不共用 | String/Number | -                             |
-| duration            | 展示时长（秒）<br>值为 0 时，toast 不会自动消失      | Number        | 2       |
+| id                  | 标识符，相同者共用一个实例<br>loading类型默认使用一个实例，其他类型默认不共用 | string \| number | -                             |
+| duration            | 展示时长（秒）<br>值为 0 时，toast 不会自动消失      | number       | `2`       |
 | title `v1.3.0`            | 标题      | string        | -            |
-| center              | 是否展示在页面中部（为false时展示在底部）                   | Boolean  | true   |
-| bottom              | 距页面底部的距离（像素），option.center为false时生效        | Number   | 30     |
-| textAlignCenter     | 多行文案是否居中                         | Boolean       | true          |
-| bgColor             | 背景颜色（透明度）                                   | String        | "rgba(0, 0, 0, 0.8)"    |
-| customClass         | 自定义类名                                            | String        | ""        |
-| icon                | 自定义图标，**支持图片链接或base64格式**              | String        | ""           |
-| iconSize `v1.3.0`               | 自定义图标尺寸              | String        | 20          |
-| size                | 文案尺寸，**small**/**base**/**large**三选一           | String        | "base"         |
-| cover               | 是否显示遮罩层                                          | Boolean       | false |
-| coverColor          | 遮罩层颜色，默认透明                                   | String        | "rgba(0,0,0,0)"    |
-| loadingRotate       | loading图标是否旋转，仅对loading类型生效                   | Boolean       | true          |
-| onClose             | 关闭时触发的事件                                      | function      | null            |
-| closeOnClickOverlay | 是否在点击遮罩层后关闭提示                         | Boolean       | false     |
+| center              | 是否展示在页面中部（为false时展示在底部）                   | boolean  | `true`   |
+| bottom              | 距页面底部的距离（像素），option.center为false时生效        | number  | `30`     |
+| textAlignCenter     | 多行文案是否居中                         | boolean       | `true`          |
+| bgColor             | 背景颜色（透明度）                                   | string        | `rgba(0, 0, 0, 0.8)`    |
+| customClass         | 自定义类名                                            | string        | -        |
+| icon                | 自定义图标，**支持图片链接或base64格式**              | string        | -           |
+| iconSize `v1.3.0`               | 自定义图标尺寸              | string        | `20`          |
+| size                | 文案尺寸，**small**/**base**/**large**三选一           | string        | `base`         |
+| cover               | 是否显示遮罩层                                          | boolean       | `false` |
+| coverColor          | 遮罩层颜色，默认透明                                   | string        | `rgba(0,0,0,0)`    |
+| loadingRotate       | loading图标是否旋转，仅对loading类型生效                   | boolean       | `true`          |
+| onClose             | 关闭时触发的事件                                      | Function      | `null`            |
+| closeOnClickOverlay | 是否在点击遮罩层后关闭提示                         | boolean       | `false`     |
 
 
 
@@ -340,10 +339,10 @@ export default App
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-toast-title-font-size | ` 16px` |
-| --nutui-toast-text-font-size | ` 14px` |
-| --nutui-toast-font-color | ` #fff` |
-| --nutui-toast-inner-padding | ` 24px 30px` |
-| --nutui-toast-inner-bg-color | ` $gray7` |
-| --nutui-toast-inner-border-radius | `  12px` |
-| --nutui-toast-cover-bg-color | ` $gray7` |
+| --nutui-toast-title-font-size | `16px` |
+| --nutui-toast-text-font-size | `14px` |
+| --nutui-toast-font-color | `#fff` |
+| --nutui-toast-inner-padding | `24px 30px` |
+| --nutui-toast-inner-bg-color | `$gray7` |
+| --nutui-toast-inner-border-radius | `12px` |
+| --nutui-toast-cover-bg-color | `$gray7` |

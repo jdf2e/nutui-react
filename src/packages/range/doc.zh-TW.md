@@ -9,7 +9,6 @@
 ```javascript
 // react
 import { Range } from '@nutui/nutui-react';
-
 ```
 
 ## 代码演示
@@ -515,22 +514,22 @@ export default App;
 
 | 参数          | 说明                 | 类型             | 默认值                   |
 | ------------- | ------------------- | ---------------- | ------------------------ |
-| modelValue    | 当前进度百分比     | Number、Number[] | `0`                      |
-| range         | 是否开启双滑块模式 | Boolean          | `false`                  |
-| max           | 最大值             | Number、String   | `100`                    |
-| min           | 最小值             | Number、String   | `0`                      |
-| maxDesc`v1.3.12`     | 最大值描述          | Number、String   | -                    |
-| minDesc`v1.3.12`     | 最小值描述          | Number、String   | -                      |
-| curValueDesc`v1.3.12` | 当前值描述          | Number、String   | -                    |
-| step          | 步长               | Number、String   | `1`                      |
-| disabled      | 是否禁用滑块       | Boolean          | `false`                  |
-| vertical`v1.2.2` | 是否竖向展示 | Boolean | `false` |
-| hiddenRange   | 是否隐藏范围值     | Boolean          | `false`                  |
-| hiddenTag     | 是否隐藏标签       | Boolean          | `false`                  |
-| activeColor   | 进度条激活态颜色   | String           | `rgba(250, 44, 25, 1)`   |
-| inactiveColor | 进度条非激活态颜色 | String           | `rgba(255, 163, 154, 1)` |
-| buttonColor   | 按钮颜色           | String           | `rgba(250, 44, 25, 1)`   |
-| marks`v1.2.2` | 刻度标示| Object{key: number}    | {} |
+| modelValue    | 当前进度百分比     | number \| number[] | `0`                      |
+| range         | 是否开启双滑块模式 | boolean          | `false`                  |
+| max           | 最大值             | number \| string   | `100`                    |
+| min           | 最小值             | number \| string   | `0`                      |
+| maxDesc`v1.3.12`     | 最大值描述          | number \| string   | -                    |
+| minDesc`v1.3.12`     | 最小值描述          | number \| string   | -                      |
+| curValueDesc`v1.3.12` | 当前值描述          | number \| string   | -                    |
+| step          | 步长               | number \| string   | `1`                      |
+| disabled      | 是否禁用滑块       | boolean          | `false`                  |
+| vertical`v1.2.2` | 是否竖向展示 | boolean | `false` |
+| hiddenRange   | 是否隐藏范围值     | boolean          | `false`                  |
+| hiddenTag     | 是否隐藏标签       | boolean          | `false`                  |
+| activeColor   | 进度条激活态颜色   | string           | `rgba(250, 44, 25, 1)`   |
+| inactiveColor | 进度条非激活态颜色 | string           | `rgba(255, 163, 154, 1)` |
+| buttonColor   | 按钮颜色           | string           | `rgba(250, 44, 25, 1)`   |
+| marks`v1.2.2` | 刻度标示| Object{key: number}    | `{}` |
 
 ### Events
 
@@ -555,10 +554,10 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-range-tip-font-color | ` $gray1` |
-| --nutui-range-bg-color | ` rgba(#fa2c19, 0.5)` |
-| --nutui-range-bg-color-tick | ` #fa958c` |
-| --nutui-range-bar-btn-bg-color | ` $white` |
-| --nutui-range-bar-btn-width | ` 24px` |
-| --nutui-range-bar-btn-height | ` 24px` |
-| --nutui-range-bar-btn-border | `  1px solid $primary-color` |
+| --nutui-range-tip-font-color | `$gray1` |
+| --nutui-range-bg-color | `rgba(#fa2c19, 0.5)` |
+| --nutui-range-bg-color-tick | `#fa958c` |
+| --nutui-range-bar-btn-bg-color | `$white` |
+| --nutui-range-bar-btn-width | `24px` |
+| --nutui-range-bar-btn-height | `24px` |
+| --nutui-range-bar-btn-border | `1px solid $primary-color` |
