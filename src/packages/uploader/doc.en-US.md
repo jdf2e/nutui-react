@@ -24,7 +24,19 @@ const App = () => {
   return (
     <>
       <h2>Basic Usage</h2>
-      <Uploader url={uploadUrl} start={onStart} />
+      <Uploader
+        url={uploadUrl}
+        onStart={onStart}
+        style={{ marginRight: '10px' }}
+      />
+      <Uploader
+        url={uploadUrl}
+        uploadIconSize="20px"
+        uploadIconTip="Main goods"
+        onStart={onStart}
+        style={{ marginRight: '10px' }}
+      />
+      <Uploader url={uploadUrl} uploadIcon="dongdong" onStart={onStart} />
     </>
   )
 }
@@ -43,15 +55,23 @@ const App = () => {
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
   const defaultFileList: FileType<string>[] = [
     {
-      name: 'file1.png',
+      name: 'filefilefile1.png',
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
       status: 'success',
       message: 'Uploaded successfully',
       type: 'image',
-      uid: '123',
+      uid: '122',
     },
     {
-      name: 'file2.png',
+      name: 'file.png',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'success',
+      message: 'Uploaded successfully',
+      type: 'image',
+      uid: '122',
+    },
+    {
+      name: 'file4.png',
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
       status: 'error',
       message: 'upload failed',
@@ -59,12 +79,30 @@ const App = () => {
       uid: '124',
     },
     {
-      name: 'file3.png',
+      name: 'file5.png',
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
       status: 'uploading',
       message: 'uploading...',
       type: 'image',
       uid: '125',
+    },
+    {
+      name: 'file6.png',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'uploading',
+      message: 'uploading...',
+      type: 'image',
+      uid: '126',
+      loadingIcon: 'loading1',
+    },
+    {
+      name: 'file7.png',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'uploading',
+      message: 'uploading...',
+      type: 'image',
+      uid: '127',
+      loadingIcon: ' ',
     },
   ]
   const onDelete = (file: FileItem, fileList: FileItem[]) => {
@@ -279,6 +317,9 @@ const App = () => {
   const submitUpload = () => {
     uploadRef.current.submit()
   }
+  const clearUpload = () => {
+    uploadRef.current.clear()
+  };
   return (
     <>
       <h2>Manual upload</h2>
@@ -286,6 +327,9 @@ const App = () => {
       <br />
       <Button type="success" size="small" onClick={submitUpload}>
         perform upload
+      </Button>
+      <Button type="danger" size="small" onClick={clearUpload}>
+        Clear upload manually
       </Button>
     </>
   )
@@ -347,7 +391,7 @@ export default App;
 | beforeDelete `v1.3.4 Abandon`     | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects| Function(file): boolean \| Promise | -|
 | onBeforeDelete `v1.3.4`     | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects| Function(file): boolean \| Promise | -|
 
-
+> Note: accept, capture, and multiple are the native attributes of the browser's input tag. The mobile terminal's different models support these attributes differently, so there may be some compatibility problems under different models and WebView.
 
 ### FileItem
 
@@ -360,7 +404,7 @@ export default App;
 | type     | File type| `image/jpeg`|
 | formData | Upload the required data| `new FormData()`  |
 
-### Event
+### Events
 
 | Event	     | Description   | Arguments  |
 |----------|------------------------|----------------------|
@@ -380,6 +424,15 @@ export default App;
 | remove `v1.3.4 Abandon`   | The state before the file was deleted    | `files, fileList`       |
 | onFileItemClick `v1.3.4`   | File delete event     | `fileItem`       |
 | fileItemClick `v1.3.4 Abandon`   | File delete event     | `fileItem`       |
+
+### Methods
+
+Use ref to get Uploader instance and call instance methods.
+
+| Name             | Description                                                                                 | Arguments | Return value |
+|------------------|---------------------------------------------------------------------------------------------|-----------|--------------|
+| submit           | Manual upload mode, perform upload operation                                                | -         | -            |
+| clear `v1.4.9` | Empty the selected file queue (this method is generally used when uploading in manual mode) | index     | -            |
 
 
 ## Theming

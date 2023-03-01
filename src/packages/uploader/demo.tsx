@@ -8,6 +8,7 @@ import './demo.scss'
 
 interface uploadRefState {
   submit: () => void
+  clear: () => void
 }
 
 interface T {
@@ -35,6 +36,7 @@ interface T {
   uploadXhrCustom: string
   '67fffe24': string
   fcf01d1a: string
+  clearBtnUpload: string
   '7db1a8b2': string
 }
 const UploaderDemo = () => {
@@ -64,6 +66,7 @@ const UploaderDemo = () => {
       uploadXhrCustom: '自定义 xhr 上传方式(before-xhr-upload)',
       '67fffe24': '选中文件后，通过按钮手动执行上传',
       fcf01d1a: '执行上传',
+      clearBtnUpload: '手动清空上传',
       '7db1a8b2': '禁用状态',
     },
     'zh-TW': {
@@ -91,6 +94,7 @@ const UploaderDemo = () => {
       uploadXhrCustom: '自定義 xhr 上傳方式(before-xhr-upload)',
       '67fffe24': '選取檔後，通過按鈕手動執行上傳',
       fcf01d1a: '執行上傳',
+      clearBtnUpload: '手動清空上傳',
       '7db1a8b2': '禁用狀態',
     },
     'en-US': {
@@ -119,6 +123,7 @@ const UploaderDemo = () => {
       '67fffe24':
         'After selecting Chinese, manually perform the upload via the button',
       fcf01d1a: 'Perform the upload',
+      clearBtnUpload: 'Clear upload manually',
       '7db1a8b2': 'Disabled state',
     },
   })
@@ -136,7 +141,7 @@ const UploaderDemo = () => {
       status: 'success',
       message: translated['844759c9'],
       type: 'image',
-      uid: '123',
+      uid: '122',
     },
     {
       name: translated.df9128ec,
@@ -169,7 +174,7 @@ const UploaderDemo = () => {
       status: 'uploading',
       message: translated['403b055e'],
       type: 'image',
-      uid: '125',
+      uid: '126',
       loadingIcon: 'loading1',
     },
     {
@@ -178,7 +183,7 @@ const UploaderDemo = () => {
       status: 'uploading',
       message: translated['403b055e'],
       type: 'image',
-      uid: '125',
+      uid: '127',
       loadingIcon: ' ',
     },
   ]
@@ -240,6 +245,9 @@ const UploaderDemo = () => {
   }
   const submitUpload = () => {
     ;(uploadRef.current as uploadRefState).submit()
+  }
+  const clearUpload = () => {
+    ;(uploadRef.current as uploadRefState).clear()
   }
   return (
     <>
@@ -342,8 +350,16 @@ const UploaderDemo = () => {
           ref={uploadRef}
         />
         <br />
-        <Button type="success" size="small" onClick={submitUpload}>
+        <Button
+          type="success"
+          size="small"
+          onClick={submitUpload}
+          style={{ marginRight: '10px' }}
+        >
           {translated.fcf01d1a}
+        </Button>
+        <Button type="danger" size="small" onClick={clearUpload}>
+          {translated.clearBtnUpload}
         </Button>
 
         <h2>{translated['7db1a8b2']}</h2>
