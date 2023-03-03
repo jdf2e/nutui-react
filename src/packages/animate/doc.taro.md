@@ -129,15 +129,15 @@ export default AnimateDemo
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| type         | 动画类型，见下方type值说明               | String | 'shake'                |
-| action         | 触发方式，'initial'--初始化执行;  'click'--点击执行              | String | 'initial'             |
-| loop         | 是否循环执行。true-循环执行;false-执行一次              | Boolean | false               |
+| type         | 动画类型，见下方type值说明               | string | `shake`                |
+| action         | 触发方式，'initial'--初始化执行;  'click'--点击执行              | string | `initial`             |
+| loop         | 是否循环执行。true-循环执行;false-执行一次              | boolean | `false`               |
 
 ### Events
 
 | 方法名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| onClick  | 点击元素时触发 | event: Event |
+| onClick  | 点击元素时触发 | `event: Event` |
 
 ### type值说明
 

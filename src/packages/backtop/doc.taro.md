@@ -256,19 +256,19 @@ export default App;
 
 | 字段        | 说明                            | 类型    | 默认值 |
 | ----------- | ------------------------------- | ------- | ------ |
-| bottom      | 距离页面底部距离                | Number  | `20`   |
-| right       | 距离页面右侧距离                | Number  | `10`   |
-| distance    | 页面垂直滚动多高后出现          | Number  | `200`  |
-| zIndex      | 设置组件页面层级                | Number  | `10`   |
-| isAnimation | 是否有动画,和 duration 参数互斥 | Boolean | `true` |
-| duration    | 设置动画持续时间                | Number  | `1000` |
+| bottom      | 距离页面底部距离                | number | `20`   |
+| right       | 距离页面右侧距离                | number | `10`   |
+| distance    | 页面垂直滚动多高后出现          | number | `200`  |
+| zIndex      | 设置组件页面层级                | number | `10`   |
+| isAnimation | 是否有动画,和 duration 参数互斥 | boolean | `true` |
+| duration    | 设置动画持续时间                | number | `1000` |
 
 ### Events
 
 | 名称                       | 说明               | 回调参数          |
 |--------------------------| ------------------ | ----------------- |
-| backTopClick`v1.2.1 废弃` | 按钮点击时触发事件 | event: MouseEvent |
-| onClick`v1.2.1`          | 按钮点击时触发事件 | event: MouseEvent |
+| backTopClick`v1.2.1 废弃` | 按钮点击时触发事件 | `event: MouseEvent` |
+| onClick`v1.2.1`          | 按钮点击时触发事件 | `event: MouseEvent` |
 
 
 ## 主题定制
@@ -279,4 +279,4 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-backtop-border-color | ` #e0e0e0` |
+| --nutui-backtop-border-color | `#e0e0e0` |

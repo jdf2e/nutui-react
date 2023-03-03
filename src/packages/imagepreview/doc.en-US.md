@@ -10,7 +10,6 @@ Support full screen preview videos and images, support functional call.
 ```ts
 // react
 import { ImagePreview } from '@nutui/nutui-react'
-
 ```
 
 
@@ -219,14 +218,14 @@ export default App;
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| show | Whether to show preview | Boolean | false
-| videos | Videos Array(Videos are before images, not support in taro) | Array<`Object`> | []
-| images | Images array | Array<`String`> | []
-| autoplay | Autoplay time, zero means not autoplay | Number、String  | 3000  |
-| initNo | Init no | Number | 1
-| paginationVisible | Whether to show pagination    | Boolean | false |
-| paginationColor   | Pagination color    | String  | '#fff'  |
-| contentClose   | Click image to exit preview    | Boolean  | false  |
+| show | Whether to show preview | boolean | `false` |
+| videos | Videos Array(Videos are before images, not support in taro) | `Array<Object>` | `[]`
+| images | Images array | `{ src: string }[]` | `[]` |
+| autoplay | Autoplay time, zero means not autoplay | number \| string  | `3000`  |
+| initNo | Init no | number | `1` |
+| paginationVisible | Whether to show pagination    | boolean | `false` |
+| paginationColor   | Pagination color    | string  | `#fff`  |
+| contentClose   | Click image to exit preview    | boolean  | `false`  |
 
 ### Events
 

@@ -9,7 +9,6 @@
 ```ts
 // react
 import { Rate } from '@nutui/nutui-react';
-
 ```
 
 ## 代碼演示
@@ -205,18 +204,18 @@ export default App;
 
 | 字段           | 說明                                      | 類型    | 默認值      |
 |----------------|-------------------------------------------|---------|-------------|
-| modelValue        | 當前 star 數不能大於count | Number  | -           |
-| count          | star 總數                                 | Number  | 5           |
-| minimizeValue  | 最少選中star數量                          | Number  | 0           |
-| iconSize      | star 大小                                 | Number  | 18          |
-| activeColor   | 圖標選中顏色                              | String  | #fa200c     |
-| voidColor     | 圖標未選中顏色                          | String  | #ccc        |
-| uncheckedIcon | 使用圖標(未選中)                          | String  | star-n      |
-| checkedIcon   | 使用圖標(選中)                           | String  | star-fill-n |
-| allowHalf     | 是否半星                                  | Boolean | false       |
-| readonly       | 是否只讀                                 | Boolean | false       |
-| disabled       | 是否禁用                                  | Boolean | false       |
-| spacing        | 間距                                      | Number  | 20          |
+| modelValue        | 當前 star 數不能大於count | number | -           |
+| count          | star 總數                                 | number | `5`           |
+| minimizeValue  | 最少選中star數量                          | number | `0`           |
+| iconSize      | star 大小                                 | number | `18`          |
+| activeColor   | 圖標選中顏色                              | string  | `#fa200c`     |
+| voidColor     | 圖標未選中顏色                          | string  | `#ccc`        |
+| uncheckedIcon | 使用圖標(未選中)                          | string  | `star-n`      |
+| checkedIcon   | 使用圖標(選中)                           | string  | `star-fill-n` |
+| allowHalf     | 是否半星                                  | boolean | `false`       |
+| readonly       | 是否只讀                                 | boolean | `false`       |
+| disabled       | 是否禁用                                  | boolean | `false`       |
+| spacing        | 間距                                      | number | `20`          |
 
 ## Event
 | 字段   | 說明                       | 回調參數 |
@@ -232,5 +231,5 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-rate-icon-color | ` $primary-color` |
-| --nutui-rate-icon-void-color | `  $disable-color` |
+| --nutui-rate-icon-color | `$primary-color` |
+| --nutui-rate-icon-void-color | `$disable-color` |

@@ -8,7 +8,6 @@
 ```javascript
 // react
 import { Row, Col } from '@nutui/nutui-react'
-
 ```
 
 
@@ -190,27 +189,27 @@ export default App;
 
 | 字段         | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
-| type         | 佈局方式，可選值為flex              | String | -                |
-| gutter        | 列元素之間的間距（單位為px）         | String、Number | 0      |
-| justify       | Flex 主軸對齊方式，可選值為 start end center space-around space-between| String | start               |
-| align	 | Flex 交叉軸對齊方式，可選值為 flex-start center flex-end     | String | flex-start |
-| wrap          | Flex是否換行，可選值為 nowrap wrap reverse    | String | nowrap              |
+| type         | 佈局方式，可選值為flex              | string | -                |
+| gutter        | 列元素之間的間距（單位為px）         | string \| number | `0`      |
+| justify       | Flex 主軸對齊方式，可選值為 start end center space-around space-between| string | `start`               |
+| align	 | Flex 交叉軸對齊方式，可選值為 flex-start center flex-end     | string | `flex-start` |
+| wrap          | Flex是否換行，可選值為 nowrap wrap reverse    | string | `nowrap`              |
 
 ### col
 
 | 字段 | 說明           | 類型     | 默認值           |
 |--------|----------------|--------------| ------------------|
-| span  | 列元素寬度（共分為24份，例如設置一行3個，那麼span值為8） | String、Number| 24|
-| offset  | 列元素偏移距離 | String、Number| 0 |
+| span  | 列元素寬度（共分為24份，例如設置一行3個，那麼span值為8） | string \| number| `24` |
+| offset  | 列元素偏移距離 | string \| number| `0` |
 
 ### row events
 
 | 字段 | 說明 | 回調參數 |
 |----- | ----- | ----- |
-| onClick`v1.3.0` | 點擊時觸發 | event: MouseEvent, type: 'row' | 'col' |
+| onClick`v1.3.0` | 點擊時觸發 | `event: MouseEvent, type: 'row' \| 'col'` |
 
 ### col events
 
 | 字段 | 說明 | 回調參數 |
 |----- | ----- | ----- |
-| onClick`v1.3.0` | 點擊時觸發 | event: MouseEvent, type: 'row' | 'col' |
+| onClick`v1.3.0` | 點擊時觸發 | `event: MouseEvent, type: 'row' \| 'col'` |

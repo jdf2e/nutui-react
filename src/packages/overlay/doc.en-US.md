@@ -10,7 +10,6 @@ Create a mask layer that is typically used to prevent users from doing other thi
 ``` ts
 // react
 import { OverLay } from '@nutui/nutui-react';
-
 ```
 
 ## Code demo
@@ -97,19 +96,19 @@ export default App;
 
 | Props                   | Description             | Type           | Default |
 | ---------------------- | ---------------- | -------------- | ------ |
-| visible                   | Whether the current component is displayed | Boolean        | `false`  |
-| zIndex                | Mask hierarchy         | Number | 2000   |
-| duration               | Animation duration, in seconds | Number | 0.3    |
-| overlayClass          | Custom mask class name   | String         | -      |
+| visible                   | Whether the current component is displayed | boolean        | `false`  |
+| zIndex                | Mask hierarchy         | number | `2000`   |
+| duration               | Animation duration, in seconds | number | `0.3`    |
+| overlayClass          | Custom mask class name   | string         | -      |
 | overlayStyle          | Customize the mask style   | CSSProperties  | -      |
-| lockScroll          | Whether the background is locked   | Boolean  | `false`     |
-| closeOnClickOverlay | Tap Mask off | Boolean        | `true`   |
+| lockScroll          | Whether the background is locked   | boolean  | `false`     |
+| closeOnClickOverlay | Tap Mask off | boolean        | `true`   |
 
 ### Events
 
 | Event | Description       | Callback parameters     |
 | ------ | ---------- | ------------ |
-| onClick  | Triggered when the button is clicked | event: Event |
+| onClick  | Triggered when the button is clicked | `event: Event` |
 
 
 ## Theming
@@ -120,6 +119,6 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-overlay-bg-color | ` $gray7` |
-| --nutui-overlay-content-bg-color | `  $gray6` |
-| --nutui-overlay-content-color | ` $gray1` |
+| --nutui-overlay-bg-color | `$gray7` |
+| --nutui-overlay-content-bg-color | `$gray6` |
+| --nutui-overlay-content-color | `$gray1` |

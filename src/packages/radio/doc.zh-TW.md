@@ -9,7 +9,6 @@
 ``` ts
 // react
 import { Radio } from '@nutui/nutui-react';
-
 ```
 
 ## 基本用法
@@ -195,20 +194,20 @@ export default RadioGroupOptions;
 
 | 屬性         | 說明                             | 類型             | 預設值           |
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
-| disabled         | 是否禁用選擇                                                 | Boolean                 | `false`           |
-| iconSize        | [圖示尺寸](#/icon)                                           | String、Number          | `18`              |
-| iconName        | [圖示名稱](#/icon)，選中前（建議和'iconActiveName'一起修改） | String                  | `'check-normal'`  |
-| iconActiveName | [圖示名稱](#/icon)，選取後（建議和'iconName'一起修改）        | String                  | `'check-checked'` |
-| value            | 攜帶的標識值，用於 Group 模式                                                   | String、Number、Boolean | -                 |
-| shape            | 形狀，可選值為 button、round                                 | String                  | round             |
+| disabled         | 是否禁用選擇                                                 | boolean                 | `false`           |
+| iconSize        | [圖示尺寸](#/icon)                                           | string \| number          | `18`              |
+| iconName        | [圖示名稱](#/icon)，選中前（建議和'iconActiveName'一起修改） | string                  | `check-normal`  |
+| iconActiveName | [圖示名稱](#/icon)，選取後（建議和'iconName'一起修改）        | string                  | `check-checked` |
+| value            | 攜帶的標識值，用於 Group 模式                                                   | string \| number \| boolean | -                 |
+| shape            | 形狀，可選值為 button、round                                 | string                  | `round`             |
 
 ### Radio.RadioGroup
 
 | 屬性 | 說明 | 類型 | 預設值 |
 |---------------|-----------------------------------------------|-------------------------|------------|
-| value       | 當前選取的標識碼，與label值一致時呈選中狀態 | String、Number、Boolean | -          |
-| textPosition | 文本所在的位置，可選值：'left'，'right' | String                  | `right`    |
-| direction     | 使用橫縱方向 可選值 horizontal、vertical | String                  | `vertical` |
+| value       | 當前選取的標識碼，與label值一致時呈選中狀態 | string \| number \| boolean | -          |
+| textPosition | 文本所在的位置，可選值：'left'，'right' | string                  | `right`    |
+| direction     | 使用橫縱方向 可選值 horizontal、vertical | string                  | `vertical` |
 | options `v1.3.10`     | 配置 options 渲染單選按鈕      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 ## Radio.RadioGroup Event
@@ -225,16 +224,16 @@ export default RadioGroupOptions;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-radio-label-font-color | ` $gray1` |
-| --nutui-radio-label-font-active-color | `  $primary-color` |
-| --nutui-radio-label-disable-color | `  $gray3` |
-| --nutui-radio-icon-disable-color | `  $gray2` |
-| --nutui-radio-label-button-border-color | `  $primary-color` |
-| --nutui-radio-label-button-background | `  rgba(250, 44, 25, 0.05)` |
-| --nutui-radio-label-margin-left | ` 15px` |
-| --nutui-radio-button-border-radius | `  15px` |
-| --nutui-radio-label-font-size | ` 14px` |
-| --nutui-radio-button-font-size | ` 12px` |
-| --nutui-radio-button-padding | ` 5px 18px` |
-| --nutui-radio-icon-font-size | ` 18px` |
-| --nutui-radio-icon-disable-color2 | `  $gray3` |
+| --nutui-radio-label-font-color | `$gray1` |
+| --nutui-radio-label-font-active-color | `$primary-color` |
+| --nutui-radio-label-disable-color | `$gray3` |
+| --nutui-radio-icon-disable-color | `$gray2` |
+| --nutui-radio-label-button-border-color | `$primary-color` |
+| --nutui-radio-label-button-background | `rgba(250, 44, 25, 0.05)` |
+| --nutui-radio-label-margin-left | `15px` |
+| --nutui-radio-button-border-radius | `15px` |
+| --nutui-radio-label-font-size | `14px` |
+| --nutui-radio-button-font-size | `12px` |
+| --nutui-radio-button-padding | `5px 18px` |
+| --nutui-radio-icon-font-size | `18px` |
+| --nutui-radio-icon-disable-color2 | `$gray3` |

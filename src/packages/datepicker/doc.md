@@ -9,7 +9,6 @@
 ```ts
 // react
 import { DatePicker } from '@nutui/nutui';
-
 ```
     
 ## 代码演示
@@ -326,23 +325,23 @@ export default App;
 | 参数                        | 说明                                              | 类型    | 默认值   |
 |---------------------------|---------------------------------------------------|---------|----------|
 | modelValue                | 初始值                                            | Date    | `null`   |
-| visible                   | 是否可见                                          | Boolean | `false`  |
-| type                      | 类时间类型，可选值 date time year-month month-day datehour datetime | String  | `'date'` |
-| minuteStep                | 分钟步进值                                        | Number  | `1`      |
-| isShowChinese             | 每列是否展示中文                                  | Boolean | `false`  |
-| title                     | 设置标题                                          | String  | `null`   |
+| visible                   | 是否可见                                          | boolean | `false`  |
+| type                      | 类时间类型，可选值 date time year-month month-day datehour datetime | string  | `date` |
+| minuteStep                | 分钟步进值                                        | number | `1`      |
+| isShowChinese             | 每列是否展示中文                                  | boolean | `false`  |
+| title                     | 设置标题                                          | string  | `null`   |
 | minDate                   | 开始日期                                          | Date    | `十年前` |
 | maxDate                   | 结束日期                                          | Date    | `十年后` |
-| formatter`v1.2.2`         | 选项格式化函数                                          | (type: string, option: PickerOption) => PickerOption    |  |
-| filter`v1.2.2`            | 选项过滤函数                                          | (type: string, option: PickerOption) => PickerOption[]    |  |
-| three-dimensional`v1.2.2` | 是否开启3D效果               | Boolean  | true   |
+| formatter`v1.2.2`         | 选项格式化函数                                          | (type: string, option: PickerOption) => PickerOption    | - |
+| filter`v1.2.2`            | 选项过滤函数                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
+| three-dimensional`v1.2.2` | 是否开启3D效果               | boolean  | `true`   |
 
 
 ### Events
     
 | 事件名                         | 说明               | 回调参数     |
 |-----------------------------|--------------------|--------------|
-| confirm`v1.2.2 废弃`         | 点击确定按钮时触发 | event: Event |
-| onConfirmDatePicker`v1.2.2` | 点击确定按钮时触发 | values, options |
-| onCloseDatePicker           | 关闭时触发         | -- |
-| onChange`v1.2.2`                  | 选项改变时触发         |  columnIndex, values, options  |
+| confirm`v1.2.2 废弃`         | 点击确定按钮时触发 | `event: Event` |
+| onConfirmDatePicker`v1.2.2` | 点击确定按钮时触发 | `values, options` |
+| onCloseDatePicker           | 关闭时触发         | - |
+| onChange`v1.2.2`                  | 选项改变时触发         |  `columnIndex, values, options`  |

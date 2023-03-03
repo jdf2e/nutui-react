@@ -159,5 +159,5 @@ export default App;
 
 | 参数     | 说明     | 类型      | 默认值  |
 |--------|--------|---------|------|
-| locale | 设置多语言包 | `BaseLang` | zhCN |
-| theme      | 设置主题   |    `Record<string, string>`     | -    |
+| locale | 设置多语言包 | BaseLang | zhCN |
+| theme      | 设置主题   |    Record<string, string>     | -    |

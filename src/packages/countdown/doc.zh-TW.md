@@ -9,7 +9,6 @@
 ```ts
 // react
 import { CountDown } from '@nutui/nutui-react'
-
 ```
 
 ## 代碼演示
@@ -328,15 +327,15 @@ export default App;
 
 | 字段 | 說明 | 類型 | 默認值
 | ----- | ----- | ----- | -----
-| startTime | 開始時間 | Number | Date.now()
-| endTime | 結束時間 | Number | Date.now()
-| paused | 是否暫停 | Boolean | false
-| format `v1.3.3` |  時間格式 | String | HH:mm:ss
-| millisecond `v1.3.3` |  是否開啟毫秒級渲染 | Boolean | false
-| autoStart `v1.3.3` |  是否自動開始倒計時 | Boolean | true
-| time `v1.3.3` | 倒計時顯示時間，單位是毫秒。autoStart 為 false 時生效 | Number | 0
-| showDays `v1.3.3廢棄` | 是否顯示天 | Boolean | false
-| showPlainText `v1.3.3廢棄` | 顯示為純文本 | Boolean | false
+| startTime | 開始時間 | number | `Date.now()`
+| endTime | 結束時間 | number | `Date.now()`
+| paused | 是否暫停 | boolean | `false`
+| format `v1.3.3` |  時間格式 | string | HH\:mm\:ss
+| millisecond `v1.3.3` |  是否開啟毫秒級渲染 | boolean | `false`
+| autoStart `v1.3.3` |  是否自動開始倒計時 | boolean | `true`
+| time `v1.3.3` | 倒計時顯示時間，單位是毫秒。autoStart 為 false 時生效 | number | `0`
+| showDays `v1.3.3廢棄` | 是否顯示天 | boolean | `false`
+| showPlainText `v1.3.3廢棄` | 顯示為純文本 | boolean | `false`
 
 ### format 格式
 
@@ -364,7 +363,7 @@ export default App;
 
 通過 ref 可以獲取到 CountDown 實例並調用實例方法。
 
-| 方法明 | 說明 |
+| 方法名 | 說明 |
 | ----- | ----- | 
 | start | 開始倒計時 | 
 | pause | 暫停倒計時 | 
@@ -381,6 +380,6 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-countdown-display | ` flex` |
-| --nutui-countdown-color | ` inherit` |
-| --nutui-countdown-font-size | ` initial` |
+| --nutui-countdown-display | `flex` |
+| --nutui-countdown-color | `inherit` |
+| --nutui-countdown-font-size | `initial` |

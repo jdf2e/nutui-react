@@ -9,7 +9,6 @@
 ``` javascript
 // react
 import { Badge } from '@nutui/nutui-react';
-
 ```
 
 ## 代码实例
@@ -233,14 +232,14 @@ export default App;
 
 | 字段    | 说明                                       | 类型    | 默认值    |
 |---------|--------------------------------------------|---------|-----------|
-| value   | 显示的内容  | String  | -         |
-| max     | value 为数值时，最大值 | Number  | `10000`   |
-| zIndex | 徽标的 z-index 值 | Number  | `10`      |
-| dot     | 是否为小点 | Boolean | `false`   |
-| top     | 上下偏移量，支持单位设置，可设置为：5 等 | Number  | `0`       |
-| right   | 左右偏移量，支持单位设置，可设置为：5 等 | Number  | `0`       |
-| color   | 徽标背景颜色 | String  | `#fa2c19` |
-| icons   | 徽标自定义 | String  | - |
+| value   | 显示的内容  | string  | -         |
+| max     | value 为数值时，最大值 | number  | `10000`   |
+| zIndex | 徽标的 z-index 值 | number  | `10`      |
+| dot     | 是否为小点 | boolean | `false`   |
+| top     | 上下偏移量，支持单位设置，可设置为：5 等 | number  | `0`       |
+| right   | 左右偏移量，支持单位设置，可设置为：5 等 | number  | `0`       |
+| color   | 徽标背景颜色 | string  | `#fa2c19` |
+| icons   | 徽标自定义 | string  | - |
 
 
 ## 主题定制
@@ -251,16 +250,16 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-badge-background-color | ` linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%))`|
-| --nutui-badge-color | ` #fff` |
-| --nutui-badge-font-size | ` $font-size-1` |
-| --nutui-badge-default-background-color | `  rgba(255, 255, 255, 1)` |
-| --nutui-badge-border | ` 0px solid $primary-text-color`|
-| --nutui-badge-border-radius | ` 14px` |
-| --nutui-badge-padding | ` 0 5px` |
-| --nutui-badge-content-transform | ` translateY(-50%) translateX(100%)`|
-| --nutui-badge-z-index | ` 1` |
-| --nutui-badge-dot-width | ` 7px` |
-| --nutui-badge-dot-height | ` 7px` |
-| --nutui-badge-dot-border-radius | ` 7px` |
-| --nutui-badge-dot-padding | ` 0px` |
+| --nutui-badge-background-color | `linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%))`|
+| --nutui-badge-color | `#fff` |
+| --nutui-badge-font-size | `$font-size-1` |
+| --nutui-badge-default-background-color | `rgba(255, 255, 255, 1)` |
+| --nutui-badge-border | `0px solid $primary-text-color`|
+| --nutui-badge-border-radius | `14px` |
+| --nutui-badge-padding | `0 5px` |
+| --nutui-badge-content-transform | `translateY(-50%) translateX(100%)`|
+| --nutui-badge-z-index | `1` |
+| --nutui-badge-dot-width | `7px` |
+| --nutui-badge-dot-height | `7px` |
+| --nutui-badge-dot-border-radius | `7px` |
+| --nutui-badge-dot-padding | `0px` |

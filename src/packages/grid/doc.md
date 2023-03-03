@@ -8,8 +8,7 @@
 
 ```javascript
 // react
-import { Grid ,GridItem } from '@nutui/nutui-react'
-
+import { Grid, GridItem } from '@nutui/nutui-react'
 ```
 
 ## 代码演示
@@ -257,7 +256,7 @@ export default App
 
 | 参数                  | 说明                                                                                     | 回调参数    |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|
-| onClick `1.3.14`                 | 点击格子时触发                                                                         | event: Event      |
+| onClick `1.3.14`                 | 点击格子时触发                                                                         | `event: Event`      |
 
 
 ## 主题定制
@@ -268,10 +267,10 @@ export default App
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-grid-border-color | ` #f5f6f7` |
-| --nutui-grid-item-content-padding | `  16px 8px` |
-| --nutui-grid-item-content-bg-color | `  $white` |
-| --nutui-grid-item-text-margin | ` 8px` |
-| --nutui-grid-item-text-color | ` $gray1` |
-| --nutui-grid-item-icon-color | ` $gray1` |
-| --nutui-grid-item-text-font-size | `  $font-size-1` |
+| --nutui-grid-border-color | `#f5f6f7` |
+| --nutui-grid-item-content-padding | `16px 8px` |
+| --nutui-grid-item-content-bg-color | `$white` |
+| --nutui-grid-item-text-margin | `8px` |
+| --nutui-grid-item-text-color | `$gray1` |
+| --nutui-grid-item-icon-color | `$gray1` |
+| --nutui-grid-item-text-font-size | `$font-size-1` |

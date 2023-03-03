@@ -9,7 +9,6 @@ It is used to apply different styles to the parts before and after the decimal p
 ```javascript
 // react
 import { Price } from '@nutui/nutui-react'
-
 ```
 
 ## Demo
@@ -182,13 +181,13 @@ export default App;
 
 | Attribute      | Description                                                | Type            | Default |
 |----------------|------------------------------------------------------------|------------------|--------|
-| price          | Price                 | Number  | 0      |
-| needSymbol    | Add symbol | Boolean | true   |
-| symbol         | Symbol type                 | String  | &yen;  |
-| decimalDigits | Decimal digits               | Number  | 2      |
-| thousands      | Thousands separation   | Boolean | false  |
-| position`v1.3.9`   | The symbol appear before or after the price，`before`、`after` | String           | before |
-| size`v1.3.9`   | Size，`large`、`normal`、`small`                            | String           | large |
+| price          | Price                 | number  | `0`      |
+| needSymbol    | Add symbol | boolean | `true`   |
+| symbol         | Symbol type                 | string  | `&yen;`  |
+| decimalDigits | Decimal digits               | number  | `2`      |
+| thousands      | Thousands separation   | boolean | `false`  |
+| position`v1.3.9`   | The symbol appear before or after the price，`before`、`after` | string           | `before` |
+| size`v1.3.9`   | Size，`large`、`normal`、`small`                            | string           | `large` |
 
 
 ## Theming
@@ -199,12 +198,12 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-price-symbol-big-size | ` 18px` |
-| --nutui-price-integer-big-size | ` 24px` |
-| --nutui-price-decimal-big-size | ` 18px` |
-| --nutui-price-symbol-medium-size | ` 14px` |
-| --nutui-price-integer-medium-size | `  16px` |
-| --nutui-price-decimal-medium-size | `  14px` |
-| --nutui-price-symbol-small-size | ` 10px` |
-| --nutui-price-integer-small-size | ` 12px` |
-| --nutui-price-decimal-small-size | ` 10px` |
+| --nutui-price-symbol-big-size | `18px` |
+| --nutui-price-integer-big-size | `24px` |
+| --nutui-price-decimal-big-size | `18px` |
+| --nutui-price-symbol-medium-size | `14px` |
+| --nutui-price-integer-medium-size | `16px` |
+| --nutui-price-decimal-medium-size | `14px` |
+| --nutui-price-symbol-small-size | `10px` |
+| --nutui-price-integer-small-size | `12px` |
+| --nutui-price-decimal-small-size | `10px` |

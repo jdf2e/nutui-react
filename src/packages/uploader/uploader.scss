@@ -1,10 +1,13 @@
 @import '../icon/icon.scss';
+@import '../progress/progress.scss';
 @import '../../styles/mixins/text-ellipsis.scss';
+
 .nut-theme-dark {
   .nut-uploader {
     // background-color:  $gray2;
     &__preview {
       margin-bottom: 0;
+
       &-img {
         i {
           color: $dark1 !important;
@@ -12,16 +15,19 @@
       }
     }
   }
+
   .nut-progress {
     .nut-progress-text__inner {
       color: $white !important;
     }
   }
+
   .nut-uploader__preview-list {
     background: $dark5;
     color: $dark1;
   }
 }
+
 .nut-uploader {
   position: relative;
   display: flex;
@@ -33,12 +39,31 @@
 
   &__upload {
     position: relative;
-    background: $uploader-background;
-    width: $uploader-picture-width;
-    height: $uploader-picture-height;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: $uploader-background;
+    width: $uploader-picture-width;
+    height: $uploader-picture-height;
+    border: $uploader-picture-border;
+    border-radius: $uploader-picture-border-radius;
+  }
+
+  &__icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      opacity: $uploader-picture-icon-opacity;
+      margin-bottom: $uploader-picture-icon-margin-bottom;
+    }
+
+    &-tip {
+      font-size: $uploader-picture-icon-tip-font-size;
+      color: $uploader-picture-icon-tip-color;
+    }
   }
 
   &__input {
@@ -50,49 +75,67 @@
     overflow: hidden;
     cursor: pointer !important;
     opacity: 0;
+
     &:disabled {
       cursor: not-allowed;
     }
   }
 
+  &__upload-disabled {
+    background: $uploader-background-disabled;
+
+    .nut-uploader__icon {
+      i {
+        opacity: $uploader-picture-icon-opacity-disabled;
+        margin-bottom: $uploader-picture-icon-margin-bottom;
+      }
+    }
+  }
+
   &__preview {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    position: relative;
+    margin-right: $uploader-preview-margin-right;
+    margin-bottom: $uploader-preview-margin-bottom;
     box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
+
     &__progress {
       position: absolute;
       left: 0;
       top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      width: 100%;
+      height: 100%;
+      background: $uploader-preview-progress-background;
+      border-radius: $uploader-picture-border-radius;
+
+      i {
+        margin-bottom: $uploader-picture-icon-margin-bottom;
+      }
+
       &__msg {
         color: #fff;
         font-size: 12px;
-        margin-top: 6px;
       }
     }
+
     &.list {
       width: 100%;
       margin-right: 0px;
       margin-bottom: 0px;
       margin-top: 10px;
     }
+
     &-list {
       width: 100%;
       height: 32px;
       display: flex;
       flex-direction: column;
       position: relative;
-      padding-right: 20px;
-      background-color: $gray4;
+      background-color: $gray5;
+
       .nut-uploader__preview-img__file__name {
         -webkit-line-clamp: 1;
         padding: 2px;
@@ -104,49 +147,60 @@
         right: 4px;
         top: 6px;
       }
+
       .nut-progress {
         position: absolute;
         left: 0;
         right: 0;
         bottom: 0;
+
         .nut-progress-outer {
           height: 2px !important;
         }
       }
     }
+
+    .close {
+      position: absolute;
+      right: $uploader-preview-close-right;
+      top: $uploader-preview-close-top;
+      transform: translate(50%, -50%);
+    }
+
     &-img {
       position: relative;
       width: $uploader-picture-width;
       height: $uploader-picture-height;
+      border-radius: $uploader-picture-border-radius;
+
       i {
         color: $gray1;
       }
-      .close {
-        position: absolute;
-        right: 0;
-        top: 0;
-        transform: translate(50%, -50%);
-      }
+
       .tips {
         position: absolute;
         bottom: 0;
         left: 0;
-        right: 0;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         font-size: 12px;
         color: $white;
-        height: 0px;
-        transition: height 0.3s;
-        background: rgba(0, 0, 0, 0.54);
+        text-align: center;
+        box-sizing: border-box;
+        height: $uploader-preview-tips-height;
+        line-height: $uploader-preview-tips-height;
+        border-radius: $uploader-picture-border-radius;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        padding: $uploader-preview-tips-padding;
+        background: $uploader-preview-tips-background;
         @include oneline-ellipsis();
       }
+
       &__c {
-        height: 100%;
-        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 6px;
       }
+
       &__file {
         height: 100%;
         width: 100%;
@@ -160,12 +214,15 @@
           width: 100%;
           font-size: 12px;
           color: $text-color;
+
           &.error {
             color: red !important;
           }
+
           &.success {
             color: #1890ff !important;
           }
+
           .nut-icon-link {
             &::before {
               margin-left: -25%;
@@ -173,6 +230,7 @@
               transform: none;
             }
           }
+
           @include moreline-ellipsis();
         }
       }

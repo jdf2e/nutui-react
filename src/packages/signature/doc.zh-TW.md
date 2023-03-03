@@ -9,7 +9,6 @@
 ```javascript
 // react
 import { Signature } from '@nutui/nutui-react'
-
 ```
 
 ## 代碼演示
@@ -97,11 +96,11 @@ export default App;
 
 | 參數           | 說明                           | 類型   | 默認值                                              |
 | -------------- | ------------------------------ | ------ | --------------------------------------------------- |
-| customClass   | 自定義 class                   | String | -                                                   |
-| lineWidth     | 線條的寬度                     | Number | 3                                                   |
-| strokeStyle   | 繪圖筆觸顏色                   | String | '#000'                                              |
-| type           | 圖片格式                       | String | 'png'                                               |
-| unSupportTpl | 不支持 Canvas 情況下的展示文案 | String | '對不起，當前瀏覽器不支持 Canvas，無法使用本控件！' |
+| customClass   | 自定義 class                   | string | -                                                   |
+| lineWidth     | 線條的寬度                     | number | `3`                                                   |
+| strokeStyle   | 繪圖筆觸顏色                   | string | `#000`                                              |
+| type           | 圖片格式                       | string | `png`                                               |
+| unSupportTpl | 不支持 Canvas 情況下的展示文案 | string | `對不起，當前瀏覽器不支持 Canvas，無法使用本控件！` |
 
 ## Event
 
