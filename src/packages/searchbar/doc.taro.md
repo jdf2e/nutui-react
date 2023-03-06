@@ -7,7 +7,6 @@
 ### 安装
 
 ```javascript
-
 import { SearchBar } from '@nutui/nutui-react-taro';
 ```
 
@@ -133,7 +132,7 @@ const App = () => {
   }
   return <>
     <SearchBar
-      change={(val: string, e: Event) => change(val, e)}
+      onChange={(val: string, e: Event) => change(val, e)}
       maxLength={10}
     />
     value：{value}
@@ -150,41 +149,41 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| value         | 当前输入的值               | _string_ | -                |
-| placeholder        | 输入框默认暗纹  | _string_ | `请输入`   |
-| className | 自定义class类名 | _string_ | '' |
-| shape | 搜索框形状，可选值为 `round` | _string_ | `square` |
-| disabled | 是否禁用输入框 | _boolean_ | `false` |
-| readonly | 输入框只读 | _boolean_ | `false` |
-| maxLength         | 最大输入长度   | _number_ | `9999`   |
-| clearable          | 是否展示清除按钮 | _boolean_ | `true`     |
-| clearIconSize`v1.4.7` | 清除按钮尺寸大小，同Icon的size | string/number | `12px` |
-| background          | 搜索框外部背景色 | _string_ | -     |
-| inputBackground          | 搜索框背景色 | _string_ | -     |
-| inputAlign | 对齐方式，可选 `center` `right` | _string_ | `left` |
-| autofocus  | 是否自动聚焦 | _boolean_ | `false` |
-| label | 搜索框左侧文本 | _string_ | '' |
-| actionText | 取消按钮文本 | _ReactNode_ | '' |
-| leftinIcon     | 输入框内，左icon  | _ReactNode_ | `<Icon name="search" size="12" />` |
-| rightinIcon     | 输入框内，右icon | _ReactNode_ | - |
-| leftoutIcon     | 输入框外，左icon | _ReactNode_ | - |
-| rightoutIcon    | 输入框外，右icon | _ReactNode_ | - |
+| value         | 当前输入的值               | string | -                |
+| placeholder        | 输入框默认暗纹  | string | `请输入`   |
+| className | 自定义class类名 | string | - |
+| shape | 搜索框形状，可选值为 `round` | string | `square` |
+| disabled | 是否禁用输入框 | boolean | `false` |
+| readonly | 输入框只读 | boolean | `false` |
+| maxLength         | 最大输入长度   | number | `9999`   |
+| clearable          | 是否展示清除按钮 | boolean | `true`     |
+| clearIconSize`v1.4.7` | 清除按钮尺寸大小，同Icon的size | string \| number | `12px` |
+| background          | 搜索框外部背景色 | string | -     |
+| inputBackground          | 搜索框背景色 | string | -     |
+| inputAlign | 对齐方式，可选 `center` `right` | string | `left` |
+| autofocus  | 是否自动聚焦 | boolean | `false` |
+| label | 搜索框左侧文本 | string | - |
+| actionText | 取消按钮文本 | ReactNode | - |
+| leftinIcon     | 输入框内，左icon  | ReactNode | `<Icon name="search" size="12" />` |
+| rightinIcon     | 输入框内，右icon | ReactNode | - |
+| leftoutIcon     | 输入框外，左icon | ReactNode | - |
+| rightoutIcon    | 输入框外，右icon | ReactNode | - |
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| onChange  | 输入内容时触发 | _val: string, event: Event_ |
-| onFocus  | 聚焦时触发 | _val: string, event: Event_ |
-| onBlur  | 失焦时触发 | _val: string, event: Event_ |
-| onClear  | 点击清空时触发 | _event: Event_ |
+| onChange  | 输入内容时触发 | `val: string, event: Event` |
+| onFocus  | 聚焦时触发 | `val: string, event: Event` |
+| onBlur  | 失焦时触发 | `val: string, event: Event` |
+| onClear  | 点击清空时触发 | `event: Event` |
 | onCancel `v1.3.6` | 点击取消按钮时触发 | - |
-| onSearch  | 确定搜索时触发 | _val: string, event: Event_ |
-| onClickInput |	点击输入区域时触发	 |	_event: Event_ |
-| onClickLeftinIcon |	点击输入框`内左侧`图标时触发 |	_val: string, event: Event_ |
-| onClickLeftoutIcon |	点击输入框`外左侧`图标时触发 |	_val: string, event: Event_ |
-| onClickRightinIcon |	点击输入框`内右侧`图标时触发 |	_val: string, event: Event_ |
-| onClickRightoutIcon |	点击输入框`外右侧`图标时触发 |	_val: string, event: Event_ |
+| onSearch  | 确定搜索时触发 | `val: string, event: Event` |
+| onClickInput |	点击输入区域时触发	 |	event: Event |
+| onClickLeftinIcon |	点击输入框`内左侧`图标时触发 |	`val: string, event: Event` |
+| onClickLeftoutIcon |	点击输入框`外左侧`图标时触发 |	`val: string, event: Event` |
+| onClickRightinIcon |	点击输入框`内右侧`图标时触发 |	`val: string, event: Event` |
+| onClickRightoutIcon |	点击输入框`外右侧`图标时触发 |	`val: string, event: Event` |
 
 
 ## 主题定制
@@ -195,25 +194,25 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-searchbar-background | ` $gray6` |
-| --nutui-searchbar-content-border-radius | ` 2px` |
-| --nutui-searchbar-right-out-color | `  $black` |
-| --nutui-searchbar-padding | ` 9px 16px` |
-| --nutui-searchbar-width | ` 100%` |
-| --nutui-searchbar-label-fontsize | ` 12px` | 
-| --nutui-searchbar-label-padding | ` 0 12px 0 0`| 
-| --nutui-searchbar-label-color | ` $gray1` |
-| --nutui-searchbar-action-text-fontsize | ` 14px`| 
-| --nutui-searchbar-action-text-padding | ` 0 0 0 8px`|
-| --nutui-searchbar-action-text-color | `  $gray1` |
-| --nutui-searchbar-input-height | ` 32px` |
-| --nutui-searchbar-input-padding | ` 0 28px` |
-| --nutui-searchbar-input-background | `  #f7f7f7` |
-| --nutui-searchbar-input-text-color | `  $gray1` |
-| --nutui-searchbar-input-curror-color | `  $gray1` |
-| --nutui-searchbar-input-width | ` 100%` |
-| --nutui-searchbar-input-border-radius | `  16px` |
-| --nutui-searchbar-input-box-shadow | `  0 0 8px 0 rgba(0, 0, 0, 0.04)` |
-| --nutui-searchbar-input-bar-color | `  inherit` |
-| --nutui-searchbar-input-bar-placeholder-color | `  inherit` |
-| --nutui-searchbar-clear-icon-padding | ` 0 10px 0 5px` |
+| --nutui-searchbar-background | `$gray6` |
+| --nutui-searchbar-content-border-radius | `2px` |
+| --nutui-searchbar-right-out-color | `$black` |
+| --nutui-searchbar-padding | `9px 16px` |
+| --nutui-searchbar-width | `100%` |
+| --nutui-searchbar-label-fontsize | `12px` | 
+| --nutui-searchbar-label-padding | `0 12px 0 0`| 
+| --nutui-searchbar-label-color | `$gray1` |
+| --nutui-searchbar-action-text-fontsize | `14px`| 
+| --nutui-searchbar-action-text-padding | `0 0 0 8px`|
+| --nutui-searchbar-action-text-color | `$gray1` |
+| --nutui-searchbar-input-height | `32px` |
+| --nutui-searchbar-input-padding | `0 28px` |
+| --nutui-searchbar-input-background | `#f7f7f7` |
+| --nutui-searchbar-input-text-color | `$gray1` |
+| --nutui-searchbar-input-curror-color | `$gray1` |
+| --nutui-searchbar-input-width | `100%` |
+| --nutui-searchbar-input-border-radius | `16px` |
+| --nutui-searchbar-input-box-shadow | `0 0 8px 0 rgba(0, 0, 0, 0.04)` |
+| --nutui-searchbar-input-bar-color | `inherit` |
+| --nutui-searchbar-input-bar-placeholder-color | `inherit` |
+| --nutui-searchbar-clear-icon-padding | `0 10px 0 5px` |

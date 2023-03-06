@@ -304,14 +304,14 @@ export default App;
 ### Prop
 | 字段           | 说明                       | 类型    | 默认值                       |
 |:---------------|:---------------------------|:--------|:-----------------------------|
-| fixednavClass        | 自定义类名                   | String | fixednav                        |
-| visible        | 是否打开                   | Boolean | false                        |
-| navList       | 悬浮列表内容数据           | Array   | []                           |
-| activeText    | 收起列表按钮文案           | String  | 收起导航                     |
-| unActiveText | 展开列表按钮文案           | String  | 快速导航                     |
-| type           | 导航方向,可选值 left right | String  | right                        |
-| overlay        | 展开时是否显示遮罩         | Boolean | true                         |
-| position       | fixed 垂直位置             | Object  | {top: 'auto',bottom: 'auto'} |
+| fixednavClass        | 自定义类名                   | string | `fixednav`                        |
+| visible        | 是否打开                   | boolean | `false`                        |
+| navList       | 悬浮列表内容数据           | Array   | `[]`                           |
+| activeText    | 收起列表按钮文案           | string  | `收起导航`                     |
+| unActiveText | 展开列表按钮文案           | string  | `快速导航`                     |
+| type           | 导航方向,可选值 left right | string  | `right`                        |
+| overlay        | 展开时是否显示遮罩         | boolean | `true`                         |
+| position       | fixed 垂直位置             | object  | `{top: 'auto', bottom: 'auto'}` |
 | slotList       | 自定义展开列表内容             | HTMLElement  | - |
 | slotBtn       | 自定义按钮            | HTMLElement  | - |
 
@@ -320,8 +320,8 @@ export default App;
 
 | 字段     | 说明         | 回调参数        |
 |:----------|:--------------|:------------|
-| onChange | 展开收起按钮回调 | value:boolean |
-| onSelected | 选择之后触发 | item,event:MouseEvent |
+| onChange | 展开收起按钮回调 | `value: boolean` |
+| onSelected | 选择之后触发 | `item, event: MouseEvent` |
 
 
     
@@ -334,7 +334,7 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-fixednav-bg-color | ` #fff` |
-| --nutui-fixednav-font-color | ` #000` |
-| --nutui-fixednav-index | ` 201` |
-| --nutui-fixednav-item-active-color | `  $primary-color` |
+| --nutui-fixednav-bg-color | `#fff` |
+| --nutui-fixednav-font-color | `#000` |
+| --nutui-fixednav-index | `201` |
+| --nutui-fixednav-item-active-color | `$primary-color` |

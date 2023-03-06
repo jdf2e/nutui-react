@@ -3,7 +3,6 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
-// import { render } from '@/utils/render'
 
 export interface ToastProps {
   id?: string

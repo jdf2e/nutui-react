@@ -7,16 +7,16 @@ import React, {
 import bem from '@/utils/bem'
 import { RadioGroupOptionType } from '@/packages/radiogroup/type'
 import { Checkbox } from '../checkbox/checkbox'
+import Context from './context'
 
-type Position = 'left' | 'right'
-type Direction = 'horizontal' | 'vertical'
-
+export type CheckboxTextPosition = 'left' | 'right'
+export type CheckboxDirection = 'horizontal' | 'vertical'
 export interface CheckboxGroupProps {
   disabled: boolean
   checkedValue: string[]
   max: number | undefined
-  textPosition: Position
-  direction: Direction
+  textPosition: CheckboxTextPosition
+  direction: CheckboxDirection
   onChange: (value: string[]) => void
   options: RadioGroupOptionType[]
 }
@@ -30,6 +30,7 @@ const defaultProps = {
   onChange: (value: string[]) => {},
   options: [],
 } as CheckboxGroupProps
+
 export const CheckboxGroup = React.forwardRef(
   (
     props: Partial<CheckboxGroupProps> &
@@ -49,9 +50,6 @@ export const CheckboxGroup = React.forwardRef(
       options,
       ...rest
     } = props
-
-    const [innerDisabled, setInnerDisabled] = useState(disabled)
-    const [innerValue, setInnerValue] = useState(checkedValue)
 
     useImperativeHandle<any, any>(ref, () => ({
       toggleAll(state: boolean) {
@@ -79,86 +77,52 @@ export const CheckboxGroup = React.forwardRef(
       },
     }))
 
+    const [innerValue, setInnerValue] = useState(checkedValue || [])
     useEffect(() => {
-      setInnerDisabled(disabled)
-      setInnerValue(checkedValue)
-    }, [disabled, checkedValue])
+      setInnerValue(checkedValue || [])
+    }, [checkedValue])
 
-    function handleChildChange(state: boolean, label: string) {
-      if (max !== undefined && innerValue && innerValue.length > max) return
-      if (innerValue) {
-        let clippedValue = []
-        if (state) {
-          clippedValue = [...innerValue, label]
-        } else {
-          innerValue?.splice(innerValue?.indexOf(label), 1)
-          clippedValue = [...innerValue]
-        }
-        setInnerValue(clippedValue)
-        onChange && onChange(clippedValue)
-      }
-    }
-
-    function validateChildChecked(child: any) {
-      if (!innerValue) return false
-      return innerValue?.indexOf(child.props.label || child.children) > -1
-    }
-
-    function validateChecked(value: any) {
-      if (!innerValue) return false
-      return innerValue?.indexOf(value) > -1
-    }
-
-    function getParentVals() {
-      return innerValue
-    }
-
-    function cloneChildren() {
-      return React.Children.map(children, (child: any) => {
-        const childChecked = validateChildChecked(child)
-        if ((child as any).type.displayName !== 'NutCheckBox') {
-          return React.cloneElement(child)
-        }
-        return React.cloneElement(child, {
-          disabled: innerDisabled,
-          checked: childChecked,
-          onChange: handleChildChange,
-          getParentVals,
-          max,
-          textPosition,
-        })
-      })
-    }
-
-    const renderOptionsChildren = useCallback(() => {
+    const renderOptions = useCallback(() => {
       return options?.map(({ label, value, disabled, onChange, ...rest }) => {
-        const childChecked = validateChecked(value)
         return (
           <Checkbox
             key={value?.toString()}
             children={label}
             label={value}
-            disabled={innerDisabled ? true : disabled}
-            onChange={handleChildChange}
             {...rest}
-            max={max}
-            textPosition={textPosition}
-            getParentVals={getParentVals}
-            checked={childChecked}
           />
         )
       })
-    }, [innerValue, options, innerDisabled, max])
+    }, [options, max])
 
     return (
-      <div
-        className={`${b()} nut-checkboxgroup--${props.direction} ${
-          className || ''
-        }`}
-        {...rest}
+      <Context.Provider
+        value={{
+          textPosition: textPosition || 'left',
+          disabled,
+          max,
+          checkedValue: innerValue || [],
+          check: (value: string) => {
+            const combined = [...innerValue, value]
+            setInnerValue(combined)
+            onChange && onChange(combined)
+          },
+          uncheck: (value: string) => {
+            const reduced = innerValue.filter((item) => item !== value)
+            setInnerValue(reduced)
+            onChange && onChange(reduced)
+          },
+        }}
       >
-        {options?.length ? renderOptionsChildren() : cloneChildren()}
-      </div>
+        <div
+          className={`${b()} nut-checkboxgroup--${props.direction} ${
+            className || ''
+          }`}
+          {...rest}
+        >
+          {options?.length ? renderOptions() : children}
+        </div>
+      </Context.Provider>
     )
   }
 )

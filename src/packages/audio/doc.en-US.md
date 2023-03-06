@@ -9,7 +9,6 @@ Used for audio playback
 ```javascript
 // react
 import { Audio } from '@nutui/nutui-react'
-
 ```
 
 ## Code demonstration
@@ -151,23 +150,23 @@ export default App;
 
 | parameter         | illustrate                             | type   | Defaults           |
 |--------------|----------------------------------|--------|------------------|
-| className       | Classification               | String | ''              |
-| style       | CSS Properties              | CSSProperties | {}           |
-| url         | Voice resource link               | String | ''              |
-| muted        | Whether it is mute                         | Boolean | false             |
-| autoplay         | Whether to play automatically | Boolean | false               |
-| loop | Whether to circulate     | Boolean | false |
-| preload          | Whether the pronunciation is pre -loaded: 'None', 'Metadata', 'Auto', ''  | String | 'auto'              |
-| type         | Display form, optional value：controls、panel、progress、icon、none  | String | 'progress'              |
+| className       | Classification               | string | -              |
+| style       | CSS Properties              | CSSProperties | `{}`           |
+| url         | Voice resource link               | string | -              |
+| muted        | Whether it is mute                         | boolean | `false`             |
+| autoplay         | Whether to play automatically | boolean | `false`               |
+| loop | Whether to circulate     | boolean | `false` |
+| preload          | Whether the pronunciation is pre -loaded: 'None', 'Metadata', 'Auto', ''  | string | `auto`              |
+| type         | Display form, optional value：controls、panel、progress、icon、none  | string | `progress`              |
 
 
 ### Events
 
 | Incident name | illustrate           | Callback parameter     |
 |--------|----------------|--------------|
-| onFastBack  | Voice will be retreated, type = progress takes effect | event：HTMLAudioElement |
-| onForward  | Voice fast -moving back, type = progress | event：HTMLAudioElement |
-| onPause  | Suspension | event：HTMLAudioElement |
-| onPlayEnd  | The voice playback is complete, loop=false takes effect | event：HTMLAudioElement|
-| onMute  | Mute | event：HTMLAudioElement|
-| onCanPlay  | Can be triggered when the media can be played | event：HTMLAudioElement |
+| onFastBack  | Voice will be retreated, type = progress takes effect | `event：HTMLAudioElement` |
+| onForward  | Voice fast -moving back, type = progress | `event：HTMLAudioElement` |
+| onPause  | Suspension | `event：HTMLAudioElement` |
+| onPlayEnd  | The voice playback is complete, loop=false takes effect | `event：HTMLAudioElement`|
+| onMute  | Mute | `event：HTMLAudioElement`|
+| onCanPlay  | Can be triggered when the media can be played | `event：HTMLAudioElement` |

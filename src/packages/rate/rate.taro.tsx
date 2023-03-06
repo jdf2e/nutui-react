@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-
+import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
@@ -102,7 +102,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     onChange && onChange(value)
   }
   return (
-    <div className={`${b()} ${className}`} style={style}>
+    <div className={classNames(b(), className)} style={style}>
       {countArray.map((n) => {
         return (
           <div
@@ -115,9 +115,9 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
               classPrefix={iconClassPrefix}
               fontClassName={iconFontClassName}
               size={iconSize}
-              className={`${bi('icon')} ${
-                disabled || n > score ? bi('icon--disabled') : ''
-              }`}
+              className={classNames(bi('icon'), {
+                [bi('icon--disabled')]: disabled || n > score,
+              })}
               name={n <= score ? checkedIcon : uncheckedIcon}
               color={n <= score ? activeColor : voidColor}
             />

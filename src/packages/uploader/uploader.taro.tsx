@@ -6,13 +6,20 @@ import React, {
   useEffect,
 } from 'react'
 import classNames from 'classnames'
-import Taro, { chooseImage, uploadFile, getEnv } from '@tarojs/taro'
+import Taro, {
+  chooseImage,
+  uploadFile,
+  getEnv,
+  chooseMedia,
+} from '@tarojs/taro'
 import Icon from '@/packages/icon/index.taro'
 import Button from '@/packages/button/index.taro'
 import Progress from '@/packages/progress/index.taro'
-import { Upload, UploadOptions } from './upload'
+import { UploaderTaro, UploadOptions } from './upload'
+import { Image } from '@tarojs/components'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { funcInterceptor } from '@/utils/Interceptor'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -39,10 +46,24 @@ interface sourceType {
   album: string
   /** 使用相机 */
   camera: string
-  /** 使用前置摄像头(仅H5纯浏览器使用) */
-  user: string
-  /** 使用后置摄像头(仅H5纯浏览器) */
-  environment: string
+}
+
+/** 视频的来源 */
+interface mediaType {
+  /** 只能拍摄图片或从相册选择图片 */
+  image: string
+  /** 只能拍摄视频或从相册选择视频 */
+  video: string
+}
+
+interface TFileType {
+  size: number
+  type?: string
+  fileType?: string
+  originalFileObj?: any
+  tempFilePath?: string
+  thumbTempFilePath?: string
+  path?: string
 }
 
 export interface UploaderProps extends BasicComponent {
@@ -50,12 +71,16 @@ export interface UploaderProps extends BasicComponent {
   maximum: string | number
   sizeType: (keyof sizeType)[]
   sourceType: (keyof sourceType)[]
+  mediaType: (keyof mediaType)[]
+  camera: string
   maximize: number
   defaultFileList: FileType<string>[]
   listType: string
   uploadIcon: string
   uploadIconSize: string | number
+  uploadIconTip: string
   name: string
+  accept: string
   disabled: boolean
   autoUpload: boolean
   multiple: boolean
@@ -68,12 +93,14 @@ export interface UploaderProps extends BasicComponent {
   isDeletable: boolean
   className: string
   defaultImg: string
+  maxDuration: number
   style: React.CSSProperties
   onStart?: (option: UploadOptions) => void
   onRemove?: (file: FileItem, fileList: FileType<string>[]) => void
   onSuccess?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
+    fileList: FileType<string>[]
   }) => void
   onProgress?: (param: {
     e: ProgressEvent<XMLHttpRequestEventTarget>
@@ -83,11 +110,13 @@ export interface UploaderProps extends BasicComponent {
   onFailure?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
+    fileList: FileType<string>[]
   }) => void
   onUpdate?: (fileList: FileType<string>[]) => void
-  onOversize?: (file: Taro.chooseImage.ImageFile[]) => void
+  onOversize?: (
+    files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
+  ) => void
   onChange?: (param: { fileList: FileType<string>[] }) => void
-  onBeforeUpload?: (file: Taro.chooseImage.ImageFile[]) => Promise<any[]>
   onBeforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
   onBeforeDelete?: (file: FileItem, files: FileType<string>[]) => boolean
   onFileItemClick?: (file: FileItem) => void
@@ -96,13 +125,17 @@ export interface UploaderProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   url: '',
-  maximum: 9,
+  maximum: 1,
   sizeType: ['original', 'compressed'],
   sourceType: ['album', 'camera'],
+  mediaType: ['image', 'video'],
+  camera: 'back',
   uploadIcon: 'photograph',
   uploadIconSize: '',
+  uploadIconTip: '',
   listType: 'picture',
   name: 'file',
+  accept: '*',
   disabled: false,
   autoUpload: true,
   multiple: false,
@@ -115,6 +148,7 @@ const defaultProps = {
   timeout: 1000 * 30,
   isPreview: true,
   isDeletable: true,
+  maxDuration: 10,
   onBeforeDelete: (file: FileItem, files: FileType<string>[]) => {
     return true
   },
@@ -148,10 +182,14 @@ const InternalUploader: ForwardRefRenderFunction<
     children,
     uploadIcon,
     uploadIconSize,
+    uploadIconTip,
+    accept,
     name,
+    camera,
     defaultFileList,
     listType,
     disabled,
+    multiple,
     url,
     defaultImg,
     headers,
@@ -163,11 +201,14 @@ const InternalUploader: ForwardRefRenderFunction<
     isDeletable,
     maximum,
     maximize,
-    multiple,
+    mediaType,
     className,
     autoUpload,
     sizeType,
     sourceType,
+    maxDuration,
+    iconClassPrefix,
+    iconFontClassName,
     onStart,
     onRemove,
     onChange,
@@ -177,13 +218,12 @@ const InternalUploader: ForwardRefRenderFunction<
     onUpdate,
     onFailure,
     onOversize,
-    onBeforeUpload,
     onBeforeXhrUpload,
     onBeforeDelete,
     ...restProps
   } = { ...defaultProps, ...props }
   const [fileList, setFileList] = useState<FileType<string>[]>([])
-  const [uploadQueue, setUploadQueue] = useState<Promise<Upload>[]>([])
+  const [uploadQueue, setUploadQueue] = useState<Promise<UploaderTaro>[]>([])
 
   useEffect(() => {
     if (defaultFileList) {
@@ -200,6 +240,9 @@ const InternalUploader: ForwardRefRenderFunction<
         res.forEach((i) => i.uploadTaro(uploadFile, getEnv()))
       })
     },
+    clear: () => {
+      clearUploadQueue()
+    },
   }))
 
   const clearUploadQueue = (index = -1) => {
@@ -208,6 +251,8 @@ const InternalUploader: ForwardRefRenderFunction<
       setUploadQueue(uploadQueue)
     } else {
       setUploadQueue([])
+      fileList.splice(0, fileList.length)
+      setFileList([...fileList])
     }
   }
 
@@ -215,14 +260,57 @@ const InternalUploader: ForwardRefRenderFunction<
     if (disabled) {
       return
     }
-    chooseImage({
-      // 选择数量
-      count: multiple ? (maximum as number) * 1 - fileList.length : 1,
-      // 可以指定是原图还是压缩图，默认二者都有
-      sizeType,
-      sourceType,
-      success: onChangeFn,
-    })
+    if (Taro.getEnv() == 'WEB') {
+      let el = document.getElementById('taroChooseImage')
+      if (el) {
+        el?.setAttribute('accept', accept)
+      } else {
+        const obj = document.createElement('input')
+        obj.setAttribute('type', 'file')
+        obj.setAttribute('id', 'taroChooseImage')
+        obj.setAttribute('accept', accept)
+        obj.setAttribute(
+          'style',
+          'position: fixed; top: -4000px; left: -3000px; z-index: -300;'
+        )
+        document.body.appendChild(obj)
+      }
+    }
+    if (getEnv() == 'WEAPP') {
+      // chooseMedia 目前只支持微信小程序原生，其余端全部使用 chooseImage API
+      chooseMedia({
+        /** 最多可以选择的文件个数 */
+        count: multiple ? (maximum as number) * 1 - fileList.length : 1,
+        /** 文件类型 */
+        mediaType: mediaType as any,
+        /** 图片和视频选择的来源 */
+        sourceType: sourceType,
+        /** 拍摄视频最长拍摄时间，单位秒。时间范围为 3s 至 30s 之间 */
+        maxDuration: maxDuration,
+        /** 仅对 mediaType 为 image 时有效，是否压缩所选文件 */
+        sizeType: [],
+        /** 仅在 sourceType 为 camera 时生效，使用前置或后置摄像头 */
+        camera: camera,
+        /** 接口调用失败的回调函数 */
+        fail: (res: any) => {
+          onFailure && onFailure(res)
+        },
+        /** 接口调用成功的回调函数 */
+        success: onChangeMedia,
+      })
+    } else {
+      chooseImage({
+        // 选择数量
+        count: multiple ? (maximum as number) * 1 - fileList.length : 1,
+        // 可以指定是原图还是压缩图，默认二者都有
+        sizeType,
+        sourceType,
+        success: onChangeImage,
+        fail: (res: any) => {
+          onFailure && onFailure(res)
+        },
+      })
+    }
   }
 
   const executeUpload = (fileItem: FileItem, index: number) => {
@@ -284,6 +372,7 @@ const InternalUploader: ForwardRefRenderFunction<
         onSuccess({
           responseText,
           option,
+          fileList,
         })
     }
 
@@ -304,10 +393,11 @@ const InternalUploader: ForwardRefRenderFunction<
         onFailure({
           responseText,
           option,
+          fileList,
         })
     }
 
-    const task = new Upload(uploadOption)
+    const task = new UploaderTaro(uploadOption)
     if (props.autoUpload) {
       task.uploadTaro(uploadFile, getEnv())
     } else {
@@ -320,20 +410,33 @@ const InternalUploader: ForwardRefRenderFunction<
     }
   }
 
-  const readFile = (files: Taro.chooseImage.ImageFile[]) => {
-    const imgReg = /\.(png|jpeg|jpg|webp|gif)$/i
-    files.forEach((file: Taro.chooseImage.ImageFile, index: number) => {
-      console.log('file', file)
+  const readFile = <T extends TFileType>(files: T[]) => {
+    files.forEach((file: T, index: number) => {
       let fileType = file.type
+      let filepath = (file.tempFilePath || file.path) as string
       const fileItem = new FileItem()
-      if (!fileType && imgReg.test(file.path)) {
-        fileType = 'image'
+      if (file.fileType) {
+        fileType = file.fileType
+      } else {
+        const imgReg = /\.(png|jpeg|jpg|webp|gif)$/i
+        if (
+          !fileType &&
+          (imgReg.test(filepath) || filepath.includes('data:image'))
+        ) {
+          fileType = 'image'
+        }
       }
-      fileItem.path = file.path
-      fileItem.name = file.path
+
+      fileItem.path = filepath
+      fileItem.name = filepath
       fileItem.status = 'ready'
-      fileItem.message = locale.uploader.readyUpload
       fileItem.type = fileType
+
+      if (autoUpload) {
+        fileItem.message = locale.uploader.readyUpload
+      } else {
+        fileItem.message = locale.uploader.waitingUpload
+      }
 
       if (getEnv() === 'WEB') {
         const formData = new FormData()
@@ -348,7 +451,7 @@ const InternalUploader: ForwardRefRenderFunction<
         fileItem.formData = data as any
       }
       if (isPreview) {
-        fileItem.url = file.path
+        fileItem.url = fileType == 'video' ? file.thumbTempFilePath : filepath
       }
 
       fileList.push(fileItem as any)
@@ -357,11 +460,11 @@ const InternalUploader: ForwardRefRenderFunction<
     })
   }
 
-  const filterFiles = (files: Taro.chooseImage.ImageFile[]) => {
+  const filterFiles = <T extends TFileType>(files: T[]) => {
     const maximum = (props.maximum as number) * 1
     const maximize = (props.maximize as number) * 1
-    const oversizes = new Array<Taro.chooseImage.ImageFile>()
-    const filterFile = files.filter((file: Taro.chooseImage.ImageFile) => {
+    const oversizes = new Array<T>()
+    const filterFile = files.filter((file: T) => {
       if (file.size > maximize) {
         oversizes.push(file)
         return false
@@ -369,7 +472,7 @@ const InternalUploader: ForwardRefRenderFunction<
       return true
     })
     if (oversizes.length) {
-      onOversize && onOversize(files)
+      onOversize && onOversize(files as any)
     }
 
     const currentFileLength = filterFile.length + fileList.length
@@ -379,30 +482,33 @@ const InternalUploader: ForwardRefRenderFunction<
     return filterFile
   }
 
-  const onDelete = (file: FileItem, index: number) => {
-    clearUploadQueue(index)
-    if (onBeforeDelete && onBeforeDelete(file, fileList)) {
-      fileList.splice(index, 1)
-      onRemove && onRemove(file, fileList)
-      setFileList([...fileList])
-    } else {
-      console.log(locale.uploader.deleteWord)
-    }
+  const deleted = (file: FileItem, index: number) => {
+    fileList.splice(index, 1)
+    onRemove && onRemove(file, fileList)
+    setFileList([...fileList])
   }
 
-  const onChangeFn = (res: Taro.chooseImage.SuccessCallbackResult) => {
+  const onDelete = (file: FileItem, index: number) => {
+    clearUploadQueue(index)
+    funcInterceptor(onBeforeDelete, {
+      args: [file, fileList],
+      done: () => deleted(file, index),
+    })
+  }
+
+  const onChangeMedia = (res: Taro.chooseMedia.SuccessCallbackResult) => {
     // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
     const { tempFiles } = res
-    if (onBeforeUpload) {
-      onBeforeUpload(tempFiles).then((f: Array<Taro.chooseImage.ImageFile>) => {
-        const _files: Taro.chooseImage.ImageFile[] = filterFiles(f)
-        readFile(_files)
-      })
-    } else {
-      const _files: Taro.chooseImage.ImageFile[] = filterFiles(tempFiles)
-      readFile(_files)
-    }
+    const _files: Taro.chooseMedia.ChooseMedia[] = filterFiles(tempFiles)
+    readFile(_files)
+    onChange && onChange({ fileList })
+  }
 
+  const onChangeImage = (res: Taro.chooseImage.SuccessCallbackResult) => {
+    // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+    const { tempFiles } = res
+    const _files: Taro.chooseImage.ImageFile[] = filterFiles(tempFiles)
+    readFile(_files)
     onChange && onChange({ fileList })
   }
 
@@ -429,6 +535,16 @@ const InternalUploader: ForwardRefRenderFunction<
             <div className={`nut-uploader__preview ${listType}`} key={item.uid}>
               {listType === 'picture' && !children && (
                 <div className="nut-uploader__preview-img">
+                  {isDeletable && (
+                    <Icon
+                      classPrefix={iconClassPrefix}
+                      fontClassName={iconFontClassName}
+                      color="rgba(0,0,0,0.6)"
+                      className="close"
+                      name="failure"
+                      onClick={() => onDelete(item, index)}
+                    />
+                  )}
                   {item.status === 'ready' ? (
                     <div className="nut-uploader__preview__progress">
                       <div className="nut-uploader__preview__progress__msg">
@@ -438,39 +554,32 @@ const InternalUploader: ForwardRefRenderFunction<
                   ) : (
                     item.status !== 'success' && (
                       <div className="nut-uploader__preview__progress">
-                        <Icon
-                          classPrefix={props.iconClassPrefix}
-                          fontClassName={props.iconFontClassName}
-                          color="#fff"
-                          name={`${
-                            item.status === 'error' ? 'failure' : 'loading'
-                          }`}
-                        />
+                        {item.failIcon === ' ' ||
+                        item.loadingIcon === ' ' ? null : (
+                          <Icon
+                            classPrefix={iconClassPrefix}
+                            fontClassName={iconFontClassName}
+                            color="#fff"
+                            name={`${
+                              item.status === 'error'
+                                ? `${item.failIcon || 'failure'}`
+                                : `${item.loadingIcon || 'loading'}`
+                            }`}
+                          />
+                        )}
                         <div className="nut-uploader__preview__progress__msg">
                           {item.message}
                         </div>
                       </div>
                     )
                   )}
-
-                  {isDeletable && (
-                    <Icon
-                      classPrefix={props.iconClassPrefix}
-                      fontClassName={props.iconFontClassName}
-                      color="rgba(0,0,0,0.6)"
-                      className="close"
-                      name="failure"
-                      onClick={() => onDelete(item, index)}
-                    />
-                  )}
-
                   {item.type.includes('image') ? (
                     <>
                       {item.url && (
-                        <img
+                        <Image
                           className="nut-uploader__preview-img__c"
+                          mode="aspectFit"
                           src={item.url}
-                          alt=""
                           onClick={() => handleItemClick(item)}
                         />
                       )}
@@ -478,10 +587,10 @@ const InternalUploader: ForwardRefRenderFunction<
                   ) : (
                     <>
                       {defaultImg ? (
-                        <img
+                        <Image
                           className="nut-uploader__preview-img__c"
+                          mode="aspectFit"
                           src={defaultImg}
-                          alt=""
                           onClick={() => handleItemClick(item)}
                         />
                       ) : (
@@ -491,8 +600,8 @@ const InternalUploader: ForwardRefRenderFunction<
                             className="nut-uploader__preview-img__file__name"
                           >
                             <Icon
-                              classPrefix={props.iconClassPrefix}
-                              fontClassName={props.iconFontClassName}
+                              classPrefix={iconClassPrefix}
+                              fontClassName={iconFontClassName}
                               color="#808080"
                               name="link"
                             />
@@ -503,7 +612,9 @@ const InternalUploader: ForwardRefRenderFunction<
                       )}
                     </>
                   )}
-                  <div className="tips">{item.name}</div>
+                  {item.status === 'success' ? (
+                    <div className="tips">{item.name}</div>
+                  ) : null}
                 </div>
               )}
 
@@ -514,16 +625,16 @@ const InternalUploader: ForwardRefRenderFunction<
                     onClick={() => handleItemClick(item)}
                   >
                     <Icon
-                      classPrefix={props.iconClassPrefix}
-                      fontClassName={props.iconFontClassName}
+                      classPrefix={iconClassPrefix}
+                      fontClassName={iconFontClassName}
                       name="link"
                     />
                     &nbsp;{item.name}
                   </div>
                   {isDeletable && (
                     <Icon
-                      classPrefix={props.iconClassPrefix}
-                      fontClassName={props.iconFontClassName}
+                      classPrefix={iconClassPrefix}
+                      fontClassName={iconFontClassName}
                       color="#808080"
                       className="nut-uploader__preview-img__file__del"
                       name="del"
@@ -545,14 +656,21 @@ const InternalUploader: ForwardRefRenderFunction<
         })}
 
       {maximum > fileList.length && listType === 'picture' && !children && (
-        <div className={`nut-uploader__upload ${listType}`}>
-          <Icon
-            classPrefix={props.iconClassPrefix}
-            fontClassName={props.iconFontClassName}
-            size={uploadIconSize}
-            color="#808080"
-            name={uploadIcon}
-          />
+        <div
+          className={`nut-uploader__upload ${listType} ${
+            disabled ? 'nut-uploader__upload-disabled' : ''
+          }`}
+        >
+          <div className="nut-uploader__icon">
+            <Icon
+              classPrefix={iconClassPrefix}
+              fontClassName={iconFontClassName}
+              size={uploadIconSize}
+              color="#808080"
+              name={uploadIcon}
+            />
+            <span className="nut-uploader__icon-tip">{uploadIconTip}</span>
+          </div>
           <Button className="nut-uploader__input" onClick={_chooseImage} />
         </div>
       )}

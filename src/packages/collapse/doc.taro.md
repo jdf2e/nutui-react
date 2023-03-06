@@ -7,7 +7,7 @@
 ### 安装
 
 ```ts
-import { Collapse,CollapseItem } from 'nutui-react-taro'
+import { Collapse, CollapseItem } from 'nutui-react-taro'
 ```
 
 
@@ -244,26 +244,26 @@ const App = () => {
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| activeName   | 当前展开面板的 name               | 手风琴模式：string/number 非手风琴模式：(string/number)[] | - |
-| accordion    | 是否开启手风琴模式                 | boolean | false  |
-| icon         | 图标链接/或使用 NutUI 的 icon      | String | -                |
-| iconSize     | 图标大小                          | String      | '16px' |
-| iconColor    | 图标颜色                          | String | ''              |
-| rotate       | 点击折叠和展开的旋转角度,在自定义图标模式下生效| string/number | 180 |
+| activeName   | 当前展开面板的 name               | 手风琴模式：string \| number 非手风琴模式：(string \| number)[] | - |
+| accordion    | 是否开启手风琴模式                 | boolean | `false`  |
+| icon         | 图标链接/或使用 NutUI 的 icon      | string | -                |
+| iconSize     | 图标大小                          | string      | `16px` |
+| iconColor    | 图标颜色                          | string | -              |
+| rotate       | 点击折叠和展开的旋转角度,在自定义图标模式下生效| string \| number | `180` |
 
 
 ### CollapseItem Prop
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| name   | 唯一标识符，必填                         |string \ number | - |
-| title    | 标题栏左侧内容                 | string | ''  |
-| disabled    | 标题栏是否禁用                 | boolean | false  |
-| subTitle    | 标题栏副标题             | string | ''  |
-| titleIcon    | 标题图标链接/或使用 NutUI 的 icon             | string | ''  |
-| titleIconColor    | 标题图标颜色        | string | ''  |
-| titleIconSize    | 标题图标大小        | string | ''  |
-| titleIconPosition    | 标题图标位置             | string | ''  |
+| name   | 唯一标识符，必填                         |string \| number | - |
+| title    | 标题栏左侧内容                 | string | -  |
+| disabled    | 标题栏是否禁用                 | boolean | `false`  |
+| subTitle    | 标题栏副标题             | string | -  |
+| titleIcon    | 标题图标链接/或使用 NutUI 的 icon             | string | -  |
+| titleIconColor    | 标题图标颜色        | string | -  |
+| titleIconSize    | 标题图标大小        | string | -  |
+| titleIconPosition    | 标题图标位置             | string | -  |
 
 
 
@@ -283,18 +283,18 @@ const App = () => {
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-collapse-item-padding`v1.4.8` | `  13px 36px 13px 26px` |
-| --nutui-collapse-item-font-size`v1.4.8` | `  $font-size-2` |
-| --nutui-collapse-item-line-height`v1.4.8` | `  24px` |
-| --nutui-collapse-item-color`v1.4.8` | ` #666666` |
-| --nutui-collapse-item-disabled-color`v1.4.8` | `  #c8c9cc` |
-| --nutui-collapse-item-icon-color`v1.4.8` | `  #666666` |
-| --nutui-collapse-item-icon-margin-right`v1.4.8` | `  5px` |
-| --nutui-collapse-item-icon-margin-left`v1.4.8` | `  5px` |
-| --nutui-collapse-item-sub-title-color`v1.4.8` | `  #666666` |
-| --nutui-collapse-wrapper-content-background-color`v1.4.8` | `  $white` |
-| --nutui-collapse-wrapper-content-color`v1.4.8` | `  #666666` |
-| --nutui-collapse-wrapper-content-font-size`v1.4.8` | `  $font-size-2` |
-| --nutui-collapse-wrapper-content-line-height`v1.4.8` | `  1.5` |
-| --nutui-collapse-wrapper-content-padding`v1.4.8` | `  12px 26px` |
-| --nutui-collapse-wrapper-empty-content-padding`v1.4.8` | `  0 26px` |
+| --nutui-collapse-item-padding`v1.4.8` | `13px 36px 13px 26px` |
+| --nutui-collapse-item-font-size`v1.4.8` | `$font-size-2` |
+| --nutui-collapse-item-line-height`v1.4.8` | `24px` |
+| --nutui-collapse-item-color`v1.4.8` | `#666666` |
+| --nutui-collapse-item-disabled-color`v1.4.8` | `#c8c9cc` |
+| --nutui-collapse-item-icon-color`v1.4.8` | `#666666` |
+| --nutui-collapse-item-icon-margin-right`v1.4.8` | `5px` |
+| --nutui-collapse-item-icon-margin-left`v1.4.8` | `5px` |
+| --nutui-collapse-item-sub-title-color`v1.4.8` | `#666666` |
+| --nutui-collapse-wrapper-content-background-color`v1.4.8` | `$white` |
+| --nutui-collapse-wrapper-content-color`v1.4.8` | `#666666` |
+| --nutui-collapse-wrapper-content-font-size`v1.4.8` | `$font-size-2` |
+| --nutui-collapse-wrapper-content-line-height`v1.4.8` | `1.5` |
+| --nutui-collapse-wrapper-content-padding`v1.4.8` | `12px 26px` |
+| --nutui-collapse-wrapper-empty-content-padding`v1.4.8` | `0 26px` |

@@ -9,7 +9,6 @@ Signature component based on canvas.
 ```javascript
 // react
 import { Signature } from '@nutui/nutui-react'
-
 ```
 
 ## Demo
@@ -97,11 +96,11 @@ export default App;
 
 | Attribute           | Description                           | Type   | Default                                              |
 | -------------- | ------------------------------ | ------ | --------------------------------------------------- |
-| customClass   |  Custom class                 | String | -                                                   |
-| lineWidth     | Width of line                    | Number | 3                                                   |
-| strokeStyle   | Drawing stroke color                   | String | '#000'                                              |
-| type           | Picture format                       | String | 'png'                                               |
-| unSupportTpl |  Display copy without canvas | String | 'sorry, the current browser doesn't support canvas, so we can't use this control! ' |
+| customClass   |  Custom class                 | string | -                                                   |
+| lineWidth     | Width of line                    | number | `3`                                                   |
+| strokeStyle   | Drawing stroke color                   | string | `#000`                                              |
+| type           | Picture format                       | string | `png`                                               |
+| unSupportTpl |  Display copy without canvas | string | `sorry, the current browser doesn't support canvas, so we can't use this control! ` |
 
 ## Event
 

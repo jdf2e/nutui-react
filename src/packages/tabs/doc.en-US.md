@@ -8,9 +8,14 @@ It is often used for the storage and display of large blocks of content in the l
 
 ```ts
 // react
-import { Tabs, TabPane } from '@nutui/nutui-react';
-
+import { Tabs } from '@nutui/nutui-react';
 ```
+
+```ts
+// 1.4.9 废弃
+import { Tabs, TabPane } from '@nutui/nutui-react';
+```
+
 
 ### Basic Usage
 
@@ -18,7 +23,7 @@ import { Tabs, TabPane } from '@nutui/nutui-react';
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react';
+import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab1value, setTab1value] = useState('0');
@@ -27,9 +32,9 @@ const App = () => {
       <Tabs value={tab1value} onChange={({ paneKey }) => {
         setTab1value(paneKey)
       }}>
-        <TabPane title="Tab 1"> Tab 1 </TabPane>
-        <TabPane title="Tab 2"> Tab 2 </TabPane>
-        <TabPane title="Tab 3"> Tab 3 </TabPane>
+        <Tabs.TabPane  title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane  title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane  title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -45,7 +50,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react';
+import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab1value, setTab1value] = useState('0');
@@ -54,9 +59,9 @@ const App = () => {
       <Tabs value={tab1value} onChange={({ paneKey }) => {
         setTab1value(paneKey)
       }} type="smile">
-        <TabPane title="Tab 1"> Tab 1 </TabPane>
-        <TabPane title="Tab 2"> Tab 2 </TabPane>
-        <TabPane title="Tab 3"> Tab 3 </TabPane>
+        <Tabs.TabPane  title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane  title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane  title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -72,7 +77,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react';
+import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab1value, setTab1value] = useState('0');
@@ -81,9 +86,9 @@ const App = () => {
       <Tabs value={tab1value} onChange={({ paneKey }) => {
         setTab1value(paneKey)
       }} leftAlign>
-        <TabPane title="Tab 1"> Tab 1 </TabPane>
-        <TabPane title="Tab 2"> Tab 2 </TabPane>
-        <TabPane title="Tab 3"> Tab 3 </TabPane>
+        <Tabs.TabPane  title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane  title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane  title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -99,7 +104,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react';
+import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab2value, setTab2value] = useState('0');
@@ -108,9 +113,9 @@ const App = () => {
       <Tabs value={tab2value} onChange={({ paneKey }) => {
         setTab2value(paneKey)
       }}>
-        <TabPane title="Tab 1" paneKey="0"> Tab 1 </TabPane>
-        <TabPane title="Tab 2" paneKey="1" disabled> Tab 2 </TabPane>
-        <TabPane title="Tab 3" paneKey="2"> Tab 3 </TabPane>
+        <Tabs.TabPane  title="Tab 1" paneKey="0"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane  title="Tab 2" paneKey="1" disabled> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane  title="Tab 3" paneKey="2"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -128,7 +133,7 @@ Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will ch
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react';
+import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab2value, setTab2value] = useState('0');
@@ -137,14 +142,14 @@ const App = () => {
       <Tabs value={tab2value} autoHeight onChange={({ paneKey }) => {
         setTab2value(paneKey)
       }}>
-        <TabPane title="Tab 1" paneKey="0">
+        <Tabs.TabPane title="Tab 1" paneKey="0">
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
-        </TabPane>
-        <TabPane title="Tab 2" paneKey="1"> Tab 2 </TabPane>
-        <TabPane title="Tab 3" paneKey="2"> Tab 3 </TabPane>
+        </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2" paneKey="1"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3" paneKey="2"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -161,7 +166,7 @@ export default App;
 
 ```tsx
 import React, { useState,useEffect } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react';
+import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab3value, setTab3value] = useState('0');
@@ -178,8 +183,8 @@ const App = () => {
       <Tabs value={tab3value} onChange={({ paneKey }) => {
         setTab3value(paneKey)
       }}>
-        {list3.map(item => <TabPane key={item}
-          title={`Tab ${item}`}> Tab {item} </TabPane>)}
+        {list3.map(item => <Tabs.TabPane key={item}
+          title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -195,7 +200,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react';
+import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab4value, setTab4value] = useState('0');
@@ -205,8 +210,8 @@ const App = () => {
       <Tabs value={tab4value} onChange={({ paneKey }) => {
         setTab4value(paneKey)
       }} titleScroll titleGutter="10">
-        {list4.map(item => <TabPane key={item}
-          title={`Tab ${item}`}> Tab {item} </TabPane>)}
+        {list4.map(item => <Tabs.TabPane key={item}
+          title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -222,7 +227,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react';
+import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab5value, setTab5value] = useState('0');
@@ -232,8 +237,8 @@ const App = () => {
       <Tabs style={{ height: '300px' }} value={tab5value} onChange={({ paneKey }) => {
         setTab5value(paneKey)
       }} titleScroll direction="vertical">
-        {list5.map(item => <TabPane key={item}
-          title={`Tab ${  item}`}> Tab {item} </TabPane>)}
+        {list5.map(item => <Tabs.TabPane key={item}
+          title={`Tab ${  item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -249,7 +254,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react';
+import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab6value, setTab6value] = useState('0');
@@ -259,8 +264,79 @@ const App = () => {
       <Tabs style={{ height: '300px' }} value={tab6value} onChange={({ paneKey }) => {
         setTab6value(paneKey)
       }} type="smile" titleScroll direction="vertical">
-        {list5.map(item => <TabPane key={item}
-          title={`Tab ${item}`}> Tab {item} </TabPane>)}
+        {list5.map(item => <Tabs.TabPane key={item}
+          title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### Tabs in Tabs
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab8value, setTab8value] = useState('0')
+  const [tab9value, setTab9value] = useState('0')
+  return (
+    <>
+      <Tabs
+        value={tab8value}
+        onChange={({ paneKey }) => {
+          setTab8value(paneKey)
+        }}
+        type="smile"
+        direction="vertical"
+      >
+        <Tabs.TabPane title="Tab 1">
+          <Tabs
+            value={tab9value}
+            onChange={({ paneKey }) => {
+              setTab9value(paneKey)
+            }}
+            type="smile"
+            direction="horizontal"
+          >
+            <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+          </Tabs>
+        </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+
+      <Tabs
+        value={tab8value}
+        onChange={({ paneKey }) => {
+          setTab8value(paneKey)
+        }}
+        autoHeight
+        type="smile"
+      >
+        <Tabs.TabPane title="Tab 1">
+          <Tabs
+            value={tab9value}
+            onChange={({ paneKey }) => {
+              setTab9value(paneKey)
+            }}
+            direction="vertical"
+          >
+            <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+          </Tabs>
+        </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -276,7 +352,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react';
+import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab1value, setTab1value] = useState('0');
@@ -285,23 +361,23 @@ const App = () => {
       <Tabs value={tab1value} onChange={({ paneKey }) => {
         setTab1value(paneKey)
       }} size="large">
-        <TabPane title="Tab 1"> Tab 1 </TabPane>
-        <TabPane title="Tab 2"> Tab 2 </TabPane>
-        <TabPane title="Tab 3"> Tab 3 </TabPane>
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
       <Tabs value={tab1value} onChange={({ paneKey }) => {
         setTab1value(paneKey)
       }} size="normal">
-        <TabPane title="Tab 1"> Tab 1 </TabPane>
-        <TabPane title="Tab 2"> Tab 2 </TabPane>
-        <TabPane title="Tab 3"> Tab 3 </TabPane>
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
       <Tabs value={tab1value} onChange={({ paneKey }) => {
         setTab1value(paneKey)
       }} size="small">
-        <TabPane title="Tab 1"> Tab 1 </TabPane>
-        <TabPane title="Tab 2"> Tab 2 </TabPane>
-        <TabPane title="Tab 3"> Tab 3 </TabPane>
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -317,7 +393,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane, Icon } from '@nutui/nutui-react';
+import { Tabs, Icon } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab7value, setTab7value] = useState('c1');
@@ -355,9 +431,9 @@ const App = () => {
 
       }>
         {list6.map(item => (
-          <TabPane key={item.paneKey} paneKey={item.paneKey}>
+          <Tabs.TabPane key={item.paneKey} paneKey={item.paneKey}>
             {item.title}
-          </TabPane>
+          </Tabs.TabPane>
         ))}
       </Tabs>
     </>
@@ -374,19 +450,19 @@ export default App;
 
 | Attribute          | Description                                          | Type          | Default     |
 |---------------|-----------------------------------------------|---------------|------------|
-| value         | Index of active tab                      | number,string | 0          |
-| color         | Label selection color                                    | string        | #1a1a1a    |
-| background    | Tab bar background color                                | string        | #f5f5f5    |
-| direction     | Use landscape orientation optional value `horizontal`、`vertical`     | string        | horizontal |
-| type          | Check the bottom display style optional value `line`、`smile`           | string        | line       |
-| titleScroll  | Is the tab bar scrollable                            | boolean       | false      |
-| ellipsis      | Whether to omit too long title text                        | boolean       | true       |
-| animatedTime | Switch animation duration, unit ms 0 means no animation              | number,string | 300        |
-| titleGutter  | Label gap                                      | number,string | 0          |
-| titleNode    | Custom Titles Area                     | `() => JSX.Element[]` | 0          |
-| size         | Tab bar font size optional value `large` `normal` `small` | string        | normal     |
-| leftAlign`v1.4.8` | Title Left Align | boolean | false |
-| autoHeight`v1.2.1` | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tabpane`. | boolean        | false     |
+| value         | Index of active tab                      | number \| string | `0`          |
+| color         | Label selection color                                    | string        | `#1a1a1a`    |
+| background    | Tab bar background color                                | string        | `#f5f5f5`    |
+| direction     | Use landscape orientation optional value `horizontal`、`vertical`     | string        | `horizontal` |
+| type          | Check the bottom display style optional value `line`、`smile`           | string        | `line`       |
+| titleScroll  | Is the tab bar scrollable                            | boolean       | `false`      |
+| ellipsis      | Whether to omit too long title text                        | boolean       | `true`       |
+| animatedTime | Switch animation duration, unit ms 0 means no animation              | number \| string | `300`        |
+| titleGutter  | Label gap                                      | number \| string | `0`          |
+| titleNode    | Custom Titles Area                     | ReactNode | -          |
+| size         | Tab bar font size optional value `large`, `normal`, `small` | string        | `normal`     |
+| leftAlign`v1.4.8` | Title Left Align | boolean | `false` |
+| autoHeight`v1.2.1` | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tabpane`. | boolean        | `false`     |
 
 ## Tabs Children
 
@@ -394,20 +470,20 @@ export default App;
 |---------|----------------|
 | default | Custom Default Content     |
 
-### Tabpane Props
+### Tabs.TabPane Props
 
 | Attribute     | Description                    | Type    | Default           |
 |----------|-------------------------|---------|------------------|
-| title    | title                    | string  |                  |
+| title    | title                    | string  |    -              |
 | paneKey  | Tag Key , the matching identifier | string  | Default index 0,1,2... |
-| disabled | whether to disable tabs            | boolean | false            |
+| disabled | whether to disable tabs            | boolean | `false`            |
 
 ### Tabs Events
 
 | Event | Description                     | Arguments                 |
 |--------|--------------------------|--------------------------|
-| onClick  | Triggered when the label is clicked           | {title,paneKey,disabled} |
-| onChange | Fired when the currently active tab changes | {title,paneKey,disabled} |
+| onClick  | Triggered when the label is clicked           | `{title, paneKey, disabled}` |
+| onChange | Fired when the currently active tab changes | `{title, paneKey, disabled}` |
 
 
 ## Theming
@@ -418,21 +494,28 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-tabs-tab-smile-color | `  $primary-color` |
-| --nutui-tabs-titles-border-radius | ` 0` |
-| --nutui-tabs-titles-item-large-font-size | `  $font-size-3` |
-| --nutui-tabs-titles-item-font-size | `  $font-size-2` |
-| --nutui-tabs-titles-item-small-font-size | `  $font-size-1` |
-| --nutui-tabs-titles-item-color | `  $title-color` |
-| --nutui-tabs-titles-item-active-color | `  $title-color` |
-| --nutui-tabs-titles-background-color | `  $background-color2` |
-| --nutui-tabs-horizontal-line-bottom`v1.4.8` | ` 15%` |
+| --nutui-tabs-tab-smile-color | `$primary-color` |
+| --nutui-tabs-titles-background-color | `$background-color` |
+| --nutui-tabs-titles-border-radius | `0` |
+| --nutui-tabs-titles-item-large-font-size | `$font-size-3` |
+| --nutui-tabs-titles-item-font-size | `$font-size-2` |
+| --nutui-tabs-titles-item-small-font-size | `$font-size-1` |
+| --nutui-tabs-titles-item-color | `$title-color` |
+| --nutui-tabs-titles-item-active-color | `$title-color` |
+| --nutui-tabs-titles-item-active-font-weight`v1.4.9` | `600` |
+| --nutui-tabs-horizontal-tab-line-color`v1.4.9` | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
+| --nutui-tabs-horizontal-line-bottom`v1.4.8` | `15%` |
 | --nutui-tabs-horizontal-line-border-radius`v1.4.8` |` 0px`|
-| --nutui-tabs-horizontal-titles-height | `  46px` |
-| --nutui-tabs-horizontal-titles-item-min-width | `  50px` |
-| --nutui-tabs-horizontal-titles-item-active-line-width | `  40px` |
-| --nutui-tabs-vertical-titles-item-height | `  40px` |
-| --nutui-tabs-vertical-titles-item-active-line-height | `  14px` |
-| --nutui-tabs-vertical-titles-width | `  100px` |
-| --nutui-tabs-titles-item-line-border-radius | `  0` |
-| --nutui-tabs-titles-item-line-opacity | `  1` |
+| --nutui-tabs-horizontal-tab-line-opacity`v1.4.9` | `1`|
+| --nutui-tabs-horizontal-titles-height | `46px` |
+| --nutui-tabs-horizontal-titles-item-min-width | `50px` |
+| --nutui-tabs-horizontal-titles-item-active-background-color`v1.4.9` | `$background-color3` |
+| --nutui-tabs-horizontal-titles-item-active-line-width | `40px` |
+| --nutui-tabs-horizontal-titles-item-active-line-height`v1.4.9` | `3px` |
+| --nutui-tabs-vertical-tab-line-color`v1.4.9` | `linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
+| --nutui-tabs-vertical-titles-item-height | `40px` |
+| --nutui-tabs-vertical-titles-item-active-line-width`v1.4.9` | `3px` |
+| --nutui-tabs-vertical-titles-item-active-line-height | `14px` |
+| --nutui-tabs-vertical-titles-width | `100px` |
+| --nutui-tabs-titles-item-line-border-radius`v1.4.9 废弃` | `0` |
+| --nutui-tabs-titles-item-line-opacity`v1.4.9 废弃` | `1` |

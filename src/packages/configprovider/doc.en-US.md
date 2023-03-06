@@ -160,5 +160,5 @@ If you can't find the language pack you need, you are welcome to create a new la
 
 | Attribute | Description      | Type | Default  |
 |--------|------------------|---------|------|
-| locale | set the language | `BaseLang` | zhCN |
-| theme      | set the theme    |    `Record<string, string>`     | -    |
+| locale | set the language | BaseLang | zhCN |
+| theme      | set the theme    |    Record<string, string>     | -    |

@@ -5,10 +5,12 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import classNames from 'classnames'
 import { getScrollParent } from '@/utils/get-scroll-parent'
 import { getRect } from '@/utils/useClientRect'
 import useWatch from '@/utils/useWatch'
 import { BasicComponent } from '@/utils/typings'
+import bem from '@/utils/bem'
 
 export interface StickyProps extends BasicComponent {
   container?: React.RefObject<HTMLElement>
@@ -27,6 +29,8 @@ const defaultProps = {
   bottom: 0,
   zIndex: 2000,
 } as StickyProps
+
+const b = bem('sticky')
 
 export const Sticky: FunctionComponent<StickyProps> = (props) => {
   const {
@@ -174,10 +178,15 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
     <div
       ref={rootRef}
       style={rootStyle}
-      className={`nut-sticky ${className}`}
+      className={classNames(b(), className)}
       {...rest}
     >
-      <div className="nut-sticky-box" ref={stickyRef} style={stickyStyle}>
+      <div
+        // 应符合 bem 规范
+        className="nut-sticky-box"
+        ref={stickyRef}
+        style={stickyStyle}
+      >
         {children}
       </div>
     </div>
