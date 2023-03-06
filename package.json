@@ -56,7 +56,7 @@
     "build:component:css": "node scripts/build-component-css.js",
     "build:css": "npm run generate:themes && vite build --config vite.config.build.css.ts && npm run build:replace ",
     "build:replace": "npm run replace:scss",
-    "build:es": "npx rollup -c rollup.config.es.mjs",
+    "build:es": "npx rollup -c rollup.config.es.js --bundleConfigAsCjs",
     "build:locales": "vite build --config vite.config.build.locales.ts",
     "build": "npm run checked && vite build --config vite.config.build.ts && npm run build:es && npm run build:css && npm run build:loader-style && npm run build:dts && npm run build:locales",
     "build:site": "npm run checked && vite build --config vite.config.build.site.ts",
@@ -76,7 +76,7 @@
     "dev:taro:h5": "npm run checked:taro && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:h5",
     "replace:taro:types": "node scripts/taro/replace-taro-types-alias.js",
     "build:taro": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run build:taro:es  && npm run build:css && npm run build:loader-style && npm --taro run build:dts && npm run build:locales",
-    "build:taro:es": "npx rollup -c rollup.config.taro.es.mjs",
+    "build:taro:es": "npx rollup -c rollup.config.taro.es.js --bundleConfigAsCjs",
     "build:taro:weapp": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run build:weapp",
     "add:taro:config": "node scripts/taro/generate-taro-route.js"
   },

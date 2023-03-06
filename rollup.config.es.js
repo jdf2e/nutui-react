@@ -1,19 +1,12 @@
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
 import { getBabelOutputPlugin } from '@rollup/plugin-babel'
-import path from 'path'
-import { createRequire } from "module";
-import { fileURLToPath } from 'url';
 
-const require = createRequire(import.meta.url);
-const config = require('./src/config.json');
-
-const __filenameNew = fileURLToPath(import.meta.url)
-const __dirnameNew = path.dirname(__filenameNew)
-
+const path = require('path')
+const config = require('./src/config.json')
 
 const entries = {
-  'nutui-react.es': path.join(__dirnameNew, `./src/packages/nutui.react.build.ts`),
+  'nutui-react.es': path.join(__dirname, `./src/packages/nutui.react.build.ts`),
 }
 const outputEntries = {}
 
@@ -23,7 +16,7 @@ config.nav.map((item) => {
     if (show || exportEmpty) {
       outputEntries[`./${name.toLowerCase()}`] = `./${name}`
       entries[name] = path.join(
-        __dirnameNew,
+        __dirname,
         `./src/packages/${name.toLowerCase()}/index.ts`
       )
     }
