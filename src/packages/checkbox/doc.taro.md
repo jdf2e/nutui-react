@@ -35,6 +35,7 @@ const CheckBoxDemo = () => {
 }
 export default CheckBoxDemo;
 ```
+:::
 
 ## 半选状态
 

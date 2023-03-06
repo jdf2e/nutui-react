@@ -132,7 +132,7 @@ const App = () => {
   }
   return <>
     <SearchBar
-      change={(val: string, e: Event) => change(val, e)}
+      onChange={(val: string, e: Event) => change(val, e)}
       maxLength={10}
     />
     value：{value}
