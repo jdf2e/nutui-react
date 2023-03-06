@@ -81,7 +81,7 @@
     "add:taro:config": "node scripts/taro/generate-taro-route.js"
   },
   "engines": {
-    "node": "^14.18.0 || >=15.0.0"
+    "node": ">=16.0.0"
   },
   "lint-staged": {
     "*.md": "prettier --write",
