@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import '@/packages/swiper/demo.scss'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { SwiperItem, Swiper, Icon } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   basic: string
@@ -42,6 +44,7 @@ const SwiperDemo = () => {
   const swiperRef = React.useRef<any>(null)
   const [height, setHeight] = useState<any>(150)
   const [paginationColor, setPaginationColor] = useState<string>('#426543')
+  const [paginationBgColor, setPaginationBgColor] = useState<string>('#426ddd')
   const [initPage1, setInitPage1] = useState<any>(0)
   const [initPage2, setInitPage2] = useState<any>(0)
   const [initPage3, setInitPage3] = useState<any>(0)
@@ -85,181 +88,193 @@ const SwiperDemo = () => {
     }, 3000)
   }, [])
   return (
-    <div className="demo padding">
-      <h2>{translated.basic}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          height={height}
-          paginationColor={paginationColor}
-          autoPlay="2000"
-          initPage={initPage1}
-          onChange={onChange}
-          paginationVisible
-        >
-          {list.map((item) => {
-            return (
-              <SwiperItem key={item}>
-                <img src={item} alt="" />
-              </SwiperItem>
-            )
-          })}
-        </Swiper>
-      </div>
-      <h2>{translated.asyc}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          height={height}
-          paginationColor={paginationColor}
-          autoPlay="2000"
-          initPage={initPage2}
-          onChange={onChange}
-          paginationVisible
-        >
-          {list1.map((item) => {
-            return (
-              <SwiperItem key={item}>
-                <img src={item} alt="" />
-              </SwiperItem>
-            )
-          })}
-        </Swiper>
-      </div>
-      <h2>{translated.dynamicDel}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          height={height}
-          paginationColor={paginationColor}
-          autoPlay="2000"
-          initPage={initPage3}
-          onChange={onChange}
-          paginationVisible
-        >
-          {list2.map((item) => {
-            return (
-              <SwiperItem key={item}>
-                <img src={item} alt="" />
-              </SwiperItem>
-            )
-          })}
-        </Swiper>
-      </div>
+    <>
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} padding`}>
+        <h2>{translated.basic}</h2>
+        <div className="demo-box" style={{ height: 150 }}>
+          <Swiper
+            height={height}
+            paginationColor={paginationColor}
+            paginationBgColor={paginationBgColor}
+            autoPlay="2000"
+            initPage={initPage1}
+            onChange={onChange}
+            paginationVisible
+          >
+            {list.map((item) => {
+              return (
+                <SwiperItem key={item}>
+                  <img src={item} alt="" />
+                </SwiperItem>
+              )
+            })}
+          </Swiper>
+        </div>
+        <h2>{translated.asyc}</h2>
+        <div className="demo-box" style={{ height: 150 }}>
+          <Swiper
+            height={height}
+            paginationColor={paginationColor}
+            autoPlay="2000"
+            initPage={initPage2}
+            onChange={onChange}
+            paginationVisible
+          >
+            {list1.map((item) => {
+              return (
+                <SwiperItem key={item}>
+                  <img src={item} alt="" />
+                </SwiperItem>
+              )
+            })}
+          </Swiper>
+        </div>
+        <h2>{translated.dynamicDel}</h2>
+        <div className="demo-box" style={{ height: 150 }}>
+          <Swiper
+            height={height}
+            paginationColor={paginationColor}
+            autoPlay="2000"
+            initPage={initPage3}
+            onChange={onChange}
+            paginationVisible
+          >
+            {list2.map((item) => {
+              return (
+                <SwiperItem key={item}>
+                  <img src={item} alt="" />
+                </SwiperItem>
+              )
+            })}
+          </Swiper>
+        </div>
 
-      <h2>{translated.size}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper initPage={initPage4} width="300" loop={false}>
-          {list.map((item) => {
-            return (
-              <SwiperItem key={item}>
-                <img src={item} alt="" />
-              </SwiperItem>
-            )
-          })}
-        </Swiper>
-      </div>
-      <h2>{translated.indicator}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          loop
-          initPage={initPage5}
-          onChange={(e) => setCurrent(e + 1)}
-          pageContent={<div className="page"> {current}/4 </div>}
-        >
-          {list.map((item) => {
-            return (
-              <SwiperItem key={item}>
-                <img src={item} alt="" />
-              </SwiperItem>
-            )
-          })}
-        </Swiper>
-      </div>
-      <h2>{translated.btns}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          ref={swiperRef}
-          loop
-          initPage={initPage6}
-          onChange={(e) => setCurrent2(e + 1)}
-          pageContent={<div className="page"> {current2}/4 </div>}
-        >
-          {list.map((item) => {
-            return (
-              <SwiperItem key={item}>
-                <img src={item} alt="" />
-              </SwiperItem>
-            )
-          })}
-        </Swiper>
-        <div className="nut-swiper-btns">
-          <span className="nut-swiper-btns__left" onClick={(e) => handlePrev()}>
-            <Icon name="left" />
-          </span>
-          <span className="nut-swiper-btns__left" onClick={(e) => handleNext()}>
-            <Icon name="right" />
-          </span>
+        <h2>{translated.size}</h2>
+        <div className="demo-box" style={{ height: 150 }}>
+          <Swiper initPage={initPage4} height={height} width="300" loop={false}>
+            {list.map((item) => {
+              return (
+                <SwiperItem key={item}>
+                  <img src={item} alt="" />
+                </SwiperItem>
+              )
+            })}
+          </Swiper>
+        </div>
+        <h2>{translated.indicator}</h2>
+        <div className="demo-box" style={{ height: 150 }}>
+          <Swiper
+            loop
+            height={height}
+            initPage={initPage5}
+            onChange={(e) => setCurrent(e + 1)}
+            pageContent={<div className="page"> {current}/4 </div>}
+          >
+            {list.map((item) => {
+              return (
+                <SwiperItem key={item}>
+                  <img src={item} alt="" />
+                </SwiperItem>
+              )
+            })}
+          </Swiper>
+        </div>
+        <h2>{translated.btns}</h2>
+        <div className="demo-box" style={{ height: 150 }}>
+          <Swiper
+            height={height}
+            ref={swiperRef}
+            loop
+            initPage={initPage6}
+            onChange={(e) => setCurrent2(e + 1)}
+            pageContent={<div className="page"> {current2}/4 </div>}
+          >
+            {list.map((item) => {
+              return (
+                <SwiperItem key={item}>
+                  <img src={item} alt="" />
+                </SwiperItem>
+              )
+            })}
+          </Swiper>
+          <div className="nut-swiper-btns">
+            <span
+              className="nut-swiper-btns__left"
+              onClick={(e) => handlePrev()}
+            >
+              <Icon name="left" />
+            </span>
+            <span
+              className="nut-swiper-btns__left"
+              onClick={(e) => handleNext()}
+            >
+              <Icon name="right" />
+            </span>
+          </div>
+        </div>
+        <h2>{translated.vertical}</h2>
+        <div className="demo-box vertical-center" style={{ height: 150 }}>
+          <Swiper
+            loop
+            initPage={initPage7}
+            direction="vertical"
+            autoPlay="3000"
+            height="150"
+            paginationVisible
+          >
+            {list.map((item) => {
+              return (
+                <SwiperItem key={item}>
+                  <img src={item} alt="" />
+                </SwiperItem>
+              )
+            })}
+          </Swiper>
+        </div>
+        <h2>{translated.horizontalCenter}</h2>
+        <div className="demo-box " style={{ height: 150 }}>
+          <Swiper
+            loop={false}
+            initPage={initPage8}
+            autoPlay="0"
+            height="150"
+            paginationVisible
+            width="280"
+            isCenter
+          >
+            {list.map((item) => {
+              return (
+                <SwiperItem key={item}>
+                  <img src={item} alt="" />
+                </SwiperItem>
+              )
+            })}
+          </Swiper>
+        </div>
+        <h2>{translated.verticalCenter}</h2>
+        <div className="demo-box vertical-center">
+          <Swiper
+            loop={false}
+            initPage={initPage9}
+            direction="vertical"
+            autoPlay="0"
+            height="220"
+            paginationVisible
+            isCenter
+            style={{ height: '280px' }}
+          >
+            {list.map((item) => {
+              return (
+                <SwiperItem key={item}>
+                  <img src={item} alt="" />
+                </SwiperItem>
+              )
+            })}
+          </Swiper>
         </div>
       </div>
-      <h2>{translated.vertical}</h2>
-      <div className="demo-box vertical-center" style={{ height: 150 }}>
-        <Swiper
-          loop
-          initPage={initPage7}
-          direction="vertical"
-          autoPlay="3000"
-          height="150"
-          paginationVisible
-        >
-          {list.map((item) => {
-            return (
-              <SwiperItem key={item}>
-                <img src={item} alt="" />
-              </SwiperItem>
-            )
-          })}
-        </Swiper>
-      </div>
-      <h2>{translated.horizontalCenter}</h2>
-      <div className="demo-box " style={{ height: 150 }}>
-        <Swiper
-          loop={false}
-          initPage={initPage8}
-          autoPlay="0"
-          height="150"
-          paginationVisible
-          width="280"
-          isCenter
-        >
-          {list.map((item) => {
-            return (
-              <SwiperItem key={item}>
-                <img src={item} alt="" />
-              </SwiperItem>
-            )
-          })}
-        </Swiper>
-      </div>
-      <h2>{translated.verticalCenter}</h2>
-      <div className="demo-box vertical-center">
-        <Swiper
-          loop={false}
-          initPage={initPage9}
-          direction="vertical"
-          autoPlay="0"
-          height="220"
-          paginationVisible
-          isCenter
-          style={{ height: '280px' }}
-        >
-          {list.map((item) => {
-            return (
-              <SwiperItem key={item}>
-                <img src={item} alt="" />
-              </SwiperItem>
-            )
-          })}
-        </Swiper>
-      </div>
-    </div>
+    </>
   )
 }
 

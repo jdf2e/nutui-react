@@ -7,6 +7,7 @@ Implement draggable arbitrary elements.
 ### Install
 
 ```javascript
+// react
 import { Drag } from '@nutui/nutui-react'
 ```
 
@@ -162,6 +163,6 @@ export default App;
 
 | Attribute            | Description               | Type   | Default  |
 | :-------- | :------------------------------------------------ | :------------- | :---------------------------------- |
-| attract   | Whether to enable automatic edge suction  | Boolean        | false                                |
-| direction | The drag direction limit of the dragged element **x**/**y**/**all**| String   | 'all'         |
-| boundary  | The drag boundary of the dragged element   | Object         | {top: 0,left: 0,right: 0,bottom: 0} |
+| attract   | Whether to enable automatic edge suction  | boolean        | `false`                                |
+| direction | The drag direction limit of the dragged element **x**/**y**/**all**| string   | `all`         |
+| boundary  | The drag boundary of the dragged element   | Object         | `{top: 0, left: 0, right: 0, bottom: 0}` |

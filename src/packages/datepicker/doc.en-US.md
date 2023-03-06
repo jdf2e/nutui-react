@@ -5,8 +5,9 @@
 Used to select time, support date and time dimensions, usually used with the Popup component.
     
 ### Install
-    
-```javascript
+
+```ts
+// react
 import { DatePicker } from '@nutui/nutui';
 ```
     
@@ -15,7 +16,7 @@ import { DatePicker } from '@nutui/nutui';
 :::demo
 ```tsx
 import  React, { useState  } from "react";
-import { DatePicker,Cell,Popup,Picker } from '@nutui/nutui-react';
+import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const [show1, setShow1] = useState(false)
@@ -45,7 +46,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState  } from "react";
-import { DatePicker,Cell,Popup,Picker } from '@nutui/nutui-react';
+import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const [show2, setShow2] = useState(false)
@@ -77,7 +78,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState  } from "react";
-import { DatePicker,Cell,Popup,Picker } from '@nutui/nutui-react';
+import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const minDate = new Date(2020, 0, 1)
@@ -113,7 +114,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState  } from "react";
-import { DatePicker,Cell,Popup,Picker  } from '@nutui/nutui-react';
+import { DatePicker,Cell  } from '@nutui/nutui-react';
 
 const App = () => {
   const minDate = new Date(2020, 0, 1)
@@ -148,7 +149,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState  } from "react";
-import { DatePicker,Cell,Popup,Picker } from '@nutui/nutui-react';
+import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const minDate = new Date(2020, 0, 1)
@@ -213,7 +214,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState  } from "react";
-import { DatePicker,Cell,Popup,Picker } from '@nutui/nutui-react';
+import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const minDate = new Date(2020, 0, 1)
@@ -250,7 +251,7 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState  } from "react";
-import { DatePicker,Cell,Popup,Picker } from '@nutui/nutui-react';
+import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const minDate = new Date(2020, 0, 1)
@@ -262,7 +263,7 @@ const App = () => {
     setDesc7(options.map((option) => option.text).join(' '))
   }
   const filter = (type: string, options:PickerOption[]) => {
-    if (type == 'hour') {
+    if (type === 'hour') {
       return options.filter((option) => Number(option.value) % 6 === 0);
     }
     return options;
@@ -317,22 +318,22 @@ export default App;
 | Attribute         | Description                             | Type   | Default           |
 |---------------------------|---------------------------------------------------|---------|----------|
 | modelValue                | Default Date                                                | Date    | `null`   |
-| visible                   | Is Show                                          | Boolean | `false`  |
-| type                      | Can be set to date time year-month month-day datehour | String  | `'date'` |
-| minuteStep                | Option minute step                                        | Number  | `1`      |
-| isShowChinese             | Show Chinese                                  | Boolean | `false`  |
-| title                     | Title                                          | String  | `null`   |
+| visible                   | Is Show                                          | boolean | `false`  |
+| type                      | Can be set to date time year-month month-day datehour | string  | `date` |
+| minuteStep                | Option minute step                                        | number | `1`      |
+| isShowChinese             | Show Chinese                                  | boolean | `false`  |
+| title                     | Title                                          | string  | `null`   |
 | minDate                   | Start date                                          | Date    | `Ten years ago on January 1` |
 | maxDate                   | End date                                         | Date    | `Ten years later on December 31` |
-| formatter`v1.2.2`         | Option text formatter                                           | (type: string, option: PickerOption) => PickerOption    |  |
-| filter`v1.2.2`            | Option filter                                          | (type: string, option: PickerOption) => PickerOption[]    |  |
-| three-dimensional`v1.2.2` | Turn on 3D effects               | Boolean  | true   |
+| formatter`v1.2.2`         | Option text formatter                                           | (type: string, option: PickerOption) => PickerOption    | - |
+| filter`v1.2.2`            | Option filter                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
+| three-dimensional`v1.2.2` | Turn on 3D effects               | boolean  | `true`   |
 
 
 ### Events
     
 | Event | Description           | Arguments     |
 |-----------------------------|--------------------|--------------|
-| onConfirmDatePicker`v1.2.2` | Emitted when click confirm button.  | values, options |
-| onCloseDatePicker           | Emitted when click close button.          | -- |
-| onChange`v1.2.2`            | Emitted when current option changed.         |  columnIndex, values, options  |
+| onConfirmDatePicker`v1.2.2` | Emitted when click confirm button.  | `values, options` |
+| onCloseDatePicker           | Emitted when click close button.          | - |
+| onChange`v1.2.2`            | Emitted when current option changed.         |  `columnIndex, values, options`  |

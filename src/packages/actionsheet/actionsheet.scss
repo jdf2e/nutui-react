@@ -1,4 +1,37 @@
 @import '../popup/popup.scss';
+.nut-theme-dark {
+  .nut-actionsheet {
+    background-color: $dark5;
+    color: $dark1;
+    &__menu {
+      .nut-actionsheet__item {
+        background-color: $dark5;
+        color: $dark1 !important;
+        .subdesc {
+          color: $dark2;
+        }
+      }
+      .nut-actionsheet__item:hover {
+        background-color: $dark5;
+      }
+    }
+    .nut-actionsheet__cancel {
+      background-color: $dark5;
+      color: $dark2;
+      border-top: none;
+    }
+    .nut-actionsheet__title {
+      background-color: $dark5;
+      color: $dark1;
+      border-top: none;
+    }
+    .desc {
+      background-color: $dark5;
+      color: $dark2;
+    }
+  }
+}
+
 .nut-actionsheet {
   display: block;
   padding-bottom: constant(safe-area-inset-bottom);
@@ -44,19 +77,19 @@
     font-size: $font-size-base;
     color: $title-color;
     text-align: center;
-    background-color: #fff;
+    background-color: $background-color3;
     cursor: pointer;
   }
 
   .desc {
     font-size: $font-size-2;
-    color: #999;
+    color: $title-color2;
   }
 
   .subdesc {
     display: block;
     font-size: $font-size-small;
-    color: #999;
+    color: $title-color2;
   }
 
   .nut-actionsheet__item-disabled {

@@ -7,6 +7,7 @@ Used to show the current progress of the operation.
 ### Install
 
 ```js
+// react
 import { Progress, Icon } from '@nutui/nutui-react';
 ```
 
@@ -45,7 +46,7 @@ const App = () => {
       <Progress
         percentage="30"
         strokeColor="rgba(250,44,25,0.47)"
-        stroke-width="20"
+        strokeWidth="20"
         textColor="red"
       />
     </Cell>
@@ -227,7 +228,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React, {useState} from "react";
 import { Progress, Cell, Button } from '@nutui/nutui-react';
 
 const App = () => {
@@ -281,21 +282,63 @@ export default App;
 
 | Props | Description | Type | Default
 |----- | ----- | ----- | -----
-| percentage | percentage | Number | 0
-| isShowPercentage | Whether to display the percent sign | Boolean | true
-| fillColor | Progress bar background color | String | #f3f3f3
-| strokeColor | Stroke color | String | linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)
-| strokeWidth | Stroke width | String | -
-| size | Progress bar and text size, eg `small` `base` `large` | String | base
-| showText | Whether to show text | Boolean | true
-| textInside | Progress bar text display position(`false`外显，`true`内显) | Boolean | false
-| textColor | Progress bar text color setting | String | 外显`#333` 内显`#fff`
-| textWidth | Progress bar text width setting | String | 35px
-| textBackground | Progress bar text background color setting | String | 同进度条颜色
-| textType | Progress bar text type setting，`text`(展示文字)/`icon`(展示icon标签) | String | text
-| status | The current state of the progress bar, `true`展示动画效果 | Boolean | false
-| iconName | Icon Name | String | checked
-| iconColor | Icon Color | String | #439422
-| iconSize | Icon Size | String | 16px
-| rounded | Whether the corners are rounded | boolean｜String | true
+| percentage | percentage | number | `0`
+| isShowPercentage | Whether to display the percent sign | boolean | `true`
+| fillColor | Progress bar background color | string | `#f3f3f3`
+| strokeColor | Stroke color | string | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
+| strokeWidth | Stroke width | string | -
+| size | Progress bar and text size, eg `small` `base` `large` | string | `base`
+| showText | Whether to show text | boolean | `true`
+| textInside | Progress bar text display position(`false`外显，`true`内显) | boolean | `false`
+| textColor | Progress bar text color setting | string | 外显`#333` 内显`#fff`
+| textWidth | Progress bar text width setting | string | `35px`
+| textBackground | Progress bar text background color setting | string | 同进度条颜色
+| textType | Progress bar text type setting，`text`(展示文字)/`icon`(展示icon标签) | string | `text`
+| status | The current state of the progress bar, `true`展示动画效果 | boolean | `false`
+| iconName | Icon Name | string | `checked`
+| iconColor | Icon Color | string | `#439422`
+| iconSize | Icon Size | string | `16px`
+| rounded `v1.4.7 Abandon`| Whether the corners are rounded | boolean \| string | `true`
 
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-progress-border-radius | `12px` |
+| --nutui-progress-text-padding | `0 5px` |
+| --nutui-progress-text-font-size | `13px` |
+| --nutui-progress-text-color | `$title-color` |
+| --nutui-progress-text-inner-color | `$gray6` |
+| --nutui-progress-insidetext-position-top | `-4px`|
+| --nutui-progress-insidetext-position-bottom | `-4px`|
+| --nutui-progress-insidetext-border-radius | `5px` |
+| --nutui-progress-insidetext-background | `$progress-inner-background-color` |
+| --nutui-progress-outer-background-color | `#f3f3f3` |
+| --nutui-progress-outer-border-radius | `12px` |
+| --nutui-progress-insidetext-border-radius | `5px` |
+| --nutui-progress-insidetext-padding | `3px 5px 3px 6px` |
+| --nutui-progress-small-font-size | `7px` |
+| --nutui-progress-small-padding | `0 4px` |
+| --nutui-progress-small-height | `5px` |
+| --nutui-progress-small-text-font-size | `7px` |
+| --nutui-progress-small-text-line-height | `10px` |
+| --nutui-progress-small-text-padding | `2px 4px` |
+| --nutui-progress-base-font-size | `9px` |
+| --nutui-progress-base-padding | `0 5px` |
+| --nutui-progress-base-height | `10px` |
+| --nutui-progress-base-text-font-size | `9px` |
+| --nutui-progress-base-text-line-height | `13px` |
+| --nutui-progress-base-text-padding | `$progress-insidetext-padding` |
+| --nutui-progress-base-text-top | `$progress-insidetext-top` |
+| --nutui-progress-large-font-size | `13px` |
+| --nutui-progress-large-padding | `0 5px` |
+| --nutui-progress-large-height | `15px` |
+| --nutui-progress-large-text-font-size | `13px` |
+| --nutui-progress-large-text-line-height | `18px` |
+| --nutui-progress-large-text-padding | `$progress-insidetext-padding` |
+| --nutui-progress-large-text-top | `$progress-insidetext-top` |

@@ -6,6 +6,7 @@ The picker component is usually used with Popup Component.
 
 ### Install
 ```ts
+// react
 import { Picker } from '@nutui/nutui-react';
 ```
 
@@ -361,18 +362,18 @@ export default App;
 
 | Attribute         | Description                             | Type   | Default           |
 | ----- | ----- | ----- | ----- |
-| isVisible | Is Show  | Boolean | false
-| title | Toolbar title | String | null
-| listData |  Columns data | Array | []
-| defaultValueData | Default Index  | Array | []
-| threeDimensional          | Turn on 3D effects                | Boolean  | true   |
+| isVisible | Is Show  | boolean | `false`
+| title | Toolbar title | string | -
+| listData |  Columns data | Array | `[]`
+| defaultValueData | Default Index  | Array | `[]`
+| threeDimensional          | Turn on 3D effects                | boolean  | `true`   |
 
 
 ## listData 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| text        | Text of column               | String|Number |               |
-| value          | Value of column              | String|Number |            |
+| text        | Text of column               | string \| number |               |
+| value          | Value of column              | string \| number |            |
 | children         | Cascader Option               | Array | -                |
 
 
@@ -384,3 +385,29 @@ export default App;
 | onChange      | Emitted when current option changed. | { columnIndex, selectedValue, selectedOptions } |
 | onCloseUpdate | Emitted when cascade changed.   | selectedValue |
 | onClose       | Emitted when click close button. | { selectedValue, selectedOptions }  |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-picker-cancel-color | `#808080` |
+| --nutui-picker-ok-color | `$primary-color` |
+| --nutui-picker-bar-cancel-font-size | `14px` |
+| --nutui-picker-bar-ok-font-size | `14px` |
+| --nutui-picker-bar-button-padding | `0 15px` |
+| --nutui-picker-bar-title-font-size | `16px` |
+| --nutui-picker-bar-title-color | `$title-color` |
+| --nutui-picker-bar-title-font-weight | `normal` |
+| --nutui-picker-list-height`v1.4.9` | `252px` |
+| --nutui-picker-item-height | `36px` |
+| --nutui-picker-item-text-color | `$title-color` |
+| --nutui-picker-item-active-text-color | `inherit` |
+| --nutui-picker-item-text-font-size | `14px` |
+| --nutui-picker-item-active-line-border | `1px solid #d8d8d8` |
+| --nutui-picker-columns-item-color | `$title-color` |
+| --nutui-picker-mask-bg-img`v1.4.9` | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |

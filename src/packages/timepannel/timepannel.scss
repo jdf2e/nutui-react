@@ -1,7 +1,17 @@
+.nut-theme-dark {
+  .nut-timepannel {
+    background-color: $dark5;
+    color: $dark2;
+    &--curr {
+      background-color: $dark5;
+      color: $dark1;
+    }
+  }
+}
 .nut-timepannel {
-  height: 40px;
+  height: $timeselect-timepannel-height;
   line-height: 40px;
   text-align: center;
-  color: #666;
-  font-size: 14px;
+  color: $timeselect-timepannel-text-color;
+  font-size: $timeselect-timepannel-font-size;
 }

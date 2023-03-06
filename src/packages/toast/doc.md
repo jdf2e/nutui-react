@@ -7,6 +7,7 @@
 ### 安装
 
 ```javascript
+// react
 import { Toast } from '@nutui/nutui-react';
 ```
 
@@ -31,7 +32,7 @@ const App = () => {
         <Cell
           title="Text文字提示"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => textToast('网络失败，请稍后再试~')}
         />
@@ -59,7 +60,7 @@ const App = () => {
         <Cell
           title="Toast 标题提示"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => titleToast('Toast 标题提示')}
         />
@@ -86,7 +87,7 @@ const App = () => {
         <Cell
           title="Success 成功提示"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => successToast('成功提示')}
         />
@@ -115,7 +116,7 @@ const App = () => {
         <Cell
           title="Error 失败提示"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => errorToast('失败提示')}
         />
@@ -144,7 +145,7 @@ const App = () => {
             <Cell
             title=" Warning 警告提示"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => warningToast('警告提示')}
             />
@@ -173,7 +174,7 @@ const App = () => {
             <Cell
             title=" Loading 加载提示"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => loadingToast('加载中')}
             />
@@ -203,14 +204,14 @@ const App = () => {
             <Cell
             title="设置展示时长为10秒提示"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => duringToast('设置展示时长为10秒')}
             />
             <Cell
             title="Toast 不消失"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => {Toast.text('Toast 不消失', { duration: 0 })}}
             />
@@ -248,7 +249,7 @@ const App = () => {
         <Cell
         title='Toast 自定义底部高度'
         isLink
-        click={(
+        onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => toastBottom('自定义距离')}
         />
@@ -283,7 +284,7 @@ const App = () => {
             <Cell
             title="Loading状态透明遮罩"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => iconToast('加载状态透明遮罩')}
             />
@@ -304,27 +305,44 @@ export default App
 | Toast.success             | 展示成功提示       | message｜ options| toast 实例 |
 | Toast.fail                | 展示失败提示     | message｜ options| toast 实例 |
 | Toast.warn                | 展示警告提示        | message｜ options | toast 实例 |
-| Toast.hide                | 关闭提示          | force:boolean   | void       |
+| Toast.hide                | 关闭提示          | force\: boolean   | void       |
 | Toast.loading             | 展示加载提示       | message｜ options | toast 实例 |
 
 ### Props
 
 | 字段                | 说明              | 类型          | 默认值                        |
 | ------------------- | -------------- | ------------- | ----------------------------- |
-| id                  | 标识符，相同者共用一个实例<br>loading类型默认使用一个实例，其他类型默认不共用 | String/Number | -                             |
-| duration            | 展示时长（秒）<br>值为 0 时，toast 不会自动消失      | Number        | 2       |
+| id                  | 标识符，相同者共用一个实例<br>loading类型默认使用一个实例，其他类型默认不共用 | string \| number | -                             |
+| duration            | 展示时长（秒）<br>值为 0 时，toast 不会自动消失      | number       | `2`       |
 | title `v1.3.0`            | 标题      | string        | -            |
-| center              | 是否展示在页面中部（为false时展示在底部）                   | Boolean  | true   |
-| bottom              | 距页面底部的距离（像素），option.center为false时生效        | Number   | 30     |
-| textAlignCenter     | 多行文案是否居中                         | Boolean       | true          |
-| bgColor             | 背景颜色（透明度）                                   | String        | "rgba(0, 0, 0, 0.8)"    |
-| customClass         | 自定义类名                                            | String        | ""        |
-| icon                | 自定义图标，**支持图片链接或base64格式**              | String        | ""           |
-| iconSize `v1.3.0`               | 自定义图标尺寸              | String        | 20          |
-| size                | 文案尺寸，**small**/**base**/**large**三选一           | String        | "base"         |
-| cover               | 是否显示遮罩层                                          | Boolean       | false |
-| coverColor          | 遮罩层颜色，默认透明                                   | String        | "rgba(0,0,0,0)"    |
-| loadingRotate       | loading图标是否旋转，仅对loading类型生效                   | Boolean       | true          |
-| onClose             | 关闭时触发的事件                                      | function      | null            |
-| closeOnClickOverlay | 是否在点击遮罩层后关闭提示                         | Boolean       | false     |
+| center              | 是否展示在页面中部（为false时展示在底部）                   | boolean  | `true`   |
+| bottom              | 距页面底部的距离（像素），option.center为false时生效        | number  | `30`     |
+| textAlignCenter     | 多行文案是否居中                         | boolean       | `true`          |
+| bgColor             | 背景颜色（透明度）                                   | string        | `rgba(0, 0, 0, 0.8)`    |
+| customClass         | 自定义类名                                            | string        | -        |
+| icon                | 自定义图标，**支持图片链接或base64格式**              | string        | -           |
+| iconSize `v1.3.0`               | 自定义图标尺寸              | string        | `20`          |
+| size                | 文案尺寸，**small**/**base**/**large**三选一           | string        | `base`         |
+| cover               | 是否显示遮罩层                                          | boolean       | `false` |
+| coverColor          | 遮罩层颜色，默认透明                                   | string        | `rgba(0,0,0,0)`    |
+| loadingRotate       | loading图标是否旋转，仅对loading类型生效                   | boolean       | `true`          |
+| onClose             | 关闭时触发的事件                                      | Function      | `null`            |
+| closeOnClickOverlay | 是否在点击遮罩层后关闭提示                         | boolean       | `false`     |
 
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-toast-title-font-size | `16px` |
+| --nutui-toast-text-font-size | `14px` |
+| --nutui-toast-font-color | `#fff` |
+| --nutui-toast-inner-padding | `24px 30px` |
+| --nutui-toast-inner-bg-color | `$gray7` |
+| --nutui-toast-inner-border-radius | `12px` |
+| --nutui-toast-cover-bg-color | `$gray7` |

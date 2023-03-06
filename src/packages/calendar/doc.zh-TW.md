@@ -7,6 +7,7 @@
 ### 安裝
 
 ```javascript
+// react
 import { Calendar } from '@nutui/nutui-react';
 ```
 
@@ -427,25 +428,25 @@ export default App;
 
 | 字段              | 說明                                              | 類型            | 默認值          |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
-| visible   | 是否可見                                          | Boolean         | false           |
-| type              | 類型，日期選擇'one'，區間選擇'range'              | String          | 'one'           |
-| poppable          | 是否彈窗狀態展示                                  | Boolean         | true            |
-| isAutoBackFill | 自動回填                                          | Boolean         | false           |
-| title             | 顯示標題                                          | String          | ‘日期選擇’      |
-| defaultValue     | 默認值，日期選擇 String 格式，區間選擇 Array 格式 | String 、 Array | null            |
-| startDate        | 開始日期， 如果不限制開始日期傳 null              | String          | 今天            |
-| endDate          | 結束日期，如果不限制結束日期傳 null               | String          | 距離今天 365 天 |
-| showToday          | 是否展示今天標記               | Boolean          | true |
-| startText         | 範圍選擇，開始信息文案               | String          | ’开始‘ |
-| endText         | 範圍選擇，結束信息文案               | String          | ‘结束’ |
-| confirmText          | 底部確認按鈕文案               | String          | ’确认‘ |
-| showTitle          | 是否在展示日曆標題               | Boolean          | true |
-| showSubTitle          | 是否展示日期標題              | Boolean          | true |
-| toDateAnimation          | 是否啟動滾動動畫              | Boolean          | true |
-| onBtn | 自定義日曆標題下部，可用以添加自定義操作              |  (() => string \| JSX.Element) 、 undefined      | - |
-| onDay  | 日期信息              |  ((date: Day) => string \| JSX.Element) 、 undefined                          | - |
-| onTopInfo  | 日期頂部信息             |  ((date: Day) => string \| JSX.Element) 、 undefined                          | - |
-| onBottomInfo  | 日期底部信息             |  ((date: Day) => string \| JSX.Element) 、 undefined                         | - |
+| visible   | 是否可見                                          | boolean         | `false`           |
+| type              | 類型，日期選擇'one'，區間選擇'range'              | string          | `one`           |
+| poppable          | 是否彈窗狀態展示                                  | boolean         | `true`            |
+| isAutoBackFill | 自動回填                                          | boolean         | `false`           |
+| title             | 顯示標題                                          | string          | `日期選擇`      |
+| defaultValue     | 默認值，日期選擇 string 格式，區間選擇 Array 格式 | string \| Array | -            |
+| startDate        | 開始日期， 如果不限制開始日期傳 null              | string          | 今天            |
+| endDate          | 結束日期，如果不限制結束日期傳 null               | string          | 距離今天 365 天 |
+| showToday          | 是否展示今天標記               | boolean          | `true` |
+| startText         | 範圍選擇，開始信息文案               | string          | `开始` |
+| endText         | 範圍選擇，結束信息文案               | string          | `结束` |
+| confirmText          | 底部確認按鈕文案               | string          | `确认` |
+| showTitle          | 是否在展示日曆標題               | boolean          | `true` |
+| showSubTitle          | 是否展示日期標題              | boolean          | `true` |
+| toDateAnimation          | 是否啟動滾動動畫              | boolean          | `true` |
+| onBtn | 自定義日曆標題下部，可用以添加自定義操作              |  (() => string \| JSX.Element) \| undefined      | - |
+| onDay  | 日期信息              |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
+| onTopInfo  | 日期頂部信息             |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
+| onBottomInfo  | 日期底部信息             |  ((date: Day) => string \| JSX.Element) \| undefined                         | - |
 
 ### Events
 
@@ -453,10 +454,37 @@ export default App;
 |--------|------------------------------|------------------------------|
 | onChoose | 選擇之後或是點擊確認按鈕觸發 | 日期數組（包含年月日和星期） |
 | onClose  | 關閉時觸發                   | -                            |
-| onSelected  | 點擊/選擇後觸發              |  Day: Day                          |
+| onSelected  | 點擊/選擇後觸發              |  `Day: Day`                          |
 
 ### Day
 | 字段              | 類型            |
 |-------------------|-----------------|
-| day   | string、number           |
+| day   | string \| number           |
 | type   | string          |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-calendar-primary-color | `$primary-color` |
+| --nutui-calendar-choose-color | `rgba(#fa2c19, 0.09)` |
+| --nutui-calendar-choose-font-color | `$primary-color` |
+| --nutui-calendar-base-color | `#333333` |
+| --nutui-calendar-disable-color | `#d1d0d0` |
+| --nutui-calendar-base-font | `$font-size-3` |
+| --nutui-calendar-title-font | `$font-size-4` |
+| --nutui-calendar-title-font-weight | `500` |
+| --nutui-calendar-sub-title-font | `$font-size-2` |
+| --nutui-calendar-text-font | `$font-size-1` |
+| --nutui-calendar-day-font | `16px` |
+| --nutui-calendar-day-active-border-radius | `0px` |
+| --nutui-calendar-day-height | `64px` |
+| --nutui-calendar-day-font-weight | `500` |
+| --nutui-calendar-day67-font-color | `$primary-color` |
+| --nutui-calendar-top-slot-height | `24px` |
+| --nutui-calendar-month-title-font-size | `inherit` |

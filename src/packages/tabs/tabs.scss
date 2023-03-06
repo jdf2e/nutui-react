@@ -1,9 +1,43 @@
 @import '../../styles/mixins/index';
 @import '../tabpane/tabpane.scss';
+@import '../icon/icon.scss';
+
+.nut-theme-dark {
+  .nut-tabs {
+    .nut-tabpane {
+      color: $white;
+    }
+
+    &__titles {
+      background: $dark5;
+
+      &-item {
+        color: $dark1;
+
+        &.active {
+          color: $dark1;
+        }
+
+        &__text {
+          color: $dark1;
+        }
+      }
+    }
+
+    &.vertical {
+      .nut-tabs__titles {
+        &-item {
+          &.active {
+            background-color: $dark5;
+          }
+        }
+      }
+    }
+  }
+}
 
 .nut-tabs {
   display: flex;
-  overflow: hidden;
 
   &.horizontal {
     flex-direction: column;
@@ -14,6 +48,7 @@
     width: 100%;
 
     .nut-tabs__titles {
+      box-sizing: border-box;
       flex-direction: column;
       height: 100%;
       padding: 10px 0 !important;
@@ -25,15 +60,15 @@
         overflow-y: auto;
       }
 
-      &-item {
+      .nut-tabs__titles-item {
         height: $tabs-vertical-titles-item-height;
         flex: none;
 
-        &__smile {
+        .nut-tabs__titles-item__smile {
           transition: width 0.3s ease;
         }
 
-        &__line {
+        .nut-tabs__titles-item__line {
           bottom: none;
           transform: translate(0, -50%);
           transition: height 0.3s ease;
@@ -42,13 +77,13 @@
         }
 
         &.active {
-          background-color: #fff;
+          background-color: $tabs-horizontal-titles-item-active-background-color;
 
           .nut-tabs__titles-item__line {
             left: 10px;
-            width: 3px;
-            background: $tabs-vertical-tab-line-color;
+            width: $tabs-vertical-titles-item-active-line-width;
             height: $tabs-vertical-titles-item-active-line-height;
+            background: $tabs-vertical-tab-line-color;
           }
 
           .nut-tabs__titles-item__smile {
@@ -64,8 +99,13 @@
     }
 
     .nut-tabs__content {
-      flex: 1;
       flex-direction: column;
+
+      &__wrap {
+        flex: 1;
+      }
+
+      height: 100%;
 
       .nut-tabpane {
         height: 100%;
@@ -73,7 +113,7 @@
     }
   }
 
-  &__titles {
+  .nut-tabs__titles {
     height: $tabs-horizontal-titles-height;
     padding: 0 10px;
     display: flex;
@@ -81,6 +121,7 @@
     background: $tabs-titles-background-color;
     border-radius: $tabs-titles-border-radius;
     flex-shrink: 0;
+    overflow: hidden;
 
     &.large {
       .nut-tabs__titles-item {
@@ -126,39 +167,41 @@
       }
     }
 
-    &-item {
+    .nut-tabs__titles-item {
       position: relative;
       font-size: $tabs-titles-item-font-size;
-      flex: 1 0 auto;
       min-width: $tabs-horizontal-titles-item-min-width;
       width: 0;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex: 1 0 auto;
       color: $tabs-titles-item-color;
 
-      &__text {
+      .nut-tabs__titles-item__text {
+        text-align: center;
+
         &.ellipsis {
           @include oneline-ellipsis();
         }
-
-        text-align: center;
       }
 
-      &__smile,
-      &__line {
+      .nut-tabs__titles-item__smile,
+      .nut-tabs__titles-item__line {
         position: absolute;
         transition: width 0.3s ease;
         width: 0;
         height: 0;
         content: ' ';
-        bottom: 15%;
+        bottom: $tabs-horizontal-tab-line-bottom;
         left: 50%;
         transform: translate(-50%, 0);
         overflow: hidden;
+        border-radius: $tabs-horizontal-tab-line-border-radius;
+        opacity: $tabs-horizontal-tab-line-opacity;
       }
 
-      &__smile {
+      .nut-tabs__titles-item__smile {
         .nut-icon {
           position: absolute;
           font-size: 12px;
@@ -168,17 +211,22 @@
         }
       }
 
+      &.nut-tabs__titles-item-left-align {
+        flex: none;
+      }
+
       &.disabled {
         color: $disable-color;
       }
 
       &.active {
-        font-weight: 600;
+        color: $tabs-titles-item-active-color;
+        font-weight: $tabs-titles-item-active-font-weight;
 
         .nut-tabs__titles-item__line {
           content: ' ';
           width: $tabs-horizontal-titles-item-active-line-width;
-          height: 3px;
+          height: $tabs-horizontal-titles-item-active-line-height;
           background: $tabs-horizontal-tab-line-color;
         }
       }
@@ -186,6 +234,10 @@
   }
 
   &__content {
+    &__wrap {
+      overflow: hidden;
+    }
+
     display: flex;
     box-sizing: border-box;
   }

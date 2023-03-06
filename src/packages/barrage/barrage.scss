@@ -1,3 +1,13 @@
+.nut-theme-dark {
+  .nut-barrage {
+    background-color: $dark6;
+    color: $dark1;
+    .barrage-item {
+      background: linear-gradient(to right, $dark3, $dark10);
+    }
+  }
+}
+
 .nut-barrage {
   position: absolute;
   left: 0;
@@ -6,7 +16,8 @@
   height: 100%;
   overflow: hidden;
   box-sizing: border-box;
-  background-color: #f7f8fa;
+  background-color: $background-color;
+  color: $title-color;
   .barrage-item {
     width: 120px;
     // max-width: 150px;
@@ -19,11 +30,7 @@
     text-align: center;
     white-space: pre;
     transform: translateX(100%);
-    background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.15),
-      rgba(0, 0, 0, 0)
-    );
+    background: linear-gradient(to right, $gray3, rgba(0, 0, 0, 0));
     box-sizing: border-box;
     &.move {
       will-change: transform;
@@ -37,9 +44,9 @@
       transform: translateX(100%);
     }
     to {
-      transform: translateX(-250%);
+      // transform: translateX(-250%);
       // transform: translateX(-180%);
-      // transform: translateX(var(--move-distance));
+      transform: translateX(var(--move-distance));
     }
   }
   @-webkit-keyframes moving {
@@ -47,7 +54,7 @@
       -webkit-transform: translateX(100%);
     }
     to {
-      transform: translateX(-250%);
+      transform: translateX(var(--move-distance));
     }
   }
 }

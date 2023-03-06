@@ -5,8 +5,9 @@
 懸浮收齊體驗交互，用於快捷導航
 
 ### 安裝
-    
+
 ``` javascript
+// react
 import { FixedNav } from '@nutui/nutui-react';
 ```
 
@@ -304,14 +305,14 @@ export default App;
 ### Prop
 | 字段           | 說明                       | 類型    | 默認值                       |
 |:---------------|:---------------------------|:--------|:-----------------------------|
-| fixednavClass        | 自定義類名                   | String | fixednav                        |
-| visible        | 是否打開                   | Boolean | false                        |
-| navList       | 懸浮列表內容數據           | Array   | []                           |
-| activeText    | 收起列表按鈕文案           | String  | 收起導航                     |
-| unActiveText | 展開列表按鈕文案           | String  | 快速導航                     |
-| type           | 導航方向,可選值 left right | String  | right                        |
-| overlay        | 展開時是否顯示遮罩         | Boolean | true                         |
-| position       | fixed 垂直位置             | Object  | {top: 'auto',bottom: 'auto'} |
+| fixednavClass        | 自定義類名                   | string | `fixednav`                        |
+| visible        | 是否打開                   | boolean | `false`                        |
+| navList       | 懸浮列表內容數據           | Array   | `[]`                           |
+| activeText    | 收起列表按鈕文案           | string  | `收起導航`                     |
+| unActiveText | 展開列表按鈕文案           | string  | `快速導航`                     |
+| type           | 導航方向,可選值 left right | string  | `right`                        |
+| overlay        | 展開時是否顯示遮罩         | boolean | `true`                         |
+| position       | fixed 垂直位置             | object  | `{top: 'auto', bottom: 'auto'}` |
 | slotList       | 自定義展開列表內容             | HTMLElement  | - |
 | slotBtn       | 自定義按鈕            | HTMLElement  | - |
 
@@ -320,5 +321,18 @@ export default App;
 
 | 字段     | 說明         | 回調參數        |
 |:----------|:--------------|:------------|
-| onChange | 展開收起按鈕回調 | value:boolean |
-| onSelected | 選擇之後觸發 | item,event:MouseEvent |
+| onChange | 展開收起按鈕回調 | `value: boolean` |
+| onSelected | 選擇之後觸發 | `item, event: MouseEvent` |
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-fixednav-bg-color | `#fff` |
+| --nutui-fixednav-font-color | `#000` |
+| --nutui-fixednav-index | `201` |
+| --nutui-fixednav-item-active-color | `$primary-color` |

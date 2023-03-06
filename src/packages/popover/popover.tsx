@@ -6,11 +6,9 @@ import React, {
   useState,
 } from 'react'
 import Trigger from './Trigger'
-import Icon from '@/packages/icon'
 import Overlay from '@/packages/overlay'
-import { getRect } from '../../utils/useClientRect'
-
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { getRect } from '@/utils/useClientRect'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type PopoverTheme = 'light' | 'dark'
 
@@ -30,11 +28,11 @@ export type PopoverLocation =
 
 export interface List {
   name: string
-  icon?: string
+  icon?: React.ReactNode
   disabled?: boolean
 }
 
-export interface PopoverProps extends IComponent {
+export interface PopoverProps extends BasicComponent {
   list: List[]
   theme: PopoverTheme
   location: PopoverLocation | string
@@ -161,31 +159,26 @@ export const Popover: FunctionComponent<
               <div className={`${popoverContent}`} style={getStyle()}>
                 <div className={`${popoverArrow}`} />
                 {Array.isArray(children) ? children[1] : ''}
-                {list.map((item: List, i: number) => {
-                  return (
-                    <div
-                      key={item.name}
-                      className={`popover-menu-item ${
-                        item.disabled ? 'disabled' : ''
-                      }`}
-                      onClick={() => {
-                        handleChoose(item, i)
-                      }}
-                    >
-                      {item.icon ? (
-                        <Icon
-                          classPrefix={iconClassPrefix}
-                          fontClassName={iconFontClassName}
-                          className="popover-menu-item-img"
-                          name={item.icon}
-                        />
-                      ) : (
-                        ''
-                      )}
-                      <div className="popover-menu-item-name">{item.name}</div>
-                    </div>
-                  )
-                })}
+                <div>
+                  {list.map((item: List, i: number) => {
+                    return (
+                      <div
+                        key={item.name}
+                        className={`popover-menu-item ${
+                          item.disabled ? 'disabled' : ''
+                        }`}
+                        onClick={() => {
+                          handleChoose(item, i)
+                        }}
+                      >
+                        {item.icon ? item.icon : null}
+                        <div className="popover-menu-item-name">
+                          {item.name}
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             ) : null}
           </div>
@@ -198,9 +191,7 @@ export const Popover: FunctionComponent<
           onClick={(e) => handleClick(e)}
           style={{ background: 'transparent' }}
         />
-      ) : (
-        ''
-      )}
+      ) : null}
     </>
   )
 }

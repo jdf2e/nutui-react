@@ -5,13 +5,13 @@ import React, {
   ChangeEvent,
   FocusEvent,
 } from 'react'
+import { Minus, Plus } from '@nutui/icons-react'
 import classNames from 'classnames'
-import Icon from '@/packages/icon'
 import bem from '@/utils/bem'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface InputNumberProps extends IComponent {
+export interface InputNumberProps extends BasicComponent {
   disabled: boolean
   buttonSize: string | number
   min: string | number
@@ -24,12 +24,12 @@ export interface InputNumberProps extends IComponent {
   isAsync: boolean
   className: string
   style: React.CSSProperties
-  add: (e: MouseEvent) => void
-  reduce: (e: MouseEvent) => void
-  overlimit: (e: MouseEvent) => void
-  blur: (e: ChangeEvent<HTMLInputElement>) => void
-  focus: (e: FocusEvent<HTMLInputElement>) => void
-  change: (
+  onAdd: (e: MouseEvent) => void
+  onReduce: (e: MouseEvent) => void
+  onOverlimit: (e: MouseEvent) => void
+  onBlurFuc: (e: ChangeEvent<HTMLInputElement>) => void
+  onFocus: (e: FocusEvent<HTMLInputElement>) => void
+  onChangeFuc: (
     param: string | number,
     e: MouseEvent | ChangeEvent<HTMLInputElement>
   ) => void
@@ -48,9 +48,11 @@ const defaultProps = {
   decimalPlaces: 0,
   isAsync: false,
 } as InputNumberProps
+
 function pxCheck(value: string | number): string {
   return Number.isNaN(Number(value)) ? String(value) : `${value}px`
 }
+
 export const InputNumber: FunctionComponent<
   Partial<InputNumberProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
@@ -68,14 +70,12 @@ export const InputNumber: FunctionComponent<
     isAsync,
     className,
     style,
-    add,
-    reduce,
-    change,
-    overlimit,
-    blur,
-    focus,
-    iconClassPrefix,
-    iconFontClassName,
+    onAdd,
+    onReduce,
+    onOverlimit,
+    onBlurFuc,
+    onFocus,
+    onChangeFuc,
     ...restProps
   } = {
     ...defaultProps,
@@ -98,12 +98,18 @@ export const InputNumber: FunctionComponent<
     height: pxCheck(buttonSize),
     ...style,
   }
-  const addAllow = (value = Number(inputValue)) => {
-    return value < Number(max) && !disabled
+  const addAllow = (value = inputValue) => {
+    if (value || typeof value === 'number') {
+      return value < Number(max) && !disabled
+    }
+    return false
   }
 
-  const reduceAllow = (value = Number(inputValue)) => {
-    return value > Number(min) && !disabled
+  const reduceAllow = (value = inputValue) => {
+    if (value || typeof value === 'number') {
+      return value > Number(min) && !disabled
+    }
+    return false
   }
 
   const iconMinusClasses = classNames('nut-inputnumber__icon', {
@@ -123,7 +129,7 @@ export const InputNumber: FunctionComponent<
     e: MouseEvent | ChangeEvent<HTMLInputElement>
   ) => {
     const outputValue: number | string = fixedDecimalPlaces(value)
-    change && change(outputValue, e)
+    onChangeFuc && onChangeFuc(outputValue, e)
     if (!isAsync) {
       if (Number(outputValue) < Number(min)) {
         setInputValue(Number(min))
@@ -136,31 +142,31 @@ export const InputNumber: FunctionComponent<
   }
 
   const reduceNumber = (e: MouseEvent) => {
-    reduce && reduce(e)
+    onReduce && onReduce(e)
     if (reduceAllow()) {
       const outputValue = Number(inputValue) - Number(step)
       emitChange(outputValue, e)
     } else {
-      overlimit && overlimit(e)
+      onOverlimit && onOverlimit(e)
     }
   }
 
   const addNumber = (e: MouseEvent) => {
-    add && add(e)
+    onAdd && onAdd(e)
     if (addAllow()) {
       const outputValue = Number(inputValue) + Number(step)
       emitChange(outputValue, e)
     } else {
-      overlimit && overlimit(e)
+      onOverlimit && onOverlimit(e)
     }
   }
 
   const changeValue = (e: ChangeEvent<HTMLInputElement>) => {
     const input = e.target as HTMLInputElement
-    change && change(input.valueAsNumber, e)
+    onChangeFuc && onChangeFuc(input.valueAsNumber, e)
     if (!isAsync) {
       if (Number.isNaN(input.valueAsNumber)) {
-        setInputValue(inputValue)
+        setInputValue('')
       } else {
         setInputValue(input.valueAsNumber)
       }
@@ -170,7 +176,7 @@ export const InputNumber: FunctionComponent<
   const focusValue = (e: FocusEvent<HTMLInputElement>) => {
     if (disabled) return
     if (readonly) return
-    focus && focus(e)
+    onFocus && onFocus(e)
   }
 
   const burValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -184,18 +190,18 @@ export const InputNumber: FunctionComponent<
       value = Number(max)
     }
     emitChange(value, e)
-    blur && blur(e)
+    onBlurFuc && onBlurFuc(e)
   }
   return (
     <div className={classes} style={styles} {...restProps}>
-      <Icon
-        classPrefix={iconClassPrefix}
-        fontClassName={iconFontClassName}
-        className={iconMinusClasses}
-        size={buttonSize}
-        name="minus"
-        onClick={reduceNumber}
-      />
+      <div className="nut-input-minus">
+        <Minus
+          className={iconMinusClasses}
+          onClick={(e: any) => reduceNumber(e)}
+          width={buttonSize}
+          height={buttonSize}
+        />
+      </div>
       <input
         type="number"
         min={min}
@@ -208,14 +214,14 @@ export const InputNumber: FunctionComponent<
         onBlur={burValue}
         onFocus={focusValue}
       />
-      <Icon
-        classPrefix={iconClassPrefix}
-        fontClassName={iconFontClassName}
-        className={iconAddClasses}
-        size={buttonSize}
-        name="plus"
-        onClick={addNumber}
-      />
+      <div className="nut-input-add">
+        <Plus
+          className={iconAddClasses}
+          onClick={(e: any) => addNumber(e)}
+          width={buttonSize}
+          height={buttonSize}
+        />
+      </div>
     </div>
   )
 }

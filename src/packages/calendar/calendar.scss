@@ -1,4 +1,35 @@
 @import '../popup/popup.scss';
+
+.nut-theme-dark {
+  .nut-calendar {
+    background: $dark5;
+    color: $dark1;
+
+    .nut-calendar-header {
+      background: $dark5;
+      color: $dark1;
+    }
+
+    .nut-calendar-content {
+      .calendar-months-panel {
+        .calendar-month-con {
+          .calendar-month-day {
+            &-choose {
+              background-color: rgba(#fa2c19, 0.09);
+              color: $calendar-choose-font-color;
+            }
+          }
+        }
+      }
+    }
+
+    .nut-calendar-footer {
+      background: $dark5;
+      color: $dark1;
+    }
+  }
+}
+
 .nut-calendar {
   position: relative;
   display: flex;
@@ -6,6 +37,7 @@
   color: $calendar-base-color;
   font-size: $calendar-base-font;
   background-color: $white;
+  color: $gray1;
   overflow: hidden;
   height: 100%;
   flex-direction: column;
@@ -21,12 +53,15 @@
   .nut-calendar-taro {
     height: 60vh;
   }
+
   .popup-box {
     height: 100%;
   }
+
   .nut-calendar-content {
     overflow-y: auto;
   }
+
   ::-webkit-scrollbar {
     display: none;
   }
@@ -50,6 +85,7 @@
       line-height: 22px;
       font-size: $calendar-sub-title-font;
     }
+
     .calendar-top-slot {
       height: $calendar-top-slot-height;
     }
@@ -76,15 +112,18 @@
     flex: 1;
     width: 100%;
     display: block;
+
     .calendar-months-panel {
       position: relative;
       width: 100%;
       height: auto;
       display: block;
       box-sizing: border-box;
+
       .viewArea {
         display: block;
       }
+
       .calendar-month {
         display: flex;
         flex-direction: column;
@@ -117,6 +156,7 @@
 
       .calendar-month-con {
         overflow: hidden;
+
         .calendar-month-item {
           .calendar-month-day:nth-child(7n + 0),
           .calendar-month-day:nth-child(7n + 1) {
@@ -147,6 +187,7 @@
             font-size: 12px;
             line-height: 14px;
           }
+
           .calendar-day-tip {
             position: absolute;
             bottom: 6px;
@@ -155,26 +196,30 @@
             line-height: 14px;
             color: $calendar-primary-color;
           }
+
           .calendar-curr-tips-top {
             top: 6px;
           }
+
           .calendar-curr-tips-bottom {
             bottom: 6px;
           }
 
           &-active {
             background-color: $calendar-primary-color;
-            color: $white !important;
+            color: $primary-text-color !important;
             border-radius: $calendar-day-active-border-radius;
 
             .calendar-curr-tips {
               visibility: hidden;
             }
+
             .calendar-curr-tip-curr {
               visibility: hidden;
             }
+
             .calendar-day-tip {
-              color: $white;
+              color: $primary-text-color;
             }
           }
 
@@ -209,12 +254,13 @@
       margin: 10px 18px;
       border-radius: 22px;
       background: $button-primary-background-color;
-      color: $white;
+      color: $primary-text-color;
       text-align: center;
       line-height: 44px;
     }
   }
 }
-.nutui-popup__close-icon {
+
+.nut-popup__close-icon {
   top: 7px !important;
 }

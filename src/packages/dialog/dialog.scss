@@ -15,7 +15,7 @@
     text-align: center;
     height: $dialog-header-height;
     font-size: $font-size-3;
-    color: $dialog-header-color;
+    color: $title-color;
     @include oneline-ellipsis();
   }
 

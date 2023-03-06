@@ -1,29 +1,59 @@
-import React, { FunctionComponent, useRef, useState, useEffect } from 'react'
+/* eslint-disable react/no-unknown-property */
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import {
+  getEnv,
+  nextTick,
+  createSelectorQuery,
+  canvasToTempFilePath,
+  CanvasContext,
+} from '@tarojs/taro'
 import Button from '@/packages/button/index.taro'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
+interface FileType {
+  /** jpg 图片 */
+  jpg: any
+  /** png 图片 */
+  png: any
+}
 export interface SignatureProps {
-  type: string
+  canvasId: string
+  type: keyof FileType
   lineWidth: number
   strokeStyle: string
   unSupportTpl: string
   className: string
-  confirm?: (canvas: HTMLCanvasElement, dataurl: string) => void
+  confirm?: (dataurl: string) => void
   clear?: () => void
+  onConfirm?: (dataurl: string) => void
+  onClear?: () => void
 }
 const defaultProps = {
+  canvasId: 'spcanvas',
   type: 'png',
   lineWidth: 2,
   strokeStyle: '#000',
-  unSupportTpl: '对不起，当前浏览器不支持Canvas，无法使用本控件！',
   className: '',
 } as SignatureProps
+
 export const Signature: FunctionComponent<
   Partial<SignatureProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { locale } = useConfig()
-  const { type, lineWidth, strokeStyle, unSupportTpl, className, ...rest } = {
+  const {
+    canvasId,
+    type,
+    lineWidth,
+    strokeStyle,
+    unSupportTpl,
+    className,
+    confirm,
+    clear,
+    onConfirm,
+    onClear,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -32,118 +62,175 @@ export const Signature: FunctionComponent<
   const wrapRef = useRef<HTMLDivElement>(null)
   const [canvasHeight, setCanvasHeight] = useState(0)
   const [canvasWidth, setCanvasWidth] = useState(0)
-  const ctx = useRef<CanvasRenderingContext2D | null>(null)
-  const isCanvasSupported = () => {
-    const elem = document.createElement('canvas')
-    return !!(elem.getContext && elem.getContext('2d'))
-  }
-  const isSupportTouch = 'ontouchstart' in window
-  const events = isSupportTouch
-    ? ['touchstart', 'touchmove', 'touchend', 'touchleave']
-    : ['mousedown', 'mousemove', 'mouseup', 'mouseleave']
-
-  useEffect(() => {
-    if (isCanvasSupported() && canvasRef.current && wrapRef.current) {
-      ctx.current = canvasRef.current.getContext('2d')
-      setCanvasWidth(wrapRef.current.offsetWidth)
-      setCanvasHeight(wrapRef.current.offsetHeight)
-      addEvent()
-    }
-  }, [])
+  const ctx = useRef<CanvasContext | null>(null)
+  const [disalbeScroll] = useState('true')
 
   const startEventHandler = (event: any) => {
-    event.preventDefault()
-    if (ctx.current && canvasRef.current) {
+    if (ctx.current) {
       ctx.current.beginPath()
       ctx.current.lineWidth = lineWidth as number
       ctx.current.strokeStyle = strokeStyle as string
-      canvasRef.current.addEventListener(events[1], moveEventHandler, false)
-      canvasRef.current.addEventListener(events[2], endEventHandler, false)
-      canvasRef.current.addEventListener(events[3], leaveEventHandler, false)
-    }
-  }
-
-  const addEvent = () => {
-    if (canvasRef.current) {
-      canvasRef.current.addEventListener(events[0], startEventHandler, false)
     }
   }
 
   const moveEventHandler = (event: any) => {
-    event.preventDefault()
+    if (ctx.current) {
+      const evt = event.changedTouches[0]
+      let mouseX = evt.x || evt.clientX
+      let mouseY = evt.y || evt.clientY
 
-    const evt = isSupportTouch ? event.touches[0] : event
-    if (canvasRef.current && ctx.current) {
-      const coverPos = canvasRef.current.getBoundingClientRect()
-      const mouseX = evt.clientX - coverPos.left
-      const mouseY = evt.clientY - coverPos.top
-
-      ctx.current.lineTo(mouseX, mouseY)
-      ctx.current.stroke()
+      if (getEnv() === 'WEB' && canvasRef.current) {
+        const coverPos = canvasRef.current.getBoundingClientRect()
+        mouseX = evt.clientX - coverPos.left
+        mouseY = evt.clientY - coverPos.top
+      }
+      nextTick(() => {
+        // ctx.current.lineCap = 'round'
+        // ctx.current.lineJoin = 'round'
+        ctx.current?.lineTo(mouseX, mouseY)
+        ctx.current?.stroke()
+      })
     }
   }
 
-  const endEventHandler = (event: any) => {
-    event.preventDefault()
-    if (canvasRef.current) {
-      canvasRef.current.removeEventListener(events[1], moveEventHandler, false)
-      canvasRef.current.removeEventListener(events[2], endEventHandler, false)
-    }
-  }
-  const leaveEventHandler = (event: any) => {
-    event.preventDefault()
-    if (canvasRef.current) {
-      canvasRef.current.removeEventListener(events[1], moveEventHandler, false)
-      canvasRef.current.removeEventListener(events[2], endEventHandler, false)
-    }
-  }
-  const clear = () => {
-    if (canvasRef.current && ctx.current) {
-      canvasRef.current.addEventListener(events[2], endEventHandler, false)
+  const endEventHandler = (event: any) => {}
+
+  const handleClearBtn = () => {
+    if (ctx.current) {
       ctx.current.clearRect(0, 0, canvasWidth, canvasHeight)
       ctx.current.closePath()
     }
-    props.clear && props.clear()
+    clear && clear()
+    onClear && onClear()
   }
 
-  const confirm = () => {
-    onSave(canvasRef.current as HTMLCanvasElement)
+  const handleConfirmBtn = () => {
+    onSave()
   }
 
-  const onSave = (canvas: HTMLCanvasElement) => {
-    let dataurl
-    switch (type) {
-      case 'png':
-        dataurl = canvas.toDataURL('image/png')
-        break
-      case 'jpg':
-        dataurl = canvas.toDataURL('image/jpeg', 0.8)
-        break
-      default:
-        dataurl = canvas.toDataURL('image/png')
+  const onSave = () => {
+    createSelectorQuery()
+      .select(`#${canvasId}`)
+      .fields({
+        node: true,
+        size: true,
+      })
+      .exec((res) => {
+        canvasToTempFilePath({
+          canvas: res[0].node,
+          fileType: props.type,
+          canvasId: `${canvasId}`,
+          success: (res) => {
+            handleClearBtn()
+            confirm && confirm(res.tempFilePath)
+            onConfirm && onConfirm(res.tempFilePath)
+          },
+          fail: (res) => {
+            console.log('保存失败')
+          },
+        })
+      })
+  }
+
+  const canvasSetting = (canvasDom: any, width: number, height: number) => {
+    const canvas = canvasDom
+    canvas.current = canvas
+
+    ctx.current = canvas.getContext('2d')
+    setCanvasWidth(width)
+    setCanvasHeight(height)
+    canvas.width = width
+    canvas.height = height
+    if (ctx.current) {
+      ctx.current.clearRect(0, 0, width, height)
+      ctx.current.beginPath()
+      ctx.current.lineWidth = lineWidth as number
+      ctx.current.strokeStyle = strokeStyle as string
     }
-    clear()
-    props.confirm && props.confirm(canvas, dataurl as string)
   }
+
+  const initCanvas = () => {
+    nextTick(() => {
+      setTimeout(() => {
+        if (getEnv() === 'WEAPP' || getEnv() === 'JD') {
+          createSelectorQuery()
+            .select(`#${canvasId}`)
+            .fields(
+              {
+                node: true,
+                size: true,
+              },
+              (res) => {
+                const { node, width, height } = res
+                canvasSetting(node, width, height)
+              }
+            )
+            .exec()
+        } else {
+          const canvasDom: HTMLElement | null = document.getElementById(
+            `${canvasId}`
+          )
+          let canvas: HTMLCanvasElement = canvasDom as HTMLCanvasElement
+          if (canvasDom?.tagName !== 'CANVAS') {
+            canvas = canvasDom?.getElementsByTagName(
+              'canvas'
+            )[0] as HTMLCanvasElement
+          }
+          canvasSetting(
+            canvas,
+            canvasDom?.offsetWidth as number,
+            canvasDom?.offsetHeight as number
+          )
+        }
+      }, 1000)
+    })
+  }
+
+  useEffect(() => {
+    initCanvas()
+  }, [])
+
   return (
     <div className={`${b()} ${className}`} {...rest}>
-      <div className={`${b('inner')}`} ref={wrapRef}>
-        {isCanvasSupported() ? (
-          <canvas ref={canvasRef} height={canvasHeight} width={canvasWidth} />
+      <div className={`${b('inner')} spcanvas_WEAPP`} ref={wrapRef}>
+        {getEnv() === 'WEAPP' || getEnv() === 'JD' ? (
+          <canvas
+            id={canvasId}
+            ref={canvasRef}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            canvasId={canvasId}
+            disalbeScroll
+            type="2d"
+            onTouchStart={startEventHandler}
+            onTouchMove={moveEventHandler}
+            onTouchEnd={endEventHandler}
+          />
         ) : (
-          <p className={`${b('unsopport')}`}>
-            {locale.signature.unSupportTpl || unSupportTpl}
-          </p>
+          <canvas
+            id={canvasId}
+            ref={canvasRef}
+            canvas-id={canvasId}
+            disalbe-scroll={disalbeScroll}
+            onTouchStart={startEventHandler}
+            onTouchMove={moveEventHandler}
+            onTouchEnd={endEventHandler}
+            onTouchCancel={endEventHandler}
+          />
         )}
       </div>
 
-      <Button className={`${b('btn')}`} type="default" onClick={() => clear()}>
+      <Button
+        className={`${b('btn')}`}
+        type="default"
+        onClick={() => handleClearBtn()}
+      >
         {locale.signature.reSign}
       </Button>
       <Button
         className={`${b('btn')}`}
         type="primary"
-        onClick={() => confirm()}
+        onClick={() => handleConfirmBtn()}
       >
         {locale.confirm}
       </Button>

@@ -3,7 +3,6 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
-// import { render } from '@/utils/render'
 
 export interface ToastProps {
   id?: string
@@ -102,7 +101,7 @@ export const Toast: FunctionComponent<
   const show = () => {
     clearTimer()
     if (duration) {
-      timer = setTimeout(() => {
+      timer = window.setTimeout(() => {
         hide()
       }, duration * 1000)
     }
@@ -179,4 +178,4 @@ export const Toast: FunctionComponent<
 }
 
 Toast.defaultProps = defaultProps
-Toast.displayName = 'NutInput'
+Toast.displayName = 'NutToast'

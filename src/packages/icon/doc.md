@@ -7,6 +7,7 @@
 ### 安装
 
 ``` javascript
+// react
 import { Icon } from '@nutui/nutui-react';
 ```
 
@@ -151,15 +152,28 @@ export default App;
 
 | 参数          | 说明                             | 类型             | 默认值           |
 |-------------|----------------------------------|------------------|------------------|
-| name        | 图标名称或图片链接               | String           | -                |
-| color       | 图标颜色                         | String           | -                |
-| size        | 图标大小，如 `20px` `2em` `2rem` | String or Number | -                |
-| classPrefix | 类名前缀，用于使用自定义图标     | String           | `nut-iconfont` |
-| fontClassName           | 自定义 icon 字体基础类名                        | String           | `nutui-iconfonti`              |
-| tag         | tsx 标签                        | String           | `i`              |
+| name        | 图标名称或图片链接               | string           | -                |
+| color       | 图标颜色                         | string           | -                |
+| size        | 图标大小，如 `20px` `2em` `2rem` | string \| number | -                |
+| classPrefix | 类名前缀，用于使用自定义图标     | string           | `nut-iconfont` |
+| fontClassName           | 自定义 icon 字体基础类名                        | string           | `nutui-iconfont`              |
+| tag         | tsx 标签                        | string           | `i`              |
 
 ### Events
 
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| click  | 点击图标时触发 | event: Event |
+| 事件名           | 说明           | 回调参数     |
+|---------------|----------------|--------------|
+| onClick`v1.3.8` | 点击图标时触发 | `event: Event` |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-icon-height | `20px` |
+| --nutui-icon-width | `20px` |
+| --nutui-icon-line-height | `20px` |

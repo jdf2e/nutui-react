@@ -6,8 +6,9 @@ Multi-select buttons are used for selection.
 
 ### Install
 
-``` ts
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+```ts
+// react
+import { Checkbox } from '@nutui/nutui-react';
 
 ```
 
@@ -17,7 +18,7 @@ import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
 
 ```tsx
 import React, {useState} from "react";
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+import { Checkbox } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   const [checked, setChecked] = useState(true)
@@ -40,7 +41,7 @@ export default CheckBoxDemo;
 
 ```tsx
 import React from "react";
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+import { Checkbox } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   return (<>
@@ -69,7 +70,7 @@ export default CheckBoxDemo;
 
 ```tsx
 import React from "react";
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+import { Checkbox } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   return (<>
@@ -91,7 +92,7 @@ here
 
 ```tsx
 import React from "react";
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+import { Checkbox } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   return (<>
@@ -112,7 +113,7 @@ When the value changes, the change event is triggered
 
 ```tsx
 import React from "react";
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+import { Checkbox } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   return (<>
@@ -131,18 +132,18 @@ export default CheckBoxDemo;
 
 :::
 
-## CheckboxGroup
+## Checkbox.Group
 
 :::demo
 
 ```tsx
 import React from "react";
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+import { Checkbox } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   const [checkboxgroup1, setCheckboxgroup1] = useState(['1'])
   return (
-    <CheckboxGroup
+    <Checkbox.Group
       checkedValue={checkboxgroup1}
       onChange={(value) => {
         console.log(value)
@@ -161,7 +162,7 @@ const CheckBoxDemo = () => {
       <Checkbox checked={false} label="4">
         pomegranate
       </Checkbox>
-    </CheckboxGroup>
+    </Checkbox.Group>
   )
 }
 export default CheckBoxDemo;
@@ -169,18 +170,18 @@ export default CheckBoxDemo;
 
 :::
 
-## CheckBoxGroup Disabled
+## Checkbox.Group Disabled
 
 :::demo
 
 ```tsx
 import React, { useState } from "react";
-import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+import { Checkbox } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   const [checkboxgroup1, setCheckboxgroup1] = useState(['1'])
   return (
-    <CheckboxGroup checkedValue={checkboxgroup1} disabled>
+    <Checkbox.Group checkedValue={checkboxgroup1} disabled>
       <Checkbox label="1">
         apple
       </Checkbox>
@@ -193,7 +194,7 @@ const CheckBoxDemo = () => {
       <Checkbox label="4">
         pomegranate
       </Checkbox>
-    </CheckboxGroup>
+    </Checkbox.Group>
   )
 }
 export default CheckBoxDemo;
@@ -201,19 +202,19 @@ export default CheckBoxDemo;
 
 :::
 
-## CheckboxGroup Select All/Cancel
+## Checkbox.Group Select All/Cancel
 
 :::demo
 
 ```tsx
 import React from "react";
-import { Checkbox, CheckboxGroup, Button } from '@nutui/nutui-react';
+import { Checkbox, Button } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   const [checkboxgroup2, setCheckboxgroup2] = useState(['1'])
   const checkboxgroup2Ref = useRef(null)
   return (<>
-    <CheckboxGroup
+    <Checkbox.Group
       style={{}}
       ref={checkboxgroup2Ref}
       checkedValue={checkboxgroup2}
@@ -233,7 +234,7 @@ const CheckBoxDemo = () => {
       <Checkbox label="4">
         pomegranate
       </Checkbox>
-    </CheckboxGroup>
+    </Checkbox.Group>
     <Button
       type="primary"
       style={{ margin: '0 20px 0 0' }}
@@ -267,18 +268,18 @@ export default CheckBoxDemo;
 
 :::
 
-## use checkboxGroup, Limit the maximum number of options (2)
+## use Checkbox.Group, Limit the maximum number of options (2)
 
 :::demo
 ```tsx
 import React, { useState, useRef } from "react";
-import { Checkbox, CheckboxGroup, Button, Toast } from '@nutui/nutui-react';
+import { Checkbox, Button, Toast } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   const [checkboxgroup2, setCheckboxgroup2] = useState(['1'])
   const checkboxgroup2Ref = useRef(null)
   return (<>
-    <CheckboxGroup
+    <Checkbox.Group
       checkedValue={checkboxgroup2}
       max={2}
       onChange={(value) => {
@@ -297,7 +298,7 @@ const CheckBoxDemo = () => {
       <Checkbox checked={false} label="4">
         Combined check box
       </Checkbox>
-    </CheckboxGroup>
+    </Checkbox.Group>
   </>)
 }
 export default CheckBoxDemo;
@@ -308,7 +309,7 @@ export default CheckBoxDemo;
 :::demo
 ```tsx
 import React, { useState, useRef } from "react";
-import { Checkbox, CheckboxGroup, Button, Toast } from '@nutui/nutui-react';
+import { Checkbox, Button, Toast } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   const [checkboxgroup2, setCheckboxgroup2] = useState(['1'])
@@ -316,20 +317,24 @@ const CheckBoxDemo = () => {
   const [checkbox1, setCheckbox1] = useState(false)
   const [indeterminate, setIndeterminate] = useState(false)
   return (<>
-    <Checkbox
-      checked={checkbox1}
-      indeterminate={indeterminate}
-      onChange={(state, label) => {
-        if (state) {
-          setIndeterminate(false)
-        }
-        ;(checkboxgroup2Ref.current as any).toggleAll(state)
-      }}
-    >
-      selectAll
-    </Checkbox>
-    <CheckboxGroup
+      <div style={{ width: '50%' }}>
+      <Checkbox
+        checked={checkbox1}
+        indeterminate={indeterminate}
+        onChange={(state, label) => {
+          if (state) {
+            setIndeterminate(false)
+          }
+          ;(checkboxgroup2Ref.current as any).toggleAll(state)
+        }}
+      >
+        Select All
+      </Checkbox>
+    </div>
+
+    <Checkbox.Group
       ref={checkboxgroup2Ref}
+      direction="horizontal"
       checkedValue={checkboxgroup2}
       onChange={(value) => {
         if (value.length === 4) {
@@ -344,47 +349,85 @@ const CheckBoxDemo = () => {
       }}
     >
       <Checkbox checked={false} label="1">
-        Combined check box
+        Option
       </Checkbox>
       <Checkbox checked={false} label="2">
-        Combined check box
+        Option
       </Checkbox>
       <Checkbox checked={false} label="3">
-        Combined check box
+        Option
       </Checkbox>
       <Checkbox checked={false} label="4">
-        Combined check box
+        Option
       </Checkbox>
-    </CheckboxGroup>
+    </Checkbox.Group>
   </>)
 }
 export default CheckBoxDemo;
 ```
 :::
 
+## Render checkboxs by configuring options
+
+:::demo
+
+```tsx
+import React, { useState } from 'react';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+
+const CheckboxGroupOptions = () => {
+  const [checkboxVal, setCheckboxValVal] = useState(['1'])
+  const [optionsDemo1, setOptionsDemo1] = useState([
+    {
+      label: 'Option1',
+      value: '1',
+    },
+    {
+      label: 'Option2',
+      value: '2',
+      disabled: true,
+    },
+    {
+      label: 'Option3',
+      value: '3',
+    },
+  ])
+  const handleChange = (v) => {
+    console.log(v)
+    setCheckboxValVal(v)
+  }
+  return <Checkbox.Group options={optionsDemo1} checkedValue={checkboxVal} onChange={handleChange} />
+}
+export default CheckboxGroupOptions;
+```
+
+:::
 
 ## Checkbox
 
-| Props          | Description | Type | Default          |
-|----------------| ----- | ----- |------------------|
-| checked        | Whether it is selected | Boolean | `false`          |
-| disabled       | Whether to disable the selection | Boolean | `false`          |
-| textPosition   | The location of the text, optionally：`left`,`right` | String | `right`          |
-| iconSize       | [Icon size](#/icon) | String、Number | `18`             |
-| iconName       | [Icon name](#/icon)，Before selecting (it is recommended to modify it with 'iconActiveName') | String | `'check-normal'` |
-| iconActiveName | [Icon name](#/icon)，Once selected (it is recommended to modify it together with 'iconName') | String | `'checked'`      |
-| iconIndeterminateName | [Icon Name](#/en-US/icon)，Semi selected state | String | `'check-disabled'`|
-| iconClassPrefix       | Custom icon class name prefix, used to use custom icons        | String                  | `nut-icon` |
-| iconFontClassName     | Basic class name of custom icon font        | String                  | `nutui-iconfont` |
-| label          | The text content of the check box | String | -                |
+| Props          | Description | Type            | Default           |
+|----------------| ----- |-----------------|-------------------|
+| checked        | Whether it is selected | `boolean`       | `false`           |
+| disabled       | Whether to disable the selection | `boolean`       | `false`           |
+| textPosition   | The location of the text, optionally：`left`,`right` | `string`        | `right`           |
+| iconSize       | [Icon size](#/icon) | `string`、Number | `18`              |
+| iconName       | [Icon name](#/icon)，Before selecting (it is recommended to modify it with 'iconActiveName') | `ReactNode`     | `'CheckNormal'`   |
+| iconActiveName | [Icon name](#/icon)，Once selected (it is recommended to modify it together with 'iconName') | `ReactNode`           | `'Checked'`       |
+| iconIndeterminateName | [Icon Name](#/en-US/icon)，Semi selected state | `ReactNode`        | `'CheckDisabled'` |
+| iconClassPrefix       | Custom icon class name prefix, used to use custom icons        | `string`        | `nut-icon`        |
+| iconFontClassName     | Basic class name of custom icon font        | `string`        | `nutui-iconfont`  |
+| label          | The text content of the check box | `string`        | -                 |
 
-## CheckboxGroup
+## Checkbox.Group
 
 | Props          | Description | Type | Default|
 |----- | ----- | ----- | ----- |
-| checkedValue | The identifier of the currently selected item, corresponding to 'label'  | String | -|
-| disabled | Whether to disable the selection will be used for all check boxes under it | Boolean | `false`|
-| max           | Limit the maximum number of options | `undefined|number` | `undefined`|
+| checkedValue | The identifier of the currently selected item, corresponding to 'label'  | `string` | -|
+| disabled | Whether to disable the selection will be used for all check boxes under it | `boolean` | `false`|
+| max | Limit the maximum number of options | `undefined|number` | `undefined`|
+| textPosition | Where the text is located, optional values: 'left', 'right' | `string` | `right` |
+| direction | Use horizontal and vertical directions The optional values horizontal, vertical, | `string` | `vertical` |
+| options `v1.3.10`     | Render radios by configuring options      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
 
 ## Checkbox Event
 
@@ -392,15 +435,31 @@ export default CheckBoxDemo;
 |----- | ----- | ----- |
 | onChange | Triggers | when the value changes (state, label), 'state' represents the current state, and 'label' represents the currently selected value|
 
-## CheckboxGroup Event
+## Checkbox.Group Event
 
 | Props          | Description | Callback parameters|
 |----- | ----- | ----- |
 | onChange | Triggered when the value changes | label, 'label' returns an array representing the collection of the currently selected items|
 
-## CheckboxGroup API
+## Checkbox.Group API
 
-| 方法名 | 说明 | 参数 |
-|----- | ----- | ----- |
-| toggleAll | Select all / cancel | `f`,`true`,to select all，`false`,cancel the selection |
+| API           | Description | Callback parameters |
+|---------------| ----- | ----- |
+| toggleAll     | Select all / cancel | `f`,`true`,to select all，`false`,cancel the selection |
 | toggleReverse | Reverse selection | - |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-checkbox-label-color | ` $gray1` |
+| --nutui-checkbox-label-disable-color | `  #999` |
+| --nutui-checkbox-icon-disable-color | `  #d6d6d6` |
+| --nutui-checkbox-label-margin-left | `  15px` |
+| --nutui-checkbox-label-font-size | ` 14px` |
+| --nutui-checkbox-icon-font-size | ` 18px` |
+| --nutui-checkbox-icon-disable-color2 | `  $help-color` |

@@ -15,7 +15,7 @@ test('default props', () => {
       <Sidenavbar
         title="首页"
         visible
-        handleClose={() => {
+        onClose={() => {
           changeNarBar(false)
         }}
       >
@@ -23,7 +23,7 @@ test('default props', () => {
       </Sidenavbar>
     </>
   )
-  expect(container.querySelector('.nut-popup')).toHaveClass('popup-left')
+  expect(container.querySelector('.nut-popup')).toHaveClass('nut-popup-left')
   expect(container.querySelector('.nut-sidenavbar__title')).toHaveAttribute(
     'style',
     'padding-left: 20px;'
@@ -36,7 +36,7 @@ test('position  should be right', () => {
         title="首页"
         visible
         position="right"
-        handleClose={() => {
+        onClose={() => {
           changeNarBar(false)
         }}
       >
@@ -44,7 +44,7 @@ test('position  should be right', () => {
       </Sidenavbar>
     </>
   )
-  expect(container.querySelector('.nut-popup')).toHaveClass('popup-right')
+  expect(container.querySelector('.nut-popup')).toHaveClass('nut-popup-right')
 })
 test('offset  should be 30', () => {
   const { container } = render(
@@ -54,7 +54,7 @@ test('offset  should be 30', () => {
         visible
         position="left"
         offset={30}
-        handleClose={() => {
+        onClose={() => {
           changeNarBar(false)
         }}
       >

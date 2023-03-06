@@ -6,7 +6,8 @@
 
 ### 安装
 
-```js
+```ts
+// react
 import { Divider } from '@nutui/nutui-react';
 ```
 
@@ -154,14 +155,34 @@ export default App;
 
 | 参数              | 说明                          | 类型    | 默认值 |
 |-----------------| ----------------------------- | ------- | ------ |
-| dashed          | 是否使用虚线                  | Boolean | false  |
-| hairline        | 是否使用 0.5px 线             | Boolean | true   |
-| contentPosition | 内容位置，可选值为 left right | String  | center |
-| styles          | 修改自定义样式                | CSS     | -      |
-| direction`v1.2.0`   | 水平还是垂直类型,可选值为 horizontal vertical               | String     | 'horizontal'      |
+| dashed          | 是否使用虚线                  | boolean | `false`  |
+| hairline        | 是否使用 0.5px 线             | boolean | `true`   |
+| contentPosition | 内容位置，可选值为 left right | string  | `center` |
+| styles          | 修改自定义样式                | CSSProperties     | -      |
+| direction`v1.2.0`   | 水平还是垂直类型,可选值为 horizontal vertical               | string     | `horizontal`      |
 
 ### Slots
 
 | 名称    | 说明 |
 | ------- | ---- |
 | default | 内容 |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-divider-margin | `16px 0` |
+| --nutui-divider-text-font-size | `$font-size-2` |
+| --nutui-divider-text-color | `$gray1` |
+| --nutui-divider-line-height | `2px` |
+| --nutui-divider-before-margin-right | `16px` |
+| --nutui-divider-after-margin-left | `16px` |
+| --nutui-divider-vertical-height | `12px` |
+| --nutui-divider-vertical-top | `2px` |
+| --nutui-divider-vertical-border-left | `rgba(0, 0, 0, 0.06)` |
+| --nutui-divider-vertical-margin | `0 8px` |

@@ -44,6 +44,7 @@ const SwiperDemo = () => {
   const swiperRef = React.useRef<any>(null)
   const [height, setHeight] = useState<any>(150)
   const [paginationColor, setPaginationColor] = useState<string>('#426543')
+  const [paginationBgColor, setPaginationBgColor] = useState<string>('#426ddd')
   const [initPage1, setInitPage1] = useState<any>(0)
   const [initPage2, setInitPage2] = useState<any>(0)
   const [initPage3, setInitPage3] = useState<any>(0)
@@ -93,6 +94,7 @@ const SwiperDemo = () => {
         <Swiper
           height={height}
           paginationColor={paginationColor}
+          paginationBgColor={paginationBgColor}
           autoPlay="2000"
           initPage={initPage1}
           onChange={onChange}
@@ -148,7 +150,7 @@ const SwiperDemo = () => {
 
       <h2>{translated.size}</h2>
       <div className="demo-box" style={{ height: 150 }}>
-        <Swiper initPage={initPage4} width="300" loop={false}>
+        <Swiper initPage={initPage4} width="300" height={height} loop={false}>
           {list.map((item) => {
             return (
               <SwiperItem key={item}>
@@ -161,6 +163,7 @@ const SwiperDemo = () => {
       <h2>{translated.indicator}</h2>
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper
+          height={height}
           loop
           initPage={initPage5}
           onChange={(e) => setCurrent(e + 1)}
@@ -179,6 +182,7 @@ const SwiperDemo = () => {
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper
           ref={swiperRef}
+          height={height}
           loop
           initPage={initPage6}
           onChange={(e) => setCurrent2(e + 1)}
@@ -208,7 +212,7 @@ const SwiperDemo = () => {
           initPage={initPage7}
           direction="vertical"
           autoPlay="3000"
-          height="150"
+          height={height}
           paginationVisible
         >
           {list.map((item) => {
@@ -226,7 +230,7 @@ const SwiperDemo = () => {
           loop={false}
           initPage={initPage8}
           autoPlay="0"
-          height="150"
+          height={height}
           paginationVisible
           width="280"
           isCenter

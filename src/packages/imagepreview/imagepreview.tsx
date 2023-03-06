@@ -70,6 +70,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
 
   const nutImagePreview = useRef(null)
 
+  const [innerNo, setInnerNo] = useState(initNo)
   const [showPop, setShowPop] = useState(false)
   const [active, setActive] = useState(1)
   const [maxNo, setMaxNo] = useState(1)
@@ -172,15 +173,15 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   }
 
   useEffect(() => {
-    if (show !== undefined) {
-      setShowPop(show)
-      init()
-    }
-  }, [show])
+    setShowPop(show as boolean)
+    setInnerNo(initNo)
+    setActive(initNo as number)
+    init()
+  }, [show, initNo])
 
   useEffect(() => {
-    if (initNo !== undefined) {
-      setActive(initNo)
+    if (innerNo !== undefined) {
+      setActive(innerNo)
     }
 
     if (show !== undefined) {
@@ -253,28 +254,34 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           style={{ display: showPop ? 'block' : 'none' }}
           direction="horizontal"
           onChange={slideChangeEnd}
-          initPage={initNo && (initNo > maxNo ? maxNo - 1 : initNo - 1)}
+          initPage={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
           paginationColor={paginationColor}
           paginationVisible={paginationVisible}
         >
-          {videos &&
-            videos.length > 0 &&
-            videos.map((item, index) => {
-              return (
-                <SwiperItem key={index}>
-                  <Video source={item.source} options={item.options} />
-                </SwiperItem>
-              )
-            })}
-          {images &&
-            images.length > 0 &&
-            images.map((item, index) => {
-              return (
-                <SwiperItem key={index}>
-                  <img src={item.src} alt="" className="nut-imagepreview-img" />
-                </SwiperItem>
-              )
-            })}
+          {(videos && videos.length > 0
+            ? videos.map((item, index) => {
+                return (
+                  <SwiperItem key={index}>
+                    <Video source={item.source} options={item.options} />
+                  </SwiperItem>
+                )
+              })
+            : []
+          ).concat(
+            images && images.length > 0
+              ? images.map((item, index) => {
+                  return (
+                    <SwiperItem key={index}>
+                      <img
+                        src={item.src}
+                        alt=""
+                        className="nut-imagepreview-img"
+                      />
+                    </SwiperItem>
+                  )
+                })
+              : []
+          )}
         </Swiper>
       </div>
       <div className="nut-imagepreview-index">

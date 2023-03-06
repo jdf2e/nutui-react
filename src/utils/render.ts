@@ -1,41 +1,90 @@
 import { ReactElement } from 'react'
 import * as ReactDOM from 'react-dom'
-import { Root, RootOptions } from 'react-dom/client'
+import type { Root } from 'react-dom/client'
 
-type CR = (container: Element | DocumentFragment, options?: RootOptions) => Root
-type IR = {
-  createRoot: CR
-} & typeof ReactDOM
+// 移植自rc-util: https://github.com/react-component/util/blob/master/src/React/render.ts
 
-let createRoot: CR | undefined
-const { version } = ReactDOM as any
-const reactDOMClone = {
+type CreateRoot = (container: ContainerType) => Root
+
+// Let compiler not to search module usage
+const fullClone = {
   ...ReactDOM,
-} as IR
+} as typeof ReactDOM & {
+  __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED?: {
+    usingClientEntryPoint?: boolean
+  }
+  createRoot?: CreateRoot
+}
+
+const { version, render: reactRender, unmountComponentAtNode } = fullClone
+
+let createRoot: CreateRoot
 try {
   const mainVersion = Number((version || '').split('.')[0])
-  if (mainVersion >= 18) {
-    createRoot = reactDOMClone.createRoot
+  if (mainVersion >= 18 && fullClone.createRoot) {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    createRoot = fullClone.createRoot
   }
 } catch (e) {
-  console.log(e)
+  // Do nothing;
 }
 
-function legacyRender(node: any, container: any) {
-  ReactDOM.render(node, container)
-}
+function toggleWarning(skip: boolean) {
+  const { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } = fullClone
 
-function concurrentRender(node: any, container: any) {
-  if (createRoot) {
-    const root = createRoot(container)
-    root.render(node)
+  if (
+    __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED &&
+    typeof __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED === 'object'
+  ) {
+    __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.usingClientEntryPoint =
+      skip
   }
 }
 
-export function render(node: ReactElement, container: any) {
-  if (createRoot) {
+const MARK = '__nutui_react_root__'
+
+// ========================== Render ==========================
+type ContainerType = (Element | DocumentFragment) & {
+  [MARK]?: Root
+}
+
+function legacyRender(node: ReactElement, container: ContainerType) {
+  reactRender(node, container)
+}
+
+function concurrentRender(node: ReactElement, container: ContainerType) {
+  toggleWarning(true)
+  const root = container[MARK] || createRoot(container)
+  toggleWarning(false)
+  root.render(node)
+  container[MARK] = root
+}
+
+export function render(node: ReactElement, container: ContainerType) {
+  if (createRoot as unknown) {
     concurrentRender(node, container)
     return
   }
   legacyRender(node, container)
+}
+
+// ========================== Unmount =========================
+function legacyUnmount(container: ContainerType) {
+  return unmountComponentAtNode(container)
+}
+
+async function concurrentUnmount(container: ContainerType) {
+  // Delay to unmount to avoid React 18 sync warning
+  return Promise.resolve().then(() => {
+    container[MARK]?.unmount()
+    delete container[MARK]
+  })
+}
+
+export function unmount(container: ContainerType) {
+  if (createRoot as unknown) {
+    return concurrentUnmount(container)
+  }
+
+  return legacyUnmount(container)
 }

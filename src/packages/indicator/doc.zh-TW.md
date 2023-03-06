@@ -7,6 +7,7 @@
 ### 安装
 
 ```javascript
+// react
 import { Indicator } from '@nutui/nutui-react'
 ```
 ### 基礎用法
@@ -89,16 +90,16 @@ import { Indicator, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <view 
+      <div 
         style={{ height: '100px', width: '50%' }} 
       >
         <Indicator fillZero={false} size={6} current={5} vertical />
-      </view>
-      <view 
+      </div>
+      <div 
         style={{ height: '100px', width: '50%' }} 
       >
         <Indicator size={6} current={2} vertical />
-      </view>
+      </div>
     </Cell>
   );
 };
@@ -112,9 +113,28 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 預設值           |
 |--------------|----------------------------------|--------|------------------|
-| current  | 當前步驟               | Number | 1              |
-| size       | 步驟長度                         | Number | 3               |
-| block | 是否啟用塊級佈局     | Boolean | false |
-| align | 對齊方式，僅在block為true時生效, 可選值 'left', 'right', 'center'| String | left |
-| fillZero     | 單數前面是否補0       | Boolean | true        |
-| vertical | 是否豎向展示     | Boolean | false |
+| current  | 當前步驟               | number | `1`              |
+| size       | 步驟長度                         | number | `3`               |
+| block | 是否啟用塊級佈局     | boolean | `false` |
+| align | 對齊方式，僅在block為true時生效, 可選值 'left', 'right', 'center'| string | `left` |
+| fillZero     | 單數前面是否補0       | boolean | `true`        |
+| vertical | 是否豎向展示     | boolean | `false` |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-indicator-color | `$primary-color` |
+| --nutui-indicator-dot-color | `$disable-color` |
+| --nutui-indicator-white | `$white` |
+| --nutui-indicator-size | `18px` |
+| --nutui-indicator-number-font-size | `10px` |
+| --nutui-indicator-dot-margin | `4px` |
+| --nutui-indicator-dot-vertical-margin | `4px` |
+| --nutui-indicator-dot-first-margin | `0px` |
+| --nutui-indicator-dot-last-margin | `0px` |

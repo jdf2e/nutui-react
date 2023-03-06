@@ -19,9 +19,9 @@ import {
   AddressList,
 } from './type'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface AddressProps extends IComponent {
+export interface AddressProps extends BasicComponent {
   className?: string
   style?: CSSProperties
   modelValue: boolean
@@ -58,15 +58,15 @@ const defaultProps = {
   modelValue: false,
   modelSelect: [],
   type: 'custom',
-  customAddressTitle: '请选择所在地区',
+  customAddressTitle: '',
   province: [],
   city: [],
   country: [],
   town: [],
   isShowCustomAddress: true,
   existAddress: [],
-  existAddressTitle: '配送至',
-  customAndExistTitle: '选择其他地址',
+  existAddressTitle: '',
+  customAndExistTitle: '',
   height: '200px',
   defaultIcon: 'location2',
   selectedIcon: 'Check',
@@ -233,8 +233,8 @@ export const Address: FunctionComponent<
 
         <div className={b('header__title')}>
           {privateType === 'custom'
-            ? locale.address.selectRegion || customAddressTitle
-            : locale.address.deliveryTo || existAddressTitle}
+            ? customAddressTitle || locale.address.selectRegion
+            : existAddressTitle || locale.address.deliveryTo}
         </div>
 
         <div onClick={() => handClose()}>
@@ -305,7 +305,7 @@ export const Address: FunctionComponent<
                 defaultIcon={defaultIcon}
                 isShowCustomAddress={isShowCustomAddress}
                 customAndExistTitle={
-                  locale.address.chooseAnotherAddress || customAndExistTitle
+                  customAndExistTitle || locale.address.chooseAnotherAddress
                 }
                 onSelected={selectedExist}
                 onSwitchModule={onSwitchModule}

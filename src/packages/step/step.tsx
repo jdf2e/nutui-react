@@ -1,16 +1,15 @@
-import React, { FunctionComponent, useContext } from 'react'
+import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
 import { DataContext } from '@/packages/steps/UserContext'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface StepProps extends IComponent {
+export interface StepProps extends BasicComponent {
   title: string
   content: string
   activeIndex: number
-  icon: string
+  icon: ReactNode
   iconColor: string
   size: string
   className: string
@@ -40,8 +39,6 @@ export const Step: FunctionComponent<
     size,
     className,
     renderContent,
-    iconClassPrefix,
-    iconFontClassName,
     ...restProps
   } = {
     ...defaultProps,
@@ -56,9 +53,8 @@ export const Step: FunctionComponent<
     return index === +parent.propSteps.current ? 'process' : 'wait'
   }
   const handleClickStep = () => {
-    if (parent.propSteps?.clickStep) {
-      parent.propSteps?.clickStep(activeIndex)
-    }
+    parent.propSteps?.onClickStep && parent.propSteps?.onClickStep(activeIndex)
+    parent.propSteps?.clickStep && parent.propSteps?.clickStep(activeIndex)
   }
 
   const b = bem('step')
@@ -84,18 +80,9 @@ export const Step: FunctionComponent<
       <div className="nut-step-head">
         <div className="nut-step-line" />
         <div className={renderIconClass()}>
-          {icon ? (
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              className="nut-step-icon-inner"
-              color={iconColor}
-              name={icon}
-              size={size}
-            />
-          ) : (
-            !dot && <span className="nut-step-inner">{activeIndex}</span>
-          )}
+          {React.isValidElement(icon)
+            ? React.cloneElement<any>(icon, { size, color: iconColor })
+            : !dot && <span className="nut-step-inner">{activeIndex}</span>}
         </div>
       </div>
       <div className="nut-step-main">

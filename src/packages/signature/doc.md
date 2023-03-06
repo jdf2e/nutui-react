@@ -7,6 +7,7 @@
 ### 安装
 
 ```javascript
+// react
 import { Signature } from '@nutui/nutui-react'
 ```
 
@@ -36,7 +37,7 @@ const App = () => {
     const demoStyles: React.CSSProperties = { margin: '1em 0' }
     return (
     <>
-        <Signature confirm={confirm} clear={clear} />
+        <Signature onConfirm={confirm} onClear={clear} />
         <p className="demo-tips demo" style={demoStyles}>
             Tips: 点击确认按钮,下方显示签名图片
         </p>
@@ -75,8 +76,8 @@ const App = () => {
         <Signature
             lineWidth={4}
             strokeStyle="green"
-            confirm={confirm}
-            clear={clear}
+            onConfirm={confirm}
+            onClear={clear}
          />
         <p className="demo-tips demo" style={demoStyles}>
             Tips: 点击确认按钮,下方显示签名图片
@@ -95,15 +96,18 @@ export default App;
 
 | 参数           | 说明                           | 类型   | 默认值                                              |
 | -------------- | ------------------------------ | ------ | --------------------------------------------------- |
-| customClass   | 自定义 class                   | String | -                                                   |
-| lineWidth     | 线条的宽度                     | Number | 3                                                   |
-| strokeStyle   | 绘图笔触颜色                   | String | '#000'                                              |
-| type           | 图片格式                       | String | 'png'                                               |
-| unSupportTpl | 不支持 Canvas 情况下的展示文案 | String | '对不起，当前浏览器不支持 Canvas，无法使用本控件！' |
+| customClass   | 自定义 class                   | string | -                                                   |
+| lineWidth     | 线条的宽度                     | number | `3`                                                   |
+| strokeStyle   | 绘图笔触颜色                   | string | `#000`                                              |
+| type           | 图片格式                       | string | `png`                                               |
+| unSupportTpl | 不支持 Canvas 情况下的展示文案 | string | `对不起，当前浏览器不支持 Canvas，无法使用本控件！` |
 
 ## Event
 
 | 字段    | 说明                         | 回调参数                         |
 | ------- | ---------------------------- | -------------------------------- |
-| confirm | 点击确认按钮触发事件回调函数 | canvas 和签名图片展示的 data URI |
-| clear   | 点击重签按钮触发事件回调函数 | -                              |
+| confirm`v1.3.8 废弃` | 点击确认按钮触发事件回调函数 | canvas 和签名图片展示的 data URI |
+| clear`v1.3.8 废弃`   | 点击重签按钮触发事件回调函数 | -                              |
+| onConfirm`v1.3.8` | 点击确认按钮触发事件回调函数 | canvas 和签名图片展示的 data URI |
+| onClear`v1.3.8`   | 点击重签按钮触发事件回调函数 | -                              |
+

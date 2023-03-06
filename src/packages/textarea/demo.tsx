@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { TextArea } from './textarea'
 import { useTranslate } from '../../sites/assets/locale'
+import ConfigProvider from '@/packages/configprovider'
 
 interface T {
   basic: string
   numbers: string
   autoHeight: string
+  we2312222: string
   readOnly: string
   readOnlyState: string
   disabled: string
@@ -20,6 +22,7 @@ const TextAreaDemo = () => {
       basic: '基础用法',
       numbers: '显示字数统计',
       autoHeight: '高度自定义，拉伸',
+      we2312222: '修改字数统计样式',
       readOnly: '只读',
       readOnlyState: '只读状态',
       disabled: '禁用',
@@ -31,6 +34,7 @@ const TextAreaDemo = () => {
       basic: '基礎用法',
       numbers: '顯示數字統計',
       autoHeight: '高度自定義，拉伸',
+      we2312222: '修改字数统计样式',
       readOnly: '只讀',
       readOnlyState: '只讀狀態',
       disabled: '禁用',
@@ -42,6 +46,7 @@ const TextAreaDemo = () => {
       basic: 'Basic usage',
       numbers: 'Displays numerical',
       autoHeight: 'Highly adaptive',
+      we2312222: 'reset limit color',
       readOnly: 'Read only',
       readOnlyState: 'Read-only status',
       disabled: 'Disable',
@@ -55,6 +60,11 @@ const TextAreaDemo = () => {
   const [value2] = useState('')
   const [value3] = useState('')
   const [value4] = useState('')
+
+  const customTheme = {
+    nutuiTextareaTextCurrorColor: `red`,
+    nutuiTextareaLimitColor: `#fa2c19`,
+  }
 
   useEffect(() => {
     updateValue1(translated.basic)
@@ -86,6 +96,10 @@ const TextAreaDemo = () => {
         <TextArea defaultValue={value2} limitshow maxlength="20" />
         <h2>{translated.autoHeight}</h2>
         <TextArea defaultValue={value3} rows="1" autosize />
+        <h2>{translated.we2312222}</h2>
+        <ConfigProvider theme={customTheme}>
+          <TextArea defaultValue={value3} limitshow maxlength="20" />
+        </ConfigProvider>
         <h2>{translated.readOnly}</h2>
         <TextArea
           readonly

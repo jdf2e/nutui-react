@@ -1,91 +1,19 @@
 @import '../icon/icon.scss';
 @import '../overlay/overlay.scss';
-.popup-slide {
-  &-center-enter,
-  &-center-exit {
-    opacity: 0;
-  }
-  &-center-enter-active {
-    opacity: 1;
-    transition: opacity 0.5s ease;
+
+.nut-theme-dark {
+  .nut-popup {
+    background: $dark6;
   }
 
-  &-top-enter,
-  &-top-exit {
-    transform: translate(0, -100%);
-  }
-  &-top-enter-active {
-    transform: translate(0, 0);
+  .nut-popup {
+    &__close-icon {
+      color: $dark1;
+    }
   }
 
-  &-right-enter,
-  &-right-exit {
-    transform: translate(100%, 0);
-  }
-  &-right-enter-active {
-    transform: translate(0, 0);
-  }
-
-  &-bottom-enter,
-  &-bottom-exit {
-    transform: translate(0, 100%);
-  }
-  &-bottom-enter-active {
-    transform: translate(0, 0);
-  }
-
-  &-left-enter,
-  &-left-exit {
-    transform: translate(-100%, 0);
-  }
-  &-left-enter-active {
-    transform: translate(0, 0);
-  }
-}
-
-.popup-center {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  &.round {
-    border-radius: $popup-border-radius;
-  }
-}
-
-.popup-bottom {
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  &.round {
-    border-radius: $popup-border-radius $popup-border-radius 0 0;
-  }
-}
-
-.popup-right {
-  top: 0;
-  right: 0;
-
-  &.round {
-    border-radius: $popup-border-radius 0 0 $popup-border-radius;
-  }
-}
-
-.popup-left {
-  top: 0;
-  left: 0;
-
-  &.round {
-    border-radius: 0 $popup-border-radius $popup-border-radius 0;
-  }
-}
-
-.popup-top {
-  top: 0;
-  left: 0;
-  width: 100%;
-
-  &.round {
-    border-radius: 0 0 $popup-border-radius $popup-border-radius;
+  .nut-popup-slide-center-enter-done {
+    color: $dark1;
   }
 }
 
@@ -94,25 +22,19 @@
   max-height: 100%;
   overflow-y: auto;
   background-color: $white;
-  transition: transform 0.5s;
+  color: $gray1;
   -webkit-overflow-scrolling: touch;
-}
 
-.nut-overflow-hidden {
-  overflow: hidden !important;
-}
-
-.nutui-popup {
   &__close-icon {
     position: absolute !important;
     z-index: 1;
-    color: #969799;
-    font-size: 18px;
+    color: $popup-close-icon-color;
     cursor: pointer;
     width: 30px;
     height: 30px;
-    line-height: 30px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:active {
       opacity: 0.7;
@@ -140,12 +62,142 @@
   }
 }
 
-.fade-enter {
-  transform: translate(0, -100%);
+.nut-popup-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &.round {
+    border-radius: $popup-border-radius;
+  }
 }
-.fade-enter-active {
-  transform: translate(0, 0);
+
+.nut-popup-bottom {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  &.round {
+    border-radius: $popup-border-radius $popup-border-radius 0 0;
+  }
 }
-.fade-exit {
-  transform: translate(0, -100%);
+
+.nut-popup-right {
+  top: 0;
+  right: 0;
+
+  &.round {
+    border-radius: $popup-border-radius 0 0 $popup-border-radius;
+  }
+}
+
+.nut-popup-left {
+  top: 0;
+  left: 0;
+
+  &.round {
+    border-radius: 0 $popup-border-radius $popup-border-radius 0;
+  }
+}
+
+.nut-popup-top {
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  &.round {
+    border-radius: 0 0 $popup-border-radius $popup-border-radius;
+  }
+}
+
+.nut-popup-slide {
+  &-center-enter,
+  &-center-exit {
+    opacity: 0;
+  }
+
+  &-center-enter-active {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+
+  &-top-enter {
+    transform: translate(0, -100%);
+  }
+
+  &-top-enter-active {
+    transform: translate(0, 0);
+    transition: transform 0.5s;
+  }
+
+  &-top-exit {
+    transform: translate(0, 0);
+  }
+
+  &-top-exit-active,
+  &-top-exit-done {
+    transform: translate(0, -100%);
+    transition: transform 0.5s;
+  }
+
+  &-right-enter {
+    transform: translate(100%, 0);
+  }
+
+  &-right-enter-active {
+    transform: translate(0, 0);
+    transition: transform 0.5s;
+  }
+
+  &-right-exit {
+    transform: translate(0, 0);
+  }
+
+  &-right-exit-active,
+  &-right-exit-done {
+    transform: translate(100%, 0);
+    transition: transform 0.5s;
+  }
+
+  &-bottom-enter {
+    transform: translate(0, 100%);
+  }
+
+  &-bottom-enter-active {
+    transform: translate(0, 0);
+    transition: transform 0.5s;
+  }
+
+  &-bottom-exit {
+    transform: translate(0, 0);
+  }
+
+  &-bottom-exit-active,
+  &-bottom-exit-done {
+    transform: translate(0, 100%);
+    transition: transform 0.5s;
+  }
+
+  &-left-enter {
+    transform: translate(-100%, 0);
+  }
+
+  &-left-enter-active {
+    transform: translate(0, 0);
+    transition: transform 0.5s;
+  }
+
+  &-left-exit {
+    transform: translate(0, 0);
+  }
+
+  &-left-exit-active,
+  &-left-exit-done {
+    transform: translate(-100%, 0);
+    transition: transform 0.5s;
+  }
+}
+
+.nut-overflow-hidden {
+  overflow: hidden !important;
 }

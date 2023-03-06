@@ -1,7 +1,10 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Row, Col } from '@/packages/nutui.react.taro'
 import '@/packages/layout/demo.scss'
+import Header from '@/sites/components/header'
+
 type TLayoutDemo = {
   title1: string
   title2: string
@@ -12,8 +15,8 @@ const LayoutDemo = () => {
   const [translated] = useTranslate<TLayoutDemo>({
     'zh-CN': {
       title1: '基础布局',
-      title2: '搜索框形状及最大长度',
-      title3: '搜索框内外背景设置',
+      title2: '分栏间隔',
+      title3: 'Flex布局',
     },
     'zh-TW': {
       title1: '基礎佈局',
@@ -33,7 +36,8 @@ const LayoutDemo = () => {
   })
   return (
     <>
-      <div className="demo full">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} full`}>
         <h2>{translated.title1}</h2>
         <div className="box-item">
           <Row>

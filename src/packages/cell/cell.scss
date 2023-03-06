@@ -1,4 +1,16 @@
 @import '../icon/icon';
+.nut-theme-dark {
+  .nut-cell {
+    background: $dark5;
+    color: $dark1;
+    box-shadow: none;
+    &__value {
+      &--alone {
+        color: $cell-desc-color;
+      }
+    }
+  }
+}
 
 .nut-cell {
   position: relative;
@@ -8,7 +20,7 @@
   padding: $cell-padding;
   background: $cell-background;
   border-radius: $cell-border-radius;
-  box-shadow: 0px 1px 7px 0px rgba(237, 238, 241, 1);
+  box-shadow: $cell-box-shaow;
   font-size: $cell-title-font;
   color: $cell-color;
   margin: 10px 0;
@@ -27,9 +39,6 @@
   &--large {
     font-size: $cell-large-title-font;
     padding: $cell-large-padding;
-    .nut-cell__title-desc {
-      font-size: $cell-large-title-desc-font;
-    }
     .nut-cell__subtitle {
       font-size: $cell-large-title-desc-font;
     }
@@ -69,7 +78,7 @@
   &__icon {
     display: flex;
     flex-direction: row;
-    margin-right: $cell-default-icon-margin;
+    margin: $cell-default-icon-margin;
   }
 
   &__title {
@@ -79,6 +88,7 @@
   }
   &__subtitle {
     font-size: $cell-title-desc-font;
+    color: $cell-subtitle-color;
   }
   &__value {
     display: inline-block;

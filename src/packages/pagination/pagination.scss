@@ -1,3 +1,33 @@
+.nut-theme-dark {
+  .nut-pagination {
+    &__prev,
+    &__item,
+    &__next {
+      background: $dark5;
+      border: 1px solid $dark5;
+    }
+    &-simple {
+      background: $dark4;
+    }
+    .simple-border {
+      border-color: $dark2;
+    }
+    .disabled {
+      background-color: $dark2;
+      color: $disable-color;
+      border: 1px solid $dark2;
+    }
+    &.active {
+      background: $dark-pagination-active-background-color;
+    }
+    &__contain {
+      .nut-pagination__item {
+        background-color: $dark5;
+        border: 1px solid $dark4;
+      }
+    }
+  }
+}
 .nut-pagination {
   display: flex;
   font-size: $pagination-font-size;
@@ -35,7 +65,8 @@
     padding: $pagination-prev-next-padding;
   }
   .simple-border {
-    border-right: $pagination-item-border-width solid $pagination-item-border-color;
+    border-right: $pagination-item-border-width solid
+      $pagination-item-border-color;
   }
   .active {
     color: $white;

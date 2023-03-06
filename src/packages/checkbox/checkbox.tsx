@@ -1,19 +1,22 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import Icon from '@/packages/icon'
-import CheckboxGroup from '@/packages/checkboxgroup'
-
+import { Checked, CheckDisabled, CheckNormal } from '@nutui/icons-react'
 import bem from '@/utils/bem'
+import CheckboxGroup from '@/packages/checkboxgroup'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+interface InheritParentProps {
+  getParentVals?: () => string[] | undefined
+  max?: number | undefined
+}
 
-export interface CheckboxProps extends IComponent {
+export interface CheckboxProps extends BasicComponent {
   checked: boolean
   disabled: boolean
   textPosition: 'left' | 'right'
   iconSize: string | number
-  iconName: string
-  iconActiveName: string
-  iconIndeterminateName: string
+  iconName: React.ReactNode
+  iconActiveName: React.ReactNode
+  iconIndeterminateName: React.ReactNode
   iconClassPrefix: string
   iconFontClassName: string
   indeterminate: boolean
@@ -36,7 +39,8 @@ const defaultProps = {
 } as CheckboxProps
 export const Checkbox: FunctionComponent<
   Partial<CheckboxProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> &
+    InheritParentProps
 > & { Group: typeof CheckboxGroup } = (props) => {
   const { children } = {
     ...defaultProps,
@@ -74,26 +78,36 @@ export const Checkbox: FunctionComponent<
   useEffect(() => {
     setIndeterminate(indeterminate)
   }, [indeterminate])
-
-  const getIconName = () => {
-    if (!innerChecked) {
-      return iconName
-    }
-    if (_indeterminate) {
-      return iconIndeterminateName
-    }
-    return iconActiveName
-  }
+  //
+  // const getIconName = () => {
+  //   if (!innerChecked) {
+  //     return iconName
+  //   }
+  //   if (_indeterminate) {
+  //     return iconIndeterminateName
+  //   }
+  //   return iconActiveName
+  // }
 
   const renderIcon = () => {
-    return (
-      <Icon
-        classPrefix={iconClassPrefix}
-        fontClassName={iconFontClassName}
-        name={getIconName()}
-        size={iconSize}
-        className={color()}
-      />
+    if (!innerChecked) {
+      return React.isValidElement(iconName) ? (
+        React.cloneElement<any>(iconName, {})
+      ) : (
+        <CheckNormal width={iconSize} height={iconSize} className={color()} />
+      )
+    }
+    if (_indeterminate) {
+      return React.isValidElement(iconIndeterminateName) ? (
+        React.cloneElement<any>(iconIndeterminateName, {})
+      ) : (
+        <CheckDisabled width={iconSize} height={iconSize} className={color()} />
+      )
+    }
+    return React.isValidElement(iconActiveName) ? (
+      React.cloneElement<any>(iconActiveName, {})
+    ) : (
+      <Checked width={iconSize} height={iconSize} className={color()} />
     )
   }
   const color = () => {
@@ -107,8 +121,6 @@ export const Checkbox: FunctionComponent<
       return 'nut-checkbox__icon'
     }
     return 'nut-checkbox__icon--unchecked'
-
-    // return !innerDisabled ? (!innerChecked ? '#d6d6d6' : '#fa2c19') : '#f5f5f5'
   }
   const renderLabel = () => {
     return (

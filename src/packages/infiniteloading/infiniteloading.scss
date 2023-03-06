@@ -1,4 +1,21 @@
 @import '../icon/icon.scss';
+.nut-theme-dark {
+  .nut-infiniteloading {
+    .nut-infinite-container {
+      .infiniteLi {
+        color: $dark1;
+      }
+    }
+    .nut-infinite-bottom {
+      .bottom-box {
+        .bottom-text {
+          color: $dark2;
+        }
+      }
+    }
+  }
+}
+
 .nut-infiniteloading {
   display: block;
   width: 100%;
@@ -25,12 +42,17 @@
       }
     }
   }
+  .nut-infinite-container {
+    .infiniteLi {
+      color: $title-color;
+    }
+  }
   .nut-infinite-bottom {
     display: block;
     width: 100%;
     padding-top: 16px;
     font-size: $font-size-small;
-    color: $infinite-bottom-color;
+    color: $infiniteloading-bottom-color;
     text-align: center;
 
     .bottom-box {

@@ -2,7 +2,9 @@ import React, { FunctionComponent, useState, useEffect } from 'react'
 
 import bem from '@/utils/bem'
 
-export interface SwitchProps {
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface SwitchProps extends BasicComponent {
   isAsync: boolean
   checked: boolean
   disable: boolean
@@ -12,9 +14,10 @@ export interface SwitchProps {
   inactiveText: string
   className: string
   style: React.CSSProperties
-  change: (val: boolean, event: React.MouseEvent) => void
+  onChange: (val: boolean, event: React.MouseEvent) => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   isAsync: false,
   checked: false,
   disable: false,
@@ -33,7 +36,7 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
     inactiveColor,
     activeText,
     inactiveText,
-    change,
+    onChange,
     className,
     style,
   } = {
@@ -68,7 +71,7 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
     if (!isAsync) {
       setValue(!value)
     }
-    change && change(!value, event)
+    onChange && onChange(!value, event)
   }
   return (
     <div className={classes()} onClick={(e) => onClick(e)} style={styles()}>

@@ -7,6 +7,7 @@ Signature component based on canvas.
 ### Install
 
 ```javascript
+// react
 import { Signature } from '@nutui/nutui-react'
 ```
 
@@ -36,7 +37,7 @@ const App = () => {
     const demoStyles: React.CSSProperties = { margin: '1em 0' }
     return (
     <>
-        <Signature confirm={confirm} clear={clear} />
+        <Signature onConfirm={confirm} onClear={clear} />
         <p className="demo-tips demo" style={demoStyles}>
            Tips: click the confirm button, and the signature image is displayed below
         </p>
@@ -75,8 +76,8 @@ const App = () => {
         <Signature
             lineWidth={4}
             strokeStyle="green"
-            confirm={confirm}
-            clear={clear}
+            onConfirm={confirm}
+            onClear={clear}
          />
         <p className="demo-tips demo" style={demoStyles}>
             Tips: click the confirm button, and the signature image is displayed below
@@ -95,15 +96,18 @@ export default App;
 
 | Attribute           | Description                           | Type   | Default                                              |
 | -------------- | ------------------------------ | ------ | --------------------------------------------------- |
-| customClass   |  Custom class                 | String | -                                                   |
-| lineWidth     | Width of line                    | Number | 3                                                   |
-| strokeStyle   | Drawing stroke color                   | String | '#000'                                              |
-| type           | Picture format                       | String | 'png'                                               |
-| unSupportTpl |  Display copy without canvas | String | 'sorry, the current browser doesn't support canvas, so we can't use this control! ' |
+| customClass   |  Custom class                 | string | -                                                   |
+| lineWidth     | Width of line                    | number | `3`                                                   |
+| strokeStyle   | Drawing stroke color                   | string | `#000`                                              |
+| type           | Picture format                       | string | `png`                                               |
+| unSupportTpl |  Display copy without canvas | string | `sorry, the current browser doesn't support canvas, so we can't use this control! ` |
 
 ## Event
 
 | 字段    | 说明                         | 回调参数                         |
 | ------- | ---------------------------- | -------------------------------- |
-| confirm | Click the confirm button to trigger the event callback function | Canvas and data URI displayed by signature imageURI |
-| clear   | Click the re sign button to trigger the event callback function | -                               |
+| confirm`v1.3.8 废弃` | Click the confirm button to trigger the event callback function | Canvas and data URI displayed by signature imageURI |
+| clear`v1.3.8 废弃`   | Click the re sign button to trigger the event callback function | -                               |
+| onConfirm`v1.3.8` | Click the confirm button to trigger the event callback function | Canvas and data URI displayed by signature imageURI |
+| onClear`v1.3.8`   | Click the re sign button to trigger the event callback function | -                               |
+

@@ -1,19 +1,18 @@
 import React, { FunctionComponent, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
 
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface TabbarItemProps extends IComponent {
+export interface TabbarItemProps extends BasicComponent {
   dot: boolean
   size: string | number
-  classPrefix: string
+  iconSize: string | number
+  className: string
   tabTitle: string
   icon: string
   href: string
-  to: any
   num: string | number
   active: boolean
   activeColor: string
@@ -26,11 +25,11 @@ const defaultProps = {
   ...ComponentDefaults,
   dot: false,
   size: '',
-  classPrefix: 'nut-icon',
+  iconSize: '',
+  className: '',
   tabTitle: '',
   icon: '',
   href: '',
-  to: '',
   num: '',
   active: false,
   activeColor: '',
@@ -45,11 +44,12 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
   const {
     dot,
     size,
-    classPrefix,
+    iconSize,
+    className,
+    style,
     tabTitle,
     icon,
     href,
-    to,
     num,
     active,
     activeColor,
@@ -64,22 +64,18 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
   }
   const b = bem('tabbar-item')
   const bIcon = bem('tabbar-item__icon-box')
-  const history = useHistory()
 
   useEffect(() => {
     if (active && href) {
       window.location.href = href
-      return
     }
-    if (active && to) {
-      history.push(to)
-    }
-  }, [active, history, href, to])
+  }, [active, href])
 
   return (
     <div
-      className={`${b({ active })}`}
+      className={`${b({ active })} ${className}`}
       style={{
+        ...style,
         color: active ? activeColor : unactiveColor,
       }}
       onClick={() => {
@@ -97,19 +93,19 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
             )}
           </>
         ) : (
-          <div className={`${bIcon('dot')}`} />
+          <div className={`${bIcon('tips', [bIcon('dot')])}`} />
         )}
 
         {icon && (
-          <div>
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              size={size}
-              name={icon}
-            />
-          </div>
+          <Icon
+            classPrefix={iconClassPrefix}
+            fontClassName={iconFontClassName}
+            size={iconSize || size}
+            name={icon}
+          />
         )}
+      </div>
+      {tabTitle && (
         <div
           className={bIcon({ 'nav-word': true }, [
             bIcon({ 'big-word': !icon }),
@@ -117,7 +113,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
         >
           {tabTitle}
         </div>
-      </div>
+      )}
     </div>
   )
 }

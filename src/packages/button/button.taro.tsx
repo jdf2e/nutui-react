@@ -5,11 +5,17 @@ import React, {
   useEffect,
   useState,
 } from 'react'
-import Icon from '@/packages/icon/index.taro'
+import { ButtonProps as MiniProgramButtonProps } from '@tarojs/components'
+import { Loading } from '@nutui/icons-react-taro'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface ButtonProps extends IComponent {
+type OmitMiniProgramButtonProps = Omit<
+  MiniProgramButtonProps,
+  'size' | 'type' | 'onClick'
+>
+export interface ButtonProps
+  extends BasicComponent,
+    OmitMiniProgramButtonProps {
   className: string
   color: string
   shape: ButtonShape
@@ -20,7 +26,8 @@ export interface ButtonProps extends IComponent {
   type: ButtonType
   size: ButtonSize
   block: boolean
-  icon: string
+  icon: React.ReactNode
+  iconSize: string | number
   children: any
   onClick: (e: MouseEvent) => void
 }
@@ -47,6 +54,7 @@ const defaultProps = {
   size: 'normal',
   block: false,
   icon: '',
+  iconSize: '16',
   style: {},
   children: undefined,
   onClick: (e: MouseEvent) => {},
@@ -62,6 +70,7 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
     size,
     block,
     icon,
+    iconSize,
     children,
     onClick,
     className,
@@ -121,6 +130,7 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
     size,
     block,
     icon,
+    iconSize,
     children,
     onClick,
     classes,
@@ -134,7 +144,10 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
   }
 
   return (
-    <div
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line react/button-has-type
+    <button
       className={`${btnName} ${className}`}
       style={{ ...btnStyle, ...style }}
       {...rest}
@@ -142,24 +155,18 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
     >
       <div className="nut-button__warp" style={getStyle()}>
         {loading && (
-          <Icon
-            classPrefix={iconClassPrefix}
-            fontClassName={iconFontClassName}
-            name="loading"
+          <Loading
+            className="nut-icon-loading"
+            width={iconSize}
+            height={iconSize}
           />
         )}
-        {!loading && icon ? (
-          <Icon
-            classPrefix={iconClassPrefix}
-            fontClassName={iconFontClassName}
-            name={icon}
-          />
-        ) : (
-          ''
+        {!loading && icon ? icon : null}
+        {children && (
+          <div className={icon || loading ? 'text' : ''}>{children}</div>
         )}
-        {children}
       </div>
-    </div>
+    </button>
   )
 }
 

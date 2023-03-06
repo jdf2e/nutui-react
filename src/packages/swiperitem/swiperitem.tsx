@@ -8,7 +8,7 @@ export interface SwiperItemProps {
   size?: 0
 }
 
-interface IStyle {
+interface Style {
   width?: string
   height?: string
   transform?: string
@@ -23,13 +23,13 @@ export const SwiperItem = React.forwardRef<
   Partial<SwiperItemProps> & React.HTMLAttributes<HTMLDivElement>
 >((props, ref) => {
   const _props = { ...defaultProps, ...props }
-  const { children, direction, size } = _props
+  const { className, style, children, direction, size } = _props
   const parent: any = useContext(DataContext)
   const b = bem('swiper-item')
-  const classes = classNames(b(''))
+  const classes = classNames(b(''), className)
 
-  const style = () => {
-    const style: IStyle = {}
+  const getStyle = () => {
+    const style: Style = {}
     const _direction = parent?.propSwiper.direction || direction
     const _size = parent?.size || size
     if (_size) {
@@ -39,7 +39,7 @@ export const SwiperItem = React.forwardRef<
   }
 
   return (
-    <div className={classes} style={style()}>
+    <div className={classes} style={{ ...style, ...getStyle() }}>
       {children}
     </div>
   )

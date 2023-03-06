@@ -8,7 +8,6 @@
 ### 安装
 ```tsx
 import { Sticky } from '@nutui/nutui-react';
-
 ```
 
 ## 代码演示
@@ -16,11 +15,12 @@ import { Sticky } from '@nutui/nutui-react';
 ### 基础用法
 :::demo
 ```tsx
-const App = () => {
+
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react'
 
- const handleChange = (val: boolean) => {
+const App = () => {
+  const handleChange = (val: boolean) => {
     console.log('吸顶状态发生了改变,当前fixed为', val)
   }
 return(
@@ -54,9 +54,12 @@ export default App;
 ### 指定容器内
 :::demo
 ```tsx
-const App = () => {
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react'
+
+const App = () => {
+  const containerTopRef = useRef(null)
+  const containerRef = useRef(null)
 
    return(
     <>
@@ -96,22 +99,20 @@ export default App;
 ```
 :::
 
-
-
 ## API
 
 ### Props
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| position     | 吸附位置（top、bottom）            | String | top             |
-| top          | 吸顶距离                          | Number | 0               |
-| bottom       | 吸底距离                          | Number | 0               |
-| z-index      | 吸附时的层级                       | Number | 2000            |
-| container    | 容器的 ref                        | React.RefObject<HTMLElement>|
+| position     | 吸附位置（top、bottom）            | string | `top`             |
+| top          | 吸顶距离                          | number | `0`               |
+| bottom       | 吸底距离                          | number | `0`               |
+| z-index      | 吸附时的层级                       | number | `2000`            |
+| container    | 容器的 ref                        | `React.RefObject<HTMLElement>`| - |
 
 ### Events
 
 | 事件名 | 说明                                            | 回调参数     |
 |--------|------------------------------------------------|--------------|
-| onChange  | 吸附状态改变时触发  | val: Boolean |
+| onChange  | 吸附状态改变时触发  | `val: boolean` |

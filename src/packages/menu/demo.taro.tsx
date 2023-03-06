@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Menu, MenuItem, Button } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 const MenuDemo = () => {
   const style = `
@@ -96,10 +98,13 @@ const MenuDemo = () => {
     ])
   }, [translated])
 
+  const itemRef = useRef(null)
+
   return (
     <>
+      <Header />
       <style>{style}</style>
-      <div className="demo full">
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} full`}>
         <h2>{translated.basic}</h2>
         <Menu closeOnClickOverlay={false} lockScroll={false}>
           <MenuItem
@@ -114,9 +119,11 @@ const MenuDemo = () => {
         <h2>{translated.customMenuContent}</h2>
         <Menu>
           <MenuItem options={options} value={0} />
-          <MenuItem title={translated.screen}>
+          <MenuItem title={translated.screen} ref={itemRef}>
             <div>{translated.customContent}</div>
-            <Button>{translated.confirm}</Button>
+            <Button onClick={() => (itemRef.current as any).toggle(false)}>
+              {translated.confirm}
+            </Button>
           </MenuItem>
         </Menu>
         <h2>{translated.twoColsInOneLine}</h2>

@@ -7,9 +7,8 @@
 ### 安装
 
 ```javascript
-
+// react
 import { TextArea } from '@nutui/nutui-react';
-
 ```
 
 ## 代码演示
@@ -62,7 +61,7 @@ const App = () => {
     const [value2, updateValue2] = useState('')
     return (
         <>
-            <TextArea defaultValue={value2} limitShow maxlength="20" />
+            <TextArea defaultValue={value2} limitshow maxlength="20" />
         </>
     )
 };
@@ -102,7 +101,7 @@ const App = () => {
     return (
         <>
             <TextArea readonly defaultValue="textarea只读状态" />
-            <TextArea disabled defaultValue="textarea禁用状态" limitShow maxlength="20" />
+            <TextArea disabled defaultValue="textarea禁用状态" limitshow maxlength="20" />
         </>
     )
 };
@@ -135,23 +134,41 @@ export default App
 
 | 参数         | 说明                                              | 类型           | 默认值         |
 | ------------ | ------------------------------------------------- | -------------- | -------------- |
-| defaultValue | 初始默认值，支持双向绑定                          | String         | -              |
-| placeholder  | 设置占位提示文字                                  | String         | `'请输入内容'` |
-| maxlength    | 限制最长输入字符                                  | String、Number | -              |
-| rows         | textarea 的高度                                   | String、Number | `2`            |
-| limitShow    | textarea 是否展示输入字符。须配合`max-length`使用 | Boolean        | `false`        |
-| autosize     | 高度是否可拉伸                                    | Boolean        | `false`        |
-| textAlign    | 文本位置,可选值`left`,`center`,`right`            | String         | `left`         |
-| readonly     | 只读属性                                          | Boolean        | `false`        |
-| disabled     | 禁用属性                                          | Boolean        | `false`        |
+| defaultValue | 初始默认值，支持双向绑定                          | string         | -              |
+| placeholder  | 设置占位提示文字                                  | string         | `请输入内容` |
+| maxlength    | 限制最长输入字符                                  | string \| number | -              |
+| rows         | textarea 的高度                                   | string \| number | `2`            |
+| limitshow    | textarea 是否展示输入字符。须配合`max-length`使用 | boolean        | `false`        |
+| autosize     | 高度是否可拉伸                                    | boolean        | `false`        |
+| textAlign    | 文本位置,可选值`left`,`center`,`right`            | string         | `left`         |
+| readonly     | 只读属性                                          | boolean        | `false`        |
+| disabled     | 禁用属性                                          | boolean        | `false`        |
 
 ### Events
 
 | 名称                 | 说明           | 回调参数 |
 |--------------------| -------------- | -------- |
-| change`v1.2.0（废弃）` | 输入内容时触发 | val      |
-| focus`v1.2.0（废弃）`             | 聚焦时触发     | val      |
-| blur`v1.2.0（废弃）`             | 失焦时触发     | val      |
-| onChange           | 输入内容时触发 | val      |
-| onFocus            | 聚焦时触发     | val      |
-| onBlur             | 失焦时触发     | val      |
+| change`v1.2.0 废弃` | 输入内容时触发 | `val`      |
+| focus`v1.2.0 废弃`             | 聚焦时触发     | `val`      |
+| blur`v1.2.0 废弃`             | 失焦时触发     | `val`      |
+| onChange           | 输入内容时触发 | `val`      |
+| onFocus            | 聚焦时触发     | `val`      |
+| onBlur             | 失焦时触发     | `val`      |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-textarea-font | `$font-size-2` |
+| --nutui-textarea-height | `100px` |
+| --nutui-textarea-padding`v1.4.8` | `16px 10px 16px 16px `|
+| --nutui-textarea-limit-color | `$text-color` |
+| --nutui-textarea-text-color | `$title-color` |
+| --nutui-textarea-text-curror-color`v1.4.8`  | `$title-color`|
+| --nutui-textarea-text-line-height`v1.4.8`  | `30px` |
+| --nutui-textarea-disabled-color | `$disable-color` |

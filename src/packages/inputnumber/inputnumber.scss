@@ -1,11 +1,48 @@
 @import '../icon/icon.scss';
+
+.nut-theme-dark {
+  .nut-inputnumber {
+    &__icon {
+      color: $dark1;
+
+      &--disabled {
+        color: $dark2;
+      }
+    }
+
+    input,
+    &__text--readonly {
+      background-color: $dark4;
+      color: $dark1;
+      border: 1px solid $dark2;
+    }
+
+    &--disabled {
+      input {
+        color: $dark3 !important;
+      }
+    }
+  }
+}
+
 .nut-inputnumber {
-  display: flex;
+  display: $inputnumber-display;
   align-items: center;
+
+  .nut-input-minus,
+  .nut-input-add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $inputnumber-button-width;
+    height: $inputnumber-button-height;
+    background-color: $inputnumber-button-background-color;
+    border-radius: $inputnumber-button-border-radius;
+  }
 
   &--disabled {
     input {
-      color: $inputnumber-icon-void-color;
+      color: $inputnumber-icon-void-color !important;
     }
   }
 
@@ -13,25 +50,31 @@
     color: $inputnumber-icon-color;
     font-size: $inputnumber-icon-size;
     cursor: pointer;
+
     &--disabled {
-      color: $inputnumber-icon-void-color;
+      color: $inputnumber-icon-disabled-color;
       cursor: not-allowed;
     }
   }
 
   input,
+  .nut-number-input,
   &__text--readonly {
     width: $inputnumber-input-width;
-    height: 100%;
+    height: $inputnumber-input-height;
     text-align: center;
     outline: none;
-    border: 0;
-    margin: 0 6px;
+    border: $inputnumber-input-border;
+    margin: $inputnumber-input-margin;
+    color: $inputnumber-input-font-color;
     background-color: $inputnumber-input-background-color;
     border-radius: $inputnumber-input-border-radius;
   }
+
   input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
+  input::-webkit-inner-spin-button,
+  .nut-number-input::-webkit-outer-spin-button,
+  .nut-number-input::-webkit-inner-spin-button {
     appearance: none;
   }
 }

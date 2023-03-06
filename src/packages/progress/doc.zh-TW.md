@@ -7,6 +7,7 @@
 ### 安裝
 
 ```js
+// react
 import { Progress, Icon } from '@nutui/nutui-react';
 ```
 
@@ -45,7 +46,7 @@ const App = () => {
       <Progress
         percentage="30"
         strokeColor="rgba(250,44,25,0.47)"
-        stroke-width="20"
+        strokeWidth="20"
         textColor="red"
       />
     </Cell>
@@ -225,7 +226,7 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
+import  React, {useState} from "react";
 import { Progress, Cell, Button } from '@nutui/nutui-react';
 
 const App = () => {
@@ -279,21 +280,62 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 預設值
 |----- | ----- | ----- | -----
-| percentage | 百分比 | Number | 0
-| isShowPercentage | 是否需要展示百分号 | Boolean | true
-| fillColor | 进度条填充颜色 | String | #f3f3f3
-| strokeColor | 进度条线条背景色 | String | linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)
-| strokeWidth | 进度条宽度 | String | -
-| size | 进度条及文字尺寸，可选值`small` `base` `large` | String | base
-| showText | 是否显示进度条文字内容 | Boolean | true
-| textInside | 进度条文字显示位置(`false`外显，`true`内显) | Boolean | false
-| textColor | 进度条文字颜色设置 | String | 外显`#333` 内显`#fff`
-| textWidth | 进度条文字宽度 | String | 35px
-| textBackground | 进度条文字背景颜色设置 | String | 同进度条颜色
-| textType | 进度条文字类型，`text`(展示文字)/`icon`(展示icon标签) | String | text
-| status | 进度条当前状态，`true`展示动画效果 | Boolean | false
-| iconName | Icon 名称 | String | checked
-| iconColor | Icon 颜色 | String | #439422
-| iconSize | Icon 大小 | String | 16px
-| rounded | 是否圆角 | boolean｜String | true
+| percentage | 百分比 | number | `0`
+| isShowPercentage | 是否需要展示百分号 | boolean | `true`
+| fillColor | 进度条填充颜色 | string | `#f3f3f3`
+| strokeColor | 进度条线条背景色 | string | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
+| strokeWidth | 进度条宽度 | string | -
+| size | 进度条及文字尺寸，可选值`small` `base` `large` | string | `base`
+| showText | 是否显示进度条文字内容 | boolean | `true`
+| textInside | 进度条文字显示位置(`false`外显，`true`内显) | boolean | `false`
+| textColor | 进度条文字颜色设置 | string | 外显`#333` 内显`#fff`
+| textWidth | 进度条文字宽度 | string | `35px`
+| textBackground | 进度条文字背景颜色设置 | string | 同进度条颜色
+| textType | 进度条文字类型，`text`(展示文字)/`icon`(展示icon标签) | string | `text`
+| status | 进度条当前状态，`true`展示动画效果 | boolean | `false`
+| iconName | Icon 名称 | string | `checked`
+| iconColor | Icon 颜色 | string | `#439422`
+| iconSize | Icon 大小 | string | `16px`
+| rounded `v1.4.7 废弃`| 是否圆角 | boolean \| string | `true`
 
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-progress-border-radius | `12px` |
+| --nutui-progress-text-padding | `0 5px` |
+| --nutui-progress-text-font-size | `13px` |
+| --nutui-progress-text-color | `$title-color` |
+| --nutui-progress-text-inner-color | `$gray6` |
+| --nutui-progress-insidetext-position-top | `-4px`|
+| --nutui-progress-insidetext-position-bottom | `-4px`|
+| --nutui-progress-insidetext-border-radius | `5px` |
+| --nutui-progress-insidetext-background | `$progress-inner-background-color` |
+| --nutui-progress-outer-background-color | `#f3f3f3` |
+| --nutui-progress-outer-border-radius | `12px` |
+| --nutui-progress-insidetext-border-radius | `5px` |
+| --nutui-progress-insidetext-padding | `3px 5px 3px 6px` |
+| --nutui-progress-small-font-size | `7px` |
+| --nutui-progress-small-padding | `0 4px` |
+| --nutui-progress-small-height | `5px` |
+| --nutui-progress-small-text-font-size | `7px` |
+| --nutui-progress-small-text-line-height | `10px` |
+| --nutui-progress-small-text-padding | `2px 4px` |
+| --nutui-progress-base-font-size | `9px` |
+| --nutui-progress-base-padding | `0 5px` |
+| --nutui-progress-base-height | `10px` |
+| --nutui-progress-base-text-font-size | `9px` |
+| --nutui-progress-base-text-line-height | `13px` |
+| --nutui-progress-base-text-padding | `$progress-insidetext-padding` |
+| --nutui-progress-base-text-top | `$progress-insidetext-top` |
+| --nutui-progress-large-font-size | `13px` |
+| --nutui-progress-large-padding | `0 5px` |
+| --nutui-progress-large-height | `15px` |
+| --nutui-progress-large-text-font-size | `13px` |
+| --nutui-progress-large-text-line-height | `18px` |
+| --nutui-progress-large-text-padding | `$progress-insidetext-padding` |
+| --nutui-progress-large-text-top | `$progress-insidetext-top` |

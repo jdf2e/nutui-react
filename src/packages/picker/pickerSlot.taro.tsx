@@ -9,7 +9,7 @@ import { PickerOption } from './picker.taro'
 import { useTouch } from '../../utils/useTouch'
 import { getRectByTaro } from '@/utils/useClientRect'
 
-interface IPickerSlotProps {
+interface PickerSlotProps {
   keyIndex?: number
   defaultValue?: string | number
   listData?: PickerOption[]
@@ -21,7 +21,7 @@ interface IPickerSlotProps {
 
 const InternalPickerSlot: ForwardRefRenderFunction<
   { stopMomentum: () => void; moving: boolean },
-  Partial<IPickerSlotProps>
+  Partial<PickerSlotProps>
 > = (props, ref) => {
   const {
     keyIndex = 0,
@@ -86,7 +86,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   }
 
   const setMove = (move: number, type?: string, time?: number) => {
-    console.log('move')
     let updateMove = move + transformY.current
     if (type === 'end') {
       // 限定滚动距离
@@ -223,7 +222,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
 
   const getReference = async () => {
     const refe = await getRectByTaro(listbox?.current)
-    console.log(refe)
     lineSpacing.current = refe.height ? refe.height : 36
     modifyStatus(true)
   }
@@ -303,7 +301,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
           listData.map((item, index) => {
             return (
               <div
-                className="nut-picker-roller-item-tile"
+                className="nut-picker-roller-item-title"
                 key={item.value ? item.value : index}
                 style={{
                   height: `${lineSpacing.current}px`,
@@ -324,6 +322,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
 const PickerSlot =
   React.forwardRef<
     { stopMomentum: () => void; moving: boolean },
-    Partial<IPickerSlotProps>
+    Partial<PickerSlotProps>
   >(InternalPickerSlot)
 export default PickerSlot

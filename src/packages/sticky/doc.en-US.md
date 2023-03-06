@@ -8,22 +8,19 @@ The effect is the same as position: sticky in CSS, which can be used for compati
 ### Install
 ```tsx
 import { Sticky } from '@nutui/nutui-react';
-
 ```
-
-
 
 ### Basic Usage
 :::demo
 ```tsx
-const App = () => {
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react'
 
- const handleChange = (val: boolean) => {
+const App = () => {
+  const handleChange = (val: boolean) => {
     console.log('The ceiling state has changed, and the current fixed is', val)
   }
-return(
+  return(
     <>
         <h2>Ceiling</h2>
         <Cell style={{ height: '300px' }}>
@@ -44,8 +41,7 @@ return(
           </Sticky>
         </Cell>
     </>
-)
-   
+  )
 }
 export default App;
 ```
@@ -54,11 +50,13 @@ export default App;
 ### 指定容器内
 :::demo
 ```tsx
-const App = () => {
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react'
 
-   return(
+const App = () => {
+  const containerTopRef = useRef(null)
+  const containerRef = useRef(null)
+  return(
     <>
         <h2>Specify container</h2>
         <Cell>
@@ -88,15 +86,12 @@ import {Button,Cell, Sticky } from '@nutui/nutui-react'
             </Sticky>
           </div>
         </Cell>
-      
     </>
-   )
+  )
 }
 export default App;
 ```
 :::
-
-
 
 ## API
 
@@ -104,14 +99,14 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| position     | Adsorption position（top、bottom）| String | top             |
-| top          | Ceiling distance                 | Number | 0               |
-| bottom       | Suction distance                 | Number | 0               |
-| z-index      | Level of adsorption              | Number | 2000            |
-| container    | container ref                    | React.RefObject<HTMLElement> |
+| position     | Adsorption position（top、bottom）| string | `top`             |
+| top          | Ceiling distance                 | number | `0`               |
+| bottom       | Suction distance                 | number | `0`               |
+| z-index      | Level of adsorption              | number | `2000`            |
+| container    | container ref                    | `React.RefObject<HTMLElement>` | - |
 
 ### Events
 
 | 事件名 | 说明                                            | 回调参数     |
 |--------|------------------------------------------------|--------------|
-| onChange  | Triggered when the adsorption state changes   | val: Boolean |
+| onChange  | Triggered when the adsorption state changes   | `val: boolean` |

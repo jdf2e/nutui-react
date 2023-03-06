@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-
+import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface RateProps extends IComponent {
+export interface RateProps extends BasicComponent {
   count: string | number
   modelValue: string | number
   minimizeValue: string | number
@@ -38,6 +38,8 @@ const defaultProps = {
 } as RateProps
 export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   const {
+    className,
+    style,
     count,
     modelValue,
     minimizeValue,
@@ -76,7 +78,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   }, [modelValue])
 
   const pxCheck = (value: string | number): string => {
-    return isNaN(Number(value)) ? String(value) : `${value}px`
+    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
   }
 
   const onClick = (e: React.MouseEvent, index: number) => {
@@ -84,8 +86,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     e.stopPropagation()
     if (disabled || readonly) return
     let value = 0
-    if (index === 1 && score === index) {
-    } else {
+    if (!(index === 1 && score === index)) {
       value = index
       if (allowHalf) {
         if ((e?.target as Element).className.includes('__icon--half')) {
@@ -99,7 +100,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     onChange && onChange(value)
   }
   return (
-    <div className={b()}>
+    <div className={classNames(b(), className)} style={style}>
       {countArray.map((n) => {
         return (
           <div
@@ -112,9 +113,9 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
               classPrefix={iconClassPrefix}
               fontClassName={iconFontClassName}
               size={iconSize}
-              className={`${bi('icon')} ${
-                disabled || n > score ? bi('icon--disabled') : ''
-              }`}
+              className={classNames(bi('icon'), {
+                [bi('icon--disabled')]: disabled || n > score,
+              })}
               name={n <= score ? checkedIcon : uncheckedIcon}
               color={n <= score ? activeColor : voidColor}
             />

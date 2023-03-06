@@ -1,4 +1,5 @@
 import React from 'react'
+import './demo.scss'
 import { Signature } from './signature'
 import { useTranslate } from '../../sites/assets/locale'
 
@@ -58,7 +59,7 @@ const SignatureDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <Signature confirm={confirm} clear={clear} />
+        <Signature onConfirm={confirm} onClear={clear} />
         <p className="demo-tips demo1" style={demoStyles}>
           {translated.tips}
         </p>
@@ -66,8 +67,8 @@ const SignatureDemo = () => {
         <Signature
           lineWidth={4}
           strokeStyle="green"
-          confirm={confirm1}
-          clear={clear1}
+          onConfirm={confirm1}
+          onClear={clear1}
         />
         <p className="demo-tips demo2" style={demoStyles}>
           {translated.tips}

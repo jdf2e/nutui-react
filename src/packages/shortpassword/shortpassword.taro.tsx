@@ -10,9 +10,9 @@ import Popup from '@/packages/popup/index.taro'
 import Icon from '@/packages/icon/index.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface ShortPasswordProps extends IComponent {
+export interface ShortPasswordProps extends BasicComponent {
   title: string
   desc: string
   tips: string
@@ -24,6 +24,7 @@ export interface ShortPasswordProps extends IComponent {
   length: string | number
   className: string
   style?: CSSProperties
+  autoFocus?: boolean
   onChange: (value: string | number) => void
   onOk: (value: string | number) => void
   onCancel: () => void
@@ -44,6 +45,7 @@ const defaultProps = {
   closeOnClickOverlay: true,
   length: 6, // 1~6
   className: '',
+  autoFocus: false,
   onChange: (value: number | string) => {},
   onOk: (value: number | string) => {},
   onCancel: () => {},
@@ -76,6 +78,7 @@ export const ShortPassword: FunctionComponent<
     onComplete,
     iconClassPrefix,
     iconFontClassName,
+    autoFocus,
     ...reset
   } = props
   const b = bem('shortpassword')
@@ -163,6 +166,7 @@ export const ShortPassword: FunctionComponent<
               style={systemStyle()}
               maxLength={6}
               value={inputValue}
+              autoFocus={autoFocus}
               onChange={(e) => changeValue(e)}
             />
             <div className={b('input-site')} />

@@ -1,18 +1,34 @@
-import React, { useEffect, useImperativeHandle, useState } from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from 'react'
 import bem from '@/utils/bem'
+import { RadioGroupOptionType } from '@/packages/radiogroup/type'
+import { Checkbox } from '../checkbox/checkbox'
+
+type Position = 'left' | 'right'
+type Direction = 'horizontal' | 'vertical'
 
 export interface CheckboxGroupProps {
   disabled: boolean
   checkedValue: string[]
   max: number | undefined
+  textPosition: Position
+  direction: Direction
   onChange: (value: string[]) => void
+  options: RadioGroupOptionType[]
 }
 
 const defaultProps = {
   disabled: false,
   checkedValue: [],
   max: undefined,
+  textPosition: 'right',
+  direction: 'vertical',
   onChange: (value: string[]) => {},
+  options: [],
 } as CheckboxGroupProps
 export const CheckboxGroup = React.forwardRef(
   (
@@ -22,7 +38,17 @@ export const CheckboxGroup = React.forwardRef(
   ) => {
     const { children } = { ...defaultProps, ...props }
     const b = bem('checkboxgroup')
-    const { className, disabled, onChange, checkedValue, max, ...rest } = props
+    const {
+      className,
+      disabled,
+      onChange,
+      checkedValue,
+      max,
+      textPosition,
+      direction,
+      options,
+      ...rest
+    } = props
 
     const [innerDisabled, setInnerDisabled] = useState(disabled)
     const [innerValue, setInnerValue] = useState(checkedValue)
@@ -78,6 +104,11 @@ export const CheckboxGroup = React.forwardRef(
       return innerValue?.indexOf(child.props.label || child.children) > -1
     }
 
+    function validateChecked(value: any) {
+      if (!innerValue) return false
+      return innerValue?.indexOf(value) > -1
+    }
+
     function getParentVals() {
       return innerValue
     }
@@ -94,13 +125,39 @@ export const CheckboxGroup = React.forwardRef(
           onChange: handleChildChange,
           getParentVals,
           max,
+          textPosition,
         })
       })
     }
 
+    const renderOptionsChildren = useCallback(() => {
+      return options?.map(({ label, value, disabled, onChange, ...rest }) => {
+        const childChecked = validateChecked(value)
+        return (
+          <Checkbox
+            key={value?.toString()}
+            children={label}
+            label={value}
+            disabled={innerDisabled ? true : disabled}
+            onChange={handleChildChange}
+            {...rest}
+            max={max}
+            textPosition={textPosition}
+            getParentVals={getParentVals}
+            checked={childChecked}
+          />
+        )
+      })
+    }, [innerValue, options, innerDisabled, max])
+
     return (
-      <div className={`${b()} ${className || ''}`} {...rest}>
-        {cloneChildren()}
+      <div
+        className={`${b()} nut-checkboxgroup--${props.direction} ${
+          className || ''
+        }`}
+        {...rest}
+      >
+        {options?.length ? renderOptionsChildren() : cloneChildren()}
       </div>
     )
   }

@@ -5,8 +5,9 @@
 Hovering and collecting experience interaction for quick navigation
 
 ### Install
-    
+
 ``` javascript
+// react
 import { FixedNav } from '@nutui/nutui-react';
 ```
 
@@ -300,14 +301,14 @@ export default App;
 ### Prop
 | Field | Description | Type | Default Value |
 |:---------------|:----------------------------|:--------|:----------------------------|
-| fixednavClass | custom class name | String | fixednav |
-| visible | whether to open | Boolean | false |
-| navList | Floating list content data | Array | [] |
-| activeText | Collapse list button text | String | Collapse navigation |
-| unActiveText | Expand List Button Text | String | Quick Navigation |
-| type | navigation direction, optional left right | String | right |
-| overlay | Whether to show the mask when expanding | Boolean | true |
-| position | fixed vertical position | Object | {top: 'auto',bottom: 'auto'} |
+| fixednavClass | custom class name | string | `fixednav` |
+| visible | whether to open | boolean | `false` |
+| navList | Floating list content data | Array | `[]` |
+| activeText | Collapse list button text | string | `Collapse navigation` |
+| unActiveText | Expand List Button Text | string | `Quick Navigation` |
+| type | navigation direction, optional left right | string | `right` |
+| overlay | Whether to show the mask when expanding | boolean | `true` |
+| position | fixed vertical position | object | `{top: 'auto', bottom: 'auto'}` |
 | slotList | Customize expanded list content | HTMLElement | - |
 | slotBtn | custom button | HTMLElement | - |
 
@@ -316,8 +317,21 @@ export default App;
 
 | Field | Description | Callback Parameters |
 |----------|-------------|----------------|
-| onChange | expand/collapse button callback | {value:boolean} |
-| onSelected | Fired after selection | {item:item, event:MouseEvent} |
+| onChange | expand/collapse button callback | `value: boolean` |
+| onSelected | Fired after selection | `item, event: MouseEvent}` |
 
 
     
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-fixednav-bg-color | `#fff` |
+| --nutui-fixednav-font-color | `#000` |
+| --nutui-fixednav-index | `201` |
+| --nutui-fixednav-item-active-color | `$primary-color` |

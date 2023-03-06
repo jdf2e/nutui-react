@@ -1,11 +1,19 @@
+.nut-theme-dark {
+  .nut-tabbar {
+    background: $dark4;
+  }
+}
+
 .nut-tabbar {
   border: 0px;
   box-shadow: $tabbar-box-shadow;
   border-bottom: $tabbar-border-bottom;
   border-top: $tabbar-border-top;
+  height: $tabbar-height;
   width: 100%;
   display: flex;
-  padding: 7px 0;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   background: $white;
 
@@ -21,7 +29,18 @@
   }
 
   &__safebottom {
-    padding-bottom: constant(safe-area-inset-bottom);
-    padding-bottom: env(safe-area-inset-bottom);
+    bottom: constant(safe-area-inset-bottom);
+    bottom: env(safe-area-inset-bottom);
+
+    &::after {
+      content: '';
+      z-index: 90;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      height: env(safe-area-inset-bottom);
+      width: 100%;
+      background-color: #fff;
+    }
   }
 }

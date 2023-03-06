@@ -1,14 +1,14 @@
 import React, { FunctionComponent, CSSProperties, ReactNode } from 'react'
 import classNames from 'classnames'
-import Icon from '@/packages/icon'
+import Icon from '@/packages/icon/index.taro'
 import bem from '@/utils/bem'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type ProgressSize = 'small' | 'base' | 'large'
 export type TextType = 'icon' | 'text'
 
-export interface ProgressProps extends IComponent {
+export interface ProgressProps extends BasicComponent {
   className: string
   style: CSSProperties
   isShowPercentage: boolean
@@ -27,7 +27,6 @@ export interface ProgressProps extends IComponent {
   iconName: string
   iconColor: string
   iconSize: string
-  rounded: boolean | string
   children: ReactNode
 }
 
@@ -50,7 +49,6 @@ const defaultProps = {
   iconName: 'checked',
   iconColor: '#439422',
   iconSize: '16px',
-  rounded: true,
   children: undefined,
 } as ProgressProps
 
@@ -76,7 +74,6 @@ export const Progress: FunctionComponent<
     iconName,
     iconColor,
     iconSize,
-    rounded,
     children,
     iconClassPrefix,
     iconFontClassName,
@@ -116,14 +113,12 @@ export const Progress: FunctionComponent<
   const stylesOuter: React.CSSProperties = {
     height: `${strokeWidth}px`,
     // eslint-disable-next-line no-nested-ternary
-    borderRadius: `${rounded ? (rounded === true ? '12px' : rounded) : 0}`,
     background: `${fillColor}`,
   }
 
   const stylesInner: React.CSSProperties = {
     width: `${percentage}%`,
     // eslint-disable-next-line no-nested-ternary
-    borderRadius: `${rounded ? (rounded === true ? '12px' : rounded) : 0}`,
     background: `${strokeColor}`,
   }
 
@@ -156,7 +151,7 @@ export const Progress: FunctionComponent<
                 <div className={classesInsideText} style={stylesInsideText}>
                   <span
                     className={classesTextInner}
-                    style={{ color: textColor || '#fff' }}
+                    style={{ color: textColor }}
                   >
                     {percentage}
                     {isShowPercentage ? '%' : ''}
@@ -170,10 +165,7 @@ export const Progress: FunctionComponent<
       {showText && !textInside && (
         <div className={classesText} style={stylesText}>
           {textType === 'text' && (
-            <span
-              className={classesTextInner}
-              style={{ color: textColor || '#333' }}
-            >
+            <span className={classesTextInner} style={{ color: textColor }}>
               {percentage}
               {isShowPercentage ? '%' : ''}
             </span>

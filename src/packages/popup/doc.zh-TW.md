@@ -7,6 +7,7 @@
 ### 安裝
 
 ``` javascript
+// react
 import { Popup } from '@nutui/nutui-react';
 ```
 
@@ -182,26 +183,27 @@ export default App;
 
 ### Props
 
-| 參數                   | 說明                                                        | 類型           | 默認值        |
-|------------------------|-------------------------------------------------------------|----------------|---------------|
-| visible                | 當前組件是否顯示                                            | Boolean        | `false`       |
-| zIndex                | 遮罩層級                                                    | String、Number | `2000`        |
-| duration               | 遮罩動畫時長，單位秒                                            | Number | `0.3`         |
-| overlayClass          | 自定義遮罩類名                                              | String         | -             |
-| overlayStyle          | 自定義遮罩樣式                                              | CSSProperties  | -             |
-| lockScroll            | 背景是否鎖定                                                | Boolean        | `true`       |
-| overlay                | 是否顯示遮罩                                                | Boolean        | `true`        |
-| closeOnClickOverlay | 是否點擊遮罩關閉                                            | Boolean        | `true`        |
-| position               | 彈出位置（top,bottom,left,right,center）                    | String         | `"center"`    |
-| transition             | 動畫名                                                      | String         | -             |
-| style                  | 自定義彈框樣式                                              | CSSProperties  | -             |
-| popClass              | 自定義彈框類名                                              | String         | -             |
-| closeable              | 是否顯示關閉按鈕                                            | Boolean        | `false`        |
-| closeIconPosition    | 關閉按鈕位置（top-left,top-right,bottom-left,bottom-right） | String         | `"top-right"` |
-| closeIcon             | 自定義 Icon                                                 | String         | `"close"`     |
-| destroyOnClose       | 組件銷毀後是否關閉                                          | Boolean        | `true`        |
-| round                  | 是否顯示圓角                                                | Boolean        | `false`       |
-| teleport                  | 指定節點掛載                                                | HTMLElement、(() => HTMLElement) 、null        | `null`       |
+| 參數                   | 說明                                                        | 類型            | 默認值        |
+|------------------------|-------------------------------------------------------------|---------------|---------------|
+| visible                | 當前組件是否顯示 | boolean       | `false`       |
+| zIndex                | 遮罩層級 | string \      | number | `2000`        |
+| duration               | 遮罩動畫時長，單位秒 | number        | `0.3`         |
+| overlayClass          | 自定義遮罩類名 | string        | -             |
+| overlayStyle          | 自定義遮罩樣式 | CSSProperties | -             |
+| lockScroll            | 背景是否鎖定 | boolean       | `true`       |
+| overlay                | 是否顯示遮罩 | boolean       | `true`        |
+| closeOnClickOverlay | 是否點擊遮罩關閉 | boolean       | `true`        |
+| position               | 彈出位置（top,bottom,left,right,center） | string        | `center`    |
+| transition             | 動畫名 | string        | -             |
+| style                  | 自定義彈框樣式 | CSSProperties | -             |
+| popClass              | 自定義彈框類名 | string        | -             |
+| closeable              | 是否顯示關閉按鈕 | boolean       | `false`        |
+| closeIconSize`v1.4.7` | 关闭按钮大小 | string        | `12px` |
+| closeIconPosition    | 關閉按鈕位置（top-left,top-right,bottom-left,bottom-right） | string        | `top-right` |
+| closeIcon | 自定義 Icon | ReactNode          | `close`     |
+| destroyOnClose | 組件銷毀後是否關閉 | boolean       | `true`        |
+| round | 是否顯示圓角 | boolean       | `false`       |
+| teleport | 指定節點掛載 | HTMLElement \ | (() => HTMLElement) \| null        | `null`       |
 
 ### Events
 
@@ -214,3 +216,17 @@ export default App;
 | onOpend            | 遮罩打開動畫結束時觸發 | `event: HTMLElement` |
 | onClosed           | 遮罩關閉動畫結束時觸發 | `event: HTMLElement` |
 | onClickOverlay    | 點擊遮罩觸發           | `event: MouseEvent` |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-popup-close-icon-margin | `16px` |
+| --nutui-popup-border-radius | `20px` |
+| --nutui-popup-close-icon-color | `#969799`|
+| --nutui-popup-close-icon-size | `30px` |

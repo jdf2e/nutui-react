@@ -6,7 +6,10 @@
 
 ### 安裝
 
-import { Card,Price, Tag} from '@nutui/nutui-react';
+```js
+// react
+import { Card, Price, Tag } from '@nutui/nutui-react';
+```
 
 
 ## 代碼演示
@@ -240,17 +243,33 @@ export default App;
 
 | 字段    | 說明                                       | 類型    | 默認值    |
 |---------|--------------------------------------------|---------|-----------|
-| imgUrl   | 左側圖片Url                                 | String  | -         |
-| title     | 標題                   | String  | -    |
-| price | 商品價格                         | String  | -      |
-| vipPrice     | 會員價格                               | String | -    |
-| shopDesc  | 店鋪介紹                                  | String | -    |
-| delivery     | 配送方式 | String  | -      |
-| shopName   | 店鋪名稱| String  | -      |
-| prolistTpl   | 自定義商品介紹| React.ReactNode  | -      |
-| originTpl   | 價格後方自定義內容| React.ReactNode  | -      |
-| shopTagTpl   | 店鋪介紹自定義| React.ReactNode  | -      |
-| footerTpl   | 右下角內容自定義| React.ReactNode  | -      |
+| imgUrl   | 左側圖片Url                                 | string  | -         |
+| title     | 標題                   | string  | -    |
+| price | 商品價格                         | string  | -      |
+| vipPrice     | 會員價格                               | string | -    |
+| shopDesc  | 店鋪介紹                                  | string | -    |
+| delivery     | 配送方式 | string  | -      |
+| shopName   | 店鋪名稱| string  | -      |
+| prolistTpl   | 自定義商品介紹| ReactNode  | -      |
+| originTpl   | 價格後方自定義內容| ReactNode  | -      |
+| shopTagTpl   | 店鋪介紹自定義| ReactNode  | -      |
+| footerTpl   | 右下角內容自定義| ReactNode  | -      |
 
 
 
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-card-font-size-0 | `$font-size-0` |
+| --nutui-card-font-size-1 | `$font-size-1` |
+| --nutui-card-font-size-2 | `$font-size-2` |
+| --nutui-card-font-size-3 | `$font-size-3` |
+| --nutui-card-left-border-radius | `0` |
+| --nutui-card-left-background-color | `inherit` |

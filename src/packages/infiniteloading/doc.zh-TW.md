@@ -264,17 +264,17 @@ export default App;
 
 | 參數         | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
-| hasMore         | 是否還有更多數據               | Boolean | `true`                |
-| threshold         | 距離底部多遠加載 | Number | `200`               |
-| useWindow | 將滾動偵聽器添加到 window 否則偵聽組件的父節點     | Boolean | `true` |
-| useCapture          | 是否使用捕獲模式 true 捕獲 false 冒泡                        | Boolean | `false`            |
-| containerId          | 在 useWindow 屬性為 false 的時候，自定義設置節點ID                       | String | `''`            |
-| loadMoreTxt          | “沒有更多數”據展示文案                        | String | `'哎呀，這裡是底部了啦'`            |
-| isOpenRefresh        | 是否開啟下拉刷新                         | Boolean | `false`                |
-| pullIcon        | 下拉刷新[圖標名稱](#/icon)                        | String | ''                |
-| pullTxt        | 下拉刷新提示文案                         | String | `鬆手刷新`                |
-| loadIcon        | 上拉加載[圖標名稱](#/icon)                       | String | ''            |
-| loadTxt        | 上拉加載提示文案                         | String | `加載中...`                |
+| hasMore         | 是否還有更多數據               | boolean | `true`                |
+| threshold         | 距離底部多遠加載 | number| `200`               |
+| useWindow | 將滾動偵聽器添加到 window 否則偵聽組件的父節點     | boolean | `true` |
+| useCapture          | 是否使用捕獲模式 true 捕獲 false 冒泡                        | boolean | `false`            |
+| containerId          | 在 useWindow 屬性為 false 的時候，自定義設置節點ID                       | string | -            |
+| loadMoreTxt          | “沒有更多數”據展示文案                        | string | `哎呀，這裡是底部了啦`            |
+| isOpenRefresh        | 是否開啟下拉刷新                         | boolean | `false`                |
+| pullIcon        | 下拉刷新[圖標名稱](#/icon)                        | string | -                |
+| pullTxt        | 下拉刷新提示文案                         | string | `鬆手刷新`                |
+| loadIcon        | 上拉加載[圖標名稱](#/icon)                       | string | -            |
+| loadTxt        | 上拉加載提示文案                         | string | `加載中...`                |
 
 ### Events
 
@@ -286,3 +286,13 @@ export default App;
 | onScrollChange `v1.3.4` | 實時監聽滾動高度 | 滾動高度 |
 | refresh `v1.3.4廢棄` | 下拉刷新事件回調 | done() |
 | onRefresh `v1.3.4` | 下拉刷新事件回調 | done() |
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-infiniteloading-bottom-color | `#c8c8c8` |

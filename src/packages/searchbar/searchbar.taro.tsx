@@ -1,12 +1,13 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import { getEnv } from '@tarojs/taro'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Icon from '@/packages/icon/index.taro'
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type TIconDirection = 'in-left' | 'out-left' | 'in-right' | 'out-right'
 
-export interface SearchBarProps extends IComponent {
+export interface SearchBarProps extends BasicComponent {
   /** 文本值	 */
   value?: number | string
   /** 输入框占位提示文字	 */
@@ -21,6 +22,7 @@ export interface SearchBarProps extends IComponent {
   maxLength?: number
   /** 是否启用清除图标，点击清除图标后会清空输入框	 */
   clearable?: boolean
+  clearIconSize?: string | number
   /** 搜索框外部背景色	 */
   background?: string
   /** 搜索框背景色	 */
@@ -53,6 +55,8 @@ export interface SearchBarProps extends IComponent {
   onBlur?: (value: string, event: Event) => void
   /** 点击清除按钮后触发	 */
   onClear?: (event: Event) => void
+  /** 点击取消按钮后触发	 */
+  onCancel?: () => void
   /** 点击输入区域时触发	 */
   onClickInput?: (event: Event) => void
   /** 点击输入框内左侧图标时触发	 */
@@ -72,6 +76,7 @@ const defaultProps = {
   disabled: false,
   maxLength: 9999,
   clearable: true,
+  clearIconSize: '12px',
   align: 'left',
   readonly: true,
   autoFocus: false,
@@ -98,6 +103,7 @@ export const SearchBar: FunctionComponent<
     disabled,
     maxLength,
     clearable,
+    clearIconSize,
     align,
     readOnly,
     autoFocus,
@@ -111,6 +117,7 @@ export const SearchBar: FunctionComponent<
     onFocus,
     onBlur,
     onClear,
+    onCancel,
     onSearch,
     onClickInput,
     onClickLeftinIcon,
@@ -160,12 +167,13 @@ export const SearchBar: FunctionComponent<
           shape === 'round' ? searchbarBem('round') : ''
         } ${clearable ? searchbarBem('input-clear') : ''}`}
         ref={searchRef}
-        style={{ ...props.style, background: props.inputBackground }}
+        style={{ ...props.style }}
         value={value || ''}
         placeholder={placeholder || locale.placeholder}
         disabled={disabled}
         readOnly={readOnly}
         maxLength={maxLength}
+        onKeyPress={onKeypress}
         onChange={(e: any) => change(e)}
         onFocus={(e: any) => focus(e)}
         onBlur={(e: any) => blur(e)}
@@ -248,7 +256,7 @@ export const SearchBar: FunctionComponent<
           classPrefix={iconClassPrefix}
           fontClassName={iconFontClassName}
           name="circle-close"
-          size="12"
+          size={clearIconSize}
           color="#555"
         />
       </div>
@@ -274,8 +282,21 @@ export const SearchBar: FunctionComponent<
     return null
   }
 
+  const onKeypress = (e: any) => {
+    if (e.keyCode === 13) {
+      if (typeof e.cancelable !== 'boolean' || e.cancelable) {
+        e.preventDefault()
+      }
+      onSearch && onSearch(value as string)
+    }
+  }
+
   const search = () => {
     onSearch && onSearch(value as string)
+  }
+
+  const cancel = () => {
+    onCancel && onCancel()
   }
   const renderLabel = () => {
     if (label) {
@@ -283,18 +304,26 @@ export const SearchBar: FunctionComponent<
     }
     return null
   }
+
+  const envClass = () => {
+    return getEnv() === 'WEB' ? 'nut-searchbar-taro' : ''
+  }
+
   return (
     <div
-      className={`${searchbarBem()} ${
+      className={`${searchbarBem()} ${envClass()} ${
         disabled ? searchbarBem('disabled') : ''
       }  ${className || ''}`}
       style={{ ...props.style, background: props.background }}
     >
       {renderLeftoutIcon()}
       {renderLabel()}
-      <div className={`${searchbarBem('content')}`}>
+      <div
+        className={`${searchbarBem('content')}`}
+        style={{ background: props.inputBackground }}
+      >
         {renderLeftinIcon()}
-        {renderField()}
+        <div className="nut-searchbar__input-box">{renderField()}</div>
         {renderRightinIcon()}
         {clearable && value && handleClear()}
       </div>

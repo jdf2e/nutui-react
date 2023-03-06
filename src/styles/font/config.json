@@ -96,13 +96,19 @@
         "heart1",
         "heart-fill",
         "star-n",
-        "star-fill-n"
+        "star-fill-n",
+        "triangle-down",
+        "triangle-up"
       ]
     },
     {
       "name": "基础图标",
       "nameEn": "Basic Icon",
       "icons": [
+        "rect-up",
+        "rect-down",
+        "rect-left",
+        "rect-right",
         "uploader",
         "mask-close",
         "circle-close",
@@ -128,7 +134,7 @@
         "loading1"
       ]
     }
-    
+
   ],
   "style":[
     {

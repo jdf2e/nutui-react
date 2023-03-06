@@ -8,7 +8,7 @@ import React, {
 import { PickerOption } from './picker'
 import { useTouch } from '../../utils/useTouch'
 
-interface IPickerSlotProps {
+interface PickerSlotProps {
   keyIndex?: number
   defaultValue?: string | number
   listData?: PickerOption[]
@@ -19,7 +19,7 @@ interface IPickerSlotProps {
 
 const InternalPickerSlot: ForwardRefRenderFunction<
   { stopMomentum: () => void; moving: boolean },
-  Partial<IPickerSlotProps>
+  Partial<PickerSlotProps>
 > = (props, ref) => {
   const {
     keyIndex = 0,
@@ -280,7 +280,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
           listData.map((item, index) => {
             return (
               <div
-                className="nut-picker-roller-item-tile"
+                className="nut-picker-roller-item-title"
                 key={item.value ? item.value : index}
               >
                 <>{item.text ? item.text : item}</>
@@ -297,6 +297,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
 const PickerSlot =
   React.forwardRef<
     { stopMomentum: () => void; moving: boolean },
-    Partial<IPickerSlotProps>
+    Partial<PickerSlotProps>
   >(InternalPickerSlot)
 export default PickerSlot

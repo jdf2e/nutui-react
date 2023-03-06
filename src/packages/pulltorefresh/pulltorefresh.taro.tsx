@@ -172,7 +172,6 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   )
 
   const renderStatusText = () => {
-    console.log(props)
     if (props.renderText) {
       return props.renderText?.(status)
     }

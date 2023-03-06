@@ -1,6 +1,7 @@
 import React from 'react'
 import { Divider } from './divider'
 import { useTranslate } from '../../sites/assets/locale'
+import Cell from '@/packages/cell'
 
 interface T {
   basic: string
@@ -39,36 +40,54 @@ const DividerDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <Divider />
+        <Cell>
+          <Divider />
+        </Cell>
+
         <h2>{translated.withText}</h2>
-        <Divider>{translated.text}</Divider>
-        <h2>{translated.withText}</h2>
-        <Divider contentPosition="left">{translated.text}</Divider>
-        <Divider contentPosition="right">{translated.text}</Divider>
+        <Cell>
+          <Divider>{translated.text}</Divider>
+        </Cell>
+
+        <h2>{translated.contentPosition}</h2>
+        <Cell>
+          <Divider contentPosition="left">{translated.text}</Divider>
+        </Cell>
+        <Cell>
+          <Divider contentPosition="right">{translated.text}</Divider>
+        </Cell>
         <h2>{translated.dashed}</h2>
-        <Divider dashed>{translated.text}</Divider>
+        <Cell>
+          <Divider dashed>{translated.text}</Divider>
+        </Cell>
+
         <h2>{translated.customStyle}</h2>
-        <Divider
-          styles={{
-            color: '#1989fa',
-            borderColor: '#1989fa',
-            padding: '0 16px',
-          }}
-        >
-          {translated.text}
-        </Divider>
+        <Cell>
+          <Divider
+            styles={{
+              color: '#1989fa',
+              borderColor: '#1989fa',
+              padding: '0 16px',
+            }}
+          >
+            {translated.text}
+          </Divider>
+        </Cell>
         <h2>{translated.verticalDivider}</h2>
-        <div style={{ fontSize: '14px', marginLeft: '27px', color: '#909ca4' }}>
-          {translated.text}
-          <Divider direction="vertical" />
-          <a href="#/Divider" style={{ color: '#1989fa' }}>
-            {translated.link}
-          </a>
-          <Divider direction="vertical" />
-          <a href="#/Divider" style={{ color: '#1989fa' }}>
-            {translated.link}
-          </a>
-        </div>
+        <Cell>
+          <div style={{ fontSize: '14px', marginLeft: '27px', color: '' }}>
+            {translated.text}
+
+            <Divider direction="vertical" />
+            <a href="#/Divider" style={{ color: '#4d88ff' }}>
+              {translated.link}
+            </a>
+            <Divider direction="vertical" />
+            <a href="#/Divider" style={{ color: '#4d88ff' }}>
+              {translated.link}
+            </a>
+          </div>
+        </Cell>
       </div>
     </>
   )

@@ -39,7 +39,7 @@ test('range props test', () => {
 test('range max and min test', () => {
   const handleChange = jest.fn()
   const { container } = render(
-    <Range modelValue={0} max={10} min={-10} change={handleChange} />
+    <Range modelValue={0} max={10} min={-10} onChange={handleChange} />
   )
   expect(container.querySelector('.min')?.innerHTML).toBe('-10')
   expect(container.querySelector('.max')?.innerHTML).toBe('10')
@@ -62,6 +62,15 @@ test('range test', () => {
       container.querySelector('nut-range-button-wrapper-right')
     ).toHaveAttribute('aria-valuenow', '60')
   }, 300)
+})
+
+test('range description test', () => {
+  const { container } = render(
+    <Range minDesc="0%" maxDesc="100%" curValueDesc="40%" />
+  )
+  expect(container.querySelector('.min')?.innerHTML).toBe('0%')
+  expect(container.querySelector('.max')?.innerHTML).toBe('100%')
+  expect(container.querySelector('.number')?.innerHTML).toBe('40%')
 })
 
 test('disabled test', () => {

@@ -1,12 +1,11 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import { useHistory } from 'react-router-dom'
-import Taro from '@tarojs/taro'
+import { redirectTo, navigateTo } from '@tarojs/taro'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface CellProps extends IComponent {
+export interface CellProps extends BasicComponent {
   title: ReactNode
   subTitle: ReactNode
   desc: string
@@ -22,7 +21,7 @@ export interface CellProps extends IComponent {
   className: string
   iconSlot: ReactNode
   linkSlot: ReactNode
-  click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
 const defaultProps = {
@@ -42,7 +41,7 @@ const defaultProps = {
   className: '',
   iconSlot: null,
   linkSlot: null,
-  click: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
+  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
 
 export const Cell: FunctionComponent<
@@ -50,7 +49,7 @@ export const Cell: FunctionComponent<
 > = (props) => {
   const {
     children,
-    click,
+    onClick,
     title,
     subTitle,
     desc,
@@ -74,21 +73,11 @@ export const Cell: FunctionComponent<
     ...props,
   }
   const b = bem('cell')
-  const history = useHistory()
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    click(event)
-    if (to && history) {
-      history[replace ? 'replace' : 'push'](to)
-    } else if (url) {
-      if (
-        url.startsWith('https://') ||
-        url.startsWith('http://') ||
-        url.startsWith('//')
-      ) {
-        replace ? window.location.replace(url) : (window.location.href = url)
-      } else {
-        Taro.navigateTo({ url })
-      }
+    onClick(event)
+    const link = to || url
+    if (link) {
+      replace ? redirectTo({ url: link }) : navigateTo({ url: link })
     }
   }
 
@@ -100,7 +89,7 @@ export const Cell: FunctionComponent<
 
   const styles =
     title || subTitle || icon
-      ? {}
+      ? { textAlign: descTextAlign }
       : {
           textAlign: descTextAlign,
           flex: 1,

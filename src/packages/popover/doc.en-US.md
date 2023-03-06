@@ -7,13 +7,29 @@ Click or hover over the element to pop up the bubble card overlay.
 ### Install
 
 ``` javascript
+// react
 import { Popover } from '@nutui/nutui-react';
 ```
 
 ### Basic Usage
 Popover supports both light and dark styles. The default is light style. Set the theme property to `dark` to switch to dark style.
 
+:::demo
 ```tsx
+
+import  React, { useState, useRef  } from "react";
+import { Popover,Button,Icon } from '@nutui/nutui-react';
+
+const App = () => {
+  const [lightTheme, setLightTheme] = useState(false)
+  const [darkTheme, setDarkTheme] = useState(false)
+  const itemList = [
+    {name: 'option1'},
+    {name: 'option2'},
+    {name: 'option3'},
+  ]
+  return (
+    <>
 <Popover 
   visible={lightTheme} 
   onClick={()=>{lightTheme ? setLightTheme(false) : setLightTheme(true)}} 
@@ -27,22 +43,38 @@ Popover supports both light and dark styles. The default is light style. Set the
   list={itemList}>
   <Button type="primary" shape="square">Dark</Button>
 </Popover>
+    </>
+  )
+};
+
+export default App;
 ```
+:::
 
-```javascript
-
-  const [lightTheme, setLightTheme] = useState(false)
-  const [darkTheme, setDarkTheme] = useState(false)
-  const itemList = [
-    {name: 'option1'},
-    {name: 'option2'},
-    {name: 'option3'}];
-
-```
 
 ### Option Configuration
 
 ```tsx
+import  React, { useState, useRef  } from "react";
+import { Popover,Button } from '@nutui/nutui-react';
+import { My2, Cart2, Location2 } from '@nutui/icons-react'
+
+const App = () => {
+  const [showIcon, setShowIcon] = useState(false)
+  const [disableAction, setDisableAction] = useState(false)
+  const iconItemList= [
+    {name: 'option1',icon: <My2/>},
+    {name: 'option2',icon: <Cart2/>},
+    {name: 'option3',icon: <Location2/>}
+  ];
+  const itemListDisabled=[
+    {name: 'option1',disabled: true},
+    {name: 'option2', disabled: true},
+    {name: 'option3'}
+  ];
+
+  return (
+    <>
 <Popover
   visible={showIcon} 
   theme="dark" 
@@ -56,28 +88,53 @@ Popover supports both light and dark styles. The default is light style. Set the
   list={itemListDisabled}>
   <Button type="primary" shape="square">Disabled</Button>
 </Popover>
+    </>
+  );
+};
+
+export default App;
 ```
-
-```javascript
-
-  const [showIcon, setShowIcon] = useState(false)
-  const [disableAction, setDisableAction] = useState(false)
- const iconItemList= [
-    {name: 'o'p't'i'o'n's',icon: 'my2'},
-    {name: 'option2',icon: 'cart2'},
-    {name: 'option3',icon: 'location2'}
-  ];
-  const itemListDisabled=[
-    {name: 'option1',disabled: true},
-    {name: 'option2', disabled: true},
-    {name: 'option3'}
-  ];
-
-```
+:::
 
 ### Custom Content
 
+:::demo
 ```tsx
+import  React, { useState, useRef  } from "react";
+import { Popover,Button } from '@nutui/nutui-react';
+import { Service, Notice, Location, Category, Scan2, Message} from "@nutui/icons-react";
+
+const App = () => {
+  const [customized, setCustomized] = useState(false)
+  const selfContent= [
+    {
+      name: <Service size={15}/>,
+      desc: 'option1'
+    },
+    {
+      name: <Notice  size={15}/>,
+      desc: 'option2'
+    },
+    {
+      name: <Location size={15}/>,
+      desc: 'option3'
+    },
+    {
+      name: <Category size={15}/>,
+      desc: 'option4'
+    },
+    {
+      name: <Scan2 size={15}/>,
+      desc: 'option5'
+    },
+    {
+      name: <Message size={15}/>,
+      desc: 'option6'
+    }
+  ];
+
+  return (
+    <>
  <Popover 
   visible={customized} 
   onClick={()=>{customized ? setCustomized(false) : setCustomized(true)}}>
@@ -93,41 +150,16 @@ Popover supports both light and dark styles. The default is light style. Set the
         </div>
       })
     }
-  </div> : ''
+        </div> : null
   }
 </Popover>
-```
-```javascript
-
-  const [customized, setCustomized] = useState(false)
-  const selfContent= [
-    {
-      name: 'service',
-      desc: 'option1'
-    },
-    {
-      name: 'notice',
-      desc: 'option2'
-    },
-    {
-      name: 'location',
-      desc: 'option3'
-    },
-    {
-      name: 'category',
-      desc: 'option4'
-    },
-    {
-      name: 'scan2',
-      desc: 'option5'
-    },
-    {
-      name: 'message',
-      desc: 'option6'
+    </>
+  )
     }
-  ];
 
+export default App;
 ```
+:::
 
 ### Placement
 
@@ -190,11 +222,11 @@ export default App;
 
 | Attribute | Description | Type | Default |
 |----------------|---------------------------------|---------|------------|
-| list          | list of options                          | List[]   | []        |
-| visible      | whether to show                 | boolean  | false     |
+| list          | list of options                          | List[]   | `[]`        |
+| visible      | whether to show                 | boolean  | `false`     |
 | theme          | Theme style, can be set to `dark` `light`          | string   | `light`   |
 | location       | pop-up location  | string   | `bottom`  |
-| offset `v1.3.0`       | the offset of the occurrence position  | number   | 20  |
+| offset `v1.3.0`       | the offset of the occurrence position  | number   | `20`  |
 
 ### List data structure  
 
@@ -204,7 +236,7 @@ The List property is an array of objects, each object in the array is configured
 |----------------|----------------------|----------|--------|
 | name           | option text               | string   | -      |
 | icon           | `nut-icon` name      | string   | -      |
-| disabled       | whether to disable          | boolean  | false  | 
+| disabled       | whether to disable          | boolean  | `false`  | 
 
 ### Events
 
@@ -215,3 +247,31 @@ The List property is an array of objects, each object in the array is configured
 
 
 
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-popover-border-radius`v1.4.8` | `8px`|
+| --nutui-popover-font-size`v1.4.8` | `$font-size-1` |
+| --nutui-popover-menu-item-height`v1.4.8` | `30px` |
+| --nutui-popover-menu-item-name-margin`v1.4.8` | `0px 10px` |
+| --nutui-popover-menu-item-hover-background-color`v1.4.8` | `$primary-color`|
+| --nutui-popover-menu-item-hover-text-color`v1.4.8` | `$primary-text-color`|
+| --nutui-popover-menu-item-border-width`v1.4.8` | `80%`|
+| --nutui-popover-menu-item-border-height`v1.4.8` | `1px`|
+| --nutui-popover-menu-item-border-left`v1.4.8` | `10%`|
+| --nutui-popover-menu-item-border-bottom`v1.4.8` | `2%`|
+| --nutui-popover-white-background-color | `rgba(255, 255, 255, 1)` |
+| --nutui-popover-dark-background-color | `rgba(75, 76, 77, 1)` |
+| --nutui-popover-border-bottom-color | `rgba(229, 229, 229, 1)` |
+| --nutui-popover-primary-text-color | `rgba(51, 51, 51, 1)` |
+| --nutui-popover-disable-color | `rgba(154, 155, 157, 1)` |
+| --nutui-popover-menu-item-padding | `8px 0` |
+| --nutui-popover-menu-item-margin | `0 8px` |
+| --nutui-popover-menu-name-line-height | `normal` |

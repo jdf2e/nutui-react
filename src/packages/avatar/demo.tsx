@@ -1,4 +1,5 @@
 import React from 'react'
+import { My } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Avatar } from './avatar'
 import Cell from '@/packages/cell'
@@ -78,13 +79,13 @@ const AvatarDemo = () => {
         </Cell>
         <h2>{translated['3928b17e']}</h2>
         <Cell>
-          <Avatar icon="my" shape="square" />
-          <Avatar icon="my" shape="round" />
+          <Avatar icon={<My />} shape="square" />
+          <Avatar icon={<My />} shape="round" />
         </Cell>
         <h2>{translated['049b6a97']}</h2>
         <Cell>
           <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
-          <Avatar icon="my" />
+          <Avatar icon={<My />} />
           <Avatar>N</Avatar>
         </Cell>
         <h2>{translated.a304dabf}</h2>
@@ -93,7 +94,7 @@ const AvatarDemo = () => {
             className="demo-avatar"
             color="#fff"
             bgColor="#FA2C19"
-            icon="my"
+            icon={<My />}
           />
           <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
             U
@@ -102,17 +103,17 @@ const AvatarDemo = () => {
         <h2>{translated['89bca4e7']}</h2>
         <Cell>
           <Badge value="8">
-            <Avatar icon="my" shape="square" />
+            <Avatar icon={<My />} shape="square" />
           </Badge>
           <Badge dot>
-            <Avatar icon="my" shape="square" />
+            <Avatar icon={<My />} shape="square" />
           </Badge>
         </Cell>
         <h2>{translated.e981579e}</h2>
         <Cell>
           <AvatarGroup span="-4">
             <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
-            <Avatar icon="my" />
+            <Avatar icon={<My />} />
             <Avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">
               U
             </Avatar>
@@ -122,27 +123,27 @@ const AvatarDemo = () => {
         <Cell>
           <AvatarGroup maxCount="3" maxColor="#fff" maxBgColor="#498ff2">
             <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
-            <Avatar icon="my" />
+            <Avatar icon={<My />} />
             <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
               U
             </Avatar>
-            <Avatar icon="my" />
+            <Avatar icon={<My />} />
           </AvatarGroup>
         </Cell>
         <h2>{translated.f645fc65}</h2>
         <Cell>
           <AvatarGroup maxCount="3" zIndex="right" maxContent="...">
             <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
-            <Avatar icon="my" />
+            <Avatar icon={<My />} />
             <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
               U
             </Avatar>
-            <Avatar icon="my" />
+            <Avatar icon={<My />} />
           </AvatarGroup>
         </Cell>
         <h2>{translated['43f00872']}</h2>
         <Cell>
-          <Avatar icon="my" activeAvatar={activeAvatar} />
+          <Avatar icon={<My />} onActiveAvatar={activeAvatar} />
         </Cell>
       </div>
     </>

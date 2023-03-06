@@ -17,6 +17,7 @@ interface T {
   title8: string
   title9: string
   title10: string
+  title11: string
 }
 
 const RangeDemo = () => {
@@ -33,6 +34,7 @@ const RangeDemo = () => {
       title8: '自定义按钮',
       title9: '垂直方向',
       title10: '刻度标记',
+      title11: '自定义描述',
     },
     'en-US': {
       title: 'Basic Usage',
@@ -46,6 +48,7 @@ const RangeDemo = () => {
       title8: 'Custom Button',
       title9: 'Vertical',
       title10: 'Marks',
+      title11: 'Range Desc',
     },
   })
   const cellStyle = {
@@ -64,6 +67,7 @@ const RangeDemo = () => {
   const [value6, SetValue6] = useState([20, 80])
   const [value7, SetValue7] = useState(60)
   const [value8, SetValue8] = useState([20, 80])
+  const [value9, SetValue9] = useState(40)
   const [marks, SetMarks] = useState({
     0: 0,
     20: 20,
@@ -102,6 +106,9 @@ const RangeDemo = () => {
       case 'value8':
         SetValue8(value)
         break
+      case 'value9':
+        SetValue9(value)
+        break
       default:
         break
     }
@@ -114,12 +121,24 @@ const RangeDemo = () => {
         <Cell style={cellStyle}>
           <Range modelValue={40} />
         </Cell>
+        <h2>{translated.title11}</h2>
+        <Cell style={cellStyle}>
+          <Range
+            modelValue={value9}
+            minDesc="0%"
+            maxDesc="100%"
+            curValueDesc={`${value9}%`}
+            onChange={(value: any) => {
+              change(value, 'value9')
+            }}
+          />
+        </Cell>
         <h2>{translated.title1}</h2>
         <Cell style={cellStyle}>
           <Range
             range
             modelValue={value0}
-            change={(value: any) => {
+            onChange={(value: any) => {
               change(value, 'value0')
             }}
           />
@@ -130,7 +149,7 @@ const RangeDemo = () => {
             modelValue={0}
             max={10}
             min={-10}
-            change={(value: any) => {
+            onChange={(value: any) => {
               change(value)
             }}
           />
@@ -140,7 +159,7 @@ const RangeDemo = () => {
           <Range
             modelValue={value1}
             step={5}
-            change={(value: any) => {
+            onChange={(value: any) => {
               change(value, 'value1')
             }}
           />
@@ -150,7 +169,7 @@ const RangeDemo = () => {
           <Range
             modelValue={30}
             hiddenRange
-            change={(value: any) => {
+            onChange={(value: any) => {
               change(value)
             }}
           />
@@ -160,7 +179,7 @@ const RangeDemo = () => {
           <Range
             modelValue={20}
             hiddenTag
-            change={(value: any) => {
+            onChange={(value: any) => {
               change(value)
             }}
           />
@@ -170,7 +189,7 @@ const RangeDemo = () => {
           <Range
             modelValue={50}
             disabled
-            change={(value: any) => {
+            onChange={(value: any) => {
               change(value)
             }}
           />
@@ -184,7 +203,7 @@ const RangeDemo = () => {
             buttonColor="rgba(52,96,250,1)"
             activeColor="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
             style={{ color: 'red' }}
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value)
             }}
           />
@@ -194,7 +213,7 @@ const RangeDemo = () => {
           <Range
             modelValue={value2}
             button={<div className="range-custom-button">{value2}</div>}
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value, 'value2')
             }}
           />
@@ -205,7 +224,7 @@ const RangeDemo = () => {
             <Range
               modelValue={value3}
               vertical
-              change={(value: number) => {
+              onChange={(value: number) => {
                 change(value, 'value3')
               }}
             />
@@ -215,7 +234,7 @@ const RangeDemo = () => {
               modelValue={value4}
               vertical
               range
-              change={(value: number) => {
+              onChange={(value: number) => {
                 change(value, 'value4')
               }}
             />
@@ -227,7 +246,7 @@ const RangeDemo = () => {
             modelValue={value5}
             hiddenRange
             marks={marks}
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value, 'value5')
             }}
           />
@@ -237,7 +256,7 @@ const RangeDemo = () => {
             modelValue={value6}
             marks={marks}
             range
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value, 'value6')
             }}
           />
@@ -249,7 +268,7 @@ const RangeDemo = () => {
             vertical
             hiddenRange
             marks={marks}
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value, 'value7')
             }}
           />
@@ -258,7 +277,7 @@ const RangeDemo = () => {
             vertical
             marks={marks}
             range
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value, 'value8')
             }}
           />

@@ -7,6 +7,7 @@
 ### 安装
 
 ```ts
+// react
 import { ActionSheet } from '@nutui/nutui-react';
 ```
 ## 代码示例
@@ -210,15 +211,15 @@ export default App;
 
 | 字段             | 说明                                   | 类型    | 默认值    |
 |------------------|----------------------------------------|---------|-----------|
-| visible       | 遮罩层可见 | Boolean | false     |
-| cancelTxt       | 取消文案 | String  | '取消'    |
-| menuItems       | 列表项 | Array   | [ ]       |
-| optionTag       | 设置列表项展示使用参数 | String  | 'name'    |
-| optionSubTag   | 设置列表项描述展示使用参数 | String  | 'subname' |
-| title            | 设置列表面板标题 | String  | ''        |
-| description      | 设置列表面板副标题/描述 | String  | ''        |
-| chooseTagValue | 设置选中项的值，和'option-tag'的值对应 | String  | ''        |
-| color            | 高亮颜色 | String  | '#ee0a24' |
+| visible       | 遮罩层可见 | boolean | `false`     |
+| cancelTxt       | 取消文案 | string  | `取消`    |
+| menuItems       | 列表项 | Array   | `[]`       |
+| optionTag       | 设置列表项展示使用参数 | string  | `name`    |
+| optionSubTag   | 设置列表项描述展示使用参数 | string  | `subname` |
+| title            | 设置列表面板标题 | string  | -        |
+| description      | 设置列表面板副标题/描述 | string  | -        |
+| chooseTagValue | 设置选中项的值，和'option-tag'的值对应 | string  | -        |
+| color            | 高亮颜色 | string  | `#ee0a24` |
 
 
 ## Event
@@ -227,3 +228,19 @@ export default App;
 |--------|--------------------|-----------------------------------|
 | onChoose`v1.3.2` | 选择之后触发       | 选中列表项item, 选中的索引值index |
 | onCancel`v1.3.2` | 点击取消文案时触发 | 无                                |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-actionsheet-light-color | `#f6f6f6` |
+| --nutui-actionsheet-item-border-bottom | `none` |
+| --nutui-actionsheet-item-font-size | `$font-size-2` |
+| --nutui-actionsheet-item-subdesc-font-size | `$font-size-1` |
+| --nutui-actionsheet-item-cancel-border-top | `1px solid $actionsheet-light-color` |
+| --nutui-actionsheet-item-line-height | `24px` |
+| --nutui-actionsheet-item-font-color | `$title-color` |

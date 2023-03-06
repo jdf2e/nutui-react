@@ -7,6 +7,7 @@ For light tips.
 ### Install
 
 ```javascript
+// react
 import { Toast } from '@nutui/nutui-react';
 ```
 
@@ -31,7 +32,7 @@ const App = () => {
         <Cell
           title="Text"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => textToast('text message~')}
         />
@@ -59,7 +60,7 @@ const App = () => {
         <Cell
           title="Toast Title"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => titleToast('title message~')}
         />
@@ -87,7 +88,7 @@ const App = () => {
         <Cell
           title="Toast Success"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => successToast('Success')}
         />
@@ -116,7 +117,7 @@ const App = () => {
         <Cell
           title="Toast Fail"
           isLink
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => errorToast('Fail')}
         />
@@ -145,7 +146,7 @@ const App = () => {
             <Cell
             title="Toast Warn"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => warningToast('Warn')}
             />
@@ -174,7 +175,7 @@ const App = () => {
             <Cell
             title="Toast Loading"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => loadingToast('Loading')}
             />
@@ -203,14 +204,14 @@ const App = () => {
             <Cell
             title="Show for 10 seconds"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => duringToast('Show for 10 seconds')}
             />
             <Cell
             title="Toast Not Disappear"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => {Toast.text('Toast Not Disappear', { duration: 0 })}}
             />
@@ -248,7 +249,7 @@ const App = () => {
         <Cell
         title='Custom Bottom Height'
         isLink
-        click={(
+        onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => toastBottom('Custom Bottom Height')}
         />
@@ -284,7 +285,7 @@ const App = () => {
             <Cell
             title="Loading with transparent cover"
             isLink
-            click={(
+            onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => iconToast('Loading')}
             />
@@ -312,20 +313,37 @@ export default App
 
 | Attribute                | Description              |  Type         | Default                        |
 | ------------------- | -------------- | ------------- | ----------------------------- |
-| id                  | Identifier, share one instance at the same time, default to multiple instances| String/Number | -            |
-| duration            | Toast duration(s), won't disappear if value is 0      | Number        | 2                          |
-| title `v1.3.0`           | title     | String        |           -             |
-| center  | Whether to display in the middle of the page (display at the bottom when false) | Boolean| true                          |
-| bottom | The distance from the bottom of the page (px or %), which takes effect when option.center is false | String| 30px       |
-| textAlignCenter     | Whether the multi-line copy is centered           | Boolean       | true                          |
-| bgColor             | background color (transparency) | String        | rgba(0, 0, 0, 0.8)      |
-| customClass         |   Custom Class          | String        |          -                   |
-| icon                | Custom Icon        | String        |         -                   |
-| iconSize `v1.3.0`  | Custom iconSize      | String        | 20                           |
-| size        | Text Size **small**/**base**/**large**          | String        | base      |
-| cover      | Whether to show the mask layer     | Boolean       | false |
-| coverColor          |  Cover Color   | String        | rgba(0,0,0,0)             |
-| loadingRotate  | Whether the loading icon is rotated, only valid for the loading type  | Boolean | true                          |
-| onClose             |Callback function after close             | function      | null         |
-| closeOnClickOverlay | Whether to close when overlay is clicked         | Boolean       | false         |
+| id                  | Identifier, share one instance at the same time, default to multiple instances| string \| number | -            |
+| duration            | Toast duration(s), won't disappear if value is 0      | number       | `2`                          |
+| title `v1.3.0`           | title     | string        |           -             |
+| center  | Whether to display in the middle of the page (display at the bottom when false) | boolean | `true`                          |
+| bottom | The distance from the bottom of the page (px or %), which takes effect when option.center is false | string | `30px`       |
+| textAlignCenter     | Whether the multi-line copy is centered           | boolean       | `true`                          |
+| bgColor             | background color (transparency) | string        | `rgba(0, 0, 0, 0.8)`      |
+| customClass         |   Custom Class          | string        |          -                   |
+| icon                | Custom Icon        | string        |         -                   |
+| iconSize `v1.3.0`  | Custom iconSize      | string        | `20`                           |
+| size        | Text Size **small**/**base**/**large**          | string        | `base`      |
+| cover      | Whether to show the mask layer     | boolean       | `false` |
+| coverColor          |  Cover Color   | string        | `rgba(0,0,0,0)`             |
+| loadingRotate  | Whether the loading icon is rotated, only valid for the loading type  | boolean | `true`                          |
+| onClose             |Callback function after close             | Function      | `null`         |
+| closeOnClickOverlay | Whether to close when overlay is clicked         | boolean       | `false`         |
 
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-toast-title-font-size | `16px` |
+| --nutui-toast-text-font-size | `14px` |
+| --nutui-toast-font-color | `#fff` |
+| --nutui-toast-inner-padding | `24px 30px` |
+| --nutui-toast-inner-bg-color | `$gray7` |
+| --nutui-toast-inner-border-radius | `12px` |
+| --nutui-toast-cover-bg-color | `$gray7` |

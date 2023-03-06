@@ -6,6 +6,7 @@
 
 ### 安装
 ```ts
+// react
 import { Table } from '@nutui/nutui-react';
 ```
 
@@ -553,21 +554,21 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| bordered         | 是否显示边框 | 	Boolean | true                |
-| columns         | 表头数据 | 	TableColumnProps[] | []                |
-| data         | 表格数据 | 	Object[] | []                |
-| summary         | 是否显示简介 | 	React.ReactNode | -                |
-| striped         | 条纹是否明暗交替 | 	Boolean | false                |
-| noData         | 自定义无数据 | 	React.ReactNode | -                |
+| bordered         | 是否显示边框 | 	boolean | `true`                |
+| columns         | 表头数据 | 	TableColumnProps[] | `[]`                |
+| data         | 表格数据 | 	Object[] | `[]`                |
+| summary         | 是否显示简介 | 	ReactNode | -                |
+| striped         | 条纹是否明暗交替 | 	boolean | `false`                |
+| noData         | 自定义无数据 | 	ReactNode | -                |
 
 ### TableColumnProps
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| key         | 列的唯一标识 | 	String | ''                |
-| title         | 表头标题 | 	String | ''                |
-| align         | 列的对齐方式，可选值left,center,right | 	String | left                |
-| sorter         | 排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法 | 	Boolean、Function、String | -                |
+| key         | 列的唯一标识 | 	string | -                |
+| title         | 表头标题 | 	string | -                |
+| align         | 列的对齐方式，可选值left,center,right | 	string | `left`                |
+| sorter         | 排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法 | 	boolean \| Function \| string | -                |
 | render         | 自定义渲染列数据，优先级高 | 	Function(record) | -                |
 
 
@@ -577,3 +578,17 @@ export default App;
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
 | onSorter  | 点击排序按钮触发 | `item: TableColumnProps, data: Array<any>` |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-table-border-color | `#ececec` |
+| --nutui-table-cols-padding | `10px` |
+| --nutui-table-tr-even-bg-color | `$gray4` |
+| --nutui-table-tr-odd-bg-color | `$gray6` |

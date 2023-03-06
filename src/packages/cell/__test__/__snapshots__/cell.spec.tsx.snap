@@ -4,9 +4,8 @@ exports[`prop icon 1`] = `
 <div>
   <div
     class="nut-cell nut-cell--clickable "
-    iconclassprefix="nut-icon"
-    iconfontclassname="nutui-iconfont"
     style="border-radius: 6px;"
+    to=""
   >
     <div
       class="nut-cell__icon"
@@ -26,6 +25,7 @@ exports[`prop icon 1`] = `
     </div>
     <div
       class="nut-cell__value"
+      style="text-align: right;"
     >
       张三
     </div>
@@ -40,9 +40,8 @@ exports[`prop isLink 1`] = `
 <div>
   <div
     class="nut-cell nut-cell--clickable "
-    iconclassprefix="nut-icon"
-    iconfontclassname="nutui-iconfont"
     style="border-radius: 6px;"
+    to=""
   >
     <div
       class="nut-cell__title"
@@ -55,6 +54,7 @@ exports[`prop isLink 1`] = `
     </div>
     <div
       class="nut-cell__value"
+      style="text-align: right;"
     >
       https://m.jd.com/
     </div>
@@ -70,9 +70,8 @@ exports[`prop title desc subtitle test 1`] = `
   <div
     class="nut-cell "
     data-testid="prop"
-    iconclassprefix="nut-icon"
-    iconfontclassname="nutui-iconfont"
     style="border-radius: 6px;"
+    to=""
   >
     <div
       class="nut-cell__title"
@@ -90,6 +89,7 @@ exports[`prop title desc subtitle test 1`] = `
     </div>
     <div
       class="nut-cell__value"
+      style="text-align: right;"
     >
       描述文字
     </div>
@@ -101,9 +101,8 @@ exports[`slot default test 1`] = `
 <div>
   <div
     class="nut-cell "
-    iconclassprefix="nut-icon"
-    iconfontclassname="nutui-iconfont"
     style="border-radius: 6px;"
+    to=""
   >
     <div>
       自定义内容
@@ -116,9 +115,8 @@ exports[`slot linkSlot 1`] = `
 <div>
   <div
     class="nut-cell "
-    iconclassprefix="nut-icon"
-    iconfontclassname="nutui-iconfont"
     style="border-radius: 6px;"
+    to=""
   >
     <div
       class="nut-cell__title"

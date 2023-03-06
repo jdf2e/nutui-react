@@ -8,6 +8,7 @@ import React, {
   useImperativeHandle,
   useEffect,
 } from 'react'
+import classNames from 'classnames'
 import bem from '@/utils/bem'
 import { useTouch } from '@/utils/useTouch'
 import { getRect } from '@/utils/useClientRect'
@@ -67,6 +68,9 @@ export interface SwipeProps {
   }) => void
   /** 点击时触发 */
   onActionClick?: (event: Event, position: SwipePosition) => void
+  onTouchStart?: (event: Event) => void
+  onTouchEnd?: (event: Event) => void
+  onTouchMove?: (event: Event) => void
   children?: React.ReactNode
 }
 const defaultProps = {
@@ -76,7 +80,11 @@ const defaultProps = {
 } as SwipeProps
 export const Swipe = forwardRef<
   SwipeInstance,
-  Partial<SwipeProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<SwipeProps> &
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      'onTouchStart' | 'onTouchMove' | 'onTouchEnd'
+    >
 >((props, instanceRef) => {
   const swipeBem = bem('swipe')
   const touch: any = useTouch()
@@ -114,6 +122,7 @@ export const Swipe = forwardRef<
     if (!props.disabled) {
       startOffset.current = state.offset
       touch.start(event)
+      props.onTouchStart && props.onTouchStart(event)
     }
   }
 
@@ -123,6 +132,7 @@ export const Swipe = forwardRef<
     }
 
     touch.move(event)
+    props.onTouchMove && props.onTouchMove(event)
 
     if (touch.isHorizontal()) {
       lockClick.current = true
@@ -142,7 +152,7 @@ export const Swipe = forwardRef<
     }
   }
 
-  const onTouchEnd = () => {
+  const onTouchEnd = (event: Event) => {
     if (state.dragging) {
       setState((v) => ({ ...v, dragging: false }))
       toggle(state.offset > 0 ? 'left' : 'right')
@@ -150,6 +160,7 @@ export const Swipe = forwardRef<
       setTimeout(() => {
         lockClick.current = false
       }, 0)
+      props.onTouchEnd && props.onTouchEnd(event)
     }
   }
 
@@ -267,10 +278,10 @@ export const Swipe = forwardRef<
   return (
     <div
       ref={root}
-      className={`${swipeBem()} ${className}`}
+      className={classNames(swipeBem(), className)}
       onTouchStart={(e: any) => onTouchStart(e)}
       onTouchMove={(e: any) => onTouchMove(e)}
-      onTouchEnd={onTouchEnd}
+      onTouchEnd={(e: any) => onTouchEnd(e)}
       style={style}
     >
       <div className={`${swipeBem('wrapper')}`} style={wrapperStyle}>

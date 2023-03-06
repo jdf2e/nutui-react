@@ -6,6 +6,7 @@
 
 ### 安裝
 ``` ts
+// react
 import { Skeleton } from '@nutui/nutui-react';
 ```
 
@@ -132,13 +133,24 @@ export default App;
 
 | 字段       | 說明                                             | 類型    | 默認值    |
 |------------|-------------------------------------------------|---------|----------|
-| loading    | 是否顯示骨架屏                                    | Boolean | `false`    | 
-| width       | 每行寬度                                        | Number  | 100 |
-| height      | 每行高度                                        | Number  | 100   |
-| animated    | 是否開啟骨架屏動畫                                | Boolean  | `false`  |
-| avatar      | 是否顯示頭像                                    | Boolean | `false`   |
-| avatarShape      | 頭像形狀：正方形/圓形                        | String | `round`   |
-| avatarSize       | 頭像大小                                  | String | `50px`    |
-| round  | 標題/段落是否採用圓角風格                                | Boolean | `false`  |
-| row    | 設置段落行數                                           | Number | 1       |
-| title  | 是否顯示段落標題                                        | Boolean | `false`   |
+| loading    | 是否顯示骨架屏                                    | boolean | `false`    | 
+| width       | 每行寬度                                        | number  | `100` |
+| height      | 每行高度                                        | number  | `100`   |
+| animated    | 是否開啟骨架屏動畫                                | boolean  | `false`  |
+| avatar      | 是否顯示頭像                                    | boolean | `false`   |
+| avatarShape      | 頭像形狀：正方形/圓形                        | string | `round`   |
+| avatarSize       | 頭像大小                                  | string | `50px`    |
+| round  | 標題/段落是否採用圓角風格                                | boolean | `false`  |
+| row    | 設置段落行數                                           | number | `1`       |
+| title  | 是否顯示段落標題                                        | boolean | `false`   |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-skeleton-content-line-title-background-color | `#efefef` |

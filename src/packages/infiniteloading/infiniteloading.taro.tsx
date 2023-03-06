@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { ScrollView } from '@tarojs/components'
-import Taro from '@tarojs/taro'
+import { createSelectorQuery } from '@tarojs/taro'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon/index.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface InfiniteloadingProps extends IComponent {
+export interface InfiniteloadingProps extends BasicComponent {
   hasMore: boolean
   upperThreshold: number
   containerId: string
@@ -114,7 +114,7 @@ export const Infiniteloading: FunctionComponent<
   }
 
   const getParentElement = (el: string) => {
-    return Taro.createSelectorQuery().select(
+    return createSelectorQuery().select(
       containerId ? `#${containerId} #${el}` : `#${el}`
     )
   }
@@ -157,14 +157,14 @@ export const Infiniteloading: FunctionComponent<
     onLoadMore && onLoadMore(infiniteDone)
   }
 
-  const touchStart = (event: ITouchEvent) => {
+  const touchStart = (event: any) => {
     if (scrollTop.current == 0 && !isTouching.current && isOpenRefresh) {
       y.current = event.touches[0].pageY
       isTouching.current = true
     }
   }
 
-  const touchMove = (event: ITouchEvent) => {
+  const touchMove = (event: any) => {
     distance.current = event.touches[0].pageY - y.current
     if (distance.current > 0 && isTouching.current) {
       event.preventDefault()

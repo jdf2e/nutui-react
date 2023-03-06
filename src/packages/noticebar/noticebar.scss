@@ -1,17 +1,24 @@
 @import '../icon/icon.scss';
 .nut-theme-dark {
-  .nut-noticebar-page {
-    background: $dark-background2;
-    color: $dark-color;
-  }
-
-  .nut-noticebar-vertical {
-    .horseLamp_list_item {
-      color: $dark-color;
+  .nut-noticebar {
+    .wrap {
+      .content {
+        a {
+          color: $noticebar-color;
+        }
+      }
+    }
+    .nut-noticebar-vertical {
+      .horseLamp_list {
+        .custom-item {
+          color: $noticebar-color;
+        }
+      }
     }
   }
 }
 .nut-noticebar {
+  width: 100%;
   .nut-noticebar-page {
     display: flex;
     padding: $noticebar-box-padding;
@@ -108,7 +115,16 @@
     font-size: $noticebar-font-size;
     overflow: hidden;
     padding: $noticebar-box-padding;
-
+    background: $noticebar-background;
+    color: $noticebar-color;
+    .left-icon {
+      height: $noticebar-left-icon-width;
+      min-width: $noticebar-left-icon-width;
+      margin: $noticebar-lefticon-margin;
+      background-size: 100% 100%;
+      display: flex;
+      align-self: center;
+    }
     .horseLamp_list {
       margin: 0;
       padding: 0;
@@ -118,12 +134,24 @@
         display: flex;
         align-items: center;
         height: $noticebar-height;
+        width: 100%;
       }
+    }
+    .nut-noticebar__inner {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      flex-direction: column;
     }
 
     .go {
       align-self: center;
       display: flex;
+      justify-content: center;
+      width: $noticebar-right-icon-width;
+      margin: $noticebar-righticon-margin;
     }
   }
 }

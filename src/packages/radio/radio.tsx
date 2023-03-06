@@ -5,17 +5,17 @@ import React, {
   useEffect,
   useState,
 } from 'react'
-import Icon from '@/packages/icon'
+import { CheckChecked, CheckNormal } from '@nutui/icons-react'
 
 import RadioContext from './context'
 import RadioGroup from '@/packages/radiogroup'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type Shape = 'button' | 'round'
 type Position = 'right' | 'left'
 
-export interface RadioProps extends IComponent {
+export interface RadioProps extends BasicComponent {
   className: string
   style: React.CSSProperties
   disabled: boolean
@@ -23,8 +23,8 @@ export interface RadioProps extends IComponent {
   shape: Shape
   textPosition: Position
   value: string | number | boolean
-  iconName: string
-  iconActiveName: string
+  iconName: React.ReactNode
+  iconActiveName: React.ReactNode
   iconSize: string | number
   onChange: MouseEventHandler<HTMLDivElement>
 }
@@ -91,7 +91,9 @@ export const Radio: FunctionComponent<
     return (
       <div
         className={`${componentName}__button ${
-          checkedStatement && `${componentName}__button--active`
+          !disabledStatement &&
+          checkedStatement &&
+          `${componentName}__button--active`
         } ${disabledStatement ? `${componentName}__button--disabled` : ''}`}
       >
         {children}
@@ -110,24 +112,44 @@ export const Radio: FunctionComponent<
   const renderIcon = () => {
     const { iconName, iconSize, iconActiveName } = props
 
-    return (
-      <Icon
-        classPrefix={iconClassPrefix}
-        fontClassName={iconFontClassName}
-        name={checkedStatement ? iconActiveName : iconName}
-        size={iconSize}
-        className={color()}
-      />
+    if (!disabledStatement && checkedStatement) {
+      return React.isValidElement(iconActiveName) ? (
+        React.cloneElement<any>(iconActiveName, {
+          size: iconSize,
+          className: color(),
+        })
+      ) : (
+        <CheckChecked width={iconSize} height={iconSize} className={color()} />
+      )
+    }
+    return React.isValidElement(iconName) ? (
+      React.cloneElement<any>(iconName, {
+        size: iconSize,
+        className: color(),
+      })
+    ) : (
+      <CheckNormal width={iconSize} height={iconSize} className={color()} />
     )
   }
+  const reverseState = textPosition === 'left'
   const renderRadioItem = () => {
     if (shape === 'button') {
       return renderButton()
     }
     if (reverseState) {
-      return [renderLabel(), renderIcon()]
+      return (
+        <>
+          {renderLabel()}
+          {renderIcon()}
+        </>
+      )
     }
-    return [renderIcon(), renderLabel()]
+    return (
+      <>
+        {renderIcon()}
+        {renderLabel()}
+      </>
+    )
   }
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
     if (disabledStatement || checkedStatement) return
@@ -135,9 +157,15 @@ export const Radio: FunctionComponent<
     onChange && onChange(e)
     context && context.onChange(valueStatement)
   }
-  const reverseState = textPosition === 'left'
+
   return (
-    <div className={`nut-radio ${className}`} onClick={handleClick} {...rest}>
+    <div
+      className={`nut-radio ${className} ${
+        reverseState ? `${componentName}--reverse` : ''
+      }`}
+      onClick={handleClick}
+      {...rest}
+    >
       {renderRadioItem()}
     </div>
   )

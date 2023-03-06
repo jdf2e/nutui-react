@@ -7,6 +7,7 @@
 ### 安装
 
 ```javascript
+// react
 import { Range } from '@nutui/nutui-react';
 ```
 
@@ -18,7 +19,7 @@ import { Range } from '@nutui/nutui-react';
 
 ```tsx
 import  React from "react";
-import { Range,Cell } from '@nutui/nutui-react';
+import { Range, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const cellStyle = {
@@ -28,6 +29,45 @@ const App = () => {
     <>
         <Cell style={cellStyle}>
             <Range modelValue={40} />
+        </Cell>
+    </>
+    )
+};
+
+export default App;
+```
+:::
+
+
+### 自定义描述
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Range,Cell,Toast } from '@nutui/nutui-react';
+
+const App = () => {
+    const [value, SetValue] = useState(40)
+    const change = (value: number, name?: string) => {
+        Toast.text(`当前值：${value}`)
+        SetValue(value)
+    }
+    const cellStyle = {
+        padding: '40px 18px',
+    }
+    return (
+    <>
+        <Cell style={cellStyle}>
+           <Range
+            modelValue={value}
+            minDesc="0%"
+            maxDesc="100%"
+            curValueDesc={`${value}%`}
+            onChange={(value) => {
+              change(value)
+            }}
+          />
         </Cell>
     </>
     )
@@ -58,7 +98,7 @@ const App = () => {
         <Range
             range
             modelValue={value0}
-            change={(value) => {
+            onChange={(value) => {
                 change(value)
             }}
         />
@@ -92,7 +132,7 @@ const App = () => {
             modelValue={0}
             max={10}
             min={-10}
-            change={(value) => {
+            onChange={(value) => {
                 change(value)
             }}
             />
@@ -127,7 +167,7 @@ const App = () => {
         <Range
             modelValue={value1}
             step={5}
-            change={(value: any) => {
+            onChange={(value: any) => {
                 change(value, 'value1')
             }}
             />
@@ -145,7 +185,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React, {useState} from "react";
+import  React  from "react";
 import { Range,Cell,Toast } from '@nutui/nutui-react';
 
 const App = () => {
@@ -161,7 +201,7 @@ const App = () => {
         <Range
             modelValue={30}
             hiddenRange
-            change={(value: any) => {
+            onChange={(value: any) => {
                 change(value)
             }}
             />
@@ -179,7 +219,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React, {useState} from "react";
+import  React from "react";
 import { Range,Cell,Toast } from '@nutui/nutui-react';
 
 const App = () => {
@@ -195,7 +235,7 @@ const App = () => {
         <Range
             modelValue={20}
             hiddenTag
-            change={(value: any) => {
+            onChange={(value: any) => {
                 change(value)
             }}
             />
@@ -213,7 +253,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React, {useState} from "react";
+import  React from "react";
 import { Range,Cell,Toast } from '@nutui/nutui-react';
 
 const App = () => {
@@ -229,7 +269,7 @@ const App = () => {
         <Range
             modelValue={50}
             disabled
-            change={(value: any) => {
+            onChange={(value: any) => {
                 change(value)
             }}
             />
@@ -246,7 +286,7 @@ export default App;
 :::demo
 
 ```tsx
-import  React, {useState} from "react";
+import  React from "react";
 import { Range,Cell,Toast } from '@nutui/nutui-react';
 
 const App = () => {
@@ -264,7 +304,7 @@ const App = () => {
             inactiveColor="rgba(163,184,255,1)"
             buttonColor="rgba(52,96,250,1)"
             activeColor="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-            change={(value: number) => {
+            onChange={(value: number) => {
                 change(value)
             }}
             />
@@ -301,7 +341,7 @@ const App = () => {
         <Range
             modelValue={value2}
             button={<div className="range-custom-button">{value2}</div>}
-            change={(value: number) => {
+            onChange={(value: number) => {
                 change(value, 'value2')
             }}
             />
@@ -350,8 +390,8 @@ const App = () => {
         <Range
             modelValue={value3}
             vertical
-            change={(value: number) => {
-            change(value, 'value3')
+            onChange={(value: number) => {
+               change(value, 'value3')
             }}
         />
         </div>
@@ -360,8 +400,8 @@ const App = () => {
             modelValue={value4}
             vertical
             range
-            change={(value: number) => {
-            change(value, 'value4')
+            onChange={(value: number) => {
+               change(value, 'value4')
             }}
         />
         </div>
@@ -426,7 +466,7 @@ const App = () => {
             modelValue={value5}
             hiddenRange
             marks={marks}
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value, 'value5')
             }}
           />
@@ -436,7 +476,7 @@ const App = () => {
             modelValue={value6}
             marks={marks}
             range
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value, 'value6')
             }}
           />
@@ -447,7 +487,7 @@ const App = () => {
             vertical
             hiddenRange
             marks={marks}
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value, 'value7')
             }}
           />
@@ -456,7 +496,7 @@ const App = () => {
             vertical
             marks={marks}
             range
-            change={(value: number) => {
+            onChange={(value: number) => {
               change(value, 'value8')
             }}
           />
@@ -472,32 +512,52 @@ export default App;
 
 ### Props
 
-| 参数          | 说明               | 类型             | 默认值                   |
-| ------------- | -------------------- | ---------------- | ------------------------ |
-| modelValue    | 当前进度百分比     | Number、Number[] | `0`                      |
-| range         | 是否开启双滑块模式 | Boolean          | `false`                  |
-| max           | 最大值             | Number、String   | `100`                    |
-| min           | 最小值             | Number、String   | `0`                      |
-| step          | 步长               | Number、String   | `1`                      |
-| disabled      | 是否禁用滑块       | Boolean          | `false`                  |
-| vertical | 是否竖向展示 | Boolean | `false` |
-| hiddenRange   | 是否隐藏范围值     | Boolean          | `false`                  |
-| hiddenTag     | 是否隐藏标签       | Boolean          | `false`                  |
-| activeColor   | 进度条激活态颜色   | String           | `rgba(250, 44, 25, 1)`   |
-| inactiveColor | 进度条非激活态颜色 | String           | `rgba(255, 163, 154, 1)` |
-| buttonColor   | 按钮颜色           | String           | `rgba(250, 44, 25, 1)`   |
-| marks | 刻度标示 | Object{key: number}    | {} |
+| 参数          | 说明                 | 类型             | 默认值                   |
+| ------------- | ------------------- | ---------------- | ------------------------ |
+| modelValue    | 当前进度百分比     | number \| number[] | `0`                      |
+| range         | 是否开启双滑块模式 | boolean          | `false`                  |
+| max           | 最大值             | number \| string   | `100`                    |
+| min           | 最小值             | number \| string   | `0`                      |
+| maxDesc`v1.3.12`     | 最大值描述          | number \| string   | -                    |
+| minDesc`v1.3.12`     | 最小值描述          | number \| string   | -                      |
+| curValueDesc`v1.3.12` | 当前值描述          | number \| string   | -                    |
+| step          | 步长               | number \| string   | `1`                      |
+| disabled      | 是否禁用滑块       | boolean          | `false`                  |
+| vertical`v1.2.2` | 是否竖向展示 | boolean | `false` |
+| hiddenRange   | 是否隐藏范围值     | boolean          | `false`                  |
+| hiddenTag     | 是否隐藏标签       | boolean          | `false`                  |
+| activeColor   | 进度条激活态颜色   | string           | `rgba(250, 44, 25, 1)`   |
+| inactiveColor | 进度条非激活态颜色 | string           | `rgba(255, 163, 154, 1)` |
+| buttonColor   | 按钮颜色           | string           | `rgba(250, 44, 25, 1)`   |
+| marks`v1.2.2` | 刻度标示| Object{key: number}    | `{}` |
 
 ### Events
 
 | 事件名    | 说明                     | 回调参数        |
 | --------- | ------------------------ | --------------- |
-| change    | 进度变化且结束拖动后触发 | value: 当前进度 |
-| dragStart | 开始拖动时触发           | -               |
-| dragEnd   | 结束拖动时触发           | -               |
+| onChange `v1.3.8`   | 进度变化且结束拖动后触发 | value: 当前进度 |
+| onDragStart `v1.3.8` | 开始拖动时触发           | -               |
+| onDragEnd `v1.3.8`  | 结束拖动时触发           | -               |
 
 ### Slots
 
 | 名称   | 说明           |
 | ------ | -------------- |
 | button | 自定义滑动按钮 |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-range-tip-font-color | `$gray1` |
+| --nutui-range-bg-color | `rgba(#fa2c19, 0.5)` |
+| --nutui-range-bg-color-tick | `#fa958c` |
+| --nutui-range-bar-btn-bg-color | `$white` |
+| --nutui-range-bar-btn-width | `24px` |
+| --nutui-range-bar-btn-height | `24px` |
+| --nutui-range-bar-btn-border | `1px solid $primary-color` |

@@ -7,6 +7,7 @@
 ### 安装
 
 ```javascript
+// react
 import { Empty } from '@nutui/nutui-react'
 ```
 
@@ -85,14 +86,14 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import { Empty } from '@nutui/nutui-react';
+import { Empty, Button } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <Empty image="error" description="加载失败">
-        <div style="margin-top: 10px">
-            <nut-button icon="refresh" type="primary">重试</nut-button>
-        </div>
+      <div style={{marginTop: "10px"}}>
+        <Button icon="refresh" type="primary">重试</Button>
+      </div>
     </Empty>
   );
 };
@@ -105,8 +106,23 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| image         | 图片类型，可选值为 error network empty，支持传入图片 URL              | ReactNode       |
-| imageSize        | 图片大小，Number 类型单位为 px                         | Number \| String | -       |
+| image         | 图片类型，可选值为 `error` `network` `empty`，支持传入图片 URL              | string \| ReactNode       | `empty` |
+| imageSize        | 图片大小，number 类型单位为 px                         | number \| string | -       |
 | description         | 图片下方的描述文字 | ReactNode | 无数据                |
 
 
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-empty-padding | `32px 0` |
+| --nutui-empty-image-size | `170px` |
+| --nutui-empty-description-margin-top | `4px` |
+| --nutui-empty-description-color | `#666666` |
+| --nutui-empty-description-font-size | `14px` |
+| --nutui-empty-description-line-height | `20px` |
+| --nutui-empty-description-padding | `0 40px` |

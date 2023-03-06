@@ -124,5 +124,8 @@ const zhCN: BaseLang = {
     refreshingText: '加载中...',
     completeText: '刷新成功',
   },
+  watermark: {
+    errorCanvasTips: '当前环境不支持Canvas',
+  },
 }
 export default zhCN

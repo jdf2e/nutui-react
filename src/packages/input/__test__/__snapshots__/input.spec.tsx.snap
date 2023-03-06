@@ -4,8 +4,6 @@ exports[`input props test 1`] = `
 <div>
   <div
     class="nut-input nut-input-border  "
-    iconclassprefix="nut-icon"
-    iconfontclassname="nutui-iconfont"
   >
     <div
       class="nut-input-label "
@@ -21,16 +19,21 @@ exports[`input props test 1`] = `
       class="nut-input-value"
     >
       <div
-        class="nut-input-inner"
+        class="nut-input-main-con"
       >
-        <input
-          class="input-text"
-          maxlength="9999"
-          placeholder="请输入文字"
-          style="text-align: left;"
-          type="text"
-          value="初始文本"
-        />
+        <div
+          class="nut-input-inner"
+        >
+          <input
+            class="input-text"
+            maxlength="9999"
+            name="text"
+            placeholder="请输入文字"
+            style="text-align: left;"
+            type="text"
+            value="初始文本"
+          />
+        </div>
       </div>
     </div>
   </div>

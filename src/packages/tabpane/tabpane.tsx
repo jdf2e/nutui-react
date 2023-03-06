@@ -3,12 +3,16 @@ import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 
+interface TabPanelInnerProps {
+  autoHeightClassName: string
+}
+
 export interface TabPaneProps {
   title: string | number
   paneKey: string | number
   activeKey: string | number
   disabled: boolean
-  autoHeightClassName: string
+  className: string
   children?: React.ReactNode
 }
 
@@ -19,8 +23,17 @@ const defaultProps = {
   disabled: false,
 } as TabPaneProps
 
-export const TabPane: FunctionComponent<Partial<TabPaneProps>> = (props) => {
-  const { children, paneKey, activeKey, autoHeightClassName } = {
+export const TabPane: FunctionComponent<
+  Partial<TabPaneProps & TabPanelInnerProps>
+> = (props) => {
+  const {
+    children,
+    paneKey,
+    activeKey,
+    autoHeightClassName,
+    className,
+    disabled,
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -28,11 +41,12 @@ export const TabPane: FunctionComponent<Partial<TabPaneProps>> = (props) => {
   const b = bem('tabpane')
   const classes = classNames(
     {
-      active: paneKey === activeKey,
+      active: !disabled && paneKey === activeKey,
     },
     b(''),
-    autoHeightClassName
+    autoHeightClassName,
+    className
   )
 
-  return <div className={classes}>{children}</div>
+  return <div className={classes}>{!disabled && children}</div>
 }

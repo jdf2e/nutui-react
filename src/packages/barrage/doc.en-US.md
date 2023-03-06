@@ -7,6 +7,7 @@ It is used for the rotation display of words and phrases, which is suitable for 
 ### Install
 
 ``` ts
+// react
 import { Barrage } from '@nutui/nutui-react';
 ```
 
@@ -58,14 +59,14 @@ export default App;
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| barrageList         | Barrage list data               | Array | []              |
-| frequency        | The time interval between the occurrence of each barrage in the visual area                         | Number | 500               |
-| speeds         | Rolling time of each barrage | Number |  2000               |
-| rows  | The number of bullet screen lines is displayed in several lines     | Number | 1 |
-| top  | Vertical distance of barrage    | Number | 10 |
-| loop  | Loop play     | Boolean | true |
+| barrageList         | Barrage list data               | Array | `[]`              |
+| frequency        | The time interval between the occurrence of each barrage in the visual area                         | number | `500`               |
+| speeds         | Rolling time of each barrage | number |  `2000`               |
+| rows  | The number of bullet screen lines is displayed in several lines     | number | `1` |
+| top  | Vertical distance of barrage    | number | `10` |
+| loop  | Loop play     | boolean | `true` |
 
-### Events
+### Events API
 
 | Event | Description           | Arguments     |
 |--------|----------------|--------------|

@@ -7,6 +7,7 @@
 ### 安装
 
 ```ts
+// react
 import { Switch } from '@nutui/nutui-react';
 ```
 
@@ -51,7 +52,7 @@ export default App;
 ```
 :::
 
-### change事件
+### onChange事件
 
 :::demo
 ```tsx
@@ -59,12 +60,12 @@ import  React from "react";
 import { Switch } from '@nutui/nutui-react';
 
 const App = () => {
-  const change = (value: boolean, event: Event) => {
-    alert(`触发了change事件，开关状态：${value}`)
+  const onChange = (value: boolean, event: Event) => {
+    alert(`触发了onChange事件，开关状态：${value}`)
   }
   return ( 
     <>   
-    <Switch change={(value, event) => change(value, event)} />
+    <Switch onChange={(value, event) => onChange(value, event)} />
     </>
   );
 };  
@@ -82,7 +83,7 @@ import { Switch } from '@nutui/nutui-react';
 const App = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
   
-  const changeAsync = (value: boolean, event: Event) => {
+  const onChangeAsync = (value: boolean, event: Event) => {
     alert(`2秒后异步触发 ${value}`)
     setTimeout(() => {
       setCheckedAsync(value)
@@ -93,7 +94,7 @@ const App = () => {
     <Switch
       checked={checkedAsync}
       isAsync
-      change={(value, event) => changeAsync(value, event)}
+      onChange={(value, event) => onChangeAsync(value, event)}
      />
     </>
   );
@@ -148,17 +149,37 @@ export default App;
 
 | 参数           | 说明             | 类型    | 默认值                |
 |----------------|------------------|---------|-----------------------|
-| checked        | 开关状态         | Boolean | `false`               |
-| disable        | 禁用状态         | Boolean | `false`               |
-| activeColor   | 打开时的背景颜色 | String  | `#fa2c19`    |
-| inactiveColor | 关闭时的背景颜色 | String  | `#ebebeb` |
-| activeText    | 打开时文字描述   | String  | -                     |
-| inactiveText  | 关闭时文字描述   | String  | -                     |
-| isAsync  | 开关状态是否异步修改   | Boolean  | `false`                     |
+| checked        | 开关状态         | boolean | `false`               |
+| disable        | 禁用状态         | boolean | `false`               |
+| activeColor   | 打开时的背景颜色 | string  | `#fa2c19`    |
+| inactiveColor | 关闭时的背景颜色 | string  | `#ebebeb` |
+| activeText    | 打开时文字描述   | string  | -                     |
+| inactiveText  | 关闭时文字描述   | string  | -                     |
+| isAsync  | 开关状态是否异步修改   | boolean  | `false`                     |
 
 
 ### Events
 
 | 事件名 | 说明           | 回调参数                      |
 |--------|----------------|-------------------------------|
-| change | 切换开关时触发 | (value: boolean,event: Event) |
+| onChange `v1.3.8` | 切换开关时触发 | `value: boolean, event: Event` |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-switch-close-bg-color | `#ebebeb` |
+| --nutui-switch-close--line-bg-color | `#f0f0f0` |
+| --nutui-switch-width | `36px` |
+| --nutui-switch-height | `21px` |
+| --nutui-switch-line-height | `21px` |
+| --nutui-switch-border-radius | `21px` |
+| --nutui-switch-inside-width | `13px` |
+| --nutui-switch-inside-height | `13px` |
+| --nutui-switch-inside-open-transform | `translateX(146%)` |
+| --nutui-switch-inside-close-transform | `translateX(30%)` |

@@ -109,20 +109,20 @@ const IconDemo = () => {
           <Icon name="JD" color="#fa2c19" />
         </Cell>
         <h2>{translated['7aeb5407']}</h2>
-        <Cell>
-          <Icon name="dongdong" />
-          <Icon name="dongdong" size="24" />
+        <Cell style={{ alignItems: 'center' }}>
           <Icon name="dongdong" size="16" />
+          <Icon name="dongdong" size="20" />
+          <Icon name="dongdong" size="24" />
         </Cell>
         {icons.data.map((item, index) => {
           return (
-            <CellGroup key={index} title={item.name}>
+            <CellGroup key={item.name} title={item.name}>
               <Cell>
                 <ul>
                   {item.icons.map((icon) => {
                     return (
                       <li
-                        key={icon}
+                        key={Math.random()}
                         onClick={() => copyTag(generateCopyText(icon))}
                       >
                         <Icon name={icon} />
@@ -137,7 +137,7 @@ const IconDemo = () => {
         })}
         {icons.style.map((item, index) => {
           return (
-            <CellGroup key={index} title={item.name}>
+            <CellGroup key={item.name} title={item.name}>
               <Cell>
                 <ul>
                   {item.icons.map((icon) => {

@@ -5,9 +5,9 @@ import React, {
   useState,
   createContext,
 } from 'react'
-import { useGesture } from '@use-gesture/react'
-import { animated } from '@react-spring/web'
-import Taro from '@tarojs/taro'
+import { nextTick, createSelectorQuery } from '@tarojs/taro'
+
+import { ScrollView } from '@tarojs/components'
 import bem from '@/utils/bem'
 
 export const elevatorContext = createContext({} as ElevatorData)
@@ -32,7 +32,7 @@ const defaultProps = {
   isSticky: false,
   spaceHeight: 23,
   titleHeight: 35,
-  className: '',
+  className: 'weapp-elevator',
 } as ElevatorProps
 interface ElevatorData {
   name: string
@@ -41,7 +41,7 @@ interface ElevatorData {
 }
 export const Elevator: FunctionComponent<
   Partial<ElevatorProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+> & { Context: typeof elevatorContext } = (props) => {
   const {
     height,
     acceptKey,
@@ -63,7 +63,7 @@ export const Elevator: FunctionComponent<
   const initData = {
     anchorIndex: 0,
     listHeight: [] as number[],
-    listGroup: [] as Element[],
+    listGroup: [] as any[],
     scrollY: 0,
     diff: -1,
     fixedTop: 0,
@@ -81,6 +81,7 @@ export const Elevator: FunctionComponent<
   const [codeIndex, setCodeIndex] = useState<number>(0)
   const [scrollStart, setScrollStart] = useState<boolean>(false)
   const state = useRef(initData)
+  const [scrollTop, setScrollTop] = useState(0)
   // 重置滚动参数
   const resetScrollState = () => {
     setScrollStart(false)
@@ -90,9 +91,11 @@ export const Elevator: FunctionComponent<
     return listview.current ? listview.current.clientHeight : 0
   }
 
-  const getData = (el: HTMLElement, name: string): string | void => {
-    const prefix = 'data-'
-    return el.getAttribute(prefix + name) as string
+  const getData = (el: HTMLElement): string | void => {
+    if (!el.dataset.index) {
+      return '0'
+    }
+    return el.dataset.index as string
   }
 
   const calculateHeight = () => {
@@ -100,9 +103,16 @@ export const Elevator: FunctionComponent<
 
     state.current.listHeight.push(height)
     for (let i = 0; i < state.current.listGroup.length; i++) {
-      const item = state.current.listGroup[i]
-      height += item.clientHeight
-      state.current.listHeight.push(height)
+      const query = createSelectorQuery()
+      query
+        .selectAll(`.${className} .elevator__item__${i}`)
+        .boundingClientRect()
+      // eslint-disable-next-line no-loop-func
+      query.exec((res: any) => {
+        if (res[0][0]) height += res[0][0].height
+        // console.log(res, res[0][0].height, height, 'res')
+        state.current.listHeight.push(height)
+      })
     }
   }
 
@@ -124,31 +134,37 @@ export const Elevator: FunctionComponent<
     }
 
     setCodeIndex(cacheIndex)
-    if (listview.current) {
-      listview.current.scrollTo(0, state.current.listHeight[cacheIndex])
-    }
+    setScrollTop(state.current.listHeight[cacheIndex])
   }
 
-  const bind = useGesture({
-    onDragStart: ({ target, offset }) => {
-      setScrollStart(true)
-      const index = Number(getData(target as HTMLElement, 'index'))
-      touchState.current.y1 = offset[1]
-      state.current.anchorIndex = +index
-      setCodeIndex((codeIndex) => codeIndex + index)
-      scrollTo(index)
-    },
-    onDragEnd: ({ offset }) => {
-      touchState.current.y2 = offset[1]
-      const delta =
-        (touchState.current.y2 - touchState.current.y1) / spaceHeight || 0
-      // delta 是一个浮点数, 需要四舍五入一下, 否则页面会找不到最终计算后的index
-      const cacheIndex = state.current.anchorIndex + Math.ceil(delta)
-      setCodeIndex(cacheIndex)
-      scrollTo(cacheIndex)
-      resetScrollState()
-    },
-  })
+  const touchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    const firstTouch = e.touches[0]
+    touchState.current.y2 = firstTouch.pageY
+    const delta =
+      (touchState.current.y2 - touchState.current.y1) / spaceHeight || 0
+    const cacheIndex = state.current.anchorIndex + Math.floor(delta)
+
+    setCodeIndex(cacheIndex)
+    scrollTo(cacheIndex)
+  }
+
+  const touchEnd = () => {
+    resetScrollState()
+  }
+
+  const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setScrollStart(true)
+    const index = Number(getData(e.target as HTMLElement))
+
+    const firstTouch = e.touches[0]
+    touchState.current.y1 = firstTouch.pageY
+    state.current.anchorIndex = +index
+    setCodeIndex((codeIndex) => {
+      return codeIndex + index
+    })
+
+    scrollTo(index)
+  }
 
   const handleClickItem = (key: string, item: ElevatorData) => {
     onClickItem && onClickItem(key, item)
@@ -162,24 +178,24 @@ export const Elevator: FunctionComponent<
 
   const setListGroup = () => {
     if (listview.current) {
-      const query = Taro.createSelectorQuery()
-      query.selectAll('.nut-elevator__list__item')
-      query.exec((el: Element) => {
-        if (el != null && !state.current.listGroup.includes(el)) {
-          state.current.listGroup.push(el)
-        }
-      })
+      createSelectorQuery()
+        .selectAll(`.${className} .nut-elevator__list__item`)
+        .node((el) => {
+          state.current.listGroup = [...Object.keys(el)]
+          calculateHeight()
+        })
+        .exec()
     }
   }
 
-  const listViewScroll = (e: Event) => {
+  const listViewScroll = (e: any) => {
     const { listHeight } = state.current
     if (!listHeight.length) {
       calculateHeight()
     }
     const target = e.target as Element
     const { scrollTop } = target
-    state.current.scrollY = scrollTop
+    state.current.scrollY = Math.floor(scrollTop)
     setScrollY(scrollTop)
     for (let i = 0; i < listHeight.length - 1; i++) {
       const height1 = listHeight[i]
@@ -196,8 +212,9 @@ export const Elevator: FunctionComponent<
 
   useEffect(() => {
     if (listview.current) {
-      setListGroup()
-      listview.current.addEventListener('scroll', listViewScroll)
+      nextTick(() => {
+        setListGroup()
+      })
     }
   }, [listview])
 
@@ -212,9 +229,8 @@ export const Elevator: FunctionComponent<
     if (state.current.fixedTop === fixedTop) return
     state.current.fixedTop = fixedTop
   }, [state.current.diff, titleHeight])
-
   return (
-    <div className={`${b()} ${className}`} {...rest}>
+    <div className={`${b()} ${className} `} {...rest}>
       {isSticky && scrollY > 0 ? (
         <div className={b('list__fixed')}>
           <span className="fixed-title">
@@ -226,10 +242,19 @@ export const Elevator: FunctionComponent<
         className={b('list')}
         style={{ height: Number.isNaN(+height) ? height : `${height}px` }}
       >
-        <div className={b('list__inner')} ref={listview}>
+        <ScrollView
+          scrollTop={scrollTop}
+          scrollY
+          className={b('list__inner')}
+          ref={listview}
+          onScroll={listViewScroll}
+        >
           {indexList.map((item: any, idx: number) => {
             return (
-              <div className={b('list__item')} key={idx}>
+              <div
+                className={`${b('list__item')} elevator__item__${idx}`}
+                key={idx}
+              >
                 <div className={b('list__item__code')}>{item[acceptKey]}</div>
                 <>
                   {item.list.map((subitem: ElevatorData) => {
@@ -261,7 +286,7 @@ export const Elevator: FunctionComponent<
               </div>
             )
           })}
-        </div>
+        </ScrollView>
       </div>
       {indexList.length && scrollStart ? (
         <div className={b('code--current', { current: true })}>
@@ -269,18 +294,20 @@ export const Elevator: FunctionComponent<
         </div>
       ) : null}
       <div className={b('bars')}>
-        <animated.div
+        <div
           className={b('bars__inner')}
-          {...bind()}
+          onTouchStart={(event) => touchStart(event)}
+          onTouchMove={(event) => touchMove(event)}
+          onTouchEnd={touchEnd}
           style={{ touchAction: 'pan-y' }}
         >
           {indexList.map((item: any, index: number) => {
             return (
               <div
-                className={b('bars__inner__item', {
+                className={`${b('bars__inner__item', {
                   active:
                     item[acceptKey] === indexList[currentIndex][acceptKey],
-                })}
+                })} `}
                 data-index={index}
                 key={index}
                 onClick={() => handleClickIndex(item[acceptKey])}
@@ -289,7 +316,7 @@ export const Elevator: FunctionComponent<
               </div>
             )
           })}
-        </animated.div>
+        </div>
       </div>
     </div>
   )
@@ -297,3 +324,4 @@ export const Elevator: FunctionComponent<
 
 Elevator.defaultProps = defaultProps
 Elevator.displayName = 'NutElevator'
+Elevator.Context = elevatorContext

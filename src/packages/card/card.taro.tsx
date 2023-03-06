@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import classNames from 'classnames'
 import Price from '@/packages/price/index.taro'
 import Tag from '@/packages/tag/index.taro'
 
@@ -44,7 +45,7 @@ export const Card: FunctionComponent<
   }
   const b = bem('card')
   return (
-    <div className={`${b()} ${className}`} style={style} {...rest}>
+    <div className={classNames(b(), className)} style={style} {...rest}>
       <div className={b('left')}>
         <img src={imgUrl} alt="" />
       </div>

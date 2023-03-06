@@ -1,6 +1,10 @@
 import React, { CSSProperties, FunctionComponent } from 'react'
+import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import bem from '@/utils/bem'
+
+import GridContext from './grid.taro.context'
+import { GridItemProps } from '../griditem/griditem.taro'
 
 export type GridDirection = 'horizontal' | 'vertical'
 
@@ -16,6 +20,7 @@ export interface GridProps {
   iconSize?: string | number
   iconColor?: string
   style?: CSSProperties
+  onClick: (item: GridItemProps, index: number) => void
 }
 
 const defaultProps = {
@@ -31,7 +36,7 @@ const defaultProps = {
 } as GridProps
 
 export const Grid: FunctionComponent<
-  Partial<GridProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<GridProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const { locale } = useConfig()
   const {
@@ -47,6 +52,7 @@ export const Grid: FunctionComponent<
     iconSize,
     iconColor,
     className,
+    onClick,
     ...rest
   } = { ...defaultProps, ...props }
   const childrenDom = React.Children.toArray(children)
@@ -59,9 +65,9 @@ export const Grid: FunctionComponent<
 
   const rootClass = () => {
     const prefixCls = b()
-    return `${className} ${prefixCls} ${
-      border && !gutter ? `${b('border')}` : ''
-    }`
+    return classNames(className, prefixCls, {
+      [b('border')]: border && !gutter,
+    })
   }
 
   const rootStyle = () => {
@@ -78,20 +84,22 @@ export const Grid: FunctionComponent<
 
   return (
     <div className={rootClass()} style={rootStyle()} {...rest}>
-      {childrenDom.map((item: any, idex: number) => {
-        return React.cloneElement(item, {
-          index: idex,
-          columnNum,
-          center,
-          border,
-          gutter,
-          square,
-          reverse,
-          direction,
-          parentIconSize: iconSize,
-          parentIconColor: iconColor,
-        })
-      })}
+      <GridContext.Provider value={{ onClick }}>
+        {childrenDom.map((item: any, idex: number) => {
+          return React.cloneElement(item, {
+            index: idex,
+            columnNum,
+            center,
+            border,
+            gutter,
+            square,
+            reverse,
+            direction,
+            parentIconSize: iconSize,
+            parentIconColor: iconColor,
+          })
+        })}
+      </GridContext.Provider>
     </div>
   )
 }

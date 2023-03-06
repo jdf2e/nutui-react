@@ -5,6 +5,7 @@ import React, {
   useCallback,
   MouseEventHandler,
   useContext,
+  useState,
 } from 'react'
 // import { SubSideNavBarProps } from '../sidenavbar/type'
 import { handleClick } from '../sidenavbar/utils'
@@ -15,7 +16,7 @@ export type SubSideNavBarProps = {
   ikey: string | number
   open?: boolean
   children?: React.ReactNode
-  titleClick?: ({
+  onClick?: ({
     title,
     ikey,
     isShow,
@@ -29,19 +30,18 @@ const defaultProps = {
   open: true,
 } as SubSideNavBarProps
 export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
-  const { title, ikey, children, titleClick, open, ...rest } = {
+  const { title, ikey, children, onClick, open, ...rest } = {
     ...defaultProps,
     ...props,
   }
-  // const offset = props.offset ? Number(props.offset) : 20
+  const [subShow, setSubShow] = useState(open)
   const offset = useContext(OffsetContext)
-  console.log('offset>>>>>>>', offset)
   const listRef = useRef<HTMLDivElement>(null)
+
   const setListLevel = useCallback(
     (nodeList: HTMLCollection, level = 1) => {
       const titleClass = nodeList[0].className
       if (titleClass.includes('nut-subsidenavbar__title')) {
-        // const left = 15 + offset * level
         const left = offset * (level + 1)
         // eslint-disable-next-line no-param-reassign
         ;(nodeList[0] as HTMLElement).style.paddingLeft = `${left}px`
@@ -54,9 +54,7 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
         )
       childNodes.forEach((item) => {
         const itemClass = item.className
-
         if (itemClass.includes('nut-subsidenavbar__item')) {
-          // const left = 15 + offset * (level + 1)
           const left = offset * (level + 2)
           // eslint-disable-next-line no-param-reassign
           ;(item as HTMLElement).style.paddingLeft = `${left}px`
@@ -74,20 +72,20 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
     [offset]
   )
   const clickFn: MouseEventHandler<HTMLDivElement> = (e) => {
-    handleClick(e)
-    const currentClass = e.currentTarget.className
-    const isShow = currentClass.includes('nutShow')
-    titleClick && titleClick({ title, ikey, isShow })
+    e.stopPropagation()
+    setSubShow(!subShow)
+    const isShow = !subShow
+    onClick && onClick({ title, ikey, isShow })
   }
   useEffect(() => {
     const childNodes = listRef.current?.children as HTMLCollection
     listRef.current?.setAttribute('level', '1')
     childNodes && setListLevel(childNodes)
   }, [setListLevel])
-  const divClass = open
+  const divClass = subShow
     ? 'nut-subsidenavbar__list  nutShow'
     : 'nut-subsidenavbar__list  nutHide'
-  const iconClass = open ? 'arrow-icon arrow-down' : 'arrow-icon arrow-up'
+  const iconClass = subShow ? 'arrow-icon arrow-down' : 'arrow-icon arrow-up'
 
   return (
     <div className={divClass} ref={listRef} onClick={clickFn} {...rest}>

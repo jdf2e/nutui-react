@@ -1,14 +1,25 @@
 @import '../icon/icon.scss';
 
+.nut-theme-dark {
+  .nut-tabbar-item {
+    color: $dark1;
+
+    &--active {
+      color: $primary-color;
+    }
+  }
+}
+
 .nut-tabbar-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   flex: 1;
   text-align: center;
   text-decoration: none;
-  color: $black;
+  color: $gray1;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   &--active {
     color: $primary-color;
@@ -27,55 +38,61 @@
       border: 1px solid $white;
       border-radius: 7px;
       text-align: center;
-      top: -2px;
-      right: -7px;
+      top: calc(50% - 6px);
+      right: calc(50% - 16px);
       box-shadow: 0 0 0 1px $white;
       font-size: $font-size-1;
-      color: $white;
+      color: $primary-text-color;
       z-index: 1;
     }
+
     &__dot {
       position: absolute;
       width: 7px;
       height: 7px;
+      border: 0;
       border-radius: 7px;
       padding: 0px;
       background: $tabbar-active-color;
-      text-align: center;
-      font-size: 12px;
-      font-weight: normal;
-      color: #fff;
-      top: 0;
-      right: 0;
+      top: $tabbar-dot-top;
+      right: calc(50% - $tabbar-dot-right);
       transform: translate(50%, -50%);
     }
 
     &__num {
       line-height: 1;
       font-size: $tabbar-item-text-font-size;
-      color: $white;
+      color: $primary-text-color;
       padding: 1px 2px 2px 3px;
+      top: calc(-50% + 6px);
+      right: calc(-50%);
     }
 
     &__nums {
       line-height: 1;
       font-size: $tabbar-item-text-font-size;
-      color: $white;
+      color: $primary-text-color;
       padding: 2px 1px 2px 2px;
+      top: calc(-50% + 6px);
+      right: calc(-50% - 8px);
     }
+
     &__icon {
       display: block;
       background-size: 100% 100%;
       background-position: center center;
     }
+
     &--nav-word {
-      font-size: $font-size-0;
-      line-height: $tabbar-item-text-line-height;
       display: block;
+      font-size: $font-size-0;
+      margin-top: $tabbar-word-margin-top;
     }
+
     &--big-word {
       font-size: $font-size-large;
-      line-height: 1;
+      margin-top: 0;
+      line-height: $tabbar-item-text-line-height;
     }
   }
 }

@@ -21,7 +21,7 @@ const defaultProps = {
   barrageList: [],
   frequency: 500,
   loop: true,
-  speeds: 2000,
+  speeds: 3000,
   rows: 3,
   top: 10,
 }
@@ -54,15 +54,26 @@ const InternalBarrage: ForwardRefRenderFunction<
   useImperativeHandle(ref, () => ({
     add: (word: string) => {
       const _index = index.current % barrageList.length
-      barrageList.splice(_index, 0, word)
+      if (!loop && index.current === barrageList.length) {
+        barrageList.splice(barrageList.length, 0, word)
+      } else {
+        barrageList.splice(_index, 0, word)
+      }
     },
   }))
 
   useEffect(() => {
     if (barrageBody.current) {
       barrageCWidth.current = barrageBody.current.offsetWidth
-      run()
     }
+    setTimeout(() => {
+      barrageBody.current?.style.setProperty(
+        '--move-distance',
+        `-${barrageCWidth.current}px`
+      )
+      index.current = 0
+      run()
+    }, 300)
     return () => {
       clearInterval(timer.current)
     }
@@ -70,15 +81,18 @@ const InternalBarrage: ForwardRefRenderFunction<
 
   const run = () => {
     clearInterval(timer.current)
-    timer.current = setInterval(() => {
+    timer.current = window.setTimeout(() => {
       play()
-      run()
     }, frequency)
   }
 
   const play = () => {
+    if (!loop && index.current >= barrageList.length) {
+      return
+    }
     const _index = loop ? index.current % barrageList.length : index.current
     const el = document.createElement(`div`)
+
     el.innerHTML = barrageList[_index] as string
     el.classList.add('barrage-item')
     ;(barrageContainer.current as HTMLDivElement).appendChild(el)
@@ -89,12 +103,12 @@ const InternalBarrage: ForwardRefRenderFunction<
     el.style.animationDuration = `${speeds}ms`
     el.style.top = `${(_index % rows) * (height + top) + 20}px`
     el.style.width = `${width}px`
-    el.style.setProperty('--move-distance', `-${barrageCWidth.current}px`)
-    el.dataset.index = `${_index}`
+
     el.addEventListener('animationend', () => {
       ;(barrageContainer.current as HTMLDivElement).removeChild(el)
     })
     index.current++
+    run()
   }
 
   return (

@@ -7,6 +7,7 @@
 ### 安裝
 
 ```javascript
+// react
 import { Elevator } from '@nutui/nutui-react'
 ```
 
@@ -377,7 +378,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Elevator, elevatorContext, Icon } from '@nutui/nutui-react'
+import { Elevator, Icon } from '@nutui/nutui-react'
 
 const App = () => {
   const dataList = [
@@ -444,7 +445,7 @@ const App = () => {
       onClickItem={(key: string, item: any) => onClickItem(key, item)}
       onClickIndex={(key: string) => onClickIndex(key)}
     >
-      <elevatorContext.Consumer>
+      <Elevator.Context.Consumer>
         {(value) => {
           return (
             <>
@@ -453,7 +454,7 @@ const App = () => {
             </>
           )
         }}
-      </elevatorContext.Consumer>
+      </Elevator.Context.Consumer>
     </Elevator>
   )
 }
@@ -468,18 +469,63 @@ export default App
 
 | 字段      | 說明           | 類型                                                        | 默認值                |
 | --------- | -------------- | ----------------------------------------------------------- | --------------------- |
-| height    | 電梯區域的高度 | Number、String                                              | `200px`               |
-| acceptKey | 索引 key 值    | String                                                      | `title`               |
+| height    | 電梯區域的高度 | number \| string                                              | `200px`               |
+| acceptKey | 索引 key 值    | string                                                      | `title`               |
 | indexList | 索引列表       | Array（item 需包含 id、name 屬性, name 支持傳入 html 結構） | `[{id: 0, name: ''}]` |
-| isSticky`v1.2.1`    | 索引是否吸頂                                                    | Boolean  | `false` |
-| spaceHeight`v1.2.1` | 右側錨點的上下間距                                                   | Number  | `23` |
-| titleHeight`v1.2.1`   | 左側索引的高度                                                     | Number  | `35` |
+| isSticky`v1.2.1`    | 索引是否吸頂                                                    | boolean  | `false` |
+| spaceHeight`v1.2.1` | 右側錨點的上下間距                                                   | number  | `23` |
+| titleHeight`v1.2.1`   | 左側索引的高度                                                     | number  | `35` |
 
 ### Event
 
 | 名稱       | 說明     | 回調參數                               |
 | ---------- | -------- | -------------------------------------- |
-| onClickItem`v1.3.2`  | 點擊內容 | key: string, item: { id: 0, name: '' } |
-| onClickIndex`v1.3.2` | 點擊索引 | key: string                            |
-| clickItem`v1.3.2(废弃)`  | 點擊內容 | key: string, item: { id: 0, name: '' } |
-| clickIndex`v1.3.2(废弃)` | 點擊索引 | key: string                            |
+| onClickItem`v1.3.2`  | 點擊內容 | `key: string, item: { id: 0, name: '' }` |
+| onClickIndex`v1.3.2` | 點擊索引 | `key: string`                            |
+| clickItem`v1.3.2 废弃`  | 點擊內容 | `key: string, item: { id: 0, name: '' }` |
+| clickIndex`v1.3.2 废弃` | 點擊索引 | `key: string`                            |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-elevator-list-inner-bg-color | `$gray6` |
+| --nutui-elevator-list-item-highcolor | `$primary-color` |
+| --nutui-elevator-list-item-font-size | `12px` |
+| --nutui-elevator-list-item-font-color | `$gray1` |
+| --nutui-elevator-list-item-name-padding | `0 20px` |
+| --nutui-elevator-list-item-name-height | `30px` |
+| --nutui-elevator-list-item-name-line-height | `30px` |
+| --nutui-elevator-list-item-code-font-size | `14px` |
+| --nutui-elevator-list-item-code-font-color | `$gray1` |
+| --nutui-elevator-list-item-code-font-weight | `500` |
+| --nutui-elevator-list-item-code-padding | `0 20px` |
+| --nutui-elevator-list-item-code-height | `35px` |
+| --nutui-elevator-list-item-code-line-height | `35px` |
+| --nutui-elevator-list-item-code-after-height | `1px` |
+| --nutui-elevator-list-item-code-after-bg-color | `#f5f5f5` |
+| --nutui-elevator-list-item-code-current-bg-color | `#fff` |
+| --nutui-elevator-list-item-code-current-width | `45px` |
+| --nutui-elevator-list-item-code-current-height | `45px` |
+| --nutui-elevator-list-item-code-current-line-height | `45px` |
+| --nutui-elevator-list-item-code-current-position | `absolute` |
+| --nutui-elevator-list-item-code-current-right | `60px` |
+| --nutui-elevator-list-item-code-current-text-align | `center` |
+| --nutui-elevator-list-item-bars-position | `absolute` |
+| --nutui-elevator-list-item-bars-right | `8px` |
+| --nutui-elevator-list-item-bars-padding | `15px 0` |
+| --nutui-elevator-list-item-bars-background-color | `#eeeff2` |
+| --nutui-elevator-list-item-bars-border-radius | `6px` |
+| --nutui-elevator-list-item-bars-text-align | `center` |
+| --nutui-elevator-list-item-bars-z-index | `1` |
+| --nutui-elevator-list-item-bars-inner-item-padding | `3px` |
+| --nutui-elevator-list-item-bars-inner-item-font-size | `10px` |
+| --nutui-elevator-list-fixed-color | `$primary-color` |
+| --nutui-elevator-list-fixed-bg-color | `$white` |
+| --nutui-elevator-list-fixed-box-shadow | `0 0 10px #eee` |
+| --nutui-elevator-list-item-bars-inner-item-active-color | `$primary-color` |

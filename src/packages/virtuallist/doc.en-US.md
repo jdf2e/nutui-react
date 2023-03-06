@@ -71,7 +71,7 @@ const App =() => {
       return [...sourceData, ...datas]
     })
   }, [])
- const handleScroll = () => {
+ const onScroll = () => {
     if (pageNo > 100) return
     setPageNo(pageNo + 1)
   }
@@ -92,7 +92,7 @@ const App =() => {
             ItemRender={ItemVariableDemo}
             itemSize={128}
             itemEqualSize={false}
-            handleScroll={handleScroll}
+            onScroll={onScroll}
           />
   </div>
   )
@@ -162,7 +162,7 @@ const App =() => {
       return [...sourceData, ...datas]
     })
   }, [])
- const handleScroll = () => {
+ const onScroll = () => {
     if (pageNo > 100) return
     setPageNo(pageNo + 1)
   }
@@ -184,7 +184,7 @@ const App =() => {
             ItemRender={ItemVariableDemo}
             horizontal
             itemEqualSize={false}
-            handleScroll={handleScroll}
+            onScroll={onScroll}
           />
   </div>
   )
@@ -199,17 +199,17 @@ export default App;
 | 参数           | 说明                               | 类型       | 默认值                                   |
 |---------------|----------------------------------|----------|---------------------------------------|
 | sourceData    | source data                      | Array    | -                                     |
-| containerSize | container height                      | Number   | Get the element offsetWidth or offsetHeight, which is given by CSS |
+| containerSize | container height                      | number   | Get the element offsetWidth or offsetHeight, which is given by CSS |
 | ItemRender    | virtual function rendered by the parent of the list               | React.FC | -                                     |
-| itemSize      | Item height, if not height, the first screen single maximum size       | String   | -                                     |
-| itemEqualSize | the sizes of items are consistent                       | Boolean  | true                                  |
-| overscan      | In addition to the default elements in the viewport, there is an additional number of items to render      | Number   | 2                                     |
-| key           | Unique value,Item(sourceData) Specifies a field with a unique value | string   | index                                 |
-| horizontal    |  horizontal or vertical                    | Boolean  | false                                 |
+| itemSize      | Item height, if not height, the first screen single maximum size       | string   | -                                     |
+| itemEqualSize | the sizes of items are consistent                       | boolean  | `true`                                  |
+| overscan      | In addition to the default elements in the viewport, there is an additional number of items to render      | number   | `2`                                     |
+| key           | Unique value,Item(sourceData) Specifies a field with a unique value | string   | `index`                                 |
+| horizontal    |  horizontal or vertical                    | boolean  | `false`                                 |
 ## Events
-| 方法名          | 说明       | 参数            | 返回值     |
-| -------------- |----------| --------------- | ---------- |
-| handleScroll   | scroll event |        -        |      -    |
+| 方法名            | 说明       | 参数            | 返回值     |
+|----------------|----------| --------------- | ---------- |
+| onScroll`v1.3.8` | scroll event |        -        |      -    |
 
 
 

@@ -5,7 +5,7 @@ const getLocale = () => {
   return locale
 }
 
-const useLocale = () => {
+const useLocale = (): [string, any] => {
   const [locale, setLocale] = useState(getLocale())
   const handlePopState = () => {
     setLocale(getLocale())
@@ -18,7 +18,6 @@ const useLocale = () => {
     //   }
     // }
   }, [])
-  console.log(2)
   return [locale, setLocale]
 }
 

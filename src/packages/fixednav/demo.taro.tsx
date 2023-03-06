@@ -1,27 +1,80 @@
 import React, { useState, MouseEvent } from 'react'
 import { FixedNav, Drag, Icon } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
 
+type TFixedNavDemo = {
+  title1: string
+  title2: string
+  title3: string
+  title4: string
+  title5: string
+  title6: string
+  home: string
+  category: string
+  cart: string
+  mine: string
+}
 const FixedNavDemo = () => {
+  const [translated] = useTranslate<TFixedNavDemo>({
+    'zh-CN': {
+      title1: '基础用法',
+      title2: '左侧收起',
+      title3: '左侧展开',
+      title4: '自定义开',
+      title5: '自定义关',
+      title6: '支持拖拽',
+      home: '首页',
+      category: '分类',
+      cart: '购物车',
+      mine: '我的',
+    },
+    'zh-TW': {
+      title1: '基礎用法',
+      title2: '左側收起',
+      title3: '左側展開',
+      title4: '自定義開',
+      title5: '自定義關',
+      title6: '支持拖拽',
+      home: '首頁',
+      category: '分類',
+      cart: '購物車',
+      mine: '我的',
+    },
+    'en-US': {
+      title1: 'Basic usage',
+      title2: 'Left collapsed',
+      title3: 'Left expansion',
+      title4: 'Custom On',
+      title5: 'Custom Off',
+      title6: 'Support drag and drop',
+      home: 'Home',
+      category: 'Category',
+      cart: 'Cart',
+      mine: 'Mine',
+    },
+  })
   const navList = [
     {
       id: 1,
-      text: '首页',
+      text: translated.home,
       icon: 'https://img11.360buyimg.com/imagetools/jfs/t1/117646/2/11112/1297/5ef83e95E81d77f05/daf8e3b1c81e3c98.png',
     },
     {
       id: 2,
-      text: '分类',
+      text: translated.category,
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/119490/8/9568/1798/5ef83e95E968c69a6/dd029326f7d5042e.png',
     },
     {
       id: 3,
-      text: '购物车',
+      text: translated.cart,
       num: 2,
       icon: 'https://img14.360buyimg.com/imagetools/jfs/t1/130725/4/3157/1704/5ef83e95Eb976644f/b36c6cfc1cc1a99d.png',
     },
     {
       id: 4,
-      text: '我的',
+      text: translated.mine,
       icon: 'https://img12.360buyimg.com/imagetools/jfs/t1/147573/29/1603/1721/5ef83e94E1393a678/5ddf1695ec989373.png',
     },
   ]
@@ -69,10 +122,11 @@ const FixedNavDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <FixedNav
           navList={navList}
-          activeText="基础用法"
+          activeText={translated.title1}
           overlay
           position={{ top: '70px' }}
           onChange={change1}
@@ -84,8 +138,8 @@ const FixedNavDemo = () => {
           type="left"
           position={{ top: '140px' }}
           visible={visible2}
-          activeText="左侧收起"
-          unActiveText="左侧展开"
+          activeText={translated.title2}
+          unActiveText={translated.title3}
           onChange={change2}
           onSelected={selected2}
         />
@@ -117,7 +171,9 @@ const FixedNavDemo = () => {
               <Icon name="retweet" color="#fff">
                 {' '}
               </Icon>
-              <span className="text">{visible4 ? '自定义开' : '自定义关'}</span>
+              <span className="text">
+                {visible4 ? translated.title4 : translated.title5}
+              </span>
             </>
           }
         />
@@ -125,7 +181,7 @@ const FixedNavDemo = () => {
         <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
           <FixedNav
             navList={navList}
-            unActiveText="支持拖拽"
+            unActiveText={translated.title6}
             visible={visible5}
             onChange={change5}
             onSelected={selected5}

@@ -7,6 +7,7 @@ Icon set based on IconFont fonts, which can be used through the Icon component.
 ### Install
 
 ``` javascript
+// react
 import { Icon } from '@nutui/nutui-react';
 ```
 
@@ -156,14 +157,28 @@ export default App;
 
 | Props        | Description                                                  | Type             | Default          |
 |--------------|-----------------------------------------------------|------------------|------------------|
-| name         | Icon name or picture link                           | String           | -                |
-| color        | Icon color                                          | String           | -                |
-| size         | Icon size, such as:  `20px` `2em` `2rem`            | String or Number | -                |
-| class-prefix | A class name prefix that is used to use custom icons | String           | `nutui-iconfont` |
-| tag          | tsx tag                                             | String           | `i`              |
+| name         | Icon name or picture link                           | string           | -                |
+| color        | Icon color                                          | string           | -                |
+| size         | Icon size, such as:  `20px` `2em` `2rem`            | string \| number | -                |
+| classPrefix | A class name prefix that is used to use custom icons | string           | `nut-iconfont` |
+| fontClassName           | Custom icon font base class name                        | string           | `nutui-iconfont`              |
+| tag          | tsx tag                                             | string           | `i`              |
 
 ### Events
 
 | Event | Description           | callback parameters |
 |-------|----------------|---------------------|
-| click | Triggered when the icon is tapped | event: Event        |
+| onClick`v1.3.8` | Triggered when the icon is tapped | `event: Event`        |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-icon-height | `20px` |
+| --nutui-icon-width | `20px` |
+| --nutui-icon-line-height | `20px` |

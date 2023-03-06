@@ -77,8 +77,6 @@ const App = () => {
         url={uploadUrl}
         defaultFileList={defaultFileList}
         onRemove={onDelete}
-        maximum="3"
-        multiple
         uploadIcon="dongdong"
       />
     </>
@@ -318,68 +316,97 @@ export default App;
 
 ### Prop
 
-| 字段              | 說明                                                                                                                                                                                   | 類型                              | 默認值           |
-|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|------------------|
-| autoUpload `v1.3.4`             | 是否在選取文件後立即進行上傳，false 時需要手動執行 ref submit 方法進行上傳                                                                                                                                       | Boolean                            | true           |
-| name              | `input` 標籤 `name` 的名稱，發到後台的文件參數名                                                                                                                                       | String                            | "file"           |
-| url               | 上傳服務器的接口地址                                                                                                                                                                   | String                            | -                |
-| defaultFileList               | 默認已經上傳的文件列表                                                                                                                                                                   | FileItem[]                            | []                |
-| isPreview        | 是否上傳成功後展示預覽圖                                                                                                                                                               | Boolean                           | true             |
-| defaultImg        | 當上傳非圖片('image')格式的默認圖片地址                                                                                                                                                               | String                           | ''             |
-| isDeletable      | 是否展示刪除按鈕                                                                                                                                                                       | Boolean                           | true             |
-| method            | 上傳請求的 http method                                                                                                                                                                 | String                            | "post"           |
-| listType `v1.3.4`            | 上傳列表的內建樣式，支持兩種基本樣式 picture、list                                                                                                                                                                 | String                            | "picture"           |
-| capture           | 圖片[選取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接調起攝像頭                                                                     | String                            | false            |
-| maximize          | 可以設定最大上傳文件的大小（字節）                                                                                                                                                     | Number丨String                    | Number.MAX_VALUE |
-| maximum           | 文件上傳數量限制                                                                                                                                                                       | Number丨String                    | 1                |
-| clearInput       | 是否需要清空`input`內容，設為`true`支持重複選擇上傳同一個文件                                                                                                                          | Boolean                           | false            |
-| accept            | 允許上傳的文件類型，[詳細說明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | String                            | *                |
-| headers           | 設置上傳的請求頭部                                                                                                                                                                     | Object                            | {}               |
-| data              | 附加上傳的信息 formData                                                                                                                                                                | Object                            | {}               |
-| uploadIcon       | 上傳區域[圖標名稱](#/zh-CN/icon)或圖片鏈接                                                                                                                                             | String                            | "photograph"     |
-| uploadIconSize `v1.3.4`       | 上傳區域[圖標尺寸](#/icon)大小，如 `20px` `2em` `2rem`                                                                                                                                             | String or Number                            | -     |
-| xhrState         | 接口響應的成功狀態（status）值                                                                                                                                                         | Number                            | 200              |
-| withCredentials  | 支持發送 cookie 憑證信息                                                                                                                                                               | Boolean                           | fasle            |
-| multiple          | 是否支持文件多選                                                                                                                                                                       | Boolean                           | fasle            |
-| disabled          | 是否禁用文件上傳                                                                                                                                                                       | Boolean                           | fasle            |
-| timeout           | 超時時間，單位為毫秒                                                                                                   | Number丨String                    | 1000 * 30                 |
-| beforeUpload `v1.3.4廢棄`     | 上傳前的函數需要返回一個`Promise`對象                                                                                                                                                  | Function                          | null             |
-| onBeforeUpload `v1.3.4`     | 上傳前的函數需要返回一個`Promise`對象                                                                                                                                                  | Function                          | null             |
-| onBeforeXhrUpload `v1.3.4`    | 執行 XHR 上傳時，自定義方式                                                                                                                                                  | Function(xhr，option)                          | null             |
-| beforeDelete `v1.3.4 廢棄`   | 除文件時的回調，返回值為 false 時不移除。支持返回一個 `Promise` 對象，`Promise` 對象 resolve(false) 或 reject 時不移除                                                                 | Function(file): boolean 丨Promise | -                |
-| onBeforeDelete `v1.3.4`   | 除文件時的回調，返回值為 false 時不移除。支持返回一個 `Promise` 對象，`Promise` 對象 resolve(false) 或 reject 時不移除                                                                 | Function(file): boolean 丨Promise | -                |
+| 字段| 說明| 類型  | 默認值|
+|-------------------|----------------|---------------------|------------------|
+| autoUpload `v1.3.4`  | 是否在選取文件後立即進行上傳，false 時需要手動執行 ref submit 方法進行上傳         | boolean | `true`|
+| name| `input` 標籤 `name` 的名稱，發到後台的文件參數名         | string | `file`|
+| url | 上傳服務器的接口地址         | string | -  |
+| defaultFileList | 默認已經上傳的文件列表         | FileItem[]| `[]`  |
+| isPreview        | 是否上傳成功後展示預覽圖     | boolean  | `true`  |
+| defaultImg        | 當上傳非圖片('image')格式的默認圖片地址     | string  | -  |
+| isDeletable      | 是否展示刪除按鈕  | boolean  | `true`  |
+| method | 上傳請求的 http method        | string    | `post`|
+| listType `v1.3.4` | 上傳列表的內建樣式，支持兩種基本樣式 picture、list      | string    | `picture`|
+| capture| 圖片[選取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接調起攝像頭| string    | `false` |
+| maximize          | 可以設定最大上傳文件的大小（字節）     | number \| string         | `Number.MAX_VALUE` |
+| maximum| 文件上傳數量限制  | number \| string         | `1`     |
+| clearInput       | 是否需要清空`input`內容，設為`true`支持重複選擇上傳同一個文件  | boolean   | `false` |
+| accept | 允許上傳的文件類型，[詳細說明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | string    | `*`     |
+| headers| 設置上傳的請求頭部| Object    | `{}`    |
+| data   | 附加上傳的信息 formData     | Object    | `{}`    |
+| uploadIcon       | 上傳區域[圖標名稱](#/zh-CN/icon)或圖片鏈接| string    | `photograph`     |
+| uploadIconSize `v1.3.4`       | 上傳區域[圖標尺寸](#/icon)大小，如 `20px` `2em` `2rem`| string \| number   | -     |
+| uploadIconTip`v1.4.9`| 上傳區域圖片下方文字| string | -|
+| xhrState         | 接口響應的成功狀態（status）值         | number   | `200`   |
+| withCredentials  | 支持發送 cookie 憑證信息    | boolean   | `fasle` |
+| multiple          | 是否支持文件多選  | boolean   | `fasle` |
+| disabled          | 是否禁用文件上傳  | boolean   | `fasle` |
+| timeout| 超時時間，單位為毫秒   | number |string         | `1000 * 30`      |
+| beforeUpload `v1.3.4廢棄`     | 上傳前的函數需要返回一個`Promise`對象  | Function  | `null`  |
+| onBeforeUpload `v1.3.4`     | 上傳前的函數需要返回一個`Promise`對象  | Function  | `null`  |
+| onBeforeXhrUpload `v1.3.4`    | 執行 XHR 上傳時，自定義方式  | Function(xhr，option)  | `null`  |
+| beforeDelete `v1.3.4 廢棄`   | 除文件時的回調，返回值為 false 時不移除。支持返回一個 `Promise` 對象，`Promise` 對象 resolve(false) 或 reject 時不移除      | Function(file): boolean \| Promise | -     |
+| onBeforeDelete `v1.3.4`   | 除文件時的回調，返回值為 false 時不移除。支持返回一個 `Promise` 對象，`Promise` 對象 resolve(false) 或 reject 時不移除      | Function(file): boolean \| Promise | -     |
 
 
 
 ### FileItem
 
-| 名稱     | 說明                                                    | 默認值                          |
-|----------|---------------------------------------------------------|---------------------------------|
-| status   | 文件狀態值，可選'ready,uploading,success,error,removed' | "ready"                         |
-| uid      | 文件的唯一標識                                          | new Date().getTime().toString() |
-| name     | 文件名稱                                                | ""                              |
-| url      | 文件路徑                                                | ""                              |
-| type     | 文件類型                                                | "image/jpeg"                    |
-| formData | 上傳所需的data                                          | new FormData()                  |
+| 名稱     | 說明    | 默認值  |
+|----------|------------------|----------------|
+| status   | 文件狀態值，可選'ready,uploading,success,error,removed' | `ready` |
+| uid      | 文件的唯一標識       | `new Date().getTime().toString()` |
+| name     | 文件名稱| -      |
+| url      | 文件路徑| -      |
+| type     | 文件類型| `image/jpeg`         |
+| formData | 上傳所需的data       | `new FormData()`       |
 
 ### Event
 
-| 名稱     | 說明                   | 回調參數             |
+| 名稱     | 說明        | 回調參數  |
 |----------|------------------------|----------------------|
-| onStart `v1.3.4`    | 文件上傳開始           | options              |
-| start `v1.3.4廢棄`    | 文件上傳開始           | options              |
-| onProgress `v1.3.4` | 文件上傳的進度         | event,options,percentage        |
-| progress `v1.3.4廢棄` | 文件上傳的進度         | event,options,percentage        |
-| onOversize `v1.3.4` | 文件大小超過限制時觸發 | files                |
-| oversize `v1.3.4廢棄` | 文件大小超過限制時觸發 | files                |
-| onSuccess `v1.3.4`  | 上傳成功               | responseText,options |
-| success `v1.3.4廢棄`  | 上傳成功               | responseText,options |
-| onFailure `v1.3.4`  | 上傳失敗               | responseText,options |
-| failure `v1.3.4廢棄`  | 上傳失敗               | responseText,options |
-| onChange `v1.3.4`   | 上傳文件改變時的狀態   | fileList,event       |
-| change `v1.3.4廢棄`   | 上傳文件改變時的狀態   | fileList,event       |
-| onRemove `v1.3.4`   | 文件刪除之前的狀態     | files,fileList       |
-| remove `v1.3.4廢棄`   | 文件刪除之前的狀態     | files,fileList       |
-| onFileItemClick `v1.3.4`   | 文件上傳成功後點擊觸發     | fileItem       |
-| fileItemClick `v1.3.4廢棄`   | 文件上傳成功後點擊觸發     | fileItem       |
+| onStart `v1.3.4`    | 文件上傳開始| `options`   |
+| start `v1.3.4廢棄`    | 文件上傳開始| `options`   |
+| onProgress `v1.3.4` | 文件上傳的進度         | `event, options, percentage`        |
+| progress `v1.3.4廢棄` | 文件上傳的進度         | `event, options, percentage`        |
+| onOversize `v1.3.4` | 文件大小超過限制時觸發 | `files`     |
+| oversize `v1.3.4廢棄` | 文件大小超過限制時觸發 | `files`     |
+| onSuccess `v1.3.4`  | 上傳成功    | `responseText, options` |
+| success `v1.3.4廢棄`  | 上傳成功    | `responseText, options` |
+| onFailure `v1.3.4`  | 上傳失敗    | `responseText, options` |
+| failure `v1.3.4廢棄`  | 上傳失敗    | `responseText, options` |
+| onChange `v1.3.4`   | 上傳文件改變時的狀態   | `fileList, event`       |
+| change `v1.3.4廢棄`   | 上傳文件改變時的狀態   | `fileList, event`       |
+| onRemove `v1.3.4`   | 文件刪除之前的狀態     | `files, fileList`       |
+| remove `v1.3.4廢棄`   | 文件刪除之前的狀態     | `files, fileList`       |
+| onFileItemClick `v1.3.4`   | 文件上傳成功後點擊觸發     | `fileItem`       |
+| fileItemClick `v1.3.4廢棄`   | 文件上傳成功後點擊觸發     | `fileItem`       |
 
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-uploader-picture-width | `100px` |
+| --nutui-uploader-picture-height | `100px` |
+| --nutui-uploader-picture-border`v1.4.9` | `0px` |
+| --nutui-uploader-picture-border-radius`v1.4.9` | `4px` |
+| --nutui-uploader-background | `$gray4` |
+| --nutui-uploader-background-disabled`v1.4.9` | `$gray4` |
+| --nutui-uploader-picture-icon-opacity`v1.4.9` | `0.7` |
+| --nutui-uploader-picture-icon-opacity-disabled`v1.4.9` | `0.3`|
+| --nutui-uploader-picture-icon-margin-bottom`v1.4.9` | `6px`|
+| --nutui-uploader-picture-icon-tip-font-size`v1.4.9` | `12px`|
+| --nutui-uploader-picture-icon-tip-color`v1.4.9` | `#BFBFBF`|
+| --nutui-uploader-preview-progress-background`v1.4.9` | `rgba(0, 0, 0, 0.65)`|
+| --nutui-uploader-preview-margin-right`v1.4.9` | `10px`|
+| --nutui-uploader-preview-margin-bottom`v1.4.9` | `10px`|
+| --nutui-uploader-preview-tips-height`v1.4.9` | `24px`|
+| --nutui-uploader-preview-tips-background`v1.4.9` | `rgba(0, 0, 0, 0.45)`|
+| --nutui-uploader-preview-tips-padding`v1.4.9` | `0 5px`|
+| --nutui-uploader-preview-close-right`v1.4.9` | `0px`|
+| --nutui-uploader-preview-close-top`v1.4.9` | `0px`|

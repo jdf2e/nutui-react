@@ -7,6 +7,7 @@ The user can enter content in the text box.
 ### Install
 
 ```javascript
+// react
 import { Input } from '@nutui/nutui-react';
 
 ```
@@ -22,7 +23,9 @@ const App = () => {
     const [value, UpdateValue] = useState('')
   return (
     <>
-      <Input label="Text" defaultValue={value} placeholder="Text" />
+      <Input name="text" label="Text" defaultValue={value} placeholder="Text" change={(val) => {
+            UpdateValue(val)
+          }}/>
     </>
   );
 };
@@ -48,29 +51,34 @@ const App = () => {
   return (
     <>
        <Input
+          name="text"
           label="Text" 
           placeholder="Text" 
           defaultValue={state.text}
         />
         <Input
+          name="password"
           label="Password" 
           placeholder="Password"
           defaultValue={state.password}
           type="password"
         />
         <Input
+          name="number"
           label="Number" 
           placeholder="Number"
           defaultValue={state.number}
           type="number"
         />
         <Input
+          name="digit"
           label="Digit" 
           placeholder="Digit"
           defaultValue={state.digit}
           type="digit"
         />
         <Input
+          name="tel"
           label="Tel" 
           placeholder="Tel"
           defaultValue={state.tel}
@@ -125,6 +133,7 @@ The user can enter content in the text box. Configure the icons on both sides of
 ```tsx
 import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
+import { Dongdong, Ask2 } from "@nutui/icons-react";
 
 const App = () => {
     const  [state, setState] = useState({
@@ -137,8 +146,8 @@ const App = () => {
           label="Text" 
           placeholder="Show Icon" 
           defaultValue={state.showIcon}
-          leftIcon="dongdong"
-          rightIcon="ask2"
+          leftIcon={<Dongdong/>}
+          rightIcon={<Ask2/>}
         />
         <Input
           label="Text" 
@@ -366,13 +375,14 @@ export default App;
 ```tsx
 import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
+import { Dongdong, Ask2 } from '@nutui/icons-react'
 
 const App = () => {
     const  [state, setState] = useState({
         event:'',
     })
-    const change = (value: string | number) => {
-        console.log('change: ', value)
+    const change = (value: string | number, event: Event) => {
+        console.log('change: ', value, event)
     }
     const focus = (value: string | number, event: Event) => {
         console.log('focus:', value, event)
@@ -401,17 +411,17 @@ const App = () => {
           label="Click"
           placeholder="Click"
           defaultValue={state.event}
-          leftIcon="dongdong"
-          rightIcon="ask2"
+          leftIcon={<Dongdong/>}
+          rightIcon={<Ask2/>}
           clearable
-          change={change}
-          focus={focus}
-          blur={blur}
-          clear={clear}
-          click={click}
-          clickInput={clickInput}
-          clickLeftIcon={clickLeftIcon}
-          clickRightIcon={clickRightIcon}
+          onChange={change}
+          onFocus={focus}
+          onBlur={blur}
+          onClear={clear}
+          onClick={click}
+          onClickInput={clickInput}
+          onClickLeftIcon={clickLeftIcon}
+          onClickRightIcon={clickRightIcon}
         />
     </>
   )
@@ -421,49 +431,49 @@ export default App;
 :::
 ### Prop
 
-| Attribute         | Description                                   | Type           | Default  |
-| ------------ | -------------------------------------- | -------------- | ------- |
-| defaultValue | Input value, two-way binding                   | String         | -       |
-| type         | Input type, support all native types and `textarea` `number` `digit` type    | String         | `text`  |
-| placeholder  | Placeholder when the input box is empty         | String         | -       |
-| label        | Left text                               | String         | -       |
-| labelClass  | Left text extra class name                      | String | -  |
-| labelWidth  | Label width, default unit is `px`            | String、Number | `80`    |
-| labelAlign  | Label align,  eg `left`、`center`、`right`   | String | `left` |
-| inputAlign  | Input align, eg `left`、`center`、`right` | String | `left` |
-| colon        | Whether to display colon after label     | Boolean        | `false` |
-| required     | Whether to show required mark            | Boolean        | `false` |
-| border       | Whether to show inner borde         | Boolean        | `true` |
-| disabled     | Whether to disable field            | Boolean        | `false` |
-| readonly     | Whether to be readonly              | Boolean        | `false` |
-| autofocus    | Whether to auto focus, unsupported in iOS     | Boolean        | `false` |
-| maxlength   | Max length of value                  | String、Number  | -       |
-| clearable    | Whether to be clearable              | Boolean        | `false`  |
-| clearIcon   | Clear Icon name, [name of icon](#/icon)           | String        | `mask-close`  |
-| clearSize   | Clear Icon `font-size`               | String        | `14`  |
-| leftIcon    | Left side Icon name, [name of icon](#/icon) | String        | - |
-| rightIcon   | Right side Icon name, [name of icon](#/icon) | String        | - |
-| leftIconSize    | Left side Icon `font-size`    | String        | `14`  |
-| rightIconSize   | Right side Icon `font-size`   | String        | `14`  |
-| showWordLimit | Whether to show word limit, need to set the `max-length` prop | Boolean | `false`  |
-| error         | Whether to mark the input content in red   | Boolean | `false`  |
-| errorMessage | Error message            | String、Number | - |
-| errorMessageAlign | Error message align, eg `left`、`center`、`right`          | String | - |
-| formatter      | Input value formatter    | `(val: string) => string` | - |
-| formatTrigger | When to format value, eg `onChange`、`onBlur` | String | - |
+| Attribute         | Description                                                               | Type                      | Default     |
+| ------------ |---------------------------------------------------------------------------|---------------------------|-------------|
+| defaultValue | Input value                                                               | String                    | -           |
+| type         | Input type, support all native types and `textarea` `number` `digit` type | String                    | `text`      |
+| name`v1.3.10`  | Used for form submission to obtain data                                   | String                    | -           |
+| ref`v1.3.10`  | Used to obtain internal input instance ref                                | RefAttributes             | -           |
+| placeholder  | Placeholder when the input box is empty                                   | String                    | -           |
+| label        | Left text                                                                 | String                    | -           |
+| labelClass  | Left text extra class name                                                | String                    | -           |
+| labelWidth  | Label width, default unit is `px`                                         | String、Number             | `80`        |
+| labelAlign  | Label align,  eg `left`、`center`、`right`                                  | String                    | `left`      |
+| inputAlign  | Input align, eg `left`、`center`、`right`                                   | String                    | `left`      |
+| colon        | Whether to display colon after label                                      | Boolean                   | `false`     |
+| required     | Whether to show required mark                                             | Boolean                   | `false`     |
+| border       | Whether to show inner borde                                               | Boolean                   | `true`      |
+| disabled     | Whether to disable field                                                  | Boolean                   | `false`     |
+| readonly     | Whether to be readonly                                                    | Boolean                   | `false`     |
+| autofocus    | Whether to auto focus, unsupported in iOS                                 | Boolean                   | `false`     |
+| maxlength   | Max length of value                                                       | String、Number             | -           |
+| clearable    | Whether to be clearable                                                   | Boolean                   | `false`     |
+| clearIcon   | Clear Icon name, [icon](#/icon)                                   | ReactNode                 | `MaskClose` |
+| clearSize   | Default Clear Icon `font-size`                                            | String                    | `14`        |
+| leftIcon    | Left side Icon name, [icon](#/icon)                               | ReactNode                    | -           |
+| rightIcon   | Right side Icon name, [icon](#/icon)                              | ReactNode                    | -           |
+| showWordLimit | Whether to show word limit, need to set the `max-length` prop             | Boolean                   | `false`     |
+| error         | Whether to mark the input content in red                                  | Boolean                   | `false`     |
+| errorMessage | Error message                                                             | String、Number             | -           |
+| errorMessageAlign | Error message align, eg `left`、`center`、`right`                           | String                    | -           |
+| formatter      | Input value formatter                                                     | `(val: string) => string` | -           |
+| formatTrigger | When to format value, eg `onChange`、`onBlur`                              | String                    | -           |
 
 ### Events
 
 | Event   | Description      | Arguments    |
 |--------|----------------|-------------|
-| change | Emitted when input value changed | val ,event  |
-| focus  | Emitted when input is focused     | val  ,event |
-| blur   | Emitted when input is blurred     | val ,event  |
-| clear  | Emitted when the clear icon is clicked   | val ,event  |
-| click  | Emitted when component is clicked	      | val ,event  |
-| clickInput      | Emitted when the input is clicked      | val ,event  |
-| clickLeftIcon  | Emitted when the left icon is clicked      | val ,event  |
-| clickRightIcon | Emitted when the right icon is clicked      | val ,event  |
+| onChange `v1.3.8` | Emitted when input value changed | val ,event  |
+| onFocus `v1.3.8`  | Emitted when input is focused     | val  ,event |
+| onBlur `v1.3.8`   | Emitted when input is blurred     | val ,event  |
+| onClear `v1.3.8` | Emitted when the clear icon is clicked   | val ,event  |
+| onClick `v1.3.8`  | Emitted when component is clicked	      | val ,event  |
+| onClickInput `v1.3.8`      | Emitted when the input is clicked      | val ,event  |
+| onClickLeftIcon `v1.3.8`  | Emitted when the left icon is clicked      | val ,event  |
+| onClickRightIcon `v1.3.8` | Emitted when the right icon is clicked      | val ,event  |
 
 ### Slots
 
@@ -471,3 +481,34 @@ export default App;
 |-------|----------|
 | slotButton | Insert button |
 | slotInput `v3.1.22` | Custom input |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-input-border-bottom | ` #eaf0fb` |
+| --nutui-input-disabled-color | ` #c8c9cc` |
+| --nutui-input-required-color | `  $required-color` |
+| --nutui-input-font-size | ` $font-size-2` |
+| --nutui-input-padding | ` 10px 25px` |
+| --nutui-inputnumber-icon-color | `  $title-color` |
+| --nutui-inputnumber-icon-void-color | `  $disable-color` |
+| --nutui-inputnumber-icon-disabled-color | `  $gray2` |
+| --nutui-inputnumber-icon-size | ` 20px` |
+| --nutui-inputnumber-input-font-size | `  12px` |
+| --nutui-inputnumber-input-font-color | `  $gray1` |
+| --nutui-inputnumber-input-background-color | `  $gray4` |
+| --nutui-inputnumber-input-border-radius | `  4px` |
+| --nutui-inputnumber-input-width | ` 40px` |
+| --nutui-inputnumber-input-margin | `  0 6px` |
+| --nutui-inputnumber-input-border | ` 0` |
+| --nutui-inputnumber-border | ` 0` |
+| --nutui-inputnumber-border-radius | ` 0` |
+| --nutui-inputnumber-height | ` auto` |
+| --nutui-inputnumber-line-height | ` normal` |
+| --nutui-inputnumber-border-box | `  content-box` |
+| --nutui-inputnumber-display | ` flex` |

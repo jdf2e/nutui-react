@@ -7,13 +7,14 @@ on:
     paths:
       - '.github/workflows/**'
       - 'src/**'
+      - 'package.json'
 
 jobs:
   copy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: yarn install
+      - uses: actions/checkout@v3
+      - run:  npm i fs-extra
       - run: node scripts/copy-docs.js
       - name : Sync
         uses : JamesIves/github-pages-deploy-action@4.1.7

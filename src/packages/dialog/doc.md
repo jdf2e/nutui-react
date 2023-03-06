@@ -8,7 +8,8 @@
 
 ### 安装
 
-```js
+```ts
+// react
 import { Dialog } from '@nutui/nutui-react'
 ```
 
@@ -110,18 +111,18 @@ export default App;
 | title        | 标题                         | ReactNode | -                |
 | content         | 对话框的内容，适用于函数式调用 | ReactNode | -                |
 | footer | 自定义页脚，传入 null 则不显示     | ReactNode | - |
-| okText          | 确认按钮文案                        | ReactNode | '确定'              |
-| cancelText          | 取消按钮文案                        | ReactNode | '取消'              |
-| mask          | 是否展示遮罩                        | boolean | true              |
-| noOkBtn          | 是否隐藏确定按钮                        | boolean | false              |
-| noCancelBtn          | 是否隐藏取消按钮                        | boolean | false              |
-| okBtnDisabled          | 禁用确定按钮                        | boolean | false              |
-| noFooter          | 是否隐藏底部按钮栏                        | boolean | false              |
-| closeOnClickOverlay          | 点击蒙层是否关闭对话框                        | boolean | true              |
-| cancelAutoClose          | 取消按钮是否默认关闭弹窗                        | boolean | true              |
-| textAlign          | 文字对齐方向，可选值同 css 的 text-align                        | string | 'center'              |
-| footerDirection          | 使用横纵方向 可选值 horizontal、vertical                        | string | 'horizontal'              |
-| lockScroll          | 背景是否锁定                        | boolean | false              |
+| okText          | 确认按钮文案                        | ReactNode | `确定`              |
+| cancelText          | 取消按钮文案                        | ReactNode | `取消`              |
+| mask          | 是否展示遮罩                        | boolean | `true`              |
+| noOkBtn          | 是否隐藏确定按钮                        | boolean | `false`              |
+| noCancelBtn          | 是否隐藏取消按钮                        | boolean | `false`              |
+| okBtnDisabled          | 禁用确定按钮                        | boolean | `false`              |
+| noFooter          | 是否隐藏底部按钮栏                        | boolean | `false`              |
+| closeOnClickOverlay          | 点击蒙层是否关闭对话框                        | boolean | `true`              |
+| cancelAutoClose          | 取消按钮是否默认关闭弹窗                        | boolean | `true`              |
+| textAlign          | 文字对齐方向，可选值同 css 的 text-align                        | string | `center`              |
+| footerDirection          | 使用横纵方向 可选值 horizontal、vertical                        | string | `horizontal`              |
+| lockScroll          | 背景是否锁定                        | boolean | `false`              |
 
 ### Events
 
@@ -131,3 +132,31 @@ export default App;
 | onCancel      | 取消按钮回调 | () => void |
 | onClosed      | 关闭回调，任何情况关闭弹窗都会触发 | () => void |
 | onClickSelf`v1.2.0` | 点击自身回调 | () => void |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-dialog-width | `296px` |
+| --nutui-dialog-header-font-weight | `normal` |
+| --nutui-dialog-header-color | `rgba(38, 38, 38, 1)` |
+| --nutui-dialog-footer-justify-content | `space-around` |
+| --nutui-dialog-min-height | `156px` |
+| --nutui-dialog-padding | `28px 24px 16px 24px` |
+| --nutui-dialog-header-height | `20px` |
+| --nutui-dialog-content-margin | `20px 0` |
+| --nutui-dialog-content-max-height | `268px` |
+| --nutui-dialog-content-line-height | `16px` |
+| --nutui-dialog-mask-z-index | `$mask-z-index` |
+| --nutui-dialog-mask-background-color | `$mask-color` |
+| --nutui-dialog-outer-z-index | `$mask-content-z-index` |
+| --nutui-dialog-outer-bordder-radius | `20px` |
+| --nutui-dialog-vertical-footer-ok-margin-top | `10px` |
+| --nutui-dialog-footer-button-min-width | `100px` |
+| --nutui-dialog-footer-cancel-margin-right | `20px` |
+| --nutui-dialog-footer-ok-max-width | `128px` |

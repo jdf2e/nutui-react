@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import Icon from '@/packages/icon'
 import { OptionItem } from '@/packages/menuitem/menuitem'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface MenuProps extends IComponent {
+export interface MenuProps extends BasicComponent {
   className: string
   style: React.CSSProperties
   activeColor: string
@@ -52,7 +52,6 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
     const { scrollFixed } = props
 
     const scrollTop = getScrollTop(window)
-    console.log(scrollTop)
     const isFixed =
       scrollTop > (typeof scrollFixed === 'boolean' ? 30 : Number(scrollFixed))
     setIsScrollFixed(isFixed)
@@ -100,69 +99,71 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
       })
     })
   }
-  console.log('isScrollFixed', isScrollFixed)
   return (
     <div
       className={`nut-menu ${className} ${isScrollFixed ? 'scroll-fixed' : ''}`}
       {...rest}
       ref={parentRef}
     >
-      <div
-        className={`nut-menu__bar ${
-          itemShow.includes(true) ? 'opened' : ''
-        } ${className}`}
-      >
-        {React.Children.toArray(children).map((child, index) => {
-          if (!child) return null
-          const { disabled, title, value, direction, options } = (child as any)
-            .props as any
-          const currentTitle = options?.filter(
-            (option: OptionItem) => option.value === value
-          )
+      <div className="nut-menu-relative">
+        <div
+          className={`nut-menu__bar ${
+            itemShow.includes(true) ? 'opened' : ''
+          } ${className}`}
+        >
+          {React.Children.toArray(children).map((child, index) => {
+            if (!child) return null
+            const { disabled, title, value, direction, options, className } = (
+              child as any
+            ).props as any
+            const currentTitle = options?.filter(
+              (option: OptionItem) => option.value === value
+            )
 
-          function finallyTitle() {
-            if (title) return title
-            if (itemTitle && itemTitle[index]) return itemTitle[index]
-            if (currentTitle && currentTitle[0] && currentTitle[0].text)
-              return currentTitle[0].text
-            return ''
-          }
+            function finallyTitle() {
+              if (title) return title
+              if (itemTitle && itemTitle[index]) return itemTitle[index]
+              if (currentTitle && currentTitle[0] && currentTitle[0].text)
+                return currentTitle[0].text
+              return ''
+            }
 
-          return (
-            <div
-              className={`nut-menu__item ${classnames({
-                active: itemShow[index],
-                disabled,
-              })}`}
-              style={{ color: itemShow[index] ? activeColor : '' }}
-              key={index}
-              onClick={() => {
-                !disabled && toggleItemShow(index)
-              }}
-            >
+            return (
               <div
-                className={`nut-menu__title ${classnames({
+                className={`nut-menu__item ${classNames({
                   active: itemShow[index],
                   disabled,
-                })}`}
+                })} ${className}`}
+                style={{ color: itemShow[index] ? activeColor : '' }}
+                key={index}
+                onClick={() => {
+                  !disabled && toggleItemShow(index)
+                }}
               >
-                <div className="nut-menu__title-text">{finallyTitle()}</div>
-                <Icon
-                  classPrefix={iconClassPrefix}
-                  fontClassName={iconFontClassName}
-                  className="nut-menu__title-icon"
-                  size="10"
-                  name={
-                    titleIcon ||
-                    (direction === 'up' ? 'arrow-up' : 'down-arrow')
-                  }
-                />
+                <div
+                  className={`nut-menu__title ${classNames({
+                    active: itemShow[index],
+                    disabled,
+                  })}`}
+                >
+                  <div className="nut-menu__title-text">{finallyTitle()}</div>
+                  <Icon
+                    classPrefix={iconClassPrefix}
+                    fontClassName={iconFontClassName}
+                    className="nut-menu__title-icon"
+                    size="10"
+                    name={
+                      titleIcon ||
+                      (direction === 'up' ? 'arrow-up' : 'down-arrow')
+                    }
+                  />
+                </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
+        {cloneChildren()}
       </div>
-      {cloneChildren()}
     </div>
   )
 }

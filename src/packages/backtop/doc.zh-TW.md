@@ -1,18 +1,19 @@
-# BackTop 返回顶部
+# BackTop 返回頂部
 
-### 介绍
+### 介紹
 
-提供较长的页面快捷返回顶部功能。
+提供較長的頁面快捷返回頂部功能。
 
-### 安装
+### 安裝
 
 ```javascript
+// react
 import { BackTop } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 
@@ -21,34 +22,45 @@ import  React from "react";
 import { BackTop } from '@nutui/nutui-react';
 
 const App = () => {
+  const cellStyle = {
+    height: '46px',
+    lineHeight: '46px',
+    margin: '15px auto 20px',
+    paddingLeft: '16px',
+    backgroundColor: '#fff',
+    color: '#666',
+    borderRadius: '7px',
+    boxShadow: '0 1px 7px #edeef1',
+    fontSize: '13px',
+  }
   return (
     <>
-    <div className="demo" id="elId">
-        <div className="text-data">我是测试数据1</div>
-        <div className="text-data">我是测试数据2</div>
-        <div className="text-data">我是测试数据3</div>
-        <div className="text-data">我是测试数据4</div>
-        <div className="text-data">我是测试数据5</div>
-        <div className="text-data">我是测试数据6</div>
-        <div className="text-data">我是测试数据7</div>
-        <div className="text-data">我是测试数据8</div>
-        <div className="text-data">我是测试数据9</div>
-        <div className="text-data">我是测试数据10</div>
-        <div className="text-data">我是测试数据11</div>
-        <div className="text-data">我是测试数据12</div>
-        <div className="text-data">我是测试数据13</div>
-        <div className="text-data">我是测试数据14</div>
-        <div className="text-data">我是测试数据15</div>
-        <div className="text-data">我是测试数据16</div>
-        <div className="text-data">我是测试数据17</div>
-        <div className="text-data">我是测试数据18</div>
-        <div className="text-data">我是测试数据19</div>
-        <div className="text-data">我是测试数据20</div>
-        <div className="text-data">我是测试数据21</div>
-        <div className="text-data">我是测试数据22</div>
-        <div className="text-data">我是测试数据23</div>
-        <div className="text-data">我是测试数据24</div>
-        <BackTop elId="elId" />
+    <div className="demo"  id="elId">
+        <div className="text-data" style={cellStyle}>我是測試數據1</div>
+        <div className="text-data" style={cellStyle}>我是測試數據2</div>
+        <div className="text-data" style={cellStyle}>我是測試數據3</div>
+        <div className="text-data" style={cellStyle}>我是測試數據4</div>
+        <div className="text-data" style={cellStyle}>我是測試數據5</div>
+        <div className="text-data" style={cellStyle}>我是測試數據6</div>
+        <div className="text-data" style={cellStyle}>我是測試數據7</div>
+        <div className="text-data" style={cellStyle}>我是測試數據8</div>
+        <div className="text-data" style={cellStyle}>我是測試數據9</div>
+        <div className="text-data" style={cellStyle}>我是測試數據10</div>
+        <div className="text-data" style={cellStyle}>我是測試數據11</div>
+        <div className="text-data" style={cellStyle}>我是測試數據12</div>
+        <div className="text-data" style={cellStyle}>我是測試數據13</div>
+        <div className="text-data" style={cellStyle}>我是測試數據14</div>
+        <div className="text-data" style={cellStyle}>我是測試數據15</div>
+        <div className="text-data" style={cellStyle}>我是測試數據16</div>
+        <div className="text-data" style={cellStyle}>我是測試數據17</div>
+        <div className="text-data" style={cellStyle}>我是測試數據18</div>
+        <div className="text-data" style={cellStyle}>我是測試數據19</div>
+        <div className="text-data" style={cellStyle}>我是測試數據20</div>
+        <div className="text-data" style={cellStyle}>我是測試數據21</div>
+        <div className="text-data" style={cellStyle}>我是測試數據22</div>
+        <div className="text-data" style={cellStyle}>我是測試數據23</div>
+        <div className="text-data" style={cellStyle}>我是測試數據24</div>
+        <BackTop  />
     </div>
     </>
   );
@@ -57,7 +69,8 @@ export default App;
 ```
 :::
 
-### 设置出现位置
+
+### 設置出現位置
 
 :::demo
 
@@ -66,34 +79,45 @@ import  React from "react";
 import { BackTop } from '@nutui/nutui-react';
 
 const App = () => {
+    const cellStyle = {
+    height: '46px',
+    lineHeight: '46px',
+    margin: '15px auto 20px',
+    paddingLeft: '16px',
+    backgroundColor: '#fff',
+    color: '#666',
+    borderRadius: '7px',
+    boxShadow: '0 1px 7px #edeef1',
+    fontSize: '13px',
+  }
   return (
     <>
-    <div className="demo" id="elId">
-        <div className="text-data">我是测试数据1</div>
-        <div className="text-data">我是测试数据2</div>
-        <div className="text-data">我是测试数据3</div>
-        <div className="text-data">我是测试数据4</div>
-        <div className="text-data">我是测试数据5</div>
-        <div className="text-data">我是测试数据6</div>
-        <div className="text-data">我是测试数据7</div>
-        <div className="text-data">我是测试数据8</div>
-        <div className="text-data">我是测试数据9</div>
-        <div className="text-data">我是测试数据10</div>
-        <div className="text-data">我是测试数据11</div>
-        <div className="text-data">我是测试数据12</div>
-        <div className="text-data">我是测试数据13</div>
-        <div className="text-data">我是测试数据14</div>
-        <div className="text-data">我是测试数据15</div>
-        <div className="text-data">我是测试数据16</div>
-        <div className="text-data">我是测试数据17</div>
-        <div className="text-data">我是测试数据18</div>
-        <div className="text-data">我是测试数据19</div>
-        <div className="text-data">我是测试数据20</div>
-        <div className="text-data">我是测试数据21</div>
-        <div className="text-data">我是测试数据22</div>
-        <div className="text-data">我是测试数据23</div>
-        <div className="text-data">我是测试数据24</div>
-        <BackTop elId="elId" distance={200} bottom={50} />
+    <div className="demo"  id="elId">
+        <div className="text-data" style={cellStyle}>我是測試數據1</div>
+        <div className="text-data" style={cellStyle}>我是測試數據2</div>
+        <div className="text-data" style={cellStyle}>我是測試數據3</div>
+        <div className="text-data" style={cellStyle}>我是測試數據4</div>
+        <div className="text-data" style={cellStyle}>我是測試數據5</div>
+        <div className="text-data" style={cellStyle}>我是測試數據6</div>
+        <div className="text-data" style={cellStyle}>我是測試數據7</div>
+        <div className="text-data" style={cellStyle}>我是測試數據8</div>
+        <div className="text-data" style={cellStyle}>我是測試數據9</div>
+        <div className="text-data" style={cellStyle}>我是測試數據10</div>
+        <div className="text-data" style={cellStyle}>我是測試數據11</div>
+        <div className="text-data" style={cellStyle}>我是測試數據12</div>
+        <div className="text-data" style={cellStyle}>我是測試數據13</div>
+        <div className="text-data" style={cellStyle}>我是測試數據14</div>
+        <div className="text-data" style={cellStyle}>我是測試數據15</div>
+        <div className="text-data" style={cellStyle}>我是測試數據16</div>
+        <div className="text-data" style={cellStyle}>我是測試數據17</div>
+        <div className="text-data" style={cellStyle}>我是測試數據18</div>
+        <div className="text-data" style={cellStyle}>我是測試數據19</div>
+        <div className="text-data" style={cellStyle}>我是測試數據20</div>
+        <div className="text-data" style={cellStyle}>我是測試數據21</div>
+        <div className="text-data" style={cellStyle}>我是測試數據22</div>
+        <div className="text-data" style={cellStyle}>我是測試數據23</div>
+        <div className="text-data" style={cellStyle}>我是測試數據24</div>
+        <BackTop  distance={200} bottom={50} />
     </div>
     </>
   );
@@ -101,7 +125,80 @@ const App = () => {
 export default App;
 ```
 :::
-### 自定义样式
+### 自定義樣式
+
+:::demo
+
+```tsx
+import  React from "react";
+import { BackTop,Icon } from '@nutui/nutui-react';
+
+
+const App = () => {
+  const cellStyle = {
+    height: '46px',
+    lineHeight: '46px',
+    margin: '15px auto 20px',
+    paddingLeft: '16px',
+    backgroundColor: '#fff',
+    color: '#666',
+    borderRadius: '7px',
+    boxShadow: '0 1px 7px #edeef1',
+    fontSize: '13px',
+  }
+  return (
+    <>
+    <div className="demo"  id="elId">
+        <div className="text-data" style={cellStyle}>我是測試數據1</div>
+        <div className="text-data" style={cellStyle}>我是測試數據2</div>
+        <div className="text-data" style={cellStyle}>我是測試數據3</div>
+        <div className="text-data" style={cellStyle}>我是測試數據4</div>
+        <div className="text-data" style={cellStyle}>我是測試數據5</div>
+        <div className="text-data" style={cellStyle}>我是測試數據6</div>
+        <div className="text-data" style={cellStyle}>我是測試數據7</div>
+        <div className="text-data" style={cellStyle}>我是測試數據8</div>
+        <div className="text-data" style={cellStyle}>我是測試數據9</div>
+        <div className="text-data" style={cellStyle}>我是測試數據10</div>
+        <div className="text-data" style={cellStyle}>我是測試數據11</div>
+        <div className="text-data" style={cellStyle}>我是測試數據12</div>
+        <div className="text-data" style={cellStyle}>我是測試數據13</div>
+        <div className="text-data" style={cellStyle}>我是測試數據14</div>
+        <div className="text-data" style={cellStyle}>我是測試數據15</div>
+        <div className="text-data" style={cellStyle}>我是測試數據16</div>
+        <div className="text-data" style={cellStyle}>我是測試數據17</div>
+        <div className="text-data" style={cellStyle}>我是測試數據18</div>
+        <div className="text-data" style={cellStyle}>我是測試數據19</div>
+        <div className="text-data" style={cellStyle}>我是測試數據20</div>
+        <div className="text-data" style={cellStyle}>我是測試數據21</div>
+        <div className="text-data" style={cellStyle}>我是測試數據22</div>
+        <div className="text-data" style={cellStyle}>我是測試數據23</div>
+        <div className="text-data" style={cellStyle}>我是測試數據24</div>
+        <BackTop
+          className="custom-class"
+          distance={100}
+          bottom={110}
+        >
+          <div
+            className="backtop-demo"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Icon size="12px" className="nut-backtop-main" name="top" />
+            <div style={{ fontSize: '12px' }}>顶部</div>
+          </div>
+        </BackTop>
+    </div>
+    </>
+  );
+};
+export default App;
+```
+:::
+
+### 父級元素內滾動
 
 :::demo
 
@@ -110,34 +207,45 @@ import  React from "react";
 import { BackTop } from '@nutui/nutui-react';
 
 const App = () => {
+    const cellStyle = {
+    height: '46px',
+    lineHeight: '46px',
+    margin: '15px auto 20px',
+    paddingLeft: '16px',
+    backgroundColor: '#fff',
+    color: '#666',
+    borderRadius: '7px',
+    boxShadow: '0 1px 7px #edeef1',
+    fontSize: '13px',
+  }
   return (
     <>
-    <div className="demo" id="elId">
-        <div className="text-data">我是测试数据1</div>
-        <div className="text-data">我是测试数据2</div>
-        <div className="text-data">我是测试数据3</div>
-        <div className="text-data">我是测试数据4</div>
-        <div className="text-data">我是测试数据5</div>
-        <div className="text-data">我是测试数据6</div>
-        <div className="text-data">我是测试数据7</div>
-        <div className="text-data">我是测试数据8</div>
-        <div className="text-data">我是测试数据9</div>
-        <div className="text-data">我是测试数据10</div>
-        <div className="text-data">我是测试数据11</div>
-        <div className="text-data">我是测试数据12</div>
-        <div className="text-data">我是测试数据13</div>
-        <div className="text-data">我是测试数据14</div>
-        <div className="text-data">我是测试数据15</div>
-        <div className="text-data">我是测试数据16</div>
-        <div className="text-data">我是测试数据17</div>
-        <div className="text-data">我是测试数据18</div>
-        <div className="text-data">我是测试数据19</div>
-        <div className="text-data">我是测试数据20</div>
-        <div className="text-data">我是测试数据21</div>
-        <div className="text-data">我是测试数据22</div>
-        <div className="text-data">我是测试数据23</div>
-        <div className="text-data">我是测试数据24</div>
-        <BackTop elId="elId" distance={200} bottom={50}><div>无</div></BackTop>
+    <div className="demo" style={{ height: '800px', overflowY: 'auto' }} id="elId">
+        <div className="text-data" style={cellStyle}>我是測試數據1</div>
+        <div className="text-data" style={cellStyle}>我是測試數據2</div>
+        <div className="text-data" style={cellStyle}>我是測試數據3</div>
+        <div className="text-data" style={cellStyle}>我是測試數據4</div>
+        <div className="text-data" style={cellStyle}>我是測試數據5</div>
+        <div className="text-data" style={cellStyle}>我是測試數據6</div>
+        <div className="text-data" style={cellStyle}>我是測試數據7</div>
+        <div className="text-data" style={cellStyle}>我是測試數據8</div>
+        <div className="text-data" style={cellStyle}>我是測試數據9</div>
+        <div className="text-data" style={cellStyle}>我是測試數據10</div>
+        <div className="text-data" style={cellStyle}>我是測試數據11</div>
+        <div className="text-data" style={cellStyle}>我是測試數據12</div>
+        <div className="text-data" style={cellStyle}>我是測試數據13</div>
+        <div className="text-data" style={cellStyle}>我是測試數據14</div>
+        <div className="text-data" style={cellStyle}>我是測試數據15</div>
+        <div className="text-data" style={cellStyle}>我是測試數據16</div>
+        <div className="text-data" style={cellStyle}>我是測試數據17</div>
+        <div className="text-data" style={cellStyle}>我是測試數據18</div>
+        <div className="text-data" style={cellStyle}>我是測試數據19</div>
+        <div className="text-data" style={cellStyle}>我是測試數據20</div>
+        <div className="text-data" style={cellStyle}>我是測試數據21</div>
+        <div className="text-data" style={cellStyle}>我是測試數據22</div>
+        <div className="text-data" style={cellStyle}>我是測試數據23</div>
+        <div className="text-data" style={cellStyle}>我是測試數據24</div>
+        <BackTop elId="elId" distance={100} bottom={50} />
     </div>
     </>
   );
@@ -155,37 +263,48 @@ import  React from "react";
 import { BackTop } from '@nutui/nutui-react';
 
 const App = () => {
+  const cellStyle = {
+    height: '46px',
+    lineHeight: '46px',
+    margin: '15px auto 20px',
+    paddingLeft: '16px',
+    backgroundColor: '#fff',
+    color: '#666',
+    borderRadius: '7px',
+    boxShadow: '0 1px 7px #edeef1',
+    fontSize: '13px',
+  }
   const handleClick = () => {
     console.log('触发返回顶部')
   }
   return (
     <>
-    <div className="demo" id="elId">
-        <div className="text-data">我是测试数据1</div>
-        <div className="text-data">我是测试数据2</div>
-        <div className="text-data">我是测试数据3</div>
-        <div className="text-data">我是测试数据4</div>
-        <div className="text-data">我是测试数据5</div>
-        <div className="text-data">我是测试数据6</div>
-        <div className="text-data">我是测试数据7</div>
-        <div className="text-data">我是测试数据8</div>
-        <div className="text-data">我是测试数据9</div>
-        <div className="text-data">我是测试数据10</div>
-        <div className="text-data">我是测试数据11</div>
-        <div className="text-data">我是测试数据12</div>
-        <div className="text-data">我是测试数据13</div>
-        <div className="text-data">我是测试数据14</div>
-        <div className="text-data">我是测试数据15</div>
-        <div className="text-data">我是测试数据16</div>
-        <div className="text-data">我是测试数据17</div>
-        <div className="text-data">我是测试数据18</div>
-        <div className="text-data">我是测试数据19</div>
-        <div className="text-data">我是测试数据20</div>
-        <div className="text-data">我是测试数据21</div>
-        <div className="text-data">我是测试数据22</div>
-        <div className="text-data">我是测试数据23</div>
-        <div className="text-data">我是测试数据24</div>
-        <BackTop elId="elId" distance={200} bottom={50} onClick={handleClick} />
+    <div className="demo" style={{ height: '1000px', overflowY: 'auto' }} id="elId">
+        <div className="text-data" style={cellStyle}>我是測試數據1</div>
+        <div className="text-data" style={cellStyle}>我是測試數據2</div>
+        <div className="text-data" style={cellStyle}>我是測試數據3</div>
+        <div className="text-data" style={cellStyle}>我是測試數據4</div>
+        <div className="text-data" style={cellStyle}>我是測試數據5</div>
+        <div className="text-data" style={cellStyle}>我是測試數據6</div>
+        <div className="text-data" style={cellStyle}>我是測試數據7</div>
+        <div className="text-data" style={cellStyle}>我是測試數據8</div>
+        <div className="text-data" style={cellStyle}>我是測試數據9</div>
+        <div className="text-data" style={cellStyle}>我是測試數據10</div>
+        <div className="text-data" style={cellStyle}>我是測試數據11</div>
+        <div className="text-data" style={cellStyle}>我是測試數據12</div>
+        <div className="text-data" style={cellStyle}>我是測試數據13</div>
+        <div className="text-data" style={cellStyle}>我是測試數據14</div>
+        <div className="text-data" style={cellStyle}>我是測試數據15</div>
+        <div className="text-data" style={cellStyle}>我是測試數據16</div>
+        <div className="text-data" style={cellStyle}>我是測試數據17</div>
+        <div className="text-data" style={cellStyle}>我是測試數據18</div>
+        <div className="text-data" style={cellStyle}>我是測試數據19</div>
+        <div className="text-data" style={cellStyle}>我是測試數據20</div>
+        <div className="text-data" style={cellStyle}>我是測試數據21</div>
+        <div className="text-data" style={cellStyle}>我是測試數據22</div>
+        <div className="text-data" style={cellStyle}>我是測試數據23</div>
+        <div className="text-data" style={cellStyle}>我是測試數據24</div>
+        <BackTop distance={100} bottom={50} onClick={handleClick} />
     </div>
     </>
   );
@@ -198,18 +317,29 @@ export default App;
 
 ### Props
 
-| 字段        | 说明                            | 类型    | 默认值 |
+| 字段        | 說明                            | 類型    | 默認值 |
 | ----------- | ------------------------------- | ------- | ------ |
-| elId        | 获取监听元素的父级元素          | String  | -      |
-| bottom      | 距离页面底部距离                | Number  | `20`   |
-| right       | 距离页面右侧距离                | Number  | `10`   |
-| distance    | 页面垂直滚动多高后出现          | Number  | `200`  |
-| zIndex      | 设置组件页面层级                | Number  | `10`   |
-| isAnimation | 是否有动画,和 duration 参数互斥 | Boolean | `true` |
-| duration    | 设置动画持续时间                | Number  | `1000` |
+| elId        | 獲取監聽元素的父級元素         | string  | -      |
+| bottom      | 距離頁面底部距離                | number | `20`   |
+| right       | 距離頁面右側距離                | number | `10`   |
+| distance    | 頁面垂直滾動多高後出現          | number | `200`  |
+| zIndex      | 設置組件頁面層級                | number | `10`   |
+| isAnimation | 是否有動畫,和 duration 參數互斥 | boolean | `true` |
+| duration    | 設置動畫持續時間                | number | `1000` |
 
 ### Events
 
-| 名称         | 说明               | 回调参数          |
-| ------------ | ------------------ | ----------------- |
-| onClick | 按钮点击时触发事件 | event: MouseEvent |
+| 名稱                       | 說明               | 回調參數          |
+|--------------------------| ------------------ | ----------------- |
+| backTopClick`v1.2.1(廢棄)` | 按鈕點擊時觸發事件 | `event: MouseEvent` |
+| onClick`v1.2.1`          | 按鈕點擊時觸發事件 | `event: MouseEvent` |
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-backtop-border-color | `#e0e0e0` |

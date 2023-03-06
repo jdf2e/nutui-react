@@ -1,10 +1,11 @@
 import React, {
   ForwardRefRenderFunction,
+  useState,
   useEffect,
   useRef,
   useImperativeHandle,
 } from 'react'
-import Taro from '@tarojs/taro'
+import { createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 
@@ -22,7 +23,7 @@ const defaultProps = {
   barrageList: [],
   frequency: 500,
   loop: true,
-  speeds: 2000,
+  speeds: 3000,
   rows: 3,
   top: 10,
 }
@@ -43,22 +44,30 @@ const InternalBarrage: ForwardRefRenderFunction<
     ...defaultProps,
     ...props,
   }
+  const [styleList, setStyleList] = useState<any[]>([])
+  const [baItemList, setBaItemList] = useState(barrageList)
+  const barrageListSet = useRef<any>(barrageList)
+
   const barrageBody = useRef<HTMLDivElement>(null)
   const barrageContainer = useRef<HTMLDivElement>(null)
+  const timeId = useRef(new Date().getTime())
   const timer = useRef(0)
   const index = useRef(0)
 
   const b = bem('barrage')
-  const classes = classNames(className, b(''))
+  const classes = classNames(className, b(''), {
+    [`nut-barrage__body${timeId.current}`]: true,
+  })
 
   useImperativeHandle(ref, () => ({
     add: (word: string) => {
-      const _index = index.current % barrageList.length
-      barrageList.splice(_index, 0, word)
+      barrageListSet.current = [...barrageListSet.current, word]
+      run()
     },
   }))
 
   useEffect(() => {
+    barrageListSet.current = [...barrageList]
     run()
     return () => {
       clearInterval(timer.current)
@@ -66,41 +75,64 @@ const InternalBarrage: ForwardRefRenderFunction<
   }, [barrageList])
 
   const run = () => {
-    clearInterval(timer.current)
-    timer.current = setInterval(() => {
-      play()
-      run()
-    }, frequency)
+    setBaItemList(barrageListSet.current)
+    barrageListSet.current.forEach((item: any, index: number) => {
+      getNode(index)
+    })
   }
 
-  const play = async () => {
-    const _index = loop ? index.current % barrageList.length : index.current
-    const el = document.createElement(`div`)
-    el.innerHTML = barrageList[_index] as string
-    el.classList.add('barrage-item')
-    ;(barrageContainer.current as HTMLDivElement).appendChild(el)
-
-    Taro.createSelectorQuery()
-      .select('.barrage-item')
-      .boundingClientRect((res) => {
-        console.log('res', res)
-        const height = res?.height
-
-        el.classList.add('move')
-        el.style.animationDuration = `${speeds}ms`
-        el.style.top = `${(_index % rows) * (height + top) + 20}px`
-        el.dataset.index = `${_index}`
-        el.addEventListener('animationend', () => {
-          ;(barrageContainer.current as HTMLDivElement).removeChild(el)
+  const getNode = (index: number) => {
+    const query = createSelectorQuery()
+    setTimeout(() => {
+      let width = 100
+      query
+        .select('.nut-barrage__body' + timeId.current)
+        .boundingClientRect((rec) => {
+          width = rec.width || 300
         })
-        index.current++
-      })
-      .exec()
+
+      query
+        .select('.nut-barrage__item' + index)
+        .boundingClientRect((recs) => {
+          let height = recs.height
+          let nodeTop = (index % rows) * (height + top) + 20 + 'px'
+          styleInfo(index, nodeTop, width)
+        })
+        .exec()
+    }, 500)
+  }
+
+  const styleInfo = (index: number, nodeTop: string, width: number) => {
+    let timeIndex = index - rows > 0 ? index - rows : 0
+    let list = styleList
+    let time = list[timeIndex] ? Number(list[timeIndex]['--time']) : 0
+    // // distance.value = '-' + (speeds / 1000) * 200 + '%';
+    let obj = {
+      top: nodeTop,
+      '--time': `${frequency * index + time}`,
+      animationDuration: `${speeds}ms`,
+      animationIterationCount: `${loop ? 'infinite' : 1}`,
+      animationDelay: `${frequency * index + time}ms`,
+      '--move-distance': `-${width}px`,
+    }
+    list.push(obj)
+    setStyleList([...list])
   }
 
   return (
     <div className={classes} ref={barrageBody} {...restProps}>
-      <div ref={barrageContainer} className="bContainer" />
+      <div ref={barrageContainer} className="bContainer">
+        {baItemList.map((item: any, index: number) => {
+          return (
+            <div
+              className={`barrage-item nut-barrage__item${index} move`}
+              style={styleList[index]}
+            >
+              {item.length > 8 ? item.substr(0, 8) + '...' : item}
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

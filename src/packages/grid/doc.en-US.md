@@ -7,7 +7,8 @@ Used to separate into equal-width blocks for page navigation.
 ### Install
 
 ```javascript
-import { Grid ,GridItem } from '@nutui/nutui-react'
+// react
+import { Grid, GridItem } from '@nutui/nutui-react'
 ```
 
 
@@ -177,7 +178,7 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid,GridItem } from '@nutui/nutui-react'
+import { Grid,GridItem,Avatar } from '@nutui/nutui-react'
 
 const App = () => {
   return (
@@ -233,11 +234,43 @@ export default App
 | reverse       | 	Whether to reverse the position of icon and text       | boolean                | `false`     |
 | direction     | 	Content arrangement direction, can be set to  `horizontal`    | string                 | `vertical`  |
 
+
+## Grid Event
+
+| 字段       | 说明         | 回调参数                                           |
+|----------|--------------|----------------------------------------------------|
+| onClick | GridItem Click Event | currentGridItem, index |
+
 ### GridItem Props
 
 | Attribute   | Description                                              | Type   | Default |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|------------|
 | text                 | text                                                                                     | string\| ReactNode              | -          |
+| fontSize `1.4.4`     | text size                                                                                | string \| number   | -          |
+| color `1.4.4`        | text color                                                                               | string   | -          |
 | icon                 | Icon name or URL                                                            | string \| ReactNode     | -          |
 | iconSize            | Icon size,for example `20px` `2em` `2rem`      | number \| string  |`28px`  |
 | iconColor           | Icon color              | string            | -           |
+
+### GridItem Event
+
+| Event                  | Description                                                                                     | Arguments    |
+|----------------------|-----------------------------------------------------------------------------------------|--------------------|
+| onClick `1.3.14`                 | GridItem Click Event    | `event: Event`      |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-grid-border-color | `#f5f6f7` |
+| --nutui-grid-item-content-padding | `16px 8px` |
+| --nutui-grid-item-content-bg-color | `$white` |
+| --nutui-grid-item-text-margin | `8px` |
+| --nutui-grid-item-text-color | `$gray1` |
+| --nutui-grid-item-icon-color | `$gray1` |
+| --nutui-grid-item-text-font-size | `$font-size-1` |

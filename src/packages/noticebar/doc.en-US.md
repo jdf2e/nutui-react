@@ -7,6 +7,7 @@ Used to display a group of message notifications in a continuons loop.
 ### Install
 
 ```javascript
+// react
 import { NoticeBar } from '@nutui/nutui-react';
 ```
 
@@ -134,8 +135,8 @@ const App = () => {
             list={horseLamp1}
             speed={10}
             standTime={1000}
-            click={(item: any) => {
-              go(item)
+            onClick={(e) => {
+              go(e.target.innerHtml)
             }}
             closeMode
           />
@@ -148,7 +149,7 @@ export default App
 
 
 
-### Vertical Scroll Complex Animation
+### Vertical Scroll Custom Left Icon
 
 :::demo
 
@@ -157,7 +158,7 @@ import  React, {useState} from "react";
 import { NoticeBar } from '@nutui/nutui-react';
 
 const App = () => {
-     const horseLamp2 = ref(['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox']);
+     const horseLamp2 = ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox'];
     return (
       <>
         <NoticeBar
@@ -165,7 +166,14 @@ const App = () => {
             list={horseLamp2}
             speed={10}
             standTime={2000}
-            complexAm
+            leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+            onClick={(e) => {
+              console.log('listClick', e.target)
+            }}
+            onClickItem={(e, val) => {
+              console.log('dom', e.target)
+              console.log('value', val)
+            }}
         />
       </>
     )
@@ -188,13 +196,18 @@ const App = () => {
 
     return (
       <>
-        <NoticeBar direction="vertical" height={50} speed={10} standTime={1000}>
+        <NoticeBar direction="vertical" height={50} speed={10} standTime={1000}
+        closeMode
+        onClose={() => {console.log('close')}}>
         {horseLamp3.map((item, index) => {
             return (
             <div
                 className="custom-item"
                 style={{ height: '50px', lineHeight: '50px' }}
                 key={index}
+                onClick={() => {
+                    console.log('custom-inner', item)
+                }}
             >
                 {item}
             </div>
@@ -228,6 +241,9 @@ const App = () => {
             list={horseLamp1}
             speed={10}
             standTime={1000}
+            onClickItem={(e, v) => {
+              console.log('onclick-custom', v)
+            }}
             rightIcon={<Icon name="fabulous" size="16" color="#f0250f" />}
         />
         </>
@@ -244,28 +260,28 @@ export default App
 
 | Attribute     | Description                                               | Type          | Default |
 | ---------- | ---------------------------------------------------------- | ------------- | ------ |
-| direction  | Rolling direction                                  | String        | across  |
-| text       | Notice text content                                | String        |  -      |
-| closeMode  | Whether to enable the off mode                     | Boolean       | false   |
-| leftIcon   | Left Icon                                          | String        | -       |
-| rightIcon  | Right Icon                                         | String        | -       |
-| color      | Text Color                                         | String        | -       |
-| background | Background                                         | String        | -       |
-| delay      | Delay time                                         | String/Number | 1       |
-| scrollable | Whether to scroll content                          | Boolean       | true    |
-| speed      | Scrolling speed (px/s)                             | Number         | 50      |
-| wrapable`v1.3.0` | Whether to enable text wrap                        | Boolean       | false    |
+| direction  | Rolling direction                                  | string        | `across`  |
+| text       | Notice text content                                | string        |  -      |
+| closeMode  | Whether to enable the off mode                     | boolean       | `false`   |
+| leftIcon   | Left Icon                                          | string        | -       |
+| rightIcon  | Right Icon                                         | string        | -       |
+| color      | Text Color                                         | string        | -       |
+| background | Background                                         | string        | -       |
+| delay      | Delay time                                         | string \| number | `1`       |
+| scrollable | Whether to scroll content                          | boolean       | `true`    |
+| speed      | Scrolling speed (px/s)                             | number         | `50`      |
+| wrapable`v1.3.0` | Whether to enable text wrap                        | boolean       | `false`    |
 
 ### Prop（direction=vertical）
 
 | Attribute    | Description                             | Type     | Default          |
 |--------------|-----------------------------------------|----------|------------------|
-| list         | List                                    | Array    | []               |
-| speed        | Scrolling speed                         | Number   | 50               |
-| standTime    | Show time(millisecond)                  | Number   | 1000             |
-| complexAm    | Complex animation                       | Boolean  | false            |
-| height       | height                                  | Number   | 40               |
-| closeMode    | Whether to enable the off mode          | Boolean  | false            |
+| list         | List                                    | Array    | `[]`               |
+| speed        | Scrolling speed                         | number   | `50`               |
+| standTime    | Show time(millisecond)                  | number   | `1000`             |
+| complexAm    | Complex animation                       | boolean  | `false`            |
+| height       | height                                  | number   | `40`               |
+| closeMode    | Whether to enable the off mode          | boolean  | `false`            |
 
 ### Slots
 
@@ -278,6 +294,28 @@ export default App
 
 | Attribute  | Description                             | Arguments     |
 | ---------- | --------------------------------------- | ------------ |
-| click      | Emitted when NoticeBar is clicked       | event: Event |
-| close      | Emitted when NoticeBar is closed        | event: Event |
+| onClick `v1.3.8`     | Emitted when NoticeBar is clicked       | `event: Event` |
+| onClose `v1.3.8`     | Emitted when NoticeBar is closed        | `event: Event` |
+| onClickItm `v1.4.5` | Emitted when the currently displayed information is clicked when scrolling multiple pieces of data vertically | `event: Event, listItem` |
 
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-noticebar-background | `rgba(251, 248, 220, 1)` |
+| --nutui-noticebar-color | `#d9500b` |
+| --nutui-noticebar-font-size | `14px` |
+| --nutui-noticebar-height | `40px` |
+| --nutui-noticebar-line-height | `24px` |
+| --nutui-noticebar-left-icon-width | `16px` |
+| --nutui-noticebar-right-icon-width | `16px` |
+| --nutui-noticebar-box-padding | `0 16px` |
+| --nutui-noticebar-wrapable-padding | `16px` |
+| --nutui-noticebar-lefticon-margin | `0px 10px` |
+| --nutui-noticebar-righticon-margin | `0px 10px` |

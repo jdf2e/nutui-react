@@ -1,23 +1,54 @@
 @import '../popup/popup.scss';
+@import '../tabs/tabs.scss';
+
+.nut-theme-dark {
+  .nut-cascader {
+    .nut-cascader__bar {
+      background: $dark5;
+      color: $dark1;
+    }
+
+    .nut-tabs__titles {
+      background: $dark5;
+    }
+
+    &__title {
+      color: $dark1;
+      background-color: $dark5;
+    }
+
+    .nut-tabpane {
+      background-color: $dark5;
+    }
+
+    .nut-cascader-item {
+      color: $dark1;
+    }
+  }
+}
+
 .nut-cascader {
   width: 100%;
   font-size: $cascader-font-size;
   line-height: $cascader-line-height;
+
   &__title {
+    background-color: $gray6;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: $cascader-title-padding;
-    text-align: center;
     font-weight: bold;
     line-height: $cascader-title-line-height;
-    color: #1a1a1a;
+    color: $gray1;
     font-size: $cascader-title-font-size;
   }
+
   .nut-tabs__titles {
     padding: $cascader-tabs-item-padding;
-    background: #fff;
+    background: $gray6;
   }
+
   .nut-tabs__titles-item {
     flex: initial;
     min-width: auto;
@@ -25,44 +56,53 @@
     padding: $cascader-tabs-item-padding;
     white-space: nowrap;
   }
+
   .nut-tabpane {
     padding: 0;
   }
+
   &-pane {
     display: block;
-    padding: 0;
-    margin: 0;
     width: 100%;
     padding-top: $cascader-pane-paddingTop;
     height: $cascader-pane-height;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
+
   &-item {
     display: flex;
     align-items: center;
+    justify-content: center;
+    height: $cascader-item-height;
     padding: $cascader-item-padding;
-    margin: 0;
-    cursor: pointer;
+    margin: $cascader-item-margin;
+    border-bottom: $cascader-item-border-bottom;
     font-size: $cascader-item-font-size;
     color: $cascader-item-color;
+    cursor: pointer;
+
     &.disabled {
       opacity: 0.6;
       cursor: not-allowed;
     }
+
     &.active {
       &:not(.disabled) {
         color: $cascader-item-active-color;
       }
+
       .nut-cascader-item__icon-check {
         visibility: visible;
-        color: $cascader-item-active-color;
+        color: inherit;
       }
     }
   }
+
   &-item__title {
     flex: 1;
   }
+
   .nut-icon-checklist {
     margin-left: $cascader-icon-checklist-marginLeft;
     visibility: hidden;

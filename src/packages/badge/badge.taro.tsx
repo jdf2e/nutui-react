@@ -1,10 +1,12 @@
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
+import classNames from 'classnames'
 
 import Icon from '@/packages/icon/index.taro'
+import bem from '@/utils/bem'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface BadgeProps extends IComponent {
+export interface BadgeProps extends BasicComponent {
   value: any
   dot: boolean
   max: number
@@ -18,8 +20,11 @@ export interface BadgeProps extends IComponent {
 
 export type BadgeType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
 
+const b = bem('badge')
+
 const defaultProps = {
   ...ComponentDefaults,
+  className: '',
   value: '',
   dot: false,
   max: 10000,
@@ -31,6 +36,8 @@ const defaultProps = {
 } as BadgeProps
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   const {
+    className,
+    style,
     children,
     dot,
     top,
@@ -58,11 +65,12 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     style.top = `${Number(top) || parseFloat(top) || 0}px`
     style.right = `${Number(right) || parseFloat(right) || 0}px`
     style.zIndex = zIndex
-    style.backgroundColor = color
+    style.background = color
     return style
   }
+
   return (
-    <div className="nut-badge">
+    <div className={classNames(b(), className)} style={style}>
       {icons !== '' && (
         <div className="slot-icons">
           <Icon
@@ -77,7 +85,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
       )}
       <div>{children}</div>
       <div
-        className={`${dot ? 'is-dot' : ''} nut-badge__content sup`}
+        className={classNames({ 'is-dot': dot }, b('content'), 'sup')}
         style={getStyle()}
       >
         {content()}

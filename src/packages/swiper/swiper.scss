@@ -1,3 +1,4 @@
+@import '../swiperitem/swiperitem.scss';
 .nut-swiper {
   position: relative;
   z-index: 1;
@@ -18,20 +19,17 @@
     display: flex;
     position: absolute;
     left: 50%;
-    bottom: 12px;
+    bottom: $swiper-pagination-bottom;
     transform: translateX(-50%);
     i {
-      width: 8px;
-      height: 3px;
-      margin-right: 7px;
-      border-radius: 2px;
+      width: $swiper-pagination-item-width;
+      height: $swiper-pagination-item-height;
+      margin-right: $swiper-pagination-item-margin-right;
+      border-radius: $swiper-pagination-item-border-radius;
       &:last-child {
         margin-right: 0;
       }
     }
-  }
-  &__pagination-item {
-    background-color: $swiper-pagination-item-background-color;
   }
   &__pagination-vertical {
     top: 50%;

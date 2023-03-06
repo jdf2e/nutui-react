@@ -7,24 +7,25 @@ import React, {
   MouseEventHandler,
 } from 'react'
 import classNames from 'classnames'
+import { Image } from '@tarojs/components'
 import { AvatarContext } from '@/packages/avatargroup/AvatarContext'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon/index.taro'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface AvatarProps extends IComponent {
+export interface AvatarProps extends BasicComponent {
   size: string
-  icon: string
+  icon: React.ReactNode
+  iconSize?: string | number
   shape: AvatarShape
   bgColor: string
   color: string
   prefixCls: string
   url: string
   className: string
-  alt: string
   style: React.CSSProperties
   activeAvatar: (e: MouseEvent) => void
+  onActiveAvatar: (e: MouseEvent) => void
   onError: (e: any) => void
 }
 
@@ -34,11 +35,11 @@ const defaultProps = {
   ...ComponentDefaults,
   size: '',
   icon: '',
+  iconSize: '',
   bgColor: '#eee',
   color: '#666',
   prefixCls: 'nut-avatar',
   url: '',
-  alt: '',
 } as AvatarProps
 export const Avatar: FunctionComponent<
   Partial<AvatarProps> & React.HTMLAttributes<HTMLDivElement>
@@ -51,11 +52,12 @@ export const Avatar: FunctionComponent<
     bgColor,
     color,
     url,
-    alt,
     icon,
+    iconSize,
     className,
     style,
     activeAvatar,
+    onActiveAvatar,
     onError,
     iconClassPrefix,
     iconFontClassName,
@@ -139,16 +141,9 @@ export const Avatar: FunctionComponent<
   }
 
   const clickAvatar: MouseEventHandler<HTMLDivElement> = (e: any) => {
-    if (props.activeAvatar) {
-      props.activeAvatar(e)
-    }
+    activeAvatar && activeAvatar(e)
+    onActiveAvatar && onActiveAvatar(e)
   }
-
-  console.log(
-    '!parent?.propAvatarGroup?.maxCount',
-    !parent?.propAvatarGroup?.maxCount,
-    showMax
-  )
 
   return (
     <>
@@ -165,15 +160,12 @@ export const Avatar: FunctionComponent<
           {(!parent?.propAvatarGroup?.maxCount ||
             avatarIndex <= parent?.propAvatarGroup?.maxCount) && (
             <>
-              {url && <img src={url} alt={alt} onError={errorEvent} />}
-              {icon && (
-                <Icon
-                  classPrefix={iconClassPrefix}
-                  fontClassName={iconFontClassName}
-                  className="icon"
-                  name={iconStyles}
-                />
+              {url && (
+                <Image className="avatar-img" src={url} onError={errorEvent} />
               )}
+              {React.isValidElement(icon)
+                ? React.cloneElement<any>(icon, { className: 'icon' })
+                : null}
               {children && <span className="text">{children}</span>}
             </>
           )}

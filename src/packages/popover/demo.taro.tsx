@@ -1,16 +1,23 @@
 import React, { useRef, useState } from 'react'
-import { Button, Icon, Popover } from '@/packages/nutui.react.taro'
+import Taro from '@tarojs/taro'
+import {
+  Cart2,
+  Location2,
+  My2,
+  Category,
+  Location,
+  Message,
+  Notice,
+  Scan2,
+  Service,
+} from '@nutui/icons-react-taro'
+import { Button, Icon, Popover, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/popover/demo.scss'
+import Header from '@/sites/components/header'
 
 interface List {
   name: string
-  icon?: string
-  disabled?: boolean
-}
-
-interface List {
-  name: string
-  icon?: string
+  icon?: React.ReactNode
   disabled?: boolean
 }
 
@@ -49,15 +56,15 @@ const BadgeDemo = () => {
   const iconItemList = [
     {
       name: '选项一',
-      icon: 'my2',
+      icon: <My2 />,
     },
     {
       name: '选项二',
-      icon: 'cart2',
+      icon: <Cart2 />,
     },
     {
       name: '选项三',
-      icon: 'location2',
+      icon: <Location2 />,
     },
   ]
   const itemListDisabled = [
@@ -75,28 +82,28 @@ const BadgeDemo = () => {
   ]
   const selfContent = [
     {
-      name: 'service',
-      desc: '选项一',
+      name: <Service />,
+      desc: 'option1',
     },
     {
-      name: 'notice',
-      desc: '选项二',
+      name: <Notice />,
+      desc: 'option2',
     },
     {
-      name: 'location',
-      desc: '选项三',
+      name: <Location />,
+      desc: 'option3',
     },
     {
-      name: 'category',
-      desc: '选项四',
+      name: <Category />,
+      desc: 'option4',
     },
     {
-      name: 'scan2',
-      desc: '选项五',
+      name: <Scan2 />,
+      desc: 'option5',
     },
     {
-      name: 'message',
-      desc: '选项六',
+      name: <Message />,
+      desc: 'option6',
     },
   ]
   const [lightTheme, setLightTheme] = useState(false)
@@ -128,94 +135,101 @@ const BadgeDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>基础用法</h2>
-        <Popover
-          visible={lightTheme}
-          onClick={() => {
-            lightTheme ? setLightTheme(false) : setLightTheme(true)
-          }}
-          list={itemList}
-          style={{ marginRight: '30px' }}
-        >
-          <Button type="primary" shape="square">
-            明朗风格
-          </Button>
-        </Popover>
-        <Popover
-          visible={darkTheme}
-          theme="dark"
-          onClick={() => {
-            darkTheme ? setDarkTheme(false) : setDarkTheme(true)
-          }}
-          list={itemList}
-        >
-          <Button type="primary" shape="square">
-            暗黑风格
-          </Button>
-        </Popover>
-
+        <Cell>
+          <Popover
+            visible={lightTheme}
+            onClick={() => {
+              lightTheme ? setLightTheme(false) : setLightTheme(true)
+            }}
+            list={itemList}
+            style={{ marginRight: '30px' }}
+          >
+            <Button type="primary" shape="square">
+              明朗风格
+            </Button>
+          </Popover>
+          <Popover
+            visible={darkTheme}
+            theme="dark"
+            onClick={() => {
+              darkTheme ? setDarkTheme(false) : setDarkTheme(true)
+            }}
+            list={itemList}
+          >
+            <Button type="primary" shape="square">
+              暗黑风格
+            </Button>
+          </Popover>
+        </Cell>
         <h2>选项配置</h2>
-        <Popover
-          visible={showIcon}
-          theme="dark"
-          onClick={() => {
-            showIcon ? setShowIcon(false) : setShowIcon(true)
-          }}
-          list={iconItemList}
-          style={{ marginRight: '30px' }}
-        >
-          <Button type="primary" shape="square">
-            展示图标
-          </Button>
-        </Popover>
-        <Popover
-          visible={disableAction}
-          onClick={() => {
-            disableAction ? setDisableAction(false) : setDisableAction(true)
-          }}
-          list={itemListDisabled}
-          onChoose={chooseHandle}
-        >
-          <Button type="primary" shape="square">
-            禁用选项
-          </Button>
-        </Popover>
-
+        <Cell>
+          <Popover
+            visible={showIcon}
+            theme="dark"
+            onClick={() => {
+              showIcon ? setShowIcon(false) : setShowIcon(true)
+            }}
+            list={iconItemList}
+            style={{ marginRight: '30px' }}
+          >
+            <Button type="primary" shape="square">
+              展示图标
+            </Button>
+          </Popover>
+          <Popover
+            visible={disableAction}
+            onClick={() => {
+              disableAction ? setDisableAction(false) : setDisableAction(true)
+            }}
+            list={itemListDisabled}
+            onChoose={chooseHandle}
+          >
+            <Button type="primary" shape="square">
+              禁用选项
+            </Button>
+          </Popover>
+        </Cell>
         <h2>自定义内容</h2>
-        <Popover
-          visible={customized}
-          onClick={() => {
-            customized ? setCustomized(false) : setCustomized(true)
-          }}
-          location="bottom-start"
-          className="customContent"
-        >
-          <Button type="primary" shape="square">
-            自定义内容
-          </Button>
-          {customized ? (
-            <div className="self-content" style={selfContentStyle}>
-              {selfContent.map((item: any) => {
-                return (
-                  <div
-                    className="self-content-item"
-                    style={selfContentItem}
-                    key={item.name}
-                  >
-                    <Icon name={item.name} size="15" />
-                    <div className="self-content-desc" style={selfContentDesc}>
-                      {item.desc}
+        <Cell>
+          <Popover
+            visible={customized}
+            onClick={() => {
+              customized ? setCustomized(false) : setCustomized(true)
+            }}
+            location="bottom-start"
+            className="customContent"
+          >
+            <Button type="primary" shape="square">
+              自定义内容
+            </Button>
+            {customized ? (
+              <div className="self-content" style={selfContentStyle}>
+                {selfContent.map((item: any) => {
+                  return (
+                    <div
+                      className="self-content-item"
+                      style={selfContentItem}
+                      key={item.name}
+                    >
+                      {item.name}
+                      <div
+                        className="self-content-desc"
+                        style={selfContentDesc}
+                      >
+                        {item.desc}
+                      </div>
                     </div>
-                  </div>
-                )
-              })}
-            </div>
-          ) : (
-            ''
-          )}
-        </Popover>
-
+                  )
+                })}
+              </div>
+            ) : (
+              ''
+            )}
+          </Popover>
+        </Cell>
         <h2 className="demoClass">位置自定义</h2>
 
         <Popover
@@ -231,26 +245,28 @@ const BadgeDemo = () => {
           <div className="brick" />
         </Popover>
 
-        <div className="customButtonBox">
-          {customLocation.current.map((location, i) => {
-            const k = Object.keys(location)[0] as any
-            const v = Object.values(location)[0]
-            return (
-              <Button
-                key={i}
-                type="primary"
-                shape="square"
-                style={{ width: '160px', marginBottom: '8px' }}
-                onClick={() => {
-                  setCustomLocationName(k)
-                  setCustomLocationShow(!customLocationShow)
-                }}
-              >
-                {k} 弹出
-              </Button>
-            )
-          })}
-        </div>
+        <Cell className="demo-cell-popover">
+          <div className="customButtonBox">
+            {customLocation.current.map((location, i) => {
+              const k = Object.keys(location)[0] as any
+              const v = Object.values(location)[0]
+              return (
+                <Button
+                  key={i}
+                  type="primary"
+                  shape="square"
+                  style={{ width: '140px', marginBottom: '8px' }}
+                  onClick={() => {
+                    setCustomLocationName(k)
+                    setCustomLocationShow(!customLocationShow)
+                  }}
+                >
+                  {k}
+                </Button>
+              )
+            })}
+          </div>
+        </Cell>
       </div>
     </>
   )

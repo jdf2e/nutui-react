@@ -13,6 +13,9 @@ type TSwipeDemo = {
   title3: string
   title4: string
   title5: string
+  title6: string
+  openOrClose: string
+  title7: string
   click: string
   sure: string
   del: string
@@ -22,6 +25,7 @@ type TSwipeDemo = {
   collect: string
   open: string
   close: string
+  closeLeft: string
   tips: string
   cart: string
   leftDel: string
@@ -38,6 +42,9 @@ const SwipeDemo = () => {
       title3: '事件监听',
       title4: '非同步控制',
       title5: '自定义內容',
+      title6: '通过实例方法控制',
+      openOrClose: '点击下方按钮打开或关闭',
+      title7: '点击关闭',
       click: '点击',
       sure: '确定',
       del: '删除',
@@ -47,6 +54,7 @@ const SwipeDemo = () => {
       collect: '收藏',
       open: '打开',
       close: '关闭',
+      closeLeft: '点击右侧按钮关闭',
       tips: '提示',
       cart: '加入购物车',
       leftDel: '左滑删除',
@@ -60,6 +68,9 @@ const SwipeDemo = () => {
       title3: '事件監聽',
       title4: '非同步控制',
       title5: '自定義內容',
+      title6: '通過實例方法控制',
+      openOrClose: '點擊下方按鈕打開或關閉',
+      title7: '点击关闭',
       click: '點擊',
       sure: '確定',
       del: '刪除',
@@ -69,6 +80,7 @@ const SwipeDemo = () => {
       collect: '收藏',
       open: '打開',
       close: '關閉',
+      closeLeft: '點擊右側按鈕關閉',
       tips: '提示',
       cart: '加入購物車',
       leftDel: '左滑刪除',
@@ -82,6 +94,9 @@ const SwipeDemo = () => {
       title3: 'Event monitoring',
       title4: 'Asynchronous control',
       title5: 'Custom content',
+      title6: 'Control via instance method',
+      openOrClose: 'Click the button below',
+      title7: 'Click to close',
       click: 'click',
       sure: 'ok',
       del: 'delete',
@@ -91,6 +106,7 @@ const SwipeDemo = () => {
       collect: 'collect',
       open: 'open',
       close: 'close',
+      closeLeft: 'Click the right button to close',
       tips: 'tips',
       cart: 'add to shopping cart',
       leftDel: 'left slide delete',
@@ -104,6 +120,9 @@ const SwipeDemo = () => {
       title3: 'Monitor waktu',
       title4: 'kontrol asinkron',
       title5: 'isi suai',
+      title6: 'kontrol melalui metode instance',
+      openOrClose: 'Klik tombol di bawah untuk membuka atau menutup',
+      title7: 'klik untuk menutup',
       click: 'klik',
       sure: 'OK',
       del: 'Hapus',
@@ -113,6 +132,7 @@ const SwipeDemo = () => {
       collect: 'kumpulkan',
       open: 'buka',
       close: 'tutup',
+      closeLeft: 'Klik tombol kanan untuk menutup',
       tips: 'tip',
       cart: 'tambah ke kereta belanja',
       leftDel: 'padam slide kiri',
@@ -141,6 +161,9 @@ const SwipeDemo = () => {
     Toast.text('close')
   }
 
+  const closeRef = useRef(null)
+  const openRef = useRef(null)
+
   return (
     <>
       <div className="demo">
@@ -151,8 +174,42 @@ const SwipeDemo = () => {
               {translated.del}
             </Button>
           }
+          onTouchStart={(event) => console.log('touch start', event)}
+          onTouchMove={(event) => console.log('touch Move', event)}
+          onTouchEnd={(event) => console.log('touch End', event)}
         >
           <Cell title={translated.leftDel} roundRadius={0} />
+        </Swipe>
+        <h2>{translated.title6}</h2>
+        <Swipe
+          ref={openRef}
+          rightAction={
+            <Button shape="square" type="danger">
+              {translated.del}
+            </Button>
+          }
+        >
+          <Cell title={translated.openOrClose} roundRadius={0} />
+        </Swipe>
+        <Button onClick={() => (openRef.current as any)?.open()}>
+          {translated.open}
+        </Button>
+        <Button onClick={() => (openRef.current as any)?.close()}>
+          {translated.close}
+        </Button>
+        <h2>{translated.title7}</h2>
+        <Swipe
+          ref={closeRef}
+          rightAction={
+            <Button shape="square" type="danger">
+              {translated.del}
+            </Button>
+          }
+          onActionClick={() => {
+            ;(closeRef.current as any)?.close()
+          }}
+        >
+          <Cell title={translated.closeLeft} roundRadius={0} />
         </Swipe>
         <h2>{translated.title2}</h2>
         <Swipe
@@ -184,7 +241,6 @@ const SwipeDemo = () => {
           }
           onActionClick={handleChange}
           onOpen={({ name, position }) => {
-            console.log(name, position)
             Toast.text(translated.open)
           }}
           onClose={handleClose}

@@ -31,7 +31,7 @@ test('Background settings inside and outside the search box', () => {
     'style',
     'background: red;'
   )
-  expect(container.querySelector('.nut-searchbar__input')).toHaveAttribute(
+  expect(container.querySelector('.nut-searchbar__content')).toHaveAttribute(
     'style',
     'background: green;'
   )

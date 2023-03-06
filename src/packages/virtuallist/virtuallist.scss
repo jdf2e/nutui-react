@@ -1,9 +1,21 @@
+.nut-theme-dark {
+  .nut-virtualList-demo-box {
+    li {
+      background-color: $dark5;
+      color: $dark1;
+    }
+    .nut-vertical-items li {
+      box-shadow: 0 1px 6px 0 $dark5;
+    }
+  }
+}
+
 .nut-horizontal-items {
   float: left;
   li {
     display: block;
     float: left;
-    background: #fff;
+    background: $background-color3;
     padding: 10px;
     margin-right: 20px;
   }
@@ -17,7 +29,7 @@
 .nut-vertical-items {
   li {
     display: block;
-    background: rgba(255, 255, 255, 1);
+    background: $background-color3;
     border-radius: 7px;
     box-shadow: 0 1px 6px 0 rgba(237, 238, 241, 1);
     margin-top: 20px;
@@ -26,7 +38,7 @@
     line-height: 18px;
     font-family: PingFangSC;
     font-weight: 500;
-    color: rgba(102, 102, 102, 1);
+    color: $title-color;
   }
 }
 
@@ -47,5 +59,29 @@
         height: 0px;
       }
     }
+  }
+}
+
+.nut-virtuallist {
+  width: 100%;
+  overflow: scroll;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+  &-phantom {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+  &-container {
+    left: 0;
+    right: 0;
+    top: 0;
+    position: absolute;
+  }
+  &-item {
+    overflow: hidden;
+    margin: $list-item-margin;
   }
 }

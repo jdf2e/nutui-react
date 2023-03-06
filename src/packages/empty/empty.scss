@@ -1,3 +1,12 @@
+.nut-theme-dark {
+  .nut-empty {
+    background: $dark6;
+    &__description {
+      color: $dark1;
+    }
+  }
+}
+
 .nut-empty {
   box-sizing: border-box;
   display: flex;
@@ -5,7 +14,7 @@
   flex-direction: column;
   justify-content: center;
   padding: $empty-padding;
-
+  background-color: $background-color3;
   &__image {
     width: $empty-image-size;
     height: $empty-image-size;

@@ -1,21 +1,84 @@
+.nut-theme-dark {
+  .nut-radiogroup {
+    &--vertical {
+      .nut-radio {
+        &__label {
+          margin-right: 5px;
+        }
+
+        &__button {
+          background-color: $dark4;
+          border: 1px solid $dark6;
+        }
+
+        &__button--active {
+          border-color: $radio-label-button-border-color;
+        }
+      }
+    }
+
+    &--horizontal {
+      .nut-radio {
+        &__label {
+          margin-right: 5px;
+        }
+
+        &__button {
+          background-color: $dark4;
+          border: 1px solid $dark6;
+        }
+
+        &__button--active {
+          border-color: $radio-label-button-border-color;
+        }
+      }
+    }
+  }
+}
+
 .nut-radiogroup {
-  display: inline-block;
   .nut-radio {
     margin-bottom: 5px;
+
+    &__label {
+      margin-right: 5px;
+    }
+
+    &__button {
+      background-color: $gray4;
+    }
   }
+
   &--vertical {
+    .nut-radio {
+      &.nut-radio--reverse {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      &__label {
+        margin-right: 5px;
+      }
+
+      &__button {
+        border: 1px solid $gray6;
+      }
+
+      &__button--active {
+        border-color: $radio-label-button-border-color;
+      }
+    }
   }
+
   &--horizontal {
     .nut-radio {
       display: inline-flex;
-      margin-right: 10px;
+      margin-right: 20px;
+
       &--round {
         .nut-radio__label {
           margin: 0 6px;
         }
-      }
-      &--button {
-        // ...
       }
     }
   }

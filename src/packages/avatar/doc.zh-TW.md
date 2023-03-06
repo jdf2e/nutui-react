@@ -6,6 +6,7 @@
 
 ### 安裝
 ``` ts
+// react
 import { Avatar } from '@nutui/nutui-react';
 ```
 
@@ -192,7 +193,7 @@ const App = () => {
   }
   return (
     <>
-      <Avatar icon="my" activeAvatar={activeAvatar} />
+      <Avatar icon="my" onActiveAvatar={activeAvatar} />
     </>
   )
 }
@@ -204,28 +205,46 @@ export default App;
 
 | 字段     | 說明                                                           | 類型   | 默認值 |
 | -------- | ---------------------------------------------------------------- | ------ | ------ |
-| size     | 設置頭像的大小，可選值為：large、normal、small，支持直接輸入數字   | String | normal |
-| shape    | 設置頭像的形狀，可選值為：square、round            | String | round  |
-| bgColor | 設置 Icon、字符類型頭像的背景色                    | String | #eee   |
-| color    | 設置 Icon、字符類型頭像的顏色                     | String | #666   |
-| url      | 設置圖片類型頭像的地址                           | String | -   |
-| alt      | 設置圖片類型頭像無法顯示時的替代文本                | String | -   |
-| icon     | 設置 Icon 類型頭像圖標, 類似 Icon 組件的 name 屬性  | String | -     |
+| size     | 設置頭像的大小，可選值為：large、normal、small，支持直接輸入數字   | string | `normal` |
+| shape    | 設置頭像的形狀，可選值為：square、round            | string | `round`  |
+| bgColor | 設置 Icon、字符類型頭像的背景色                    | string | `#eee`   |
+| color    | 設置 Icon、字符類型頭像的顏色                     | string | `#666`   |
+| url      | 設置圖片類型頭像的地址                           | string | -   |
+| alt      | 設置圖片類型頭像無法顯示時的替代文本                | string | -   |
+| icon     | 設置 Icon 類型頭像圖標, 類似 Icon 組件的 name 屬性  | string | -     |
+| iconSize`v1.3.11`     | [圖標尺寸](#/icon) | string \| number | `16`|
 
 ### avatarGroup
 | 字段     | 說明                                                             | 類型   | 默認值 |
 | -------- | ---------------------------------------------------------------- | ------ | ------ |
-| maxCount     | 顯示的最大頭像個數   | Number、String | - |
+| maxCount     | 顯示的最大頭像個數   | number \| string | - |
 | maxContent  | 頭像數量超出時，會出現一個頭像折疊元素。該元素內容可為...、more、+N。默認為 +N | 
-| size         | 設置頭像的大小，可選值為：large、normal、small，支持直接輸入數字   | String | +N |
-| shape        | 設置頭像的形狀，可選值為：square、round           | String | round  |
-| maxBgColor  | 設置 Icon、字符類型頭像的背景色                    | String | #eee   |
-| maxColor    | 設置 Icon、字符類型頭像的顏色                   | String | #666 |
-| span         | 設置頭像之間的間距               | String | -8   |
-| zIndex       | 頭像之間的層級關係，可選值為：left、right  | String | left     |
+| size         | 設置頭像的大小，可選值為：large、normal、small，支持直接輸入數字   | string | +N |
+| shape        | 設置頭像的形狀，可選值為：square、round           | string | `round`  |
+| maxBgColor  | 設置 Icon、字符類型頭像的背景色                    | string | `#eee`   |
+| maxColor    | 設置 Icon、字符類型頭像的顏色                   | string | `#666` |
+| span         | 設置頭像之間的間距               | string | `-8`   |
+| zIndex       | 頭像之間的層級關係，可選值為：left、right  | string | `left`     |
 ### Events
 
 | 字段             | 說明         | 類型     | 回調參數 |
 | ---------------- | ------------ | -------- | -------- |
-| activeAvatar | 點擊頭像觸發事件    | Function | event    |
-| onError       | 圖片加載失敗的事件   | Function | event    |
+| activeAvatar `v1.3.8廢棄` | 點擊頭像觸發事件    | Function | `event`    |
+| onActiveAvatar `v1.3.8` | 點擊頭像觸發事件    | Function | `event`    |
+| onError       | 圖片加載失敗的事件   | Function | `event`    |
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-avatar-square | `5px` |
+| --nutui-avatar-large-width | `60px` |
+| --nutui-avatar-large-height | `60px` |
+| --nutui-avatar-small-width | `32px` |
+| --nutui-avatar-small-height | `32px` |
+| --nutui-avatar-normal-width | `40px` |
+| --nutui-avatar-normal-height | `40px` |

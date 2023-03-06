@@ -1,4 +1,40 @@
+@import '../icon/icon.scss';
+
+.nut-theme-dark {
+  .nut-navbar {
+    background: $dark5;
+    color: $dark1;
+    box-shadow: none;
+
+    .title {
+      color: $dark1;
+    }
+
+    &__left {
+      color: $dark2;
+
+      i {
+        color: $dark2 !important;
+      }
+    }
+
+    &__right {
+      color: $dark1;
+    }
+
+    &--border {
+      border-bottom: none;
+    }
+  }
+
+  .nut-tabs__titles-item__text {
+    background: $dark5;
+    color: $dark1;
+  }
+}
+
 .nut-navbar {
+  width: $navbar-width;
   position: relative;
   display: flex;
   align-items: center;
@@ -11,26 +47,32 @@
   color: $navbar-color;
   margin-bottom: $navbar-margin-bottom;
   overflow: hidden;
+
   &:active::before {
     opacity: 0.1;
   }
+
   &--border {
     border-bottom: 1px solid #eee;
   }
+
   &--fixed {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
   }
+
   &--placeholder {
     display: inline-block;
     width: 100%;
   }
+
   &--safe-area-inset-top {
     padding-top: constant(safe-area-inset-top);
     padding-top: env(safe-area-inset-top);
   }
+
   &--clickable {
     &::before {
       position: absolute;
@@ -61,6 +103,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     .title {
       min-width: $navbar-title-width;
       font-size: $navbar-title-font;
@@ -71,23 +114,31 @@
       -webkit-line-clamp: 1;
       overflow: hidden;
     }
+
     &.icon {
       .icon {
         margin: $navbar-title-icon-margin;
       }
     }
+
     .nut-icon {
       display: inline;
     }
+
     &-desc {
       font-size: $cell-title-desc-font;
     }
+
     .text__title {
       display: inline-block;
     }
 
     .nut-tabs__titles {
       background: $white;
+
+      &-item__text {
+        color: $title-color;
+      }
     }
 
     .nut-tabpane {
@@ -101,7 +152,7 @@
 
   &__left {
     font-size: $cell-desc-font;
-    color: $cell-desc-color;
+    color: $gray2;
     position: absolute;
     left: 0;
     top: 0;
@@ -111,9 +162,10 @@
     cursor: pointer;
     padding: 0 16px;
   }
+
   &__right {
     font-size: $cell-desc-font;
-    color: $cell-desc-color;
+    color: $gray2;
     position: absolute;
     right: 0;
     top: 0;
@@ -122,9 +174,11 @@
     align-items: center;
     padding: 0 16px;
     cursor: pointer;
+
     .rightIcon {
       margin-left: 16px;
     }
+
     .leftIcon {
       margin-left: 16px;
     }

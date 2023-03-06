@@ -6,6 +6,7 @@
     
 ### 安装
 ``` javascript
+// react
 import { Pagination } from '@nutui/nutui-react';
 ```    
 
@@ -125,20 +126,38 @@ export default App;
     
 | 参数           | 说明                             | 类型                      | 默认值            |
 | -------------- | -------------------------------- | ------------------------- | ----------------- |
-| modelValue     | 当前页码                         | Number                    | -                 |
-| defaultValue   | 当前页码                         | Number                    | 1                 |
-| mode           | 显示模式,可选值为：multi，simple | String                    | multi             |
-| prevText       | 自定义上一页按钮内容             | String \| React.ReactNode | 上一页            |
-| nextText       | 自定义下一页按钮内容             | String \| React.ReactNode | 下一页            |
-| pageCount      | 总页数                           | String \| Number          | 传入/根据页数计算 |
-| totalItems     | 总记录数                         | String \| Number          | 0                 |
-| itemsPerPage   | 每页记录数                       | String \| Number          | 10                |
-| showPageSize   | 显示的页码个数                   | String \| Number          | 5                 |
-| forceEllipses  | 是否显示省略号                   | Boolean                   | false             |
-| pageNodeRender | 用于自定义页码的结构             | (page) => React.ReactNode | -                 |
+| modelValue     | 当前页码                         | number                    | -                 |
+| defaultValue   | 当前页码                         | number                    | `1`                 |
+| mode           | 显示模式,可选值为：multi，simple | string                    | `multi`             |
+| prevText       | 自定义上一页按钮内容             | string \| ReactNode | `上一页`            |
+| nextText       | 自定义下一页按钮内容             | string \| ReactNode | `下一页`            |
+| pageCount      | 总页数                           | string \| number          | 传入/根据页数计算 |
+| totalItems     | 总记录数                         | string \| number          | `0`                 |
+| itemsPerPage   | 每页记录数                       | string \| number          | `10`                |
+| showPageSize   | 显示的页码个数                   | string \| number          | `5`                 |
+| forceEllipses  | 是否显示省略号                   | boolean                   | `false`             |
+| pageNodeRender | 用于自定义页码的结构             | (page) => ReactNode | -                 |
     
 ### Events
     
 | 事件名   | 说明           | 回调参数 |
 | -------- | -------------- | -------- |
-| onChange | 页码改变时触发 | value    |
+| onChange | 页码改变时触发 | `value`    |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-pagination-color | `$primary-color` |
+| --nutui-pagination-font-size | `$font-size-2` |
+| --nutui-pagination-item-border-color | `#e4e7eb` |
+| --nutui-pagination-disable-color | `$disable-color` |
+| --nutui-pagination-disable-background-color | `#f7f8fa` |
+| --nutui-pagination-item-border-width | `1px` |
+| --nutui-pagination-item-border-radius | `2px` |
+| --nutui-pagination-prev-next-padding | `0 11px` |

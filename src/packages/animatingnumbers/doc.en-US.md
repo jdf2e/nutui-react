@@ -7,6 +7,7 @@ Digital animation collection
 ### Install
 
 ```javascript
+// react
 import { AnimatingNumbers } from '@nutui/nutui-react'
 ```
 
@@ -67,8 +68,8 @@ export default App
 
 | Props    | Description                             | Type   | Default           |
 | ---------- | ---------------------------------- | ------- | ------ |
-| maxLen     | Set the maximum display length. If the length is insufficient, make up 0 bit by bit | Number  | 0      |
-| endNumer   | The end value,                       | String  | ''     |
-| delaySpeed | Wait time for animation execution, in ms          | Number  | 300    |
-| easeSpeed  | Animation execution time, in s               | Number  | 1      |
-| thousands  | 是否有千位分隔符  Whether there are thousands separators                  | Boolean | false  |
+| maxLen     | Set the maximum display length. If the length is insufficient, make up 0 bit by bit | number  | `0`      |
+| endNumer   | The end value,                       | string  | -     |
+| delaySpeed | Wait time for animation execution, in ms          | number  | `300`    |
+| easeSpeed  | Animation execution time, in s               | number  | `1`      |
+| thousands  | 是否有千位分隔符  Whether there are thousands separators                  | boolean | `false`  |

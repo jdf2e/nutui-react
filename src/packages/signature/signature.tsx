@@ -11,6 +11,8 @@ export interface SignatureProps {
   className: string
   confirm?: (canvas: HTMLCanvasElement, dataurl: string) => void
   clear?: () => void
+  onConfirm?: (canvas: HTMLCanvasElement, dataurl: string) => void
+  onClear?: () => void
 }
 const defaultProps = {
   type: 'png',
@@ -23,7 +25,18 @@ export const Signature: FunctionComponent<
   Partial<SignatureProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { locale } = useConfig()
-  const { type, lineWidth, strokeStyle, unSupportTpl, className, ...rest } = {
+  const {
+    type,
+    lineWidth,
+    strokeStyle,
+    unSupportTpl,
+    className,
+    confirm,
+    clear,
+    onConfirm,
+    onClear,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }
@@ -97,16 +110,17 @@ export const Signature: FunctionComponent<
       canvasRef.current.removeEventListener(events[2], endEventHandler, false)
     }
   }
-  const clear = () => {
+  const handleClearBtn = () => {
     if (canvasRef.current && ctx.current) {
       canvasRef.current.addEventListener(events[2], endEventHandler, false)
       ctx.current.clearRect(0, 0, canvasWidth, canvasHeight)
       ctx.current.closePath()
     }
-    props.clear && props.clear()
+    clear && clear()
+    onClear && onClear()
   }
 
-  const confirm = () => {
+  const handleConfirmBtn = () => {
     onSave(canvasRef.current as HTMLCanvasElement)
   }
 
@@ -122,8 +136,9 @@ export const Signature: FunctionComponent<
       default:
         dataurl = canvas.toDataURL('image/png')
     }
-    clear()
-    props.confirm && props.confirm(canvas, dataurl as string)
+    handleClearBtn()
+    confirm && confirm(canvas, dataurl as string)
+    onConfirm && onConfirm(canvas, dataurl as string)
   }
   return (
     <div className={`${b()} ${className}`} {...rest}>
@@ -137,13 +152,17 @@ export const Signature: FunctionComponent<
         )}
       </div>
 
-      <Button className={`${b('btn')}`} type="default" onClick={() => clear()}>
+      <Button
+        className={`${b('btn')}`}
+        type="default"
+        onClick={() => handleClearBtn()}
+      >
         {locale.signature.reSign}
       </Button>
       <Button
         className={`${b('btn')}`}
         type="primary"
-        onClick={() => confirm()}
+        onClick={() => handleConfirmBtn()}
       >
         {locale.confirm}
       </Button>

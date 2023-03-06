@@ -1,8 +1,9 @@
 .nut-theme-dark {
   .nut-textarea {
-    background: $dark-background;
+    background: $dark5;
+
     &__textarea {
-      color: $dark-color;
+      color: $dark1;
     }
   }
 }
@@ -14,7 +15,7 @@
   display: flex;
   background: $white;
   font-size: $textarea-font;
-  padding: 10px 25px;
+  padding: $textarea-padding;
 
   &__disabled {
     .nut-textarea__textarea,
@@ -23,6 +24,7 @@
       color: $textarea-disabled-color !important;
     }
   }
+
   &__limit {
     position: absolute;
     right: 15px;
@@ -30,6 +32,7 @@
     font-size: $textarea-font;
     color: $textarea-limit-color;
   }
+
   &__textarea {
     // min-height: $textarea-height;
     outline: none;
@@ -40,12 +43,15 @@
     margin: 0;
     padding: 0;
     font-size: $textarea-font;
+    line-height: $textarea-text-line-height;
     color: $textarea-text-color;
+    caret-color: $textarea-text-curror-color;
     text-align: left;
     background-color: transparent;
     border: 0;
     resize: none;
   }
+
   .cpoyText {
     position: absolute;
     top: -999999px;

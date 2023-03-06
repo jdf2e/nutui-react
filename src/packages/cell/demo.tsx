@@ -122,12 +122,12 @@ const CellDemo = () => {
         />
         <Cell
           title={translated.title3}
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => testClick(event)}
         />
         <Cell title={translated.title4} roundRadius="0" />
-        <h2>尺寸设置large</h2>
+        <h2>{translated.title9}</h2>
         <Cell size="large" title={translated.title} desc={translated.desc} />
         <Cell
           size="large"
@@ -156,7 +156,6 @@ const CellDemo = () => {
             isLink
             url="https://jd.com"
           />
-          <Cell title={translated.routerJump} to="/" />
         </CellGroup>
         <CellGroup title={translated.customRight}>
           <Cell title="Switch" linkSlot={<Switch checked />} />
@@ -177,7 +176,7 @@ const CellDemo = () => {
         <Cell title={translated.name} icon="my" desc={translated.desc} isLink />
         <h2>{translated.title6}</h2>
         <Cell descTextAlign="left" desc={translated.desc} />
-        <h2>垂直居中</h2>
+        <h2>{translated.title7}</h2>
         <Cell
           center
           title={translated.title}

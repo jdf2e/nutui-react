@@ -1,16 +1,27 @@
+//@import '../../../styles/font/iconfont.css';
 .h5-span {
   display: inline;
 }
 
 .demo {
+  box-sizing: border-box;
+  min-height: 100vh;
+
+  &.web {
+    padding-top: 57px !important;
+  }
+
+  &.no-overflow {
+    overflow: unset;
+  }
   height: 100%;
   background: #f7f8fa;
   overflow-x: hidden;
   overflow-y: auto;
   padding: 0px 17px 10px 17px !important;
 
-  &.full {
-    padding: 0 0 0 0;
+  &-full {
+    padding: 0 0 0 0 !important;
     h2 {
       padding-left: 17px;
     }

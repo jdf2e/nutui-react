@@ -6,9 +6,11 @@ Circular progress bar component
 
 ### Install
 
-``` ts
-import { CirecleProgress } from '@nutui/nutui-react';
+```ts
+// react
+import { CircleProgress } from '@nutui/nutui-react';
 ```
+
 
 ### Basic Usage
 
@@ -136,10 +138,23 @@ export default App;
 
 | Attribute | Description | Type | Default
 |----- | ----- | ----- | -----
-| progress | Progress Rate | Number,String | Required, no default value
-| strokeWidth | Stroke width | Number,String | 5
-| radius | radius | Number,String | 50
-| circleColor | Progress color, passing object to render gradient | Number,String | '#fa2c19'
-| pathColor | Track Color | String | '#d9d9d9'
-| strokeLinecap | Stroke linecap, can be set to square butt | String | 'round'
-| clockwise| Whether to be clockwise | Boolean | true
+| progress | Progress Rate | number \| string | Required, no default value
+| strokeWidth | Stroke width | number \| string | `5`
+| radius | radius | number \| string | `50`
+| circleColor | Progress color, passing object to render gradient | number \| string | `#fa2c19`
+| pathColor | Track Color | string | `#d9d9d9`
+| strokeLinecap | Stroke linecap, can be set to square butt | string | `round`
+| clockwise| Whether to be clockwise | boolean | `true`
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-circleprogress-primary-color | `$primary-color` |
+| --nutui-circleprogress-path-color | `#e5e9f2` |
+| --nutui-circleprogress-text-color | `$title-color` |
+| --nutui-circleprogress-text-size | `$font-size-3` |

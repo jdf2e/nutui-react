@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { Address, Cell } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 interface CalBack {
   next: string
@@ -47,10 +49,13 @@ const AddressDemo = () => {
   const addressData: any = {
     province: [
       { id: 1, name: '北京', title: 'B' },
-      { id: 2, name: '广西', title: 'G' },
-      { id: 3, name: '江西', title: 'J' },
-      { id: 4, name: '四川', title: 'S' },
-      { id: 5, name: '浙江', title: 'Z' },
+      { id: 2, name: '北大荒', title: 'B' },
+      { id: 3, name: '北海', title: 'B' },
+      { id: 4, name: '北定', title: 'B' },
+      { id: 5, name: '广西', title: 'G' },
+      { id: 6, name: '江西', title: 'J' },
+      { id: 7, name: '四川', title: 'S' },
+      { id: 8, name: '浙江', title: 'Z' },
     ],
     city: [
       { id: 7, name: '朝阳区', title: 'C' },
@@ -323,14 +328,15 @@ const AddressDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>选择自定义地址</h2>
         <Cell
           title="选择地址"
           desc={text.one}
           onClick={() => showAddress('normal')}
         />
-        <h2>选中省市区</h2>
+        <h2>选中省市区1</h2>
         <Cell
           title="选择地址"
           desc={text.six}

@@ -7,6 +7,7 @@
 ### 安裝
 
 ``` javascript
+// react
 import { Popover } from '@nutui/nutui-react';
 ```
 
@@ -57,15 +58,16 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState, useRef  } from "react";
-import { Popover,Button,Icon } from '@nutui/nutui-react';
+import { Popover,Button } from '@nutui/nutui-react';
+import { My2, Cart2, Location2 } from '@nutui/icons-react'
 
 const App = () => {
   const [showIcon, setShowIcon] = useState(false)
   const [disableAction, setDisableAction] = useState(false)
   const iconItemList= [
-    {name: 'option1',icon: 'my2'},
-    {name: 'option2',icon: 'cart2'},
-    {name: 'option3',icon: 'location2'}
+    {name: 'option1',icon: <My2/>},
+    {name: 'option2',icon: <Cart2/>},
+    {name: 'option3',icon: <Location2/>}
   ];
   const itemListDisabled=[
     {name: 'option1',disabled: true},
@@ -101,33 +103,34 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState, useRef  } from "react";
-import { Popover,Button, Icon } from '@nutui/nutui-react';
+import { Popover,Button } from '@nutui/nutui-react';
+import { Service, Notice, Location, Category, Scan2, Message} from "@nutui/icons-react";
 
 const App = () => {
   const [customized, setCustomized] = useState(false)
   const selfContent= [
     {
-      name: 'service',
+      name: <Service size={15}/>,
       desc: 'option1'
     },
     {
-      name: 'notice',
+      name: <Notice  size={15}/>,
       desc: 'option2'
     },
     {
-      name: 'location',
+      name: <Location size={15}/>,
       desc: 'option3'
     },
     {
-      name: 'category',
+      name: <Category size={15}/>,
       desc: 'option4'
     },
     {
-      name: 'scan2',
+      name: <Scan2 size={15}/>,
       desc: 'option5'
     },
     {
-      name: 'message',
+      name: <Message size={15}/>,
       desc: 'option6'
     }
   ];
@@ -144,12 +147,12 @@ const App = () => {
           {
             selfContent.map((item: any)=>{
               return <div className="self-content-item" style={selfContentItem} key={item.name}>
-                <Icon name={item.name} size="15" />
+                    {item.name}
                 <div className="self-content-desc" style={selfContentDesc}>{ item.desc }</div>
               </div>
             })
           }
-        </div> : ''
+        </div> : null
         }
       </Popover>
     </>
@@ -220,11 +223,11 @@ export default App;
 
 | 字段            | 說明                            | 類型     | 默認值      |
 |----------------|---------------------------------|---------|------------|
-| list          | 選項列表                          | List[]   | []        |
-| visible      | 是否展示氣泡彈出層                 | boolean  | false     |
+| list          | 選項列表                          | List[]   | `[]`        |
+| visible      | 是否展示氣泡彈出層                 | boolean  | `false`     |
 | theme          | 主題風格，可選值為 dark            | string   | `light`   |
 | location       | 彈出位置  | string   | `bottom`  |
-| offset `v1.3.0`       | 出現位置的偏移量  | number   | 20  |
+| offset `v1.3.0`       | 出現位置的偏移量  | number   | `20`  |
 
 ### List 數據結構  
 
@@ -234,7 +237,7 @@ List 屬性是一個由對象構成的數組，數組中的每個對象配置一
 |----------------|----------------------|----------|--------|
 | name           | 選項文字               | string   | -      |
 | icon           | nut-icon 圖標名稱      | string   | -      |
-| disabled       | 是否為禁用狀態          | boolean  | false  | 
+| disabled       | 是否為禁用狀態          | boolean  | `false`  | 
 
 ### Events
 
@@ -245,3 +248,31 @@ List 屬性是一個由對象構成的數組，數組中的每個對象配置一
 
 
 
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-popover-border-radius`v1.4.8` | `8px`|
+| --nutui-popover-font-size`v1.4.8` | `$font-size-1` |
+| --nutui-popover-menu-item-height`v1.4.8` | `30px` |
+| --nutui-popover-menu-item-name-margin`v1.4.8` | `0px 10px` |
+| --nutui-popover-menu-item-hover-background-color`v1.4.8` | `$primary-color`|
+| --nutui-popover-menu-item-hover-text-color`v1.4.8` | `$primary-text-color`|
+| --nutui-popover-menu-item-border-width`v1.4.8` | `80%`|
+| --nutui-popover-menu-item-border-height`v1.4.8` | `1px`|
+| --nutui-popover-menu-item-border-left`v1.4.8` | `10%`|
+| --nutui-popover-menu-item-border-bottom`v1.4.8` | `2%`|
+| --nutui-popover-white-background-color | `rgba(255, 255, 255, 1)` |
+| --nutui-popover-dark-background-color | `rgba(75, 76, 77, 1)` |
+| --nutui-popover-border-bottom-color | `rgba(229, 229, 229, 1)` |
+| --nutui-popover-primary-text-color | `rgba(51, 51, 51, 1)` |
+| --nutui-popover-disable-color | `rgba(154, 155, 157, 1)` |
+| --nutui-popover-menu-item-padding | `8px 0` |
+| --nutui-popover-menu-item-margin | `0 8px` |
+| --nutui-popover-menu-name-line-height | `normal` |

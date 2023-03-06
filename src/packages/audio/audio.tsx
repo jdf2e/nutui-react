@@ -6,15 +6,15 @@ import React, {
   FunctionComponent,
   ReactEventHandler,
 } from 'react'
-import Icon from '@/packages/icon'
+import { Service } from '@nutui/icons-react'
 import Range from '@/packages/range'
 import bem from '@/utils/bem'
 import Button from '@/packages/button'
 import { useConfig } from '@/packages/configprovider'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface AudioProps extends IComponent {
+export interface AudioProps extends BasicComponent {
   className: string
   style: CSSProperties
   url: string
@@ -134,20 +134,7 @@ export const Audio: FunctionComponent<
             }`}
             onClick={handleStatusChange}
           >
-            {playing ? (
-              <Icon
-                classPrefix={iconClassPrefix}
-                fontClassName={iconFontClassName}
-                name="service"
-                className="nut-icon-loading"
-              />
-            ) : (
-              <Icon
-                classPrefix={iconClassPrefix}
-                fontClassName={iconFontClassName}
-                name="service"
-              />
-            )}
+            <Service className={playing ? 'nut-icon-loading' : ''} />
           </div>
         </div>
       </>

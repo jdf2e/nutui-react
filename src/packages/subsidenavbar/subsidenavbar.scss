@@ -1,3 +1,15 @@
+.nut-theme-dark {
+  .nut-subsidenavbar {
+    background-color: $dark5;
+    &__title {
+      background-color: $dark6;
+      color: $dark1;
+      &__text {
+        color: $dark1;
+      }
+    }
+  }
+}
 $nutSidenavbarItemHeight: 40px;
 
 .nut-subsidenavbar {

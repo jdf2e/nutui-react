@@ -1,4 +1,63 @@
 @import '../icon/icon.scss';
+
+.nut-theme-dark {
+  .nut-button {
+    &--default {
+      color: $dark1;
+      background: $dark6;
+    }
+
+    &--primary {
+      color: $dark6;
+    }
+
+    &--info {
+      color: $dark6;
+    }
+
+    &--success {
+      color: $dark6;
+    }
+
+    &--danger {
+      color: $dark6;
+    }
+
+    &--warning {
+      color: $dark6;
+    }
+
+    &--plain {
+      background: $dark6;
+
+      &.nut-button--primary {
+        color: $button-primary-border-color;
+        border-color: $button-primary-border-color;
+      }
+
+      &.nut-button--info {
+        color: $button-info-border-color;
+        border-color: $button-info-border-color;
+      }
+
+      &.nut-button--success {
+        color: $button-success-border-color;
+        border-color: $button-success-border-color;
+      }
+
+      &.nut-button--danger {
+        color: $button-danger-border-color;
+        border-color: $button-danger-border-color;
+      }
+
+      &.nut-button--warning {
+        color: $button-warning-border-color;
+        border-color: $button-warning-border-color;
+      }
+    }
+  }
+}
+
 .nut-button {
   position: relative;
   display: inline-block;
@@ -15,9 +74,11 @@
   -webkit-appearance: none;
   user-select: none;
   touch-action: manipulation;
+
   .text {
-    margin-left: 5px;
+    margin-left: $button-text-icon-width;
   }
+
   &::before {
     position: absolute;
     top: 50%;
@@ -32,9 +93,15 @@
     opacity: 0;
     content: ' ';
   }
+
+  &::after {
+    border: none;
+  }
+
   &:active::before {
     opacity: 0.1;
   }
+
   &__warp {
     height: 100%;
     width: 100%;
@@ -49,6 +116,7 @@
       display: none;
     }
   }
+
   &--default {
     color: $button-default-color;
     background: $button-default-bg-color;
@@ -86,6 +154,7 @@
   }
 
   &--plain {
+    color: $button-plain-color;
     background: $button-plain-background-color;
 
     &.nut-button--primary {
@@ -118,18 +187,37 @@
     width: 100%;
     height: $button-large-height;
     line-height: $button-large-line-height;
+
+    .text {
+      margin-left: $button-text-icon-large-width;
+    }
   }
 
   &--normal {
-    padding: 0 18px;
+    padding: $button-default-padding;
     font-size: $button-default-font-size;
   }
 
   &--small {
     height: $button-small-height;
     line-height: $button-small-line-height;
-    padding: 0 $padding-xs;
-    font-size: $font-size-1;
+    padding: $button-small-padding;
+    font-size: $button-small-font-size;
+
+    .text {
+      margin-left: $button-text-icon-small-width;
+    }
+  }
+
+  &--mini {
+    height: $button-mini-height;
+    line-height: $button-mini-line-height;
+    padding: $button-mini-padding;
+    font-size: $button-mini-font-size;
+
+    .text {
+      margin-left: $button-text-icon-mini-width;
+    }
   }
 
   &--block {

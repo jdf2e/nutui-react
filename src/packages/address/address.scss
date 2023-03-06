@@ -1,8 +1,85 @@
 @import '../icon/icon.scss';
 @import '../popup/popup.scss';
 @import '../elevator/elevator.scss';
+
+.nut-theme-dark {
+  .nut-address {
+    .nut-elevator {
+      &__list {
+        &__inner {
+          background-color: $dark6;
+        }
+      }
+    }
+
+    &__header {
+      color: $dark1;
+
+      &__title {
+        color: $dark1;
+      }
+    }
+
+    &__custom {
+    }
+
+    .nut-address__region-tab {
+      .nut-address__tab-item {
+        color: $dark1;
+      }
+    }
+
+    .nut-address__region-con {
+      .nut-address__region-group {
+        .nut-address__region-item {
+          div {
+            color: $dark1;
+          }
+        }
+      }
+    }
+
+    .nut-address__exist-item-info {
+      color: $dark1;
+    }
+
+    &__exist {
+      &-group {
+        .nut-address__exist-ul {
+          li {
+            div {
+              i {
+                color: $dark1;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .exist-address {
+      .exist-address-group {
+        .exist-ul {
+          .exist-item {
+            color: $dark1;
+          }
+        }
+      }
+
+      .choose-other {
+        border-top: 1px solid $dark4;
+      }
+    }
+
+    &-custom-buttom {
+      border-top: 1px solid $dark4;
+    }
+  }
+}
+
 .nut-address {
   display: block;
+
   &__header {
     display: flex;
     justify-content: space-between;
@@ -12,11 +89,12 @@
     padding: 0 20px;
     text-align: center;
     font-weight: bold;
-    color: #333;
+    color: $title-color;
     line-height: 20px;
+
     &__title {
       display: block;
-      color: #262626;
+      color: $title-color;
       font-size: 18px;
     }
   }
@@ -24,19 +102,22 @@
   // 请选择
   .nut-address__custom {
     display: block;
+
     .nut-address__region-tab {
       position: relative;
       margin-top: 32px;
       padding: 0 20px;
       display: flex;
       font-size: 13px;
-      color: #1d1e1e;
+      color: $title-color;
 
       .nut-address__tab-item {
         min-width: 2px;
         margin-right: 30px;
         display: block;
+
         &.active {
+          clear: $title-color;
           font-weight: bold;
         }
 
@@ -65,20 +146,24 @@
     .nut-address__region-con {
       display: block;
       margin: 20px 20px 0;
+
       .nut-address__region-group {
         padding-top: 15px;
         height: 270px;
         overflow-y: auto;
         box-sizing: border-box;
         padding: 0;
+
         .nut-address__region-item {
           display: flex;
           align-items: center;
           margin-bottom: 20px;
           font-size: $font-size-1;
-          color: #333;
+          color: $title-color;
+
           &.active {
             font-weight: bold;
+            color: $title-color;
           }
 
           .nut-address__region-item--icon {
@@ -91,6 +176,7 @@
         }
       }
     }
+
     .nut-address__elevator-group {
       display: flex;
       margin-top: 20px;
@@ -105,16 +191,18 @@
     .nut-address__exist-group {
       padding: 15px 20px 0;
       height: 279px;
-      overflow-y: scroll;
+      overflow-y: auto;
 
       .nut-address__exist-ul {
         box-sizing: border-box;
         padding: 0;
+
         .nut-address__exist-item {
           margin-bottom: 20px;
           font-size: $font-size-1;
           line-height: 14px;
-          color: $black;
+          color: $title-color;
+
           &.active {
             font-weight: bold;
           }
@@ -123,9 +211,11 @@
             display: flex;
             align-items: center;
           }
+
           .nut-address__exist-item-icon {
             margin-right: 9px;
           }
+
           span {
             display: inline-block;
             flex: 1;
@@ -139,6 +229,7 @@
       height: 54px;
       padding: 6px 0px 0;
       border-top: 1px solid #f2f2f2;
+
       &-btn {
         width: 90%;
         height: 42px;
@@ -148,7 +239,7 @@
         background: $button-primary-background-color;
         border-radius: 21px;
         font-size: 15px;
-        color: $white;
+        color: $primary-text-color;
       }
     }
   }

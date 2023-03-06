@@ -37,22 +37,16 @@
   "dependencies": {
     "@babel/runtime": "^7.7.7",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
-    "@tarojs/cli": "^3.5.5",
-    "@tarojs/components": "^3.5.5",
-    "@tarojs/plugin-framework-react": "^3.5.5",
-    "@tarojs/plugin-html": "^3.5.5",
-    "@tarojs/react": "^3.5.5",
-    "@tarojs/runtime": "^3.5.5",
-    "@tarojs/taro": "^3.5.5",
+    "@tarojs/cli": "^3.6.0",
+    "@tarojs/components": "^3.6.0",
+    "@tarojs/plugin-html": "^3.6.0",
     "babel-plugin-import": "^1.13.5",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
     "react-refresh": "^0.14.0",
     "webpack": "^5.74.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
-    "@tarojs/webpack5-runner": "^3.5.5",
+    "@tarojs/webpack5-runner": "^3.6.0",
     "@types/react": "^18.0.2",
     "@types/react-dom": "^18.0.0",
     "@types/react-router-dom": "^5.1.7",
@@ -68,6 +62,7 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "postcss": "^8.4.20",
     "stylelint": "^14.4.0",
     "typescript": "^4.1.0"
   }

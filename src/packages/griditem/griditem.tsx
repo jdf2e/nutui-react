@@ -1,14 +1,23 @@
-import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  ReactNode,
+  useContext,
+} from 'react'
+import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 import Icon from '@/packages/icon'
+import GridContext from '../grid/grid.context'
 
-import { IComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type GridDirection = 'horizontal' | 'vertical'
 
-export interface GridItemProps extends IComponent {
+export interface GridItemProps extends BasicComponent {
   text: string | ReactNode
+  fontSize: string | number
+  color: string
   icon: string | ReactNode
   iconSize?: string | number
   iconColor?: string
@@ -28,6 +37,8 @@ export interface GridItemProps extends IComponent {
 const defaultProps = {
   ...ComponentDefaults,
   text: '',
+  fontSize: '',
+  color: '',
   icon: '',
   iconSize: '',
   iconColor: '',
@@ -53,6 +64,8 @@ export const GridItem: FunctionComponent<
     gutter,
     square,
     text,
+    fontSize,
+    color,
     icon,
     iconColor,
     iconSize,
@@ -64,12 +77,14 @@ export const GridItem: FunctionComponent<
     direction,
     iconClassPrefix,
     iconFontClassName,
+    onClick,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
   const b = bem('grid-item')
+  const context = useContext(GridContext)
 
   const pxCheck = (value: string | number): string => {
     return Number.isNaN(Number(value)) ? String(value) : `${value}px`
@@ -93,20 +108,48 @@ export const GridItem: FunctionComponent<
   }
 
   const contentClass = () => {
-    return `${b('content')} ${border && b('content--border')} ${
-      border && gutter && b('content--surround')
-    }  ${center && b('content--center')} ${square && b('content--square')} ${
-      reverse && b('content--reverse')
-    } ${!!direction && b(`content--${direction}`)}
-      `
+    return classNames(b('content'), {
+      [b('content--border')]: border,
+      [b('content--surround')]: border && gutter,
+      [b('content--center')]: center,
+      [b('content--square')]: square,
+      [b('content--reverse')]: reverse,
+      [b(`content--${direction}`)]: !!direction,
+    })
   }
 
   const isIconName = () => {
     return typeof icon === 'string'
   }
 
+  const handleClick = (e: any) => {
+    onClick && onClick(e)
+    context.onClick &&
+      context.onClick(
+        {
+          text,
+          icon,
+          iconSize,
+          iconColor,
+          parentIconSize,
+          parentIconColor,
+          index,
+          columnNum,
+          border,
+          gutter,
+          center,
+          square,
+          reverse,
+          direction,
+          fontSize,
+          color,
+        },
+        index
+      )
+  }
+
   return (
-    <div className={b()} style={rootStyle()} {...rest}>
+    <div className={b()} style={rootStyle()} {...rest} onClick={handleClick}>
       <div className={contentClass()}>
         {icon && isIconName() ? (
           <Icon
@@ -119,7 +162,11 @@ export const GridItem: FunctionComponent<
         ) : (
           <>{icon}</>
         )}
-        {text && <div className="nut-grid-item__text">{text}</div>}
+        {text && (
+          <div className="nut-grid-item__text" style={{ fontSize, color }}>
+            {text}
+          </div>
+        )}
         {children && <>{children}</>}
       </div>
     </div>

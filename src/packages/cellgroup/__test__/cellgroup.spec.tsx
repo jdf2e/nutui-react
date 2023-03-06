@@ -16,12 +16,11 @@ test('prop title desc subtitle', () => {
         isLink
         url="https://jd.com"
       />
-      <Cell title="路由跳转 ’/‘ " to="/" />
     </CellGroup>
   )
   expect(
     container.querySelectorAll('.nut-cell-group__title')[0].innerHTML
   ).toBe('链接 | 分组用法')
-  expect(container.querySelectorAll('.nut-cell').length).toEqual(3)
+  expect(container.querySelectorAll('.nut-cell').length).toEqual(2)
   expect(container).toMatchSnapshot()
 })

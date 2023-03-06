@@ -17,7 +17,7 @@ import { PullToRefresh } from '@nutui/nutui-react';
 :::demo
 
 ```tsx
-import React from "react";
+import React, {useState}  from "react";
 import { PullToRefresh, Cell } from '@nutui/nutui-react'
 
 const App = () => {
@@ -46,7 +46,7 @@ export default App
 
 | Field | Description | Type | Default Value |
 |---------------|---------------------------------- |------------|--|
-| canReleaseText | Release prompt text | `ReactNode` | `Release immediate refresh` |
+| canReleaseText | Release prompt text | ReactNode | `Release immediate refresh` |
 | completeText | Prompt text when complete | ReactNode | `Refresh successful` |
 | completeDelay | The time for the delay to disappear after completion, in ms | number | `500` |
 | disabled | Whether to disable pull-to-refresh | boolean | `false` |

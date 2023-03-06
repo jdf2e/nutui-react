@@ -7,10 +7,10 @@
 ### 安装
 
 
-```js
+```ts
+// react
 import { ImagePreview } from '@nutui/nutui-react'
 ```
-
 
 ## 代码演示
 
@@ -18,7 +18,7 @@ import { ImagePreview } from '@nutui/nutui-react'
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -61,7 +61,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -104,7 +104,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -147,7 +147,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -217,14 +217,14 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| show | 是否展示预览图片 | Boolean | false
-| videos | 预览的视频数组（视频自动放到图片之前、taro场景暂不支持） | Array<`Object`> | []
-| images | 预览图片数组 | { src: String }[] | []
-| autoplay | 自动轮播时长，0表示不会自动轮播 | Number、String  | 3000  |
-| initNo | 初始页码 | Number | 1
-| paginationVisible | 分页指示器是否展示    | Boolean | false |
-| paginationColor   | 分页指示器选中的颜色    | String  | '#fff'  |
-| contentClose   | 点击图片可以退出预览    | Boolean  | false  |
+| show | 是否展示预览图片 | boolean | `false` |
+| videos | 预览的视频数组（视频自动放到图片之前、taro场景暂不支持） | Array<Object> | `[]` |
+| images | 预览图片数组 | { src: string }[] | `[]` |
+| autoplay | 自动轮播时长，0表示不会自动轮播 | number \| string  | `3000`  |
+| initNo | 初始页码 | number | `1` |
+| paginationVisible | 分页指示器是否展示    | boolean | `false` |
+| paginationColor   | 分页指示器选中的颜色    | string  | `#fff`  |
+| contentClose   | 点击图片可以退出预览    | boolean  | `false`  |
 
 ### Events
 

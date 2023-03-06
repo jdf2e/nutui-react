@@ -1,15 +1,26 @@
 import React, { useRef, useState } from 'react'
+import {
+  My2,
+  Cart2,
+  Location2,
+  Service,
+  Notice,
+  Category,
+  Scan2,
+  Location,
+  Message,
+} from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Popover } from './popover'
 import Button from '@/packages/button'
-import Icon from '@/packages/icon'
+import Cell from '@/packages/cell'
 
 interface T {
   [props: string]: string
 }
 interface List {
   name: string
-  icon?: string
+  icon?: React.ReactNode
   disabled?: boolean
 }
 
@@ -86,15 +97,15 @@ const BadgeDemo = () => {
   const iconItemList = [
     {
       name: 'option1',
-      icon: 'my2',
+      icon: <My2 />,
     },
     {
       name: 'option2',
-      icon: 'cart2',
+      icon: <Cart2 />,
     },
     {
       name: 'option3',
-      icon: 'location2',
+      icon: <Location2 />,
     },
   ]
   const itemListDisabled = [
@@ -112,27 +123,27 @@ const BadgeDemo = () => {
   ]
   const selfContent = [
     {
-      name: 'service',
+      name: <Service />,
       desc: 'option1',
     },
     {
-      name: 'notice',
+      name: <Notice />,
       desc: 'option2',
     },
     {
-      name: 'location',
+      name: <Location />,
       desc: 'option3',
     },
     {
-      name: 'category',
+      name: <Category />,
       desc: 'option4',
     },
     {
-      name: 'scan2',
+      name: <Scan2 />,
       desc: 'option5',
     },
     {
-      name: 'message',
+      name: <Message />,
       desc: 'option6',
     },
   ]
@@ -169,24 +180,24 @@ const BadgeDemo = () => {
       flex-wrap: wrap;
       justify-content: space-around;
     }
-    
+
     .brickBox {
       display: flex;
       justify-content: center;
       margin: 80px 0;
     }
-    
+
     .brick {
       width: 60px;
       height: 60px;
       background: #1989fa;
       border-radius: 10px;
     }
-    
+
     .popover-content {
       width: 100px;
     }
-    
+
     .customContent .popover-content{
         width: 200px;
     }
@@ -197,92 +208,99 @@ const BadgeDemo = () => {
       <style>{styles}</style>
       <div className="demo">
         <h2>{translated.title}</h2>
-        <Popover
-          visible={lightTheme}
-          onClick={() => {
-            lightTheme ? setLightTheme(false) : setLightTheme(true)
-          }}
-          list={itemList}
-          style={{ marginRight: '30px' }}
-        >
-          <Button type="primary" shape="square">
-            {translated.light}
-          </Button>
-        </Popover>
-        <Popover
-          visible={darkTheme}
-          theme="dark"
-          onClick={() => {
-            darkTheme ? setDarkTheme(false) : setDarkTheme(true)
-          }}
-          list={itemList}
-        >
-          <Button type="primary" shape="square">
-            {translated.dark}
-          </Button>
-        </Popover>
+        <Cell>
+          <Popover
+            visible={lightTheme}
+            onClick={() => {
+              lightTheme ? setLightTheme(false) : setLightTheme(true)
+            }}
+            list={itemList}
+            style={{ marginRight: '30px' }}
+          >
+            <Button type="primary" shape="square">
+              {translated.light}
+            </Button>
+          </Popover>
+          <Popover
+            visible={darkTheme}
+            theme="dark"
+            onClick={() => {
+              darkTheme ? setDarkTheme(false) : setDarkTheme(true)
+            }}
+            list={itemList}
+          >
+            <Button type="primary" shape="square">
+              {translated.dark}
+            </Button>
+          </Popover>
+        </Cell>
 
         <h2>{translated.title1}</h2>
-        <Popover
-          visible={showIcon}
-          theme="dark"
-          onClick={() => {
-            showIcon ? setShowIcon(false) : setShowIcon(true)
-          }}
-          list={iconItemList}
-          style={{ marginRight: '30px' }}
-        >
-          <Button type="primary" shape="square">
-            {translated.showIcon}
-          </Button>
-        </Popover>
-        <Popover
-          visible={disableAction}
-          onClick={() => {
-            disableAction ? setDisableAction(false) : setDisableAction(true)
-          }}
-          list={itemListDisabled}
-          onChoose={chooseHandle}
-        >
-          <Button type="primary" shape="square">
-            {translated.disableAction}
-          </Button>
-        </Popover>
-
+        <Cell>
+          <Popover
+            visible={showIcon}
+            theme="dark"
+            onClick={() => {
+              showIcon ? setShowIcon(false) : setShowIcon(true)
+            }}
+            list={iconItemList}
+            style={{ marginRight: '30px' }}
+          >
+            <Button type="primary" shape="square">
+              {translated.showIcon}
+            </Button>
+          </Popover>
+          <Popover
+            visible={disableAction}
+            onClick={() => {
+              disableAction ? setDisableAction(false) : setDisableAction(true)
+            }}
+            list={itemListDisabled}
+            onChoose={chooseHandle}
+          >
+            <Button type="primary" shape="square">
+              {translated.disableAction}
+            </Button>
+          </Popover>
+        </Cell>
         <h2>{translated.content}</h2>
-        <Popover
-          visible={customized}
-          onClick={() => {
-            customized ? setCustomized(false) : setCustomized(true)
-          }}
-          location="bottom-start"
-          className="customContent"
-        >
-          <Button type="primary" shape="square">
-            {translated.content}
-          </Button>
-          {customized ? (
-            <div className="self-content" style={selfContentStyle}>
-              {selfContent.map((item: any) => {
-                return (
-                  <div
-                    className="self-content-item"
-                    style={selfContentItem}
-                    key={item.name}
-                  >
-                    <Icon name={item.name} size="15" />
-                    <div className="self-content-desc" style={selfContentDesc}>
-                      {item.desc}
+        <Cell>
+          <Popover
+            visible={customized}
+            onClick={() => {
+              customized ? setCustomized(false) : setCustomized(true)
+            }}
+            location="bottom-start"
+            className="customContent"
+          >
+            <Button type="primary" shape="square">
+              {translated.content}
+            </Button>
+            {customized ? (
+              <div className="self-content" style={selfContentStyle}>
+                {selfContent.map((item: any) => {
+                  return (
+                    <div
+                      className="self-content-item"
+                      style={selfContentItem}
+                      key={item.name}
+                    >
+                      <Location2 />
+                      <div
+                        className="self-content-desc"
+                        style={selfContentDesc}
+                      >
+                        {item.desc}
+                      </div>
                     </div>
-                  </div>
-                )
-              })}
-            </div>
-          ) : (
-            ''
-          )}
-        </Popover>
-
+                  )
+                })}
+              </div>
+            ) : (
+              ''
+            )}
+          </Popover>
+        </Cell>
         <h2 className="demoClass">{translated.title3}</h2>
 
         <Popover
@@ -297,27 +315,28 @@ const BadgeDemo = () => {
         >
           <div className="brick" />
         </Popover>
-
-        <div className="customButtonBox">
-          {customLocation.current.map((location, i) => {
-            const k = Object.keys(location)[0] as any
-            const v = Object.values(location)[0]
-            return (
-              <Button
-                key={i}
-                type="primary"
-                shape="square"
-                style={{ width: '160px', marginBottom: '8px' }}
-                onClick={() => {
-                  setCustomLocationName(k)
-                  setCustomLocationShow(!customLocationShow)
-                }}
-              >
-                {k} {translated.popup}
-              </Button>
-            )
-          })}
-        </div>
+        <Cell className="demo-cell-popover">
+          <div className="customButtonBox">
+            {customLocation.current.map((location, i) => {
+              const k = Object.keys(location)[0] as any
+              const v = Object.values(location)[0]
+              return (
+                <Button
+                  key={i}
+                  type="primary"
+                  shape="square"
+                  style={{ width: '140px', marginBottom: '8px' }}
+                  onClick={() => {
+                    setCustomLocationName(k)
+                    setCustomLocationShow(!customLocationShow)
+                  }}
+                >
+                  {k}
+                </Button>
+              )
+            })}
+          </div>
+        </Cell>
       </div>
     </>
   )

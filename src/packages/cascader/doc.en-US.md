@@ -6,8 +6,9 @@ The cascader component is used for the selection of multi-level data. The typica
 
 ### Install
 
-```js
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+```ts
+// react
+import { Cascader } from '@nutui/nutui-react';
 ```
 
 ## Demo
@@ -16,8 +17,8 @@ import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
 Pass in the `options` list.
 :::demo
 ```jsx
-import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import  React,{useState} from "react";
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo1, setIsVisibleDemo1] = useState(false)
@@ -125,8 +126,8 @@ use `textKey`、`valueKey`、`childrenKey`Specify the property name.
 
 :::demo
 ```jsx
-import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import  React,{useState} from "react";
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo2, setIsVisibleDemo2] = useState(false)
@@ -237,8 +238,8 @@ Use `lazy` to identify whether data needs to be obtained dynamically. At this ti
 
 :::demo
 ```jsx
-import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import  React,{useState} from "react";
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo3, setIsVisibleDemo3] = useState(false)
@@ -305,8 +306,8 @@ export default App;
 
 :::demo
 ```jsx
-import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import  React,{useState} from "react";
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo4, setIsVisibleDemo4] = useState(false)
@@ -378,8 +379,8 @@ If your data is a flat structure that can be converted into a tree structure, yo
 
 :::demo
 ```jsx
-import  React from "react";
-import { Cascader, Tabs, TabPane } from '@nutui/nutui-react';
+import  React,{useState} from "react";
+import { Cell, Cascader } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisibleDemo5, setIsVisibleDemo5] = useState(false)
@@ -432,6 +433,126 @@ export default App;
 ```
 :::
 
+### Customize CSS
+
+Use configprovider to set custom CSS
+
+:::demo
+```jsx
+import  React,{useState} from "react";
+import { Cell, Cascader, ConfigProvider} from '@nutui/nutui-react';
+
+const customTheme = {
+  nutuiCascaderItemHeight: '48px',
+  nutuiCascaderItemMargin: '0 10px',
+  nutuiCascaderItemPadding: '10px',
+  nutuiCascaderItemBorderBottom: '1px solid #F0F0F0',
+}
+
+const App = () => {
+  const [isVisibleDemo6, setIsVisibleDemo6] = useState(false)
+  const [value6, setValue6] = useState([])
+  const [optionsDemo6, setOptionsDemo6] = useState([
+    {
+      value: '浙江',
+      text: '浙江',
+      children: [
+        {
+          value: '杭州',
+          text: '杭州',
+          disabled: true,
+          children: [
+            { value: '西湖区', text: '西湖区', disabled: true },
+            { value: '余杭区', text: '余杭区' },
+          ],
+        },
+        {
+          value: '温州',
+          text: '温州',
+          children: [
+            { value: '鹿城区', text: '鹿城区' },
+            { value: '瓯海区', text: '瓯海区' },
+          ],
+        },
+      ],
+    },
+    {
+      value: '湖南',
+      text: '湖南',
+      disabled: true,
+      children: [
+        {
+          value: '长沙',
+          text: '长沙',
+          disabled: true,
+          children: [
+            { value: '西湖区', text: '西湖区' },
+            { value: '余杭区', text: '余杭区' },
+          ],
+        },
+        {
+          value: '温州',
+          text: '温州',
+          children: [
+            { value: '鹿城区', text: '鹿城区' },
+            { value: '瓯海区', text: '瓯海区' },
+          ],
+        },
+      ],
+    },
+    {
+      value: '福建',
+      text: '福建',
+      children: [
+        {
+          value: '福州',
+          text: '福州',
+          children: [
+            { value: '鼓楼区', text: '鼓楼区' },
+            { value: '台江区', text: '台江区' },
+          ],
+        },
+      ],
+    },
+  ])
+  const change6 = (value: any, path: any) => {
+    console.log('onChange', value, path)
+    setValue6(value)
+  }
+  const onPathChange = (value: any, path: any) => {
+    console.log('onPathChange', value, path)
+  }
+
+  return (
+    <>
+    <Cell
+      title="选择地址"
+      desc={value6 || '请选择地址'}
+      onClick={()=>{
+        setIsVisibleDemo6(true)
+      }}
+     />
+    <ConfigProvider theme={customTheme}>
+      <Cascader
+        visible={isVisibleDemo6}
+        color="#3768FA"
+        tabsColor="#3768FA"
+        value={value6}
+        title="Select Address"
+        options={optionsDemo6}
+        closeable
+        onClose={()=>{setIsVisibleDemo1(false)}}
+        onChange={change6}
+        onPathChange={onPathChange}
+      />
+    </ConfigProvider>
+    </>
+  );
+};
+export default App;
+```
+:::
+
 ## API
 
 ### Props
@@ -440,21 +561,53 @@ export default App;
 | ------------- | --------------------------------------------- | -------- | ------ |
 | value         | Selected value                                | Array    | -      |
 | options       | Cascade data                                  | Array    | -      |
-| visible       | Cascading show hidden states                  | Boolean  | false  |
-| lazy          | Whether to enable dynamic loading             | Boolean  | false  |
+| poppable      | Whether to display the pop-up window status   | boolean  | `true`   |
+| visible       | Cascading show hidden states                  | boolean  | `false`  |
+| activeColor`1.3.13` | Check the active color                  | string  | -  |
+| checkedIcon`1.4.8` | Checked Item Icon | string | `checklist` |
+| tabsColor`1.3.13` | Check the active color at the bottom of tabs  | string  | -  |
+| lazy          | Whether to enable dynamic loading             | boolean  | `false`  |
 | lazyLoad      | Dynamic loading callback, which takes effect when dynamic loading is enabled   | Function | -      |
-| valueKey      | Customize the field of `value` in the `options` structure     | String   | -      |
-| textKey       | Customize the fields of `text` in the `options` structure     | String   | -      |
-| childrenKey   | Customize the fields of `children` in the `options` structure | String   | -      |
+| valueKey      | Customize the field of `value` in the `options` structure     | string   | -      |
+| textKey       | Customize the fields of `text` in the `options` structure     | string   | -      |
+| childrenKey   | Customize the fields of `children` in the `options` structure | string   | -      |
 | convertConfig | When options is a flat structure that can be converted into a tree structure, configure the conversion rules | Object   | -      |
-| title          | Title | String   | ''      |
-| closeIconPosition | Cancel the button position and inherit the popup component | String   | "top-right"      |
-| close-icon | Customize the close button and inherit the popup component | String   | "close"     |
-| closeable | Whether to display the close button and inherit the popup component | Boolean   | true     |
+| title          | Title | string   | -      |
+| closeIconPosition | Cancel the button position and inherit the popup component | string   | `top-right`      |
+| close-icon | Customize the close button and inherit the popup component | string   | `close`     |
+| closeable | Whether to display the close button and inherit the popup component | boolean   | `true`     |
 
 ### Events
 
 | Event | Description           | Callback parameters |
 | ---------- | ---------------- | ------------------ |
-| onChange     | Triggered when the selected value changes | (value, pathNodes) |
-| onPathChange | Triggered when the selected item changes | (pathNodes)        |
+| onChange     | Triggered when the selected value changes | `value, pathNodes` |
+| onPathChange | Triggered when the selected item changes | `pathNodes`        |
+
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-cascader-font-size | `$font-size-2` |
+| --nutui-cascader-line-height | `22px` |
+| --nutui-cascader-title-padding | `24px 20px 17px` |
+| --nutui-cascader-title-font-size | `18px` |
+| --nutui-cascader-title-line-height | `20px` |
+| --nutui-cascader-pane-height | `342px` |
+| --nutui-cascader-tabs-item-padding | `0 10px` |
+| --nutui-cascader-bar-padding | `24px 20px 17px` |
+| --nutui-cascader-bar-font-size | `$font-size-4` |
+| --nutui-cascader-bar-line-height | `20px` |
+| --nutui-cascader-bar-color | `$title-color` |
+| --nutui-cascader-item-height`v1.4.8` | `40px` |
+| --nutui-cascader-item-padding | `10px 20px` |
+| --nutui-cascader-item-margin`v1.4.8` | `0px`|
+| --nutui-cascader-item-border-bottom`v1.4.8` | `0px solid #ddd` |
+| --nutui-cascader-item-color | `$title-color` |
+| --nutui-cascader-item-font-size | `$font-size-2` |
+| --nutui-cascader-item-active-color | `$primary-color` |

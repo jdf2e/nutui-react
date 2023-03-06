@@ -6,6 +6,7 @@ Avatars can be used to represent people or objects. It supports images, Icons, o
 
 ### Install
 ``` ts
+// react
 import { Avatar } from '@nutui/nutui-react';
 ```
 ### Basic usage
@@ -191,7 +192,7 @@ const App = () => {
   }
   return (
     <>
-      <Avatar icon="my" activeAvatar={activeAvatar} />
+      <Avatar icon="my" onActiveAvatar={activeAvatar} />
     </>
   )
 }
@@ -203,28 +204,46 @@ export default App;
 
 | Attribute     | Description                                                 | Type   | Default |
 | -------- | ---------------------------------------------------------------- | ------ | ------ |
-| size     | The size of the avatar,eg：`large`、`normal`、`small`,and numbers   | String | normal |
-| shape    | The shape of avatar，eg：`square`、`round`           | String | round  |
-| bgColor | The colors of Icon and letter types                   | String | #eee   |
-| color    | The background colors of Icon and letter types                     | String | #666   |
-| url      | The address of the image for an image avatar or image element       | String | -   |
-| alt      | This attribute defines the alternative text describing the image    | String | -   |
-| icon     | Custom icon type for an icon avatar, Refer to the name attribute of Icon component  | String | -     |
+| size     | The size of the avatar,eg：`large`、`normal`、`small`,and numbers   | string | `normal` |
+| shape    | The shape of avatar，eg：`square`、`round`           | string | `round`  |
+| bgColor | The colors of Icon and letter types                   | string | `#eee`   |
+| color    | The background colors of Icon and letter types                     | string | `#666`   |
+| url      | The address of the image for an image avatar or image element       | string | -   |
+| alt      | This attribute defines the alternative text describing the image    | string | -   |
+| icon     | Custom icon type for an icon avatar, Refer to the name attribute of Icon component  | string | -     |
+| iconSize`v1.3.11`     | [Icon size](#/icon) | string \| number | `16`             |
 
 ### avatarGroup
 | Attribute     | Description                                                 | Type   | Default |
 | -------- | ---------------------------------------------------------------- | ------ | ------ |
-| maxCount     | Max avatars to show   | Number、String | - |
+| maxCount     | Max avatars to show   | number \| string | - |
 | maxContent  | When the number of avatars exceeds, a avatar folding element will appear，The content of this element can be `...`、`more`、`+N`。默认为 +N | 
-| size         | The size of the avatar，eg：`large`、`normal`、`small`，supports direct input of numbers   | String | +N |
-| shape        | The shape of avatar，eg：`square`、`round`            | String | round  |
-| maxBgColor  | The colors of Icon and letter types                   | String | #eee   |
-| maxColor    | The background colors of Icon and letter types                   | String | #666 |
-| span         | Distance between avatars               | String | -8   |
-| zIndex       | Hierarchy direction between avatar group，eg：`left`、`right` | String | left     |
+| size         | The size of the avatar，eg：`large`、`normal`、`small`，supports direct input of numbers   | string | +N |
+| shape        | The shape of avatar，eg：`square`、`round`            | string | `round`  |
+| maxBgColor  | The colors of Icon and letter types                   | string | `#eee`   |
+| maxColor    | The background colors of Icon and letter types                   | string | `#666` |
+| span         | Distance between avatars               | string | `-8`   |
+| zIndex       | Hierarchy direction between avatar group，eg：`left`、`right` | string | `left`     |
 ### Events
 
 | Event            | Description    | Type     | Arguments |
 | ---------------- | ------------ | -------- | -------- |
-| activeAvatar | Emitted when cell is clicked    | Function | event    |
-| onError       | Handler when img load error   | Function | event    |
+| activeAvatar `v1.3.8 Abandon` | Emitted when cell is clicked    | Function | `event`    |
+| onActiveAvatar `v1.3.8` | Emitted when cell is clicked    | Function | `event`    |
+| onError       | Handler when img load error   | Function | `event`    |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Default Value |
+| --- | --- |
+| --nutui-avatar-square | `5px` |
+| --nutui-avatar-large-width | `60px` |
+| --nutui-avatar-large-height | `60px` |
+| --nutui-avatar-small-width | `32px` |
+| --nutui-avatar-small-height | `32px` |
+| --nutui-avatar-normal-width | `40px` |
+| --nutui-avatar-normal-height | `40px` |

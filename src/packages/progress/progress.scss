@@ -1,13 +1,33 @@
 @import '../icon/icon.scss';
+
+.nut-theme-dark {
+  .nut-progress {
+    &-text {
+      .nut-icon-checked {
+        color: rgba(38, 191, 38, 1) !important;
+      }
+    }
+  }
+}
+
 .nut-progress {
   display: flex;
   align-items: center;
   position: relative;
   width: 100%;
+
+  .nut-progress-text {
+    color: $progress-text-color;
+  }
+
   &-outer {
     flex: auto;
+    border-radius: $progress-border-radius;
+
     .nut-progress-text {
+      color: $progress-text-inner-color;
     }
+
     .nut-progress-active:before {
       content: '';
       position: absolute;
@@ -19,34 +39,43 @@
       animation: progressActive 2s ease-in-out infinite;
     }
   }
+
   &-small {
     height: $progress-small-height;
+
     .nut-progress-text {
       font-size: $progress-small-font-size;
       padding: $progress-small-padding;
     }
   }
+
   &-base {
     height: $progress-base-height;
+
     .nut-progress-text {
       font-size: $progress-base-font-size;
       padding: $progress-base-padding;
     }
   }
+
   &-large {
     height: $progress-large-height;
+
     .nut-progress-text {
       font-size: $progress-large-font-size;
       padding: $progress-large-padding;
     }
   }
+
   &-inner {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     transition: all 0.4s;
+    border-radius: $progress-border-radius;
   }
+
   &-text {
     display: flex;
     padding: $progress-text-padding;
@@ -54,10 +83,11 @@
     line-height: 1;
     min-width: 35px;
   }
+
   &-insidetext {
     position: absolute;
-    top: -4px;
-    bottom: -4px;
+    top: $progress-insidetext-position-top;
+    bottom: $progress-insidetext-position-bottom;
     display: flex;
     align-items: center;
     min-width: 0px;
@@ -65,15 +95,18 @@
     transform: translate(-50%);
     border-radius: $progress-insidetext-border-radius;
   }
+
   @keyframes progressActive {
     0% {
       background: rgba(255, 255, 255, 0.1);
       width: 0;
     }
+
     20% {
       background: rgba(255, 255, 255, 0.5);
       width: 0;
     }
+
     to {
       background: rgba(255, 255, 255, 0);
       width: 100%;

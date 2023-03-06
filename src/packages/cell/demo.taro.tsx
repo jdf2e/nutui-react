@@ -1,6 +1,8 @@
 import React from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Switch, Cell, CellGroup } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Taro from '@tarojs/taro'
 
 interface T {
   basic: string
@@ -110,7 +112,8 @@ const CellDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Cell title={translated.title} desc={translated.desc} />
         <Cell
@@ -120,12 +123,12 @@ const CellDemo = () => {
         />
         <Cell
           title={translated.title3}
-          click={(
+          onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => testClick(event)}
         />
         <Cell title={translated.title4} roundRadius="0" />
-        <h2>尺寸设置large</h2>
+        <h2>{translated.title9}</h2>
         <Cell size="large" title={translated.title} desc={translated.desc} />
         <Cell
           size="large"
@@ -154,7 +157,6 @@ const CellDemo = () => {
             isLink
             url="/pages/index/index"
           />
-          <Cell title={translated.routerJump} to="/" />
         </CellGroup>
         <CellGroup title={translated.customRight}>
           <Cell title="Switch" linkSlot={<Switch checked />} />
@@ -175,7 +177,7 @@ const CellDemo = () => {
         <Cell title={translated.name} icon="my" desc={translated.desc} isLink />
         <h2>{translated.title6}</h2>
         <Cell descTextAlign="left" desc={translated.desc} />
-        <h2>垂直居中</h2>
+        <h2>{translated.title7}</h2>
         <Cell
           center
           title={translated.title}

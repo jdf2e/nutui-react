@@ -1,8 +1,15 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { InputNumber, Cell, Toast } from '@/packages/nutui.react.taro'
+import {
+  InputNumber,
+  Cell,
+  Toast,
+  ConfigProvider,
+} from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
-interface IValState {
+interface ValState {
   val1: number | string
   val2: number | string
   val3: number | string
@@ -21,9 +28,28 @@ interface T {
   '9636103a': string
   '181965e2': string
   e7b2ce1f: string
+  e7b2ce1g: string
+  e7b2ce1y: string
   '3a42134b': string
   '65bafb1d': string
   '7e2394ae': string
+}
+
+const customTheme = {
+  nutuiInputnumberButtonWidth: '30px',
+  nutuiInputnumberButtonHeight: '30px',
+  nutuiInputnumberButtonBorderRadius: '2px',
+  nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
+  nutuiInputnumberInputHeight: '30px',
+  nutuiInputnumberInputMargin: '0 2px',
+}
+
+const customTheme2 = {
+  nutuiInputnumberButtonWidth: '30px',
+  nutuiInputnumberButtonHeight: '30px',
+  nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
+  nutuiInputnumberInputBackgroundColor: '#fff',
+  nutuiInputnumberInputMargin: '0 2px',
 }
 const InputNumberDemo = () => {
   const [translated] = useTranslate<T>({
@@ -35,6 +61,8 @@ const InputNumberDemo = () => {
       '9636103a': '限制输入范围',
       '181965e2': '禁用操作',
       e7b2ce1f: '只读禁用输入框',
+      e7b2ce1g: '设置按钮样式1',
+      e7b2ce1y: '设置按钮样式2',
       '3a42134b': '支持小数点',
       '65bafb1d': '支持异步修改',
       '7e2394ae': '自定义按钮大小',
@@ -47,6 +75,8 @@ const InputNumberDemo = () => {
       '9636103a': '限制輸入範圍',
       '181965e2': '禁用操作',
       e7b2ce1f: '只讀禁用輸入框',
+      e7b2ce1g: '设置按钮样式1',
+      e7b2ce1y: '设置按钮样式2',
       '3a42134b': '支持小數點',
       '65bafb1d': '支持異步修改',
       '7e2394ae': '自定義按鈕大小',
@@ -59,13 +89,15 @@ const InputNumberDemo = () => {
       '9636103a': 'Limit input range',
       '181965e2': 'Disable operation',
       e7b2ce1f: 'read-only disabled input box',
+      e7b2ce1g: 'Button CSS1',
+      e7b2ce1y: 'Button CSS2',
       '3a42134b': 'support decimal point',
       '65bafb1d': 'Support for asynchronous modification',
       '7e2394ae': 'custom button size',
     },
   })
 
-  const [inputState, setInputState] = useState<IValState>({
+  const [inputState, setInputState] = useState<ValState>({
     val1: 1,
     val2: 0,
     val3: 10,
@@ -100,7 +132,8 @@ const InputNumberDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated['84aa6bce']}</h2>
         <Cell>
           <InputNumber modelValue={inputState.val1} />
@@ -115,7 +148,7 @@ const InputNumberDemo = () => {
             modelValue={inputState.val3}
             min="10"
             max="20"
-            overlimit={overlimit}
+            onOverlimit={overlimit}
           />
         </Cell>
         <h2>{translated['181965e2']}</h2>
@@ -125,6 +158,18 @@ const InputNumberDemo = () => {
         <h2>{translated.e7b2ce1f}</h2>
         <Cell>
           <InputNumber modelValue={inputState.val5} readonly />
+        </Cell>
+        <h2>{translated.e7b2ce1g}</h2>
+        <Cell>
+          <ConfigProvider theme={customTheme}>
+            <InputNumber modelValue={inputState.val5} />
+          </ConfigProvider>
+        </Cell>
+        <h2>{translated.e7b2ce1y}</h2>
+        <Cell>
+          <ConfigProvider theme={customTheme2}>
+            <InputNumber modelValue={inputState.val5} />
+          </ConfigProvider>
         </Cell>
         <h2>{translated['3a42134b']}</h2>
         <Cell>
@@ -137,7 +182,11 @@ const InputNumberDemo = () => {
         </Cell>
         <h2>{translated['65bafb1d']}</h2>
         <Cell>
-          <InputNumber modelValue={inputState.val7} change={onChange} isAsync />
+          <InputNumber
+            modelValue={inputState.val7}
+            onChangeFuc={onChange}
+            isAsync
+          />
         </Cell>
         <h2>{translated['7e2394ae']}</h2>
         <Cell>

@@ -7,6 +7,7 @@
 ### 安装
 
 ```ts
+// react
 import { Tabs, TabPane } from '@nutui/nutui-react';
 ```
 
@@ -66,7 +67,34 @@ export default App;
 
 :::
 
-### 通过 pane-key 匹配
+### 基础用法-Title 左对齐
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs, TabPane } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value} onChange={({ paneKey }) => {
+        setTab1value(paneKey)
+      }} leftAlign>
+        <TabPane title="Tab 1"> Tab 1 </TabPane>
+        <TabPane title="Tab 2"> Tab 2 </TabPane>
+        <TabPane title="Tab 3"> Tab 3 </TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 通过 paneKey 匹配
 
 :::demo
 
@@ -81,9 +109,9 @@ const App = () => {
       <Tabs value={tab2value} onChange={({ paneKey }) => {
         setTab2value(paneKey)
       }}>
-        <TabPane title="Tab 1" pane-key="0"> Tab 1 </TabPane>
-        <TabPane title="Tab 2" pane-key="1" disabled> Tab 2 </TabPane>
-        <TabPane title="Tab 3" pane-key="2"> Tab 3 </TabPane>
+        <TabPane title="Tab 1" paneKey="0"> Tab 1 </TabPane>
+        <TabPane title="Tab 2" paneKey="1" disabled> Tab 2 </TabPane>
+        <TabPane title="Tab 3" paneKey="2"> Tab 3 </TabPane>
       </Tabs>
     </>
   );
@@ -93,6 +121,52 @@ export default App;
 
 :::
 
+### CSS 粘性布局
+
+通过设置tab的style 例如：`tabStyle={{ position: 'sticky', top: '0px', zIndex: 1 }}` ，来实现Css的粘性布局，注意：在微信小程序里组件外层元素不能存在 overflow为 hidden、auto、scroll的设置。
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs, TabPane } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab2value, setTab2value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab2value} tabStyle={{ position: 'sticky', top: '0px', zIndex: 1 }} onChange={({ paneKey }) => {
+        setTab2value(paneKey)
+      }}>
+        <TabPane title="Tab 1" paneKey="0">
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+        </TabPane>
+        <TabPane title="Tab 2" paneKey="1">
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+        </TabPane>
+        <TabPane title="Tab 3" paneKey="2"> Tab 3 </TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
 ### Tabpane 自动高度
 
 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。
@@ -110,14 +184,14 @@ const App = () => {
       <Tabs value={tab2value} autoHeight onChange={({ paneKey }) => {
         setTab2value(paneKey)
       }}>
-        <TabPane title="Tab 1" pane-key="0">
+        <TabPane title="Tab 1" paneKey="0">
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
         </TabPane>
-        <TabPane title="Tab 2" pane-key="1"> Tab 2 </TabPane>
-        <TabPane title="Tab 3" pane-key="2"> Tab 3 </TabPane>
+        <TabPane title="Tab 2" paneKey="1"> Tab 2 </TabPane>
+        <TabPane title="Tab 3" paneKey="2"> Tab 3 </TabPane>
       </Tabs>
     </>
   );
@@ -132,7 +206,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Tabs, TabPane } from '@nutui/nutui-react';
 
 const App = () => {
@@ -201,7 +275,7 @@ const App = () => {
   const list5 = Array.from(new Array(2).keys());
   return (
     <>
-      <Tabs value={tab5value} onChange={({ paneKey }) => {
+      <Tabs style={{ height: '300px' }} value={tab5value} onChange={({ paneKey }) => {
         setTab5value(paneKey)
       }} titleScroll direction="vertical">
         {list5.map(item => <TabPane key={item}
@@ -228,7 +302,7 @@ const App = () => {
   const list5 = Array.from(new Array(2).keys());
   return (
     <>
-      <Tabs value={tab6value} onChange={({ paneKey }) => {
+      <Tabs style={{ height: '300px' }} value={tab6value} onChange={({ paneKey }) => {
         setTab6value(paneKey)
       }} type="smile" titleScroll direction="vertical">
         {list5.map(item => <TabPane key={item}
@@ -344,20 +418,22 @@ export default App;
 
 ### Tabs Props
 
-| 参数             | 说明                                          | 类型          | 默认值     |
-|----------------|-----------------------------------------------|---------------|------------|
-| value          | 绑定当前选中标签的标识符                      | number,string | 0          |
-| color          | 标签选中色                                    | string        | #1a1a1a    |
-| background     | 标签栏背景颜色                                | string        | #f5f5f5    |
-| direction      | 使用横纵方向 可选值 horizontal、vertical      | string        | horizontal |
-| type           | 选中底部展示样式 可选值 line、smile           | string        | line       |
-| titleScroll    | 标签栏是否可以滚动                            | boolean       | false      |
-| ellipsis       | 是否省略过长的标题文字                        | boolean       | true       |
-| animatedTime   | 切换动画时长,单位 ms 0 代表无动画              | number,string | 300        |
-| titleGutter    | 标签间隙                                      | number,string | 0          |
-| titleNode      | 自定义导航区域                                 | () => JSX.Element[] | 0          |
-| size           | 标签栏字体尺寸大小 可选值 large normal small | string        | normal     |
-| autoHeight`v1.2.1` | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean        | false     |
+| 参数             | 说明                                          | 类型                  | 默认值     |
+|----------------|-----------------------------------------------|---------------------|------------|
+| value          | 绑定当前选中标签的标识符                      | number \| string       | `0`          |
+| color          | 标签选中色                                    | string              | `#1a1a1a`    |
+| background     | 标签栏背景颜色                                | string              | `#f5f5f5`    |
+| direction      | 使用横纵方向 可选值 `horizontal`、`vertical`      | string              | `horizontal` |
+| type           | 选中底部展示样式 可选值 `line`、`smile`           | string              | `line`       |
+| titleScroll    | 标签栏是否可以滚动                            | boolean             | `false`      |
+| ellipsis       | 是否省略过长的标题文字                        | boolean             | `true`       |
+| animatedTime   | 切换动画时长,单位 ms 0 代表无动画              | number \| string       | `300`        |
+| titleGutter    | 标签间隙                                      | number \| string       | `0`          |
+| titleNode      | 自定义导航区域                                 | ReactNode | -          |
+| size           | 标签栏字体尺寸大小 可选值 `large`、`normal`、`small` | string              | `normal`     |
+| leftAlign`v1.4.8` | 标题左对齐 | boolean | `false` |
+| autoHeight`v1.2.1` | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean             | `false`     |
+| tabStyle`v1.3.8` | 标签栏样式 | CSSProperties | `{}`     |
 
 ## Tabs Children
 
@@ -367,15 +443,50 @@ export default App;
 
 ### Tabpane Props
 
-| 参数     | 说明                    | 类型    | 默认值           |
-|----------|-------------------------|---------|------------------|
-| title    | 标题                    | string  |                  |
-| paneKey  | 标签 Key , 匹配的标识符 | string  | 默认索引0,1,2... |
-| disabled | 是否禁用标签            | boolean | false            |
+| 参数                | 说明              | 类型    | 默认值           |
+|-------------------|-----------------|---------|------------------|
+| title             | 标题              | string  |     -             |
+| paneKey           | 标签 Key , 匹配的标识符 | string  | 默认索引0,1,2... |
+| disabled          | 是否禁用标签          | boolean | `false`            |
 
 ### Tabs Events
 
 | 事件名 | 说明                     | 回调参数                 |
 |--------|--------------------------|--------------------------|
-| onClick  | 点击标签时触发           | {title,paneKey,disabled} |
-| onChange | 当前激活的标签改变时触发 | {title,paneKey,disabled} |
+| onClick  | 点击标签时触发           | `{title, paneKey, disabled}` |
+| onChange | 当前激活的标签改变时触发 | `{title, paneKey, disabled}` |
+
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 默认值 |
+| --- | --- |
+| --nutui-tabs-tab-smile-color | `$primary-color` |
+| --nutui-tabs-titles-background-color | `$background-color` |
+| --nutui-tabs-titles-border-radius | `0` |
+| --nutui-tabs-titles-item-large-font-size | `$font-size-3` |
+| --nutui-tabs-titles-item-font-size | `$font-size-2` |
+| --nutui-tabs-titles-item-small-font-size | `$font-size-1` |
+| --nutui-tabs-titles-item-color | `$title-color` |
+| --nutui-tabs-titles-item-active-color | `$title-color` |
+| --nutui-tabs-titles-item-active-font-weight`v1.4.9` | `600` |
+| --nutui-tabs-horizontal-tab-line-color`v1.4.9` | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
+| --nutui-tabs-horizontal-line-bottom`v1.4.8` | `15%` |
+| --nutui-tabs-horizontal-line-border-radius`v1.4.8` |` 0px`|
+| --nutui-tabs-horizontal-tab-line-opacity`v1.4.9` | `1`|
+| --nutui-tabs-horizontal-titles-height | `46px` |
+| --nutui-tabs-horizontal-titles-item-min-width | `50px` |
+| --nutui-tabs-horizontal-titles-item-active-background-color`v1.4.9` | `$background-color3` |
+| --nutui-tabs-horizontal-titles-item-active-line-width | `40px` |
+| --nutui-tabs-horizontal-titles-item-active-line-height`v1.4.9` | `3px` |
+| --nutui-tabs-vertical-tab-line-color`v1.4.9` | `linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
+| --nutui-tabs-vertical-titles-item-height | `40px` |
+| --nutui-tabs-vertical-titles-item-active-line-width`v1.4.9` | `3px` |
+| --nutui-tabs-vertical-titles-item-active-line-height | `14px` |
+| --nutui-tabs-vertical-titles-width | `100px` |
+| --nutui-tabs-titles-item-line-border-radius`v1.4.9 废弃` | `0` |
+| --nutui-tabs-titles-item-line-opacity`v1.4.9 废弃` | `1` |

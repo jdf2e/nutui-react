@@ -1,27 +1,117 @@
 @import '../popup/popup.scss';
+
+.nut-theme-dark {
+  .nut-picker {
+    background-color: $dark6;
+
+    &__title {
+      color: $dark1;
+    }
+
+    &__confirm-btn {
+      color: $picker-ok-color;
+      cursor: pointer;
+    }
+
+    .nut-picker__control {
+      background-color: $dark10;
+    }
+
+    .nut-picker-indicator {
+      background-color: $dark7;
+      z-index: 0;
+      border-top: 1px solid $gray2;
+      border-bottom: 1px solid $gray2;
+    }
+
+    .nut-picker-mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: linear-gradient(
+          180deg,
+          rgba(31, 31, 31, 1),
+          rgba(31, 31, 31, 0.4)
+        ),
+        linear-gradient(0deg, rgba(31, 31, 31, 1), rgba(31, 31, 31, 0.4));
+      background-position: top, bottom;
+      background-size: 100% 108px;
+      background-repeat: no-repeat;
+      z-index: 3;
+    }
+
+    .nut-picker-list {
+      .nut-picker-roller {
+        &-item {
+          color: $white;
+
+          &-tile {
+            color: $white;
+          }
+        }
+      }
+    }
+
+    &-roller-mask {
+      background-image: linear-gradient(
+          180deg,
+          rgba(27, 27, 27, 0.9),
+          rgba(27, 27, 27, 0.4)
+        ),
+        linear-gradient(0deg, rgba(27, 27, 27, 0.9), rgba(27, 27, 27, 0.4));
+      background-repeat: no-repeat;
+      background-position: top, bottom;
+      background-size: 100% 108px;
+      z-index: 1;
+    }
+
+    &-content {
+      color: $dark1;
+    }
+
+    &-item {
+      color: $dark1;
+    }
+  }
+}
+
 .nut-picker {
-  background-color: #fff;
+  background-color: $background-color3;
   width: 100%;
 }
+
 .nut-picker__control {
   display: flex;
   height: 56px;
   font-size: 16px;
   align-items: center;
   justify-content: space-between;
-  padding: 15px;
+  padding: $picker-bar-button-padding;
 
   .nut-picker__cancel-btn {
-    color: #fa2c19;
+    color: $picker-cancel-color;
+    font-size: $picker-bar-cancel-font-size;
   }
+
+  .nut-picker__confirm-btn {
+    color: $picker-ok-color;
+    font-size: $picker-bar-ok-font-size;
+  }
+
   .nut-picker__title {
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     text-align: center;
+    color: $picker-bar-title-color;
+    font-size: $picker-bar-title-font-size;
+    font-weight: $picker-bar-title-font-weight;
   }
 }
+
 .nut-picker__panel {
   display: flex;
   position: relative;
@@ -29,10 +119,13 @@
   .nut-picker-indicator {
     position: absolute;
     top: 108px;
-    height: 36px;
+    height: $picker-item-height;
     width: 100%;
-    border-top: 1px solid #ececec;
-    border-bottom: 1px solid #ececec;
+    border: $picker-item-active-line-border;
+    border-left: 0;
+    border-right: 0;
+    color: $picker-item-text-color;
+    font-size: $picker-item-text-font-size;
     z-index: 3;
   }
 }
@@ -40,24 +133,21 @@
 .nut-picker-list {
   flex: 1;
   position: relative;
-  height: 252px;
+  height: $picker-list-height;
   overflow: hidden;
   text-align: center;
+
   .nut-picker-list-panel {
     transform-style: preserve-3d;
   }
+
   .nut-picker-mask {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.9),
-        rgba(255, 255, 255, 0.4)
-      ),
-      linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4));
+    background-image: $picker-mask-bg-img;
     background-position: top, bottom;
     background-size: 100% 108px;
     background-repeat: no-repeat;
@@ -69,31 +159,36 @@
     position: absolute;
     top: 108px;
     width: 100%;
-    height: 36px;
+    height: $picker-item-height;
   }
+
   .nut-picker-content {
     background: #fff;
     z-index: 2;
     overflow: hidden;
   }
+
   .nut-picker-item,
   .nut-picker-roller-item {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 36px;
-    line-height: 36px;
-    color: #262626;
-    font-size: 14px;
+    height: $picker-item-height;
+    line-height: $picker-item-height;
+    color: $picker-item-text-color;
+    font-size: $picker-item-text-font-size;
     text-align: center;
   }
+
   .nut-picker-item {
     font-size: 16px;
     background: #fff;
   }
+
   .nut-picker-roller {
     z-index: 1;
     transform-style: preserve-3d;
+
     .nut-picker-roller-item {
       backface-visibility: hidden;
       -moz-backface-visibility: hidden;
@@ -101,23 +196,25 @@
       position: absolute;
       top: 0;
       width: 100%;
-      color: #262626;
+      color: $gray1;
     }
 
-    .nut-picker-roller-item-tile {
+    .nut-picker-roller-item-title {
       display: block;
       width: 100%;
       height: 36px;
       line-height: 36px;
-      color: #262626;
-      font-size: 14px;
+      color: $gray1;
+      font-size: $picker-bar-title-font-size;
     }
+
     .nut-picker-roller-item-hidden {
       visibility: hidden;
       opacity: 0;
     }
   }
 }
+
 .nut-picker-placeholder {
   height: 1px;
 }

@@ -1,6 +1,14 @@
+@import '../price/price.scss';
+@import '../tag/tag.scss';
 @import '../../styles/mixins/text-ellipsis.scss';
-@import '../price/Price.scss';
-@import '../tag/Tag.scss';
+
+.nut-theme-dark {
+  .nut-card {
+    .nut-card__right {
+      color: $dark1;
+    }
+  }
+}
 
 .nut-card {
   width: 100%;

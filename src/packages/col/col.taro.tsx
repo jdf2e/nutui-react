@@ -5,6 +5,7 @@ import React, {
   CSSProperties,
   useContext,
 } from 'react'
+import classNames from 'classnames'
 import { DataContext } from '@/packages/row/UserContext'
 
 type EventType = 'row' | 'col'
@@ -23,7 +24,17 @@ const defaultProps = {
 export const Col: FunctionComponent<
   Partial<ColProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
-  const { span, offset, children, onClick } = { ...defaultProps, ...props }
+  const {
+    className,
+    style = {},
+    span,
+    offset,
+    children,
+    onClick,
+  } = {
+    ...defaultProps,
+    ...props,
+  }
   const [colName, setColName] = useState('')
   const [colStyle, setColStyle] = useState({})
   const { gutter } = useContext(DataContext) as any
@@ -49,8 +60,8 @@ export const Col: FunctionComponent<
 
   return (
     <div
-      className={`${colName}`}
-      style={{ ...colStyle }}
+      className={classNames(colName, className)}
+      style={{ ...style, ...colStyle }}
       onClick={(e) => {
         onClick && onClick(e, 'col')
       }}
