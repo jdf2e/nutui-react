@@ -166,6 +166,7 @@ export default App
 ```tsx
 import React, { useState } from 'react'
 import { Menu, MenuItem } from '@nutui/nutui-react';
+import { TriangleDown, Success } from '@nutui/icons-react'
 
 const App = () => {
   const [options] = useState([
@@ -181,8 +182,8 @@ const App = () => {
   return (
     <>
       <div className="demo full">
-        <Menu titleIcon="joy-smile">
-          <MenuItem options={options} value={0} optionsIcon="success" />
+        <Menu titleIcon={<TriangleDown />}>
+          <MenuItem options={options} value={0} optionsIcon={<Success />} />
           <MenuItem options={options1} value="a" />
         </Menu>
       </div>
@@ -277,7 +278,7 @@ export default App
 | closeOnClickOverlay | 是否在點擊遮罩層後關閉菜單     | boolean                 | `true`    |
 | lockScroll          | 背景是否鎖定                   | boolean                 | `true`    |
 | scrollFixed         | 滾動後是否固定，可設置固定位置                   | boolean \| string \| number                 | `true`    |
-| titleIcon           | 自定義標題圖標                 | string                  | -       |
+| titleIcon           | 自定義標題圖標                 | React.ReactNode                  | -       |
 
 ### MenuItem Props
 
@@ -287,12 +288,11 @@ export default App
 | options                       | 選項數組                                | Array   | -                |
 | disabled                      | 是否禁用菜單                            | boolean | `false`            |
 | columns                          | 可以設置一行展示多少列 options          | number  | `1`                |
-| optionsIcon          | 自定義選項圖標                          | string  | `Check`          |
+| optionsIcon          | 自定義選項圖標                          | React.ReactNode  | `Check`          |
 | direction            | 菜單展開方向，可選值為up                | string  | `down`           |
 | activeClassName    | 選項選中時自定義標題樣式類              | string  | -                |
 | inactiveClassName  | 選項非選中時自定義標題樣式類            | string  | -                |
-| fontClassName       | 自定義icon 字體基礎類名                 | string  | `nutui-iconfont` |
-| iconClassPrefix          | 自定義icon 類名前綴，用於使用自定義圖標 | string  | `nut-icon`       |
+
 
 ### MenuItem Events
 

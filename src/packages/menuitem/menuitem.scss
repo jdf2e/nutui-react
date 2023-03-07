@@ -40,6 +40,8 @@
 
     i {
       margin-right: $menu-item-option-i-margin-right;
+      display: inline-flex;
+      align-items: center;
     }
   }
 }
