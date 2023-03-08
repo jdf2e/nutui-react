@@ -12,7 +12,6 @@ import React, {
 } from 'react'
 import { MaskClose } from '@nutui/icons-react-taro'
 import { formatNumber } from './util'
-import Icon from '@/packages/icon/index.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'

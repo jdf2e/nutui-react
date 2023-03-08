@@ -216,7 +216,7 @@ export const Popup: FunctionComponent<
     if (closeable === true) {
       return (
         <div className={closeClasses} onClick={onHandleClickCloseIcon}>
-          <Close width={closeIconSize} height={closeIconSize} />
+          <Close size={closeIconSize} />
         </div>
       )
     }

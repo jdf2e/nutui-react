@@ -119,7 +119,7 @@ export const Radio: FunctionComponent<
           className: color(),
         })
       ) : (
-        <CheckChecked width={iconSize} height={iconSize} className={color()} />
+        <CheckChecked size={iconSize} className={color()} />
       )
     }
     return React.isValidElement(iconName) ? (
@@ -128,7 +128,7 @@ export const Radio: FunctionComponent<
         className: color(),
       })
     ) : (
-      <CheckNormal width={iconSize} height={iconSize} className={color()} />
+      <CheckNormal size={iconSize} className={color()} />
     )
   }
   const reverseState = textPosition === 'left'
