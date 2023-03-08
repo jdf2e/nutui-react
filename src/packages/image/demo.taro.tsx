@@ -45,7 +45,7 @@ const ImageDemo = () => {
         <Cell>
           <Row gutter={10}>
             <Col span="8">
-              <Image width="80" height="80" showLoading />
+              <Image width="80" height="80" />
               <div className="image-text">{translated.default}</div>
             </Col>
             <Col span="8">
@@ -63,13 +63,16 @@ const ImageDemo = () => {
         <Cell>
           <Row gutter={10}>
             <Col span="8">
-              <Image src="#" width="80" height="80" showError />
+              <Image src="https://x" width="80" height="80" />
               <div className="image-text">{translated.default}</div>
             </Col>
             <Col span="8">
-              <Image src="#" width="80" height="80" showError>
-                <CircleClose />
-              </Image>
+              <Image
+                src="https://x"
+                width="100"
+                height="100"
+                slotError={<CircleClose />}
+              />
               <div className="image-text">{translated.custom}</div>
             </Col>
           </Row>

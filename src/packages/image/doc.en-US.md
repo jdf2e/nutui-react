@@ -23,7 +23,7 @@ import React from "react";
 import { Image } from '@nutui/nutui-react';
 
 const App = () => {
-const src =
+  const src =
     '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   return <>
     <Image src={src} width="100" height="100" />
@@ -44,19 +44,18 @@ import React from "react";
 import { Image } from '@nutui/nutui-react';
 
 const App = () => {
-const src =
+  const src =
     '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   return <>
     <Image
-        src={src}
-        width="100"
-        height="100"
-        fit="contain"
+      src={src}
+      width="100"
+      height="100"
+      fit="contain"
     />
   </>
 }
 export default App;
-
 ```
 :::
 
@@ -70,20 +69,19 @@ import React from "react";
 import { Image } from '@nutui/nutui-react';
 
 const App = () => {
-const src =
+  const src =
     '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   return <>
     <Image
-        src={src}
-        width="100"
-        height="100"
-        fit="contain"
-        position="left"
+      src={src}
+      width="100"
+      height="100"
+      fit="contain"
+      position="left"
     />
   </>
 }
 export default App;
-
 ```
 :::
 
@@ -97,25 +95,24 @@ import React from "react";
 import { Image } from '@nutui/nutui-react';
 
 const App = () => {
-const src =
+  const src =
     '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   return <>
     <Image
-        src={src}
-        width="100"
-        height="100"
-        round
+      src={src}
+      width="100"
+      height="100"
+      round
     />
   </>
 }
 export default App;
-
 ```
 :::
 
 ### Loading
 
-The Image component provides a default loading prompt and supports custom content through the loading slot.
+The Image component provides a default loading prompt and supports custom content through `slotLoading`.
 
 :::demo
 ```tsx
@@ -124,25 +121,23 @@ import { Image } from '@nutui/nutui-react';
 import { Loading } from '@nutui/icons-react';
 
 const App = () => {
-const src =
+  const src =
     '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   return <>
     <Image
       width="100"
       height="100"
-      showLoading
       slotLoding={<Loading className="nut-icon-loading" />}
     />
   </>
 }
 export default App;
-
 ```
 :::
 
 ### Error
 
-The Image component provides a default loading failure warning and supports custom content through the error slot.
+The Image component provides a default loading failure warning and supports custom content through `slotError`.
 
 :::demo
 ```tsx
@@ -152,13 +147,15 @@ import { CircleClose } from '@nutui/icons-react';
 
 const App = () => {
   return <>
-    <Image src="https://x" width="100" height="100" showError>
-        <CircleClose />
-    </Image>
+    <Image
+      src="https://x"
+      width="100"
+      height="100"
+      slotError={<CircleClose />}
+    />
   </>
 }
 export default App;
-
 ```
 :::
 
@@ -172,11 +169,11 @@ import React from "react";
 import { Image,Cell } from '@nutui/nutui-react';
 
 const App = () => {
-const src =
-    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
-const imageData = [1, 2, 3, 4, 5, 6]
-const placeholderImg = 'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'
-const style = `
+  const src =
+      '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+  const imageData = [1, 2, 3, 4, 5, 6]
+  const placeholderImg = 'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'
+  const style = `
   .lazy-box{
     width:100%
   }
@@ -185,29 +182,26 @@ const style = `
   }
 `
   return <>
-  <style>{style}</style>
+    <style>{style}</style>
     <Cell>
-        <div className="lazy-box">
+      <div className="lazy-box">
         {imageData.map((item) => {
-            return (
+          return (
             <Image
-                key={item}
-                height="150"
-                src={src}
-                isLazy
-                showError
-                showLoading
-                loadingImg={placeholderImg}
-                errorImg={placeholderImg}
+              key={item}
+              height="150"
+              src={src}
+              isLazy
+              loadingImg={placeholderImg}
+              errorImg={placeholderImg}
             />
-            )
+          )
         })}
-        </div>
+      </div>
     </Cell>
   </>
 }
 export default App;
-
 ```
 :::
 
