@@ -378,7 +378,8 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Elevator, Icon } from '@nutui/nutui-react'
+import { Elevator } from '@nutui/nutui-react'
+import { Jd } from '@nutui/icons-react'
 
 const App = () => {
   const dataList = [
@@ -449,7 +450,7 @@ const App = () => {
         {(value) => {
           return (
             <>
-              <Icon name="JD" size="12" />
+              <Jd width={12} height={12} />
               <span style={{ marginLeft: '15px' }}>{value?.name}</span>
             </>
           )
