@@ -309,8 +309,8 @@ export default App;
 | type | navigation direction, optional left right | string | `right` |
 | overlay | Whether to show the mask when expanding | boolean | `true` |
 | position | fixed vertical position | object | `{top: 'auto', bottom: 'auto'}` |
-| slotList | Customize expanded list content | HTMLElement | - |
-| slotBtn | custom button | HTMLElement | - |
+| slotList | Customize expanded list content | ReactNode | - |
+| slotBtn | custom button | ReactNode | - |
 
 
 ### Event

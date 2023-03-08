@@ -1,6 +1,6 @@
 import React, { FunctionComponent, MouseEvent } from 'react'
 import classNames from 'classnames'
-import Icon from '@/packages/icon'
+import { Left } from '@nutui/icons-react'
 import Overlay from '@/packages/overlay'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
@@ -56,8 +56,6 @@ export const FixedNav: FunctionComponent<
     type,
     slotList,
     slotBtn,
-    iconClassPrefix,
-    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -125,12 +123,7 @@ export const FixedNav: FunctionComponent<
       <div className="nut-fixednav__btn" onClick={() => onUpdateValue()}>
         {slotBtn || (
           <>
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              name="left"
-              color="#fff"
-            />
+            <Left color="#fff" />
             <div className="text">
               {visible
                 ? activeText || locale.fixednav.activeText
