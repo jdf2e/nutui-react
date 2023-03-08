@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useState,
   CSSProperties,
+  useRef,
 } from 'react'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import bem from '@/utils/bem'
@@ -61,6 +62,7 @@ export const TextArea: FunctionComponent<
 
   const textareaBem = bem('textarea')
   const [inputValue, SetInputValue] = useState('')
+  const compositingRef = useRef(false)
 
   useEffect(() => {
     let initValue = defaultValue
@@ -74,7 +76,12 @@ export const TextArea: FunctionComponent<
     if (disabled) return
     if (readonly) return
     const text = event.detail ? (event.detail as any) : (event.target as any)
-    if (maxlength && [...text.value].length > Number(maxlength)) {
+    console.log('composing', compositingRef.current)
+    if (
+      maxlength &&
+      [...text.value].length > Number(maxlength) &&
+      !compositingRef.current
+    ) {
       text.value = text.value.substring(0, Number(maxlength))
     }
     SetInputValue(text.value)
@@ -95,6 +102,13 @@ export const TextArea: FunctionComponent<
     onBlur && onBlur(event)
   }
 
+  const startComposing = () => {
+    compositingRef.current = true
+  }
+  const endComposing = () => {
+    compositingRef.current = false
+  }
+
   return (
     <div
       className={`${textareaBem()} ${disabled ? textareaBem('disabled') : ''} ${
@@ -110,9 +124,9 @@ export const TextArea: FunctionComponent<
         }}
         readOnly={disabled || readonly}
         value={inputValue}
-        onInput={(e: any) => {
-          textChange(e)
-        }}
+        // onInput={(e: any) => {
+        //   textChange(e)
+        // }}
         onChange={(e: any) => {
           textChange(e)
         }}
@@ -122,6 +136,8 @@ export const TextArea: FunctionComponent<
         onFocus={(e: any) => {
           textFocus(e)
         }}
+        onCompositionEnd={(e) => endComposing()}
+        onCompositionStart={(e) => startComposing()}
         rows={rows}
         maxLength={maxlength < 0 ? 0 : maxlength}
         placeholder={placeholder || locale.placeholder}
