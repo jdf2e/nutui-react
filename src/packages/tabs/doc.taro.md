@@ -7,8 +7,15 @@
 ### 安装
 
 ```ts
+// react
+import { Tabs } from '@nutui/nutui-react-taro';
+```
+
+```ts
+// 1.4.9 废弃
 import { Tabs, TabPane } from '@nutui/nutui-react-taro';
 ```
+
 
 ## 代码演示
 
@@ -18,7 +25,7 @@ import { Tabs, TabPane } from '@nutui/nutui-react-taro';
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { Tabs} from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [tab1value, setTab1value] = useState('0');
@@ -27,9 +34,9 @@ const App = () => {
       <Tabs value={tab1value} onChange={({ paneKey }) => {
         setTab1value(paneKey)
       }}>
-        <TabPane title="Tab 1"> Tab 1 </TabPane>
-        <TabPane title="Tab 2"> Tab 2 </TabPane>
-        <TabPane title="Tab 3"> Tab 3 </TabPane>
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -45,7 +52,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { Tabs} from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [tab1value, setTab1value] = useState('0');
@@ -54,9 +61,9 @@ const App = () => {
       <Tabs value={tab1value} onChange={({ paneKey }) => {
         setTab1value(paneKey)
       }} type="smile">
-        <TabPane title="Tab 1"> Tab 1 </TabPane>
-        <TabPane title="Tab 2"> Tab 2 </TabPane>
-        <TabPane title="Tab 3"> Tab 3 </TabPane>
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -73,7 +80,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { Tabs} from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [tab1value, setTab1value] = useState('0');
@@ -82,9 +89,9 @@ const App = () => {
       <Tabs value={tab1value} onChange={({ paneKey }) => {
         setTab1value(paneKey)
       }} leftAlign>
-        <TabPane title="Tab 1"> Tab 1 </TabPane>
-        <TabPane title="Tab 2"> Tab 2 </TabPane>
-        <TabPane title="Tab 3"> Tab 3 </TabPane>
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -100,7 +107,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { Tabs} from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [tab2value, setTab2value] = useState('0');
@@ -109,9 +116,9 @@ const App = () => {
       <Tabs value={tab2value} onChange={({ paneKey }) => {
         setTab2value(paneKey)
       }}>
-        <TabPane title="Tab 1" paneKey="0"> Tab 1 </TabPane>
-        <TabPane title="Tab 2" paneKey="1" disabled> Tab 2 </TabPane>
-        <TabPane title="Tab 3" paneKey="2"> Tab 3 </TabPane>
+        <Tabs.TabPane title="Tab 1" paneKey="0"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2" paneKey="1" disabled> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3" paneKey="2"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -129,7 +136,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { Tabs} from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [tab2value, setTab2value] = useState('0');
@@ -138,7 +145,7 @@ const App = () => {
       <Tabs value={tab2value} tabStyle={{ position: 'sticky', top: '0px', zIndex: 1 }} onChange={({ paneKey }) => {
         setTab2value(paneKey)
       }}>
-        <TabPane title="Tab 1" paneKey="0">
+        <Tabs.TabPane title="Tab 1" paneKey="0">
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
@@ -147,8 +154,8 @@ const App = () => {
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
-        </TabPane>
-        <TabPane title="Tab 2" paneKey="1">
+        </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2" paneKey="1">
             <p>Tab 2</p>
             <p>Tab 2</p>
             <p>Tab 2</p>
@@ -157,8 +164,8 @@ const App = () => {
             <p>Tab 2</p>
             <p>Tab 2</p>
             <p>Tab 2</p>
-        </TabPane>
-        <TabPane title="Tab 3" paneKey="2"> Tab 3 </TabPane>
+        </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3" paneKey="2"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -175,7 +182,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { Tabs} from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [tab2value, setTab2value] = useState('0');
@@ -184,14 +191,14 @@ const App = () => {
       <Tabs value={tab2value} autoHeight onChange={({ paneKey }) => {
         setTab2value(paneKey)
       }}>
-        <TabPane title="Tab 1" paneKey="0">
+        <Tabs.TabPane title="Tab 1" paneKey="0">
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
-        </TabPane>
-        <TabPane title="Tab 2" paneKey="1"> Tab 2 </TabPane>
-        <TabPane title="Tab 3" paneKey="2"> Tab 3 </TabPane>
+        </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2" paneKey="1"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3" paneKey="2"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -207,7 +214,7 @@ export default App;
 
 ```tsx
 import React, { useState, useEffect } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { Tabs} from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [tab3value, setTab3value] = useState('0');
@@ -224,8 +231,8 @@ const App = () => {
       <Tabs value={tab3value} onChange={({ paneKey }) => {
         setTab3value(paneKey)
       }}>
-        {list3.map(item => <TabPane key={item}
-          title={`Tab ${item}`}> Tab {item} </TabPane>)}
+        {list3.map(item => <Tabs.TabPane key={item}
+          title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -241,7 +248,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { Tabs} from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [tab4value, setTab4value] = useState('0');
@@ -251,8 +258,8 @@ const App = () => {
       <Tabs value={tab4value} onChange={({ paneKey }) => {
         setTab4value(paneKey)
       }} titleScroll titleGutter="10">
-        {list4.map(item => <TabPane key={item}
-          title={`Tab ${item}`}> Tab {item} </TabPane>)}
+        {list4.map(item => <Tabs.TabPane key={item}
+          title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -268,7 +275,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { Tabs} from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [tab5value, setTab5value] = useState('0');
@@ -278,8 +285,8 @@ const App = () => {
       <Tabs style={{ height: '300px' }} value={tab5value} onChange={({ paneKey }) => {
         setTab5value(paneKey)
       }} titleScroll direction="vertical">
-        {list5.map(item => <TabPane key={item}
-          title={`Tab ${  item}`}> Tab {item} </TabPane>)}
+        {list5.map(item => <Tabs.TabPane key={item}
+          title={`Tab ${  item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -295,7 +302,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { Tabs} from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [tab6value, setTab6value] = useState('0');
@@ -305,8 +312,79 @@ const App = () => {
       <Tabs style={{ height: '300px' }} value={tab6value} onChange={({ paneKey }) => {
         setTab6value(paneKey)
       }} type="smile" titleScroll direction="vertical">
-        {list5.map(item => <TabPane key={item}
-          title={`Tab ${item}`}> Tab {item} </TabPane>)}
+        {list5.map(item => <Tabs.TabPane key={item}
+          title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 嵌套布局
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [tab8value, setTab8value] = useState('0')
+  const [tab9value, setTab9value] = useState('0')
+  return (
+    <>
+      <Tabs
+        value={tab8value}
+        onChange={({ paneKey }) => {
+          setTab8value(paneKey)
+        }}
+        type="smile"
+        direction="vertical"
+      >
+        <Tabs.TabPane title="Tab 1">
+          <Tabs
+            value={tab9value}
+            onChange={({ paneKey }) => {
+              setTab9value(paneKey)
+            }}
+            type="smile"
+            direction="horizontal"
+          >
+            <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+          </Tabs>
+        </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+
+      <Tabs
+        value={tab8value}
+        onChange={({ paneKey }) => {
+          setTab8value(paneKey)
+        }}
+        autoHeight
+        type="smile"
+      >
+        <Tabs.TabPane title="Tab 1">
+          <Tabs
+            value={tab9value}
+            onChange={({ paneKey }) => {
+              setTab9value(paneKey)
+            }}
+            direction="vertical"
+          >
+            <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+          </Tabs>
+        </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -322,7 +400,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { Tabs} from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [tab1value, setTab1value] = useState('0');
@@ -331,23 +409,23 @@ const App = () => {
       <Tabs value={tab1value} onChange={({ paneKey }) => {
         setTab1value(paneKey)
       }} size="large">
-        <TabPane title="Tab 1"> Tab 1 </TabPane>
-        <TabPane title="Tab 2"> Tab 2 </TabPane>
-        <TabPane title="Tab 3"> Tab 3 </TabPane>
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
       <Tabs value={tab1value} onChange={({ paneKey }) => {
         setTab1value(paneKey)
       }} size="normal">
-        <TabPane title="Tab 1"> Tab 1 </TabPane>
-        <TabPane title="Tab 2"> Tab 2 </TabPane>
-        <TabPane title="Tab 3"> Tab 3 </TabPane>
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
       <Tabs value={tab1value} onChange={({ paneKey }) => {
         setTab1value(paneKey)
       }} size="small">
-        <TabPane title="Tab 1"> Tab 1 </TabPane>
-        <TabPane title="Tab 2"> Tab 2 </TabPane>
-        <TabPane title="Tab 3"> Tab 3 </TabPane>
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -401,9 +479,9 @@ const App = () => {
 
       }>
         {list6.map(item => (
-          <TabPane key={item.paneKey} paneKey={item.paneKey}>
+          <Tabs.TabPane key={item.paneKey} paneKey={item.paneKey}>
             {item.title}
-          </TabPane>
+          </Tabs.TabPane>
         ))}
       </Tabs>
     </>
@@ -441,7 +519,7 @@ export default App;
 |---------|----------------|
 | default | 自定义内容     |
 
-### Tabpane Props
+### Tabs.Tabpane Props
 
 | 参数                | 说明              | 类型    | 默认值           |
 |-------------------|-----------------|---------|------------------|

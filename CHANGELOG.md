@@ -1,3 +1,30 @@
+# v1.4.9
+`2023-03-01`
+
+* :sparkles: feat: cascader 增加checkedIcon属性，增加视觉元素提取，增加自定义样式demo (#719) @xiaoyatong
+* :sparkles: feat: checkbox 增加group样式 (#721) @xiaoyatong
+* :sparkles: feat: checkbox 支持跨层级使用 (#750) @oasis-cloud
+* :sparkles: feat: picker 替换元素变量 (#729) @xiaoyatong
+* :sparkles: feat: tabs 增加元素变量应用，修复垂直排列的active状态样式 (#732) @xiaoyatong
+* :sparkles: feat: tabs 增加嵌套布局 (#747) @xiaoyatong
+* :sparkles: feat: tabs、tabpane 父子组件整合 (#745) @xiaoyatong
+* :sparkles: feat: uploader 增加元素变量，及demo (#728) @xiaoyatong
+* :sparkles: feat:新增uploader组件taro和h5上传视频和手动清除上传的功能 (#748) @junjun666
+* :bug: fix(animatingnumbers): 修复delaySpeed不生效 (#733) @kasonyang
+* :bug: fix: badge初始化classname (#722) @xiaoyatong
+* :bug: fix: calendar 适配 taro，支持滚动到某个date，支持scrollview (#744) @xiaoyatong
+* :bug: fix: datepicker 不展示title (#746) @xiaoyatong
+* :bug: fix: popup class undefined (#752) @xiaoyatong
+* :bug: fix: taro H5统一增加了页面paddingTop值，Drag组件demo是fixed定位的，需要对应调整 (#731) @irisSong
+* :bug: fix: 修复组件可能存在 undefined 类名的情况，补充相应测试快照 (#726) @AnteeHub
+* :bug: fix: 组件依赖时，缺少对依赖组件样式的引用 (#741) @xiaoyatong
+* 📖 docs(swipe): format api table & remove theme vars (#737) @eiinu
+* 📖 docs: 基础组件 API 文档格式化 (#735) @eiinu
+* 📖 docs: 导航组件 API 文档格式化 (#740) @eiinu
+* 📖 docs: 展示组件 API 文档格式化 (#742) @eiinu
+* 📖 docs: 布局组件、特色组件 API 文档格式化 (#736) @eiinu
+* 🔨 chore: 重构h5和taro环境下 barrage组件代码并修复loop循环的问题 (#717) @junjun666
+
 # v1.4.8
 `2023-02-15`
 

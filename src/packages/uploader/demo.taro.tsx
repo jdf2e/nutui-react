@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Uploader, Progress, Cell } from '@/packages/nutui.react.taro'
+import '@/packages/uploader/demo.scss'
 import Header from '@/sites/components/header'
 
 export type FileItemStatus =
@@ -35,6 +36,7 @@ export class FileItem {
 
 interface uploadRefState {
   submit: () => void
+  clear: () => void
 }
 
 interface T {
@@ -55,6 +57,7 @@ interface T {
   '37c65f47': string
   bb5caa9c: string
   '27f1376e': string
+  videoUploader: string
   '0e5eaea3': string
   b7454181: string
   '5c393e52': string
@@ -62,6 +65,7 @@ interface T {
   uploadXhrCustom: string
   '67fffe24': string
   fcf01d1a: string
+  clearBtnUpload: string
   '7db1a8b2': string
 }
 const UploaderDemo = () => {
@@ -84,6 +88,7 @@ const UploaderDemo = () => {
       '37c65f47': '自定义上传样式',
       bb5caa9c: '上传文件',
       '27f1376e': '直接调起摄像头（移动端生效）',
+      videoUploader: '使用前摄像头拍摄3s视频并上传(仅支持微信小程序)',
       '0e5eaea3': '限制上传数量5个',
       b7454181: '限制上传大小（每个文件最大不超过50kb）',
       '5c393e52': '图片压缩（在beforeupload钩子中处理）',
@@ -91,6 +96,7 @@ const UploaderDemo = () => {
       uploadXhrCustom: '自定义 Taro.uploadFile 上传方式(before-xhr-upload)',
       '67fffe24': '选中文件后，通过按钮手动执行上传',
       fcf01d1a: '执行上传',
+      clearBtnUpload: '手动清空上传',
       '7db1a8b2': '禁用状态',
     },
     'zh-TW': {
@@ -111,6 +117,7 @@ const UploaderDemo = () => {
       '37c65f47': '自定義上傳樣式',
       bb5caa9c: '上傳檔',
       '27f1376e': '直接調起攝像頭（移動端生效）',
+      videoUploader: '使用前監視器拍攝3s視頻並上傳（僅支持微信小程式）',
       '0e5eaea3': '限制上傳數量5個',
       b7454181: '限制上傳大小（每個檔案最大不超過50kb）',
       '5c393e52': '圖片壓縮（在beforeupload鉤子中處理）',
@@ -118,6 +125,7 @@ const UploaderDemo = () => {
       uploadXhrCustom: '自定義 Taro.uploadFile 上傳方式(before-xhr-upload)',
       '67fffe24': '選取檔後，通過按鈕手動執行上傳',
       fcf01d1a: '執行上傳',
+      clearBtnUpload: '手動清空上傳',
       '7db1a8b2': '禁用狀態',
     },
     'en-US': {
@@ -138,6 +146,8 @@ const UploaderDemo = () => {
       '37c65f47': 'Customize the upload style',
       bb5caa9c: 'Upload the file',
       '27f1376e': 'Direct camera up (mobile)',
+      videoUploader:
+        'Use the front camera to capture 3s video and upload it (only support WeChat applet)',
       '0e5eaea3': 'Limit the number of uploads to 5',
       b7454181: 'Limit upload size (maximum 50kb per file)',
       '5c393e52': 'Image compression (handled in a foreupload hook)',
@@ -146,6 +156,7 @@ const UploaderDemo = () => {
       '67fffe24':
         'After selecting Chinese, manually perform the upload via the button',
       fcf01d1a: 'Perform the upload',
+      clearBtnUpload: 'Clear upload manually',
       '7db1a8b2': 'Disabled state',
     },
   })
@@ -163,7 +174,7 @@ const UploaderDemo = () => {
       status: 'success',
       message: translated['844759c9'],
       type: 'image',
-      uid: '123',
+      uid: '122',
     },
     {
       name: translated.df9128ec,
@@ -196,7 +207,7 @@ const UploaderDemo = () => {
       status: 'uploading',
       message: translated['403b055e'],
       type: 'image',
-      uid: '125',
+      uid: '126',
       loadingIcon: 'loading1',
     },
     {
@@ -205,7 +216,7 @@ const UploaderDemo = () => {
       status: 'uploading',
       message: translated['403b055e'],
       type: 'image',
-      uid: '125',
+      uid: '127',
       loadingIcon: ' ',
     },
   ]
@@ -258,16 +269,19 @@ const UploaderDemo = () => {
   const submitUpload = () => {
     ;(uploadRef.current as uploadRefState).submit()
   }
+  const clearUpload = () => {
+    ;(uploadRef.current as uploadRefState).clear()
+  }
   return (
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} bg-w`}>
         <h2>{translated['84aa6bce']}</h2>
-        <Cell>
+        <Cell className="cell-wrap">
           <Uploader
             url={uploadUrl}
             onStart={onStart}
-            style={{ marginRight: '10px' }}
+            style={{ marginRight: '10px', marginBottom: '10px' }}
           />
           <Uploader
             url={uploadUrl}
@@ -323,6 +337,14 @@ const UploaderDemo = () => {
         <h2>{translated['27f1376e']}</h2>
         <Uploader url={uploadUrl} sourceType={['camera']} />
 
+        <h2>{translated.videoUploader}</h2>
+        <Uploader
+          url={uploadUrl}
+          maxDuration={3}
+          sourceType={['camera']}
+          camera="front"
+        />
+
         <h2>{translated['0e5eaea3']}</h2>
         <Uploader url={uploadUrl} maximum="5" multiple />
 
@@ -351,9 +373,16 @@ const UploaderDemo = () => {
           autoUpload={false}
           ref={uploadRef}
         />
-        <br />
-        <Button type="success" size="small" onClick={submitUpload}>
+        <Button
+          type="success"
+          size="small"
+          onClick={submitUpload}
+          style={{ marginRight: '10px', marginTop: '20px' }}
+        >
           {translated.fcf01d1a}
+        </Button>
+        <Button type="danger" size="small" onClick={clearUpload}>
+          {translated.clearBtnUpload}
         </Button>
 
         <h2>{translated['7db1a8b2']}</h2>

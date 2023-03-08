@@ -129,7 +129,7 @@ export const Popup: FunctionComponent<
       round,
       [`nut-popup-${position}`]: true,
       [`${popClass}`]: true,
-      [`${className}`]: true,
+      [`${className || ''}`]: true,
     },
     b('')
   )

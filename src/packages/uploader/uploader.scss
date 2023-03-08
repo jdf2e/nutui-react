@@ -184,6 +184,7 @@
         font-size: 12px;
         color: $white;
         text-align: center;
+        box-sizing: border-box;
         height: $uploader-preview-tips-height;
         line-height: $uploader-preview-tips-height;
         border-radius: $uploader-picture-border-radius;
@@ -195,8 +196,9 @@
       }
 
       &__c {
-        height: 100%;
-        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 6px;
       }
 
       &__file {
