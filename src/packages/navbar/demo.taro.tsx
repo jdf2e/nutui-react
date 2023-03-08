@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
+import { Cart2, More, Share } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { NavBar, Tabs, TabPane, Icon } from '@/packages/nutui.react.taro'
+import { NavBar, Tabs, TabPane } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
 interface T {
@@ -66,7 +67,9 @@ const NavBarDemo = () => {
           onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
           onClickRight={(e) => Taro.showToast({ title: 'icon' })}
         >
-          <Icon<{ slot: string }> name="share" slot="right" />
+          <i slot="right">
+            <Share />
+          </i>
         </NavBar>
         <NavBar
           title={translated.e51e4582}
@@ -79,7 +82,6 @@ const NavBarDemo = () => {
         <NavBar
           title={translated.c3a3a1d2}
           desc={translated['8dab2f66']}
-          titIcon="locationg3"
           onClickTitle={(e) => Taro.showToast({ title: translated.b840c88f })}
           onClickRight={(e) =>
             Taro.showToast({ title: translated['8dab2f66'] })
@@ -87,7 +89,12 @@ const NavBarDemo = () => {
           onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
           onClickIcon={(e) => Taro.showToast({ title: 'icon' })}
         >
-          <Icon<{ slot: string }> name="more-x" slot="right" />
+          <i slot="titleIcon">
+            <Cart2 />
+          </i>
+          <i slot="right">
+            <More />
+          </i>
         </NavBar>
         <NavBar
           title={translated.c38a08ef}
@@ -98,7 +105,9 @@ const NavBarDemo = () => {
           onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
           onClickRight={(e) => Taro.showToast({ title: 'icon' })}
         >
-          <Icon<{ slot: string }> name="share" slot="right" />
+          <i slot="right">
+            <Share />
+          </i>
         </NavBar>
         <h2>{translated.c9e6df49}</h2>
         <NavBar
@@ -122,7 +131,9 @@ const NavBarDemo = () => {
               <TabPane title="Tab 3"> Tab 3 </TabPane>
             </Tabs>
           </div>
-          <Icon<{ slot: string }> name="more-x" slot="right" />
+          <i slot="right">
+            <More />
+          </i>
         </NavBar>
       </div>
     </>
