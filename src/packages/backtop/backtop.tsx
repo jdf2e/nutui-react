@@ -1,6 +1,11 @@
-import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
-
-import Icon from '@/packages/icon'
+import React, {
+  FunctionComponent,
+  useEffect,
+  useState,
+  useRef,
+  ReactNode,
+} from 'react'
+import { Top } from '@nutui/icons-react'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 declare const window: any
@@ -14,7 +19,7 @@ export interface BackTopProps extends BasicComponent {
   zIndex: number
   isAnimation: boolean
   duration: number
-  children?: HTMLElement | any
+  children?: ReactNode
   style?: React.CSSProperties
   onClick?: (event: MouseEvent) => void
 }
@@ -45,8 +50,6 @@ export const BackTop: FunctionComponent<
     duration,
     style,
     onClick,
-    iconClassPrefix,
-    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -152,15 +155,7 @@ export const BackTop: FunctionComponent<
         goTop(e)
       }}
     >
-      {children || (
-        <Icon
-          classPrefix={iconClassPrefix}
-          fontClassName={iconFontClassName}
-          size="19px"
-          className="nut-backtop-main"
-          name="top"
-        />
-      )}
+      {children || <Top width={19} height={19} className="nut-backtop-main" />}
     </div>
   )
 }

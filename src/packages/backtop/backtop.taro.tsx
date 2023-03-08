@@ -1,7 +1,6 @@
-import React, { FunctionComponent, useState } from 'react'
-
+import React, { FunctionComponent, ReactNode, useState } from 'react'
 import { usePageScroll, pageScrollTo } from '@tarojs/taro'
-import Icon from '@/packages/icon/index.taro'
+import { Top } from '@nutui/icons-react-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 declare const window: any
@@ -15,7 +14,7 @@ export interface BackTopProps extends BasicComponent {
   zIndex: number
   isAnimation: boolean
   duration: number
-  children?: HTMLElement | any
+  children?: ReactNode
   style?: React.CSSProperties
   onClick?: (event: MouseEvent) => void
 }
@@ -46,8 +45,6 @@ export const BackTop: FunctionComponent<
     duration,
     style,
     onClick,
-    iconClassPrefix,
-    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -85,13 +82,7 @@ export const BackTop: FunctionComponent<
         }}
       >
         {children || (
-          <Icon
-            classPrefix={iconClassPrefix}
-            fontClassName={iconFontClassName}
-            size="19px"
-            className="nut-backtop-main"
-            name="top"
-          />
+          <Top width={19} height={19} className="nut-backtop-main" />
         )}
       </div>
     </>
