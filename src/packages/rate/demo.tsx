@@ -52,8 +52,8 @@ const RateDemo = () => {
         <Cell>
           <Rate modelValue={3} />
         </Cell>
-        <h2>{translated.halfStar}</h2>
 
+        <h2>{translated.halfStar}</h2>
         <Cell>
           <Rate allowHalf modelValue="3.5" />
         </Cell>
