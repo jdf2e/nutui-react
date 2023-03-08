@@ -316,7 +316,8 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane, Icon } from '@nutui/nutui-react';
+import { Tabs, TabPane } from '@nutui/nutui-react';  
+import { Dongdong, Jd } from '@nutui/icons-react';
 
 const App = () => {
   const [tab7value, setTab7value] = useState('c1');
@@ -324,12 +325,12 @@ const App = () => {
     {
       title: 'custom 1',
       paneKey: 'c1',
-      icon: 'dongdong'
+      icon: <Dongdong />,
     },
     {
       title: 'custom 2',
       paneKey: 'c2',
-      icon: 'JD'
+      icon: <Jd />,
     },
     {
       title: 'custom 3',
@@ -345,7 +346,7 @@ const App = () => {
             className={`nut-tabs__titles-item ${tab7value == item.paneKey ? 'active' : ''}`}
             key={item.paneKey}
           >
-            {item.icon && <Icon name={item.icon} />}
+            {item.icon || null}
             <span className="nut-tabs__titles-item__text">{item.title}</span>
             <span className="nut-tabs__titles-item__line" />
           </div>
