@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import { Issue } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Progress } from './progress'
 import { Cell } from '@/packages/cell/cell'
-import { Icon } from '@/packages/icon/icon'
+import { Image } from '@/packages/image/image'
 import { Button } from '@/packages/button/button'
 import Toast from '../toast'
 
@@ -100,9 +101,10 @@ const ProgressDemo = () => {
         <h2>{translated.customContent}</h2>
         <Cell style={cellStyles}>
           <Progress percentage={60} textInside>
-            <Icon
-              size={30}
-              name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+            <Image
+              width="30px"
+              height="30px"
+              src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
             />
           </Progress>
         </Cell>
@@ -133,8 +135,7 @@ const ProgressDemo = () => {
             strokeColor="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
             strokeWidth="15"
             textType="icon"
-            iconName="issue"
-            iconColor="red"
+            icon={<Issue color="red" />}
           />
         </Cell>
         <h2>{translated.dynamicChange}</h2>
