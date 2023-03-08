@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
+import { Dongdong, TriangleDown } from '@nutui/icons-react'
 import Button from '@/packages/button'
 import Toast from '@/packages/toast'
-import Icon from '@/packages/icon'
 import Table from '@/packages/table'
 import { TableColumnProps } from './types'
 import { useTranslate } from '../../sites/assets/locale'
@@ -17,6 +17,7 @@ interface T {
   customCell: string
   asynchronousRendering: string
   sorting: string
+  sorterIcon: string
 }
 
 const TableDemo = () => {
@@ -32,6 +33,7 @@ const TableDemo = () => {
       customCell: '自定义单元格',
       asynchronousRendering: '支持异步渲染(5s之后看效果)',
       sorting: '支持排序',
+      sorterIcon: '支持排序更换图标',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -46,6 +48,7 @@ const TableDemo = () => {
       asynchronousRendering:
         'Support asynchronous rendering(See the effect after 5S)',
       sorting: 'Support sorting',
+      sorterIcon: 'Supports sorting and changing ICONS',
     },
   })
 
@@ -172,7 +175,7 @@ const TableDemo = () => {
       sex: '女',
       record: '本科',
       render: () => {
-        return <Icon name="dongdong" size="14px" />
+        return <Dongdong height="14px" width="14px" />
       },
     },
     {
@@ -267,6 +270,14 @@ const TableDemo = () => {
           data={data5}
           onSorter={handleSorter}
           style={{ background: '#fff' }}
+        />
+        <h2>{translated.sorterIcon}</h2>
+        <Table
+          columns={columns5}
+          data={data5}
+          onSorter={handleSorter}
+          style={{ background: '#fff' }}
+          sorterIcon={<TriangleDown width="12px" height="12px" />}
         />
       </div>
     </>

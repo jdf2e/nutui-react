@@ -134,9 +134,12 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
                   {titleIcon || (
                     <>
                       {direction === 'up' ? (
-                        <RectUp className="nut-menu__title-icon" />
+                        <RectUp className="nut-menu__title-icon" size="14px" />
                       ) : (
-                        <RectDown className="nut-menu__title-icon" />
+                        <RectDown
+                          className="nut-menu__title-icon"
+                          size="14px"
+                        />
                       )}
                     </>
                   )}

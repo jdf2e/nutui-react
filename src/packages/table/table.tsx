@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
+import { DownArrow } from '@nutui/icons-react'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
 import { BasicTableProps, TableColumnProps } from './types'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
@@ -17,6 +17,7 @@ const defaultProps = {
   bordered: true,
   striped: false,
   noData: '无数据',
+  sorterIcon: null,
 } as TableProps
 export const Table: FunctionComponent<
   Partial<TableProps> & React.HTMLAttributes<HTMLDivElement>
@@ -35,8 +36,7 @@ export const Table: FunctionComponent<
     striped,
     noData,
     onSorter,
-    iconClassPrefix,
-    iconFontClassName,
+    sorterIcon,
     ...rest
   } = {
     ...defaultProps,
@@ -89,15 +89,9 @@ export const Table: FunctionComponent<
           key={item.key}
           onClick={() => handleSorterClick(item)}
         >
-          {item.title}
-          {item.sorter && (
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              name="down-arrow"
-              size="12px"
-            />
-          )}
+          {item.title}&nbsp;
+          {item.sorter &&
+            (sorterIcon || <DownArrow width="12px" height="12px" />)}
         </span>
       )
     })

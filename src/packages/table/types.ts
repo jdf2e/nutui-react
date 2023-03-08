@@ -10,6 +10,7 @@ export interface BasicTableProps extends BasicComponent {
   summary?: React.ReactNode
   striped?: boolean
   noData?: React.ReactNode
+  sorterIcon?: React.ReactNode
   onSorter?: (item: TableColumnProps, data: Array<any>) => void
 }
 
