@@ -120,21 +120,18 @@ export default App;
 :::demo
 ```tsx
 import React from "react";
-import { Image, Icon } from '@nutui/nutui-react';
+import { Image } from '@nutui/nutui-react';
+import { Loading } from '@nutui/icons-react';
 
 const App = () => {
 const src =
     '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   return <>
     <Image
-        width="100"
-        height="100"
-        showLoading
-        slotLoding={
-            <>
-            <Icon name="loading" />
-            </>
-        }
+      width="100"
+      height="100"
+      showLoading
+      slotLoding={<Loading className="nut-icon-loading" />}
     />
   </>
 }
@@ -149,12 +146,13 @@ export default App;
 :::demo
 ```tsx
 import React from "react";
-import { Image, Icon } from '@nutui/nutui-react';
+import { Image } from '@nutui/nutui-react';
+import { CircleClose } from '@nutui/icons-react';
 
 const App = () => {
   return <>
     <Image src="https://x" width="100" height="100" showError>
-        <Icon name="circle-close" />
+        <CircleClose />
     </Image>
   </>
 }
@@ -229,6 +227,8 @@ export default App;
 | radius         | 圓角大小               | string \| number | -                |
 | showError         | 是否展示圖片加載失敗| boolean | `true`              |
 | showLoading         | 是否展示加載中圖片               | boolean | `true`              |
+| slotLoding      | 自定義加載中的提示內容     | ReactNode | `<Image />` |
+| slotError    | 自定義記載失敗的提示內容  | ReactNode | `<ImageError />` |
 | isLazy `v1.4.6`  | 是否為懶加載圖片               | boolean | `false`              |
 | loadingImg `v1.4.6`    | 設置加載中提示圖片，與slotLoding衝突，優先級高於slotLoding       | string | -              |
 | errorImg   `v1.4.6`    | 設置錯誤提示圖片，與slotError衝突，優先級高於slotError         | string | -              |
@@ -252,13 +252,6 @@ export default App;
 | right    | 右側對齊  |
 | bottom    | 底部對齊  |
 | left   | 左側對齊  |
-
-
-### Slots
-| 參數         | 說明                             |
-|--------------|----------------------------------|
-| slotLoding      | 自定義加載中的提示內容     |
-| slotError    | 自定義記載失敗的提示內容  |
 
 ### Events
 

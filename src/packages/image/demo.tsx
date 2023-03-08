@@ -1,9 +1,9 @@
 import React from 'react'
+import { CircleClose, Loading } from '@nutui/icons-react'
 import { Image } from './image'
 import { useTranslate } from '../../sites/assets/locale'
 import Row from '@/packages/row'
 import Col from '@/packages/col'
-import Icon from '@/packages/icon'
 import Cell from '@/packages/cell'
 
 const ImageDemo = () => {
@@ -166,11 +166,7 @@ const ImageDemo = () => {
                 width="100"
                 height="100"
                 isLazy
-                slotLoding={
-                  <>
-                    <Icon name="loading" />
-                  </>
-                }
+                slotLoding={<Loading className="nut-icon-loading" />}
               />
               <div className="image-text">{translated.custom}</div>
             </Col>
@@ -194,7 +190,7 @@ const ImageDemo = () => {
             </Col>
             <Col span="8">
               <Image src="https://x" width="100" height="100" showError>
-                <Icon name="circle-close" />
+                <CircleClose />
               </Image>
               <div className="image-text">{translated.custom}</div>
             </Col>

@@ -1,9 +1,10 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
+import { CircleClose, Loading } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Image, Cell, Row, Col, Icon } from '@/packages/nutui.react.taro'
+import { Image, Cell, Row, Col } from '@/packages/nutui.react.taro'
 import '@/packages/image/demo.scss'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 const ImageDemo = () => {
   const [translated] = useTranslate({
@@ -51,11 +52,7 @@ const ImageDemo = () => {
               <Image
                 width="80"
                 height="80"
-                slotLoding={
-                  <>
-                    <Icon name="loading" />
-                  </>
-                }
+                slotLoding={<Loading className="nut-icon-loading" />}
               />
               <div className="image-text">{translated.custom}</div>
             </Col>
@@ -71,7 +68,7 @@ const ImageDemo = () => {
             </Col>
             <Col span="8">
               <Image src="#" width="80" height="80" showError>
-                <Icon name="circle-close" />
+                <CircleClose />
               </Image>
               <div className="image-text">{translated.custom}</div>
             </Col>

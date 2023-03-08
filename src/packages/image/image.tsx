@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
+import { Image as ImageIcon, ImageError } from '@nutui/icons-react'
 import { useConfig } from '@/packages/configprovider'
-import Icon from '@/packages/icon'
 
 export interface ImageProps {
   className: string
@@ -16,7 +16,7 @@ export interface ImageProps {
   showError: boolean
   showLoading: boolean
   slotLoding: React.ReactNode
-  slotError: React.ReactNode | string
+  slotError: React.ReactNode
   isLazy?: boolean
   loadingImg?: string
   errorImg?: string
@@ -208,13 +208,13 @@ export const Image: FunctionComponent<
       )}
       {loading && showLoading ? (
         <div className="nut-img-loading" style={loadingBg}>
-          {!loadingImg && (slotLoding || children || <Icon name="image" />)}
+          {!loadingImg && (slotLoding || children || <ImageIcon />)}
         </div>
       ) : null}
 
       {isError && showError && !loading ? (
         <div className="nut-img-error" style={errorBg}>
-          {!errorImg && (slotError || children || <Icon name="image-error" />)}
+          {!errorImg && (slotError || children || <ImageError />)}
         </div>
       ) : null}
     </div>
