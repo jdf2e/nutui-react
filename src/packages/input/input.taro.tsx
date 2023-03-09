@@ -176,9 +176,7 @@ export const Input: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-
-  locale.placeholder = placeholder || locale.placeholder
-
+  const inputPlaceholder = placeholder || locale.placeholder
   const [inputValue, SetInputValue] = useState('')
   const [active, SetActive] = useState(false)
   const [classes, setClasses] = useState('')
@@ -397,7 +395,7 @@ export const Input: FunctionComponent<
                       height: `${Number(rows) * 24}px`,
                     }}
                     maxLength={maxlength}
-                    placeholder={placeholder || locale.placeholder}
+                    placeholder={inputPlaceholder}
                     disabled={disabled}
                     readOnly={readonly}
                     value={inputValue}
@@ -421,7 +419,7 @@ export const Input: FunctionComponent<
                     style={{ textAlign: inputAlign }}
                     type={inputType(type)}
                     maxLength={maxlength}
-                    placeholder={placeholder || locale.placeholder}
+                    placeholder={inputPlaceholder}
                     disabled={disabled}
                     readOnly={readonly}
                     value={inputValue}

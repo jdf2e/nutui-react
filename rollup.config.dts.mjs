@@ -19,10 +19,10 @@ const config = [
           },
         },
       }),
-      // del({
-      //   hook: 'buildEnd',
-      //   targets: ['./dist/esm/types', './dist/types/*.build.ts'],
-      // }),
+      del({
+        hook: 'buildEnd',
+        targets: ['./dist/esm/types', './dist/types/*.build.ts'],
+      }),
     ],
   },
 ]
