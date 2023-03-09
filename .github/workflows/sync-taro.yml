@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm i fs-extra
+      - run: npm i fs-extra --force
       - run: node scripts/copy-docs-h5-or-taro.js taro
       - name : Sync
         uses : JamesIves/github-pages-deploy-action@4.1.7
