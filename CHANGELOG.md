@@ -1,3 +1,14 @@
+# v1.4.10
+`2023-03-08`
+
+* :bug: fix(input): 修复 input 组件中可能会覆盖全局 placeholder 的问题 (#767) @AnteeHub
+* :bug: fix: popup class undefined (#752) @xiaoyatong
+* :bug: fix: react-spring 和 use-gesture 版本修复 (#760) @oasis-cloud
+* :bug: fix: searchbar的taro文档change时间应为onChange (#758) @TangLL
+* :bug: fix: 通过 Radio.RadioGroup 的方式水平样式无法生效 (#765) @oasis-cloud
+* 🔨 chore: update vite v4.1.4 (#755) @junjun666
+* 🔨 chore: 优化文档展示 (#753) @oasis-cloud
+
 # v1.4.9
 `2023-03-01`
 
