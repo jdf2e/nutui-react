@@ -2,6 +2,7 @@ import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react'
 import { Tabbar } from '../tabbar'
 import { TabbarItem } from '../../tabbaritem/tabbaritem'
 
@@ -9,11 +10,14 @@ test('should render tabbar when default', () => {
   const { container } = render(
     <>
       <Tabbar>
-        <TabbarItem tabTitle="首页" icon="home" />
-        <TabbarItem tabTitle="分类" icon="category" />
-        <TabbarItem tabTitle="发现" icon="find" />
-        <TabbarItem tabTitle="购物车" icon="cart" />
-        <TabbarItem tabTitle="我的" icon="my" />
+        <TabbarItem tabTitle="首页" icon={<Home width={20} height={20} />} />
+        <TabbarItem
+          tabTitle="分类"
+          icon={<Category width={20} height={20} />}
+        />
+        <TabbarItem tabTitle="发现" icon={<Find width={20} height={20} />} />
+        <TabbarItem tabTitle="购物车" icon={<Cart width={20} height={20} />} />
+        <TabbarItem tabTitle="我的" icon={<My width={20} height={20} />} />
       </Tabbar>
     </>
   )
@@ -25,27 +29,20 @@ test('should render tabbar when default', () => {
   ).toEqual(10)
 })
 
-test('should render custom check and icon size when using visible', () => {
-  const { container } = render(
-    <>
-      <Tabbar visible="1" active-color="blue" size="18px">
-        <TabbarItem tabTitle="首页" icon="home" />
-        <TabbarItem tabTitle="分类" icon="category" />
-      </Tabbar>
-    </>
-  )
-  expect(
-    (container.querySelectorAll('.nut-icon')[1] as HTMLElement).style.fontSize
-  ).toEqual('18px')
-})
-
 test('should render custom color and badge when using prop', () => {
   const { container } = render(
     <>
       <Tabbar unactiveColor="grey" activeColor="blue">
-        <TabbarItem tabTitle="首页" icon="home" num="11" />
-        <TabbarItem tabTitle="分类" icon="category" />
-        <TabbarItem tabTitle="发现" icon="find" />
+        <TabbarItem
+          tabTitle="首页"
+          icon={<Home width={20} height={20} />}
+          num="11"
+        />
+        <TabbarItem
+          tabTitle="分类"
+          icon={<Category width={20} height={20} />}
+        />
+        <TabbarItem tabTitle="发现" icon={<Find width={20} height={20} />} />
       </Tabbar>
     </>
   )
@@ -64,8 +61,11 @@ test('should render fixed element when using bottom prop', async () => {
   const { container } = render(
     <>
       <Tabbar bottom safeAreaInsetBottom>
-        <TabbarItem tabTitle="首页" icon="home" />
-        <TabbarItem tabTitle="分类" icon="category" />
+        <TabbarItem tabTitle="首页" icon={<Home width={20} height={20} />} />
+        <TabbarItem
+          tabTitle="分类"
+          icon={<Category width={20} height={20} />}
+        />
       </Tabbar>
     </>
   )
@@ -76,9 +76,16 @@ test('should match active tabbar by click', async () => {
   const { container } = render(
     <>
       <Tabbar unactiveColor="grey" activeColor="blue">
-        <TabbarItem tabTitle="首页" icon="home" num="11" />
-        <TabbarItem tabTitle="分类" icon="category" />
-        <TabbarItem tabTitle="发现" icon="find" />
+        <TabbarItem
+          tabTitle="首页"
+          icon={<Home width={20} height={20} />}
+          num="11"
+        />
+        <TabbarItem
+          tabTitle="分类"
+          icon={<Category width={20} height={20} />}
+        />
+        <TabbarItem tabTitle="发现" icon={<Find width={20} height={20} />} />
       </Tabbar>
     </>
   )
@@ -97,9 +104,16 @@ test('should show sure emitted when click', async () => {
   const { container } = render(
     <>
       <Tabbar unactiveColor="grey" activeColor="blue" onSwitch={onSwitch}>
-        <TabbarItem tabTitle="首页" icon="home" num="11" />
-        <TabbarItem tabTitle="分类" icon="category" />
-        <TabbarItem tabTitle="发现" icon="find" />
+        <TabbarItem
+          tabTitle="首页"
+          icon={<Home width={20} height={20} />}
+          num="11"
+        />
+        <TabbarItem
+          tabTitle="分类"
+          icon={<Category width={20} height={20} />}
+        />
+        <TabbarItem tabTitle="发现" icon={<Find width={20} height={20} />} />
       </Tabbar>
     </>
   )
