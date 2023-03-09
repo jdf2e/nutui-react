@@ -93,7 +93,8 @@ export default App;
 :::demo
 ``` tsx
 import React, { useState } from 'react'
-import { Pagination,Icon } from '@nutui/nutui-react';
+import { Pagination} from '@nutui/nutui-react'; 
+import { Left, Right } from '@nutui/icons-react-taro';
 
 const App = () => {
   const [currentPage4, setCurrentPage4] = useState(1)
@@ -111,8 +112,8 @@ const App = () => {
       showPageSize="5"
       onChange={pageChange4}
       pageNodeRender={pageNodeRender} 
-      prevText={<Icon name="left"/>} 
-      nextText={<Icon name="right"/>}
+      prevText={<Left />}
+          nextText={<Right />}
     />
   )
 }

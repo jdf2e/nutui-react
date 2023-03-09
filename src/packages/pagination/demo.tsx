@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
+import { Left, Right } from '@nutui/icons-react'
 import Pagination from '@/packages/pagination'
-import Icon from '@/packages/icon'
 import Cell from '@/packages/cell'
 import { useTranslate } from '../../sites/assets/locale'
 
@@ -92,8 +92,8 @@ const PaginationDemo = () => {
           totalItems="500"
           showPageSize="5"
           onChange={pageChange4}
-          prevText={<Icon name="left" />}
-          nextText={<Icon name="right" />}
+          prevText={<Left />}
+          nextText={<Right />}
           pageNodeRender={pageNodeRender}
         />
       </Cell>
