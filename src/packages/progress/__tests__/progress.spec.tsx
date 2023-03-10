@@ -18,9 +18,7 @@ test('should render different height and color when use color height props', asy
     />
   )
   const inner = container.querySelector('.nut-progress-inner')
-  expect(inner?.getAttribute('style')).toBe(
-    'width: 50%; border-radius: 12px; background: blue;'
-  )
+  expect(inner?.getAttribute('style')).toBe('width: 50%; background: blue;')
   const span = container.querySelector('.nut-progress-text span')
   expect(span?.getAttribute('style')).toBe('color: red;')
 })
@@ -32,7 +30,11 @@ test('should hide percentage when use showText props', () => {
 })
 
 test('should render inside percentage when use textInside props', () => {
-  const { container } = render(<Progress percentage={50} textInside />)
+  const { container } = render(
+    <Progress percentage={50} textInside>
+      test
+    </Progress>
+  )
   const text = container.querySelector('.nut-progress-text')
   expect(text).toHaveClass('nut-progress-text nut-progress-insidetext')
 })
