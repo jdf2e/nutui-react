@@ -268,6 +268,8 @@ export const SearchBar: FunctionComponent<
     }
     setValue('')
     onClear && onClear(event)
+    const searchSelf: HTMLInputElement | null = searchRef.current
+    searchSelf && searchSelf.focus()
   }
 
   const renderRightLabel = () => {
