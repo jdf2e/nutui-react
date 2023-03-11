@@ -120,8 +120,7 @@ export const Swipe = forwardRef<
     right: 0,
   })
   const wrapperStyle = {
-    transform: `translate3d(${state.offset}px, 0, 0)`,
-    transitionDuration: state.dragging ? '0s' : '.6s',
+    left: `${state.offset}px`,
   }
   const leftWidth = useMemo(
     () => (props.leftWidth ? props.leftWidth : actionWidth.left),
