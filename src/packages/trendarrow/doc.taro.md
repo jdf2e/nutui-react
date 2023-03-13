@@ -172,15 +172,19 @@ export default App;
 
 ```tsx
 import  React from "react"
-import { TrendArrow, Cell, Icon } from '@nutui/nutui-react-taro'
+import { TrendArrow, Cell, Icon } from '@nutui/nutui-react'
+import { Success, Failure, HeartFill } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Cell>
-        <TrendArrow rate={10.2365} upIconName="success" />
-        <TrendArrow rate={-10.2365} downIconName="failure" />
+        <TrendArrow
+        rate={10.2365}
+        upIcon={<Success color="blue" width="18" height="18" />}
+        />
+        <TrendArrow rate={-10.2365} downIcon={<Failure color="red" />} />
         <TrendArrow rate={10.2365}>
-        <Icon name="heart-fill" color="#fa2c19" size="12px" />
+        <HeartFill color="#fa2c19" />
         </TrendArrow>
     </Cell>
   );
@@ -206,9 +210,11 @@ export default App;
 | textColor        | 文字颜色               | string | `#333333`               |
 | riseColor         | 向上箭头颜色               | string | `#fa2c19`               |
 | dropColor         | 向下箭头颜色               | string | `#64b578`               |
-| iconSize         | 箭头大小               | string | `12px`               |
-| upIconName         | 自定义向上箭头icon               | string | `triangle-up`               |
-| downIconName         | 自定义向下箭头icon               | string | `triangle-down`               |
+| upIcon`v1.5.0`          | 自定义向上箭头icon               | React.ReactNode | `<TriangleUp/>`                |
+| downIcon`v1.5.0`          | 自定义向下箭头icon               | React.ReactNode | `<TriangleDown/>`              |
+| iconSize`v1.5.0弃用`         | 箭头大小               | string | `12px`               |
+| upIconName`v1.5.0弃用`        | 自定义向上箭头icon               | string | `triangle-up`               |
+| downIconName`v1.5.0弃用`         | 自定义向下箭头icon               | string | `triangle-down`               |
 
 
 

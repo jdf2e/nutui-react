@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { Success } from '@nutui/icons-react'
 import Menu from '@/packages/menu'
 import MenuItem from '@/packages/menuitem'
 
@@ -35,11 +36,9 @@ test('test props', () => {
         value={0}
         disabled
         columns={2}
-        optionsIcon="my"
+        optionsIcon={<Success />}
         activeTitleClass="activeTitleClass"
         inactiveTitleClass="inactiveTitleClass"
-        fontClassName="my-font"
-        iconClassPrefix="my-font-icon"
         onChange={testClick}
       />
     </Menu>
@@ -58,8 +57,5 @@ test('test props', () => {
   )
   expect(container.querySelectorAll('.inactiveTitleClass')[0]).toHaveClass(
     'inactiveTitleClass'
-  )
-  expect(container.querySelector('.my-font-icon-my')).toHaveClass(
-    'my-font-icon-my'
   )
 })

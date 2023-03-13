@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './demo.scss'
+import { TriangleDown, Success } from '@nutui/icons-react'
 import Button from '../button'
 import { Menu } from './menu'
 import MenuItem from '../menuitem'
@@ -140,8 +141,8 @@ const MenuDemo = () => {
           <MenuItem options={options1} value="a" />
         </Menu>
         <h2>{translated.customIcons}</h2>
-        <Menu titleIcon="joy-smile">
-          <MenuItem options={options} value={0} optionsIcon="success" />
+        <Menu titleIcon={<TriangleDown />}>
+          <MenuItem options={options} value={0} optionsIcon={<Success />} />
           <MenuItem options={options1} value="a" />
         </Menu>
         <h2>{translated.expandDirection}</h2>
