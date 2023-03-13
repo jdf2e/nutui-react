@@ -93,20 +93,20 @@ export const Checkbox: FunctionComponent<
   const renderIcon = () => {
     if (!innerChecked) {
       return React.isValidElement(iconName) ? (
-        React.cloneElement<any>(iconName, {})
+        React.cloneElement<any>(iconName)
       ) : (
         <CheckNormal size={iconSize} className={color()} />
       )
     }
     if (_indeterminate) {
       return React.isValidElement(iconIndeterminateName) ? (
-        React.cloneElement<any>(iconIndeterminateName, {})
+        React.cloneElement<any>(iconIndeterminateName)
       ) : (
         <CheckDisabled size={iconSize} className={color()} />
       )
     }
     return React.isValidElement(iconActiveName) ? (
-      React.cloneElement<any>(iconActiveName, {})
+      React.cloneElement<any>(iconActiveName)
     ) : (
       <Checked size={iconSize} className={color()} />
     )

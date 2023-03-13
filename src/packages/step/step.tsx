@@ -81,7 +81,11 @@ export const Step: FunctionComponent<
         <div className="nut-step-line" />
         <div className={renderIconClass()}>
           {React.isValidElement(icon)
-            ? React.cloneElement<any>(icon, { size, color: iconColor })
+            ? React.cloneElement<any>(icon, {
+                ...icon.props,
+                size,
+                color: iconColor,
+              })
             : !dot && <span className="nut-step-inner">{activeIndex}</span>}
         </div>
       </div>

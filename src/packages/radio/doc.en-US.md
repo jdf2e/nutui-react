@@ -105,7 +105,7 @@ export default RadioGroupLast;
 
 ## Customize the icon
 
-It is recommended that 'iconName' and 'iconActiveName' be modified together
+It is recommended that 'icon' and 'iconActive' be modified together
 
 :::demo
 
@@ -118,10 +118,10 @@ const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <Radio.RadioGroup value={radioVal}>
-      <Radio value="1" iconName={<CheckList/>}
-             iconActiveName={<CheckList/>}>Custom icons</Radio>
-      <Radio value="2" iconName={<CheckList/>}
-             iconActiveName={<CheckList/>}>Custom icons</Radio>
+      <Radio value="1" icon={<CheckList/>}
+             iconActive={<CheckList/>}>Custom icons</Radio>
+      <Radio value="2" icon={<CheckList/>}
+             iconActive={<CheckList/>}>Custom icons</Radio>
     </Radio.RadioGroup>
   </>
 }
@@ -199,8 +199,8 @@ export default RadioGroupOptions;
 |----------------| ----- | ----- |------------------|
 | disabled         | Disable the selection | `boolean`                 | `false`           |
 | iconSize        | [Icon size] (#/icon)                                           | `string`、`number`          | `18`              |
-| iconName        | [Icon Name] (#/icon), before selecting (it is recommended to modify it with 'iconActiveName') | `string`                  | `'check-normal'`  |
-| iconActiveName | [Icon Name] (#/icon), selected (it is recommended to modify it with 'iconName') | `string`                  | `'check-checked'` |
+| icon        | [Icon Name] (#/icon), before selecting (it is recommended to modify it with 'iconActive') | `string`                  | `'check-normal'`  |
+| iconActive | [Icon Name] (#/icon), selected (it is recommended to modify it with 'icon') | `string`                  | `'check-checked'` |
 | value            | Value is carrying identification, used in Group mode | `string`、`number`、`boolean` | -                 |
 | shape            | Shape, with optional values of button, round, | `string`                  | round             |
 

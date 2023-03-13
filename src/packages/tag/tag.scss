@@ -65,4 +65,9 @@
     margin-left: 4px;
     cursor: pointer;
   }
+  &-custom-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

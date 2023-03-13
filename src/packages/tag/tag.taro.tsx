@@ -123,7 +123,18 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
           >
             {children && <span className="nut-tag-text">{children}</span>}
             {React.isValidElement(closeable) ? (
-              React.cloneElement<any>(closeable, { size: iconSize })
+              <i
+                className="nut-tag-custom-icon"
+                onClick={(e) => {
+                  setIsTagShow(false)
+                  props.onClose && props.onClose(e)
+                }}
+              >
+                {React.cloneElement<any>(closeable, {
+                  ...closeable.props,
+                  size: iconSize,
+                })}
+              </i>
             ) : (
               <Close
                 size={iconSize}

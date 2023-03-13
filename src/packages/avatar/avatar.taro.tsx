@@ -164,7 +164,10 @@ export const Avatar: FunctionComponent<
                 <Image className="avatar-img" src={url} onError={errorEvent} />
               )}
               {React.isValidElement(icon)
-                ? React.cloneElement<any>(icon, { className: 'icon' })
+                ? React.cloneElement<any>(icon, {
+                    ...icon.props,
+                    className: `${icon.props.className || ''} icon`,
+                  })
                 : null}
               {children && <span className="text">{children}</span>}
             </>
