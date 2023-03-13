@@ -17,7 +17,7 @@ const defaultProps = {
   bordered: true,
   striped: false,
   noData: '无数据',
-  hideHeader: false,
+  showHeader: true,
 } as TableProps
 export const Table: FunctionComponent<
   Partial<TableProps> & React.HTMLAttributes<HTMLDivElement>
@@ -38,7 +38,7 @@ export const Table: FunctionComponent<
     onSorter,
     iconClassPrefix,
     iconFontClassName,
-    hideHeader = false,
+    showHeader,
     ...rest
   } = {
     ...defaultProps,
@@ -148,7 +148,7 @@ export const Table: FunctionComponent<
           'nut-table__main--striped': striped,
         })}
       >
-        {!hideHeader && (
+        {showHeader && (
           <div className="nut-table__main__head">
             <div className="nut-table__main__head__tr">{renderHeadCells()}</div>
           </div>

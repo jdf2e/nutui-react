@@ -257,7 +257,7 @@ const TableDemo = () => {
           columns={columns1}
           data={data1}
           style={{ background: '#fff' }}
-          hideHeader
+          showHeader={false}
         />
         <h2>{translated.noDataTitle}</h2>
         <Table columns={columns1} data={data2} style={{ background: '#fff' }} />

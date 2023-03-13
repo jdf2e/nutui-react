@@ -313,7 +313,7 @@ const App = () => {
   return <Table
         columns={columns1}
         data={data1}
-        hideHeader
+        showHeader={false}
     />;
 };
 export default App;
@@ -614,7 +614,7 @@ export default App;
 | data         | Table data | 	Object[] | `[]`                |
 | summary         | Show profile | 	ReactNode | -                |
 | striped         | Whether the stripes alternate light and dark | 	boolean | `false`                |
-| hideHeader         | Hide Header | 	boolean | `false`                |
+| showHeader         | Show Header | 	boolean | `true`                |
 | noData         | Custom noData | 	ReactNode | -                |
 
 ### TableColumnProps

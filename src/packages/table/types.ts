@@ -11,7 +11,7 @@ export interface BasicTableProps extends BasicComponent {
   striped?: boolean
   noData?: React.ReactNode
   onSorter?: (item: TableColumnProps, data: Array<any>) => void
-  hideHeader?: boolean
+  showHeader?: boolean
 }
 
 export interface TableColumnProps {
