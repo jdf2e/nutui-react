@@ -13,7 +13,7 @@ import { Tabs } from '@nutui/nutui-react';
 
 ```ts
 // 1.4.9 废弃
-import { Tabs, TabPane } from '@nutui/nutui-react';
+import { Tabs } from '@nutui/nutui-react';
 ```
 
 
@@ -360,7 +360,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react';  import { Dongdong, Jd } from '@nutui/icons-react'
+import { Tabs } from '@nutui/nutui-react';  import { Dongdong, Jd } from '@nutui/icons-react'
 
 const App = () => {
   const [tab7value, setTab7value] = useState('c1');

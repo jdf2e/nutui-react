@@ -13,7 +13,7 @@ import { Tabs } from '@nutui/nutui-react-taro';
 
 ```ts
 // 1.4.9 废弃
-import { Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { Tabs } from '@nutui/nutui-react-taro';
 ```
 
 
@@ -441,7 +441,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { Tabs } from '@nutui/nutui-react-taro';
 import { Dongdong, Jd } from '@nutui/icons-react-taro';
 
 
