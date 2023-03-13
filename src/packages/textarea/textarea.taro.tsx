@@ -63,7 +63,7 @@ export const TextArea: FunctionComponent<
   const textareaBem = bem('textarea')
   const [inputValue, SetInputValue] = useState('')
   const compositingRef = useRef(false)
-  const [, updateState] = React.useState()
+  const [, updateState] = React.useState({})
   const forceUpdate = React.useCallback(() => updateState({}), [])
 
   useEffect(() => {
