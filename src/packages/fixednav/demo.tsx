@@ -1,6 +1,6 @@
 import React, { useState, MouseEvent } from 'react'
+import { Retweet } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
-import { Icon } from '../icon/icon'
 import { FixedNav } from './fixednav'
 import Drag from '../drag'
 
@@ -168,9 +168,7 @@ const FixedNavDemo = () => {
           }
           slotBtn={
             <>
-              <Icon name="retweet" color="#fff">
-                {' '}
-              </Icon>
+              <Retweet color="#fff" />
               <span className="text">
                 {visible4 ? translated.title4 : translated.title5}
               </span>

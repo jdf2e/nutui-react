@@ -312,8 +312,8 @@ export default App;
 | type           | 导航方向,可选值 left right | string  | `right`                        |
 | overlay        | 展开时是否显示遮罩         | boolean | `true`                         |
 | position       | fixed 垂直位置             | object  | `{top: 'auto', bottom: 'auto'}` |
-| slotList       | 自定义展开列表内容             | HTMLElement  | - |
-| slotBtn       | 自定义按钮            | HTMLElement  | - |
+| slotList       | 自定义展开列表内容             | ReactNode  | - |
+| slotBtn       | 自定义按钮            | ReactNode  | - |
 
 
 ### Event

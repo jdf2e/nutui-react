@@ -313,8 +313,8 @@ export default App;
 | type           | 導航方向,可選值 left right | string  | `right`                        |
 | overlay        | 展開時是否顯示遮罩         | boolean | `true`                         |
 | position       | fixed 垂直位置             | object  | `{top: 'auto', bottom: 'auto'}` |
-| slotList       | 自定義展開列表內容             | HTMLElement  | - |
-| slotBtn       | 自定義按鈕            | HTMLElement  | - |
+| slotList       | 自定義展開列表內容             | ReactNode  | - |
+| slotBtn       | 自定義按鈕            | ReactNode  | - |
 
 
 ### Event
