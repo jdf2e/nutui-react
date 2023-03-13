@@ -96,6 +96,7 @@ export default App;
 ```tsx
 import React, { useState, useEffect } from "react";
 import { Cell, Infiniteloading } from '@nutui/nutui-react';
+import { Jd } from '@nutui/icons-react';
 
 const InfiniteUlStyle = {
   height: '300px',
@@ -154,7 +155,8 @@ const App = () => {
       <Cell>
         <ul id="refreshScroll" style={InfiniteUlStyle}>
           <Infiniteloading
-            pullIcon="JD"
+            pullIcon={<Jd />}
+            loadIcon={<Jd />}
             containerId="refreshScroll"
             useWindow={false}
             isOpenRefresh
@@ -272,9 +274,9 @@ export default App;
 | containerId          | When useWindow is false, set the node ID by default                        | string | -            |
 | loadMoreTxt          | “No more” text                        | string | `Oops, this is the bottom`            |
 | isOpenRefresh        | Enable pull refresh                         | boolean | `false`                |
-| pullIcon        | Pull refresh[icon name](#/icon)                        | string | -                |
+| pullIcon        | Pull refresh[icon name](#/icon)                        | ReactNode | -                |
 | pullTxt        | Pull refresh text                        | string | `Loose to refresh`                |
-| loadIcon        | Pull on loading[icon name](#/icon)                       | string | -            |
+| loadIcon        | Pull on loading[icon name](#/icon)                       | ReactNode | -            |
 | loadTxt        | Pull on loading text                         | string | `Loading...`                |
 
 ### Events
