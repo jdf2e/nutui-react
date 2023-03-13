@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
-import Icon from '@/packages/icon'
+import { ArrowDown2, ArrowUp2 } from '@nutui/icons-react'
 import { OptionItem } from '@/packages/menuitem/menuitem'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -12,7 +12,7 @@ export interface MenuProps extends BasicComponent {
   closeOnClickOverlay: boolean
   scrollFixed: boolean | string | number
   lockScroll: boolean
-  titleIcon: string
+  titleIcon: React.ReactNode
   children: React.ReactNode
 }
 
@@ -24,7 +24,7 @@ const defaultProps = {
   closeOnClickOverlay: true,
   scrollFixed: false,
   lockScroll: true,
-  titleIcon: '',
+  titleIcon: null,
 } as MenuProps
 export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
   const {
@@ -35,8 +35,6 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
     closeOnClickOverlay,
     children,
     activeColor,
-    iconClassPrefix,
-    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -147,16 +145,15 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
                   })}`}
                 >
                   <div className="nut-menu__title-text">{finallyTitle()}</div>
-                  <Icon
-                    classPrefix={iconClassPrefix}
-                    fontClassName={iconFontClassName}
-                    className="nut-menu__title-icon"
-                    size="10"
-                    name={
-                      titleIcon ||
-                      (direction === 'up' ? 'arrow-up' : 'down-arrow')
-                    }
-                  />
+                  {titleIcon || (
+                    <>
+                      {direction === 'up' ? (
+                        <ArrowUp2 className="nut-menu__title-icon" />
+                      ) : (
+                        <ArrowDown2 className="nut-menu__title-icon" />
+                      )}
+                    </>
+                  )}
                 </div>
               </div>
             )

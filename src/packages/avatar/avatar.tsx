@@ -170,7 +170,12 @@ export const Avatar: FunctionComponent<
                   onError={errorEvent}
                 />
               )}
-              {React.isValidElement(icon) ? icon : null}
+              {React.isValidElement(icon)
+                ? React.cloneElement<any>(icon, {
+                    ...icon.props,
+                    className: `${icon.props.className || ''} icon`,
+                  })
+                : null}
               {children && <span className="text">{children}</span>}
             </>
           )}

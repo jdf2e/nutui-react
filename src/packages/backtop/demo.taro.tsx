@@ -1,8 +1,9 @@
 import React from 'react'
-import { BackTop, Icon } from '@/packages/nutui.react.taro'
+import Taro from '@tarojs/taro'
+import { Top } from '@nutui/icons-react-taro'
+import { BackTop } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface T {
   title: string
@@ -141,7 +142,7 @@ const BackTopDemo = () => {
               alignItems: 'center',
             }}
           >
-            <Icon size="12px" className="nut-backtop-main" name="top" />
+            <Top width={12} height={12} className="nut-backtop-main" />
             <div style={{ fontSize: '12px' }}>{translated.backText}</div>
           </div>
         </BackTop>

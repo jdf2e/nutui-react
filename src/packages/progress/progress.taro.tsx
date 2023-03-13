@@ -1,6 +1,6 @@
 import React, { FunctionComponent, CSSProperties, ReactNode } from 'react'
 import classNames from 'classnames'
-import Icon from '@/packages/icon/index.taro'
+import { Checked } from '@nutui/icons-react-taro'
 import bem from '@/utils/bem'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -24,9 +24,7 @@ export interface ProgressProps extends BasicComponent {
   textBackground: string
   textType: TextType
   status: boolean
-  iconName: string
-  iconColor: string
-  iconSize: string
+  icon: ReactNode
   children: ReactNode
 }
 
@@ -46,9 +44,7 @@ const defaultProps = {
   textBackground: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
   textType: 'text',
   status: false,
-  iconName: 'checked',
-  iconColor: '#439422',
-  iconSize: '16px',
+  icon: null,
   children: undefined,
 } as ProgressProps
 
@@ -71,12 +67,8 @@ export const Progress: FunctionComponent<
     textBackground,
     textType,
     status,
-    iconName,
-    iconColor,
-    iconSize,
+    icon,
     children,
-    iconClassPrefix,
-    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -171,13 +163,7 @@ export const Progress: FunctionComponent<
             </span>
           )}
           {textType === 'icon' && (
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              size={iconSize}
-              name={iconName}
-              color={iconColor}
-            />
+            <>{icon || <Checked width={16} height={16} color="#439422" />}</>
           )}
         </div>
       )}

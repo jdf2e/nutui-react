@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { CircleClose, Heart } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import '@/packages/popup/demo.scss'
 import { Cell, Popup } from '@/packages/nutui.react.taro'
@@ -181,11 +182,10 @@ const PopupDemo = () => {
           }}
         />
         <Popup
-          closeable
+          closeable={<CircleClose size="12px" />}
           visible={showIcon}
           style={{ height: '20%' }}
           position="bottom"
-          closeIconSize="12px"
           onClose={() => {
             setShowIcon(false)
           }}
@@ -215,11 +215,9 @@ const PopupDemo = () => {
           }}
         />
         <Popup
-          closeable
-          closeIconSize="15px"
+          closeable={<Heart size="15px" />}
           visible={showIconDefine}
           style={{ height: '20%' }}
-          closeIcon="heart"
           position="bottom"
           onClose={() => {
             setShowIconDefine(false)

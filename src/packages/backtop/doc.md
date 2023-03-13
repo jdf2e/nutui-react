@@ -132,7 +132,8 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { BackTop,Icon } from '@nutui/nutui-react';
+import { BackTop } from '@nutui/nutui-react';
+import { Top } from '@nutui/icons-react';
 
 const App = () => {
   const cellStyle = {
@@ -186,7 +187,7 @@ const App = () => {
               alignItems: 'center',
             }}
           >
-            <Icon size="12px" className="nut-backtop-main" name="top" />
+            <Top width={12} height={12} className="nut-backtop-main" />
             <div style={{ fontSize: '12px' }}>顶部</div>
           </div>
         </BackTop>

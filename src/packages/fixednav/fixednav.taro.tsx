@@ -1,6 +1,6 @@
 import React, { FunctionComponent, MouseEvent } from 'react'
 import classNames from 'classnames'
-import Icon from '@/packages/icon/index.taro'
+import { Left } from '@nutui/icons-react-taro'
 import Overlay from '@/packages/overlay/index.taro'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
@@ -56,8 +56,6 @@ export const FixedNav: FunctionComponent<
     type,
     slotList,
     slotBtn,
-    iconClassPrefix,
-    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -115,12 +113,7 @@ export const FixedNav: FunctionComponent<
       <div className="nut-fixednav__btn" onClick={() => onUpdateValue()}>
         {slotBtn || (
           <>
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              name="left"
-              color="#fff"
-            />
+            <Left color="#fff" />
             <div className="text">
               {visible
                 ? activeText || locale.fixednav.activeText

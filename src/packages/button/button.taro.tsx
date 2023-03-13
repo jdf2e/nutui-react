@@ -154,13 +154,7 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
       onClick={(e) => handleClick(e)}
     >
       <div className="nut-button__warp" style={getStyle()}>
-        {loading && (
-          <Loading
-            className="nut-icon-loading"
-            width={iconSize}
-            height={iconSize}
-          />
-        )}
+        {loading && <Loading className="nut-icon-loading" size={iconSize} />}
         {!loading && icon ? icon : null}
         {children && (
           <div className={icon || loading ? 'text' : ''}>{children}</div>

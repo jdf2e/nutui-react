@@ -15,7 +15,6 @@ import { Checkbox } from '@nutui/nutui-react';
 ## Basic Usage
 
 :::demo
-
 ```tsx
 import React, {useState} from "react";
 import { Checkbox } from '@nutui/nutui-react';
@@ -23,10 +22,34 @@ import { Checkbox } from '@nutui/nutui-react';
 const CheckBoxDemo = () => {
   const [checked, setChecked] = useState(true)
   return (<>
-      <Checkbox textPosition="left" label="check box"
-                checked={checked} />
-      <Checkbox textPosition="right" label="check box"
-                checked={false} />
+      <Checkbox textPosition="left" label="checkbox" checked={checked} />
+      <Checkbox textPosition="right" label="checkbox" checked={false} />
+      <Checkbox.Group textPosition="left" checkedValue='option1'>
+        <span>
+          <Checkbox label='option1' checked={false} />
+        </span>
+        <Checkbox label='option2' checked={false} />
+        <Checkbox label='option3' checked={false} />
+      </Checkbox.Group>
+    </>
+  )
+}
+export default CheckBoxDemo;
+```
+:::
+
+## Indeterminate
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Checkbox } from '@nutui/nutui-react';
+
+const CheckBoxDemo = () => {
+  const [checked, setChecked] = useState(true)
+  return (<>
+      <Checkbox label='复选框1' checked indeterminate />
     </>
   )
 }

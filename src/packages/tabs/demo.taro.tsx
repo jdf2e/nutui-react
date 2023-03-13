@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Taro from '@tarojs/taro'
 import { Dongdong, Jd } from '@nutui/icons-react-taro'
-import { Tabs, TabPane } from '@/packages/nutui.react.taro'
+import { Tabs } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -13,6 +13,8 @@ interface T {
   title4: string
   title5: string
   title6: string
+  title12: string
+  title13: string
   title7: string
   title8: string
   title9: string
@@ -33,6 +35,8 @@ const TabsDemo = () => {
       title4: '数量多,滚动操作',
       title5: '左右布局',
       title6: '左右布局-微笑曲线',
+      title12: '嵌套布局',
+      title13: '嵌套布局2',
       title7: 'Title 字体尺寸：large normal small',
       title8: '自定义标签栏',
       title9: 'Tabpane 自动高度',
@@ -50,6 +54,8 @@ const TabsDemo = () => {
       title4: 'A large number of scrolling operations',
       title5: 'Left and right layout',
       title6: 'Left and Right Layout - Smile Curve',
+      title12: 'Tabs in Tabs',
+      title13: 'Tabs in Tabs 2',
       title7: 'Title font size: large normal small',
       title8: 'custom tab bar',
       title9: 'Tabpane auto height',
@@ -68,6 +74,8 @@ const TabsDemo = () => {
   const [tab5value, setTab5value] = useState('0')
   const [tab6value, setTab6value] = useState('0')
   const [tab7value, setTab7value] = useState('c1')
+  const [tab8value, setTab8value] = useState('0')
+  const [tab9value, setTab9value] = useState('0')
   const [list3, setList3] = useState(Array.from(new Array(2).keys()))
   const list4 = Array.from(new Array(10).keys())
   const list5 = Array.from(new Array(2).keys())
@@ -112,12 +120,12 @@ const TabsDemo = () => {
             setTab1value(paneKey)
           }}
         >
-          <TabPane title="Tab 1" className="custom-class">
+          <Tabs.TabPane title="Tab 1" className="custom-class">
             {' '}
             Tab 1{' '}
-          </TabPane>
-          <TabPane title="Tab 2"> Tab 2 </TabPane>
-          <TabPane title="Tab 3"> Tab 3 </TabPane>
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
         <h2>{translated.title1}</h2>
         <Tabs
@@ -127,26 +135,24 @@ const TabsDemo = () => {
           }}
           type="smile"
         >
-          <TabPane title="Tab 1"> Tab 1 </TabPane>
-          <TabPane title="Tab 2"> Tab 2 </TabPane>
-          <TabPane title="Tab 3"> Tab 3 </TabPane>
+          <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
         <h2>{translated.title11}</h2>
         <Tabs
           value={tab1value}
-          className="test"
-          style={{ color: 'red' }}
           leftAlign
           onChange={({ paneKey }) => {
             setTab1value(paneKey)
           }}
         >
-          <TabPane title="Tab 1" className="custom-class">
+          <Tabs.TabPane title="Tab 1" className="custom-class">
             {' '}
             Tab 1{' '}
-          </TabPane>
-          <TabPane title="Tab 2"> Tab 2 </TabPane>
-          <TabPane title="Tab 3"> Tab 3 </TabPane>
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
         <h2>{translated.title2}</h2>
         <Tabs
@@ -155,18 +161,18 @@ const TabsDemo = () => {
             setTab2value(paneKey)
           }}
         >
-          <TabPane title="Tab 1" paneKey="0">
+          <Tabs.TabPane title="Tab 1" paneKey="0">
             {' '}
             Tab 1{' '}
-          </TabPane>
-          <TabPane title="Tab 2" paneKey="1" disabled>
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2" paneKey="1" disabled>
             {' '}
             Tab 2{' '}
-          </TabPane>
-          <TabPane title="Tab 3" paneKey="2">
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3" paneKey="2">
             {' '}
             Tab 3{' '}
-          </TabPane>
+          </Tabs.TabPane>
         </Tabs>
         <h2>{translated.title10}</h2>
         <Tabs
@@ -176,7 +182,7 @@ const TabsDemo = () => {
             setTab2value(paneKey)
           }}
         >
-          <TabPane title="Tab 1" paneKey="0">
+          <Tabs.TabPane title="Tab 1" paneKey="0">
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
@@ -186,8 +192,8 @@ const TabsDemo = () => {
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
-          </TabPane>
-          <TabPane title="Tab 2" paneKey="1">
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2" paneKey="1">
             <p>Tab 2</p>
             <p>Tab 2</p>
             <p>Tab 2</p>
@@ -196,11 +202,11 @@ const TabsDemo = () => {
             <p>Tab 2</p>
             <p>Tab 2</p>
             <p>Tab 2</p>
-          </TabPane>
-          <TabPane title="Tab 3" paneKey="2">
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3" paneKey="2">
             {' '}
             Tab 3{' '}
-          </TabPane>
+          </Tabs.TabPane>
         </Tabs>
         <h2>{translated.title9}</h2>
         <Tabs
@@ -210,20 +216,20 @@ const TabsDemo = () => {
             setTab2value(paneKey)
           }}
         >
-          <TabPane title="Tab 1" paneKey="0">
+          <Tabs.TabPane title="Tab 1" paneKey="0">
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
             <p>Tab 1</p>
-          </TabPane>
-          <TabPane title="Tab 2" paneKey="1">
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2" paneKey="1">
             {' '}
             Tab 2{' '}
-          </TabPane>
-          <TabPane title="Tab 3" paneKey="2">
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3" paneKey="2">
             {' '}
             Tab 3{' '}
-          </TabPane>
+          </Tabs.TabPane>
         </Tabs>
         <h2>{translated.title3}</h2>
         <Tabs
@@ -233,10 +239,10 @@ const TabsDemo = () => {
           }}
         >
           {list3.map((item) => (
-            <TabPane key={item} title={`Tab ${item}`}>
+            <Tabs.TabPane key={item} title={`Tab ${item}`}>
               {' '}
               Tab {item}{' '}
-            </TabPane>
+            </Tabs.TabPane>
           ))}
         </Tabs>
         <h2>{translated.title4}</h2>
@@ -249,10 +255,10 @@ const TabsDemo = () => {
           titleGutter="10"
         >
           {list4.map((item) => (
-            <TabPane key={item} title={`Tab ${item}`}>
+            <Tabs.TabPane key={item} title={`Tab ${item}`}>
               {' '}
               Tab {item}{' '}
-            </TabPane>
+            </Tabs.TabPane>
           ))}
         </Tabs>
         <h2>{translated.title5}</h2>
@@ -266,10 +272,10 @@ const TabsDemo = () => {
           direction="vertical"
         >
           {list5.map((item) => (
-            <TabPane key={item} title={`Tab ${item}`}>
+            <Tabs.TabPane key={item} title={`Tab ${item}`}>
               {' '}
               Tab {item}{' '}
-            </TabPane>
+            </Tabs.TabPane>
           ))}
         </Tabs>
         <h2>{translated.title6}</h2>
@@ -284,12 +290,67 @@ const TabsDemo = () => {
           direction="vertical"
         >
           {list5.map((item) => (
-            <TabPane key={item} title={`Tab ${item}`}>
+            <Tabs.TabPane key={item} title={`Tab ${item}`}>
               {' '}
               Tab {item}{' '}
-            </TabPane>
+            </Tabs.TabPane>
           ))}
         </Tabs>
+
+        <h2>{translated.title12}</h2>
+
+        <Tabs
+          value={tab8value}
+          onChange={({ paneKey }) => {
+            setTab8value(paneKey)
+          }}
+          type="smile"
+          direction="vertical"
+        >
+          <Tabs.TabPane title="Tab 1">
+            <Tabs
+              value={tab9value}
+              onChange={({ paneKey }) => {
+                setTab9value(paneKey)
+              }}
+              type="smile"
+              direction="horizontal"
+            >
+              <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+              <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+              <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+            </Tabs>
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
+
+        <h2>{translated.title13}</h2>
+        <Tabs
+          value={tab8value}
+          onChange={({ paneKey }) => {
+            setTab8value(paneKey)
+          }}
+          autoHeight
+          type="smile"
+        >
+          <Tabs.TabPane title="Tab 1">
+            <Tabs
+              value={tab9value}
+              onChange={({ paneKey }) => {
+                setTab9value(paneKey)
+              }}
+              direction="vertical"
+            >
+              <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+              <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+              <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+            </Tabs>
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
+
         <h2>{translated.title7}</h2>
         <Tabs
           value={tab1value}
@@ -298,9 +359,9 @@ const TabsDemo = () => {
           }}
           size="large"
         >
-          <TabPane title="Tab 1"> Tab 1 </TabPane>
-          <TabPane title="Tab 2"> Tab 2 </TabPane>
-          <TabPane title="Tab 3"> Tab 3 </TabPane>
+          <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
         <Tabs
           value={tab1value}
@@ -309,9 +370,9 @@ const TabsDemo = () => {
           }}
           size="normal"
         >
-          <TabPane title="Tab 1"> Tab 1 </TabPane>
-          <TabPane title="Tab 2"> Tab 2 </TabPane>
-          <TabPane title="Tab 3"> Tab 3 </TabPane>
+          <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
         <Tabs
           value={tab1value}
@@ -320,9 +381,9 @@ const TabsDemo = () => {
           }}
           size="small"
         >
-          <TabPane title="Tab 1"> Tab 1 </TabPane>
-          <TabPane title="Tab 2"> Tab 2 </TabPane>
-          <TabPane title="Tab 3"> Tab 3 </TabPane>
+          <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
 
         <h2>{translated.title8}</h2>
@@ -347,9 +408,9 @@ const TabsDemo = () => {
           }}
         >
           {list6.map((item) => (
-            <TabPane key={item.paneKey} paneKey={item.paneKey}>
+            <Tabs.TabPane key={item.paneKey} paneKey={item.paneKey}>
               {item.title}
-            </TabPane>
+            </Tabs.TabPane>
           ))}
         </Tabs>
       </div>

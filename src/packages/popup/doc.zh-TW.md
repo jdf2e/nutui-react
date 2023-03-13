@@ -73,6 +73,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Popup, Cell } from '@nutui/nutui-react';
+import { Heart } from '@nutui/icons-react';
 
 const App = () => {
   const [showIcon, setShowIcon] = useState(false);
@@ -86,7 +87,7 @@ const App = () => {
         <Cell title="自定義圖標" isLink onClick={() => { setShowIconDefine(true) }}/>
         <Popup closeable visible={ showIcon } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowIcon(false) } } />
         <Popup closeable visible={ showIconPosition } style={{ height: '20%' }} closeIconPosition="top-left" position="bottom" onClose={ () => { setShowIconPosition(false) } } />
-        <Popup closeable visible={ showIconDefine } style={{ height: '20%' }} closeIcon="heart" position="bottom" onClose={ () => { setShowIconDefine(false) } } />
+      <Popup visible={ showIconDefine } style={{ height: '20%' }} closeable={<Heart />} position="bottom" onClose={ () => { setShowIconDefine(false) } } />
     </>
   );
 };

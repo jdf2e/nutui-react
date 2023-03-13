@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react'
 import bem from '@/utils/bem'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import TabPane from '@/packages/tabpane'
 
 class Title {
   title = ''
@@ -59,7 +60,12 @@ const defaultProps = {
 const pxCheck = (value: string | number): string => {
   return Number.isNaN(Number(value)) ? String(value) : `${value}px`
 }
-export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
+export const Tabs: FunctionComponent<
+  Partial<TabsProps>
+  // & React.HTMLAttributes<HTMLDivElement>
+> & {
+  TabPane: typeof TabPane
+} = (props) => {
   const {
     value,
     color,
@@ -236,3 +242,4 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
 
 Tabs.defaultProps = defaultProps
 Tabs.displayName = 'NutTabs'
+Tabs.TabPane = TabPane

@@ -95,6 +95,7 @@ export default App;
 ```tsx
 import React, { useState, useEffect } from "react";
 import { Cell, Infiniteloading } from '@nutui/nutui-react';
+import { Jd } from '@nutui/icons-react';
 
 const InfiniteUlStyle = {
   height: '300px',
@@ -153,7 +154,8 @@ const App = () => {
       <Cell>
         <ul id="refreshScroll" style={InfiniteUlStyle}>
           <Infiniteloading
-            pullIcon="JD"
+            pullIcon={<Jd />}
+            loadIcon={<Jd />}
             containerId="refreshScroll"
             useWindow={false}
             isOpenRefresh
@@ -271,9 +273,9 @@ export default App;
 | containerId          | 在 useWindow 属性为 false 的时候，自定义设置节点ID                        | string | -            |
 | loadMoreTxt          | “没有更多数”据展示文案                        | string | `哎呀，这里是底部了啦`            |
 | isOpenRefresh        | 是否开启下拉刷新                         | boolean | `false`                |
-| pullIcon        | 下拉刷新[图标名称](#/icon)                        | string | -                |
+| pullIcon        | 下拉刷新[图标名称](#/icon)                        | ReactNode | -                |
 | pullTxt        | 下拉刷新提示文案                         | string | `松手刷新`                |
-| loadIcon        | 上拉加载[图标名称](#/icon)                       | string | -            |
+| loadIcon        | 上拉加载[图标名称](#/icon)                       | ReactNode | -            |
 | loadTxt        | 上拉加载提示文案                         | string | `加载中...`                |
 
 ### Events

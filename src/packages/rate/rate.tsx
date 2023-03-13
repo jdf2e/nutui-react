@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
+import { StarFillN } from '@nutui/icons-react'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -12,8 +12,7 @@ export interface RateProps extends BasicComponent {
   iconSize: string | number
   activeColor: string
   voidColor: string
-  checkedIcon: string
-  uncheckedIcon: string
+  checkedIcon: React.ReactNode
   disabled: boolean
   readonly: boolean
   allowHalf: boolean
@@ -29,8 +28,7 @@ const defaultProps = {
   iconSize: 18,
   activeColor: '',
   voidColor: '',
-  checkedIcon: 'star-fill-n',
-  uncheckedIcon: 'star-n',
+  checkedIcon: null,
   disabled: false,
   readonly: false,
   allowHalf: false,
@@ -47,14 +45,11 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     activeColor,
     voidColor,
     checkedIcon,
-    uncheckedIcon,
     disabled,
     readonly,
     allowHalf,
     spacing,
     onChange,
-    iconClassPrefix,
-    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -109,38 +104,44 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
             onClick={(event) => onClick(event, n)}
             style={{ marginRight: pxCheck(spacing) }}
           >
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              size={iconSize}
-              className={classNames(bi('icon'), {
-                [bi('icon--disabled')]: disabled || n > score,
-              })}
-              name={n <= score ? checkedIcon : uncheckedIcon}
-              color={n <= score ? activeColor : voidColor}
-            />
-            {allowHalf && score > n - 1 && (
-              <Icon
-                classPrefix={iconClassPrefix}
-                fontClassName={iconFontClassName}
-                className={`${bi('icon')} ${bi('icon--half')}`}
-                color={n <= score ? activeColor : voidColor}
-                size={iconSize}
-                name={checkedIcon}
-              />
-            )}
-            {allowHalf && score < n - 1 && (
-              <Icon
-                classPrefix={iconClassPrefix}
-                fontClassName={iconFontClassName}
-                className={`${bi('icon')} ${bi('icon--disabled')} ${bi(
-                  'icon--half'
-                )}`}
-                color={voidColor}
-                size={iconSize}
-                name={uncheckedIcon}
-              />
-            )}
+            <>
+              {checkedIcon || (
+                <StarFillN
+                  width={iconSize}
+                  height={iconSize}
+                  color={n <= score ? activeColor : voidColor}
+                  className={classNames(bi('icon'), {
+                    [bi('icon--disabled')]: disabled || n > score,
+                  })}
+                />
+              )}
+              {(allowHalf && score > n - 1 && (
+                <div className={` ${bi('half')}`}>
+                  {checkedIcon || (
+                    <StarFillN
+                      width={iconSize}
+                      height={iconSize}
+                      color={n <= score ? activeColor : voidColor}
+                      className={`${bi('icon')} ${bi('icon--half')}`}
+                    />
+                  )}
+                </div>
+              )) ||
+                (allowHalf && score < n - 1 && (
+                  <div>
+                    {checkedIcon || (
+                      <StarFillN
+                        width={iconSize}
+                        height={iconSize}
+                        color={voidColor}
+                        className={`${bi('icon')} ${bi('icon--disabled')} ${bi(
+                          'icon--half'
+                        )}`}
+                      />
+                    )}
+                  </div>
+                ))}
+            </>
           </div>
         )
       })}

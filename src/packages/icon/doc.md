@@ -2,16 +2,50 @@
 
 ### 介绍
 
-基于 IconFont 字体的图标集，可以通过 Icon 组件使用。
-
+独立安装 @nutui/icons-react 图标组件包。提供两种使用方式（Svg 按需使用、IconFont 全量使用）。
 ### 安装
 
-``` javascript
-// react
-import { Icon } from '@nutui/nutui-react';
+```bash
+npm i --save @nutui/icons-react
 ```
 
-## 代码演示
+### 方式一： Svg 按需使用
+按需加载组件使用方式，可选项见 @nutui/icons-react/dist/types/index.d.ts
+
+```html
+import { Add } from '@nutui/icons-react';
+
+<Add color='red' />
+```
+
+
+<icon-demo />
+
+```
+其中组件库内部使用 Svg 为
+Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checked,CheckDisabled,DownArrow,JoySmile,Image,ImageError,CircleClose,MaskClose,Minus,Plus,ArrowUp2,ArrowDown2,Notice,CheckChecked,StarN,Tips,Loading1,TriangleUp,TriangleDown,Photograph,Failure,Del,Link,Download
+```
+
+### Props
+
+| 参数   | 说明                             | 类型             | 默认值 |
+|--------|----------------------------------|------------------|--------|
+| name   | 图标名称或图片链接               | string           | -      |
+| color  | 图标颜色                         | string           | -      |
+| width  | 图标大小，如 `20px` `2em` `2rem` | string \| object | -      |
+| height | 图标大小，如 `20px` `2em` `2rem` | string \| object | -      |
+
+### Events
+
+| 事件名 | 说明           | 回调参数     |
+|--------|----------------|--------------|
+| click  | 点击图标时触发 | event: Event |
+
+## 方式二： IconFont 全量使用
+
+```js
+import { IconFont } from '@nutui/icons-react'
+```
 
 ### 基础用法
 
@@ -41,13 +75,13 @@ export default App;
 :::demo
 ```tsx
 import React from "react";
-import { Icon } from '@nutui/nutui-react';
+import { IconFont } from '@nutui/icons-react'
 
 const App = () => {
   return <>
-    <Icon name="dongdong" color="#fa2c19" />
-    <Icon name="dongdong" color="#64b578" />
-    <Icon name="JD" color="#fa2c19" />
+    <IconFont name="dongdong" color="#fa2c19" />
+    <IconFont name="dongdong" color="#64b578" />
+    <IconFont name="JD" color="#fa2c19" />
   </>
 }
 
@@ -62,13 +96,13 @@ export default App;
 :::demo
 ```tsx
 import React from "react";
-import { Icon } from '@nutui/nutui-react';
+import { IconFont } from '@nutui/icons-react'
 
 const App = () => {
   return <>
-    <Icon name="dongdong" />
-    <Icon name="dongdong" size="24" />
-    <Icon name="dongdong" size="16" />
+    <IconFont name="dongdong" />
+    <IconFont name="dongdong" size="24" />
+    <IconFont name="dongdong" size="16" />
   </>
 }
 
@@ -108,10 +142,10 @@ import './assets/font/iconfont.css';
 // classPrefix 指定默认 icon
 // name 值根据 iconfont.css 中值对应填写 
 import React from 'react'
-import Icon from '@nutui/nutui-react'
+import { IconFont } from '@nutui/icons-react'
 
 const App = () => {
-  return <Icon fontClassName="iconfont" classPrefix='icon' name="close"/>
+  return <IconFont fontClassName="iconfont" classPrefix='icon' name="close"/>
 }
 ```
 
@@ -135,11 +169,11 @@ const App = () => {
 
 ```tsx
 import React from "react";
-import { Icon } from '@nutui/nutui-react';
+import { IconFont } from '@nutui/icons-react'
 
 const App = () => {
   return <>
-    <Icon fontClassName="my-icon" classPrefix="icon" name="extra" />
+    <IconFont fontClassName="my-icon" classPrefix="icon" name="extra" />
   </>
 }
 

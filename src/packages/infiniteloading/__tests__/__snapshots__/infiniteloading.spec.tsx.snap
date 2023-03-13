@@ -4,6 +4,8 @@ exports[`infiniteloading base 1`] = `
 <div>
   <div
     class="nut-infiniteloading"
+    iconclassprefix="nut-icon"
+    iconfontclassname="nutui-iconfont"
   >
     <div
       class="nut-infinite-top"
@@ -12,10 +14,6 @@ exports[`infiniteloading base 1`] = `
       <div
         class="top-box"
       >
-        <img
-          class="nut-icon__img top-img "
-          src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png"
-        />
         <span
           class="top-text"
         >
@@ -37,6 +35,8 @@ exports[`pull base 1`] = `
 <div>
   <div
     class="nut-infiniteloading"
+    iconclassprefix="nut-icon"
+    iconfontclassname="nutui-iconfont"
   >
     <div
       class="nut-infinite-top"
@@ -45,10 +45,6 @@ exports[`pull base 1`] = `
       <div
         class="top-box"
       >
-        <img
-          class="nut-icon__img top-img "
-          src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png"
-        />
         <span
           class="top-text"
         >
@@ -70,6 +66,8 @@ exports[`pull base 2`] = `
 <div>
   <div
     class="nut-infiniteloading"
+    iconclassprefix="nut-icon"
+    iconfontclassname="nutui-iconfont"
   >
     <div
       class="nut-infinite-top"
@@ -78,10 +76,6 @@ exports[`pull base 2`] = `
       <div
         class="top-box"
       >
-        <img
-          class="nut-icon__img top-img "
-          src="https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png"
-        />
         <span
           class="top-text"
         >

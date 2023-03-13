@@ -23,8 +23,8 @@ export interface RadioProps extends BasicComponent {
   shape: Shape
   textPosition: Position
   value: string | number | boolean
-  iconName: React.ReactNode
-  iconActiveName: React.ReactNode
+  icon: React.ReactNode
+  iconActive: React.ReactNode
   iconSize: string | number
   onChange: MouseEventHandler<HTMLDivElement>
 }
@@ -38,8 +38,8 @@ const defaultProps = {
   shape: 'round',
   value: '',
   textPosition: 'right',
-  iconName: 'check-normal',
-  iconActiveName: 'check-checked',
+  icon: null,
+  iconActive: null,
   iconSize: 18,
   onChange: (e) => {},
 } as RadioProps
@@ -57,8 +57,8 @@ export const Radio: FunctionComponent<
     shape,
     textPosition,
     value,
-    iconName,
-    iconActiveName,
+    icon,
+    iconActive,
     iconSize,
     onChange,
     iconClassPrefix,
@@ -110,25 +110,27 @@ export const Radio: FunctionComponent<
     return 'nut-radio__icon--unchecked'
   }
   const renderIcon = () => {
-    const { iconName, iconSize, iconActiveName } = props
+    const { icon, iconSize, iconActive } = props
 
     if (!disabledStatement && checkedStatement) {
-      return React.isValidElement(iconActiveName) ? (
-        React.cloneElement<any>(iconActiveName, {
+      return React.isValidElement(iconActive) ? (
+        React.cloneElement<any>(iconActive, {
+          ...iconActive.props,
           size: iconSize,
           className: color(),
         })
       ) : (
-        <CheckChecked width={iconSize} height={iconSize} className={color()} />
+        <CheckChecked size={iconSize} className={color()} />
       )
     }
-    return React.isValidElement(iconName) ? (
-      React.cloneElement<any>(iconName, {
+    return React.isValidElement(icon) ? (
+      React.cloneElement<any>(icon, {
+        ...icon.props,
         size: iconSize,
         className: color(),
       })
     ) : (
-      <CheckNormal width={iconSize} height={iconSize} className={color()} />
+      <CheckNormal size={iconSize} className={color()} />
     )
   }
   const reverseState = textPosition === 'left'

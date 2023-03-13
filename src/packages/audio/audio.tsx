@@ -69,8 +69,6 @@ export const Audio: FunctionComponent<
     onMute,
     onCanPlay,
     children,
-    iconClassPrefix,
-    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,

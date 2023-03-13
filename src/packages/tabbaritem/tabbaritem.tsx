@@ -1,17 +1,14 @@
 import React, { FunctionComponent, useEffect } from 'react'
 
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface TabbarItemProps extends BasicComponent {
   dot: boolean
-  size: string | number
-  iconSize: string | number
   className: string
   tabTitle: string
-  icon: string
+  icon: React.ReactNode
   href: string
   num: string | number
   active: boolean
@@ -24,11 +21,9 @@ export interface TabbarItemProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   dot: false,
-  size: '',
-  iconSize: '',
   className: '',
   tabTitle: '',
-  icon: '',
+  icon: null,
   href: '',
   num: '',
   active: false,
@@ -43,8 +38,6 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
 ) => {
   const {
     dot,
-    size,
-    iconSize,
     className,
     style,
     tabTitle,
@@ -56,8 +49,6 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     unactiveColor,
     index,
     handleClick,
-    iconClassPrefix,
-    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -96,14 +87,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
           <div className={`${bIcon('tips', [bIcon('dot')])}`} />
         )}
 
-        {icon && (
-          <Icon
-            classPrefix={iconClassPrefix}
-            fontClassName={iconFontClassName}
-            size={iconSize || size}
-            name={icon}
-          />
-        )}
+        {icon || null}
       </div>
       {tabTitle && (
         <div

@@ -2,15 +2,27 @@
 
 ### 介绍
 
-基于 IconFont 字体的图标集，可以通过 Icon 组件使用。
-
+独立安装 @nutui/icons-react-taro 图标组件包。基于字体的图标集。
 ### 安装
 
-``` javascript
-import { Icon } from '@nutui/nutui-react-taro';
+```bash
+npm i --save @nutui/icons-react-taro
 ```
 
-## 代码演示
+### 方式一： 按需使用
+按需加载组件使用方式，可选项见 @nutui/icons-react-taro/dist/types/index.d.ts
+
+```html
+import { Add } from '@nutui/icons-react-taro';
+
+<Add color='red' />
+```
+
+## 方式二： IconFont 全量使用
+
+```js
+import { IconFont } from '@nutui/icons-react-taro'
+```
 
 ### 基础用法
 
@@ -19,7 +31,7 @@ import { Icon } from '@nutui/nutui-react-taro';
 :::demo
 ```tsx
 import React from "react";
-import { Icon } from '@nutui/nutui-react-taro';
+import { Icon } from '@nutui/nutui-react';
 
 const App = () => {
   return <>
@@ -40,13 +52,13 @@ export default App;
 :::demo
 ```tsx
 import React from "react";
-import { Icon } from '@nutui/nutui-react-taro';
+import { IconFont } from '@nutui/icons-react-taro'
 
 const App = () => {
   return <>
-    <Icon name="dongdong" color="#fa2c19" />
-    <Icon name="dongdong" color="#64b578" />
-    <Icon name="JD" color="#fa2c19" />
+    <IconFont name="dongdong" color="#fa2c19" />
+    <IconFont name="dongdong" color="#64b578" />
+    <IconFont name="JD" color="#fa2c19" />
   </>
 }
 
@@ -61,13 +73,13 @@ export default App;
 :::demo
 ```tsx
 import React from "react";
-import { Icon } from '@nutui/nutui-react-taro';
+import { IconFont } from '@nutui/icons-react-taro'
 
 const App = () => {
   return <>
-    <Icon name="dongdong" />
-    <Icon name="dongdong" size="24" />
-    <Icon name="dongdong" size="16" />
+    <IconFont name="dongdong" />
+    <IconFont name="dongdong" size="24" />
+    <IconFont name="dongdong" size="16" />
   </>
 }
 
@@ -107,10 +119,10 @@ import './assets/font/iconfont.css';
 // classPrefix 指定默认 icon
 // name 值根据 iconfont.css 中值对应填写 
 import React from 'react'
-import Icon from '@nutui/nutui-react-taro'
+import { IconFont } from '@nutui/icons-react-taro'
 
 const App = () => {
-  return <Icon fontClassName="iconfont" classPrefix='icon' name="close"/>
+  return <IconFont fontClassName="iconfont" classPrefix='icon' name="close"/>
 }
 ```
 
@@ -134,11 +146,11 @@ const App = () => {
 
 ```tsx
 import React from "react";
-import { Icon } from '@nutui/nutui-react-taro';
+import { IconFont } from '@nutui/icons-react-taro'
 
 const App = () => {
   return <>
-    <Icon fontClassName="my-icon" classPrefix="icon" name="extra" />
+    <IconFont fontClassName="my-icon" classPrefix="icon" name="extra" />
   </>
 }
 

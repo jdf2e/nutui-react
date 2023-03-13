@@ -1,7 +1,7 @@
 import React from 'react'
+import { Jd } from '@nutui/icons-react'
 import { Elevator } from './elevator'
 import { useTranslate } from '../../sites/assets/locale'
-import Icon from '../icon'
 import './demo.scss'
 
 interface T {
@@ -509,7 +509,7 @@ const ElevatorDemo = () => {
               {(value) => {
                 return (
                   <>
-                    <Icon name="JD" size="12" />
+                    <Jd width={12} height={12} />
                     <span style={{ marginLeft: '15px' }}>{value?.name}</span>
                   </>
                 )

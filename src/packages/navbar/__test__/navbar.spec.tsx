@@ -2,6 +2,7 @@ import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
+import { Cart2 } from '@nutui/icons-react'
 import { NavBar } from '../navbar'
 
 test('should render left slot correctly', () => {
@@ -95,7 +96,11 @@ test('should emit click-title event when clicking title content', () => {
 test('should emit click-icon event when clicking title icon', () => {
   const onClickIcon = jest.fn()
   const { container } = render(
-    <NavBar title="订单详情" titIcon="locationg3" onClickIcon={onClickIcon} />
+    <NavBar title="订单详情" onClickIcon={onClickIcon}>
+      <i slot="titleIcon">
+        <Cart2 />
+      </i>
+    </NavBar>
   )
 
   fireEvent.click(container.querySelectorAll('.nut-navbar__title div')[1])

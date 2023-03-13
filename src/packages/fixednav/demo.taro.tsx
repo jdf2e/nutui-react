@@ -1,7 +1,8 @@
 import React, { useState, MouseEvent } from 'react'
-import { FixedNav, Drag, Icon } from '@/packages/nutui.react.taro'
-import Header from '@/sites/components/header'
 import Taro from '@tarojs/taro'
+import { Retweet } from '@nutui/icons-react-taro'
+import { FixedNav, Drag } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 
 type TFixedNavDemo = {
@@ -168,9 +169,7 @@ const FixedNavDemo = () => {
           }
           slotBtn={
             <>
-              <Icon name="retweet" color="#fff">
-                {' '}
-              </Icon>
+              <Retweet color="#fff" />
               <span className="text">
                 {visible4 ? translated.title4 : translated.title5}
               </span>
