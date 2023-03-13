@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { Dongdong, Jd } from '@nutui/icons-react'
 import { Tabs } from './tabs'
-import Icon from '@/packages/icon'
 import { useTranslate } from '../../sites/assets/locale'
 
 interface T {
@@ -81,12 +81,12 @@ const TabsDemo = () => {
     {
       title: translated.custom1,
       paneKey: 'c1',
-      icon: 'dongdong',
+      icon: <Dongdong />,
     },
     {
       title: translated.custom2,
       paneKey: 'c2',
-      icon: 'JD',
+      icon: <Jd />,
     },
     {
       title: translated.custom3,
@@ -391,7 +391,7 @@ const TabsDemo = () => {
                 }`}
                 key={item.paneKey}
               >
-                {item.icon && <Icon name={item.icon} />}
+                {item.icon || null}
                 <span className="nut-tabs__titles-item__text">
                   {item.title}
                 </span>

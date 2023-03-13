@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
+import { JoySmile } from '@nutui/icons-react'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane'
 
@@ -85,8 +85,6 @@ export const Tabs: FunctionComponent<
     onChange,
     className,
     autoHeight,
-    iconClassPrefix,
-    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -193,12 +191,7 @@ export const Tabs: FunctionComponent<
                       className={`${b('')}__titles-item__smile`}
                       style={tabsActiveStyle}
                     >
-                      <Icon
-                        classPrefix={iconClassPrefix}
-                        fontClassName={iconFontClassName}
-                        color={color}
-                        name="joy-smile"
-                      />
+                      <JoySmile color={color} />
                     </div>
                   )}
                   <div
