@@ -3,10 +3,9 @@ import Taro from '@tarojs/taro'
 import '@nutui/icons-react-taro/dist/style_iconfont.css'
 import { Add, IconFontConfig, IconFont } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Cell, CellGroup } from '@/packages/nutui.react.taro'
+import { Cell, CellGroup, Toast } from '@/packages/nutui.react.taro'
 import '@/packages/icon/demo.scss'
 import Header from '@/sites/components/header'
-import Toast from '../toast'
 
 interface T {
   '84aa6bce': string
@@ -31,7 +30,7 @@ const copyTag = (text: string) => {
   input.select()
   if (document.execCommand('copy')) {
     document.execCommand('copy')
-    Toast.text(`Copy: ${text}`)
+    // Toast.text(`Copy: ${text}`)
   }
   document.body.removeChild(input)
 }
