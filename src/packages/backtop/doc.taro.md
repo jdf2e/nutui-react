@@ -7,7 +7,7 @@
 ### 安装
 
 ```javascript
-import { BackTop } from '@/packages/nutui.react.taro'
+import { BackTop } from '@nutui/nutui-react-taro'
 ```
 
 ## 代码演示
@@ -18,7 +18,7 @@ import { BackTop } from '@/packages/nutui.react.taro'
 
 ```tsx
 import  React from "react";
-import { BackTop } from '@/packages/nutui.react.taro'
+import { BackTop } from '@nutui/nutui-react-taro'
 
 const App = () => {
   const cellStyle = {
@@ -74,7 +74,7 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { BackTop} from '@/packages/nutui.react.taro'
+import { BackTop} from '@nutui/nutui-react-taro';
 
 const App = () => {
     const cellStyle = {
@@ -129,7 +129,8 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { BackTop, Icon } from '@/packages/nutui.react.taro'
+import { BackTop } from '@nutui/nutui-react-taro';
+import { Top } from '@nutui/icons-react-taro';
 
 const App = () => {
   const cellStyle = {
@@ -179,7 +180,7 @@ const App = () => {
               alignItems: 'center',
             }}
           >
-            <Icon size="12px" className="nut-backtop-main" name="top" />
+            <Top width={12} height={12} className="nut-backtop-main" />
             <div style={{ fontSize: '12px' }}>顶部</div>
           </div>
         </BackTop>
@@ -197,7 +198,7 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { BackTop} from '@/packages/nutui.react.taro'
+import { BackTop} from '@nutui/nutui-react-taro'
 
 const App = () => {
   const cellStyle = {

@@ -23,14 +23,13 @@ import React from "react";
 import { Image } from '@nutui/nutui-react';
 
 const App = () => {
-const src =
+  const src =
     '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   return <>
     <Image src={src} width="100" height="100" />
   </>
 }
 export default App;
-
 ```
 :::
 
@@ -44,19 +43,18 @@ import React from "react";
 import { Image } from '@nutui/nutui-react';
 
 const App = () => {
-const src =
+  const src =
     '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   return <>
     <Image
-        src={src}
-        width="100"
-        height="100"
-        fit="contain"
+      src={src}
+      width="100"
+      height="100"
+      fit="contain"
     />
   </>
 }
 export default App;
-
 ```
 :::
 
@@ -70,20 +68,19 @@ import React from "react";
 import { Image } from '@nutui/nutui-react';
 
 const App = () => {
-const src =
+  const src =
     '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   return <>
     <Image
-        src={src}
-        width="100"
-        height="100"
-        fit="contain"
-        position="left"
+      src={src}
+      width="100"
+      height="100"
+      fit="contain"
+      position="left"
     />
   </>
 }
 export default App;
-
 ```
 :::
 
@@ -97,69 +94,66 @@ import React from "react";
 import { Image } from '@nutui/nutui-react';
 
 const App = () => {
-const src =
+  const src =
     '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   return <>
     <Image
-        src={src}
-        width="100"
-        height="100"
-        round
+      src={src}
+      width="100"
+      height="100"
+      round
     />
   </>
 }
 export default App;
-
 ```
 :::
 
 ### 加載中圖片
 
-`Image` 組件提供了默認的加載中提示，支持通過 `loading` 插槽自定義內容。
+`Image` 組件提供了默認的加載中提示，支持通過 `slotLoading` 插槽自定義內容。
 
 :::demo
 ```tsx
 import React from "react";
-import { Image, Icon } from '@nutui/nutui-react';
+import { Image } from '@nutui/nutui-react';
+import { Loading } from '@nutui/icons-react';
 
 const App = () => {
-const src =
+  const src =
     '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   return <>
     <Image
-        width="100"
-        height="100"
-        showLoading
-        slotLoding={
-            <>
-            <Icon name="loading" />
-            </>
-        }
+      width="100"
+      height="100"
+      slotLoding={<Loading className="nut-icon-loading" />}
     />
   </>
 }
 export default App;
-
 ```
 :::
 ### 加載失敗
 
-`Image` 組件提供了默認的加載失敗提示，支持通過 `error` 插槽自定義內容。
+`Image` 組件提供了默認的加載失敗提示，支持通過 `slotError` 插槽自定義內容。
 
 :::demo
 ```tsx
 import React from "react";
-import { Image, Icon } from '@nutui/nutui-react';
+import { Image } from '@nutui/nutui-react';
+import { CircleClose } from '@nutui/icons-react';
 
 const App = () => {
   return <>
-    <Image src="https://x" width="100" height="100" showError>
-        <Icon name="circle-close" />
-    </Image>
+    <Image
+      src="https://x"
+      width="100"
+      height="100"
+      slotError={<CircleClose />}
+    />
   </>
 }
 export default App;
-
 ```
 :::
 
@@ -173,11 +167,11 @@ import React from "react";
 import { Image,Cell } from '@nutui/nutui-react';
 
 const App = () => {
-const src =
-    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
-const imageData = [1, 2, 3, 4, 5, 6]
-const placeholderImg = 'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'
-const style = `
+  const src =
+      '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+  const imageData = [1, 2, 3, 4, 5, 6]
+  const placeholderImg = 'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'
+  const style = `
   .lazy-box{
     width:100%
   }
@@ -186,29 +180,26 @@ const style = `
   }
 `
   return <>
-  <style>{style}</style>
+    <style>{style}</style>
     <Cell>
-        <div className="lazy-box">
+      <div className="lazy-box">
         {imageData.map((item) => {
-            return (
+          return (
             <Image
-                key={item}
-                height="150"
-                src={src}
-                isLazy
-                showError
-                showLoading
-                loadingImg={placeholderImg}
-                errorImg={placeholderImg}
+              key={item}
+              height="150"
+              src={src}
+              isLazy
+              loadingImg={placeholderImg}
+              errorImg={placeholderImg}
             />
-            )
+          )
         })}
-        </div>
+      </div>
     </Cell>
   </>
 }
 export default App;
-
 ```
 :::
 
@@ -229,6 +220,8 @@ export default App;
 | radius         | 圓角大小               | string \| number | -                |
 | showError         | 是否展示圖片加載失敗| boolean | `true`              |
 | showLoading         | 是否展示加載中圖片               | boolean | `true`              |
+| slotLoding      | 自定義加載中的提示內容     | ReactNode | `<Image />` |
+| slotError    | 自定義記載失敗的提示內容  | ReactNode | `<ImageError />` |
 | isLazy `v1.4.6`  | 是否為懶加載圖片               | boolean | `false`              |
 | loadingImg `v1.4.6`    | 設置加載中提示圖片，與slotLoding衝突，優先級高於slotLoding       | string | -              |
 | errorImg   `v1.4.6`    | 設置錯誤提示圖片，與slotError衝突，優先級高於slotError         | string | -              |
@@ -252,13 +245,6 @@ export default App;
 | right    | 右側對齊  |
 | bottom    | 底部對齊  |
 | left   | 左側對齊  |
-
-
-### Slots
-| 參數         | 說明                             |
-|--------------|----------------------------------|
-| slotLoding      | 自定義加載中的提示內容     |
-| slotError    | 自定義記載失敗的提示內容  |
 
 ### Events
 
