@@ -1,10 +1,5 @@
-import React, {
-  FunctionComponent,
-  useState,
-  useRef,
-  useLayoutEffect,
-} from 'react'
-import { createSelectorQuery } from '@tarojs/taro'
+import React, { FunctionComponent, useState, useRef } from 'react'
+import { useReady, nextTick, createSelectorQuery } from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { getRectByTaro } from '@/utils/useClientRect'
 
@@ -26,6 +21,7 @@ export interface EllipsisProps {
   onClick: () => void
   onChange: (type: string) => void
 }
+
 const defaultProps = {
   content: '',
   direction: 'end',
@@ -74,12 +70,12 @@ export const Ellipsis: FunctionComponent<
   const letterUpperReg = /^[A-Z]+$/ // 字母
   const letterLowerReg = /^[a-z]+$/ // 字母
 
-  useLayoutEffect(() => {
-    setTimeout(() => {
+  useReady(() => {
+    nextTick(() => {
       getSymbolInfo()
       getReference()
-    }, 100)
-  }, [])
+    })
+  })
 
   // 获取省略号宽度
   const getSymbolInfo = async () => {
