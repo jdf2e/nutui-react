@@ -3,12 +3,13 @@ import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import {
   Cell,
-  Icon,
   Progress,
   Button,
   Toast,
+  Image,
 } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
+import { Issue } from '@nutui/icons-react-taro'
 
 interface T {
   basic: string
@@ -110,9 +111,10 @@ const ProgressDemo = () => {
         <h2>{translated.customContent}</h2>
         <Cell style={cellStyles}>
           <Progress percentage={60} textInside>
-            <Icon
-              size={30}
-              name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+            <Image
+              width="30px"
+              height="30px"
+              src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
             />
           </Progress>
         </Cell>
@@ -143,8 +145,7 @@ const ProgressDemo = () => {
             strokeColor="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
             strokeWidth="15"
             textType="icon"
-            iconName="issue"
-            iconColor="red"
+            icon={<Issue color="red" />}
           />
         </Cell>
         <h2>{translated.dynamicChange}</h2>

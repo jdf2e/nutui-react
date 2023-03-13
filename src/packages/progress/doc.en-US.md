@@ -8,7 +8,7 @@ Used to show the current progress of the operation.
 
 ```js
 // react
-import { Progress, Icon } from '@nutui/nutui-react';
+import { Progress } from '@nutui/nutui-react';
 ```
 
 ## Demo
@@ -123,7 +123,7 @@ export default App;
 :::demo
 ```jsx
 import  React from "react";
-import { Progress, Icon, Cell } from '@nutui/nutui-react';
+import { Progress, Image, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
@@ -133,9 +133,10 @@ const App = () => {
         percentage={60}
         textInside
       >
-        <Icon
-          size={30}
-          name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+        <Image
+          width="30px"
+          height="30px"
+          src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
         />
       </Progress>
     </Cell>
@@ -189,7 +190,8 @@ export default App;
 :::demo
 ```jsx
 import  React from "react";
-import { Progress, Icon, Cell } from '@nutui/nutui-react';
+import { Progress, Cell } from '@nutui/nutui-react';
+import { Issue } from '@nutui/icons-react';
 
 const App = () => {
   return (
@@ -213,8 +215,7 @@ const App = () => {
         strokeColor="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
         strokeWidth="15"
         textType="icon"
-        iconName="issue"
-        iconColor="red"
+        icon={<Issue color="red" />}
       />
     </Cell>
     </>
@@ -295,9 +296,10 @@ export default App;
 | textBackground | Progress bar text background color setting | string | 同进度条颜色
 | textType | Progress bar text type setting，`text`(展示文字)/`icon`(展示icon标签) | string | `text`
 | status | The current state of the progress bar, `true`展示动画效果 | boolean | `false`
-| iconName | Icon Name | string | `checked`
-| iconColor | Icon Color | string | `#439422`
-| iconSize | Icon Size | string | `16px`
+| icon`1.5.0` | Custom Icon | ReactNode | `<Checked width={16} height={16} color="#439422"/>`
+| iconName`v1.5.0 Abandon` | Icon Name | string | `checked`
+| iconColor`v1.5.0 Abandon` | Icon Color | string | `#439422`
+| iconSize`v1.5.0 Abandon` | Icon Size | string | `16px`
 | rounded `v1.4.7 Abandon`| Whether the corners are rounded | boolean \| string | `true`
 
 
