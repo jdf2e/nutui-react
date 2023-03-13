@@ -595,7 +595,7 @@ export default App;
 | summary         | Show profile | 	ReactNode | -                |
 | striped         | Whether the stripes alternate light and dark | 	boolean | `false`                |
 | noData         | Custom noData | 	ReactNode | -                |
-| sorterIcon         | Sort icon | 	ReactNode | `<DownArrow />`               |
+| sorterIcon`v1.5.0`         | Sort icon | 	ReactNode | `<DownArrow />`               |
 
 
 

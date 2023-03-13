@@ -278,7 +278,7 @@ export default App
 | closeOnClickOverlay | 是否在點擊遮罩層後關閉菜單     | boolean                 | `true`    |
 | lockScroll          | 背景是否鎖定                   | boolean                 | `true`    |
 | scrollFixed         | 滾動後是否固定，可設置固定位置                   | boolean \| string \| number                 | `true`    |
-| titleIcon           | 自定義標題圖標                 | React.ReactNode                  | -       |
+| titleIcon`v1.5.0`             | 自定義標題圖標                 | React.ReactNode                  | -       |
 
 ### MenuItem Props
 
@@ -288,7 +288,7 @@ export default App
 | options                       | 選項數組                                | Array   | -                |
 | disabled                      | 是否禁用菜單                            | boolean | `false`            |
 | columns                          | 可以設置一行展示多少列 options          | number  | `1`                |
-| optionsIcon          | 自定義選項圖標                          | React.ReactNode  | `Check`          |
+| optionsIcon`v1.5.0`          | 自定義選項圖標                          | React.ReactNode  | `Check`          |
 | direction            | 菜單展開方向，可選值為up                | string  | `down`           |
 | activeClassName    | 選項選中時自定義標題樣式類              | string  | -                |
 | inactiveClassName  | 選項非選中時自定義標題樣式類            | string  | -                |

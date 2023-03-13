@@ -287,7 +287,7 @@ export default App
 | closeOnClickOverlay | Whether to close when overlay is clicked     | boolean                 | `true`    |
 | lockScroll          | Whether the background is locked                   | boolean                 | `true`    |
 | scrollFixed         | Whether to fixed when window is scrolled, fixed position can be set                   | boolean \| string \| number                 | `true`    |
-| titleIcon           | Custome title icon                 | React.ReactNode                  | -       |
+| titleIcon`v1.5.0`          | Custome title icon                 | React.ReactNode                  | -       |
 
 ### MenuItem Props
 
@@ -297,7 +297,7 @@ export default App
 | options                       | Options                                | Array   | -                |
 | disabled                      | Whether to disable dropdown item                            | boolean | `false`            |
 | columns                          | Display how many options in one line          | number  | `1`                |
-| optionsIcon          | Custome option icon                          | React.ReactNode  | `Check`          |
+| optionsIcon`v1.5.0`          | Custome option icon                          | React.ReactNode  | `Check`          |
 | direction            | Expand direction, can be set to up                | string  | `down`           |
 | activeClassName    | Active custome title class              | string  | -                |
 | inactiveClassName  | Inactive custome title class            | string  | -                |

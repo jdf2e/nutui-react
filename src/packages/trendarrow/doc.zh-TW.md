@@ -211,8 +211,12 @@ export default App;
 | textColor        | 文字顏色               | string | `#333333`               |
 | riseColor         | 向上箭頭顏色               | string | `#fa2c19`               |
 | dropColor         | 向下箭頭顏色               | string | `#64b578`               |
-| upIcon         | 自定義向上箭頭icon               | React.ReactNode | `<TriangleUp/>`                |
-| downIcon         | 自定義向下箭頭icon               | React.ReactNode | `<TriangleDown/>`               |
+| upIcon`v1.5.0`          | 自定義向上箭頭icon               | React.ReactNode | `<TriangleUp/>`                |
+| downIcon`v1.5.0`          | 自定義向下箭頭icon               | React.ReactNode | `<TriangleDown/>`               |
+| iconSize`v1.5.0弃用`         | 箭頭大小               | string | `12px`               |
+| upIconName`v1.5.0弃用`         | 自定義向上箭頭icon               | string | `triangle-up`               |
+| downIconName`v1.5.0弃用`         | 自定義向下箭頭icon               | string | `triangle-down`               |
+
 
 
 
