@@ -256,7 +256,7 @@ export const Infiniteloading: FunctionComponent<
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="top-box">
-          {pullIcon && <div className="top-img">{pullIcon}</div>}
+          {pullIcon && <>{pullIcon}</>}
           <span className="top-text">
             {pullTxt || locale.infiniteloading.pullRefreshText}
           </span>
@@ -266,7 +266,7 @@ export const Infiniteloading: FunctionComponent<
       <div className="nut-infinite-bottom">
         {isInfiniting ? (
           <div className="bottom-box">
-            {loadIcon && <div className="bottom-img">{loadIcon}</div>}
+            {loadIcon && <>{loadIcon}</>}
             <div className="bottom-text">
               {loadTxt || locale.infiniteloading.loadText}
             </div>
