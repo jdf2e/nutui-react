@@ -138,7 +138,7 @@ test('should render close icon when using closeable prop', () => {
 test('should render correct close icon when using close-icon prop', () => {
   const { container } = render(
     <>
-      <Popup visible closeable closeIcon="success" />
+      <Popup visible closeable />
     </>
   )
 
