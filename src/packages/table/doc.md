@@ -265,6 +265,71 @@ export default App;
 ```
 :::
 
+### 隐藏表头
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Table } from '@nutui/nutui-react';
+
+interface TableColumnProps {
+  key?: string
+  title?: string
+  align?: string
+  sorter?: ((a: any, b: any) => number) | boolean | string
+  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
+}
+
+const App = () => {
+  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
+    {
+      title: '姓名',
+      key: 'name',
+    },
+    {
+      title: '性别',
+      key: 'sex',
+      render: (record: any) => {
+        return (
+          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
+            {record.sex}
+          </span>
+        )
+      },
+    },
+    {
+      title: '学历',
+      key: 'record',
+    },
+  ])
+
+  const [data1, setData1] = useState([
+    {
+      name: 'Tom',
+      sex: '男',
+      record: '小学',
+    },
+    {
+      name: 'Lucy',
+      sex: '女',
+      record: '本科',
+    },
+    {
+      name: 'Jack',
+      sex: '男',
+      record: '高中',
+    },
+  ])
+
+  return <Table
+        columns={columns1}
+        data={data1}
+        hideHeader
+    />;
+};
+export default App;
+```
+:::
+
 ### 无数据默认展示，支持自定义
 :::demo
 ```tsx
@@ -559,6 +624,7 @@ export default App;
 | data         | 表格数据 | 	Object[] | `[]`                |
 | summary         | 是否显示简介 | 	ReactNode | -                |
 | striped         | 条纹是否明暗交替 | 	boolean | `false`                |
+| hideHeader         | 是否隐藏表头 | 	boolean | `false`                |
 | noData         | 自定义无数据 | 	ReactNode | -                |
 
 ### TableColumnProps

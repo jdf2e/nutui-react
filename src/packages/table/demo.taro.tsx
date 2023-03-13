@@ -15,6 +15,7 @@ interface T {
   customCell: string
   asynchronousRendering: string
   sorting: string
+  hideHeader: string
 }
 
 interface TableColumnProps {
@@ -33,6 +34,7 @@ const TableDemo = () => {
       summaryTitle: '显示总结栏',
       summary: '这是总结栏',
       striped: '条纹、明暗交替',
+      hideHeader: '隐藏表头',
       noDataTitle: '无数据默认展示，支持自定义',
       customNoData: '这里是自定义展示',
       customCell: '自定义单元格',
@@ -45,6 +47,7 @@ const TableDemo = () => {
       summaryTitle: 'Show summary bar',
       summary: 'This is the summary column',
       striped: 'Stripes, alternating light and shade',
+      hideHeader: 'Hide table header',
       noDataTitle:
         'No data is displayed by default, and customization is supported',
       customNoData: 'Here is the custom display',
@@ -274,6 +277,13 @@ const TableDemo = () => {
           data={data1}
           style={{ background: '#fff' }}
           striped
+        />
+        <h2>{translated.hideHeader}</h2>
+        <Table
+          columns={columns1}
+          data={data1}
+          style={{ background: '#fff' }}
+          hideHeader
         />
         <h2>{translated.noDataTitle}</h2>
         <Table columns={columns1} data={data2} style={{ background: '#fff' }} />
