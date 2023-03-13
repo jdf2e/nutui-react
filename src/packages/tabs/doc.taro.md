@@ -13,7 +13,7 @@ import { Tabs } from '@nutui/nutui-react-taro';
 
 ```ts
 // 1.4.9 废弃
-import { Tabs } from '@nutui/nutui-react-taro';
+import { Tabs, TabPane } from '@nutui/nutui-react-taro';
 ```
 
 
