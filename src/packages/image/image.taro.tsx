@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
+import { Image as ImageIcon, ImageError } from '@nutui/icons-react-taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import Icon from '@/packages/icon/index.taro'
 
 export interface ImageProps {
   className: string
@@ -16,7 +16,7 @@ export interface ImageProps {
   showError: boolean
   showLoading: boolean
   slotLoding: React.ReactNode
-  slotError: React.ReactNode | string
+  slotError: React.ReactNode
   onClick?: (e: MouseEvent) => void
   onLoad?: () => void
   onError?: () => void
@@ -134,13 +134,13 @@ export const Image: FunctionComponent<
       />
       {showLoading && loading ? (
         <div className="nut-img-loading">
-          {slotLoding || children || <Icon name="image" />}
+          {slotLoding || children || <ImageIcon />}
         </div>
       ) : null}
 
       {showError && isError && !loading ? (
         <div className="nut-img-error">
-          {slotError || children || <Icon name="image-error" />}
+          {slotError || children || <ImageError />}
         </div>
       ) : null}
     </div>

@@ -1,9 +1,9 @@
 import React from 'react'
+import { CircleClose, Loading } from '@nutui/icons-react'
 import { Image } from './image'
 import { useTranslate } from '../../sites/assets/locale'
 import Row from '@/packages/row'
 import Col from '@/packages/col'
-import Icon from '@/packages/icon'
 import Cell from '@/packages/cell'
 
 const ImageDemo = () => {
@@ -153,7 +153,6 @@ const ImageDemo = () => {
               <Image
                 width="100"
                 height="100"
-                showLoading
                 isLazy
                 onLoad={() => {
                   console.log('image onload')
@@ -166,11 +165,7 @@ const ImageDemo = () => {
                 width="100"
                 height="100"
                 isLazy
-                slotLoding={
-                  <>
-                    <Icon name="loading" />
-                  </>
-                }
+                slotLoding={<Loading className="nut-icon-loading" />}
               />
               <div className="image-text">{translated.custom}</div>
             </Col>
@@ -185,7 +180,6 @@ const ImageDemo = () => {
                 src="https://x"
                 width="100"
                 height="100"
-                showError
                 onError={() => {
                   console.log('image error')
                 }}
@@ -193,9 +187,12 @@ const ImageDemo = () => {
               <div className="image-text">{translated.default}</div>
             </Col>
             <Col span="8">
-              <Image src="https://x" width="100" height="100" showError>
-                <Icon name="circle-close" />
-              </Image>
+              <Image
+                src="https://x"
+                width="100"
+                height="100"
+                slotError={<CircleClose />}
+              />
               <div className="image-text">{translated.custom}</div>
             </Col>
           </Row>
@@ -210,8 +207,6 @@ const ImageDemo = () => {
                   height="150"
                   src={src}
                   isLazy
-                  showError
-                  showLoading
                   loadingImg={placeholderImg}
                   errorImg={placeholderImg}
                 />
