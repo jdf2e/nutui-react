@@ -17,8 +17,6 @@ export interface GridProps {
   reverse: boolean
   direction: GridDirection
   className?: string
-  iconSize?: string | number
-  iconColor?: string
   style?: CSSProperties
   onClick: (item: GridItemProps, index: number) => void
 }
@@ -31,8 +29,6 @@ const defaultProps = {
   square: false,
   reverse: false,
   direction: 'vertical',
-  iconSize: 28,
-  iconColor: '',
 } as GridProps
 
 export const Grid: FunctionComponent<
@@ -49,8 +45,6 @@ export const Grid: FunctionComponent<
     reverse,
     direction,
     style,
-    iconSize,
-    iconColor,
     className,
     onClick,
     ...rest
@@ -95,8 +89,6 @@ export const Grid: FunctionComponent<
             square,
             reverse,
             direction,
-            parentIconSize: iconSize,
-            parentIconColor: iconColor,
           })
         })}
       </GridContext.Provider>
