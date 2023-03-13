@@ -18,7 +18,8 @@ import { NavBar } from '@nutui/nutui-react-taro';
 :::demo
 ```tsx
 import  React from "react";
-import { NavBar, Icon } from '@nutui/nutui-react-taro';
+import { NavBar } from '@nutui/nutui-react-taro';
+import { Share } from '@nutui/icons-react-taro'
 
 const App = () => {
   return ( 
@@ -31,7 +32,9 @@ const App = () => {
           onClickBack={(e) => alert("返回")}
           onClickRight={(e) => alert('icon')}
         >
-          <Icon name="share" slot="right" />
+           <i slot="right">
+            <Share />
+          </i>
         </NavBar>
     </>
   );
@@ -68,7 +71,8 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import { NavBar, Icon } from '@nutui/nutui-react-taro';
+import { NavBar } from '@nutui/nutui-react-taro';
+import { Cart2, More } from '@nutui/icons-react-taro'
 
 const App = () => {
   return ( 
@@ -76,13 +80,17 @@ const App = () => {
       <NavBar
           title="购物车"
           desc="编辑"
-          titIcon="locationg3"
           onClickTitle={(e) => alert("标题")}
           onClickBack={(e) => alert("返回")}
           onClickRight={(e) => alert('编辑')}
           onClickIcon={(e) => alert('icon')}
         >
-          <Icon name="more-x" slot="right" />
+          <i slot="titleIcon">
+            <Cart2 />
+          </i>
+          <i slot="right">
+            <More />
+          </i>
       </NavBar>
     </>
   );
@@ -95,7 +103,8 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import { NavBar, Icon } from '@nutui/nutui-react-taro';
+import { NavBar } from '@nutui/nutui-react-taro';
+import { Share } from '@nutui/icons-react-taro'
 
 const App = () => {
   return ( 
@@ -109,7 +118,9 @@ const App = () => {
           onClickBack={(e) => alert("标题")}
           onClickRight={(e) => alert('icon')}
         >
-          <Icon name="share" slot="right" />
+           <i slot="right">
+            <Share />
+          </i>
       </NavBar>
     </>
   );
@@ -125,7 +136,8 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from "react";
-import { NavBar, Icon, Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { NavBar, Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { More } from '@nutui/icons-react-taro'
 
 const App = () => {
   const [tab1value, setTab1value] = useState('Tab 1')
@@ -145,7 +157,9 @@ const App = () => {
               <TabPane title="Tab 3"> Tab 3 </TabPane>
             </Tabs>
           </div>
-          <Icon name="more-x" slot="right" />
+          <i slot="right">
+            <More />
+          </i>
       </NavBar>
     </>
   );
@@ -163,7 +177,7 @@ export default App;
 | desc                     | 右侧描述                                                                                       | string  | -       |
 | leftShow                 | 是否展示左侧箭头                                                                              | boolean | `true`   |
 | icon`v1.2.1 废弃`         | 左侧 [图标名称](#/icon) 或图片链接                                                             | string  | -       |
-| titIcon                  | 标题带icon                                                         | string  | -       |   
+| titIcon`v1.5.0 废弃`                    | 标题带icon                                                         | string  | -       |   
 | leftText`v1.2.1`         | 左侧文案                                                         | string  | -       |   
 | fixed`v1.2.1`            | 是否固定                                                         | boolean  | `false`       |   
 | safeAreaInsetTop`v1.2.1` | 是否适配安全区                                                         | boolean  | `false`       |   
