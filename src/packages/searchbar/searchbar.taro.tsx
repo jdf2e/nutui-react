@@ -142,7 +142,6 @@ export const SearchBar: FunctionComponent<
     const { value } = event.target as any
     onChange && onChange?.(value, event)
     setValue(value)
-    const searchSelf: HTMLInputElement | null = searchRef.current
     value === '' && forceFocus()
   }
   const focus = (event: Event) => {
