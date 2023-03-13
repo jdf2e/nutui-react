@@ -1,9 +1,14 @@
-import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  FunctionComponent,
+  ReactNode,
+} from 'react'
 import classNames from 'classnames'
 import { ScrollView } from '@tarojs/components'
 import { createSelectorQuery } from '@tarojs/taro'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon/index.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -12,9 +17,9 @@ export interface InfiniteloadingProps extends BasicComponent {
   upperThreshold: number
   containerId: string
   isOpenRefresh: boolean
-  pullIcon: string
+  pullIcon: ReactNode
   pullTxt: string
-  loadIcon: string
+  loadIcon: ReactNode
   loadTxt: string
   loadMoreTxt: string
   className: string
@@ -69,8 +74,6 @@ export const Infiniteloading: FunctionComponent<
     onRefresh,
     onLoadMore,
     onScrollChange,
-    iconClassPrefix,
-    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -203,12 +206,7 @@ export const Infiniteloading: FunctionComponent<
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="top-box">
-          <Icon
-            classPrefix={iconClassPrefix}
-            fontClassName={iconFontClassName}
-            className="top-img"
-            name={pullIcon}
-          />
+          {pullIcon && <div className="top-img">{pullIcon}</div>}
           <span className="top-text">
             {pullTxt || locale.infiniteloading.pullRefreshText}
           </span>
@@ -218,12 +216,7 @@ export const Infiniteloading: FunctionComponent<
       <div className="nut-infinite-bottom">
         {isInfiniting ? (
           <div className="bottom-box">
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              className="bottom-img"
-              name={loadIcon}
-            />
+            {loadIcon && <div className="bottom-img">{loadIcon}</div>}
             <div className="bottom-text">
               {loadTxt || locale.infiniteloading.loadText}
             </div>
