@@ -90,7 +90,7 @@ export default App;
 ```
 :::
 
-## API
+## API console.log(1)
 
 ### Props
 
