@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Checklist } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import Radio from '@/packages/radio'
 import Cell from '@/packages/cell'
@@ -182,10 +183,10 @@ const RadioDemo = () => {
         <CellGroup>
           <Cell>
             <Radio.RadioGroup value="1">
-              <Radio value="1" iconName="checklist" iconActiveName="checklist">
+              <Radio value="1" icon={<Checklist />} checkedIcon={<Checklist />}>
                 {translated['70ffa5d8']}
               </Radio>
-              <Radio value="2" iconName="checklist" iconActiveName="checklist">
+              <Radio value="2" icon={<Checklist />} checkedIcon={<Checklist />}>
                 <div>{translated['70ffa5d8']}</div>
                 <div style={{ fontSize: '12px', color: '#8c8c8c' }}>
                   {translated['70ffa5d8']}

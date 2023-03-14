@@ -1,4 +1,5 @@
 import React from 'react'
+import { CircleClose } from '@nutui/icons-react'
 import { Tag } from './tag'
 import Cell from '@/packages/cell'
 import CellGroup from '@/packages/cellgroup'
@@ -81,9 +82,17 @@ const TagDemo = () => {
           <Cell
             title={translated.closeable}
             linkSlot={
+              <Tag closeable onClose={() => alert('Tag closed')} type="primary">
+                {translated.tag}
+              </Tag>
+            }
+          />
+          <Cell
+            title={translated.closeable}
+            linkSlot={
               <Tag
                 closeable
-                iconSize={12}
+                closeIcon={<CircleClose width={12} height={12} />}
                 onClose={() => alert('Tag closed')}
                 type="primary"
               >

@@ -1,8 +1,9 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
+import { JoySmile } from '@nutui/icons-react-taro'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import TabPane from '@/packages/tabpane/index.taro'
 
 class Title {
   title = ''
@@ -59,7 +60,12 @@ const defaultProps = {
 const pxCheck = (value: string | number): string => {
   return Number.isNaN(Number(value)) ? String(value) : `${value}px`
 }
-export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
+export const Tabs: FunctionComponent<
+  Partial<TabsProps>
+  // & React.HTMLAttributes<HTMLDivElement>
+> & {
+  TabPane: typeof TabPane
+} = (props) => {
   const {
     value,
     color,
@@ -79,8 +85,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
     onChange,
     className,
     autoHeight,
-    iconClassPrefix,
-    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -187,12 +191,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
                       className={`${b('')}__titles-item__smile`}
                       style={tabsActiveStyle}
                     >
-                      <Icon
-                        classPrefix={iconClassPrefix}
-                        fontClassName={iconFontClassName}
-                        color={color}
-                        name="joy-smile"
-                      />
+                      <JoySmile color={color} />
                     </div>
                   )}
                   <div
@@ -243,3 +242,4 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> = (props) => {
 
 Tabs.defaultProps = defaultProps
 Tabs.displayName = 'NutTabs'
+Tabs.TabPane = TabPane

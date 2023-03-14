@@ -92,7 +92,7 @@ const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <Radio.RadioGroup value={radioVal}>
-      <Radio value="1" iconSize="12">自訂尺寸12</Radio>
+      <Radio value="1" iconSize="15">自訂尺寸15</Radio>
       <Radio value="2" iconSize="12">自訂尺寸12</Radio>
     </Radio.RadioGroup>
   </>
@@ -104,7 +104,7 @@ export default RadioGroupLast;
 
 ## 自訂圖示
 
-建議 『iconName』 'iconActiveName' 一起修改
+建議 『icon』 'checkedIcon' 一起修改
 
 :::demo
 
@@ -117,10 +117,10 @@ const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <Radio.RadioGroup value={radioVal}>
-      <Radio value="1" iconName={<CheckList/>}
-             iconActiveName={<CheckList/>}>自定义图标</Radio>
-      <Radio value="2" iconName={<CheckList/>}
-             iconActiveName={<CheckList/>}>自定义图标</Radio>
+      <Radio value="1" icon={<CheckList/>}
+             checkedIcon={<CheckList/>}>自定义图标</Radio>
+      <Radio value="2" icon={<CheckList/>}
+             checkedIcon={<CheckList/>}>自定义图标</Radio>
     </Radio.RadioGroup>
   </>
 }
@@ -197,9 +197,9 @@ export default RadioGroupOptions;
 | 屬性         | 說明                             | 類型             | 預設值           |
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
 | disabled         | 是否禁用選擇                                                 | `boolean`                 | `false`           |
-| iconSize        | [圖示尺寸](#/icon)                                           | `string`、`number`          | `18`              |
-| iconName        | [圖示名稱](#/icon)，選中前（建議和'iconActiveName'一起修改） | `string`                  | `'check-normal'`  |
-| iconActiveName | [圖示名稱](#/icon)，選取後（建議和'iconName'一起修改）        | `string`                  | `'check-checked'` |
+| iconSize        | 默认图标的大小                                           | `string`、`number`          | `18`              |
+| icon        | [圖示名稱](#/icon)，選中前（建議和'checkedIcon'一起修改） | `string`                  | `'check-normal'`  |
+| checkedIcon | [圖示名稱](#/icon)，選取後（建議和'icon'一起修改）        | `string`                  | `'check-checked'` |
 | value            | 攜帶的標識值，用於 Group 模式                                                   | `string`、`number`、`boolean` | -                 |
 | shape            | 形狀，可選值為 button、round                                 | `string`                  | round             |
 

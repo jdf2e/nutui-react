@@ -113,6 +113,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "exclude": true,
           "author": "oasis-cloud"
         },
         {

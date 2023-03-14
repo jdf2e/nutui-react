@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Jd } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Infiniteloading } from './infiniteloading'
 import Cell from '@/packages/cell'
@@ -138,7 +139,8 @@ const InfiniteloadingDemo = () => {
         <Cell>
           <ul className="infiniteUl" id="refreshScroll">
             <Infiniteloading
-              pullIcon="JD"
+              pullIcon={<Jd />}
+              loadIcon={<Jd />}
               containerId="refreshScroll"
               useWindow={false}
               isOpenRefresh

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { useTranslate } from '@/sites/assets/locale/taro'
-import { Button, Toast, Icon, Table } from '@/packages/nutui.react.taro'
-import Header from '@/sites/components/header'
 import Taro from '@tarojs/taro'
+import { Dongdong, TriangleDown } from '@nutui/icons-react-taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import { Button, Toast, Table } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 interface T {
   basic: string
@@ -15,6 +16,8 @@ interface T {
   customCell: string
   asynchronousRendering: string
   sorting: string
+  sorterIcon: string
+  hideHeader: string
 }
 
 interface TableColumnProps {
@@ -33,11 +36,13 @@ const TableDemo = () => {
       summaryTitle: '显示总结栏',
       summary: '这是总结栏',
       striped: '条纹、明暗交替',
+      hideHeader: '隐藏表头',
       noDataTitle: '无数据默认展示，支持自定义',
       customNoData: '这里是自定义展示',
       customCell: '自定义单元格',
       asynchronousRendering: '支持异步渲染(5s之后看效果)',
       sorting: '支持排序',
+      sorterIcon: '支持排序更换图标',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -45,6 +50,7 @@ const TableDemo = () => {
       summaryTitle: 'Show summary bar',
       summary: 'This is the summary column',
       striped: 'Stripes, alternating light and shade',
+      hideHeader: 'Hide table header',
       noDataTitle:
         'No data is displayed by default, and customization is supported',
       customNoData: 'Here is the custom display',
@@ -52,6 +58,7 @@ const TableDemo = () => {
       asynchronousRendering:
         'Support asynchronous rendering(See the effect after 5S)',
       sorting: 'Support sorting',
+      sorterIcon: 'Supports sorting and changing ICONS',
     },
   })
 
@@ -181,7 +188,7 @@ const TableDemo = () => {
       sex: '女',
       record: '本科',
       render: () => {
-        return <Icon name="dongdong" size="14px" />
+        return <Dongdong size="14px" />
       },
     },
     {
@@ -275,6 +282,13 @@ const TableDemo = () => {
           style={{ background: '#fff' }}
           striped
         />
+        <h2>{translated.hideHeader}</h2>
+        <Table
+          columns={columns1}
+          data={data1}
+          style={{ background: '#fff' }}
+          showHeader={false}
+        />
         <h2>{translated.noDataTitle}</h2>
         <Table columns={columns1} data={data2} style={{ background: '#fff' }} />
         <Table
@@ -293,6 +307,14 @@ const TableDemo = () => {
           data={data5}
           onSorter={handleSorter}
           style={{ background: '#fff' }}
+        />
+        <h2>{translated.sorterIcon}</h2>
+        <Table
+          columns={columns5}
+          data={data5}
+          onSorter={handleSorter}
+          style={{ background: '#fff' }}
+          sorterIcon={<TriangleDown size="12px" />}
         />
       </div>
     </>

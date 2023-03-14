@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { My } from '@nutui/icons-react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
@@ -43,7 +44,7 @@ test('color props', () => {
 })
 
 test('icon props', () => {
-  const { container } = render(<Avatar icon="my" iconSize={24} />)
+  const { container } = render(<Avatar icon={<My />} />)
   expect(container.querySelector('.nut-icon')).toHaveClass('nut-icon-my')
 })
 

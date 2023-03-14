@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Icon, Cell, Audio } from '@/packages/nutui.react.taro'
+import { Cell, Audio } from '@/packages/nutui.react.taro'
 import '@/packages/audio/demo.scss'
 import Header from '@/sites/components/header'
 import Taro from '@tarojs/taro'
@@ -79,7 +79,6 @@ const AudioDemo = () => {
             }}
           >
             <div className="nut-voice">
-              <Icon name={voiceIcon} />
               <div>{duration}&quot;</div>
             </div>
           </Audio>

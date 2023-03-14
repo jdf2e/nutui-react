@@ -15,7 +15,6 @@ import { Checkbox } from '@nutui/nutui-react';
 ## Basic Usage
 
 :::demo
-
 ```tsx
 import React, {useState} from "react";
 import { Checkbox } from '@nutui/nutui-react';
@@ -23,10 +22,34 @@ import { Checkbox } from '@nutui/nutui-react';
 const CheckBoxDemo = () => {
   const [checked, setChecked] = useState(true)
   return (<>
-      <Checkbox textPosition="left" label="check box"
-                checked={checked} />
-      <Checkbox textPosition="right" label="check box"
-                checked={false} />
+      <Checkbox textPosition="left" label="checkbox" checked={checked} />
+      <Checkbox textPosition="right" label="checkbox" checked={false} />
+      <Checkbox.Group textPosition="left" checkedValue='option1'>
+        <span>
+          <Checkbox label='option1' checked={false} />
+        </span>
+        <Checkbox label='option2' checked={false} />
+        <Checkbox label='option3' checked={false} />
+      </Checkbox.Group>
+    </>
+  )
+}
+export default CheckBoxDemo;
+```
+:::
+
+## Indeterminate
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Checkbox } from '@nutui/nutui-react';
+
+const CheckBoxDemo = () => {
+  const [checked, setChecked] = useState(true)
+  return (<>
+      <Checkbox label='复选框1' checked indeterminate />
     </>
   )
 }
@@ -93,10 +116,12 @@ here
 ```tsx
 import React from "react";
 import { Checkbox } from '@nutui/nutui-react';
+import { Checklist } from '@nutui/icons-react';
 
 const CheckBoxDemo = () => {
   return (<>
-    <Checkbox iconName="checklist" iconActiveName="checklist">Custom
+    <Checkbox icon={<Checklist />}
+              checkedIcon={<Checklist />}>Custom
       icons</Checkbox>
   </>)
 }
@@ -405,18 +430,21 @@ export default CheckboxGroupOptions;
 
 ## Checkbox
 
-| Props          | Description | Type            | Default           |
-|----------------| ----- |-----------------|-------------------|
-| checked        | Whether it is selected | `boolean`       | `false`           |
-| disabled       | Whether to disable the selection | `boolean`       | `false`           |
-| textPosition   | The location of the text, optionally：`left`,`right` | `string`        | `right`           |
-| iconSize       | [Icon size](#/icon) | `string`、Number | `18`              |
-| iconName       | [Icon name](#/icon)，Before selecting (it is recommended to modify it with 'iconActiveName') | `ReactNode`     | `'CheckNormal'`   |
-| iconActiveName | [Icon name](#/icon)，Once selected (it is recommended to modify it together with 'iconName') | `ReactNode`           | `'Checked'`       |
-| iconIndeterminateName | [Icon Name](#/en-US/icon)，Semi selected state | `ReactNode`        | `'CheckDisabled'` |
-| iconClassPrefix       | Custom icon class name prefix, used to use custom icons        | `string`        | `nut-icon`        |
-| iconFontClassName     | Basic class name of custom icon font        | `string`        | `nutui-iconfont`  |
-| label          | The text content of the check box | `string`        | -                 |
+| Props                     | Description                                                                                 | Type            | Default           |
+|---------------------------|---------------------------------------------------------------------------------------------|-----------------|-------------------|
+| checked                   | Whether it is selected                                                                      | `boolean`       | `false`           |
+| disabled                  | Whether to disable the selection                                                            | `boolean`       | `false`           |
+| textPosition              | The location of the text, optionally：`left`,`right`                                         | `string`        | `right`           |
+| iconSize                  | [Icon size]The default icon size                                                            | `string`、Number | `18`              |
+| icon`v1.5.0`              | [Icon](#/icon)，Before selecting (it is recommended to modify it with 'checkedIcon')         | `ReactNode`     | `'CheckNormal'`   |
+| checkedIcon`v1.5.0`       | [Icon](#/icon)，Once selected (it is recommended to modify it together with 'icon')          | `ReactNode`           | `'Checked'`       |
+| indeterminateIcon`v1.5.0` | [Icon](#/en-US/icon)，Semi selected state                                                    | `ReactNode`        | `'CheckDisabled'` |
+| iconName                  | [Icon name](#/icon)，Before selecting (it is recommended to modify it with 'iconActiveName') | `ReactNode`     | `'CheckNormal'`   |
+| iconActiveName            | [Icon name](#/icon)，Once selected (it is recommended to modify it together with 'iconName') | `ReactNode`           | `'Checked'`       |
+| iconIndeterminateName     | [Icon Name](#/en-US/icon)，Semi selected state                                               | `ReactNode`        | `'CheckDisabled'` |
+| iconClassPrefix           | Custom icon class name prefix, used to use custom icons                                     | `string`        | `nut-icon`        |
+| iconFontClassName         | Basic class name of custom icon font                                                        | `string`        | `nutui-iconfont`  |
+| label                     | The text content of the check box                                                           | `string`        | -                 |
 
 ## Checkbox.Group
 

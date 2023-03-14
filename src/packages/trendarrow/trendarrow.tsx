@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useRef } from 'react'
+import { TriangleDown, TriangleUp } from '@nutui/icons-react'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
 
 export interface TrendArrowProps {
   rate: number
@@ -13,8 +13,8 @@ export interface TrendArrowProps {
   riseColor: string
   dropColor: string
   iconSize: string
-  upIconName: string
-  downIconName: string
+  upIcon: React.ReactNode
+  downIcon: React.ReactNode
   className: string
   style: React.CSSProperties
 }
@@ -28,9 +28,9 @@ const defaultProps = {
   textColor: '#333',
   riseColor: '#fa2c19',
   dropColor: '#64b578',
-  iconSize: '12px',
-  upIconName: 'triangle-up',
-  downIconName: 'triangle-down',
+
+  upIcon: null,
+  downIcon: null,
   className: '',
 } as TrendArrowProps
 
@@ -47,9 +47,8 @@ export const TrendArrow: FunctionComponent<
     textColor,
     riseColor,
     dropColor,
-    iconSize,
-    upIconName,
-    downIconName,
+    upIcon,
+    downIcon,
     className,
     children,
     ...rest
@@ -93,9 +92,7 @@ export const TrendArrow: FunctionComponent<
 
   const calcIconProps = (() => {
     const iconProps = {
-      name: rateTrend.current ? upIconName : downIconName,
       color: rateTrend.current ? riseColor : dropColor,
-      size: iconSize,
     }
     return iconProps
   })()
@@ -114,11 +111,13 @@ export const TrendArrow: FunctionComponent<
       {children || (
         <>
           {Number(rate) !== 0 && (
-            <Icon
-              size={calcIconProps.size}
-              name={calcIconProps.name}
-              color={calcIconProps.color}
-            />
+            <>
+              {rateTrend ? (
+                <TriangleUp color={calcIconProps.color} />
+              ) : (
+                <TriangleDown color={calcIconProps.color} />
+              )}
+            </>
           )}
         </>
       )}

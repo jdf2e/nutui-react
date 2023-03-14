@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
+import { Checklist } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Radio, Cell, CellGroup } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -183,10 +184,10 @@ const RadioDemo = () => {
         <CellGroup>
           <Cell>
             <Radio.RadioGroup value="1">
-              <Radio value="1" iconName="checklist" iconActiveName="checklist">
+              <Radio value="1" icon={<Checklist />} checkedIcon={<Checklist />}>
                 {translated['70ffa5d8']}
               </Radio>
-              <Radio value="2" iconName="checklist" iconActiveName="checklist">
+              <Radio value="2" icon={<Checklist />} checkedIcon={<Checklist />}>
                 <div>{translated['70ffa5d8']}</div>
                 <div style={{ fontSize: '12px', color: '#8c8c8c' }}>
                   {translated['70ffa5d8']}

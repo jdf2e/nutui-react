@@ -219,8 +219,8 @@ export default App;
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | show | Whether to show preview | boolean | `false` |
-| videos | Videos Array(Videos are before images, not support in taro) | Array<Object> | `[]`
-| images | Images array | { src: string }[] | `[]` |
+| videos | Videos Array(Videos are before images, not support in taro) | `Array<Object>` | `[]`
+| images | Images array | `{ src: string }[]` | `[]` |
 | autoplay | Autoplay time, zero means not autoplay | number \| string  | `3000`  |
 | initNo | Init no | number | `1` |
 | paginationVisible | Whether to show pagination    | boolean | `false` |

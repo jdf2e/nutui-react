@@ -1,7 +1,12 @@
-import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  FunctionComponent,
+  ReactNode,
+} from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
 import { useConfig } from '@/packages/configprovider'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -13,9 +18,9 @@ export interface InfiniteloadingProps extends BasicComponent {
   useWindow: boolean
   useCapture: boolean
   isOpenRefresh: boolean
-  pullIcon: string
+  pullIcon: ReactNode
   pullTxt: string
-  loadIcon: string
+  loadIcon: ReactNode
   loadTxt: string
   loadMoreTxt: string
   className: string
@@ -35,11 +40,9 @@ const defaultProps = {
   useWindow: true,
   useCapture: false,
   isOpenRefresh: false,
-  pullIcon:
-    'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png',
+  pullIcon: null,
   pullTxt: '松开刷新',
-  loadIcon:
-    'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png',
+  loadIcon: null,
   loadTxt: '加载中···',
   loadMoreTxt: '哎呀，这里是底部了啦',
 } as InfiniteloadingProps
@@ -65,8 +68,6 @@ export const Infiniteloading: FunctionComponent<
     onRefresh,
     onLoadMore,
     onScrollChange,
-    iconClassPrefix,
-    iconFontClassName,
     ...restProps
   } = {
     ...defaultProps,
@@ -255,12 +256,7 @@ export const Infiniteloading: FunctionComponent<
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="top-box">
-          <Icon
-            classPrefix={iconClassPrefix}
-            fontClassName={iconFontClassName}
-            className="top-img"
-            name={pullIcon}
-          />
+          {pullIcon && <>{pullIcon}</>}
           <span className="top-text">
             {pullTxt || locale.infiniteloading.pullRefreshText}
           </span>
@@ -270,12 +266,7 @@ export const Infiniteloading: FunctionComponent<
       <div className="nut-infinite-bottom">
         {isInfiniting ? (
           <div className="bottom-box">
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              className="bottom-img"
-              name={loadIcon}
-            />
+            {loadIcon && <>{loadIcon}</>}
             <div className="bottom-text">
               {loadTxt || locale.infiniteloading.loadText}
             </div>

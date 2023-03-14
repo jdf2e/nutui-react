@@ -23,8 +23,8 @@ export interface RadioProps extends BasicComponent {
   shape: Shape
   textPosition: Position
   value: string | number | boolean
-  iconName: React.ReactNode
-  iconActiveName: React.ReactNode
+  icon: React.ReactNode
+  checkedIcon: React.ReactNode
   iconSize: string | number
   onChange: MouseEventHandler<HTMLDivElement>
 }
@@ -38,8 +38,8 @@ const defaultProps = {
   shape: 'round',
   value: '',
   textPosition: 'right',
-  iconName: 'check-normal',
-  iconActiveName: 'check-checked',
+  icon: null,
+  checkedIcon: null,
   iconSize: 18,
   onChange: (e) => {},
 } as RadioProps
@@ -57,8 +57,8 @@ export const Radio: FunctionComponent<
     shape,
     textPosition,
     value,
-    iconName,
-    iconActiveName,
+    icon,
+    checkedIcon,
     iconSize,
     onChange,
     iconClassPrefix,
@@ -110,25 +110,25 @@ export const Radio: FunctionComponent<
     return 'nut-radio__icon--unchecked'
   }
   const renderIcon = () => {
-    const { iconName, iconSize, iconActiveName } = props
+    const { icon, iconSize, checkedIcon } = props
 
     if (!disabledStatement && checkedStatement) {
-      return React.isValidElement(iconActiveName) ? (
-        React.cloneElement<any>(iconActiveName, {
-          size: iconSize,
+      return React.isValidElement(checkedIcon) ? (
+        React.cloneElement<any>(checkedIcon, {
+          ...checkedIcon.props,
           className: color(),
         })
       ) : (
-        <CheckChecked width={iconSize} height={iconSize} className={color()} />
+        <CheckChecked size={iconSize} className={color()} />
       )
     }
-    return React.isValidElement(iconName) ? (
-      React.cloneElement<any>(iconName, {
-        size: iconSize,
+    return React.isValidElement(icon) ? (
+      React.cloneElement<any>(icon, {
+        ...icon.props,
         className: color(),
       })
     ) : (
-      <CheckNormal width={iconSize} height={iconSize} className={color()} />
+      <CheckNormal size={iconSize} className={color()} />
     )
   }
   const reverseState = textPosition === 'left'

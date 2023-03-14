@@ -11,7 +11,7 @@ import {
   Scan2,
   Service,
 } from '@nutui/icons-react-taro'
-import { Button, Icon, Popover, Cell } from '@/packages/nutui.react.taro'
+import { Button, Popover, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/popover/demo.scss'
 import Header from '@/sites/components/header'
 

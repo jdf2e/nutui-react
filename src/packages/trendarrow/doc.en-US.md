@@ -174,14 +174,18 @@ export default App;
 ```tsx
 import  React from "react"
 import { TrendArrow, Cell, Icon } from '@nutui/nutui-react'
+import { Success, Failure, HeartFill } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Cell>
-        <TrendArrow rate={10.2365} upIconName="success" />
-        <TrendArrow rate={-10.2365} downIconName="failure" />
+        <TrendArrow
+        rate={10.2365}
+        upIcon={<Success color="blue" width="18" height="18" />}
+        />
+        <TrendArrow rate={-10.2365} downIcon={<Failure color="red" />} />
         <TrendArrow rate={10.2365}>
-        <Icon name="heart-fill" color="#fa2c19" size="12px" />
+        <HeartFill color="#fa2c19" />
         </TrendArrow>
     </Cell>
   );
@@ -207,9 +211,11 @@ export default App;
 | textColor        | text color               | string | `#333333`               |
 | riseColor         | up arrow color               | string | `#fa2c19`               |
 | dropColor         | down arrow color               | string | `#64b578`               |
-| iconSize         | arrow size               | string | `12px`               |
-| upIconName         | custom up arrow icon               | string | `triangle-up`               |
-| downIconName           | custom down arrow icon               | string | `triangle-down`               |
+| upIcon`v1.5.0`         | custom up arrow icon               | string | `<TriangleUp/>`               |
+| downIcon`v1.5.0`            | custom down arrow icon        | string | `<TriangleDown/>`              |
+| iconSize`v1.5.0弃用`         | arrow size               | string | `12px`               |
+| upIconName`v1.5.0弃用`         | custom up arrow icon               | string | `triangle-up`               |
+| downIconName`v1.5.0弃用`           | custom down arrow icon               | string | `triangle-down`               |
 
 
 ## Theming

@@ -2,9 +2,9 @@ import * as React from 'react'
 import { useState } from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { Dongdong } from '@nutui/icons-react'
 import { Table } from '../table'
 import Button from '../../button'
-import Icon from '../../icon'
 
 const columns = [
   {
@@ -78,7 +78,7 @@ const data2 = [
     sex: '女',
     record: '本科',
     render: () => {
-      return <Icon name="dongdong" size="14px" />
+      return <Dongdong height="14px" width="14px" />
     },
   },
   {

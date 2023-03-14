@@ -16,8 +16,8 @@ export interface TagProps extends BasicComponent {
   plain: boolean
   round: boolean
   mark: boolean
-  closeable: boolean | React.ReactNode
-  iconSize: string | number
+  closeable: boolean
+  closeIcon: React.ReactNode
   prefixCls: string
   onClick: (e: MouseEvent) => void
   onClose: (e?: any) => void
@@ -35,7 +35,7 @@ const defaultProps = {
   round: false,
   mark: false,
   closeable: false,
-  iconSize: 12,
+  closeIcon: null,
   prefixCls: 'nut-tag',
   onClose: (e: any) => {},
   onClick: (e: MouseEvent) => {},
@@ -52,7 +52,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     children,
     mark,
     closeable,
-    iconSize,
+    closeIcon,
     textColor,
     onClick,
     onClose,
@@ -72,7 +72,6 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     round,
     mark,
     closeable,
-    iconSize,
     prefixCls,
     onClick,
     onClose,
@@ -122,12 +121,20 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
             onClick={(e) => handleClick(e)}
           >
             {children && <span className="nut-tag-text">{children}</span>}
-            {React.isValidElement(closeable) ? (
-              closeable
+            {React.isValidElement(closeIcon) ? (
+              <i
+                className="nut-tag-custom-icon"
+                onClick={(e) => {
+                  setIsTagShow(false)
+                  props.onClose && props.onClose(e)
+                }}
+              >
+                {closeIcon}
+              </i>
             ) : (
               <Close
-                width={iconSize}
-                height={iconSize}
+                width={12}
+                height={12}
                 onClick={(e) => {
                   setIsTagShow(false)
                   props.onClose && props.onClose(e)

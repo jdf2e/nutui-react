@@ -433,14 +433,15 @@ export default App;
 
 #### Step
 
-| Attribute           | Description                   | Type            | Default      |
-| ---------------- | ---------------------- |-----------------| ----------- |
-| title            | Title of the process step         | `string`        | '' |
-| content          | Descriptive text of process steps (supporting HTML structure)       | `string`        | '' |
-| icon          | Icon       | `ReactNode`         | '' |
-| size          | Icon size       | `string`        | '' |
-| activeIndex          | Index of process steps       | `number`        | 0 |
-| renderContent         | The html structure of the descriptive text of the process steps      | React.ReactNode | - |
+| Attribute    | Description                   | Type            | Default      |
+|--------------| ---------------------- |-----------------| ----------- |
+| title        | Title of the process step         | `string`        | '' |
+| content      | Descriptive text of process steps (supporting HTML structure)       | `string`        | '' |
+| icon         | Icon       | `ReactNode`         | '' |
+| size`v1.5.0abandon` | Icon size       | `string`        | '' |
+| iconColor`v1.5.0abandon`          | Icon color       | `string`          | -   |
+| activeIndex  | Index of process steps       | `number`        | 0 |
+| renderContent | The html structure of the descriptive text of the process steps      | React.ReactNode | - |
 
 ## Theming
 
@@ -463,14 +464,12 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-steps-base-title-margin-bottom | `  10px` |
 | --nutui-steps-base-content-font-size | `  14px` |
 | --nutui-steps-base-content-color | `  $title-color2` |
-
 | --nutui-steps-wait-icon-bg-color | `  #959fb1` |
 | --nutui-steps-wait-icon-color | ` $white` |
 | --nutui-steps-wait-head-color | ` #909ca4` |
 | --nutui-steps-wait-head-border-color | `  #909ca4` |
 | --nutui-steps-wait-title-color`v1.4.8` | `  $title-color2` |
 | --nutui-steps-wait-content-color | `  $title-color2` |
-
 | --nutui-steps-process-icon-bg-color`v1.4.8` | `  $primary-color` |
 | --nutui-steps-process-icon-color`v1.4.8` | ` $white` |
 | --nutui-steps-process-head-color | ` $primary-color` |
@@ -479,7 +478,6 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-steps-process-title-font-size`v1.4.8` | ` 14px`|
 | --nutui-steps-process-title-font-weight`v1.4.8` | ` 400`|
 | --nutui-steps-process-content-color`v1.4.8` | `  $primary-color` |
-
 | --nutui-steps-finish-icon-bg-color`v1.4.8` | `  $primary-text-color` |
 | --nutui-steps-finish-icon-color`v1.4.8` | ` $primary-color` |
 | --nutui-steps-finish-head-color | ` $primary-color` |
@@ -487,7 +485,6 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-steps-finish-title-color | `  $primary-color` |
 | --nutui-steps-finish-content-color`v1.4.8` | `  $title-color2` |
 | --nutui-steps-finish-line-background | `  $primary-color` |
-
 | --nutui-steps-dot-icon-width`v1.4.8` | `  6px` |
 | --nutui-steps-dot-icon-height`v1.4.8` | `  6px` |
 | --nutui-steps-dot-icon-border`v1.4.8` | `  2px solid $primary-text-color` |

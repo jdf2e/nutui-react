@@ -148,6 +148,41 @@ export default App;
 
 ```
 :::
+
+### 選擇時分
+:::demo
+```tsx
+import  React, { useState  } from "react";
+import { DatePicker,Cell  } from '@nutui/nutui-react';
+
+const App = () => {
+  const minDate = new Date(2020, 0, 1)
+  const maxDate = new Date(2025, 10, 1)
+  const [show8, setShow8] = useState(false)
+  const [desc8, setDesc8] = useState('10:10')
+  const confirm4 = (values:(string|number)[],options:PickerOption[])=>{
+    setDesc4(options.map((option) => option.text).join(':'))
+  }
+
+  return ( 
+    <>   
+      <Cell title="時間選擇" desc={desc8} onClick={() => setShow8(true)} />
+      <DatePicker
+          title="時間選擇"
+          type="hour-minutes"
+          minDate={minDate}
+          maxDate={maxDate}
+          visible={show8}
+          onCloseDatePicker={() => setShow8(false)}
+          onConfirmDatePicker={(values,options) => confirm8(values,options)}
+        />
+    </>
+  );
+};  
+export default App;
+
+```
+:::
 ### 格式化選項
 
 通過傳入 formatter 函數，可以對選項文字進行格式化處理。 isShowChinese 屬性同樣是也為選項後面添加文案，但 formatter 函數的優先級高於 isShowChinese 屬性。
@@ -326,7 +361,7 @@ export default App;
 |---------------------------|---------------------------------------------------|---------|----------|
 | modelValue                | 初始值                                            | Date    | `null`   |
 | visible                   | 是否可見                                          | boolean | `false`  |
-| type                      | 類時間類型，可選值 date time year-month month-day datehour datetime | string  | `date` |
+| type                      | 類時間類型，可選值 date time year-month month-day datehour datetime hour-minutes | string  | `date` |
 | minuteStep                | 分鐘步進值                                        | number | `1`      |
 | isShowChinese             | 每列是否展示中文                                  | boolean | `false`  |
 | title                     | 設置標題                                          | string  | `null`   |

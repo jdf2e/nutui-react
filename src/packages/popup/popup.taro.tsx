@@ -31,7 +31,6 @@ export interface PopupProps extends OverlayProps, BasicComponent {
   closeable: boolean
   closeIconPosition: string
   closeIcon: React.ReactNode
-  closeIconSize?: string | number
   destroyOnClose: boolean
   teleport: Teleport
   overlay: boolean
@@ -52,8 +51,7 @@ const defaultProps = {
   popClass: '',
   closeable: false,
   closeIconPosition: 'top-right',
-  closeIcon: '',
-  closeIconSize: '12px',
+  closeIcon: 'close',
   destroyOnClose: true,
   teleport: null,
   overlay: true,
@@ -100,9 +98,6 @@ export const Popup: FunctionComponent<
     onOpened,
     onClosed,
     onClick,
-    iconClassPrefix,
-    iconFontClassName,
-    closeIconSize,
   } = props
 
   const [index, setIndex] = useState(zIndex || _zIndex)
@@ -132,7 +127,7 @@ export const Popup: FunctionComponent<
       round,
       [`nut-popup-${position}`]: true,
       [`${popClass}`]: true,
-      [`${className}`]: true,
+      [`${className || ''}`]: true,
     },
     b('')
   )
@@ -210,13 +205,14 @@ export const Popup: FunctionComponent<
     return node
   }
   const renderIcon = () => {
-    if (React.isValidElement(closeable)) {
-      return closeable
-    }
-    if (closeable === true) {
+    if (closeable) {
       return (
         <div className={closeClasses} onClick={onHandleClickCloseIcon}>
-          <Close width={closeIconSize} height={closeIconSize} />
+          {React.isValidElement(closeIcon) ? (
+            closeIcon
+          ) : (
+            <Close width={12} height={12} />
+          )}
         </div>
       )
     }

@@ -1,103 +1,112 @@
 import React, { useRef, useState } from 'react'
+import { Checklist } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Cell, Checkbox, Toast } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
 interface T {
-  '74fc5d8a': string
-  '48b50759': string
-  '7db1a8b2': string
-  f3480b64: string
-  f3480b646: string
-  f4e46058: string
-  '8a2e2847': string
-  '70ffa5d8': string
-  '87941cd4': string
-  '9bbfbbc7': string
-  '45c21a9e': string
-  '2cd0f3be': string
-  '2cd0f3be1': string
-  b2dd27e8: string
-  '4584d5bf': string
-  '7df5c456': string
-  '77fc8365': string
-  '3a5040b6': string
-  f4d4bae5: string
+  basic: string
+  checkbox: string
+  disbaled: string
+  DisabledState: string
+  selective: string
+  disabledState: string
+  customSize: string
+  customIcon: string
+  triggerEvent: string
+  uncheckedx: string
+  checked: string
+  cancel: string
+  reverse: string
+  selected: string
+  options1: string
+  Disabled: string
+  selectAndCancel: string
+  selectAll: string
+  cancelSelection: string
   options: string
+  max: string
+  threeState: string
 }
 
 const CheckboxDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      '74fc5d8a': '基本用法',
-      '48b50759': '复选框',
-      '7db1a8b2': '禁用状态',
-      f3480b64: '未选时禁用状态',
-      f3480b646: '半选状态',
-      f4e46058: '选中时禁用状态',
-      '8a2e2847': '自定义尺寸',
-      '70ffa5d8': '自定义图标',
-      '87941cd4': '点击触发事件',
-      '9bbfbbc7': '您取消了x的勾选',
-      '45c21a9e': '选中',
-      '2cd0f3be': '取消',
-      b2dd27e8: '您选中了x',
-      '4584d5bf': '选项',
-      '7df5c456': '禁用',
-      '77fc8365': '全选和取消',
-      '3a5040b6': '全选',
-      f4d4bae5: '取消全选',
-      '2cd0f3be1': '反选',
+      basic: '基本用法',
+      checkbox: '复选框',
+      disbaled: '禁用状态',
+      DisabledState: '未选时禁用状态',
+      selective: '半选状态',
+      disabledState: '选中时禁用状态',
+      customSize: '自定义尺寸',
+      customIcon: '自定义图标',
+      triggerEvent: '点击触发事件',
+      uncheckedx: '您取消了x的勾选',
+      checked: '选中',
+      cancel: '取消',
+      selected: '您选中了x',
+      options1: '选项',
+      Disabled: '禁用',
+      selectAndCancel: '全选和取消',
+      selectAll: '全选',
+      cancelSelection: '取消全选',
+      reverse: '反选',
       options: '配置 options 渲染复选按钮',
+      max: 'checkboxGroup使用，限制最大可选数（2个）',
+      threeState: '全选/半选/取消',
     },
     'zh-TW': {
-      '74fc5d8a': '基本用法',
-      '48b50759': '複選框',
-      '7db1a8b2': '禁用狀態',
-      f3480b64: '未選時禁用狀態',
-      f3480b646: '半选状态',
-      f4e46058: '選中時禁用狀態',
-      '8a2e2847': '自定義尺寸',
-      '70ffa5d8': '自定義圖示',
-      '87941cd4': '點擊觸發事件',
-      '9bbfbbc7': '您取消了x的勾選',
-      '45c21a9e': '選中',
-      '2cd0f3be': '取消',
-      b2dd27e8: '您選取了x',
-      '4584d5bf': '選項',
-      '7df5c456': '禁用',
-      '77fc8365': '全選和取消',
-      '3a5040b6': '全選',
-      f4d4bae5: '取消全選',
-      '2cd0f3be1': '反選',
+      basic: '基本用法',
+      checkbox: '複選框',
+      disbaled: '禁用狀態',
+      DisabledState: '未選時禁用狀態',
+      selective: '半选状态',
+      disabledState: '選中時禁用狀態',
+      customSize: '自定義尺寸',
+      customIcon: '自定義圖示',
+      triggerEvent: '點擊觸發事件',
+      uncheckedx: '您取消了x的勾選',
+      checked: '選中',
+      cancel: '取消',
+      selected: '您選取了x',
+      options1: '選項',
+      Disabled: '禁用',
+      selectAndCancel: '全選和取消',
+      selectAll: '全選',
+      cancelSelection: '取消全選',
+      reverse: '反選',
       options: '配置 options 渲染複選按鈕',
+      max: 'checkboxGroup使用，限制最大可选数（2个）',
+      threeState: '全选/半选/取消',
     },
     'en-US': {
-      '74fc5d8a': 'Basic Usage',
-      '48b50759': 'Checkbox',
-      '7db1a8b2': 'Disabled State',
-      f3480b64: 'Disabled state',
-      f3480b646: 'Semi selective',
-      f4e46058: 'Disabled state',
-      '8a2e2847': 'Custom size',
-      '70ffa5d8': 'Custom Icon',
-      '87941cd4': 'Click Trigger Event',
-      '9bbfbbc7': 'You unchecked x',
-      '45c21a9e': 'Checked',
-      '2cd0f3be': 'Cancel',
-      b2dd27e8: 'You selected x',
-      '4584d5bf': 'Options',
-      '7df5c456': 'Disabled',
-      '77fc8365': 'All Select and Cancel',
-      '3a5040b6': 'Select All',
-      '2cd0f3be1': 'reverse',
-      f4d4bae5: 'Cancel All Selection',
+      basic: 'Basic Usage',
+      checkbox: 'Checkbox',
+      disbaled: 'Disabled State',
+      DisabledState: 'Disabled state',
+      selective: 'Semi selective',
+      disabledState: 'Disabled state',
+      customSize: 'Custom size',
+      customIcon: 'Custom Icon',
+      triggerEvent: 'Click Trigger Event',
+      uncheckedx: 'You unchecked x',
+      checked: 'Checked',
+      cancel: 'Cancel',
+      selected: 'You selected x',
+      options1: 'Options',
+      Disabled: 'Disabled',
+      selectAndCancel: 'All Select and Cancel',
+      selectAll: 'Select All',
+      reverse: 'reverse',
+      cancelSelection: 'Cancel All Selection',
       options: 'Render radios by configuring options',
+      max: 'Used by checkboxGroup, limit the maximum number of options (2)',
+      threeState: 'Select All/Half/Cancel',
     },
   })
 
-  const [checked, setChecked] = useState(true)
+  const [checked] = useState(true)
   const [checkbox1, setCheckbox1] = useState(false)
   const [indeterminate, setIndeterminate] = useState(false)
   const [checkboxgroup1, setCheckboxgroup1] = useState(['1'])
@@ -109,18 +118,18 @@ const CheckboxDemo = () => {
   const checkboxgroup3Ref = useRef(null)
   const [show, SetShow] = useState(false)
   const [toastMsg, SetToastMsg] = useState('')
-  const [optionsDemo1, setOptionsDemo1] = useState([
+  const [optionsDemo1] = useState([
     {
-      label: '选项1',
+      label: 'Options 1',
       value: '1',
     },
     {
-      label: '选项2',
+      label: 'Options 2',
       value: '2',
       disabled: true,
     },
     {
-      label: '选项3',
+      label: 'Options 3',
       value: '3',
     },
   ])
@@ -140,37 +149,35 @@ const CheckboxDemo = () => {
             SetShow(false)
           }}
         />
-        <h2>{translated['74fc5d8a']}</h2>
+        <h2>{translated.basic}</h2>
         <Cell className="nut-cell">
           <Checkbox
             className="test"
             textPosition="left"
-            label={translated['48b50759']}
+            label={translated.checkbox}
             checked={checked}
           />
         </Cell>
         <Cell className="nut-cell">
-          <Checkbox.Group textPosition="left" checkedValue={checkboxgroup1}>
-            <Checkbox label={optionsDemo1[0].label} checked={false} />
+          <Checkbox.Group textPosition="left" checkedValue={['选项 1']}>
+            <span>
+              <Checkbox label={optionsDemo1[0].label} checked={false} />
+            </span>
             <Checkbox label={optionsDemo1[1].label} checked={false} />
             <Checkbox label={optionsDemo1[2].label} checked={false} />
           </Checkbox.Group>
         </Cell>
-        <h2>{translated.f3480b646}</h2>
+        <h2>{translated.selective}</h2>
         <Cell>
           <Checkbox.Group checkedValue={checkboxgroup1}>
-            <Checkbox
-              label={`${translated['48b50759']}1`}
-              checked
-              indeterminate
-            />
+            <Checkbox label={`${translated.checkbox}1`} checked indeterminate />
           </Checkbox.Group>
         </Cell>
-        <h2>{translated['7db1a8b2']}</h2>
+        <h2>{translated.disbaled}</h2>
         <Cell className="nut-cell">
           <Checkbox
             textPosition="right"
-            label={translated.f3480b64}
+            label={translated.DisabledState}
             checked={false}
             disabled
           />
@@ -178,53 +185,44 @@ const CheckboxDemo = () => {
         <Cell className="nut-cell">
           <Checkbox
             textPosition="right"
-            label={translated.f4e46058}
+            label={translated.disabledState}
             checked
             disabled
           />
         </Cell>
-        <h2>{translated['8a2e2847']}</h2>
+        <h2>{translated.customSize}</h2>
         <Cell className="nut-cell">
-          <Checkbox label={translated['8a2e2847']} iconSize={25} />
+          <Checkbox label={translated.customSize} iconSize={25} />
         </Cell>
         <Cell className="nut-cell">
-          <Checkbox label={translated['8a2e2847']} iconSize={10} />
+          <Checkbox label={translated.customSize} iconSize={10} />
         </Cell>
-        <h2>{translated['70ffa5d8']}</h2>
+        <h2>{translated.customIcon}</h2>
         <Cell className="nut-cell">
           <Checkbox.Group>
             <Checkbox
               checked={false}
-              iconName="checklist"
-              iconActiveName="checklist"
+              label={1}
+              icon={<Checklist />}
+              checkedIcon={<Checklist />}
             >
-              {translated['70ffa5d8']}
-            </Checkbox>
-            <Checkbox
-              checked={false}
-              iconName="checklist"
-              iconActiveName="checklist"
-            >
-              <div>{translated['70ffa5d8']}</div>
-              <div style={{ fontSize: '12px', color: '#8c8c8c' }}>
-                {translated['70ffa5d8']}
-              </div>
+              {translated.customIcon}
             </Checkbox>
           </Checkbox.Group>
         </Cell>
-        <h2>{translated['87941cd4']}</h2>
+        <h2>{translated.triggerEvent}</h2>
         <Cell className="nut-cell">
           <Checkbox
             checked={false}
             onChange={(state, label) => {
               if (state) {
-                toastShow(translated.b2dd27e8.replace('x', label))
+                toastShow(translated.selected.replace('x', label))
               } else {
-                toastShow(translated['9bbfbbc7'].replace('x', label))
+                toastShow(translated.uncheckedx.replace('x', label))
               }
             }}
           >
-            {translated['48b50759']}
+            {translated.checkbox}
           </Checkbox>
         </Cell>
         <h2>Checkbox.Group</h2>
@@ -238,39 +236,39 @@ const CheckboxDemo = () => {
             }}
           >
             <Checkbox checked={false} label="1">
-              {translated['4584d5bf']}
+              {translated.options1}
             </Checkbox>
             <Checkbox checked={false} label="2">
-              {translated['4584d5bf']}
+              {translated.options1}
             </Checkbox>
             <Checkbox checked={false} label="3">
-              {translated['4584d5bf']}
-              {translated['4584d5bf']}
+              {translated.options1}
+              {translated.options1}
             </Checkbox>
             <Checkbox checked={false} label="4">
-              {translated['4584d5bf']}
+              {translated.options1}
             </Checkbox>
           </Checkbox.Group>
         </Cell>
         <Cell>
           <span>
-            {translated['45c21a9e']}：{checkboxgroup1.toString()}
+            {translated.checked}：{checkboxgroup1.toString()}
           </span>
         </Cell>
-        <h2>{translated['7df5c456']}</h2>
+        <h2>{translated.Disabled}</h2>
         <Cell>
           <Checkbox.Group
             checkedValue={checkboxgroup1}
             disabled
             direction="horizontal"
           >
-            <Checkbox label="1">{translated['4584d5bf']}</Checkbox>
-            <Checkbox label="2">{translated['4584d5bf']}</Checkbox>
-            <Checkbox label="3">{translated['4584d5bf']}</Checkbox>
-            <Checkbox label="4">{translated['4584d5bf']}</Checkbox>
+            <Checkbox label="1">{translated.options1}</Checkbox>
+            <Checkbox label="2">{translated.options1}</Checkbox>
+            <Checkbox label="3">{translated.options1}</Checkbox>
+            <Checkbox label="4">{translated.options1}</Checkbox>
           </Checkbox.Group>
         </Cell>
-        <h2>{translated['77fc8365']}</h2>
+        <h2>{translated.selectAndCancel}</h2>
         <Cell>
           <Checkbox.Group
             textPosition="left"
@@ -281,23 +279,23 @@ const CheckboxDemo = () => {
               toastShow(
                 `${
                   value.length === 4
-                    ? translated['3a5040b6']
-                    : translated.f4d4bae5
+                    ? translated.selectAll
+                    : translated.cancelSelection
                 }`
               )
             }}
           >
             <Checkbox checked={false} label="1">
-              {translated['4584d5bf']}
+              {translated.options1}
             </Checkbox>
             <Checkbox checked={false} label="2">
-              {translated['4584d5bf']}
+              {translated.options1}
             </Checkbox>
             <Checkbox checked={false} label="3">
-              {translated['4584d5bf']}
+              {translated.options1}
             </Checkbox>
             <Checkbox checked={false} label="4">
-              {translated['4584d5bf']}
+              {translated.options1}
             </Checkbox>
           </Checkbox.Group>
         </Cell>
@@ -309,7 +307,7 @@ const CheckboxDemo = () => {
             }}
             style={{ margin: '0 20px 0 0' }}
           >
-            {translated['3a5040b6']}
+            {translated.selectAll}
           </Button>
           <Button
             type="info"
@@ -318,7 +316,7 @@ const CheckboxDemo = () => {
             }}
             style={{ margin: '0 20px 0 0' }}
           >
-            {translated['2cd0f3be']}
+            {translated.cancel}
           </Button>
           <Button
             type="warning"
@@ -326,10 +324,10 @@ const CheckboxDemo = () => {
               ;(checkboxgroup2Ref.current as any).toggleReverse()
             }}
           >
-            {translated['2cd0f3be1']}
+            {translated.reverse}
           </Button>
         </Cell>
-        <h2>checkboxGroup使用，限制最大可选数（2个）</h2>
+        <h2>{translated.max}</h2>
         <Cell>
           <Checkbox.Group
             checkedValue={checkboxgroup3}
@@ -339,20 +337,20 @@ const CheckboxDemo = () => {
             }}
           >
             <Checkbox checked={false} label="1">
-              {translated['4584d5bf']}
+              {translated.options1}
             </Checkbox>
             <Checkbox checked={false} label="2">
-              {translated['4584d5bf']}
+              {translated.options1}
             </Checkbox>
             <Checkbox checked={false} label="3">
-              {translated['4584d5bf']}
+              {translated.options1}
             </Checkbox>
             <Checkbox checked={false} label="4">
-              {translated['4584d5bf']}
+              {translated.options1}
             </Checkbox>
           </Checkbox.Group>
         </Cell>
-        <h2>全选/半选/取消</h2>
+        <h2>{translated.threeState}</h2>
         <Cell>
           <div style={{ width: '50%' }}>
             <Checkbox
@@ -366,7 +364,7 @@ const CheckboxDemo = () => {
                 ;(checkboxgroup3Ref.current as any).toggleAll(state)
               }}
             >
-              {translated['3a5040b6']}
+              {translated.selectAll}
             </Checkbox>
           </div>
 
@@ -387,16 +385,16 @@ const CheckboxDemo = () => {
             }}
           >
             <Checkbox checked={false} label="1">
-              {translated['4584d5bf']}
+              {translated.options1}
             </Checkbox>
             <Checkbox checked={false} label="2">
-              {translated['4584d5bf']}
+              {translated.options1}
             </Checkbox>
             <Checkbox checked={false} label="3">
-              {translated['4584d5bf']}
+              {translated.options1}
             </Checkbox>
             <Checkbox checked={false} label="4">
-              {translated['4584d5bf']}
+              {translated.options1}
             </Checkbox>
           </Checkbox.Group>
         </Cell>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Taro from '@tarojs/taro'
+import { Jd } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Infiniteloading, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/infiniteloading/demo.scss'
@@ -87,7 +88,8 @@ const InfiniteloadingDemo = () => {
             style={{ height: '500px' }}
           >
             <Infiniteloading
-              pullIcon="JD"
+              pullIcon={<Jd />}
+              loadIcon={<Jd />}
               loadTxt="loading"
               loadMoreTxt="没有啦～"
               isOpenRefresh
