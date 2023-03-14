@@ -133,10 +133,16 @@ export const SearchBar: FunctionComponent<
 
   const alignClass = `${align}`
 
+  const forceFocus = () => {
+    const searchSelf: HTMLInputElement | null = searchRef.current
+    searchSelf && searchSelf.focus()
+  }
+
   const change = (event: Event) => {
     const { value } = event.target as any
     onChange && onChange?.(value, event)
     setValue(value)
+    value === '' && forceFocus()
   }
   const focus = (event: Event) => {
     const { value } = event.target as any
@@ -154,10 +160,7 @@ export const SearchBar: FunctionComponent<
   }, [props.value])
 
   useEffect(() => {
-    if (autoFocus) {
-      const searchSelf: HTMLInputElement | null = searchRef.current
-      searchSelf && searchSelf.focus()
-    }
+    autoFocus && forceFocus()
   }, [autoFocus])
 
   const renderField = () => {
@@ -269,6 +272,7 @@ export const SearchBar: FunctionComponent<
     }
     setValue('')
     onClear && onClear(event)
+    forceFocus()
   }
 
   const renderRightLabel = () => {
