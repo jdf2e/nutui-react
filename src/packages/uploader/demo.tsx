@@ -5,6 +5,7 @@ import Button from '@/packages/button'
 import Cell from '@/packages/cell'
 import Progress from '@/packages/progress'
 import './demo.scss'
+import { Dongdong } from '@nutui/icons-react'
 
 interface uploadRefState {
   submit: () => void
@@ -266,7 +267,11 @@ const UploaderDemo = () => {
             onStart={onStart}
             style={{ marginRight: '10px' }}
           />
-          <Uploader url={uploadUrl} uploadIcon="dongdong" onStart={onStart} />
+          <Uploader
+            url={uploadUrl}
+            uploadIcon={<Dongdong />}
+            onStart={onStart}
+          />
         </Cell>
 
         <h2>{translated.a4afedb5}</h2>
@@ -274,7 +279,7 @@ const UploaderDemo = () => {
           url={uploadUrl}
           defaultFileList={defaultFileList}
           onRemove={onDelete}
-          uploadIcon="dongdong"
+          uploadIcon={<Dongdong />}
         />
 
         <h2>{translated.uploadListShow}</h2>

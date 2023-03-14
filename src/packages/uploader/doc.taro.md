@@ -14,6 +14,7 @@ import { Uploader } from '@nutui/nutui-react-taro';
 ``` tsx
 import React, { useState } from "react";
 import { Uploader } from '@nutui/nutui-react-taro';
+import { Dongdong } from '@nutui/icons-react-taro';
 
 const App = () => {
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
@@ -35,7 +36,7 @@ const App = () => {
         onStart={onStart}
         style={{ marginRight: '10px' }}
       />
-      <Uploader url={uploadUrl} uploadIcon="dongdong" onStart={onStart} />
+      <Uploader url={uploadUrl} uploadIcon={<Dongdong />} onStart={onStart} />
     </>
   )
 }
@@ -47,6 +48,7 @@ export default App;
 ``` tsx
 import React, { useState } from "react";
 import { Uploader } from '@nutui/nutui-react-taro';
+import { Dongdong } from '@nutui/icons-react-taro';
 
 const App = () => {
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
@@ -113,7 +115,7 @@ const App = () => {
         url={uploadUrl}
         defaultFileList={defaultFileList}
         onRemove={onDelete}
-        uploadIcon="dongdong"
+        uploadIcon={<Dongdong />}
       />
     </>
   )
@@ -405,7 +407,7 @@ export default App;
 | maxDuration`仅支持WEAPP` `v1.4.9` | 拍摄视频最长拍摄时间，单位秒。时间范围为 3s 至 60s 之间。不限制相册。                                    | Number                            | 10                          |
 | headers| 设置上传的请求头部      | Object  | {}|
 | data   | 附加上传的信息 formData | Object  | {}|
-| uploadIcon       | 上传区域[图标名称](#/zh-CN/icon)或图片链接      | String  | "photograph"     |
+| uploadIcon       | 上传区域[图标名称](#/zh-CN/icon)| `ReactNode`| - |
 | uploadIconSize        | 上传区域[图标尺寸](#/icon)大小，如 `20px` `2em` `2rem`      | String or Number  | -     |
 | uploadIconTip`v1.4.9`| 上传区域图片下方文字| String| ""|
 | xhrState         | 接口响应的成功状态（status）值   | Number  | 200   |

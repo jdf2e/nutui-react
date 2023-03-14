@@ -12,11 +12,19 @@ import Taro, {
   getEnv,
   chooseMedia,
 } from '@tarojs/taro'
-import Icon from '@/packages/icon/index.taro'
+
+import {
+  Link as LinkIcon,
+  Failure,
+  Del,
+  Photograph,
+  Loading,
+} from '@nutui/icons-react-taro'
+
+import { Image } from '@tarojs/components'
 import Button from '@/packages/button/index.taro'
 import Progress from '@/packages/progress/index.taro'
 import { UploaderTaro, UploadOptions } from './upload'
-import { Image } from '@tarojs/components'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { funcInterceptor } from '@/utils/Interceptor'
@@ -76,7 +84,7 @@ export interface UploaderProps extends BasicComponent {
   maximize: number
   defaultFileList: FileType<string>[]
   listType: string
-  uploadIcon: string
+  uploadIcon: React.ReactNode
   uploadIconSize: string | number
   uploadIconTip: string
   name: string
@@ -130,7 +138,7 @@ const defaultProps = {
   sourceType: ['album', 'camera'],
   mediaType: ['image', 'video'],
   camera: 'back',
-  uploadIcon: 'photograph',
+  uploadIcon: null,
   uploadIconSize: '',
   uploadIconTip: '',
   listType: 'picture',
@@ -207,8 +215,6 @@ const InternalUploader: ForwardRefRenderFunction<
     sizeType,
     sourceType,
     maxDuration,
-    iconClassPrefix,
-    iconFontClassName,
     onStart,
     onRemove,
     onChange,
@@ -260,8 +266,8 @@ const InternalUploader: ForwardRefRenderFunction<
     if (disabled) {
       return
     }
-    if (Taro.getEnv() == 'WEB') {
-      let el = document.getElementById('taroChooseImage')
+    if (Taro.getEnv() === 'WEB') {
+      const el = document.getElementById('taroChooseImage')
       if (el) {
         el?.setAttribute('accept', accept)
       } else {
@@ -276,7 +282,7 @@ const InternalUploader: ForwardRefRenderFunction<
         document.body.appendChild(obj)
       }
     }
-    if (getEnv() == 'WEAPP') {
+    if (getEnv() === 'WEAPP') {
       // chooseMedia 目前只支持微信小程序原生，其余端全部使用 chooseImage API
       chooseMedia({
         /** 最多可以选择的文件个数 */
@@ -284,13 +290,13 @@ const InternalUploader: ForwardRefRenderFunction<
         /** 文件类型 */
         mediaType: mediaType as any,
         /** 图片和视频选择的来源 */
-        sourceType: sourceType,
+        sourceType,
         /** 拍摄视频最长拍摄时间，单位秒。时间范围为 3s 至 30s 之间 */
-        maxDuration: maxDuration,
+        maxDuration,
         /** 仅对 mediaType 为 image 时有效，是否压缩所选文件 */
         sizeType: [],
         /** 仅在 sourceType 为 camera 时生效，使用前置或后置摄像头 */
-        camera: camera,
+        camera,
         /** 接口调用失败的回调函数 */
         fail: (res: any) => {
           onFailure && onFailure(res)
@@ -413,7 +419,7 @@ const InternalUploader: ForwardRefRenderFunction<
   const readFile = <T extends TFileType>(files: T[]) => {
     files.forEach((file: T, index: number) => {
       let fileType = file.type
-      let filepath = (file.tempFilePath || file.path) as string
+      const filepath = (file.tempFilePath || file.path) as string
       const fileItem = new FileItem()
       if (file.fileType) {
         fileType = file.fileType
@@ -536,12 +542,9 @@ const InternalUploader: ForwardRefRenderFunction<
               {listType === 'picture' && !children && (
                 <div className="nut-uploader__preview-img">
                   {isDeletable && (
-                    <Icon
-                      classPrefix={iconClassPrefix}
-                      fontClassName={iconFontClassName}
+                    <Failure
                       color="rgba(0,0,0,0.6)"
                       className="close"
-                      name="failure"
                       onClick={() => onDelete(item, index)}
                     />
                   )}
@@ -554,19 +557,12 @@ const InternalUploader: ForwardRefRenderFunction<
                   ) : (
                     item.status !== 'success' && (
                       <div className="nut-uploader__preview__progress">
-                        {item.failIcon === ' ' ||
-                        item.loadingIcon === ' ' ? null : (
-                          <Icon
-                            classPrefix={iconClassPrefix}
-                            fontClassName={iconFontClassName}
-                            color="#fff"
-                            name={`${
-                              item.status === 'error'
-                                ? `${item.failIcon || 'failure'}`
-                                : `${item.loadingIcon || 'loading'}`
-                            }`}
-                          />
-                        )}
+                        {item.failIcon !== ' ' &&
+                          item.loadingIcon !== ' ' &&
+                          (item.status === 'error'
+                            ? item.failIcon || <Failure color="#fff" />
+                            : item.loadingIcon || <Loading color="#fff" />)}
+
                         <div className="nut-uploader__preview__progress__msg">
                           {item.message}
                         </div>
@@ -599,12 +595,7 @@ const InternalUploader: ForwardRefRenderFunction<
                             onClick={() => handleItemClick(item)}
                             className="nut-uploader__preview-img__file__name"
                           >
-                            <Icon
-                              classPrefix={iconClassPrefix}
-                              fontClassName={iconFontClassName}
-                              color="#808080"
-                              name="link"
-                            />
+                            <LinkIcon color="#808080" />
                             &nbsp;
                             {item.name}
                           </div>
@@ -624,20 +615,13 @@ const InternalUploader: ForwardRefRenderFunction<
                     className={`nut-uploader__preview-img__file__name ${item.status}`}
                     onClick={() => handleItemClick(item)}
                   >
-                    <Icon
-                      classPrefix={iconClassPrefix}
-                      fontClassName={iconFontClassName}
-                      name="link"
-                    />
+                    <LinkIcon />
                     &nbsp;{item.name}
                   </div>
                   {isDeletable && (
-                    <Icon
-                      classPrefix={iconClassPrefix}
-                      fontClassName={iconFontClassName}
+                    <Del
                       color="#808080"
                       className="nut-uploader__preview-img__file__del"
-                      name="del"
                       onClick={() => onDelete(item, index)}
                     />
                   )}
@@ -662,13 +646,7 @@ const InternalUploader: ForwardRefRenderFunction<
           }`}
         >
           <div className="nut-uploader__icon">
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              size={uploadIconSize}
-              color="#808080"
-              name={uploadIcon}
-            />
+            {uploadIcon || <Photograph size={uploadIconSize} color="#808080" />}
             <span className="nut-uploader__icon-tip">{uploadIconTip}</span>
           </div>
           <Button className="nut-uploader__input" onClick={_chooseImage} />

@@ -38,6 +38,7 @@ export default App;
 ``` tsx
 import React, { useState } from "react";
 import { Uploader } from '@nutui/nutui-react';
+import { Dongdong } from '@nutui/icons-react';
 
 const App = () => {
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
@@ -77,7 +78,7 @@ const App = () => {
         url={uploadUrl}
         defaultFileList={defaultFileList}
         onRemove={onDelete}
-        uploadIcon="dongdong"
+        uploadIcon={<Dongdong />}
       />
     </>
   )
@@ -334,7 +335,7 @@ export default App;
 | accept | 允許上傳的文件類型，[詳細說明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | string    | `*`     |
 | headers| 設置上傳的請求頭部| Object    | `{}`    |
 | data   | 附加上傳的信息 formData     | Object    | `{}`    |
-| uploadIcon       | 上傳區域[圖標名稱](#/zh-CN/icon)或圖片鏈接| string    | `photograph`     |
+| uploadIcon       | 上傳區域[圖標名稱](#/zh-CN/icon)| `ReactNode`| - |
 | uploadIconSize `v1.3.4`       | 上傳區域[圖標尺寸](#/icon)大小，如 `20px` `2em` `2rem`| string \| number   | -     |
 | uploadIconTip`v1.4.9`| 上傳區域圖片下方文字| string | -|
 | xhrState         | 接口響應的成功狀態（status）值         | number   | `200`   |

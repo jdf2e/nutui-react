@@ -4,6 +4,7 @@ import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Uploader, Progress, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/uploader/demo.scss'
 import Header from '@/sites/components/header'
+import { Dongdong } from '@nutui/icons-react-taro'
 
 export type FileItemStatus =
   | 'ready'
@@ -290,7 +291,11 @@ const UploaderDemo = () => {
             onStart={onStart}
             style={{ marginRight: '10px' }}
           />
-          <Uploader url={uploadUrl} uploadIcon="dongdong" onStart={onStart} />
+          <Uploader
+            url={uploadUrl}
+            uploadIcon={<Dongdong />}
+            onStart={onStart}
+          />
         </Cell>
 
         <h2>{translated.a4afedb5}</h2>
@@ -298,7 +303,7 @@ const UploaderDemo = () => {
           url={uploadUrl}
           defaultFileList={defaultFileList}
           onRemove={onDelete}
-          uploadIcon="dongdong"
+          uploadIcon={<Dongdong />}
         />
 
         <h2>{translated.uploadListShow}</h2>

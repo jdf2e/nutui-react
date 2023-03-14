@@ -15,6 +15,7 @@ import { Uploader } from '@nutui/nutui-react';
 ``` tsx
 import React, { useState } from "react";
 import { Uploader } from '@nutui/nutui-react';
+import { Dongdong } from '@nutui/icons-react';
 
 const App = () => {
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
@@ -36,7 +37,7 @@ const App = () => {
         onStart={onStart}
         style={{ marginRight: '10px' }}
       />
-      <Uploader url={uploadUrl} uploadIcon="dongdong" onStart={onStart} />
+      <Uploader url={uploadUrl} uploadIcon={<Dongdong />} onStart={onStart} />
     </>
   )
 }
@@ -50,6 +51,7 @@ export default App;
 ``` tsx
 import React, { useState } from "react";
 import { Uploader } from '@nutui/nutui-react';
+import { Dongdong } from '@nutui/icons-react';
 
 const App = () => {
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
@@ -115,7 +117,7 @@ const App = () => {
         url={uploadUrl}
         defaultFileList={defaultFileList}
         onRemove={onDelete}
-        uploadIcon="dongdong"
+        uploadIcon={<Dongdong />}
       />
     </>
   )
@@ -377,7 +379,7 @@ export default App;
 | accept| File types that can be accepted. See[Des](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | string | `*`|
 | headers| Set request headers| Object| `{}`|
 | data| Uploading extra params or function which can return uploading extra params formData| Object| `{}`|
-| uploadIcon| Upload area[icon name](#/zh-CN/icon)or image link| string | `photograph`|
+| uploadIcon| Upload area[icon name](#/zh-CN/icon)| `ReactNode`| - |
 | uploadIconSize `v1.3.4` | Upload area [icon size](#/icon) size, such as `20px` `2em` `2rem`| string \| number| - |
 | uploadIconTip`v1.4.9`| Upload area tip| string | - |
 | xhrState| The success status (status) value of the interface response| number| `200`|
