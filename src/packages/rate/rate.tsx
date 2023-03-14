@@ -76,6 +76,19 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     return Number.isNaN(Number(value)) ? String(value) : `${value}px`
   }
 
+  const renderIcon = (size: string | number = iconSize, color: string) => {
+    return React.isValidElement(checkedIcon) ? (
+      React.cloneElement<any>(checkedIcon, {
+        ...checkedIcon.props,
+        width: size,
+        height: size,
+        color,
+      })
+    ) : (
+      <StarFillN width={size} height={size} color={color} />
+    )
+  }
+
   const onClick = (e: React.MouseEvent, index: number) => {
     e.preventDefault()
     e.stopPropagation()
@@ -83,17 +96,20 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     let value = 0
     if (!(index === 1 && score === index)) {
       value = index
-      if (allowHalf) {
-        if ((e?.target as Element).className.includes('__icon--half')) {
-          value -= 0.5
-        }
-      }
     }
     value = Math.max(value, Number(minimizeValue))
     setScore(value)
-
     onChange && onChange(value)
   }
+
+  const onHalfClick = (event: any, n: number) => {
+    event.preventDefault()
+    event.stopPropagation()
+    const value = Math.max(Number(minimizeValue), n - 0.5)
+    setScore(value)
+    onChange && onChange(value)
+  }
+
   return (
     <div className={classNames(b(), className)} style={style}>
       {countArray.map((n) => {
@@ -104,44 +120,21 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
             onClick={(event) => onClick(event, n)}
             style={{ marginRight: pxCheck(spacing) }}
           >
-            <>
-              {checkedIcon || (
-                <StarFillN
-                  width={iconSize}
-                  height={iconSize}
-                  color={n <= score ? activeColor : voidColor}
-                  className={classNames(bi('icon'), {
-                    [bi('icon--disabled')]: disabled || n > score,
-                  })}
-                />
-              )}
-              {(allowHalf && score > n - 1 && (
-                <div className={` ${bi('half')}`}>
-                  {checkedIcon || (
-                    <StarFillN
-                      width={iconSize}
-                      height={iconSize}
-                      color={n <= score ? activeColor : voidColor}
-                      className={`${bi('icon')} ${bi('icon--half')}`}
-                    />
-                  )}
-                </div>
-              )) ||
-                (allowHalf && score < n - 1 && (
-                  <div>
-                    {checkedIcon || (
-                      <StarFillN
-                        width={iconSize}
-                        height={iconSize}
-                        color={voidColor}
-                        className={`${bi('icon')} ${bi('icon--disabled')} ${bi(
-                          'icon--half'
-                        )}`}
-                      />
-                    )}
-                  </div>
-                ))}
-            </>
+            <div
+              className={classNames(bi('icon'), {
+                [bi('icon--disabled')]: disabled || n > score,
+              })}
+            >
+              {renderIcon(iconSize, n <= score ? activeColor : voidColor)}
+            </div>
+            {allowHalf && score > n - 1 && (
+              <div
+                className={` ${bi('half')} ${bi('icon')} ${bi('icon--half')}`}
+                onClick={(event) => onHalfClick(event, n)}
+              >
+                {renderIcon(iconSize, n <= score ? activeColor : voidColor)}
+              </div>
+            )}
           </div>
         )
       })}
