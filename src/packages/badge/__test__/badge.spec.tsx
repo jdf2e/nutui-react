@@ -2,6 +2,7 @@ import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
+import { Checklist } from '@nutui/icons-react'
 import { Badge } from '../badge'
 
 test('should match snapshot', () => {
@@ -65,7 +66,7 @@ test('should match custom color', () => {
 //   })
 // })
 
-test('should match custom icons', () => {
-  const { asFragment } = render(<Badge value={200} icons="link" />)
+test('should match custom icon', () => {
+  const { asFragment } = render(<Badge value={200} icon={<Checklist />} />)
   expect(asFragment()).toMatchSnapshot()
 })

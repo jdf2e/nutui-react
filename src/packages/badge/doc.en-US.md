@@ -20,21 +20,22 @@ import { Badge } from '@nutui/nutui-react';
 ```tsx
 import React from "react";
 import { Badge, Avatar, Cell } from '@nutui/nutui-react';
+import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <Cell>
       <Badge value={8}>
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
       <Badge value={76}>
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
       <Badge value="NEW">
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
       <Badge dot>
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
     </Cell>
   )
@@ -51,18 +52,19 @@ export default App;
 ```tsx
 import React from "react";
 import { Badge, Avatar, Cell } from '@nutui/nutui-react';
+import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <Cell>
       <Badge value={200} max={9}>
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
       <Badge value={200} max={20}>
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
       <Badge value={200} max={99}>
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
     </Cell>
   )
@@ -79,25 +81,26 @@ export default App;
 ```tsx
 import React from "react";
 import { Badge, Avatar, Cell } from '@nutui/nutui-react';
+import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <Cell>
       <Badge value={8}
              color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
       <Badge value={76}
              color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
       <Badge value="NEW"
              color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
       <Badge dot
              color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
     </Cell>
   )
@@ -114,18 +117,19 @@ export default App;
 ```tsx
 import React from "react";
 import { Badge, Avatar, Cell } from '@nutui/nutui-react';
+import { My, Checklist, Link as LinkIcon, Download } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <Cell>
-      <Badge icon="checklist">
-        <Avatar icon="my" shape="square" />
+      <Badge icon={<Checklist color="#fff" />}>
+        <Avatar icon={<My />} shape="square" />
       </Badge>
-      <Badge icon="link">
-        <Avatar icon="my" shape="square" />
+      <Badge icon={<LinkIcon color="#fff" />}>
+        <Avatar icon={<My />} shape="square" />
       </Badge>
-      <Badge icon="download">
-        <Avatar icon="my" shape="square" />
+      <Badge icon={<Download color="#fff" />}>
+        <Avatar icon={<My />} shape="square" />
       </Badge>
     </Cell>
   )
@@ -142,6 +146,7 @@ export default App;
 ```tsx
 import React from "react";
 import { Badge, Avatar, ConfigProvider, Cell } from '@nutui/nutui-react';
+import { My } from '@nutui/icons-react';
 
 const customTheme = {
   nutuiBadgeBorderRadius: '12px 12px 12px 0',
@@ -158,13 +163,13 @@ const App = () => {
     <Cell>
       <ConfigProvider theme={customTheme}>
         <Badge value="NEW">
-          <Avatar icon="my" shape="square" />
+          <Avatar icon={<My />} shape="square" />
         </Badge>
       </ConfigProvider>
 
       <ConfigProvider theme={customTheme2}>
         <Badge dot top="2" right="8">
-          <Avatar icon="my" shape="square" />
+          <Avatar icon={<My />} shape="square" />
         </Badge>
       </ConfigProvider>
     </Cell>
@@ -183,18 +188,19 @@ export default App;
 ```tsx
 import React from "react";
 import { Badge, Avatar, Cell } from '@nutui/nutui-react';
+import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <Cell>
       <Badge value={8} top="5" right="5">
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
       <Badge value={76} top="10" right="10">
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
       <Badge value="NEW">
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
     </Cell>
   )
