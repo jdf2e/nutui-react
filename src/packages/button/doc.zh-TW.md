@@ -228,18 +228,18 @@ export default App;
 
 ### Props
 
-| 屬性 | 說明 | 類型 | 預設值           |
-|--------------|----------------------------------|--------|------------------|
-| type | 類型，可選值為 `primary` `info` `warning` `danger` `success` | string |`default` |
-| size | 尺寸，可選值為 `large` `small`  | string | `normal`      |
-| shape | 形狀，可選值為 `square` | string | `round`             |
-| color | 按鈕顏色，支持傳入linear-gradient漸變色     | string | - |
-| plain | 	是否為樸素按鈕 | boolean | `false` |
-| disabled | 	是否禁用按鈕 | boolean | `false` |
-| block | 是否為塊級元素 | boolean | `false` |
-| icon | 按鈕圖示，同Icon元件name屬性 | string | -     |
-| iconSize`v1.4.7` | 按鈕圖示大小，同 Icon 的size属性 | string \| number | `16` |
-| loading | 按鈕loading狀態 | boolean | `false` |
+| 屬性                 | 說明 | 類型       | 預設值           |
+|--------------------|----------------------------------|----------|------------------|
+| type               | 類型，可選值為 `primary` `info` `warning` `danger` `success` | string   |`default` |
+| size               | 尺寸，可選值為 `large` `small`  | string   | `normal`      |
+| shape              | 形狀，可選值為 `square` | string   | `round`             |
+| color              | 按鈕顏色，支持傳入linear-gradient漸變色     | string   | - |
+| plain              | 	是否為樸素按鈕 | boolean  | `false` |
+| disabled           | 	是否禁用按鈕 | boolean  | `false` |
+| block              | 是否為塊級元素 | boolean  | `false` |
+| icon               | 按鈕圖示 | `ReactNode`    | -     |
+| iconSize`v1.5.0废弃` | 按鈕圖示大小，同 Icon 的size属性 | string \ | number | `16` |
+| loading            | 按鈕loading狀態 | boolean  | `false` |
 
 ### Events
 

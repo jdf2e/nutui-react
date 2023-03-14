@@ -180,7 +180,8 @@ const PopupDemo = () => {
           }}
         />
         <Popup
-          closeable={<CircleClose width="12px" height="12px" />}
+          closeable
+          closeIcon={<CircleClose width="12px" height="12px" />}
           visible={showIcon}
           style={{ height: '20%' }}
           position="bottom"
@@ -213,7 +214,8 @@ const PopupDemo = () => {
           }}
         />
         <Popup
-          closeable={<Heart width="15px" height="15px" />}
+          closeable
+          closeIcon={<Heart width="15px" height="15px" />}
           visible={showIconDefine}
           style={{ height: '20%' }}
           position="bottom"

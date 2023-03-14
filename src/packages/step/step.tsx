@@ -11,7 +11,6 @@ export interface StepProps extends BasicComponent {
   activeIndex: number
   icon: ReactNode
   iconColor: string
-  size: string
   className: string
   style: React.CSSProperties
   renderContent: () => React.ReactNode
@@ -23,8 +22,6 @@ const defaultProps = {
   content: '',
   activeIndex: 0,
   icon: '',
-  iconColor: '',
-  size: '12px',
 } as StepProps
 export const Step: FunctionComponent<
   Partial<StepProps> & React.HTMLAttributes<HTMLDivElement>
@@ -35,8 +32,6 @@ export const Step: FunctionComponent<
     content,
     activeIndex,
     icon,
-    iconColor,
-    size,
     className,
     renderContent,
     ...restProps
@@ -81,11 +76,7 @@ export const Step: FunctionComponent<
         <div className="nut-step-line" />
         <div className={renderIconClass()}>
           {React.isValidElement(icon)
-            ? React.cloneElement<any>(icon, {
-                ...icon.props,
-                size,
-                color: iconColor,
-              })
+            ? icon
             : !dot && <span className="nut-step-inner">{activeIndex}</span>}
         </div>
       </div>

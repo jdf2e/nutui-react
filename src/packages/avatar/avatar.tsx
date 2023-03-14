@@ -15,7 +15,6 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export interface AvatarProps extends BasicComponent {
   size: string
   icon: React.ReactNode
-  iconSize?: string | number
   shape: AvatarShape
   bgColor: string
   color: string
@@ -35,7 +34,6 @@ const defaultProps = {
   ...ComponentDefaults,
   size: '',
   icon: '',
-  iconSize: '',
   bgColor: '#eee',
   color: '#666',
   prefixCls: 'nut-avatar',
@@ -55,7 +53,6 @@ export const Avatar: FunctionComponent<
     url,
     alt,
     icon,
-    iconSize,
     className,
     style,
     activeAvatar,

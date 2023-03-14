@@ -22,11 +22,17 @@ import { Avatar } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Avatar size="large" icon="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+      <Avatar
+            size="large"
+            url="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
        />
-      <Avatar size="normal" icon="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-       />
-      <Avatar size="small" icon="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+          <Avatar
+            size="normal"
+            url="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+          />
+          <Avatar
+            size="small"
+            url="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
        />  
     </>
   )
@@ -43,12 +49,13 @@ export default App;
 ``` tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
+import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
-      <Avatar icon="my" shape="square" />
-      <Avatar icon="my" shape="round" />
+      <Avatar icon={<My />} shape="square" />
+      <Avatar icon={<My />} shape="round" />
     </>
   )
 }
@@ -64,12 +71,13 @@ export default App;
 ``` tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
+import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
       <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
-      <Avatar icon="my" />
+      <Avatar icon={<My />} />
       <Avatar>N</Avatar>
     </>
   )
@@ -86,11 +94,17 @@ Icon 和字符型可以自定義圖標顏色及背景色
 ``` tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
+import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
-      <Avatar className="demo-avatar" icon="my" color="#fff" bgColor="#FA2C19" />
+      <Avatar
+        className="demo-avatar"
+        color="#fff"
+        bgColor="#FA2C19"
+        icon={<My />}
+      />
       <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">U</Avatar>
     </>
   )
@@ -105,15 +119,16 @@ export default App;
 ``` tsx
 import React from "react";
 import { Avatar, Badge } from '@nutui/nutui-react';
+import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
       <Badge value="8">
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
       <Badge dot>
-        <Avatar icon="my" shape="square" />
+        <Avatar icon={<My />} shape="square" />
       </Badge>
     </>
   )
@@ -128,13 +143,14 @@ export default App;
 ``` tsx
 import React from "react";
 import { Avatar, AvatarGroup } from '@nutui/nutui-react';
+import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
       <AvatarGroup span="-4">
         <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
-        <Avatar icon="my" />
+        <Avatar icon={<My />} />
         <Avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">
           U
         </Avatar>
@@ -142,11 +158,11 @@ const App = () => {
 
       <AvatarGroup maxCount="3" maxColor="#fff" maxBgColor="#498ff2">
         <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
-        <Avatar icon="my" />
+        <Avatar icon={<My />} />
         <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
           U
         </Avatar>
-        <Avatar icon="my" />
+        <Avatar icon={<My />} />
       </AvatarGroup>
     </>
   )
@@ -161,17 +177,18 @@ export default App;
 ``` tsx
 import React from "react";
 import { Avatar, AvatarGroup } from '@nutui/nutui-react';
+import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
       <AvatarGroup maxCount="3" zIndex="right" maxContent="...">
         <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
-        <Avatar icon="my" />
+        <Avatar icon={<My />} />
         <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
           U
         </Avatar>
-        <Avatar icon="my" />
+        <Avatar icon={<My />} />
       </AvatarGroup>
     </>
   )
@@ -186,14 +203,15 @@ export default App;
 ``` tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
+import { My } from '@nutui/icons-react';
 
 const App = () => {
   const activeAvatar = () => {
-    console.log('觸發點擊頭像')
+    console.log('触发点击头像')
   }
   return (
     <>
-      <Avatar icon="my" onActiveAvatar={activeAvatar} />
+      <Avatar icon={<My />} onActiveAvatar={activeAvatar} />
     </>
   )
 }
@@ -211,8 +229,8 @@ export default App;
 | color    | 設置 Icon、字符類型頭像的顏色                     | string | `#666`   |
 | url      | 設置圖片類型頭像的地址                           | string | -   |
 | alt      | 設置圖片類型頭像無法顯示時的替代文本                | string | -   |
-| icon     | 設置 Icon 類型頭像圖標, 類似 Icon 組件的 name 屬性  | string | -     |
-| iconSize`v1.3.11`     | [圖標尺寸](#/icon) | string \| number | `16`|
+| icon     | 設置 Icon 類型頭像圖標  | string | -     |
+| iconSize`v1.5.0废弃`     | [圖標尺寸](#/icon) | string \| number | `16`|
 
 ### avatarGroup
 | 字段     | 說明                                                             | 類型   | 默認值 |

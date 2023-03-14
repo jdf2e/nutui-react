@@ -114,10 +114,12 @@ export default CheckBoxDemo;
 ```tsx
 import React from "react";
 import { Checkbox } from '@nutui/nutui-react-taro';
+import { Checklist } from '@nutui/icons-react-taro'
 
 const CheckBoxDemo = () => {
   return (<>
-    <Checkbox iconName="checklist" iconActiveName="checklist">自定义图标</Checkbox>
+    <Checkbox icon={<Checklist />}
+              checkedIcon={<Checklist />}>自定义图标</Checkbox>
   </>)
 }
 export default CheckBoxDemo;
@@ -430,7 +432,7 @@ export default CheckboxGroupOptions;
 | checked                       | 是否处于选中状态 | `boolean`       | `false`           |
 | disabled                      | 是否禁用选择 | `boolean`       | `false`           |
 | textPosition                  | 文本所在的位置，可选值：`left`,`right` | `string`        | `right`           |
-| iconSize                      | [图标尺寸](#/icon) | `string`、`number` | `18`              |
+| iconSize                      | [图标尺寸]用于设置默认图标的大小 | `string`、`number` | `18`              |
 | iconName                      | [图标名称](#/icon)，选中前(建议和`iconActiveName`一起修改) | `ReactNode`   | `'CheckNormal'`   |
 | iconActiveName                | [图标名称](#/icon)，选中后(建议和`iconName`一起修改) | `ReactNode`   | `'Checked'`       |
 | iconIndeterminateName`v1.2.1` | [图标名称](#/icon)，半选状态 | `ReactNode`         | `'CheckDisabled'` |

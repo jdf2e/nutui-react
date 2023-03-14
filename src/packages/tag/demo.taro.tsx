@@ -3,6 +3,7 @@ import Taro from '@tarojs/taro'
 import { CellGroup, Cell, Tag } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import { CircleClose } from '@nutui/icons-react'
 
 const TagDemo = () => {
   const [translated] = useTranslate({
@@ -84,7 +85,7 @@ const TagDemo = () => {
             linkSlot={
               <Tag
                 closeable
-                iconSize="14px"
+                closeIcon={<CircleClose width={12} height={12} />}
                 onClose={() => Taro.showToast({ title: 'Tag closed' })}
                 type="primary"
               >

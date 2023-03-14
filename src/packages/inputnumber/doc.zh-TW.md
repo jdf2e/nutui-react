@@ -223,12 +223,6 @@ export default App;
 
 | 事件名    | 說明                   | 回調參數                       |
 |-----------|------------------------|--------------------------------|
-| add `v1.3.8廢棄`       | 點擊增加按鈕時觸發     | `event: Event`                   |
-| reduce `v1.3.8廢棄`    | 點擊減少按鈕時觸發     | `event: Event`                   |
-| overlimit `v1.3.8廢棄` | 點擊不可用的按鈕時觸發 | `event: Event`                   |
-| change `v1.3.8廢棄`    | 值改變時觸發           | `value: number, event: Event` |
-| blur `v1.3.8廢棄`      | 輸入框失去焦點時觸發   | `event: Event`                   |
-| focus `v1.3.8廢棄`     | 輸入框獲得焦點時觸發   | `event: Event`                   |
 | onAdd `v1.3.8`       | 點擊增加按鈕時觸發     | `event: Event`                   |
 | onReduce `v1.3.8`    | 點擊減少按鈕時觸發     | `event: Event`                   |
 | onOverlimit `v1.3.8` | 點擊不可用的按鈕時觸發 | `event: Event`                   |

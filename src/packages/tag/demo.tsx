@@ -82,12 +82,7 @@ const TagDemo = () => {
           <Cell
             title={translated.closeable}
             linkSlot={
-              <Tag
-                closeable
-                iconSize={12}
-                onClose={() => alert('Tag closed')}
-                type="primary"
-              >
+              <Tag closeable onClose={() => alert('Tag closed')} type="primary">
                 {translated.tag}
               </Tag>
             }
@@ -96,8 +91,8 @@ const TagDemo = () => {
             title={translated.closeable}
             linkSlot={
               <Tag
-                closeable={<CircleClose />}
-                iconSize={12}
+                closeable
+                closeIcon={<CircleClose width={12} height={12} />}
                 onClose={() => alert('Tag closed')}
                 type="primary"
               >

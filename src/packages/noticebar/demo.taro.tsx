@@ -1,7 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { NoticeBar, Icon } from '@/packages/nutui.react.taro'
+import { NoticeBar } from '@/packages/nutui.react.taro'
 import '@/packages/noticebar/demo.scss'
 import Header from '@/sites/components/header'
 
@@ -157,7 +157,6 @@ const NoticeBarDemo = () => {
             onClickItem={(e, v) => {
               console.log('onclick-custom', v)
             }}
-            rightIcon={<Icon name="fabulous" size="16" color="#f0250f" />}
           />
         </div>
       </div>

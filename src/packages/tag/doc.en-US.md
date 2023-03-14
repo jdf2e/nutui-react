@@ -190,16 +190,17 @@ export default App;
 
 ### Props
 
-| Field       | illustrate                                      | type   | Defaults   |
-|------------|--------------------------------------------------|--------|----------|
-| type       | Label type, the optional value is primary success danger warning | `string` | `default` |
-| color      | Label color                                         | `string` | -        |
-| texColor | Text color, priority is higher than the color attribute  | `string` | `white`  |
-| plain      | Whether it is hollow                               | `boolean` | `false`  |
-| round      | Whether it is a rounded style                      | `boolean` | `false`  |
-| mark       | Whether it is a tag style                          | `boolean` | `false`  |
-| closeable  | Whether it can be closed label                     | `boolean\ | ReactNode` | `false`   |
-| iconSize`v1.4.7` | the size of closed label  | `string\|number` | ` 12px`|
+| Field                   | illustrate                                                       | type   | Defaults   |
+|-------------------------|------------------------------------------------------------------|--------|----------|
+| type                    | Label type, the optional value is primary success danger warning | `string` | `default` |
+| color                   | Label color                                                      | `string` | -        |
+| texColor                | Text color, priority is higher than the color attribute          | `string` | `white`  |
+| plain                   | Whether it is hollow                                             | `boolean` | `false`  |
+| round                   | Whether it is a rounded style                                    | `boolean` | `false`  |
+| mark                    | Whether it is a tag style                                        | `boolean` | `false`  |
+| closeable               | Whether it can be closed label                                   | `boolean\ | ReactNode` | `false`   |
+| closeIcon`v1.5.0`       | close icon                                                       | `ReactNode` | `null`    |
+| iconSize`v1.5.0abandon` | the size of closed label                                         | `string\|number` | ` 12px`|
 
 ### Event
 

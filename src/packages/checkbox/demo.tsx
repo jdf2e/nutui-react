@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { Checklist } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import Toast from '../toast'
 import { Cell } from '../cell/cell'
@@ -189,21 +190,10 @@ const CheckboxDemo = () => {
             <Checkbox
               checked={false}
               label={1}
-              iconName="checklist"
-              iconActiveName="checklist"
+              icon={<Checklist />}
+              checkedIcon={<Checklist />}
             >
               {translated.customIcon}
-            </Checkbox>
-            <Checkbox
-              checked={false}
-              label={2}
-              iconName="checklist"
-              iconActiveName="checklist"
-            >
-              <div>{translated.customIcon}1</div>
-              <div style={{ fontSize: '12px', color: '#8c8c8c' }}>
-                {translated.customIcon}1
-              </div>
             </Checkbox>
           </Checkbox.Group>
         </Cell>
