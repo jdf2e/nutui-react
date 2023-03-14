@@ -12,6 +12,7 @@ export interface BasicTableProps extends BasicComponent {
   noData?: React.ReactNode
   sorterIcon?: React.ReactNode
   onSorter?: (item: TableColumnProps, data: Array<any>) => void
+  showHeader?: boolean
 }
 
 export interface TableColumnProps {

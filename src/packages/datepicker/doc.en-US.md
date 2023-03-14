@@ -144,6 +144,41 @@ export default App;
 
 ```
 :::
+
+### Selective time
+:::demo
+```tsx
+import  React, { useState  } from "react";
+import { DatePicker,Cell  } from '@nutui/nutui-react';
+
+const App = () => {
+  const minDate = new Date(2020, 0, 1)
+  const maxDate = new Date(2025, 10, 1)
+  const [show8, setShow8] = useState(false)
+  const [desc8, setDesc8] = useState('10:10')
+  const confirm4 = (values:(string|number)[],options:PickerOption[])=>{
+    setDesc4(options.map((option) => option.text).join(':'))
+  }
+
+  return ( 
+    <>   
+      <Cell title="Choose Time" desc={desc8} onClick={() => setShow8(true)} />
+      <DatePicker
+          title="Choose Time"
+          type="hour-minutes"
+          minDate={minDate}
+          maxDate={maxDate}
+          visible={show8}
+          onCloseDatePicker={() => setShow8(false)}
+          onConfirmDatePicker={(values,options) => confirm8(values,options)}
+        />
+    </>
+  );
+};  
+export default App;
+
+```
+:::
 ### Option Formatter
 
 :::demo
@@ -319,7 +354,7 @@ export default App;
 |---------------------------|---------------------------------------------------|---------|----------|
 | modelValue                | Default Date                                                | Date    | `null`   |
 | visible                   | Is Show                                          | boolean | `false`  |
-| type                      | Can be set to date time year-month month-day datehour | string  | `date` |
+| type                      | Can be set to date time year-month month-day datehour hour-minutes | string  | `date` |
 | minuteStep                | Option minute step                                        | number | `1`      |
 | isShowChinese             | Show Chinese                                  | boolean | `false`  |
 | title                     | Title                                          | string  | `null`   |

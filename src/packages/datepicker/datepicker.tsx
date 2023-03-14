@@ -22,7 +22,14 @@ export interface DatePickerProps {
   modelValue: Date | null
   visible: boolean
   title: string
-  type: 'date' | 'time' | 'year-month' | 'month-day' | 'datehour' | 'datetime'
+  type:
+    | 'date'
+    | 'time'
+    | 'year-month'
+    | 'month-day'
+    | 'datehour'
+    | 'datetime'
+    | 'hour-minutes'
   isShowChinese: boolean
   minuteStep: number
   minDate: Date
@@ -205,6 +212,9 @@ export const DatePicker: FunctionComponent<
         break
       case 'year-month':
         result = result.slice(0, 2)
+        break
+      case 'hour-minutes':
+        result = result.slice(3, 5)
         break
       case 'month-day':
         result = result.slice(1, 3)
