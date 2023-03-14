@@ -243,6 +243,9 @@ const ButtonDemo = () => {
           <Button color="#7232dd" plain style={{ margin: 8 }}>
             {translated['1076d771']}
           </Button>
+          <Button color="rgba(10,101,208,0.75)" plain style={{ margin: 8 }}>
+            {translated['1076d771']}
+          </Button>
           <Button
             color="linear-gradient(to right, #ff6034, #ee0a24)"
             style={{ margin: 8 }}
