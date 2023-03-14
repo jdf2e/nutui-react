@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
+import { Left, Right } from '@nutui/icons-react-taro'
 import { Pagination, Cell } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface T {
   ce5c5446: string
@@ -94,6 +95,8 @@ const PaginationDemo = () => {
             totalItems="500"
             showPageSize="5"
             onChange={pageChange4}
+            prevText={<Left />}
+            nextText={<Right />}
             pageNodeRender={pageNodeRender}
           />
         </Cell>
