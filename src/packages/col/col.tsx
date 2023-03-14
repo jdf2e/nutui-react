@@ -41,7 +41,7 @@ export const Col: FunctionComponent<
     const prefixCls = 'nut-col'
     return `${prefixCls} ${prefixCls}-${span} ${
       gutter ? `${prefixCls}-gutter` : ''
-    } ${prefixCls}-${offset}`
+    } ${prefixCls}-offset-${offset}`
   }
   const getStyle = () => {
     // 定义col的style类
