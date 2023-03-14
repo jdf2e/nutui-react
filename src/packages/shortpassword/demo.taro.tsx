@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
+import { HeartFill1 } from '@nutui/icons-react-taro'
 import { ShortPassword, Cell, Toast } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 
 const ShortPasswordDemo = () => {
@@ -59,6 +60,7 @@ const ShortPasswordDemo = () => {
         <ShortPassword
           visible={visible1}
           modelValue={value}
+          tipsIcon={<HeartFill1 size={11} />}
           onClose={() => {
             setVisible1(false)
             setValue('')

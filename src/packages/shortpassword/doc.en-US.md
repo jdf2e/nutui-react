@@ -55,6 +55,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Cell,ShortPassword } from '@nutui/nutui-react';
+import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
   const [visible,setVisible] = useState(false)
@@ -76,15 +77,17 @@ const App = () => {
         }}
        />
         <ShortPassword
-        visible={visible}
-        modelValue={value}
-        onClose={() => close()}
-        noButton={false}
-        onChange={(value) => setValue(value)}
-        onOk={() => setVisible(false)}
-        onCancel={() => setVisible(false)}
-       />
-     </>
+          visible={visible}
+          modelValue={value}
+          tipsIcon={<HeartFill1 />}
+          iconSize={16}
+          onClose={() => close()}
+          noButton={false}
+          onChange={(value) => setValue(value)}
+          onOk={() => setVisible(false)}
+          onCancel={() => setVisible(false)}
+        />
+      </>
   )
 }
 export default App;
@@ -191,6 +194,8 @@ export default App;
 | length                 | ShortPassword lenght The value is 4~6 | string \| number | `6`                            |
 | errorMsg              | Error message         | string         | -                           |
 | autoFocus              | Be focused when ShortPassword is displayed | boolean         | `false`                           |
+| tipsIcon `2.0.0` | icon of forget tips | `ReactNode`  | - |
+| iconSize `2.0.0` | size of icon | string \| number  | `11` |
 
 ### Events
 

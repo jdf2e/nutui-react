@@ -80,12 +80,11 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     return React.isValidElement(checkedIcon) ? (
       React.cloneElement<any>(checkedIcon, {
         ...checkedIcon.props,
-        width: size,
-        height: size,
+        size,
         color,
       })
     ) : (
-      <StarFillN width={size} height={size} color={color} />
+      <StarFillN size={size} color={color} />
     )
   }
   const onClick = (e: React.MouseEvent, index: number) => {

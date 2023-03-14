@@ -55,6 +55,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Cell,ShortPassword } from '@nutui/nutui-react';
+import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
   const [visible,setVisible] = useState(false)
@@ -76,15 +77,17 @@ const App = () => {
         }}
        />
         <ShortPassword
-        visible={visible}
-        modelValue={value}
-        onClose={() => close()}
-        noButton={false}
-        onChange={(value) => setValue(value)}
-        onOk={() => setVisible(false)}
-        onCancel={() => setVisible(false)}
-       />
-     </>
+          visible={visible}
+          modelValue={value}
+          tipsIcon={<HeartFill1 />}
+          iconSize={16}
+          onClose={() => close()}
+          noButton={false}
+          onChange={(value) => setValue(value)}
+          onOk={() => setVisible(false)}
+          onCancel={() => setVisible(false)}
+        />
+      </>
   )
 }
 export default App;
@@ -189,6 +192,8 @@ export default App;
 | length                 | 密码长度，取值为4~6 | string \| number | `6`                            |
 | errorMsg              | 错误信息提示        | string         | -                           |
 | autoFocus              | 自动聚焦        | boolean         | `false`                           |
+| tipsIcon `2.0.0` | 忘记密碼提示icon | `ReactNode`  | - |
+| iconSize `2.0.0` | 图标大小 | string \| number  | `11` |
 
 ### Events
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { HeartFill1 } from '@nutui/icons-react'
 import Cell from '../cell'
 import Toast from '../toast'
 import { ShortPassword } from './shortpassword'
@@ -68,6 +69,8 @@ const ShortPasswordDemo = () => {
       <ShortPassword
         visible={visible2}
         modelValue={value}
+        tipsIcon={<HeartFill1 />}
+        iconSize={16}
         onClose={() => {
           setVisible2(false)
           setValue('')

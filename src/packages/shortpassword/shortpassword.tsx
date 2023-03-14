@@ -5,17 +5,18 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import { Tips } from '@nutui/icons-react'
 import bem from '@/utils/bem'
 import Popup from '@/packages/popup'
-import Icon from '@/packages/icon'
 import { useConfig } from '@/packages/configprovider'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface ShortPasswordProps extends BasicComponent {
   title: string
   desc: string
   tips: string
+  tipsIcon: React.ReactNode
+  iconSize: string | number
   visible: boolean
   modelValue: string | number
   errorMsg: string
@@ -38,6 +39,8 @@ const defaultProps = {
   title: '',
   desc: '',
   tips: '',
+  tipsIcon: null,
+  iconSize: 11,
   visible: false,
   modelValue: '',
   errorMsg: '',
@@ -62,6 +65,8 @@ export const ShortPassword: FunctionComponent<
     title,
     desc,
     tips,
+    tipsIcon,
+    iconSize,
     visible,
     modelValue,
     errorMsg,
@@ -135,6 +140,18 @@ export const ShortPassword: FunctionComponent<
     onOk && onOk(inputValue)
   }
 
+  const renderIcon = (size: string | number = '11px') => {
+    return React.isValidElement(tipsIcon) ? (
+      React.cloneElement<any>(tipsIcon, {
+        ...tipsIcon.props,
+        width: size,
+        height: size,
+      })
+    ) : (
+      <Tips width={size} height={size} />
+    )
+  }
+
   return (
     <div>
       <Popup
@@ -185,14 +202,10 @@ export const ShortPassword: FunctionComponent<
             <div className={b('message__error')}>{errorMsg}</div>
             {tips || locale.shortpassword.tips ? (
               <div className={b('message__forget')}>
-                <Icon
-                  classPrefix={iconClassPrefix}
-                  fontClassName={iconFontClassName}
-                  className="icon"
-                  size="11px"
-                  name="tips"
-                />
-                <div onClick={onTips}>{tips || locale.shortpassword.tips}</div>
+                {renderIcon(iconSize)}
+                <div className={b('message__forget-tips')} onClick={onTips}>
+                  {tips || locale.shortpassword.tips}
+                </div>
               </div>
             ) : null}
           </div>
