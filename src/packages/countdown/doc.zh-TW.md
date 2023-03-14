@@ -363,7 +363,7 @@ export default App;
 
 通過 ref 可以獲取到 CountDown 實例並調用實例方法。
 
-| 方法明 | 說明 |
+| 方法名 | 說明 |
 | ----- | ----- | 
 | start | 開始倒計時 | 
 | pause | 暫停倒計時 | 

@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
 import Picker from '@/packages/picker/index.taro'
+import { useConfig } from '@/packages/configprovider'
 
 export interface PickerOption {
   text: string | number
@@ -21,7 +22,14 @@ export interface DatePickerProps {
   modelValue: Date | null
   visible: boolean
   title: string
-  type: 'date' | 'time' | 'year-month' | 'month-day' | 'datehour' | 'datetime'
+  type:
+    | 'date'
+    | 'time'
+    | 'year-month'
+    | 'month-day'
+    | 'datehour'
+    | 'datetime'
+    | 'hour-minutes'
   isShowChinese: boolean
   minuteStep: number
   minDate: Date
@@ -81,6 +89,7 @@ export const DatePicker: FunctionComponent<
     ...defaultProps,
     ...props,
   }
+  const { locale } = useConfig()
 
   const [show, setShow] = useState(false)
   const [currentDate, setCurrentDate] = useState<Date | null>(modelValue)
@@ -95,13 +104,14 @@ export const DatePicker: FunctionComponent<
     )
   }
 
+  const datepickerLang = locale.datepicker
   const zhCNType: { [key: string]: string } = {
-    day: '日',
-    year: '年',
-    month: '月',
-    hour: '时',
-    minute: '分',
-    seconds: '秒',
+    day: datepickerLang.day,
+    year: datepickerLang.year,
+    month: datepickerLang.month,
+    hour: datepickerLang.hour,
+    minute: datepickerLang.min,
+    seconds: datepickerLang.seconds,
   }
   const formatValue = (value: Date | null) => {
     let cvalue = value
@@ -157,7 +167,6 @@ export const DatePicker: FunctionComponent<
 
   const ranges = (date?: Date) => {
     const curDate = date || currentDate
-    console.log(11, currentDate)
     if (!curDate) return []
     const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } =
       getBoundary('max', curDate)
@@ -204,6 +213,9 @@ export const DatePicker: FunctionComponent<
         break
       case 'year-month':
         result = result.slice(0, 2)
+        break
+      case 'hour-minutes':
+        result = result.slice(3, 5)
         break
       case 'month-day':
         result = result.slice(1, 3)
@@ -369,8 +381,6 @@ export const DatePicker: FunctionComponent<
 
   useEffect(() => {
     setCurrentDate(formatValue(modelValue))
-
-    // initDefault()
   }, [])
 
   useEffect(() => {
@@ -395,6 +405,7 @@ export const DatePicker: FunctionComponent<
     >
       {listData.length > 0 && (
         <Picker
+          title={title}
           isVisible={show}
           listData={listData}
           onClose={onCloseDatePicker}

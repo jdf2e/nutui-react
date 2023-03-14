@@ -36,7 +36,6 @@ test('spacing & count & modelValue & checkedIcon & uncheckedIcon & readonly & ic
           modelValue={state.modelValue}
           iconSize={state.iconSize}
           checkedIcon={state.checkedIcon}
-          uncheckedIcon={state.uncheckedIcon}
           onChange={handleChange}
         />
       </>

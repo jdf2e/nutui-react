@@ -7,7 +7,6 @@ import React, {
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon/index.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import GridContext from '../grid/grid.taro.context'
@@ -18,11 +17,7 @@ export interface GridItemProps extends BasicComponent {
   text: string | ReactNode
   fontSize: string | number
   color: string
-  icon: string | ReactNode
-  iconSize?: string | number
-  iconColor?: string
-  parentIconSize?: string | number
-  parentIconColor?: string
+  icon: ReactNode
   index: number
 
   columnNum: string | number
@@ -39,11 +34,7 @@ const defaultProps = {
   text: '',
   fontSize: '',
   color: '',
-  icon: '',
-  iconSize: '',
-  iconColor: '',
-  parentIconSize: '',
-  parentIconColor: '',
+  icon: null,
 
   columnNum: 4,
   border: true,
@@ -67,16 +58,10 @@ export const GridItem: FunctionComponent<
     fontSize,
     color,
     icon,
-    iconColor,
-    iconSize,
-    parentIconSize,
-    parentIconColor,
     border,
     center,
     reverse,
     direction,
-    iconClassPrefix,
-    iconFontClassName,
     onClick,
     ...rest
   } = {
@@ -117,10 +102,6 @@ export const GridItem: FunctionComponent<
     })
   }
 
-  const isIconName = () => {
-    return typeof icon === 'string'
-  }
-
   const handleClick = (e: any) => {
     onClick && onClick(e)
     context.onClick &&
@@ -128,10 +109,6 @@ export const GridItem: FunctionComponent<
         {
           text,
           icon,
-          iconSize,
-          iconColor,
-          parentIconSize,
-          parentIconColor,
           index,
           columnNum,
           border,
@@ -150,17 +127,7 @@ export const GridItem: FunctionComponent<
   return (
     <div className={b()} style={rootStyle()} {...rest} onClick={handleClick}>
       <div className={contentClass()}>
-        {icon && isIconName() ? (
-          <Icon
-            classPrefix={iconClassPrefix}
-            fontClassName={iconFontClassName}
-            name={icon as string}
-            size={iconSize || parentIconSize}
-            color={iconColor || parentIconColor}
-          />
-        ) : (
-          <>{icon}</>
-        )}
+        {icon && <>{icon}</>}
         {text && (
           <div className="nut-grid-item__text" style={{ fontSize, color }}>
             {text}

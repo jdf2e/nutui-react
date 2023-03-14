@@ -230,7 +230,6 @@ const App = () => {
     return (
         <>
             <Cell title="选择日期" desc={ date3 ? `${date3[0]}至${date3[1]}` : '请选择' } onClick={ openSwitch3 } />
-            
             <Calendar
                 visible={isVisible3}
                 defaultValue={date3}
@@ -309,7 +308,7 @@ const Utils = {
         )[month as any]
     },
     isLeapYear(y: number): boolean {
-        return (y % 4 == 0 && y % 100 != 0) || y % 400 == 0
+        return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0
     },
 };
 
@@ -333,13 +332,16 @@ const App = () => {
 
     const goDate = () => {
         if (calendarRef.current) {
-            calendarRef.current.scrollToDate('2022-04-01');
+            calendarRef.current.scrollToDate('2023-04-01');
         }
     };
 
     const clickBtn = () => {
         const date = [Utils.date2Str(new Date()), Utils.getDay(6)];
         setDate3(date);
+        if (calendarRef.current) {
+          calendarRef.current.scrollToDate(date[0])
+        }
     }
 
     const clickBtn1 = () => {
@@ -350,6 +352,9 @@ const App = () => {
         const yearMonth = `${year}-${month}`;
         const currMonthDays = Utils.getMonthDays(`${year  }`, `${month  }`);
         setDate3([`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`]);
+        if (calendarRef.current) {
+          calendarRef.current.scrollToDate(`${yearMonth}-01`)
+        }
     }
 
     const onBtn = () => {
@@ -424,9 +429,15 @@ export default App;
 
 ## API
 
+通过 ref 可以获取到 Calendar 实例并调用实例方法。
+
+| 方法名 | 说明 | 参数 |
+| ----- | ----- | -- |
+| scrollToDate | 滚动到指定日期所在月,如：'2023-06-30' | `string` |
+
 ### Props
 
-| 字段              | 说明                                              | 类型            | 默认值          |
+| 字段| 说明    | 类型            | 默认值          |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
 | visible   | 是否可见                                          | boolean         | `false`           |
 | type              | 类型，日期选择'one'，区间选择'range'              | string          | `one`           |
@@ -450,7 +461,7 @@ export default App;
 
 ### Events
 
-| 事件名 | 说明                         | 回调参数                     |
+| 事件名 | 说明           | 回调参数       |
 |--------|------------------------------|------------------------------|
 | onChoose | 选择之后或是点击确认按钮触发 | 日期数组（包含年月日和星期） |
 | onClose  | 关闭时触发                   | -                            |

@@ -175,6 +175,7 @@ export default App
 ```tsx
 import React, { useState } from 'react'
 import { Menu, MenuItem } from '@nutui/nutui-react';
+import { TriangleDown, Success } from '@nutui/icons-react'
 
 const App = () => {
   const [options] = useState([
@@ -190,8 +191,8 @@ const App = () => {
   return (
     <>
       <div className="demo full">
-        <Menu titleIcon="joy-smile">
-          <MenuItem options={options} value={0} optionsIcon="success" />
+        <Menu titleIcon={<TriangleDown />>
+          <MenuItem options={options} value={0} optionsIcon={<Success />} />
           <MenuItem options={options1} value="a" />
         </Menu>
       </div>
@@ -286,7 +287,7 @@ export default App
 | closeOnClickOverlay | Whether to close when overlay is clicked     | boolean                 | `true`    |
 | lockScroll          | Whether the background is locked                   | boolean                 | `true`    |
 | scrollFixed         | Whether to fixed when window is scrolled, fixed position can be set                   | boolean \| string \| number                 | `true`    |
-| titleIcon           | Custome title icon                 | string                  | -       |
+| titleIcon`v1.5.0`          | Custome title icon                 | React.ReactNode                  | -       |
 
 ### MenuItem Props
 
@@ -296,12 +297,11 @@ export default App
 | options                       | Options                                | Array   | -                |
 | disabled                      | Whether to disable dropdown item                            | boolean | `false`            |
 | columns                          | Display how many options in one line          | number  | `1`                |
-| optionsIcon          | Custome option icon                          | string  | `Check`          |
+| optionsIcon`v1.5.0`          | Custome option icon                          | React.ReactNode  | `Check`          |
 | direction            | Expand direction, can be set to up                | string  | `down`           |
 | activeClassName    | Active custome title class              | string  | -                |
 | inactiveClassName  | Inactive custome title class            | string  | -                |
-| fontClassName       | Custom icon font base class name                 | string  | `nutui-iconfont` |
-| iconClassPrefix          | Custom icon class name prefix for using custom icons | string  | `nut-icon`       |
+
 
 ### MenuItem Events
 

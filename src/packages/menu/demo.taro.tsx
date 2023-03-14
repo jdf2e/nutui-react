@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
+
+import { TriangleDown, Success } from '@nutui/icons-react-taro'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Menu, MenuItem, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 const MenuDemo = () => {
   const style = `
@@ -136,8 +138,8 @@ const MenuDemo = () => {
           <MenuItem options={options1} value="a" />
         </Menu>
         <h2>{translated.customIcons}</h2>
-        <Menu titleIcon="joy-smile">
-          <MenuItem options={options} value={0} optionsIcon="success" />
+        <Menu titleIcon={<TriangleDown />}>
+          <MenuItem options={options} value={0} optionsIcon={<Success />} />
           <MenuItem options={options1} value="a" />
         </Menu>
         <h2>{translated.expandDirection}</h2>

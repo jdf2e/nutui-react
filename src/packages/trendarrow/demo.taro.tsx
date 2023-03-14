@@ -1,9 +1,10 @@
 import React from 'react'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { TrendArrow, Cell, Icon } from '@/packages/nutui.react.taro'
+import { TrendArrow, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/trendarrow/demo.scss'
 import Header from '@/sites/components/header'
 import Taro from '@tarojs/taro'
+import { Failure, HeartFill, Success } from '@nutui/icons-react-taro'
 
 interface T {
   basic: string
@@ -96,10 +97,13 @@ const TrendArrowDemo = () => {
         </Cell>
         <div className="title">{translated.title7}</div>
         <Cell>
-          <TrendArrow rate={10.2365} upIconName="success" />
-          <TrendArrow rate={-10.2365} downIconName="failure" />
+          <TrendArrow
+            rate={10.2365}
+            upIcon={<Success color="blue" width="18" height="18" />}
+          />
+          <TrendArrow rate={-10.2365} downIcon={<Failure color="red" />} />
           <TrendArrow rate={10.2365}>
-            <Icon name="heart-fill" color="#fa2c19" size="12px" />
+            <HeartFill color="#fa2c19" />
           </TrendArrow>
         </Cell>
       </div>

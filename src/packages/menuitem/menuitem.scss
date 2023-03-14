@@ -1,4 +1,3 @@
-@import '../icon/icon.scss';
 @import '../overlay/overlay.scss';
 
 .nut-theme-dark {
@@ -40,6 +39,8 @@
 
     i {
       margin-right: $menu-item-option-i-margin-right;
+      display: inline-flex;
+      align-items: center;
     }
   }
 }

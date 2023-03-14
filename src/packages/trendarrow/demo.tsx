@@ -2,8 +2,8 @@ import React from 'react'
 import { useTranslate } from '@/sites/assets/locale'
 import { TrendArrow } from './trendarrow'
 import Cell from '../cell'
-import Icon from '../icon'
 import './demo.scss'
+import { Failure, HeartFill, Success } from '@nutui/icons-react'
 
 interface T {
   basic: string
@@ -95,10 +95,13 @@ const TrendArrowDemo = () => {
         </Cell>
         <div className="title">{translated.title7}</div>
         <Cell>
-          <TrendArrow rate={10.2365} upIconName="success" />
-          <TrendArrow rate={-10.2365} downIconName="failure" />
+          <TrendArrow
+            rate={10.2365}
+            upIcon={<Success color="blue" width="18" height="18" />}
+          />
+          <TrendArrow rate={-10.2365} downIcon={<Failure color="red" />} />
           <TrendArrow rate={10.2365}>
-            <Icon name="heart-fill" color="#fa2c19" size="12px" />
+            <HeartFill color="#fa2c19" />
           </TrendArrow>
         </Cell>
       </div>

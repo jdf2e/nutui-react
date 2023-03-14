@@ -265,6 +265,71 @@ export default App;
 ```
 :::
 
+### 隐藏表头
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Table } from '@nutui/nutui-react';
+
+interface TableColumnProps {
+  key?: string
+  title?: string
+  align?: string
+  sorter?: ((a: any, b: any) => number) | boolean | string
+  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
+}
+
+const App = () => {
+  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
+    {
+      title: '姓名',
+      key: 'name',
+    },
+    {
+      title: '性别',
+      key: 'sex',
+      render: (record: any) => {
+        return (
+          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
+            {record.sex}
+          </span>
+        )
+      },
+    },
+    {
+      title: '学历',
+      key: 'record',
+    },
+  ])
+
+  const [data1, setData1] = useState([
+    {
+      name: 'Tom',
+      sex: '男',
+      record: '小学',
+    },
+    {
+      name: 'Lucy',
+      sex: '女',
+      record: '本科',
+    },
+    {
+      name: 'Jack',
+      sex: '男',
+      record: '高中',
+    },
+  ])
+
+  return <Table
+        columns={columns1}
+        data={data1}
+        showHeader={false}
+    />;
+};
+export default App;
+```
+:::
+
 ### 无数据默认展示，支持自定义
 :::demo
 ```tsx
@@ -323,7 +388,8 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from "react";
-import { Table, Button, Icon } from '@nutui/nutui-react';
+import { Table, Button } from '@nutui/nutui-react';
+import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   const [columns4, setColumns4] = useState([
@@ -368,7 +434,7 @@ const App = () => {
       sex: '女',
       record: '本科',
       render: () => {
-        return <Icon name="dongdong" size="14px" />
+        return <Dongdong height="14px" width="14px" />
       },
     },
     {
@@ -399,73 +465,54 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from "react";
-import { Table, Button, Icon } from '@nutui/nutui-react';
+import { Table, Button } from '@nutui/nutui-react';
+import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
-  const [columns4, setColumns4] = useState([
-    {
-      title: '姓名',
-      key: 'name',
-      align: 'center',
-    },
-    {
-      title: '性别',
-      key: 'sex',
-    },
-    {
-      title: '学历',
-      key: 'record',
-    },
-    {
-      title: '操作',
-      key: 'render',
-    },
-  ])
-
-  const [data4, setData4] = useState([
+  const [data1, setData1] = useState([
     {
       name: 'Tom',
       sex: '男',
       record: '小学',
-      render: () => {
-        return (
-          <Button
-            onClick={() => Toast.text('hello')}
-            size="small"
-            type="primary"
-          >
-            <div>Hello</div>
-          </Button>
-        )
-      },
     },
     {
       name: 'Lucy',
       sex: '女',
       record: '本科',
-      render: () => {
-        return <Icon name="dongdong" size="14px" />
-      },
     },
     {
       name: 'Jack',
       sex: '男',
       record: '高中',
-      render: () => {
+    },
+  ])
+  const [data3, setData3] = useState([]);
+  const [columns1, setColumns1] = useState([
+    {
+      title: '姓名',
+      key: 'name',
+    },
+    {
+      title: '性别',
+      key: 'sex',
+      render: (record: any) => {
         return (
-          <Button
-            type="success"
-            size="small"
-            onClick={() => window.open('https://www.jd.com')}
-          >
-            <div>跳转到京东</div>
-          </Button>
+          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
+            {record.sex}
+          </span>
         )
       },
     },
+    {
+      title: '学历',
+      key: 'record',
+    },
   ])
+  setTimeout(() => {
+    setData3(data1)
+  }, 5000)
 
-  return <Table columns={columns4} data={data4} />;
+  return <Table columns={columns1} data={data3} style={{ background: '#fff' }} />;
 };
 export default App;
 ```
@@ -475,14 +522,37 @@ export default App;
 :::demo
 ```tsx
 import  React, { useState } from "react";
-import { Table, Button, Icon } from '@nutui/nutui-react';
+import { Table, Button } from '@nutui/nutui-react';
+
 
 const App = () => {
-  const [columns4, setColumns4] = useState([
+  const [data5, setData5] = useState([
+    {
+      name: 'Tom',
+      sex: '男',
+      record: '小学',
+      age: 10,
+    },
+    {
+      name: 'Lucy',
+      sex: '女',
+      record: '本科',
+      age: 30,
+    },
+    {
+      name: 'Jack',
+      sex: '男',
+      record: '高中',
+      age: 4,
+    },
+  ])
+
+   const [columns5, setColumns5] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
       align: 'center',
+      sorter: true,
     },
     {
       title: '性别',
@@ -493,55 +563,95 @@ const App = () => {
       key: 'record',
     },
     {
-      title: '操作',
-      key: 'render',
+      title: '年龄',
+      key: 'age',
+      sorter: (row1: any, row2: any) => {
+        return row1.age - row2.age
+      },
     },
   ])
+  
+  const handleSorter = (item: TableColumnProps, data: Array<any>) => {
+    Toast.text(`${JSON.stringify(item)}`)
+    setData5([...data])
+  }
 
-  const [data4, setData4] = useState([
+  return <Table
+          columns={columns5}
+          data={data5}
+          onSorter={handleSorter}
+          style={{ background: '#fff' }}
+        />;
+};
+export default App;
+```
+:::
+
+### 支持排序替换ICON
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Table, Button } from '@nutui/nutui-react';
+import { TriangleDown } from '@nutui/icons-react'
+
+const App = () => {
+  const [data5, setData5] = useState([
     {
       name: 'Tom',
       sex: '男',
       record: '小学',
-      render: () => {
-        return (
-          <Button
-            onClick={() => Toast.text('hello')}
-            size="small"
-            type="primary"
-          >
-            <div>Hello</div>
-          </Button>
-        )
-      },
+      age: 10,
     },
     {
       name: 'Lucy',
       sex: '女',
       record: '本科',
-      render: () => {
-        return <Icon name="dongdong" size="14px" />
-      },
+      age: 30,
     },
     {
       name: 'Jack',
       sex: '男',
       record: '高中',
-      render: () => {
-        return (
-          <Button
-            type="success"
-            size="small"
-            onClick={() => window.open('https://www.jd.com')}
-          >
-            <div>跳转到京东</div>
-          </Button>
-        )
-      },
+      age: 4,
     },
   ])
 
-  return <Table columns={columns4} data={data4} />;
+   const [columns5, setColumns5] = useState<Array<TableColumnProps>>([
+    {
+      title: '姓名',
+      key: 'name',
+      align: 'center',
+      sorter: true,
+    },
+    {
+      title: '性别',
+      key: 'sex',
+    },
+    {
+      title: '学历',
+      key: 'record',
+    },
+    {
+      title: '年龄',
+      key: 'age',
+      sorter: (row1: any, row2: any) => {
+        return row1.age - row2.age
+      },
+    },
+  ])
+  
+  const handleSorter = (item: TableColumnProps, data: Array<any>) => {
+    Toast.text(`${JSON.stringify(item)}`)
+    setData5([...data])
+  }
+
+  return <Table
+          columns={columns5}
+          data={data5}
+          onSorter={handleSorter}
+          style={{ background: '#fff' }}
+          sorterIcon={<TriangleDown width="12px" height="12px" />}
+        />;
 };
 export default App;
 ```
@@ -559,6 +669,7 @@ export default App;
 | data         | 表格数据 | 	Object[] | `[]`                |
 | summary         | 是否显示简介 | 	ReactNode | -                |
 | striped         | 条纹是否明暗交替 | 	boolean | `false`                |
+| showHeader`v1.5.0`         | 是否显示表头 | 	boolean | `true`                |
 | noData         | 自定义无数据 | 	ReactNode | -                |
 
 ### TableColumnProps
@@ -570,6 +681,7 @@ export default App;
 | align         | 列的对齐方式，可选值left,center,right | 	string | `left`                |
 | sorter         | 排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法 | 	boolean \| Function \| string | -                |
 | render         | 自定义渲染列数据，优先级高 | 	Function(record) | -                |
+| sorterIcon`v1.5.0`          | 排序 icon | 	ReactNode | `<DownArrow />`               |
 
 
 

@@ -23,6 +23,7 @@ const DatePickerDemo = () => {
       mmdd: '选择月日',
       showAll: '选择年月日时分',
       time: '选择时分秒',
+      hourMinutes: '选择时分',
       format: '格式化选项',
       stepMins: '分钟数递增步长设置',
       filter: '过滤选项',
@@ -43,6 +44,7 @@ const DatePickerDemo = () => {
       mmdd: '選擇月日',
       showAll: '選擇年月日時分',
       time: '選擇時分秒',
+      hourMinutes: '選擇時分',
       format: '格式化选项',
       stepMins: '分鐘數遞增步長設置',
       filter: '過濾選項',
@@ -63,6 +65,7 @@ const DatePickerDemo = () => {
       mmdd: 'Choose Month-Day',
       showAll: 'Choose DateTime',
       time: 'Choose Time',
+      hourMinutes: 'Selective time',
       format: 'Option Formatter',
       stepMins: 'Option Steps',
       filter: 'Option Filter',
@@ -88,6 +91,7 @@ const DatePickerDemo = () => {
   const [desc5, setDesc5] = useState('2020 05 10 10:10')
   const [desc6, setDesc6] = useState('10:10:00')
   const [desc7, setDesc7] = useState('2022-05-10 00')
+  const [desc8, setDesc8] = useState('10:10')
 
   const [show1, setShow1] = useState(false)
   const [show2, setShow2] = useState(false)
@@ -96,6 +100,7 @@ const DatePickerDemo = () => {
   const [show5, setShow5] = useState(false)
   const [show6, setShow6] = useState(false)
   const [show7, setShow7] = useState(false)
+  const [show8, setShow8] = useState(false)
 
   const confirm1 = (values: (string | number)[], options: PickerOption[]) => {
     setDesc1(options.map((option) => option.text).join(' '))
@@ -133,6 +138,10 @@ const DatePickerDemo = () => {
 
   const confirm7 = (values: (string | number)[], options: PickerOption[]) => {
     setDesc7(options.map((option) => option.text).join(' '))
+  }
+
+  const confirm8 = (values: (string | number)[], options: PickerOption[]) => {
+    setDesc8(options.map((option) => option.text).join(':'))
   }
 
   const filter = (type: string, options: PickerOption[]) => {
@@ -202,42 +211,42 @@ const DatePickerDemo = () => {
           desc={desc2}
           onClick={() => setShow2(true)}
         />
-
         <h2>{translated.showAll}</h2>
         <Cell
           title={translated.chooseDate}
           desc={desc3}
           onClick={() => setShow3(true)}
         />
-
         <h2>{translated.time}</h2>
         <Cell
           title={translated.time}
           desc={desc4}
           onClick={() => setShow4(true)}
         />
-
+        <h2>{translated.hourMinutes}</h2>
+        <Cell
+          title={translated.hourMinutes}
+          desc={desc8}
+          onClick={() => setShow8(true)}
+        />
         <h2>{translated.format}</h2>
         <Cell
           title={translated.time}
           desc={desc5}
           onClick={() => setShow5(true)}
         />
-
         <h2>{translated.stepMins}</h2>
         <Cell
           title={translated.time}
           desc={desc6}
           onClick={() => setShow6(true)}
         />
-
         <h2>{translated.filter}</h2>
         <Cell
           title={translated.time}
           desc={desc7}
           onClick={() => setShow7(true)}
         />
-
         {/* 选择日期 */}
         <DatePicker
           title={translated.basic}
@@ -277,7 +286,16 @@ const DatePickerDemo = () => {
           onCloseDatePicker={() => setShow4(false)}
           onConfirmDatePicker={(values, options) => confirm4(values, options)}
         />
-
+        {/* 选择时分 */}
+        <DatePicker
+          title={translated.chooseTime}
+          type="hour-minutes"
+          minDate={minDate}
+          maxDate={maxDate}
+          visible={show8}
+          onCloseDatePicker={() => setShow8(false)}
+          onConfirmDatePicker={(values, options) => confirm8(values, options)}
+        />
         {/* 格式化选项 */}
         <DatePicker
           title={translated.chooseTime}
@@ -300,7 +318,6 @@ const DatePickerDemo = () => {
           onCloseDatePicker={() => setShow6(false)}
           onConfirmDatePicker={(values, options) => confirm6(values, options)}
         />
-
         {/* 过滤选项 */}
         <DatePicker
           title={translated.chooseTime}

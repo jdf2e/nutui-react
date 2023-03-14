@@ -17,19 +17,20 @@ import { Grid, GridItem } from '@nutui/nutui-react'
 :::demo
 ```tsx
 import React from 'react'
-import { Grid,GridItem } from '@nutui/nutui-react'
+import { Grid, GridItem } from '@nutui/nutui-react'
+import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid>
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
     </Grid>
   )
 }
@@ -42,17 +43,18 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid,GridItem } from '@nutui/nutui-react'
+import { Grid, GridItem } from '@nutui/nutui-react'
+import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid columnNum={3}>
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
     </Grid>
   )
 }
@@ -66,13 +68,14 @@ export default App
 ```tsx
 import React from 'react'
 import { Grid,GridItem } from '@nutui/nutui-react'
+import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid columnNum={3} square>
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
+        <GridItem icon={<Dongdong />} text="text" />
+        <GridItem icon={<Dongdong />} text="text" />
+        <GridItem icon={<Dongdong />} text="text" />
     </Grid>
   )
 }
@@ -86,19 +89,20 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid,GridItem } from '@nutui/nutui-react'
+import { Grid, GridItem } from '@nutui/nutui-react'
+import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
-     <Grid gutter={3}>
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
+    <Grid gutter={3}>
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
     </Grid>
   )
 }
@@ -111,15 +115,16 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid,GridItem } from '@nutui/nutui-react'
+import { Grid, GridItem } from '@nutui/nutui-react'
+import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid reverse>
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
     </Grid>
   )
 }
@@ -132,15 +137,16 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid,GridItem } from '@nutui/nutui-react'
+import { Grid, GridItem } from '@nutui/nutui-react'
+import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid direction="horizontal">
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
-        <GridItem icon="dongdong" text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem icon={<Dongdong />} text="text" />
     </Grid>
   )
 }
@@ -153,19 +159,18 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid,GridItem } from '@nutui/nutui-react'
+import { Grid, GridItem } from '@nutui/nutui-react'
+import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid columnNum="3" iconColor="#fa2c19">
-        <GridItem icon="dongdong" text="text" />
-        <GridItem
-        icon="dongdong"
+    <Grid columnNum="3">
+      <GridItem icon={<Dongdong />} text="text" />
+      <GridItem
+        icon={<Dongdong width={40} height={40} color="#478EF2" />}
         text="text"
-        iconColor="#478EF2"
-        iconSize="40"
-        />
-        <GridItem icon="dongdong" text="text" />
+      />
+      <GridItem icon={<Dongdong />} text="text" />
     </Grid>
   )
 }
@@ -178,39 +183,38 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid,GridItem,Avatar } from '@nutui/nutui-react'
+import { Grid, GridItem, Avatar, Image } from '@nutui/nutui-react'
+import { Dongdong, My } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid border={false}>
-        <GridItem icon="dongdong" text={<span>More</span>} />
-        <GridItem
+      <GridItem icon={<Dongdong />} text={<span>More</span>} />
+      <GridItem
         text={
-            <Avatar
+          <Avatar
             className="demo-avatar"
-            icon="my"
-            color="#fff"
+            icon={<My color="#fff" />}
             bgColor="#FA2C19"
-            />
+          />
         }
         onClick={handleClick}
-        />
-        <GridItem
+      />
+      <GridItem
         icon={
-            <Avatar
+          <Avatar
             className="demo-avatar"
-            icon="my"
-            color="#fff"
+            icon={<My color="#fff" />}
             bgColor="#FA2C19"
-            />
+          />
         }
-        />
-        <GridItem>
+      />
+      <GridItem>
         <Avatar
-            size="large"
-            icon="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+          size="large"
+          icon={<Image src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />}
         />
-        </GridItem>
+      </GridItem>
     </Grid>
   )
 }
@@ -225,14 +229,14 @@ export default App
 | Attribute   | Description                                              | Type   | Default |
 |---------------|------------------------------------------|------------------------|------------|
 | columnNum    | Column Num                                     | number \| string         | `4`        |
-| iconSize     | Icon size,for example `20px` `2em` `2rem`          | number \| string        | `28px`     |
-| iconColor    | Icon color                                  | string                 | -          |
 | border        | Whether to show border                               | boolean                | `true`     |
 | gutter        | Gutter,The default unit is `px`               | number \| string        | `0`        |
 | center        | Whether to center content                      | boolean                | `true`      |
 | square        | 	Whether to be square shape                      | boolean                | `false`     |
 | reverse       | 	Whether to reverse the position of icon and text       | boolean                | `false`     |
 | direction     | 	Content arrangement direction, can be set to  `horizontal`    | string                 | `vertical`  |
+| iconSize`v1.5.0 deprecated`     | Icon size,for example `20px` `2em` `2rem`          | number \| string        | `28px`     |
+| iconColor`v1.5.0 deprecated`    | Icon color                                  | string                 | -          |
 
 
 ## Grid Event
@@ -248,9 +252,9 @@ export default App
 | text                 | text                                                                                     | string\| ReactNode              | -          |
 | fontSize `1.4.4`     | text size                                                                                | string \| number   | -          |
 | color `1.4.4`        | text color                                                                               | string   | -          |
-| icon                 | Icon name or URL                                                            | string \| ReactNode     | -          |
-| iconSize            | Icon size,for example `20px` `2em` `2rem`      | number \| string  |`28px`  |
-| iconColor           | Icon color              | string            | -           |
+| icon                 | Icon                                                            | ReactNode     | -          |
+| iconSize`v1.5.0 deprecated`            | Icon size,for example `20px` `2em` `2rem`      | number \| string  |`28px`  |
+| iconColor`v1.5.0 deprecated`           | Icon color              | string            | -           |
 
 ### GridItem Event
 

@@ -19,6 +19,7 @@ import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 ```tsx
 import  React from "react";
 import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar
@@ -27,9 +28,9 @@ const App = () => (
     }}
   >
     <TabbarItem tabTitle="首頁" icon="首頁" />
-    <TabbarItem tabTitle="分類" icon="category" />
-    <TabbarItem tabTitle="發現" icon="find" />
-    <TabbarItem tabTitle="購物車" icon="cart" />
+    <TabbarItem tabTitle="分類" icon={<Category width={18} height={18} />} />
+    <TabbarItem tabTitle="發現" icon={<Find width={20} height={20} />} />
+    <TabbarItem tabTitle="購物車" icon={<Cart width={20} height={20} />} />
     <TabbarItem tabTitle="我的" icon="我的" />
   </Tabbar>
 );
@@ -55,9 +56,9 @@ const App = () => {
     }}
   >
     <TabbarItem tabTitle="首頁" icon="首頁" />
-    <TabbarItem tabTitle="分類" icon="category" />
-    <TabbarItem tabTitle="發現" icon="find" />
-    <TabbarItem tabTitle="購物車" icon="cart" />
+    <TabbarItem tabTitle="分類" icon={<Category width={20} height={20} />} />
+    <TabbarItem tabTitle="發現" icon={<Find width={20} height={20} />} />
+    <TabbarItem tabTitle="購物車" icon={<Cart width={20} height={20} />} />
     <TabbarItem tabTitle="我的" icon="我的" />
   </Tabbar>
 }
@@ -74,11 +75,11 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem tabTitle="首頁" icon="home" num="11" />
-    <TabbarItem tabTitle="分類" icon="category" />
-    <TabbarItem tabTitle="發現" icon="find" />
-    <TabbarItem tabTitle="購物車" icon="cart" num="110" />
-    <TabbarItem tabTitle="我的" icon="my" />
+    <TabbarItem tabTitle="首頁" icon={<Home width={20} height={20} />} num="11" />
+    <TabbarItem tabTitle="分類" icon={<Category width={20} height={20} />} />
+    <TabbarItem tabTitle="發現" icon={<Find width={20} height={20} />} />
+    <TabbarItem tabTitle="購物車" icon={<Cart width={20} height={20} />} num="110" />
+    <TabbarItem tabTitle="我的" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -95,11 +96,11 @@ import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem tabTitle="首頁" icon="home" dot />
-    <TabbarItem tabTitle="分類" icon="category" />
-    <TabbarItem tabTitle="發現" icon="find" />
-    <TabbarItem tabTitle="購物車" icon="cart" dot />
-    <TabbarItem tabTitle="我的" icon="my" />
+    <TabbarItem tabTitle="首頁" icon={<Home width={20} height={20} />} dot />
+    <TabbarItem tabTitle="分類" icon={<Category width={20} height={20} />} />
+    <TabbarItem tabTitle="發現" icon={<Find width={20} height={20} />} />
+    <TabbarItem tabTitle="購物車" icon={<Cart width={20} height={20} />} dot />
+    <TabbarItem tabTitle="我的" icon={<My width={20} height={20} />} />
   </Tabbar>
 )
 
@@ -115,11 +116,11 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem tabTitle="首頁" icon="home" />
-    <TabbarItem tabTitle="分類" icon="category" />
-    <TabbarItem tabTitle="發現" icon="find" />
-    <TabbarItem tabTitle="購物車" icon="cart" />
-    <TabbarItem tabTitle="我的" icon="my" />
+    <TabbarItem tabTitle="首頁" icon={<Home width={20} height={20} />} />
+    <TabbarItem tabTitle="分類" icon={<Category width={20} height={20} />} />
+    <TabbarItem tabTitle="發現" icon={<Find width={20} height={20} />} />
+    <TabbarItem tabTitle="購物車" icon={<Cart width={20} height={20} />} />
+    <TabbarItem tabTitle="我的" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -135,9 +136,9 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem tabTitle="首頁" icon="home" />
-    <TabbarItem tabTitle="分類" icon="category" />
-    <TabbarItem tabTitle="發現" icon="find" />
+    <TabbarItem tabTitle="首頁" icon={<Home width={20} height={20} />} />
+    <TabbarItem tabTitle="分類" icon={<Category width={20} height={20} />} />
+    <TabbarItem tabTitle="發現" icon={<Find width={20} height={20} />} />
   </Tabbar>
 );  
 
@@ -153,11 +154,11 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar bottom>
-    <TabbarItem tabTitle="首頁" href="" icon="home" />
-    <TabbarItem tabTitle="分類" icon="category" />
-    <TabbarItem tabTitle="發現" icon="find" />
-    <TabbarItem tabTitle="購物車" href="https://m.jd.com" icon="cart" />
-    <TabbarItem tabTitle="我的" to="/" icon="my" />
+    <TabbarItem tabTitle="首頁" href="" icon={<Home width={20} height={20} />} />
+    <TabbarItem tabTitle="分類" icon={<Category width={20} height={20} />} />
+    <TabbarItem tabTitle="發現" icon={<Find width={20} height={20} />} />
+    <TabbarItem tabTitle="購物車" href="https://m.jd.com" icon={<Cart width={20} height={20} />} />
+    <TabbarItem tabTitle="我的" to="/" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -178,7 +179,7 @@ export default App;
 | bottom          | 是否固定在頁面底部              | boolean | `false`   |
 | unactiveColor  | icon未激活的顏色             | string | `#7d7e80` |
 | activeColor    | icon激活的顏色              | string | `#1989fa` |
-| size`v1.2.2`    | icon的统一尺寸              | string \| boolean | `20` |
+| size`v1.5.0废弃`    | icon的统一尺寸              | string \| boolean | `20` |
 | safeAreaInsetBottom    | 是否開啟iphone系列全面屏底部安全區適配 | boolean | `false` |
 | style    | 組件樣式                   | CSSProperties | `{}` |
 | clsssName    | 組件類名                   | string | - |
@@ -188,14 +189,14 @@ export default App;
 | 字段 | 說明 | 類型   | 默認值 |
 |-----------|-------------------|--------|--------|
 | tabTitle | 標籤頁的標題 | string | -     |
-| icon | 標籤頁顯示的[圖標名稱](#/icon) 或圖片鏈接 | string | -     |
+| icon | 自定義圖標 | ReactNode | -     |
 | href | 標籤頁的跳轉鏈接   | string | -     |
 | to`v1.4.0 废弃` | 	標籤頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性 | any | -     |
 | num | 頁簽右上角的數字角標，超出99之後為99+     | number | -     |
-| iconClassPrefix`v1.2.1`  | 自定義 icon 類名前綴，用於使用自定義圖標 | string | `nut-icon` |
-| iconFontClassName`v1.2.1` | 自定義 icon 字體基礎類名 | string | 
+| iconClassPrefix`v1.5.0废弃`  | 自定義 icon 類名前綴，用於使用自定義圖標 | string | `nut-icon` |
+| iconFontClassName`v1.5.0废弃` | 自定義 icon 字體基礎類名 | string | 
 | dot | 是否顯示圖標右上角小紅點   | boolean | `false`     |
-| iconSize`v1.4.7`   | icon的单个尺寸     | string \| boolean | `20` |
+| iconSize`v1.5.0废弃`   | icon的单个尺寸     | string \| boolean | `20` |
 
 
 ### Event

@@ -14,7 +14,8 @@ const raws = []
 
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, show, type, exportEmpty } = element
+    let { name, show, type, exportEmpty, exclude } = element
+    if (exclude) return
     if (show || exportEmpty) {
       importStr += `import ${name} from '@/packages/${name.toLowerCase()}';\n`
       importScssStr += `import '@/packages/${name.toLowerCase()}/${name.toLowerCase()}.scss';\n`

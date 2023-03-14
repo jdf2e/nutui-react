@@ -4,6 +4,8 @@ exports[`should match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="nut-menu  "
+    iconclassprefix="nut-icon"
+    iconfontclassname="nutui-iconfont"
   >
     <div
       class="nut-menu-relative"
@@ -22,10 +24,19 @@ exports[`should match snapshot 1`] = `
             >
               全部商品
             </div>
-            <i
-              class="nutui-iconfont nut-icon nut-icon-down-arrow nut-menu__title-icon"
-              style="font-size: 10px; height: 10px; width: 10px;"
-            />
+            <svg
+              aria-labelledby=""
+              class="nut-menu__title-icon nut-icon"
+              role="presentation"
+              viewBox="0 0 2472 1024"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1741.19 227.497a121.654 121.654 0 1 1 127.858 206.812L1292.65 790.27a182.482 182.482 0 0 1-191.727 0L524.646 434.31a121.654 121.654 0 1 1 127.859-206.812l544.403 335.887c181.387-111.8 362.773-223.965 544.282-335.887"
+                fill="currentColor"
+                fill-opacity="0.9"
+              />
+            </svg>
           </div>
         </div>
       </div>
@@ -48,10 +59,22 @@ exports[`should match snapshot 1`] = `
             class="nut-menu-item__option active"
             style="flex-basis: 100%;"
           >
-            <i
-              class="nutui-iconfont nut-icon nut-icon-Check "
-              style="color: rgb(242, 39, 12);"
-            />
+            <i>
+              <svg
+                aria-labelledby=""
+                class="nut-icon"
+                color="#F2270C"
+                role="presentation"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M998.4 245.029c-219.429 153.6-398.629 332.8-552.229 552.228-40.228 58.514-128 54.857-164.571-3.657-69.486-106.057-149.943-186.514-256-256-51.2-32.914-18.286-113.371 40.229-98.743C182.857 460.8 274.286 508.343 358.4 585.143c157.257-190.172 358.4-340.114 588.8-435.2 62.171-25.6 106.057 58.514 51.2 95.086"
+                  fill="currentColor"
+                  fill-opacity="0.9"
+                />
+              </svg>
+            </i>
             <div
               class=""
               style="color: rgb(242, 39, 12);"

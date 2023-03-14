@@ -1,7 +1,7 @@
 import React from 'react'
+import { Top } from '@nutui/icons-react'
 import { BackTop } from './backtop'
 import { useTranslate } from '../../sites/assets/locale'
-import Icon from '@/packages/icon'
 
 interface T {
   title: string
@@ -136,11 +136,11 @@ const BackTopDemo = () => {
               alignItems: 'center',
             }}
           >
-            <Icon size="12px" className="nut-backtop-main" name="top" />
+            <Top width={12} height={12} />
             <div style={{ fontSize: '12px' }}>{translated.backText}</div>
           </div>
         </BackTop>
-        <BackTop elId="elId" distance={200} bottom={50} onClick={handleClick} />
+        {/* <BackTop elId="elId" distance={200} bottom={50} onClick={handleClick} /> */}
       </div>
     </>
   )

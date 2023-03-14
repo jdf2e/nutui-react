@@ -1,9 +1,10 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
+import { Jd } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Elevator, Icon } from '@/packages/nutui.react.taro'
+import { Elevator } from '@/packages/nutui.react.taro'
 import '@/packages/elevator/demo.scss'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface ElevatorData {
   name: string
@@ -519,7 +520,7 @@ const ElevatorDemo = () => {
               {(value) => {
                 return (
                   <>
-                    <Icon name="JD" size="12" />
+                    <Jd width={12} height={12} />
                     <span style={{ marginLeft: '15px' }}>{value?.name}</span>
                   </>
                 )

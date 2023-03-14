@@ -2,17 +2,14 @@ import React, { FunctionComponent, useEffect } from 'react'
 import Taro from '@tarojs/taro'
 
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon/index.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface TabbarItemProps extends BasicComponent {
   dot: boolean
-  size: string | number
-  iconSize: string | number
   className: string
   tabTitle: string
-  icon: string
+  icon: React.ReactNode
   href: string
   to: any
   num: string | number
@@ -26,11 +23,9 @@ export interface TabbarItemProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   dot: false,
-  size: '',
-  iconSize: '',
   className: '',
   tabTitle: '',
-  icon: '',
+  icon: null,
   href: '',
   to: '',
   num: '',
@@ -46,8 +41,6 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
 ) => {
   const {
     dot,
-    size,
-    iconSize,
     className,
     style,
     tabTitle,
@@ -60,8 +53,6 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     unactiveColor,
     index,
     handleClick,
-    iconClassPrefix,
-    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -105,14 +96,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
         ) : (
           <div className={`${bIcon('tips', [bIcon('dot')])}`} />
         )}
-        {icon && (
-          <Icon
-            classPrefix={iconClassPrefix}
-            fontClassName={iconFontClassName}
-            size={iconSize || size}
-            name={icon}
-          />
-        )}
+        {icon || null}
       </div>
       {tabTitle && (
         <div

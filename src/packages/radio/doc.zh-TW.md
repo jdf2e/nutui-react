@@ -104,7 +104,7 @@ export default RadioGroupLast;
 
 ## 自訂圖示
 
-建議 『iconName』 'iconActiveName' 一起修改
+建議 『icon』 'iconActive' 一起修改
 
 :::demo
 
@@ -117,10 +117,10 @@ const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
     <Radio.RadioGroup value={radioVal}>
-      <Radio value="1" iconName={<CheckList/>}
-             iconActiveName={<CheckList/>}>自定义图标</Radio>
-      <Radio value="2" iconName={<CheckList/>}
-             iconActiveName={<CheckList/>}>自定义图标</Radio>
+      <Radio value="1" icon={<CheckList/>}
+             iconActive={<CheckList/>}>自定义图标</Radio>
+      <Radio value="2" icon={<CheckList/>}
+             iconActive={<CheckList/>}>自定义图标</Radio>
     </Radio.RadioGroup>
   </>
 }
@@ -198,8 +198,8 @@ export default RadioGroupOptions;
 |------------------|--------------------------------------------------------------|-------------------------|-------------------|
 | disabled         | 是否禁用選擇                                                 | `boolean`                 | `false`           |
 | iconSize        | [圖示尺寸](#/icon)                                           | `string`、`number`          | `18`              |
-| iconName        | [圖示名稱](#/icon)，選中前（建議和'iconActiveName'一起修改） | `string`                  | `'check-normal'`  |
-| iconActiveName | [圖示名稱](#/icon)，選取後（建議和'iconName'一起修改）        | `string`                  | `'check-checked'` |
+| icon        | [圖示名稱](#/icon)，選中前（建議和'iconActive'一起修改） | `string`                  | `'check-normal'`  |
+| iconActive | [圖示名稱](#/icon)，選取後（建議和'icon'一起修改）        | `string`                  | `'check-checked'` |
 | value            | 攜帶的標識值，用於 Group 模式                                                   | `string`、`number`、`boolean` | -                 |
 | shape            | 形狀，可選值為 button、round                                 | `string`                  | round             |
 

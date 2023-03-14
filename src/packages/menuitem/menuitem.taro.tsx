@@ -6,8 +6,8 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
+import { Check } from '@nutui/icons-react-taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import Icon from '@/packages/icon/index.taro'
 import { Overlay } from '../overlay/overlay.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -24,12 +24,10 @@ export interface MenuItemProps extends BasicComponent {
   options: OptionItem[]
   disabled: boolean
   columns: number
-  optionsIcon: string
+  optionsIcon: React.ReactNode
   direction: string
   activeTitleClass: string
   inactiveTitleClass: string
-  fontClassName: string
-  iconClassPrefix: string
   value: string | number
   onChange: (event: any) => void
   children: React.ReactNode
@@ -41,11 +39,9 @@ const defaultProps = {
   style: {},
   columns: 1,
   direction: 'down',
-  optionsIcon: 'Check',
+  optionsIcon: null,
   activeTitleClass: '',
   inactiveTitleClass: '',
-  iconClassPrefix: 'nut-icon',
-  fontClassName: 'nutui-iconfont',
   onChange: (value: OptionItem) => undefined,
 } as MenuItemProps
 export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
@@ -63,8 +59,6 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     activeTitleClass,
     inactiveTitleClass,
     children,
-    iconClassPrefix,
-    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -193,13 +187,14 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
                   }}
                 >
                   {item.value === _value ? (
-                    <Icon
-                      classPrefix={iconClassPrefix}
-                      fontClassName={iconFontClassName}
-                      className={getIconCName(item.value, value)}
-                      name={optionsIcon}
-                      color={activeColor}
-                    />
+                    <>
+                      {optionsIcon || (
+                        <Check
+                          color={activeColor}
+                          className={getIconCName(item.value, value)}
+                        />
+                      )}
+                    </>
                   ) : null}
                   <div
                     className={getIconCName(item.value, value)}

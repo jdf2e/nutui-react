@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { Cell, DatePicker } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
 
 interface PickerOption {
   text: string | number
@@ -11,7 +12,77 @@ interface PickerOption {
   className?: string | number
 }
 
+interface T {
+  [props: string]: string
+}
+
 const DatePickerDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '选择日期',
+      showChinese: '显示中文',
+      mmdd: '选择月日',
+      showAll: '选择年月日时分',
+      time: '选择时分秒',
+      hourMinutes: '选择时分',
+      format: '格式化选项',
+      stepMins: '分钟数递增步长设置',
+      filter: '过滤选项',
+      setStartEnd: '限制开始结束时间',
+      chooseDate: '日期时间选择',
+      chooseTime: '时间选择',
+      forever: '永远有效',
+      year: '年',
+      month: '月',
+      day: '日',
+      hour: '时',
+      min: '分',
+      seconds: '秒',
+    },
+    'zh-TW': {
+      basic: '選擇日期',
+      showChinese: '顯示中文',
+      mmdd: '選擇月日',
+      showAll: '選擇年月日時分',
+      time: '選擇時分秒',
+      hourMinutes: '選擇時分',
+      format: '格式化选项',
+      stepMins: '分鐘數遞增步長設置',
+      filter: '過濾選項',
+      setStartEnd: '限制開始結束時間',
+      chooseDate: '日期時間選擇',
+      chooseTime: '時間選擇',
+      forever: '永遠有效',
+      year: '年',
+      month: '月',
+      day: '日',
+      hour: '時',
+      min: '分',
+      seconds: '秒',
+    },
+    'en-US': {
+      basic: 'Choose Date',
+      showChinese: 'Show Chinese',
+      mmdd: 'Choose Month-Day',
+      showAll: 'Choose DateTime',
+      time: 'Choose Time',
+      hourMinutes: 'Selective time',
+      format: 'Option Formatter',
+      stepMins: 'Option Steps',
+      filter: 'Option Filter',
+      setStartEnd: 'Limit the start and end time',
+      chooseDate: 'Choose Time',
+      chooseTime: 'Choose Time',
+      forever: 'Forever',
+      year: 'Year',
+      month: 'Month',
+      day: 'Day',
+      hour: 'Hour',
+      min: 'Minute',
+      seconds: 'Second',
+    },
+  })
+
   const minDate = new Date(2020, 0, 1)
   const maxDate = new Date(2025, 10, 1)
   const [desc1, setDesc1] = useState('2012年 01月 01日')
@@ -21,6 +92,7 @@ const DatePickerDemo = () => {
   const [desc5, setDesc5] = useState('2020年 05月 10日 10:10')
   const [desc6, setDesc6] = useState('10:10:00')
   const [desc7, setDesc7] = useState('2022年05月10日 00时')
+  const [desc8, setDesc8] = useState('10:10')
 
   const [show1, setShow1] = useState(false)
   const [show2, setShow2] = useState(false)
@@ -29,6 +101,7 @@ const DatePickerDemo = () => {
   const [show5, setShow5] = useState(false)
   const [show6, setShow6] = useState(false)
   const [show7, setShow7] = useState(false)
+  const [show8, setShow8] = useState(false)
 
   const confirm1 = (values: (string | number)[], options: PickerOption[]) => {
     setDesc1(options.map((option) => option.text).join(' '))
@@ -68,6 +141,10 @@ const DatePickerDemo = () => {
     setDesc7(options.map((option) => option.text).join(' '))
   }
 
+  const confirm8 = (values: (string | number)[], options: PickerOption[]) => {
+    setDesc8(options.map((option) => option.text).join(':'))
+  }
+
   const filter = (type: string, options: PickerOption[]) => {
     if (type === 'hour') {
       return options.filter((option) => Number(option.value) % 6 === 0)
@@ -82,16 +159,16 @@ const DatePickerDemo = () => {
         op.text += ''
         break
       case 'month':
-        op.text += '月'
+        op.text += translated.month
         break
       case 'day':
-        op.text += '日'
+        op.text += translated.day
         break
       case 'hour':
-        op.text += '时'
+        op.text += translated.hour
         break
       case 'minute':
-        op.text += '分'
+        op.text += translated.min
         break
       default:
         op.text += ''
@@ -103,16 +180,16 @@ const DatePickerDemo = () => {
     const op = option
     switch (type) {
       case 'year':
-        op.text += `年`
+        op.text += translated.year
         break
       case 'month':
-        op.text += `月`
+        op.text += translated.month
         break
       case 'day':
-        op.text += `日`
+        op.text += translated.day
         break
       case 'hour':
-        op.text += `时`
+        op.text += translated.hour
         break
       default:
         op.text += ''
@@ -124,37 +201,57 @@ const DatePickerDemo = () => {
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>选择日期</h2>
-        <Cell title="显示中文" desc={desc1} onClick={() => setShow1(true)} />
-        <h2>选择月日</h2>
+        <h2>{translated.basic}</h2>
         <Cell
-          title="限制开始结束时间"
+          title={translated.showChinese}
+          desc={desc1}
+          onClick={() => setShow1(true)}
+        />
+        <h2>{translated.mmdd}</h2>
+        <Cell
+          title={translated.setStartEnd}
           desc={desc2}
           onClick={() => setShow2(true)}
         />
-
-        <h2>选择年月日时分</h2>
+        <h2>{translated.showAll}</h2>
         <Cell
-          title="日期时间选择"
+          title={translated.chooseDate}
           desc={desc3}
           onClick={() => setShow3(true)}
         />
-
-        <h2>选择时分秒</h2>
-        <Cell title="时间选择" desc={desc4} onClick={() => setShow4(true)} />
-
-        <h2>格式化选项</h2>
-        <Cell title="时间选择" desc={desc5} onClick={() => setShow5(true)} />
-
-        <h2>分钟数递增步长设置</h2>
-        <Cell title="时间选择" desc={desc6} onClick={() => setShow6(true)} />
-
-        <h2>过滤选项</h2>
-        <Cell title="时间选择" desc={desc7} onClick={() => setShow7(true)} />
-
+        <h2>{translated.time}</h2>
+        <Cell
+          title={translated.time}
+          desc={desc4}
+          onClick={() => setShow4(true)}
+        />
+        <h2>{translated.hourMinutes}</h2>
+        <Cell
+          title={translated.hourMinutes}
+          desc={desc8}
+          onClick={() => setShow8(true)}
+        />
+        <h2>{translated.format}</h2>
+        <Cell
+          title={translated.time}
+          desc={desc5}
+          onClick={() => setShow5(true)}
+        />
+        <h2>{translated.stepMins}</h2>
+        <Cell
+          title={translated.time}
+          desc={desc6}
+          onClick={() => setShow6(true)}
+        />
+        <h2>{translated.filter}</h2>
+        <Cell
+          title={translated.time}
+          desc={desc7}
+          onClick={() => setShow7(true)}
+        />
         {/* 选择日期 */}
         <DatePicker
-          title="日期选择"
+          title={translated.basic}
           visible={show1}
           isShowChinese
           onCloseDatePicker={() => setShow1(false)}
@@ -163,7 +260,7 @@ const DatePickerDemo = () => {
         />
         {/* 选择月日 */}
         <DatePicker
-          title="日期选择"
+          title={translated.basic}
           minDate={new Date(2022, 0, 1)}
           maxDate={new Date(2022, 7, 1)}
           type="month-day"
@@ -173,7 +270,7 @@ const DatePickerDemo = () => {
         />
         {/* 选择年月日时分 */}
         <DatePicker
-          title="日期时间选择"
+          title={translated.chooseDate}
           minDate={minDate}
           maxDate={maxDate}
           visible={show3}
@@ -183,7 +280,7 @@ const DatePickerDemo = () => {
         />
         {/* 选择时分秒 */}
         <DatePicker
-          title="时间选择"
+          title={translated.chooseTime}
           type="time"
           minDate={minDate}
           maxDate={maxDate}
@@ -191,10 +288,19 @@ const DatePickerDemo = () => {
           onCloseDatePicker={() => setShow4(false)}
           onConfirmDatePicker={(values, options) => confirm4(values, options)}
         />
-
+        {/* 选择时分 */}
+        <DatePicker
+          title={translated.chooseTime}
+          type="hour-minutes"
+          minDate={minDate}
+          maxDate={maxDate}
+          visible={show8}
+          onCloseDatePicker={() => setShow8(false)}
+          onConfirmDatePicker={(values, options) => confirm8(values, options)}
+        />
         {/* 格式化选项 */}
         <DatePicker
-          title="时间选择"
+          title={translated.chooseTime}
           type="datetime"
           minDate={new Date(2022, 0, 1)}
           maxDate={new Date(2022, 10, 1)}
@@ -205,7 +311,7 @@ const DatePickerDemo = () => {
         />
         {/* 分钟步长 */}
         <DatePicker
-          title="时间选择"
+          title={translated.chooseTime}
           type="time"
           minDate={minDate}
           maxDate={maxDate}
@@ -214,10 +320,9 @@ const DatePickerDemo = () => {
           onCloseDatePicker={() => setShow6(false)}
           onConfirmDatePicker={(values, options) => confirm6(values, options)}
         />
-
         {/* 过滤选项 */}
         <DatePicker
-          title="时间选择"
+          title={translated.chooseTime}
           type="datehour"
           minDate={minDate}
           maxDate={maxDate}

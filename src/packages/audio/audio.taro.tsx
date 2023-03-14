@@ -6,13 +6,12 @@ import React, {
 } from 'react'
 
 import { createInnerAudioContext, InnerAudioContext } from '@tarojs/taro'
-import Icon from '@/packages/icon/index.taro'
+import { Service } from '@nutui/icons-react'
 import Range from '@/packages/range/index.taro'
 import Button from '@/packages/button/index.taro'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { Service } from '@nutui/icons-react'
 
 const b = bem('audio')
 const warn = console.warn
