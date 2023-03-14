@@ -174,21 +174,21 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { CellGroup,Cell } from '@nutui/nutui-react';
+import { CellGroup, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <CellGroup title="自定义左侧 Icon 区域">
-        <Cell
+      <Cell
         title="图片"
-        iconSlot={
-            <img
+        icon={
+          <img
             className="nut-icon"
             alt=""
             src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-            />
+          />
         }
-        />
+      />
     </CellGroup>
   );
 };
@@ -204,10 +204,11 @@ export default App;
 ```tsx
 import  React from "react";
 import { Cell } from '@nutui/nutui-react';
+import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
-    <Cell title="姓名" icon="my" desc="描述文案" isLink />
+    <Cell title="姓名" icon={<My />} desc="描述文案" isLink />
   );
 };
 export default App;
@@ -278,11 +279,11 @@ export default App;
 | replace            | 是否在跳转时替换当前页面历史                             | boolean          | `false`  |
 | roundRadius`v1.2.0` | 圆角半径                                      | string            | `6px`    |
 | url                | 点击后跳转的链接地址                                         | string           | -      |
-| icon               | 左侧 [图标名称](#/icon) 或图片链接              | string           | -      |
+| icon               | 自定义左侧`icon`区域              | ReactNode           | -      |
 | center`v1.2.0`     | 是否使内容垂直居中                                                                             | boolean          | `false`  |
 | size`v1.2.0`       | 单元格大小，可选值为 `large`                           | string          | -  |
-| iconSlot`v1.2.0`   | 自定义左侧`icon`区域                          | ReactNode          | -  |
 | linkSlot`v1.2.0`   | 自定义右侧`link`区域                         | ReactNode          | -  |
+| iconSlot`v1.5.0 废弃`   | 直接使用 icon 即可                          | ReactNode          | -  |
 
 
 

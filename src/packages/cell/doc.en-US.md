@@ -183,7 +183,7 @@ const App = () => {
     <CellGroup title="Customize the left Icon area">
       <Cell
         title="Image"
-        iconSlot={
+        icon={
           <img
             className="nut-icon"
             alt=""
@@ -206,9 +206,10 @@ export default App
 ```tsx
 import React from 'react'
 import { Cell } from '@nutui/nutui-react'
+import { My } from '@nutui/icons-react'
 
 const App = () => {
-  return <Cell title="Name" icon="my" desc="Description" isLink />
+  return <Cell title="Name" icon={<My />} desc="Description" isLink />
 }
 export default App
 ```
@@ -276,11 +277,11 @@ export default App
 | replace           | If true, the navigation will not leave a history record                             | boolean          | `false`  |
 | roundRadius`v1.2.0` | Corner radius                                      | string            | `6px`    |
 | url               | Link                                         | string           | -      |
-| icon              |  Left [icon name](#/icon) or image              | string           | -      |
+| icon              |  Custom Left `icon`              | ReactNode          | -      |
 | center`v1.2.0`    | Whether to center content                                                                              | boolean          | `false`  |
 | size`v1.2.0`      | Size, can be set to `large`                         | string          | -  |
-| iconSlot`v1.2.0`  |  Custom Left `icon`                        | ReactNode          | -  |
 | linkSlot`v1.2.0`  | Custom Right`link`                      | ReactNode          | -  |
+| iconSlot`v1.5.0 deprecated`  |  Custom Left `icon`                        | ReactNode          | -  |
 
 
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { My } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Switch, Cell, CellGroup } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -164,7 +165,7 @@ const CellDemo = () => {
         <CellGroup title={translated.customLeftIcon}>
           <Cell
             title={translated.image}
-            iconSlot={
+            icon={
               <img
                 className="nut-icon"
                 alt=""
@@ -174,7 +175,12 @@ const CellDemo = () => {
           />
         </CellGroup>
         <h2>{translated.displayIcon}</h2>
-        <Cell title={translated.name} icon="my" desc={translated.desc} isLink />
+        <Cell
+          title={translated.name}
+          icon={<My />}
+          desc={translated.desc}
+          isLink
+        />
         <h2>{translated.title6}</h2>
         <Cell descTextAlign="left" desc={translated.desc} />
         <h2>{translated.title7}</h2>
