@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { getEnv } from '@tarojs/taro'
+import { CircleClose, Search } from '@nutui/icons-react-taro'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import Icon from '@/packages/icon/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type TIconDirection = 'in-left' | 'out-left' | 'in-right' | 'out-right'
@@ -81,7 +81,7 @@ const defaultProps = {
   readonly: true,
   autoFocus: false,
   label: '',
-  leftinIcon: <Icon name="search" size="12" />,
+  leftinIcon: <Search size="12" />,
 } as SearchBarProps
 export const SearchBar: FunctionComponent<
   Partial<SearchBarProps> &
@@ -255,13 +255,7 @@ export const SearchBar: FunctionComponent<
         className={`${searchbarBem('clear')} ${rightinIcon ? 'pos-right' : ''}`}
         onClick={(e: any) => clearaVal(e)}
       >
-        <Icon
-          classPrefix={iconClassPrefix}
-          fontClassName={iconFontClassName}
-          name="circle-close"
-          size={clearIconSize}
-          color="#555"
-        />
+        <CircleClose size={clearIconSize} color="#555" />
       </div>
     )
   }

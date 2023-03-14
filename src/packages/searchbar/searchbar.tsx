@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import { CircleClose, Search } from '@nutui/icons-react'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
-import Icon from '@/packages/icon'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type TIconDirection = 'in-left' | 'out-left' | 'in-right' | 'out-right'
@@ -80,7 +80,7 @@ const defaultProps = {
   readonly: true,
   autoFocus: false,
   label: '',
-  leftinIcon: <Icon name="search" size="12" />,
+  leftinIcon: <Search width="12" height="12" />,
 } as SearchBarProps
 export const SearchBar: FunctionComponent<
   Partial<SearchBarProps> &
@@ -123,8 +123,6 @@ export const SearchBar: FunctionComponent<
     onClickLeftoutIcon,
     onClickRightinIcon,
     onClickRightoutIcon,
-    iconClassPrefix,
-    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -152,7 +150,6 @@ export const SearchBar: FunctionComponent<
     const { value } = event.target as any
     onBlur && onBlur?.(value, event)
   }
-
   useEffect(() => {
     setValue(props.value)
   }, [props.value])
@@ -160,7 +157,6 @@ export const SearchBar: FunctionComponent<
   useEffect(() => {
     autoFocus && forceFocus()
   }, [autoFocus])
-
   const renderField = () => {
     return (
       <input
@@ -182,11 +178,9 @@ export const SearchBar: FunctionComponent<
       />
     )
   }
-
   const clickInput = (e: Event) => {
     onClickInput && onClickInput(e)
   }
-
   const renderLeftinIcon = () => {
     if (!leftinIcon) return null
     return (
@@ -253,11 +247,9 @@ export const SearchBar: FunctionComponent<
         className={`${searchbarBem('clear')} ${rightinIcon ? 'pos-right' : ''}`}
         onClick={(e: any) => clearaVal(e)}
       >
-        <Icon
-          classPrefix={iconClassPrefix}
-          fontClassName={iconFontClassName}
-          name="circle-close"
-          size={clearIconSize}
+        <CircleClose
+          width={clearIconSize}
+          height={clearIconSize}
           color="#555"
         />
       </div>
