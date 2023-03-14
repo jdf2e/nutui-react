@@ -1,8 +1,9 @@
 import React from 'react'
+import { CircleClose, Fabulous } from '@nutui/icons-react'
+import Image from '@/packages/image'
 import { NoticeBar } from './noticebar'
 import { useTranslate } from '../../sites/assets/locale'
 import './demo.scss'
-import Icon from '@/packages/icon'
 
 const NoticeBarDemo = () => {
   const [translated] = useTranslate({
@@ -67,11 +68,19 @@ const NoticeBarDemo = () => {
           {translated.text}
         </NoticeBar>
         <br />
-        <NoticeBar closeMode rightIcon="circle-close" onClick={hello}>
+        <NoticeBar closeMode rightIcon={<CircleClose />} onClick={hello}>
           {translated.text}
         </NoticeBar>
         <br />
-        <NoticeBar leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png">
+        <NoticeBar
+          leftIcon={
+            <Image
+              width="16px"
+              height="16px"
+              src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+            />
+          }
+        >
           <a href="https://www.jd.com" style={{ color: '#4d88ff' }}>
             {translated.jd}
           </a>
@@ -102,7 +111,13 @@ const NoticeBarDemo = () => {
             list={horseLamp2}
             speed={10}
             standTime={2000}
-            leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+            leftIcon={
+              <Image
+                width="16px"
+                height="16px"
+                src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+              />
+            }
             onClick={(e) => {
               console.log('listClick', e.target)
             }}
@@ -153,7 +168,7 @@ const NoticeBarDemo = () => {
             onClickItem={(e, v) => {
               console.log('onclick-custom', v)
             }}
-            rightIcon={<Icon name="fabulous" size="16" color="#f0250f" />}
+            rightIcon={<Fabulous width={16} height={16} color="#f0250f" />}
           />
         </div>
       </div>

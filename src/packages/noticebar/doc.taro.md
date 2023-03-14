@@ -67,6 +67,7 @@ export default App
 ```tsx
 import  React, {useState} from "react";
 import { NoticeBar } from '@nutui/nutui-react-taro';
+import { CircleClose } from '@nutui/icons-react';
 
 const App = () => {
     const hello = () => {
@@ -78,11 +79,11 @@ const App = () => {
           NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
         </NoticeBar>
         <br />
-        <NoticeBar closeMode rightIcon="circle-close" onClick={hello}>
+        <NoticeBar closeMode rightIcon={<CircleClose />} onClick={hello}>
           NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
         </NoticeBar>
         <br />
-        <NoticeBar leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png">
+        <NoticeBar leftIcon={<img alt="notice" src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}>
           <a href="https://www.jd.com">京东商城</a>
         </NoticeBar>
       </>
@@ -225,7 +226,8 @@ export default App
 
 ```tsx
 import  React, {useState} from "react";
-import { NoticeBar,Icon } from '@nutui/nutui-react-taro';
+import { NoticeBar } from '@nutui/nutui-react-taro';
+import { Fabulous } from '@nutui/icons-react-taro';
 
 const App = () => {
      const horseLamp1 = [
@@ -242,7 +244,7 @@ const App = () => {
             list={horseLamp1}
             speed={10}
             standTime={1000}
-            rightIcon={<Icon name="fabulous" size="16" color="#f0250f" />}
+            rightIcon={<Fabulous width={16} height={16} color="#f0250f" />}
         />
         </>
     )
@@ -261,8 +263,8 @@ export default App
 | direction       | 滚动的方向，可选 across、vertical                         | string        | `across`     |
 | text       | 提示的信息                                                 | string        | -     |
 | closeMode  | 是否启用关闭模式                                           | boolean       | `false`  |
-| leftIcon   | close为没有左边icon,其他为自定义的图片链接，没有为默认图片 | string        | -     |
-| rightIcon   | closeMode 模式下，默认为 ‘close’,其他模式下，没有为默认图片 | string        | -     |
+| leftIcon   | 左边的 icon，closeMode 模式下默认为空 | ReactNode        | -     |
+| rightIcon   | closeMode 模式下，默认为 `<Close />` | ReactNode        | -     |
 | color      | 导航栏的文字颜色                                           | string        | -     |
 | background | 导航栏的背景颜色                                           | string        | -     |
 | delay      | 延时多少秒                                                 | string \| number | `1`      |
@@ -281,13 +283,6 @@ export default App
 | height          | 每一个滚动列的高度(px)，注意：在使用 slot 插槽定义滚动单元时，按照实际高度修改此值                 | number | `40`              |
 | closeMode  | 是否启用右侧关闭图标，可以通过slot[name=rightIcon]自定义图标                                   | boolean       | `false`  |
 
-### Slots
-
-| 参数         | 说明                             | 
-|--------------|----------------------------------|
-| default         | 通知文本的内容               | 
-| rightIcon        | 自定义右侧图标    | 
-| leftIcon        | 自定义左侧图标    | 
 ### Event
 
 | 字段  | 说明             | 回调参数     |

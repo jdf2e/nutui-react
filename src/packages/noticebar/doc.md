@@ -67,7 +67,8 @@ export default App
 
 ```tsx
 import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
+import { NoticeBar, Image } from '@nutui/nutui-react';
+import { CircleClose } from '@nutui/icons-react';
 
 const App = () => {
     const hello = () => {
@@ -79,11 +80,11 @@ const App = () => {
           NutUI-React 是京东风格的 React 移动端组件库，开发和服务于移动 Web 界面的企业级产品。
         </NoticeBar>
         <br />
-        <NoticeBar closeMode rightIcon="circle-close" onClick={hello}>
+        <NoticeBar closeMode rightIcon={<CircleClose />} onClick={hello}>
           NutUI-React 是京东风格的 React 移动端组件库，开发和服务于移动 Web 界面的企业级产品。
         </NoticeBar>
         <br />
-        <NoticeBar leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png">
+        <NoticeBar leftIcon={<Image src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}>
           <a href="https://www.jd.com">京东商城</a>
         </NoticeBar>
       </>
@@ -161,7 +162,7 @@ export default App
 
 ```tsx
 import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
+import { NoticeBar, Image } from '@nutui/nutui-react';
 
 const App = () => {
      const horseLamp2 = ['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮'];
@@ -172,7 +173,7 @@ const App = () => {
             list={horseLamp2}
             speed={10}
             standTime={2000}
-            leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+            leftIcon={<Image src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}
             onClick={(e) => {
               console.log('listClick', e.target)
             }}
@@ -235,7 +236,8 @@ export default App
 
 ```tsx
 import  React, {useState} from "react";
-import { NoticeBar,Icon } from '@nutui/nutui-react';
+import { NoticeBar } from '@nutui/nutui-react';
+import { Fabulous } from '@nutui/icons-react';
 
 const App = () => {
      const horseLamp1 = [
@@ -255,7 +257,7 @@ const App = () => {
             onClickItem={(e, v) => {
               console.log('onclick-custom', v)
             }}
-            rightIcon={<Icon name="fabulous" size="16" color="#f0250f" />}
+            rightIcon={<Fabulous width={16} height={16} color="#f0250f" />}
         />
         </>
     )
@@ -274,8 +276,8 @@ export default App
 | direction       | 滚动的方向，可选 across、vertical                         | string        | `across`     |
 | text       | 提示的信息                                                 | string        | -     |
 | closeMode  | 是否启用关闭模式                                           | boolean       | `false`  |
-| leftIcon   | close为没有左边icon,其他为自定义的图片链接，没有为默认图片 | string        | -     |
-| rightIcon   | closeMode 模式下，默认为 ‘close’,其他模式下，没有为默认图片 | string        | -     |
+| leftIcon   | 左边的 icon，closeMode 模式下默认为空 | ReactNode        | -     |
+| rightIcon   | 右边的 icon，在 closeMode 模式下默认为 `<Close />` | ReactNode        | -     |
 | color      | 导航栏的文字颜色                                           | string        | -     |
 | background | 导航栏的背景颜色                                           | string        | -     |
 | delay      | 延时多少秒                                                 | string \| number | `1`      |
@@ -294,13 +296,6 @@ export default App
 | height          | 每一个滚动列的高度(px)，注意：在使用 slot 插槽定义滚动单元时，按照实际高度修改此值                 | number | `40`              |
 | closeMode  | 是否启用右侧关闭图标，可以通过slot[name=rightIcon]自定义图标                                   | boolean       | `false`  |
 
-### Slots
-
-| 参数         | 说明                             | 
-|--------------|----------------------------------|
-| default         | 通知文本的内容               | 
-| rightIcon        | 自定义右侧图标    | 
-| leftIcon        | 自定义左侧图标，垂直滚动模式下默认无左侧图标，配置后展示，配置为"close"    | 
 ### Event
 
 | 字段  | 说明             | 回调参数     |

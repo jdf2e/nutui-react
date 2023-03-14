@@ -6,14 +6,15 @@ import React, {
   MouseEvent,
   CSSProperties,
   useMemo,
+  ReactNode,
 } from 'react'
 
 import classNames from 'classnames'
-import Icon from '@/packages/icon/index.taro'
 import bem from '@/utils/bem'
 import { getRectByTaro } from '../../utils/useClientRect'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { Close, Notice } from '@nutui/icons-react-taro'
 
 export interface NoticeBarProps extends BasicComponent {
   // 滚动方向  across 横向 vertical 纵向
@@ -27,13 +28,13 @@ export interface NoticeBarProps extends BasicComponent {
   text: string
   closeMode: boolean
   wrapable: boolean
-  leftIcon: string
+  leftIcon: ReactNode
+  rightIcon: ReactNode
   color: string
   background: string
   delay: string | number
   scrollable: boolean | null
   speed: number
-  rightIcon?: HTMLElement | any
   close?: (event: any) => void
   click?: (event: any) => void
   onClose?: (event: any) => void
@@ -52,7 +53,8 @@ const defaultProps = {
   text: '',
   closeMode: false,
   wrapable: false,
-  leftIcon: '',
+  leftIcon: null,
+  rightIcon: null,
   color: '',
   background: '',
   delay: 1,
@@ -76,19 +78,17 @@ export const NoticeBar: FunctionComponent<
     closeMode,
     wrapable,
     leftIcon,
+    rightIcon,
     color,
     background,
     delay,
     scrollable,
     speed,
-    rightIcon,
     close,
     click,
     onClose,
     onClick,
     onClickItem,
-    iconClassPrefix,
-    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,
@@ -111,7 +111,6 @@ export const NoticeBar: FunctionComponent<
   const isVertical = direction === 'vertical'
   const [rect, setRect] = useState(null as any | null)
   let active = 0
-  const [vLeftIcon, setLeftIcon] = useState('')
   const [ready, setReady] = useState(false)
   const container = useRef<any>(null)
   const innerRef = useRef<any>(null)
@@ -152,12 +151,6 @@ export const NoticeBar: FunctionComponent<
 
   useEffect(() => {
     if (isVertical) {
-      // 兼容老版本无左侧Icon问题
-      if (leftIcon !== '') {
-        setLeftIcon(leftIcon)
-      } else {
-        setLeftIcon('close')
-      }
       if (children) {
         scrollList.current = [].concat(childs)
       } else {
@@ -293,20 +286,6 @@ export const NoticeBar: FunctionComponent<
     SetShowNoticeBar(!closeMode)
     close && close(event)
     onClose && onClose(event)
-  }
-
-  const iconShow = () => {
-    if (leftIcon === 'close' || vLeftIcon === 'close') {
-      return false
-    }
-    return true
-  }
-  const iconBg = () => {
-    let iconBg = ''
-    if (leftIcon) {
-      iconBg = leftIcon
-    }
-    return iconBg
   }
 
   const isEllipsis = () => {
@@ -521,22 +500,9 @@ export const NoticeBar: FunctionComponent<
     <div className={`${b()} ${className || ''}`} style={style}>
       {showNoticeBar && direction === 'across' ? (
         <div className={noticebarClass} style={barStyle} onClick={handleClick}>
-          {iconShow() ? (
-            <div
-              className="left-icon"
-              style={{ backgroundImage: `url(${iconBg() || ''})` }}
-            >
-              {!iconBg() ? (
-                <Icon
-                  classPrefix={iconClassPrefix}
-                  fontClassName={iconFontClassName}
-                  name="notice"
-                  size="16"
-                  color={color}
-                />
-              ) : null}
-            </div>
-          ) : null}
+          <div className="left-icon">
+            {leftIcon || <Notice size={16} color={color} />}
+          </div>
           <div ref={wrap} className="wrap">
             <div
               ref={content}
@@ -552,12 +518,7 @@ export const NoticeBar: FunctionComponent<
           </div>
           {closeMode || rightIcon ? (
             <div className="right-icon" onClick={onClickIcon}>
-              <Icon
-                classPrefix={iconClassPrefix}
-                fontClassName={iconFontClassName}
-                name={rightIcon || 'close'}
-                color={color}
-              />
+              {rightIcon || <Close size={12} color={color} />}
             </div>
           ) : null}
         </div>
@@ -569,22 +530,7 @@ export const NoticeBar: FunctionComponent<
           ref={container}
           onClick={handleClick}
         >
-          {iconShow() ? (
-            <div
-              className="left-icon"
-              style={{ backgroundImage: `url(${iconBg() || ''})` }}
-            >
-              {!iconBg() ? (
-                <Icon
-                  classPrefix={iconClassPrefix}
-                  fontClassName={iconFontClassName}
-                  name="notice"
-                  size="16"
-                  color={color}
-                />
-              ) : null}
-            </div>
-          ) : null}
+          {leftIcon ? <div className="left-icon">{leftIcon}</div> : null}
           {children ? (
             <>
               <div className="nut-noticebar__inner" ref={innerRef}>
@@ -630,15 +576,7 @@ export const NoticeBar: FunctionComponent<
             }}
           >
             {rightIcon ||
-              (closeMode ? (
-                <Icon
-                  classPrefix={iconClassPrefix}
-                  fontClassName={iconFontClassName}
-                  name={rightIcon || 'close'}
-                  color={color}
-                  size="11px"
-                />
-              ) : null)}
+              (closeMode ? <Close size={12} color={color} /> : null)}
           </div>
         </div>
       ) : null}
