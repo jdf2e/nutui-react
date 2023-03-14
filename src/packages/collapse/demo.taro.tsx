@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Taro from '@tarojs/taro'
+import { Checked, DownArrow, HeartFill, Star } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Collapse, CollapseItem, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -33,7 +34,7 @@ const CollapseDemo = () => {
       header2: '无icon样式，绑定点击事件',
       header3: '手风琴模式',
       header4: '自定义折叠图标',
-      header5: '自定义title图标',
+      header5: '自定义 title 与 subTitle',
       header6: '动态改变数据',
       title1: '标题1',
       title2: '标题2',
@@ -50,7 +51,7 @@ const CollapseDemo = () => {
       header2: '無icon樣式，綁定點擊事件',
       header3: '手風琴模式',
       header4: '自定義折疊圖標',
-      header5: '自定義title圖標',
+      header5: '自定義 title & subTitle',
       header6: '動態改變數據',
       title1: '標題1',
       title2: '標題2',
@@ -67,7 +68,7 @@ const CollapseDemo = () => {
       header2: 'No icon style',
       header3: 'accordion Mode',
       header4: 'Custom collapse Icon',
-      header5: 'Custom title Icon',
+      header5: 'Custom title & subTitle',
       header6: 'Change Data',
       title1: 'title1',
       title2: 'title2',
@@ -142,12 +143,7 @@ const CollapseDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>translated.header1</h2>
-        <Collapse
-          activeName={['1', '2']}
-          icon="arrow-down"
-          iconSize="16"
-          iconColor="#999"
-        >
+        <Collapse activeName={['1', '2']} icon={<DownArrow />}>
           <CollapseItem title={translated.title1} name="1">
             {translated.content1}
           </CollapseItem>
@@ -174,7 +170,7 @@ const CollapseDemo = () => {
           </CollapseItem>
         </Collapse>
         <h2>{translated.header3}</h2>
-        <Collapse activeName={['1']} accordion icon="arrow-down">
+        <Collapse activeName={['1']} accordion icon={<DownArrow />}>
           <CollapseItem
             title={translated.title1}
             name="1"
@@ -190,38 +186,53 @@ const CollapseDemo = () => {
           </CollapseItem>
         </Collapse>
         <h2>{translated.header4}</h2>
-        <Collapse activeName={['1']} accordion icon="arrow-right2" rotate={90}>
-          <CollapseItem title={translated.title1} name="1" icon="arrow-down">
+        <Collapse activeName={['1']} accordion icon={<DownArrow />} rotate={90}>
+          <CollapseItem title={translated.title1} name="1" icon={<Checked />}>
             {translated.content1}
           </CollapseItem>
-          <CollapseItem title={translated.title2} name="2" icon="arrow-down">
+          <CollapseItem title={translated.title2} name="2" icon={<HeartFill />}>
             {translated.content2}
           </CollapseItem>
-          <CollapseItem title={translated.title3} name="3" icon="arrow-down">
+          <CollapseItem title={translated.title3} name="3">
             {translated.content3}
           </CollapseItem>
         </Collapse>
         <h2>{translated.header5}</h2>
-        <Collapse activeName={['1']} accordion icon="star">
+        <Collapse activeName={['1']} accordion icon={<Star />}>
           <CollapseItem
-            title={translated.title1}
+            title={
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                <Checked />
+                {translated.title1}
+              </div>
+            }
             name="1"
-            titleIcon="checked"
-            titleIconSize="16"
-            titleIconPosition="left"
           >
             {translated.content1}
           </CollapseItem>
           <CollapseItem
             title={translated.title2}
+            subTitle={
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                {translated.title2}
+                <HeartFill color="red" />
+              </div>
+            }
             name="2"
-            titleIcon="heart-fill"
-            titleIconColor="red"
-            titleIconPosition="right"
           >
             {translated.content2}
           </CollapseItem>
-          <CollapseItem title={translated.title3} name="3" icon="arrow-down">
+          <CollapseItem title={translated.title3} name="3">
             {translated.content3}
           </CollapseItem>
         </Collapse>

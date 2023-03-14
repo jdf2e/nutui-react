@@ -1,4 +1,10 @@
-import React, { FunctionComponent, useEffect, useState, memo } from 'react'
+import React, {
+  FunctionComponent,
+  useEffect,
+  useState,
+  memo,
+  ReactNode,
+} from 'react'
 import classNames from 'classnames'
 
 import bem from '@/utils/bem'
@@ -8,9 +14,7 @@ export interface CollapseProps {
   style: React.CSSProperties
   activeName: Array<number | string> | number | string
   accordion: boolean
-  icon: string
-  iconSize: string
-  iconColor: string
+  icon: ReactNode
   rotate: number
   onChange: (isOpen: boolean, name: string) => void
   children?: React.ReactNode
@@ -18,9 +22,7 @@ export interface CollapseProps {
 const defaultProps = {
   activeName: ['0'],
   accordion: false,
-  icon: '',
-  iconSize: '16px',
-  iconColor: '',
+  icon: null,
   rotate: 180,
 } as CollapseProps
 
@@ -45,8 +47,6 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo(
       accordion,
       icon,
       rotate,
-      iconSize,
-      iconColor,
       onChange,
     } = {
       ...defaultProps,
@@ -103,10 +103,8 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo(
           return React.cloneElement(item, {
             isOpen: defaultOpenIndex.includes(item.props.name),
             onToggle: (isOpen: boolean, name: string) => onToggle(isOpen, name),
-            icon,
+            icon: item.props.icon || icon,
             rotate,
-            iconSize,
-            iconColor,
           })
         })}
       </div>

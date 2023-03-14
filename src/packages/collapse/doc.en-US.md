@@ -19,12 +19,13 @@ import { Collapse, CollapseItem } from 'nutui-react'
 :::demo
 ```jsx
 import  React from "react";
-import { Collapse,CollapseItem } from '@nutui/nutui-react';
+import { Collapse, CollapseItem } from '@nutui/nutui-react';
+import { DownArrow } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
-    <Collapse activeName={['1', '2']} icon="arrow-down" iconSize="16" iconColor="#999">
+    <Collapse activeName={['1', '2']} icon={<DownArrow />}>
       <CollapseItem title="title1" name="1">
         Nutui-React is a lightweight React component library with JD style
       </CollapseItem>
@@ -46,7 +47,7 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from 'react'
-import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+import { Collapse, CollapseItem } from '@nutui/nutui-react'
 
 const App = () => {
   const changeEnv = (isOpen: boolean, name: string) => {
@@ -75,11 +76,12 @@ export default App;
 :::demo
 ```tsx
 import React from 'react'
-import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+import { Collapse, CollapseItem} from '@nutui/nutui-react'
+import { DownArrow } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion icon="arrow-down">
+  <Collapse activeName={['1']} accordion icon={<DownArrow />}>
     <CollapseItem title="title1" name="1" subTitle="文本内容">
       Nutui-React is a lightweight React component library with JD style
     </CollapseItem>
@@ -100,18 +102,19 @@ export default App;
 :::demo
 ```jsx
 import React from 'react'
-import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+import { Collapse, CollapseItem } from '@nutui/nutui-react'
+import { DownArrow, Checked, HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion icon="arrow-right2" rotate={90}>
-    <CollapseItem title="title1" name="1" icon="arrow-down">
+  <Collapse activeName={['1']} accordion icon={<DownArrow />} rotate={90}>
+    <CollapseItem title="title1" name="1" icon={<Checked />}>
       Nutui-React is a lightweight React component library with JD style
     </CollapseItem>
-    <CollapseItem title="title2" name="2" icon="arrow-down">
+    <CollapseItem title="title2" name="2" icon={<HeartFill />}>
       The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!
     </CollapseItem>
-    <CollapseItem title="title3" name="3" icon="arrow-down">
+    <CollapseItem title="title3" name="3">
       Full use of typescipt
     </CollapseItem>
   </Collapse>
@@ -120,36 +123,49 @@ const App = () => {
 export default App;
 ```
 :::
-### Custom title Icon
+### Custom title & subTitle
 
 :::demo
 ```jsx
 import React from 'react'
-import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+import { Collapse, CollapseItem } from '@nutui/nutui-react'
+import { DownArrow, Checked, HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-    <Collapse activeName={['1']} accordion icon="arrow-down">
+    <Collapse activeName={['1']} accordion icon={<DownArrow />}>
       <CollapseItem
-        title="title1"
+        title={
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <Checked />title1
+          </div>
+        }
         name="1"
-        titleIcon="checked"
-        titleIconSize="16"
-        titleIconColor="red"
-        titleIconPosition="left"
       >
         Nutui-React is a lightweight React component library with JD style
       </CollapseItem>
       <CollapseItem
         title="title2"
         name="2"
-        titleIcon="heart-fill"
-        titleIconColor="red"
-        titleIconPosition="right"
+        subTitle={
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            title2<HeartFill color="red" />
+          </div>
+        }
       >
         The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!
       </CollapseItem>
-      <CollapseItem title="title3" name="3" icon="arrow-down">
+      <CollapseItem title="title3" name="3">
         Full use of typescipt
       </CollapseItem>
     </Collapse>
@@ -163,7 +179,7 @@ export default App;
 :::demo
 ```jsx
 import React, { useState } from 'react'
-import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+import { Collapse, CollapseItem, Button } from '@nutui/nutui-react'
 
 const App = () => {
   const [currIndex, setCurrIndex] = useState(2)
@@ -219,7 +235,7 @@ const App = () => {
         )
       })}
     </Collapse>
-    <button type="button" onClick={() => changeData()}>点击我</button>
+    <Button type="button" onClick={() => changeData()}>点击我</Button>
     </>
   )
 }
@@ -236,10 +252,10 @@ const App = () => {
 |--------------|----------------------------------|--------|------------------|
 | activeName   | Of the currently expanded panel name  | Accordion mode：string \| number Non accordion mode：(string \| number)[] | - |
 | accordion    | Whether to turn on accordion mode | boolean | `false`  |
-| icon         | Icon link and / or icon using nutui | string | -                |
-| iconSize     | Icon size                          | string      | `16px` |
-| iconColor    | Icon color                          | string | -              |
+| icon         | Icon | ReactNode | -                |
 | rotate       | Click the rotation angle of collapse and expansion to take effect in the custom icon mode| string \| number | `180` |
+| iconSize`v1.5.0 deprecated`     | Icon size                          | string      | `16px` |
+| iconColor`v1.5.0 deprecated`    | Icon color                          | string | -              |
 
 
 ### CollapseItem Prop
@@ -247,13 +263,13 @@ const App = () => {
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | name   | unique identifier, required                         |string \| number | - |
-| title    | the content on the left side of the title bar supports slot incoming (props incoming has higher priority)  | string | -  |
+| title    | the content on the left side of the title bar supports slot incoming (props incoming has higher priority)  | ReactNode | -  |
 | disabled    | whether the title bar is disabled                 | boolean | `false`  |
-| subTitle    | subtitle of title bar, support slot incoming (props incoming has higher priority)     | string | -  |
-| titleIcon    | Icon link and / or icon using nutui           | string | -  |
-| titleIconColor    | Icon color  of title     | string | -  |
-| titleIconSize    | Icon size  of title        | string | -  |
-| titleIconPosition    | Icon  position of title      | string | -  |
+| subTitle    | subtitle of title bar, support slot incoming (props incoming has higher priority)     | ReactNode | -  |
+| titleIcon`v1.5.0 deprecated`    | Icon link and / or icon using nutui           | string | -  |
+| titleIconColor`v1.5.0 deprecated`    | Icon color  of title     | string | -  |
+| titleIconSize`v1.5.0 deprecated`    | Icon size  of title        | string | -  |
+| titleIconPosition`v1.5.0 deprecated`    | Icon  position of title      | string | -  |
 
 
 

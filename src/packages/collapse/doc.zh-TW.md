@@ -19,12 +19,13 @@ import { Collapse, CollapseItem } from 'nutui-react'
 :::demo
 ```jsx
 import  React from "react";
-import { Collapse,CollapseItem } from '@nutui/nutui-react';
+import { Collapse, CollapseItem } from '@nutui/nutui-react';
+import { DownArrow } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
-    <Collapse activeName={['1', '2']} icon="arrow-down" iconSize="16" iconColor="#999">
+    <Collapse activeName={['1', '2']} icon={<DownArrow />}>
       <CollapseItem title="標題1" name="1">
         Nutui-React 是一套擁有京東風格的輕量級的 React 組件庫
       </CollapseItem>
@@ -46,7 +47,7 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from 'react'
-import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+import { Collapse, CollapseItem } from '@nutui/nutui-react'
 
 const App = () => {
   const changeEnv = (isOpen: boolean, name: string) => {
@@ -75,11 +76,12 @@ export default App;
 :::demo
 ```tsx
 import React from 'react'
-import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+import { Collapse, CollapseItem } from '@nutui/nutui-react'
+import { DownArrow } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion icon="arrow-down">
+  <Collapse activeName={['1']} accordion icon={<DownArrow />}>
     <CollapseItem title="標題1" name="1" subTitle="文本内容">
       Nutui-React 是一套擁有京東風格的輕量級的 React 組件庫
     </CollapseItem>
@@ -100,18 +102,19 @@ export default App;
 :::demo
 ```jsx
 import React from 'react'
-import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+import { Collapse, CollapseItem } from '@nutui/nutui-react'
+import { DownArrow, Checked, HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion icon="arrow-right2" rotate={90}>
-    <CollapseItem title="标题1" name="1" icon="arrow-down">
+  <Collapse activeName={['1']} accordion icon={<DownArrow />} rotate={90}>
+    <CollapseItem title="标题1" name="1" icon={<Checked />}>
       Nutui-React 是一套擁有京東風格的輕量級的 React 組件庫
     </CollapseItem>
-    <CollapseItem title="标题2" name="2" icon="arrow-down">
+    <CollapseItem title="标题2" name="2" icon={<HeartFill />}>
       在產品的功能、體驗、易用性和靈活性等各個方面做了全面的升級！
     </CollapseItem>
-    <CollapseItem title="标题3" name="3" icon="arrow-down">
+    <CollapseItem title="标题3" name="3">
       全面使用 TypeScipt
     </CollapseItem>
   </Collapse>
@@ -125,31 +128,44 @@ export default App;
 :::demo
 ```jsx
 import React from 'react'
-import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+import { Collapse, CollapseItem } from '@nutui/nutui-react'
+import { DownArrow, Checked, HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-    <Collapse activeName={['1']} accordion icon="arrow-down">
+    <Collapse activeName={['1']} accordion icon={<DownArrow />}>
       <CollapseItem
-        title="标题1"
+        title={
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <Checked />标题1
+          </div>
+        }
         name="1"
-        titleIcon="checked"
-        titleIconSize="16"
-        titleIconColor="red"
-        titleIconPosition="left"
       >
        Nutui-React 是一套擁有京東風格的輕量級的 React 組件庫
       </CollapseItem>
       <CollapseItem
         title="标题2"
         name="2"
-        titleIcon="heart-fill"
-        titleIconColor="red"
-        titleIconPosition="right"
+        subTitle={
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            标题2<HeartFill color="red" />
+          </div>
+        }
       >
         在產品的功能、體驗、易用性和靈活性等各個方面做了全面的升級！
       </CollapseItem>
-      <CollapseItem title="标题3" name="3" icon="arrow-down">
+      <CollapseItem title="标题3" name="3">
         全面使用 TypeScipt
       </CollapseItem>
     </Collapse>
@@ -163,7 +179,7 @@ export default App;
 :::demo
 ```jsx
 import React, { useState } from 'react'
-import { Collapse ,CollapseItem,Button} from '@nutui/nutui-react'
+import { Collapse, CollapseItem, Button} from '@nutui/nutui-react'
 
 const App = () => {
   const [currIndex, setCurrIndex] = useState(2)
@@ -241,10 +257,10 @@ const App = () => {
 |--------------|----------------------------------|--------|------------------|
 | activeName   |當前展開面板的 name               | 手風琴模式：string \| number 非手風琴模式：(string \| number)[] | - |
 | accordion    | 是否開啟手風琴模式                | boolean | `false`  |
-| icon         | 圖標鏈接/或使用 NutUI 的 icon      | string | -                |
-| iconSize     | 圖標大小                          | string      | `16px` |
-| iconColor    | 圖標顏色                          | string | -              |
+| icon         | Icon      | ReactNode | -                |
 | rotate       | 點擊折疊和展開的旋轉角度,在自定義圖標模式下生效| string \| number | `180` |
+| iconSize`v1.5.0 廢棄`     | 圖標大小                          | string      | `16px` |
+| iconColor`v1.5.0 廢棄`    | 圖標顏色                          | string | -              |
 
 
 ### CollapseItem Prop
@@ -252,13 +268,13 @@ const App = () => {
 | 參數         | 說明                             | 類型   |  默認值           |
 |--------------|----------------------------------|--------|------------------|
 | name   | 唯一標識符，必填                         |string \| number | - |
-| title    | 標題欄左側內容                   | string | -  |
+| title    | 標題欄左側內容                   | ReactNode | -  |
 | disabled    | 標題欄是否禁用                 | boolean | `false`  |
-| subTitle    | 標題欄副標題             | string | -  |
-| titleIcon    | 標題圖標鏈接/或使用 NutUI 的 icon             | string | -  |
-| titleIconColor    |標題圖標顏色          | string | -  |
-| titleIconSize    | 標題圖標大小        | string | -  |
-| titleIconPosition    | 標題圖標位置             | string | -  |
+| subTitle    | 標題欄副標題             | ReactNode | -  |
+| titleIcon`v1.5.0 廢棄`    | 標題圖標鏈接/或使用 NutUI 的 icon             | string | -  |
+| titleIconColor`v1.5.0 廢棄`    |標題圖標顏色          | string | -  |
+| titleIconSize`v1.5.0 廢棄`    | 標題圖標大小        | string | -  |
+| titleIconPosition`v1.5.0 廢棄`    | 標題圖標位置             | string | -  |
 
 
 
