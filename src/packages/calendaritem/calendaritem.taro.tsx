@@ -5,6 +5,7 @@ import bem from '@/utils/bem'
 import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { nextTick } from '@tarojs/taro'
 
 type CalendarRef = {
   scrollToDate: (date: string) => void
@@ -127,6 +128,7 @@ export const CalendarItem = React.forwardRef<
   const [translateY, setTranslateY] = useState(0)
   const [monthDefaultRange, setMonthDefaultRange] = useState<number[]>([])
   const [scrollTop, setScrollTop] = useState(0)
+  const [scrollWithAnimation, setScrollWithAnimation] = useState<boolean>(false)
 
   const [state] = useState<CalendarState>({
     currDate: '',
@@ -737,8 +739,8 @@ export const CalendarItem = React.forwardRef<
         ;(
           monthsPanel.current as HTMLDivElement
         ).style.height = `${containerHeight}px`
-        ;(months.current as HTMLDivElement).scrollTop =
-          state.monthsData[state.currentIndex].cssScrollHeight
+        setScrollTop(state.monthsData[state.currentIndex].cssScrollHeight)
+        nextTick(() => setScrollWithAnimation(true))
       }
     })
 
@@ -830,7 +832,7 @@ export const CalendarItem = React.forwardRef<
         <ScrollView
           scrollTop={scrollTop}
           scrollY
-          scrollWithAnimation
+          scrollWithAnimation={scrollWithAnimation}
           className="nut-calendar-content"
           onScroll={monthsViewScroll}
           ref={months}
