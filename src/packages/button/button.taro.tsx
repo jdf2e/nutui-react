@@ -27,7 +27,6 @@ export interface ButtonProps
   size: ButtonSize
   block: boolean
   icon: React.ReactNode
-  iconSize: string | number
   children: any
   onClick: (e: MouseEvent) => void
 }
@@ -54,7 +53,6 @@ const defaultProps = {
   size: 'normal',
   block: false,
   icon: '',
-  iconSize: '16',
   style: {},
   children: undefined,
   onClick: (e: MouseEvent) => {},
@@ -70,7 +68,6 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
     size,
     block,
     icon,
-    iconSize,
     children,
     onClick,
     className,
@@ -130,7 +127,6 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
     size,
     block,
     icon,
-    iconSize,
     children,
     onClick,
     classes,
@@ -154,7 +150,7 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
       onClick={(e) => handleClick(e)}
     >
       <div className="nut-button__warp" style={getStyle()}>
-        {loading && <Loading className="nut-icon-loading" size={iconSize} />}
+        {loading && <Loading className="nut-icon-loading" />}
         {!loading && icon ? icon : null}
         {children && (
           <div className={icon || loading ? 'text' : ''}>{children}</div>

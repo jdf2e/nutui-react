@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { Checklist } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Cell, Checkbox, Toast } from '@/packages/nutui.react.taro'
@@ -201,20 +202,11 @@ const CheckboxDemo = () => {
           <Checkbox.Group>
             <Checkbox
               checked={false}
-              iconName="checklist"
-              iconActiveName="checklist"
+              label={1}
+              icon={<Checklist />}
+              checkedIcon={<Checklist />}
             >
               {translated.customIcon}
-            </Checkbox>
-            <Checkbox
-              checked={false}
-              iconName="checklist"
-              iconActiveName="checklist"
-            >
-              <div>{translated.customIcon}</div>
-              <div style={{ fontSize: '12px', color: '#8c8c8c' }}>
-                {translated.customIcon}
-              </div>
             </Checkbox>
           </Checkbox.Group>
         </Cell>

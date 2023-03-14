@@ -209,7 +209,6 @@ const ButtonDemo = () => {
             type="primary"
             size="large"
             icon="star"
-            iconSize={20}
             style={{ margin: 8 }}
           >
             {translated['60a53514']}

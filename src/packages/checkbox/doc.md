@@ -108,17 +108,19 @@ export default CheckBoxDemo;
 
 ## 自定义图标
 
-这里建议同时设置 `iconName` 和 `iconActiveName` 属性
+这里建议同时设置 `icon` 和 `checkedIcon` 属性
 
 :::demo
 
 ```tsx
 import React from "react";
 import { Checkbox } from '@nutui/nutui-react';
+import { Checklist } from '@nutui/icons-react'
 
 const CheckBoxDemo = () => {
   return (<>
-    <Checkbox iconName="checklist" iconActiveName="checklist">自定义图标</Checkbox>
+    <Checkbox icon={<Checklist />}
+              checkedIcon={<Checklist />}>自定义图标</Checkbox>
   </>)
 }
 export default CheckBoxDemo;
@@ -426,18 +428,21 @@ export default CheckboxGroupOptions;
 
 ## Checkbox
 
-| 字段                            | 说明 | 类型            | 默认值               | 
-|-------------------------------| ----- |---------------|-------------------|
-| checked                       | 是否处于选中状态 | `boolean`       | `false`           |
-| disabled                      | 是否禁用选择 | `boolean`       | `false`           |
-| textPosition                  | 文本所在的位置，可选值：`left`,`right` | `string`        | `right`           |
-| iconSize                      | [图标尺寸](#/icon) | `string`、`number` | `18`              |
-| iconName                      | [图标名称](#/icon)，选中前(建议和`iconActiveName`一起修改) | `ReactNode`   | `'CheckNormal'`   |
-| iconActiveName                | [图标名称](#/icon)，选中后(建议和`iconName`一起修改) | `ReactNode`   | `'Checked'`       |
-| iconIndeterminateName`v1.2.1` | [图标名称](#/icon)，半选状态 | `ReactNode`         | `'CheckDisabled'` |
-| iconClassPrefix`v1.2.1`       | 自定义 icon 类名前缀，用于使用自定义图标        | `string`        | `nut-icon`        |
-| iconFontClassName`v1.2.1`       | 自定义 icon 字体基础类名        | `string`        | `nutui-iconfont`  |
-| label                         | 复选框的文本内容 | `string`        | -                 |
+| 字段                             | 说明                                          | 类型            | 默认值               | 
+|--------------------------------|---------------------------------------------|---------------|-------------------|
+| checked                        | 是否处于选中状态                                    | `boolean`       | `false`           |
+| disabled                       | 是否禁用选择                                      | `boolean`       | `false`           |
+| textPosition                   | 文本所在的位置，可选值：`left`,`right`                  | `string`        | `right`           |
+| iconSize                       | [图标尺寸]用于设置默认图标的大小                           | `string`、`number` | `18`              |
+| icon`v1.5.0`                   | [图标](#/icon)，选中前(建议和`iconActiveName`一起修改)   | `ReactNode`   | `'CheckNormal'`   |
+| checkedIcon`v1.5.0`            | [图标](#/icon)，选中后(建议和`iconName`一起修改)         | `ReactNode`   | `'Checked'`       |
+| indeterminateIcon`v1.5.0`      | [图标](#/icon)，半选状态                           | `ReactNode`         | `'CheckDisabled'` |
+| iconName`v1.5.0废弃`             | [图标名称](#/icon)，选中前(建议和`iconActiveName`一起修改) | `ReactNode`   | `'CheckNormal'`   |
+| iconActiveName`v1.5.0废弃`       | [图标名称](#/icon)，选中后(建议和`iconName`一起修改)       | `ReactNode`   | `'Checked'`       |
+| iconIndeterminateName`v1.5.0废弃` | [图标名称](#/icon)，半选状态                         | `ReactNode`         | `'CheckDisabled'` |
+| iconClassPrefix`v1.5.0废弃`      | 自定义 icon 类名前缀，用于使用自定义图标                     | `string`        | `nut-icon`        |
+| iconFontClassName`v1.5.0废弃`    | 自定义 icon 字体基础类名                             | `string`        | `nutui-iconfont`  |
+| label                          | 复选框的文本内容                                    | `string`        | -                 |
 
 ## Checkbox.Group
 

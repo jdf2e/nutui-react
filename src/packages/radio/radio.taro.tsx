@@ -24,7 +24,7 @@ export interface RadioProps extends BasicComponent {
   textPosition: Position
   value: string | number | boolean
   icon: React.ReactNode
-  iconActive: React.ReactNode
+  checkedIcon: React.ReactNode
   iconSize: string | number
   onChange: MouseEventHandler<HTMLDivElement>
 }
@@ -39,7 +39,7 @@ const defaultProps = {
   value: '',
   textPosition: 'right',
   icon: null,
-  iconActive: null,
+  checkedIcon: null,
   iconSize: 18,
   onChange: (e) => {},
 } as RadioProps
@@ -58,7 +58,7 @@ export const Radio: FunctionComponent<
     textPosition,
     value,
     icon,
-    iconActive,
+    checkedIcon,
     iconSize,
     onChange,
     iconClassPrefix,
@@ -110,13 +110,12 @@ export const Radio: FunctionComponent<
     return 'nut-radio__icon--unchecked'
   }
   const renderIcon = () => {
-    const { icon, iconSize, iconActive } = props
+    const { icon, iconSize, checkedIcon } = props
 
     if (!disabledStatement && checkedStatement) {
-      return React.isValidElement(iconActive) ? (
-        React.cloneElement<any>(iconActive, {
-          ...iconActive.props,
-          size: iconSize,
+      return React.isValidElement(checkedIcon) ? (
+        React.cloneElement<any>(checkedIcon, {
+          ...checkedIcon.props,
           className: color(),
         })
       ) : (
@@ -126,7 +125,6 @@ export const Radio: FunctionComponent<
     return React.isValidElement(icon) ? (
       React.cloneElement<any>(icon, {
         ...icon.props,
-        size: iconSize,
         className: color(),
       })
     ) : (

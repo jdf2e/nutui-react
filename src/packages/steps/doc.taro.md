@@ -441,8 +441,8 @@ export default App;
 | title            | 流程步骤的标题                 | `string`          | '' |
 | content          | 流程步骤的描述性文字              | `string`          | '' |
 | icon          | 图标(参考Icon组件)     | ReactNode          | '' |
-| iconColor          | 图标颜色                    | `string`          | null |
-| size          | 图标尺寸大小(来自Icon组件的size属性) | `string`          | '' |
+| iconColor`v1.5.0废弃`          | 图标颜色                    | `string`          | null |
+| size`v1.5.0废弃`          | 图标尺寸大小(来自Icon组件的size属性) | `string`          | '' |
 | activeIndex          | 流程步骤的索引                 | Number          | 0 |
 | renderContent         | 流程步骤的描述性文字的html结构       | React.ReactNode | - |
 
@@ -467,14 +467,12 @@ export default App;
 | --nutui-steps-base-title-margin-bottom | `  10px` |
 | --nutui-steps-base-content-font-size | `  14px` |
 | --nutui-steps-base-content-color | `  $title-color2` |
-
 | --nutui-steps-wait-icon-bg-color | `  #959fb1` |
 | --nutui-steps-wait-icon-color | ` $white` |
 | --nutui-steps-wait-head-color | ` #909ca4` |
 | --nutui-steps-wait-head-border-color | `  #909ca4` |
 | --nutui-steps-wait-title-color`v1.4.8` | `  $title-color2` |
 | --nutui-steps-wait-content-color | `  $title-color2` |
-
 | --nutui-steps-process-icon-bg-color`v1.4.8` | `  $primary-color` |
 | --nutui-steps-process-icon-color`v1.4.8` | ` $white` |
 | --nutui-steps-process-head-color | ` $primary-color` |
@@ -483,7 +481,6 @@ export default App;
 | --nutui-steps-process-title-font-size`v1.4.8` | ` 14px`|
 | --nutui-steps-process-title-font-weight`v1.4.8` | ` 400`|
 | --nutui-steps-process-content-color`v1.4.8` | `  $primary-color` |
-
 | --nutui-steps-finish-icon-bg-color`v1.4.8` | `  $primary-text-color` |
 | --nutui-steps-finish-icon-color`v1.4.8` | ` $primary-color` |
 | --nutui-steps-finish-head-color | ` $primary-color` |
@@ -491,7 +488,6 @@ export default App;
 | --nutui-steps-finish-title-color | `  $primary-color` |
 | --nutui-steps-finish-content-color`v1.4.8` | `  $title-color2` |
 | --nutui-steps-finish-line-background | `  $primary-color` |
-
 | --nutui-steps-dot-icon-width`v1.4.8` | `  6px` |
 | --nutui-steps-dot-icon-height`v1.4.8` | `  6px` |
 | --nutui-steps-dot-icon-border`v1.4.8` | `  2px solid $primary-text-color` |

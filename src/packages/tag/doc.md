@@ -190,16 +190,17 @@ export default App;
 
 ### Props
 
-| 字段       | 说明                                             | 类型               | 默认值        |
-|------------|--------------------------------------------------|------------------|------------|
-| type       | 标签类型，可选值为primary success danger warning | `string`         | `default`  |
-| color      | 标签颜色                                         | `string`         | -          |
-| texColor | 文本颜色，优先级高于color属性                    | `string`         | `white`    |
-| plain      | 是否为空心样式                                   | `boolean`        | `false`    |
-| round      | 是否为圆角样式                                   | `boolean`        | `false`    |
-| mark       | 是否为标记样式                                   | `boolean`        | `false`    |
-| closeable  | 是否为可关闭标签                                 | `boolean \| ReactNode` | `false`   |
-| iconSize`v1.4.7` | 关闭标签的尺寸 | `string \| number`    | `12`       |
+| 字段                 | 说明                                      | 类型               | 默认值       |
+|--------------------|-----------------------------------------|------------------|-----------|
+| type               | 标签类型，可选值为primary success danger warning | `string`         | `default` |
+| color              | 标签颜色                                    | `string`         | -         |
+| texColor           | 文本颜色，优先级高于color属性                       | `string`         | `white`   |
+| plain              | 是否为空心样式                                 | `boolean`        | `false`   |
+| round              | 是否为圆角样式                                 | `boolean`        | `false`   |
+| mark               | 是否为标记样式                                 | `boolean`        | `false`   |
+| closeable          | 是否为可关闭标签                                | `boolean` | `false`   |
+| closeIcon`v1.5.0`  | 关闭按钮                                    | `ReactNode` | `null`    |
+| iconSize`v1.5.0废弃` | 关闭标签的尺寸                                 | `string \| number`   | `12`       |
 
 ### Event
 

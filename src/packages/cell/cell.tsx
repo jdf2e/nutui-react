@@ -1,7 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react'
+import { Right } from '@nutui/icons-react'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface CellProps extends BasicComponent {
@@ -10,14 +9,13 @@ export interface CellProps extends BasicComponent {
   desc: string
   descTextAlign: string
   isLink: boolean
-  icon: string
+  icon: ReactNode
   roundRadius: string | number
   url: string
   replace: boolean
   center: boolean
   size: string
   className: string
-  iconSlot: ReactNode
   linkSlot: ReactNode
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
@@ -29,7 +27,7 @@ const defaultProps = {
   desc: '',
   descTextAlign: 'right',
   isLink: false,
-  icon: '',
+  icon: null,
   roundRadius: '6px',
   url: '',
   to: '',
@@ -37,7 +35,6 @@ const defaultProps = {
   center: false,
   size: '',
   className: '',
-  iconSlot: null,
   linkSlot: null,
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
@@ -60,7 +57,6 @@ export const Cell: FunctionComponent<
     center,
     size,
     className,
-    iconSlot,
     linkSlot,
     iconClassPrefix,
     iconFontClassName,
@@ -102,19 +98,7 @@ export const Cell: FunctionComponent<
     >
       {children || (
         <>
-          {icon || iconSlot ? (
-            <div className={b('icon')}>
-              {iconSlot ||
-                (icon ? (
-                  <Icon
-                    classPrefix={iconClassPrefix}
-                    fontClassName={iconFontClassName}
-                    name={icon}
-                    className="icon"
-                  />
-                ) : null)}
-            </div>
-          ) : null}
+          {icon && <div className={b('icon')}>{icon}</div>}
           {title || subTitle ? (
             <div className={`${b('title')}`}>
               {title ? <div className={b('maintitle')}>{title}</div> : null}
@@ -133,16 +117,7 @@ export const Cell: FunctionComponent<
               {desc}
             </div>
           ) : null}
-          {!linkSlot && isLink ? (
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              name="right"
-              className={b('link')}
-            />
-          ) : (
-            linkSlot
-          )}
+          {!linkSlot && isLink ? <Right className={b('link')} /> : linkSlot}
         </>
       )}
     </div>

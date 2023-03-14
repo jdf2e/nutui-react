@@ -87,7 +87,7 @@ const App = () => {
         <Cell title="自定義圖標" isLink onClick={() => { setShowIconDefine(true) }}/>
         <Popup closeable visible={ showIcon } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowIcon(false) } } />
         <Popup closeable visible={ showIconPosition } style={{ height: '20%' }} closeIconPosition="top-left" position="bottom" onClose={ () => { setShowIconPosition(false) } } />
-      <Popup visible={ showIconDefine } style={{ height: '20%' }} closeable={<Heart />} position="bottom" onClose={ () => { setShowIconDefine(false) } } />
+      <Popup visible={ showIconDefine } style={{ height: '20%' }} closeable closeIcon={<Heart />} position="bottom" onClose={ () => { setShowIconDefine(false) } } />
     </>
   );
 };
@@ -184,27 +184,27 @@ export default App;
 
 ### Props
 
-| 參數                   | 說明                                                        | 類型            | 默認值        |
-|------------------------|-------------------------------------------------------------|---------------|---------------|
-| visible                | 當前組件是否顯示 | boolean       | `false`       |
-| zIndex                | 遮罩層級 | string \      | number | `2000`        |
-| duration               | 遮罩動畫時長，單位秒 | number        | `0.3`         |
-| overlayClass          | 自定義遮罩類名 | string        | -             |
-| overlayStyle          | 自定義遮罩樣式 | CSSProperties | -             |
-| lockScroll            | 背景是否鎖定 | boolean       | `true`       |
-| overlay                | 是否顯示遮罩 | boolean       | `true`        |
-| closeOnClickOverlay | 是否點擊遮罩關閉 | boolean       | `true`        |
-| position               | 彈出位置（top,bottom,left,right,center） | string        | `center`    |
-| transition             | 動畫名 | string        | -             |
-| style                  | 自定義彈框樣式 | CSSProperties | -             |
-| popClass              | 自定義彈框類名 | string        | -             |
-| closeable              | 是否顯示關閉按鈕 | boolean       | `false`        |
-| closeIconSize`v1.4.7` | 关闭按钮大小 | string        | `12px` |
-| closeIconPosition    | 關閉按鈕位置（top-left,top-right,bottom-left,bottom-right） | string        | `top-right` |
-| closeIcon | 自定義 Icon | ReactNode          | `close`     |
-| destroyOnClose | 組件銷毀後是否關閉 | boolean       | `true`        |
-| round | 是否顯示圓角 | boolean       | `false`       |
-| teleport | 指定節點掛載 | HTMLElement \ | (() => HTMLElement) \| null        | `null`       |
+| 參數                      | 說明                                                        | 類型            | 默認值        |
+|-------------------------|-------------------------------------------------------------|---------------|---------------|
+| visible                 | 當前組件是否顯示 | boolean       | `false`       |
+| zIndex                  | 遮罩層級 | string \      | number | `2000`        |
+| duration                | 遮罩動畫時長，單位秒 | number        | `0.3`         |
+| overlayClass            | 自定義遮罩類名 | string        | -             |
+| overlayStyle            | 自定義遮罩樣式 | CSSProperties | -             |
+| lockScroll              | 背景是否鎖定 | boolean       | `true`       |
+| overlay                 | 是否顯示遮罩 | boolean       | `true`        |
+| closeOnClickOverlay     | 是否點擊遮罩關閉 | boolean       | `true`        |
+| position                | 彈出位置（top,bottom,left,right,center） | string        | `center`    |
+| transition              | 動畫名 | string        | -             |
+| style                   | 自定義彈框樣式 | CSSProperties | -             |
+| popClass                | 自定義彈框類名 | string        | -             |
+| closeable               | 是否顯示關閉按鈕 | boolean       | `false`        |
+| closeIconSize`v1.5.0废弃` | 关闭按钮大小 | string        | `12px` |
+| closeIconPosition       | 關閉按鈕位置（top-left,top-right,bottom-left,bottom-right） | string        | `top-right` |
+| closeIcon               | 自定義 Icon | ReactNode          | `close`     |
+| destroyOnClose          | 組件銷毀後是否關閉 | boolean       | `true`        |
+| round                   | 是否顯示圓角 | boolean       | `false`       |
+| teleport                | 指定節點掛載 | HTMLElement \ | (() => HTMLElement) \| null        | `null`       |
 
 ### Events
 

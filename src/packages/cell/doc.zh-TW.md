@@ -181,7 +181,7 @@ const App = () => {
     <CellGroup title="自定義左側 Icon 區域">
         <Cell
         title="圖片"
-        iconSlot={
+        icon={
             <img
             className="nut-icon"
             alt=""
@@ -204,10 +204,11 @@ export default App;
 ```tsx
 import  React from "react";
 import { Cell } from '@nutui/nutui-react';
+import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
-    <Cell title="姓名" icon="my" desc="描述文案" isLink />
+    <Cell title="姓名" icon={<My />} desc="描述文案" isLink />
   );
 };
 export default App;
@@ -278,10 +279,9 @@ export default App;
 | replace      | 是否在跳轉時替換當前頁面歷史                             | boolean          | `false`  |
 | roundRadius  | 圓角半徑                                      | string            | `6px`    |
 | url          | 點擊後跳轉的鏈接地址                                         | string           | -      |
-| icon         | 左側 [圖標名稱](#/icon) 或圖片鏈接              | string           | -      |
+| icon         | 自定義左側`icon`區域              | ReactNode          | -      |
 | center       | 是否使內容垂直居中                                                                             | boolean          | `false`  |
 | size         | 單元格大小，可選值為 `large`                           | string          | -  |
-| iconSlot     | 自定義左側`icon`區域                          | ReactNode          | -  |
 | linkSlot     | 自定義右側`link`區域                         | ReactNode          | -  |
 
 

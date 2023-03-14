@@ -67,7 +67,8 @@ export default App
 
 ```tsx
 import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
+import { NoticeBar, Image } from '@nutui/nutui-react';
+import { CircleClose } from '@nutui/icons-react';
 
 const App = () => {
     const hello = () => {
@@ -79,11 +80,11 @@ const App = () => {
           Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
         </NoticeBar>
         <br />
-        <NoticeBar closeMode rightIcon="circle-close" click={hello}>
+        <NoticeBar closeMode rightIcon={<CircleClose />} click={hello}>
           Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
         </NoticeBar>
         <br />
-        <NoticeBar leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png">
+        <NoticeBar leftIcon={<Image src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}>
           <a href="https://www.jd.com">Jingdong</a>
         </NoticeBar>
       </>
@@ -155,7 +156,7 @@ export default App
 
 ```tsx
 import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
+import { NoticeBar, Image } from '@nutui/nutui-react';
 
 const App = () => {
      const horseLamp2 = ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox'];
@@ -166,7 +167,7 @@ const App = () => {
             list={horseLamp2}
             speed={10}
             standTime={2000}
-            leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+            leftIcon={<Image src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}
             onClick={(e) => {
               console.log('listClick', e.target)
             }}
@@ -229,7 +230,8 @@ export default App
 
 ```tsx
 import  React, {useState} from "react";
-import { NoticeBar,Icon } from '@nutui/nutui-react';
+import { NoticeBar } from '@nutui/nutui-react';
+import { Fabulous } from '@nutui/icons-react';
 
 const App = () => {
      const horseLamp1 = ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox']
@@ -244,7 +246,7 @@ const App = () => {
             onClickItem={(e, v) => {
               console.log('onclick-custom', v)
             }}
-            rightIcon={<Icon name="fabulous" size="16" color="#f0250f" />}
+            rightIcon={<Fabulous width={16} height={16} color="#f0250f" />}
         />
         </>
     )
@@ -263,8 +265,8 @@ export default App
 | direction  | Rolling direction                                  | string        | `across`  |
 | text       | Notice text content                                | string        |  -      |
 | closeMode  | Whether to enable the off mode                     | boolean       | `false`   |
-| leftIcon   | Left Icon                                          | string        | -       |
-| rightIcon  | Right Icon                                         | string        | -       |
+| leftIcon   | Left Icon                                          | ReactNode        | -       |
+| rightIcon  | Right Icon                                         | ReactNode        | -       |
 | color      | Text Color                                         | string        | -       |
 | background | Background                                         | string        | -       |
 | delay      | Delay time                                         | string \| number | `1`       |
@@ -283,13 +285,6 @@ export default App
 | height       | height                                  | number   | `40`               |
 | closeMode    | Whether to enable the off mode          | boolean  | `false`            |
 
-### Slots
-
-| Attribute         | Description                      |
-|-------------------|----------------------------------|
-| default           | Notice text content              |
-| rightIcon        | Custom right icon                |
-| leftIcon         | Custom left icon                 |
 ### Event
 
 | Attribute  | Description                             | Arguments     |

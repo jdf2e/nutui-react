@@ -1,7 +1,8 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { CircleClose, Fabulous } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { NoticeBar, Icon } from '@/packages/nutui.react.taro'
+import { NoticeBar } from '@/packages/nutui.react.taro'
 import '@/packages/noticebar/demo.scss'
 import Header from '@/sites/components/header'
 
@@ -72,11 +73,20 @@ const NoticeBarDemo = () => {
           {translated.text}
         </NoticeBar>
         <br />
-        <NoticeBar closeMode rightIcon="circle-close" onClick={hello}>
+        <NoticeBar closeMode rightIcon={<CircleClose />} onClick={hello}>
           {translated.text}
         </NoticeBar>
         <br />
-        <NoticeBar leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png">
+        <NoticeBar
+          leftIcon={
+            <img
+              alt="notice"
+              width="16px"
+              height="16px"
+              src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+            />
+          }
+        >
           <a href="https://www.jd.com" style={{ color: '#4d88ff' }}>
             {translated.jd}
           </a>
@@ -106,7 +116,14 @@ const NoticeBarDemo = () => {
             list={horseLamp2}
             speed={10}
             standTime={2000}
-            leftIcon="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+            leftIcon={
+              <img
+                alt="notice"
+                width="16px"
+                height="16px"
+                src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png"
+              />
+            }
             onClick={(e) => {
               console.log('listClick', e.target)
             }}
@@ -157,7 +174,7 @@ const NoticeBarDemo = () => {
             onClickItem={(e, v) => {
               console.log('onclick-custom', v)
             }}
-            rightIcon={<Icon name="fabulous" size="16" color="#f0250f" />}
+            rightIcon={<Fabulous size={16} color="#f0250f" />}
           />
         </div>
       </div>
