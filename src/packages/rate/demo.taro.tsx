@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { HeartFill1 } from '@nutui/icons-react-taro'
 import { Rate, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
@@ -59,6 +60,7 @@ const RateDemo = () => {
           <Rate
             allowHalf
             modelValue="3.5"
+            checkedIcon={<HeartFill1 />}
             onChange={(num) => console.log('allowHalf count', num)}
           />
         </Cell>
@@ -66,9 +68,8 @@ const RateDemo = () => {
         <h2>{translated.customIcon}</h2>
         <Cell>
           <Rate
-            checkedIcon="heart-fill1"
-            uncheckedIcon="heart"
             modelValue="3"
+            checkedIcon={<HeartFill1 />}
             onChange={(num) => console.log('coustom icon count', num)}
           />
         </Cell>

@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
-import { StarFillN } from '@nutui/icons-react'
+import { StarFillN } from '@nutui/icons-react-taro'
 import bem from '@/utils/bem'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'

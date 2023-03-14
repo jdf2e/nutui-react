@@ -56,12 +56,11 @@ export default App;
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
+import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
   return ( 
-    <>   
-    <Rate checkedIcon="heart-fill1" uncheckedIcon="heart" modelValue="3" />
-    </>
+    <Rate checkedIcon={<HeartFill1 />} modelValue="3" />
   );
 };  
 export default App;
@@ -210,8 +209,8 @@ export default App;
 | iconSize      | size of star                              | number | `18`          |
 | activeColor   | Icon selection color                      | string  | `#fa200c`     |
 | voidColor     | Icon unselected color                    | string  | `#ccc`        |
-| uncheckedIcon | Use icon (unchecked)                    | string  | `star-n`      |
-| checkedIcon   | Use icon (checked)                       | string  | `star-fill-n` |
+| uncheckedIcon `v2.0.0 Abandon` | Use icon (unchecked) | string  | `star-n`      |
+| checkedIcon   | Use icon (checked) | `ReactNode`  | - |
 | allowHalf     | Half star or not                         | boolean | `false`       |
 | readonly       |Read only                              | boolean | `false`       |
 | disabled       | Disable or not                          | boolean | `false`       |

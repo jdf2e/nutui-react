@@ -55,12 +55,11 @@ export default App;
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react-taro';
+import { HeartFill1 } from '@nutui/icons-react-taro';
 
 const App = () => {
   return ( 
-    <>   
-    <Rate checkedIcon="heart-fill1" uncheckedIcon="heart" modelValue="3" />
-    </>
+    <Rate checkedIcon={<HeartFill1 />} modelValue="3" />
   );
 };  
 export default App;
@@ -209,8 +208,8 @@ export default App;
 | iconSize               | star 大小                                 | number | `18`          |
 | activeColor            | 图标选中颜色                              | string  | `#fa200c`     |
 | voidColor              | 图标未选中颜色                            | string  | `#ccc`        |
-| uncheckedIcon          | 使用图标(未选中)                          | string  | `star-n`      |
-| checkedIcon            | 使用图标(选中)                            | string  | `star-fill-n` |
+| uncheckedIcon `v2.0.0 废弃` | 使用图标(未选中) | string  | `star-n`      |
+| checkedIcon            | 使用图标(选中) | `ReactNode`  | - |
 | allowHalf              | 是否半星                                  | boolean | `false`       |
 | readonly               | 是否只读                                  | boolean | `false`       |
 | disabled               | 是否禁用                                  | boolean | `false`       |

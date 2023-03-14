@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heart, HeartFill1 } from '@nutui/icons-react'
+import { HeartFill1 } from '@nutui/icons-react'
 import { Rate } from './rate'
 import Cell from '@/packages/cell'
 import { useTranslate } from '@/sites/assets/locale'
@@ -56,7 +56,7 @@ const RateDemo = () => {
 
         <h2>{translated.halfStar}</h2>
         <Cell>
-          <Rate allowHalf modelValue="3.5" />
+          <Rate allowHalf modelValue="3.5" checkedIcon={<HeartFill1 />} />
         </Cell>
 
         <h2>{translated.customIcon}</h2>
