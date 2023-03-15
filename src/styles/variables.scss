@@ -1437,6 +1437,7 @@ $badge-border: var(
 ) !default;
 $badge-border-radius: var(--nutui-badge-border-radius, 14px) !default;
 $badge-padding: var(--nutui-badge-padding, 0 5px) !default;
+$badge-icon-padding: var(--nutui-badge-icon-padding, 2px) !default;
 $badge-content-transform: var(
   --nutui-badge-content-transform,
   translateY(-50%) translateX(100%)

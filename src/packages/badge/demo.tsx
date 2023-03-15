@@ -1,4 +1,5 @@
 import React from 'react'
+import { Checklist, Link as LinkIcon, Download, My } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Badge } from './badge'
 import Cell from '@/packages/cell'
@@ -64,16 +65,16 @@ const BadgeDemo = () => {
         <CellGroup>
           <Cell>
             <Badge value={8}>
-              <Avatar icon="my" shape="square" />
+              <Avatar icon={<My />} shape="square" />
             </Badge>
             <Badge value={76}>
-              <Avatar icon="my" shape="square" />
+              <Avatar icon={<My />} shape="square" />
             </Badge>
             <Badge value="NEW">
-              <Avatar icon="my" shape="square" />
+              <Avatar icon={<My />} shape="square" />
             </Badge>
             <Badge dot>
-              <Avatar icon="my" shape="square" />
+              <Avatar icon={<My />} shape="square" />
             </Badge>
           </Cell>
         </CellGroup>
@@ -82,13 +83,13 @@ const BadgeDemo = () => {
         <CellGroup>
           <Cell>
             <Badge value={200} max={9}>
-              <Avatar icon="my" shape="square" />
+              <Avatar icon={<My />} shape="square" />
             </Badge>
             <Badge value={200} max={20}>
-              <Avatar icon="my" shape="square" />
+              <Avatar icon={<My />} shape="square" />
             </Badge>
             <Badge value={200} max={99}>
-              <Avatar icon="my" shape="square" />
+              <Avatar icon={<My />} shape="square" />
             </Badge>
           </Cell>
         </CellGroup>
@@ -100,25 +101,25 @@ const BadgeDemo = () => {
               value={8}
               color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
             >
-              <Avatar icon="my" shape="square" />
+              <Avatar icon={<My />} shape="square" />
             </Badge>
             <Badge
               value={76}
               color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
             >
-              <Avatar icon="my" shape="square" />
+              <Avatar icon={<My />} shape="square" />
             </Badge>
             <Badge
               value="NEW"
               color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
             >
-              <Avatar icon="my" shape="square" />
+              <Avatar icon={<My />} shape="square" />
             </Badge>
             <Badge
               dot
               color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
             >
-              <Avatar icon="my" shape="square" />
+              <Avatar icon={<My />} shape="square" />
             </Badge>
           </Cell>
         </CellGroup>
@@ -126,14 +127,14 @@ const BadgeDemo = () => {
         <h2>{translated['1c730245']}</h2>
         <CellGroup>
           <Cell>
-            <Badge icons="checklist">
-              <Avatar icon="my" shape="square" />
+            <Badge icon={<Checklist color="#fff" />}>
+              <Avatar icon={<My />} shape="square" />
             </Badge>
-            <Badge icons="link">
-              <Avatar icon="my" shape="square" />
+            <Badge icon={<LinkIcon color="#fff" />}>
+              <Avatar icon={<My />} shape="square" />
             </Badge>
-            <Badge icons="download">
-              <Avatar icon="my" shape="square" />
+            <Badge icon={<Download color="#fff" />}>
+              <Avatar icon={<My />} shape="square" />
             </Badge>
           </Cell>
         </CellGroup>
@@ -143,13 +144,13 @@ const BadgeDemo = () => {
           <Cell>
             <ConfigProvider theme={customTheme}>
               <Badge value="NEW">
-                <Avatar icon="my" shape="square" />
+                <Avatar icon={<My />} shape="square" />
               </Badge>
             </ConfigProvider>
 
             <ConfigProvider theme={customTheme2}>
               <Badge dot top="2" right="8">
-                <Avatar icon="my" shape="square" />
+                <Avatar icon={<My />} shape="square" />
               </Badge>
             </ConfigProvider>
           </Cell>
@@ -159,13 +160,13 @@ const BadgeDemo = () => {
         <CellGroup>
           <Cell>
             <Badge value={8} top="5" right="5">
-              <Avatar icon="my" shape="square" />
+              <Avatar icon={<My />} shape="square" />
             </Badge>
             <Badge value={76} top="10" right="10">
-              <Avatar icon="my" shape="square" />
+              <Avatar icon={<My />} shape="square" />
             </Badge>
             <Badge value="NEW">
-              <Avatar icon="my" shape="square" />
+              <Avatar icon={<My />} shape="square" />
             </Badge>
           </Cell>
         </CellGroup>

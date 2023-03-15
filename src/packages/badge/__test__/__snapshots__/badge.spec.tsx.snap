@@ -1,17 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should match custom icons 1`] = `
+exports[`should match custom icon 1`] = `
 <DocumentFragment>
   <div
     class="nut-badge"
   >
     <div
-      class="slot-icons"
+      class="slot-icon"
     >
-      <i
-        class="nutui-iconfont nut-icon nut-icon-link _icon"
-        style="color: rgb(255, 255, 255); font-size: 12px; height: 12px; width: 12px;"
-      />
+      <svg
+        aria-labelledby=""
+        class="nut-icon"
+        role="presentation"
+        viewBox="0 0 1024 1024"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M159.289 500.622c62.578 0 125.155 17.067 221.867 102.4 8.533 5.69 19.91 5.69 25.6 0 48.355-54.044 238.933-261.689 455.11-329.955 0 0 28.445-5.69 42.667 19.91 8.534 17.067 19.911 34.134-5.689 54.045-22.755 17.067-264.533 179.2-440.888 440.89l-2.845 2.844c-11.378 8.533-68.267 51.2-119.467-14.223-56.888-71.11-85.333-139.377-196.266-196.266-2.845 0-2.845-2.845-5.69-5.69-11.377-11.377-54.044-73.955 25.6-73.955z"
+          fill="currentColor"
+          fill-opacity="0.9"
+        />
+      </svg>
     </div>
     <div />
     <div

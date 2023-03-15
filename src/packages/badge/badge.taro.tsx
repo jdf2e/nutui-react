@@ -1,7 +1,6 @@
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 
-import Icon from '@/packages/icon/index.taro'
 import bem from '@/utils/bem'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -14,7 +13,7 @@ export interface BadgeProps extends BasicComponent {
   right: string
   zIndex: string
   color: string
-  icons: any
+  icon: ReactNode
   children?: ReactNode
 }
 
@@ -32,22 +31,10 @@ const defaultProps = {
   right: '0',
   zIndex: '0',
   color: '',
-  icons: '',
+  icon: null,
 } as BadgeProps
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
-  const {
-    className,
-    style,
-    children,
-    dot,
-    top,
-    right,
-    zIndex,
-    color,
-    icons,
-    iconClassPrefix,
-    iconFontClassName,
-  } = {
+  const { className, style, children, dot, top, right, zIndex, color, icon } = {
     ...defaultProps,
     ...props,
   }
@@ -71,18 +58,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
 
   return (
     <div className={classNames(b(), className)} style={style}>
-      {icons !== '' && (
-        <div className="slot-icons">
-          <Icon
-            classPrefix={iconClassPrefix}
-            fontClassName={iconFontClassName}
-            className="_icon"
-            name={icons}
-            color="#ffffff"
-            size="12"
-          />
-        </div>
-      )}
+      {icon && <div className="slot-icon">{icon}</div>}
       <div>{children}</div>
       <div
         className={classNames({ 'is-dot': dot }, b('content'), 'sup')}
