@@ -251,6 +251,7 @@ export default App;
 | --nutui-badge-border | `0px solid $primary-text-color`|
 | --nutui-badge-border-radius | `14px` |
 | --nutui-badge-padding | `0 5px` |
+| --nutui-badge-icon-padding | `2px` |
 | --nutui-badge-content-transform | `translateY(-50%) translateX(100%)`|
 | --nutui-badge-z-index | `1` |
 | --nutui-badge-dot-width | `7px` |
