@@ -3,48 +3,37 @@ import React, {
   useEffect,
   useState,
   useCallback,
+  ReactNode,
 } from 'react'
 
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon/index.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface CollapseItemProps extends BasicComponent {
-  title: string
+  title: ReactNode
   name: string
   isOpen: boolean
-  icon: string
-  iconSize: string
-  iconColor: string
+  expandIcon: ReactNode
   disabled: boolean
   rotate: number
-  subTitle: string
-  titleIcon: string
-  titleIconColor: string
-  titleIconPosition: string
-  titleIconSize: string
+  subTitle: ReactNode
   onToggle: (isOpen: boolean, name: string) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
-  title: '',
+  title: null,
   name: '',
   isOpen: false,
-  icon: '',
-  iconSize: '',
-  iconColor: '',
+  expandIcon: null,
   disabled: false,
   rotate: 180,
-  subTitle: '',
-  titleIcon: '',
-  titleIconColor: '',
-  titleIconPosition: '',
-  titleIconSize: '',
+  subTitle: null,
 } as CollapseItemProps
 export const CollapseItem: FunctionComponent<
-  Partial<CollapseItemProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<CollapseItemProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
   const {
     children,
@@ -53,17 +42,9 @@ export const CollapseItem: FunctionComponent<
     onToggle,
     name,
     disabled,
-    icon,
+    expandIcon,
     rotate,
     subTitle,
-    titleIcon,
-    titleIconColor,
-    titleIconPosition,
-    titleIconSize,
-    iconSize,
-    iconColor,
-    iconClassPrefix,
-    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -117,41 +98,11 @@ export const CollapseItem: FunctionComponent<
           onToggle && onToggle(isOpen, name)
         }}
       >
-        <div className={colBem('title')}>
-          {titleIcon && titleIconPosition === 'left' && (
-            <b className={colBem('title-icon-left')}>
-              <Icon
-                classPrefix={iconClassPrefix}
-                fontClassName={iconFontClassName}
-                name={titleIcon}
-                size={titleIconSize}
-                color={disabled ? '#C2C2C2' : titleIconColor}
-              />
-            </b>
-          )}
-          {title}
-          {titleIcon && titleIconPosition === 'right' && (
-            <b className={colBem('title-icon-right')}>
-              <Icon
-                classPrefix={iconClassPrefix}
-                fontClassName={iconFontClassName}
-                name={titleIcon}
-                size={titleIconSize}
-                color={disabled ? '#C2C2C2' : titleIconColor}
-              />
-            </b>
-          )}
-        </div>
+        <div className={colBem('title')}>{title}</div>
         <div className={colBem('sub-title')}>{subTitle}</div>
         <div className={colBem('icon-box')}>
           <div className={colBem('icon')} style={iconStyle}>
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              name={icon}
-              size={iconSize}
-              color={disabled ? '#C2C2C2' : iconColor}
-            />
+            {expandIcon}
           </div>
         </div>
       </div>

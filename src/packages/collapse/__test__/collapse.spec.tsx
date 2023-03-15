@@ -3,18 +3,14 @@ import * as React from 'react'
 
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { DownArrow, ArrowRight2 } from '@nutui/icons-react'
 import { Collapse } from '../collapse'
 import { CollapseItem } from '../../collapseitem/collapseitem'
 
 test('should match snapshot', () => {
   const { asFragment } = render(
     <>
-      <Collapse
-        activeName={['1', '2']}
-        icon="arrow-down"
-        iconSize="16"
-        iconColor="#999"
-      >
+      <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
         <CollapseItem title="标题1" name="1">
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
@@ -33,12 +29,7 @@ test('should match snapshot', () => {
 test('prop icon iconSize iconColor', () => {
   const { getByTestId, container } = render(
     <>
-      <Collapse
-        activeName={['1', '2']}
-        icon="arrow-down"
-        iconSize="16"
-        iconColor="#999"
-      >
+      <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
         <CollapseItem title="标题1" name="1">
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
@@ -65,12 +56,7 @@ test('prop icon iconSize iconColor', () => {
 test('prop activeName', () => {
   const { container } = render(
     <>
-      <Collapse
-        activeName={['1', '2']}
-        icon="arrow-down"
-        iconSize="16"
-        iconColor="#999"
-      >
+      <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
         <CollapseItem title="标题1" name="1">
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
@@ -94,7 +80,7 @@ test('prop activeName', () => {
 test('prop accordion', () => {
   const { getByTestId, container } = render(
     <>
-      <Collapse activeName={['1']} accordion icon="arrow-down">
+      <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
         <CollapseItem
           title="标题1"
           name="1"
@@ -126,19 +112,24 @@ test('prop accordion', () => {
 test('prop rotate', () => {
   const { getByTestId, container } = render(
     <>
-      <Collapse activeName={['1']} accordion icon="arrow-right2" rotate={180}>
+      <Collapse
+        activeName={['1']}
+        accordion
+        expandIcon={<ArrowRight2 />}
+        rotate={180}
+      >
         <CollapseItem
           title="标题1"
           name="1"
-          icon="arrow-down"
+          expandIcon={<DownArrow />}
           data-testid="collapse-one"
         >
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
-        <CollapseItem title="标题2" name="2" icon="arrow-down">
+        <CollapseItem title="标题2" name="2" expandIcon={<DownArrow />}>
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
-        <CollapseItem title="标题3" name="3" icon="arrow-down">
+        <CollapseItem title="标题3" name="3" expandIcon={<DownArrow />}>
           京东“厂直优品计划”首推“政府优品馆”
         </CollapseItem>
       </Collapse>
@@ -155,24 +146,20 @@ test('prop rotate', () => {
 test('prop title subTitle titleIconColor titleIconSize titleIconPosition', () => {
   const { getByTestId, container } = render(
     <>
-      <Collapse activeName={['1']} accordion icon="arrow-right2">
+      <Collapse activeName={['1']} accordion expandIcon="arrow-right2">
         <CollapseItem
           title="标题1"
           subTitle="副标题"
           name="1"
-          icon="arrow-down"
-          titleIcon="checked"
+          expandIcon={<DownArrow />}
           data-testid="collapse-one"
-          titleIconColor="red"
-          titleIconPosition="left"
-          titleIconSize="16"
         >
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
-        <CollapseItem title="标题2" name="2" icon="arrow-down">
+        <CollapseItem title="标题2" name="2" expandIcon={<DownArrow />}>
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
-        <CollapseItem title="标题3" name="3" icon="arrow-down">
+        <CollapseItem title="标题3" name="3" expandIcon={<DownArrow />}>
           京东“厂直优品计划”首推“政府优品馆”
         </CollapseItem>
       </Collapse>

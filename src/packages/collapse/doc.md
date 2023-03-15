@@ -19,12 +19,13 @@ import { Collapse, CollapseItem } from 'nutui-react'
 :::demo
 ```jsx
 import  React from "react";
-import { Collapse,CollapseItem } from '@nutui/nutui-react';
+import { Collapse, CollapseItem } from '@nutui/nutui-react';
+import { DownArrow } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
-    <Collapse activeName={['1', '2']} icon="arrow-down" iconSize="16" iconColor="#999">
+    <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
       <CollapseItem title="标题1" name="1">
         京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
       </CollapseItem>
@@ -46,7 +47,8 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from 'react'
-import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+import { Collapse, CollapseItem} from '@nutui/nutui-react'
+import { DownArrow } from '@nutui/icons-react'
 
 const App = () => {
   const changeEnv = (isOpen: boolean, name: string) => {
@@ -75,11 +77,12 @@ export default App;
 :::demo
 ```tsx
 import React from 'react'
-import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+import { Collapse, CollapseItem} from '@nutui/nutui-react'
+import { DownArrow } from '@nutui/icons-react'
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion icon="arrow-down">
+  <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
     <CollapseItem title="标题1" name="1" subTitle="文本内容">
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
     </CollapseItem>
@@ -100,18 +103,19 @@ export default App;
 :::demo
 ```jsx
 import React from 'react'
-import { Collapse ,CollapseItem} from '@nutui/nutui-react'
+import { Collapse, CollapseItem} from '@nutui/nutui-react'
+import { DownArrow, Checked, HeartFill } from '@nutui/icons-react'
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion icon="arrow-right2" rotate={90}>
-    <CollapseItem title="标题1" name="1" icon="arrow-down">
+  <Collapse activeName={['1']} accordion expandIcon={<DownArrow />} rotate={90}>
+    <CollapseItem title="标题1" name="1" expandIcon={<Checked />}>
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
     </CollapseItem>
-    <CollapseItem title="标题2" name="2" icon="arrow-down">
+    <CollapseItem title="标题2" name="2" expandIcon={<HeartFill />}>
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
     </CollapseItem>
-    <CollapseItem title="标题3" name="3" icon="arrow-down">
+    <CollapseItem title="标题3" name="3">
       京东“厂直优品计划”首推“政府优品馆”
     </CollapseItem>
   </Collapse>
@@ -120,36 +124,49 @@ const App = () => {
 export default App;
 ```
 :::
-### 自定义title图标
+### 自定义 title 与 subTitle
 
 :::demo
 ```jsx
 import React from 'react'
-import { Collapse ,CollapseItem, Button} from '@nutui/nutui-react'
+import { Collapse, CollapseItem, Button} from '@nutui/nutui-react'
+import { DownArrow, Checked, HeartFill } from '@nutui/icons-react'
 
 const App = () => {
   return (  
-    <Collapse activeName={['1']} accordion icon="arrow-down">
+    <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
       <CollapseItem
-        title="标题1"
+        title={
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <Checked />标题1
+          </div>
+        }
         name="1"
-        titleIcon="checked"
-        titleIconSize="16"
-        titleIconColor="red"
-        titleIconPosition="left"
       >
         京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
       </CollapseItem>
       <CollapseItem
         title="标题2"
         name="2"
-        titleIcon="heart-fill"
-        titleIconColor="red"
-        titleIconPosition="right"
+        subTitle={
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            标题2<HeartFill color="red" />
+          </div>
+        }
       >
         京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
       </CollapseItem>
-      <CollapseItem title="标题3" name="3" icon="arrow-down">
+      <CollapseItem title="标题3" name="3">
         京东“厂直优品计划”首推“政府优品馆”
       </CollapseItem>
     </Collapse>
@@ -163,7 +180,7 @@ export default App;
 :::demo
 ```jsx
 import React, { useState } from 'react'
-import { Collapse ,CollapseItem,Button} from '@nutui/nutui-react'
+import { Collapse, CollapseItem, Button } from '@nutui/nutui-react'
 
 const oldDate = [
   {
@@ -247,10 +264,11 @@ const App = () => {
 |--------------|----------------------------------|--------|------------------|
 | activeName   | 当前展开面板的 name               | 手风琴模式：string \| number 非手风琴模式：(string \| number)[] | - |
 | accordion    | 是否开启手风琴模式                 | boolean | `false`  |
-| icon         | 图标链接/或使用 NutUI 的 icon      | string | -                |
-| iconSize     | 图标大小                          | string      | `16px` |
-| iconColor    | 图标颜色                          | string | -              |
 | rotate       | 点击折叠和展开的旋转角度,在自定义图标模式下生效| string \| number | `180` |
+| expandIcon`v1.5.0`         | 自定义展开图标      | ReactNode | -                |
+| icon`v1.5.0 废弃`         | 使用 expandIcon      | string | -                |
+| iconSize`v1.5.0 废弃`     | 图标大小                          | string      | `16px` |
+| iconColor`v1.5.0 废弃`    | 图标颜色                          | string | -              |
 
 
 ### CollapseItem Prop
@@ -258,13 +276,13 @@ const App = () => {
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | name   | 唯一标识符，必填                         |string \| number | - |
-| title    | 标题栏左侧内容                 | string | -  |
+| title    | 标题栏左侧内容                 | ReactNode | -  |
 | disabled    | 标题栏是否禁用                 | boolean | `false`  |
-| subTitle    | 标题栏副标题             | string | -  |
-| titleIcon    | 标题图标链接/或使用 NutUI 的 icon             | string | -  |
-| titleIconColor    | 标题图标颜色        | string | -  |
-| titleIconSize    | 标题图标大小        | string | -  |
-| titleIconPosition    | 标题图标位置             | string | -  |
+| subTitle    | 标题栏副标题             | ReactNode | -  |
+| titleIcon`v1.5.0 废弃`    | 标题图标链接/或使用 NutUI 的 icon             | string | -  |
+| titleIconColor`v1.5.0 废弃`    | 标题图标颜色        | string | -  |
+| titleIconSize`v1.5.0 废弃`    | 标题图标大小        | string | -  |
+| titleIconPosition`v1.5.0 废弃`    | 标题图标位置             | string | -  |
 
 
 
