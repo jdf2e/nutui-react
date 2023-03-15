@@ -1,3 +1,19 @@
+# v1.4.11
+`2023-03-15`
+
+* :sparkles: feat(datepicker): 新增支持时分类型选择&同步增加demo&taro文档国际化 (#782) @irisSong
+* :sparkles: feat: calendar新增onYearMonthChange属性 (#807) @midday
+* :sparkles: feat: 修复 taro 版本日历默认滚动到相应区域和首页白屏问题 (#805) @midday
+* :sparkles: feat: 表格支持隐藏表头属性 (#796) @midday
+* :bug: fix: ellipsis 在深层嵌套中无法获取元素信息 (#798) @oasis-cloud
+* :bug: fix: fix-col-offset (#783) @Penguin-Lin
+* :bug: fix: notify 组件设置 position 之后位置错误 (#803) @oasis-cloud
+* :bug: fix: radiogroup 中使用 button 类型的 radio 样式不对 (#801) @oasis-cloud
+* :bug: fix: textarea 优化中文输入 (#797) @oasis-cloud
+* :bug: fix: 修复 SearchBar 清空内容时失去焦点的问题 @midday
+* :bug: fix: 修改 textarea 的 padding 为之前版本的值 (#800) @oasis-cloud
+* 🔨 chore(shortpassword): 删除不必要的 log 信息 (#780) @AnteeHub
+
 # v1.4.10
 `2023-03-08`
 
