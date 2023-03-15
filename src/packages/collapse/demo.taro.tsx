@@ -143,7 +143,7 @@ const CollapseDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>translated.header1</h2>
-        <Collapse activeName={['1', '2']} icon={<DownArrow />}>
+        <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
           <CollapseItem title={translated.title1} name="1">
             {translated.content1}
           </CollapseItem>
@@ -170,7 +170,7 @@ const CollapseDemo = () => {
           </CollapseItem>
         </Collapse>
         <h2>{translated.header3}</h2>
-        <Collapse activeName={['1']} accordion icon={<DownArrow />}>
+        <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
           <CollapseItem
             title={translated.title1}
             name="1"
@@ -186,11 +186,24 @@ const CollapseDemo = () => {
           </CollapseItem>
         </Collapse>
         <h2>{translated.header4}</h2>
-        <Collapse activeName={['1']} accordion icon={<DownArrow />} rotate={90}>
-          <CollapseItem title={translated.title1} name="1" icon={<Checked />}>
+        <Collapse
+          activeName={['1']}
+          accordion
+          expandIcon={<DownArrow />}
+          rotate={90}
+        >
+          <CollapseItem
+            title={translated.title1}
+            name="1"
+            expandIcon={<Checked />}
+          >
             {translated.content1}
           </CollapseItem>
-          <CollapseItem title={translated.title2} name="2" icon={<HeartFill />}>
+          <CollapseItem
+            title={translated.title2}
+            name="2"
+            expandIcon={<HeartFill />}
+          >
             {translated.content2}
           </CollapseItem>
           <CollapseItem title={translated.title3} name="3">
@@ -198,7 +211,7 @@ const CollapseDemo = () => {
           </CollapseItem>
         </Collapse>
         <h2>{translated.header5}</h2>
-        <Collapse activeName={['1']} accordion icon={<Star />}>
+        <Collapse activeName={['1']} accordion expandIcon={<Star />}>
           <CollapseItem
             title={
               <div

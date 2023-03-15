@@ -25,7 +25,7 @@ import { DownArrow } from '@nutui/icons-react';
 const App = () => {
   return (
     <>
-    <Collapse activeName={['1', '2']} icon={<DownArrow />}>
+    <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
       <CollapseItem title="title1" name="1">
         Nutui-React is a lightweight React component library with JD style
       </CollapseItem>
@@ -81,7 +81,7 @@ import { DownArrow } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion icon={<DownArrow />}>
+  <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
     <CollapseItem title="title1" name="1" subTitle="文本内容">
       Nutui-React is a lightweight React component library with JD style
     </CollapseItem>
@@ -107,11 +107,11 @@ import { DownArrow, Checked, HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion icon={<DownArrow />} rotate={90}>
-    <CollapseItem title="title1" name="1" icon={<Checked />}>
+  <Collapse activeName={['1']} accordion expandIcon={<DownArrow />} rotate={90}>
+    <CollapseItem title="title1" name="1" expandIcon={<Checked />}>
       Nutui-React is a lightweight React component library with JD style
     </CollapseItem>
-    <CollapseItem title="title2" name="2" icon={<HeartFill />}>
+    <CollapseItem title="title2" name="2" expandIcon={<HeartFill />}>
       The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!
     </CollapseItem>
     <CollapseItem title="title3" name="3">
@@ -133,7 +133,7 @@ import { DownArrow, Checked, HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-    <Collapse activeName={['1']} accordion icon={<DownArrow />}>
+    <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
       <CollapseItem
         title={
           <div
@@ -252,8 +252,9 @@ const App = () => {
 |--------------|----------------------------------|--------|------------------|
 | activeName   | Of the currently expanded panel name  | Accordion mode：string \| number Non accordion mode：(string \| number)[] | - |
 | accordion    | Whether to turn on accordion mode | boolean | `false`  |
-| icon         | Icon | ReactNode | -                |
 | rotate       | Click the rotation angle of collapse and expansion to take effect in the custom icon mode| string \| number | `180` |
+| expandIcon`v1.5.0`         | Icon      | ReactNode | -                |
+| icon`v1.5.0 deprecated`         | use expandIcon      | string | -                |
 | iconSize`v1.5.0 deprecated`     | Icon size                          | string      | `16px` |
 | iconColor`v1.5.0 deprecated`    | Icon color                          | string | -              |
 

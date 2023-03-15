@@ -25,7 +25,7 @@ import { DownArrow } from '@nutui/icons-react';
 const App = () => {
   return (
     <>
-    <Collapse activeName={['1', '2']} icon={<DownArrow />}>
+    <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
       <CollapseItem title="標題1" name="1">
         Nutui-React 是一套擁有京東風格的輕量級的 React 組件庫
       </CollapseItem>
@@ -81,7 +81,7 @@ import { DownArrow } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion icon={<DownArrow />}>
+  <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
     <CollapseItem title="標題1" name="1" subTitle="文本内容">
       Nutui-React 是一套擁有京東風格的輕量級的 React 組件庫
     </CollapseItem>
@@ -107,11 +107,11 @@ import { DownArrow, Checked, HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion icon={<DownArrow />} rotate={90}>
-    <CollapseItem title="标题1" name="1" icon={<Checked />}>
+  <Collapse activeName={['1']} accordion expandIcon={<DownArrow />} rotate={90}>
+    <CollapseItem title="标题1" name="1" expandIcon={<Checked />}>
       Nutui-React 是一套擁有京東風格的輕量級的 React 組件庫
     </CollapseItem>
-    <CollapseItem title="标题2" name="2" icon={<HeartFill />}>
+    <CollapseItem title="标题2" name="2" expandIcon={<HeartFill />}>
       在產品的功能、體驗、易用性和靈活性等各個方面做了全面的升級！
     </CollapseItem>
     <CollapseItem title="标题3" name="3">
@@ -133,7 +133,7 @@ import { DownArrow, Checked, HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-    <Collapse activeName={['1']} accordion icon={<DownArrow />}>
+    <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
       <CollapseItem
         title={
           <div
@@ -257,8 +257,9 @@ const App = () => {
 |--------------|----------------------------------|--------|------------------|
 | activeName   |當前展開面板的 name               | 手風琴模式：string \| number 非手風琴模式：(string \| number)[] | - |
 | accordion    | 是否開啟手風琴模式                | boolean | `false`  |
-| icon         | Icon      | ReactNode | -                |
 | rotate       | 點擊折疊和展開的旋轉角度,在自定義圖標模式下生效| string \| number | `180` |
+| expandIcon`v1.5.0`         | Icon      | ReactNode | -                |
+| icon`v1.5.0 廢棄`         | 使用 expandIcon      | string | -                |
 | iconSize`v1.5.0 廢棄`     | 圖標大小                          | string      | `16px` |
 | iconColor`v1.5.0 廢棄`    | 圖標顏色                          | string | -              |
 

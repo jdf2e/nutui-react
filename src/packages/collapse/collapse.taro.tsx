@@ -14,7 +14,7 @@ export interface CollapseProps {
   style: React.CSSProperties
   activeName: Array<number | string> | number | string
   accordion: boolean
-  icon: ReactNode
+  expandIcon: ReactNode
   rotate: number
   onChange: (isOpen: boolean, name: string) => void
   children?: React.ReactNode
@@ -22,7 +22,7 @@ export interface CollapseProps {
 const defaultProps = {
   activeName: ['0'],
   accordion: false,
-  icon: null,
+  expandIcon: null,
   rotate: 180,
 } as CollapseProps
 
@@ -45,7 +45,7 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo(
       children,
       activeName,
       accordion,
-      icon,
+      expandIcon,
       rotate,
       onChange,
     } = {
@@ -103,7 +103,7 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = memo(
           return React.cloneElement(item, {
             isOpen: defaultOpenIndex.includes(item.props.name),
             onToggle: (isOpen: boolean, name: string) => onToggle(isOpen, name),
-            icon: item.props.icon || icon,
+            expandIcon: item.props.expandIcon || expandIcon,
             rotate,
           })
         })}

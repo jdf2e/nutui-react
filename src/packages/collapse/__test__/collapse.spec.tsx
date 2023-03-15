@@ -10,7 +10,7 @@ import { CollapseItem } from '../../collapseitem/collapseitem'
 test('should match snapshot', () => {
   const { asFragment } = render(
     <>
-      <Collapse activeName={['1', '2']} icon={<DownArrow />}>
+      <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
         <CollapseItem title="标题1" name="1">
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
@@ -29,7 +29,7 @@ test('should match snapshot', () => {
 test('prop icon iconSize iconColor', () => {
   const { getByTestId, container } = render(
     <>
-      <Collapse activeName={['1', '2']} icon={<DownArrow />}>
+      <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
         <CollapseItem title="标题1" name="1">
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
@@ -56,7 +56,7 @@ test('prop icon iconSize iconColor', () => {
 test('prop activeName', () => {
   const { container } = render(
     <>
-      <Collapse activeName={['1', '2']} icon={<DownArrow />}>
+      <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
         <CollapseItem title="标题1" name="1">
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
@@ -80,7 +80,7 @@ test('prop activeName', () => {
 test('prop accordion', () => {
   const { getByTestId, container } = render(
     <>
-      <Collapse activeName={['1']} accordion icon={<DownArrow />}>
+      <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
         <CollapseItem
           title="标题1"
           name="1"
@@ -115,21 +115,21 @@ test('prop rotate', () => {
       <Collapse
         activeName={['1']}
         accordion
-        icon={<ArrowRight2 />}
+        expandIcon={<ArrowRight2 />}
         rotate={180}
       >
         <CollapseItem
           title="标题1"
           name="1"
-          icon={<DownArrow />}
+          expandIcon={<DownArrow />}
           data-testid="collapse-one"
         >
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
-        <CollapseItem title="标题2" name="2" icon={<DownArrow />}>
+        <CollapseItem title="标题2" name="2" expandIcon={<DownArrow />}>
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
-        <CollapseItem title="标题3" name="3" icon={<DownArrow />}>
+        <CollapseItem title="标题3" name="3" expandIcon={<DownArrow />}>
           京东“厂直优品计划”首推“政府优品馆”
         </CollapseItem>
       </Collapse>
@@ -146,20 +146,20 @@ test('prop rotate', () => {
 test('prop title subTitle titleIconColor titleIconSize titleIconPosition', () => {
   const { getByTestId, container } = render(
     <>
-      <Collapse activeName={['1']} accordion icon="arrow-right2">
+      <Collapse activeName={['1']} accordion expandIcon="arrow-right2">
         <CollapseItem
           title="标题1"
           subTitle="副标题"
           name="1"
-          icon={<DownArrow />}
+          expandIcon={<DownArrow />}
           data-testid="collapse-one"
         >
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
-        <CollapseItem title="标题2" name="2" icon={<DownArrow />}>
+        <CollapseItem title="标题2" name="2" expandIcon={<DownArrow />}>
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
-        <CollapseItem title="标题3" name="3" icon={<DownArrow />}>
+        <CollapseItem title="标题3" name="3" expandIcon={<DownArrow />}>
           京东“厂直优品计划”首推“政府优品馆”
         </CollapseItem>
       </Collapse>

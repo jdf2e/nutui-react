@@ -14,7 +14,7 @@ export interface CollapseItemProps extends BasicComponent {
   title: ReactNode
   name: string
   isOpen: boolean
-  icon: ReactNode
+  expandIcon: ReactNode
   disabled: boolean
   rotate: number
   subTitle: ReactNode
@@ -26,7 +26,7 @@ const defaultProps = {
   title: null,
   name: '',
   isOpen: false,
-  icon: null,
+  expandIcon: null,
   disabled: false,
   rotate: 180,
   subTitle: null,
@@ -43,7 +43,7 @@ export const CollapseItem: FunctionComponent<
     onToggle,
     name,
     disabled,
-    icon,
+    expandIcon,
     rotate,
     subTitle,
     childnull,
@@ -105,7 +105,7 @@ export const CollapseItem: FunctionComponent<
         <div className={colBem('sub-title')}>{subTitle}</div>
         <div className={colBem('icon-box')}>
           <div className={colBem('icon')} style={iconStyle}>
-            {icon}
+            {expandIcon}
           </div>
         </div>
       </div>

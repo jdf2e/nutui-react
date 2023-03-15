@@ -25,7 +25,7 @@ import { DownArrow } from '@nutui/icons-react';
 const App = () => {
   return (
     <>
-    <Collapse activeName={['1', '2']} icon={<DownArrow />}>
+    <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
       <CollapseItem title="标题1" name="1">
         京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
       </CollapseItem>
@@ -82,7 +82,7 @@ import { DownArrow } from '@nutui/icons-react'
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion icon={<DownArrow />}>
+  <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
     <CollapseItem title="标题1" name="1" subTitle="文本内容">
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
     </CollapseItem>
@@ -108,11 +108,11 @@ import { DownArrow, Checked, HeartFill } from '@nutui/icons-react'
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion icon={<DownArrow />} rotate={90}>
-    <CollapseItem title="标题1" name="1" icon={<Checked />}>
+  <Collapse activeName={['1']} accordion expandIcon={<DownArrow />} rotate={90}>
+    <CollapseItem title="标题1" name="1" expandIcon={<Checked />}>
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
     </CollapseItem>
-    <CollapseItem title="标题2" name="2" icon={<HeartFill />}>
+    <CollapseItem title="标题2" name="2" expandIcon={<HeartFill />}>
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
     </CollapseItem>
     <CollapseItem title="标题3" name="3">
@@ -134,7 +134,7 @@ import { DownArrow, Checked, HeartFill } from '@nutui/icons-react'
 
 const App = () => {
   return (  
-    <Collapse activeName={['1']} accordion icon={<DownArrow />}>
+    <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
       <CollapseItem
         title={
           <div
@@ -264,8 +264,9 @@ const App = () => {
 |--------------|----------------------------------|--------|------------------|
 | activeName   | 当前展开面板的 name               | 手风琴模式：string \| number 非手风琴模式：(string \| number)[] | - |
 | accordion    | 是否开启手风琴模式                 | boolean | `false`  |
-| icon         | 自定义右侧图标      | ReactNode | -                |
 | rotate       | 点击折叠和展开的旋转角度,在自定义图标模式下生效| string \| number | `180` |
+| expandIcon`v1.5.0`         | 自定义展开图标      | ReactNode | -                |
+| icon`v1.5.0 废弃`         | 使用 expandIcon      | string | -                |
 | iconSize`v1.5.0 废弃`     | 图标大小                          | string      | `16px` |
 | iconColor`v1.5.0 废弃`    | 图标颜色                          | string | -              |
 
