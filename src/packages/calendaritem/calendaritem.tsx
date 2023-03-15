@@ -67,6 +67,7 @@ export interface CalendarItemProps {
   onChoose?: (data: any) => void
   onUpdate?: () => void
   onSelected?: (data: string) => void
+  onYearMonthChange?: (data: any) => void
 }
 const defaultProps = {
   type: 'one',
@@ -91,6 +92,7 @@ const defaultProps = {
   onChoose: (data: any) => {},
   onUpdate: () => {},
   onSelected: (data: string) => {},
+  onYearMonthChange: (data: any) => {},
 } as CalendarItemProps
 
 export const CalendarItem = React.forwardRef<
@@ -118,6 +120,7 @@ export const CalendarItem = React.forwardRef<
     onChoose,
     onUpdate,
     onSelected,
+    onYearMonthChange,
   } = { ...defaultProps, ...props }
 
   const weeks = locale.calendaritem.weekdays
@@ -482,6 +485,14 @@ export const CalendarItem = React.forwardRef<
     setMonthsData(state.monthsData)
   }
 
+  const setReachedYearMonthInfo = () => {
+    const currentMonthsData = state.monthsData[state.currentIndex]
+    const [year, month] = currentMonthsData.curData
+    if (currentMonthsData.title === yearMonthTitle) return
+    onYearMonthChange && onYearMonthChange([year, month, `${year}-${month}`])
+    setYearMonthTitle(currentMonthsData.title)
+  }
+
   const setDefaultRange = (monthsNum: number, current: number) => {
     let start = 0
     let end = 0
@@ -553,7 +564,7 @@ export const CalendarItem = React.forwardRef<
       setDefaultRange(state.monthsNum, current)
     }
 
-    setYearMonthTitle(state.monthsData[current].title)
+    setReachedYearMonthInfo()
   }
 
   const initData = () => {
@@ -686,7 +697,7 @@ export const CalendarItem = React.forwardRef<
 
     setDefaultRange(monthsNum, current)
     state.currentIndex = current
-    setYearMonthTitle(state.monthsData[state.currentIndex].title)
+    setReachedYearMonthInfo()
 
     if (state.defaultData.length > 0) {
       // 设置当前选中日期

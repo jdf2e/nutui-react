@@ -466,6 +466,7 @@ export default App;
 | onChoose | 选择之后或是点击确认按钮触发 | 日期数组（包含年月日和星期） |
 | onClose  | 关闭时触发                   | -                            |
 | onSelected  | 点击/选择后触发              |  `Day: Day`                          |
+| onYearMonthChange`v1.5.0`  | 年月子标题到达顶部时触发              |  日期数组（包含年月）                          |
 
 ### Day
 | 字段              | 类型            |

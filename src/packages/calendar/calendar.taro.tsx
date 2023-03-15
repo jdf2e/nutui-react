@@ -35,6 +35,7 @@ export interface CalendarProps {
   onClose?: () => void
   onChoose?: (param: string) => void
   onSelected?: (data: string) => void
+  onYearMonthChange?: (param: string) => void
 }
 
 const defaultProps = {
@@ -60,6 +61,7 @@ const defaultProps = {
   onClose: () => {},
   onChoose: (param: string) => {},
   onSelected: (data: string) => {},
+  onYearMonthChange: (param: string) => {},
 } as CalendarProps
 
 export const Calendar = React.forwardRef<
@@ -91,6 +93,7 @@ export const Calendar = React.forwardRef<
     onClose,
     onChoose,
     onSelected,
+    onYearMonthChange,
   } = { ...defaultProps, ...props }
 
   const calendarRef = useRef<any>(null)
@@ -114,6 +117,10 @@ export const Calendar = React.forwardRef<
 
   const scrollToDate = (date: string) => {
     calendarRef.current?.scrollToDate(date)
+  }
+
+  const yearMonthChange = (param: string) => {
+    onYearMonthChange && onYearMonthChange(param)
   }
 
   React.useImperativeHandle(ref, () => ({
@@ -144,6 +151,7 @@ export const Calendar = React.forwardRef<
         onBottomInfo={onBottomInfo}
         onChoose={choose}
         onSelected={select}
+        onYearMonthChange={yearMonthChange}
       />
     )
   }
