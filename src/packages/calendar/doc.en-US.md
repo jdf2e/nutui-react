@@ -468,6 +468,7 @@ Through ref, you can get the Calendar instance and call the instance method.
 | onChoose | Triggered after selection or by clicking the confirm button | Array of dates (including year, month, day and week) |
 | onClose  | Triggered when closed                   | -                            |
 | onSelected  | Triggered after click/select              |  `Day: Day`                          |
+| onYearMonthChange`v1.4.11`  | Triggered when reached top for sub title of year and month             |  Array of dates (including year, month)                         
 
 ### Day
 | Params| Description            |

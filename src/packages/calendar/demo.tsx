@@ -205,6 +205,10 @@ const CalendarDemo = () => {
     console.log(param)
   }
 
+  const yearMonthChange = (param: string) => {
+    console.log(param)
+  }
+
   const goDate = () => {
     if (calendarRef.current) {
       calendarRef.current.scrollToDate('2023-04-01')
@@ -429,6 +433,7 @@ const CalendarDemo = () => {
             defaultValue={date2}
             isAutoBackFill
             onChoose={setChooseValue2}
+            onYearMonthChange={yearMonthChange}
           />
         </div>
       </div>
