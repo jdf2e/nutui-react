@@ -113,7 +113,6 @@ export const ShortPassword: FunctionComponent<
     const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1 // g
     const isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) // ios终端
     let style = {}
-    console.log(isIOS, isAndroid)
     if (isIOS) {
       style = {
         paddingRight: '1200px',

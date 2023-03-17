@@ -64,6 +64,8 @@ export const TextArea: FunctionComponent<
   const [inputValue, SetInputValue] = useState('')
   const textareaRef = useRef<any>(null)
 
+  const compositingRef = useRef(false)
+
   useEffect(() => {
     let initValue = defaultValue
     if (initValue && maxlength && [...initValue].length > Number(maxlength)) {
@@ -109,7 +111,11 @@ export const TextArea: FunctionComponent<
 
   const textChange = (event: Event) => {
     const text = event.target as any
-    if (maxlength && [...text.value].length > Number(maxlength)) {
+    if (
+      maxlength &&
+      [...text.value].length > Number(maxlength) &&
+      !compositingRef.current
+    ) {
       text.value = text.value.substring(0, Number(maxlength))
     }
     SetInputValue(text.value)
@@ -130,6 +136,13 @@ export const TextArea: FunctionComponent<
     onBlur && onBlur(event)
   }
 
+  const startComposing = () => {
+    compositingRef.current = true
+  }
+  const endComposing = () => {
+    compositingRef.current = false
+  }
+
   return (
     <div
       className={`${textareaBem()} ${disabled ? textareaBem('disabled') : ''} ${
@@ -146,9 +159,9 @@ export const TextArea: FunctionComponent<
         disabled={disabled}
         readOnly={readonly}
         value={inputValue}
-        onInput={(e: any) => {
-          textChange(e)
-        }}
+        // onInput={(e: any) => {
+        //   textChange(e)
+        // }}
         onChange={(e: any) => {
           textChange(e)
         }}
@@ -158,6 +171,8 @@ export const TextArea: FunctionComponent<
         onFocus={(e: any) => {
           textFocus(e)
         }}
+        onCompositionEnd={(e) => endComposing()}
+        onCompositionStart={(e) => startComposing()}
         rows={rows}
         maxLength={maxlength < 0 ? 0 : maxlength}
         placeholder={placeholder || locale.placeholder}

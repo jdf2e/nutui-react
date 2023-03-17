@@ -97,8 +97,8 @@ export const Notify: FunctionComponent<
   const notifyBem = bem('notify')
 
   const classes = classNames({
-    'popup-top': position === 'top',
-    'popup-bottom': position === 'bottom',
+    'nut-notify--popup-top': position === 'top',
+    'nut-notify--popup-bottom': position === 'bottom',
     'nut-notify': true,
     [`nut-notify--${type}`]: true,
   })
