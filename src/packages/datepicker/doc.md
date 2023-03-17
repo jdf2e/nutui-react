@@ -370,7 +370,7 @@ export default App;
 | maxDate                   | 结束日期                                          | Date    | `十年后` |
 | formatter`v1.2.2`         | 选项格式化函数                                          | (type: string, option: PickerOption) => PickerOption    | - |
 | filter`v1.2.2`            | 选项过滤函数                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
-| three-dimensional`v1.2.2` | 是否开启3D效果               | boolean  | `true`   |
+| threeDimensional`v1.2.2` | 是否开启3D效果               | boolean  | `true`   |
 
 
 ### Events

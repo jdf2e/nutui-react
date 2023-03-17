@@ -194,7 +194,7 @@ export default App;
 |--------------------|-----------------------------------------|------------------|-----------|
 | type               | 标签类型，可选值为primary success danger warning | `string`         | `default` |
 | color              | 标签颜色                                    | `string`         | -         |
-| texColor           | 文本颜色，优先级高于color属性                       | `string`         | `white`   |
+| textColor           | 文本颜色，优先级高于color属性                       | `string`         | `white`   |
 | plain              | 是否为空心样式                                 | `boolean`        | `false`   |
 | round              | 是否为圆角样式                                 | `boolean`        | `false`   |
 | mark               | 是否为标记样式                                 | `boolean`        | `false`   |

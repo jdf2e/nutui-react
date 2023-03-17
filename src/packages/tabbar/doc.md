@@ -186,7 +186,7 @@ export default App;
 size`v1.5.0废弃`              | icon的统一尺寸              | string \| boolean | `20`      |
 | safeAreaInsetBottom`v1.2.2` | 是否开启iphone系列全面屏底部安全区适配 | boolean | `false`   |
 | style`v1.2.2`               | 组件样式                   | CSSProperties | `{}`      |
-| clsssName`v1.2.2`           | 组件类名                   | string | -       |
+| className`v1.2.2`           | 组件类名                   | string | -       |
 
 ### tabbar-item
 

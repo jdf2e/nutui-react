@@ -95,7 +95,7 @@ export default App
 | position  | 吸附位置（top、bottom） | string                         | `top`    |
 | top       | 吸顶距离                | number                         | `0`      |
 | bottom    | 吸底距离                | number                         | `0`      |
-| z-index   | 吸附时的层级            | number                         | `2000`   |
+| zIndex   | 吸附时的层级            | number                         | `2000`   |
 | container | 容器的 ref              | `React.RefObject<HTMLElement>` | - |
 
 ### Events

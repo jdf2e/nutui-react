@@ -194,7 +194,7 @@ export default App;
 |-------------------------|------------------------------------------------------------------|--------|----------|
 | type                    | Label type, the optional value is primary success danger warning | `string` | `default` |
 | color                   | Label color                                                      | `string` | -        |
-| texColor                | Text color, priority is higher than the color attribute          | `string` | `white`  |
+| textColor                | Text color, priority is higher than the color attribute          | `string` | `white`  |
 | plain                   | Whether it is hollow                                             | `boolean` | `false`  |
 | round                   | Whether it is a rounded style                                    | `boolean` | `false`  |
 | mark                    | Whether it is a tag style                                        | `boolean` | `false`  |

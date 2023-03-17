@@ -184,7 +184,7 @@ export default App;
 size`v1.5.0废弃`    | icon size for all icons                                                              | string \| boolean | `20`      |
 | safeAreaInsetBottom    | Whether to enable the full screen bottom safety zone adaptation of the iphone series | boolean | `false`   |
 | style    | component style                                                                      | CSSProperties | `{}`      |
-| clsssName    | component class name                                                                 | string | -       |
+| className    | component class name                                                                 | string | -       |
 
 ### tabbar-item
 

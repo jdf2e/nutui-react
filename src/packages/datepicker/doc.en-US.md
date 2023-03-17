@@ -362,7 +362,7 @@ export default App;
 | maxDate                   | End date                                         | Date    | `Ten years later on December 31` |
 | formatter`v1.2.2`         | Option text formatter                                           | (type: string, option: PickerOption) => PickerOption    | - |
 | filter`v1.2.2`            | Option filter                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
-| three-dimensional`v1.2.2` | Turn on 3D effects               | boolean  | `true`   |
+| threeDimensional`v1.2.2` | Turn on 3D effects               | boolean  | `true`   |
 
 
 ### Events
