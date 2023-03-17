@@ -252,7 +252,7 @@ export default App;
 | url                | 设置图片类型头像的地址                           | `string`    | -        |
 | alt                | 设置图片类型头像无法显示时的替代文本                | `string`    | -        |
 | icon               | 设置 Icon 类型头像图标  | `ReactNode` | -        |
-| iconSize`v1.5.0废弃` | [图标尺寸](#/icon) | `string \| number`      | `16`     |
+| iconSize`v2.0.0废弃` | [图标尺寸](#/icon) | `string \| number`      | `16`     |
 
 ### avatarGroup
 

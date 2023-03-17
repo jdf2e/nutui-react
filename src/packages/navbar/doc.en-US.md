@@ -177,7 +177,7 @@ export default App;
 | title           | title name                                                                                       | string  | -       |
 | desc            | Description on the right                                                                                       | string  | -       |
 | leftShow        | Whether to show the left arrow                                                                              | boolean | `true`   |
-| titIcon`v1.5.0 废弃`         | title with icon                                                         | string  | -       |   
+| titIcon`v2.0.0 废弃`         | title with icon                                                         | string  | -       |   
 | leftText         | copy on the left                                                         | string  | -       |   
 | fixed         | Is it fixed                                                         | boolean  | `false`       |   
 | safeAreaInsetTop         | Whether it is suitable for the safe area                                                         | boolean  | `false`       |   

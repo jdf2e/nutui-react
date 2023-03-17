@@ -258,10 +258,10 @@ const App = () => {
 | activeName   |當前展開面板的 name               | 手風琴模式：string \| number 非手風琴模式：(string \| number)[] | - |
 | accordion    | 是否開啟手風琴模式                | boolean | `false`  |
 | rotate       | 點擊折疊和展開的旋轉角度,在自定義圖標模式下生效| string \| number | `180` |
-| expandIcon`v1.5.0`         | Icon      | ReactNode | -                |
-| icon`v1.5.0 廢棄`         | 使用 expandIcon      | string | -                |
-| iconSize`v1.5.0 廢棄`     | 圖標大小                          | string      | `16px` |
-| iconColor`v1.5.0 廢棄`    | 圖標顏色                          | string | -              |
+| expandIcon`v2.0.0`         | Icon      | ReactNode | -                |
+| icon`v2.0.0 廢棄`         | 使用 expandIcon      | string | -                |
+| iconSize`v2.0.0 廢棄`     | 圖標大小                          | string      | `16px` |
+| iconColor`v2.0.0 廢棄`    | 圖標顏色                          | string | -              |
 
 
 ### CollapseItem Prop
@@ -272,10 +272,10 @@ const App = () => {
 | title    | 標題欄左側內容                   | ReactNode | -  |
 | disabled    | 標題欄是否禁用                 | boolean | `false`  |
 | subTitle    | 標題欄副標題             | ReactNode | -  |
-| titleIcon`v1.5.0 廢棄`    | 標題圖標鏈接/或使用 NutUI 的 icon             | string | -  |
-| titleIconColor`v1.5.0 廢棄`    |標題圖標顏色          | string | -  |
-| titleIconSize`v1.5.0 廢棄`    | 標題圖標大小        | string | -  |
-| titleIconPosition`v1.5.0 廢棄`    | 標題圖標位置             | string | -  |
+| titleIcon`v2.0.0 廢棄`    | 標題圖標鏈接/或使用 NutUI 的 icon             | string | -  |
+| titleIconColor`v2.0.0 廢棄`    |標題圖標顏色          | string | -  |
+| titleIconSize`v2.0.0 廢棄`    | 標題圖標大小        | string | -  |
+| titleIconPosition`v2.0.0 廢棄`    | 標題圖標位置             | string | -  |
 
 
 

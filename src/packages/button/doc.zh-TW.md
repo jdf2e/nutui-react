@@ -238,7 +238,7 @@ export default App;
 | disabled           | 	是否禁用按鈕 | boolean  | `false` |
 | block              | 是否為塊級元素 | boolean  | `false` |
 | icon               | 按鈕圖示 | `ReactNode`    | -     |
-| iconSize`v1.5.0废弃` | 按鈕圖示大小，同 Icon 的size属性 | string \ | number | `16` |
+| iconSize`v2.0.0废弃` | 按鈕圖示大小，同 Icon 的size属性 | string \ | number | `16` |
 | loading            | 按鈕loading狀態 | boolean  | `false` |
 
 ### Events

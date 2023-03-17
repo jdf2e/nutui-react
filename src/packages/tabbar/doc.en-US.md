@@ -181,7 +181,7 @@ export default App;
 | bottom          | Whether it is fixed at the bottom of the page                                        | boolean | `false`   |
 | unactiveColor  | Icon inactive color                                                                  | string | `#7d7e80` |
 | activeColor    | icon active color                                                                    | string | `#1989fa` |
-size`v1.5.0废弃`    | icon size for all icons                                                              | string \| boolean | `20`      |
+size`v2.0.0废弃`    | icon size for all icons                                                              | string \| boolean | `20`      |
 | safeAreaInsetBottom    | Whether to enable the full screen bottom safety zone adaptation of the iphone series | boolean | `false`   |
 | style    | component style                                                                      | CSSProperties | `{}`      |
 | className    | component class name                                                                 | string | -       |
@@ -195,10 +195,10 @@ size`v1.5.0废弃`    | icon size for all icons                                 
 | href | Jump link of tab page;   | string | -     |
 | to`v1.4.0 Abandon`              | 	The route object of the tab, equal to React Router's [to Prop](https://v5.reactrouter.com/web/api/Link/to-string) Prop | any | -     |
 | num | The numerical corner mark in the upper right corner of the tab, if it exceeds 99, it will be 99+     | number | -     |
-| iconClassPrefix`v1.5.0废弃`   | Custom icon class name prefix, used to use custom icons | string | `nut-icon` |
-| iconFontClassName`v1.5.0废弃` | Basic class name of custom icon font        | string | `nutui-iconfont` |
+| iconClassPrefix`v2.0.0废弃`   | Custom icon class name prefix, used to use custom icons | string | `nut-icon` |
+| iconFontClassName`v2.0.0废弃` | Basic class name of custom icon font        | string | `nutui-iconfont` |
 | dot | Whether to display the little red dot in the upper right corner of the icon   | boolean | `false`     |
-| iconSize`v1.5.0废弃`    | icon size for some icon    | string \| boolean | `20` |
+| iconSize`v2.0.0废弃`    | icon size for some icon    | string \| boolean | `20` |
 
 
 ### Event

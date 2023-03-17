@@ -238,7 +238,7 @@ export default App;
 | disabled           | 	是否禁用按钮                       | boolean  | `false`              |
 | block              | 是否为块级元素                        | boolean  | `false`               |
 | icon               | 按钮图标                        | `ReactNode`      | -     |
-| iconSize`v1.5.0废弃` | 按钮图标大小，同Icon组件的size属性 | string \ | number | `16` |
+| iconSize`v2.0.0废弃` | 按钮图标大小，同Icon组件的size属性 | string \ | number | `16` |
 | loading            | 按钮loading状态                        | boolean  | `false`               |
 
 ### Events

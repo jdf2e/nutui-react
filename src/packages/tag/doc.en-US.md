@@ -199,8 +199,8 @@ export default App;
 | round                   | Whether it is a rounded style                                    | `boolean` | `false`  |
 | mark                    | Whether it is a tag style                                        | `boolean` | `false`  |
 | closeable               | Whether it can be closed label                                   | `boolean\ | ReactNode` | `false`   |
-| closeIcon`v1.5.0`       | close icon                                                       | `ReactNode` | `null`    |
-| iconSize`v1.5.0abandon` | the size of closed label                                         | `string\|number` | ` 12px`|
+| closeIcon`v2.0.0`       | close icon                                                       | `ReactNode` | `null`    |
+| iconSize`v2.0.0abandon` | the size of closed label                                         | `string\|number` | ` 12px`|
 
 ### Event
 

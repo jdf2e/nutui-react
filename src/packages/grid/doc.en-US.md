@@ -235,8 +235,8 @@ export default App
 | square        | 	Whether to be square shape                      | boolean                | `false`     |
 | reverse       | 	Whether to reverse the position of icon and text       | boolean                | `false`     |
 | direction     | 	Content arrangement direction, can be set to  `horizontal`    | string                 | `vertical`  |
-| iconSize`v1.5.0 deprecated`     | Icon size,for example `20px` `2em` `2rem`          | number \| string        | `28px`     |
-| iconColor`v1.5.0 deprecated`    | Icon color                                  | string                 | -          |
+| iconSize`v2.0.0 deprecated`     | Icon size,for example `20px` `2em` `2rem`          | number \| string        | `28px`     |
+| iconColor`v2.0.0 deprecated`    | Icon color                                  | string                 | -          |
 
 
 ## Grid Event
@@ -253,8 +253,8 @@ export default App
 | fontSize `1.4.4`     | text size                                                                                | string \| number   | -          |
 | color `1.4.4`        | text color                                                                               | string   | -          |
 | icon                 | Icon                                                            | ReactNode     | -          |
-| iconSize`v1.5.0 deprecated`            | Icon size,for example `20px` `2em` `2rem`      | number \| string  |`28px`  |
-| iconColor`v1.5.0 deprecated`           | Icon color              | string            | -           |
+| iconSize`v2.0.0 deprecated`            | Icon size,for example `20px` `2em` `2rem`      | number \| string  |`28px`  |
+| iconColor`v2.0.0 deprecated`           | Icon color              | string            | -           |
 
 ### GridItem Event
 

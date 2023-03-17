@@ -177,7 +177,7 @@ export default App;
 | title           | 標題名稱                                                                                       | string  | -       |
 | desc            | 右側描述                                                                                       | string  | -       |
 | leftShow        | 是否展示左側箭頭                                                                              | boolean | `true`   |
-| titIcon`v1.5.0 废弃`           | 標題帶icon                                                         | string  | -       |   
+| titIcon`v2.0.0 废弃`           | 標題帶icon                                                         | string  | -       |   
 | leftText         | 左側文案                                                         | string  | -       |  
 | fixed         | 是否固定                                                         | boolean  | `false`       |   
 | safeAreaInsetTop         | 是否適配安全區                                                         | boolean  | `false`       |   

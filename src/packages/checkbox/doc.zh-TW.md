@@ -435,9 +435,9 @@ export default CheckboxGroupOptions;
 | disabled                      | 是否禁用選擇 | `boolean`       | `false`|
 | textPosition                  | 文本所在的位置，可選值：`left`,`right` | `string`        | `right`|
 | iconSize                      | [圖標尺寸]用于设置默认图标的大小 | `string`、Number | `18`|
-| icon`v1.5.0`                  | [圖標](#/icon)，選中前(建議和`iconActiveName`一起修改) | `ReactNode`           | `'CheckNormal'`|
-| checkedIcon`v1.5.0`                   | [圖標](#/icon)，選中後(建議和`iconName`一起修改) | `ReactNode`        | `'Checked'`|
-| indeterminateIcon`v1.5.0`     | [圖標](#/icon)，半選狀態 | `ReactNode`        | `'CheckDisabled'`|
+| icon`v2.0.0`                  | [圖標](#/icon)，選中前(建議和`iconActiveName`一起修改) | `ReactNode`           | `'CheckNormal'`|
+| checkedIcon`v2.0.0`                   | [圖標](#/icon)，選中後(建議和`iconName`一起修改) | `ReactNode`        | `'Checked'`|
+| indeterminateIcon`v2.0.0`     | [圖標](#/icon)，半選狀態 | `ReactNode`        | `'CheckDisabled'`|
 | iconName                      | [圖標名稱](#/icon)，選中前(建議和`iconActiveName`一起修改) | `string`        | `'CheckNormal'`|
 | iconActiveName                | [圖標名稱](#/icon)，選中後(建議和`iconName`一起修改) | `string`        | `'Checked'`|
 | iconIndeterminateName`v1.2.1` | [圖標名稱](#/icon)，半選狀態 | `string`        | `'CheckDisabled'`|

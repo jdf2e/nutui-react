@@ -178,7 +178,7 @@ export default App;
 | desc                     | 右侧描述                                                                                       | string  | -       |
 | leftShow                 | 是否展示左侧箭头                                                                              | boolean | `true`   |
 | icon`v1.2.1 废弃`         | 左侧 [图标名称](#/icon) 或图片链接                                                             | string  | -       |
-| titIcon`v1.5.0 废弃`                    | 标题带icon                                                         | string  | -       |   
+| titIcon`v2.0.0 废弃`                    | 标题带icon                                                         | string  | -       |   
 | leftText`v1.2.1`         | 左侧文案                                                         | string  | -       |   
 | fixed`v1.2.1`            | 是否固定                                                         | boolean  | `false`       |   
 | safeAreaInsetTop`v1.2.1` | 是否适配安全区                                                         | boolean  | `false`       |   

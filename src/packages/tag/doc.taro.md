@@ -198,8 +198,8 @@ export default App;
 | round      | 是否为圆角样式                                   | `boolean` | `false`   |
 | mark       | 是否为标记样式                                   | `boolean` | `false`   |
 | closeable  | 是否为可关闭标签                                 | `boolean\ReactNode` | `false`   |
-| closeIcon`v1.5.0`  | 关闭按钮                                    | `ReactNode` | `null`    |
-| iconSize`v1.5.0废弃` | 关闭标签的尺寸                                 | `string \| number`   | `12`       |
+| closeIcon`v2.0.0`  | 关闭按钮                                    | `ReactNode` | `null`    |
+| iconSize`v2.0.0废弃` | 关闭标签的尺寸                                 | `string \| number`   | `12`       |
 
 ### Event
 

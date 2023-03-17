@@ -281,7 +281,7 @@ export default App
 | center`v1.2.0`    | Whether to center content                                                                              | boolean          | `false`  |
 | size`v1.2.0`      | Size, can be set to `large`                         | string          | -  |
 | linkSlot`v1.2.0`  | Custom Right`link`                      | ReactNode          | -  |
-| iconSlot`v1.5.0 deprecated`  |  Custom Left `icon`                        | ReactNode          | -  |
+| iconSlot`v2.0.0 deprecated`  |  Custom Left `icon`                        | ReactNode          | -  |
 
 
 

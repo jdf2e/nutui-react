@@ -253,10 +253,10 @@ const App = () => {
 | activeName   | Of the currently expanded panel name  | Accordion mode：string \| number Non accordion mode：(string \| number)[] | - |
 | accordion    | Whether to turn on accordion mode | boolean | `false`  |
 | rotate       | Click the rotation angle of collapse and expansion to take effect in the custom icon mode| string \| number | `180` |
-| expandIcon`v1.5.0`         | Icon      | ReactNode | -                |
-| icon`v1.5.0 deprecated`         | use expandIcon      | string | -                |
-| iconSize`v1.5.0 deprecated`     | Icon size                          | string      | `16px` |
-| iconColor`v1.5.0 deprecated`    | Icon color                          | string | -              |
+| expandIcon`v2.0.0`         | Icon      | ReactNode | -                |
+| icon`v2.0.0 deprecated`         | use expandIcon      | string | -                |
+| iconSize`v2.0.0 deprecated`     | Icon size                          | string      | `16px` |
+| iconColor`v2.0.0 deprecated`    | Icon color                          | string | -              |
 
 
 ### CollapseItem Prop
@@ -267,10 +267,10 @@ const App = () => {
 | title    | the content on the left side of the title bar supports slot incoming (props incoming has higher priority)  | ReactNode | -  |
 | disabled    | whether the title bar is disabled                 | boolean | `false`  |
 | subTitle    | subtitle of title bar, support slot incoming (props incoming has higher priority)     | ReactNode | -  |
-| titleIcon`v1.5.0 deprecated`    | Icon link and / or icon using nutui           | string | -  |
-| titleIconColor`v1.5.0 deprecated`    | Icon color  of title     | string | -  |
-| titleIconSize`v1.5.0 deprecated`    | Icon size  of title        | string | -  |
-| titleIconPosition`v1.5.0 deprecated`    | Icon  position of title      | string | -  |
+| titleIcon`v2.0.0 deprecated`    | Icon link and / or icon using nutui           | string | -  |
+| titleIconColor`v2.0.0 deprecated`    | Icon color  of title     | string | -  |
+| titleIconSize`v2.0.0 deprecated`    | Icon size  of title        | string | -  |
+| titleIconPosition`v2.0.0 deprecated`    | Icon  position of title      | string | -  |
 
 
 

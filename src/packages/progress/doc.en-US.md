@@ -296,10 +296,10 @@ export default App;
 | textBackground | Progress bar text background color setting | string | 同进度条颜色
 | textType | Progress bar text type setting，`text`(展示文字)/`icon`(展示icon标签) | string | `text`
 | status | The current state of the progress bar, `true`展示动画效果 | boolean | `false`
-| icon`1.5.0` | Custom Icon | ReactNode | `<Checked width={16} height={16} color="#439422"/>`
-| iconName`v1.5.0 Abandon` | Icon Name | string | `checked`
-| iconColor`v1.5.0 Abandon` | Icon Color | string | `#439422`
-| iconSize`v1.5.0 Abandon` | Icon Size | string | `16px`
+| icon`2.0.0` | Custom Icon | ReactNode | `<Checked width={16} height={16} color="#439422"/>`
+| iconName`v2.0.0 Abandon` | Icon Name | string | `checked`
+| iconColor`v2.0.0 Abandon` | Icon Color | string | `#439422`
+| iconSize`v2.0.0 Abandon` | Icon Size | string | `16px`
 | rounded `v1.4.7 Abandon`| Whether the corners are rounded | boolean \| string | `true`
 
 

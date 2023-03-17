@@ -282,7 +282,7 @@ export default App;
 | center`v1.2.0`     | 是否使内容垂直居中                                                                             | boolean          | `false`  |
 | size`v1.2.0`       | 单元格大小，可选值为 `large`                           | string          | -  |
 | linkSlot`v1.2.0`   | 自定义右侧`link`区域                         | ReactNode          | -  |
-| iconSlot`v1.5.0 废弃`   | 直接使用 icon 即可                          | ReactNode          | -  |
+| iconSlot`v2.0.0 废弃`   | 直接使用 icon 即可                          | ReactNode          | -  |
 
 
 
