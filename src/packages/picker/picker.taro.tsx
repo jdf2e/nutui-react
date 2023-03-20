@@ -5,6 +5,7 @@ import React, {
   RefObject,
   ForwardRefRenderFunction,
 } from 'react'
+import { View } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
 import PickerSlot from './pickerSlot.taro'
 import useRefs from '@/utils/useRefs'
@@ -287,7 +288,12 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
           closeActionSheet()
         }}
       >
-        <div className={`${b()} ${className || ''}`} style={style} {...rest}>
+        <View
+          className={`${b()} ${className || ''}`}
+          style={style}
+          {...rest}
+          catchMove
+        >
           {renderToolbar()}
           <div className={b('panel')} ref={pickerRef}>
             {columnsList?.map((item, index) => {
@@ -308,7 +314,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
               )
             })}
           </div>
-        </div>
+        </View>
       </Popup>
     )
   }
