@@ -93,8 +93,11 @@
   &__value {
     display: inline-block;
     text-align: right;
+    flex: 1;
     font-size: $cell-desc-font;
     color: $cell-desc-color;
+    word-wrap: break-word;
+    overflow: hidden;
     &--alone {
       color: $cell-color;
     }
