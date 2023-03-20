@@ -693,6 +693,18 @@ export const CalendarItem = React.forwardRef<
           }
         }
       })
+    } else {
+      // 当 defaultValue 为空时，如果月份列表包含当月，则默认定位到当月
+      const currentYear = new Date().getFullYear()
+      const currentMonth = new Date().getMonth() + 1
+      const currentYearMonthIndex = state.monthsData.findIndex((item) => {
+        return (
+          +item.curData[0] === currentYear && +item.curData[1] === currentMonth
+        )
+      })
+      if (currentYearMonthIndex > -1) {
+        current = currentYearMonthIndex
+      }
     }
 
     setDefaultRange(monthsNum, current)
