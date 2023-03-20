@@ -5,6 +5,7 @@ import bem from '@/utils/bem'
 import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { nextTick } from '@tarojs/taro'
 
 type CalendarRef = {
   scrollToDate: (date: string) => void
@@ -68,6 +69,7 @@ export interface CalendarItemProps {
   onChoose?: (data: any) => void
   onUpdate?: () => void
   onSelected?: (data: string) => void
+  onYearMonthChange?: (data: any) => void
 }
 const defaultProps = {
   type: 'one',
@@ -92,6 +94,7 @@ const defaultProps = {
   onChoose: (data: any) => {},
   onUpdate: () => {},
   onSelected: (data: string) => {},
+  onYearMonthChange: (data: any) => {},
 } as CalendarItemProps
 
 export const CalendarItem = React.forwardRef<
@@ -119,6 +122,7 @@ export const CalendarItem = React.forwardRef<
     onChoose,
     onUpdate,
     onSelected,
+    onYearMonthChange,
   } = { ...defaultProps, ...props }
 
   const weeks = locale.calendaritem.weekdays
@@ -127,6 +131,7 @@ export const CalendarItem = React.forwardRef<
   const [translateY, setTranslateY] = useState(0)
   const [monthDefaultRange, setMonthDefaultRange] = useState<number[]>([])
   const [scrollTop, setScrollTop] = useState(0)
+  const [scrollWithAnimation, setScrollWithAnimation] = useState<boolean>(false)
 
   const [state] = useState<CalendarState>({
     currDate: '',
@@ -481,6 +486,14 @@ export const CalendarItem = React.forwardRef<
     setMonthsData(state.monthsData)
   }
 
+  const setReachedYearMonthInfo = () => {
+    const currentMonthsData = state.monthsData[state.currentIndex]
+    const [year, month] = currentMonthsData.curData
+    if (currentMonthsData.title === yearMonthTitle) return
+    onYearMonthChange && onYearMonthChange([year, month, `${year}-${month}`])
+    setYearMonthTitle(currentMonthsData.title)
+  }
+
   const setDefaultRange = (monthsNum: number, current: number) => {
     let start = 0
     let end = 0
@@ -552,7 +565,7 @@ export const CalendarItem = React.forwardRef<
       setDefaultRange(state.monthsNum, current)
     }
 
-    setYearMonthTitle(state.monthsData[current].title)
+    setReachedYearMonthInfo()
   }
 
   const initData = () => {
@@ -681,11 +694,23 @@ export const CalendarItem = React.forwardRef<
           }
         }
       })
+    } else {
+      // 当 defaultValue 为空时，如果月份列表包含当月，则默认定位到当月
+      const currentYear = new Date().getFullYear()
+      const currentMonth = new Date().getMonth() + 1
+      const currentYearMonthIndex = state.monthsData.findIndex((item) => {
+        return (
+          +item.curData[0] === currentYear && +item.curData[1] === currentMonth
+        )
+      })
+      if (currentYearMonthIndex > -1) {
+        current = currentYearMonthIndex
+      }
     }
 
     setDefaultRange(monthsNum, current)
     state.currentIndex = current
-    setYearMonthTitle(state.monthsData[state.currentIndex].title)
+    setReachedYearMonthInfo()
 
     if (state.defaultData.length > 0) {
       // 设置当前选中日期
@@ -737,8 +762,8 @@ export const CalendarItem = React.forwardRef<
         ;(
           monthsPanel.current as HTMLDivElement
         ).style.height = `${containerHeight}px`
-        ;(months.current as HTMLDivElement).scrollTop =
-          state.monthsData[state.currentIndex].cssScrollHeight
+        setScrollTop(state.monthsData[state.currentIndex].cssScrollHeight)
+        nextTick(() => setScrollWithAnimation(true))
       }
     })
 
@@ -830,7 +855,7 @@ export const CalendarItem = React.forwardRef<
         <ScrollView
           scrollTop={scrollTop}
           scrollY
-          scrollWithAnimation
+          scrollWithAnimation={scrollWithAnimation}
           className="nut-calendar-content"
           onScroll={monthsViewScroll}
           ref={months}
