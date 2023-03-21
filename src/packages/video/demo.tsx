@@ -97,8 +97,8 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options}
-            onPlayFuc={play}
-            onPauseFuc={pause}
+            onPlay={play}
+            onPause={pause}
             onPlayend={playend}
           />
         </Cell>
@@ -107,8 +107,8 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options1}
-            onPlayFuc={play}
-            onPauseFuc={pause}
+            onPlay={play}
+            onPause={pause}
             onPlayend={playend}
           />
         </Cell>
@@ -117,8 +117,8 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options2}
-            onPlayFuc={play}
-            onPauseFuc={pause}
+            onPlay={play}
+            onPause={pause}
             onPlayend={playend}
           />
         </Cell>
@@ -127,8 +127,8 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options3}
-            onPlayFuc={play}
-            onPauseFuc={pause}
+            onPlay={play}
+            onPause={pause}
             onPlayend={playend}
           />
         </Cell>
@@ -137,8 +137,8 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options4}
-            onPlayFuc={play}
-            onPauseFuc={pause}
+            onPlay={play}
+            onPause={pause}
             onPlayend={playend}
           />
         </Cell>
@@ -147,8 +147,8 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options5}
-            onPlayFuc={play}
-            onPauseFuc={pause}
+            onPlay={play}
+            onPause={pause}
             onPlayend={playend}
           />
         </Cell>
@@ -157,8 +157,8 @@ const VideoDemo = () => {
           <Video
             source={source1}
             options={options}
-            onPlayFuc={play}
-            onPauseFuc={pause}
+            onPlay={play}
+            onPause={pause}
             onPlayend={playend}
           />
         </Cell>

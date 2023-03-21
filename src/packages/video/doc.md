@@ -37,8 +37,8 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
+          onPlay={play}
+          onPause={pause}
           onPlayend={playend}
          />
       </Cell>
@@ -77,8 +77,8 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
+          onPlay={play}
+          onPause={pause}
           onPlayend={playend}
          />
       </Cell>
@@ -116,8 +116,8 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
+          onPlay={play}
+          onPause={pause}
           onPlayend={playend}
          />
       </Cell>
@@ -156,8 +156,8 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
+          onPlay={play}
+          onPause={pause}
           onPlayend={playend}
          />
       </Cell>
@@ -196,8 +196,8 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
+          onPlay={play}
+          onPause={pause}
           onPlayend={playend}
          />
       </Cell>
@@ -239,8 +239,8 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
+          onPlay={play}
+          onPause={pause}
           onPlayend={playend}
          />
       </Cell>
@@ -281,8 +281,8 @@ const App = () => {
         <Video
           source={source1}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
+          onPlay={play}
+          onPause={pause}
           onPlayend={playend}
          />
       </Cell>
@@ -317,6 +317,6 @@ export default App;
 | play      | 播放         | -       |
 | pause     | 暂停         | -       |
 | playend   | 播放完成回调 | -       |
-| onPlayFuc      | 播放         | -       |
-| onPauseFuc     | 暂停         | -       |
+| onPlay `2.0.0`      | 播放         | -       |
+| onPause `2.0.0`    | 暂停         | -       |
 | onPlayend   | 播放完成回调 | -       |

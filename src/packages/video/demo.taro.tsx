@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell, Button, Video } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 import '@/packages/video/demo.scss'
 
 interface T {
@@ -100,8 +100,8 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options}
-            onPlayFuc={play}
-            onPauseFuc={pause}
+            onPlay={play}
+            onPause={pause}
             onPlayend={playend}
           />
         </Cell>
@@ -110,8 +110,8 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options1}
-            onPlayFuc={play}
-            onPauseFuc={pause}
+            onPlay={play}
+            onPause={pause}
             onPlayend={playend}
           />
         </Cell>
@@ -120,8 +120,8 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options2}
-            onPlayFuc={play}
-            onPauseFuc={pause}
+            onPlay={play}
+            onPause={pause}
             onPlayend={playend}
           />
         </Cell>
@@ -130,8 +130,8 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options3}
-            onPlayFuc={play}
-            onPauseFuc={pause}
+            onPlay={play}
+            onPause={pause}
             onPlayend={playend}
           />
         </Cell>
@@ -140,8 +140,8 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options4}
-            onPlayFuc={play}
-            onPauseFuc={pause}
+            onPlay={play}
+            onPause={pause}
             onPlayend={playend}
           />
         </Cell>
@@ -150,8 +150,8 @@ const VideoDemo = () => {
           <Video
             source={source}
             options={options5}
-            onPlayFuc={play}
-            onPauseFuc={pause}
+            onPlay={play}
+            onPause={pause}
             onPlayend={playend}
           />
         </Cell>
@@ -160,8 +160,8 @@ const VideoDemo = () => {
           <Video
             source={source1}
             options={options}
-            onPlayFuc={play}
-            onPauseFuc={pause}
+            onPlay={play}
+            onPause={pause}
             onPlayend={playend}
           />
         </Cell>
