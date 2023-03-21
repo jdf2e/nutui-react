@@ -55,34 +55,39 @@
 ## 项目运行
 
 ### 本地运行H5
-```
+```sh
+# 克隆仓库
 git clone https://github.com/jdf2e/nutui-react.git
 
+# 进入项目根目录
 cd nutui-react
 
+# 安装依赖
 npm install
 
+# 进入开发模式
+# 浏览器访问：http://localhost:3000（如果已启动前台程序，则不需打开此地址）
 npm run dev
 
-访问：http://localhost:3000（如果已启动前台程序，则不需打开此地址）
 ```
 ### 本地运行小程序
-```
+```sh
+# 克隆仓库
 git clone https://github.com/jdf2e/nutui-react.git
 
+# 进入项目根目录
 cd nutui-react
 
+# 安装依赖
 npm install
 
+# 进入小程序开发模式
+# 访问：src/sites/mobile-taro/dist/weapp
 npm run dev:taro:weapp
 
-访问：src/sites/mobile-taro/dist/weapp
-
-其他小程序类似，如
-
+# 其他小程序类似，如京东小程序
+# 访问：src/sites/mobile-taro/dist/jd
 npm run dev:taro:jd
-
-访问：src/sites/mobile-taro/dist/jd
 ```
 
 ## 构建版本
