@@ -234,8 +234,8 @@ export default App;
 | onAdd        | Triggered when the Add button is clicked     | `event: Event`                   |
 | onReduce     | Triggered when the decrease button is clicked     | `event: Event`                   |
 | onOverlimit  | Triggered when an unavailable button is clicked | `event: Event`                   |
-| onChange `2.0.0`     | Triggered when the value changes           | `value: number, event: Event` |
-| onBlur `2.0.0`       | Triggered when the input box blur   | `event: Event`                   |
+| onChange `v2.0.0`     | Triggered when the value changes           | `value: number, event: Event` |
+| onBlur `v2.0.0`       | Triggered when the input box blur   | `event: Event`                   |
 | onFocus      | Triggered when the input box focus   | `event: Event`                   |
 
 ## Theming

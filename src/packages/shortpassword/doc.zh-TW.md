@@ -192,8 +192,8 @@ export default App;
 | length                 | 密碼長度，取值為4~6 | string \| number | `6`                            |
 | errorMsg              | 錯誤信息提示        | string         | -                           |
 | autoFocus              | 自動聚焦        | boolean         | `false` |
-| tipsIcon `2.0.0` | 忘记密碼提示icon | `ReactNode`  | - |
-| iconSize `2.0.0` | 图标大小 | string \| number  | `11` |
+| tipsIcon `v2.0.0` | 忘记密碼提示icon | `ReactNode`  | - |
+| iconSize `v2.0.0` | 图标大小 | string \| number  | `11` |
 
 
 ### Events

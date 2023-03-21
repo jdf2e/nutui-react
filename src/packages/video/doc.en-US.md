@@ -315,6 +315,6 @@ export default App;
 | play      | play event         | -       |
 | pause     | pause event         | -       |
 | playend   | Playback completion callback | -       |
-| onPlay `2.0.0`      | play event         | -       |
-| onPause  `2.0.0`   | pause event         | -       |
+| onPlay `v2.0.0`      | play event         | -       |
+| onPause  `v2.0.0`   | pause event         | -       |
 | onPlayend   | Playback completion callback | -       |

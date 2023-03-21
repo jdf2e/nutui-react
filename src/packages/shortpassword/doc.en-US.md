@@ -194,8 +194,8 @@ export default App;
 | length                 | ShortPassword lenght The value is 4~6 | string \| number | `6`                            |
 | errorMsg              | Error message         | string         | -                           |
 | autoFocus              | Be focused when ShortPassword is displayed | boolean         | `false`                           |
-| tipsIcon `2.0.0` | icon of forget tips | `ReactNode`  | - |
-| iconSize `2.0.0` | size of icon | string \| number  | `11` |
+| tipsIcon `v2.0.0` | icon of forget tips | `ReactNode`  | - |
+| iconSize `v2.0.0` | size of icon | string \| number  | `11` |
 
 ### Events
 

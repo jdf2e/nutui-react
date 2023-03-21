@@ -274,9 +274,9 @@ export default App;
 | onAdd       | 点击增加按钮时触发     | event: Event                   |
 | onReduce    | 点击减少按钮时触发     | event: Event                   |
 | onOverlimit  | 点击不可用的按钮时触发 | event: Event                   |
-| onChange `2.0.0`     | 值改变时触发           | value:  number , event : Event |
+| onChange `v2.0.0`     | 值改变时触发           | value:  number , event : Event |
 | onFocus      | 输入框获得焦点时触发   | event: Event                   |
-| onBlur `2.0.0`     | 输入框失去焦点时触发   | event: Event                   |
+| onBlur `v2.0.0`     | 输入框失去焦点时触发   | event: Event                   |
 
 ## 主题定制
 

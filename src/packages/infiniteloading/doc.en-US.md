@@ -272,12 +272,12 @@ export default App;
 | useWindow | Add the scroll listener to the window or the parent of the listening component    | boolean | `true` |
 | useCapture          | Whether to use capture mode                        | boolean | `false`            |
 | containerId          | When useWindow is false, set the node ID by default                        | string | -            |
-| loadMoreText `2.0.0`         | “No more” text                        | string | `Oops, this is the bottom`            |
+| loadMoreText `v2.0.0`         | “No more” text                        | string | `Oops, this is the bottom`            |
 | isOpenRefresh        | Enable pull refresh                         | boolean | `false`                |
 | pullIcon        | Pull refresh[icon name](#/icon)                        | ReactNode | -                |
 | pullText        | Pull refresh text                        | string | `Loose to refresh`                |
 | loadIcon        | Pull on loading[icon name](#/icon)                       | ReactNode | -            |
-| loadingText`2.0.0`        | Pull on loading text                         | string | `Loading...`                |
+| loadingText`v2.0.0`        | Pull on loading text                         | string | `Loading...`                |
 
 ### Events
 

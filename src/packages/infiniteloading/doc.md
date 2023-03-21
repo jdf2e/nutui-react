@@ -271,12 +271,12 @@ export default App;
 | useWindow | 将滚动侦听器添加到 window 否则侦听组件的父节点     | boolean | `true` |
 | useCapture          | 是否使用捕获模式 true 捕获 false 冒泡                        | boolean | `false`            |
 | containerId          | 在 useWindow 属性为 false 的时候，自定义设置节点ID                        | string | -            |
-| loadMoreText `2.0.0`         | “没有更多数”据展示文案                        | string | `哎呀，这里是底部了啦`            |
+| loadMoreText `v2.0.0`         | “没有更多数”据展示文案                        | string | `哎呀，这里是底部了啦`            |
 | isOpenRefresh        | 是否开启下拉刷新                         | boolean | `false`                |
 | pullIcon        | 下拉刷新[图标名称](#/icon)                        | ReactNode | -                |
 | pullText        | 下拉刷新提示文案                         | string | `松手刷新`                |
 | loadIcon        | 上拉加载[图标名称](#/icon)                       | ReactNode | -            |
-| loadingText `2.0.0`       | 上拉加载提示文案                         | string | `加载中...`                |
+| loadingText `v2.0.0`       | 上拉加载提示文案                         | string | `加载中...`                |
 
 ### Events
 

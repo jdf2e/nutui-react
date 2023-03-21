@@ -317,6 +317,6 @@ export default App;
 | play      | 播放         | -       |
 | pause     | 暂停         | -       |
 | playend   | 播放完成回调 | -       |
-| onPlay `2.0.0`      | 播放         | -       |
-| onPause `2.0.0`    | 暂停         | -       |
+| onPlay `v2.0.0`      | 播放         | -       |
+| onPause `v2.0.0`    | 暂停         | -       |
 | onPlayend   | 播放完成回调 | -       |

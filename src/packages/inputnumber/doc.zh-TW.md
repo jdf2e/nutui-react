@@ -226,8 +226,8 @@ export default App;
 | onAdd        | 點擊增加按鈕時觸發     | `event: Event`                   |
 | onReduce     | 點擊減少按鈕時觸發     | `event: Event`                   |
 | onOverlimit  | 點擊不可用的按鈕時觸發 | `event: Event`                   |
-| onChange `2.0.0`     | 值改變時觸發           | `value: number, event: Event` |
-| onBlur `2.0.0`     | 輸入框失去焦點時觸發   | `event: Event`                   |
+| onChange `v2.0.0`     | 值改變時觸發           | `value: number, event: Event` |
+| onBlur `v2.0.0`     | 輸入框失去焦點時觸發   | `event: Event`                   |
 | onFocus      | 輸入框獲得焦點時觸發   | `event: Event`                   |
 
 ## 主題定制

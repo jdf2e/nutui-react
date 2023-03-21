@@ -213,7 +213,7 @@ export default App;
 | 字段             | 說明                                   | 類型    | 默認值    |
 |------------------|----------------------------------------|---------|-----------|
 | visible       | 遮罩層可見                            | boolean | `false`     |
-| cancelText `2.0.0`      | 取消文案                              | string  | `取消`    |
+| cancelText `v2.0.0`      | 取消文案                              | string  | `取消`    |
 | menuItems       | 列表項                                | Array   | `[]`       |
 | optionTag       | 設置列表項展示使用參數                | string  | `name`    |
 | optionSubTag   | 設置列表項描述展示使用參數             | string  | `subname` |

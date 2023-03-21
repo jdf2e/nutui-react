@@ -213,7 +213,7 @@ export default App;
 | Attribute | Description | Type    | Default    |
 |------------------|----------- ------|---------|-----------|
 | visible       | Mask layer visible  | boolean | `false`     |
-| cancelText`2.0.0`       | Cancel Text | string  | `Cancel`    |
+| cancelText`v2.0.0`       | Cancel Text | string  | `Cancel`    |
 | menuItems | Menu Item | Array   | `[]`       |
 | optionTag | Set menu item display usage parameters | string  | `name`    |
 | optionSubTag   | Set menu item description display usage parameters             | string  | `subname` |
