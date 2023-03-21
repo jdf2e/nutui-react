@@ -39,7 +39,8 @@ const defaultProps = {
   },
 } as VideoProps
 export const Video: FunctionComponent<
-  Partial<VideoProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<VideoProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onPause' | 'onPlay'>
 > = (props) => {
   const {
     children,

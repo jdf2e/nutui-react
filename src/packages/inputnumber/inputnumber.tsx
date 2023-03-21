@@ -54,7 +54,8 @@ function pxCheck(value: string | number): string {
 }
 
 export const InputNumber: FunctionComponent<
-  Partial<InputNumberProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<InputNumberProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'onBlur'>
 > = (props) => {
   const {
     children,
