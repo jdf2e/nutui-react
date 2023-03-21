@@ -53,7 +53,7 @@ const App = () => {
     <>   
       <Cell title="请选择城市" desc={baseDesc} onClick={() => setIsVisible1(!isVisible1)}/>
       <Picker
-        isVisible={isVisible1}
+        visible={isVisible1}
         listData={listData1}
         onConfirm={(values, list) => confirmPicker(values, list)}
         onClose={() => setIsVisible1(false)}
@@ -105,7 +105,7 @@ const App = () => {
     <>   
       <Cell title="请选择城市" desc={baseDefault} onClick={() => setIsVisible1(!isVisible1)}/>
       <Picker
-        isVisible={isVisible1}
+        visible={isVisible1}
         listData={listData1}
         onConfirm={(values, list) => confirmPicker(values, list)}
         onClose={() => setIsVisible1(false)}
@@ -155,7 +155,7 @@ const App = () => {
     <>   
     <Cell title="多列用法" desc={mutilDesc} onClick={() => setIsVisible2(!isVisible2)} />
     <Picker
-      isVisible={isVisible2}
+      visible={isVisible2}
       listData={listData2}
       onClose={() => setIsVisible2(false)}
       defaultValueData={['Wednesday']}
@@ -179,7 +179,7 @@ import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [visible, setIsVisible] = useState(false)
   const [tileDesc, settileDesc] = useState('')
   const listData = [
     [
@@ -206,9 +206,9 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell title="请选择城市" desc={settileDesc} onClick={() => setIsVisible(!isVisible)}/>
+      <Cell title="请选择城市" desc={settileDesc} onClick={() => setIsVisible(!visible)}/>
       <Picker
-        isVisible={isVisible}
+        visible={visible}
         listData={listData}
         threeDimensional={false}
         swipeDuration={1000}
@@ -231,7 +231,7 @@ import { Picker,Cell } from '@nutui/nutui-react';
 
 
 const App = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [visible, setIsVisible] = useState(false)
   const [cityCustmer, setCityCustmer] = useState('')
   const [custmerCityData, setCustmerCityData] = useState([
     {
@@ -266,9 +266,9 @@ const App = () => {
  
   return ( 
     <>   
-      <Cell title="多级联动" desc={cityCustmer} onClick={() => setIsVisible(!isVisible)}/>
+      <Cell title="多级联动" desc={cityCustmer} onClick={() => setIsVisible(!visible)}/>
       <Picker
-        isVisible={isVisible}
+        visible={visible}
         listData={custmerCityData}
         onClose={() => setIsVisible(false)}
         onConfirm={(values, list: PickerOption[]) =>
@@ -294,7 +294,7 @@ import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [visible, setIsVisible] = useState(false)
   const [asyncDesc, setasyncDesc] = useState('')
   const [asyncData, setCustmerCityData] = useState([
     {
@@ -340,9 +340,9 @@ const App = () => {
  
   return ( 
     <>   
-      <Cell title="请选择城市" desc={asyncDesc} onClick={() => setIsVisible(!isVisible)}/>
+      <Cell title="请选择城市" desc={asyncDesc} onClick={() => setIsVisible(!visible)}/>
       <Picker
-        isVisible={isVisible}
+        visible={visible}
         listData={asyncData}
         onClose={() => setIsVisible(false)}
         onConfirm={(values, list: PickerOption[]) =>
@@ -367,7 +367,7 @@ export default App;
 
 | 字段                     | 说明 | 类型 | 默认值 |
 |------------------------| ----- | ----- | ----- |
-| isVisible              | 是否可见 | boolean | `false` |
+| visible`v2.0.0`              | 是否可见 | boolean | `false` |
 | title                  | 设置标题 | string | - |
 | listData               | 列表数据 | Array | `[]` |
 | defaultValueData       | 默认选中 | Array | `[]` |

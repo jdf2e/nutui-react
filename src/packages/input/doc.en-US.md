@@ -451,10 +451,10 @@ export default App;
 | autofocus    | Whether to auto focus, unsupported in iOS                                 | Boolean                   | `false`     |
 | maxlength   | Max length of value                                                       | String、Number             | -           |
 | clearable    | Whether to be clearable                                                   | Boolean                   | `false`     |
-| clearIcon   | Clear Icon name, [icon](#/icon)                                   | ReactNode                 | `MaskClose` |
-| clearSize   | Default Clear Icon `font-size`                                            | String                    | `14`        |
-| leftIcon    | Left side Icon name, [icon](#/icon)                               | ReactNode                    | -           |
-| rightIcon   | Right side Icon name, [icon](#/icon)                              | ReactNode                    | -           |
+| clearIcon `v2.0.0`   | Clear Icon name, [icon](#/icon)                                   | ReactNode                 | `MaskClose` |
+| clearSize `v2.0.0`  | Default Clear Icon `font-size`                                            | String                    | `14`        |
+| leftIcon  `v2.0.0`  | Left side Icon name, [icon](#/icon)                               | ReactNode                    | -           |
+| rightIcon `v2.0.0`  | Right side Icon name, [icon](#/icon)                              | ReactNode                    | -           |
 | showWordLimit | Whether to show word limit, need to set the `max-length` prop             | Boolean                   | `false`     |
 | error         | Whether to mark the input content in red                                  | Boolean                   | `false`     |
 | errorMessage | Error message                                                             | String、Number             | -           |

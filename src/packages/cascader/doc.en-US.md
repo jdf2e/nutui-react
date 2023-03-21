@@ -574,7 +574,7 @@ export default App;
 | convertConfig | When options is a flat structure that can be converted into a tree structure, configure the conversion rules | Object   | -      |
 | title          | Title | string   | -      |
 | closeIconPosition | Cancel the button position and inherit the popup component | string   | `top-right`      |
-| close-icon | Customize the close button and inherit the popup component | string   | `close`     |
+| closeIcon | Customize the close button and inherit the popup component | string   | `close`     |
 | closeable | Whether to display the close button and inherit the popup component | boolean   | `true`     |
 
 ### Events

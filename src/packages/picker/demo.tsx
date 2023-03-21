@@ -298,7 +298,7 @@ const PickerDemo = () => {
         />
         <Picker
           title={translated.chooseCity}
-          isVisible={isVisible1}
+          visible={isVisible1}
           listData={listData1}
           onConfirm={(values, list) => confirmPicker('base', values, list)}
           onClose={() => setIsVisible1(false)}
@@ -312,7 +312,7 @@ const PickerDemo = () => {
           onClick={() => setIsVisible4(!isVisible4)}
         />
         <Picker
-          isVisible={isVisible4}
+          visible={isVisible4}
           listData={listData1}
           onConfirm={(values, list) => confirmPicker('default', values, list)}
           defaultValueData={defaultValue}
@@ -327,7 +327,7 @@ const PickerDemo = () => {
           onClick={() => setIsVisible2(!isVisible2)}
         />
         <Picker
-          isVisible={isVisible2}
+          visible={isVisible2}
           listData={listData2}
           onClose={() => setIsVisible2(false)}
           defaultValueData={['Wednesday']}
@@ -341,7 +341,7 @@ const PickerDemo = () => {
           onClick={() => setIsVisible6(!isVisible6)}
         />
         <Picker
-          isVisible={isVisible6}
+          visible={isVisible6}
           listData={listData1}
           onConfirm={(values, list) => confirmPicker('tile', values, list)}
           defaultValueData={defaultValue}
@@ -359,7 +359,7 @@ const PickerDemo = () => {
         />
 
         <Picker
-          isVisible={isVisible3}
+          visible={isVisible3}
           listData={custmerCityData}
           onClose={() => setIsVisible3(false)}
           onConfirm={(values, list: PickerOption[]) =>
@@ -388,7 +388,7 @@ const PickerDemo = () => {
         />
 
         <Picker
-          isVisible={isVisible5}
+          visible={isVisible5}
           listData={custmerCityData}
           onClose={() => setIsVisible5(false)}
           onConfirm={(values, list: PickerOption[]) =>

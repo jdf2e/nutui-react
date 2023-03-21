@@ -573,7 +573,7 @@ export default App;
 | convertConfig | 當options為可轉換為樹形結構的扁平結構時，配置轉換規則 | Object   | -      |
 | title          | 標題 | string   | -      |
 | closeIconPosition | 取消按鈕位置，繼承 Popup 組件 | string   | `top-right`      |
-| close-icon | 自定義關閉按鈕，繼承 Popup 組件 | string   | `close`     |
+| closeIcon | 自定義關閉按鈕，繼承 Popup 組件 | string   | `close`     |
 | closeable | 是否顯示關閉按鈕，繼承 Popup 組件 | boolean   | `true`     |
 
 ### Events

@@ -443,10 +443,10 @@ export default App;
 | autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | Boolean        | `false` |
 | maxlength      | 限制最长输入字符                       | String、Number  | -       |
 | clearable    | 展示清除 Icon                         | Boolean        | `false`  |
-| clearIcon   | 清除图标 Icon [可参考 Icon ](#/icon)                             | ReactNode                 | `MaskClose`  |
-| clearSize   | 默认清除图标的 `font-size` 大小                                                 | String                    | `14` |
-| leftIcon    | 左侧 Icon [可参考 Icon ](#/icon)                                          | ReactNode                 | - |
-| rightIcon   | 右侧 Icon [可参考 Icon ](#/icon)                                          | ReactNode                 | - |
+| clearIcon `v2.0.0`  | 清除图标 Icon [可参考 Icon ](#/icon)                             | ReactNode                 | `MaskClose`  |
+| clearSize `v2.0.0`  | 默认清除图标的 `font-size` 大小                                                 | String                    | `14` |
+| leftIcon  `v2.0.0`  | 左侧 Icon [可参考 Icon ](#/icon)                                          | ReactNode                 | - |
+| rightIcon  `v2.0.0` | 右侧 Icon [可参考 Icon ](#/icon)                                          | ReactNode                 | - |
 | showWordLimit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | Boolean | `false`  |
 | error         | 是否标红                                | Boolean | `false`  |
 | errorMessage | 底部错误提示文案，为空时不展示            | String、Number | - |

@@ -406,7 +406,7 @@ export const DatePicker: FunctionComponent<
       {listData.length > 0 && (
         <Picker
           title={title}
-          isVisible={show}
+          visible={show}
           listData={listData}
           onClose={onCloseDatePicker}
           defaultValueData={defaultValue}
