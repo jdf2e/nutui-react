@@ -172,7 +172,7 @@ left          # 左側中間位置
 right         # 右側中間位置
 bottom        # 底部中間位置
 ```
-自 `v1.3.0` 起新增
+自  起新增
 ```
 top-start     # 頂部左側位置
 top-end       # 頂部右側位置 
@@ -227,7 +227,7 @@ export default App;
 | visible      | 是否展示氣泡彈出層                 | boolean  | `false`     |
 | theme          | 主題風格，可選值為 dark            | string   | `light`   |
 | location       | 彈出位置  | string   | `bottom`  |
-| offset `v1.3.0`       | 出現位置的偏移量  | number   | `20`  |
+| offset        | 出現位置的偏移量  | number   | `20`  |
 
 ### List 數據結構  
 

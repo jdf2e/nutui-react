@@ -171,7 +171,7 @@ left          # Left middle
 right         # Right middle 
 bottom        # Bottom middle 
 ```
-New since `v1.3.0`
+New since 
 ```
 top-start     # Top left
 top-end       # Top right 
@@ -226,7 +226,7 @@ export default App;
 | visible      | whether to show                 | boolean  | `false`     |
 | theme          | Theme style, can be set to `dark` `light`          | string   | `light`   |
 | location       | pop-up location  | string   | `bottom`  |
-| offset `v1.3.0`       | the offset of the occurrence position  | number   | `20`  |
+| offset        | the offset of the occurrence position  | number   | `20`  |
 
 ### List data structure  
 

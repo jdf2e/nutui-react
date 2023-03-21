@@ -209,7 +209,7 @@ export default App;
 ## Events
 | 方法名            | 说明       | 参数            | 返回值     |
 |----------------|----------| --------------- | ---------- |
-| onScroll`v1.3.8` | scroll event |        -        |      -    |
+| onScroll | scroll event |        -        |      -    |
 
 
 

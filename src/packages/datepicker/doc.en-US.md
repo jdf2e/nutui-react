@@ -360,15 +360,15 @@ export default App;
 | title                     | Title                                          | string  | `null`   |
 | minDate                   | Start date                                          | Date    | `Ten years ago on January 1` |
 | maxDate                   | End date                                         | Date    | `Ten years later on December 31` |
-| formatter`v1.2.2`         | Option text formatter                                           | (type: string, option: PickerOption) => PickerOption    | - |
-| filter`v1.2.2`            | Option filter                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
-| threeDimensional`v1.2.2` | Turn on 3D effects               | boolean  | `true`   |
+| formatter         | Option text formatter                                           | (type: string, option: PickerOption) => PickerOption    | - |
+| filter            | Option filter                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
+| threeDimensional | Turn on 3D effects               | boolean  | `true`   |
 
 
 ### Events
     
 | Event | Description           | Arguments     |
 |-----------------------------|--------------------|--------------|
-| onConfirmDatePicker`v1.2.2` | Emitted when click confirm button.  | `values, options` |
+| onConfirmDatePicker | Emitted when click confirm button.  | `values, options` |
 | onCloseDatePicker           | Emitted when click close button.          | - |
-| onChange`v1.2.2`            | Emitted when current option changed.         |  `columnIndex, values, options`  |
+| onChange            | Emitted when current option changed.         |  `columnIndex, values, options`  |

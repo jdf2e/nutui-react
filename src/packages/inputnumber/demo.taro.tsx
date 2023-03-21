@@ -184,7 +184,7 @@ const InputNumberDemo = () => {
         <Cell>
           <InputNumber
             modelValue={inputState.val7}
-            onChangeFuc={onChange}
+            onChange={onChange}
             isAsync
           />
         </Cell>

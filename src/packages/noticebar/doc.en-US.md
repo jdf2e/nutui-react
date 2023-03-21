@@ -272,7 +272,7 @@ export default App
 | delay      | Delay time                                         | string \| number | `1`       |
 | scrollable | Whether to scroll content                          | boolean       | `true`    |
 | speed      | Scrolling speed (px/s)                             | number         | `50`      |
-| wrapable`v1.3.0` | Whether to enable text wrap                        | boolean       | `false`    |
+| wrapable | Whether to enable text wrap                        | boolean       | `false`    |
 
 ### Prop（direction=vertical）
 
@@ -289,8 +289,8 @@ export default App
 
 | Attribute  | Description                             | Arguments     |
 | ---------- | --------------------------------------- | ------------ |
-| onClick `v1.3.8`     | Emitted when NoticeBar is clicked       | `event: Event` |
-| onClose `v1.3.8`     | Emitted when NoticeBar is closed        | `event: Event` |
+| onClick      | Emitted when NoticeBar is clicked       | `event: Event` |
+| onClose      | Emitted when NoticeBar is closed        | `event: Event` |
 | onClickItm `v1.4.5` | Emitted when the currently displayed information is clicked when scrolling multiple pieces of data vertically | `event: Event, listItem` |
 
 

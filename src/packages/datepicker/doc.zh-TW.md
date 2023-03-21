@@ -367,15 +367,15 @@ export default App;
 | title                     | 設置標題                                          | string  | `null`   |
 | minDate                   | 開始日期                                          | Date    | `十年前` |
 | maxDate                   | 結束日期                                          | Date    | `十年後` |
-| formatter`v1.2.2`         | 選項格式化函數                                          | (type: string, option: PickerOption) => PickerOption    | - |
-| filter`v1.2.2`            | 選項過濾函數                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
-| threeDimensional`v1.2.2` | 是否開啟3D效果               | boolean  | `true`   |
+| formatter         | 選項格式化函數                                          | (type: string, option: PickerOption) => PickerOption    | - |
+| filter            | 選項過濾函數                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
+| threeDimensional | 是否開啟3D效果               | boolean  | `true`   |
 
 
 ### Events
     
 | 事件名                         | 說明               | 回調參數     |
 |-----------------------------|--------------------|--------------|
-| onConfirmDatePicker`v1.2.2` | 點擊確定按鈕時觸發 | `values, options` |
+| onConfirmDatePicker | 點擊確定按鈕時觸發 | `values, options` |
 | onCloseDatePicker           | 關閉時觸發         | -- |
-| onChange`v1.2.2`                  | 選項改變時觸發         |  `columnIndex, values, options`  |
+| onChange                  | 選項改變時觸發         |  `columnIndex, values, options`  |

@@ -162,7 +162,7 @@ export default App;
 
 | 事件名 | 說明           | 回調參數                      |
 |--------|----------------|-------------------------------|
-| onChange `v1.3.8`| 切換開關時觸發 | `value: boolean, event: Event` |
+| onChange | 切換開關時觸發 | `value: boolean, event: Event` |
 
 
 ## 主題定制

@@ -367,16 +367,16 @@ export default App;
 | title                     | 设置标题                                          | string  | `null`   |
 | minDate                   | 开始日期                                          | Date    | `十年前` |
 | maxDate                   | 结束日期                                          | Date    | `十年后` |
-| formatter`v1.2.2`         | 选项格式化函数                                          | (type: string, option: PickerOption) => PickerOption    | - |
-| filter`v1.2.2`            | 选项过滤函数                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
-| threeDimensional`v1.2.2` | 是否开启3D效果               | boolean  | `true`   |
+| formatter         | 选项格式化函数                                          | (type: string, option: PickerOption) => PickerOption    | - |
+| filter            | 选项过滤函数                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
+| threeDimensional | 是否开启3D效果               | boolean  | `true`   |
 
 
 ### Events
     
 | 事件名                         | 说明               | 回调参数     |
 |-----------------------------|--------------------|--------------|
-| confirm`v1.2.2 废弃`         | 点击确定按钮时触发 | `event: Event` |
-| onConfirmDatePicker`v1.2.2` | 点击确定按钮时触发 | `values, options` |
+| confirm         | 点击确定按钮时触发 | `event: Event` |
+| onConfirmDatePicker | 点击确定按钮时触发 | `values, options` |
 | onCloseDatePicker           | 关闭时触发         | -- |
-| onChange`v1.2.2`                  | 选项改变时触发         |  `columnIndex, values, options`  |
+| onChange                  | 选项改变时触发         |  `columnIndex, values, options`  |

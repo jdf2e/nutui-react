@@ -19,10 +19,10 @@ export interface InfiniteloadingProps extends BasicComponent {
   useCapture: boolean
   isOpenRefresh: boolean
   pullIcon: ReactNode
-  pullTxt: string
+  pullText: string
   loadIcon: ReactNode
-  loadTxt: string
-  loadMoreTxt: string
+  loadingText: string
+  loadMoreText: string
   className: string
   style: React.CSSProperties
   onRefresh: (param: () => void) => void
@@ -41,10 +41,10 @@ const defaultProps = {
   useCapture: false,
   isOpenRefresh: false,
   pullIcon: null,
-  pullTxt: '松开刷新',
+  pullText: '松开刷新',
   loadIcon: null,
-  loadTxt: '加载中···',
-  loadMoreTxt: '哎呀，这里是底部了啦',
+  loadingText: '加载中···',
+  loadMoreText: '哎呀，这里是底部了啦',
 } as InfiniteloadingProps
 
 export const Infiniteloading: FunctionComponent<
@@ -60,10 +60,10 @@ export const Infiniteloading: FunctionComponent<
     useCapture,
     isOpenRefresh,
     pullIcon,
-    pullTxt,
+    pullText,
     loadIcon,
-    loadTxt,
-    loadMoreTxt,
+    loadingText,
+    loadMoreText,
     className,
     onRefresh,
     onLoadMore,
@@ -258,7 +258,7 @@ export const Infiniteloading: FunctionComponent<
         <div className="top-box">
           {pullIcon && <>{pullIcon}</>}
           <span className="top-text">
-            {pullTxt || locale.infiniteloading.pullRefreshText}
+            {pullText || locale.infiniteloading.pullRefreshText}
           </span>
         </div>
       </div>
@@ -268,13 +268,13 @@ export const Infiniteloading: FunctionComponent<
           <div className="bottom-box">
             {loadIcon && <>{loadIcon}</>}
             <div className="bottom-text">
-              {loadTxt || locale.infiniteloading.loadText}
+              {loadingText || locale.infiniteloading.loadText}
             </div>
           </div>
         ) : (
           !hasMore && (
             <div className="tips">
-              {loadMoreTxt || locale.infiniteloading.loadMoreText}
+              {loadMoreText || locale.infiniteloading.loadMoreText}
             </div>
           )
         )}

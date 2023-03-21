@@ -291,7 +291,7 @@ export default App;
 
 | 名稱  | 說明     | 回調參數                                                       |
 | ----- | -------- | -------------------------------------------------------------- |
-| onClick`v1.3.8` | 點擊事件 | `event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>` |
+| onClick | 點擊事件 | `event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>` |
 
 
 ## 主題定制

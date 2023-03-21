@@ -268,31 +268,28 @@ export default App;
 
 ### Cell Prop
 
-| 字段                 | 说明                                                                                           | 类型             | 默认值 |
-|--------------------|------------------------------------------------------------------------------------------------|------------------|--------|
-| title              | 标题名称                      |  ReactNode           | -      |
-| subTitle           | 左侧副标题                           |  ReactNode           | -      |
-| desc               | 右侧描述                                     | string      | -      |
-| descTextAlign      | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)，只展示 desc 时可用 | string | `right`  |
-| isLink             | 是否展示右侧箭头并开启点击反馈            | boolean          | `false`  |
-| to`v1.4.0 废弃`        | 点击后跳转的目标路由对象 | string  | -      |
-| replace            | 是否在跳转时替换当前页面历史                             | boolean          | `false`  |
-| roundRadius`v1.2.0` | 圆角半径                                      | string            | `6px`    |
-| url                | 点击后跳转的链接地址                                         | string           | -      |
-| icon               | 自定义左侧`icon`区域              | ReactNode           | -      |
-| center`v1.2.0`     | 是否使内容垂直居中                                                                             | boolean          | `false`  |
-| size`v1.2.0`       | 单元格大小，可选值为 `large`                           | string          | -  |
-| linkSlot`v1.2.0`   | 自定义右侧`link`区域                         | ReactNode          | -  |
-| iconSlot`v2.0.0 废弃`   | 直接使用 icon 即可                          | ReactNode          | -  |
-
-
+| 字段                 | 说明| 类型             | 默认值 |
+|--------------------|----------------------------|------------------|--------|
+| title              | 标题名称 |  ReactNode           | -      |
+| subTitle           | 左侧副标题 |  ReactNode           | -      |
+| desc               | 右侧描述 | string      | -      |
+| descTextAlign | 右侧描述文本对齐方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)，只展示 desc 时可用 | string | `right`  |
+| isLink | 是否展示右侧箭头并开启点击反馈 | boolean          | `false`  |
+| replace | 是否在跳转时替换当前页面历史 | boolean          | `false`  |
+| roundRadius | 圆角半径 | string | `6px`    |
+| url | 点击后跳转的链接地址 | string           | -      |
+| icon | 自定义左侧`icon`区域 | ReactNode           | -      |
+| center     | 是否使内容垂直居中 | boolean          | `false`  |
+| size       | 单元格大小，可选值为 `large` | string          | -  |
+| linkSlot   | 自定义右侧`link`区域 | ReactNode          | -  |
+| iconSlot`v2.0.0 废弃`   | 直接使用 icon 即可 | ReactNode          | -  |
 
 
 ### Cell Event
 
 | 名称  | 说明     | 回调参数                                                       |
 | ----- | -------- | -------------------------------------------------------------- |
-| onClick`v1.3.8` | 点击事件 | `event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>` |
+| onClick | 点击事件 | `event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>` |
 
 
 ## 主题定制

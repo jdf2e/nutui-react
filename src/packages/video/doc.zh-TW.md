@@ -318,6 +318,6 @@ export default App;
 | play `v1.3.8廢棄`     | 播放         | -       |
 | pause `v1.3.8廢棄`    | 暫停         | -       |
 | playend `v1.3.8廢棄`  | 播放完成回調 | -       |
-| onPlayFuc `v1.3.8`     | 播放         | -       |
-| onPauseFuc `v1.3.8`    | 暫停         | -       |
-| onPlayend `v1.3.8`  | 播放完成回調 | -       |
+| onPlayFuc      | 播放         | -       |
+| onPauseFuc     | 暫停         | -       |
+| onPlayend   | 播放完成回調 | -       |

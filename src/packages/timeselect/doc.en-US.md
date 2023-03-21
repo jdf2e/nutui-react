@@ -116,9 +116,9 @@ export default TimeSelectDemo
 
 | Event                  | Description                                                                                                       | required | callback args                         |
 |------------------------|-------------------------------------------------------------------------------------------------------------------|----------|---------------------------------------|
-| onSelect`v1.3.8`       | Callback after closing the mask                                                                                   | true     | `list: []`                            |
-| onPannelChange`v1.3.8` | Click the date callback in the left column, and internally update the data through setCurrentKey, setCurrentTime  | false    | `pannelKey: string \| number, list: []` |
-| onTimeChange`v1.3.8`         | Click the time callback, and internally update the data through setCurrentKey, setCurrentTime                                                                     | false                | `time: string, list: []`              |
+| onSelect       | Callback after closing the mask                                                                                   | true     | `list: []`                            |
+| onPannelChange | Click the date callback in the left column, and internally update the data through setCurrentKey, setCurrentTime  | false    | `pannelKey: string \| number, list: []` |
+| onTimeChange         | Click the time callback, and internally update the data through setCurrentKey, setCurrentTime                                                                     | false                | `time: string, list: []`              |
 
 
 ## Theming

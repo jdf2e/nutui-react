@@ -203,7 +203,7 @@ export default App;
 | closeIconSize`v2.0.0废弃` | 关闭按钮大小 | string        | `12px` |
 | destroyOnClose          | 组件销毁后是否关闭 | boolean       | `true`        |
 | round                   | 是否显示圆角 | boolean       | `false`       |
-| teleport`v1.3.0`        | 指定节点挂载 | HTMLElement \ | (() => HTMLElement) \| null        | `null`       |
+| teleport        | 指定节点挂载 | HTMLElement \ | (() => HTMLElement) \| null        | `null`       |
 
 ### Events
 

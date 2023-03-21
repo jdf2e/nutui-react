@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { ScrollView } from '@tarojs/components'
+import { nextTick } from '@tarojs/taro'
 import bem from '@/utils/bem'
 import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { nextTick } from '@tarojs/taro'
 
 type CalendarRef = {
   scrollToDate: (date: string) => void

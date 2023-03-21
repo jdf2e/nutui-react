@@ -450,7 +450,7 @@ export default CheckboxGroupOptions;
 |--------------| ----- |-------------| -- |
 | checkedValue | 当前选中项的标识符，和 `label` 相对应  | `string`      | -|
 | disabled     | 是否禁用选择,将用于其下的全部复选框 | `boolean`     | `false`|
-| max`v1.2.1` | 限制最大可选数 | `undefined|number` | `undefined`|
+| max | 限制最大可选数 | `undefined|number` | `undefined`|
 | textPosition`v1.4.8` | 文本所在的位置，可选值：`left`,`right`| `string`| `right` |
 | direction`v1.4.8` | 使用横纵方向 可选值 horizontal、vertical| `string`| `vertical` |
 | options `v1.3.10` | 配置 options 渲染复选按钮 | Array| `Array<{ label: string value: string disabled?: boolean }` |
@@ -471,8 +471,8 @@ export default CheckboxGroupOptions;
 
 | 方法名               | 说明 | 参数 |
 |-------------------| ----- | ----- |
-| toggleAll`v1.2.1` | 全选/取消 | `f`,传 `true`,表示全选，传 `false`,表示取消全选 |
-| toggleReverse`v1.2.1`   | 反选 | - |
+| toggleAll | 全选/取消 | `f`,传 `true`,表示全选，传 `false`,表示取消全选 |
+| toggleReverse   | 反选 | - |
 
 ## 主题定制
 

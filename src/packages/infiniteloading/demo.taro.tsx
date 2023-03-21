@@ -90,8 +90,8 @@ const InfiniteloadingDemo = () => {
             <Infiniteloading
               pullIcon={<Jd />}
               loadIcon={<Jd />}
-              loadTxt="loading"
-              loadMoreTxt="没有啦～"
+              loadingText="loading"
+              loadMoreText="没有啦～"
               isOpenRefresh
               containerId="scrollDemo"
               hasMore={hasMore}

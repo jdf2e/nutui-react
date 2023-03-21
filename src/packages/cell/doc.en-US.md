@@ -275,12 +275,12 @@ export default App
 | isLink            | Whether to show the right arrow and turn on click feedback            | boolean          | `false`  |
 | to`v1.4.0 Abandon`       | C Target route of the link | string  | -      |
 | replace           | If true, the navigation will not leave a history record                             | boolean          | `false`  |
-| roundRadius`v1.2.0` | Corner radius                                      | string            | `6px`    |
+| roundRadius | Corner radius                                      | string            | `6px`    |
 | url               | Link                                         | string           | -      |
 | icon              |  Custom Left `icon`              | ReactNode          | -      |
-| center`v1.2.0`    | Whether to center content                                                                              | boolean          | `false`  |
-| size`v1.2.0`      | Size, can be set to `large`                         | string          | -  |
-| linkSlot`v1.2.0`  | Custom Right`link`                      | ReactNode          | -  |
+| center    | Whether to center content                                                                              | boolean          | `false`  |
+| size      | Size, can be set to `large`                         | string          | -  |
+| linkSlot  | Custom Right`link`                      | ReactNode          | -  |
 | iconSlot`v2.0.0 deprecated`  |  Custom Left `icon`                        | ReactNode          | -  |
 
 
@@ -289,7 +289,7 @@ export default App
 
 | Event | Description                  | Arguments   |
 |-------|------------------------------|-------------|
-| onClick`v1.3.8` | Emitted when cell is clicked | `event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>` |
+| onClick | Emitted when cell is clicked | `event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>` |
 
 
 

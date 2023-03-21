@@ -463,7 +463,7 @@ export default App;
 | titleNode    | Custom Titles Area                     | ReactNode | -          |
 | size         | Tab bar font size optional value `large`, `normal`, `small` | string        | `normal`     |
 | leftAlign`v1.4.8` | Title Left Align | boolean | `false` |
-| autoHeight`v1.2.1` | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tabpane`. | boolean        | `false`     |
+| autoHeight | Automatic height. When set to `true`, `nut-tabs` and `nut-tabs__content` will change with the height of the current `nut-tabpane`. | boolean        | `false`     |
 
 ## Tabs Children
 

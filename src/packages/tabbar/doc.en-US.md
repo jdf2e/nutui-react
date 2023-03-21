@@ -205,7 +205,7 @@ size`v2.0.0废弃`    | icon size for all icons                                 
 
 | Event               | Description               | callback parameter           |
 |---------------------|--------------------|--------------------|
-| onSwitch`v1.3.8`    | Trigger an event when switching tabs | Clicked data and index value |
+| onSwitch    | Trigger an event when switching tabs | Clicked data and index value |
 
 
 ## Theming

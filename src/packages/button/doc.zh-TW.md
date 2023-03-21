@@ -245,7 +245,7 @@ export default App;
 
 | 事件名稱 | 說明 | 回調參數     |
 |--------|----------------|--------------|
-| onClick`v1.3.8`  | 点击按钮时触发 | `event: MouseEvent` |
+| onClick  | 点击按钮时触发 | `event: MouseEvent` |
 
 ### 支持小程序API能力
 目前1.3.11版本以前不支持原生小程序API, 如果你是需要使用原生小程序button组件能力的用户，请尽快升级至1.3.11版本，关于原生小程序button组件的详细API请前往[查阅更多文档](https://taro-docs.jd.com/docs/components/forms/button)

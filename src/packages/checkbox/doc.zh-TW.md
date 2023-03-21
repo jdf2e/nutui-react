@@ -440,9 +440,9 @@ export default CheckboxGroupOptions;
 | indeterminateIcon`v2.0.0`     | [圖標](#/icon)，半選狀態 | `ReactNode`        | `'CheckDisabled'`|
 | iconName                      | [圖標名稱](#/icon)，選中前(建議和`iconActiveName`一起修改) | `string`        | `'CheckNormal'`|
 | iconActiveName                | [圖標名稱](#/icon)，選中後(建議和`iconName`一起修改) | `string`        | `'Checked'`|
-| iconIndeterminateName`v1.2.1` | [圖標名稱](#/icon)，半選狀態 | `string`        | `'CheckDisabled'`|
-| iconClassPrefix`v1.2.1`       | 自定義 icon 類名前綴，用於使用自定義圖標        | `string`        | `nut-icon` |
-| iconFontClassName`v1.2.1`     | 自定義 icon 字體基礎類名        | `string`        | `nutui-iconfont` |
+| iconIndeterminateName | [圖標名稱](#/icon)，半選狀態 | `string`        | `'CheckDisabled'`|
+| iconClassPrefix       | 自定義 icon 類名前綴，用於使用自定義圖標        | `string`        | `nut-icon` |
+| iconFontClassName     | 自定義 icon 字體基礎類名        | `string`        | `nutui-iconfont` |
 | label                         | 複選框的文本內容 | `string`        | -|
 
 ## Checkbox.Group
@@ -451,7 +451,7 @@ export default CheckboxGroupOptions;
 |--------------| ----- |-------------| -- |
 | checkedValue | 當前選中項的標識符，和 `label` 相對應  | `string`      | -|
 | disabled     | 是否禁用選擇,將用於其下的全部複選框 | `boolean`     | `false`|
-| max`v1.2.1`           | 限制最大可選數 | `undefined|number` | `undefined`|
+| max           | 限制最大可選數 | `undefined|number` | `undefined`|
 | textPosition | 文本所在的位置，可選值：'left'，'right' | `string` | `right`    |
 | direction     | 使用橫縱方向 可選值 horizontal、vertical | `string` | `vertical` |
 | options `v1.3.10`     | 配置 options 渲染复选按钮      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
@@ -472,8 +472,8 @@ export default CheckboxGroupOptions;
 
 | 方法名               | 說明 | 參數 |
 |-------------------| ----- | ----- |
-| toggleAll`v1.2.1` | 全選/取消 | `f`,傳 `true`,表示全選，傳 `false`,表示取消全選 |
-| toggleReverse`v1.2.1`   | 反選 | - |
+| toggleAll | 全選/取消 | `f`,傳 `true`,表示全選，傳 `false`,表示取消全選 |
+| toggleReverse   | 反選 | - |
 
 ## 主題定制
 

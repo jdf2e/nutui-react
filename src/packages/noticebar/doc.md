@@ -283,7 +283,7 @@ export default App
 | delay      | 延时多少秒                                                 | string \| number | `1`      |
 | scrollable | 是否可以滚动                                               | boolean       | `true`   |
 | speed      | 滚动速率 (px/s)                                            | number        | `50`     |
-| wrapable `v1.3.0`  | 是否开启文本换行                                           | boolean       | `false`    |
+| wrapable   | 是否开启文本换行                                           | boolean       | `false`    |
 
 ### Prop（direction=vertical）
 
@@ -300,8 +300,8 @@ export default App
 
 | 字段  | 说明             | 回调参数     |
 | ----- | ---------------- | ------------ |
-| onClick `v1.3.8` | 外层点击事件回调 | `event: Event` |
-| onClose `v1.3.8` | 关闭通知栏时触发 | `event: Event` |
+| onClick  | 外层点击事件回调 | `event: Event` |
+| onClose  | 关闭通知栏时触发 | `event: Event` |
 | onClickItm `v1.4.5` | 垂直滚动多条数据时，点击当前展示的信息时触发 | `event: Event, listItem` |
 
 

@@ -191,7 +191,7 @@ const ActionSheetDemo = () => {
         {/* demo(带取消按钮） */}
         <ActionSheet
           visible={isVisible2}
-          cancelTxt={translated['2cd0f3be']}
+          cancelText={translated['2cd0f3be']}
           menuItems={menuItemsOne}
           onChoose={chooseItemTwo}
           onCancel={() => setIsVisible2(false)}
@@ -200,7 +200,7 @@ const ActionSheetDemo = () => {
         <ActionSheet
           visible={isVisible3}
           description={translated.e1699442}
-          cancelTxt={translated['2cd0f3be']}
+          cancelText={translated['2cd0f3be']}
           menuItems={menuItemsTwo}
           onChoose={chooseItemThree}
           onCancel={() => setIsVisible3(false)}
@@ -208,7 +208,7 @@ const ActionSheetDemo = () => {
         {/* demo 选项状态 */}
         <ActionSheet
           visible={isVisible4}
-          cancelTxt={translated['2cd0f3be']}
+          cancelText={translated['2cd0f3be']}
           menuItems={menuItemsThree}
           chooseTagValue={translated['85dae65b']}
           onChoose={() => {
@@ -218,7 +218,7 @@ const ActionSheetDemo = () => {
         />
         <ActionSheet
           visible={isVisible5}
-          cancelTxt={translated['2cd0f3be']}
+          cancelText={translated['2cd0f3be']}
           chooseTagValue={translated['85dae65b']}
           onChoose={() => {
             setIsVisible5(false)

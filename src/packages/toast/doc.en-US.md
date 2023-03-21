@@ -315,14 +315,14 @@ export default App
 | ------------------- | -------------- | ------------- | ----------------------------- |
 | id                  | Identifier, share one instance at the same time, default to multiple instances| string \| number | -            |
 | duration            | Toast duration(s), won't disappear if value is 0      | number       | `2`                          |
-| title `v1.3.0`           | title     | string        |           -             |
+| title            | title     | string        |           -             |
 | center  | Whether to display in the middle of the page (display at the bottom when false) | boolean | `true`                          |
 | bottom | The distance from the bottom of the page (px or %), which takes effect when option.center is false | string | `30px`       |
 | textAlignCenter     | Whether the multi-line copy is centered           | boolean       | `true`                          |
 | bgColor             | background color (transparency) | string        | `rgba(0, 0, 0, 0.8)`      |
 | customClass         |   Custom Class          | string        |          -                   |
 | icon                | Custom Icon        | string        |         -                   |
-| iconSize `v1.3.0`  | Custom iconSize      | string        | `20`                           |
+| iconSize   | Custom iconSize      | string        | `20`                           |
 | size        | Text Size **small**/**base**/**large**          | string        | `base`      |
 | cover      | Whether to show the mask layer     | boolean       | `false` |
 | coverColor          |  Cover Color   | string        | `rgba(0,0,0,0)`             |

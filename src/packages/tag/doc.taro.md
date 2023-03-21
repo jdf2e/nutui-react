@@ -205,7 +205,7 @@ export default App;
 
 | 事件名称 | 说明     | 回调参数 |
 |----------|----------|----------|
-| onClick`v1.2.2`    | 点击事件 | event    |
+| onClick    | 点击事件 | event    |
 | onClose    | 关闭事件 | event    |
 
 

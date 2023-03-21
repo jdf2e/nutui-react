@@ -111,7 +111,7 @@ export default App;
 | title        | title                         | ReactNode | -                |
 | content         | The content of the dialog box is suitable for function calls | ReactNode | -                |
 | footer | Customize the notes, but it will not be displayed in NULL     | ReactNode | - |
-| okText          | Confirm the button copywriting                        | ReactNode | `Sure`              |
+| confirmText `2.0.0`         | Confirm the button copywriting                        | ReactNode | `Sure`              |
 | cancelText          | Cancellation of buttons                        | ReactNode | `Cancel`              |
 | mask          | Whether to show a mask                        | boolean | `true`              |
 | noOkBtn          | Whether to hide the OK button                        | boolean | `false`              |

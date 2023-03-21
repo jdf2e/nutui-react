@@ -30,7 +30,7 @@ test('props test menuitems ', async () => {
       visible
       title="弹层标题"
       description="弹层描述信息"
-      cancelTxt="关闭弹层"
+      cancelText="关闭弹层"
       menuItems={menulist}
       chooseTagValue="选项一"
       color="red"
@@ -42,13 +42,13 @@ test('props test menuitems ', async () => {
   expect(menuItems.length).toBe(3)
 })
 
-test('props test cancelTxt ', async () => {
+test('props test cancelText ', async () => {
   const { container } = render(
     <ActionSheet
       visible
       title="弹层标题"
       description="弹层描述信息"
-      cancelTxt="关闭弹层"
+      cancelText="关闭弹层"
       menuItems={menulist}
       chooseTagValue="选项一"
       color="red"
@@ -64,7 +64,7 @@ test('props test has chooseTagValue ', async () => {
       visible
       title="弹层标题"
       description="弹层描述信息"
-      cancelTxt="关闭弹层"
+      cancelText="关闭弹层"
       menuItems={menulist}
       chooseTagValue="选项一"
       color="red"
@@ -84,7 +84,7 @@ test('props test choose item and show value', async () => {
       visible
       title="弹层标题"
       description="弹层描述信息"
-      cancelTxt="关闭弹层"
+      cancelText="关闭弹层"
       menuItems={menulist}
       chooseTagValue="选项一"
       color="red"
@@ -105,7 +105,7 @@ test('props test disable item has disable classes', async () => {
       visible
       title="弹层标题"
       description="弹层描述信息"
-      cancelTxt="关闭弹层"
+      cancelText="关闭弹层"
       menuItems={menulist}
       chooseTagValue="选项一"
       color="red"
@@ -126,7 +126,7 @@ test('props test click disable item and not call fn', async () => {
       visible
       title="弹层标题"
       description="弹层描述信息"
-      cancelTxt="关闭弹层"
+      cancelText="关闭弹层"
       menuItems={menulist}
       chooseTagValue="选项一"
       color="red"

@@ -160,13 +160,13 @@ export default App;
 
 | 事件名                       | 说明                                          | 回调参数     |
 |---------------------------|---------------------------------------------|--------------|
-| onClose`v1.3.8` | 关闭遮罩时触发, handleClose 事件从 1.3.8 之后改为 onClose | -           |
+| onClose | 关闭遮罩时触发, handleClose 事件从 1.3.8 之后改为 onClose | -           |
 
 ### 2、SubSideNavBar Events
 
 | 事件名           | 说明                                                             | 回调参数     |
 |---------------|----------------------------------------------------------------|--------------|
-| onClick`v1.3.8` | 导航点击, titleClick 事件从 1.3.8 之后改为 onClick | `data: {title: string, ikey: string \| number, isShow: boolean}`           |
+| onClick | 导航点击, titleClick 事件从 1.3.8 之后改为 onClick | `data: {title: string, ikey: string \| number, isShow: boolean}`           |
 
 ### 3、SideNavBarItem Events
 

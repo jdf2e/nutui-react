@@ -165,8 +165,8 @@ const InfiniteloadingDemo = () => {
             <Infiniteloading
               containerId="customScroll"
               useWindow={false}
-              loadTxt="loading"
-              loadMoreTxt={translated['1254a90a']}
+              loadingText="loading"
+              loadMoreText={translated['1254a90a']}
               hasMore={customHasMore}
               onLoadMore={customLoadMore}
             >

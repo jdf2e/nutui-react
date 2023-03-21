@@ -233,21 +233,21 @@ const App = () => {
   }
   return (
     <>
-    <Collapse activeName={currIndex} accordion>
-      {domData.map((item, index) => {
-        return (
-          <CollapseItem title={item.title} name={item.name} key={index}>
-            {item.data}
-          </CollapseItem>
-        )
-      })}
-    </Collapse>
-    <Button type="primary" size="small" onClick={() => changeNewData()}>
-          改变数据
-        </Button>
-        <Button type="info" size="small" onClick={() => changeOldData()}>
-          还原数据
-        </Button>
+      <Collapse activeName={currIndex} accordion>
+        {domData.map((item, index) => {
+          return (
+            <CollapseItem title={item.title} name={item.name} key={index}>
+              {item.data}
+            </CollapseItem>
+          )
+        })}
+      </Collapse>
+      <Button type="primary" size="small" onClick={() => changeNewData()}>
+        改变数据
+      </Button>
+      <Button type="info" size="small" onClick={() => changeOldData()}>
+        还原数据
+      </Button>
     </>
   )
 }
@@ -274,24 +274,22 @@ const App = () => {
 ### CollapseItem Prop
 
 | 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
+|--------------|----------------|--------|------------------|
 | name   | 唯一标识符，必填                         |string \| number | - |
-| title    | 标题栏左侧内容                 | ReactNode | -  |
-| disabled    | 标题栏是否禁用                 | boolean | `false`  |
-| subTitle    | 标题栏副标题             | ReactNode | -  |
+| title    | 标题栏左侧内容 | ReactNode | -  |
+| disabled    | 标题栏是否禁用 | boolean | `false`  |
+| subTitle    | 标题栏副标题 | ReactNode | -  |
 | titleIcon`v2.0.0 废弃`    | 标题图标链接/或使用 NutUI 的 icon             | string | -  |
 | titleIconColor`v2.0.0 废弃`    | 标题图标颜色        | string | -  |
 | titleIconSize`v2.0.0 废弃`    | 标题图标大小        | string | -  |
 | titleIconPosition`v2.0.0 废弃`    | 标题图标位置             | string | -  |
-
-
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
 | change`废弃`  | 切换面板时触发 | isOpen:是否打开状态；name：当前点击的name值 |
-| onChange`v1.3.8`  | 切换面板时触发 | isOpen:是否打开状态；name：当前点击的name值 |
+| onChange  | 切换面板时触发 | isOpen:是否打开状态；name：当前点击的name值 |
 
 
 ## 主题定制

@@ -279,7 +279,7 @@ const App = () => {
 | Attribute | Description  | Callback Arguments     |
 |--------|----------------|--------------|
 | change`Abandon`  | Triggered when the panel is switched | isOpen:Whether it is open status；name：Name value currently clicked |
-| onChange`v1.3.8`  | Triggered when the panel is switched | isOpen:Whether it is open status；name：Name value currently clicked |
+| onChange  | Triggered when the panel is switched | isOpen:Whether it is open status；name：Name value currently clicked |
 
 ## Theming
 
