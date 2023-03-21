@@ -27,8 +27,8 @@ const App = () => {
 }
   return (
     <>
-    <Cell title="我是標題" desc="描述文字" />
-    <Cell title="我是標題" subTitle="副標題描述" desc="描述文字" />
+    <Cell title="我是標題" description="描述文字" />
+    <Cell title="我是標題" subTitle="副標題描述" description="描述文字" />
     <Cell
         title="點擊測試"
         onClick={(
@@ -55,12 +55,12 @@ import { Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-    <Cell size="large" title="我是標題" desc="描述文字" />
+    <Cell size="large" title="我是標題" description="描述文字" />
     <Cell
         size="large"
         title="我是標題"
         subTitle="副標題描述"
-        desc="描述文字"
+        description="描述文字"
     />
     </>
   );
@@ -108,7 +108,7 @@ const App = () => {
             Title <b style={{ color: 'red' }}>1</b>
         </span>
         }
-        desc="描述文字"
+        description="描述文字"
     />
   );
 };
@@ -130,12 +130,12 @@ const App = () => {
     <>
     <CellGroup
         title="鏈接 | 分組用法"
-        desc="使用 nut-cell-group 支持 title desc slots"
+        description="使用 nut-cell-group 支持 title description slots"
     >
         <Cell title="鏈接" isLink />
         <Cell
         title="URL 跳轉"
-        desc="https://jd.com"
+        description="https://jd.com"
         isLink
         url="https://jd.com"
         />
@@ -208,7 +208,7 @@ import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
-    <Cell title="姓名" icon={<My />} desc="描述文案" isLink />
+    <Cell title="姓名" icon={<My />} description="描述文案" isLink />
   );
 };
 export default App;
@@ -216,7 +216,7 @@ export default App;
 
 :::
 
-### 只展示 desc ，可通過 desc-text-align 調整內容位置
+### 只展示 description ，可通過 description-text-align 調整內容位置
 
 :::demo
 
@@ -226,7 +226,7 @@ import { Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Cell descTextAlign="left" desc="描述文案" />
+    <Cell descTextAlign="left" description="描述文案" />
   );
 };
 export default App;
@@ -246,7 +246,7 @@ import { Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-     <Cell center title="我是標題" subTitle="副標題描述" desc="描述文字" />
+     <Cell center title="我是標題" subTitle="副標題描述" description="描述文字" />
   );
 };
 export default App;
@@ -262,9 +262,9 @@ export default App;
 | 字段  | 說明     | 類型   | 默認值 |
 |-------|----------|--------|--------|
 | title | 分組標題 | string | -      |
-| desc  | 分組描述 | string | -      |
+| description  | 分組描述 | string | -      |
 | titleSlot        | 自定義`title`標題區域                         | ReactNode          | -  |
-| descSlot        | 自定義`desc`描述區域                         | ReactNode          | -  |
+| descSlot        | 自定義`description`描述區域                         | ReactNode          | -  |
 
 ### Cell Prop
 
@@ -272,8 +272,8 @@ export default App;
 |--------------|------------------------------------------------------------------------------------------------|------------------|--------|
 | title        | 標題名稱                      |  ReactNode           | -      |
 | subTitle     | 左側副標題                           |  ReactNode           | -      |
-| desc         | 右側描述                                     | string      | -      |
-| descTextAlign | 右側描述文本對齊方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)，只展示 desc 時可用 | string | `right`  |
+| description         | 右側描述                                     | string      | -      |
+| descTextAlign | 右側描述文本對齊方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)，只展示 description 時可用 | string | `right`  |
 | isLink       | 是否展示右側箭頭並開啟點擊反饋            | boolean          | `false`  |
 | to`v1.4.0 废弃`  | 點擊後跳轉的目標路由對象 | string  | -      |
 | replace      | 是否在跳轉時替換當前頁面歷史                             | boolean          | `false`  |
@@ -304,9 +304,9 @@ export default App;
 | --- | --- |
 | --nutui-cell-color | `$gray1` |
 | --nutui-cell-title-font | `$font-size-2` |
-| --nutui-cell-title-desc-font | `$font-size-1` |
-| --nutui-cell-desc-font | `$font-size-2` |
-| --nutui-cell-desc-color | `$gray2` |
+| --nutui-cell-title-description-font | `$font-size-1` |
+| --nutui-cell-description-font | `$font-size-2` |
+| --nutui-cell-description-color | `$gray2` |
 | --nutui-cell-subtitle-color | `$gray2` |
 | --nutui-cell-border-radius | `6px` |
 | --nutui-cell-padding | `13px 16px` |
@@ -315,7 +315,7 @@ export default App;
 | --nutui-cell-after-border-bottom | `2px solid #f5f6f7` |
 | --nutui-cell-default-icon-margin | `0 4px 0 0px` |
 | --nutui-cell-large-title-font | `$font-size-large` |
-| --nutui-cell-large-title-desc-font | `$font-size-base` |
+| --nutui-cell-large-title-description-font | `$font-size-base` |
 | --nutui-cell-large-padding | `15px 16px` |
 | --nutui-cell-background | `$gray6` |
 | --nutui-cell-box-shaow | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
@@ -323,8 +323,8 @@ export default App;
 | --nutui-cell-group-title-color | `#909ca4` |
 | --nutui-cell-group-title-font-size | `$font-size-2` |
 | --nutui-cell-group-title-line-height | `20px` |
-| --nutui-cell-group-desc-padding | `0 10px` |
-| --nutui-cell-group-desc-color | `#909ca4` |
-| --nutui-cell-group-desc-font-size | `$font-size-1` |
-| --nutui-cell-group-desc-line-height | `16px` |
+| --nutui-cell-group-description-padding | `0 10px` |
+| --nutui-cell-group-description-color | `#909ca4` |
+| --nutui-cell-group-description-font-size | `$font-size-1` |
+| --nutui-cell-group-description-line-height | `16px` |
 | --nutui-cell-group-background-color | `$white` |

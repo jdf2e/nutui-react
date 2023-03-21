@@ -371,37 +371,37 @@ const AddressDemo = () => {
         <h2>{translated.title}</h2>
         <Cell
           title={translated.customAddress}
-          desc={text.one}
+          description={text.one}
           onClick={() => showAddress('normal')}
         />
         <h2>{translated.selectCity}</h2>
         <Cell
           title={translated.title}
-          desc={text.six}
+          description={text.six}
           onClick={() => showAddress('select')}
         />
         <h2>{translated.customAddress2}</h2>
         <Cell
           title={translated.title}
-          desc={text.five}
+          description={text.five}
           onClick={() => showAddress('normal2')}
         />
         <h2>{translated.existAddress}</h2>
         <Cell
           title={translated.title}
-          desc={text.two}
+          description={text.two}
           onClick={() => showAddress('exist')}
         />
         <h2>{translated.icon}</h2>
         <Cell
           title={translated.title}
-          desc={text.three}
+          description={text.three}
           onClick={() => showAddress('customImg')}
         />
         <h2>{translated.change}</h2>
         <Cell
           title={translated.title}
-          desc={text.four}
+          description={text.four}
           onClick={() => showAddress('other')}
         />
 

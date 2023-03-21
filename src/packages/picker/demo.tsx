@@ -267,24 +267,24 @@ const PickerDemo = () => {
     options: PickerOption[]
   ) => {
     console.log('demo 确定')
-    let desc = ''
+    let description = ''
     options.forEach((option: any) => {
-      desc += option.text
+      description += option.text
     })
     if (type === 'base') {
-      setBaseDesc(desc)
+      setBaseDesc(description)
     }
     if (type === 'mutil') {
-      setMutilDesc(desc)
+      setMutilDesc(description)
     }
 
     if (type === 'default') {
-      setbaseDefault(desc)
+      setbaseDefault(description)
       setDefaultValue([options[0].value as number])
     }
 
     if (type === 'tile') {
-      settileDesc(desc)
+      settileDesc(description)
     }
   }
   return (
@@ -293,7 +293,7 @@ const PickerDemo = () => {
         <h2>{translated.basic}</h2>
         <Cell
           title={translated.chooseCity}
-          desc={baseDesc}
+          description={baseDesc}
           onClick={() => setIsVisible1(!isVisible1)}
         />
         <Picker
@@ -308,7 +308,7 @@ const PickerDemo = () => {
         <h2>{translated.defaultSelected}</h2>
         <Cell
           title={translated.chooseCity}
-          desc={baseDefault}
+          description={baseDefault}
           onClick={() => setIsVisible4(!isVisible4)}
         />
         <Picker
@@ -323,7 +323,7 @@ const PickerDemo = () => {
         <h2>{translated.multipleColumns}</h2>
         <Cell
           title={translated.multipleColumns}
-          desc={mutilDesc}
+          description={mutilDesc}
           onClick={() => setIsVisible2(!isVisible2)}
         />
         <Picker
@@ -337,7 +337,7 @@ const PickerDemo = () => {
         <h2>{translated.tileDesc}</h2>
         <Cell
           title={translated.chooseCity}
-          desc={tileDesc}
+          description={tileDesc}
           onClick={() => setIsVisible6(!isVisible6)}
         />
         <Picker
@@ -354,7 +354,7 @@ const PickerDemo = () => {
         <h2>{translated.cascade}</h2>
         <Cell
           title={translated.cascade}
-          desc={cityCustmer}
+          description={cityCustmer}
           onClick={() => setIsVisible3(!isVisible3)}
         />
 
@@ -383,7 +383,7 @@ const PickerDemo = () => {
         <h2>{translated.async}</h2>
         <Cell
           title={translated.chooseCity}
-          desc={asyncDesc}
+          description={asyncDesc}
           onClick={() => setIsVisible5(!isVisible5)}
         />
 

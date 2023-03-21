@@ -26,7 +26,7 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell title="Show Chinese" desc={desc1} onClick={() => setShow1(true)} />
+      <Cell title="Show Chinese" description={desc1} onClick={() => setShow1(true)} />
       <DatePicker
         title="Choose Date"
         visible={show1}
@@ -56,7 +56,7 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell title="Limit the start and end time" desc={desc2} onClick={() => setShow2(true)} />
+      <Cell title="Limit the start and end time" description={desc2} onClick={() => setShow2(true)} />
       <DatePicker
           title="Choose Time"
           minDate={new Date(2022, 0, 1)}
@@ -92,7 +92,7 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell title="Choose Time" desc={desc3} onClick={() => setShow3(true)} />
+      <Cell title="Choose Time" description={desc3} onClick={() => setShow3(true)} />
       <DatePicker
           title="Choose Time"
           minDate={minDate}
@@ -127,7 +127,7 @@ const App = () => {
 
   return ( 
     <>   
-      <Cell title="Choose Time" desc={desc4} onClick={() => setShow4(true)} />
+      <Cell title="Choose Time" description={desc4} onClick={() => setShow4(true)} />
       <DatePicker
           title="Choose Time"
           type="time"
@@ -162,7 +162,7 @@ const App = () => {
 
   return ( 
     <>   
-      <Cell title="Choose Time" desc={desc8} onClick={() => setShow8(true)} />
+      <Cell title="Choose Time" description={desc8} onClick={() => setShow8(true)} />
       <DatePicker
           title="Choose Time"
           type="hour-minutes"
@@ -225,7 +225,7 @@ const App = () => {
 
   return ( 
     <>   
-      <Cell title="Choose Time" desc={desc5} onClick={() => setShow5(true)} />
+      <Cell title="Choose Time" description={desc5} onClick={() => setShow5(true)} />
       <DatePicker
           title="Choose Time"
           type="datetime"
@@ -262,7 +262,7 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell title="Choose Time" desc={desc6} onClick={() => setShow6(true)} />
+      <Cell title="Choose Time" description={desc6} onClick={() => setShow6(true)} />
       <DatePicker
           title="Choose Time"
           type="time"
@@ -324,7 +324,7 @@ const App = () => {
   };
   return ( 
     <>   
-      <Cell title="Choose Time" desc={desc6} onClick={() => setShow6(true)} />
+      <Cell title="Choose Time" description={desc6} onClick={() => setShow6(true)} />
       <DatePicker
           title="Choose Time"
           type="datehour"

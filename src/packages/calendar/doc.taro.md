@@ -38,7 +38,7 @@ const App = () => {
     }
     return (
         <>
-            <Cell title="选择单个日期" desc={ date ? `${date} ${dateWeek}` : '请选择' } onClick={ openSwitch } />
+            <Cell title="选择单个日期" description={ date ? `${date} ${dateWeek}` : '请选择' } onClick={ openSwitch } />
             <Calendar 
                 visible={ isVisible }
                 defaultValue={ date }
@@ -80,7 +80,7 @@ const App = () => {
 
     return (
         <>
-            <Cell title="选择日期区间" desc={ date1 ? `${date1[0]}至${date1[1]}` : '请选择' } onClick={ openSwitch1 } />
+            <Cell title="选择日期区间" description={ date1 ? `${date1[0]}至${date1[1]}` : '请选择' } onClick={ openSwitch1 } />
             <Calendar 
                 visible={ isVisible1 }
                 defaultValue={ date1 }
@@ -123,7 +123,7 @@ const App = () => {
 
     return (
         <>
-            <Cell title="选择多个日期" desc={ date3 && date3.length ? `已选择${date3.length}` : '请选择' } onClick={ openSwitch3 } />
+            <Cell title="选择多个日期" description={ date3 && date3.length ? `已选择${date3.length}` : '请选择' } onClick={ openSwitch3 } />
             <Calendar
                 visible={isVisible3}
                 defaultValue={date3}
@@ -166,7 +166,7 @@ const App = () => {
 
     return (
         <>
-            <Cell title="选择日期" desc={ date3 ? `${date3}` : '请选择' } onClick={ openSwitch3 } />
+            <Cell title="选择日期" description={ date3 ? `${date3}` : '请选择' } onClick={ openSwitch3 } />
             <Calendar
                 visible={isVisible3}
                 defaultValue={date3}
@@ -228,7 +228,7 @@ const App = () => {
 
     return (
         <>
-            <Cell title="选择日期" desc={ date3 ? `${date3[0]}至${date3[1]}` : '请选择' } onClick={ openSwitch3 } />
+            <Cell title="选择日期" description={ date3 ? `${date3[0]}至${date3[1]}` : '请选择' } onClick={ openSwitch3 } />
             
             <Calendar
                 visible={isVisible3}
@@ -375,7 +375,7 @@ const App = () => {
 
     return (
         <>
-            <Cell title="选择日期" desc={ date3 ? `${date3[0]}至${date3[1]}` : '请选择' } onClick={ openSwitch3 } />
+            <Cell title="选择日期" description={ date3 ? `${date3[0]}至${date3[1]}` : '请选择' } onClick={ openSwitch3 } />
             <Calendar
                 ref={ calendarRef }
                 visible={isVisible3}

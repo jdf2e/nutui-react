@@ -1,31 +1,38 @@
 @import '../popup/popup.scss';
+
 .nut-theme-dark {
   .nut-actionsheet {
     background-color: $dark5;
     color: $dark1;
+
     &__menu {
       .nut-actionsheet__item {
         background-color: $dark5;
         color: $dark1 !important;
+
         .subdesc {
           color: $dark2;
         }
       }
+
       .nut-actionsheet__item:hover {
         background-color: $dark5;
       }
     }
+
     .nut-actionsheet__cancel {
       background-color: $dark5;
       color: $dark2;
       border-top: none;
     }
+
     .nut-actionsheet__title {
       background-color: $dark5;
       color: $dark1;
       border-top: none;
     }
-    .desc {
+
+    .description {
       background-color: $dark5;
       color: $dark2;
     }
@@ -36,6 +43,7 @@
   display: block;
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
+
   .nut-actionsheet__title {
     display: block;
     padding: 10px;
@@ -81,7 +89,7 @@
     cursor: pointer;
   }
 
-  .desc {
+  .description {
     font-size: $font-size-2;
     color: $title-color2;
   }

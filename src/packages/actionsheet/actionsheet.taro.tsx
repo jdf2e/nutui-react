@@ -86,7 +86,7 @@ export const ActionSheet: FunctionComponent<
       <div className={`${b()} ${className}`} style={style} {...rest}>
         {title && <div className={b('title')}>{title}</div>}
         {description && (
-          <div className={`${b('item')} desc`}>{description}</div>
+          <div className={`${b('item')} description`}>{description}</div>
         )}
         {menuItems.length ? (
           <div className={b('menu')}>

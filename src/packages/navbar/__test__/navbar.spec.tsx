@@ -48,12 +48,14 @@ test('should left-text', () => {
   ).toBe('back')
 })
 
-test('should desc', () => {
-  const { container } = render(<NavBar title="订单详情" desc="desc" />)
+test('should description', () => {
+  const { container } = render(
+    <NavBar title="订单详情" description="description" />
+  )
   expect(
     container.querySelectorAll('.nut-navbar__right .nut-navbar__text')[0]
       .innerHTML
-  ).toBe('desc')
+  ).toBe('description')
 })
 
 test('should render placeholder element when using placeholder prop', () => {

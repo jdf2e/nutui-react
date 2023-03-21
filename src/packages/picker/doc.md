@@ -43,15 +43,15 @@ const App = () => {
     console.log(columnIndex, option)
   }
   const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
-    let desc = ''
+    let description = ''
     options.forEach((option: any) => {
-      desc += option.text
+      description += option.text
     })
-    setBaseDesc(desc)
+    setBaseDesc(description)
   }
   return ( 
     <>   
-      <Cell title="请选择城市" desc={baseDesc} onClick={() => setIsVisible1(!isVisible1)}/>
+      <Cell title="请选择城市" description={baseDesc} onClick={() => setIsVisible1(!isVisible1)}/>
       <Picker
         visible={isVisible1}
         listData={listData1}
@@ -95,15 +95,15 @@ const App = () => {
     ],
   ]
   const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
-    let desc = ''
+    let description = ''
     options.forEach((option: any) => {
-      desc += option.text
+      description += option.text
     })
-    setbaseDefault(desc)
+    setbaseDefault(description)
   }
   return ( 
     <>   
-      <Cell title="请选择城市" desc={baseDefault} onClick={() => setIsVisible1(!isVisible1)}/>
+      <Cell title="请选择城市" description={baseDefault} onClick={() => setIsVisible1(!isVisible1)}/>
       <Picker
         visible={isVisible1}
         listData={listData1}
@@ -145,15 +145,15 @@ const App = () => {
     ],
   ]
   const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
-    let desc = ''
+    let description = ''
     options.forEach((option: any) => {
-      desc += option.text
+      description += option.text
     })
-    setbaseDefault(desc)
+    setbaseDefault(description)
   }
   return ( 
     <>   
-    <Cell title="多列用法" desc={mutilDesc} onClick={() => setIsVisible2(!isVisible2)} />
+    <Cell title="多列用法" description={mutilDesc} onClick={() => setIsVisible2(!isVisible2)} />
     <Picker
       visible={isVisible2}
       listData={listData2}
@@ -198,15 +198,15 @@ const App = () => {
     ],
   ]
   const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
-    let desc = ''
+    let description = ''
     options.forEach((option: any) => {
-      desc += option.text
+      description += option.text
     })
-    settileDesc(desc)
+    settileDesc(description)
   }
   return ( 
     <>   
-      <Cell title="请选择城市" desc={settileDesc} onClick={() => setIsVisible(!visible)}/>
+      <Cell title="请选择城市" description={settileDesc} onClick={() => setIsVisible(!visible)}/>
       <Picker
         visible={visible}
         listData={listData}
@@ -266,7 +266,7 @@ const App = () => {
  
   return ( 
     <>   
-      <Cell title="多级联动" desc={cityCustmer} onClick={() => setIsVisible(!visible)}/>
+      <Cell title="多级联动" description={cityCustmer} onClick={() => setIsVisible(!visible)}/>
       <Picker
         visible={visible}
         listData={custmerCityData}
@@ -340,7 +340,7 @@ const App = () => {
  
   return ( 
     <>   
-      <Cell title="请选择城市" desc={asyncDesc} onClick={() => setIsVisible(!visible)}/>
+      <Cell title="请选择城市" description={asyncDesc} onClick={() => setIsVisible(!visible)}/>
       <Picker
         visible={visible}
         listData={asyncData}

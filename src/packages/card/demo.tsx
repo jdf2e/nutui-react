@@ -13,7 +13,7 @@ interface T {
   customPriceIcon: string
   customFooter: string
   customContent: string
-  desc: string
+  description: string
   delivery: string
   shopName: string
 }
@@ -31,7 +31,7 @@ const CardDemo = () => {
       customPriceIcon: '价格后自定义标签',
       customFooter: '自定义右下角内容',
       customContent: '自定义',
-      desc: '自营',
+      description: '自营',
       delivery: '厂商配送',
       shopName: '阳澄湖大闸蟹自营店>',
     },
@@ -47,7 +47,7 @@ const CardDemo = () => {
       customPriceIcon: '價格後自定義標簽',
       customFooter: '自定義右下角內容',
       customContent: '自定義',
-      desc: '自營',
+      description: '自營',
       delivery: '廠商配送',
       shopName: '陽澄湖大閘蟹自營店>',
     },
@@ -62,7 +62,7 @@ const CardDemo = () => {
       customPriceIcon: 'Price after custom tag',
       customFooter: 'Customize bottom right content',
       customContent: 'custom',
-      desc: 'desc',
+      description: 'description',
       delivery: 'delivery',
       shopName: 'shopName>',
     },
@@ -73,7 +73,7 @@ const CardDemo = () => {
     title: translated.title,
     price: '388',
     vipPrice: '378',
-    shopDesc: translated.desc,
+    shopDesc: translated.description,
     delivery: translated.delivery,
     shopName: translated.shopName,
   }

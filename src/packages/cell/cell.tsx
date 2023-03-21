@@ -6,8 +6,8 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export interface CellProps extends BasicComponent {
   title: ReactNode
   subTitle: ReactNode
-  desc: string
-  descTextAlign: string
+  description: string
+  descriptionTextAlign: string
   isLink: boolean
   icon: ReactNode
   roundRadius: string | number
@@ -24,8 +24,8 @@ const defaultProps = {
   ...ComponentDefaults,
   title: null,
   subTitle: null,
-  desc: '',
-  descTextAlign: 'right',
+  description: '',
+  descriptionTextAlign: 'right',
   isLink: false,
   icon: null,
   roundRadius: '6px',
@@ -47,8 +47,8 @@ export const Cell: FunctionComponent<
     onClick,
     title,
     subTitle,
-    desc,
-    descTextAlign,
+    description,
+    descriptionTextAlign,
     isLink,
     icon,
     roundRadius,
@@ -79,9 +79,9 @@ export const Cell: FunctionComponent<
 
   const styles =
     title || subTitle || icon
-      ? { textAlign: descTextAlign }
+      ? { textAlign: descriptionTextAlign }
       : {
-          textAlign: descTextAlign,
+          textAlign: descriptionTextAlign,
           flex: 1,
         }
   return (
@@ -105,14 +105,14 @@ export const Cell: FunctionComponent<
               ) : null}
             </div>
           ) : null}
-          {desc ? (
+          {description ? (
             <div
               className={b('value', {
                 alone: !title && !subTitle,
               })}
               style={styles as React.CSSProperties}
             >
-              {desc}
+              {description}
             </div>
           ) : null}
           {!linkSlot && isLink ? <Right className={b('link')} /> : linkSlot}

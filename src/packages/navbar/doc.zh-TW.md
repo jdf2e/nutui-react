@@ -55,7 +55,7 @@ const App = () => {
     <>   
       <NavBar
           title="瀏覽記錄"
-          desc="清空"
+          description="清空"
           leftShow
           onClickTitle={(e) => alert("返回")}
           onClickBack={(e) => alert("標題")}
@@ -80,7 +80,7 @@ const App = () => {
     <>   
       <NavBar
           title="購物車"
-          desc="編輯"
+          description="編輯"
           onClickTitle={(e) => alert("返回")}
           onClickBack={(e) => alert("標題")}
           onClickRight={(e) => alert('編輯')}
@@ -145,7 +145,7 @@ const App = () => {
   return ( 
     <>   
       <NavBar
-          desc="編輯"
+          description="編輯"
           onClickTitle={(e) => alert("標題")}
           onClickRight={(e) => alert("編輯")}
           onClickBack={(e) => alert("返回")}
@@ -175,7 +175,7 @@ export default App;
 | 字段            | 說明                                                                                           | 類型    | 默認值  |
 |-----------------|------------------------------------------------------------------------------------------------|---------|---------|
 | title           | 標題名稱                                                                                       | string  | -       |
-| desc            | 右側描述                                                                                       | string  | -       |
+| description            | 右側描述                                                                                       | string  | -       |
 | leftShow        | 是否展示左側箭頭                                                                              | boolean | `true`   |
 | titIcon`v2.0.0 废弃`           | 標題帶icon                                                         | string  | -       |   
 | leftText         | 左側文案                                                         | string  | -       |  

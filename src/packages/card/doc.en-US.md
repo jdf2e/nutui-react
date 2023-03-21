@@ -29,7 +29,7 @@ const App = () => {
     title: 'title',
     price: '388',
     vipPrice: '378',
-    shopDesc: 'desc',
+    shopDesc: 'description',
     delivery: 'delivery',
     shopName: 'shopName>',
   }
@@ -65,7 +65,7 @@ const App = () => {
     title: 'title',
     price: '388',
     vipPrice: '378',
-    shopDesc: 'desc',
+    shopDesc: 'description',
     delivery: 'delivery',
     shopName: 'shopName>',
   }
@@ -126,7 +126,7 @@ const App = () => {
     title: 'title',
     price: '388',
     vipPrice: '378',
-    shopDesc: 'desc',
+    shopDesc: 'description',
     delivery: 'delivery',
     shopName: 'shopName>',
   }
@@ -175,7 +175,7 @@ const App = () => {
     title: 'title',
     price: '388',
     vipPrice: '378',
-    shopDesc: 'desc',
+    shopDesc: 'description',
     delivery: 'delivery',
     shopName: 'shopName>',
   }
@@ -212,7 +212,7 @@ const App = () => {
     title: 'title',
     price: '388',
     vipPrice: '378',
-    shopDesc: 'desc',
+    shopDesc: 'description',
     delivery: 'delivery',
     shopName: 'shopName>',
   }
@@ -247,7 +247,7 @@ export default App;
 | title     | Title                   | string  | -    |
 | price | Price                         | string  | -      |
 | vipPrice     | vip-price                               | string | -    |
-| shopDesc  | shop-desc                                   | string | -    |
+| shopDesc  | shop-description                                   | string | -    |
 | delivery     | delivery | string  | -      |
 | shopName   | shop-name| string  | -      |
 | prolistTpl   | Custom product introduction| ReactNode  | -      |

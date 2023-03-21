@@ -123,8 +123,8 @@
       display: inline;
     }
 
-    &-desc {
-      font-size: $cell-title-desc-font;
+    &-description {
+      font-size: $cell-title-description-font;
     }
 
     .text__title {
@@ -149,7 +149,7 @@
   }
 
   &__left {
-    font-size: $cell-desc-font;
+    font-size: $cell-description-font;
     color: $gray2;
     position: absolute;
     left: 0;
@@ -162,7 +162,7 @@
   }
 
   &__right {
-    font-size: $cell-desc-font;
+    font-size: $cell-description-font;
     color: $gray2;
     position: absolute;
     right: 0;

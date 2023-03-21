@@ -8,6 +8,7 @@
 
 .nut-cell-group {
   display: block;
+
   &__title {
     display: inherit;
     padding: $cell-group-title-padding;
@@ -17,27 +18,31 @@
     margin-top: 30px;
     margin-bottom: 10px;
   }
+
   &__desc {
     display: inherit;
-    padding: $cell-group-desc-padding;
-    color: $cell-group-desc-color;
-    font-size: $cell-group-desc-font-size;
-    line-height: $cell-group-desc-line-height;
+    padding: $cell-group-description-padding;
+    color: $cell-group-description-color;
+    font-size: $cell-group-description-font-size;
+    line-height: $cell-group-description-line-height;
     margin-top: 10px;
     margin-bottom: 10px;
   }
+
   &__wrap {
     display: inherit;
     border-radius: $cell-border-radius;
     overflow: hidden;
     background-color: $cell-group-background-color;
     margin: 10px 0;
+
     .nut-cell {
       margin: 0;
       box-shadow: none;
       border-radius: 0;
     }
   }
+
   .nut-cell {
     &::after {
       border-bottom: $cell-after-border-bottom;

@@ -9,7 +9,7 @@ export interface NavBarProps extends BasicComponent {
   leftShow: boolean
   title: string
   leftText: string
-  desc: string
+  description: string
   className: string
   fixed: boolean
   safeAreaInsetTop: boolean
@@ -27,7 +27,7 @@ export interface NavBarProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   title: '',
-  desc: '',
+  description: '',
   leftShow: true,
   className: '',
   leftText: '',
@@ -40,7 +40,7 @@ const defaultProps = {
 } as NavBarProps
 export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   const {
-    desc,
+    description,
     title,
     leftShow,
     className,
@@ -109,7 +109,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   const renderRight = () => {
     return (
       <div className={`${b('right')}`} onClick={(e) => onClickRight(e)}>
-        {desc && <div className={`${b('text')}`}>{desc}</div>}
+        {description && <div className={`${b('text')}`}>{description}</div>}
         {slot.right}
       </div>
     )

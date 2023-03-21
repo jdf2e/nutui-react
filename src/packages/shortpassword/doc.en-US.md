@@ -187,7 +187,7 @@ export default App;
 | modelValue         | Current value                | string \| number | -                |
 | visible        | Whether to show shortpassword                         | boolean | `false`              |
 | title                  | title                | string         | `Please input a password`                   |
-| desc                   | desc          | string         | `Verify` |
+| description                   | description          | string         | `Verify` |
 | tips                   | tips              | string         | `Forget password`                     |
 | closeOnClickOverlay | Click to close the mask      | boolean        | `true`                         |
 | noButton              | whether to hide the bottom button    | boolean        | `true`                         |

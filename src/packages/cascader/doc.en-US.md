@@ -98,7 +98,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value1 || '请选择地址'}
+      description={value1 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo1(true)
       }}
@@ -207,7 +207,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value2 || '请选择地址'}
+      description={value2 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo2(true)
       }}
@@ -278,7 +278,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value3 || '请选择地址'}
+      description={value3 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo3(true)
       }}
@@ -349,7 +349,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value4 || '请选择地址'}
+      description={value4 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo4(true)
       }}
@@ -410,7 +410,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value5 || '请选择地址'}
+      description={value5 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo5(true)
       }}
@@ -527,7 +527,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value6 || '请选择地址'}
+      description={value6 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo6(true)
       }}

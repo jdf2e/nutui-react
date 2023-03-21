@@ -41,15 +41,15 @@ const App = () => {
     console.log(columnIndex, option)
   }
   const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
-    let desc = ''
+    let description = ''
     options.forEach((option: any) => {
-      desc += option.text
+      description += option.text
     })
-    setBaseDesc(desc)
+    setBaseDesc(description)
   }
   return ( 
     <>   
-      <Cell title="Choose City" desc={baseDesc} onClick={() => setIsVisible1(!isVisible1)}/>
+      <Cell title="Choose City" description={baseDesc} onClick={() => setIsVisible1(!isVisible1)}/>
       <Picker
         visible={isVisible1}
         listData={listData1}
@@ -93,15 +93,15 @@ const App = () => {
     ],
   ]
   const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
-    let desc = ''
+    let description = ''
     options.forEach((option: any) => {
-      desc += option.text
+      description += option.text
     })
-    setbaseDefault(desc)
+    setbaseDefault(description)
   }
   return ( 
     <>   
-      <Cell title="Choose City" desc={baseDefault} onClick={() => setIsVisible1(!isVisible1)}/>
+      <Cell title="Choose City" description={baseDefault} onClick={() => setIsVisible1(!isVisible1)}/>
       <Picker
         visible={isVisible1}
         listData={listData1}
@@ -143,15 +143,15 @@ const App = () => {
     ],
   ]
   const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
-    let desc = ''
+    let description = ''
     options.forEach((option: any) => {
-      desc += option.text
+      description += option.text
     })
-    setbaseDefault(desc)
+    setbaseDefault(description)
   }
   return ( 
     <>   
-    <Cell title="Multiple Columns" desc={mutilDesc} onClick={() => setIsVisible2(!isVisible2)} />
+    <Cell title="Multiple Columns" description={mutilDesc} onClick={() => setIsVisible2(!isVisible2)} />
     <Picker
       visible={isVisible2}
       listData={listData2}
@@ -194,15 +194,15 @@ const App = () => {
     ],
   ]
   const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
-    let desc = ''
+    let description = ''
     options.forEach((option: any) => {
-      desc += option.text
+      description += option.text
     })
-    settileDesc(desc)
+    settileDesc(description)
   }
   return ( 
     <>   
-      <Cell title="Choose City" desc={settileDesc} onClick={() => setIsVisible(!visible)}/>
+      <Cell title="Choose City" description={settileDesc} onClick={() => setIsVisible(!visible)}/>
       <Picker
         visible={visible}
         listData={listData}
@@ -261,7 +261,7 @@ const App = () => {
  
   return ( 
     <>   
-      <Cell title="Cascade" desc={cityCustmer} onClick={() => setIsVisible(!visible)}/>
+      <Cell title="Cascade" description={cityCustmer} onClick={() => setIsVisible(!visible)}/>
       <Picker
         visible={visible}
         listData={custmerCityData}
@@ -335,7 +335,7 @@ const App = () => {
  
   return ( 
     <>   
-      <Cell title="Choose City" desc={asyncDesc} onClick={() => setIsVisible(!visible)}/>
+      <Cell title="Choose City" description={asyncDesc} onClick={() => setIsVisible(!visible)}/>
       <Picker
         visible={visible}
         listData={asyncData}

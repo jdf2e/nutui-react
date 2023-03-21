@@ -27,7 +27,7 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell title="显示中文" desc={desc1} onClick={() => setShow1(true)} />
+      <Cell title="显示中文" description={desc1} onClick={() => setShow1(true)} />
       <DatePicker
         title="日期选择"
         visible={show1}
@@ -59,7 +59,7 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell title="日期选择" desc={desc2} onClick={() => setShow2(true)} />
+      <Cell title="日期选择" description={desc2} onClick={() => setShow2(true)} />
       <DatePicker
           title="日期选择"
           minDate={new Date(2022, 0, 1)}
@@ -97,7 +97,7 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell title="日期时间选择" desc={desc3} onClick={() => setShow3(true)} />
+      <Cell title="日期时间选择" description={desc3} onClick={() => setShow3(true)} />
       <DatePicker
           title="日期时间选择"
           minDate={minDate}
@@ -131,7 +131,7 @@ const App = () => {
 
   return ( 
     <>   
-      <Cell title="时间选择" desc={desc4} onClick={() => setShow4(true)} />
+      <Cell title="时间选择" description={desc4} onClick={() => setShow4(true)} />
       <DatePicker
           title="时间选择"
           type="time"
@@ -166,7 +166,7 @@ const App = () => {
 
   return ( 
     <>   
-      <Cell title="时间选择" desc={desc8} onClick={() => setShow8(true)} />
+      <Cell title="时间选择" description={desc8} onClick={() => setShow8(true)} />
       <DatePicker
           title="时间选择"
           type="hour-minutes"
@@ -232,7 +232,7 @@ const App = () => {
 
   return ( 
     <>   
-      <Cell title="时间选择" desc={desc5} onClick={() => setShow5(true)} />
+      <Cell title="时间选择" description={desc5} onClick={() => setShow5(true)} />
       <DatePicker
           title="时间选择"
           type="datetime"
@@ -268,7 +268,7 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell title="时间选择" desc={desc6} onClick={() => setShow6(true)} />
+      <Cell title="时间选择" description={desc6} onClick={() => setShow6(true)} />
       <DatePicker
           title="时间选择"
           type="time"
@@ -332,7 +332,7 @@ const App = () => {
   };
   return ( 
     <>   
-      <Cell title="时间选择" desc={desc7} onClick={() => setShow6(true)} />
+      <Cell title="时间选择" description={desc7} onClick={() => setShow6(true)} />
       <DatePicker
           title="时间选择"
           type="datehour"

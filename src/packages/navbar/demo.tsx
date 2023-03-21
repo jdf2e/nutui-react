@@ -72,7 +72,7 @@ const NavBarDemo = () => {
         </NavBar>
         <NavBar
           title={translated.e51e4582}
-          desc={translated.cfbdc781}
+          description={translated.cfbdc781}
           leftShow
           onClickTitle={(e) => alert(translated.b840c88f)}
           onClickBack={(e) => alert(translated.a74a1fd4)}
@@ -80,7 +80,7 @@ const NavBarDemo = () => {
         />
         <NavBar
           title={translated.c3a3a1d2}
-          desc={translated['8dab2f66']}
+          description={translated['8dab2f66']}
           onClickTitle={(e) => alert(translated.b840c88f)}
           onClickRight={(e) => alert(translated['8dab2f66'])}
           onClickBack={(e) => alert(translated.a74a1fd4)}
@@ -108,7 +108,7 @@ const NavBarDemo = () => {
         </NavBar>
         <h2>{translated.c9e6df49}</h2>
         <NavBar
-          desc={translated['8dab2f66']}
+          description={translated['8dab2f66']}
           onClickTitle={(e) => alert(translated.b840c88f)}
           onClickRight={(e) => alert(translated['8dab2f66'])}
           onClickBack={(e) => alert(translated.a74a1fd4)}
