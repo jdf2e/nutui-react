@@ -81,8 +81,6 @@ export const ShortPassword: FunctionComponent<
     onCancel,
     onClose,
     onComplete,
-    iconClassPrefix,
-    iconFontClassName,
     autoFocus,
     ...reset
   } = props

@@ -58,8 +58,6 @@ export const Cell: FunctionComponent<
     size,
     className,
     linkSlot,
-    iconClassPrefix,
-    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,

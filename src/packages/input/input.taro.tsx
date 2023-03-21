@@ -162,8 +162,6 @@ export const Input: FunctionComponent<
     onClickLeftIcon,
     onClickRightIcon,
     onClick,
-    iconClassPrefix,
-    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,

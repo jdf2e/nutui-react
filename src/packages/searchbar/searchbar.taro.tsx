@@ -124,8 +124,6 @@ export const SearchBar: FunctionComponent<
     onClickLeftoutIcon,
     onClickRightinIcon,
     onClickRightoutIcon,
-    iconClassPrefix,
-    iconFontClassName,
   } = {
     ...defaultProps,
     ...props,

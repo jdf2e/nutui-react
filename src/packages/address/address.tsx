@@ -105,8 +105,6 @@ export const Address: FunctionComponent<
     onTabChecked,
     style,
     className,
-    iconClassPrefix,
-    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
@@ -222,12 +220,7 @@ export const Address: FunctionComponent<
       <div className={b('header')}>
         <div className="arrow-back" onClick={onSwitchModule}>
           {privateType === 'custom' && backBtnIcon && (
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              name={backBtnIcon}
-              color="#cccccc"
-            />
+            <Icon name={backBtnIcon} color="#cccccc" />
           )}
         </div>
 
@@ -239,13 +232,7 @@ export const Address: FunctionComponent<
 
         <div onClick={() => handClose()}>
           {closeBtnIcon && (
-            <Icon
-              classPrefix={iconClassPrefix}
-              fontClassName={iconFontClassName}
-              name={closeBtnIcon}
-              color="#cccccc"
-              size="18px"
-            />
+            <Icon name={closeBtnIcon} color="#cccccc" size="18px" />
           )}
         </div>
       </div>

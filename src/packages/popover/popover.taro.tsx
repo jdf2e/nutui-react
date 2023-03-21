@@ -72,8 +72,6 @@ export const Popover: FunctionComponent<
     style,
     onClick,
     onChoose,
-    iconClassPrefix,
-    iconFontClassName,
     ...reset
   } = {
     ...defaultProps,

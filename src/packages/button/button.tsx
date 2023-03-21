@@ -66,8 +66,6 @@ export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
     onClick,
     className,
     style,
-    iconClassPrefix,
-    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,
