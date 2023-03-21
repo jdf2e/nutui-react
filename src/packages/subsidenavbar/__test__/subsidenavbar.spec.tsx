@@ -6,8 +6,8 @@ import SideNavBarItem from '@/packages/sidenavbaritem'
 
 test('should match snapshot', () => {
   const { asFragment } = render(
-    <SubSideNavBar title="一级标题" ikey="1-0" open={false}>
-      <SideNavBarItem title="一级内容1" ikey="1-01" />
+    <SubSideNavBar title="一级标题" key="1-0" open={false}>
+      <SideNavBarItem title="一级内容1" key="1-01" />
     </SubSideNavBar>
   )
   expect(asFragment()).toMatchSnapshot()
@@ -18,10 +18,10 @@ test('navigation should be hide', async () => {
       <SubSideNavBar
         data-testid="SubSideNavBar-click"
         title="一级标题"
-        ikey="1-0"
+        key="1-0"
         open={false}
       >
-        <SideNavBarItem title="一级内容1" ikey="1-01" />
+        <SideNavBarItem title="一级内容1" key="1-01" />
       </SubSideNavBar>
     </>
   )
@@ -31,18 +31,18 @@ test('navigation should be hide', async () => {
   )
 })
 test('should emit titleClick event', async () => {
-  const titleClick = jest.fn(({ title, ikey, isShow }) => {
-    console.log('titleClick>>>>', title, ikey, isShow)
+  const titleClick = jest.fn(({ title, key, isShow }) => {
+    console.log('titleClick>>>>', title, key, isShow)
   })
   const { getByTestId } = render(
     <>
       <SubSideNavBar
         data-testid="SubSideNavBar-click"
         title="一级标题"
-        ikey="1-0"
+        key="1-0"
         onClick={titleClick}
       >
-        <SideNavBarItem title="一级内容1" ikey="1-01" />
+        <SideNavBarItem title="一级内容1" key="1-01" />
       </SubSideNavBar>
     </>
   )

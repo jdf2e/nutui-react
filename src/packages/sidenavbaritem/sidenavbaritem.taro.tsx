@@ -2,17 +2,17 @@ import React, { FunctionComponent, MouseEventHandler } from 'react'
 
 export type SideNavBarItemProps = {
   title: string
-  ikey: string | number
-  onClick?: ({ title, ikey }: { title: string; ikey: string | number }) => void
+  key: string | number
+  onClick?: ({ title, key }: { title: string; key: string | number }) => void
   children?: React.ReactNode
 }
 export const SideNavBarItem: FunctionComponent<SideNavBarItemProps> = (
   props
 ) => {
-  const { title, ikey, children, onClick, ...rest } = props
+  const { title, key, children, onClick, ...rest } = props
   const clickFn: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation()
-    onClick && onClick({ title, ikey })
+    onClick && onClick({ title, key })
   }
   return (
     <div

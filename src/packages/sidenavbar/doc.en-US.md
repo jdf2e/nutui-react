@@ -54,12 +54,12 @@ const App = () => {
             changeNarBar(false)
           }}
         >
-          <SubSideNavBar title="Level 1 title" ikey="1-0" >
-            <SideNavBarItem title="Level 1 content-1" ikey="1-01" />
-            <SideNavBarItem title="Level 1 content-2" ikey="1-02" />
-            <SubSideNavBar title="Level 2 title" ikey="2-0">
-              <SideNavBarItem title="Level 2 content-1" ikey="2-01" />
-              <SideNavBarItem title="Level 2 content-2" ikey="2-02" />
+          <SubSideNavBar title="Level 1 title" key="1-0" >
+            <SideNavBarItem title="Level 1 content-1" key="1-01" />
+            <SideNavBarItem title="Level 1 content-2" key="1-02" />
+            <SubSideNavBar title="Level 2 title" key="2-0">
+              <SideNavBarItem title="Level 2 content-1" key="2-01" />
+              <SideNavBarItem title="Level 2 content-2" key="2-02" />
             </SubSideNavBar>
           </SubSideNavBar>
         </SideNavBar>
@@ -83,11 +83,11 @@ const App = () => {
   const changeNarBar = (visible) => {
    setVisible(visible)
   }
-  const clickItem = ({ title, ikey }) => {
-    Toast.text(`title=${title},ikey=${ikey}`)
+  const clickItem = ({ title, key }) => {
+    Toast.text(`title=${title},key=${key}`)
   }
-  const clickTitle = ({ title, ikey, isShow }) => {
-    Toast.text(`title=${title},ikey=${ikey},isShow=${isShow}`)
+  const clickTitle = ({ title, key, isShow }) => {
+    Toast.text(`title=${title},key=${key},isShow=${isShow}`)
   }
   return ( 
     <>  
@@ -106,15 +106,15 @@ const App = () => {
             changeNarBar(false)
           }}
         >
-          <SubSideNavBar title="Level 1 title" ikey="1-0" onClick={clickTitle}>
-            <SideNavBarItem title="Level 1 content-1" ikey="1-01" onClick={clickItem} />
-            <SideNavBarItem title="Level 1 content-2" ikey="1-02" />
-            <SubSideNavBar title="Level 2 title" ikey="2-0">
-              <SideNavBarItem title="Level 2 content-1" ikey="2-01" />
-              <SideNavBarItem title="Level 2 content-2" ikey="2-02" />
-                <SubSideNavBar title="Level 3 title" ikey="3-0">
-                  <SideNavBarItem title="Level 3 content-1" ikey="3-01" />
-                  <SideNavBarItem title="Level 3 content-2" ikey="3-02" />
+          <SubSideNavBar title="Level 1 title" key="1-0" onClick={clickTitle}>
+            <SideNavBarItem title="Level 1 content-1" key="1-01" onClick={clickItem} />
+            <SideNavBarItem title="Level 1 content-2" key="1-02" />
+            <SubSideNavBar title="Level 2 title" key="2-0">
+              <SideNavBarItem title="Level 2 content-1" key="2-01" />
+              <SideNavBarItem title="Level 2 content-2" key="2-02" />
+                <SubSideNavBar title="Level 3 title" key="3-0">
+                  <SideNavBarItem title="Level 3 content-1" key="3-01" />
+                  <SideNavBarItem title="Level 3 content-2" key="3-02" />
                 </SubSideNavBar>
             </SubSideNavBar>
           </SubSideNavBar>
@@ -145,14 +145,14 @@ export default App;
 
 | Attribute    | Description                      | Type   | Default         |
 |--------------|----------------------------------|--------|------------------|
-| ikey         | Navigation unique identifier     | string \| number |          |
+| key `v2.0.0`        | Navigation unique identifier     | string \| number |          |
 | title        | Navigation title                 | string  | -              |
 | open         | Whether navigation is expanded by default | boolean  | `true`  |
 ### 3、SideNavBarItem
 
 | Attribute    | Description                      | Type   | Default          |
 |--------------|----------------------------------|--------|------------------|
-| ikey         | Navigation unique identifier     | string \| number |          |
+| key `v2.0.0`        | Navigation unique identifier     | string \| number |          |
 | title        | Navigation title                 | string  | -               |
 
 ## Events
@@ -166,13 +166,13 @@ export default App;
 
 | Event | Description                                | Arguments    |
 |-------|--------------------------------------------|--------------|
-| onClick     | Navigation Click | `data: {title: string, ikey: string \| number, isShow: boolean}`           |
+| onClick     | Navigation Click | `data: {title: string, key: string \| number, isShow: boolean}`           |
 
 ### 3、SideNavBarItem Events
 
 | Event  | Description                                | Arguments    |
 |--------|--------------------------------------------|--------------|
-| onClick | Navigation Click       | `data: {title: string, ikey: string \| number}`           |
+| onClick | Navigation Click       | `data: {title: string, key: string \| number}`           |
 
 
 ## Theming
