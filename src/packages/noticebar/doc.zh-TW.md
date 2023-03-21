@@ -302,7 +302,7 @@ export default App
 | ----- | ---------------- | ------------ |
 | onClick  | 外层点击事件回调 | `event: Event` |
 | onClose  | 关闭通知栏时触发 | `event: Event` |
-| onClickItm `v1.4.5` | 垂直滚动多条数据时，点击当前展示的信息时触发 | `event: Event, listItem` |
+| onClickItem  | 垂直滚动多条数据时，点击当前展示的信息时触发 | `event: Event, listItem` |
 
 
 ## 主題定制

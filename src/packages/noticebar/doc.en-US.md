@@ -291,7 +291,7 @@ export default App
 | ---------- | --------------------------------------- | ------------ |
 | onClick      | Emitted when NoticeBar is clicked       | `event: Event` |
 | onClose      | Emitted when NoticeBar is closed        | `event: Event` |
-| onClickItm `v1.4.5` | Emitted when the currently displayed information is clicked when scrolling multiple pieces of data vertically | `event: Event, listItem` |
+| onClickItem  | Emitted when the currently displayed information is clicked when scrolling multiple pieces of data vertically | `event: Event, listItem` |
 
 
 
