@@ -7,7 +7,7 @@ exports[`Cascader change tab 1`] = `
     style="z-index: 1000; animation-duration: 0.3s;"
   />
   <div
-    class="round nut-popup-bottom cascadar-popup undefined nut-popup"
+    class="round nut-popup-bottom cascadar-popup  nut-popup"
     style="z-index: 1000; animation-duration: 0.3s;"
   >
     <div
@@ -81,7 +81,7 @@ exports[`Cascader change tab 1`] = `
                     浙江
                   </div>
                   <i
-                    class="nutui-iconfont nut-icon nut-icon-checklist "
+                    class="nutui-iconfont nut-icon nut-icon- "
                   />
                 </div>
                 <div
@@ -93,7 +93,7 @@ exports[`Cascader change tab 1`] = `
                     湖南
                   </div>
                   <i
-                    class="nutui-iconfont nut-icon nut-icon-checklist "
+                    class="nutui-iconfont nut-icon nut-icon- "
                   />
                 </div>
                 <div
@@ -160,7 +160,7 @@ exports[`Cascader change tab 1`] = `
                     台江区
                   </div>
                   <i
-                    class="nutui-iconfont nut-icon nut-icon-checklist "
+                    class="nutui-iconfont nut-icon nut-icon- "
                   />
                 </div>
               </div>
@@ -180,7 +180,7 @@ exports[`Cascader change tab 2`] = `
     style="z-index: 1000; animation-duration: 0.3s;"
   />
   <div
-    class="round nut-popup-bottom cascadar-popup undefined nut-popup"
+    class="round nut-popup-bottom cascadar-popup  nut-popup"
     style="z-index: 1000; animation-duration: 0.3s;"
   >
     <div
@@ -254,7 +254,7 @@ exports[`Cascader change tab 2`] = `
                     浙江
                   </div>
                   <i
-                    class="nutui-iconfont nut-icon nut-icon-checklist "
+                    class="nutui-iconfont nut-icon nut-icon- "
                   />
                 </div>
                 <div
@@ -266,7 +266,7 @@ exports[`Cascader change tab 2`] = `
                     湖南
                   </div>
                   <i
-                    class="nutui-iconfont nut-icon nut-icon-checklist "
+                    class="nutui-iconfont nut-icon nut-icon- "
                   />
                 </div>
                 <div
@@ -333,7 +333,7 @@ exports[`Cascader change tab 2`] = `
                     台江区
                   </div>
                   <i
-                    class="nutui-iconfont nut-icon nut-icon-checklist "
+                    class="nutui-iconfont nut-icon nut-icon- "
                   />
                 </div>
               </div>
@@ -407,7 +407,7 @@ exports[`Cascader visible true 1`] = `
     style="z-index: 1000; animation-duration: 0.3s;"
   />
   <div
-    class="round nut-popup-bottom cascadar-popup undefined nut-popup"
+    class="round nut-popup-bottom cascadar-popup  nut-popup"
     style="z-index: 1000; animation-duration: 0.3s;"
   >
     <div
@@ -481,7 +481,7 @@ exports[`Cascader visible true 1`] = `
                     浙江
                   </div>
                   <i
-                    class="nutui-iconfont nut-icon nut-icon-checklist "
+                    class="nutui-iconfont nut-icon nut-icon- "
                   />
                 </div>
                 <div
@@ -493,7 +493,7 @@ exports[`Cascader visible true 1`] = `
                     湖南
                   </div>
                   <i
-                    class="nutui-iconfont nut-icon nut-icon-checklist "
+                    class="nutui-iconfont nut-icon nut-icon- "
                   />
                 </div>
                 <div
@@ -560,7 +560,7 @@ exports[`Cascader visible true 1`] = `
                     台江区
                   </div>
                   <i
-                    class="nutui-iconfont nut-icon nut-icon-checklist "
+                    class="nutui-iconfont nut-icon nut-icon- "
                   />
                 </div>
               </div>

@@ -26,10 +26,19 @@ exports[`should match snapshot 1`] = `
             class="nut-collapse-item__icon"
             style="transform: translateY(-50%);"
           >
-            <i
-              class="nutui-iconfont nut-icon nut-icon-arrow-down "
-              style="color: rgb(153, 153, 153); font-size: 16px; height: 16px; width: 16px;"
-            />
+            <svg
+              aria-labelledby=""
+              class="nut-icon"
+              role="presentation"
+              viewBox="0 0 1024 1024"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M128 349.867C93.867 332.8 34.133 341.333 8.533 384-8.533 418.133 0 477.867 42.667 503.467 179.2 588.8 315.733 665.6 443.733 750.933c42.667 25.6 93.867 25.6 136.534 0C716.8 665.6 853.333 588.8 981.333 503.467c42.667-25.6 51.2-76.8 25.6-119.467s-76.8-51.2-119.466-25.6C768 435.2 640 512 512 588.8 384 512 256 435.2 128 349.867"
+                fill="currentColor"
+                fill-opacity="0.9"
+              />
+            </svg>
           </div>
         </div>
       </div>
@@ -65,10 +74,19 @@ exports[`should match snapshot 1`] = `
             class="nut-collapse-item__icon"
             style="transform: translateY(-50%);"
           >
-            <i
-              class="nutui-iconfont nut-icon nut-icon-arrow-down "
-              style="color: rgb(153, 153, 153); font-size: 16px; height: 16px; width: 16px;"
-            />
+            <svg
+              aria-labelledby=""
+              class="nut-icon"
+              role="presentation"
+              viewBox="0 0 1024 1024"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M128 349.867C93.867 332.8 34.133 341.333 8.533 384-8.533 418.133 0 477.867 42.667 503.467 179.2 588.8 315.733 665.6 443.733 750.933c42.667 25.6 93.867 25.6 136.534 0C716.8 665.6 853.333 588.8 981.333 503.467c42.667-25.6 51.2-76.8 25.6-119.467s-76.8-51.2-119.466-25.6C768 435.2 640 512 512 588.8 384 512 256 435.2 128 349.867"
+                fill="currentColor"
+                fill-opacity="0.9"
+              />
+            </svg>
           </div>
         </div>
       </div>
@@ -104,10 +122,19 @@ exports[`should match snapshot 1`] = `
             class="nut-collapse-item__icon"
             style="transform: translateY(-50%);"
           >
-            <i
-              class="nutui-iconfont nut-icon nut-icon-arrow-down "
-              style="color: rgb(194, 194, 194); font-size: 16px; height: 16px; width: 16px;"
-            />
+            <svg
+              aria-labelledby=""
+              class="nut-icon"
+              role="presentation"
+              viewBox="0 0 1024 1024"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M128 349.867C93.867 332.8 34.133 341.333 8.533 384-8.533 418.133 0 477.867 42.667 503.467 179.2 588.8 315.733 665.6 443.733 750.933c42.667 25.6 93.867 25.6 136.534 0C716.8 665.6 853.333 588.8 981.333 503.467c42.667-25.6 51.2-76.8 25.6-119.467s-76.8-51.2-119.466-25.6C768 435.2 640 512 512 588.8 384 512 256 435.2 128 349.867"
+                fill="currentColor"
+                fill-opacity="0.9"
+              />
+            </svg>
           </div>
         </div>
       </div>

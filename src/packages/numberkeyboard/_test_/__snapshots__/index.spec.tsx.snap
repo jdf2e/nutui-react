@@ -8,7 +8,7 @@ exports[`should match customKey snapshot 1`] = `
       style="background-color: rgba(0, 0, 0, 0); z-index: 1000; animation-duration: 0.3s;"
     />
     <div
-      class="nut-popup-bottom  undefined nut-popup"
+      class="nut-popup-bottom  nut-popup"
       style="z-index: 1000; animation-duration: 0.3s;"
     >
       <div
@@ -193,7 +193,7 @@ exports[`should match snapshot 1`] = `
       style="background-color: rgba(0, 0, 0, 0); z-index: 1000; animation-duration: 0.3s;"
     />
     <div
-      class="nut-popup-bottom  undefined nut-popup"
+      class="nut-popup-bottom  nut-popup"
       style="z-index: 1000; animation-duration: 0.3s;"
     >
       <div
