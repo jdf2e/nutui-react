@@ -50,7 +50,7 @@ const defaultProps = {
   showToday: true,
   startText: '',
   endText: '',
-  confirmText: '确认',
+  confirmText: '',
   showTitle: true,
   showSubTitle: true,
   toDateAnimation: true,
@@ -141,7 +141,7 @@ export const Calendar = React.forwardRef<
         showToday={showToday}
         startText={startText || locale.calendaritem.start}
         endText={endText || locale.calendaritem.end}
-        confirmText={confirmText}
+        confirmText={confirmText || locale.calendaritem.confirm}
         showTitle={showTitle}
         showSubTitle={showSubTitle}
         toDateAnimation={toDateAnimation}
