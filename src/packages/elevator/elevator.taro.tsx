@@ -65,14 +65,12 @@ export const Elevator: FunctionComponent<
     listHeight: [] as number[],
     listGroup: [] as any[],
     scrollY: 0,
-    diff: -1,
-    fixedTop: 0,
   }
   const touchState = useRef({
     y1: 0,
     y2: 0,
   })
-  const [scrollY, setScrollY] = useState(0)
+
   const [currentData, setCurrentData] = useState<ElevatorData>(
     {} as ElevatorData
   )
@@ -196,13 +194,12 @@ export const Elevator: FunctionComponent<
     const target = e.target as Element
     const { scrollTop } = target
     state.current.scrollY = Math.floor(scrollTop)
-    setScrollY(scrollTop)
+    setScrollTop(scrollTop)
     for (let i = 0; i < listHeight.length - 1; i++) {
       const height1 = listHeight[i]
       const height2 = listHeight[i + 1]
       if (state.current.scrollY >= height1 && state.current.scrollY < height2) {
         setCurrentIndex(i)
-        state.current.diff = height2 - state.current.scrollY
         return
       }
     }
@@ -218,20 +215,9 @@ export const Elevator: FunctionComponent<
     }
   }, [listview])
 
-  useEffect(() => {
-    const { listHeight, diff, scrollY } = state.current
-    let fixedTop = diff > 0 && diff < titleHeight ? diff - titleHeight : 0
-    if (scrollY + clientHeight() === listHeight[listHeight.length - 1]) {
-      if (fixedTop !== 0) {
-        fixedTop = 0
-      }
-    }
-    if (state.current.fixedTop === fixedTop) return
-    state.current.fixedTop = fixedTop
-  }, [state.current.diff, titleHeight])
   return (
     <div className={`${b()} ${className} `} {...rest}>
-      {isSticky && scrollY > 0 ? (
+      {isSticky && scrollTop > 0 ? (
         <div className={b('list__fixed')}>
           <span className="fixed-title">
             {indexList[currentIndex][acceptKey]}
@@ -248,6 +234,7 @@ export const Elevator: FunctionComponent<
           className={b('list__inner')}
           ref={listview}
           onScroll={listViewScroll}
+          style={{ height: Number.isNaN(+height) ? height : `${height}px` }}
         >
           {indexList.map((item: any, idx: number) => {
             return (
