@@ -78,6 +78,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     prefixCls,
     onClick,
     onClose,
+    className,
   ])
   const classes = () => {
     const prefixCls = 'nut-tag'
