@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useRef } from 'react'
+import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
 import { useReady, nextTick, createSelectorQuery } from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { getRectByTaro } from '@/utils/useClientRect'
@@ -58,7 +58,7 @@ export const Ellipsis: FunctionComponent<
   const root = useRef<HTMLDivElement>(null)
   const rootContain = useRef<HTMLDivElement>(null)
   const symbolContain = useRef<HTMLDivElement>(null)
-  const contantCopy: any = useRef(content)
+  const [contentCopy, setContentCopy] = useState(content)
   let lineH = 0 // 当行的最大高度
   let originHeight = 0 // 原始高度
   const refRandomId = Math.random().toString(36).slice(-8)
@@ -70,12 +70,19 @@ export const Ellipsis: FunctionComponent<
   const letterUpperReg = /^[A-Z]+$/ // 字母
   const letterLowerReg = /^[a-z]+$/ // 字母
 
-  useReady(() => {
+  const init = () => {
+    setExceeded(false)
+    setExpanded(false)
+    setContentCopy(content)
     nextTick(() => {
       getSymbolInfo()
       getReference()
     })
-  })
+  }
+
+  useReady(() => init())
+
+  useEffect(() => init(), [content])
 
   // 获取省略号宽度
   const getSymbolInfo = async () => {
@@ -111,6 +118,7 @@ export const Ellipsis: FunctionComponent<
             ],
           },
           (res) => {
+            if (!res) return
             lineH = pxToNumber(
               res.lineHeight === 'normal' ? lineHeight : res.lineHeight
             )
@@ -201,11 +209,12 @@ export const Ellipsis: FunctionComponent<
     }
   }
   const assignContent = () => {
-    contantCopy.current = `${ellipsis.current?.leading || ''}${
+    const newContent = `${ellipsis.current?.leading || ''}${
       ellipsis.current?.leading ? symbol : ''
     }${expandText || ''}${ellipsis.current?.tailing ? symbol : ''}${
       ellipsis.current?.tailing || ''
     }`
+    setContentCopy(newContent)
   }
   // 计算省略号
   const tailorContent = (left: number, right: number, type = '') => {
@@ -336,7 +345,7 @@ export const Ellipsis: FunctionComponent<
         id={`rootContain${refRandomId}`}
         style={{ width: `${widthRef}` }}
       >
-        <div>{contantCopy.current}</div>
+        <div>{contentCopy}</div>
       </div>
       <div
         className="nut-ellipsis-copy"

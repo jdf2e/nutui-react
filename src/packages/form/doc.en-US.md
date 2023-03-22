@@ -193,7 +193,7 @@ const App = () => {
         <Form.Item label="Note" name="note">
           <Input placeholder="please input note" type="string" />
         </Form.Item>
-        <Form.Item label={translated.radiogroup} name="radiogroup">
+        <Form.Item label='RadioGroup' name="radiogroup">
           <Radio.RadioGroup onChange={onMenuChange}>
             <Radio value="male">male</Radio>
             <Radio value="female">female</Radio>
@@ -201,7 +201,7 @@ const App = () => {
           </Radio.RadioGroup>
         </Form.Item>
         <Cell>
-          <input type="submit" value={translated.submit} />
+          <input type="submit" value='Submit' />
         </Cell>
       </Form>
     </>

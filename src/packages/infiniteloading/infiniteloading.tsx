@@ -250,7 +250,6 @@ export const Infiniteloading: FunctionComponent<
       className={classes}
       ref={scroller}
       onTouchStart={touchStart}
-      onTouchMove={touchMove}
       onTouchEnd={touchEnd}
       {...restProps}
     >

@@ -19,23 +19,24 @@ import { Button } from '@nutui/nutui-react';
 
 :::demo
 ```tsx
-import  React from "react";
+import React from "react";
 import { Button } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <>
-    <Button type="primary">主要按鈕</Button>
-    <Button type="info">資訊按鈕</Button>
-    <Button type="default">默認按鈕</Button>
-    <Button type="danger">危險按鈕</Button>
-    <Button type="warning">警告按鈕</Button>
-    <Button type="success">成功按鈕</Button>
+      <Button type="primary">主要按鈕</Button>
+      <Button type="info">資訊按鈕</Button>
+      <Button type="default">默認按鈕</Button>
+      <Button type="danger">危險按鈕</Button>
+      <Button type="warning">警告按鈕</Button>
+      <Button type="success">成功按鈕</Button>
     </>
   );
 };
 export default App;
 ```
+
 :::
 
 ### 樸素按鈕
@@ -43,8 +44,9 @@ export default App;
 通過 『plain』 屬性將按鈕設置為樸素按鈕，樸素按鈕的文字為按鈕顏色，背景為白色。
 
 :::demo
+
 ```tsx
-import  React from "react";
+import React from "react";
 import { Button } from '@nutui/nutui-react';
 
 const App = () => {
@@ -57,14 +59,17 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
+
 ### 禁用狀態
 
 通過 'disabled' 屬性來禁用按鈕，禁用狀態下按鈕不可點擊。
 
 :::demo
+
 ```tsx
-import  React from "react";
+import React from "react";
 import { Button } from '@nutui/nutui-react';
 
 const App = () => {
@@ -78,6 +83,7 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 按鈕形狀
@@ -85,67 +91,73 @@ export default App;
 通過 『shape』 屬性設置按鈕形狀，支援圓形、方形按鈕，預設為圓形。
 
 :::demo
+
 ```tsx
-import  React from "react";
+import React from "react";
 import { Button } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <>
-    <Button shape="square" type="primary">方形按鈕</Button>
-  <Button type="info">圓形按鈕</Button>
+      <Button shape="square" type="primary">方形按鈕</Button>
+      <Button type="info">圓形按鈕</Button>
     </>
   );
 };
 export default App;
 ```
+
 :::
 
 ### 載入狀態
 
 :::demo
+
 ```tsx
-import  React ,{useState} from "react";
+import React, { useState } from "react";
 import { Button } from '@nutui/nutui-react';
 
 const App = () => {
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   return (
     <>
-<Button loading type="info" />
-<Button loading type="warning">載入中...</Button>
-<Button
-      loading={loading}
-      type="success"
-      onClick={() => {
-        setTimeout(() => {
-          setLoading(false)
-        }, 1500);
-        setLoading(!loading)
-      }}
-      style={{ margin: 8 }}
-    >
-      Click me!
-</Button>
+      <Button loading type="info" />
+      <Button loading type="warning">載入中...</Button>
+      <Button
+        loading={loading}
+        type="success"
+        onClick={() => {
+          setTimeout(() => {
+            setLoading(false)
+          }, 1500);
+          setLoading(!loading)
+        }}
+        style={{ margin: 8 }}
+      >
+        Click me!
+      </Button>
     </>
   );
 };
 export default App;
 ```
+
 :::
+
 ### 圖示按鈕
 
 :::demo
+
 ```tsx
-import  React from "react";
+import React from "react";
 import { Button } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <>
-  <Button shape="square" plain type="primary" icon="star-fill" />
-  <Button shape="square" type="primary" icon="star">收藏</Button>
-  <Button
+      <Button shape="square" plain type="primary" icon="star-fill" />
+      <Button shape="square" type="primary" icon="star">收藏</Button>
+      <Button
         shape="round"
         type="primary"
         size="large"
@@ -159,27 +171,31 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
+
 ### 按鈕尺寸
 
 支援 'large'、'normal'、'small' 三種尺寸，預設為 'normal'。
 
 :::demo
+
 ```tsx
-import  React from "react";
+import React from "react";
 import { Button } from '@nutui/nutui-react';
 
-const App = () => { 
+const App = () => {
   return (
     <>
-    <Button size="large" type="primary">大號按鈕</Button>
-  <Button type="primary">普通按鈕</Button>
-  <Button size="small" type="primary">小型按鈕</Button>
+      <Button size="large" type="primary">大號按鈕</Button>
+      <Button type="primary">普通按鈕</Button>
+      <Button size="small" type="primary">小型按鈕</Button>
     </>
   );
 };
 export default App;
 ```
+
 :::
 
 ### 塊級元素
@@ -187,43 +203,50 @@ export default App;
 按鈕在預設情況下為行內塊級元素，通過 'block' 屬性可以將按鈕的元素類型設置為塊級元素，常用來實現通欄按鈕。
 
 :::demo
+
 ```tsx
-import  React from "react";
+import React from "react";
 import { Button } from '@nutui/nutui-react';
 
-const App = () => { 
+const App = () => {
   return (
     <>
-<Button block type="primary">塊級元素</Button>
+      <Button block type="primary">塊級元素</Button>
     </>
   );
 };
 export default App;
 ```
+
 :::
 
 ### 自定義顏色
+
 通過 color 屬性可以自定義按鈕的顏色。
 
 :::demo
+
 ```tsx
-import  React from "react";
+import React from "react";
 import { Button } from '@nutui/nutui-react';
 
-const App = () => { 
+const App = () => {
   return (
     <>
-    <Button color="#7232dd">單色按鈕</Button>
-  <Button color="#7232dd" plain>單色按鈕</Button>
-  <Button color="linear-gradient(to right, #ff6034, #ee0a24)">
-    漸變色按鈕
-  </Button>
+      <Button color="#7232dd">單色按鈕</Button>
+      <Button color="#7232dd" plain>單色按鈕</Button>
+      <Button color="rgba(10,101,208,0.75)">單色按鈕</Button>
+      <Button color="linear-gradient(to right, #ff6034, #ee0a24)">
+        漸變色按鈕
+      </Button>
     </>
   );
 };
 export default App;
 ```
+
 :::
+
 ## API
 
 ### Props
@@ -248,7 +271,9 @@ export default App;
 | onClick  | 点击按钮时触发 | `event: MouseEvent` |
 
 ### 支持小程序API能力
-目前1.3.11版本以前不支持原生小程序API, 如果你是需要使用原生小程序button组件能力的用户，请尽快升级至1.3.11版本，关于原生小程序button组件的详细API请前往[查阅更多文档](https://taro-docs.jd.com/docs/components/forms/button)
+
+目前1.3.11版本以前不支持原生小程序API,
+如果你是需要使用原生小程序button组件能力的用户，请尽快升级至1.3.11版本，关于原生小程序button组件的详细API请前往[查阅更多文档](https://taro-docs.jd.com/docs/components/forms/button)
 
 ## 主題定制
 

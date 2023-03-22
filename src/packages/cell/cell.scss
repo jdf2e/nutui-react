@@ -103,6 +103,9 @@
   &__value {
     display: inline-block;
     text-align: right;
+    flex: 1;
+    word-wrap: break-word;
+    overflow: hidden;
     font-size: $cell-description-font;
     color: $cell-description-color;
 

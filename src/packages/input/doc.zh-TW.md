@@ -25,7 +25,7 @@ const App = () => {
     const [value, UpdateValue] = useState('')
   return (
     <>
-      <Input name="text" label="文本" defaultValue={value}  placeholder="文本" change={(val) => {
+      <Input name="text" label="文本" defaultValue={value}  placeholder="文本" onChange={(val) => {
             UpdateValue(val)
           }}/>
     </>

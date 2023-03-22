@@ -43,14 +43,14 @@ const defaultProps = {
   isAutoBackFill: false,
   poppable: true,
   visible: false,
-  title: '日历选择',
+  title: '',
   defaultValue: '',
   startDate: Utils.getDay(0),
   endDate: Utils.getDay(365),
   showToday: true,
-  startText: '开始',
-  endText: '结束',
-  confirmText: '确认',
+  startText: '',
+  endText: '',
+  confirmText: '',
   showTitle: true,
   showSubTitle: true,
   toDateAnimation: true,
@@ -134,14 +134,14 @@ export const Calendar = React.forwardRef<
         type={type}
         isAutoBackFill={isAutoBackFill}
         poppable={poppable}
-        title={locale.calendaritem.title || title}
+        title={title || locale.calendaritem.title}
         defaultValue={defaultValue}
         startDate={startDate}
         endDate={endDate}
         showToday={showToday}
-        startText={startText}
-        endText={endText}
-        confirmText={confirmText}
+        startText={startText || locale.calendaritem.start}
+        endText={endText || locale.calendaritem.end}
+        confirmText={confirmText || locale.calendaritem.confirm}
         showTitle={showTitle}
         showSubTitle={showSubTitle}
         toDateAnimation={toDateAnimation}

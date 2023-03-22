@@ -669,7 +669,7 @@ export default App;
 | data         | 表格数据 | 	Object[] | `[]`                |
 | summary         | 是否显示简介 | 	ReactNode | -                |
 | striped         | 条纹是否明暗交替 | 	boolean | `false`                |
-| showHeader`v2.0.0`         | 是否显示表头 | 	boolean | `true`                |
+| showHeader`v1.4.11`         | 是否显示表头 | 	boolean | `true`                |
 | noData         | 自定义无数据 | 	ReactNode | -                |
 
 ### TableColumnProps
