@@ -38,7 +38,8 @@ const idID: BaseLang = {
   },
   shortpassword: {
     title: 'SIlakan masukan kata sandi',
-    desc: 'Anda telah menggunakan aset virtual, mohon lakukan verifikasi.',
+    description:
+      'Anda telah menggunakan aset virtual, mohon lakukan verifikasi.',
     tips: 'Lupa Kata Sandi',
   },
   uploader: {

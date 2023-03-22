@@ -40,7 +40,7 @@ const zhCN: BaseLang = {
   },
   shortpassword: {
     title: '请输入密码',
-    desc: '您使用了虚拟资产，请进行验证',
+    description: '您使用了虚拟资产，请进行验证',
     tips: '忘记密码',
   },
   uploader: {

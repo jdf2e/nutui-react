@@ -39,7 +39,7 @@ export interface BaseLang {
   }
   shortpassword: {
     title: string
-    desc: string
+    description: string
     tips: string
   }
   uploader: {

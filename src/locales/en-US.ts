@@ -38,7 +38,7 @@ const enUS: BaseLang = {
   },
   shortpassword: {
     title: 'Please input a password',
-    desc: 'Verify',
+    description: 'Verify',
     tips: 'Forget password',
   },
   uploader: {

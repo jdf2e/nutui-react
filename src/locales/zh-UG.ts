@@ -38,7 +38,7 @@ const zhUG: BaseLang = {
   },
   shortpassword: {
     title: 'مەخپى نومۇرنى كىرگۈزۈڭ',
-    desc: 'مەۋھۇم بايلىق ئىشلىتىش ئۈچۈن',
+    description: 'مەۋھۇم بايلىق ئىشلىتىش ئۈچۈن',
     tips: 'ئۇنتۇپ قاپتىمەن',
   },
   uploader: {

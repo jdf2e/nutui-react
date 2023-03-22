@@ -38,7 +38,7 @@ const zhTW: BaseLang = {
   },
   shortpassword: {
     title: '請輸入密碼',
-    desc: '您使用了虛擬資產,請進行驗證',
+    description: '您使用了虛擬資產,請進行驗證',
     tips: '忘記密碼',
   },
   uploader: {
