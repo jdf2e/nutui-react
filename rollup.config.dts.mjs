@@ -13,6 +13,7 @@ const config = [
     plugins: [
       dts({
         compilerOptions: {
+          preserveSymlinks: false,
           baseUrl: '.',
           paths: {
             '@/*': ['src/*'],
