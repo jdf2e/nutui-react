@@ -1,7 +1,7 @@
 import * as React from 'react'
+import { IconFont as Icon } from '@nutui/icons-react'
 import { fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { Icon } from '../icon'
 
 test('should icon snapshot match', () => {
   const { asFragment } = render(

@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 import { createSelectorQuery } from '@tarojs/taro'
-import Icon from '@/packages/icon'
+import { Check } from '@nutui/icons-react-taro'
 import bem from '@/utils/bem'
 import Elevator from '@/packages/elevator/index.taro'
 import { useConfig } from '@/packages/configprovider'
@@ -354,9 +354,8 @@ export const CustomRender: FunctionComponent<
                       {selectedRegion &&
                         selectedRegion[tabName[tabIndex] as SelectedRegionType]
                           .id === (item as RegionData).id && (
-                          <Icon
+                          <Check
                             className={b('region-item--icon')}
-                            name="Check"
                             color="#FA2C19"
                             size="13px"
                           />

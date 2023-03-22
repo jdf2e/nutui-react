@@ -556,25 +556,25 @@ export default App;
 
 ### Props
 
-| 屬性           | 說明                                            | 類型     | 默認值 |
-| ------------- | ---------------------------------------------- | -------- | ------ |
-| value         | 選中值                                          | Array    | -      |
-| options       | 級聯數據                                         | Array    | -      |
-| poppable      | 是否彈窗狀態展示                                  | boolean  | `true`   |
-| visible       | 級聯顯示隱藏狀態                                  | boolean  | `false`  |
+| 屬性                  | 說明                                            | 類型     | 默認值 |
+|---------------------| ---------------------------------------------- | -------- | ------ |
+| value               | 選中值                                          | Array    | -      |
+| options             | 級聯數據                                         | Array    | -      |
+| poppable            | 是否彈窗狀態展示                                  | boolean  | `true`   |
+| visible             | 級聯顯示隱藏狀態                                  | boolean  | `false`  |
 | activeColor`1.3.13` | 選中啟動態顏色                           | string  | -  |
-| checkedIcon`1.4.8` | 標記選中的Icon | string | `checklist` |
-| tabsColor`1.3.13` | tabs底部選中啟動態顏色                                  | string  | -  |
-| lazy          | 是否開啟動態加載                                  | boolean  | `false`  |
-| lazyLoad      | 動態加載回調，開啟動態加載時生效                   | Function | -      |
-| valueKey      | 自定義`options`結構中`value`的字段               | string   | -      |
-| textKey       | 自定義`options`結構中`text`的字段                | string   | -      |
-| childrenKey   | 自定義`options`結構中`children`的字段            | string   | -      |
-| convertConfig | 當options為可轉換為樹形結構的扁平結構時，配置轉換規則 | Object   | -      |
-| title          | 標題 | string   | -      |
-| closeIconPosition | 取消按鈕位置，繼承 Popup 組件 | string   | `top-right`      |
-| close-icon | 自定義關閉按鈕，繼承 Popup 組件 | string   | `close`     |
-| closeable | 是否顯示關閉按鈕，繼承 Popup 組件 | boolean   | `true`     |
+| checkedIcon`1.5.0`  | 標記選中的Icon | string | `ReactNode` |
+| tabsColor`1.3.13`   | tabs底部選中啟動態顏色                                  | string  | -  |
+| lazy                | 是否開啟動態加載                                  | boolean  | `false`  |
+| lazyLoad            | 動態加載回調，開啟動態加載時生效                   | Function | -      |
+| valueKey            | 自定義`options`結構中`value`的字段               | string   | -      |
+| textKey             | 自定義`options`結構中`text`的字段                | string   | -      |
+| childrenKey         | 自定義`options`結構中`children`的字段            | string   | -      |
+| convertConfig       | 當options為可轉換為樹形結構的扁平結構時，配置轉換規則 | Object   | -      |
+| title               | 標題 | string   | -      |
+| closeIconPosition   | 取消按鈕位置，繼承 Popup 組件 | string   | `top-right`      |
+| closeIcon           | 自定義關閉按鈕，繼承 Popup 組件 | ReactNode   | `close`     |
+| closeable           | 是否顯示關閉按鈕，繼承 Popup 組件 | boolean   | `true`     |
 
 ### Events
 

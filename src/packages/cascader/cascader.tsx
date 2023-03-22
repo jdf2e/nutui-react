@@ -423,6 +423,7 @@ const InternalCascader: ForwardRefRenderFunction<
           visible={visible}
           position="bottom"
           round
+          closeIcon={closeIcon}
           closeable={closeable}
           closeIconPosition={closeIconPosition}
           onClickOverlay={closePopup}

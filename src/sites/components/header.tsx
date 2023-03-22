@@ -1,8 +1,8 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { Left } from '@nutui/icons-react-taro'
 import './header.scss'
 import config from '../../config.json'
-import Icon from '@/packages/icon'
 
 const Header = () => {
   const navigateTo = () => {
@@ -30,8 +30,7 @@ const Header = () => {
       {Taro.getEnv() === 'WEB' ? (
         <div className="applets-demo-header">
           <div className="back" onClick={navigateTo}>
-            {/*<span className="home-icon"></span>*/}
-            <Icon name="left"></Icon>
+            <Left />
           </div>
           <div className="applets-icon">
             <img src="https://img13.360buyimg.com/imagetools/jfs/t1/67106/30/23857/9375/63b4df85Fce5fd959/35265019206515fe.png" />

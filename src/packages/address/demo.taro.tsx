@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react'
 import Taro from '@tarojs/taro'
 import { Address, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -105,10 +106,10 @@ const AddressDemo = () => {
   })
 
   const [icon, setIcon] = useState({
-    selectedIcon: 'heart-fill',
-    defaultIcon: 'heart1',
-    closeBtnIcon: 'close',
-    backBtnIcon: 'left',
+    selectedIcon: <HeartFill />,
+    defaultIcon: <Heart1 />,
+    closeBtnIcon: <Close />,
+    backBtnIcon: <Left />,
   })
 
   const [existAddress, setExistAddress] = useState([

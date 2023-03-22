@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { Left, Right } from '@nutui/icons-react'
 import SwiperItem from '@/packages/swiperitem'
 import Swiper from '@/packages/swiper'
 import '@/packages/swiper/demo.scss'
-import Icon from '@/packages/icon'
 import { useTranslate } from '../../sites/assets/locale'
 
 interface T {
@@ -16,6 +16,7 @@ interface T {
   horizontalCenter: string
   verticalCenter: string
 }
+
 const SwiperDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -198,10 +199,10 @@ const SwiperDemo = () => {
         </Swiper>
         <div className="nut-swiper-btns">
           <span className="nut-swiper-btns__left" onClick={(e) => handlePrev()}>
-            <Icon name="left" />
+            <Left />
           </span>
           <span className="nut-swiper-btns__left" onClick={(e) => handleNext()}>
-            <Icon name="right" />
+            <Right />
           </span>
         </div>
       </div>

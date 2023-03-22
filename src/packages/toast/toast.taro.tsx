@@ -1,8 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-// import * as ReactDOM from 'react-dom'
 import classNames from 'classnames'
+import { Failure, Loading, Success, Tips } from '@nutui/icons-react'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
 
 export interface ToastProps {
   id?: string
@@ -126,10 +125,10 @@ export const Toast: FunctionComponent<
       return icon
     }
     return {
-      success: 'success',
-      fail: 'failure',
-      warn: 'tips',
-      loading: 'loading',
+      success: <Success color="#ffffff" width={iconSize} height={iconSize} />,
+      fail: <Failure color="#ffffff" width={iconSize} height={iconSize} />,
+      warn: <Tips color="#ffffff" width={iconSize} height={iconSize} />,
+      loading: <Loading color="#ffffff" width={iconSize} height={iconSize} />,
     }[type]
   }
 
@@ -164,9 +163,7 @@ export const Toast: FunctionComponent<
             }}
           >
             {hasIcon() ? (
-              <p className={toastBem('icon-wrapper')}>
-                <Icon name={iconName()} color="#ffffff" size={iconSize} />
-              </p>
+              <p className={toastBem('icon-wrapper')}>{iconName()}</p>
             ) : null}
             {title ? <div className="nut-toast-title">{title}</div> : null}
             <span className={toastBem('text')}>{msg}</span>

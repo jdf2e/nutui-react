@@ -1,6 +1,10 @@
-import React, { ForwardRefRenderFunction, PropsWithChildren } from 'react'
+import React, {
+  ForwardRefRenderFunction,
+  isValidElement,
+  PropsWithChildren,
+} from 'react'
 import classNames from 'classnames'
-import { Icon } from '@/packages/icon/icon'
+import { Loading, Checklist } from '@nutui/icons-react'
 import bem from '@/utils/bem'
 
 interface OptiosInfo {
@@ -65,6 +69,16 @@ const InternalCascaderItem: ForwardRefRenderFunction<
     [`${b('')}__title`]: true,
   })
 
+  const renderIcon = () => {
+    if (checked) {
+      if (isValidElement(checkedIcon)) {
+        return checkedIcon
+      }
+      return <Checklist className={`${checked ? b('icon-check') : ''}`} />
+    }
+    return null
+  }
+
   return (
     <div
       style={{ color: checked ? activeColor : '' }}
@@ -75,16 +89,9 @@ const InternalCascaderItem: ForwardRefRenderFunction<
     >
       <div className={classesTitle}>{data.text}</div>
       {data.loading ? (
-        <Icon
-          color="#969799"
-          className="nut-cascader-item__icon-loading"
-          name="loading"
-        />
+        <Loading color="#969799" className="nut-cascader-item__icon-loading" />
       ) : (
-        <Icon
-          className={`${checked ? b('icon-check') : ''}`}
-          name={checked ? checkedIcon : ''}
-        />
+        renderIcon()
       )}
     </div>
   )

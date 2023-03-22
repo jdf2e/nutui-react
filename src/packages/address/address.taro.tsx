@@ -4,8 +4,8 @@ import React, {
   useState,
   CSSProperties,
 } from 'react'
-import Icon from '@/packages/icon/index.taro'
-import Popup from '@/packages/popup/index.taro'
+import { Left, Location2, Check, CircleClose } from '@nutui/icons-react-taro'
+import Popup from '@/packages/popup'
 import bem from '@/utils/bem'
 import { ExistRender } from './existRender'
 import { CustomRender } from './customRender.taro'
@@ -37,10 +37,11 @@ export interface AddressProps extends BasicComponent {
   existAddressTitle: string
   customAndExistTitle: string
   height: string | number
-  defaultIcon: string
-  selectedIcon: string
-  closeBtnIcon: string
-  backBtnIcon: string
+  defaultIcon: React.ReactNode
+  selectedIcon: React.ReactNode
+  closeBtnIcon: React.ReactNode
+  backBtnIcon: React.ReactNode
+
   onSelected?: (
     prevExistAdd: AddressList,
     item: AddressList,
@@ -68,10 +69,10 @@ const defaultProps = {
   existAddressTitle: '',
   customAndExistTitle: '',
   height: '200px',
-  defaultIcon: 'location2',
-  selectedIcon: 'Check',
-  closeBtnIcon: 'circle-close',
-  backBtnIcon: 'left',
+  defaultIcon: null,
+  selectedIcon: null,
+  closeBtnIcon: null,
+  backBtnIcon: null,
 } as AddressProps
 
 export const Address: FunctionComponent<
@@ -219,9 +220,12 @@ export const Address: FunctionComponent<
     return (
       <div className={b('header')}>
         <div className="arrow-back" onClick={onSwitchModule}>
-          {privateType === 'custom' && backBtnIcon && (
-            <Icon name={backBtnIcon} color="#cccccc" />
-          )}
+          {privateType === 'custom' &&
+            (React.isValidElement(backBtnIcon) ? (
+              backBtnIcon
+            ) : (
+              <Left color="#cccccc" />
+            ))}
         </div>
 
         <div className={b('header__title')}>
@@ -231,8 +235,10 @@ export const Address: FunctionComponent<
         </div>
 
         <div onClick={() => handClose()}>
-          {closeBtnIcon && (
-            <Icon name={closeBtnIcon} color="#cccccc" size="18px" />
+          {React.isValidElement(closeBtnIcon) ? (
+            closeBtnIcon
+          ) : (
+            <CircleClose size={18} color="#ccc" />
           )}
         </div>
       </div>
@@ -288,8 +294,20 @@ export const Address: FunctionComponent<
               <ExistRender
                 type={privateType}
                 existAddress={existAddress}
-                selectedIcon={selectedIcon}
-                defaultIcon={defaultIcon}
+                selectedIcon={
+                  React.isValidElement(selectedIcon) ? (
+                    selectedIcon
+                  ) : (
+                    <Check color="#FA2C19" />
+                  )
+                }
+                defaultIcon={
+                  React.isValidElement(defaultIcon) ? (
+                    defaultIcon
+                  ) : (
+                    <Location2 />
+                  )
+                }
                 isShowCustomAddress={isShowCustomAddress}
                 customAndExistTitle={
                   customAndExistTitle || locale.address.chooseAnotherAddress

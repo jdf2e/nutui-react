@@ -177,6 +177,7 @@
     "reactcss": "^1.2.3",
     "remark-directive": "^2.0.1",
     "remark-gfm": "^3.0.1",
+    "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-dts": "^4.2.3",
     "sass": "^1.45.0",
     "shelljs": "^0.8.4",

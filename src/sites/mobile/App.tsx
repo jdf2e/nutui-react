@@ -3,17 +3,11 @@ import React, {
   FunctionComponent,
   PropsWithChildren,
   useCallback,
-  useContext,
   useState,
 } from 'react'
-import {
-  HashRouter,
-  Switch,
-  Route,
-  Redirect,
-  useHistory,
-} from 'react-router-dom'
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
 import loadable, { LoadableComponent } from '@loadable/component'
+import { Left } from '@nutui/icons-react'
 import routes from './router'
 import Links from './Links'
 import logo from '@/sites/assets/images/logo-red.png'
@@ -23,7 +17,7 @@ import zhTW from '@/locales/zh-TW'
 import zhCN from '@/locales/zh-CN'
 import enUS from '@/locales/en-US'
 import { BaseLang } from '@/locales/base'
-import Icon from '@/packages/Icon'
+// import Icon from '@/packages/Icon'
 import { nav } from '@/config.json'
 import TaroDemo from '@/sites/mobile/TaroDemo'
 
@@ -97,19 +91,32 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
       <>
         <div id="nav">
           <div className="back" onClick={() => window.parent.history.back()}>
-            <Icon name="left"></Icon>
+            <Left />
           </div>
           {getComponentName()['name']}
           <div className="translate">
-            <Icon
+            {/*<Icon*/}
+            {/*  className={'dark-model'}*/}
+            {/*  name="https://storage.360buyimg.com/imgtools/71a2689855-ba1f4000-80cb-11ed-aa68-651117499129.png"*/}
+            {/*  onClick={() => handleSwitchDarkModel()}*/}
+            {/*/>*/}
+
+            {/*<Icon*/}
+            {/*  className={'translate-icon'}*/}
+            {/*  name="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"*/}
+            {/*  onClick={() => handleSwitchLocale()}*/}
+            {/*/>*/}
+            <img
               className={'dark-model'}
-              name="https://storage.360buyimg.com/imgtools/71a2689855-ba1f4000-80cb-11ed-aa68-651117499129.png"
+              src="https://storage.360buyimg.com/imgtools/71a2689855-ba1f4000-80cb-11ed-aa68-651117499129.png"
+              alt=""
               onClick={() => handleSwitchDarkModel()}
             />
-            <Icon
-              className={'translate-icon'}
-              name="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"
-              onClick={() => handleSwitchLocale()}
+            <img
+              className={'dark-model'}
+              src="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"
+              alt=""
+              onClick={() => handleSwitchDarkModel()}
             />
           </div>
         </div>

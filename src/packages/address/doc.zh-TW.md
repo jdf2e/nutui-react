@@ -345,15 +345,16 @@ export default App;
 ```tsx
 import  React,{useState} from "react";
 import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react';
 
 const App = () => {
   const [text, setText] = useState('請選擇地址')
   const [customImg,setCustomImg] = useState(false)
   const [icon, setIcon] = useState({
-      selectedIcon: 'heart-fill',
-      defaultIcon: 'heart1',
-      closeBtnIcon: 'close',
-      backBtnIcon: 'left',
+    selectedIcon: <HeartFill color="red" />,
+    defaultIcon: <Heart1 />,
+    closeBtnIcon: <Close />,
+    backBtnIcon: <Left />,
   })
 
   const [existAddress, setExistAddress] = useState([
@@ -440,15 +441,16 @@ export default App;
 ```tsx
 import  React,{useState} from "react";
 import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react';
 
 const App = () => {
   const [text, setText] = useState('請選擇地址')
   const [other,setOther] = useState(false)
   const [icon, setIcon] = useState({
-      selectedIcon: 'heart-fill',
-      defaultIcon: 'heart1',
-      closeBtnIcon: 'close',
-      backBtnIcon: 'left',
+    selectedIcon: <HeartFill color="red" />,
+    defaultIcon: <Heart1 />,
+    closeBtnIcon: <Close />,
+    backBtnIcon: <Left />,
   })
   const [province, setProvince] = useState([
       { id: 1, name: '北京', title: 'B' },
@@ -597,10 +599,10 @@ export default App;
 | town | 鄉/鎮，每個鄉/鎮的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | Array | `[]` |
 | height | 彈層中內容容器的高度，僅在type="custom2"時有效 | string \| number | `200px` |
 | existAddress | 已存在地址列錶，每個地址對象中，必傳值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解釋見下） | Array | `[]` |
-| defaultIcon | 已有地址列錶默認圖標，type='exist' 時生效 | string | - |
-| selectedIcon | 已有地址列錶選中圖標，type='exist' 時生效 | string | - |
-| closeBtnIcon | 自定義關閉彈框按鈕圖標 | string | - |
-| backBtnIcon | 自定義地址與已有地址切換時，自定義返回的按鈕圖標 | string | - |
+| defaultIcon | 已有地址列錶默認圖標，type='exist' 時生效 | ReactNode | - |
+| selectedIcon | 已有地址列錶選中圖標，type='exist' 時生效 | ReactNode | - |
+| closeBtnIcon | 自定義關閉彈框按鈕圖標 | ReactNode | - |
+| backBtnIcon | 自定義地址與已有地址切換時，自定義返回的按鈕圖標 | ReactNode | - |
 | isShowCustomAddress | 是否可以切換自定義地址選擇，type='exist' 時生效 | boolean | `true` |
 | customAddressTitle  | 自定義地址選擇文案，type='custom' 時生效 | string | `請選擇所在地區` |
 | existAddressTitle| 已有地址文案 ，type='exist' 時生效| string | `配送至` |

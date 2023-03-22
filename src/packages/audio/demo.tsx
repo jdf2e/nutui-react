@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
+import { PlayCircleFill, PoweroffCircleFill } from '@nutui/icons-react'
 import { Audio } from './audio'
-import Icon from '../icon'
 import './demo.scss'
 import Cell from '../cell'
 
 const AudioDemo = () => {
   const [duration, setDuration] = useState(0)
-  const [voiceIcon, setVoiceIcon] = useState('play-circle-fill')
+  const [voiceIcon, setVoiceIcon] = useState<any>(PlayCircleFill)
   const audioElement = document.querySelectorAll('audio')[2]
   if (audioElement) {
     audioElement.addEventListener('playing', (e) => {
-      setVoiceIcon('poweroff-circle-fill')
+      setVoiceIcon(PoweroffCircleFill)
     })
     audioElement.addEventListener('pause', (e) => {
-      setVoiceIcon('play-circle-fill')
+      setVoiceIcon(PlayCircleFill)
     })
   }
   return (
@@ -64,7 +64,7 @@ const AudioDemo = () => {
           }}
         >
           <div className="nut-voice">
-            <Icon name={voiceIcon} />
+            {voiceIcon}
             <div>{duration}&quot;</div>
           </div>
         </Audio>
