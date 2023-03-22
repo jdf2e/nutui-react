@@ -438,8 +438,8 @@ export default App;
 | title        | Title of the process step         | `string`        | '' |
 | content      | Descriptive text of process steps (supporting HTML structure)       | `string`        | '' |
 | icon         | Icon       | `ReactNode`         | '' |
-| size`v1.5.0abandon` | Icon size       | `string`        | '' |
-| iconColor`v1.5.0abandon`          | Icon color       | `string`          | -   |
+| size`v2.0.0abandon` | Icon size       | `string`        | '' |
+| iconColor`v2.0.0abandon`          | Icon color       | `string`          | -   |
 | activeIndex  | Index of process steps       | `number`        | 0 |
 | renderContent | The html structure of the descriptive text of the process steps      | React.ReactNode | - |
 

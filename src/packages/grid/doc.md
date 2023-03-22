@@ -236,8 +236,8 @@ export default App
 | square        | 是否将格子固定为正方形                      | boolean                | `false`     |
 | reverse       | 内容翻转                                  | boolean                | `false`     |
 | direction     | 格子内容排列的方向，可选值为 `horizontal`    | string                 | `vertical`  |
-| iconSize`1.5.0 废弃`     | 图标大小，如 `20px` `2em` `2rem`          | number \| string        | `28px`     |
-| iconColor`1.5.0 废弃`    | 图标颜色                                  | string                 | -          |
+| iconSize`2.0.0 废弃`     | 图标大小，如 `20px` `2em` `2rem`          | number \| string        | `28px`     |
+| iconColor`2.0.0 废弃`    | 图标颜色                                  | string                 | -          |
 
 ## Grid Event
 
@@ -253,8 +253,8 @@ export default App
 | fontSize `1.4.4`     | 文字大小                                                                                  | string \| number   | -          |
 | color `1.4.4`        | 文字颜色                                                                                  | string   | -          |
 | icon                 | 图标                                                              | ReactNode   | -          |
-| iconSize`1.5.0 废弃`            | 图标大小，如 `20px` `2em` `2rem`                                                          | number \| string   | `28px`     |
-| iconColor`1.5.0 废弃`           | 图标颜色                                                                                  | string            | -           |
+| iconSize`2.0.0 废弃`            | 图标大小，如 `20px` `2em` `2rem`                                                          | number \| string   | `28px`     |
+| iconColor`2.0.0 废弃`           | 图标颜色                                                                                  | string            | -           |
 
 ### GridItem Event
 

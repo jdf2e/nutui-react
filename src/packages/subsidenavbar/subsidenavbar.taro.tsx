@@ -8,21 +8,20 @@ import React, {
   useState,
 } from 'react'
 // import { SubSideNavBarProps } from '../sidenavbar/type'
-import { handleClick } from '../sidenavbar/utils'
 import { OffsetContext } from '../sidenavbar/offsetContext'
 
 export type SubSideNavBarProps = {
   title: string
-  ikey: string | number
+  key: string | number
   open?: boolean
   children?: React.ReactNode
   onClick?: ({
     title,
-    ikey,
+    key,
     isShow,
   }: {
     title: string
-    ikey: string | number
+    key: string | number
     isShow: boolean
   }) => void
 }
@@ -30,7 +29,7 @@ const defaultProps = {
   open: true,
 } as SubSideNavBarProps
 export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
-  const { title, ikey, children, onClick, open, ...rest } = {
+  const { title, key, children, onClick, open, ...rest } = {
     ...defaultProps,
     ...props,
   }
@@ -75,7 +74,7 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
     e.stopPropagation()
     setSubShow(!subShow)
     const isShow = !subShow
-    onClick && onClick({ title, ikey, isShow })
+    onClick && onClick({ title, key, isShow })
   }
   useEffect(() => {
     const childNodes = listRef.current?.children as HTMLCollection

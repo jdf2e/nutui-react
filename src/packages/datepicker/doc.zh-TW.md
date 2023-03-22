@@ -27,7 +27,7 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell title="顯示中文" desc={desc1} onClick={() => setShow1(true)} />
+      <Cell title="顯示中文" description={desc1} onClick={() => setShow1(true)} />
       <DatePicker
         title="日期選擇"
         visible={show1}
@@ -59,7 +59,7 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell title="日期選擇" desc={desc2} onClick={() => setShow2(true)} />
+      <Cell title="日期選擇" description={desc2} onClick={() => setShow2(true)} />
       <DatePicker
           title="日期選擇"
           minDate={new Date(2022, 0, 1)}
@@ -97,7 +97,7 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell title="日期時間選擇" desc={desc3} onClick={() => setShow3(true)} />
+      <Cell title="日期時間選擇" description={desc3} onClick={() => setShow3(true)} />
       <DatePicker
           title="日期時間選擇"
           minDate={minDate}
@@ -131,7 +131,7 @@ const App = () => {
 
   return ( 
     <>   
-      <Cell title="時間選擇" desc={desc4} onClick={() => setShow4(true)} />
+      <Cell title="時間選擇" description={desc4} onClick={() => setShow4(true)} />
       <DatePicker
           title="時間選擇"
           type="time"
@@ -166,7 +166,7 @@ const App = () => {
 
   return ( 
     <>   
-      <Cell title="時間選擇" desc={desc8} onClick={() => setShow8(true)} />
+      <Cell title="時間選擇" description={desc8} onClick={() => setShow8(true)} />
       <DatePicker
           title="時間選擇"
           type="hour-minutes"
@@ -231,7 +231,7 @@ const App = () => {
 
   return ( 
     <>   
-      <Cell title="時間選擇" desc={desc5} onClick={() => setShow5(true)} />
+      <Cell title="時間選擇" description={desc5} onClick={() => setShow5(true)} />
       <DatePicker
           title="時間選擇"
           type="datetime"
@@ -267,7 +267,7 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell title="時間選擇" desc={desc6} onClick={() => setShow6(true)} />
+      <Cell title="時間選擇" description={desc6} onClick={() => setShow6(true)} />
       <DatePicker
           title="時間選擇"
           type="time"
@@ -331,7 +331,7 @@ const App = () => {
   };
   return ( 
     <>   
-      <Cell title="時間選擇" desc={desc6} onClick={() => setShow6(true)} />
+      <Cell title="時間選擇" description={desc6} onClick={() => setShow6(true)} />
       <DatePicker
           title="時間選擇"
           type="datehour"
@@ -367,15 +367,15 @@ export default App;
 | title                     | 設置標題                                          | string  | `null`   |
 | minDate                   | 開始日期                                          | Date    | `十年前` |
 | maxDate                   | 結束日期                                          | Date    | `十年後` |
-| formatter`v1.2.2`         | 選項格式化函數                                          | (type: string, option: PickerOption) => PickerOption    | - |
-| filter`v1.2.2`            | 選項過濾函數                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
-| three-dimensional`v1.2.2` | 是否開啟3D效果               | boolean  | `true`   |
+| formatter         | 選項格式化函數                                          | (type: string, option: PickerOption) => PickerOption    | - |
+| filter            | 選項過濾函數                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
+| threeDimensional | 是否開啟3D效果               | boolean  | `true`   |
 
 
 ### Events
     
 | 事件名                         | 說明               | 回調參數     |
 |-----------------------------|--------------------|--------------|
-| onConfirmDatePicker`v1.2.2` | 點擊確定按鈕時觸發 | `values, options` |
+| onConfirmDatePicker | 點擊確定按鈕時觸發 | `values, options` |
 | onCloseDatePicker           | 關閉時觸發         | -- |
-| onChange`v1.2.2`                  | 選項改變時觸發         |  `columnIndex, values, options`  |
+| onChange                  | 選項改變時觸發         |  `columnIndex, values, options`  |

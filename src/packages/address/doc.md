@@ -80,7 +80,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setNormal(true)} />
+      <Cell title="选择地址" description={text}  onClick={()=>setNormal(true)} />
       <Address
         modelValue={normal}
         province={province}
@@ -159,7 +159,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setNormal(true)} />
+      <Cell title="选择地址" description={text}  onClick={()=>setNormal(true)} />
       <Address
         modelValue={normal}
         modelSelect={[1, 7, 3]}
@@ -243,7 +243,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setNormal2(true)} />
+      <Cell title="选择地址" description={text}  onClick={()=>setNormal2(true)} />
       <Address
         modelValue={normal2}
         type="custom2"
@@ -337,7 +337,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setExist(true)} />
+      <Cell title="选择地址" description={text}  onClick={()=>setExist(true)} />
       <Address
         modelValue={exist}
         type="exist"
@@ -439,7 +439,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setCustomImg(true)} />
+      <Cell title="选择地址" description={text}  onClick={()=>setCustomImg(true)} />
       <Address
         modelValue={customImg}
         type="exist"
@@ -593,7 +593,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setOther(true)} />
+      <Cell title="选择地址" description={text}  onClick={()=>setOther(true)} />
       <Address
         modelValue={other}
         type="exist"
@@ -621,25 +621,25 @@ export default App;
 
 # API
 
-| 字段 | 说明 | 类型         | 默认值 |
-|----- | ----- |------------| -----  |
-| modelValue | 是否打开地址选择 | string     | - |
-| modelSelect`v1.3.0` | 设置默认选中地址 | string[] \ | number[] | `[]` |
-| type | 地址选择类型 exist/custom/custom2  | string     | `custom` |
-| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array      | `[]` |
-| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array      | `[]` |
-| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array      | `[]` |
-| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array      | `[]` |
-| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | string \   | number | `200px` |
-| existAddress | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array      | `[]` |
-| defaultIcon | 已有地址列表默认图标，type='exist' 时生效 | ReactNode  | - |
-| selectedIcon | 已有地址列表选中图标，type='exist' 时生效 | ReactNode        | - |
-| closeBtnIcon | 自定义关闭弹框按钮图标 | ReactNode     | - |
-| backBtnIcon | 自定义地址与已有地址切换时，自定义返回的按钮图标 | ReactNode     | - |
-| isShowCustomAddress | 是否可以切换自定义地址选择，type='exist' 时生效 | boolean    | `true` |
-| customAddressTitle  | 自定义地址选择文案，type='custom' 时生效 | string     | `请选择所在地区` |
-| existAddressTitle| 已有地址文案 ，type='exist' 时生效| string     | `配送至` |
-| customAndExistTitle| 自定义地址与已有地址切换按钮文案 ，type='exist' 时生效| string     | `选择其他地址` |
+| 字段 | 说明 | 类型 | 默认值 |
+|----- | ----- | ----- | -----  |
+| modelValue | 是否打开地址选择 | string | - |
+| modelSelect | 设置默认选中地址 | string[] \| number[] | `[]` |
+| type | 地址选择类型 exist/custom/custom2  | string | `custom` |
+| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |
+| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |
+| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |
+| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |
+| height | 弹层中内容容器的高度，仅在type="custom2"时有效 | string \| number | `200px` |
+| existAddress | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | `[]` |
+| defaultIcon | 已有地址列表默认图标，type='exist' 时生效 | ReactNode | - |
+| selectedIcon | 已有地址列表选中图标，type='exist' 时生效 | ReactNode | - |
+| closeBtnIcon | 自定义关闭弹框按钮图标 | ReactNode | - |
+| backBtnIcon | 自定义地址与已有地址切换时，自定义返回的按钮图标 | ReactNode | - |
+| isShowCustomAddress | 是否可以切换自定义地址选择，type='exist' 时生效 | boolean | `true` |
+| customAddressTitle  | 自定义地址选择文案，type='custom' 时生效 | string | `请选择所在地区` |
+| existAddressTitle| 已有地址文案 ，type='exist' 时生效| string | `配送至` |
+| customAndExistTitle| 自定义地址与已有地址切换按钮文案 ，type='exist' 时生效| string | `选择其他地址` |
 
 * provinceName 省的名字
 * cityName 市的名字

@@ -199,7 +199,7 @@ export default App;
 | style                   | 自定義彈框樣式 | CSSProperties | -             |
 | popClass                | 自定義彈框類名 | string        | -             |
 | closeable               | 是否顯示關閉按鈕 | boolean       | `false`        |
-| closeIconSize`v1.5.0废弃` | 关闭按钮大小 | string        | `12px` |
+| closeIconSize`v2.0.0废弃` | 关闭按钮大小 | string        | `12px` |
 | closeIconPosition       | 關閉按鈕位置（top-left,top-right,bottom-left,bottom-right） | string        | `top-right` |
 | closeIcon               | 自定義 Icon | ReactNode          | `close`     |
 | destroyOnClose          | 組件銷毀後是否關閉 | boolean       | `true`        |

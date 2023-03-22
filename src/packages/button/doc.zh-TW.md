@@ -238,14 +238,14 @@ export default App;
 | disabled           | 	是否禁用按鈕 | boolean  | `false` |
 | block              | 是否為塊級元素 | boolean  | `false` |
 | icon               | 按鈕圖示 | `ReactNode`    | -     |
-| iconSize`v1.5.0废弃` | 按鈕圖示大小，同 Icon 的size属性 | string \ | number | `16` |
+| iconSize`v2.0.0废弃` | 按鈕圖示大小，同 Icon 的size属性 | string \ | number | `16` |
 | loading            | 按鈕loading狀態 | boolean  | `false` |
 
 ### Events
 
 | 事件名稱 | 說明 | 回調參數     |
 |--------|----------------|--------------|
-| onClick`v1.3.8`  | 点击按钮时触发 | `event: MouseEvent` |
+| onClick  | 点击按钮时触发 | `event: MouseEvent` |
 
 ### 支持小程序API能力
 目前1.3.11版本以前不支持原生小程序API, 如果你是需要使用原生小程序button组件能力的用户，请尽快升级至1.3.11版本，关于原生小程序button组件的详细API请前往[查阅更多文档](https://taro-docs.jd.com/docs/components/forms/button)

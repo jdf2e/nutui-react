@@ -56,7 +56,7 @@ const NoticeBarDemo = () => {
     <>
       <div className="demo" style={{ paddingBottom: '30px' }}>
         <h2>{translated.basic}</h2>
-        <NoticeBar text={translated.text} />
+        <NoticeBar text={translated.text} leftIcon={null} />
 
         <h2>{translated.scrollable}</h2>
         <NoticeBar text={translated.textShort} scrollable />

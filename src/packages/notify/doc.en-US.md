@@ -183,7 +183,7 @@ export default App
 | color      | Font Color                                               | string        | -        |
 | background | Background color                                         | string        | -        |
 | className | Custom class name                                        | string \| number | `1`        |
-| position `v1.3.0` | Custom Position (top, bottom)                               | string | `top`        |
+| position  | Custom Position (top, bottom)                               | string | `top`        |
 
 ### Events
 

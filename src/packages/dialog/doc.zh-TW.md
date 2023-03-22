@@ -110,7 +110,7 @@ export default App;
 | title        | 標題                         | ReactNode | -                |
 | content         | 對話框的內容，適用於函數式調用 | ReactNode | -                |
 | footer | 自定義頁腳，傳入 null 則不顯示     | ReactNode | - |
-| okText          | 確認按鈕文案                        | ReactNode | `確定`              |
+| confirmText `v2.0.0`         | 確認按鈕文案                        | ReactNode | `確定`              |
 | cancelText          | 取消按鈕文案                        | ReactNode | `取消`              |
 | mask          | 是否展示遮罩                        | boolean | `true`              |
 | noOkBtn          | 是否隱藏確定按鈕                        | boolean | `false`              |

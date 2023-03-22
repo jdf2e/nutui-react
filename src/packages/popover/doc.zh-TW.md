@@ -111,27 +111,27 @@ const App = () => {
   const selfContent= [
     {
       name: <Service size={15}/>,
-      desc: 'option1'
+      description: 'option1'
     },
     {
       name: <Notice  size={15}/>,
-      desc: 'option2'
+      description: 'option2'
     },
     {
       name: <Location size={15}/>,
-      desc: 'option3'
+      description: 'option3'
     },
     {
       name: <Category size={15}/>,
-      desc: 'option4'
+      description: 'option4'
     },
     {
       name: <Scan2 size={15}/>,
-      desc: 'option5'
+      description: 'option5'
     },
     {
       name: <Message size={15}/>,
-      desc: 'option6'
+      description: 'option6'
     }
   ];
 
@@ -148,7 +148,7 @@ const App = () => {
             selfContent.map((item: any)=>{
               return <div className="self-content-item" style={selfContentItem} key={item.name}>
                     {item.name}
-                <div className="self-content-desc" style={selfContentDesc}>{ item.desc }</div>
+                <div className="self-content-description" style={seldescriptiontendescriptionc}>descriptionem.description }</div>
               </div>
             })
           }
@@ -172,7 +172,7 @@ left          # 左側中間位置
 right         # 右側中間位置
 bottom        # 底部中間位置
 ```
-自 `v1.3.0` 起新增
+自  起新增
 ```
 top-start     # 頂部左側位置
 top-end       # 頂部右側位置 
@@ -227,7 +227,7 @@ export default App;
 | visible      | 是否展示氣泡彈出層                 | boolean  | `false`     |
 | theme          | 主題風格，可選值為 dark            | string   | `light`   |
 | location       | 彈出位置  | string   | `bottom`  |
-| offset `v1.3.0`       | 出現位置的偏移量  | number   | `20`  |
+| offset        | 出現位置的偏移量  | number   | `20`  |
 
 ### List 數據結構  
 

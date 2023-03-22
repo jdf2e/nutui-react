@@ -35,8 +35,8 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
+          onPlay={play}
+          onPause={pause}
           onPlayend={playend}
          />
       </Cell>
@@ -75,8 +75,8 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
+          onPlay={play}
+          onPause={pause}
           onPlayend={playend}
          />
       </Cell>
@@ -114,8 +114,8 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
+          onPlay={play}
+          onPause={pause}
           onPlayend={playend}
          />
       </Cell>
@@ -154,8 +154,8 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
+          onPlay={play}
+          onPause={pause}
           onPlayend={playend}
          />
       </Cell>
@@ -194,8 +194,8 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
+          onPlay={play}
+          onPause={pause}
           onPlayend={playend}
          />
       </Cell>
@@ -237,8 +237,8 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
+          onPlay={play}
+          onPause={pause}
           onPlayend={playend}
          />
       </Cell>
@@ -279,8 +279,8 @@ const App = () => {
         <Video
           source={source1}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
+          onPlay={play}
+          onPause={pause}
           onPlayend={playend}
          />
       </Cell>
@@ -312,9 +312,9 @@ export default App;
 
 | Event | Description	         | Arguments |
 | -------- | ------------ | -------- |
-| play `v1.3.8 Abandon`     | play event         | -       |
-| pause `v1.3.8 Abandon`    | pause event         | -       |
-| playend `v1.3.8 Abandon`  | Playback completion callback | -       |
-| onPlayFuc `v1.3.8`     | play event         | -       |
-| onPauseFuc `v1.3.8`    | pause event         | -       |
-| onPlayend `v1.3.8`  | Playback completion callback | -       |
+| play      | play event         | -       |
+| pause     | pause event         | -       |
+| playend   | Playback completion callback | -       |
+| onPlay `v2.0.0`      | play event         | -       |
+| onPause  `v2.0.0`   | pause event         | -       |
+| onPlayend   | Playback completion callback | -       |

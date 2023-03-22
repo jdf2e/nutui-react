@@ -473,18 +473,18 @@ export default App
 | height    | 電梯區域的高度 | number \| string                                              | `200px`               |
 | acceptKey | 索引 key 值    | string                                                      | `title`               |
 | indexList | 索引列表       | Array（item 需包含 id、name 屬性, name 支持傳入 html 結構） | `[{id: 0, name: ''}]` |
-| isSticky`v1.2.1`    | 索引是否吸頂                                                    | boolean  | `false` |
-| spaceHeight`v1.2.1` | 右側錨點的上下間距                                                   | number  | `23` |
-| titleHeight`v1.2.1`   | 左側索引的高度                                                     | number  | `35` |
+| isSticky    | 索引是否吸頂                                                    | boolean  | `false` |
+| spaceHeight | 右側錨點的上下間距                                                   | number  | `23` |
+| titleHeight   | 左側索引的高度                                                     | number  | `35` |
 
 ### Event
 
 | 名稱       | 說明     | 回調參數                               |
 | ---------- | -------- | -------------------------------------- |
-| onClickItem`v1.3.2`  | 點擊內容 | `key: string, item: { id: 0, name: '' }` |
-| onClickIndex`v1.3.2` | 點擊索引 | `key: string`                            |
-| clickItem`v1.3.2 废弃`  | 點擊內容 | `key: string, item: { id: 0, name: '' }` |
-| clickIndex`v1.3.2 废弃` | 點擊索引 | `key: string`                            |
+| onClickItem  | 點擊內容 | `key: string, item: { id: 0, name: '' }` |
+| onClickIndex | 點擊索引 | `key: string`                            |
+| clickItem  | 點擊內容 | `key: string, item: { id: 0, name: '' }` |
+| clickIndex | 點擊索引 | `key: string`                            |
 
 
 ## 主題定制

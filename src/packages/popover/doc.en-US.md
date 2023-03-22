@@ -109,27 +109,27 @@ const App = () => {
   const selfContent= [
     {
       name: <Service size={15}/>,
-      desc: 'option1'
+      description: 'option1'
     },
     {
       name: <Notice  size={15}/>,
-      desc: 'option2'
+      description: 'option2'
     },
     {
       name: <Location size={15}/>,
-      desc: 'option3'
+      description: 'option3'
     },
     {
       name: <Category size={15}/>,
-      desc: 'option4'
+      description: 'option4'
     },
     {
       name: <Scan2 size={15}/>,
-      desc: 'option5'
+      description: 'option5'
     },
     {
       name: <Message size={15}/>,
-      desc: 'option6'
+      description: 'option6'
     }
   ];
 
@@ -146,7 +146,7 @@ const App = () => {
       selfContent.map((item: any)=>{
         return <div className="self-content-item" style={selfContentItem} key={item.name}>
           <Icon name={item.name} size="15" />
-          <div className="self-content-desc" style={selfContentDesc}>{ item.desc }</div>
+          <div className="self-content-description" style={selfContentDesc}>{ item.description }</div>
         </div>
       })
     }
@@ -171,7 +171,7 @@ left          # Left middle
 right         # Right middle 
 bottom        # Bottom middle 
 ```
-New since `v1.3.0`
+New since 
 ```
 top-start     # Top left
 top-end       # Top right 
@@ -226,7 +226,7 @@ export default App;
 | visible      | whether to show                 | boolean  | `false`     |
 | theme          | Theme style, can be set to `dark` `light`          | string   | `light`   |
 | location       | pop-up location  | string   | `bottom`  |
-| offset `v1.3.0`       | the offset of the occurrence position  | number   | `20`  |
+| offset        | the offset of the occurrence position  | number   | `20`  |
 
 ### List data structure  
 

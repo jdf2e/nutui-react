@@ -245,8 +245,8 @@ export default App;
 | top     | 上下偏移量，支持单位设置，可设置为：5 等 | number  | `0`       |
 | right   | 左右偏移量，支持单位设置，可设置为：5 等 | number  | `0`       |
 | color   | 徽标背景颜色 | string  | `#fa2c19` |
-| icon`1.5.0`   | 徽标自定义 | ReactNode  | - |
-| icons`v1.5.0 废弃`   | 徽标自定义 | string  | - |
+| icon`v2.0.0`   | 徽标自定义 | ReactNode  | - |
+| icons`v2.0.0 废弃`   | 徽标自定义 | string  | - |
 
 
 ## 主题定制

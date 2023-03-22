@@ -148,7 +148,10 @@ const StepsDemo = () => {
       <div className="demo padding">
         <h2>{translated['74fc5d8a']}</h2>
         <div className="steps-wrapper">
-          <Steps current={stepState.current1} onClickStep={handleClickStep}>
+          <Steps
+            current={stepState.current1}
+            onClickStep={() => handleStep('current2')}
+          >
             <Step activeIndex={1} title={translated['606ae3f5']}>
               1
             </Step>
@@ -226,7 +229,10 @@ const StepsDemo = () => {
         <h2>{translated['0533b454']}</h2>
         <div className="steps-wrapper">
           <ConfigProvider theme={customTheme}>
-            <Steps current={stepState.current2}>
+            <Steps
+              current={stepState.current2}
+              onClickStep={() => handleStep('current2')}
+            >
               <Step
                 activeIndex={1}
                 title={translated['606ae3f5']}

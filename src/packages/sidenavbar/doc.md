@@ -54,12 +54,12 @@ const App = () => {
             changeNarBar(false)
           }}
         >
-          <SubSideNavBar title="一级标题" ikey="1-0" >
-            <SideNavBarItem title="一级内容1" ikey="1-01" />
-            <SideNavBarItem title="一级内容2" ikey="1-02" />
-            <SubSideNavBar title="二级标题" ikey="2-0">
-              <SideNavBarItem title="二级内容1" ikey="2-01" />
-              <SideNavBarItem title="二级内容2" ikey="2-02" />
+          <SubSideNavBar title="一级标题" key="1-0" >
+            <SideNavBarItem title="一级内容1" key="1-01" />
+            <SideNavBarItem title="一级内容2" key="1-02" />
+            <SubSideNavBar title="二级标题" key="2-0">
+              <SideNavBarItem title="二级内容1" key="2-01" />
+              <SideNavBarItem title="二级内容2" key="2-02" />
             </SubSideNavBar>
           </SubSideNavBar>
         </SideNavBar>
@@ -83,11 +83,11 @@ const App = () => {
   const changeNarBar = (visible) => {
    setVisible(visible)
   }
-  const clickItem = ({ title, ikey }) => {
-    Toast.text(`title=${title},ikey=${ikey}`)
+  const clickItem = ({ title, key }) => {
+    Toast.text(`title=${title},key=${key}`)
   }
-  const clickTitle = ({ title, ikey, isShow }) => {
-    Toast.text(`title=${title},ikey=${ikey},isShow=${isShow}`)
+  const clickTitle = ({ title, key, isShow }) => {
+    Toast.text(`title=${title},key=${key},isShow=${isShow}`)
   }
   return ( 
     <>  
@@ -106,15 +106,15 @@ const App = () => {
             changeNarBar(false)
           }}
         >
-          <SubSideNavBar title="一级标题" ikey="1-0" onClick={clickTitle}>
-            <SideNavBarItem title="一级内容1" ikey="1-01" onClick={clickItem} />
-            <SideNavBarItem title="一级内容2" ikey="1-02" />
-            <SubSideNavBar title="二级标题" ikey="2-0">
-              <SideNavBarItem title="二级内容1" ikey="2-01" />
-              <SideNavBarItem title="二级内容2" ikey="2-02" />
-                <SubSideNavBar title="三级标题" ikey="3-0">
-                  <SideNavBarItem title="三级内容1" ikey="3-01" />
-                  <SideNavBarItem title="三级内容2" ikey="3-02" />
+          <SubSideNavBar title="一级标题" key="1-0" onClick={clickTitle}>
+            <SideNavBarItem title="一级内容1" key="1-01" onClick={clickItem} />
+            <SideNavBarItem title="一级内容2" key="1-02" />
+            <SubSideNavBar title="二级标题" key="2-0">
+              <SideNavBarItem title="二级内容1" key="2-01" />
+              <SideNavBarItem title="二级内容2" key="2-02" />
+                <SubSideNavBar title="三级标题" key="3-0">
+                  <SideNavBarItem title="三级内容1" key="3-01" />
+                  <SideNavBarItem title="三级内容2" key="3-02" />
                 </SubSideNavBar>
             </SubSideNavBar>
           </SubSideNavBar>
@@ -145,14 +145,14 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| ikey         | 导航唯一标识                       | string \| number |          |
+| key `v2.0.0`        | 导航唯一标识                       | string \| number |          |
 | title        | 整体标题                           | string  | -              |
 | open         | 导航是否默认展开                     | boolean  | `true`         |
 ### 3、SideNavBarItem
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| ikey         | 导航唯一标识                       | string \| number |          |
+| key `v2.0.0`        | 导航唯一标识                       | string \| number |          |
 | title        | 整体标题                           | string  | -               |
 
 ## Events
@@ -160,19 +160,19 @@ export default App;
 
 | 事件名                       | 说明                                          | 回调参数     |
 |---------------------------|---------------------------------------------|--------------|
-| onClose`v1.3.8` | 关闭遮罩时触发, handleClose 事件从 1.3.8 之后改为 onClose | -           |
+| onClose | 关闭遮罩时触发, handleClose 事件从 1.3.8 之后改为 onClose | -           |
 
 ### 2、SubSideNavBar Events
 
 | 事件名           | 说明                                                             | 回调参数     |
 |---------------|----------------------------------------------------------------|--------------|
-| onClick`v1.3.8` | 导航点击, titleClick 事件从 1.3.8 之后改为 onClick | `data: {title: string, ikey: string \| number, isShow: boolean}`           |
+| onClick | 导航点击, titleClick 事件从 1.3.8 之后改为 onClick | `data: {title: string, key: string \| number, isShow: boolean}`           |
 
 ### 3、SideNavBarItem Events
 
 | 事件名    | 说明                                                  | 回调参数     |
 |--------|-----------------------------------------------------|--------------|
-| onClick | 导航点击, click 事件从 1.3.8 之后改为 onClick | `data: {title: string, ikey: string \| number}`           |
+| onClick | 导航点击, click 事件从 1.3.8 之后改为 onClick | `data: {title: string, key: string \| number}`           |
 
 
 ## 主题定制

@@ -76,9 +76,9 @@ test('tips dialog', async () => {
   )
 })
 
-test('dialog cancelText okText', async () => {
+test('dialog cancelText confirmText', async () => {
   const { container } = render(
-    <Dialog visible cancelText="取消文案自定义" okText="确定文案自定义">
+    <Dialog visible cancelText="取消文案自定义" confirmText="确定文案自定义">
       content
     </Dialog>
   )

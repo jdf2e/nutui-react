@@ -79,7 +79,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setNormal(true)} />
+      <Cell title="选择地址" description={text}  onClick={()=>setNormal(true)} />
       <Address
         modelValue={normal}
         province={province}
@@ -158,7 +158,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setNormal(true)} />
+      <Cell title="选择地址" description={text}  onClick={()=>setNormal(true)} />
       <Address
         modelValue={normal}
         modelSelect={[1, 7, 3]}
@@ -242,7 +242,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setNormal2(true)} />
+      <Cell title="选择地址" description={text}  onClick={()=>setNormal2(true)} />
       <Address
         modelValue={normal2}
         type="custom2"
@@ -336,7 +336,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setExist(true)} />
+      <Cell title="选择地址" description={text}  onClick={()=>setExist(true)} />
       <Address
         modelValue={exist}
         type="exist"
@@ -438,7 +438,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setCustomImg(true)} />
+      <Cell title="选择地址" description={text}  onClick={()=>setCustomImg(true)} />
       <Address
         modelValue={customImg}
         type="exist"
@@ -592,7 +592,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="选择地址" desc={text} onClick={() => setOther(true)} />
+      <Cell title="选择地址" description={text}  onClick={()=>setOther(true)} />
       <Address
         modelValue={other}
         type="exist"
@@ -623,7 +623,7 @@ export default App;
 | 字段 | 说明 | 类型 | 默认值 |
 |----- | ----- | ----- | -----  |
 | modelValue | 是否打开地址选择 | string | - |
-| modelSelect`v1.3.0` | 设置默认选中地址 | string[] \| number[] | `[]` |
+| modelSelect | 设置默认选中地址 | string[] \| number[] | `[]` |
 | type | 地址选择类型 exist/custom/custom2  | string | `custom` |
 | province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |
 | city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |

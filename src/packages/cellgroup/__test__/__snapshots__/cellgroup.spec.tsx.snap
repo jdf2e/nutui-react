@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`prop title desc subtitle 1`] = `
+exports[`prop title description subtitle 1`] = `
 <div>
   <div
     class="nut-cell-group"

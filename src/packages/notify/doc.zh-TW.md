@@ -182,7 +182,7 @@ export default App
 | color      | 字体颜色                                              | string        | -       |
 | background | 背景颜色                                              | string        | -       |
 | className | 自定义类名                                            | string \| number | `1`        |
-| position `v1.3.0` | 自定义位置 (top, bottom)                                         | string | `top`        |
+| position  | 自定义位置 (top, bottom)                                         | string | `top`        |
 
 ### Events
 

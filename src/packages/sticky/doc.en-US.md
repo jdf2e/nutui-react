@@ -102,7 +102,7 @@ export default App;
 | position     | Adsorption position（top、bottom）| string | `top`             |
 | top          | Ceiling distance                 | number | `0`               |
 | bottom       | Suction distance                 | number | `0`               |
-| z-index      | Level of adsorption              | number | `2000`            |
+| zIndex      | Level of adsorption              | number | `2000`            |
 | container    | container ref                    | `React.RefObject<HTMLElement>` | - |
 
 ### Events

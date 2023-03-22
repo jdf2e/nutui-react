@@ -43,17 +43,17 @@ const App = () => {
     console.log(columnIndex, option)
   }
   const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
-    let desc = ''
+    let description = ''
     options.forEach((option: any) => {
-      desc += option.text
+      description += option.text
     })
-    setBaseDesc(desc)
+    setBaseDesc(description)
   }
   return ( 
     <>   
-      <Cell title="请选择城市" desc={baseDesc} onClick={() => setIsVisible1(!isVisible1)}/>
+      <Cell title="请选择城市" description={baseDesc} onClick={() => setIsVisible1(!isVisible1)}/>
       <Picker
-        isVisible={isVisible1}
+        visible={isVisible1}
         listData={listData1}
         onConfirm={(values, list) => confirmPicker(values, list)}
         onClose={() => setIsVisible1(false)}
@@ -95,17 +95,17 @@ const App = () => {
     ],
   ]
   const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
-    let desc = ''
+    let description = ''
     options.forEach((option: any) => {
-      desc += option.text
+      description += option.text
     })
-    setbaseDefault(desc)
+    setbaseDefault(description)
   }
   return ( 
     <>   
-      <Cell title="请选择城市" desc={baseDefault} onClick={() => setIsVisible1(!isVisible1)}/>
+      <Cell title="请选择城市" description={baseDefault} onClick={() => setIsVisible1(!isVisible1)}/>
       <Picker
-        isVisible={isVisible1}
+        visible={isVisible1}
         listData={listData1}
         onConfirm={(values, list) => confirmPicker(values, list)}
         onClose={() => setIsVisible1(false)}
@@ -145,17 +145,17 @@ const App = () => {
     ],
   ]
   const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
-    let desc = ''
+    let description = ''
     options.forEach((option: any) => {
-      desc += option.text
+      description += option.text
     })
-    setbaseDefault(desc)
+    setbaseDefault(description)
   }
   return ( 
     <>   
-    <Cell title="多列用法" desc={mutilDesc} onClick={() => setIsVisible2(!isVisible2)} />
+    <Cell title="多列用法" description={mutilDesc} onClick={() => setIsVisible2(!isVisible2)} />
     <Picker
-      isVisible={isVisible2}
+      visible={isVisible2}
       listData={listData2}
       onClose={() => setIsVisible2(false)}
       defaultValueData={['Wednesday']}
@@ -179,7 +179,7 @@ import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [visible, setIsVisible] = useState(false)
   const [tileDesc, settileDesc] = useState('')
   const listData = [
     [
@@ -198,17 +198,17 @@ const App = () => {
     ],
   ]
   const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
-    let desc = ''
+    let description = ''
     options.forEach((option: any) => {
-      desc += option.text
+      description += option.text
     })
-    settileDesc(desc)
+    settileDesc(description)
   }
   return ( 
     <>   
-      <Cell title="请选择城市" desc={settileDesc} onClick={() => setIsVisible(!isVisible)}/>
+      <Cell title="请选择城市" description={settileDesc} onClick={() => setIsVisible(!visible)}/>
       <Picker
-        isVisible={isVisible}
+        visible={visible}
         listData={listData}
         threeDimensional={false}
         swipeDuration={1000}
@@ -231,7 +231,7 @@ import { Picker,Cell } from '@nutui/nutui-react';
 
 
 const App = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [visible, setIsVisible] = useState(false)
   const [cityCustmer, setCityCustmer] = useState('')
   const [custmerCityData, setCustmerCityData] = useState([
     {
@@ -266,9 +266,9 @@ const App = () => {
  
   return ( 
     <>   
-      <Cell title="多级联动" desc={cityCustmer} onClick={() => setIsVisible(!isVisible)}/>
+      <Cell title="多级联动" description={cityCustmer} onClick={() => setIsVisible(!visible)}/>
       <Picker
-        isVisible={isVisible}
+        visible={visible}
         listData={custmerCityData}
         onClose={() => setIsVisible(false)}
         onConfirm={(values, list: PickerOption[]) =>
@@ -294,7 +294,7 @@ import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [visible, setIsVisible] = useState(false)
   const [asyncDesc, setasyncDesc] = useState('')
   const [asyncData, setCustmerCityData] = useState([
     {
@@ -340,9 +340,9 @@ const App = () => {
  
   return ( 
     <>   
-      <Cell title="请选择城市" desc={asyncDesc} onClick={() => setIsVisible(!isVisible)}/>
+      <Cell title="请选择城市" description={asyncDesc} onClick={() => setIsVisible(!visible)}/>
       <Picker
-        isVisible={isVisible}
+        visible={visible}
         listData={asyncData}
         onClose={() => setIsVisible(false)}
         onConfirm={(values, list: PickerOption[]) =>
@@ -367,20 +367,20 @@ export default App;
 
 | 字段                     | 说明 | 类型 | 默认值 |
 |------------------------| ----- | ----- | ----- |
-| isVisible              | 是否可见 | boolean | `false` |
+| visible`v2.0.0`              | 是否可见 | boolean | `false` |
 | title                  | 设置标题 | string | - |
 | listData               | 列表数据 | Array | `[]` |
 | defaultValueData       | 默认选中 | Array | `[]` |
-| threeDimensional`v1.2.2` | 是否开启3D效果               | boolean  | `true`   |
-| swipeDuration`v1.3.0` | 快速滑动时惯性滚动的时长，单位 ms               | string \| number | `1000`   |
+| threeDimensional | 是否开启3D效果               | boolean  | `true`   |
+| swipeDuration | 快速滑动时惯性滚动的时长，单位 ms               | string \| number | `1000`   |
 
 
 ## listData 数据结构
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| text`v1.2.2`        | 选项的文字内容               | string \| number |               |
-| value`v1.2.2`          | 选项对应的值，且唯一               | string \| number |            |
-| children`v1.2.2`        | 用于级联选项               | Array | -                |
+| text        | 选项的文字内容               | string \| number |               |
+| value          | 选项对应的值，且唯一               | string \| number |            |
+| children        | 用于级联选项               | Array | -                |
 
 
 ## Events
@@ -388,8 +388,8 @@ export default App;
 | 字段                   | 说明 | 回调参数 |
 |----------------------| ----- | ----- |
 | onConfirm            | 点击确认按钮时候回调 | 返回选中值 value，选中值对象 |
-| onChoose`v1.2.2 废弃` | 每一列值变更时调用 | 依次返回this、改变的列数，改变值，当前选中值 |
-| onChange`v1.2.2`     | 每一列值变更时调用   | 改变的列数，改变值 value，当前选中值 |
+| onChoose | 每一列值变更时调用 | 依次返回this、改变的列数，改变值，当前选中值 |
+| onChange     | 每一列值变更时调用   | 改变的列数，改变值 value，当前选中值 |
 | onCloseUpdate        | 联动时，关闭时回调   | 当前选中值，依次返回this |
 | onClose              | 关闭时触发          | 返回选中值 value，选中值对象 |
 

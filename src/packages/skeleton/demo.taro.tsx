@@ -135,7 +135,7 @@ const SkeletonDemo = () => {
                 />
                 <div className="right-content">
                   <span className="title">NutUI-React</span>
-                  <div className="desc">{translated['652c6725']}</div>
+                  <div className="description">{translated['652c6725']}</div>
                 </div>
               </div>
             </Skeleton>

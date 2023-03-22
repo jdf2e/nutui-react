@@ -247,24 +247,24 @@ const PickerDemo = () => {
     options: PickerOption[]
   ) => {
     console.log('picker选择确定', values, options)
-    let desc = ''
+    let description = ''
     options.forEach((option: any) => {
-      desc += option.text
+      description += option.text
     })
     if (type === 'base') {
-      setBaseDesc(desc)
+      setBaseDesc(description)
     }
     if (type === 'mutil') {
-      setMutilDesc(desc)
+      setMutilDesc(description)
     }
 
     if (type === 'default') {
-      setbaseDefault(desc)
+      setbaseDefault(description)
       setDefaultValue([options[0].value as number])
     }
 
     if (type === 'tile') {
-      settileDesc(desc)
+      settileDesc(description)
     }
   }
   return (
@@ -274,12 +274,12 @@ const PickerDemo = () => {
         <h2>基础用法</h2>
         <Cell
           title="请选择城市"
-          desc={baseDesc}
+          description={baseDesc}
           onClick={() => setIsVisible1(!isVisible1)}
         />
         <Picker
           title="请选择城市"
-          isVisible={isVisible1}
+          visible={isVisible1}
           listData={listData1}
           onConfirm={(values, list) => confirmPicker('base', values, list)}
           onClose={() => setIsVisible1(false)}
@@ -289,11 +289,11 @@ const PickerDemo = () => {
         <h2>默认选中项</h2>
         <Cell
           title="请选择城市"
-          desc={baseDefault}
+          description={baseDefault}
           onClick={() => setIsVisible4(!isVisible4)}
         />
         <Picker
-          isVisible={isVisible4}
+          visible={isVisible4}
           listData={listData1}
           onConfirm={(values, list) => confirmPicker('default', values, list)}
           defaultValueData={defaultValue}
@@ -304,11 +304,11 @@ const PickerDemo = () => {
         <h2>多列用法</h2>
         <Cell
           title="多列用法"
-          desc={mutilDesc}
+          description={mutilDesc}
           onClick={() => setIsVisible2(!isVisible2)}
         />
         <Picker
-          isVisible={isVisible2}
+          visible={isVisible2}
           listData={listData2}
           onClose={() => setIsVisible2(false)}
           defaultValueData={['Wednesday']}
@@ -318,11 +318,11 @@ const PickerDemo = () => {
         <h2>平铺展示</h2>
         <Cell
           title="请选择城市"
-          desc={tileDesc}
+          description={tileDesc}
           onClick={() => setIsVisible6(!isVisible6)}
         />
         <Picker
-          isVisible={isVisible6}
+          visible={isVisible6}
           listData={listData1}
           onConfirm={(values, list) => confirmPicker('tile', values, list)}
           defaultValueData={defaultValue}
@@ -335,12 +335,12 @@ const PickerDemo = () => {
         <h2>多级联动</h2>
         <Cell
           title="多级联动"
-          desc={cityCustmer}
+          description={cityCustmer}
           onClick={() => setIsVisible3(!isVisible3)}
         />
 
         <Picker
-          isVisible={isVisible3}
+          visible={isVisible3}
           listData={custmerCityData}
           onClose={() => setIsVisible3(false)}
           onConfirm={(values, list: PickerOption[]) =>
@@ -356,12 +356,12 @@ const PickerDemo = () => {
         <h2>动态获取</h2>
         <Cell
           title="请选择城市"
-          desc={asyncDesc}
+          description={asyncDesc}
           onClick={() => setIsVisible5(!isVisible5)}
         />
 
         <Picker
-          isVisible={isVisible5}
+          visible={isVisible5}
           listData={asyncData}
           onClose={() => setIsVisible5(false)}
           onConfirm={(values, list: PickerOption[]) =>

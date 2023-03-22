@@ -433,8 +433,8 @@ export default App;
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| clickStep `v1.3.8 废弃` | 点击步骤的标题或图标时触发 | `index: number` |
-| onClickStep `v1.3.8`  | 点击步骤的标题或图标时触发 | `index: number` |
+| clickStep  | 点击步骤的标题或图标时触发 | `index: number` |
+| onClickStep   | 点击步骤的标题或图标时触发 | `index: number` |
 
 #### Step
 
@@ -443,8 +443,8 @@ export default App;
 | title            | 流程步骤的标题           | `string`          | ''  |
 | content          | 流程步骤的描述性文字        | `string`          | ''  |
 | icon          | 图标(来自Icon组件的name属性)       | `ReactNode`       | ''  |
-| iconColor`v1.5.0废弃`          | 图标颜色       | `string`          | -   |
-| size`v1.5.0废弃`          | 图标尺寸大小(来自Icon组件的size属性)       | `string`              | ''  |
+| iconColor`v2.0.0废弃`          | 图标颜色       | `string`          | -   |
+| size`v2.0.0废弃`          | 图标尺寸大小(来自Icon组件的size属性)       | `string`              | ''  |
 | activeIndex          | 流程步骤的索引           | `number`          | 0   |
 | renderContent         | 流程步骤的描述性文字的html结构 | `React.ReactNode` | -   |
 

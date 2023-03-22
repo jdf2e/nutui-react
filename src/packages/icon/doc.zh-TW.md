@@ -167,7 +167,7 @@ export default App;
 
 | 事件名稱 | 說明           | 回調參數     |
 |--------|----------------|--------------|
-| onClick`v1.3.8`  | 點擊圖示時觸發 | `event: Event` |
+| onClick  | 點擊圖示時觸發 | `event: Event` |
 
 
 ## 主題定制

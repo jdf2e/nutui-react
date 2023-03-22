@@ -111,7 +111,7 @@ const App = () => {
             />
             <div className="right-content">
               <span className="title">NutUI-React</span>
-              <div className="desc">
+              <div className="description">
                 一套京东风格的轻量级移动端React组件库，提供丰富的基础组件和业务组件，帮助开发者快速搭建移动应用。
               </div>
             </div>

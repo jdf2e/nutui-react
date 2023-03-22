@@ -72,43 +72,43 @@ const AnimateDemo = () => {
       <div className="demo">
         <h2>循环动画</h2>
         <div className="ani-demo-div">
-          <Animate type="shake" loop={true}>
+          <Animate type="shake" loop>
             <Button type="primary">shake-抖动</Button>
           </Animate>
         </div>
 
         <div className="ani-demo-div">
-          <Animate type="ripple" loop={true}>
+          <Animate type="ripple" loop>
             <Button type="primary">ripple-心跳</Button>
           </Animate>
         </div>
 
         <div className="ani-demo-div">
-          <Animate type="breath" loop={true}>
+          <Animate type="breath" loop>
             <Button type="primary">breath-呼吸灯</Button>
           </Animate>
         </div>
 
         <div className="ani-demo-div">
-          <Animate type="twinkle" loop={true}>
+          <Animate type="twinkle" loop>
             <Button type="primary">twinkle-水波</Button>
           </Animate>
         </div>
 
         <div className="ani-demo-div">
-          <Animate type="flicker" loop={true}>
+          <Animate type="flicker" loop>
             <Button type="primary">flicker-擦亮</Button>
           </Animate>
         </div>
 
         <div className="ani-demo-div">
-          <Animate type="jump" loop={true}>
+          <Animate type="jump" loop>
             <Button type="primary">jump-跳跃</Button>
           </Animate>
         </div>
 
         <div className="ani-demo-div">
-          <Animate type="float" loop={true}>
+          <Animate type="float" loop>
             <Button type="primary">float-漂浮</Button>
           </Animate>
         </div>
@@ -130,9 +130,9 @@ export default AnimateDemo
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| type         | 动画类型，见下方type值说明               | string | `shake`                |
-| action         | 触发方式，'initial'--初始化执行;  'click'--点击执行              | string | `initial`             |
-| loop         | 是否循环执行。true-循环执行;false-执行一次              | boolean | `false`               |
+| type | 动画类型，见下方type值说明 | string | `shake` |
+| action | 触发方式，'initial'--初始化执行;  'click'--点击执行 | string | `initial` |
+| loop         | 是否循环执行。true-循环执行;false-执行一次 | boolean | `false`               |
 
 ### Events
 

@@ -243,26 +243,26 @@ export default App;
 
 ### Prop
 
-| 字段                 | 说明                                                             | 类型          | 默认值      |
-|--------------------| ---------------------------------------------------------------- |-------------|----------|
-| size               | 设置头像的大小，可选值为：large、normal、small，支持直接输入数字   | `string`    | `normal` |
-| shape              | 设置头像的形状，可选值为：square、round            | `string`    | `round`  |
-| bgColor            | 设置 Icon、字符类型头像的背景色                    | `string`    | `#eee`   |
-| color              | 设置 Icon、字符类型头像的颜色                     | `string`    | `#666`   |
-| url                | 设置图片类型头像的地址                           | `string`    | -        |
-| alt                | 设置图片类型头像无法显示时的替代文本                | `string`    | -        |
-| icon               | 设置 Icon 类型头像图标  | `ReactNode` | -        |
-| iconSize`v1.5.0废弃` | [图标尺寸](#/icon) | `string \| number`      | `16`     |
+| 字段 | 说明| 类型 | 默认值 |
+|--------------------| ----------------------------- |-------------|----------|
+| size | 设置头像的大小，可选值为：large、normal、small，支持直接输入数字   | `string`    | `normal` |
+| shape | 设置头像的形状，可选值为：square、round | `string`    | `round`  |
+| bgColor | 设置 Icon、字符类型头像的背景色 | `string`    | `#eee`   |
+| color | 设置 Icon、字符类型头像的颜色 | `string`    | `#666`   |
+| url | 设置图片类型头像的地址 | `string`    | -        |
+| alt | 设置图片类型头像无法显示时的替代文本 | `string`    | - |
+| icon | 设置 Icon 类型头像图标  | `ReactNode` | - |
+| iconSize`v2.0.0废弃` | [图标尺寸](#/icon) | `string \| number`      | `16`     |
 
 ### avatarGroup
 
-| 字段     | 说明                                                             | 类型       | 默认值      |
-| -------- | ---------------------------------------------------------------- |----------|----------|
+| 字段     | 说明 | 类型       | 默认值      |
+| -------- | --------------------- |----------|----------|
 | maxCount     | 显示的最大头像个数   | `string \| number`    | - |
 | maxContent  | 头像数量超出时，会出现一个头像折叠元素。该元素内容可为...、more、+N。默认为 +N | `string` | `+N`     | 
 | size         | 设置头像的大小，可选值为：large、normal、small，支持直接输入数字   | `string` | `+N`     |
 | shape        | 设置头像的形状，可选值为：square、round            | `string` | `round`  |
-| maxBgColor  | 设置 Icon、字符类型头像的背景色                    | `string` | `#eee`   |
+| maxBgColor  | 设置 Icon、字符类型头像的背景色 | `string` | `#eee`   |
 | maxColor    | 设置 Icon、字符类型头像的颜色                   | `string` | `#666`   |
 | span         | 设置头像之间的间距               | `string` | `-8`     |
 | zIndex       | 头像之间的层级关系，可选值为：left、right  | `'left' \ | 'right'` | `left`     |
@@ -271,8 +271,8 @@ export default App;
 
 | 字段             | 说明         | 类型                        | 回调参数            |
 | ---------------- | ------------ |---------------------------|-----------------|
-| activeAvatar `v1.3.8 废弃` | 点击头像触发事件    | `(e: MouseEvent) => void` | `e: MouseEvent` |
-| onActiveAvatar `v1.3.8` | 点击头像触发事件    | `(e: MouseEvent) => void` | `e: MouseEvent` |
+| activeAvatar  | 点击头像触发事件    | `(e: MouseEvent) => void` | `e: MouseEvent` |
+| onActiveAvatar  | 点击头像触发事件    | `(e: MouseEvent) => void` | `e: MouseEvent` |
 | onError       | 图片加载失败的事件   | `(e: any) => void`        | `e: any`        |
 
 ## 主题定制

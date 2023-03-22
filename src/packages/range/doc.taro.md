@@ -522,21 +522,21 @@ export default App;
 | curValueDesc`v1.3.12` | 当前值描述          | number \| string   | -                    |
 | step          | 步长               | number \| string   | `1`                      |
 | disabled      | 是否禁用滑块       | boolean          | `false`                  |
-| vertical`v1.2.2` | 是否竖向展示 | boolean | `false` |
+| vertical | 是否竖向展示 | boolean | `false` |
 | hiddenRange   | 是否隐藏范围值     | boolean          | `false`                  |
 | hiddenTag     | 是否隐藏标签       | boolean          | `false`                  |
 | activeColor   | 进度条激活态颜色   | string           | `rgba(250, 44, 25, 1)`   |
 | inactiveColor | 进度条非激活态颜色 | string           | `rgba(255, 163, 154, 1)` |
 | buttonColor   | 按钮颜色           | string           | `rgba(250, 44, 25, 1)`   |
-| marks`v1.2.2` | 刻度标示| Object{key: number}    | `{}` |
+| marks | 刻度标示| Object{key: number}    | `{}` |
 
 ### Events
 
 | 事件名    | 说明                     | 回调参数        |
 | --------- | ------------------------ | --------------- |
-| onChange `v1.3.8`   | 进度变化且结束拖动后触发 | value: 当前进度 |
-| onDragStart `v1.3.8` | 开始拖动时触发           | -               |
-| onDragEnd `v1.3.8`  | 结束拖动时触发           | -               |
+| onChange    | 进度变化且结束拖动后触发 | value: 当前进度 |
+| onDragStart  | 开始拖动时触发           | -               |
+| onDragEnd   | 结束拖动时触发           | -               |
 
 ### Slots
 

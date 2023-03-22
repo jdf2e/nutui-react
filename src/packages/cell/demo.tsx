@@ -7,8 +7,8 @@ import { Switch } from '../switch/switch'
 
 interface T {
   basic: string
-  desc: string
-  desc1: string
+  description: string
+  description1: string
   title: string
   title1: string
   title2: string
@@ -34,15 +34,15 @@ const CellDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
       basic: '基本用法',
-      desc: '描述文字',
-      desc1: '使用 nut-cell-group 支持 title desc slots',
+      description: '描述文字',
+      description1: '使用 nut-cell-group 支持 title description slots',
       title: '我是标题',
       title1: '副标题描述',
       title2: '直接使用插槽(slot)',
       title3: '点击测试',
       title4: '圆角设置 0',
       title5: '链接 | 分组用法',
-      title6: '只展示 desc ，可通过 desc-text-align 调整内容位置',
+      title6: '只展示 description ，可通过 description-text-align 调整内容位置',
       title7: '垂直居中',
       title8: '直接使用插槽(slot title)',
       title9: '尺寸设置 large',
@@ -58,15 +58,15 @@ const CellDemo = () => {
     },
     'zh-TW': {
       basic: '基本用法',
-      desc: '描述文字',
-      desc1: '使用 nut-cell-group 支持 title desc slots',
+      description: '描述文字',
+      description1: '使用 nut-cell-group 支持 title description slots',
       title: '我是標題',
       title1: '副標題描述',
       title2: '直接使用插槽(slot)',
       title3: '點擊測試',
       title4: '圓角設置 0',
       title5: '鏈接 | 分組用法',
-      title6: '只展示 desc ，可通過 desc-text-align 調整內容位置',
+      title6: '只展示 description ，可通過 description-text-align 調整內容位置',
       title7: '垂直居中',
       title8: '直接使用插槽(slot title)',
       title9: '尺寸設置 large',
@@ -82,16 +82,16 @@ const CellDemo = () => {
     },
     'en-US': {
       basic: 'Basic Usage',
-      desc: 'Description',
-      desc1: 'Usage nut-cell-group support title desc slots',
+      description: 'description',
+      description1: 'Usage nut-cell-group support title description slots',
       title: 'Title',
-      title1: 'Subtitle Description',
+      title1: 'Subtitle description',
       title2: 'Use Slots',
       title3: 'Click Test',
       title4: 'Round Radius 0',
       title5: 'Link | CellGroup Usage',
       title6:
-        'Only display desc , you can adjust the content position through desc-text-align',
+        'Only display description , you can adjust the content position through description-text-align',
       title7: 'Vertical Center',
       title8: 'Use Slots title',
       title9: 'Size setting large',
@@ -115,11 +115,11 @@ const CellDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <Cell title={translated.title} desc={translated.desc} />
+        <Cell title={translated.title} description={translated.description} />
         <Cell
           title={translated.title}
           subTitle={translated.title1}
-          desc={translated.desc}
+          description={translated.description}
         />
         <Cell
           title={translated.title3}
@@ -129,12 +129,16 @@ const CellDemo = () => {
         />
         <Cell title={translated.title4} roundRadius="0" />
         <h2>{translated.title9}</h2>
-        <Cell size="large" title={translated.title} desc={translated.desc} />
+        <Cell
+          size="large"
+          title={translated.title}
+          description={translated.description}
+        />
         <Cell
           size="large"
           title={translated.title}
           subTitle={translated.title1}
-          desc={translated.desc}
+          description={translated.description}
         />
         <h2>{translated.title2}</h2>
         <Cell>
@@ -147,13 +151,16 @@ const CellDemo = () => {
               Title <b style={{ color: 'red' }}>1</b>
             </span>
           }
-          desc={translated.desc}
+          description={translated.description}
         />
-        <CellGroup title={translated.title5} desc={translated.desc1}>
+        <CellGroup
+          title={translated.title5}
+          description={translated.description1}
+        >
           <Cell title={translated.link} isLink />
           <Cell
             title={translated.urlJump}
-            desc="https://jd.com"
+            description="https://jd.com"
             isLink
             url="https://jd.com"
           />
@@ -177,17 +184,20 @@ const CellDemo = () => {
         <Cell
           title={translated.name}
           icon={<My />}
-          desc={translated.desc}
+          description={translated.description}
           isLink
         />
         <h2>{translated.title6}</h2>
-        <Cell descTextAlign="left" desc={translated.desc} />
+        <Cell
+          descriptionTextAlign="left"
+          description={translated.description}
+        />
         <h2>{translated.title7}</h2>
         <Cell
           center
           title={translated.title}
           subTitle={translated.title1}
-          desc={translated.desc}
+          description={translated.description}
         />
       </div>
     </>

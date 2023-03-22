@@ -65,7 +65,7 @@ exports[`prop isLink 1`] = `
 </div>
 `;
 
-exports[`prop title desc subtitle test 1`] = `
+exports[`prop title description subtitle test 1`] = `
 <div>
   <div
     class="nut-cell "

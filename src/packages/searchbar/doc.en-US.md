@@ -157,7 +157,7 @@ export default App;
 |readonly | the input box is read-only | boolean | `false` |
 |maxLength | maximum input length | number | `9999` |
 |clearable | whether to display the clear button | boolean | `true` |
-| clearIconSize`v1.4.7` | the size of clear button，same as Icon's size | string \| number | `12px` |
+| clearSize `v2.0.0` | the size of clear button，same as Icon's size | string \| number | `12px` |
 |background | search box external background color |string | - |
 |inputbackground | search box background color |string | - |
 |inputalign | alignment, optional `center` `right` | string | `left` |

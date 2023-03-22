@@ -29,8 +29,8 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="Title" desc="Description" />
-      <Cell title="Title" subTitle="Subtitle Description" desc="Description" />
+      <Cell title="Title" description="Description" />
+      <Cell title="Title" subTitle="Subtitle Description" description="Description" />
       <Cell
         title="Click Test"
         onClick={(
@@ -57,12 +57,12 @@ import { Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <>
-      <Cell size="large" title="Title" desc="Description" />
+      <Cell size="large" title="Title" description="Description" />
       <Cell
         size="large"
         title="Title"
         subTitle="Subtitle Description"
-        desc="Description"
+        description="Description"
       />
     </>
   )
@@ -110,7 +110,7 @@ const App = () => {
           Title <b style={{ color: 'red' }}>1</b>
         </span>
       }
-      desc="Description"
+      description="Description"
     />
   )
 }
@@ -132,12 +132,12 @@ const App = () => {
     <>
       <CellGroup
         title="Link | CellGroup Usage"
-        desc="Usage nut-cell-group support title desc slots"
+        description="Usage nut-cell-group support title description slots"
       >
         <Cell title="Link Usage" isLink />
         <Cell
           title="URL Jump"
-          desc="https://jd.com"
+          description="https://jd.com"
           isLink
           url="https://jd.com"
         />
@@ -209,14 +209,14 @@ import { Cell } from '@nutui/nutui-react'
 import { My } from '@nutui/icons-react'
 
 const App = () => {
-  return <Cell title="Name" icon={<My />} desc="Description" isLink />
+  return <Cell title="Name" icon={<My />} description="Description" isLink />
 }
 export default App
 ```
 
 :::
 
-### Only display desc , you can adjust the content position through desc-text-align
+### Only display description , you can adjust the content position through description-text-align
 
 :::demo
 
@@ -225,7 +225,7 @@ import React from 'react'
 import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
-  return <Cell descTextAlign="left" desc="Description" />
+  return <Cell descriptionTextAlign="left" description="Description" />
 }
 export default App
 ```
@@ -244,7 +244,7 @@ import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
-    <Cell center title="Title" subTitle="Subtitle Description" desc="Desc" />
+    <Cell center title="Title" subTitle="Subtitle Description" description="Desc" />
   )
 }
 export default App
@@ -260,9 +260,9 @@ export default App
 | Attribute | Description | Type   | Default |
 |-------|----------|--------|--------|
 | title | Title | string | -      |
-| desc  | Description | string | -      |
+| description  | Description | string | -      |
 | titleSlot        | Custom`title`slot                        | ReactNode          | -  |
-| descSlot        | Custom`desc`slot                         | ReactNode          | -  |
+| descSlot        | Custom`description`slot                         | ReactNode          | -  |
 
 ### Cell Prop
 
@@ -270,18 +270,18 @@ export default App
 |-------------------|----------------------------------------------------------------------------------------------------------|------------------|------------------|
 | title             | Title                      |  ReactNode           | -      |
 | subTitle          | Subtitle                           |  ReactNode           | -      |
-| desc              | Description                                     | string      | -      |
-| descTextAlign     | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp), is only available when displaying desc | string | `right`  |
+| description              | Description                                     | string      | -      |
+| descriptionTextAlign     | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp), is only available when displaying description | string | `right`  |
 | isLink            | Whether to show the right arrow and turn on click feedback            | boolean          | `false`  |
 | to`v1.4.0 Abandon`       | C Target route of the link | string  | -      |
 | replace           | If true, the navigation will not leave a history record                             | boolean          | `false`  |
-| roundRadius`v1.2.0` | Corner radius                                      | string            | `6px`    |
+| roundRadius | Corner radius                                      | string            | `6px`    |
 | url               | Link                                         | string           | -      |
 | icon              |  Custom Left `icon`              | ReactNode          | -      |
-| center`v1.2.0`    | Whether to center content                                                                              | boolean          | `false`  |
-| size`v1.2.0`      | Size, can be set to `large`                         | string          | -  |
-| linkSlot`v1.2.0`  | Custom Right`link`                      | ReactNode          | -  |
-| iconSlot`v1.5.0 deprecated`  |  Custom Left `icon`                        | ReactNode          | -  |
+| center    | Whether to center content                                                                              | boolean          | `false`  |
+| size      | Size, can be set to `large`                         | string          | -  |
+| linkSlot  | Custom Right`link`                      | ReactNode          | -  |
+| iconSlot`v2.0.0 deprecated`  |  Custom Left `icon`                        | ReactNode          | -  |
 
 
 
@@ -289,7 +289,7 @@ export default App
 
 | Event | Description                  | Arguments   |
 |-------|------------------------------|-------------|
-| onClick`v1.3.8` | Emitted when cell is clicked | `event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>` |
+| onClick | Emitted when cell is clicked | `event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>` |
 
 
 
@@ -303,9 +303,9 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- |
 | --nutui-cell-color | `$gray1` |
 | --nutui-cell-title-font | `$font-size-2` |
-| --nutui-cell-title-desc-font | `$font-size-1` |
-| --nutui-cell-desc-font | `$font-size-2` |
-| --nutui-cell-desc-color | `$gray2` |
+| --nutui-cell-title-description-font | `$font-size-1` |
+| --nutui-cell-description-font | `$font-size-2` |
+| --nutui-cell-description-color | `$gray2` |
 | --nutui-cell-subtitle-color | `$gray2` |
 | --nutui-cell-border-radius | `6px` |
 | --nutui-cell-padding | `13px 16px` |
@@ -314,7 +314,7 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-cell-after-border-bottom | `2px solid #f5f6f7` |
 | --nutui-cell-default-icon-margin | `0 4px 0 0px` |
 | --nutui-cell-large-title-font | `$font-size-large` |
-| --nutui-cell-large-title-desc-font | `$font-size-base` |
+| --nutui-cell-large-title-description-font | `$font-size-base` |
 | --nutui-cell-large-padding | `15px 16px` |
 | --nutui-cell-background | `$gray6` |
 | --nutui-cell-box-shaow | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
@@ -322,8 +322,8 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-cell-group-title-color | `#909ca4` |
 | --nutui-cell-group-title-font-size | `$font-size-2` |
 | --nutui-cell-group-title-line-height | `20px` |
-| --nutui-cell-group-desc-padding | `0 10px` |
-| --nutui-cell-group-desc-color | `#909ca4` |
-| --nutui-cell-group-desc-font-size | `$font-size-1` |
-| --nutui-cell-group-desc-line-height | `16px` |
+| --nutui-cell-group-description-padding | `0 10px` |
+| --nutui-cell-group-description-color | `#909ca4` |
+| --nutui-cell-group-description-font-size | `$font-size-1` |
+| --nutui-cell-group-description-line-height | `16px` |
 | --nutui-cell-group-background-color | `$white` |

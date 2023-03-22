@@ -16,22 +16,22 @@ export interface SideNavBarProps
 }
 export type SideNavBarItemProps = {
   title: string
-  ikey: string | number
-  click?: ({ title, ikey }: { title: string; ikey: string | number }) => void
+  key: string | number
+  click?: ({ title, key }: { title: string; key: string | number }) => void
   children?: React.ReactNode
 }
 export type SubNavBarProps = {
   title: string
-  ikey: string | number
+  key: string | number
   open?: boolean
   children?: React.ReactNode
   titleClick?: ({
     title,
-    ikey,
+    key,
     isShow,
   }: {
     title: string
-    ikey: string | number
+    key: string | number
     isShow: boolean
   }) => void
 }

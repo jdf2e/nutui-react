@@ -250,9 +250,15 @@ $button-small-round-border-radius: var(
 
 $cell-color: var(--nutui-cell-color, $gray1) !default;
 $cell-title-font: var(--nutui-cell-title-font, $font-size-2) !default;
-$cell-title-desc-font: var(--nutui-cell-title-desc-font, $font-size-1) !default;
-$cell-desc-font: var(--nutui-cell-desc-font, $font-size-2) !default;
-$cell-desc-color: var(--nutui-cell-desc-color, $gray2) !default;
+$cell-title-description-font: var(
+  --nutui-cell-title-description-font,
+  $font-size-1
+) !default;
+$cell-description-font: var(
+  --nutui-cell-description-font,
+  $font-size-2
+) !default;
+$cell-description-color: var(--nutui-cell-description-color, $gray2) !default;
 $cell-subtitle-color: var(--nutui-cell-subtitle-color, $gray2) !default;
 $cell-border-radius: var(--nutui-cell-border-radius, 6px) !default;
 $cell-padding: var(--nutui-cell-padding, 13px 16px) !default;
@@ -270,8 +276,8 @@ $cell-large-title-font: var(
   --nutui-cell-large-title-font,
   $font-size-large
 ) !default;
-$cell-large-title-desc-font: var(
-  --nutui-cell-large-title-desc-font,
+$cell-large-title-description-font: var(
+  --nutui-cell-large-title-description-font,
   $font-size-base
 ) !default;
 $cell-large-padding: var(--nutui-cell-large-padding, 15px 16px) !default;
@@ -296,14 +302,20 @@ $cell-group-title-line-height: var(
   --nutui-cell-group-title-line-height,
   20px
 ) !default;
-$cell-group-desc-padding: var(--nutui-cell-group-desc-padding, 0 10px) !default;
-$cell-group-desc-color: var(--nutui-cell-group-desc-color, #909ca4) !default;
-$cell-group-desc-font-size: var(
-  --nutui-cell-group-desc-font-size,
+$cell-group-description-padding: var(
+  --nutui-cell-group-description-padding,
+  0 10px
+) !default;
+$cell-group-description-color: var(
+  --nutui-cell-group-description-color,
+  #909ca4
+) !default;
+$cell-group-description-font-size: var(
+  --nutui-cell-group-description-font-size,
   $font-size-1
 ) !default;
-$cell-group-desc-line-height: var(
-  --nutui-cell-group-desc-line-height,
+$cell-group-description-line-height: var(
+  --nutui-cell-group-description-line-height,
   16px
 ) !default;
 $cell-group-background-color: var(

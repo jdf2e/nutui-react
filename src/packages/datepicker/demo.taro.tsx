@@ -204,49 +204,49 @@ const DatePickerDemo = () => {
         <h2>{translated.basic}</h2>
         <Cell
           title={translated.showChinese}
-          desc={desc1}
+          description={desc1}
           onClick={() => setShow1(true)}
         />
         <h2>{translated.mmdd}</h2>
         <Cell
           title={translated.setStartEnd}
-          desc={desc2}
+          description={desc2}
           onClick={() => setShow2(true)}
         />
         <h2>{translated.showAll}</h2>
         <Cell
           title={translated.chooseDate}
-          desc={desc3}
+          description={desc3}
           onClick={() => setShow3(true)}
         />
         <h2>{translated.time}</h2>
         <Cell
           title={translated.time}
-          desc={desc4}
+          description={desc4}
           onClick={() => setShow4(true)}
         />
         <h2>{translated.hourMinutes}</h2>
         <Cell
           title={translated.hourMinutes}
-          desc={desc8}
+          description={desc8}
           onClick={() => setShow8(true)}
         />
         <h2>{translated.format}</h2>
         <Cell
           title={translated.time}
-          desc={desc5}
+          description={desc5}
           onClick={() => setShow5(true)}
         />
         <h2>{translated.stepMins}</h2>
         <Cell
           title={translated.time}
-          desc={desc6}
+          description={desc6}
           onClick={() => setShow6(true)}
         />
         <h2>{translated.filter}</h2>
         <Cell
           title={translated.time}
-          desc={desc7}
+          description={desc7}
           onClick={() => setShow7(true)}
         />
         {/* 选择日期 */}

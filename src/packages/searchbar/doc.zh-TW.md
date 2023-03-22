@@ -157,7 +157,7 @@ export default App;
 | readonly |輸入框只讀| boolean | `false` |
 | maxLength |最大輸入長度| number | `9999` |
 | clearable |是否展示清除按鈕| boolean | `true` |
-| clearIconSize`v1.4.7` | 清除按钮尺寸大小，同Icon的size | string \| number | `12px` |
+| clearSize`v2.0.0` | 清除按钮尺寸大小，同Icon的size | string \| number | `12px` |
 | background |蒐索框外部背景色| string | - |
 | inputBackground |蒐索框背景色| string | - |
 | inputAlign |對齊管道，可選`center` `right` | string | `left` |

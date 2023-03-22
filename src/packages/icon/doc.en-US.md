@@ -168,7 +168,7 @@ export default App;
 
 | Event | Description           | callback parameters |
 |-------|----------------|---------------------|
-| onClick`v1.3.8` | Triggered when the icon is tapped | `event: Event`        |
+| onClick | Triggered when the icon is tapped | `event: Event`        |
 
 
 ## Theming
