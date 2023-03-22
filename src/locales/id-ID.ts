@@ -30,6 +30,7 @@ const idID: BaseLang = {
     weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     end: 'Selesai',
     start: 'Mulai',
+    confirm: 'Mengonfirmasi',
     title: 'Kalender',
     monthTitle: (year: number, month: number) => `${year}/${month}`,
     today: 'Hari ini',
