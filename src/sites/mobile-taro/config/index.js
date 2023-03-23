@@ -97,6 +97,7 @@ const config = {
       url: {
         enable: true,
         config: {
+          url: 'inline',
           limit: 1024, // 设定转换尺寸上限
         },
       },
