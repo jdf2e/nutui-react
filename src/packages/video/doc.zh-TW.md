@@ -39,7 +39,7 @@ const App = () => {
           options={options}
           onPlay={play}
           onPause={pause}
-          onPlayend={playend}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -79,7 +79,7 @@ const App = () => {
           options={options}
           onPlay={play}
           onPause={pause}
-          onPlayend={playend}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -118,7 +118,7 @@ const App = () => {
           options={options}
           onPlay={play}
           onPause={pause}
-          onPlayend={playend}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -158,7 +158,7 @@ const App = () => {
           options={options}
           onPlay={play}
           onPause={pause}
-          onPlayend={playend}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -198,7 +198,7 @@ const App = () => {
           options={options}
           onPlay={play}
           onPause={pause}
-          onPlayend={playend}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -242,7 +242,7 @@ const App = () => {
           options={options}
           onPlay={play}
           onPause={pause}
-          onPlayend={playend}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -284,7 +284,7 @@ const App = () => {
           options={options}
           onPlay={play}
           onPause={pause}
-          onPlayend={playend}
+          onPlayEnd={playend}
          />
       </Cell>
       <Button type="primary" className="m-b" onClick={changeVideo}>視頻切換</Button>
@@ -320,4 +320,4 @@ export default App;
 | playend `v1.3.8廢棄`  | 播放完成回調 | -       |
 | onPlay  `v2.0.0`    | 播放         | -       |
 | onPause  `v2.0.0`   | 暫停         | -       |
-| onPlayend   | 播放完成回調 | -       |
+| onPlayEnd `v2.0.0`   | 播放完成回調 | -       |

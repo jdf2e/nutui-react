@@ -352,8 +352,8 @@ export default App;
     
 | Attribute         | Description                             | Type   | Default           |
 |---------------------------|---------------------------------------------------|---------|----------|
-| modelValue                | Default Date                                                | Date    | `null`   |
-| visible                   | Is Show                                          | boolean | `false`  |
+| modelValue                | Default Date | Date    | `null`   |
+| visible                   | Is Show | boolean | `false`  |
 | type                      | Can be set to date time year-month month-day datehour hour-minutes | string  | `date` |
 | minuteStep                | Option minute step                                        | number | `1`      |
 | isShowChinese             | Show Chinese                                  | boolean | `false`  |

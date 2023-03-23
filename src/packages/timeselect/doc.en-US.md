@@ -25,11 +25,11 @@ const TimeSelectDemo = () => {
 
   const dates = [
     {
-      'pannel-key': '0',
+      'paneKey': '0',
       date: 'May 20 (Today)',
     },
     {
-      'pannel-key': '1',
+      'paneKey': '1',
       date: 'May 21 (Wednesday)',
     },
   ]
@@ -100,16 +100,16 @@ export default TimeSelectDemo
 
 ### dates
 
-| Props                   | Description                                                             | Type    | Default |
-|------------------------|----------------------------------------------------------------|---------|------|
-| date                 | display name                                            | string  | - |
-| pannel-key           | Unique identifier, together with currentKey to identify the currently selected day            | number \| string  | `0`|
+| Props | Description | Type    | Default |
+|------------------------|-------------------------|---------|------|
+| date | display name | string  | - |
+| paneKey           | Unique identifier, together with currentKey to identify the currently selected day            | number \| string  | `0`|
 
 ### times
 
 | Props                   | Description                                                                                       | Type    | Default |
 |------------------------|---------------------------------------------------------------------------------------------------|---------|------|
-| key                 | Unique identifier, together with pannel-key and currentKey to identify the currently selected day | Array  | `[]`|
+| key                 | Unique identifier, together with paneKey and currentKey to identify the currently selected day | Array  | `[]`|
 | list                 | Optional time list                                                                                | Array  | `[]`|
 
 ### TimeSelect Event

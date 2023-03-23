@@ -246,7 +246,6 @@ export default App;
 
 | Event            | Description    | Type     | Arguments |
 | ---------------- | ------------ | -------- | -------- |
-| activeAvatar  | Emitted when cell is clicked    | Function | `event`    |
 | onActiveAvatar  | Emitted when cell is clicked    | Function | `event`    |
 | onError       | Handler when img load error   | Function | `event`    |
 

@@ -271,7 +271,6 @@ export default App;
 
 | 字段             | 说明         | 类型                        | 回调参数            |
 | ---------------- | ------------ |---------------------------|-----------------|
-| activeAvatar  | 点击头像触发事件    | `(e: MouseEvent) => void` | `e: MouseEvent` |
 | onActiveAvatar  | 点击头像触发事件    | `(e: MouseEvent) => void` | `e: MouseEvent` |
 | onError       | 图片加载失败的事件   | `(e: any) => void`        | `e: any`        |
 

@@ -48,8 +48,8 @@ export interface AddressProps extends BasicComponent {
     copyExistAdd: AddressList[]
   ) => void
   onClose?: (cal: CloseCallBack) => void
-  closeMask?: (cal: { closeWay: string }) => void
-  switchModule?: (cal: { type: string }) => void
+  onCancel?: (cal: { closeWay: string }) => void
+  onSwitch?: (cal: { type: string }) => void
   onChange?: (cal: ChangeCallBack) => void
   onTabChecked?: (cal: string) => void
 }
@@ -101,8 +101,8 @@ export const Address: FunctionComponent<
     onChange,
     onSelected,
     onClose,
-    closeMask,
-    switchModule,
+    onCancel,
+    onSwitch,
     onTabChecked,
     style,
     className,
@@ -131,7 +131,7 @@ export const Address: FunctionComponent<
   }
   // 点击遮罩层关闭
   const clickOverlay = () => {
-    closeMask && closeMask({ closeWay: 'mask' })
+    onCancel && onCancel({ closeWay: 'mask' })
   }
   // 切换下一级列表
   const nextAreaList = (item: NextListObj) => {
@@ -213,7 +213,7 @@ export const Address: FunctionComponent<
       setPrivateType('exist')
     }
     initAddress()
-    switchModule && switchModule({ type: privateType })
+    onSwitch && onSwitch({ type: privateType })
   }
 
   const headerRender = () => {

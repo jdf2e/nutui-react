@@ -13,11 +13,11 @@ const state = {
   currentKey: 0,
   dates: [
     {
-      'pannel-key': '0',
+      paneKey: '0',
       date: '5月20日(今天)',
     },
     {
-      'pannel-key': '1',
+      paneKey: '1',
       date: '5月21日(星期三)',
     },
   ],

@@ -547,7 +547,7 @@ const App = () => {
           setText((val.data as AddressResult).addressStr)
         }
   }
-  const switchModule = (val) => {
+  const onSwitch = (val) => {
       if (val.type === 'custom') {
         console.log('點擊了“選擇其他地址”按鈕')
       } else {
@@ -555,7 +555,7 @@ const App = () => {
       }
   }
 
-  const closeMask = (val) => {
+  const onCancel = (val) => {
       console.log('關閉彈層', val)
   }
   return (
@@ -574,8 +574,8 @@ const App = () => {
           onClose={close}
           onSelected={selected}
           customAndExistTitle="選擇其他地址"
-          switchModule={switchModule}
-          closeMask={closeMask}
+          onSwitch={onSwitch}
+          onCancel={onCancel}
        />
     </>
   );
@@ -622,8 +622,8 @@ export default App;
 | onChange | 自定義選擇地址時，選擇地區時觸發 |  參考 onChange |
 | onSelected | 選擇已有地址列錶時觸發 | 參考 selected |
 | onClose | 地址選擇彈框關閉時觸發 | 參考 close |
-| closeMask |點擊遮罩層或點擊右上角叉號關閉時觸發 | `closeWay: 'mask' \| 'cross'` |
-| switchModule | 點擊'選擇其他地址'或自定義地址選擇左上角返回按鈕觸發 | `type: 'exist' \| 'custom' \| 'custom2'` |
+| onCancel `v2.0.0`  |點擊遮罩層或點擊右上角叉號關閉時觸發 | `closeWay: 'mask' \| 'cross'` |
+| onSwitch `v2.0.0` | 點擊'選擇其他地址'或自定義地址選擇左上角返回按鈕觸發 | `type: 'exist' \| 'custom' \| 'custom2'` |
 
 
 ## change 回調參數

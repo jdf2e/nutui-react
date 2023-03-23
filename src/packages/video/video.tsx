@@ -22,7 +22,7 @@ export interface VideoProps {
   playend: (e: HTMLVideoElement) => void
   onPlay: (e: HTMLVideoElement) => void
   onPause: (e: HTMLVideoElement) => void
-  onPlayend: (e: HTMLVideoElement) => void
+  onPlayEnd: (e: HTMLVideoElement) => void
 }
 const defaultProps = {
   source: {
@@ -52,7 +52,7 @@ export const Video: FunctionComponent<
     playend,
     onPlay,
     onPause,
-    onPlayend,
+    onPlayEnd,
     ...restProps
   } = {
     ...defaultProps,
@@ -90,7 +90,7 @@ export const Video: FunctionComponent<
       })
       videoRef.addEventListener('ended', () => {
         videoRef.currentTime = 0
-        onPlayend && onPlayend(videoRef)
+        onPlayEnd && onPlayEnd(videoRef)
         playend && playend(videoRef)
       })
     }

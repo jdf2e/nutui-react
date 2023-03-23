@@ -268,7 +268,6 @@ export default App;
 
 | 名称                       | 说明               | 回调参数          |
 |--------------------------| ------------------ | ----------------- |
-| backTopClick | 按钮点击时触发事件 | `event: MouseEvent` |
 | onClick          | 按钮点击时触发事件 | `event: MouseEvent` |
 
 

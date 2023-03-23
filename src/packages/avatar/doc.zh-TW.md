@@ -247,7 +247,6 @@ export default App;
 
 | 字段             | 說明         | 類型     | 回調參數 |
 | ---------------- | ------------ | -------- | -------- |
-| activeAvatar `v1.3.8廢棄` | 點擊頭像觸發事件    | Function | `event`    |
 | onActiveAvatar  | 點擊頭像觸發事件    | Function | `event`    |
 | onError       | 圖片加載失敗的事件   | Function | `event`    |
 

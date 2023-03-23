@@ -25,11 +25,11 @@ const TimeSelectDemo = () => {
 
   const dates = [
     {
-      'pannel-key': '0',
+      'paneKey': '0',
       date: '5月20日(今天)',
     },
     {
-      'pannel-key': '1',
+      'paneKey': '1',
       date: '5月21日(星期三)',
     },
   ]
@@ -103,13 +103,13 @@ export default TimeSelectDemo
 | 字段                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
 | date                 | 显示的名称                                            | string  | - |
-| pannel-key           | 唯一标识，和 currentKey 一起标识当前选择的天            | number \| string  | `0`|
+| paneKey           | 唯一标识，和 currentKey 一起标识当前选择的天            | number \| string  | `0`|
 
 ### times
 
 | 字段                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
-| key                 | 唯一标识，和 pannel-key、currentKey 一起标识当前选择的天              | Array  | `[]`|
+| key                 | 唯一标识，和 paneKey、currentKey 一起标识当前选择的天              | Array  | `[]`|
 | list                 | 可选时间列表                                                        | Array  | `[]`|
 
 ### TimeSelect Event

@@ -37,7 +37,7 @@ const App = () => {
           options={options}
           onPlay={play}
           onPause={pause}
-          onPlayend={playend}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -77,7 +77,7 @@ const App = () => {
           options={options}
           onPlay={play}
           onPause={pause}
-          onPlayend={playend}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -116,7 +116,7 @@ const App = () => {
           options={options}
           onPlay={play}
           onPause={pause}
-          onPlayend={playend}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -156,7 +156,7 @@ const App = () => {
           options={options}
           onPlay={play}
           onPause={pause}
-          onPlayend={playend}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -196,7 +196,7 @@ const App = () => {
           options={options}
           onPlay={play}
           onPause={pause}
-          onPlayend={playend}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -239,7 +239,7 @@ const App = () => {
           options={options}
           onPlay={play}
           onPause={pause}
-          onPlayend={playend}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -281,7 +281,7 @@ const App = () => {
           options={options}
           onPlay={play}
           onPause={pause}
-          onPlayend={playend}
+          onPlayEnd={playend}
          />
       </Cell>
       <Button type="primary" className="m-b" onClick={changeVideo}>Video switching</Button>
@@ -317,4 +317,4 @@ export default App;
 | playend   | Playback completion callback | -       |
 | onPlay `v2.0.0`      | play event         | -       |
 | onPause  `v2.0.0`   | pause event         | -       |
-| onPlayend   | Playback completion callback | -       |
+| onPlayEnd `v2.0.0`   | Playback completion callback | -       |

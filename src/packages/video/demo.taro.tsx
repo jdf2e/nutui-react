@@ -102,7 +102,7 @@ const VideoDemo = () => {
             options={options}
             onPlay={play}
             onPause={pause}
-            onPlayend={playend}
+            onPlayEnd={playend}
           />
         </Cell>
         <h2>{translated.a5a25e88}</h2>
@@ -112,7 +112,7 @@ const VideoDemo = () => {
             options={options1}
             onPlay={play}
             onPause={pause}
-            onPlayend={playend}
+            onPlayEnd={playend}
           />
         </Cell>
         <h2>{translated['19875a3f']}</h2>
@@ -122,7 +122,7 @@ const VideoDemo = () => {
             options={options2}
             onPlay={play}
             onPause={pause}
-            onPlayend={playend}
+            onPlayEnd={playend}
           />
         </Cell>
         <h2>{translated.fcdac2ed}</h2>
@@ -132,7 +132,7 @@ const VideoDemo = () => {
             options={options3}
             onPlay={play}
             onPause={pause}
-            onPlayend={playend}
+            onPlayEnd={playend}
           />
         </Cell>
         <h2>{translated['200baa8c']}</h2>
@@ -142,7 +142,7 @@ const VideoDemo = () => {
             options={options4}
             onPlay={play}
             onPause={pause}
-            onPlayend={playend}
+            onPlayEnd={playend}
           />
         </Cell>
         <h2>{translated['5ec0e561']}</h2>
@@ -152,7 +152,7 @@ const VideoDemo = () => {
             options={options5}
             onPlay={play}
             onPause={pause}
-            onPlayend={playend}
+            onPlayEnd={playend}
           />
         </Cell>
         <h2>{translated.a6e0b0cf}</h2>
@@ -162,7 +162,7 @@ const VideoDemo = () => {
             options={options}
             onPlay={play}
             onPause={pause}
-            onPlayend={playend}
+            onPlayEnd={playend}
           />
         </Cell>
         <Button type="primary" className="video-m-b" onClick={changeVideo}>

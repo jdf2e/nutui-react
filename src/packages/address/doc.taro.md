@@ -579,36 +579,36 @@ const App = () => {
       setText((val.data as AddressResult).addressStr)
     }
   }
-  const switchModule = (val) => {
-    if (val.type === 'custom') {
-      console.log('点击了“选择其他地址”按钮')
-    } else {
-      console.log('点击了自定义地址左上角的返回按钮')
-    }
+  const onSwitch = (val) => {
+      if (val.type === 'custom') {
+        console.log('点击了“选择其他地址”按钮')
+      } else {
+        console.log('点击了自定义地址左上角的返回按钮')
+      }
   }
 
-  const closeMask = (val) => {
-    console.log('关闭弹层', val)
+  const onCancel = (val) => {
+      console.log('关闭弹层', val)
   }
   return (
     <>
       <Cell title="选择地址" description={text}  onClick={()=>setOther(true)} />
       <Address
-        modelValue={other}
-        type="exist"
-        existAddress={existAddress}
-        province={province}
-        city={city}
-        country={country}
-        town={town}
-        backBtnIcon={icon.backBtnIcon}
-        onChange={onChange}
-        onClose={close}
-        onSelected={selected}
-        customAndExistTitle="选择其他地址"
-        switchModule={switchModule}
-        closeMask={closeMask}
-      />
+          modelValue={other}
+          type="exist"
+          existAddress={existAddress}
+          province={province}
+          city={city}
+          country={country}
+          town={town}
+          backBtnIcon={icon.backBtnIcon}
+          onChange={onChange}
+          onClose={close}
+          onSelected={selected}
+          customAndExistTitle="选择其他地址"
+          onSwitch={onSwitch}
+          onCancel={onCancel}
+       />
     </>
   );
 };
@@ -656,8 +656,8 @@ export default App;
 | onChange | 自定义选择地址时，选择地区时触发 |  参考 onChange |
 | onSelected | 选择已有地址列表时触发 | 参考 selected |
 | onClose | 地址选择弹框关闭时触发 | 参考 close |
-| closeMask |点击遮罩层或点击右上角叉号关闭时触发 | `closeWay: 'mask' \| 'cross'` |
-| switchModule | 点击'选择其他地址'或自定义地址选择左上角返回按钮触发 | `type: 'exist' \| 'custom' \| 'custom2'` |
+| onCancel `v2.0.0` |点击遮罩层或点击右上角叉号关闭时触发 | `closeWay: 'mask' \| 'cross'` |
+| onSwitch `v2.0.0` | 点击'选择其他地址'或自定义地址选择左上角返回按钮触发 | `type: 'exist' \| 'custom' \| 'custom2'` |
 
 ## change 回调参数
 

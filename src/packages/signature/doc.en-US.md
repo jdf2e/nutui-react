@@ -106,8 +106,6 @@ export default App;
 
 | 字段    | 说明                         | 回调参数                         |
 | ------- | ---------------------------- | -------------------------------- |
-| confirm | Click the confirm button to trigger the event callback function | Canvas and data URI displayed by signature imageURI |
-| clear   | Click the re sign button to trigger the event callback function | -                               |
 | onConfirm | Click the confirm button to trigger the event callback function | Canvas and data URI displayed by signature imageURI |
 | onClear   | Click the re sign button to trigger the event callback function | -                               |
 

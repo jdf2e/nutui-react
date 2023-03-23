@@ -72,7 +72,7 @@ export const ExistRender: FunctionComponent<
   }
 
   // 选择其他地址
-  const switchModule = () => {
+  const onSwitch = () => {
     onSwitchModule &&
       onSwitchModule({ type: type === 'exist' ? 'custom' : 'exist' })
   }
@@ -114,7 +114,7 @@ export const ExistRender: FunctionComponent<
         </ul>
       </div>
       {isShowCustomAddress && (
-        <div className={b('choose-other')} onClick={switchModule}>
+        <div className={b('choose-other')} onClick={onSwitch}>
           <div className={b('choose-other-btn')}>
             {customAndExistTitle || locale.address.chooseAnotherAddress}
           </div>

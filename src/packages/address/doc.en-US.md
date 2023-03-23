@@ -545,7 +545,7 @@ const App = () => {
           setText((val.data as AddressResult).addressStr)
         }
   }
-  const switchModule = (val) => {
+  const onSwitch = (val) => {
       if (val.type === 'custom') {
         console.log('点击了“选择其他地址”按钮')
       } else {
@@ -553,7 +553,7 @@ const App = () => {
       }
   }
 
-  const closeMask = (val) => {
+  const onCancel = (val) => {
       console.log('关闭弹层', val)
   }
   return (
@@ -572,8 +572,8 @@ const App = () => {
           onClose={close}
           onSelected={selected}
           customAndExistTitle="Choose Other Address"
-          switchModule={switchModule}
-          closeMask={closeMask}
+          onSwitch={onSwitch}
+          onCancel={onCancel}
        />
     </>
   );
@@ -613,8 +613,8 @@ export default App;
 | onChange | Emitted when to selected custom address |  reference onChange |
 | onSelected |  Emitted when to selected exist address  | reference selected
 | onClose | Emitted when to close  | reference close |
-| closeMask |Emitted when to close mask | `closeWay:'mask' \| 'cross'` |
-| switchModule | Click to select another address or custom address to select the upper left corner of the return button triggered | `type:'exist' \| 'custom' \| 'custom2'` |
+| onCancel `v2.0.0` |Emitted when to close mask | `closeWay:'mask' \| 'cross'` |
+| onSwitch `v2.0.0` | Click to select another address or custom address to select the upper left corner of the return button triggered | `type:'exist' \| 'custom' \| 'custom2'` |
 
 
 ## change 回调参数

@@ -367,7 +367,7 @@ export default App;
 | title                     | 设置标题                                          | string  | `null`   |
 | minDate                   | 开始日期                                          | Date    | `十年前` |
 | maxDate                   | 结束日期                                          | Date    | `十年后` |
-| formatter         | 选项格式化函数                                          | (type: string, option: PickerOption) => PickerOption    | - |
+| formatter | 选项格式化函数 | (type: string, option: PickerOption) => PickerOption    | - |
 | filter            | 选项过滤函数                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
 | threeDimensional | 是否开启3D效果               | boolean  | `true`   |
 

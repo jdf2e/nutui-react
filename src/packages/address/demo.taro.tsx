@@ -203,7 +203,7 @@ const AddressDemo = () => {
     console.log('选择')
   }
 
-  const switchModule = (val: { type: string }) => {
+  const onSwitch = (val: { type: string }) => {
     if (val.type === 'custom') {
       console.log('点击了“选择其他地址”按钮')
     } else {
@@ -211,7 +211,7 @@ const AddressDemo = () => {
     }
   }
 
-  const closeMask = (val: { closeWay: string }) => {
+  const onCancel = (val: { closeWay: string }) => {
     console.log('关闭弹层', val)
   }
 
@@ -442,8 +442,8 @@ const AddressDemo = () => {
           onClose={close4}
           onSelected={selected}
           customAndExistTitle="选择其他地址"
-          switchModule={switchModule}
-          closeMask={closeMask}
+          onSwitch={onSwitch}
+          onCancel={onCancel}
         />
       </div>
     </>
