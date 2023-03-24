@@ -97,6 +97,7 @@
     "react-transition-group": "^4.4.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.3",
     "@babel/plugin-proposal-class-properties": "^7.16.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.16.5",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
@@ -162,6 +163,7 @@
     "marked": "^2.0.3",
     "mobx": "^6.6.2",
     "mobx-react-lite": "^3.4.0",
+    "postcss": "^8.4.21",
     "postcss-import": "^14.0.2",
     "postcss-modules": "^4.2.2",
     "prettier": "2.3.0",
@@ -169,6 +171,7 @@
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
     "react-markdown": "^7.1.2",
+    "react-refresh": "^0.14.0",
     "react-router-dom": "^5.3.4",
     "react-syntax-highlighter": "^15.4.5",
     "react-test-renderer": "^18.2.0",
@@ -185,7 +188,8 @@
     "unist-util-visit": "^4.1.0",
     "vinyl-fs": "^3.0.3",
     "vite": "^4.1.4",
-    "vite-plugin-dts": "^1.1.1"
+    "vite-plugin-dts": "^1.1.1",
+    "webpack": "^5.76.2"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
