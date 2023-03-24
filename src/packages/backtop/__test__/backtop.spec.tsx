@@ -1,9 +1,9 @@
 // import * as renderer from 'react-test-renderer'
 import * as React from 'react'
 import '@testing-library/jest-dom'
+import { Top } from '@nutui/icons-react'
 import { render, fireEvent } from '@testing-library/react'
 import BackTop from '@/packages/backtop'
-import Icon from '@/packages/icon'
 
 test('backtop props test', () => {
   const handleClick = jest.fn()
@@ -36,7 +36,7 @@ test('backtop custom test', () => {
           alignItems: 'center',
         }}
       >
-        <Icon size="12px" className="nut-backtop-main" name="top" />
+        <Top width="12px" height="12px" className="nut-backtop-main" />
         <div style={{ fontSize: '12px' }}>顶部</div>
       </div>
     </BackTop>

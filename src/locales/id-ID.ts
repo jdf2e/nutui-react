@@ -30,6 +30,7 @@ const idID: BaseLang = {
     weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     end: 'Selesai',
     start: 'Mulai',
+    confirm: 'Mengonfirmasi',
     title: 'Kalender',
     monthTitle: (year: number, month: number) => `${year}/${month}`,
     today: 'Hari ini',
@@ -38,7 +39,8 @@ const idID: BaseLang = {
   },
   shortpassword: {
     title: 'SIlakan masukan kata sandi',
-    desc: 'Anda telah menggunakan aset virtual, mohon lakukan verifikasi.',
+    description:
+      'Anda telah menggunakan aset virtual, mohon lakukan verifikasi.',
     tips: 'Lupa Kata Sandi',
   },
   uploader: {

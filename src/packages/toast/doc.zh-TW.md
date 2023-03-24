@@ -314,14 +314,14 @@ export default App
 | ------------------- | -------------- | ------------- | ----------------------------- |
 | id                  | 标识符，相同者共用一个实例<br>loading类型默认使用一个实例，其他类型默认不共用 | string \| number | -                             |
 | duration            | 展示时长（秒）<br>值为 0 时，toast 不会自动消失      | number       | `2`       |
-| title `v1.3.0`            | 标题      | string        | -            |
+| title             | 标题      | string        | -            |
 | center              | 是否展示在页面中部（为false时展示在底部）                   | boolean  | `true`   |
 | bottom              | 距页面底部的距离（像素），option.center为false时生效        | number  | `30`     |
 | textAlignCenter     | 多行文案是否居中                         | boolean       | `true`          |
 | bgColor             | 背景颜色（透明度）                                   | string        | `rgba(0, 0, 0, 0.8)`    |
 | customClass         | 自定义类名                                            | string        | -        |
 | icon                | 自定义图标，**支持图片链接或base64格式**              | string        | -           |
-| iconSize `v1.3.0`               | 自定义图标尺寸              | string        | `20`          |
+| iconSize                | 自定义图标尺寸              | string        | `20`          |
 | size                | 文案尺寸，**small**/**base**/**large**三选一           | string        | `base`         |
 | cover               | 是否显示遮罩层                                          | boolean       | `false` |
 | coverColor          | 遮罩层颜色，默认透明                                   | string        | `rgba(0,0,0,0)`    |

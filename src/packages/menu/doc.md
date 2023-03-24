@@ -277,7 +277,7 @@ export default App
 | closeOnClickOverlay | 是否在点击遮罩层后关闭菜单     | boolean                 | `true`    |
 | lockScroll          | 背景是否锁定                   | boolean                 | `true`    |
 | scrollFixed         | 滚动后是否固定，可设置固定位置                   | boolean \| string \| number                 | `true`    |
-| titleIcon`v1.5.0`           | 自定义标题图标                 | React.ReactNode                  | -       |
+| titleIcon`v2.0.0`           | 自定义标题图标                 | React.ReactNode                  | -       |
 
 ### MenuItem Props
 
@@ -287,7 +287,7 @@ export default App
 | options                       | 选项数组                                | Array   | -                |
 | disabled                      | 是否禁用菜单                            | boolean | `false`            |
 | columns                          | 可以设置一行展示多少列 options          | number  | `1`                |
-| optionsIcon`v1.5.0`          | 自定义选项图标                          | React.ReactNode  | `Check`          |
+| optionsIcon`v2.0.0`          | 自定义选项图标                          | React.ReactNode  | `Check`          |
 | direction            | 菜单展开方向，可选值为up                | string  | `down`           |
 | activeClassName    | 选项选中时自定义标题样式类              | string  | -                |
 | inactiveClassName  | 选项非选中时自定义标题样式类            | string  | -                |

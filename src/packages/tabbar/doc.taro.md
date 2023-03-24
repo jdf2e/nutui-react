@@ -183,10 +183,10 @@ export default App;
 | bottom                      | 是否固定在頁面底部              | boolean | `false`   |
 | unactiveColor               | icon未激活的顏色             | string | `#7d7e80` |
 | activeColor                 | icon激活的顏色              | string | `#1989fa` |
-size`v1.5.0廢棄``v1.2.2`                | icon的統一尺寸              | string \| boolean | `20`      |
-| safeAreaInsetBottom`v1.2.2` | 是否開啟iphone系列全面屏底部安全區適配 | boolean | `false`   |
-| style`v1.2.2`               | 組件樣式                   | CSSProperties | `{}`      |
-| clsssName`v1.2.2`           | 組件類名                   | string | -       |
+size`v2.0.0廢棄`                | icon的統一尺寸              | string \| boolean | `20`      |
+| safeAreaInsetBottom | 是否開啟iphone系列全面屏底部安全區適配 | boolean | `false`   |
+| style               | 組件樣式                   | CSSProperties | `{}`      |
+| className           | 組件類名                   | string | -       |
 
 ### tabbar-item
 
@@ -197,17 +197,17 @@ size`v1.5.0廢棄``v1.2.2`                | icon的統一尺寸              | s
 | href | 標簽頁的跳轉鏈接； | string | -     |
 | to`v1.4.0 廢棄` | 標簽頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性, taro 版本中采用 Taro.navigateTo 實現 | any | -     |
 | num | 頁簽右上角的數字角標，超出99之後為99+ | number | - |
-| iconClassPrefix`v1.5.0廢棄`   | 自定義 icon 類名前綴，用於使用自定義圖標 | string | `nut-icon` |
-| iconFontClassName`v1.5.0廢棄` | 自定義 icon 字體基礎類名 | string | `nutui-iconfont` |
-| dot`v1.2.2`| 是否顯示圖標右上角小紅點 | boolean | `false`     |
-| iconSize`v1.5.0廢棄`    | icon的單個尺寸     | string \| boolean | `20` |
+| iconClassPrefix`v2.0.0廢棄`   | 自定義 icon 類名前綴，用於使用自定義圖標 | string | `nut-icon` |
+| iconFontClassName`v2.0.0廢棄` | 自定義 icon 字體基礎類名 | string | `nutui-iconfont` |
+| dot| 是否顯示圖標右上角小紅點 | boolean | `false`     |
+| iconSize`v2.0.0廢棄`    | icon的單個尺寸     | string \| boolean | `20` |
 
 ### Event
 
 | 事件名稱            | 說明               | 回調參數           |
 |-----------------|--------------------|--------------------|
 | tabSwitch`廢棄`   | 切換頁簽時觸發事件 | 點擊的數據和索引值 |
-| onSwitch`v1.3.8` | 切換頁簽時觸發事件 | 點擊的數據和索引值 |
+| onSwitch | 切換頁簽時觸發事件 | 點擊的數據和索引值 |
 
 
 ## 主題定製

@@ -19,7 +19,7 @@ test('should add step 2 when trigger click plus button', () => {
       step={2}
       onOverlimit={overlimit}
       onAdd={add}
-      onChangeFuc={change}
+      onChange={change}
     />
   )
   const iconPlus = container.querySelectorAll('.nut-icon-plus')[0]
@@ -39,7 +39,7 @@ test('should minis step 2 when trigger click minis button', () => {
       step={2}
       onOverlimit={overlimit}
       onReduce={reduce}
-      onChangeFuc={change}
+      onChange={change}
     />
   )
   const iconMinus = container.querySelectorAll('.nut-icon-minus')[0]
@@ -60,7 +60,7 @@ test('should render max props', () => {
       max="100"
       onOverlimit={overlimit}
       onAdd={add}
-      onChangeFuc={change}
+      onChange={change}
     />
   )
   const iconPlus = container.querySelectorAll('.nut-icon-plus')[0]
@@ -81,7 +81,7 @@ test('should render min props', () => {
       max="100"
       onOverlimit={overlimit}
       onReduce={reduce}
-      onChangeFuc={change}
+      onChange={change}
     />
   )
   const iconMinus = container.querySelectorAll('.nut-icon-minus')[0]
@@ -138,12 +138,7 @@ test('should update input value when inputValue overlimit', () => {
   const change = jest.fn()
   const blur = jest.fn()
   const { container } = render(
-    <InputNumber
-      modelValue={2}
-      max="100"
-      onChangeFuc={change}
-      onBlurFuc={blur}
-    />
+    <InputNumber modelValue={2} max="100" onChange={change} onBlur={blur} />
   )
   const input = container.querySelectorAll('input')[0]
   input.value = '200'

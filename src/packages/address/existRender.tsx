@@ -1,5 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react'
-import Icon from '@/packages/icon'
+import React, { FunctionComponent, ReactNode, useEffect } from 'react'
 import bem from '@/utils/bem'
 import { AddressList } from './type'
 
@@ -8,8 +7,8 @@ import { useConfig } from '@/packages/configprovider'
 export interface ExistRenderProps {
   type: string
   existAddress: AddressList[] | []
-  defaultIcon: string
-  selectedIcon: string
+  defaultIcon: ReactNode
+  selectedIcon: ReactNode
   isShowCustomAddress: boolean
   customAndExistTitle: string
   onSelected?: (
@@ -24,8 +23,8 @@ export interface ExistRenderProps {
 const defaultProps = {
   type: 'custom',
   existAddress: [],
-  defaultIcon: 'location2',
-  selectedIcon: 'Check',
+  defaultIcon: null,
+  selectedIcon: null,
   isShowCustomAddress: true,
   customAndExistTitle: '',
 } as ExistRenderProps
@@ -73,7 +72,7 @@ export const ExistRender: FunctionComponent<
   }
 
   // 选择其他地址
-  const switchModule = () => {
+  const onSwitch = () => {
     onSwitchModule &&
       onSwitchModule({ type: type === 'exist' ? 'custom' : 'exist' })
   }
@@ -88,12 +87,7 @@ export const ExistRender: FunctionComponent<
             return (
               <li className={b('exist-item')} key={index}>
                 <div onClick={() => selectedExist(item)}>
-                  <Icon
-                    className={b('exist-item-icon')}
-                    name={item.selectedAddress ? selectedIcon : defaultIcon}
-                    color={item.selectedAddress ? '#FA2C19' : ''}
-                    size="13px"
-                  />
+                  {item.selectedAddress ? selectedIcon : defaultIcon}
                   <div className={b('exist-item-info')}>
                     {item.name && item.phone && (
                       <div className="exist-item-info-top">
@@ -120,7 +114,7 @@ export const ExistRender: FunctionComponent<
         </ul>
       </div>
       {isShowCustomAddress && (
-        <div className={b('choose-other')} onClick={switchModule}>
+        <div className={b('choose-other')} onClick={onSwitch}>
           <div className={b('choose-other-btn')}>
             {customAndExistTitle || locale.address.chooseAnotherAddress}
           </div>

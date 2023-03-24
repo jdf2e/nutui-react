@@ -5,6 +5,7 @@ import React, {
   RefObject,
   ForwardRefRenderFunction,
 } from 'react'
+import { View } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
 import PickerSlot from './pickerSlot.taro'
 import useRefs from '@/utils/useRefs'
@@ -19,7 +20,7 @@ export interface PickerOption {
   className?: string | number
 }
 export interface PickerProps {
-  isVisible: boolean
+  visible: boolean
   title?: string
   listData: (PickerOption | PickerOption[])[]
   defaultValueData?: (number | string)[]
@@ -51,7 +52,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
   (props, ref) => {
     const { locale } = useConfig()
     const {
-      isVisible,
+      visible,
       title,
       listData = [],
       defaultValueData,
@@ -281,13 +282,18 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     }
     return (
       <Popup
-        visible={isVisible}
+        visible={visible}
         position="bottom"
         onClose={() => {
           closeActionSheet()
         }}
       >
-        <div className={`${b()} ${className || ''}`} style={style} {...rest}>
+        <View
+          className={`${b()} ${className || ''}`}
+          style={style}
+          {...rest}
+          catchMove
+        >
           {renderToolbar()}
           <div className={b('panel')} ref={pickerRef}>
             {columnsList?.map((item, index) => {
@@ -303,12 +309,12 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
                   swipeDuration={swipeDuration}
                   key={index}
                   keyIndex={index}
-                  itemShow={isVisible}
+                  itemShow={visible}
                 />
               )
             })}
           </div>
-        </div>
+        </View>
       </Popup>
     )
   }

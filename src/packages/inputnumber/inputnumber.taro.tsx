@@ -27,9 +27,9 @@ export interface InputNumberProps extends BasicComponent {
   onAdd: (e: MouseEvent) => void
   onReduce: (e: MouseEvent) => void
   onOverlimit: (e: MouseEvent) => void
-  onBlurFuc: (e: ChangeEvent<HTMLInputElement>) => void
+  onBlur: (e: ChangeEvent<HTMLInputElement>) => void
   onFocus: (e: FocusEvent<HTMLInputElement>) => void
-  onChangeFuc: (
+  onChange: (
     param: string | number,
     e: MouseEvent | ChangeEvent<HTMLInputElement>
   ) => void
@@ -52,7 +52,8 @@ function pxCheck(value: string | number): string {
   return Number.isNaN(Number(value)) ? String(value) : `${value}px`
 }
 export const InputNumber: FunctionComponent<
-  Partial<InputNumberProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<InputNumberProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'onBlur'>
 > = (props) => {
   const {
     children,
@@ -71,9 +72,9 @@ export const InputNumber: FunctionComponent<
     onAdd,
     onReduce,
     onOverlimit,
-    onBlurFuc,
+    onBlur,
     onFocus,
-    onChangeFuc,
+    onChange,
     ...restProps
   } = {
     ...defaultProps,
@@ -121,7 +122,7 @@ export const InputNumber: FunctionComponent<
     e: MouseEvent | ChangeEvent<HTMLInputElement>
   ) => {
     const outputValue: number | string = fixedDecimalPlaces(value)
-    onChangeFuc && onChangeFuc(outputValue, e)
+    onChange && onChange(outputValue, e)
     if (!isAsync) {
       setInputValue(outputValue)
     }
@@ -149,7 +150,7 @@ export const InputNumber: FunctionComponent<
 
   const changeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target as HTMLInputElement
-    onChangeFuc && onChangeFuc(input.value, e)
+    onChange && onChange(input.value, e)
     if (!isAsync) {
       setInputValue(input.value)
     }
@@ -172,7 +173,7 @@ export const InputNumber: FunctionComponent<
       value = Number(max)
     }
     emitChange(value, e)
-    onBlurFuc && onBlurFuc(e)
+    onBlur && onBlur(e)
   }
   return (
     <div className={classes} style={styles} {...restProps}>

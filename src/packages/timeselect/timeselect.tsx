@@ -7,7 +7,7 @@ import { useConfig } from '@/packages/configprovider'
 import { TimeType } from '@/packages/timedetail/timedetail'
 
 export interface DateType {
-  'pannel-key'?: string | number
+  paneKey?: string | number
   date: string
 }
 export interface TimeSelectProps {
@@ -157,7 +157,7 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
   }
   // 选中的日期增加 active 类名
   const getTimePannelClass = (dataItem: DateType) => {
-    if (String(dataItem['pannel-key']) === String(activeKey)) {
+    if (String(dataItem['paneKey']) === String(activeKey)) {
       return 'nut-timepannel-active'
     }
     return ''
@@ -186,8 +186,8 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
                 <TimePannel
                   date={dataItem.date}
                   className={getTimePannelClass(dataItem)}
-                  key={String(dataItem['pannel-key'] || index)}
-                  curKey={String(dataItem['pannel-key'] || index)}
+                  key={String(dataItem['paneKey'] || index)}
+                  curKey={String(dataItem['paneKey'] || index)}
                   change={handleChange}
                 />
               ))}

@@ -473,18 +473,18 @@ export default App
 | height                 | Height of elevator area                                                    | number \| string  | `200px`
 | acceptKey             | Index key value                                                      | string  | `title` |
 | indexList             | Index list                                                         | Array（`item` needs to contain `id` and `name` attributes, and `name` supports passing in `html` structure）  | `[{id: 0, name: ''}]` |
-| isSticky`v1.2.1`            | Whether the index is ceiling                                                    | boolean  | `false` |
-| spaceHeight`v1.2.1`             | Up and down spacing of right anchor point              | number  | `23` |
-| titleHeight`v1.2.1`             | Height of left index                                                     | number  | `35` |
+| isSticky            | Whether the index is ceiling                                                    | boolean  | `false` |
+| spaceHeight             | Up and down spacing of right anchor point              | number  | `23` |
+| titleHeight             | Height of left index                                                     | number  | `35` |
 
 ### Event
 
 | Event  | Description     | Arguments    |
 |-------|----------|-------------|
-| onClickItem`v1.3.2` | Click content | `key: string, item: { id: 0, name: '' }` |
-| onClickIndex`v1.3.2` | Click index | `key: string` |
-| clickItem`v1.3.2 废弃` | Click content | `key: string, item: { id: 0, name: '' }` |
-| clickIndex`v1.3.2 废弃` | Click index | `key: string` |
+| onClickItem | Click content | `key: string, item: { id: 0, name: '' }` |
+| onClickIndex | Click index | `key: string` |
+| clickItem | Click content | `key: string, item: { id: 0, name: '' }` |
+| clickIndex | Click index | `key: string` |
 
 
 

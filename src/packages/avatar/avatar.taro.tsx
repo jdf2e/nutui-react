@@ -56,8 +56,6 @@ export const Avatar: FunctionComponent<
     activeAvatar,
     onActiveAvatar,
     onError,
-    iconClassPrefix,
-    iconFontClassName,
     ...rest
   } = {
     ...defaultProps,

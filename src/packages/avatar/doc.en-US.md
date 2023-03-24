@@ -229,7 +229,7 @@ export default App;
 | url                     | The address of the image for an image avatar or image element       | string    | -   |
 | alt                     | This attribute defines the alternative text describing the image    | string    | -   |
 | icon                    | Custom icon type for an icon avatar  | ReactNode | -     |
-| iconSize`v1.5.0abandon` | [Icon size](#/icon) | string \  | number | `16`             |
+| iconSize`v2.0.0abandon` | [Icon size](#/icon) | string \  | number | `16`             |
 
 ### avatarGroup
 | Attribute     | Description                                                 | Type   | Default |
@@ -246,8 +246,7 @@ export default App;
 
 | Event            | Description    | Type     | Arguments |
 | ---------------- | ------------ | -------- | -------- |
-| activeAvatar `v1.3.8 Abandon` | Emitted when cell is clicked    | Function | `event`    |
-| onActiveAvatar `v1.3.8` | Emitted when cell is clicked    | Function | `event`    |
+| onActiveAvatar  | Emitted when cell is clicked    | Function | `event`    |
 | onError       | Handler when img load error   | Function | `event`    |
 
 ## Theming

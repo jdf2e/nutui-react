@@ -668,7 +668,7 @@ export default App;
 | data         | 表格数据 | 	Object[] | `[]`                |
 | summary         | 是否显示简介 | 	ReactNode | -                |
 | striped         | 条纹是否明暗交替 | 	boolean | false                |
-| showHeader`v1.5.0`         | 是否显示表头 | 	boolean | `true`                |
+| showHeader`v1.4.11`         | 是否显示表头 | 	boolean | `true`                |
 | noData         | 自定义无数据 | 	ReactNode | -                |
 
 ### TableColumnProps
@@ -680,7 +680,7 @@ export default App;
 | align         | 列的对齐方式，可选值left,center,right | 	string | `left`                |
 | sorter         | 排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法 | 	boolean \| Function \| string | -                |
 | render         | 自定义渲染列数据，优先级高 | 	Function(record) | -                |
-| sorterIcon`v1.5.0`          | 排序 icon | 	ReactNode | `<DownArrow />`               |
+| sorterIcon`v2.0.0`          | 排序 icon | 	ReactNode | `<DownArrow />`               |
 
 
 

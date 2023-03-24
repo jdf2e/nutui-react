@@ -187,15 +187,15 @@ export default App;
 | modelValue         | Current value                | string \| number | -                |
 | visible        | Whether to show shortpassword                         | boolean | `false`              |
 | title                  | title                | string         | `Please input a password`                   |
-| desc                   | desc          | string         | `Verify` |
+| description                   | description          | string         | `Verify` |
 | tips                   | tips              | string         | `Forget password`                     |
 | closeOnClickOverlay | Click to close the mask      | boolean        | `true`                         |
 | noButton              | whether to hide the bottom button    | boolean        | `true`                         |
 | length                 | ShortPassword lenght The value is 4~6 | string \| number | `6`                            |
 | errorMsg              | Error message         | string         | -                           |
 | autoFocus              | Be focused when ShortPassword is displayed | boolean         | `false`                           |
-| tipsIcon `2.0.0` | icon of forget tips | `ReactNode`  | - |
-| iconSize `2.0.0` | size of icon | string \| number  | `11` |
+| tipsIcon `v2.0.0` | icon of forget tips | `ReactNode`  | - |
+| iconSize `v2.0.0` | size of icon | string \| number  | `11` |
 
 ### Events
 

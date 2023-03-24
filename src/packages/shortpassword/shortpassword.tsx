@@ -13,7 +13,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface ShortPasswordProps extends BasicComponent {
   title: string
-  desc: string
+  description: string
   tips: string
   tipsIcon: React.ReactNode
   iconSize: string | number
@@ -37,7 +37,7 @@ export interface ShortPasswordProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   title: '',
-  desc: '',
+  description: '',
   tips: '',
   tipsIcon: null,
   iconSize: 11,
@@ -63,7 +63,7 @@ export const ShortPassword: FunctionComponent<
   const { locale } = useConfig()
   const {
     title,
-    desc,
+    description,
     tips,
     tipsIcon,
     iconSize,
@@ -81,8 +81,6 @@ export const ShortPassword: FunctionComponent<
     onCancel,
     onClose,
     onComplete,
-    iconClassPrefix,
-    iconFontClassName,
     autoFocus,
     ...reset
   } = props
@@ -171,7 +169,7 @@ export const ShortPassword: FunctionComponent<
             {title || locale.shortpassword.title}
           </div>
           <div className={b('subtitle')}>
-            {desc || locale.shortpassword.desc}
+            {description || locale.shortpassword.description}
           </div>
 
           <div className={b('input')}>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react'
 import Taro from '@tarojs/taro'
 import { Address, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -105,10 +106,10 @@ const AddressDemo = () => {
   })
 
   const [icon, setIcon] = useState({
-    selectedIcon: 'heart-fill',
-    defaultIcon: 'heart1',
-    closeBtnIcon: 'close',
-    backBtnIcon: 'left',
+    selectedIcon: <HeartFill />,
+    defaultIcon: <Heart1 />,
+    closeBtnIcon: <Close />,
+    backBtnIcon: <Left />,
   })
 
   const [existAddress, setExistAddress] = useState([
@@ -202,7 +203,7 @@ const AddressDemo = () => {
     console.log('选择')
   }
 
-  const switchModule = (val: { type: string }) => {
+  const onSwitch = (val: { type: string }) => {
     if (val.type === 'custom') {
       console.log('点击了“选择其他地址”按钮')
     } else {
@@ -210,7 +211,7 @@ const AddressDemo = () => {
     }
   }
 
-  const closeMask = (val: { closeWay: string }) => {
+  const onCancel = (val: { closeWay: string }) => {
     console.log('关闭弹层', val)
   }
 
@@ -333,37 +334,37 @@ const AddressDemo = () => {
         <h2>选择自定义地址</h2>
         <Cell
           title="选择地址"
-          desc={text.one}
+          description={text.one}
           onClick={() => showAddress('normal')}
         />
         <h2>选中省市区1</h2>
         <Cell
           title="选择地址"
-          desc={text.six}
+          description={text.six}
           onClick={() => showAddress('select')}
         />
         <h2>选择自定义地址2</h2>
         <Cell
           title="选择地址"
-          desc={text.five}
+          description={text.five}
           onClick={() => showAddress('normal2')}
         />
         <h2>选择已有地址</h2>
         <Cell
           title="选择地址"
-          desc={text.two}
+          description={text.two}
           onClick={() => showAddress('exist')}
         />
         <h2>自定义图标</h2>
         <Cell
           title="选择地址"
-          desc={text.three}
+          description={text.three}
           onClick={() => showAddress('customImg')}
         />
         <h2>自定义地址与已有地址切换</h2>
         <Cell
           title="选择地址"
-          desc={text.four}
+          description={text.four}
           onClick={() => showAddress('other')}
         />
 
@@ -441,8 +442,8 @@ const AddressDemo = () => {
           onClose={close4}
           onSelected={selected}
           customAndExistTitle="选择其他地址"
-          switchModule={switchModule}
-          closeMask={closeMask}
+          onSwitch={onSwitch}
+          onCancel={onCancel}
         />
       </div>
     </>

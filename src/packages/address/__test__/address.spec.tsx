@@ -166,7 +166,7 @@ test('exist address choose event', async () => {
 
 test('exist address & list address', async () => {
   const changeHandle = jest.fn()
-  const switchModule = jest.fn()
+  const onSwitch = jest.fn()
   const { container } = render(
     <Address
       modelValue
@@ -177,7 +177,7 @@ test('exist address & list address', async () => {
       town={addressData.town}
       existAddress={existAddress}
       customAddressTitle="请选择所在地区"
-      switchModule={switchModule}
+      onSwitch={onSwitch}
       onChange={changeHandle}
     />
   )
@@ -187,7 +187,7 @@ test('exist address & list address', async () => {
   chooseBtn && fireEvent.click(chooseBtn)
 
   await waitFor(() => {
-    expect(switchModule).toBeCalled()
+    expect(onSwitch).toBeCalled()
   })
 
   const regionItem = container.querySelectorAll('.nut-address__region-item')

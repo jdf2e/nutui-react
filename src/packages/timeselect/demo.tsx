@@ -35,11 +35,11 @@ const TimeSelectDemo = () => {
 
   const dates = [
     {
-      'pannel-key': '0',
+      paneKey: '0',
       date: translated.text4,
     },
     {
-      'pannel-key': '1',
+      paneKey: '1',
       date: translated.text5,
     },
   ]

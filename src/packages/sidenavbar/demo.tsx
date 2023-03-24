@@ -108,12 +108,12 @@ const SideNavBarDemo = () => {
     setShowThird(false)
   }
   const clickItem = (data: any) => {
-    const { title, ikey } = data
-    showThird && Toast.text(`title=${title},ikey=${ikey}`)
+    const { title, key } = data
+    showThird && Toast.text(`title=${title},key=${key}`)
   }
   const clickTitle = (data: any) => {
-    const { title, ikey, isShow } = data
-    showThird && Toast.text(`title=${title},ikey=${ikey},isShow=${isShow}`)
+    const { title, key, isShow } = data
+    showThird && Toast.text(`title=${title},key=${key},isShow=${isShow}`)
   }
 
   return (
@@ -153,29 +153,29 @@ const SideNavBarDemo = () => {
         >
           <SubSideNavBar
             title={`${level1}${title}`}
-            ikey="1-0"
+            key="1-0"
             onClick={clickTitle}
           >
             <SideNavBarItem
               title={`${level1}${content}1`}
-              ikey="1-01"
+              key="1-01"
               onClick={clickItem}
             />
-            <SideNavBarItem title={`${level1}${content}2`} ikey="1-02" />
-            <SubSideNavBar title={`${level2}${title}`} ikey="2-0">
-              <SideNavBarItem title={`${level2}${content}1`} ikey="2-01" />
-              <SideNavBarItem title={`${level2}${content}2`} ikey="2-02" />
+            <SideNavBarItem title={`${level1}${content}2`} key="1-02" />
+            <SubSideNavBar title={`${level2}${title}`} key="2-0">
+              <SideNavBarItem title={`${level2}${content}1`} key="2-01" />
+              <SideNavBarItem title={`${level2}${content}2`} key="2-02" />
               {showThird ? (
-                <SubSideNavBar title={`${level3}${title}`} ikey="3-0">
-                  <SideNavBarItem title={`${level3}${content}1`} ikey="3-01" />
-                  <SideNavBarItem title={`${level3}${content}2`} ikey="3-02" />
+                <SubSideNavBar title={`${level3}${title}`} key="3-0">
+                  <SideNavBarItem title={`${level3}${content}1`} key="3-01" />
+                  <SideNavBarItem title={`${level3}${content}2`} key="3-02" />
                 </SubSideNavBar>
               ) : null}
             </SubSideNavBar>
           </SubSideNavBar>
-          <SubSideNavBar open={false} title={`${level1}${title}-2`} ikey="1-1">
-            <SideNavBarItem title={`${level1}${content}2-1`} ikey="1-11" />
-            <SideNavBarItem title={`${level1}${content}2-2`} ikey="1-12" />
+          <SubSideNavBar open={false} title={`${level1}${title}-2`} key="1-1">
+            <SideNavBarItem title={`${level1}${content}2-1`} key="1-11" />
+            <SideNavBarItem title={`${level1}${content}2-2`} key="1-12" />
           </SubSideNavBar>
         </SideNavBar>
       </div>

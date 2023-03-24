@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Address } from './address'
 import Cell from '@/packages/cell'
@@ -144,10 +145,10 @@ const AddressDemo = () => {
   })
 
   const [icon, setIcon] = useState({
-    selectedIcon: 'heart-fill',
-    defaultIcon: 'heart1',
-    closeBtnIcon: 'close',
-    backBtnIcon: 'left',
+    selectedIcon: <HeartFill color="red" />,
+    defaultIcon: <Heart1 />,
+    closeBtnIcon: <Close />,
+    backBtnIcon: <Left />,
   })
 
   const [existAddress, setExistAddress] = useState([
@@ -241,7 +242,7 @@ const AddressDemo = () => {
     console.log('选择')
   }
 
-  const switchModule = (val: { type: string }) => {
+  const onSwitch = (val: { type: string }) => {
     if (val.type === 'custom') {
       console.log('点击了“选择其他地址”按钮')
     } else {
@@ -249,7 +250,7 @@ const AddressDemo = () => {
     }
   }
 
-  const closeMask = (val: { closeWay: string }) => {
+  const onCancel = (val: { closeWay: string }) => {
     console.log('关闭弹层', val)
   }
 
@@ -371,37 +372,37 @@ const AddressDemo = () => {
         <h2>{translated.title}</h2>
         <Cell
           title={translated.customAddress}
-          desc={text.one}
+          description={text.one}
           onClick={() => showAddress('normal')}
         />
         <h2>{translated.selectCity}</h2>
         <Cell
           title={translated.title}
-          desc={text.six}
+          description={text.six}
           onClick={() => showAddress('select')}
         />
         <h2>{translated.customAddress2}</h2>
         <Cell
           title={translated.title}
-          desc={text.five}
+          description={text.five}
           onClick={() => showAddress('normal2')}
         />
         <h2>{translated.existAddress}</h2>
         <Cell
           title={translated.title}
-          desc={text.two}
+          description={text.two}
           onClick={() => showAddress('exist')}
         />
         <h2>{translated.icon}</h2>
         <Cell
           title={translated.title}
-          desc={text.three}
+          description={text.three}
           onClick={() => showAddress('customImg')}
         />
         <h2>{translated.change}</h2>
         <Cell
           title={translated.title}
-          desc={text.four}
+          description={text.four}
           onClick={() => showAddress('other')}
         />
 
@@ -479,8 +480,8 @@ const AddressDemo = () => {
           onClose={close4}
           onSelected={selected}
           customAndExistTitle={translated.other}
-          switchModule={switchModule}
-          closeMask={closeMask}
+          onSwitch={onSwitch}
+          onCancel={onCancel}
         />
       </div>
     </>

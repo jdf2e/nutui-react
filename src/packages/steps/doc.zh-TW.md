@@ -440,8 +440,8 @@ export default App;
 | title          | 流程步驟的標題         | `string`        | '' |
 | content        | 流程步驟的描述性文字       | `string`        | '' |
 | icon           | 圖標       | `ReactNode`           | '' |
-| size`v1.5.0废弃` | 圖標尺寸大小       | `string`        | '' |
-| iconColor`v1.5.0废弃`      | 图标颜色       | `string`        | -   |
+| size`v2.0.0废弃` | 圖標尺寸大小       | `string`        | '' |
+| iconColor`v2.0.0废弃`      | 图标颜色       | `string`        | -   |
 | activeIndex    | 流程步驟的索引       | `number`        | 0 |
 | renderContent  | 流程步驟的描述性文字的html結構      | React.ReactNode | - |
 

@@ -55,7 +55,7 @@ const App = () => {
     <>   
       <NavBar
           title="Browsing history"
-          desc="clear"
+          description="clear"
           leftShow
           onClickTitle={(e) => alert("back")}
           onClickBack={(e) => alert("title")}
@@ -80,7 +80,7 @@ const App = () => {
     <>   
       <NavBar
           title="cart"
-          desc="edit"
+          description="edit"
           onClickTitle={(e) => alert("back")}
           onClickBack={(e) => alert("title")}
           onClickRight={(e) => alert('edit')}
@@ -145,7 +145,7 @@ const App = () => {
   return ( 
     <>   
       <NavBar
-          desc="edit"
+          description="edit"
           onClickTitle={(e) => alert("title")}
           onClickRight={(e) => alert("edit")}
           onClickBack={(e) => alert("back")}
@@ -175,9 +175,9 @@ export default App;
 | Prop            | Description                                                                                           | Type    | Default  |
 |-----------------|------------------------------------------------------------------------------------------------|---------|---------|
 | title           | title name                                                                                       | string  | -       |
-| desc            | Description on the right                                                                                       | string  | -       |
+| description            | Description on the right                                                                                       | string  | -       |
 | leftShow        | Whether to show the left arrow                                                                              | boolean | `true`   |
-| titIcon`v1.5.0 废弃`         | title with icon                                                         | string  | -       |   
+| titIcon`v2.0.0 废弃`         | title with icon                                                         | string  | -       |   
 | leftText         | copy on the left                                                         | string  | -       |   
 | fixed         | Is it fixed                                                         | boolean  | `false`       |   
 | safeAreaInsetTop         | Whether it is suitable for the safe area                                                         | boolean  | `false`       |   

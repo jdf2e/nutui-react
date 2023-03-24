@@ -39,7 +39,7 @@ const App = () => {
     }
     return (
         <>
-            <Cell title="select a single date" desc={ date ? `${date} ${dateWeek}` : 'please choose' } onClick={ openSwitch } />
+            <Cell title="select a single date" description={ date ? `${date} ${dateWeek}` : 'please choose' } onClick={ openSwitch } />
             <Calendar 
                 visible={ isVisible }
                 defaultValue={ date }
@@ -81,7 +81,7 @@ const App = () => {
 
     return (
         <>
-            <Cell title="Select date range" desc={ date1 ? `${date1[0]}to${date1[1]}` : 'please choose' } onClick={ openSwitch1 } />
+            <Cell title="Select date range" description={ date1 ? `${date1[0]}to${date1[1]}` : 'please choose' } onClick={ openSwitch1 } />
             <Calendar 
                 visible={ isVisible1 }
                 defaultValue={ date1 }
@@ -124,7 +124,7 @@ const App = () => {
 
     return (
         <>
-            <Cell title="select multiple dates" desc={ date3 && date3.length ? `chosen${date3.length}` : 'please choose' } onClick={ openSwitch3 } />
+            <Cell title="select multiple dates" description={ date3 && date3.length ? `chosen${date3.length}` : 'please choose' } onClick={ openSwitch3 } />
             <Calendar
                 visible={isVisible3}
                 defaultValue={date3}
@@ -167,7 +167,7 @@ const App = () => {
 
     return (
         <>
-            <Cell title="select date" desc={ date3 ? `${date3}` : 'please choose' } onClick={ openSwitch3 } />
+            <Cell title="select date" description={ date3 ? `${date3}` : 'please choose' } onClick={ openSwitch3 } />
             <Calendar
                 visible={isVisible3}
                 defaultValue={date3}
@@ -229,7 +229,7 @@ const App = () => {
 
     return (
         <>
-            <Cell title="select date" desc={ date3 ? `${date3[0]}to${date3[1]}` : 'please choose' } onClick={ openSwitch3 } />
+            <Cell title="select date" description={ date3 ? `${date3[0]}to${date3[1]}` : 'please choose' } onClick={ openSwitch3 } />
             
             <Calendar
                 visible={isVisible3}
@@ -376,7 +376,7 @@ const App = () => {
 
     return (
         <>
-            <Cell title="select date" desc={ date3 ? `${date3[0]}to${date3[1]}` : 'please choose' } onClick={ openSwitch3 } />
+            <Cell title="select date" description={ date3 ? `${date3[0]}to${date3[1]}` : 'please choose' } onClick={ openSwitch3 } />
             <Calendar
                 ref={ calendarRef }
                 visible={isVisible3}
@@ -468,7 +468,7 @@ Through ref, you can get the Calendar instance and call the instance method.
 | onChoose | Triggered after selection or by clicking the confirm button | Array of dates (including year, month, day and week) |
 | onClose  | Triggered when closed                   | -                            |
 | onSelected  | Triggered after click/select              |  `Day: Day`                          |
-| onYearMonthChange`v1.5.0`  | Triggered when reached top for sub title of year and month             |  Array of dates (including year, month)                         
+| onYearMonthChange`v1.4.11`  | Triggered when reached top for sub title of year and month             |  Array of dates (including year, month)                         
 
 ### Day
 | Params| Description            |

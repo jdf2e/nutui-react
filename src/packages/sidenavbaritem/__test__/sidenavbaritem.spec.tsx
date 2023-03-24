@@ -10,21 +10,21 @@ test('should match snapshot', () => {
     <SideNavBarItem
       data-testid="sideNavBarItem-click"
       title="一级内容1"
-      ikey="1-01"
+      key="1-01"
     />
   )
   expect(asFragment()).toMatchSnapshot()
 })
 test('should emit click event', async () => {
-  const click = jest.fn(({ title, ikey }) => {
-    console.log('click>>>>', title, ikey)
+  const click = jest.fn(({ title, key }) => {
+    console.log('click>>>>', title, key)
   })
   const { getByTestId } = render(
     <>
       <SideNavBarItem
         data-testid="sideNavBarItem-click"
         title="一级内容1"
-        ikey="1-01"
+        key="1-01"
         onClick={click}
       />
     </>

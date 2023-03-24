@@ -4,7 +4,7 @@ import bem from '@/utils/bem'
 
 export interface CellGroupProps {
   title: ReactNode
-  desc: ReactNode
+  description: ReactNode
   titleSlot: ReactNode
   descSlot: ReactNode
   className: string
@@ -12,7 +12,7 @@ export interface CellGroupProps {
 }
 const defaultProps = {
   title: '',
-  desc: '',
+  description: '',
   className: '',
   titleSlot: null,
   descSlot: null,
@@ -20,7 +20,7 @@ const defaultProps = {
 export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
   props
 ) => {
-  const { children, className, title, desc, titleSlot, descSlot } = {
+  const { children, className, title, description, titleSlot, descSlot } = {
     ...defaultProps,
     ...props,
   }
@@ -30,7 +30,13 @@ export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
       {titleSlot || (
         <>{title ? <div className={b('title')}>{title}</div> : null}</>
       )}
-      {descSlot || <>{desc ? <div className={b('desc')}>{desc}</div> : null}</>}
+      {descSlot || (
+        <>
+          {description ? (
+            <div className={b('description')}>{description}</div>
+          ) : null}
+        </>
+      )}
 
       <div className={b('wrap')}>{children}</div>
     </div>

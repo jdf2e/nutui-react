@@ -510,8 +510,8 @@ export default App;
 | titleNode      | 自定义导航区域                                 | ReactNode | -          |
 | size           | 标签栏字体尺寸大小 可选值 `large`、`normal`、`small` | string              | `normal`     |
 | leftAlign`v1.4.8` | 标题左对齐 | boolean | `false` |
-| autoHeight`v1.2.1` | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean             | `false`     |
-| tabStyle`v1.3.8` | 标签栏样式 | CSSProperties | `{}`     |
+| autoHeight | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean             | `false`     |
+| tabStyle | 标签栏样式 | CSSProperties | `{}`     |
 
 ## Tabs Children
 

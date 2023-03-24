@@ -159,7 +159,7 @@ export default App;
 | hairline        | 是否使用 0.5px 线             | boolean | `true`   |
 | contentPosition | 内容位置，可选值为 left right | string  | `center` |
 | styles          | 修改自定义样式                | CSSProperties     | -      |
-| direction`v1.2.0`   | 水平还是垂直类型,可选值为 horizontal vertical               | string     | `horizontal`      |
+| direction   | 水平还是垂直类型,可选值为 horizontal vertical               | string     | `horizontal`      |
 
 ### Slots
 

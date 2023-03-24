@@ -30,6 +30,7 @@ const zhUG: BaseLang = {
     weekdays: ['ي', 'د', 'س', 'چ', 'پ', 'ج', 'ش'],
     end: 'ئاخىرى',
     start: 'بېشى',
+    confirm: 'جەزملەشتۈرۈڭ',
     title: 'تاللاڭ',
     monthTitle: (year: number, month: number) => `${year} يىلى ${month} ئاي`,
     today: 'بۈگۈن',
@@ -38,7 +39,7 @@ const zhUG: BaseLang = {
   },
   shortpassword: {
     title: 'مەخپى نومۇرنى كىرگۈزۈڭ',
-    desc: 'مەۋھۇم بايلىق ئىشلىتىش ئۈچۈن',
+    description: 'مەۋھۇم بايلىق ئىشلىتىش ئۈچۈن',
     tips: 'ئۇنتۇپ قاپتىمەن',
   },
   uploader: {

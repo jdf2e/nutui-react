@@ -5,7 +5,7 @@ import bem from '@/utils/bem'
 export type ItemType<T> = { [key: string]: T }
 
 export interface ActionSheetProps {
-  cancelTxt: string
+  cancelText: string
   optionTag: string
   optionSubTag: string
   chooseTagValue: string
@@ -20,7 +20,7 @@ export interface ActionSheetProps {
   style: React.CSSProperties
 }
 const defaultProps = {
-  cancelTxt: '',
+  cancelText: '',
   optionTag: 'name',
   optionSubTag: 'subname',
   chooseTagValue: '',
@@ -39,7 +39,7 @@ export const ActionSheet: FunctionComponent<
 > = (props) => {
   const {
     children,
-    cancelTxt,
+    cancelText,
     optionTag,
     optionSubTag,
     chooseTagValue,
@@ -86,7 +86,7 @@ export const ActionSheet: FunctionComponent<
       <div className={`${b()} ${className}`} style={style} {...rest}>
         {title && <div className={b('title')}>{title}</div>}
         {description && (
-          <div className={`${b('item')} desc`}>{description}</div>
+          <div className={`${b('item')} description`}>{description}</div>
         )}
         {menuItems.length ? (
           <div className={b('menu')}>
@@ -109,9 +109,9 @@ export const ActionSheet: FunctionComponent<
         ) : (
           children
         )}
-        {cancelTxt && (
+        {cancelText && (
           <div className={b('cancel')} onClick={() => cancelActionSheet()}>
-            {cancelTxt}
+            {cancelText}
           </div>
         )}
       </div>

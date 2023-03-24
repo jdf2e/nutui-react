@@ -37,9 +37,9 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
-          onPlayend={playend}
+          onPlay={play}
+          onPause={pause}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -77,9 +77,9 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
-          onPlayend={playend}
+          onPlay={play}
+          onPause={pause}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -116,9 +116,9 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
-          onPlayend={playend}
+          onPlay={play}
+          onPause={pause}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -156,9 +156,9 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
-          onPlayend={playend}
+          onPlay={play}
+          onPause={pause}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -196,9 +196,9 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
-          onPlayend={playend}
+          onPlay={play}
+          onPause={pause}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -239,9 +239,9 @@ const App = () => {
         <Video
           source={source}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
-          onPlayend={playend}
+          onPlay={play}
+          onPause={pause}
+          onPlayEnd={playend}
          />
       </Cell>
     </>
@@ -281,9 +281,9 @@ const App = () => {
         <Video
           source={source1}
           options={options}
-          onPlayFuc={play}
-          onPauseFuc={pause}
-          onPlayend={playend}
+          onPlay={play}
+          onPause={pause}
+          onPlayEnd={playend}
          />
       </Cell>
       <Button type="primary" className="m-b" onClick={changeVideo}>视频切换</Button>
@@ -314,9 +314,9 @@ export default App;
 
 | 事件名称 | 说明         | 回调参数 |
 | -------- | ------------ | -------- |
-| play `v1.3.8 废弃`     | 播放         | -       |
-| pause `v1.3.8 废弃`    | 暂停         | -       |
-| playend `v1.3.8 废弃`  | 播放完成回调 | -       |
-| onPlayFuc `v1.3.8`     | 播放         | -       |
-| onPauseFuc `v1.3.8`    | 暂停         | -       |
-| onPlayend `v1.3.8`  | 播放完成回调 | -       |
+| play      | 播放         | -       |
+| pause     | 暂停         | -       |
+| playend   | 播放完成回调 | -       |
+| onPlay `v2.0.0`      | 播放         | -       |
+| onPause `v2.0.0`    | 暂停         | -       |
+| onPlayEnd `v2.0.0` | 播放完成回调 | -       |

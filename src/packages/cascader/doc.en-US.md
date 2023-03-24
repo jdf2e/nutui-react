@@ -98,7 +98,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value1 || '请选择地址'}
+      description={value1 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo1(true)
       }}
@@ -207,7 +207,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value2 || '请选择地址'}
+      description={value2 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo2(true)
       }}
@@ -278,7 +278,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value3 || '请选择地址'}
+      description={value3 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo3(true)
       }}
@@ -349,7 +349,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value4 || '请选择地址'}
+      description={value4 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo4(true)
       }}
@@ -410,7 +410,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value5 || '请选择地址'}
+      description={value5 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo5(true)
       }}
@@ -527,7 +527,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value6 || '请选择地址'}
+      description={value6 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo6(true)
       }}
@@ -564,18 +564,18 @@ export default App;
 | poppable      | Whether to display the pop-up window status   | boolean  | `true`   |
 | visible       | Cascading show hidden states                  | boolean  | `false`  |
 | activeColor`1.3.13` | Check the active color                  | string  | -  |
-| checkedIcon`1.4.8` | Checked Item Icon | string | `checklist` |
-| tabsColor`1.3.13` | Check the active color at the bottom of tabs  | string  | -  |
-| lazy          | Whether to enable dynamic loading             | boolean  | `false`  |
-| lazyLoad      | Dynamic loading callback, which takes effect when dynamic loading is enabled   | Function | -      |
-| valueKey      | Customize the field of `value` in the `options` structure     | string   | -      |
-| textKey       | Customize the fields of `text` in the `options` structure     | string   | -      |
-| childrenKey   | Customize the fields of `children` in the `options` structure | string   | -      |
-| convertConfig | When options is a flat structure that can be converted into a tree structure, configure the conversion rules | Object   | -      |
-| title          | Title | string   | -      |
-| closeIconPosition | Cancel the button position and inherit the popup component | string   | `top-right`      |
-| close-icon | Customize the close button and inherit the popup component | string   | `close`     |
-| closeable | Whether to display the close button and inherit the popup component | boolean   | `true`     |
+| checkedIcon`1.5.0`  | Checked Item Icon | string | `ReactNode` |
+| tabsColor`1.3.13`   | Check the active color at the bottom of tabs  | string  | -  |
+| lazy                | Whether to enable dynamic loading             | boolean  | `false`  |
+| lazyLoad            | Dynamic loading callback, which takes effect when dynamic loading is enabled   | Function | -      |
+| valueKey            | Customize the field of `value` in the `options` structure     | string   | -      |
+| textKey             | Customize the fields of `text` in the `options` structure     | string   | -      |
+| childrenKey         | Customize the fields of `children` in the `options` structure | string   | -      |
+| convertConfig       | When options is a flat structure that can be converted into a tree structure, configure the conversion rules | Object   | -      |
+| title               | Title | string   | -      |
+| closeIconPosition   | Cancel the button position and inherit the popup component | string   | `top-right`      |
+| closeIcon          | Customize the close button and inherit the popup component | ReactNode   | `close`     |
+| closeable           | Whether to display the close button and inherit the popup component | boolean   | `true`     |
 
 ### Events
 

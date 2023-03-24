@@ -158,7 +158,7 @@ export default App;
 | readonly | 输入框只读 | boolean | `false` |
 | maxLength         | 最大输入长度   | number | `9999`   |
 | clearable          | 是否展示清除按钮 | boolean | `true`     |
-| clearIconSize`v1.4.7` | 清除按钮尺寸大小，同Icon的size | string \| number | `12px` |
+| clearSize`v2.0.0` | 清除按钮尺寸大小，同Icon的size | string \| number | `12px` |
 | background          | 搜索框外部背景色 | string | -     |
 | inputBackground          | 搜索框背景色 | string | -     |
 | inputAlign | 对齐方式，可选 `center` `right` | string | `left` |

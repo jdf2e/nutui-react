@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { ScrollView } from '@tarojs/components'
+import { nextTick } from '@tarojs/taro'
 import bem from '@/utils/bem'
 import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { nextTick } from '@tarojs/taro'
 
 type CalendarRef = {
   scrollToDate: (date: string) => void
@@ -694,6 +694,18 @@ export const CalendarItem = React.forwardRef<
           }
         }
       })
+    } else {
+      // 当 defaultValue 为空时，如果月份列表包含当月，则默认定位到当月
+      const currentYear = new Date().getFullYear()
+      const currentMonth = new Date().getMonth() + 1
+      const currentYearMonthIndex = state.monthsData.findIndex((item) => {
+        return (
+          +item.curData[0] === currentYear && +item.curData[1] === currentMonth
+        )
+      })
+      if (currentYearMonthIndex > -1) {
+        current = currentYearMonthIndex
+      }
     }
 
     setDefaultRange(monthsNum, current)

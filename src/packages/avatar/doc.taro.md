@@ -231,7 +231,7 @@ export default App;
 | url                | 设置图片类型头像的地址                           | `string`    | -        |
 | alt                | 设置图片类型头像无法显示时的替代文本                | `string`    | -        |
 | icon               | 设置 Icon 类型头像图标  | `ReactNode` | -        |
-| iconSize`v1.5.0废弃` | [图标尺寸](#/icon) | `string \| number`      | `16`     |
+| iconSize`v2.0.0废弃` | [图标尺寸](#/icon) | `string \| number`      | `16`     |
 
 ### avatarGroup
 | 字段     | 说明                                                             | 类型   | 默认值 |
@@ -249,8 +249,7 @@ export default App;
 
 | 字段             | 说明         | 类型     | 回调参数 |
 | ---------------- | ------------ | -------- | -------- |
-| activeAvatar `v1.3.8 废弃` | 点击头像触发事件    | Function | `event`    |
-| onActiveAvatar `v1.3.8` | 点击头像触发事件    | Function | `event`    |
+| onActiveAvatar  | 点击头像触发事件    | Function | `event`    |
 | onError       | 图片加载失败的事件   | Function | `event`    |
 
 ## 主题定制

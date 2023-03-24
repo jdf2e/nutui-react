@@ -659,9 +659,9 @@ export default App;
 | data         | Table data | 	Object[] | `[]`                |
 | summary         | Show profile | 	ReactNode | -                |
 | striped         | Whether the stripes alternate light and dark | 	boolean | `false`                |
-| showHeader`v1.5.0`         | Show Header | 	boolean | `true`                |
+| showHeader`v1.4.11`         | Show Header | 	boolean | `true`                |
 | noData         | Custom noData | 	ReactNode | -                |
-| sorterIcon`v1.5.0`         | Sort icon | 	ReactNode | `<DownArrow />`               |
+| sorterIcon`v2.0.0`         | Sort icon | 	ReactNode | `<DownArrow />`               |
 
 
 

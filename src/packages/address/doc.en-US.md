@@ -76,7 +76,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="Choose Address" desc={text}  onClick={()=>setNormal(true)} />
+      <Cell title="Choose Address" description={text}  onClick={()=>setNormal(true)} />
       <Address
           modelValue={normal}
           province={province}
@@ -152,7 +152,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="Choose Address" desc={text}  onClick={()=>setNormal(true)} />
+      <Cell title="Choose Address" description={text}  onClick={()=>setNormal(true)} />
       <Address
           modelValue={normal}
           modelSelect={[1, 7, 3]}
@@ -233,7 +233,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="Choose Address" desc={text}  onClick={()=>setNormal2(true)} />
+      <Cell title="Choose Address" description={text}  onClick={()=>setNormal2(true)} />
       <Address
           modelValue={normal2}
           type="custom2"
@@ -319,7 +319,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="Choose Address" desc={text}  onClick={()=>setExist(true)} />
+      <Cell title="Choose Address" description={text}  onClick={()=>setExist(true)} />
       <Address
           modelValue={exist}
           type="exist"
@@ -343,15 +343,16 @@ export default App;
 ```tsx
 import  React,{useState} from "react";
 import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react';
 
 const App = () => {
   const [text, setText] = useState('Choose Address')
   const [customImg,setCustomImg] = useState(false)
   const [icon, setIcon] = useState({
-      selectedIcon: 'heart-fill',
-      defaultIcon: 'heart1',
-      closeBtnIcon: 'close',
-      backBtnIcon: 'left',
+    selectedIcon: <HeartFill color="red" />,
+    defaultIcon: <Heart1 />,
+    closeBtnIcon: <Close />,
+    backBtnIcon: <Left />,
   })
 
   const [existAddress, setExistAddress] = useState([
@@ -411,7 +412,7 @@ const App = () => {
   }
   return (
     <>
-      <Cell title="Choose Address" desc={text}  onClick={()=>setCustomImg(true)} />
+      <Cell title="Choose Address" description={text}  onClick={()=>setCustomImg(true)} />
       <Address
           modelValue={customImg}
           type="exist"
@@ -438,15 +439,16 @@ export default App;
 ```tsx
 import  React,{useState} from "react";
 import { Address, Cell ,Popup} from '@nutui/nutui-react';
+import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react';
 
 const App = () => {
   const [text, setText] = useState('Choose Address')
   const [other,setOther] = useState(false)
   const [icon, setIcon] = useState({
-      selectedIcon: 'heart-fill',
-      defaultIcon: 'heart1',
-      closeBtnIcon: 'close',
-      backBtnIcon: 'left',
+    selectedIcon: <HeartFill color="red" />,
+    defaultIcon: <Heart1 />,
+    closeBtnIcon: <Close />,
+    backBtnIcon: <Left />,
   })
   const [province, setProvince] = useState([
       { id: 1, name: '北京', title: 'B' },
@@ -543,7 +545,7 @@ const App = () => {
           setText((val.data as AddressResult).addressStr)
         }
   }
-  const switchModule = (val) => {
+  const onSwitch = (val) => {
       if (val.type === 'custom') {
         console.log('点击了“选择其他地址”按钮')
       } else {
@@ -551,12 +553,12 @@ const App = () => {
       }
   }
 
-  const closeMask = (val) => {
+  const onCancel = (val) => {
       console.log('关闭弹层', val)
   }
   return (
     <>
-      <Cell title="Choose Address" desc={text}  onClick={()=>setOther(true)} />
+      <Cell title="Choose Address" description={text}  onClick={()=>setOther(true)} />
       <Address
           modelValue={other}
           type="exist"
@@ -570,8 +572,8 @@ const App = () => {
           onClose={close}
           onSelected={selected}
           customAndExistTitle="Choose Other Address"
-          switchModule={switchModule}
-          closeMask={closeMask}
+          onSwitch={onSwitch}
+          onCancel={onCancel}
        />
     </>
   );
@@ -584,25 +586,25 @@ export default App;
 
 # API
 
-| Attribute            | Description               | Type   | Default  |
-|----- | ----- | ----- | -----  |
-| modelValue | Whether to open address | string | - |
-| modelSelect`v1.2.3` | Default address value | string[] \| number[] | `[]` |
-| type | Choose type: exist/custom/custom2  | string | `custom` |
-| province | Province data | Array | `[]` |
-| city | City data | Array | `[]` |
-| country | Country data | Array | `[]` |
-| town | Town data | Array | `[]` |
-| height | Popup height | string \| number | `200px` |
-| existAddress | Exist address list data | Array | `[]` |
-| defaultIcon | Exist address default icon | string | - |
-| selectedIcon | Exist address selected icon | string | - |
-| closeBtnIcon | Custom close button icon | string | - |
-| backBtnIcon | Custom back button icon | string | - |
-| isShowCustomAddress | Whether to change custom address | boolean | `true` |
-| customAddressTitle  | Custom address title | string | `Select Region` |
-| existAddressTitle|  Exist address title | string | `Delivery To` |
-| customAndExistTitle| Custom address and existing address switch button copywriting | string | `Choose Another Address` |
+| Attribute            | Description               | Type       | Default  |
+|----- | ----- |------------| -----  |
+| modelValue | Whether to open address | string     | - |
+| modelSelect`v1.2.3` | Default address value | string[] \ | number[] | `[]` |
+| type | Choose type: exist/custom/custom2  | string     | `custom` |
+| province | Province data | Array      | `[]` |
+| city | City data | Array      | `[]` |
+| country | Country data | Array      | `[]` |
+| town | Town data | Array      | `[]` |
+| height | Popup height | string \   | number | `200px` |
+| existAddress | Exist address list data | Array      | `[]` |
+| defaultIcon | Exist address default icon | ReactNode       | - |
+| selectedIcon | Exist address selected icon | ReactNode     | - |
+| closeBtnIcon | Custom close button icon | ReactNode     | - |
+| backBtnIcon | Custom back button icon | ReactNode     | - |
+| isShowCustomAddress | Whether to change custom address | boolean    | `true` |
+| customAddressTitle  | Custom address title | string     | `Select Region` |
+| existAddressTitle|  Exist address title | string     | `Delivery To` |
+| customAndExistTitle| Custom address and existing address switch button copywriting | string     | `Choose Another Address` |
 
 
 ## Event
@@ -611,8 +613,8 @@ export default App;
 | onChange | Emitted when to selected custom address |  reference onChange |
 | onSelected |  Emitted when to selected exist address  | reference selected
 | onClose | Emitted when to close  | reference close |
-| closeMask |Emitted when to close mask | `closeWay:'mask' \| 'cross'` |
-| switchModule | Click to select another address or custom address to select the upper left corner of the return button triggered | `type:'exist' \| 'custom' \| 'custom2'` |
+| onCancel `v2.0.0` |Emitted when to close mask | `closeWay:'mask' \| 'cross'` |
+| onSwitch `v2.0.0` | Click to select another address or custom address to select the upper left corner of the return button triggered | `type:'exist' \| 'custom' \| 'custom2'` |
 
 
 ## change 回调参数

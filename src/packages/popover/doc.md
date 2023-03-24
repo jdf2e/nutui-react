@@ -112,27 +112,27 @@ const App = () => {
   const selfContent= [
     {
       name: <Service size={15}/>,
-      desc: 'option1'
+      description: 'option1'
     },
     {
       name: <Notice  size={15}/>,
-      desc: 'option2'
+      description: 'option2'
     },
     {
       name: <Location size={15}/>,
-      desc: 'option3'
+      description: 'option3'
     },
     {
       name: <Category size={15}/>,
-      desc: 'option4'
+      description: 'option4'
     },
     {
       name: <Scan2 size={15}/>,
-      desc: 'option5'
+      description: 'option5'
     },
     {
       name: <Message size={15}/>,
-      desc: 'option6'
+      description: 'option6'
     }
   ];
 
@@ -149,7 +149,7 @@ const App = () => {
             selfContent.map((item: any)=>{
               return <div className="self-content-item" style={selfContentItem} key={item.name}>
                     {item.name}
-                <div className="self-content-desc" style={selfContentDesc}>{ item.desc }</div>
+                <div className="self-content-description" style={selfContentDesc}>{ item.description }</div>
               </div>
             })
           }
@@ -173,7 +173,7 @@ left          # 左侧中间位置
 right         # 右侧中间位置
 bottom        # 底部中间位置
 ```
-自 `v1.3.0` 起新增
+自  起新增
 ```
 top-start     # 顶部左侧位置
 top-end       # 顶部右侧位置 
@@ -228,7 +228,7 @@ export default App;
 | visible      | 是否展示气泡弹出层                 | boolean  | false     |
 | theme          | 主题风格，可选值为 dark            | string   | `light`   |
 | location       | 弹出位置  | string   | `bottom`  |
-| offset `v1.3.0`       | 出现位置的偏移量  | number   | 20  |
+| offset        | 出现位置的偏移量  | number   | 20  |
 
 ### List 数据结构  
 

@@ -207,7 +207,10 @@ const RadioDemo = () => {
               <Radio value={2}>{translated['0f261484']}</Radio>
             </Radio.RadioGroup>
           </Cell>
-          <Cell title={translated['6b1f669d']} desc={radioVal.toString()} />
+          <Cell
+            title={translated['6b1f669d']}
+            description={radioVal.toString()}
+          />
         </CellGroup>
         <h2>{translated.options}</h2>
         <CellGroup>

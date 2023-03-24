@@ -206,10 +206,10 @@ export default App;
 
 | 字段 | 說明 | 回調參數 |
 |----- | ----- | ----- |
-| onClick`v1.3.0` | 點擊時觸發 | `event: MouseEvent, type: 'row' \| 'col'` |
+| onClick | 點擊時觸發 | `event: MouseEvent, type: 'row' \| 'col'` |
 
 ### col events
 
 | 字段 | 說明 | 回調參數 |
 |----- | ----- | ----- |
-| onClick`v1.3.0` | 點擊時觸發 | `event: MouseEvent, type: 'row' \| 'col'` |
+| onClick | 點擊時觸發 | `event: MouseEvent, type: 'row' \| 'col'` |

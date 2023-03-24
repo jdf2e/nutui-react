@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react-taro",
-  "version": "1.4.10",
+  "version": "1.4.11",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -80,10 +80,6 @@
     "build:taro:weapp": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run build:weapp",
     "add:taro:config": "node scripts/taro/generate-taro-route.js"
   },
-  "engines": {
-    "node": ">=16.0.0",
-    "pnpm": ">= 7.0.0"
-  },
   "lint-staged": {
     "*.md": "prettier --write",
     "*.{ts,tsx,js,vue,scss}": "prettier --write"
@@ -91,8 +87,8 @@
   "dependencies": {
     "@babel/runtime": "^7.16.5",
     "@bem-react/classname": "^1.5.10",
-    "@nutui/icons-react": "0.0.1-beta.0",
-    "@nutui/icons-react-taro": "0.0.1-beta.0",
+    "@nutui/icons-react": "0.0.1-beta.3",
+    "@nutui/icons-react-taro": "0.0.1-beta.3",
     "@react-spring/web": "~9.6.1",
     "@use-gesture/react": "10.2.20",
     "async-validator": "^4.2.5",
@@ -182,7 +178,6 @@
     "reactcss": "^1.2.3",
     "remark-directive": "^2.0.1",
     "remark-gfm": "^3.0.1",
-    "rollup": "^2.79.1",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-dts": "^4.2.3",
     "sass": "^1.45.0",

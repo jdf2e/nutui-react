@@ -211,11 +211,11 @@ export default App;
 | textColor        | text color               | string | `#333333`               |
 | riseColor         | up arrow color               | string | `#fa2c19`               |
 | dropColor         | down arrow color               | string | `#64b578`               |
-| upIcon`v1.5.0`         | custom up arrow icon               | string | `<TriangleUp/>`               |
-| downIcon`v1.5.0`            | custom down arrow icon        | string | `<TriangleDown/>`              |
-| iconSize`v1.5.0弃用`         | arrow size               | string | `12px`               |
-| upIconName`v1.5.0弃用`         | custom up arrow icon               | string | `triangle-up`               |
-| downIconName`v1.5.0弃用`           | custom down arrow icon               | string | `triangle-down`               |
+| upIcon`v2.0.0`         | custom up arrow icon               | string | `<TriangleUp/>`               |
+| downIcon`v2.0.0`            | custom down arrow icon        | string | `<TriangleDown/>`              |
+| iconSize`v2.0.0弃用`         | arrow size               | string | `12px`               |
+| upIconName`v2.0.0弃用`         | custom up arrow icon               | string | `triangle-up`               |
+| downIconName`v2.0.0弃用`           | custom down arrow icon               | string | `triangle-down`               |
 
 
 ## Theming

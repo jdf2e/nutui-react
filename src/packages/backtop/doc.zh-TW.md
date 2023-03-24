@@ -331,8 +331,7 @@ export default App;
 
 | 名稱                       | 說明               | 回調參數          |
 |--------------------------| ------------------ | ----------------- |
-| backTopClick`v1.2.1(廢棄)` | 按鈕點擊時觸發事件 | `event: MouseEvent` |
-| onClick`v1.2.1`          | 按鈕點擊時觸發事件 | `event: MouseEvent` |
+| onClick          | 按鈕點擊時觸發事件 | `event: MouseEvent` |
 
 ## 主題定制
 

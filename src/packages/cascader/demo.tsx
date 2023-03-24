@@ -331,7 +331,7 @@ const CascaderDemo = () => {
         <h2>{translated.basic}</h2>
         <Cell
           title={translated.addressTip}
-          desc={text.desc1}
+          description={text.desc1}
           onClick={() => {
             setIsVisibleDemo1(true)
           }}
@@ -351,7 +351,7 @@ const CascaderDemo = () => {
         <h2>{translated.title1}</h2>
         <Cell
           title={translated.addressTip}
-          desc={text.desc2}
+          description={text.desc2}
           onClick={() => {
             setIsVisibleDemo2(true)
           }}
@@ -374,7 +374,7 @@ const CascaderDemo = () => {
         <h2>{translated.title2}</h2>
         <Cell
           title={translated.addressTip}
-          desc={text.desc3}
+          description={text.desc3}
           onClick={() => {
             setIsVisibleDemo3(true)
           }}
@@ -395,7 +395,7 @@ const CascaderDemo = () => {
         <h2>{translated.title3}</h2>
         <Cell
           title={translated.addressTip}
-          desc={text.desc4}
+          description={text.desc4}
           onClick={() => {
             setIsVisibleDemo4(true)
           }}
@@ -417,7 +417,7 @@ const CascaderDemo = () => {
         <h2>{translated.title4}</h2>
         <Cell
           title={translated.addressTip}
-          desc={text.desc5}
+          description={text.desc5}
           onClick={() => {
             setIsVisibleDemo5(true)
           }}
@@ -438,7 +438,7 @@ const CascaderDemo = () => {
         <h2>{translated.title5}</h2>
         <Cell
           title={translated.addressTip}
-          desc={text.desc6}
+          description={text.desc6}
           onClick={() => {
             setIsVisibleDemo6(true)
           }}

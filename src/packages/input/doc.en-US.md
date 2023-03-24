@@ -23,7 +23,7 @@ const App = () => {
     const [value, UpdateValue] = useState('')
   return (
     <>
-      <Input name="text" label="Text" defaultValue={value} placeholder="Text" change={(val) => {
+      <Input name="text" label="Text" defaultValue={value} placeholder="Text" onChange={(val) => {
             UpdateValue(val)
           }}/>
     </>
@@ -451,10 +451,10 @@ export default App;
 | autofocus    | Whether to auto focus, unsupported in iOS                                 | Boolean                   | `false`     |
 | maxlength   | Max length of value                                                       | String、Number             | -           |
 | clearable    | Whether to be clearable                                                   | Boolean                   | `false`     |
-| clearIcon   | Clear Icon name, [icon](#/icon)                                   | ReactNode                 | `MaskClose` |
-| clearSize   | Default Clear Icon `font-size`                                            | String                    | `14`        |
-| leftIcon    | Left side Icon name, [icon](#/icon)                               | ReactNode                    | -           |
-| rightIcon   | Right side Icon name, [icon](#/icon)                              | ReactNode                    | -           |
+| clearIcon `v2.0.0`   | Clear Icon name, [icon](#/icon)                                   | ReactNode                 | `MaskClose` |
+| clearSize `v2.0.0`  | Default Clear Icon `font-size`                                            | String                    | `14`        |
+| leftIcon  `v2.0.0`  | Left side Icon name, [icon](#/icon)                               | ReactNode                    | -           |
+| rightIcon `v2.0.0`  | Right side Icon name, [icon](#/icon)                              | ReactNode                    | -           |
 | showWordLimit | Whether to show word limit, need to set the `max-length` prop             | Boolean                   | `false`     |
 | error         | Whether to mark the input content in red                                  | Boolean                   | `false`     |
 | errorMessage | Error message                                                             | String、Number             | -           |
@@ -466,14 +466,14 @@ export default App;
 
 | Event   | Description      | Arguments    |
 |--------|----------------|-------------|
-| onChange `v1.3.8` | Emitted when input value changed | val ,event  |
-| onFocus `v1.3.8`  | Emitted when input is focused     | val  ,event |
-| onBlur `v1.3.8`   | Emitted when input is blurred     | val ,event  |
-| onClear `v1.3.8` | Emitted when the clear icon is clicked   | val ,event  |
-| onClick `v1.3.8`  | Emitted when component is clicked	      | val ,event  |
-| onClickInput `v1.3.8`      | Emitted when the input is clicked      | val ,event  |
-| onClickLeftIcon `v1.3.8`  | Emitted when the left icon is clicked      | val ,event  |
-| onClickRightIcon `v1.3.8` | Emitted when the right icon is clicked      | val ,event  |
+| onChange  | Emitted when input value changed | val ,event  |
+| onFocus   | Emitted when input is focused     | val  ,event |
+| onBlur    | Emitted when input is blurred     | val ,event  |
+| onClear  | Emitted when the clear icon is clicked   | val ,event  |
+| onClick   | Emitted when component is clicked	      | val ,event  |
+| onClickInput       | Emitted when the input is clicked      | val ,event  |
+| onClickLeftIcon   | Emitted when the left icon is clicked      | val ,event  |
+| onClickRightIcon  | Emitted when the right icon is clicked      | val ,event  |
 
 ### Slots
 

@@ -83,27 +83,27 @@ const BadgeDemo = () => {
   const selfContent = [
     {
       name: <Service />,
-      desc: 'option1',
+      description: 'option1',
     },
     {
       name: <Notice />,
-      desc: 'option2',
+      description: 'option2',
     },
     {
       name: <Location />,
-      desc: 'option3',
+      description: 'option3',
     },
     {
       name: <Category />,
-      desc: 'option4',
+      description: 'option4',
     },
     {
       name: <Scan2 />,
-      desc: 'option5',
+      description: 'option5',
     },
     {
       name: <Message />,
-      desc: 'option6',
+      description: 'option6',
     },
   ]
   const [lightTheme, setLightTheme] = useState(false)
@@ -216,10 +216,10 @@ const BadgeDemo = () => {
                     >
                       {item.name}
                       <div
-                        className="self-content-desc"
+                        className="self-content-description"
                         style={selfContentDesc}
                       >
-                        {item.desc}
+                        {item.description}
                       </div>
                     </div>
                   )

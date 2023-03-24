@@ -1,15 +1,12 @@
 import * as React from 'react'
-// import * as ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import Icon from '@/packages/icon'
 import { render, unmount } from '@/utils/render'
 
 export interface NotificationProps {
   id?: string
   style?: React.CSSProperties
-  icon: string | null
-  iconSize: string
+  icon: React.ReactNode
   msg: string | React.ReactNode
   bottom: string
   duration: number
@@ -19,13 +16,11 @@ export interface NotificationProps {
   customClass: string
   size: string | number
   textAlignCenter: boolean
-  // loadingRotate: boolean
   bgColor: string
   cover: boolean
   coverColor: string
   closeOnClickOverlay: boolean
   onClose: () => void
-  // className?: string
 }
 
 export default class Notification extends React.PureComponent<NotificationProps> {
@@ -83,7 +78,6 @@ export default class Notification extends React.PureComponent<NotificationProps>
       id,
       style,
       icon,
-      iconSize,
       title,
       msg,
       bottom,
@@ -127,11 +121,7 @@ export default class Notification extends React.PureComponent<NotificationProps>
               backgroundColor: bgColor,
             }}
           >
-            {icon ? (
-              <p className={toastBem('icon-wrapper')}>
-                <Icon name={icon || ''} color="#ffffff" size={iconSize} />
-              </p>
-            ) : null}
+            {icon ? <p className={toastBem('icon-wrapper')}>{icon}</p> : null}
             {title ? <div className="nut-toast-title">{title}</div> : null}
             <span className={toastBem('text')}>{msg}</span>
           </div>
@@ -149,6 +139,7 @@ Notification.newInstance = (properties, callback) => {
   document.body.appendChild(element)
 
   let called = false
+
   function ref(instance: any) {
     if (called) {
       return

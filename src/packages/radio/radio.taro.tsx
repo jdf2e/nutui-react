@@ -61,8 +61,6 @@ export const Radio: FunctionComponent<
     checkedIcon,
     iconSize,
     onChange,
-    iconClassPrefix,
-    iconFontClassName,
     ...rest
   } = props
   const componentName = 'nut-radio'

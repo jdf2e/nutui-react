@@ -4,14 +4,14 @@ import '@testing-library/jest-dom'
 import { Cell } from '../cell'
 import { Switch } from '../../switch/switch'
 
-test('prop title desc subtitle test', () => {
+test('prop title description subtitle test', () => {
   const { getByTestId, container } = render(
     <>
       <Cell
         data-testid="prop"
         title="我是标题"
         subTitle="副标题描述"
-        desc="描述文字"
+        description="描述文字"
       />
     </>
   )
@@ -27,9 +27,9 @@ test('prop title desc subtitle test', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('prop desc-text-align left', () => {
+test('prop description-text-align left', () => {
   const { container } = render(
-    <Cell data-testid="prop" descTextAlign="left" desc="张三" />
+    <Cell data-testid="prop" descriptionTextAlign="left" description="张三" />
   )
   expect(container.querySelector('.nut-cell__value')).toHaveAttribute(
     'style',
@@ -41,7 +41,7 @@ test('prop isLink', () => {
   const { container } = render(
     <Cell
       title="URL 跳转"
-      desc="https://m.jd.com/"
+      description="https://m.jd.com/"
       isLink
       url="https://m.jd.com/"
     />
@@ -61,7 +61,7 @@ test('emit click event', () => {
 
 test('slot default test', () => {
   const { container } = render(
-    <Cell title="我是标题" desc="描述文字">
+    <Cell title="我是标题" description="描述文字">
       <div>自定义内容</div>
     </Cell>
   )
@@ -79,7 +79,7 @@ test('slot linkSlot', () => {
 
 test('prop icon', () => {
   const { container } = render(
-    <Cell title="姓名" icon="my" desc="张三" isLink />
+    <Cell title="姓名" icon="my" description="张三" isLink />
   )
   expect(container.querySelector('.nut-icon-my')).toBeInTheDocument()
   expect(container).toMatchSnapshot()

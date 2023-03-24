@@ -30,6 +30,7 @@ const enUS: BaseLang = {
     weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     end: 'End',
     start: 'Start',
+    confirm: 'Confirm',
     title: 'Calendar',
     monthTitle: (year: number, month: number) => `${year}/${month}`,
     today: 'Today',
@@ -38,7 +39,7 @@ const enUS: BaseLang = {
   },
   shortpassword: {
     title: 'Please input a password',
-    desc: 'Verify',
+    description: 'Verify',
     tips: 'Forget password',
   },
   uploader: {

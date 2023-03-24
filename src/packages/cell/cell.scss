@@ -1,12 +1,14 @@
 @import '../icon/icon';
+
 .nut-theme-dark {
   .nut-cell {
     background: $dark5;
     color: $dark1;
     box-shadow: none;
+
     &__value {
       &--alone {
-        color: $cell-desc-color;
+        color: $cell-description-color;
       }
     }
   }
@@ -39,8 +41,9 @@
   &--large {
     font-size: $cell-large-title-font;
     padding: $cell-large-padding;
+
     .nut-cell__subtitle {
-      font-size: $cell-large-title-desc-font;
+      font-size: $cell-large-title-description-font;
     }
   }
 
@@ -58,8 +61,10 @@
   &:active::before {
     opacity: 0.1;
   }
+
   &--clickable {
     cursor: pointer;
+
     &::before {
       position: absolute;
       top: 50%;
@@ -75,6 +80,7 @@
       content: ' ';
     }
   }
+
   &__icon {
     display: flex;
     flex-direction: row;
@@ -88,19 +94,26 @@
     flex-direction: column;
     flex: 1;
   }
+
   &__subtitle {
-    font-size: $cell-title-desc-font;
+    font-size: $cell-title-description-font;
     color: $cell-subtitle-color;
   }
+
   &__value {
     display: inline-block;
     text-align: right;
-    font-size: $cell-desc-font;
-    color: $cell-desc-color;
+    flex: 1;
+    word-wrap: break-word;
+    overflow: hidden;
+    font-size: $cell-description-font;
+    color: $cell-description-color;
+
     &--alone {
       color: $cell-color;
     }
   }
+
   &__link {
     color: #979797;
   }

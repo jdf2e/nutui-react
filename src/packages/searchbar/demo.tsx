@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Icon from '../icon'
+import { HeartFill1, StarFill } from '@nutui/icons-react'
 import { SearchBar } from './searchbar'
 import Toast from '../toast'
 import { useTranslate } from '../../sites/assets/locale'
@@ -85,14 +85,14 @@ const SearchBarDemo = () => {
         <SearchBar
           label={translated.text}
           actionText={translated.test}
-          clearIconSize="14px"
+          clearSize="14px"
           onSearch={(value) => Toast.text(value)}
         />
         <h2>{translated.title5}</h2>
         <SearchBar
-          leftoutIcon={<Icon name="heart-fill1" size="14" />}
-          rightoutIcon={<Icon name="star-fill" size="14" />}
-          rightinIcon={<Icon name="star-fill" size="14" />}
+          leftoutIcon={<HeartFill1 width={14} height={14} />}
+          rightoutIcon={<StarFill width={14} height={14} />}
+          rightinIcon={<StarFill width={14} height={14} />}
         />
         <h2>{translated.title6}</h2>
         <SearchBar

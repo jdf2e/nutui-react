@@ -183,10 +183,10 @@ export default App;
 | bottom                      | 是否固定在页面底部              | boolean | `false`   |
 | unactiveColor               | icon未激活的颜色             | string | `#7d7e80` |
 | activeColor                 | icon激活的颜色              | string | `#1989fa` |
-size`v1.5.0废弃`              | icon的统一尺寸              | string \| boolean | `20`      |
-| safeAreaInsetBottom`v1.2.2` | 是否开启iphone系列全面屏底部安全区适配 | boolean | `false`   |
-| style`v1.2.2`               | 组件样式                   | CSSProperties | `{}`      |
-| clsssName`v1.2.2`           | 组件类名                   | string | -       |
+size`v2.0.0废弃`              | icon的统一尺寸              | string \| boolean | `20`      |
+| safeAreaInsetBottom | 是否开启iphone系列全面屏底部安全区适配 | boolean | `false`   |
+| style               | 组件样式                   | CSSProperties | `{}`      |
+| className           | 组件类名                   | string | -       |
 
 ### tabbar-item
 
@@ -197,17 +197,17 @@ size`v1.5.0废弃`              | icon的统一尺寸              | string \| b
 | href | 标签页的跳转链接； | string | -     |
 | to`v1.4.0 废弃` | 标签页的路由对象，等于 React Router 的 [to 属性](https://v5.reactrouter.com/web/api/Link/to-string) 属性, taro 版本中采用 Taro.navigateTo 实现 | any | -     |
 | num | 页签右上角的数字角标，超出99之后为99+ | number | - |
-| iconClassPrefix`v1.5.0废弃`   | 自定义 icon 类名前缀，用于使用自定义图标 | string | `nut-icon` |
-| iconFontClassName`v1.5.0废弃` | 自定义 icon 字体基础类名 | string | `nutui-iconfont` |
-| dot`v1.2.2`| 是否显示图标右上角小红点 | boolean | `false`     |
-| iconSize`v1.5.0废弃`    | icon的单个尺寸     | string \| boolean | `20` |
+| iconClassPrefix`v2.0.0废弃`   | 自定义 icon 类名前缀，用于使用自定义图标 | string | `nut-icon` |
+| iconFontClassName`v2.0.0废弃` | 自定义 icon 字体基础类名 | string | `nutui-iconfont` |
+| dot| 是否显示图标右上角小红点 | boolean | `false`     |
+| iconSize`v2.0.0废弃`    | icon的单个尺寸     | string \| boolean | `20` |
 
 ### Event
 
 | 事件名称            | 说明               | 回调参数           |
 |-----------------|--------------------|--------------------|
 | tabSwitch`废弃`   | 切换页签时触发事件 | 点击的数据和索引值 |
-| onSwitch`v1.3.8` | 切换页签时触发事件 | 点击的数据和索引值 |
+| onSwitch | 切换页签时触发事件 | 点击的数据和索引值 |
 
 
 ## 主题定制

@@ -536,9 +536,9 @@ export default App;
 
 | Event             | Description                     | Arguments        |
 | ------------------ | ------------------------ | --------------- |
-| onChange `v1.3.8`           | Triggered when the progress changes and the drag is over | value: progress |
-| onDragStart `v1.3.8`        | Triggered when dragging starts           | -               |
-| onDragEnd `v1.3.8`         | Triggered when the drag is over           | -               |
+| onChange            | Triggered when the progress changes and the drag is over | value: progress |
+| onDragStart         | Triggered when dragging starts           | -               |
+| onDragEnd          | Triggered when the drag is over           | -               |
 
 ### Slots
 

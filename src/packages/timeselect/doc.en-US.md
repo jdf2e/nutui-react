@@ -25,11 +25,11 @@ const TimeSelectDemo = () => {
 
   const dates = [
     {
-      'pannel-key': '0',
+      'paneKey': '0',
       date: 'May 20 (Today)',
     },
     {
-      'pannel-key': '1',
+      'paneKey': '1',
       date: 'May 21 (Wednesday)',
     },
   ]
@@ -100,25 +100,25 @@ export default TimeSelectDemo
 
 ### dates
 
-| Props                   | Description                                                             | Type    | Default |
-|------------------------|----------------------------------------------------------------|---------|------|
-| date                 | display name                                            | string  | - |
-| pannel-key           | Unique identifier, together with currentKey to identify the currently selected day            | number \| string  | `0`|
+| Props | Description | Type    | Default |
+|------------------------|-------------------------|---------|------|
+| date | display name | string  | - |
+| paneKey           | Unique identifier, together with currentKey to identify the currently selected day            | number \| string  | `0`|
 
 ### times
 
 | Props                   | Description                                                                                       | Type    | Default |
 |------------------------|---------------------------------------------------------------------------------------------------|---------|------|
-| key                 | Unique identifier, together with pannel-key and currentKey to identify the currently selected day | Array  | `[]`|
+| key                 | Unique identifier, together with paneKey and currentKey to identify the currently selected day | Array  | `[]`|
 | list                 | Optional time list                                                                                | Array  | `[]`|
 
 ### TimeSelect Event
 
 | Event                  | Description                                                                                                       | required | callback args                         |
 |------------------------|-------------------------------------------------------------------------------------------------------------------|----------|---------------------------------------|
-| onSelect`v1.3.8`       | Callback after closing the mask                                                                                   | true     | `list: []`                            |
-| onPannelChange`v1.3.8` | Click the date callback in the left column, and internally update the data through setCurrentKey, setCurrentTime  | false    | `pannelKey: string \| number, list: []` |
-| onTimeChange`v1.3.8`         | Click the time callback, and internally update the data through setCurrentKey, setCurrentTime                                                                     | false                | `time: string, list: []`              |
+| onSelect       | Callback after closing the mask                                                                                   | true     | `list: []`                            |
+| onPannelChange | Click the date callback in the left column, and internally update the data through setCurrentKey, setCurrentTime  | false    | `pannelKey: string \| number, list: []` |
+| onTimeChange         | Click the time callback, and internally update the data through setCurrentKey, setCurrentTime                                                                     | false                | `time: string, list: []`              |
 
 
 ## Theming

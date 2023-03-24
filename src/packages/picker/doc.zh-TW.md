@@ -86,7 +86,7 @@ const App = () => {
         </span>
       </Cell>
       <Picker
-        isVisible={isVisible1}
+        visible={isVisible1}
         listData={listData1}
         onClose={() => setIsVisible1(false)}
         defaultValueData={[]}
@@ -124,7 +124,7 @@ const App = () => {
       </span>
     </Cell>
     <Picker
-      isVisible={isVisible2}
+      visible={isVisible2}
       listData={listData2}
       onClose={() => setIsVisible2(false)}
       defaultValueData={['周四', '下午']}
@@ -281,7 +281,7 @@ const App = () => {
         </span>
       </Cell>
       <Picker
-        isVisible={isVisible3}
+        visible={isVisible3}
         listData={custmerCityData}
         onClose={() => setIsVisible3(false)}
         defaultValueData={[]}
@@ -307,7 +307,7 @@ export default App;
 
 | 字段 | 說明 | 類型 | 默認值
 |----- | ----- | ----- | ----- 
-| isVisible | 是否可見 | boolean | `false`
+| visible`v2.0.0` | 是否可見 | boolean | `false`
 | title | 設置標題 | string | -
 | listData | 列錶數據 | Array | `[]`
 | defaultValueData | 默認選中 | Array | `[]`

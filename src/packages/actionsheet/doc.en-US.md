@@ -102,7 +102,7 @@ const App = () => {
             
     <ActionSheet
       visible={isVisible2}
-      cancelTxt="Cancel"
+      cancelText="Cancel"
       menuItems={menuItemsOne}
       onChoose={chooseItemTwo}
       onCancel={() => setIsVisible2(false)}
@@ -151,7 +151,7 @@ const App = () => {
     <ActionSheet
       visible={isVisible3}
       description="This is a descriptive message"
-      cancelTxt="Cancel"
+      cancelText="Cancel"
       menuItems={menuItemsTwo}
       onChoose={chooseItemThree}
       
@@ -191,7 +191,7 @@ const App = () => {
     </Cell>
     <ActionSheet
       visible={isVisible4}
-      cancelTxt="Cancel"
+      cancelText="Cancel"
       menuItems={menuItemsThree}
       chooseTagValue="Shading Options"
       onCancel={() => setIsVisible4(false)}
@@ -210,25 +210,25 @@ export default App;
 
 ## Prop
 
-| Attribute             | Description                                   | Type    | Default    |
-|------------------|----------------------------------------|---------|-----------|
+| Attribute | Description | Type    | Default    |
+|------------------|----------- ------|---------|-----------|
 | visible       | Mask layer visible  | boolean | `false`     |
-| cancelTxt       | Cancel Text                               | string  | `Cancel`    |
-| menuItems       | Menu Item                                 | Array   | `[]`       |
-| optionTag       | Set menu item display usage parameters                 | string  | `name`    |
+| cancelText`v2.0.0`       | Cancel Text | string  | `Cancel`    |
+| menuItems | Menu Item | Array   | `[]`       |
+| optionTag | Set menu item display usage parameters | string  | `name`    |
 | optionSubTag   | Set menu item description display usage parameters             | string  | `subname` |
-| title            | Set panel title                         | string  | -        |
-| description      | Set panel subtitle/description                  | string  | -        |
+| title            | Set panel title | string  | -        |
+| description      | Set panel subtitle/description | string  | -        |
 | chooseTagValue | Set selected item'value, corresponds to the value of 'option-tag' | string  | -        |
-| color            | highlight color                               | string  | `#ee0a24` |
+| color            | highlight color | string  | `#ee0a24` |
 
 
 ## Event
 
 | Attribute   | Description               | Arguments                          |
 |--------|--------------------|-----------------------------------|
-| onChoose`v1.3.2` | Triggered after selection       | Selected list item item, selected index value index |
-| onCancel`v1.3.2` | Triggered when onCancel copy is clicked | none                                |
+| onChoose | Triggered after selection       | Selected list item item, selected index value index |
+| onCancel | Triggered when onCancel copy is clicked | none                                |
 
 ## Theming
 

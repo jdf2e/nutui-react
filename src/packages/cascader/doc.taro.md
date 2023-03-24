@@ -97,7 +97,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value1 || '请选择地址'}
+      description={value1 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo1(true)
       }}
@@ -206,7 +206,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value2 || '请选择地址'}
+      description={value2 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo2(true)
       }}
@@ -277,7 +277,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value3 || '请选择地址'}
+      description={value3 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo3(true)
       }}
@@ -348,7 +348,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value4 || '请选择地址'}
+      description={value4 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo4(true)
       }}
@@ -409,7 +409,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value5 || '请选择地址'}
+      description={value5 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo5(true)
       }}
@@ -525,7 +525,7 @@ const App = () => {
     <>
     <Cell
       title="选择地址"
-      desc={value6 || '请选择地址'}
+      description={value6 || '请选择地址'}
       onClick={()=>{
         setIsVisibleDemo6(true)
       }}
@@ -562,7 +562,7 @@ export default App;
 | poppable      | 是否弹窗状态展示                                  | boolean  | `true`   |
 | visible       | 级联显示隐藏状态                                  | boolean  | `false`  |
 | activeColor`1.3.13` | 选中激活颜色                                  | string  | -  |
-| checkedIcon`1.4.8` | 标记选中的Icon | string | `checklist` |
+| checkedIcon`1.5.0`  | 标记选中的Icon | string | `ReactNode`      |
 | tabsColor`1.3.13` | tabs底部选中激活颜色                                    | string  | -  |
 | lazy          | 是否开启动态加载                                  | boolean  | `false`  |
 | lazyLoad      | 动态加载回调，开启动态加载时生效                   | Function | -      |
@@ -572,7 +572,7 @@ export default App;
 | convertConfig | 当options为可转换为树形结构的扁平结构时，配置转换规则 | Object   | -      |
 | title          | 标题 | string   | -      |
 | closeIconPosition | 取消按钮位置，继承 Popup 组件 | string   | `top-right`      |
-| close-icon | 自定义关闭按钮，继承 Popup 组件 | string   | `close`     |
+| closeIcon           | 自定义关闭按钮，继承 Popup 组件 | ReactNode   | `close`     |
 | closeable | 是否显示关闭按钮，继承 Popup 组件 | boolean   | `true`     |
 
 ### Events

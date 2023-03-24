@@ -12,7 +12,7 @@ interface T {
   title1: string
   content: string
   tips: string
-  okText: string
+  confirmText: string
   cancelText: string
 }
 
@@ -26,7 +26,7 @@ const DialogDemo = () => {
       title: '底部按钮 垂直使用',
       title1: '标签式使用',
       content: '这里是弹框内容',
-      okText: '确定',
+      confirmText: '确定',
       cancelText: '取消',
     },
     'en-US': {
@@ -37,7 +37,7 @@ const DialogDemo = () => {
       title: 'Bottom button vertical use',
       title1: 'Template use',
       content: 'Function call and template call are supported.',
-      okText: 'confirm',
+      confirmText: 'confirm',
       cancelText: 'cancel',
     },
   })
@@ -56,7 +56,7 @@ const DialogDemo = () => {
           title={translated.title1}
           lockScroll
           visible={visible1}
-          okText={translated.okText}
+          confirmText={translated.confirmText}
           cancelText={translated.cancelText}
           onOk={() => setVisible1(false)}
           onCancel={() => setVisible1(false)}
@@ -66,7 +66,7 @@ const DialogDemo = () => {
         <Cell title={translated.noTitle} onClick={() => setVisible2(true)} />
         <Dialog
           visible={visible2}
-          okText={translated.okText}
+          confirmText={translated.confirmText}
           cancelText={translated.cancelText}
           onOk={() => setVisible2(false)}
           onCancel={() => setVisible2(false)}
@@ -77,7 +77,7 @@ const DialogDemo = () => {
         <Dialog
           title={translated.title1}
           visible={visible3}
-          okText={translated.okText}
+          confirmText={translated.confirmText}
           noCancelBtn
           onOk={() => setVisible3(false)}
           onCancel={() => setVisible3(false)}
@@ -90,7 +90,7 @@ const DialogDemo = () => {
           visible={visible4}
           lockScroll
           footerDirection="vertical"
-          okText={translated.okText}
+          confirmText={translated.confirmText}
           cancelText={translated.cancelText}
           onOk={() => setVisible4(false)}
           onCancel={() => setVisible4(false)}

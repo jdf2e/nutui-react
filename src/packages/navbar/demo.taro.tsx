@@ -73,7 +73,7 @@ const NavBarDemo = () => {
         </NavBar>
         <NavBar
           title={translated.e51e4582}
-          desc={translated.cfbdc781}
+          description={translated.cfbdc781}
           leftShow
           onClickTitle={(e) => Taro.showToast({ title: translated.b840c88f })}
           onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
@@ -81,7 +81,7 @@ const NavBarDemo = () => {
         />
         <NavBar
           title={translated.c3a3a1d2}
-          desc={translated['8dab2f66']}
+          description={translated['8dab2f66']}
           onClickTitle={(e) => Taro.showToast({ title: translated.b840c88f })}
           onClickRight={(e) =>
             Taro.showToast({ title: translated['8dab2f66'] })
@@ -111,7 +111,7 @@ const NavBarDemo = () => {
         </NavBar>
         <h2>{translated.c9e6df49}</h2>
         <NavBar
-          desc={translated['8dab2f66']}
+          description={translated['8dab2f66']}
           onClickTitle={(e) => Taro.showToast({ title: translated.b840c88f })}
           onClickRight={(e) =>
             Taro.showToast({ title: translated['8dab2f66'] })

@@ -200,10 +200,10 @@ export default App;
 | closeable               | 是否显示关闭按钮 | boolean       | `false`        |
 | closeIconPosition       | 关闭按钮位置（top-left,top-right,bottom-left,bottom-right） | string        | `top-right` |
 | closeIcon               | 自定义 Icon | ReactNode         | `close`     |
-| closeIconSize`v1.5.0废弃` | 关闭按钮大小 | string        | `12px` |
+| closeIconSize`v2.0.0废弃` | 关闭按钮大小 | string        | `12px` |
 | destroyOnClose          | 组件销毁后是否关闭 | boolean       | `true`        |
 | round                   | 是否显示圆角 | boolean       | `false`       |
-| teleport`v1.3.0`        | 指定节点挂载 | HTMLElement \ | (() => HTMLElement) \| null        | `null`       |
+| teleport        | 指定节点挂载 | HTMLElement \ | (() => HTMLElement) \| null        | `null`       |
 
 ### Events
 

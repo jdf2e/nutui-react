@@ -201,7 +201,7 @@ export default App;
 | closeable                    | whether to show the close button | boolean       | `false`        |
 | closeIconPosition            | close button position（top-left,top-right,bottom-left,bottom-right） | string        | `top-right` |
 | closeIcon                    | Custom Icon | ReactNode        | `close`     |
-| closeIconSize`v1.5.0abandon` | Custom Icon Size | string        | `12px` |
+| closeIconSize`v2.0.0abandon` | Custom Icon Size | string        | `12px` |
 | destroyOnClose               | Whether to close after the component is destroyed | boolean       | `true`        |
 | round                        | Whether to show rounded corners | boolean       | `false`       |
 | teleport                     | Mount the specified node | HTMLElement \ | (() => HTMLElement) \| null | `null`       |

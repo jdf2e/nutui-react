@@ -17,7 +17,7 @@ export interface BasicDialogProps {
   title?: ReactNode
   content?: ReactNode
   footer?: ReactNode
-  okText?: ReactNode
+  confirmText?: ReactNode
   cancelText?: ReactNode
   mask?: boolean
   noOkBtn?: boolean

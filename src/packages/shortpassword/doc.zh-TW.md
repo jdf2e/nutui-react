@@ -185,15 +185,15 @@ export default App;
 | modelValue         | 內容               | string \| number | -                |
 | visible        | 是否展示短密碼框                         | boolean | `false`              |
 | title                  | 標題                | string         | `請輸入密碼`                   |
-| desc                   | 密碼框描述          | string         | `您使用了虛擬資產，請進行驗證`|
+| description                   | 密碼框描述          | string         | `您使用了虛擬資產，請進行驗證`|
 | tips                   | 提示語              | string         | `忘記密碼`                     |
 | closeOnClickOverlay | 是否點擊遮罩關閉    | boolean        | `true`                         |
 | noButton              | 是否隱藏底部按鈕    | boolean        | `true`                         |
 | length                 | 密碼長度，取值為4~6 | string \| number | `6`                            |
 | errorMsg              | 錯誤信息提示        | string         | -                           |
 | autoFocus              | 自動聚焦        | boolean         | `false` |
-| tipsIcon `2.0.0` | 忘记密碼提示icon | `ReactNode`  | - |
-| iconSize `2.0.0` | 图标大小 | string \| number  | `11` |
+| tipsIcon `v2.0.0` | 忘记密碼提示icon | `ReactNode`  | - |
+| iconSize `v2.0.0` | 图标大小 | string \| number  | `11` |
 
 
 ### Events

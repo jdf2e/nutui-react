@@ -25,7 +25,7 @@ const App = () => {
     const [value, UpdateValue] = useState('')
   return (
     <>
-      <Input name="text" label="文本" defaultValue={value}  placeholder="文本" change={(val) => {
+      <Input name="text" label="文本" defaultValue={value}  placeholder="文本" onChange={(val) => {
             UpdateValue(val)
           }}/>
     </>
@@ -445,34 +445,34 @@ export default App;
 | autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | Boolean        | `false` |
 | maxlength      | 限制最长输入字符                       | String、Number  | -       |
 | clearable    | 展示清除 Icon                         | Boolean        | `false`  |
-| clearIcon`v1.5.0`   | 清除图标 Icon [可参考 Icon ](#/icon)                             | ReactNode                 | `MaskClose`  |
-| clearSize`v1.5.0`   | 默认清除图标的 `font-size` 大小                                                 | String                    | `14` |
-| leftIcon`v1.5.0`    | 左侧 Icon [可参考 Icon ](#/icon)                                          | ReactNode                 | - |
-| rightIcon`v1.5.0`   | 右侧 Icon [可参考 Icon ](#/icon)                                          | ReactNode                 | - |
-| showWordLimit`v1.2.1` | 是否显示限制最长输入字符，需要设置 `max-length` 属性                                    | Boolean                   | `false` |
-| error`v1.2.1`         | 是否标红                                                                 | Boolean                   | `false` |
-| errorMessage`v1.2.1` | 底部错误提示文案，为空时不展示                                                      | String、Number             | - |
-| errorMessageAlign`v1.2.1` | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`                             | String                    | - |
-| formatter`v1.2.1`      | 输入内容格式化函数                                                            | `(val: string) => string` | - |
-| formatTrigger`v1.2.1` | 格式化函数触发的时机，可选值为 `onChange`、`onBlur`                                  | String                    | - |
+| clearIcon`v2.0.0`   | 清除图标 Icon [可参考 Icon ](#/icon)                             | ReactNode                 | `MaskClose`  |
+| clearSize`v2.0.0`   | 默认清除图标的 `font-size` 大小                                                 | String                    | `14` |
+| leftIcon`v2.0.0`    | 左侧 Icon [可参考 Icon ](#/icon)                                          | ReactNode                 | - |
+| rightIcon`v2.0.0`   | 右侧 Icon [可参考 Icon ](#/icon)                                          | ReactNode                 | - |
+| showWordLimit | 是否显示限制最长输入字符，需要设置 `max-length` 属性                                    | Boolean                   | `false` |
+| error         | 是否标红                                                                 | Boolean                   | `false` |
+| errorMessage | 底部错误提示文案，为空时不展示                                                      | String、Number             | - |
+| errorMessageAlign | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`                             | String                    | - |
+| formatter      | 输入内容格式化函数                                                            | `(val: string) => string` | - |
+| formatTrigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur`                                  | String                    | - |
 ### Events
 
 | 名称   | 说明           | 回调参数    |
 |--------|----------------|-------------|
-| onChange `v1.3.8` | 输入框内容变化时触发 | val ,event |
-| onFocus `v1.3.8`  | 输入框聚焦时触发     | val  ,event |
-| onBlur `v1.3.8`   | 输入框失焦时触发     | val ,event  |
-| onClear `v1.3.8`  | 点击清除按钮时触发   | val ,event  |
-| onClick `v1.3.8`  | 点击组件时触发      | val ,event  |
-| onClickInput `v1.3.8`     | 点击输入区域时触发      | val ,event  |
-| onClickLeftIcon `v1.3.8`  | 点击左侧图标时触发      | val ,event  |
-| onClickRightIcon `v1.3.8` | 点击右侧图标时触发      | val ,event  |
+| onChange  | 输入框内容变化时触发 | val ,event |
+| onFocus   | 输入框聚焦时触发     | val  ,event |
+| onBlur    | 输入框失焦时触发     | val ,event  |
+| onClear   | 点击清除按钮时触发   | val ,event  |
+| onClick   | 点击组件时触发      | val ,event  |
+| onClickInput      | 点击输入区域时触发      | val ,event  |
+| onClickLeftIcon   | 点击左侧图标时触发      | val ,event  |
+| onClickRightIcon  | 点击右侧图标时触发      | val ,event  |
 
 ### Slots
 | 名称                 | 说明     | 
 |--------------------|----------|
 | slotButton         | 自定义输入框尾部按钮 |
-| slotInput `v1.2.1` | 自定义输入框，使用此插槽后，与输入框相关的属性和事件将失效 |
+| slotInput  | 自定义输入框，使用此插槽后，与输入框相关的属性和事件将失效 |
 
 ## 主題定制
 

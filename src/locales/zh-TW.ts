@@ -30,6 +30,7 @@ const zhTW: BaseLang = {
     weekdays: ['日', '一', '二', '三', '四', '五', '六'],
     end: '結束',
     start: '開始',
+    confirm: '確認',
     title: '行事曆選擇',
     monthTitle: (year: number, month: number) => `${year}年${month}月`,
     today: '今天',
@@ -38,7 +39,7 @@ const zhTW: BaseLang = {
   },
   shortpassword: {
     title: '請輸入密碼',
-    desc: '您使用了虛擬資產,請進行驗證',
+    description: '您使用了虛擬資產,請進行驗證',
     tips: '忘記密碼',
   },
   uploader: {
