@@ -7,8 +7,10 @@ const dest_docs = './dist/packages'
 const correctionImport = function (file, cb) {
   const contents = file.contents
     .toString()
-    .replaceAll('@/packages', `${package.name}/dist/packages`)
-    .replaceAll('@/styles', `${package.name}/dist/styles`)
+    // .replaceAll('@/packages', `${package.name}/dist/packages`)
+    .replace(/^@\/packages/g, `${package.name}/dist/packages`)
+    // .replaceAll('@/styles', `${package.name}/dist/styles`)
+    .replace(/^@\/styles/g, `${package.name}/dist/styles`)
   file.contents = Buffer.from(contents, 'utf8')
   cb(null, file)
 }

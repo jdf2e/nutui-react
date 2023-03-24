@@ -4,7 +4,10 @@ import path from 'path'
 import config from './src/config.json'
 
 const entries: any = {
-  'nutui-react.es': path.join(__dirname, `./src/packages/nutui.react.build.ts`),
+  'nutui-react.es': path.join(
+    __dirname,
+    `./src/packages/nutui.taro.react.build.ts`
+  ),
 }
 const outputEntries: any = {}
 
@@ -31,10 +34,10 @@ export default defineConfig({
     lib: {
       entry: '',
       name: 'index',
-      // fileName: (format) => format,
       formats: ['es'],
     },
     rollupOptions: {
+      input: entries,
       // 请确保外部化那些你的库中不需要的依赖
       external: (id, parent) =>
         /^react/.test(id) ||
@@ -42,17 +45,19 @@ export default defineConfig({
         /^classnames/.test(id) ||
         /^@use-gesture/.test(id) ||
         /^@react-spring/.test(id) ||
-        /^@nutui\/icons-react/.test(id) ||
+        /^@nutui\/icons-react-taro/.test(id) ||
         /^@bem-react/.test(id) ||
+        /^@tarojs\/\w+$/.test(id) ||
         (/^@\/packages\/\w+$/.test(id) && !!parent),
-      input: entries,
       output: {
-        paths: {
-          '@/packages/locale': '../locale/lang',
+        paths: (id) => {
+          return /@\/packages/.test(id)
+            ? `${outputEntries[id.replace('@/packages/', './')]}.js`
+            : id
         },
         dir: path.resolve(__dirname, './dist/esm'),
         entryFileNames: '[name].js',
-        plugins: [],
+        chunkFileNames: '[name].js',
       },
     },
     emptyOutDir: false,

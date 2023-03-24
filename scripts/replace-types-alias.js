@@ -11,7 +11,8 @@ vfs
     map((file, cb) => {
       const contents = file.contents
         .toString()
-        .replaceAll('@/packages', `.`)
+        // .replaceAll('@/packages', `.`)
+        .replace(/^@\/packages/g, `.`)
         .replace(/import\s(.*)?\.scss\'\;[\t\n]/g, '')
       file.contents = Buffer.from(contents, 'utf8')
       cb(null, file)
@@ -28,7 +29,8 @@ vfs
         map((file, cb) => {
           const contents = file.contents
             .toString()
-            .replaceAll('@/packages', `..`)
+            // .replaceAll('@/packages', `..`)
+            .replace(/^@\/packages/g, `..`)
           file.contents = Buffer.from(contents, 'utf8')
           cb(null, file)
         })

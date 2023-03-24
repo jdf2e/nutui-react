@@ -3,6 +3,7 @@ const vfs = require('vinyl-fs')
 const map = require('map-stream')
 const fs = require('fs-extra')
 const exportPropsTypes = require('../export-props')
+const package = require('../../package.json')
 const dest_docs = './dist/types'
 
 vfs
@@ -11,7 +12,8 @@ vfs
     map((file, cb) => {
       const contents = file.contents
         .toString()
-        .replaceAll('@/packages', `.`)
+        // .replaceAll('@/packages', `.`)
+        .replace(/^@\/packages/g, `.`)
         .replace(/import\s(.*)?\.scss\'\;[\t\n]/g, '')
       file.contents = Buffer.from(contents, 'utf8')
       cb(null, file)
@@ -28,7 +30,8 @@ vfs
         map((file, cb) => {
           const contents = file.contents
             .toString()
-            .replaceAll('@/packages', `..`)
+            // .replaceAll('@/packages', `..`)
+            .replace(/^@\/packages/g, `..`)
           file.contents = Buffer.from(contents, 'utf8')
           cb(null, file)
         })

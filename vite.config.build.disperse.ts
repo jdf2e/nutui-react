@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import path from 'path'
+import commonjs from '@rollup/plugin-commonjs'
+import typescript from '@rollup/plugin-typescript'
+import { getBabelOutputPlugin } from '@rollup/plugin-babel'
 import config from './src/config.json'
 
 const entries: any = {
@@ -27,14 +30,15 @@ export default defineConfig({
   },
   plugins: [reactRefresh()],
   build: {
+    emptyOutDir: false,
     minify: false,
     lib: {
       entry: '',
       name: 'index',
-      // fileName: (format) => format,
       formats: ['es'],
     },
     rollupOptions: {
+      input: entries,
       // 请确保外部化那些你的库中不需要的依赖
       external: (id, parent) =>
         /^react/.test(id) ||
@@ -42,19 +46,32 @@ export default defineConfig({
         /^classnames/.test(id) ||
         /^@use-gesture/.test(id) ||
         /^@react-spring/.test(id) ||
-        /^@nutui\/icons-react/.test(id) ||
         /^@bem-react/.test(id) ||
+        /^@nutui\/icons-react/.test(id) ||
         (/^@\/packages\/\w+$/.test(id) && !!parent),
-      input: entries,
       output: {
-        paths: {
-          '@/packages/locale': '../locale/lang',
+        paths: (id) => {
+          return /@\/packages/.test(id)
+            ? `${outputEntries[id.replace('@/packages/', './')]}.js`
+            : id
         },
         dir: path.resolve(__dirname, './dist/esm'),
         entryFileNames: '[name].js',
-        plugins: [],
+        chunkFileNames: '[name].js',
       },
+      plugins: [
+        commonjs(),
+        typescript(),
+        getBabelOutputPlugin({
+          presets: ['@babel/preset-env'],
+          plugins: [
+            '@babel/plugin-transform-runtime',
+            '@babel/plugin-proposal-class-properties',
+            '@babel/plugin-proposal-object-rest-spread',
+            '@babel/plugin-syntax-dynamic-import',
+          ],
+        }),
+      ],
     },
-    emptyOutDir: false,
   },
 })
