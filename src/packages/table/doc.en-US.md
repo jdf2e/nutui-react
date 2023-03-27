@@ -8,7 +8,6 @@ Used to display the basic table
 ```ts
 // react
 import { Table } from '@nutui/nutui-react';
-
 ```
 
 
@@ -250,6 +249,71 @@ const App = () => {
         columns={columns1}
         data={data1}
         striped
+    />;
+};
+export default App;
+```
+:::
+
+### Hide table header
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Table } from '@nutui/nutui-react';
+
+interface TableColumnProps {
+  key?: string
+  title?: string
+  align?: string
+  sorter?: ((a: any, b: any) => number) | boolean | string
+  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
+}
+
+const App = () => {
+  const [columns1, setColumns1] = useState([
+    {
+      title: '姓名',
+      key: 'name',
+    },
+    {
+      title: '性别',
+      key: 'sex',
+      render: (record: any) => {
+        return (
+          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
+            {record.sex}
+          </span>
+        )
+      },
+    },
+    {
+      title: '学历',
+      key: 'record',
+    },
+  ])
+
+  const [data1, setData1] = useState([
+    {
+      name: 'Tom',
+      sex: '男',
+      record: '小学',
+    },
+    {
+      name: 'Lucy',
+      sex: '女',
+      record: '本科',
+    },
+    {
+      name: 'Jack',
+      sex: '男',
+      record: '高中',
+    },
+  ])
+
+  return <Table
+        columns={columns1}
+        data={data1}
+        showHeader={false}
     />;
 };
 export default App;
@@ -545,21 +609,22 @@ export default App;
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| bordered         | Show border | 	Boolean | true                |
-| columns         | Header data | 	TableColumnProps[] | []                |
-| data         | Table data | 	Object[] | []                |
-| summary         | Show profile | 	React.ReactNode | -                |
-| striped         | Whether the stripes alternate light and dark | 	Boolean | false                |
-| noData         | Custom noData | 	React.ReactNode | -                |
+| bordered         | Show border | 	boolean | `true`                |
+| columns         | Header data | 	TableColumnProps[] | `[]`                |
+| data         | Table data | 	Object[] | `[]`                |
+| summary         | Show profile | 	ReactNode | -                |
+| striped         | Whether the stripes alternate light and dark | 	boolean | `false`                |
+| showHeader`v1.4.11`         | Show Header | 	boolean | `true`                |
+| noData         | Custom noData | 	ReactNode | -                |
 
 ### TableColumnProps
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| key         | Unique identification of the column | 	String | ''                |
-| title         | Header title | 	String | ''                |
-| align         |Alignment of columns, optional values`left`,`center`,`right`  | 	String | left                |
-| sorter         | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | 	Boolean、Function、String | -                |
+| key         | Unique identification of the column | 	string | -                |
+| title         | Header title | 	string | -                |
+| align         |Alignment of columns, optional values`left`,`center`,`right`  | 	string | `left`                |
+| sorter         | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | 	boolean \| Function \| string | -                |
 | render         | Custom render column data, high priority | 	Function(record) | -                |
 
 
@@ -579,7 +644,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-table-border-color | ` #ececec` |
-| --nutui-table-cols-padding | ` 10px` |
-| --nutui-table-tr-even-bg-color | ` $gray4` |
-| --nutui-table-tr-odd-bg-color | ` $gray6` |
+| --nutui-table-border-color | `#ececec` |
+| --nutui-table-cols-padding | `10px` |
+| --nutui-table-tr-even-bg-color | `$gray4` |
+| --nutui-table-tr-odd-bg-color | `$gray6` |

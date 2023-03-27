@@ -25,7 +25,7 @@ const App = () => {
     const [value, UpdateValue] = useState('')
   return (
     <>
-      <Input name="text" label="文本" defaultValue={value}  placeholder="文本" change={(val) => {
+      <Input name="text" label="文本" defaultValue={value}  placeholder="文本" onChange={(val) => {
             UpdateValue(val)
           }}/>
     </>
@@ -425,48 +425,48 @@ export default App;
 
 | 参数         | 说明                                   | 类型           | 默认值  |
 | ------------ | -------------------------------------- | -------------- | ------- |
-| defaultValue | 初始默认值                  | String         | -       |
-| type         | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `textarea` `number` `digit`      | String         | `text`  |
-| name`v1.3.10`  | 组件名字，用于表单提交获取数据 | String         | -       |
+| defaultValue | 初始默认值                  | string         | -       |
+| type         | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `textarea` `number` `digit`      | string         | `text`  |
+| name`v1.3.10`  | 组件名字，用于表单提交获取数据 | string         | -       |
 | ref`v1.3.10`  | 用于获取内部input实例ref | RefAttributes         | -       |
-| placeholder  | 输入框为空时占位符                           | String         | -       |
-| label        | 左侧文本                               | String         | -       |
-| labelClass  | 左侧文本额外类名                        | String | -  |
-| labelWidth  | 左侧文本宽度，默认单位为 `px`            | String、Number | `80`    |
-| labelAlign  | 左侧文本对齐方式，可选值 `left`、`center`、`right`   | String | `left` |
-| inputAlign  | 输入框内容对齐方式，可选值 `left`、`center`、`right` | String | `left` |
-| colon        | 是否在 label 后面添加冒号               | Boolean        | `false` |
-| required     | 左侧*号是否展示                        | Boolean        | `false` |
-| border       | 是否显示下边框                         | Boolean        | `true` |
-| disabled     | 是否禁用                              | Boolean        | `false` |
-| readonly     | 是否只读                              | Boolean        | `false` |
-| autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | Boolean        | `false` |
-| maxlength      | 限制最长输入字符                       | String、Number  | -       |
-| clearable    | 展示清除 Icon                         | Boolean        | `false`  |
-| clearIcon   | 清除图标 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon)   | String        | `mask-close`  |
-| clearSize   | 清除图标的 `font-size` 大小           | String        | `14`  |
-| leftIcon    | 左侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
-| rightIcon   | 右侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | String        | - |
-| leftIconSize    | 左侧 Icon 的 `font-size` 大小           | String        | `14`  |
-| rightIconSize   | 右侧 Icon 的 `font-size` 大小           | String        | `14`  |
-| showWordLimit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | Boolean | `false`  |
-| error         | 是否标红                                | Boolean | `false`  |
-| errorMessage | 底部错误提示文案，为空时不展示            | String、Number | - |
-| errorMessageAlign | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`          | String | - |
+| placeholder  | 输入框为空时占位符                           | string         | -       |
+| label        | 左侧文本                               | string         | -       |
+| labelClass  | 左侧文本额外类名                        | string | -  |
+| labelWidth  | 左侧文本宽度，默认单位为 `px`            | string \| number | `80`    |
+| labelAlign  | 左侧文本对齐方式，可选值 `left`、`center`、`right`   | string | `left` |
+| inputAlign  | 输入框内容对齐方式，可选值 `left`、`center`、`right` | string | `left` |
+| colon        | 是否在 label 后面添加冒号               | boolean        | `false` |
+| required     | 左侧*号是否展示                        | boolean        | `false` |
+| border       | 是否显示下边框                         | boolean        | `true` |
+| disabled     | 是否禁用                              | boolean        | `false` |
+| readonly     | 是否只读                              | boolean        | `false` |
+| autofocus    | 是否自动获得焦点，iOS 系统不支持该属性     | boolean        | `false` |
+| maxlength      | 限制最长输入字符                       | string \| number  | -       |
+| clearable    | 展示清除 Icon                         | boolean        | `false`  |
+| clearIcon   | 清除图标 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon)   | string        | `mask-close`  |
+| clearSize   | 清除图标的 `font-size` 大小           | string        | `14`  |
+| leftIcon    | 左侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | string        | - |
+| rightIcon   | 右侧 Icon 名称或图片链接，[可参考 Icon 组件的 name 属性](#/icon) | string        | - |
+| leftIconSize    | 左侧 Icon 的 `font-size` 大小           | string        | `14`  |
+| rightIconSize   | 右侧 Icon 的 `font-size` 大小           | string        | `14`  |
+| showWordLimit | 是否显示限制最长输入字符，需要设置 `max-length` 属性 | boolean | `false`  |
+| error         | 是否标红                                | boolean | `false`  |
+| errorMessage | 底部错误提示文案，为空时不展示            | string \| number | - |
+| errorMessageAlign | 底部错误提示文案对齐方式，可选值 `left`、`center`、`right`          | string | - |
 | formatter      | 输入内容格式化函数    | `(val: string) => string` | - |
-| formatTrigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | String | - |
+| formatTrigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | string | - |
 ### Events
 
 | 名称   | 说明           | 回调参数    |
 |--------|----------------|-------------|
-| onChange `v1.3.8` | 输入框内容变化时触发 | val ,event |
-| onFocus `v1.3.8`  | 输入框聚焦时触发     | val  ,event |
-| onBlur `v1.3.8`   | 输入框失焦时触发     | val ,event  |
-| onClear `v1.3.8`  | 点击清除按钮时触发   | val ,event  |
-| onClick `v1.3.8`  | 点击组件时触发      | val ,event  |
-| onClickInput `v1.3.8`     | 点击输入区域时触发      | val ,event  |
-| onClickLeftIcon `v1.3.8`  | 点击左侧图标时触发      | val ,event  |
-| onClickRightIcon `v1.3.8` | 点击右侧图标时触发      | val ,event  |
+| onChange `v1.3.8` | 输入框内容变化时触发 | `val, event` |
+| onFocus `v1.3.8`  | 输入框聚焦时触发     | `val, event` |
+| onBlur `v1.3.8`   | 输入框失焦时触发     | `val, event`  |
+| onClear `v1.3.8`  | 点击清除按钮时触发   | `val, event`  |
+| onClick `v1.3.8`  | 点击组件时触发      | `val, event`  |
+| onClickInput `v1.3.8`     | 点击输入区域时触发      | `val, event`  |
+| onClickLeftIcon `v1.3.8`  | 点击左侧图标时触发      | `val, event`  |
+| onClickRightIcon `v1.3.8` | 点击右侧图标时触发      | `val, event`  |
 
 ### Slots
 | 名称  | 说明     | 
@@ -482,25 +482,25 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-input-border-bottom | ` #eaf0fb` |
-| --nutui-input-disabled-color | ` #c8c9cc` |
-| --nutui-input-required-color | `  $required-color` |
-| --nutui-input-font-size | ` $font-size-2` |
-| --nutui-input-padding | ` 10px 25px` |
-| --nutui-inputnumber-icon-color | `  $title-color` |
-| --nutui-inputnumber-icon-void-color | `  $disable-color` |
-| --nutui-inputnumber-icon-disabled-color | `  $gray2` |
-| --nutui-inputnumber-icon-size | ` 20px` |
-| --nutui-inputnumber-input-font-size | `  12px` |
-| --nutui-inputnumber-input-font-color | `  $gray1` |
-| --nutui-inputnumber-input-background-color | `  $gray4` |
-| --nutui-inputnumber-input-border-radius | `  4px` |
-| --nutui-inputnumber-input-width | ` 40px` |
-| --nutui-inputnumber-input-margin | `  0 6px` |
-| --nutui-inputnumber-input-border | ` 0` |
-| --nutui-inputnumber-border | ` 0` |
-| --nutui-inputnumber-border-radius | ` 0` |
-| --nutui-inputnumber-height | ` auto` |
-| --nutui-inputnumber-line-height | ` normal` |
-| --nutui-inputnumber-border-box | `  content-box` |
-| --nutui-inputnumber-display | ` flex` |
+| --nutui-input-border-bottom | `#eaf0fb` |
+| --nutui-input-disabled-color | `#c8c9cc` |
+| --nutui-input-required-color | `$required-color` |
+| --nutui-input-font-size | `$font-size-2` |
+| --nutui-input-padding | `10px 25px` |
+| --nutui-inputnumber-icon-color | `$title-color` |
+| --nutui-inputnumber-icon-void-color | `$disable-color` |
+| --nutui-inputnumber-icon-disabled-color | `$gray2` |
+| --nutui-inputnumber-icon-size | `20px` |
+| --nutui-inputnumber-input-font-size | `12px` |
+| --nutui-inputnumber-input-font-color | `$gray1` |
+| --nutui-inputnumber-input-background-color | `$gray4` |
+| --nutui-inputnumber-input-border-radius | `4px` |
+| --nutui-inputnumber-input-width | `40px` |
+| --nutui-inputnumber-input-margin | `0 6px` |
+| --nutui-inputnumber-input-border | `0` |
+| --nutui-inputnumber-border | `0` |
+| --nutui-inputnumber-border-radius | `0` |
+| --nutui-inputnumber-height | `auto` |
+| --nutui-inputnumber-line-height | `normal` |
+| --nutui-inputnumber-border-box | `content-box` |
+| --nutui-inputnumber-display | `flex` |

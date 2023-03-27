@@ -10,7 +10,6 @@ Support full screen preview videos and images, support functional call.
 ```ts
 // react
 import { ImagePreview } from '@nutui/nutui-react'
-
 ```
 
 
@@ -58,6 +57,63 @@ const App = () => {
 export default App;
 ```
 :::
+
+### Click on the thumbnail to switch
+
+:::demo
+
+```tsx
+import React, { useState } from 'react';
+import { ImagePreview, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const images = [
+    {
+      src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg'
+    },
+    {
+      src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png'
+    },
+    {
+      src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg'
+    },
+    {
+      src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg'
+    }
+  ];
+  const [init, setInit] = useState(0);
+
+  return (
+    <>
+      <Cell style={{ position: 'relative', zIndex: 10000 }}>
+        {images.map((image, index) =>
+          (<span
+            key={image.src}
+            onClick={() => setInit(index + 1)}
+            style={{ marginRight: '10px' }}
+          >
+              <img width={30}
+                   height={30}
+                   src={image.src}
+                   alt={image.src}
+              />
+            </span>)
+        )}
+      </Cell>
+      <ImagePreview
+        images={images}
+        show={init}
+        initNo={init}
+        onClose={hideFn2}
+      />
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
 
 ### With Init No
 
@@ -219,14 +275,14 @@ export default App;
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| show | Whether to show preview | Boolean | false
-| videos | Videos Array(Videos are before images, not support in taro) | Array<`Object`> | []
-| images | Images array | Array<`String`> | []
-| autoplay | Autoplay time, zero means not autoplay | Number、String  | 3000  |
-| initNo | Init no | Number | 1
-| paginationVisible | Whether to show pagination    | Boolean | false |
-| paginationColor   | Pagination color    | String  | '#fff'  |
-| contentClose   | Click image to exit preview    | Boolean  | false  |
+| show | Whether to show preview | boolean | `false` |
+| videos | Videos Array(Videos are before images, not support in taro) | `Array<Object>` | `[]`
+| images | Images array | `{ src: string }[]` | `[]` |
+| autoplay | Autoplay time, zero means not autoplay | number \| string  | `3000`  |
+| initNo | Init no | number | `1` |
+| paginationVisible | Whether to show pagination    | boolean | `false` |
+| paginationColor   | Pagination color    | string  | `#fff`  |
+| contentClose   | Click image to exit preview    | boolean  | `false`  |
 
 ### Events
 

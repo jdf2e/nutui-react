@@ -6,7 +6,6 @@
 
 ### 安装
 ```ts
-
 import { Table } from '@nutui/nutui-react-taro';
 ```
 
@@ -259,6 +258,71 @@ const App = () => {
         columns={columns1}
         data={data1}
         striped
+    />;
+};
+export default App;
+```
+:::
+
+### 隐藏表头
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Table } from '@nutui/nutui-react-taro';
+
+interface TableColumnProps {
+  key?: string
+  title?: string
+  align?: string
+  sorter?: ((a: any, b: any) => number) | boolean | string
+  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
+}
+
+const App = () => {
+  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
+    {
+      title: '姓名',
+      key: 'name',
+    },
+    {
+      title: '性别',
+      key: 'sex',
+      render: (record: any) => {
+        return (
+          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
+            {record.sex}
+          </span>
+        )
+      },
+    },
+    {
+      title: '学历',
+      key: 'record',
+    },
+  ])
+
+  const [data1, setData1] = useState([
+    {
+      name: 'Tom',
+      sex: '男',
+      record: '小学',
+    },
+    {
+      name: 'Lucy',
+      sex: '女',
+      record: '本科',
+    },
+    {
+      name: 'Jack',
+      sex: '男',
+      record: '高中',
+    },
+  ])
+
+  return <Table
+        columns={columns1}
+        data={data1}
+        showHeader={false}
     />;
 };
 export default App;
@@ -554,21 +618,22 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| bordered         | 是否显示边框 | 	Boolean | true                |
-| columns         | 表头数据 | 	TableColumnProps[] | []                |
-| data         | 表格数据 | 	Object[] | []                |
-| summary         | 是否显示简介 | 	React.ReactNode | -                |
-| striped         | 条纹是否明暗交替 | 	Boolean | false                |
-| noData         | 自定义无数据 | 	React.ReactNode | -                |
+| bordered         | 是否显示边框 | 	boolean | `true`                |
+| columns         | 表头数据 | 	TableColumnProps[] | `[]`                |
+| data         | 表格数据 | 	Object[] | `[]`                |
+| summary         | 是否显示简介 | 	ReactNode | -                |
+| striped         | 条纹是否明暗交替 | 	boolean | false                |
+| showHeader`v1.4.11`         | 是否显示表头 | 	boolean | `true`                |
+| noData         | 自定义无数据 | 	ReactNode | -                |
 
 ### TableColumnProps
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| key         | 列的唯一标识 | 	String | ''                |
-| title         | 表头标题 | 	String | ''                |
-| align         | 列的对齐方式，可选值left,center,right | 	String | left                |
-| sorter         | 排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法 | 	Boolean、Function、String | -                |
+| key         | 列的唯一标识 | 	string | -                |
+| title         | 表头标题 | 	string | -                |
+| align         | 列的对齐方式，可选值left,center,right | 	string | `left`                |
+| sorter         | 排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法 | 	boolean \| Function \| string | -                |
 | render         | 自定义渲染列数据，优先级高 | 	Function(record) | -                |
 
 
@@ -588,7 +653,7 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-table-border-color | ` #ececec` |
-| --nutui-table-cols-padding | ` 10px` |
-| --nutui-table-tr-even-bg-color | ` $gray4` |
-| --nutui-table-tr-odd-bg-color | ` $gray6` |
+| --nutui-table-border-color | `#ececec` |
+| --nutui-table-cols-padding | `10px` |
+| --nutui-table-tr-even-bg-color | `$gray4` |
+| --nutui-table-tr-odd-bg-color | `$gray6` |

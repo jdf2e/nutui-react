@@ -45,7 +45,7 @@ export class FormItem extends React.Component<FieldProps> {
 
   private cancelRegister: any
 
-  private isInitialValue: boolean = false
+  private isInitialValue = false
 
   componentDidMount() {
     // 注册组件实例到FormStore
@@ -65,13 +65,16 @@ export class FormItem extends React.Component<FieldProps> {
     const type = (children as any).type.NAME
 
     const defaultvalue =
-      this.props.initialValue || (children as any).props?.defaultValue
+      this.props.initialValue ||
+      (children as any).props?.defaultValue ||
+      (children as any).props?.value
     if (defaultvalue && !this.isInitialValue) {
       setFieldsValue({ [name]: defaultvalue })
       this.isInitialValue = true
     }
 
     return {
+      value: getFieldValue(name),
       defaultValue: getFieldValue(name),
       onChange: (
         event: React.ChangeEvent<HTMLInputElement> | number | string | string[]

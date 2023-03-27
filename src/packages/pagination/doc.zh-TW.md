@@ -8,7 +8,6 @@
 ``` javascript
 // react
 import { Pagination } from '@nutui/nutui-react';
-
 ```    
 
 ### 基礎用法
@@ -127,23 +126,23 @@ export default App;
     
 | 屬性 | 說明 | 類型 | 預設值           |
 | -------------- | -------------------------------- | ------------------------- | ----------------- |
-| modelValue     | 當前頁碼                         | Number                    | -                 |
-| defaultValue   | 當前頁碼                         | Number                    | 1                 |
-| mode           | 顯示模式,可選值為：multi，simple  | String                    | multi             |
-| prevText       | 自定義上一頁按鈕內容             | String \| React.ReactNode | 上一頁            |
-| nextText       | 自定義下一頁按鈕內容             | String \| React.ReactNode | 下一頁            |
-| pageCount      | 總頁數                           | String \| Number          | 傳入/根據頁數計算 |
-| totalItems     | 總記錄數                         | String \| Number          | 0                 |
-| itemsPerPage   | 每頁記錄數                       | String \| Number          | 10                |
-| showPageSize   | 顯示的頁碼個數                   | String \| Number          | 5                 |
-| forceEllipses  | 是否顯示省略號                   | Boolean                   | false             |
-| pageNodeRender | 用於自定義頁碼的結構             | (page) => React.ReactNode | -                 |
+| modelValue     | 當前頁碼                         | number                    | -                 |
+| defaultValue   | 當前頁碼                         | number                    | `1`                 |
+| mode           | 顯示模式,可選值為：multi，simple  | string                    | `multi`             |
+| prevText       | 自定義上一頁按鈕內容             | string \| ReactNode | `上一頁`            |
+| nextText       | 自定義下一頁按鈕內容             | string \| ReactNode | `下一頁`            |
+| pageCount      | 總頁數                           | string \| number          | 傳入/根據頁數計算 |
+| totalItems     | 總記錄數                         | string \| number          | `0`                 |
+| itemsPerPage   | 每頁記錄數                       | string \| number          | `10`                |
+| showPageSize   | 顯示的頁碼個數                   | string \| number          | `5`                 |
+| forceEllipses  | 是否顯示省略號                   | boolean                   | `false`             |
+| pageNodeRender | 用於自定義頁碼的結構             | (page) => ReactNode | -                 |
     
 ### Events
     
 | 事件名稱 | 說明 | 回調參數     |
 | -------- | -------------- | -------- |
-| onChange | 页码改变时触发 | value    |
+| onChange | 页码改变时触发 | `value`    |
 
 
 ## 主題定制
@@ -154,11 +153,11 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-pagination-color | ` $primary-color` |
-| --nutui-pagination-font-size | ` $font-size-2` |
-| --nutui-pagination-item-border-color | `  #e4e7eb` |
-| --nutui-pagination-disable-color | `  $disable-color` |
-| --nutui-pagination-disable-background-color | `  #f7f8fa` |
-| --nutui-pagination-item-border-width | `  1px` |
-| --nutui-pagination-item-border-radius | `  2px` |
-| --nutui-pagination-prev-next-padding | `  0 11px` |
+| --nutui-pagination-color | `$primary-color` |
+| --nutui-pagination-font-size | `$font-size-2` |
+| --nutui-pagination-item-border-color | `#e4e7eb` |
+| --nutui-pagination-disable-color | `$disable-color` |
+| --nutui-pagination-disable-background-color | `#f7f8fa` |
+| --nutui-pagination-item-border-width | `1px` |
+| --nutui-pagination-item-border-radius | `2px` |
+| --nutui-pagination-prev-next-padding | `0 11px` |

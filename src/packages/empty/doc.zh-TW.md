@@ -9,7 +9,6 @@
 ```javascript
 // react
 import { Empty } from '@nutui/nutui-react'
-
 ```
 
 ## 代碼演示
@@ -106,8 +105,8 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 預設值           |
 |--------------|----------------------------------|--------|------------------|
-| image         | 圖片類型，可選值為 error network empty，支持傳入圖片 URL              | ReactNode       |
-| imageSize        | 圖片大小，Number 類型單位為 px                    | Number \| String | -       |
+| image         | 圖片類型，可選值為 `error` `network` `empty`，支持傳入圖片 URL              | string \| ReactNode       | `empty` |
+| imageSize        | 圖片大小，number 類型單位為 px                    | number \| string | -       |
 | description         | 圖片下方的描述文字  | ReactNode |    無數據             |
 
 
@@ -119,10 +118,10 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-empty-padding | ` 32px 0` |
-| --nutui-empty-image-size | ` 170px` |
-| --nutui-empty-description-margin-top | `  4px` |
-| --nutui-empty-description-color | `  #666666` |
-| --nutui-empty-description-font-size | `  14px` |
-| --nutui-empty-description-line-height | `  20px` |
-| --nutui-empty-description-padding | `  0 40px` |
+| --nutui-empty-padding | `32px 0` |
+| --nutui-empty-image-size | `170px` |
+| --nutui-empty-description-margin-top | `4px` |
+| --nutui-empty-description-color | `#666666` |
+| --nutui-empty-description-font-size | `14px` |
+| --nutui-empty-description-line-height | `20px` |
+| --nutui-empty-description-padding | `0 40px` |

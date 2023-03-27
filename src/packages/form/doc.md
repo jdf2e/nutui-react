@@ -194,16 +194,16 @@ const App = () => {
         onFinishFailed={(error) => submitFailed(error)}
       >
         <Form.Item
-          label={translated.name}
+          label='姓名'
           name="username"
-          rules={[{ required: true, message: translated.nameTip }]}
+          rules={[{ required: true, message: '请输入姓名' }]}
         >
-          <Input placeholder={translated.nameTip1} type="text" />
+          <Input placeholder='请输入姓名' type="text" />
         </Form.Item>
         <Form.Item label="标注" name="note">
           <Input placeholder="请输入标注" type="string" />
         </Form.Item>
-        <Form.Item label={translated.radiogroup} name="radiogroup">
+        <Form.Item label='单选按钮' name="radiogroup">
           <Radio.RadioGroup onChange={onMenuChange}>
             <Radio value="male">male</Radio>
             <Radio value="female">female</Radio>
@@ -211,7 +211,7 @@ const App = () => {
           </Radio.RadioGroup>
         </Form.Item>
         <Cell>
-          <input type="submit" value={translated.submit} />
+          <input type="submit" value='提交' />
         </Cell>
       </Form>
     </>
@@ -328,16 +328,16 @@ Form.useForm()创建 Form 实例，用于管理所有数据状态。
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-form-item-error-line-color | `  $required-color` |
-| --nutui-form-item-required-color | `  $required-color` |
-| --nutui-form-item-error-message-color | `  $required-color` |
-| --nutui-form-item-label-font-size | `  14px` |
-| --nutui-form-item-label-width | ` 90px` |
-| --nutui-form-item-label-margin-right | `  10px` |
-| --nutui-form-item-label-text-align | `  left` |
-| --nutui-form-item-required-margin-right | `  4px` |
-| --nutui-form-item-body-font-size | ` 14px` |
-| --nutui-form-item-body-slots-text-align | `  left` |
-| --nutui-form-item-body-input-text-align | `  left` |
-| --nutui-form-item-tip-font-size | ` 10px` |
-| --nutui-form-item-tip-text-align | ` left` |
+| --nutui-form-item-error-line-color | `$required-color` |
+| --nutui-form-item-required-color | `$required-color` |
+| --nutui-form-item-error-message-color | `$required-color` |
+| --nutui-form-item-label-font-size | `14px` |
+| --nutui-form-item-label-width | `90px` |
+| --nutui-form-item-label-margin-right | `10px` |
+| --nutui-form-item-label-text-align | `left` |
+| --nutui-form-item-required-margin-right | `4px` |
+| --nutui-form-item-body-font-size | `14px` |
+| --nutui-form-item-body-slots-text-align | `left` |
+| --nutui-form-item-body-input-text-align | `left` |
+| --nutui-form-item-tip-font-size | `10px` |
+| --nutui-form-item-tip-text-align | `left` |

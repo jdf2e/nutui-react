@@ -9,7 +9,6 @@
 ``` javascript
 // react
 import { Badge } from '@nutui/nutui-react';
-
 ```
 
 ## Demo
@@ -233,14 +232,14 @@ export default App;
 
 | Attribute    | Description                                       | Type    | Default    |
 |---------|--------------------------------------------|---------|-----------|
-| value   | value to show                                 | String  | -         |
-| max     | when value is number, it's the max size                     | Number  | `10000`   |
-| zIndex |  z-index                          | Number  | `10`      |
-| dot     | Is dotted    | Boolean | `false`   |
-| top     | Up and down offset, support unit setting, can be set to: 5, etc. | Number  | `0`       |
-| right   | Left and right offset, support unit setting, can be set to: 5, etc. | Number  | `0`       |
-| color   | background color                                | String  | `#fa2c19` |
-| icons   | custom icons                               | String  | - |
+| value   | value to show                                 | string  | -         |
+| max     | when value is number, it's the max size                     | number  | `10000`   |
+| zIndex |  z-index                          | number  | `10`      |
+| dot     | Is dotted    | boolean | `false`   |
+| top     | Up and down offset, support unit setting, can be set to: 5, etc. | number  | `0`       |
+| right   | Left and right offset, support unit setting, can be set to: 5, etc. | number  | `0`       |
+| color   | background color                                | string  | `#fa2c19` |
+| icons   | custom icons                               | string  | - |
 
 
 
@@ -254,16 +253,16 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-badge-background-color | ` linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%))`|
-| --nutui-badge-color | ` #fff` |
-| --nutui-badge-font-size | ` $font-size-1` |
-| --nutui-badge-default-background-color | `  rgba(255, 255, 255, 1)` |
-| --nutui-badge-border | ` 0px solid $primary-text-color`|
-| --nutui-badge-border-radius | ` 14px` |
-| --nutui-badge-padding | ` 0 5px` |
-| --nutui-badge-content-transform | ` translateY(-50%) translateX(100%)`|
-| --nutui-badge-z-index | ` 1` |
-| --nutui-badge-dot-width | ` 7px` |
-| --nutui-badge-dot-height | ` 7px` |
-| --nutui-badge-dot-border-radius | ` 7px` |
-| --nutui-badge-dot-padding | ` 0px` |
+| --nutui-badge-background-color | `linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%))`|
+| --nutui-badge-color | `#fff` |
+| --nutui-badge-font-size | `$font-size-1` |
+| --nutui-badge-default-background-color | `rgba(255, 255, 255, 1)` |
+| --nutui-badge-border | `0px solid $primary-text-color`|
+| --nutui-badge-border-radius | `14px` |
+| --nutui-badge-padding | `0 5px` |
+| --nutui-badge-content-transform | `translateY(-50%) translateX(100%)`|
+| --nutui-badge-z-index | `1` |
+| --nutui-badge-dot-width | `7px` |
+| --nutui-badge-dot-height | `7px` |
+| --nutui-badge-dot-border-radius | `7px` |
+| --nutui-badge-dot-padding | `0px` |

@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-// import { useTranslate } from '../../sites/assets/locale'
 import Picker from '@/packages/picker'
 import { useConfig } from '@/packages/configprovider'
 
@@ -19,15 +18,18 @@ interface pickerRefState {
   ) => void
 }
 
-interface T {
-  [props: string]: string
-}
-
 export interface DatePickerProps {
   modelValue: Date | null
   visible: boolean
   title: string
-  type: 'date' | 'time' | 'year-month' | 'month-day' | 'datehour' | 'datetime'
+  type:
+    | 'date'
+    | 'time'
+    | 'year-month'
+    | 'month-day'
+    | 'datehour'
+    | 'datetime'
+    | 'hour-minutes'
   isShowChinese: boolean
   minuteStep: number
   minDate: Date
@@ -88,39 +90,11 @@ export const DatePicker: FunctionComponent<
     ...props,
   }
   const { locale } = useConfig()
-  // const [translated] = useTranslate<T>({
-  //   'zh-CN': {
-  //     year: '年',
-  //     month: '月',
-  //     day: '日',
-  //     hour: '时',
-  //     min: '分',
-  //     seconds: '秒',
-  //   },
-  //   'zh-TW': {
-  //     year: '年',
-  //     month: '月',
-  //     day: '日',
-  //     hour: '時',
-  //     min: '分',
-  //     seconds: '秒',
-  //   },
-  //   'en-US': {
-  //     year: 'Year',
-  //     month: 'Month',
-  //     day: 'Day',
-  //     hour: 'Hour',
-  //     min: 'Minute',
-  //     seconds: 'Second',
-  //   },
-  // })
-
   const [show, setShow] = useState(false)
   const [currentDate, setCurrentDate] = useState<Date | null>(modelValue)
   const [defaultValue, setDefaultValue] = useState<(string | number)[]>([])
   const [listData, setListData] = useState<PickerOption[][]>([])
   const pickerRef = useRef<pickerRefState>(null)
-
   const isDate = (val: Date): val is Date => {
     return (
       Object.prototype.toString.call(val) === '[object Date]' &&
@@ -238,6 +212,9 @@ export const DatePicker: FunctionComponent<
         break
       case 'year-month':
         result = result.slice(0, 2)
+        break
+      case 'hour-minutes':
+        result = result.slice(3, 5)
         break
       case 'month-day':
         result = result.slice(1, 3)
@@ -403,8 +380,6 @@ export const DatePicker: FunctionComponent<
 
   useEffect(() => {
     setCurrentDate(formatValue(modelValue))
-
-    // initDefault()
   }, [])
 
   useEffect(() => {
@@ -429,6 +404,7 @@ export const DatePicker: FunctionComponent<
     >
       {listData.length > 0 && (
         <Picker
+          title={title}
           isVisible={show}
           listData={listData}
           onClose={onCloseDatePicker}

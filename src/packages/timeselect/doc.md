@@ -9,7 +9,6 @@
 ``` javascript
 // react
 import { TimeSelect } from '@nutui/nutui-react';
-
 ```
 
 ### 基本用法
@@ -91,20 +90,20 @@ export default TimeSelectDemo
 
 | 字段                   | 说明                                                | 是否必传             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------|--------|------------|---------|
-| visible                 | 是否显示弹层                                      | 是       | Boolean  | `false`|
-| height                 | 弹层的高度                                         | 否     | String  | `20%`|
-| title                 | 弹层标题                                         | 否      | String  | `取件时间`|
-| multiple              | 是否选择多个日期时间                               | 否        | String  | `false`|
-| currentKey           | 唯一标识                                    | 否        | String、Number  | `0` |
-| dates            | 选择日期面板的数据                                 | 是       | []        | ``       |
-| times            | 选择时间面板的数据                                  | 是     | []        | ``       |
+| visible                 | 是否显示弹层                                      | 是       | boolean  | `false`|
+| height                 | 弹层的高度                                         | 否     | string  | `20%`|
+| title                 | 弹层标题                                         | 否      | string  | `取件时间`|
+| multiple              | 是否选择多个日期时间                               | 否        | string  | `false`|
+| currentKey           | 唯一标识                                    | 否        | string \| number  | `0` |
+| dates            | 选择日期面板的数据                                 | 是       | Array        | `[]`      |
+| times            | 选择时间面板的数据                                  | 是     | Array        | `[]`      |
 
 ### dates
 
 | 字段                   | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
-| date                 | 显示的名称                                            | String  | ``|
-| pannel-key           | 唯一标识，和 currentKey 一起标识当前选择的天            | Number、String  | `0`|
+| date                 | 显示的名称                                            | string  | - |
+| pannel-key           | 唯一标识，和 currentKey 一起标识当前选择的天            | number \| string  | `0`|
 
 ### times
 
@@ -117,11 +116,11 @@ export default TimeSelectDemo
 
 | 名称                     | 说明    | 是否必传       | 回调参数    |
 |------------------------|----------|--------|-------------|
-| select` 废弃`                 | 关闭遮罩之后的回调 | 是 | `list: []` |
-| pannelChange` 废弃`           | 点击左栏日期回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `pannelKey: string 、number, list: []` |
-| timeChange` 废弃`         | 点击时间回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `time: string, list: []` |
+| select`废弃`                 | 关闭遮罩之后的回调 | 是 | `list: []` |
+| pannelChange`废弃`           | 点击左栏日期回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `pannelKey: string \| number, list: []` |
+| timeChange`废弃`         | 点击时间回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `time: string, list: []` |
 | onSelect`v1.3.8`       | 关闭遮罩之后的回调 | 是 | `list: []` |
-| onPannelChange`v1.3.8` | 点击左栏日期回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `pannelKey: string 、number, list: []` |
+| onPannelChange`v1.3.8` | 点击左栏日期回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `pannelKey: string \| number, list: []` |
 | onTimeChange`v1.3.8`   | 点击时间回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | 否 | `time: string, list: []` |
 
 
@@ -133,28 +132,28 @@ export default TimeSelectDemo
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-timeselect-title-font-size | `  $font-size-2` |
-| --nutui-timeselect-title-color | `  $title-color` |
-| --nutui-timeselect-title-height | ` 50px` |
-| --nutui-timeselect-title-line-height | `  50px` |
-| --nutui-timeselect-pannel-bg-color | `  #f6f7f9` |
-| --nutui-timeselect-timepannel-text-color | `  $title-color2` |
-| --nutui-timeselect-timepannel-font-size | `  $font-size-2` |
-| --nutui-timeselect-timepannel-cur-bg-color | `  $white` |
-| --nutui-timeselect-timepannel-cur-text-color | `  #333333` |
-| --nutui-timeselect-timepannel-width | `  140px` |
-| --nutui-timeselect-timepannel-height | `  40px` |
-| --nutui-timeselect-timepannel-padding | `  15px` |
-| --nutui-timeselect-timedetail-padding | `  0 5px 50px 13px` |
-| --nutui-timeselect-timedetail-item-width | `  100px` |
-| --nutui-timeselect-timedetail-item-height | `  50px` |
-| --nutui-timeselect-timedetail-item-line-height | `  50px` |
-| --nutui-timeselect-timedetail-item-bg-color | `  #f6f7f9` |
-| --nutui-timeselect-timedetail-item-border-radius | `  5px` |
-| --nutui-timeselect-timedetail-item-text-color | `  #333333` |
-| --nutui-timeselect-timedetail-item-text-font-size | `  $font-size-2` |
-| --nutui-timeselect-timedetail-item-cur-bg-color | `  rgba($primary-color, 0.15)` |
-| --nutui-timeselect-timedetail-item-cur-border | `  $primary-color` |
-| --nutui-timeselect-timedetail-item-cur-text-color | `  $primary-color` |
-| --nutui-timeselect-timedetail-time-text-color | `  #999` |
-| --nutui-timeselect-timedetail-time-font-size | `  $font-size-1` |
+| --nutui-timeselect-title-font-size | `$font-size-2` |
+| --nutui-timeselect-title-color | `$title-color` |
+| --nutui-timeselect-title-height | `50px` |
+| --nutui-timeselect-title-line-height | `50px` |
+| --nutui-timeselect-pannel-bg-color | `#f6f7f9` |
+| --nutui-timeselect-timepannel-text-color | `$title-color2` |
+| --nutui-timeselect-timepannel-font-size | `$font-size-2` |
+| --nutui-timeselect-timepannel-cur-bg-color | `$white` |
+| --nutui-timeselect-timepannel-cur-text-color | `#333333` |
+| --nutui-timeselect-timepannel-width | `140px` |
+| --nutui-timeselect-timepannel-height | `40px` |
+| --nutui-timeselect-timepannel-padding | `15px` |
+| --nutui-timeselect-timedetail-padding | `0 5px 50px 13px` |
+| --nutui-timeselect-timedetail-item-width | `100px` |
+| --nutui-timeselect-timedetail-item-height | `50px` |
+| --nutui-timeselect-timedetail-item-line-height | `50px` |
+| --nutui-timeselect-timedetail-item-bg-color | `#f6f7f9` |
+| --nutui-timeselect-timedetail-item-border-radius | `5px` |
+| --nutui-timeselect-timedetail-item-text-color | `#333333` |
+| --nutui-timeselect-timedetail-item-text-font-size | `$font-size-2` |
+| --nutui-timeselect-timedetail-item-cur-bg-color | `rgba($primary-color, 0.15)` |
+| --nutui-timeselect-timedetail-item-cur-border | `$primary-color` |
+| --nutui-timeselect-timedetail-item-cur-text-color | `$primary-color` |
+| --nutui-timeselect-timedetail-time-text-color | `#999` |
+| --nutui-timeselect-timedetail-time-font-size | `$font-size-1` |

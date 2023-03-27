@@ -9,7 +9,6 @@
 ```ts
 // react
 import { Animate } from '@nutui/nutui-react';
-
 ```
 
 ### 點擊觸發
@@ -131,15 +130,15 @@ export default AnimateDemo
 
 | 參數         | 說明                             | 類型   | 預設值           |
 |--------------|----------------------------------|--------|------------------|
-| type         | 動畫類型，見下方type值說明               | String | 'shake'                |
-| action         | 觸發管道，'initial'--初始化執行；' click'--點擊執行              | String | 'initial'             |
-| loop         | 是否迴圈執行。 true-迴圈執行； false-執行一次              | Boolean | false               |
+| type         | 動畫類型，見下方type值說明               | string | `shake`                |
+| action         | 觸發管道，'initial'--初始化執行；' click'--點擊執行              | string | `initial`             |
+| loop         | 是否迴圈執行。 true-迴圈執行； false-執行一次              | boolean | `false`               |
 
 ### Events
 
 | 方法名 | 說明           | 回檔參數     |
 |--------|----------------|--------------|
-| onClick  | 點擊元素時觸發 | event: Event |
+| onClick  | 點擊元素時觸發 | `event: Event` |
 
 ### type值說明
 

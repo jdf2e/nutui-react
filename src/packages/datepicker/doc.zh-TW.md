@@ -9,7 +9,6 @@
 ```ts
 // react
 import { DatePicker } from '@nutui/nutui';
-
 ```
     
 ## 代碼演示
@@ -141,6 +140,41 @@ const App = () => {
           visible={show4}
           onCloseDatePicker={() => setShow4(false)}
           onConfirmDatePicker={(values,options) => confirm4(values,options)}
+        />
+    </>
+  );
+};  
+export default App;
+
+```
+:::
+
+### 選擇時分
+:::demo
+```tsx
+import  React, { useState  } from "react";
+import { DatePicker,Cell  } from '@nutui/nutui-react';
+
+const App = () => {
+  const minDate = new Date(2020, 0, 1)
+  const maxDate = new Date(2025, 10, 1)
+  const [show8, setShow8] = useState(false)
+  const [desc8, setDesc8] = useState('10:10')
+  const confirm4 = (values:(string|number)[],options:PickerOption[])=>{
+    setDesc4(options.map((option) => option.text).join(':'))
+  }
+
+  return ( 
+    <>   
+      <Cell title="時間選擇" desc={desc8} onClick={() => setShow8(true)} />
+      <DatePicker
+          title="時間選擇"
+          type="hour-minutes"
+          minDate={minDate}
+          maxDate={maxDate}
+          visible={show8}
+          onCloseDatePicker={() => setShow8(false)}
+          onConfirmDatePicker={(values,options) => confirm8(values,options)}
         />
     </>
   );
@@ -326,22 +360,22 @@ export default App;
 | 參數                        | 說明                                              | 類型    | 默認值   |
 |---------------------------|---------------------------------------------------|---------|----------|
 | modelValue                | 初始值                                            | Date    | `null`   |
-| visible                   | 是否可見                                          | Boolean | `false`  |
-| type                      | 類時間類型，可選值 date time year-month month-day datehour datetime | String  | `'date'` |
-| minuteStep                | 分鐘步進值                                        | Number  | `1`      |
-| isShowChinese             | 每列是否展示中文                                  | Boolean | `false`  |
-| title                     | 設置標題                                          | String  | `null`   |
+| visible                   | 是否可見                                          | boolean | `false`  |
+| type                      | 類時間類型，可選值 date time year-month month-day datehour datetime hour-minutes | string  | `date` |
+| minuteStep                | 分鐘步進值                                        | number | `1`      |
+| isShowChinese             | 每列是否展示中文                                  | boolean | `false`  |
+| title                     | 設置標題                                          | string  | `null`   |
 | minDate                   | 開始日期                                          | Date    | `十年前` |
 | maxDate                   | 結束日期                                          | Date    | `十年後` |
-| formatter`v1.2.2`         | 選項格式化函數                                          | (type: string, option: PickerOption) => PickerOption    |  |
-| filter`v1.2.2`            | 選項過濾函數                                          | (type: string, option: PickerOption) => PickerOption[]    |  |
-| three-dimensional`v1.2.2` | 是否開啟3D效果               | Boolean  | true   |
+| formatter`v1.2.2`         | 選項格式化函數                                          | (type: string, option: PickerOption) => PickerOption    | - |
+| filter`v1.2.2`            | 選項過濾函數                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
+| three-dimensional`v1.2.2` | 是否開啟3D效果               | boolean  | `true`   |
 
 
 ### Events
     
 | 事件名                         | 說明               | 回調參數     |
 |-----------------------------|--------------------|--------------|
-| onConfirmDatePicker`v1.2.2` | 點擊確定按鈕時觸發 | values, options |
+| onConfirmDatePicker`v1.2.2` | 點擊確定按鈕時觸發 | `values, options` |
 | onCloseDatePicker           | 關閉時觸發         | -- |
-| onChange`v1.2.2`                  | 選項改變時觸發         |  columnIndex, values, options  |
+| onChange`v1.2.2`                  | 選項改變時觸發         |  `columnIndex, values, options`  |

@@ -30,6 +30,7 @@ export interface BaseLang {
     weekdays: Array<string>
     end: string
     start: string
+    confirm: string
     title: string
     // eslint-disable-next-line @typescript-eslint/ban-types
     monthTitle: Function

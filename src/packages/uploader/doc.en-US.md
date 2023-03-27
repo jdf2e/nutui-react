@@ -24,7 +24,19 @@ const App = () => {
   return (
     <>
       <h2>Basic Usage</h2>
-      <Uploader url={uploadUrl} start={onStart} />
+      <Uploader
+        url={uploadUrl}
+        onStart={onStart}
+        style={{ marginRight: '10px' }}
+      />
+      <Uploader
+        url={uploadUrl}
+        uploadIconSize="20px"
+        uploadIconTip="Main goods"
+        onStart={onStart}
+        style={{ marginRight: '10px' }}
+      />
+      <Uploader url={uploadUrl} uploadIcon="dongdong" onStart={onStart} />
     </>
   )
 }
@@ -43,15 +55,23 @@ const App = () => {
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
   const defaultFileList: FileType<string>[] = [
     {
-      name: 'file1.png',
+      name: 'filefilefile1.png',
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
       status: 'success',
       message: 'Uploaded successfully',
       type: 'image',
-      uid: '123',
+      uid: '122',
     },
     {
-      name: 'file2.png',
+      name: 'file.png',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'success',
+      message: 'Uploaded successfully',
+      type: 'image',
+      uid: '122',
+    },
+    {
+      name: 'file4.png',
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
       status: 'error',
       message: 'upload failed',
@@ -59,12 +79,30 @@ const App = () => {
       uid: '124',
     },
     {
-      name: 'file3.png',
+      name: 'file5.png',
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
       status: 'uploading',
       message: 'uploading...',
       type: 'image',
       uid: '125',
+    },
+    {
+      name: 'file6.png',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'uploading',
+      message: 'uploading...',
+      type: 'image',
+      uid: '126',
+      loadingIcon: 'loading1',
+    },
+    {
+      name: 'file7.png',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'uploading',
+      message: 'uploading...',
+      type: 'image',
+      uid: '127',
+      loadingIcon: ' ',
     },
   ]
   const onDelete = (file: FileItem, fileList: FileItem[]) => {
@@ -77,8 +115,6 @@ const App = () => {
         url={uploadUrl}
         defaultFileList={defaultFileList}
         onRemove={onDelete}
-        maximum="3"
-        multiple
         uploadIcon="dongdong"
       />
     </>
@@ -281,6 +317,9 @@ const App = () => {
   const submitUpload = () => {
     uploadRef.current.submit()
   }
+  const clearUpload = () => {
+    uploadRef.current.clear()
+  };
   return (
     <>
       <h2>Manual upload</h2>
@@ -288,6 +327,9 @@ const App = () => {
       <br />
       <Button type="success" size="small" onClick={submitUpload}>
         perform upload
+      </Button>
+      <Button type="danger" size="small" onClick={clearUpload}>
+        Clear upload manually
       </Button>
     </>
   )
@@ -317,71 +359,80 @@ export default App;
 
 ### Prop
 
-| Attribute              |Description                                                                                                                                                                                   | Type                              | Default           |
-|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|------------------|
-| autoUpload `v1.3.4`              | Whether to upload the file immediately after selecting it, if false, you need to manually execute the ref submit method to upload                                                                                                                                       | Boolean                            | true           |
-| name              | The name of the `input` tag `name`, the file parameter name sent to the background                                                                                                                                       | String                            | "file"           |
-| url               | The interface address of the upload server                                                                                                                                                                   | String                            | -                |
-| defaultFileList               | List of uploaded files by default                                                                                                                                                                   | FileItem[]                            | []                |
-| isPreview        | Whether to display the preview image after the upload is successful                                                                                                                                                               | Boolean                           | true             |
-| defaultImg        | When uploading a default image URL in a non-image ('image') format                                                                                                                                                               | String                           | ''             |
-| isDeletable      | Whether to display the delete button                                                                                                                                                                       | Boolean                           | true             |
-| method            | The http method of upload request                                                                                                                                                                 | String                            | "post"           |
-| listType `v1.3.4`            | The built-in style of the upload list, supports two basic styles picture, list                                                                                                                                                                 | String                            | "picture"           |
-| capture           | Capture, can be set to[camera](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，，turn on the camera directly                                                                     | String                            | false            |
-| maximize          | You can set the maximum upload file size (bytes)                                                                                                                                                     | Number丨String                    | Number.MAX_VALUE |
-| maximum           | File upload limit                                                                                                                                                                       | Number丨String                    | 1                |
-| clearInput       | Whether to clear the `input` content, set to `true` to support repeated selection and upload of the same file                                                                                                                          | Boolean                           | true            |
-| accept            | File types that can be accepted. See[Des](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | String                            | *                |
-| headers           | Set request headers                                                                                                                                                                     | Object                            | {}               |
-| data              | Uploading extra params or function which can return uploading extra params formData                                                                                                                                                                | Object                            | {}               |
-| uploadIcon       | Upload area[icon name](#/zh-CN/icon)or image link                                                                                                                                             | String                            | "photograph"     |
-| uploadIconSize `v1.3.4`       | Upload area [icon size](#/icon) size, such as `20px` `2em` `2rem`                                                                                                                                             | String or Number                            | -     |
-| xhrState         | The success status (status) value of the interface response                                                                                                                                                         | Number                            | 200              |
-| withCredentials  | Support for sending cookie credential information                                                                                                                                                               | Boolean                           | false            |
-| multiple          | Whether to support multiple file selection                                                                                                                                                                       | Boolean                           | false            |
-| disabled          | Whether to disable file upload                                                                                                                                                                       | Boolean                           | false            |
-| timeout           | timeout, in milliseconds                                                                                                   | Number丨String                    | 1000 * 30                 |
-| beforeUpload `v1.3.4 Abandon`     | The pre-upload function needs to return a `Promise` object                                                                                                                                                  | Function                          | null             |
-| onBeforeUpload `v1.3.4`     | The pre-upload function needs to return a `Promise` object                                                                                                                                                  | Function                          | null             |
-| onBeforeXhrUpload `v1.3.4`     | When performing an XHR upload, the custom method                                                                                                                                                  | Function(xhr，option)                          | null             |
-| beforeDelete `v1.3.4 Abandon`     | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects                                                                 | Function(file): boolean 丨Promise | -                |
-| onBeforeDelete `v1.3.4`     | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects                                                                 | Function(file): boolean 丨Promise | -                |
+| Attribute|Description| Type| Default|
+|-------------------|---------------------|-----------------|--------|
+| autoUpload `v1.3.4`| Whether to upload the file immediately after selecting it, if false, you need to manually execute the ref submit method to upload| boolean | `true`|
+| name| The name of the `input` tag `name`, the file parameter name sent to the background| string | `file`|
+| url| The interface address of the upload server| string | -|
+| defaultFileList| List of uploaded files by default| FileItem[]| `[]`|
+| isPreview| Whether to display the preview image after the upload is successful| boolean | `true`|
+| defaultImg| When uploading a default image URL in a non-image ('image') format| string | -  |
+| isDeletable      | Whether to display the delete button| boolean | `true`|
+| method| The http method of upload request| string | `post`|
+| listType `v1.3.4`| The built-in style of the upload list, supports two basic styles picture, list| string | `picture`|
+| capture| Capture, can be set to[camera](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，，turn on the camera directly| string | `false`|
+| maximize| You can set the maximum upload file size (bytes)| number \| string    | `Number.MAX_VALUE` |
+| maximum| File upload limit| number \| string | `1`|
+| clearInput| Whether to clear the `input` content, set to `true` to support repeated selection and upload of the same file| boolean | `true`|
+| accept| File types that can be accepted. See[Des](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | string | `*`|
+| headers| Set request headers| Object| `{}`|
+| data| Uploading extra params or function which can return uploading extra params formData| Object| `{}`|
+| uploadIcon| Upload area[icon name](#/zh-CN/icon)or image link| string | `photograph`|
+| uploadIconSize `v1.3.4` | Upload area [icon size](#/icon) size, such as `20px` `2em` `2rem`| string \| number| - |
+| uploadIconTip`v1.4.9`| Upload area tip| string | - |
+| xhrState| The success status (status) value of the interface response| number| `200`|
+| withCredentials  | Support for sending cookie credential information| boolean | `false`|
+| multiple| Whether to support multiple file selection| boolean | `false`|
+| disabled| Whether to disable file upload| boolean | `false`|
+| timeout| timeout, in milliseconds| number |string | `1000 * 30`|
+| beforeUpload `v1.3.4 Abandon`| The pre-upload function needs to return a `Promise` object| Function| `null`|
+| onBeforeUpload `v1.3.4`     | The pre-upload function needs to return a `Promise` object| Function| `null`|
+| onBeforeXhrUpload `v1.3.4`     | When performing an XHR upload, the custom method| Function(xhr，option)| `null`|
+| beforeDelete `v1.3.4 Abandon`     | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects| Function(file): boolean \| Promise | -|
+| onBeforeDelete `v1.3.4`     | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects| Function(file): boolean \| Promise | -|
 
-
+> Note: accept, capture, and multiple are the native attributes of the browser's input tag. The mobile terminal's different models support these attributes differently, so there may be some compatibility problems under different models and WebView.
 
 ### FileItem
 
-| Attribute     | Description                                        | Default                          |
-|----------|---------------------------------------------------------|---------------------------------|
-| status   | File status value, optional ‘ready,uploading,success,error’' | "ready"                         |
-| uid      | Unique ID of the file                                  | new Date().getTime().toString() |
-| name     | File name                                                | ""                              |
-| url      | File path                                                | ""                              |
-| type     | File type                                                | "image/jpeg"                    |
-| formData | Upload the required data                                 | new FormData()                  |
+| Attribute     | Description| Default|
+|----------|--------------|-------------|
+| status   | File status value, optional ‘ready,uploading,success,error’' | `ready`|
+| uid      | Unique ID of the file| `new Date().getTime().toString()` |
+| name     | File name| -|
+| url      | File path| -|
+| type     | File type| `image/jpeg`|
+| formData | Upload the required data| `new FormData()`  |
 
-### Event
+### Events
 
-| Event	     | Description                   | Arguments             |
+| Event	     | Description   | Arguments  |
 |----------|------------------------|----------------------|
-| onStart `v1.3.4`    | File upload starts           | options              |
-| start `v1.3.4 Abandon`    | File upload starts           | options              |
-| onProgress `v1.3.4` | The progress of the file upload         | event,options,percentage        |
-| progress `v1.3.4 Abandon` | The progress of the file upload         | event,options,percentage        |
-| onOversize `v1.3.4`  | Triggered when the file size exceeds the limit | files                |
-| oversize `v1.3.4 Abandon`  | Triggered when the file size exceeds the limit | files                |
-| onSuccess `v1.3.4`  | Uploaded successfully               | responseText,options |
-| success `v1.3.4 Abandon`  | Uploaded successfully               | responseText,options |
-| onFailure `v1.3.4`  | Upload failed               | responseText,options |
-| failure `v1.3.4 Abandon`  | Upload failed               | responseText,options |
-| onChange `v1.3.4`   | The state when the uploaded file changes   | fileList,event       |
-| change `v1.3.4 Abandon`   | The state when the uploaded file changes   | fileList,event       |
-| onRemove `v1.3.4`   | The state before the file was deleted    | files,fileList       |
-| remove `v1.3.4 Abandon`   | The state before the file was deleted    | files,fileList       |
-| onFileItemClick `v1.3.4`   | File delete event     | fileItem       |
-| fileItemClick `v1.3.4 Abandon`   | File delete event     | fileItem       |
+| onStart `v1.3.4`    | File upload starts| `options`|
+| start `v1.3.4 Abandon`    | File upload starts| `options`|
+| onProgress `v1.3.4` | The progress of the file upload         | `event, options, percentage`        |
+| progress `v1.3.4 Abandon` | The progress of the file upload         | `event, options, percentage`        |
+| onOversize `v1.3.4`  | Triggered when the file size exceeds the limit | `files`|
+| oversize `v1.3.4 Abandon`  | Triggered when the file size exceeds the limit | `files`|
+| onSuccess `v1.3.4`  | Uploaded successfully | `responseText, options` |
+| success `v1.3.4 Abandon`  | Uploaded successfully | `responseText, options` |
+| onFailure `v1.3.4`  | Upload failed | `responseText, options` |
+| failure `v1.3.4 Abandon`  | Upload failed | `responseText, options` |
+| onChange `v1.3.4`   | The state when the uploaded file changes   | `fileList, event`       |
+| change `v1.3.4 Abandon`   | The state when the uploaded file changes   | `fileList, event`       |
+| onRemove `v1.3.4`   | The state before the file was deleted    | `files, fileList`       |
+| remove `v1.3.4 Abandon`   | The state before the file was deleted    | `files, fileList`       |
+| onFileItemClick `v1.3.4`   | File delete event     | `fileItem`       |
+| fileItemClick `v1.3.4 Abandon`   | File delete event     | `fileItem`       |
 
+### Methods
+
+Use ref to get Uploader instance and call instance methods.
+
+| Name             | Description                                                                                 | Arguments | Return value |
+|------------------|---------------------------------------------------------------------------------------------|-----------|--------------|
+| submit           | Manual upload mode, perform upload operation                                                | -         | -            |
+| clear `v1.4.9` | Empty the selected file queue (this method is generally used when uploading in manual mode) | index     | -            |
 
 
 ## Theming
@@ -392,6 +443,22 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-uploader-picture-width | ` 100px` |
-| --nutui-uploader-picture-height | ` 100px` |
-| --nutui-uploader-background | ` $gray4` |
+| --nutui-uploader-picture-width | `100px` |
+| --nutui-uploader-picture-height | `100px` |
+| --nutui-uploader-picture-border`v1.4.9` | `0px` |
+| --nutui-uploader-picture-border-radius`v1.4.9` | `4px` |
+| --nutui-uploader-background | `$gray4` |
+| --nutui-uploader-background-disabled`v1.4.9` | `$gray4` |
+| --nutui-uploader-picture-icon-opacity`v1.4.9` | `0.7` |
+| --nutui-uploader-picture-icon-opacity-disabled`v1.4.9` | `0.3`|
+| --nutui-uploader-picture-icon-margin-bottom`v1.4.9` | `6px`|
+| --nutui-uploader-picture-icon-tip-font-size`v1.4.9` | `12px`|
+| --nutui-uploader-picture-icon-tip-color`v1.4.9` | `#BFBFBF`|
+| --nutui-uploader-preview-progress-background`v1.4.9` | `rgba(0, 0, 0, 0.65)`|
+| --nutui-uploader-preview-margin-right`v1.4.9` | `10px`|
+| --nutui-uploader-preview-margin-bottom`v1.4.9` | `10px`|
+| --nutui-uploader-preview-tips-height`v1.4.9` | `24px`|
+| --nutui-uploader-preview-tips-background`v1.4.9` | `rgba(0, 0, 0, 0.45)`|
+| --nutui-uploader-preview-tips-padding`v1.4.9` | `0 5px`|
+| --nutui-uploader-preview-close-right`v1.4.9` | `0px`|
+| --nutui-uploader-preview-close-top`v1.4.9` | `0px`|

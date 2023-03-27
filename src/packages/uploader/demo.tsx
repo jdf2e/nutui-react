@@ -2,11 +2,13 @@ import React, { useState, useRef } from 'react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Uploader, FileItem, FileType } from './uploader'
 import Button from '@/packages/button'
+import Cell from '@/packages/cell'
 import Progress from '@/packages/progress'
 import './demo.scss'
 
 interface uploadRefState {
   submit: () => void
+  clear: () => void
 }
 
 interface T {
@@ -19,10 +21,10 @@ interface T {
   '25e04d44': string
   d06e873e: string
   ca3903f3: string
-  upload_progress_action: string
+  uploadProgressAction: string
   '84aa6bce': string
-  upload_list_show: string
-  upload_default_progress: string
+  uploadListShow: string
+  uploadDefaultProgress: string
   a4afedb5: string
   '37c65f47': string
   bb5caa9c: string
@@ -31,15 +33,16 @@ interface T {
   b7454181: string
   '5c393e52': string
   e3217a8d: string
-  upload_xhr_custom: string
+  uploadXhrCustom: string
   '67fffe24': string
   fcf01d1a: string
+  clearBtnUpload: string
   '7db1a8b2': string
 }
 const UploaderDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      '6114cef1': '文件1.png',
+      '6114cef1': '文件文件文件文件1.png',
       '844759c9': '上传成功',
       df9128ec: '文件2.png',
       '219481a6': '上传失败',
@@ -48,10 +51,10 @@ const UploaderDemo = () => {
       '25e04d44': 'oversize触发文件大小不能超过50kb',
       d06e873e: 'start触发',
       ca3903f3: 'delete事件触发',
-      upload_progress_action: 'progress事件触发',
+      uploadProgressAction: 'progress事件触发',
       '84aa6bce': '基础用法',
-      upload_list_show: '基础用法-上传列表展示',
-      upload_default_progress: '自定义上传使用默认进度条',
+      uploadListShow: '基础用法-上传列表展示',
+      uploadDefaultProgress: '自定义上传使用默认进度条',
       a4afedb5: '上传状态',
       '37c65f47': '自定义上传样式',
       bb5caa9c: '上传文件',
@@ -60,9 +63,10 @@ const UploaderDemo = () => {
       b7454181: '限制上传大小（每个文件最大不超过50kb）',
       '5c393e52': '图片压缩（在beforeupload钩子中处理）',
       e3217a8d: '自定义数据 FormData、headers',
-      upload_xhr_custom: '自定义 xhr 上传方式(before-xhr-upload)',
+      uploadXhrCustom: '自定义 xhr 上传方式(before-xhr-upload)',
       '67fffe24': '选中文件后，通过按钮手动执行上传',
       fcf01d1a: '执行上传',
+      clearBtnUpload: '手动清空上传',
       '7db1a8b2': '禁用状态',
     },
     'zh-TW': {
@@ -75,10 +79,10 @@ const UploaderDemo = () => {
       '25e04d44': 'oversize觸發檔大小不能超過50kb',
       d06e873e: 'start觸發',
       ca3903f3: 'delete事件觸發',
-      upload_progress_action: 'progress事件觸發',
+      uploadProgressAction: 'progress事件觸發',
       '84aa6bce': '基础用法',
-      upload_list_show: '基礎用法-上傳列表展示',
-      upload_default_progress: '自定義上傳使用默認進度條',
+      uploadListShow: '基礎用法-上傳列表展示',
+      uploadDefaultProgress: '自定義上傳使用默認進度條',
       a4afedb5: '上傳狀態',
       '37c65f47': '自定義上傳樣式',
       bb5caa9c: '上傳檔',
@@ -87,13 +91,14 @@ const UploaderDemo = () => {
       b7454181: '限制上傳大小（每個檔案最大不超過50kb）',
       '5c393e52': '圖片壓縮（在beforeupload鉤子中處理）',
       e3217a8d: '自定義數據 FormData、headers',
-      upload_xhr_custom: '自定義 xhr 上傳方式(before-xhr-upload)',
+      uploadXhrCustom: '自定義 xhr 上傳方式(before-xhr-upload)',
       '67fffe24': '選取檔後，通過按鈕手動執行上傳',
       fcf01d1a: '執行上傳',
+      clearBtnUpload: '手動清空上傳',
       '7db1a8b2': '禁用狀態',
     },
     'en-US': {
-      '6114cef1': 'File 1 .png',
+      '6114cef1': 'FileFileFileFile 1 .png',
       '844759c9': 'Upload successful',
       df9128ec: 'File 2 .png',
       '219481a6': 'Upload failed',
@@ -102,10 +107,10 @@ const UploaderDemo = () => {
       '25e04d44': 'The oversize trigger file size cannot exceed 50kb',
       d06e873e: 'start triggered',
       ca3903f3: 'The delete event is triggered',
-      upload_progress_action: 'The progress event is triggered',
+      uploadProgressAction: 'The progress event is triggered',
       '84aa6bce': 'Basic usage',
-      upload_list_show: 'Basic usage - upload list display',
-      upload_default_progress: 'Custom upload uses default progress bar',
+      uploadListShow: 'Basic usage - upload list display',
+      uploadDefaultProgress: 'Custom upload uses default progress bar',
       a4afedb5: 'Upload status',
       '37c65f47': 'Customize the upload style',
       bb5caa9c: 'Upload the file',
@@ -114,10 +119,11 @@ const UploaderDemo = () => {
       b7454181: 'Limit upload size (maximum 50kb per file)',
       '5c393e52': 'Image compression (handled in a foreupload hook)',
       e3217a8d: 'Custom data FormData, headers',
-      upload_xhr_custom: 'Custom xhr upload method (before-xhr-upload)',
+      uploadXhrCustom: 'Custom xhr upload method (before-xhr-upload)',
       '67fffe24':
         'After selecting Chinese, manually perform the upload via the button',
       fcf01d1a: 'Perform the upload',
+      clearBtnUpload: 'Clear upload manually',
       '7db1a8b2': 'Disabled state',
     },
   })
@@ -135,6 +141,14 @@ const UploaderDemo = () => {
       status: 'success',
       message: translated['844759c9'],
       type: 'image',
+      uid: '122',
+    },
+    {
+      name: translated.df9128ec,
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'success',
+      message: translated['844759c9'],
+      type: 'image',
       uid: '123',
     },
     {
@@ -144,6 +158,7 @@ const UploaderDemo = () => {
       message: translated['219481a6'],
       type: 'image',
       uid: '124',
+      errorIcon: 'star',
     },
     {
       name: translated['29ab0c96'],
@@ -152,6 +167,24 @@ const UploaderDemo = () => {
       message: translated['403b055e'],
       type: 'image',
       uid: '125',
+    },
+    {
+      name: translated['29ab0c96'],
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'uploading',
+      message: translated['403b055e'],
+      type: 'image',
+      uid: '126',
+      loadingIcon: 'loading1',
+    },
+    {
+      name: translated['29ab0c96'],
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+      status: 'uploading',
+      message: translated['403b055e'],
+      type: 'image',
+      uid: '127',
+      loadingIcon: ' ',
     },
   ]
   const fileToDataURL = (file: Blob): Promise<any> => {
@@ -185,7 +218,7 @@ const UploaderDemo = () => {
   }
   const onProgress = ({ event, options, percentage }: any) => {
     setProgressPercent(percentage)
-    console.log(translated.upload_progress_action)
+    console.log(translated.uploadProgressAction)
   }
   const onDelete = (file: FileItem, fileList: FileItem[]) => {
     console.log(translated.ca3903f3, file, fileList)
@@ -204,7 +237,7 @@ const UploaderDemo = () => {
     return [f]
   }
   const beforeXhrUpload = (xhr: XMLHttpRequest, options: any) => {
-    if (options.method.toLowerCase() == 'put') {
+    if (options.method.toLowerCase() === 'put') {
       xhr.send(options.sourceFile)
     } else {
       xhr.send(options.formData)
@@ -213,23 +246,38 @@ const UploaderDemo = () => {
   const submitUpload = () => {
     ;(uploadRef.current as uploadRefState).submit()
   }
+  const clearUpload = () => {
+    ;(uploadRef.current as uploadRefState).clear()
+  }
   return (
     <>
       <div className="demo bg-w demo-uploader">
         <h2>{translated['84aa6bce']}</h2>
-        <Uploader url={uploadUrl} onStart={onStart} />
+        <Cell>
+          <Uploader
+            url={uploadUrl}
+            onStart={onStart}
+            style={{ marginRight: '10px' }}
+          />
+          <Uploader
+            url={uploadUrl}
+            uploadIconSize="20px"
+            uploadIconTip="商品主图"
+            onStart={onStart}
+            style={{ marginRight: '10px' }}
+          />
+          <Uploader url={uploadUrl} uploadIcon="dongdong" onStart={onStart} />
+        </Cell>
 
         <h2>{translated.a4afedb5}</h2>
         <Uploader
           url={uploadUrl}
           defaultFileList={defaultFileList}
           onRemove={onDelete}
-          maximum="3"
-          multiple
           uploadIcon="dongdong"
         />
 
-        <h2>{translated.upload_list_show}</h2>
+        <h2>{translated.uploadListShow}</h2>
         <Uploader
           url={uploadUrl}
           defaultFileList={defaultFileList}
@@ -249,7 +297,7 @@ const UploaderDemo = () => {
           </Button>
         </Uploader>
 
-        <h2>{translated.upload_default_progress}</h2>
+        <h2>{translated.uploadDefaultProgress}</h2>
         <Uploader url={uploadUrl} onProgress={onProgress}>
           <Button type="success" size="small">
             {translated.bb5caa9c}
@@ -287,7 +335,7 @@ const UploaderDemo = () => {
           withCredentials
         />
 
-        <h2>{translated.upload_xhr_custom}</h2>
+        <h2>{translated.uploadXhrCustom}</h2>
         <Uploader
           url={uploadUrl}
           method="put"
@@ -302,8 +350,16 @@ const UploaderDemo = () => {
           ref={uploadRef}
         />
         <br />
-        <Button type="success" size="small" onClick={submitUpload}>
+        <Button
+          type="success"
+          size="small"
+          onClick={submitUpload}
+          style={{ marginRight: '10px' }}
+        >
           {translated.fcf01d1a}
+        </Button>
+        <Button type="danger" size="small" onClick={clearUpload}>
+          {translated.clearBtnUpload}
         </Button>
 
         <h2>{translated['7db1a8b2']}</h2>

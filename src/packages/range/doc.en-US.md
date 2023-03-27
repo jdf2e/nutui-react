@@ -9,7 +9,6 @@ Slide the input bar to select a value within a given range.
 ```javascript
 // react
 import { Range } from '@nutui/nutui-react';
-
 ```
 
 ## Demo
@@ -516,22 +515,22 @@ export default App;
 
 | Attribute         | Description            |  Type            | Default                   |
 | ------------- | ------------------ | ---------------- | ------------------------ |
-| modelValue    | current progress percentage     | Number、Number[] | `0`                      |
-| range         | Whether to enable dual slider mode | Boolean          | `false`                  |
-| max           | maximum             | Number、String   | `100`                    |
-| min           | minimum             | Number、String   | `0`                      |
-| maxDesc`v1.3.12`     | maximum  description        | Number、String   | -                    |
-| minDesc`v1.3.12`     | minimum description          | Number、String   | -                      |
-| curValueDesc`v1.3.12` | current progress percentage description  | Number、String |-                    |
-| step          | step size               | Number、String   | `1`                      |
-| disabled      | Whether to disable the slider       | Boolean          | `false`                  |
-| vertical      | Whether to display vertically | Boolean | `false` |
-| hiddenRange   | whether to hide range values     | Boolean          | `false`                  |
-| hiddenTag     | whether to hide the label       | Boolean          | `false`                  |
-| activeColor   | progress bar active color   | String           | `rgba(250, 44, 25, 1)`   |
-| inactiveColor | Progress bar inactive color | String           | `rgba(255, 163, 154, 1)` |
-| buttonColor   | button color           | String           | `rgba(250, 44, 25, 1)`   |
-| marks | scale mark | Object{key: number} | {} |
+| modelValue    | current progress percentage     | number \| number[] | `0`                      |
+| range         | Whether to enable dual slider mode | boolean          | `false`                  |
+| max           | maximum             | number \| string   | `100`                    |
+| min           | minimum             | number \| string   | `0`                      |
+| maxDesc`v1.3.12`     | maximum  description        | number \| string   | -                    |
+| minDesc`v1.3.12`     | minimum description          | number \| string   | -                      |
+| curValueDesc`v1.3.12` | current progress percentage description  | number \| string |-                    |
+| step          | step size               | number \| string   | `1`                      |
+| disabled      | Whether to disable the slider       | boolean          | `false`                  |
+| vertical      | Whether to display vertically | boolean | `false` |
+| hiddenRange   | whether to hide range values     | boolean          | `false`                  |
+| hiddenTag     | whether to hide the label       | boolean          | `false`                  |
+| activeColor   | progress bar active color   | string           | `rgba(250, 44, 25, 1)`   |
+| inactiveColor | Progress bar inactive color | string           | `rgba(255, 163, 154, 1)` |
+| buttonColor   | button color           | string           | `rgba(250, 44, 25, 1)`   |
+| marks | scale mark | Object{key: number} | `{}` |
 
 ### Events
 
@@ -556,10 +555,10 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-range-tip-font-color | ` $gray1` |
-| --nutui-range-bg-color | ` rgba(#fa2c19, 0.5)` |
-| --nutui-range-bg-color-tick | ` #fa958c` |
-| --nutui-range-bar-btn-bg-color | ` $white` |
-| --nutui-range-bar-btn-width | ` 24px` |
-| --nutui-range-bar-btn-height | ` 24px` |
-| --nutui-range-bar-btn-border | `  1px solid $primary-color` |
+| --nutui-range-tip-font-color | `$gray1` |
+| --nutui-range-bg-color | `rgba(#fa2c19, 0.5)` |
+| --nutui-range-bg-color-tick | `#fa958c` |
+| --nutui-range-bar-btn-bg-color | `$white` |
+| --nutui-range-bar-btn-width | `24px` |
+| --nutui-range-bar-btn-height | `24px` |
+| --nutui-range-bar-btn-border | `1px solid $primary-color` |

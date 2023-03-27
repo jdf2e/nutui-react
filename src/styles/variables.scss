@@ -346,7 +346,68 @@ $icon-line-height: var(--nutui-icon-line-height, 20px) !default;
 
 $uploader-picture-width: var(--nutui-uploader-picture-width, 100px) !default;
 $uploader-picture-height: var(--nutui-uploader-picture-height, 100px) !default;
+$uploader-picture-border: var(--nutui-uploader-picture-border, 0px) !default;
+$uploader-picture-border-radius: var(
+  --nutui-uploader-picture-border-radius,
+  2px
+) !default;
 $uploader-background: var(--nutui-uploader-background, $gray4) !default;
+$uploader-background-disabled: var(
+  --nutui-uploader-background-disabled,
+  $gray4
+) !default;
+$uploader-picture-icon-opacity: var(
+  --nutui-uploader-picture-icon-opacity,
+  0.7
+) !default;
+$uploader-picture-icon-opacity-disabled: var(
+  --nutui-uploader-picture-icon-opacity-disabled,
+  0.3
+) !default;
+$uploader-picture-icon-margin-bottom: var(
+  --nutui-uploader-picture-icon-margin-bottom,
+  6px
+) !default;
+$uploader-picture-icon-tip-font-size: var(
+  --nutui-uploader-picture-icon-tip-font-size,
+  12px
+) !default;
+$uploader-picture-icon-tip-color: var(
+  --nutui-uploader-picture-icon-tip-color,
+  #bfbfbf
+) !default;
+$uploader-preview-progress-background: var(
+  --nutui-uploader-preview-progress-background,
+  rgba(0, 0, 0, 0.65)
+) !default;
+$uploader-preview-margin-right: var(
+  --nutui-uploader-preview-margin-right,
+  10px
+) !default;
+$uploader-preview-margin-bottom: var(
+  --nutui-uploader-preview-margin-bottom,
+  10px
+) !default;
+$uploader-preview-tips-height: var(
+  --nutui-uploader-preview-tips-height,
+  24px
+) !default;
+$uploader-preview-tips-background: var(
+  --nutui-uploader-preview-tips-background,
+  rgba(0, 0, 0, 0.45)
+) !default;
+$uploader-preview-tips-padding: var(
+  --nutui-uploader-preview-tips-padding,
+  0 5px
+) !default;
+$uploader-preview-close-right: var(
+  --nutui-uploader-preview-close-right,
+  0px
+) !default;
+$uploader-preview-close-top: var(
+  --nutui-uploader-preview-close-top,
+  0px
+) !default;
 
 // picker（✅）（todo:react版本picker组件dom元素类名变化较大，picker.scss暂不改动）
 $picker-cancel-color: var(--nutui-picker-cancel-color, #808080) !default;
@@ -414,7 +475,7 @@ $input-padding: var(--nutui-input-padding, 10px 25px) !default;
 
 $textarea-font: var(--nutui-textarea-font, $font-size-2) !default;
 $textarea-height: var(--nutui-textarea-height, 100px) !default;
-$textarea-padding: var(--nutui-textarea-padding, 16px 10px 16px 16px) !default;
+$textarea-padding: var(--nutui-textarea-padding, 10px 25px) !default;
 $textarea-limit-color: var(--nutui-textarea-limit-color, $text-color) !default;
 $textarea-text-color: var(--nutui-textarea-text-color, $title-color) !default;
 $textarea-text-curror-color: var(
@@ -2134,6 +2195,7 @@ $table-tr-even-bg-color: var(--nutui-table-tr-even-bg-color, $gray4) !default;
 $table-tr-odd-bg-color: var(--nutui-table-tr-odd-bg-color, $gray6) !default;
 
 // navbar（✅）
+$navbar-width: var(--nutui-navbar-width, 100%) !default;
 $navbar-height: var(--nutui-navbar-height, 44px) !default;
 $navbar-margin-bottom: var(--nutui-navbar-margin-bottom, 20px) !default;
 $navbar-padding: var(--nutui-navbar-padding, 13px 16px) !default;

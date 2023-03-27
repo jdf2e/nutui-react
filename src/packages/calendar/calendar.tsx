@@ -36,6 +36,7 @@ export interface CalendarProps {
   onClose?: () => void
   onChoose?: (param: string) => void
   onSelected?: (data: string) => void
+  onYearMonthChange?: (param: string) => void
 }
 
 const defaultProps = {
@@ -43,14 +44,14 @@ const defaultProps = {
   isAutoBackFill: false,
   poppable: true,
   visible: false,
-  title: '日历选择',
+  title: '',
   defaultValue: '',
   startDate: Utils.getDay(0),
   endDate: Utils.getDay(365),
   showToday: true,
-  startText: '开始',
-  endText: '结束',
-  confirmText: '确认',
+  startText: '',
+  endText: '',
+  confirmText: '',
   showTitle: true,
   showSubTitle: true,
   toDateAnimation: true,
@@ -61,6 +62,7 @@ const defaultProps = {
   onClose: () => {},
   onChoose: (param: string) => {},
   onSelected: (data: string) => {},
+  onYearMonthChange: (param: string) => {},
 } as CalendarProps
 
 export const Calendar = React.forwardRef<
@@ -91,6 +93,7 @@ export const Calendar = React.forwardRef<
     onClose,
     onChoose,
     onSelected,
+    onYearMonthChange,
   } = { ...defaultProps, ...props }
 
   const calendarRef = useRef<any>(null)
@@ -115,6 +118,10 @@ export const Calendar = React.forwardRef<
     calendarRef.current?.scrollToDate(date)
   }
 
+  const yearMonthChange = (param: string) => {
+    onYearMonthChange && onYearMonthChange(param)
+  }
+
   React.useImperativeHandle(ref, () => ({
     scrollToDate,
   }))
@@ -126,14 +133,14 @@ export const Calendar = React.forwardRef<
         type={type}
         isAutoBackFill={isAutoBackFill}
         poppable={poppable}
-        title={locale.calendaritem.title || title}
+        title={title || locale.calendaritem.title}
         defaultValue={defaultValue}
         startDate={startDate}
         endDate={endDate}
         showToday={showToday}
-        startText={startText}
-        endText={endText}
-        confirmText={confirmText}
+        startText={startText || locale.calendaritem.start}
+        endText={endText || locale.calendaritem.end}
+        confirmText={confirmText || locale.calendaritem.confirm}
         showTitle={showTitle}
         showSubTitle={showSubTitle}
         toDateAnimation={toDateAnimation}
@@ -143,6 +150,7 @@ export const Calendar = React.forwardRef<
         onBottomInfo={onBottomInfo}
         onChoose={choose}
         onSelected={select}
+        onYearMonthChange={yearMonthChange}
       />
     )
   }
