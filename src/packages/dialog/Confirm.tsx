@@ -1,7 +1,8 @@
 import React from 'react'
-import { createRoot } from 'react-dom/client'
 import { Dialog } from './dialog'
 import { destroyList, ConfirmProps } from './config'
+
+import { render as reactRender, unmount } from '@/utils/render'
 
 function ConfirmDialog(props: ConfirmProps) {
   return <Dialog {...props}>{props.content}</Dialog>
@@ -31,9 +32,8 @@ function confirm(
 ) {
   const div = document.createElement('div')
   document.body.appendChild(div)
-  const root = createRoot(div)
   function render(props: ConfirmProps, callback?: () => any) {
-    root.render(<ConfirmDialog {...props} onCancel={onCancel} />)
+    reactRender(<ConfirmDialog {...props} onCancel={onCancel} />, div)
     callback && callback()
   }
 
@@ -73,7 +73,7 @@ function confirm(
   renderFunction(dialogConfig)
 
   function destroy() {
-    root.unmount()
+    unmount(div)
     if (div?.parentNode) {
       div.parentNode.removeChild(div)
     }
