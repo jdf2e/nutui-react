@@ -18,6 +18,8 @@ package-lock.json
 /src/sites/doc/docs.taro.ts
 /src/sites/mobile-taro/dist
 /src/sites/mobile-taro/node_modules
+/src/sites/taro-ui-to-nutui-demo/dist
+/src/sites/taro-ui-to-nutui-demo/node_modules
 /tsc/test
 /site_docs
 /coverage
