@@ -417,7 +417,7 @@ export const Range: FunctionComponent<
                   aria-valuemin={+min}
                   aria-valuenow={curValue(index)}
                   aria-valuemax={+max}
-                  aria-orientation="horizontal"
+                  aria-orientation={vertical ? 'vertical' : 'horizontal'}
                   onTouchStart={(e: any) => {
                     if (typeof index === 'number') {
                       // 实时更新当前拖动的按钮索引
@@ -458,7 +458,7 @@ export const Range: FunctionComponent<
               aria-valuemin={+min}
               aria-valuenow={curValue()}
               aria-valuemax={+max}
-              aria-orientation="horizontal"
+              aria-orientation={vertical ? 'vertical' : 'horizontal'}
               onTouchStart={(e) => {
                 onTouchStart(e)
               }}

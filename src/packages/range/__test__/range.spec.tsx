@@ -1,6 +1,6 @@
 import * as React from 'react'
 import '@testing-library/jest-dom'
-import { render, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import Range from '@/packages/range'
 
 test('range props test', () => {
@@ -37,16 +37,9 @@ test('range props test', () => {
 })
 
 test('range max and min test', () => {
-  const handleChange = jest.fn()
-  const { container } = render(
-    <Range modelValue={0} max={10} min={-10} onChange={handleChange} />
-  )
+  const { container } = render(<Range modelValue={0} max={10} min={-10} />)
   expect(container.querySelector('.min')?.innerHTML).toBe('-10')
   expect(container.querySelector('.max')?.innerHTML).toBe('10')
-  fireEvent.click(container)
-  setTimeout(() => {
-    expect(handleChange).toBeCalled()
-  }, 300)
 })
 
 test('range test', () => {
@@ -54,14 +47,12 @@ test('range test', () => {
     value0: [30, 60],
   }
   const { container } = render(<Range range modelValue={state.value0} />)
-  setTimeout(() => {
-    expect(
-      container.querySelector('nut-range-button-wrapper-left')
-    ).toHaveAttribute('aria-valuenow', '30')
-    expect(
-      container.querySelector('nut-range-button-wrapper-right')
-    ).toHaveAttribute('aria-valuenow', '60')
-  }, 300)
+  expect(
+    container.querySelector('.nut-range-button-wrapper-left')
+  ).toHaveAttribute('aria-valuenow', '30')
+  expect(
+    container.querySelector('.nut-range-button-wrapper-right')
+  ).toHaveAttribute('aria-valuenow', '60')
 })
 
 test('range description test', () => {
@@ -78,15 +69,14 @@ test('disabled test', () => {
     value0: 50,
   }
   const { container } = render(<Range disabled modelValue={state.value0} />)
-  setTimeout(() => {
-    expect(container.querySelector('nut-range')).toHaveClass(
-      'nut-range-disabled'
-    )
-    expect(container.querySelector('nut-range-button-wrapper')).toHaveAttribute(
-      'aria-valuenow',
-      '50'
-    )
-  }, 300)
+  expect(container.querySelector('.nut-range-button-wrapper')).toHaveAttribute(
+    'aria-valuenow',
+    '50'
+  )
+  expect(container.querySelector('.nut-range')).toHaveClass(
+    'nut-range-disabled'
+  )
+  expect(screen.queryByRole('slider')).toHaveAttribute('tabindex', '-1')
 })
 
 test('hiddenRange test', () => {
@@ -94,8 +84,8 @@ test('hiddenRange test', () => {
     value0: 40,
   }
   const { container } = render(<Range hiddenRange modelValue={state.value0} />)
-  expect(container.querySelector('max')).not.toBeTruthy
-  expect(container.querySelector('min')).not.toBeTruthy
+  expect(container.querySelector('max')).not.toBeTruthy()
+  expect(container.querySelector('min')).not.toBeTruthy()
 })
 
 test('hiddenTag test', () => {
@@ -113,11 +103,14 @@ test('vertical test', () => {
     value0: 40,
   }
   const { container } = render(<Range vertical modelValue={state.value0} />)
-  setTimeout(() => {
-    expect(container.querySelector('nut-range-container')).toHaveClass(
-      'nut-range-container-vertical'
-    )
-  }, 300)
+  expect(screen.queryByRole('slider')).toHaveAttribute('tabindex', '0')
+  expect(screen.queryByRole('slider')).toHaveAttribute(
+    'aria-orientation',
+    'vertical'
+  )
+  expect(container.querySelector('.nut-range-container')).toHaveClass(
+    'nut-range-container-vertical'
+  )
 })
 
 test('marks test', () => {
@@ -135,10 +128,13 @@ test('marks test', () => {
   const { container } = render(
     <Range marks={state.marks} modelValue={state.value0} />
   )
-  expect(container.querySelector('nut-range-mark')).toBeTruthy
+  expect(container.querySelector('.nut-range-mark')).toBeTruthy()
+  expect(container.querySelectorAll('.nut-range-mark-text')?.length).toEqual(
+    Object.keys(state.marks).length
+  )
 })
 
-test('button test', () => {
+test('custom-button test', () => {
   const state = {
     value0: 40,
   }
@@ -148,5 +144,35 @@ test('button test', () => {
       modelValue={state.value0}
     />
   )
-  expect(container.querySelector('range-custom-button')).toBeTruthy
+
+  expect(container.querySelector('.range-custom-button')).toBeTruthy()
+  expect(container.querySelector('.range-custom-button')?.innerHTML).toBe('40')
+  expect(container.querySelector('.nut-range-button-wrapper')).toHaveAttribute(
+    'aria-valuenow',
+    '40'
+  )
+})
+
+test('desc test', () => {
+  const state = {
+    value0: 40,
+    minDesc: 'min',
+    maxDesc: 'max',
+    curValueDesc: 'value',
+  }
+  const { container } = render(
+    <Range
+      modelValue={state.value0}
+      minDesc={state.minDesc}
+      maxDesc={state.maxDesc}
+      curValueDesc={state.curValueDesc}
+    />
+  )
+  expect(container.querySelector('.nut-range-button-wrapper')).toHaveAttribute(
+    'aria-valuenow',
+    '40'
+  )
+  expect(container.querySelector('.min')?.innerHTML).toBe(state.minDesc)
+  expect(container.querySelector('.max')?.innerHTML).toBe(state.maxDesc)
+  expect(container.querySelector('.number')?.innerHTML).toBe(state.curValueDesc)
 })
