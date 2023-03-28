@@ -9,7 +9,7 @@ import { GridItem, GridItemProps } from '../griditem/griditem.taro'
 export type GridDirection = 'horizontal' | 'vertical'
 
 export interface GridProps {
-  columnNum: string | number
+  columns: string | number
   border: boolean
   gutter: string | number
   center: boolean
@@ -22,7 +22,7 @@ export interface GridProps {
 }
 
 const defaultProps = {
-  columnNum: 4,
+  columns: 4,
   border: true,
   gutter: 0,
   center: true,
@@ -39,7 +39,7 @@ export const Grid: FunctionComponent<
   const { locale } = useConfig()
   const {
     children,
-    columnNum,
+    columns,
     border,
     gutter,
     center,
@@ -84,7 +84,7 @@ export const Grid: FunctionComponent<
         {childrenDom.map((item: any, idex: number) => {
           return React.cloneElement(item, {
             index: idex,
-            columnNum,
+            columns,
             center,
             border,
             gutter,

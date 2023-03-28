@@ -49,7 +49,7 @@ import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid columnNum={3}>
+    <Grid columns={3}>
       <Grid.Item icon={<Dongdong />} text="文字" />
       <Grid.Item icon={<Dongdong />} text="文字" />
       <Grid.Item icon={<Dongdong />} text="文字" />
@@ -73,7 +73,7 @@ import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid columnNum={3} square>
+    <Grid columns={3} square>
       <Grid.Item icon={<Dongdong />} text="文字" />
       <Grid.Item icon={<Dongdong />} text="文字" />
       <Grid.Item icon={<Dongdong />} text="文字" />
@@ -165,7 +165,7 @@ import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid columnNum="3">
+    <Grid columns="3">
       <Grid.Item icon={<Dongdong />} text="文字" />
       <Grid.Item
         icon={<Dongdong width={40} height={40} color="#478EF2" />}
@@ -229,7 +229,7 @@ export default App
 
 | 参数 | 说明 | 类型 | 默认值 |
 |-|-|-|-|
-| columnNum | 列数 | number \| string | `4` |
+| columns | 列数 | number \| string | `4` |
 | border | 是否显示边框 | boolean                | `true` |
 | gutter | 格子之间的间距，默认单位为`px` | number \| string | `0` |
 | center | 是否将格子内容居中显示 | boolean | `true` |

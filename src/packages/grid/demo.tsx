@@ -9,7 +9,7 @@ import Image from '../image'
 interface T {
   basic: string
   text: string
-  columnNum: string
+  columns: string
   square: string
   gutter: string
   reverse: string
@@ -23,7 +23,7 @@ const GridDemo = () => {
     'zh-CN': {
       basic: '基本用法',
       text: '文字',
-      columnNum: '自定义列数',
+      columns: '自定义列数',
       square: '正方形格子',
       gutter: '格子间距',
       reverse: '内容翻转',
@@ -35,7 +35,7 @@ const GridDemo = () => {
     'zh-TW': {
       basic: '基本用法',
       text: '文字',
-      columnNum: '自定義列數',
+      columns: '自定義列數',
       square: '正方形格子',
       gutter: '格子間距',
       reverse: '內容翻轉',
@@ -47,7 +47,7 @@ const GridDemo = () => {
     'en-US': {
       basic: 'Basic Usage',
       text: 'text',
-      columnNum: 'Column Num',
+      columns: 'Column Num',
       square: 'Square',
       gutter: 'Gutter',
       reverse: 'Reverse',
@@ -81,8 +81,8 @@ const GridDemo = () => {
           <Grid.Item icon={<Dongdong />} text={translated.text} />
         </Grid>
 
-        <h2>{translated.columnNum}</h2>
-        <Grid columnNum={3}>
+        <h2>{translated.columns}</h2>
+        <Grid columns={3}>
           <Grid.Item icon={<Dongdong />} text={translated.text} />
           <Grid.Item icon={<Dongdong />} text={translated.text} />
           <Grid.Item icon={<Dongdong />} text={translated.text} />
@@ -92,7 +92,7 @@ const GridDemo = () => {
         </Grid>
 
         <h2>{translated.square}</h2>
-        <Grid columnNum={3} square>
+        <Grid columns={3} square>
           <Grid.Item icon={<Dongdong />} text={translated.text} />
           <Grid.Item icon={<Dongdong />} text={translated.text} />
           <Grid.Item icon={<Dongdong />} text={translated.text} />
@@ -127,7 +127,7 @@ const GridDemo = () => {
         </Grid>
 
         <h2>{translated.iconStyle}</h2>
-        <Grid columnNum="3">
+        <Grid columns="3">
           <Grid.Item icon={<Dongdong />} text={translated.text} />
           <Grid.Item
             icon={<Dongdong width={40} height={40} color="#478EF2" />}

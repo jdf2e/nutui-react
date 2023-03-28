@@ -47,7 +47,7 @@ import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid columnNum={3}>
+    <Grid columns={3}>
       <Grid.Item icon={<Dongdong />} text="text" />
       <Grid.Item icon={<Dongdong />} text="text" />
       <Grid.Item icon={<Dongdong />} text="text" />
@@ -71,7 +71,7 @@ import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid columnNum={3} square>
+    <Grid columns={3} square>
         <Grid.Item icon={<Dongdong />} text="text" />
         <Grid.Item icon={<Dongdong />} text="text" />
         <Grid.Item icon={<Dongdong />} text="text" />
@@ -162,7 +162,7 @@ import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid columnNum="3">
+    <Grid columns="3">
       <Grid.Item icon={<Dongdong />} text="text" />
       <Grid.Item
         icon={<Dongdong width={40} height={40} color="#478EF2" />}
@@ -226,7 +226,7 @@ export default App
 
 | Attribute | Description | Type | Default |
 |-|-|-|-|
-| columnNum | Column Num | number \| string | `4` |
+| columns | Column Num | number \| string | `4` |
 | border | Whether to show border | boolean | `true` |
 | gutter | Gutter,The default unit is `px` | number \| string | `0` |
 | center | Whether to center content | boolean | `true` |

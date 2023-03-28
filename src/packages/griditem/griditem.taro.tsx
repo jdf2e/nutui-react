@@ -8,7 +8,7 @@ import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import bem from '@/utils/bem'
 
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent } from '@/utils/typings'
 import GridContext from '../grid/grid.taro.context'
 
 type GridDirection = 'horizontal' | 'vertical'
@@ -17,8 +17,7 @@ export interface GridItemProps extends BasicComponent {
   text: string | ReactNode
   icon: ReactNode
   index: number
-
-  columnNum: string | number
+  columns: string | number
   border: boolean
   gutter: string | number
   center: boolean
@@ -28,11 +27,9 @@ export interface GridItemProps extends BasicComponent {
 }
 
 const defaultProps = {
-  ...ComponentDefaults,
   text: '',
   icon: null,
-
-  columnNum: 4,
+  columns: 4,
   border: true,
   gutter: 0,
   center: true,
@@ -46,7 +43,7 @@ export const GridItem: FunctionComponent<
   const { locale } = useConfig()
   const {
     children,
-    columnNum,
+    columns,
     index,
     gutter,
     square,
@@ -70,14 +67,14 @@ export const GridItem: FunctionComponent<
 
   const rootStyle = () => {
     const style: CSSProperties = {
-      flexBasis: `${100 / +columnNum}%`,
+      flexBasis: `${100 / +columns}%`,
     }
 
     if (square) {
-      style.paddingTop = `${100 / +columnNum}%`
+      style.paddingTop = `${100 / +columns}%`
     } else if (gutter) {
       style.paddingRight = pxCheck(gutter)
-      if (index >= columnNum) {
+      if (index >= columns) {
         style.marginTop = pxCheck(gutter)
       }
     }
@@ -104,7 +101,7 @@ export const GridItem: FunctionComponent<
           text,
           icon,
           index,
-          columnNum,
+          columns,
           border,
           gutter,
           center,

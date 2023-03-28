@@ -23,7 +23,7 @@ test('should match snapshot', () => {
 test('render with column num', () => {
   const { container } = render(
     <>
-      <Grid columnNum={3}>
+      <Grid columns={3}>
         <Grid.Item icon={<Dongdong />} text="文本" />
         <Grid.Item icon={<Dongdong />} text="文本" />
         <Grid.Item icon={<Dongdong />} text="文本" />
@@ -95,7 +95,7 @@ test('render with props direction horizontal', () => {
 test('render with custom', () => {
   const { container } = render(
     <>
-      <Grid columnNum="3">
+      <Grid columns="3">
         <Grid.Item icon={<Dongdong />} text="文本" />
         <Grid.Item
           icon={<Dongdong width={40} height={40} color="#478EF2" />}
