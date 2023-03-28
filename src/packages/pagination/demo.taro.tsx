@@ -64,7 +64,7 @@ const PaginationDemo = () => {
         <Cell>
           <Pagination
             modelValue={currentPage1}
-            totalItems="20"
+            total="20"
             pageSize="5"
             onChange={pageChange1}
           />
@@ -82,7 +82,7 @@ const PaginationDemo = () => {
         <Cell>
           <Pagination
             modelValue={currentPage3}
-            totalItems="125"
+            total="125"
             itemSize="3"
             ellipse
             onChange={pageChange3}
@@ -92,7 +92,7 @@ const PaginationDemo = () => {
         <Cell>
           <Pagination
             modelValue={currentPage4}
-            totalItems="500"
+            total="500"
             itemSize="5"
             onChange={pageChange4}
             prev={<Left />}

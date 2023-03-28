@@ -9,7 +9,7 @@ export interface PaginationProps {
   prev: React.ReactNode
   next: React.ReactNode
   pageCount: string | number
-  totalItems: string | number
+  total: string | number
   pageSize: string | number
   itemSize: string | number
   ellipse: boolean
@@ -26,7 +26,7 @@ const defaultProps = {
   prev: null,
   next: null,
   pageCount: '',
-  totalItems: '0',
+  total: '0',
   pageSize: '10',
   itemSize: '5',
   ellipse: false,
@@ -47,7 +47,7 @@ export const Pagination: FunctionComponent<
     prev,
     next,
     pageCount,
-    totalItems,
+    total,
     pageSize,
     itemSize,
     onChange,
@@ -65,8 +65,7 @@ export const Pagination: FunctionComponent<
   const paginationBem = bem('pagination')
   // 计算页面的数量
   const computedCountRef = () => {
-    const num =
-      Number(pageCount) || Math.ceil(Number(totalItems) / Number(pageSize))
+    const num = Number(pageCount) || Math.ceil(Number(total) / Number(pageSize))
     return Number.isNaN(num) ? 1 : Math.max(1, num)
   }
 

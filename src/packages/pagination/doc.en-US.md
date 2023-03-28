@@ -29,7 +29,7 @@ const App = () => {
   return (
     <Pagination
       modelValue={currentPage1}
-      totalItems="25"
+      total="25"
       pageSize="5"
       onChange={pageChange1}
     />
@@ -80,7 +80,7 @@ const App = () => {
   return (
     <Pagination
       modelValue={currentPage3}
-      totalItems="125"
+      total="125"
       itemSize="3"
       ellipse
       onChange={pageChange3}
@@ -110,7 +110,7 @@ const App = () => {
   return (
     <Pagination
       modelValue={currentPage4}
-      totalItems="500"
+      total="500"
       itemSize="5"
       onChange={pageChange4}
       pageNodeRender={pageNodeRender} 
@@ -135,7 +135,7 @@ export default App;
 | prev       | Customize previous page button content             | string \| ReactNode | `Previous`            |
 | next       | Customize next page button content             | string \| ReactNode | `Next`             |
 | pageCount      | total pages                           | string \| number          | Incoming/calculating based on page count |
-| totalItems     | total                         | string \| number          | `0`                 |
+| total     | total                         | string \| number          | `0`                 |
 | pageSize   | records per page                       | string \| number          | `10`                |
 | itemSize   | number of pages displayed                   | string \| number          | `5`                 |
 | ellipse  | Whether to show ellipsis                   | boolean                   | `false`             |
