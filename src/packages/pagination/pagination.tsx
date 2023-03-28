@@ -13,7 +13,7 @@ export interface PaginationProps {
   pageSize: string | number
   itemSize: string | number
   ellipse: boolean
-  pageNodeRender: (page: any) => React.ReactNode
+  itemRender: (page: any) => React.ReactNode
   onChange: (currPage: number) => void
   updatecurrent: (currPage: number) => void
   style?: React.CSSProperties
@@ -31,7 +31,7 @@ const defaultProps = {
   itemSize: '5',
   ellipse: false,
   className: '',
-  pageNodeRender: (item: any) => {
+  itemRender: (item: any) => {
     return item.text
   },
 } as PaginationProps
@@ -53,7 +53,7 @@ export const Pagination: FunctionComponent<
     onChange,
     updatecurrent,
     ellipse,
-    pageNodeRender,
+    itemRender,
     defaultValue,
     className,
     ...rest
@@ -167,7 +167,7 @@ export const Pagination: FunctionComponent<
                   !item.active ? selectPage(item.number, true) : ''
                 }
               >
-                {pageNodeRender ? pageNodeRender(item) : item.text}
+                {itemRender ? itemRender(item) : item.text}
               </div>
             )
           })}

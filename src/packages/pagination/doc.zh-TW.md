@@ -89,7 +89,7 @@ export default App;
 ```
 :::
 ### 自定義按鈕
-通過pageNodeRender傳入自定義方法，入參數為page:{ number:頁數, text:"文本", active:"選中狀態" }
+通過itemRender傳入自定義方法，入參數為page:{ number:頁數, text:"文本", active:"選中狀態" }
 :::demo
 ``` tsx
 import React, { useState } from 'react'
@@ -102,7 +102,7 @@ const App = () => {
     const c = v
     setCurrentPage4(c)
   }
-  const pageNodeRender = (page: any) => {
+  const itemRender = (page: any) => {
     return <div>{page.number === 3 ? 'hot' : page.text}</div>
   }
   return (
@@ -111,7 +111,7 @@ const App = () => {
       total="500"
       itemSize="5"
       onChange={pageChange4}
-      pageNodeRender={pageNodeRender} 
+      itemRender={itemRender} 
       prev={<Left />}
       next={<Right />}
     />
@@ -137,7 +137,7 @@ export default App;
 | pageSize   | 每頁記錄數                       | string \| number          | `10`                |
 | itemSize   | 顯示的頁碼個數                   | string \| number          | `5`                 |
 | ellipse  | 是否顯示省略號                   | boolean                   | `false`             |
-| pageNodeRender | 用於自定義頁碼的結構             | (page) => ReactNode | -                 |
+| itemRender | 用於自定義頁碼的結構             | (page) => ReactNode | -                 |
     
 ### Events
     

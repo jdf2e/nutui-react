@@ -91,7 +91,7 @@ export default App;
 ```
 :::
 ### Custom Button
-Pass in a custom method through pageNodeRender, parameters: { number: "page number", text: "page text", active: "active page" }
+Pass in a custom method through itemRender, parameters: { number: "page number", text: "page text", active: "active page" }
 :::demo
 ``` tsx
 import React, { useState } from 'react'
@@ -104,7 +104,7 @@ const App = () => {
     const c = v
     setCurrentPage4(c)
   }
-  const pageNodeRender = (page: any) => {
+  const itemRender = (page: any) => {
     return <div>{page.number === 3 ? 'hot' : page.text}</div>
   }
   return (
@@ -113,7 +113,7 @@ const App = () => {
       total="500"
       itemSize="5"
       onChange={pageChange4}
-      pageNodeRender={pageNodeRender} 
+      itemRender={itemRender} 
       prev={<Left />}
       next={<Right />}
     />
@@ -139,7 +139,7 @@ export default App;
 | pageSize   | records per page                       | string \| number          | `10`                |
 | itemSize   | number of pages displayed                   | string \| number          | `5`                 |
 | ellipse  | Whether to show ellipsis                   | boolean                   | `false`             |
-| pageNodeRender | Used to customize page number content             | (page) => ReactNode | -                 |
+| itemRender | Used to customize page number content             | (page) => ReactNode | -                 |
     
 ### Events
     

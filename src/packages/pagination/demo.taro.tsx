@@ -53,7 +53,7 @@ const PaginationDemo = () => {
     const c = v
     setCurrent4(c)
   }
-  const pageNodeRender = (item: any) => {
+  const itemRender = (item: any) => {
     return <div>{item.number === 3 ? 'hot' : item.text}</div>
   }
   return (
@@ -97,7 +97,7 @@ const PaginationDemo = () => {
             onChange={pageChange4}
             prev={<Left />}
             next={<Right />}
-            pageNodeRender={pageNodeRender}
+            itemRender={itemRender}
           />
         </Cell>
       </div>
