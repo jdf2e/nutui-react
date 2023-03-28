@@ -63,7 +63,7 @@ test('should not emit change event after clicking disable option', async () => {
 })
 
 test('should render custom content correctly', () => {
-  const pageNodeRender = (page: any) => {
+  const itemRender = (page: any) => {
     return <div>{page.number === 3 ? 'hot' : page.text}</div>
   }
   const { container, getByText } = render(
@@ -71,7 +71,7 @@ test('should render custom content correctly', () => {
       total={25}
       pageSize={5}
       defaultValue={1}
-      pageNodeRender={pageNodeRender}
+      itemRender={itemRender}
       prev="pre"
       next="next"
     />
