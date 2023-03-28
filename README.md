@@ -54,37 +54,42 @@
 
 
 
-## Local Run
+## Running locally
 
-### local H5
-```
+### running with H5
+```sh
+# Clone repository
 git clone https://github.com/jdf2e/nutui-react.git
 
+# Enter the project dictionary
 cd nutui-react
 
+# Install dependencies
 npm install
 
+# Start development
 npm run dev
 
-url：http://localhost:3000
+# visit in browser: http：http://localhost:3000 (you don't have to open it manually if you've run it in the browser again)
 ```
-### local mp
-```
+### running with mini-program
+```sh
+# Clone repository
 git clone https://github.com/jdf2e/nutui-react.git
 
+# Enter the project dictionary
 cd nutui-react
 
+# Install dependencies
 npm install
 
+# Start development
+# dir：src/sites/mobile-taro/dist/weapp
 npm run dev:taro:weapp
 
-dir：src/sites/mobile-taro/dist/weapp
-
-OR jd
-
+# OR run as jd mini-program
+# dir：src/sites/mobile-taro/dist/jd
 npm run dev:taro:jd
-
-dir：src/sites/mobile-taro/dist/jd
 ```
 
 ## Build Versions
