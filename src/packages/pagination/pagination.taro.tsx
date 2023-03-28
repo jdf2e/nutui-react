@@ -10,7 +10,7 @@ export interface PaginationProps {
   next: React.ReactNode
   pageCount: string | number
   totalItems: string | number
-  itemsPerPage: string | number
+  pageSize: string | number
   itemSize: string | number
   ellipse: boolean
   pageNodeRender: (page: any) => React.ReactNode
@@ -27,7 +27,7 @@ const defaultProps = {
   next: null,
   pageCount: '',
   totalItems: '0',
-  itemsPerPage: '10',
+  pageSize: '10',
   itemSize: '5',
   ellipse: false,
   className: '',
@@ -48,7 +48,7 @@ export const Pagination: FunctionComponent<
     next,
     pageCount,
     totalItems,
-    itemsPerPage,
+    pageSize,
     itemSize,
     onChange,
     updatecurrent,
@@ -66,7 +66,7 @@ export const Pagination: FunctionComponent<
   // 计算页面的数量
   const computedCountRef = () => {
     const num =
-      Number(pageCount) || Math.ceil(Number(totalItems) / Number(itemsPerPage))
+      Number(pageCount) || Math.ceil(Number(totalItems) / Number(pageSize))
     return Number.isNaN(num) ? 1 : Math.max(1, num)
   }
 

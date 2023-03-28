@@ -28,7 +28,7 @@ const App = () => {
     <Pagination
       modelValue={currentPage1}
       totalItems="25"
-      itemsPerPage="5"
+      pageSize="5"
       onChange={pageChange1}
     />
   )
@@ -134,7 +134,7 @@ export default App;
 | next       | 自定義下一頁按鈕內容             | string \| ReactNode | `下一頁`            |
 | pageCount      | 總頁數                           | string \| number          | 傳入/根據頁數計算 |
 | totalItems     | 總記錄數                         | string \| number          | `0`                 |
-| itemsPerPage   | 每頁記錄數                       | string \| number          | `10`                |
+| pageSize   | 每頁記錄數                       | string \| number          | `10`                |
 | itemSize   | 顯示的頁碼個數                   | string \| number          | `5`                 |
 | ellipse  | 是否顯示省略號                   | boolean                   | `false`             |
 | pageNodeRender | 用於自定義頁碼的結構             | (page) => ReactNode | -                 |

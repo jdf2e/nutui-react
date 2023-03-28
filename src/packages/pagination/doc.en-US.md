@@ -30,7 +30,7 @@ const App = () => {
     <Pagination
       modelValue={currentPage1}
       totalItems="25"
-      itemsPerPage="5"
+      pageSize="5"
       onChange={pageChange1}
     />
   )
@@ -136,7 +136,7 @@ export default App;
 | next       | Customize next page button content             | string \| ReactNode | `Next`             |
 | pageCount      | total pages                           | string \| number          | Incoming/calculating based on page count |
 | totalItems     | total                         | string \| number          | `0`                 |
-| itemsPerPage   | records per page                       | string \| number          | `10`                |
+| pageSize   | records per page                       | string \| number          | `10`                |
 | itemSize   | number of pages displayed                   | string \| number          | `5`                 |
 | ellipse  | Whether to show ellipsis                   | boolean                   | `false`             |
 | pageNodeRender | Used to customize page number content             | (page) => ReactNode | -                 |

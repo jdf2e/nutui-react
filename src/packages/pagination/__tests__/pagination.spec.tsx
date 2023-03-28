@@ -4,12 +4,12 @@ import '@testing-library/jest-dom'
 import { Pagination } from '../pagination'
 
 test('should match snapshot', () => {
-  const { asFragment } = render(<Pagination totalItems={25} itemsPerPage={5} />)
+  const { asFragment } = render(<Pagination totalItems={25} pageSize={5} />)
   expect(asFragment()).toMatchSnapshot()
 })
 
 test('should render items', async () => {
-  const { container } = render(<Pagination totalItems={25} itemsPerPage={5} />)
+  const { container } = render(<Pagination totalItems={25} pageSize={5} />)
   expect(container.querySelectorAll('.nut-pagination__item')).toHaveLength(5)
 })
 test('should render simple mode', async () => {
@@ -31,7 +31,7 @@ test('should render ellipse and should emit change event after clicking ellipse 
 
 test('should emit change event after clicking visible option', async () => {
   const { container, getByText } = render(
-    <Pagination totalItems={25} itemsPerPage={5} defaultValue={1} />
+    <Pagination totalItems={25} pageSize={5} defaultValue={1} />
   )
   const next = getByText('下一页')
   fireEvent.click(next)
@@ -50,7 +50,7 @@ test('should not emit change event after clicking disable option', async () => {
   const { container, getByText } = render(
     <Pagination
       totalItems={25}
-      itemsPerPage={5}
+      pageSize={5}
       defaultValue={1}
       onChange={pageChange}
     />
@@ -69,7 +69,7 @@ test('should render custom content correctly', () => {
   const { container, getByText } = render(
     <Pagination
       totalItems={25}
-      itemsPerPage={5}
+      pageSize={5}
       defaultValue={1}
       pageNodeRender={pageNodeRender}
       prev="pre"

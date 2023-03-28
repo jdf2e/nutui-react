@@ -27,7 +27,7 @@ const App = () => {
     <Pagination
       modelValue={currentPage1}
       totalItems="25"
-      itemsPerPage="5"
+      pageSize="5"
       onChange={pageChange1}
     />
   )
@@ -133,7 +133,7 @@ export default App;
 | next       | 自定义下一页按钮内容             | string \| ReactNode | `下一页`            |
 | pageCount      | 总页数                           | string \| number          | 传入/根据页数计算 |
 | totalItems     | 总记录数                         | string \| number          | `0`                 |
-| itemsPerPage   | 每页记录数                       | string \| number          | `10`                |
+| pageSize   | 每页记录数                       | string \| number          | `10`                |
 | itemSize   | 显示的页码个数                   | string \| number          | `5`                 |
 | ellipse  | 是否显示省略号                   | boolean                   | `false`             |
 | pageNodeRender | 用于自定义页码的结构             | (page) => ReactNode | -                 |
