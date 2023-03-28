@@ -7,7 +7,7 @@
 ### 安装
 
 ```javascript
-import { Grid, GridItem } from '@nutui/nutui-react-taro'
+import { Grid } from '@nutui/nutui-react-taro'
 ```
 
 ## 代码演示
@@ -17,20 +17,20 @@ import { Grid, GridItem } from '@nutui/nutui-react-taro'
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react-taro'
+import { Grid } from '@nutui/nutui-react-taro'
 import { Dongdong } from '@nutui/icons-react-taro'
 
 const App = () => {
   return (
     <Grid>
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
     </Grid>
   )
 }
@@ -43,18 +43,18 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react-taro'
+import { Grid } from '@nutui/nutui-react-taro'
 import { Dongdong } from '@nutui/icons-react-taro'
 
 const App = () => {
   return (
     <Grid columnNum={3}>
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
     </Grid>
   )
 }
@@ -67,15 +67,15 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react-taro'
+import { Grid } from '@nutui/nutui-react-taro'
 import { Dongdong } from '@nutui/icons-react-taro'
 
 const App = () => {
   return (
     <Grid columnNum={3} square>
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
     </Grid>
   )
 }
@@ -89,20 +89,20 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react-taro'
+import { Grid } from '@nutui/nutui-react-taro'
 import { Dongdong } from '@nutui/icons-react-taro'
 
 const App = () => {
   return (
     <Grid gutter={3}>
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
     </Grid>
   )
 }
@@ -115,16 +115,16 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react-taro'
+import { Grid } from '@nutui/nutui-react-taro'
 import { Dongdong } from '@nutui/icons-react-taro'
 
 const App = () => {
   return (
     <Grid reverse>
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
     </Grid>
   )
 }
@@ -137,16 +137,16 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react-taro'
+import { Grid } from '@nutui/nutui-react-taro'
 import { Dongdong } from '@nutui/icons-react-taro'
 
 const App = () => {
   return (
     <Grid direction="horizontal">
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
     </Grid>
   )
 }
@@ -159,18 +159,18 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid,GridItem } from '@nutui/nutui-react-taro'
+import { Grid,Grid.Item } from '@nutui/nutui-react-taro'
 import { Dongdong } from '@nutui/icons-react-taro'
 
 const App = () => {
   return (
     <Grid columnNum="3">
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item
         icon={<Dongdong width={40} height={40} color="#478EF2"/>}
         text="文字"
       />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
     </Grid>
   )
 }
@@ -183,14 +183,14 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem, Avatar } from '@nutui/nutui-react-taro'
+import { Grid, Avatar } from '@nutui/nutui-react-taro'
 import { Dongdong, My } from '@nutui/icons-react-taro'
 
 const App = () => {
   return (
     <Grid border={false}>
-      <GridItem icon={<Dongdong />} text={<span>More</span>} />
-      <GridItem
+      <Grid.Item icon={<Dongdong />} text={<span>More</span>} />
+      <Grid.Item
         text={
           <Avatar
             className="demo-avatar"
@@ -200,7 +200,7 @@ const App = () => {
         }
         onClick={handleClick}
       />
-      <GridItem
+      <Grid.Item
         icon={
           <Avatar
             className="demo-avatar"
@@ -209,7 +209,7 @@ const App = () => {
           />
         }
       />
-      <GridItem>
+      <Grid.Item>
       <Avatar
         size="large"
         icon={
@@ -221,7 +221,7 @@ const App = () => {
           />
         }
       />
-      </GridItem>
+      </Grid.Item>
     </Grid>
   )
 }
@@ -251,7 +251,7 @@ export default App
 |----------|--------------|----------------------------------------------------|
 | onClick | 宫格子项点击事件 | 点击当前项, 索引 |
 
-### GridItem Props
+### Grid.Item Props
 
 | 参数                  | 说明                                                                                     | 类型               | 默认值      |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|------------|
@@ -260,7 +260,7 @@ export default App
 | iconSize`v2.0.0 废弃`            | 图标大小，如 `20px` `2em` `2rem`                                                          | number \| string   | `28px`     |
 | iconColor`v2.0.0 废弃`           | 图标颜色                                                                                  | string            | -           |
 
-### GridItem Event
+### Grid.Item Event
 
 | 参数                  | 说明                                                                                     | 回调参数    |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|

@@ -7,6 +7,8 @@ exports[`render with custom content 1`] = `
   >
     <div
       class="nut-grid-item"
+      iconclassprefix="nut-icon"
+      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -36,6 +38,8 @@ exports[`render with custom content 1`] = `
     </div>
     <div
       class="nut-grid-item"
+      iconclassprefix="nut-icon"
+      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -46,6 +50,8 @@ exports[`render with custom content 1`] = `
         >
           <div
             class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
+            iconclassprefix="nut-icon"
+            iconfontclassname="nutui-iconfont"
             style="background-color: rgb(250, 44, 25); color: rgb(102, 102, 102);"
           >
             <svg
@@ -68,6 +74,8 @@ exports[`render with custom content 1`] = `
     </div>
     <div
       class="nut-grid-item"
+      iconclassprefix="nut-icon"
+      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -75,6 +83,8 @@ exports[`render with custom content 1`] = `
       >
         <div
           class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
+          iconclassprefix="nut-icon"
+          iconfontclassname="nutui-iconfont"
           style="background-color: rgb(250, 44, 25); color: rgb(102, 102, 102);"
         >
           <svg
@@ -96,6 +106,8 @@ exports[`render with custom content 1`] = `
     </div>
     <div
       class="nut-grid-item"
+      iconclassprefix="nut-icon"
+      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -103,6 +115,8 @@ exports[`render with custom content 1`] = `
       >
         <div
           class="nut-avatar nut-avatar-large nut-avatar-round"
+          iconclassprefix="nut-icon"
+          iconfontclassname="nutui-iconfont"
           style="background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);"
         >
           <div
@@ -152,6 +166,8 @@ exports[`should match snapshot 1`] = `
   >
     <div
       class="nut-grid-item"
+      iconclassprefix="nut-icon"
+      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -179,6 +195,8 @@ exports[`should match snapshot 1`] = `
     </div>
     <div
       class="nut-grid-item"
+      iconclassprefix="nut-icon"
+      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -206,6 +224,8 @@ exports[`should match snapshot 1`] = `
     </div>
     <div
       class="nut-grid-item"
+      iconclassprefix="nut-icon"
+      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div

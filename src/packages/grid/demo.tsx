@@ -2,7 +2,6 @@ import React from 'react'
 import { Dongdong, My } from '@nutui/icons-react'
 import Avatar from '../avatar'
 import { Grid } from './grid'
-import GridItem from '../griditem'
 import { useTranslate } from '../../sites/assets/locale'
 import Toast from '../toast'
 import Image from '../image'
@@ -72,75 +71,75 @@ const GridDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Grid>
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
         </Grid>
 
         <h2>{translated.columnNum}</h2>
         <Grid columnNum={3}>
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
         </Grid>
 
         <h2>{translated.square}</h2>
         <Grid columnNum={3} square>
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
         </Grid>
 
         <h2>{translated.gutter}</h2>
         <Grid gutter={3}>
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
         </Grid>
 
         <h2>{translated.reverse}</h2>
         <Grid reverse>
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
         </Grid>
 
         <h2>{translated.horizontal}</h2>
         <Grid direction="horizontal">
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
         </Grid>
 
         <h2>{translated.iconStyle}</h2>
         <Grid columnNum="3">
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item
             icon={<Dongdong width={40} height={40} color="#478EF2" />}
             text={translated.text}
           />
-          <GridItem icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
         </Grid>
 
         <h2>{translated.customContent}</h2>
         <Grid border={false}>
-          <GridItem icon={<Dongdong />} text={<span>More</span>} />
-          <GridItem
+          <Grid.Item icon={<Dongdong />} text={<span>More</span>} />
+          <Grid.Item
             text={
               <Avatar
                 className="demo-avatar"
@@ -150,7 +149,7 @@ const GridDemo = () => {
             }
             onClick={handleClick}
           />
-          <GridItem
+          <Grid.Item
             icon={
               <Avatar
                 className="demo-avatar"
@@ -159,22 +158,22 @@ const GridDemo = () => {
               />
             }
           />
-          <GridItem>
+          <Grid.Item>
             <Avatar
               size="large"
               icon={
                 <Image src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
               }
             />
-          </GridItem>
+          </Grid.Item>
         </Grid>
 
         <h2>{translated.event}</h2>
         <Grid direction="horizontal" onClick={onClick}>
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
-          <GridItem icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
+          <Grid.Item icon={<Dongdong />} text={translated.text} />
         </Grid>
       </div>
     </>

@@ -4,7 +4,7 @@ import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import bem from '@/utils/bem'
 
 import GridContext from './grid.taro.context'
-import { GridItemProps } from '../griditem/griditem.taro'
+import { GridItem, GridItemProps } from '../griditem/griditem.taro'
 
 export type GridDirection = 'horizontal' | 'vertical'
 
@@ -33,7 +33,9 @@ const defaultProps = {
 
 export const Grid: FunctionComponent<
   Partial<GridProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
-> = (props) => {
+> & {
+  Item: typeof GridItem
+} = (props) => {
   const { locale } = useConfig()
   const {
     children,
@@ -98,3 +100,4 @@ export const Grid: FunctionComponent<
 
 Grid.defaultProps = defaultProps
 Grid.displayName = 'NutGrid'
+Grid.Item = GridItem

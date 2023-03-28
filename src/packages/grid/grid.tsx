@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 
-import { GridItemProps } from '../griditem/griditem'
+import { GridItem, GridItemProps } from '../griditem/griditem'
 import GridContext from './grid.context'
 
 export type GridDirection = 'horizontal' | 'vertical'
@@ -33,7 +33,9 @@ const defaultProps = {
 
 export const Grid: FunctionComponent<
   Partial<GridProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
-> = (props) => {
+> & {
+  Item: typeof GridItem
+} = (props) => {
   const { locale } = useConfig()
   const {
     children,
@@ -98,3 +100,4 @@ export const Grid: FunctionComponent<
 
 Grid.defaultProps = defaultProps
 Grid.displayName = 'NutGrid'
+Grid.Item = GridItem

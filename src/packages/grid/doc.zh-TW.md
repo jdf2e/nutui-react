@@ -8,7 +8,7 @@
 
 ```javascript
 // react
-import { Grid, GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 ```
 
 ## 代碼演示
@@ -18,20 +18,20 @@ import { Grid, GridItem } from '@nutui/nutui-react'
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid>
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
     </Grid>
   )
 }
@@ -44,18 +44,18 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid columnNum={3}>
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
     </Grid>
   )
 }
@@ -68,15 +68,15 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid columnNum={3} square>
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
     </Grid>
   )
 }
@@ -90,20 +90,20 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid gutter={3}>
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
     </Grid>
   )
 }
@@ -116,16 +116,16 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid reverse>
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
     </Grid>
   )
 }
@@ -138,16 +138,16 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid direction="horizontal">
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
     </Grid>
   )
 }
@@ -160,18 +160,18 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid columnNum="3">
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem
+      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item
         icon={<Dongdong width={40} height={40} color="#478EF2" />}
         text="文字"
       />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item icon={<Dongdong />} text="文字" />
     </Grid>
   )
 }
@@ -184,14 +184,14 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem, Avatar, Image } from '@nutui/nutui-react'
+import { Grid, Avatar, Image } from '@nutui/nutui-react'
 import { Dongdong, My } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid border={false}>
-      <GridItem icon={<Dongdong />} text={<span>More</span>} />
-      <GridItem
+      <Grid.Item icon={<Dongdong />} text={<span>More</span>} />
+      <Grid.Item
         text={
           <Avatar
             className="demo-avatar"
@@ -201,7 +201,7 @@ const App = () => {
         }
         onClick={handleClick}
       />
-      <GridItem
+      <Grid.Item
         icon={
           <Avatar
             className="demo-avatar"
@@ -210,12 +210,12 @@ const App = () => {
           />
         }
       />
-      <GridItem>
+      <Grid.Item>
       <Avatar
         size="large"
         icon={<Image src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />}
       />
-      </GridItem>
+      </Grid.Item>
     </Grid>
   )
 }
@@ -245,7 +245,7 @@ export default App
 |----------|--------------|----------------------------------------------------|
 | onClick | 宮格子項點擊事件 | 點擊當前項數據, 索引 |
 
-### GridItem Props
+### Grid.Item Props
 
 | 參數                  | 說明                                                                                     | 類型               | 默認值      |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|------------|
@@ -256,7 +256,7 @@ export default App
 | iconSize`v2.0.0 废弃`            | 圖標大小，如 `20px` `2em` `2rem`                                                          | number \| string   | `28px`     |
 | iconColor`v2.0.0 废弃`           | 圖標顏色                                                                                  | string            | -           |
 
-### GridItem Event
+### Grid.Item Event
 
 | 參數                  | 說明                                                                                     | 回調參數    |
 |----------------------|-----------------------------------------------------------------------------------------|--------------------|
