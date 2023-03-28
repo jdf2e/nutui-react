@@ -19,7 +19,7 @@ test('should render simple mode', async () => {
 })
 test('should render ellipse and should emit change event after clicking ellipse option', async () => {
   const { container, getByText } = render(
-    <Pagination totalItems={125} showPageSize={3} ellipse />
+    <Pagination totalItems={125} itemSize={3} ellipse />
   )
   expect(container.querySelectorAll('.nut-pagination__item')).toHaveLength(4)
   fireEvent.click(getByText('...'))

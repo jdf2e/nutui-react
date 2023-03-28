@@ -11,7 +11,7 @@ export interface PaginationProps {
   pageCount: string | number
   totalItems: string | number
   itemsPerPage: string | number
-  showPageSize: string | number
+  itemSize: string | number
   ellipse: boolean
   pageNodeRender: (page: any) => React.ReactNode
   onChange: (currPage: number) => void
@@ -28,7 +28,7 @@ const defaultProps = {
   pageCount: '',
   totalItems: '0',
   itemsPerPage: '10',
-  showPageSize: '5',
+  itemSize: '5',
   ellipse: false,
   className: '',
   pageNodeRender: (item: any) => {
@@ -49,7 +49,7 @@ export const Pagination: FunctionComponent<
     pageCount,
     totalItems,
     itemsPerPage,
-    showPageSize,
+    itemSize,
     onChange,
     updatecurrent,
     ellipse,
@@ -75,7 +75,7 @@ export const Pagination: FunctionComponent<
     if (mode === 'simple') return []
     const items = []
     const pageCount = _countRef || countRef // 总的页面数量
-    const pageSize = Number(showPageSize) // 展示的页面个数
+    const pageSize = Number(itemSize) // 展示的页面个数
     const _current = _currentPage || Number(currentPage) // 当前页
     let startPage = 1
     let endPage = pageCount
