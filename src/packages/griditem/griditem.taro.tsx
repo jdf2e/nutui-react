@@ -43,6 +43,7 @@ export const GridItem: FunctionComponent<
   const { locale } = useConfig()
   const {
     children,
+    style,
     columns,
     index,
     gutter,
@@ -66,20 +67,21 @@ export const GridItem: FunctionComponent<
   }
 
   const rootStyle = () => {
-    const style: CSSProperties = {
+    const styles: CSSProperties = {
       flexBasis: `${100 / +columns}%`,
+      ...style,
     }
 
     if (square) {
-      style.paddingTop = `${100 / +columns}%`
+      styles.paddingTop = `${100 / +columns}%`
     } else if (gutter) {
-      style.paddingRight = pxCheck(gutter)
-      if (index >= columns) {
-        style.marginTop = pxCheck(gutter)
+      styles.paddingRight = pxCheck(gutter)
+      if (index >= Number(columns)) {
+        styles.marginTop = pxCheck(gutter)
       }
     }
 
-    return style
+    return styles
   }
 
   const contentClass = () => {
