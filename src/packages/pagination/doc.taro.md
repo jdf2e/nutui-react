@@ -111,7 +111,7 @@ const App = () => {
       showPageSize="5"
       onChange={pageChange4}
       pageNodeRender={pageNodeRender} 
-      prevText={<Left />}
+      prev={<Left />}
           nextText={<Right />}
     />
   )
@@ -129,7 +129,7 @@ export default App;
 | modelValue     | 当前页码                         | number                    | -                 |
 | defaultValue   | 当前页码                         | number                    | `1`                 |
 | mode           | 显示模式,可选值为：multi，simple | string                    | `multi`             |
-| prevText       | 自定义上一页按钮内容             | string \| ReactNode | `上一页`            |
+| prev       | 自定义上一页按钮内容             | string \| ReactNode | `上一页`            |
 | nextText       | 自定义下一页按钮内容             | string \| ReactNode | `下一页`            |
 | pageCount      | 总页数                           | string \| number          | 传入/根据页数计算 |
 | totalItems     | 总记录数                         | string \| number          | `0`                 |

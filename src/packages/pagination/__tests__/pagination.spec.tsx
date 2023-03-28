@@ -72,7 +72,7 @@ test('should render custom content correctly', () => {
       itemsPerPage={5}
       defaultValue={1}
       pageNodeRender={pageNodeRender}
-      prevText="pre"
+      prev="pre"
       nextText="next"
     />
   )

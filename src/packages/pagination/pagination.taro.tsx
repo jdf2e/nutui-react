@@ -6,8 +6,8 @@ export interface PaginationProps {
   defaultValue: number
   modelValue: number
   mode: 'multi' | 'simple'
-  prevText?: React.ReactNode
-  nextText?: React.ReactNode
+  prev: React.ReactNode
+  nextText: React.ReactNode
   pageCount: string | number
   totalItems: string | number
   itemsPerPage: string | number
@@ -23,8 +23,8 @@ export interface PaginationProps {
 const defaultProps = {
   defaultValue: 1,
   mode: 'multi',
-  prevText: '',
-  nextText: '',
+  prev: null,
+  nextText: null,
   pageCount: '',
   totalItems: '0',
   itemsPerPage: '10',
@@ -44,7 +44,7 @@ export const Pagination: FunctionComponent<
   const {
     modelValue,
     mode,
-    prevText,
+    prev,
     nextText,
     pageCount,
     totalItems,
@@ -153,7 +153,7 @@ export const Pagination: FunctionComponent<
         } ${currentPage === 1 ? 'disabled' : ''}`}
         onClick={(e) => selectPage(Number(currentPage) - 1, true)}
       >
-        {prevText || locale.pagination.prev}
+        {prev || locale.pagination.prev}
       </div>
       {mode === 'multi' ? (
         <div className={`${paginationBem('contain')}`}>

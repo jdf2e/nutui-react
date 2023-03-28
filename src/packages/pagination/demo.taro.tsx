@@ -95,7 +95,7 @@ const PaginationDemo = () => {
             totalItems="500"
             showPageSize="5"
             onChange={pageChange4}
-            prevText={<Left />}
+            prev={<Left />}
             nextText={<Right />}
             pageNodeRender={pageNodeRender}
           />
