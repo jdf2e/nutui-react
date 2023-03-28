@@ -189,7 +189,7 @@ import { Dongdong, My } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid border={false}>
+    <Grid>
       <Grid.Item icon={<Dongdong />} text={<span>More</span>} />
       <Grid.Item
         text={
@@ -230,7 +230,6 @@ export default App
 | 參數 | 說明 | 類型 | 默認值 |
 |-|-|-|-|
 | columns | 列數 | number \| string | `4` |
-| border | 是否顯示邊框 | boolean | `true` |
 | gutter | 格子之間的間距，默認單位為`px` | number \| string | `0` |
 | center | 是否將格子內容居中顯示 | boolean | `true` |
 | square | 是否將格子固定為正方形 | boolean | `false` |

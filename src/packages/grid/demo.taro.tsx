@@ -138,7 +138,7 @@ const GridDemo = () => {
         </Grid>
 
         <h2>{translated.customContent}</h2>
-        <Grid border={false}>
+        <Grid>
           <Grid.Item icon={<Dongdong />} text={<span>More</span>} />
           <Grid.Item
             text={

@@ -10,7 +10,6 @@ export type GridDirection = 'horizontal' | 'vertical'
 
 export interface GridProps {
   columns: string | number
-  border: boolean
   gutter: string | number
   center: boolean
   square: boolean
@@ -23,7 +22,6 @@ export interface GridProps {
 
 const defaultProps = {
   columns: 4,
-  border: true,
   gutter: 0,
   center: true,
   square: false,
@@ -40,7 +38,6 @@ export const Grid: FunctionComponent<
   const {
     children,
     columns,
-    border,
     gutter,
     center,
     square,
@@ -62,7 +59,7 @@ export const Grid: FunctionComponent<
   const rootClass = () => {
     const prefixCls = b()
     return classNames(className, prefixCls, {
-      [b('border')]: border && !gutter,
+      [b('border')]: !gutter,
     })
   }
 
@@ -86,7 +83,6 @@ export const Grid: FunctionComponent<
             index: idex,
             columns,
             center,
-            border,
             gutter,
             square,
             reverse,

@@ -186,7 +186,7 @@ import { Dongdong, My } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid border={false}>
+    <Grid>
       <Grid.Item icon={<Dongdong />} text={<span>More</span>} />
       <Grid.Item
         text={
@@ -227,7 +227,6 @@ export default App
 | Attribute | Description | Type | Default |
 |-|-|-|-|
 | columns | Column Num | number \| string | `4` |
-| border | Whether to show border | boolean | `true` |
 | gutter | Gutter,The default unit is `px` | number \| string | `0` |
 | center | Whether to center content | boolean | `true` |
 | square |  Whether to be square shape | boolean | `false` |
