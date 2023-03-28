@@ -15,8 +15,6 @@ type GridDirection = 'horizontal' | 'vertical'
 
 export interface GridItemProps extends BasicComponent {
   text: string | ReactNode
-  fontSize: string | number
-  color: string
   icon: ReactNode
   index: number
 
@@ -32,8 +30,6 @@ export interface GridItemProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   text: '',
-  fontSize: '',
-  color: '',
   icon: null,
 
   columnNum: 4,
@@ -55,8 +51,6 @@ export const GridItem: FunctionComponent<
     gutter,
     square,
     text,
-    fontSize,
-    color,
     icon,
     border,
     center,
@@ -118,8 +112,6 @@ export const GridItem: FunctionComponent<
           square,
           reverse,
           direction,
-          fontSize,
-          color,
         },
         index
       )
@@ -129,11 +121,7 @@ export const GridItem: FunctionComponent<
     <div className={b()} style={rootStyle()} {...rest} onClick={handleClick}>
       <div className={contentClass()}>
         {icon && <>{icon}</>}
-        {text && (
-          <div className="nut-grid-item__text" style={{ fontSize, color }}>
-            {text}
-          </div>
-        )}
+        {text && <div className="nut-grid-item__text">{text}</div>}
         {children && <>{children}</>}
       </div>
     </div>

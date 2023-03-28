@@ -248,8 +248,6 @@ export default App
 | 參數 | 說明 | 類型 | 默認值 |
 |-|-|-|-|
 | text | 文字 | string \| ReactNode | - |
-| fontSize | 文字大小 | string \| number | - |
-| color | 文字顏色 | string | - |
 | icon | icon | ReactNode | - |
 
 ### Grid.Item Events

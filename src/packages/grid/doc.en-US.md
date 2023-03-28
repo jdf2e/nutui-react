@@ -245,8 +245,6 @@ export default App
 | Attribute | Description | Type | Default |
 |-|-|-|-|
 | text | text | string\| ReactNode | - |
-| fontSize | text size | string \| number | - |
-| color | text color | string | - |
 | icon | Icon | ReactNode | - |
 
 ### Grid.Item Events

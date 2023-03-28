@@ -133,7 +133,6 @@ const GridDemo = () => {
           <Grid.Item
             icon={<Dongdong size={40} color="#478EF2" />}
             text={translated.text}
-            color="#478EF2"
           />
           <Grid.Item icon={<Dongdong />} text={translated.text} />
         </Grid>
