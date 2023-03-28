@@ -225,42 +225,38 @@ export default App
 
 ## API
 
-### Props
+### Grid Props
 
-| 參數          | 說明                                      | 類型                    | 默認值      |
-|---------------|------------------------------------------|------------------------|------------|
-| columnNum    | 列數                                     | number \| string         | `4`        |
-| border        | 是否顯示邊框                               | boolean                | `true`     |
-| gutter        | 格子之間的間距，默認單位為`px`               | number \| string        | `0`        |
-| center        | 是否將格子內容居中顯示                      | boolean                | `true`      |
-| square        | 是否將格子固定為正方形                      | boolean                | `false`     |
-| reverse       | 內容翻轉                                  | boolean                | `false`     |
-| direction     | 格子內容排列的方向，可選值為 `horizontal`    | string                 | `vertical`  |
-| iconSize`v2.0.0 废弃`     | 圖標大小，如 `20px` `2em` `2rem`          | number \| string        | `28px`     |
-| iconColor`v2.0.0 废弃`    | 圖標顏色                                  | string                 | -          |
+| 參數 | 說明 | 類型 | 默認值 |
+|-|-|-|-|
+| columnNum | 列數 | number \| string | `4` |
+| border | 是否顯示邊框 | boolean | `true` |
+| gutter | 格子之間的間距，默認單位為`px` | number \| string | `0` |
+| center | 是否將格子內容居中顯示 | boolean | `true` |
+| square | 是否將格子固定為正方形 | boolean | `false` |
+| reverse | 內容翻轉 | boolean | `false` |
+| direction | 格子內容排列的方向，可選值為 `horizontal` | string | `vertical` |
 
-## Grid Event
+### Grid Events
 
-| 字段       | 說明         | 回調參數                                           |
-|----------|--------------|----------------------------------------------------|
+| 字段 | 說明 | 回調參數 |
+|-|-|-|
 | onClick | 宮格子項點擊事件 | 點擊當前項數據, 索引 |
 
 ### Grid.Item Props
 
-| 參數                  | 說明                                                                                     | 類型               | 默認值      |
-|----------------------|-----------------------------------------------------------------------------------------|--------------------|------------|
-| text                 | 文字                                                                                     | string \| ReactNode   | -          |
-| fontSize `1.4.4`     | 文字大小                                                                                  | string \| number   | -          |
-| color `1.4.4`        | 文字顏色                                                                                  | string   | -          |
-| icon                 | icon                                                              | ReactNode   | -          |
-| iconSize`v2.0.0 废弃`            | 圖標大小，如 `20px` `2em` `2rem`                                                          | number \| string   | `28px`     |
-| iconColor`v2.0.0 废弃`           | 圖標顏色                                                                                  | string            | -           |
+| 參數 | 說明 | 類型 | 默認值 |
+|-|-|-|-|
+| text | 文字 | string \| ReactNode | - |
+| fontSize | 文字大小 | string \| number | - |
+| color | 文字顏色 | string | - |
+| icon | icon | ReactNode | - |
 
-### Grid.Item Event
+### Grid.Item Events
 
-| 參數                  | 說明                                                                                     | 回調參數    |
-|----------------------|-----------------------------------------------------------------------------------------|--------------------|
-| onClick `1.3.14`                 | 點擊格子時觸發                                                                         | `event: Event`      |
+| 參數 | 說明 | 回調參數 |
+|-|-|-|
+| onClick | 點擊格子時觸發 | `event: Event` |
 
 
 ## 主題定制

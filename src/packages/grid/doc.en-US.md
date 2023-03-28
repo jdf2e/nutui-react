@@ -1,4 +1,4 @@
-#  Grid
+# Grid
 
 ### Intro
 
@@ -11,8 +11,7 @@ Used to separate into equal-width blocks for page navigation.
 import { Grid } from '@nutui/nutui-react'
 ```
 
-
-###  Basic Usage
+### Basic Usage
 
 :::demo
 ```tsx
@@ -82,7 +81,6 @@ const App = () => {
 export default App
 ```
 :::
-
 
 ### Gutter
 
@@ -224,44 +222,38 @@ export default App
 
 ## API
 
-### Props
+### Grid Props
 
-| Attribute   | Description                                              | Type   | Default |
-|---------------|------------------------------------------|------------------------|------------|
-| columnNum    | Column Num                                     | number \| string         | `4`        |
-| border        | Whether to show border                               | boolean                | `true`     |
-| gutter        | Gutter,The default unit is `px`               | number \| string        | `0`        |
-| center        | Whether to center content                      | boolean                | `true`      |
-| square        | 	Whether to be square shape                      | boolean                | `false`     |
-| reverse       | 	Whether to reverse the position of icon and text       | boolean                | `false`     |
-| direction     | 	Content arrangement direction, can be set to  `horizontal`    | string                 | `vertical`  |
-| iconSize`v2.0.0 deprecated`     | Icon size,for example `20px` `2em` `2rem`          | number \| string        | `28px`     |
-| iconColor`v2.0.0 deprecated`    | Icon color                                  | string                 | -          |
+| Attribute | Description | Type | Default |
+|-|-|-|-|
+| columnNum | Column Num | number \| string | `4` |
+| border | Whether to show border | boolean | `true` |
+| gutter | Gutter,The default unit is `px` | number \| string | `0` |
+| center | Whether to center content | boolean | `true` |
+| square |  Whether to be square shape | boolean | `false` |
+| reverse |  Whether to reverse the position of icon and text | boolean | `false` |
+| direction | Content arrangement direction, can be set to `horizontal`| string | `vertical` |
 
+### Grid Events
 
-## Grid Event
-
-| 字段       | 说明         | 回调参数                                           |
-|----------|--------------|----------------------------------------------------|
-| onClick | Grid.Item Click Event | currentGrid.Item, index |
+| Event | Description | Arguments |
+|-|-|-|
+| onClick | Grid.Item Click Event | `item: GridItem, index` |
 
 ### Grid.Item Props
 
-| Attribute   | Description                                              | Type   | Default |
-|----------------------|-----------------------------------------------------------------------------------------|--------------------|------------|
-| text                 | text                                                                                     | string\| ReactNode              | -          |
-| fontSize `1.4.4`     | text size                                                                                | string \| number   | -          |
-| color `1.4.4`        | text color                                                                               | string   | -          |
-| icon                 | Icon                                                            | ReactNode     | -          |
-| iconSize`v2.0.0 deprecated`            | Icon size,for example `20px` `2em` `2rem`      | number \| string  |`28px`  |
-| iconColor`v2.0.0 deprecated`           | Icon color              | string            | -           |
+| Attribute | Description | Type | Default |
+|-|-|-|-|
+| text | text | string\| ReactNode | - |
+| fontSize | text size | string \| number | - |
+| color | text color | string | - |
+| icon | Icon | ReactNode | - |
 
-### Grid.Item Event
+### Grid.Item Events
 
-| Event                  | Description                                                                                     | Arguments    |
-|----------------------|-----------------------------------------------------------------------------------------|--------------------|
-| onClick `1.3.14`                 | Grid.Item Click Event    | `event: Event`      |
-
+| Event | Description | Arguments |
+|-|-|-|
+| onClick | Grid.Item Click Event | `event: Event` |
 
 ## Theming
 

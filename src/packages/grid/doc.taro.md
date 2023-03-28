@@ -231,40 +231,36 @@ export default App
 
 ## API
 
-### Props
+### Grid Props
 
-| 参数          | 说明                                      | 类型                    | 默认值      |
-|---------------|------------------------------------------|------------------------|------------|
-| columnNum    | 列数                                     | number \| string         | `4`        |
-| border        | 是否显示边框                               | boolean                | `true`     |
-| gutter        | 格子之间的间距，默认单位为`px`               | number \| string        | `0`        |
-| center        | 是否将格子内容居中显示                      | boolean                | `true`      |
-| square        | 是否将格子固定为正方形                      | boolean                | `false`     |
-| reverse       | 内容翻转                                  | boolean                | `false`     |
-| direction     | 格子内容排列的方向，可选值为 `horizontal`    | string                 | `vertical`  |
-| iconSize`v2.0.0 废弃`     | 图标大小，如 `20px` `2em` `2rem`          | number \| string        | `28px`     |
-| iconColor`v2.0.0 废弃`    | 图标颜色                                  | string                 | -          |
+| 参数 | 说明 | 类型 | 默认值 |
+|-|-|-|-|
+| columnNum | 列数 | number \| string | `4` |
+| border | 是否显示边框 | boolean | `true` |
+| gutter | 格子之间的间距，默认单位为`px` | number \| string | `0` |
+| center | 是否将格子内容居中显示 | boolean | `true` |
+| square | 是否将格子固定为正方形 | boolean | `false` |
+| reverse | 内容翻转 | boolean | `false` |
+| direction | 格子内容排列的方向，可选值为 `horizontal` | string | `vertical`  |
 
-## Grid Event
+### Grid Events
 
-| 字段       | 说明         | 回调参数                                           |
-|----------|--------------|----------------------------------------------------|
-| onClick | 宫格子项点击事件 | 点击当前项, 索引 |
+| 字段 | 说明 | 回调参数 |
+|-|-|-|
+| onClick | 宫格子项点击事件 | `item: GridItem, index` |
 
 ### Grid.Item Props
 
-| 参数                  | 说明                                                                                     | 类型               | 默认值      |
-|----------------------|-----------------------------------------------------------------------------------------|--------------------|------------|
-| text                 | 文字                                                                                     | string \| ReactNode   | -          |
-| icon                 | icon                                                              | ReactNode   | -          |
-| iconSize`v2.0.0 废弃`            | 图标大小，如 `20px` `2em` `2rem`                                                          | number \| string   | `28px`     |
-| iconColor`v2.0.0 废弃`           | 图标颜色                                                                                  | string            | -           |
+| 参数 | 说明 | 类型 | 默认值 |
+|-|-|-|-|
+| text | 文字 | string \| ReactNode | - |
+| icon | icon | ReactNode | - |
 
-### Grid.Item Event
+### Grid.Item Events
 
-| 参数                  | 说明                                                                                     | 回调参数    |
-|----------------------|-----------------------------------------------------------------------------------------|--------------------|
-| onClick `1.3.14`                 | 点击格子时触发                                                                         | `event: Event`      |
+| 参数 | 说明 | 回调参数 |
+|-|-|-|
+| onClick | 点击格子时触发 | `event: Event` |
 
 
 ## 主题定制
