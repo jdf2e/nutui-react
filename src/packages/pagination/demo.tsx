@@ -81,7 +81,7 @@ const PaginationDemo = () => {
           modelValue={currentPage3}
           totalItems="125"
           showPageSize="3"
-          forceEllipses
+          ellipse
           onChange={pageChange3}
         />
       </Cell>

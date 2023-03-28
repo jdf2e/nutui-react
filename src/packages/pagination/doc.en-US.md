@@ -82,7 +82,7 @@ const App = () => {
       modelValue={currentPage3}
       totalItems="125"
       showPageSize="3"
-      forceEllipses
+      ellipse
       onChange={pageChange3}
     />
   )
@@ -138,7 +138,7 @@ export default App;
 | totalItems     | total                         | string \| number          | `0`                 |
 | itemsPerPage   | records per page                       | string \| number          | `10`                |
 | showPageSize   | number of pages displayed                   | string \| number          | `5`                 |
-| forceEllipses  | Whether to show ellipsis                   | boolean                   | `false`             |
+| ellipse  | Whether to show ellipsis                   | boolean                   | `false`             |
 | pageNodeRender | Used to customize page number content             | (page) => ReactNode | -                 |
     
 ### Events

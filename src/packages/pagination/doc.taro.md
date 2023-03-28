@@ -79,7 +79,7 @@ const App = () => {
       modelValue={currentPage3}
       totalItems="125"
       showPageSize="3"
-      forceEllipses
+      ellipse
       onChange={pageChange3}
     />
   )
@@ -135,7 +135,7 @@ export default App;
 | totalItems     | 总记录数                         | string \| number          | `0`                 |
 | itemsPerPage   | 每页记录数                       | string \| number          | `10`                |
 | showPageSize   | 显示的页码个数                   | string \| number          | `5`                 |
-| forceEllipses  | 是否显示省略号                   | boolean                   | `false`             |
+| ellipse  | 是否显示省略号                   | boolean                   | `false`             |
 | pageNodeRender | 用于自定义页码的结构             | (page) => ReactNode | -                 |
     
 ### Events

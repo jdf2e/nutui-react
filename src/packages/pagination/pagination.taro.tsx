@@ -12,7 +12,7 @@ export interface PaginationProps {
   totalItems: string | number
   itemsPerPage: string | number
   showPageSize: string | number
-  forceEllipses: boolean
+  ellipse: boolean
   pageNodeRender: (page: any) => React.ReactNode
   onChange: (currPage: number) => void
   updatecurrent: (currPage: number) => void
@@ -29,7 +29,7 @@ const defaultProps = {
   totalItems: '0',
   itemsPerPage: '10',
   showPageSize: '5',
-  forceEllipses: false,
+  ellipse: false,
   className: '',
   pageNodeRender: (item: any) => {
     return item.text
@@ -52,7 +52,7 @@ export const Pagination: FunctionComponent<
     showPageSize,
     onChange,
     updatecurrent,
-    forceEllipses,
+    ellipse,
     pageNodeRender,
     defaultValue,
     className,
@@ -95,7 +95,7 @@ export const Pagination: FunctionComponent<
       items.push(page)
     }
     // 判断是否有折叠
-    if (partialShow && pageSize > 0 && forceEllipses) {
+    if (partialShow && pageSize > 0 && ellipse) {
       if (startPage > 1) {
         const prevPage = setPage(startPage - 1, '...')
         items.unshift(prevPage)
