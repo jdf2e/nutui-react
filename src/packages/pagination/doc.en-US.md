@@ -54,7 +54,8 @@ const App = () => {
   return (
     <Pagination
       modelValue={currentPage2} 
-      pageCount={12} 
+      total="12"
+      pageSize="1"
       mode="simple" 
       onChange={pageChange2} 
     />
@@ -134,7 +135,6 @@ export default App;
 | mode           | Display mode, optional values are: `multi`,`simple` | string                    | `multi`             |
 | prev       | Customize previous page button content             | string \| ReactNode | `Previous`            |
 | next       | Customize next page button content             | string \| ReactNode | `Next`             |
-| pageCount      | total pages                           | string \| number          | Incoming/calculating based on page count |
 | total     | total                         | string \| number          | `0`                 |
 | pageSize   | records per page                       | string \| number          | `10`                |
 | itemSize   | number of pages displayed                   | string \| number          | `5`                 |

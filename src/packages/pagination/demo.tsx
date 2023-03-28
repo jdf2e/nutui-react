@@ -70,7 +70,8 @@ const PaginationDemo = () => {
       <Cell>
         <Pagination
           modelValue={currentPage2}
-          pageCount={12}
+          total="12"
+          pageSize="1"
           mode="simple"
           onChange={pageChange2}
         />

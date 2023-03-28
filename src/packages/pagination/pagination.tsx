@@ -8,7 +8,6 @@ export interface PaginationProps {
   mode: 'multi' | 'simple'
   prev: React.ReactNode
   next: React.ReactNode
-  pageCount: string | number
   total: string | number
   pageSize: string | number
   itemSize: string | number
@@ -25,7 +24,6 @@ const defaultProps = {
   mode: 'multi',
   prev: null,
   next: null,
-  pageCount: '',
   total: '0',
   pageSize: '10',
   itemSize: '5',
@@ -46,7 +44,6 @@ export const Pagination: FunctionComponent<
     mode,
     prev,
     next,
-    pageCount,
     total,
     pageSize,
     itemSize,
@@ -61,11 +58,11 @@ export const Pagination: FunctionComponent<
 
   const [currentPage, setCurrent] = useState(1)
   const [pages, setPages] = useState<unknown[]>([])
-  const [countRef, setCountRef] = useState(Number(pageCount))
+  const [countRef, setCountRef] = useState(0)
   const paginationBem = bem('pagination')
   // 计算页面的数量
   const computedCountRef = () => {
-    const num = Number(pageCount) || Math.ceil(Number(total) / Number(pageSize))
+    const num = Math.ceil(Number(total) / Number(pageSize))
     return Number.isNaN(num) ? 1 : Math.max(1, num)
   }
 
@@ -133,6 +130,7 @@ export const Pagination: FunctionComponent<
       currentValue = Number(props.modelValue)
     }
     const pageCount = computedCountRef()
+    console.log('pageCount', pageCount)
     setCountRef(pageCount)
     setPages(computedPages(currentValue, pageCount))
   }, [])

@@ -51,8 +51,9 @@ const App = () => {
   }
   return (
     <Pagination
-      modelValue={currentPage2} 
-      pageCount={12} 
+      modelValue={currentPage2}
+      total="12"
+      pageSize="1"
       mode="simple" 
       onChange={pageChange2} 
     />
@@ -132,7 +133,6 @@ export default App;
 | mode           | 显示模式,可选值为：multi，simple | string                    | `multi`             |
 | prev       | 自定义上一页按钮内容             | string \| ReactNode | `上一页`            |
 | next       | 自定义下一页按钮内容             | string \| ReactNode | `下一页`            |
-| pageCount      | 总页数                           | string \| number          | 传入/根据页数计算 |
 | total     | 总记录数                         | string \| number          | `0`                 |
 | pageSize   | 每页记录数                       | string \| number          | `10`                |
 | itemSize   | 显示的页码个数                   | string \| number          | `5`                 |
