@@ -73,7 +73,7 @@ test('should render custom content correctly', () => {
       defaultValue={1}
       pageNodeRender={pageNodeRender}
       prev="pre"
-      nextText="next"
+      next="next"
     />
   )
   expect(getByText('pre')).toHaveTextContent('pre')

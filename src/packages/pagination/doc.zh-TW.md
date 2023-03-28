@@ -113,7 +113,7 @@ const App = () => {
       onChange={pageChange4}
       pageNodeRender={pageNodeRender} 
       prev={<Left />}
-          nextText={<Right />}
+      next={<Right />}
     />
   )
 }
@@ -131,7 +131,7 @@ export default App;
 | defaultValue   | 當前頁碼                         | number                    | `1`                 |
 | mode           | 顯示模式,可選值為：multi，simple  | string                    | `multi`             |
 | prev       | 自定義上一頁按鈕內容             | string \| ReactNode | `上一頁`            |
-| nextText       | 自定義下一頁按鈕內容             | string \| ReactNode | `下一頁`            |
+| next       | 自定義下一頁按鈕內容             | string \| ReactNode | `下一頁`            |
 | pageCount      | 總頁數                           | string \| number          | 傳入/根據頁數計算 |
 | totalItems     | 總記錄數                         | string \| number          | `0`                 |
 | itemsPerPage   | 每頁記錄數                       | string \| number          | `10`                |

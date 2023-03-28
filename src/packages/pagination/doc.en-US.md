@@ -115,7 +115,7 @@ const App = () => {
       onChange={pageChange4}
       pageNodeRender={pageNodeRender} 
       prev={<Left />}
-          nextText={<Right />}
+      next={<Right />}
     />
   )
 }
@@ -133,7 +133,7 @@ export default App;
 | defaultValue   | default page number                         | number                    | `1`                 |
 | mode           | Display mode, optional values are: `multi`,`simple` | string                    | `multi`             |
 | prev       | Customize previous page button content             | string \| ReactNode | `Previous`            |
-| nextText       | Customize next page button content             | string \| ReactNode | `Next`             |
+| next       | Customize next page button content             | string \| ReactNode | `Next`             |
 | pageCount      | total pages                           | string \| number          | Incoming/calculating based on page count |
 | totalItems     | total                         | string \| number          | `0`                 |
 | itemsPerPage   | records per page                       | string \| number          | `10`                |

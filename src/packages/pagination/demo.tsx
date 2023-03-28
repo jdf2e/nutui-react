@@ -93,7 +93,7 @@ const PaginationDemo = () => {
           showPageSize="5"
           onChange={pageChange4}
           prev={<Left />}
-          nextText={<Right />}
+          next={<Right />}
           pageNodeRender={pageNodeRender}
         />
       </Cell>
