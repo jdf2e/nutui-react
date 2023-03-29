@@ -2,7 +2,6 @@ import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Pagination } from '../pagination'
-import { nextTick } from 'process'
 
 test('should match snapshot', () => {
   const { asFragment } = render(<Pagination total={25} pageSize={5} />)
