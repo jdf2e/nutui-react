@@ -81,7 +81,7 @@ const App = () => {
   }
   return (
     <Elevator
-      indexList={dataList}
+      list={dataList}
       height="260"
       onClickItem={(key: string, item: any) => onClickItem(key, item)}
       onClickIndex={(key: string) => onClickIndex(key)}
@@ -213,9 +213,9 @@ const App = () => {
   }
   return (
     <Elevator
-      indexList={dataList}
+      list={dataList}
       height="220"
-      acceptKey="num"
+      floorKey="num"
       onClickItem={(key: string, item: any) => onClickItem(key, item)}
       onClickIndex={(key: string) => onClickIndex(key)}
     />
@@ -358,9 +358,9 @@ const App = () => {
   }
   return (
     <Elevator
-      indexList={dataList}
+      list={dataList}
       height="220"
-      isSticky
+      sticky
       onClickItem={(key: string, item: any) => onClickItem(key, item)}
       onClickIndex={(key: string) => onClickIndex(key)}
     />
@@ -441,7 +441,7 @@ const App = () => {
   }
   return (
     <Elevator
-      indexList={dataList}
+      list={dataList}
       height="260"
       onClickItem={(key: string, item: any) => onClickItem(key, item)}
       onClickIndex={(key: string) => onClickIndex(key)}
@@ -471,9 +471,9 @@ export default App
 | 字段      | 說明           | 類型                                                        | 默認值                |
 | --------- | -------------- | ----------------------------------------------------------- | --------------------- |
 | height    | 電梯區域的高度 | number \| string                                              | `200px`               |
-| acceptKey | 索引 key 值    | string                                                      | `title`               |
-| indexList | 索引列表       | Array（item 需包含 id、name 屬性, name 支持傳入 html 結構） | `[{id: 0, name: ''}]` |
-| isSticky    | 索引是否吸頂                                                    | boolean  | `false` |
+| floorKey | 索引 key 值    | string                                                      | `title`               |
+| list | 索引列表       | Array（item 需包含 id、name 屬性, name 支持傳入 html 結構） | `[{id: 0, name: ''}]` |
+| sticky    | 索引是否吸頂                                                    | boolean  | `false` |
 | spaceHeight | 右側錨點的上下間距                                                   | number  | `23` |
 | titleHeight   | 左側索引的高度                                                     | number  | `35` |
 

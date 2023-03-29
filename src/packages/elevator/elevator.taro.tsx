@@ -14,9 +14,9 @@ export const elevatorContext = createContext({} as ElevatorData)
 
 export interface ElevatorProps {
   height: number | string
-  acceptKey: string
-  indexList: any[]
-  isSticky: boolean
+  floorKey: string
+  list: any[]
+  sticky: boolean
   spaceHeight: number
   titleHeight: number
   className: string
@@ -27,9 +27,9 @@ export interface ElevatorProps {
 }
 const defaultProps = {
   height: '200px',
-  acceptKey: 'title',
-  indexList: [] as any[],
-  isSticky: false,
+  floorKey: 'title',
+  list: [] as any[],
+  sticky: false,
   spaceHeight: 23,
   titleHeight: 35,
   className: 'weapp-elevator',
@@ -44,9 +44,9 @@ export const Elevator: FunctionComponent<
 > & { Context: typeof elevatorContext } = (props) => {
   const {
     height,
-    acceptKey,
-    indexList,
-    isSticky,
+    floorKey,
+    list,
+    sticky,
     spaceHeight,
     titleHeight,
     className,
@@ -217,11 +217,9 @@ export const Elevator: FunctionComponent<
 
   return (
     <div className={`${b()} ${className} `} {...rest}>
-      {isSticky && scrollTop > 0 ? (
+      {sticky && scrollTop > 0 ? (
         <div className={b('list__fixed')}>
-          <span className="fixed-title">
-            {indexList[currentIndex][acceptKey]}
-          </span>
+          <span className="fixed-title">{list[currentIndex][floorKey]}</span>
         </div>
       ) : null}
       <div
@@ -235,13 +233,13 @@ export const Elevator: FunctionComponent<
           ref={listview}
           onScroll={listViewScroll}
         >
-          {indexList.map((item: any, idx: number) => {
+          {list.map((item: any, idx: number) => {
             return (
               <div
                 className={`${b('list__item')} elevator__item__${idx}`}
                 key={idx}
               >
-                <div className={b('list__item__code')}>{item[acceptKey]}</div>
+                <div className={b('list__item__code')}>{item[floorKey]}</div>
                 <>
                   {item.list.map((subitem: ElevatorData) => {
                     return (
@@ -249,12 +247,10 @@ export const Elevator: FunctionComponent<
                         className={b('list__item__name', {
                           highcolor:
                             currentData.id === subitem.id &&
-                            currentKey === item[acceptKey],
+                            currentKey === item[floorKey],
                         })}
                         key={subitem.id}
-                        onClick={() =>
-                          handleClickItem(item[acceptKey], subitem)
-                        }
+                        onClick={() => handleClickItem(item[floorKey], subitem)}
                       >
                         {children ? (
                           <>
@@ -274,9 +270,9 @@ export const Elevator: FunctionComponent<
           })}
         </ScrollView>
       </div>
-      {indexList.length && scrollStart ? (
+      {list.length && scrollStart ? (
         <div className={b('code--current', { current: true })}>
-          {indexList[codeIndex][acceptKey]}
+          {list[codeIndex][floorKey]}
         </div>
       ) : null}
       <div className={b('bars')}>
@@ -287,18 +283,17 @@ export const Elevator: FunctionComponent<
           onTouchEnd={touchEnd}
           style={{ touchAction: 'pan-y' }}
         >
-          {indexList.map((item: any, index: number) => {
+          {list.map((item: any, index: number) => {
             return (
               <div
                 className={`${b('bars__inner__item', {
-                  active:
-                    item[acceptKey] === indexList[currentIndex][acceptKey],
+                  active: item[floorKey] === list[currentIndex][floorKey],
                 })} `}
                 data-index={index}
                 key={index}
-                onClick={() => handleClickIndex(item[acceptKey])}
+                onClick={() => handleClickIndex(item[floorKey])}
               >
-                {item[acceptKey]}
+                {item[floorKey]}
               </div>
             )
           })}

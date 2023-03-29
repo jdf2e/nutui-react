@@ -82,7 +82,7 @@ const App = () => {
   }
   return (
     <Elevator
-      indexList={dataList}
+      list={dataList}
       height="260"
       onClickItem={(key: string, item: any) => onClickItem(key, item)}
       onClickIndex={(key: string) => onClickIndex(key)}
@@ -213,9 +213,9 @@ const App = () => {
   }
   return (
     <Elevator
-      indexList={dataList}
+      list={dataList}
       height="220"
-      acceptKey="num"
+      floorKey="num"
       onClickItem={(key: string, item: any) => onClickItem(key, item)}
       onClickIndex={(key: string) => onClickIndex(key)}
     />
@@ -358,9 +358,9 @@ const App = () => {
   }
   return (
     <Elevator
-      indexList={dataList}
+      list={dataList}
       height="220"
-      isSticky
+      sticky
       onClickItem={(key: string, item: any) => onClickItem(key, item)}
       onClickIndex={(key: string) => onClickIndex(key)}
     />
@@ -441,7 +441,7 @@ const App = () => {
   }
   return (
     <Elevator
-      indexList={dataList}
+      list={dataList}
       height="260"
       onClickItem={(key: string, item: any) => onClickItem(key, item)}
       onClickIndex={(key: string) => onClickIndex(key)}
@@ -471,9 +471,9 @@ export default App
 | Attribute                   | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
 | height                 | Height of elevator area                                                    | number \| string  | `200px`
-| acceptKey             | Index key value                                                      | string  | `title` |
-| indexList             | Index list                                                         | Array（`item` needs to contain `id` and `name` attributes, and `name` supports passing in `html` structure）  | `[{id: 0, name: ''}]` |
-| isSticky            | Whether the index is ceiling                                                    | boolean  | `false` |
+| floorKey             | Index key value                                                      | string  | `title` |
+| list             | Index list                                                         | Array（`item` needs to contain `id` and `name` attributes, and `name` supports passing in `html` structure）  | `[{id: 0, name: ''}]` |
+| sticky            | Whether the index is ceiling                                                    | boolean  | `false` |
 | spaceHeight             | Up and down spacing of right anchor point              | number  | `23` |
 | titleHeight             | Height of left index                                                     | number  | `35` |
 
