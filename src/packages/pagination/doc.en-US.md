@@ -12,8 +12,8 @@ import { Pagination } from '@nutui/nutui-react';
 
 ### Basic Usage
 
-When the current page number is bound by modelValue, the component is in a controlled state, and the paging display depends on the incoming modelValue, which is generally used with onChange.
-When it does not need to be controlled, the current page number can be specified through defaultCurrentPage
+When the current page number is bound by `current`, the component is in a controlled state, and the paging display depends on the incoming `current`, which is generally used with `onChange`.
+When it does not need to be controlled, the current page number can be specified through `defaultValue`
 
 :::demo
 ``` tsx
@@ -22,13 +22,13 @@ import { Pagination } from '@nutui/nutui-react';
 
 const App = () => {
   const [currentPage1, setCurrentPage1] = useState(1)
-  const pageChange1 = (v: any) => {
+  const pageChange1 = (v: number) => {
     const c = v
     setCurrentPage1(c)
   }
   return (
     <Pagination
-      modelValue={currentPage1}
+      current={currentPage1}
       total="25"
       pageSize="5"
       onChange={pageChange1}
@@ -47,13 +47,13 @@ import { Pagination } from '@nutui/nutui-react';
 
 const App = () => {
   const [currentPage2, setCurrentPage2] = useState(1)
-  const pageChange2 = (v: any) => {
+  const pageChange2 = (v: number) => {
     const c = v
     setCurrentPage2(c)
   }
   return (
     <Pagination
-      modelValue={currentPage2} 
+      current={currentPage2} 
       total="12"
       pageSize="1"
       mode="simple" 
@@ -74,13 +74,13 @@ import { Pagination } from '@nutui/nutui-react';
 
 const App = () => {
   const [currentPage3, setCurrentPage3] = useState(1)
-  const pageChange3 = (v: any) => {
+  const pageChange3 = (v: number) => {
     const c = v
     setCurrentPage3(c)
   }
   return (
     <Pagination
-      modelValue={currentPage3}
+      current={currentPage3}
       total="125"
       itemSize="3"
       ellipse
@@ -101,7 +101,7 @@ import { Left, Right } from '@nutui/icons-react';
 
 const App = () => {
   const [currentPage4, setCurrentPage4] = useState(1)
-  const pageChange4 = (v: any) => {
+  const pageChange4 = (v: number) => {
     const c = v
     setCurrentPage4(c)
   }
@@ -110,7 +110,7 @@ const App = () => {
   }
   return (
     <Pagination
-      modelValue={currentPage4}
+      current={currentPage4}
       total="500"
       itemSize="5"
       onChange={pageChange4}
@@ -123,15 +123,39 @@ const App = () => {
 export default App;
 ```
 :::
-    
+
+### Uncontrolled Mode
+:::demo
+``` tsx
+import React, { useState } from 'react'
+import { Pagination } from '@nutui/nutui-react'; 
+
+const App = () => {
+  const pageChange5 = (v: number) => {
+    console.log(v)
+  }
+  return (
+    <Pagination
+      defaultValue={15}
+      total="500"
+      pageSize="10"
+      itemSize="3"
+      onChange={pageChange5}
+    />
+  )
+}
+export default App;
+```
+:::
+
 ## API
     
 ### Props
     
 | Attribute           | Description                             | Type                      | Default            |
 | -------------- | -------------------------------- | ------------------------- | ----------------- |
-| modelValue     | current page number                         | number                    | -                 |
-| defaultValue   | default page number                         | number                    | `1`                 |
+| current     | current page number, controlled value                         | number                    | -                 |
+| defaultValue   | default page number, uncontrolled value                         | number                    | `1`                 |
 | mode           | Display mode, optional values are: `multi`,`simple` | string                    | `multi`             |
 | prev       | Customize previous page button content             | string \| ReactNode | `Previous`            |
 | next       | Customize next page button content             | string \| ReactNode | `Next`             |

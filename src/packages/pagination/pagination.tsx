@@ -4,7 +4,7 @@ import bem from '@/utils/bem'
 
 export interface PaginationProps {
   defaultValue: number
-  modelValue: number
+  current: number
   mode: 'multi' | 'simple'
   prev: React.ReactNode
   next: React.ReactNode
@@ -14,7 +14,6 @@ export interface PaginationProps {
   ellipse: boolean
   itemRender: (page: any) => React.ReactNode
   onChange: (currPage: number) => void
-  updatecurrent: (currPage: number) => void
   style?: React.CSSProperties
   className?: string
 }
@@ -40,7 +39,7 @@ export const Pagination: FunctionComponent<
   const { locale } = useConfig()
   const { children } = { ...defaultProps, ...props }
   const {
-    modelValue,
+    current,
     mode,
     prev,
     next,
@@ -48,7 +47,6 @@ export const Pagination: FunctionComponent<
     pageSize,
     itemSize,
     onChange,
-    updatecurrent,
     ellipse,
     itemRender,
     defaultValue,
@@ -106,15 +104,12 @@ export const Pagination: FunctionComponent<
   // 点击选择page
   const selectPage = (curPage: number, isSelect: boolean) => {
     if (curPage > countRef || curPage < 1) return
-    // 是否传入modelValue
-    if (!('modelValue' in props)) {
+    // 是否传入current
+    if (!('current' in props)) {
       setCurrent(Number(curPage))
       if (curPage !== currentPage) {
         setPages(computedPages(curPage))
       }
-    }
-    if (curPage !== currentPage) {
-      updatecurrent && updatecurrent(curPage)
     }
     if (isSelect) onChange && onChange(curPage)
   }
@@ -126,17 +121,17 @@ export const Pagination: FunctionComponent<
   useEffect(() => {
     // 初始化 判断是否传入值 计算 当前页，总页数，生成子节点
     let currentValue = props.defaultValue || 1
-    if ('modelValue' in props) {
-      currentValue = Number(props.modelValue)
+    if ('current' in props) {
+      currentValue = Number(props.current)
     }
     const pageCount = computedCountRef()
-    console.log('pageCount', pageCount)
+    setCurrent(currentValue)
     setCountRef(pageCount)
     setPages(computedPages(currentValue, pageCount))
   }, [])
 
-  if ('modelValue' in props) {
-    const current = props.modelValue ? Number(props.modelValue) : 1
+  if ('current' in props) {
+    const current = props.current ? Number(props.current) : 1
     if (current !== currentPage) {
       setCurrent(current)
       setPages(computedPages(Number(current)))

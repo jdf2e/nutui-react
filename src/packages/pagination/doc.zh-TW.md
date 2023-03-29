@@ -11,8 +11,8 @@ import { Pagination } from '@nutui/nutui-react';
 ```    
 
 ### 基礎用法
-通過modelValue來綁定當前頁碼時，組件為受控狀態，分頁顯示取決於傳入的modelValue，一般搭配onChange使用。
-不需要受控時，可通過defaultCurrentPage指定當前頁碼
+通過 current 來綁定當前頁碼時，組件為受控狀態，分頁顯示取決於傳入的 current，一般搭配 onChange 使用。
+不需要受控時，可通過 defaultValue 指定當前頁碼
 :::demo
 ``` tsx
 import React, { useState } from 'react'
@@ -20,13 +20,13 @@ import { Pagination } from '@nutui/nutui-react';
 
 const App = () => {
   const [currentPage1, setCurrentPage1] = useState(1)
-  const pageChange1 = (v: any) => {
+  const pageChange1 = (v: number) => {
     const c = v
     setCurrentPage1(c)
   }
   return (
     <Pagination
-      modelValue={currentPage1}
+      current={currentPage1}
       total="25"
       pageSize="5"
       onChange={pageChange1}
@@ -45,13 +45,13 @@ import { Pagination } from '@nutui/nutui-react';
 
 const App = () => {
   const [currentPage2, setCurrentPage2] = useState(1)
-  const pageChange2 = (v: any) => {
+  const pageChange2 = (v: number) => {
     const c = v
     setCurrentPage2(c)
   }
   return (
     <Pagination
-      modelValue={currentPage2}
+      current={currentPage2}
       total="12"
       pageSize="1"
       mode="simple" 
@@ -72,13 +72,13 @@ import { Pagination } from '@nutui/nutui-react';
 
 const App = () => {
   const [currentPage3, setCurrentPage3] = useState(1)
-  const pageChange3 = (v: any) => {
+  const pageChange3 = (v: number) => {
     const c = v
     setCurrentPage3(c)
   }
   return (
     <Pagination
-      modelValue={currentPage3}
+      current={currentPage3}
       total="125"
       itemSize="3"
       ellipse
@@ -99,7 +99,7 @@ import { Left, Right } from '@nutui/icons-react-taro';
 
 const App = () => {
   const [currentPage4, setCurrentPage4] = useState(1)
-  const pageChange4 = (v: any) => {
+  const pageChange4 = (v: number) => {
     const c = v
     setCurrentPage4(c)
   }
@@ -108,13 +108,37 @@ const App = () => {
   }
   return (
     <Pagination
-      modelValue={currentPage4}
+      current={currentPage4}
       total="500"
       itemSize="5"
       onChange={pageChange4}
       itemRender={itemRender} 
       prev={<Left />}
       next={<Right />}
+    />
+  )
+}
+export default App;
+```
+:::
+
+### 非受控方式
+:::demo
+``` tsx
+import React, { useState } from 'react'
+import { Pagination } from '@nutui/nutui-react'; 
+
+const App = () => {
+  const pageChange5 = (v: number) => {
+    console.log(v)
+  }
+  return (
+    <Pagination
+      defaultValue={15}
+      total="500"
+      pageSize="10"
+      itemSize="3"
+      onChange={pageChange5}
     />
   )
 }
@@ -128,8 +152,8 @@ export default App;
     
 | 屬性 | 說明 | 類型 | 預設值           |
 | -------------- | -------------------------------- | ------------------------- | ----------------- |
-| modelValue     | 當前頁碼                         | number                    | -                 |
-| defaultValue   | 當前頁碼                         | number                    | `1`                 |
+| current     | 當前頁碼，受控值，與 onChange 搭配使用                         | number                    | -                 |
+| defaultValue   |  默認頁碼，非受控                        | number                    | `1`                 |
 | mode           | 顯示模式,可選值為：multi，simple  | string                    | `multi`             |
 | prev       | 自定義上一頁按鈕內容             | string \| ReactNode | `上一頁`            |
 | next       | 自定義下一頁按鈕內容             | string \| ReactNode | `下一頁`            |
