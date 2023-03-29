@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
 import Picker from '@/packages/picker/index.taro'
 import { useConfig } from '@/packages/configprovider'
+import { View } from '@tarojs/components'
 
 export interface PickerOption {
   text: string | number
@@ -398,10 +399,11 @@ export const DatePicker: FunctionComponent<
   }, [currentDate])
 
   return (
-    <div
+    <View
       className={`nut-datepicker ${className || ''}`}
       style={style}
       {...rest}
+      catchMove
     >
       {listData.length > 0 && (
         <Picker
@@ -422,7 +424,7 @@ export const DatePicker: FunctionComponent<
           ref={pickerRef}
         />
       )}
-    </div>
+    </View>
   )
 }
 
