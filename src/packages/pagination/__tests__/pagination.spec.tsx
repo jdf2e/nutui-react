@@ -2,6 +2,7 @@ import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Pagination } from '../pagination'
+import { nextTick } from 'process'
 
 test('should match snapshot', () => {
   const { asFragment } = render(<Pagination total={25} pageSize={5} />)
@@ -83,4 +84,43 @@ test('should render custom content correctly', () => {
   expect(
     container.querySelectorAll('.nut-pagination__item')[2]
   ).toHaveTextContent('hot')
+})
+
+test('test controlled mode', () => {
+  let current = 2
+  const pageChange = (v: number) => {
+    current = v
+  }
+  const { container, getByText } = render(
+    <Pagination
+      current={current}
+      total={25}
+      pageSize={5}
+      onChange={pageChange}
+    />
+  )
+  expect(container.querySelector('.active')).toHaveTextContent('2')
+  const page = getByText('4')
+  fireEvent.click(page)
+  expect(current).toEqual(4)
+})
+
+test('test uncontrolled mode', () => {
+  let current = 0
+  const pageChange = (v: number) => {
+    current = v
+  }
+  const { container, getByText } = render(
+    <Pagination
+      defaultValue={2}
+      total={25}
+      pageSize={5}
+      onChange={pageChange}
+    />
+  )
+  expect(container.querySelector('.active')).toHaveTextContent('2')
+  const page = getByText('4')
+  fireEvent.click(page)
+  expect(current).toEqual(4)
+  expect(container.querySelector('.active')).toHaveTextContent('4')
 })
