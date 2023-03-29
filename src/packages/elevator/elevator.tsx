@@ -64,8 +64,6 @@ export const Elevator: FunctionComponent<
     listHeight: [] as number[],
     listGroup: [] as Element[],
     scrollY: 0,
-    diff: -1,
-    fixedTop: 0,
   }
   const touchState = useRef({
     y1: 0,
@@ -185,7 +183,6 @@ export const Elevator: FunctionComponent<
       const height2 = listHeight[i + 1]
       if (state.current.scrollY >= height1 && state.current.scrollY < height2) {
         setCurrentIndex(i)
-        state.current.diff = height2 - state.current.scrollY
         return
       }
     }
@@ -199,18 +196,6 @@ export const Elevator: FunctionComponent<
       listview.current.addEventListener('scroll', listViewScroll)
     }
   }, [listview])
-
-  useEffect(() => {
-    const { listHeight, diff, scrollY } = state.current
-    let fixedTop = diff > 0 && diff < titleHeight ? diff - titleHeight : 0
-    if (scrollY + clientHeight() === listHeight[listHeight.length - 1]) {
-      if (fixedTop !== 0) {
-        fixedTop = 0
-      }
-    }
-    if (state.current.fixedTop === fixedTop) return
-    state.current.fixedTop = fixedTop
-  }, [state.current.diff, titleHeight])
 
   return (
     <div className={`${b()} ${className}`} {...rest}>
