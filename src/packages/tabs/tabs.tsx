@@ -142,7 +142,6 @@ export const Tabs: FunctionComponent<
   }
 
   const index = titles.current.findIndex((t) => t.paneKey === value)
-  console.log(index, 'index')
 
   const contentStyle = {
     transform:
