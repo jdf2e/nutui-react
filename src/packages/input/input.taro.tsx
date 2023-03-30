@@ -484,7 +484,9 @@ export const Input: FunctionComponent<
               >
                 {errorMessage}
               </div>
-            ) : null}
+            ) : (
+              <div />
+            )}
           </div>
         </>
       )}
