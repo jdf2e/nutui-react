@@ -24,7 +24,7 @@ export interface FixedNavProps extends BasicComponent {
   onChange: (v: any) => void
   onSelected: (v: any, event: MouseEvent) => void
   slotList: React.ReactNode
-  slotBtn: React.ReactNode
+  content: React.ReactNode
 }
 
 const defaultProps = {
@@ -55,7 +55,7 @@ export const FixedNav: FunctionComponent<
     onSelected,
     type,
     slotList,
-    slotBtn,
+    content,
     ...rest
   } = {
     ...defaultProps,
@@ -111,7 +111,7 @@ export const FixedNav: FunctionComponent<
       </div>
 
       <div className="nut-fixednav__btn" onClick={() => onUpdateValue()}>
-        {slotBtn || (
+        {content || (
           <>
             <Left color="#fff" />
             <div className="text">

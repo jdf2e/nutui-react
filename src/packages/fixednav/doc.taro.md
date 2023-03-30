@@ -231,7 +231,7 @@ const App = () => {
             <li className="nut-fixednav__list-item">5</li>
           </ul>
         }
-        slotBtn={
+        content={
           <>
             <Icon name="retweet" color="#fff"> </Icon>
             <span className="text">{ visible ? '自定义开' : '自定义关' }</span>
@@ -312,7 +312,7 @@ export default App;
 | overlay        | 展开时是否显示遮罩         | boolean | `true`                         |
 | position       | fixed 垂直位置             | object  | `{top: 'auto', bottom: 'auto'}` |
 | slotList       | 自定义展开列表内容             | ReactNode  | - |
-| slotBtn       | 自定义按钮            | ReactNode  | - |
+| content       | 自定义按钮            | ReactNode  | - |
 
 
 ### Event

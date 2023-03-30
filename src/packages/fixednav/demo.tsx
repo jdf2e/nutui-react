@@ -166,7 +166,7 @@ const FixedNavDemo = () => {
               <li className="nut-fixednav__list-item">5</li>
             </ul>
           }
-          slotBtn={
+          content={
             <>
               <Retweet color="#fff" />
               <span className="text">

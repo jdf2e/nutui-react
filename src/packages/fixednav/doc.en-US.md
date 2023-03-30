@@ -232,7 +232,7 @@ const App = () => {
             <li className="nut-fixednav__list-item">5</li>
           </ul>
         }
-        slotBtn={
+        content={
           <>
             <Icon name="retweet" color="#fff"> </Icon>
             <span className="text">{ visible ? 'Custom On' : 'Custom Off' }</span>
@@ -309,7 +309,7 @@ export default App;
 | overlay | Whether to show the mask when expanding | boolean | `true` |
 | position | fixed vertical position | object | `{top: 'auto', bottom: 'auto'}` |
 | slotList | Customize expanded list content | ReactNode | - |
-| slotBtn | custom button | ReactNode | - |
+| content | custom button | ReactNode | - |
 
 
 ### Event
