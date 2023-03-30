@@ -16,7 +16,7 @@ export interface FixedNavProps extends BasicComponent {
   className: string
   visible: boolean
   overlay: boolean
-  navList: Array<any>
+  list: Array<any>
   activeText: string
   inactiveText: string
   position: Position
@@ -47,7 +47,7 @@ export const FixedNav: FunctionComponent<
     className,
     overlay,
     visible,
-    navList,
+    list,
     activeText,
     inactiveText,
     position,
@@ -93,7 +93,7 @@ export const FixedNav: FunctionComponent<
       <div className="list">
         {slotList || (
           <div className="nut-fixednav__list">
-            {navList.map((item: any, index) => {
+            {list.map((item: any, index) => {
               return (
                 <div
                   className="nut-fixednav__list-item"

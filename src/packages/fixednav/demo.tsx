@@ -56,7 +56,7 @@ const FixedNavDemo = () => {
       mine: 'Mine',
     },
   })
-  const navList = [
+  const list = [
     {
       id: 1,
       text: translated.home,
@@ -125,7 +125,7 @@ const FixedNavDemo = () => {
     <>
       <div className="demo">
         <FixedNav
-          navList={navList}
+          list={list}
           activeText={translated.title1}
           overlay
           position={{ top: '70px' }}
@@ -134,7 +134,7 @@ const FixedNavDemo = () => {
           onSelected={selected1}
         />
         <FixedNav
-          navList={navList}
+          list={list}
           type="left"
           position={{ top: '140px' }}
           visible={visible2}
@@ -144,7 +144,7 @@ const FixedNavDemo = () => {
           onSelected={selected2}
         />
         <FixedNav
-          navList={navList}
+          list={list}
           position={{ top: '210px' }}
           overlay={false}
           visible={visible3}
@@ -178,7 +178,7 @@ const FixedNavDemo = () => {
         {/* <!-- 配合 Drag 支持拖拽 ，小程序暂不支持 --> */}
         <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
           <FixedNav
-            navList={navList}
+            list={list}
             inactiveText={translated.title6}
             visible={visible5}
             onChange={change5}

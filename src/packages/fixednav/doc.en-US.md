@@ -20,7 +20,7 @@ import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: 'Home',
@@ -53,7 +53,7 @@ const App = () => {
   return (
     <>
       <FixedNav
-        navList={navList}
+        list={list}
         activeText="basic usage"
         overlay
         position={{ top: '70px' }}
@@ -74,7 +74,7 @@ import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: 'Home',
@@ -107,7 +107,7 @@ const App = () => {
   return (
     <>
       <FixedNav
-        navList={navList}
+        list={list}
         type="left"
         position={{ top: '140px' }}
         visible={visible}
@@ -132,7 +132,7 @@ import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首页',
@@ -165,7 +165,7 @@ const App = () => {
   return (
     <>
       <FixedNav
-        navList={navList}
+        list={list}
         position={{ top: '210px' }}
         overlay={false}
         visible={visible}
@@ -185,7 +185,7 @@ import React, { useState } from "react";
 import { Icon, FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: 'Home',
@@ -253,7 +253,7 @@ import React, { useState } from "react";
 import { Drag, FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: 'Home',
@@ -287,7 +287,7 @@ const App = () => {
     <>
       <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
         <FixedNav
-          navList={navList}
+          list={list}
           inactiveText="support drag and drop"
           visible={visible}
           onChange={change}
@@ -302,7 +302,7 @@ export default App;
 | Field | Description | Type | Default Value |
 |:---------------|:----------------------------|:--------|:----------------------------|
 | visible | whether to open | boolean | `false` |
-| navList | Floating list content data | Array | `[]` |
+| list | Floating list content data | Array | `[]` |
 | activeText | Collapse list button text | string | `Collapse navigation` |
 | inactiveText | Expand List Button Text | string | `Quick Navigation` |
 | type | navigation direction, optional left right | string | `right` |

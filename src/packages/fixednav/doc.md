@@ -20,7 +20,7 @@ import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首页',
@@ -53,7 +53,7 @@ const App = () => {
   return (
     <>
       <FixedNav
-        navList={navList}
+        list={list}
         activeText="基础用法"
         overlay
         position={{ top: '70px' }}
@@ -74,7 +74,7 @@ import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首页',
@@ -107,7 +107,7 @@ const App = () => {
   return (
     <>
       <FixedNav
-        navList={navList}
+        list={list}
         type="left"
         position={{ top: '140px' }}
         visible={visible}
@@ -131,7 +131,7 @@ import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首页',
@@ -164,7 +164,7 @@ const App = () => {
   return (
     <>
       <FixedNav
-        navList={navList}
+        list={list}
         position={{ top: '210px' }}
         overlay={false}
         visible={visible}
@@ -185,7 +185,7 @@ import React, { useState } from "react";
 import { Icon, FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首页',
@@ -253,7 +253,7 @@ import React, { useState } from "react";
 import { Drag, FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首页',
@@ -287,7 +287,7 @@ const App = () => {
     <>
       <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
         <FixedNav
-          navList={navList}
+          list={list}
           inactiveText="支持拖拽"
           visible={visible} 
           onChange={change}
@@ -306,7 +306,7 @@ export default App;
 | 字段           | 说明                       | 类型    | 默认值                       |
 |:---------------|:---------------------------|:--------|:-----------------------------|
 | visible        | 是否打开                   | boolean | `false`                        |
-| navList       | 悬浮列表内容数据           | Array   | `[]`                           |
+| list       | 悬浮列表内容数据           | Array   | `[]`                           |
 | activeText    | 收起列表按钮文案           | string  | `收起导航`                     |
 | inactiveText | 展开列表按钮文案           | string  | `快速导航`                     |
 | type           | 导航方向,可选值 left right | string  | `right`                        |
