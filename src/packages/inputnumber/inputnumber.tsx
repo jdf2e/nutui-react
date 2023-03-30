@@ -124,7 +124,7 @@ export const InputNumber: FunctionComponent<
   }
   const addAllow = (value = inputValue) => {
     if (formatter) {
-      const numValue = String(value).replace(/[^0-9]/gi, '')
+      const numValue = String(value).replace(/[^0-9|\.]/gi, '')
       return Number(numValue) < Number(max) && !disabled
     }
     if (value || typeof value === 'number') {
@@ -135,7 +135,7 @@ export const InputNumber: FunctionComponent<
 
   const reduceAllow = (value = inputValue) => {
     if (formatter) {
-      const numValue = String(value).replace(/[^0-9]/gi, '')
+      const numValue = String(value).replace(/[^0-9|\.]/gi, '')
       return Number(numValue) > Number(min) && !disabled
     }
     if (value || typeof value === 'number') {
@@ -185,7 +185,7 @@ export const InputNumber: FunctionComponent<
     reduce && reduce(e)
     if (reduceAllow()) {
       if (formatter) {
-        const numValue = String(inputValue).replace(/[^0-9]/gi, '')
+        const numValue = String(inputValue).replace(/[^0-9|\.]/gi, '')
         const outputValue = Number(numValue) - Number(step)
         inputRef.current = formatter(outputValue)
         emitChange(outputValue, e)
@@ -204,7 +204,7 @@ export const InputNumber: FunctionComponent<
     add && add(e)
     if (addAllow()) {
       if (formatter) {
-        const numValue = String(inputValue).replace(/[^0-9]/gi, '')
+        const numValue = String(inputValue).replace(/[^0-9|\.]/gi, '')
         const outputValue = Number(numValue) + Number(step)
         inputRef.current = formatter(outputValue)
         emitChange(outputValue, e)
@@ -235,7 +235,7 @@ export const InputNumber: FunctionComponent<
     const input = e.target.value
 
     const numReg = new RegExp('^[0-9]*$')
-    const numValue = input.replace(/[^0-9]/gi, '')
+    const numValue = input.replace(/[^0-9|\.]/gi, '')
 
     if (formatter) {
       if (!numReg.test(input[0]) && numValue) {
@@ -261,7 +261,7 @@ export const InputNumber: FunctionComponent<
     const input = e.target.value
 
     const numReg = new RegExp('^[0-9]*$')
-    const numValue = input.replace(/[^0-9]/gi, '')
+    const numValue = input.replace(/[^0-9|\.]/gi, '')
     if (formatter) {
       if (formatter(numValue) === input) {
         emitChange(numValue, e)
