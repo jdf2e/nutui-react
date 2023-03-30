@@ -140,7 +140,7 @@ const FixedNavDemo = () => {
           position={{ top: '140px' }}
           visible={visible2}
           activeText={translated.title2}
-          unActiveText={translated.title3}
+          inactiveText={translated.title3}
           onChange={change2}
           onSelected={selected2}
         />
@@ -180,7 +180,7 @@ const FixedNavDemo = () => {
         <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
           <FixedNav
             navList={navList}
-            unActiveText={translated.title6}
+            inactiveText={translated.title6}
             visible={visible5}
             onChange={change5}
             onSelected={selected5}

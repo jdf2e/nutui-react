@@ -44,7 +44,7 @@ test('should be displayed after setting the un-active-text', () => {
       navList={navList}
       type="left"
       activeText="左侧收起"
-      unActiveText="左侧展开"
+      inactiveText="左侧展开"
     />
   )
   expect(container.querySelector('.nut-fixednav .text')).toHaveTextContent(
@@ -59,7 +59,7 @@ test('should be displayed after setting the un-active-text', () => {
       navList={navList}
       type="left"
       activeText="左侧收起"
-      unActiveText="左侧展开"
+      inactiveText="左侧展开"
       onChange={activeFixedNav}
     />
   )

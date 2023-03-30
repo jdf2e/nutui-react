@@ -112,7 +112,7 @@ const App = () => {
         position={{ top: '140px' }}
         visible={visible}
         activeText="Left collapsed"
-        unActiveText="Expand left"
+        inactiveText="Expand left"
         onChange={change}
         onSelected={selected}
        />
@@ -288,7 +288,7 @@ const App = () => {
       <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
         <FixedNav
           navList={navList}
-          unActiveText="support drag and drop"
+          inactiveText="support drag and drop"
           visible={visible}
           onChange={change}
           onSelected={selected} />
@@ -304,7 +304,7 @@ export default App;
 | visible | whether to open | boolean | `false` |
 | navList | Floating list content data | Array | `[]` |
 | activeText | Collapse list button text | string | `Collapse navigation` |
-| unActiveText | Expand List Button Text | string | `Quick Navigation` |
+| inactiveText | Expand List Button Text | string | `Quick Navigation` |
 | type | navigation direction, optional left right | string | `right` |
 | overlay | Whether to show the mask when expanding | boolean | `true` |
 | position | fixed vertical position | object | `{top: 'auto', bottom: 'auto'}` |

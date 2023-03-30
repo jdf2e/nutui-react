@@ -14,7 +14,7 @@ const zhTW: BaseLang = {
   },
   fixednav: {
     activeText: '收起導航',
-    unActiveText: '快速導航',
+    inactiveText: '快速導航',
   },
   infiniteloading: {
     pullRefreshText: '鬆開刷新',

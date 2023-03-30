@@ -18,7 +18,7 @@ export interface FixedNavProps extends BasicComponent {
   overlay: boolean
   navList: Array<any>
   activeText: string
-  unActiveText: string
+  inactiveText: string
   position: Position
   type: Direction
   onChange: (v: any) => void
@@ -31,7 +31,7 @@ const defaultProps = {
   ...ComponentDefaults,
   className: '',
   activeText: '',
-  unActiveText: '',
+  inactiveText: '',
   type: 'right',
   position: {
     top: 'auto',
@@ -49,7 +49,7 @@ export const FixedNav: FunctionComponent<
     visible,
     navList,
     activeText,
-    unActiveText,
+    inactiveText,
     position,
     onChange,
     onSelected,
@@ -117,7 +117,7 @@ export const FixedNav: FunctionComponent<
             <div className="text">
               {visible
                 ? activeText || locale.fixednav.activeText
-                : unActiveText || locale.fixednav.unActiveText}
+                : inactiveText || locale.fixednav.inactiveText}
             </div>
           </>
         )}

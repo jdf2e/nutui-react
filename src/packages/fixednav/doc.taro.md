@@ -111,7 +111,7 @@ const App = () => {
         position={{ top: '140px' }}
         visible={visible}
         activeText="左侧收起"
-        unActiveText="左侧展开"
+        inactiveText="左侧展开"
         onChange={change}
         onSelected={selected}
        />
@@ -287,7 +287,7 @@ const App = () => {
       <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
         <FixedNav
           navList={navList}
-          unActiveText="支持拖拽"
+          inactiveText="支持拖拽"
           visible={visible} 
           onChange={change}
           onSelected={selected} />
@@ -307,7 +307,7 @@ export default App;
 | visible        | 是否打开                   | boolean | `false`                        |
 | navList       | 悬浮列表内容数据           | Array   | `[]`                           |
 | activeText    | 收起列表按钮文案           | string  | `收起导航`                     |
-| unActiveText | 展开列表按钮文案           | string  | `快速导航`                     |
+| inactiveText | 展开列表按钮文案           | string  | `快速导航`                     |
 | type           | 导航方向,可选值 left right | string  | `right`                        |
 | overlay        | 展开时是否显示遮罩         | boolean | `true`                         |
 | position       | fixed 垂直位置             | object  | `{top: 'auto', bottom: 'auto'}` |
