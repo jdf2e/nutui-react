@@ -305,7 +305,6 @@ export default App;
 ### Prop
 | 字段           | 說明                       | 類型    | 默認值                       |
 |:---------------|:---------------------------|:--------|:-----------------------------|
-| fixednavClass        | 自定義類名                   | string | `fixednav`                        |
 | visible        | 是否打開                   | boolean | `false`                        |
 | navList       | 懸浮列表內容數據           | Array   | `[]`                           |
 | activeText    | 收起列表按鈕文案           | string  | `收起導航`                     |

@@ -301,7 +301,6 @@ export default App;
 ### Prop
 | Field | Description | Type | Default Value |
 |:---------------|:----------------------------|:--------|:----------------------------|
-| fixednavClass | custom class name | string | `fixednav` |
 | visible | whether to open | boolean | `false` |
 | navList | Floating list content data | Array | `[]` |
 | activeText | Collapse list button text | string | `Collapse navigation` |

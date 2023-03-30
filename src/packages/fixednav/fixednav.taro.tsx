@@ -13,7 +13,7 @@ type Position = {
 }
 
 export interface FixedNavProps extends BasicComponent {
-  fixednavClass: string
+  className: string
   visible: boolean
   overlay: boolean
   navList: Array<any>
@@ -29,7 +29,7 @@ export interface FixedNavProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
-  fixednavClass: 'nut-fixednav',
+  className: 'nut-fixednav',
   activeText: '',
   unActiveText: '',
   type: 'right',
@@ -44,7 +44,7 @@ export const FixedNav: FunctionComponent<
 > = (props) => {
   const { locale } = useConfig()
   const {
-    fixednavClass,
+    className,
     overlay,
     visible,
     navList,
@@ -69,7 +69,7 @@ export const FixedNav: FunctionComponent<
       active: visible,
     },
     type,
-    fixednavClass,
+    className,
     b('')
   )
 
