@@ -157,15 +157,6 @@ const FixedNavDemo = () => {
           visible={visible4}
           onChange={change4}
           onSelected={selected4}
-          slotList={
-            <ul className="nut-fixednav__list" slot="list">
-              <li className="nut-fixednav__list-item">1</li>
-              <li className="nut-fixednav__list-item">2</li>
-              <li className="nut-fixednav__list-item">3</li>
-              <li className="nut-fixednav__list-item">4</li>
-              <li className="nut-fixednav__list-item">5</li>
-            </ul>
-          }
           content={
             <>
               <Retweet color="#fff" />
@@ -174,7 +165,15 @@ const FixedNavDemo = () => {
               </span>
             </>
           }
-        />
+        >
+          <ul className="nut-fixednav__list">
+            <li className="nut-fixednav__list-item">1</li>
+            <li className="nut-fixednav__list-item">2</li>
+            <li className="nut-fixednav__list-item">3</li>
+            <li className="nut-fixednav__list-item">4</li>
+            <li className="nut-fixednav__list-item">5</li>
+          </ul>
+        </FixedNav>
         {/* <!-- 配合 Drag 支持拖拽 ，小程序暂不支持 --> */}
         <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
           <FixedNav

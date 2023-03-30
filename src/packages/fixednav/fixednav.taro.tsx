@@ -23,7 +23,6 @@ export interface FixedNavProps extends BasicComponent {
   type: Direction
   onChange: (v: any) => void
   onSelected: (item: any, e: any) => void
-  slotList: React.ReactNode
   content: React.ReactNode
 }
 
@@ -54,7 +53,7 @@ export const FixedNav: FunctionComponent<
     onChange,
     onSelected,
     type,
-    slotList,
+    childern,
     content,
     ...rest
   } = {
@@ -91,7 +90,7 @@ export const FixedNav: FunctionComponent<
         />
       )}
       <div className="list">
-        {slotList || (
+        {childern || (
           <div className="nut-fixednav__list">
             {list.map((item: any, index) => {
               return (

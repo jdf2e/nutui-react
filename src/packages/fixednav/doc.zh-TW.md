@@ -223,22 +223,21 @@ const App = () => {
         visible={visible}
         onChange={change}
         onSelected={selected}
-        slotList={
-          <ul className="nut-fixednav__list" slot="list">
-            <li className="nut-fixednav__list-item">1</li>
-            <li className="nut-fixednav__list-item">2</li>
-            <li className="nut-fixednav__list-item">3</li>
-            <li className="nut-fixednav__list-item">4</li>
-            <li className="nut-fixednav__list-item">5</li>
-          </ul>
-        }
         content={
           <>
             <Icon name="retweet" color="#fff"> </Icon>
             <span className="text">{ visible ? '自定義開' : '自定義關' }</span>
           </>
         }
-       />
+      >
+        <ul className="nut-fixednav__list">
+          <li className="nut-fixednav__list-item">1</li>
+          <li className="nut-fixednav__list-item">2</li>
+          <li className="nut-fixednav__list-item">3</li>
+          <li className="nut-fixednav__list-item">4</li>
+          <li className="nut-fixednav__list-item">5</li>
+        </ul>
+      </FixedNav>
     </>
   )
 };
@@ -312,8 +311,8 @@ export default App;
 | type           | 導航方向,可選值 left right | string  | `right`                        |
 | overlay        | 展開時是否顯示遮罩         | boolean | `true`                         |
 | position       | fixed 垂直位置             | object  | `{top: 'auto', bottom: 'auto'}` |
-| slotList       | 自定義展開列表內容             | ReactNode  | - |
 | content       | 自定義按鈕            | ReactNode  | - |
+| children       | 自定義展開列表內容             | ReactNode  | - |
 
 
 ### Event

@@ -223,22 +223,21 @@ const App = () => {
         visible={visible}
         onChange={change}
         onSelected={selected}
-        slotList={
-          <ul className="nut-fixednav__list" slot="list">
-            <li className="nut-fixednav__list-item">1</li>
-            <li className="nut-fixednav__list-item">2</li>
-            <li className="nut-fixednav__list-item">3</li>
-            <li className="nut-fixednav__list-item">4</li>
-            <li className="nut-fixednav__list-item">5</li>
-          </ul>
-        }
         content={
           <>
             <Icon name="retweet" color="#fff"> </Icon>
             <span className="text">{ visible ? 'Custom On' : 'Custom Off' }</span>
           </>
         }
-       />
+      >
+        <ul className="nut-fixednav__list">
+          <li className="nut-fixednav__list-item">1</li>
+          <li className="nut-fixednav__list-item">2</li>
+          <li className="nut-fixednav__list-item">3</li>
+          <li className="nut-fixednav__list-item">4</li>
+          <li className="nut-fixednav__list-item">5</li>
+        </ul>
+      </FixedNav>
     </>
   )
 };
@@ -308,8 +307,8 @@ export default App;
 | type | navigation direction, optional left right | string | `right` |
 | overlay | Whether to show the mask when expanding | boolean | `true` |
 | position | fixed vertical position | object | `{top: 'auto', bottom: 'auto'}` |
-| slotList | Customize expanded list content | ReactNode | - |
 | content | custom button | ReactNode | - |
+| children | Customize expanded list content | ReactNode | - |
 
 
 ### Event
