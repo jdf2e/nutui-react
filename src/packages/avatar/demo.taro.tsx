@@ -1,8 +1,8 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell, Badge, Avatar, AvatarGroup } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 import '@/packages/avatar/demo.scss'
 
 interface T {
@@ -96,10 +96,13 @@ const AvatarDemo = () => {
           <Avatar
             className="demo-avatar"
             color="#fff"
-            bgColor="#FA2C19"
+            bgColor="var(--nutui-brand-color)"
             icon="my"
           />
-          <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
+          <Avatar
+            color="var(--nutui-brand-color)"
+            bgColor="var(--nutui-brand-color-opacity)"
+          >
             U
           </Avatar>
         </Cell>
@@ -117,7 +120,10 @@ const AvatarDemo = () => {
           <AvatarGroup span="-4">
             <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar icon="my" />
-            <Avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">
+            <Avatar
+              color="var(--nutui-brand-color)"
+              bgColor="var(--nutui-brand-color-opacity)"
+            >
               U
             </Avatar>
           </AvatarGroup>
@@ -127,7 +133,10 @@ const AvatarDemo = () => {
           <AvatarGroup maxCount="3" maxColor="#fff" maxBgColor="#498ff2">
             <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar icon="my" />
-            <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
+            <Avatar
+              color="var(--nutui-brand-color)"
+              bgColor="var(--nutui-brand-color-opacity)"
+            >
               U
             </Avatar>
             <Avatar icon="my" />
@@ -138,7 +147,10 @@ const AvatarDemo = () => {
           <AvatarGroup maxCount="3" zIndex="right" maxContent="...">
             <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar icon="my" />
-            <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
+            <Avatar
+              color="var(--nutui-brand-color)"
+              bgColor="var(--nutui-brand-color-opacity)"
+            >
               U
             </Avatar>
             <Avatar icon="my" />

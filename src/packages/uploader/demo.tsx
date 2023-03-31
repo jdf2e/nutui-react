@@ -285,21 +285,21 @@ const UploaderDemo = () => {
           multiple
           listType="list"
         >
-          <Button type="success" size="small">
+          <Button type="default" size="small">
             {translated.bb5caa9c}
           </Button>
         </Uploader>
 
         <h2>{translated['37c65f47']}</h2>
         <Uploader url={uploadUrl}>
-          <Button type="success" size="small">
+          <Button type="default" size="small">
             {translated.bb5caa9c}
           </Button>
         </Uploader>
 
         <h2>{translated.uploadDefaultProgress}</h2>
         <Uploader url={uploadUrl} onProgress={onProgress}>
-          <Button type="success" size="small">
+          <Button type="default" size="small">
             {translated.bb5caa9c}
           </Button>
         </Uploader>
@@ -351,14 +351,14 @@ const UploaderDemo = () => {
         />
         <br />
         <Button
-          type="success"
+          type="default"
           size="small"
           onClick={submitUpload}
           style={{ marginRight: '10px' }}
         >
           {translated.fcf01d1a}
         </Button>
-        <Button type="danger" size="small" onClick={clearUpload}>
+        <Button type="primary" size="small" onClick={clearUpload}>
           {translated.clearBtnUpload}
         </Button>
 

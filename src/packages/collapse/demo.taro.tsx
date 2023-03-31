@@ -237,10 +237,24 @@ const CollapseDemo = () => {
           })}
         </Collapse>
         {/* eslint-disable-next-line react/button-has-type */}
-        <Button type="primary" size="small" onClick={() => changeNewData()}>
+        <Button
+          style={{
+            marginBottom: '20px',
+            marginTop: '20px',
+            marginRight: '10px',
+          }}
+          type="primary"
+          size="small"
+          onClick={() => changeNewData()}
+        >
           {translated.buttonTextOne}
         </Button>
-        <Button type="info" size="small" onClick={() => changeOldData()}>
+        <Button
+          style={{ marginBottom: '20px', marginTop: '20px' }}
+          type="info"
+          size="small"
+          onClick={() => changeOldData()}
+        >
           {translated.buttonTextSec}
         </Button>
       </div>

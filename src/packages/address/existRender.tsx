@@ -91,7 +91,9 @@ export const ExistRender: FunctionComponent<
                   <Icon
                     className={b('exist-item-icon')}
                     name={item.selectedAddress ? selectedIcon : defaultIcon}
-                    color={item.selectedAddress ? '#FA2C19' : ''}
+                    color={
+                      item.selectedAddress ? 'var(--nutui-brand-color)' : ''
+                    }
                     size="13px"
                   />
                   <div className={b('exist-item-info')}>

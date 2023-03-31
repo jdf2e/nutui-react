@@ -36,7 +36,7 @@ const defaultProps = {
     loading: false,
     children: [],
   },
-  activeColor: '#fa2c19',
+  activeColor: '',
   checked: false,
   checkedIcon: 'checklist',
   chooseItem: () => {},

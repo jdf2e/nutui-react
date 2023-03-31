@@ -369,7 +369,7 @@ export const CustomRender: FunctionComponent<
                           <Icon
                             className={b('region-item--icon')}
                             name="Check"
-                            color="#FA2C19"
+                            color="var(--nutui-brand-color)"
                             size="13px"
                           />
                         )}

@@ -7,8 +7,10 @@ import '@/sites/assets/styles/reset.scss'
 const projectID = import.meta.env.VITE_APP_PROJECT_ID
 if (projectID) {
   import(`../../styles/font-${projectID}/iconfont.css`)
+  import(`../../styles/theme-${projectID}.scss`)
 } else {
   import('../../styles/font/iconfont.css')
+  import(`../../styles/theme-default.scss`)
 }
 
 import('../../packages/nutui.react.scss')
