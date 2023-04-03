@@ -402,7 +402,7 @@ export const DatePicker: FunctionComponent<
     <View
       className={`nut-datepicker ${className || ''}`}
       style={style}
-      {...rest}
+      {...(rest as any)}
       catchMove
     >
       {listData.length > 0 && (
