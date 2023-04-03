@@ -9,7 +9,6 @@
 ``` ts
 // react
 import { InputNumber } from '@nutui/nutui-react';
-
 ```
 ### 基础用法
 
@@ -214,7 +213,7 @@ const App = () => {
   const onChange = (value: string | number) => {
     Toast.loading('异步演示 2 秒后更改')
     setTimeout(() => {
-      inputState.val7 = number(value)
+      inputState.val7 = Number(value)
       setInputState({ ...inputState })
       Toast.hide()
     }, 2000)
@@ -250,22 +249,56 @@ export default App;
 ```
 :::
 
+### 支持formatter
+
+:::demo
+```tsx
+import React from "react";
+import { InputNumber } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <InputNumber
+        style={{"--nutui-inputnumber-input-width": "60px"}}
+        modelValue="1000"
+        min={10}
+        max={15020}
+        formatter={(value) =>
+          `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+        }
+      />
+      <InputNumber
+        style={{"--nutui-inputnumber-input-width": "60px"}}
+        modelValue="100"
+        min={0}
+        max={100}
+        formatter={(value) => `${value}%`}
+      />
+    </>
+  )
+}
+export default App;
+```
+:::
+
 ## API
 
 ### Props
 
 | 参数           | 说明                       | 类型           | 默认值     |
 |----------------|----------------------------|----------------|------------|
-| modelValue        | 初始值                     | string、number | -          |
+| modelValue        | 初始值                     | string \| number | -          |
 | inputWidth    | 输入框宽度                 | string         | `40px`     |
 | buttonSize    | 操作符+、-尺寸             | string         | `20px`     |
-| min            | 最小值限制                 | string、number | `1`        |
-| max            | 最大值限制                 | string、number | `9999` |
-| step           | 步长                       | string、number | `1`        |
-| decimalPlaces | 设置保留的小数位           | string、number | `0`        |
-| disabled       | 禁用所有功能               | boolean        | false      |
-| readonly       | 只读状态禁用输入框操作行为 | boolean        | false      |
-| isAsync       | 支持异步修改 | boolean        | false      |
+| min            | 最小值限制                 | string \| number | `1`        |
+| max            | 最大值限制                 | string \| number | `9999` |
+| step           | 步长                       | string \| number | `1`        |
+| decimalPlaces | 设置保留的小数位           | string \| number | `0`        |
+| disabled       | 禁用所有功能               | boolean        | `false`      |
+| readonly       | 只读状态禁用输入框操作行为 | boolean        | `false`      |
+| isAsync       | 支持异步修改 | boolean        | `false`      |
+| formatter`v1.4.14`       | 指定输入框展示值的格式 | function(value: number | string): string        | -     |
 
 ### Events
 
