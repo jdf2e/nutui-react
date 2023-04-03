@@ -230,6 +230,28 @@ const InputNumberDemo = () => {
             formatter={(value) => `${value}%`}
           />
         </Cell>
+
+        <h2>支持formatter</h2>
+        <Cell>
+          <InputNumber
+            className="format-width"
+            modelValue="1000"
+            min={10}
+            max={15020}
+            formatter={(value) =>
+              `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+            }
+          />
+        </Cell>
+        <Cell>
+          <InputNumber
+            className="format-width"
+            modelValue="100"
+            min={0}
+            max={100}
+            formatter={(value) => `${value}%`}
+          />
+        </Cell>
       </div>
     </>
   )
