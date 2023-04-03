@@ -1,6 +1,7 @@
 import React, {
   useState,
   useEffect,
+  useRef,
   FunctionComponent,
   ChangeEvent,
   FocusEvent,
@@ -24,6 +25,7 @@ export interface InputNumberProps extends BasicComponent {
   isAsync: boolean
   className: string
   style: React.CSSProperties
+  formatter?: (displayValue: string | number) => string
   add: (e: MouseEvent) => void
   reduce: (e: MouseEvent) => void
   overlimit: (e: MouseEvent) => void
@@ -77,6 +79,7 @@ export const InputNumber: FunctionComponent<
     isAsync,
     className,
     style,
+    formatter,
     add,
     reduce,
     change,
@@ -97,9 +100,15 @@ export const InputNumber: FunctionComponent<
     ...props,
   }
   const [inputValue, setInputValue] = useState(modelValue)
+  const inputRef = useRef('')
   useEffect(() => {
-    setInputValue(modelValue)
-  }, [modelValue])
+    if (formatter) {
+      inputRef.current = formatter(modelValue)
+      setInputValue(formatter(modelValue))
+    } else {
+      setInputValue(modelValue)
+    }
+  }, [modelValue, formatter])
 
   const b = bem('inputnumber')
   const classes = classNames(
@@ -114,6 +123,10 @@ export const InputNumber: FunctionComponent<
     ...style,
   }
   const addAllow = (value = inputValue) => {
+    if (formatter) {
+      const numValue = String(value).replace(/[^0-9|\.]/gi, '')
+      return Number(numValue) < Number(max) && !disabled
+    }
     if (value || typeof value === 'number') {
       return value < Number(max) && !disabled
     }
@@ -121,6 +134,10 @@ export const InputNumber: FunctionComponent<
   }
 
   const reduceAllow = (value = inputValue) => {
+    if (formatter) {
+      const numValue = String(value).replace(/[^0-9|\.]/gi, '')
+      return Number(numValue) > Number(min) && !disabled
+    }
     if (value || typeof value === 'number') {
       return value > Number(min) && !disabled
     }
@@ -148,11 +165,17 @@ export const InputNumber: FunctionComponent<
     change && change(outputValue, e)
     if (!isAsync) {
       if (Number(outputValue) < Number(min)) {
-        setInputValue(Number(min))
+        formatter
+          ? setInputValue(formatter(Number(min)))
+          : setInputValue(Number(min))
       } else if (Number(outputValue) > Number(max)) {
-        setInputValue(Number(max))
+        formatter
+          ? setInputValue(formatter(Number(max)))
+          : setInputValue(Number(max))
       } else {
-        setInputValue(outputValue)
+        formatter
+          ? setInputValue(formatter(outputValue))
+          : setInputValue(outputValue)
       }
     }
   }
@@ -161,8 +184,15 @@ export const InputNumber: FunctionComponent<
     onReduce && onReduce(e)
     reduce && reduce(e)
     if (reduceAllow()) {
-      const outputValue = Number(inputValue) - Number(step)
-      emitChange(outputValue, e)
+      if (formatter) {
+        const numValue = String(inputValue).replace(/[^0-9|\.]/gi, '')
+        const outputValue = Number(numValue) - Number(step)
+        inputRef.current = formatter(outputValue)
+        emitChange(outputValue, e)
+      } else {
+        const outputValue = Number(inputValue) - Number(step)
+        emitChange(outputValue, e)
+      }
     } else {
       onOverlimit && onOverlimit(e)
       overlimit && overlimit(e)
@@ -173,8 +203,15 @@ export const InputNumber: FunctionComponent<
     onAdd && onAdd(e)
     add && add(e)
     if (addAllow()) {
-      const outputValue = Number(inputValue) + Number(step)
-      emitChange(outputValue, e)
+      if (formatter) {
+        const numValue = String(inputValue).replace(/[^0-9|\.]/gi, '')
+        const outputValue = Number(numValue) + Number(step)
+        inputRef.current = formatter(outputValue)
+        emitChange(outputValue, e)
+      } else {
+        const outputValue = Number(inputValue) + Number(step)
+        emitChange(outputValue, e)
+      }
     } else {
       onOverlimit && onOverlimit(e)
       overlimit && overlimit(e)
@@ -190,6 +227,48 @@ export const InputNumber: FunctionComponent<
         setInputValue('')
       } else {
         setInputValue(input.valueAsNumber)
+      }
+    }
+  }
+
+  const changeFormatValue = (e: ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value
+
+    const numReg = new RegExp('^[0-9]*$')
+    const numValue = input.replace(/[^0-9|\.]/gi, '')
+
+    if (formatter) {
+      if (!numReg.test(input[0]) && numValue) {
+        setInputValue(formatter(numValue))
+      } else if (!numReg.test(input[0]) && !numValue) {
+        setInputValue(input)
+      } else if (numReg.test(input[0])) {
+        console.log('inputRef.current', inputRef.current)
+        console.log('formatter(numValue)', formatter(numValue))
+
+        // 针对于100%这种尾字符例子，直接删除会进行匹配
+        if (formatter(numValue) === inputRef.current) {
+          setInputValue(numValue)
+        } else {
+          setInputValue(formatter(numValue))
+          inputRef.current = formatter(numValue)
+        }
+      }
+    }
+  }
+
+  const burFormatValue = (e: ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value
+
+    const numReg = new RegExp('^[0-9]*$')
+    const numValue = input.replace(/[^0-9|\.]/gi, '')
+    if (formatter) {
+      if (formatter(numValue) === input) {
+        emitChange(numValue, e)
+        return
+      }
+      if (!numReg.test(input) || !input) {
+        setInputValue(formatter(''))
       }
     }
   }
@@ -227,18 +306,35 @@ export const InputNumber: FunctionComponent<
           onClick={reduceNumber}
         />
       </div>
-      <input
-        type="number"
-        min={min}
-        max={max}
-        style={{ width: pxCheck(inputWidth) }}
-        disabled={disabled}
-        readOnly={readonly}
-        value={inputValue}
-        onInput={changeValue}
-        onBlur={burValue}
-        onFocus={focusValue}
-      />
+      <>
+        {formatter ? (
+          <input
+            type="text"
+            min={min}
+            max={max}
+            style={{ width: pxCheck(inputWidth) }}
+            disabled={disabled}
+            readOnly={readonly}
+            value={inputValue}
+            onInput={changeFormatValue}
+            onBlur={burFormatValue}
+            onFocus={focusValue}
+          />
+        ) : (
+          <input
+            type="number"
+            min={min}
+            max={max}
+            style={{ width: pxCheck(inputWidth) }}
+            disabled={disabled}
+            readOnly={readonly}
+            value={inputValue}
+            onInput={changeValue}
+            onBlur={burValue}
+            onFocus={focusValue}
+          />
+        )}
+      </>
       <div className="nut-input-add">
         <Icon
           classPrefix={iconClassPrefix}
