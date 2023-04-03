@@ -108,7 +108,7 @@ export const Tabs: FunctionComponent<
       const childProps = child?.props
       if (childProps?.title || childProps?.paneKey) {
         title.title = childProps?.title
-        title.paneKey = childProps?.paneKey || idx
+        title.paneKey = getPaneKey(childProps?.paneKey, idx)
         title.disabled = childProps?.disabled
         title.index = idx
         if (title.paneKey === value) {
@@ -149,6 +149,10 @@ export const Tabs: FunctionComponent<
         ? `translate3d(-${index * 100}%, 0, 0)`
         : `translate3d( 0,-${index * 100}%, 0)`,
     transitionDuration: `${animatedTime}ms`,
+  }
+
+  const getPaneKey = (paneKey: string | number, index: number) => {
+    return typeof paneKey === 'string' ? paneKey : String(paneKey || index)
   }
 
   const tabChange = (item: Title, index: number) => {
@@ -231,7 +235,7 @@ export const Tabs: FunctionComponent<
             }
 
             if (
-              String(value) !== String(child.props?.paneKey || idx) &&
+              String(value) !== getPaneKey(child.props?.paneKey, idx) &&
               autoHeight
             ) {
               childProps = {
