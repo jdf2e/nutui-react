@@ -5,6 +5,8 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
+import Taro from '@tarojs/taro'
+import { PickerView, PickerViewColumn, View } from '@tarojs/components'
 import { PickerOption } from './picker.taro'
 import { useTouch } from '../../utils/useTouch'
 import { getRectByTaro } from '@/utils/useClientRect'
@@ -165,6 +167,28 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     }, 0)
   }
 
+  const pickerStart = () => {}
+
+  const pickerEnd = () => {}
+
+  const pickerChange = (data) => {
+    const prevDefaultValue = defaultIndexes.value
+    let changeIndex = 0
+    // 判断变化的是第几个
+    data.detail.value.forEach((col: number, index: number) => {
+      if (prevDefaultValue[index] != col) changeIndex = index
+    })
+
+    // 选择的是哪个 option
+    changeHandler(
+      changeIndex,
+      columnsList.value[changeIndex][data.detail.value[changeIndex]]
+    )
+    console.log('设置默认值')
+
+    defaultIndexes.value = defaultValuesConvert()
+  }
+
   // 惯性滚动 距离
   const momentum = (distance: number, duration: number) => {
     let nDistance = distance
@@ -265,7 +289,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     moving: moving.current,
   }))
 
-  return (
+  return Taro.getEnv() === 'WEB' ? (
     <div
       className="nut-picker-list"
       ref={pickerSlotRef}
@@ -291,8 +315,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
                   transform: `rotate3d(1, 0, 0, ${
                     -rotation * (index + 1)
                   }deg) translate3d(0px, 0px, 104px)`,
-                  height: `${lineSpacing.current}px`,
-                  lineHeight: `${lineSpacing.current}px`,
+                  height: `36px`,
+                  lineHeight: `36px`,
                 }}
                 key={item.value ? item.value : index}
               >
@@ -317,10 +341,56 @@ const InternalPickerSlot: ForwardRefRenderFunction<
             )
           })}
       </div>
-
       <div className="nut-picker-mask" />
       <div className="nut-picker-indicator" ref={listbox} />
     </div>
+  ) : (
+    <PickerView
+      ref={pickerSlotRef}
+      onPickStart={pickerStart}
+      // onTouchMove={touchMove}
+      onChange={}
+      onPickEnd={pickerEnd}
+      indicatorStyle="height: 50px;"
+      style={{
+        height: `200px`,
+        width: '100%',
+      }}
+    >
+      <PickerViewColumn>
+        {threeDimensional &&
+          listData.map((item, index) => {
+            return (
+              <View
+                key={item.value ? item.value : index}
+                className="nut-picker-roller-item-title"
+                style={{
+                  height: `36px`,
+                  lineHeight: `36px`,
+                }}
+              >
+                <>{item.text ? item.text : item}</>
+              </View>
+            )
+          })}
+        {/* 平铺 */}
+        {!threeDimensional &&
+          listData.map((item, index) => {
+            return (
+              <View
+                key={item.value ? item.value : index}
+                className="nut-picker-roller-item-title"
+                style={{
+                  height: `${lineSpacing.current}px`,
+                  lineHeight: `${lineSpacing.current}px`,
+                }}
+              >
+                <>{item.text ? item.text : item}</>
+              </View>
+            )
+          })}
+      </PickerViewColumn>
+    </PickerView>
   )
 }
 const PickerSlot =
