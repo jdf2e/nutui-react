@@ -8,7 +8,7 @@ import React, {
 import { ITouchEvent } from '@tarojs/components'
 import Trigger from './Trigger'
 import Overlay from '@/packages/overlay/index.taro'
-import { getRectByTaro } from '@/utils/useClientRect'
+import { getRectByTaro } from '@/utils/use-client-rect'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 

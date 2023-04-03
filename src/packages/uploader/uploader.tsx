@@ -18,7 +18,7 @@ import Progress from '@/packages/progress'
 import { Upload, UploadOptions } from './upload'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
-import { funcInterceptor } from '@/utils/Interceptor'
+import { funcInterceptor } from '@/utils/interceptor'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 

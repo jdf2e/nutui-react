@@ -6,8 +6,8 @@ import React, {
   CSSProperties,
   useCallback,
 } from 'react'
-import { useTouch } from '../../utils/useTouch'
-import { getRect } from '../../utils/useClientRect'
+import { useTouch } from '../../utils/use-touch'
+import { getRect } from '../../utils/use-client-rect'
 import Toast from '@/packages/toast'
 import { useConfig } from '@/packages/configprovider'
 

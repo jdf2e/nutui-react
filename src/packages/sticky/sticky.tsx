@@ -7,8 +7,8 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { getScrollParent } from '@/utils/get-scroll-parent'
-import { getRect } from '@/utils/useClientRect'
-import useWatch from '@/utils/useWatch'
+import { getRect } from '@/utils/use-client-rect'
+import useWatch from '@/utils/use-watch'
 import { BasicComponent } from '@/utils/typings'
 import bem from '@/utils/bem'
 

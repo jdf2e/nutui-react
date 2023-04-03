@@ -10,8 +10,8 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import { useTouch } from '@/utils/useTouch'
-import { getRect } from '@/utils/useClientRect'
+import { useTouch } from '@/utils/use-touch'
+import { getRect } from '@/utils/use-client-rect'
 
 export type SwipeSide = 'left' | 'right'
 export type SwipePosition = SwipeSide | 'cell' | 'outside'

@@ -11,7 +11,7 @@ import React, {
 import { Close, Notice } from '@nutui/icons-react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
-import { getRect } from '../../utils/useClientRect'
+import { getRect } from '../../utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface NoticeBarProps extends BasicComponent {

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
 import { useReady, nextTick, createSelectorQuery } from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { getRectByTaro } from '@/utils/useClientRect'
+import { getRectByTaro } from '@/utils/use-client-rect'
 
 export type Direction = 'start' | 'end' | 'middle'
 
