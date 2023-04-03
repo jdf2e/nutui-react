@@ -1,3 +1,15 @@
+# v1.4.13
+`2023-03-29`
+
+* :bug: fix(dialog): 修复Dialog.confirm弹框关闭后dom没有移除问题 (#851) @拧巴的猫
+* :bug: fix(Elevator): 组件瘦身+taro h5适配 (#858) @拧巴的猫
+* :bug: fix(picker): 修复taro版本滚动报错问题 (#852) @拧巴的猫
+* :bug: fix(range): 修复 a11y 属性并补全组件的单元测试 (#849) @AnteeHub
+* :bug: fix: taro-v3.6.12 complier @junjun666
+* :bug: fix: 修复input 的errorMessage显隐导致input失焦问题 (#827) @Penguin-Lin
+* 📖 docs: imagepreview 组件增加点击缩略图切换示例 (#854) @oasis-cloud
+
+
 # v1.4.12
 `2023-03-22`
 

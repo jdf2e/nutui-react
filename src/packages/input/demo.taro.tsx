@@ -11,6 +11,7 @@ interface Idata {
   number: string
   digit: string
   tel: string
+  nickname: string
   readonly: string
   disabled: string
   showIcon: string
@@ -46,6 +47,7 @@ const InputDemo = () => {
       number: '数字',
       digit: '整数',
       tel: '手机号',
+      nickname: '昵称',
       readonly: '只读',
       disabled: '禁用',
       icon: '显示图标',
@@ -83,6 +85,7 @@ const InputDemo = () => {
       number: 'Number',
       digit: 'Digit',
       tel: 'Tel',
+      nickname: 'Nickname',
       readonly: 'Readonly',
       disabled: 'Disabled',
       icon: 'Show Icon',
@@ -208,6 +211,13 @@ const InputDemo = () => {
           placeholder={translated.tel}
           defaultValue={state.tel}
           type="tel"
+        />
+        <Input
+          name="nickname"
+          label={translated.nickname}
+          placeholder={translated.nickname}
+          type="nickname"
+          onChange={(val) => console.log('onChange', val)}
         />
         <h2>{translated.title2}</h2>
         <Input

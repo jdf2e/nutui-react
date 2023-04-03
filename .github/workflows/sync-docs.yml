@@ -1,27 +1,27 @@
-name: sync to docs
+# name: sync to docs
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - '.github/workflows/**'
-      - 'src/**'
-      - 'package.json'
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - '.github/workflows/**'
+#       - 'src/**'
+#       - 'package.json'
 
-jobs:
-  copy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run:  npm i fs-extra --force
-      - run: node scripts/copy-docs.js
-      - name : Sync
-        uses : JamesIves/github-pages-deploy-action@4.1.7
-        with :
-          branch : master # action 应该部署到的分支 。
-          folder : site_docs #操作应该部署的文件夹 。
-          clean: false
-          repository-name: jdf2e/nutui-docs
-          token: ${{ secrets.GIT_ACTION }}
-          target-folder: src/docs_react
+# jobs:
+#   copy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - run:  npm i fs-extra --force
+#       - run: node scripts/copy-docs.js
+#       - name : Sync
+#         uses : JamesIves/github-pages-deploy-action@4.1.7
+#         with :
+#           branch : master # action 应该部署到的分支 。
+#           folder : site_docs #操作应该部署的文件夹 。
+#           clean: false
+#           repository-name: jdf2e/nutui-docs
+#           token: ${{ secrets.GIT_ACTION }}
+#           target-folder: src/docs_react

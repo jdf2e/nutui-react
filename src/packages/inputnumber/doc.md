@@ -249,6 +249,39 @@ export default App;
 ```
 :::
 
+### 支持formatter
+
+:::demo
+```tsx
+import React from "react";
+import { InputNumber } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <InputNumber
+        style={{"--nutui-inputnumber-input-width": "60px"}}
+        modelValue="1000"
+        min={10}
+        max={15020}
+        formatter={(value) =>
+          `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+        }
+      />
+      <InputNumber
+        style={{"--nutui-inputnumber-input-width": "60px"}}
+        modelValue="100"
+        min={0}
+        max={100}
+        formatter={(value) => `${value}%`}
+      />
+    </>
+  )
+}
+export default App;
+```
+:::
+
 ## API
 
 ### Props
@@ -265,6 +298,7 @@ export default App;
 | disabled       | 禁用所有功能               | boolean        | `false`      |
 | readonly       | 只读状态禁用输入框操作行为 | boolean        | `false`      |
 | isAsync       | 支持异步修改 | boolean        | `false`      |
+| formatter`v1.4.14`       | 指定输入框展示值的格式 | function(value: number | string): string        | -     |
 
 ### Events
 
