@@ -1,4 +1,11 @@
 const path = require('path')
+
+let fileStr = `styles/variables.scss`
+const projectID = process.env.VITE_APP_PROJECT_ID
+if (projectID) {
+  fileStr = `styles/variables-${projectID}.scss`
+}
+
 const config = {
   projectName: 'first',
   date: '2022-7-11',
@@ -23,7 +30,7 @@ const config = {
     '@': path.resolve(__dirname, '../../../../src'),
   },
   sass: {
-    resource: path.resolve(__dirname, '../../../', 'styles/variables.scss'),
+    resource: path.resolve(__dirname, '../../../', fileStr),
   },
   defineConstants: {},
   copy: {

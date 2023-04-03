@@ -5,6 +5,12 @@ const fsExtra = require('fs-extra')
 const config = require('../../src/config.json')
 const navs = config.nav
 
+let fileStr = `@import '../../../styles/font/iconfont.css';\n`
+const projectID = process.env.VITE_APP_PROJECT_ID
+if (projectID) {
+  fileStr = `@import '../../../styles/font-${projectID}/iconfont.css';\n`
+}
+
 // 在mobile-taro下创建相应的文件夹，并创建index.config.ts、index.tsx
 // 将packages下的demo.taro.tsx 的内容拷贝到 mobile-taro 下的 index.tsx 中。
 const createIndexConfig = (enName, package) => {
@@ -68,12 +74,33 @@ const createIndexConfig = (enName, package) => {
     }
   })
 }
+
+const replaceAppSCSS = () => {
+  const dirPath = path.join(__dirname, `../../src/sites/mobile-taro/src`)
+  const filePath = path.join(dirPath, `app.scss`)
+  fse.readFile(filePath, (err, data) => {
+    if (!err) {
+      let fileString = data.toString()
+      const lines = fileString.split('\n')
+      if (lines[0].indexOf(`@import '../../../styles/font`) !== -1) {
+        lines[0] = ''
+      }
+      fileString = fileStr + lines.join('\n')
+      fsExtra.outputFile(filePath, fileString, 'utf8', (error) => {
+        if (error) console.log('Error', error)
+        // console.log(`文件写入成功`)
+      })
+    }
+  })
+}
+
 function create() {
   navs.map((nav) => {
     nav.packages.map((package) => {
       return createIndexConfig(nav.enName, package)
     })
   })
+  replaceAppSCSS()
 }
 
 create()

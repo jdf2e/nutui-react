@@ -106,7 +106,7 @@ const CountDownDemo = () => {
     justifyContent: 'center',
     width: '20px',
     height: '25px',
-    background: '#e8220e',
+    background: 'var(--nutui-brand-color)',
     color: '#fff',
     fontSize: '14px',
     borderRadius: '6px',
@@ -165,7 +165,6 @@ const CountDownDemo = () => {
             onEnd={onEnd}
           />
         </Cell>
-
         <h2>{translated.format}</h2>
         <Cell>
           <CountDown

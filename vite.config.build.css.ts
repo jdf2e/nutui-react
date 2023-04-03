@@ -5,6 +5,8 @@ const path = require('path')
 const atImport = require('postcss-import')
 const config = require('./package.json')
 
+const projectID = process.env.VITE_APP_PROJECT_ID
+
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
 * (c) 2023 @jdf2e.
@@ -23,7 +25,9 @@ export default defineConfig({
         charset: false,
         // example : additionalData: `@import "./src/design/styles/variables";`
         // dont need include file extend .scss
-        additionalData: `@import "@/styles/variables.scss";`,
+        additionalData: `@import "@/styles/variables${
+          projectID ? `-${projectID}` : ''
+        }.scss";`,
       },
       postcss: {
         plugins: [atImport({ path: path.join(__dirname, 'src`') })],
