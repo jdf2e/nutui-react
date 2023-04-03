@@ -77,6 +77,7 @@ export const GridItem: FunctionComponent<
     direction,
     iconClassPrefix,
     iconFontClassName,
+    className,
     onClick,
     ...rest
   } = {
@@ -84,6 +85,7 @@ export const GridItem: FunctionComponent<
     ...props,
   }
   const b = bem('grid-item')
+  const classes = classNames(b(), className)
   const context = useContext(GridContext)
   const pxCheck = (value: string | number): string => {
     return Number.isNaN(Number(value)) ? String(value) : `${value}px`
@@ -148,7 +150,12 @@ export const GridItem: FunctionComponent<
   }
 
   return (
-    <div className={b()} style={rootStyle()} {...rest} onClick={handleClick}>
+    <div
+      className={classes}
+      style={rootStyle()}
+      {...rest}
+      onClick={handleClick}
+    >
       <div className={contentClass()}>
         {icon && isIconName() ? (
           <Icon
