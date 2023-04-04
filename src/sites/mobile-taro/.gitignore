@@ -12,3 +12,4 @@ src/feedback/
 src/layout/
 src/nav/
 src/app.config.ts
+src/app.scss

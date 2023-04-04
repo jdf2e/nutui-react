@@ -85,6 +85,13 @@ const App = () => {
           defaultValue={state.tel}
           type="tel"
         />
+        <Input
+          name="nickname"
+          label="昵称"
+          placeholder="昵称（仅支持小程序）"
+          type="nickname"
+          onChange={(val) => console.log('onChange', val)}
+        />
     </>
   )
 }

@@ -62,7 +62,8 @@ const TextAreaDemo = () => {
   const [value3] = useState('')
 
   const customTheme = {
-    nutuiTextareaLimitColor: `#fa2c19`,
+    nutuiTextareaTextCurrorColor: `var(--nutui-brand-color)`,
+    nutuiTextareaLimitColor: `var(--nutui-brand-color)`,
   }
 
   useEffect(() => {

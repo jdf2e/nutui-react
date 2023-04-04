@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
 import { View, ITouchEvent } from '@tarojs/components'
+import bem from '@/utils/bem'
 
 export interface OverlayProps {
   zIndex: number

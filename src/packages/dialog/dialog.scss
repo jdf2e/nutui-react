@@ -13,7 +13,7 @@
   &__header {
     display: block;
     text-align: center;
-    height: $dialog-header-height;
+    // height: $dialog-header-height;
     font-size: $font-size-3;
     color: $title-color;
     @include oneline-ellipsis();

@@ -44,7 +44,7 @@ test('should fireEvent correctly', () => {
     <CheckboxGroup
       data-testid="group"
       className="test"
-      checkedValue={['1']}
+      defaultValue={['1']}
       onChange={handleChange}
     >
       <Checkbox checked={false} label="1">
@@ -72,7 +72,7 @@ test('should fireEvent correctly', () => {
 
 test('Render checkboxs by configuring options', () => {
   const CheckboxGroupOptions = () => {
-    const [checkedValue] = useState(['1'])
+    const [defaultValue] = useState(['1'])
     const [optionsDemo1, setOptionsDemo1] = useState([
       {
         label: '选项一',
@@ -91,7 +91,7 @@ test('Render checkboxs by configuring options', () => {
     return (
       <>
         <CheckboxGroup
-          checkedValue={checkedValue}
+          defaultValue={defaultValue}
           options={optionsDemo1}
         ></CheckboxGroup>
       </>

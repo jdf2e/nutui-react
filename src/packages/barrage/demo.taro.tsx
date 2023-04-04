@@ -91,7 +91,7 @@ const BarrageDemo = () => {
           />
         </Cell>
         <div className="test" style={{ textAlign: 'center' }}>
-          <Button type="danger" onClick={addBarrage}>
+          <Button type="primary" onClick={addBarrage}>
             {translated['3d9b2794']}
           </Button>
         </div>
