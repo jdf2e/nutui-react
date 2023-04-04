@@ -1,17 +1,8 @@
 {
   "name": "@nutui/nutui-react-taro",
   "version": "1.4.13",
-  "style": "dist/style.css",
-  "main": "dist/nutui.react.umd.js",
-  "module": "dist/esm/nutui-react.es.js",
-  "typings": "dist/types/index.d.ts",
-  "sideEffects": [
-    "*.scss",
-    "dist/esm/**/style/*",
-    "dist/style.css",
-    "dist/styles/font/*"
-  ],
   "description": "京东风格的轻量级移动端 React 组件库，支持一套代码生成 H5 和小程序",
+  "title": "NutUI-React",
   "keywords": [
     "nutui",
     "nutui2",
@@ -25,15 +16,17 @@
     "jdcfe",
     "taro"
   ],
-  "author": "jdcfe",
+  "homepage": "https://nutui.jd.com/react",
+  "bugs": {
+    "url": "https://github.com/jdf2e/nutui-react/issues"
+  },
   "license": "MIT",
+  "contributors": [
+    "jdcfe"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/jdf2e/nutui-react.git"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
   },
   "files": [
     "dist",
@@ -41,6 +34,16 @@
     "package.json",
     "LICENSE",
     "CHANGELOG.md"
+  ],
+  "main": "dist/nutui.react.umd.js",
+  "module": "dist/esm/nutui-react.es.js",
+  "typings": "dist/types/index.d.ts",
+  "style": "dist/style.css",
+  "sideEffects": [
+    "*.scss",
+    "dist/esm/**/style/*",
+    "dist/style.css",
+    "dist/styles/font/*"
   ],
   "scripts": {
     "add": "node scripts/createComponentMode.js",
@@ -191,5 +194,9 @@
   "resolutions": {
     "@types/react": "18",
     "@types/react-dom": "18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
