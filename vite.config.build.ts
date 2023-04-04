@@ -12,6 +12,12 @@ const banner = `/*!
 */`
 
 const { resolve } = path
+
+let fileStr = `@import "@/styles/variables.scss";`
+const projectID = process.env.VITE_APP_PROJECT_ID
+if (projectID) {
+  fileStr = `@import '@/styles/variables-${projectID}.scss';`
+}
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
@@ -23,7 +29,7 @@ export default defineConfig({
         charset: false,
         // example : additionalData: `@import "./src/design/styles/variables";`
         // dont need include file extend .scss
-        additionalData: `@import "@/styles/variables.scss";`,
+        additionalData: fileStr,
       },
       postcss: {
         plugins: [

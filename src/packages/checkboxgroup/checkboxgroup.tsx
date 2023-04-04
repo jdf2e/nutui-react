@@ -1,19 +1,17 @@
-import React, {
-  useCallback,
-  useEffect,
-  useImperativeHandle,
-  useState,
-} from 'react'
+import React, { useCallback, useImperativeHandle } from 'react'
 import bem from '@/utils/bem'
 import { RadioGroupOptionType } from '@/packages/radiogroup/type'
 import { Checkbox } from '../checkbox/checkbox'
 import Context from './context'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export type CheckboxTextPosition = 'left' | 'right'
 export type CheckboxDirection = 'horizontal' | 'vertical'
+
 export interface CheckboxGroupProps {
   disabled: boolean
-  checkedValue: string[]
+  value?: string[]
+  defaultValue?: string[]
   max: number | undefined
   textPosition: CheckboxTextPosition
   direction: CheckboxDirection
@@ -23,7 +21,6 @@ export interface CheckboxGroupProps {
 
 const defaultProps = {
   disabled: false,
-  checkedValue: [],
   max: undefined,
   textPosition: 'right',
   direction: 'vertical',
@@ -43,7 +40,8 @@ export const CheckboxGroup = React.forwardRef(
       className,
       disabled,
       onChange,
-      checkedValue,
+      value,
+      defaultValue,
       max,
       textPosition,
       direction,
@@ -54,14 +52,14 @@ export const CheckboxGroup = React.forwardRef(
     useImperativeHandle<any, any>(ref, () => ({
       toggleAll(state: boolean) {
         if (state === false) {
-          setInnerValue([])
+          setValue([])
         } else {
           const childrenLabel: string[] = []
           React.Children.map(children, (child) => {
             const childProps = (child as any).props
             childrenLabel.push(childProps.label || (child as any).children)
           })
-          setInnerValue(childrenLabel)
+          setValue(childrenLabel)
         }
       },
       toggleReverse() {
@@ -71,16 +69,18 @@ export const CheckboxGroup = React.forwardRef(
           childrenLabel.push(childProps.label || (child as any).children)
         })
         const reverse: string[] = childrenLabel.filter(
-          (c) => innerValue?.findIndex((v) => v === c) === -1
+          (c) => _value?.findIndex((v) => v === c) === -1
         )
-        setInnerValue(reverse)
+        setValue(reverse)
       },
     }))
 
-    const [innerValue, setInnerValue] = useState(checkedValue || [])
-    useEffect(() => {
-      setInnerValue(checkedValue || [])
-    }, [checkedValue])
+    const [_value, setValue] = usePropsValue<string[]>({
+      value: props.value,
+      defaultValue: props.defaultValue,
+      finalValue: [] as string[],
+      onChange,
+    })
 
     const renderOptions = useCallback(() => {
       return options?.map(({ label, value, disabled, onChange, ...rest }) => {
@@ -101,15 +101,15 @@ export const CheckboxGroup = React.forwardRef(
           textPosition: textPosition || 'left',
           disabled,
           max,
-          checkedValue: innerValue || [],
+          checkedValue: _value,
           check: (value: string) => {
-            const combined = [...innerValue, value]
-            setInnerValue(combined)
+            const combined: string[] = [..._value, value]
+            setValue(combined)
             onChange && onChange(combined)
           },
           uncheck: (value: string) => {
-            const reduced = innerValue.filter((item) => item !== value)
-            setInnerValue(reduced)
+            const reduced = _value.filter((item) => item !== value)
+            setValue(reduced)
             onChange && onChange(reduced)
           },
         }}

@@ -100,7 +100,10 @@ const AvatarDemo = () => {
             bgColor="#FA2C19"
             icon={<My />}
           />
-          <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
+          <Avatar
+            color="var(--nutui-brand-color)"
+            bgColor="var(--nutui-brand-color-opacity)"
+          >
             U
           </Avatar>
         </Cell>

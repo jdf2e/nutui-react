@@ -271,7 +271,7 @@ export const Input: FunctionComponent<
     if (maxlength && val.length > Number(maxlength)) {
       val = val.slice(0, Number(maxlength))
     }
-    updateValue(getModelValue(), 'onBlur')
+    updateValue(val, 'onBlur')
     onBlur && onBlur(val, event)
   }
 
@@ -462,7 +462,9 @@ export const Input: FunctionComponent<
               >
                 {errorMessage}
               </div>
-            ) : null}
+            ) : (
+              <div />
+            )}
           </div>
         </>
       )}

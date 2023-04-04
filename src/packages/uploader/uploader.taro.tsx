@@ -27,7 +27,7 @@ import Progress from '@/packages/progress/index.taro'
 import { UploaderTaro, UploadOptions } from './upload'
 import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { funcInterceptor } from '@/utils/Interceptor'
+import { funcInterceptor } from '@/utils/interceptor'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 

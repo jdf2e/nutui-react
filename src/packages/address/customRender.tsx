@@ -368,7 +368,7 @@ export const CustomRender: FunctionComponent<
                           .id === (item as RegionData).id && (
                           <Check
                             className={b('region-item--icon')}
-                            color="#FA2C19"
+                            color="var(--nutui-brand-color)"
                             width={13}
                             height={13}
                           />

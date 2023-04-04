@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { Cell, ImagePreview } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface T {
   basic: string
@@ -10,6 +10,7 @@ interface T {
   withInitNo: string
   withPagination: string
   withVideos: string
+  thumb: string
 }
 
 const images = [
@@ -35,6 +36,7 @@ const ImagePreviewDemo = () => {
       withInitNo: '设置初始页码',
       withPagination: '设置轮播指示器及颜色',
       withVideos: '视频、图片预览',
+      thumb: '点击缩略图切换',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -42,6 +44,7 @@ const ImagePreviewDemo = () => {
       withInitNo: 'With Init No',
       withPagination: 'With Pagination',
       withVideos: 'With Videos',
+      thumb: 'Click image to switch',
     },
   })
 
@@ -73,6 +76,7 @@ const ImagePreviewDemo = () => {
     setShowPreview3(false)
   }
 
+  const [init, setInit] = useState<any>(0)
   return (
     <>
       <Header />
