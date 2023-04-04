@@ -254,12 +254,12 @@ $cell-title-description-font: var(
   --nutui-cell-title-description-font,
   $font-size-1
 ) !default;
-$cell-description-font: var(
-  --nutui-cell-description-font,
-  $font-size-2
+$cell-extra-font: var(--nutui-cell-description-font, $font-size-2) !default;
+$cell-extra-color: var(--nutui-cell-description-color, $gray2) !default;
+$cell-title-description-color: var(
+  --nutui-cell-subtitle-color,
+  $gray2
 ) !default;
-$cell-description-color: var(--nutui-cell-description-color, $gray2) !default;
-$cell-subtitle-color: var(--nutui-cell-subtitle-color, $gray2) !default;
 $cell-border-radius: var(--nutui-cell-border-radius, 6px) !default;
 $cell-padding: var(--nutui-cell-padding, 13px 16px) !default;
 $cell-line-height: var(--nutui-cell-line-height, 20px) !default;
@@ -268,19 +268,6 @@ $cell-after-border-bottom: var(
   --nutui-cell-after-border-bottom,
   2px solid #f5f6f7
 ) !default;
-$cell-default-icon-margin: var(
-  --nutui-cell-default-icon-margin,
-  0 4px 0 0px
-) !default;
-$cell-large-title-font: var(
-  --nutui-cell-large-title-font,
-  $font-size-large
-) !default;
-$cell-large-title-description-font: var(
-  --nutui-cell-large-title-description-font,
-  $font-size-base
-) !default;
-$cell-large-padding: var(--nutui-cell-large-padding, 15px 16px) !default;
 $cell-background: var(--nutui-cell-background, $gray6) !default;
 $cell-box-shaow: var(
   --nutui-cell-box-shaow,

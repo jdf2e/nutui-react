@@ -1,41 +1,28 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import { Right } from '@nutui/icons-react'
 import bem from '@/utils/bem'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface CellProps extends BasicComponent {
   title: ReactNode
-  subTitle: ReactNode
-  description: string
-  descriptionTextAlign: string
-  isLink: boolean
-  icon: ReactNode
-  roundRadius: string | number
-  url: string
-  replace: boolean
-  center: boolean
-  size: string
+  description: ReactNode
+  extra: ReactNode
+  radius: string | number
+
+  align: string
   className: string
-  linkSlot: ReactNode
+  style: React.CSSProperties
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
   title: null,
-  subTitle: null,
-  description: '',
-  descriptionTextAlign: 'right',
-  isLink: false,
-  icon: null,
-  roundRadius: '6px',
-  url: '',
-  to: '',
-  replace: false,
-  center: false,
-  size: '',
+  description: null,
+  extra: null,
+  radius: '6px',
+  align: 'flex-start',
   className: '',
-  linkSlot: null,
+  style: {},
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
 
@@ -46,18 +33,12 @@ export const Cell: FunctionComponent<
     children,
     onClick,
     title,
-    subTitle,
     description,
-    descriptionTextAlign,
-    isLink,
-    icon,
-    roundRadius,
-    url,
-    replace,
-    center,
-    size,
+    extra,
+    radius,
+    align,
     className,
-    linkSlot,
+    style,
     ...rest
   } = {
     ...defaultProps,
@@ -66,56 +47,42 @@ export const Cell: FunctionComponent<
   const b = bem('cell')
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onClick(event)
-    if (url) {
-      replace ? window.location.replace(url) : (window.location.href = url)
-    }
   }
 
   const baseStyle = {
-    borderRadius: Number.isNaN(Number(roundRadius))
-      ? String(roundRadius)
-      : `${roundRadius}px`,
+    ...style,
+    borderRadius: Number.isNaN(Number(radius)) ? String(radius) : `${radius}px`,
+    alignItems: align,
   }
 
   const styles =
-    title || subTitle || icon
-      ? { textAlign: descriptionTextAlign }
+    title || description
+      ? {}
       : {
-          textAlign: descriptionTextAlign,
           flex: 1,
         }
   return (
     <div
-      className={`${b(
-        { clickable: !!isLink, center, large: size === 'large' },
-        [className]
-      )} `}
+      className={`${b({}, [className])} `}
       onClick={(event) => handleClick(event)}
       style={baseStyle}
       {...rest}
     >
       {children || (
         <>
-          {icon && <div className={b('icon')}>{icon}</div>}
-          {title || subTitle ? (
+          {title || description ? (
             <div className={`${b('title')}`}>
               {title ? <div className={b('maintitle')}>{title}</div> : null}
-              {subTitle ? (
-                <div className={b('subtitle')}>{subTitle}</div>
+              {description ? (
+                <div className={b('subtitle')}>{description}</div>
               ) : null}
             </div>
           ) : null}
-          {description ? (
-            <div
-              className={b('value', {
-                alone: !title && !subTitle,
-              })}
-              style={styles as React.CSSProperties}
-            >
-              {description}
+          {extra ? (
+            <div className={b('extra')} style={styles as React.CSSProperties}>
+              {extra}
             </div>
           ) : null}
-          {!linkSlot && isLink ? <Right className={b('link')} /> : linkSlot}
         </>
       )}
     </div>

@@ -51,7 +51,6 @@ const ToastDemo = () => {
         <h2>基础用法</h2>
         <Cell
           title="Text文字提示"
-          isLink
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
@@ -63,7 +62,6 @@ const ToastDemo = () => {
         <h2>成功提示</h2>
         <Cell
           title="Success 成功提示"
-          isLink
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
@@ -75,7 +73,6 @@ const ToastDemo = () => {
         <h2>失败提示</h2>
         <Cell
           title="Error 失败提示"
-          isLink
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
@@ -87,7 +84,6 @@ const ToastDemo = () => {
         <h2>警告提示</h2>
         <Cell
           title=" Warning 警告提示"
-          isLink
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
@@ -99,7 +95,6 @@ const ToastDemo = () => {
         <h2>加载提示</h2>
         <Cell
           title=" Loading 加载提示"
-          isLink
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
@@ -111,7 +106,6 @@ const ToastDemo = () => {
         <h2>展示时长设置</h2>
         <Cell
           title="设置展示时长为10秒提示"
-          isLink
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
@@ -121,7 +115,6 @@ const ToastDemo = () => {
         />
         <Cell
           title="关闭正在显示的toast"
-          isLink
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
@@ -131,7 +124,6 @@ const ToastDemo = () => {
         <h2>自定义icon图标</h2>
         <Cell
           title="传入icon组件中的'JD'图标"
-          isLink
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {

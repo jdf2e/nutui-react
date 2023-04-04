@@ -29,7 +29,7 @@ const App = () => {
         </Button>
       }
     >
-      <Cell title="左滑删除" roundRadius={0} />
+      <Cell title="左滑删除" radius={0} />
     </Swipe>
   </>
 }
@@ -57,7 +57,7 @@ const App = () => {
         </Button>
       }
     >
-      <Cell title='點擊下方按鈕打開或關閉' roundRadius={0} />
+      <Cell title='點擊下方按鈕打開或關閉' radius={0} />
     </Swipe>
     <Button onClick={() => openRef.current?.open()}>
       打開
@@ -92,7 +92,7 @@ const App = () => {
         closeRef.current.close()
       }}
     >
-      <Cell title='點擊右側按鈕關閉' roundRadius={0} />
+      <Cell title='點擊右側按鈕關閉' radius={0} />
     </Swipe>
   </>
 }
@@ -117,7 +117,7 @@ const App = () => {
       }
       disabled
     >
-      <Cell title="禁用滑动" roundRadius={0} />
+      <Cell title="禁用滑动" radius={0} />
     </Swipe>
   </>
 }

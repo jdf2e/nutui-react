@@ -1,16 +1,8 @@
-@import '../icon/icon';
-
 .nut-theme-dark {
   .nut-cell {
     background: $dark5;
     color: $dark1;
     box-shadow: none;
-
-    &__value {
-      &--alone {
-        color: $cell-description-color;
-      }
-    }
   }
 }
 
@@ -34,19 +26,6 @@
     }
   }
 
-  &--center {
-    align-items: center;
-  }
-
-  &--large {
-    font-size: $cell-large-title-font;
-    padding: $cell-large-padding;
-
-    .nut-cell__subtitle {
-      font-size: $cell-large-title-description-font;
-    }
-  }
-
   &::after {
     position: absolute;
     box-sizing: border-box;
@@ -58,37 +37,6 @@
     transform: scaleY(0.5);
   }
 
-  &:active::before {
-    opacity: 0.1;
-  }
-
-  &--clickable {
-    cursor: pointer;
-
-    &::before {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      background-color: $black;
-      border: inherit;
-      border-color: $black;
-      border-radius: inherit;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      content: ' ';
-    }
-  }
-
-  &__icon {
-    display: flex;
-    flex-direction: row;
-    margin: $cell-default-icon-margin;
-    align-items: center;
-    justify-content: center;
-  }
-
   &__title {
     display: flex;
     flex-direction: column;
@@ -97,24 +45,17 @@
 
   &__subtitle {
     font-size: $cell-title-description-font;
-    color: $cell-subtitle-color;
+    color: $cell-title-description-color;
   }
 
-  &__value {
-    display: inline-block;
-    text-align: right;
+  &__extra {
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
     flex: 1;
-    word-wrap: break-word;
-    overflow: hidden;
-    font-size: $cell-description-font;
-    color: $cell-description-color;
-
-    &--alone {
-      color: $cell-color;
-    }
-  }
-
-  &__link {
-    color: #979797;
+    min-width: 0;
+    word-break: break-all;
+    font-size: $cell-extra-font;
+    color: $cell-extra-color;
   }
 }

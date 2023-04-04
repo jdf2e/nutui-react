@@ -36,7 +36,7 @@ exports[`prop icon 1`] = `
 </div>
 `;
 
-exports[`prop isLink 1`] = `
+exports[`prop  1`] = `
 <div>
   <div
     class="nut-cell nut-cell--clickable "
@@ -75,7 +75,7 @@ exports[`prop isLink 1`] = `
 </div>
 `;
 
-exports[`prop title description subtitle test 1`] = `
+exports[`prop title extra subtitle test 1`] = `
 <div>
   <div
     class="nut-cell "
@@ -121,7 +121,7 @@ exports[`slot default test 1`] = `
 </div>
 `;
 
-exports[`slot linkSlot 1`] = `
+exports[`slot extra 1`] = `
 <div>
   <div
     class="nut-cell "

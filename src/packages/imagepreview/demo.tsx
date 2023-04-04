@@ -109,7 +109,7 @@ const ImagePreviewDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <ImagePreview images={images} show={showPreview1} onClose={hideFn1} />
-        <Cell title={translated.showPreview} isLink onClick={showFn1} />
+        <Cell title={translated.showPreview} onClick={showFn1} />
         <h2>{translated.withInitNo}</h2>
         <ImagePreview
           images={images}
@@ -117,7 +117,7 @@ const ImagePreviewDemo = () => {
           initNo={3}
           onClose={hideFn2}
         />
-        <Cell title={translated.withInitNo} isLink onClick={showFn2} />
+        <Cell title={translated.withInitNo} onClick={showFn2} />
         <h2>{translated.withPagination}</h2>
         <ImagePreview
           images={images}
@@ -126,7 +126,7 @@ const ImagePreviewDemo = () => {
           paginationColor="red"
           onClose={hideFn3}
         />
-        <Cell title={translated.withPagination} isLink onClick={showFn3} />
+        <Cell title={translated.withPagination} onClick={showFn3} />
         <h2>{translated.withVideos}</h2>
         <ImagePreview
           images={images}
@@ -134,7 +134,7 @@ const ImagePreviewDemo = () => {
           show={showPreview4}
           onClose={hideFn4}
         />
-        <Cell title={translated.withVideos} isLink onClick={showFn4} />
+        <Cell title={translated.withVideos} onClick={showFn4} />
       </div>
     </>
   )

@@ -5,39 +5,30 @@ import bem from '@/utils/bem'
 export interface CellGroupProps {
   title: ReactNode
   description: ReactNode
-  titleSlot: ReactNode
-  descSlot: ReactNode
   className: string
+  style: React.CSSProperties
   children?: ReactNode
 }
 const defaultProps = {
   title: '',
   description: '',
   className: '',
-  titleSlot: null,
-  descSlot: null,
+  style: {},
 } as CellGroupProps
 export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
   props
 ) => {
-  const { children, className, title, description, titleSlot, descSlot } = {
+  const { children, className, style, title, description, ...rest } = {
     ...defaultProps,
     ...props,
   }
   const b = bem('cell-group')
   return (
-    <div className={b(null, [className])}>
-      {titleSlot || (
-        <>{title ? <div className={b('title')}>{title}</div> : null}</>
-      )}
-      {descSlot || (
-        <>
-          {description ? (
-            <div className={b('description')}>{description}</div>
-          ) : null}
-        </>
-      )}
-
+    <div className={b(null, [className])} {...rest}>
+      {title ? <div className={b('title')}>{title}</div> : null}
+      {description ? (
+        <div className={b('description')}>{description}</div>
+      ) : null}
       <div className={b('wrap')}>{children}</div>
     </div>
   )

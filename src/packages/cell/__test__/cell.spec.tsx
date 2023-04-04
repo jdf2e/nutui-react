@@ -4,14 +4,14 @@ import '@testing-library/jest-dom'
 import { Cell } from '../cell'
 import { Switch } from '../../switch/switch'
 
-test('prop title description subtitle test', () => {
+test('prop title extra subtitle test', () => {
   const { getByTestId, container } = render(
     <>
       <Cell
         data-testid="prop"
         title="我是标题"
-        subTitle="副标题描述"
-        description="描述文字"
+        description="副标题描述"
+        extra="描述文字"
       />
     </>
   )
@@ -27,24 +27,9 @@ test('prop title description subtitle test', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('prop description-text-align left', () => {
+test('prop ', () => {
   const { container } = render(
-    <Cell data-testid="prop" descriptionTextAlign="left" description="张三" />
-  )
-  expect(container.querySelector('.nut-cell__value')).toHaveAttribute(
-    'style',
-    'text-align: left; flex: 1;'
-  )
-})
-
-test('prop isLink', () => {
-  const { container } = render(
-    <Cell
-      title="URL 跳转"
-      description="https://m.jd.com/"
-      isLink
-      url="https://m.jd.com/"
-    />
+    <Cell title="URL 跳转" extra="https://m.jd.com/" />
   )
   expect(container.querySelector('.nut-cell__link')).toBeInTheDocument()
   expect(container).toMatchSnapshot()
@@ -61,7 +46,7 @@ test('emit click event', () => {
 
 test('slot default test', () => {
   const { container } = render(
-    <Cell title="我是标题" description="描述文字">
+    <Cell title="我是标题" extra="描述文字">
       <div>自定义内容</div>
     </Cell>
   )
@@ -69,18 +54,16 @@ test('slot default test', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('slot linkSlot', () => {
+test('slot extra', () => {
   const { container } = render(
-    <Cell title="Switch" linkSlot={<Switch checked />} />
+    <Cell title="Switch" extra={<Switch checked />} />
   )
   expect(container.querySelector('.nut-switch')).toBeInTheDocument()
   expect(container).toMatchSnapshot()
 })
 
 test('prop icon', () => {
-  const { container } = render(
-    <Cell title="姓名" icon="my" description="张三" isLink />
-  )
+  const { container } = render(<Cell title="姓名" extra="张三" />)
   expect(container.querySelector('.nut-icon-my')).toBeInTheDocument()
   expect(container).toMatchSnapshot()
 })
