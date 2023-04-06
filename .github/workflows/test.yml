@@ -3,11 +3,11 @@ name: CI
 on:
   push:
     branches:
-      - next
+      - vitest
 
   pull_request:
     branches:
-      - next
+      - vitest
 
   workflow_dispatch:
 
@@ -15,11 +15,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: pnpm/action-setup@v2
+    - uses: actions/checkout@v2
 
-    - name: Use Node.js 16
-      uses: actions/setup-node@v3
+    - name: Install pnpm
+      run: corepack enable
+
+    - uses: actions/setup-node@v2
       with:
         node-version: '16'
         cache: 'pnpm'
@@ -33,11 +34,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: pnpm/action-setup@v2
+    - uses: actions/checkout@v2
 
-    - name: Use Node.js 16
-      uses: actions/setup-node@v3
+    - name: Install pnpm
+      run: corepack enable
+
+    - uses: actions/setup-node@v2
       with:
         node-version: '16'
         cache: 'pnpm'
@@ -49,10 +51,7 @@ jobs:
       run: npm run build
 
     - name: Build nutui-taro
-      run: npm run build:taro
-    
-    - name: Build nutui-taro
-      run: npm run build:site
+      run: npm run build:taro:vue
 
     - name: Build nutui demo
-      run: npm run build:taro:site
+      run: npm run build:site
