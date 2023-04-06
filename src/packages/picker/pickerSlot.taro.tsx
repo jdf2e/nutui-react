@@ -285,8 +285,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
                   transform: `rotate3d(1, 0, 0, ${
                     -rotation * (index + 1)
                   }deg) translate3d(0px, 0px, 104px)`,
-                  height: `36px`,
-                  lineHeight: `36px`,
+                  height: `${lineSpacing.current}px`,
+                  lineHeight: `${lineSpacing.current}px`,
                 }}
                 key={item.value ? item.value : index}
               >
