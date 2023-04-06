@@ -83,11 +83,11 @@ const DatePickerDemo = () => {
     },
   })
 
-  const minDate = new Date(2020, 0, 1)
-  const maxDate = new Date(2025, 10, 1)
+  const minDate = new Date(2023, 0, 1)
+  const maxDate = new Date(2125, 10, 1)
   const [desc1, setDesc1] = useState('2012年 01月 01日')
   const [desc2, setDesc2] = useState('05-10')
-  const [desc3, setDesc3] = useState('2022-05-10 10:10')
+  const [desc3, setDesc3] = useState('2023-05-10 10:10')
   const [desc4, setDesc4] = useState('10:10:00')
   const [desc5, setDesc5] = useState('2020年 05月 10日 10:10')
   const [desc6, setDesc6] = useState('10:10:00')

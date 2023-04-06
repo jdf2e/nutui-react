@@ -31,7 +31,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   } = props
 
   const touch = useTouch()
-
   const DEFAULT_DURATION = 200
   // 触发惯性滑动条件:
   // 在手指离开屏幕时，如果和上一次 move 时的间隔小于 `MOMENTUM_TIME` 且 move
@@ -46,7 +45,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const moving = useRef(false)
   let timer: number | undefined
 
-  const listRef = useRef<any>(null)
   const rollerRef = useRef<any>(null)
   const pickerSlotRef = useRef<any>(null)
 

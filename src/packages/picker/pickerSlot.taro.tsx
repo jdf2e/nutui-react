@@ -5,8 +5,6 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
-import Taro from '@tarojs/taro'
-import { PickerView, PickerViewColumn, View } from '@tarojs/components'
 import { PickerOption } from './picker.taro'
 import { useTouch } from '../../utils/useTouch'
 import { getRectByTaro } from '@/utils/useClientRect'
@@ -45,7 +43,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const INERTIA_TIME = 300
   const INERTIA_DISTANCE = 15
   const [currIndex, setCurrIndex] = useState(1)
-  // let lineSpacing = 36
   const lineSpacing = useRef(36)
 
   const [touchTime, setTouchTime] = useState(0)
@@ -54,7 +51,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const moving = useRef(false)
   let timer: number | undefined
 
-  const listbox = useRef<any>(null)
+  const listRef = useRef<any>(null)
   const rollerRef = useRef<any>(null)
   const pickerSlotRef = useRef<any>(null)
 
@@ -81,10 +78,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     if (type !== 'end') {
       nTime = 0
     }
-
     setTouchTime(nTime)
     setTouchDeg(deg)
-
     setScrollDistance(translateY)
   }
 
@@ -107,7 +102,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
       }deg`
 
       setTransform(endMove, type, time, deg)
-
       setCurrIndex(Math.abs(Math.round(endMove / lineSpacing.current)) + 1)
     } else {
       let deg = 0
@@ -116,7 +110,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
       // picker 滚动的最大角度
       const maxDeg = (listData.length + 1) * rotation
       const minDeg = 0
-
       deg = Math.min(Math.max(currentDeg, minDeg), maxDeg)
 
       if (minDeg < deg && deg < maxDeg) {
@@ -161,32 +154,9 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     } else {
       setMove(move, 'end')
     }
-
     setTimeout(() => {
       touch.reset()
     }, 0)
-  }
-
-  const pickerStart = () => {}
-
-  const pickerEnd = () => {}
-
-  const pickerChange = (data) => {
-    const prevDefaultValue = defaultIndexes.value
-    let changeIndex = 0
-    // 判断变化的是第几个
-    data.detail.value.forEach((col: number, index: number) => {
-      if (prevDefaultValue[index] != col) changeIndex = index
-    })
-
-    // 选择的是哪个 option
-    changeHandler(
-      changeIndex,
-      columnsList.value[changeIndex][data.detail.value[changeIndex]]
-    )
-    console.log('设置默认值')
-
-    defaultIndexes.value = defaultValuesConvert()
   }
 
   // 惯性滚动 距离
@@ -249,7 +219,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   }
 
   const getReference = async () => {
-    const refe = await getRectByTaro(listbox?.current)
+    const refe = await getRectByTaro(listRef?.current)
     lineSpacing.current = refe.height ? refe.height : 36
     modifyStatus(true)
   }
@@ -289,7 +259,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     moving: moving.current,
   }))
 
-  return Taro.getEnv() === 'WEB' ? (
+  return (
     <div
       className="nut-picker-list"
       ref={pickerSlotRef}
@@ -342,55 +312,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
           })}
       </div>
       <div className="nut-picker-mask" />
-      <div className="nut-picker-indicator" ref={listbox} />
+      <div className="nut-picker-indicator" ref={listRef} />
     </div>
-  ) : (
-    <PickerView
-      ref={pickerSlotRef}
-      onPickStart={pickerStart}
-      // onTouchMove={touchMove}
-      onChange={}
-      onPickEnd={pickerEnd}
-      indicatorStyle="height: 50px;"
-      style={{
-        height: `200px`,
-        width: '100%',
-      }}
-    >
-      <PickerViewColumn>
-        {threeDimensional &&
-          listData.map((item, index) => {
-            return (
-              <View
-                key={item.value ? item.value : index}
-                className="nut-picker-roller-item-title"
-                style={{
-                  height: `36px`,
-                  lineHeight: `36px`,
-                }}
-              >
-                <>{item.text ? item.text : item}</>
-              </View>
-            )
-          })}
-        {/* 平铺 */}
-        {!threeDimensional &&
-          listData.map((item, index) => {
-            return (
-              <View
-                key={item.value ? item.value : index}
-                className="nut-picker-roller-item-title"
-                style={{
-                  height: `${lineSpacing.current}px`,
-                  lineHeight: `${lineSpacing.current}px`,
-                }}
-              >
-                <>{item.text ? item.text : item}</>
-              </View>
-            )
-          })}
-      </PickerViewColumn>
-    </PickerView>
   )
 }
 const PickerSlot =
