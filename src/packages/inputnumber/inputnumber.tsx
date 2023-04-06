@@ -14,29 +14,20 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface InputNumberProps extends BasicComponent {
   disabled: boolean
-  buttonSize: string | number
   min: string | number
   max: string | number
-  inputWidth: string | number
   readonly: boolean
-  modelValue: string | number
+  value: string | number
+  defaultValue: string | number
+  allowEmpty: boolean
   step: string | number
-  decimalPlaces: string | number
-  isAsync: boolean
+  digits: string | number
+  async: boolean
   className: string
   style: React.CSSProperties
   formatter?: (displayValue: string | number) => string
-  add: (e: MouseEvent) => void
-  reduce: (e: MouseEvent) => void
-  overlimit: (e: MouseEvent) => void
-  blur: (e: ChangeEvent<HTMLInputElement>) => void
-  focus: (e: FocusEvent<HTMLInputElement>) => void
-  change: (
-    param: string | number,
-    e: MouseEvent | ChangeEvent<HTMLInputElement>
-  ) => void
-  onAdd: (e: MouseEvent) => void
-  onReduce: (e: MouseEvent) => void
+  onPlus: (e: MouseEvent) => void
+  onMinus: (e: MouseEvent) => void
   onOverlimit: (e: MouseEvent) => void
   onBlur: (e: ChangeEvent<HTMLInputElement>) => void
   onFocus: (e: FocusEvent<HTMLInputElement>) => void
@@ -49,20 +40,15 @@ export interface InputNumberProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   disabled: false,
-  buttonSize: '',
   min: 1,
   max: 9999,
-  inputWidth: '',
   readonly: false,
-  modelValue: 0,
+  allowEmpty: false,
+  defaultValue: 0,
   step: 1,
-  decimalPlaces: 0,
-  isAsync: false,
+  digits: 0,
+  async: false,
 } as InputNumberProps
-
-function pxCheck(value: string | number): string {
-  return Number.isNaN(Number(value)) ? String(value) : `${value}px`
-}
 
 export const InputNumber: FunctionComponent<
   Partial<InputNumberProps> &
@@ -71,26 +57,20 @@ export const InputNumber: FunctionComponent<
   const {
     children,
     disabled,
-    buttonSize,
     min,
     max,
-    inputWidth,
     readonly,
-    modelValue,
-    decimalPlaces,
+    value,
+    defaultValue,
+    allowEmpty,
+    digits,
     step,
-    isAsync,
+    async,
     className,
     style,
     formatter,
-    add,
-    reduce,
-    change,
-    overlimit,
-    blur,
-    focus,
-    onAdd,
-    onReduce,
+    onPlus,
+    onMinus,
     onOverlimit,
     onBlur,
     onFocus,
@@ -100,16 +80,16 @@ export const InputNumber: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const [inputValue, setInputValue] = useState(modelValue)
+  const [inputValue, setInputValue] = useState(defaultValue)
   const inputRef = useRef('')
   useEffect(() => {
     if (formatter) {
-      inputRef.current = formatter(modelValue)
-      setInputValue(formatter(modelValue))
+      inputRef.current = formatter(value || defaultValue)
+      setInputValue(formatter(value || defaultValue))
     } else {
-      setInputValue(modelValue)
+      setInputValue(value || defaultValue)
     }
-  }, [modelValue, formatter])
+  }, [value, formatter])
 
   const b = bem('inputnumber')
   const classes = classNames(
@@ -120,41 +100,36 @@ export const InputNumber: FunctionComponent<
     b('')
   )
   const styles = {
-    height: pxCheck(buttonSize),
     ...style,
   }
-  const addAllow = (value = inputValue) => {
+  const addAllow = (value = Number(inputValue)) => {
     if (formatter) {
       const numValue = String(value).replace(/[^0-9|\.]/gi, '')
       return Number(numValue) < Number(max) && !disabled
     }
-    if (value || typeof value === 'number') {
-      return value < Number(max) && !disabled
-    }
-    return false
+
+    return value < Number(max) && !disabled
   }
 
-  const reduceAllow = (value = inputValue) => {
+  const reduceAllow = (value = Number(inputValue)) => {
     if (formatter) {
       const numValue = String(value).replace(/[^0-9|\.]/gi, '')
       return Number(numValue) > Number(min) && !disabled
     }
-    if (value || typeof value === 'number') {
-      return value > Number(min) && !disabled
-    }
-    return false
+
+    return value > Number(min) && !disabled
   }
 
-  const iconMinusClasses = classNames('nut-inputnumber__icon', {
+  const iconMinusClasses = classNames('nut-inputnumber__icon icon-minus', {
     'nut-inputnumber__icon--disabled': !reduceAllow(),
   })
 
-  const iconAddClasses = classNames('nut-inputnumber__icon', {
+  const iconAddClasses = classNames('nut-inputnumber__icon icon-plus', {
     'nut-inputnumber__icon--disabled': !addAllow(),
   })
 
   const fixedDecimalPlaces = (v: string | number): string => {
-    return Number(v).toFixed(Number(decimalPlaces))
+    return Number(v).toFixed(Number(digits))
   }
 
   const emitChange = (
@@ -163,7 +138,7 @@ export const InputNumber: FunctionComponent<
   ) => {
     const outputValue: number | string = fixedDecimalPlaces(value)
     onChange && onChange(outputValue, e)
-    if (!isAsync) {
+    if (!async) {
       if (Number(outputValue) < Number(min)) {
         formatter
           ? setInputValue(formatter(Number(min)))
@@ -181,7 +156,7 @@ export const InputNumber: FunctionComponent<
   }
 
   const reduceNumber = (e: MouseEvent) => {
-    onReduce && onReduce(e)
+    onMinus && onMinus(e)
     if (reduceAllow()) {
       if (formatter) {
         const numValue = String(inputValue).replace(/[^0-9|\.]/gi, '')
@@ -198,7 +173,7 @@ export const InputNumber: FunctionComponent<
   }
 
   const addNumber = (e: MouseEvent) => {
-    onAdd && onAdd(e)
+    onPlus && onPlus(e)
     if (addAllow()) {
       if (formatter) {
         const numValue = String(inputValue).replace(/[^0-9|\.]/gi, '')
@@ -217,7 +192,7 @@ export const InputNumber: FunctionComponent<
   const changeValue = (e: ChangeEvent<HTMLInputElement>) => {
     const input = e.target as HTMLInputElement
     onChange && onChange(input.valueAsNumber, e)
-    if (!isAsync) {
+    if (!async) {
       if (Number.isNaN(input.valueAsNumber)) {
         setInputValue('')
       } else {
@@ -279,6 +254,9 @@ export const InputNumber: FunctionComponent<
     if (readonly) return
     const input = e.target as HTMLInputElement
     let value = input.valueAsNumber
+    if (Number.isNaN(value) && !allowEmpty) {
+      value = Number(defaultValue)
+    }
     if (value < Number(min)) {
       value = Number(min)
     } else if (value > Number(max)) {
@@ -293,8 +271,6 @@ export const InputNumber: FunctionComponent<
         <Minus
           className={iconMinusClasses}
           onClick={(e: any) => reduceNumber(e)}
-          width={buttonSize}
-          height={buttonSize}
         />
       </div>
       <>
@@ -303,7 +279,6 @@ export const InputNumber: FunctionComponent<
             type="text"
             min={min}
             max={max}
-            style={{ width: pxCheck(inputWidth) }}
             disabled={disabled}
             readOnly={readonly}
             value={inputValue}
@@ -316,7 +291,6 @@ export const InputNumber: FunctionComponent<
             type="number"
             min={min}
             max={max}
-            style={{ width: pxCheck(inputWidth) }}
             disabled={disabled}
             readOnly={readonly}
             value={inputValue}
@@ -327,12 +301,7 @@ export const InputNumber: FunctionComponent<
         )}
       </>
       <div className="nut-input-add">
-        <Plus
-          className={iconAddClasses}
-          onClick={(e: any) => addNumber(e)}
-          width={buttonSize}
-          height={buttonSize}
-        />
+        <Plus className={iconAddClasses} onClick={(e: any) => addNumber(e)} />
       </div>
     </div>
   )

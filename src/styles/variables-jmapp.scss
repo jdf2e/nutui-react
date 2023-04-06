@@ -504,10 +504,10 @@ $textarea-disabled-color: var(
 ) !default;
 
 // inputnumber（✅）
-$inputnumber-button-width: var(--nutui-inputnumber-button-width, 12px) !default;
+$inputnumber-button-width: var(--nutui-inputnumber-button-width, 20px) !default;
 $inputnumber-button-height: var(
   --nutui-inputnumber-button-height,
-  12px
+  20px
 ) !default;
 $inputnumber-button-border-radius: var(
   --nutui-inputnumber-button-border-radius,
@@ -527,7 +527,7 @@ $inputnumber-icon-void-color: var(
 ) !default;
 $inputnumber-icon-disabled-color: var(
   --nutui-inputnumber-icon-disabled-color,
-  $gray2
+  #cccccc
 ) !default;
 $inputnumber-icon-size: var(--nutui-inputnumber-icon-size, 20px) !default;
 $inputnumber-input-font-size: var(

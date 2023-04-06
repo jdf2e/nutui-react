@@ -280,8 +280,8 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-inputnumber-button-width`v1.4.8` | `12px` |
-| --nutui-inputnumber-button-height`v1.4.8` | `12px` |
+| --nutui-inputnumber-button-width`v1.4.8` | `20px` |
+| --nutui-inputnumber-button-height`v1.4.8` | `20px` |
 | --nutui-inputnumber-button-border-radius`v1.4.8` | `30px` |
 | --nutui-inputnumber-button-background-color`v1.4.8` | `$gray6` |
 | --nutui-inputnumber-icon-color | `$title-color` |
