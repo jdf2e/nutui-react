@@ -34,7 +34,15 @@ const App = () => {
       <Button type="primary" onClick={handleToggleShow}>
         顯示遮罩層
       </Button>
-      <Overlay visible={visible} onClick={onClose} />
+      <Overlay
+        visible={visible}
+        onClick={onClose}
+        zIndex={2020}
+        lockScroll
+        afterShow={() => {
+          console.log('afterShow')
+        }}
+      />
     </>
   )
 }
@@ -42,7 +50,108 @@ export default App;
 ```
 :::
 
-### 嵌套内容
+### 遮罩样式
+
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Button, Overlay } from '@nutui/nutui-react';
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  const handleToggleShow = () => {
+    setVisible(true)
+  }
+  const onClose = () => {
+    setVisible(false)
+  }
+  return (
+    <>
+      <Button type="primary" onClick={handleToggleShow}>
+        遮罩样式
+      </Button>
+      <Overlay
+        visible={visible}
+        onClick={onClose}
+        zIndex={2000}
+        style={{
+          backgroundColor: 'rgba(0, 0, 0, .2)',
+        }}
+      />
+    </>
+  )
+}
+export default App;
+```
+:::
+
+### 設置動畫時間
+
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Button, Overlay } from '@nutui/nutui-react';
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  const handleToggleShow = () => {
+    setVisible(true)
+  }
+  const onClose = () => {
+    setVisible(false)
+  }
+  return (
+    <>
+      <Button type="primary" onClick={handleToggleShow}>
+        設置動畫時間
+      </Button>
+      <Overlay
+        visible={visible}
+        onClick={onClose}
+        duration={2.5}
+        afterShow={() => {
+          console.log('afterShow')
+        }}
+        afterClose={() => {
+          console.log('afterClose')
+        }}
+      />
+    </>
+  )
+}
+export default App;
+```
+:::
+
+### 鎖定背景滾動
+
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Button, Overlay } from '@nutui/nutui-react';
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  const handleToggleShow = () => {
+    setVisible(true)
+  }
+  const onClose = () => {
+    setVisible(false)
+  }
+  return (
+    <>
+      <Button type="primary" onClick={handleToggleShow}>
+        鎖定背景滾動
+      </Button>
+      <Overlay visible={visible} onClick={onClose} lockScroll />
+    </>
+  )
+}
+export default App;
+```
+:::
+
+### 嵌套內容
 
 :::demo
 ```tsx
@@ -90,6 +199,38 @@ export default App;
 ```
 :::
 
+### 點擊遮罩不關閉
+
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Button, Overlay } from '@nutui/nutui-react';
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  const handleToggleShow = () => {
+    setVisible(true)
+  }
+  const onClose = () => {
+    setVisible(false)
+  }
+  return (
+    <>
+      <Button type="primary" onClick={handleToggleShow}>
+        點擊遮罩不關閉
+      </Button>
+      <Overlay visible={visible} lockScroll closeOnOverlayClick={false}>
+        <div className="wrapper">
+          <div className="content" onClick={onClose}>這裡是正文</div>
+        </div>
+      </Overlay>
+    </>
+  )
+}
+export default App;
+```
+:::
+
 ## API
 
 ### Props
@@ -99,16 +240,18 @@ export default App;
 | visible                   | 當前元件是否顯示 | boolean        | `false`  |
 | zIndex                | 遮罩層級         | number | `2000`   |
 | duration               | 動畫時長，單位秒 | number | `0.3`    |
-| overlayClass          | 自定義遮罩類名   | string         | -      |
-| overlayStyle          | 自定義遮罩樣式   | CSSProperties  | -      |
+| className          | 自定義遮罩類名   | string         | -      |
+| style          | 自定義遮罩樣式   | CSSProperties  | -      |
 | lockScroll          | 背景是否鎖定   | boolean  | `false`     |
-| closeOnClickOverlay | 是否點擊遮罩關閉 | boolean        | `true`   |
+| closeOnOverlayClick | 是否點擊遮罩關閉 | boolean        | `true`   |
 
 ### Events
 
 | 事件名 | 說明       | 回調參數     |
 | ------ | ---------- | ------------ |
 | onClick  | 點擊時觸發 | `event: Event` |
+| afterClose | 完全關閉後觸發 | () => void        | `-`   |
+| afterShow | 完全展示後觸發 | () => void        | `-`   |
 
 
 ## 主題定制

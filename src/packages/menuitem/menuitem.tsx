@@ -144,11 +144,11 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
         onClick={() => parent.toggleItemShow(orderKey)}
       />
       <Overlay
-        overlayClass="nut-menu__overlay"
+        className="nut-menu__overlay"
         style={getPosition()}
         lockScroll={parent.lockScroll}
         visible={_showPopup}
-        closeOnClickOverlay={parent.closeOnClickOverlay}
+        closeOnOverlayClick={parent.closeOnClickOverlay}
         onClick={() => {
           parent.closeOnClickOverlay && parent.toggleItemShow(orderKey)
         }}

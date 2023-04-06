@@ -24,7 +24,7 @@ test('prop close-on-click-overlay test', () => {
     <Overlay
       data-testid="overlay-closeFalsy"
       visible
-      closeOnClickOverlay={false}
+      closeOnOverlayClick={false}
       onClick={onClose}
     />
   )
@@ -38,7 +38,7 @@ test('event click test', () => {
     <Overlay
       data-testid="overlay-click"
       visible
-      closeOnClickOverlay
+      closeOnOverlayClick
       onClick={onClose}
     />
   )

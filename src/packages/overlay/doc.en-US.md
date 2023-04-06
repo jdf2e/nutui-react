@@ -34,7 +34,116 @@ const App = () => {
       <Button type="primary" onClick={handleToggleShow}>
         Displays the mask layer
       </Button>
-      <Overlay visible={visible} onClick={onClose} />
+      <Overlay
+        visible={visible}
+        onClick={onClose}
+        zIndex={2020}
+        lockScroll
+        afterShow={() => {
+          console.log('afterShow')
+        }}
+      />
+    </>
+  )
+}
+export default App;
+```
+:::
+
+### Mask style
+
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Button, Overlay } from '@nutui/nutui-react';
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  const handleToggleShow = () => {
+    setVisible(true)
+  }
+  const onClose = () => {
+    setVisible(false)
+  }
+  return (
+    <>
+      <Button type="primary" onClick={handleToggleShow}>
+        Mask style
+      </Button>
+      <Overlay
+        visible={visible}
+        onClick={onClose}
+        zIndex={2000}
+        style={{
+          backgroundColor: 'rgba(0, 0, 0, .2)',
+        }}
+      />
+    </>
+  )
+}
+export default App;
+```
+:::
+
+### Set animation time
+
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Button, Overlay } from '@nutui/nutui-react';
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  const handleToggleShow = () => {
+    setVisible(true)
+  }
+  const onClose = () => {
+    setVisible(false)
+  }
+  return (
+    <>
+      <Button type="primary" onClick={handleToggleShow}>
+        Set animation time
+      </Button>
+      <Overlay
+        visible={visible}
+        onClick={onClose}
+        duration={2.5}
+        afterShow={() => {
+          console.log('afterShow')
+        }}
+        afterClose={() => {
+          console.log('afterClose')
+        }}
+      />
+    </>
+  )
+}
+export default App;
+```
+:::
+
+### Lock background scrolling
+
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Button, Overlay } from '@nutui/nutui-react';
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  const handleToggleShow = () => {
+    setVisible(true)
+  }
+  const onClose = () => {
+    setVisible(false)
+  }
+  return (
+    <>
+      <Button type="primary" onClick={handleToggleShow}>
+        Lock background scrolling
+      </Button>
+      <Overlay visible={visible} onClick={onClose} lockScroll />
     </>
   )
 }
@@ -66,21 +175,53 @@ const ContentStyle = {
   color: 'red'
 }
 const App = () => {
-  const [visible2, setVisible2] = useState(false)
-  const handleToggleShow2 = () => {
-    setVisible2(true)
+  const [visible, setVisible] = useState(false)
+  const handleToggleShow = () => {
+    setVisible(true)
   }
-  const onClose2 = () => {
-    setVisible2(false)
+  const onClose = () => {
+    setVisible(false)
   }
   return (
     <>
-      <Button type="success" onClick={handleToggleShow2}>
+      <Button type="success" onClick={handleToggleShow}>
         Nested content
       </Button>
-      <Overlay visible={visible2} onClick={onClose2}>
+      <Overlay visible={visible} onClick={onClose}>
         <div className="wrapper" style={WrapperStyle}>
           <div className="content" style={ContentStyle}>Here is the main text</div>
+        </div>
+      </Overlay>
+    </>
+  )
+}
+export default App;
+```
+:::
+
+### Click the mask not to close
+
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Button, Overlay } from '@nutui/nutui-react';
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  const handleToggleShow = () => {
+    setVisible(true)
+  }
+  const onClose = () => {
+    setVisible(false)
+  }
+  return (
+    <>
+      <Button type="primary" onClick={handleToggleShow}>
+        Click the mask not to close
+      </Button>
+      <Overlay visible={visible} lockScroll closeOnOverlayClick={false}>
+        <div className="wrapper">
+          <div className="content" onClick={onClose}>here is the text</div>
         </div>
       </Overlay>
     </>
@@ -99,16 +240,18 @@ export default App;
 | visible                   | Whether the current component is displayed | boolean        | `false`  |
 | zIndex                | Mask hierarchy         | number | `2000`   |
 | duration               | Animation duration, in seconds | number | `0.3`    |
-| overlayClass          | Custom mask class name   | string         | -      |
-| overlayStyle          | Customize the mask style   | CSSProperties  | -      |
+| class          | Custom mask class name   | string         | -      |
+| style          | Customize the mask style   | CSSProperties  | -      |
 | lockScroll          | Whether the background is locked   | boolean  | `false`     |
-| closeOnClickOverlay | Tap Mask off | boolean        | `true`   |
+| closeOnOverlayClick | Tap Mask off | boolean        | `true`   |
 
 ### Events
 
 | Event | Description       | Callback parameters     |
 | ------ | ---------- | ------------ |
 | onClick  | Triggered when the button is clicked | `event: Event` |
+| afterClose | Triggered after complete shutdown | () => void        | `-`   |
+| afterShow | Trigger after complete display | () => void        | `-`   |
 
 
 ## Theming

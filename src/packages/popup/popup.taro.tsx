@@ -19,14 +19,15 @@ import {
 } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import bem from '@/utils/bem'
-import { ComponentDefaults, BasicComponent } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
-export interface PopupProps extends OverlayProps, BasicComponent {
+export interface PopupProps extends OverlayProps {
   position: string
   transition: string
-  style: React.CSSProperties
+  overlayStyle: React.CSSProperties
+  overlayClass: string
   popClass: string
   closeable: boolean
   closeIconPosition: string
@@ -47,7 +48,8 @@ const defaultProps = {
   ...ComponentDefaults,
   position: 'center',
   transition: '',
-  style: {},
+  overlayStyle: {},
+  overlayClass: '',
   popClass: '',
   closeable: false,
   closeIconPosition: 'top-right',
@@ -74,7 +76,7 @@ export const Popup: FunctionComponent<
     children,
     visible,
     overlay,
-    closeOnClickOverlay,
+    closeOnOverlayClick,
     overlayStyle,
     overlayClass,
     zIndex,
@@ -161,7 +163,7 @@ export const Popup: FunctionComponent<
   }
 
   const onHandleClickOverlay = (e: ITouchEvent) => {
-    if (closeOnClickOverlay) {
+    if (closeOnOverlayClick) {
       onClickOverlay && onClickOverlay(e)
       close()
     }
@@ -243,9 +245,9 @@ export const Popup: FunctionComponent<
           <>
             <Overlay
               style={overlayStyles}
-              overlayClass={overlayClass}
+              className={overlayClass}
               visible={innerVisible}
-              closeOnClickOverlay={closeOnClickOverlay}
+              closeOnOverlayClick={closeOnOverlayClick}
               zIndex={zIndex}
               lockScroll={lockScroll}
               duration={duration}

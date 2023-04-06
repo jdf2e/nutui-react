@@ -6,21 +6,23 @@ import bem from '@/utils/bem'
 export interface OverlayProps {
   zIndex: number
   duration: number
-  overlayClass: string
-  overlayStyle: React.CSSProperties
-  closeOnClickOverlay: boolean
+  className: string
+  style: React.CSSProperties
+  closeOnOverlayClick: boolean
   visible: boolean
   lockScroll: boolean
   onClick: (event: ITouchEvent) => void
+  afterShow: () => void
+  afterClose: () => void
 }
 export const defaultOverlayProps = {
   zIndex: 2000,
   duration: 0.3,
-  overlayClass: '',
-  closeOnClickOverlay: true,
+  className: '',
+  closeOnOverlayClick: true,
   visible: false,
   lockScroll: true,
-  overlayStyle: {},
+  style: {},
 } as OverlayProps
 export const Overlay: FunctionComponent<
   Partial<OverlayProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
@@ -29,11 +31,13 @@ export const Overlay: FunctionComponent<
     children,
     zIndex,
     duration,
-    overlayClass,
-    closeOnClickOverlay,
+    className,
+    closeOnOverlayClick,
     visible,
     lockScroll,
-    overlayStyle,
+    style,
+    afterShow,
+    afterClose,
     onClick,
     ...rest
   } = {
@@ -42,16 +46,23 @@ export const Overlay: FunctionComponent<
   }
   const [show, setShow] = useState(visible)
   const renderRef = useRef(true)
-  const intervalRef = useRef(0)
+  const intervalCloseRef = useRef(0)
+  const intervalShowRef = useRef(0)
 
   useEffect(() => {
-    visible && setShow(visible)
+    if (visible) {
+      intervalShowRef.current = window.setTimeout(() => {
+        afterShow && afterShow()
+      }, duration * 1000 * 0.8)
+      setShow(visible)
+    }
     lock()
   }, [visible])
 
   useEffect(() => {
     return () => {
-      clearTimeout(intervalRef.current)
+      clearTimeout(intervalCloseRef.current)
+      clearTimeout(intervalShowRef.current)
       document.body.classList.remove('nut-overflow-hidden')
     }
   }, [])
@@ -65,14 +76,14 @@ export const Overlay: FunctionComponent<
       'first-render': renderRef.current && !visible,
       'hidden-render': !visible,
     },
-    overlayClass,
+    className,
     b('')
   )
 
   const styles = {
     zIndex,
     animationDuration: `${props.duration}s`,
-    ...overlayStyle,
+    ...style,
   }
 
   const lock = () => {
@@ -84,13 +95,13 @@ export const Overlay: FunctionComponent<
   }
 
   const handleClick = (event: ITouchEvent) => {
-    if (closeOnClickOverlay) {
+    if (closeOnOverlayClick) {
+      afterClose && afterClose()
       onClick && onClick(event)
       renderRef.current = false
-      const id = window.setTimeout(() => {
+      intervalCloseRef.current = window.setTimeout(() => {
         setShow(!visible)
       }, duration * 1000 * 0.8)
-      intervalRef.current = id
     }
   }
 
