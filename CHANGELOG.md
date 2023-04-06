@@ -9,7 +9,6 @@
 * :bug: fix: tabs 组件paneKey为空字符串时返回索引问题 (#870) @刘正午
 * :bug: fix: 修复 textarea 组件 maxlength 属性未生效 (#866) @oasis-cloud
 * 🔨 chore: datepicker 组件 taro 版本修复类型报错 @oasis-cloud
-* 🔨 chore: release v1.4.13 @junjun666
 * 🔨 chore: 修改本地开发切换到移动端路径跳转错误 (#874) @junjun666
 * 🔨 chore: 补充并优化package.json进行规则分类 (#873) @junjun666
 
