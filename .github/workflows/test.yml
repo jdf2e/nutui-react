@@ -47,14 +47,11 @@ jobs:
     - name: Install dependencies
       run: pnpm install
 
-    - name: Build nutui
+    - name: Build NutUI-React
       run: npm run build
 
-    - name: Build nutui-taro
+    - name: Build NutUI-React-Taro
       run: npm run build:taro
     
-    - name: Build nutui-taro
+    - name: Build NutUI-React Demo
       run: npm run build:site
-
-    - name: Build nutui demo
-      run: npm run build:taro:site
