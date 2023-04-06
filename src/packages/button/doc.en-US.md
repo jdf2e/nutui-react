@@ -41,9 +41,7 @@ export default App;
 
 :::
 
-### Plain button
-
-Set the button to naïve with the text of the naïve button and the background white with the 'plain' attribute.
+### Fill button
 
 :::demo
 
@@ -54,8 +52,9 @@ import { Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Button plain type="primary">primary</Button>
-      <Button plain type="info">info</Button>
+      <Button fill="solid">Solid</Button>
+      <Button fill="outline">Outline</Button>
+      <Button fill="none">None</Button>
     </>
   );
 };
@@ -254,18 +253,17 @@ export default App;
 
 ### Props
 
-| Props    | Description                             | Type   | Default           |
-|----------|----------------------------------|--------|------------------|
-| type     | Type, optionally `primary` `info` `warning` `danger` `success` | string |`default`         |
-| size     | Dimensions, optionally `large` `small`  | string | `normal`      |
-| shape    | Shape, optionally `square` | string | `round`             |
-| color    | Button color, which supports incoming linear-gradient gradients     | string | - |
-| plain    |  Whether it is a naïve button or not                       | boolean | `false`             |
-| disabled |  Whether to disable the button                       | boolean | `false`              |
-| block    | Whether it is a block-level element                        | boolean | `false`               |
-| icon     | Button icon, with the Icon component name property                        | string | -     |
-| iconSize`v1.4.7` | Button icon size, with the Icon's size property | string \| number | `16` |
-| loading  | loading status                        | boolean | `false`               |
+| Property       | Description                           | Type          | Default      |
+|----------|-------------------------------|-------------|----------|
+| type     | button style                         | `'default' \| 'primary' \| 'info' \| 'warning' \| 'danger' \| 'success'` | `'default'` |
+| size     | button size                         | `'normal' \| 'large' \| 'small'` | `'normal'`  |
+| shape    | button shape                         | `'square' \| 'round'`   | `'round'` |
+| color    | button color | `string`    | -        |
+| fill     | fill pattern                          | `'solid' \| 'ouline' \| 'none'`  | `'solid'` |
+| disabled | disable the button                        | `boolean`   | `false`  |
+| block    | block element                       | `boolean`   | `false`  |
+| icon     | icon                          | `ReactNode` | -        |
+| loading  | loading status                   | `boolean`   | `false`  |
 
 ### Events
 

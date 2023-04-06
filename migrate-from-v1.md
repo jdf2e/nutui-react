@@ -1,4 +1,4 @@
-# 从 v1 升级到 v4
+# 从 v1 升级到 v2
 
 ## 介绍
 
@@ -14,6 +14,8 @@
 
 ### 基础组件
 #### Button
+- 删除 plain，通过 fill="outline" 实现
+- 增加 ref，对外暴露组件内 button 元素
 - `xxx` 重命名为 `yyy`
 - 删除 `x`, 通过 `z` 实现
 - 优化 `x` 类型为 ReactNode
