@@ -55,9 +55,7 @@ export default App;
 ```
 :::
 
-### 朴素按钮
-
-通过 `plain` 属性将按钮设置为朴素按钮，朴素按钮的文字为按钮颜色，背景为白色。
+### 填充模式
 
 :::demo
 ```tsx
@@ -67,8 +65,9 @@ import { Button } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <>
-      <Button plain type="primary">朴素按钮</Button>
-      <Button plain type="info">朴素按钮</Button>
+      <Button fill="solid">Solid</Button>
+      <Button fill="outline">Outline</Button>
+      <Button fill="none">None</Button>
     </>
   );
 };
@@ -247,17 +246,16 @@ export default App;
 ### Props
 
 | 参数                 | 说明                          | 类型       | 默认值           |
-|--------------------|-----------------------------|----------|------------------|
-| type               | 类型，可选值为 `primary` `info` `warning` `danger` `success` | string   |`default`         |
-| size               | 尺寸，可选值为 `large` `small`  | string   | `normal`      |
-| shape              | 形状，可选值为 `square` | string   | `round`             |
-| color              | 按钮颜色，支持传入 linear-gradient 渐变色 | string   | - |
-| plain              | 	是否为朴素按钮                    | boolean  | `false`             |
-| disabled           | 	是否禁用按钮                     | boolean  | `false`              |
-| block              | 是否为块级元素                     | boolean  | `false`               |
+|----------|-------------------------------|-------------|----------|
+| type     | 按钮的样式                         | `'default' \| 'primary' \| 'info' \| 'warning' \| 'danger' \| 'success'` | `'default'` |
+| size     | 按钮的尺寸                         | `'normal' \| 'large' \| 'small'` | `'normal'`  |
+| shape    | 按钮的形状                         | `'square' \| 'round'`   | `'round'` |
+| color    | 按钮颜色，支持传入 linear-gradient 渐变色 | `string`    | -        |
+| fill     | 填充模式                          | `'solid' \| 'ouline' \| 'none'`  | `'solid'` |
+| disabled | 是否禁用按钮                        | `boolean`   | `false`  |
+| block    | 是否为块级元素                       | `boolean`   | `false`  |
 | icon               | 按钮图标                        | `ReactNode`    | -     |
-| iconSize`v2.0.0废弃` | 按钮图标大小，同Icon组件的size属性 | string \ | number | `16` |
-| loading            | 按钮loading状态                 | boolean  | `false`               |
+| loading  | 按钮loading状态                   | `boolean`   | `false`  |
 
 ### Events
 
