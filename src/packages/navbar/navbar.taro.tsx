@@ -1,60 +1,47 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { Left } from '@nutui/icons-react-taro'
 import bem from '@/utils/bem'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface NavBarProps extends BasicComponent {
-  leftShow: boolean
-  title: string
-  leftText: string
-  description: string
-  className: string
+  left: React.ReactNode
+  back: React.ReactNode
+  right: React.ReactNode
   fixed: boolean
   safeAreaInsetTop: boolean
-  border: boolean
   placeholder: boolean
   zIndex: number | string
+  className: string
   style: React.CSSProperties
-  onClickTitle: (e: React.MouseEvent<HTMLDivElement>) => void
-  onClickIcon: (e: React.MouseEvent<HTMLDivElement>) => void
   onClickBack: (e: React.MouseEvent<HTMLElement>) => void
-  onClickRight: (e: React.MouseEvent<HTMLDivElement>) => void
   children?: React.ReactNode
 }
 
 const defaultProps = {
   ...ComponentDefaults,
-  title: '',
-  description: '',
-  leftShow: true,
-  className: '',
-  leftText: '',
+  left: '',
+  right: '',
+  back: '',
   fixed: false,
   safeAreaInsetTop: false,
-  border: false,
   placeholder: false,
   zIndex: 10,
+  className: '',
   style: {},
 } as NavBarProps
 export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   const {
-    description,
-    title,
-    leftShow,
+    right,
+    left,
     className,
     style,
-    leftText,
+    back,
     fixed,
     safeAreaInsetTop,
-    border,
     placeholder,
     zIndex,
-    onClickTitle,
-    onClickIcon,
     onClickBack,
-    onClickRight,
   } = {
     ...defaultProps,
     ...props,
@@ -65,14 +52,6 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
     ? props.children
     : [props.children]
 
-  const slot = children.reduce((slot: any, item: React.ReactElement) => {
-    const data = slot
-    if (item && item.props) {
-      data[item.props.slot] = item.props.children
-    }
-    return data
-  }, {})
-
   const styles = () => {
     return {
       ...style,
@@ -82,37 +61,23 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
 
   const renderLeft = () => {
     return (
-      <div className={`${b('left')}`} onClick={(e) => onClickBack(e)}>
-        {leftShow && <Left name="left" color="#979797" />}
-        {leftText && <div className={`${b('text')}`}>{leftText}</div>}
-        {slot.left}
+      <div className={`${b('left')}`}>
+        {back && (
+          <div className={`${b('back')}`} onClick={(e) => onClickBack(e)}>
+            {back}
+          </div>
+        )}
+        {left}
       </div>
     )
   }
 
   const renderContent = () => {
-    return (
-      <div className={`${b('title')}`}>
-        {title && (
-          <div className="title" onClick={(e) => onClickTitle(e)}>
-            {title}
-          </div>
-        )}
-        {slot.titleIcon && (
-          <div onClick={(e) => onClickIcon(e)}>{slot.titleIcon}</div>
-        )}
-        {slot.content}
-      </div>
-    )
+    return <div className={`${b('title')}`}>{children}</div>
   }
 
   const renderRight = () => {
-    return (
-      <div className={`${b('right')}`} onClick={(e) => onClickRight(e)}>
-        {description && <div className={`${b('text')}`}>{description}</div>}
-        {slot.right}
-      </div>
-    )
+    return <div className={`${b('right')}`}>{right}</div>
   }
 
   const renderWrapper = () => {
@@ -126,7 +91,6 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   }
 
   const classes = classNames({
-    [`nut-navbar--border`]: border,
     [`nut-navbar--fixed`]: fixed,
     [`nut-navbar--safe-area-inset-top`]: safeAreaInsetTop,
   })

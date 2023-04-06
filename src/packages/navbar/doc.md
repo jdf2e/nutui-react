@@ -8,7 +8,6 @@
 ### 安装
 
 ```ts
-// react
 import { NavBar } from '@nutui/nutui-react';
 ```
 
@@ -20,24 +19,29 @@ import { NavBar } from '@nutui/nutui-react';
 ```tsx
 import  React from "react";
 import { NavBar } from '@nutui/nutui-react';
-import { Share } from '@nutui/icons-react'
+import { Left, Share, Close } from '@nutui/icons-react'
 
 const App = () => {
   return ( 
-    <>   
-      <NavBar
-          title="订单详情"
-          leftShow
-          leftText="返回"
-          onClickTitle={(e) => alert("标题")}
-          onClickBack={(e) => alert("返回")}
-          onClickRight={(e) => alert('icon')}
-        >
-           <i slot="right">
+    <NavBar
+        back={
+        <>
+            <Left name="left" color="#979797" />
+            返回
+        </>
+        }
+        left={<Close width={12} />}
+        right={
+        <span onClick={(e) => alert('icon')}>
             <Share />
-          </i>
-        </NavBar>
-    </>
+        </span>
+        }
+        onClickBack={(e) => alert("返回")}
+    >
+        <span onClick={(e) => alert("标题")}>
+        订单详情
+        </span>
+    </NavBar>
   );
 };  
 export default App;
@@ -49,19 +53,23 @@ export default App;
 ```tsx
 import  React from "react";
 import { NavBar } from '@nutui/nutui-react';
+import { Left } from '@nutui/icons-react'
 
 const App = () => {
   return ( 
-    <>   
-      <NavBar
-          title="浏览记录"
-          description="清空"
-          leftShow
-          onClickTitle={(e) => alert("标题")}
-          onClickBack={(e) => alert("返回")}
-          onClickRight={(e) => alert('清空')}
-      />
-    </>
+    <NavBar
+        right={
+        <span onClick={(e) => alert('清空')}>
+            清空
+        </span>
+        }
+        back={<Left name="left" color="#979797" />}
+        onClickBack={(e) => alert("返回")}
+    >
+        <span onClick={(e) => alert("标题")}>
+        浏览记录
+        </span>
+    </NavBar>
   );
 };  
 export default App;
@@ -73,96 +81,63 @@ export default App;
 ```tsx
 import  React from "react";
 import { NavBar } from '@nutui/nutui-react';
-import { Cart2, More } from '@nutui/icons-react'
+import { Cart2, Left, MoreX} from '@nutui/icons-react'
 
 const App = () => {
   return ( 
-    <>   
-      <NavBar
-          title="购物车"
-          description="编辑"
-          onClickTitle={(e) => alert("标题")}
-          onClickBack={(e) => alert("返回")}
-          onClickRight={(e) => alert('编辑')}
-          onClickIcon={(e) => alert('icon')}
-        >
-          <i slot="titleIcon">
+    <NavBar
+        back={<Left name="left" color="#979797" />}
+        right={
+        <>
+            <span onClick={(e) => alert('编辑')}>
+            编辑
+            </span>
+            <MoreX onClick={(e) => alert('icon')} />
+        </>
+        }
+        onClickBack={(e) => alert("返回")}
+    >
+        <span onClick={(e) => alert("标题")}>
+        购物车
+        </span>
+        <i style={{ marginLeft: '5px' }} onClick={(e) => alert('icon')}>
             <Cart2 />
-          </i>
-          <i slot="right">
-            <More />
-          </i>
-      </NavBar>
-    </>
+        </i>
+    </NavBar>
   );
 };  
 export default App;
 
 ```
 :::
-
-:::demo
-```tsx
-import  React from "react";
-import { NavBar } from '@nutui/nutui-react';
-import { Share } from '@nutui/icons-react'
-
-const App = () => {
-  return ( 
-    <>
-      <NavBar
-          title="订单详情"
-          leftShow
-          border
-          leftText="返回"
-          onClickTitle={(e) => alert("返回")}
-          onClickBack={(e) => alert("标题")}
-          onClickRight={(e) => alert('icon')}
-        >
-           <i slot="right">
-            <Share />
-          </i>
-      </NavBar>
-    </>
-  );
-};  
-export default App;
-
-```
-:::
-
-
-### 自定义导航栏中间内容
 
 :::demo
 ```tsx
 import  React, { useState } from "react";
 import { NavBar, Tabs, TabPane } from '@nutui/nutui-react';
-import { More } from '@nutui/icons-react'
+import { Left,MoreX } from '@nutui/icons-react'
 
 const App = () => {
-  const [tab1value, setTab1value] = useState('Tab 1')
-  return ( 
-    <>   
+  const [tab1value, setTab1value] = useState('0')
+  return (   
       <NavBar
-          description="编辑"
-          onClickTitle={(e) => alert("标题")}
-          onClickRight={(e) => alert("编辑")}
+         back={<Left name="left" color="#979797" />}
+          right={
+            <>
+              <span onClick={(e) => alert("编辑")}>
+                编辑
+              </span>
+              <MoreX onClick={(e) => alert('icon')} />
+            </>
+          }
           onClickBack={(e) => alert("返回")}
-          onClickIcon={(e) => alert('icon')}
         >
-          <div slot="content">
             <Tabs value={tab1value} onChange={({ paneKey }) => { setTab1value(paneKey) }}>
               <TabPane title="Tab 1"> Tab 1 </TabPane>
               <TabPane title="Tab 2"> Tab 2 </TabPane>
               <TabPane title="Tab 3"> Tab 3 </TabPane>
             </Tabs>
-          </div>
-          <i slot="right">
-            <More />
-          </i>
       </NavBar>
-    </>
   );
 };  
 export default App;
@@ -174,28 +149,18 @@ export default App;
 
 | 字段 | 说明 | 类型    | 默认值  |
 |------------|--------------------|---------|---------|
-| title | 标题名称 | string  | -       |
-| description | 右侧描述 | string  | -       |
-| leftShow                 | 是否展示左侧箭头 | boolean | `true`   |
-| icon         | 左侧 [图标名称](#/icon) 或图片链接 | string  | -       |
-| titIcon`v2.0.0 废弃`                    | 标题带icon | string  | -       |   
-| leftText         | 左侧文案 | string  | -       |   
+| right | 右侧内容 | ReactNode  | -       |
+| left        | 左侧内容，渲染在返回区域的右侧 | ReactNode  | -       |   
+| back        | 返回区域的文字 | ReactNode  | -       |   
 | fixed            | 是否固定 | boolean  | `false`       |   
-| safeAreaInsetTop | 是否适配安全区 | boolean  | `false`       |   
-| border           | 是否显示底部边框 | boolean  | `false`    | 
+| safeArea | 是否适配安全区 | boolean  | `false`       |   
 | placeholder      | 固定在顶部时，是否在标签位置生成一个等高的占位元素 | boolean  | `false`    |
 | zIndex           | 导航栏层级           | number \| string  | `10`    |
-| style            | 容器样式           | CSSProperties  | `{}`    |
-| className        | 容器类名           | string  | -    |
 
 ### Event
 | 名称                      | 说明     | 回调参数    |
 |-------------------------|----------|-------------|
-| onClickTitle            | 点击标题事件 | `event: Event` |
-| onClickClear | 点击右侧文案事件 | `event: Event` |
-| onClickRight    | 点击右侧事件 | `event: Event` |
-| onClickBack             | 点击返回事件 | `event: Event` |
-| onClickIcon             | 点击标题右侧icon事件 | `event: Event` |
+| onClickBack             | 点击返回区域后的回调 | `event: Event` |
 
 ## 主题定制
 
