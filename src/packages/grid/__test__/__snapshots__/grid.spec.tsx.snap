@@ -7,8 +7,6 @@ exports[`render with custom content 1`] = `
   >
     <div
       class="nut-grid-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -38,8 +36,6 @@ exports[`render with custom content 1`] = `
     </div>
     <div
       class="nut-grid-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -74,8 +70,6 @@ exports[`render with custom content 1`] = `
     </div>
     <div
       class="nut-grid-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -106,8 +100,6 @@ exports[`render with custom content 1`] = `
     </div>
     <div
       class="nut-grid-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -166,8 +158,6 @@ exports[`should match snapshot 1`] = `
   >
     <div
       class="nut-grid-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -195,8 +185,6 @@ exports[`should match snapshot 1`] = `
     </div>
     <div
       class="nut-grid-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div
@@ -224,8 +212,6 @@ exports[`should match snapshot 1`] = `
     </div>
     <div
       class="nut-grid-item"
-      iconclassprefix="nut-icon"
-      iconfontclassname="nutui-iconfont"
       style="flex-basis: 25%;"
     >
       <div

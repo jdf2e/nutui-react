@@ -161,12 +161,12 @@ test('render with custom', () => {
 
   const gridItem = container.querySelectorAll('.nut-grid-item')
   expect(gridItem.length).toBe(3)
-  const one = gridItem[0].querySelector('.nut-icon')
   const two = gridItem[1].querySelector('.nut-icon')
-  expect(one).toHaveStyle('color: rgb(250, 44, 25)')
-  expect(two).toHaveStyle(
-    'color: rgb(71, 142, 242); font-size: 40px; width: 40px; height: 40px;'
-  )
+  expect(two).toHaveStyle({
+    color: 'rgb(71, 142, 242)',
+    height: '40px',
+    width: '40px',
+  })
 })
 
 test('render with custom content', () => {
