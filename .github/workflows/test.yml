@@ -15,12 +15,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 7
 
-    - name: Install pnpm
-      run: corepack enable
-
-    - uses: actions/setup-node@v2
+    - name: Use Node.js 15
+      uses: actions/setup-node@v3
       with:
         node-version: '15'
         cache: 'pnpm'
@@ -34,12 +35,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 7
 
-    - name: Install pnpm
-      run: corepack enable
-
-    - uses: actions/setup-node@v2
+    - name: Use Node.js 15
+      uses: actions/setup-node@v3
       with:
         node-version: '15'
         cache: 'pnpm'
