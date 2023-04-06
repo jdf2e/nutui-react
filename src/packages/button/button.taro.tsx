@@ -43,7 +43,6 @@ const defaultProps = {
   type: 'default',
   size: 'normal',
   shape: 'round',
-  plain: false,
   fill: 'solid',
   loading: false,
   disabled: false,
