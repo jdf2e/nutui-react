@@ -66,7 +66,7 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid,Grid.Item } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
