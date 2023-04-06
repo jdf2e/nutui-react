@@ -24,14 +24,14 @@ import { Dongdong } from '@nutui/icons-react'
 const App = () => {
   return (
     <Grid>
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
     </Grid>
   )
 }
@@ -50,12 +50,12 @@ import { Dongdong } from '@nutui/icons-react'
 const App = () => {
   return (
     <Grid columns={3}>
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
     </Grid>
   )
 }
@@ -74,9 +74,9 @@ import { Dongdong } from '@nutui/icons-react'
 const App = () => {
   return (
     <Grid columns={3} square>
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
     </Grid>
   )
 }
@@ -96,14 +96,14 @@ import { Dongdong } from '@nutui/icons-react'
 const App = () => {
   return (
     <Grid gutter={3}>
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
     </Grid>
   )
 }
@@ -122,10 +122,10 @@ import { Dongdong } from '@nutui/icons-react'
 const App = () => {
   return (
     <Grid reverse>
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
     </Grid>
   )
 }
@@ -144,10 +144,10 @@ import { Dongdong } from '@nutui/icons-react'
 const App = () => {
   return (
     <Grid direction="horizontal">
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
     </Grid>
   )
 }
@@ -166,12 +166,11 @@ import { Dongdong } from '@nutui/icons-react'
 const App = () => {
   return (
     <Grid columns="3">
-      <Grid.Item icon={<Dongdong />} text="文字" />
-      <Grid.Item
-        icon={<Dongdong width={40} height={40} color="#478EF2" />}
-        text="文字"
-      />
-      <Grid.Item icon={<Dongdong />} text="文字" />
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字">
+        <Dongdong width={40} height={40} color="#478EF2" />
+      </Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
     </Grid>
   )
 }
@@ -190,7 +189,7 @@ import { Dongdong, My } from '@nutui/icons-react'
 const App = () => {
   return (
     <Grid>
-      <Grid.Item icon={<Dongdong />} text={<span>More</span>} />
+      <Grid.Item text={<span>More</span>}><Dongdong /></Grid.Item>
         <Grid.Item
           text={
             <Avatar
@@ -201,15 +200,13 @@ const App = () => {
           }
           onClick={handleClick}
         />
-        <Grid.Item
-          icon={
-            <Avatar
-              className="demo-avatar"
-              icon={<My color="#fff"/>}
-              bgColor="#FA2C19"
-            />
-          }
-        />
+        <Grid.Item>
+          <Avatar
+            className="demo-avatar"
+            icon={<My color="#fff"/>}
+            bgColor="#FA2C19"
+          />
+        </Grid.Item>
         <Grid.Item>
           <Avatar
             size="large"
@@ -247,7 +244,6 @@ export default App
 | 参数 | 说明 | 类型 | 默认值 |
 |-|-|-|-|
 | text | 文字 | string \| ReactNode   | - |
-| icon | 图标 | ReactNode | - |
 
 ### Grid.Item Events
 

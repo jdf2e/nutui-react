@@ -11,9 +11,15 @@ test('should match snapshot', () => {
   const { container } = render(
     <>
       <Grid>
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
       </Grid>
     </>
   )
@@ -24,12 +30,24 @@ test('render with column num', () => {
   const { container } = render(
     <>
       <Grid columns={3}>
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
       </Grid>
     </>
   )
@@ -42,14 +60,30 @@ test('render with props gutter', () => {
   const { container } = render(
     <>
       <Grid gutter={3}>
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
       </Grid>
     </>
   )
@@ -62,10 +96,18 @@ test('render with props reverse', () => {
   const { container } = render(
     <>
       <Grid reverse>
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
       </Grid>
     </>
   )
@@ -79,10 +121,18 @@ test('render with props direction horizontal', () => {
   const { container } = render(
     <>
       <Grid direction="horizontal">
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
       </Grid>
     </>
   )
@@ -96,12 +146,15 @@ test('render with custom', () => {
   const { container } = render(
     <>
       <Grid columns="3">
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item
-          icon={<Dongdong width={40} height={40} color="#478EF2" />}
-          text="文本"
-        />
-        <Grid.Item icon={<Dongdong />} text="文本" />
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong width={40} height={40} color="#478EF2" />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
       </Grid>
     </>
   )
@@ -120,7 +173,9 @@ test('render with custom content', () => {
   const { container } = render(
     <>
       <Grid direction="horizontal">
-        <Grid.Item icon={<Dongdong />} text={<span>More</span>} />
+        <Grid.Item text={<span>More</span>}>
+          <Dongdong />
+        </Grid.Item>
         <Grid.Item
           text={
             <Avatar
@@ -130,15 +185,13 @@ test('render with custom content', () => {
             />
           }
         />
-        <Grid.Item
-          icon={
-            <Avatar
-              className="demo-avatar"
-              icon={<My color="#fff" />}
-              bgColor="#FA2C19"
-            />
-          }
-        />
+        <Grid.Item>
+          <Avatar
+            className="demo-avatar"
+            icon={<My color="#fff" />}
+            bgColor="#FA2C19"
+          />
+        </Grid.Item>
         <Grid.Item>
           <Avatar
             size="large"
@@ -158,10 +211,18 @@ test('render with props center', () => {
   const { container } = render(
     <>
       <Grid center>
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
-        <Grid.Item icon={<Dongdong />} text="文本" />
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
+        <Grid.Item text="文本">
+          <Dongdong />
+        </Grid.Item>
       </Grid>
     </>
   )
