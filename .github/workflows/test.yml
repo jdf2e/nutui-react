@@ -17,13 +17,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: pnpm/action-setup@v2
-      with:
-        version: 7
 
-    - name: Use Node.js 15
+    - name: Use Node.js 16
       uses: actions/setup-node@v3
       with:
-        node-version: '15'
+        node-version: '16'
         cache: 'pnpm'
 
     - name: Install dependencies
@@ -37,13 +35,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: pnpm/action-setup@v2
-      with:
-        version: 7
 
-    - name: Use Node.js 15
+    - name: Use Node.js 16
       uses: actions/setup-node@v3
       with:
-        node-version: '15'
+        node-version: '16'
         cache: 'pnpm'
 
     - name: Install dependencies
