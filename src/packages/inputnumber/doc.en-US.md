@@ -21,12 +21,9 @@ import React, { useState } from "react";
 import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 1,
-  })
   return (
     <>
-      <InputNumber modelValue={inputState.val} />
+      <InputNumber defaultValue={1} />
     </>
   )
 }
@@ -44,12 +41,9 @@ import React, { useState } from "react";
 import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 0,
-  })
   return (
     <>
-      <InputNumber modelValue={inputState.val} step="5" />
+      <InputNumber defaultValue={0} step="5" />
     </>
   )
 }
@@ -67,16 +61,13 @@ import React, { useState } from "react";
 import { InputNumber, Toast } from '@nutui/nutui-react';
 
 const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 10,
-  })
   const overlimit = (e: MouseEvent) => {
     console.log(e)
-    Toast.warn('Exceeded limit event triggered')
+    Toast.warn('超出限制事件触发')
   }
   return (
     <>
-      <InputNumber modelValue={inputState.val} min="10" max="20" onOverlimit={overlimit} />
+      <InputNumber defaultValue={10} min="10" max="20" onOverlimit={overlimit} />
     </>
   )
 }
@@ -94,12 +85,9 @@ import React, { useState } from "react";
 import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 0,
-  })
   return (
     <>
-      <InputNumber modelValue={inputState.val} disabled />
+      <InputNumber defaultValue={0} disabled />
     </>
   )
 }
@@ -117,12 +105,51 @@ import React, { useState } from "react";
 import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 1,
-  })
   return (
     <>
-      <InputNumber modelValue={inputState.val} readonly />
+      <InputNumber defaultValue={1} readonly />
+    </>
+  )
+}
+export default App;
+```
+:::
+
+### Set the button style
+
+The buttons can be styled using the `ConfigProvider` component.
+
+:::demo
+```tsx
+import React, { useState } from "react";
+import { InputNumber, ConfigProvider } from '@nutui/nutui-react';
+
+const App = () => {
+  const customTheme = {
+    nutuiInputnumberButtonWidth: '30px',
+    nutuiInputnumberButtonHeight: '30px',
+    nutuiInputnumberButtonBorderRadius: '2px',
+    nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
+    nutuiInputnumberInputHeight: '30px',
+    nutuiInputnumberInputMargin: '0 2px',
+  }
+
+  const customTheme2 = {
+    nutuiInputnumberButtonWidth: '30px',
+    nutuiInputnumberButtonHeight: '30px',
+    nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
+    nutuiInputnumberInputBackgroundColor: '#fff',
+    nutuiInputnumberInputMargin: '0 2px',
+  }
+
+  return (
+    <>
+      <ConfigProvider theme={customTheme}>
+        <InputNumber defaultValue={1} />
+      </ConfigProvider>
+      <ConfigProvider theme={customTheme2}>
+        <InputNumber defaultValue={1} />
+      </ConfigProvider>
     </>
   )
 }
@@ -140,12 +167,9 @@ import React, { useState } from "react";
 import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 5.5,
-  })
-  return (
+  creturn (
     <>
-      <InputNumber modelValue={inputState.val} step="0.1" decimalPlaces="1" readonly />
+      <InputNumber defaultValue={5.5} step="0.1" digits="1" readonly />
     </>
   )
 }
@@ -162,41 +186,17 @@ import React, { useState } from "react";
 import { InputNumber, Toast } from '@nutui/nutui-react';
 
 const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 1,
-  })
+  const [inputValue, setInputValue] = useState(0)
   const onChange = (value: string | number) => {
-    Toast.loading('Asynchronous demo changes after 2 seconds')
+    Toast.loading(translated['0137871a'])
     setTimeout(() => {
-      inputState.val7 = Number(value)
-      setInputState({ ...inputState })
+      setInputValue(Number(value))
       Toast.hide()
     }, 2000)
   }
   return (
     <>
-      <InputNumber modelValue={inputState.val} onChange ={onChange} isAsync />
-    </>
-  )
-}
-export default App;
-```
-:::
-
-### Custom button size
-
-:::demo
-```tsx
-import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react';
-
-const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 1,
-  })
-  return (
-    <>
-      <InputNumber modelValue={inputState.val} buttonSize="30" inputWidth="50" />
+      <InputNumber value={inputValue} defaultValue={1} onChange={onChange} async />
     </>
   )
 }
@@ -243,33 +243,27 @@ export default App;
 
 | Attribute           | Description                       | Type           | Default     |
 |----------------|----------------------------|----------------|------------|
-| modelValue        | Initial value                     | string \| number | -          |
-| inputWidth    | Input box width                 | string         | `40px`     |
-| buttonSize    | Operators +, - Dimensions             | string         | `20px`     |
+| allowEmpty        | Whether to allow the content to be empty                     | boolean |   false          |
+| defaultValue        | Defaults                     | string \| number |  0         |
+| value        | current value, controlled value                   | string \| number | -          |
 | min            | Minimum limit                 | string \| number | `1`        |
 | max            | Maximum limit                 | string \| number | `9999` |
 | step           | step                       | string \| number | `1`        |
-| decimalPlaces | Set reserved decimal places           | string \| number | `0`        |
+| digits | Set reserved decimal places           | string \| number | `0`        |
 | disabled       | Disable all features               | boolean        | `false`      |
 | readonly       | Read only status disables input box operation behavior | boolean        | `false`      |
-| isAsync       | Support for asynchronous modification | boolean        | `false`      |
-| formatter`v1.4.14`       | Specifies the format of the value displayed in the input box | function(value: number | string): string        | -     |
+| async       | Support for asynchronous modification | boolean        | `false`      |
+| formatter        | Specifies the format of the value displayed in the input box | function(value: number | string): string        | -     |
 
 ### Events
 
 | Event    | Description                   | Arguments                       |
 |-----------|------------------------|--------------------------------|
-| add       | Triggered when the Add button is clicked     | `event: Event`                   |
-| reduce    | Triggered when the decrease button is clicked     | `event: Event`                   |
-| overlimit  | Triggered when an unavailable button is clicked | `event: Event`                   |
-| change     | Triggered when the value changes           | `value: number, event: Event` |
-| blur       | Triggered when the input box blur   | `event: Event`                   |
-| focus      | Triggered when the input box focus   | `event: Event`                   |
-| onAdd        | Triggered when the Add button is clicked     | `event: Event`                   |
-| onReduce     | Triggered when the decrease button is clicked     | `event: Event`                   |
+| onPlus        | Triggered when the Add button is clicked     | `event: Event`                   |
+| onMinus     | Triggered when the decrease button is clicked     | `event: Event`                   |
 | onOverlimit  | Triggered when an unavailable button is clicked | `event: Event`                   |
-| onChange `v2.0.0`     | Triggered when the value changes           | `value: number, event: Event` |
-| onBlur `v2.0.0`       | Triggered when the input box blur   | `event: Event`                   |
+| onChange      | Triggered when the value changes           | `value: number, event: Event` |
+| onBlur        | Triggered when the input box blur   | `event: Event`                   |
 | onFocus      | Triggered when the input box focus   | `event: Event`                   |
 
 ## Theming

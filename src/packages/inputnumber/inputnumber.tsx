@@ -213,9 +213,6 @@ export const InputNumber: FunctionComponent<
       } else if (!numReg.test(input[0]) && !numValue) {
         setInputValue(input)
       } else if (numReg.test(input[0])) {
-        console.log('inputRef.current', inputRef.current)
-        console.log('formatter(numValue)', formatter(numValue))
-
         // 针对于100%这种尾字符例子，直接删除会进行匹配
         if (formatter(numValue) === inputRef.current) {
           setInputValue(numValue)

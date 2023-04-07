@@ -6,17 +6,6 @@ import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'
 import './demo.scss'
 
-interface ValState {
-  val1: number | string
-  val2: number | string
-  val3: number | string
-  val4: number | string
-  val5: number | string
-  val6: number | string
-  val7: number | string
-  val8: number | string
-}
-
 interface T {
   '6333c786': string
   '0137871a': string
@@ -100,16 +89,6 @@ const InputNumberDemo = () => {
   })
 
   const [inputValue, setInputValue] = useState(0)
-  // const [inputState, setInputState] = useState<ValState>({
-  //   val1: 1,
-  //   val2: 0,
-  //   val3: 10,
-  //   val4: 0,
-  //   val5: 1,
-  //   val6: 5.5,
-  //   val7: 1,
-  //   val8: 1,
-  // })
   const overlimit = (e: MouseEvent) => {
     console.log(e)
     Toast.warn(translated['6333c786'])
@@ -183,7 +162,7 @@ const InputNumberDemo = () => {
           />
         </Cell>
 
-        {/* <h2>支持formatter</h2>
+        <h2>支持formatter</h2>
         <Cell>
           <InputNumber
             className="format-width"
@@ -203,7 +182,7 @@ const InputNumberDemo = () => {
             max={100}
             formatter={(value) => `${value}%`}
           />
-        </Cell> */}
+        </Cell>
       </div>
     </>
   )

@@ -20,12 +20,9 @@ import React, { useState } from "react";
 import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 1,
-  })
   return (
     <>
-      <InputNumber modelValue={inputState.val} />
+      <InputNumber defaultValue={1} />
     </>
   )
 }
@@ -43,12 +40,9 @@ import React, { useState } from "react";
 import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 0,
-  })
   return (
     <>
-      <InputNumber modelValue={inputState.val} step="5" />
+      <InputNumber defaultValue={0} step="5" />
     </>
   )
 }
@@ -63,19 +57,16 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { InputNumber, Toast} from '@nutui/nutui-react';
+import { InputNumber, Toast } from '@nutui/nutui-react';
 
 const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 10,
-  })
   const overlimit = (e: MouseEvent) => {
     console.log(e)
     Toast.warn('超出限制事件触发')
   }
   return (
     <>
-      <InputNumber modelValue={inputState.val} min="10" max="20" onOverlimit={overlimit} />
+      <InputNumber defaultValue={10} min="10" max="20" onOverlimit={overlimit} />
     </>
   )
 }
@@ -93,12 +84,9 @@ import React, { useState } from "react";
 import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 0,
-  })
   return (
     <>
-      <InputNumber modelValue={inputState.val} disabled />
+      <InputNumber defaultValue={0} disabled />
     </>
   )
 }
@@ -116,12 +104,9 @@ import React, { useState } from "react";
 import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 1,
-  })
   return (
     <>
-      <InputNumber modelValue={inputState.val5} readonly />
+      <InputNumber defaultValue={1} readonly />
     </>
   )
 }
@@ -139,10 +124,6 @@ import React, { useState } from "react";
 import { InputNumber, ConfigProvider } from '@nutui/nutui-react';
 
 const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 1,
-  })
-
   const customTheme = {
     nutuiInputnumberButtonWidth: '30px',
     nutuiInputnumberButtonHeight: '30px',
@@ -163,10 +144,10 @@ const App = () => {
   return (
     <>
       <ConfigProvider theme={customTheme}>
-        <InputNumber modelValue={inputState.val5} />
+        <InputNumber defaultValue={1} />
       </ConfigProvider>
       <ConfigProvider theme={customTheme2}>
-        <InputNumber modelValue={inputState.val5} />
+        <InputNumber defaultValue={1} />
       </ConfigProvider>
     </>
   )
@@ -185,12 +166,9 @@ import React, { useState } from "react";
 import { InputNumber } from '@nutui/nutui-react';
 
 const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 5.5,
-  })
   return (
     <>
-      <InputNumber modelValue={inputState.val} step="0.1" decimalPlaces="1" readonly />
+      <InputNumber defaultValue={5.5} step="0.1" digits="1" readonly />
     </>
   )
 }
@@ -207,20 +185,17 @@ import React, { useState } from "react";
 import { InputNumber, Toast } from '@nutui/nutui-react';
 
 const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 1,
-  })
+  const [inputValue, setInputValue] = useState(0)
   const onChange = (value: string | number) => {
-    Toast.loading('异步演示 2 秒后更改')
+    Toast.loading(translated['0137871a'])
     setTimeout(() => {
-      inputState.val7 = Number(value)
-      setInputState({ ...inputState })
+      setInputValue(Number(value))
       Toast.hide()
     }, 2000)
   }
   return (
     <>
-      <InputNumber modelValue={inputState.val} onChange={onChange} isAsync />
+      <InputNumber value={inputValue} defaultValue={1} onChange={onChange} async />
     </>
   )
 }
@@ -228,26 +203,6 @@ export default App;
 ```
 :::
 
-### 自定义按钮大小
-
-:::demo
-```tsx
-import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react';
-
-const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 1,
-  })
-  return (
-    <>
-      <InputNumber modelValue={inputState.val} buttonSize="30" inputWidth="50" />
-    </>
-  )
-}
-export default App;
-```
-:::
 
 ### 支持formatter
 
@@ -288,28 +243,28 @@ export default App;
 
 | 参数           | 说明                       | 类型           | 默认值     |
 |----------------|----------------------------|----------------|------------|
-| modelValue        | 初始值                     | string \| number | -          |
-| inputWidth    | 输入框宽度                 | string         | `40px`     |
-| buttonSize    | 操作符+、-尺寸             | string         | `20px`     |
+| allowEmpty        | 是否允许内容为空                     | boolean |   false          |
+| defaultValue        | 默认值                     | string \| number |  0         |
+| value        | 当前值，受控值                   | string \| number | -          |
 | min            | 最小值限制                 | string \| number | `1`        |
 | max            | 最大值限制                 | string \| number | `9999` |
 | step           | 步长                       | string \| number | `1`        |
-| decimalPlaces | 设置保留的小数位           | string \| number | `0`        |
+| digits | 设置保留的小数位           | string \| number | `0`        |
 | disabled       | 禁用所有功能               | boolean        | `false`      |
 | readonly       | 只读状态禁用输入框操作行为 | boolean        | `false`      |
-| isAsync       | 支持异步修改 | boolean        | `false`      |
-| formatter`v1.4.14`       | 指定输入框展示值的格式 | function(value: number | string): string        | -     |
+| async       | 支持异步修改 | boolean        | `false`      |
+| formatter       | 指定输入框展示值的格式 | function(value: number | string): string        | -     |
 
 ### Events
 
 | 事件名    | 说明                   | 回调参数                       |
 |-----------|------------------------|--------------------------------|
-| onAdd       | 点击增加按钮时触发     | event: Event                   |
-| onReduce    | 点击减少按钮时触发     | event: Event                   |
+| onPlus       | 点击增加按钮时触发     | event: Event                   |
+| onMinus    | 点击减少按钮时触发     | event: Event                   |
 | onOverlimit  | 点击不可用的按钮时触发 | event: Event                   |
-| onChange `v2.0.0`     | 值改变时触发           | value:  number , event : Event |
+| onChange      | 值改变时触发           | value:  number , event : Event |
 | onFocus      | 输入框获得焦点时触发   | event: Event                   |
-| onBlur `v2.0.0`     | 输入框失去焦点时触发   | event: Event                   |
+| onBlur      | 输入框失去焦点时触发   | event: Event                   |
 
 ## 主题定制
 
