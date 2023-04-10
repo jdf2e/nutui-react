@@ -45,7 +45,7 @@ const NotifyDemo = () => {
   })
   const baseNotify = (msg: string) => {
     Notify.text(msg, {
-      onClosed: () => {
+      onClose: () => {
         console.log('close')
       },
       onClick: () => {
@@ -67,8 +67,10 @@ const NotifyDemo = () => {
   }
   const cusBgNotify = (msg: string) => {
     Notify.text(msg, {
-      color: '#ad0000',
-      background: '#ffe1e1',
+      style: {
+        color: '#ad0000',
+        background: '#ffe1e1',
+      },
       className: 'aa',
     })
   }

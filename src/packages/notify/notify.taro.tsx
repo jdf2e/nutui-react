@@ -7,31 +7,23 @@ import bem from '@/utils/bem'
 export interface NotifyProps {
   id?: string
   style?: React.CSSProperties
-  msg: string
-  color: string
   duration: number
   type: string
   className: string
-  background: string
   position: string
-  isWrapTeleport: boolean
   visible: boolean
-  onClosed: () => void
+  onClose: () => void
   onClick: () => void
 }
 
 const defaultProps = {
   id: '',
-  msg: '',
-  color: '',
   duration: 3000, // 时长
   type: 'danger',
   className: '',
-  background: '',
   position: 'top',
-  isWrapTeleport: true,
   visible: false,
-  onClosed: () => {},
+  onClose: () => {},
   onClick: () => {},
 } as unknown as NotifyProps
 
@@ -42,16 +34,12 @@ export const Notify: FunctionComponent<
     id,
     children,
     style,
-    msg,
-    color,
-    background,
     type,
     className,
     position,
-    isWrapTeleport,
     visible,
     duration,
-    onClosed,
+    onClose,
     onClick,
     ...rest
   } = { ...defaultProps, ...props }
@@ -91,7 +79,7 @@ export const Notify: FunctionComponent<
       const element = document.getElementById(id)
       element && element.parentNode && element.parentNode.removeChild(element)
     }
-    onClosed()
+    onClose()
   }
 
   const notifyBem = bem('notify')
@@ -115,13 +103,10 @@ export const Notify: FunctionComponent<
       >
         <div
           className={`${classes} ${className}`}
-          style={{
-            color: `${color || ''}`,
-            background: `${background || ''}`,
-          }}
+          style={style}
           onClick={clickHandle}
         >
-          {children || msg}
+          {children}
         </div>
       </CSSTransition>
     </>

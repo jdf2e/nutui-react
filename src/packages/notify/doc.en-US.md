@@ -23,7 +23,7 @@ import { Notify, Cell } from '@nutui/nutui-react';
 const App = () => {
     const baseNotify = (msg: string) => {
         Notify.text(msg, {
-        onClosed: () => {
+        onClose: () => {
             console.log('close')
         },
         onClick: () => {
@@ -113,7 +113,13 @@ import { Notify, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const cusBgNotify = (msg: string) => {
-        Notify.text(msg, { color: '#ad0000', background: '#ffe1e1' })
+        Notify.text(msg, { 
+            style: {
+                color: '#ad0000',
+                background: '#ffe1e1',
+            },
+            className: 'aa',
+        })
     }
     return (
         <>
@@ -178,11 +184,7 @@ export default App
 | Attribute      | Description                                    | Type          | Default   |
 |------------|-------------------------------------------------------|---------------|----------|
 | type       | Display Type（primary,success ,danger,warning）      | string        | `danger` |
-| message    | Display copy, support line feed through \n              | boolean       | `false`    |
 | duration   | Display duration (ms),value is 0 ,notify not disappear | string        | `3000`     |
-| color      | Font Color                                               | string        | -        |
-| background | Background color                                         | string        | -        |
-| className | Custom class name                                        | string \| number | `1`        |
 | position  | Custom Position (top, bottom)                               | string | `top`        |
 
 ### Events
@@ -190,7 +192,7 @@ export default App
 | Event | Description         | Arguments |
 |--------|--------------|----------|
 | onClick  | Emitted when notify is clicked | -       |
-| onClosed | Emitted when notify is closed | -       |
+| onClose | Emitted when notify is closed | -       |
 
 
 ## Theming
@@ -207,3 +209,4 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-notify-height | `44px` |
 | --nutui-notify-line-height | `auto` |
 | --nutui-notify-danger-background-color | `rgba(250, 50, 25, 1)` |
+

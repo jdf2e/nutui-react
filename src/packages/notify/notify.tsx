@@ -4,26 +4,21 @@ import Notification, { NotificationProps } from './Notification'
 let messageInstance: any = null
 export interface NotifyProps {
   id: string
-  color?: string
-  msg: string
   duration: number
   className?: string
-  background?: string
   type: string
   position: string
   onClick: () => void
-  onClosed: () => void
+  onClose: () => void
 }
 
 const options: NotifyProps = {
-  msg: '',
   id: '',
   duration: 3000, // 时长
-  color: '',
   type: 'danger',
   className: '',
   position: 'top',
-  onClosed: () => {},
+  onClose: () => {},
   onClick: () => {},
 }
 

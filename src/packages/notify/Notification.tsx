@@ -9,16 +9,13 @@ import { render } from '@/utils/render'
 export interface NotificationProps {
   id: string
   style: React.CSSProperties
-  msg: string
-  color: string
+  msg: string | React.ReactNode
   duration: number
   type: string
   className: string
-  background: string
   children: React.ReactNode
   position: string
-  isWrapTeleport: boolean
-  onClosed: () => void
+  onClose: () => void
   onClick: () => void
 }
 
@@ -54,7 +51,7 @@ export default class Notification extends React.PureComponent<
       const element = document.getElementById(this.props.id)
       element && element.parentNode && element.parentNode.removeChild(element)
     }
-    this.props.onClosed()
+    this.props.onClose()
   }
 
   startCloseTimer() {
@@ -86,17 +83,7 @@ export default class Notification extends React.PureComponent<
   }
 
   render() {
-    const {
-      children,
-      style,
-      msg,
-      color,
-      background,
-      type,
-      className,
-      position,
-      isWrapTeleport,
-    } = this.props
+    const { children, style, msg, type, className, position } = this.props
     const { show } = this.state
     const notifyBem = bem('notify')
 
@@ -115,14 +102,10 @@ export default class Notification extends React.PureComponent<
           unmountOnExit
           appear
           position={position}
-          isWrapTeleport={isWrapTeleport}
         >
           <div
             className={`${classes} ${className}`}
-            style={{
-              color: `${color || ''}`,
-              background: `${background || ''}`,
-            }}
+            style={style}
             onClick={this.clickCover}
           >
             {children || msg}

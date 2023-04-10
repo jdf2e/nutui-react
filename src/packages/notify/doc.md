@@ -23,7 +23,7 @@ import { Notify, Cell } from '@nutui/nutui-react';
 const App = () => {
     const baseNotify = (msg: string) => {
         Notify.text(msg, {
-        onClosed: () => {
+        onClose: () => {
             console.log('close')
         },
         onClick: () => {
@@ -113,7 +113,11 @@ import { Notify, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const cusBgNotify = (msg: string) => {
-        Notify.text(msg, { color: '#ad0000', background: '#ffe1e1' })
+        Notify.text(msg, { style: {
+                color: '#ad0000',
+                background: '#ffe1e1',
+            },
+            className: 'aa', })
     }
     return (
         <>
@@ -178,11 +182,7 @@ export default App
 | 字段       | 说明                                                  | 类型          | 默认值   |
 |------------|-------------------------------------------------------|---------------|----------|
 | type       | 提示的信息类型（primary，success  ，danger，warning） | string        | `danger` |
-| message    | 展示文案，支持通过\n换行                              | boolean       | `false`    |
 | duration   | 展示时长(ms)，值为 0 时，notify 不会消失              | string        | `3000`     |
-| color      | 字体颜色                                              | string        | -       |
-| background | 背景颜色                                              | string        | -       |
-| className | 自定义类名                                            | string \| number | `1`        |
 | position  | 自定义位置 (top, bottom)                                           | string | `top`        |
 
 ### Events
@@ -190,7 +190,7 @@ export default App
 | 事件名 | 说明         | 回调参数 |
 |--------|--------------|----------|
 | onClick  | 点击事件回调 | 无       |
-| onClosed | 关闭事件回调 | 无       |
+| onClose | 关闭事件回调 | 无       |
 
 
 ## 主题定制

@@ -47,8 +47,10 @@ test('test toast props', async () => {
         onClickNotify('text', '主要通知', {
           id: 'custom2',
           duration: 5000,
-          color: '#ad0000',
-          background: '#ffe1e1',
+          style: {
+            color: '#ad0000',
+            background: '#ffe1e1',
+          },
           className: 'aa',
           position: 'bottom',
         })

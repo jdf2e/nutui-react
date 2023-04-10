@@ -33,15 +33,14 @@ const App = () => {
         <>
             <Notify
                 visible={showNotify}
-                msg={states.msg}
                 type={states.type}
-                onClosed={() => {
+                onClose={() => {
                     SetShowNotify(false)
                 }}
                 onClick={() => {
                     console.log('click')
                 }}
-            />
+            >{states.msg}</Notify>
             <Cell
                 title="基础用法"
                 onClick={(event: React.MouseEvent) => {
@@ -78,12 +77,11 @@ const App = () => {
         <>
             <Notify
                 visible={showNotify}
-                msg={states.msg}
                 type={states.type}
-                onClosed={() => {
+                onClose={() => {
                     SetShowNotify(false)
                 }}
-            />
+            >{states.msg}</Notify>
             <Cell
                 title="主要通知"
                 onClick={(event: React.MouseEvent) => {
@@ -137,13 +135,14 @@ const App = () => {
             <Notify
                 className="customer"
                 visible={customShow}
-                msg="自定义背景色和字体颜色"
-                color="#ad0000"
-                background="#ffe1e1"
-                onClosed={() => {
+                style={{
+                    color: '#ad0000',
+                    background: '#ffe1e1',
+                }}
+                onClose={() => {
                     SetCustomShow(false)
                 }}
-            />
+            >自定义背景色和字体颜色</Notify>
             <Cell
                 title="自定义背景色和字体颜色"
                 onClick={(event: React.MouseEvent) => {
@@ -182,12 +181,11 @@ const App = () => {
         <>
             <Notify
                 visible={showNotify}
-                msg={states.msg}
                 position={states.position}
-                onClosed={() => {
+                onClose={() => {
                     SetShowNotify(false)
                 }}
-            />
+            >{states.msg}</Notify>
             <Cell
                 title="自定义时长"
                 onClick={(event: React.MouseEvent) => {
@@ -222,9 +220,6 @@ export default App
 | type       | 提示的信息类型（primary，success  ，danger，warning） | string        | `danger` |
 | msg    | 展示文案，支持通过\n换行                              | boolean       | `false`    |
 | duration   | 展示时长(ms)，值为 0 时，notify 不会消失              | string        | `3000`     |
-| color      | 字体颜色                                              | string        | -       |
-| background | 背景颜色                                              | string        | -       |
-| className | 自定义类名                                            | string \| number | `1`        |
 | position  | 自定义位置 (top, bottom)                | string | `top`        |
 
 ### Events
@@ -232,7 +227,7 @@ export default App
 | 事件名 | 说明         | 回调参数 |
 |--------|--------------|----------|
 | onClick  | 点击事件回调 | 无       |
-| onClosed | 关闭事件回调 | 无       |
+| onClose | 关闭事件回调 | 无       |
 
 
 ## 主题定制
