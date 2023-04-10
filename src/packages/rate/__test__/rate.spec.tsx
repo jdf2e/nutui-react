@@ -7,7 +7,7 @@ import { Rate } from '../rate'
 
 const publicCls =
   'nut-rate-item__icon nut-rate-item__icon--disabled nut-icon nutui-iconfont'
-test('spacing & count & modelValue & checkedIcon & uncheckedIcon & readonly & iconSize & activeColor & voidColor & onChange test', () => {
+test('spacing & count & modelValue & checkedIcon & uncheckedIcon & readOnly & iconSize & activeColor & voidColor & onChange test', () => {
   const state = {
     voidColor: 'rgb(250, 104, 93)',
     activeColor: 'red',
@@ -78,8 +78,8 @@ test('disabled test', () => {
   }
 })
 
-test('readonly  test', () => {
-  const { container } = render(<Rate readonly count={1} modelValue={0} />)
+test('readOnly  test', () => {
+  const { container } = render(<Rate readOnly count={1} modelValue={0} />)
   const el = container.querySelector('.nut-rate-item')
   if (el) {
     fireEvent.click(el)

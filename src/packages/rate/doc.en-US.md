@@ -139,7 +139,7 @@ export default App;
 
 ```
 :::
-### readonly state  
+### readOnly state  
 
 :::demo
 ```tsx
@@ -149,7 +149,7 @@ import { Rate } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Rate modelValue="3" readonly />
+    <Rate modelValue="3" readOnly />
     </>
   );
 };  
@@ -212,7 +212,7 @@ export default App;
 | uncheckedIcon `v2.0.0 Abandon` | Use icon (unchecked) | string  | `star-n`      |
 | checkedIcon   | Use icon (checked) | `ReactNode`  | - |
 | allowHalf     | Half star or not                         | boolean | `false`       |
-| readonly       |Read only                              | boolean | `false`       |
+| readOnly       |Read only                              | boolean | `false`       |
 | disabled       | Disable or not                          | boolean | `false`       |
 | spacing        | spacing                                  | number | `20`          |
 

@@ -149,7 +149,7 @@ import { Rate } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Rate modelValue="3" readonly />
+    <Rate modelValue="3" readOnly />
     </>
   );
 };  
@@ -212,7 +212,7 @@ export default App;
 | uncheckedIcon `v2.0.0 废弃` | 使用圖標(未選中) | string  | `star-n`      |
 | checkedIcon            | 使用圖標(選中)  | `ReactNode`  | - |
 | allowHalf     | 是否半星                                  | boolean | `false`       |
-| readonly       | 是否只讀                                 | boolean | `false`       |
+| readOnly       | 是否只讀                                 | boolean | `false`       |
 | disabled       | 是否禁用                                  | boolean | `false`       |
 | spacing        | 間距                                      | number | `20`          |
 

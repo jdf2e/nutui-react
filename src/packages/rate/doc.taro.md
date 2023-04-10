@@ -148,7 +148,7 @@ import { Rate } from '@nutui/nutui-react-taro';
 const App = () => {
   return ( 
     <>   
-    <Rate modelValue="3" readonly />
+    <Rate modelValue="3" readOnly />
     </>
   );
 };  
@@ -211,7 +211,7 @@ export default App;
 | uncheckedIcon `v2.0.0 废弃` | 使用图标(未选中) | string  | `star-n`      |
 | checkedIcon            | 使用图标(选中) | `ReactNode`  | - |
 | allowHalf              | 是否半星                                  | boolean | `false`       |
-| readonly               | 是否只读                                  | boolean | `false`       |
+| readOnly               | 是否只读                                  | boolean | `false`       |
 | disabled               | 是否禁用                                  | boolean | `false`       |
 | spacing                | 间距                                      | number | `20`          |
 

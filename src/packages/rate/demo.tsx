@@ -14,7 +14,7 @@ const RateDemo = () => {
       minimumNumber: '最少选中数量（支持半星）',
       customColor: '自定义颜色',
       disabled: '禁用状态',
-      readonly: '只读状态',
+      readOnly: '只读状态',
       event: '绑定事件',
       customSize: '自定义大小 35px',
     },
@@ -26,7 +26,7 @@ const RateDemo = () => {
       minimumNumber: '最少選中數量（支持半星）',
       customColor: '自定義顏色',
       disabled: '禁用狀態',
-      readonly: '只讀狀態',
+      readOnly: '只讀狀態',
       event: '綁定事件',
       customSize: '自定義大小 35px',
     },
@@ -38,7 +38,7 @@ const RateDemo = () => {
       minimumNumber: 'Minimum Number(support half star)',
       customColor: 'Custom Color',
       disabled: 'Disabled',
-      readonly: 'Readonly',
+      readOnly: 'Readonly',
       event: 'Event',
       customSize: 'Custom Size 35px',
     },
@@ -84,9 +84,9 @@ const RateDemo = () => {
           <Rate disabled modelValue="3" />
         </Cell>
 
-        <h2>{translated.readonly}</h2>
+        <h2>{translated.readOnly}</h2>
         <Cell>
-          <Rate modelValue="3" readonly />
+          <Rate modelValue="3" readOnly />
         </Cell>
 
         <h2>{translated.event}</h2>

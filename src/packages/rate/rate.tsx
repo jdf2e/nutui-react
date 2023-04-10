@@ -14,7 +14,7 @@ export interface RateProps extends BasicComponent {
   voidColor: string
   checkedIcon: React.ReactNode
   disabled: boolean
-  readonly: boolean
+  readOnly: boolean
   allowHalf: boolean
   spacing: string | number
   onChange: (val: number) => void
@@ -30,7 +30,7 @@ const defaultProps = {
   voidColor: '',
   checkedIcon: null,
   disabled: false,
-  readonly: false,
+  readOnly: false,
   allowHalf: false,
   spacing: 14,
 } as RateProps
@@ -46,7 +46,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     voidColor,
     checkedIcon,
     disabled,
-    readonly,
+    readOnly,
     allowHalf,
     spacing,
     onChange,
@@ -92,7 +92,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   const onClick = (e: React.MouseEvent, index: number) => {
     e.preventDefault()
     e.stopPropagation()
-    if (disabled || readonly) return
+    if (disabled || readOnly) return
     let value = 0
     if (!(index === 1 && score === index)) {
       value = index
