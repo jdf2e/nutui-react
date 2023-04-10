@@ -109,11 +109,16 @@ export default App;
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
+import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
   return ( 
     <>   
-    <Rate activeColor="#FFC800" modelValue="3" />
+      <Rate
+        modelValue="3"
+        checkedIcon={<HeartFill1 color="red" />}
+        uncheckedIcon={<HeartFill1 color="yellow" />}
+      />
     </>
   );
 };  
@@ -187,19 +192,12 @@ export default App;
 | modelValue     | The current number of stars <= count     | number   | -           |
 | count          | total number of stars                    | number | `5`           |
 | min  | At least the number of STAR              | number | `0`           |
-| activeColor   | Icon selection color                      | string  | `#fa200c`     |
-| voidColor     | Icon unselected color                    | string  | `#ccc`        |
-| uncheckedIcon `v2.0.0 Abandon` | Use icon (unchecked) | string  | `star-n`      |
-| checkedIcon   | Use icon (checked) | `ReactNode`  | - |
+| uncheckedIcon | Use icon (unchecked) | ReactNode  | `star-n`      |
+| checkedIcon   | Use icon (checked) | ReactNode  | `star-n` |
 | allowHalf     | Half star or not                         | boolean | `false`       |
 | readOnly       |Read only                              | boolean | `false`       |
 | disabled       | Disable or not                          | boolean | `false`       |
-
-## Event
-| field   | explain                                          | Callback Arguments  |
-|--------|----------------------------|----------|
-| onChange `v1.3.3` | Event triggered when the current score is modified | Current value   |
-
+| onChange | Event triggered when the current score is modified | (value: number) => void | - |
 
 ## Theming
 
@@ -209,5 +207,6 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
+| --nutui-rate-item-spacing | `14px` |
 | --nutui-rate-icon-color | `$primary-color` |
 | --nutui-rate-icon-void-color | `$disable-color` |

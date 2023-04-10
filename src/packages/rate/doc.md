@@ -109,11 +109,16 @@ export default App;
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
+import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
   return ( 
     <>   
-    <Rate activeColor="#FFC800" modelValue="3" />
+      <Rate
+        modelValue="3"
+        checkedIcon={<HeartFill1 color="red" />}
+        uncheckedIcon={<HeartFill1 color="yellow" />}
+      />
     </>
   );
 };  
@@ -184,22 +189,15 @@ export default App;
 
 | 字段                     | 说明                                      | 类型    | 默认值      |
 |------------------------|-------------------------------------------|---------|-------------|
-| modelValue             | 当前 star 数不能大于count | number | -           |
+| modelValue             | 当前 star 数不能大于 count | number | -           |
 | count                  | star 总数                                 | number | `5`           |
 | min  | 最少选中star数量                           | number | `0`           |
-| activeColor            | 图标选中颜色                              | string  | `#fa200c`     |
-| voidColor              | 图标未选中颜色                            | string  | `#ccc`        |
-| uncheckedIcon `v2.0.0 废弃` | 使用图标(未选中) | string  | `star-n`      |
-| checkedIcon            | 使用图标(选中) | `ReactNode`  | - |
+| uncheckedIcon | 使用图标(未选中) | ReactNode  | `star-n`      |
+| checkedIcon            | 使用图标(选中) | ReactNode  | `star-n` |
 | allowHalf              | 是否半星                                  | boolean | `false`       |
 | readOnly               | 是否只读                                  | boolean | `false`       |
 | disabled               | 是否禁用                                  | boolean | `false`       |
-
-## Event
-| 字段   | 说明                       | 回调参数 |
-|--------|----------------------------|----------|
-| onChange `v1.3.3` | 当前分值修改时时触发的事件 | 当前值   |
-
+| onChange | 当前 star 数修改时触发 | (value: number) => void | - |
 
 ## 主题定制
 
@@ -209,5 +207,6 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
+| --nutui-rate-item-spacing | `14px` |
 | --nutui-rate-icon-color | `$primary-color` |
 | --nutui-rate-icon-void-color | `$disable-color` |

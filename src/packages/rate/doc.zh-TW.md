@@ -109,11 +109,16 @@ export default App;
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
+import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
   return ( 
     <>   
-    <Rate activeColor="#FFC800" modelValue="3" />
+      <Rate
+        modelValue="3"
+        checkedIcon={<HeartFill1 color="red" />}
+        uncheckedIcon={<HeartFill1 color="yellow" />}
+      />
     </>
   );
 };  
@@ -184,22 +189,15 @@ export default App;
 
 | 字段           | 說明                                      | 類型    | 默認值      |
 |----------------|-------------------------------------------|---------|-------------|
-| modelValue        | 當前 star 數不能大於count | number | -           |
+| modelValue        | 當前 star 數不能大於 count | number | -           |
 | count          | star 總數                                 | number | `5`           |
 | min  | 最少選中star數量                          | number | `0`           |
-| activeColor   | 圖標選中顏色                              | string  | `#fa200c`     |
-| voidColor     | 圖標未選中顏色                          | string  | `#ccc`        |
-| uncheckedIcon `v2.0.0 废弃` | 使用圖標(未選中) | string  | `star-n`      |
-| checkedIcon            | 使用圖標(選中)  | `ReactNode`  | - |
+| uncheckedIcon | 使用圖標(未選中) | ReactNode  | `star-n`      |
+| checkedIcon            | 使用圖標(選中)  | ReactNode  | `star-n` |
 | allowHalf     | 是否半星                                  | boolean | `false`       |
 | readOnly       | 是否只讀                                 | boolean | `false`       |
 | disabled       | 是否禁用                                  | boolean | `false`       |
-
-## Event
-| 字段   | 說明                       | 回調參數 |
-|--------|----------------------------|----------|
-| onChange `v1.3.3`| 當前分值修改時時觸發的事件 | 當前值   |
-
+| onChange | 当前 star 数修改时触发 | (value: number) => void | - |
 
 ## 主題定制
 
@@ -209,5 +207,6 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
+| --nutui-rate-item-spacing | `14px` |
 | --nutui-rate-icon-color | `$primary-color` |
 | --nutui-rate-icon-void-color | `$disable-color` |

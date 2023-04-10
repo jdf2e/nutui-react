@@ -859,7 +859,7 @@ $notify-warning-background-color: linear-gradient(
 ) !default;
 
 // rate（✅）
-$rate-item-spacing: var(--nutui-rate-item-spacing, 14px) !default;
+$rate-item-margin: var(--nutui-rate-item-margin, 14px) !default;
 $rate-icon-color: var(--nutui-rate-icon-color, $primary-color) !default;
 $rate-icon-void-color: var(
   --nutui-rate-icon-void-color,
