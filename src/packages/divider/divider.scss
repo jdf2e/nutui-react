@@ -13,12 +13,14 @@
   font-size: $divider-text-font-size;
   color: $divider-text-color;
   margin: $divider-margin;
+  border: 0 solid currentColor;
   width: 100%;
 
   &::before,
   &::after {
     content: '';
-    border: $divider-line-height solid currentColor;
+    border-style: inherit;
+    border-color: inherit;
     border-width: $divider-line-height 0 0;
     height: $divider-line-height;
     flex: 1;
@@ -45,13 +47,6 @@
   &.nut-divider__right {
     &::after {
       max-width: 10%;
-    }
-  }
-
-  &.nut-divider__dashed {
-    &::before,
-    &::after {
-      border-style: dashed;
     }
   }
 

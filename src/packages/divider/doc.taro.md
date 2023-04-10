@@ -25,7 +25,7 @@ import { Divider } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <>
-    <Divider />
+      <Divider />
     </>
   );
 };
@@ -47,7 +47,7 @@ import { Divider } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <>
-        <Divider>文本</Divider>
+      <Divider>文本</Divider>
     </>
   );
 };
@@ -69,8 +69,8 @@ import { Divider } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <>
-        <Divider contentPosition="left">文本</Divider>
-        <Divider contentPosition="right">文本</Divider>
+      <Divider contentPosition="left">文本</Divider>
+      <Divider contentPosition="right">文本</Divider>
     </>
   );
 };
@@ -81,8 +81,6 @@ export default App;
 
 ### 虚线
 
-添加 dashed 属性使分割线渲染为虚线。
-
 :::demo
 
 ```tsx
@@ -92,7 +90,7 @@ import { Divider } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <>
-        <Divider dashed>文本</Divider>
+      <Divider style={{ borderStyle: 'dashed'}}>文本</Divider>
     </>
   );
 };
@@ -103,7 +101,7 @@ export default App;
 
 ### 自定义样式
 
-可以直接通过 styles 属性设置分割线的样式。
+可以直接通过 style 属性设置分割线的样式。
 
 :::demo
 
@@ -114,7 +112,7 @@ import { Divider } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <>
-        <Divider styles={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }}>文本</Divider>
+      <Divider styles={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px', borderStyle: 'dashed' }}>文本</Divider>
     </>
   );
 };
@@ -155,16 +153,8 @@ export default App;
 | 参数              | 说明                          | 类型    | 默认值 |
 |-----------------| ----------------------------- | ------- | ------ |
 | dashed          | 是否使用虚线                  | boolean | `false`  |
-| hairline        | 是否使用 0.5px 线             | boolean | `true`   |
-| contentPosition | 内容位置，可选值为 left right | string  | `center` |
-| styles          | 修改自定义样式                | CSSProperties     | -      |
+| style          | 修改自定义样式                | CSSProperties     | -      |
 | direction   | 水平还是垂直类型,可选值为 horizontal vertical               | string     | `horizontal`      |
-
-### Slots
-
-| 名称    | 说明 |
-| ------- | ---- |
-| default | 内容 |
 
 
 ## 主题定制

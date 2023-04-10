@@ -24,7 +24,7 @@ import { Divider } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-    <Divider />
+      <Divider />
     </>
   );
 };
@@ -46,7 +46,7 @@ import { Divider } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-        <Divider>Text</Divider>
+      <Divider>Text</Divider>
     </>
   );
 };
@@ -68,8 +68,8 @@ import { Divider } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-        <Divider contentPosition="left">Text</Divider>
-        <Divider contentPosition="right">Text</Divider>
+      <Divider contentPosition="left">Text</Divider>
+      <Divider contentPosition="right">Text</Divider>
     </>
   );
 };
@@ -80,7 +80,6 @@ export default App;
 
 ### Dashed
 
-Render dashed divider line with `dashed` attribute.
 
 :::demo
 
@@ -91,7 +90,7 @@ import { Divider } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-        <Divider dashed>Text</Divider>
+      <Divider style={{ borderStyle: 'dashed'}}>Text</Divider>
     </>
   );
 };
@@ -102,7 +101,7 @@ export default App;
 
 ### Custom Style
 
-User can custom divider style with `styles` attribute.
+User can custom divider style with `style` attribute.
 
 :::demo
 
@@ -113,7 +112,7 @@ import { Divider } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-        <Divider styles={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }}>Text</Divider>
+        <Divider styles={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px', borderStyle: 'dashed' }}>Text</Divider>
     </>
   );
 };
@@ -153,17 +152,9 @@ export default App;
 
 | Attribute            | Description                       | Type    | Default |
 | --------------- | ----------------------------- | ------- | ------ |
-| dashed          | Whether to use dashed border                  | boolean | `false`  |
-| hairline        | Whether to use hairline             | boolean | `true`   |
 | contentPosition | Content position, can be set to left or right   | string  | `center` |
-| styles          | Modify custom styles                | CSSProperties     | -      |
+| style          | Modify custom styles                | CSSProperties     | -      |
 | direction           | The direction of divider, can be set to horizontal or vertical            | string     | `horizontal`      |
-
-### Slots
-
-| Name    | Description |
-| ------- | ---- |
-| default | Default slot |
 
 
 ## Theming

@@ -29,6 +29,9 @@
 
 ### 布局组件
 #### Divider
+- 删除 `dashed`, 通过 style 属性实现
+- 删除 `hairline`, 默认为true
+- `styles` 重命名为 `style`
 #### Grid
 #### Layout
 #### Sticky

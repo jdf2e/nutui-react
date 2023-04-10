@@ -58,15 +58,22 @@ const DividerDemo = () => {
         </Cell>
         <h2>{translated.dashed}</h2>
         <Cell>
-          <Divider dashed>{translated.text}</Divider>
+          <Divider
+            style={{
+              borderStyle: 'dashed',
+            }}
+          >
+            {translated.text}
+          </Divider>
         </Cell>
         <h2>{translated.customStyle}</h2>
         <Cell>
           <Divider
-            styles={{
+            style={{
               color: '#1989fa',
               borderColor: '#1989fa',
               padding: '0 16px',
+              borderStyle: 'dashed',
             }}
           >
             {translated.text}

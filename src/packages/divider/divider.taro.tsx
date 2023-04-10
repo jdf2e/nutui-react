@@ -6,31 +6,18 @@ export type ContentPositionType = 'left' | 'center' | 'right'
 export type DirectionType = 'horizontal' | 'vertical'
 export interface DividerProps {
   contentPosition: ContentPositionType
-  dashed: boolean
-  hairline: boolean
-  styles?: React.CSSProperties
+  style?: React.CSSProperties
   className?: string
   direction?: DirectionType
 }
 const defaultProps = {
   contentPosition: 'center',
-  dashed: false,
-  hairline: true,
   direction: 'horizontal',
 } as DividerProps
 export const Divider: FunctionComponent<
   Partial<DividerProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const {
-    children,
-    contentPosition,
-    dashed,
-    hairline,
-    styles,
-    className,
-    direction,
-    ...rest
-  } = {
+  const { children, contentPosition, style, className, direction, ...rest } = {
     ...defaultProps,
     ...props,
   }
@@ -42,15 +29,14 @@ export const Divider: FunctionComponent<
           [dividerBem('center')]: children,
           [dividerBem('left')]: contentPosition === 'left',
           [dividerBem('right')]: contentPosition === 'right',
-          [dividerBem('dashed')]: dashed,
-          [dividerBem('hairline')]: hairline,
+          [dividerBem('hairline')]: true,
         })
       : classNames({
           [dividerBem()]: true,
           [dividerBem('vertical')]: direction === 'vertical',
         })
   return (
-    <div className={`${classes} ${className || ''}`} style={styles} {...rest}>
+    <div className={`${classes} ${className || ''}`} style={style} {...rest}>
       {children}
     </div>
   )
