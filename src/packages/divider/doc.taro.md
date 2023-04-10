@@ -10,8 +10,6 @@
 import { Divider } from '@nutui/nutui-react-taro';
 ```
 
-## 代码演示
-
 ### 基础用法
 
 默认渲染一条水平分割线。

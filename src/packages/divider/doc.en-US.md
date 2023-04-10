@@ -1,6 +1,6 @@
 # Divider 
 
-### Introduce
+### Intro
 
 Separate content into multiple areas.
 
@@ -10,7 +10,7 @@ Separate content into multiple areas.
 // react
 import { Divider } from '@nutui/nutui-react';
 ```
-### code demo
+
 ### Basic Usage
 
 Default render one horizontal divider line.
@@ -150,7 +150,7 @@ export default App;
 
 ### Props
 
-| Attribute            | Description                       | Type    | Default |
+| Property            | Description                       | Type    | Default |
 | --------------- | ----------------------------- | ------- | ------ |
 | contentPosition | Content position, can be set to left or right   | string  | `center` |
 | style          | Modify custom styles                | CSSProperties     | -      |
