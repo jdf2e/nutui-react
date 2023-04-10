@@ -1,4 +1,4 @@
-#  Rate 評分
+# Rate 評分
 
 ### 介紹
 
@@ -21,17 +21,34 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate modelValue={3} />
-    </>
+  return (
+    <Rate defaultValue={3} />
   );
 };  
 export default App;
 
 ```
 :::
-        
+
+### 受控方式
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  const [state, setState] = useState(2);
+  return (
+    <Rate value={score} onChange={(value) => setScore(value)} />
+  );
+};  
+export default App;
+```
+
+:::
+
 ### 半星  
 
 :::demo
@@ -40,10 +57,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate allowHalf modelValue="3.5" />
-    </>
+  return (
+    <Rate allowHalf defaultValue={3.5} />
   );
 };  
 export default App;
@@ -59,8 +74,8 @@ import { Rate } from '@nutui/nutui-react';
 import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
-  return ( 
-    <Rate checkedIcon={<HeartFill1 />} modelValue="3" />
+  return (
+    <Rate checkedIcon={<HeartFill1 />} defaultValue={3} />
   );
 };  
 export default App;
@@ -75,10 +90,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate count="6" modelValue="3" />
-    </>
+  return (
+    <Rate count="6" defaultValue={3} />
   );
 };  
 export default App;
@@ -93,10 +106,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate count="5" modelValue="2" min="3"/>
-    </>
+  return (
+    <Rate count={5} defaultValue={2} min={3}/>
   );
 };  
 export default App;
@@ -112,14 +123,12 @@ import { Rate } from '@nutui/nutui-react';
 import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
-  return ( 
-    <>   
-      <Rate
-        modelValue="3"
-        checkedIcon={<HeartFill1 color="red" />}
-        uncheckedIcon={<HeartFill1 color="yellow" />}
-      />
-    </>
+  return (
+    <Rate
+      defaultValue={3}
+      checkedIcon={<HeartFill1 color="red" />}
+      uncheckedIcon={<HeartFill1 color="yellow" />}
+    />
   );
 };  
 export default App;
@@ -134,10 +143,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate disabled modelValue="3" />
-    </>
+  return (
+    <Rate disabled defaultValue={3} />
   );
 };  
 export default App;
@@ -152,10 +159,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate modelValue="3" readOnly />
-    </>
+  return (
+    <Rate defaultValue={3} readOnly />
   );
 };  
 export default App;
@@ -173,10 +178,8 @@ const App = () => {
   const onChange = (val: any) => {
     alert(val)
   }
-  return ( 
-    <>   
-    <Rate modelValue="3" onChange={onChange} />
-    </>
+  return (
+    <Rate defaultValue={3} onChange={onChange} />
   );
 };  
 export default App;
@@ -189,7 +192,8 @@ export default App;
 
 | 字段           | 說明                                      | 類型    | 默認值      |
 |----------------|-------------------------------------------|---------|-------------|
-| modelValue        | 當前 star 數不能大於 count | number | -           |
+| defaultValue             | 非受控的 star 默認值 | number | `0`           |
+| value             | 受控的 star 數值 | number | `0`           |
 | count          | star 總數                                 | number | `5`           |
 | min  | 最少選中star數量                          | number | `0`           |
 | uncheckedIcon | 使用圖標(未選中) | ReactNode  | `star-n`      |

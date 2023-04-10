@@ -21,18 +21,35 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate modelValue={3} />
-    </>
+  return (
+    <Rate defaultValue={3} />
   );
 };  
 export default App;
 
 ```
 :::
-        
-### half star  
+
+### Controlled Mode
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  const [state, setState] = useState(2);
+  return (
+    <Rate value={score} onChange={(value) => setScore(value)} />
+  );
+};  
+export default App;
+```
+
+:::
+
+### Half Star
 
 :::demo
 ```tsx
@@ -40,10 +57,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate allowHalf modelValue="3.5" />
-    </>
+  return (
+    <Rate allowHalf defaultValue={3.5} />
   );
 };  
 export default App;
@@ -59,8 +74,8 @@ import { Rate } from '@nutui/nutui-react';
 import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
-  return ( 
-    <Rate checkedIcon={<HeartFill1 />} modelValue="3" />
+  return (
+    <Rate checkedIcon={<HeartFill1 />} defaultValue={3} />
   );
 };  
 export default App;
@@ -75,10 +90,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate count="6" modelValue="3" />
-    </>
+  return (
+    <Rate count="6" defaultValue={3} />
   );
 };  
 export default App;
@@ -93,10 +106,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate count="5" modelValue="2" min="3"/>
-    </>
+  return (
+    <Rate count={5} defaultValue={2} min={3}/>
   );
 };  
 export default App;
@@ -112,14 +123,12 @@ import { Rate } from '@nutui/nutui-react';
 import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
-  return ( 
-    <>   
-      <Rate
-        modelValue="3"
-        checkedIcon={<HeartFill1 color="red" />}
-        uncheckedIcon={<HeartFill1 color="yellow" />}
-      />
-    </>
+  return (
+    <Rate
+      defaultValue={3}
+      checkedIcon={<HeartFill1 color="red" />}
+      uncheckedIcon={<HeartFill1 color="yellow" />}
+    />
   );
 };  
 export default App;
@@ -134,10 +143,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate disabled modelValue="3" />
-    </>
+  return (
+    <Rate disabled defaultValue={3} />
   );
 };  
 export default App;
@@ -152,10 +159,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate modelValue="3" readOnly />
-    </>
+  return (
+    <Rate defaultValue={3} readOnly />
   );
 };  
 export default App;
@@ -173,10 +178,8 @@ const App = () => {
   const onChange = (val: any) => {
     alert(val)
   }
-  return ( 
-    <>   
-    <Rate modelValue="3" onChange={onChange} />
-    </>
+  return (
+    <Rate defaultValue={3} onChange={onChange} />
   );
 };  
 export default App;
@@ -189,7 +192,8 @@ export default App;
 
 | field           | explain                                 | type    | default    |
 |----------------|-------------------------------------------|---------|-------------|
-| modelValue     | The current number of stars <= count     | number   | -           |
+| defaultValue             | Uncontrolled star value | number | `0`           |
+| value             | Controlled star value | number | `0`           |
 | count          | total number of stars                    | number | `5`           |
 | min  | At least the number of STAR              | number | `0`           |
 | uncheckedIcon | Use icon (unchecked) | ReactNode  | `star-n`      |

@@ -2,23 +2,24 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { StarFillN } from '@nutui/icons-react'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export interface RateProps extends BasicComponent {
-  count: string | number
-  modelValue: string | number
-  min: string | number
+  count: number
+  value: number
+  defaultValue: number
+  min: number
   checkedIcon: React.ReactNode
   uncheckedIcon: React.ReactNode
   disabled: boolean
   readOnly: boolean
   allowHalf: boolean
-  onChange: (val: number) => void
+  onChange: (value: number) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
   count: 5,
-  modelValue: 0,
   min: 0,
   checkedIcon: null,
   uncheckedIcon: null,
@@ -31,7 +32,8 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     className,
     style,
     count,
-    modelValue,
+    value,
+    defaultValue,
     min,
     checkedIcon,
     uncheckedIcon,
@@ -47,7 +49,13 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   const classPrefix = 'nut-rate'
 
   const [countArray, setCountArray] = useState([1, 2, 3, 4, 5])
-  const [score, setScore] = useState(0)
+
+  const [score, setScore] = usePropsValue<number>({
+    value,
+    defaultValue: Math.max(defaultValue || 0, min),
+    finalValue: 0,
+    onChange,
+  })
 
   useEffect(() => {
     const tmp = []
@@ -56,10 +64,6 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     }
     setCountArray(tmp)
   }, [count])
-
-  useEffect(() => {
-    setScore(Math.max(Number(modelValue), Number(min)))
-  }, [modelValue])
 
   const renderIcon = (n: number) => {
     return n <= score
@@ -75,17 +79,15 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     if (!(index === 1 && score === index)) {
       value = index
     }
-    value = Math.max(value, Number(min))
+    value = Math.max(value, min)
     setScore(value)
-    onChange && onChange(value)
   }
 
-  const onHalfClick = (event: any, n: number) => {
+  const onHalfClick = (event: Event, n: number) => {
     event.preventDefault()
     event.stopPropagation()
-    const value = Math.max(Number(min), n - 0.5)
+    const value = Math.max(min, n - 0.5)
     setScore(value)
-    onChange && onChange(value)
   }
 
   return (
