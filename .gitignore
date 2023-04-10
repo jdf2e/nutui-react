@@ -7,6 +7,7 @@ node_modules
 /jd/upload.js
 yarn.lock
 package-lock.json
+pnpm-lock.yaml
 /cache
 /src/nutui.ts
 /src/nutui.react.ts
