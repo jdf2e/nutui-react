@@ -1,17 +1,14 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { StarFillN } from '@nutui/icons-react'
-import bem from '@/utils/bem'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface RateProps extends BasicComponent {
   count: string | number
   modelValue: string | number
   min: string | number
-  activeColor: string
-  voidColor: string
   checkedIcon: React.ReactNode
+  uncheckedIcon: React.ReactNode
   disabled: boolean
   readOnly: boolean
   allowHalf: boolean
@@ -23,9 +20,8 @@ const defaultProps = {
   count: 5,
   modelValue: 0,
   min: 0,
-  activeColor: '',
-  voidColor: '',
   checkedIcon: null,
+  uncheckedIcon: null,
   disabled: false,
   readOnly: false,
   allowHalf: false,
@@ -37,9 +33,8 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     count,
     modelValue,
     min,
-    activeColor,
-    voidColor,
     checkedIcon,
+    uncheckedIcon,
     disabled,
     readOnly,
     allowHalf,
@@ -48,8 +43,8 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     ...defaultProps,
     ...props,
   }
-  const b = bem('rate')
-  const bi = bem('rate-item')
+
+  const classPrefix = 'nut-rate'
 
   const [countArray, setCountArray] = useState([1, 2, 3, 4, 5])
   const [score, setScore] = useState(0)
@@ -66,15 +61,10 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     setScore(Math.max(Number(modelValue), Number(min)))
   }, [modelValue])
 
-  const renderIcon = (color: string) => {
-    return React.isValidElement(checkedIcon) ? (
-      React.cloneElement<any>(checkedIcon, {
-        ...checkedIcon.props,
-        color,
-      })
-    ) : (
-      <StarFillN color={color} />
-    )
+  const renderIcon = (n: number) => {
+    return n <= score
+      ? checkedIcon || <StarFillN />
+      : uncheckedIcon || <StarFillN />
   }
 
   const onClick = (e: React.MouseEvent, index: number) => {
@@ -99,23 +89,31 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   }
 
   return (
-    <div className={classNames(b(), className)} style={style}>
+    <div className={classNames(classPrefix, className)} style={style}>
       {countArray.map((n) => {
         return (
-          <div className={bi()} key={n} onClick={(event) => onClick(event, n)}>
+          <div
+            className={`${classPrefix}-item`}
+            key={n}
+            onClick={(event) => onClick(event, n)}
+          >
             <div
-              className={classNames(bi('icon'), {
-                [bi('icon--disabled')]: disabled || n > score,
+              className={classNames(`${classPrefix}-item__icon`, {
+                [`${classPrefix}-item__icon--disabled`]: disabled || n > score,
               })}
             >
-              {renderIcon(n <= score ? activeColor : voidColor)}
+              {renderIcon(n)}
             </div>
             {allowHalf && score > n - 1 && (
               <div
-                className={` ${bi('half')} ${bi('icon')} ${bi('icon--half')}`}
+                className={classNames(
+                  `${classPrefix}-item__half`,
+                  `${classPrefix}-item__icon`,
+                  `${classPrefix}-item__icon--half`
+                )}
                 onClick={(event) => onHalfClick(event, n)}
               >
-                {renderIcon(n <= score ? activeColor : voidColor)}
+                {renderIcon(n)}
               </div>
             )}
           </div>

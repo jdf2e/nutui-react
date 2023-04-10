@@ -53,7 +53,7 @@ const RateDemo = () => {
 
         <h2>{translated.halfStar}</h2>
         <Cell>
-          <Rate allowHalf modelValue="3.5" checkedIcon={<HeartFill1 />} />
+          <Rate allowHalf modelValue="3.5" />
         </Cell>
 
         <h2>{translated.customIcon}</h2>
@@ -73,7 +73,11 @@ const RateDemo = () => {
 
         <h2>{translated.customColor}</h2>
         <Cell>
-          <Rate activeColor="#FFC800" modelValue="3" />
+          <Rate
+            modelValue="3"
+            checkedIcon={<HeartFill1 color="red" />}
+            uncheckedIcon={<HeartFill1 color="yellow" />}
+          />
         </Cell>
 
         <h2>{translated.disabled}</h2>

@@ -2,19 +2,17 @@ import * as React from 'react'
 import { useState } from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-
+import { HeartFill, Heart1 } from '@nutui/icons-react'
 import { Rate } from '../rate'
 
 const publicCls =
   'nut-rate-item__icon nut-rate-item__icon--disabled nut-icon nutui-iconfont'
-test('count & modelValue & checkedIcon & uncheckedIcon & readOnly & activeColor & voidColor & onChange test', () => {
+test('count & modelValue & checkedIcon & uncheckedIcon & readOnly & onChange test', () => {
   const state = {
-    voidColor: 'rgb(250, 104, 93)',
-    activeColor: 'red',
     count: 5,
     modelValue: 1,
-    checkedIcon: 'star-fill-n',
-    uncheckedIcon: 'star-n',
+    checkedIcon: <HeartFill />,
+    uncheckedIcon: <Heart1 />,
   }
 
   const RateParent: React.FunctionComponent<any> = () => {
@@ -27,11 +25,10 @@ test('count & modelValue & checkedIcon & uncheckedIcon & readOnly & activeColor 
       <>
         <div className="curModelValue">{curModelValue}</div>
         <Rate
-          voidColor={state.voidColor}
-          activeColor={state.activeColor}
           count={state.count}
           modelValue={state.modelValue}
           checkedIcon={state.checkedIcon}
+          uncheckedIcon={state.uncheckedIcon}
           onChange={handleChange}
         />
       </>
