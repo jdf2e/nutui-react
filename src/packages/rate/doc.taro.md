@@ -94,7 +94,7 @@ import { Rate } from '@nutui/nutui-react-taro';
 const App = () => {
   return ( 
     <>   
-    <Rate count="5" modelValue="2" minimizeValue="3"/>
+    <Rate count="5" modelValue="2" min="3"/>
     </>
   );
 };  
@@ -204,7 +204,7 @@ export default App;
 |------------------------|-------------------------------------------|---------|-------------|
 | modelValue             | 当前 star 数不能大于count | number | -           |
 | count                  | star 总数                                 | number | `5`           |
-| minimizeValue  | 最少选中star数量                           | number | `0`           |
+| min  | 最少选中star数量                           | number | `0`           |
 | iconSize               | star 大小                                 | number | `18`          |
 | activeColor            | 图标选中颜色                              | string  | `#fa200c`     |
 | voidColor              | 图标未选中颜色                            | string  | `#ccc`        |

@@ -95,7 +95,7 @@ import { Rate } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Rate count="5" modelValue="2" minimizeValue="3"/>
+    <Rate count="5" modelValue="2" min="3"/>
     </>
   );
 };  
@@ -205,7 +205,7 @@ export default App;
 |----------------|-------------------------------------------|---------|-------------|
 | modelValue        | 當前 star 數不能大於count | number | -           |
 | count          | star 總數                                 | number | `5`           |
-| minimizeValue  | 最少選中star數量                          | number | `0`           |
+| min  | 最少選中star數量                          | number | `0`           |
 | iconSize      | star 大小                                 | number | `18`          |
 | activeColor   | 圖標選中顏色                              | string  | `#fa200c`     |
 | voidColor     | 圖標未選中顏色                          | string  | `#ccc`        |

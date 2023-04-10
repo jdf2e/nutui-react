@@ -71,11 +71,7 @@ const RateDemo = () => {
 
         <h2>{translated.minimumNumber}</h2>
         <Cell>
-          <Rate
-            modelValue="2"
-            minimizeValue={3}
-            onChange={(num) => console.log(num)}
-          />
+          <Rate modelValue="2" min={3} onChange={(num) => console.log(num)} />
         </Cell>
 
         <h2>{translated.customColor}</h2>

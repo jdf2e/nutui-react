@@ -95,7 +95,7 @@ import { Rate } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Rate count="5" modelValue="2" minimizeValue="3"/>
+    <Rate count="5" modelValue="2" min="3"/>
     </>
   );
 };  
@@ -205,7 +205,7 @@ export default App;
 |----------------|-------------------------------------------|---------|-------------|
 | modelValue     | The current number of stars <= count     | number   | -           |
 | count          | total number of stars                    | number | `5`           |
-| minimizeValue  | At least the number of STAR              | number | `0`           |
+| min  | At least the number of STAR              | number | `0`           |
 | iconSize      | size of star                              | number | `18`          |
 | activeColor   | Icon selection color                      | string  | `#fa200c`     |
 | voidColor     | Icon unselected color                    | string  | `#ccc`        |

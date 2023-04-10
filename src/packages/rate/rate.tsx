@@ -8,7 +8,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export interface RateProps extends BasicComponent {
   count: string | number
   modelValue: string | number
-  minimizeValue: string | number
+  min: string | number
   iconSize: string | number
   activeColor: string
   voidColor: string
@@ -24,7 +24,7 @@ const defaultProps = {
   ...ComponentDefaults,
   count: 5,
   modelValue: 0,
-  minimizeValue: 0,
+  min: 0,
   iconSize: 18,
   activeColor: '',
   voidColor: '',
@@ -40,7 +40,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     style,
     count,
     modelValue,
-    minimizeValue,
+    min,
     iconSize,
     activeColor,
     voidColor,
@@ -69,7 +69,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   }, [count])
 
   useEffect(() => {
-    setScore(Math.max(Number(modelValue), Number(minimizeValue)))
+    setScore(Math.max(Number(modelValue), Number(min)))
   }, [modelValue])
 
   const pxCheck = (value: string | number): string => {
@@ -97,7 +97,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     if (!(index === 1 && score === index)) {
       value = index
     }
-    value = Math.max(value, Number(minimizeValue))
+    value = Math.max(value, Number(min))
     setScore(value)
     onChange && onChange(value)
   }
@@ -105,7 +105,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   const onHalfClick = (event: any, n: number) => {
     event.preventDefault()
     event.stopPropagation()
-    const value = Math.max(Number(minimizeValue), n - 0.5)
+    const value = Math.max(Number(min), n - 0.5)
     setScore(value)
     onChange && onChange(value)
   }
