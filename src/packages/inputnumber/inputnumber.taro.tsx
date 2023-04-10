@@ -8,7 +8,6 @@ import React, {
 } from 'react'
 import { Minus, Plus } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -50,6 +49,7 @@ const defaultProps = {
   async: false,
 } as InputNumberProps
 
+const classPrefix = `nut-inputnumber`
 export const InputNumber: FunctionComponent<
   Partial<InputNumberProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'onBlur'>
@@ -91,14 +91,14 @@ export const InputNumber: FunctionComponent<
     }
   }, [value, formatter])
 
-  const b = bem('inputnumber')
   const classes = classNames(
     {
-      [`${b('')}--disabled`]: disabled,
+      [`${classPrefix}`]: true,
+      [`${classPrefix}--disabled`]: disabled,
     },
-    className,
-    b('')
+    className
   )
+
   const styles = {
     ...style,
   }

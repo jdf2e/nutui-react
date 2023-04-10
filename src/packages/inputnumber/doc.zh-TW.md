@@ -252,18 +252,15 @@ export default App;
 | disabled       | 禁用所有功能               | boolean        | `false`      |
 | readonly       | 只讀狀態禁用輸入框操作行為 | boolean        | `false`      |
 | async       | 支持異步修改 | boolean        | `false`      |
-| formatter       | 指定输入框展示值的格式 | function(value: number | string): string        | -     |
+| formatter       | 指定输入框展示值的格式 | function(value: number \| string): string        | -     |
+| onPlus        | 點擊增加按鈕時觸發     | `(e: MouseEvent) => void`                   | - |
+| onMinus     | 點擊減少按鈕時觸發     | `(e: MouseEvent) => void`                   | - |
+| onOverlimit  | 點擊不可用的按鈕時觸發 | `(e: MouseEvent) => void`                   | - |
+| onChange      | 值改變時觸發           | `(param: string \| number, e: MouseEvent \| ChangeEvent<HTMLInputElement>) => void` | - |
+| onBlur      | 輸入框失去焦點時觸發   | `(e: ChangeEvent<HTMLInputElement>) => void`                   | - |
+| onFocus      | 輸入框獲得焦點時觸發   | `(e: FocusEvent<HTMLInputElement>) => void`                   | - |
 
-### Events
 
-| 事件名    | 說明                   | 回調參數                       |
-|-----------|------------------------|--------------------------------|
-| onPlus        | 點擊增加按鈕時觸發     | `event: Event`                   |
-| onMinus     | 點擊減少按鈕時觸發     | `event: Event`                   |
-| onOverlimit  | 點擊不可用的按鈕時觸發 | `event: Event`                   |
-| onChange      | 值改變時觸發           | `value: number, event: Event` |
-| onBlur      | 輸入框失去焦點時觸發   | `event: Event`                   |
-| onFocus      | 輸入框獲得焦點時觸發   | `event: Event`                   |
 
 ## 主題定制
 

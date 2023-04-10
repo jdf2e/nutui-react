@@ -241,7 +241,7 @@ export default App;
 
 ### Props
 
-| Attribute           | Description                       | Type           | Default     |
+| Property           | Description                       | Type           | Default     |
 |----------------|----------------------------|----------------|------------|
 | allowEmpty        | Whether to allow the content to be empty                     | boolean |   false          |
 | defaultValue        | Defaults                     | string \| number |  0         |
@@ -253,18 +253,14 @@ export default App;
 | disabled       | Disable all features               | boolean        | `false`      |
 | readonly       | Read only status disables input box operation behavior | boolean        | `false`      |
 | async       | Support for asynchronous modification | boolean        | `false`      |
-| formatter        | Specifies the format of the value displayed in the input box | function(value: number | string): string        | -     |
+| formatter        | Specifies the format of the value displayed in the input box | function(value: number \| string): string        | -     |
+| onPlus        | Triggered when the Add button is clicked     | `(e: MouseEvent) => void`                   | - |
+| onMinus     | Triggered when the decrease button is clicked     | `(e: MouseEvent) => void`                   | - |
+| onOverlimit  | Triggered when an unavailable button is clicked | `(e: MouseEvent) => void`                   | - |
+| onChange      | Triggered when the value changes           | `(param: string \| number, e: MouseEvent \| ChangeEvent<HTMLInputElement>) => void` | - |
+| onBlur        | Triggered when the input box blur   | `(e: ChangeEvent<HTMLInputElement>) => void`                   | - |
+| onFocus      | Triggered when the input box focus   | `(e: FocusEvent<HTMLInputElement>) => void`                   | - |
 
-### Events
-
-| Event    | Description                   | Arguments                       |
-|-----------|------------------------|--------------------------------|
-| onPlus        | Triggered when the Add button is clicked     | `event: Event`                   |
-| onMinus     | Triggered when the decrease button is clicked     | `event: Event`                   |
-| onOverlimit  | Triggered when an unavailable button is clicked | `event: Event`                   |
-| onChange      | Triggered when the value changes           | `value: number, event: Event` |
-| onBlur        | Triggered when the input box blur   | `event: Event`                   |
-| onFocus      | Triggered when the input box focus   | `event: Event`                   |
 
 ## Theming
 
@@ -272,27 +268,22 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-inputnumber-button-width`v1.4.8` | `20px` |
-| --nutui-inputnumber-button-height`v1.4.8` | `20px` |
-| --nutui-inputnumber-button-border-radius`v1.4.8` | `30px` |
-| --nutui-inputnumber-button-background-color`v1.4.8` | `$gray6` |
-| --nutui-inputnumber-icon-color | `$title-color` |
-| --nutui-inputnumber-icon-void-color | `$disable-color` |
-| --nutui-inputnumber-icon-disabled-color | `$gray2` |
-| --nutui-inputnumber-icon-size | `20px` |
-| --nutui-inputnumber-input-font-size | `12px` |
-| --nutui-inputnumber-input-font-color | `$gray1` |
-| --nutui-inputnumber-input-background-color | `$gray4` |
-| --nutui-inputnumber-input-border-radius | `4px` |
-| --nutui-inputnumber-input-width | `40px` |
-| --nutui-inputnumber-input-height | `24px`|
-| --nutui-inputnumber-input-margin | `0 6px` |
-| --nutui-inputnumber-input-border | `0` |
-| --nutui-inputnumber-border | `0` |
-| --nutui-inputnumber-border-radius | `0` |
-| --nutui-inputnumber-height | `auto` |
-| --nutui-inputnumber-line-height | `normal` |
-| --nutui-inputnumber-border-box | `content-box` |
-| --nutui-inputnumber-display | `flex` |
+| Name | Description | Default Value |
+| --- | --- | --- |
+| --nutui-inputnumber-button-width  | The width of the left and right buttons of the number input box | `20px` |
+| --nutui-inputnumber-button-height | The height of the left and right buttons of the number input box | `20px` |
+| --nutui-inputnumber-button-border-radius | The rounded corners of the left and right buttons of the number input box | `30px` |
+| --nutui-inputnumber-button-background-color | The background color of the left and right buttons of the number input box | ` $gray6` |
+| --nutui-inputnumber-icon-color | The color of the icon in the number input box | `  $title-color` |
+| --nutui-inputnumber-icon-void-color | Disable the font size color of the input in the number input box |`  $disable-color` |
+| --nutui-inputnumber-icon-disabled-color | The color of the disabled icon in the number input box |`  $gray2` |
+| --nutui-inputnumber-input-font-size | The font size of the input in the number input box | `  12px` |
+| --nutui-inputnumber-input-font-color | 
+The font size color of the input in the number input box | `  $gray1` |
+| --nutui-inputnumber-input-background-color | The background color of the input in the number input box |`  $gray4` |
+| --nutui-inputnumber-input-border-radius | The rounded corners of the input in the number input box | `  4px` |
+| --nutui-inputnumber-input-width | The width of the input in the number input box | ` 40px` |
+| --nutui-inputnumber-input-height | The height of the input in the number input box | ` 24px`|
+| --nutui-inputnumber-input-margin | The margin value of the input in the number input box | `  0 6px` |
+| --nutui-inputnumber-input-border | The border value of the input in the number input box | ` 0` |
+| --nutui-inputnumber-display |  The overall display layout of the digital input box |` flex` |

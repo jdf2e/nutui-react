@@ -253,18 +253,14 @@ export default App;
 | disabled       | 禁用所有功能               | boolean        | `false`      |
 | readonly       | 只读状态禁用输入框操作行为 | boolean        | `false`      |
 | async       | 支持异步修改 | boolean        | `false`      |
-| formatter       | 指定输入框展示值的格式 | function(value: number | string): string        | -     |
+| formatter       | 指定输入框展示值的格式 | function(value: number \| string): string        | -     |
+| onPlus       | 点击增加按钮时触发     | (e: MouseEvent) => void                   | - |
+| onMinus    | 点击减少按钮时触发     | (e: MouseEvent) => void                   | - |
+| onOverlimit  | 点击不可用的按钮时触发 | (e: MouseEvent) => void                   | - |
+| onChange      | 值改变时触发           | (param: string \| number, e: MouseEvent \| ChangeEvent<HTMLInputElement>) => void | - |
+| onFocus      | 输入框获得焦点时触发   | (e: FocusEvent<HTMLInputElement>) => void                   | - |
+| onBlur      | 输入框失去焦点时触发   | (e: ChangeEvent<HTMLInputElement>) => void                   | - |
 
-### Events
-
-| 事件名    | 说明                   | 回调参数                       |
-|-----------|------------------------|--------------------------------|
-| onPlus       | 点击增加按钮时触发     | event: Event                   |
-| onMinus    | 点击减少按钮时触发     | event: Event                   |
-| onOverlimit  | 点击不可用的按钮时触发 | event: Event                   |
-| onChange      | 值改变时触发           | value:  number , event : Event |
-| onFocus      | 输入框获得焦点时触发   | event: Event                   |
-| onBlur      | 输入框失去焦点时触发   | event: Event                   |
 
 ## 主题定制
 
@@ -272,27 +268,21 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-inputnumber-button-width`v1.4.8` | `20px` |
-| --nutui-inputnumber-button-height`v1.4.8` | `20px` |
-| --nutui-inputnumber-button-border-radius`v1.4.8` | `30px` |
-| --nutui-inputnumber-button-background-color`v1.4.8` | ` $gray6` |
-| --nutui-inputnumber-icon-color | `  $title-color` |
-| --nutui-inputnumber-icon-void-color | `  $disable-color` |
-| --nutui-inputnumber-icon-disabled-color | `  $gray2` |
-| --nutui-inputnumber-icon-size | ` 20px` |
-| --nutui-inputnumber-input-font-size | `  12px` |
-| --nutui-inputnumber-input-font-color | `  $gray1` |
-| --nutui-inputnumber-input-background-color | `  $gray4` |
-| --nutui-inputnumber-input-border-radius | `  4px` |
-| --nutui-inputnumber-input-width | ` 40px` |
-| --nutui-inputnumber-input-height | ` 24px`|
-| --nutui-inputnumber-input-margin | `  0 6px` |
-| --nutui-inputnumber-input-border | ` 0` |
-| --nutui-inputnumber-border | ` 0` |
-| --nutui-inputnumber-border-radius | ` 0` |
-| --nutui-inputnumber-height | ` auto` |
-| --nutui-inputnumber-line-height | ` normal` |
-| --nutui-inputnumber-border-box | `  content-box` |
-| --nutui-inputnumber-display | ` flex` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-inputnumber-button-width  | 数字输入框左右按钮的宽度 | `20px` |
+| --nutui-inputnumber-button-height | 数字输入框左右按钮的高度 | `20px` |
+| --nutui-inputnumber-button-border-radius | 数字输入框左右按钮的圆角 | `30px` |
+| --nutui-inputnumber-button-background-color | 数字输入框左右按钮的背景色 | ` $gray6` |
+| --nutui-inputnumber-icon-color | 数字输入框中icon的颜色 | `  $title-color` |
+| --nutui-inputnumber-icon-void-color | 数字输入框中禁用input的字号颜色 |`  $disable-color` |
+| --nutui-inputnumber-icon-disabled-color | 数字输入框中禁用icon的颜色 |`  $gray2` |
+| --nutui-inputnumber-input-font-size | 数字输入框中input的字号大小 | `  12px` |
+| --nutui-inputnumber-input-font-color | 数字输入框中input的字号颜色 | `  $gray1` |
+| --nutui-inputnumber-input-background-color | 数字输入框中input的背景颜色 |`  $gray4` |
+| --nutui-inputnumber-input-border-radius | 数字输入框中input的圆角 | `  4px` |
+| --nutui-inputnumber-input-width | 数字输入框中input的宽度 | ` 40px` |
+| --nutui-inputnumber-input-height | 数字输入框中input的高度 | ` 24px`|
+| --nutui-inputnumber-input-margin | 数字输入框中input的margin值 | `  0 6px` |
+| --nutui-inputnumber-input-border | 数字输入框中input的border值 | ` 0` |
+| --nutui-inputnumber-display |  数字输入框整体的display布局 |` flex` |
