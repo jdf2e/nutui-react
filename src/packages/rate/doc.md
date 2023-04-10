@@ -219,6 +219,6 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-rate-item-spacing | `14px` |
+| --nutui-rate-item-margin | `14px` |
 | --nutui-rate-icon-color | `$primary-color` |
 | --nutui-rate-icon-void-color | `$disable-color` |

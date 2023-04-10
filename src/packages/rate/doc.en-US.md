@@ -211,6 +211,6 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-rate-item-spacing | `14px` |
+| --nutui-rate-item-margin | `14px` |
 | --nutui-rate-icon-color | `$primary-color` |
 | --nutui-rate-icon-void-color | `$disable-color` |
