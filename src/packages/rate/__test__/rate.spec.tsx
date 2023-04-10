@@ -7,13 +7,12 @@ import { Rate } from '../rate'
 
 const publicCls =
   'nut-rate-item__icon nut-rate-item__icon--disabled nut-icon nutui-iconfont'
-test('count & modelValue & checkedIcon & uncheckedIcon & readOnly & iconSize & activeColor & voidColor & onChange test', () => {
+test('count & modelValue & checkedIcon & uncheckedIcon & readOnly & activeColor & voidColor & onChange test', () => {
   const state = {
     voidColor: 'rgb(250, 104, 93)',
     activeColor: 'red',
     count: 5,
     modelValue: 1,
-    iconSize: 18,
     checkedIcon: 'star-fill-n',
     uncheckedIcon: 'star-n',
   }
@@ -32,7 +31,6 @@ test('count & modelValue & checkedIcon & uncheckedIcon & readOnly & iconSize & a
           activeColor={state.activeColor}
           count={state.count}
           modelValue={state.modelValue}
-          iconSize={state.iconSize}
           checkedIcon={state.checkedIcon}
           onChange={handleChange}
         />

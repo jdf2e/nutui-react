@@ -177,25 +177,6 @@ const App = () => {
 export default App;
 
 ```
-:::
-### 自定義尺寸 35px  
-
-:::demo
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
-
-const App = () => {
-  return ( 
-    <>   
-    <Rate modelValue="3" iconSize="35" />
-    </>
-  );
-};  
-export default App;
-
-```
-:::
 
 ## API
 
@@ -206,7 +187,6 @@ export default App;
 | modelValue        | 當前 star 數不能大於count | number | -           |
 | count          | star 總數                                 | number | `5`           |
 | min  | 最少選中star數量                          | number | `0`           |
-| iconSize      | star 大小                                 | number | `18`          |
 | activeColor   | 圖標選中顏色                              | string  | `#fa200c`     |
 | voidColor     | 圖標未選中顏色                          | string  | `#ccc`        |
 | uncheckedIcon `v2.0.0 废弃` | 使用圖標(未選中) | string  | `star-n`      |

@@ -177,25 +177,6 @@ const App = () => {
 export default App;
 
 ```
-:::
-### custom iconSize 35px  
-
-:::demo
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
-
-const App = () => {
-  return ( 
-    <>   
-    <Rate modelValue="3" iconSize="35" />
-    </>
-  );
-};  
-export default App;
-
-```
-:::
 
 ## API
 
@@ -206,7 +187,6 @@ export default App;
 | modelValue     | The current number of stars <= count     | number   | -           |
 | count          | total number of stars                    | number | `5`           |
 | min  | At least the number of STAR              | number | `0`           |
-| iconSize      | size of star                              | number | `18`          |
 | activeColor   | Icon selection color                      | string  | `#fa200c`     |
 | voidColor     | Icon unselected color                    | string  | `#ccc`        |
 | uncheckedIcon `v2.0.0 Abandon` | Use icon (unchecked) | string  | `star-n`      |

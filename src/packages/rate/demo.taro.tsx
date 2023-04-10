@@ -17,7 +17,6 @@ const RateDemo = () => {
       disabled: '禁用状态',
       readOnly: '只读状态',
       event: '绑定事件',
-      customSize: '自定义大小 35px',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -29,7 +28,6 @@ const RateDemo = () => {
       disabled: '禁用狀態',
       readOnly: '只讀狀態',
       event: '綁定事件',
-      customSize: '自定義大小 35px',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -41,7 +39,6 @@ const RateDemo = () => {
       disabled: 'Disabled',
       readOnly: 'Readonly',
       event: 'Event',
-      customSize: 'Custom Size 35px',
     },
   })
   const onChange = (val: any) => {
@@ -102,11 +99,6 @@ const RateDemo = () => {
         <h2>{translated.event}</h2>
         <Cell>
           <Rate modelValue="3" onChange={onChange} />
-        </Cell>
-
-        <h2>{translated.customSize}</h2>
-        <Cell>
-          <Rate modelValue="3" iconSize="35" />
         </Cell>
       </div>
     </>

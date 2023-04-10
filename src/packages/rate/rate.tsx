@@ -9,7 +9,6 @@ export interface RateProps extends BasicComponent {
   count: string | number
   modelValue: string | number
   min: string | number
-  iconSize: string | number
   activeColor: string
   voidColor: string
   checkedIcon: React.ReactNode
@@ -24,7 +23,6 @@ const defaultProps = {
   count: 5,
   modelValue: 0,
   min: 0,
-  iconSize: 18,
   activeColor: '',
   voidColor: '',
   checkedIcon: null,
@@ -39,7 +37,6 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     count,
     modelValue,
     min,
-    iconSize,
     activeColor,
     voidColor,
     checkedIcon,
@@ -69,20 +66,14 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     setScore(Math.max(Number(modelValue), Number(min)))
   }, [modelValue])
 
-  const pxCheck = (value: string | number): string => {
-    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
-  }
-
-  const renderIcon = (size: string | number = iconSize, color: string) => {
+  const renderIcon = (color: string) => {
     return React.isValidElement(checkedIcon) ? (
       React.cloneElement<any>(checkedIcon, {
         ...checkedIcon.props,
-        width: size,
-        height: size,
         color,
       })
     ) : (
-      <StarFillN width={size} height={size} color={color} />
+      <StarFillN color={color} />
     )
   }
 
@@ -117,14 +108,14 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
                 [bi('icon--disabled')]: disabled || n > score,
               })}
             >
-              {renderIcon(iconSize, n <= score ? activeColor : voidColor)}
+              {renderIcon(n <= score ? activeColor : voidColor)}
             </div>
             {allowHalf && score > n - 1 && (
               <div
                 className={` ${bi('half')} ${bi('icon')} ${bi('icon--half')}`}
                 onClick={(event) => onHalfClick(event, n)}
               >
-                {renderIcon(iconSize, n <= score ? activeColor : voidColor)}
+                {renderIcon(n <= score ? activeColor : voidColor)}
               </div>
             )}
           </div>
