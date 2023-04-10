@@ -52,6 +52,12 @@
 #### Form
 #### Input
 #### InputNumber
+- 增加 `allowEmpty`, 是否允许内容为空
+- 优化新增 `value`和 `defaultValue` , 增加默认值和受控
+- `decimalPlaces` 重命名为 `digits`
+- `isAsync` 重命名为 `async`
+- 删除 `inputWidth` 和 `buttonSize`, 通过css变量实现
+- 新增taro的`formatter`属性开发
 #### NumberKeyboard
 #### Picker
 #### Radio
