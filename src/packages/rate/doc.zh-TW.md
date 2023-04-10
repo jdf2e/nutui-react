@@ -214,7 +214,6 @@ export default App;
 | allowHalf     | 是否半星                                  | boolean | `false`       |
 | readOnly       | 是否只讀                                 | boolean | `false`       |
 | disabled       | 是否禁用                                  | boolean | `false`       |
-| spacing        | 間距                                      | number | `20`          |
 
 ## Event
 | 字段   | 說明                       | 回調參數 |

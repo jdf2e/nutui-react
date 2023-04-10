@@ -7,11 +7,10 @@ import { Rate } from '../rate'
 
 const publicCls =
   'nut-rate-item__icon nut-rate-item__icon--disabled nut-icon nutui-iconfont'
-test('spacing & count & modelValue & checkedIcon & uncheckedIcon & readOnly & iconSize & activeColor & voidColor & onChange test', () => {
+test('count & modelValue & checkedIcon & uncheckedIcon & readOnly & iconSize & activeColor & voidColor & onChange test', () => {
   const state = {
     voidColor: 'rgb(250, 104, 93)',
     activeColor: 'red',
-    spacing: '12',
     count: 5,
     modelValue: 1,
     iconSize: 18,
@@ -31,7 +30,6 @@ test('spacing & count & modelValue & checkedIcon & uncheckedIcon & readOnly & ic
         <Rate
           voidColor={state.voidColor}
           activeColor={state.activeColor}
-          spacing={state.spacing}
           count={state.count}
           modelValue={state.modelValue}
           iconSize={state.iconSize}
@@ -62,7 +60,6 @@ test('spacing & count & modelValue & checkedIcon & uncheckedIcon & readOnly & ic
       'style',
       'color: rgb(250, 104, 93); font-size: 18px; height: 18px; width: 18px;'
     )
-    expect(el[0]).toHaveAttribute('style', 'margin-right: 12px;') // spacing
 
     fireEvent.click(el[1])
     expect(valueEl.innerHTML).toBe('2') // onChange api test

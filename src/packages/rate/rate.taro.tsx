@@ -16,7 +16,6 @@ export interface RateProps extends BasicComponent {
   disabled: boolean
   readOnly: boolean
   allowHalf: boolean
-  spacing: string | number
   onChange: (val: number) => void
 }
 
@@ -32,7 +31,6 @@ const defaultProps = {
   disabled: false,
   readOnly: false,
   allowHalf: false,
-  spacing: 14,
 } as RateProps
 export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   const {
@@ -48,7 +46,6 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     disabled,
     readOnly,
     allowHalf,
-    spacing,
     onChange,
   } = {
     ...defaultProps,
@@ -110,12 +107,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     <div className={classNames(b(), className)} style={style}>
       {countArray.map((n) => {
         return (
-          <div
-            className={bi()}
-            key={n}
-            onClick={(event) => onClick(event, n)}
-            style={{ marginRight: pxCheck(spacing) }}
-          >
+          <div className={bi()} key={n} onClick={(event) => onClick(event, n)}>
             <div
               className={classNames(bi('icon'), {
                 [bi('icon--disabled')]: disabled || n > score,

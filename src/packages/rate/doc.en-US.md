@@ -214,7 +214,6 @@ export default App;
 | allowHalf     | Half star or not                         | boolean | `false`       |
 | readOnly       |Read only                              | boolean | `false`       |
 | disabled       | Disable or not                          | boolean | `false`       |
-| spacing        | spacing                                  | number | `20`          |
 
 ## Event
 | field   | explain                                          | Callback Arguments  |
