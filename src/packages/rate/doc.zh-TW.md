@@ -209,8 +209,8 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-rate-item-margin | `14px` |
-| --nutui-rate-icon-color | `$primary-color` |
-| --nutui-rate-icon-void-color | `$disable-color` |
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| --nutui-rate-item-margin | 間距 | `14px` |
+| --nutui-rate-icon-color | icon 激活顏色 | `$primary-color` |
+| --nutui-rate-icon-void-color | icon 未激活顏色 | `$disable-color` |

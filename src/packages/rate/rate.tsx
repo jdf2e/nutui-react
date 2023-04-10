@@ -83,7 +83,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     setScore(value)
   }
 
-  const onHalfClick = (event: Event, n: number) => {
+  const onHalfClick = (event: any, n: number) => {
     event.preventDefault()
     event.stopPropagation()
     const value = Math.max(min, n - 0.5)

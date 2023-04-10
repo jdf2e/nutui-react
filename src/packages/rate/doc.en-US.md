@@ -209,8 +209,8 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-rate-item-margin | `14px` |
-| --nutui-rate-icon-color | `$primary-color` |
-| --nutui-rate-icon-void-color | `$disable-color` |
+| Name | Description | Default Value |
+| --- | --- | --- |
+| --nutui-rate-item-margin | padding | `14px` |
+| --nutui-rate-icon-color | checked icon color | `$primary-color` |
+| --nutui-rate-icon-void-color | unchecked icon color  | `$disable-color` |
