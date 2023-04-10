@@ -91,8 +91,8 @@
   "dependencies": {
     "@babel/runtime": "^7.16.5",
     "@bem-react/classname": "^1.5.10",
-    "@nutui/icons-react": "0.0.1-beta.5",
-    "@nutui/icons-react-taro": "0.0.1-beta.5",
+    "@nutui/icons-react": "0.0.1-beta.7",
+    "@nutui/icons-react-taro": "0.0.1-beta.7",
     "@react-spring/web": "~9.6.1",
     "@use-gesture/react": "10.2.20",
     "async-validator": "^4.2.5",
