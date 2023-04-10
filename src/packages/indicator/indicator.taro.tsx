@@ -3,18 +3,14 @@ import classNames from 'classnames'
 import bem from '@/utils/bem'
 
 export interface IndicatorProps {
-  size: number
+  total: number
   current: number
-  block: boolean
-  align: 'left' | 'right' | 'center'
   fillZero: boolean
   vertical: boolean
 }
 const defaultProps = {
-  size: 3,
+  total: 3,
   current: 1,
-  block: false,
-  align: 'center',
   fillZero: true,
   vertical: false,
 } as IndicatorProps
@@ -22,32 +18,20 @@ const defaultProps = {
 export const Indicator: FunctionComponent<
   Partial<IndicatorProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const {
-    size,
-    current,
-    block,
-    align,
-    fillZero,
-    children,
-    className,
-    vertical,
-    ...rest
-  } = {
+  const { total, current, fillZero, children, className, vertical, ...rest } = {
     ...defaultProps,
     ...props,
   }
   const b = bem('indicator')
   const classes = classNames(
     {
-      [`${b('block')}`]: block,
-      [`${b('align')}__${align}`]: block && align,
       [`${b('vertical')}`]: vertical,
     },
     b('')
   )
   const renderEles = () => {
     const childs: ReactNode[] = []
-    for (let item = 1; item <= size; item++) {
+    for (let item = 1; item <= total; item++) {
       childs.push(
         item === current ? (
           <div key={item} className={b('number')}>
