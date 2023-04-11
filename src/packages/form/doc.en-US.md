@@ -244,7 +244,7 @@ const App = () => {
           </Radio.RadioGroup>
         </Form.Item>
         <Form.Item label='Rate' name="rate">
-          <Rate modelValue={0} />
+          <Rate defaultValue={0} />
         </Form.Item>
         <Form.Item label='Range' name="range">
           <Range modelValue={0} max={10} min={-10} />
