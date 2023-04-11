@@ -5,7 +5,6 @@ let messageInstance: any = null
 export interface NotifyProps {
   id: string
   duration: number
-  className?: string
   type: string
   position: string
   onClick: () => void
@@ -16,7 +15,7 @@ const options: NotifyProps = {
   id: '',
   duration: 3000, // 时长
   type: 'danger',
-  className: '',
+
   position: 'top',
   onClose: () => {},
   onClick: () => {},

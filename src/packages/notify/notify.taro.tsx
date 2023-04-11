@@ -2,14 +2,13 @@ import React, { FunctionComponent, useState, useEffect } from 'react'
 
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
-import bem from '@/utils/bem'
 
-export interface NotifyProps {
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface NotifyProps extends BasicComponent {
   id?: string
-  style?: React.CSSProperties
   duration: number
   type: string
-  className: string
   position: string
   visible: boolean
   onClose: () => void
@@ -17,15 +16,17 @@ export interface NotifyProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   id: '',
   duration: 3000, // 时长
   type: 'danger',
-  className: '',
   position: 'top',
   visible: false,
   onClose: () => {},
   onClick: () => {},
 } as unknown as NotifyProps
+
+const classPrefix = 'nut-notify'
 
 export const Notify: FunctionComponent<
   Partial<NotifyProps> & React.HTMLAttributes<HTMLDivElement>
@@ -82,13 +83,11 @@ export const Notify: FunctionComponent<
     onClose()
   }
 
-  const notifyBem = bem('notify')
-
   const classes = classNames({
-    'nut-notify--popup-top': position === 'top',
-    'nut-notify--popup-bottom': position === 'bottom',
-    'nut-notify': true,
-    [`nut-notify--${type}`]: true,
+    [`${classPrefix}--popup-top`]: position === 'top',
+    [`${classPrefix}--popup-bottom`]: position === 'bottom',
+    [`${classPrefix}`]: true,
+    [`${classPrefix}--${type}`]: true,
   })
   return (
     <>

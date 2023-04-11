@@ -69,7 +69,7 @@
     "publish:beta": "npm publish --tag beta",
     "prepare": "husky install",
     "test": "jest",
-    "test:demo": "jest  --testNamePattern=^should match snapshot$ --runTestsByPath ./src/packages/collapse/__test__/collapse.spec.tsx",
+    "test:demo": "jest  --testNamePattern=^should match snapshot$ --runTestsByPath ./src/packages/notify/__test__/notify.spec.tsx",
     "generate:file:taro": "node scripts/taro/generate-nutui-taro.js",
     "checked:taro": "npm run generate:file:taro && tsc --project ./tsconfig.taro.json",
     "generate:file:taro:pages": "node scripts/taro/generate-taro-pages.js",

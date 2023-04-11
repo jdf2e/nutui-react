@@ -1,19 +1,16 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
-import bem from '@/utils/bem'
-import { render } from '@/utils/render'
+import { render as reactRender, unmount } from '@/utils/render'
 
-export interface NotificationProps {
+import { BasicComponent } from '@/utils/typings'
+
+export interface NotificationProps extends BasicComponent {
   id: string
-  style: React.CSSProperties
   msg: string | React.ReactNode
   duration: number
   type: string
-  className: string
-  children: React.ReactNode
   position: string
   onClose: () => void
   onClick: () => void
@@ -22,6 +19,8 @@ export interface NotificationProps {
 interface State {
   show: boolean
 }
+
+const classPrefix = 'nut-notify'
 
 export default class Notification extends React.PureComponent<
   NotificationProps,
@@ -83,20 +82,18 @@ export default class Notification extends React.PureComponent<
   }
 
   render() {
-    const { children, style, msg, type, className, position } = this.props
+    const { style, msg, type, className, position } = this.props
     const { show } = this.state
-    const notifyBem = bem('notify')
-
     const classes = classNames({
-      'nut-notify--popup-top': position === 'top',
-      'nut-notify--popup-bottom': position === 'bottom',
-      'nut-notify': true,
-      [`nut-notify--${type}`]: true,
+      [`${classPrefix}--popup-top`]: position === 'top',
+      [`${classPrefix}--popup-bottom`]: position === 'bottom',
+      [`${classPrefix}`]: true,
+      [`${classPrefix}--${type}`]: true,
     })
     return (
       <>
         <CSSTransition
-          in={this.state.show}
+          in={show}
           timeout={300}
           classNames="fade"
           unmountOnExit
@@ -108,7 +105,7 @@ export default class Notification extends React.PureComponent<
             style={style}
             onClick={this.clickCover}
           >
-            {children || msg}
+            {msg}
           </div>
         </CSSTransition>
       </>
@@ -136,7 +133,7 @@ Notification.newInstance = (properties, callback) => {
       component: instance,
       destroy() {
         setTimeout(() => {
-          ReactDOM.unmountComponentAtNode(element)
+          unmount(element)
           element &&
             element.parentNode &&
             element.parentNode.removeChild(element)
@@ -145,5 +142,5 @@ Notification.newInstance = (properties, callback) => {
     })
   }
 
-  render(<Notification {...properties} ref={ref} />, element)
+  reactRender(<Notification {...properties} ref={ref} />, element)
 }

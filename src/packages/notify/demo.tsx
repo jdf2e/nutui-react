@@ -68,14 +68,13 @@ const NotifyDemo = () => {
   const cusBgNotify = (msg: string) => {
     Notify.text(msg, {
       style: {
-        color: '#ad0000',
-        background: '#ffe1e1',
+        '--nutui-notify-text-color': '#ad0000',
+        '--nutui-notify-base-background-color': '#ffe1e1',
       },
-      className: 'aa',
     })
   }
   const timeNotify = (msg: string) => {
-    Notify.text(msg, { duration: 1000 })
+    Notify.text(msg, { duration: 100000 })
   }
   const positionNotify = (msg: string) => {
     Notify.text(msg, { position: 'bottom' })

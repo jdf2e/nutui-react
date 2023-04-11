@@ -130,8 +130,8 @@ const NotifyDemo = () => {
           className="customer"
           visible={customShow}
           style={{
-            color: '#ad0000',
-            background: '#ffe1e1',
+            '--nutui-notify-text-color': '#ad0000',
+            '--nutui-notify-base-background-color': '#ffe1e1',
           }}
           onClose={() => {
             SetCustomShow(false)
