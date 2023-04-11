@@ -53,7 +53,7 @@ export const FixedNav: FunctionComponent<
     onChange,
     onSelected,
     type,
-    childern,
+    children,
     content,
     ...rest
   } = {
@@ -90,7 +90,7 @@ export const FixedNav: FunctionComponent<
         />
       )}
       <div className="list">
-        {childern || (
+        {children || (
           <div className="nut-fixednav__list">
             {list.map((item: any, index) => {
               return (
