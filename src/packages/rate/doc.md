@@ -1,10 +1,10 @@
 # Rate 评分
 
-### 介绍
+## 介绍
 
 用于快速的评级操作，或对评价进行展示。
 
-### 安装
+## 安装
 
 ```ts
 // react
@@ -21,10 +21,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-      <Rate defaultValue={3} />
-    </>
+  return (
+    <Rate defaultValue={3} />
   );
 };  
 export default App;
@@ -67,7 +65,7 @@ export default App;
 
 ```
 :::
-### 自定义 icon   
+### 自定义 icon
 
 :::demo
 ```tsx
@@ -84,7 +82,7 @@ export default App;
 
 ```
 :::
-### 自定义数量  
+### 自定义数量
 
 :::demo
 ```tsx
@@ -100,7 +98,7 @@ export default App;
 
 ```
 :::
-### 最少选中数量（支持半星）  
+### 最少选中数量（支持半星）
 
 :::demo
 ```tsx
@@ -116,7 +114,7 @@ export default App;
 
 ```
 :::
-### 自定义颜色 
+### 自定义颜色
 
 :::demo
 ```tsx
@@ -139,7 +137,7 @@ export default App;
 
 ```
 :::
-### 禁用状态  
+### 禁用状态
 
 :::demo
 ```tsx
@@ -157,7 +155,7 @@ export default App;
 
 ```
 :::
-### 只读状态  
+### 只读状态
 
 :::demo
 ```tsx
@@ -173,7 +171,7 @@ export default App;
 
 ```
 :::
-### 绑定事件  
+### 绑定事件
 
 :::demo
 ```tsx
@@ -194,9 +192,9 @@ export default App;
 
 ```
 
-## API
+## Rate
 
-## Prop
+### Props
 
 | 字段                     | 说明                                      | 类型    | 默认值      |
 |------------------------|-------------------------------------------|---------|-------------|

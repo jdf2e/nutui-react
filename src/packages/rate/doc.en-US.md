@@ -1,6 +1,6 @@
-#  Rate 
+# Rate
 
-### introduce
+## Intro
 
 Use for quick rating actions, or to showcase reviews.
 
@@ -11,9 +11,9 @@ Use for quick rating actions, or to showcase reviews.
 import { Rate } from '@nutui/nutui-react';
 ```
 
-## Code demonstration
+## Code
 
-### Basic usage
+### Basic Usage
 
 :::demo
 ```tsx
@@ -65,7 +65,7 @@ export default App;
 
 ```
 :::
-### customize icon   
+### Custom Icon
 
 :::demo
 ```tsx
@@ -82,7 +82,7 @@ export default App;
 
 ```
 :::
-### custom quantity  
+### Custom Quantity
 
 :::demo
 ```tsx
@@ -98,7 +98,7 @@ export default App;
 
 ```
 :::
-### Select the minimum quantity (support half star)  
+### Set Minimum Quantity (Support Half Star)
 
 :::demo
 ```tsx
@@ -114,7 +114,7 @@ export default App;
 
 ```
 :::
-### custom color 
+### Custom Color
 
 :::demo
 ```tsx
@@ -135,7 +135,7 @@ export default App;
 
 ```
 :::
-### disabled state  
+### Disabled State
 
 :::demo
 ```tsx
@@ -151,7 +151,7 @@ export default App;
 
 ```
 :::
-### readOnly state  
+### ReadOnly State
 
 :::demo
 ```tsx
@@ -167,7 +167,7 @@ export default App;
 
 ```
 :::
-### bind event  
+### OnChange Event
 
 :::demo
 ```tsx
@@ -186,11 +186,11 @@ export default App;
 
 ```
 
-## API
+## Rate
 
-## Prop
+### Props
 
-| field           | explain                                 | type    | default    |
+| Property           | Description                                 | Type    | Default    |
 |----------------|-------------------------------------------|---------|-------------|
 | defaultValue             | Uncontrolled star value | number | `0`           |
 | value             | Controlled star value | number | `0`           |
@@ -203,7 +203,7 @@ export default App;
 | disabled       | Disable or not                          | boolean | `false`       |
 | onChange | Event triggered when the current score is modified | (value: number) => void | - |
 
-## Theming
+## Theme
 
 ### CSS Variables
 
