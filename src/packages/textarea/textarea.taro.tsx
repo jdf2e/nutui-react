@@ -144,7 +144,7 @@ export const TextArea: FunctionComponent<
         onCompositionEnd={(e) => endComposing()}
         onCompositionStart={(e) => startComposing()}
         rows={rows}
-        // maxLength={maxlength < 0 ? 0 : maxlength}
+        maxLength={maxlength < 0 ? 0 : maxlength}
         placeholder={placeholder || locale.placeholder}
       />
       {limitshow ? (

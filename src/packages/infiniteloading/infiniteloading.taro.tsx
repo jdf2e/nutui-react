@@ -103,7 +103,7 @@ export const Infiniteloading: FunctionComponent<
   const getScrollHeight = () => {
     const parentElement = getParentElement('scroller')
     parentElement
-      .boundingClientRect((rect) => {
+      .boundingClientRect((rect: any) => {
         scrollHeight.current = rect.height
       })
       .exec()
@@ -197,6 +197,7 @@ export const Infiniteloading: FunctionComponent<
       className={classes}
       scrollY
       id="scroller"
+      type="list"
       style={{ height: '100%' }}
       onScroll={scrollAction}
       onScrollToLower={lower}

@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import Popup from '@/packages/popup'
 import PickerSlot from './pickerSlot'
-import useRefs from '@/utils/useRefs'
+import useRefs from '@/utils/use-refs'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
 

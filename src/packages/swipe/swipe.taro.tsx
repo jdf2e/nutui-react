@@ -10,8 +10,8 @@ import React, {
 import classNames from 'classnames'
 import { nextTick, useReady } from '@tarojs/taro'
 import bem from '@/utils/bem'
-import { useTouch } from '@/utils/useTouch'
-import { getRectByTaro } from '@/utils/useClientRect'
+import { useTouch } from '@/utils/use-touch'
+import { getRectByTaro } from '@/utils/use-client-rect'
 
 export type SwipeSide = 'left' | 'right'
 export type SwipePosition = SwipeSide | 'cell' | 'outside'

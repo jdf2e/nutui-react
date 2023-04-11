@@ -70,8 +70,8 @@ const CircleProgressDemo = () => {
   }
 
   const gradientColor = {
-    '0%': '#FF5E5E',
-    '100%': '#FFA062',
+    '0%': 'var(--nutui-brand-color-start)',
+    '100%': 'var(--nutui-brand-color-end)',
   }
 
   return (
@@ -94,7 +94,10 @@ const CircleProgressDemo = () => {
 
         <h2>{translated['3fee7d50']}</h2>
         <div className="demo__piece">
-          <CircleProgress progress={50} circleColor="red" />
+          <CircleProgress
+            progress={50}
+            circleColor="var(--nutui-brand-color)"
+          />
           <CircleProgress progress={100} circleColor={gradientColor} />
         </div>
 

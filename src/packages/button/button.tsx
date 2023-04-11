@@ -1,29 +1,7 @@
-import React, {
-  CSSProperties,
-  FunctionComponent,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react'
+import React, { CSSProperties, useCallback } from 'react'
+import classNames from 'classnames'
 import { Loading } from '@nutui/icons-react'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface ButtonProps extends BasicComponent {
-  className: string
-  color: string
-  shape: ButtonShape
-  plain: boolean
-  loading: boolean
-  disabled: boolean
-  style: React.CSSProperties
-  type: ButtonType
-  size: ButtonSize
-  block: boolean
-  icon: React.ReactNode
-  children: any
-  onClick: (e: MouseEvent) => void
-}
 
 export type ButtonType =
   | 'default'
@@ -34,121 +12,113 @@ export type ButtonType =
   | 'danger'
 export type ButtonSize = 'large' | 'normal' | 'small'
 export type ButtonShape = 'square' | 'round'
+export type ButtonFill = 'solid' | 'outline' | 'none'
+
+export interface ButtonProps extends BasicComponent {
+  color: string
+  shape: ButtonShape
+  type: ButtonType
+  size: ButtonSize
+  fill: ButtonFill
+  block: boolean
+  loading: boolean
+  disabled: boolean
+  icon: React.ReactNode
+  onClick: (e: MouseEvent) => void
+}
+
+const prefixCls = 'nut-button'
 
 const defaultProps = {
   ...ComponentDefaults,
-  className: '',
   color: '',
-  shape: 'round',
-  plain: false,
-  loading: false,
-  disabled: false,
   type: 'default',
   size: 'normal',
+  shape: 'round',
+  fill: 'solid',
+  loading: false,
+  disabled: false,
   block: false,
-  icon: '',
-  style: {},
-  children: undefined,
+  icon: null,
   onClick: (e: MouseEvent) => {},
 } as ButtonProps
-export const Button: FunctionComponent<Partial<ButtonProps>> = (props) => {
-  const {
-    color,
-    shape,
-    plain,
-    loading,
-    disabled,
-    type,
-    size,
-    block,
-    icon,
-    children,
-    onClick,
-    className,
-    style,
-    ...rest
-  } = {
-    ...defaultProps,
-    ...props,
-  }
-  const getStyle = useCallback(() => {
-    const style: CSSProperties = {}
-    if (color) {
-      if (plain) {
-        style.color = color
-        style.background = '#fff'
-        if (!color?.includes('gradient')) {
-          style.borderColor = color
+export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
+  (props, ref) => {
+    const {
+      color,
+      shape,
+      fill,
+      loading,
+      disabled,
+      type,
+      size,
+      block,
+      icon,
+      children,
+      onClick,
+      className,
+      style,
+      ...rest
+    } = {
+      ...defaultProps,
+      ...props,
+    }
+    const getStyle = useCallback(() => {
+      const style: CSSProperties = {}
+      if (props.color) {
+        if (fill && fill === 'outline') {
+          style.color = color
+          style.background = '#fff'
+          if (!color?.includes('gradient')) {
+            style.borderColor = color
+          }
+        } else {
+          style.color = '#fff'
+          style.background = color
         }
-      } else {
-        style.color = '#fff'
-        style.background = color
+      }
+      return style
+    }, [color])
+
+    const handleClick = (e: any) => {
+      if (!loading && !disabled && onClick) {
+        onClick(e)
       }
     }
-    return style
-  }, [color, plain])
-  const classes = useCallback(() => {
-    const prefixCls = 'nut-button'
-    return [
-      prefixCls,
-      `${type ? `${prefixCls}--${type}` : ''}`,
-      `${size ? `${prefixCls}--${size}` : ''}`,
-      `${shape ? `${prefixCls}--${shape}` : ''}`,
-      `${plain ? `${prefixCls}--plain` : ''}`,
-      `${block ? `${prefixCls}--block` : ''}`,
-      `${disabled ? `${prefixCls}--disabled` : ''}`,
-      `${loading ? `${prefixCls}--loading` : ''}`,
-    ]
-      .filter(Boolean)
-      .join(' ')
-  }, [block, disabled, loading, plain, shape, size, type])
-  const [btnName, setBtnName] = useState(classes())
-  const [btnStyle, setBtnStyle] = useState(getStyle())
-  useEffect(() => {
-    setBtnName(classes())
-    setBtnStyle(getStyle())
-  }, [
-    className,
-    color,
-    shape,
-    plain,
-    loading,
-    disabled,
-    style,
-    type,
-    size,
-    block,
-    icon,
-    children,
-    onClick,
-    classes,
-    getStyle,
-  ])
 
-  const handleClick = (e: any) => {
-    if (!loading && !disabled && onClick) {
-      onClick(e)
-    }
-  }
-
-  return (
-    // eslint-disable-next-line react/button-has-type
-    <button
-      className={`${btnName} ${className}`}
-      style={{ ...btnStyle, ...style }}
-      {...rest}
-      onClick={(e) => handleClick(e)}
-    >
-      <div className="nut-button__warp">
-        {loading ? <Loading className="nut-icon-loading" /> : null}
-        {!loading && icon ? icon : null}
-        {children && (
-          <div className={icon || loading ? 'text' : ''}>{children}</div>
+    return (
+      // eslint-disable-next-line react/button-has-type
+      <button
+        {...rest}
+        ref={ref}
+        className={classNames(
+          prefixCls,
+          className,
+          props.type ? `${prefixCls}--${type}` : null,
+          props.fill ? `${prefixCls}--${fill}` : null,
+          {
+            [`${prefixCls}--${size}`]: size,
+            [`${prefixCls}--${shape}`]: shape,
+            [`${prefixCls}--block`]: block,
+            [`${prefixCls}--disabled`]: disabled,
+            [`${prefixCls}--loading`]: loading,
+          }
         )}
-      </div>
-    </button>
-  )
-}
+        style={{ ...getStyle(), ...style }}
+        onClick={(e) => handleClick(e)}
+      >
+        <div className="nut-button__warp">
+          {loading ? <Loading className="nut-icon-loading" /> : null}
+          {!loading && icon ? icon : null}
+          {children && (
+            <div className={icon || loading ? 'nut-button-text' : ''}>
+              {children}
+            </div>
+          )}
+        </div>
+      </button>
+    )
+  }
+)
 
-Button.defaultProps = defaultProps
 Button.displayName = 'NutButton'
