@@ -5,11 +5,10 @@ import React, {
   useContext,
 } from 'react'
 import classNames from 'classnames'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import bem from '@/utils/bem'
-
-import { BasicComponent } from '@/utils/typings'
+import { useConfig } from '@/packages/configprovider'
 import GridContext from '../grid/grid.taro.context'
+import { BasicComponent } from '@/utils/typings'
+import { pxCheck } from '@/utils/px-check'
 
 type GridDirection = 'horizontal' | 'vertical'
 
@@ -57,11 +56,8 @@ export const GridItem: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const b = bem('grid-item')
+  const classPrefix = 'nut-grid-item'
   const context = useContext(GridContext)
-  const pxCheck = (value: string | number): string => {
-    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
-  }
 
   const rootStyle = () => {
     const styles: CSSProperties = {
@@ -82,13 +78,13 @@ export const GridItem: FunctionComponent<
   }
 
   const contentClass = () => {
-    return classNames(b('content'), {
-      [b('content--border')]: border,
-      [b('content--surround')]: border && gutter,
-      [b('content--center')]: center,
-      [b('content--square')]: square,
-      [b('content--reverse')]: reverse,
-      [b(`content--${direction}`)]: !!direction,
+    return classNames(`${classPrefix}__content`, {
+      [`${classPrefix}__content--border`]: border,
+      [`${classPrefix}__content--surround`]: border && gutter,
+      [`${classPrefix}__content--center`]: center,
+      [`${classPrefix}__content--square`]: square,
+      [`${classPrefix}__content--reverse`]: reverse,
+      [`${classPrefix}__content--${direction}`]: !!direction,
     })
   }
 
@@ -112,10 +108,15 @@ export const GridItem: FunctionComponent<
   }
 
   return (
-    <div className={b()} style={rootStyle()} {...rest} onClick={handleClick}>
+    <div
+      className={classPrefix}
+      style={rootStyle()}
+      {...rest}
+      onClick={handleClick}
+    >
       <div className={contentClass()}>
         {children && <>{children}</>}
-        {text && <div className="nut-grid-item__text">{text}</div>}
+        {text && <div className={`${classPrefix}__text`}>{text}</div>}
       </div>
     </div>
   )

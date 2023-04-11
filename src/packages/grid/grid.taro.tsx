@@ -53,7 +53,7 @@ export const Grid: FunctionComponent<
 
   const rootClass = () => {
     return classNames(className, classPrefix, {
-      [`${classPrefix}-border`]: !gutter,
+      [`${classPrefix}__border`]: !gutter,
     })
   }
 
