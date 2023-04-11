@@ -161,15 +161,15 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-divider-margin | `16px 0` |
-| --nutui-divider-text-font-size | `$font-size-2` |
-| --nutui-divider-text-color | `$gray1` |
-| --nutui-divider-line-height | `2px` |
-| --nutui-divider-before-margin-right | `16px` |
-| --nutui-divider-after-margin-left | `16px` |
-| --nutui-divider-vertical-height | `12px` |
-| --nutui-divider-vertical-top | `2px` |
-| --nutui-divider-vertical-border-left | `rgba(0, 0, 0, 0.06)` |
-| --nutui-divider-vertical-margin | `0 8px` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-divider-margin | 分割线整体内容的margin值 | `16px 0` |
+| --nutui-divider-text-font-size | 分割线整体内容的font-size大小 | `$font-size-2` |
+| --nutui-divider-text-color | 分割线整体内容的颜色 | `$gray1` |
+| --nutui-divider-line-height | 分割线的行高 | `2px` |
+| --nutui-divider-before-margin-right | 左边分割线的margin-right值 | `16px` |
+| --nutui-divider-after-margin-left | 右边分割线的margin-left值 | `16px` |
+| --nutui-divider-vertical-height | 垂直分割线的高度 | `12px` |
+| --nutui-divider-vertical-top | 垂直分割线的top值 | `2px` |
+| --nutui-divider-vertical-border-left | 垂直分割线的border-left值 | `rgba(0, 0, 0, 0.06)` |
+| --nutui-divider-vertical-margin | 垂直分割线的margin值 |  `0 8px` |

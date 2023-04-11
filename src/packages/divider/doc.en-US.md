@@ -163,15 +163,16 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-divider-margin | `16px 0` |
-| --nutui-divider-text-font-size | `$font-size-2` |
-| --nutui-divider-text-color | `$gray1` |
-| --nutui-divider-line-height | `2px` |
-| --nutui-divider-before-margin-right | `16px` |
-| --nutui-divider-after-margin-left | `16px` |
-| --nutui-divider-vertical-height | `12px` |
-| --nutui-divider-vertical-top | `2px` |
-| --nutui-divider-vertical-border-left | `rgba(0, 0, 0, 0.06)` |
-| --nutui-divider-vertical-margin | `0 8px` |
+
+| Name | Description | Default Value |
+| --- | --- | --- |
+| --nutui-divider-margin | The margin value of the overall content of the dividing line | `16px 0` |
+| --nutui-divider-text-font-size | The font-size of the overall content of the dividing line | `$font-size-2` |
+| --nutui-divider-text-color | The color of the overall content of the dividing line | `$gray1` |
+| --nutui-divider-line-height | The row height of the dividing line | `2px` |
+| --nutui-divider-before-margin-right | The margin-right value of the left dividing line | `16px` |
+| --nutui-divider-after-margin-left | The margin-left value of the dividing line on the right | `16px` |
+| --nutui-divider-vertical-height | The height of the vertical split line | `12px` |
+| --nutui-divider-vertical-top | The top value of the vertical split line | `2px` |
+| --nutui-divider-vertical-border-left | The border-left value of the vertical split line | `rgba(0, 0, 0, 0.06)` |
+| --nutui-divider-vertical-margin | The margin value of the vertical split line |  `0 8px` |
