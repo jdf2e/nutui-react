@@ -1,17 +1,3 @@
-.nut-theme-dark {
-  .nut-grid-item {
-    &__content {
-      background: $dark5;
-      color: $dark1;
-      i {
-        color: $dark1;
-      }
-    }
-    &__text {
-      color: $dark1;
-    }
-  }
-}
 .nut-grid-item {
   position: relative;
   box-sizing: border-box;
@@ -34,9 +20,7 @@
     padding: $grid-item-content-padding;
     background: $grid-item-content-bg-color;
     border: 0 solid $grid-border-color;
-    i {
-      color: $grid-item-icon-color;
-    }
+
     &--border {
       border-right-width: 1px;
       border-bottom-width: 1px;

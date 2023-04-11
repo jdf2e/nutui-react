@@ -249,12 +249,11 @@ export default App
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-grid-border-color | `#f5f6f7` |
-| --nutui-grid-item-content-padding | `16px 8px` |
-| --nutui-grid-item-content-bg-color | `$white` |
-| --nutui-grid-item-text-margin | `8px` |
-| --nutui-grid-item-text-color | `$gray1` |
-| --nutui-grid-item-icon-color | `$gray1` |
-| --nutui-grid-item-text-font-size | `$font-size-1` |
+| 名称 | 描述 | 默认值 |
+| --- | --- | --- |
+| --nutui-grid-border-color | 边框颜色 | `#f5f6f7` |
+| --nutui-grid-item-content-padding | 内边距 | `16px 8px` |
+| --nutui-grid-item-content-bg-color | 背景 | `$white` |
+| --nutui-grid-item-text-margin | 外边距 | `8px` |
+| --nutui-grid-item-text-color | 文字颜色 | `$gray1` |
+| --nutui-grid-item-text-font-size | 文字字体大小 | `$font-size-1` |

@@ -1,10 +1,9 @@
 import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import bem from '@/utils/bem'
-
 import GridContext from './grid.taro.context'
 import { GridItem, GridItemProps } from '../griditem/griditem.taro'
+import { pxCheck } from '@/utils/px-check'
 
 export type GridDirection = 'horizontal' | 'vertical'
 
@@ -50,16 +49,11 @@ export const Grid: FunctionComponent<
   } = { ...defaultProps, ...props }
   const childrenDom = React.Children.toArray(children)
 
-  const pxCheck = (value: string | number): string => {
-    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
-  }
-
-  const b = bem('grid')
+  const classPrefix = 'nut-grid'
 
   const rootClass = () => {
-    const prefixCls = b()
-    return classNames(className, prefixCls, {
-      [b('border')]: !gutter,
+    return classNames(className, classPrefix, {
+      [`${classPrefix}-border`]: !gutter,
     })
   }
 
