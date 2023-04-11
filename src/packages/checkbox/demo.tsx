@@ -7,6 +7,8 @@ import { Checkbox } from './checkbox'
 import Button from '@/packages/button'
 
 interface T {
+  uncontrolled: string
+  controlled: string
   basic: string
   checkbox: string
   disbaled: string
@@ -34,6 +36,8 @@ interface T {
 const CheckboxDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
+      uncontrolled: '非受控',
+      controlled: '受控',
       basic: '基本用法',
       checkbox: '复选框',
       disbaled: '禁用状态',
@@ -58,6 +62,8 @@ const CheckboxDemo = () => {
       threeState: '全选/半选/取消',
     },
     'zh-TW': {
+      uncontrolled: '非受控',
+      controlled: '受控',
       basic: '基本用法',
       checkbox: '複選框',
       disbaled: '禁用狀態',
@@ -82,6 +88,8 @@ const CheckboxDemo = () => {
       threeState: '全选/半选/取消',
     },
     'en-US': {
+      uncontrolled: 'uncontrolled',
+      controlled: 'controlled',
       basic: 'Basic Usage',
       checkbox: 'Checkbox',
       disbaled: 'Disabled State',
@@ -107,7 +115,7 @@ const CheckboxDemo = () => {
     },
   })
 
-  const [checked] = useState(true)
+  const [checked, setChecked] = useState(false)
   const [checkbox1, setCheckbox1] = useState(false)
   const [indeterminate, setIndeterminate] = useState(false)
   const [checkboxgroup1, setCheckboxgroup1] = useState(['1'])
@@ -133,9 +141,37 @@ const CheckboxDemo = () => {
     },
   ])
 
+  const [controlled, setControlled] = useState(false)
+
   return (
     <>
       <div className="demo">
+        <h2>{translated.uncontrolled}</h2>
+        <Cell className="nut-cell">
+          <Checkbox
+            className="test"
+            label={translated.checkbox}
+            defaultChecked={checked}
+          />
+        </Cell>
+        <h2>{translated.controlled}</h2>
+        <Cell className="nut-cell">
+          <Checkbox
+            className="test"
+            label={translated.checkbox}
+            checked={controlled}
+            onChange={(val) => setControlled(val)}
+          />
+        </Cell>
+        <Cell className="nut-cell">
+          <Checkbox.Group textPosition="left" defaultValue={['选项 2']}>
+            <span>
+              <Checkbox label={optionsDemo1[0].label} />
+            </span>
+            <Checkbox label={optionsDemo1[1].label} />
+            <Checkbox label={optionsDemo1[2].label} />
+          </Checkbox.Group>
+        </Cell>
         <h2>{translated.basic}</h2>
         <Cell className="nut-cell">
           <Checkbox
@@ -146,7 +182,7 @@ const CheckboxDemo = () => {
           />
         </Cell>
         <Cell className="nut-cell">
-          <Checkbox.Group textPosition="left" checkedValue={['选项 1']}>
+          <Checkbox.Group textPosition="left" defaultValue={['选项 1']}>
             <span>
               <Checkbox label={optionsDemo1[0].label} checked={false} />
             </span>
@@ -156,7 +192,7 @@ const CheckboxDemo = () => {
         </Cell>
         <h2>{translated.selective}</h2>
         <Cell>
-          <Checkbox.Group checkedValue={checkboxgroup1}>
+          <Checkbox.Group defaultValue={checkboxgroup1}>
             <Checkbox label={`${translated.checkbox}1`} checked indeterminate />
           </Checkbox.Group>
         </Cell>
@@ -201,11 +237,11 @@ const CheckboxDemo = () => {
         <Cell className="nut-cell">
           <Checkbox
             checked={false}
-            onChange={(state, label) => {
+            onChange={(state) => {
               if (state) {
-                Toast.text(translated.selected.replace('x', label))
+                Toast.text(translated.selected.replace('x', state.toString()))
               } else {
-                Toast.text(translated.uncheckedx.replace('x', label))
+                Toast.text(translated.uncheckedx.replace('x', state.toString()))
               }
             }}
           >
@@ -215,7 +251,7 @@ const CheckboxDemo = () => {
         <h2>Checkbox.Group</h2>
         <Cell>
           <Checkbox.Group
-            checkedValue={checkboxgroup1}
+            defaultValue={checkboxgroup1}
             direction="horizontal"
             onChange={(value) => {
               Toast.text(value)
@@ -245,7 +281,7 @@ const CheckboxDemo = () => {
         <h2>{translated.Disabled}</h2>
         <Cell>
           <Checkbox.Group
-            checkedValue={checkboxgroup1}
+            defaultValue={checkboxgroup1}
             disabled
             direction="horizontal"
           >
@@ -261,7 +297,7 @@ const CheckboxDemo = () => {
             textPosition="left"
             direction="horizontal"
             ref={checkboxgroup2Ref}
-            checkedValue={checkboxgroup2}
+            defaultValue={checkboxgroup2}
             onChange={(value) => {
               Toast.text(
                 `${
@@ -317,7 +353,7 @@ const CheckboxDemo = () => {
         <h2>{translated.max}</h2>
         <Cell>
           <Checkbox.Group
-            checkedValue={checkboxgroup3}
+            defaultValue={checkboxgroup3}
             max={2}
             onChange={(value) => {
               Toast.text(value)
@@ -343,7 +379,7 @@ const CheckboxDemo = () => {
             <Checkbox
               checked={checkbox1}
               indeterminate={indeterminate}
-              onChange={(state, label) => {
+              onChange={(state) => {
                 if (state) {
                   setIndeterminate(false)
                 }
@@ -358,7 +394,7 @@ const CheckboxDemo = () => {
           <Checkbox.Group
             ref={checkboxgroup3Ref}
             direction="horizontal"
-            checkedValue={checkboxgroup4}
+            defaultValue={checkboxgroup4}
             onChange={(value) => {
               if (value.length === 4) {
                 setIndeterminate(false)
@@ -389,7 +425,7 @@ const CheckboxDemo = () => {
         <Cell>
           <Checkbox.Group
             options={optionsDemo1}
-            checkedValue={checkboxgroup5}
+            defaultValue={checkboxgroup5}
             onChange={(val) => {
               console.log(val)
               setCheckboxgroup5(val)

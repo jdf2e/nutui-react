@@ -15,8 +15,8 @@ import {
   getEnv,
 } from '@tarojs/taro'
 import { BasicComponent } from '@/utils/typings'
-import useWatch from '@/utils/useWatch'
-import { getRectByTaro } from '@/utils/useClientRect'
+import useWatch from '@/utils/use-watch'
+import { getRectByTaro } from '@/utils/use-client-rect'
 import { getScrollParent } from '@/utils/get-scroll-parent'
 import bem from '@/utils/bem'
 

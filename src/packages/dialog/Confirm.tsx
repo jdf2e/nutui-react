@@ -1,8 +1,8 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { Dialog } from './dialog'
 import { destroyList, ConfirmProps } from './config'
-import { render as reactRender } from '@/utils/render'
+
+import { render as reactRender, unmount } from '@/utils/render'
 
 function ConfirmDialog(props: ConfirmProps) {
   return <Dialog {...props}>{props.content}</Dialog>
@@ -32,9 +32,9 @@ function confirm(
 ) {
   const div = document.createElement('div')
   document.body.appendChild(div)
-
-  function render(props: ConfirmProps) {
+  function render(props: ConfirmProps, callback?: () => any) {
     reactRender(<ConfirmDialog {...props} onCancel={onCancel} />, div)
+    callback && callback()
   }
 
   const renderFunction = renderFunc || render
@@ -73,8 +73,8 @@ function confirm(
   renderFunction(dialogConfig)
 
   function destroy() {
-    const unmountEle = ReactDOM.unmountComponentAtNode(div)
-    if (unmountEle && div.parentNode) {
+    unmount(div)
+    if (div?.parentNode) {
       div.parentNode.removeChild(div)
     }
     for (let i = 0; i < destroyList.length; i++) {
@@ -91,9 +91,10 @@ function confirm(
     dialogConfig.visible = false
     dialogConfig.onClosed = () => {
       config.onClosed && config.onClosed()
-      destroy()
     }
-    renderFunction(dialogConfig)
+    renderFunction(dialogConfig, () => {
+      destroy()
+    })
   }
 
   function update(newConfig: ConfirmProps) {

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, TouchEvent, useMemo } from 'react'
 import classNames from 'classnames'
 import { DataContext } from './UserContext'
 import bem from '@/utils/bem'
-import { getRect } from '../../utils/useClientRect'
+import { getRect } from '../../utils/use-client-rect'
 
 export type SwiperRef = {
   to: (index: number) => void
