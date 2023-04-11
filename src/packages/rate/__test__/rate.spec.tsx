@@ -38,10 +38,10 @@ test('props test', () => {
   const el = container.querySelectorAll('.nut-rate-item')
   if (el && valueEl) {
     expect(el.length).toBe(state.count) // count
-    expect(el[0].childNodes[0]).toHaveClass('nut-rate-item__icon') // active
-    expect(el[0].childNodes[0].childNodes[0]).toHaveClass('nut-icon-HeartFill')
-    expect(el[1].childNodes[0]).toHaveClass('nut-rate-item__icon--disabled') // disabled
-    expect(el[1].childNodes[0].childNodes[0]).toHaveClass('nut-icon-Heart1')
+    expect(el[2].childNodes[0]).toHaveClass('nut-rate-item__icon') // active
+    expect(el[2].childNodes[0].childNodes[0]).toHaveClass('nut-icon-HeartFill')
+    expect(el[3].childNodes[0]).toHaveClass('nut-rate-item__icon--disabled') // disabled
+    expect(el[3].childNodes[0].childNodes[0]).toHaveClass('nut-icon-Heart1')
     fireEvent.click(el[1])
     expect(valueEl.innerHTML).toBe('2') // onChange
   }
