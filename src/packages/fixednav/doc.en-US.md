@@ -59,7 +59,7 @@ const App = () => {
         position={{ top: '70px' }}
         onChange={change}
         visible={visible}
-        onSelected={selected}
+        onSelect={selected}
        />
     </>
   )
@@ -114,7 +114,7 @@ const App = () => {
         activeText="Left collapsed"
         inactiveText="Expand left"
         onChange={change}
-        onSelected={selected}
+        onSelect={selected}
        />
     </>
   )
@@ -170,7 +170,7 @@ const App = () => {
         overlay={false}
         visible={visible}
         onChange={change}
-        onSelected={selected}
+        onSelect={selected}
        />
     </>
   )
@@ -222,7 +222,7 @@ const App = () => {
         type="left"
         visible={visible}
         onChange={change}
-        onSelected={selected}
+        onSelect={selected}
         content={
           <>
             <Icon name="retweet" color="#fff"> </Icon>
@@ -290,7 +290,7 @@ const App = () => {
           inactiveText="support drag and drop"
           visible={visible}
           onChange={change}
-          onSelected={selected} />
+          onSelect={selected} />
       </Drag>
     </>
   )
@@ -316,7 +316,7 @@ export default App;
 | Field | Description | Callback Parameters |
 |----------|-------------|----------------|
 | onChange | expand/collapse button callback | `value: boolean` |
-| onSelected | Fired after selection | `item, event: MouseEvent}` |
+| onSelect | Fired after selection | `item, event: MouseEvent}` |
 
 
     

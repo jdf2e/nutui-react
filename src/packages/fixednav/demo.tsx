@@ -131,7 +131,7 @@ const FixedNavDemo = () => {
           position={{ top: '70px' }}
           onChange={change1}
           visible={visible1}
-          onSelected={selected1}
+          onSelect={selected1}
         />
         <FixedNav
           list={list}
@@ -141,7 +141,7 @@ const FixedNavDemo = () => {
           activeText={translated.title2}
           inactiveText={translated.title3}
           onChange={change2}
-          onSelected={selected2}
+          onSelect={selected2}
         />
         <FixedNav
           list={list}
@@ -149,14 +149,14 @@ const FixedNavDemo = () => {
           overlay={false}
           visible={visible3}
           onChange={change3}
-          onSelected={selected3}
+          onSelect={selected3}
         />
         <FixedNav
           position={{ top: '280px' }}
           type="left"
           visible={visible4}
           onChange={change4}
-          onSelected={selected4}
+          onSelect={selected4}
           content={
             <>
               <Retweet color="#fff" />
@@ -181,7 +181,7 @@ const FixedNavDemo = () => {
             inactiveText={translated.title6}
             visible={visible5}
             onChange={change5}
-            onSelected={selected5}
+            onSelect={selected5}
           />
         </Drag>
       </div>

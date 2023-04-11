@@ -59,7 +59,7 @@ const App = () => {
         position={{ top: '70px' }}
         onChange={change}
         visible={visible}
-        onSelected={selected}
+        onSelect={selected}
        />
     </>
   )
@@ -114,7 +114,7 @@ const App = () => {
         activeText="左側收起"
         inactiveText="左側展開"
         onChange={change}
-        onSelected={selected}
+        onSelect={selected}
        />
     </>
   )
@@ -169,7 +169,7 @@ const App = () => {
         overlay={false}
         visible={visible}
         onChange={change}
-        onSelected={selected}
+        onSelect={selected}
        />
     </>
   )
@@ -222,7 +222,7 @@ const App = () => {
         type="left"
         visible={visible}
         onChange={change}
-        onSelected={selected}
+        onSelect={selected}
         content={
           <>
             <Icon name="retweet" color="#fff"> </Icon>
@@ -290,7 +290,7 @@ const App = () => {
           inactiveText="支持拖拽"
           visible={visible} 
           onChange={change}
-          onSelected={selected} />
+          onSelect={selected} />
       </Drag>
     </>
   )
@@ -320,7 +320,7 @@ export default App;
 | 字段     | 說明         | 回調參數        |
 |:----------|:--------------|:------------|
 | onChange | 展開收起按鈕回調 | `value: boolean` |
-| onSelected | 選擇之後觸發 | `item, event: MouseEvent` |
+| onSelect | 選擇之後觸發 | `item, event: MouseEvent` |
 
 ## 主題定制
 

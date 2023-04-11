@@ -2,7 +2,6 @@ import React, { FunctionComponent, MouseEvent } from 'react'
 import classNames from 'classnames'
 import { Left } from '@nutui/icons-react-taro'
 import Overlay from '@/packages/overlay/index.taro'
-import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -13,7 +12,6 @@ type Position = {
 }
 
 export interface FixedNavProps extends BasicComponent {
-  className: string
   visible: boolean
   overlay: boolean
   list: Array<any>
@@ -21,14 +19,13 @@ export interface FixedNavProps extends BasicComponent {
   inactiveText: string
   position: Position
   type: Direction
-  onChange: (v: any) => void
-  onSelected: (item: any, e: any) => void
+  onChange: (item: any) => void
+  onSelect: (event: MouseEvent, item: any) => void
   content: React.ReactNode
 }
 
 const defaultProps = {
   ...ComponentDefaults,
-  className: 'nut-fixednav',
   activeText: '',
   inactiveText: '',
   type: 'right',
@@ -39,7 +36,8 @@ const defaultProps = {
 } as FixedNavProps
 
 export const FixedNav: FunctionComponent<
-  Partial<FixedNavProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<FixedNavProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'onSelect'>
 > = (props) => {
   const { locale } = useConfig()
   const {
@@ -51,7 +49,7 @@ export const FixedNav: FunctionComponent<
     inactiveText,
     position,
     onChange,
-    onSelected,
+    onSelect,
     type,
     children,
     content,
@@ -61,7 +59,7 @@ export const FixedNav: FunctionComponent<
     ...props,
   }
 
-  const b = bem('fixednav')
+  const classPrefix = 'nut-fixednav'
 
   const classes = classNames(
     {
@@ -69,11 +67,11 @@ export const FixedNav: FunctionComponent<
     },
     type,
     className,
-    b('')
+    classPrefix
   )
 
-  const onSelectCb = (event: MouseEvent, item: any): void => {
-    onSelected(item, event)
+  const handleClick = (event: MouseEvent, item: any): void => {
+    onSelect(item, event)
   }
 
   const onUpdateValue = (value = !visible): void => {
@@ -91,16 +89,16 @@ export const FixedNav: FunctionComponent<
       )}
       <div className="list">
         {children || (
-          <div className="nut-fixednav__list">
+          <div className={`${classPrefix}__list`}>
             {list.map((item: any, index) => {
               return (
                 <div
-                  className="nut-fixednav__list-item"
-                  onClick={(event) => onSelectCb(event, item)}
+                  className={`${classPrefix}__list-item`}
+                  onClick={(event) => handleClick(event, item)}
                   key={item.id || index}
                 >
                   <img src={item.icon} alt="" />
-                  <div className="nut-fixednav__list-text">{item.text}</div>
+                  <div className={`${classPrefix}__list-text`}>{item.text}</div>
                   {item.num && <div className="b">{item.num}</div>}
                 </div>
               )
@@ -109,7 +107,7 @@ export const FixedNav: FunctionComponent<
         )}
       </div>
 
-      <div className="nut-fixednav__btn" onClick={() => onUpdateValue()}>
+      <div className={`${classPrefix}__btn`} onClick={() => onUpdateValue()}>
         {content || (
           <>
             <Left color="#fff" />
