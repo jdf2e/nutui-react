@@ -1,10 +1,10 @@
-#  Grid 宫格
+# Grid 宫格
 
-### 介绍
+## 介绍
 
 用于分隔成等宽区块进行页面导航。
 
-### 安装
+## 安装
 
 ```javascript
 // react
@@ -220,11 +220,11 @@ export default App
 ```
 :::
 
-## API
+## Grid
 
-### Grid Props
+### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
+| 属性 | 描述 | 类型 | 默认值 |
 |-|-|-|-|
 | columns | 列数 | number \| string | `4` |
 | gutter | 格子之间的间距，默认单位为`px` | number \| string | `0` |
@@ -232,25 +232,16 @@ export default App
 | square | 是否将格子固定为正方形 | boolean | `false` |
 | reverse | 内容翻转 | boolean | `false` |
 | direction | 格子内容排列的方向，可选值为 `horizontal` | string | `vertical` |
+| onClick | 宫格子项点击事件 | (index) => void | - |
 
-### Grid Events
+## Grid.Item
 
-| 字段 | 说明 | 回调参数 |
-|-|-|-|
-| onClick | 宫格子项点击事件 | 点击当前项, 索引 |
+### Props
 
-### Grid.Item Props
-
-| 参数 | 说明 | 类型 | 默认值 |
+| 属性 | 描述 | 类型 | 默认值 |
 |-|-|-|-|
 | text | 文字 | string \| ReactNode   | - |
-
-### Grid.Item Events
-
-| 参数 | 说明 | 回调参数 |
-|-|-|-|
-| onClick | 点击格子时触发 | `event: Event` |
-
+| onClick | 点击格子时触发 | (event: Event) => void | - |
 
 ## 主题定制
 

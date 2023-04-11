@@ -1,15 +1,17 @@
 # Grid
 
-### Intro
+## Intro
 
 Used to separate into equal-width blocks for page navigation.
 
-### Install
+## Install
 
 ```javascript
 // react
 import { Grid } from '@nutui/nutui-react'
 ```
+
+## Code
 
 ### Basic Usage
 
@@ -219,11 +221,11 @@ export default App
 ```
 :::
 
-## API
+## Grid
 
-### Grid Props
+### Props
 
-| Attribute | Description | Type | Default |
+| Property | Description | Type | Default |
 |-|-|-|-|
 | columns | Column Num | number \| string | `4` |
 | gutter | Gutter,The default unit is `px` | number \| string | `0` |
@@ -231,26 +233,18 @@ export default App
 | square |  Whether to be square shape | boolean | `false` |
 | reverse |  Whether to reverse the position of icon and text | boolean | `false` |
 | direction | Content arrangement direction, can be set to `horizontal`| string | `vertical` |
+| onClick | Grid.Item Click Event | (item: GridItem, index) => void | - |
 
-### Grid Events
+## Grid.Item
 
-| Event | Description | Arguments |
-|-|-|-|
-| onClick | Grid.Item Click Event | `item: GridItem, index` |
+### Props
 
-### Grid.Item Props
-
-| Attribute | Description | Type | Default |
+| Property | Description | Type | Default |
 |-|-|-|-|
 | text | text | string\| ReactNode | - |
+| onClick | Grid.Item Click Event | (event: Event) => void | - |
 
-### Grid.Item Events
-
-| Event | Description | Arguments |
-|-|-|-|
-| onClick | Grid.Item Click Event | `event: Event` |
-
-## Theming
+## Theme
 
 ### CSS Variables
 
