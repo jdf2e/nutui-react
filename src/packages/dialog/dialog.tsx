@@ -79,7 +79,7 @@ const BaseDialog: ForwardRefRenderFunction<
         {!noCancelBtn && (
           <Button
             size="small"
-            plain
+            fill="outline"
             type="primary"
             className="nut-dialog__footer-cancel"
             onClick={handleCancel}
