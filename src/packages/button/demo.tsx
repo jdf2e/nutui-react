@@ -218,6 +218,9 @@ const ButtonDemo = () => {
           <Button size="small" style={{ margin: 8 }} type="primary">
             {translated.ea3d02f2}
           </Button>
+          <Button size="mini" style={{ margin: 8 }} type="primary">
+            {translated.ea3d02f2}
+          </Button>
         </Cell>
         <h2>{translated.c9e6df49}</h2>
         <Cell>

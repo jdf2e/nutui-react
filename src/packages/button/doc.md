@@ -254,7 +254,7 @@ export default App;
 | 参数       | 说明                            | 类型          | 默认值      |
 |----------|-------------------------------|-------------|----------|
 | type     | 按钮的样式                         | `'default' \| 'primary' \| 'info' \| 'warning' \| 'danger' \| 'success'` | `'default'` |
-| size     | 按钮的尺寸                         | `'normal' \| 'large' \| 'small'` | `'normal'`  |
+| size     | 按钮的尺寸                         | `'normal' \| 'large' \| 'small' \| 'mini'` | `'normal'`  |
 | shape    | 按钮的形状                         | `'square' \| 'round'`   | `'round'` |
 | color    | 按钮颜色，支持传入 linear-gradient 渐变色 | `string`    | -        |
 | fill     | 填充模式                          | `'solid' \| 'ouline' \| 'none'`  | `'solid'` |
@@ -262,12 +262,7 @@ export default App;
 | block    | 是否为块级元素                       | `boolean`   | `false`  |
 | icon     | 按钮图标                          | `ReactNode` | -        |
 | loading  | 按钮loading状态                   | `boolean`   | `false`  |
-
-### Events
-
-| 事件名           | 说明           | 回调参数     |
-|---------------|----------------|--------------|
-| onClick | 点击按钮时触发 | `event: MouseEvent` |
+| onClick  | 点击按钮时触发                   | `onClick: (e: MouseEvent) => void`   | `false`  |
 
 ### 支持小程序API能力
 
@@ -281,46 +276,43 @@ export default App;
 组件提供了下列 CSS
 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-button-border-radius | `25px` |
-| --nutui-button-border-width | `1px` |
-| --nutui-button-default-bg-color | `$white` |
-| --nutui-button-default-border-color | `rgba(204, 204, 204, 1)` |
-| --nutui-button-default-color | `$gray1` |
-| --nutui-button-plain-color`v1.4.8` | `$gray2` |
-| --nutui-button-default-padding | `0 18px` |
-| --nutui-button-mini-padding | `0 12px` |
-| --nutui-button-small-padding | `0 12px` |
-| --nutui-button-small-height | `28px` |
-| --nutui-button-mini-height | `24px` |
-| --nutui-button-default-height | `38px` |
-| --nutui-button-large-height | `48px` |
-| --nutui-button-large-line-height | `46px` |
-| --nutui-button-small-line-height | `26px` |
-| --nutui-button-block-height | `48px` |
-| --nutui-button-default-line-height | `36px` |
-| --nutui-button-block-line-height | `46px` |
-| --nutui-button-default-font-size | `$font-size-2` |
-| --nutui-button-large-font-size | `$button-default-font-size` |
-| --nutui-button-small-font-size | `$font-size-1` |
-| --nutui-button-mini-font-size | `$font-size-1` |
-| --nutui-button-mini-line-height | `1.2` |
-| --nutui-button-text-icon-width | `5px` |
-| --nutui-button-text-icon--large-width | `10px` |
-| --nutui-button-text-icon-small-width | `2px` |
-| --nutui-button-text-icon-mini-width | `1px` |
-| --nutui-button-disabled-opacity | `0.68` |
-| --nutui-button-primary-color | `$white` |
-| --nutui-button-primary-border-color | `$primary-color` |
-| --nutui-button-info-color | `$white` |
-| --nutui-button-info-border-color | `#496af2` |
-| --nutui-button-success-color | `$white` |
-| --nutui-button-success-border-color | `rgba(38, 191, 38, 1)` |
-| --nutui-button-danger-color | `$white` |
-| --nutui-button-danger-border-color | `rgba(250, 44, 25, 1)` |
-| --nutui-button-danger-background-color | `rgba(250, 44, 25, 1)` |
-| --nutui-button-warning-color | `$white` |
-| --nutui-button-warning-border-color | `rgba(255, 158, 13, 1)` |
-| --nutui-button-plain-background-color | `$white` |
-| --nutui-button-small-round-border-radius | `$button-border-radius` |
+| 名称 | 说明 ｜ 默认值 |
+| --- | --- | --- |
+| --nutui-button-border-radius | 按钮的圆角设置 | `25px` |
+| --nutui-button-border-width ｜ 按钮的边框宽度 | `1px` |
+| --nutui-button-default-bg-color ｜ type 为 default 的按钮的背景色 | `$white` |
+| --nutui-button-default-border-color ｜ type 为 default 的按钮的边框色 | `rgba(204, 204, 204, 1)` |
+| --nutui-button-default-color ｜ type 为 default 的按钮的文本色 | `$gray1` |
+| --nutui-button-default-padding ｜ type 为 default 的按钮的内边距 | `0 18px` |
+| --nutui-button-mini-padding ｜ size 为 mini 的按钮的内边距 | `0 12px` |
+| --nutui-button-mini-height ｜ size 为 mini 的按钮的高度 | `24px` |
+| --nutui-button-small-padding ｜ size 为 small 的按钮的内边距 | `0 12px` |
+| --nutui-button-small-height ｜ size 为 small 的按钮的高度 | `28px` |
+| --nutui-button-default-height ｜ type 为 default 的按钮的高度 | `38px` |
+| --nutui-button-large-height ｜ size 为 large 的按钮的高度 | `48px` |
+| --nutui-button-large-line-height ｜ size 为 large 的按钮的行高 | `46px` |
+| --nutui-button-small-line-height ｜ size 为 small 的按钮的行高 | `26px` |
+| --nutui-button-block-height ｜ block 的按钮的高度 | `48px` |
+| --nutui-button-block-line-height ｜ block 的按钮的行高 | `46px` |
+| --nutui-button-default-line-height ｜ type 为 default 的按钮的行高 | `36px` |
+| --nutui-button-default-font-size ｜ type 为 default 的按钮的字号 | `$font-size-2` |
+| --nutui-button-large-font-size ｜ size 为 large 的按钮的字号 | `$button-default-font-size` |
+| --nutui-button-small-font-size ｜ size 为 small 的按钮的字号 | `$font-size-1` |
+| --nutui-button-mini-font-size ｜ size 为 mini 的按钮的字号 | `$font-size-1` |
+| --nutui-button-mini-line-height ｜ size 为 mini 的按钮的行高 | `1.2` |
+| --nutui-button-text-icon-margin-left ｜ 带 icon按钮的文本的左边距 | `5px` |
+| --nutui-button-text-icon-large-margin-left ｜ size 为 large 按钮的文本的左边距 | `10px` |
+| --nutui-button-text-icon-small-margin-left ｜ size 为 small 按钮的文本的左边距 | `2px` |
+| --nutui-button-text-icon-mini-margin-left ｜ size 为 mini 按钮的文本的左边距 | `1px` |
+| --nutui-button-disabled-opacity ｜ disabled 状态下按钮的透明度 | `0.68` |
+| --nutui-button-primary-color ｜ type 为 primary 按钮的文本颜色 | `$white` |
+| --nutui-button-primary-border-color ｜ type 为 primary 按钮的边框颜色 | `$primary-color` |
+| --nutui-button-info-color ｜ type 为 info 按钮的文本颜色 | `$white` |
+| --nutui-button-info-border-color ｜ type 为 info 按钮的边框颜色 | `#496af2` |
+| --nutui-button-success-color ｜ type 为 success 按钮的文本颜色 | `$white` |
+| --nutui-button-success-border-color ｜ type 为 success 按钮的边框颜色 | `rgba(38, 191, 38, 1)` |
+| --nutui-button-danger-color ｜ type 为 danger 按钮的文本颜色 | `$white` |
+| --nutui-button-danger-border-color ｜ type 为 danger 按钮的边框颜色 | `rgba(250, 44, 25, 1)` |
+| --nutui-button-danger-background-color ｜ type 为 danger 按钮的背景颜色 | `rgba(250, 44, 25, 1)` |
+| --nutui-button-warning-color ｜ type 为 warning 按钮的文本颜色 | `$white` |
+| --nutui-button-warning-border-color ｜ type 为 warning 按钮的边框颜色 | `rgba(255, 158, 13, 1)` |
