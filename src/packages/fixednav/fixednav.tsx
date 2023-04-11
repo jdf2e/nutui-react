@@ -20,7 +20,7 @@ export interface FixedNavProps extends BasicComponent {
   position: Position
   type: Direction
   onChange: (item: any) => void
-  onSelect: (event: MouseEvent, item: any) => void
+  onSelect: (item: any, event: MouseEvent) => void
   content: React.ReactNode
 }
 
@@ -37,7 +37,10 @@ const defaultProps = {
 
 export const FixedNav: FunctionComponent<
   Partial<FixedNavProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'onSelect'>
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      'onChange' | 'onSelect' | 'content'
+    >
 > = (props) => {
   const { locale } = useConfig()
   const {
@@ -70,8 +73,8 @@ export const FixedNav: FunctionComponent<
     classPrefix
   )
 
-  const handleClick = (event: MouseEvent, item: any): void => {
-    onSelect(item, event)
+  const handleClick = (item: any, event: MouseEvent): void => {
+    onSelect(event, item)
   }
 
   const onUpdateValue = (value = !visible): void => {
@@ -94,7 +97,7 @@ export const FixedNav: FunctionComponent<
               return (
                 <div
                   className={`${classPrefix}__list-item`}
-                  onClick={(event) => handleClick(event, item)}
+                  onClick={(event) => handleClick(item, event)}
                   key={item.id || index}
                 >
                   <img src={item.icon} alt="" />

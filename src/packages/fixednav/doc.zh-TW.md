@@ -1,16 +1,15 @@
 # FixedNav 懸浮導航
 
-### 介紹
+## 介紹
 
 懸浮收齊體驗交互，用於快捷導航
 
-### 安裝
+## 安裝
 
 ``` javascript
 // react
 import { FixedNav } from '@nutui/nutui-react';
 ```
-
 
 ### 基礎用法
 

@@ -1,15 +1,16 @@
 # FixedNav 悬浮导航
 
-### 介绍
+## 介绍
 
 悬浮收齐体验交互，用于快捷导航
 
-### 安装
+## 安装
     
 ``` javascript
 import { FixedNav } from '@nutui/nutui-react-taro';
 ```
 
+## 代码演示
 
 ### 基础用法
 
@@ -297,10 +298,10 @@ const App = () => {
 export default App;
 ```
 
+## FixedNav
 
+### Props
 
-
-### Prop
 | 字段           | 说明                       | 类型    | 默认值                       |
 |:---------------|:---------------------------|:--------|:-----------------------------|
 | visible        | 是否打开                   | boolean | `false`                        |
@@ -312,17 +313,8 @@ export default App;
 | position       | fixed 垂直位置             | object  | `{top: 'auto', bottom: 'auto'}` |
 | content       | 自定义按钮            | ReactNode  | - |
 | children       | 自定义展开列表内容             | ReactNode  | - |
-
-
-### Event
-
-| 字段     | 说明         | 回调参数        |
-|:----------|:--------------|:------------|
 | onChange | 展开收起按钮回调 | `value: boolean` |
 | onSelect | 选择之后触发 | `item, event: MouseEvent` |
-
-
-    
 
 ## 主题定制
 

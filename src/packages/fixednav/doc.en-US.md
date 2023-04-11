@@ -1,6 +1,6 @@
 # FixedNav hover navigation
 
-### introduce
+## Intro
 
 Hovering and collecting experience interaction for quick navigation
 
@@ -11,8 +11,9 @@ Hovering and collecting experience interaction for quick navigation
 import { FixedNav } from '@nutui/nutui-react';
 ```
 
+## Code
 
-### Basic usage
+### Basic Usage
 
 :::demo
 ``` tsx
@@ -297,7 +298,11 @@ const App = () => {
 };
 export default App;
 ````
-### Prop
+
+## FixedNav
+
+### Props
+
 | Field | Description | Type | Default Value |
 |:---------------|:----------------------------|:--------|:----------------------------|
 | visible | whether to open | boolean | `false` |
@@ -309,19 +314,10 @@ export default App;
 | position | fixed vertical position | object | `{top: 'auto', bottom: 'auto'}` |
 | content | custom button | ReactNode | - |
 | children | Customize expanded list content | ReactNode | - |
-
-
-### Event
-
-| Field | Description | Callback Parameters |
-|----------|-------------|----------------|
 | onChange | expand/collapse button callback | `value: boolean` |
 | onSelect | Fired after selection | `item, event: MouseEvent}` |
 
-
-    
-
-## Theming
+## Theme
 
 ### CSS Variables
 
