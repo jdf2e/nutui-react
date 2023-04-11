@@ -12,8 +12,6 @@
 import { OverLay } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
-
 ### 基礎用法
 
 :::demo
@@ -244,14 +242,10 @@ export default App;
 | style          | 自定義遮罩樣式   | CSSProperties  | -      |
 | lockScroll          | 背景是否鎖定   | boolean  | `false`     |
 | closeOnOverlayClick | 是否點擊遮罩關閉 | boolean        | `true`   |
-
-### Events
-
-| 事件名 | 說明       | 回調參數     |
-| ------ | ---------- | ------------ |
 | onClick  | 點擊時觸發 | `event: Event` |
 | afterClose | 完全關閉後觸發 | () => void        | `-`   |
 | afterShow | 完全展示後觸發 | () => void        | `-`   |
+
 
 
 ## 主題定制
@@ -260,8 +254,9 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-overlay-bg-color | `$gray7` |
-| --nutui-overlay-content-bg-color | `$gray6` |
-| --nutui-overlay-content-color | `$gray1` |
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| --nutui-overlay-bg-color | 遮罩層背景顏色 | `$gray7` |
+| --nutui-overlay-content-bg-color | 遮罩層嵌套內容背景顏色 |`$gray6` |
+| --nutui-overlay-content-color | 遮罩層嵌套內容字體顏色 | `$gray1` |
+

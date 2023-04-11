@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { View, ITouchEvent } from '@tarojs/components'
-import bem from '@/utils/bem'
 
 export interface OverlayProps {
   zIndex: number
@@ -24,6 +23,8 @@ export const defaultOverlayProps = {
   lockScroll: true,
   style: {},
 } as OverlayProps
+
+const classPrefix = `nut-overlay`
 export const Overlay: FunctionComponent<
   Partial<OverlayProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
@@ -67,8 +68,6 @@ export const Overlay: FunctionComponent<
     }
   }, [])
 
-  const b = bem('overlay')
-
   const classes = classNames(
     {
       'overlay-fade-leave-active': !renderRef.current && !visible,
@@ -77,7 +76,7 @@ export const Overlay: FunctionComponent<
       'hidden-render': !visible,
     },
     className,
-    b('')
+    classPrefix
   )
 
   const styles = {
