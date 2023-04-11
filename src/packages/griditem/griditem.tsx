@@ -50,6 +50,7 @@ export const GridItem: FunctionComponent<
     center,
     reverse,
     direction,
+    className,
     onClick,
     ...rest
   } = {
@@ -57,6 +58,7 @@ export const GridItem: FunctionComponent<
     ...props,
   }
   const classPrefix = 'nut-grid-item'
+  const classes = classNames(classPrefix, className)
   const context = useContext(GridContext)
 
   const rootStyle = () => {
@@ -109,7 +111,7 @@ export const GridItem: FunctionComponent<
 
   return (
     <div
-      className={classPrefix}
+      className={classes}
       style={rootStyle()}
       {...rest}
       onClick={handleClick}
