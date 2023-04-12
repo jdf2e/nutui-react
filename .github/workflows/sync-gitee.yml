@@ -2,7 +2,7 @@ name: Sync to Gitee
 
 on:
   push:
-    branches: [main]
+    branches: [next, '1.x-stable']
 
 jobs:
   deploy-site-sync-gitee:
