@@ -2,11 +2,11 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { View, ITouchEvent } from '@tarojs/components'
 
-export interface OverlayProps {
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface OverlayProps extends BasicComponent {
   zIndex: number
   duration: number
-  className: string
-  style: React.CSSProperties
   closeOnOverlayClick: boolean
   visible: boolean
   lockScroll: boolean
@@ -15,13 +15,12 @@ export interface OverlayProps {
   afterClose: () => void
 }
 export const defaultOverlayProps = {
+  ...ComponentDefaults,
   zIndex: 2000,
   duration: 0.3,
-  className: '',
   closeOnOverlayClick: true,
   visible: false,
   lockScroll: true,
-  style: {},
 } as OverlayProps
 
 const classPrefix = `nut-overlay`
@@ -95,10 +94,10 @@ export const Overlay: FunctionComponent<
 
   const handleClick = (event: ITouchEvent) => {
     if (closeOnOverlayClick) {
-      afterClose && afterClose()
       onClick && onClick(event)
       renderRef.current = false
       intervalCloseRef.current = window.setTimeout(() => {
+        afterClose && afterClose()
         setShow(!visible)
       }, duration * 1000 * 0.8)
     }

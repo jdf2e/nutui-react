@@ -109,6 +109,9 @@ const OverlayDemo = () => {
             afterShow={() => {
               console.log('afterShow')
             }}
+            afterClose={() => {
+              console.log('afterClose')
+            }}
           />
         </Cell>
 

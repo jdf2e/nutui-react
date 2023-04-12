@@ -238,8 +238,6 @@ export default App;
 | visible                   | Whether the current component is displayed | boolean        | `false`  |
 | zIndex                | Mask hierarchy         | number | `2000`   |
 | duration               | Animation duration, in seconds | number | `0.3`    |
-| class          | Custom mask class name   | string         | -      |
-| style          | Customize the mask style   | CSSProperties  | -      |
 | lockScroll          | Whether the background is locked   | boolean  | `false`     |
 | closeOnOverlayClick | Tap Mask off | boolean        | `true`   |
 | onClick  | Triggered when the button is clicked | `event: Event` |

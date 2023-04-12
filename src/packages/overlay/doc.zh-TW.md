@@ -238,8 +238,6 @@ export default App;
 | visible                   | 當前元件是否顯示 | boolean        | `false`  |
 | zIndex                | 遮罩層級         | number | `2000`   |
 | duration               | 動畫時長，單位秒 | number | `0.3`    |
-| className          | 自定義遮罩類名   | string         | -      |
-| style          | 自定義遮罩樣式   | CSSProperties  | -      |
 | lockScroll          | 背景是否鎖定   | boolean  | `false`     |
 | closeOnOverlayClick | 是否點擊遮罩關閉 | boolean        | `true`   |
 | onClick  | 點擊時觸發 | `event: Event` |

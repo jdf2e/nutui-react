@@ -237,8 +237,6 @@ export default App;
 | visible                   | 当前组件是否显示 | boolean        | `false`  |
 | zIndex                | 遮罩层级         | number | `2000`   |
 | duration               | 动画时长，单位秒 | number | `0.3`    |
-| className          | 自定义遮罩类名   | string         | -      |
-| style          | 自定义遮罩样式   | CSSProperties  | -      |
 | lockScroll          | 背景是否锁定   | boolean  | `false`     |
 | closeOnOverlayClick | 是否点击遮罩关闭 | boolean        | `true`   |
 | onClick  | 点击时触发 | `event: Event` |

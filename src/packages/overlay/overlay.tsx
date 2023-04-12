@@ -7,11 +7,11 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 
-export interface OverlayProps {
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface OverlayProps extends BasicComponent {
   zIndex: number
   duration: number
-  className: string
-  style: React.CSSProperties
   closeOnOverlayClick: boolean
   visible: boolean
   lockScroll: boolean
@@ -19,13 +19,12 @@ export interface OverlayProps {
   afterClose: () => void
 }
 export const defaultOverlayProps = {
+  ...ComponentDefaults,
   zIndex: 1000,
   duration: 0.3,
-  className: '',
   closeOnOverlayClick: true,
   visible: false,
   lockScroll: true,
-  style: {},
 } as OverlayProps
 
 const classPrefix = `nut-overlay`
@@ -98,10 +97,10 @@ export const Overlay: FunctionComponent<
 
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
     if (closeOnOverlayClick) {
-      afterClose && afterClose()
       props.onClick && props.onClick(e)
       renderRef.current = false
       intervalCloseRef.current = window.setTimeout(() => {
+        afterClose && afterClose()
         setShow(!visible)
       }, duration * 1000 * 0.8)
     }
