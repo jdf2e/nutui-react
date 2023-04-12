@@ -462,74 +462,57 @@ export default App;
 ### 支持异步渲染(5s之后看效果)
 :::demo
 ```tsx
-import  React, { useState } from "react";
+import React, { useEffect, useState } from 'react'
 import { Table, Button, Icon } from '@nutui/nutui-react-taro';
 
 const App = () => {
-  const [columns4, setColumns4] = useState([
+  const [columns1, setColumns1] = useState([
     {
       title: '姓名',
       key: 'name',
-      align: 'center',
     },
     {
       title: '性别',
       key: 'sex',
+      render: (record: any) => {
+        return (
+          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
+            {record.sex}
+          </span>
+        )
+      },
     },
     {
       title: '学历',
       key: 'record',
     },
-    {
-      title: '操作',
-      key: 'render',
-    },
   ])
 
-  const [data4, setData4] = useState([
+  const [data3, setData3] = useState([] as any)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setData3([
     {
       name: 'Tom',
       sex: '男',
       record: '小学',
-      render: () => {
-        return (
-          <Button
-            onClick={() => Toast.text('hello')}
-            size="small"
-            type="primary"
-          >
-            <div>Hello</div>
-          </Button>
-        )
-      },
     },
     {
       name: 'Lucy',
       sex: '女',
       record: '本科',
-      render: () => {
-        return <Icon name="dongdong" size="14px" />
-      },
     },
     {
       name: 'Jack',
       sex: '男',
       record: '高中',
-      render: () => {
-        return (
-          <Button
-            type="success"
-            size="small"
-            onClick={() => window.open('https://www.jd.com')}
-          >
-            <div>跳转到京东</div>
-          </Button>
-        )
-      },
     },
   ])
+    }, 5000)
+  }, [])
 
-  return <Table columns={columns4} data={data4} />;
+  return <Table columns={columns1} data={data3} />;
 };
 export default App;
 ```
@@ -542,11 +525,12 @@ import  React, { useState } from "react";
 import { Table, Button, Icon } from '@nutui/nutui-react-taro';
 
 const App = () => {
-  const [columns4, setColumns4] = useState([
+  const [columns, setColumns] = useState([
     {
       title: '姓名',
       key: 'name',
       align: 'center',
+      sorter: true,
     },
     {
       title: '性别',
@@ -557,55 +541,45 @@ const App = () => {
       key: 'record',
     },
     {
-      title: '操作',
-      key: 'render',
+      title: '年龄',
+      key: 'age',
+      sorter: (row1: any, row2: any) => {
+        return row1.age - row2.age
+      },
     },
   ])
 
-  const [data4, setData4] = useState([
+  const [data, setData] = useState([
     {
       name: 'Tom',
       sex: '男',
       record: '小学',
-      render: () => {
-        return (
-          <Button
-            onClick={() => Toast.text('hello')}
-            size="small"
-            type="primary"
-          >
-            <div>Hello</div>
-          </Button>
-        )
-      },
+      age: 10,
     },
     {
       name: 'Lucy',
       sex: '女',
       record: '本科',
-      render: () => {
-        return <Icon name="dongdong" size="14px" />
-      },
+      age: 30,
     },
     {
       name: 'Jack',
       sex: '男',
       record: '高中',
-      render: () => {
-        return (
-          <Button
-            type="success"
-            size="small"
-            onClick={() => window.open('https://www.jd.com')}
-          >
-            <div>跳转到京东</div>
-          </Button>
-        )
-      },
+      age: 4,
     },
   ])
 
-  return <Table columns={columns4} data={data4} />;
+  const handleSorter = (item, data) => {
+    Toast.text(`${JSON.stringify(item)}`)
+    setData([...data])
+  }
+  return <Table
+    columns={columns}
+    data={data}
+    onSorter={handleSorter}
+    style={{ background: '#fff' }}
+  />;
 };
 export default App;
 ```
@@ -622,7 +596,7 @@ export default App;
 | columns         | 表头数据 | 	TableColumnProps[] | `[]`                |
 | data         | 表格数据 | 	Object[] | `[]`                |
 | summary         | 是否显示简介 | 	ReactNode | -                |
-| striped         | 条纹是否明暗交替 | 	boolean | false                |
+| striped         | 条纹是否明暗交替 |  boolean | `false`                |
 | showHeader`v1.4.11`         | 是否显示表头 | 	boolean | `true`                |
 | noData         | 自定义无数据 | 	ReactNode | -                |
 
