@@ -1,22 +1,14 @@
-.nut-theme-dark {
-  .nut-cell {
-    background: $dark5;
-    color: $dark1;
-    box-shadow: none;
-  }
-}
-
 .nut-cell {
   position: relative;
   display: flex;
   width: 100%;
   line-height: $cell-line-height;
   padding: $cell-padding;
-  background: $cell-background;
+  background-color: $cell-background-color;
   border-radius: $cell-border-radius;
-  box-shadow: $cell-box-shaow;
-  font-size: $cell-title-font;
-  color: $cell-color;
+  box-shadow: $cell-box-shadow;
+  font-size: $cell-title-font-size;
+  color: $cell-title-color;
   margin: 10px 0;
   box-sizing: border-box;
 
@@ -37,15 +29,15 @@
     transform: scaleY(0.5);
   }
 
-  &__title {
+  &__left {
     display: flex;
     flex-direction: column;
     flex: 1;
   }
 
-  &__subtitle {
-    font-size: $cell-title-description-font;
-    color: $cell-title-description-color;
+  &__description {
+    font-size: $cell-description-font-size;
+    color: $cell-description-color;
   }
 
   &__extra {
@@ -55,7 +47,7 @@
     flex: 1;
     min-width: 0;
     word-break: break-all;
-    font-size: $cell-extra-font;
+    font-size: $cell-extra-font-size;
     color: $cell-extra-color;
   }
 }

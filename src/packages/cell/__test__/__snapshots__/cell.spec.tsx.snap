@@ -75,7 +75,7 @@ exports[`prop  1`] = `
 </div>
 `;
 
-exports[`prop title extra subtitle test 1`] = `
+exports[`prop title extra description test 1`] = `
 <div>
   <div
     class="nut-cell "
@@ -94,7 +94,7 @@ exports[`prop title extra subtitle test 1`] = `
       <div
         class="nut-cell__subtitle"
       >
-        副标题描述
+        我是描述
       </div>
     </div>
     <div

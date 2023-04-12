@@ -4,13 +4,13 @@ import '@testing-library/jest-dom'
 import { Cell } from '../cell'
 import { Switch } from '../../switch/switch'
 
-test('prop title extra subtitle test', () => {
-  const { getByTestId, container } = render(
+test('prop title extra description test', () => {
+  const { container } = render(
     <>
       <Cell
         data-testid="prop"
         title="我是标题"
-        description="副标题描述"
+        description="我是描述"
         extra="描述文字"
       />
     </>
@@ -19,7 +19,7 @@ test('prop title extra subtitle test', () => {
     '我是标题'
   )
   expect(container.querySelector('.nut-cell__subtitle')?.innerHTML).toBe(
-    '副标题描述'
+    '我是描述'
   )
   expect(container.querySelector('.nut-cell__value')?.innerHTML).toBe(
     '描述文字'

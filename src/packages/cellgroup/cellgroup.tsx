@@ -1,20 +1,21 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 
-import bem from '@/utils/bem'
+import classNames from 'classnames'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface CellGroupProps {
+export interface CellGroupProps extends BasicComponent {
   title: ReactNode
   description: ReactNode
-  className: string
-  style: React.CSSProperties
   children?: ReactNode
 }
 const defaultProps = {
+  ...ComponentDefaults,
   title: '',
   description: '',
-  className: '',
-  style: {},
 } as CellGroupProps
+
+const classPrefix = 'cell-group'
+
 export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
   props
 ) => {
@@ -22,14 +23,13 @@ export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
     ...defaultProps,
     ...props,
   }
-  const b = bem('cell-group')
   return (
-    <div className={b(null, [className])} {...rest}>
-      {title ? <div className={b('title')}>{title}</div> : null}
+    <div className={classNames(classPrefix, className)} {...rest}>
+      {title ? <div className={`${classPrefix}__title`}>{title}</div> : null}
       {description ? (
-        <div className={b('description')}>{description}</div>
+        <div className={`${classPrefix}__description`}>{description}</div>
       ) : null}
-      <div className={b('wrap')}>{children}</div>
+      <div className={`${classPrefix}__wrap`}>{children}</div>
     </div>
   )
 }

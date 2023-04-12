@@ -4,6 +4,7 @@ import { useTranslate } from '../../sites/assets/locale'
 import { Cell } from './cell'
 import { CellGroup } from '../cellgroup/cellgroup'
 import { Switch } from '../switch/switch'
+import Toast from '../toast'
 import './demo.scss'
 
 interface T {
@@ -30,7 +31,7 @@ const CellDemo = () => {
       extra: '描述文字',
       description: '使用 nut-cell-group 支持 title description',
       title: '我是标题',
-      title1: '副标题描述',
+      title1: '我是描述',
       title2: '点击测试',
       title3: '圆角设置 0',
       title4: '链接 | 分组用法',
@@ -46,7 +47,7 @@ const CellDemo = () => {
       extra: '描述文字',
       description: '使用 nut-cell-group 支持 title description',
       title: '我是標題',
-      title1: '副標題描述',
+      title1: '我是描述',
       title2: '點擊測試',
       title3: '圓角設置 0',
       title4: '鏈接 | 分組用法',
@@ -62,7 +63,7 @@ const CellDemo = () => {
       extra: 'extra',
       description: 'Usage nut-cell-group support title description',
       title: 'Title',
-      title1: 'Subtitle extra',
+      title1: 'Description',
       title2: 'Click Test',
       title3: 'Round Radius 0',
       title4: 'Link | CellGroup Usage',
@@ -78,7 +79,7 @@ const CellDemo = () => {
   const testClick = (
     event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
   ) => {
-    console.log('点击事件')
+    Toast.text('点击事件')
   }
 
   const onJumpclick = (

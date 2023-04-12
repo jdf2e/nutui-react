@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import bem from '@/utils/bem'
+import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface CellProps extends BasicComponent {
@@ -7,10 +7,7 @@ export interface CellProps extends BasicComponent {
   description: ReactNode
   extra: ReactNode
   radius: string | number
-
   align: string
-  className: string
-  style: React.CSSProperties
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
@@ -21,10 +18,10 @@ const defaultProps = {
   extra: null,
   radius: '6px',
   align: 'flex-start',
-  className: '',
-  style: {},
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
+
+const classPrefix = 'cell'
 
 export const Cell: FunctionComponent<
   Partial<CellProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
@@ -44,7 +41,7 @@ export const Cell: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const b = bem('cell')
+
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onClick(event)
   }
@@ -63,7 +60,7 @@ export const Cell: FunctionComponent<
         }
   return (
     <div
-      className={`${b({}, [className])} `}
+      className={classNames(classPrefix, className)}
       onClick={(event) => handleClick(event)}
       style={baseStyle}
       {...rest}
@@ -71,15 +68,22 @@ export const Cell: FunctionComponent<
       {children || (
         <>
           {title || description ? (
-            <div className={`${b('title')}`}>
-              {title ? <div className={b('maintitle')}>{title}</div> : null}
+            <div className={`${classPrefix}__left`}>
+              {title ? (
+                <div className={`${classPrefix}__title`}>{title}</div>
+              ) : null}
               {description ? (
-                <div className={b('subtitle')}>{description}</div>
+                <div className={`${classPrefix}__description`}>
+                  {description}
+                </div>
               ) : null}
             </div>
           ) : null}
           {extra ? (
-            <div className={b('extra')} style={styles as React.CSSProperties}>
+            <div
+              className={`${classPrefix}__extra`}
+              style={styles as React.CSSProperties}
+            >
               {extra}
             </div>
           ) : null}

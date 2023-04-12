@@ -18,18 +18,18 @@ import { Cell, CellGroup } from '@nutui/nutui-react'
 
 ```tsx
 import React from 'react'
-import { Cell } from '@nutui/nutui-react'
+import { Cell, Toast } from '@nutui/nutui-react'
 
 const App = () => {
   const testClick = (
     event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
   ) => {
-    console.log('Click Test')
+    Toast.text('Click Test')
   }
   return (
     <>
       <Cell title="Title" extra="extra" />
-      <Cell title="Title" description="Subtitle extra" extra="extra" />
+      <Cell title="Title" description="Description" extra="extra" />
       <Cell
         title="Click Test"
         onClick={(
@@ -80,11 +80,11 @@ const App = () => {
         title={
         <div style={{ display: 'inline-flex', alignItems: 'center' }}>
             <My />
-            Title<span style={{ marginLeft: '5px' }}>Subtitle extra</span>
+            Title<span style={{ marginLeft: '5px' }}>Description</span>
         </div>
         }
         description={
-        <span>Subtitle extra<b style={{ color: 'red' }}>1</b></span>
+        <span>Description<b style={{ color: 'red' }}>1</b></span>
         }
         extra="extra"
     />
@@ -181,7 +181,7 @@ import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
-    <Cell align="center"  title="Title" description="Subtitle extra" extra="Desc" />
+    <Cell align="center"  title="Title" description="Description" extra="Desc" />
   )
 }
 export default App
@@ -196,7 +196,7 @@ export default App
 
 | Attribute | Description | Type   | Default |
 |-------|----------|--------|--------|
-| title | Title | string | -      |
+| title | Title | ReactNode | -      |
 | description  | ReactNode | string | -      |
 
 ### Cell Prop
@@ -208,15 +208,7 @@ export default App
 | extra              | Extra                                     | ReactNode      | -      |
 | radius | Corner radius                                      | string            | `6px`    |
 | align    | Alignment in the vertical direction, with an optional value of`flex-start`、`center`、`flex-end` | string          | `flex-start`  |
-
-
-### Cell Event
-
-| Event | Description                  | Arguments   |
-|-------|------------------------------|-------------|
-| onClick | Emitted when cell is clicked | `event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>` |
-
-
+| onClick | Emitted when cell is clicked | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` |`false`|
 
 ## Theming
 
@@ -224,28 +216,27 @@ export default App
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-cell-color | `$gray1` |
-| --nutui-cell-title-font | `$font-size-2` |
-| --nutui-cell-title-description-font | `$font-size-1` |
-| --nutui-cell-description-font | `$font-size-2` |
-| --nutui-cell-description-color | `$gray2` |
-| --nutui-cell-subtitle-color | `$gray2` |
-| --nutui-cell-border-radius | `6px` |
-| --nutui-cell-padding | `13px 16px` |
-| --nutui-cell-line-height | `20px` |
-| --nutui-cell-after-right | `16px` |
-| --nutui-cell-after-border-bottom | `2px solid #f5f6f7` |
-| --nutui-cell-default-icon-margin | `0 4px 0 0px` |
-| --nutui-cell-background | `$gray6` |
-| --nutui-cell-box-shaow | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
-| --nutui-cell-group-title-padding | `0 10px` |
-| --nutui-cell-group-title-color | `#909ca4` |
-| --nutui-cell-group-title-font-size | `$font-size-2` |
-| --nutui-cell-group-title-line-height | `20px` |
-| --nutui-cell-group-description-padding | `0 10px` |
-| --nutui-cell-group-description-color | `#909ca4` |
-| --nutui-cell-group-description-font-size | `$font-size-1` |
-| --nutui-cell-group-description-line-height | `16px` |
-| --nutui-cell-group-background-color | `$white` |
+| Name| Description | Default |
+| --- | --- | --- |
+| --nutui-cell-title-color | The cell title the font color | `$gray1` |
+| --nutui-cell-title-font-size | The cell title the font size | `$font-size-2` |
+| --nutui-cell-description-color| The cell describes the font color  | `$gray2` |
+| --nutui-cell-description-font-size | The cell describes the font size | `$font-size-1` |
+| --nutui-cell-extra-color| The right side of the cell describes the font color  | `$gray2` |
+| --nutui-cell-extra-font-size | The right side of the cell describes the font size | `$font-size-2` |
+| --nutui-cell-border-radius| The rounded corner size of the cell  | `6px` |
+| --nutui-cell-padding| Inside margins of cells  | `13px 16px` |
+| --nutui-cell-line-height| The row height of the cell  | `20px` |
+| --nutui-cell-after-right| The pseudo-class size of the cell  | `16px` |
+| --nutui-cell-after-border-bottom| The pseudo-class lower border of a cell  | `2px solid #f5f6f7` |
+| --nutui-cell-background-color| The background color of the cell  | `$gray6` |
+| --nutui-cell-box-shadow| The shadow of the cell  | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
+| --nutui-cell-group-title-padding| The padding of the title of the cell group  | `0 10px` |
+| --nutui-cell-group-title-color| The title font color of the cell group  | `#909ca4` |
+| --nutui-cell-group-title-font-size| The title font size of the cell group  | `$font-size-2` |
+| --nutui-cell-group-title-line-height | The title row height of the cell group | `20px` |
+| --nutui-cell-group-description-padding| The description padding for cell groups  | `0 10px` |
+| --nutui-cell-group-description-color| The description color of the cell group  | `#909ca4` |
+| --nutui-cell-group-description-font-size| The description  font size of the cell group  | `$font-size-1` |
+| --nutui-cell-group-description-line-height| The description  row height of cell group  | `16px` |
+| --nutui-cell-group-background-color| The background color of the cell group  | `$white` |

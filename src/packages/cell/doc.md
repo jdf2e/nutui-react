@@ -18,16 +18,16 @@ import { Cell, CellGroup } from '@nutui/nutui-react'
 
 ```tsx
 import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import { Cell, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const testClick = (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
-    console.log('点击事件')
+    Toast.text('点击事件')
 }
   return (
     <>
     <Cell title="我是标题" extra="描述文字" />
-    <Cell title="我是标题" description="副标题描述" extra="描述文字" />
+    <Cell title="我是标题" description="我是描述" extra="描述文字" />
     <Cell
         title="点击测试"
         onClick={(
@@ -82,7 +82,7 @@ const App = () => {
         </div>
         }
         description={
-        <span>副标题描述<b style={{ color: 'red' }}>1</b></span>
+        <span>我是描述<b style={{ color: 'red' }}>1</b></span>
         }
         extra="描述文字"
     />
@@ -178,7 +178,7 @@ import { Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-     <Cell align="center" title="我是标题" description="副标题描述" extra="描述文字" />
+     <Cell align="center" title="我是标题" description="我是描述" extra="描述文字" />
   );
 };
 export default App;
@@ -193,7 +193,7 @@ export default App;
 
 | 字段  | 说明     | 类型   | 默认值 |
 |-------|----------|--------|--------|
-| title | 分组标题 | string | -      |
+| title | 分组标题 | ReactNode | -      |
 | description  | 分组描述 | ReactNode | -      |
 
 
@@ -202,46 +202,38 @@ export default App;
 | 字段                 | 说明| 类型             | 默认值 |
 |--------------------|----------------------------|------------------|--------|
 | title              | 标题|  ReactNode           | -      |
-| description           | 副标题 |  ReactNode           | -      |
+| description           | 描述 |  ReactNode           | -      |
 | extra               | 右侧描述 | ReactNode      | -      |
 | radius | 圆角半径 | string | `6px`    |
 | align     | 纵轴方向上的对齐方式，可选值为：`flex-start`、`center`、`flex-end` | string          | `flex-start`  |
-
-### Cell Event
-
-| 名称  | 说明     | 回调参数                                                       |
-| ----- | -------- | -------------------------------------------------------------- |
-| onClick | 点击事件 | `event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>` |
-
-
+| onClick | 点击事件 | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` |`false`|
 ## 主题定制
 
 ### 样式变量
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-cell-color | `$gray1` |
-| --nutui-cell-title-font | `$font-size-2` |
-| --nutui-cell-title-description-font | `$font-size-1` |
-| --nutui-cell-description-font | `$font-size-2` |
-| --nutui-cell-description-color | `$gray2` |
-| --nutui-cell-subtitle-color | `$gray2` |
-| --nutui-cell-border-radius | `6px` |
-| --nutui-cell-padding | `13px 16px` |
-| --nutui-cell-line-height | `20px` |
-| --nutui-cell-after-right | `16px` |
-| --nutui-cell-after-border-bottom | `2px solid #f5f6f7` |
-| --nutui-cell-default-icon-margin | `0 4px 0 0px` |
-| --nutui-cell-background | `$gray6` |
-| --nutui-cell-box-shaow | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
-| --nutui-cell-group-title-padding | `0 10px` |
-| --nutui-cell-group-title-color | `#909ca4` |
-| --nutui-cell-group-title-font-size | `$font-size-2` |
-| --nutui-cell-group-title-line-height | `20px` |
-| --nutui-cell-group-description-padding | `0 10px` |
-| --nutui-cell-group-description-color | `#909ca4` |
-| --nutui-cell-group-description-font-size | `$font-size-1` |
-| --nutui-cell-group-description-line-height | `16px` |
-| --nutui-cell-group-background-color | `$white` |
+| 名称| 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-cell-title-color | 单元格标题字体颜色 | `$gray1` |
+| --nutui-cell-title-font-size | 单元格标题字体大小 | `$font-size-2` |
+| --nutui-cell-description-color| 单元格描述字体颜色  | `$gray2` |
+| --nutui-cell-description-font-size | 单元格描述字体大小 | `$font-size-1` |
+| --nutui-cell-extra-color| 单元格右侧描述字体颜色  | `$gray2` |
+| --nutui-cell-extra-font-size | 单元格右侧描述字体大小 | `$font-size-2` |
+| --nutui-cell-border-radius| 单元格圆角大小  | `6px` |
+| --nutui-cell-padding| 单元格内边距  | `13px 16px` |
+| --nutui-cell-line-height| 单元格行高  | `20px` |
+| --nutui-cell-after-right| 单元格伪类大小  | `16px` |
+| --nutui-cell-after-border-bottom| 单元格伪类下边框  | `2px solid #f5f6f7` |
+| --nutui-cell-background-color| 单元格背景颜色  | `$gray6` |
+| --nutui-cell-box-shadow| 单元格阴影  | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
+| --nutui-cell-group-title-padding| 单元格分组的标题内边距  | `0 10px` |
+| --nutui-cell-group-title-color| 单元格分组的标题字体颜色  | `#909ca4` |
+| --nutui-cell-group-title-font-size| 单元格分组的标题字体大小  | `$font-size-2` |
+| --nutui-cell-group-title-line-height | 单元格分组的标题行高 | `20px` |
+| --nutui-cell-group-description-padding| 单元格分组的描述内边距  | `0 10px` |
+| --nutui-cell-group-description-color| 单元格分组的描述颜色  | `#909ca4` |
+| --nutui-cell-group-description-font-size| 单元格分组的描述字体大小  | `$font-size-1` |
+| --nutui-cell-group-description-line-height| 单元格分组的描述行高  | `16px` |
+| --nutui-cell-group-background-color| 单元格分组的背景颜色  | `$white` |

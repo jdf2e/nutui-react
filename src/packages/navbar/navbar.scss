@@ -124,7 +124,7 @@
     }
 
     &-description {
-      font-size: $cell-title-description-font;
+      font-size: $cell-description-font-size;
     }
 
     .text__title {
@@ -149,7 +149,7 @@
   }
 
   &__left {
-    font-size: $cell-extra-font;
+    font-size: $cell-extra-font-size;
     color: $gray2;
     position: absolute;
     left: 0;
@@ -162,7 +162,7 @@
   }
 
   &__right {
-    font-size: $cell-extra-font;
+    font-size: $cell-extra-font-size;
     color: $gray2;
     position: absolute;
     right: 0;
