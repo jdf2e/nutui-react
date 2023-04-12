@@ -62,6 +62,23 @@
 #### TextArea
 #### Uploader
 
+- `maximize` 重命名为 `maxFileSize`
+- `maximum` 重命名为 `maxCount`
+- `listType ` 重命名为 `previewType`
+- `isDeletable ` 重命名为 `deletable`
+- `isPreview` 重命名为 ` preview`
+- `defaultImg` 重命名为 ` previewUrl`
+- `defaultFileList` 重命名为 ` defaultValue`
+- `uploadIconTip` 重命名为 `uploadLabel`
+- `onBeforeUpload` 重命名为 `beforeUpload`
+- `onBeforeXhrUpload` 重命名为 `beforeXhrUpload`
+- `onBeforeDelete` 重命名为 `beforeDelete`
+- `onRemove` 重命名为 `onDelete`
+- 增加 `imageFit`, 用于图片填充模式
+- 增加 `value`, 用于受控传值
+- 删除 `uploadIconSize`, 通过自定义icon来实现
+
+
 ### 操作反馈
 #### ActionSheet
 #### BackTop

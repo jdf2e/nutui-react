@@ -22,8 +22,8 @@ test('should render base uploader props', () => {
       capture
       name="files"
       accept=".jpg"
-      maximize={1024 * 50}
-      maximum={2}
+      maxFileSize={1024 * 50}
+      maxCount={2}
       onChange={change}
     />
   )
@@ -70,14 +70,13 @@ test('should render base uploader other props', () => {
     ]
     return (
       <Uploader
-        isDeletable
-        defaultFileList={defaultFileList}
+        deletable
+        defaultValue={defaultFileList}
         headers={{}}
         multiple
-        isPreview
+        preview
         uploadIcon="dongdong"
-        uploadIconSize="20px"
-        onRemove={onDelete}
+        onDelete={onDelete}
         onFileItemClick={fileItemClick}
       />
     )
@@ -131,9 +130,9 @@ test('should render base uploader list', () => {
     ]
     return (
       <Uploader
-        defaultFileList={defaultFileList}
+        defaultValue={defaultFileList}
         uploadIcon="dongdong"
-        listType="list"
+        previewType="list"
       />
     )
   }
@@ -164,10 +163,10 @@ test('before-delete prop return false', () => {
     ]
     return (
       <Uploader
-        isDeletable
-        defaultFileList={defaultFileList}
-        onRemove={onDelete}
-        onBeforeDelete={() => {
+        deletable
+        defaultValue={defaultFileList}
+        onDelete={onDelete}
+        beforeDelete={() => {
           return false
         }}
       />
@@ -193,10 +192,10 @@ test('before-delete prop return true', () => {
     ]
     return (
       <Uploader
-        isDeletable
-        defaultFileList={defaultFileList}
-        onRemove={onDelete}
-        onBeforeDelete={() => {
+        deletable
+        defaultValue={defaultFileList}
+        onDelete={onDelete}
+        beforeDelete={() => {
           return true
         }}
       />

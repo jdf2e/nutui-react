@@ -4,7 +4,7 @@ import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Uploader, Progress, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/uploader/demo.scss'
 import Header from '@/sites/components/header'
-import { Dongdong } from '@nutui/icons-react-taro'
+import { Dongdong, Loading1 } from '@nutui/icons-react-taro'
 
 export type FileItemStatus =
   | 'ready'
@@ -168,7 +168,7 @@ const UploaderDemo = () => {
   const formData = {
     custom: 'test',
   }
-  const defaultFileList: FileType<string>[] = [
+  const defaultFileList: FileType<React.ReactNode>[] = [
     {
       name: translated['6114cef1'],
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
@@ -209,7 +209,7 @@ const UploaderDemo = () => {
       message: translated['403b055e'],
       type: 'image',
       uid: '126',
-      loadingIcon: 'loading1',
+      loadingIcon: <Loading1 className="nut-icon-loading1" color="#fff" />,
     },
     {
       name: translated['29ab0c96'],
@@ -286,8 +286,7 @@ const UploaderDemo = () => {
           />
           <Uploader
             url={uploadUrl}
-            uploadIconSize="20px"
-            uploadIconTip="商品主图"
+            uploadLabel="商品主图"
             onStart={onStart}
             style={{ marginRight: '10px' }}
           />
@@ -301,27 +300,27 @@ const UploaderDemo = () => {
         <h2>{translated.a4afedb5}</h2>
         <Uploader
           url={uploadUrl}
-          defaultFileList={defaultFileList}
-          onRemove={onDelete}
+          defaultValue={defaultFileList}
+          onDelete={onDelete}
           uploadIcon={<Dongdong />}
         />
 
         <h2>{translated.uploadListShow}</h2>
         <Uploader
           url={uploadUrl}
-          defaultFileList={defaultFileList}
-          maximum="10"
+          defaultValue={defaultFileList}
+          maxCount="10"
           multiple
-          listType="list"
+          previewType="list"
         >
-          <Button type="default" size="small">
+          <Button type="success" size="small">
             {translated.bb5caa9c}
           </Button>
         </Uploader>
 
         <h2>{translated['37c65f47']}</h2>
         <Uploader url={uploadUrl}>
-          <Button type="default" size="small">
+          <Button type="success" size="small">
             {translated.bb5caa9c}
           </Button>
         </Uploader>
@@ -351,13 +350,13 @@ const UploaderDemo = () => {
         />
 
         <h2>{translated['0e5eaea3']}</h2>
-        <Uploader url={uploadUrl} maximum="5" multiple />
+        <Uploader url={uploadUrl} maxCount="5" multiple />
 
         <h2>{translated.b7454181}</h2>
         <Uploader
           url={uploadUrl}
           multiple
-          maximize={1024 * 50}
+          maxFileSize={1024 * 50}
           onOversize={onOversize}
         />
 
@@ -368,18 +367,18 @@ const UploaderDemo = () => {
         <Uploader
           url={uploadUrl}
           method="put"
-          onBeforeXhrUpload={beforeXhrUpload}
+          beforeXhrUpload={beforeXhrUpload}
         />
 
         <h2>{translated['67fffe24']}</h2>
         <Uploader
           url={uploadUrl}
-          maximum="5"
+          maxCount="5"
           autoUpload={false}
           ref={uploadRef}
         />
         <Button
-          type="default"
+          type="success"
           size="small"
           onClick={submitUpload}
           style={{ marginRight: '10px', marginTop: '20px' }}
