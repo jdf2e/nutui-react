@@ -1,3 +1,13 @@
+# v1.5.0
+`2023-04-12`
+
+* :sparkles: feat: steps 组件增加 demo，支持点+icon混合使用 (#899) @xiaoyatong
+* :bug: fix: backtop 第一次滚动时会卡住 (#901) @oasis-cloud
+* :bug: fix: input 组件 type 为数字类型时唤起键盘与微信不一致 (#880) @刘正午
+* :bug: fix: shortpassword 获得焦点后输入显示字符 (#898) @oasis-cloud
+* 📖 docs: table 文档内容和 demo 对齐 (#900) @oasis-cloud
+
+
 # v1.4.14
 `2023-04-06`
 
