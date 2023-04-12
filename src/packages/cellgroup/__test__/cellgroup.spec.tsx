@@ -4,8 +4,6 @@ import '@testing-library/jest-dom'
 import { Cell } from '../../cell/cell'
 import { CellGroup } from '../cellgroup'
 
-const classPrefix = `nut-avatar`
-
 test('prop title description subtitle', () => {
   const { container } = render(
     <CellGroup title="链接 | 分组用法">

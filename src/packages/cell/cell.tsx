@@ -21,7 +21,7 @@ const defaultProps = {
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
 
-const classPrefix = 'cell'
+const classPrefix = 'nut-cell'
 
 export const Cell: FunctionComponent<
   Partial<CellProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>

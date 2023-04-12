@@ -14,7 +14,7 @@ const defaultProps = {
   description: '',
 } as CellGroupProps
 
-const classPrefix = 'cell-group'
+const classPrefix = 'nut-cell-group'
 
 export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
   props
