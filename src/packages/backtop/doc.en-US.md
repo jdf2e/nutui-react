@@ -34,7 +34,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" id="elId">
+    <div className="demo" style={{ height: '100vh'}} id="elId">
         <div className="text-data" style={cellStyle}>test data1</div>
         <div className="text-data" style={cellStyle}>test data2</div>
         <div className="text-data" style={cellStyle}>test data3</div>
@@ -90,7 +90,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" id="elId">
+    <div className="demo" style={{ height: '100vh'}} id="elId">
        <div className="text-data" style={cellStyle}>test data1</div>
        <div className="text-data" style={cellStyle}>test data2</div>
        <div className="text-data" style={cellStyle}>test data3</div>
@@ -145,7 +145,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" id="elId">
+    <div className="demo" style={{ height: '100vh'}} id="elId">
        <div className="text-data" style={cellStyle}>test data1</div>
        <div className="text-data" style={cellStyle}>test data2</div>
        <div className="text-data" style={cellStyle}>test data3</div>
@@ -217,7 +217,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" style={{ height: '800px', overflowY: 'auto' }} id="elId">
+    <div className="demo" style={{ height: '100vh', overflowY: 'auto'}} id="elId">
        <div className="text-data" style={cellStyle}>test data1</div>
        <div className="text-data" style={cellStyle}>test data2</div>
        <div className="text-data" style={cellStyle}>test data3</div>
@@ -275,7 +275,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" id="elId">
+    <div className="demo" style={{ height: '100vh'}} id="elId">
        <div className="text-data" style={cellStyle}>test data1</div>
        <div className="text-data" style={cellStyle}>test data2</div>
        <div className="text-data" style={cellStyle}>test data3</div>
