@@ -22,20 +22,20 @@ import { Dialog } from '@nutui/nutui-react'
 
 ```tsx
 import React from "react";
-import { Cell,Dialog } from '@nutui/nutui-react';
+import { Cell, Dialog } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <>
       <Cell title="基础弹框" onClick={() => {
         Dialog.alert({
-            title: '基础弹框',
-            content: '支持函数调用和组件调用两种方式。'
+          title: '基础弹框',
+          content: '支持函数调用和组件调用两种方式。'
         });
         }} />
       <Cell title="无标题弹框" onClick={() => {
-            Dialog.alert({
-            content: '无标题弹框'
+        Dialog.alert({
+          content: '无标题弹框'
         });
         }} />
       <Cell title="提示弹框" onClick={() => {
@@ -66,7 +66,7 @@ export default App;
 
 ```tsx
 import React, {useState} from "react";
-import { Cell,Dialog } from '@nutui/nutui-react';
+import { Cell, Dialog } from '@nutui/nutui-react';
 
 const App = () => {
   const [visible1, setVisible1] = useState(false);

@@ -18,6 +18,7 @@ interface T {
   db1b4ed6: string
   '0533b454': string
   '0533b455': string
+  '0533b456': string
   '70ffa5d8': string
   f28461bb: string
   dc9591e5: string
@@ -52,6 +53,19 @@ const customTheme2 = {
     rgba(250, 100, 25, 1) 100%)`,
 }
 
+const customTheme3 = {
+  nutuiStepsBaseIconWidth: '6px',
+  nutuiStepsBaseIconHeight: '6px',
+  nutuiStepsBaseLineBackground: `#ddd`,
+  nutuiStepsFinishIconBgColor: 'black',
+  nutuiStepsFinishIconColor: 'black',
+  nutuiStepsProcessIconBgColor: 'white',
+  nutuiStepsWaitIconBgColor: '#ddd',
+  nutuiStepsBaseLineWidth: '45px',
+  nutuiStepsBaseLineHeight: '1px',
+  nutuiStepsFinishLineBackground: `black`,
+}
+
 const StepsDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -65,6 +79,7 @@ const StepsDemo = () => {
       db1b4ed6: '步骤描述',
       '0533b454': '自定义步骤条',
       '0533b455': '自定义步骤条：点状',
+      '0533b456': '自定义步骤条：点状+icon',
       '70ffa5d8': '自定义图标',
       f28461bb: '已完成',
       dc9591e5: '进行中',
@@ -87,6 +102,7 @@ const StepsDemo = () => {
       db1b4ed6: '步驟描述',
       '0533b454': '自定義步驟条',
       '0533b455': '自定義步驟条：点状',
+      '0533b456': '自定義步驟条：点状+icon',
       '70ffa5d8': '自定義圖標',
       f28461bb: '已完成',
       dc9591e5: '進行中',
@@ -109,6 +125,7 @@ const StepsDemo = () => {
       db1b4ed6: 'Step Description',
       '0533b454': 'Custom Step Bar',
       '0533b455': 'Custom Step Bar: Dot',
+      '0533b456': 'Custom Step Bar: Dot+icon',
       '70ffa5d8': 'custom Icon',
       f28461bb: 'completed',
       dc9591e5: 'in progress',
@@ -279,6 +296,30 @@ const StepsDemo = () => {
             </Button>
           </div>
         </div>
+
+        <h2>{translated['0533b456']}</h2>
+        <div className="steps-wrapper">
+          <ConfigProvider theme={customTheme3}>
+            <Steps current={2}>
+              <Step activeIndex={1} title={translated.f28461bb} icon=" ">
+                1
+              </Step>
+              <Step
+                activeIndex={2}
+                title={translated.dc9591e5}
+                icon="people"
+                size="16"
+                iconColor="red"
+              >
+                2
+              </Step>
+              <Step activeIndex={3} title={translated.f6e0d691} icon=" ">
+                3
+              </Step>
+            </Steps>
+          </ConfigProvider>
+        </div>
+
         <h2>{translated['70ffa5d8']}</h2>
         <div className="steps-wrapper">
           <Steps current={1}>
