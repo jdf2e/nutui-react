@@ -16,7 +16,7 @@ export interface GridItemProps extends BasicComponent {
   text: string | ReactNode
   index: number
   columns: string | number
-  gutter: string | number
+  gap: string | number
   center: boolean
   square: boolean
   reverse: boolean
@@ -26,7 +26,7 @@ export interface GridItemProps extends BasicComponent {
 const defaultProps = {
   text: '',
   columns: 4,
-  gutter: 0,
+  gap: 0,
   center: true,
   square: false,
   reverse: false,
@@ -41,7 +41,7 @@ export const GridItem: FunctionComponent<
     style,
     columns,
     index,
-    gutter,
+    gap,
     square,
     text,
     center,
@@ -66,10 +66,10 @@ export const GridItem: FunctionComponent<
 
     if (square) {
       styles.paddingTop = `${100 / +columns}%`
-    } else if (gutter) {
-      styles.paddingRight = pxCheck(gutter)
+    } else if (gap) {
+      styles.paddingRight = pxCheck(gap)
       if (index >= Number(columns)) {
-        styles.marginTop = pxCheck(gutter)
+        styles.marginTop = pxCheck(gap)
       }
     }
 
@@ -79,7 +79,7 @@ export const GridItem: FunctionComponent<
   const contentClass = () => {
     return classNames(`${classPrefix}__content`, {
       [`${classPrefix}__content--border`]: true,
-      [`${classPrefix}__content--surround`]: gutter,
+      [`${classPrefix}__content--surround`]: gap,
       [`${classPrefix}__content--center`]: center,
       [`${classPrefix}__content--square`]: square,
       [`${classPrefix}__content--reverse`]: reverse,
@@ -95,7 +95,7 @@ export const GridItem: FunctionComponent<
           text,
           index,
           columns,
-          gutter,
+          gap,
           center,
           square,
           reverse,

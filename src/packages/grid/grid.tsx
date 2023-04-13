@@ -8,7 +8,7 @@ export type GridDirection = 'horizontal' | 'vertical'
 
 export interface GridProps {
   columns: string | number
-  gutter: string | number
+  gap: string | number
   center: boolean
   square: boolean
   reverse: boolean
@@ -20,7 +20,7 @@ export interface GridProps {
 
 const defaultProps = {
   columns: 4,
-  gutter: 0,
+  gap: 0,
   center: true,
   square: false,
   reverse: false,
@@ -35,7 +35,7 @@ export const Grid: FunctionComponent<
   const {
     children,
     columns,
-    gutter,
+    gap,
     center,
     square,
     reverse,
@@ -51,7 +51,7 @@ export const Grid: FunctionComponent<
 
   const rootClass = () => {
     return classNames(className, classPrefix, {
-      [`${classPrefix}__border`]: !gutter,
+      [`${classPrefix}__border`]: !gap,
     })
   }
 
@@ -60,8 +60,8 @@ export const Grid: FunctionComponent<
     if (style) {
       styleSelf = style
     }
-    if (gutter) {
-      styleSelf.paddingLeft = pxCheck(gutter)
+    if (gap) {
+      styleSelf.paddingLeft = pxCheck(gap)
     }
 
     return styleSelf
@@ -75,7 +75,7 @@ export const Grid: FunctionComponent<
             index: idex,
             columns,
             center,
-            gutter,
+            gap,
             square,
             reverse,
             direction,

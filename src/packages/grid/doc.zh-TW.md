@@ -95,7 +95,7 @@ import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid gutter={3}>
+    <Grid gap={3}>
       <Grid.Item text="文字"><Dongdong /></Grid.Item>
       <Grid.Item text="文字"><Dongdong /></Grid.Item>
       <Grid.Item text="文字"><Dongdong /></Grid.Item>
@@ -243,7 +243,7 @@ export default App
 | 參數 | 說明 | 類型 | 默認值 |
 |-|-|-|-|
 | columns | 列數 | number \| string | `4` |
-| gutter | 格子之間的間距，默認單位為`px` | number \| string | `0` |
+| gap | 格子之間的間距，默認單位為`px` | number \| string | `0` |
 | center | 是否將格子內容居中顯示 | boolean | `true` |
 | square | 是否將格子固定為正方形 | boolean | `false` |
 | reverse | 內容翻轉 | boolean | `false` |

@@ -84,7 +84,7 @@ export default App
 ```
 :::
 
-### Gutter
+### Gap
 
 :::demo
 ```tsx
@@ -94,7 +94,7 @@ import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid gutter={3}>
+    <Grid gap={3}>
       <Grid.Item text="text"><Dongdong /></Grid.Item>
       <Grid.Item text="text"><Dongdong /></Grid.Item>
       <Grid.Item text="text"><Dongdong /></Grid.Item>
@@ -244,7 +244,7 @@ export default App
 | Property | Description | Type | Default |
 |-|-|-|-|
 | columns | Column Num | number \| string | `4` |
-| gutter | Gutter,The default unit is `px` | number \| string | `0` |
+| gap | Gap. The default unit is `px` | number \| string | `0` |
 | center | Whether to center content | boolean | `true` |
 | square |  Whether to be square shape | boolean | `false` |
 | reverse |  Whether to reverse the position of icon and text | boolean | `false` |

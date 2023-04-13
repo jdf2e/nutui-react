@@ -56,10 +56,10 @@ test('render with column num', () => {
   expect(regionItem).toHaveStyle('flex-basis:33.333333333333336%')
 })
 
-test('render with props gutter', () => {
+test('render with props gap', () => {
   const { container } = render(
     <>
-      <Grid gutter={3}>
+      <Grid gap={3}>
         <Grid.Item text="文本">
           <Dongdong />
         </Grid.Item>

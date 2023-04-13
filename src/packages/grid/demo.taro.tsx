@@ -10,7 +10,7 @@ interface T {
   text: string
   columns: string
   square: string
-  gutter: string
+  gap: string
   reverse: string
   horizontal: string
   reverseHorizontal: string
@@ -25,7 +25,7 @@ const GridDemo = () => {
       text: '文字',
       columns: '自定义列数',
       square: '正方形格子',
-      gutter: '格子间距',
+      gap: '格子间距',
       reverse: '内容翻转',
       horizontal: '内容横向',
       reverseHorizontal: '内容翻转 + 横向',
@@ -38,7 +38,7 @@ const GridDemo = () => {
       text: '文字',
       columns: '自定義列數',
       square: '正方形格子',
-      gutter: '格子間距',
+      gap: '格子間距',
       reverse: '內容翻轉',
       horizontal: '內容橫向',
       reverseHorizontal: '內容翻轉 + 橫向',
@@ -51,7 +51,7 @@ const GridDemo = () => {
       text: 'text',
       columns: 'Column Num',
       square: 'Square',
-      gutter: 'Gutter',
+      gap: 'Gap',
       reverse: 'Reverse',
       horizontal: 'Horizontal',
       reverseHorizontal: 'Reverse & Horizontal',
@@ -135,8 +135,8 @@ const GridDemo = () => {
           </Grid.Item>
         </Grid>
 
-        <h2>{translated.gutter}</h2>
-        <Grid gutter={3}>
+        <h2>{translated.gap}</h2>
+        <Grid gap={3}>
           <Grid.Item text={translated.text}>
             <Dongdong />
           </Grid.Item>
