@@ -34,7 +34,7 @@ jobs:
         run: pnpm install
 
       - name: Run test cases
-        run: npm run test -- --runTestsByPath ./src/packages/$component
+        run: npm run test -- --runTestsByPath ./src/packages/$component/**/*.spec.tsx
 
   build:
     runs-on: ubuntu-latest
