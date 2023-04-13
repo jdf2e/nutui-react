@@ -82,12 +82,20 @@ export const InputNumber: FunctionComponent<
   }
   const [inputValue, setInputValue] = useState(defaultValue)
   const inputRef = useRef('')
+
   useEffect(() => {
     if (formatter) {
-      inputRef.current = formatter(value || defaultValue)
-      setInputValue(formatter(value || defaultValue))
+      if (value || value === 0) {
+        inputRef.current = formatter(value)
+        setInputValue(formatter(value))
+      } else {
+        inputRef.current = formatter(defaultValue)
+        setInputValue(formatter(defaultValue))
+      }
     } else {
-      setInputValue(value || defaultValue)
+      if (value || value === 0) {
+        setInputValue(value)
+      }
     }
   }, [value, formatter])
 
@@ -102,22 +110,23 @@ export const InputNumber: FunctionComponent<
   const styles = {
     ...style,
   }
-  const addAllow = (value = Number(inputValue)) => {
+
+  const addAllow = (value = inputValue) => {
     if (formatter) {
       const numValue = String(value).replace(/[^0-9|\.]/gi, '')
       return Number(numValue) < Number(max) && !disabled
     }
 
-    return value < Number(max) && !disabled
+    return Number(value) < Number(max) && !disabled
   }
 
-  const reduceAllow = (value = Number(inputValue)) => {
+  const reduceAllow = (value = inputValue) => {
     if (formatter) {
       const numValue = String(value).replace(/[^0-9|\.]/gi, '')
       return Number(numValue) > Number(min) && !disabled
     }
 
-    return value > Number(min) && !disabled
+    return Number(value) > Number(min) && !disabled
   }
 
   const iconMinusClasses = classNames('nut-inputnumber__icon icon-minus', {

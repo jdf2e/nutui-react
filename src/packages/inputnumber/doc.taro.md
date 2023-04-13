@@ -204,7 +204,7 @@ const App = () => {
   }
   return (
     <>
-      <InputNumber value={inputValue} defaultValue={1} onChange={onChange} async />
+      <InputNumber value={inputValue} min="-6" onChange={onChange} async />
     </>
   )
 }

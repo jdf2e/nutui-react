@@ -88,7 +88,7 @@ const InputNumberDemo = () => {
     },
   })
 
-  const [inputValue, setInputValue] = useState(0)
+  const [inputValue, setInputValue] = useState(-1)
   const overlimit = (e: MouseEvent) => {
     console.log(e)
     Toast.warn(translated['6333c786'])
@@ -154,12 +154,7 @@ const InputNumberDemo = () => {
 
         <h2>{translated['65bafb1d']}</h2>
         <Cell>
-          <InputNumber
-            value={inputValue}
-            defaultValue={1}
-            onChange={onChange}
-            async
-          />
+          <InputNumber value={inputValue} min="-6" onChange={onChange} async />
         </Cell>
 
         <h2>支持formatter</h2>
