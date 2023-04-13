@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import bem from '@/utils/bem'
+import classNames from 'classnames'
+import { useConfig } from '@/packages/configprovider.taro'
 
 export interface PaginationProps {
   defaultValue: number
@@ -57,7 +57,7 @@ export const Pagination: FunctionComponent<
   const [currentPage, setCurrent] = useState(1)
   const [pages, setPages] = useState<unknown[]>([])
   const [countRef, setCountRef] = useState(0)
-  const paginationBem = bem('pagination')
+  const classPrefix = 'nut-pagination'
   // 计算页面的数量
   const computedCountRef = () => {
     const num = Math.ceil(Number(total) / Number(pageSize))
@@ -138,24 +138,27 @@ export const Pagination: FunctionComponent<
     }
   }
   return (
-    <div className={`${paginationBem('')} ${className}`} {...rest}>
+    <div className={classNames(classPrefix, className)} {...rest}>
       <div
-        className={`${paginationBem('prev')}  ${
-          mode === 'multi' ? '' : 'simple-border'
-        } ${currentPage === 1 ? 'disabled' : ''}`}
+        className={classNames(
+          `${classPrefix}__prev`,
+          mode === 'multi' ? '' : 'simple-border',
+          currentPage === 1 ? 'disabled' : ''
+        )}
         onClick={(e) => selectPage(Number(currentPage) - 1, true)}
       >
         {prev || locale.pagination.prev}
       </div>
       {mode === 'multi' ? (
-        <div className={`${paginationBem('contain')}`}>
+        <div className={`${classPrefix}__contain`}>
           {pages.map((item: any, index: number) => {
             return (
               <div
                 key={`${index}pagination`}
-                className={`${paginationBem('item')} ${
+                className={classNames(
+                  `${classPrefix}__item`,
                   item.active ? 'active' : ''
-                }`}
+                )}
                 onClick={(e) =>
                   !item.active ? selectPage(item.number, true) : ''
                 }
@@ -169,8 +172,8 @@ export const Pagination: FunctionComponent<
         ''
       )}
       {mode === 'simple' ? (
-        <div className={`${paginationBem('contain')}`}>
-          <div className={`${paginationBem('simple')}`}>
+        <div className={`${classPrefix}__contain`}>
+          <div className={`${classPrefix}__simple`}>
             {currentPage}/{countRef}
           </div>
         </div>
@@ -178,9 +181,10 @@ export const Pagination: FunctionComponent<
         ''
       )}
       <div
-        className={`${paginationBem('next')}  ${
+        className={classNames(
+          `${classPrefix}__next`,
           Number(currentPage) >= countRef ? 'disabled' : ''
-        }`}
+        )}
         onClick={(e) => selectPage(Number(currentPage) + 1, true)}
       >
         {next || locale.pagination.next}

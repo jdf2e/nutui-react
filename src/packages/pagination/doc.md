@@ -1,14 +1,16 @@
 #  Pagination 分页
 
-### 介绍
+## 介绍
     
 当数据量较多时，采用分页的形式分隔长列表。
     
-### 安装
+## 安装
 ``` javascript
 // react
 import { Pagination } from '@nutui/nutui-react';
 ```    
+
+## 代码演示
 
 ### 基础用法
 通过 current 来绑定当前页码时，组件为受控状态，分页显示取决于传入的 current，一般搭配 onChange 使用。
@@ -146,7 +148,7 @@ export default App;
 ```
 :::
     
-## API
+## Pagination
     
 ### Props
     
@@ -162,13 +164,7 @@ export default App;
 | itemSize   | 显示的页码个数                   | string \| number          | `5`                 |
 | ellipse  | 是否显示省略号                   | boolean                   | `false`             |
 | itemRender | 用于自定义页码的结构             | (page) => ReactNode | -                 |
-    
-### Events
-    
-| 事件名   | 说明           | 回调参数 |
-| -------- | -------------- | -------- |
-| onChange | 页码改变时触发 | `value`    |
-
+| onChange | 页码改变时触发 | (value) => void    | - |
 
 ## 主题定制
 

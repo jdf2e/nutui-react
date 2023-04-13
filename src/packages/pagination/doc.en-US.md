@@ -1,14 +1,16 @@
 #  Pagination
 
-### Intro
+## Intro
     
 When the amount of data is too much, use pagination to separate the data.
     
-### Install
+## Install
 ``` javascript
 // react
 import { Pagination } from '@nutui/nutui-react';
 ```    
+
+## Code
 
 ### Basic Usage
 
@@ -148,7 +150,7 @@ export default App;
 ```
 :::
 
-## API
+## Pagination
     
 ### Props
     
@@ -164,13 +166,7 @@ export default App;
 | itemSize   | number of pages displayed                   | string \| number          | `5`                 |
 | ellipse  | Whether to show ellipsis                   | boolean                   | `false`             |
 | itemRender | Used to customize page number content             | (page) => ReactNode | -                 |
-    
-### Events
-    
-| Event | Description           | Arguments |
-| -------- | -------------- | -------- |
-| onChange |  when the page number changes | `value`    |
-
+| onChange |  when the page number changes | (value) => void    | - |
 
 ## Theming
 
