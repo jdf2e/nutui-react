@@ -165,11 +165,15 @@ import { Dongdong } from '@nutui/icons-react-taro'
 const App = () => {
   return (
     <Grid columns="3">
-      <Grid.Item text="文字"><Dongdong /></Grid.Item>
       <Grid.Item text="文字">
-        <Dongdong width={40} height={40} color="#478EF2" />
+        <Dongdong width={10} height={10} />
       </Grid.Item>
-      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字">
+        <Dongdong color="red" />
+      </Grid.Item>
+      <Grid.Item text="文字">
+        <Dongdong width={20} height={20} color="#478EF2" />
+      </Grid.Item>
     </Grid>
   )
 }
@@ -189,16 +193,6 @@ const App = () => {
   return (
     <Grid>
       <Grid.Item text={<span>More</span>}><Dongdong /></Grid.Item>
-      <Grid.Item
-        text={
-          <Avatar
-            className="demo-avatar"
-            icon={<My color="#fff"/>}
-            bgColor="#FA2C19"
-          />
-        }
-        onClick={handleClick}
-      />
       <Grid.Item>
         <Avatar
           className="demo-avatar"

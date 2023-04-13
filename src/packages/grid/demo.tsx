@@ -58,17 +58,13 @@ const GridDemo = () => {
     },
   })
 
-  const handleClick = () => {
-    Toast.text('点击了第几个')
-  }
-
   const onClick = (item: any, index: number) => {
     Toast.text(`点击了${item.text}，第${index}个`)
   }
 
   return (
     <>
-      <div className="demo">
+      <div className="demo" style={{ marginBottom: '100px' }}>
         <h2>{translated.basic}</h2>
         <Grid>
           <Grid.Item text={translated.text}>
@@ -195,13 +191,13 @@ const GridDemo = () => {
         <h2>{translated.iconStyle}</h2>
         <Grid columns="3">
           <Grid.Item text={translated.text}>
-            <Dongdong />
+            <Dongdong width={10} height={10} />
           </Grid.Item>
           <Grid.Item text={translated.text}>
-            <Dongdong width={40} height={40} color="#478EF2" />
+            <Dongdong color="red" />
           </Grid.Item>
           <Grid.Item text={translated.text}>
-            <Dongdong />
+            <Dongdong width={20} height={20} color="#478EF2" />
           </Grid.Item>
         </Grid>
 
@@ -210,16 +206,6 @@ const GridDemo = () => {
           <Grid.Item text={<span>More</span>}>
             <Dongdong />
           </Grid.Item>
-          <Grid.Item
-            text={
-              <Avatar
-                className="demo-avatar"
-                icon={<My color="#fff" />}
-                bgColor="#FA2C19"
-              />
-            }
-            onClick={handleClick}
-          />
           <Grid.Item>
             <Avatar
               className="demo-avatar"
