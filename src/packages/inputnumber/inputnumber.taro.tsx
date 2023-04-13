@@ -213,7 +213,7 @@ export const InputNumber: FunctionComponent<
       </div>
       <input
         className="nut-number-input"
-        type="number"
+        type="digit"
         min={min}
         max={max}
         style={{ width: pxCheck(inputWidth) }}
