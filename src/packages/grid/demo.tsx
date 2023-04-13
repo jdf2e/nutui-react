@@ -14,6 +14,7 @@ interface T {
   gutter: string
   reverse: string
   horizontal: string
+  reverseHorizontal: string
   iconStyle: string
   customContent: string
   event: string
@@ -28,6 +29,7 @@ const GridDemo = () => {
       gutter: '格子间距',
       reverse: '内容翻转',
       horizontal: '内容横向',
+      reverseHorizontal: '内容翻转 + 横向',
       iconStyle: '图标颜色/大小',
       customContent: '自定义内容',
       event: '点击子项事件',
@@ -40,6 +42,7 @@ const GridDemo = () => {
       gutter: '格子間距',
       reverse: '內容翻轉',
       horizontal: '內容橫向',
+      reverseHorizontal: '內容翻轉 + 橫向',
       iconStyle: '圖標顏色/大小',
       customContent: '自定義內容',
       event: '點擊子項事件',
@@ -52,6 +55,7 @@ const GridDemo = () => {
       gutter: 'Gutter',
       reverse: 'Reverse',
       horizontal: 'Horizontal',
+      reverseHorizontal: 'Reverse & Horizontal',
       iconStyle: 'Icon Style',
       customContent: 'Custom Content',
       event: 'Grid Item Click',
@@ -174,6 +178,22 @@ const GridDemo = () => {
 
         <h2>{translated.horizontal}</h2>
         <Grid direction="horizontal">
+          <Grid.Item text={translated.text}>
+            <Dongdong />
+          </Grid.Item>
+          <Grid.Item text={translated.text}>
+            <Dongdong />
+          </Grid.Item>
+          <Grid.Item text={translated.text}>
+            <Dongdong />
+          </Grid.Item>
+          <Grid.Item text={translated.text}>
+            <Dongdong />
+          </Grid.Item>
+        </Grid>
+
+        <h2>{translated.reverseHorizontal}</h2>
+        <Grid reverse direction="horizontal">
           <Grid.Item text={translated.text}>
             <Dongdong />
           </Grid.Item>

@@ -154,6 +154,28 @@ export default App
 ```
 :::
 
+### Reverse & Horizontal
+
+:::demo
+```tsx
+import React from 'react'
+import { Grid } from '@nutui/nutui-react'
+import { Dongdong } from '@nutui/icons-react'
+
+const App = () => {
+  return (
+    <Grid reverse direction="horizontal">
+      <Grid.Item text="text"><Dongdong /></Grid.Item>
+      <Grid.Item text="text"><Dongdong /></Grid.Item>
+      <Grid.Item text="text"><Dongdong /></Grid.Item>
+      <Grid.Item text="text"><Dongdong /></Grid.Item>
+    </Grid>
+  )
+}
+export default App
+```
+:::
+
 ### Icon Style
 
 :::demo

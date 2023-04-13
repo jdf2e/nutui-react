@@ -155,6 +155,28 @@ export default App
 ```
 :::
 
+### 内容翻转 + 横向
+
+:::demo
+```tsx
+import React from 'react'
+import { Grid } from '@nutui/nutui-react'
+import { Dongdong } from '@nutui/icons-react'
+
+const App = () => {
+  return (
+    <Grid reverse direction="horizontal">
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+    </Grid>
+  )
+}
+export default App
+```
+:::
+
 ### 图标颜色/大小
 
 :::demo
