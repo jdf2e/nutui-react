@@ -8,6 +8,7 @@ import React, {
 } from 'react'
 import { Minus, Plus } from '@nutui/icons-react'
 import classNames from 'classnames'
+import { usePropsValue } from '@/utils/use-props-value'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -80,24 +81,21 @@ export const InputNumber: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const [inputValue, setInputValue] = useState(defaultValue)
   const inputRef = useRef('')
+
+  let [_checked, setChecked] = usePropsValue<string | number>({
+    value: value,
+    defaultValue: defaultValue,
+  })
 
   useEffect(() => {
     if (formatter) {
-      if (value || value === 0) {
-        inputRef.current = formatter(value)
-        setInputValue(formatter(value))
-      } else {
-        inputRef.current = formatter(defaultValue)
-        setInputValue(formatter(defaultValue))
-      }
-    } else {
-      if (value || value === 0) {
-        setInputValue(value)
+      if (_checked || _checked === 0) {
+        inputRef.current = formatter(_checked)
+        setChecked(formatter(_checked))
       }
     }
-  }, [value, formatter])
+  }, [])
 
   const classes = classNames(
     {
@@ -109,7 +107,7 @@ export const InputNumber: FunctionComponent<
   const styles = {
     ...style,
   }
-  const addAllow = (value = inputValue) => {
+  const addAllow = (value = _checked) => {
     if (formatter) {
       const numValue = String(value).replace(/[^0-9|\.]/gi, '')
       return Number(numValue) < Number(max) && !disabled
@@ -118,7 +116,7 @@ export const InputNumber: FunctionComponent<
     return Number(value) < Number(max) && !disabled
   }
 
-  const reduceAllow = (value = inputValue) => {
+  const reduceAllow = (value = _checked) => {
     if (formatter) {
       const numValue = String(value).replace(/[^0-9|\.]/gi, '')
       return Number(numValue) > Number(min) && !disabled
@@ -147,17 +145,11 @@ export const InputNumber: FunctionComponent<
     onChange && onChange(outputValue, e)
     if (!async) {
       if (Number(outputValue) < Number(min)) {
-        formatter
-          ? setInputValue(formatter(Number(min)))
-          : setInputValue(Number(min))
+        formatter ? setChecked(formatter(Number(min))) : setChecked(Number(min))
       } else if (Number(outputValue) > Number(max)) {
-        formatter
-          ? setInputValue(formatter(Number(max)))
-          : setInputValue(Number(max))
+        formatter ? setChecked(formatter(Number(max))) : setChecked(Number(max))
       } else {
-        formatter
-          ? setInputValue(formatter(outputValue))
-          : setInputValue(outputValue)
+        formatter ? setChecked(formatter(outputValue)) : setChecked(outputValue)
       }
     }
   }
@@ -166,12 +158,12 @@ export const InputNumber: FunctionComponent<
     onMinus && onMinus(e)
     if (reduceAllow()) {
       if (formatter) {
-        const numValue = String(inputValue).replace(/[^0-9|\.]/gi, '')
+        const numValue = String(_checked).replace(/[^0-9|\.]/gi, '')
         const outputValue = Number(numValue) - Number(step)
         inputRef.current = formatter(outputValue)
         emitChange(outputValue, e)
       } else {
-        const outputValue = Number(inputValue) - Number(step)
+        const outputValue = Number(_checked) - Number(step)
         emitChange(outputValue, e)
       }
     } else {
@@ -183,12 +175,12 @@ export const InputNumber: FunctionComponent<
     onPlus && onPlus(e)
     if (addAllow()) {
       if (formatter) {
-        const numValue = String(inputValue).replace(/[^0-9|\.]/gi, '')
+        const numValue = String(_checked).replace(/[^0-9|\.]/gi, '')
         const outputValue = Number(numValue) + Number(step)
         inputRef.current = formatter(outputValue)
         emitChange(outputValue, e)
       } else {
-        const outputValue = Number(inputValue) + Number(step)
+        const outputValue = Number(_checked) + Number(step)
         emitChange(outputValue, e)
       }
     } else {
@@ -201,9 +193,9 @@ export const InputNumber: FunctionComponent<
     onChange && onChange(input.valueAsNumber, e)
     if (!async) {
       if (Number.isNaN(input.valueAsNumber)) {
-        setInputValue('')
+        setChecked('')
       } else {
-        setInputValue(input.valueAsNumber)
+        setChecked(input.valueAsNumber)
       }
     }
   }
@@ -216,15 +208,15 @@ export const InputNumber: FunctionComponent<
 
     if (formatter) {
       if (!numReg.test(input[0]) && numValue) {
-        setInputValue(formatter(numValue))
+        setChecked(formatter(numValue))
       } else if (!numReg.test(input[0]) && !numValue) {
-        setInputValue(input)
+        setChecked(input)
       } else if (numReg.test(input[0])) {
         // 针对于100%这种尾字符例子，直接删除会进行匹配
         if (formatter(numValue) === inputRef.current) {
-          setInputValue(numValue)
+          setChecked(numValue)
         } else {
-          setInputValue(formatter(numValue))
+          setChecked(formatter(numValue))
           inputRef.current = formatter(numValue)
         }
       }
@@ -242,7 +234,7 @@ export const InputNumber: FunctionComponent<
         return
       }
       if (!numReg.test(input) || !input) {
-        setInputValue(formatter(''))
+        setChecked(formatter(''))
       }
     }
   }
@@ -285,7 +277,7 @@ export const InputNumber: FunctionComponent<
             max={max}
             disabled={disabled}
             readOnly={readonly}
-            value={inputValue}
+            value={_checked}
             onInput={changeFormatValue}
             onBlur={burFormatValue}
             onFocus={focusValue}
@@ -297,7 +289,7 @@ export const InputNumber: FunctionComponent<
             max={max}
             disabled={disabled}
             readOnly={readonly}
-            value={inputValue}
+            value={_checked}
             onInput={changeValue}
             onBlur={burValue}
             onFocus={focusValue}
