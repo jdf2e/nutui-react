@@ -35,7 +35,9 @@ jobs:
 
       - name: Run test cases
         run: |
+          echo $(git log -n 1 --dirstat=files --oneline)
           COMPONENT=$(git log -n 1 --dirstat=files --oneline | grep -E 'src\/packages\/([a-z]+)(\/[a-z_]*)*' | sed -E 's/src\/packages\/([a-z]+)(\/[a-z_]*)*/\1/' | awk 'END{ print $2}')
+          echo $COMPONENT
           echo "component=${COMPONENT}" >> $GITHUB_ENV
           npm run test -- --runTestsByPath ./src/packages/$component/**/*.spec.tsx
 
