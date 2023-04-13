@@ -48,7 +48,7 @@
     "generate:file": "node scripts/generate-nutui.js",
     "generate:themes": "node scripts/generate-themes.js",
     "generate:themes-dev": "node scripts/generate-themes-dev.js",
-    "checked": "npm run generate:file && tsc",
+    "checked": "npm run generate:file && tsc --project ./tsconfig.h5.json",
     "dev": "npm run checked && vite --open --force",
     "dev:jmapp": "npm run checked && VITE_APP_PROJECT_ID=jmapp vite --open --force",
     "dev:theme": "npm run generate:themes-dev && npm run checked && vite  --force --config vite.config.theme.ts",
