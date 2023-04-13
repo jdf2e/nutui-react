@@ -15,48 +15,43 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-      - name: Get git log
-        run: |
-          COMPONENT=$(git log -n 1 --dirstat=files --oneline | grep -E 'src\/packages\/([a-z]+)(\/[a-z_]*)*' | sed -E 's/src\/packages\/([a-z]+)(\/[a-z_]*)*/\1/' | awk 'END{ print $2}')
-          echo "component=${COMPONENT}" >> $GITHUB_ENV
+    - name: Install pnpm
+      run: corepack enable
 
-      - name: Install pnpm
-        run: corepack enable
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'pnpm'
 
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-          cache: 'pnpm'
+    - name: Install dependencies
+      run: pnpm install
 
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Run test cases
-        run: npm run test -- --runTestsByPath ./src/packages/$component/**/*.spec.tsx
+    - name: Run test cases
+      run: npm run test
 
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-      - name: Install pnpm
-        run: corepack enable
+    - name: Install pnpm
+      run: corepack enable
 
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-          cache: 'pnpm'
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'pnpm'
 
-      - name: Install dependencies
-        run: pnpm install
+    - name: Install dependencies
+      run: pnpm install
 
-      - name: Build NutUI-React
-        run: npm run build
+    - name: Build NutUI-React
+      run: npm run build
 
-      - name: Build NutUI-React-Taro
-        run: npm run build:taro
-
-      - name: Build NutUI-React Demo
-        run: npm run build:site
+    - name: Build NutUI-React-Taro
+      run: npm run build:taro
+    
+    - name: Build NutUI-React Demo
+      run: npm run build:site
