@@ -260,9 +260,10 @@ $cell-extra-color: var(--nutui-cell-extra-color, $gray2) !default;
 $cell-border-radius: var(--nutui-cell-border-radius, 6px) !default;
 $cell-padding: var(--nutui-cell-padding, 13px 16px) !default;
 $cell-line-height: var(--nutui-cell-line-height, 20px) !default;
-$cell-after-right: var(--nutui-cell-after-right, 16px) !default;
-$cell-after-border-bottom: var(
-  --nutui-cell-after-border-bottom,
+$cell-divider-right: var(--nutui-cell-divider-right, 16px) !default;
+$cell-divider-left: var(--nutui-cell-divider-left, 16px) !default;
+$cell-divider-border-bottom: var(
+  --nutui-cell-divider-border-bottom,
   2px solid #f5f6f7
 ) !default;
 $cell-background-color: var(--nutui-cell-background-color, $gray6) !default;

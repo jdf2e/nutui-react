@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 import { Cell } from '../../cell/cell'
 import { CellGroup } from '../cellgroup'
 
-test('prop title description subtitle', () => {
+test('prop title description extra', () => {
   const { container } = render(
     <CellGroup title="链接 | 分组用法">
       <Cell title="链接" />

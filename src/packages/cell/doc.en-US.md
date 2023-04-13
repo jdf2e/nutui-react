@@ -227,8 +227,9 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-cell-border-radius| The rounded corner size of the cell  | `6px` |
 | --nutui-cell-padding| Inside margins of cells  | `13px 16px` |
 | --nutui-cell-line-height| The row height of the cell  | `20px` |
-| --nutui-cell-after-right| The pseudo-class size of the cell  | `16px` |
-| --nutui-cell-after-border-bottom| The pseudo-class lower border of a cell  | `2px solid #f5f6f7` |
+| --nutui-cell-divider-left| Left margin of cell divider  | `16px` |
+| --nutui-cell-divider-right| Right margin of cell divider  | `16px` |
+| --nutui-cell-divider-border-bottom|  Border bottom  of cell divider | `2px solid #f5f6f7` |
 | --nutui-cell-background-color| The background color of the cell  | `$gray6` |
 | --nutui-cell-box-shadow| The shadow of the cell  | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
 | --nutui-cell-group-title-padding| The padding of the title of the cell group  | `0 10px` |

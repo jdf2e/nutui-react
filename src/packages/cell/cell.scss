@@ -11,24 +11,6 @@
   color: $cell-title-color;
   margin: 10px 0;
   box-sizing: border-box;
-
-  &:last-child {
-    &::after {
-      border: 0 !important;
-    }
-  }
-
-  &::after {
-    position: absolute;
-    box-sizing: border-box;
-    content: ' ';
-    pointer-events: none;
-    right: $cell-after-right;
-    bottom: 0;
-    left: 16px;
-    transform: scaleY(0.5);
-  }
-
   &__left {
     display: flex;
     flex-direction: column;

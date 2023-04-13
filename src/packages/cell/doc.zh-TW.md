@@ -2,7 +2,7 @@
 
 ### 介紹
 
-列錶項，可組成列錶。
+列表項，可組成列表。
 
 ### 安裝
 
@@ -205,9 +205,9 @@ export default App;
 | description           | 描述 |  ReactNode           | -      |
 | extra               | 右側描述 | ReactNode      | -      |
 | radius | 圓角半徑 | string | `6px`    |
-| align     | 縱軸方嚮上的對齊方式，可選值為：`flex-start`、`center`、`flex-end` | string          | `flex-start`  |
+| align     | 縱軸方向上的對齊方式，可選值為：`flex-start`、`center`、`flex-end` | string          | `flex-start`  |
 | onClick | 點擊事件 | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` |`false`|
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
@@ -224,8 +224,9 @@ export default App;
 | --nutui-cell-border-radius| 單元格圓角大小  | `6px` |
 | --nutui-cell-padding| 單元格內邊距  | `13px 16px` |
 | --nutui-cell-line-height| 單元格行高  | `20px` |
-| --nutui-cell-after-right| 單元格偽類大小  | `16px` |
-| --nutui-cell-after-border-bottom| 單元格偽類下邊框  | `2px solid #f5f6f7` |
+| --nutui-cell-divider-left| 單元格分割線左邊距  | `16px` |
+| --nutui-cell-divider-right| 單元格分割線右邊距   | `16px` |
+| --nutui-cell-divider-border-bottom| 單元格分割線下邊框  | `2px solid #f5f6f7` |
 | --nutui-cell-background-color| 單元格背景顏色  | `$gray6` |
 | --nutui-cell-box-shadow| 單元格陰影  | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
 | --nutui-cell-group-title-padding| 單元格分組的標題內邊距  | `0 10px` |

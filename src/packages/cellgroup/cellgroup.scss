@@ -27,17 +27,26 @@
     overflow: hidden;
     background-color: $cell-group-background-color;
     margin: 10px 0;
-
-    .nut-cell {
-      margin: 0;
-      box-shadow: none;
-      border-radius: 0;
-    }
   }
 
   .nut-cell {
-    &::after {
-      border-bottom: $cell-after-border-bottom;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+    &__divider {
+      position: absolute;
+      box-sizing: border-box;
+      pointer-events: none;
+      right: $cell-divider-right;
+      bottom: 0;
+      left: $cell-divider-left;
+      transform: scaleY(0.5);
+      border-bottom: $cell-divider-border-bottom;
+    }
+    &:last-child {
+      &__divider {
+        border: 0 !important;
+      }
     }
   }
 }

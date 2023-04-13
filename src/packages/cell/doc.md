@@ -224,8 +224,9 @@ export default App;
 | --nutui-cell-border-radius| 单元格圆角大小  | `6px` |
 | --nutui-cell-padding| 单元格内边距  | `13px 16px` |
 | --nutui-cell-line-height| 单元格行高  | `20px` |
-| --nutui-cell-after-right| 单元格伪类大小  | `16px` |
-| --nutui-cell-after-border-bottom| 单元格伪类下边框  | `2px solid #f5f6f7` |
+| --nutui-cell-divider-left| 单元格分割线左边距  | `16px` |
+| --nutui-cell-divider-right| 单元格分割线右边距   | `16px` |
+| --nutui-cell-divider-border-bottom| 单元格分割线下边框  | `2px solid #f5f6f7` |
 | --nutui-cell-background-color| 单元格背景颜色  | `$gray6` |
 | --nutui-cell-box-shadow| 单元格阴影  | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
 | --nutui-cell-group-title-padding| 单元格分组的标题内边距  | `0 10px` |
