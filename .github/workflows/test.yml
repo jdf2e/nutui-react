@@ -25,9 +25,6 @@ jobs:
       - name: Install pnpm
         run: corepack enable
 
-      - name: Show component
-          run: echo "$component"
-
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
