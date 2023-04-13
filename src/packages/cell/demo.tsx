@@ -22,6 +22,7 @@ interface T {
   urlJump: string
   content: string
   customRight: string
+  clickEventToast: string
 }
 
 const CellDemo = () => {
@@ -41,6 +42,7 @@ const CellDemo = () => {
       urlJump: 'URL 跳转',
       content: '自定义内容',
       customRight: '自定义右侧区域',
+      clickEventToast: '点击事件',
     },
     'zh-TW': {
       basic: '基本用法',
@@ -57,6 +59,7 @@ const CellDemo = () => {
       urlJump: 'URL 跳轉',
       content: '自定義內容',
       customRight: '自定義右側區域',
+      clickEventToast: '点击事件',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -73,13 +76,14 @@ const CellDemo = () => {
       urlJump: 'URL Jump',
       content: 'Customize Content',
       customRight: 'Customize the right area',
+      clickEventToast: 'Click Test',
     },
   })
 
   const testClick = (
     event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
   ) => {
-    Toast.text('点击事件')
+    Toast.text(translated.clickEventToast)
   }
 
   const onJumpclick = (
