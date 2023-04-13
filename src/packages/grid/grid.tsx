@@ -1,6 +1,5 @@
 import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { useConfig } from '@/packages/configprovider'
 import { GridItem, GridItemProps } from '../griditem/griditem'
 import GridContext from './grid.context'
 import { pxCheck } from '@/utils/px-check'
@@ -33,7 +32,6 @@ export const Grid: FunctionComponent<
 > & {
   Item: typeof GridItem
 } = (props) => {
-  const { locale } = useConfig()
   const {
     children,
     columns,
