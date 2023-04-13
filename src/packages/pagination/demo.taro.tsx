@@ -71,8 +71,8 @@ const PaginationDemo = () => {
         <Cell>
           <Pagination
             current={currentPage1}
-            total="20"
-            pageSize="5"
+            total={20}
+            pageSize={5}
             onChange={pageChange1}
           />
         </Cell>
@@ -80,8 +80,8 @@ const PaginationDemo = () => {
         <Cell>
           <Pagination
             current={currentPage2}
-            total="12"
-            pageSize="1"
+            total={12}
+            pageSize={1}
             mode="simple"
             onChange={pageChange2}
           />
@@ -90,8 +90,8 @@ const PaginationDemo = () => {
         <Cell>
           <Pagination
             current={currentPage3}
-            total="125"
-            itemSize="3"
+            total={125}
+            itemSize={3}
             ellipse
             onChange={pageChange3}
           />
@@ -100,8 +100,8 @@ const PaginationDemo = () => {
         <Cell>
           <Pagination
             current={currentPage4}
-            total="500"
-            itemSize="5"
+            total={500}
+            itemSize={5}
             onChange={pageChange4}
             prev={<Left />}
             next={<Right />}
@@ -112,9 +112,9 @@ const PaginationDemo = () => {
         <Cell>
           <Pagination
             defaultValue={15}
-            total="500"
-            pageSize="10"
-            itemSize="3"
+            total={500}
+            pageSize={10}
+            itemSize={3}
             onChange={pageChange5}
           />
         </Cell>

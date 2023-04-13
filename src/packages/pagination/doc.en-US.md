@@ -31,8 +31,8 @@ const App = () => {
   return (
     <Pagination
       current={currentPage1}
-      total="25"
-      pageSize="5"
+      total={25}
+      pageSize={5}
       onChange={pageChange1}
     />
   )
@@ -56,8 +56,8 @@ const App = () => {
   return (
     <Pagination
       current={currentPage2} 
-      total="12"
-      pageSize="1"
+      total={12}
+      pageSize={1}
       mode="simple" 
       onChange={pageChange2} 
     />
@@ -83,8 +83,8 @@ const App = () => {
   return (
     <Pagination
       current={currentPage3}
-      total="125"
-      itemSize="3"
+      total={125}
+      itemSize={3}
       ellipse
       onChange={pageChange3}
     />
@@ -113,8 +113,8 @@ const App = () => {
   return (
     <Pagination
       current={currentPage4}
-      total="500"
-      itemSize="5"
+      total={500}
+      itemSize={5}
       onChange={pageChange4}
       itemRender={itemRender} 
       prev={<Left />}
@@ -139,9 +139,9 @@ const App = () => {
   return (
     <Pagination
       defaultValue={15}
-      total="500"
-      pageSize="10"
-      itemSize="3"
+      total={500}
+      pageSize={10}
+      itemSize={3}
       onChange={pageChange5}
     />
   )
@@ -159,13 +159,13 @@ export default App;
 | current     | current page number, controlled value                         | number                    | -                 |
 | defaultValue   | default page number, uncontrolled value                         | number                    | `1`                 |
 | mode           | Display mode, optional values are: `multi`,`simple` | string                    | `multi`             |
-| prev       | Customize previous page button content             | string \| ReactNode | `Previous`            |
-| next       | Customize next page button content             | string \| ReactNode | `Next`             |
-| total     | total                         | string \| number          | `0`                 |
-| pageSize   | records per page                       | string \| number          | `10`                |
-| itemSize   | number of pages displayed                   | string \| number          | `5`                 |
+| prev       | Customize previous page button content             | ReactNode | `Previous`            |
+| next       | Customize next page button content             | ReactNode | `Next`             |
+| total     | total                         | number          | `0`                 |
+| pageSize   | records per page                       | number          | `10`                |
+| itemSize   | number of pages displayed                   | number          | `5`                 |
 | ellipse  | Whether to show ellipsis                   | boolean                   | `false`             |
-| itemRender | Used to customize page number content             | (page) => ReactNode | -                 |
+| itemRender | Used to customize page number content             | (page: {number, text}) => ReactNode | -                 |
 | onChange |  when the page number changes | (value) => void    | - |
 
 ## Theming

@@ -1,43 +1,39 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useMemo, ReactNode } from 'react'
 import classNames from 'classnames'
-import { useConfig } from '@/packages/configprovider.taro'
+import { useConfig } from '@/packages/configprovider'
+import { usePropsValue } from '@/utils/use-props-value'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface PaginationProps {
+export interface PaginationProps extends BasicComponent {
   defaultValue: number
   current: number
   mode: 'multi' | 'simple'
-  prev: React.ReactNode
-  next: React.ReactNode
-  total: string | number
-  pageSize: string | number
-  itemSize: string | number
+  prev: ReactNode
+  next: ReactNode
+  total: number
+  pageSize: number
+  itemSize: number
   ellipse: boolean
-  itemRender: (page: any) => React.ReactNode
+  itemRender: (page: any) => ReactNode
   onChange: (currPage: number) => void
-  style?: React.CSSProperties
-  className?: string
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   defaultValue: 1,
   mode: 'multi',
   prev: null,
   next: null,
-  total: '0',
-  pageSize: '10',
-  itemSize: '5',
+  total: 50,
+  pageSize: 10,
+  itemSize: 5,
   ellipse: false,
-  className: '',
-  itemRender: (item: any) => {
-    return item.text
-  },
 } as PaginationProps
 export const Pagination: FunctionComponent<
   Partial<PaginationProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const { locale } = useConfig()
-  const { children } = { ...defaultProps, ...props }
   const {
     current,
     mode,
@@ -52,91 +48,62 @@ export const Pagination: FunctionComponent<
     defaultValue,
     className,
     ...rest
-  } = props
-
-  const [currentPage, setCurrent] = useState(1)
-  const [pages, setPages] = useState<unknown[]>([])
-  const [countRef, setCountRef] = useState(0)
-  const classPrefix = 'nut-pagination'
-  // 计算页面的数量
-  const computedCountRef = () => {
-    const num = Math.ceil(Number(total) / Number(pageSize))
-    return Number.isNaN(num) ? 1 : Math.max(1, num)
+  } = {
+    ...defaultProps,
+    ...props,
   }
 
-  // 生成pages数组，用来遍历
-  const computedPages = (_currentPage?: number, _countRef?: number) => {
-    if (mode === 'simple') return []
-    const items = []
-    const pageCount = _countRef || countRef // 总的页面数量
-    const pageSize = Number(itemSize) // 展示的页面个数
-    const _current = _currentPage || Number(currentPage) // 当前页
+  const classPrefix = 'nut-pagination'
+  const [currentPage, setCurrentPage] = usePropsValue<number>({
+    value: current,
+    defaultValue,
+    finalValue: 1,
+    onChange,
+  })
+
+  // (total + pageSize) => pageCount 计算页面的数量
+  const pageCount = useMemo(() => {
+    const num = Math.ceil(total / pageSize)
+    return Number.isNaN(num) ? 1 : Math.max(1, num)
+  }, [total, pageSize])
+
+  // (currentPage + itemSize + pageCount) => pages 显示的 item 列表
+  const pages = useMemo(() => {
+    const items = [] as Array<any>
     let startPage = 1
     let endPage = pageCount
-    const partialShow = pageCount > pageSize
+    const partialShow = pageCount > itemSize
     if (partialShow) {
-      // 选中的page在展示的page中间
-      startPage = Math.max(_current - Math.floor(pageSize / 2), 1)
-      endPage = startPage + pageSize - 1
+      // 选中的 page 放在中间位置
+      startPage = Math.max(currentPage - Math.floor(itemSize / 2), 1)
+      endPage = startPage + itemSize - 1
       if (endPage > pageCount) {
         endPage = pageCount
-        startPage = endPage - pageSize + 1
+        startPage = endPage - itemSize + 1
       }
     }
     // 遍历生成数组
     for (let i = startPage; i <= endPage; i++) {
-      const page = setPage(i, i, _current === i)
-      items.push(page)
+      items.push({ number: i, text: i })
     }
     // 判断是否有折叠
-    if (partialShow && pageSize > 0 && ellipse) {
+    if (partialShow && itemSize > 0 && ellipse) {
       if (startPage > 1) {
-        const prevPage = setPage(startPage - 1, '...')
-        items.unshift(prevPage)
+        items.unshift({ number: startPage - 1, text: '...' })
       }
       if (endPage < pageCount) {
-        const nextPage = setPage(endPage + 1, '...')
-        items.push(nextPage)
+        items.push({ number: endPage + 1, text: '...' })
       }
     }
     return items
-  }
-  // 点击选择page
-  const selectPage = (curPage: number, isSelect: boolean) => {
-    if (curPage > countRef || curPage < 1) return
-    // 是否传入current
-    if (!('current' in props)) {
-      setCurrent(Number(curPage))
-      if (curPage !== currentPage) {
-        setPages(computedPages(curPage))
-      }
-    }
-    if (isSelect) onChange && onChange(curPage)
-  }
-  // set page 对象
-  const setPage = (number: any, text: any, active?: any) => {
-    return { number, text, active }
+  }, [currentPage, itemSize, pageCount])
+
+  // 点击选择 page
+  const handleSelectPage = (curPage: number) => {
+    if (curPage > pageCount || curPage < 1) return
+    setCurrentPage(curPage)
   }
 
-  useEffect(() => {
-    // 初始化 判断是否传入值 计算 当前页，总页数，生成子节点
-    let currentValue = props.defaultValue || 1
-    if ('current' in props) {
-      currentValue = Number(props.current)
-    }
-    const pageCount = computedCountRef()
-    setCurrent(currentValue)
-    setCountRef(pageCount)
-    setPages(computedPages(currentValue, pageCount))
-  }, [])
-
-  if ('current' in props) {
-    const current = props.current ? Number(props.current) : 1
-    if (current !== currentPage) {
-      setCurrent(current)
-      setPages(computedPages(Number(current)))
-    }
-  }
   return (
     <div className={classNames(classPrefix, className)} {...rest}>
       <div
@@ -145,47 +112,42 @@ export const Pagination: FunctionComponent<
           mode === 'multi' ? '' : 'simple-border',
           currentPage === 1 ? 'disabled' : ''
         )}
-        onClick={(e) => selectPage(Number(currentPage) - 1, true)}
+        onClick={(e) => handleSelectPage(currentPage - 1)}
       >
         {prev || locale.pagination.prev}
       </div>
-      {mode === 'multi' ? (
+      {mode === 'multi' && (
         <div className={`${classPrefix}__contain`}>
           {pages.map((item: any, index: number) => {
             return (
               <div
                 key={`${index}pagination`}
-                className={classNames(
-                  `${classPrefix}__item`,
-                  item.active ? 'active' : ''
-                )}
-                onClick={(e) =>
-                  !item.active ? selectPage(item.number, true) : ''
-                }
+                className={classNames(`${classPrefix}__item`, {
+                  active: item.number === currentPage,
+                })}
+                onClick={(e) => {
+                  item.number !== currentPage && handleSelectPage(item.number)
+                }}
               >
                 {itemRender ? itemRender(item) : item.text}
               </div>
             )
           })}
         </div>
-      ) : (
-        ''
       )}
-      {mode === 'simple' ? (
+      {mode === 'simple' && (
         <div className={`${classPrefix}__contain`}>
           <div className={`${classPrefix}__simple`}>
-            {currentPage}/{countRef}
+            {currentPage}/{pageCount}
           </div>
         </div>
-      ) : (
-        ''
       )}
       <div
         className={classNames(
           `${classPrefix}__next`,
-          Number(currentPage) >= countRef ? 'disabled' : ''
+          currentPage >= pageCount ? 'disabled' : ''
         )}
-        onClick={(e) => selectPage(Number(currentPage) + 1, true)}
+        onClick={(e) => handleSelectPage(currentPage + 1)}
       >
         {next || locale.pagination.next}
       </div>

@@ -14,7 +14,7 @@ test('should render items', async () => {
 })
 test('should render simple mode', async () => {
   const { container } = render(
-    <Pagination total="12" pageSize="1" mode="simple" />
+    <Pagination total={12} pageSize={1} mode="simple" />
   )
   expect(container.querySelectorAll('.nut-pagination__item')).toHaveLength(0)
   expect(container.querySelectorAll('.nut-pagination__simple')).toHaveLength(1)

@@ -29,8 +29,8 @@ const App = () => {
   return (
     <Pagination
       current={currentPage1}
-      total="25"
-      pageSize="5"
+      total={25}
+      pageSize={5}
       onChange={pageChange1}
     />
   )
@@ -54,8 +54,8 @@ const App = () => {
   return (
     <Pagination
       current={currentPage2}
-      total="12"
-      pageSize="1"
+      total={12}
+      pageSize={1}
       mode="simple" 
       onChange={pageChange2} 
     />
@@ -81,8 +81,8 @@ const App = () => {
   return (
     <Pagination
       current={currentPage3}
-      total="125"
-      itemSize="3"
+      total={125}
+      itemSize={3}
       ellipse
       onChange={pageChange3}
     />
@@ -111,8 +111,8 @@ const App = () => {
   return (
     <Pagination
       current={currentPage4}
-      total="500"
-      itemSize="5"
+      total={500}
+      itemSize={5}
       onChange={pageChange4}
       itemRender={itemRender} 
       prev={<Left />}
@@ -137,9 +137,9 @@ const App = () => {
   return (
     <Pagination
       defaultValue={15}
-      total="500"
-      pageSize="10"
-      itemSize="3"
+      total={500}
+      pageSize={10}
+      itemSize={3}
       onChange={pageChange5}
     />
   )
@@ -157,13 +157,13 @@ export default App;
 | current     | 当前页码，受控值，与 onChange 搭配使用                         | number                    | -                 |
 | defaultValue   | 默认页码，非受控                         | number                    | `1`                 |
 | mode           | 显示模式,可选值为：multi，simple | string                    | `multi`             |
-| prev       | 自定义上一页按钮内容             | string \| ReactNode | `上一页`            |
-| next       | 自定义下一页按钮内容             | string \| ReactNode | `下一页`            |
-| total     | 总记录数                         | string \| number          | `0`                 |
-| pageSize   | 每页记录数                       | string \| number          | `10`                |
-| itemSize   | 显示的页码个数                   | string \| number          | `5`                 |
+| prev       | 自定义上一页按钮内容             | ReactNode | `上一页`            |
+| next       | 自定义下一页按钮内容             | ReactNode | `下一页`            |
+| total     | 总记录数                         | number          | `0`                 |
+| pageSize   | 每页记录数                       | number          | `10`                |
+| itemSize   | 显示的页码个数                   | number          | `5`                 |
 | ellipse  | 是否显示省略号                   | boolean                   | `false`             |
-| itemRender | 用于自定义页码的结构             | (page) => ReactNode | -                 |
+| itemRender | 用于自定义页码的结构             | (page: {number, text}) => ReactNode | -                 |
 | onChange | 页码改变时触发 | (value) => void    | - |
 
 ## 主题定制
