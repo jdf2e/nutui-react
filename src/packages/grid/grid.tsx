@@ -1,17 +1,14 @@
 import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { useConfig } from '@/packages/configprovider'
-import bem from '@/utils/bem'
-
-import { GridItemProps } from '../griditem/griditem'
+import { GridItem, GridItemProps } from '../griditem/griditem'
 import GridContext from './grid.context'
+import { pxCheck } from '@/utils/px-check'
 
 export type GridDirection = 'horizontal' | 'vertical'
 
 export interface GridProps {
-  columnNum: string | number
-  border: boolean
-  gutter: string | number
+  columns: string | number
+  gap: string | number
   center: boolean
   square: boolean
   reverse: boolean
@@ -22,9 +19,8 @@ export interface GridProps {
 }
 
 const defaultProps = {
-  columnNum: 4,
-  border: true,
-  gutter: 0,
+  columns: 4,
+  gap: 0,
   center: true,
   square: false,
   reverse: false,
@@ -33,13 +29,13 @@ const defaultProps = {
 
 export const Grid: FunctionComponent<
   Partial<GridProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
-> = (props) => {
-  const { locale } = useConfig()
+> & {
+  Item: typeof GridItem
+} = (props) => {
   const {
     children,
-    columnNum,
-    border,
-    gutter,
+    columns,
+    gap,
     center,
     square,
     reverse,
@@ -51,16 +47,11 @@ export const Grid: FunctionComponent<
   } = { ...defaultProps, ...props }
   const childrenDom = React.Children.toArray(children)
 
-  const pxCheck = (value: string | number): string => {
-    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
-  }
-
-  const b = bem('grid')
+  const classPrefix = 'nut-grid'
 
   const rootClass = () => {
-    const prefixCls = b()
-    return classNames(className, prefixCls, {
-      [b('border')]: border && !gutter,
+    return classNames(className, classPrefix, {
+      [`${classPrefix}__border`]: !gap,
     })
   }
 
@@ -69,8 +60,8 @@ export const Grid: FunctionComponent<
     if (style) {
       styleSelf = style
     }
-    if (gutter) {
-      styleSelf.paddingLeft = pxCheck(gutter)
+    if (gap) {
+      styleSelf.paddingLeft = pxCheck(gap)
     }
 
     return styleSelf
@@ -82,10 +73,9 @@ export const Grid: FunctionComponent<
         {childrenDom.map((item: any, idex: number) => {
           return React.cloneElement(item, {
             index: idex,
-            columnNum,
+            columns,
             center,
-            border,
-            gutter,
+            gap,
             square,
             reverse,
             direction,
@@ -98,3 +88,4 @@ export const Grid: FunctionComponent<
 
 Grid.defaultProps = defaultProps
 Grid.displayName = 'NutGrid'
+Grid.Item = GridItem
