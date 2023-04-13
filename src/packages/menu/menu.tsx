@@ -20,7 +20,7 @@ const defaultProps = {
   ...ComponentDefaults,
   className: '',
   style: {},
-  activeColor: '#F2270C',
+  activeColor: '',
   closeOnClickOverlay: true,
   scrollFixed: false,
   lockScroll: true,

@@ -55,12 +55,15 @@
     border: $tag-border-width solid transparent;
     @include plain;
   }
+
   &--round {
     border-radius: 8px;
   }
+
   &--mark {
     border-radius: 0 12px 12px 0;
   }
+
   &--close {
     margin-left: 4px;
     cursor: pointer;

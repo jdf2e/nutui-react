@@ -6,7 +6,7 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import { PickerOption } from './picker'
-import { useTouch } from '../../utils/useTouch'
+import { useTouch } from '../../utils/use-touch'
 
 interface PickerSlotProps {
   keyIndex?: number

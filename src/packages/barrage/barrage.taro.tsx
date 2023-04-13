@@ -19,6 +19,7 @@ export interface BarrageProps {
   rows: number
   top: number
 }
+
 const defaultProps = {
   barrageList: [],
   frequency: 500,
@@ -87,13 +88,13 @@ const InternalBarrage: ForwardRefRenderFunction<
       let width = 100
       query
         .select('.nut-barrage__body' + timeId.current)
-        .boundingClientRect((rec) => {
+        .boundingClientRect((rec: any) => {
           width = rec.width || 300
         })
 
       query
         .select('.nut-barrage__item' + index)
-        .boundingClientRect((recs) => {
+        .boundingClientRect((recs: any) => {
           let height = recs.height
           let nodeTop = (index % rows) * (height + top) + 20 + 'px'
           styleInfo(index, nodeTop, width)

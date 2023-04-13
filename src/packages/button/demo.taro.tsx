@@ -40,7 +40,7 @@ const ButtonDemo = () => {
       '8dab2f66': '危险按钮',
       cfbdc781: '警告按钮',
       c3a3a1d2: '成功按钮',
-      e51e4582: '朴素按钮',
+      e51e4582: '填充模式',
       '7db1a8b2': '禁用状态',
       a52bef0c: '加载状态',
       d04fcbda: '加载中',
@@ -63,7 +63,7 @@ const ButtonDemo = () => {
       '8dab2f66': '危險按鈕',
       cfbdc781: '警告按鈕',
       c3a3a1d2: '成功按鈕',
-      e51e4582: '樸素按鈕',
+      e51e4582: '填充模式',
       '7db1a8b2': '禁用狀態',
       a52bef0c: '載入狀態',
       d04fcbda: '載入中',
@@ -86,7 +86,7 @@ const ButtonDemo = () => {
       '8dab2f66': 'Danger Button',
       cfbdc781: 'Warning button',
       c3a3a1d2: 'Success Button',
-      e51e4582: 'Naive button',
+      e51e4582: 'Fill',
       '7db1a8b2': 'Disabled State',
       a52bef0c: 'Load State',
       d04fcbda: 'Loading',
@@ -146,11 +146,14 @@ const ButtonDemo = () => {
 
         <h2>{translated.e51e4582}</h2>
         <Cell className="button-cell">
-          <Button plain style={{ margin: 8 }}>
-            {translated.e51e4582}
+          <Button fill="solid" style={{ margin: 8 }}>
+            Solid
           </Button>
-          <Button plain color="red" style={{ margin: 8 }}>
-            {translated.e51e4582}
+          <Button fill="outline" style={{ margin: 8 }}>
+            Outline
+          </Button>
+          <Button fill="none" style={{ margin: 8 }}>
+            None
           </Button>
         </Cell>
         <h2>{translated['7db1a8b2']}</h2>
@@ -158,10 +161,10 @@ const ButtonDemo = () => {
           <Button disabled style={{ margin: 8 }} type="primary">
             {translated['7db1a8b2']}
           </Button>
-          <Button plain disabled style={{ margin: 8 }} type="info">
+          <Button disabled style={{ margin: 8 }} type="info">
             {translated['7db1a8b2']}
           </Button>
-          <Button plain disabled style={{ margin: 8 }} type="primary">
+          <Button disabled style={{ margin: 8 }} type="primary">
             {translated['7db1a8b2']}
           </Button>
         </Cell>
@@ -192,7 +195,7 @@ const ButtonDemo = () => {
         <Cell className="button-cell">
           <Button
             shape="square"
-            plain
+            fill="outline"
             type="primary"
             icon={<StarFill />}
             style={{ margin: 8 }}
@@ -240,7 +243,7 @@ const ButtonDemo = () => {
           <Button color="#7232dd" style={{ margin: 8 }}>
             {translated['1076d771']}
           </Button>
-          <Button color="#7232dd" plain style={{ margin: 8 }}>
+          <Button color="#7232dd" style={{ margin: 8 }}>
             {translated['1076d771']}
           </Button>
           <Button color="rgba(10,101,208,0.75)" style={{ margin: 8 }}>

@@ -6,8 +6,8 @@ import React, {
   CSSProperties,
   useCallback,
 } from 'react'
-import { useTouch } from '../../utils/useTouch'
-import { getRect } from '../../utils/useClientRect'
+import { useTouch } from '../../utils/use-touch'
+import { getRect } from '../../utils/use-client-rect'
 import Toast from '@/packages/toast'
 import { useConfig } from '@/packages/configprovider'
 
@@ -410,7 +410,7 @@ export const Range: FunctionComponent<
                   aria-valuemin={+min}
                   aria-valuenow={curValue(index)}
                   aria-valuemax={+max}
-                  aria-orientation="horizontal"
+                  aria-orientation={vertical ? 'vertical' : 'horizontal'}
                   onTouchStart={(e: any) => {
                     if (typeof index === 'number') {
                       // 实时更新当前拖动的按钮索引
@@ -451,7 +451,7 @@ export const Range: FunctionComponent<
               aria-valuemin={+min}
               aria-valuenow={curValue()}
               aria-valuemax={+max}
-              aria-orientation="horizontal"
+              aria-orientation={vertical ? 'vertical' : 'horizontal'}
               onTouchStart={(e) => {
                 onTouchStart(e)
               }}

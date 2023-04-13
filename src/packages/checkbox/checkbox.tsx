@@ -9,10 +9,12 @@ import CheckboxGroup from '@/packages/checkboxgroup'
 import bem from '@/utils/bem'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export interface CheckboxProps extends BasicComponent {
   checked: boolean
   disabled: boolean
+  defaultChecked: boolean
   textPosition: 'left' | 'right'
   iconSize: string | number
   icon: React.ReactNode
@@ -22,12 +24,11 @@ export interface CheckboxProps extends BasicComponent {
   iconFontClassName: string
   indeterminate: boolean
   label: string | number
-  onChange: (state: boolean, label: string) => void
+  onChange: (state: boolean) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
-  checked: false,
   disabled: false,
   textPosition: 'right',
   iconSize: 18,
@@ -36,7 +37,7 @@ const defaultProps = {
   iconClassPrefix: 'nut-icon',
   iconFontClassName: 'nutui-iconfont',
   indeterminateIcon: 'check-disabled',
-  onChange: (state, label) => {},
+  onChange: (state) => {},
 } as CheckboxProps
 export const Checkbox: FunctionComponent<
   Partial<CheckboxProps> &
@@ -54,6 +55,7 @@ export const Checkbox: FunctionComponent<
     className,
     checkedIcon,
     checked,
+    defaultChecked,
     disabled,
     onChange,
     indeterminate,
@@ -66,24 +68,29 @@ export const Checkbox: FunctionComponent<
   let { textPosition, ...rest } = others
   const ctx = useContext(Context)
 
-  let [innerChecked, setInnerChecked] = useState(checked)
+  let [_checked, setChecked] = usePropsValue<boolean>({
+    value: props.checked,
+    defaultValue: props.defaultChecked,
+    finalValue: defaultChecked,
+    onChange,
+  })
   // eslint-disable-next-line prefer-const
   let [innerDisabled, setDisabled] = useState(disabled)
   const [_indeterminate, setIndeterminate] = useState(indeterminate)
 
   useEffect(() => {
-    !ctx && setInnerChecked(checked)
+    !ctx && setChecked(checked)
     setDisabled(disabled)
     setIndeterminate(indeterminate)
-  }, [disabled, checked, indeterminate])
+  }, [disabled, indeterminate])
 
   if (ctx) {
     if (ctx.textPosition !== undefined) {
       textPosition = ctx.textPosition
     }
     innerDisabled = ctx.disabled
-    innerChecked = ctx.checkedValue.includes(label)
-    setInnerChecked = (checked: boolean) => {
+    _checked = ctx.checkedValue.includes(label)
+    setChecked = (checked: boolean) => {
       if (ctx.disabled) return
       if (checked) ctx.check(label)
       if (!checked) ctx.uncheck(label)
@@ -91,7 +98,7 @@ export const Checkbox: FunctionComponent<
   }
 
   const renderIcon = () => {
-    if (!innerChecked) {
+    if (!_checked) {
       return React.isValidElement(icon) ? (
         icon
       ) : (
@@ -115,7 +122,7 @@ export const Checkbox: FunctionComponent<
     if (innerDisabled) {
       return 'nut-checkbox__icon--disable'
     }
-    if (innerChecked) {
+    if (_checked) {
       if (_indeterminate) {
         return 'nut-checkbox__icon--indeterminate'
       }
@@ -135,13 +142,14 @@ export const Checkbox: FunctionComponent<
     // 禁用的时候直接返回
     if (disabled) return
     // 先转换状态
-    const latestChecked = !innerChecked
+    const latestChecked = !_checked
     // 判断是不是有 context 和 max，有的话需要判断是不是超过最大限制
     if (ctx && ctx.max !== undefined) {
       if (latestChecked && ctx.checkedValue.length >= ctx.max) return
     }
     onChange && onChange(latestChecked, label || (children as string))
-    setInnerChecked(latestChecked)
+    // setInnerChecked(latestChecked)
+    setChecked(latestChecked)
   }
 
   return (

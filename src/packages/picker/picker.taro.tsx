@@ -8,7 +8,7 @@ import React, {
 import { View } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
 import PickerSlot from './pickerSlot.taro'
-import useRefs from '@/utils/useRefs'
+import useRefs from '@/utils/use-refs'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import bem from '@/utils/bem'
 

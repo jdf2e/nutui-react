@@ -49,7 +49,7 @@ export interface CascaderProps {
 const defaultProps = {
   className: '',
   style: {},
-  activeColor: '#fa2c19',
+  activeColor: '',
   checkedIcon: 'checklist',
   tabsColor: '',
   poppable: true,
