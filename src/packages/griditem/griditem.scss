@@ -1,6 +1,7 @@
 .nut-grid-item {
   position: relative;
   box-sizing: border-box;
+  color: $grid-item-text-color;
 
   $block: &;
 

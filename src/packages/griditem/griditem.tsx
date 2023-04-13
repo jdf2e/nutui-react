@@ -16,7 +16,6 @@ export interface GridItemProps extends BasicComponent {
   text: string | ReactNode
   index: number
   columns: string | number
-  border: boolean
   gutter: string | number
   center: boolean
   square: boolean
@@ -27,7 +26,6 @@ export interface GridItemProps extends BasicComponent {
 const defaultProps = {
   text: '',
   columns: 4,
-  border: true,
   gutter: 0,
   center: true,
   square: false,
@@ -46,7 +44,6 @@ export const GridItem: FunctionComponent<
     gutter,
     square,
     text,
-    border,
     center,
     reverse,
     direction,
@@ -81,8 +78,8 @@ export const GridItem: FunctionComponent<
 
   const contentClass = () => {
     return classNames(`${classPrefix}__content`, {
-      [`${classPrefix}__content--border`]: border,
-      [`${classPrefix}__content--surround`]: border && gutter,
+      [`${classPrefix}__content--border`]: true,
+      [`${classPrefix}__content--surround`]: gutter,
       [`${classPrefix}__content--center`]: center,
       [`${classPrefix}__content--square`]: square,
       [`${classPrefix}__content--reverse`]: reverse,
@@ -98,7 +95,6 @@ export const GridItem: FunctionComponent<
           text,
           index,
           columns,
-          border,
           gutter,
           center,
           square,
