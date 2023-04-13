@@ -9,56 +9,50 @@ import classNames from 'classnames'
 import { getScrollParent } from '@/utils/get-scroll-parent'
 import { getRect } from '@/utils/use-client-rect'
 import useWatch from '@/utils/use-watch'
-import { BasicComponent } from '@/utils/typings'
-import bem from '@/utils/bem'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface StickyProps extends BasicComponent {
-  container?: React.RefObject<HTMLElement>
-  position?: 'top' | 'bottom'
-  className?: string
-  top?: number
-  bottom?: number
-  zIndex?: number
+  container: React.RefObject<HTMLElement>
+  position: 'top' | 'bottom'
+  distance: number
+  zIndex: number
   children: React.ReactNode
-  onChange?: (val: boolean) => void
+  onChange: (val: boolean) => void
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   position: 'top',
-  top: 0,
-  bottom: 0,
+  distance: 0,
   zIndex: 2000,
 } as StickyProps
 
-const b = bem('sticky')
+const classPrefix = 'nut-sticky'
 
-export const Sticky: FunctionComponent<StickyProps> = (props) => {
+export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
   const {
-    position = 'top',
-    top = 0,
-    bottom = 0,
-    zIndex = 2000,
+    position,
+    zIndex,
     children,
     container,
+    style,
     className,
+    distance,
     onChange,
     ...rest
-  } = props
-  // const { locale } = useConfig()
+  } = { ...defaultProps, ...props }
   const stickyRef = useRef<HTMLDivElement>(null)
   const rootRef = useRef<HTMLDivElement>(null)
-  const offset = position === 'top' ? top : bottom
   const [isFixed, setIsFixed] = useState(false)
 
   const [stickyStyle, setStickyStyle] = useState({
-    [position]: `${offset}px`,
+    [position]: `${distance}px`,
     zIndex,
   })
 
   const [rootStyle, setRootStyle] = useState({})
 
   const getElement = useCallback(() => {
-    // if (!rootRef.current) return Window
     return getScrollParent(rootRef.current as HTMLElement)
   }, [])
 
@@ -72,11 +66,11 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
     const clientHeight = document.documentElement.clientHeight
     const stCurrent = stickyRef.current as Element
     const stickyRect = getRect(stCurrent)
-    let fixed = clientHeight - bottom < rootRect.bottom
+    let fixed = clientHeight - distance < rootRect.bottom
     if (containerEle) {
       fixed =
-        containerRect.bottom > clientHeight - bottom - stickyRect.height &&
-        clientHeight - bottom - stickyRect.height > containerRect.top
+        containerRect.bottom > clientHeight - distance - stickyRect.height &&
+        clientHeight - distance - stickyRect.height > containerRect.top
     }
     const defaultPostVal = fixed ? 'fixed' : 'inherit'
     setStickyStyle((prev) => {
@@ -86,7 +80,7 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
       }
     })
     setIsFixed(fixed)
-  }, [position, container, bottom])
+  }, [position, container, distance])
   const handleScroll = useCallback(() => {
     const containerEle = container?.current as HTMLElement
 
@@ -106,11 +100,10 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
     }
 
     if (position === 'top') {
-      //  containerRect.bottom > top + stickyRect.height
       if (containerEle) {
-        const fixed = top > rootRect.top && containerRect.bottom > 0
+        const fixed = distance > rootRect.top && containerRect.bottom > 0
         const positionVal = fixed ? 'fixed' : 'inherit'
-        const diff = containerRect.bottom - top - stickyRect.height
+        const diff = containerRect.bottom - distance - stickyRect.height
         const transform = diff < 0 ? diff : 0
         setStickyStyle((prev) => {
           return {
@@ -121,7 +114,7 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
         })
         setIsFixed(fixed)
       } else {
-        const fixed = top > rootRect.top
+        const fixed = distance > rootRect.top
         const positionVal = fixed ? 'fixed' : 'inherit'
         setStickyStyle((prev) => {
           return {
@@ -135,12 +128,11 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
       const clientHeight = document.documentElement.clientHeight
 
       if (containerEle) {
-        // clientHeight - bottom - stickyRect.height
         const fixed =
           containerRect.bottom > 0 &&
-          clientHeight - bottom - stickyRect.height > containerRect.top
+          clientHeight - distance - stickyRect.height > containerRect.top
         const positionVal = fixed ? 'fixed' : 'inherit'
-        const diff = containerRect.bottom - (clientHeight - bottom)
+        const diff = containerRect.bottom - (clientHeight - distance)
         const transform = diff < 0 ? diff : 0
         setStickyStyle((prev) => {
           return {
@@ -151,7 +143,7 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
         })
         setIsFixed(fixed)
       } else {
-        const fixed = clientHeight - bottom < rootRect.bottom
+        const fixed = clientHeight - distance < rootRect.bottom
         const positionVal = fixed ? 'fixed' : 'inherit'
         setStickyStyle((prev) => {
           return {
@@ -162,7 +154,7 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
         setIsFixed(fixed)
       }
     }
-  }, [position, bottom, container, top])
+  }, [position, distance, container])
   useWatch(isFixed, () => {
     onChange && onChange(isFixed)
   })
@@ -177,16 +169,11 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
   return (
     <div
       ref={rootRef}
-      style={rootStyle}
-      className={classNames(b(), className)}
+      style={{ ...style, ...rootStyle }}
+      className={classNames(classPrefix, className)}
       {...rest}
     >
-      <div
-        // 应符合 bem 规范
-        className="nut-sticky-box"
-        ref={stickyRef}
-        style={stickyStyle}
-      >
+      <div className="nut-sticky--box" ref={stickyRef} style={stickyStyle}>
         {children}
       </div>
     </div>

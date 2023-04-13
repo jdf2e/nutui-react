@@ -36,7 +36,7 @@ test('should sticky to bottom after scroll', () => {
   const { container } = render(
     <>
       <Cell>
-        <Sticky position="bottom" bottom={20}>
+        <Sticky position="bottom" distance={20}>
           <Button type="primary">吸底</Button>
         </Sticky>
       </Cell>
