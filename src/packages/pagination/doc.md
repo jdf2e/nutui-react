@@ -159,7 +159,7 @@ export default App;
 | mode           | 显示模式,可选值为：multi，simple | string                    | `multi`             |
 | prev       | 自定义上一页按钮内容             | ReactNode | `上一页`            |
 | next       | 自定义下一页按钮内容             | ReactNode | `下一页`            |
-| total     | 总记录数                         | number          | `0`                 |
+| total     | 总记录数                         | number          | `50`                 |
 | pageSize   | 每页记录数                       | number          | `10`                |
 | itemSize   | 显示的页码个数                   | number          | `5`                 |
 | ellipse  | 是否显示省略号                   | boolean                   | `false`             |

@@ -161,7 +161,7 @@ export default App;
 | mode           | Display mode, optional values are: `multi`,`simple` | string                    | `multi`             |
 | prev       | Customize previous page button content             | ReactNode | `Previous`            |
 | next       | Customize next page button content             | ReactNode | `Next`             |
-| total     | total                         | number          | `0`                 |
+| total     | total                         | number          | `50`                 |
 | pageSize   | records per page                       | number          | `10`                |
 | itemSize   | number of pages displayed                   | number          | `5`                 |
 | ellipse  | Whether to show ellipsis                   | boolean                   | `false`             |
