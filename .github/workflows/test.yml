@@ -29,7 +29,15 @@ jobs:
       run: pnpm install
 
     - name: Run test cases
-      run: npm run test
+      run: |
+        echo "PR Message github.event.number: ${{ github.event.number }}"
+        pr_number=${{ github.event.number }}
+        files_url="https://api.github.com/repos/${{ github.repository }}/pulls/$pr_number/files"
+        files_response=$(curl -sSL -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $files_url)
+        files_changed=$(echo "$files_response" | jq -r '.[].filename')
+        echo "PR files: $files_changed"
+        component=$(echo "$files_changed" |  grep -E -i 'src\/packages\/([a-z]+)(\/[a-z_\.]*)*' | sed -E 's/src\/packages\/([a-z]+)(\/[a-z_\.]*)*/\1/i' | awk 'END{print}')
+        npm test -- $component
 
   build:
     runs-on: ubuntu-latest
