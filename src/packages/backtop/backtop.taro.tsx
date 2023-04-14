@@ -5,12 +5,9 @@ import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface BackTopProps extends BasicComponent {
-  className?: string
   threshold: number
   zIndex: number
   duration: number
-  children?: ReactNode
-  style?: React.CSSProperties
   onClick?: (event: MouseEvent) => void
 }
 

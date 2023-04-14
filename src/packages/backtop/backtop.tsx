@@ -12,13 +12,10 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 declare const window: any
 
 export interface BackTopProps extends BasicComponent {
-  className?: string
   target: string
   threshold: number
   zIndex: number
   duration: number
-  children?: ReactNode
-  style?: React.CSSProperties
   onClick?: (event: MouseEvent) => void
 }
 
