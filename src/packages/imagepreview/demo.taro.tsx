@@ -93,7 +93,7 @@ const ImagePreviewDemo = () => {
               onClick={() => setInit(index + 1)}
               style={{ marginRight: '10px' }}
             >
-              <img width={30} height={30} src={image.src} alt={image.src} />
+              <img width="30px" height="30px" src={image.src} alt={image.src} />
             </span>
           ))}
         </Cell>
@@ -111,13 +111,6 @@ const ImagePreviewDemo = () => {
           onClose={hideFn2}
         />
         <Cell title={translated.withInitNo} onClick={showFn2} />
-        <Cell
-          title={translated.withInitNo}
-          onClick={() => {
-            showFn2()
-            setTimeout(() => setInit(1), 3000)
-          }}
-        />
         <h2>{translated.withPagination}</h2>
         <ImagePreview
           images={images}
