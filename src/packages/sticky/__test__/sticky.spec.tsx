@@ -27,7 +27,7 @@ test('should sticky to top after scroll', () => {
       </Cell>
     </>
   )
-  expect(container.querySelector('.nut-sticky-box')).toHaveAttribute(
+  expect(container.querySelector('.nut-sticky--box')).toHaveAttribute(
     'style',
     'top: 0px; z-index: 2000;'
   )
@@ -42,7 +42,7 @@ test('should sticky to bottom after scroll', () => {
       </Cell>
     </>
   )
-  expect(container.querySelector('.nut-sticky-box')).toHaveAttribute(
+  expect(container.querySelector('.nut-sticky--box')).toHaveAttribute(
     'style',
     'bottom: 20px; z-index: 2000; position: fixed;'
   )
