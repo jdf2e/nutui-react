@@ -88,13 +88,13 @@ const InternalBarrage: ForwardRefRenderFunction<
       query
         .select('.nut-barrage__body' + timeId.current)
         .boundingClientRect((rec) => {
-          width = rec.width || 300
+          width = (Array.isArray(rec) ? rec[0].width : rec.width) || 300
         })
 
       query
         .select('.nut-barrage__item' + index)
         .boundingClientRect((recs) => {
-          let height = recs.height
+          let height = Array.isArray(recs) ? recs[0].width : recs.width
           let nodeTop = (index % rows) * (height + top) + 20 + 'px'
           styleInfo(index, nodeTop, width)
         })
