@@ -34,7 +34,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" id="elId">
+    <div className="demo" id="target">
         <div className="text-data" style={cellStyle}>test data1</div>
         <div className="text-data" style={cellStyle}>test data2</div>
         <div className="text-data" style={cellStyle}>test data3</div>
@@ -90,7 +90,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" id="elId">
+    <div className="demo" id="target">
        <div className="text-data" style={cellStyle}>test data1</div>
        <div className="text-data" style={cellStyle}>test data2</div>
        <div className="text-data" style={cellStyle}>test data3</div>
@@ -146,7 +146,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" id="elId">
+    <div className="demo" id="target">
        <div className="text-data" style={cellStyle}>test data1</div>
        <div className="text-data" style={cellStyle}>test data2</div>
        <div className="text-data" style={cellStyle}>test data3</div>
@@ -218,7 +218,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" style={{ height: '800px', overflowY: 'auto' }} id="elId">
+    <div className="demo" style={{ height: '800px', overflowY: 'auto' }} id="target">
        <div className="text-data" style={cellStyle}>test data1</div>
        <div className="text-data" style={cellStyle}>test data2</div>
        <div className="text-data" style={cellStyle}>test data3</div>
@@ -243,7 +243,7 @@ const App = () => {
        <div className="text-data" style={cellStyle}>test data22</div>
        <div className="text-data" style={cellStyle}>test data23</div>
        <div className="text-data" style={cellStyle}>test data24</div>
-        <BackTop elId="elId" distance={100} bottom={50} />
+        <BackTop target="target" distance={100} bottom={50} />
     </div>
     </>
   );
@@ -276,7 +276,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" id="elId">
+    <div className="demo" id="target">
        <div className="text-data" style={cellStyle}>test data1</div>
        <div className="text-data" style={cellStyle}>test data2</div>
        <div className="text-data" style={cellStyle}>test data3</div>
@@ -316,7 +316,7 @@ export default App;
 
 | Attribute        | Description                            | Type    | Default |
 | ----------- | ------------------------------- | ------- | ------ |
-| elId        | Get the parent element of the listening element          | string  | -      |
+| target        | Get the parent element of the listening element          | string  | -      |
 | bottom      | Distance from bottom of page                | number | `20`   |
 | right       | Distance from the right side of the page                | number | `10`   |
 | distance    | How high to scroll the page vertically          | number | `200`  |

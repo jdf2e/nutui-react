@@ -34,7 +34,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" id="elId">
+    <div className="demo" id="target">
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>
@@ -90,7 +90,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" id="elId">
+    <div className="demo" id="target">
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>
@@ -146,7 +146,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" id="elId">
+    <div className="demo" id="target">
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>
@@ -217,7 +217,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" id="elId">
+    <div className="demo" id="target">
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>

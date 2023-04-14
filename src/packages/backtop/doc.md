@@ -35,7 +35,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo"  id="elId">
+    <div className="demo"  id="target">
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>
@@ -93,7 +93,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo"  id="elId">
+    <div className="demo"  id="target">
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>
@@ -149,7 +149,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo"  id="elId">
+    <div className="demo"  id="target">
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>
@@ -221,7 +221,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" style={{ height: '800px', overflowY: 'auto' }} id="elId">
+    <div className="demo" style={{ height: '800px', overflowY: 'auto' }} id="target">
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>
@@ -246,7 +246,7 @@ const App = () => {
         <div className="text-data" style={cellStyle}>我是测试数据22</div>
         <div className="text-data" style={cellStyle}>我是测试数据23</div>
         <div className="text-data" style={cellStyle}>我是测试数据24</div>
-        <BackTop elId="elId" distance={100} bottom={50} />
+        <BackTop target="target" distance={100} bottom={50} />
     </div>
     </>
   );
@@ -280,7 +280,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" style={{ height: '1000px', overflowY: 'auto' }} id="elId">
+    <div className="demo" style={{ height: '1000px', overflowY: 'auto' }} id="target">
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>
@@ -320,7 +320,7 @@ export default App;
 
 | 字段        | 说明                            | 类型    | 默认值 |
 | ----------- | ------------------------------- | ------- | ------ |
-| elId        | 获取监听元素的父级元素         | string  | -      |
+| target        | 获取监听元素的父级元素         | string  | -      |
 | bottom      | 距离页面底部距离                | number | `20`   |
 | right       | 距离页面右侧距离                | number | `10`   |
 | distance    | 页面垂直滚动多高后出现          | number | `200`  |

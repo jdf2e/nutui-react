@@ -8,7 +8,7 @@ import BackTop from '@/packages/backtop'
 test('backtop props test', () => {
   const handleClick = jest.fn()
   const { container } = render(
-    <BackTop elId="elId" distance={200} bottom={50} onClick={handleClick} />
+    <BackTop target="target" distance={200} bottom={50} onClick={handleClick} />
   )
   expect(container.querySelector('.nut-backtop')).toHaveAttribute(
     'style',
@@ -23,7 +23,7 @@ test('backtop custom test', () => {
   const { container } = render(
     <BackTop
       className="custom-class"
-      elId="elId"
+      target="target"
       distance={100}
       bottom={110}
       onClick={handleClick}

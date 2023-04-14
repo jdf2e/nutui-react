@@ -52,7 +52,7 @@ const BackTopDemo = () => {
       <div
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
         style={demoStyle}
-        id="elId"
+        id="target"
       >
         <h2>{translated.title}</h2>
         <div className="text-data" style={cellStyle}>
@@ -129,7 +129,7 @@ const BackTopDemo = () => {
         </div>
         <BackTop
           className="custom-class"
-          elId="elId"
+          target="target"
           distance={100}
           bottom={110}
           onClick={handleClick}
@@ -146,7 +146,12 @@ const BackTopDemo = () => {
             <div style={{ fontSize: '12px' }}>{translated.backText}</div>
           </div>
         </BackTop>
-        <BackTop elId="elId" distance={200} bottom={50} onClick={handleClick} />
+        <BackTop
+          target="target"
+          distance={200}
+          bottom={50}
+          onClick={handleClick}
+        />
       </div>
     </>
   )

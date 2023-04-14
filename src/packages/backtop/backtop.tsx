@@ -14,7 +14,7 @@ export interface BackTopProps extends BasicComponent {
   className?: string
   bottom: number
   right: number
-  elId: string
+  target: string
   distance: number
   zIndex: number
   isAnimation: boolean
@@ -28,7 +28,7 @@ const defaultProps = {
   ...ComponentDefaults,
   bottom: 20,
   right: 10,
-  elId: 'body',
+  target: '',
   distance: 200,
   zIndex: 10,
   isAnimation: true,
@@ -42,7 +42,7 @@ export const BackTop: FunctionComponent<
     children,
     bottom,
     right,
-    elId,
+    target,
     distance,
     zIndex,
     isAnimation,
@@ -66,8 +66,8 @@ export const BackTop: FunctionComponent<
   }, [])
 
   const init = () => {
-    if (elId && document.getElementById(elId)) {
-      scrollEl.current = document.getElementById(elId) as HTMLElement | Window
+    if (target && document.getElementById(target)) {
+      scrollEl.current = document.getElementById(target) as HTMLElement | Window
     } else {
       scrollEl.current = window
     }
