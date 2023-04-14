@@ -20,7 +20,7 @@ test('backtop props test', () => {
   )
   expect(container.querySelector('.nut-backtop')).toHaveAttribute(
     'style',
-    'right: 20px; bottom: 50px; z-index: 10;'
+    'z-index: 10; right: 20px; bottom: 50px;'
   )
   fireEvent.click(container)
   expect(handleClick).toBeCalled
@@ -54,13 +54,13 @@ test('backtop custom test', () => {
   )
   expect(container.querySelector('.nut-backtop')).toHaveAttribute(
     'style',
-    'right: 10px; bottom: 110px; z-index: 10;'
+    'z-index: 10; bottom: 110px; right: 10px;'
   )
   expect(container.querySelector('.backtop-demo')).toHaveAttribute(
     'style',
     'display: flex; flex-direction: column; align-items: center;'
   )
-  expect(container.querySelector('.nut-icon-top')).toHaveClass(
+  expect(container.querySelector('.nut-icon-Top')).toHaveClass(
     'nut-backtop-main'
   )
   fireEvent.click(container)
