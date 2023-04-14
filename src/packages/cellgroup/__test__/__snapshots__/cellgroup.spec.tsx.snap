@@ -26,6 +26,9 @@ exports[`prop title description extra 1`] = `
             链接
           </div>
         </div>
+        <div
+          class="nut-cell__divider"
+        />
       </div>
       <div
         class="nut-cell"
@@ -45,6 +48,9 @@ exports[`prop title description extra 1`] = `
         >
           https://jd.com
         </div>
+        <div
+          class="nut-cell__divider"
+        />
       </div>
     </div>
   </div>
