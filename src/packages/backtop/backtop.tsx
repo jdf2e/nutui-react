@@ -12,10 +12,8 @@ declare const window: any
 
 export interface BackTopProps extends BasicComponent {
   className?: string
-  bottom: number
-  right: number
   target: string
-  distance: number
+  threshold: number
   zIndex: number
   isAnimation: boolean
   duration: number
@@ -26,10 +24,8 @@ export interface BackTopProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
-  bottom: 20,
-  right: 10,
   target: '',
-  distance: 200,
+  threshold: 200,
   zIndex: 10,
   isAnimation: true,
   duration: 1000,
@@ -40,10 +36,8 @@ export const BackTop: FunctionComponent<
 > = (props) => {
   const {
     children,
-    bottom,
-    right,
     target,
-    distance,
+    threshold,
     zIndex,
     isAnimation,
     className,
@@ -83,7 +77,7 @@ export const BackTop: FunctionComponent<
       top = scrollEl.current.scrollTop
       SetScrollTop(top)
     }
-    const showBtn = top >= distance
+    const showBtn = top >= threshold
 
     SetBackTop(showBtn)
   }
@@ -141,16 +135,21 @@ export const BackTop: FunctionComponent<
     isAnimation && duration > 0 ? scrollAnimation() : scroll()
   }
 
-  const backTopClass = {
-    right: `${right}px`,
-    bottom: `${bottom}px`,
-    zIndex,
-  }
+  const styles = style
+    ? {
+        zIndex,
+        ...style,
+      }
+    : {
+        right: '10px',
+        bottom: '20px',
+        zIndex,
+      }
 
   return (
     <div
       className={`nut-backtop ${backTop ? 'show' : ''} ${className || ''}`}
-      style={{ ...backTopClass, ...style }}
+      style={styles}
       onClick={(e) => {
         goTop(e)
       }}

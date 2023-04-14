@@ -1,10 +1,10 @@
 # BackTop 返回顶部
 
-### 介绍
+## 介绍
 
 提供较长的页面快捷返回顶部功能。
 
-### 安装
+## 安装
 
 ```javascript
 import { BackTop } from '@nutui/nutui-react-taro'
@@ -115,7 +115,7 @@ const App = () => {
         <div className="text-data" style={cellStyle}>我是测试数据22</div>
         <div className="text-data" style={cellStyle}>我是测试数据23</div>
         <div className="text-data" style={cellStyle}>我是测试数据24</div>
-        <BackTop  distance={200} bottom={50} />
+        <BackTop  threshold={200} bottom={50} />
     </div>
     </>
   );
@@ -171,7 +171,7 @@ const App = () => {
         <div className="text-data" style={cellStyle}>我是测试数据22</div>
         <div className="text-data" style={cellStyle}>我是测试数据23</div>
         <div className="text-data" style={cellStyle}>我是测试数据24</div>
-        <BackTop  distance={200} bottom={50}>
+        <BackTop  threshold={200} bottom={50}>
             <div
             className="backtop-demo"
             style={{
@@ -242,7 +242,7 @@ const App = () => {
         <div className="text-data" style={cellStyle}>我是测试数据22</div>
         <div className="text-data" style={cellStyle}>我是测试数据23</div>
         <div className="text-data" style={cellStyle}>我是测试数据24</div>
-        <BackTop distance={200} bottom={50} onClick={handleClick} />
+        <BackTop threshold={200} bottom={50} onClick={handleClick} />
     </div>
     </>
   );
@@ -251,25 +251,17 @@ export default App;
 ```
 :::
 
-## API
+## BackTop
 
 ### Props
 
 | 字段        | 说明                            | 类型    | 默认值 |
 | ----------- | ------------------------------- | ------- | ------ |
-| bottom      | 距离页面底部距离                | number | `20`   |
-| right       | 距离页面右侧距离                | number | `10`   |
-| distance    | 页面垂直滚动多高后出现          | number | `200`  |
+| threshold    | 页面垂直滚动多高后出现          | number | `200`  |
 | zIndex      | 设置组件页面层级                | number | `10`   |
 | isAnimation | 是否有动画,和 duration 参数互斥 | boolean | `true` |
 | duration    | 设置动画持续时间                | number | `1000` |
-
-### Events
-
-| 名称                       | 说明               | 回调参数          |
-|--------------------------| ------------------ | ----------------- |
-| onClick          | 按钮点击时触发事件 | `event: MouseEvent` |
-
+| onClick          | 按钮点击时触发事件 | (event: MouseEvent) => void | - |
 
 ## 主题定制
 
@@ -277,6 +269,6 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-backtop-border-color | `#e0e0e0` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-backtop-border-color | 边框颜色 | `#e0e0e0` |

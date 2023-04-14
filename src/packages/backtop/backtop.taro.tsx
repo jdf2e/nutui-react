@@ -3,14 +3,9 @@ import { usePageScroll, pageScrollTo } from '@tarojs/taro'
 import { Top } from '@nutui/icons-react-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-declare const window: any
-
 export interface BackTopProps extends BasicComponent {
   className?: string
-  bottom: number
-  right: number
-  target: string
-  distance: number
+  threshold: number
   zIndex: number
   isAnimation: boolean
   duration: number
@@ -21,10 +16,7 @@ export interface BackTopProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
-  bottom: 20,
-  right: 10,
-  target: '',
-  distance: 200,
+  threshold: 200,
   zIndex: 10,
   isAnimation: true,
   duration: 1000,
@@ -35,10 +27,7 @@ export const BackTop: FunctionComponent<
 > = (props) => {
   const {
     children,
-    bottom,
-    right,
-    target,
-    distance,
+    threshold,
     zIndex,
     isAnimation,
     className,
@@ -54,7 +43,7 @@ export const BackTop: FunctionComponent<
   // 监听用户滑动页面事件
   usePageScroll((res) => {
     const { scrollTop } = res
-    scrollTop >= distance ? SetBackTop(true) : SetBackTop(false)
+    scrollTop >= threshold ? SetBackTop(true) : SetBackTop(false)
   })
 
   // 返回顶部点击事件
@@ -66,17 +55,22 @@ export const BackTop: FunctionComponent<
     })
   }
 
-  const backTopClass = {
-    right: `${right}px`,
-    bottom: `${bottom}px`,
-    zIndex,
-  }
+  const styles = style
+    ? {
+        zIndex,
+        ...style,
+      }
+    : {
+        right: '10px',
+        bottom: '20px',
+        zIndex,
+      }
 
   return (
     <>
       <div
         className={`nut-backtop ${backTop ? 'show' : ''} ${className || ''}`}
-        style={{ ...backTopClass, ...style }}
+        style={styles}
         onClick={(e) => {
           goTop(e)
         }}

@@ -129,9 +129,11 @@ const BackTopDemo = () => {
         </div>
         <BackTop
           className="custom-class"
-          target="target"
-          distance={100}
-          bottom={110}
+          threshold={100}
+          style={{
+            bottom: '110px',
+            right: '20px',
+          }}
           onClick={handleClick}
         >
           <div
@@ -142,14 +144,16 @@ const BackTopDemo = () => {
               alignItems: 'center',
             }}
           >
-            <Top width={12} height={12} className="nut-backtop-main" />
+            <Top width={12} height={12} />
             <div style={{ fontSize: '12px' }}>{translated.backText}</div>
           </div>
         </BackTop>
         <BackTop
-          target="target"
-          distance={200}
-          bottom={50}
+          threshold={200}
+          style={{
+            bottom: '50px',
+            right: '20px',
+          }}
           onClick={handleClick}
         />
       </div>

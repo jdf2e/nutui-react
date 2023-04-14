@@ -124,8 +124,11 @@ const BackTopDemo = () => {
         </div>
         <BackTop
           className="custom-class"
-          distance={100}
-          bottom={110}
+          threshold={100}
+          style={{
+            bottom: '110px',
+            right: '20px',
+          }}
           onClick={handleClick}
         >
           <div
@@ -142,8 +145,11 @@ const BackTopDemo = () => {
         </BackTop>
         <BackTop
           target="target"
-          distance={200}
-          bottom={50}
+          threshold={200}
+          style={{
+            bottom: '50px',
+            right: '20px',
+          }}
           onClick={handleClick}
         />
       </div>
