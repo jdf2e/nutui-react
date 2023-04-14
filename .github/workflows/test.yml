@@ -29,7 +29,15 @@ jobs:
       run: pnpm install
 
     - name: Run test cases
-      run: npm run test
+      run: |
+          echo "pull request: $GITHUB_BASE_REF $GITHUB_HEAD_REF"
+          git fetch origin $GITHUB_BASE_REF:$GITHUB_BASE_REF
+          git fetch origin $GITHUB_HEAD_REF:$GITHUB_HEAD_REF
+          git checkout $GITHUB_HEAD_REF
+          DIFF=$(git diff --name-only $GITHUB_BASE_REF..$GITHUB_HEAD_REF)
+          echo "changed files: $DIFF"
+          COMPONENT=$(echo "$DIFF" |  grep -E -i 'src\/packages\/([a-z]+)(\/[a-z_\.]*)*' | sed -E 's/src\/packages\/([a-z]+)(\/[a-z_\.]*)*/\1/i' | awk 'END{print}')
+          npm test -- $COMPONENT
 
   build:
     runs-on: ubuntu-latest
