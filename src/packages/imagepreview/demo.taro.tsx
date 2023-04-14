@@ -84,6 +84,25 @@ const ImagePreviewDemo = () => {
         <h2>{translated.basic}</h2>
         <ImagePreview images={images} show={showPreview1} onClose={hideFn1} />
         <Cell title={translated.showPreview} onClick={showFn1} />
+        <Cell title={translated.showPreview} onClick={showFn1} />
+        <h2>{translated.thumb}</h2>
+        <Cell style={{ position: 'relative', zIndex: 10000 }}>
+          {images.map((image, index) => (
+            <span
+              key={image.src}
+              onClick={() => setInit(index + 1)}
+              style={{ marginRight: '10px' }}
+            >
+              <img width={30} height={30} src={image.src} alt={image.src} />
+            </span>
+          ))}
+        </Cell>
+        <ImagePreview
+          images={images}
+          show={init}
+          initNo={init}
+          onClose={hideFn2}
+        />
         <h2>{translated.withInitNo}</h2>
         <ImagePreview
           images={images}
@@ -92,6 +111,13 @@ const ImagePreviewDemo = () => {
           onClose={hideFn2}
         />
         <Cell title={translated.withInitNo} onClick={showFn2} />
+        <Cell
+          title={translated.withInitNo}
+          onClick={() => {
+            showFn2()
+            setTimeout(() => setInit(1), 3000)
+          }}
+        />
         <h2>{translated.withPagination}</h2>
         <ImagePreview
           images={images}

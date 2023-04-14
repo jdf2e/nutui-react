@@ -113,6 +113,24 @@ const ImagePreviewDemo = () => {
         <h2>{translated.basic}</h2>
         <ImagePreview images={images} show={showPreview1} onClose={hideFn1} />
         <Cell title={translated.showPreview} onClick={showFn1} />
+        <h2>{translated.thumb}</h2>
+        <Cell style={{ position: 'relative', zIndex: 10000 }}>
+          {images.map((image, index) => (
+            <span
+              key={image.src}
+              onClick={() => setInit(index + 1)}
+              style={{ marginRight: '10px' }}
+            >
+              <img width="30px" height="30px" src={image.src} alt={image.src} />
+            </span>
+          ))}
+        </Cell>
+        <ImagePreview
+          images={images}
+          show={init}
+          initNo={init}
+          onClose={hideFn2}
+        />
         <h2>{translated.withInitNo}</h2>
         <ImagePreview
           images={images}
