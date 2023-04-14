@@ -323,7 +323,6 @@ export default App;
 | target        | 获取监听元素的父级元素         | string  | -      |
 | threshold    | 页面垂直滚动多高后出现          | number | `200`  |
 | zIndex      | 设置组件页面层级                | number | `10`   |
-| isAnimation | 是否有动画,和 duration 参数互斥 | boolean | `true` |
 | duration    | 设置动画持续时间                | number | `1000` |
 | onClick          | 按钮点击时触发事件 | (event: MouseEvent) => void | - |
 

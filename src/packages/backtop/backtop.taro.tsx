@@ -7,7 +7,6 @@ export interface BackTopProps extends BasicComponent {
   className?: string
   threshold: number
   zIndex: number
-  isAnimation: boolean
   duration: number
   children?: ReactNode
   style?: React.CSSProperties
@@ -18,23 +17,13 @@ const defaultProps = {
   ...ComponentDefaults,
   threshold: 200,
   zIndex: 10,
-  isAnimation: true,
   duration: 1000,
 } as BackTopProps
 
 export const BackTop: FunctionComponent<
   Partial<BackTopProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
-  const {
-    children,
-    threshold,
-    zIndex,
-    isAnimation,
-    className,
-    duration,
-    style,
-    onClick,
-  } = {
+  const { children, threshold, zIndex, className, duration, style, onClick } = {
     ...defaultProps,
     ...props,
   }
@@ -51,7 +40,7 @@ export const BackTop: FunctionComponent<
     onClick && onClick(e)
     pageScrollTo({
       scrollTop: 0,
-      duration: isAnimation && duration > 0 ? duration : 0,
+      duration: duration > 0 ? duration : 0,
     })
   }
 

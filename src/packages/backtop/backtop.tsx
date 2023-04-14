@@ -15,7 +15,6 @@ export interface BackTopProps extends BasicComponent {
   target: string
   threshold: number
   zIndex: number
-  isAnimation: boolean
   duration: number
   children?: ReactNode
   style?: React.CSSProperties
@@ -27,7 +26,6 @@ const defaultProps = {
   target: '',
   threshold: 200,
   zIndex: 10,
-  isAnimation: true,
   duration: 1000,
 } as BackTopProps
 
@@ -39,7 +37,6 @@ export const BackTop: FunctionComponent<
     target,
     threshold,
     zIndex,
-    isAnimation,
     className,
     duration,
     style,
@@ -132,7 +129,7 @@ export const BackTop: FunctionComponent<
     onClick && onClick(e)
     const otime = +new Date()
     startTime = otime
-    isAnimation && duration > 0 ? scrollAnimation() : scroll()
+    duration > 0 ? scrollAnimation() : scroll()
   }
 
   const styles = style

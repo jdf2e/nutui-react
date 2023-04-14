@@ -320,7 +320,6 @@ export default App;
 | target        | Get the parent element of the listening element          | string  | -      |
 | threshold    | How high to scroll the page vertically          | number | `200`  |
 | zIndex      | Set the component z-index                | number | `10`   |
-| isAnimation | Whether there is animation, mutually exclusive with the duration parameter | boolean | `true` |
 | duration    | Set animation duration                | number | `1000` |
 | onClick | Emitted when component is clicked | (event: MouseEvent) => void | - |
 

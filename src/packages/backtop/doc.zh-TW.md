@@ -322,7 +322,6 @@ export default App;
 | target        | 獲取監聽元素的父級元素         | string  | -      |
 | threshold    | 頁面垂直滾動多高後出現          | number | `200`  |
 | zIndex      | 設置組件頁面層級                | number | `10`   |
-| isAnimation | 是否有動畫,和 duration 參數互斥 | boolean | `true` |
 | duration    | 設置動畫持續時間                | number | `1000` |
 | onClick          | 按鈕點擊時觸發事件 | (event: MouseEvent) => void | - |
 
