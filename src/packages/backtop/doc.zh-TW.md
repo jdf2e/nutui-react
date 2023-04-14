@@ -319,10 +319,10 @@ export default App;
 
 | 字段        | 說明                            | 類型    | 默認值 |
 | ----------- | ------------------------------- | ------- | ------ |
-| target        | 獲取監聽元素的父級元素         | string  | -      |
+| target        | 獲取監聽的目標元素         | string  | -      |
 | threshold    | 頁面垂直滾動多高後出現          | number | `200`  |
 | zIndex      | 設置組件頁面層級                | number | `10`   |
-| duration    | 設置動畫持續時間                | number | `1000` |
+| duration    | 設置動畫持續時間，為 0 時表示無動畫                | number | `1000` |
 | onClick          | 按鈕點擊時觸發事件 | (event: MouseEvent) => void | - |
 
 ## 主題定制

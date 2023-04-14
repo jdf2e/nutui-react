@@ -317,7 +317,7 @@ export default App;
 
 | Attribute        | Description                            | Type    | Default |
 | ----------- | ------------------------------- | ------- | ------ |
-| target        | Get the parent element of the listening element          | string  | -      |
+| target        | The listening element          | string  | -      |
 | threshold    | How high to scroll the page vertically          | number | `200`  |
 | zIndex      | Set the component z-index                | number | `10`   |
 | duration    | Set animation duration                | number | `1000` |
