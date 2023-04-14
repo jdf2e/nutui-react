@@ -6,6 +6,7 @@ import React, {
   ReactNode,
 } from 'react'
 import { Top } from '@nutui/icons-react'
+import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 declare const window: any
@@ -45,6 +46,9 @@ export const BackTop: FunctionComponent<
     ...defaultProps,
     ...props,
   }
+
+  const classPrefix = 'nut-backtop'
+
   const [backTop, SetBackTop] = useState(false)
   const [scrollTop, SetScrollTop] = useState(0)
   let startTime = 0
@@ -145,7 +149,9 @@ export const BackTop: FunctionComponent<
 
   return (
     <div
-      className={`nut-backtop ${backTop ? 'show' : ''} ${className || ''}`}
+      className={classNames(classPrefix, className, {
+        show: backTop,
+      })}
       style={styles}
       onClick={(e) => {
         goTop(e)

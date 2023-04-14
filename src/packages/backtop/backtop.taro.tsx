@@ -1,6 +1,7 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react'
 import { usePageScroll, pageScrollTo } from '@tarojs/taro'
 import { Top } from '@nutui/icons-react-taro'
+import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface BackTopProps extends BasicComponent {
@@ -27,6 +28,9 @@ export const BackTop: FunctionComponent<
     ...defaultProps,
     ...props,
   }
+
+  const classPrefix = 'nut-backtop'
+
   const [backTop, SetBackTop] = useState(false)
 
   // 监听用户滑动页面事件
@@ -56,19 +60,17 @@ export const BackTop: FunctionComponent<
       }
 
   return (
-    <>
-      <div
-        className={`nut-backtop ${backTop ? 'show' : ''} ${className || ''}`}
-        style={styles}
-        onClick={(e) => {
-          goTop(e)
-        }}
-      >
-        {children || (
-          <Top width={19} height={19} className="nut-backtop-main" />
-        )}
-      </div>
-    </>
+    <div
+      className={classNames(classPrefix, className, {
+        show: backTop,
+      })}
+      style={styles}
+      onClick={(e) => {
+        goTop(e)
+      }}
+    >
+      {children || <Top width={19} height={19} className="nut-backtop-main" />}
+    </div>
   )
 }
 
