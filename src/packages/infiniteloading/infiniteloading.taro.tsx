@@ -101,7 +101,9 @@ export const Infiniteloading: FunctionComponent<
     const parentElement = getParentElement('scroller')
     parentElement
       .boundingClientRect((rect) => {
-        scrollHeight.current = rect.height
+        scrollHeight.current = Array.isArray(rect)
+          ? rect[0].height
+          : rect.height
       })
       .exec()
   }
