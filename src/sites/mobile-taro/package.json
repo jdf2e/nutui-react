@@ -74,5 +74,8 @@
     "postcss": "^8.4.20",
     "stylelint": "^14.4.0",
     "typescript": "^4.1.0"
+  },
+  "resolutions": {
+    "@swc/core": "1.3.42"
   }
 }
