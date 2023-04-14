@@ -24,7 +24,7 @@ const defaultProps = {
 export const BaseDialog = forwardRef(
   (
     props: Partial<BasicDialogProps> &
-      Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>,
+      Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'content'>,
     ref
   ) => {
     const { locale } = useConfig()
