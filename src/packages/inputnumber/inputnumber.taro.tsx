@@ -279,7 +279,7 @@ export const InputNumber: FunctionComponent<
           />
         ) : (
           <input
-            type="number"
+            type="digit"
             min={min}
             max={max}
             disabled={disabled}
