@@ -68,7 +68,14 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   const renderIcon = (n: number) => {
     return n <= score
       ? checkedIcon || <StarFillN />
-      : uncheckedIcon || <StarFillN />
+      : uncheckedIcon ||
+          (checkedIcon ? (
+            React.cloneElement(checkedIcon as ReactElement, {
+              color: undefined,
+            })
+          ) : (
+            <StarFillN />
+          ))
   }
 
   const onClick = (e: React.MouseEvent, index: number) => {

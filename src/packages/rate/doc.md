@@ -77,7 +77,6 @@ const App = () => {
   return ( 
     <Rate
       checkedIcon={<HeartFill1 />}
-      uncheckedIcon={<HeartFill1 />}
       defaultValue={3}
     />
   );
@@ -131,7 +130,6 @@ const App = () => {
     <Rate
       defaultValue={3}
       checkedIcon={<HeartFill1 color="rgb(255, 200, 0)" />}
-      uncheckedIcon={<HeartFill1 />}
     />
   );
 };  

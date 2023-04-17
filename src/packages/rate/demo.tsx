@@ -67,11 +67,7 @@ const RateDemo = () => {
 
         <h2>{translated.customIcon}</h2>
         <Cell>
-          <Rate
-            checkedIcon={<HeartFill1 />}
-            uncheckedIcon={<HeartFill1 />}
-            defaultValue={3}
-          />
+          <Rate checkedIcon={<HeartFill1 />} defaultValue={3} />
         </Cell>
 
         <h2>{translated.customQuantity}</h2>
@@ -89,7 +85,6 @@ const RateDemo = () => {
           <Rate
             defaultValue={3}
             checkedIcon={<HeartFill1 color="rgb(255, 200, 0)" />}
-            uncheckedIcon={<HeartFill1 />}
           />
         </Cell>
 

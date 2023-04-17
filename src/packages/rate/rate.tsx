@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, {
+  FunctionComponent,
+  ReactElement,
+  useEffect,
+  useState,
+} from 'react'
 import classNames from 'classnames'
 import { StarFillN } from '@nutui/icons-react'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -68,7 +73,14 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   const renderIcon = (n: number) => {
     return n <= score
       ? checkedIcon || <StarFillN />
-      : uncheckedIcon || <StarFillN />
+      : uncheckedIcon ||
+          (checkedIcon ? (
+            React.cloneElement(checkedIcon as ReactElement, {
+              color: undefined,
+            })
+          ) : (
+            <StarFillN />
+          ))
   }
 
   const onClick = (e: React.MouseEvent, index: number) => {
