@@ -3,7 +3,7 @@
 exports[`should match snapshot 1`] = `
 <div>
   <button
-    class="nut-button nut-button--primary nut-button--normal nut-button--round aa"
+    class="nut-button aa nut-button--primary nut-button--normal nut-button--round"
     style="margin: 8px;"
   >
     <div
