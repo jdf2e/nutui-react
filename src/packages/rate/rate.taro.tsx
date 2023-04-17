@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, {
+  FunctionComponent,
+  useEffect,
+  useState,
+  ReactElement,
+} from 'react'
 import classNames from 'classnames'
 import { StarFillN } from '@nutui/icons-react-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
