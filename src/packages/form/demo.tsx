@@ -387,7 +387,7 @@ const FormDemo = () => {
             </Radio.RadioGroup>
           </Form.Item>
           <Form.Item label={translated.rate} name="rate">
-            <Rate modelValue={0} />
+            <Rate defaultValue={0} />
           </Form.Item>
           {/* <Form.Item label={translated.inputnumber} name="inputnumber">
               <InputNumber modelValue={3} min="10" max="20" />

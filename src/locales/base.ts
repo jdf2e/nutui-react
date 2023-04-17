@@ -12,7 +12,7 @@ export interface BaseLang {
   }
   fixednav: {
     activeText: string
-    unActiveText: string
+    inactiveText: string
   }
   infiniteloading: {
     pullRefreshText: string

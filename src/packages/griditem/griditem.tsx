@@ -6,23 +6,17 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
-import bem from '@/utils/bem'
 import GridContext from '../grid/grid.context'
-
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent } from '@/utils/typings'
+import { pxCheck } from '@/utils/px-check'
 
 type GridDirection = 'horizontal' | 'vertical'
 
 export interface GridItemProps extends BasicComponent {
   text: string | ReactNode
-  fontSize: string | number
-  color: string
-  icon: ReactNode
   index: number
-
-  columnNum: string | number
-  border: boolean
-  gutter: string | number
+  columns: string | number
+  gap: string | number
   center: boolean
   square: boolean
   reverse: boolean
@@ -30,15 +24,9 @@ export interface GridItemProps extends BasicComponent {
 }
 
 const defaultProps = {
-  ...ComponentDefaults,
   text: '',
-  fontSize: '',
-  color: '',
-  icon: null,
-
-  columnNum: 4,
-  border: true,
-  gutter: 0,
+  columns: 4,
+  gap: 0,
   center: true,
   square: false,
   reverse: false,
@@ -50,56 +38,52 @@ export const GridItem: FunctionComponent<
   const { locale } = useConfig()
   const {
     children,
-    columnNum,
+    style,
+    columns,
     index,
-    gutter,
+    gap,
     square,
     text,
-    fontSize,
-    color,
-    icon,
-    border,
     center,
     reverse,
     direction,
+    className,
     onClick,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
-  const b = bem('grid-item')
+  const classPrefix = 'nut-grid-item'
+  const classes = classNames(classPrefix, className)
   const context = useContext(GridContext)
 
-  const pxCheck = (value: string | number): string => {
-    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
-  }
-
   const rootStyle = () => {
-    const style: CSSProperties = {
-      flexBasis: `${100 / +columnNum}%`,
+    const styles: CSSProperties = {
+      flexBasis: `${100 / +columns}%`,
+      ...style,
     }
 
     if (square) {
-      style.paddingTop = `${100 / +columnNum}%`
-    } else if (gutter) {
-      style.paddingRight = pxCheck(gutter)
-      if (index >= columnNum) {
-        style.marginTop = pxCheck(gutter)
+      styles.paddingTop = `${100 / +columns}%`
+    } else if (gap) {
+      styles.paddingRight = pxCheck(gap)
+      if (index >= Number(columns)) {
+        styles.marginTop = pxCheck(gap)
       }
     }
 
-    return style
+    return styles
   }
 
   const contentClass = () => {
-    return classNames(b('content'), {
-      [b('content--border')]: border,
-      [b('content--surround')]: border && gutter,
-      [b('content--center')]: center,
-      [b('content--square')]: square,
-      [b('content--reverse')]: reverse,
-      [b(`content--${direction}`)]: !!direction,
+    return classNames(`${classPrefix}__content`, {
+      [`${classPrefix}__content--border`]: true,
+      [`${classPrefix}__content--surround`]: gap,
+      [`${classPrefix}__content--center`]: center,
+      [`${classPrefix}__content--square`]: square,
+      [`${classPrefix}__content--reverse`]: reverse,
+      [`${classPrefix}__content--${direction}`]: !!direction,
     })
   }
 
@@ -109,32 +93,28 @@ export const GridItem: FunctionComponent<
       context.onClick(
         {
           text,
-          icon,
           index,
-          columnNum,
-          border,
-          gutter,
+          columns,
+          gap,
           center,
           square,
           reverse,
           direction,
-          fontSize,
-          color,
         },
         index
       )
   }
 
   return (
-    <div className={b()} style={rootStyle()} {...rest} onClick={handleClick}>
+    <div
+      className={classes}
+      style={rootStyle()}
+      {...rest}
+      onClick={handleClick}
+    >
       <div className={contentClass()}>
-        {icon && <>{icon}</>}
-        {text && (
-          <div className="nut-grid-item__text" style={{ fontSize, color }}>
-            {text}
-          </div>
-        )}
         {children && <>{children}</>}
+        {text && <div className={`${classPrefix}__text`}>{text}</div>}
       </div>
     </div>
   )

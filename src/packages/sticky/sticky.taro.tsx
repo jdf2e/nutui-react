@@ -30,6 +30,7 @@ export interface StickyProps extends BasicComponent {
   children: React.ReactNode
   onChange?: (val: boolean) => void
 }
+
 interface StickyRect {
   top: number
   right: number
@@ -83,7 +84,7 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
   useWatch(fixed, () => {
     onChange && onChange(fixed)
   })
-  const rootStyle: RootStyle = useMemo(() => {
+  const rootStyle = useMemo(() => {
     if (!fixed) {
       return {
         height: '',
@@ -108,7 +109,7 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
         [position]: '',
       }
     }
-    let style: StickyStyle = {}
+    const style: CSSProperties = {}
     if (rootRect.height) style.height = rootRect.height
     if (rootRect.width) style.width = rootRect.width
     style.transform = `translate3d(0, ${transform}px, 0)`

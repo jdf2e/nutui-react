@@ -1,30 +1,3 @@
-@import '../icon/icon.scss';
-
-.nut-theme-dark {
-  .nut-inputnumber {
-    &__icon {
-      color: $dark1;
-
-      &--disabled {
-        color: $dark2;
-      }
-    }
-
-    input,
-    &__text--readonly {
-      background-color: $dark4;
-      color: $dark1;
-      border: 1px solid $dark2;
-    }
-
-    &--disabled {
-      input {
-        color: $dark3 !important;
-      }
-    }
-  }
-}
-
 .nut-inputnumber {
   display: $inputnumber-display;
   align-items: center;
@@ -77,4 +50,14 @@
   .nut-number-input::-webkit-inner-spin-button {
     appearance: none;
   }
+}
+
+.icon-minus {
+  --nut-icon-width: 20px;
+  --nut-icon-height: 20px;
+}
+
+.icon-plus {
+  --nut-icon-width: 20px;
+  --nut-icon-height: 20px;
 }

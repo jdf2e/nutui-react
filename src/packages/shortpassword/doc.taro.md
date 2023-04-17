@@ -29,7 +29,7 @@ const App = () => {
      <>
        <Cell
         title="基础用法"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}
@@ -70,7 +70,7 @@ const App = () => {
      <>
        <Cell
         title="显示按钮组"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}
@@ -114,7 +114,7 @@ const App = () => {
      <>
        <Cell
         title="自定义密码长度4"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}
@@ -153,7 +153,7 @@ const App = () => {
      <>
        <Cell
         title="忘记密码提示语事件回调"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}

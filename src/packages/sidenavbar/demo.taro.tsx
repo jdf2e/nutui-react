@@ -118,14 +118,12 @@ const SideNavBarDemo = () => {
         <h2>{text1}</h2>
         <Cell
           title={title1}
-          isLink
           onClick={() => {
             changeNarBar(true, 'left')
           }}
         />
         <Cell
           title={title2}
-          isLink
           onClick={() => {
             changeNarBar(true, 'right')
           }}
@@ -133,7 +131,6 @@ const SideNavBarDemo = () => {
         <h2>{text2}</h2>
         <Cell
           title={title3}
-          isLink
           onClick={() => {
             changeNarBar(true, 'right')
             setShowThird(true)

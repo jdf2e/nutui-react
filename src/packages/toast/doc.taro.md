@@ -53,14 +53,14 @@ const App = () => {
           }} cover={state.cover} />
         <Cell
           title="Text文字提示"
-          isLink
+          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => textToast('网络失败，请稍后再试~')}
         />
         <Cell
           title="Text文字提示"
-          isLink
+          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
@@ -70,7 +70,7 @@ const App = () => {
         />
        <Cell
           title="Success 成功提示"
-          isLink
+          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
@@ -80,7 +80,7 @@ const App = () => {
         />
         <Cell
           title="Error 失败提示"
-          isLink
+          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
@@ -90,7 +90,7 @@ const App = () => {
         />
         <Cell
           title=" Warning 警告提示"
-          isLink
+          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
@@ -100,7 +100,7 @@ const App = () => {
         />
         <Cell
           title=" Loading 加载提示"
-          isLink
+          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
@@ -110,7 +110,7 @@ const App = () => {
         />
         <Cell
           title="设置展示时长为10秒提示"
-          isLink
+          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
@@ -120,7 +120,7 @@ const App = () => {
         />
         <Cell
           title="关闭正在显示的toast"
-          isLink
+          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
@@ -129,7 +129,7 @@ const App = () => {
         />
         <Cell
           title="传入icon组件中的'JD'图标"
-          isLink
+          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {

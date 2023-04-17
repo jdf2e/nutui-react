@@ -178,7 +178,7 @@ const SwipeDemo = () => {
           onTouchMove={(event) => console.log('touch Move', event)}
           onTouchEnd={(event) => console.log('touch End', event)}
         >
-          <Cell title={translated.leftDel} roundRadius={0} />
+          <Cell title={translated.leftDel} radius={0} />
         </Swipe>
         <h2>{translated.title6}</h2>
         <Swipe
@@ -190,7 +190,7 @@ const SwipeDemo = () => {
           }
           style={{ marginBottom: '10px' }}
         >
-          <Cell title={translated.openOrClose} roundRadius={0} />
+          <Cell title={translated.openOrClose} radius={0} />
         </Swipe>
         <Button
           style={{ marginRight: '10px' }}
@@ -214,7 +214,7 @@ const SwipeDemo = () => {
             ;(closeRef.current as any)?.close()
           }}
         >
-          <Cell title={translated.closeLeft} roundRadius={0} />
+          <Cell title={translated.closeLeft} radius={0} />
         </Swipe>
         <h2>{translated.title2}</h2>
         <Swipe
@@ -225,7 +225,7 @@ const SwipeDemo = () => {
           }
           disabled
         >
-          <Cell title={translated.disabled} roundRadius={0} />
+          <Cell title={translated.disabled} radius={0} />
         </Swipe>
         <h2>{translated.title3}</h2>
         <Swipe

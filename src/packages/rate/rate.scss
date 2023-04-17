@@ -1,5 +1,3 @@
-@import '../icon/icon.scss';
-
 .nut-rate {
   display: flex;
 
@@ -7,6 +5,11 @@
     display: flex;
     flex-shrink: 0;
     position: relative;
+    margin-right: $rate-item-margin;
+
+    &:last-child {
+      margin-right: 0;
+    }
 
     &__half {
       position: absolute;
@@ -39,10 +42,6 @@
         left: auto;
         transform: none;
       }
-    }
-
-    &:last-child {
-      margin-right: 0;
     }
   }
 }
