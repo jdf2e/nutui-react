@@ -48,6 +48,12 @@
 - 删除 slotList，通过 children 实现
 - onSelected 重命名为 onSelect
 #### Indicator
+- 删除 `block`，暴露自定义节点
+- 删除 `align`，暴露自定义节点
+- 删除 `vertical`，改为 `direction`，默认值为 `horizontal`，可选 `vertical` 
+- 删除 `fillZero`，暴露自定义节点
+- 删除 `size`， 改为 `total`
+- 增加非数字展示，并设置为默认状态
 #### Menu
 #### NavBar
 #### Pagination
