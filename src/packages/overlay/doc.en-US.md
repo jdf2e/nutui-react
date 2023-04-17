@@ -1,10 +1,10 @@
 # Overlay 
 
-### Intro
+## Intro
 
 Create a mask layer that is typically used to prevent users from doing other things
 
-### Install
+## Install
 
 
 ``` ts
@@ -12,6 +12,7 @@ Create a mask layer that is typically used to prevent users from doing other thi
 import { OverLay } from '@nutui/nutui-react';
 ```
 
+## Demo
 ### Basic usage
 
 :::demo

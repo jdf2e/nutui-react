@@ -1,16 +1,17 @@
 # Divider 
 
-### Intro
+## Intro
 
 Separate content into multiple areas.
 
-### Install
+## Install
 
 ```ts
 // react
 import { Divider } from '@nutui/nutui-react';
 ```
 
+## Demo
 ### Basic Usage
 
 Default render one horizontal divider line.

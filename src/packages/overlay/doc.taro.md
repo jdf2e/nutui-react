@@ -1,16 +1,17 @@
 # Overlay 遮罩层
 
-### 介绍
+## 介绍
 
 创建一个遮罩层，通常用于阻止用户进行其他操作
 
-### 安装
+## 安装
 
 
 ``` ts
 import { OverLay } from '@nutui/nutui-react-taro';
 ```
 
+## 代码演示
 ### 基础用法
 
 :::demo
