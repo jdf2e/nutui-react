@@ -1,10 +1,10 @@
 #  Layout 布局
 
-### 介绍
+## 介绍
 
 用于快速进行布局
 
-### 安装
+## 安装
 ```javascript
 import { Row, Col } from '@nutui/nutui-react-taro'
 ```

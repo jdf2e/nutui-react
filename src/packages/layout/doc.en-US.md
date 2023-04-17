@@ -1,10 +1,10 @@
 # Layout
 
-### Intro
+## Intro
 
 for quick layout
 
-### Install
+## Install
 ```javascript
 // react
 import { Row, Col } from '@nutui/nutui-react'
