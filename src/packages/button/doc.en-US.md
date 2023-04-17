@@ -256,7 +256,7 @@ export default App;
 | Property       | Description                           | Type          | Default      |
 |----------|-------------------------------|-------------|----------|
 | type     | button style                         | `'default' \| 'primary' \| 'info' \| 'warning' \| 'danger' \| 'success'` | `'default'` |
-| size     | button size                         | `'normal' \| 'large' \| 'small' \| 'mini'` | `'normal'`  |
+| size     | button size                         | `'normal' \| 'large' \| 'small'` | `'normal'`  |
 | shape    | button shape                         | `'square' \| 'round'`   | `'round'` |
 | color    | button color | `string`    | -        |
 | fill     | fill pattern                          | `'solid' \| 'ouline' \| 'none'`  | `'solid'` |

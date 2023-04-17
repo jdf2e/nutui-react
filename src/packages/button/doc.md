@@ -254,7 +254,7 @@ export default App;
 | 参数       | 说明                            | 类型          | 默认值      |
 |----------|-------------------------------|-------------|----------|
 | type     | 按钮的样式                         | `'default' \| 'primary' \| 'info' \| 'warning' \| 'danger' \| 'success'` | `'default'` |
-| size     | 按钮的尺寸                         | `'normal' \| 'large' \| 'small' \| 'mini'` | `'normal'`  |
+| size     | 按钮的尺寸                         | `'normal' \| 'large' \| 'small'` | `'normal'`  |
 | shape    | 按钮的形状                         | `'square' \| 'round'`   | `'round'` |
 | color    | 按钮颜色，支持传入 linear-gradient 渐变色 | `string`    | -        |
 | fill     | 填充模式                          | `'solid' \| 'ouline' \| 'none'`  | `'solid'` |
