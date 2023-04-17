@@ -85,8 +85,7 @@ const RateDemo = () => {
         <Cell>
           <Rate
             defaultValue={3}
-            checkedIcon={<HeartFill1 color="red" />}
-            uncheckedIcon={<HeartFill1 color="yellow" />}
+            checkedIcon={<HeartFill1 color="rgb(255, 200, 0)" />}
           />
         </Cell>
 
