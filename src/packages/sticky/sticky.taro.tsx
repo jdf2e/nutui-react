@@ -22,7 +22,7 @@ import { getScrollParent } from '@/utils/get-scroll-parent'
 export interface StickyProps extends BasicComponent {
   container: React.RefObject<HTMLElement>
   position: 'top' | 'bottom'
-  distance: number
+  threshold: number
   zIndex: number
   onChange: (val: boolean) => void
 }
@@ -60,7 +60,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
   const {
     position,
     zIndex,
-    distance,
+    threshold,
     style,
     children,
     container,
@@ -107,7 +107,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
     if (rootRect.height) style.height = rootRect.height
     if (rootRect.width) style.width = rootRect.width
     style.transform = `translate3d(0, ${transform}px, 0)`
-    style[position] = distance
+    style[position] = threshold
     style.zIndex = zIndex
     return style
   }, [fixed, rootRect.height, rootRect.width, transform, position])
@@ -121,18 +121,18 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
         if (container) {
           const containerRect = await getRectByTaro(container.current)
           const difference =
-            containerRect.bottom - distance - curRootRect.height
+            containerRect.bottom - threshold - curRootRect.height
           const curTransform = difference < 0 ? difference : 0
           setTransform(curTransform)
           const curFixed =
-            distance > curRootRect.top && containerRect.bottom > 0
+            threshold > curRootRect.top && containerRect.bottom > 0
           setFixed(curFixed)
         } else {
-          setFixed(distance > curRootRect.top)
+          setFixed(threshold > curRootRect.top)
         }
       } else {
         const windowHeight = getSystemInfoSync().windowHeight
-        setFixed(windowHeight - distance < curRootRect.bottom)
+        setFixed(windowHeight - threshold < curRootRect.bottom)
       }
     } else {
       console.log('getRectByTaro获取失败', { stickyRect, curRootRect })

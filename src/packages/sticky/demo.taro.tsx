@@ -73,7 +73,7 @@ const StickyDemo = () => {
         <h2>{basic}</h2>
         <Cell>
           <Sticky
-            distance={getEnv() === 'WEB' ? 60 : 0}
+            threshold={getEnv() === 'WEB' ? 60 : 0}
             onChange={(val: boolean) => handleChange(val)}
           >
             <Button type="primary">{button1}</Button>
@@ -82,7 +82,7 @@ const StickyDemo = () => {
 
         <h2>{title1}</h2>
         <Cell>
-          <Sticky distance={120}>
+          <Sticky threshold={120}>
             <Button type="primary">{button2}</Button>
           </Sticky>
         </Cell>
@@ -95,7 +95,7 @@ const StickyDemo = () => {
           >
             <Sticky
               container={containerTopRef}
-              distance={getEnv() === 'WEB' ? 60 : 0}
+              threshold={getEnv() === 'WEB' ? 60 : 0}
             >
               <Button style={{ marginLeft: '100px' }} type="info">
                 {button3}
@@ -105,7 +105,7 @@ const StickyDemo = () => {
         </Cell>
         <h2>{title3}</h2>
         <Cell style={{ height: '64px' }}>
-          <Sticky distance={0} position="bottom">
+          <Sticky threshold={0} position="bottom">
             <Button type="primary">{button4}</Button>
           </Sticky>
         </Cell>

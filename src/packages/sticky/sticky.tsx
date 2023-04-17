@@ -14,7 +14,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export interface StickyProps extends BasicComponent {
   container: React.RefObject<HTMLElement>
   position: 'top' | 'bottom'
-  distance: number
+  threshold: number
   zIndex: number
   children: React.ReactNode
   onChange: (val: boolean) => void
@@ -23,7 +23,7 @@ export interface StickyProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   position: 'top',
-  distance: 0,
+  threshold: 0,
   zIndex: 2000,
 } as StickyProps
 
@@ -37,7 +37,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
     container,
     style,
     className,
-    distance,
+    threshold,
     onChange,
     ...rest
   } = { ...defaultProps, ...props }
@@ -46,7 +46,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
   const [isFixed, setIsFixed] = useState(false)
 
   const [stickyStyle, setStickyStyle] = useState({
-    [position]: `${distance}px`,
+    [position]: `${threshold}px`,
     zIndex,
   })
 
@@ -66,11 +66,11 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
     const clientHeight = document.documentElement.clientHeight
     const stCurrent = stickyRef.current as Element
     const stickyRect = getRect(stCurrent)
-    let fixed = clientHeight - distance < rootRect.bottom
+    let fixed = clientHeight - threshold < rootRect.bottom
     if (containerEle) {
       fixed =
-        containerRect.bottom > clientHeight - distance - stickyRect.height &&
-        clientHeight - distance - stickyRect.height > containerRect.top
+        containerRect.bottom > clientHeight - threshold - stickyRect.height &&
+        clientHeight - threshold - stickyRect.height > containerRect.top
     }
     const defaultPostVal = fixed ? 'fixed' : 'inherit'
     setStickyStyle((prev) => {
@@ -80,7 +80,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
       }
     })
     setIsFixed(fixed)
-  }, [position, container, distance])
+  }, [position, container, threshold])
   const handleScroll = useCallback(() => {
     const containerEle = container?.current as HTMLElement
 
@@ -101,9 +101,9 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
 
     if (position === 'top') {
       if (containerEle) {
-        const fixed = distance > rootRect.top && containerRect.bottom > 0
+        const fixed = threshold > rootRect.top && containerRect.bottom > 0
         const positionVal = fixed ? 'fixed' : 'inherit'
-        const diff = containerRect.bottom - distance - stickyRect.height
+        const diff = containerRect.bottom - threshold - stickyRect.height
         const transform = diff < 0 ? diff : 0
         setStickyStyle((prev) => {
           return {
@@ -114,7 +114,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
         })
         setIsFixed(fixed)
       } else {
-        const fixed = distance > rootRect.top
+        const fixed = threshold > rootRect.top
         const positionVal = fixed ? 'fixed' : 'inherit'
         setStickyStyle((prev) => {
           return {
@@ -130,9 +130,9 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
       if (containerEle) {
         const fixed =
           containerRect.bottom > 0 &&
-          clientHeight - distance - stickyRect.height > containerRect.top
+          clientHeight - threshold - stickyRect.height > containerRect.top
         const positionVal = fixed ? 'fixed' : 'inherit'
-        const diff = containerRect.bottom - (clientHeight - distance)
+        const diff = containerRect.bottom - (clientHeight - threshold)
         const transform = diff < 0 ? diff : 0
         setStickyStyle((prev) => {
           return {
@@ -143,7 +143,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
         })
         setIsFixed(fixed)
       } else {
-        const fixed = clientHeight - distance < rootRect.bottom
+        const fixed = clientHeight - threshold < rootRect.bottom
         const positionVal = fixed ? 'fixed' : 'inherit'
         setStickyStyle((prev) => {
           return {
@@ -154,7 +154,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
         setIsFixed(fixed)
       }
     }
-  }, [position, distance, container])
+  }, [position, threshold, container])
   useWatch(isFixed, () => {
     onChange && onChange(isFixed)
   })

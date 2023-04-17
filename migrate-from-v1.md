@@ -32,7 +32,7 @@
 #### Grid
 #### Layout
 #### Sticky
-
+- 删除 top 和 bottom，改为 threshold
 ### 导航组件
 #### Elevator
 #### FixedNav
