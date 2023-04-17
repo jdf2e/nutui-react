@@ -61,7 +61,8 @@ const PaginationDemo = () => {
     return <div>{item.number === 3 ? 'hot' : item.text}</div>
   }
   const pageChange5 = (v: number) => {
-    console.log('v:', v)
+    const c = v
+    setCurrent3(c)
   }
   return (
     <>

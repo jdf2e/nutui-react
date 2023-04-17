@@ -41,7 +41,6 @@ const PaginationDemo = () => {
   const [currentPage3, setCurrent3] = useState(1)
   const [currentPage4, setCurrent4] = useState(3)
   const pageChange1 = (v: number) => {
-    console.log('外部使用, pageChange1', v)
     const c = v
     setCurrent1(c)
   }
@@ -61,7 +60,8 @@ const PaginationDemo = () => {
     return <div>{item.number === 3 ? 'hot' : item.text}</div>
   }
   const pageChange5 = (v: number) => {
-    console.log('v:', v)
+    const c = v
+    setCurrent3(c)
   }
   return (
     <div className="demo">
