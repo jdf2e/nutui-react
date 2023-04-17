@@ -129,9 +129,9 @@ const BackTopDemo = () => {
         </div>
         <BackTop
           className="custom-class"
-          threshold={100}
+          threshold={200}
           style={{
-            bottom: '110px',
+            bottom: '50px',
             right: '20px',
           }}
           onClick={handleClick}
@@ -148,14 +148,6 @@ const BackTopDemo = () => {
             <div style={{ fontSize: '12px' }}>{translated.backText}</div>
           </div>
         </BackTop>
-        <BackTop
-          threshold={200}
-          style={{
-            bottom: '50px',
-            right: '20px',
-          }}
-          onClick={handleClick}
-        />
       </div>
     </>
   )
