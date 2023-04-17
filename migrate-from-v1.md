@@ -25,6 +25,11 @@
 #### Icon
 #### Image
 #### Overlay
+- `overlayClass` 重命名为 `className`
+- `overlayStyle` 重命名为 `style`
+- `closeOnClickOverlay` 重命名为 `closeOnOverlayClick`
+- 增加 afterClose和afterShow，用于完全关闭后触发的回调和完全展示后触发的回调
+- 完善overlay的demo示例
 #### Popup
 
 ### 布局组件
