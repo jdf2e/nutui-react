@@ -8,11 +8,19 @@ import BackTop from '@/packages/backtop'
 test('backtop props test', () => {
   const handleClick = jest.fn()
   const { container } = render(
-    <BackTop elId="elId" distance={200} bottom={50} onClick={handleClick} />
+    <BackTop
+      target="target"
+      threshold={200}
+      style={{
+        right: '20px',
+        bottom: '50px',
+      }}
+      onClick={handleClick}
+    />
   )
   expect(container.querySelector('.nut-backtop')).toHaveAttribute(
     'style',
-    'right: 10px; bottom: 50px; z-index: 10;'
+    'z-index: 10; right: 20px; bottom: 50px;'
   )
   fireEvent.click(container)
   expect(handleClick).toBeCalled
@@ -23,9 +31,12 @@ test('backtop custom test', () => {
   const { container } = render(
     <BackTop
       className="custom-class"
-      elId="elId"
-      distance={100}
-      bottom={110}
+      target="target"
+      threshold={100}
+      style={{
+        bottom: '110px',
+        right: '10px',
+      }}
       onClick={handleClick}
     >
       <div
@@ -43,13 +54,13 @@ test('backtop custom test', () => {
   )
   expect(container.querySelector('.nut-backtop')).toHaveAttribute(
     'style',
-    'right: 10px; bottom: 110px; z-index: 10;'
+    'z-index: 10; bottom: 110px; right: 10px;'
   )
   expect(container.querySelector('.backtop-demo')).toHaveAttribute(
     'style',
     'display: flex; flex-direction: column; align-items: center;'
   )
-  expect(container.querySelector('.nut-icon-top')).toHaveClass(
+  expect(container.querySelector('.nut-icon-Top')).toHaveClass(
     'nut-backtop-main'
   )
   fireEvent.click(container)
