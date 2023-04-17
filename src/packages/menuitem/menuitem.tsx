@@ -189,14 +189,14 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
                   }}
                 >
                   {item.value === _value ? (
-                    <>
+                    <i>
                       {icon || (
                         <Check
                           color={activeColor}
                           className={getIconCName(item.value, value)}
                         />
                       )}
-                    </>
+                    </i>
                   ) : null}
                   <div
                     className={getIconCName(item.value, value)}

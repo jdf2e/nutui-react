@@ -315,24 +315,23 @@ export default App
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-menu-bar-line-height | `48px` |
-| --nutui-menu-item-font-size | `$font-size-2` |
-| --nutui-menu-item-text-color | `$title-color` |
-| --nutui-menu-item-active-text-color | `$primary-color` |
-| --nutui-menu-bar-border-bottom-color | `#eaf0fb` |
-| --nutui-menu-bar-opened-z-index | `2001` |
-| --nutui-menu-item-disabled-color | `#969799` |
-| --nutui-menu-title-text-padding-left | `8px` |
-| --nutui-menu-title-text-padding-right | `8px` |
-| --nutui-menu-item-content-padding | `12px 24px` |
-| --nutui-menu-item-content-max-height | `214px` |
-| --nutui-menu-item-option-padding-top | `12px` |
-| --nutui-menu-item-option-padding-bottom | `12px` |
-| --nutui-menu-item-option-i-margin-right | `6px` |
-| --nutui-menu-bar-box-shadow | `0 2px 12px rgba(89, 89, 89, 0.12)` |
-| --nutui-menu-scroll-fixed-top | `0` |
-| --nutui-menu-scroll-fixed-z-index | `$mask-z-index` |
-| --nutui-menu-active-item-font-weight | `500` |
-| --nutui-menu-item-content-bg-color | `$gray6` |
+| Name                                    | Description    | Default                             |
+|-----------------------------------------|----------------|-------------------------------------|
+| --nutui-menu-bar-line-height | The height of the menu title bar | `48px` |
+| --nutui-menu-item-font-size | The font size of the title | `$font-size-2` |
+| --nutui-menu-item-text-color | Title color | `$title-color` |
+| --nutui-menu-item-active-text-color | Open state color | `$primary-color` |
+| --nutui-menu-bar-opened-z-index | z-index of opened state | `2001` |
+| --nutui-menu-item-disabled-color | Disabled state color | `#969799` |
+| --nutui-menu-title-text-padding-left | Left padding of title | `8px` |
+| --nutui-menu-title-text-padding-right | right padding of title | `8px` |
+| --nutui-menu-item-content-padding | Padding of menu item container | `12px 24px` || --nutui-menu-item-content-max-height    | 菜单选项容器的最大高度    | `214px`                             |
+| --nutui-menu-item-content-max-height | Maximum height of menu item container | `214px` |
+| --nutui-menu-item-option-padding-top | Top padding for menu options | `12px` |
+| --nutui-menu-item-option-padding-bottom | Bottom padding of menu options | `12px` |
+| --nutui-menu-item-option-i-margin-right | Distance between menu item text and icon | `6px` |
+| --nutui-menu-bar-box-shadow | Shadow of menu title bar | `0 2px 12px rgba(89, 89, 89, 0.12)` |
+| --nutui-menu-scroll-fixed-top | Top distance in fixed state | `0` |
+| --nutui-menu-scroll-fixed-z-index | z-index of fixed state | `$mask-z-index` |
+| --nutui-menu-active-item-font-weight | The font weight of the selected state | `500` |
+| --nutui-menu-item-content-bg-color | Background color of menu item container | `$gray6` |
