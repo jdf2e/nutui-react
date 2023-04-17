@@ -36,6 +36,12 @@
 ### 导航组件
 #### Elevator
 #### FixedNav
+- 删除 fixednavClass，通过 className 实现
+- unActiveText 重命名为 inactiveText
+- navList 重命名为 list
+- slotBtn 重命名为 content
+- 删除 slotList，通过 children 实现
+- onSelected 重命名为 onSelect
 #### Indicator
 #### Menu
 #### NavBar

@@ -14,7 +14,7 @@ const zhUG: BaseLang = {
   },
   fixednav: {
     activeText: 'يىغىش',
-    unActiveText: 'ئۇلىنىش',
+    inactiveText: 'ئۇلىنىش',
   },
   infiniteloading: {
     pullRefreshText: 'قويۇپ بېرىڭ',
