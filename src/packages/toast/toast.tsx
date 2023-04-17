@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Notification, { NotificationProps } from './Notification'
+import { Loading } from '@nutui/icons-react'
 
 let messageInstance: any = null
 export interface ToastProps {
@@ -93,7 +94,7 @@ export default {
   },
   loading(msg: string | React.ReactNode, option = {}) {
     errorMsg(msg)
-    return notice({ msg, icon: 'loading', type: 'loading', ...option })
+    return notice({ msg, icon: <Loading />, type: 'loading', ...option })
   },
   warn(msg: string | React.ReactNode, option = {}) {
     errorMsg(msg)
