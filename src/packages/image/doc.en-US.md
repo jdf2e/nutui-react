@@ -1,16 +1,16 @@
 #  Image
 
-### Intro
+## Intro
 
 Enhanced img tag with multiple image fill modes, support for loading hint, loading failure hint.
 
-### Install
+## Install
 
 ``` javascript
 // react
 import { Image } from '@nutui/nutui-react';
 ```
-
+## Demo
 ### Basic Usage
 
 The basic usage is the same as that of the native IMG tag. You can set the native attributes such as SRC, width, height, and Alt.
@@ -203,7 +203,7 @@ export default App;
 ```
 :::
 
-## API
+## Image
 
 ### Props
 

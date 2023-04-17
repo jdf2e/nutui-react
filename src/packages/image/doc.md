@@ -1,10 +1,10 @@
 #  Image组件
 
-### 介绍
+## 介绍
 
 增强版的 img 标签，提供多种图片填充模式，支持图片加载中提示、加载失败提示。
 
-### 安装
+## 安装
 
 ``` javascript
 // react
@@ -205,7 +205,7 @@ export default App;
 :::
 
 
-## API
+## Image
 
 ### Props
 
