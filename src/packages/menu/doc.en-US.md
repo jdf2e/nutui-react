@@ -1,10 +1,10 @@
 # Menu
 
-### Intro
+## Intro
 
 The menu list that pops down downwards.
 
-### Install
+## Install
 
 ``` javascript
 // react
@@ -277,9 +277,9 @@ export default App
 
 :::
 
-## API
+## Menu
 
-### Menu Props
+### Props
 
 | 参数                  | 说明                           | 类型                    | 默认值  |
 |---------------------|--------------------------------|-------------------------|---------|
@@ -289,7 +289,8 @@ export default App
 | scrollFixed         | Whether to fixed when window is scrolled, fixed position can be set                   | boolean \| string \| number                 | `true`    |
 | titleIcon`v2.0.0`          | Custome title icon                 | React.ReactNode                  | -       |
 
-### MenuItem Props
+## MenuItem
+### Props
 
 | 参数                          | 说明                                    | 类型    | 默认值           |
 |-------------------------------|-----------------------------------------|---------|------------------|

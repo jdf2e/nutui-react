@@ -1,17 +1,6 @@
 @import '../../styles/mixins/text-ellipsis.scss';
 @import '../menuitem/menuitem.scss';
 
-.nut-theme-dark {
-  .nut-menu {
-    .nut-menu__bar {
-      background-color: $dark6;
-      .nut-menu__item {
-        color: $gray6;
-      }
-    }
-  }
-}
-
 .nut-menu {
   &.scroll-fixed {
     position: fixed;

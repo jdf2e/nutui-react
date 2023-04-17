@@ -6,8 +6,6 @@ import { OptionItem } from '@/packages/menuitem/menuitem'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface MenuProps extends BasicComponent {
-  className: string
-  style: React.CSSProperties
   activeColor: string
   closeOnClickOverlay: boolean
   scrollFixed: boolean | string | number
@@ -18,8 +16,6 @@ export interface MenuProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
-  className: '',
-  style: {},
   activeColor: '',
   closeOnClickOverlay: true,
   scrollFixed: false,
