@@ -54,6 +54,7 @@
 - closeOnClickOverlay 重命名为 closeOnOverlayClick
 - titleIcon 重命名为 icon
 - optionsIcon 重命名为 icon
+- 增加 closeOnClickAway
 #### NavBar
 #### Pagination
 #### SideNavBar
