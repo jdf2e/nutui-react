@@ -1,15 +1,18 @@
 # Indicator 指示器
 
-### 介绍
+## 介绍
 
 显示一个任务或流程的进度，常用于开通流程。
 
-### 安装
+## 安装
 
 ```javascript
 // react
 import { Indicator } from '@nutui/nutui-react'
 ```
+
+## 代码演示
+
 ### 基础用法
 :::demo
 ```tsx
@@ -99,12 +102,12 @@ export default App;
 :::
 
 
-## API
+## Indicator
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|---------------|--------|------------------|
+| 参数         | 说明 | 类型   | 默认值           |
+|--------------|---------------|--------|----|
 | current  | 当前步骤 | number | `1` |
 | total | 步骤长度 | number | `3` |
 | direction | 展示方向，默认为水平方向 | `'horizontal' \| 'vertical'` |   `horizontal` |
