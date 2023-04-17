@@ -10,7 +10,7 @@ The menu list that pops down downwards.
 // react
 import { Menu, MenuItem } from '@nutui/nutui-react';
 ```
-
+## Demo
 ### Basic Usage
 
 :::demo
@@ -33,7 +33,6 @@ const App = () => {
   return (
     <>
       <div className="demo full">
-        <h2>Basic Usage</h2>
         <Menu>
           <MenuItem options={options} value={0} />
           <MenuItem options={options1} value="a" />
@@ -71,7 +70,7 @@ const App = () => {
       <div className="demo full">
         <Menu>
           <MenuItem options={options} value={0} />
-          <MenuItem title="筛选" ref={itemRef}>
+          <MenuItem title="Filter" ref={itemRef}>
             <div>Custom content</div>
             <Button onClick={() => itemRef.current.toggle(false)}>Confirm</Button>
           </MenuItem>
@@ -191,8 +190,8 @@ const App = () => {
   return (
     <>
       <div className="demo full">
-        <Menu titleIcon={<TriangleDown />>
-          <MenuItem options={options} value={0} optionsIcon={<Success />} />
+        <Menu icon={<TriangleDown />}>
+          <MenuItem options={options} value={0} icon={<Success />} />
           <MenuItem options={options1} value="a" />
         </Menu>
       </div>
@@ -284,10 +283,10 @@ export default App
 | 参数                  | 说明                           | 类型                    | 默认值  |
 |---------------------|--------------------------------|-------------------------|---------|
 | activeColor         | Active color of title and option           | string                  | `#F2270C` |
-| closeOnClickOverlay | Whether to close when overlay is clicked     | boolean                 | `true`    |
+| closeOnOverlayClick | Whether to close when overlay is clicked     | boolean                 | `true`    |
 | lockScroll          | Whether the background is locked                   | boolean                 | `true`    |
 | scrollFixed         | Whether to fixed when window is scrolled, fixed position can be set                   | boolean \| string \| number                 | `true`    |
-| titleIcon`v2.0.0`          | Custome title icon                 | React.ReactNode                  | -       |
+| titleIcon          | Custome title icon                 | React.ReactNode                  | -       |
 
 ## MenuItem
 ### Props
@@ -298,19 +297,13 @@ export default App
 | options                       | Options                                | Array   | -                |
 | disabled                      | Whether to disable dropdown item                            | boolean | `false`            |
 | columns                          | Display how many options in one line          | number  | `1`                |
-| optionsIcon`v2.0.0`          | Custome option icon                          | React.ReactNode  | `Check`          |
+| icon          | Custome option icon                          | React.ReactNode  | `Check`          |
 | direction            | Expand direction, can be set to up                | string  | `down`           |
 | activeClassName    | Active custome title class              | string  | -                |
 | inactiveClassName  | Inactive custome title class            | string  | -                |
+| onChange | Emitted select option changed | Selected value | - |
 
-
-### MenuItem Events
-
-| Event      | Description                 | Arguments     |
-|----------|----------------------|--------------|
-| onChange | Emitted select option changed | Selected value |
-
-### MenuItem API
+### Ref
 
 | Event | Description                 | Arguments     |
 |-----|----------------------|--------------|

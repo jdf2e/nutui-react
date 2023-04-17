@@ -17,7 +17,7 @@ import { Menu, MenuItem } from '@nutui/nutui-react-taro';
 :::demo
 
 ```tsx
-import React, {useState } from 'react'
+import React, { useState } from 'react'
 import { Menu, MenuItem } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -104,7 +104,7 @@ const App = () => {
     { text: '新款商品', value: 1 },
     { text: '活动商品', value: 2 },
   ])
-  
+
   return (
     <>
       <div className="demo full">
@@ -180,8 +180,8 @@ const App = () => {
   return (
     <>
       <div className="demo full">
-        <Menu titleIcon={<TriangleDown />}>
-          <MenuItem options={options} value={0} optionsIcon={<Success />} />
+        <Menu icon={<TriangleDown />}>
+          <MenuItem options={options} value={0} icon={<Success />} />
           <MenuItem options={options1} value="a" />
         </Menu>
       </div>
@@ -273,10 +273,10 @@ export default App
 | 参数                  | 说明                           | 类型                    | 默认值  |
 |---------------------|--------------------------------|-------------------------|---------|
 | activeColor         | 选项的选中态图标颜色           | string                  | `#F2270C` |
-| closeOnClickOverlay | 是否在点击遮罩层后关闭菜单     | boolean                 | `true`    |
+| closeOnOverlayClick | 是否在点击遮罩层后关闭菜单     | boolean                 | `true`    |
 | lockScroll          | 背景是否锁定                   | boolean                 | `true`    |
 | scrollFixed         | 滚动后是否固定，可设置固定位置                   | boolean \| string \| number                 | `true`    |
-| titleIcon`v2.0.0`            | 自定义标题图标                 | React.ReactNode                  | -       |
+| icon         | 自定义标题图标                 | React.ReactNode                  | -       |
 
 ## MenuItem
 
@@ -285,22 +285,16 @@ export default App
 | 参数                          | 说明                                    | 类型    | 默认值           |
 |-------------------------------|-----------------------------------------|---------|------------------|
 | title                         | 菜单项标题                              | string  | 当前选中项文字   |
-| options                       | 选项数组                                | Array   | -                |
+| options           | 选项数组                                | array           | -                |
 | disabled                      | 是否禁用菜单                            | boolean | `false`            |
 | columns                          | 可以设置一行展示多少列 options          | number  | `1`                |
-| optionsIcon`v2.0.0`          | 自定义选项图标                          | React.ReactNode  | `Check`          |
+| icon      | 自定义选项图标                          | React.ReactNode | `Check`          |
 | direction            | 菜单展开方向，可选值为up                | string  | `down`           |
 | activeClassName    | 选项选中时自定义标题样式类              | string  | -                |
 | inactiveClassName  | 选项非选中时自定义标题样式类            | string  | -                |
+| onChange | 选择 option 之后触发 | 选择的 value | - |
 
-
-### MenuItem Events
-
-| 事件名      | 说明                 | 回调参数     |
-|----------|----------------------|--------------|
-| onChange | 选择 option 之后触发 | 选择的 value |
-
-### MenuItem API
+### Ref
 
 | 事件名 | 说明                 | 回调参数     |
 |-----|----------------------|--------------|
@@ -310,7 +304,8 @@ export default App
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+组件提供了下列 CSS
+变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 默认值 |
 | --- | --- |

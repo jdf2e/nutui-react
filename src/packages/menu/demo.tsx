@@ -107,7 +107,7 @@ const MenuDemo = () => {
       <style>{style}</style>
       <div className="demo full">
         <h2>{translated.basic}</h2>
-        <Menu closeOnClickOverlay={false} lockScroll={false}>
+        <Menu closeOnOverlayClick={false} lockScroll={false}>
           <MenuItem
             options={options}
             value={0}
@@ -141,8 +141,8 @@ const MenuDemo = () => {
           <MenuItem options={options1} value="a" />
         </Menu>
         <h2>{translated.customIcons}</h2>
-        <Menu titleIcon={<TriangleDown />}>
-          <MenuItem options={options} value={0} optionsIcon={<Success />} />
+        <Menu icon={<TriangleDown />}>
+          <MenuItem options={options} value={0} icon={<Success />} />
           <MenuItem options={options1} value="a" />
         </Menu>
         <h2>{translated.expandDirection}</h2>
