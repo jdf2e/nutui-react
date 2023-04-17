@@ -145,7 +145,7 @@ const App = () => {
           </Radio.RadioGroup>
         </Form.Item>
         <Form.Item label='评分' name="rate">
-          <Rate modelValue={0} />
+          <Rate defaultValue={0} />
         </Form.Item>
         <Form.Item label='滑块' name="range">
           <Range modelValue={0} max={10} min={-10} />

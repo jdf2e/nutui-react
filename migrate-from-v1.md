@@ -69,6 +69,11 @@
 #### Radio
 #### Range
 #### Rate
+- minimizeValue 重命名为 min
+- readonly 重命名为 readOnly
+- 删除 spacing，通过 css 样式变量实现
+- 移除 activeColor、voidColor、iconSize，通过 checkedIcon、uncheckedIcon 实现
+- 增加受控 value 与非受控 defaultValue，移除 modelValue
 #### SearchBar
 #### ShortPassword
 #### TextArea

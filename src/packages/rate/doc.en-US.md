@@ -1,6 +1,6 @@
-#  Rate 
+# Rate
 
-### introduce
+## Intro
 
 Use for quick rating actions, or to showcase reviews.
 
@@ -11,28 +11,9 @@ Use for quick rating actions, or to showcase reviews.
 import { Rate } from '@nutui/nutui-react';
 ```
 
-## Code demonstration
+## Code
 
-### Basic usage
-
-:::demo
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
-
-const App = () => {
-  return ( 
-    <>   
-    <Rate modelValue={3} />
-    </>
-  );
-};  
-export default App;
-
-```
-:::
-        
-### half star  
+### Basic Usage
 
 :::demo
 ```tsx
@@ -40,17 +21,51 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate allowHalf modelValue="3.5" />
-    </>
+  return (
+    <Rate defaultValue={3} />
   );
 };  
 export default App;
 
 ```
 :::
-### customize icon   
+
+### Controlled Mode
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  const [state, setState] = useState(2);
+  return (
+    <Rate value={score} onChange={(value) => setScore(value)} />
+  );
+};  
+export default App;
+```
+
+:::
+
+### Half Star
+
+:::demo
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Rate allowHalf defaultValue={3.5} />
+  );
+};  
+export default App;
+
+```
+:::
+### Custom Icon
 
 :::demo
 ```tsx
@@ -59,15 +74,15 @@ import { Rate } from '@nutui/nutui-react';
 import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
-  return ( 
-    <Rate checkedIcon={<HeartFill1 />} modelValue="3" />
+  return (
+    <Rate checkedIcon={<HeartFill1 />} defaultValue={3} />
   );
 };  
 export default App;
 
 ```
 :::
-### custom quantity  
+### Custom Quantity
 
 :::demo
 ```tsx
@@ -75,17 +90,15 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate count="6" modelValue="3" />
-    </>
+  return (
+    <Rate count="6" defaultValue={3} />
   );
 };  
 export default App;
 
 ```
 :::
-### Select the minimum quantity (support half star)  
+### Set Minimum Quantity (Support Half Star)
 
 :::demo
 ```tsx
@@ -93,17 +106,36 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate count="5" modelValue="2" minimizeValue="3"/>
-    </>
+  return (
+    <Rate count={5} defaultValue={2} min={3}/>
   );
 };  
 export default App;
 
 ```
 :::
-### custom color 
+### Custom Color
+
+:::demo
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+import { HeartFill1 } from '@nutui/icons-react';
+
+const App = () => {
+  return (
+    <Rate
+      defaultValue={3}
+      checkedIcon={<HeartFill1 color="red" />}
+      uncheckedIcon={<HeartFill1 color="yellow" />}
+    />
+  );
+};  
+export default App;
+
+```
+:::
+### Disabled State
 
 :::demo
 ```tsx
@@ -111,17 +143,15 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate activeColor="#FFC800" modelValue="3" />
-    </>
+  return (
+    <Rate disabled defaultValue={3} />
   );
 };  
 export default App;
 
 ```
 :::
-### disabled state  
+### ReadOnly State
 
 :::demo
 ```tsx
@@ -129,35 +159,15 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate disabled modelValue="3" />
-    </>
+  return (
+    <Rate defaultValue={3} readOnly />
   );
 };  
 export default App;
 
 ```
 :::
-### readonly state  
-
-:::demo
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
-
-const App = () => {
-  return ( 
-    <>   
-    <Rate modelValue="3" readonly />
-    </>
-  );
-};  
-export default App;
-
-```
-:::
-### bind event  
+### OnChange Event
 
 :::demo
 ```tsx
@@ -168,67 +178,39 @@ const App = () => {
   const onChange = (val: any) => {
     alert(val)
   }
-  return ( 
-    <>   
-    <Rate modelValue="3" onChange={onChange} />
-    </>
+  return (
+    <Rate defaultValue={3} onChange={onChange} />
   );
 };  
 export default App;
 
 ```
-:::
-### custom iconSize 35px  
 
-:::demo
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
+## Rate
 
-const App = () => {
-  return ( 
-    <>   
-    <Rate modelValue="3" iconSize="35" />
-    </>
-  );
-};  
-export default App;
+### Props
 
-```
-:::
-
-## API
-
-## Prop
-
-| field           | explain                                 | type    | default    |
+| Property           | Description                                 | Type    | Default    |
 |----------------|-------------------------------------------|---------|-------------|
-| modelValue     | The current number of stars <= count     | number   | -           |
+| defaultValue             | Uncontrolled star value | number | `0`           |
+| value             | Controlled star value | number | `0`           |
 | count          | total number of stars                    | number | `5`           |
-| minimizeValue  | At least the number of STAR              | number | `0`           |
-| iconSize      | size of star                              | number | `18`          |
-| activeColor   | Icon selection color                      | string  | `#fa200c`     |
-| voidColor     | Icon unselected color                    | string  | `#ccc`        |
-| uncheckedIcon `v2.0.0 Abandon` | Use icon (unchecked) | string  | `star-n`      |
-| checkedIcon   | Use icon (checked) | `ReactNode`  | - |
+| min  | At least the number of STAR              | number | `0`           |
+| uncheckedIcon | Use icon (unchecked) | ReactNode  | `star-n`      |
+| checkedIcon   | Use icon (checked) | ReactNode  | `star-n` |
 | allowHalf     | Half star or not                         | boolean | `false`       |
-| readonly       |Read only                              | boolean | `false`       |
+| readOnly       |Read only                              | boolean | `false`       |
 | disabled       | Disable or not                          | boolean | `false`       |
-| spacing        | spacing                                  | number | `20`          |
+| onChange | Event triggered when the current score is modified | (value: number) => void | - |
 
-## Event
-| field   | explain                                          | Callback Arguments  |
-|--------|----------------------------|----------|
-| onChange `v1.3.3` | Event triggered when the current score is modified | Current value   |
-
-
-## Theming
+## Theme
 
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-rate-icon-color | `$primary-color` |
-| --nutui-rate-icon-void-color | `$disable-color` |
+| Name | Description | Default Value |
+| --- | --- | --- |
+| --nutui-rate-item-margin | rate item margin | `14px` |
+| --nutui-rate-icon-color | checked icon color | `$primary-color` |
+| --nutui-rate-icon-void-color | unchecked icon color  | `$disable-color` |
