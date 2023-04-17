@@ -55,6 +55,7 @@ export const FixedNav: FunctionComponent<
     onSelect,
     type,
     children,
+    style,
     content,
     ...rest
   } = {
@@ -82,7 +83,14 @@ export const FixedNav: FunctionComponent<
   }
 
   return (
-    <div className={classes} style={position} {...rest}>
+    <div
+      className={classes}
+      style={{
+        ...position,
+        ...style,
+      }}
+      {...rest}
+    >
       {overlay && (
         <Overlay
           visible={visible}
