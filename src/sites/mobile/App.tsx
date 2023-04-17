@@ -19,7 +19,7 @@ import enUS from '@/locales/en-US'
 import { BaseLang } from '@/locales/base'
 // import Icon from '@/packages/Icon'
 import { nav } from '@/config.json'
-import TaroDemo from '@/sites/mobile/TaroDemo'
+// import TaroDemo from '@/sites/mobile/TaroDemo'
 
 interface Languages {
   [key: string]: BaseLang
@@ -148,7 +148,7 @@ const AppSwitch = () => {
             <div className="index-header">
               <img src={logo} alt="" srcSet="" />
               <div className="info">
-                <h1>NutUI-React</h1>
+                <h1>NutUI React</h1>
                 <p>京东风格的轻量级移动端 React 组件库</p>
               </div>
             </div>
@@ -168,9 +168,9 @@ const AppSwitch = () => {
             />
           )
         })}
-        <Route path="*-taro">
+        {/* <Route path="*-taro">
           <TaroDemo />
-        </Route>
+        </Route> */}
         <Route path="*">
           <Redirect
             to={{
