@@ -75,7 +75,11 @@ import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
   return ( 
-    <Rate checkedIcon={<HeartFill1 />} defaultValue={3} />
+    <Rate
+      checkedIcon={<HeartFill1 />}
+      uncheckedIcon={<HeartFill1 />}
+      defaultValue={3}
+    />
   );
 };  
 export default App;
@@ -123,14 +127,12 @@ import { Rate } from '@nutui/nutui-react';
 import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
-  return ( 
-    <>   
-      <Rate
-        defaultValue={3}
-        checkedIcon={<HeartFill1 color="red" />}
-        uncheckedIcon={<HeartFill1 color="yellow" />}
-      />
-    </>
+  return (
+    <Rate
+      defaultValue={3}
+      checkedIcon={<HeartFill1 color="rgb(255, 200, 0)" />}
+      uncheckedIcon={<HeartFill1 />}
+    />
   );
 };  
 export default App;
