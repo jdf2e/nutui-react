@@ -1,6 +1,18 @@
 .nut-rate {
   display: flex;
 
+  &.disabled {
+    .nut-rate-item__icon {
+      cursor: not-allowed;
+    }
+  }
+
+  &.readonly {
+    .nut-rate-item__icon {
+      cursor: default;
+    }
+  }
+
   &-item {
     display: flex;
     flex-shrink: 0;

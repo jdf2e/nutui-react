@@ -91,7 +91,13 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   }
 
   return (
-    <div className={classNames(classPrefix, className)} style={style}>
+    <div
+      className={classNames(classPrefix, className, {
+        disabled,
+        readonly: readOnly,
+      })}
+      style={style}
+    >
       {countArray.map((n) => {
         return (
           <div
