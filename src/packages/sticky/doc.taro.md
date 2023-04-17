@@ -1,12 +1,12 @@
 # Sticky 组件
 
-### 介绍
+## 介绍
 
 效果同 css 中的 position: sticky,对低端浏览器可使用其做兼容
 
 > 支持吸顶、吸底、容器内吸顶效果，也可以使用官方sticky组件 https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/extended/component-plus/sticky.html
 
-### 安装
+## 安装
 
 ```tsx
 import { Sticky } from '@nutui/nutui-react-taro'
@@ -86,7 +86,7 @@ export default App
 ```
 :::
 
-## API
+## Sticky
 
 ### Props
 

@@ -1,15 +1,15 @@
 
 #  Sticky组件
 
-### Intro
+## Intro
 
 The effect is the same as position: sticky in CSS, which can be used for compatibility with low-end browsers
 
-### Install
+## Install
 ```tsx
 import { Sticky } from '@nutui/nutui-react';
 ```
-
+## Demo
 ### Basic Usage
 :::demo
 ```tsx
@@ -93,7 +93,7 @@ export default App;
 ```
 :::
 
-## API
+## Sticky
 
 ### Props
 

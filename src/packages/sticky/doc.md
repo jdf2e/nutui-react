@@ -1,11 +1,11 @@
 
 #  Sticky组件
 
-### 介绍
+## 介绍
 
 效果同 css 中的 position: sticky,对低端浏览器可使用其做兼容
 
-### 安装
+## 安装
 ```tsx
 import { Sticky } from '@nutui/nutui-react';
 ```
@@ -99,7 +99,7 @@ export default App;
 ```
 :::
 
-## API
+## Sticky
 
 ### Props
 
