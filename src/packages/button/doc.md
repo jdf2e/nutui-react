@@ -1,10 +1,10 @@
 # Button 按钮
 
-### 介绍
+## 介绍
 
 按钮用于触发一个操作，如提交表单。
 
-### 安装
+## 安装
 
 ``` javascript
 // react
@@ -247,7 +247,7 @@ export default App;
 
 :::
 
-## API
+## Button
 
 ### Props
 

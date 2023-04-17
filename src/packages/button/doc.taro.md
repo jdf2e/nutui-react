@@ -1,10 +1,10 @@
 # Button 按钮
 
-### 介绍
+## 介绍
 
 按钮用于触发一个操作，如提交表单。
 
-### 安装
+## 安装
 
 ``` javascript
 import { Button } from '@nutui/nutui-react-taro';
@@ -241,7 +241,7 @@ const App = () => {
 export default App;
 ```
 :::
-## API
+## Button
 
 ### Props
 

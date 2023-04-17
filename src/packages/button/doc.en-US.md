@@ -1,10 +1,10 @@
 # Button
 
-### Introduce
+## Intro
 
 Buttons are used to trigger an action, such as submitting a form.
 
-### Install
+## Install
 
 ``` javascript
 // react
@@ -249,7 +249,7 @@ export default App;
 
 :::
 
-## API
+## Button
 
 ### Props
 
