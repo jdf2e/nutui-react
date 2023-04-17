@@ -3,7 +3,7 @@
 exports[`should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="nut-indicator demo1"
+    class=""
   >
     <div
       class="nut-indicator__dot"
@@ -12,10 +12,8 @@ exports[`should match snapshot 1`] = `
       class="nut-indicator__dot"
     />
     <div
-      class="nut-indicator__number"
-    >
-      03
-    </div>
+      class="nut-indicator__dot nut-indicator__active"
+    />
   </div>
 </DocumentFragment>
 `;
