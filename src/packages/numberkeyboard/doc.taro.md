@@ -30,7 +30,7 @@ const App = () => {
      <>
        <Cell
         title="基础用法"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}
@@ -67,7 +67,7 @@ const App = () => {
      <>
        <Cell
         title="带右侧栏键盘"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}
@@ -106,7 +106,7 @@ const App = () => {
      <>
        <Cell
         title="随机数键盘"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}
@@ -143,7 +143,7 @@ const App = () => {
      <>
        <Cell
         title="带标题栏键盘"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}
@@ -181,7 +181,7 @@ const App = () => {
      <>
        <Cell
         title="身份证键盘"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}

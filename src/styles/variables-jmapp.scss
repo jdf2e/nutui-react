@@ -247,27 +247,25 @@ $button-small-round-border-radius: var(
 
 // cell（✅）
 
-$cell-color: var(--nutui-cell-color, #262626) !default;
-$cell-title-font: var(--nutui-cell-title-font, $font-size-2) !default;
-$cell-title-description-font: var(
-  --nutui-cell-title-description-font,
+$cell-title-color: var(--nutui-cell-title-color, #262626) !default;
+$cell-title-font-size: var(--nutui-cell-title-font-size, $font-size-2) !default;
+$cell-description-font-size: var(
+  --nutui-cell-description-font-size,
   $font-size-1
 ) !default;
 $cell-description-font: var(
-  --nutui-cell-description-font,
+  --nutui-cell-extra-font-size,
   $font-size-2
 ) !default;
-$cell-description-color: var(
-  --nutui-cell-description-color,
-  $disable-color
-) !default;
-$cell-subtitle-color: var(--nutui-cell-subtitle-color, $gray2) !default;
+$cell-description-color: var(--nutui-cell-extra-color, $disable-color) !default;
+$cell-subtitle-color: var(--nutui-cell-description-color, $gray2) !default;
 $cell-border-radius: var(--nutui-cell-border-radius, 4px) !default;
 $cell-padding: var(--nutui-cell-padding, 16px 16px) !default;
 $cell-line-height: var(--nutui-cell-line-height, 20px) !default;
-$cell-after-right: var(--nutui-cell-after-right, 16px) !default;
-$cell-after-border-bottom: var(
-  --nutui-cell-after-border-bottom,
+$cell-divider-right: var(--nutui-cell-divider-right, 16px) !default;
+$cell-divider-left: var(--nutui-cell-divider-left, 16px) !default;
+$cell-divider-border-bottom: var(
+  --nutui-cell-divider-border-bottom,
   1px solid #f5f6f7
 ) !default;
 $cell-default-icon-margin: var(
@@ -283,9 +281,12 @@ $cell-large-title-description-font: var(
   $font-size-base
 ) !default;
 $cell-large-padding: var(--nutui-cell-large-padding, 16px 16px) !default;
-$cell-background: var(--nutui-cell-background, $primary-text-color) !default;
-$cell-box-shaow: var(
-  --nutui-cell-box-shaow,
+$cell-background-color: var(
+  --nutui-cell-background-color,
+  $primary-text-color
+) !default;
+$cell-box-shadow: var(
+  --nutui-cell-box-shadow,
   0px 1px 7px 0px rgba(237, 238, 241, 1)
 ) !default;
 
