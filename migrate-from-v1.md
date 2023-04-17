@@ -49,6 +49,11 @@
 - onSelected 重命名为 onSelect
 #### Indicator
 #### Menu
+- 删除 fontClassName
+- 删除 iconClassPrefix
+- closeOnClickOverlay 重命名为 closeOnOverlayClick
+- titleIcon 重命名为 icon
+- optionsIcon 重命名为 icon
 #### NavBar
 #### Pagination
 #### SideNavBar
