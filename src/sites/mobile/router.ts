@@ -10,4 +10,6 @@ for (const path in modulesPage) {
   })
 }
 
+console.log('routes', routes)
+
 export default routes
