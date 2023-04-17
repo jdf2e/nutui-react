@@ -86,28 +86,23 @@ test('should render custom content correctly', () => {
 })
 
 test('test controlled mode', () => {
-  let current = 2
+  let value = 2
   const pageChange = (v: number) => {
-    current = v
+    value = v
   }
   const { container, getByText } = render(
-    <Pagination
-      current={current}
-      total={25}
-      pageSize={5}
-      onChange={pageChange}
-    />
+    <Pagination value={value} total={25} pageSize={5} onChange={pageChange} />
   )
   expect(container.querySelector('.active')).toHaveTextContent('2')
   const page = getByText('4')
   fireEvent.click(page)
-  expect(current).toEqual(4)
+  expect(value).toEqual(4)
 })
 
 test('test uncontrolled mode', () => {
-  let current = 0
+  let value = 0
   const pageChange = (v: number) => {
-    current = v
+    value = v
   }
   const { container, getByText } = render(
     <Pagination
@@ -120,6 +115,6 @@ test('test uncontrolled mode', () => {
   expect(container.querySelector('.active')).toHaveTextContent('2')
   const page = getByText('4')
   fireEvent.click(page)
-  expect(current).toEqual(4)
+  expect(value).toEqual(4)
   expect(container.querySelector('.active')).toHaveTextContent('4')
 })

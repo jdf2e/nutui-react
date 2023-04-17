@@ -13,7 +13,7 @@ import { Pagination } from '@nutui/nutui-react';
 ## 代码演示
 
 ### 基础用法
-通过 current 来绑定当前页码时，组件为受控状态，分页显示取决于传入的 current，一般搭配 onChange 使用。
+通过 value 来绑定当前页码时，组件为受控状态，分页显示取决于传入的 value ，一般搭配 onChange 使用。
 不需要受控时，可通过 defaultValue 指定当前页码
 :::demo
 ``` tsx
@@ -28,7 +28,7 @@ const App = () => {
   }
   return (
     <Pagination
-      current={currentPage1}
+      value={currentPage1}
       total={25}
       pageSize={5}
       onChange={pageChange1}
@@ -53,7 +53,7 @@ const App = () => {
   }
   return (
     <Pagination
-      current={currentPage2}
+      value={currentPage2}
       total={12}
       pageSize={1}
       mode="simple" 
@@ -80,7 +80,7 @@ const App = () => {
   }
   return (
     <Pagination
-      current={currentPage3}
+      value={currentPage3}
       total={125}
       itemSize={3}
       ellipse
@@ -110,7 +110,7 @@ const App = () => {
   }
   return (
     <Pagination
-      current={currentPage4}
+      value={currentPage4}
       total={500}
       itemSize={5}
       onChange={pageChange4}
@@ -154,7 +154,7 @@ export default App;
     
 | 参数           | 说明                             | 类型                      | 默认值            |
 | -------------- | -------------------------------- | ------------------------- | ----------------- |
-| current     | 当前页码，受控值，与 onChange 搭配使用                         | number                    | -                 |
+| value     | 当前页码，受控值，与 onChange 搭配使用                         | number                    | -                 |
 | defaultValue   | 默认页码，非受控                         | number                    | `1`                 |
 | mode           | 显示模式,可选值为：multi，simple | string                    | `multi`             |
 | prev       | 自定义上一页按钮内容             | ReactNode | `上一页`            |

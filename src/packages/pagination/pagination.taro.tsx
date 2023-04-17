@@ -6,7 +6,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface PaginationProps extends BasicComponent {
   defaultValue: number
-  current: number
+  value: number
   mode: 'multi' | 'simple'
   prev: ReactNode
   next: ReactNode
@@ -35,7 +35,7 @@ export const Pagination: FunctionComponent<
 > = (props) => {
   const { locale } = useConfig()
   const {
-    current,
+    value,
     mode,
     prev,
     next,
@@ -55,7 +55,7 @@ export const Pagination: FunctionComponent<
 
   const classPrefix = 'nut-pagination'
   const [currentPage, setCurrentPage] = usePropsValue<number>({
-    value: current,
+    value,
     defaultValue,
     finalValue: 1,
     onChange,

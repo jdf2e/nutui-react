@@ -10,11 +10,11 @@ When the amount of data is too much, use pagination to separate the data.
 import { Pagination } from '@nutui/nutui-react';
 ```    
 
-## Code
+## Demo
 
 ### Basic Usage
 
-When the current page number is bound by `current`, the component is in a controlled state, and the paging display depends on the incoming `current`, which is generally used with `onChange`.
+When the current page number is bound by `value`, the component is in a controlled state, and the paging display depends on the incoming `value`, which is generally used with `onChange`.
 When it does not need to be controlled, the current page number can be specified through `defaultValue`
 
 :::demo
@@ -30,7 +30,7 @@ const App = () => {
   }
   return (
     <Pagination
-      current={currentPage1}
+      value={currentPage1}
       total={25}
       pageSize={5}
       onChange={pageChange1}
@@ -55,7 +55,7 @@ const App = () => {
   }
   return (
     <Pagination
-      current={currentPage2} 
+      value={currentPage2} 
       total={12}
       pageSize={1}
       mode="simple" 
@@ -82,7 +82,7 @@ const App = () => {
   }
   return (
     <Pagination
-      current={currentPage3}
+      value={currentPage3}
       total={125}
       itemSize={3}
       ellipse
@@ -112,7 +112,7 @@ const App = () => {
   }
   return (
     <Pagination
-      current={currentPage4}
+      value={currentPage4}
       total={500}
       itemSize={5}
       onChange={pageChange4}
@@ -156,7 +156,7 @@ export default App;
     
 | Attribute           | Description                             | Type                      | Default            |
 | -------------- | -------------------------------- | ------------------------- | ----------------- |
-| current     | current page number, controlled value                         | number                    | -                 |
+| value     | current page number, controlled value                         | number                    | -                 |
 | defaultValue   | default page number, uncontrolled value                         | number                    | `1`                 |
 | mode           | Display mode, optional values are: `multi`,`simple` | string                    | `multi`             |
 | prev       | Customize previous page button content             | ReactNode | `Previous`            |

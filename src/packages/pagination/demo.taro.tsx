@@ -70,7 +70,7 @@ const PaginationDemo = () => {
         <h2>{translated.basic}</h2>
         <Cell>
           <Pagination
-            current={currentPage1}
+            value={currentPage1}
             total={20}
             pageSize={5}
             onChange={pageChange1}
@@ -79,7 +79,7 @@ const PaginationDemo = () => {
         <h2>{translated.simple}</h2>
         <Cell>
           <Pagination
-            current={currentPage2}
+            value={currentPage2}
             total={12}
             pageSize={1}
             mode="simple"
@@ -89,7 +89,7 @@ const PaginationDemo = () => {
         <h2>{translated.ellipse}</h2>
         <Cell>
           <Pagination
-            current={currentPage3}
+            value={currentPage3}
             total={125}
             itemSize={3}
             ellipse
@@ -99,7 +99,7 @@ const PaginationDemo = () => {
         <h2>{translated.custom}</h2>
         <Cell>
           <Pagination
-            current={currentPage4}
+            value={currentPage4}
             total={500}
             itemSize={5}
             onChange={pageChange4}

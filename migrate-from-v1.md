@@ -40,7 +40,7 @@
 #### Menu
 #### NavBar
 #### Pagination
-- modelValue 改为 current，受控值
+- modelValue 改为 value，受控值
 - 增加 defaultValue 非受控值
 - prevText 重命名为 prev，改为 ReactNode
 - nextText 重命名为 next，改为 ReactNode
