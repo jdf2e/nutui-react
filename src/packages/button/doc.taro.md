@@ -87,8 +87,8 @@ const App = () => {
   return (
     <>
       <Button disabled type="primary">禁用状态</Button>
-      <Button plain disabled type="info">禁用状态</Button>
-      <Button plain disabled type="primary">禁用状态</Button>
+      <Button fill="outline" disabled type="info">禁用状态</Button>
+      <Button fill="outline" disabled type="primary">禁用状态</Button>
     </>
   );
 };
@@ -230,7 +230,7 @@ const App = () => {
   return (
     <>
       <Button color="#7232dd">单色按钮</Button>
-      <Button color="#7232dd" plain>单色按钮</Button>
+      <Button color="#7232dd" fill="outline">单色按钮</Button>
       <Button color="rgba(10,101,208,0.75)">单色按钮</Button>
       <Button color="linear-gradient(to right, #ff6034, #ee0a24)">
         渐变色按钮

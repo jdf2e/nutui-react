@@ -77,8 +77,8 @@ const App = () => {
   return (
     <>
       <Button disabled type="primary">primary</Button>
-      <Button plain disabled type="info">info</Button>
-      <Button plain disabled type="primary">primary</Button>
+      <Button fill="outline" disabled type="info">info</Button>
+      <Button fill="outline" disabled type="primary">primary</Button>
     </>
   );
 };
@@ -236,7 +236,7 @@ const App = () => {
   return (
     <>
       <Button color="#7232dd">Monochrome</Button>
-      <Button color="#7232dd" plain>Monochrome</Button>
+      <Button color="#7232dd" fill="outline">Monochrome</Button>
       <Button color="rgba(10,101,208,0.75)">Monochrome</Button>
       <Button color="linear-gradient(to right, #ff6034, #ee0a24)">
         Gradient
