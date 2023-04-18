@@ -62,7 +62,7 @@ test('should emit click-back event when clicking back text', () => {
     </NavBar>
   )
 
-  fireEvent.click(container.querySelectorAll('.nut-navbar__back')[0])
+  fireEvent.click(container.querySelectorAll('.nut-navbar__left__back')[0])
   expect(onClickBack).toBeCalled()
 })
 
