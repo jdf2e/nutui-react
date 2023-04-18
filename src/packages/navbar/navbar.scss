@@ -1,32 +1,3 @@
-.nut-theme-dark {
-  .nut-navbar {
-    background: $dark5;
-    color: $dark1;
-    box-shadow: none;
-
-    &__title {
-      color: $dark1;
-    }
-
-    &__left {
-      color: $dark2;
-
-      i {
-        color: $dark2 !important;
-      }
-    }
-
-    &__right {
-      color: $dark1;
-    }
-  }
-
-  .nut-tabs__titles-item__text {
-    background: $dark5;
-    color: $dark1;
-  }
-}
-
 .nut-navbar {
   width: $navbar-width;
   position: relative;
@@ -61,30 +32,6 @@
   &--safe-area-inset-top {
     padding-top: constant(safe-area-inset-top);
     padding-top: env(safe-area-inset-top);
-  }
-
-  &--clickable {
-    &::before {
-      position: absolute;
-      content: ' ';
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      background-color: $black;
-      border: inherit;
-      border-color: $black;
-      border-radius: inherit;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-    }
-  }
-
-  .nut-navbar__back {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
   }
 
   &__title {
@@ -123,6 +70,12 @@
     align-items: center;
     cursor: pointer;
     padding: 0 16px;
+    &__back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+    }
   }
 
   &__right {

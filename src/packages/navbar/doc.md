@@ -1,17 +1,17 @@
 # Navbar 头部导航
 
-### 介绍 
+## 介绍 
 
 
 提供导航功能。
 
-### 安装
+## 安装
 
 ```ts
 import { NavBar } from '@nutui/nutui-react';
 ```
 
-### 代码示例
+## 代码示例
 
 ### 基本用法
 
@@ -145,7 +145,9 @@ export default App;
 ```
 :::
 
-### Prop  
+## Navbar
+
+### Props  
 
 | 字段 | 说明 | 类型    | 默认值  |
 |------------|--------------------|---------|---------|
@@ -156,11 +158,8 @@ export default App;
 | safeArea | 是否适配安全区 | boolean  | `false`       |   
 | placeholder      | 固定在顶部时，是否在标签位置生成一个等高的占位元素 | boolean  | `false`    |
 | zIndex           | 导航栏层级           | number \| string  | `10`    |
+| onClickBack             | 点击返回区域后的回调 | `onClickBack:(event: Event)=>void` | `false`|
 
-### Event
-| 名称                      | 说明     | 回调参数    |
-|-------------------------|----------|-------------|
-| onClickBack             | 点击返回区域后的回调 | `event: Event` |
 
 ## 主题定制
 
@@ -168,7 +167,7 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
+| 名称 | 说明 | 默认值 |
 | --- | --- |
 | --nutui-navbar-height | `44px` |
 | --nutui-navbar-margin-bottom | `20px` |

@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -12,8 +11,6 @@ export interface NavBarProps extends BasicComponent {
   safeAreaInsetTop: boolean
   placeholder: boolean
   zIndex: number | string
-  className: string
-  style: React.CSSProperties
   onClickBack: (e: React.MouseEvent<HTMLElement>) => void
   children?: React.ReactNode
 }
@@ -27,8 +24,6 @@ const defaultProps = {
   safeAreaInsetTop: false,
   placeholder: false,
   zIndex: 10,
-  className: '',
-  style: {},
 } as NavBarProps
 export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   const {
@@ -46,7 +41,8 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
     ...defaultProps,
     ...props,
   }
-  const b = bem('navbar')
+
+  const classPrefix = 'nut-navbar'
 
   const children = Array.isArray(props.children)
     ? props.children
@@ -61,9 +57,12 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
 
   const renderLeft = () => {
     return (
-      <div className={`${b('left')}`}>
+      <div className={`${classPrefix}__left`}>
         {back && (
-          <div className={`${b('back')}`} onClick={(e) => onClickBack(e)}>
+          <div
+            className={`${classPrefix}__left__back`}
+            onClick={(e) => onClickBack(e)}
+          >
             {back}
           </div>
         )}
@@ -73,11 +72,11 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   }
 
   const renderContent = () => {
-    return <div className={`${b('title')}`}>{children}</div>
+    return <div className={`${classPrefix}__title`}>{children}</div>
   }
 
   const renderRight = () => {
-    return <div className={`${b('right')}`}>{right}</div>
+    return <div className={`${classPrefix}__right`}>{right}</div>
   }
 
   const renderWrapper = () => {
@@ -91,16 +90,16 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   }
 
   const classes = classNames({
-    [`nut-navbar--fixed`]: fixed,
-    [`nut-navbar--safe-area-inset-top`]: safeAreaInsetTop,
+    [`${classPrefix}--fixed`]: fixed,
+    [`${classPrefix}--safe-area-inset-top`]: safeAreaInsetTop,
   })
 
-  const cls = classNames(b(''), classes, className)
+  const cls = classNames(classPrefix, classes, className)
 
   return (
     <>
       {fixed && placeholder ? (
-        <div className={`${b('')}--placeholder`}>{renderWrapper()}</div>
+        <div className={`${classPrefix}__placeholder`}>{renderWrapper()}</div>
       ) : (
         renderWrapper()
       )}
