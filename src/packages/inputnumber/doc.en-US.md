@@ -1,16 +1,17 @@
 # InputNumber
 
-### Intro
+## Intro
 
 Control the number increase or decrease by clicking the button.
 
-### Install
+## Install
 
 ``` ts
 // react
 import { InputNumber } from '@nutui/nutui-react';
 ```
 
+## Demo
 ### Basic Usage
 
 Initialize a default value
