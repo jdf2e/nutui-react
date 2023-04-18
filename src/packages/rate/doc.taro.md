@@ -74,7 +74,10 @@ import { HeartFill1 } from '@nutui/icons-react-taro';
 
 const App = () => {
   return (
-    <Rate checkedIcon={<HeartFill1 />} defaultValue={3} />
+    <Rate
+      checkedIcon={<HeartFill1 />}
+      defaultValue={3}
+    />
   );
 };  
 export default App;
@@ -125,8 +128,7 @@ const App = () => {
   return (
     <Rate
       defaultValue={3}
-      checkedIcon={<HeartFill1 color="red" />}
-      uncheckedIcon={<HeartFill1 color="yellow" />}
+      checkedIcon={<HeartFill1 color="rgb(255, 200, 0)" />}
     />
   );
 };  

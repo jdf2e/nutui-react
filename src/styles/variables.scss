@@ -152,17 +152,20 @@ $button-mini-font-size: var(
 ) !default;
 $button-mini-line-height: var(--nutui-button-mini-line-height, 1.2) !default;
 
-$button-text-icon-width: var(--nutui-button-text-icon-width, 5px) !default;
-$button-text-icon-large-width: var(
-  --nutui-button-text-icon--large-width,
+$button-text-icon-margin-left: var(
+  --nutui-button-text-icon-margin-left,
+  5px
+) !default;
+$button-text-icon-large-margin-left: var(
+  --nutui-button-text-icon-large-margin-left,
   10px
 ) !default;
-$button-text-icon-small-width: var(
-  --nutui-button-text-icon-small-width,
+$button-text-icon-small-margin-left: var(
+  --nutui-button-text-icon-small-margin-left,
   2px
 ) !default;
-$button-text-icon-mini-width: var(
-  --nutui-button-text-icon-mini-width,
+$button-text-icon-mini-margin-left: var(
+  --nutui-button-text-icon-mini-margin-left,
   1px
 ) !default;
 
@@ -235,15 +238,6 @@ $button-warning-background-color: linear-gradient(
   rgba(255, 167, 13, 1) 45%,
   rgba(255, 182, 13, 1) 83%,
   rgba(255, 190, 13, 1) 100%
-) !default;
-
-$button-plain-background-color: var(
-  --nutui-button-plain-background-color,
-  $primary-text-color
-) !default;
-$button-small-round-border-radius: var(
-  --nutui-button-small-round-border-radius,
-  $button-border-radius
 ) !default;
 
 // cell（✅）
@@ -1745,32 +1739,16 @@ $tabs-vertical-titles-width: var(
 // indicator（✅）
 $indicator-color: var(--nutui-indicator-color, $primary-color) !default;
 $indicator-dot-color: var(--nutui-indicator-dot-color, $disable-color) !default;
-$indicator-white: var(--nutui-indicator-white, $primary-text-color) !default;
-$indicator-size: var(--nutui-indicator-size, 18px) !default;
-$indicator-dot-size: var(
-  --nutui-indicator-dot-size,
-  calc(#{$indicator-size} / 3)
+$indicator-dot-size: var(--nutui-indicator-dot-size, 5px) !default;
+$indicator-dot-active-size: var(
+  --nutui-indicator-dot-active-size,
+  15px
 ) !default;
-$indicator-border-size: var(
-  --nutui-indicator-border-size,
-  $indicator-size + 2
-) !default;
-$indicator-number-font-size: var(
-  --nutui-indicator-number-font-size,
-  10px
-) !default;
+$indicator-border-size: var(--nutui-indicator-border-size, 3px) !default;
 $indicator-dot-margin: var(--nutui-indicator-dot-margin, 4px) !default;
 $indicator-dot-vertical-margin: var(
   --nutui-indicator-dot-vertical-margin,
   4px
-) !default;
-$indicator-dot-first-margin: var(
-  --nutui-indicator-dot-first-margin,
-  0px
-) !default;
-$indicator-dot-last-margin: var(
-  --nutui-indicator-dot-last-margin,
-  0px
 ) !default;
 
 // menu（✅）

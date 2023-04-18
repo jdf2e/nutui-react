@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, {
+  FunctionComponent,
+  useEffect,
+  useState,
+  ReactElement,
+} from 'react'
 import classNames from 'classnames'
 import { StarFillN } from '@nutui/icons-react-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -68,7 +73,14 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   const renderIcon = (n: number) => {
     return n <= score
       ? checkedIcon || <StarFillN />
-      : uncheckedIcon || <StarFillN />
+      : uncheckedIcon ||
+          (checkedIcon ? (
+            React.cloneElement(checkedIcon as ReactElement, {
+              color: undefined,
+            })
+          ) : (
+            <StarFillN />
+          ))
   }
 
   const onClick = (e: React.MouseEvent, index: number) => {
@@ -91,7 +103,13 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   }
 
   return (
-    <div className={classNames(classPrefix, className)} style={style}>
+    <div
+      className={classNames(classPrefix, className, {
+        disabled,
+        readonly: readOnly,
+      })}
+      style={style}
+    >
       {countArray.map((n) => {
         return (
           <div

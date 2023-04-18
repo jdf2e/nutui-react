@@ -1,10 +1,10 @@
 # Button
 
-### Introduce
+## Intro
 
 Buttons are used to trigger an action, such as submitting a form.
 
-### Install
+## Install
 
 ``` javascript
 // react
@@ -77,8 +77,8 @@ const App = () => {
   return (
     <>
       <Button disabled type="primary">primary</Button>
-      <Button plain disabled type="info">info</Button>
-      <Button plain disabled type="primary">primary</Button>
+      <Button fill="outline" disabled type="info">info</Button>
+      <Button fill="outline" disabled type="primary">primary</Button>
     </>
   );
 };
@@ -236,7 +236,7 @@ const App = () => {
   return (
     <>
       <Button color="#7232dd">Monochrome</Button>
-      <Button color="#7232dd" plain>Monochrome</Button>
+      <Button color="#7232dd" fill="outline">Monochrome</Button>
       <Button color="rgba(10,101,208,0.75)">Monochrome</Button>
       <Button color="linear-gradient(to right, #ff6034, #ee0a24)">
         Gradient
@@ -249,7 +249,7 @@ export default App;
 
 :::
 
-## API
+## Button
 
 ### Props
 
@@ -264,12 +264,7 @@ export default App;
 | block    | block element                       | `boolean`   | `false`  |
 | icon     | icon                          | `ReactNode` | -        |
 | loading  | loading status                   | `boolean`   | `false`  |
-
-### Events
-
-| Event | Description           | Callback parameters     |
-|--------|----------------|--------------|
-| onClick  | Triggered when the button is clicked | `event: MouseEvent` |
+| onClick  | Triggered when the button is clicked                   | `onClick: (e: MouseEvent) => void`   | `false`  |
 
 ### Support Native MiniProgram API
 
@@ -284,46 +279,43 @@ button components, please go to[more documents](https://taro-docs.jd.com/docs/co
 The component provides the following CSS variables, which can be used to customize styles. Please refer
 to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-button-border-radius | `25px` |
-| --nutui-button-border-width | `1px` |
-| --nutui-button-default-bg-color | `$white` |
-| --nutui-button-default-border-color | `rgba(204, 204, 204, 1)` |
-| --nutui-button-default-color | `$gray1` |
-| --nutui-button-plain-color`v1.4.8` | `$gray2` |
-| --nutui-button-default-padding | `0 18px` |
-| --nutui-button-mini-padding | `0 12px` |
-| --nutui-button-small-padding | `0 12px` |
-| --nutui-button-small-height | `28px` |
-| --nutui-button-mini-height | `24px` |
-| --nutui-button-default-height | `38px` |
-| --nutui-button-large-height | `48px` |
-| --nutui-button-large-line-height | `46px` |
-| --nutui-button-small-line-height | `26px` |
-| --nutui-button-block-height | `48px` |
-| --nutui-button-default-line-height | `36px` |
-| --nutui-button-block-line-height | `46px` |
-| --nutui-button-default-font-size | `$font-size-2` |
-| --nutui-button-large-font-size | `$button-default-font-size` |
-| --nutui-button-small-font-size | `$font-size-1` |
-| --nutui-button-mini-font-size | `$font-size-1` |
-| --nutui-button-mini-line-height | `1.2` |
-| --nutui-button-text-icon-width | `5px` |
-| --nutui-button-text-icon--large-width | `10px` |
-| --nutui-button-text-icon-small-width | `2px` |
-| --nutui-button-text-icon-mini-width | `1px` |
-| --nutui-button-disabled-opacity | `0.68` |
-| --nutui-button-primary-color | `$white` |
-| --nutui-button-primary-border-color | `$primary-color` |
-| --nutui-button-info-color | `$white` |
-| --nutui-button-info-border-color | `#496af2` |
-| --nutui-button-success-color | `$white` |
-| --nutui-button-success-border-color | `rgba(38, 191, 38, 1)` |
-| --nutui-button-danger-color | `$white` |
-| --nutui-button-danger-border-color | `rgba(250, 44, 25, 1)` |
-| --nutui-button-danger-background-color | `rgba(250, 44, 25, 1)` |
-| --nutui-button-warning-color | `$white` |
-| --nutui-button-warning-border-color | `rgba(255, 158, 13, 1)` |
-| --nutui-button-plain-background-color | `$white` |
-| --nutui-button-small-round-border-radius | `$button-border-radius` |
+| Name | Description | Default |
+| --- | --- | --- |
+| --nutui-button-border-radius | Rounded corners of the button | `25px` |
+| --nutui-button-border-width ｜ Button border width | `1px` |
+| --nutui-button-default-bg-color ｜ The background color of the button whose type is default | `$white` |
+| --nutui-button-default-border-color ｜ The border color of the button whose type is default | `rgba(204, 204, 204, 1)` |
+| --nutui-button-default-color ｜ The text color of the button whose type is default | `$gray1` |
+| --nutui-button-default-padding ｜ padding of buttons with type default | `0 18px` |
+| --nutui-button-mini-padding ｜ Padding for buttons with size mini | `0 12px` |
+| --nutui-button-mini-height ｜ The height of the button whose size is mini | `24px` |
+| --nutui-button-small-padding ｜ Padding for small buttons | `0 12px` |
+| --nutui-button-small-height ｜ The height of the button whose size is small | `28px` |
+| --nutui-button-default-height ｜ The height of the button whose type is default | `38px` |
+| --nutui-button-large-height ｜ The height of the button whose size is large | `48px` |
+| --nutui-button-large-line-height ｜ The line height of the button whose size is large | `46px` |
+| --nutui-button-small-line-height ｜ The line height of the button whose size is small | `26px` |
+| --nutui-button-block-height ｜ The height of the block's button | `48px` |
+| --nutui-button-block-line-height ｜ The line height of the block's button | `46px` |
+| --nutui-button-default-line-height ｜ The line height of the button whose type is default | `36px` |
+| --nutui-button-default-font-size ｜ The font size of the button whose type is default | `$font-size-2` |
+| --nutui-button-large-font-size ｜ The font size of buttons whose size is large | `$button-default-font-size` |
+| --nutui-button-small-font-size ｜ The font size of the button whose size is small | `$font-size-1` |
+| --nutui-button-mini-font-size ｜ The font size of the button whose size is mini | `$font-size-1` |
+| --nutui-button-mini-line-height ｜ The line height of the button whose size is mini | `1.2` |
+| --nutui-button-text-icon-margin-left ｜ left margin of text with icon button | `5px` |
+| --nutui-button-text-icon-large-margin-left ｜ size is the left margin of the text of the large button | `10px` |
+| --nutui-button-text-icon-small-margin-left ｜ size is the left margin of the small button text | `2px` |
+| --nutui-button-text-icon-mini-margin-left ｜ size is the left margin of the text of the mini button | `1px` |
+| --nutui-button-disabled-opacity ｜ opacity of button in disabled state | `0.68` |
+| --nutui-button-primary-color ｜ type is the text color of the primary button | `$white` |
+| --nutui-button-primary-border-color ｜ Type is the border color of the primary button | `$primary-color` |
+| --nutui-button-info-color ｜ Type is info button text color | `$white` |
+| --nutui-button-info-border-color ｜ type is the border color of info button | `#496af2` |
+| --nutui-button-success-color ｜ Type is the text color of the success button | `$white` |
+| --nutui-button-success-border-color ｜ type is the border color of the success button | `rgba(38, 191, 38, 1)` |
+| --nutui-button-danger-color ｜ Type is the text color of danger button | `$white` |
+| --nutui-button-danger-border-color ｜ type is the border color of danger button | `rgba(250, 44, 25, 1)` |
+| --nutui-button-danger-background-color ｜ type is the background color of the danger button | `rgba(250, 44, 25, 1)` |
+| --nutui-button-warning-color ｜ Type is warning button text color | `$white` |
+| --nutui-button-warning-border-color ｜ type is warning button border color | `rgba(255, 158, 13, 1)` |
