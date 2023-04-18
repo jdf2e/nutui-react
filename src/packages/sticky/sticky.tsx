@@ -4,6 +4,7 @@ import React, {
   useCallback,
   useRef,
   useState,
+  CSSProperties,
 } from 'react'
 import classNames from 'classnames'
 import { getScrollParent } from '@/utils/get-scroll-parent'
@@ -45,7 +46,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
   const rootRef = useRef<HTMLDivElement>(null)
   const [isFixed, setIsFixed] = useState(false)
 
-  const [stickyStyle, setStickyStyle] = useState({
+  const [stickyStyle, setStickyStyle] = useState<CSSProperties>({
     [position]: `${threshold}px`,
     zIndex,
   })
@@ -99,61 +100,55 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
       })
     }
 
-    if (position === 'top') {
-      if (containerEle) {
-        const fixed = threshold > rootRect.top && containerRect.bottom > 0
-        const positionVal = fixed ? 'fixed' : 'inherit'
-        const diff = containerRect.bottom - threshold - stickyRect.height
-        const transform = diff < 0 ? diff : 0
-        setStickyStyle((prev) => {
-          return {
-            ...prev,
-            position: positionVal,
-            transform: `translate3d(0, ${transform}px, 0)`,
-          }
-        })
-        setIsFixed(fixed)
+    const getFixed = () => {
+      let fixed = false
+      if (position === 'top') {
+        fixed = containerEle
+          ? threshold > rootRect.top && containerRect.bottom > 0
+          : threshold > rootRect.top
       } else {
-        const fixed = threshold > rootRect.top
-        const positionVal = fixed ? 'fixed' : 'inherit'
-        setStickyStyle((prev) => {
-          return {
-            ...prev,
-            position: positionVal,
-          }
-        })
-        setIsFixed(fixed)
+        const clientHeight = document.documentElement.clientHeight
+        fixed = containerEle
+          ? containerRect.bottom > 0 &&
+            clientHeight - threshold - stickyRect.height > containerRect.top
+          : clientHeight - threshold < rootRect.bottom
       }
-    } else {
-      const clientHeight = document.documentElement.clientHeight
-
-      if (containerEle) {
-        const fixed =
-          containerRect.bottom > 0 &&
-          clientHeight - threshold - stickyRect.height > containerRect.top
-        const positionVal = fixed ? 'fixed' : 'inherit'
-        const diff = containerRect.bottom - (clientHeight - threshold)
-        const transform = diff < 0 ? diff : 0
-        setStickyStyle((prev) => {
-          return {
-            ...prev,
-            position: positionVal,
-            transform: `translate3d(0, ${transform}px, 0)`,
-          }
-        })
-        setIsFixed(fixed)
-      } else {
-        const fixed = clientHeight - threshold < rootRect.bottom
-        const positionVal = fixed ? 'fixed' : 'inherit'
-        setStickyStyle((prev) => {
-          return {
-            ...prev,
-            position: positionVal,
-          }
-        })
-        setIsFixed(fixed)
+      return {
+        position: fixed ? 'fixed' : 'inherit',
+        fixed,
       }
     }
+
+    const getTransform = (): CSSProperties => {
+      if (position === 'top') {
+        if (containerEle) {
+          const diff = containerRect.bottom - threshold - stickyRect.height
+          const transform = diff < 0 ? diff : 0
+          return { transform: `translate3d(0, ${transform}px, 0)` }
+        }
+        return {}
+      }
+      if (position === 'bottom') {
+        if (containerEle) {
+          const clientHeight = document.documentElement.clientHeight
+          const diff = containerRect.bottom - (clientHeight - threshold)
+          const transform = diff < 0 ? diff : 0
+          return { transform: `translate3d(0, ${transform}px, 0)` }
+        }
+        return {}
+      }
+      return {}
+    }
+
+    const fixed = getFixed()
+    setStickyStyle((prev) => {
+      return {
+        ...prev,
+        ...getTransform(),
+        position: fixed.position,
+      } as CSSProperties
+    })
+    setIsFixed(fixed.fixed)
   }, [position, threshold, container])
   useWatch(isFixed, () => {
     onChange && onChange(isFixed)
