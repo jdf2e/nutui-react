@@ -3,16 +3,16 @@
 exports[`should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="nut-menu  "
+    class="nut-menu"
   >
     <div
       class="nut-menu-relative"
     >
       <div
-        class="nut-menu__bar  "
+        class="nut-menu__bar"
       >
         <div
-          class="nut-menu__item  "
+          class="nut-menu__item "
         >
           <div
             class="nut-menu__title "
@@ -23,8 +23,8 @@ exports[`should match snapshot 1`] = `
               全部商品
             </div>
             <svg
-              aria-labelledby=""
-              class="nut-menu__title-icon nut-icon"
+              aria-labelledby="ArrowDown2"
+              class="nut-menu__title-icon nut-icon nut-icon-ArrowDown2"
               role="presentation"
               viewBox="0 0 2472 1024"
               xmlns="http://www.w3.org/2000/svg"
@@ -39,12 +39,8 @@ exports[`should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="placeholder-element "
-        style="height: 0px; display: none;"
-      />
-      <div
         class="first-render hidden-render nut-menu__overlay nut-overlay"
-        style="top: 0px;"
+        style="z-index: 1000; animation-duration: 0.3s; top: 0px;"
       />
       <div
         class="nut-menu-item__wrap"
@@ -59,9 +55,9 @@ exports[`should match snapshot 1`] = `
           >
             <i>
               <svg
-                aria-labelledby=""
-                class="nut-icon"
-                color="#F2270C"
+                aria-labelledby="Check"
+                class="nut-icon nut-icon-Check"
+                color=""
                 role="presentation"
                 viewBox="0 0 1024 1024"
                 xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +71,6 @@ exports[`should match snapshot 1`] = `
             </i>
             <div
               class=""
-              style="color: rgb(242, 39, 12);"
             >
               全部商品
             </div>
