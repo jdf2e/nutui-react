@@ -34,9 +34,9 @@ function myRemarkPlugin() {
 
 const Title = () => {
   let location = useLocation()
+  const s = window.location.hash.split('/')
 
   const getComponentName = () => {
-    const s = window.location.hash.split('/')
     const cname = s[s.length - 1].toLowerCase().replace('-taro', '')
     const component: any = {}
     nav.forEach((item: any) => {
@@ -57,7 +57,7 @@ const Title = () => {
   const [componentName, setComponentName] = useState({ name: '', cName: '' })
   return (
     <div className="title">
-      {componentName.name}&nbsp;{componentName.cName}
+      {componentName.name}&nbsp;{s[1] === 'zh-CN' && componentName.cName}
     </div>
   )
 }

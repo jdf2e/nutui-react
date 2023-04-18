@@ -1,44 +1,35 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 
-import bem from '@/utils/bem'
+import classNames from 'classnames'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface CellGroupProps {
+export interface CellGroupProps extends BasicComponent {
   title: ReactNode
   description: ReactNode
-  titleSlot: ReactNode
-  descSlot: ReactNode
-  className: string
   children?: ReactNode
 }
 const defaultProps = {
+  ...ComponentDefaults,
   title: '',
   description: '',
-  className: '',
-  titleSlot: null,
-  descSlot: null,
 } as CellGroupProps
+
+const classPrefix = 'nut-cell-group'
+
 export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
   props
 ) => {
-  const { children, className, title, description, titleSlot, descSlot } = {
+  const { children, className, style, title, description, ...rest } = {
     ...defaultProps,
     ...props,
   }
-  const b = bem('cell-group')
   return (
-    <div className={b(null, [className])}>
-      {titleSlot || (
-        <>{title ? <div className={b('title')}>{title}</div> : null}</>
-      )}
-      {descSlot || (
-        <>
-          {description ? (
-            <div className={b('description')}>{description}</div>
-          ) : null}
-        </>
-      )}
-
-      <div className={b('wrap')}>{children}</div>
+    <div className={classNames(classPrefix, className)} {...rest}>
+      {title ? <div className={`${classPrefix}__title`}>{title}</div> : null}
+      {description ? (
+        <div className={`${classPrefix}__description`}>{description}</div>
+      ) : null}
+      <div className={`${classPrefix}__wrap`}>{children}</div>
     </div>
   )
 }

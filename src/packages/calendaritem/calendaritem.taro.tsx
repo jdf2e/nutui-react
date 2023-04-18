@@ -855,6 +855,7 @@ export const CalendarItem = React.forwardRef<
         <ScrollView
           scrollTop={scrollTop}
           scrollY
+          type="list"
           scrollWithAnimation={scrollWithAnimation}
           className="nut-calendar-content"
           onScroll={monthsViewScroll}

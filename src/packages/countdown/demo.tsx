@@ -252,7 +252,7 @@ const CountDownDemo = () => {
             ref={countDownRef}
           />
         </Cell>
-        <Grid columnNum="3" style={{ marginBottom: '5px' }}>
+        <Grid columns="3" style={{ marginBottom: '5px' }}>
           <GridItem>
             <Button type="primary" onClick={start}>
               {translated.start}

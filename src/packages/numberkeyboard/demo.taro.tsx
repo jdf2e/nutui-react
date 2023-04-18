@@ -60,7 +60,6 @@ const NumberKeyboardDemo = () => {
         <h2>{translated.basic}</h2>
         <Cell
           title={translated.basic}
-          isLink
           onClick={() => {
             setVisible1(true)
           }}
@@ -74,7 +73,6 @@ const NumberKeyboardDemo = () => {
         <h2>{translated.sidebar}</h2>
         <Cell
           title={translated.sidebar}
-          isLink
           onClick={() => {
             setVisible2(true)
           }}
@@ -90,7 +88,6 @@ const NumberKeyboardDemo = () => {
         <h2>{translated.randomKeyOrder}</h2>
         <Cell
           title={translated.randomKeyOrder}
-          isLink
           onClick={() => {
             setVisible3(true)
           }}
@@ -105,7 +102,6 @@ const NumberKeyboardDemo = () => {
         <h2>{translated.withTitle}</h2>
         <Cell
           title={translated.withTitle}
-          isLink
           onClick={() => {
             setVisible4(true)
           }}
@@ -121,7 +117,6 @@ const NumberKeyboardDemo = () => {
         <h2>{translated.idNumberKeyboard}</h2>
         <Cell
           title={translated.idNumberKeyboard}
-          isLink
           onClick={() => {
             setVisible5(true)
           }}

@@ -39,9 +39,7 @@ export default App;
 
 :::
 
-### 樸素按鈕
-
-通過 『plain』 屬性將按鈕設置為樸素按鈕，樸素按鈕的文字為按鈕顏色，背景為白色。
+### 填充模式
 
 :::demo
 
@@ -52,8 +50,9 @@ import { Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Button plain type="primary">樸素按鈕</Button>
-      <Button plain type="info">樸素按鈕</Button>
+      <Button fill="solid">Solid</Button>
+      <Button fill="outline">Outline</Button>
+      <Button fill="none">None</Button>
     </>
   );
 };
@@ -251,19 +250,17 @@ export default App;
 
 ### Props
 
-| 屬性                 | 說明 | 類型       | 預設值           |
-|--------------------|----------------------------------|----------|------------------|
-| type               | 類型，可選值為 `primary` `info` `warning` `danger` `success` | string   |`default` |
-| size               | 尺寸，可選值為 `large` `small`  | string   | `normal`      |
-| shape              | 形狀，可選值為 `square` | string   | `round`             |
-| color              | 按鈕顏色，支持傳入linear-gradient漸變色     | string   | - |
-| plain              | 	是否為樸素按鈕 | boolean  | `false` |
-| disabled           | 	是否禁用按鈕 | boolean  | `false` |
-| block              | 是否為塊級元素 | boolean  | `false` |
-| icon               | 按鈕圖示 | `ReactNode`    | -     |
-| iconSize`v2.0.0废弃` | 按鈕圖示大小，同 Icon 的size属性 | string \ | number | `16` |
-| loading            | 按鈕loading狀態 | boolean  | `false` |
-
+| 參數       | 說明                            | 類型          | 默認值      |
+|----------|-------------------------------|-------------|----------|
+| type     | 按鈕的樣式                         | `'default' \| 'primary' \| 'info' \| 'warning' \| 'danger' \| 'success'` | `'default'` |
+| size     | 按鈕的尺寸                         | `'normal' \| 'large' \| 'small'` | `'normal'`  |
+| shape    | 按鈕的形狀                         | `'square' \| 'round'`   | `'round'` |
+| color    | 按鈕顏色，支持傳入 linear-gradient 漸變色 | `string`    | -        |
+| fill     | 填充模式                          | `'solid' \| 'ouline' \| 'none'`  | `'solid'` |
+| disabled | 是否禁用按鈕                        | `boolean`   | `false`  |
+| block    | 是否為塊級元素                       | `boolean`   | `false`  |
+| icon     | 按鈕圖標                          | `ReactNode` | -        |
+| loading  | 按鈕loading狀態                   | `boolean`   | `false`  |
 ### Events
 
 | 事件名稱 | 說明 | 回調參數     |
@@ -306,10 +303,10 @@ export default App;
 | --nutui-button-small-font-size | `$font-size-1` |
 | --nutui-button-mini-font-size | `$font-size-1` |
 | --nutui-button-mini-line-height | `1.2` |
-| --nutui-button-text-icon-width | `5px` |
-| --nutui-button-text-icon--large-width | `10px` |
-| --nutui-button-text-icon-small-width | `2px` |
-| --nutui-button-text-icon-mini-width | `1px` |
+| --nutui-button-text-icon-margin-left | `5px` |
+| --nutui-button-text-icon-large-margin-left | `10px` |
+| --nutui-button-text-icon-small-margin-left | `2px` |
+| --nutui-button-text-icon-mini-margin-left | `1px` |
 | --nutui-button-disabled-opacity | `0.68` |
 | --nutui-button-primary-color | `$white` |
 | --nutui-button-primary-border-color | `$primary-color` |

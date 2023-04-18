@@ -1,63 +1,3 @@
-@import '../icon/icon.scss';
-
-.nut-theme-dark {
-  .nut-button {
-    &--default {
-      color: $dark1;
-      background: $dark6;
-    }
-
-    &--primary {
-      color: $dark6;
-    }
-
-    &--info {
-      color: $dark6;
-    }
-
-    &--success {
-      color: $dark6;
-    }
-
-    &--danger {
-      color: $dark6;
-    }
-
-    &--warning {
-      color: $dark6;
-    }
-
-    &--plain {
-      background: $dark6;
-
-      &.nut-button--primary {
-        color: $button-primary-border-color;
-        border-color: $button-primary-border-color;
-      }
-
-      &.nut-button--info {
-        color: $button-info-border-color;
-        border-color: $button-info-border-color;
-      }
-
-      &.nut-button--success {
-        color: $button-success-border-color;
-        border-color: $button-success-border-color;
-      }
-
-      &.nut-button--danger {
-        color: $button-danger-border-color;
-        border-color: $button-danger-border-color;
-      }
-
-      &.nut-button--warning {
-        color: $button-warning-border-color;
-        border-color: $button-warning-border-color;
-      }
-    }
-  }
-}
-
 .nut-button {
   position: relative;
   display: inline-block;
@@ -75,8 +15,12 @@
   user-select: none;
   touch-action: manipulation;
 
-  .text {
-    margin-left: $button-text-icon-width;
+  color: $button-default-color;
+  background: $button-default-bg-color;
+  border: $button-border-width solid $button-default-border-color;
+
+  .nut-button-text {
+    margin-left: $button-text-icon-margin-left;
   }
 
   &::before {
@@ -118,69 +62,111 @@
     }
   }
 
-  &--default {
-    color: $button-default-color;
-    background: $button-default-bg-color;
-    border: $button-border-width solid $button-default-border-color;
+  &--solid {
+    color: $button-primary-color;
+    background: $button-primary-background-color;
+    border: $button-border-width solid transparent;
+  }
+
+  &.nut-button--outline {
+    color: $button-primary-border-color;
+    border-color: $button-primary-border-color;
+    background: transparent;
+  }
+
+  &.nut-button--none {
+    color: $button-primary-border-color;
+    background: transparent;
+    border-color: transparent;
   }
 
   &--primary {
     color: $button-primary-color;
     background: $button-primary-background-color;
     border: $button-border-width solid transparent;
+
+    &.nut-button--outline {
+      color: $button-primary-border-color;
+      border-color: $button-primary-border-color;
+      background: transparent;
+    }
+
+    &.nut-button--none {
+      color: $button-primary-border-color;
+      background: transparent;
+      border-color: transparent;
+    }
   }
 
   &--info {
     color: $button-info-color;
     background: $button-info-background-color;
     border: $button-border-width solid transparent;
+
+    &.nut-button--outline {
+      color: $button-info-border-color;
+      border-color: $button-info-border-color;
+      background: transparent;
+    }
+
+    &.nut-button--none {
+      color: $button-info-border-color;
+      background: transparent;
+      border-color: transparent;
+    }
   }
 
   &--success {
     color: $button-success-color;
     background: $button-success-background-color;
     border: $button-border-width solid transparent;
+
+    &.nut-button--outline {
+      color: $button-success-border-color;
+      border-color: $button-success-border-color;
+      background: transparent;
+    }
+
+    &.nut-button--none {
+      color: $button-success-border-color;
+      background: transparent;
+      border-color: transparent;
+    }
   }
 
   &--danger {
     color: $button-danger-color;
     background: $button-danger-background-color;
     border: $button-border-width solid transparent;
+
+    &.nut-button--outline {
+      color: $button-danger-border-color;
+      border-color: $button-danger-border-color;
+      background: transparent;
+    }
+
+    &.nut-button--none {
+      color: $button-danger-border-color;
+      background: transparent;
+      border-color: transparent;
+    }
   }
 
   &--warning {
     color: $button-warning-color;
     background: $button-warning-background-color;
     border: $button-border-width solid transparent;
-  }
 
-  &--plain {
-    color: $button-plain-color;
-    background: $button-plain-background-color;
-
-    &.nut-button--primary {
-      color: $button-primary-border-color;
-      border-color: $button-primary-border-color;
-    }
-
-    &.nut-button--info {
-      color: $button-info-border-color;
-      border-color: $button-info-border-color;
-    }
-
-    &.nut-button--success {
-      color: $button-success-border-color;
-      border-color: $button-success-border-color;
-    }
-
-    &.nut-button--danger {
-      color: $button-danger-border-color;
-      border-color: $button-danger-border-color;
-    }
-
-    &.nut-button--warning {
+    &.nut-button--outline {
       color: $button-warning-border-color;
       border-color: $button-warning-border-color;
+      background: transparent;
+    }
+
+    &.nut-button--none {
+      color: $button-warning-border-color;
+      background: transparent;
+      border-color: transparent;
     }
   }
 
@@ -190,7 +176,7 @@
     line-height: $button-large-line-height;
 
     .text {
-      margin-left: $button-text-icon-large-width;
+      margin-left: $button-text-icon-large-margin-left;
     }
   }
 
@@ -206,7 +192,7 @@
     font-size: $button-small-font-size;
 
     .text {
-      margin-left: $button-text-icon-small-width;
+      margin-left: $button-text-icon-small-margin-left;
     }
   }
 
@@ -217,7 +203,7 @@
     font-size: $button-mini-font-size;
 
     .text {
-      margin-left: $button-text-icon-mini-width;
+      margin-left: $button-text-icon-mini-margin-left;
     }
   }
 

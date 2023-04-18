@@ -14,7 +14,7 @@ const idID: BaseLang = {
   },
   fixednav: {
     activeText: 'Tutup Navigasi',
-    unActiveText: 'Buka Navigasi',
+    inactiveText: 'Buka Navigasi',
   },
   infiniteloading: {
     pullRefreshText: 'Lepaskan untuk memperbarui',

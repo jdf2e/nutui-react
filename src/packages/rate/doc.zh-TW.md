@@ -1,10 +1,10 @@
-#  Rate 評分
+# Rate 評分
 
-### 介紹
+## 介紹
 
 用於快速的評級操作，或對評價進行展示。
 
-### 安裝
+## 安裝
 
 ```ts
 // react
@@ -21,17 +21,34 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate modelValue={3} />
-    </>
+  return (
+    <Rate defaultValue={3} />
   );
 };  
 export default App;
 
 ```
 :::
-        
+
+### 受控方式
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  const [state, setState] = useState(2);
+  return (
+    <Rate value={score} onChange={(value) => setScore(value)} />
+  );
+};  
+export default App;
+```
+
+:::
+
 ### 半星  
 
 :::demo
@@ -40,10 +57,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate allowHalf modelValue="3.5" />
-    </>
+  return (
+    <Rate allowHalf defaultValue={3.5} />
   );
 };  
 export default App;
@@ -59,8 +74,11 @@ import { Rate } from '@nutui/nutui-react';
 import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
-  return ( 
-    <Rate checkedIcon={<HeartFill1 />} modelValue="3" />
+  return (
+    <Rate
+      checkedIcon={<HeartFill1 />}
+      defaultValue={3}
+    />
   );
 };  
 export default App;
@@ -75,10 +93,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate count="6" modelValue="3" />
-    </>
+  return (
+    <Rate count="6" defaultValue={3} />
   );
 };  
 export default App;
@@ -93,10 +109,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate count="5" modelValue="2" minimizeValue="3"/>
-    </>
+  return (
+    <Rate count={5} defaultValue={2} min={3}/>
   );
 };  
 export default App;
@@ -109,12 +123,14 @@ export default App;
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
+import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate activeColor="#FFC800" modelValue="3" />
-    </>
+  return (
+    <Rate
+      defaultValue={3}
+      checkedIcon={<HeartFill1 color="rgb(255, 200, 0)" />}
+    />
   );
 };  
 export default App;
@@ -129,10 +145,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate disabled modelValue="3" />
-    </>
+  return (
+    <Rate disabled defaultValue={3} />
   );
 };  
 export default App;
@@ -147,10 +161,8 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return ( 
-    <>   
-    <Rate modelValue="3" readonly />
-    </>
+  return (
+    <Rate defaultValue={3} readOnly />
   );
 };  
 export default App;
@@ -168,59 +180,30 @@ const App = () => {
   const onChange = (val: any) => {
     alert(val)
   }
-  return ( 
-    <>   
-    <Rate modelValue="3" onChange={onChange} />
-    </>
+  return (
+    <Rate defaultValue={3} onChange={onChange} />
   );
 };  
 export default App;
 
 ```
-:::
-### 自定義尺寸 35px  
 
-:::demo
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
+## Rate
 
-const App = () => {
-  return ( 
-    <>   
-    <Rate modelValue="3" iconSize="35" />
-    </>
-  );
-};  
-export default App;
-
-```
-:::
-
-## API
-
-## Prop
+### Props
 
 | 字段           | 說明                                      | 類型    | 默認值      |
 |----------------|-------------------------------------------|---------|-------------|
-| modelValue        | 當前 star 數不能大於count | number | -           |
+| defaultValue             | 非受控的 star 默認值 | number | `0`           |
+| value             | 受控的 star 數值 | number | `0`           |
 | count          | star 總數                                 | number | `5`           |
-| minimizeValue  | 最少選中star數量                          | number | `0`           |
-| iconSize      | star 大小                                 | number | `18`          |
-| activeColor   | 圖標選中顏色                              | string  | `#fa200c`     |
-| voidColor     | 圖標未選中顏色                          | string  | `#ccc`        |
-| uncheckedIcon `v2.0.0 废弃` | 使用圖標(未選中) | string  | `star-n`      |
-| checkedIcon            | 使用圖標(選中)  | `ReactNode`  | - |
+| min  | 最少選中star數量                          | number | `0`           |
+| uncheckedIcon | 使用圖標(未選中) | ReactNode  | `star-n`      |
+| checkedIcon            | 使用圖標(選中)  | ReactNode  | `star-n` |
 | allowHalf     | 是否半星                                  | boolean | `false`       |
-| readonly       | 是否只讀                                 | boolean | `false`       |
+| readOnly       | 是否只讀                                 | boolean | `false`       |
 | disabled       | 是否禁用                                  | boolean | `false`       |
-| spacing        | 間距                                      | number | `20`          |
-
-## Event
-| 字段   | 說明                       | 回調參數 |
-|--------|----------------------------|----------|
-| onChange `v1.3.3`| 當前分值修改時時觸發的事件 | 當前值   |
-
+| onChange | 当前 star 数修改时触发 | (value: number) => void | - |
 
 ## 主題定制
 
@@ -228,7 +211,8 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-rate-icon-color | `$primary-color` |
-| --nutui-rate-icon-void-color | `$disable-color` |
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| --nutui-rate-item-margin | 間距 | `14px` |
+| --nutui-rate-icon-color | icon 激活顏色 | `$primary-color` |
+| --nutui-rate-icon-void-color | icon 未激活顏色 | `$disable-color` |

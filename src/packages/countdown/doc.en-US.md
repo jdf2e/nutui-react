@@ -295,7 +295,7 @@ const App = () => {
             ref={countDownRef}
           />
         </Cell>
-        <Grid columnNum="3">
+        <Grid columns="3">
           <GridItem>
             <Button type="primary" onClick={start}>
               start

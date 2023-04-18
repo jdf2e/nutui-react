@@ -116,7 +116,7 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
               className={'dark-model'}
               src="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"
               alt=""
-              onClick={() => handleSwitchDarkModel()}
+              onClick={() => handleSwitchLocale()}
             />
           </div>
         </div>

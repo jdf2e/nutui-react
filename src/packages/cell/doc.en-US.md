@@ -7,7 +7,6 @@ The cell is a single display item in the list.
 ### Install
 
 ```ts
-// react
 import { Cell, CellGroup } from '@nutui/nutui-react'
 ```
 
@@ -19,25 +18,25 @@ import { Cell, CellGroup } from '@nutui/nutui-react'
 
 ```tsx
 import React from 'react'
-import { Cell } from '@nutui/nutui-react'
+import { Cell, Toast } from '@nutui/nutui-react'
 
 const App = () => {
   const testClick = (
     event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
   ) => {
-    console.log('Click Test')
+    Toast.text('Click Test')
   }
   return (
     <>
-      <Cell title="Title" description="Description" />
-      <Cell title="Title" subTitle="Subtitle Description" description="Description" />
+      <Cell title="Title" extra="extra" />
+      <Cell title="Title" description="Description" extra="extra" />
       <Cell
         title="Click Test"
         onClick={(
           event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => testClick(event)}
       />
-      <Cell title="Round Radius 0" roundRadius={0} />
+      <Cell title="Round Radius 0" radius={0} />
     </>
   )
 }
@@ -46,7 +45,7 @@ export default App
 
 :::
 
-### Size setting large
+### Customize Content
 
 :::demo
 
@@ -56,15 +55,9 @@ import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
-    <>
-      <Cell size="large" title="Title" description="Description" />
-      <Cell
-        size="large"
-        title="Title"
-        subTitle="Subtitle Description"
-        description="Description"
-      />
-    </>
+    <Cell>
+        <div>Customize Content</div>
+    </Cell>
   )
 }
 export default App
@@ -72,46 +65,49 @@ export default App
 
 :::
 
-### Use Slots
+### Customize the title area
 
 :::demo
 
 ```tsx
 import React from 'react'
 import { Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <>
-      <Cell>
-        <div>Content</div>
-      </Cell>
-    </>
-  )
-}
-export default App
-```
-
-:::
-
-### Use Slots(title slots)
-
-:::demo
-
-```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react'
+import { My } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Cell
-      title={
-        <span>
-          Title <b style={{ color: 'red' }}>1</b>
-        </span>
-      }
-      description="Description"
+        title={
+        <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+            <My />
+            Title<span style={{ marginLeft: '5px' }}>Description</span>
+        </div>
+        }
+        description={
+        <span>Description<b style={{ color: 'red' }}>1</b></span>
+        }
+        extra="extra"
     />
+  )
+}
+export default App
+```
+
+:::
+
+### Customize the right area
+
+:::demo
+
+```tsx
+import React from 'react'
+import { CellGroup, Cell, Switch } from '@nutui/nutui-react'
+
+const App = () => {
+  return (
+    <CellGroup title="Customize the right arrow area">
+      <Cell title="Switch" extra={<Switch checked />} />
+    </CellGroup>
   )
 }
 export default App
@@ -126,20 +122,43 @@ export default App
 ```tsx
 import React from 'react'
 import { CellGroup, Cell } from '@nutui/nutui-react'
+import { Right } from '@nutui/icons-react'
 
 const App = () => {
+  const onJumpclick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    url: string
+  ) => {
+    const replace = false
+    if (url) {
+      replace ? window.location.replace(url) : (window.location.href = url)
+    }
+  }
   return (
     <>
       <CellGroup
         title="Link | CellGroup Usage"
-        description="Usage nut-cell-group support title description slots"
+        extra="Usage nut-cell-group support title extra"
       >
-        <Cell title="Link Usage" isLink />
+        <Cell 
+        lassName="nutui-cell--clickable"
+        title="Link Usage"
+        align="center"
+        extra={<Right />}
+        />
         <Cell
+          className="nutui-cell--clickable"
           title="URL Jump"
-          description="https://jd.com"
-          isLink
-          url="https://jd.com"
+          extra={
+            <>
+            <span style={{ marginRight: '5px' }}>https://jd.com</span>
+            <Right />
+            </>
+        }
+        align="center"
+        onClick={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+        ) => onJumpclick(event, 'https://jd.com')}
         />
       </CellGroup>
     </>
@@ -150,91 +169,9 @@ export default App
 
 :::
 
-### Customize the right arrow area
-
-:::demo
-
-```tsx
-import React from 'react'
-import { CellGroup, Cell, Switch } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <CellGroup title="Customize the right arrow area">
-      <Cell title="Switch" linkSlot={<Switch checked />} />
-    </CellGroup>
-  )
-}
-export default App
-```
-
-:::
-
-### Customize the left Icon area
-
-:::demo
-
-```tsx
-import React from 'react'
-import { CellGroup, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <CellGroup title="Customize the left Icon area">
-      <Cell
-        title="Image"
-        icon={
-          <img
-            className="nut-icon"
-            alt=""
-            src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-          />
-        }
-      />
-    </CellGroup>
-  )
-}
-export default App
-```
-
-:::
-
-### Cell Display Icon
-
-:::demo
-
-```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react'
-import { My } from '@nutui/icons-react'
-
-const App = () => {
-  return <Cell title="Name" icon={<My />} description="Description" isLink />
-}
-export default App
-```
-
-:::
-
-### Only display description , you can adjust the content position through description-text-align
-
-:::demo
-
-```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return <Cell descriptionTextAlign="left" description="Description" />
-}
-export default App
-```
-
-:::
-
 ### Vertical Center
 
-You can center the left and right contents of the cell vertically through the 'center' attribute.
+You can align the left and right contents of the cell vertically through the 'center' attribute.
 
 :::demo
 
@@ -244,7 +181,7 @@ import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
-    <Cell center title="Title" subTitle="Subtitle Description" description="Desc" />
+    <Cell align="center"  title="Title" description="Description" extra="Desc" />
   )
 }
 export default App
@@ -259,39 +196,19 @@ export default App
 
 | Attribute | Description | Type   | Default |
 |-------|----------|--------|--------|
-| title | Title | string | -      |
-| description  | Description | string | -      |
-| titleSlot        | Custom`title`slot                        | ReactNode          | -  |
-| descSlot        | Custom`description`slot                         | ReactNode          | -  |
+| title | Title | ReactNode | -      |
+| description  | ReactNode | string | -      |
 
 ### Cell Prop
 
 | Attribute         | Description                                                                                              | Type             | Default          |
 |-------------------|----------------------------------------------------------------------------------------------------------|------------------|------------------|
 | title             | Title                      |  ReactNode           | -      |
-| subTitle          | Subtitle                           |  ReactNode           | -      |
-| description              | Description                                     | string      | -      |
-| descriptionTextAlign     | Right description text alignment [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp), is only available when displaying description | string | `right`  |
-| isLink            | Whether to show the right arrow and turn on click feedback            | boolean          | `false`  |
-| to`v1.4.0 Abandon`       | C Target route of the link | string  | -      |
-| replace           | If true, the navigation will not leave a history record                             | boolean          | `false`  |
-| roundRadius | Corner radius                                      | string            | `6px`    |
-| url               | Link                                         | string           | -      |
-| icon              |  Custom Left `icon`              | ReactNode          | -      |
-| center    | Whether to center content                                                                              | boolean          | `false`  |
-| size      | Size, can be set to `large`                         | string          | -  |
-| linkSlot  | Custom Right`link`                      | ReactNode          | -  |
-| iconSlot`v2.0.0 deprecated`  |  Custom Left `icon`                        | ReactNode          | -  |
-
-
-
-### Cell Event
-
-| Event | Description                  | Arguments   |
-|-------|------------------------------|-------------|
-| onClick | Emitted when cell is clicked | `event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>` |
-
-
+| description          | Description                           |  ReactNode           | -      |
+| extra              | Extra                                     | ReactNode      | -      |
+| radius | Corner radius                                      | string            | `6px`    |
+| align    | Alignment in the vertical direction, with an optional value of`flex-start`、`center`、`flex-end` | string          | `flex-start`  |
+| onClick | Emitted when cell is clicked | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` |`false`|
 
 ## Theming
 
@@ -299,31 +216,28 @@ export default App
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-cell-color | `$gray1` |
-| --nutui-cell-title-font | `$font-size-2` |
-| --nutui-cell-title-description-font | `$font-size-1` |
-| --nutui-cell-description-font | `$font-size-2` |
-| --nutui-cell-description-color | `$gray2` |
-| --nutui-cell-subtitle-color | `$gray2` |
-| --nutui-cell-border-radius | `6px` |
-| --nutui-cell-padding | `13px 16px` |
-| --nutui-cell-line-height | `20px` |
-| --nutui-cell-after-right | `16px` |
-| --nutui-cell-after-border-bottom | `2px solid #f5f6f7` |
-| --nutui-cell-default-icon-margin | `0 4px 0 0px` |
-| --nutui-cell-large-title-font | `$font-size-large` |
-| --nutui-cell-large-title-description-font | `$font-size-base` |
-| --nutui-cell-large-padding | `15px 16px` |
-| --nutui-cell-background | `$gray6` |
-| --nutui-cell-box-shaow | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
-| --nutui-cell-group-title-padding | `0 10px` |
-| --nutui-cell-group-title-color | `#909ca4` |
-| --nutui-cell-group-title-font-size | `$font-size-2` |
-| --nutui-cell-group-title-line-height | `20px` |
-| --nutui-cell-group-description-padding | `0 10px` |
-| --nutui-cell-group-description-color | `#909ca4` |
-| --nutui-cell-group-description-font-size | `$font-size-1` |
-| --nutui-cell-group-description-line-height | `16px` |
-| --nutui-cell-group-background-color | `$white` |
+| Name| Description | Default |
+| --- | --- | --- |
+| --nutui-cell-title-color | The cell title the font color | `$gray1` |
+| --nutui-cell-title-font-size | The cell title the font size | `$font-size-2` |
+| --nutui-cell-description-color| The cell describes the font color  | `$gray2` |
+| --nutui-cell-description-font-size | The cell describes the font size | `$font-size-1` |
+| --nutui-cell-extra-color| The right side of the cell describes the font color  | `$gray2` |
+| --nutui-cell-extra-font-size | The right side of the cell describes the font size | `$font-size-2` |
+| --nutui-cell-border-radius| The rounded corner size of the cell  | `6px` |
+| --nutui-cell-padding| Inside margins of cells  | `13px 16px` |
+| --nutui-cell-line-height| The row height of the cell  | `20px` |
+| --nutui-cell-divider-left| Left margin of cell divider  | `16px` |
+| --nutui-cell-divider-right| Right margin of cell divider  | `16px` |
+| --nutui-cell-divider-border-bottom|  Border bottom  of cell divider | `2px solid #f5f6f7` |
+| --nutui-cell-background-color| The background color of the cell  | `$gray6` |
+| --nutui-cell-box-shadow| The shadow of the cell  | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
+| --nutui-cell-group-title-padding| The padding of the title of the cell group  | `0 10px` |
+| --nutui-cell-group-title-color| The title font color of the cell group  | `#909ca4` |
+| --nutui-cell-group-title-font-size| The title font size of the cell group  | `$font-size-2` |
+| --nutui-cell-group-title-line-height | The title row height of the cell group | `20px` |
+| --nutui-cell-group-description-padding| The description padding for cell groups  | `0 10px` |
+| --nutui-cell-group-description-color| The description color of the cell group  | `#909ca4` |
+| --nutui-cell-group-description-font-size| The description  font size of the cell group  | `$font-size-1` |
+| --nutui-cell-group-description-line-height| The description  row height of cell group  | `16px` |
+| --nutui-cell-group-background-color| The background color of the cell group  | `$white` |

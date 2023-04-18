@@ -30,7 +30,7 @@ const App = () => {
      <>
        <Cell
         title="Basic Usage"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}
@@ -71,7 +71,7 @@ const App = () => {
      <>
        <Cell
         title="Show Button Group"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}
@@ -116,7 +116,7 @@ const App = () => {
      <>
        <Cell
         title="Custom Password Length"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}
@@ -156,7 +156,7 @@ const App = () => {
      <>
        <Cell
         title="Forget password"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}

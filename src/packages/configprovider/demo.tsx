@@ -52,7 +52,7 @@ const ConfigProviderDemo = () => {
         <ConfigProvider>
           <CellGroup>
             <Cell>
-              <Rate modelValue={3} />
+              <Rate defaultValue={3} />
             </Cell>
             <Cell>
               <Button type="primary" size="large">
@@ -65,7 +65,7 @@ const ConfigProviderDemo = () => {
         <ConfigProvider theme={darkTheme}>
           <CellGroup>
             <Cell>
-              <Rate modelValue={3} />
+              <Rate defaultValue={3} />
             </Cell>
             <Cell>
               <Button type="primary" size="large">
