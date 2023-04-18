@@ -81,7 +81,7 @@ const App = () => {
     <Pagination
       value={currentPage3}
       total={125}
-      itemSize={3}
+      itemSize={2}
       ellipse
       onChange={pageChange3}
     />
