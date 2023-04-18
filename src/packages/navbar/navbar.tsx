@@ -99,7 +99,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   return (
     <>
       {fixed && placeholder ? (
-        <div className={`${classPrefix}__placeholder`}>{renderWrapper()}</div>
+        <div className={`${classPrefix}--placeholder`}>{renderWrapper()}</div>
       ) : (
         renderWrapper()
       )}
