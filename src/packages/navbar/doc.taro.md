@@ -1,17 +1,17 @@
 # Navbar 头部导航
 
-### 介绍 
+## 介绍 
 
 
 提供导航功能。
 
-### 安装
+## 安装
 
 ```ts
 import { NavBar } from '@nutui/nutui-react-taro';
 ```
 
-### 代码示例
+## 代码示例
 
 ### 基本用法
 
@@ -20,6 +20,7 @@ import { NavBar } from '@nutui/nutui-react-taro';
 import  React from "react";
 import { NavBar } from '@nutui/nutui-react-taro';
 import { Left, Share, Close  } from '@nutui/icons-react-taro'
+import Taro from '@tarojs/taro'
 
 const App = () => {
   return ( 
@@ -32,13 +33,13 @@ const App = () => {
         }
         left={<Close size={12} />}
         right={
-        <span onClick={(e) => alert('icon')}>
+        <span onClick={(e) => Taro.showtoast({ title: 'icon' })}}>
             <Share />
         </span>
         }
-        onClickBack={(e) => alert("返回")}
+        onClickBack={(e) => Taro.showtoast({ title: '返回' })}}
     >
-        <span onClick={(e) => alert("标题")}>
+        <span onClick={(e) => Taro.showtoast({ title: '标题' })}}>
         订单详情
         </span>
     </NavBar>
@@ -54,19 +55,20 @@ export default App;
 import  React from "react";
 import { NavBar } from '@nutui/nutui-react-taro';
 import { Left } from '@nutui/icons-react-taro'
+import Taro from '@tarojs/taro'
 
 const App = () => {
   return ( 
     <NavBar
         right={
-        <span onClick={(e) => alert('清空')}>
+        <span onClick={(e) => Taro.showtoast({ title: '清空' })}}>
             清空
         </span>
         }
         back={<Left name="left" color="#979797" />}
-        onClickBack={(e) => alert("返回")}
+        onClickBack={(e) => Taro.showtoast({ title: '返回' })}}
     >
-        <span onClick={(e) => alert("标题")}>
+        <span onClick={(e) => Taro.showtoast({ title: '标题' })}}>
         浏览记录
         </span>
     </NavBar>
@@ -82,6 +84,7 @@ export default App;
 import  React from "react";
 import { NavBar } from '@nutui/nutui-react-taro';
 import { Cart2, Left, MoreX } from '@nutui/icons-react-taro'
+import Taro from '@tarojs/taro'
 
 const App = () => {
   return ( 
@@ -89,18 +92,18 @@ const App = () => {
         back={<Left name="left" color="#979797" />}
         right={
         <>
-            <span onClick={(e) => alert('编辑')}>
+            <span onClick={(e) => Taro.showtoast({ title: '编辑' })}}>
             编辑
             </span>
-            <MoreX onClick={(e) => alert('icon')} />
+            <MoreX onClick={(e) => Taro.showtoast({ title: 'icon' })}} />
         </>
         }
-        onClickBack={(e) => alert("返回")}
+        onClickBack={(e) => Taro.showtoast({ title: '返回' })}}
     >
-        <span onClick={(e) => alert("标题")}>
+        <span onClick={(e) => Taro.showtoast({ title: '标题' })}}>
         购物车
         </span>
-        <i style={{ marginLeft: '5px' }} onClick={(e) => alert('icon')}>
+        <i style={{ marginLeft: '5px' }} onClick={(e) => Taro.showtoast({ title: 'icon' })}}>
             <Cart2 />
         </i>
     </NavBar>
@@ -116,6 +119,7 @@ export default App;
 import  React, { useState } from "react";
 import { NavBar, Tabs, TabPane } from '@nutui/nutui-react-taro';
 import { Left,MoreX } from '@nutui/icons-react-taro'
+import Taro from '@tarojs/taro'
 
 const App = () => {
   const [tab1value, setTab1value] = useState('0')
@@ -124,13 +128,13 @@ const App = () => {
          back={<Left name="left" color="#979797" />}
           right={
             <>
-              <span onClick={(e) => alert("编辑")}>
+              <span onClick={(e) => Taro.showtoast({ title: '编辑' })}>
                 编辑
               </span>
-              <MoreX onClick={(e) => alert('icon')} />
+              <MoreX onClick={(e) => Taro.showtoast({ title: 'icon' })}} />
             </>
           }
-          onClickBack={(e) => alert("返回")}
+          onClickBack={(e) => Taro.showtoast({ title: '返回' })}}
         >
             <Tabs value={tab1value} onChange={({ paneKey }) => { setTab1value(paneKey) }}>
               <TabPane title="Tab 1"> Tab 1 </TabPane>
@@ -138,7 +142,6 @@ const App = () => {
               <TabPane title="Tab 3"> Tab 3 </TabPane>
             </Tabs>
       </NavBar>
-    </>
   );
 };  
 export default App;
@@ -146,7 +149,9 @@ export default App;
 ```
 :::
 
-### Prop  
+## Navbar
+
+### Props  
 
 | 字段 | 说明 | 类型    | 默认值  |
 |------------|--------------------|---------|---------|
@@ -157,11 +162,8 @@ export default App;
 | safeArea | 是否适配安全区 | boolean  | `false`       |   
 | placeholder      | 固定在顶部时，是否在标签位置生成一个等高的占位元素 | boolean  | `false`    |
 | zIndex           | 导航栏层级           | number \| string  | `10`    |
+| onClickBack             | 点击返回区域后的回调 | `onClickBack:(event: Event)=>void` | `false`|
 
-### Event
-| 名称                      | 说明     | 回调参数    |
-|-------------------------|----------|-------------|
-| onClickBack             | 点击返回区域后的回调 | `event: Event` |
 
 ## 主题定制
 
@@ -169,17 +171,18 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
+| 名称 | 说明 | 默认值 |
 | --- | --- |
-| --nutui-navbar-height | `44px` |
-| --nutui-navbar-margin-bottom | `20px` |
-| --nutui-navbar-padding | `13px 16px` |
-| --nutui-navbar-background | `$white` |
-| --nutui-navbar-box-shadow | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
-| --nutui-navbar-color | `$gray1` |
-| --nutui-navbar-title-base-font | `$font-size-2` |
-| --nutui-navbar-title-font | `$font-size-2` |
-| --nutui-navbar-title-font-weight | `0` |
-| --nutui-navbar-title-font-color | `$navbar-color` |
-| --nutui-navbar-title-width | `100px` |
-| --nutui-navbar-title-icon-margin | `0 0 0 13px` |
+| --nutui-navbar-width | 头部导航的宽度 | `100%`|
+| --nutui-navbar-height | 头部导航的高度 | `44px` |
+| --nutui-navbar-margin-bottom | 头部导航的下边距 |`20px` |
+| --nutui-navbar-padding | 头部导航的内边距 |`13px 16px` |
+| --nutui-navbar-background | 头部导航的背景颜色 |`$white` |
+| --nutui-navbar-box-shadow | 头部导航的阴影 |`0px 1px 7px 0px rgba(237, 238, 241, 1)` |
+| --nutui-navbar-color | 头部导航的字体颜色 |`$gray2` |
+| --nutui-navbar-font-size | 头部导航的字体大小 |`$font-size-2` |
+| --nutui-navbar-title-font-size | 头部导航标题的字体大小 |`$font-size-2` |
+| --nutui-navbar-title-font-weight | 头部导航标题的字体粗细 |`0` |
+| --nutui-navbar-title-font-color | 头部导航标题的字体颜色 |`$gray1` |
+
+

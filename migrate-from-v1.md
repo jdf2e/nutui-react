@@ -21,6 +21,16 @@
 - 优化 `x` 类型为 ReactNode
 - 增加 `x`, 用于某个功能
 #### Cell
+- `subTitle` 重命名为 `description`
+- 删除 `desc` 重命名为 `extra`, 改为 `React.Node` 类型
+- 删除 `icon`、 `isLink`、`url`、`linkSlot`、`replace`, 暴露自定义节点, demo示例展示
+- 删除 `descTextAlign`, 通过css变量实现
+- 删除 `roundRadius` 重命名为 `radius`
+- 删除 `center` 改为 `align`，默认值为`flex-start`, 可选 `center`、`flex-end`
+#### CellGroup
+- `desc` 重命名为 `description`
+- `title`、`description` 改为 `React.Node` 类型
+- 删除 `titleSlot` 和 `descSlot`
 #### ConfigProvider
 #### Icon
 #### Image
@@ -56,6 +66,13 @@
 - 增加非数字展示，并设置为默认状态
 #### Menu
 #### NavBar
+- 删除`title`, 改为`children`实现
+- 删除`desc`, 改为`right`, 类型为 `React.Node` 类型
+- 增加 `left`，改为 `React.Node` 类型
+- 删除`leftText` `leftShow`, 改为`back`, 类型为 `React.Node` 
+- `safeAreaInsetTop`重命名为 `safeArea`
+- 删除`border` 
+- 删除 `onClickTitle` `onClickRight` `onClickIcon`, 暴露自定义节点, demo示例展示
 #### Pagination
 #### SideNavBar
 #### Tabbar
