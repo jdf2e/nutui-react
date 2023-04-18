@@ -43,7 +43,7 @@ import { InputNumber } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <InputNumber defaultValue={0} step="5" />
+      <InputNumber defaultValue={0} min={0} step="5" />
     </>
   )
 }
@@ -63,7 +63,7 @@ import { InputNumber, Toast } from '@nutui/nutui-react';
 const App = () => {
   const overlimit = (e: MouseEvent) => {
     console.log(e)
-    Toast.warn('超出限制事件触发')
+    Toast.warn('Exceeded limit event triggered')
   }
   return (
     <>

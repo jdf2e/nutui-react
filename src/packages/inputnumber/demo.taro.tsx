@@ -121,7 +121,7 @@ const InputNumberDemo = () => {
 
         <h2>{translated['55cc5fb7']}</h2>
         <Cell>
-          <InputNumber defaultValue={0} step="5" />
+          <InputNumber defaultValue={0} min={0} step="5" />
         </Cell>
 
         <h2>{translated['9636103a']}</h2>
