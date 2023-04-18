@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
-import { Failure, Loading, Success, Tips } from '@nutui/icons-react'
+import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
 import bem from '@/utils/bem'
 
 export interface ToastProps {

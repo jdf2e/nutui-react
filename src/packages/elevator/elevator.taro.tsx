@@ -231,6 +231,7 @@ export const Elevator: FunctionComponent<
         <ScrollView
           scrollTop={scrollTop}
           scrollY
+          type="list"
           className={b('list__inner')}
           ref={listview}
           onScroll={listViewScroll}

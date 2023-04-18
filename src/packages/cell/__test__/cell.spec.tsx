@@ -4,49 +4,34 @@ import '@testing-library/jest-dom'
 import { Cell } from '../cell'
 import { Switch } from '../../switch/switch'
 
-test('prop title description subtitle test', () => {
-  const { getByTestId, container } = render(
+test('prop title extra description test', () => {
+  const { container } = render(
     <>
       <Cell
         data-testid="prop"
         title="我是标题"
-        subTitle="副标题描述"
-        description="描述文字"
+        description="我是描述"
+        extra="描述文字"
       />
     </>
   )
-  expect(container.querySelector('.nut-cell__maintitle')?.innerHTML).toBe(
+  expect(container.querySelector('.nut-cell__title')?.innerHTML).toBe(
     '我是标题'
   )
-  expect(container.querySelector('.nut-cell__subtitle')?.innerHTML).toBe(
-    '副标题描述'
+  expect(container.querySelector('.nut-cell__description')?.innerHTML).toBe(
+    '我是描述'
   )
-  expect(container.querySelector('.nut-cell__value')?.innerHTML).toBe(
+  expect(container.querySelector('.nut-cell__extra')?.innerHTML).toBe(
     '描述文字'
   )
   expect(container).toMatchSnapshot()
 })
 
-test('prop description-text-align left', () => {
+test('prop ', () => {
   const { container } = render(
-    <Cell data-testid="prop" descriptionTextAlign="left" description="张三" />
+    <Cell title="URL 跳转" extra="https://m.jd.com/" />
   )
-  expect(container.querySelector('.nut-cell__value')).toHaveAttribute(
-    'style',
-    'text-align: left; flex: 1;'
-  )
-})
-
-test('prop isLink', () => {
-  const { container } = render(
-    <Cell
-      title="URL 跳转"
-      description="https://m.jd.com/"
-      isLink
-      url="https://m.jd.com/"
-    />
-  )
-  expect(container.querySelector('.nut-cell__link')).toBeInTheDocument()
+  expect(container.querySelector('.nut-cell__extra')).toBeInTheDocument()
   expect(container).toMatchSnapshot()
 })
 
@@ -61,26 +46,16 @@ test('emit click event', () => {
 
 test('slot default test', () => {
   const { container } = render(
-    <Cell title="我是标题" description="描述文字">
-      <div>自定义内容</div>
-    </Cell>
+    <Cell title={<div>自定义内容</div>} extra="描述文字" />
   )
   expect(container).toContainHTML('<div>自定义内容</div>')
   expect(container).toMatchSnapshot()
 })
 
-test('slot linkSlot', () => {
+test('slot extra', () => {
   const { container } = render(
-    <Cell title="Switch" linkSlot={<Switch checked />} />
+    <Cell title="Switch" extra={<Switch checked />} />
   )
   expect(container.querySelector('.nut-switch')).toBeInTheDocument()
-  expect(container).toMatchSnapshot()
-})
-
-test('prop icon', () => {
-  const { container } = render(
-    <Cell title="姓名" icon="my" description="张三" isLink />
-  )
-  expect(container.querySelector('.nut-icon-my')).toBeInTheDocument()
   expect(container).toMatchSnapshot()
 })

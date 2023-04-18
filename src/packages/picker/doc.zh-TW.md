@@ -80,7 +80,7 @@ const App = () => {
   ]
   return ( 
     <>   
-      <Cell isLink onClick={() => setIsVisible1(!isVisible1)}>
+      <Cell  onClick={() => setIsVisible1(!isVisible1)}>
         <span>
           <label>基礎用法</label>
         </span>
@@ -118,7 +118,7 @@ const App = () => {
   ]
   return ( 
     <>   
-    <Cell isLink onClick={() => setIsVisible2(!isVisible2)}>
+    <Cell  onClick={() => setIsVisible2(!isVisible2)}>
       <span>
         <label>多列用法</label>
       </span>
@@ -272,7 +272,7 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell isLink onClick={() => setIsVisible3(!isVisible3)}>
+      <Cell  onClick={() => setIsVisible3(!isVisible3)}>
         <span>
           <label>
             多級聯動

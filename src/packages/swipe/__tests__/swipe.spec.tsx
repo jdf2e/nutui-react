@@ -15,7 +15,7 @@ test('base swipe', () => {
         </Button>
       }
     >
-      <Cell title="基础用法" roundRadius={0} />
+      <Cell title="基础用法" radius={0} />
     </Swipe>
   )
   expect(
@@ -26,7 +26,7 @@ test('base swipe', () => {
 test('disabled swipe', () => {
   const { container } = render(
     <Swipe id="swipeDisabled">
-      <Cell title="禁用滑动" roundRadius={0} />
+      <Cell title="禁用滑动" radius={0} />
     </Swipe>
   )
   const dom = container.querySelector('.nut-swipe__wrapper')

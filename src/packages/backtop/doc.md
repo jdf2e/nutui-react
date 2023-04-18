@@ -1,10 +1,10 @@
 # BackTop 返回顶部
 
-### 介绍
+## 介绍
 
 提供较长的页面快捷返回顶部功能。
 
-### 安装
+## 安装
 
 ```javascript
 // react
@@ -35,7 +35,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo"  id="elId">
+    <div className="demo"  id="target">
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>
@@ -93,7 +93,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo"  id="elId">
+    <div className="demo"  id="target">
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>
@@ -118,7 +118,7 @@ const App = () => {
         <div className="text-data" style={cellStyle}>我是测试数据22</div>
         <div className="text-data" style={cellStyle}>我是测试数据23</div>
         <div className="text-data" style={cellStyle}>我是测试数据24</div>
-        <BackTop  distance={200} bottom={50} />
+        <BackTop  threshold={200} bottom={50} />
     </div>
     </>
   );
@@ -149,7 +149,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo"  id="elId">
+    <div className="demo"  id="target">
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>
@@ -176,7 +176,7 @@ const App = () => {
         <div className="text-data" style={cellStyle}>我是测试数据24</div>
         <BackTop
           className="custom-class"
-          distance={100}
+          threshold={100}
           bottom={110}
         >
           <div
@@ -221,7 +221,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" style={{ height: '800px', overflowY: 'auto' }} id="elId">
+    <div className="demo" style={{ height: '800px', overflowY: 'auto' }} id="target">
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>
@@ -246,7 +246,7 @@ const App = () => {
         <div className="text-data" style={cellStyle}>我是测试数据22</div>
         <div className="text-data" style={cellStyle}>我是测试数据23</div>
         <div className="text-data" style={cellStyle}>我是测试数据24</div>
-        <BackTop elId="elId" distance={100} bottom={50} />
+        <BackTop target="target" threshold={100} bottom={50} />
     </div>
     </>
   );
@@ -280,7 +280,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" style={{ height: '1000px', overflowY: 'auto' }} id="elId">
+    <div className="demo" style={{ height: '1000px', overflowY: 'auto' }} id="target">
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>
@@ -305,7 +305,7 @@ const App = () => {
         <div className="text-data" style={cellStyle}>我是测试数据22</div>
         <div className="text-data" style={cellStyle}>我是测试数据23</div>
         <div className="text-data" style={cellStyle}>我是测试数据24</div>
-        <BackTop distance={100} bottom={50} onClick={handleClick} />
+        <BackTop threshold={100} bottom={50} onClick={handleClick} />
     </div>
     </>
   );
@@ -314,26 +314,17 @@ export default App;
 ```
 :::
 
-## API
+## BackTop
 
 ### Props
 
 | 字段        | 说明                            | 类型    | 默认值 |
 | ----------- | ------------------------------- | ------- | ------ |
-| elId        | 获取监听元素的父级元素         | string  | -      |
-| bottom      | 距离页面底部距离                | number | `20`   |
-| right       | 距离页面右侧距离                | number | `10`   |
-| distance    | 页面垂直滚动多高后出现          | number | `200`  |
+| target        | 获取监听的目标元素         | string  | -      |
+| threshold    | 页面垂直滚动多高后出现          | number | `200`  |
 | zIndex      | 设置组件页面层级                | number | `10`   |
-| isAnimation | 是否有动画,和 duration 参数互斥 | boolean | `true` |
-| duration    | 设置动画持续时间                | number | `1000` |
-
-### Events
-
-| 名称                       | 说明               | 回调参数          |
-|--------------------------| ------------------ | ----------------- |
-| onClick          | 按钮点击时触发事件 | `event: MouseEvent` |
-
+| duration    | 设置动画持续时间，为 0 时表示无动画                | number | `1000` |
+| onClick          | 按钮点击时触发事件 | (event: MouseEvent) => void | - |
 
 ## 主题定制
 
@@ -341,6 +332,6 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-backtop-border-color | `#e0e0e0` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-backtop-border-color | 边框颜色 | `#e0e0e0` |

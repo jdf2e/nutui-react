@@ -1,15 +1,16 @@
 # FixedNav 悬浮导航
 
-### 介绍
+## 介绍
 
 悬浮收齐体验交互，用于快捷导航
 
-### 安装
+## 安装
     
 ``` javascript
 import { FixedNav } from '@nutui/nutui-react-taro';
 ```
 
+## 代码演示
 
 ### 基础用法
 
@@ -19,7 +20,7 @@ import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react-taro';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首页',
@@ -52,13 +53,13 @@ const App = () => {
   return (
     <>
       <FixedNav
-        navList={navList}
+        list={list}
         activeText="基础用法"
         overlay
         position={{ top: '70px' }}
         onChange={change}
         visible={visible}
-        onSelected={selected}
+        onSelect={selected}
        />
     </>
   )
@@ -73,7 +74,7 @@ import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react-taro';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首页',
@@ -106,14 +107,14 @@ const App = () => {
   return (
     <>
       <FixedNav
-        navList={navList}
+        list={list}
         type="left"
         position={{ top: '140px' }}
         visible={visible}
         activeText="左侧收起"
-        unActiveText="左侧展开"
+        inactiveText="左侧展开"
         onChange={change}
-        onSelected={selected}
+        onSelect={selected}
        />
     </>
   )
@@ -130,7 +131,7 @@ import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react-taro';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首页',
@@ -163,12 +164,12 @@ const App = () => {
   return (
     <>
       <FixedNav
-        navList={navList}
+        list={list}
         position={{ top: '210px' }}
         overlay={false}
         visible={visible}
         onChange={change}
-        onSelected={selected}
+        onSelect={selected}
        />
     </>
   )
@@ -184,7 +185,7 @@ import React, { useState } from "react";
 import { Icon, FixedNav } from '@nutui/nutui-react-taro';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首页',
@@ -221,23 +222,22 @@ const App = () => {
         type="left"
         visible={visible}
         onChange={change}
-        onSelected={selected}
-        slotList={
-          <ul className="nut-fixednav__list" slot="list">
-            <li className="nut-fixednav__list-item">1</li>
-            <li className="nut-fixednav__list-item">2</li>
-            <li className="nut-fixednav__list-item">3</li>
-            <li className="nut-fixednav__list-item">4</li>
-            <li className="nut-fixednav__list-item">5</li>
-          </ul>
-        }
-        slotBtn={
+        onSelect={selected}
+        content={
           <>
             <Icon name="retweet" color="#fff"> </Icon>
             <span className="text">{ visible ? '自定义开' : '自定义关' }</span>
           </>
         }
-       />
+      >
+        <ul className="nut-fixednav__list">
+          <li className="nut-fixednav__list-item">1</li>
+          <li className="nut-fixednav__list-item">2</li>
+          <li className="nut-fixednav__list-item">3</li>
+          <li className="nut-fixednav__list-item">4</li>
+          <li className="nut-fixednav__list-item">5</li>
+        </ul>
+      </FixedNav>
     </>
   )
 };
@@ -252,7 +252,7 @@ import React, { useState } from "react";
 import { Drag, FixedNav } from '@nutui/nutui-react-taro';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首页',
@@ -286,11 +286,11 @@ const App = () => {
     <>
       <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
         <FixedNav
-          navList={navList}
-          unActiveText="支持拖拽"
+          list={list}
+          inactiveText="支持拖拽"
           visible={visible} 
           onChange={change}
-          onSelected={selected} />
+          onSelect={selected} />
       </Drag>
     </>
   )
@@ -298,33 +298,23 @@ const App = () => {
 export default App;
 ```
 
+## FixedNav
 
+### Props
 
-
-### Prop
 | 字段           | 说明                       | 类型    | 默认值                       |
 |:---------------|:---------------------------|:--------|:-----------------------------|
-| fixednavClass        | 自定义类名                   | string | `fixednav`                        |
 | visible        | 是否打开                   | boolean | `false`                        |
-| navList       | 悬浮列表内容数据           | Array   | `[]`                           |
+| list       | 悬浮列表内容数据           | Array   | `[]`                           |
 | activeText    | 收起列表按钮文案           | string  | `收起导航`                     |
-| unActiveText | 展开列表按钮文案           | string  | `快速导航`                     |
+| inactiveText | 展开列表按钮文案           | string  | `快速导航`                     |
 | type           | 导航方向,可选值 left right | string  | `right`                        |
 | overlay        | 展开时是否显示遮罩         | boolean | `true`                         |
 | position       | fixed 垂直位置             | object  | `{top: 'auto', bottom: 'auto'}` |
-| slotList       | 自定义展开列表内容             | ReactNode  | - |
-| slotBtn       | 自定义按钮            | ReactNode  | - |
-
-
-### Event
-
-| 字段     | 说明         | 回调参数        |
-|:----------|:--------------|:------------|
+| content       | 自定义按钮            | ReactNode  | - |
+| children       | 自定义展开列表内容             | ReactNode  | - |
 | onChange | 展开收起按钮回调 | `value: boolean` |
-| onSelected | 选择之后触发 | `item, event: MouseEvent` |
-
-
-    
+| onSelect | 选择之后触发 | `item, event: MouseEvent` |
 
 ## 主题定制
 
@@ -332,9 +322,9 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-fixednav-bg-color | `#fff` |
-| --nutui-fixednav-font-color | `#000` |
-| --nutui-fixednav-index | `201` |
-| --nutui-fixednav-item-active-color | `$primary-color` |
+| 名称 | 描述 | 默认值 |
+| --- | --- | --- |
+| --nutui-fixednav-bg-color | 背景颜色 | `#fff` |
+| --nutui-fixednav-font-color | 字体颜色 | `#000` |
+| --nutui-fixednav-index | zIndex | `201` |
+| --nutui-fixednav-item-active-color | 激活颜色 | `$primary-color` |

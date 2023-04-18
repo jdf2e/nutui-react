@@ -5,10 +5,10 @@ const fsExtra = require('fs-extra')
 const config = require('../../src/config.json')
 const navs = config.nav
 
-let fileStr = `@import '../../../styles/font/iconfont.css';\n`
+let fileStr = `@import '../../../styles/font/iconfont.css';`
 const projectID = process.env.VITE_APP_PROJECT_ID
 if (projectID) {
-  fileStr = `@import '../../../styles/font-${projectID}/iconfont.css';\n`
+  fileStr = `@import '../../../styles/font-${projectID}/iconfont.css';`
 }
 
 // 在mobile-taro下创建相应的文件夹，并创建index.config.ts、index.tsx

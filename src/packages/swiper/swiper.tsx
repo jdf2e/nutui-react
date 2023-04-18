@@ -1,4 +1,11 @@
-import React, { useState, useEffect, useRef, TouchEvent, useMemo } from 'react'
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  TouchEvent,
+  useMemo,
+  CSSProperties,
+} from 'react'
 import classNames from 'classnames'
 import { DataContext } from './UserContext'
 import bem from '@/utils/bem'
@@ -9,11 +16,13 @@ export type SwiperRef = {
   next: () => void
   prev: () => void
 }
+
 interface Style {
   width?: string
   height?: string
   transform?: string
 }
+
 export interface SwiperProps {
   width: number | string
   height: number | string
@@ -471,7 +480,7 @@ export const Swiper = React.forwardRef<
     }
   }, [])
   const itemStyle = (index: any) => {
-    const style: Style = {}
+    const style: CSSProperties = {}
     const _direction = propSwiper.direction || direction
     const _size = size
     if (_size) {

@@ -1,47 +1,19 @@
 # Indicator
 
-### Intro
+## Intro
 
 Displays the progress of a task or process, often used for provisioning processes
 
-### Install
+## Install
 
 ```javascript
 // react
 import { Indicator } from '@nutui/nutui-react'
 ```
-### Basic Usage
-:::demo
-```tsx
-import  React from "react";
-import { Indicator, Cell, Button, Row, Col } from '@nutui/nutui-react';
 
-const App = () => {
-  return (
-    <div className="demo">
-      <Cell>
-        <Indicator size={3} current={3} />
-      </Cell>
-      <Cell>
-        <Row>
-          <Col span="12">
-            <Button size="small" type="primary">
-              Button
-            </Button>
-          </Col>
-          <Col span="12">
-            <Indicator block align="right" size={6} current={5} />
-          </Col>
-        </Row>
-      </Cell>
-    </div>
-  );
-};
-export default App;
-```
-:::
-### Block usage
-When `block` is true, it will be displayed as a block-level element, and the alignment can be set through `align`
+## Demo
+
+### Basic Usage
 :::demo
 ```tsx
 import  React from "react";
@@ -51,13 +23,7 @@ const App = () => {
   return (
     <div className="demo">
       <Cell>
-        <Indicator block align="center" size={6} current={5} />
-      </Cell>
-      <Cell>
-        <Indicator block align="left" size={6} current={1} />
-      </Cell>
-      <Cell>
-        <Indicator block align="right" size={6} current={5} />
+        <Indicator total={3} current={3} />
       </Cell>
     </div>
   );
@@ -65,7 +31,8 @@ const App = () => {
 export default App;
 ```
 :::
-### Do not add 0
+
+### Custom Node
 :::demo
 ```tsx
 import  React from "react";
@@ -74,7 +41,35 @@ import { Indicator, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Indicator fillZero={false} size={6} current={5} />
+      <Indicator total={6} current={5}>
+        <div className="number">{5}</div>
+      </Indicator>
+    </Cell>
+  );
+};
+export default App;
+```
+:::
+
+### Custom Color and Size
+:::demo
+```tsx
+import  React from "react";
+import { Indicator, Cell, ConfigProvider } from '@nutui/nutui-react';
+
+const customTheme = {
+  nutuiIndicatorColor: '#3768fa',
+  nutuiIndicatorDotColor: '#ddd',
+  nutuiIndicatorDotSize: '8px',
+  nutuiIndicatorDotActiveSize: '24px',
+}
+
+const App = () => {
+  return (
+    <Cell>
+      <ConfigProvider theme={customTheme}>
+        <Indicator total={6} current={5} />
+      </ConfigProvider>
     </Cell>
   );
 };
@@ -91,35 +86,29 @@ import { Indicator, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <view 
-        style={{ height: '100px', width: '50%' }} 
-      >
-        <Indicator fillZero={false} size={6} current={5} vertical />
-      </view>
-      <view 
-        style={{ height: '100px', width: '50%' }} 
-      >
-        <Indicator size={6} current={2} vertical />
-      </view>
+      <div className="vertical_cell">
+        <Indicator total={6} current={5} direction="vertical">
+          <div className="number">{5}</div>
+        </Indicator>
+      </div>
+      <div className="vertical_cell">
+        <Indicator total={6} current={2} direction="vertical" />
+      </div>
     </Cell>
   );
 };
 export default App;
 ```
 :::
-## API
+## Indicator
 
 ### Props
 
-| Attribute           | Description                             | Type                      | Default            |
-|--------------|----------------------------------|--------|------------------|
-| current  | current step               | number | `1`              |
-| size       | step length                         | number | `3`               |
-| block | Whether to enable block level layout     | boolean | `false` |
-| align | Alignment, only valid when block is true, optional values 'left', 'right', 'center' | string | `left` |
-| fillZero     | Whether to add 0 in front of the singular number                      | boolean | `true`        |
-| vertical | Whether to display vertically     | boolean | `false` |
-
+| Property | Description | Type | Default |
+|--------------|---------------|--------|---------|
+| current  | current step | number | `1` |
+| total | step total size | number | `3` |
+| direction | display directory,default is horizontal | `'horizontal' \| 'vertical'` |   `horizontal` |
 
 ## Theming
 
@@ -127,14 +116,12 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-indicator-color | `$primary-color` |
-| --nutui-indicator-dot-color | `$disable-color` |
-| --nutui-indicator-white | `$white` |
-| --nutui-indicator-size | `18px` |
-| --nutui-indicator-number-font-size | `10px` |
-| --nutui-indicator-dot-margin | `4px` |
-| --nutui-indicator-dot-vertical-margin | `4px` |
-| --nutui-indicator-dot-first-margin | `0px` |
-| --nutui-indicator-dot-last-margin | `0px` |
+| Name | Description | Default Value |
+| --- | --- | --- |
+| --nutui-indicator-color | indicator active color | `$primary-color` |
+| --nutui-indicator-dot-color | indicator default color | `$disable-color` |
+| --nutui-indicator-dot-size | indicator dot size  | `5px` |
+| --nutui-indicator-dot-active-size | indicator dot active size | `15px` |
+| --nutui-indicator-border-size | indicator active border size | `3px` |
+| --nutui-indicator-dot-margin | when horizontal, indicator margin | `4px` |
+| --nutui-indicator-dot-vertical-margin | when vertical, indicator margin | `4px` |

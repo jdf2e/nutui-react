@@ -56,7 +56,7 @@ const FixedNavDemo = () => {
       mine: 'Mine',
     },
   })
-  const navList = [
+  const list = [
     {
       id: 1,
       text: translated.home,
@@ -125,48 +125,39 @@ const FixedNavDemo = () => {
     <>
       <div className="demo">
         <FixedNav
-          navList={navList}
+          list={list}
           activeText={translated.title1}
           overlay
           position={{ top: '70px' }}
           onChange={change1}
           visible={visible1}
-          onSelected={selected1}
+          onSelect={selected1}
         />
         <FixedNav
-          navList={navList}
+          list={list}
           type="left"
           position={{ top: '140px' }}
           visible={visible2}
           activeText={translated.title2}
-          unActiveText={translated.title3}
+          inactiveText={translated.title3}
           onChange={change2}
-          onSelected={selected2}
+          onSelect={selected2}
         />
         <FixedNav
-          navList={navList}
+          list={list}
           position={{ top: '210px' }}
           overlay={false}
           visible={visible3}
           onChange={change3}
-          onSelected={selected3}
+          onSelect={selected3}
         />
         <FixedNav
           position={{ top: '280px' }}
           type="left"
           visible={visible4}
           onChange={change4}
-          onSelected={selected4}
-          slotList={
-            <ul className="nut-fixednav__list" slot="list">
-              <li className="nut-fixednav__list-item">1</li>
-              <li className="nut-fixednav__list-item">2</li>
-              <li className="nut-fixednav__list-item">3</li>
-              <li className="nut-fixednav__list-item">4</li>
-              <li className="nut-fixednav__list-item">5</li>
-            </ul>
-          }
-          slotBtn={
+          onSelect={selected4}
+          content={
             <>
               <Retweet color="#fff" />
               <span className="text">
@@ -174,15 +165,23 @@ const FixedNavDemo = () => {
               </span>
             </>
           }
-        />
+        >
+          <ul className="nut-fixednav__list">
+            <li className="nut-fixednav__list-item">1</li>
+            <li className="nut-fixednav__list-item">2</li>
+            <li className="nut-fixednav__list-item">3</li>
+            <li className="nut-fixednav__list-item">4</li>
+            <li className="nut-fixednav__list-item">5</li>
+          </ul>
+        </FixedNav>
         {/* <!-- 配合 Drag 支持拖拽 ，小程序暂不支持 --> */}
         <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
           <FixedNav
-            navList={navList}
-            unActiveText={translated.title6}
+            list={list}
+            inactiveText={translated.title6}
             visible={visible5}
             onChange={change5}
-            onSelected={selected5}
+            onSelect={selected5}
           />
         </Drag>
       </div>

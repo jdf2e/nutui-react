@@ -4,18 +4,11 @@ import '@testing-library/jest-dom'
 import { Cell } from '../../cell/cell'
 import { CellGroup } from '../cellgroup'
 
-const classPrefix = `nut-avatar`
-
-test('prop title description subtitle', () => {
+test('prop title description extra', () => {
   const { container } = render(
     <CellGroup title="链接 | 分组用法">
-      <Cell title="链接" isLink />
-      <Cell
-        title="URL 跳转"
-        description="https://jd.com"
-        isLink
-        url="https://jd.com"
-      />
+      <Cell title="链接" />
+      <Cell title="URL 跳转" extra="https://jd.com" />
     </CellGroup>
   )
   expect(

@@ -14,7 +14,7 @@ const zhCN: BaseLang = {
   },
   fixednav: {
     activeText: '收起导航',
-    unActiveText: '快速导航',
+    inactiveText: '快速导航',
   },
   infiniteloading: {
     pullRefreshText: '松开刷新',

@@ -60,7 +60,7 @@
   }
 
   &__left {
-    font-size: $cell-description-font;
+    font-size: $cell-extra-font-size;
     color: $gray2;
     position: absolute;
     left: 0;
@@ -79,7 +79,7 @@
   }
 
   &__right {
-    font-size: $cell-description-font;
+    font-size: $cell-extra-font-size;
     color: $gray2;
     position: absolute;
     right: 0;

@@ -34,14 +34,14 @@ const App = () => {
     <>   
     <Cell
           title="left"
-          isLink
+          
           onClick={() => {
             changeNarBar(true, 'left')
           }}
         />
         <Cell
           title="right"
-          isLink
+          
           onClick={() => {
             changeNarBar(true, 'right')
           }}
@@ -93,7 +93,7 @@ const App = () => {
     <>  
       <Cell
           title="show"
-          isLink
+          
           onClick={() => {
             changeNarBar(true)
           }}
