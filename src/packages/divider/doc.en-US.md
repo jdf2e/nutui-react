@@ -153,7 +153,7 @@ export default App;
 
 | Property            | Description                       | Type    | Default |
 | --------------- | ----------------------------- | ------- | ------ |
-| contentPosition | Content position, can be set to left or right   | string  | `center` |
+| contentPosition | Content position, can be set to left or right or center  | string  | `center` |
 | style          | Modify custom styles                | CSSProperties     | -      |
 | direction           | The direction of divider, can be set to horizontal or vertical            | string     | `horizontal`      |
 
@@ -165,7 +165,7 @@ export default App;
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 
-| Name | Description | Default Value |
+| Name | Description | Default |
 | --- | --- | --- |
 | --nutui-divider-margin | The margin value of the overall content of the dividing line | `16px 0` |
 | --nutui-divider-text-font-size | The font-size of the overall content of the dividing line | `$font-size-2` |

@@ -152,7 +152,7 @@ export default App;
 
 | 参数              | 说明                          | 类型    | 默认值 |
 |-----------------| ----------------------------- | ------- | ------ |
-| contentPosition | 内容位置，可选值为 left right | string  | `center` |
+| contentPosition | 内容位置，可选值为 left right center | string  | `center` |
 | style          | 修改自定义样式                | CSSProperties     | -      |
 | direction   | 水平还是垂直类型,可选值为 horizontal vertical               | string     | `horizontal`      |
 
