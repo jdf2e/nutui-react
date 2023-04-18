@@ -32,7 +32,7 @@ const ImageDemo = () => {
     },
   })
   const src =
-    'https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+    'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
   const placeholderImg = (
     <img
       alt=""
@@ -69,8 +69,7 @@ const ImageDemo = () => {
         <Cell>
           <Image
             src={src}
-            width="100"
-            height="100"
+            width="100%"
             onClick={() => {
               console.log('click image')
             }}
