@@ -67,7 +67,7 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
       } else {
         href = location.href.replace('en-US', 'zh-CN')
       }
-      location.href = href
+      location.replace(href)
     }
     const getComponentName = () => {
       const s = window.location.hash.split('/')
