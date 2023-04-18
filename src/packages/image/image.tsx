@@ -55,11 +55,12 @@ export type ImagePosition =
   | 'left'
   | string
 
+const classPrefix = 'nut-image'
+
 export const Image: FunctionComponent<
   Partial<ImageProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onLoad' | 'onError'>
 > = (props) => {
-  const { locale } = useConfig()
   const {
     className,
     style,
@@ -80,9 +81,16 @@ export const Image: FunctionComponent<
   const [innerLoading, setInnerLoading] = useState(true)
   const [isError, setIsError] = useState(false)
   const [_src, setSrc] = useState('')
+  const imgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
-    if (src) {
+    if (
+      imgRef.current &&
+      imgRef.current.complete &&
+      imgRef.current.naturalHeight !== 0
+    ) {
+      setInnerLoading(false)
+    } else if (src) {
       setSrc(src)
       setIsError(false)
       setInnerLoading(true)
@@ -195,7 +203,7 @@ export const Image: FunctionComponent<
 
   return (
     <div
-      className={classNames('nut-image', className)}
+      className={classNames(classPrefix, className)}
       style={containerStyle}
       onClick={(e: any) => {
         imageClick(e)
@@ -203,6 +211,7 @@ export const Image: FunctionComponent<
     >
       {lazy ? (
         <img
+          ref={imgRef}
           className="nut-img lazyload"
           style={imgStyle}
           data-src={_src}
@@ -213,6 +222,7 @@ export const Image: FunctionComponent<
         />
       ) : (
         <img
+          ref={imgRef}
           className="nut-img"
           style={imgStyle}
           src={_src}
