@@ -520,7 +520,7 @@ const ElevatorDemo = () => {
               {(value) => {
                 return (
                   <>
-                    <Jd width={12} height={12} />
+                    <Jd size={10} />
                     <span style={{ marginLeft: '15px' }}>{value?.name}</span>
                   </>
                 )

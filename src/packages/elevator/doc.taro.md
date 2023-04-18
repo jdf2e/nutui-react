@@ -450,7 +450,7 @@ const App = () => {
         {(value) => {
           return (
             <>
-              <Jd width={12} height={12} />
+              <Jd size={12} />
               <span style={{ marginLeft: '15px' }}>{value?.name}</span>
             </>
           )
