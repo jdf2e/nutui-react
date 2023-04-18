@@ -1,10 +1,10 @@
 # Elevator 電梯樓層
 
-### 介紹
+## 介紹
 
 用于列表快速定位以及索引的顯示
 
-### 安裝
+## 安裝
 
 ```javascript
 // react
@@ -476,57 +476,6 @@ export default App
 | sticky    | 索引是否吸頂                                                    | boolean  | `false` |
 | spaceHeight | 右側錨點的上下間距                                                   | number  | `23` |
 | titleHeight   | 左側索引的高度                                                     | number  | `35` |
+| onClickItem  | 點擊內容 | `onClickItem:(key: string, item: { id: number, name: string })=>void` |`false`|
+| onClickIndex | 點擊索引 | `onClickIndex:(key: string)=>void`                            |`false`|
 
-### Event
-
-| 名稱       | 說明     | 回調參數                               |
-| ---------- | -------- | -------------------------------------- |
-| onClickItem  | 點擊內容 | `key: string, item: { id: 0, name: '' }` |
-| onClickIndex | 點擊索引 | `key: string`                            |
-| clickItem  | 點擊內容 | `key: string, item: { id: 0, name: '' }` |
-| clickIndex | 點擊索引 | `key: string`                            |
-
-
-## 主題定制
-
-### 樣式變量
-
-組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
-
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-elevator-list-inner-bg-color | `$gray6` |
-| --nutui-elevator-list-item-highcolor | `$primary-color` |
-| --nutui-elevator-list-item-font-size | `12px` |
-| --nutui-elevator-list-item-font-color | `$gray1` |
-| --nutui-elevator-list-item-name-padding | `0 20px` |
-| --nutui-elevator-list-item-name-height | `30px` |
-| --nutui-elevator-list-item-name-line-height | `30px` |
-| --nutui-elevator-list-item-code-font-size | `14px` |
-| --nutui-elevator-list-item-code-font-color | `$gray1` |
-| --nutui-elevator-list-item-code-font-weight | `500` |
-| --nutui-elevator-list-item-code-padding | `0 20px` |
-| --nutui-elevator-list-item-code-height | `35px` |
-| --nutui-elevator-list-item-code-line-height | `35px` |
-| --nutui-elevator-list-item-code-after-height | `1px` |
-| --nutui-elevator-list-item-code-after-bg-color | `#f5f5f5` |
-| --nutui-elevator-list-item-code-current-bg-color | `#fff` |
-| --nutui-elevator-list-item-code-current-width | `45px` |
-| --nutui-elevator-list-item-code-current-height | `45px` |
-| --nutui-elevator-list-item-code-current-line-height | `45px` |
-| --nutui-elevator-list-item-code-current-position | `absolute` |
-| --nutui-elevator-list-item-code-current-right | `60px` |
-| --nutui-elevator-list-item-code-current-text-align | `center` |
-| --nutui-elevator-list-item-bars-position | `absolute` |
-| --nutui-elevator-list-item-bars-right | `8px` |
-| --nutui-elevator-list-item-bars-padding | `15px 0` |
-| --nutui-elevator-list-item-bars-background-color | `#eeeff2` |
-| --nutui-elevator-list-item-bars-border-radius | `6px` |
-| --nutui-elevator-list-item-bars-text-align | `center` |
-| --nutui-elevator-list-item-bars-z-index | `1` |
-| --nutui-elevator-list-item-bars-inner-item-padding | `3px` |
-| --nutui-elevator-list-item-bars-inner-item-font-size | `10px` |
-| --nutui-elevator-list-fixed-color | `$primary-color` |
-| --nutui-elevator-list-fixed-bg-color | `$white` |
-| --nutui-elevator-list-fixed-box-shadow | `0 0 10px #eee` |
-| --nutui-elevator-list-item-bars-inner-item-active-color | `$primary-color` |

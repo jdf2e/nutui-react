@@ -8,11 +8,12 @@ import React, {
 import { nextTick, createSelectorQuery } from '@tarojs/taro'
 
 import { ScrollView } from '@tarojs/components'
-import bem from '@/utils/bem'
+import classNames from 'classnames'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export const elevatorContext = createContext({} as ElevatorData)
 
-export interface ElevatorProps {
+export interface ElevatorProps extends BasicComponent {
   height: number | string
   floorKey: string
   list: any[]
@@ -26,6 +27,7 @@ export interface ElevatorProps {
   onClickIndex: (key: string) => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   height: '200px',
   floorKey: 'title',
   list: [] as any[],
@@ -50,6 +52,7 @@ export const Elevator: FunctionComponent<
     spaceHeight,
     titleHeight,
     className,
+    style,
     onClickItem,
     onClickIndex,
     children,
@@ -58,7 +61,7 @@ export const Elevator: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const b = bem('elevator')
+  const classPrefix = 'nutui-elevator'
   const listview = useRef<HTMLDivElement>(null)
   const initData = {
     anchorIndex: 0,
@@ -216,36 +219,38 @@ export const Elevator: FunctionComponent<
   }, [listview])
 
   return (
-    <div className={`${b()} ${className} `} {...rest}>
+    <div className={`${classPrefix} ${className}`} style={style} {...rest}>
       {sticky && scrollTop > 0 ? (
-        <div className={b('list__fixed')}>
-          <span className="fixed-title">{list[currentIndex][floorKey]}</span>
+        <div className={`${classPrefix}-list__fixed`}>
+          <span className={`${classPrefix}-list__fixed__title`}>
+            {list[currentIndex][floorKey]}
+          </span>
         </div>
       ) : null}
       <div
-        className={b('list')}
+        className={`${classPrefix}-list`}
         style={{ height: Number.isNaN(+height) ? height : `${height}px` }}
       >
         <ScrollView
           scrollTop={scrollTop}
           scrollY
-          className={b('list__inner')}
+          className={`${classPrefix}-list__inner`}
           ref={listview}
           onScroll={listViewScroll}
         >
           {list.map((item: any, idx: number) => {
             return (
-              <div
-                className={`${b('list__item')} elevator__item__${idx}`}
-                key={idx}
-              >
-                <div className={b('list__item__code')}>{item[floorKey]}</div>
+              <div className={`${classPrefix}-list__item`} key={idx}>
+                <div className={`${classPrefix}-list__item__code`}>
+                  {item[floorKey]}
+                </div>
                 <>
                   {item.list.map((subitem: ElevatorData) => {
                     return (
                       <div
-                        className={b('list__item__name', {
-                          highcolor:
+                        className={classNames({
+                          [`${classPrefix}-list__item__name`]: true,
+                          [`${classPrefix}-list__item__name--highcolor`]:
                             currentData.id === subitem.id &&
                             currentKey === item[floorKey],
                         })}
@@ -271,13 +276,18 @@ export const Elevator: FunctionComponent<
         </ScrollView>
       </div>
       {list.length && scrollStart ? (
-        <div className={b('code--current', { current: true })}>
+        <div
+          className={classNames({
+            [`${classPrefix}-code--current`]: true,
+            [`${classPrefix}-code--current--current`]: true,
+          })}
+        >
           {list[codeIndex][floorKey]}
         </div>
       ) : null}
-      <div className={b('bars')}>
+      <div className={`${classPrefix}-bars`}>
         <div
-          className={b('bars__inner')}
+          className={`${classPrefix}-bars__inner`}
           onTouchStart={(event) => touchStart(event)}
           onTouchMove={(event) => touchMove(event)}
           onTouchEnd={touchEnd}
@@ -286,9 +296,11 @@ export const Elevator: FunctionComponent<
           {list.map((item: any, index: number) => {
             return (
               <div
-                className={`${b('bars__inner__item', {
-                  active: item[floorKey] === list[currentIndex][floorKey],
-                })} `}
+                className={classNames({
+                  [`${classPrefix}-bars__inner__item`]: true,
+                  [`${classPrefix}-bars__inner__item--active`]:
+                    item[floorKey] === list[currentIndex][floorKey],
+                })}
                 data-index={index}
                 key={index}
                 onClick={() => handleClickIndex(item[floorKey])}
