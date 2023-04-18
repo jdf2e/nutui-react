@@ -29,15 +29,8 @@
         padding: $elevator-list-item-code-padding;
         font-weight: $elevator-list-item-code-font-weight;
         box-sizing: border-box;
-        &::after {
-          content: ' ';
-          width: $elevator-list-item-code-after-width;
-          height: $elevator-list-item-code-after-height;
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          background-color: $elevator-list-item-code-after-bg-color;
-        }
+        border-bottom: $elevator-list-item-code-border-bottom solid
+          $elevator-list-item-code-border-bottom-color;
       }
       &__name {
         display: flex;
