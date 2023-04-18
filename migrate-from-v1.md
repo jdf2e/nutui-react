@@ -24,6 +24,13 @@
 #### ConfigProvider
 #### Icon
 #### Image
+- 删除 round，通过 radius 实现圆或圆角
+- 删除 loadingImg 和 slotLoading，通过 loading 属性实现，当 loading 属性设置为 ReactNode 或 true 时，表示展示 loading 状态
+- 删除 showError 和 slotError，通过 error 属性实现，当 error 属性设置为 ReactNode 或 true 时，表示展示 error 状态
+- 删除 loadingImg，可通过 loading 设置 ReactNode
+- 删除 errorImg，可通过 error 设置 ReactNode
+- showError 重命名为 error，类型修改为 boolean｜ReactNode
+- showLoading 重命名为 loading，类型修改为 boolean｜ReactNode
 #### Overlay
 - `overlayClass` 重命名为 `className`
 - `overlayStyle` 重命名为 `style`
