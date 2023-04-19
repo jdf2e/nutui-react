@@ -23,7 +23,7 @@ test('className && style && type = progress  && onPause  && onFastBack && onForw
           onPause={pause}
           onCanPlay={canPlay}
           onMute={mute}
-          onFastBack={fastBack}
+          onBack={fastBack}
           onForward={forward}
         />
       </>
