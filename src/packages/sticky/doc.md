@@ -1,11 +1,11 @@
 
 #  Sticky组件
 
-### 介绍
+## 介绍
 
 效果同 css 中的 position: sticky,对低端浏览器可使用其做兼容
 
-### 安装
+## 安装
 ```tsx
 import { Sticky } from '@nutui/nutui-react';
 ```
@@ -27,19 +27,19 @@ return(
     <>
         <h2>基础用法</h2>
         <Cell style={{ height: '300px' }}>
-          <Sticky top={57} onChange={handleChange}>
+          <Sticky threshold={57} onChange={handleChange}>
             <Button type="primary">吸顶</Button>
           </Sticky>
         </Cell>
         <h2>吸顶距离</h2>
         <Cell  style={{ height: '300px' }}>
-          <Sticky top={120}>
+          <Sticky threshold={120}>
             <Button type="primary">距离顶部120px</Button>
           </Sticky>
         </Cell>
         <h2>吸底距离</h2>
         <Cell style={{ height: '64px' }}>
-          <Sticky top={0} position="bottom">
+          <Sticky threshold={0} position="bottom">
             <Button type="primary">距离底部0px</Button>
           </Sticky>
         </Cell>
@@ -70,7 +70,7 @@ const App = () => {
             ref={containerTopRef}
             style={{ height: '300px' }}
           >
-            <Sticky container={containerTopRef} top={57}>
+            <Sticky container={containerTopRef} threshold={57}>
               <Button type="info">
                 指定容器内吸顶
               </Button>
@@ -84,7 +84,7 @@ const App = () => {
             ref={containerRef}
             style={{ height: '300px' }}
           >
-            <Sticky position="bottom" container={containerRef} bottom={0}>
+            <Sticky position="bottom" container={containerRef} threshold={0}>
               <Button  type="info">
                 指定容器吸底
               </Button>
@@ -99,20 +99,14 @@ export default App;
 ```
 :::
 
-## API
+## Sticky
 
 ### Props
 
 | 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| position     | 吸附位置（top、bottom）            | string | `top`             |
-| top          | 吸顶距离                          | number | `0`               |
-| bottom       | 吸底距离                          | number | `0`               |
-| zIndex      | 吸附时的层级                       | number | `2000`            |
+|--------------|--------------------------------|--------|------------------|
+| position     | 吸附位置（top、bottom）               | string | `top`             |
+| threshold          | 距离，当 position 为 top 时，设置的是 top | number | `0`               |
+| zIndex      | 吸附时的层级                         | number | `2000`            |
 | container    | 容器的 ref                        | `React.RefObject<HTMLElement>`| - |
-
-### Events
-
-| 事件名 | 说明                                            | 回调参数     |
-|--------|------------------------------------------------|--------------|
-| onChange  | 吸附状态改变时触发  | `val: boolean` |
+| onChange  | 吸附状态改变时触发  | `val: boolean` | - |

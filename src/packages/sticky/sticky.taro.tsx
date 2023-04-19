@@ -14,22 +14,19 @@ import {
   getSystemInfoSync,
   getEnv,
 } from '@tarojs/taro'
-import { BasicComponent } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import useWatch from '@/utils/use-watch'
 import { getRectByTaro } from '@/utils/use-client-rect'
 import { getScrollParent } from '@/utils/get-scroll-parent'
-import bem from '@/utils/bem'
 
 export interface StickyProps extends BasicComponent {
-  container?: React.RefObject<HTMLElement>
-  position?: 'top' | 'bottom'
-  className?: string
-  top?: number
-  bottom?: number
-  zIndex?: number
-  children: React.ReactNode
-  onChange?: (val: boolean) => void
+  container: React.RefObject<HTMLElement>
+  position: 'top' | 'bottom'
+  threshold: number
+  zIndex: number
+  onChange: (val: boolean) => void
 }
+
 interface StickyRect {
   top: number
   right: number
@@ -52,30 +49,28 @@ interface StickyStyle extends RootStyle {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   position: 'top',
-  top: 0,
-  bottom: 0,
   zIndex: 2000,
 } as StickyProps
 
-const b = bem('sticky')
+const classPrefix = 'nut-sticky'
 
-export const Sticky: FunctionComponent<StickyProps> = (props) => {
+export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
   const {
-    position = 'top',
-    top = 0,
-    bottom = 0,
-    zIndex = 2000,
+    position,
+    zIndex,
+    threshold,
+    style,
     children,
     container,
     className,
     onChange,
     ...rest
-  } = props
+  } = { ...defaultProps, ...props }
 
   const stickyRef = useRef<HTMLDivElement>(null)
   const rootRef = useRef<HTMLDivElement>(null)
-  const offset = position === 'top' ? top : bottom
   const [rootRect, setRootRect] = useState<Partial<StickyRect>>({})
   const [fixed, setFixed] = useState(false)
   const [transform, setTransform] = useState(0) // 相对容器偏移距离
@@ -83,7 +78,7 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
   useWatch(fixed, () => {
     onChange && onChange(fixed)
   })
-  const rootStyle: RootStyle = useMemo(() => {
+  const rootStyle = useMemo(() => {
     if (!fixed) {
       return {
         height: '',
@@ -105,14 +100,14 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
       return {
         height: '',
         width: '',
-        [position]: '',
+        [position as string]: '',
       }
     }
-    let style: StickyStyle = {}
+    const style: CSSProperties = {}
     if (rootRect.height) style.height = rootRect.height
     if (rootRect.width) style.width = rootRect.width
     style.transform = `translate3d(0, ${transform}px, 0)`
-    style[position] = offset
+    style[position] = threshold
     style.zIndex = zIndex
     return style
   }, [fixed, rootRect.height, rootRect.width, transform, position])
@@ -125,17 +120,19 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
       if (position === 'top') {
         if (container) {
           const containerRect = await getRectByTaro(container.current)
-          const difference = containerRect.bottom - top - curRootRect.height
+          const difference =
+            containerRect.bottom - threshold - curRootRect.height
           const curTransform = difference < 0 ? difference : 0
           setTransform(curTransform)
-          const curFixed = top > curRootRect.top && containerRect.bottom > 0
+          const curFixed =
+            threshold > curRootRect.top && containerRect.bottom > 0
           setFixed(curFixed)
         } else {
-          setFixed(top > curRootRect.top)
+          setFixed(threshold > curRootRect.top)
         }
       } else {
         const windowHeight = getSystemInfoSync().windowHeight
-        setFixed(windowHeight - offset < curRootRect.bottom)
+        setFixed(windowHeight - threshold < curRootRect.bottom)
       }
     } else {
       console.log('getRectByTaro获取失败', { stickyRect, curRootRect })
@@ -165,12 +162,13 @@ export const Sticky: FunctionComponent<StickyProps> = (props) => {
     <div
       ref={rootRef}
       style={rootStyle}
-      className={classNames(b(), className)}
+      className={classNames(classPrefix, className)}
       {...rest}
     >
       <div
-        // 应符合 bem 规范
-        className={classNames('nut-sticky-box', { 'nut-sticky-fixed': fixed })}
+        className={classNames('nut-sticky--box', {
+          'nut-sticky--fixed': fixed,
+        })}
         ref={stickyRef}
         style={stickyStyle}
       >

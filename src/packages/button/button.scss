@@ -20,7 +20,7 @@
   border: $button-border-width solid $button-default-border-color;
 
   .nut-button-text {
-    margin-left: $button-text-icon-width;
+    margin-left: $button-text-icon-margin-left;
   }
 
   &::before {
@@ -176,7 +176,7 @@
     line-height: $button-large-line-height;
 
     .text {
-      margin-left: $button-text-icon-large-width;
+      margin-left: $button-text-icon-large-margin-left;
     }
   }
 
@@ -192,7 +192,7 @@
     font-size: $button-small-font-size;
 
     .text {
-      margin-left: $button-text-icon-small-width;
+      margin-left: $button-text-icon-small-margin-left;
     }
   }
 
@@ -203,7 +203,7 @@
     font-size: $button-mini-font-size;
 
     .text {
-      margin-left: $button-text-icon-mini-width;
+      margin-left: $button-text-icon-mini-margin-left;
     }
   }
 

@@ -1,46 +1,27 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import { redirectTo, navigateTo } from '@tarojs/taro'
-import { Right } from '@nutui/icons-react-taro'
-import bem from '@/utils/bem'
-
+import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface CellProps extends BasicComponent {
   title: ReactNode
-  subTitle: ReactNode
-  description: string
-  descriptionTextAlign: string
-  isLink: boolean
-  icon: ReactNode
-  roundRadius: string | number
-  url: string
-  to: string
-  replace: boolean
-  center: boolean
-  size: string
-  className: string
-  linkSlot: ReactNode
+  description: ReactNode
+  extra: ReactNode
+  radius: string | number
+  align: string
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
   title: null,
-  subTitle: null,
-  description: '',
-  descriptionTextAlign: 'right',
-  isLink: false,
-  icon: null,
-  roundRadius: '6px',
-  url: '',
-  to: '',
-  replace: false,
-  center: false,
-  size: '',
-  className: '',
-  linkSlot: null,
+  description: null,
+  extra: null,
+  radius: '6px',
+  align: 'flex-start',
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
+
+const classPrefix = 'nut-cell'
 
 export const Cell: FunctionComponent<
   Partial<CellProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
@@ -49,82 +30,64 @@ export const Cell: FunctionComponent<
     children,
     onClick,
     title,
-    subTitle,
     description,
-    descriptionTextAlign,
-    isLink,
-    icon,
-    roundRadius,
-    url,
-    to,
-    replace,
-    center,
-    size,
+    extra,
+    radius,
+    align,
     className,
-    linkSlot,
+    style,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
-  const b = bem('cell')
+
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onClick(event)
-    const link = to || url
-    if (link) {
-      replace ? redirectTo({ url: link }) : navigateTo({ url: link })
-    }
   }
 
   const baseStyle = {
-    borderRadius: Number.isNaN(Number(roundRadius))
-      ? String(roundRadius)
-      : `${roundRadius}px`,
+    ...style,
+    borderRadius: Number.isNaN(Number(radius)) ? String(radius) : `${radius}px`,
+    alignItems: align,
   }
 
   const styles =
-    title || subTitle || icon
-      ? { textAlign: descriptionTextAlign }
+    title || description
+      ? {}
       : {
-          textAlign: descriptionTextAlign,
           flex: 1,
         }
   return (
     <div
-      className={`${b(
-        { clickable: !!(isLink || to), center, large: size === 'large' },
-        [className]
-      )} `}
+      className={classNames(classPrefix, className)}
       onClick={(event) => handleClick(event)}
       style={baseStyle}
       {...rest}
     >
       {children || (
         <>
-          {icon && <div className={b('icon')}>{icon}</div>}
-          {title || subTitle ? (
-            <div className={`${b('title')}`}>
-              {title ? <div className={b('maintitle')}>{title}</div> : null}
-              {subTitle ? (
-                <div className={b('subtitle')}>{subTitle}</div>
+          {title || description ? (
+            <div className={`${classPrefix}__left`}>
+              {title ? (
+                <div className={`${classPrefix}__title`}>{title}</div>
+              ) : null}
+              {description ? (
+                <div className={`${classPrefix}__description`}>
+                  {description}
+                </div>
               ) : null}
             </div>
           ) : null}
-          {description ? (
+          {extra ? (
             <div
-              className={b('value', {
-                alone: !title && !subTitle,
-              })}
+              className={`${classPrefix}__extra`}
               style={styles as React.CSSProperties}
             >
-              {description}
+              {extra}
             </div>
           ) : null}
-          {!linkSlot && (isLink || to) ? (
-            <Right className={b('link')} />
-          ) : (
-            linkSlot
-          )}
+          <div className={`${classPrefix}__divider`} />
         </>
       )}
     </div>

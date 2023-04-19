@@ -1,18 +1,16 @@
 #  Image
 
-### Intro
+## Intro
 
 Enhanced img tag with multiple image fill modes, support for loading hint, loading failure hint.
 
-### Install
+## Install
 
 ``` javascript
 // react
 import { Image } from '@nutui/nutui-react';
 ```
-
-## Code
-
+## Demo
 ### Basic Usage
 
 The basic usage is the same as that of the native IMG tag. You can set the native attributes such as SRC, width, height, and Alt.
@@ -26,7 +24,7 @@ const App = () => {
   const src =
     '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   return <>
-    <Image src={src} width="100" height="100" />
+    <Image src={src} width="100%" />
   </>
 }
 export default App;
@@ -127,7 +125,7 @@ const App = () => {
     <Image
       width="100"
       height="100"
-      slotLoding={<Loading className="nut-icon-loading" />}
+      loading={<Loading className="nut-icon-loading" />}
     />
   </>
 }
@@ -151,7 +149,7 @@ const App = () => {
       src="https://x"
       width="100"
       height="100"
-      slotError={<CircleClose />}
+      error={<CircleClose />}
     />
   </>
 }
@@ -191,9 +189,9 @@ const App = () => {
               key={item}
               height="150"
               src={src}
-              isLazy
-              loadingImg={placeholderImg}
-              errorImg={placeholderImg}
+              lazy
+              loading={placeholderImg}
+              error={placeholderImg}
             />
           )
         })}
@@ -205,31 +203,28 @@ export default App;
 ```
 :::
 
-## API
+## Image
 
 ### Props
 
-| Attribute         | Description                             | Type   | Default          |
-|--------------|----------------------------------|--------|------------------|
-| src         | Src               | string | -                |
-| fit         | Fit mode, same as object-fit    | ImageFit | `fill`                |
-| position    | Position, same as object-position  | ImagePosition | `center`              |
-| alt         | Alt               | string | -                |
-| width         | Width，Default unit px                   | string | -                |
-| height         | Height，Default unit px                | string | -                |
-| round         | Whether to be round               | boolean | `false`              |
-| radius         | Border Raduis                | string \| number | -                |
-| showError         | Whether to show error placeholder| boolean | `true`              |
-| showLoading         | Whether to show loading placeholder               | boolean | `true`              |
-| loading      | Custom loading placeholder     | ReactNode | `<Image />` |
-| error    | Custom error placeholder  | ReactNode | `<ImageError />` |
-| isLazy `v1.4.6`  |  Whether to show image lazyload               | boolean | `false`              |
-| loadingImg `v1.4.6`    | Set the prompt image during loading, which conflicts with `slotLoding` and has a higher priority than `slotLoding`     | string | -              |
-| errorImg   `v1.4.6`    | Set the error prompt image, which conflicts with `slotError` and has a higher priority than `slotError`         | string | -              |
+| Property | Description | Type | Default |
+|---------------------|--------------------------- -------|-------|------------------|
+| src | image link | `string` | - |
+| fit | image fill mode, equivalent to the native object-fit property | `ImageFit` | `fill` |
+| position | Image position, equivalent to the original object-position attribute | `ImagePosition` | `center` |
+| alt | alternative text | `string` | - |
+| width | width, default unit `px` | `string` | - |
+| height | height, default unit `px` | `string` | - |
+| radius | rounded corner size | `string \| number` | - |
+| error | Whether to display image loading failure | `boolean \| ReactNode` | `true` |
+| loading | Whether to show loading images | `boolean \| ReactNode` | `true` |
+| lazy | Whether to lazy load images | `boolean` | `false` |
+| onClick | Triggered when an image is clicked | `(e: MouseEvent) => void` | - |
+| onLoad | Triggered after the image is loaded | `() => void` | - |
+| onError | Triggered when the image fails to load | `() => void` | - |
 
-### ImageFit 
 
-| Attribute         | Description                             |
+| Property         | Description                  |
 |--------------|----------------------------------|
 | contain         | Keep aspect ratio, fully display the long side of the image    |
 | cover         | Keep aspect ratio, fully display the short side of the image, cutting the long side     |
@@ -239,7 +234,7 @@ export default App;
 
 ### ImagePosition 
 
-| Attribute         | Description                             |
+| Property         | Description                  |
 |--------------|----------------------------------|
 | center         | Align Center    |
 | top         | Align Top     |
@@ -247,11 +242,4 @@ export default App;
 | bottom    | Align Bottom  |
 | left   | Align Left  |
 
-### Events
-
-| Event | Description           | Arguments     |
-|--------|----------------|--------------|
-| onClick  | Emitted when image is clicked | `event: Event` |
-| onLoad  | Emitted when image loaded | - |
-| onError  | Emitted when image load failed | event: Event |
 

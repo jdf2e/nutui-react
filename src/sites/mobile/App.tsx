@@ -19,7 +19,7 @@ import enUS from '@/locales/en-US'
 import { BaseLang } from '@/locales/base'
 // import Icon from '@/packages/Icon'
 import { nav } from '@/config.json'
-import TaroDemo from '@/sites/mobile/TaroDemo'
+// import TaroDemo from '@/sites/mobile/TaroDemo'
 
 interface Languages {
   [key: string]: BaseLang
@@ -67,7 +67,7 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
       } else {
         href = location.href.replace('en-US', 'zh-CN')
       }
-      location.href = href
+      location.replace(href)
     }
     const getComponentName = () => {
       const s = window.location.hash.split('/')
@@ -168,9 +168,9 @@ const AppSwitch = () => {
             />
           )
         })}
-        <Route path="*-taro">
+        {/* <Route path="*-taro">
           <TaroDemo />
-        </Route>
+        </Route> */}
         <Route path="*">
           <Redirect
             to={{

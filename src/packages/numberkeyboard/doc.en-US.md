@@ -31,7 +31,7 @@ const App = () => {
      <>
        <Cell
         title="Default Keyboard"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}
@@ -68,7 +68,7 @@ const App = () => {
      <>
        <Cell
         title="Keyboard With Sidebar"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}
@@ -107,7 +107,7 @@ const App = () => {
      <>
        <Cell
         title=" Random Key Order"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}
@@ -144,7 +144,7 @@ const App = () => {
      <>
        <Cell
         title="Show Keyboard With Title"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}
@@ -182,7 +182,7 @@ const App = () => {
      <>
        <Cell
         title="Show IdNumber Keyboard"
-        isLink
+        
         onClick={() => {
           setVisible(true)
         }}

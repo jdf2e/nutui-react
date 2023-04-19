@@ -1,14 +1,14 @@
-#  Grid 宫格
+# Grid 宫格
 
-### 介绍
+## 介绍
 
 用于分隔成等宽区块进行页面导航。
 
-### 安装
+## 安装
 
 ```javascript
 // react
-import { Grid, GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 ```
 
 ## 代码演示
@@ -18,20 +18,20 @@ import { Grid, GridItem } from '@nutui/nutui-react'
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid>
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
     </Grid>
   )
 }
@@ -44,18 +44,18 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid columnNum={3}>
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+    <Grid columns={3}>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
     </Grid>
   )
 }
@@ -68,15 +68,15 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid,GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid columnNum={3} square>
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+    <Grid columns={3} square>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
     </Grid>
   )
 }
@@ -90,20 +90,20 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid gutter={3}>
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+    <Grid gap={3}>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
     </Grid>
   )
 }
@@ -116,16 +116,16 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid reverse>
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
     </Grid>
   )
 }
@@ -138,16 +138,38 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Grid direction="horizontal">
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem icon={<Dongdong />} text="文字" />
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+    </Grid>
+  )
+}
+export default App
+```
+:::
+
+### 内容翻转 + 横向
+
+:::demo
+```tsx
+import React from 'react'
+import { Grid } from '@nutui/nutui-react'
+import { Dongdong } from '@nutui/icons-react'
+
+const App = () => {
+  return (
+    <Grid reverse direction="horizontal">
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
+      <Grid.Item text="文字"><Dongdong /></Grid.Item>
     </Grid>
   )
 }
@@ -160,18 +182,21 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem } from '@nutui/nutui-react'
+import { Grid } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid columnNum="3">
-      <GridItem icon={<Dongdong />} text="文字" />
-      <GridItem
-        icon={<Dongdong width={40} height={40} color="#478EF2" />}
-        text="文字"
-      />
-      <GridItem icon={<Dongdong />} text="文字" />
+    <Grid columns="3">
+      <Grid.Item text="文字">
+        <Dongdong width={10} height={10} />
+      </Grid.Item>
+      <Grid.Item text="文字">
+        <Dongdong color="red" />
+      </Grid.Item>
+      <Grid.Item text="文字">
+        <Dongdong width={20} height={20} color="#478EF2" />
+      </Grid.Item>
     </Grid>
   )
 }
@@ -184,38 +209,26 @@ export default App
 :::demo
 ```tsx
 import React from 'react'
-import { Grid, GridItem, Avatar, Image } from '@nutui/nutui-react'
+import { Grid, Avatar, Image } from '@nutui/nutui-react'
 import { Dongdong, My } from '@nutui/icons-react'
 
 const App = () => {
   return (
-    <Grid border={false}>
-      <GridItem icon={<Dongdong />} text={<span>More</span>} />
-        <GridItem
-          text={
-            <Avatar
-              className="demo-avatar"
-              icon={<My color="#fff"/>}
-              bgColor="#FA2C19"
-            />
-          }
-          onClick={handleClick}
-        />
-        <GridItem
-          icon={
-            <Avatar
-              className="demo-avatar"
-              icon={<My color="#fff"/>}
-              bgColor="#FA2C19"
-            />
-          }
-        />
-        <GridItem>
+    <Grid>
+      <Grid.Item text={<span>More</span>}><Dongdong /></Grid.Item>
+        <Grid.Item>
+          <Avatar
+            className="demo-avatar"
+            icon={<My color="#fff"/>}
+            bgColor="#FA2C19"
+          />
+        </Grid.Item>
+        <Grid.Item>
           <Avatar
             size="large"
             icon={<Image src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />}
           />
-        </GridItem>
+        </Grid.Item>
     </Grid>
   )
 }
@@ -223,45 +236,28 @@ export default App
 ```
 :::
 
-## API
+## Grid
 
 ### Props
 
-| 参数          | 说明                                      | 类型                    | 默认值      |
-|---------------|------------------------------------------|------------------------|------------|
-| columnNum    | 列数                                     | number \| string         | `4`        |
-| border        | 是否显示边框                               | boolean                | `true`     |
-| gutter        | 格子之间的间距，默认单位为`px`               | number \| string        | `0`        |
-| center        | 是否将格子内容居中显示                      | boolean                | `true`      |
-| square        | 是否将格子固定为正方形                      | boolean                | `false`     |
-| reverse       | 内容翻转                                  | boolean                | `false`     |
-| direction     | 格子内容排列的方向，可选值为 `horizontal`    | string                 | `vertical`  |
-| iconSize`2.0.0 废弃`     | 图标大小，如 `20px` `2em` `2rem`          | number \| string        | `28px`     |
-| iconColor`2.0.0 废弃`    | 图标颜色                                  | string                 | -          |
+| 属性 | 描述 | 类型 | 默认值 |
+|-|-|-|-|
+| columns | 列数 | number \| string | `4` |
+| gap | 格子之间的间距，默认单位为`px` | number \| string | `0` |
+| center | 是否将格子内容居中显示 | boolean | `true` |
+| square | 是否将格子固定为正方形 | boolean | `false` |
+| reverse | 内容翻转 | boolean | `false` |
+| direction | 格子内容排列的方向，可选值为 `horizontal` | string | `vertical` |
+| onClick | 宫格子项点击事件 | (index) => void | - |
 
-## Grid Event
+## Grid.Item
 
-| 字段       | 说明         | 回调参数                                           |
-|----------|--------------|----------------------------------------------------|
-| onClick | 宫格子项点击事件 | 点击当前项, 索引 |
+### Props
 
-### GridItem Props
-
-| 参数                  | 说明                                                                                     | 类型               | 默认值      |
-|----------------------|-----------------------------------------------------------------------------------------|--------------------|------------|
-| text                 | 文字                                                                                     | string \| ReactNode   | -          |
-| fontSize `1.4.4`     | 文字大小                                                                                  | string \| number   | -          |
-| color `1.4.4`        | 文字颜色                                                                                  | string   | -          |
-| icon                 | 图标                                                              | ReactNode   | -          |
-| iconSize`2.0.0 废弃`            | 图标大小，如 `20px` `2em` `2rem`                                                          | number \| string   | `28px`     |
-| iconColor`2.0.0 废弃`           | 图标颜色                                                                                  | string            | -           |
-
-### GridItem Event
-
-| 参数                  | 说明                                                                                     | 回调参数    |
-|----------------------|-----------------------------------------------------------------------------------------|--------------------|
-| onClick `1.3.14`                 | 点击格子时触发                                                                         | `event: Event`      |
-
+| 属性 | 描述 | 类型 | 默认值 |
+|-|-|-|-|
+| text | 文字 | string \| ReactNode   | - |
+| onClick | 点击格子时触发 | (event: Event) => void | - |
 
 ## 主题定制
 
@@ -269,12 +265,11 @@ export default App
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-grid-border-color | `#f5f6f7` |
-| --nutui-grid-item-content-padding | `16px 8px` |
-| --nutui-grid-item-content-bg-color | `$white` |
-| --nutui-grid-item-text-margin | `8px` |
-| --nutui-grid-item-text-color | `$gray1` |
-| --nutui-grid-item-icon-color | `$gray1` |
-| --nutui-grid-item-text-font-size | `$font-size-1` |
+| 名称 | 描述 | 默认值 |
+| --- | --- | --- |
+| --nutui-grid-border-color | 边框颜色 | `#f5f6f7` |
+| --nutui-grid-item-content-padding | 内边距 | `16px 8px` |
+| --nutui-grid-item-content-bg-color | 背景 | `$white` |
+| --nutui-grid-item-text-margin | 外边距 | `8px` |
+| --nutui-grid-item-text-color | 文字颜色 | `$gray1` |
+| --nutui-grid-item-text-font-size | 文字字体大小 | `$font-size-1` |

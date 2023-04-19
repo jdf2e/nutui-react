@@ -7,7 +7,6 @@
 ### 安裝
 
 ```ts
-// react
 import { Cell, CellGroup } from '@nutui/nutui-react'
 ```
 
@@ -19,23 +18,23 @@ import { Cell, CellGroup } from '@nutui/nutui-react'
 
 ```tsx
 import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import { Cell, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const testClick = (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
-    console.log('點擊事件')
+    Toast.text('點擊事件')
 }
   return (
     <>
-    <Cell title="我是標題" description="描述文字" />
-    <Cell title="我是標題" subTitle="副標題描述" description="描述文字" />
+    <Cell title="我是標題" extra="描述文字" />
+    <Cell title="我是標題" description="我是描述" extra="描述文字" />
     <Cell
         title="點擊測試"
         onClick={(
         event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => testClick(event)}
     />
-    <Cell title="圓角設置0" roundRadius={0} />
+    <Cell title="圓角設置0" radius={0} />
     </>
   );
 };
@@ -44,7 +43,7 @@ export default App;
 
 :::
 
-### 尺寸設置 large
+### 自定義內容
 
 :::demo
 
@@ -54,37 +53,9 @@ import { Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <>
-    <Cell size="large" title="我是標題" description="描述文字" />
-    <Cell
-        size="large"
-        title="我是標題"
-        subTitle="副標題描述"
-        description="描述文字"
-    />
-    </>
-  );
-};
-export default App;
-```
-
-:::
-
-### 直接使用插槽
-
-:::demo
-
-```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
     <Cell>
         <div>自定義內容</div>
     </Cell>
-    </>
   );
 };
 export default App;
@@ -92,24 +63,50 @@ export default App;
 
 :::
 
-### 直接使用插槽(title slots)
+### 自定義標題區域
 
 :::demo
 
 ```tsx
 import  React from "react";
 import { Cell } from '@nutui/nutui-react';
+import { My } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Cell
         title={
-        <span>
-            Title <b style={{ color: 'red' }}>1</b>
-        </span>
+        <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+            <My />
+            我是標題<span style={{ marginLeft: '5px' }}>{translated.title}</span>
+        </div>
         }
-        description="描述文字"
+        description={
+        <span>我是描述<b style={{ color: 'red' }}>1</b></span>
+        }
+        extra="描述文字"
     />
+  );
+};
+export default App;
+```
+
+:::
+
+### 自定義右側區域
+
+:::demo
+
+```tsx
+import  React from "react";
+import { CellGroup,Cell,Switch } from '@nutui/nutui-react';
+
+
+const App = () => {
+  return (
+    <CellGroup title="自定義右側箭頭區域">
+      <Cell title="Switch" extra={<Switch checked />} />
+    </CellGroup>
   );
 };
 export default App;
@@ -124,109 +121,44 @@ export default App;
 ```tsx
 import  React from "react";
 import { CellGroup,Cell } from '@nutui/nutui-react';
+import { Right } from '@nutui/icons-react'
 
 const App = () => {
+  const onJumpclick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    url: string
+  ) => {
+    const replace = false
+    if (url) {
+      replace ? window.location.replace(url) : (window.location.href = url)
+    }
+  }
   return (
-    <>
     <CellGroup
         title="鏈接 | 分組用法"
-        description="使用 nut-cell-group 支持 title description slots"
+        description="使用 nut-cell-group 支持 title extra"
     >
-        <Cell title="鏈接" isLink />
         <Cell
+        className="nutui-cell--clickable"
+        title="鏈接"
+        align="center"
+        extra={<Right />}
+        />
+        <Cell
+        className="nutui-cell--clickable"
         title="URL 跳轉"
-        description="https://jd.com"
-        isLink
-        url="https://jd.com"
-        />
-    </CellGroup>
-    </>
-  );
-};
-export default App;
-```
-
-:::
-
-### 自定義右側箭頭區域
-
-:::demo
-
-```tsx
-import  React from "react";
-import { CellGroup,Cell,Switch } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <CellGroup title="自定義右側箭頭區域">
-      <Cell title="Switch" linkSlot={<Switch checked />} />
-    </CellGroup>
-  );
-};
-export default App;
-```
-
-:::
-
-### 自定義左側 Icon 區域
-
-:::demo
-
-```tsx
-import  React from "react";
-import { CellGroup,Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <CellGroup title="自定義左側 Icon 區域">
-        <Cell
-        title="圖片"
-        icon={
-            <img
-            className="nut-icon"
-            alt=""
-            src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-            />
+        extra={
+            <>
+            <span style={{ marginRight: '5px' }}>https://jd.com</span>
+            <Right />
+            </>
         }
+        align="center"
+        onClick={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+        ) => onJumpclick(event, 'https://jd.com')}
         />
     </CellGroup>
-  );
-};
-export default App;
-```
-
-:::
-
-### 單元格展示圖標
-
-:::demo
-
-```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
-import { My } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <Cell title="姓名" icon={<My />} description="描述文案" isLink />
-  );
-};
-export default App;
-```
-
-:::
-
-### 只展示 description ，可通過 description-text-align 調整內容位置
-
-:::demo
-
-```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell descTextAlign="left" description="描述文案" />
   );
 };
 export default App;
@@ -236,7 +168,7 @@ export default App;
 
 ### 垂直居中
 
-通過 `center` 屬性可以讓 Cell 的左右內容都垂直居中。
+通過 `align` 屬性可以讓 Cell 的左右內容都垂直居中。
 
 :::demo
 
@@ -246,7 +178,7 @@ import { Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-     <Cell center title="我是標題" subTitle="副標題描述" description="描述文字" />
+     <Cell align="center" title="我是標題" description="我是描述" extra="描述文字" />
   );
 };
 export default App;
@@ -261,70 +193,48 @@ export default App;
 
 | 字段  | 說明     | 類型   | 默認值 |
 |-------|----------|--------|--------|
-| title | 分組標題 | string | -      |
-| description  | 分組描述 | string | -      |
-| titleSlot        | 自定義`title`標題區域                         | ReactNode          | -  |
-| descSlot        | 自定義`description`描述區域                         | ReactNode          | -  |
+| title | 分組標題 | ReactNode | -      |
+| description  | 分組描述 | ReactNode | -      |
+
 
 ### Cell Prop
 
-| 字段           | 說明                                                                                           | 類型             | 默認值 |
-|--------------|------------------------------------------------------------------------------------------------|------------------|--------|
-| title        | 標題名稱                      |  ReactNode           | -      |
-| subTitle     | 左側副標題                           |  ReactNode           | -      |
-| description         | 右側描述                                     | string      | -      |
-| descTextAlign | 右側描述文本對齊方式 [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp)，只展示 description 時可用 | string | `right`  |
-| isLink       | 是否展示右側箭頭並開啟點擊反饋            | boolean          | `false`  |
-| to`v1.4.0 废弃`  | 點擊後跳轉的目標路由對象 | string  | -      |
-| replace      | 是否在跳轉時替換當前頁面歷史                             | boolean          | `false`  |
-| roundRadius  | 圓角半徑                                      | string            | `6px`    |
-| url          | 點擊後跳轉的鏈接地址                                         | string           | -      |
-| icon         | 自定義左側`icon`區域              | ReactNode          | -      |
-| center       | 是否使內容垂直居中                                                                             | boolean          | `false`  |
-| size         | 單元格大小，可選值為 `large`                           | string          | -  |
-| linkSlot     | 自定義右側`link`區域                         | ReactNode          | -  |
-
-
-
-
-### Cell Event
-
-| 名稱  | 說明     | 回調參數                                                       |
-| ----- | -------- | -------------------------------------------------------------- |
-| onClick | 點擊事件 | `event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>` |
-
-
-## 主題定制
+| 字段                 | 說明| 類型             | 默認值 |
+|--------------------|----------------------------|------------------|--------|
+| title              | 標題|  ReactNode           | -      |
+| description           | 描述 |  ReactNode           | -      |
+| extra               | 右側描述 | ReactNode      | -      |
+| radius | 圓角半徑 | string | `6px`    |
+| align     | 縱軸方向上的對齊方式，可選值為：`flex-start`、`center`、`flex-end` | string          | `flex-start`  |
+| onClick | 點擊事件 | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` |`false`|
+## 主題定製
 
 ### 樣式變量
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-cell-color | `$gray1` |
-| --nutui-cell-title-font | `$font-size-2` |
-| --nutui-cell-title-description-font | `$font-size-1` |
-| --nutui-cell-description-font | `$font-size-2` |
-| --nutui-cell-description-color | `$gray2` |
-| --nutui-cell-subtitle-color | `$gray2` |
-| --nutui-cell-border-radius | `6px` |
-| --nutui-cell-padding | `13px 16px` |
-| --nutui-cell-line-height | `20px` |
-| --nutui-cell-after-right | `16px` |
-| --nutui-cell-after-border-bottom | `2px solid #f5f6f7` |
-| --nutui-cell-default-icon-margin | `0 4px 0 0px` |
-| --nutui-cell-large-title-font | `$font-size-large` |
-| --nutui-cell-large-title-description-font | `$font-size-base` |
-| --nutui-cell-large-padding | `15px 16px` |
-| --nutui-cell-background | `$gray6` |
-| --nutui-cell-box-shaow | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
-| --nutui-cell-group-title-padding | `0 10px` |
-| --nutui-cell-group-title-color | `#909ca4` |
-| --nutui-cell-group-title-font-size | `$font-size-2` |
-| --nutui-cell-group-title-line-height | `20px` |
-| --nutui-cell-group-description-padding | `0 10px` |
-| --nutui-cell-group-description-color | `#909ca4` |
-| --nutui-cell-group-description-font-size | `$font-size-1` |
-| --nutui-cell-group-description-line-height | `16px` |
-| --nutui-cell-group-background-color | `$white` |
+| 名稱| 說明 | 默認值 |
+| --- | --- | --- |
+| --nutui-cell-title-color | 單元格標題字體顏色 | `$gray1` |
+| --nutui-cell-title-font-size | 單元格標題字體大小 | `$font-size-2` |
+| --nutui-cell-description-color| 單元格描述字體顏色  | `$gray2` |
+| --nutui-cell-description-font-size | 單元格描述字體大小 | `$font-size-1` |
+| --nutui-cell-extra-color| 單元格右側描述字體顏色  | `$gray2` |
+| --nutui-cell-extra-font-size | 單元格右側描述字體大小 | `$font-size-2` |
+| --nutui-cell-border-radius| 單元格圓角大小  | `6px` |
+| --nutui-cell-padding| 單元格內邊距  | `13px 16px` |
+| --nutui-cell-line-height| 單元格行高  | `20px` |
+| --nutui-cell-divider-left| 單元格分割線左邊距  | `16px` |
+| --nutui-cell-divider-right| 單元格分割線右邊距   | `16px` |
+| --nutui-cell-divider-border-bottom| 單元格分割線下邊框  | `2px solid #f5f6f7` |
+| --nutui-cell-background-color| 單元格背景顏色  | `$gray6` |
+| --nutui-cell-box-shadow| 單元格陰影  | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
+| --nutui-cell-group-title-padding| 單元格分組的標題內邊距  | `0 10px` |
+| --nutui-cell-group-title-color| 單元格分組的標題字體顏色  | `#909ca4` |
+| --nutui-cell-group-title-font-size| 單元格分組的標題字體大小  | `$font-size-2` |
+| --nutui-cell-group-title-line-height | 單元格分組的標題行高 | `20px` |
+| --nutui-cell-group-description-padding| 單元格分組的描述內邊距  | `0 10px` |
+| --nutui-cell-group-description-color| 單元格分組的描述顏色  | `#909ca4` |
+| --nutui-cell-group-description-font-size| 單元格分組的描述字體大小  | `$font-size-1` |
+| --nutui-cell-group-description-line-height| 單元格分組的描述行高  | `16px` |
+| --nutui-cell-group-background-color| 單元格分組的背景顏色  | `$white` |

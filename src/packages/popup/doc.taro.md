@@ -25,7 +25,7 @@ const App = () => {
   const [showBasic, setShowBasic] = useState(false);
   return (
     <>
-        <Cell title="展示弹出层" isLink onClick={() => { setShowBasic(true) }}/>
+        <Cell title="展示弹出层"  onClick={() => { setShowBasic(true) }}/>
         <Popup visible={ showBasic } style={{ padding: '30px 50px' }} onClose={ () => { setShowBasic(false) } }>正文</Popup>
     </>
   );
@@ -50,10 +50,10 @@ const App = () => {
 
   return (
     <>
-        <Cell title="顶部弹出" isLink onClick={() => { setShowTop(true) }}/>
-        <Cell title="底部弹出" isLink onClick={() => { setShowBottom(true) }}/>
-        <Cell title="左侧弹出" isLink onClick={() => { setShowLeft(true) }}/>
-        <Cell title="右侧弹出" isLink onClick={() => { setShowRight(true) }}/>
+        <Cell title="顶部弹出"  onClick={() => { setShowTop(true) }}/>
+        <Cell title="底部弹出"  onClick={() => { setShowBottom(true) }}/>
+        <Cell title="左侧弹出"  onClick={() => { setShowLeft(true) }}/>
+        <Cell title="右侧弹出"  onClick={() => { setShowRight(true) }}/>
         <Popup visible={ showTop } style={{ height: '20%' }} position="top" onClose={ () => { setShowTop(false) } } />
         <Popup visible={ showBottom } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowBottom(false) } } />
         <Popup visible={ showLeft } style={{ width: '20%', height: '100%' }} position="left" onClose={ () => { setShowLeft(false) } } />
@@ -81,9 +81,9 @@ const App = () => {
 
   return (
     <>
-        <Cell title="关闭图标" isLink onClick={() => { setShowIcon(true) }}/>
-        <Cell title="图标位置" isLink onClick={() => { setShowIconPosition(true) }}/>
-        <Cell title="自定义图标" isLink onClick={() => { setShowIconDefine(true) }}/>
+        <Cell title="关闭图标"  onClick={() => { setShowIcon(true) }}/>
+        <Cell title="图标位置"  onClick={() => { setShowIconPosition(true) }}/>
+        <Cell title="自定义图标"  onClick={() => { setShowIconDefine(true) }}/>
         <Popup closeable visible={ showIcon } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowIcon(false) } } />
         <Popup closeable visible={ showIconPosition } style={{ height: '20%' }} closeIconPosition="top-left" position="bottom" onClose={ () => { setShowIconPosition(false) } } />
       <Popup visible={ showIconDefine } style={{ height: '20%' }} closeable closeIcon={<Heart />} position="bottom" onClose={ () => { setShowIconDefine(false) } } />
@@ -108,7 +108,7 @@ const App = () => {
 
   return (
     <>
-        <Cell title="圆角弹框" isLink onClick={() => { setShowBottomRound(true) }}/>
+        <Cell title="圆角弹框"  onClick={() => { setShowBottomRound(true) }}/>
         <Popup closeable visible={ showBottomRound } style={{ height: '20%' }} position="bottom" round onClose={ () => { setShowBottomRound(false) } } />
     </>
   );
@@ -129,7 +129,7 @@ const App = () => {
 
   return (
     <>
-        <Cell title="指定节点挂载" isLink onClick={() => { setShowMountNode(true) }}/>
+        <Cell title="指定节点挂载"  onClick={() => { setShowMountNode(true) }}/>
         <Popup visible={showMountNode} style={{ padding: '30px 50px' }} teleport={ document.body } onClose={() => { setShowMountNode(false) }}>
           body
         </Popup>
@@ -153,7 +153,7 @@ const App = () => {
 
   return (
     <>
-        <Cell title="多层堆叠" isLink onClick={() => { setShowMutiple(true) }}/>
+        <Cell title="多层堆叠"  onClick={() => { setShowMutiple(true) }}/>
         <Popup
           visible={showMutiple}
           style={{ padding: '30px 50px' }}
