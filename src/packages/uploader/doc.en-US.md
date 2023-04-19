@@ -54,6 +54,26 @@ import { Dongdong, Loading1 } from '@nutui/icons-react';
 
 type FileType<T> = { [key: string]: T }
 
+class FileItem {
+  status: FileItemStatus = 'ready'
+
+  message = 'preparing..'
+
+  uid: string = new Date().getTime().toString()
+
+  name?: string
+
+  url?: string
+
+  path?: string
+
+  type?: string
+
+  percentage: string | number = 0
+
+  formData: FormData = new FormData()
+}
+
 const App = () => {
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
   const defaultFileList: FileType<React.ReactNode>[] = [
@@ -108,7 +128,7 @@ const App = () => {
       loadingIcon: ' ',
     },
   ]
-  const onDelete = (file: FileItem, fileList: FileItem[]) => {
+  const onDelete = (file: FileItem, fileList: FileType<React.ReactNode>[]) => {
     console.log(translated.ca3903f3, file, fileList)
   }
   return (

@@ -231,7 +231,7 @@ const UploaderDemo = () => {
     setProgressPercent(percentage)
     console.log(translated.uploadProgressAction)
   }
-  const onDelete = (file: FileItem, fileList: FileType<string>[]) => {
+  const onDelete = (file: FileItem, fileList: FileType<React.ReactNode>[]) => {
     console.log(translated.ca3903f3, file, fileList)
   }
   const beforeXhrUpload = (taroUploadFile: any, options: any) => {
@@ -327,7 +327,7 @@ const UploaderDemo = () => {
 
         <h2>{translated.uploadDefaultProgress}</h2>
         <Uploader url={uploadUrl} onProgress={onProgress}>
-          <Button type="default" size="small">
+          <Button type="success" size="small">
             {translated.bb5caa9c}
           </Button>
         </Uploader>

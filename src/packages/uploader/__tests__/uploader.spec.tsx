@@ -83,7 +83,7 @@ test('should render base uploader other props', () => {
   }
 
   const { container } = render(<App />)
-  expect(container.querySelector('.nutui-iconfont')).toBeTruthy()
+  expect(container.querySelector('.nut-icon')).toBeTruthy()
   expect(container.querySelector('.close')).toBeTruthy()
   expect(container.querySelectorAll('.nut-uploader__preview').length).toBe(3)
   fireEvent.click(container.querySelectorAll('.close')[0])
@@ -173,7 +173,7 @@ test('before-delete prop return false', () => {
     )
   }
   const { container } = render(<App />)
-  fireEvent.click(container.querySelectorAll('.nut-icon-failure')[0])
+  fireEvent.click(container.querySelectorAll('.nut-icon-Failure')[0])
   expect(onDelete).not.toBeCalled()
 })
 
@@ -202,6 +202,6 @@ test('before-delete prop return true', () => {
     )
   }
   const { container } = render(<App />)
-  fireEvent.click(container.querySelectorAll('.nut-icon-failure')[0])
+  fireEvent.click(container.querySelectorAll('.nut-icon-Failure')[0])
   expect(onDelete).toBeCalled()
 })

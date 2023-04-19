@@ -468,7 +468,7 @@ const InternalUploader: ForwardRefRenderFunction<
 
   const filterFiles = <T extends TFileType>(files: T[]) => {
     const maximum = (props.maxCount as number) * 1
-    const maximize = (props.maxCount as number) * 1
+    const maximize = (props.maxFileSize as number) * 1
     const oversizes = new Array<T>()
     const filterFile = files.filter((file: T) => {
       if (file.size > maximize) {
