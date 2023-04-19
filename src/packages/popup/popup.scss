@@ -1,21 +1,4 @@
-@import '../icon/icon.scss';
 @import '../overlay/overlay.scss';
-
-.nut-theme-dark {
-  .nut-popup {
-    background: $dark6;
-  }
-
-  .nut-popup {
-    &__close-icon {
-      color: $dark1;
-    }
-  }
-
-  .nut-popup-slide-center-enter-done {
-    color: $dark1;
-  }
-}
 
 .nut-popup {
   position: fixed;

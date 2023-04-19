@@ -14,7 +14,6 @@ import { Close } from '@nutui/icons-react'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
-import bem from '@/utils/bem'
 import { ComponentDefaults } from '@/utils/typings'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
@@ -23,22 +22,20 @@ export interface PopupProps extends OverlayProps {
   position: string
   transition: string
   overlayStyle: React.CSSProperties
-  overlayClass: string
-  popClass: string
+  overlayClassName: string
+  className: string
   closeable: boolean
   closeIconPosition: string
   closeIcon: React.ReactNode
   destroyOnClose: boolean
-  teleport: Teleport
+  portal: Teleport
   overlay: boolean
   round: boolean
   onOpen: () => void
   onClose: () => void
   onClick: (e: MouseEvent) => void
-  onOpened: (e: HTMLElement) => void
-  onClosed: (e: HTMLElement) => void
-  onClickOverlay: (e: MouseEvent) => void
-  onClickCloseIcon: (e: MouseEvent) => void
+  onClickOverlay: (e: MouseEvent) => boolean | void
+  onClickCloseIcon: (e: MouseEvent) => boolean | void
 }
 
 const defaultProps = {
@@ -46,22 +43,20 @@ const defaultProps = {
   position: 'center',
   transition: '',
   overlayStyle: {},
-  overlayClass: '',
-  popClass: '',
+  overlayClassName: '',
+  className: '',
   closeable: false,
   closeIconPosition: 'top-right',
   closeIcon: 'close',
-  destroyOnClose: true,
-  teleport: null,
+  destroyOnClose: false,
+  portal: null,
   overlay: true,
   round: false,
   onOpen: () => {},
   onClose: () => {},
   onClick: (e: MouseEvent) => {},
-  onOpened: (e: HTMLElement) => {},
-  onClosed: (e: HTMLElement) => {},
-  onClickOverlay: (e: MouseEvent) => {},
-  onClickCloseIcon: (e: MouseEvent) => {},
+  onClickOverlay: (e: MouseEvent) => true || {},
+  onClickCloseIcon: (e: MouseEvent) => true || {},
   ...defaultOverlayProps,
 } as PopupProps
 
@@ -77,7 +72,7 @@ export const Popup: FunctionComponent<
     overlay,
     closeOnOverlayClick,
     overlayStyle,
-    overlayClass,
+    overlayClassName,
     zIndex,
     lockScroll,
     duration,
@@ -88,16 +83,15 @@ export const Popup: FunctionComponent<
     transition,
     round,
     position,
-    popClass,
     className,
     destroyOnClose,
-    teleport,
+    portal,
     onOpen,
     onClose,
     onClickOverlay,
     onClickCloseIcon,
-    onOpened,
-    onClosed,
+    afterShow,
+    afterClose,
     onClick,
   } = props
 
@@ -106,8 +100,7 @@ export const Popup: FunctionComponent<
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
 
-  const b = bem('popup')
-
+  const classPrefix = 'nut-popup'
   const baseStyle = {
     zIndex: index,
     animationDuration: `${duration}s`,
@@ -123,19 +116,16 @@ export const Popup: FunctionComponent<
     ...baseStyle,
   }
 
-  const classes = classNames(
-    {
-      round,
-      [`nut-popup-${position}`]: true,
-      [`${popClass}`]: true,
-      [`${className || ''}`]: true,
-    },
-    b('')
-  )
+  const popClassName = classNames({
+    round,
+    [`${classPrefix}`]: true,
+    [`${classPrefix}-${position}`]: true,
+    [`${className || ''}`]: true,
+  })
 
   const closeClasses = classNames({
-    'nut-popup__close-icon': true,
-    [`nut-popup__close-icon--${closeIconPosition}`]: true,
+    [`${classPrefix}__close-icon`]: true,
+    [`${classPrefix}__close-icon--${closeIconPosition}`]: true,
   })
 
   const open = () => {
@@ -155,16 +145,16 @@ export const Popup: FunctionComponent<
       if (destroyOnClose) {
         setTimeout(() => {
           setShowChildren(false)
-          onClose && onClose()
         }, Number(duration) * 1000)
       }
+      onClose && onClose()
     }
   }
 
   const onHandleClickOverlay = (e: MouseEvent) => {
     if (closeOnOverlayClick) {
-      onClickOverlay && onClickOverlay(e)
-      close()
+      const closed = onClickOverlay && onClickOverlay(e)
+      closed && close()
     }
   }
 
@@ -175,20 +165,20 @@ export const Popup: FunctionComponent<
   const onHandleClickCloseIcon: MouseEventHandler<HTMLDivElement> = (
     e: MouseEvent
   ) => {
-    onClickCloseIcon && onClickCloseIcon(e)
-    close()
+    const closed = onClickCloseIcon && onClickCloseIcon(e)
+    closed && close()
   }
 
   const onHandleOpened: EnterHandler<HTMLElement | undefined> | undefined = (
     e: HTMLElement
   ) => {
-    onOpened && onOpened(e)
+    afterShow && afterShow()
   }
 
   const onHandleClosed: ExitHandler<HTMLElement | undefined> | undefined = (
     e: HTMLElement
   ) => {
-    onClosed && onClosed(e)
+    afterClose && afterClose()
   }
 
   const resolveContainer = (getContainer: Teleport | undefined) => {
@@ -202,9 +192,9 @@ export const Popup: FunctionComponent<
       const container = resolveContainer(getContainer)
       return createPortal(node, container) as ReactPortal
     }
-
     return node
   }
+
   const renderIcon = () => {
     if (closeable) {
       return (
@@ -229,7 +219,7 @@ export const Popup: FunctionComponent<
         onEntered={onHandleOpened}
         onExited={onHandleClosed}
       >
-        <div style={popStyles} className={classes} onClick={onHandleClick}>
+        <div style={popStyles} className={popClassName} onClick={onHandleClick}>
           {showChildren ? children : ''}
           {renderIcon()}
         </div>
@@ -244,7 +234,7 @@ export const Popup: FunctionComponent<
           <>
             <Overlay
               style={overlayStyles}
-              className={overlayClass}
+              className={overlayClassName}
               visible={innerVisible}
               closeOnOverlayClick={closeOnOverlayClick}
               zIndex={zIndex}
@@ -267,10 +257,10 @@ export const Popup: FunctionComponent<
   }, [visible])
 
   useEffect(() => {
-    setTransitionName(transition || `nut-popup-slide-${position}`)
-  }, [position])
+    setTransitionName(transition || `${classPrefix}-slide-${position}`)
+  }, [position, transition])
 
-  return <>{renderToContainer(teleport as Teleport, renderNode())}</>
+  return <>{renderToContainer(portal as Teleport, renderNode())}</>
 }
 
 Popup.defaultProps = defaultProps
