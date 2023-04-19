@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useMemo, ReactNode } from 'react'
 import classNames from 'classnames'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 

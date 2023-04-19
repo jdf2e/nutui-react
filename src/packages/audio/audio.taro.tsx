@@ -6,7 +6,7 @@ import React, {
 } from 'react'
 
 import { createInnerAudioContext, InnerAudioContext } from '@tarojs/taro'
-import { Service } from '@nutui/icons-react'
+import { Service } from '@nutui/icons-react-taro'
 import Range from '@/packages/range/index.taro'
 import Button from '@/packages/button/index.taro'
 import bem from '@/utils/bem'

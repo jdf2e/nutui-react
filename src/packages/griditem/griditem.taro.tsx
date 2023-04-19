@@ -5,7 +5,7 @@ import React, {
   useContext,
 } from 'react'
 import classNames from 'classnames'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/index.taro'
 import GridContext from '../grid/grid.taro.context'
 import { BasicComponent } from '@/utils/typings'
 import { pxCheck } from '@/utils/px-check'
