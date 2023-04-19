@@ -22,7 +22,7 @@ test('should add step 2 when trigger click plus button', () => {
       onChange={change}
     />
   )
-  const iconPlus = container.querySelectorAll('.nut-icon-plus')[0]
+  const iconPlus = container.querySelectorAll('.nut-icon-Plus')[0]
   fireEvent.click(iconPlus)
   expect(overlimit).not.toBeCalled()
   expect(add).toBeCalled()
@@ -42,7 +42,7 @@ test('should minis step 2 when trigger click minis button', () => {
       onChange={change}
     />
   )
-  const iconMinus = container.querySelectorAll('.nut-icon-minus')[0]
+  const iconMinus = container.querySelectorAll('.nut-icon-Minus')[0]
   fireEvent.click(iconMinus)
   expect(overlimit).not.toBeCalled()
   expect(reduce).toBeCalled()
@@ -63,7 +63,7 @@ test('should render max props', () => {
       onChange={change}
     />
   )
-  const iconPlus = container.querySelectorAll('.nut-icon-plus')[0]
+  const iconPlus = container.querySelectorAll('.nut-icon-Plus')[0]
   fireEvent.click(iconPlus)
   expect(overlimit).toBeCalled()
   expect(add).toBeCalled()
@@ -84,7 +84,7 @@ test('should render min props', () => {
       onChange={change}
     />
   )
-  const iconMinus = container.querySelectorAll('.nut-icon-minus')[0]
+  const iconMinus = container.querySelectorAll('.nut-icon-Minus')[0]
   fireEvent.click(iconMinus)
   expect(overlimit).toBeCalled()
   expect(reduce).toBeCalled()
@@ -94,11 +94,11 @@ test('should render min props', () => {
 test('should not trigger click when disabled props to be true', () => {
   const { container } = render(<InputNumber defaultValue={1} disabled />)
 
-  const iconPlus = container.querySelectorAll('.nut-icon-plus')[0]
+  const iconPlus = container.querySelectorAll('.nut-icon-Plus')[0]
   fireEvent.click(iconPlus)
   expect(container.querySelector('input')?.value).toBe('1')
 
-  const iconMinus = container.querySelectorAll('.nut-icon-minus')[0]
+  const iconMinus = container.querySelectorAll('.nut-icon-Minus')[0]
   fireEvent.click(iconMinus)
 
   expect(container.querySelector('input')?.value).toBe('1')
@@ -109,7 +109,7 @@ test('should not focus input when readonly props to be true', () => {
   const { container } = render(
     <InputNumber readonly defaultValue={2} onFocus={focus} />
   )
-  const iconMinus = container.querySelectorAll('.nut-icon-minus')[0]
+  const iconMinus = container.querySelectorAll('.nut-icon-Minus')[0]
   fireEvent.click(iconMinus)
   expect(container.querySelector('input')?.value).toBe('1')
   expect(focus).not.toBeCalled()
@@ -119,7 +119,7 @@ test('should render decimal when step props to be 0.2', () => {
   const { container } = render(
     <InputNumber step="0.2" digits="1" defaultValue={2} />
   )
-  const iconPlus = container.querySelectorAll('.nut-icon-plus')[0]
+  const iconPlus = container.querySelectorAll('.nut-icon-Plus')[0]
   fireEvent.click(iconPlus)
   expect(container.querySelector('input')?.value).toBe('2.2')
 })
