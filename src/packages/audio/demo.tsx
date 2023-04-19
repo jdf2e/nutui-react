@@ -22,7 +22,7 @@ const AudioDemo = () => {
       <Cell>
         <Audio
           autoplay={false}
-          url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+          src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
           type="icon"
           loop={false}
           preload="auto"
@@ -35,7 +35,7 @@ const AudioDemo = () => {
         <Audio
           autoplay={false}
           style={{ fontSize: '20px' }}
-          url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+          src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
           type="progress"
           preload="auto"
           muted={false}
@@ -55,7 +55,7 @@ const AudioDemo = () => {
           className="custom-voice-audio"
           id="custom-voice-audio"
           autoplay={false}
-          url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+          src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
           type="none"
           preload="auto"
           onCanPlay={(e: any) => {
@@ -73,7 +73,7 @@ const AudioDemo = () => {
       <Cell>
         <Audio
           autoplay={false}
-          url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+          src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
           type="controls"
           preload="auto"
           muted={false}

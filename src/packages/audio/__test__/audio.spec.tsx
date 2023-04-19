@@ -18,7 +18,7 @@ test('className && style && type = progress  && onPause  && onFastBack && onForw
           style={{ fontSize: '20px' }}
           type="progress"
           autoplay
-          url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+          src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
           onPlayEnd={playeEnd}
           onPause={pause}
           onCanPlay={canPlay}

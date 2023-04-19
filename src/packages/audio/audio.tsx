@@ -14,7 +14,7 @@ import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface AudioProps extends BasicComponent {
-  url: string
+  src: string
   muted: boolean
   autoplay: boolean
   loop: boolean
@@ -31,7 +31,7 @@ export interface AudioProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
-  url: '',
+  src: '',
   muted: false,
   autoplay: false,
   loop: false,
@@ -50,7 +50,7 @@ export const Audio: FunctionComponent<
   const { locale } = useConfig()
   const {
     className,
-    url,
+    src,
     style,
     muted,
     autoplay,
@@ -280,7 +280,7 @@ export const Audio: FunctionComponent<
         className="audioMain"
         controls={type === 'controls'}
         ref={AudioRef}
-        src={url}
+        src={src}
         muted={muted}
         preload={preload}
         loop={loop}

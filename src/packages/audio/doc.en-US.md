@@ -27,7 +27,7 @@ const App = () => {
     <>
       <Audio
         autoplay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="icon"
         loop={false}
         preload="auto"
@@ -59,7 +59,7 @@ const App = () => {
       className="custom-voice-audio"
       id="custom-voice-audio"
       autoplay={false}
-      url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+      src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       type="none"
       preload="auto"
       onCanPlay={(e: any) => {
@@ -93,7 +93,7 @@ const App = () => {
     <>
       <Audio
         autoplay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="progress"
         preload="auto"
         muted={false}
@@ -127,7 +127,7 @@ const App = () => {
     <>
       <Audio
         autoplay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="controls"
         preload="auto"
         muted={false}
@@ -153,7 +153,7 @@ export default App;
 |--------------|----------------------------------|--------|------------------|
 | className       | Classification               | string | ''              |
 | style       | CSS Properties              | CSSProperties | {}           |
-| url         | Voice resource link               | string | ''              |
+| src         | Voice resource link               | string | ''              |
 | muted        | Whether it is mute                         | boolean | false             |
 | autoplay         | Whether to play automatically | boolean | false               |
 | loop | Whether to circulate     | boolean | false |
