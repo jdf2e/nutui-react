@@ -2,21 +2,18 @@ import React, {
   useState,
   useEffect,
   useRef,
-  CSSProperties,
   FunctionComponent,
   ReactEventHandler,
 } from 'react'
 import { Service } from '@nutui/icons-react'
+import classNames from 'classnames'
 import Range from '@/packages/range'
-import bem from '@/utils/bem'
 import Button from '@/packages/button'
 import { useConfig } from '@/packages/configprovider'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface AudioProps extends BasicComponent {
-  className: string
-  style: CSSProperties
   url: string
   muted: boolean
   autoplay: boolean
@@ -34,9 +31,7 @@ export interface AudioProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
-  className: '',
   url: '',
-  style: {},
   muted: false,
   autoplay: false,
   loop: false,
@@ -91,7 +86,7 @@ export const Audio: FunctionComponent<
     playing: props.autoplay,
     handPlaying: false,
   })
-  const b = bem('audio')
+  const classPrefix = 'nut-audio'
   const warn = console.warn
   const handleEnded = (e: any) => {
     if (props.loop) {
@@ -124,18 +119,17 @@ export const Audio: FunctionComponent<
   }
   const renderIcon = () => {
     return (
-      <>
-        <div className={b('icon')}>
-          <div
-            className={`${b('icon-box')} ${
-              playing ? b('icon-play') : b('icon-stop')
-            }`}
-            onClick={handleStatusChange}
-          >
-            <Service className={playing ? 'nut-icon-loading' : ''} />
-          </div>
+      <div className={`${classPrefix}__icon`}>
+        <div
+          className={classNames(
+            `${classPrefix}__icon-box`,
+            playing ? `${classPrefix}__icon-play` : `${classPrefix}__icon-stop`
+          )}
+          onClick={handleStatusChange}
+        >
+          <Service className={playing ? 'nut-icon-loading' : ''} />
         </div>
-      </>
+      </div>
     )
   }
 
@@ -181,9 +175,9 @@ export const Audio: FunctionComponent<
   const renderProgerss = () => {
     return (
       <>
-        <div className={b('progress')}>
+        <div className={`${classPrefix}__progress`}>
           <div className="time">{currentDuration}</div>
-          <div className={b('progress-bar-wrapper')}>
+          <div className={`${classPrefix}__progress-bar-wrapper`}>
             <Range
               modelValue={percent}
               hiddenTag
@@ -240,7 +234,10 @@ export const Audio: FunctionComponent<
 
   const renderNone = () => {
     return (
-      <div className={b('none-container')} onClick={handleStatusChange}>
+      <div
+        className={`${classPrefix}__none-container`}
+        onClick={handleStatusChange}
+      >
         {children}
       </div>
     )
@@ -277,7 +274,7 @@ export const Audio: FunctionComponent<
     statusRef.current.currentTime = time
   }
   return (
-    <div className={`${b()} ${className}`} style={style} {...rest}>
+    <div className={classNames(classPrefix, className)} style={style} {...rest}>
       {renderAudio()}
       <audio
         className="audioMain"
