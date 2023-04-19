@@ -67,6 +67,16 @@
 #### Menu
 #### NavBar
 #### Pagination
+- modelValue 改为 value，受控值
+- 增加 defaultValue 非受控值
+- prevText 重命名为 prev，改为 ReactNode
+- nextText 重命名为 next，改为 ReactNode
+- forceEllipses 重命令为 ellipse
+- showPageSize 重命名为 itemSize
+- itemsPerpage 重命名为 pageSize
+- totalitems 重命名为 total
+- pageNodeRender 重命名为 itemRender
+- 移除 pageCount，通过 total 与 pageSize 实现
 #### SideNavBar
 #### Tabbar
 #### Tabs

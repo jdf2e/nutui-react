@@ -3,10 +3,10 @@
 exports[`should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="nut-pagination "
+    class="nut-pagination"
   >
     <div
-      class="nut-pagination__prev   disabled"
+      class="nut-pagination__prev disabled"
     >
       上一页
     </div>
@@ -19,28 +19,28 @@ exports[`should match snapshot 1`] = `
         1
       </div>
       <div
-        class="nut-pagination__item "
+        class="nut-pagination__item"
       >
         2
       </div>
       <div
-        class="nut-pagination__item "
+        class="nut-pagination__item"
       >
         3
       </div>
       <div
-        class="nut-pagination__item "
+        class="nut-pagination__item"
       >
         4
       </div>
       <div
-        class="nut-pagination__item "
+        class="nut-pagination__item"
       >
         5
       </div>
     </div>
     <div
-      class="nut-pagination__next  "
+      class="nut-pagination__next"
     >
       下一页
     </div>
