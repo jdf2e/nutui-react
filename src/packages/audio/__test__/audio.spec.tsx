@@ -19,7 +19,7 @@ test('className && style && type = progress  && onPause  && onFastBack && onForw
           type="progress"
           autoplay
           src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
-          onPlayEnd={playeEnd}
+          onEnd={playeEnd}
           onPause={pause}
           onCanPlay={canPlay}
           onMute={mute}

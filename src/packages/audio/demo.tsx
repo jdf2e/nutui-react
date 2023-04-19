@@ -27,7 +27,7 @@ const AudioDemo = () => {
           loop={false}
           preload="auto"
           muted={false}
-          onPlayEnd={() => alert('ended!')}
+          onEnd={() => alert('ended!')}
         />
       </Cell>
       <h2>type=progress</h2>
@@ -46,7 +46,7 @@ const AudioDemo = () => {
           onPause={(e) => {
             console.log('progress audio paused', e)
           }}
-          onPlayEnd={() => alert('progress audio ended!')}
+          onEnd={() => alert('progress audio ended!')}
         />
       </Cell>
       <h2>type=none</h2>
@@ -80,7 +80,7 @@ const AudioDemo = () => {
           onPause={(e) => {
             console.log('paused', e)
           }}
-          onPlayEnd={() => alert('ended!')}
+          onEnd={() => alert('ended!')}
         />
       </Cell>
     </div>

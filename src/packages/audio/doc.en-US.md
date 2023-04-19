@@ -1,18 +1,16 @@
 # Audio 
 
-### introduce
+## Intro
 
 Used for audio playback
 
-### Install
+## Install
 
 ```javascript
-// react
 import { Audio } from '@nutui/nutui-react'
-
 ```
 
-## Code demonstration
+## Demo
 
 ### Basic usage
 
@@ -32,7 +30,7 @@ const App = () => {
         loop={false}
         preload="auto"
         muted={false}
-        onPlayEnd={() => alert('ended!')}
+        onEnd={() => alert('ended!')}
       />
     </>
   );
@@ -104,7 +102,7 @@ const App = () => {
         onPause={(e) => {
           console.log('progress audio paused', e)
         }}
-        onPlayEnd={() => alert('progress audio ended!')}
+        onEnd={() => alert('progress audio ended!')}
       />
     </>
   );
@@ -134,7 +132,7 @@ const App = () => {
         onPause={(e) => {
           console.log('paused', e)
         }}
-        onPlayEnd={() => alert('ended!')}
+        onEnd={() => alert('ended!')}
       />
     </>
   );
@@ -145,29 +143,21 @@ export default App;
 :::
 
 
-## API
+## Audio
 
 ### Props
 
-| parameter         | illustrate                             | type   | Defaults           |
+| Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| className       | Classification               | string | ''              |
-| style       | CSS Properties              | CSSProperties | {}           |
 | src         | Voice resource link               | string | ''              |
 | muted        | Whether it is mute                         | boolean | false             |
 | autoplay         | Whether to play automatically | boolean | false               |
 | loop | Whether to circulate     | boolean | false |
 | preload          | Whether the pronunciation is pre -loaded: 'None', 'Metadata', 'Auto', ''  | string | 'auto'              |
 | type         | Display form, optional value：controls、panel、progress、icon、none  | string | 'progress'              |
-
-
-### Events
-
-| Incident name | illustrate           | Callback parameter     |
-|--------|----------------|--------------|
-| onFastBack  | Voice will be retreated, type = progress takes effect | event：HTMLAudioElement |
-| onForward  | Voice fast -moving back, type = progress | event：HTMLAudioElement |
-| onPause  | Suspension | event：HTMLAudioElement |
-| onPlayEnd  | The voice playback is complete, loop=false takes effect | event：HTMLAudioElement|
-| onMute  | Mute | event：HTMLAudioElement|
-| onCanPlay  | Can be triggered when the media can be played | event：HTMLAudioElement |
+| onBack  | Voice will be retreated, type = progress takes effect | (event：HTMLAudioElement) => void | - |
+| onForward  | Voice fast -moving back, type = progress | (event：HTMLAudioElement) => void | - |
+| onPause  | Suspension | (event：HTMLAudioElement) => void | - |
+| onEnd  | The voice playback is complete, loop=false takes effect | (event：HTMLAudioElement) => void | - |
+| onMute  | Mute | (event：HTMLAudioElement) => void | - |
+| onCanPlay  | Can be triggered when the media can be played | (event：HTMLAudioElement) => void | - |

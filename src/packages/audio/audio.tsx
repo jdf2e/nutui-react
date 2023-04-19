@@ -20,10 +20,10 @@ export interface AudioProps extends BasicComponent {
   loop: boolean
   preload: string
   type: string
-  onFastBack: (e: HTMLAudioElement) => void
+  onBack: (e: HTMLAudioElement) => void
   onForward: (e: HTMLAudioElement) => void
   onPause: ((e: HTMLAudioElement) => void) & ReactEventHandler<HTMLAudioElement>
-  onPlayEnd: (e: HTMLAudioElement) => void
+  onEnd: (e: HTMLAudioElement) => void
   onMute: (e: HTMLAudioElement) => void
   onCanPlay: ((e: HTMLAudioElement) => void) &
     ReactEventHandler<HTMLAudioElement>
@@ -37,10 +37,10 @@ const defaultProps = {
   loop: false,
   preload: 'auto',
   type: 'progress',
-  onFastBack: (e: HTMLAudioElement) => {}, // type 为 progress时生效
+  onBack: (e: HTMLAudioElement) => {}, // type 为 progress时生效
   onForward: (e: HTMLAudioElement) => {}, // type 为 progress时生效
   onPause: (e) => {},
-  onPlayEnd: (e: HTMLAudioElement) => {},
+  onEnd: (e: HTMLAudioElement) => {},
   onMute: (e: HTMLAudioElement) => {},
   onCanPlay: (e: HTMLAudioElement) => {},
 } as AudioProps
@@ -57,10 +57,10 @@ export const Audio: FunctionComponent<
     loop,
     preload,
     type,
-    onFastBack,
+    onBack,
     onForward,
     onPause,
-    onPlayEnd,
+    onEnd,
     onMute,
     onCanPlay,
     children,
@@ -92,7 +92,7 @@ export const Audio: FunctionComponent<
     if (props.loop) {
       warn(locale.audio.tips || 'onPlayEnd事件在loop=false时才会触发')
     } else {
-      props.onPlayEnd && props.onPlayEnd(e)
+      props.onEnd && props.onEnd(e)
     }
   }
 
@@ -137,7 +137,7 @@ export const Audio: FunctionComponent<
     if (statusRef.current.currentTime > 0 && AudioRef.current) {
       statusRef.current.currentTime--
       AudioRef.current.currentTime = statusRef.current.currentTime
-      props.onFastBack && props.onFastBack(AudioRef.current)
+      props.onBack && props.onBack(AudioRef.current)
     }
   }
   const handleForward = () => {

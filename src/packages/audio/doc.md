@@ -1,15 +1,13 @@
 # Audio 音频播放器
 
-### 介绍
+## 介绍
 
 用于音频播放
 
-### 安装
+## 安装
 
 ```javascript
-// react
 import { Audio } from '@nutui/nutui-react'
-
 ```
 
 ## 代码演示
@@ -32,7 +30,7 @@ const App = () => {
         loop={false}
         preload="auto"
         muted={false}
-        onPlayEnd={() => alert('ended!')}
+        onEnd={() => alert('ended!')}
       />
     </>
   );
@@ -104,7 +102,7 @@ const App = () => {
         onPause={(e) => {
           console.log('progress audio paused', e)
         }}
-        onPlayEnd={() => alert('progress audio ended!')}
+        onEnd={() => alert('progress audio ended!')}
       />
     </>
   );
@@ -134,7 +132,7 @@ const App = () => {
         onPause={(e) => {
           console.log('paused', e)
         }}
-        onPlayEnd={() => alert('ended!')}
+        onEnd={() => alert('ended!')}
       />
     </>
   );
@@ -145,29 +143,21 @@ export default App;
 :::
 
 
-## API
+## Audio
 
 ### Props
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| className       | 类名               | string | ''              |
-| style       | css样式               | CSSProperties | {}           |
 | src         | 语音资源链接               | string | ''              |
 | muted        | 是否静音                         | boolean | false             |
 | autoplay         | 是否自动播放 | boolean | false               |
 | loop | 是否循环播放     | boolean | false |
 | preload          | 是否预加载语音 枚举值：'none'、'metadata'、'auto'、''   | string | 'auto'              |
 | type         | 展示形式，可选值：controls 控制面板   progress 进度条  icon 图标 none 自定义 | string | 'progress'              |
-
-
-### Events
-
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| onFastBack  | 语音快退回调,type=progress时生效 | event：HTMLAudioElement |
-| onForward  | 语音快进回调,type=progress时生效 | event：HTMLAudioElement |
-| onPause  | 暂停回调 | event：HTMLAudioElement |
-| onPlayEnd  | 语音播放完成，loop=false时生效 | event：HTMLAudioElement|
-| onMute  | 静音回调 | event：HTMLAudioElement|
-| onCanPlay  | 可以播放媒体时触发 | event：HTMLAudioElement |
+| onBack  | 语音快退回调,type=progress时生效 | (event：HTMLAudioElement) => void | - |
+| onForward  | 语音快进回调,type=progress时生效 | (event：HTMLAudioElement) => void | - |
+| onPause  | 暂停回调 | (event：HTMLAudioElement) => void | - |
+| onEnd  | 语音播放完成，loop=false时生效 | (event：HTMLAudioElement) => void | - |
+| onMute  | 静音回调 | (event：HTMLAudioElement) => void | - |
+| onCanPlay  | 可以播放媒体时触发 | (event：HTMLAudioElement) => void | - |
