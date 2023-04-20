@@ -1,35 +1,5 @@
 @import '../popup/popup.scss';
 
-.nut-theme-dark {
-  .nut-calendar {
-    background: $dark5;
-    color: $dark1;
-
-    .nut-calendar-header {
-      background: $dark5;
-      color: $dark1;
-    }
-
-    .nut-calendar-content {
-      .calendar-months-panel {
-        .calendar-month-con {
-          .calendar-month-day {
-            &-choose {
-              background-color: rgba(#fa2c19, 0.09);
-              color: $calendar-choose-font-color;
-            }
-          }
-        }
-      }
-    }
-
-    .nut-calendar-footer {
-      background: $dark5;
-      color: $dark1;
-    }
-  }
-}
-
 .nut-calendar {
   position: relative;
   display: flex;
