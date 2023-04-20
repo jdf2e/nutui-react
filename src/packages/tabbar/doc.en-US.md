@@ -31,11 +31,11 @@ const App = () => {
       setActiveIndex(id)
     }}
   >
-    <TabbarItem tabTitle="first" icon={<Home width={18} height={18} />} />
-    <TabbarItem tabTitle="Classification" icon={<Category width={18} height={18} />} />
-    <TabbarItem tabTitle="Find" icon={<Find width={18} height={18} />} />
-    <TabbarItem tabTitle="cart" icon={<Cart width={18} height={18} />} />
-    <TabbarItem tabTitle="mine" icon={<My width={18} height={18} />} />
+    <TabbarItem title="first" icon={<Home width={18} height={18} />} />
+    <TabbarItem title="Classification" icon={<Category width={18} height={18} />} />
+    <TabbarItem title="Find" icon={<Find width={18} height={18} />} />
+    <TabbarItem title="cart" icon={<Cart width={18} height={18} />} />
+    <TabbarItem title="mine" icon={<My width={18} height={18} />} />
   </Tabbar>
 }
 
@@ -52,11 +52,11 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar visible={2}>
-    <TabbarItem tabTitle="first" icon={<Home width={20} height={20} />} />
-    <TabbarItem tabTitle="Classification" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="Find" icon={<Find width={20} height={20} />} />
-    <TabbarItem tabTitle="cart" icon={<Cart width={20} height={20} />} />
-    <TabbarItem tabTitle="mine" icon={<My width={20} height={20} />} />
+    <TabbarItem title="first" icon={<Home width={20} height={20} />} />
+    <TabbarItem title="Classification" icon={<Category width={20} height={20} />} />
+    <TabbarItem title="Find" icon={<Find width={20} height={20} />} />
+    <TabbarItem title="cart" icon={<Cart width={20} height={20} />} />
+    <TabbarItem title="mine" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -73,11 +73,11 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem tabTitle="first" icon={<Home width={12} height={12} />} num="11" />
-    <TabbarItem tabTitle="Classification" icon={<Category width={12} height={12} />} />
-    <TabbarItem tabTitle="Find" icon={<Find width={12} height={12} />} />
-    <TabbarItem tabTitle="cart" icon={<Cart width={12} height={12} />} num="110" />
-    <TabbarItem tabTitle="mine" icon={<My width={12} height={12} />} />
+    <TabbarItem title="first" icon={<Home width={12} height={12} />} num="11" />
+    <TabbarItem title="Classification" icon={<Category width={12} height={12} />} />
+    <TabbarItem title="Find" icon={<Find width={12} height={12} />} />
+    <TabbarItem title="cart" icon={<Cart width={12} height={12} />} num="110" />
+    <TabbarItem title="mine" icon={<My width={12} height={12} />} />
   </Tabbar>
 );
 
@@ -95,11 +95,11 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem tabTitle="first" icon={<Home width={20} height={20} />} dot />
-    <TabbarItem tabTitle="Classification" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="Find" icon={<Find width={20} height={20} />} />
-    <TabbarItem tabTitle="cart" icon={<Cart width={20} height={20} />} dot />
-    <TabbarItem tabTitle="mine" icon={<My width={20} height={20} />} />
+    <TabbarItem title="first" icon={<Home width={20} height={20} />} dot />
+    <TabbarItem title="Classification" icon={<Category width={20} height={20} />} />
+    <TabbarItem title="Find" icon={<Find width={20} height={20} />} />
+    <TabbarItem title="cart" icon={<Cart width={20} height={20} />} dot />
+    <TabbarItem title="mine" icon={<My width={20} height={20} />} />
   </Tabbar>
 )
 
@@ -116,11 +116,11 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem tabTitle="first" icon={<Home width={20} height={20} />} />
-    <TabbarItem tabTitle="Classification" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="Find" icon={<Find width={20} height={20} />} />
-    <TabbarItem tabTitle="cart" icon={<Cart width={20} height={20} />} />
-    <TabbarItem tabTitle="mine" icon={<My width={20} height={20} />} />
+    <TabbarItem title="first" icon={<Home width={20} height={20} />} />
+    <TabbarItem title="Classification" icon={<Category width={20} height={20} />} />
+    <TabbarItem title="Find" icon={<Find width={20} height={20} />} />
+    <TabbarItem title="cart" icon={<Cart width={20} height={20} />} />
+    <TabbarItem title="mine" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -137,9 +137,9 @@ import { Category, Find, Home } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem tabTitle="first" icon={<Home width={20} height={20} />} />
-    <TabbarItem tabTitle="Classification" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="Find" icon={<Find width={20} height={20} />} />
+    <TabbarItem title="first" icon={<Home width={20} height={20} />} />
+    <TabbarItem title="Classification" icon={<Category width={20} height={20} />} />
+    <TabbarItem title="Find" icon={<Find width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -156,11 +156,11 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar bottom>
-    <TabbarItem tabTitle="first" href="" icon={<Home width={20} height={20} />} />
-    <TabbarItem tabTitle="Classification" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="Find" icon={<Find width={20} height={20} />} />
-    <TabbarItem tabTitle="cart" href="https://m.jd.com" icon={<Cart width={20} height={20} />} />
-    <TabbarItem tabTitle="mine" to="/" icon={<My width={20} height={20} />} />
+    <TabbarItem title="first" href="" icon={<Home width={20} height={20} />} />
+    <TabbarItem title="Classification" icon={<Category width={20} height={20} />} />
+    <TabbarItem title="Find" icon={<Find width={20} height={20} />} />
+    <TabbarItem title="cart" href="https://m.jd.com" icon={<Cart width={20} height={20} />} />
+    <TabbarItem title="mine" to="/" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -183,14 +183,13 @@ export default App;
 | activeColor    | icon active color                                                                    | string | `#1989fa` |
 size`v2.0.0废弃`    | icon size for all icons                                                              | string \| boolean | `20`      |
 | safeAreaInsetBottom    | Whether to enable the full screen bottom safety zone adaptation of the iphone series | boolean | `false`   |
-| style    | component style                                                                      | CSSProperties | `{}`      |
-| className    | component class name                                                                 | string | -       |
+| style    | component style                                                                      |
 
 ### tabbar-item
 
 | Prop | Description | Type   | Default |
 |-----------|--------------|--------|--------|
-| tabTitle | the title of the tab | string | -     |
+| title | the title of the tab | ReactNode | -     |
 | icon | Custom icon | ReactNode | -     |
 | href | Jump link of tab page;   | string | -     |
 | to`v1.4.0 Abandon`              | 	The route object of the tab, equal to React Router's [to Prop](https://v5.reactrouter.com/web/api/Link/to-string) Prop | any | -     |

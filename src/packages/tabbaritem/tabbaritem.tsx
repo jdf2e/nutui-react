@@ -1,11 +1,11 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { FunctionComponent, ReactNode, useEffect } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface TabbarItemProps extends BasicComponent {
   dot: boolean
-  tabTitle: string
-  icon: React.ReactNode
+  title: ReactNode
+  icon: ReactNode
   href: string
   num: string | number
   active: boolean
@@ -18,7 +18,7 @@ export interface TabbarItemProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   dot: false,
-  tabTitle: '',
+  title: '',
   icon: null,
   href: '',
   num: '',
@@ -36,7 +36,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     dot,
     className,
     style,
-    tabTitle,
+    title,
     icon,
     href,
     num,
@@ -102,13 +102,13 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
         )}
         {icon || null}
       </div>
-      {tabTitle && (
+      {title && (
         <div
           className={classNames(boxPrefix, `${boxPrefix}--nav-word`, {
             [`${boxPrefix}--big-word`]: !icon,
           })}
         >
-          {tabTitle}
+          {title}
         </div>
       )}
     </div>

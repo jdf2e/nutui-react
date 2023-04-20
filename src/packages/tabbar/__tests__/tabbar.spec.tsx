@@ -10,14 +10,11 @@ test('should render tabbar when default', () => {
   const { container } = render(
     <>
       <Tabbar>
-        <TabbarItem tabTitle="首页" icon={<Home width={20} height={20} />} />
-        <TabbarItem
-          tabTitle="分类"
-          icon={<Category width={20} height={20} />}
-        />
-        <TabbarItem tabTitle="发现" icon={<Find width={20} height={20} />} />
-        <TabbarItem tabTitle="购物车" icon={<Cart width={20} height={20} />} />
-        <TabbarItem tabTitle="我的" icon={<My width={20} height={20} />} />
+        <TabbarItem title="首页" icon={<Home width={20} height={20} />} />
+        <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
+        <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
+        <TabbarItem title="购物车" icon={<Cart width={20} height={20} />} />
+        <TabbarItem title="我的" icon={<My width={20} height={20} />} />
       </Tabbar>
     </>
   )
@@ -34,15 +31,12 @@ test('should render custom color and badge when using prop', () => {
     <>
       <Tabbar unactiveColor="grey" activeColor="blue">
         <TabbarItem
-          tabTitle="首页"
+          title="首页"
           icon={<Home width={20} height={20} />}
           num="11"
         />
-        <TabbarItem
-          tabTitle="分类"
-          icon={<Category width={20} height={20} />}
-        />
-        <TabbarItem tabTitle="发现" icon={<Find width={20} height={20} />} />
+        <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
+        <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
       </Tabbar>
     </>
   )
@@ -61,11 +55,8 @@ test('should render fixed element when using bottom prop', async () => {
   const { container } = render(
     <>
       <Tabbar bottom safeAreaInsetBottom>
-        <TabbarItem tabTitle="首页" icon={<Home width={20} height={20} />} />
-        <TabbarItem
-          tabTitle="分类"
-          icon={<Category width={20} height={20} />}
-        />
+        <TabbarItem title="首页" icon={<Home width={20} height={20} />} />
+        <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
       </Tabbar>
     </>
   )
@@ -77,15 +68,12 @@ test('should match active tabbar by click', async () => {
     <>
       <Tabbar unactiveColor="grey" activeColor="blue">
         <TabbarItem
-          tabTitle="首页"
+          title="首页"
           icon={<Home width={20} height={20} />}
           num="11"
         />
-        <TabbarItem
-          tabTitle="分类"
-          icon={<Category width={20} height={20} />}
-        />
-        <TabbarItem tabTitle="发现" icon={<Find width={20} height={20} />} />
+        <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
+        <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
       </Tabbar>
     </>
   )
@@ -105,15 +93,12 @@ test('should show sure emitted when click', async () => {
     <>
       <Tabbar unactiveColor="grey" activeColor="blue" onSwitch={onSwitch}>
         <TabbarItem
-          tabTitle="首页"
+          title="首页"
           icon={<Home width={20} height={20} />}
           num="11"
         />
-        <TabbarItem
-          tabTitle="分类"
-          icon={<Category width={20} height={20} />}
-        />
-        <TabbarItem tabTitle="发现" icon={<Find width={20} height={20} />} />
+        <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
+        <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
       </Tabbar>
     </>
   )
