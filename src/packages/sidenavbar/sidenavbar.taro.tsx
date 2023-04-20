@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState } from 'react'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Popup from '@/packages/popup/index.taro'
 import { OffsetContext } from './offsetContext'
 
@@ -23,7 +22,6 @@ const defaultProps = {
   width: '80%',
 } as SideNavBarProps
 export const SideNavBar: FunctionComponent<SideNavBarProps> = (props) => {
-  const { locale } = useConfig()
   const {
     title,
     visible,
