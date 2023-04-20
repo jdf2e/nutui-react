@@ -1,10 +1,10 @@
 #  Tabbar 標籤欄
 
-### 介紹
+## 介紹
 
 導航最常用場景
 
-### 安裝
+## 安裝
 
 ```ts
 // react
@@ -115,7 +115,7 @@ import  React from "react";
 import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
-  <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
+  <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
     <TabbarItem title="首頁" icon={<Home width={20} height={20} />} />
     <TabbarItem title="分類" icon={<Category width={20} height={20} />} />
     <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
@@ -135,7 +135,7 @@ import  React from "react";
 import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
-  <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
+  <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
     <TabbarItem title="首頁" icon={<Home width={20} height={20} />} />
     <TabbarItem title="分類" icon={<Category width={20} height={20} />} />
     <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
@@ -166,43 +166,31 @@ export default App;
 ```
 :::        
 
-## API
+## Tabbar
 
-### Prop
-
-### nut-tabbar
+### Props
 
 | 字段            | 說明                     | 類型   | 默認值  |
 |-----------------|------------------------|--------|---------|
 | visible | 默认選中的標籤的索引值            | number | `0`       |
-| activeVisible`1.4.8` | 選中的標籤的索引值              | number | -       |
+| activeVisible | 選中的標籤的索引值              | number | -       |
 | bottom          | 是否固定在頁面底部              | boolean | `false`   |
-| unactiveColor  | icon未激活的顏色             | string | `#7d7e80` |
+| inactiveColor  | icon未激活的顏色             | string | `#7d7e80` |
 | activeColor    | icon激活的顏色              | string | `#1989fa` |
-| size`v2.0.0废弃`    | icon的统一尺寸              | string \| boolean | `20` |
 | safeAreaInsetBottom    | 是否開啟iphone系列全面屏底部安全區適配 | boolean | `false` |
 
-### tabbar-item
+## TabbarItem
+
+### Props
 
 | 字段 | 說明 | 類型   | 默認值 |
 |-----------|-------------------|--------|--------|
 | title | 標籤頁的標題 | ReactNode | -     |
 | icon | 自定義圖標 | ReactNode | -     |
 | href | 標籤頁的跳轉鏈接   | string | -     |
-| to`v1.4.0 废弃` | 	標籤頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性 | any | -     |
 | num | 頁簽右上角的數字角標，超出99之後為99+     | number | -     |
-| iconClassPrefix`v2.0.0废弃`  | 自定義 icon 類名前綴，用於使用自定義圖標 | string | `nut-icon` |
-| iconFontClassName`v2.0.0废弃` | 自定義 icon 字體基礎類名 | string | 
 | dot | 是否顯示圖標右上角小紅點   | boolean | `false`     |
-| iconSize`v2.0.0废弃`   | icon的单个尺寸     | string \| boolean | `20` |
-
-
-### Event
-
-| 事件名稱   | 說明               | 回調參數           |
-|------------|--------------------|--------------------|
 | tabSwitch | 切換頁籤時觸發事件 | 點擊的數據和索引值 |
-
 
 ## 主題定制
 

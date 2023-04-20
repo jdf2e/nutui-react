@@ -224,7 +224,7 @@ const TabbarDemo = () => {
         </Tabbar>
 
         <h2>{translated.a74a1fd4}</h2>
-        <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
+        <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
           <TabbarItem
             title={translated.c3a3a1d2}
             icon={<Home width={20} height={20} />}
@@ -248,7 +248,7 @@ const TabbarDemo = () => {
         </Tabbar>
 
         <h2>{translated['8dab2f66']}</h2>
-        <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
+        <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
           <TabbarItem
             title={translated.c3a3a1d2}
             icon={<Home width={20} height={20} />}

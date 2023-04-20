@@ -10,7 +10,7 @@ export interface TabbarItemProps extends BasicComponent {
   num: string | number
   active: boolean
   activeColor: string
-  unactiveColor: string
+  inactiveColor: string
   index: number
   handleClick: (idx: number) => void
 }
@@ -24,7 +24,7 @@ const defaultProps = {
   num: '',
   active: false,
   activeColor: '',
-  unactiveColor: '',
+  inactiveColor: '',
   index: 0,
   handleClick: (idx) => {},
 } as TabbarItemProps
@@ -42,7 +42,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     num,
     active,
     activeColor,
-    unactiveColor,
+    inactiveColor,
     index,
     handleClick,
   } = {
@@ -64,7 +64,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
         [`${classPrefix}--active`]: active,
       })}
       style={{
-        color: active ? activeColor : unactiveColor,
+        color: active ? activeColor : inactiveColor,
         ...style,
       }}
       onClick={() => {

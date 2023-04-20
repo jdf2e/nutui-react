@@ -79,6 +79,9 @@
 - 移除 pageCount，通过 total 与 pageSize 实现
 #### SideNavBar
 #### Tabbar
+- unactiveColor 重命名为 inactiveColor
+- tabTitle 重命名为 title，改为 ReactNode
+- icon 类型改为 ReactNode，移除其他 icon 关联属性
 #### Tabs
 
 ### 数据录入

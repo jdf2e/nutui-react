@@ -7,7 +7,7 @@ export interface TabbarProps extends BasicComponent {
   activeVisible?: number | string
   bottom: boolean
   size: string | number
-  unactiveColor: string
+  inactiveColor: string
   activeColor: string
   safeAreaInsetBottom: boolean
   onSwitch: (child: React.ReactElement<any>, active: number) => void
@@ -19,7 +19,7 @@ const defaultProps = {
   visible: 0,
   bottom: false,
   size: 20,
-  unactiveColor: '',
+  inactiveColor: '',
   activeColor: '',
   safeAreaInsetBottom: false,
   onSwitch: (child, activeVisible) => {},
@@ -33,7 +33,7 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
     bottom,
     size,
     activeColor,
-    unactiveColor,
+    inactiveColor,
     safeAreaInsetBottom,
     className,
     style,
@@ -74,7 +74,7 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
           ...child.props,
           active: idx === selectIndex,
           index: idx,
-          unactiveColor,
+          inactiveColor,
           activeColor,
           size,
           handleClick: () => {

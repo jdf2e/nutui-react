@@ -117,7 +117,7 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 
 const App = () => (
-  <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
+  <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
     <TabbarItem title="首页" icon={<Home width={20} height={20} />} />
     <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
     <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
@@ -138,7 +138,7 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 import { Category, Find, Home } from '@nutui/icons-react';
 
 const App = () => (
-  <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
+  <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
     <TabbarItem title="首页" icon={<Home width={20} height={20} />} />
     <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
     <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
@@ -179,11 +179,10 @@ export default App;
 | 字段                          | 说明                     | 类型   | 默认值     |
 |-----------------------------|------------------------|--------|---------|
 | visible                     | 默认选中的标签的索引值            | number | `0`       |
-| activeVisible`1.4.8`         | 选中的标签的索引值            | number | -       |
+| activeVisible         | 选中的标签的索引值            | number | -       |
 | bottom                      | 是否固定在页面底部              | boolean | `false`   |
-| unactiveColor               | icon未激活的颜色             | string | `#7d7e80` |
+| inactiveColor               | icon未激活的颜色             | string | `#7d7e80` |
 | activeColor                 | icon激活的颜色              | string | `#1989fa` |
-size`v2.0.0废弃`              | icon的统一尺寸              | string \| boolean | `20`      |
 | safeAreaInsetBottom | 是否开启iphone系列全面屏底部安全区适配 | boolean | `false`   |
 
 ### tabbar-item
@@ -193,18 +192,13 @@ size`v2.0.0废弃`              | icon的统一尺寸              | string \| b
 | title | 标签页的标题 | ReactNode | -     |
 | icon | 自定义图标 | ReactNode | - |
 | href | 标签页的跳转链接； | string | -     |
-| to`v1.4.0 废弃` | 标签页的路由对象，等于 React Router 的 [to 属性](https://v5.reactrouter.com/web/api/Link/to-string) 属性, taro 版本中采用 Taro.navigateTo 实现 | any | -     |
 | num | 页签右上角的数字角标，超出99之后为99+ | number | - |
-| iconClassPrefix`v2.0.0废弃`   | 自定义 icon 类名前缀，用于使用自定义图标 | string | `nut-icon` |
-| iconFontClassName`v2.0.0废弃` | 自定义 icon 字体基础类名 | string | `nutui-iconfont` |
 | dot| 是否显示图标右上角小红点 | boolean | `false`     |
-| iconSize`v2.0.0废弃`    | icon的单个尺寸     | string \| boolean | `20` |
 
 ### Event
 
 | 事件名称            | 说明               | 回调参数           |
 |-----------------|--------------------|--------------------|
-| tabSwitch`废弃`   | 切换页签时触发事件 | 点击的数据和索引值 |
 | onSwitch | 切换页签时触发事件 | 点击的数据和索引值 |
 
 
