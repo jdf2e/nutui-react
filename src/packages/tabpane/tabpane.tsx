@@ -38,12 +38,12 @@ export const TabPane: FunctionComponent<
     ...props,
   }
 
-  const b = bem('tabpane')
+  const classPrefix = 'nut-tabpane'
   const classes = classNames(
     {
       active: !disabled && paneKey === activeKey,
     },
-    b(''),
+    classPrefix,
     autoHeightClassName,
     className
   )

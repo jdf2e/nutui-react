@@ -15,15 +15,7 @@ test('base Tabs', () => {
 
 test('base tabs props', () => {
   const { container } = render(
-    <Tabs
-      value="0"
-      background="#f5f5f5"
-      color="#f5f5f5"
-      direction="horizontal"
-      type="smile"
-      size="large"
-      titleScroll
-    >
+    <Tabs value="0" direction="horizontal" activeType="smile" size="large">
       <TabPane title="Tab 1" paneKey="0">
         {' '}
         Tab 1{' '}
@@ -44,7 +36,7 @@ test('base tabs props', () => {
 
 test('base other props', () => {
   const { container } = render(
-    <Tabs duration={500} titleGutter="20px">
+    <Tabs duration={500}>
       <TabPane title="Tab 1"> Tab 1 </TabPane>
     </Tabs>
   )

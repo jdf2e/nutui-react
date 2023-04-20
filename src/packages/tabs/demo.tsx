@@ -244,7 +244,21 @@ const TabsDemo = () => {
           onChange={({ paneKey }) => {
             setTab4value(paneKey)
           }}
-          // titleGutter="10"
+        >
+          {list4.map((item) => (
+            <Tabs.TabPane key={item} title={`Tab ${item}`}>
+              {' '}
+              Tab {item}{' '}
+            </Tabs.TabPane>
+          ))}
+        </Tabs>
+        <h2>{translated.title4}</h2>
+        <Tabs
+          value={tab4value}
+          activeType="smile"
+          onChange={({ paneKey }) => {
+            setTab4value(paneKey)
+          }}
         >
           {list4.map((item) => (
             <Tabs.TabPane key={item} title={`Tab ${item}`}>
@@ -288,7 +302,6 @@ const TabsDemo = () => {
         </Tabs>
 
         <h2>{translated.title12}</h2>
-
         <Tabs
           value={tab8value}
           onChange={({ paneKey }) => {
@@ -315,6 +328,33 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
 
+        <h2>{translated.title12}</h2>
+        <Tabs
+          value={tab8value}
+          onChange={({ paneKey }) => {
+            setTab8value(paneKey)
+          }}
+          activeType="line"
+          direction="vertical"
+        >
+          <Tabs.TabPane title="Tab 1">
+            <Tabs
+              value={tab9value}
+              onChange={({ paneKey }) => {
+                setTab9value(paneKey)
+              }}
+              activeType="line"
+              direction="horizontal"
+            >
+              <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+              <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+              <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+            </Tabs>
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
+
         <h2>{translated.title13}</h2>
         <Tabs
           value={tab8value}
@@ -330,6 +370,33 @@ const TabsDemo = () => {
               onChange={({ paneKey }) => {
                 setTab9value(paneKey)
               }}
+              direction="vertical"
+            >
+              <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+              <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+              <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+            </Tabs>
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
+
+        <h2>{translated.title13}</h2>
+        <Tabs
+          value={tab8value}
+          onChange={({ paneKey }) => {
+            setTab8value(paneKey)
+          }}
+          autoHeight
+          activeType="smile"
+        >
+          <Tabs.TabPane title="Tab 1">
+            <Tabs
+              value={tab9value}
+              onChange={({ paneKey }) => {
+                setTab9value(paneKey)
+              }}
+              activeType="smile"
               direction="vertical"
             >
               <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>

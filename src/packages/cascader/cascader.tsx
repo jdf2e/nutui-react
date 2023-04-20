@@ -357,7 +357,7 @@ const InternalCascader: ForwardRefRenderFunction<
         {poppable && <div className={b('title')}>{title}</div>}
         <Tabs
           value={tabvalue}
-          titleNode={() => {
+          title={() => {
             return optionsData.map((pane, index) => (
               <div
                 onClick={() => {
