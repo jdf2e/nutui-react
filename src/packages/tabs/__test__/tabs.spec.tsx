@@ -44,7 +44,7 @@ test('base tabs props', () => {
 
 test('base other props', () => {
   const { container } = render(
-    <Tabs animatedTime={500} titleGutter="20px">
+    <Tabs duration={500} titleGutter="20px">
       <TabPane title="Tab 1"> Tab 1 </TabPane>
     </Tabs>
   )

@@ -126,7 +126,7 @@ const TabsDemo = () => {
           onChange={({ paneKey }) => {
             setTab1value(paneKey)
           }}
-          type="smile"
+          activeType="smile"
         >
           <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
@@ -135,7 +135,7 @@ const TabsDemo = () => {
         <h2>{translated.title11}</h2>
         <Tabs
           value={tab1value}
-          leftAlign
+          align="right"
           onChange={({ paneKey }) => {
             setTab1value(paneKey)
           }}
@@ -244,8 +244,7 @@ const TabsDemo = () => {
           onChange={({ paneKey }) => {
             setTab4value(paneKey)
           }}
-          titleScroll
-          titleGutter="10"
+          // titleGutter="10"
         >
           {list4.map((item) => (
             <Tabs.TabPane key={item} title={`Tab ${item}`}>
@@ -261,7 +260,6 @@ const TabsDemo = () => {
           onChange={({ paneKey }) => {
             setTab5value(paneKey)
           }}
-          titleScroll
           direction="vertical"
         >
           {list5.map((item) => (
@@ -278,8 +276,7 @@ const TabsDemo = () => {
           onChange={({ paneKey }) => {
             setTab6value(paneKey)
           }}
-          type="smile"
-          titleScroll
+          activeType="smile"
           direction="vertical"
         >
           {list5.map((item) => (
@@ -297,7 +294,7 @@ const TabsDemo = () => {
           onChange={({ paneKey }) => {
             setTab8value(paneKey)
           }}
-          type="smile"
+          activeType="smile"
           direction="vertical"
         >
           <Tabs.TabPane title="Tab 1">
@@ -306,7 +303,7 @@ const TabsDemo = () => {
               onChange={({ paneKey }) => {
                 setTab9value(paneKey)
               }}
-              type="smile"
+              activeType="smile"
               direction="horizontal"
             >
               <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
@@ -325,7 +322,7 @@ const TabsDemo = () => {
             setTab8value(paneKey)
           }}
           autoHeight
-          type="smile"
+          activeType="smile"
         >
           <Tabs.TabPane title="Tab 1">
             <Tabs
@@ -382,7 +379,7 @@ const TabsDemo = () => {
         <h2>{translated.title8}</h2>
         <Tabs
           value={tab7value}
-          titleNode={() => {
+          title={() => {
             return list6.map((item) => (
               <div
                 onClick={() => setTab7value(item.paneKey)}

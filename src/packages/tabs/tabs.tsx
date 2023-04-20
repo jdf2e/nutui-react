@@ -4,6 +4,7 @@ import { JoySmile } from '@nutui/icons-react'
 import bem from '@/utils/bem'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane'
+import { pxCheck } from '@/utils/px-check'
 
 class Title {
   title = ''
@@ -17,24 +18,20 @@ class Title {
   // eslint-disable-next-line no-useless-constructor
   constructor() {}
 }
+
 export type TabsSize = 'large' | 'normal' | 'small'
 
 export interface TabsProps extends BasicComponent {
-  className: string
-  style: React.CSSProperties
   tabStyle: React.CSSProperties
   value: string | number
-  color: string
-  background: string
+  activeColor: string
   direction: string
-  type: string
-  titleScroll: boolean
-  ellipsis: boolean
-  animatedTime: number | string
-  titleGutter: number | string
+  activeType: string
+  duration: number | string
+  // titleGutter: number | string
   size: TabsSize
-  leftAlign: boolean
-  titleNode: () => JSX.Element[]
+  align: 'left' | 'right'
+  title: () => JSX.Element[]
   onChange: (t: Title) => void
   onClick: (t: Title) => void
   autoHeight: boolean
@@ -45,41 +42,33 @@ const defaultProps = {
   ...ComponentDefaults,
   tabStyle: {},
   value: 0,
-  color: '',
-  background: '',
+  activeColor: '',
   direction: 'horizontal',
-  type: 'line',
-  titleScroll: false,
-  ellipsis: true,
-  animatedTime: 300,
-  titleGutter: 0,
+  activeType: 'line',
+  duration: 300,
+  // titleGutter: 0,
   size: 'normal',
-  leftAlign: false,
+  // align: 'left',
   autoHeight: false,
 } as TabsProps
-const pxCheck = (value: string | number): string => {
-  return Number.isNaN(Number(value)) ? String(value) : `${value}px`
-}
-export const Tabs: FunctionComponent<
-  Partial<TabsProps>
-  // & React.HTMLAttributes<HTMLDivElement>
-> & {
+
+const classPrefix = 'nut-tabs'
+export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   TabPane: typeof TabPane
 } = (props) => {
   const {
     value,
-    color,
+    activeColor,
     tabStyle,
-    background,
     direction,
-    type,
-    titleScroll,
-    ellipsis,
-    animatedTime,
-    titleGutter,
+    activeType,
+    // titleScroll,
+    // ellipsis,
+    duration,
+    // titleGutter,
     size,
-    leftAlign,
-    titleNode,
+    align,
+    title,
     children,
     onClick,
     onChange,
@@ -91,7 +80,7 @@ export const Tabs: FunctionComponent<
     ...props,
   }
 
-  const [currentItem, setCurrentItem] = useState<Title>({ index: 0 } as Title)
+  const [, setCurrentItem] = useState<Title>({ index: 0 } as Title)
   const titles = useRef<Title[]>([])
 
   useEffect(() => {
@@ -118,25 +107,20 @@ export const Tabs: FunctionComponent<
     setCurrentItem(titles.current[currentIndex])
   }, [children])
 
-  const b = bem('tabs')
-  const classes = classNames(direction, b(''), className)
-  const classesTitle = classNames(
-    {
-      [type]: type,
-      scrollable: titleScroll,
-      [size]: size,
-    },
-    `${b('')}__titles`
+  const classes = classNames(
+    classPrefix,
+    `${classPrefix}--${direction}`,
+    className
   )
-
-  const titleStyle = {
-    marginLeft: pxCheck(titleGutter),
-    marginRight: pxCheck(titleGutter),
-  }
+  const classesTitle = classNames(`${classPrefix}__titles`, {
+    [`${classPrefix}__titles--${activeType}`]: activeType,
+    [`${classPrefix}__titles--scrollable`]: true,
+    [`${classPrefix}__titles--${align}`]: align,
+  })
 
   const tabsActiveStyle = {
-    color: type === 'smile' ? color : '',
-    background: type === 'line' ? color : '',
+    color: activeType === 'smile' ? activeColor : '',
+    background: activeType === 'line' ? activeColor : '',
   }
 
   const index = titles.current.findIndex((t) => t.paneKey === value)
@@ -146,7 +130,7 @@ export const Tabs: FunctionComponent<
       direction === 'horizontal'
         ? `translate3d(-${index * 100}%, 0, 0)`
         : `translate3d( 0,-${index * 100}%, 0)`,
-    transitionDuration: `${animatedTime}ms`,
+    transitionDuration: `${duration}ms`,
   }
 
   const tabChange = (item: Title, index: number) => {
@@ -160,49 +144,41 @@ export const Tabs: FunctionComponent<
 
   return (
     <div className={classes} {...rest}>
-      <div className={classesTitle} style={{ ...tabStyle, background }}>
-        {!!titleNode && typeof titleNode === 'function'
-          ? titleNode()
+      <div className={classesTitle} style={{ ...tabStyle }}>
+        {!!title && typeof title === 'function'
+          ? title()
           : titles.current.map((item, index) => {
               return (
                 <div
-                  style={titleStyle}
                   onClick={(e) => tabChange(item, index)}
-                  className={classNames(
-                    {
-                      active:
-                        !item.disabled &&
-                        String(item.paneKey) === String(value),
-                      disabled: item.disabled,
-                      'nut-tabs__titles-item-left-align': leftAlign,
-                    },
-                    `${b('')}__titles-item`
-                  )}
+                  className={classNames(`${classPrefix}__titles-item`, {
+                    [`nut-tabs__titles-item--active`]:
+                      !item.disabled && String(item.paneKey) === String(value),
+                    [`nut-tabs__titles-item--disabled`]: item.disabled,
+                    [`nut-tabs__titles-item--${align}`]: align,
+                  })}
                   key={item.paneKey}
                 >
-                  {type === 'line' && (
+                  {activeType === 'line' && (
                     <div
-                      className={`${b('')}__titles-item__line`}
+                      className={`${classPrefix}__titles-item__line`}
                       style={tabsActiveStyle}
                     />
                   )}
-                  {type === 'smile' && (
+                  {activeType === 'smile' && (
                     <div
-                      className={`${b('')}__titles-item__smile`}
+                      className={`${classPrefix}__titles-item__smile`}
                       style={tabsActiveStyle}
                     >
-                      <JoySmile color={color} />
+                      <JoySmile color={activeColor} />
                     </div>
                   )}
                   <div
                     className={classNames(
                       {
-                        ellipsis:
-                          ellipsis &&
-                          !titleScroll &&
-                          direction === 'horizontal',
+                        ellipsis: true,
                       },
-                      `${b('')}__titles-item__text`
+                      `${classPrefix}__titles-item__text`
                     )}
                   >
                     {item.title}
@@ -211,8 +187,8 @@ export const Tabs: FunctionComponent<
               )
             })}
       </div>
-      <div className={`${b('')}__content__wrap`}>
-        <div className={`${b('')}__content`} style={contentStyle}>
+      <div className={`${classPrefix}__content__wrap`}>
+        <div className={`${classPrefix}__content`} style={contentStyle}>
           {React.Children.map(children, (child, idx) => {
             if (!React.isValidElement(child)) {
               return null

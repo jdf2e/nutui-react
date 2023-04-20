@@ -1,10 +1,10 @@
 # Tabs 选项卡切换
 
-### 介绍
+## 介绍
 
 常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式
 
-### 安装
+## 安装
 
 ```ts
 // react
@@ -492,9 +492,9 @@ export default App;
 
 :::
 
-## API
+## Tabs
 
-### Tabs Props
+### Props
 
 | 参数             | 说明                                          | 类型                  | 默认值     |
 |----------------|-----------------------------------------------|---------------------|------------|
@@ -512,27 +512,18 @@ export default App;
 | leftAlign`v1.4.8` | 标题左对齐 | boolean | `false` |
 | autoHeight | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean             | `false`     |
 | tabStyle | 标签栏样式 | CSSProperties | `{}`     |
+| onClick  | 点击标签时触发           | `{title, paneKey, disabled}` | - |
+| onChange | 当前激活的标签改变时触发 | `{title, paneKey, disabled}` | - |
 
-## Tabs Children
+## Tabs.Tabpane
 
-| 名称    | 说明           |
-|---------|----------------|
-| default | 自定义内容     |
-
-### Tabs.Tabpane Props
+### Props
 
 | 参数                | 说明              | 类型    | 默认值           |
 |-------------------|-----------------|---------|------------------|
 | title             | 标题              | string  |     -             |
 | paneKey           | 标签 Key , 匹配的标识符 | string  | 默认索引0,1,2... |
 | disabled          | 是否禁用标签          | boolean | `false`            |
-
-### Tabs Events
-
-| 事件名 | 说明                     | 回调参数                 |
-|--------|--------------------------|--------------------------|
-| onClick  | 点击标签时触发           | `{title, paneKey, disabled}` |
-| onChange | 当前激活的标签改变时触发 | `{title, paneKey, disabled}` |
 
 
 ## 主题定制
