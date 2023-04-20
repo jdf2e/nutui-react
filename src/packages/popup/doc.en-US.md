@@ -186,24 +186,24 @@ export default App;
 
 | Props                        | Description | Type          | Default        |
 |------------------------------|-----------------|---------------|---------------|
-| visible | Whether the current component is displayed | boolean       | `false` |
-| zIndex | mask level | string \      | number | `2000` |
-| duration | Mask animation duration, in seconds | number        | `0.3` |
-| overlayClassName | custom mask class | string        | - |
-| overlayStyle | custom mask style | CSSProperties | - |
-| lockScroll | Whether the background is locked | boolean       | `true`       |
-| overlay | Whether to show the mask | boolean       | `true` |
-| closeOnOverlayClick | Whether to click the mask to close | boolean       | `true` |
-| position | popup location（top,bottom,left,right,center） | string        | `center` | 
-| transition | animation name | string        | - |
-| style | Custom popup style | CSSProperties | - |
-| className | Custom popup class name | string        | -             |
-| closeable | whether to show the close button | boolean       | `false`        |
-| closeIconPosition | close button position（top-left,top-right,bottom-left,bottom-right） | string | `top-right` |
-| closeIcon | Custom Icon | ReactNode        | `close`     |
-| destroyOnClose | Whether to close after the component is destroyed | boolean       | `false`        |
-| round | Whether to show rounded corners | boolean       | `false`       |
-| portal | Mount the specified node | HTMLElement \ | (() => HTMLElement) \| null | `null`       |
+| visible | Whether the current component is displayed | `boolean`       | `false` |
+| zIndex | mask level | `string \| number` | `2000` |
+| duration | Mask animation duration, in seconds | `number`        | `0.3` |
+| overlayClassName | custom mask class | `string`        | - |
+| overlayStyle | custom mask style | `CSSProperties` | - |
+| lockScroll | Whether the background is locked | `boolean`       | `true`       |
+| overlay | Whether to show the mask | `boolean`       | `true` |
+| closeOnOverlayClick | Whether to click the mask to close | `boolean`       | `true` |
+| position | popup location（top,bottom,left,right,center） | `string `       | `center` | 
+| transition | animation name | `string`        | - |
+| style | Custom popup style | `CSSProperties` | - |
+| className | Custom popup class name | `string`        | -             |
+| closeable | whether to show the close button | `boolean`       | `false`        |
+| closeIconPosition | close button position（top-left,top-right,bottom-left,bottom-right） | `string` | `top-right` |
+| closeIcon | Custom Icon | `ReactNode`        | `close`     |
+| destroyOnClose | Whether to close after the component is destroyed | `boolean`       | `false`        |
+| round | Whether to show rounded corners | `boolean`       | `false`       |
+| portal | Mount the specified node | `HTMLElement \| (() => HTMLElement) \| null` | `null`       |
 | onClick            | Triggered when the popup is clicked         | `event: MouseEvent` | - |
 | onClickCloseIcon | Fired when the close icon is clicked     | `event: MouseEvent` | - |
 | onOpen | Triggered when the popup is opened         | -              | - |

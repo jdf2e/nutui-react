@@ -26,7 +26,6 @@ export interface PopupProps extends OverlayProps {
   transition: string
   overlayStyle: React.CSSProperties
   overlayClassName: string
-  className: string
   closeable: boolean
   closeIconPosition: string
   closeIcon: React.ReactNode
@@ -46,7 +45,6 @@ const defaultProps = {
   transition: '',
   overlayStyle: {},
   overlayClassName: '',
-  className: '',
   closeable: false,
   closeIconPosition: 'top-right',
   closeIcon: 'close',
@@ -56,8 +54,8 @@ const defaultProps = {
   round: false,
   onOpen: () => {},
   onClose: () => {},
-  onClickOverlay: (e: ITouchEvent) => true || {},
-  onClickCloseIcon: (e: ITouchEvent) => true || {},
+  onClickOverlay: (e: ITouchEvent) => true,
+  onClickCloseIcon: (e: ITouchEvent) => true,
   ...defaultOverlayProps,
 } as PopupProps
 
