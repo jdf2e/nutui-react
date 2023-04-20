@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
+import classNames from 'classnames'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-import bem from '@/utils/bem'
-
-export interface TabbarProps {
+export interface TabbarProps extends BasicComponent {
   visible: number | string
   activeVisible?: number | string
   bottom: boolean
@@ -10,21 +10,18 @@ export interface TabbarProps {
   unactiveColor: string
   activeColor: string
   safeAreaInsetBottom: boolean
-  className: string
-  style: React.CSSProperties
   onSwitch: (child: React.ReactElement<any>, active: number) => void
   children?: React.ReactNode
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   visible: 0,
   bottom: false,
   size: 20,
   unactiveColor: '',
   activeColor: '',
   safeAreaInsetBottom: false,
-  className: '',
-  style: {},
   onSwitch: (child, activeVisible) => {},
 } as TabbarProps
 
@@ -45,8 +42,7 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
     ...defaultProps,
     ...props,
   }
-
-  const b = bem('tabbar')
+  const classPrefix = 'nut-tabbar'
 
   const [selectIndex, setSelectIndex] = useState(activeVisible || visible)
 
@@ -64,12 +60,10 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
 
   return (
     <div
-      className={[
-        `${b()}`,
-        bottom ? `${b('bottom')}` : '',
-        safeAreaInsetBottom ? `${b('bottom')} ${b('safebottom')}` : '',
-        className,
-      ].join(' ')}
+      className={classNames(classPrefix, className, {
+        [`${classPrefix}__bottom`]: bottom || safeAreaInsetBottom,
+        [`${classPrefix}__safebottom`]: safeAreaInsetBottom,
+      })}
       style={style}
     >
       {React.Children.map(children, (child, idx) => {

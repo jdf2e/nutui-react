@@ -1,12 +1,9 @@
 import React, { FunctionComponent, useEffect } from 'react'
-
-import bem from '@/utils/bem'
-
+import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface TabbarItemProps extends BasicComponent {
   dot: boolean
-  className: string
   tabTitle: string
   icon: React.ReactNode
   href: string
@@ -21,7 +18,6 @@ export interface TabbarItemProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   dot: false,
-  className: '',
   tabTitle: '',
   icon: null,
   href: '',
@@ -53,8 +49,8 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     ...defaultProps,
     ...props,
   }
-  const b = bem('tabbar-item')
-  const bIcon = bem('tabbar-item__icon-box')
+  const classPrefix = 'nut-tabbar-item'
+  const boxPrefix = `${classPrefix}__icon-box`
 
   useEffect(() => {
     if (active && href) {
@@ -64,36 +60,53 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
 
   return (
     <div
-      className={`${b({ active })} ${className}`}
+      className={classNames(className, classPrefix, {
+        [`${classPrefix}--active`]: active,
+      })}
       style={{
-        ...style,
         color: active ? activeColor : unactiveColor,
+        ...style,
       }}
       onClick={() => {
         handleClick(index)
       }}
     >
-      <div className={`${bIcon()}`}>
+      <div className={boxPrefix}>
         {!dot ? (
           <>
             {num && num <= 99 && (
-              <div className={`${bIcon('tips', [bIcon('num')])}`}>{num}</div>
+              <div
+                className={classNames(
+                  `${boxPrefix}__tips`,
+                  `${boxPrefix}__num`
+                )}
+              >
+                {num}
+              </div>
             )}
             {num && num >= 100 && (
-              <div className={`${bIcon('tips', [bIcon('nums')])}`}>99+</div>
+              <div
+                className={classNames(
+                  `${boxPrefix}__tips`,
+                  `${boxPrefix}__nums`
+                )}
+              >
+                99+
+              </div>
             )}
           </>
         ) : (
-          <div className={`${bIcon('tips', [bIcon('dot')])}`} />
+          <div
+            className={classNames(`${boxPrefix}__tips`, `${boxPrefix}__dot`)}
+          />
         )}
-
         {icon || null}
       </div>
       {tabTitle && (
         <div
-          className={bIcon({ 'nav-word': true }, [
-            bIcon({ 'big-word': !icon }),
-          ])}
+          className={classNames(boxPrefix, `${boxPrefix}--nav-word`, {
+            [`${boxPrefix}--big-word`]: !icon,
+          })}
         >
           {tabTitle}
         </div>
