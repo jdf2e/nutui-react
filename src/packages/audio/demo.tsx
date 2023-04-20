@@ -1,10 +1,32 @@
 import React, { useState } from 'react'
 import { PlayCircleFill, PoweroffCircleFill } from '@nutui/icons-react'
+import { useTranslate } from '@/sites/assets/locale'
 import { Audio } from './audio'
 import './demo.scss'
 import Cell from '../cell'
 
+interface T {
+  basic: string
+  progress: string
+  none: string
+  control: string
+}
+
 const AudioDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基本用法',
+      progress: '进度条模式',
+      none: '自定义模式',
+      control: '控件模式',
+    },
+    'en-US': {
+      basic: 'Basic',
+      progress: 'Progress Mode',
+      none: 'Custom Mode',
+      control: 'Control Mode',
+    },
+  })
   const [duration, setDuration] = useState(0)
   const [voiceIcon, setVoiceIcon] = useState<any>(PlayCircleFill)
   const audioElement = document.querySelectorAll('audio')[2]
@@ -18,7 +40,7 @@ const AudioDemo = () => {
   }
   return (
     <div className="demo">
-      <h2>type=icon</h2>
+      <h2>{translated.basic}</h2>
       <Cell>
         <Audio
           autoplay={false}
@@ -30,7 +52,7 @@ const AudioDemo = () => {
           onEnd={() => alert('ended!')}
         />
       </Cell>
-      <h2>type=progress</h2>
+      <h2>{translated.progress}</h2>
       <Cell>
         <Audio
           autoplay={false}
@@ -49,7 +71,7 @@ const AudioDemo = () => {
           onEnd={() => alert('progress audio ended!')}
         />
       </Cell>
-      <h2>type=none</h2>
+      <h2>{translated.none}</h2>
       <Cell>
         <Audio
           className="custom-voice-audio"
@@ -69,7 +91,7 @@ const AudioDemo = () => {
           </div>
         </Audio>
       </Cell>
-      <h2>type=controls</h2>
+      <h2>{translated.control}</h2>
       <Cell>
         <Audio
           autoplay={false}

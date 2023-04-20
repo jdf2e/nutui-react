@@ -40,6 +40,40 @@ export default App;
 
 :::
 
+### 进度条播放
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Audio } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Audio
+        autoplay={false}
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        type="progress"
+        preload="auto"
+        muted={false}
+        onMute={(e) => {
+          console.log('progress audio muted', e)
+        }}
+        onForward={() => console.log('forward')}
+        onPause={(e) => {
+          console.log('progress audio paused', e)
+        }}
+        onEnd={() => alert('progress audio ended!')}
+      />
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
 ### 自定义
 
 :::demo
@@ -70,40 +104,6 @@ const App = () => {
         <div>{duration}&quot;</div>
       </div>
     </Audio>
-    </>
-  );
-};
-export default App;
-```
-
-:::
-
-### 进度条播放
-
-:::demo
-
-```tsx
-import  React from "react";
-import { Audio } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Audio
-        autoplay={false}
-        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
-        type="progress"
-        preload="auto"
-        muted={false}
-        onMute={(e) => {
-          console.log('progress audio muted', e)
-        }}
-        onForward={() => console.log('forward')}
-        onPause={(e) => {
-          console.log('progress audio paused', e)
-        }}
-        onEnd={() => alert('progress audio ended!')}
-      />
     </>
   );
 };
@@ -149,12 +149,12 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| src         | 语音资源链接               | string | ''              |
-| muted        | 是否静音                         | boolean | false             |
-| autoplay         | 是否自动播放 | boolean | false               |
-| loop | 是否循环播放     | boolean | false |
-| preload          | 是否预加载语音 枚举值：'none'、'metadata'、'auto'、''   | string | 'auto'              |
-| type         | 展示形式，可选值：controls 控制面板   progress 进度条  icon 图标 none 自定义 | string | 'progress'              |
+| src         | 语音资源链接               | string | -              |
+| muted        | 是否静音                         | boolean | `false`             |
+| autoplay         | 是否自动播放 | boolean | `false`               |
+| loop | 是否循环播放     | boolean | `false` |
+| preload          | 是否预加载语音 枚举值：'none'、'metadata'、'auto'、''   | string | `auto`              |
+| type         | 展示形式，可选值：controls 控制面板   progress 进度条  icon 图标 none 自定义 | string | `progress`              |
 | onBack  | 语音快退回调,type=progress时生效 | (event：HTMLAudioElement) => void | - |
 | onForward  | 语音快进回调,type=progress时生效 | (event：HTMLAudioElement) => void | - |
 | onPause  | 暂停回调 | (event：HTMLAudioElement) => void | - |
