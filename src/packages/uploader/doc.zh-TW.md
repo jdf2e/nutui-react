@@ -371,9 +371,9 @@ export default App;
 | progress `v1.3.4廢棄` | 文件上傳的進度         | `event, options, percentage`        |
 | onOversize `v1.3.4` | 文件大小超過限制時觸發 | `files`     |
 | oversize `v1.3.4廢棄` | 文件大小超過限制時觸發 | `files`     |
-| onSuccess `v1.3.4`  | 上傳成功    | `responseText, options` |
+| onSuccess `v1.3.4`  | 上傳成功    | `responseText, options, fileList, file` |
 | success `v1.3.4廢棄`  | 上傳成功    | `responseText, options` |
-| onFailure `v1.3.4`  | 上傳失敗    | `responseText, options` |
+| onFailure `v1.3.4`  | 上傳失敗    | `responseText, options, fileList, file` |
 | failure `v1.3.4廢棄`  | 上傳失敗    | `responseText, options` |
 | onChange `v1.3.4`   | 上傳文件改變時的狀態   | `fileList, event`       |
 | change `v1.3.4廢棄`   | 上傳文件改變時的狀態   | `fileList, event`       |
