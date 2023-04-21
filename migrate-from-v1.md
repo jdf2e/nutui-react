@@ -136,6 +136,9 @@
 #### Animate
 #### AnimatingNumbers
 #### Audio
+- url 重命名为 src
+- onFastBack 重命名为 onBack
+- onPlayEnd 重命名为 onEnd
 #### Avatar
 #### Badge
 #### CircleProgress
