@@ -38,6 +38,12 @@
 - 增加 afterClose和afterShow，用于完全关闭后触发的回调和完全展示后触发的回调
 - 完善overlay的demo示例
 #### Popup
+- `popClass` 重命名为 `className`，统一将组件的样式类名使用 `className`，不再指定特殊名字，减轻用户使用的记忆成本
+- `overlayClass` 重命名为 `OverlayClassName`，继承自`Overlay`
+- `closeOnClickOverlay` 重命名为 `closeOnOverlayClick`
+- `onOpened` 和 `onClosed` 改为 `afterShow` 和 `afterClose`，继承自`Overlay`，用于完全关闭后触发的回调和完全展示后触发的回调 
+- `destroyOnClose` 的描述进行了修订，改为：“组件不可见时，卸载内容”，并把其默认值改为了`false`
+- `onClickCloseIcon` 和 `onClickOverlay` 两个方法，增加布尔判断，如返回false 或 未定义返回值时，将不再关闭 Popup；默认值为true；在demo中已增加相应示例
 
 ### 布局组件
 #### Divider

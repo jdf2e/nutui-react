@@ -418,7 +418,7 @@ const InternalCascader: ForwardRefRenderFunction<
     <>
       {poppable ? (
         <Popup
-          popClass="cascadar-popup"
+          className="cascadar-popup"
           visible={visible}
           position="bottom"
           round

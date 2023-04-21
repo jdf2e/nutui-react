@@ -178,7 +178,7 @@ export const NumberKeyboard: FunctionComponent<
         visible={show}
         overlay={overlay}
         position="bottom"
-        popClass={popClass}
+        className={popClass}
         onClickOverlay={onClose}
         onClickCloseIcon={onClose}
         overlayStyle={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
