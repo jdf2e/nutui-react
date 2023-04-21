@@ -1,10 +1,10 @@
 # Drag 
 
-### Intro
+## Intro
 
 Implement draggable arbitrary elements.
 
-### Install
+## Install
 
 ```javascript
 // react
@@ -42,7 +42,7 @@ export default App;
 
 :::
 
-##  Limit Direction
+###  Limit Direction
 
 :::demo
 
@@ -76,7 +76,7 @@ export default App;
 
 :::
 
-## Attract
+###  Attract
 
 :::demo
 
@@ -105,7 +105,7 @@ export default App;
 
 :::
 
-## Limit Boundaries
+###  Limit Boundaries
 :::demo
 
 ```tsx
@@ -156,7 +156,7 @@ export default App;
 
 :::
 
-## API
+## Drag
 
 ### Props
 
