@@ -1,14 +1,16 @@
 # Uploader
 
-### Intro
+## Intro
 
 Used to upload local pictures or files to the server.
 
-### Install
+## Install
 
 ``` ts
 import { Uploader } from '@nutui/nutui-react';
 ```
+
+## Demo
 ### Basic Usage
 
 :::demo
@@ -392,34 +394,34 @@ export default App;
 
 | Property | Description | Type | Default|
 |-------------------|---------------------|-----------------|--------|
-| autoUpload | Whether to upload the file immediately after selecting it, if false, you need to manually execute the ref submit method to upload| boolean | `true`|
-| name | The name of the `input` tag `name`, the file parameter name sent to the background| string | `file`|
-| url | The interface address of the upload server| string | -|
-| defaultValue | List of uploaded files by default| FileType<React.ReactNode>[] | `[]`|
-| value | List of uploaded files | FileType<string>[] | []  
-| preview | Whether to display the preview image after the upload is successful| boolean | `true`|
-| previewUrl | When uploading a default image URL in a non-image ('image') format| string | -  |
-| deletable      | Whether to display the delete button| boolean | `true`|
-| method| The http method of upload request| string | `post`|
-| previewType | The built-in style of the upload list, supports two basic styles picture, list| string | `picture`|
-| capture | Capture, can be set to[camera](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，，turn on the camera directly| string | `false`|
-| maxFileSize | You can set the maximum upload file size (bytes)| number \| string    | `Number.MAX_VALUE` |
-| maxCount | File upload limit| number \| string | `1`|
-| imageFit | image fill mode | 'contain' | 'cover' | 'fill' | 'none' | 'scale-down' | `cover` |
+| autoUpload | Whether to upload the file immediately after selecting it, if false, you need to manually execute the ref submit method to upload| `boolean` | `true`|
+| name | The name of the `input` tag `name`, the file parameter name sent to the background| `string` | `file` |
+| url | The interface address of the upload server| `string` | `-` |
+| defaultValue | List of uploaded files by default| `FileType<React.ReactNode>[]` | `[]`|
+| value | List of uploaded files | `FileType<string>[]` | `[]` |  
+| preview | Whether to display the preview image after the upload is successful| `boolean` | `true`|
+| previewUrl | When uploading a default image URL in a non-image ('image') format| `string` | `-`  |
+| deletable      | Whether to display the delete button| `boolean` | `true`|
+| method| The http method of upload request| `string` | `post`|
+| previewType | The built-in style of the upload list, supports two basic styles picture, list| `string` | `picture`|
+| capture | Capture, can be set to[camera](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，，turn on the camera directly| `string` | `false`|
+| maxFileSize | You can set the maximum upload file size (bytes)| `number | string`    | `Number.MAX_VALUE` |
+| maxCount | File upload limit| `number | string` | `1`|
+| imageFit | image fill mode | `'contain' | 'cover' | 'fill' | 'none' | 'scale-down'` | `cover` |
 | clearInput| Whether to clear the `input` content, set to `true` to support repeated selection and upload of the same file| boolean | `true`|
-| accept| File types that can be accepted. See[Des](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | string | `*`|
-| headers| Set request headers| Object| `{}`|
-| data| Uploading extra params or function which can return uploading extra params formData| Object| `{}`|
-| uploadIcon | Upload area[icon name](#/zh-CN/icon)| `React.ReactNode`| - |
-| uploadLabel | Upload area tip| `React.ReactNode` | - |
-| xhrState| The success status (status) value of the interface response| number| `200`|
-| withCredentials  | Support for sending cookie credential information| boolean | `false`|
-| multiple| Whether to support multiple file selection| boolean | `false`|
-| disabled| Whether to disable file upload| boolean | `false`|
-| timeout| timeout, in milliseconds| number |string | `1000 * 30`|
-| beforeUpload | The pre-upload function needs to return a `Promise` object| (file: File[]) => Promise<File[] \| boolean> | - |
-| beforeXhrUpload  | When performing an XHR upload, the custom method | (xhr: XMLHttpRequest, options: any) => void | - |
-| beforeDelete  | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects | (file: FileItem, files: FileItem[]) => boolean | - |
+| accept| File types that can be accepted. See[Des](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | `string` | `*` |
+| headers| Set request headers| `object` | `{}` |
+| data| Uploading extra params or function which can return uploading extra params formData| `object` | `{}`|
+| uploadIcon | Upload area[icon name](#/zh-CN/icon)| `React.ReactNode`|  `-` |
+| uploadLabel | Upload area tip| `React.ReactNode` | `-` |
+| xhrState| The success status (status) value of the interface response| `number` | `200`|
+| withCredentials  | Support for sending cookie credential information| `boolean` | `false`|
+| multiple| Whether to support multiple file selection| `boolean` | `false`|
+| disabled| Whether to disable file upload| `boolean` | `false`|
+| timeout| timeout, in milliseconds| `number | string` | `1000 * 30`|
+| beforeUpload | The pre-upload function needs to return a `Promise` object| `(file: File[]) => Promise<File[] \| boolean>` | `-` |
+| beforeXhrUpload  | When performing an XHR upload, the custom method | `(xhr: XMLHttpRequest, options: any) => void` | `-` |
+| beforeDelete  | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects |  `(file: FileItem, files: FileItem[]) => boolean` | `-` |
 | onStart     | File upload started           | `options`              |
 | onProgress  | Progress of file upload         | `event, options, percentage`        |
 | onOversize  | Triggered when the file size exceeds the limit | `files`                |
@@ -437,8 +439,8 @@ export default App;
 |----------|--------------|-------------|
 | status   | File status value, optional ‘ready,uploading,success,error’' | `ready`|
 | uid      | Unique ID of the file| `new Date().getTime().toString()` |
-| name     | File name| -|
-| url      | File path| -|
+| name     | File name| `-` |
+| url      | File path| `-` |
 | type     | File type| `image/jpeg`|
 | formData | Upload the required data| `new FormData()`  |
 
@@ -449,8 +451,8 @@ Use ref to get Uploader instance and call instance methods.
 
 | Name             | Description                                                                                 | Arguments | Return value |
 |------------------|---------------------------------------------------------------------------------------------|-----------|--------------|
-| submit           | Manual upload mode, perform upload operation                                                | -         | -            |
-| clear  | Empty the selected file queue (this method is generally used when uploading in manual mode) | index     | -            |
+| submit           | Manual upload mode, perform upload operation                                                | `-`         | `-`            |
+| clear  | Empty the selected file queue (this method is generally used when uploading in manual mode) | `index`     | `-`            |
 
 
 ## Theming

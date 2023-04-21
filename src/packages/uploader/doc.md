@@ -1,14 +1,16 @@
 # Uploader 上传
 
-### 介绍
+## 介绍
 
 用于将本地的图片或文件上传至服务器。
 
-### 安装
+## 安装
 
 ``` ts
 import { Uploader } from '@nutui/nutui-react';
 ```
+
+## 代码演示
 ### 基本用法
 
 :::demo
@@ -478,34 +480,34 @@ export default App;
 
 | 字段| 说明| 类型| 默认值|
 |---------|------|--------|----------|
-| autoUpload | 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传| Boolean| true           |
-| name | `input` 标签 `name` 的名称，发到后台的文件参数名| String| "file"|
-| url | 上传服务器的接口地址| String                            | -|
-| defaultValue | 默认已经上传的文件列表| FileType<React.ReactNode>[] | []                |
-| value | 已经上传的文件列表| FileType<string>[] | []                |
-| preview | 是否上传成功后展示预览图| Boolean                           | true |
-| previewUrl| 当上传非图片('image')格式的默认图片地址 | String | ''             |
-| deletable | 是否展示删除按钮| Boolean | true |
-| method| 上传请求的 http method| String| "post"           |
-| previewType | 上传列表的内建样式，支持两种基本样式 picture、list| String| "picture"|
-| capture| 图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接调起摄像头| String| false            |
-| maxFileSize | 可以设定最大上传文件的大小（字节）| Number丨String| Number.MAX_VALUE |
-| maxCount | 文件上传数量限制| Number丨String| 1 |
-| imageFit | 图片填充模式 | 'contain' | 'cover' | 'fill' | 'none' | 'scale-down' | `cover` |
-| clearInput       | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件| Boolean| true            |
-| accept            | 允许上传的文件类型，[详细说明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | String| *|
-| headers           | 设置上传的请求头部| Object| {}|
-| data| 附加上传的信息 formData| Object| {}|
-| uploadIcon | 上传区域[图标名称](#/zh-CN/icon) | `React.ReactNode`| - |
-| uploadLabel | 上传区域图片下方文字 | `React.ReactNode` | - |
-| xhrState| 接口响应的成功状态（status）值| Number| 200|
-| withCredentials  | 支持发送 cookie 凭证信息| Boolean| false|
-| multiple| 是否支持文件多选| Boolean| false|
-| disabled| 是否禁用文件上传| Boolean| false|
-| timeout| 超时时间，单位为毫秒| Number丨String| 1000 * 30|
-| beforeUpload | 上传前的函数需要返回一个`Promise`对象| (file: File[]) => Promise<File[] \| boolean> | - |
-| beforeXhrUpload | 执行 XHR 上传时，自定义方式 | (xhr: XMLHttpRequest, options: any) => void | - |
-| beforeDelete     | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除| (file: FileItem, files: FileItem[]) => boolean | -                |
+| autoUpload | 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传| `Boolean` | `true`           |
+| name | `input` 标签 `name` 的名称，发到后台的文件参数名| `string` | `file` |
+| url | 上传服务器的接口地址| `string`                            | `-` |
+| defaultValue | 默认已经上传的文件列表| `FileType<React.ReactNode>[]` | `[]`                |
+| value | 已经上传的文件列表| `FileType<string>[]` | `[]`                |
+| preview | 是否上传成功后展示预览图| `boolean`                           | `true` |
+| previewUrl| 当上传非图片('image')格式的默认图片地址 | `string` | `''`             |
+| deletable | 是否展示删除按钮| `boolean` | `true` |
+| method| 上传请求的 http method| `string` | `post`           |
+| previewType | 上传列表的内建样式，支持两种基本样式 picture、list| `string` | `picture` |
+| capture| 图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接调起摄像头| `string` | `false`            |
+| maxFileSize | 可以设定最大上传文件的大小（字节）| `number丨string` | `Number.MAX_VALUE` |
+| maxCount | 文件上传数量限制| `number 丨 string` | `1` |
+| imageFit | 图片填充模式 | `'contain' | 'cover' | 'fill' | 'none' | 'scale-down'` | `cover` |
+| clearInput       | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件| `boolean` | `true`            |
+| accept            | 允许上传的文件类型，[详细说明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | `string` | `*` |
+| headers           | 设置上传的请求头部| `object` | `{}` |
+| data| 附加上传的信息 formData| `object` | `{}` |
+| uploadIcon | 上传区域[图标名称](#/zh-CN/icon) | `React.ReactNode`| `-` |
+| uploadLabel | 上传区域图片下方文字 | `React.ReactNode` | `-` |
+| xhrState| 接口响应的成功状态（status）值 | `number` | `200` |
+| withCredentials  | 支持发送 cookie 凭证信息| `Boolean` | `false` |
+| multiple| 是否支持文件多选| `boolean` | `false` |
+| disabled| 是否禁用文件上传| `boolean` | `false` |
+| timeout| 超时时间，单位为毫秒| `number 丨 string` | `1000 * 30` |
+| beforeUpload | 上传前的函数需要返回一个`Promise`对象| `(file: File[]) => Promise<File[] \| boolean>` | `- `|
+| beforeXhrUpload | 执行 XHR 上传时，自定义方式 | `(xhr: XMLHttpRequest, options: any) => void` |`-` |
+| beforeDelete     | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除| `(file: FileItem, files: FileItem[]) => boolean` | `-`              |
 | onStart     | 文件上传开始           | `options`              |
 | onProgress  | 文件上传的进度         | `event, options, percentage`        |
 | onOversize  | 文件大小超过限制时触发 | `files`                |
@@ -524,8 +526,8 @@ export default App;
 |----------|-------------|-------------|
 | status   | 文件状态值，可选'ready,uploading,success,error,removed' | `ready`|
 | uid      | 文件的唯一标识| `new Date().getTime().toString()` |
-| name     | 文件名称| -|
-| url      | 文件路径| -|
+| name     | 文件名称| `-` |
+| url      | 文件路径| `-` |
 | type     | 文件类型| `image/jpeg`|
 | formData | 上传所需的data| `new FormData()`|
 
@@ -536,8 +538,8 @@ export default App;
 
 | 方法名           | 说明                                                       | 参数  | 返回值 |
 |------------------|------------------------------------------------------------|-------|--------|
-| submit           | 手动上传模式，执行上传操作                                 | -     | -      |
-| clear  | 清空已选择的文件队列（该方法一般配合在手动模式上传时使用） | index | -      |
+| submit           | 手动上传模式，执行上传操作                                 |  `-`     | `- `     |
+| clear  | 清空已选择的文件队列（该方法一般配合在手动模式上传时使用） | `index` | `- `     |
 
 
 ## 主题定制
