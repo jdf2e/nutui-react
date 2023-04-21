@@ -1,32 +1,6 @@
 @import '../progress/progress.scss';
 @import '../../styles/mixins/text-ellipsis.scss';
 
-.nut-theme-dark {
-  .nut-uploader {
-    // background-color:  $gray2;
-    &__preview {
-      margin-bottom: 0;
-
-      &-img {
-        i {
-          color: $dark1 !important;
-        }
-      }
-    }
-  }
-
-  .nut-progress {
-    .nut-progress-text__inner {
-      color: $white !important;
-    }
-  }
-
-  .nut-uploader__preview-list {
-    background: $dark5;
-    color: $dark1;
-  }
-}
-
 .nut-uploader {
   position: relative;
   display: flex;
@@ -195,8 +169,8 @@
       }
 
       &__c {
-        max-width: 100%;
-        max-height: 100%;
+        width: 100%;
+        height: 100%;
         border-radius: 6px;
       }
 
