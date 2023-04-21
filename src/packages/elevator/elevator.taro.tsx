@@ -20,7 +20,6 @@ export interface ElevatorProps extends BasicComponent {
   sticky: boolean
   spaceHeight: number
   titleHeight: number
-  className: string
   style: React.CSSProperties
   children: React.ReactNode
   onClickItem: (key: string, item: ElevatorData) => void
