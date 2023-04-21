@@ -13,7 +13,7 @@ export interface RowProps extends BasicComponent {
   gutter: string | number
   onClick: (e: any, type: EventType) => void
 }
-const prefixCls = 'nut-row'
+const classPrefix = 'nut-row'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -51,7 +51,7 @@ export const Row: FunctionComponent<
     ${getClass('justify', justify)}
     ${getClass('align', align)}
     ${getClass('flex', wrap)}
-    ${prefixCls}
+    ${classPrefix}
    `
   }
   const parentRow = {
