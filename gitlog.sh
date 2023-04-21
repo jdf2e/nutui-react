@@ -11,7 +11,7 @@ log=$(echo "$log" | sed 's/feat/feat/i;s/fix/fix/i;s/。//')
 log=$(echo "$log" | sort -f)
 
 # 增加 emoji
-log=$(echo "$log" | sed 's/^feat/* :sparkles: feat/i;s/^fix/* :bug: fix/i;s/^chore/* 🔨 chore/i;s/^docs/* 📖 docs/i')
+log=$(echo "$log" | sed 's/^feat/* :sparkles: feat/i;s/^fix/* :bug: fix/i;s/^chore/* 🔨 chore/i;s/^refactor/* 🛠 refactor/i;s/^docs/* 📖 docs/i')
 
 version="$2"
 today=$(date "+%Y-%m-%d")
