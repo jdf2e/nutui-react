@@ -1,37 +1,7 @@
-.nut-theme-dark {
-  .flex-content {
-    line-height: $row-content-line-height;
-    color: $row-content-color;
-    text-align: center;
-    border-radius: $row-content-border-radius;
-    background: $dark4;
-    &.flex-content-light {
-      background: $dark8;
-    }
-    &.flex-content-height {
-      height: $row-content-height;
-    }
-  }
-}
-
-.flex-content {
-  line-height: $row-content-line-height;
-  color: $row-content-color;
-  text-align: center;
-  border-radius: $row-content-border-radius;
-  background: $row-content-background-color;
-  font-size: 14px;
-
-  &.flex-content-light {
-    background: $row-content-light-background-color;
-  }
-  &.flex-content-height {
-    height: $row-content-height;
-  }
-}
 .nut-row {
   width: 100%;
   overflow: hidden;
+
   &:after {
     display: block;
     height: 0;
@@ -42,41 +12,53 @@
 
   &-flex {
     display: flex;
+
     &:after {
       display: none;
     }
+
     .nut-col {
       float: none;
     }
   }
+
   &-justify-center {
     justify-content: center;
   }
+
   &-justify-end {
     justify-content: flex-end;
   }
+
   &-justify-space-between {
     justify-content: space-between;
     align-items: center;
   }
+
   &-justify-space-around {
     justify-content: space-around;
   }
+
   &-align-flex-start {
     align-items: flex-start;
   }
+
   &-align-center {
     align-items: center;
   }
+
   &-align-flex-end {
     align-items: flex-end;
   }
+
   &-flex-wrap {
     flex-wrap: wrap;
   }
+
   &-flex-nowrap {
     flex-wrap: nowrap;
   }
+
   &-flex-reverse {
     flex-wrap: wrap-reverse;
   }
