@@ -29,7 +29,7 @@ test('should render tabbar when default', () => {
 test('should render custom color and badge when using prop', () => {
   const { container } = render(
     <>
-      <Tabbar unactiveColor="grey" activeColor="blue">
+      <Tabbar inactiveColor="grey" activeColor="blue">
         <TabbarItem
           title="首页"
           icon={<Home width={20} height={20} />}
@@ -66,7 +66,7 @@ test('should render fixed element when using bottom prop', async () => {
 test('should match active tabbar by click', async () => {
   const { container } = render(
     <>
-      <Tabbar unactiveColor="grey" activeColor="blue">
+      <Tabbar inactiveColor="grey" activeColor="blue">
         <TabbarItem
           title="首页"
           icon={<Home width={20} height={20} />}
@@ -91,7 +91,7 @@ test('should show sure emitted when click', async () => {
   const onSwitch = jest.fn()
   const { container } = render(
     <>
-      <Tabbar unactiveColor="grey" activeColor="blue" onSwitch={onSwitch}>
+      <Tabbar inactiveColor="grey" activeColor="blue" onSwitch={onSwitch}>
         <TabbarItem
           title="首页"
           icon={<Home width={20} height={20} />}
