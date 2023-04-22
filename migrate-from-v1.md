@@ -84,6 +84,8 @@
 - icon 类型改为 ReactNode，移除其他 icon 关联属性
 - bottom 重命名为 fixed
 - safeAreaInsetBottom 重命名为 safeArea
+- visible 重命名为 defaultValue，非受控
+- activeVisible 重命名为 value，受控
 #### Tabs
 
 ### 数据录入

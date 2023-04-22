@@ -25,8 +25,8 @@ const App = () => {
   const [activeIndex, setActiveIndex] = useState(2)
 
   return <Tabbar
-    visible={0}
-    activeVisible={activeIndex}
+    defaultValue={0}
+    value={activeIndex}
     onSwitch={(child, id) => {
       setActiveIndex(id)
     }}
@@ -51,7 +51,7 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
-  <Tabbar visible={2}>
+  <Tabbar defaultValue={2}>
     <TabbarItem title="first" icon={<Home width={20} height={20} />} />
     <TabbarItem title="Classification" icon={<Category width={20} height={20} />} />
     <TabbarItem title="Find" icon={<Find width={20} height={20} />} />
@@ -176,8 +176,8 @@ export default App;
 
 | Prop            | Description                                                                          | Type   | Default |
 |-----------------|--------------------------------------------------------------------------------------|--------|---------|
-| visible | The default index value of the selected label                                        | number | `0`       |
-| activeVisible | The index value of the selected label                                                | number | -       |
+| defaultValue | The default index value of the selected label                                        | number | `0`       |
+| value | The index value of the selected label                                                | number | -       |
 | fixed          | Whether it is fixed at the bottom of the page                                        | boolean | `false`   |
 | inactiveColor  | Icon inactive color                                                                  | string | `#7d7e80` |
 | activeColor    | icon active color                                                                    | string | `#1989fa` |

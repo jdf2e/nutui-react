@@ -46,8 +46,8 @@ const App = () => {
   const [activeIndex, setActiveIndex] = useState(2)
   
   return <Tabbar
-    visible={0}
-    activeVisible={activeIndex}
+    defaultValue={0}
+    value={activeIndex}
     onSwitch={(child, id) => {
       setActiveIndex(id)
     }}
@@ -178,8 +178,8 @@ export default App;
 
 | 字段                          | 说明                     | 类型   | 默认值     |
 |-----------------------------|------------------------|--------|---------|
-| visible                     | 默认选中的标签的索引值            | number | `0`       |
-| activeVisible         | 选中的标签的索引值            | number | -       |
+| defaultValue                     | 默认选中的标签的索引值            | number | `0`       |
+| value         | 选中的标签的索引值            | number | -       |
 | fixed                      | 是否固定在页面底部              | boolean | `false`   |
 | inactiveColor               | icon未激活的颜色             | string | `#7d7e80` |
 | activeColor                 | icon激活的颜色              | string | `#1989fa` |

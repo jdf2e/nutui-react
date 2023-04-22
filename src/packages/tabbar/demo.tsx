@@ -106,7 +106,7 @@ const TabbarDemo = () => {
         <h2>{translated.c38a08ef}</h2>
         <Tabbar
           visible={0}
-          activeVisible={activeIndex}
+          value={activeIndex}
           onSwitch={(child, id) => {
             setActiveIndex(id)
           }}

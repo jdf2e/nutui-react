@@ -3,8 +3,8 @@ import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface TabbarProps extends BasicComponent {
-  visible: number | string
-  activeVisible?: number | string
+  defaultValue: number
+  value?: number
   fixed: boolean
   size: string | number
   inactiveColor: string
@@ -16,20 +16,20 @@ export interface TabbarProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
-  visible: 0,
+  defaultValue: 0,
   fixed: false,
   size: 20,
   inactiveColor: '',
   activeColor: '',
   safeArea: false,
-  onSwitch: (child, activeVisible) => {},
+  onSwitch: (child, value) => {},
 } as TabbarProps
 
 export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
   const {
     children,
-    visible,
-    activeVisible,
+    defaultValue,
+    value,
     fixed,
     size,
     activeColor,
@@ -44,19 +44,19 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
   }
   const classPrefix = 'nut-tabbar'
 
-  const [selectIndex, setSelectIndex] = useState(activeVisible || visible)
+  const [selectIndex, setSelectIndex] = useState(value || defaultValue)
 
   const handleClick = (idx: number) => {
-    if (!('activeVisible' in props)) {
+    if (!('value' in props)) {
       setSelectIndex(idx)
     }
   }
 
   useEffect(() => {
-    if (activeVisible !== undefined) {
-      setSelectIndex(activeVisible)
+    if (value !== undefined) {
+      setSelectIndex(value)
     }
-  }, [activeVisible])
+  }, [value])
 
   return (
     <div
