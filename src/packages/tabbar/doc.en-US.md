@@ -181,7 +181,7 @@ export default App;
 | fixed          | Whether it is fixed at the bottom of the page                                        | boolean | `false`   |
 | inactiveColor  | Icon inactive color                                                                  | string | `#7d7e80` |
 | activeColor    | icon active color                                                                    | string | `#1989fa` |
-| safeAreaInsetBottom    | Whether to enable the full screen bottom safety zone adaptation of the iphone series | boolean | `false`   |
+| safeArea    | Whether to enable the full screen bottom safety zone adaptation of the iphone series | boolean | `false`   |
 | style    | component style                                                                      |
 
 ### tabbar-item

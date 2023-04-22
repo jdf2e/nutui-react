@@ -246,7 +246,7 @@ const TabbarDemo = () => {
         </Tabbar>
 
         <h2 className="bottom-h2">{translated.cfbdc781}</h2>
-        <Tabbar safeAreaInsetBottom>
+        <Tabbar safeArea>
           <TabbarItem
             title={translated.c3a3a1d2}
             href=""

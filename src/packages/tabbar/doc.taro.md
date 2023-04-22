@@ -183,7 +183,7 @@ export default App;
 | fixed                      | 是否固定在页面底部              | boolean | `false`   |
 | inactiveColor               | icon未激活的颜色             | string | `#7d7e80` |
 | activeColor                 | icon激活的颜色              | string | `#1989fa` |
-| safeAreaInsetBottom | 是否开启iphone系列全面屏底部安全区适配 | boolean | `false`   |
+| safeArea | 是否开启iphone系列全面屏底部安全区适配 | boolean | `false`   |
 
 ### tabbar-item
 
