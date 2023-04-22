@@ -80,7 +80,7 @@ const TabbarDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
-        <Tabbar visible={0}>
+        <Tabbar defaultValue={0}>
           <TabbarItem
             title={translated.c3a3a1d2}
             icon={<Home width={18} height={18} />}
@@ -105,7 +105,7 @@ const TabbarDemo = () => {
 
         <h2>{translated.c38a08ef}</h2>
         <Tabbar
-          visible={0}
+          defaultValue={0}
           value={activeIndex}
           onSwitch={(child, id) => {
             setActiveIndex(id)

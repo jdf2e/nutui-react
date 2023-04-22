@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export interface TabbarProps extends BasicComponent {
   defaultValue: number
@@ -10,8 +11,7 @@ export interface TabbarProps extends BasicComponent {
   inactiveColor: string
   activeColor: string
   safeArea: boolean
-  onSwitch: (child: React.ReactElement<any>, active: number) => void
-  children?: React.ReactNode
+  onSwitch: (value: number) => void
 }
 
 const defaultProps = {
@@ -22,7 +22,7 @@ const defaultProps = {
   inactiveColor: '',
   activeColor: '',
   safeArea: false,
-  onSwitch: (child, value) => {},
+  onSwitch: (value) => {},
 } as TabbarProps
 
 export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
@@ -44,13 +44,12 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
   }
   const classPrefix = 'nut-tabbar'
 
-  const [selectIndex, setSelectIndex] = useState(value || defaultValue)
-
-  const handleClick = (idx: number) => {
-    if (!('value' in props)) {
-      setSelectIndex(idx)
-    }
-  }
+  const [selectIndex, setSelectIndex] = usePropsValue<number>({
+    value,
+    defaultValue,
+    finalValue: 0,
+    onChange: onSwitch,
+  })
 
   useEffect(() => {
     if (value !== undefined) {
@@ -77,10 +76,7 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
           inactiveColor,
           activeColor,
           size,
-          handleClick: () => {
-            handleClick(idx)
-            onSwitch(child, idx)
-          },
+          handleClick: setSelectIndex,
         }
         return React.cloneElement(child, childProps)
       })}

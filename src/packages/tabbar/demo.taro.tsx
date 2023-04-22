@@ -98,7 +98,7 @@ const TabbarDemo = () => {
         </Tabbar>
 
         <h2>{translated.c38a08ef}</h2>
-        <Tabbar visible={2}>
+        <Tabbar defaultValue={2}>
           <TabbarItem
             title={translated.c3a3a1d2}
             icon={<Home width={20} height={20} />}
