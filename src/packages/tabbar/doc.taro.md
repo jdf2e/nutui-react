@@ -170,13 +170,11 @@ export default App;
 ```
 :::        
 
-## API
+## Tabbar
 
-### Prop
+### Props
 
-### nut-tabbar
-
-| 字段                          | 说明                     | 类型   | 默认值     |
+| 属性                          | 说明                     | 类型   | 默认值     |
 |-----------------------------|------------------------|--------|---------|
 | defaultValue                     | 默认选中的标签的索引值            | number | `0`       |
 | value         | 选中的标签的索引值            | number | -       |
@@ -184,23 +182,19 @@ export default App;
 | inactiveColor               | icon未激活的颜色             | string | `#7d7e80` |
 | activeColor                 | icon激活的颜色              | string | `#1989fa` |
 | safeArea | 是否开启iphone系列全面屏底部安全区适配 | boolean | `false`   |
+| onSwitch | 切换页签时触发事件 | 点击的数据和索引值 |
 
-### tabbar-item
+## TabbarItem
 
-| 字段                        | 说明                                                                                                                      | 类型   | 默认值 |
+### Props
+
+| 属性                        | 说明                                                                                                                      | 类型   | 默认值 |
 |---------------|------------|--------|--------|
 | title | 标签页的标题 | ReactNode | -     |
 | icon | 自定义图标 | ReactNode | - |
 | href | 标签页的跳转链接； | string | -     |
 | num | 页签右上角的数字角标，超出99之后为99+ | number | - |
 | dot| 是否显示图标右上角小红点 | boolean | `false`     |
-
-### Event
-
-| 事件名称            | 说明               | 回调参数           |
-|-----------------|--------------------|--------------------|
-| onSwitch | 切换页签时触发事件 | 点击的数据和索引值 |
-
 
 ## 主题定制
 

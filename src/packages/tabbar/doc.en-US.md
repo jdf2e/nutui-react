@@ -1,17 +1,17 @@
 #  Tabbar
 
-### introduce
+## Intro
 
 Bottom Navigation Common Scenarios
 
-### Install
+## Install
 
 ```ts
 // react
 import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 ```
 
-## code demo
+## Demo
 
 ### Basic usage
 
@@ -168,13 +168,11 @@ export default App;
 ```
 :::        
 
-## API
+## Tabbar
 
-### Prop
+### Props
 
-### nut-tabbar
-
-| Prop            | Description                                                                          | Type   | Default |
+| Property            | Description                                                                          | Type   | Default |
 |-----------------|--------------------------------------------------------------------------------------|--------|---------|
 | defaultValue | The default index value of the selected label                                        | number | `0`       |
 | value | The index value of the selected label                                                | number | -       |
@@ -183,23 +181,19 @@ export default App;
 | activeColor    | icon active color                                                                    | string | `#1989fa` |
 | safeArea    | Whether to enable the full screen bottom safety zone adaptation of the iphone series | boolean | `false`   |
 | style    | component style                                                                      |
+| onSwitch    | Trigger an event when switching tabs | Clicked data and index value |
 
-### tabbar-item
+## TabbarItem
 
-| Prop | Description | Type   | Default |
+### Props
+
+| Property | Description | Type   | Default |
 |-----------|--------------|--------|--------|
 | title | the title of the tab | ReactNode | -     |
 | icon | Custom icon | ReactNode | -     |
 | href | Jump link of tab page;   | string | -     |
 | num | The numerical corner mark in the upper right corner of the tab, if it exceeds 99, it will be 99+     | number | -     |
 | dot | Whether to display the little red dot in the upper right corner of the icon   | boolean | `false`     |
-
-
-### Event
-
-| Event               | Description               | callback parameter           |
-|---------------------|--------------------|--------------------|
-| onSwitch    | Trigger an event when switching tabs | Clicked data and index value |
 
 
 ## Theming
