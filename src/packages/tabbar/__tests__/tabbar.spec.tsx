@@ -54,7 +54,7 @@ test('should render custom color and badge when using prop', () => {
 test('should render fixed element when using bottom prop', async () => {
   const { container } = render(
     <>
-      <Tabbar bottom safeAreaInsetBottom>
+      <Tabbar fixed safeAreaInsetBottom>
         <TabbarItem title="首页" icon={<Home width={20} height={20} />} />
         <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
       </Tabbar>

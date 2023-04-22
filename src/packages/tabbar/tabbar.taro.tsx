@@ -5,7 +5,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export interface TabbarProps extends BasicComponent {
   visible: number | string
   activeVisible?: number | string
-  bottom: boolean
+  fixed: boolean
   size: string | number
   inactiveColor: string
   activeColor: string
@@ -17,7 +17,7 @@ export interface TabbarProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   visible: 0,
-  bottom: false,
+  fixed: false,
   size: 20,
   inactiveColor: '',
   activeColor: '',
@@ -30,7 +30,7 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
     children,
     visible,
     activeVisible,
-    bottom,
+    fixed,
     size,
     activeColor,
     inactiveColor,
@@ -61,7 +61,7 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
   return (
     <div
       className={classNames(classPrefix, className, {
-        [`${classPrefix}__bottom`]: bottom || safeAreaInsetBottom,
+        [`${classPrefix}__bottom`]: fixed || safeAreaInsetBottom,
         [`${classPrefix}__safebottom`]: safeAreaInsetBottom,
       })}
       style={style}

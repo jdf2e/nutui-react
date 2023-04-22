@@ -157,7 +157,7 @@ import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
-  <Tabbar bottom>
+  <Tabbar fixed>
     <TabbarItem title="首页" href="" icon={<Home width={20} height={20} />} />
     <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
     <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
@@ -180,7 +180,7 @@ export default App;
 |-----------------------------|------------------------|--------|---------|
 | visible                     | 默认选中的标签的索引值            | number | `0`       |
 | activeVisible         | 选中的标签的索引值            | number | -       |
-| bottom                      | 是否固定在页面底部              | boolean | `false`   |
+| fixed                      | 是否固定在页面底部              | boolean | `false`   |
 | inactiveColor               | icon未激活的颜色             | string | `#7d7e80` |
 | activeColor                 | icon激活的颜色              | string | `#1989fa` |
 | safeAreaInsetBottom | 是否开启iphone系列全面屏底部安全区适配 | boolean | `false`   |
