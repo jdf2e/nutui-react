@@ -4,7 +4,6 @@ import { Checked } from '@nutui/icons-react-taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export type ProgressSize = 'small' | 'base' | 'large'
 export type TextType = 'icon' | 'text'
 
 export interface ProgressProps extends BasicComponent {
@@ -12,9 +11,7 @@ export interface ProgressProps extends BasicComponent {
   fillColor: string
   color: string
   strokeWidth: string
-  size: ProgressSize
   textColor: string
-  textWidth: string
   showText: boolean
   textInside: boolean
   textBackground: string
@@ -31,7 +28,6 @@ const defaultProps = {
   color: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
   strokeWidth: '',
   textColor: '',
-  textWidth: '',
   showText: true,
   textInside: false,
   textBackground: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
@@ -51,9 +47,7 @@ export const Progress: FunctionComponent<
     fillColor,
     color,
     strokeWidth,
-    size,
     textColor,
-    textWidth,
     showText,
     textInside,
     textBackground,
@@ -73,7 +67,7 @@ export const Progress: FunctionComponent<
 
   const classesOuter = classNames({
     [`${classPrefix}-outer`]: true,
-    [`${classPrefix}-${size || 'base'}`]: true,
+    [`${classPrefix}-base`]: true,
   })
 
   const classesInner = classNames({
@@ -103,18 +97,12 @@ export const Progress: FunctionComponent<
   }
 
   const stylesInsideText: React.CSSProperties = {
-    width: `${textWidth}px`,
     left: `${percent}%`,
     background: textBackground || color,
   }
 
   const stylesInsideIcon: React.CSSProperties = {
-    width: `${textWidth}px`,
     left: `${percent}%`,
-  }
-
-  const stylesText: React.CSSProperties = {
-    width: `${textWidth}px`,
   }
 
   return (
@@ -142,7 +130,7 @@ export const Progress: FunctionComponent<
         </div>
       </div>
       {showText && !textInside && (
-        <div className={classesText} style={stylesText}>
+        <div className={classesText}>
           {textType === 'text' && (
             <span className={classesTextInner} style={{ color: textColor }}>
               {percent}%

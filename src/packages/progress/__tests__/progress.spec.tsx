@@ -33,10 +33,3 @@ test('should render inside percent when use textInside props', () => {
   const text = container.querySelector('.nut-progress-text')
   expect(text).toHaveClass('nut-progress-text nut-progress-insidetext')
 })
-
-test('should render custom size when use size props', () => {
-  const { container } = render(<Progress percent={50} size="large" />)
-  expect(container.querySelector('.nut-progress-outer')).toHaveClass(
-    'nut-progress-large'
-  )
-})

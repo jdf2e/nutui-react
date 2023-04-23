@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import { Checked } from '@nutui/icons-react'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export type ProgressSize = 'small' | 'base' | 'large'
 export type TextType = 'icon' | 'text'
 
 export interface ProgressProps extends BasicComponent {
@@ -11,7 +10,6 @@ export interface ProgressProps extends BasicComponent {
   fillColor: string
   color: string
   strokeWidth: string
-  size: ProgressSize
   textColor: string
   showText: boolean
   textInside: boolean
@@ -48,7 +46,6 @@ export const Progress: FunctionComponent<
     fillColor,
     color,
     strokeWidth,
-    size,
     textColor,
     showText,
     textInside,
@@ -69,7 +66,7 @@ export const Progress: FunctionComponent<
 
   const classesOuter = classNames({
     [`${classPrefix}-outer`]: true,
-    [`${classPrefix}-${size || 'base'}`]: true,
+    [`${classPrefix}-base`]: true,
   })
 
   const classesInner = classNames({

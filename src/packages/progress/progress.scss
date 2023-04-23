@@ -28,30 +28,12 @@
     }
   }
 
-  &-small {
-    height: $progress-small-height;
-
-    .nut-progress-text {
-      font-size: $progress-small-font-size;
-      padding: $progress-small-padding;
-    }
-  }
-
   &-base {
     height: $progress-base-height;
 
     .nut-progress-text {
       font-size: $progress-base-font-size;
       padding: $progress-base-padding;
-    }
-  }
-
-  &-large {
-    height: $progress-large-height;
-
-    .nut-progress-text {
-      font-size: $progress-large-font-size;
-      padding: $progress-large-padding;
     }
   }
 

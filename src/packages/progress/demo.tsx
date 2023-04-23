@@ -99,13 +99,13 @@ const ProgressDemo = () => {
         </Cell>
         <h2>{translated.customSize}</h2>
         <Cell>
-          <Progress percent={30} size="small" textInside />
+          <Progress percent={30} strokeWidth="5" textInside />
         </Cell>
         <Cell>
-          <Progress percent={50} size="base" textInside />
+          <Progress percent={50} strokeWidth="10" textInside />
         </Cell>
         <Cell>
-          <Progress percent={70} size="large" textInside />
+          <Progress percent={70} strokeWidth="15" textInside />
         </Cell>
         <h2>{translated.statusDisplay}</h2>
         <Cell>

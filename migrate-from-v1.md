@@ -171,6 +171,7 @@
 - percentage 重命名为 percent，受控
 - 移除 isShowPercentage，可以自定义传入文案
 - 移除 textWidth，可以自定义传入内容的宽度
+- 移除 size，通过 strokeWidth、css 变量实现尺寸自定义
 #### Skeleton
 #### Steps
 #### Swiper

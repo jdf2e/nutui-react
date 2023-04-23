@@ -129,27 +129,15 @@ import { Progress, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-    <Cell>
-      <Progress
-        percent={30}
-        size="small"
-        textInside
-      />
-    </Cell>
-    <Cell>
-      <Progress
-        percent={50}
-        size="base"
-        textInside
-      />
-    </Cell>
-    <Cell>
-      <Progress
-        percent={70}
-        size="large"
-        textInside
-      />
-    </Cell>
+      <Cell>
+        <Progress percent={30} strokeWidth="5" textInside />
+      </Cell>
+      <Cell>
+        <Progress percent={50} strokeWidth="10" textInside />
+      </Cell>
+      <Cell>
+        <Progress percent={70} strokeWidth="15" textInside />
+      </Cell>
     </>
   );
 };
@@ -254,7 +242,6 @@ export default App;
 | fillColor | Progress bar background color | `string` | `#f3f3f3`
 | color | Stroke color | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
 | strokeWidth | Stroke width | `string` | -
-| size | Progress bar and text size, eg `small` `base` `large` | `string` | `base`
 | showText | Whether to show text | `boolean` | `true`
 | textInside | Progress bar text display position(`false`外显，`true`内显) | `boolean` | `false`
 | textColor | Progress bar text color setting | `string` | 外显`#333` 内显`#fff`
@@ -285,12 +272,6 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-progress-outer-border-radius | `12px` |
 | --nutui-progress-insidetext-border-radius | `5px` |
 | --nutui-progress-insidetext-padding | `3px 5px 3px 6px` |
-| --nutui-progress-small-font-size | `7px` |
-| --nutui-progress-small-padding | `0 4px` |
-| --nutui-progress-small-height | `5px` |
-| --nutui-progress-small-text-font-size | `7px` |
-| --nutui-progress-small-text-line-height | `10px` |
-| --nutui-progress-small-text-padding | `2px 4px` |
 | --nutui-progress-base-font-size | `9px` |
 | --nutui-progress-base-padding | `0 5px` |
 | --nutui-progress-base-height | `10px` |
@@ -298,10 +279,3 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-progress-base-text-line-height | `13px` |
 | --nutui-progress-base-text-padding | `$progress-insidetext-padding` |
 | --nutui-progress-base-text-top | `$progress-insidetext-top` |
-| --nutui-progress-large-font-size | `13px` |
-| --nutui-progress-large-padding | `0 5px` |
-| --nutui-progress-large-height | `15px` |
-| --nutui-progress-large-text-font-size | `13px` |
-| --nutui-progress-large-text-line-height | `18px` |
-| --nutui-progress-large-text-padding | `$progress-insidetext-padding` |
-| --nutui-progress-large-text-top | `$progress-insidetext-top` |
