@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane'
+import raf from '@/utils/raf'
 import { usePropsValue } from '@/utils/use-props-value'
 
 type Title = {
@@ -18,7 +19,7 @@ export interface TabsProps extends BasicComponent {
   value: string | number
   defaultValue: string | number
   activeColor: string
-  direction: string
+  direction: 'horizontal' | 'vertical'
   activeType: string
   duration: number | string
   // titleGutter: number | string
@@ -74,6 +75,52 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     finalValue: 0,
     onChange,
   })
+  const [contentStyle, setContentStyle] = useState({})
+
+  const titleItemsRef = useRef<HTMLDivElement[]>([])
+  const navRef = useRef<HTMLDivElement>(null)
+  const scrollDirection = (
+    nav: any,
+    to: number,
+    duration: number,
+    direction?: 'horizontal' | 'vertical'
+  ) => {
+    let count = 0
+    const from = direction === 'horizontal' ? nav.scrollLeft : nav.scrollTop
+    const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16)
+
+    function animate() {
+      if (direction === 'horizontal') {
+        nav.scrollLeft += (to - from) / frames
+      } else {
+        nav.scrollTop += (to - from) / frames
+      }
+
+      if (++count < frames) {
+        raf(animate)
+      }
+    }
+
+    animate()
+  }
+  const scrollIntoView = (index: number, immediate?: boolean) => {
+    const nav = navRef.current
+    const titleItem = titleItemsRef.current
+    if (!nav || !titleItem || !titleItem[index]) {
+      return
+    }
+    const title = titleItem[index]
+
+    let to = 0
+    if (props.direction === 'vertical') {
+      const runTop = title.offsetTop - nav.offsetTop + 10
+      to = runTop - (nav.offsetHeight - title.offsetHeight) / 2
+    } else {
+      to = title.offsetLeft - (nav.offsetWidth - title.offsetWidth) / 2
+    }
+
+    scrollDirection(nav, to, immediate ? 0 : 0.3, props.direction)
+  }
 
   const getTitles = () => {
     const titles: Title[] = []
@@ -91,7 +138,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     })
     return titles
   }
-
   const titles = useRef<Title[]>(getTitles())
 
   const classes = classNames(
@@ -109,15 +155,17 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     color: activeType === 'smile' ? activeColor : '',
     background: activeType === 'line' ? activeColor : '',
   }
-
-  const index = titles.current.findIndex((t) => t.value === value)
-  const contentStyle = {
-    transform:
-      direction === 'horizontal'
-        ? `translate3d(-${index * 100}%, 0, 0)`
-        : `translate3d( 0,-${index * 100}%, 0)`,
-    transitionDuration: `${duration}ms`,
-  }
+  useEffect(() => {
+    const index = titles.current.findIndex((t) => t.value === value)
+    setContentStyle({
+      transform:
+        direction === 'horizontal'
+          ? `translate3d(-${index * 100}%, 0, 0)`
+          : `translate3d( 0,-${index * 100}%, 0)`,
+      transitionDuration: `${duration}ms`,
+    })
+    scrollIntoView(index)
+  }, [value])
 
   const tabChange = (item: Title, index: number) => {
     onClick && onClick(item.value)
@@ -129,7 +177,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
 
   return (
     <div className={classes} {...rest}>
-      <div className={classesTitle} style={{ ...tabStyle }}>
+      <div className={classesTitle} style={{ ...tabStyle }} ref={navRef}>
         {!!title && typeof title === 'function'
           ? title()
           : titles.current.map((item, index) => {
@@ -137,15 +185,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
                 <div
                   onClick={(e) => {
                     tabChange(item, index)
-                    e.currentTarget.scrollIntoView &&
-                      direction === 'horizontal' &&
-                      e.currentTarget.scrollIntoView({
-                        behavior: 'smooth',
-                        block:
-                          direction === 'horizontal' ? 'nearest' : 'center',
-                        inline:
-                          direction === 'horizontal' ? 'center' : 'nearest',
-                      })
                   }}
                   className={classNames(`${classPrefix}__titles-item`, {
                     [`nut-tabs__titles-item--active`]:
@@ -153,6 +192,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
                     [`nut-tabs__titles-item--disabled`]: item.disabled,
                     [`nut-tabs__titles-item--${align}`]: align,
                   })}
+                  ref={(ref: HTMLDivElement) => titleItemsRef.current.push(ref)}
                   key={item.value}
                 >
                   {activeType === 'line' && (
