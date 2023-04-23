@@ -1,10 +1,10 @@
 # Progress
 
-### Introduce
+## Intro
 
 Used to show the current progress of the operation.
 
-### Install
+## Install
 
 ```js
 // react
@@ -277,30 +277,26 @@ export default App;
 ```
 :::
 
-## API
+## Progress
 
 ### Props
 
-| Props | Description | Type | Default
+| Property | Description | Type | Default
 |----- | ----- | ----- | -----
-| percentage | percentage | number | `0`
-| isShowPercentage | Whether to display the percent sign | boolean | `true`
-| fillColor | Progress bar background color | string | `#f3f3f3`
-| strokeColor | Stroke color | string | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
-| strokeWidth | Stroke width | string | -
-| size | Progress bar and text size, eg `small` `base` `large` | string | `base`
-| showText | Whether to show text | boolean | `true`
-| textInside | Progress bar text display position(`false`外显，`true`内显) | boolean | `false`
-| textColor | Progress bar text color setting | string | 外显`#333` 内显`#fff`
-| textWidth | Progress bar text width setting | string | `35px`
-| textBackground | Progress bar text background color setting | string | 同进度条颜色
-| textType | Progress bar text type setting，`text`(展示文字)/`icon`(展示icon标签) | string | `text`
-| status | The current state of the progress bar, `true`展示动画效果 | boolean | `false`
-| icon`v2.0.0` | Custom Icon | ReactNode | `<Checked width={16} height={16} color="#439422"/>`
-| iconName`v2.0.0 Abandon` | Icon Name | string | `checked`
-| iconColor`v2.0.0 Abandon` | Icon Color | string | `#439422`
-| iconSize`v2.0.0 Abandon` | Icon Size | string | `16px`
-| rounded `v1.4.7 Abandon`| Whether the corners are rounded | boolean \| string | `true`
+| percentage | percentage | `number` | `0`
+| isShowPercentage | Whether to display the percent sign | `boolean` | `true`
+| fillColor | Progress bar background color | `string` | `#f3f3f3`
+| strokeColor | Stroke color | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
+| strokeWidth | Stroke width | `string` | -
+| size | Progress bar and text size, eg `small` `base` `large` | `string` | `base`
+| showText | Whether to show text | `boolean` | `true`
+| textInside | Progress bar text display position(`false`外显，`true`内显) | `boolean` | `false`
+| textColor | Progress bar text color setting | `string` | 外显`#333` 内显`#fff`
+| textWidth | Progress bar text width setting | `string` | `35px`
+| textBackground | Progress bar text background color setting | `string` | 同进度条颜色
+| textType | Progress bar text type setting，`text`(展示文字)/`icon`(展示icon标签) | `string` | `text`
+| status | The current state of the progress bar, `true`展示动画效果 | `boolean` | `false`
+| icon | Custom Icon | `ReactNode` | `<Checked width={16} height={16} color="#439422"/>`
 
 
 ## Theming
