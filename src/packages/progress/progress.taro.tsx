@@ -16,7 +16,7 @@ export interface ProgressProps extends BasicComponent {
   textInside: boolean
   textBackground: string
   textType: TextType
-  status: boolean
+  animated: boolean
   icon: ReactNode
   children: ReactNode
 }
@@ -32,7 +32,7 @@ const defaultProps = {
   textInside: false,
   textBackground: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
   textType: 'text',
-  status: false,
+  animated: false,
   icon: null,
   children: undefined,
 } as ProgressProps
@@ -52,7 +52,7 @@ export const Progress: FunctionComponent<
     textInside,
     textBackground,
     textType,
-    status,
+    animated,
     icon,
     children,
     ...rest
@@ -72,7 +72,7 @@ export const Progress: FunctionComponent<
 
   const classesInner = classNames({
     [`${classPrefix}-inner`]: true,
-    [`${classPrefix}-active`]: status,
+    [`${classPrefix}-active`]: animated,
   })
 
   const classesText = `${classPrefix}-text`

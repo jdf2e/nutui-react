@@ -122,7 +122,7 @@ const ProgressDemo = () => {
           <Progress
             percent={30}
             color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-            status
+            animated
           />
         </Cell>
         <Cell>

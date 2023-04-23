@@ -160,7 +160,7 @@ const App = () => {
       <Progress
         percent={30}
         color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-        status
+        animated
       />
     </Cell>
     <Cell>
@@ -247,7 +247,7 @@ export default App;
 | textColor | Progress bar text color setting | `string` | 外显`#333` 内显`#fff`
 | textBackground | Progress bar text background color setting | `string` | 同进度条颜色
 | textType | Progress bar text type setting，`text`(展示文字)/`icon`(展示icon标签) | `string` | `text`
-| status | The current state of the progress bar, `true`展示动画效果 | `boolean` | `false`
+| animated | The current state of the progress bar, `true`展示动画效果 | `boolean` | `false`
 | icon | Custom Icon | `ReactNode` | `<Checked width={16} height={16} color="#439422"/>`
 
 

@@ -155,7 +155,7 @@ const App = () => {
       <Progress
         percent={30}
         color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-        status
+        animated
       />
     </Cell>
     <Cell>
@@ -242,7 +242,7 @@ export default App;
 | textColor | 进度条文字颜色设置 | `string` | 外显`#333` 内显`#fff`
 | textBackground | 进度条文字背景颜色设置 | `string` | 同进度条颜色
 | textType | 进度条文字类型，`text`(展示文字)/`icon`(展示icon标签) | `string` | `text`
-| status | 进度条当前状态，`true`展示动画效果 | `boolean` | `false`
+| animated | 进度条当前状态，`true`展示动画效果 | `boolean` | `false`
 | icon | 自定义图标 | `ReactNode` | `<Checked width={16} height={16} color="#439422"/>`
 
 ## 主题定制

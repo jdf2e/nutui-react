@@ -174,6 +174,7 @@
 - strokeColor 重命名为 color
 - fillColor 重命名为 background
 - 移除 size，通过 strokeWidth、css 变量实现尺寸自定义
+- status 重命名为 animated
 #### Skeleton
 #### Steps
 #### Swiper
