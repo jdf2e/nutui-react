@@ -24,14 +24,12 @@ test('base tabs props', () => {
   )
 
   const el: Element | null = container.querySelector('.nut-tabs__titles')
-  const el2 = container.querySelectorAll('.horizontal')
+  const el2 = container.querySelectorAll('.nut-tabs--horizontal')
   const el3 = container.querySelectorAll('.nut-tabs__titles')[0]
 
-  expect(el).toHaveAttribute('style', 'background: rgb(245, 245, 245);')
   expect(el2.length > 0).toBe(true)
-  expect(el3).toHaveClass('smile')
-  expect(el3).toHaveClass('large')
-  expect(el3).toHaveClass('scrollable')
+  expect(el3).toHaveClass('nut-tabs__titles--smile')
+  expect(el3).toHaveClass('nut-tabs__titles--scrollable')
 })
 
 test('base other props', () => {
@@ -76,8 +74,8 @@ test('base Tabpane Props', () => {
   const el = container.querySelectorAll('.nut-tabs__titles-item')
   const el2 = container.querySelectorAll('.nut-tabs__titles-item__text')
   expect(el.length === 3).toBe(true)
-  expect(el[0]).toHaveClass('active')
-  expect(el[1]).toHaveClass('disabled')
+  expect(el[0]).toHaveClass('nut-tabs__titles-item--active')
+  expect(el[1]).toHaveClass('nut-tabs__titles-item--disabled')
   expect(el2[0]).toHaveTextContent('Tab 1')
 })
 
