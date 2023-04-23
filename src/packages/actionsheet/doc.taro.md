@@ -45,7 +45,7 @@ const App = () => {
 
   return ( 
     <>   
-    <Cell isLink onClick={() => setIsVisible1(!isVisible1)}>
+    <Cell  onClick={() => setIsVisible1(!isVisible1)}>
       <span>
         <label>基础用法</label>
       </span>
@@ -92,7 +92,7 @@ const App = () => {
   }
   return ( 
     <>   
-    <Cell isLink onClick={() => setIsVisible2(!isVisible2)}>
+    <Cell  onClick={() => setIsVisible2(!isVisible2)}>
       <span>
         <label>展示取消按钮</label>
       </span>
@@ -141,7 +141,7 @@ const App = () => {
   }
   return ( 
     <>   
-    <Cell isLink onClick={() => setIsVisible3(!isVisible3)}>
+    <Cell  onClick={() => setIsVisible3(!isVisible3)}>
       <span>
         <label>展示描述信息</label>
       </span>
@@ -183,7 +183,7 @@ const App = () => {
   ]
   return ( 
     <>   
-    <Cell isLink onClick={() => setIsVisible4(!isVisible4)}>
+    <Cell  onClick={() => setIsVisible4(!isVisible4)}>
       <span>
         <label>选项状态</label>
       </span>

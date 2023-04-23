@@ -26,7 +26,7 @@ const App = () => {
   const [showBasic, setShowBasic] = useState(false);
   return (
     <>
-        <Cell title="Show popup" isLink onClick={() => { setShowBasic(true) }}/>
+        <Cell title="Show popup"  onClick={() => { setShowBasic(true) }}/>
         <Popup visible={ showBasic } style={{ padding: '30px 50px' }} onClose={ () => { setShowBasic(false) } }>text</Popup>
     </>
   );
@@ -51,10 +51,10 @@ const App = () => {
 
   return (
     <>
-        <Cell title="top pop" isLink onClick={() => { setShowTop(true) }}/>
-        <Cell title="bottom pop" isLink onClick={() => { setShowBottom(true) }}/>
-        <Cell title="pop up left" isLink onClick={() => { setShowLeft(true) }}/>
-        <Cell title="pop up right" isLink onClick={() => { setShowRight(true) }}/>
+        <Cell title="top pop"  onClick={() => { setShowTop(true) }}/>
+        <Cell title="bottom pop"  onClick={() => { setShowBottom(true) }}/>
+        <Cell title="pop up left"  onClick={() => { setShowLeft(true) }}/>
+        <Cell title="pop up right"  onClick={() => { setShowRight(true) }}/>
         <Popup visible={ showTop } style={{ height: '20%' }} position="top" onClose={ () => { setShowTop(false) } } />
         <Popup visible={ showBottom } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowBottom(false) } } />
         <Popup visible={ showLeft } style={{ width: '20%', height: '100%' }} position="left" onClose={ () => { setShowLeft(false) } } />
@@ -82,9 +82,9 @@ const App = () => {
 
   return (
     <>
-        <Cell title="close icon" isLink onClick={() => { setShowIcon(true) }}/>
-        <Cell title="Icon position" isLink onClick={() => { setShowIconPosition(true) }}/>
-        <Cell title="custom icon" isLink onClick={() => { setShowIconDefine(true) }}/>
+        <Cell title="close icon"  onClick={() => { setShowIcon(true) }}/>
+        <Cell title="Icon position"  onClick={() => { setShowIconPosition(true) }}/>
+        <Cell title="custom icon"  onClick={() => { setShowIconDefine(true) }}/>
         <Popup closeable visible={ showIcon } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowIcon(false) } } />
         <Popup closeable visible={ showIconPosition } style={{ height: '20%' }} closeIconPosition="top-left" position="bottom" onClose={ () => { setShowIconPosition(false) } } />
       <Popup visible={ showIconDefine } style={{ height: '20%' }} closeable closeIcon={<Heart />} position="bottom" onClose={ () => { setShowIconDefine(false) } } />
@@ -109,7 +109,7 @@ const App = () => {
 
   return (
     <>
-        <Cell title="Rounded popup" isLink onClick={() => { setShowBottomRound(true) }}/>
+        <Cell title="Rounded popup"  onClick={() => { setShowBottomRound(true) }}/>
         <Popup closeable visible={ showBottomRound } style={{ height: '20%' }} position="bottom" round onClose={ () => { setShowBottomRound(false) } } />
     </>
   );
@@ -130,8 +130,8 @@ const App = () => {
 
   return (
     <>
-        <Cell title="Mount the specified node" isLink onClick={() => { setShowMountNode(true) }}/>
-        <Popup visible={showMountNode} style={{ padding: '30px 50px' }} teleport={ document.body } onClose={() => { setShowMountNode(false) }}>
+        <Cell title="Mount the specified node"  onClick={() => { setShowMountNode(true) }}/>
+        <Popup visible={showMountNode} style={{ padding: '30px 50px' }} portal={ document.body } onClose={() => { setShowMountNode(false) }}>
           body
         </Popup>
     </>
@@ -154,7 +154,7 @@ const App = () => {
 
   return (
     <>
-        <Cell title="multi-layer stacking" isLink onClick={() => { setShowMutiple(true) }}/>
+        <Cell title="multi-layer stacking"  onClick={() => { setShowMutiple(true) }}/>
         <Popup
           visible={showMutiple}
           style={{ padding: '30px 50px' }}
@@ -186,37 +186,31 @@ export default App;
 
 | Props                        | Description | Type          | Default        |
 |------------------------------|-----------------|---------------|---------------|
-| visible                      | Whether the current component is displayed | boolean       | `false` |
-| zIndex                       | mask level | string \      | number | `2000` |
-| duration                     | Mask animation duration, in seconds | number        | `0.3` |
-| overlayClass                 | custom mask class | string        | - |
-| overlayStyle                 | custom mask style | CSSProperties | - |
-| lockScroll                   | Whether the background is locked | boolean       | `true`       |
-| overlay                      | Whether to show the mask | boolean       | `true` |
-| closeOnClickOverlay          | Whether to click the mask to close | boolean       | `true` |
-| position                     | popup location（top,bottom,left,right,center） | string        | `center` |
-| transition                   | animation name | string        | - |
-| style                        | Custom popup style | CSSProperties | - |
-| popClass                     | Custom popup class name | string        | -             |
-| closeable                    | whether to show the close button | boolean       | `false`        |
-| closeIconPosition            | close button position（top-left,top-right,bottom-left,bottom-right） | string        | `top-right` |
-| closeIcon                    | Custom Icon | ReactNode        | `close`     |
-| closeIconSize`v2.0.0abandon` | Custom Icon Size | string        | `12px` |
-| destroyOnClose               | Whether to close after the component is destroyed | boolean       | `true`        |
-| round                        | Whether to show rounded corners | boolean       | `false`       |
-| teleport                     | Mount the specified node | HTMLElement \ | (() => HTMLElement) \| null | `null`       |
-
-### Events
-
-| Event           | Description                   | Callback parameters       |
-|------------------|------------------------|----------------|
-| onClick            | Triggered when the popup is clicked         | `event: MouseEvent` |
-| onClickCloseIcon | Fired when the close icon is clicked     | `event: MouseEvent` |
-| onOpen             | Triggered when the popup is opened         | -              |
-| onClose            | Fired when the popup is closed         | -              |
-| onOpend            | Fired when the mask opening animation ends | `event: HTMLElement` |
-| onClosed           | Fired when the mask closing animation ends | `event: HTMLElement` |
-| onClickOverlay    | Click on the mask to trigger           | `event: MouseEvent` |
+| visible | Whether the current component is displayed | `boolean`       | `false` |
+| zIndex | mask level | `string \| number` | `2000` |
+| duration | Mask animation duration, in seconds | `number`        | `0.3` |
+| overlayClassName | custom mask class | `string`        | - |
+| overlayStyle | custom mask style | `CSSProperties` | - |
+| lockScroll | Whether the background is locked | `boolean`       | `true`       |
+| overlay | Whether to show the mask | `boolean`       | `true` |
+| closeOnOverlayClick | Whether to click the mask to close | `boolean`       | `true` |
+| position | popup location（top,bottom,left,right,center） | `string `       | `center` | 
+| transition | animation name | `string`        | - |
+| style | Custom popup style | `CSSProperties` | - |
+| className | Custom popup class name | `string`        | -             |
+| closeable | whether to show the close button | `boolean`       | `false`        |
+| closeIconPosition | close button position（top-left,top-right,bottom-left,bottom-right） | `string` | `top-right` |
+| closeIcon | Custom Icon | `ReactNode`        | `close`     |
+| destroyOnClose | Whether to close after the component is destroyed | `boolean`       | `false`        |
+| round | Whether to show rounded corners | `boolean`       | `false`       |
+| portal | Mount the specified node | `HTMLElement \| (() => HTMLElement) \| null` | `null`       |
+| onClick            | Triggered when the popup is clicked         | `event: MouseEvent` | - |
+| onClickCloseIcon | Fired when the close icon is clicked     | `event: MouseEvent` | - |
+| onOpen | Triggered when the popup is opened         | -              | - |
+| onClose | Fired when the popup is closed         | -              | - |
+| afterShow | afterShow from `Overlay`, Fired when the mask opening animation ends | `event: HTMLElement` | - |
+| afterClose | afterClose from `Overlay`, Fired when the mask closing animation ends | `event: HTMLElement` | - |
+| onClickOverlay    | Click on the mask to trigger           | `event: MouseEvent` | - |
 
 
 ## Theming
@@ -225,9 +219,9 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-popup-close-icon-margin | `16px` |
-| --nutui-popup-border-radius | `20px` |
-| --nutui-popup-close-icon-color | `#969799`|
-| --nutui-popup-close-icon-size | `30px` |
+| Name | Description  | Default |
+| --- | --- |--- |
+| --nutui-popup-border-radius | popup's border radius | `20px` |
+| --nutui-popup-close-icon-margin | the margin of the close icon | `16px` |
+| --nutui-popup-close-icon-color | close icon's color | `#969799`|
+| --nutui-popup-close-icon-size | close icon's size | `30px` |

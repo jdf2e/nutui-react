@@ -5,7 +5,7 @@ import Button from '@/packages/button'
 import Cell from '@/packages/cell'
 import Progress from '@/packages/progress'
 import './demo.scss'
-import { Dongdong } from '@nutui/icons-react'
+import { Dongdong, Loading1 } from '@nutui/icons-react'
 
 interface uploadRefState {
   submit: () => void
@@ -27,7 +27,6 @@ interface T {
   uploadListShow: string
   uploadDefaultProgress: string
   a4afedb5: string
-  '37c65f47': string
   bb5caa9c: string
   '27f1376e': string
   '0e5eaea3': string
@@ -57,7 +56,6 @@ const UploaderDemo = () => {
       uploadListShow: '基础用法-上传列表展示',
       uploadDefaultProgress: '自定义上传使用默认进度条',
       a4afedb5: '上传状态',
-      '37c65f47': '自定义上传样式',
       bb5caa9c: '上传文件',
       '27f1376e': '直接调起摄像头（移动端生效）',
       '0e5eaea3': '限制上传数量5个',
@@ -85,7 +83,6 @@ const UploaderDemo = () => {
       uploadListShow: '基礎用法-上傳列表展示',
       uploadDefaultProgress: '自定義上傳使用默認進度條',
       a4afedb5: '上傳狀態',
-      '37c65f47': '自定義上傳樣式',
       bb5caa9c: '上傳檔',
       '27f1376e': '直接調起攝像頭（移動端生效）',
       '0e5eaea3': '限制上傳數量5個',
@@ -113,7 +110,6 @@ const UploaderDemo = () => {
       uploadListShow: 'Basic usage - upload list display',
       uploadDefaultProgress: 'Custom upload uses default progress bar',
       a4afedb5: 'Upload status',
-      '37c65f47': 'Customize the upload style',
       bb5caa9c: 'Upload the file',
       '27f1376e': 'Direct camera up (mobile)',
       '0e5eaea3': 'Limit the number of uploads to 5',
@@ -135,7 +131,7 @@ const UploaderDemo = () => {
   const formData = {
     custom: 'test',
   }
-  const defaultFileList: FileType<string>[] = [
+  const defaultFileList: FileType<React.ReactNode>[] = [
     {
       name: translated['6114cef1'],
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
@@ -176,7 +172,7 @@ const UploaderDemo = () => {
       message: translated['403b055e'],
       type: 'image',
       uid: '126',
-      loadingIcon: 'loading1',
+      loadingIcon: <Loading1 className="nut-icon-loading1" color="#fff" />,
     },
     {
       name: translated['29ab0c96'],
@@ -262,8 +258,7 @@ const UploaderDemo = () => {
           />
           <Uploader
             url={uploadUrl}
-            uploadIconSize="20px"
-            uploadIconTip="商品主图"
+            uploadLabel="商品主图"
             onStart={onStart}
             style={{ marginRight: '10px' }}
           />
@@ -277,34 +272,27 @@ const UploaderDemo = () => {
         <h2>{translated.a4afedb5}</h2>
         <Uploader
           url={uploadUrl}
-          defaultFileList={defaultFileList}
-          onRemove={onDelete}
+          defaultValue={defaultFileList}
+          onDelete={onDelete}
           uploadIcon={<Dongdong />}
         />
 
         <h2>{translated.uploadListShow}</h2>
         <Uploader
           url={uploadUrl}
-          defaultFileList={defaultFileList}
-          maximum="10"
+          defaultValue={defaultFileList}
+          maxCount="10"
           multiple
-          listType="list"
+          previewType="list"
         >
-          <Button type="default" size="small">
-            {translated.bb5caa9c}
-          </Button>
-        </Uploader>
-
-        <h2>{translated['37c65f47']}</h2>
-        <Uploader url={uploadUrl}>
-          <Button type="default" size="small">
+          <Button type="success" size="small">
             {translated.bb5caa9c}
           </Button>
         </Uploader>
 
         <h2>{translated.uploadDefaultProgress}</h2>
         <Uploader url={uploadUrl} onProgress={onProgress}>
-          <Button type="default" size="small">
+          <Button type="success" size="small">
             {translated.bb5caa9c}
           </Button>
         </Uploader>
@@ -319,18 +307,18 @@ const UploaderDemo = () => {
         <Uploader url={uploadUrl} capture />
 
         <h2>{translated['0e5eaea3']}</h2>
-        <Uploader url={uploadUrl} multiple maximum="5" />
+        <Uploader url={uploadUrl} multiple maxCount="5" />
 
         <h2>{translated.b7454181}</h2>
         <Uploader
           url={uploadUrl}
           multiple
-          maximize={1024 * 50}
+          maxFileSize={1024 * 50}
           onOversize={onOversize}
         />
 
         <h2>{translated['5c393e52']}</h2>
-        <Uploader url={uploadUrl} multiple onBeforeUpload={beforeUpload} />
+        <Uploader url={uploadUrl} multiple beforeUpload={beforeUpload} />
 
         <h2>{translated.e3217a8d}</h2>
         <Uploader
@@ -344,19 +332,19 @@ const UploaderDemo = () => {
         <Uploader
           url={uploadUrl}
           method="put"
-          onBeforeXhrUpload={beforeXhrUpload}
+          beforeXhrUpload={beforeXhrUpload}
         />
 
         <h2>{translated['67fffe24']}</h2>
         <Uploader
           url={uploadUrl}
-          maximum="5"
+          maxCount="5"
           autoUpload={false}
           ref={uploadRef}
         />
         <br />
         <Button
-          type="default"
+          type="success"
           size="small"
           onClick={submitUpload}
           style={{ marginRight: '10px' }}

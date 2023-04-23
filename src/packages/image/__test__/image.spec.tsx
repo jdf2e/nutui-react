@@ -35,7 +35,10 @@ test('image position test', () => {
 
 test('image round test', () => {
   const { container } = render(
-    <Image src={src} width="100" height="100" round />
+    <Image src={src} width="100" height="100" radius="50%" />
   )
-  expect(container.querySelector('.nut-image')).toHaveClass('nut-image-round')
+  expect(container.querySelector('.nut-image')).toHaveAttribute(
+    'style',
+    'height: 100px; width: 100px; overflow: hidden; border-radius: 50%;'
+  )
 })

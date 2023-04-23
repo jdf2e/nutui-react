@@ -6,26 +6,28 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
 
-export interface OverlayProps {
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface OverlayProps extends BasicComponent {
   zIndex: number
   duration: number
-  overlayClass: string
-  overlayStyle: React.CSSProperties
-  closeOnClickOverlay: boolean
+  closeOnOverlayClick: boolean
   visible: boolean
   lockScroll: boolean
+  afterShow: () => void
+  afterClose: () => void
 }
 export const defaultOverlayProps = {
+  ...ComponentDefaults,
   zIndex: 1000,
   duration: 0.3,
-  overlayClass: '',
-  closeOnClickOverlay: true,
+  closeOnOverlayClick: true,
   visible: false,
   lockScroll: true,
-  overlayStyle: {},
 } as OverlayProps
+
+const classPrefix = `nut-overlay`
 export const Overlay: FunctionComponent<
   Partial<OverlayProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
@@ -33,11 +35,13 @@ export const Overlay: FunctionComponent<
     children,
     zIndex,
     duration,
-    overlayClass,
-    closeOnClickOverlay,
+    className,
+    closeOnOverlayClick,
     visible,
     lockScroll,
-    overlayStyle,
+    style,
+    afterShow,
+    afterClose,
     ...rest
   } = {
     ...defaultOverlayProps,
@@ -45,21 +49,26 @@ export const Overlay: FunctionComponent<
   }
   const [show, setShow] = useState(visible)
   const renderRef = useRef(true)
-  const intervalRef = useRef(0)
+  const intervalCloseRef = useRef(0)
+  const intervalShowRef = useRef(0)
 
   useEffect(() => {
-    visible && setShow(visible)
+    if (visible) {
+      intervalShowRef.current = window.setTimeout(() => {
+        afterShow && afterShow()
+      }, duration * 1000 * 0.8)
+      setShow(visible)
+    }
     lock()
   }, [visible])
 
   useEffect(() => {
     return () => {
-      clearTimeout(intervalRef.current)
+      clearTimeout(intervalCloseRef.current)
+      clearTimeout(intervalShowRef.current)
       document.body.classList.remove('nut-overflow-hidden')
     }
   }, [])
-
-  const b = bem('overlay')
 
   const classes = classNames(
     {
@@ -68,14 +77,14 @@ export const Overlay: FunctionComponent<
       'first-render': renderRef.current && !visible,
       'hidden-render': !visible,
     },
-    overlayClass,
-    b('')
+    className,
+    classPrefix
   )
 
   const styles = {
     zIndex,
     animationDuration: `${props.duration}s`,
-    ...overlayStyle,
+    ...style,
   }
 
   const lock = () => {
@@ -87,13 +96,13 @@ export const Overlay: FunctionComponent<
   }
 
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
-    if (closeOnClickOverlay) {
+    if (closeOnOverlayClick) {
       props.onClick && props.onClick(e)
       renderRef.current = false
-      const id = window.setTimeout(() => {
+      intervalCloseRef.current = window.setTimeout(() => {
+        afterClose && afterClose()
         setShow(!visible)
       }, duration * 1000 * 0.8)
-      intervalRef.current = id
     }
   }
 

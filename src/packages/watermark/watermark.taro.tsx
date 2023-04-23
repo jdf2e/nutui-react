@@ -1,7 +1,7 @@
 import React, { useState, useEffect, FunctionComponent } from 'react'
 import { getSystemInfo, createOffscreenCanvas } from '@tarojs/taro'
 import classNames from 'classnames'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/index.taro'
 import bem from '@/utils/bem'
 
 export interface WaterMarkProps {

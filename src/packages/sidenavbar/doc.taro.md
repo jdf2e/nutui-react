@@ -34,14 +34,14 @@ const App = () => {
     <>   
     <Cell
           title="左侧弹出"
-          isLink
+          
           onClick={() => {
             changeNarBar(true, 'left')
           }}
         />
         <Cell
           title="右侧弹出"
-          isLink
+          
           onClick={() => {
             changeNarBar(true, 'right')
           }}
@@ -93,7 +93,7 @@ const App = () => {
     <>  
       <Cell
           title="显示"
-          isLink
+          
           onClick={() => {
             changeNarBar(true)
           }}

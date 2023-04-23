@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import { useConfig } from '@/packages/configprovider'
 import Popup from '@/packages/popup'
 import { handleClick } from './utils'
 import { OffsetContext } from './offsetContext'
@@ -24,7 +23,6 @@ const defaultProps = {
   width: '80%',
 } as SideNavBarProps
 export const SideNavBar: FunctionComponent<SideNavBarProps> = (props) => {
-  const { locale } = useConfig()
   const {
     title,
     visible,
@@ -53,8 +51,6 @@ export const SideNavBar: FunctionComponent<SideNavBarProps> = (props) => {
         {...rest}
       >
         <div className="nut-sidenavbar__content">
-          {/* {showhead ? <div className="nut-sidenavbar__head">📈</div> : null} */}
-
           <div className="nut-sidenavbar__list nutShow" onClick={handleClick}>
             <div
               className="nut-sidenavbar__title border-bt "

@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import reactRefresh from '@vitejs/plugin-react-refresh'
+import reactRefresh from '@vitejs/plugin-react'
 
 const atImport = require('postcss-import')
 const path = require('path')
@@ -13,7 +13,7 @@ if (projectID) {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/react',
+  base: '/react/',
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },

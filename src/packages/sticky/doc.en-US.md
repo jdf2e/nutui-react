@@ -1,15 +1,15 @@
 
 #  Sticky组件
 
-### Intro
+## Intro
 
 The effect is the same as position: sticky in CSS, which can be used for compatibility with low-end browsers
 
-### Install
+## Install
 ```tsx
 import { Sticky } from '@nutui/nutui-react';
 ```
-
+## Demo
 ### Basic Usage
 :::demo
 ```tsx
@@ -24,19 +24,19 @@ const App = () => {
     <>
         <h2>Ceiling</h2>
         <Cell style={{ height: '300px' }}>
-          <Sticky top={57} onChange={handleChange}>
+          <Sticky threshold={57} onChange={handleChange}>
             <Button type="primary">Ceiling button</Button>
           </Sticky>
         </Cell>
         <h2>Ceiling distance</h2>
         <Cell  style={{ height: '300px' }}>
-          <Sticky top={120}>
+          <Sticky threshold={120}>
             <Button type="primary">Ceiling distance 120px</Button>
           </Sticky>
         </Cell>
         <h2>Suction distance</h2>
         <Cell style={{ height: '64px' }}>
-          <Sticky top={0} position="bottom">
+          <Sticky threshold={0} position="bottom">
             <Button type="primary">Suction distance 0px</Button>
           </Sticky>
         </Cell>
@@ -65,7 +65,7 @@ const App = () => {
             ref={containerTopRef}
             style={{ height: '300px' }}
           >
-            <Sticky container={containerTopRef} top={57}>
+            <Sticky container={containerTopRef} threshold={57}>
               <Button type="info">
                 Ceiling of designated container
               </Button>
@@ -79,7 +79,7 @@ const App = () => {
             ref={containerRef}
             style={{ height: '300px' }}
           >
-            <Sticky position="bottom" container={containerRef} bottom={0}>
+            <Sticky position="bottom" container={containerRef} threshold={0}>
               <Button  type="info">
                 Suction distance of designated container
               </Button>
@@ -93,20 +93,14 @@ export default App;
 ```
 :::
 
-## API
+## Sticky
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| position     | Adsorption position（top、bottom）| string | `top`             |
-| top          | Ceiling distance                 | number | `0`               |
-| bottom       | Suction distance                 | number | `0`               |
-| zIndex      | Level of adsorption              | number | `2000`            |
-| container    | container ref                    | `React.RefObject<HTMLElement>` | - |
-
-### Events
-
-| 事件名 | 说明                                            | 回调参数     |
-|--------|------------------------------------------------|--------------|
-| onChange  | Triggered when the adsorption state changes   | `val: boolean` |
+| Property | Description | Type | Default |
+|--------------|----------------------------------|- -------|------------------|
+| position | adsorption position (top, bottom) | string | `top` |
+| threshold | distance, when position is top, set top | number | `0` |
+| zIndex | The level when snapping | number | `2000` |
+| container | the container's ref | `React.RefObject<HTMLElement>`| - |
+| onChange | Triggered when the snap state changes | `val: boolean` | - |

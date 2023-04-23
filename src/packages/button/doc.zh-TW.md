@@ -303,10 +303,10 @@ export default App;
 | --nutui-button-small-font-size | `$font-size-1` |
 | --nutui-button-mini-font-size | `$font-size-1` |
 | --nutui-button-mini-line-height | `1.2` |
-| --nutui-button-text-icon-width | `5px` |
-| --nutui-button-text-icon--large-width | `10px` |
-| --nutui-button-text-icon-small-width | `2px` |
-| --nutui-button-text-icon-mini-width | `1px` |
+| --nutui-button-text-icon-margin-left | `5px` |
+| --nutui-button-text-icon-large-margin-left | `10px` |
+| --nutui-button-text-icon-small-margin-left | `2px` |
+| --nutui-button-text-icon-mini-margin-left | `1px` |
 | --nutui-button-disabled-opacity | `0.68` |
 | --nutui-button-primary-color | `$white` |
 | --nutui-button-primary-border-color | `$primary-color` |

@@ -1,10 +1,10 @@
 #  Layout 布局
 
-### 介绍
+## 介绍
 
 用于快速进行布局
 
-### 安装
+## 安装
 ```javascript
 import { Row, Col } from '@nutui/nutui-react-taro'
 ```
@@ -181,9 +181,10 @@ export default App;
 ```
 :::
 
-## API
 
-### row
+## Row
+
+### props
 
 | 字段         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
@@ -192,23 +193,24 @@ export default App;
 | justify       | Flex 主轴对齐方式，可选值为 start end center space-around space-between| string | `start`               |
 | align	 | Flex 交叉轴对齐方式，可选值为 flex-start center flex-end     | string | `flex-start` |
 | wrap          | Flex是否换行，可选值为 nowrap wrap reverse    | string | `nowrap`              |
+| onClick | Fired when clicked | `event: MouseEvent, type: 'row' \| 'col'` | - |
 
-### col
+## Col
+
+### Props
 
 | 字段 | 说明           | 类型     | 默认值           |
 |--------|----------------|--------------| ------------------|
 | span  | 列元素宽度（共分为24份，例如设置一行3个，那么span值为8） | string \| number| `24` |
 | offset  | 列元素偏移距离 | string \| number| `0` |
+| onClick | 点击时触发 | `event: MouseEvent, type: 'row' \| 'col'` | - |
 
-### row events
+## 主题定制
 
-| 字段 | 说明 | 回调参数 |
-|----- | ----- | ----- |
-| onClick | 点击时触发 | `event: MouseEvent, type: 'row' \| 'col'` |
+### 样式变量
 
-### col events
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 字段 | 说明 | 回调参数 |
-|----- | ----- | ----- |
-| onClick | 点击时触发 | `event: MouseEvent, type: 'row' \| 'col'` |
-
+| 名称 | 描述 | 默认值 |
+| --- |--|------|
+|--nutui-col-default-margin-bottom| col 组件的下边距 | 15px |

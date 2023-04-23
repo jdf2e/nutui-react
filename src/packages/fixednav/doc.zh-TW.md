@@ -1,16 +1,15 @@
 # FixedNav 懸浮導航
 
-### 介紹
+## 介紹
 
 懸浮收齊體驗交互，用於快捷導航
 
-### 安裝
+## 安裝
 
 ``` javascript
 // react
 import { FixedNav } from '@nutui/nutui-react';
 ```
-
 
 ### 基礎用法
 
@@ -20,7 +19,7 @@ import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首頁',
@@ -53,13 +52,13 @@ const App = () => {
   return (
     <>
       <FixedNav
-        navList={navList}
+        list={list}
         activeText="基礎用法"
         overlay
         position={{ top: '70px' }}
         onChange={change}
         visible={visible}
-        onSelected={selected}
+        onSelect={selected}
        />
     </>
   )
@@ -74,7 +73,7 @@ import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首頁',
@@ -107,14 +106,14 @@ const App = () => {
   return (
     <>
       <FixedNav
-        navList={navList}
+        list={list}
         type="left"
         position={{ top: '140px' }}
         visible={visible}
         activeText="左側收起"
-        unActiveText="左側展開"
+        inactiveText="左側展開"
         onChange={change}
-        onSelected={selected}
+        onSelect={selected}
        />
     </>
   )
@@ -131,7 +130,7 @@ import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首頁',
@@ -164,12 +163,12 @@ const App = () => {
   return (
     <>
       <FixedNav
-        navList={navList}
+        list={list}
         position={{ top: '210px' }}
         overlay={false}
         visible={visible}
         onChange={change}
-        onSelected={selected}
+        onSelect={selected}
        />
     </>
   )
@@ -185,7 +184,7 @@ import React, { useState } from "react";
 import { Icon, FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首頁',
@@ -222,23 +221,22 @@ const App = () => {
         type="left"
         visible={visible}
         onChange={change}
-        onSelected={selected}
-        slotList={
-          <ul className="nut-fixednav__list" slot="list">
-            <li className="nut-fixednav__list-item">1</li>
-            <li className="nut-fixednav__list-item">2</li>
-            <li className="nut-fixednav__list-item">3</li>
-            <li className="nut-fixednav__list-item">4</li>
-            <li className="nut-fixednav__list-item">5</li>
-          </ul>
-        }
-        slotBtn={
+        onSelect={selected}
+        content={
           <>
             <Icon name="retweet" color="#fff"> </Icon>
             <span className="text">{ visible ? '自定義開' : '自定義關' }</span>
           </>
         }
-       />
+      >
+        <ul className="nut-fixednav__list">
+          <li className="nut-fixednav__list-item">1</li>
+          <li className="nut-fixednav__list-item">2</li>
+          <li className="nut-fixednav__list-item">3</li>
+          <li className="nut-fixednav__list-item">4</li>
+          <li className="nut-fixednav__list-item">5</li>
+        </ul>
+      </FixedNav>
     </>
   )
 };
@@ -253,7 +251,7 @@ import React, { useState } from "react";
 import { Drag, FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首頁',
@@ -287,11 +285,11 @@ const App = () => {
     <>
       <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
         <FixedNav
-          navList={navList}
-          unActiveText="支持拖拽"
+          list={list}
+          inactiveText="支持拖拽"
           visible={visible} 
           onChange={change}
-          onSelected={selected} />
+          onSelect={selected} />
       </Drag>
     </>
   )
@@ -305,16 +303,15 @@ export default App;
 ### Prop
 | 字段           | 說明                       | 類型    | 默認值                       |
 |:---------------|:---------------------------|:--------|:-----------------------------|
-| fixednavClass        | 自定義類名                   | string | `fixednav`                        |
 | visible        | 是否打開                   | boolean | `false`                        |
-| navList       | 懸浮列表內容數據           | Array   | `[]`                           |
+| list       | 懸浮列表內容數據           | Array   | `[]`                           |
 | activeText    | 收起列表按鈕文案           | string  | `收起導航`                     |
-| unActiveText | 展開列表按鈕文案           | string  | `快速導航`                     |
+| inactiveText | 展開列表按鈕文案           | string  | `快速導航`                     |
 | type           | 導航方向,可選值 left right | string  | `right`                        |
 | overlay        | 展開時是否顯示遮罩         | boolean | `true`                         |
 | position       | fixed 垂直位置             | object  | `{top: 'auto', bottom: 'auto'}` |
-| slotList       | 自定義展開列表內容             | ReactNode  | - |
-| slotBtn       | 自定義按鈕            | ReactNode  | - |
+| content       | 自定義按鈕            | ReactNode  | - |
+| children       | 自定義展開列表內容             | ReactNode  | - |
 
 
 ### Event
@@ -322,7 +319,7 @@ export default App;
 | 字段     | 說明         | 回調參數        |
 |:----------|:--------------|:------------|
 | onChange | 展開收起按鈕回調 | `value: boolean` |
-| onSelected | 選擇之後觸發 | `item, event: MouseEvent` |
+| onSelect | 選擇之後觸發 | `item, event: MouseEvent` |
 
 ## 主題定制
 

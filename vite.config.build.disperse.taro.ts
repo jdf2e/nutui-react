@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite'
-import reactRefresh from '@vitejs/plugin-react-refresh'
+import reactRefresh from '@vitejs/plugin-react'
 import path from 'path'
 import config from './src/config.json'
+import commonjs from '@rollup/plugin-commonjs'
+import typescript from '@rollup/plugin-typescript'
 
 const entries: any = {
   'nutui-react.es': path.join(
@@ -57,8 +59,9 @@ export default defineConfig({
         },
         dir: path.resolve(__dirname, './dist/esm'),
         entryFileNames: '[name].js',
-        chunkFileNames: '[name].js',
+        chunkFileNames: '[name]-[hash].js',
       },
+      plugins: [commonjs(), typescript()],
     },
     emptyOutDir: false,
   },

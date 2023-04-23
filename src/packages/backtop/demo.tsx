@@ -47,7 +47,7 @@ const BackTopDemo = () => {
       <div
         className="demo"
         style={{ height: '1300px', overflowY: 'auto' }}
-        id="elId"
+        id="target"
       >
         <h2>{translated.title}</h2>
         <div className="text-data" style={cellStyle}>
@@ -124,8 +124,11 @@ const BackTopDemo = () => {
         </div>
         <BackTop
           className="custom-class"
-          distance={100}
-          bottom={110}
+          threshold={200}
+          style={{
+            bottom: '50px',
+            right: '20px',
+          }}
           onClick={handleClick}
         >
           <div
@@ -140,7 +143,6 @@ const BackTopDemo = () => {
             <div style={{ fontSize: '12px' }}>{translated.backText}</div>
           </div>
         </BackTop>
-        {/* <BackTop elId="elId" distance={200} bottom={50} onClick={handleClick} /> */}
       </div>
     </>
   )

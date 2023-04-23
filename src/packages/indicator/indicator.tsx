@@ -1,69 +1,52 @@
-import React, { FunctionComponent, ReactNode, useEffect } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
 
 export interface IndicatorProps {
-  size: number
+  total: number
   current: number
-  block: boolean
-  align: 'left' | 'right' | 'center'
-  fillZero: boolean
-  vertical: boolean
+  direction: string
 }
 const defaultProps = {
-  size: 3,
+  total: 3,
   current: 1,
-  block: false,
-  align: 'center',
-  fillZero: true,
-  vertical: false,
+  direction: 'horizontal',
 } as IndicatorProps
+
+const classPrefix = `nut-indicator`
 
 export const Indicator: FunctionComponent<
   Partial<IndicatorProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const {
-    size,
-    current,
-    block,
-    align,
-    fillZero,
-    children,
-    className,
-    vertical,
-    ...rest
-  } = {
+  const { total, current, children, className, direction, ...rest } = {
     ...defaultProps,
     ...props,
   }
-  const b = bem('indicator')
-  const classes = classNames(
-    {
-      [`${b('block')}`]: block,
-      [`${b('align')}__${align}`]: block && align,
-      [`${b('vertical')}`]: vertical,
-    },
-    b('')
-  )
-  const renderEles = () => {
+  const classes = classNames({
+    [`${classPrefix}__vertical`]: direction === 'vertical',
+  })
+  const renderElement = () => {
     const childs: ReactNode[] = []
-    for (let item = 1; item <= size; item++) {
+    for (let item = 1; item <= total; item++) {
       childs.push(
         item === current ? (
-          <div key={item} className={b('number')}>
-            {fillZero && item < 10 ? `0${item}` : item}
-          </div>
+          <>
+            {children || (
+              <div
+                key={item}
+                className={`${classPrefix}__dot ${classPrefix}__active`}
+              />
+            )}
+          </>
         ) : (
-          <div key={item} className={b('dot')} />
+          <div key={item} className={`${classPrefix}__dot`} />
         )
       )
     }
     return childs
   }
-  useEffect(() => {}, [])
   return (
     <div className={classNames(classes, className)} {...rest}>
-      {renderEles()}
+      {renderElement()}
     </div>
   )
 }

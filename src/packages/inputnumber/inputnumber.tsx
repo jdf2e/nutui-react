@@ -8,35 +8,26 @@ import React, {
 } from 'react'
 import { Minus, Plus } from '@nutui/icons-react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
+import { usePropsValue } from '@/utils/use-props-value'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface InputNumberProps extends BasicComponent {
   disabled: boolean
-  buttonSize: string | number
   min: string | number
   max: string | number
-  inputWidth: string | number
   readonly: boolean
-  modelValue: string | number
+  value: string | number
+  defaultValue: string | number
+  allowEmpty: boolean
   step: string | number
-  decimalPlaces: string | number
-  isAsync: boolean
+  digits: string | number
+  async: boolean
   className: string
   style: React.CSSProperties
   formatter?: (displayValue: string | number) => string
-  add: (e: MouseEvent) => void
-  reduce: (e: MouseEvent) => void
-  overlimit: (e: MouseEvent) => void
-  blur: (e: ChangeEvent<HTMLInputElement>) => void
-  focus: (e: FocusEvent<HTMLInputElement>) => void
-  change: (
-    param: string | number,
-    e: MouseEvent | ChangeEvent<HTMLInputElement>
-  ) => void
-  onAdd: (e: MouseEvent) => void
-  onReduce: (e: MouseEvent) => void
+  onPlus: (e: MouseEvent) => void
+  onMinus: (e: MouseEvent) => void
   onOverlimit: (e: MouseEvent) => void
   onBlur: (e: ChangeEvent<HTMLInputElement>) => void
   onFocus: (e: FocusEvent<HTMLInputElement>) => void
@@ -49,21 +40,17 @@ export interface InputNumberProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   disabled: false,
-  buttonSize: '',
   min: 1,
   max: 9999,
-  inputWidth: '',
   readonly: false,
-  modelValue: 0,
+  allowEmpty: false,
+  defaultValue: 0,
   step: 1,
-  decimalPlaces: 0,
-  isAsync: false,
+  digits: 0,
+  async: false,
 } as InputNumberProps
 
-function pxCheck(value: string | number): string {
-  return Number.isNaN(Number(value)) ? String(value) : `${value}px`
-}
-
+const classPrefix = `nut-inputnumber`
 export const InputNumber: FunctionComponent<
   Partial<InputNumberProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'onBlur'>
@@ -71,26 +58,20 @@ export const InputNumber: FunctionComponent<
   const {
     children,
     disabled,
-    buttonSize,
     min,
     max,
-    inputWidth,
     readonly,
-    modelValue,
-    decimalPlaces,
+    value,
+    defaultValue,
+    allowEmpty,
+    digits,
     step,
-    isAsync,
+    async,
     className,
     style,
     formatter,
-    add,
-    reduce,
-    change,
-    overlimit,
-    blur,
-    focus,
-    onAdd,
-    onReduce,
+    onPlus,
+    onMinus,
     onOverlimit,
     onBlur,
     onFocus,
@@ -100,61 +81,60 @@ export const InputNumber: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const [inputValue, setInputValue] = useState(modelValue)
   const inputRef = useRef('')
+
+  let [_checked, setChecked] = usePropsValue<string | number>({
+    value: value,
+    defaultValue: defaultValue,
+  })
+
   useEffect(() => {
     if (formatter) {
-      inputRef.current = formatter(modelValue)
-      setInputValue(formatter(modelValue))
-    } else {
-      setInputValue(modelValue)
+      if (_checked || _checked === 0) {
+        inputRef.current = formatter(_checked)
+        setChecked(formatter(_checked))
+      }
     }
-  }, [modelValue, formatter])
+  }, [])
 
-  const b = bem('inputnumber')
   const classes = classNames(
     {
-      [`${b('')}--disabled`]: disabled,
+      [`${classPrefix}`]: true,
+      [`${classPrefix}--disabled`]: disabled,
     },
-    className,
-    b('')
+    className
   )
   const styles = {
-    height: pxCheck(buttonSize),
     ...style,
   }
-  const addAllow = (value = inputValue) => {
+  const addAllow = (value = _checked) => {
     if (formatter) {
       const numValue = String(value).replace(/[^0-9|\.]/gi, '')
       return Number(numValue) < Number(max) && !disabled
     }
-    if (value || typeof value === 'number') {
-      return value < Number(max) && !disabled
-    }
-    return false
+
+    return Number(value) < Number(max) && !disabled
   }
 
-  const reduceAllow = (value = inputValue) => {
+  const reduceAllow = (value = _checked) => {
     if (formatter) {
       const numValue = String(value).replace(/[^0-9|\.]/gi, '')
       return Number(numValue) > Number(min) && !disabled
     }
-    if (value || typeof value === 'number') {
-      return value > Number(min) && !disabled
-    }
-    return false
+
+    return Number(value) > Number(min) && !disabled
   }
 
-  const iconMinusClasses = classNames('nut-inputnumber__icon', {
+  const iconMinusClasses = classNames('nut-inputnumber__icon icon-minus', {
     'nut-inputnumber__icon--disabled': !reduceAllow(),
   })
 
-  const iconAddClasses = classNames('nut-inputnumber__icon', {
+  const iconAddClasses = classNames('nut-inputnumber__icon icon-plus', {
     'nut-inputnumber__icon--disabled': !addAllow(),
   })
 
   const fixedDecimalPlaces = (v: string | number): string => {
-    return Number(v).toFixed(Number(decimalPlaces))
+    return Number(v).toFixed(Number(digits))
   }
 
   const emitChange = (
@@ -163,33 +143,27 @@ export const InputNumber: FunctionComponent<
   ) => {
     const outputValue: number | string = fixedDecimalPlaces(value)
     onChange && onChange(outputValue, e)
-    if (!isAsync) {
+    if (!async) {
       if (Number(outputValue) < Number(min)) {
-        formatter
-          ? setInputValue(formatter(Number(min)))
-          : setInputValue(Number(min))
+        formatter ? setChecked(formatter(Number(min))) : setChecked(Number(min))
       } else if (Number(outputValue) > Number(max)) {
-        formatter
-          ? setInputValue(formatter(Number(max)))
-          : setInputValue(Number(max))
+        formatter ? setChecked(formatter(Number(max))) : setChecked(Number(max))
       } else {
-        formatter
-          ? setInputValue(formatter(outputValue))
-          : setInputValue(outputValue)
+        formatter ? setChecked(formatter(outputValue)) : setChecked(outputValue)
       }
     }
   }
 
   const reduceNumber = (e: MouseEvent) => {
-    onReduce && onReduce(e)
+    onMinus && onMinus(e)
     if (reduceAllow()) {
       if (formatter) {
-        const numValue = String(inputValue).replace(/[^0-9|\.]/gi, '')
+        const numValue = String(_checked).replace(/[^0-9|\.]/gi, '')
         const outputValue = Number(numValue) - Number(step)
         inputRef.current = formatter(outputValue)
         emitChange(outputValue, e)
       } else {
-        const outputValue = Number(inputValue) - Number(step)
+        const outputValue = Number(_checked) - Number(step)
         emitChange(outputValue, e)
       }
     } else {
@@ -198,15 +172,15 @@ export const InputNumber: FunctionComponent<
   }
 
   const addNumber = (e: MouseEvent) => {
-    onAdd && onAdd(e)
+    onPlus && onPlus(e)
     if (addAllow()) {
       if (formatter) {
-        const numValue = String(inputValue).replace(/[^0-9|\.]/gi, '')
+        const numValue = String(_checked).replace(/[^0-9|\.]/gi, '')
         const outputValue = Number(numValue) + Number(step)
         inputRef.current = formatter(outputValue)
         emitChange(outputValue, e)
       } else {
-        const outputValue = Number(inputValue) + Number(step)
+        const outputValue = Number(_checked) + Number(step)
         emitChange(outputValue, e)
       }
     } else {
@@ -217,11 +191,11 @@ export const InputNumber: FunctionComponent<
   const changeValue = (e: ChangeEvent<HTMLInputElement>) => {
     const input = e.target as HTMLInputElement
     onChange && onChange(input.valueAsNumber, e)
-    if (!isAsync) {
+    if (!async) {
       if (Number.isNaN(input.valueAsNumber)) {
-        setInputValue('')
+        setChecked('')
       } else {
-        setInputValue(input.valueAsNumber)
+        setChecked(input.valueAsNumber)
       }
     }
   }
@@ -234,18 +208,15 @@ export const InputNumber: FunctionComponent<
 
     if (formatter) {
       if (!numReg.test(input[0]) && numValue) {
-        setInputValue(formatter(numValue))
+        setChecked(formatter(numValue))
       } else if (!numReg.test(input[0]) && !numValue) {
-        setInputValue(input)
+        setChecked(input)
       } else if (numReg.test(input[0])) {
-        console.log('inputRef.current', inputRef.current)
-        console.log('formatter(numValue)', formatter(numValue))
-
         // 针对于100%这种尾字符例子，直接删除会进行匹配
         if (formatter(numValue) === inputRef.current) {
-          setInputValue(numValue)
+          setChecked(numValue)
         } else {
-          setInputValue(formatter(numValue))
+          setChecked(formatter(numValue))
           inputRef.current = formatter(numValue)
         }
       }
@@ -263,7 +234,7 @@ export const InputNumber: FunctionComponent<
         return
       }
       if (!numReg.test(input) || !input) {
-        setInputValue(formatter(''))
+        setChecked(formatter(''))
       }
     }
   }
@@ -279,6 +250,9 @@ export const InputNumber: FunctionComponent<
     if (readonly) return
     const input = e.target as HTMLInputElement
     let value = input.valueAsNumber
+    if (Number.isNaN(value) && !allowEmpty) {
+      value = Number(defaultValue)
+    }
     if (value < Number(min)) {
       value = Number(min)
     } else if (value > Number(max)) {
@@ -293,8 +267,6 @@ export const InputNumber: FunctionComponent<
         <Minus
           className={iconMinusClasses}
           onClick={(e: any) => reduceNumber(e)}
-          width={buttonSize}
-          height={buttonSize}
         />
       </div>
       <>
@@ -303,10 +275,9 @@ export const InputNumber: FunctionComponent<
             type="text"
             min={min}
             max={max}
-            style={{ width: pxCheck(inputWidth) }}
             disabled={disabled}
             readOnly={readonly}
-            value={inputValue}
+            value={_checked}
             onInput={changeFormatValue}
             onBlur={burFormatValue}
             onFocus={focusValue}
@@ -316,10 +287,9 @@ export const InputNumber: FunctionComponent<
             type="number"
             min={min}
             max={max}
-            style={{ width: pxCheck(inputWidth) }}
             disabled={disabled}
             readOnly={readonly}
-            value={inputValue}
+            value={_checked}
             onInput={changeValue}
             onBlur={burValue}
             onFocus={focusValue}
@@ -327,12 +297,7 @@ export const InputNumber: FunctionComponent<
         )}
       </>
       <div className="nut-input-add">
-        <Plus
-          className={iconAddClasses}
-          onClick={(e: any) => addNumber(e)}
-          width={buttonSize}
-          height={buttonSize}
-        />
+        <Plus className={iconAddClasses} onClick={(e: any) => addNumber(e)} />
       </div>
     </div>
   )

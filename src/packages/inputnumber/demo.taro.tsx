@@ -8,17 +8,7 @@ import {
   ConfigProvider,
 } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-
-interface ValState {
-  val1: number | string
-  val2: number | string
-  val3: number | string
-  val4: number | string
-  val5: number | string
-  val6: number | string
-  val7: number | string
-  val8: number | string
-}
+import '@/packages/inputnumber/demo.scss'
 
 interface T {
   '6333c786': string
@@ -97,16 +87,7 @@ const InputNumberDemo = () => {
     },
   })
 
-  const [inputState, setInputState] = useState<ValState>({
-    val1: 1,
-    val2: 0,
-    val3: 10,
-    val4: 0,
-    val5: 1,
-    val6: 5.5,
-    val7: 1,
-    val8: 1,
-  })
+  const [inputValue, setInputValue] = useState(-1)
   const overlimit = (e: MouseEvent) => {
     console.log(e)
     // Toast.warn(translated['6333c786'])
@@ -116,8 +97,7 @@ const InputNumberDemo = () => {
     // Toast.loading(translated['0137871a'])
     toastShow(translated['0137871a'], 'loading')
     setTimeout(() => {
-      inputState.val7 = Number(value)
-      setInputState({ ...inputState })
+      setInputValue(Number(value))
       //   Toast.hide()
       SetShow(false)
     }, 2000)
@@ -136,64 +116,77 @@ const InputNumberDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated['84aa6bce']}</h2>
         <Cell>
-          <InputNumber modelValue={inputState.val1} />
+          <InputNumber defaultValue={1} />
         </Cell>
+
         <h2>{translated['55cc5fb7']}</h2>
         <Cell>
-          <InputNumber modelValue={inputState.val2} step="5" />
+          <InputNumber defaultValue={0} min={0} step="5" />
         </Cell>
+
         <h2>{translated['9636103a']}</h2>
         <Cell>
           <InputNumber
-            modelValue={inputState.val3}
+            defaultValue={10}
             min="10"
             max="20"
             onOverlimit={overlimit}
           />
         </Cell>
+
         <h2>{translated['181965e2']}</h2>
         <Cell>
-          <InputNumber modelValue={inputState.val4} disabled />
+          <InputNumber defaultValue={0} disabled />
         </Cell>
+
         <h2>{translated.e7b2ce1f}</h2>
         <Cell>
-          <InputNumber modelValue={inputState.val5} readonly />
+          <InputNumber defaultValue={1} readonly />
         </Cell>
+
         <h2>{translated.e7b2ce1g}</h2>
         <Cell>
           <ConfigProvider theme={customTheme}>
-            <InputNumber modelValue={inputState.val5} />
+            <InputNumber defaultValue={1} />
           </ConfigProvider>
         </Cell>
+
         <h2>{translated.e7b2ce1y}</h2>
         <Cell>
           <ConfigProvider theme={customTheme2}>
-            <InputNumber modelValue={inputState.val5} />
+            <InputNumber defaultValue={1} />
           </ConfigProvider>
         </Cell>
+
         <h2>{translated['3a42134b']}</h2>
         <Cell>
-          <InputNumber
-            modelValue={inputState.val6}
-            step="0.1"
-            decimalPlaces="1"
-            readonly
-          />
+          <InputNumber defaultValue={5.5} step="0.1" digits="1" readonly />
         </Cell>
+
         <h2>{translated['65bafb1d']}</h2>
         <Cell>
-          <InputNumber
-            modelValue={inputState.val7}
-            onChange={onChange}
-            isAsync
-          />
+          <InputNumber value={inputValue} min="-6" onChange={onChange} async />
         </Cell>
-        <h2>{translated['7e2394ae']}</h2>
+
+        <h2>支持formatter</h2>
         <Cell>
           <InputNumber
-            modelValue={inputState.val8}
-            buttonSize="30"
-            inputWidth="50"
+            className="format-width"
+            defaultValue="1000"
+            min={10}
+            max={15020}
+            formatter={(value) =>
+              `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+            }
+          />
+        </Cell>
+        <Cell>
+          <InputNumber
+            className="format-width"
+            defaultValue="100"
+            min={0}
+            max={100}
+            formatter={(value) => `${value}%`}
           />
         </Cell>
         <Toast

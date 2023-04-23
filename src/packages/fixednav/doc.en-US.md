@@ -1,6 +1,6 @@
 # FixedNav hover navigation
 
-### introduce
+## Intro
 
 Hovering and collecting experience interaction for quick navigation
 
@@ -11,8 +11,9 @@ Hovering and collecting experience interaction for quick navigation
 import { FixedNav } from '@nutui/nutui-react';
 ```
 
+## Code
 
-### Basic usage
+### Basic Usage
 
 :::demo
 ``` tsx
@@ -20,7 +21,7 @@ import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: 'Home',
@@ -53,13 +54,13 @@ const App = () => {
   return (
     <>
       <FixedNav
-        navList={navList}
+        list={list}
         activeText="basic usage"
         overlay
         position={{ top: '70px' }}
         onChange={change}
         visible={visible}
-        onSelected={selected}
+        onSelect={selected}
        />
     </>
   )
@@ -74,7 +75,7 @@ import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: 'Home',
@@ -107,14 +108,14 @@ const App = () => {
   return (
     <>
       <FixedNav
-        navList={navList}
+        list={list}
         type="left"
         position={{ top: '140px' }}
         visible={visible}
         activeText="Left collapsed"
-        unActiveText="Expand left"
+        inactiveText="Expand left"
         onChange={change}
-        onSelected={selected}
+        onSelect={selected}
        />
     </>
   )
@@ -132,7 +133,7 @@ import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: '首页',
@@ -165,12 +166,12 @@ const App = () => {
   return (
     <>
       <FixedNav
-        navList={navList}
+        list={list}
         position={{ top: '210px' }}
         overlay={false}
         visible={visible}
         onChange={change}
-        onSelected={selected}
+        onSelect={selected}
        />
     </>
   )
@@ -185,7 +186,7 @@ import React, { useState } from "react";
 import { Icon, FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: 'Home',
@@ -222,23 +223,22 @@ const App = () => {
         type="left"
         visible={visible}
         onChange={change}
-        onSelected={selected}
-        slotList={
-          <ul className="nut-fixednav__list" slot="list">
-            <li className="nut-fixednav__list-item">1</li>
-            <li className="nut-fixednav__list-item">2</li>
-            <li className="nut-fixednav__list-item">3</li>
-            <li className="nut-fixednav__list-item">4</li>
-            <li className="nut-fixednav__list-item">5</li>
-          </ul>
-        }
-        slotBtn={
+        onSelect={selected}
+        content={
           <>
             <Icon name="retweet" color="#fff"> </Icon>
             <span className="text">{ visible ? 'Custom On' : 'Custom Off' }</span>
           </>
         }
-       />
+      >
+        <ul className="nut-fixednav__list">
+          <li className="nut-fixednav__list-item">1</li>
+          <li className="nut-fixednav__list-item">2</li>
+          <li className="nut-fixednav__list-item">3</li>
+          <li className="nut-fixednav__list-item">4</li>
+          <li className="nut-fixednav__list-item">5</li>
+        </ul>
+      </FixedNav>
     </>
   )
 };
@@ -253,7 +253,7 @@ import React, { useState } from "react";
 import { Drag, FixedNav } from '@nutui/nutui-react';
 
 const App = () => {
-  const navList = [
+  const list = [
     {
       id: 1,
       text: 'Home',
@@ -287,51 +287,45 @@ const App = () => {
     <>
       <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
         <FixedNav
-          navList={navList}
-          unActiveText="support drag and drop"
+          list={list}
+          inactiveText="support drag and drop"
           visible={visible}
           onChange={change}
-          onSelected={selected} />
+          onSelect={selected} />
       </Drag>
     </>
   )
 };
 export default App;
 ````
-### Prop
+
+## FixedNav
+
+### Props
+
 | Field | Description | Type | Default Value |
 |:---------------|:----------------------------|:--------|:----------------------------|
-| fixednavClass | custom class name | string | `fixednav` |
 | visible | whether to open | boolean | `false` |
-| navList | Floating list content data | Array | `[]` |
+| list | Floating list content data | Array | `[]` |
 | activeText | Collapse list button text | string | `Collapse navigation` |
-| unActiveText | Expand List Button Text | string | `Quick Navigation` |
+| inactiveText | Expand List Button Text | string | `Quick Navigation` |
 | type | navigation direction, optional left right | string | `right` |
 | overlay | Whether to show the mask when expanding | boolean | `true` |
 | position | fixed vertical position | object | `{top: 'auto', bottom: 'auto'}` |
-| slotList | Customize expanded list content | ReactNode | - |
-| slotBtn | custom button | ReactNode | - |
-
-
-### Event
-
-| Field | Description | Callback Parameters |
-|----------|-------------|----------------|
+| content | custom button | ReactNode | - |
+| children | Customize expanded list content | ReactNode | - |
 | onChange | expand/collapse button callback | `value: boolean` |
-| onSelected | Fired after selection | `item, event: MouseEvent}` |
+| onSelect | Fired after selection | `item, event: MouseEvent}` |
 
-
-    
-
-## Theming
+## Theme
 
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-fixednav-bg-color | `#fff` |
-| --nutui-fixednav-font-color | `#000` |
-| --nutui-fixednav-index | `201` |
-| --nutui-fixednav-item-active-color | `$primary-color` |
+| Name | Description | Default |
+| --- | --- | --- |
+| --nutui-fixednav-bg-color | background color | `#fff` |
+| --nutui-fixednav-font-color | font color | `#000` |
+| --nutui-fixednav-index | zIndex | `201` |
+| --nutui-fixednav-item-active-color | active color | `$primary-color` |

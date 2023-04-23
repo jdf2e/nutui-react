@@ -31,7 +31,7 @@ const App = () => {
         <>
         <Cell
           title="Text文字提示"
-          isLink
+          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => textToast('网络失败，请稍后再试~')}
@@ -59,7 +59,7 @@ const App = () => {
         <>
         <Cell
           title="Toast 标题提示"
-          isLink
+          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => titleToast('Toast 标题提示')}
@@ -86,7 +86,7 @@ const App = () => {
         <>
         <Cell
           title="Success 成功提示"
-          isLink
+          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => successToast('成功提示')}
@@ -115,7 +115,7 @@ const App = () => {
         <>
         <Cell
           title="Error 失败提示"
-          isLink
+          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => errorToast('失败提示')}
@@ -144,7 +144,7 @@ const App = () => {
         <>
             <Cell
             title=" Warning 警告提示"
-            isLink
+            
             onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => warningToast('警告提示')}
@@ -173,7 +173,7 @@ const App = () => {
         <>
             <Cell
             title=" Loading 加载提示"
-            isLink
+            
             onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => loadingToast('加载中')}
@@ -203,14 +203,14 @@ const App = () => {
         <>
             <Cell
             title="设置展示时长为10秒提示"
-            isLink
+            
             onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => duringToast('设置展示时长为10秒')}
             />
             <Cell
             title="Toast 不消失"
-            isLink
+            
             onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => {Toast.text('Toast 不消失', { duration: 0 })}}
@@ -248,7 +248,7 @@ const App = () => {
     return (
         <Cell
         title='Toast 自定义底部高度'
-        isLink
+        
         onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => toastBottom('自定义距离')}
@@ -283,7 +283,7 @@ const App = () => {
         <>
             <Cell
             title="Loading状态透明遮罩"
-            isLink
+            
             onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => iconToast('加载状态透明遮罩')}
