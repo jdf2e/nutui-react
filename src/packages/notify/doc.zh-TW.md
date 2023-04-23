@@ -178,8 +178,8 @@ export default App
 | type       | 提示的信息類型（primary，success  ，danger，warning） | string        | `danger` |
 | duration   | 展示時長(ms)，值為 0 時，notify 不會消失              | string        | `3000`     |
 | position  | 自定義位置 (top, bottom)                | string | `top`        |
-| onClick  | 點擊事件回調 | `onClick: () => void`      | `false`|
-| onClose | 關閉事件回調 |`onClose: () => void`       | `false`|
+| onClick  | 點擊事件回調 | `onClick: () => void`      | - |
+| onClose | 關閉事件回調 |`onClose: () => void`       | - |
 
 ## 主題定製
 

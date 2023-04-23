@@ -1,8 +1,10 @@
 import * as React from 'react'
 import Notification, { NotificationProps } from './Notification'
 
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+
 let messageInstance: any = null
-export interface NotifyProps {
+export interface NotifyProps extends BasicComponent {
   id: string
   duration: number
   type: string
@@ -12,10 +14,10 @@ export interface NotifyProps {
 }
 
 const options: NotifyProps = {
+  ...ComponentDefaults,
   id: '',
   duration: 3000, // 时长
   type: 'danger',
-
   position: 'top',
   onClose: () => {},
   onClick: () => {},

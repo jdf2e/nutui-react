@@ -180,8 +180,8 @@ export default App
 | type       | Display Type（primary,success ,danger,warning）      | string        | `danger` |
 | duration   | Display duration (ms),value is 0 ,notify not disappear | string        | `3000`     |
 | position  | Custom Position (top, bottom)                               | string | `top`        |
-| onClick  | Emitted when notify is clicked | `onClick: () => void`      | `false`|
-| onClose | Emitted when notify is closed |`onClose: () => void`       | `false`|
+| onClick  | Emitted when notify is clicked | `onClick: () => void`      | -|
+| onClose | Emitted when notify is closed |`onClose: () => void`       | -|
 
 
 ## Theming

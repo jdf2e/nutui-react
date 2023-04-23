@@ -178,8 +178,8 @@ export default App
 | type       | 提示的信息类型（primary，success  ，danger，warning） | string        | `danger` |
 | duration   | 展示时长(ms)，值为 0 时，notify 不会消失              | string        | `3000`     |
 | position  | 自定义位置 (top, bottom)                | string | `top`        |
-| onClick  | 点击事件回调 | `onClick: () => void`      | `false`|
-| onClose | 关闭事件回调 |`onClose: () => void`       | `false`|
+| onClick  | 点击事件回调 | `onClick: () => void`      | - |
+| onClose | 关闭事件回调 |`onClose: () => void`       | - |
 
 ## 主题定制
 

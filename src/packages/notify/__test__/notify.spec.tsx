@@ -51,7 +51,7 @@ test('test toast props', async () => {
             '--nutui-notify-text-color': '#ad0000',
             '--nutui-notify-base-background-color': '#ffe1e1',
           },
-
+          className: 'aa',
           position: 'bottom',
         })
       }
@@ -72,7 +72,7 @@ test('test toast props', async () => {
     )
     expect(document.querySelector('.nut-notify')).toHaveAttribute(
       'style',
-      'color: rgb(173, 0, 0); background: rgb(255, 225, 225);'
+      '--nutui-notify-text-color: #ad0000; --nutui-notify-base-background-color: #ffe1e1;'
     )
     expect(document.getElementById('custom2')).toBeTruthy()
     setTimeout(() => {
