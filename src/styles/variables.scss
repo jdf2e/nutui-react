@@ -1552,23 +1552,6 @@ $progress-insidetext-padding: var(
   3px 5px 3px 6px
 ) !default;
 $progress-insidetext-top: var(--nutui-progress-insidetext-top, -42%) !default;
-$progress-small-text-top: var(--nutui-progress-small-text-top, -100%) !default;
-$progress-small-font-size: var(--nutui-progress-small-font-size, 7px) !default;
-$progress-small-padding: var(--nutui-progress-small-padding, 0 4px) !default;
-$progress-small-height: var(--nutui-progress-small-height, 5px) !default;
-$progress-small-text-font-size: var(
-  --nutui-progress-small-text-font-size,
-  7px
-) !default;
-$progress-small-text-line-height: var(
-  --nutui-progress-small-text-line-height,
-  10px
-) !default;
-$progress-small-text-padding: var(
-  --nutui-progress-small-text-padding,
-  2px 4px
-) !default;
-$progress-small-text-top: var(--nutui-progress-small-text-top, -100%) !default;
 $progress-base-font-size: var(--nutui-progress-base-font-size, 9px) !default;
 $progress-base-padding: var(--nutui-progress-base-padding, 0 5px) !default;
 $progress-base-height: var(--nutui-progress-base-height, 10px) !default;
@@ -1586,25 +1569,6 @@ $progress-base-text-padding: var(
 ) !default;
 $progress-base-text-top: var(
   --nutui-progress-base-text-top,
-  $progress-insidetext-top
-) !default;
-$progress-large-font-size: var(--nutui-progress-large-font-size, 13px) !default;
-$progress-large-padding: var(--nutui-progress-large-padding, 0 5px) !default;
-$progress-large-height: var(--nutui-progress-large-height, 15px) !default;
-$progress-large-text-font-size: var(
-  --nutui-progress-large-text-font-size,
-  13px
-) !default;
-$progress-large-text-line-height: var(
-  --nutui-progress-large-text-line-height,
-  18px
-) !default;
-$progress-large-text-padding: var(
-  --nutui-progress-large-text-padding,
-  $progress-insidetext-padding
-) !default;
-$progress-large-text-top: var(
-  --nutui-progress-large-text-top,
   $progress-insidetext-top
 ) !default;
 
