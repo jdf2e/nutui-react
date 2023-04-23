@@ -80,8 +80,8 @@ const TabbarDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.ce5c5446}</h2>
         <Tabbar
-          onSwitch={(child, idx) => {
-            console.log(idx)
+          onSwitch={(value) => {
+            console.log(value)
           }}
         >
           <TabbarItem title={translated.c3a3a1d2} icon={<Home size={18} />} />
@@ -123,8 +123,8 @@ const TabbarDemo = () => {
 
         <h2>{translated.ce5c5448}</h2>
         <Tabbar
-          onSwitch={(child, idx) => {
-            console.log(idx)
+          onSwitch={(value) => {
+            console.log(value)
           }}
         >
           <TabbarItem title={translated.c3a3a1d2} icon={<Home size={12} />} />
@@ -142,8 +142,8 @@ const TabbarDemo = () => {
 
         <h2>{translated.ce5c5440}</h2>
         <Tabbar
-          onSwitch={(child, idx) => {
-            console.log(idx)
+          onSwitch={(value) => {
+            console.log(value)
           }}
         >
           <TabbarItem title={translated.c3a3a1d2} />

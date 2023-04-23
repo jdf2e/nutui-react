@@ -107,8 +107,8 @@ const TabbarDemo = () => {
         <Tabbar
           defaultValue={0}
           value={activeIndex}
-          onSwitch={(child, id) => {
-            setActiveIndex(id)
+          onSwitch={(value) => {
+            setActiveIndex(value)
           }}
         >
           <TabbarItem
@@ -135,8 +135,8 @@ const TabbarDemo = () => {
 
         <h2>{translated.ce5c5448}</h2>
         <Tabbar
-          onSwitch={(child, idx) => {
-            console.log(idx)
+          onSwitch={(value) => {
+            console.log(value)
           }}
         >
           <TabbarItem
@@ -160,8 +160,8 @@ const TabbarDemo = () => {
 
         <h2>{translated.ce5c5440}</h2>
         <Tabbar
-          onSwitch={(child, idx) => {
-            console.log(idx)
+          onSwitch={(value) => {
+            console.log(value)
           }}
         >
           <TabbarItem title={translated.c3a3a1d2} />

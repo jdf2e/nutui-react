@@ -27,8 +27,8 @@ const App = () => {
   return <Tabbar
     defaultValue={0}
     value={activeIndex}
-    onSwitch={(child, id) => {
-      setActiveIndex(id)
+    onSwitch={(value) => {
+      setActiveIndex(value)
     }}
   >
     <TabbarItem title="first" icon={<Home width={18} height={18} />} />
@@ -174,14 +174,13 @@ export default App;
 
 | Property            | Description                                                                          | Type   | Default |
 |-----------------|--------------------------------------------------------------------------------------|--------|---------|
-| defaultValue | The default index value of the selected label                                        | number | `0`       |
-| value | The index value of the selected label                                                | number | -       |
-| fixed          | Whether it is fixed at the bottom of the page                                        | boolean | `false`   |
-| inactiveColor  | Icon inactive color                                                                  | string | `#7d7e80` |
-| activeColor    | icon active color                                                                    | string | `#1989fa` |
-| safeArea    | Whether to enable the full screen bottom safety zone adaptation of the iphone series | boolean | `false`   |
-| style    | component style                                                                      |
-| onSwitch    | Trigger an event when switching tabs | Clicked data and index value |
+| defaultValue | The default index value of the selected label                                        | `number` | `0`       |
+| value | The index value of the selected label                                                | `number` | -       |
+| fixed          | Whether it is fixed at the bottom of the page                                        | `boolean` | `false`   |
+| activeColor    | icon active color                                                                    | `string` | `#1989fa` |
+| inactiveColor  | Icon inactive color                                                                  | `string` | `#7d7e80` |
+| safeArea    | Whether to enable the full screen bottom safety zone adaptation of the iphone series | `boolean` | `false`   |
+| onSwitch    | Trigger an event when switching tabs | `(index) => void` | - |
 
 ## TabbarItem
 
@@ -189,12 +188,11 @@ export default App;
 
 | Property | Description | Type   | Default |
 |-----------|--------------|--------|--------|
-| title | the title of the tab | ReactNode | -     |
-| icon | Custom icon | ReactNode | -     |
-| href | Jump link of tab page;   | string | -     |
-| num | The numerical corner mark in the upper right corner of the tab, if it exceeds 99, it will be 99+     | number | -     |
-| dot | Whether to display the little red dot in the upper right corner of the icon   | boolean | `false`     |
-
+| title | the title of the tab | `ReactNode` | -     |
+| icon | Custom icon | `ReactNode` | -     |
+| href | Jump link of tab page;   | `string` | -     |
+| num | The numerical corner mark in the upper right corner of the tab, if it exceeds 99, it will be 99+     | `number` | -     |
+| dot | Whether to display the little red dot in the upper right corner of the icon   | `boolean` | `false`     |
 
 ## Theming
 
