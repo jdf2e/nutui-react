@@ -202,15 +202,13 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| --nutui-tabbar-height | `50px`|
-| --nutui-tabbar-active-color | `$primary-color` |
-| --nutui-tabbar-border-top | `1px solid #eee` |
-| --nutui-tabbar-border-bottom | `1px solid #eee` |
-| --nutui-tabbar-box-shadow | `none` |
-| --nutui-tabbar-item-text-font-size | `$font-size-0` |
-| --nutui-tabbar-item-text-line-height | `initial` |
-| --nutui-tabbar-height | `50px` |
-| --nutui-tabbar-word-margin-top | `auto` |
-| --nutui-tabbar-dot-right | `12px`|
-| --nutui-tabbar-dot-top | `0` |
-| --nutui-tabbar-word-margin-top | `3px` |
+| --nutui-tabbar-height | tabbar height | `50px`|
+| --nutui-tabbar-active-color | active color | `$primary-color` |
+| --nutui-tabbar-border-top | borderTop | `1px solid #eee` |
+| --nutui-tabbar-border-bottom | borderBottom | `1px solid #eee` |
+| --nutui-tabbar-box-shadow | boxShadow | `none` |
+| --nutui-tabbar-item-text-font-size | title fontSize | `$font-size-0` |
+| --nutui-tabbar-item-text-line-height | title lineHeight | `initial` |
+| --nutui-tabbar-word-margin-top | title marginTop | `3px` |
+| --nutui-tabbar-dot-right | dot right | `12px`|
+| --nutui-tabbar-dot-top | dot top | `0` |

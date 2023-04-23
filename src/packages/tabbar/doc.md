@@ -202,17 +202,15 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-tabbar-height | `50px`|
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-tabbar-height | 高度 | `50px`|
 | --nutui-tabbar-active-color | `$primary-color` |
-| --nutui-tabbar-border-top | `1px solid #eee` |
-| --nutui-tabbar-border-bottom | `1px solid #eee` |
-| --nutui-tabbar-box-shadow | `none` |
-| --nutui-tabbar-item-text-font-size | `$font-size-0` |
-| --nutui-tabbar-item-text-line-height | `initial` |
-| --nutui-tabbar-height | `50px` |
-| --nutui-tabbar-word-margin-top | `auto` |
-| --nutui-tabbar-dot-right | `12px`|
-| --nutui-tabbar-dot-top | `0` |
-| --nutui-tabbar-word-margin-top | `3px` |
+| --nutui-tabbar-border-top | 上边框 | `1px solid #eee` |
+| --nutui-tabbar-border-bottom | 下边框 | `1px solid #eee` |
+| --nutui-tabbar-box-shadow | 阴影 | `none` |
+| --nutui-tabbar-item-text-font-size | 标题字体大小 | `$font-size-0` |
+| --nutui-tabbar-item-text-line-height | 字体行高 | `initial` |
+| --nutui-tabbar-word-margin-top | 标题上外边距 | `3px` |
+| --nutui-tabbar-dot-right | dot 横向偏移距离 | `12px`|
+| --nutui-tabbar-dot-top | dot 纵向偏移距离 | `0` |
