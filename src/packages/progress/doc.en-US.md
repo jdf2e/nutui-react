@@ -239,7 +239,7 @@ export default App;
 | Property | Description | Type | Default
 |----- | ----- | ----- | -----
 | percent | percent | `number` | `0`
-| fillColor | Progress bar background color | `string` | `#f3f3f3`
+| background | Progress bar background color | `string` | `#f3f3f3`
 | color | Stroke color | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
 | strokeWidth | Stroke width | `string` | -
 | showText | Whether to show text | `boolean` | `true`

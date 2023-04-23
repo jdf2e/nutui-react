@@ -83,7 +83,7 @@ const ProgressDemo = () => {
         <Cell>
           <Progress
             percent={30}
-            fillColor="rgba(250,44,25,0.2)"
+            background="rgba(250,44,25,0.2)"
             color="rgba(250,44,25,0.9)"
             strokeWidth="15"
             textColor="red"

@@ -234,8 +234,8 @@ export default App;
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
 | percent | 百分比 | `number` | `0`
-| fillColor | 进度条填充颜色 | `string` | `#f3f3f3`
-| color | 进度条线条背景色 | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
+| background | 进度条背景颜色 | `string` | `#f3f3f3`
+| color | 进度条线条颜色 | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
 | strokeWidth | 进度条宽度 | `string` | -
 | showText | 是否显示进度条文字内容 | `boolean` | `true`
 | textInside | 进度条文字显示位置(`false`外显，`true`内显) | `boolean` | `false`
