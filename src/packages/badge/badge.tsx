@@ -1,48 +1,41 @@
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 
-import bem from '@/utils/bem'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface BadgeProps extends BasicComponent {
-  value: any
+  value: string | ReactNode
   dot: boolean
   max: number
   top: string
   right: string
-  zIndex: string
   color: string
-  icon: ReactNode
   children?: ReactNode
 }
-
 export type BadgeType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
-
 const defaultProps = {
   ...ComponentDefaults,
-  className: '',
   value: '',
   dot: false,
-  max: 10000,
+  max: 99,
   top: '0',
-  right: '0',
-  zIndex: '0',
+  right: '5',
   color: '',
-  icon: null,
 } as BadgeProps
-
-const b = bem('badge')
-
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
-  const { className, style, children, dot, top, right, zIndex, color, icon } = {
+  const { className, style, value, max, children, dot, top, right, color } = {
     ...defaultProps,
     ...props,
   }
+  const classPrefix = 'nut-badge'
+  const classes = classNames(classPrefix, className)
+  const contentClasses = classNames(
+    { [`${classPrefix}__dot`]: dot },
+    `${classPrefix}__content`,
+    `${classPrefix}__sup`
+  )
   function content() {
-    if (dot) return undefined
-    const { value } = props
-    const { max } = props
+    if (dot || typeof value === 'object') return null
     if (typeof value === 'number' && typeof max === 'number') {
       return max < value ? `${max}+` : value
     }
@@ -52,18 +45,16 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     const style: CSSProperties = {}
     style.top = `${Number(top) || parseFloat(top) || 0}px`
     style.right = `${Number(right) || parseFloat(right) || 0}px`
-    style.zIndex = zIndex
     style.background = color
     return style
   }
   return (
-    <div className={classNames(b(), className)} style={style}>
-      {icon && <div className="slot-icon">{icon}</div>}
+    <div className={classes} style={style}>
+      {typeof value === 'object' && value && (
+        <div className={`${classPrefix}__icon`}>{value}</div>
+      )}
       <div>{children}</div>
-      <div
-        className={classNames({ 'is-dot': dot }, b('content'), 'sup')}
-        style={getStyle()}
-      >
+      <div className={contentClasses} style={getStyle()}>
         {content()}
       </div>
     </div>

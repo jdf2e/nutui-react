@@ -1419,26 +1419,19 @@ $badge-background-color: var(
 ) !default;
 $badge-color: var(--nutui-badge-color, #fff) !default;
 $badge-font-size: var(--nutui-badge-font-size, $font-size-1) !default;
-$badge-default-background-color: var(
-  --nutui-badge-default-background-color,
-  rgba(255, 255, 255, 1)
-) !default;
 $badge-border: var(
   --nutui-badge-border,
   0px solid $primary-text-color
 ) !default;
 $badge-border-radius: var(--nutui-badge-border-radius, 14px) !default;
 $badge-padding: var(--nutui-badge-padding, 0 5px) !default;
-$badge-icon-padding: var(--nutui-badge-icon-padding, 2px) !default;
+$badge-icon-padding: var(--nutui-badge-icon-padding, 3px) !default;
 $badge-content-transform: var(
   --nutui-badge-content-transform,
   translateY(-50%) translateX(100%)
 ) !default;
 $badge-z-index: var(--nutui-badge-z-index, 1) !default;
 $badge-dot-width: var(--nutui-badge-dot-width, 7px) !default;
-$badge-dot-height: var(--nutui-badge-dot-height, 7px) !default;
-$badge-dot-border-radius: var(--nutui-badge-dot-border-radius, 7px) !default;
-$badge-dot-padding: var(--nutui-badge-dot-padding, 0px) !default;
 
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;
