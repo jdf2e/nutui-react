@@ -182,8 +182,7 @@ export default App;
 
 ### CSS Sticky
 
-通过设置tab的style 例如：`tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}`
-，来实现Css的粘性布局，注意：在微信小程序里组件外层元素不能存在 overflow 为 `hidden`、`auto`、`scroll`的设置。
+通过设置tab的style 例如：`tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}` ，来实现Css的粘性布局，注意：在微信小程序里组件外层元素不能存在 overflow 为 `hidden`、`auto`、`scroll`的设置。
 
 :::demo
 
@@ -548,31 +547,30 @@ export default App;
 
 ### Props
 
-| Property     | Description                                                              | Type                  | Default          |
-|--------------|--------------------------------------------------------------------------|-----------------------|------------------|
-| value | The value of the currently active tab panel | number \| string | `0` |
-| defaultValue | Initialize the value of the active tab | number \| string | `0` |
-| activeColor | Label selected color | string | `#1a1a1a` |
-| direction | Use horizontal and vertical directions Optional values `horizontal`, `vertical` | string | `horizontal` |
-| activeType | Select the bottom display style Optional values `line`, `smile` | string | `line` |
-| duration | Switch animation duration, unit ms 0 means no animation | number \| string | `300` |
-| title | custom navigation area | `() => JSX.Element[]` | - |
-| align | title left alignment | left \| right | `-` |
-| autoHeight | Auto height. When set to true, nut-tabs and nut-tabs__content will change with the height of the current nut-tabpane. | boolean | `false` |
-| tabStyle | tab bar style | CSSProperties | `{}` |
-| onClick | Triggered when the label is clicked | `(index: string \| number) => void` | - |
-| onChange | Triggered when the currently active tab changes | `(index: string \| number) => void` | - |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| value | The value of the currently active tab panel | `number \| string` | `0` |
+| defaultValue | Initialize the value of the active tab | `number \| string` | `0` |
+| activeColor | Label selected color | `string` | `#1a1a1a` |
+| direction | Use horizontal and vertical directions Optional values `horizontal`, `vertical` | `string` | `horizontal` |
+| activeType | Select the bottom display style Optional values `line`, `smile` | `string` | `line` |
+| duration | Switch animation duration, unit ms 0 means no animation | `number \| string` | `300` |
+| title | custom navigation area | `() => JSX.Element[]` | `-` |
+| align | title left alignment | `left \| right` | `-` |
+| autoHeight | Auto height. When set to true, nut-tabs and nut-tabs\_\_content will change with the height of the current nut-tabpane. | `boolean` | `false` |
+| tabStyle | tab bar style | `CSSProperties` | `{}` |
+| onClick | Triggered when the label is clicked | `(index: string \| number) => void` | `-` |
+| onChange | Triggered when the currently active tab changes | `(index: string \| number) => void` | `-` |
 
 ## Tabs.Tabpane
 
 ### Props
 
-| Property       | Description                      | type      | Default     |
-|----------|-------------------------|---------|---------|
-| title | title | string | - |
+| Property | Description | type | Default |
+| --- | --- | --- | --- |
+| title | title | string | `-` |
 | value | tag Key , matching identifier, default is index value | `string\| number` | `-` |
 | disabled | Whether to disable the label | boolean | `false` |
-
 
 ## Theming
 
@@ -580,26 +578,4 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | -- | --- |
-| --nutui-tabs-tab-smile-color | The color of the smile curve | `$primary-color` |
-| --nutui-tabs-titles-background-color | Tab title background color | `$background-color` |
-| --nutui-tabs-titles-border-radius | Tab title border rounded | `0` |
-| --nutui-tabs-titles-item-font-size | Tab title font size | `$font-size-2` |
-| --nutui-tabs-titles-item-color | Tab title text color | `$title-color` |
-| --nutui-tabs-titles-item-active-color | Tab selected titles text color | `$title-color` |
-| --nutui-tabs-titles-item-active-font-weight | Tab selected titles font weight | `600` |
-| --nutui-tabs-horizontal-tab-line-color | Horizontal line color | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
-| --nutui-tabs-horizontal-line-bottom | Horizontal line distance | `15%` |
-| --nutui-tabs-horizontal-line-border-radius | rounded corners for horizontal lines |` 0px`|
-| --nutui-tabs-horizontal-tab-line-opacity | Opacity of horizontal tabs | `1`|
-| --nutui-tabs-horizontal-titles-height | height of titles in horizontal direction | `46px` |
-| --nutui-tabs-horizontal-titles-item-min-width | Minimum width of horizontal titles | `50px` |
-| --nutui-tabs-horizontal-titles-item-active-background-color | Background color of active tab titles in horizontal direction | `$background-color3` |
-| --nutui-tabs-horizontal-titles-item-active-line-width | Horizontal active tab line width | `40px` |
-| --nutui-tabs-horizontal-titles-item-active-line-height | Height of active tabs line in horizontal direction | `3px` |
-| --nutui-tabs-vertical-tab-line-color | vertical line color | `linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
-| --nutui-tabs-vertical-titles-item-height | height of vertical titles | `40px` |
-| --nutui-tabs-vertical-titles-item-active-line-width | Vertical title line width | `3px` |
-| --nutui-tabs-vertical-titles-item-active-line-height | The height of the vertical title line | `14px` |
-| --nutui-tabs-vertical-titles-width | Width of vertical titles | `100px` |
+| Name | Default Value | | --- | -- | --- | | --nutui-tabs-tab-smile-color | The color of the smile curve | `$primary-color` | | --nutui-tabs-titles-background-color | Tab title background color | `$background-color` | | --nutui-tabs-titles-border-radius | Tab title border rounded | `0` | | --nutui-tabs-titles-item-font-size | Tab title font size | `$font-size-2` | | --nutui-tabs-titles-item-color | Tab title text color | `$title-color` | | --nutui-tabs-titles-item-active-color | Tab selected titles text color | `$title-color` | | --nutui-tabs-titles-item-active-font-weight | Tab selected titles font weight | `600` | | --nutui-tabs-horizontal-tab-line-color | Horizontal line color | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`| | --nutui-tabs-horizontal-line-bottom | Horizontal line distance | `15%` | | --nutui-tabs-horizontal-line-border-radius | rounded corners for horizontal lines | `0px`| | --nutui-tabs-horizontal-tab-line-opacity | Opacity of horizontal tabs | `1`| | --nutui-tabs-horizontal-titles-height | height of titles in horizontal direction | `46px` | | --nutui-tabs-horizontal-titles-item-min-width | Minimum width of horizontal titles | `50px` | | --nutui-tabs-horizontal-titles-item-active-background-color | Background color of active tab titles in horizontal direction | `$background-color3` | | --nutui-tabs-horizontal-titles-item-active-line-width | Horizontal active tab line width | `40px` | | --nutui-tabs-horizontal-titles-item-active-line-height | Height of active tabs line in horizontal direction | `3px` | | --nutui-tabs-vertical-tab-line-color | vertical line color | `linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`| | --nutui-tabs-vertical-titles-item-height | height of vertical titles | `40px` | | --nutui-tabs-vertical-titles-item-active-line-width | Vertical title line width | `3px` | | --nutui-tabs-vertical-titles-item-active-line-height | The height of the vertical title line | `14px` | | --nutui-tabs-vertical-titles-width | Width of vertical titles | `100px` |

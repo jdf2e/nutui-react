@@ -125,6 +125,7 @@ export default App;
 ### 滑动切换
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Tabs, Swiper, SwiperItem } from '@nutui/nutui-react-taro';
@@ -175,12 +176,12 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### CSS 粘性布局
 
-通过设置tab的style 例如：`tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}`
-，来实现Css的粘性布局，注意：在微信小程序里组件外层元素不能存在 overflow 为 `hidden`、`auto`、`scroll`的设置。
+通过设置tab的style 例如：`tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}` ，来实现Css的粘性布局，注意：在微信小程序里组件外层元素不能存在 overflow 为 `hidden`、`auto`、`scroll`的设置。
 
 :::demo
 
@@ -229,7 +230,7 @@ export default App;
 
 ### Tabpane 自动高度
 
-自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。
+自动高度。设置为 true 时，nut-tabs 和 nut-tabs\_\_content 会随着当前 nut-tabpane 的高度而发生变化。
 
 :::demo
 
@@ -545,58 +546,57 @@ export default App;
 
 ### Props
 
-| 参数           | 说明                                                                      | 类型                           | 默认值          |
-|--------------|-------------------------------------------------------------------------|------------------------------|--------------|
-| value        | 当前激活 tab 面板的值                                                           | number \| string       | `0`          |
-| defaultValue | 初始化激活 tab 的值                                                            | number \| string       | `0`          |
-| activeColor  | 标签选中色                                                                   | string                       | `#1a1a1a`    |
-| direction    | 使用横纵方向 可选值 `horizontal`、`vertical`                                      | string                       | `horizontal` |
-| activeType   | 选中底部展示样式 可选值 `line`、`smile`                                             | string                       | `line`       |
-| duration     | 切换动画时长,单位 ms 0 代表无动画                                                    | number \| string       | `300`        |
-| title        | 自定义导航区域                                                                 | `() => JSX.Element[]`        | -            |
-| align        | 标题左对齐                                                                   | `left \| right`          | `-` |
-| autoHeight   | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean                      | `false`      |
-| tabStyle     | 标签栏样式                                                                   | CSSProperties                | `{}`         |
-| onClick      | 点击标签时触发                                                                 | `(index: string\| number) => void` | -            |
-| onChange     | 当前激活的标签改变时触发                                                            | `(index: string \| number) => void` | -            |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| value | 当前激活 tab 面板的值 | `number \| string` | `0` |
+| defaultValue | 初始化激活 tab 的值 | `number \| string` | `0` |
+| activeColor | 标签选中色 | `string` | `#1a1a1a` |
+| direction | 使用横纵方向 可选值 `horizontal`、`vertical` | `string` | `horizontal` |
+| activeType | 选中底部展示样式 可选值 `line`、`smile` | `string` | `line` |
+| duration | 切换动画时长,单位 ms 0 代表无动画 | `number \| string` | `300` |
+| title | 自定义导航区域 | `() => JSX.Element[]` | `-` |
+| align | 标题左对齐 | `left \| right` | `-` |
+| autoHeight | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs\_\_content 会随着当前 nut-tabpane 的高度而发生变化。 | `boolean` | `false` |
+| tabStyle | 标签栏样式 | `CSSProperties` | `{}` |
+| onClick | 点击标签时触发 | `(index: string\| number) => void` | `-` |
+| onChange | 当前激活的标签改变时触发 | `(index: string \| number) => void` | `-` |
 
 ## Tabs.Tabpane
 
 ### Props
 
-| 参数       | 说明                      | 类型      | 默认值     |
-|----------|-------------------------|---------|---------|
-| title    | 标题                      | string  | -       |
-| value    | 标签 Key , 匹配的标识符, 默认为索引值 | `string\| number`    | `-` |
-| disabled | 是否禁用标签                  | boolean | `false` |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| title | 标题 | `string` | `-` |
+| value | 标签 Key , 匹配的标识符, 默认为索引值 | `string\| number` | `-` |
+| disabled | 是否禁用标签 | `boolean` | `false` |
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS
-变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 说明 | 默认值 |
-| --- | -- | --- |
-| --nutui-tabs-tab-smile-color | 微笑曲线的颜色 | `$primary-color` |
-| --nutui-tabs-titles-background-color | Tab 标题的背景色 | `$background-color` |
-| --nutui-tabs-titles-border-radius | Tab 标题的边框圆角 | `0` |
-| --nutui-tabs-titles-item-font-size | Tab 标题的字号 | `$font-size-2` |
-| --nutui-tabs-titles-item-color | Tab 标题的文本颜色 | `$title-color` |
-| --nutui-tabs-titles-item-active-color | Tab 选中标题的文本颜色 | `$title-color` |
-| --nutui-tabs-titles-item-active-font-weight | Tab 选中标题的字重 | `600` |
-| --nutui-tabs-horizontal-tab-line-color | 水平方向线条颜色 | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
-| --nutui-tabs-horizontal-line-bottom | 水平方向线条距离 | `15%` |
-| --nutui-tabs-horizontal-line-border-radius | 水平方向线的圆角 |` 0px`|
-| --nutui-tabs-horizontal-tab-line-opacity | 水平方向线的透明度 | `1`|
-| --nutui-tabs-horizontal-titles-height | 水平方向标题的高度 | `46px` |
-| --nutui-tabs-horizontal-titles-item-min-width | 水平方向标题的最小宽度 | `50px` |
-| --nutui-tabs-horizontal-titles-item-active-background-color | 水平方向激活选项卡标题的背景色 | `$background-color3` |
-| --nutui-tabs-horizontal-titles-item-active-line-width | 水平方向激活选项卡线条的宽度 | `40px` |
-| --nutui-tabs-horizontal-titles-item-active-line-height | 水平方向激活选项卡线条的高度 | `3px` |
-| --nutui-tabs-vertical-tab-line-color | 垂直方向线条颜色 | `linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
-| --nutui-tabs-vertical-titles-item-height | 垂直方向标题的高度 | `40px` |
-| --nutui-tabs-vertical-titles-item-active-line-width | 垂直方向标题线条的宽度 | `3px` |
-| --nutui-tabs-vertical-titles-item-active-line-height | 垂直方向标题线条的高度 | `14px` |
-| --nutui-tabs-vertical-titles-width | 垂直方向标题的宽度 | `100px` |
+| --- | --- | --- |
+| \--nutui-tabs-tab-smile-color | 微笑曲线的颜色 | `$primary-color` |
+| \--nutui-tabs-titles-background-color | Tab 标题的背景色 | `$background-color` |
+| \--nutui-tabs-titles-border-radius | Tab 标题的边框圆角 | `0` |
+| \--nutui-tabs-titles-item-font-size | Tab 标题的字号 | `$font-size-2` |
+| \--nutui-tabs-titles-item-color | Tab 标题的文本颜色 | `$title-color` |
+| \--nutui-tabs-titles-item-active-color | Tab 选中标题的文本颜色 | `$title-color` |
+| \--nutui-tabs-titles-item-active-font-weight | Tab 选中标题的字重 | `600` |
+| \--nutui-tabs-horizontal-tab-line-color | 水平方向线条颜色 | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)` |
+| \--nutui-tabs-horizontal-line-bottom | 水平方向线条距离 | `15%` |
+| \--nutui-tabs-horizontal-line-border-radius | 水平方向线的圆角 | `0px` |
+| \--nutui-tabs-horizontal-tab-line-opacity | 水平方向线的透明度 | `1` |
+| \--nutui-tabs-horizontal-titles-height | 水平方向标题的高度 | `46px` |
+| \--nutui-tabs-horizontal-titles-item-min-width | 水平方向标题的最小宽度 | `50px` |
+| \--nutui-tabs-horizontal-titles-item-active-background-color | 水平方向激活选项卡标题的背景色 | `$background-color3` |
+| \--nutui-tabs-horizontal-titles-item-active-line-width | 水平方向激活选项卡线条的宽度 | `40px` |
+| \--nutui-tabs-horizontal-titles-item-active-line-height | 水平方向激活选项卡线条的高度 | `3px` |
+| \--nutui-tabs-vertical-tab-line-color | 垂直方向线条颜色 | `linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)` |
+| \--nutui-tabs-vertical-titles-item-height | 垂直方向标题的高度 | `40px` |
+| \--nutui-tabs-vertical-titles-item-active-line-width | 垂直方向标题线条的宽度 | `3px` |
+| \--nutui-tabs-vertical-titles-item-active-line-height | 垂直方向标题线条的高度 | `14px` |
+| \--nutui-tabs-vertical-titles-width | 垂直方向标题的宽度 | `100px` |

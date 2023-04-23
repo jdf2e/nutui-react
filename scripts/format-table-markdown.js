@@ -107,5 +107,5 @@ const basePath = path.join(
 
 if (!component) return console.error('Required component name')
 fileType.forEach((file) => {
-  convertMdTables(path.join(basePath, file), path.join(basePath, file + '.fmt'))
+  convertMdTables(path.join(basePath, file), path.join(basePath, file))
 })
