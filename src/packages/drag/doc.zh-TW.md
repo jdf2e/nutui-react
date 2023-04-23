@@ -1,17 +1,17 @@
 # Drag 拖拽
 
-## 介绍
+## 介紹
 
 實現可拖拽的任意元素
 
-## 安装
+## 安裝
 
 ```javascript
 // react
 import { Drag } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 代碼演示
 
 
 
@@ -44,7 +44,7 @@ export default App;
 
 :::
 
-### 限制拖拽方向
+### 限製拖拽方向
 
 :::demo
 
@@ -78,7 +78,7 @@ export default App;
 
 :::
 
-### 自动吸边
+### 自動吸邊
 
 :::demo
 
@@ -107,7 +107,7 @@ export default App;
 
 :::
 
-### 限制拖拽边界
+### 限製拖拽邊界
 :::demo
 
 ```tsx
