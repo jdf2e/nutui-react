@@ -1,19 +1,29 @@
+# v2.0.0-alpha.1
+`2023-04-21`
+
+* 🔨 chore: markdown 中 props、css variables 类型和默认值增加代码标识 @oasis-cloud
+* 🛠 refactor: Audio (#930) @eiinu
+* 🛠 refactor: layout (#934) @oasis-cloud
+* 🛠 refactor: popup 2.0 (#929) @xiaoyatong
+* 🛠 refactor: uploader (#902) @junjun666
+
+
 # v2.0.0-alpha.0
 `2023-04-20`
 
-🛠 refactor: backtop (#912) @eiinu
-🛠 refactor: button (#904) @oasis-cloud
-🛠 refactor: cell (#876) @拧巴的猫
-🛠 refactor: divider (#891) @junjun666
-🛠 refactor: fixednav (#865) @eiinu
-🛠 refactor: grid (#882) @eiinu
-🛠 refactor: image (#892) @oasis-cloud
-🛠 refactor: indicator (#893) @xiaoyatong
-🛠 refactor: inputnumber (#888) @junjun666
-🛠 refactor: overlay (#886) @junjun666
-🛠 refactor: pagination (#861) @eiinu
-🛠 refactor: Rate (#894) @eiinu
-🛠 refactor: sticky (#906) @oasis-cloud
+* 🛠 refactor: backtop (#912) @eiinu
+* 🛠 refactor: button (#904) @oasis-cloud
+* 🛠 refactor: cell (#876) @拧巴的猫
+* 🛠 refactor: divider (#891) @junjun666
+* 🛠 refactor: fixednav (#865) @eiinu
+* 🛠 refactor: grid (#882) @eiinu
+* 🛠 refactor: image (#892) @oasis-cloud
+* 🛠 refactor: indicator (#893) @xiaoyatong
+* 🛠 refactor: inputnumber (#888) @junjun666
+* 🛠 refactor: overlay (#886) @junjun666
+* 🛠 refactor: pagination (#861) @eiinu
+* 🛠 refactor: Rate (#894) @eiinu
+* 🛠 refactor: sticky (#906) @oasis-cloud
 
 
 

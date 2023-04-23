@@ -37,115 +37,135 @@ const LayoutDemo = () => {
     <>
       <div className="demo full">
         <h2>{translated.title1}</h2>
-        <div className="box-item">
+        <div className="layout-box-item">
           <Row>
             <Col span="24">
-              <div className="flex-content">span:24</div>
+              <div className="layout-flex-content">span:24</div>
             </Col>
           </Row>
           <Row>
             <Col span="12">
-              <div className="flex-content">span:12</div>
+              <div className="layout-flex-content">span:12</div>
             </Col>
             <Col span="12">
-              <div className="flex-content flex-content-light">span:12</div>
+              <div className="layout-flex-content layout-flex-content-light">
+                span:12
+              </div>
             </Col>
           </Row>
           <Row>
             <Col span="8">
-              <div className="flex-content">span:8</div>
+              <div className="layout-flex-content">span:8</div>
             </Col>
             <Col span="8">
-              <div className="flex-content flex-content-light">span:8</div>
+              <div className="layout-flex-content layout-flex-content-light">
+                span:8
+              </div>
             </Col>
             <Col span="8">
-              <div className="flex-content">span:8</div>
+              <div className="layout-flex-content">span:8</div>
             </Col>
           </Row>
           <Row>
             <Col span="6">
-              <div className="flex-content">span:6</div>
+              <div className="layout-flex-content">span:6</div>
             </Col>
             <Col span="6">
-              <div className="flex-content flex-content-light">span:6</div>
+              <div className="layout-flex-content layout-flex-content-light">
+                span:6
+              </div>
             </Col>
             <Col span="6">
-              <div className="flex-content">span:6</div>
+              <div className="layout-flex-content">span:6</div>
             </Col>
             <Col span="6">
-              <div className="flex-content flex-content-light">span:6</div>
+              <div className="layout-flex-content layout-flex-content-light">
+                span:6
+              </div>
             </Col>
           </Row>
         </div>
         <h2>{translated.title2}</h2>
-        <div className="box-item">
+        <div className="layout-box-item">
           <Row gutter="10">
             <Col span="8">
-              <div className="flex-content">span:8</div>
+              <div className="layout-flex-content">span:8</div>
             </Col>
             <Col span="8">
-              <div className="flex-content flex-content-light">span:8</div>
+              <div className="layout-flex-content layout-flex-content-light">
+                span:8
+              </div>
             </Col>
             <Col span="8">
-              <div className="flex-content">span:8</div>
+              <div className="layout-flex-content">span:8</div>
             </Col>
           </Row>
         </div>
         <h2>{translated.title3}</h2>
-        <div className="box-item">
+        <div className="layout-box-item">
           <Row type="flex" wrap="nowrap">
             <Col span="6">
-              <div className="flex-content">span:6</div>
+              <div className="layout-flex-content">span:6</div>
             </Col>
             <Col span="6">
-              <div className="flex-content flex-content-light">span:6</div>
+              <div className="layout-flex-content layout-flex-content-light">
+                span:6
+              </div>
             </Col>
             <Col span="6">
-              <div className="flex-content">span:6</div>
+              <div className="layout-flex-content">span:6</div>
             </Col>
           </Row>
           <Row type="flex" justify="center">
             <Col span="6">
-              <div className="flex-content">span:6</div>
+              <div className="layout-flex-content">span:6</div>
             </Col>
             <Col span="6">
-              <div className="flex-content flex-content-light">span:6</div>
+              <div className="layout-flex-content layout-flex-content-light">
+                span:6
+              </div>
             </Col>
             <Col span="6">
-              <div className="flex-content">span:6</div>
+              <div className="layout-flex-content">span:6</div>
             </Col>
           </Row>
           <Row type="flex" justify="end">
             <Col span="6">
-              <div className="flex-content">span:6</div>
+              <div className="layout-flex-content">span:6</div>
             </Col>
             <Col span="6">
-              <div className="flex-content flex-content-light">span:6</div>
+              <div className="layout-flex-content layout-flex-content-light">
+                span:6
+              </div>
             </Col>
             <Col span="6">
-              <div className="flex-content">span:6</div>
+              <div className="layout-flex-content">span:6</div>
             </Col>
           </Row>
           <Row type="flex" justify="space-between">
             <Col span="6">
-              <div className="flex-content">span:6</div>
+              <div className="layout-flex-content">span:6</div>
             </Col>
             <Col span="6">
-              <div className="flex-content flex-content-light">span:6</div>
+              <div className="layout-flex-content layout-flex-content-light">
+                span:6
+              </div>
             </Col>
             <Col span="6">
-              <div className="flex-content">span:6</div>
+              <div className="layout-flex-content">span:6</div>
             </Col>
           </Row>
           <Row type="flex" justify="space-around">
             <Col span="6">
-              <div className="flex-content">span:6</div>
+              <div className="layout-flex-content">span:6</div>
             </Col>
             <Col span="6">
-              <div className="flex-content flex-content-light">span:6</div>
+              <div className="layout-flex-content layout-flex-content-light">
+                span:6
+              </div>
             </Col>
             <Col span="6">
-              <div className="flex-content">span:6</div>
+              <div className="layout-flex-content">span:6</div>
             </Col>
           </Row>
         </div>
