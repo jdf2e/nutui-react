@@ -1,4 +1,4 @@
-import React, { FunctionComponent, CSSProperties, ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 import { Checked } from '@nutui/icons-react-taro'
 

@@ -69,7 +69,6 @@
     padding: $progress-text-padding;
     font-size: $progress-text-font-size;
     line-height: 1;
-    min-width: 35px;
   }
 
   &-insidetext {
@@ -78,7 +77,6 @@
     bottom: $progress-insidetext-position-bottom;
     display: flex;
     align-items: center;
-    min-width: 0px;
     transition: all 0.4s;
     transform: translate(-50%);
     border-radius: $progress-insidetext-border-radius;

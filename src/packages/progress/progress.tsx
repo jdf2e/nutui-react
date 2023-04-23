@@ -1,4 +1,4 @@
-import React, { FunctionComponent, CSSProperties, ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 import { Checked } from '@nutui/icons-react'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -13,7 +13,6 @@ export interface ProgressProps extends BasicComponent {
   strokeWidth: string
   size: ProgressSize
   textColor: string
-  textWidth: string
   showText: boolean
   textInside: boolean
   textBackground: string
@@ -30,7 +29,6 @@ const defaultProps = {
   color: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
   strokeWidth: '',
   textColor: '',
-  textWidth: '',
   showText: true,
   textInside: false,
   textBackground: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
@@ -52,7 +50,6 @@ export const Progress: FunctionComponent<
     strokeWidth,
     size,
     textColor,
-    textWidth,
     showText,
     textInside,
     textBackground,
@@ -102,18 +99,12 @@ export const Progress: FunctionComponent<
   }
 
   const stylesInsideText: React.CSSProperties = {
-    width: `${textWidth}px`,
     left: `${percent}%`,
     background: textBackground || color,
   }
 
   const stylesInsideIcon: React.CSSProperties = {
-    width: `${textWidth}px`,
     left: `${percent}%`,
-  }
-
-  const stylesText: React.CSSProperties = {
-    width: `${textWidth}px`,
   }
 
   return (
@@ -141,7 +132,7 @@ export const Progress: FunctionComponent<
         </div>
       </div>
       {showText && !textInside && (
-        <div className={classesText} style={stylesText}>
+        <div className={classesText}>
           {textType === 'text' && (
             <span className={classesTextInner} style={{ color: textColor }}>
               {percent}%

@@ -258,7 +258,6 @@ export default App;
 | showText | Whether to show text | `boolean` | `true`
 | textInside | Progress bar text display position(`false`外显，`true`内显) | `boolean` | `false`
 | textColor | Progress bar text color setting | `string` | 外显`#333` 内显`#fff`
-| textWidth | Progress bar text width setting | `string` | `35px`
 | textBackground | Progress bar text background color setting | `string` | 同进度条颜色
 | textType | Progress bar text type setting，`text`(展示文字)/`icon`(展示icon标签) | `string` | `text`
 | status | The current state of the progress bar, `true`展示动画效果 | `boolean` | `false`
