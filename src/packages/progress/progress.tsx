@@ -1,8 +1,6 @@
 import React, { FunctionComponent, CSSProperties, ReactNode } from 'react'
 import classNames from 'classnames'
 import { Checked } from '@nutui/icons-react'
-import bem from '@/utils/bem'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type ProgressSize = 'small' | 'base' | 'large'
@@ -75,42 +73,38 @@ export const Progress: FunctionComponent<
     ...props,
   }
 
-  const b = bem('progress')
+  const classPrefix = 'nut-progress'
 
-  const classes = classNames(b(''))
+  const classes = classPrefix
 
   const classesOuter = classNames({
-    [`${b('')}-outer`]: true,
-    [`${b('')}-${size || 'base'}`]: true,
+    [`${classPrefix}-outer`]: true,
+    [`${classPrefix}-${size || 'base'}`]: true,
   })
 
   const classesInner = classNames({
-    [`${b('')}-inner`]: true,
-    [`${b('')}-active`]: status,
+    [`${classPrefix}-inner`]: true,
+    [`${classPrefix}-active`]: status,
   })
 
-  const classesText = classNames({
-    [`${b('')}-text`]: true,
-  })
+  const classesText = `${classPrefix}-text`
 
   const classesInsideText = classNames({
-    [`${b('')}-text`]: true,
-    [`${b('')}-insidetext`]: true,
+    [`${classPrefix}-text`]: true,
+    [`${classPrefix}-insidetext`]: true,
   })
 
   const classesTextInner = classNames({
-    [`${b('')}-text__inner`]: true,
+    [`${classPrefix}-text__inner`]: true,
   })
 
   const stylesOuter: React.CSSProperties = {
     height: `${strokeWidth}px`,
-    // eslint-disable-next-line no-nested-ternary
     background: `${fillColor}`,
   }
 
   const stylesInner: React.CSSProperties = {
     width: `${percentage}%`,
-    // eslint-disable-next-line no-nested-ternary
     background: `${strokeColor}`,
   }
 
