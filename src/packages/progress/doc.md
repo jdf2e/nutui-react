@@ -43,7 +43,7 @@ const App = () => {
     <Cell>
       <Progress
         percent={30}
-        strokeColor="rgba(250,44,25,0.47)"
+        color="rgba(250,44,25,0.47)"
         strokeWidth="20"
         textColor="red"
       />
@@ -166,7 +166,7 @@ const App = () => {
     <Cell>
       <Progress
         percent={30}
-        strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
+        color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
         status
       />
     </Cell>
@@ -176,7 +176,7 @@ const App = () => {
     <Cell>
       <Progress
         percent={100}
-        strokeColor="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
+        color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
         strokeWidth="15"
         textType="icon"
         icon={<Issue color="red"/>}
@@ -247,7 +247,7 @@ export default App;
 |----- | ----- | ----- | -----
 | percent | 百分比 | `number` | `0`
 | fillColor | 进度条填充颜色 | `string` | `#f3f3f3`
-| strokeColor | 进度条线条背景色 | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
+| color | 进度条线条背景色 | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
 | strokeWidth | 进度条宽度 | `string` | -
 | size | 进度条及文字尺寸，可选值`small` `base` `large` | `string` | `base`
 | showText | 是否显示进度条文字内容 | `boolean` | `true`

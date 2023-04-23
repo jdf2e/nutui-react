@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
+import { Issue } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import {
   Cell,
@@ -9,7 +10,6 @@ import {
   Image,
 } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import { Issue } from '@nutui/icons-react-taro'
 
 interface T {
   basic: string
@@ -28,7 +28,7 @@ const ProgressDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
       basic: '基础用法',
-      customStyle: '线形进度条-设置颜色高度',
+      customStyle: '设置颜色与宽度',
       noShowPercentage: '百分比不显示',
       showInsidePercentage: '百分比内显',
       customContent: '百分比内显自定义',
@@ -40,7 +40,7 @@ const ProgressDemo = () => {
     },
     'zh-TW': {
       basic: '基礎用法',
-      customStyle: '線形進度條-設置顏色高度',
+      customStyle: '設置顏色與寬度',
       noShowPercentage: '百分比不顯示',
       showInsidePercentage: '百分比內顯',
       customContent: '百分比內顯自定義',
@@ -84,7 +84,7 @@ const ProgressDemo = () => {
           <Progress
             percent={30}
             fillColor="rgba(250,44,25,0.2)"
-            strokeColor="rgba(250,44,25,0.9)"
+            color="rgba(250,44,25,0.9)"
             strokeWidth="15"
             textColor="red"
           />
@@ -121,7 +121,7 @@ const ProgressDemo = () => {
         <Cell>
           <Progress
             percent={30}
-            strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
+            color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
             status
           />
         </Cell>
@@ -131,7 +131,7 @@ const ProgressDemo = () => {
         <Cell>
           <Progress
             percent={100}
-            strokeColor="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
+            color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
             strokeWidth="15"
             textType="icon"
             icon={<Issue color="red" />}

@@ -170,6 +170,8 @@
 #### Progress
 - percentage 重命名为 percent，受控
 - 移除 isShowPercentage，可以自定义传入文案
+- strokeColor 重命名为 color
+- fillColor 重命名为 background
 #### Skeleton
 #### Steps
 #### Swiper

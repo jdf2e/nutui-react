@@ -10,12 +10,7 @@ test('should render progress when use props', async () => {
 })
 test('should render different height and color when use color height props', async () => {
   const { container } = render(
-    <Progress
-      percent={50}
-      strokeColor="blue"
-      strokeWidth="20"
-      textColor="red"
-    />
+    <Progress percent={50} color="blue" strokeWidth="20" textColor="red" />
   )
   const inner = container.querySelector('.nut-progress-inner')
   expect(inner?.getAttribute('style')).toBe('width: 50%; background: blue;')

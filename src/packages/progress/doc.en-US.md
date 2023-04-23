@@ -43,7 +43,7 @@ const App = () => {
     <Cell>
       <Progress
         percent={30}
-        strokeColor="rgba(250,44,25,0.47)"
+        color="rgba(250,44,25,0.47)"
         strokeWidth="20"
         textColor="red"
       />
@@ -171,7 +171,7 @@ const App = () => {
     <Cell>
       <Progress
         percent={30}
-        strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
+        color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
         status
       />
     </Cell>
@@ -181,7 +181,7 @@ const App = () => {
     <Cell>
       <Progress
         percent={100}
-        strokeColor="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
+        color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
         strokeWidth="15"
         textType="icon"
         icon={<Issue color="red" />}
@@ -252,7 +252,7 @@ export default App;
 |----- | ----- | ----- | -----
 | percent | percent | `number` | `0`
 | fillColor | Progress bar background color | `string` | `#f3f3f3`
-| strokeColor | Stroke color | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
+| color | Stroke color | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
 | strokeWidth | Stroke width | `string` | -
 | size | Progress bar and text size, eg `small` `base` `large` | `string` | `base`
 | showText | Whether to show text | `boolean` | `true`

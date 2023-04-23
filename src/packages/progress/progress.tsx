@@ -9,7 +9,7 @@ export type TextType = 'icon' | 'text'
 export interface ProgressProps extends BasicComponent {
   percent: number
   fillColor: string
-  strokeColor: string
+  color: string
   strokeWidth: string
   size: ProgressSize
   textColor: string
@@ -27,7 +27,7 @@ const defaultProps = {
   ...ComponentDefaults,
   percent: 0,
   fillColor: '#f3f3f3',
-  strokeColor: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
+  color: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
   strokeWidth: '',
   textColor: '',
   textWidth: '',
@@ -48,7 +48,7 @@ export const Progress: FunctionComponent<
     style,
     percent,
     fillColor,
-    strokeColor,
+    color,
     strokeWidth,
     size,
     textColor,
@@ -98,13 +98,13 @@ export const Progress: FunctionComponent<
 
   const stylesInner: React.CSSProperties = {
     width: `${percent}%`,
-    background: `${strokeColor}`,
+    background: `${color}`,
   }
 
   const stylesInsideText: React.CSSProperties = {
     width: `${textWidth}px`,
     left: `${percent}%`,
-    background: textBackground || strokeColor,
+    background: textBackground || color,
   }
 
   const stylesInsideIcon: React.CSSProperties = {
