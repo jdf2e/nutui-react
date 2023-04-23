@@ -132,6 +132,11 @@
 #### Audio
 #### Avatar
 #### Badge
+- 删除zIndex，目前没有用到，也不生效，直接去掉。
+- 删除icon，自定义icon可放在 value 中实现，扩充了value的类型。
+- 修改 max 的最大值为99（之前为10000），比较贴合实际场景。
+- 主题定制的css变量中，去掉和dot有关的其他值，只保留 width。其他值由width计算而来。
+
 #### CircleProgress
 #### Collapse
 #### CountDown
