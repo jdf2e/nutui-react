@@ -1,19 +1,5 @@
 @import '../button/button.scss';
 @import '../range/range.scss';
-.nut-theme-dark {
-  .nut-audio {
-    .nut-audio__icon {
-      &-stop::after {
-        background-color: $dark3;
-      }
-    }
-    .nut-audio__none-container {
-      .nut-voice {
-        border: 1px solid $white;
-      }
-    }
-  }
-}
 
 .nut-audio {
   &__icon {
@@ -25,7 +11,7 @@
       justify-content: center;
       width: 30px;
       height: 30px;
-      background: #fff;
+      background: $white;
       border-radius: 50%;
       box-shadow: 0 0 8px rgba(117, 117, 117, 0.5);
 
@@ -90,6 +76,7 @@
   .nut-audio__none-container {
     .nut-voice {
       border: 1px solid $title-color;
+      align-items: center;
     }
   }
 }

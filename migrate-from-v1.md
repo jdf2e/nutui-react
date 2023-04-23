@@ -38,6 +38,12 @@
 - 增加 afterClose和afterShow，用于完全关闭后触发的回调和完全展示后触发的回调
 - 完善overlay的demo示例
 #### Popup
+- `popClass` 重命名为 `className`，统一将组件的样式类名使用 `className`，不再指定特殊名字，减轻用户使用的记忆成本
+- `overlayClass` 重命名为 `OverlayClassName`，继承自`Overlay`
+- `closeOnClickOverlay` 重命名为 `closeOnOverlayClick`
+- `onOpened` 和 `onClosed` 改为 `afterShow` 和 `afterClose`，继承自`Overlay`，用于完全关闭后触发的回调和完全展示后触发的回调 
+- `destroyOnClose` 的描述进行了修订，改为：“组件不可见时，卸载内容”，并把其默认值改为了`false`
+- `onClickCloseIcon` 和 `onClickOverlay` 两个方法，增加布尔判断，如返回false 或 未定义返回值时，将不再关闭 Popup；默认值为true；在demo中已增加相应示例
 
 ### 布局组件
 #### Divider
@@ -110,6 +116,23 @@
 #### TextArea
 #### Uploader
 
+- `maximize` 重命名为 `maxFileSize`
+- `maximum` 重命名为 `maxCount`
+- `listType ` 重命名为 `previewType`
+- `isDeletable ` 重命名为 `deletable`
+- `isPreview` 重命名为 ` preview`
+- `defaultImg` 重命名为 ` previewUrl`
+- `defaultFileList` 重命名为 ` defaultValue`
+- `uploadIconTip` 重命名为 `uploadLabel`
+- `onBeforeUpload` 重命名为 `beforeUpload`
+- `onBeforeXhrUpload` 重命名为 `beforeXhrUpload`
+- `onBeforeDelete` 重命名为 `beforeDelete`
+- `onRemove` 重命名为 `onDelete`
+- 增加 `imageFit`, 用于图片填充模式
+- 增加 `value`, 用于受控传值
+- 删除 `uploadIconSize`, 通过自定义icon来实现
+
+
 ### 操作反馈
 #### ActionSheet
 #### BackTop
@@ -130,6 +153,9 @@
 #### Animate
 #### AnimatingNumbers
 #### Audio
+- url 重命名为 src
+- onFastBack 重命名为 onBack
+- onPlayEnd 重命名为 onEnd
 #### Avatar
 #### Badge
 #### CircleProgress

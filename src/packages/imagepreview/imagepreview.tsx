@@ -236,7 +236,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   return (
     <Popup
       visible={showPop}
-      popClass="custom-pop"
+      className="custom-pop"
       style={{ width: '100%' }}
       onClick={onCloseInner}
     >
