@@ -389,7 +389,7 @@ const InternalCascader: ForwardRefRenderFunction<
         >
           {!state.initLoading && state.panes.length ? (
             optionsData.map((pane) => (
-              <TabPane key={pane.paneKey} paneKey={pane.paneKey}>
+              <TabPane key={pane.paneKey} value={pane.paneKey}>
                 <div className={classesPane}>
                   {pane.nodes &&
                     pane.nodes.map((node: any, index: number) => (

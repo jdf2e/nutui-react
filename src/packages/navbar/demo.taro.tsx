@@ -53,7 +53,7 @@ const NavBarDemo = () => {
       c9e6df49: 'Customize the middle content of the navigation bar',
     },
   })
-  const [tab1value, setTab1value] = useState('Tab 1')
+  const [tab1value, setTab1value] = useState<string | number>('0')
   return (
     <>
       <Header />
@@ -122,7 +122,7 @@ const NavBarDemo = () => {
           <div slot="content">
             <Tabs
               value={tab1value}
-              onChange={({ paneKey }) => {
+              onChange={(paneKey) => {
                 setTab1value(paneKey)
               }}
             >

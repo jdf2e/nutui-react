@@ -75,6 +75,7 @@
   transform: translate(-50%, 0);
   border-radius: $tabs-horizontal-tab-line-border-radius;
   opacity: $tabs-horizontal-tab-line-opacity;
+  overflow: hidden;
 }
 
 .nut-tabs__titles-item__smile {
@@ -94,11 +95,13 @@
   font-weight: $tabs-titles-item-active-font-weight;
 
   .nut-tabs__titles-item__smile {
+    overflow: unset;
     width: 40px;
     height: 20px;
   }
 
   .nut-tabs__titles-item__line {
+    overflow: unset;
     content: ' ';
     width: $tabs-horizontal-titles-item-active-line-width;
     height: $tabs-horizontal-titles-item-active-line-height;

@@ -1,29 +1,22 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react'
-import bem from '@/utils/bem'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane'
-import { pxCheck } from '@/utils/px-check'
+import { usePropsValue } from '@/utils/use-props-value'
 
-class Title {
-  title = ''
-
-  paneKey = ''
-
-  disabled = false
-
-  index = 0
-
-  // eslint-disable-next-line no-useless-constructor
-  constructor() {}
+type Title = {
+  title: string
+  disabled: boolean
+  active?: boolean
+  value: string | number
 }
-
 export type TabsSize = 'large' | 'normal' | 'small'
 
 export interface TabsProps extends BasicComponent {
   tabStyle: React.CSSProperties
   value: string | number
+  defaultValue: string | number
   activeColor: string
   direction: string
   activeType: string
@@ -32,8 +25,8 @@ export interface TabsProps extends BasicComponent {
   size: TabsSize
   align: 'left' | 'right'
   title: () => JSX.Element[]
-  onChange: (t: Title) => void
-  onClick: (t: Title) => void
+  onChange: (index: string | number) => void
+  onClick: (index: string | number) => void
   autoHeight: boolean
   children?: React.ReactNode
 }
@@ -41,7 +34,6 @@ export interface TabsProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   tabStyle: {},
-  value: 0,
   activeColor: '',
   direction: 'horizontal',
   activeType: 'line',
@@ -57,15 +49,11 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   TabPane: typeof TabPane
 } = (props) => {
   const {
-    value,
     activeColor,
     tabStyle,
     direction,
     activeType,
-    // titleScroll,
-    // ellipsis,
     duration,
-    // titleGutter,
     size,
     align,
     title,
@@ -80,32 +68,31 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     ...props,
   }
 
-  const [, setCurrentItem] = useState<Title>({ index: 0 } as Title)
-  const titles = useRef<Title[]>([])
+  const [value, setValue] = usePropsValue<string | number>({
+    value: props.value,
+    defaultValue: props.defaultValue,
+    finalValue: 0,
+    onChange,
+  })
 
-  useEffect(() => {
-    let currentIndex = 0
-    titles.current = []
-    // eslint-disable-next-line consistent-return
-    React.Children.forEach(children, (child, idx) => {
-      if (!React.isValidElement(child)) {
-        return null
-      }
-      const title = new Title()
-      const childProps = child?.props
-      if (childProps?.title || childProps?.paneKey) {
-        title.title = childProps?.title
-        title.paneKey = childProps?.paneKey || idx
-        title.disabled = childProps?.disabled
-        title.index = idx
-        if (title.paneKey === value) {
-          currentIndex = idx
+  const getTitles = () => {
+    const titles: Title[] = []
+    React.Children.forEach(children, (child: any, idx) => {
+      if (React.isValidElement(child)) {
+        const props: any = child?.props
+        if (props?.title || props?.value) {
+          titles.push({
+            title: props.title,
+            value: props.value || idx,
+            disabled: props.disabled,
+          })
         }
       }
-      titles.current.push(title)
     })
-    setCurrentItem(titles.current[currentIndex])
-  }, [children])
+    return titles
+  }
+
+  const titles = useRef<Title[]>(getTitles())
 
   const classes = classNames(
     classPrefix,
@@ -123,8 +110,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     background: activeType === 'line' ? activeColor : '',
   }
 
-  const index = titles.current.findIndex((t) => t.paneKey === value)
-
+  const index = titles.current.findIndex((t) => t.value === value)
   const contentStyle = {
     transform:
       direction === 'horizontal'
@@ -134,12 +120,11 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   }
 
   const tabChange = (item: Title, index: number) => {
-    onClick && onClick(item)
+    onClick && onClick(item.value)
     if (item.disabled) {
       return
     }
-    setCurrentItem(item)
-    onChange && onChange(item)
+    setValue(item.value)
   }
 
   return (
@@ -150,14 +135,25 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
           : titles.current.map((item, index) => {
               return (
                 <div
-                  onClick={(e) => tabChange(item, index)}
+                  onClick={(e) => {
+                    tabChange(item, index)
+                    e.currentTarget.scrollIntoView &&
+                      direction === 'horizontal' &&
+                      e.currentTarget.scrollIntoView({
+                        behavior: 'smooth',
+                        block:
+                          direction === 'horizontal' ? 'nearest' : 'center',
+                        inline:
+                          direction === 'horizontal' ? 'center' : 'nearest',
+                      })
+                  }}
                   className={classNames(`${classPrefix}__titles-item`, {
                     [`nut-tabs__titles-item--active`]:
-                      !item.disabled && String(item.paneKey) === String(value),
+                      !item.disabled && String(item.value) === String(value),
                     [`nut-tabs__titles-item--disabled`]: item.disabled,
                     [`nut-tabs__titles-item--${align}`]: align,
                   })}
-                  key={item.paneKey}
+                  key={item.value}
                 >
                   {activeType === 'line' && (
                     <div
@@ -196,11 +192,11 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
 
             let childProps = {
               ...child.props,
-              activeKey: value,
+              active: value === child.props.value,
             }
 
             if (
-              String(value) !== String(child.props?.paneKey || idx) &&
+              String(value) !== String(child.props.value || idx) &&
               autoHeight
             ) {
               childProps = {
