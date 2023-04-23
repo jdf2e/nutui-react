@@ -15,7 +15,6 @@ interface T {
   basic: string
   customStyle: string
   noShowPercentage: string
-  showPercentage: string
   showInsidePercentage: string
   customContent: string
   customSize: string
@@ -34,7 +33,6 @@ const ProgressDemo = () => {
       basic: '基础用法',
       customStyle: '线形进度条-设置颜色高度',
       noShowPercentage: '百分比不显示',
-      showPercentage: '百分比外显',
       showInsidePercentage: '百分比内显',
       customContent: '百分比内显自定义',
       customSize: '自定义尺寸',
@@ -47,7 +45,6 @@ const ProgressDemo = () => {
       basic: '基礎用法',
       customStyle: '線形進度條-設置顏色高度',
       noShowPercentage: '百分比不顯示',
-      showPercentage: '百分比外顯',
       showInsidePercentage: '百分比內顯',
       customContent: '百分比內顯自定義',
       customSize: '自定義尺寸',
@@ -60,7 +57,6 @@ const ProgressDemo = () => {
       basic: 'Basic Usage',
       customStyle: 'Custom Style',
       noShowPercentage: 'Don’t Show Percentage',
-      showPercentage: 'Percentage displayed outside',
       showInsidePercentage: 'Percentage displayed inside',
       customContent: 'Custom Content',
       customSize: 'Custom Size',
@@ -84,12 +80,12 @@ const ProgressDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Cell style={cellStyles}>
-          <Progress percentage={30} />
+          <Progress percent={30} />
         </Cell>
         <h2>{translated.customStyle}</h2>
         <Cell style={cellStyles}>
           <Progress
-            percentage={30}
+            percent={30}
             fillColor="rgba(250,44,25,0.2)"
             strokeColor="rgba(250,44,25,0.9)"
             strokeWidth="15"
@@ -98,19 +94,15 @@ const ProgressDemo = () => {
         </Cell>
         <h2>{translated.noShowPercentage}</h2>
         <Cell style={cellStyles}>
-          <Progress percentage={50} showText={false} />
-        </Cell>
-        <h2>{translated.showPercentage}</h2>
-        <Cell style={cellStyles}>
-          <Progress percentage={30} />
+          <Progress percent={50} showText={false} />
         </Cell>
         <h2>{translated.showInsidePercentage}</h2>
         <Cell style={cellStyles}>
-          <Progress percentage={60} textInside />
+          <Progress percent={60} textInside />
         </Cell>
         <h2>{translated.customContent}</h2>
         <Cell style={cellStyles}>
-          <Progress percentage={60} textInside>
+          <Progress percent={60} textInside>
             <Image
               width="30px"
               height="30px"
@@ -120,28 +112,28 @@ const ProgressDemo = () => {
         </Cell>
         <h2>{translated.customSize}</h2>
         <Cell style={cellStyles}>
-          <Progress percentage={30} size="small" textInside />
+          <Progress percent={30} size="small" textInside />
         </Cell>
         <Cell style={cellStyles}>
-          <Progress percentage={50} size="base" textInside />
+          <Progress percent={50} size="base" textInside />
         </Cell>
         <Cell style={cellStyles}>
-          <Progress percentage={70} size="large" textInside />
+          <Progress percent={70} size="large" textInside />
         </Cell>
         <h2>{translated.statusDisplay}</h2>
         <Cell style={cellStyles}>
           <Progress
-            percentage={30}
+            percent={30}
             strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
             status
           />
         </Cell>
         <Cell style={cellStyles}>
-          <Progress percentage={100} textType="icon" />
+          <Progress percent={100} textType="icon" />
         </Cell>
         <Cell style={cellStyles}>
           <Progress
-            percentage={100}
+            percent={100}
             strokeColor="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
             strokeWidth="15"
             textType="icon"
@@ -150,7 +142,7 @@ const ProgressDemo = () => {
         </Cell>
         <h2>{translated.dynamicChange}</h2>
         <Cell style={cellStyles}>
-          <Progress percentage={value} />
+          <Progress percent={value} />
         </Cell>
         <Cell style={cellStyles}>
           <Button

@@ -23,9 +23,7 @@ import { Progress, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Progress
-        percentage="30"
-      />
+      <Progress percent={30} />
     </Cell>
   );
 };
@@ -44,7 +42,7 @@ const App = () => {
   return (
     <Cell>
       <Progress
-        percentage="30"
+        percent={30}
         strokeColor="rgba(250,44,25,0.47)"
         strokeWidth="20"
         textColor="red"
@@ -66,30 +64,7 @@ import { Progress, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Progress
-        percentage="50"
-        showText={false}
-      />
-    </Cell>
-  );
-};
-export default App;
-```
-:::
-
-### Show Percentage
-
-:::demo
-```jsx
-import  React from "react";
-import { Progress, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Progress
-        percentage="30"
-      />
+      <Progress percent={30} showText={false} />
     </Cell>
   );
 };
@@ -107,10 +82,7 @@ import { Progress, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Progress
-        percentage="60"
-        textInside
-      />
+      <Progress percent={60} textInside />
     </Cell>
   );
 };
@@ -130,7 +102,7 @@ const App = () => {
     <>
     <Cell>
       <Progress
-        percentage={60}
+        percent={60}
         textInside
       >
         <Image
@@ -159,21 +131,21 @@ const App = () => {
     <>
     <Cell>
       <Progress
-        percentage="30"
+        percent={30}
         size="small"
         textInside
       />
     </Cell>
     <Cell>
       <Progress
-        percentage="50"
+        percent={50}
         size="base"
         textInside
       />
     </Cell>
     <Cell>
       <Progress
-        percentage="70"
+        percent={70}
         size="large"
         textInside
       />
@@ -198,20 +170,17 @@ const App = () => {
     <>
     <Cell>
       <Progress
-        percentage="30"
+        percent={30}
         strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
         status
       />
     </Cell>
     <Cell>
-      <Progress
-        percentage="100" 
-        textType="icon"
-      />
+      <Progress percent={100}  textType="icon" />
     </Cell>
     <Cell>
       <Progress
-        percentage="100"
+        percent={100}
         strokeColor="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
         strokeWidth="15"
         textType="icon"
@@ -237,9 +206,7 @@ const App = () => {
   return (
     <>
     <Cell>
-      <Progress
-        percentage={value}
-      />
+      <Progress percent={value} />
     </Cell>
     <Cell>
       <Button
@@ -283,7 +250,7 @@ export default App;
 
 | Property | Description | Type | Default
 |----- | ----- | ----- | -----
-| percentage | percentage | `number` | `0`
+| percent | percent | `number` | `0`
 | isShowPercentage | Whether to display the percent sign | `boolean` | `true`
 | fillColor | Progress bar background color | `string` | `#f3f3f3`
 | strokeColor | Stroke color | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`

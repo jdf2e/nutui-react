@@ -168,6 +168,8 @@
 #### Popover
 #### Price
 #### Progress
+- percentage 重命名为 percent，受控
+- 
 #### Skeleton
 #### Steps
 #### Swiper

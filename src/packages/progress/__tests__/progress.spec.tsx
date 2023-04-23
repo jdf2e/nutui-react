@@ -5,13 +5,13 @@ import '@testing-library/jest-dom'
 import { Progress } from '../progress'
 
 test('should render progress when use props', async () => {
-  const { asFragment, container } = render(<Progress percentage={100} />)
+  const { asFragment, container } = render(<Progress percent={100} />)
   expect(asFragment()).toMatchSnapshot()
 })
 test('should render different height and color when use color height props', async () => {
   const { container } = render(
     <Progress
-      percentage={50}
+      percent={50}
       strokeColor="blue"
       strokeWidth="20"
       textColor="red"
@@ -23,15 +23,15 @@ test('should render different height and color when use color height props', asy
   expect(span?.getAttribute('style')).toBe('color: red;')
 })
 
-test('should hide percentage when use showText props', () => {
-  const { container } = render(<Progress percentage={30} showText={false} />)
+test('should hide percent when use showText props', () => {
+  const { container } = render(<Progress percent={30} showText={false} />)
   const text = container.querySelector('.nut-progress-text')
   expect(text).toBeNull()
 })
 
-test('should render inside percentage when use textInside props', () => {
+test('should render inside percent when use textInside props', () => {
   const { container } = render(
-    <Progress percentage={50} textInside>
+    <Progress percent={50} textInside>
       test
     </Progress>
   )
@@ -40,7 +40,7 @@ test('should render inside percentage when use textInside props', () => {
 })
 
 test('should render custom size when use size props', () => {
-  const { container } = render(<Progress percentage={50} size="large" />)
+  const { container } = render(<Progress percent={50} size="large" />)
   expect(container.querySelector('.nut-progress-outer')).toHaveClass(
     'nut-progress-large'
   )

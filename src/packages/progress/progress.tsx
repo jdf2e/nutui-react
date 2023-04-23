@@ -10,7 +10,7 @@ export interface ProgressProps extends BasicComponent {
   className: string
   style: CSSProperties
   isShowPercentage: boolean
-  percentage: number
+  percent: number
   fillColor: string
   strokeColor: string
   strokeWidth: string
@@ -31,7 +31,7 @@ const defaultProps = {
   className: '',
   style: {},
   isShowPercentage: true,
-  percentage: 0,
+  percent: 0,
   fillColor: '#f3f3f3',
   strokeColor: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
   strokeWidth: '',
@@ -53,7 +53,7 @@ export const Progress: FunctionComponent<
     className,
     style,
     isShowPercentage,
-    percentage,
+    percent,
     fillColor,
     strokeColor,
     strokeWidth,
@@ -104,19 +104,19 @@ export const Progress: FunctionComponent<
   }
 
   const stylesInner: React.CSSProperties = {
-    width: `${percentage}%`,
+    width: `${percent}%`,
     background: `${strokeColor}`,
   }
 
   const stylesInsideText: React.CSSProperties = {
     width: `${textWidth}px`,
-    left: `${percentage}%`,
+    left: `${percent}%`,
     background: textBackground || strokeColor,
   }
 
   const stylesInsideIcon: React.CSSProperties = {
     width: `${textWidth}px`,
-    left: `${percentage}%`,
+    left: `${percent}%`,
   }
 
   const stylesText: React.CSSProperties = {
@@ -139,7 +139,7 @@ export const Progress: FunctionComponent<
                     className={classesTextInner}
                     style={{ color: textColor }}
                   >
-                    {percentage}
+                    {percent}
                     {isShowPercentage ? '%' : ''}
                   </span>
                 </div>
@@ -152,7 +152,7 @@ export const Progress: FunctionComponent<
         <div className={classesText} style={stylesText}>
           {textType === 'text' && (
             <span className={classesTextInner} style={{ color: textColor }}>
-              {percentage}
+              {percent}
               {isShowPercentage ? '%' : ''}
             </span>
           )}

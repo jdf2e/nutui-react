@@ -22,9 +22,7 @@ import { Progress, Cell } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <Cell>
-      <Progress
-        percentage="30"
-      />
+      <Progress percent={30} />
     </Cell>
   );
 };
@@ -43,7 +41,7 @@ const App = () => {
   return (
     <Cell>
       <Progress
-        percentage="30"
+        percent={30}
         strokeColor="rgba(250,44,25,0.47)"
         strokeWidth="20"
         textColor="red"
@@ -65,30 +63,7 @@ import { Progress, Cell } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <Cell>
-      <Progress
-        percentage="50"
-        showText={false}
-      />
-    </Cell>
-  );
-};
-export default App;
-```
-:::
-
-### 设置百分比外显
-
-:::demo
-```jsx
-import  React from "react";
-import { Progress, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <Progress
-        percentage="30"
-      />
+      <Progress percent={50} showText={false} />
     </Cell>
   );
 };
@@ -106,10 +81,7 @@ import { Progress, Cell } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <Cell>
-      <Progress
-        percentage="60"
-        textInside
-      />
+      <Progress percent={60} textInside />
     </Cell>
   );
 };
@@ -127,10 +99,7 @@ import { Progress, Image, Cell } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <Cell>
-      <Progress
-        percentage={60}
-        textInside
-      >
+      <Progress percent={60} textInside>
         <Image
           width="30px"
           height="30px"
@@ -156,21 +125,21 @@ const App = () => {
     <>
     <Cell>
       <Progress
-        percentage="30"
+        percent={30}
         size="small"
         textInside
       />
     </Cell>
     <Cell>
       <Progress
-        percentage="50"
+        percent={50}
         size="base"
         textInside
       />
     </Cell>
     <Cell>
       <Progress
-        percentage="70"
+        percent={70}
         size="large"
         textInside
       />
@@ -195,20 +164,17 @@ const App = () => {
     <>
     <Cell>
       <Progress
-        percentage="30"
+        percent={30}
         strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
         status
       />
     </Cell>
     <Cell>
-      <Progress
-        percentage="100" 
-        textType="icon"
-      />
+      <Progress percent={100} textType="icon" />
     </Cell>
     <Cell>
       <Progress
-        percentage="100"
+        percent={100}
         strokeColor="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
         strokeWidth="15"
         textType="icon"
@@ -234,9 +200,7 @@ const App = () => {
   return (
     <>
     <Cell>
-      <Progress
-        percentage={value}
-      />
+      <Progress percent={value} />
     </Cell>
     <Cell>
       <Button
@@ -280,7 +244,7 @@ export default App;
 
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
-| percentage | 百分比 | `number` | `0`
+| percent | 百分比 | `number` | `0`
 | isShowPercentage | 是否需要展示百分号 | `boolean` | `true`
 | fillColor | 进度条填充颜色 | `string` | `#f3f3f3`
 | strokeColor | 进度条线条背景色 | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
