@@ -554,11 +554,11 @@ export default App;
 | activeType   | 选中底部展示样式 可选值 `line`、`smile`                                             | string                       | `line`       |
 | duration     | 切换动画时长,单位 ms 0 代表无动画                                                    | number \| string       | `300`        |
 | title        | 自定义导航区域                                                                 | `() => JSX.Element[]`        | -            |
-| align        | 标题左对齐                                                                   | `'left' | 'right'`          | `-` |
+| align        | 标题左对齐                                                                   | `left \| right`          | `-` |
 | autoHeight   | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean                      | `false`      |
 | tabStyle     | 标签栏样式                                                                   | CSSProperties                | `{}`         |
-| onClick      | 点击标签时触发                                                                 | `(index: string | number) => void` | -            |
-| onChange     | 当前激活的标签改变时触发                                                            | `(index: string | number) => void` | -            |
+| onClick      | 点击标签时触发                                                                 | `(index: string\| number) => void` | -            |
+| onChange     | 当前激活的标签改变时触发                                                            | `(index: string \| number) => void` | -            |
 
 ## Tabs.Tabpane
 
@@ -567,7 +567,7 @@ export default App;
 | 参数       | 说明                      | 类型      | 默认值     |
 |----------|-------------------------|---------|---------|
 | title    | 标题                      | string  | -       |
-| value    | 标签 Key , 匹配的标识符, 默认为索引值 | `string| number`    | `-` |
+| value    | 标签 Key , 匹配的标识符, 默认为索引值 | `string\| number`    | `-` |
 | disabled | 是否禁用标签                  | boolean | `false` |
 
 ## 主题定制

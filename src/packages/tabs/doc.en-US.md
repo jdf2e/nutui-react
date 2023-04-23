@@ -548,7 +548,7 @@ export default App;
 
 ### Props
 
-| Property     | Description                                                              | type                  | Default          |
+| Property     | Description                                                              | Type                  | Default          |
 |--------------|--------------------------------------------------------------------------|-----------------------|------------------|
 | value | The value of the currently active tab panel | number \| string | `0` |
 | defaultValue | Initialize the value of the active tab | number \| string | `0` |
@@ -557,11 +557,11 @@ export default App;
 | activeType | Select the bottom display style Optional values `line`, `smile` | string | `line` |
 | duration | Switch animation duration, unit ms 0 means no animation | number \| string | `300` |
 | title | custom navigation area | `() => JSX.Element[]` | - |
-| align | title left alignment | `'left' | 'right'` | `-` |
+| align | title left alignment | left \| right | `-` |
 | autoHeight | Auto height. When set to true, nut-tabs and nut-tabs__content will change with the height of the current nut-tabpane. | boolean | `false` |
 | tabStyle | tab bar style | CSSProperties | `{}` |
-| onClick | Triggered when the label is clicked | `(index: string | number) => void` | - |
-| onChange | Triggered when the currently active tab changes | `(index: string | number) => void` | - |
+| onClick | Triggered when the label is clicked | `(index: string \| number) => void` | - |
+| onChange | Triggered when the currently active tab changes | `(index: string \| number) => void` | - |
 
 ## Tabs.Tabpane
 
@@ -570,7 +570,7 @@ export default App;
 | Property       | Description                      | type      | Default     |
 |----------|-------------------------|---------|---------|
 | title | title | string | - |
-| value | tag Key , matching identifier, default is index value | `string| number` | `-` |
+| value | tag Key , matching identifier, default is index value | `string\| number` | `-` |
 | disabled | Whether to disable the label | boolean | `false` |
 
 
