@@ -1,13 +1,3 @@
-.nut-theme-dark {
-  .nut-tabbar-item {
-    color: $dark1;
-
-    &--active {
-      color: $primary-color;
-    }
-  }
-}
-
 .nut-tabbar-item {
   display: flex;
   flex-direction: column;

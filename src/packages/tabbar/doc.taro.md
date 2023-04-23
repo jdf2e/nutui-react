@@ -182,7 +182,7 @@ export default App;
 | activeColor                 | icon激活的颜色              | `string` | `#1989fa` |
 | inactiveColor               | icon未激活的颜色             | `string` | `#7d7e80` |
 | safeArea | 是否开启iphone系列全面屏底部安全区适配 | `boolean` | `false`   |
-| onSwitch | 切换页签时触发事件 | `(index) => void` | - |
+| onSwitch | 切换页签时触发事件 | `(value) => void` | - |
 
 ## TabbarItem
 
@@ -206,7 +206,6 @@ export default App;
 | --- | --- |
 | --nutui-tabbar-height | `50px`|
 | --nutui-tabbar-active-color | `$primary-color` |
-| --nutui-tabbar-unactive-color | `$primary-color` |
 | --nutui-tabbar-border-top | `1px solid #eee` |
 | --nutui-tabbar-border-bottom | `1px solid #eee` |
 | --nutui-tabbar-box-shadow | `none` |

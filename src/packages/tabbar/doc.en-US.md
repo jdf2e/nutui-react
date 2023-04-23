@@ -180,7 +180,7 @@ export default App;
 | activeColor    | icon active color                                                                    | `string` | `#1989fa` |
 | inactiveColor  | Icon inactive color                                                                  | `string` | `#7d7e80` |
 | safeArea    | Whether to enable the full screen bottom safety zone adaptation of the iphone series | `boolean` | `false`   |
-| onSwitch    | Trigger an event when switching tabs | `(index) => void` | - |
+| onSwitch    | Trigger an event when switching tabs | `(value) => void` | - |
 
 ## TabbarItem
 
@@ -200,11 +200,10 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
+| Name | Description | Default |
+| --- | --- | --- |
 | --nutui-tabbar-height | `50px`|
 | --nutui-tabbar-active-color | `$primary-color` |
-| --nutui-tabbar-unactive-color | `$primary-color` |
 | --nutui-tabbar-border-top | `1px solid #eee` |
 | --nutui-tabbar-border-bottom | `1px solid #eee` |
 | --nutui-tabbar-box-shadow | `none` |
