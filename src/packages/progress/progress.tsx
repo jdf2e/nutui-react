@@ -7,9 +7,6 @@ export type ProgressSize = 'small' | 'base' | 'large'
 export type TextType = 'icon' | 'text'
 
 export interface ProgressProps extends BasicComponent {
-  className: string
-  style: CSSProperties
-  isShowPercentage: boolean
   percent: number
   fillColor: string
   strokeColor: string
@@ -28,9 +25,6 @@ export interface ProgressProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
-  className: '',
-  style: {},
-  isShowPercentage: true,
   percent: 0,
   fillColor: '#f3f3f3',
   strokeColor: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
@@ -52,7 +46,6 @@ export const Progress: FunctionComponent<
   const {
     className,
     style,
-    isShowPercentage,
     percent,
     fillColor,
     strokeColor,
@@ -139,8 +132,7 @@ export const Progress: FunctionComponent<
                     className={classesTextInner}
                     style={{ color: textColor }}
                   >
-                    {percent}
-                    {isShowPercentage ? '%' : ''}
+                    {percent}%
                   </span>
                 </div>
               )}
@@ -152,8 +144,7 @@ export const Progress: FunctionComponent<
         <div className={classesText} style={stylesText}>
           {textType === 'text' && (
             <span className={classesTextInner} style={{ color: textColor }}>
-              {percent}
-              {isShowPercentage ? '%' : ''}
+              {percent}%
             </span>
           )}
           {textType === 'icon' && (

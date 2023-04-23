@@ -245,7 +245,6 @@ export default App;
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
 | percent | 百分比 | `number` | `0`
-| isShowPercentage | 是否需要展示百分号 | `boolean` | `true`
 | fillColor | 进度条填充颜色 | `string` | `#f3f3f3`
 | strokeColor | 进度条线条背景色 | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
 | strokeWidth | 进度条宽度 | `string` | -

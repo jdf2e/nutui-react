@@ -25,9 +25,6 @@ interface T {
 }
 
 const ProgressDemo = () => {
-  const cellStyles = {
-    paddingRight: '30px',
-  }
   const [translated] = useTranslate<T>({
     'zh-CN': {
       basic: '基础用法',
@@ -79,11 +76,11 @@ const ProgressDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
-        <Cell style={cellStyles}>
+        <Cell>
           <Progress percent={30} />
         </Cell>
         <h2>{translated.customStyle}</h2>
-        <Cell style={cellStyles}>
+        <Cell>
           <Progress
             percent={30}
             fillColor="rgba(250,44,25,0.2)"
@@ -93,15 +90,15 @@ const ProgressDemo = () => {
           />
         </Cell>
         <h2>{translated.noShowPercentage}</h2>
-        <Cell style={cellStyles}>
+        <Cell>
           <Progress percent={50} showText={false} />
         </Cell>
         <h2>{translated.showInsidePercentage}</h2>
-        <Cell style={cellStyles}>
+        <Cell>
           <Progress percent={60} textInside />
         </Cell>
         <h2>{translated.customContent}</h2>
-        <Cell style={cellStyles}>
+        <Cell>
           <Progress percent={60} textInside>
             <Image
               width="30px"
@@ -111,27 +108,27 @@ const ProgressDemo = () => {
           </Progress>
         </Cell>
         <h2>{translated.customSize}</h2>
-        <Cell style={cellStyles}>
+        <Cell>
           <Progress percent={30} size="small" textInside />
         </Cell>
-        <Cell style={cellStyles}>
+        <Cell>
           <Progress percent={50} size="base" textInside />
         </Cell>
-        <Cell style={cellStyles}>
+        <Cell>
           <Progress percent={70} size="large" textInside />
         </Cell>
         <h2>{translated.statusDisplay}</h2>
-        <Cell style={cellStyles}>
+        <Cell>
           <Progress
             percent={30}
             strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
             status
           />
         </Cell>
-        <Cell style={cellStyles}>
+        <Cell>
           <Progress percent={100} textType="icon" />
         </Cell>
-        <Cell style={cellStyles}>
+        <Cell>
           <Progress
             percent={100}
             strokeColor="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
@@ -141,10 +138,10 @@ const ProgressDemo = () => {
           />
         </Cell>
         <h2>{translated.dynamicChange}</h2>
-        <Cell style={cellStyles}>
+        <Cell>
           <Progress percent={value} />
         </Cell>
-        <Cell style={cellStyles}>
+        <Cell>
           <Button
             type="default"
             style={{ margin: 8 }}
