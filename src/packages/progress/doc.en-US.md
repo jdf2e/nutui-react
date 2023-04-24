@@ -53,7 +53,7 @@ export default App;
 ```
 :::
 
-### Don't Show Percentage
+### Show Percentage
 
 :::demo
 ```jsx
@@ -63,7 +63,7 @@ import { Progress, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Progress percent={30} showText={false} />
+      <Progress percent={50} showText />
     </Cell>
   );
 };
@@ -71,25 +71,7 @@ export default App;
 ```
 :::
 
-### Text Inside
-
-:::demo
-```jsx
-import  React from "react";
-import { Progress, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Progress percent={60} />
-    </Cell>
-  );
-};
-export default App;
-```
-:::
-
-### Custom Content
+### 自定义显示内容
 
 :::demo
 ```jsx
@@ -98,7 +80,6 @@ import { Progress, Image, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <>
     <Cell>
       <Progress percent={60}>
         <Image
@@ -108,7 +89,6 @@ const App = () => {
         />
       </Progress>
     </Cell>
-    </>
   );
 };
 export default App;
@@ -147,30 +127,31 @@ export default App;
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react';
-import { Issue } from '@nutui/icons-react';
+import { Checked, Issue } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
-    <Cell>
-      <Progress
-        percent={30}
-        color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-        animated
-      />
-    </Cell>
-    <Cell>
-      <Progress percent={100}  textType="icon" />
-    </Cell>
-    <Cell>
-      <Progress
-        percent={100}
-        color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
-        strokeWidth="15"
-        textType="icon"
-        icon={<Issue color="red" />}
-      />
-    </Cell>
+      <Cell>
+        <Progress
+          percent={30}
+          color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
+          animated
+        />
+      </Cell>
+      <Cell align="center">
+        <Progress percent={100} textType="icon" />
+        <Checked color="green" style={{ margin: '0 5px' }} />
+      </Cell>
+      <Cell align="center">
+        <Progress
+          percent={100}
+          color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
+          strokeWidth="15"
+          textType="icon"
+        />
+        <Issue color="red" style={{ margin: '0 5px' }} />
+      </Cell>
     </>
   );
 };
@@ -189,38 +170,39 @@ const App = () => {
   const [value, setValue] = useState(0);
   return (
     <>
-    <Cell>
-      <Progress percent={value} />
-    </Cell>
-    <Cell>
-      <Button
-        type="default"
-        style={{ margin: 8 }} 
-        onClick={() => {
-          let num = value;
-          if (value <= 0) {
-            return false;
-          }
-          num -= 10;
-          setValue(num);
-        }}
-      >
-        减少
-      </Button>
-      <Button 
-        type="primary" 
-        onClick={() => {
-          let num = value;
-          if (value >= 100) {
-            return false;
-          }
-          num += 10;
-          setValue(num);
-        }}
-      >
-        增加
-      </Button>
-    </Cell>
+      <Cell align="center">
+        <Progress percent={value} />
+        <span style={{ margin: '0 5px' }}>{value}%</span>
+      </Cell>
+      <Cell>
+        <Button
+          type="default"
+          style={{ margin: 8 }} 
+          onClick={() => {
+            let num = value;
+            if (value <= 0) {
+              return false;
+            }
+            num -= 10;
+            setValue(num);
+          }}
+        >
+          减少
+        </Button>
+        <Button 
+          type="primary" 
+          onClick={() => {
+            let num = value;
+            if (value >= 100) {
+              return false;
+            }
+            num += 10;
+            setValue(num);
+          }}
+        >
+          增加
+        </Button>
+      </Cell>
     </>
   );
 };
@@ -238,7 +220,7 @@ export default App;
 | background | Progress bar background color | `string` | `#f3f3f3`
 | color | Stroke color | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
 | strokeWidth | Stroke width | `string` | -
-| showText | Whether to show text | `boolean` | `true`
+| showText | Whether to show text | `boolean` | `false`
 | textType | Progress bar text type setting，`text`(展示文字)/`icon`(展示icon标签) | `string` | `text`
 | animated | The current state of the progress bar, `true`展示动画效果 | `boolean` | `false`
 | icon | Custom Icon | `ReactNode` | `<Checked width={16} height={16} color="#439422"/>`

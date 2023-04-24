@@ -22,7 +22,7 @@ const defaultProps = {
   background: '#f3f3f3',
   color: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
   strokeWidth: '',
-  showText: true,
+  showText: false,
   textType: 'text',
   animated: false,
   icon: null,

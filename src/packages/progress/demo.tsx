@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Issue } from '@nutui/icons-react'
+import { Checked, Issue } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Progress } from './progress'
 import { Cell } from '@/packages/cell/cell'
@@ -11,7 +11,6 @@ interface T {
   basic: string
   customStyle: string
   noShowPercentage: string
-  showInsidePercentage: string
   customContent: string
   customSize: string
   statusDisplay: string
@@ -25,9 +24,8 @@ const ProgressDemo = () => {
     'zh-CN': {
       basic: '基础用法',
       customStyle: '设置颜色与宽度',
-      noShowPercentage: '百分比不显示',
-      showInsidePercentage: '百分比内显',
-      customContent: '百分比内显自定义',
+      noShowPercentage: '显示百分比',
+      customContent: '自定义显示内容',
       customSize: '自定义尺寸',
       statusDisplay: '状态显示',
       dynamicChange: '动态改变',
@@ -37,9 +35,8 @@ const ProgressDemo = () => {
     'zh-TW': {
       basic: '基礎用法',
       customStyle: '設置顏色與寛度',
-      noShowPercentage: '百分比不顯示',
-      showInsidePercentage: '百分比內顯',
-      customContent: '百分比內顯自定義',
+      noShowPercentage: '顯示百分比',
+      customContent: '自定義顯示內容',
       customSize: '自定義尺寸',
       statusDisplay: '狀態顯示',
       dynamicChange: '動態改變',
@@ -49,8 +46,7 @@ const ProgressDemo = () => {
     'en-US': {
       basic: 'Basic Usage',
       customStyle: 'Custom Style',
-      noShowPercentage: 'Don’t Show Percentage',
-      showInsidePercentage: 'Percentage displayed inside',
+      noShowPercentage: 'Show Percentage',
       customContent: 'Custom Content',
       customSize: 'Custom Size',
       statusDisplay: 'Status Display',
@@ -80,15 +76,11 @@ const ProgressDemo = () => {
         </Cell>
         <h2>{translated.noShowPercentage}</h2>
         <Cell>
-          <Progress percent={50} showText={false} />
-        </Cell>
-        <h2>{translated.showInsidePercentage}</h2>
-        <Cell>
-          <Progress percent={60} />
+          <Progress percent={50} showText />
         </Cell>
         <h2>{translated.customContent}</h2>
         <Cell>
-          <Progress percent={60}>
+          <Progress percent={60} showText>
             <Image
               width="30px"
               height="30px"
@@ -98,13 +90,13 @@ const ProgressDemo = () => {
         </Cell>
         <h2>{translated.customSize}</h2>
         <Cell>
-          <Progress percent={30} strokeWidth="5" />
+          <Progress percent={30} strokeWidth="5" showText />
         </Cell>
         <Cell>
-          <Progress percent={50} strokeWidth="10" />
+          <Progress percent={50} strokeWidth="10" showText />
         </Cell>
         <Cell>
-          <Progress percent={70} strokeWidth="15" />
+          <Progress percent={70} strokeWidth="15" showText />
         </Cell>
         <h2>{translated.statusDisplay}</h2>
         <Cell>
@@ -114,21 +106,23 @@ const ProgressDemo = () => {
             animated
           />
         </Cell>
-        <Cell>
+        <Cell align="center">
           <Progress percent={100} textType="icon" />
+          <Checked color="green" style={{ margin: '0 5px' }} />
         </Cell>
-        <Cell>
+        <Cell align="center">
           <Progress
             percent={100}
             color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
             strokeWidth="15"
             textType="icon"
-            icon={<Issue color="red" />}
           />
+          <Issue color="red" style={{ margin: '0 5px' }} />
         </Cell>
         <h2>{translated.dynamicChange}</h2>
-        <Cell>
+        <Cell align="center">
           <Progress percent={value} />
+          <span style={{ margin: '0 5px' }}>{value}%</span>
         </Cell>
         <Cell>
           <Button

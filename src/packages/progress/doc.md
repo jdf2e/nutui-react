@@ -31,7 +31,7 @@ export default App;
 ```
 :::
 
-### 设置高度和颜色
+### 设置颜色与宽度
 
 :::demo
 ```jsx
@@ -53,7 +53,7 @@ export default App;
 ```
 :::
 
-### 设置百分比不显示
+### 显示百分比
 
 :::demo
 ```jsx
@@ -63,7 +63,7 @@ import { Progress, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Progress percent={50} showText={false} />
+      <Progress percent={50} showText />
     </Cell>
   );
 };
@@ -71,25 +71,7 @@ export default App;
 ```
 :::
 
-### 设置百分比内显
-
-:::demo
-```jsx
-import  React from "react";
-import { Progress, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Progress percent={60} />
-    </Cell>
-  );
-};
-export default App;
-```
-:::
-
-### 设置内显自定义内容
+### 自定义显示内容
 
 :::demo
 ```jsx
@@ -145,30 +127,31 @@ export default App;
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react';
-import { Issue } from '@nutui/icons-react';
+import { Checked, Issue } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
-    <Cell>
-      <Progress
-        percent={30}
-        color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-        animated
-      />
-    </Cell>
-    <Cell>
-      <Progress percent={100} textType="icon" />
-    </Cell>
-    <Cell>
-      <Progress
-        percent={100}
-        color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
-        strokeWidth="15"
-        textType="icon"
-        icon={<Issue color="red"/>}
-      />
-    </Cell>
+      <Cell>
+        <Progress
+          percent={30}
+          color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
+          animated
+        />
+      </Cell>
+      <Cell align="center">
+        <Progress percent={100} textType="icon" />
+        <Checked color="green" style={{ margin: '0 5px' }} />
+      </Cell>
+      <Cell align="center">
+        <Progress
+          percent={100}
+          color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
+          strokeWidth="15"
+          textType="icon"
+        />
+        <Issue color="red" style={{ margin: '0 5px' }} />
+      </Cell>
     </>
   );
 };
@@ -187,38 +170,39 @@ const App = () => {
   const [value, setValue] = useState(0);
   return (
     <>
-    <Cell>
-      <Progress percent={value} />
-    </Cell>
-    <Cell>
-      <Button
-        type="default"
-        style={{ margin: 8 }} 
-        onClick={() => {
-          let num = value;
-          if (value <= 0) {
-            return false;
-          }
-          num -= 10;
-          setValue(num);
-        }}
-      >
-        减少
-      </Button>
-      <Button 
-        type="primary" 
-        onClick={() => {
-          let num = value;
-          if (value >= 100) {
-            return false;
-          }
-          num += 10;
-          setValue(num);
-        }}
-      >
-        增加
-      </Button>
-    </Cell>
+      <Cell align="center">
+        <Progress percent={value} />
+        <span style={{ margin: '0 5px' }}>{value}%</span>
+      </Cell>
+      <Cell>
+        <Button
+          type="default"
+          style={{ margin: 8 }} 
+          onClick={() => {
+            let num = value;
+            if (value <= 0) {
+              return false;
+            }
+            num -= 10;
+            setValue(num);
+          }}
+        >
+          减少
+        </Button>
+        <Button 
+          type="primary" 
+          onClick={() => {
+            let num = value;
+            if (value >= 100) {
+              return false;
+            }
+            num += 10;
+            setValue(num);
+          }}
+        >
+          增加
+        </Button>
+      </Cell>
     </>
   );
 };
@@ -236,7 +220,7 @@ export default App;
 | background | 进度条背景颜色 | `string` | `#f3f3f3`
 | color | 进度条线条颜色 | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
 | strokeWidth | 进度条宽度 | `string` | -
-| showText | 是否显示进度条文字内容 | `boolean` | `true`
+| showText | 是否显示进度条文字内容 | `boolean` | `false`
 | textType | 进度条文字类型，`text`(展示文字)/`icon`(展示icon标签) | `string` | `text`
 | animated | 进度条当前状态，`true`展示动画效果 | `boolean` | `false`
 | icon | 自定义图标 | `ReactNode` | `<Checked width={16} height={16} color="#439422"/>`
