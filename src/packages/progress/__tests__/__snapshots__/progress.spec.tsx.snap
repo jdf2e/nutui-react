@@ -7,7 +7,6 @@ exports[`should render progress when use props 1`] = `
   >
     <div
       class="nut-progress-outer"
-      style="background: rgb(243, 243, 243);"
     >
       <div
         class="nut-progress-inner"
