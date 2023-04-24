@@ -1,22 +1,21 @@
 import React, { forwardRef } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import Button from '@/packages/button/index.taro'
-import { DialogWrapper } from './DialogWrapper.taro'
 import { BasicDialogProps } from './config'
+import { DialogWrap } from './DialogWrap'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export type DialogProps = BasicDialogProps
 const defaultProps = {
   confirmText: '',
   cancelText: '',
-  mask: true,
+  overlay: true,
   closeOnClickOverlay: true,
-  noFooter: false,
-  noOkBtn: false,
-  noCancelBtn: false,
-  okBtnDisabled: false,
+  hideConfirmButton: false,
+  hideCancelButton: false,
+  disableConfirmButton: false,
   cancelAutoClose: true,
-  textAlign: 'center',
   footerDirection: 'horizontal',
   lockScroll: false,
 } as BasicDialogProps
@@ -31,63 +30,57 @@ export const BaseDialog = forwardRef(
     const {
       visible,
       footer,
-      noOkBtn,
-      noCancelBtn,
+      hideConfirmButton,
+      hideCancelButton,
       lockScroll,
-      okBtnDisabled,
+      disableConfirmButton,
       cancelAutoClose,
       confirmText,
       cancelText,
-      onClosed,
+      onClose,
       onCancel,
-      onOk,
+      onConfirm,
       ...restProps
     } = props
+    const classPrefix = 'nut-dialog'
 
-    const renderFooter = function () {
+    const renderFooter = () => {
       if (footer === null) return ''
 
-      const handleCancel = function (e: MouseEvent) {
+      const handleCancel = (e: MouseEvent) => {
         e.stopPropagation()
         if (!cancelAutoClose) return
-
-        onClosed?.()
+        onClose?.()
         onCancel?.()
-        if (lockScroll && visible) {
-          document.body.classList.remove('nut-overflow-hidden')
-        }
       }
 
-      const handleOk = function (e: MouseEvent) {
+      const handleOk = (e: MouseEvent) => {
         e.stopPropagation()
-        onClosed?.()
-        onOk?.(e)
-        if (lockScroll && visible) {
-          document.body.classList.remove('nut-overflow-hidden')
-        }
+        onClose?.()
+        onConfirm?.(e)
       }
 
       const footerContent = footer || (
         <>
-          {!noCancelBtn && (
+          {!hideCancelButton && (
             <Button
               size="small"
-              plain
+              fill="outline"
               type="primary"
-              className="nut-dialog__footer-cancel"
+              className={`${classPrefix}__footer-cancel`}
               onClick={(e) => handleCancel(e)}
             >
               {cancelText || locale.cancel}
             </Button>
           )}
-          {!noOkBtn && (
+          {!hideConfirmButton && (
             <Button
               size="small"
               type="primary"
-              className={classNames('nut-dialog__footer-ok', {
-                disabled: okBtnDisabled,
+              className={classNames(`${classPrefix}__footer-ok`, {
+                disabled: disableConfirmButton,
               })}
-              disabled={okBtnDisabled}
+              disabled={disableConfirmButton}
               onClick={(e) => handleOk(e)}
             >
               {confirmText || locale.confirm}
@@ -100,14 +93,19 @@ export const BaseDialog = forwardRef(
     }
 
     return (
-      <DialogWrapper
-        {...restProps}
-        visible={visible}
-        lockScroll={lockScroll}
-        footer={renderFooter()}
-        onClosed={onClosed}
-        onCancel={onCancel}
-      />
+      <View
+        style={{ display: visible ? 'block' : 'none' }}
+        catchMove={lockScroll}
+      >
+        <DialogWrap
+          {...restProps}
+          visible={visible}
+          lockScroll={lockScroll}
+          footer={renderFooter()}
+          onClose={onClose}
+          onCancel={onCancel}
+        />
+      </View>
     )
   }
 )

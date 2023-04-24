@@ -41,7 +41,7 @@ const App = () => {
         Dialog.alert({
             title: '溫馨提示',
             content: '支持函數調用和組件調用兩種方式。',
-            noCancelBtn: true
+            hideCancelButton: true
         });
         }} />
       <Cell title="底部按鈕 垂直調用" onClick={() => {
@@ -76,7 +76,7 @@ const App = () => {
     <Dialog 
         title="組件調用"
         visible={visible1}
-        onOk={() => setVisible1(false)}
+        onConfirm={() => setVisible1(false)}
         onCancel={() => setVisible1(false)}
     >
         如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
@@ -87,7 +87,7 @@ const App = () => {
         visible={visible2}
         lockScroll
         footerDirection='vertical'
-        onOk={() => setVisible2(false)}
+        onConfirm={() => setVisible2(false)}
         onCancel={() => setVisible2(false)}
     >
         如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
@@ -106,31 +106,24 @@ export default App;
 
 | 參數         | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
-| visible         |對話框是否可見             | boolean | -                |
-| title        | 標題                         | ReactNode | -                |
-| content         | 對話框的內容，適用於函數式調用 | ReactNode | -                |
+| visible|對話框是否可見| boolean | -|
+| title| 標題| ReactNode | -|
+| content| 對話框的內容，適用於函數式調用 | ReactNode | -|
 | footer | 自定義頁腳，傳入 null 則不顯示     | ReactNode | - |
-| confirmText `v2.0.0`         | 確認按鈕文案                        | ReactNode | `確定`              |
-| cancelText          | 取消按鈕文案                        | ReactNode | `取消`              |
-| mask          | 是否展示遮罩                        | boolean | `true`              |
-| noOkBtn          | 是否隱藏確定按鈕                        | boolean | `false`              |
-| noCancelBtn          | 是否隱藏取消按鈕                        | boolean | `false`              |
-| okBtnDisabled          | 禁用確定按鈕                        | boolean | `false`              |
-| noFooter          | 是否隱藏底部按鈕欄                        | boolean | `false`              |
-| closeOnClickOverlay          | 點擊蒙層是否關閉對話框                        | boolean | `true`              |
-| cancelAutoClose          | 取消按鈕是否默認關閉彈窗                        | boolean | `true`              |
-| textAlign          | 文字對齊方向，可選值同 css 的 text-align                        | string | `center`              |
-| footerDirection          | 使用橫縱方向 可選值 horizontal、vertical                        | string | `horizontal`              |
-| lockScroll          | 背景是否鎖定                        | boolean | `false`              |
-
-### Events
-
-| 事件名 | 說明           | 回調參數     |
-|--------|----------------|--------------|
-| onOk  | 確定按鈕回調 | (e?: MouseEvent) => Promise | void |
+| confirmText `v2.0.0`| 確認按鈕文案| ReactNode | `確定`|
+| cancelText| 取消按鈕文案| ReactNode | `取消`|
+| overlay| 是否展示遮罩| boolean | `true`|
+| hideConfirmButton| 是否隱藏確定按鈕| boolean | `false`|
+| hideCancelButton| 是否隱藏取消按鈕| boolean | `false`|
+| disableConfirmButton| 禁用確定按鈕| boolean | `false`|
+| closeOnClickOverlay| 點擊蒙層是否關閉對話框| boolean | `true`|
+| cancelAutoClose| 取消按鈕是否默認關閉彈窗| boolean | `true`|
+| footerDirection| 使用橫縱方向 可選值 horizontal、vertical| string | `horizontal`|
+| lockScroll| 背景是否鎖定| boolean | `false`|
+| onConfirm  | 確定按鈕回調 | (e?: MouseEvent) => Promise | void |
 | onCancel  | 取消按鈕回調 | () => void |
-| onClosed  | 關閉回調，任何情況關閉彈窗都會觸發 | () => void |
-| onClickSelf  | 點擊自身回調 | () => void |
+| onClose  | 關閉回調，任何情況關閉彈窗都會觸發 | () => void |
+| onClick  | 點擊自身回調 | () => void |
 
 
 ## 主題定制
@@ -151,8 +144,8 @@ export default App;
 | --nutui-dialog-content-margin | `20px 0` |
 | --nutui-dialog-content-max-height | `268px` |
 | --nutui-dialog-content-line-height | `16px` |
-| --nutui-dialog-mask-z-index | `$mask-z-index` |
-| --nutui-dialog-mask-background-color | `$mask-color` |
+| --nutui-dialog-overlay-z-index | `$mask-z-index` |
+| --nutui-dialog-overlay-background-color | `$mask-color` |
 | --nutui-dialog-outer-z-index | `$mask-content-z-index` |
 | --nutui-dialog-outer-bordder-radius | `20px` |
 | --nutui-dialog-vertical-footer-ok-margin-top | `10px` |

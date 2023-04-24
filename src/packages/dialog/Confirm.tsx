@@ -21,7 +21,7 @@ export const normalizeConfig = (_config: ConfirmProps): ConfirmProps => {
           break
       }
     }
-    _config.noCancelBtn = true
+    _config.hideCancelButton = true
   }
   return _config
 }
@@ -43,9 +43,9 @@ function confirm(
     ...config,
     visible: false,
   }
-  const onOk = () => {
+  const onConfirm = () => {
     let ret
-    const _onOk = config.onOk || config.onConfirm
+    const _onOk = config.onConfirm || config.onConfirm
     if (_onOk) {
       ret = _onOk()
     }
@@ -66,9 +66,8 @@ function confirm(
     }
   }
   // 如果是promise，那么处理loading和加载完成关闭
-  dialogConfig.onOk = onOk
+  dialogConfig.onConfirm = onConfirm
   dialogConfig = normalizeConfig(dialogConfig)
-
   dialogConfig.visible = true
   renderFunction(dialogConfig)
 
@@ -89,8 +88,8 @@ function confirm(
   function onCancel(isOnOk?: boolean) {
     !isOnOk && config.onCancel && config.onCancel()
     dialogConfig.visible = false
-    dialogConfig.onClosed = () => {
-      config.onClosed && config.onClosed()
+    dialogConfig.onClose = () => {
+      config.onClose && config.onClose()
     }
     renderFunction(dialogConfig, () => {
       destroy()
@@ -110,8 +109,8 @@ function confirm(
 
   function close() {
     dialogConfig.visible = false
-    dialogConfig.onClosed = () => {
-      config.onClosed && config.onClosed()
+    dialogConfig.onClose = () => {
+      config.onClose && config.onClose()
       destroy()
     }
     renderFunction(dialogConfig)

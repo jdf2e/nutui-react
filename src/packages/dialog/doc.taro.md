@@ -32,7 +32,7 @@ const App = () => {
     <Dialog 
         title="组件调用"
         visible={visible1}
-        onOk={() => setVisible1(false)}
+        onConfirm={() => setVisible1(false)}
         onCancel={() => setVisible1(false)}
     >
         如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
@@ -43,7 +43,7 @@ const App = () => {
         visible={visible2}
         lockScroll
         footerDirection='vertical'
-        onOk={() => setVisible2(false)}
+        onConfirm={() => setVisible2(false)}
         onCancel={() => setVisible2(false)}
     >
         如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
@@ -68,14 +68,12 @@ export default App;
 | footer | 自定义页脚，传入 null 则不显示     | ReactNode | - |
 | confirmText  `v2.0.0`        | 确认按钮文案                        | ReactNode | `确定`              |
 | cancelText          | 取消按钮文案                        | ReactNode | `取消`              |
-| mask          | 是否展示遮罩                        | boolean | `true`              |
-| noOkBtn          | 是否隐藏确定按钮                        | boolean | `false`              |
-| noCancelBtn          | 是否隐藏取消按钮                        | boolean | `false`              |
-| okBtnDisabled          | 禁用确定按钮                        | boolean | `false`              |
-| noFooter          | 是否隐藏底部按钮栏                        | boolean | `false`              |
+| overlay          | 是否展示遮罩                        | boolean | `true`              |
+| hideConfirmButton          | 是否隐藏确定按钮                        | boolean | `false`              |
+| hideCancelButton          | 是否隐藏取消按钮                        | boolean | `false`              |
+| disableConfirmButton          | 禁用确定按钮                        | boolean | `false`              |
 | closeOnClickOverlay          | 点击蒙层是否关闭对话框                        | boolean | `true`              |
 | cancelAutoClose          | 取消按钮是否默认关闭弹窗                        | boolean | `true`              |
-| textAlign          | 文字对齐方向，可选值同 css 的 text-align                        | string | `center`              |
 | footerDirection          | 使用横纵方向 可选值 horizontal、vertical                        | string | `horizontal`              |
 | lockScroll          | 背景是否锁定                        | boolean | `false`              |
 
@@ -83,10 +81,10 @@ export default App;
 
 | 事件名           | 说明           | 回调参数     |
 |---------------|----------------|--------------|
-| onOk          | 确定按钮回调 | (e?: MouseEvent) => Promise | void |
+| onConfirm          | 确定按钮回调 | (e?: MouseEvent) => Promise | void |
 | onCancel      | 取消按钮回调 | () => void |
-| onClosed      | 关闭回调，任何情况关闭弹窗都会触发 | () => void |
-| onClickSelf | 点击自身回调 | () => void |
+| onClose      | 关闭回调，任何情况关闭弹窗都会触发 | () => void |
+| onClick | 点击自身回调 | () => void |
 
 
 ## 主题定制
@@ -107,8 +105,8 @@ export default App;
 | --nutui-dialog-content-margin | `20px 0` |
 | --nutui-dialog-content-max-height | `268px` |
 | --nutui-dialog-content-line-height | `16px` |
-| --nutui-dialog-mask-z-index | `$mask-z-index` |
-| --nutui-dialog-mask-background-color | `$mask-color` |
+| --nutui-dialog-overlay-z-index | `$mask-z-index` |
+| --nutui-dialog-overlay-background-color | `$mask-color` |
 | --nutui-dialog-outer-z-index | `$mask-content-z-index` |
 | --nutui-dialog-outer-bordder-radius | `20px` |
 | --nutui-dialog-vertical-footer-ok-margin-top | `10px` |

@@ -1,39 +1,75 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react'
-import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
+import { CSSTransition } from 'react-transition-group'
 import { Content } from './Content'
-import Mask from './Mask'
+import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
+import { ComponentDefaults } from '@/utils/typings'
+import Overlay from '@/packages/overlay'
 
-interface DialogWrapProps {
-  visible?: boolean
-  mask?: boolean
-  lockScroll?: boolean
-  closeOnClickOverlay?: boolean
-  onCancel?: () => void
-  onClosed?: () => void
-  onClickSelf?: () => void
+interface DialogWrapProps extends OverlayProps {
+  visible: boolean
+  overlay: boolean
+  overlayStyle: React.CSSProperties
+  overlayClassName: string
+  footer: React.ReactNode
+  onCancel: () => void
+  onClose: () => void
+  onClick: (e: MouseEvent) => void
+  onClickOverlay: (e: MouseEvent) => boolean | void
 }
 
+const defaultDialogProps = {
+  ...ComponentDefaults,
+  overlay: true,
+  overlayStyle: {},
+  overlayClassName: '',
+  onCancel: () => {},
+  onClose: () => {},
+  onClick: (e: MouseEvent) => {},
+  onClickOverlay: (e: MouseEvent) => true,
+  ...defaultOverlayProps,
+} as DialogWrapProps
+
 export const DialogWrap: FunctionComponent<
-  Partial<DialogWrapProps> & Omit<HTMLAttributes<HTMLDivElement>, 'title'>
+  Partial<DialogWrapProps> &
+    Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content' | 'onClick'>
 > = (props) => {
   const {
     className,
     style,
     visible,
-    mask,
-    closeOnClickOverlay,
+    overlay,
+    overlayStyle,
+    overlayClassName,
+    closeOnOverlayClick,
     lockScroll,
-    onClosed,
+    onClose,
     onCancel,
+    onClickOverlay,
   } = props
 
-  const handleClick = (e: any) => {
-    if (closeOnClickOverlay && visible && e.target === e.currentTarget) {
-      onClosed?.()
-      onCancel?.()
+  const classPrefix = 'nut-dialog'
+  const baseStyle = {
+    // zIndex: index,
+    // animationDuration: `${duration}s`,
+  }
+  const overlayStyles = {
+    ...overlayStyle,
+    ...baseStyle,
+  }
 
-      lockScroll && document.body.classList.remove('nut-overflow-hidden')
+  const onHandleClickOverlay = (e: any) => {
+    console.log('onClose?.()', closeOnOverlayClick)
+    if (closeOnOverlayClick) {
+      const closed = onClickOverlay && onClickOverlay(e)
+      closed && onClose?.()
+    }
+  }
+
+  const handleClick = (e: any) => {
+    if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
+      onClose?.()
+      onCancel?.()
     }
   }
 
@@ -42,33 +78,38 @@ export const DialogWrap: FunctionComponent<
     display: visible ? 'block' : 'none',
   }
 
-  if (lockScroll && visible) {
-    document.body.classList.add('nut-overflow-hidden')
-  }
-
   return (
     <>
-      {mask ? (
-        <CSSTransition
-          in={visible}
-          timeout={300}
-          classNames="fadeDialog"
-          unmountOnExit
-          appear
-        >
-          <Mask />
-        </CSSTransition>
+      {overlay ? (
+        <Overlay
+          style={overlayStyles}
+          className={overlayClassName}
+          visible
+          closeOnOverlayClick={closeOnOverlayClick}
+          lockScroll={lockScroll}
+          // duration={duration}
+          onClick={(e) => onHandleClickOverlay(e)}
+        />
       ) : null}
 
-      <div
-        className={classNames('nut-dialog__wrap', className)}
-        onClick={handleClick}
-        style={wrapStyle}
+      <CSSTransition
+        in={visible}
+        timeout={300}
+        classNames="fadeDialog"
+        unmountOnExit
+        appear
       >
-        <Content {...props} visible={visible} />
-      </div>
+        <div
+          className={classNames(`${classPrefix}__wrap`, className)}
+          onClick={handleClick}
+          style={wrapStyle}
+        >
+          <Content {...props} visible={visible} />
+        </div>
+      </CSSTransition>
     </>
   )
 }
 
+DialogWrap.defaultProps = defaultDialogProps
 DialogWrap.displayName = 'NutDialogWrap'

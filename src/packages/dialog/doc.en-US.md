@@ -42,7 +42,7 @@ const App = () => {
         Dialog.alert({
             title: 'Kind tips',
             content: 'Support function calls and module call.',
-            noCancelBtn: true
+            hideCancelButton: true
         });
         }} />
       <Cell title="The bottom button is called vertically" onClick={() => {
@@ -77,7 +77,7 @@ const App = () => {
     <Dialog 
         title="Module call"
         visible={visible1}
-        onOk={() => setVisible1(false)}
+        onConfirm={() => setVisible1(false)}
         onCancel={() => setVisible1(false)}
     >
         If you need to embed the component or other custom content in the pop -up window, you can use the Module Call method.
@@ -88,7 +88,7 @@ const App = () => {
         visible={visible2}
         lockScroll
         footerDirection='vertical'
-        onOk={() => setVisible2(false)}
+        onConfirm={() => setVisible2(false)}
         onCancel={() => setVisible2(false)}
     >
         If you need to embed the component or other custom content in the pop -up window, you can use the Module Call method.
@@ -112,15 +112,13 @@ export default App;
 | content         | The content of the dialog box is suitable for function calls | ReactNode | -                |
 | footer | Customize the notes, but it will not be displayed in NULL     | ReactNode | - |
 | confirmText `v2.0.0`         | Confirm the button copywriting                        | ReactNode | `Sure`              |
-| cancelText          | Cancellation of buttons                        | ReactNode | `Cancel`              |
-| mask          | Whether to show a mask                        | boolean | `true`              |
-| noOkBtn          | Whether to hide the OK button                        | boolean | `false`              |
-| noCancelBtn          | Whether to hide the cancel button                        | boolean | `false`              |
-| okBtnDisabled          | Disable the OK button                        | boolean | `false`              |
-| noFooter          | Whether to hide the bottom button bar                        | boolean | `false`              |
+| cancelText          | Cancellation of buttons | ReactNode | `Cancel`              |
+| overlay          | Whether to show a overlay | boolean | `true`              |
+| hideConfirmButton          | Whether to hide the OK button | boolean | `false`              |
+| hideCancelButton          | Whether to hide the cancel button | boolean | `false`              |
+| disableConfirmButton          | Disable the OK button | boolean | `false`              |
 | closeOnClickOverlay          | Click on whether to close the dialog box                        | boolean | `true`              |
 | cancelAutoClose          | Cancel the button to close the pop -up window by default                        | boolean | `true`              |
-| textAlign          | Text alignment direction, optional value is the same as CSS Text-Align           | string | `center`              |
 | footerDirection          |Use horizontal and vertical direction value selection horizontal、vertical  | string | `horizontal`             |
 | lockScroll          | Whether the background is locked                        | boolean | `false`              |
 
@@ -128,10 +126,10 @@ export default App;
 
 | Incident name | illustrate           | Callback parameter     |
 |--------|----------------|--------------|
-| onOk  | Determine the button back | (e?: MouseEvent) => Promise | void |
+| onConfirm  | Determine the button back | (e?: MouseEvent) => Promise | void |
 | onCancel  | Cancel button callback | () => void |
-| onClosed  | Turn off the callback, and the pop -up window will be triggered in any case | () => void |
-| onClickSelf  | Click yourself to call back | () => void |
+| onClose  | Turn off the callback, and the pop -up window will be triggered in any case | () => void |
+| onClick  | Click yourself to call back | () => void |
 
 
 ## Theming
@@ -152,8 +150,8 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-dialog-content-margin | `20px 0` |
 | --nutui-dialog-content-max-height | `268px` |
 | --nutui-dialog-content-line-height | `16px` |
-| --nutui-dialog-mask-z-index | `$mask-z-index` |
-| --nutui-dialog-mask-background-color | `$mask-color` |
+| --nutui-dialog-overlay-z-index | `$mask-z-index` |
+| --nutui-dialog-overlay-background-color | `$mask-color` |
 | --nutui-dialog-outer-z-index | `$mask-content-z-index` |
 | --nutui-dialog-outer-bordder-radius | `20px` |
 | --nutui-dialog-vertical-footer-ok-margin-top | `10px` |

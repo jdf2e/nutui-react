@@ -46,6 +46,7 @@ const DialogDemo = () => {
 
   const [visible1, setVisible1] = useState(false)
   const [visible2, setVisible2] = useState(false)
+  const [visible3, setVisible3] = useState(false)
 
   return (
     <>
@@ -79,7 +80,7 @@ const DialogDemo = () => {
             Dialog.alert({
               title: translated.tips,
               content: translated.content,
-              noCancelBtn: true,
+              hideCancelButton: true,
               confirmText: translated.confirmText,
             })
           }}
@@ -103,7 +104,7 @@ const DialogDemo = () => {
           visible={visible1}
           confirmText={translated.confirmText}
           cancelText={translated.cancelText}
-          onOk={() => setVisible1(false)}
+          onConfirm={() => setVisible1(false)}
           onCancel={() => setVisible1(false)}
         >
           {translated.content}
@@ -116,12 +117,25 @@ const DialogDemo = () => {
           footerDirection="vertical"
           confirmText={translated.confirmText}
           cancelText={translated.cancelText}
-          onOk={() => setVisible2(false)}
+          onConfirm={() => setVisible2(false)}
           onCancel={() => setVisible2(false)}
         >
           {translated.content}
         </Dialog>
-        <div style={{ height: '200vh' }}></div>
+        <Cell title={translated.title} onClick={() => setVisible3(true)} />
+        <Dialog
+          title={translated.title1}
+          visible={visible3}
+          lockScroll
+          footerDirection="vertical"
+          onClose={() => {
+            setVisible3(false)
+          }}
+          footer={null}
+        >
+          {translated.content}
+        </Dialog>
+        <div style={{ height: '200vh' }} />
       </div>
     </>
   )

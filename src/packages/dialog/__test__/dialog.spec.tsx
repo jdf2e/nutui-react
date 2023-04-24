@@ -4,9 +4,9 @@ import '@testing-library/jest-dom'
 import { Dialog } from '../dialog'
 
 test('show dialog base info display ', async () => {
-  const onClosed = jest.fn()
+  const onClose = jest.fn()
   const { container } = render(
-    <Dialog title="title" data-testid="test" visible onClosed={onClosed}>
+    <Dialog title="title" data-testid="test" visible onClose={onClose}>
       content
     </Dialog>
   )
@@ -32,7 +32,7 @@ test('show dialog base info display ', async () => {
 
   expect(wrapEle).toHaveAttribute('style', 'display: block;')
   fireEvent.click(footerCancelEle)
-  expect(onClosed).toBeCalled()
+  expect(onClose).toBeCalled()
 })
 
 test('show dialog custom footer-direction ', async () => {
@@ -50,7 +50,7 @@ test('show dialog custom footer-direction ', async () => {
 
 test('hide dialog footer', async () => {
   const { container } = render(
-    <Dialog title="title" noFooter visible>
+    <Dialog title="title" footer={null} visible>
       content
     </Dialog>
   )
@@ -66,7 +66,7 @@ test('hide dialog title', async () => {
 
 test('tips dialog', async () => {
   const { container } = render(
-    <Dialog visible noCancelBtn>
+    <Dialog visible hideCancelButton>
       content
     </Dialog>
   )

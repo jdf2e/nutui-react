@@ -2,26 +2,17 @@ import React, { FunctionComponent, ReactNode, HTMLAttributes } from 'react'
 import classNames from 'classnames'
 
 interface ContentProps {
-  visible?: boolean
-  title?: ReactNode
-  footer?: ReactNode
-  textAlign?: string
-  footerDirection?: string
-  onClickSelf?: () => void
+  visible: boolean
+  title: ReactNode
+  footer: ReactNode
+  footerDirection: string
+  onClick: (e: MouseEvent) => void
 }
 
 export const Content: FunctionComponent<
-  Partial<ContentProps> & HTMLAttributes<HTMLDivElement>
+  Partial<ContentProps> & Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
-  const {
-    visible,
-    title,
-    footer,
-    textAlign,
-    footerDirection,
-    onClickSelf,
-    children,
-  } = props
+  const { visible, title, footer, footerDirection, onClick, children } = props
 
   let headerNode: ReactNode
   if (title) {
@@ -41,21 +32,18 @@ export const Content: FunctionComponent<
     )
   }
 
-  const handleClick = () => {
-    onClickSelf && onClickSelf()
+  const handleClick = (e: any) => {
+    onClick && onClick(e)
   }
 
   return (
-    <div className="nut-dialog__outer" onClick={handleClick}>
+    <div className="nut-dialog__outer" onClick={(e) => handleClick(e)}>
       <div
         className="nut-dialog"
         style={{ display: visible ? 'flex' : 'none' }}
       >
         {headerNode}
-        <div
-          className="nut-dialog__content"
-          style={{ textAlign } as React.CSSProperties}
-        >
+        <div className="nut-dialog__content">
           <div>{children}</div>
         </div>
         {footerNode}

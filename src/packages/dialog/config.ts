@@ -19,21 +19,18 @@ export interface BasicDialogProps {
   footer?: ReactNode
   confirmText?: ReactNode
   cancelText?: ReactNode
-  mask?: boolean
-  noOkBtn?: boolean
-  noCancelBtn?: boolean
-  okBtnDisabled?: boolean
-  noFooter?: boolean
-  closeOnClickOverlay?: boolean
+  overlay?: boolean
+  hideConfirmButton?: boolean
+  hideCancelButton?: boolean
+  disableConfirmButton?: boolean
+  closeOnOverlayClick?: boolean
   cancelAutoClose?: boolean
-  textAlign?: string
   footerDirection?: string
   lockScroll?: boolean
-  onClosed?: () => void
-  onOk?: (e?: MouseEvent) => Promise<() => void> | void
-  onCancel?: () => void
-  onClickSelf?: () => void
+  onClose?: () => void
   onConfirm?: (e?: MouseEvent) => Promise<() => void> | void
+  onCancel?: () => void
+  onClick?: () => void
 }
 
 export type DialogReturnProps = {

@@ -31,6 +31,7 @@
     word-wrap: break-word;
     word-break: break-all;
     white-space: pre-wrap;
+    text-align: $dialog-content-text-align;
   }
 
   &__footer {
@@ -70,16 +71,6 @@
   }
 }
 
-.nut-dialog__mask {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: $dialog-mask-background-color;
-  z-index: $dialog-mask-z-index;
-}
-
 .nut-dialog__wrap {
   position: fixed;
   overflow: auto;
@@ -87,7 +78,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: $dialog-mask-z-index;
+  z-index: $dialog-overlay-z-index;
   -webkit-overflow-scrolling: touch;
   outline: 0;
 }
@@ -97,9 +88,6 @@
   max-height: 100%;
   overflow-y: auto;
   background-color: $white;
-  -webkit-transition: -webkit-transform 0.2s;
-  transition: -webkit-transform 0.2s;
-  transition: transform 0.2s;
   transition: transform 0.2s, -webkit-transform 0.2s;
   -webkit-overflow-scrolling: touch;
   top: 50%;
@@ -129,8 +117,4 @@
 .fadeDialog-exit-active {
   opacity: 0;
   transition: opacity 1s cubic-bezier(0.3, 1.3, 0.3, 1);
-}
-
-.nut-overflow-hidden {
-  overflow: hidden !important;
 }

@@ -51,6 +51,7 @@ const DialogDemo = () => {
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <h2>{translated.title1}</h2>
         <Cell title={translated.basic} onClick={() => setVisible1(true)} />
         <Dialog
           title={translated.title1}
@@ -58,7 +59,7 @@ const DialogDemo = () => {
           visible={visible1}
           confirmText={translated.confirmText}
           cancelText={translated.cancelText}
-          onOk={() => setVisible1(false)}
+          onConfirm={() => setVisible1(false)}
           onCancel={() => setVisible1(false)}
         >
           {translated.content}
@@ -68,7 +69,7 @@ const DialogDemo = () => {
           visible={visible2}
           confirmText={translated.confirmText}
           cancelText={translated.cancelText}
-          onOk={() => setVisible2(false)}
+          onConfirm={() => setVisible2(false)}
           onCancel={() => setVisible2(false)}
         >
           {translated.content}
@@ -78,8 +79,8 @@ const DialogDemo = () => {
           title={translated.title1}
           visible={visible3}
           confirmText={translated.confirmText}
-          noCancelBtn
-          onOk={() => setVisible3(false)}
+          hideCancelButton
+          onConfirm={() => setVisible3(false)}
           onCancel={() => setVisible3(false)}
         >
           {translated.content}
@@ -92,12 +93,12 @@ const DialogDemo = () => {
           footerDirection="vertical"
           confirmText={translated.confirmText}
           cancelText={translated.cancelText}
-          onOk={() => setVisible4(false)}
+          onConfirm={() => setVisible4(false)}
           onCancel={() => setVisible4(false)}
         >
           {translated.content}
         </Dialog>
-        <div style={{ height: '200vh' }}></div>
+        <div style={{ height: '200vh' }} />
       </div>
     </>
   )
