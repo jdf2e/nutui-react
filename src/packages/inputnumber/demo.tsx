@@ -4,6 +4,7 @@ import { InputNumber } from './inputnumber'
 import ConfigProvider from '@/packages/configprovider'
 import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'
+import './demo.scss'
 
 interface ValState {
   val1: number | string
@@ -29,6 +30,7 @@ interface T {
   '3a42134b': string
   '65bafb1d': string
   '7e2394ae': string
+  '7e2394be': string
 }
 
 const customTheme = {
@@ -63,6 +65,7 @@ const InputNumberDemo = () => {
       '3a42134b': '支持小数点',
       '65bafb1d': '支持异步修改',
       '7e2394ae': '自定义按钮大小',
+      '7e2394be': '支持formatter',
     },
     'zh-TW': {
       '6333c786': '超出限制事件觸發',
@@ -77,6 +80,7 @@ const InputNumberDemo = () => {
       '3a42134b': '支持小數點',
       '65bafb1d': '支持異步修改',
       '7e2394ae': '自定義按鈕大小',
+      '7e2394be': '支持formatter',
     },
     'en-US': {
       '6333c786': 'Exceeded limit event triggered',
@@ -91,6 +95,7 @@ const InputNumberDemo = () => {
       '3a42134b': 'support decimal point',
       '65bafb1d': 'Support for asynchronous modification',
       '7e2394ae': 'custom button size',
+      '7e2394be': 'support formatter',
     },
   })
 
@@ -179,6 +184,28 @@ const InputNumberDemo = () => {
             modelValue={inputState.val8}
             buttonSize="30"
             inputWidth="50"
+          />
+        </Cell>
+
+        <h2>支持formatter</h2>
+        <Cell>
+          <InputNumber
+            className="format-width"
+            modelValue="1000"
+            min={10}
+            max={15020}
+            formatter={(value) =>
+              `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+            }
+          />
+        </Cell>
+        <Cell>
+          <InputNumber
+            className="format-width"
+            modelValue="100"
+            min={0}
+            max={100}
+            formatter={(value) => `${value}%`}
           />
         </Cell>
       </div>

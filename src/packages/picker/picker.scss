@@ -89,45 +89,45 @@
   align-items: center;
   justify-content: space-between;
   padding: $picker-bar-button-padding;
+}
 
-  .nut-picker__cancel-btn {
-    color: $picker-cancel-color;
-    font-size: $picker-bar-cancel-font-size;
-  }
+.nut-picker__cancel-btn {
+  color: $picker-cancel-color;
+  font-size: $picker-bar-cancel-font-size;
+}
 
-  .nut-picker__confirm-btn {
-    color: $picker-ok-color;
-    font-size: $picker-bar-ok-font-size;
-  }
+.nut-picker__confirm-btn {
+  color: $picker-ok-color;
+  font-size: $picker-bar-ok-font-size;
+}
 
-  .nut-picker__title {
-    flex: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    text-align: center;
-    color: $picker-bar-title-color;
-    font-size: $picker-bar-title-font-size;
-    font-weight: $picker-bar-title-font-weight;
-  }
+.nut-picker__title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  color: $picker-bar-title-color;
+  font-size: $picker-bar-title-font-size;
+  font-weight: $picker-bar-title-font-weight;
 }
 
 .nut-picker__panel {
   display: flex;
   position: relative;
+}
 
-  .nut-picker-indicator {
-    position: absolute;
-    top: 108px;
-    height: $picker-item-height;
-    width: 100%;
-    border: $picker-item-active-line-border;
-    border-left: 0;
-    border-right: 0;
-    color: $picker-item-text-color;
-    font-size: $picker-item-text-font-size;
-    z-index: 3;
-  }
+.nut-picker-indicator {
+  position: absolute;
+  top: 108px;
+  height: $picker-item-height;
+  width: 100%;
+  border: $picker-item-active-line-border;
+  border-left: 0;
+  border-right: 0;
+  color: $picker-item-text-color;
+  font-size: $picker-item-text-font-size;
+  z-index: 3;
 }
 
 .nut-picker-list {
@@ -136,83 +136,89 @@
   height: $picker-list-height;
   overflow: hidden;
   text-align: center;
+}
 
-  .nut-picker-list-panel {
-    transform-style: preserve-3d;
-  }
+.nut-picker-list-panel {
+  transform-style: preserve-3d;
+}
 
-  .nut-picker-mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: $picker-mask-bg-img;
-    background-position: top, bottom;
-    background-size: 100% 108px;
-    background-repeat: no-repeat;
-    z-index: 3;
-  }
+.nut-picker-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: $picker-mask-bg-img;
+  background-position: top, bottom;
+  background-size: 100% 108px;
+  background-repeat: no-repeat;
+  z-index: 3;
+}
 
-  .nut-picker-content,
-  .nut-picker-roller {
-    position: absolute;
-    top: 108px;
-    width: 100%;
-    height: $picker-item-height;
-  }
+.picker-view-panel {
+  height: $picker-list-height;
+  flex-grow: 1;
+}
 
-  .nut-picker-content {
-    background: #fff;
-    z-index: 2;
-    overflow: hidden;
-  }
+.nut-picker-content,
+.nut-picker-roller {
+  position: absolute;
+  top: 108px;
+  width: 100%;
+  height: $picker-item-height;
+}
 
-  .nut-picker-item,
-  .nut-picker-roller-item {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: $picker-item-height;
-    line-height: $picker-item-height;
-    color: $picker-item-text-color;
-    font-size: $picker-item-text-font-size;
-    text-align: center;
-  }
+.nut-picker-content {
+  background: #fff;
+  z-index: 2;
+  overflow: hidden;
+}
 
-  .nut-picker-item {
-    font-size: 16px;
-    background: #fff;
-  }
+.nut-picker-item,
+.nut-picker-roller-item {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: $picker-item-height;
+  line-height: $picker-item-height;
+  color: $picker-item-text-color;
+  font-size: $picker-item-text-font-size;
+  text-align: center;
+}
 
-  .nut-picker-roller {
-    z-index: 1;
-    transform-style: preserve-3d;
+.nut-picker-item {
+  font-size: 16px;
+  background: #fff;
+}
 
-    .nut-picker-roller-item {
-      backface-visibility: hidden;
-      -moz-backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      color: $gray1;
-    }
+.nut-picker-roller {
+  z-index: 1;
+  transform-style: preserve-3d;
+}
 
-    .nut-picker-roller-item-title {
-      display: block;
-      width: 100%;
-      height: 36px;
-      line-height: 36px;
-      color: $gray1;
-      font-size: $picker-bar-title-font-size;
-    }
+.nut-picker-roller-item {
+  backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  color: $gray1;
+}
 
-    .nut-picker-roller-item-hidden {
-      visibility: hidden;
-      opacity: 0;
-    }
-  }
+.nut-picker-roller-item-title {
+  display: block;
+  width: 100%;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  color: $gray1;
+  font-size: $picker-bar-title-font-size;
+}
+
+.nut-picker-roller-item-hidden {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .nut-picker-placeholder {

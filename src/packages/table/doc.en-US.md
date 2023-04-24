@@ -29,22 +29,22 @@ interface TableColumnProps {
 const App = () => {
   const [columns1, setColumns1] = useState([
     {
-      title: '姓名',
+      title: 'Name',
       key: 'name',
     },
     {
-      title: '性别',
+      title: 'Gender',
       key: 'sex',
       render: (record: any) => {
         return (
-          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
+          <span style={{ color: record.sex === 'Femal' ? 'blue' : 'green' }}>
             {record.sex}
           </span>
         )
       },
     },
     {
-      title: '学历',
+      title: 'Education',
       key: 'record',
     },
   ])
@@ -52,18 +52,18 @@ const App = () => {
   const [data1, setData1] = useState([
     {
       name: 'Tom',
-      sex: '男',
-      record: '小学',
+      sex: 'Male',
+      record: 'Primary',
     },
     {
       name: 'Lucy',
-      sex: '女',
-      record: '本科',
+      sex: 'Femal',
+      record: 'Undergraduate',
     },
     {
       name: 'Jack',
-      sex: '男',
-      record: '高中',
+      sex: 'Male',
+      record: 'Senior',
     },
   ])
 
@@ -90,16 +90,16 @@ interface TableColumnProps {
 const App = () => {
   const [columns2, setColumns2] = useState([
     {
-      title: '姓名',
+      title: 'Name',
       key: 'name',
       align: 'center',
     },
     {
-      title: '性别',
+      title: 'Gender',
       key: 'sex',
     },
     {
-      title: '学历',
+      title: 'Education',
       key: 'record',
     },
   ])
@@ -107,18 +107,18 @@ const App = () => {
   const [data1, setData1] = useState([
     {
       name: 'Tom',
-      sex: '男',
-      record: '小学',
+      sex: 'Male',
+      record: 'Primary',
     },
     {
       name: 'Lucy',
-      sex: '女',
-      record: '本科',
+      sex: 'Femal',
+      record: 'Undergraduate',
     },
     {
       name: 'Jack',
-      sex: '男',
-      record: '高中',
+      sex: 'Male',
+      record: 'Senior',
     },
   ])
 
@@ -142,22 +142,22 @@ import { Table, Button, Icon } from '@nutui/nutui-react';
 const App = () => {
   const [columns1, setColumns1] = useState([
     {
-      title: '姓名',
+      title: 'Name',
       key: 'name',
     },
     {
-      title: '性别',
+      title: 'Gender',
       key: 'sex',
       render: (record) => {
         return (
-          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
+          <span style={{ color: record.sex === 'Femal' ? 'blue' : 'green' }}>
             {record.sex}
           </span>
         )
       },
     },
     {
-      title: '学历',
+      title: 'Education',
       key: 'record',
     },
   ])
@@ -165,25 +165,25 @@ const App = () => {
   const [data1, setData1] = useState([
     {
       name: 'Tom',
-      sex: '男',
-      record: '小学',
+      sex: 'Male',
+      record: 'Primary',
     },
     {
       name: 'Lucy',
-      sex: '女',
-      record: '本科',
+      sex: 'Femal',
+      record: 'Undergraduate',
     },
     {
       name: 'Jack',
-      sex: '男',
-      record: '高中',
+      sex: 'Male',
+      record: 'Senior',
     },
   ])
 
   return <Table
     columns={columns1}
     data={data1}
-    summary="这是总结栏"
+    summary="summary"
 />;
 };
 export default App;
@@ -207,22 +207,22 @@ interface TableColumnProps {
 const App = () => {
   const [columns1, setColumns1] = useState([
     {
-      title: '姓名',
+      title: 'Name',
       key: 'name',
     },
     {
-      title: '性别',
+      title: 'Gender',
       key: 'sex',
       render: (record: any) => {
         return (
-          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
+          <span style={{ color: record.sex === 'Femal' ? 'blue' : 'green' }}>
             {record.sex}
           </span>
         )
       },
     },
     {
-      title: '学历',
+      title: 'Education',
       key: 'record',
     },
   ])
@@ -230,18 +230,18 @@ const App = () => {
   const [data1, setData1] = useState([
     {
       name: 'Tom',
-      sex: '男',
-      record: '小学',
+      sex: 'Male',
+      record: 'Primary',
     },
     {
       name: 'Lucy',
-      sex: '女',
-      record: '本科',
+      sex: 'Femal',
+      record: 'Undergraduate',
     },
     {
       name: 'Jack',
-      sex: '男',
-      record: '高中',
+      sex: 'Male',
+      record: 'Senior',
     },
   ])
 
@@ -272,22 +272,22 @@ interface TableColumnProps {
 const App = () => {
   const [columns1, setColumns1] = useState([
     {
-      title: '姓名',
+      title: 'Name',
       key: 'name',
     },
     {
-      title: '性别',
+      title: 'Gender',
       key: 'sex',
       render: (record: any) => {
         return (
-          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
+          <span style={{ color: record.sex === 'Femal' ? 'blue' : 'green' }}>
             {record.sex}
           </span>
         )
       },
     },
     {
-      title: '学历',
+      title: 'Education',
       key: 'record',
     },
   ])
@@ -295,18 +295,18 @@ const App = () => {
   const [data1, setData1] = useState([
     {
       name: 'Tom',
-      sex: '男',
-      record: '小学',
+      sex: 'Male',
+      record: 'Primary',
     },
     {
       name: 'Lucy',
-      sex: '女',
-      record: '本科',
+      sex: 'Femal',
+      record: 'Undergraduate',
     },
     {
       name: 'Jack',
-      sex: '男',
-      record: '高中',
+      sex: 'Male',
+      record: 'Senior',
     },
   ])
 
@@ -337,22 +337,22 @@ interface TableColumnProps {
 const App = () => {
   const [columns1, setColumns1] = useState([
     {
-      title: '姓名',
+      title: 'Name',
       key: 'name',
     },
     {
-      title: '性别',
+      title: 'Gender',
       key: 'sex',
       render: (record: any) => {
         return (
-          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
+          <span style={{ color: record.sex === 'Femal' ? 'blue' : 'green' }}>
             {record.sex}
           </span>
         )
       },
     },
     {
-      title: '学历',
+      title: 'Education',
       key: 'record',
     },
   ])
@@ -365,7 +365,7 @@ const App = () => {
         <Table
           columns={columns1}
           data={data2}
-          noData="这里是自定义展示"
+          noData="custom"
         />
     </>
   );
@@ -383,20 +383,20 @@ import { Table, Button, Icon } from '@nutui/nutui-react';
 const App = () => {
   const [columns4, setColumns4] = useState([
     {
-      title: '姓名',
+      title: 'Name',
       key: 'name',
       align: 'center',
     },
     {
-      title: '性别',
+      title: 'Gender',
       key: 'sex',
     },
     {
-      title: '学历',
+      title: 'Education',
       key: 'record',
     },
     {
-      title: '操作',
+      title: 'Operator',
       key: 'render',
     },
   ])
@@ -404,8 +404,8 @@ const App = () => {
   const [data4, setData4] = useState([
     {
       name: 'Tom',
-      sex: '男',
-      record: '小学',
+      sex: 'Male',
+      record: 'Primary',
       render: () => {
         return (
           <Button
@@ -420,16 +420,16 @@ const App = () => {
     },
     {
       name: 'Lucy',
-      sex: '女',
-      record: '本科',
+      sex: 'Femal',
+      record: 'Undergraduate',
       render: () => {
         return <Icon name="dongdong" size="14px" />
       },
     },
     {
       name: 'Jack',
-      sex: '男',
-      record: '高中',
+      sex: 'Male',
+      record: 'Senior',
       render: () => {
         return (
           <Button
@@ -437,7 +437,7 @@ const App = () => {
             size="small"
             onClick={() => window.open('https://www.jd.com')}
           >
-            <div>跳转到京东</div>
+            <div>JD</div>
           </Button>
         )
       },
@@ -457,70 +457,53 @@ import  React, { useState } from "react";
 import { Table, Button, Icon } from '@nutui/nutui-react';
 
 const App = () => {
-  const [columns4, setColumns4] = useState([
+  const [columns1, setColumns1] = useState([
     {
-      title: '姓名',
+      title: 'Name',
       key: 'name',
-      align: 'center',
     },
     {
-      title: '性别',
+      title: 'Gender',
       key: 'sex',
+      render: (record: any) => {
+        return (
+          <span style={{ color: record.sex === 'Femal' ? 'blue' : 'green' }}>
+            {record.sex}
+          </span>
+        )
+      },
     },
     {
-      title: '学历',
+      title: 'Education',
       key: 'record',
-    },
-    {
-      title: '操作',
-      key: 'render',
     },
   ])
 
-  const [data4, setData4] = useState([
+  const [data3, setData3] = useState([] as any)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setData3([
     {
       name: 'Tom',
-      sex: '男',
-      record: '小学',
-      render: () => {
-        return (
-          <Button
-            onClick={() => Toast.text('hello')}
-            size="small"
-            type="primary"
-          >
-            <div>Hello</div>
-          </Button>
-        )
-      },
+      sex: 'Male',
+      record: 'Primary',
     },
     {
       name: 'Lucy',
-      sex: '女',
-      record: '本科',
-      render: () => {
-        return <Icon name="dongdong" size="14px" />
-      },
+      sex: 'Femal',
+      record: 'Undergraduate',
     },
     {
       name: 'Jack',
-      sex: '男',
-      record: '高中',
-      render: () => {
-        return (
-          <Button
-            type="success"
-            size="small"
-            onClick={() => window.open('https://www.jd.com')}
-          >
-            <div>跳转到京东</div>
-          </Button>
-        )
-      },
+      sex: 'Male',
+      record: 'Senior',
     },
   ])
+    }, 5000)
+  }, [])
 
-  return <Table columns={columns4} data={data4} />;
+  return <Table columns={columns1} data={data3} />;
 };
 export default App;
 ```
@@ -533,70 +516,61 @@ import  React, { useState } from "react";
 import { Table, Button, Icon } from '@nutui/nutui-react';
 
 const App = () => {
-  const [columns4, setColumns4] = useState([
+  const [columns, setColumns] = useState([
     {
-      title: '姓名',
+      title: 'Name',
       key: 'name',
       align: 'center',
+      sorter: true,
     },
     {
-      title: '性别',
+      title: 'Gender',
       key: 'sex',
     },
     {
-      title: '学历',
+      title: 'Education',
       key: 'record',
     },
     {
-      title: '操作',
-      key: 'render',
+      title: 'Age',
+      key: 'age',
+      sorter: (row1: any, row2: any) => {
+        return row1.age - row2.age
+      },
     },
   ])
 
-  const [data4, setData4] = useState([
+  const [data, setData] = useState([
     {
       name: 'Tom',
-      sex: '男',
-      record: '小学',
-      render: () => {
-        return (
-          <Button
-            onClick={() => Toast.text('hello')}
-            size="small"
-            type="primary"
-          >
-            <div>Hello</div>
-          </Button>
-        )
-      },
+      sex: 'Male',
+      record: 'Primary',
+      age: 10,
     },
     {
       name: 'Lucy',
-      sex: '女',
-      record: '本科',
-      render: () => {
-        return <Icon name="dongdong" size="14px" />
-      },
+      sex: 'Femal',
+      record: 'Undergraduate',
+      age: 30,
     },
     {
       name: 'Jack',
-      sex: '男',
-      record: '高中',
-      render: () => {
-        return (
-          <Button
-            type="success"
-            size="small"
-            onClick={() => window.open('https://www.jd.com')}
-          >
-            <div>跳转到京东</div>
-          </Button>
-        )
-      },
+      sex: 'Male',
+      record: 'Senior',
+      age: 4,
     },
   ])
 
-  return <Table columns={columns4} data={data4} />;
+  const handleSorter = (item, data) => {
+    Toast.text(`${JSON.stringify(item)}`)
+    setData([...data])
+  }
+  return <Table
+    columns={columns}
+    data={data}
+    onSorter={handleSorter}
+    style={{ background: '#fff' }}
+  />;
 };
 export default App;
 ```

@@ -11,6 +11,7 @@ interface Idata {
   number: string
   digit: string
   tel: string
+  nickname: string
   readonly: string
   disabled: string
   showIcon: string
@@ -43,9 +44,10 @@ const InputDemo = () => {
       title10: '点击事件',
       text: '文本',
       password: '密码',
-      number: '数字',
-      digit: '整数',
+      number: '数字(弹出数字键盘)',
+      digit: '数字(弹出小数点的数字键盘)',
       tel: '手机号',
+      nickname: '昵称',
       readonly: '只读',
       disabled: '禁用',
       icon: '显示图标',
@@ -80,9 +82,10 @@ const InputDemo = () => {
       title10: 'Click Event',
       text: 'Text',
       password: 'Password',
-      number: 'Number',
-      digit: 'Digit',
+      number: 'Number(Popup Numeric Keypad)',
+      digit: 'Digit(Popup Numeric Keypad With Decimal Point)',
       tel: 'Tel',
+      nickname: 'Nickname',
       readonly: 'Readonly',
       disabled: 'Disabled',
       icon: 'Show Icon',
@@ -208,6 +211,13 @@ const InputDemo = () => {
           placeholder={translated.tel}
           defaultValue={state.tel}
           type="tel"
+        />
+        <Input
+          name="nickname"
+          label={translated.nickname}
+          placeholder={translated.nickname}
+          type="nickname"
+          onChange={(val) => console.log('onChange', val)}
         />
         <h2>{translated.title2}</h2>
         <Input

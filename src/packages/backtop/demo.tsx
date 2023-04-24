@@ -44,11 +44,7 @@ const BackTopDemo = () => {
 
   return (
     <>
-      <div
-        className="demo"
-        style={{ height: '1300px', overflowY: 'auto' }}
-        id="elId"
-      >
+      <div className="demo" style={{ height: '100vh' }} id="elId">
         <h2>{translated.title}</h2>
         <div className="text-data" style={cellStyle}>
           {translated.content}1
@@ -123,6 +119,7 @@ const BackTopDemo = () => {
           {translated.content}24
         </div>
         <BackTop
+          elId="elId"
           className="custom-class"
           distance={100}
           bottom={110}

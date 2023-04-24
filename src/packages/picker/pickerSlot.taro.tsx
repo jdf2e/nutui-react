@@ -43,7 +43,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const INERTIA_TIME = 300
   const INERTIA_DISTANCE = 15
   const [currIndex, setCurrIndex] = useState(1)
-  // let lineSpacing = 36
   const lineSpacing = useRef(36)
 
   const [touchTime, setTouchTime] = useState(0)
@@ -52,7 +51,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const moving = useRef(false)
   let timer: number | undefined
 
-  const listbox = useRef<any>(null)
+  const listRef = useRef<any>(null)
   const rollerRef = useRef<any>(null)
   const pickerSlotRef = useRef<any>(null)
 
@@ -79,10 +78,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     if (type !== 'end') {
       nTime = 0
     }
-
     setTouchTime(nTime)
     setTouchDeg(deg)
-
     setScrollDistance(translateY)
   }
 
@@ -105,7 +102,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
       }deg`
 
       setTransform(endMove, type, time, deg)
-
       setCurrIndex(Math.abs(Math.round(endMove / lineSpacing.current)) + 1)
     } else {
       let deg = 0
@@ -114,7 +110,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
       // picker 滚动的最大角度
       const maxDeg = (listData.length + 1) * rotation
       const minDeg = 0
-
       deg = Math.min(Math.max(currentDeg, minDeg), maxDeg)
 
       if (minDeg < deg && deg < maxDeg) {
@@ -159,7 +154,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     } else {
       setMove(move, 'end')
     }
-
     setTimeout(() => {
       touch.reset()
     }, 0)
@@ -225,7 +219,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   }
 
   const getReference = async () => {
-    const refe = await getRectByTaro(listbox?.current)
+    const refe = await getRectByTaro(listRef?.current)
     lineSpacing.current = refe.height ? refe.height : 36
     modifyStatus(true)
   }
@@ -317,9 +311,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
             )
           })}
       </div>
-
       <div className="nut-picker-mask" />
-      <div className="nut-picker-indicator" ref={listbox} />
+      <div className="nut-picker-indicator" ref={listRef} />
     </div>
   )
 }

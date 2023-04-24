@@ -1,23 +1,24 @@
-#  Table组件
+# Table组件
 
 ### 介绍
 
 用于展示基础表格
 
 ### 安装
+
 ```ts
 // react
 import { Table } from '@nutui/nutui-react';
 ```
-
 
 ## 代码演示
 
 ### 基本用法
 
 :::demo
+
 ```tsx
-import  React, { useState } from "react";
+import React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
 
 interface TableColumnProps {
@@ -73,12 +74,15 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 是否显示边框，文字对齐
+
 :::demo
+
 ```tsx
-import  React, { useState } from "react";
+import React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
 
 interface TableColumnProps {
@@ -125,20 +129,22 @@ const App = () => {
   ])
 
   return <Table
-        columns={columns2}
-        data={data1}
-        bordered={false}
-    />;
+    columns={columns2}
+    data={data1}
+    bordered={false}
+  />;
 };
 export default App;
 ```
+
 :::
 
-
 ### 显示总结栏
+
 :::demo
+
 ```tsx
-import  React, { useState } from "react";
+import React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
 
 interface TableColumnProps {
@@ -194,16 +200,19 @@ const App = () => {
     columns={columns1}
     data={data1}
     summary="这是总结栏"
-/>;
+  />;
 };
 export default App;
 ```
+
 :::
 
 ### 条纹、明暗交替
+
 :::demo
+
 ```tsx
-import  React, { useState } from "react";
+import React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
 
 interface TableColumnProps {
@@ -256,19 +265,22 @@ const App = () => {
   ])
 
   return <Table
-        columns={columns1}
-        data={data1}
-        striped
-    />;
+    columns={columns1}
+    data={data1}
+    striped
+  />;
 };
 export default App;
 ```
+
 :::
 
 ### 隐藏表头
+
 :::demo
+
 ```tsx
-import  React, { useState } from "react";
+import React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
 
 interface TableColumnProps {
@@ -321,19 +333,22 @@ const App = () => {
   ])
 
   return <Table
-        columns={columns1}
-        data={data1}
-        showHeader={false}
-    />;
+    columns={columns1}
+    data={data1}
+    showHeader={false}
+  />;
 };
 export default App;
 ```
+
 :::
 
 ### 无数据默认展示，支持自定义
+
 :::demo
+
 ```tsx
-import  React, { useState } from "react";
+import React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
 
 interface TableColumnProps {
@@ -371,23 +386,26 @@ const App = () => {
 
   return (
     <>
-        <Table columns={columns1} data={data2} />
-        <Table
-          columns={columns1}
-          data={data2}
-          noData="这里是自定义展示"
-        />
+      <Table columns={columns1} data={data2} />
+      <Table
+        columns={columns1}
+        data={data2}
+        noData="这里是自定义展示"
+      />
     </>
   );
 };
 export default App;
 ```
+
 :::
 
 ### 自定义单元格
+
 :::demo
+
 ```tsx
-import  React, { useState } from "react";
+import React, { useState } from "react";
 import { Table, Button, Icon } from '@nutui/nutui-react';
 
 const App = () => {
@@ -458,96 +476,86 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 支持异步渲染(5s之后看效果)
+
 :::demo
+
 ```tsx
-import  React, { useState } from "react";
+import React, { useEffect, useState } from 'react'
 import { Table, Button, Icon } from '@nutui/nutui-react';
 
 const App = () => {
-  const [columns4, setColumns4] = useState([
+  const [columns1, setColumns1] = useState([
     {
       title: '姓名',
       key: 'name',
-      align: 'center',
     },
     {
       title: '性别',
       key: 'sex',
+      render: (record: any) => {
+        return (
+          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
+            {record.sex}
+          </span>
+        )
+      },
     },
     {
       title: '学历',
       key: 'record',
     },
-    {
-      title: '操作',
-      key: 'render',
-    },
   ])
 
-  const [data4, setData4] = useState([
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-      render: () => {
-        return (
-          <Button
-            onClick={() => Toast.text('hello')}
-            size="small"
-            type="primary"
-          >
-            <div>Hello</div>
-          </Button>
-        )
-      },
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-      render: () => {
-        return <Icon name="dongdong" size="14px" />
-      },
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-      render: () => {
-        return (
-          <Button
-            type="success"
-            size="small"
-            onClick={() => window.open('https://www.jd.com')}
-          >
-            <div>跳转到京东</div>
-          </Button>
-        )
-      },
-    },
-  ])
+  const [data3, setData3] = useState([] as any)
 
-  return <Table columns={columns4} data={data4} />;
+  useEffect(() => {
+    setTimeout(() => {
+      setData3([
+        {
+          name: 'Tom',
+          sex: '男',
+          record: '小学',
+        },
+        {
+          name: 'Lucy',
+          sex: '女',
+          record: '本科',
+        },
+        {
+          name: 'Jack',
+          sex: '男',
+          record: '高中',
+        },
+      ])
+    }, 5000)
+  }, [])
+
+  return <Table columns={columns1} data={data3} />;
 };
 export default App;
 ```
+
 :::
 
 ### 支持排序
+
 :::demo
+
 ```tsx
-import  React, { useState } from "react";
+import React, { useState } from "react";
 import { Table, Button, Icon } from '@nutui/nutui-react';
 
 const App = () => {
-  const [columns4, setColumns4] = useState([
+  const [columns, setColumns] = useState([
     {
       title: '姓名',
       key: 'name',
       align: 'center',
+      sorter: true,
     },
     {
       title: '性别',
@@ -558,60 +566,50 @@ const App = () => {
       key: 'record',
     },
     {
-      title: '操作',
-      key: 'render',
+      title: '年龄',
+      key: 'age',
+      sorter: (row1: any, row2: any) => {
+        return row1.age - row2.age
+      },
     },
   ])
 
-  const [data4, setData4] = useState([
+  const [data, setData] = useState([
     {
       name: 'Tom',
       sex: '男',
       record: '小学',
-      render: () => {
-        return (
-          <Button
-            onClick={() => Toast.text('hello')}
-            size="small"
-            type="primary"
-          >
-            <div>Hello</div>
-          </Button>
-        )
-      },
+      age: 10,
     },
     {
       name: 'Lucy',
       sex: '女',
       record: '本科',
-      render: () => {
-        return <Icon name="dongdong" size="14px" />
-      },
+      age: 30,
     },
     {
       name: 'Jack',
       sex: '男',
       record: '高中',
-      render: () => {
-        return (
-          <Button
-            type="success"
-            size="small"
-            onClick={() => window.open('https://www.jd.com')}
-          >
-            <div>跳转到京东</div>
-          </Button>
-        )
-      },
+      age: 4,
     },
   ])
 
-  return <Table columns={columns4} data={data4} />;
+  const handleSorter = (item, data) => {
+    Toast.text(`${JSON.stringify(item)}`)
+    setData([...data])
+  }
+  return <Table
+    columns={columns}
+    data={data}
+    onSorter={handleSorter}
+    style={{ background: '#fff' }}
+  />;
 };
 export default App;
 ```
-:::
 
+:::
 
 ## API
 
@@ -619,32 +617,29 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| bordered         | 是否显示边框 | 	boolean | `true`                |
-| columns         | 表头数据 | 	TableColumnProps[] | `[]`                |
-| data         | 表格数据 | 	Object[] | `[]`                |
-| summary         | 是否显示简介 | 	ReactNode | -                |
-| striped         | 条纹是否明暗交替 | 	boolean | `false`                |
-| showHeader`v1.4.11`         | 是否显示表头 | 	boolean | `true`                |
-| noData         | 自定义无数据 | 	ReactNode | -                |
+| bordered         | 是否显示边框 |  boolean | `true`                |
+| columns         | 表头数据 |  TableColumnProps[] | `[]`                |
+| data         | 表格数据 |  Object[] | `[]`                |
+| summary         | 是否显示简介 |  ReactNode | -                |
+| striped         | 条纹是否明暗交替 |  boolean | `false`                |
+| showHeader`v1.4.11`         | 是否显示表头 |  boolean | `true`                |
+| noData         | 自定义无数据 |  ReactNode | -                |
 
 ### TableColumnProps
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| key         | 列的唯一标识 | 	string | -                |
-| title         | 表头标题 | 	string | -                |
-| align         | 列的对齐方式，可选值left,center,right | 	string | `left`                |
-| sorter         | 排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法 | 	boolean \| Function \| string | -                |
-| render         | 自定义渲染列数据，优先级高 | 	Function(record) | -                |
-
-
+| key         | 列的唯一标识 |  string | -                |
+| title         | 表头标题 |  string | -                |
+| align         | 列的对齐方式，可选值left,center,right |  string | `left`                |
+| sorter         | 排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法 |  boolean \| Function \| string | -                |
+| render         | 自定义渲染列数据，优先级高 |  Function(record) | -                |
 
 ### Events
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
 | onSorter  | 点击排序按钮触发 | `item: TableColumnProps, data: Array<any>` |
-
 
 ## 主题定制
 

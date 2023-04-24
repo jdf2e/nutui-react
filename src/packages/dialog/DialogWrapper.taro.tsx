@@ -12,7 +12,8 @@ interface DialogWrapperProps {
 }
 
 export const DialogWrapper: FunctionComponent<
-  Partial<DialogWrapperProps> & Omit<HTMLAttributes<HTMLDivElement>, 'title'>
+  Partial<DialogWrapperProps> &
+    Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content'>
 > = (props) => {
   const { visible, lockScroll } = props
 

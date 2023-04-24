@@ -1,3 +1,49 @@
+# v1.5.1
+`2023-04-19`
+
+
+* :bug: fix: 修改inputnumber微信小程序的带小数点的键盘 (#907) @junjun666
+* :bug: fix: 修复uploader组件编译xhr报错的问题 (#916) @junjun666
+* 🔨 chore: 开发编译兼容taro 3.6.5版本 (#911) @junjun666
+
+
+
+# v1.5.0
+`2023-04-12`
+
+* :sparkles: feat: steps 组件增加 demo，支持点+icon混合使用 (#899) @xiaoyatong
+* :bug: fix: backtop 第一次滚动时会卡住 (#901) @oasis-cloud
+* :bug: fix: input 组件 type 为数字类型时唤起键盘与微信不一致 (#880) @刘正午
+* :bug: fix: shortpassword 获得焦点后输入显示字符 (#898) @oasis-cloud
+* 📖 docs: table 文档内容和 demo 对齐 (#900) @oasis-cloud
+
+
+# v1.4.14
+`2023-04-06`
+
+* :sparkles: feat: 新增inputnumber组件formatter格式化属性 (#863) @junjun666
+* :bug: fix(input): 修复 nickname 类型获取值失败的问题 (#867) @eiinu
+* :bug: fix: datepicker 选择日期时分秒时页面穿透滚动 (#860) @刘正午
+* :bug: fix: grid-item 组件设置 className 后丢失了原有的 nut-grid-item 样式类 (#872) @刘正午
+* :bug: fix: picker组件适配Taro的实现，修改为原生支持，解决数据量大时卡顿问题 (#885) @xiaoyatong
+* :bug: fix: tabs 组件paneKey为空字符串时返回索引问题 (#870) @刘正午
+* :bug: fix: 修复 textarea 组件 maxlength 属性未生效 (#866) @oasis-cloud
+* 🔨 chore: datepicker 组件 taro 版本修复类型报错 @oasis-cloud
+* 🔨 chore: 修改本地开发切换到移动端路径跳转错误 (#874) @junjun666
+* 🔨 chore: 补充并优化package.json进行规则分类 (#873) @junjun666
+
+# v1.4.13
+`2023-03-29`
+
+* :bug: fix(dialog): 修复Dialog.confirm弹框关闭后dom没有移除问题 (#851) @拧巴的猫
+* :bug: fix(Elevator): 组件瘦身+taro h5适配 (#858) @拧巴的猫
+* :bug: fix(picker): 修复taro版本滚动报错问题 (#852) @拧巴的猫
+* :bug: fix(range): 修复 a11y 属性并补全组件的单元测试 (#849) @AnteeHub
+* :bug: fix: taro-v3.6.12 complier @junjun666
+* :bug: fix: 修复input 的errorMessage显隐导致input失焦问题 (#827) @Penguin-Lin
+* 📖 docs: imagepreview 组件增加点击缩略图切换示例 (#854) @oasis-cloud
+
+
 # v1.4.12
 `2023-03-22`
 

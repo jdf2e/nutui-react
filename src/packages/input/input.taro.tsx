@@ -229,11 +229,10 @@ export const Input: FunctionComponent<
     trigger: InputFormatTrigger = 'onChange'
   ) => {
     let val = value
-
-    if (type === 'digit' || type === 'tel') {
+    if (type === 'tel') {
       val = formatNumber(val, false, false)
     }
-    if (type === 'number') {
+    if (['number', 'digit'].includes(type)) {
       val = formatNumber(val, true, true)
     }
     if (type === 'tel' && !formatter) {
@@ -280,7 +279,7 @@ export const Input: FunctionComponent<
     if (maxlength && val.length > Number(maxlength)) {
       val = val.slice(0, Number(maxlength))
     }
-    updateValue(getModelValue(), 'onBlur')
+    updateValue(val, 'onBlur')
     onBlur && onBlur(val, event)
   }
 
@@ -303,11 +302,8 @@ export const Input: FunctionComponent<
   }
 
   const inputType = (type: string) => {
-    if (type === 'number') {
+    if (type === 'tel') {
       return 'text'
-    }
-    if (type === 'digit') {
-      return 'tel'
     }
     return type
   }
