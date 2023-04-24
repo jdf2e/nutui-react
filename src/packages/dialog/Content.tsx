@@ -14,22 +14,24 @@ export const Content: FunctionComponent<
 > = (props) => {
   const { visible, title, footer, footerDirection, onClick, children } = props
 
-  let headerNode: ReactNode
-  if (title) {
-    headerNode = <div className="nut-dialog__header">{title}</div>
+  const classPrefix = 'nut-dialog'
+
+  const renderHeader = () => {
+    return title ? (
+      <div className={`${classPrefix}__header`}>{title}</div>
+    ) : null
   }
 
-  let footerNode: ReactNode
-  if (footer) {
-    footerNode = (
+  const renderFooter = () => {
+    return footer ? (
       <div
-        className={classNames('nut-dialog__footer', {
+        className={classNames(`${classPrefix}__footer`, {
           [footerDirection as any]: footerDirection,
         })}
       >
         {footer}
       </div>
-    )
+    ) : null
   }
 
   const handleClick = (e: any) => {
@@ -37,16 +39,16 @@ export const Content: FunctionComponent<
   }
 
   return (
-    <div className="nut-dialog__outer" onClick={(e) => handleClick(e)}>
+    <div className={`${classPrefix}__outer`} onClick={(e) => handleClick(e)}>
       <div
-        className="nut-dialog"
+        className={classPrefix}
         style={{ display: visible ? 'flex' : 'none' }}
       >
-        {headerNode}
-        <div className="nut-dialog__content">
-          <div>{children}</div>
+        {renderHeader()}
+        <div className={`${classPrefix}__content`}>
+          <>{children}</>
         </div>
-        {footerNode}
+        {renderFooter()}
       </div>
     </div>
   )

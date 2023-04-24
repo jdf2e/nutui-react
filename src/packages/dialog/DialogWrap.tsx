@@ -1,5 +1,4 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react'
-import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { Content } from './Content'
 import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
@@ -35,8 +34,6 @@ export const DialogWrap: FunctionComponent<
     Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content' | 'onClick'>
 > = (props) => {
   const {
-    className,
-    style,
     visible,
     overlay,
     overlayStyle,
@@ -48,34 +45,17 @@ export const DialogWrap: FunctionComponent<
     onClickOverlay,
   } = props
 
-  const classPrefix = 'nut-dialog'
-  const baseStyle = {
-    // zIndex: index,
-    // animationDuration: `${duration}s`,
-  }
   const overlayStyles = {
     ...overlayStyle,
-    ...baseStyle,
   }
 
   const onHandleClickOverlay = (e: any) => {
     console.log('onClose?.()', closeOnOverlayClick)
-    if (closeOnOverlayClick) {
+    if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onClickOverlay && onClickOverlay(e)
       closed && onClose?.()
+      closed && onCancel?.()
     }
-  }
-
-  const handleClick = (e: any) => {
-    if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
-      onClose?.()
-      onCancel?.()
-    }
-  }
-
-  const wrapStyle = {
-    ...style,
-    display: visible ? 'block' : 'none',
   }
 
   return (
@@ -87,8 +67,7 @@ export const DialogWrap: FunctionComponent<
           visible
           closeOnOverlayClick={closeOnOverlayClick}
           lockScroll={lockScroll}
-          // duration={duration}
-          onClick={(e) => onHandleClickOverlay(e)}
+          onClick={onHandleClickOverlay}
         />
       ) : null}
 
@@ -99,13 +78,7 @@ export const DialogWrap: FunctionComponent<
         unmountOnExit
         appear
       >
-        <div
-          className={classNames(`${classPrefix}__wrap`, className)}
-          onClick={handleClick}
-          style={wrapStyle}
-        >
-          <Content {...props} visible={visible} />
-        </div>
+        <Content {...props} visible={visible} />
       </CSSTransition>
     </>
   )

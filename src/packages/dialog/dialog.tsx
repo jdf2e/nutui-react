@@ -7,6 +7,7 @@ import classNames from 'classnames'
 import Button from '@/packages/button'
 import confirm from './Confirm'
 import { DialogWrap } from './DialogWrap'
+import { useConfig } from '@/packages/configprovider'
 import {
   BasicDialogProps,
   DialogReturnProps,
@@ -16,10 +17,10 @@ import {
 
 export type DialogProps = BasicDialogProps
 const defaultProps = {
-  confirmText: '确认',
-  cancelText: '取消',
+  confirmText: '',
+  cancelText: '',
   overlay: true,
-  closeOnClickOverlay: true,
+  closeOnOverlayClick: true,
   hideConfirmButton: false,
   hideCancelButton: false,
   disableConfirmButton: false,
@@ -32,6 +33,7 @@ const BaseDialog: ForwardRefRenderFunction<
   unknown,
   Partial<DialogProps> & HTMLAttributes<HTMLDivElement>
 > = (props, ref) => {
+  const { locale } = useConfig()
   const {
     visible,
     footer,
@@ -40,6 +42,7 @@ const BaseDialog: ForwardRefRenderFunction<
     lockScroll,
     disableConfirmButton,
     cancelAutoClose,
+    closeOnOverlayClick,
     confirmText,
     cancelText,
     onClose,
@@ -55,7 +58,6 @@ const BaseDialog: ForwardRefRenderFunction<
     const handleCancel = (e: MouseEvent) => {
       e.stopPropagation()
       if (!cancelAutoClose) return
-
       onClose?.()
       onCancel?.()
     }
@@ -74,9 +76,9 @@ const BaseDialog: ForwardRefRenderFunction<
             fill="outline"
             type="primary"
             className={`${classPrefix}__footer-cancel`}
-            onClick={handleCancel}
+            onClick={(e) => handleCancel(e)}
           >
-            {cancelText}
+            {cancelText || locale.cancel}
           </Button>
         )}
         {!hideConfirmButton && (
@@ -87,9 +89,9 @@ const BaseDialog: ForwardRefRenderFunction<
               disabled: disableConfirmButton,
             })}
             disabled={disableConfirmButton}
-            onClick={handleOk}
+            onClick={(e) => handleOk(e)}
           >
-            {confirmText}
+            {confirmText || locale.confirm}
           </Button>
         )}
       </>
@@ -101,7 +103,7 @@ const BaseDialog: ForwardRefRenderFunction<
   return (
     <div style={{ display: visible ? 'block' : 'none' }}>
       <DialogWrap
-        {...restProps}
+        {...props}
         visible={visible}
         lockScroll={lockScroll}
         footer={renderFooter()}

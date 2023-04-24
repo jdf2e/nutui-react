@@ -11,18 +11,18 @@ const defaultProps = {
   confirmText: '',
   cancelText: '',
   overlay: true,
-  closeOnClickOverlay: true,
+  closeOnOverlayClick: true,
   hideConfirmButton: false,
   hideCancelButton: false,
   disableConfirmButton: false,
   cancelAutoClose: true,
   footerDirection: 'horizontal',
   lockScroll: false,
-} as BasicDialogProps
+} as DialogProps
 
 export const BaseDialog = forwardRef(
   (
-    props: Partial<BasicDialogProps> &
+    props: Partial<DialogProps> &
       Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'content'>,
     ref
   ) => {
@@ -35,6 +35,7 @@ export const BaseDialog = forwardRef(
       lockScroll,
       disableConfirmButton,
       cancelAutoClose,
+      closeOnOverlayClick,
       confirmText,
       cancelText,
       onClose,
@@ -98,7 +99,7 @@ export const BaseDialog = forwardRef(
         catchMove={lockScroll}
       >
         <DialogWrap
-          {...restProps}
+          {...props}
           visible={visible}
           lockScroll={lockScroll}
           footer={renderFooter()}

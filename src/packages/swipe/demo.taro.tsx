@@ -322,7 +322,7 @@ const SwipeDemo = () => {
         <Dialog
           visible={showDialog}
           title={translated.tips}
-          onClosed={() => {
+          onClose={() => {
             refDom.current && refDom.current.close()
             setShowDialog(false)
           }}

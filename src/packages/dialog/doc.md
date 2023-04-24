@@ -117,7 +117,7 @@ export default App;
 | hideConfirmButton | 是否隐藏确定按钮 | boolean | `false` |
 | hideCancelButton | 是否隐藏取消按钮 | boolean | `false` |
 | disableConfirmButton | 禁用确定按钮 | boolean | `false` |
-| closeOnClickOverlay | 点击蒙层是否关闭对话框 | boolean | `true`              |
+| closeOnOverlayClick | 点击蒙层是否关闭对话框 | boolean | `true`              |
 | cancelAutoClose | 取消按钮是否默认关闭弹窗 | boolean | `true`              |
 | footerDirection | 使用横纵方向 可选值 horizontal、vertical | string | `horizontal` |
 | lockScroll | 背景是否锁定 | boolean | `false`              |

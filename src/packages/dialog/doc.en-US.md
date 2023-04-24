@@ -117,7 +117,7 @@ export default App;
 | hideConfirmButton          | Whether to hide the OK button | boolean | `false`              |
 | hideCancelButton          | Whether to hide the cancel button | boolean | `false`              |
 | disableConfirmButton          | Disable the OK button | boolean | `false`              |
-| closeOnClickOverlay          | Click on whether to close the dialog box                        | boolean | `true`              |
+| closeOnOverlayClick          | Click on whether to close the dialog box                        | boolean | `true`              |
 | cancelAutoClose          | Cancel the button to close the pop -up window by default                        | boolean | `true`              |
 | footerDirection          |Use horizontal and vertical direction value selection horizontal、vertical  | string | `horizontal`             |
 | lockScroll          | Whether the background is locked                        | boolean | `false`              |

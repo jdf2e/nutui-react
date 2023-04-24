@@ -10,6 +10,8 @@ interface T {
   tipDialog: string
   title: string
   title1: string
+  title2: string
+  title3: string
   content: string
   tips: string
   confirmText: string
@@ -24,8 +26,10 @@ const DialogDemo = () => {
       noTitle: '无标题弹框',
       tipDialog: '提示弹框',
       tips: '提示',
-      title: '底部按钮 垂直使用',
+      title: '底部按钮 垂直布局 使用',
       title1: '标签式使用',
+      title2: '无底部 Footer 区域',
+      title3: '底部 Footer 为 Button 时，点击遮罩不关闭',
       content: '支持函数调用和组件调用两种方式。',
       confirmText: '确定',
       cancelText: '取消',
@@ -38,6 +42,8 @@ const DialogDemo = () => {
       tips: 'Tips',
       title: 'Bottom button vertical use',
       title1: 'Template use',
+      title2: 'no Footer',
+      title3: 'Footer Button, and does not close when click overlay',
       content: 'Function call and template call are supported.',
       confirmText: 'confirm',
       cancelText: 'cancel',
@@ -47,6 +53,7 @@ const DialogDemo = () => {
   const [visible1, setVisible1] = useState(false)
   const [visible2, setVisible2] = useState(false)
   const [visible3, setVisible3] = useState(false)
+  const [visible4, setVisible4] = useState(false)
 
   return (
     <>
@@ -122,9 +129,23 @@ const DialogDemo = () => {
         >
           {translated.content}
         </Dialog>
-        <Cell title={translated.title} onClick={() => setVisible3(true)} />
+        <Cell title={translated.title3} onClick={() => setVisible4(true)} />
         <Dialog
-          title={translated.title1}
+          title={translated.title3}
+          visible={visible4}
+          lockScroll
+          footerDirection="vertical"
+          closeOnOverlayClick={false}
+          confirmText={translated.confirmText}
+          cancelText={translated.cancelText}
+          onConfirm={() => setVisible4(false)}
+          onCancel={() => setVisible4(false)}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell title={translated.title2} onClick={() => setVisible3(true)} />
+        <Dialog
+          title={translated.title2}
           visible={visible3}
           lockScroll
           footerDirection="vertical"
@@ -135,7 +156,6 @@ const DialogDemo = () => {
         >
           {translated.content}
         </Dialog>
-        <div style={{ height: '200vh' }} />
       </div>
     </>
   )

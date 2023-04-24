@@ -152,6 +152,8 @@
 - 修改 onOk 为 onConfirm，规范命名。
 - 修改 onClosed 为 onClose，规范命名，关闭时触发。
 - 修改 onClickSelf 为 onClick，语义不变，仍表示点击弹框自身时触发事件。
+- 增加 overlayStyle 和 overlayClassName，用来配置 Overlay 组件样式。
+- 增加 onClickOverlay，支持点击overlay时，触发事件。
 
 #### Drag
 #### Infiniteloading
