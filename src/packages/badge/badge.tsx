@@ -4,13 +4,12 @@ import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface BadgeProps extends BasicComponent {
-  value: string | ReactNode
+  value: ReactNode
   dot: boolean
   max: number
   top: string
   right: string
   color: string
-  children?: ReactNode
 }
 export type BadgeType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
 const defaultProps = {
