@@ -49,7 +49,6 @@
 #### Divider
 - 删除 `dashed`, 通过 style 属性实现
 - 删除 `hairline`, 默认为true
-- `styles` 重命名为 `style`
 #### Grid
 #### Layout
 #### Sticky
@@ -151,6 +150,8 @@
 
 ### 展示组件
 #### Animate
+- `className` 属性通过继承实现
+- `style` 属性通过继承实现
 #### AnimatingNumbers
 #### Audio
 - url 重命名为 src

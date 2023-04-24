@@ -3,15 +3,16 @@ import { AnimateType, AnimateAction } from './type'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 
-export interface AnimateProps {
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface AnimateProps extends BasicComponent {
   type: AnimateType
   action: AnimateAction
   loop: boolean
-  className: string
-  style: React.CSSProperties
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   type: 'shake',
   action: 'initial',
   loop: false,

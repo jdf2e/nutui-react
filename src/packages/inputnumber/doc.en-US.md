@@ -244,23 +244,23 @@ export default App;
 
 | Property           | Description                       | Type           | Default     |
 |----------------|----------------------------|----------------|------------|
-| allowEmpty        | Whether to allow the content to be empty                     | boolean |   false          |
-| defaultValue        | Defaults                     | string \| number |  0         |
-| value        | current value, controlled value                   | string \| number | -          |
-| min            | Minimum limit                 | string \| number | `1`        |
-| max            | Maximum limit                 | string \| number | `9999` |
-| step           | step                       | string \| number | `1`        |
-| digits | Set reserved decimal places           | string \| number | `0`        |
-| disabled       | Disable all features               | boolean        | `false`      |
-| readonly       | Read only status disables input box operation behavior | boolean        | `false`      |
+| allowEmpty        | Whether to allow the content to be empty                     | `boolean` |   `false`          |
+| defaultValue        | Defaults                     | `string \| number` |  `0`        |
+| value        | current value, controlled value                   | `string \| number` | `-`          |
+| min            | Minimum limit                 | `string \| number` | `1`        |
+| max            | Maximum limit                 | `string \| number` | `9999` |
+| step           | step                       | `string \| number` | `1`        |
+| digits | Set reserved decimal places           | `string \| number` | `0`        |
+| disabled       | Disable all features               | `boolean`        | `false`      |
+| readonly       | Read only status disables input box operation behavior | `boolean`        | `false`      |
 | async       | Support for asynchronous modification | boolean        | `false`      |
-| formatter        | Specifies the format of the value displayed in the input box | function(value: number \| string): string        | -     |
-| onPlus        | Triggered when the Add button is clicked     | `(e: MouseEvent) => void`                   | - |
-| onMinus     | Triggered when the decrease button is clicked     | `(e: MouseEvent) => void`                   | - |
-| onOverlimit  | Triggered when an unavailable button is clicked | `(e: MouseEvent) => void`                   | - |
-| onChange      | Triggered when the value changes           | `(param: string \| number, e: MouseEvent \| ChangeEvent<HTMLInputElement>) => void` | - |
-| onBlur        | Triggered when the input box blur   | `(e: ChangeEvent<HTMLInputElement>) => void`                   | - |
-| onFocus      | Triggered when the input box focus   | `(e: FocusEvent<HTMLInputElement>) => void`                   | - |
+| formatter        | Specifies the format of the value displayed in the input box | `function(value: number \| string): string`        | `-`     |
+| onPlus        | Triggered when the Add button is clicked     | `(e: MouseEvent) => void`                   | `-` |
+| onMinus     | Triggered when the decrease button is clicked     | `(e: MouseEvent) => void`                   | `-` |
+| onOverlimit  | Triggered when an unavailable button is clicked | `(e: MouseEvent) => void`                   | `-` |
+| onChange      | Triggered when the value changes           | `(param: string \| number, e: MouseEvent \| ChangeEvent<HTMLInputElement>) => void` | `-` |
+| onBlur        | Triggered when the input box blur   | `(e: ChangeEvent<HTMLInputElement>) => void`                   | `-` |
+| onFocus      | Triggered when the input box focus   | `(e: FocusEvent<HTMLInputElement>) => void`                   | `-` |
 
 
 ## Theming

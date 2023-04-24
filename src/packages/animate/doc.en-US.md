@@ -1,16 +1,17 @@
 # Animate 
 
-### Intro
+## Intro
 
 Add animation effects to child elements
 
-### Install
+## Install
 
 ```ts
 // react
 import { Animate } from '@nutui/nutui-react';
 ```
 
+## Demo
 ### Clicking to trigger
 
 :::demo
@@ -128,19 +129,15 @@ export default AnimateDemo
 
 ### Props
 
-| Attribute         | Description                             | Type   | Default           |
+| Property         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| type         | For animation type, see the description of type value below               | string | `shake`                |
-| action         | Triggering method,'initial'-- initialization execution; ' Click'-- Click to execute              | string | `initial`             |
-| loop         | Whether to execute circularly. True： loop execution; False： execute once              | boolean | `false`               |
+| type         | For animation type, see the description of type value below               | `AnimateType` | `'shake'`                |
+| action         | Triggering method,'initial'-- initialization execution; ' Click'-- Click to execute              | `'initial'  \|  'click'` | `'initial'`             |
+| loop         | Whether to execute circularly. True： loop execution; False： execute once              | `boolean` | `false`               |
+| onClick  | Triggered when an element is clicked	 | `event: Event` |  `-`  |
 
-### Events
 
-| Event | Description           | Arguments     |
-|--------|----------------|--------------|
-| onClick  | Triggered when an element is clicked	 | `event: Event` |
-
-### Type value description
+### AnimateType value description
 
 |    Order  |    Type name     |      Description     |
 |:-------|:------- | :----------|

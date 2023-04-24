@@ -481,19 +481,19 @@ export default App;
 | 字段| 说明| 类型| 默认值|
 |---------|------|--------|----------|
 | autoUpload | 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传| `Boolean` | `true`           |
-| name | `input` 标签 `name` 的名称，发到后台的文件参数名| `string` | `file` |
+| name | `input` 标签 `name` 的名称，发到后台的文件参数名| `string` | `'file'` |
 | url | 上传服务器的接口地址| `string`                            | `-` |
 | defaultValue | 默认已经上传的文件列表| `FileType<React.ReactNode>[]` | `[]`                |
 | value | 已经上传的文件列表| `FileType<string>[]` | `[]`                |
 | preview | 是否上传成功后展示预览图| `boolean`                           | `true` |
 | previewUrl| 当上传非图片('image')格式的默认图片地址 | `string` | `''`             |
 | deletable | 是否展示删除按钮| `boolean` | `true` |
-| method| 上传请求的 http method| `string` | `post`           |
-| previewType | 上传列表的内建样式，支持两种基本样式 picture、list| `string` | `picture` |
+| method| 上传请求的 http method| `string` | `'post'`           |
+| previewType | 上传列表的内建样式，支持两种基本样式 picture、list| `string` | `'picture'` |
 | capture| 图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接调起摄像头| `string` | `false`            |
 | maxFileSize | 可以设定最大上传文件的大小（字节）| `number丨string` | `Number.MAX_VALUE` |
 | maxCount | 文件上传数量限制| `number 丨 string` | `1` |
-| imageFit | 图片填充模式 | `'contain' | 'cover' | 'fill' | 'none' | 'scale-down'` | `cover` |
+| imageFit | 图片填充模式 | `'contain' \| 'cover' \| 'fill' \| 'none' \| 'scale-down'` | `'cover'` |
 | clearInput       | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件| `boolean` | `true`            |
 | accept            | 允许上传的文件类型，[详细说明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | `string` | `*` |
 | headers           | 设置上传的请求头部| `object` | `{}` |
