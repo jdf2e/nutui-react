@@ -139,7 +139,7 @@ const App = () => {
         />
       </Cell>
       <Cell align="center">
-        <Progress percent={100} textType="icon" />
+        <Progress percent={100} />
         <Checked color="green" style={{ margin: '0 5px' }} />
       </Cell>
       <Cell align="center">
@@ -147,7 +147,6 @@ const App = () => {
           percent={100}
           color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
           strokeWidth="15"
-          textType="icon"
         />
         <Issue color="red" style={{ margin: '0 5px' }} />
       </Cell>
@@ -220,9 +219,7 @@ export default App;
 | color | 进度条线条颜色 | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
 | strokeWidth | 进度条宽度 | `string` | -
 | showText | 是否显示进度条文字内容 | `boolean` | `false`
-| textType | 进度条文字类型，`text`(展示文字)/`icon`(展示icon标签) | `string` | `text`
 | animated | 进度条当前状态，`true`展示动画效果 | `boolean` | `false`
-| icon | 自定义图标 | `ReactNode` | `<Checked width={16} height={16} color="#439422"/>`
 
 ## 主题定制
 

@@ -107,7 +107,7 @@ const ProgressDemo = () => {
           />
         </Cell>
         <Cell align="center">
-          <Progress percent={100} textType="icon" />
+          <Progress percent={100} />
           <Checked color="green" style={{ margin: '0 5px' }} />
         </Cell>
         <Cell align="center">
@@ -115,7 +115,6 @@ const ProgressDemo = () => {
             percent={100}
             color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
             strokeWidth="15"
-            textType="icon"
           />
           <Issue color="red" style={{ margin: '0 5px' }} />
         </Cell>

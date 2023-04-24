@@ -140,7 +140,7 @@ const App = () => {
         />
       </Cell>
       <Cell align="center">
-        <Progress percent={100} textType="icon" />
+        <Progress percent={100} />
         <Checked color="green" style={{ margin: '0 5px' }} />
       </Cell>
       <Cell align="center">
@@ -148,7 +148,6 @@ const App = () => {
           percent={100}
           color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
           strokeWidth="15"
-          textType="icon"
         />
         <Issue color="red" style={{ margin: '0 5px' }} />
       </Cell>
@@ -221,10 +220,7 @@ export default App;
 | color | Stroke color | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
 | strokeWidth | Stroke width | `string` | -
 | showText | Whether to show text | `boolean` | `false`
-| textType | Progress bar text type setting，`text`(展示文字)/`icon`(展示icon标签) | `string` | `text`
 | animated | The current state of the progress bar, `true`展示动画效果 | `boolean` | `false`
-| icon | Custom Icon | `ReactNode` | `<Checked width={16} height={16} color="#439422"/>`
-
 
 ## Theming
 

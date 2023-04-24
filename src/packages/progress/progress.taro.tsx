@@ -2,17 +2,13 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export type TextType = 'icon' | 'text'
-
 export interface ProgressProps extends BasicComponent {
   percent: number
   background: string
   color: string
   strokeWidth: string
   showText: boolean
-  textType: TextType
   animated: boolean
-  icon: ReactNode
   children: ReactNode
 }
 
@@ -23,9 +19,7 @@ const defaultProps = {
   color: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
   strokeWidth: '',
   showText: false,
-  textType: 'text',
   animated: false,
-  icon: null,
   children: undefined,
 } as ProgressProps
 
@@ -40,9 +34,7 @@ export const Progress: FunctionComponent<
     color,
     strokeWidth,
     showText,
-    textType,
     animated,
-    icon,
     children,
     ...rest
   } = {
