@@ -287,6 +287,21 @@ const TabsDemo = () => {
             </Tabs.TabPane>
           ))}
         </Tabs>
+        <h2>{translated.title4}</h2>
+        <Tabs
+          value={tab9value}
+          style={{ height: '300px' }}
+          onChange={(value) => {
+            setTab9value(value)
+          }}
+          direction="vertical"
+        >
+          {list4.map((item) => (
+            <Tabs.TabPane key={item} title={`Tab ${item}`}>
+              Tab {item}
+            </Tabs.TabPane>
+          ))}
+        </Tabs>
         <h2>{translated.title5}</h2>
         <Tabs
           style={{ height: '300px' }}

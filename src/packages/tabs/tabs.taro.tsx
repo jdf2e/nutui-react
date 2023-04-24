@@ -6,7 +6,6 @@ import { JoySmile } from '@nutui/icons-react-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
-import raf from '@/utils/raf'
 
 type Title = {
   title: string
@@ -70,114 +69,10 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     finalValue: 0,
     onChange,
   })
-  const idRef = useRef(+new Date())
   const [contentStyle, setContentStyle] = useState({})
 
   const titleItemsRef = useRef<HTMLDivElement[]>([])
   const navRef = useRef<HTMLDivElement>(null)
-  const getRect = (selector: string) => {
-    return new Promise((resolve) => {
-      createSelectorQuery()
-        .select(selector)
-        .boundingClientRect()
-        .exec((rect = []) => {
-          resolve(rect[0])
-        })
-    })
-  }
-  const getAllRect = (selector: string) => {
-    return new Promise((resolve) => {
-      createSelectorQuery()
-        .selectAll(selector)
-        .boundingClientRect()
-        .exec((rect = []) => resolve(rect[0]))
-    })
-  }
-  const navRectRef = useRef<any>({})
-  const titleRectRef = useRef<any[]>([])
-  const canShowLabel = useRef(false)
-  const scrollLeft = useRef(0)
-  const scrollTop = useRef(0)
-  const scrollDirection = (
-    to: number,
-    direction: 'horizontal' | 'vertical'
-  ) => {
-    let count = 0
-    const from =
-      direction === 'horizontal' ? scrollLeft.current : scrollTop.current
-    const frames = 1
-
-    function animate() {
-      if (direction === 'horizontal') {
-        scrollLeft.current += (to - from) / frames
-      } else {
-        scrollTop.current += (to - from) / frames
-      }
-
-      if (++count < frames) {
-        raf(animate)
-      }
-    }
-
-    animate()
-  }
-  const scrollIntoView = (index: string | number) => {
-    raf(() => {
-      Promise.all([
-        getRect(`#nut-tabs__titles_${idRef.current}`),
-        getAllRect(`#nut-tabs__titles_${idRef.current} .nut-tabs__titles-item`),
-      ]).then(([navRect, titleRects]: any) => {
-        console.log('titleRects', titleRects)
-        navRectRef.current = navRect
-        titleRectRef.current = titleRects
-        if (navRectRef.current) {
-          if (props.direction === 'vertical') {
-            const titlesTotalHeight = titleRects.reduce(
-              (prev: number, curr: any) => prev + curr.height,
-              0
-            )
-            if (titlesTotalHeight > navRectRef.current.height) {
-              canShowLabel.current = true
-            } else {
-              canShowLabel.current = false
-            }
-          } else {
-            const titlesTotalWidth = titleRects.reduce(
-              (prev: number, curr: any) => prev + curr.width,
-              0
-            )
-            if (titlesTotalWidth > navRectRef.current.width) {
-              canShowLabel.current = true
-            } else {
-              canShowLabel.current = false
-            }
-          }
-        }
-        const titleRect: any = titleRectRef.current[index as number]
-        let to = 0
-        if (props.direction === 'vertical') {
-          const DEFAULT_PADDING = 0
-          const top = titleRects
-            .slice(0, index)
-            .reduce(
-              (prev: number, curr: any) => prev + curr.height,
-              DEFAULT_PADDING
-            )
-          to = top - (navRectRef.current.height - titleRect.height) / 2
-        } else {
-          const DEFAULT_PADDING = 0
-          const left = titleRects
-            .slice(0, index)
-            .reduce(
-              (prev: number, curr: any) => prev + curr.width,
-              DEFAULT_PADDING
-            )
-          to = left - (navRectRef.current.width - titleRect.width) / 2
-        }
-        scrollDirection(to, direction)
-      })
-    })
-  }
 
   const getTitles = () => {
     const titles: Title[] = []
@@ -214,6 +109,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     background: activeType === 'line' ? activeColor : '',
   }
 
+  const scrollIntoRef = useRef(0)
   useEffect(() => {
     const index = titles.current.findIndex((t) => t.value === value)
     setContentStyle({
@@ -223,7 +119,8 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
           : `translate3d( 0,-${index * 100}%, 0)`,
       transitionDuration: `${duration}ms`,
     })
-    scrollIntoView(index)
+    const scrollToIndex = index - 2
+    scrollIntoRef.current = scrollToIndex < 0 ? 0 : scrollToIndex
   }, [value])
 
   const tabChange = (item: Title, index: number) => {
@@ -237,14 +134,13 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   return (
     <View className={classes} {...rest}>
       <ScrollView
-        id={`nut-tabs__titles_${idRef.current}`}
         enableFlex
         scrollX={direction === 'horizontal'}
         scrollY={direction === 'vertical'}
         showScrollbar={false}
+        scrollIntoViewAlignment="center"
         scrollWithAnimation
-        scrollTop={scrollTop.current}
-        scrollLeft={scrollLeft.current}
+        scrollIntoView={`scrollIntoView${scrollIntoRef.current}`}
         className={classesTitle}
         style={{ ...tabStyle }}
         ref={navRef}
@@ -255,6 +151,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
               return (
                 <View
                   ref={(ref: HTMLDivElement) => titleItemsRef.current.push(ref)}
+                  id={`scrollIntoView${index}`}
                   onClick={(e) => {
                     tabChange(item, index)
                   }}
