@@ -15,7 +15,7 @@ test('base Tabs', () => {
 
 test('base tabs props', () => {
   const { container } = render(
-    <Tabs value="0" direction="horizontal" activeType="smile" size="large">
+    <Tabs value="0" direction="horizontal" activeType="smile">
       <TabPane title="Tab 1" value="0">
         {' '}
         Tab 1{' '}

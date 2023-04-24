@@ -22,8 +22,6 @@ export interface TabsProps extends BasicComponent {
   direction: 'horizontal' | 'vertical'
   activeType: string
   duration: number | string
-  // titleGutter: number | string
-  size: TabsSize
   align: 'left' | 'right'
   title: () => JSX.Element[]
   onChange: (index: string | number) => void
@@ -39,9 +37,6 @@ const defaultProps = {
   direction: 'horizontal',
   activeType: 'line',
   duration: 300,
-  // titleGutter: 0,
-  size: 'normal',
-  // align: 'left',
   autoHeight: false,
 } as TabsProps
 
@@ -55,7 +50,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     direction,
     activeType,
     duration,
-    size,
     align,
     title,
     children,

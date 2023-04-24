@@ -6,6 +6,7 @@
 }
 
 .nut-tabs__titles {
+  box-sizing: border-box;
   height: $tabs-horizontal-titles-height;
   padding: 0 10px;
   display: flex;
