@@ -1,10 +1,10 @@
 #  Switch 开关
 
-### 介绍
+## 介绍
 
 用来打开或关闭选项。
 
-### 安装
+## 安装
 
 ```ts
 // react
@@ -13,7 +13,7 @@ import { Switch } from '@nutui/nutui-react';
 
 ## 代码演示
 
-### 基础用法
+### 非受控
 
 :::demo
 ```tsx
@@ -23,7 +23,7 @@ import { Switch } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Switch checked />
+    <Switch defaultChecked />
     </>
   );
 };  
@@ -32,6 +32,35 @@ export default App;
 ```
 :::
 
+### 受控
+
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Switch, Toast } from '@nutui/nutui-react';
+
+const App = () => {
+  const [checkedAsync, setCheckedAsync] = useState(true)
+  
+  const onChangeAsync = (value: boolean, event: Event) => {
+    Toast.text(`2秒后异步触发 ${value}`)
+    setTimeout(() => {
+      setCheckedAsync(value)
+    }, 2000)
+  }
+  return ( 
+    <>   
+    <Switch
+      checked={checkedAsync}
+      onChange={(value, event) => onChangeAsync(value, event)}
+     />
+    </>
+  );
+};  
+export default App;
+
+```
+:::
 
 ### 禁用状态
 
@@ -43,7 +72,7 @@ import { Switch } from '@nutui/nutui-react';
 const App = () => {
   return ( 
     <>   
-    <Switch checked disable />
+    <Switch defaultChecked disabled />
     </>
   );
 };  
@@ -57,45 +86,15 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import { Switch } from '@nutui/nutui-react';
+import { Switch, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const onChange = (value: boolean, event: Event) => {
-    alert(`触发了onChange事件，开关状态：${value}`)
+    Toast.text(`触发了onChange事件，开关状态：${value}`)
   }
   return ( 
     <>   
     <Switch onChange={(value, event) => onChange(value, event)} />
-    </>
-  );
-};  
-export default App;
-
-```
-:::
-### 异步控制
-
-:::demo
-```tsx
-import  React, { useState } from "react";
-import { Switch } from '@nutui/nutui-react';
-
-const App = () => {
-  const [checkedAsync, setCheckedAsync] = useState(true)
-  
-  const onChangeAsync = (value: boolean, event: Event) => {
-    alert(`2秒后异步触发 ${value}`)
-    setTimeout(() => {
-      setCheckedAsync(value)
-    }, 2000)
-  }
-  return ( 
-    <>   
-    <Switch
-      checked={checkedAsync}
-      isAsync
-      onChange={(value, event) => onChangeAsync(value, event)}
-     />
     </>
   );
 };  
@@ -112,9 +111,7 @@ import { Switch } from '@nutui/nutui-react';
 
 const App = () => {
   return ( 
-    <>   
-    <Switch activeColor="blue" />
-    </>
+    <Switch style={{ '--nutui-switch-open-bg-color': 'blue' }} />
   );
 };  
 export default App;
@@ -143,27 +140,18 @@ export default App;
 
 
 
-## API
+## Switch
 
 ### Props
 
 | 参数           | 说明             | 类型    | 默认值                |
 |----------------|------------------|---------|-----------------------|
-| checked        | 开关状态         | boolean | `false`               |
-| disable        | 禁用状态         | boolean | `false`               |
-| activeColor   | 打开时的背景颜色 | string  | `#fa2c19`    |
-| inactiveColor | 关闭时的背景颜色 | string  | `#ebebeb` |
+| defaultChecked        | 开关状态，非受控         | boolean | `false`               |
+| checked        | 开关状态，受控         | boolean | `false`               |
+| disabled        | 禁用状态         | boolean | `false`               |
 | activeText    | 打开时文字描述   | string  | -                     |
 | inactiveText  | 关闭时文字描述   | string  | -                     |
-| isAsync  | 开关状态是否异步修改   | boolean  | `false`                     |
-
-
-### Events
-
-| 事件名 | 说明           | 回调参数                      |
-|--------|----------------|-------------------------------|
-| onChange  | 切换开关时触发 | `value: boolean, event: Event` |
-
+| onChange  | 切换开关时触发 | `onChange:(value: boolean, event: Event)` | - |
 
 ## 主题定制
 
@@ -171,15 +159,16 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-switch-close-bg-color | `#ebebeb` |
-| --nutui-switch-close--line-bg-color | `#f0f0f0` |
-| --nutui-switch-width | `36px` |
-| --nutui-switch-height | `21px` |
-| --nutui-switch-line-height | `21px` |
-| --nutui-switch-border-radius | `21px` |
-| --nutui-switch-inside-width | `13px` |
-| --nutui-switch-inside-height | `13px` |
-| --nutui-switch-inside-open-transform | `translateX(146%)` |
-| --nutui-switch-inside-close-transform | `translateX(30%)` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-switch-close-bg-color | 开关关闭状态背景颜色 | `#ebebeb` |
+| --nutui-switch-open-bg-color | 开关打开状态背景颜色 |`$primary-color` |
+| --nutui-switch-width | 开关宽度 | `36px` |
+| --nutui-switch-height | 开关高度  | `21px` |
+| --nutui-switch-line-height | 开关行高 | `21px` |
+| --nutui-switch-border-radius | 开关圆角大小 | `21px` |
+| --nutui-switch-inside-width | 开关内部按钮宽度 | `13px` |
+| --nutui-switch-inside-height | 开关内部按钮高度 | `13px` |
+| --nutui-switch-inside-open-transform | 开关打开状态内部按钮位置 | `translateX(146%)` |
+| --nutui-switch-inside-close-transform | 开关关闭状态内部按钮位置 | `translateX(30%)` |
+| --nutui-switch-close-line-bg-color | 开关关闭状态内部按钮线条颜色 | `#f0f0f0` |

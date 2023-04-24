@@ -1,24 +1,8 @@
-.nut-theme-dark {
-  .nut-switch {
-    background-color: $dark4;
-
-    &.switch-close {
-      color: $dark1;
-    }
-
-    .switch-button {
-      .close {
-        color: $dark4;
-      }
-    }
-  }
-}
-
 .nut-switch {
   cursor: pointer;
   display: flex;
   align-items: center;
-  background-color: $primary-color;
+  background-color: $switch-active-background-color;
   border-radius: $switch-border-radius;
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -26,10 +10,9 @@
   flex: 0 0 auto; // 防止被压缩
 
   &.switch-close {
-    background-color: $switch-close-bg-color;
-
+    background-color: $switch-inactive-background-color;
     .close-line {
-      background: $switch-close--line-bg-color;
+      background: $switch-close-line-bg-color;
       border-radius: 2px;
     }
   }
@@ -56,7 +39,7 @@
     }
   }
 
-  &-disable {
+  &-disabled {
     opacity: 0.6;
   }
 
