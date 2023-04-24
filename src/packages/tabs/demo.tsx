@@ -99,7 +99,7 @@ const TabsDemo = () => {
   useEffect(() => {
     setTimeout(() => {
       list8.push(999)
-      setTab8value('2')
+      setTab8value(2)
       setList8(list8)
     }, 3000)
   }, [])

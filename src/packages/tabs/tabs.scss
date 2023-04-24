@@ -176,7 +176,20 @@
   }
 
   .nut-tabs--horizontal {
+    .nut-tabs__titles {
+      flex-direction: row;
+      overflow-x: auto;
+      overflow-y: hidden;
+      height: $tabs-horizontal-titles-height;
+    }
+
+    .nut-tabs__content {
+      flex-direction: row;
+    }
+
     .nut-tabs__titles-item--active {
+      background-color: initial;
+
       .nut-tabs__titles-item__line {
         left: 50%;
         transform: translate(-50%, 0);
