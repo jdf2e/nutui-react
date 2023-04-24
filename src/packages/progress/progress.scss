@@ -8,6 +8,7 @@
     flex: auto;
     border-radius: $progress-border-radius;
     height: $progress-height;
+    background: $progress-background;
 
     .nut-progress-active:before {
       content: '';
@@ -28,21 +29,30 @@
     justify-content: center;
     transition: all 0.4s;
     border-radius: $progress-border-radius;
+    background: $progress-color;
   }
 
   &-text {
     display: flex;
     align-items: center;
-    color: $progress-text-color;
-    padding: $progress-text-padding;
-    border-radius: $progress-text-border-radius;
-    font-size: $progress-text-font-size;
-    line-height: 1;
     position: absolute;
     top: $progress-text-position-top;
     bottom: $progress-text-position-bottom;
     transition: all 0.4s;
     transform: translate(-50%);
+
+    &__inner {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      color: $progress-text-color;
+      padding: $progress-text-padding;
+      border-radius: $progress-text-border-radius;
+      font-size: $progress-text-font-size;
+      line-height: 1;
+      background: $progress-text-background;
+    }
   }
 
   @keyframes progressActive {

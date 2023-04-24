@@ -15,12 +15,8 @@ export interface ProgressProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   percent: 0,
-  background: '#f3f3f3',
-  color: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
-  strokeWidth: '',
   showText: false,
   animated: false,
-  children: undefined,
 } as ProgressProps
 
 export const Progress: FunctionComponent<
@@ -44,10 +40,6 @@ export const Progress: FunctionComponent<
 
   const classPrefix = 'nut-progress'
 
-  const classesOuter = classNames({
-    [`${classPrefix}-outer`]: true,
-  })
-
   const classesInner = classNames({
     [`${classPrefix}-inner`]: true,
     [`${classPrefix}-active`]: animated,
@@ -55,39 +47,34 @@ export const Progress: FunctionComponent<
 
   const stylesOuter: React.CSSProperties = {
     height: `${strokeWidth}px`,
-    background: `${background}`,
+    background,
   }
 
   const stylesInner: React.CSSProperties = {
     width: `${percent}%`,
-    background: `${color}`,
-  }
-
-  const stylesText: React.CSSProperties = {
-    left: `${percent}%`,
     background: color,
-  }
-
-  const stylesIcon: React.CSSProperties = {
-    left: `${percent}%`,
   }
 
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
-      <div className={classesOuter} style={stylesOuter}>
+      <div className={`${classPrefix}-outer`} style={stylesOuter}>
         <div className={classesInner} style={stylesInner}>
           {showText && (
-            <>
-              {children ? (
-                <div className={`${classPrefix}-text`} style={stylesIcon}>
-                  {children}
-                </div>
-              ) : (
-                <div className={`${classPrefix}-text`} style={stylesText}>
+            <div
+              className={`${classPrefix}-text`}
+              style={{ left: `${percent}%` }}
+            >
+              {children || (
+                <div
+                  className={`${classPrefix}-text__inner`}
+                  style={{
+                    background: color,
+                  }}
+                >
                   {percent}%
                 </div>
               )}
-            </>
+            </div>
           )}
         </div>
       </div>

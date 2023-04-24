@@ -213,14 +213,14 @@ export default App;
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值
-|----- | ----- | ----- | -----
-| percent | 百分比 | `number` | `0`
-| background | 进度条背景颜色 | `string` | `#f3f3f3`
-| color | 进度条线条颜色 | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
-| strokeWidth | 进度条宽度 | `string` | -
-| showText | 是否显示进度条文字内容 | `boolean` | `false`
-| animated | 进度条当前状态，`true`展示动画效果 | `boolean` | `false`
+| 字段 | 说明 | 类型 | 默认值 |
+|----- | ----- | ----- | ----- |
+| percent | 百分比 | `number` | `0` |
+| color | 进度条线条颜色 | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
+| background | 进度条背景颜色 | `string` | `#f3f3f3` |
+| strokeWidth | 进度条宽度 | `string` | - |
+| showText | 是否显示文字内容 | `boolean` | `false` |
+| animated | 是否展示动画效果 | `boolean` | `false` |
 
 ## 主题定制
 
@@ -228,13 +228,16 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-progress-height | `10px` |
-| --nutui-progress-border-radius | `12px` |
-| --nutui-progress-text-color | `$primary-text-color` |
-| --nutui-progress-text-padding | `0 5px` |
-| --nutui-progress-text-font-size | `9px` |
-| --nutui-progress-text-position-top | `-4px`|
-| --nutui-progress-text-position-bottom | `-4px`|
-| --nutui-progress-text-border-radius | `5px` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-progress-height | 进度条宽度 | `10px` |
+| --nutui-progress-border-radius | 进度条边框圆角 | `12px` |
+| --nutui-progress-color | 进度条颜色 | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
+| --nutui-progress-background | 进度条背景色 | `#f3f3f3` |
+| --nutui-progress-text-color | 文本颜色 | `$primary-text-color` |
+| --nutui-progress-text-padding | 文本内边距 | `0 5px` |
+| --nutui-progress-text-font-size | 文本字体大小 | `9px` |
+| --nutui-progress-text-position-top | 文本定位 top | `-4px`|
+| --nutui-progress-text-position-bottom | 文本定位 bottom | `-4px`|
+| --nutui-progress-text-border-radius | 文本边框圆角 | `5px` |
+| --nutui-progress-text-background | 文本背景颜色 | `$progress-color` |
