@@ -240,7 +240,6 @@ export default App;
 | showText | 是否显示进度条文字内容 | `boolean` | `true`
 | textInside | 进度条文字显示位置(`false`外显，`true`内显) | `boolean` | `false`
 | textColor | 进度条文字颜色设置 | `string` | 外显`#333` 内显`#fff`
-| textBackground | 进度条文字背景颜色设置 | `string` | 同进度条颜色
 | textType | 进度条文字类型，`text`(展示文字)/`icon`(展示icon标签) | `string` | `text`
 | animated | 进度条当前状态，`true`展示动画效果 | `boolean` | `false`
 | icon | 自定义图标 | `ReactNode` | `<Checked width={16} height={16} color="#439422"/>`

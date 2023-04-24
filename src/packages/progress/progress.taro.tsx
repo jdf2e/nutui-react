@@ -14,7 +14,6 @@ export interface ProgressProps extends BasicComponent {
   textColor: string
   showText: boolean
   textInside: boolean
-  textBackground: string
   textType: TextType
   animated: boolean
   icon: ReactNode
@@ -30,7 +29,6 @@ const defaultProps = {
   textColor: '',
   showText: true,
   textInside: false,
-  textBackground: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
   textType: 'text',
   animated: false,
   icon: null,
@@ -50,7 +48,6 @@ export const Progress: FunctionComponent<
     textColor,
     showText,
     textInside,
-    textBackground,
     textType,
     animated,
     icon,
@@ -98,7 +95,7 @@ export const Progress: FunctionComponent<
 
   const stylesInsideText: React.CSSProperties = {
     left: `${percent}%`,
-    background: textBackground || color,
+    background: color,
   }
 
   const stylesInsideIcon: React.CSSProperties = {
