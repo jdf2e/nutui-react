@@ -76,7 +76,6 @@ const ProgressDemo = () => {
             background="rgba(250,44,25,0.2)"
             color="rgba(250,44,25,0.9)"
             strokeWidth="15"
-            textColor="red"
           />
         </Cell>
         <h2>{translated.noShowPercentage}</h2>
@@ -85,11 +84,11 @@ const ProgressDemo = () => {
         </Cell>
         <h2>{translated.showInsidePercentage}</h2>
         <Cell>
-          <Progress percent={60} textInside />
+          <Progress percent={60} />
         </Cell>
         <h2>{translated.customContent}</h2>
         <Cell>
-          <Progress percent={60} textInside>
+          <Progress percent={60}>
             <Image
               width="30px"
               height="30px"
@@ -99,13 +98,13 @@ const ProgressDemo = () => {
         </Cell>
         <h2>{translated.customSize}</h2>
         <Cell>
-          <Progress percent={30} strokeWidth="5" textInside />
+          <Progress percent={30} strokeWidth="5" />
         </Cell>
         <Cell>
-          <Progress percent={50} strokeWidth="10" textInside />
+          <Progress percent={50} strokeWidth="10" />
         </Cell>
         <Cell>
-          <Progress percent={70} strokeWidth="15" textInside />
+          <Progress percent={70} strokeWidth="15" />
         </Cell>
         <h2>{translated.statusDisplay}</h2>
         <Cell>

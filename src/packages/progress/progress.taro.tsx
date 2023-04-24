@@ -1,7 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
-import { Checked } from '@nutui/icons-react-taro'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type TextType = 'icon' | 'text'
@@ -11,9 +9,7 @@ export interface ProgressProps extends BasicComponent {
   background: string
   color: string
   strokeWidth: string
-  textColor: string
   showText: boolean
-  textInside: boolean
   textType: TextType
   animated: boolean
   icon: ReactNode
@@ -26,9 +22,7 @@ const defaultProps = {
   background: '#f3f3f3',
   color: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
   strokeWidth: '',
-  textColor: '',
   showText: true,
-  textInside: false,
   textType: 'text',
   animated: false,
   icon: null,
@@ -45,9 +39,7 @@ export const Progress: FunctionComponent<
     background,
     color,
     strokeWidth,
-    textColor,
     showText,
-    textInside,
     textType,
     animated,
     icon,
@@ -71,8 +63,6 @@ export const Progress: FunctionComponent<
     [`${classPrefix}-inner`]: true,
     [`${classPrefix}-active`]: animated,
   })
-
-  const classesText = `${classPrefix}-text`
 
   const classesInsideText = classNames({
     [`${classPrefix}-text`]: true,
@@ -106,7 +96,7 @@ export const Progress: FunctionComponent<
     <div className={`${classes} ${className}`} style={style} {...rest}>
       <div className={classesOuter} style={stylesOuter}>
         <div className={classesInner} style={stylesInner}>
-          {showText && textInside && (
+          {showText && (
             <>
               {children ? (
                 <div className={classesInsideText} style={stylesInsideIcon}>
@@ -114,30 +104,13 @@ export const Progress: FunctionComponent<
                 </div>
               ) : (
                 <div className={classesInsideText} style={stylesInsideText}>
-                  <span
-                    className={classesTextInner}
-                    style={{ color: textColor }}
-                  >
-                    {percent}%
-                  </span>
+                  <span className={classesTextInner}>{percent}%</span>
                 </div>
               )}
             </>
           )}
         </div>
       </div>
-      {showText && !textInside && (
-        <div className={classesText}>
-          {textType === 'text' && (
-            <span className={classesTextInner} style={{ color: textColor }}>
-              {percent}%
-            </span>
-          )}
-          {textType === 'icon' && (
-            <>{icon || <Checked width={16} height={16} color="#439422" />}</>
-          )}
-        </div>
-      )}
     </div>
   )
 }

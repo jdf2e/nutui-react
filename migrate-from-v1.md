@@ -177,6 +177,7 @@
 - status 重命名为 animated
 - 移除 textBackground，通过 css 实现
 - 移除 textColor，通过 css 实现
+- 移除 textInside，仅保留内显功能
 #### Skeleton
 #### Steps
 #### Swiper

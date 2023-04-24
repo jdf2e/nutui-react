@@ -45,7 +45,6 @@ const App = () => {
         percent={30}
         color="rgba(250,44,25,0.47)"
         strokeWidth="20"
-        textColor="red"
       />
     </Cell>
   );
@@ -82,7 +81,7 @@ import { Progress, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Progress percent={60} textInside />
+      <Progress percent={60} />
     </Cell>
   );
 };
@@ -101,10 +100,7 @@ const App = () => {
   return (
     <>
     <Cell>
-      <Progress
-        percent={60}
-        textInside
-      >
+      <Progress percent={60}>
         <Image
           width="30px"
           height="30px"
@@ -130,13 +126,13 @@ const App = () => {
   return (
     <>
       <Cell>
-        <Progress percent={30} strokeWidth="5" textInside />
+        <Progress percent={30} strokeWidth="5" />
       </Cell>
       <Cell>
-        <Progress percent={50} strokeWidth="10" textInside />
+        <Progress percent={50} strokeWidth="10" />
       </Cell>
       <Cell>
-        <Progress percent={70} strokeWidth="15" textInside />
+        <Progress percent={70} strokeWidth="15" />
       </Cell>
     </>
   );
@@ -243,8 +239,6 @@ export default App;
 | color | Stroke color | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
 | strokeWidth | Stroke width | `string` | -
 | showText | Whether to show text | `boolean` | `true`
-| textInside | Progress bar text display position(`false`外显，`true`内显) | `boolean` | `false`
-| textColor | Progress bar text color setting | `string` | 外显`#333` 内显`#fff`
 | textType | Progress bar text type setting，`text`(展示文字)/`icon`(展示icon标签) | `string` | `text`
 | animated | The current state of the progress bar, `true`展示动画效果 | `boolean` | `false`
 | icon | Custom Icon | `ReactNode` | `<Checked width={16} height={16} color="#439422"/>`

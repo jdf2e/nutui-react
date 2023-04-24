@@ -44,7 +44,6 @@ const App = () => {
         percent={30}
         color="rgba(250,44,25,0.47)"
         strokeWidth="20"
-        textColor="red"
       />
     </Cell>
   );
@@ -81,7 +80,7 @@ import { Progress, Cell } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <Cell>
-      <Progress percent={60} textInside />
+      <Progress percent={60} />
     </Cell>
   );
 };
@@ -99,7 +98,7 @@ import { Progress, Image, Cell } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <Cell>
-      <Progress percent={60} textInside>
+      <Progress percent={60}>
         <Image
           width="30px"
           height="30px"
@@ -124,13 +123,13 @@ const App = () => {
   return (
     <>
       <Cell>
-        <Progress percent={30} strokeWidth="5" textInside />
+        <Progress percent={30} strokeWidth="5" />
       </Cell>
       <Cell>
-        <Progress percent={50} strokeWidth="10" textInside />
+        <Progress percent={50} strokeWidth="10" />
       </Cell>
       <Cell>
-        <Progress percent={70} strokeWidth="15" textInside />
+        <Progress percent={70} strokeWidth="15" />
       </Cell>
     </>
   );
@@ -237,8 +236,6 @@ export default App;
 | color | 进度条线条颜色 | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
 | strokeWidth | 进度条宽度 | `string` | -
 | showText | 是否显示进度条文字内容 | `boolean` | `true`
-| textInside | 进度条文字显示位置(`false`外显，`true`内显) | `boolean` | `false`
-| textColor | 进度条文字颜色设置 | `string` | 外显`#333` 内显`#fff`
 | textType | 进度条文字类型，`text`(展示文字)/`icon`(展示icon标签) | `string` | `text`
 | animated | 进度条当前状态，`true`展示动画效果 | `boolean` | `false`
 | icon | 自定义图标 | `ReactNode` | `<Checked width={16} height={16} color="#439422"/>`
