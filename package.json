@@ -68,7 +68,7 @@
     "lint:fix": "eslint --fix ./src/packages/calendar",
     "publish:beta": "npm publish --tag beta",
     "prepare": "husky install",
-    "test": "jest animate",
+    "test": "jest",
     "test:demo": "jest  --testNamePattern=^should match snapshot$ --runTestsByPath ./src/packages/collapse/__test__/collapse.spec.tsx",
     "generate:file:taro": "node scripts/taro/generate-nutui-taro.js",
     "checked:taro": "npm run generate:file:taro && tsc --project ./tsconfig.taro.json",
