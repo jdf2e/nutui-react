@@ -229,23 +229,11 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
+| --nutui-progress-height | `10px` |
 | --nutui-progress-border-radius | `12px` |
+| --nutui-progress-text-color | `$primary-text-color` |
 | --nutui-progress-text-padding | `0 5px` |
-| --nutui-progress-text-font-size | `13px` |
-| --nutui-progress-text-color | `$title-color` |
-| --nutui-progress-text-inner-color | `$gray6` |
-| --nutui-progress-insidetext-position-top | `-4px`|
-| --nutui-progress-insidetext-position-bottom | `-4px`|
-| --nutui-progress-insidetext-border-radius | `5px` |
-| --nutui-progress-insidetext-background | `$progress-inner-background-color` |
-| --nutui-progress-outer-background-color | `#f3f3f3` |
-| --nutui-progress-outer-border-radius | `12px` |
-| --nutui-progress-insidetext-border-radius | `5px` |
-| --nutui-progress-insidetext-padding | `3px 5px 3px 6px` |
-| --nutui-progress-base-font-size | `9px` |
-| --nutui-progress-base-padding | `0 5px` |
-| --nutui-progress-base-height | `10px` |
-| --nutui-progress-base-text-font-size | `9px` |
-| --nutui-progress-base-text-line-height | `13px` |
-| --nutui-progress-base-text-padding | `$progress-insidetext-padding` |
-| --nutui-progress-base-text-top | `$progress-insidetext-top` |
+| --nutui-progress-text-font-size | `9px` |
+| --nutui-progress-text-position-top | `-4px`|
+| --nutui-progress-text-position-bottom | `-4px`|
+| --nutui-progress-text-border-radius | `5px` |

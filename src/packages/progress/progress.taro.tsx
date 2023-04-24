@@ -44,25 +44,13 @@ export const Progress: FunctionComponent<
 
   const classPrefix = 'nut-progress'
 
-  const classes = classPrefix
-
   const classesOuter = classNames({
     [`${classPrefix}-outer`]: true,
-    [`${classPrefix}-base`]: true,
   })
 
   const classesInner = classNames({
     [`${classPrefix}-inner`]: true,
     [`${classPrefix}-active`]: animated,
-  })
-
-  const classesInsideText = classNames({
-    [`${classPrefix}-text`]: true,
-    [`${classPrefix}-insidetext`]: true,
-  })
-
-  const classesTextInner = classNames({
-    [`${classPrefix}-text__inner`]: true,
   })
 
   const stylesOuter: React.CSSProperties = {
@@ -75,28 +63,28 @@ export const Progress: FunctionComponent<
     background: `${color}`,
   }
 
-  const stylesInsideText: React.CSSProperties = {
+  const stylesText: React.CSSProperties = {
     left: `${percent}%`,
     background: color,
   }
 
-  const stylesInsideIcon: React.CSSProperties = {
+  const stylesIcon: React.CSSProperties = {
     left: `${percent}%`,
   }
 
   return (
-    <div className={`${classes} ${className}`} style={style} {...rest}>
+    <div className={classNames(classPrefix, className)} style={style} {...rest}>
       <div className={classesOuter} style={stylesOuter}>
         <div className={classesInner} style={stylesInner}>
           {showText && (
             <>
               {children ? (
-                <div className={classesInsideText} style={stylesInsideIcon}>
+                <div className={`${classPrefix}-text`} style={stylesIcon}>
                   {children}
                 </div>
               ) : (
-                <div className={classesInsideText} style={stylesInsideText}>
-                  <span className={classesTextInner}>{percent}%</span>
+                <div className={`${classPrefix}-text`} style={stylesText}>
+                  {percent}%
                 </div>
               )}
             </>

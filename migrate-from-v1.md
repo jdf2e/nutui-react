@@ -178,7 +178,7 @@
 - 移除 textBackground，通过 css 实现
 - 移除 textColor，通过 css 实现
 - 移除 textInside，仅保留内显功能
-- 移除 textType，通过 children 传入自定义 ReactNode，不区分类型
+- 移除 textType、icon，通过 children 传入自定义 ReactNode，不再区分类型
 #### Skeleton
 #### Steps
 #### Swiper

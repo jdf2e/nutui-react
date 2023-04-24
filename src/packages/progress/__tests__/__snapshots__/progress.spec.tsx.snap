@@ -3,25 +3,16 @@
 exports[`should render progress when use props 1`] = `
 <DocumentFragment>
   <div
-    class="nut-progress "
+    class="nut-progress"
   >
     <div
-      class="nut-progress-outer nut-progress-base"
+      class="nut-progress-outer"
       style="background: rgb(243, 243, 243);"
     >
       <div
         class="nut-progress-inner"
         style="width: 100%;"
       />
-    </div>
-    <div
-      class="nut-progress-text"
-    >
-      <span
-        class="nut-progress-text__inner"
-      >
-        100%
-      </span>
     </div>
   </div>
 </DocumentFragment>
