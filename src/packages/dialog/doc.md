@@ -125,6 +125,7 @@ export default App;
 | onCancel      | 取消按钮回调 | () => void |
 | onClose      | 关闭回调，任何情况关闭弹窗都会触发 | () => void |
 | onClick | 点击自身回调 | () => void |
+| onClickOverlay | 点击蒙层触发 | () => void |
 
 
 ## 主题定制
@@ -135,21 +136,21 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| --nutui-dialog-width | `296px` |
-| --nutui-dialog-header-font-weight | `normal` |
-| --nutui-dialog-header-color | `rgba(38, 38, 38, 1)` |
-| --nutui-dialog-footer-justify-content | `space-around` |
-| --nutui-dialog-min-height | `156px` |
-| --nutui-dialog-padding | `28px 24px 16px 24px` |
-| --nutui-dialog-header-height | `20px` |
-| --nutui-dialog-content-margin | `20px 0` |
-| --nutui-dialog-content-max-height | `268px` |
-| --nutui-dialog-content-line-height | `16px` |
-| --nutui-dialog-overlay-z-index | `$mask-z-index` |
-| --nutui-dialog-overlay-background-color | `$mask-color` |
-| --nutui-dialog-outer-z-index | `$mask-content-z-index` |
-| --nutui-dialog-outer-bordder-radius | `20px` |
-| --nutui-dialog-vertical-footer-ok-margin-top | `10px` |
-| --nutui-dialog-footer-button-min-width | `100px` |
-| --nutui-dialog-footer-cancel-margin-right | `20px` |
-| --nutui-dialog-footer-ok-max-width | `128px` |
+| --nutui-dialog-width | 对话框宽度 | `296px` |
+| --nutui-dialog-header-font-weight | 对话框标题字重 |`normal` |
+| --nutui-dialog-header-color | 对话框标题字色 |`rgba(38, 38, 38, 1)` |
+| --nutui-dialog-footer-justify-content | 对话框底部按钮排布 |`space-around` |
+| --nutui-dialog-min-height | 对话框最小高度 |`156px` |
+| --nutui-dialog-padding | 对话框padding |`28px 24px 16px 24px` |
+| --nutui-dialog-header-height | 对话框标题高度 |`20px` |
+| --nutui-dialog-content-margin | 对话框内容 margin |`20px 0` |
+| --nutui-dialog-content-max-height | 对话框内容最大高度 |`268px` |
+| --nutui-dialog-content-line-height | 对话框内容行高 |`16px` |
+| --nutui-dialog-overlay-z-index | 对话框蒙层的z-index值 |`$mask-z-index` |
+| --nutui-dialog-overlay-background-color | 对话框蒙层背景色 |`$mask-color` |
+| --nutui-dialog-outer-z-index | 对话框的z-index |`$mask-content-z-index` |
+| --nutui-dialog-outer-bordder-radius | 对话框圆角 |`20px` |
+| --nutui-dialog-vertical-footer-ok-margin-top | 对话框底部按钮纵向排布时的margin值 |`10px` |
+| --nutui-dialog-footer-button-min-width | 对话框底部按钮最小宽度 |`100px` |
+| --nutui-dialog-footer-cancel-margin-right | 对话框取消按钮的margin-right |`20px` |
+| --nutui-dialog-footer-ok-max-width | 对话框确认按钮的最大宽度 |`128px` |
