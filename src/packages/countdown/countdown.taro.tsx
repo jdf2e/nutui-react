@@ -20,6 +20,7 @@ export interface CountDownProps {
   format: string
   autoStart: boolean
   time: number
+  destroy: boolean
   onEnd: () => void
   onPaused: (restTime: number) => void
   onRestart: (restTime: number) => void
@@ -35,6 +36,7 @@ const defaultProps = {
   format: 'HH:mm:ss',
   autoStart: true,
   time: 0,
+  destroy: false,
 } as CountDownProps
 
 const InternalCountDown: ForwardRefRenderFunction<
@@ -50,6 +52,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     format,
     autoStart,
     time,
+    destroy,
     className,
     style,
     onEnd,
@@ -275,7 +278,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   }, [])
 
   const componentWillUnmount = () => {
-    clearInterval(stateRef.current.timer)
+    destroy && cancelAnimationFrame(stateRef.current.timer)
   }
 
   const renderTime = (() => {
