@@ -129,8 +129,9 @@ const ProgressDemo = () => {
           <Issue color="red" style={{ margin: '0 5px' }} />
         </Cell>
         <h2>{translated.dynamicChange}</h2>
-        <Cell>
+        <Cell align="center">
           <Progress percent={value} />
+          <span style={{ margin: '0 5px' }}>{value}%</span>
         </Cell>
         <Cell>
           <Button
