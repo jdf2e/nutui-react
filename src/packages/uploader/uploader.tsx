@@ -57,6 +57,7 @@ export interface UploaderProps extends BasicComponent {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
     fileList: FileItem[]
+    file: FileItem
   }) => void
   onProgress?: (param: {
     e: ProgressEvent<XMLHttpRequestEventTarget>
@@ -67,6 +68,7 @@ export interface UploaderProps extends BasicComponent {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
     fileList: FileItem[]
+    file: FileItem
   }) => void
   onUpdate?: (fileList: FileItem[]) => void
   onOversize?: (file: File[]) => void
@@ -282,6 +284,7 @@ const InternalUploader: ForwardRefRenderFunction<
           responseText,
           option,
           fileList,
+          file: fileItem,
         })
     }
     uploadOption.onFailure = (
@@ -303,6 +306,7 @@ const InternalUploader: ForwardRefRenderFunction<
           responseText,
           option,
           fileList,
+          file: fileItem,
         })
     }
     const task = new Upload(uploadOption)

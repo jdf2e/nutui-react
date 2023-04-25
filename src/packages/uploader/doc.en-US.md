@@ -414,9 +414,9 @@ export default App;
 | progress `v1.3.4 Abandon` | The progress of the file upload         | `event, options, percentage`        |
 | onOversize `v1.3.4`  | Triggered when the file size exceeds the limit | `files`|
 | oversize `v1.3.4 Abandon`  | Triggered when the file size exceeds the limit | `files`|
-| onSuccess `v1.3.4`  | Uploaded successfully | `responseText, options` |
+| onSuccess `v1.3.4`  | Uploaded successfully | `responseText, options, fileList, file` |
 | success `v1.3.4 Abandon`  | Uploaded successfully | `responseText, options` |
-| onFailure `v1.3.4`  | Upload failed | `responseText, options` |
+| onFailure `v1.3.4`  | Upload failed | `responseText, options, fileList, file` |
 | failure `v1.3.4 Abandon`  | Upload failed | `responseText, options` |
 | onChange `v1.3.4`   | The state when the uploaded file changes   | `fileList, event`       |
 | change `v1.3.4 Abandon`   | The state when the uploaded file changes   | `fileList, event`       |
