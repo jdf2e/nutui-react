@@ -9,20 +9,9 @@
     margin-right: 10px;
   }
 }
-.nut-theme-dark {
-  .demo__piece {
-    background-color: $dark5;
-  }
-  .demo__btn {
-    background-color: $dark5;
-  }
-  // .nut-button {
-  //   background-color: $dark5;
-  // }
-}
 .demo__piece {
   display: flex;
   justify-content: center;
-  background: $background-color;
+  background: rgba(255, 255, 255, 1);
   padding: 10px 0;
 }

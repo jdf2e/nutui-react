@@ -1,42 +1,38 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { isObject } from '@/utils'
-import bem from '@/utils/bem'
+
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface Color {
   [key: string]: string
 }
-export interface CircleProgressProps {
-  progress: string | number
-  strokeWidth?: string | number
+export interface CircleProgressProps extends BasicComponent {
+  percent: string | number
   radius?: number | string
-  strokeLinecap?: 'butt' | 'round' | 'square' | 'inherit' | undefined
-  circleColor?: object | string
-  pathColor?: string
+  strokeLinecap?: 'butt' | 'round' | 'square' | 'inherit'
+  color?: object | string
   clockwise?: boolean
-  className?: string
 }
 const defaultProps = {
-  strokeWidth: 5,
+  ...ComponentDefaults,
   radius: 50,
   strokeLinecap: 'round',
-  circleColor: '',
-  pathColor: '',
+  color: '',
   clockwise: true,
 } as CircleProgressProps
 
+const classPrefix = `nut-circleprogress`
 export const CircleProgress: FunctionComponent<
-  CircleProgressProps & React.HTMLAttributes<HTMLDivElement>
+  CircleProgressProps & Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>
 > = (props) => {
   const {
     children,
-    progress,
+    percent,
     className,
     radius,
-    pathColor,
     clockwise,
-    circleColor,
-    strokeWidth,
+    color,
     style,
     strokeLinecap,
     ...restProps
@@ -44,8 +40,8 @@ export const CircleProgress: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const b = bem('circleprogress')
-  const classes = classNames(className, b(''))
+
+  const classes = classNames(className, classPrefix)
   const refRandomId = Math.random().toString(36).slice(-8)
 
   const styles: React.CSSProperties = {
@@ -54,15 +50,11 @@ export const CircleProgress: FunctionComponent<
     ...style,
   }
 
-  const pathStyle = {
-    stroke: pathColor,
-  }
-
   const hoverStyle = () => {
     const perimeter = 283
-    const offset = (perimeter * Number(progress)) / 100
+    const offset = (perimeter * Number(percent)) / 100
     return {
-      stroke: isObject(circleColor) ? `url(#${refRandomId})` : circleColor,
+      stroke: isObject(color) ? `url(#${refRandomId})` : color,
       strokeDasharray: `${offset}px ${perimeter}px`,
     }
   }
@@ -72,15 +64,11 @@ export const CircleProgress: FunctionComponent<
     return `M 50 50 m -45 0 a 45 45 0 1 ${isWise} 90 0  a 45 45 0 1 ${isWise} -90 0`
   }
 
-  const hoverColor = () => {
-    return isObject(circleColor) ? `url(#${refRandomId})` : circleColor
-  }
-
   const stop = () => {
-    if (!isObject(circleColor)) {
+    if (!isObject(props.color)) {
       return
     }
-    const color = circleColor as Color
+    const color = props.color as Color
     const colorArr = Object.keys(color).sort(
       (a, b) => parseFloat(a) - parseFloat(b)
     )
@@ -109,27 +97,17 @@ export const CircleProgress: FunctionComponent<
             })}
           </linearGradient>
         </defs>
-        <path
-          className="nut-circleprogress-path"
-          style={pathStyle}
-          d={path()}
-          fill="none"
-          strokeWidth={strokeWidth}
-        />
+        <path className="nut-circleprogress-path" d={path()} fill="none" />
         <path
           className="nut-circleprogress-hover"
           style={hoverStyle()}
           d={path()}
           fill="none"
-          stroke={hoverColor()}
           strokeLinecap={strokeLinecap}
           transform="rotate(90,50,50)"
-          strokeWidth={strokeWidth}
         />
       </svg>
-      <div className="nut-circleprogress-text">
-        {children || <div>{progress}%</div>}
-      </div>
+      <div className="nut-circleprogress-text">{children}</div>
     </div>
   )
 }
