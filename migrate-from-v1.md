@@ -66,6 +66,9 @@
 - 删除 top 和 bottom，改为 threshold
 ### 导航组件
 #### Elevator
+- `acceptKey` 重命名为 `floorKey`
+- `indexList` 重命名为 `list`
+- `isSticky` 重命名为 `sticky`
 #### FixedNav
 - 删除 fixednavClass，通过 className 实现
 - unActiveText 重命名为 inactiveText

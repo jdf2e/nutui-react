@@ -51,7 +51,7 @@ interface T {
   three: string
 }
 const ElevatorDemo = () => {
-  const acceptKey = 'num'
+  const floorKey = 'num'
   const [translated] = useTranslate<T>({
     'zh-CN': {
       basic: '基本用法',
@@ -470,7 +470,7 @@ const ElevatorDemo = () => {
         <h2>{translated.basic}</h2>
         <div className="demo-component">
           <Elevator
-            indexList={dataList}
+            list={dataList}
             height="260"
             onClickItem={(key: string, item: any) => onClickItem(key, item)}
             onClickIndex={(key: string) => onClickIndex(key)}
@@ -480,9 +480,9 @@ const ElevatorDemo = () => {
         <h2>{translated.customIndex}</h2>
         <div className="demo-component">
           <Elevator
-            indexList={dataList2}
+            list={dataList2}
             height="220"
-            acceptKey={acceptKey}
+            floorKey={floorKey}
             onClickItem={(key: string, item: any) => onClickItem(key, item)}
             onClickIndex={(key: string) => onClickIndex(key)}
           />
@@ -490,8 +490,8 @@ const ElevatorDemo = () => {
         <h2>{translated.sticky}</h2>
         <div className="demo-component">
           <Elevator
-            indexList={dataList3}
-            isSticky
+            list={dataList3}
+            sticky
             height="220"
             onClickItem={(key: string, item: any) => onClickItem(key, item)}
             onClickIndex={(key: string) => onClickIndex(key)}
@@ -500,7 +500,7 @@ const ElevatorDemo = () => {
         <h2>{translated.customContent}</h2>
         <div className="demo-component">
           <Elevator
-            indexList={dataList}
+            list={dataList}
             height="260"
             onClickItem={(key: string, item: any) => onClickItem(key, item)}
             onClickIndex={(key: string) => onClickIndex(key)}

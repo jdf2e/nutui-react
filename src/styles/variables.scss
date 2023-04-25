@@ -2298,16 +2298,12 @@ $elevator-list-item-code-line-height: var(
   --nutui-elevator-list-item-code-line-height,
   35px
 ) !default;
-$elevator-list-item-code-after-width: var(
-  --nutui-elevator-list-item-code-after-width,
-  100%
-) !default;
-$elevator-list-item-code-after-height: var(
-  --nutui-elevator-list-item-code-after-height,
+$elevator-list-item-code-border-bottom: var(
+  --nutui-elevator-list-item-code-border-bottom,
   1px
 ) !default;
-$elevator-list-item-code-after-bg-color: var(
-  --nutui-elevator-list-item-code-after-bg-color,
+$elevator-list-item-code-border-bottom-color: var(
+  --nutui-elevator-list-item-code-border-bottom-color,
   #f5f5f5
 ) !default;
 $elevator-list-item-code-current-box-shadow: 0 3px 3px 1px

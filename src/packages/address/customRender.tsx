@@ -387,7 +387,7 @@ export const CustomRender: FunctionComponent<
         <div className={b('elevator-group')}>
           <Elevator
             height={height}
-            indexList={regionList[tabName[tabIndex] as SelectedRegionType]}
+            list={regionList[tabName[tabIndex] as SelectedRegionType]}
             onClickItem={handleElevatorItem}
           />
         </div>
