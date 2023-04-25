@@ -174,7 +174,7 @@
 - strokeColor 重命名为 color
 - fillColor 重命名为 background
 - 移除 size，通过 strokeWidth、css 变量实现尺寸自定义
-- status 重命名为 animated
+- status 重命名为 animated，表示是否展示动画效果
 - 移除 textBackground，通过 css 实现
 - 移除 textColor，通过 css 实现
 - 移除 textInside，仅保留内显功能
