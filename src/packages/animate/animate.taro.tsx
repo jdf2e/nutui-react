@@ -1,7 +1,6 @@
 import React, { useState, FunctionComponent } from 'react'
 import { AnimateType, AnimateAction } from './type'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -18,6 +17,8 @@ const defaultProps = {
   loop: false,
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as AnimateProps
+
+const classPrefix = `nut-animate`
 export const Animate: FunctionComponent<
   Partial<AnimateProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
@@ -28,10 +29,9 @@ export const Animate: FunctionComponent<
 
   const [clicked, setClicked] = useState(false)
 
-  const b = bem('animate')
   const classes = classNames({
     'nut-ani-container': true,
-    [`${b('')}-${type}`]: action === 'initial' || clicked ? type : false,
+    [`${classPrefix}-${type}`]: action === 'initial' || clicked ? type : false,
     loop: loop,
   })
   const cls = classNames(classes, className)
