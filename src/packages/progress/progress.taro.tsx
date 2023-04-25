@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -9,7 +9,6 @@ export interface ProgressProps extends BasicComponent {
   strokeWidth: string
   showText: boolean
   animated: boolean
-  children: ReactNode
 }
 
 const defaultProps = {
