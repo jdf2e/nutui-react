@@ -336,6 +336,7 @@ export default App;
 | time `v1.3.3` | 倒计时显示时间，单位是毫秒。autoStart 为 false 时生效 | number | `0`
 | showDays `v1.3.3 废弃` | 是否显示天 | boolean | `false`
 | showPlainText `v1.3.3 废弃` | 显示为纯文本 | boolean | `false`
+| destroy `v1.5.2`| 销毁实例 | boolean | `false`
 
 ### format 格式
 

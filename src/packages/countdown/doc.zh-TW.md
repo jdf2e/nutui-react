@@ -357,6 +357,7 @@ export default App;
 | onPaused | 暫停倒計時回調函數 | 剩余時間戳
 | onRestart | 重新開始倒計時回調函數 | 剩余時間戳
 | onUpdate | 自定義展示內容時，實時更新倒計時數據回調函數 | 倒計時實時數據
+| destroy `v1.5.2`| 銷毀實例 | boolean | `false`
 
 
 ### 方法
