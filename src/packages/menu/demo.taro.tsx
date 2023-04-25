@@ -106,7 +106,7 @@ const MenuDemo = () => {
     <>
       <Header />
       <style>{style}</style>
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} full`}>
+      <div className={`demo demo-full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Menu closeOnClickOverlay={false} lockScroll={false}>
           <MenuItem
@@ -138,8 +138,8 @@ const MenuDemo = () => {
           <MenuItem options={options1} value="a" />
         </Menu>
         <h2>{translated.customIcons}</h2>
-        <Menu titleIcon={<TriangleDown />}>
-          <MenuItem options={options} value={0} optionsIcon={<Success />} />
+        <Menu icon={<TriangleDown />}>
+          <MenuItem options={options} value={0} icon={<Success />} />
           <MenuItem options={options1} value="a" />
         </Menu>
         <h2>{translated.expandDirection}</h2>
