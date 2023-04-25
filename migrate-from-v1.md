@@ -199,6 +199,17 @@
 #### Popover
 #### Price
 #### Progress
+- percentage 重命名为 percent，受控
+- 移除 isShowPercentage，可以自定义传入文案
+- 移除 textWidth，可以自定义传入内容的宽度
+- strokeColor 重命名为 color
+- fillColor 重命名为 background
+- 移除 size，通过 strokeWidth、css 变量实现尺寸自定义
+- status 重命名为 animated，表示是否展示动画效果
+- 移除 textBackground，通过 css 实现
+- 移除 textColor，通过 css 实现
+- 移除 textInside，仅保留内显功能
+- 移除 textType、icon，通过 children 传入自定义 ReactNode，不再区分类型
 #### Skeleton
 #### Steps
 #### Swiper
