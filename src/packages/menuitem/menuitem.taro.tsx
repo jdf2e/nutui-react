@@ -157,9 +157,9 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
         style={getPosition()}
         lockScroll={parent.lockScroll}
         visible={_showPopup}
-        closeOnOverlayClick={parent.closeOnClickOverlay}
+        closeOnOverlayClick={parent.closeOnOverlayClick}
         onClick={() => {
-          parent.closeOnClickOverlay && parent.toggleMenuItem(index)
+          parent.closeOnOverlayClick && parent.toggleMenuItem(index)
         }}
       />
       <div

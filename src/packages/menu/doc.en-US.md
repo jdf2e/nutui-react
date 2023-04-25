@@ -286,7 +286,7 @@ export default App
 | closeOnOverlayClick | Whether to close when overlay is clicked     | boolean                 | `true`    |
 | lockScroll          | Whether the background is locked                   | boolean                 | `true`    |
 | scrollFixed         | Whether to fixed when window is scrolled, fixed position can be set                   | boolean \| string \| number                 | `true`    |
-| titleIcon          | Custome title icon                 | React.ReactNode                  | -       |
+| icon          | Custome title icon                 | React.ReactNode                  | -       |
 
 ## MenuItem
 ### Props

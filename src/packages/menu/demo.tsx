@@ -107,7 +107,7 @@ const MenuDemo = () => {
       <style>{style}</style>
       <div className="demo full">
         <h2>{translated.basic}</h2>
-        <Menu closeOnOverlayClick={false} lockScroll={false}>
+        <Menu closeOnOverlayClick lockScroll={false}>
           <MenuItem
             options={options}
             value={0}
