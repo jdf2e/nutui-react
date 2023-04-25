@@ -1,17 +1,17 @@
-# Layout layout
+# Layout
 
-### introduce
+## Intro
 
 for quick layout
 
-### Install
+## Install
 ```javascript
 // react
 import { Row, Col } from '@nutui/nutui-react'
 ```
 
 
-## code demo
+## Demo
 
 ### Basic layout
 
@@ -184,9 +184,9 @@ export default App;
 :::
 
 
-## API
+## Row
 
-### row
+### props
 
 | Field | Description | Type | Default Value |
 |---------------|---------------------------------- |---------|-----------------|
@@ -195,22 +195,23 @@ export default App;
 | justify | Flex main axis alignment, optional value is start end center space-around space-between| string | `start` |
 | align | Flex cross-axis alignment, optional value is flex-start center flex-end | string | `flex-start` |
 | wrap | Whether Flex wraps, the optional value is nowrap wrap reverse | string | `nowrap` |
+| onClick | Fired when clicked | `event: MouseEvent, type: 'row' \| 'col'` | - |
 
-### col
+## Col
+
+### Props
 
 | Field | Description | Type | Default Value |
 |---------|----------------|-------------| ------------------|
 | span | Column element width (divided into 24 parts, for example, if a row is set to 3, then the span value is 8) | string \| number| `24`|
 | offset | Column element offset distance | string \| number| `0` |
+| onClick | Fired when clicked | `event: MouseEvent, type: 'row' \| 'col'` | - |
 
-### row events
+## Theming
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles. Please refer
+to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Fields | Description | Callback Parameters |
-|----- | ----- | ----- |
-| onClick | Fired when clicked | `event: MouseEvent, type: 'row' \| 'col'` |
-
-### col events
-
-| Fields | Description | Callback Parameters |
-|----- | ----- | ----- |
-| onClick | Fired when clicked | `event: MouseEvent, type: 'row' \| 'col'` |
+| Name | Description | Default |
+| --- |--|------|
+|--nutui-col-default-margin-bottom| col margin-bottom | 15px |

@@ -1419,26 +1419,19 @@ $badge-background-color: var(
 ) !default;
 $badge-color: var(--nutui-badge-color, #fff) !default;
 $badge-font-size: var(--nutui-badge-font-size, $font-size-1) !default;
-$badge-default-background-color: var(
-  --nutui-badge-default-background-color,
-  rgba(255, 255, 255, 1)
-) !default;
 $badge-border: var(
   --nutui-badge-border,
   0px solid $primary-text-color
 ) !default;
 $badge-border-radius: var(--nutui-badge-border-radius, 14px) !default;
 $badge-padding: var(--nutui-badge-padding, 0 5px) !default;
-$badge-icon-padding: var(--nutui-badge-icon-padding, 2px) !default;
+$badge-icon-padding: var(--nutui-badge-icon-padding, 3px) !default;
 $badge-content-transform: var(
   --nutui-badge-content-transform,
   translateY(-50%) translateX(100%)
 ) !default;
 $badge-z-index: var(--nutui-badge-z-index, 1) !default;
 $badge-dot-width: var(--nutui-badge-dot-width, 7px) !default;
-$badge-dot-height: var(--nutui-badge-dot-height, 7px) !default;
-$badge-dot-border-radius: var(--nutui-badge-dot-border-radius, 7px) !default;
-$badge-dot-padding: var(--nutui-badge-dot-padding, 0px) !default;
 
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;
@@ -2180,22 +2173,14 @@ $navbar-box-shadow: var(
   --nutui-navbar-box-shadow,
   0px 1px 7px 0px rgba(237, 238, 241, 1)
 ) !default;
-$navbar-color: var(--nutui-navbar-color, $gray1) !default;
-$navbar-title-base-font: var(
-  --nutui-navbar-title-base-font,
+$navbar-color: var(--nutui-navbar-color, $gray2) !default;
+$navbar-font-size: var(--nutui-navbar-font-size, $font-size-2) !default;
+$navbar-title-font-size: var(
+  --nutui-navbar-title-font-size,
   $font-size-2
 ) !default;
-$navbar-title-font: var(--nutui-navbar-title-font, $font-size-2) !default;
 $navbar-title-font-weight: var(--nutui-navbar-title-font-weight, 0) !default;
-$navbar-title-font-color: var(
-  --nutui-navbar-title-font-color,
-  $navbar-color
-) !default;
-$navbar-title-width: var(--nutui-navbar-title-width, 100px) !default;
-$navbar-title-icon-margin: var(
-  --nutui-navbar-title-icon-margin,
-  0 0 0 13px
-) !default;
+$navbar-title-font-color: var(--nutui-navbar-title-font-color, $gray1) !default;
 
 // sidenavbar（✅）
 $sidenavbar-content-bg-color: var(
@@ -2313,16 +2298,12 @@ $elevator-list-item-code-line-height: var(
   --nutui-elevator-list-item-code-line-height,
   35px
 ) !default;
-$elevator-list-item-code-after-width: var(
-  --nutui-elevator-list-item-code-after-width,
-  100%
-) !default;
-$elevator-list-item-code-after-height: var(
-  --nutui-elevator-list-item-code-after-height,
+$elevator-list-item-code-border-bottom: var(
+  --nutui-elevator-list-item-code-border-bottom,
   1px
 ) !default;
-$elevator-list-item-code-after-bg-color: var(
-  --nutui-elevator-list-item-code-after-bg-color,
+$elevator-list-item-code-border-bottom-color: var(
+  --nutui-elevator-list-item-code-border-bottom-color,
   #f5f5f5
 ) !default;
 $elevator-list-item-code-current-box-shadow: 0 3px 3px 1px

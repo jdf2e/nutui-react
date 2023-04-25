@@ -1,9 +1,11 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { DataContext } from './UserContext'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type EventType = 'row' | 'col'
-export interface RowProps {
+
+export interface RowProps extends BasicComponent {
   type: string
   justify: string
   align: string
@@ -11,7 +13,10 @@ export interface RowProps {
   gutter: string | number
   onClick: (e: any, type: EventType) => void
 }
+const classPrefix = 'nut-row'
+
 const defaultProps = {
+  ...ComponentDefaults,
   type: '',
   justify: 'start',
   align: 'flex-start',
@@ -23,7 +28,7 @@ export const Row: FunctionComponent<
 > = (props) => {
   const {
     className,
-    style = {},
+    style,
     children,
     type,
     justify,
@@ -35,7 +40,6 @@ export const Row: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const prefixCls = 'nut-row'
   const getClass = (prefix: string, type: string) => {
     const classType = type ? `nut-row-${prefix}-${type}` : ''
     const className = prefix ? classType : `nut-row-${type}`
@@ -47,7 +51,7 @@ export const Row: FunctionComponent<
     ${getClass('justify', justify)}
     ${getClass('align', align)}
     ${getClass('flex', wrap)}
-    ${prefixCls}
+    ${classPrefix}
    `
   }
   const parentRow = {
@@ -56,9 +60,6 @@ export const Row: FunctionComponent<
 
   return (
     <DataContext.Provider value={parentRow}>
-      {/* <div className={`${getClasses()}`}>
-          {children}
-        </div> */}
       {React.createElement(
         'div',
         {

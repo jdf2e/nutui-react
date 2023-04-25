@@ -1,10 +1,10 @@
 # Badge
 
-### Intro
+## Intro
 
 出现在图标或文字右上角的红色圆点、数字或者文字，表示有新内容或者待处理的信息。
 
-### Install
+## Install
 
 ``` javascript
 // react
@@ -86,20 +86,28 @@ import { My } from '@nutui/icons-react';
 const App = () => {
   return (
     <Cell>
-      <Badge value={8}
-             color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
+      <Badge
+        value={8}
+        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
+      >
         <Avatar icon={<My />} shape="square" />
       </Badge>
-      <Badge value={76}
-             color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
+      <Badge
+        value={76}
+        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
+      >
         <Avatar icon={<My />} shape="square" />
       </Badge>
-      <Badge value="NEW"
-             color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
+      <Badge
+        value="NEW"
+        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
+      >
         <Avatar icon={<My />} shape="square" />
       </Badge>
-      <Badge dot
-             color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)">
+      <Badge
+        dot
+        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
+      >
         <Avatar icon={<My />} shape="square" />
       </Badge>
     </Cell>
@@ -122,13 +130,16 @@ import { My, Checklist, Link as LinkIcon, Download } from '@nutui/icons-react';
 const App = () => {
   return (
     <Cell>
-      <Badge icon={<Checklist color="#fff" />}>
+      <Badge
+        value={<Checklist color="#fff" width={12} height={12} />}
+        className="test"
+      >
         <Avatar icon={<My />} shape="square" />
       </Badge>
-      <Badge icon={<LinkIcon color="#fff" />}>
+      <Badge value={<LinkIcon color="#fff" width={12} height={12} />}>
         <Avatar icon={<My />} shape="square" />
       </Badge>
-      <Badge icon={<Download color="#fff" />}>
+      <Badge value={<Download color="#fff" width={12} height={12} />}>
         <Avatar icon={<My />} shape="square" />
       </Badge>
     </Cell>
@@ -142,7 +153,6 @@ export default App;
 ### Custom CSS
 
 :::demo
-
 ```tsx
 import React from "react";
 import { Badge, Avatar, ConfigProvider, Cell } from '@nutui/nutui-react';
@@ -207,20 +217,18 @@ const App = () => {
 }
 export default App;
 ```
-
 :::
 
 ### Display Alone
 
 :::demo
-
 ```tsx
 import React from "react";
 import { Badge,Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Cell>
+    <Cell style={{height: '100px'}}>
       <Badge value={8}> </Badge>
       <Badge value={76}> </Badge>
       <Badge value="NEW"> </Badge>
@@ -232,23 +240,17 @@ export default App;
 
 :::
 
-## API
-
+## Badge
 ### Props
 
-| Attribute    | Description                                       | Type    | Default    |
-|---------|--------------------------------------------|---------|-----------|
-| value   | value to show                                 | string  | -         |
-| max     | when value is number, it's the max size                     | number  | `10000`   |
-| zIndex |  z-index                          | number  | `10`      |
-| dot     | Is dotted    | boolean | `false`   |
-| top     | Up and down offset, support unit setting, can be set to: 5, etc. | number  | `0`       |
-| right   | Left and right offset, support unit setting, can be set to: 5, etc. | number  | `0`       |
-| color   | background color                                | string  | `#fa2c19` |
-| icons   | custom icons                               | string  | - |
-
-
-
+| Attribute    | Description | Type    | Default    |
+|---------|----------------------|---------|-----------|
+| value   | value to show, eg number、charctor and custom content | `ReactNode`  |  | - |
+| max     | when value is number, it's the max size | `number`  | `99`   |
+| dot     | Is dotted    | `boolean` | `false`   |
+| top     | Up and down offset, support unit setting, can be set to: 5, etc. |`number`  | `0`       |
+| right   | Left and right offset, support unit setting, can be set to: 5, etc. | `number`  | `0`       |
+| color   | background color,the default value is the theme primary color | string  | `` |
 
 
 ## Theming
@@ -257,19 +259,15 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-badge-background-color | `linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%))`|
-| --nutui-badge-color | `#fff` |
-| --nutui-badge-font-size | `$font-size-1` |
-| --nutui-badge-default-background-color | `rgba(255, 255, 255, 1)` |
-| --nutui-badge-border | `0px solid $primary-text-color`|
-| --nutui-badge-border-radius | `14px` |
-| --nutui-badge-padding | `0 5px` |
-| --nutui-badge-icon-padding | `2px` |
-| --nutui-badge-content-transform | `translateY(-50%) translateX(100%)`|
-| --nutui-badge-z-index | `1` |
-| --nutui-badge-dot-width | `7px` |
-| --nutui-badge-dot-height | `7px` |
-| --nutui-badge-dot-border-radius | `7px` |
-| --nutui-badge-dot-padding | `0px` |
+| Name | Description | Default |
+| --- | --- |--- |
+| --nutui-badge-background-color | badge background color | `linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%))`|
+| --nutui-badge-color | badge content color | `#fff` |
+| --nutui-badge-font-size |badge content font size | `$font-size-1` |
+| --nutui-badge-border |badge border | `0px solid $primary-text-color`|
+| --nutui-badge-border-radius |badge border-radius | `14px` |
+| --nutui-badge-padding |badge padding value | `0 5px` |
+| --nutui-badge-icon-padding |when badge is icon,badge  padding | `2px` |
+| --nutui-badge-content-transform |badge content transform | `translateY(-50%) translateX(100%)`|
+| --nutui-badge-z-index |when badge is icon, badge z-index| `1` |
+| --nutui-badge-dot-width |when badge is dot, the dot width,height and border radius |`7px` |

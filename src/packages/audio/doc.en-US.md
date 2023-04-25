@@ -1,20 +1,18 @@
 # Audio 
 
-### introduce
+## Intro
 
 Used for audio playback
 
-### Install
+## Install
 
 ```javascript
-// react
 import { Audio } from '@nutui/nutui-react'
-
 ```
 
-## Code demonstration
+## Demo
 
-### Basic usage
+### Basic Usage
 
 :::demo
 
@@ -27,12 +25,12 @@ const App = () => {
     <>
       <Audio
         autoplay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="icon"
         loop={false}
         preload="auto"
         muted={false}
-        onPlayEnd={() => alert('ended!')}
+        onEnd={() => alert('ended!')}
       />
     </>
   );
@@ -42,7 +40,41 @@ export default App;
 
 :::
 
-### customize
+### Progress Mode
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Audio } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Audio
+        autoplay={false}
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        type="progress"
+        preload="auto"
+        muted={false}
+        onMute={(e) => {
+          console.log('progress audio muted', e)
+        }}
+        onForward={() => console.log('forward')}
+        onPause={(e) => {
+          console.log('progress audio paused', e)
+        }}
+        onEnd={() => alert('progress audio ended!')}
+      />
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### Custom Mode
 
 :::demo
 
@@ -59,7 +91,7 @@ const App = () => {
       className="custom-voice-audio"
       id="custom-voice-audio"
       autoplay={false}
-      url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+      src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       type="none"
       preload="auto"
       onCanPlay={(e: any) => {
@@ -80,7 +112,7 @@ export default App;
 
 :::
 
-### Progressive Play
+### Control Mode
 
 :::demo
 
@@ -93,48 +125,14 @@ const App = () => {
     <>
       <Audio
         autoplay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
-        type="progress"
-        preload="auto"
-        muted={false}
-        onMute={(e) => {
-          console.log('progress audio muted', e)
-        }}
-        onForward={() => console.log('forward')}
-        onPause={(e) => {
-          console.log('progress audio paused', e)
-        }}
-        onPlayEnd={() => alert('progress audio ended!')}
-      />
-    </>
-  );
-};
-export default App;
-```
-
-:::
-
-### Control
-
-:::demo
-
-```tsx
-import  React from "react";
-import { Audio } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Audio
-        autoplay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="controls"
         preload="auto"
         muted={false}
         onPause={(e) => {
           console.log('paused', e)
         }}
-        onPlayEnd={() => alert('ended!')}
+        onEnd={() => alert('ended!')}
       />
     </>
   );
@@ -145,29 +143,21 @@ export default App;
 :::
 
 
-## API
+## Audio
 
 ### Props
 
-| parameter         | illustrate                             | type   | Defaults           |
+| Property         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| className       | Classification               | string | ''              |
-| style       | CSS Properties              | CSSProperties | {}           |
-| url         | Voice resource link               | string | ''              |
-| muted        | Whether it is mute                         | boolean | false             |
-| autoplay         | Whether to play automatically | boolean | false               |
-| loop | Whether to circulate     | boolean | false |
-| preload          | Whether the pronunciation is pre -loaded: 'None', 'Metadata', 'Auto', ''  | string | 'auto'              |
-| type         | Display form, optional value：controls、panel、progress、icon、none  | string | 'progress'              |
-
-
-### Events
-
-| Incident name | illustrate           | Callback parameter     |
-|--------|----------------|--------------|
-| onFastBack  | Voice will be retreated, type = progress takes effect | event：HTMLAudioElement |
-| onForward  | Voice fast -moving back, type = progress | event：HTMLAudioElement |
-| onPause  | Suspension | event：HTMLAudioElement |
-| onPlayEnd  | The voice playback is complete, loop=false takes effect | event：HTMLAudioElement|
-| onMute  | Mute | event：HTMLAudioElement|
-| onCanPlay  | Can be triggered when the media can be played | event：HTMLAudioElement |
+| src         | Voice resource link               | `string` | -              |
+| muted        | Whether it is mute                         | `boolean` | `false`             |
+| autoplay         | Whether to play automatically | `boolean` | `false`               |
+| loop | Whether to circulate     | `boolean` | `false` |
+| preload          | Whether the pronunciation is pre -loaded: 'None', 'Metadata', 'Auto', ''  | `string` | `auto`              |
+| type         | Display form, optional value：controls、panel、progress、icon、none  | `string` | `progress`              |
+| onBack  | Voice will be retreated, type = progress takes effect | `(event：HTMLAudioElement) => void` | - |
+| onForward  | Voice fast -moving back, type = progress | `(event：HTMLAudioElement) => void` | - |
+| onPause  | Suspension | `(event：HTMLAudioElement) => void` | - |
+| onEnd  | The voice playback is complete, loop=false takes effect | `(event：HTMLAudioElement) => void` | - |
+| onMute  | Mute | `(event：HTMLAudioElement) => void` | - |
+| onCanPlay  | Can be triggered when the media can be played | `(event：HTMLAudioElement) => void` | - |
