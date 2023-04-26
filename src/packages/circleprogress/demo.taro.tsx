@@ -70,8 +70,8 @@ const CircleProgressDemo = () => {
   }
 
   const gradientColor = {
-    '0%': 'var(--nutui-brand-color-start)',
-    '100%': 'var(--nutui-brand-color-end)',
+    '0%': '#ff404f',
+    '100%': '#fa2c19',
   }
 
   return (
@@ -84,38 +84,45 @@ const CircleProgressDemo = () => {
       >
         <h2>{translated['84aa6bce']}</h2>
         <div className="demo__piece">
-          <CircleProgress progress={20} />
+          <CircleProgress percent={20} />
+          <CircleProgress percent={60}>60%</CircleProgress>
         </div>
 
         <h2>{translated['67eacf7f']}</h2>
         <div className="demo__piece">
-          <CircleProgress progress={50} strokeWidth={10} />
+          <CircleProgress percent={50} strokeWidth={10} />
         </div>
 
         <h2>{translated['3fee7d50']}</h2>
         <div className="demo__piece">
-          <CircleProgress
-            progress={50}
-            circleColor="var(--nutui-brand-color)"
-          />
-          <CircleProgress progress={100} circleColor={gradientColor} />
+          <CircleProgress percent={50} color="#fa2c19">
+            50%
+          </CircleProgress>
+          <CircleProgress percent={100} color={gradientColor}>
+            100%
+          </CircleProgress>
         </div>
 
         <h2>{translated.f4aa4b4c}</h2>
         <div className="demo__piece">
-          <CircleProgress progress={50} radius={60} />
+          <CircleProgress percent={50} radius={60}>
+            50%
+          </CircleProgress>
         </div>
 
         <h2>{translated['9daa2dd9']}</h2>
         <div className="demo__piece">
-          <CircleProgress progress={50} radius={60}>
-            {translated['4eafa9e9']}
+          <CircleProgress percent={50} radius={60}>
+            <div>3000</div>
+            <div style={{ fontSize: '12px', color: 'var(--nutui-gray-2)' }}>
+              步
+            </div>
           </CircleProgress>
         </div>
 
         <h2>{translated.c3e31425}</h2>
         <div className="demo__piece">
-          <CircleProgress progress={percent} />
+          <CircleProgress percent={percent}>{percent}%</CircleProgress>
         </div>
         <div className="demo__btn">
           <Button type="primary" onClick={setReduceVal}>
