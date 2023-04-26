@@ -159,6 +159,16 @@
 #### Avatar
 #### Badge
 #### CircleProgress
+-h5
+- `progress` 重命名为 `percent`
+- `strokeWidth` 改用 css变量控制
+- `circleColor` 重名为 `color`
+- `pathColor` 改用 css变量控制
+
+-taro
+- `progress` 重命名为 `percent`
+- `circleColor` 重名为 `color`
+- `pathColor` 重名为 `background`
 #### Collapse
 #### CountDown
 #### Ellipsis
