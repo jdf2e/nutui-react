@@ -1,3 +1,17 @@
+# v2.0.0-alpha.2
+`2023-04-26`
+
+* 🛠 refactor: navbar (#890) @拧巴的猫
+* 🛠 refactor: animate (#940) @junjun666
+* 🛠 refactor: badge (#936) @xiaoyatong
+* 🛠 refactor: drag (#937) @拧巴的猫
+* 🛠 refactor: elevator (#927) @拧巴的猫
+* 🛠 refactor: menu (#923) @oasis-cloud
+* 🛠 refactor: progress (#943) @Eiinu
+* 🔨 chore: sync pnpm-lock @oasis-cloud
+* :bug: fix: 修改taro增加主题编译 (#950) @junjun666
+
+
 # v2.0.0-alpha.1
 `2023-04-21`
 
