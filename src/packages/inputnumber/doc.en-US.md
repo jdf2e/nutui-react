@@ -238,7 +238,7 @@ export default App;
 ```
 :::
 
-## API
+## InputNumber
 
 ### Props
 

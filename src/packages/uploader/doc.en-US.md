@@ -390,6 +390,7 @@ export default App;
 ```
 :::
 
+## Uploader
 ### Prop
 
 | Property | Description | Type | Default|

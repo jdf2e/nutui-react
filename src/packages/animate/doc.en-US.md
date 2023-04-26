@@ -125,7 +125,7 @@ export default AnimateDemo
 :::
 
 
-## API
+## Animate
 
 ### Props
 

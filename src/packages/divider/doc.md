@@ -146,7 +146,7 @@ export default App;
 :::
 
 
-## API
+## Divider
 
 ### Props
 
