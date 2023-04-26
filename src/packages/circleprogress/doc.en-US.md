@@ -41,17 +41,8 @@ import { CircleProgress } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <CircleProgress
-        percent={50}
-        style={{ '--nutui-circleprogress-stroke-width': '2px' }}
-      />
-      <CircleProgress
-        percent={50}
-        style={{
-          '--nutui-circleprogress-path-color': '#e5e9f2',
-          '--nutui-circleprogress-stroke-width': '10px',
-        }}
-      />
+      <CircleProgress percent={50} strokeWidth={2} />
+      <CircleProgress percent={60} strokeWidth={10} background='#e5e9f2'/>
     </>
   )
 }
@@ -182,8 +173,10 @@ export default App;
 | Property | Description | Type | Default
 |----- | ----- | ----- | -----
 | percent | Progress Rate | `number \| string` | `Required, no default value`
+| strokeWidth | 圆弧的宽度 | `number \| string` | `5`
 | radius | radius | `number \| string` | `50`
 | color | Progress color, passing object to render gradient | `object \| string` | `#fa2c19`
+| background | 圆环轨道颜色 | `string` | `#d9d9d9`
 | strokeLinecap | Stroke linecap | `'butt' \| 'round' \| 'square' \| 'inherit'` | `round`
 | clockwise | Whether to be clockwise | `boolean` | `true`
 
@@ -199,4 +192,3 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-circleprogress-path-color |  The color of the circular progress bar track | `#e5e9f2` |
 | --nutui-circleprogress-text-color | The color of the track content area of ​​the circular progress bar | `$title-color` |
 | --nutui-circleprogress-text-size | The size of the track content area of ​​the circular progress bar | `$font-size-3` |
-| --nutui-circleprogress-stroke-width | The width of the circular progress bar line | `5px` |

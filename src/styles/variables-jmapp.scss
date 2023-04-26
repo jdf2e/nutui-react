@@ -2525,10 +2525,6 @@ $circleprogress-text-size: var(
   --nutui-circleprogress-text-size,
   $font-size-3
 ) !default;
-$circleprogress-stroke-width: var(
-  --nutui-circleprogress-stroke-width,
-  5px
-) !default;
 
 // Comment（✅ todo：react版本该组件暂无，将变量先迁过来）
 $comment-header-user-name-color: var(

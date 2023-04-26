@@ -9,7 +9,7 @@ test('should change stoke when use width props', () => {
     <CircleProgress
       data-testid="circle-prop"
       percent={40}
-      style={{ '--nutui-circleprogress-stroke-width': '10px' }}
+      strokeWidth={10}
       radius={60}
     />
   )

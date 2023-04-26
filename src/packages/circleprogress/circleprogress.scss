@@ -7,12 +7,10 @@
   &-hover {
     stroke: $circleprogress-primary-color;
     transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s;
-    stroke-width: $circleprogress-stroke-width;
   }
 
   &-path {
     stroke: $circleprogress-path-color;
-    stroke-width: $circleprogress-stroke-width;
   }
 
   &-text {

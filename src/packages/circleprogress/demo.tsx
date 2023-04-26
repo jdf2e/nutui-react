@@ -84,17 +84,8 @@ const CircleProgressDemo = () => {
 
         <h2>{translated['67eacf7f']}</h2>
         <div className="demo__piece">
-          <CircleProgress
-            percent={50}
-            style={{ '--nutui-circleprogress-stroke-width': '2px' }}
-          />
-          <CircleProgress
-            percent={50}
-            style={{
-              '--nutui-circleprogress-path-color': '#e5e9f2',
-              '--nutui-circleprogress-stroke-width': '10px',
-            }}
-          />
+          <CircleProgress percent={50} strokeWidth={2} />
+          <CircleProgress percent={60} strokeWidth={10} background="#e5e9f2" />
         </div>
 
         <h2>{translated['3fee7d50']}</h2>

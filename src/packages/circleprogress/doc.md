@@ -41,17 +41,8 @@ import { CircleProgress } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <CircleProgress
-        percent={50}
-        style={{ '--nutui-circleprogress-stroke-width': '2px' }}
-      />
-      <CircleProgress
-        percent={50}
-        style={{
-          '--nutui-circleprogress-path-color': '#e5e9f2',
-          '--nutui-circleprogress-stroke-width': '10px',
-        }}
-      />
+      <CircleProgress percent={50} strokeWidth={2} />
+      <CircleProgress percent={60} strokeWidth={10} background='#e5e9f2'/>
     </>
   )
 }
@@ -177,8 +168,10 @@ export default App;
 | 字段 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
 | percent | 百分比 | `number \| string` | `必传项，无默认值`
+| strokeWidth | 圆弧的宽度 | `number \| string` | `5`
 | radius | 半径 |  `number \| string` | `50`
 | color | 圆环进度条颜色 | `object \| string` | `''`
+| background | 圆环轨道颜色 | `string` | `#d9d9d9`
 | strokeLinecap | 圆环进度条端点形状 | `'butt' \| 'round' \| 'square' \| 'inherit'` | `'round'`
 | clockwise | 是否顺时针展示| `boolean` | `true`
 
@@ -194,4 +187,3 @@ export default App;
 | --nutui-circleprogress-path-color |  环形进度条轨道的颜色 | `#e5e9f2` |
 | --nutui-circleprogress-text-color | 环形进度条轨道内容区的颜色 | `$title-color` |
 | --nutui-circleprogress-text-size | 环形进度条轨道内容区的大小 | `$font-size-3` |
-| --nutui-circleprogress-stroke-width | 环形进度条线条的宽度 | `5px` |

@@ -9,16 +9,20 @@ export interface Color {
 }
 export interface CircleProgressProps extends BasicComponent {
   percent: string | number
+  strokeWidth?: string | number
   radius?: number | string
   strokeLinecap?: 'butt' | 'round' | 'square' | 'inherit'
   color?: object | string
+  background?: string
   clockwise?: boolean
 }
 const defaultProps = {
   ...ComponentDefaults,
+  strokeWidth: 5,
   radius: 50,
   strokeLinecap: 'round',
   color: '',
+  background: '#e5e9f2',
   clockwise: true,
 } as CircleProgressProps
 
@@ -32,7 +36,9 @@ export const CircleProgress: FunctionComponent<
     className,
     radius,
     clockwise,
+    strokeWidth,
     color,
+    background,
     style,
     strokeLinecap,
     ...restProps
@@ -48,6 +54,10 @@ export const CircleProgress: FunctionComponent<
     height: `${Number(radius) * 2}px`,
     width: `${Number(radius) * 2}px`,
     ...style,
+  }
+
+  const pathStyle = {
+    stroke: background,
   }
 
   const hoverStyle = () => {
@@ -97,7 +107,13 @@ export const CircleProgress: FunctionComponent<
             })}
           </linearGradient>
         </defs>
-        <path className="nut-circleprogress-path" d={path()} fill="none" />
+        <path
+          className="nut-circleprogress-path"
+          d={path()}
+          style={pathStyle}
+          fill="none"
+          strokeWidth={strokeWidth}
+        />
         <path
           className="nut-circleprogress-hover"
           style={hoverStyle()}
@@ -105,6 +121,7 @@ export const CircleProgress: FunctionComponent<
           fill="none"
           strokeLinecap={strokeLinecap}
           transform="rotate(90,50,50)"
+          strokeWidth={strokeWidth}
         />
       </svg>
       <div className="nut-circleprogress-text">{children}</div>
