@@ -265,7 +265,7 @@ export default App;
 | rightWidth | 指定右侧滑动区域宽度，单位为 `px` | number \| string | `0` |
 | leftAction | 左侧滑动区域的内容 | ReactNode | - |
 | rightAction | 右侧滑动区域的内容 | ReactNode | - |
-| beforeClose | 关闭前的回调函数，返回 `position` | string | `left` |
+| beforeClose | 关闭前的回调函数，返回滑动区域所在方向 `position` | string | `left` |
 | disabled | 是否禁用滑动 | boolean | `false` |
 
 ### Events

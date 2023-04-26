@@ -269,7 +269,7 @@ export default App;
 |rightwidth | specifies the width of the sliding area on the right, in 'PX'| number \| string | `0` |
 |leftaction | contents of the left sliding area | ReactNode | - |
 |rightaction | content of right sliding area | ReactNode | - |
-|beforeclose | the callback function before closing returns `position` | string | `left`|
+|beforeclose | the callback function before closing returns `position` which is the direction of the sliding area  | string | `left`|
 |disabled | disable sliding | boolean | `false` |
 
 ### Events
