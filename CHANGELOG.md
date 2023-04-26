@@ -1,3 +1,10 @@
+# v1.5.2
+`2023-04-26`
+
+* :bug: fix: countdown 修改销毁实例方法  (#944) @拧巴的猫
+* :bug: fix: uploader组件onSuccess和onFailure方法添加file参数表示当前上传文件 (#932) @cuicuiworld
+
+
 # v1.5.1
 `2023-04-19`
 
