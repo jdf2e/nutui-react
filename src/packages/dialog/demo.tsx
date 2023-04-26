@@ -12,6 +12,8 @@ interface T {
   title1: string
   title2: string
   title3: string
+  title4: string
+  title5: string
   content: string
   tips: string
   confirmText: string
@@ -30,6 +32,8 @@ const DialogDemo = () => {
       title1: '标签式使用',
       title2: '无底部 Footer 区域',
       title3: '底部 Footer 为 Button 时，点击遮罩不关闭',
+      title4: '打开弹框 3s 后调用关闭方法',
+      title5: '打开弹框 3s 后更新弹框内容',
       content: '支持函数调用和组件调用两种方式。',
       confirmText: '确定',
       cancelText: '取消',
@@ -44,6 +48,9 @@ const DialogDemo = () => {
       title1: 'Template use',
       title2: 'no Footer',
       title3: 'Footer Button, and does not close when click overlay',
+      title4: 'after opened the dialog for 3 seconds, call close method',
+      title5:
+        'after opened the dialog for 3 seconds, update the content of the dialog',
       content: 'Function call and template call are supported.',
       confirmText: 'confirm',
       cancelText: 'cancel',
@@ -74,7 +81,7 @@ const DialogDemo = () => {
         <Cell
           title={translated.noTitle}
           onClick={() => {
-            Dialog.alert({
+            Dialog.confirm({
               content: translated.noTitle,
               confirmText: translated.confirmText,
               cancelText: translated.cancelText,
@@ -102,6 +109,36 @@ const DialogDemo = () => {
               confirmText: translated.confirmText,
               cancelText: translated.cancelText,
             })
+          }}
+        />
+        <Cell
+          title={translated.title4}
+          onClick={() => {
+            const dialog = Dialog.confirm({
+              content: translated.title4,
+              confirmText: translated.confirmText,
+              cancelText: translated.cancelText,
+            })
+            setTimeout(() => {
+              dialog.close()
+            }, 3000)
+          }}
+        />
+        <Cell
+          title={translated.title5}
+          onClick={() => {
+            const dialog = Dialog.confirm({
+              content: translated.title5,
+              confirmText: translated.confirmText,
+              cancelText: translated.cancelText,
+            })
+            setTimeout(() => {
+              dialog.update({
+                content: `${translated.title5} ${translated.title5} `,
+                confirmText: translated.confirmText,
+                cancelText: translated.cancelText,
+              })
+            }, 3000)
           }}
         />
         <h2>{translated.title1}</h2>
@@ -148,7 +185,6 @@ const DialogDemo = () => {
           title={translated.title2}
           visible={visible3}
           lockScroll
-          footerDirection="vertical"
           onClose={() => {
             setVisible3(false)
           }}

@@ -63,7 +63,6 @@ const DialogDemo = () => {
         <Cell title={translated.basic} onClick={() => setVisible1(true)} />
         <Dialog
           title={translated.title1}
-          lockScroll
           visible={visible1}
           confirmText={translated.confirmText}
           cancelText={translated.cancelText}
@@ -89,7 +88,6 @@ const DialogDemo = () => {
           confirmText={translated.confirmText}
           hideCancelButton
           onConfirm={() => setVisible3(false)}
-          onCancel={() => setVisible3(false)}
         >
           {translated.content}
         </Dialog>

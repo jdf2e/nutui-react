@@ -30,28 +30,62 @@ const App = () => {
       <Cell title="Basic bullet" onClick={() => {
         Dialog.alert({
             title: 'Basic bullet',
-            content: 'Support function calls and module call.'
+            content: 'Support function calls and module call.',
+            confirmText: 'Confirm',
+            cancelText: 'Cancel',
+            lockScroll: true
         });
         }} />
       <Cell title="Non -title bullet box" onClick={() => {
             Dialog.alert({
-            content: 'Non -title bullet box'
+            content: 'Non -title bullet box',
+            confirmText: 'Confirm',
+            cancelText: 'Cancel',
         });
         }} />
       <Cell title="Prompt bomb frame" onClick={() => {
         Dialog.alert({
             title: 'Kind tips',
             content: 'Support function calls and module call.',
-            hideCancelButton: true
+            hideCancelButton: true,
+            confirmText: 'Confirm'
         });
         }} />
       <Cell title="The bottom button is called vertically" onClick={() => {
         Dialog.alert({
             title: 'Kind tips',
             content: 'Support function calls and module call.',
-            footerDirection: 'vertical'
+            footerDirection: 'vertical',
+            confirmText: 'Confirm',
+            cancelText: 'Cancel',
         });
         }} />
+        <Cell title="after opened the dialog for 3 seconds, call close method" onClick={() => {
+          const dialog = Dialog.confirm({
+            content: 'Support function calls and module call.',
+            confirmText: 'Confirm',
+            cancelText: 'Cancel',
+          });
+          setTimeout(() => {
+            dialog.close()
+          }, 3000);
+        }} 
+      />
+      <Cell title="after opened the dialog for 3 seconds, update the content of the dialog" onClick={() => {
+          const dialog = Dialog.confirm({
+            content: 'Support function calls and module call.',
+            confirmText: 'Confirm',
+            cancelText: 'Cancel',
+          });
+          setTimeout(() => {
+            dialog.update({
+              content: 'Support function calls and module call. update',
+              confirmText: 'Confirm',
+              cancelText: 'Cancel',
+            })
+          }, 3000);
+        }} 
+      />
     </>
   )
 }

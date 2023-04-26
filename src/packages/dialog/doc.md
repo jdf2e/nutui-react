@@ -28,31 +28,67 @@ const App = () => {
   return (
     <>
       <Cell title="基础弹框" onClick={() => {
-        Dialog.alert({
+          Dialog.alert({
             title: '基础弹框',
-            content: '支持函数调用和组件调用两种方式。'
-        });
+            content: '支持函数调用和组件调用两种方式。',
+            confirmText: '确认',
+            cancelText: '取消',
+            lockScroll: true
+          });
         }} />
       <Cell title="无标题弹框" onClick={() => {
-            Dialog.alert({
-            content: '无标题弹框'
-        });
-        }} />
+          Dialog.alert({
+            content: '无标题弹框',
+            confirmText: '确认',
+            cancelText: '取消',
+          });
+        }} 
+      />
       <Cell title="提示弹框" onClick={() => {
-        Dialog.alert({
-            title: '温馨提示',
+          Dialog.alert({
+              title: '提示',
+              content: '支持函数调用和组件调用两种方式。',
+              hideCancelButton: true,
+              confirmText: '确认'
+          });
+        }} 
+      />
+      <Cell title="底部按钮 垂直布局 使用" onClick={() => {
+          Dialog.alert({
+            title: '提示',
             content: '支持函数调用和组件调用两种方式。',
-            hideCancelButton: true,
-            confirmText: '确认'
-        });
-        }} />
-      <Cell title="底部按钮 垂直调用" onClick={() => {
-        Dialog.alert({
-            title: '温馨提示',
-            content: '支持函数调用和组件调用两种方式。',
-            footerDirection: 'vertical'
-        });
-        }} />
+            footerDirection: 'vertical',
+            confirmText: '确认',
+            cancelText: '取消',
+          });
+        }} 
+      />
+      <Cell title="打开弹框 3s 后调用关闭方法" onClick={() => {
+          const dialog = Dialog.confirm({
+            content: '打开弹框 3s 后调用关闭方法',
+            confirmText: '确认',
+            cancelText: '取消',
+          });
+          setTimeout(() => {
+            dialog.close()
+          }, 3000);
+        }} 
+      />
+      <Cell title="打开弹框 3s 后调用关闭方法" onClick={() => {
+          const dialog = Dialog.confirm({
+            content: '打开弹框 3s 后调用关闭方法',
+            confirmText: '确认',
+            cancelText: '取消',
+          });
+          setTimeout(() => {
+            dialog.update({
+              content: '打开弹框 3s 后调用关闭方法 我是更新',
+              confirmText: '确认',
+              cancelText: '取消',
+            })
+          }, 3000);
+        }} 
+      />
     </>
   )
 }
@@ -61,7 +97,7 @@ export default App;
 
 :::
 
-### 组件调用
+### 标签式使用
 
 :::demo
 
@@ -76,23 +112,49 @@ const App = () => {
     <>
     <Cell title="基础弹框" onClick={() => setVisible1(true)} />
     <Dialog 
-        title="组件调用"
-        visible={visible1}
-        onConfirm={() => setVisible1(false)}
-        onCancel={() => setVisible1(false)}
+      title="标签式使用"
+      visible={visible1}
+      confirmText='确认'
+      cancelText='取消'
+      onConfirm={() => setVisible1(false)}
+      onCancel={() => setVisible1(false)}
     >
-        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
     </Dialog>
-    <Cell title="底部按钮 垂直调用" onClick={() => setVisible2(true)} />
+    <Cell title="底部按钮 垂直布局 使用" onClick={() => setVisible2(true)} />
     <Dialog 
-        title="组件调用"
-        visible={visible2}
-        lockScroll
-        footerDirection='vertical'
-        onConfirm={() => setVisible2(false)}
-        onCancel={() => setVisible2(false)}
+      title="标签式使用"
+      visible={visible2}
+      lockScroll
+      footerDirection='vertical'
+      onConfirm={() => setVisible2(false)}
+      onCancel={() => setVisible2(false)}
     >
-        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+    </Dialog>
+    <Cell title="底部 Footer 为 Button 时，点击遮罩不关闭" onClick={() => setVisible2(true)} />
+    <Dialog 
+      title="底部 Footer 为 Button 时，点击遮罩不关闭"
+      visible={visible2}
+      lockScroll
+      footerDirection='vertical'
+      closeOnOverlayClick={false}
+      onConfirm={() => setVisible2(false)}
+      onCancel={() => setVisible2(false)}
+    >
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+    </Dialog>
+    <Cell title="无底部 Footer 区域" onClick={() => setVisible2(true)} />
+    <Dialog 
+      title="无底部 Footer 区域"
+      visible={visible2}
+      lockScroll
+      onClose={() => {
+        setVisible2(false)
+      }}
+      footer={null}
+    >
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
     </Dialog>
     </>
   )

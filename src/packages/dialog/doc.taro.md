@@ -24,29 +24,89 @@ import React, {useState} from "react";
 import { Cell,Dialog } from '@nutui/nutui-react-taro';
 
 const App = () => {
-  const [visible1, setVisible1] = useState(false);
-  const [visible2, setVisible2] = useState(false);
+  const [visible1, setVisible1] = useState(false)
+  const [visible2, setVisible2] = useState(false)
+  const [visible3, setVisible3] = useState(false)
+  const [visible4, setVisible4] = useState(false)
+  const [visible5, setVisible5] = useState(false)
+  const [visible6, setVisible6] = useState(false)
+
   return (
     <>
     <Cell title="基础弹框" onClick={() => setVisible1(true)} />
     <Dialog 
-        title="组件调用"
-        visible={visible1}
-        onConfirm={() => setVisible1(false)}
-        onCancel={() => setVisible1(false)}
+      title="组件调用"
+      visible={visible1}
+      confirmText='确认'
+      cancelText='取消'
+      onConfirm={() => setVisible1(false)}
+      onCancel={() => setVisible1(false)}
     >
-        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
     </Dialog>
-    <Cell title="底部按钮 垂直调用" onClick={() => setVisible2(true)} />
+
+    <Cell title="无标题弹框" onClick={() => setVisible2(true)} />
     <Dialog 
-        title="组件调用"
-        visible={visible2}
-        lockScroll
-        footerDirection='vertical'
-        onConfirm={() => setVisible2(false)}
-        onCancel={() => setVisible2(false)}
+      visible={visible2}
+      confirmText='确认'
+      cancelText='取消'
+      onConfirm={() => setVisible2(false)}
+      onCancel={() => setVisible2(false)}
     >
-        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+    </Dialog>
+
+    <Cell title="提示弹框" onClick={() => setVisible3(true)} />
+    <Dialog 
+      title="组件调用"
+      visible={visible3}
+      confirmText='确认'
+      hideCancelButton
+      onConfirm={() => setVisible3(false)}
+    >
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+    </Dialog>
+
+    <Cell title="底部按钮 垂直布局调用" onClick={() => setVisible4(true)} />
+    <Dialog 
+      title="组件调用"
+      confirmText='确认'
+      cancelText='取消'
+      visible={visible4}
+      lockScroll
+      footerDirection='vertical'
+      onConfirm={() => setVisible4(false)}
+      onCancel={() => setVisible4(false)}
+    >
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+    </Dialog>
+
+    <Cell title="底部 Footer 为 Button 时，点击遮罩不关闭" onClick={() => setVisible5(true)} />
+    <Dialog 
+      title="组件调用"
+      confirmText='确认'
+      cancelText='取消'
+      visible={visible5}
+      lockScroll
+      footerDirection='vertical'
+      onConfirm={() => setVisible5(false)}
+      onCancel={() => setVissetVisible5ible2(false)}
+    >
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+    </Dialog>
+
+    <Cell title="无底部 Footer 区域" onClick={() => setVisible6(true)} />
+    <Dialog 
+      title="组件调用"
+      visible={visible6}
+      lockScroll
+      footerDirection='vertical'
+      onClose={() => {
+        setVisible6(false)
+      }}
+      footer={null}
+    >
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
     </Dialog>
     </>
   )

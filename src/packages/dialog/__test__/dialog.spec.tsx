@@ -7,7 +7,7 @@ test('show dialog base info display ', async () => {
   const onClose = jest.fn()
   const { container } = render(
     <Dialog title="title" data-testid="test" visible onClose={onClose}>
-      content
+      <div>content</div>
     </Dialog>
   )
 
@@ -30,7 +30,7 @@ test('show dialog base info display ', async () => {
   expect(contentEle.innerHTML).toEqual('<div>content</div>')
   expect(footerEle.children.length).toBe(2)
 
-  expect(wrapEle).toHaveAttribute('style', 'display: block;')
+  expect(wrapEle).toBeNull()
   fireEvent.click(footerCancelEle)
   expect(onClose).toBeCalled()
 })
@@ -60,7 +60,6 @@ test('hide dialog footer', async () => {
 
 test('hide dialog title', async () => {
   const { container } = render(<Dialog visible>content</Dialog>)
-
   expect(container.querySelectorAll('.nut-dialog__header').length).toBe(0)
 })
 
@@ -70,7 +69,6 @@ test('tips dialog', async () => {
       content
     </Dialog>
   )
-
   expect(container.querySelectorAll('.nut-dialog__footer-cancel').length).toBe(
     0
   )
