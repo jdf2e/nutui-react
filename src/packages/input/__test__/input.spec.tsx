@@ -37,11 +37,11 @@
 //   )
 // })
 //
-// test('readonly test', () => {
+// test('readOnly test', () => {
 //   const { container } = render(
-//     <Input label="文本" placeholder="文本" readonly />
+//     <Input label="文本" placeholder="文本" readOnly />
 //   )
-//   expect(container.querySelector('.input-text')).toHaveAttribute('readonly')
+//   expect(container.querySelector('.input-text')).toHaveAttribute('readOnly')
 // })
 //
 // test('disabled test', () => {

@@ -1,22 +1,27 @@
 import React, {
-  FunctionComponent,
-  useCallback,
-  useRef,
   forwardRef,
-  useImperativeHandle,
+  FunctionComponent,
   HTMLInputTypeAttribute,
+  useCallback,
+  useImperativeHandle,
+  useRef,
   useState,
 } from 'react'
-import { View, InputProps as TaroInputProps } from '@tarojs/components'
+import {
+  InputProps as TaroInputProps,
+  ITouchEvent,
+  View,
+} from '@tarojs/components'
 import { MaskClose } from '@nutui/icons-react-taro'
+import { getEnv, ENV_TYPE } from '@tarojs/taro'
 import { formatNumber } from './util'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
-import { nextTick } from '@tarojs/taro'
 
 export type InputAlignType = 'left' | 'center' | 'right'
 export type InputFormatTrigger = 'onChange' | 'onBlur'
+export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
 
 export interface InputProps extends BasicComponent {
   type: keyof TaroInputProps.Type | HTMLInputTypeAttribute
@@ -26,18 +31,19 @@ export interface InputProps extends BasicComponent {
   placeholder: string
   align: InputAlignType
   disabled: boolean
-  readonly: boolean
+  readOnly: boolean
   maxLength: number
   clearable: boolean
   clearIcon: React.ReactNode
   formatTrigger: InputFormatTrigger
   autofocus: boolean
+  confirmType: ConfirmTextType
   formatter?: (value: string) => void
   onChange?: (value: string) => void
   onBlur?: (value: string) => void
   onFocus?: (value: string) => void
   onClear?: (value: string) => void
-  onClick?: (value: string) => void
+  onClick?: (e: ITouchEvent) => void
 }
 
 const defaultProps = {
@@ -45,10 +51,11 @@ const defaultProps = {
   type: 'text',
   name: '',
   placeholder: '',
+  confirmType: 'done',
   align: 'left',
   required: false,
   disabled: false,
-  readonly: false,
+  readOnly: false,
   maxLength: 9999,
   clearable: false,
   clearIcon: null,
@@ -70,7 +77,7 @@ export const Input: FunctionComponent<
     placeholder,
     align,
     disabled,
-    readonly,
+    readOnly,
     maxLength,
     clearable,
     clearIcon,
@@ -83,6 +90,7 @@ export const Input: FunctionComponent<
     onClear,
     formatter,
     onClick,
+    confirmType,
   } = {
     ...defaultProps,
     ...props,
@@ -94,6 +102,7 @@ export const Input: FunctionComponent<
     onChange,
   })
   const inputRef = useRef<HTMLInputElement>(null)
+  const composingRef = useRef(false)
   const [active, setActive] = useState(false)
 
   useImperativeHandle(ref, () => {
@@ -125,6 +134,14 @@ export const Input: FunctionComponent<
     trigger: InputFormatTrigger = 'onChange'
   ) => {
     let val = value
+    if (getEnv() === ENV_TYPE.WEB) {
+      if (type === 'number') {
+        val = formatNumber(val, false, true)
+      }
+      if (type === 'digit') {
+        val = formatNumber(val, true, true)
+      }
+    }
     if (formatter && trigger === formatTrigger) {
       val = formatter(val)
     }
@@ -148,29 +165,43 @@ export const Input: FunctionComponent<
   const handleBlur = (event: Event) => {
     const val: any = (event.target as any).value
     updateValue(val, 'onBlur')
-    setActive(false)
+    setTimeout(() => {
+      setActive(false)
+    }, 50)
   }
+  const inputType = (type: string) => {
+    if (getEnv() === ENV_TYPE.WEB) {
+      if (type === 'digit') {
+        return 'text'
+      }
+      if (type === 'number') {
+        return 'tel'
+      }
+    }
 
+    return type
+  }
   return (
-    <div
+    <View
       className={`${inputClass()}  ${className || ''}`}
       style={style}
       onClick={(e) => {
-        onClick && onClick('a')
+        onClick && onClick(e)
       }}
     >
       <input
-        type={type as any}
         name={name}
         className="nut-input-native"
         ref={inputRef}
         style={{ textAlign: align }}
+        type={inputType(type)}
         maxLength={maxLength}
         placeholder={placeholder || locale.placeholder}
         disabled={disabled}
-        readOnly={readonly}
+        readOnly={readOnly}
         value={value}
         autoFocus={autofocus}
+        enterKeyHint={confirmType}
         onBlur={(e: any) => {
           handleBlur(e)
         }}
@@ -180,29 +211,32 @@ export const Input: FunctionComponent<
         onChange={(e: any) => {
           handleInput(e.currentTarget.value)
         }}
+        onCompositionStart={(e) => {
+          composingRef.current = true
+          props.onCompositionStart?.(e)
+        }}
+        onCompositionEnd={(e) => {
+          composingRef.current = false
+          props.onCompositionEnd?.(e)
+        }}
       />
-      {clearable && !readonly && active && value.length > 0 ? (
-        <View style={{ display: 'flex', alignItems: 'center' }}>
-          {clearIcon || (
-            <MaskClose
-              style={{ width: '80', height: '80', background: 'black' }}
-              className="nut-input-clear"
-              onClick={(e) => {
-                e.stopPropagation()
-                if (!disabled) {
-                  console.log('close')
-                  setTimeout(() => {
-                    setValue('')
-                    // inputRef.current?.focus()
-                    onClear && onClear('')
-                  })
-                }
-              }}
-            />
-          )}
+      {clearable && !readOnly && active && value.length > 0 ? (
+        <View
+          style={{ display: 'flex', alignItems: 'center' }}
+          onClick={(e) => {
+            e.stopPropagation()
+            if (!disabled) {
+              setTimeout(() => {
+                setValue('')
+                onClear && onClear('')
+              }, 50)
+            }
+          }}
+        >
+          {clearIcon || <MaskClose className="nut-input-clear" />}
         </View>
       ) : null}
-    </div>
+    </View>
   )
 })
 

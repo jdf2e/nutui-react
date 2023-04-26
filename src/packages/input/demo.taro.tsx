@@ -23,13 +23,14 @@ const InputDemo = () => {
       title11: '布局',
       text: '请输入文本',
       password: '请输入密码',
-      number: '请输入数字',
-      digit: '请输入整数',
-      readonly: '输入框只读',
+      number: '请输入整数',
+      digit: '请输入数字',
+      readOnly: '输入框只读',
       disabled: '输入框禁用',
       clear: '显示清除图标',
       codeplaceholder: '请输入短信验证码',
       sendCode: '获取验证码',
+      border: '边框',
       formatter: '在输入时执行格式化',
       formatter2: '在失焦时执行格式化',
       align: '文本内容对齐',
@@ -51,13 +52,14 @@ const InputDemo = () => {
       title11: 'Layout',
       text: 'Please enter text',
       password: 'Please enter a password',
-      number: 'Please enter a number',
-      digit: 'Please enter an integer',
-      readonly: 'Input box is read-only',
+      number: 'Please enter an integer',
+      digit: 'Please enter a number',
+      readOnly: 'Input box is read-only',
       disabled: 'Input box disabled',
       clear: 'Show clear icon',
       codeplaceholder: 'Please enter the SMS verification code',
       sendCode: 'Get code',
+      border: 'border',
       formatter: 'Perform formatting on input',
       formatter2: 'Perform formatting when out of focus',
       align: 'text content alignment',
@@ -90,7 +92,7 @@ const InputDemo = () => {
         <Input type="digit" placeholder={translated.digit} />
         <Input type="number" placeholder={translated.number} />
         <h2>{translated.title2}</h2>
-        <Input readonly placeholder={translated.readonly} />
+        <Input readOnly placeholder={translated.readOnly} />
         <Input disabled placeholder={translated.disabled} />
         <h2>{translated.title3}</h2>
         <Input clearable placeholder={translated.clear} />
@@ -127,6 +129,11 @@ const InputDemo = () => {
             </Button>
           </div>
         </div>
+        <h2>{translated.border}</h2>
+        <Input
+          style={{ '--nutui-input-border-bottom-width': '1px' }}
+          placeholder={translated.border}
+        />
       </div>
     </>
   )

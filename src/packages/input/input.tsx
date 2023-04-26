@@ -6,6 +6,7 @@ import React, {
   forwardRef,
   useImperativeHandle,
   useState,
+  MouseEvent,
 } from 'react'
 import { MaskClose } from '@nutui/icons-react'
 import { formatNumber } from './util'
@@ -26,7 +27,7 @@ export interface InputProps extends BasicComponent {
   placeholder: string
   align: InputAlignType
   disabled: boolean
-  readonly: boolean
+  readOnly: boolean
   maxLength: number
   clearable: boolean
   clearIcon: React.ReactNode
@@ -38,7 +39,7 @@ export interface InputProps extends BasicComponent {
   onBlur?: (value: string) => void
   onFocus?: (value: string) => void
   onClear?: (value: string) => void
-  onClick?: (value: string) => void
+  onClick?: (value: MouseEvent<HTMLDivElement>) => void
 }
 
 const defaultProps = {
@@ -50,7 +51,7 @@ const defaultProps = {
   align: 'left',
   required: false,
   disabled: false,
-  readonly: false,
+  readOnly: false,
   maxLength: 9999,
   clearable: false,
   clearIcon: null,
@@ -72,7 +73,7 @@ export const Input: FunctionComponent<
     placeholder,
     align,
     disabled,
-    readonly,
+    readOnly,
     maxLength,
     clearable,
     clearIcon,
@@ -177,7 +178,7 @@ export const Input: FunctionComponent<
       className={`${inputClass()}  ${className || ''}`}
       style={style}
       onClick={(e) => {
-        onClick && onClick('a')
+        onClick && onClick(e)
       }}
     >
       <input
@@ -189,10 +190,10 @@ export const Input: FunctionComponent<
         maxLength={maxLength}
         placeholder={placeholder || locale.placeholder}
         disabled={disabled}
-        readOnly={readonly}
+        readOnly={readOnly}
         value={value}
         autoFocus={autofocus}
-        // enterkeyhint={confirmType}
+        enterKeyHint={confirmType}
         onBlur={(e: any) => {
           handleBlur(e)
         }}
@@ -211,7 +212,7 @@ export const Input: FunctionComponent<
           props.onCompositionEnd?.(e)
         }}
       />
-      {clearable && !readonly && active && value.length > 0 ? (
+      {clearable && !readOnly && active && value.length > 0 ? (
         <span
           style={{ display: 'flex', alignItems: 'center' }}
           onClick={() => {
