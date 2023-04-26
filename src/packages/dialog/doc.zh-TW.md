@@ -106,25 +106,25 @@ export default App;
 
 | 參數         | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
-| visible|對話框是否可見| boolean | -|
-| title| 標題| ReactNode | -|
-| content| 對話框的內容，適用於函數式調用 | ReactNode | -|
-| footer | 自定義頁腳，傳入 null 則不顯示     | ReactNode | - |
-| confirmText| 確認按鈕文案| ReactNode | `確定`|
-| cancelText| 取消按鈕文案| ReactNode | `取消`|
-| overlay| 是否展示遮罩| boolean | `true`|
-| hideConfirmButton| 是否隱藏確定按鈕| boolean | `false`|
-| hideCancelButton| 是否隱藏取消按鈕| boolean | `false`|
-| disableConfirmButton| 禁用確定按鈕| boolean | `false`|
-| closeOnOverlayClick| 點擊蒙層是否關閉對話框| boolean | `true`|
-| cancelAutoClose| 取消按鈕是否默認關閉彈窗| boolean | `true`|
+| visible|對話框是否可見| `boolean` | -|
+| title| 標題| `ReactNode` | -|
+| content| 對話框的內容，適用於函數式調用 | `ReactNode` | -|
+| footer | 自定義頁腳，傳入 null 則不顯示     | `ReactNode` | - |
+| confirmText| 確認按鈕文案| `ReactNode` | `確定`|
+| cancelText| 取消按鈕文案| `ReactNode` | `取消`|
+| overlay| 是否展示遮罩| `boolean` | `true`|
+| hideConfirmButton| 是否隱藏確定按鈕| `boolean` | `false`|
+| hideCancelButton| 是否隱藏取消按鈕| `boolean` | `false`|
+| disableConfirmButton| 禁用確定按鈕| `boolean` | `false`|
+| closeOnOverlayClick| 點擊蒙層是否關閉對話框| `boolean` | `true`|
+| cancelAutoClose| 取消按鈕是否默認關閉彈窗| `boolean` | `true`|
 | footerDirection| 使用橫縱方向 可選值 horizontal、vertical| string | `horizontal`|
-| lockScroll| 背景是否鎖定| boolean | `false`|
-| onConfirm  | 確定按鈕回調 | (e?: MouseEvent) => Promise | void |
-| onCancel  | 取消按鈕回調 | () => void |
-| onClose  | 關閉回調，任何情況關閉彈窗都會觸發 | () => void |
-| onClick  | 點擊自身回調 | () => void |
-| onClickOverlay | 點擊蒙層触发 | () => void |
+| lockScroll| 背景是否鎖定| `boolean` | `false`|
+| onConfirm  | 確定按鈕回調 | `(e?: MouseEvent) => Promise \| void` |
+| onCancel  | 取消按鈕回調 | `() => void` |
+| onClose  | 關閉回調，任何情況關閉彈窗都會觸發 | `() => void` |
+| onClick  | 點擊自身回調 | `() => void` |
+| onClickOverlay | 點擊蒙層触发 | `() => void` |
 
 
 ## 主題定制

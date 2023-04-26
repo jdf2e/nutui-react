@@ -107,25 +107,25 @@ export default App;
 
 | parameter         | illustrate                             | type   | Defaults           |
 |--------------|----------------------------------|--------|------------------|
-| visible         | Whether the dialog box is visible| boolean | -                |
-| title        | title| ReactNode | -|
-| content| The content of the dialog box is suitable for function calls | ReactNode | -|
-| footer | Customize the notes, but it will not be displayed in NULL     | ReactNode | - |
-| confirmText     | Confirm the button copywriting| ReactNode | `Sure`              |
-| cancelText          | Cancellation of buttons | ReactNode | `Cancel`              |
-| overlay          | Whether to show a overlay | boolean | `true`              |
-| hideConfirmButton| Whether to hide the OK button | boolean | `false`              |
-| hideCancelButton| Whether to hide the cancel button | boolean | `false`|
-| disableConfirmButton| Disable the OK button | boolean | `false`|
-| closeOnOverlayClick| Click on whether to close the dialog box| boolean | `true`|
-| cancelAutoClose| Cancel the button to close the pop -up window by default| boolean | `true`|
+| visible | Whether the dialog box is visible| `boolean`| - |
+| title | title| `ReactNode` | -|
+| content| The content of the dialog box is suitable for function calls | `ReactNode` | -|
+| footer | Customize the notes, but it will not be displayed in NULL     | `ReactNode` | - |
+| confirmText | Confirm the button copywriting| `ReactNode` | `Sure` |
+| cancelText | Cancellation of buttons | ReactNode | `Cancel` |
+| overlay | Whether to show a overlay | `boolean` | `true` |
+| hideConfirmButton| Whether to hide the OK button | `boolean` | `false` |
+| hideCancelButton| Whether to hide the cancel button | `boolean` | `false`|
+| disableConfirmButton| Disable the OK button | `boolean` | `false`|
+| closeOnOverlayClick| Click on whether to close the dialog box| `boolean` | `true`|
+| cancelAutoClose| Cancel the button to close the pop -up window by default| `boolean` | `true`|
 | footerDirection|Use horizontal and vertical direction value selection horizontal、vertical  | string | `horizontal`             |
-| lockScroll| Whether the background is locked| boolean | `false`|
-| onConfirm  | Determine the button back | (e?: MouseEvent) => Promise | void |
-| onCancel  | Cancel button callback | () => void |
-| onClose  | Turn off the callback, and the pop -up window will be triggered in any case | () => void |
-| onClick  | Click yourself to call back | () => void |
-| onClickOverlay | Click Overlay | () => void |
+| lockScroll| Whether the background is locked| `boolean` | `false`|
+| onConfirm  | Determine the button back | `(e?: MouseEvent) => Promise \| void` |
+| onCancel  | Cancel button callback | `() => void` |
+| onClose  | Turn off the callback, and the pop -up window will be triggered in any case | `() => void` |
+| onClick  | Click yourself to call back | `() => void` |
+| onClickOverlay | Click Overlay | `() => void` |
 
 ## Theming
 

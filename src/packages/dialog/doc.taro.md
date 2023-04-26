@@ -62,25 +62,25 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| visible         | 对话框是否可见 | boolean | - |
-| title        | 标题 | ReactNode | - |
-| content         | 对话框的内容，适用于函数式调用 | ReactNode | - |
-| footer | 自定义页脚，传入 null 则不显示     | ReactNode | - |
-| confirmText     | 确认按钮文案 | ReactNode | `确定` |
-| cancelText          | 取消按钮文案 | ReactNode | `取消` |
-| overlay          | 是否展示遮罩 | boolean | `true` |
-| hideConfirmButton          | 是否隐藏确定按钮 | boolean | `false` |
-| hideCancelButton | 是否隐藏取消按钮 | boolean | `false` |
-| disableConfirmButton          | 禁用确定按钮 | boolean | `false`              |
-| closeOnOverlayClick | 点击蒙层是否关闭对话框 | boolean | `true`              |
-| cancelAutoClose | 取消按钮是否默认关闭弹窗 | boolean | `true`              |
+| visible         | 对话框是否可见 | `boolean` | - |
+| title        | 标题 | `ReactNode` | - |
+| content         | 对话框的内容，适用于函数式调用 | `ReactNode` | - |
+| footer | 自定义页脚，传入 null 则不显示     | `ReactNode` | - |
+| confirmText     | 确认按钮文案 | `ReactNode` | `确定` |
+| cancelText          | 取消按钮文案 | `ReactNode` | `取消` |
+| overlay          | 是否展示遮罩 | `boolean` | `true` |
+| hideConfirmButton          | 是否隐藏确定按钮 | `boolean` | `false` |
+| hideCancelButton | 是否隐藏取消按钮 | `boolean` | `false` |
+| disableConfirmButton          | 禁用确定按钮 | `boolean` | `false`              |
+| closeOnOverlayClick | 点击蒙层是否关闭对话框 | `boolean` | `true`              |
+| cancelAutoClose | 取消按钮是否默认关闭弹窗 | `boolean` | `true`              |
 | footerDirection | 使用横纵方向 可选值 horizontal、vertical | string | `horizontal` |
-| lockScroll | 背景是否锁定 | boolean | `false`              |
-| onConfirm | 确定按钮回调 | (e?: MouseEvent) => Promise | void |
-| onCancel      | 取消按钮回调 | () => void |
-| onClose      | 关闭回调，任何情况关闭弹窗都会触发 | () => void |
-| onClick | 点击自身回调 | () => void |
-| onClickOverlay | 点击蒙层触发 | () => void |
+| lockScroll | 背景是否锁定 | `boolean` | `false`              |
+| onConfirm | 确定按钮回调 | `(e?: MouseEvent) => Promise \| void` |
+| onCancel      | 取消按钮回调 | `() => void` |
+| onClose      | 关闭回调，任何情况关闭弹窗都会触发 | `() => void` |
+| onClick | 点击自身回调 | `() => void` |
+| onClickOverlay | 点击蒙层触发 | `() => void` |
 
 ## 主题定制
 
