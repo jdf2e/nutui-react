@@ -176,7 +176,7 @@ export default App;
 ```
 :::
 
-
+## CircleProgress
 ## Props
 
 | Property | Description | Type | Default

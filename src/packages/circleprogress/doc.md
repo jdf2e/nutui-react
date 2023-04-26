@@ -170,6 +170,7 @@ export default App;
 ```
 :::
 
+## CircleProgress
 
 ## Prop
 
