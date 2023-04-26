@@ -5,6 +5,7 @@ import React, {
   HTMLInputTypeAttribute,
   forwardRef,
   useImperativeHandle,
+  useState,
 } from 'react'
 import { MaskClose } from '@nutui/icons-react'
 import { formatNumber } from './util'
@@ -15,12 +16,7 @@ import { usePropsValue } from '@/utils/use-props-value'
 export type InputAlignType = 'left' | 'center' | 'right'
 export type InputFormatTrigger = 'onChange' | 'onBlur'
 export type InputType = HTMLInputTypeAttribute
-
-export type InputRule = {
-  pattern?: RegExp
-  message?: string
-  required?: boolean
-}
+export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
 
 export interface InputProps extends BasicComponent {
   type: InputType
@@ -36,6 +32,7 @@ export interface InputProps extends BasicComponent {
   clearIcon: React.ReactNode
   formatTrigger: InputFormatTrigger
   autofocus: boolean
+  confirmType: ConfirmTextType
   formatter?: (value: string) => void
   onChange?: (value: string) => void
   onBlur?: (value: string) => void
@@ -49,6 +46,7 @@ const defaultProps = {
   type: 'text',
   name: '',
   placeholder: '',
+  confirmType: 'done',
   align: 'left',
   required: false,
   disabled: false,
@@ -87,6 +85,7 @@ export const Input: FunctionComponent<
     onClear,
     formatter,
     onClick,
+    confirmType,
   } = {
     ...defaultProps,
     ...props,
@@ -99,6 +98,7 @@ export const Input: FunctionComponent<
   })
   const inputRef = useRef<HTMLInputElement>(null)
   const composingRef = useRef(false)
+  const [active, setActive] = useState(false)
 
   useImperativeHandle(ref, () => {
     return {
@@ -130,10 +130,10 @@ export const Input: FunctionComponent<
   ) => {
     let val = value
 
-    if (type === 'digit') {
-      val = formatNumber(val, false, false)
-    }
     if (type === 'number') {
+      val = formatNumber(val, false, true)
+    }
+    if (type === 'digit') {
       val = formatNumber(val, true, true)
     }
     if (formatter && trigger === formatTrigger) {
@@ -149,6 +149,7 @@ export const Input: FunctionComponent<
   const handleFocus = (event: Event) => {
     const val: any = (event.target as any).value
     onFocus && onFocus(val)
+    setActive(true)
   }
 
   const handleInput = (value: string) => {
@@ -158,13 +159,14 @@ export const Input: FunctionComponent<
   const handleBlur = (event: Event) => {
     const val: any = (event.target as any).value
     updateValue(val, 'onBlur')
+    setActive(false)
   }
 
   const inputType = (type: string) => {
-    if (type === 'number') {
+    if (type === 'digit') {
       return 'text'
     }
-    if (type === 'digit') {
+    if (type === 'number') {
       return 'tel'
     }
     return type
@@ -190,6 +192,7 @@ export const Input: FunctionComponent<
         readOnly={readonly}
         value={value}
         autoFocus={autofocus}
+        // enterkeyhint={confirmType}
         onBlur={(e: any) => {
           handleBlur(e)
         }}
@@ -208,13 +211,15 @@ export const Input: FunctionComponent<
           props.onCompositionEnd?.(e)
         }}
       />
-      {clearable && value.length > 0 ? (
+      {clearable && !readonly && active && value.length > 0 ? (
         <span
           style={{ display: 'flex', alignItems: 'center' }}
           onClick={() => {
-            setValue('')
-            inputRef.current?.focus()
-            onClear && onClear('')
+            if (!disabled) {
+              setValue('')
+              // inputRef.current?.focus()
+              onClear && onClear('')
+            }
           }}
         >
           {clearIcon || <MaskClose className="nut-input-clear" />}
