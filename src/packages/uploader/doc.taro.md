@@ -385,24 +385,24 @@ const App = () => {
 export default App;
 ```
 
-
+## Uploader
 ### Prop
 
 | 字段| 说明| 类型| 默认值|
 |-------------------|--------------|------------------|------------------|
 | autoUpload | 是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传| `boolean`  | `true` |
-| name   | `input` 标签 `name` 的名称，发到后台的文件参数名| `string`  | `file` |
+| name   | `input` 标签 `name` 的名称，发到后台的文件参数名| `string`  | `'file'` |
 | url | 上传服务器的接口地址    | `string`  | `-` |
 | defaultValue | 默认已经上传的文件列表    | `FileType<React.ReactNode>[]`  | `[]` |
 | value | 已经上传的文件列表| `FileType<string>[]` | `[]`                |
 | preview        | 是否上传成功后展示预览图| `boolean` | `true`  |
 | previewUrl        | 当上传非图片('image')格式的默认图片地址| `string` | `''`  |
 | deletable      | 是否展示删除按钮| `boolean` | `true`  |
-| method | 上传请求的 http method  | `string`  | `post` |
-| previewType  | 上传列表的内建样式，支持两种基本样式 picture、list  | `string`  | `picture`|
+| method | 上传请求的 http method  | `string`  | `'post'` |
+| previewType  | 上传列表的内建样式，支持两种基本样式 picture、list  | `string`  | `'picture'`|
 | maxFileSize          | 可以设定最大上传文件的大小（字节）   | `number丨string`     | `Number.MAX_VALUE` |
 | maxCount | 文件上传数量限制| `number丨string`     | `1` |
-| imageFit | 图片填充模式 |  `'contain' | 'cover' | 'fill' | 'none' | 'scale-down'` | `cover` |
+| imageFit | 图片填充模式 |  `'contain' \| 'cover' \| 'fill' \| 'none' \| 'scale-down'` | `'cover'` |
 | sourceType               | [选择文件的来源](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html)   | Array                             | `['album','camera']`        |
 | camera`仅支持WEAPP`        | 仅在 `source-type` 为 `camera` 时生效，使用前置或后置摄像头                                               | String                            | `back`                      |
 | sizeType                 | [是否压缩所选文件](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html) | Array                             | `['original','compressed']` |

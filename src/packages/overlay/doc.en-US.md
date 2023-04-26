@@ -236,14 +236,14 @@ export default App;
 
 | Property                   | Description             | Type           | Default |
 | ---------------------- | ---------------- | -------------- | ------ |
-| visible                   | Whether the current component is displayed | boolean        | `false`  |
-| zIndex                | Mask hierarchy         | number | `2000`   |
-| duration               | Animation duration, in seconds | number | `0.3`    |
-| lockScroll          | Whether the background is locked   | boolean  | `false`     |
-| closeOnOverlayClick | Tap Mask off | boolean        | `true`   |
+| visible                   | Whether the current component is displayed | `boolean`        | `false`  |
+| zIndex                | Mask hierarchy         | `number` | `2000`   |
+| duration               | Animation duration, in seconds | `number` | `0.3`    |
+| lockScroll          | Whether the background is locked   | `boolean`  | `false`     |
+| closeOnOverlayClick | Tap Mask off | `boolean`        | `true`   |
 | onClick  | Triggered when the button is clicked | `event: Event` |
-| afterClose | Triggered after complete shutdown | () => void        | `-`   |
-| afterShow | Trigger after complete display | () => void        | `-`   |
+| afterClose | Triggered after complete shutdown | `() => void`        | `-`   |
+| afterShow | Trigger after complete display | `() => void`        | `-`   |
 
 
 ## Theming

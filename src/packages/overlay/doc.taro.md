@@ -235,14 +235,14 @@ export default App;
 
 | 参数                   | 说明             | 类型           | 默认值 |
 | ---------------------- | ---------------- | -------------- | ------ |
-| visible                   | 当前组件是否显示 | boolean        | `false`  |
-| zIndex                | 遮罩层级         | number | `2000`   |
-| duration               | 动画时长，单位秒 | number | `0.3`    |
-| lockScroll          | 背景是否锁定   | boolean  | `false`     |
-| closeOnOverlayClick | 是否点击遮罩关闭 | boolean        | `true`   |
+| visible                   | 当前组件是否显示 | `boolean`        | `false`  |
+| zIndex                | 遮罩层级         | `number` | `2000`   |
+| duration               | 动画时长，单位秒 | `number` | `0.3`    |
+| lockScroll          | 背景是否锁定   | `boolean`  | `false`     |
+| closeOnOverlayClick | 是否点击遮罩关闭 | `boolean`        | `true`   |
 | onClick  | 点击时触发 | `event: Event` |
-| afterClose | 完全关闭后触发 | () => void        | `-`   |
-| afterShow | 完全展示后触发 | () => void        | `-`   |
+| afterClose | 完全关闭后触发 | `() => void`        | `-`   |
+| afterShow | 完全展示后触发 | `() => void`        | `-`   |
 
 
 
