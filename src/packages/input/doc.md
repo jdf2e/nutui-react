@@ -17,6 +17,7 @@ import { Input } from '@nutui/nutui-react';
 ### 基础用法
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
@@ -30,12 +31,13 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### 非受控
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
@@ -49,10 +51,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### 受控
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
@@ -71,7 +76,9 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### 自定义类型
 
 :::demo
@@ -92,6 +99,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 禁用和只读
@@ -112,7 +120,9 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### 显示清除图标
 
 :::demo
@@ -132,7 +142,9 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### 格式化输入内容
 
 :::demo
@@ -156,7 +168,9 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### 事件
 
 :::demo
@@ -177,7 +191,9 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### 布局
 
 :::demo
@@ -211,7 +227,9 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### 边框
 
 :::demo
@@ -229,35 +247,34 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ## Input
+
 ### Prop
 
-| 参数         | 说明       | 类型   | 默认值 |
-| ------------ |----------|-------------| -- |
-| defaultValue | 初始默认值  | string | -  |
-| value | 初始默认值  | string | -  |
-| type | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `number` `digit` | string                    | `text` |
-| name  | 组件名字，用于表单提交获取数据                                                      | string                    | -  |
-| placeholder  | 输入框为空时占位符                                                            | string                    | -  |
-| align  | 输入框内容对齐方式，可选值 `left`、`center`、`right`    | string  | `left` |
-| disabled     | 是否禁用   | boolean                   | `false` |
-| readOnly     | 是否只读     | boolean                   | `false` |
-| autofocus    | 是否自动获得焦点，iOS 系统不支持该属性   | boolean                   | `false` |
-| maxLength      | 限制最长输入字符    | string、number             | -  |
-| clearable    | 展示清除 Icon     | boolean                   | `false` |
-| clearIcon   | 清除图标 Icon [可参考 Icon ](#/icon)   | ReactNode    | `MaskClose`  |
-| formatter      | 输入内容格式化函数   | `(val: string) => string` | - |
-| formatTrigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur`           | string                    | - |
-| onChange | 输入框内容变化时触发  | `(value: string) => void`                    | - |
-| onBlur | 失去焦点后触发  | `(value: string) => void`                    | - |
-| onFocus | 获得焦点后触发  | `(value: string) => void`                    | - |
-| onClear | 点击清空按钮时触发 | `(value: string) => void`                    | - |
-| onClick | 点击 input 容器触发 | `(value: MouseEvent<HTMLDivElement>) => void`  | - |
-
-
-
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| defaultValue | 初始默认值 | `string` | `-` |
+| value | 初始默认值 | `string` | `-` |
+| type | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `number` `digit` | `string` | `text` |
+| name | 组件名字，用于表单提交获取数据 | `string` | `-` |
+| placeholder | 输入框为空时占位符 | `string` | `-` |
+| align | 输入框内容对齐方式，可选值 `left`、`center`、`right` | `string` | `left` |
+| disabled | 是否禁用 | `boolean` | `false` |
+| readOnly | 是否只读 | `boolean` | `false` |
+| autofocus | 是否自动获得焦点，iOS 系统不支持该属性 | `boolean` | `false` |
+| maxLength | 限制最长输入字符 | `string \| number` | `-` |
+| clearable | 展示清除 Icon | `boolean` | `false` |
+| clearIcon | 清除图标 Icon <a href="#/icon">可参考 Icon </a> | `ReactNode` | `MaskClose` |
+| formatter | 输入内容格式化函数 | `(val: string) => string` | `-` |
+| formatTrigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | `string` | `-` |
+| onChange | 输入框内容变化时触发 | `(value: string) => void` | `-` |
+| onBlur | 失去焦点后触发 | `(value: string) => void` | `-` |
+| onFocus | 获得焦点后触发 | `(value: string) => void` | `-` |
+| onClear | 点击清空按钮时触发 | `(value: string) => void` | `-` |
+| onClick | 点击 input 容器触发 | `(value: MouseEvent<HTMLDivElement>) => void` | `-` |
 
 ## 主题定制
 
@@ -267,8 +284,8 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| --nutui-input-border-bottom | 边框颜色 | `#eaf0fb` |
-| --nutui-input-border-bottom-width | 边框宽度 |`0px` |
-| --nutui-input-disabled-color | 禁用的文本颜色 |`#c8c9cc` |
-| --nutui-input-font-size | 文本字号 | `$font-size-2` |
-| --nutui-input-padding | 输入框容器的内边距 | `10px 25px` |
+| \--nutui-input-border-bottom | 边框颜色 | `#eaf0fb` |
+| \--nutui-input-border-bottom-width | 边框宽度 | `0px` |
+| \--nutui-input-disabled-color | 禁用的文本颜色 | `#c8c9cc` |
+| \--nutui-input-font-size | 文本字号 | `$font-size-2` |
+| \--nutui-input-padding | 输入框容器的内边距 | `10px 25px` |

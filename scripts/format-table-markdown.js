@@ -92,7 +92,7 @@ function convertMdTables(inputFile, outputFile) {
   fs.writeFileSync(outputFile, md, 'utf8')
 }
 
-const fileType = ['doc.md', 'doc.en-US.md', 'doc.zh-TW.md']
+const fileType = ['doc.md', 'doc.en-US.md', 'doc.zh-TW.md', 'doc.taro.md']
 const component = process.argv[2]
 const basePath = path.join(
   __dirname,
