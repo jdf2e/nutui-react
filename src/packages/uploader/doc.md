@@ -418,9 +418,9 @@ export default App;
 | oversize `v1.3.4 废弃` | 文件大小超过限制时触发 | `files`                |
 | onOversize `v1.3.4` | 文件大小超过限制时触发 | `files`                |
 | success `v1.3.4 废弃`  | 上传成功               | `responseText, options` |
-| onSuccess `v1.3.4`  | 上传成功               | `responseText, options` |
+| onSuccess `v1.3.4`  | 上传成功               | `responseText, options, fileList, file` |
 | failure `v1.3.4 废弃`  | 上传失败               | `responseText, options` |
-| onFailure `v1.3.4`  | 上传失败               | `responseText, options` |
+| onFailure `v1.3.4`  | 上传失败               | `responseText, options, fileList, file` |
 | onChange `v1.3.4`   | 上传文件改变时的状态   | `fileList, event`       |
 | change `v1.3.4 废弃`  | 上传文件改变时的状态   | `fileList, event`       |
 | onRemove `v1.3.4`   | 文件删除之前的状态     | `files, fileList`       |
