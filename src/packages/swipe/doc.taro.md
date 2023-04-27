@@ -276,3 +276,10 @@ export default App;
 | onTouchStart`v1.4.7` | onTouchStart | `event: Event`      |
 | onTouchMove`v1.4.7`         | onTouchMove  | `event: Event`     |
 | onTouchEnd`v1.4.7`          | onTouchEnd   | `event: Event`     |
+
+## Ref
+
+| 属性  | 说明                                      | 回调参数                             |
+| ----- | ----------------------------------------- | ------------------------------------ |
+| open  | 打开单元格侧边栏，`side`参数默认为`right` | `(side?: 'left' \| 'right') => void` |
+| close | 收起单元格侧边栏                          | `() => void`                         |

@@ -280,3 +280,10 @@ export default App;
 | onTouchStart`v1.4.7` | onTouchStart | `event: Event`      |
 | onTouchMove`v1.4.7`         | onTouchMove  | `event: Event`     |
 | onTouchEnd`v1.4.7`          | onTouchEnd   | `event: Event`     |
+
+## Ref
+
+| 属性  | 说明                                                         | 回调参数                             |
+| ----- | ------------------------------------------------------------ | ------------------------------------ |
+| open  | open the cell sidebar, the default value of `side` is `right` | `(side?: 'left' \| 'right') => void` |
+| close | collapse the cell sidebar                                    | `() => void`                         |
