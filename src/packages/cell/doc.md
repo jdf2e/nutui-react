@@ -195,7 +195,7 @@ export default App;
 |-------|----------|--------|--------|
 | title | 分组标题 | ReactNode | -      |
 | description  | 分组描述 | ReactNode | -      |
-
+| divider | 单元格之间是否有分割线 | boolean | `true`    |
 
 ### Cell Prop
 

@@ -198,6 +198,7 @@ export default App
 |-------|----------|--------|--------|
 | title | Title | ReactNode | -      |
 | description  | ReactNode | string | -      |
+| divider | Whether there are dividers between cells | boolean | `true`    |
 
 ### Cell Prop
 
