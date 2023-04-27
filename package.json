@@ -1,6 +1,6 @@
 {
-  "name": "@nutui/nutui-react",
-  "version": "2.0.0-alpha.1",
+  "name": "@nutui/nutui-react-taro",
+  "version": "2.0.0-alpha.2",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -93,8 +93,8 @@
   "dependencies": {
     "@babel/runtime": "^7.21.0",
     "@bem-react/classname": "^1.6.0",
-    "@nutui/icons-react": "0.0.1-beta.7",
-    "@nutui/icons-react-taro": "0.0.1-beta.7",
+    "@nutui/icons-react": "0.0.1-beta.8",
+    "@nutui/icons-react-taro": "0.0.1-beta.8",
     "@react-spring/web": "~9.6.1",
     "@use-gesture/react": "10.2.20",
     "async-validator": "^4.2.5",
