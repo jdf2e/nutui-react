@@ -172,6 +172,9 @@
 #### Notify
 #### PullToRefresh
 #### Swipe
+
+- 移除`leftWidth` 、`rightWidth` ，通过 `leftAction`、`rightAction` 实现
+
 #### Switch
 #### Toast
 
