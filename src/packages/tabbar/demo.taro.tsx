@@ -158,7 +158,7 @@ const TabbarDemo = () => {
           <TabbarItem
             title={translated.c3a3a1d2}
             icon={<Home width={20} height={20} />}
-            num="11"
+            num={11}
           />
           <TabbarItem
             title={translated.d04fcbda}
@@ -171,7 +171,7 @@ const TabbarDemo = () => {
           <TabbarItem
             title={translated['7db1a8b2']}
             icon={<Cart width={20} height={20} />}
-            num="110"
+            num={110}
           />
           <TabbarItem
             title={translated.e51e4582}
