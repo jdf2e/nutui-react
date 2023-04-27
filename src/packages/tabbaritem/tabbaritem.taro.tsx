@@ -9,7 +9,7 @@ export interface TabbarItemProps extends BasicComponent {
   icon: ReactNode
   href: string
   to: any
-  num: string | number
+  num: number
   active: boolean
   activeColor: string
   inactiveColor: string
@@ -24,7 +24,6 @@ const defaultProps = {
   icon: null,
   href: '',
   to: '',
-  num: '',
   active: false,
   activeColor: '',
   inactiveColor: '',
@@ -84,24 +83,14 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
       <div className={boxPrefix}>
         {!dot ? (
           <>
-            {num && num <= 99 && (
+            {num && (
               <div
                 className={classNames(
                   `${boxPrefix}__tips`,
                   `${boxPrefix}__num`
                 )}
               >
-                {num}
-              </div>
-            )}
-            {num && num >= 100 && (
-              <div
-                className={classNames(
-                  `${boxPrefix}__tips`,
-                  `${boxPrefix}__nums`
-                )}
-              >
-                99+
+                {num <= 99 ? num : '99+'}
               </div>
             )}
           </>
