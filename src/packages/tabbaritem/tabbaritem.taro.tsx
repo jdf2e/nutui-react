@@ -53,7 +53,15 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     ...props,
   }
   const classPrefix = 'nut-tabbar-item'
+  const tabbarItemClass = classNames(className, classPrefix, {
+    [`${classPrefix}--active`]: active,
+  })
   const boxPrefix = `${classPrefix}__icon-box`
+  const numClass = classNames(`${boxPrefix}__tips`, `${boxPrefix}__num`)
+  const dotClass = classNames(`${boxPrefix}__tips`, `${boxPrefix}__dot`)
+  const titleClass = classNames(boxPrefix, `${boxPrefix}--nav-word`, {
+    [`${boxPrefix}--big-word`]: !icon,
+  })
 
   useEffect(() => {
     if (active && href) {
@@ -69,47 +77,24 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
 
   return (
     <div
-      className={classNames(className, classPrefix, {
-        [`${classPrefix}--active`]: active,
-      })}
+      className={tabbarItemClass}
       style={{
         color: active ? activeColor : inactiveColor,
         ...style,
       }}
-      onClick={() => {
-        handleClick(index)
-      }}
+      onClick={() => handleClick(index)}
     >
       <div className={boxPrefix}>
         {!dot ? (
           <>
-            {num && (
-              <div
-                className={classNames(
-                  `${boxPrefix}__tips`,
-                  `${boxPrefix}__num`
-                )}
-              >
-                {num <= 99 ? num : '99+'}
-              </div>
-            )}
+            {num && <div className={numClass}>{num <= 99 ? num : '99+'}</div>}
           </>
         ) : (
-          <div
-            className={classNames(`${boxPrefix}__tips`, `${boxPrefix}__dot`)}
-          />
+          <div className={dotClass} />
         )}
         {icon || null}
       </div>
-      {title && (
-        <div
-          className={classNames(boxPrefix, `${boxPrefix}--nav-word`, {
-            [`${boxPrefix}--big-word`]: !icon,
-          })}
-        >
-          {title}
-        </div>
-      )}
+      {title && <div className={titleClass}>{title}</div>}
     </div>
   )
 }
