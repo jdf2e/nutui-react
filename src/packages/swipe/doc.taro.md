@@ -261,8 +261,6 @@ export default App;
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | name | 标识符，可以在事件参数中获取到 | number \| string | - |
-| leftWidth | 指定左侧滑动区域宽度，单位为 `px` | number \| string | `0` |
-| rightWidth | 指定右侧滑动区域宽度，单位为 `px` | number \| string | `0` |
 | leftAction | 左侧滑动区域的内容 | ReactNode | - |
 | rightAction | 右侧滑动区域的内容 | ReactNode | - |
 | beforeClose | 关闭前的回调函数，返回滑动区域所在方向 `position` | string | `left` |

@@ -38,10 +38,6 @@ export interface SwipeProps {
   style: React.CSSProperties
   /** 标识符，可以在事件参数中获取到 */
   name?: string | number
-  /** 指定左侧滑动区域宽度，单位为px */
-  leftWidth?: string | number
-  /** 指定右侧滑动区域宽度，单位为 px */
-  rightWidth?: string | number
   /** 左侧滑动区域的内容 */
   leftAction?: React.ReactNode
   /** 右侧滑动区域的内容 */
@@ -75,8 +71,6 @@ export interface SwipeProps {
 }
 const defaultProps = {
   name: '',
-  leftWidth: 0,
-  rightWidth: 0,
 } as SwipeProps
 export const Swipe = forwardRef<
   SwipeInstance,
@@ -108,15 +102,9 @@ export const Swipe = forwardRef<
     transform: `translate3d(${state.offset}px, 0, 0)`,
     transitionDuration: state.dragging ? '0s' : '.6s',
   }
-  const leftWidth = useMemo(
-    () => (props.leftWidth ? props.leftWidth : actionWidth.left),
-    [props.leftWidth, actionWidth.left]
-  )
+  const leftWidth = actionWidth.left
 
-  const rightWidth = useMemo(
-    () => (props.rightWidth ? props.rightWidth : actionWidth.right),
-    [props.rightWidth, actionWidth.right]
-  )
+  const rightWidth = actionWidth.right
 
   const onTouchStart = (event: Event) => {
     if (!props.disabled) {

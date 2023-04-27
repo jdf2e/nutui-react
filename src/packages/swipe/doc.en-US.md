@@ -265,8 +265,6 @@ export default App;
 |Parameter | description | type | default value|
 |--------------|----------------------------------|--------|------------------|
 |name | identifier, which can be obtained in the event parameters | number \| string | - |
-|leftwidth | specifies the width of the left sliding area, in 'PX'| number \| string | `0` |
-|rightwidth | specifies the width of the sliding area on the right, in 'PX'| number \| string | `0` |
 |leftaction | contents of the left sliding area | ReactNode | - |
 |rightaction | content of right sliding area | ReactNode | - |
 |beforeclose | the callback function before closing returns `position` which is the direction of the sliding area  | string | `left`|
