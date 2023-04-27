@@ -25,7 +25,7 @@ const Nav = () => {
         {cNav.map((cn: any) => {
           return (
             <Fragment key={cn.name}>
-              <li>{cn.name}</li>
+              <li>{lang === 'zh-CN' ? cn.name : cn.enName}</li>
               <ul>
                 {cn.packages.map((cp: any) => {
                   if (!cp.show) return null
@@ -36,7 +36,8 @@ const Nav = () => {
                       to={`${lang ? `/${lang}` : ''}/component/${cp.name}`}
                     >
                       <li>
-                        {cp.name}&nbsp;&nbsp;<b>{cp.cName}</b>
+                        {cp.name}&nbsp;&nbsp;
+                        <b>{lang === 'zh-CN' && cp.cName}</b>
                       </li>
                     </NavLink>
                   )

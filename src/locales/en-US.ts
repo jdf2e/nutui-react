@@ -14,7 +14,7 @@ const enUS: BaseLang = {
   },
   fixednav: {
     activeText: 'Close Nav',
-    unActiveText: 'Open Nav',
+    inactiveText: 'Open Nav',
   },
   infiniteloading: {
     pullRefreshText: 'Pull Refresh',

@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { CircleClose } from '@nutui/icons-react'
+import { CircleClose } from '@nutui/icons-react-taro'
 import { CellGroup, Cell, Tag } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'

@@ -18,12 +18,12 @@ test('className && style && type = progress  && onPause  && onFastBack && onForw
           style={{ fontSize: '20px' }}
           type="progress"
           autoplay
-          url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
-          onPlayEnd={playeEnd}
+          src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+          onEnd={playeEnd}
           onPause={pause}
           onCanPlay={canPlay}
           onMute={mute}
-          onFastBack={fastBack}
+          onBack={fastBack}
           onForward={forward}
         />
       </>

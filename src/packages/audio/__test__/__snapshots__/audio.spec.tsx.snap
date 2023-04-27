@@ -3,7 +3,7 @@
 exports[`icon type test 1`] = `
 <div>
   <div
-    class="nut-audio "
+    class="nut-audio"
   >
     <div
       class="nut-audio__icon"
@@ -12,8 +12,8 @@ exports[`icon type test 1`] = `
         class="nut-audio__icon-box nut-audio__icon-stop"
       >
         <svg
-          aria-labelledby=""
-          class="nut-icon"
+          aria-labelledby="Service"
+          class="nut-icon nut-icon-Service"
           role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@ exports[`icon type test 1`] = `
 exports[`none type test 1`] = `
 <div>
   <div
-    class="nut-audio "
+    class="nut-audio"
   >
     <div
       class="nut-audio__none-container"

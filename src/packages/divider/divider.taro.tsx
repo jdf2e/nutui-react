@@ -1,56 +1,43 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
+
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type ContentPositionType = 'left' | 'center' | 'right'
 export type DirectionType = 'horizontal' | 'vertical'
-export interface DividerProps {
+export interface DividerProps extends BasicComponent {
   contentPosition: ContentPositionType
-  dashed: boolean
-  hairline: boolean
-  styles?: React.CSSProperties
-  className?: string
   direction?: DirectionType
 }
 const defaultProps = {
+  ...ComponentDefaults,
   contentPosition: 'center',
-  dashed: false,
-  hairline: true,
   direction: 'horizontal',
 } as DividerProps
+
+const classPrefix = `nut-divider`
 export const Divider: FunctionComponent<
   Partial<DividerProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const {
-    children,
-    contentPosition,
-    dashed,
-    hairline,
-    styles,
-    className,
-    direction,
-    ...rest
-  } = {
+  const { children, contentPosition, style, className, direction, ...rest } = {
     ...defaultProps,
     ...props,
   }
-  const dividerBem = bem('divider')
   const classes =
     direction === 'horizontal'
       ? classNames({
-          [dividerBem()]: true,
-          [dividerBem('center')]: children,
-          [dividerBem('left')]: contentPosition === 'left',
-          [dividerBem('right')]: contentPosition === 'right',
-          [dividerBem('dashed')]: dashed,
-          [dividerBem('hairline')]: hairline,
+          [`${classPrefix}`]: true,
+          [`${classPrefix}__center`]: children,
+          [`${classPrefix}__left`]: contentPosition === 'left',
+          [`${classPrefix}__right`]: contentPosition === 'right',
+          [`${classPrefix}__hairline`]: true,
         })
       : classNames({
-          [dividerBem()]: true,
-          [dividerBem('vertical')]: direction === 'vertical',
+          [`${classPrefix}`]: true,
+          [`${classPrefix}__vertical`]: direction === 'vertical',
         })
   return (
-    <div className={`${classes} ${className || ''}`} style={styles} {...rest}>
+    <div className={`${classes} ${className || ''}`} style={style} {...rest}>
       {children}
     </div>
   )

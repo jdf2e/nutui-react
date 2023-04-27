@@ -1,43 +1,48 @@
 # Navbar
 
-### introduce 
+## introduce 
 
 
 Provides navigation capabilities.
 
-### Install
+## Install
 
 ```ts
 // react
 import { NavBar } from '@nutui/nutui-react';
 ```
 
-### code example
+## code example
 
 ### Basic usage
 
 :::demo
 ```tsx
-import React from "react";
-import { NavBar } from '@nutui/nutui-react';
-import { Share } from '@nutui/icons-react'
+import  React from "react";
+import { NavBar, Toast } from '@nutui/nutui-react';
+import { Left, Share, Close } from '@nutui/icons-react'
 
 const App = () => {
   return ( 
-    <>   
-      <NavBar
-          title="order details"
-          leftShow
-          leftText="back"
-          onClickTitle={(e) => alert("back")}
-          onClickBack={(e) => alert("title")}
-          onClickRight={(e) => alert('icon')}
-        >
-           <i slot="right">
+    <NavBar
+        back={
+        <>
+            <Left name="left" color="#979797" />
+            back
+        </>
+        }
+        left={<Close width={12} />}
+        right={
+        <span onClick={(e) =>  Toast.text('icon')}>
             <Share />
-          </i>
-        </NavBar>
-    </>
+        </span>
+        }
+        onClickBack={(e) => Toast.text("back")}
+    >
+        <span onClick={(e) => Toast.text("title")}>
+        order details
+        </span>
+    </NavBar>
   );
 };  
 export default App;
@@ -48,20 +53,24 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import { NavBar } from '@nutui/nutui-react';
+import { NavBar, Toast } from '@nutui/nutui-react';
+import { Left } from '@nutui/icons-react'
 
 const App = () => {
   return ( 
-    <>   
-      <NavBar
-          title="Browsing history"
-          description="clear"
-          leftShow
-          onClickTitle={(e) => alert("back")}
-          onClickBack={(e) => alert("title")}
-          onClickRight={(e) => alert('clear')}
-      />
-    </>
+    <NavBar
+        right={
+        <span onClick={(e) => Toast.text('清空')}>
+            clear
+        </span>
+        }
+        back={<Left name="left" color="#979797" />}
+        onClickBack={(e) => Toast.text("back")}
+    >
+        <span onClick={(e) => Toast.text("title")}>
+        Browsing history
+        </span>
+    </NavBar>
   );
 };  
 export default App;
@@ -72,97 +81,64 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import { NavBar } from '@nutui/nutui-react';
-import { Cart2, More } from '@nutui/icons-react'
+import { NavBar, Toast } from '@nutui/nutui-react';
+import { Cart2, Left, MoreX} from '@nutui/icons-react'
 
 const App = () => {
   return ( 
-    <>   
-      <NavBar
-          title="cart"
-          description="edit"
-          onClickTitle={(e) => alert("back")}
-          onClickBack={(e) => alert("title")}
-          onClickRight={(e) => alert('edit')}
-          onClickIcon={(e) => alert('icon')}
-        >
-          <i slot="titleIcon">
+    <NavBar
+        back={<Left name="left" color="#979797" />}
+        right={
+        <>
+            <span onClick={(e) => Toast.text('edit')}>
+            edit
+            </span>
+            <MoreX onClick={(e) => Toast.text('icon')} />
+        </>
+        }
+        onClickBack={(e) => Toast.text("back")}
+    >
+        <span onClick={(e) => Toast.text("title")}>
+        cart
+        </span>
+        <i style={{ marginLeft: '5px' }} onClick={(e) => Toast.text('icon')}>
             <Cart2 />
-          </i>
-          <i slot="right">
-            <More />
-          </i>
-      </NavBar>
-    </>
+        </i>
+    </NavBar>
   );
 };  
 export default App;
 
 ```
 :::
-
-:::demo
-```tsx
-import  React from "react";
-import { NavBar } from '@nutui/nutui-react';
-import { Share } from '@nutui/icons-react'
-
-const App = () => {
-  return ( 
-    <>
-      <NavBar
-          title="order details"
-          leftShow
-          border
-          leftText="back"
-          onClickTitle={(e) => alert("back")}
-          onClickBack={(e) => alert("title")}
-          onClickRight={(e) => alert('icon')}
-        >
-           <i slot="right">
-            <Share />
-          </i>
-      </NavBar>
-    </>
-  );
-};  
-export default App;
-
-```
-:::
-
-
-### Customize the middle content of the navigation bar
 
 :::demo
 ```tsx
 import  React, { useState } from "react";
-import { NavBar, Tabs, TabPane } from '@nutui/nutui-react';
-import { More } from '@nutui/icons-react'
+import { NavBar, Tabs, TabPane, Toast } from '@nutui/nutui-react';
+import { Left,MoreX } from '@nutui/icons-react'
 
 const App = () => {
-  const [tab1value, setTab1value] = useState('Tab 1')
+  const [tab1value, setTab1value] = useState('0')
   return ( 
-    <>   
-      <NavBar
-          description="edit"
-          onClickTitle={(e) => alert("title")}
-          onClickRight={(e) => alert("edit")}
-          onClickBack={(e) => alert("back")}
-          onClickIcon={(e) => alert('icon')}
+    <NavBar
+         back={<Left name="left" color="#979797" />}
+          right={
+            <>
+              <span onClick={(e) => Toast.text("edit")}>
+                edit
+              </span>
+              <MoreX onClick={(e) => Toast.text('icon')} />
+            </>
+          }
+          onClickBack={(e) => Toast.text("back")}
         >
-          <div slot="content">
             <Tabs value={tab1value} onChange={({ paneKey }) => { setTab1value(paneKey) }}>
               <TabPane title="Tab 1"> Tab 1 </TabPane>
               <TabPane title="Tab 2"> Tab 2 </TabPane>
               <TabPane title="Tab 3"> Tab 3 </TabPane>
             </Tabs>
-          </div>
-          <i slot="right">
-            <More />
-          </i>
       </NavBar>
-    </>
   );
 };  
 export default App;
@@ -170,31 +146,21 @@ export default App;
 ```
 :::
 
-### Prop  
+## Navbar
+
+### Props  
 
 | Prop            | Description                                                                                           | Type    | Default  |
 |-----------------|------------------------------------------------------------------------------------------------|---------|---------|
-| title           | title name                                                                                       | string  | -       |
-| description            | Description on the right                                                                                       | string  | -       |
-| leftShow        | Whether to show the left arrow                                                                              | boolean | `true`   |
-| titIcon`v2.0.0 废弃`         | title with icon                                                         | string  | -       |   
-| leftText         | copy on the left                                                         | string  | -       |   
+| right            | Right side content | ReactNode  | -       |  
+| left        |The left content, rendered to the right of the return area | ReactNode  | -       |   
+| back        | Returns the text of the area | ReactNode  | -       |   
 | fixed         | Is it fixed                                                         | boolean  | `false`       |   
-| safeAreaInsetTop         | Whether it is suitable for the safe area                                                         | boolean  | `false`       |   
-| border         | whether to show the bottom border                                      | boolean  | `false`    | 
+| safeArea         | Whether it is suitable for the safe area                                                         | boolean  | `false`       |   
 | placeholder         | When fixed to the top, whether to generate a placeholder element of equal height at the label position           | boolean  | `false`    |
 | zIndex         | Navigation Bar Hierarchy           | number \| string  | `10`    |
-| style         | container style           | CSSProperties  | `{}`    |
-| className         | container class name           | string  | -    |                                          
+| onClickBack             | Click the callback after the return area | `onClickBack:(event: Event)=>void` | `false`|
 
-### Event
-
-| Event  | Description     | callback parameter    |
-|-------|----------|-------------|
-| onClickTitle | click title event | `event: Event` |
-| onClickRight | Click on the event on the right | `event: Event` |
-| onClickBack | click back event | `event: Event` |
-| onClickIcon | Click the icon event on the right side of the title | `event: Event` |
 
 ## Theming
 
@@ -202,17 +168,18 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
+| Name | Description | Default |
 | --- | --- |
-| --nutui-navbar-height | `44px` |
-| --nutui-navbar-margin-bottom | `20px` |
-| --nutui-navbar-padding | `13px 16px` |
-| --nutui-navbar-background | `$white` |
-| --nutui-navbar-box-shadow | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
-| --nutui-navbar-color | `$gray1` |
-| --nutui-navbar-title-base-font | `$font-size-2` |
-| --nutui-navbar-title-font | `$font-size-2` |
-| --nutui-navbar-title-font-weight | `0` |
-| --nutui-navbar-title-font-color | `$navbar-color` |
-| --nutui-navbar-title-width | `100px` |
-| --nutui-navbar-title-icon-margin | `0 0 0 13px` |
+| --nutui-navbar-width | The width of the navbar | `100%`|
+| --nutui-navbar-height | The height of the navbar | `44px` |
+| --nutui-navbar-margin-bottom | Bottom margin of the navbar |`20px` |
+| --nutui-navbar-padding | The padding  of the navbar |`13px 16px` |
+| --nutui-navbar-background | The navbar's background color |`$white` |
+| --nutui-navbar-box-shadow | Shadow of navbar |`0px 1px 7px 0px rgba(237, 238, 241, 1)` |
+| --nutui-navbar-color | navbar font color |`$gray2` |
+| --nutui-navbar-font-size | navbar font size |`$font-size-2` |
+| --nutui-navbar-title-font-size | The font size of the navbar's title |`$font-size-2` |
+| --nutui-navbar-title-font-weight | The font weight of the navbar's title |`0` |
+| --nutui-navbar-title-font-color | The font color of the navbar's title |`$gray1` |
+
+

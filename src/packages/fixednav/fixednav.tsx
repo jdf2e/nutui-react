@@ -2,7 +2,6 @@ import React, { FunctionComponent, MouseEvent } from 'react'
 import classNames from 'classnames'
 import { Left } from '@nutui/icons-react'
 import Overlay from '@/packages/overlay'
-import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -13,25 +12,22 @@ type Position = {
 }
 
 export interface FixedNavProps extends BasicComponent {
-  fixednavClass: string
   visible: boolean
   overlay: boolean
-  navList: Array<any>
+  list: Array<any>
   activeText: string
-  unActiveText: string
+  inactiveText: string
   position: Position
   type: Direction
-  onChange: (v: any) => void
-  onSelected: (v: any, event: MouseEvent) => void
-  slotList: React.ReactNode
-  slotBtn: React.ReactNode
+  onChange: (item: any) => void
+  onSelect: (item: any, event: MouseEvent) => void
+  content: React.ReactNode
 }
 
 const defaultProps = {
   ...ComponentDefaults,
-  fixednavClass: 'nut-fixednav',
   activeText: '',
-  unActiveText: '',
+  inactiveText: '',
   type: 'right',
   position: {
     top: 'auto',
@@ -40,59 +36,61 @@ const defaultProps = {
 } as FixedNavProps
 
 export const FixedNav: FunctionComponent<
-  Partial<FixedNavProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<FixedNavProps> &
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      'onChange' | 'onSelect' | 'content'
+    >
 > = (props) => {
   const { locale } = useConfig()
   const {
-    fixednavClass,
+    className,
     overlay,
     visible,
-    navList,
+    list,
     activeText,
-    unActiveText,
+    inactiveText,
     position,
     onChange,
-    onSelected,
+    onSelect,
     type,
-    slotList,
-    slotBtn,
+    children,
+    style,
+    content,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
 
-  const b = bem('fixednav')
+  const classPrefix = 'nut-fixednav'
 
   const classes = classNames(
     {
       active: visible,
     },
     type,
-    fixednavClass,
-    b('')
+    className,
+    classPrefix
   )
 
-  const onSelectCb = (event: MouseEvent, item: any): void => {
-    onSelected(item, event)
+  const handleClick = (item: any, event: MouseEvent): void => {
+    onSelect(event, item)
   }
 
   const onUpdateValue = (value = !visible): void => {
     onChange(value)
   }
 
-  // const [classNames, setClassNames] = useState('')
-
-  // const classes = () => {
-  //   return `${fixednavClass} ${type} ${visible ? 'active' : ''}`
-  // }
-
-  // useEffect(() => {
-  //   setClassNames(classes())
-  // }, [visible])
-
   return (
-    <div className={classes} style={position} {...rest}>
+    <div
+      className={classes}
+      style={{
+        ...position,
+        ...style,
+      }}
+      {...rest}
+    >
       {overlay && (
         <Overlay
           visible={visible}
@@ -101,17 +99,17 @@ export const FixedNav: FunctionComponent<
         />
       )}
       <div className="list">
-        {slotList || (
-          <div className="nut-fixednav__list">
-            {navList.map((item: any, index) => {
+        {children || (
+          <div className={`${classPrefix}__list`}>
+            {list.map((item: any, index) => {
               return (
                 <div
-                  className="nut-fixednav__list-item"
-                  onClick={(event) => onSelectCb(event, item)}
+                  className={`${classPrefix}__list-item`}
+                  onClick={(event) => handleClick(item, event)}
                   key={item.id || index}
                 >
                   <img src={item.icon} alt="" />
-                  <div className="nut-fixednav__list-text">{item.text}</div>
+                  <div className={`${classPrefix}__list-text`}>{item.text}</div>
                   {item.num && <div className="b">{item.num}</div>}
                 </div>
               )
@@ -120,14 +118,14 @@ export const FixedNav: FunctionComponent<
         )}
       </div>
 
-      <div className="nut-fixednav__btn" onClick={() => onUpdateValue()}>
-        {slotBtn || (
+      <div className={`${classPrefix}__btn`} onClick={() => onUpdateValue()}>
+        {content || (
           <>
             <Left color="#fff" />
             <div className="text">
               {visible
                 ? activeText || locale.fixednav.activeText
-                : unActiveText || locale.fixednav.unActiveText}
+                : inactiveText || locale.fixednav.inactiveText}
             </div>
           </>
         )}

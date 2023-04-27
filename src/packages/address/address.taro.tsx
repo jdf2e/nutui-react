@@ -5,7 +5,7 @@ import React, {
   CSSProperties,
 } from 'react'
 import { Left, Location2, Check, CircleClose } from '@nutui/icons-react-taro'
-import Popup from '@/packages/popup'
+import Popup from '@/packages/popup/index.taro'
 import bem from '@/utils/bem'
 import { ExistRender } from './existRender'
 import { CustomRender } from './customRender.taro'

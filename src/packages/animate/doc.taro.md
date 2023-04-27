@@ -1,15 +1,16 @@
 # Animate 动画/动效
 
-### 介绍
+## 介绍
 
 给子元素添加动画效果
 
-### 安装
+## 安装
 
 ```ts
 import { Animate } from '@nutui/nutui-react-taro';
 ```
 
+## 代码演示
 ### 点击触发
 
 :::demo
@@ -129,17 +130,13 @@ export default AnimateDemo
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| type         | 动画类型，见下方type值说明               | string | `shake`                |
-| action         | 触发方式，'initial'--初始化执行;  'click'--点击执行              | string | `initial`             |
-| loop         | 是否循环执行。true-循环执行;false-执行一次              | boolean | `false`               |
+| type         | 动画类型，见下方type值说明               | `AnimateType` | `'shake'`                |
+| action         | 触发方式，'initial'--初始化执行;  'click'--点击执行              | `'initial'  \|  'click'` | `'initial'`             |
+| loop         | 是否循环执行。true-循环执行;false-执行一次              | `boolean` | `false`               |
+| onClick  | 点击元素时触发 | `event: Event` | `-` |
 
-### Events
 
-| 方法名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| onClick  | 点击元素时触发 | `event: Event` |
-
-### type值说明
+### AnimateType值说明
 
 |    序号  |    参数名称     |      参数说明     |
 |:-------|:------- | :----------|

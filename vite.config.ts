@@ -13,7 +13,7 @@ if (projectID) {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/react',
+  base: '/react/',
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },

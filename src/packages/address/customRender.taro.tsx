@@ -3,7 +3,7 @@ import { createSelectorQuery } from '@tarojs/taro'
 import { Check } from '@nutui/icons-react-taro'
 import bem from '@/utils/bem'
 import Elevator from '@/packages/elevator/index.taro'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/index.taro'
 import { SelectedRegionObj, RegionData, NextListObj } from './type'
 
 interface CustomRegionData {
@@ -374,7 +374,7 @@ export const CustomRender: FunctionComponent<
         <div className={b('elevator-group')}>
           <Elevator
             height={height}
-            indexList={regionList[tabName[tabIndex] as SelectedRegionType]}
+            list={regionList[tabName[tabIndex] as SelectedRegionType]}
             onClickItem={handleElevatorItem}
           />
         </div>

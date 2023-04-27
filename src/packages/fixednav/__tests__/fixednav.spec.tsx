@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 
 import FixedNav from '../index'
 
-const navList = [
+const list = [
   {
     id: 1,
     text: '首页',
@@ -29,22 +29,22 @@ const navList = [
 ]
 
 test('basic usage', () => {
-  const { container } = render(<FixedNav navList={navList} />)
+  const { container } = render(<FixedNav list={list} />)
   expect(container.querySelector('.nut-fixednav')).toHaveClass('right')
 })
 
 test('left nav', () => {
-  const { container } = render(<FixedNav navList={navList} type="left" />)
+  const { container } = render(<FixedNav list={list} type="left" />)
   expect(container.querySelector('.nut-fixednav')).toHaveClass('left')
 })
 
 test('should be displayed after setting the un-active-text', () => {
   const { container } = render(
     <FixedNav
-      navList={navList}
+      list={list}
       type="left"
       activeText="左侧收起"
-      unActiveText="左侧展开"
+      inactiveText="左侧展开"
     />
   )
   expect(container.querySelector('.nut-fixednav .text')).toHaveTextContent(
@@ -56,10 +56,10 @@ test('should be displayed after setting the un-active-text', () => {
   const activeFixedNav = jest.fn()
   const { container } = render(
     <FixedNav
-      navList={navList}
+      list={list}
       type="left"
       activeText="左侧收起"
-      unActiveText="左侧展开"
+      inactiveText="左侧展开"
       onChange={activeFixedNav}
     />
   )
@@ -72,7 +72,7 @@ test('should be displayed after setting the position', () => {
   const { getByTestId } = render(
     <FixedNav
       data-testid="fixednav-top"
-      navList={navList}
+      list={list}
       position={{ top: '280px' }}
     />
   )

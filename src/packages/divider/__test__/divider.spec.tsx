@@ -9,23 +9,6 @@ test('should divider snapshot match', () => {
   expect(asFragment()).toMatchSnapshot()
 })
 
-test('prop dashed true', () => {
-  const { getByTestId } = render(
-    <>
-      <Divider data-testid="divider-dashed" dashed>
-        文本
-      </Divider>
-      <Divider data-testid="divider-hairline" hairline={false}>
-        文本
-      </Divider>
-    </>
-  )
-  expect(getByTestId('divider-dashed')).toHaveClass('nut-divider__dashed')
-  expect(getByTestId('divider-hairline')).not.toHaveClass(
-    'nut-divider__hairline'
-  )
-})
-
 test('prop contentPosition left', () => {
   const { container } = render(<Divider contentPosition="left">文本</Divider>)
   expect(container.querySelector('.nut-divider')).toHaveClass(
@@ -43,7 +26,7 @@ test('prop contentPosition right', () => {
 test('custom style test', () => {
   const { container } = render(
     <Divider
-      styles={{
+      style={{
         color: '#1989fa',
         borderColor: '#1989fa',
         padding: '0 16px',
