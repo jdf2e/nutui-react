@@ -45,8 +45,9 @@
 - `overlayClass` 重命名为 `className`
 - `overlayStyle` 重命名为 `style`
 - `closeOnClickOverlay` 重命名为 `closeOnOverlayClick`
-- 增加 afterClose和afterShow，用于完全关闭后触发的回调和完全展示后触发的回调
-- 完善overlay的demo示例
+- 纠正 `lockScroll` 文档说明，默认值应为 `true`
+- 增加 `afterClose` 和 `afterShow`，用于完全关闭后触发的回调和完全展示后触发的回调
+- 完善 `Overlay` 的 demo 示例
 #### Popup
 - `popClass` 重命名为 `className`，统一将组件的样式类名使用 `className`，不再指定特殊名字，减轻用户使用的记忆成本
 - `overlayClass` 重命名为 `OverlayClassName`，继承自`Overlay`
