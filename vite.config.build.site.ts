@@ -14,7 +14,7 @@ if (projectID) {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/h5/react/2x',
+  base: 'https://nutui.jd.com/h5/react/2x',
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
