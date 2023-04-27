@@ -32,7 +32,6 @@ export interface PopupProps extends OverlayProps {
   round: boolean
   onOpen: () => void
   onClose: () => void
-  onClick: (e: MouseEvent) => void
   onClickOverlay: (e: MouseEvent) => boolean | void
   onClickCloseIcon: (e: MouseEvent) => boolean | void
 }
@@ -52,7 +51,6 @@ const defaultProps = {
   round: false,
   onOpen: () => {},
   onClose: () => {},
-  onClick: (e: MouseEvent) => {},
   onClickOverlay: (e: MouseEvent) => true,
   onClickCloseIcon: (e: MouseEvent) => true,
   ...defaultOverlayProps,
