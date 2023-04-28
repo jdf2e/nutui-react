@@ -1,8 +1,8 @@
 import React, { ForwardRefRenderFunction, forwardRef } from 'react'
 import classNames from 'classnames'
 import Button from '@/packages/button'
-import confirm from './Confirm'
-import { DialogWrap } from './DialogWrap'
+import confirm from './confirm'
+import { DialogWrap } from './dialogwrap'
 import { useConfig } from '@/packages/configprovider'
 import {
   BasicDialogProps,
@@ -22,6 +22,8 @@ const defaultProps = {
   disableConfirmButton: false,
   footerDirection: 'horizontal',
   lockScroll: true,
+  beforeCancel: () => true,
+  beforeClose: () => true,
 } as DialogProps
 
 const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (

@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import Button from '@/packages/button/index.taro'
 import { BasicDialogProps } from './config'
-import { DialogWrap } from './DialogWrap.taro'
+import { DialogWrap } from './dialogwrap.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export type DialogProps = BasicDialogProps
@@ -17,6 +17,8 @@ const defaultProps = {
   disableConfirmButton: false,
   footerDirection: 'horizontal',
   lockScroll: true,
+  beforeCancel: () => true,
+  beforeClose: () => true,
 } as DialogProps
 
 export const BaseDialog = forwardRef(

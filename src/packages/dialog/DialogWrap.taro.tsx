@@ -1,6 +1,6 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react'
 import { CSSTransition } from 'react-transition-group'
-import { Content } from './Content.taro'
+import { Content } from './content.taro'
 import {
   OverlayProps,
   defaultOverlayProps,
