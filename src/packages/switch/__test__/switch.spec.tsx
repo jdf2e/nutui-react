@@ -11,7 +11,7 @@ test('activeColor && inactiveColor &&  activeText && checked && onChange && inac
     inactiveText: '关',
     checked: false,
     className: 'switch-test',
-    style: { fontSize: '12px', '--nutui-switch-open-bg-color': 'blue' },
+    style: { fontSize: '12px', '--nutui-switch-open-background-color': 'blue' },
   }
   const {
     activeColor,
@@ -26,6 +26,7 @@ test('activeColor && inactiveColor &&  activeText && checked && onChange && inac
     <Switch
       className={className}
       style={style}
+      defaultChecked
       activeText={activeText}
       checked={false}
       onChange={testFn}
@@ -40,7 +41,7 @@ test('activeColor && inactiveColor &&  activeText && checked && onChange && inac
     )
     expect(el).toHaveAttribute(
       'style',
-      `font-size: 12px; --nutui-switch-open-bg-color: blue;`
+      `font-size: 12px; --nutui-switch-open-background-color: blue;`
     )
     expect(el).toHaveTextContent(inactiveText)
     fireEvent.click(el)

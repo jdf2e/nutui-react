@@ -24,9 +24,9 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
     disabled,
     activeText,
     inactiveText,
-    onChange,
     className,
     style,
+    onChange,
   } = {
     ...defaultProps,
     ...props,

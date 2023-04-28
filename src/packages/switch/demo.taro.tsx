@@ -74,16 +74,23 @@ const SwitchDemo = () => {
         </Cell>
         <h2>onChange</h2>
         <Cell>
-          <Switch onChange={(value, event) => onChange(value, event)} />
+          <Switch
+            defaultChecked
+            onChange={(value, event) => onChange(value, event)}
+          />
         </Cell>
 
         <h2>{translated.customColor}</h2>
         <Cell>
-          <Switch style={{ '--nutui-switch-open-bg-color': 'blue' }} />
+          <Switch
+            defaultChecked
+            style={{ '--nutui-switch-open-background-color': 'blue' }}
+          />
         </Cell>
         <h2>{translated.supportText}</h2>
         <Cell>
           <Switch
+            defaultChecked
             activeText={translated.open}
             inactiveText={translated.close}
           />

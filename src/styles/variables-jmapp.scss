@@ -730,14 +730,14 @@ $avatar-normal-height: var(--nutui-avatar-normal-height, 40px) !default;
 
 //switch（✅）
 $switch-inactive-background-color: var(
-  --nutui-switch-close-bg-color,
+  --nutui-switch-close-background-color,
   #ebebeb
 ) !default;
 $switch-active-background-color: var(
-  --nutui-switch-open-bg-color,
+  --nutui-switch-open-background-color,
   $primary-color
 ) !default;
-$switch-close-line-bg-color: var(
+$switch-close-line-background-color: var(
   --nutui-switch-close-line-bg-color,
   #f0f0f0
 ) !default;
