@@ -1,7 +1,6 @@
 import React from 'react'
 import { Dialog } from './dialog'
-import { destroyList, ConfirmProps } from './config'
-
+import { destroyList, ConfirmProps, DialogReturnProps } from './config'
 import { render as reactRender, unmount } from '@/utils/render'
 
 function ConfirmDialog(props: ConfirmProps) {
@@ -9,11 +8,11 @@ function ConfirmDialog(props: ConfirmProps) {
 }
 
 // 如果是消息提示型弹出框，那么只有确认按钮
-export const normalizeConfig = (_config: ConfirmProps): ConfirmProps => {
-  if (_config.isNotice) {
-    let { icon } = _config
+export const normalizeConfig = (config: ConfirmProps): ConfirmProps => {
+  if (config.isNotice) {
+    let { icon } = config
     if (!icon && icon !== null) {
-      switch (_config.noticeType) {
+      switch (config.noticeType) {
         case 'alert':
           icon = ''
           break
@@ -21,34 +20,33 @@ export const normalizeConfig = (_config: ConfirmProps): ConfirmProps => {
           break
       }
     }
-    _config.noCancelBtn = true
+    config.hideCancelButton = true
   }
-  return _config
+  return config
 }
 
-function confirm(
+const confirm = (
   config: ConfirmProps,
   renderFunc?: (props: ConfirmProps) => void
-) {
+): DialogReturnProps => {
   const div = document.createElement('div')
   document.body.appendChild(div)
-  function render(props: ConfirmProps, callback?: () => any) {
-    reactRender(<ConfirmDialog {...props} onCancel={onCancel} />, div)
-    callback && callback()
-  }
-
-  const renderFunction = renderFunc || render
 
   let dialogConfig: ConfirmProps = {
     ...config,
     visible: false,
   }
-  const onOk = () => {
-    let ret
-    const _onOk = config.onOk || config.onConfirm
-    if (_onOk) {
-      ret = _onOk()
-    }
+
+  const render = (props: ConfirmProps, callback?: () => any) => {
+    reactRender(<ConfirmDialog {...props} onCancel={() => onCancel()} />, div)
+    callback && callback()
+  }
+
+  const renderFunction = renderFunc || render
+
+  const onConfirm = () => {
+    const _onConfirm = config.onConfirm || config.onConfirm
+    const ret = _onConfirm?.()
     if (ret && ret.then) {
       renderFunction(dialogConfig)
       ret.then(
@@ -65,14 +63,14 @@ function confirm(
       onCancel(true)
     }
   }
-  // 如果是promise，那么处理loading和加载完成关闭
-  dialogConfig.onOk = onOk
-  dialogConfig = normalizeConfig(dialogConfig)
 
+  // 如果是promise，那么处理loading和加载完成关闭
+  dialogConfig.onConfirm = onConfirm
+  dialogConfig = normalizeConfig(dialogConfig)
   dialogConfig.visible = true
   renderFunction(dialogConfig)
 
-  function destroy() {
+  const destroy = () => {
     unmount(div)
     if (div?.parentNode) {
       div.parentNode.removeChild(div)
@@ -86,18 +84,18 @@ function confirm(
     }
   }
 
-  function onCancel(isOnOk?: boolean) {
-    !isOnOk && config.onCancel && config.onCancel()
+  const onCancel = (confirm?: boolean) => {
+    !confirm && config.onCancel && config.onCancel()
     dialogConfig.visible = false
-    dialogConfig.onClosed = () => {
-      config.onClosed && config.onClosed()
+    dialogConfig.onClose = () => {
+      config.onClose && config.onClose()
     }
     renderFunction(dialogConfig, () => {
       destroy()
     })
   }
 
-  function update(newConfig: ConfirmProps) {
+  const update = (newConfig: ConfirmProps) => {
     dialogConfig = {
       ...dialogConfig,
       title: config.title, // 避免 newConfig 未传递 title 时，icon 出现多个的问题
@@ -108,10 +106,10 @@ function confirm(
     renderFunction(dialogConfig)
   }
 
-  function close() {
+  const close = () => {
     dialogConfig.visible = false
-    dialogConfig.onClosed = () => {
-      config.onClosed && config.onClosed()
+    dialogConfig.onClose = () => {
+      config.onClose && config.onClose()
       destroy()
     }
     renderFunction(dialogConfig)

@@ -1134,9 +1134,16 @@ $dialog-content-line-height: var(
   --nutui-dialog-content-line-height,
   16px
 ) !default;
-$dialog-mask-z-index: var(--nutui-dialog-mask-z-index, $mask-z-index) !default;
-$dialog-mask-background-color: var(
-  --nutui-dialog-mask-background-color,
+$dialog-content-text-align: var(
+  --nutui-dialog-content-text-align,
+  center
+) !default;
+$dialog-overlay-z-index: var(
+  --nutui-dialog-overlay-z-index,
+  $mask-z-index
+) !default;
+$dialog-overlay-background-color: var(
+  --nutui-dialog-overlay-background-color,
   $mask-color
 ) !default;
 $dialog-outer-z-index: var(
