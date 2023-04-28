@@ -25,7 +25,7 @@ const DialogDemo = () => {
     'zh-CN': {
       funUse: '函数式调用',
       basic: '基础弹框',
-      noTitle: '无标题弹框',
+      noTitle: '无标题弹框、不锁背景滚动',
       tipDialog: '提示弹框',
       tips: '提示',
       title: '底部按钮 垂直布局 使用',
@@ -61,6 +61,7 @@ const DialogDemo = () => {
   const [visible2, setVisible2] = useState(false)
   const [visible3, setVisible3] = useState(false)
   const [visible4, setVisible4] = useState(false)
+  const [visible5, setVisible5] = useState(false)
 
   return (
     <>
@@ -72,9 +73,6 @@ const DialogDemo = () => {
             Dialog.alert({
               title: translated.basic,
               content: translated.content,
-              confirmText: translated.confirmText,
-              cancelText: translated.cancelText,
-              lockScroll: true,
             })
           }}
         />
@@ -85,6 +83,7 @@ const DialogDemo = () => {
               content: translated.noTitle,
               confirmText: translated.confirmText,
               cancelText: translated.cancelText,
+              lockScroll: false,
             })
           }}
         />
@@ -129,14 +128,10 @@ const DialogDemo = () => {
           onClick={() => {
             const dialog = Dialog.confirm({
               content: translated.title5,
-              confirmText: translated.confirmText,
-              cancelText: translated.cancelText,
             })
             setTimeout(() => {
               dialog.update({
                 content: `${translated.title5} ${translated.title5} `,
-                confirmText: translated.confirmText,
-                cancelText: translated.cancelText,
               })
             }, 3000)
           }}
@@ -146,10 +141,17 @@ const DialogDemo = () => {
         <Dialog
           title={translated.title1}
           visible={visible1}
-          confirmText={translated.confirmText}
-          cancelText={translated.cancelText}
           onConfirm={() => setVisible1(false)}
           onCancel={() => setVisible1(false)}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell title={translated.noTitle} onClick={() => setVisible5(true)} />
+        <Dialog
+          visible={visible5}
+          lockScroll={false}
+          onConfirm={() => setVisible5(false)}
+          onCancel={() => setVisible5(false)}
         >
           {translated.content}
         </Dialog>
@@ -157,10 +159,7 @@ const DialogDemo = () => {
         <Dialog
           title={translated.title1}
           visible={visible2}
-          lockScroll
           footerDirection="vertical"
-          confirmText={translated.confirmText}
-          cancelText={translated.cancelText}
           onConfirm={() => setVisible2(false)}
           onCancel={() => setVisible2(false)}
         >
@@ -170,11 +169,9 @@ const DialogDemo = () => {
         <Dialog
           title={translated.title3}
           visible={visible4}
-          lockScroll
+          lockScroll={false}
           footerDirection="vertical"
           closeOnOverlayClick={false}
-          confirmText={translated.confirmText}
-          cancelText={translated.cancelText}
           onConfirm={() => setVisible4(false)}
           onCancel={() => setVisible4(false)}
         >
@@ -184,11 +181,10 @@ const DialogDemo = () => {
         <Dialog
           title={translated.title2}
           visible={visible3}
-          lockScroll
+          footer={null}
           onClose={() => {
             setVisible3(false)
           }}
-          footer={null}
         >
           {translated.content}
         </Dialog>

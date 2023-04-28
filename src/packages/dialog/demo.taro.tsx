@@ -22,7 +22,7 @@ const DialogDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
       basic: '基础弹框',
-      noTitle: '无标题弹框',
+      noTitle: '无标题弹框、不锁背景滚动',
       tipDialog: '提示弹框',
       tips: '提示',
       title: '底部按钮 垂直使用',
@@ -64,8 +64,6 @@ const DialogDemo = () => {
         <Dialog
           title={translated.title1}
           visible={visible1}
-          confirmText={translated.confirmText}
-          cancelText={translated.cancelText}
           onConfirm={() => setVisible1(false)}
           onCancel={() => setVisible1(false)}
         >
@@ -74,8 +72,7 @@ const DialogDemo = () => {
         <Cell title={translated.noTitle} onClick={() => setVisible2(true)} />
         <Dialog
           visible={visible2}
-          confirmText={translated.confirmText}
-          cancelText={translated.cancelText}
+          lockScroll={false}
           onConfirm={() => setVisible2(false)}
           onCancel={() => setVisible2(false)}
         >
@@ -95,10 +92,7 @@ const DialogDemo = () => {
         <Dialog
           title={translated.title1}
           visible={visible4}
-          lockScroll
           footerDirection="vertical"
-          confirmText={translated.confirmText}
-          cancelText={translated.cancelText}
           onConfirm={() => setVisible4(false)}
           onCancel={() => setVisible4(false)}
         >
@@ -108,11 +102,8 @@ const DialogDemo = () => {
         <Dialog
           title={translated.title3}
           visible={visible5}
-          lockScroll
           footerDirection="vertical"
           closeOnOverlayClick={false}
-          confirmText={translated.confirmText}
-          cancelText={translated.cancelText}
           onConfirm={() => setVisible5(false)}
           onCancel={() => setVisible5(false)}
         >
@@ -122,16 +113,13 @@ const DialogDemo = () => {
         <Dialog
           title={translated.title2}
           visible={visible6}
-          lockScroll
-          footerDirection="vertical"
+          footer={null}
           onClose={() => {
             setVisible6(false)
           }}
-          footer={null}
         >
           {translated.content}
         </Dialog>
-        <div style={{ height: '200vh' }} />
       </div>
     </>
   )

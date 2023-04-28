@@ -31,16 +31,14 @@ const App = () => {
           Dialog.alert({
             title: '基础弹框',
             content: '支持函数调用和组件调用两种方式。',
-            confirmText: '确认',
-            cancelText: '取消',
-            lockScroll: true
           });
         }} />
-      <Cell title="无标题弹框" onClick={() => {
+      <Cell title="无标题弹框、不锁背景滚动" onClick={() => {
           Dialog.alert({
             content: '无标题弹框',
             confirmText: '确认',
             cancelText: '取消',
+            lockScroll: false
           });
         }} 
       />
@@ -77,14 +75,10 @@ const App = () => {
       <Cell title="打开弹框 3s 后调用关闭方法" onClick={() => {
           const dialog = Dialog.confirm({
             content: '打开弹框 3s 后调用关闭方法',
-            confirmText: '确认',
-            cancelText: '取消',
           });
           setTimeout(() => {
             dialog.update({
               content: '打开弹框 3s 后调用关闭方法 我是更新',
-              confirmText: '确认',
-              cancelText: '取消',
             })
           }, 3000);
         }} 
@@ -114,8 +108,6 @@ const App = () => {
     <Dialog 
       title="标签式使用"
       visible={visible1}
-      confirmText='确认'
-      cancelText='取消'
       onConfirm={() => setVisible1(false)}
       onCancel={() => setVisible1(false)}
     >
@@ -125,7 +117,6 @@ const App = () => {
     <Dialog 
       title="标签式使用"
       visible={visible2}
-      lockScroll
       footerDirection='vertical'
       onConfirm={() => setVisible2(false)}
       onCancel={() => setVisible2(false)}
@@ -136,7 +127,7 @@ const App = () => {
     <Dialog 
       title="底部 Footer 为 Button 时，点击遮罩不关闭"
       visible={visible2}
-      lockScroll
+      lockScroll={false}
       footerDirection='vertical'
       closeOnOverlayClick={false}
       onConfirm={() => setVisible2(false)}
@@ -148,11 +139,10 @@ const App = () => {
     <Dialog 
       title="无底部 Footer 区域"
       visible={visible2}
-      lockScroll
+      footer={null}
       onClose={() => {
         setVisible2(false)
       }}
-      footer={null}
     >
       如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
     </Dialog>
@@ -183,7 +173,7 @@ export default App;
 | closeOnOverlayClick | 点击蒙层是否关闭对话框 | `boolean` | `true`              |
 | cancelAutoClose | 取消按钮是否默认关闭弹窗 | `boolean` | `true`              |
 | footerDirection | 使用横纵方向 可选值 horizontal、vertical | `string` | `horizontal` |
-| lockScroll | 背景是否锁定 | `boolean` | `false`              |
+| lockScroll | 背景是否锁定 | `boolean` | `true`              |
 | onConfirm          | 确定按钮回调 | `(e?: MouseEvent) => Promise \| void` |
 | onCancel      | 取消按钮回调 | `() => void` |
 | onClose      | 关闭回调，任何情况关闭弹窗都会触发 | `() => void` |

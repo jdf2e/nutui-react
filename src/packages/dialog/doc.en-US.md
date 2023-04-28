@@ -1,12 +1,12 @@
 #  Dialog 
 
-### Intro
+## Intro
 
 Modular dialog box, displayed in the floating layer, guides users to perform related operations, often used in message prompts, message confirmation, or complete specific interaction operations on the current page。
 
 The pop -up box components support the function call and component call.
 
-### Install
+## Install
 
 ```ts
 // react
@@ -31,16 +31,14 @@ const App = () => {
         Dialog.alert({
             title: 'Basic bullet',
             content: 'Support function calls and module call.',
-            confirmText: 'Confirm',
-            cancelText: 'Cancel',
-            lockScroll: true
         });
         }} />
-      <Cell title="Non -title bullet box" onClick={() => {
+      <Cell title="Non-title bullet box, and lock scroll" onClick={() => {
             Dialog.alert({
-            content: 'Non -title bullet box',
+            content: 'Non-title bullet box, and lock scroll',
             confirmText: 'Confirm',
             cancelText: 'Cancel',
+            lockScroll: false
         });
         }} />
       <Cell title="Prompt bomb frame" onClick={() => {
@@ -74,14 +72,10 @@ const App = () => {
       <Cell title="after opened the dialog for 3 seconds, update the content of the dialog" onClick={() => {
           const dialog = Dialog.confirm({
             content: 'Support function calls and module call.',
-            confirmText: 'Confirm',
-            cancelText: 'Cancel',
           });
           setTimeout(() => {
             dialog.update({
               content: 'Support function calls and module call. update',
-              confirmText: 'Confirm',
-              cancelText: 'Cancel',
             })
           }, 3000);
         }} 
@@ -120,7 +114,6 @@ const App = () => {
     <Dialog 
         title="Module call"
         visible={visible2}
-        lockScroll
         footerDirection='vertical'
         onConfirm={() => setVisible2(false)}
         onCancel={() => setVisible2(false)}
@@ -139,8 +132,8 @@ export default App;
 
 ### Props
 
-| parameter         | illustrate                             | type   | Defaults           |
-|--------------|----------------------------------|--------|------------------|
+| Attribute    | Description | Type    | Default    |
+|---------|----------------------|---------|-----------|
 | visible | Whether the dialog box is visible| `boolean`| - |
 | title | title| `ReactNode` | -|
 | content| The content of the dialog box is suitable for function calls | `ReactNode` | -|
@@ -154,7 +147,7 @@ export default App;
 | closeOnOverlayClick| Click on whether to close the dialog box| `boolean` | `true`|
 | cancelAutoClose| Cancel the button to close the pop -up window by default| `boolean` | `true`|
 | footerDirection|Use horizontal and vertical direction value selection horizontal、vertical  | string | `horizontal`             |
-| lockScroll| Whether the background is locked| `boolean` | `false`|
+| lockScroll| Whether the background is locked| `boolean` | `true`|
 | onConfirm  | Determine the button back | `(e?: MouseEvent) => Promise \| void` |
 | onCancel  | Cancel button callback | `() => void` |
 | onClose  | Turn off the callback, and the pop -up window will be triggered in any case | `() => void` |

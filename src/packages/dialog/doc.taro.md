@@ -37,19 +37,16 @@ const App = () => {
     <Dialog 
       title="组件调用"
       visible={visible1}
-      confirmText='确认'
-      cancelText='取消'
       onConfirm={() => setVisible1(false)}
       onCancel={() => setVisible1(false)}
     >
       如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
     </Dialog>
 
-    <Cell title="无标题弹框" onClick={() => setVisible2(true)} />
+    <Cell title="无标题弹框、不锁背景滚动" onClick={() => setVisible2(true)} />
     <Dialog 
       visible={visible2}
-      confirmText='确认'
-      cancelText='取消'
+      lockScroll={false}
       onConfirm={() => setVisible2(false)}
       onCancel={() => setVisible2(false)}
     >
@@ -70,10 +67,7 @@ const App = () => {
     <Cell title="底部按钮 垂直布局调用" onClick={() => setVisible4(true)} />
     <Dialog 
       title="组件调用"
-      confirmText='确认'
-      cancelText='取消'
       visible={visible4}
-      lockScroll
       footerDirection='vertical'
       onConfirm={() => setVisible4(false)}
       onCancel={() => setVisible4(false)}
@@ -84,11 +78,9 @@ const App = () => {
     <Cell title="底部 Footer 为 Button 时，点击遮罩不关闭" onClick={() => setVisible5(true)} />
     <Dialog 
       title="组件调用"
-      confirmText='确认'
-      cancelText='取消'
       visible={visible5}
-      lockScroll
       footerDirection='vertical'
+      closeOnOverlayClick={false}
       onConfirm={() => setVisible5(false)}
       onCancel={() => setVissetVisible5ible2(false)}
     >
@@ -99,12 +91,10 @@ const App = () => {
     <Dialog 
       title="组件调用"
       visible={visible6}
-      lockScroll
-      footerDirection='vertical'
+      footer={null}
       onClose={() => {
         setVisible6(false)
       }}
-      footer={null}
     >
       如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
     </Dialog>
