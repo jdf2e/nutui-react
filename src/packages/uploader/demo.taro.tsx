@@ -333,9 +333,9 @@ const UploaderDemo = () => {
         </Uploader>
         <br />
         <Progress
-          percentage={progressPercent}
-          strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-          status
+          percent={progressPercent}
+          color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
+          animated
         />
 
         <h2>{translated['27f1376e']}</h2>

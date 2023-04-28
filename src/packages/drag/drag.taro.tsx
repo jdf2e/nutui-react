@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
 import { getSystemInfoSync, createSelectorQuery } from '@tarojs/taro'
-import bem from '@/utils/bem'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface DragProps {
+export interface DragProps extends BasicComponent {
   attract: boolean
   direction: 'x' | 'y' | 'lock' | undefined
   boundary: {
@@ -11,10 +11,9 @@ export interface DragProps {
     right: number
     bottom: number
   }
-  className: string
-  style: React.CSSProperties
 }
 const defaultProps = {
+  ...ComponentDefaults,
   attract: false,
   direction: undefined,
   boundary: {
@@ -33,7 +32,7 @@ export const Drag: FunctionComponent<
       ...defaultProps,
       ...props,
     }
-  const b = bem('drag')
+  const classPrefix = 'nut-drag'
   const [boundaryState, setBoundaryState] = useState(boundary)
   const myDrag = useRef<HTMLDivElement>(null)
   const dragRef = useRef<HTMLDivElement>(null)
@@ -131,7 +130,7 @@ export const Drag: FunctionComponent<
   return (
     <div
       style={style}
-      className={`${b()} ${className}`}
+      className={`${classPrefix} ${className}`}
       {...reset}
       ref={myDrag}
     >

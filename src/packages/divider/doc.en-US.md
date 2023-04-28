@@ -147,15 +147,14 @@ export default App;
 :::
 
 
-## API
+## Divider
 
 ### Props
 
 | Property            | Description                       | Type    | Default |
 | --------------- | ----------------------------- | ------- | ------ |
-| contentPosition | Content position, can be set to left or right or center  | string  | `center` |
-| style          | Modify custom styles                | CSSProperties     | -      |
-| direction           | The direction of divider, can be set to horizontal or vertical            | string     | `horizontal`      |
+| contentPosition | Content position, can be set to left or right or center  | `'left'  \|  'center'  \|  'right'`  | `center` |
+| direction           | The direction of divider, can be set to horizontal or vertical            | `'horizontal'  \|  'vertical'`     | `horizontal`      |
 
 
 ## Theming

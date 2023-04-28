@@ -121,7 +121,7 @@ export default App;
 ```
 :::
 
-### 鎖定背景滾動
+### 不鎖定背景滾動
 
 :::demo
 ```tsx
@@ -139,9 +139,9 @@ const App = () => {
   return (
     <>
       <Button type="primary" onClick={handleToggleShow}>
-        鎖定背景滾動
+        不鎖定背景滾動
       </Button>
-      <Overlay visible={visible} onClick={onClose} lockScroll />
+      <Overlay visible={visible} onClick={onClose} lockScroll={false} />
     </>
   )
 }
@@ -217,7 +217,7 @@ const App = () => {
       <Button type="primary" onClick={handleToggleShow}>
         點擊遮罩不關閉
       </Button>
-      <Overlay visible={visible} lockScroll closeOnOverlayClick={false}>
+      <Overlay visible={visible} closeOnOverlayClick={false}>
         <div className="wrapper">
           <div className="content" onClick={onClose}>這裡是正文</div>
         </div>
@@ -238,7 +238,7 @@ export default App;
 | visible                   | 當前元件是否顯示 | boolean        | `false`  |
 | zIndex                | 遮罩層級         | number | `2000`   |
 | duration               | 動畫時長，單位秒 | number | `0.3`    |
-| lockScroll          | 背景是否鎖定   | boolean  | `false`     |
+| lockScroll          | 背景是否鎖定   | boolean  | `true`     |
 | closeOnOverlayClick | 是否點擊遮罩關閉 | boolean        | `true`   |
 | onClick  | 點擊時觸發 | `event: Event` |
 | afterClose | 完全關閉後觸發 | () => void        | `-`   |

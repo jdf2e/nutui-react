@@ -1,43 +1,47 @@
 # Navbar 頭部導航
 
-### 介紹 
+## 介紹 
 
 
 提供導航功能。
 
-### 安裝
+## 安裝
 
 ```ts
-// react
 import { NavBar } from '@nutui/nutui-react';
 ```
 
-### 代碼示例
+## 代碼示例
 
 ### 基本用法
 
 :::demo
 ```tsx
 import  React from "react";
-import { NavBar } from '@nutui/nutui-react';
-import { Share } from '@nutui/icons-react'
+import { NavBar, Toast } from '@nutui/nutui-react';
+import { Left, Share, Close } from '@nutui/icons-react'
 
 const App = () => {
   return ( 
-    <>   
-      <NavBar
-          title="訂單詳情"
-          leftShow
-          leftText="返回"
-          onClickTitle={(e) => alert("返回")}
-          onClickBack={(e) => alert("標題")}
-          onClickRight={(e) => alert('icon')}
-        >
-           <i slot="right">
+    <NavBar
+        back={
+        <>
+            <Left name="left" color="#979797" />
+            返回
+        </>
+        }
+        left={<Close width={12} />}
+        right={
+        <span onClick={(e) =>  Toast.text('icon')}>
             <Share />
-          </i>
-        </NavBar>
-    </>
+        </span>
+        }
+        onClickBack={(e) =>  Toast.text("返回")}
+    >
+        <span onClick={(e) =>  Toast.text("標題")}>
+        訂單詳情
+        </span>
+    </NavBar>
   );
 };  
 export default App;
@@ -48,20 +52,24 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import { NavBar } from '@nutui/nutui-react';
+import { NavBar, Toast } from '@nutui/nutui-react';
+import { Left } from '@nutui/icons-react'
 
 const App = () => {
   return ( 
-    <>   
-      <NavBar
-          title="瀏覽記錄"
-          description="清空"
-          leftShow
-          onClickTitle={(e) => alert("返回")}
-          onClickBack={(e) => alert("標題")}
-          onClickRight={(e) => alert('清空')}
-      />
-    </>
+    <NavBar
+        right={
+        <span onClick={(e) =>  Toast.text('清空')}>
+            清空
+        </span>
+        }
+        back={<Left name="left" color="#979797" />}
+        onClickBack={(e) =>  Toast.text("返回")}
+    >
+        <span onClick={(e) =>  Toast.text("標題")}>
+        瀏覽記錄
+        </span>
+    </NavBar>
   );
 };  
 export default App;
@@ -72,97 +80,64 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import { NavBar } from '@nutui/nutui-react';
-import { Cart2, More } from '@nutui/icons-react'
+import { NavBar, Toast } from '@nutui/nutui-react';
+import { Cart2, Left, MoreX} from '@nutui/icons-react'
 
 const App = () => {
   return ( 
-    <>   
-      <NavBar
-          title="購物車"
-          description="編輯"
-          onClickTitle={(e) => alert("返回")}
-          onClickBack={(e) => alert("標題")}
-          onClickRight={(e) => alert('編輯')}
-          onClickIcon={(e) => alert('icon')}
-        >
-          <i slot="titleIcon">
+    <NavBar
+        back={<Left name="left" color="#979797" />}
+        right={
+        <>
+            <span onClick={(e) =>  Toast.text('編輯')}>
+            編輯
+            </span>
+            <MoreX onClick={(e) =>  Toast.text('icon')} />
+        </>
+        }
+        onClickBack={(e) =>  Toast.text("返回")}
+    >
+        <span onClick={(e) =>  Toast.text("標題")}>
+        購物車
+        </span>
+        <i style={{ marginLeft: '5px' }} onClick={(e) =>  Toast.text('icon')}>
             <Cart2 />
-          </i>
-          <i slot="right">
-            <More />
-          </i>
-      </NavBar>
-    </>
+        </i>
+    </NavBar>
   );
 };  
 export default App;
 
 ```
 :::
-
-:::demo
-```tsx
-import  React from "react";
-import { NavBar } from '@nutui/nutui-react';
-import { Share } from '@nutui/icons-react'
-
-const App = () => {
-  return ( 
-    <>
-      <NavBar
-          title="訂單詳情"
-          leftShow
-          border
-          leftText="返回"
-          onClickTitle={(e) => alert("返回")}
-          onClickBack={(e) => alert("標題")}
-          onClickRight={(e) => alert('icon')}
-        >
-           <i slot="right">
-            <Share />
-          </i>
-      </NavBar>
-    </>
-  );
-};  
-export default App;
-
-```
-:::
-
-
-### 自定義導航欄中間內容
 
 :::demo
 ```tsx
 import  React, { useState } from "react";
-import { NavBar, Tabs, TabPane } from '@nutui/nutui-react';
-import { More } from '@nutui/icons-react'
+import { NavBar, Tabs, TabPane, Toast } from '@nutui/nutui-react';
+import { Left,MoreX } from '@nutui/icons-react'
 
 const App = () => {
-  const [tab1value, setTab1value] = useState('Tab 1')
-  return ( 
-    <>   
+  const [tab1value, setTab1value] = useState('0')
+  return (   
       <NavBar
-          description="編輯"
-          onClickTitle={(e) => alert("標題")}
-          onClickRight={(e) => alert("編輯")}
-          onClickBack={(e) => alert("返回")}
-          onClickIcon={(e) => alert('icon')}
+         back={<Left name="left" color="#979797" />}
+          right={
+            <>
+              <span onClick={(e) =>  Toast.text("編輯")}>
+                編輯
+              </span>
+              <MoreX onClick={(e) =>  Toast.text('icon')} />
+            </>
+          }
+          onClickBack={(e) =>  Toast.text("返回")}
         >
-          <div slot="content">
             <Tabs value={tab1value} onChange={({ paneKey }) => { setTab1value(paneKey) }}>
               <TabPane title="Tab 1"> Tab 1 </TabPane>
               <TabPane title="Tab 2"> Tab 2 </TabPane>
               <TabPane title="Tab 3"> Tab 3 </TabPane>
             </Tabs>
-          </div>
-          <i slot="right">
-            <More />
-          </i>
       </NavBar>
-    </>
   );
 };  
 export default App;
@@ -170,30 +145,21 @@ export default App;
 ```
 :::
 
-### Prop  
+## Navbar
 
-| 字段            | 說明                                                                                           | 類型    | 默認值  |
-|-----------------|------------------------------------------------------------------------------------------------|---------|---------|
-| title           | 標題名稱                                                                                       | string  | -       |
-| description            | 右側描述                                                                                       | string  | -       |
-| leftShow        | 是否展示左側箭頭                                                                              | boolean | `true`   |
-| titIcon`v2.0.0 废弃`           | 標題帶icon                                                         | string  | -       |   
-| leftText         | 左側文案                                                         | string  | -       |  
-| fixed         | 是否固定                                                         | boolean  | `false`       |   
-| safeAreaInsetTop         | 是否適配安全區                                                         | boolean  | `false`       |   
-| border         | 是否顯示底部邊框                                      | boolean  | `false`    | 
-| placeholder         | 固定在頂部時，是否在標籤位置生成一個等高的佔位元素           | boolean  | `false`    |
-| zIndex         | 導航欄層級           | number \| string  | `10`    |
-| style         | 容器樣式           | CSSProperties  | `{}`    |
-| className         | 容器類名           | string  | -    |                                         
+### Props  
 
-### Event
-| 名稱  | 說明     | 回調參數    |
-|-------|----------|-------------|
-| onClickTitle | 點擊標題事件 | `event: Event` |
-| onClickRight | 點擊右側事件 | `event: Event` |
-| onClickBack | 點擊返回事件 | `event: Event` |
-| onClickIcon | 點擊標題右側icon事件 | `event: Event` |
+| 字段 | 說明 | 類型    | 默認值  |
+|------------|--------------------|---------|---------|
+| right | 右側內容 | ReactNode  | -       |
+| left        | 左側內容，渲染在返回區域的右側 | ReactNode  | -       |   
+| back        | 返回區域的文字 | ReactNode  | -       |   
+| fixed            | 是否固定 | boolean  | `false`       |   
+| safeArea | 是否適配安全區 | boolean  | `false`       |   
+| placeholder      | 固定在頂部時，是否在標簽位置生成一個等高的佔位元素 | boolean  | `false`    |
+| zIndex           | 導航欄層級           | number \| string  | `10`    |
+| onClickBack             | 點擊返回區域後的回調 | `onClickBack:(event: Event)=>void` | `false`|
+
 
 ## 主題定制
 
@@ -201,17 +167,18 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
+| 名稱 | 說明 | 默認值 |
 | --- | --- |
-| --nutui-navbar-height | `44px` |
-| --nutui-navbar-margin-bottom | `20px` |
-| --nutui-navbar-padding | `13px 16px` |
-| --nutui-navbar-background | `$white` |
-| --nutui-navbar-box-shadow | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
-| --nutui-navbar-color | `$gray1` |
-| --nutui-navbar-title-base-font | `$font-size-2` |
-| --nutui-navbar-title-font | `$font-size-2` |
-| --nutui-navbar-title-font-weight | `0` |
-| --nutui-navbar-title-font-color | `$navbar-color` |
-| --nutui-navbar-title-width | `100px` |
-| --nutui-navbar-title-icon-margin | `0 0 0 13px` |
+| --nutui-navbar-width | 頭部導航的寬度 | `100%`|
+| --nutui-navbar-height | 頭部導航的高度 | `44px` |
+| --nutui-navbar-margin-bottom | 頭部導航的下邊距 |`20px` |
+| --nutui-navbar-padding | 頭部導航的內邊距 |`13px 16px` |
+| --nutui-navbar-background | 頭部導航的背景顏色 |`$white` |
+| --nutui-navbar-box-shadow | 頭部導航的陰影 |`0px 1px 7px 0px rgba(237, 238, 241, 1)` |
+| --nutui-navbar-color | 頭部導航的字體顏色 |`$gray2` |
+| --nutui-navbar-font-size | 頭部導航的字體大小 |`$font-size-2` |
+| --nutui-navbar-title-font-size | 頭部導航標題的字體大小 |`$font-size-2` |
+| --nutui-navbar-title-font-weight | 頭部導航標題的字體粗細 |`0` |
+| --nutui-navbar-title-font-color | 頭部導航標題的字體顏色 |`$gray1` |
+
+

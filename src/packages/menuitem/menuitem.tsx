@@ -17,13 +17,12 @@ export interface OptionItem {
 }
 
 export interface MenuItemProps extends BasicComponent {
-  className: string
-  style: React.CSSProperties
   title: React.ReactNode
   options: OptionItem[]
   disabled: boolean
   columns: number
-  optionsIcon: React.ReactNode
+  icon: React.ReactNode
+  closeOnClickAway: boolean
   direction: string
   activeTitleClass: string
   inactiveTitleClass: string
@@ -34,46 +33,49 @@ export interface MenuItemProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
-  className: '',
-  style: {},
   columns: 1,
   direction: 'down',
-  optionsIcon: null,
+  icon: null,
+  closeOnClickAway: false,
   activeTitleClass: '',
   inactiveTitleClass: '',
   onChange: (value: OptionItem) => undefined,
 } as MenuItemProps
 export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
-  const mergedProps = { ...defaultProps, ...props }
   const {
+    className,
     style,
     options,
     value,
     columns,
     title,
-    optionsIcon,
+    icon,
     direction,
     onChange,
     activeTitleClass,
     inactiveTitleClass,
+    closeOnClickAway,
     children,
+    activeColor,
+    show,
+    parent,
+    index,
   } = {
     ...defaultProps,
     ...props,
-  }
-  const { activeColor, showPopup, parent, orderKey } = mergedProps as any
+  } as any
 
-  const [_showPopup, setShowPopup] = useState(showPopup)
+  const [_showPopup, setShowPopup] = useState(show)
   const [_value, setValue] = useState(value)
   useEffect(() => {
-    setShowPopup(showPopup)
-  }, [showPopup])
+    setShowPopup(show)
+  }, [show])
   useEffect(() => {
     getParentOffset()
   }, [_showPopup])
 
   useImperativeHandle<any, any>(ref, () => ({
-    toggle: parent.toggleItemShow,
+    toggle: parent.toggleMenuItem,
   }))
 
   const getIconCName = (optionVal: string | number, value: string | number) => {
@@ -84,11 +86,11 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   }
   const setTitle = (text: string) => {
     if (!title) {
-      parent.updateTitle(text, orderKey)
+      parent.updateTitle(text, index)
     }
   }
   const handleClick = (item: OptionItem) => {
-    parent.toggleItemShow(orderKey)
+    parent.toggleMenuItem(index)
     setTitle(item.text)
     setValue(item.value)
     onChange && onChange(item)
@@ -99,7 +101,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   })
   const getParentOffset = () => {
     setTimeout(() => {
-      const p = parent.parent().current
+      const p = parent.menuRef.current
       const rect = p.getBoundingClientRect()
       setPosition({
         height: rect.height,
@@ -122,45 +124,47 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     if (direction === 'down') {
       return {
         height: `${position.top + position.height}px`,
+        top: 0,
         ...isShow(),
-        ...style,
       }
     }
     return {
       height: `${window.innerHeight - position.top}px`,
+      bottom: `0px`,
       top: 'auto',
       ...isShow(),
-      ...style,
     }
   }
 
   return (
     <>
-      <div
-        className={`placeholder-element ${classNames({
-          up: direction === 'up',
-        })}`}
-        style={placeholderStyle()}
-        onClick={() => parent.toggleItemShow(orderKey)}
-      />
+      {closeOnClickAway ? (
+        <div
+          className={`placeholder-element ${classNames({
+            up: direction === 'up',
+          })}`}
+          style={placeholderStyle()}
+          onClick={() => parent.toggleMenuItem(index)}
+        />
+      ) : null}
+
       <Overlay
         className="nut-menu__overlay"
         style={getPosition()}
         lockScroll={parent.lockScroll}
         visible={_showPopup}
-        closeOnOverlayClick={parent.closeOnClickOverlay}
+        closeOnOverlayClick={parent.closeOnOverlayClick}
         onClick={() => {
-          parent.closeOnClickOverlay && parent.toggleItemShow(orderKey)
+          parent.closeOnOverlayClick && parent.toggleMenuItem(index)
         }}
       />
       <div
-        className={
-          direction === 'down'
-            ? 'nut-menu-item__wrap'
-            : 'nut-menu-item__wrap-up'
-        }
+        className={classNames(className, {
+          'nut-menu-item__wrap': direction === 'down',
+          'nut-menu-item__wrap-up': direction !== 'down',
+        })}
         style={{
-          // ...getPosition(),
+          ...style,
           ...isShow(),
         }}
       >
@@ -170,7 +174,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
           classNames={direction === 'down' ? 'menu-item' : 'menu-item-up'}
         >
           <div className="nut-menu-item__content">
-            {options?.map((item, index) => {
+            {options?.map((item: any, index: any) => {
               return (
                 <div
                   className={`nut-menu-item__option ${classNames({
@@ -186,7 +190,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
                 >
                   {item.value === _value ? (
                     <i>
-                      {optionsIcon || (
+                      {icon || (
                         <Check
                           color={activeColor}
                           className={getIconCName(item.value, value)}
