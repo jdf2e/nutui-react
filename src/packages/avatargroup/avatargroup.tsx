@@ -1,42 +1,37 @@
 import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import { AvatarContext } from './AvatarContext'
-import bem from '@/utils/bem'
-import { useConfig } from '@/packages/configprovider'
 
 export interface AvatarGroupProps {
   maxContent: string
-  maxCount: string | number
+  max: string | number
   maxBgColor: string
   maxColor: string
-  size: string
-  shape: string
-  span: string
-  zIndex: string
+  size: 'large' | 'normal' | 'small'
+  shape: 'round' | 'square'
+  gap: string
+  level: 'left' | 'right'
   className: string
   style: React.CSSProperties
 }
 const defaultProps = {
   maxContent: '',
-  maxCount: '',
+  max: '',
   maxBgColor: '#eee',
   maxColor: '#666',
-  size: '',
-  shape: '',
-  span: '-8',
-  zIndex: 'left',
+  gap: '-8',
+  level: 'left',
 } as AvatarGroupProps
+
+const classPrefix = `nut-avatar-group`
 export const AvatarGroup: FunctionComponent<
   Partial<AvatarGroupProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { locale } = useConfig()
   const propAvatarGroup = { ...defaultProps, ...props }
   const { className, style, children } = propAvatarGroup
 
   const avatarGroupRef = useRef(null)
-
-  const b = bem('avatar-group')
-  const cls = classNames(b(''), className)
+  const cls = classNames(classPrefix, className)
 
   const parentAvatar = {
     propAvatarGroup,

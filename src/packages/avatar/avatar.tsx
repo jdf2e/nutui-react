@@ -18,10 +18,9 @@ export interface AvatarProps extends BasicComponent {
   bgColor: string
   color: string
   prefixCls: string
-  url: string
+  src: string
   alt: string
-  activeAvatar: (e: MouseEvent) => void
-  onActiveAvatar: (e: MouseEvent) => void
+  onClick: (e: MouseEvent) => void
   onError: (e: any) => void
 }
 
@@ -30,17 +29,18 @@ export type AvatarShape = 'round' | 'square'
 const defaultProps = {
   ...ComponentDefaults,
   size: '',
+  shape: 'round',
   icon: '',
   bgColor: '#eee',
   color: '#666',
   prefixCls: 'nut-avatar',
-  url: '',
+  src: '',
   alt: '',
 } as AvatarProps
 
 const classPrefix = `nut-avatar`
 export const Avatar: FunctionComponent<
-  Partial<AvatarProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<AvatarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const {
     children,
@@ -49,13 +49,12 @@ export const Avatar: FunctionComponent<
     shape,
     bgColor,
     color,
-    url,
+    src,
     alt,
     icon,
     className,
     style,
-    activeAvatar,
-    onActiveAvatar,
+    onClick,
     onError,
     ...rest
   } = {
@@ -68,25 +67,25 @@ export const Avatar: FunctionComponent<
   const [avatarIndex, setAvatarIndex] = useState(1) // avatar的索引
   const avatarRef = useRef<any>(null)
   const parent: any = useContext(AvatarContext)
+  const sizeValue = ['large', 'normal', 'small']
 
   const classes = classNames({
-    [`nut-avatar-${size || parent?.propAvatarGroup?.size || 'normal'}`]: true,
-    [`nut-avatar-${shape || parent?.propAvatarGroup?.shape || 'round'}`]: true,
+    [`nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}`]: true,
+    [`nut-avatar-${parent?.propAvatarGroup?.shape || shape}`]: true,
   })
   const cls = classNames(classPrefix, classes, className)
 
-  const sizeValue = ['large', 'normal', 'small']
   const styles: React.CSSProperties = {
     width: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
     height: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
     backgroundColor: `${bgColor}`,
     color: `${color}`,
     marginLeft:
-      avatarIndex !== 1 && parent?.propAvatarGroup?.span
-        ? `${parent?.propAvatarGroup?.span}px`
+      avatarIndex !== 1 && parent?.propAvatarGroup?.gap
+        ? `${parent?.propAvatarGroup?.gap}px`
         : '',
     zIndex:
-      parent?.propAvatarGroup?.zIndex === 'right'
+      parent?.propAvatarGroup?.level === 'right'
         ? `${Math.abs(maxSum - avatarIndex)}`
         : '',
     ...style,
@@ -96,8 +95,6 @@ export const Avatar: FunctionComponent<
     backgroundColor: `${parent?.propAvatarGroup?.maxBgColor}`,
     color: `${parent?.propAvatarGroup?.maxColor}`,
   }
-
-  const iconStyles = icon || ''
 
   useEffect(() => {
     const avatarChildren = parent?.avatarGroupRef?.current.children
@@ -117,7 +114,7 @@ export const Avatar: FunctionComponent<
       }
     }
     const index = Number(avatarRef?.current?.dataset?.index)
-    const maxCount = parent?.propAvatarGroup?.maxCount
+    const maxCount = parent?.propAvatarGroup?.max
     setMaxSum(children.length)
     setAvatarIndex(index)
     if (
@@ -136,15 +133,14 @@ export const Avatar: FunctionComponent<
   }
 
   const clickAvatar: MouseEventHandler<HTMLDivElement> = (e: any) => {
-    activeAvatar && activeAvatar(e)
-    onActiveAvatar && onActiveAvatar(e)
+    onClick && onClick(e)
   }
 
   return (
     <>
       {(showMax ||
-        !parent?.propAvatarGroup?.maxCount ||
-        avatarIndex <= parent?.propAvatarGroup?.maxCount) && (
+        !parent?.propAvatarGroup?.max ||
+        avatarIndex <= parent?.propAvatarGroup?.max) && (
         <div
           className={cls}
           {...rest}
@@ -152,13 +148,13 @@ export const Avatar: FunctionComponent<
           onClick={clickAvatar}
           ref={avatarRef}
         >
-          {(!parent?.propAvatarGroup?.maxCount ||
-            avatarIndex <= parent?.propAvatarGroup?.maxCount) && (
+          {(!parent?.propAvatarGroup?.max ||
+            avatarIndex <= parent?.propAvatarGroup?.max) && (
             <>
-              {url && (
+              {src && (
                 <img
                   className="avatar-img"
-                  src={url}
+                  src={src}
                   alt={alt}
                   onError={errorEvent}
                 />
@@ -177,7 +173,7 @@ export const Avatar: FunctionComponent<
             <div className="text">
               {parent?.propAvatarGroup?.maxContent
                 ? parent?.propAvatarGroup?.maxContent
-                : `+ ${avatarIndex - parent?.propAvatarGroup?.maxCount}`}
+                : `+ ${avatarIndex - parent?.propAvatarGroup?.max}`}
             </div>
           )}
         </div>

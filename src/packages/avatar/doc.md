@@ -28,17 +28,17 @@ const App = () => {
   return (
     <>
       <Avatar
-            size="large"
-            url="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-          />
-          <Avatar
-            size="normal"
-            url="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-          />
-          <Avatar
-            size="small"
-            url="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-          />
+        size="large"
+        src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+      />
+      <Avatar
+        size="normal"
+        src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+      />
+      <Avatar
+        size="small"
+        src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+      />
     </>
   )
 }
@@ -85,7 +85,7 @@ import { My } from '@nutui/icons-react';
 const App = () => {
   return (
     <>
-      <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
+      <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
       <Avatar icon={<My />} />
       <Avatar>N</Avatar>
     </>
@@ -165,16 +165,16 @@ import { My } from '@nutui/icons-react';
 const App = () => {
   return (
     <>
-      <AvatarGroup span="-4">
-        <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
+      <AvatarGroup gap="-4">
+        <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
         <Avatar icon={<My />} />
         <Avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">
           U
         </Avatar>
       </AvatarGroup>
 
-      <AvatarGroup maxCount="3" maxColor="#fff" maxBgColor="#498ff2">
-        <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
+      <AvatarGroup max="3" maxColor="#fff" maxBgColor="#498ff2">
+        <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
         <Avatar icon={<My />} />
         <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
           U
@@ -201,8 +201,8 @@ import { My } from '@nutui/icons-react';
 const App = () => {
   return (
     <>
-      <AvatarGroup maxCount="3" zIndex="right" maxContent="...">
-        <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
+      <AvatarGroup max="3" level="right" maxContent="...">
+        <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
         <Avatar icon={<My />} />
         <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
           U
@@ -223,16 +223,16 @@ export default App;
 
 ``` tsx
 import React from "react";
-import { Avatar } from '@nutui/nutui-react';
+import { Avatar, Toast } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
 
 const App = () => {
   const activeAvatar = () => {
-    console.log('触发点击头像')
+    Toast.text('触发点击头像')
   }
   return (
     <>
-      <Avatar icon={<My />} onActiveAvatar={activeAvatar} />
+      <Avatar icon={<My />} onClick={activeAvatar} />
     </>
   )
 }
@@ -245,16 +245,15 @@ export default App;
 
 | 字段 | 说明| 类型 | 默认值 |
 |--------------------| ----------------------------- |-------------|----------|
-| size | 设置头像的大小，可选值为：large、normal、small，支持直接输入数字   | `string`    | `normal` |
-| shape | 设置头像的形状，可选值为：square、round | `string`    | `round`  |
+| size | 设置头像的大小   | `string`    | `''` |
+| shape | 设置头像的形状 | `'round' \| 'square'`    | `'round'`  |
 | bgColor | 设置 Icon、字符类型头像的背景色 | `string`    | `#eee`   |
 | color | 设置 Icon、字符类型头像的颜色 | `string`    | `#666`   |
-| url | 设置图片类型头像的地址 | `string`    | -        |
-| alt | 设置图片类型头像无法显示时的替代文本 | `string`    | - |
-| icon | 设置 Icon 类型头像图标  | `ReactNode` | - |
-| iconSize`v2.0.0废弃` | [图标尺寸](#/icon) | `string \| number`      | `16`     |
-| onActiveAvatar  | 点击头像触发事件    | `(e: MouseEvent) => void` | `e: MouseEvent` |
-| onError       | 图片加载失败的事件   | `(e: any) => void`        | `e: any`        |
+| src | 设置图片类型头像的地址 | `string`    | `''`       |
+| alt | 设置图片类型头像无法显示时的替代文本 | `string`    | `''` |
+| icon | 设置 Icon 类型头像图标  | `ReactNode` | `-` |
+| onClick  | 点击头像触发事件    | `(e: MouseEvent) => void` | `-` |
+| onError       | 图片加载失败的事件   | `(e: any) => void`        | `-`        |
 
 ## AvatarGroup
 
@@ -262,14 +261,14 @@ export default App;
 
 | 字段     | 说明 | 类型       | 默认值      |
 | -------- | --------------------- |----------|----------|
-| maxCount     | 显示的最大头像个数   | `string \| number`    | - |
-| maxContent  | 头像数量超出时，会出现一个头像折叠元素。该元素内容可为...、more、+N。默认为 +N | `string` | `+N`     | 
-| size         | 设置头像的大小，可选值为：large、normal、small，支持直接输入数字   | `string` | `+N`     |
-| shape        | 设置头像的形状，可选值为：square、round            | `string` | `round`  |
+| max     | 显示的最大头像个数   | `string \| number`    | `''` |
+| maxContent  | 头像数量超出时，会出现一个头像折叠元素。该元素内容可为...、more、+N。 | `string` | `''`     | 
+| size         | 设置头像的大小，可选值为：large、normal、small，支持直接输入数字   | `'large' \| 'normal' \| 'small'` | `''`     |
+| shape        | 设置头像的形状           | `'string' \| 'round'`  |  `''`  |
 | maxBgColor  | 设置 Icon、字符类型头像的背景色 | `string` | `#eee`   |
 | maxColor    | 设置 Icon、字符类型头像的颜色                   | `string` | `#666`   |
-| span         | 设置头像之间的间距               | `string` | `-8`     |
-| zIndex       | 头像之间的层级关系，可选值为：left、right  | `'left' \ | 'right'` | `left`     |
+| gap         | 设置头像之间的间距               | `string` | `-8`     |
+| level       | 头像之间的层级关系，可选值为：left、right  | `'left' \ | 'right'` | `'left'`     |
 
 ## 主题定制
 
@@ -278,12 +277,12 @@ export default App;
 组件提供了下列 CSS
 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-avatar-square | ` 5px` |
-| --nutui-avatar-large-width | ` 60px` |
-| --nutui-avatar-large-height | ` 60px` |
-| --nutui-avatar-small-width | ` 32px` |
-| --nutui-avatar-small-height | ` 32px` |
-| --nutui-avatar-normal-width | ` 40px` |
-| --nutui-avatar-normal-height | ` 40px` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-avatar-square | 正方形头像的圆角弧度  | ` 5px` |
+| --nutui-avatar-large-width | 大尺寸头像的宽度 | ` 60px` |
+| --nutui-avatar-large-height | 大尺寸头像的高度 | ` 60px` |
+| --nutui-avatar-small-width | 小尺寸头像的宽度 | ` 32px` |
+| --nutui-avatar-small-height | 小尺寸头像的高度 | ` 32px` |
+| --nutui-avatar-normal-width | 正常尺寸头像的宽度 | ` 40px` |
+| --nutui-avatar-normal-height | 正常尺寸头像的高度 | ` 40px` |
