@@ -1,14 +1,16 @@
 # Avatar
 
-### Intro
+## Intro
 
 Avatars can be used to represent people or objects. It supports images, Icons, or letters.
 
-### Install
+## Install
 ``` ts
 // react
 import { Avatar } from '@nutui/nutui-react';
 ```
+
+## Demo
 ### Basic usage
 
 Support three sizes：small、normal、large
@@ -218,9 +220,10 @@ export default App;
 ```
 :::
 
-### Prop
+## Avatar
+### Props
 
-| Attribute               | Description                                                 | Type      | Default |
+| Property               | Description                                                 | Type      | Default |
 |-------------------------| ---------------------------------------------------------------- |-----------| ------ |
 | size                    | The size of the avatar,eg：`large`、`normal`、`small`,and numbers   | string    | `normal` |
 | shape                   | The shape of avatar，eg：`square`、`round`           | string    | `round`  |
@@ -230,9 +233,13 @@ export default App;
 | alt                     | This attribute defines the alternative text describing the image    | string    | -   |
 | icon                    | Custom icon type for an icon avatar  | ReactNode | -     |
 | iconSize`v2.0.0abandon` | [Icon size](#/icon) | string \  | number | `16`             |
+| onActiveAvatar  | Emitted when cell is clicked    | Function | `event`    |
+| onError       | Handler when img load error   | Function | `event`    |
 
-### avatarGroup
-| Attribute     | Description                                                 | Type   | Default |
+## AvatarGroup
+
+### Props
+| Property     | Description                                                 | Type   | Default |
 | -------- | ---------------------------------------------------------------- | ------ | ------ |
 | maxCount     | Max avatars to show   | number \| string | - |
 | maxContent  | When the number of avatars exceeds, a avatar folding element will appear，The content of this element can be `...`、`more`、`+N`。默认为 +N | 
@@ -242,12 +249,7 @@ export default App;
 | maxColor    | The background colors of Icon and letter types                   | string | `#666` |
 | span         | Distance between avatars               | string | `-8`   |
 | zIndex       | Hierarchy direction between avatar group，eg：`left`、`right` | string | `left`     |
-### Events
 
-| Event            | Description    | Type     | Arguments |
-| ---------------- | ------------ | -------- | -------- |
-| onActiveAvatar  | Emitted when cell is clicked    | Function | `event`    |
-| onError       | Handler when img load error   | Function | `event`    |
 
 ## Theming
 

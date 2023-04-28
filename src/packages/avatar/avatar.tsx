@@ -8,7 +8,6 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { AvatarContext } from '@/packages/avatargroup/AvatarContext'
-import bem from '@/utils/bem'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -20,9 +19,7 @@ export interface AvatarProps extends BasicComponent {
   color: string
   prefixCls: string
   url: string
-  className: string
   alt: string
-  style: React.CSSProperties
   activeAvatar: (e: MouseEvent) => void
   onActiveAvatar: (e: MouseEvent) => void
   onError: (e: any) => void
@@ -40,6 +37,8 @@ const defaultProps = {
   url: '',
   alt: '',
 } as AvatarProps
+
+const classPrefix = `nut-avatar`
 export const Avatar: FunctionComponent<
   Partial<AvatarProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
@@ -70,12 +69,11 @@ export const Avatar: FunctionComponent<
   const avatarRef = useRef<any>(null)
   const parent: any = useContext(AvatarContext)
 
-  const b = bem('avatar')
   const classes = classNames({
     [`nut-avatar-${size || parent?.propAvatarGroup?.size || 'normal'}`]: true,
     [`nut-avatar-${shape || parent?.propAvatarGroup?.shape || 'round'}`]: true,
   })
-  const cls = classNames(b(''), classes, className)
+  const cls = classNames(classPrefix, classes, className)
 
   const sizeValue = ['large', 'normal', 'small']
   const styles: React.CSSProperties = {

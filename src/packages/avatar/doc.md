@@ -1,10 +1,10 @@
 # Avatar 头像
 
-### 介绍
+## 介绍
 
 用来代表用户或事物，支持图片、图标或字符展示。
 
-### 安装
+## 安装
 
 ``` ts
 // react
@@ -12,7 +12,7 @@ import { Avatar } from '@nutui/nutui-react';
 
 ```
 
-## 代码示例
+## 代码演示
 
 ### 基本用法
 
@@ -240,8 +240,8 @@ export default App;
 ```
 
 :::
-
-### Prop
+## Avatar
+### Props
 
 | 字段 | 说明| 类型 | 默认值 |
 |--------------------| ----------------------------- |-------------|----------|
@@ -253,8 +253,12 @@ export default App;
 | alt | 设置图片类型头像无法显示时的替代文本 | `string`    | - |
 | icon | 设置 Icon 类型头像图标  | `ReactNode` | - |
 | iconSize`v2.0.0废弃` | [图标尺寸](#/icon) | `string \| number`      | `16`     |
+| onActiveAvatar  | 点击头像触发事件    | `(e: MouseEvent) => void` | `e: MouseEvent` |
+| onError       | 图片加载失败的事件   | `(e: any) => void`        | `e: any`        |
 
-### avatarGroup
+## AvatarGroup
+
+### Props
 
 | 字段     | 说明 | 类型       | 默认值      |
 | -------- | --------------------- |----------|----------|
@@ -266,13 +270,6 @@ export default App;
 | maxColor    | 设置 Icon、字符类型头像的颜色                   | `string` | `#666`   |
 | span         | 设置头像之间的间距               | `string` | `-8`     |
 | zIndex       | 头像之间的层级关系，可选值为：left、right  | `'left' \ | 'right'` | `left`     |
-
-### Events
-
-| 字段             | 说明         | 类型                        | 回调参数            |
-| ---------------- | ------------ |---------------------------|-----------------|
-| onActiveAvatar  | 点击头像触发事件    | `(e: MouseEvent) => void` | `e: MouseEvent` |
-| onError       | 图片加载失败的事件   | `(e: any) => void`        | `e: any`        |
 
 ## 主题定制
 
