@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import Button from '@/packages/button/index.taro'
 import { BasicDialogProps } from './config'
-import { DialogWrap } from './DialogWrap'
+import { DialogWrap } from './DialogWrap.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export type DialogProps = BasicDialogProps
@@ -23,7 +23,10 @@ const defaultProps = {
 export const BaseDialog = forwardRef(
   (
     props: Partial<DialogProps> &
-      Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'content'>,
+      Omit<
+        React.HTMLAttributes<HTMLDivElement>,
+        'title' | 'content' | 'onClick'
+      >,
     ref
   ) => {
     const { locale } = useConfig()
