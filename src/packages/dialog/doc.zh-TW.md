@@ -168,14 +168,15 @@ export default App;
 | hideCancelButton| 是否隱藏取消按鈕| `boolean` | `false`|
 | disableConfirmButton| 禁用確定按鈕| `boolean` | `false`|
 | closeOnOverlayClick| 點擊蒙層是否關閉對話框| `boolean` | `true`|
-| cancelAutoClose| 取消按鈕是否默認關閉彈窗| `boolean` | `true`|
 | footerDirection| 使用橫縱方向 可選值 horizontal、vertical| string | `horizontal`|
 | lockScroll| 背景是否鎖定| `boolean` | `true`|
+| beforeCancel | 取消前回调，点击取消时触发 | `() => boolean` |
+| beforeClose | 关闭前回调 | `() => boolean` |
 | onConfirm  | 確定按鈕回調 | `(e?: MouseEvent) => Promise \| void` |
 | onCancel  | 取消按鈕回調 | `() => void` |
 | onClose  | 關閉回調，任何情況關閉彈窗都會觸發 | `() => void` |
 | onClick  | 點擊自身回調 | `() => void` |
-| onClickOverlay | 點擊蒙層触发 | `() => void` |
+| onOverlayClick | 點擊蒙層触发 | `() => void` |
 
 
 ## 主題定制

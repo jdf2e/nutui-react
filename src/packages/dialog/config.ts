@@ -19,8 +19,8 @@ export interface BasicDialogProps {
   closeOnOverlayClick?: boolean
   footerDirection?: string
   lockScroll?: boolean
-  beforeClose?: () => void
-  beforeCancel?: () => void
+  beforeClose?: () => boolean
+  beforeCancel?: () => boolean
   onClose?: () => void
   onConfirm?: (e?: MouseEvent) => Promise<() => void> | void
   onCancel?: () => void

@@ -161,14 +161,15 @@ export default App;
 | hideCancelButton| Whether to hide the cancel button | `boolean` | `false`|
 | disableConfirmButton| Disable the OK button | `boolean` | `false`|
 | closeOnOverlayClick| Click on whether to close the dialog box| `boolean` | `true`|
-| cancelAutoClose| Cancel the button to close the pop -up window by default| `boolean` | `true`|
 | footerDirection|Use horizontal and vertical direction value selection horizontal、vertical  | string | `horizontal`             |
 | lockScroll| Whether the background is locked| `boolean` | `true`|
+| beforeCancel | When click cancel, call it first | `() => boolean` |
+| beforeClose | Call it first when close | `() => boolean` |
 | onConfirm  | Determine the button back | `(e?: MouseEvent) => Promise \| void` |
 | onCancel  | Cancel button callback | `() => void` |
 | onClose  | Turn off the callback, and the pop -up window will be triggered in any case | `() => void` |
 | onClick  | Click yourself to call back | `() => void` |
-| onClickOverlay | Click Overlay | `() => void` |
+| onOverlayClick | Click Overlay | `() => void` |
 
 ## Theming
 
