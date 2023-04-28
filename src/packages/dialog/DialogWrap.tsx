@@ -46,23 +46,20 @@ export const DialogWrap: FunctionComponent<
   const overlayStyles = {
     ...overlayStyle,
   }
-
   const onHandleClickOverlay = (e: any) => {
-    console.log('onClose?.()', closeOnOverlayClick)
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onClickOverlay && onClickOverlay(e)
       closed && onClose?.()
       closed && onCancel?.()
     }
   }
-
   return (
     <>
       {overlay ? (
         <Overlay
           style={overlayStyles}
           className={overlayClassName}
-          visible
+          visible={visible}
           closeOnOverlayClick={closeOnOverlayClick}
           lockScroll={lockScroll}
           onClick={onHandleClickOverlay}
