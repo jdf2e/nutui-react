@@ -4,10 +4,10 @@ import '@testing-library/jest-dom'
 import { Dialog } from '../dialog'
 
 test('show dialog base info display ', async () => {
-  const onClosed = jest.fn()
+  const onClose = jest.fn()
   const { container } = render(
-    <Dialog title="title" data-testid="test" visible onClosed={onClosed}>
-      content
+    <Dialog title="title" data-testid="test" visible onClose={onClose}>
+      <div>content</div>
     </Dialog>
   )
 
@@ -30,9 +30,9 @@ test('show dialog base info display ', async () => {
   expect(contentEle.innerHTML).toEqual('<div>content</div>')
   expect(footerEle.children.length).toBe(2)
 
-  expect(wrapEle).toHaveAttribute('style', 'display: block;')
+  expect(wrapEle).toBeNull()
   fireEvent.click(footerCancelEle)
-  expect(onClosed).toBeCalled()
+  expect(onClose).toBeCalled()
 })
 
 test('show dialog custom footer-direction ', async () => {
@@ -50,7 +50,7 @@ test('show dialog custom footer-direction ', async () => {
 
 test('hide dialog footer', async () => {
   const { container } = render(
-    <Dialog title="title" noFooter visible>
+    <Dialog title="title" footer={null} visible>
       content
     </Dialog>
   )
@@ -60,17 +60,15 @@ test('hide dialog footer', async () => {
 
 test('hide dialog title', async () => {
   const { container } = render(<Dialog visible>content</Dialog>)
-
   expect(container.querySelectorAll('.nut-dialog__header').length).toBe(0)
 })
 
 test('tips dialog', async () => {
   const { container } = render(
-    <Dialog visible noCancelBtn>
+    <Dialog visible hideCancelButton>
       content
     </Dialog>
   )
-
   expect(container.querySelectorAll('.nut-dialog__footer-cancel').length).toBe(
     0
   )

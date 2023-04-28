@@ -21,7 +21,7 @@ const OverlayDemo = () => {
       '84aa6bce': '基础用法',
       '2a9e4928': '显示遮罩层',
       duration: '设置动画时间',
-      lockscroll: '锁定背景滚动',
+      lockscroll: '不锁定背景滚动',
       abbf9359: '遮罩样式',
       ec0d7acf: '嵌套内容',
       ce1e18a2: '这里是正文',
@@ -31,7 +31,7 @@ const OverlayDemo = () => {
       '84aa6bce': '基礎用法',
       '2a9e4928': '顯示遮罩層',
       duration: '設置動畫時間',
-      lockscroll: '鎖定背景滾動',
+      lockscroll: '不鎖定背景滾動',
       abbf9359: '遮罩樣式',
       ec0d7acf: '嵌套內容',
       ce1e18a2: '這裡是正文',
@@ -41,7 +41,7 @@ const OverlayDemo = () => {
       '84aa6bce': 'Basic usage',
       '2a9e4928': 'Show mask layer',
       duration: 'Set animation time',
-      lockscroll: 'Lock background scrolling',
+      lockscroll: 'Donot Lock background scrolling',
       abbf9359: 'Mask style',
       ec0d7acf: 'nested content',
       ce1e18a2: 'here is the text',
@@ -105,7 +105,6 @@ const OverlayDemo = () => {
             visible={visible}
             onClick={onClose}
             zIndex={2020}
-            lockScroll
             afterShow={() => {
               console.log('afterShow')
             }}
@@ -118,7 +117,7 @@ const OverlayDemo = () => {
         <h2>{translated.abbf9359}</h2>
         <Cell>
           <Button type="primary" onClick={handleToggleShow2}>
-            {translated['abbf9359']}
+            {translated.abbf9359}
           </Button>
           <Overlay
             visible={visible2}
@@ -133,7 +132,7 @@ const OverlayDemo = () => {
         <h2>{translated.duration}</h2>
         <Cell>
           <Button type="primary" onClick={handleToggleShow3}>
-            {translated['duration']}
+            {translated.duration}
           </Button>
           <Overlay
             visible={visible3}
@@ -151,9 +150,9 @@ const OverlayDemo = () => {
         <h2>{translated.lockscroll}</h2>
         <Cell>
           <Button type="primary" onClick={handleToggleShow4}>
-            {translated['lockscroll']}
+            {translated.lockscroll}
           </Button>
-          <Overlay visible={visible4} onClick={onClose4} lockScroll />
+          <Overlay visible={visible4} onClick={onClose4} lockScroll={false} />
         </Cell>
 
         <h2>{translated.ec0d7acf}</h2>
@@ -173,7 +172,7 @@ const OverlayDemo = () => {
           <Button type="primary" onClick={handleToggleShow6}>
             {translated.closeClickLay}
           </Button>
-          <Overlay visible={visible6} lockScroll closeOnOverlayClick={false}>
+          <Overlay visible={visible6} closeOnOverlayClick={false}>
             <div className="wrapper">
               <div className="content" onClick={onClose6}>
                 {translated.ce1e18a2}

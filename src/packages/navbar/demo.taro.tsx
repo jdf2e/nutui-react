@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Cart2, More, Share } from '@nutui/icons-react-taro'
+import { Share, MoreX, Cart2, Left, Close } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { NavBar, Tabs, TabPane } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -14,7 +14,6 @@ interface T {
   cfbdc781: string
   c3a3a1d2: string
   e51e4582: string
-  c9e6df49: string
 }
 
 const NavBarDemo = () => {
@@ -28,7 +27,6 @@ const NavBarDemo = () => {
       cfbdc781: '清空',
       c3a3a1d2: '购物车',
       e51e4582: '浏览记录',
-      c9e6df49: '自定义导航栏中间内容',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
@@ -39,7 +37,6 @@ const NavBarDemo = () => {
       cfbdc781: '清空',
       c3a3a1d2: '購物車',
       e51e4582: '瀏覽記錄',
-      c9e6df49: '自定義導航欄中間內容',
     },
     'en-US': {
       ce5c5446: 'Basic usage',
@@ -50,79 +47,98 @@ const NavBarDemo = () => {
       cfbdc781: 'empty',
       c3a3a1d2: 'shopping cart',
       e51e4582: 'Browsing history',
-      c9e6df49: 'Customize the middle content of the navigation bar',
     },
   })
-  const [tab1value, setTab1value] = useState('Tab 1')
+
+  const [tab1value, setTab1value] = useState<string | number>('0')
+
   return (
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.ce5c5446}</h2>
         <NavBar
-          title={translated.c38a08ef}
-          leftShow
-          leftText={translated.a74a1fd4}
-          onClickTitle={(e) => Taro.showToast({ title: translated.b840c88f })}
-          onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
-          onClickRight={(e) => Taro.showToast({ title: 'icon' })}
-        >
-          <i slot="right">
-            <Share />
-          </i>
-        </NavBar>
-        <NavBar
-          title={translated.e51e4582}
-          description={translated.cfbdc781}
-          leftShow
-          onClickTitle={(e) => Taro.showToast({ title: translated.b840c88f })}
-          onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
-          onClickRight={(e) => Taro.showToast({ title: translated.cfbdc781 })}
-        />
-        <NavBar
-          title={translated.c3a3a1d2}
-          description={translated['8dab2f66']}
-          onClickTitle={(e) => Taro.showToast({ title: translated.b840c88f })}
-          onClickRight={(e) =>
-            Taro.showToast({ title: translated['8dab2f66'] })
+          back={
+            <>
+              <Left name="left" color="#979797" />
+              {translated.a74a1fd4}
+            </>
+          }
+          left={<Close size={12} />}
+          right={
+            <span onClick={(e) => Taro.showToast({ title: 'icon' })}>
+              <Share />
+            </span>
           }
           onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
-          onClickIcon={(e) => Taro.showToast({ title: 'icon' })}
         >
-          <i slot="titleIcon">
+          <span onClick={(e) => Taro.showToast({ title: translated.b840c88f })}>
+            {translated.c38a08ef}
+          </span>
+        </NavBar>
+
+        <NavBar
+          right={
+            <span
+              onClick={(e) => Taro.showToast({ title: translated.cfbdc781 })}
+            >
+              {translated.cfbdc781}
+            </span>
+          }
+          back={<Left name="left" color="#979797" />}
+          onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
+        >
+          <span onClick={(e) => Taro.showToast({ title: translated.b840c88f })}>
+            {translated.e51e4582}
+          </span>
+        </NavBar>
+        <NavBar
+          back={<Left name="left" color="#979797" />}
+          right={
+            <>
+              <span
+                onClick={(e) =>
+                  Taro.showToast({ title: translated['8dab2f66'] })
+                }
+              >
+                {translated['8dab2f66']}
+              </span>
+              <MoreX onClick={(e) => Taro.showToast({ title: 'icon' })} />
+            </>
+          }
+          onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
+        >
+          <span onClick={(e) => Taro.showToast({ title: translated.b840c88f })}>
+            {translated.c3a3a1d2}
+          </span>
+          <i
+            style={{ marginLeft: '5px' }}
+            onClick={(e) => Taro.showToast({ title: 'icon' })}
+          >
             <Cart2 />
           </i>
-          <i slot="right">
-            <More />
-          </i>
         </NavBar>
+
         <NavBar
-          title={translated.c38a08ef}
-          leftShow
-          border
-          leftText={translated.a74a1fd4}
-          onClickTitle={(e) => Taro.showToast({ title: translated.b840c88f })}
-          onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
-          onClickRight={(e) => Taro.showToast({ title: 'icon' })}
-        >
-          <i slot="right">
-            <Share />
-          </i>
-        </NavBar>
-        <h2>{translated.c9e6df49}</h2>
-        <NavBar
-          description={translated['8dab2f66']}
-          onClickTitle={(e) => Taro.showToast({ title: translated.b840c88f })}
-          onClickRight={(e) =>
-            Taro.showToast({ title: translated['8dab2f66'] })
+          back={<Left name="left" color="#979797" />}
+          right={
+            <>
+              <span
+                onClick={(e) =>
+                  Taro.showToast({ title: translated['8dab2f66'] })
+                }
+              >
+                {translated['8dab2f66']}
+              </span>
+              <MoreX onClick={(e) => Taro.showToast({ title: 'icon' })} />
+            </>
           }
           onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
-          onClickIcon={(e) => Taro.showToast({ title: 'icon' })}
         >
           <div slot="content">
             <Tabs
               value={tab1value}
-              onChange={({ paneKey }) => {
+              onChange={(paneKey) => {
                 setTab1value(paneKey)
               }}
             >
@@ -132,7 +148,7 @@ const NavBarDemo = () => {
             </Tabs>
           </div>
           <i slot="right">
-            <More />
+            <MoreX />
           </i>
         </NavBar>
       </div>
