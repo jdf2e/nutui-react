@@ -21,6 +21,16 @@
 - 优化 `x` 类型为 ReactNode
 - 增加 `x`, 用于某个功能
 #### Cell
+- `subTitle` 重命名为 `description`
+- 删除 `desc` 重命名为 `extra`, 改为 `React.Node` 类型
+- 删除 `icon`、 `isLink`、`url`、`linkSlot`、`replace`, 暴露自定义节点, demo示例展示
+- 删除 `descTextAlign`, 通过css变量实现
+- 删除 `roundRadius` 重命名为 `radius`
+- 删除 `center` 改为 `align`，默认值为`flex-start`, 可选 `center`、`flex-end`
+#### CellGroup
+- `desc` 重命名为 `description`
+- `title`、`description` 改为 `React.Node` 类型
+- 删除 `titleSlot` 和 `descSlot`
 #### ConfigProvider
 #### Icon
 #### Image
@@ -35,8 +45,9 @@
 - `overlayClass` 重命名为 `className`
 - `overlayStyle` 重命名为 `style`
 - `closeOnClickOverlay` 重命名为 `closeOnOverlayClick`
-- 增加 afterClose和afterShow，用于完全关闭后触发的回调和完全展示后触发的回调
-- 完善overlay的demo示例
+- 纠正 `lockScroll` 文档说明，默认值应为 `true`
+- 增加 `afterClose` 和 `afterShow`，用于完全关闭后触发的回调和完全展示后触发的回调
+- 完善 `Overlay` 的 demo 示例
 #### Popup
 - `popClass` 重命名为 `className`，统一将组件的样式类名使用 `className`，不再指定特殊名字，减轻用户使用的记忆成本
 - `overlayClass` 重命名为 `OverlayClassName`，继承自`Overlay`
@@ -49,13 +60,15 @@
 #### Divider
 - 删除 `dashed`, 通过 style 属性实现
 - 删除 `hairline`, 默认为true
-- `styles` 重命名为 `style`
 #### Grid
 #### Layout
 #### Sticky
 - 删除 top 和 bottom，改为 threshold
 ### 导航组件
 #### Elevator
+- `acceptKey` 重命名为 `floorKey`
+- `indexList` 重命名为 `list`
+- `isSticky` 重命名为 `sticky`
 #### FixedNav
 - 删除 fixednavClass，通过 className 实现
 - unActiveText 重命名为 inactiveText
@@ -71,7 +84,20 @@
 - 删除 `size`， 改为 `total`
 - 增加非数字展示，并设置为默认状态
 #### Menu
+- 删除 fontClassName
+- 删除 iconClassPrefix
+- closeOnClickOverlay 重命名为 closeOnOverlayClick
+- titleIcon 重命名为 icon
+- optionsIcon 重命名为 icon
+- 增加 closeOnClickAway
 #### NavBar
+- 删除`title`, 改为`children`实现
+- 删除`desc`, 改为`right`, 类型为 `React.Node` 类型
+- 增加 `left`，改为 `React.Node` 类型
+- 删除`leftText` `leftShow`, 改为`back`, 类型为 `React.Node` 
+- `safeAreaInsetTop`重命名为 `safeArea`
+- 删除`border` 
+- 删除 `onClickTitle` `onClickRight` `onClickIcon`, 暴露自定义节点, demo示例展示
 #### Pagination
 - modelValue 改为 value，受控值
 - 增加 defaultValue 非受控值
@@ -165,6 +191,8 @@
 
 ### 展示组件
 #### Animate
+- `className` 属性通过继承实现
+- `style` 属性通过继承实现
 #### AnimatingNumbers
 #### Audio
 - url 重命名为 src
@@ -172,6 +200,11 @@
 - onPlayEnd 重命名为 onEnd
 #### Avatar
 #### Badge
+- 删除zIndex，目前没有用到，也不生效，直接去掉。
+- 删除icon，自定义icon可放在 value 中实现，扩充了value的类型。
+- 修改 max 的最大值为99（之前为10000），比较贴合实际场景。
+- 主题定制的css变量中，去掉和dot有关的其他值，只保留 width。其他值由width计算而来。
+
 #### CircleProgress
 #### Collapse
 #### CountDown
@@ -182,6 +215,17 @@
 #### Popover
 #### Price
 #### Progress
+- percentage 重命名为 percent，受控
+- 移除 isShowPercentage，可以自定义传入文案
+- 移除 textWidth，可以自定义传入内容的宽度
+- strokeColor 重命名为 color
+- fillColor 重命名为 background
+- 移除 size，通过 strokeWidth、css 变量实现尺寸自定义
+- status 重命名为 animated，表示是否展示动画效果
+- 移除 textBackground，通过 css 实现
+- 移除 textColor，通过 css 实现
+- 移除 textInside，仅保留内显功能
+- 移除 textType、icon，通过 children 传入自定义 ReactNode，不再区分类型
 #### Skeleton
 #### Steps
 #### Swiper

@@ -23,7 +23,6 @@ const customTheme = {
 
 const customTheme2 = {
   nutuiBadgeDotWidth: '14px',
-  nutuiBadgeDotHeight: '14px',
   nutuiBadgeBorder: '2px solid #fff',
 }
 
@@ -127,13 +126,13 @@ const BadgeDemo = () => {
         <h2>{translated['1c730245']}</h2>
         <CellGroup>
           <Cell>
-            <Badge icon={<Checklist color="#fff" />}>
+            <Badge value={<Checklist color="#fff" width={12} height={12} />}>
               <Avatar icon={<My />} shape="square" />
             </Badge>
-            <Badge icon={<LinkIcon color="#fff" />}>
+            <Badge value={<LinkIcon color="#fff" width={12} height={12} />}>
               <Avatar icon={<My />} shape="square" />
             </Badge>
-            <Badge icon={<Download color="#fff" />}>
+            <Badge value={<Download color="#fff" width={12} height={12} />}>
               <Avatar icon={<My />} shape="square" />
             </Badge>
           </Cell>
@@ -173,7 +172,7 @@ const BadgeDemo = () => {
 
         <h2>{translated.f1089312}</h2>
         <CellGroup>
-          <Cell>
+          <Cell style={{ height: '80px' }}>
             <Badge value={8} />
             <Badge value={76} />
             <Badge value="NEW" />

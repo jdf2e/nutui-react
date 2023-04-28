@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Share, More, Cart2 } from '@nutui/icons-react'
+import { Share, MoreX, Cart2, Left, Close } from '@nutui/icons-react'
 import { NavBar } from './navbar'
 import { Tabs } from '../tabs/tabs'
 import { TabPane } from '../tabpane/tabpane'
 import { useTranslate } from '../../sites/assets/locale'
+import Toast from '../toast/toast'
 
 interface T {
   ce5c5446: string
@@ -14,7 +15,6 @@ interface T {
   cfbdc781: string
   c3a3a1d2: string
   e51e4582: string
-  c9e6df49: string
 }
 
 const NavBarDemo = () => {
@@ -28,7 +28,6 @@ const NavBarDemo = () => {
       cfbdc781: '清空',
       c3a3a1d2: '购物车',
       e51e4582: '浏览记录',
-      c9e6df49: '自定义导航栏中间内容',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
@@ -39,7 +38,6 @@ const NavBarDemo = () => {
       cfbdc781: '清空',
       c3a3a1d2: '購物車',
       e51e4582: '瀏覽記錄',
-      c9e6df49: '自定義導航欄中間內容',
     },
     'en-US': {
       ce5c5446: 'Basic usage',
@@ -50,7 +48,6 @@ const NavBarDemo = () => {
       cfbdc781: 'empty',
       c3a3a1d2: 'shopping cart',
       e51e4582: 'Browsing history',
-      c9e6df49: 'Customize the middle content of the navigation bar',
     },
   })
   const [tab1value, setTab1value] = useState<string | number>('0')
@@ -59,60 +56,69 @@ const NavBarDemo = () => {
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
         <NavBar
-          title={translated.c38a08ef}
-          leftShow
-          leftText={translated.a74a1fd4}
-          onClickTitle={(e) => alert(translated.b840c88f)}
-          onClickBack={(e) => alert(translated.a74a1fd4)}
-          onClickRight={(e) => alert('icon')}
+          back={
+            <>
+              <Left name="left" color="#979797" />
+              {translated.a74a1fd4}
+            </>
+          }
+          left={<Close width={12} />}
+          right={
+            <span onClick={(e) => Toast.text('icon')}>
+              <Share />
+            </span>
+          }
+          onClickBack={(e) => Toast.text(translated.a74a1fd4)}
         >
-          <i slot="right">
-            <Share />
-          </i>
+          <span onClick={(e) => Toast.text(translated.b840c88f)}>
+            {translated.c38a08ef}
+          </span>
+        </NavBar>
+
+        <NavBar
+          right={
+            <span onClick={(e) => Toast.text(translated.cfbdc781)}>
+              {translated.cfbdc781}
+            </span>
+          }
+          back={<Left name="left" color="#979797" />}
+          onClickBack={(e) => Toast.text(translated.a74a1fd4)}
+        >
+          <span onClick={(e) => Toast.text(translated.b840c88f)}>
+            {translated.e51e4582}
+          </span>
         </NavBar>
         <NavBar
-          title={translated.e51e4582}
-          description={translated.cfbdc781}
-          leftShow
-          onClickTitle={(e) => alert(translated.b840c88f)}
-          onClickBack={(e) => alert(translated.a74a1fd4)}
-          onClickRight={(e) => alert(translated.cfbdc781)}
-        />
-        <NavBar
-          title={translated.c3a3a1d2}
-          description={translated['8dab2f66']}
-          onClickTitle={(e) => alert(translated.b840c88f)}
-          onClickRight={(e) => alert(translated['8dab2f66'])}
-          onClickBack={(e) => alert(translated.a74a1fd4)}
-          onClickIcon={(e) => alert('icon')}
+          back={<Left name="left" color="#979797" />}
+          right={
+            <>
+              <span onClick={(e) => Toast.text(translated['8dab2f66'])}>
+                {translated['8dab2f66']}
+              </span>
+              <MoreX onClick={(e) => Toast.text('icon')} />
+            </>
+          }
+          onClickBack={(e) => Toast.text(translated.a74a1fd4)}
         >
-          <i slot="titleIcon">
+          <span onClick={(e) => Toast.text(translated.b840c88f)}>
+            {translated.c3a3a1d2}
+          </span>
+          <i style={{ marginLeft: '5px' }} onClick={(e) => Toast.text('icon')}>
             <Cart2 />
           </i>
-          <i slot="right">
-            <More />
-          </i>
         </NavBar>
+
         <NavBar
-          title={translated.c38a08ef}
-          leftShow
-          border
-          leftText={translated.a74a1fd4}
-          onClickTitle={(e) => alert(translated.b840c88f)}
-          onClickBack={(e) => alert(translated.a74a1fd4)}
-          onClickRight={(e) => alert('icon')}
-        >
-          <i slot="right">
-            <Share />
-          </i>
-        </NavBar>
-        <h2>{translated.c9e6df49}</h2>
-        <NavBar
-          description={translated['8dab2f66']}
-          onClickTitle={(e) => alert(translated.b840c88f)}
-          onClickRight={(e) => alert(translated['8dab2f66'])}
-          onClickBack={(e) => alert(translated.a74a1fd4)}
-          onClickIcon={(e) => alert('icon')}
+          back={<Left name="left" color="#979797" />}
+          right={
+            <>
+              <span onClick={(e) => Toast.text(translated['8dab2f66'])}>
+                {translated['8dab2f66']}
+              </span>
+              <MoreX onClick={(e) => Toast.text('icon')} />
+            </>
+          }
+          onClickBack={(e) => Toast.text(translated.a74a1fd4)}
         >
           <div slot="content">
             <Tabs

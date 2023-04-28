@@ -1,22 +1,3 @@
-.nut-theme-dark {
-  .nut-elevator {
-    background-color: $dark6;
-    &__list {
-      &__inner {
-        background-color: $dark6;
-      }
-      &__item {
-        color: $dark1;
-        &__code {
-          color: $dark1;
-        }
-      }
-      &__fixed {
-        background-color: $dark6;
-      }
-    }
-  }
-}
 .nut-elevator {
   width: 100%;
   display: block;
@@ -48,15 +29,8 @@
         padding: $elevator-list-item-code-padding;
         font-weight: $elevator-list-item-code-font-weight;
         box-sizing: border-box;
-        &::after {
-          content: ' ';
-          width: $elevator-list-item-code-after-width;
-          height: $elevator-list-item-code-after-height;
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          background-color: $elevator-list-item-code-after-bg-color;
-        }
+        border-bottom: $elevator-list-item-code-border-bottom solid
+          $elevator-list-item-code-border-bottom-color;
       }
       &__name {
         display: flex;
