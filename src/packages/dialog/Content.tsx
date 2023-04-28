@@ -6,11 +6,10 @@ interface ContentProps {
   title: ReactNode
   footer: ReactNode
   footerDirection: string
-  onClick: (e: MouseEvent) => void
 }
 
 export const Content: FunctionComponent<
-  Partial<ContentProps> & Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>
+  Partial<ContentProps> & HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { visible, title, footer, footerDirection, onClick, children } = props
 

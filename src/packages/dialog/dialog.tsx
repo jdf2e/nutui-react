@@ -26,7 +26,7 @@ const defaultProps = {
   disableConfirmButton: false,
   cancelAutoClose: true,
   footerDirection: 'horizontal',
-  lockScroll: false,
+  lockScroll: true,
 } as DialogProps
 
 const BaseDialog: ForwardRefRenderFunction<

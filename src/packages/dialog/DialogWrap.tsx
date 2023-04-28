@@ -13,7 +13,6 @@ interface DialogWrapProps extends OverlayProps {
   footer: React.ReactNode
   onCancel: () => void
   onClose: () => void
-  onClick: (e: MouseEvent) => void
   onClickOverlay: (e: MouseEvent) => boolean | void
 }
 
@@ -24,14 +23,13 @@ const defaultDialogProps = {
   overlayClassName: '',
   onCancel: () => {},
   onClose: () => {},
-  onClick: (e: MouseEvent) => {},
   onClickOverlay: (e: MouseEvent) => true,
   ...defaultOverlayProps,
 } as DialogWrapProps
 
 export const DialogWrap: FunctionComponent<
   Partial<DialogWrapProps> &
-    Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content' | 'onClick'>
+    Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content'>
 > = (props) => {
   const {
     visible,
