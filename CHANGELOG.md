@@ -1,3 +1,15 @@
+# v2.0.0-alpha.3
+`2023-04-28`
+
+* :bug: fix: overlay 属性 onClick 暴露、lockscroll 相关demo 修订 (#959) @xiaoyatong
+* :bug: fix: 修改taro增加主题编译 (#950) @junjun666
+* 🛠 refactor: dialog (#945) @xiaoyatong
+* 🛠 refactor: switch (#941) @拧巴的猫
+* 🛠 refactor: tabs (#939) @oasis-cloud
+* 🔨 chore: website 2.0 (#955) @oasis-cloud
+* 📖 docs: button 文档表格优化 (#956) @oasis-cloud
+
+
 # v2.0.0-alpha.2
 `2023-04-26`
 
