@@ -15,9 +15,8 @@ const defaultProps = {
   hideConfirmButton: false,
   hideCancelButton: false,
   disableConfirmButton: false,
-  cancelAutoClose: true,
   footerDirection: 'horizontal',
-  lockScroll: false,
+  lockScroll: true,
 } as DialogProps
 
 export const BaseDialog = forwardRef(
@@ -37,13 +36,14 @@ export const BaseDialog = forwardRef(
       hideCancelButton,
       lockScroll,
       disableConfirmButton,
-      cancelAutoClose,
       closeOnOverlayClick,
       confirmText,
       cancelText,
       onClose,
       onCancel,
       onConfirm,
+      beforeCancel,
+      beforeClose,
       ...restProps
     } = props
     const classPrefix = 'nut-dialog'
@@ -53,7 +53,8 @@ export const BaseDialog = forwardRef(
 
       const handleCancel = (e: MouseEvent) => {
         e.stopPropagation()
-        if (!cancelAutoClose) return
+        if (!beforeCancel?.()) return
+        if (!beforeClose?.()) return
         onClose?.()
         onCancel?.()
       }
@@ -64,36 +65,36 @@ export const BaseDialog = forwardRef(
         onConfirm?.(e)
       }
 
-      const footerContent = footer || (
-        <>
-          {!hideCancelButton && (
-            <Button
-              size="small"
-              fill="outline"
-              type="primary"
-              className={`${classPrefix}__footer-cancel`}
-              onClick={(e) => handleCancel(e)}
-            >
-              {cancelText || locale.cancel}
-            </Button>
-          )}
-          {!hideConfirmButton && (
-            <Button
-              size="small"
-              type="primary"
-              className={classNames(`${classPrefix}__footer-ok`, {
-                disabled: disableConfirmButton,
-              })}
-              disabled={disableConfirmButton}
-              onClick={(e) => handleOk(e)}
-            >
-              {confirmText || locale.confirm}
-            </Button>
-          )}
-        </>
+      return (
+        footer || (
+          <>
+            {!hideCancelButton && (
+              <Button
+                size="small"
+                fill="outline"
+                type="primary"
+                className={`${classPrefix}__footer-cancel`}
+                onClick={(e) => handleCancel(e)}
+              >
+                {cancelText || locale.cancel}
+              </Button>
+            )}
+            {!hideConfirmButton && (
+              <Button
+                size="small"
+                type="primary"
+                className={classNames(`${classPrefix}__footer-ok`, {
+                  disabled: disableConfirmButton,
+                })}
+                disabled={disableConfirmButton}
+                onClick={(e) => handleOk(e)}
+              >
+                {confirmText || locale.confirm}
+              </Button>
+            )}
+          </>
+        )
       )
-
-      return footerContent
     }
 
     return (

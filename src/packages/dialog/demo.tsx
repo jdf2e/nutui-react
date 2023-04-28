@@ -14,6 +14,7 @@ interface T {
   title3: string
   title4: string
   title5: string
+  title6: string
   content: string
   tips: string
   confirmText: string
@@ -34,6 +35,7 @@ const DialogDemo = () => {
       title3: '底部 Footer 为 Button 时，点击遮罩不关闭',
       title4: '打开弹框 3s 后调用关闭方法',
       title5: '打开弹框 3s 后更新弹框内容',
+      title6: '点击取消时，拦截',
       content: '支持函数调用和组件调用两种方式。',
       confirmText: '确定',
       cancelText: '取消',
@@ -51,6 +53,7 @@ const DialogDemo = () => {
       title4: 'after opened the dialog for 3 seconds, call close method',
       title5:
         'after opened the dialog for 3 seconds, update the content of the dialog',
+      title6: 'Stop it when click cancel button',
       content: 'Function call and template call are supported.',
       confirmText: 'confirm',
       cancelText: 'cancel',
@@ -62,6 +65,7 @@ const DialogDemo = () => {
   const [visible3, setVisible3] = useState(false)
   const [visible4, setVisible4] = useState(false)
   const [visible5, setVisible5] = useState(false)
+  const [visible6, setVisible6] = useState(false)
 
   return (
     <>
@@ -136,8 +140,27 @@ const DialogDemo = () => {
             }, 3000)
           }}
         />
+        <Cell
+          title={translated.title6}
+          onClick={() => {
+            Dialog.alert({
+              title: translated.title6,
+              content: translated.content,
+              closeOnOverlayClick: false,
+              beforeCancel: () => {
+                console.log('stop close')
+                return false
+              },
+            })
+          }}
+        />
         <h2>{translated.title1}</h2>
-        <Cell title={translated.basic} onClick={() => setVisible1(true)} />
+        <Cell
+          title={translated.basic}
+          onClick={() => {
+            setVisible1(true)
+          }}
+        />
         <Dialog
           title={translated.title1}
           visible={visible1}
@@ -184,6 +207,21 @@ const DialogDemo = () => {
           footer={null}
           onClose={() => {
             setVisible3(false)
+          }}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell title={translated.title6} onClick={() => setVisible6(true)} />
+        <Dialog
+          title={translated.title2}
+          visible={visible6}
+          closeOnOverlayClick={false}
+          beforeCancel={() => {
+            console.log('stop close')
+            return false
+          }}
+          onClose={() => {
+            setVisible6(false)
           }}
         >
           {translated.content}

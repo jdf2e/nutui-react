@@ -1,8 +1,4 @@
-import React, {
-  ForwardRefRenderFunction,
-  HTMLAttributes,
-  forwardRef,
-} from 'react'
+import React, { ForwardRefRenderFunction, forwardRef } from 'react'
 import classNames from 'classnames'
 import Button from '@/packages/button'
 import confirm from './Confirm'
@@ -24,15 +20,14 @@ const defaultProps = {
   hideConfirmButton: false,
   hideCancelButton: false,
   disableConfirmButton: false,
-  cancelAutoClose: true,
   footerDirection: 'horizontal',
   lockScroll: true,
 } as DialogProps
 
-const BaseDialog: ForwardRefRenderFunction<
-  unknown,
-  Partial<DialogProps> & HTMLAttributes<HTMLDivElement>
-> = (props, ref) => {
+const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
+  props,
+  ref
+) => {
   const { locale } = useConfig()
   const {
     visible,
@@ -41,13 +36,14 @@ const BaseDialog: ForwardRefRenderFunction<
     hideCancelButton,
     lockScroll,
     disableConfirmButton,
-    cancelAutoClose,
     closeOnOverlayClick,
     confirmText,
     cancelText,
     onClose,
     onCancel,
     onConfirm,
+    beforeCancel,
+    beforeClose,
     ...restProps
   } = props
   const classPrefix = 'nut-dialog'
@@ -57,7 +53,8 @@ const BaseDialog: ForwardRefRenderFunction<
 
     const handleCancel = (e: MouseEvent) => {
       e.stopPropagation()
-      if (!cancelAutoClose) return
+      if (!beforeCancel?.()) return
+      if (!beforeClose?.()) return
       onClose?.()
       onCancel?.()
     }
@@ -68,36 +65,36 @@ const BaseDialog: ForwardRefRenderFunction<
       onConfirm?.(e)
     }
 
-    const footerContent = footer || (
-      <>
-        {!hideCancelButton && (
-          <Button
-            size="small"
-            fill="outline"
-            type="primary"
-            className={`${classPrefix}__footer-cancel`}
-            onClick={(e) => handleCancel(e)}
-          >
-            {cancelText || locale.cancel}
-          </Button>
-        )}
-        {!hideConfirmButton && (
-          <Button
-            size="small"
-            type="primary"
-            className={classNames(`${classPrefix}__footer-ok`, {
-              disabled: disableConfirmButton,
-            })}
-            disabled={disableConfirmButton}
-            onClick={(e) => handleOk(e)}
-          >
-            {confirmText || locale.confirm}
-          </Button>
-        )}
-      </>
+    return (
+      footer || (
+        <>
+          {!hideCancelButton && (
+            <Button
+              size="small"
+              fill="outline"
+              type="primary"
+              className={`${classPrefix}__footer-cancel`}
+              onClick={(e) => handleCancel(e)}
+            >
+              {cancelText || locale.cancel}
+            </Button>
+          )}
+          {!hideConfirmButton && (
+            <Button
+              size="small"
+              type="primary"
+              className={classNames(`${classPrefix}__footer-ok`, {
+                disabled: disableConfirmButton,
+              })}
+              disabled={disableConfirmButton}
+              onClick={(e) => handleOk(e)}
+            >
+              {confirmText || locale.confirm}
+            </Button>
+          )}
+        </>
+      )
     )
-
-    return footerContent
   }
 
   return (

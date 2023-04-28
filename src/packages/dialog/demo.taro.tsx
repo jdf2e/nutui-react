@@ -12,6 +12,7 @@ interface T {
   title1: string
   title2: string
   title3: string
+  title6: string
   content: string
   tips: string
   confirmText: string
@@ -29,6 +30,7 @@ const DialogDemo = () => {
       title1: '标签式使用',
       title2: '无底部 Footer 区域',
       title3: '底部 Footer 为 Button 时，点击遮罩不关闭',
+      title6: '点击取消时，拦截',
       content: '这里是弹框内容',
       confirmText: '确定',
       cancelText: '取消',
@@ -42,6 +44,7 @@ const DialogDemo = () => {
       title1: 'Template use',
       title2: 'no Footer',
       title3: 'Footer Button, and does not close when click overlay',
+      title6: 'Stop it when click cancel button',
       content: 'Function call and template call are supported.',
       confirmText: 'confirm',
       cancelText: 'cancel',
@@ -54,6 +57,7 @@ const DialogDemo = () => {
   const [visible4, setVisible4] = useState(false)
   const [visible5, setVisible5] = useState(false)
   const [visible6, setVisible6] = useState(false)
+  const [visible7, setVisible7] = useState(false)
 
   return (
     <>
@@ -116,6 +120,21 @@ const DialogDemo = () => {
           footer={null}
           onClose={() => {
             setVisible6(false)
+          }}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell title={translated.title6} onClick={() => setVisible7(true)} />
+        <Dialog
+          title={translated.title2}
+          visible={visible7}
+          closeOnOverlayClick={false}
+          beforeCancel={() => {
+            console.log('stop close')
+            return false
+          }}
+          onClose={() => {
+            setVisible7(false)
           }}
         >
           {translated.content}

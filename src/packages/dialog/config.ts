@@ -1,9 +1,4 @@
-import {
-  CSSProperties,
-  ReactNode,
-  ForwardRefExoticComponent,
-  PropsWithChildren,
-} from 'react'
+import { ReactNode, ForwardRefExoticComponent, PropsWithChildren } from 'react'
 
 export type DialogConfigType = {
   prefixCls?: string
@@ -11,8 +6,6 @@ export type DialogConfigType = {
 }
 
 export interface BasicDialogProps {
-  className?: string
-  style?: CSSProperties
   visible?: boolean
   title?: ReactNode
   content?: ReactNode
@@ -24,9 +17,10 @@ export interface BasicDialogProps {
   hideCancelButton?: boolean
   disableConfirmButton?: boolean
   closeOnOverlayClick?: boolean
-  cancelAutoClose?: boolean
   footerDirection?: string
   lockScroll?: boolean
+  beforeClose?: () => void
+  beforeCancel?: () => void
   onClose?: () => void
   onConfirm?: (e?: MouseEvent) => Promise<() => void> | void
   onCancel?: () => void

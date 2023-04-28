@@ -175,6 +175,7 @@
 - 修改 okBtnDisabled 为 disableConfirmButton，初始值不变，依然表示是否禁用确认按钮，主要是为了语义化更强。
 - 删除 noFooter，使用 footer 统一处理，当 footer 为空时，及可替代该值。目前 noFooter 也需要手动声明是否为 noFooter；修改后需手动指出 footer={null}
 - 删除 textAlign，改用样式变量 --nutui-dialog-content-text-align 或 SCSS 变量 $dialog-content-text-align 控制，默认值为 center。
+- 删除 `cancelAutoClose`，改为 `beforeCancel` 和 `beforeClose` 来实现，在点击关闭或取消时，可先触发这两个方法，以确定是否要关闭弹框，如返回true，则关闭；否则不关闭。
 - 修改 onOk 为 onConfirm，规范命名。
 - 修改 onClosed 为 onClose，规范命名，关闭时触发。
 - 修改 onClickSelf 为 onClick，语义不变，仍表示点击弹框自身时触发事件。
