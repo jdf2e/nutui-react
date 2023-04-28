@@ -112,7 +112,21 @@
 #### SideNavBar
 #### Tabbar
 #### Tabs
-
+- 删除 background，通过 className 或 style 控制
+- 删除 titleScroll
+- 删除 ellipsis，默认 flex：1
+- 删除 size，通过 css 变量 --nutui-tabs-titles-item-font-size 实现
+- animatedTime 重命名为 duration
+- titleGutter 重命名为 css 样式变量实现
+- titleNode 重命名为 title
+- color 重命名为 activeColor
+- type 重命名为 activeType
+- leftAlign 重命名为 align
+- onClick 类型改为 (index: string | number) => void
+- onChange 类型改为 (index: string | number) => void
+- 增加 defaultValue
+#### Tabs.Tabpane
+- paneKey 重命名为 value
 ### 数据录入
 #### Calendar
 #### Cascader

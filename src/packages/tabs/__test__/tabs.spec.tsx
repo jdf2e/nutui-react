@@ -15,16 +15,8 @@ test('base Tabs', () => {
 
 test('base tabs props', () => {
   const { container } = render(
-    <Tabs
-      value="0"
-      background="#f5f5f5"
-      color="#f5f5f5"
-      direction="horizontal"
-      type="smile"
-      size="large"
-      titleScroll
-    >
-      <TabPane title="Tab 1" paneKey="0">
+    <Tabs value="0" direction="horizontal" activeType="smile">
+      <TabPane title="Tab 1" value="0">
         {' '}
         Tab 1{' '}
       </TabPane>
@@ -32,19 +24,17 @@ test('base tabs props', () => {
   )
 
   const el: Element | null = container.querySelector('.nut-tabs__titles')
-  const el2 = container.querySelectorAll('.horizontal')
+  const el2 = container.querySelectorAll('.nut-tabs--horizontal')
   const el3 = container.querySelectorAll('.nut-tabs__titles')[0]
 
-  expect(el).toHaveAttribute('style', 'background: rgb(245, 245, 245);')
   expect(el2.length > 0).toBe(true)
-  expect(el3).toHaveClass('smile')
-  expect(el3).toHaveClass('large')
-  expect(el3).toHaveClass('scrollable')
+  expect(el3).toHaveClass('nut-tabs__titles--smile')
+  expect(el3).toHaveClass('nut-tabs__titles--scrollable')
 })
 
 test('base other props', () => {
   const { container } = render(
-    <Tabs animatedTime={500} titleGutter="20px">
+    <Tabs duration={500}>
       <TabPane title="Tab 1"> Tab 1 </TabPane>
     </Tabs>
   )
@@ -66,15 +56,15 @@ test('base other props', () => {
 test('base Tabpane Props', () => {
   const { container } = render(
     <Tabs value="0">
-      <TabPane title="Tab 1" paneKey="0">
+      <TabPane title="Tab 1" value="0">
         {' '}
         Tab 1{' '}
       </TabPane>
-      <TabPane title="Tab 2" paneKey="1" disabled>
+      <TabPane title="Tab 2" value="1" disabled>
         {' '}
         Tab 2{' '}
       </TabPane>
-      <TabPane title="Tab 3" paneKey="2">
+      <TabPane title="Tab 3" value="2">
         {' '}
         Tab 3{' '}
       </TabPane>
@@ -84,8 +74,8 @@ test('base Tabpane Props', () => {
   const el = container.querySelectorAll('.nut-tabs__titles-item')
   const el2 = container.querySelectorAll('.nut-tabs__titles-item__text')
   expect(el.length === 3).toBe(true)
-  expect(el[0]).toHaveClass('active')
-  expect(el[1]).toHaveClass('disabled')
+  expect(el[0]).toHaveClass('nut-tabs__titles-item--active')
+  expect(el[1]).toHaveClass('nut-tabs__titles-item--disabled')
   expect(el2[0]).toHaveTextContent('Tab 1')
 })
 
@@ -93,15 +83,15 @@ test('base click', () => {
   const handleClick = jest.fn(() => {})
   const { container } = render(
     <Tabs value="0" onClick={handleClick}>
-      <TabPane title="Tab 1" paneKey="0">
+      <TabPane title="Tab 1" value="0">
         {' '}
         Tab 1{' '}
       </TabPane>
-      <TabPane title="Tab 2" paneKey="1">
+      <TabPane title="Tab 2" value="1">
         {' '}
         Tab 2{' '}
       </TabPane>
-      <TabPane title="Tab 3" paneKey="2">
+      <TabPane title="Tab 3" value="2">
         {' '}
         Tab 3{' '}
       </TabPane>
