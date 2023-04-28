@@ -2,10 +2,12 @@ import React, {
   FunctionComponent,
   useState,
   useRef,
-  useEffect,
   useLayoutEffect,
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
+import classNames from 'classnames'
+
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type Direction = 'start' | 'end' | 'middle'
 type EllipsisedValue = {
@@ -13,7 +15,7 @@ type EllipsisedValue = {
   tailing?: string | undefined
 }
 
-export interface EllipsisProps {
+export interface EllipsisProps extends BasicComponent {
   content: string
   direction: string
   rows: number | string
@@ -25,6 +27,7 @@ export interface EllipsisProps {
   onChange: (type: string) => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   content: '',
   direction: 'end',
   rows: 1,
@@ -33,6 +36,8 @@ const defaultProps = {
   symbol: '...',
   lineHeight: '20',
 } as EllipsisProps
+
+const classPrefix = `nut-ellipsis`
 export const Ellipsis: FunctionComponent<
   Partial<EllipsisProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onChange'>
@@ -41,6 +46,7 @@ export const Ellipsis: FunctionComponent<
   const {
     children,
     content,
+    className,
     direction,
     rows,
     expandText,
@@ -49,6 +55,7 @@ export const Ellipsis: FunctionComponent<
     lineHeight,
     onClick,
     onChange,
+    ...rest
   } = { ...defaultProps, ...props }
   let container: any = null
   let maxHeight: any = 0 // 当行的最大高度
@@ -57,11 +64,9 @@ export const Ellipsis: FunctionComponent<
   const ellipsis = useRef<EllipsisedValue>()
   const root = useRef<HTMLDivElement>(null)
 
-  useLayoutEffect(() => {
-    createContainer()
-  }, [])
+  const classes = classNames(classPrefix, className)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (content) {
       createContainer()
     }
@@ -219,7 +224,7 @@ export const Ellipsis: FunctionComponent<
     onClick && onClick()
   }
   return (
-    <div className="nut-ellipsis" onClick={handleClick} ref={root}>
+    <div className={classes} onClick={handleClick} ref={root} {...rest}>
       <div>
         {!exceeded ? content : null}
         {exceeded && !expanded ? (
