@@ -147,8 +147,7 @@
 #### PullToRefresh
 #### Swipe
 #### 
-- 删除 `isAsync`
-- 优化新增 `checked`和 `defaultChecked` , 增加默认值和受控
+- 删除 `isAsync`, 优化新增 `checked`和 `defaultChecked` , 增加默认值和受控
 - 删除 `activeColor` 和 `inactiveColor`, 通过css变量实现
 #### Toast
 
