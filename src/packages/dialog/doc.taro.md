@@ -30,6 +30,7 @@ const App = () => {
   const [visible4, setVisible4] = useState(false)
   const [visible5, setVisible5] = useState(false)
   const [visible6, setVisible6] = useState(false)
+  const [visible7, setVisible7] = useState(false);
 
   return (
     <>
@@ -94,6 +95,21 @@ const App = () => {
       footer={null}
       onClose={() => {
         setVisible6(false)
+      }}
+    >
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+    </Dialog>
+    <Cell title="点击取消时，拦截" onClick={() => setVisible7(true)} />
+    <Dialog 
+      title="点击取消时，拦截"
+      visible={visible7}
+      closeOnOverlayClick={false}
+      beforeCancel={() => {
+        console.log('stop close')
+        return false
+      }}
+      onClose={() => {
+        setVisible7(false)
       }}
     >
       如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。

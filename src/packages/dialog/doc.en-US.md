@@ -99,6 +99,7 @@ import { Cell,Dialog } from '@nutui/nutui-react';
 const App = () => {
   const [visible1, setVisible1] = useState(false);
   const [visible2, setVisible2] = useState(false);
+  const [visible3, setVisible3] = useState(false);
   return (
     <>
     <Cell title="Basic bullet" onClick={() => setVisible1(true)} />
@@ -119,6 +120,21 @@ const App = () => {
         onCancel={() => setVisible2(false)}
     >
         If you need to embed the component or other custom content in the pop -up window, you can use the Module Call method.
+    </Dialog>
+    <Cell title="Stop it when click cancel button" onClick={() => setVisible3(true)} />
+    <Dialog 
+      title="Stop it when click cancel button"
+      visible={visible3}
+      closeOnOverlayClick={false}
+      beforeCancel={() => {
+        console.log('stop close')
+        return false
+      }}
+      onClose={() => {
+        setVisible3(false)
+      }}
+    >
+      If you need to embed the component or other custom content in the pop -up window, you can use the Module Call method.
     </Dialog>
     </>
   )

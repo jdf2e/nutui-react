@@ -102,6 +102,7 @@ import { Cell,Dialog } from '@nutui/nutui-react';
 const App = () => {
   const [visible1, setVisible1] = useState(false);
   const [visible2, setVisible2] = useState(false);
+  const [visible3, setVisible3] = useState(false);
   return (
     <>
     <Cell title="基础弹框" onClick={() => setVisible1(true)} />
@@ -142,6 +143,21 @@ const App = () => {
       footer={null}
       onClose={() => {
         setVisible2(false)
+      }}
+    >
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+    </Dialog>
+    <Cell title="点击取消时，拦截" onClick={() => setVisible3(true)} />
+    <Dialog 
+      title="点击取消时，拦截"
+      visible={visible3}
+      closeOnOverlayClick={false}
+      beforeCancel={() => {
+        console.log('stop close')
+        return false
+      }}
+      onClose={() => {
+        setVisible3(false)
       }}
     >
       如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
