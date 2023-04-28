@@ -8,12 +8,14 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { AvatarContext } from '@/packages/avatargroup/AvatarContext'
+import { My } from '@nutui/icons-react'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface AvatarProps extends BasicComponent {
   size: string
   icon: React.ReactNode
+  fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   shape: AvatarShape
   bgColor: string
   color: string
@@ -34,6 +36,7 @@ const defaultProps = {
   bgColor: '#eee',
   color: '#666',
   prefixCls: 'nut-avatar',
+  fit: 'cover',
   src: '',
   alt: '',
 } as AvatarProps
@@ -52,6 +55,7 @@ export const Avatar: FunctionComponent<
     src,
     alt,
     icon,
+    fit,
     className,
     style,
     onClick,
@@ -156,6 +160,7 @@ export const Avatar: FunctionComponent<
                   className="avatar-img"
                   src={src}
                   alt={alt}
+                  style={{ objectFit: fit }}
                   onError={errorEvent}
                 />
               )}
@@ -166,6 +171,7 @@ export const Avatar: FunctionComponent<
                   })
                 : null}
               {children && <span className="text">{children}</span>}
+              {!src && !icon && !children && <My className="icon" />}
             </>
           )}
           {/* 折叠头像 */}

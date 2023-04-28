@@ -229,6 +229,7 @@ export default App;
 | shape                   | The shape of avatar，eg：`square`、`round`           | `'round' \| 'square'`    | `'round'`  |
 | bgColor                 | The colors of Icon and letter types                   | `string`    | `#eee`   |
 | color                   | The background colors of Icon and letter types                     | `string`    | `#666`   |
+| fit | The fill mode of the image | `'contain' \| 'cover' \| 'fill' \| 'none' \| 'scale-down'`    | `'cover'`   |
 | src                     | The address of the image for an image avatar or image element       | `string`    | `''`       |
 | alt                     | This attribute defines the alternative text describing the image    | `string`    | `''` |
 | icon                    | Custom icon type for an icon avatar  | `ReactNode` | `-` |

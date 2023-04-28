@@ -249,6 +249,7 @@ export default App;
 | shape | 设置头像的形状 | `'round' \| 'square'`    | `'round'`  |
 | bgColor | 设置 Icon、字符类型头像的背景色 | `string`    | `#eee`   |
 | color | 设置 Icon、字符类型头像的颜色 | `string`    | `#666`   |
+| fit | 图片填充模式 | `'contain' \| 'cover' \| 'fill' \| 'none' \| 'scale-down'`    | `'cover'`   |
 | src | 设置图片类型头像的地址 | `string`    | `''`       |
 | alt | 设置图片类型头像无法显示时的替代文本 | `string`    | `''` |
 | icon | 设置 Icon 类型头像图标  | `ReactNode` | `-` |

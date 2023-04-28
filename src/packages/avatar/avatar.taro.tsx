@@ -9,6 +9,7 @@ import React, {
 import classNames from 'classnames'
 import { Image } from '@tarojs/components'
 import { AvatarContext } from '@/packages/avatargroup/AvatarContext'
+import { My } from '@nutui/icons-react-taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -18,6 +19,7 @@ export interface AvatarProps extends BasicComponent {
   shape: AvatarShape
   bgColor: string
   color: string
+  fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   prefixCls: string
   src: string
   onClick: (e: MouseEvent) => void
@@ -31,6 +33,7 @@ const defaultProps = {
   size: '',
   shape: 'round',
   icon: '',
+  fit: 'cover',
   bgColor: '#eee',
   color: '#666',
   prefixCls: 'nut-avatar',
@@ -50,6 +53,7 @@ export const Avatar: FunctionComponent<
     color,
     src,
     icon,
+    fit,
     className,
     style,
     onClick,
@@ -151,7 +155,12 @@ export const Avatar: FunctionComponent<
             avatarIndex <= parent?.propAvatarGroup?.max) && (
             <>
               {src && (
-                <Image className="avatar-img" src={src} onError={errorEvent} />
+                <Image
+                  className="avatar-img"
+                  src={src}
+                  style={{ objectFit: fit }}
+                  onError={errorEvent}
+                />
               )}
               {React.isValidElement(icon)
                 ? React.cloneElement<any>(icon, {
@@ -160,6 +169,7 @@ export const Avatar: FunctionComponent<
                   })
                 : null}
               {children && <span className="text">{children}</span>}
+              {!src && !icon && !children && <My className="icon" />}
             </>
           )}
           {/* 折叠头像 */}
