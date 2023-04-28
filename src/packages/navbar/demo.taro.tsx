@@ -148,7 +148,7 @@ const NavBarDemo = () => {
             </Tabs>
           </div>
           <i slot="right">
-            <More />
+            <MoreX />
           </i>
         </NavBar>
       </div>
