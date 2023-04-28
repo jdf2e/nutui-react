@@ -261,14 +261,13 @@ export default App;
 
 ### Props
 
-
-|Parameter | description | type | default value|
-|--------------|----------------------------------|--------|------------------|
-|name | identifier, which can be obtained in the event parameters | number \| string | - |
-|leftaction | contents of the left sliding area | ReactNode | - |
-|rightaction | content of right sliding area | ReactNode | - |
-|beforeclose | the callback function before closing returns `position` which is the direction of the sliding area  | string | `left`|
-|disabled | disable sliding | boolean | `false` |
+| Props                        | Description | Type          | Default&nbsp;&nbsp;&nbsp;&nbsp; |
+|------------------------------|-----------------|---------------|---------------|
+|name | identifier, which can be obtained in the event parameters | `number \| string` | - |
+|leftaction | contents of the left sliding area | `ReactNode` | - |
+|rightaction | content of right sliding area | `ReactNode` | - |
+|beforeclose | the callback function before closing returns `position` which is the direction of the sliding area  | `string` | `left` |
+|disabled | disable sliding | `boolean` | `false` |
 
 ### Events
 
@@ -281,7 +280,7 @@ export default App;
 | onTouchMove`v1.4.7`         | onTouchMove  | `event: Event`     |
 | onTouchEnd`v1.4.7`          | onTouchEnd   | `event: Event`     |
 
-## Ref
+### Ref
 
 | 属性  | 说明                                                         | 回调参数                             |
 | ----- | ------------------------------------------------------------ | ------------------------------------ |

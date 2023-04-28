@@ -252,11 +252,11 @@ export default App;
 
 |參數|說明|類型|預設值|
 |--------------|----------------------------------|--------|------------------|
-| name |識別字，可以在事件參數中獲取到| number \| string | - |
-| leftAction |左側滑動區域的內容| ReactNode | - |
-| rightAction |右側滑動區域的內容| ReactNode | - |
-| beforeClose |關閉前的回呼函數，返回滑動區域所在的方向 `position` | string | `left` |
-| disabled |是否禁用滑動| boolean | `false` |
+| name |識別字，可以在事件參數中獲取到| `number \| string` | - |
+| leftAction |左側滑動區域的內容| `ReactNode` | - |
+| rightAction |右側滑動區域的內容| `ReactNode` | - |
+| beforeClose |關閉前的回呼函數，返回滑動區域所在的方向 `position` | `string` | `left` |
+| disabled |是否禁用滑動| `boolean` | `false` |
 
 ### Events
 
@@ -269,7 +269,7 @@ export default App;
 | onTouchMove`v1.4.7`         | onTouchMove  | `event: Event`     |
 | onTouchEnd`v1.4.7`          | onTouchEnd   | `event: Event`     |
 
-## Ref
+### Ref
 
 | 属性  | 说明                                      | 回调参数                             |
 | ----- | ----------------------------------------- | ------------------------------------ |

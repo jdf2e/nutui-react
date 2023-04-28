@@ -252,11 +252,11 @@ export default App;
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| name | 标识符，可以在事件参数中获取到 | number \| string | - |
-| leftAction | 左侧滑动区域的内容 | ReactNode | - |
-| rightAction | 右侧滑动区域的内容 | ReactNode | - |
+| name | 标识符，可以在事件参数中获取到 | `number \| string` | - |
+| leftAction | 左侧滑动区域的内容 | `ReactNode` | - |
+| rightAction | 右侧滑动区域的内容 | `ReactNode` | - |
 | beforeClose | 关闭前的回调函数，返回滑动区域所在方向 `position` | `left \| right` | `left` |
-| disabled | 是否禁用滑动 | boolean | `false` |
+| disabled | 是否禁用滑动 | `boolean` | `false` |
 
 ### Events
 
@@ -269,7 +269,7 @@ export default App;
 | onTouchMove`v1.4.7`         | onTouchMove  | `event: Event`     |
 | onTouchEnd`v1.4.7`          | onTouchEnd   | `event: Event`     |
 
-## Ref
+### Ref
 
 | 属性  | 说明                                      | 回调参数                             |
 | ----- | ----------------------------------------- | ------------------------------------ |
