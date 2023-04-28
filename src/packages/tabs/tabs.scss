@@ -42,13 +42,17 @@
 
 .nut-tabs__titles-item {
   position: relative;
-  font-size: $tabs-titles-item-font-size;
   min-width: $tabs-horizontal-titles-item-min-width;
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
-  flex: 1 0 auto;
+  margin: 0 $nut-tabs-title-gap;
+  font-size: $tabs-titles-item-font-size;
   color: $tabs-titles-item-color;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .nut-tabs__titles-item--left,
@@ -58,10 +62,6 @@
 
 .nut-tabs__titles-item__text {
   text-align: center;
-
-  &.ellipsis {
-    @include oneline-ellipsis();
-  }
 }
 
 .nut-tabs__titles-item__smile,

@@ -83,12 +83,12 @@ const TabsDemo = () => {
     {
       title: translated.custom1,
       value: 'c1',
-      icon: <Dongdong />,
+      icon: <Dongdong style={{ marginRight: '10px' }} />,
     },
     {
       title: translated.custom2,
       value: 'c2',
-      icon: <Jd />,
+      icon: <Jd style={{ marginRight: '10px' }} />,
     },
     {
       title: translated.custom3,

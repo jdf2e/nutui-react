@@ -88,8 +88,8 @@
 #### Tabs
 - 删除 background，通过 className 或 style 控制
 - 删除 titleScroll
-- 删除 ellipsis
-- 删除 size，通过 css 变量实现
+- 删除 ellipsis，默认 flex：1
+- 删除 size，通过 css 变量 --nutui-tabs-titles-item-font-size 实现
 - animatedTime 重命名为 duration
 - titleGutter 重命名为 css 样式变量实现
 - titleNode 重命名为 title

@@ -578,4 +578,27 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value | | --- | -- | --- | | --nutui-tabs-tab-smile-color | The color of the smile curve | `$primary-color` | | --nutui-tabs-titles-background-color | Tab title background color | `$background-color` | | --nutui-tabs-titles-border-radius | Tab title border rounded | `0` | | --nutui-tabs-titles-item-font-size | Tab title font size | `$font-size-2` | | --nutui-tabs-titles-item-color | Tab title text color | `$title-color` | | --nutui-tabs-titles-item-active-color | Tab selected titles text color | `$title-color` | | --nutui-tabs-titles-item-active-font-weight | Tab selected titles font weight | `600` | | --nutui-tabs-horizontal-tab-line-color | Horizontal line color | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`| | --nutui-tabs-horizontal-line-bottom | Horizontal line distance | `15%` | | --nutui-tabs-horizontal-line-border-radius | rounded corners for horizontal lines | `0px`| | --nutui-tabs-horizontal-tab-line-opacity | Opacity of horizontal tabs | `1`| | --nutui-tabs-horizontal-titles-height | height of titles in horizontal direction | `46px` | | --nutui-tabs-horizontal-titles-item-min-width | Minimum width of horizontal titles | `50px` | | --nutui-tabs-horizontal-titles-item-active-background-color | Background color of active tab titles in horizontal direction | `$background-color3` | | --nutui-tabs-horizontal-titles-item-active-line-width | Horizontal active tab line width | `40px` | | --nutui-tabs-horizontal-titles-item-active-line-height | Height of active tabs line in horizontal direction | `3px` | | --nutui-tabs-vertical-tab-line-color | vertical line color | `linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`| | --nutui-tabs-vertical-titles-item-height | height of vertical titles | `40px` | | --nutui-tabs-vertical-titles-item-active-line-width | Vertical title line width | `3px` | | --nutui-tabs-vertical-titles-item-active-line-height | The height of the vertical title line | `14px` | | --nutui-tabs-vertical-titles-width | Width of vertical titles | `100px` |
+| Name | Description | Default |
+| --- | -- | --- |
+| --nutui-tabs-tab-smile-color | The color of the smile curve | `$primary-color` |
+| --nutui-tabs-titles-background-color | Tab title background color | `$background-color` |
+| --nutui-tabs-titles-border-radius | Tab title border rounded | `0` |
+| --nutui-tabs-titles-item-font-size | Tab title font size | `$font-size-2` |
+| --nutui-tabs-titles-item-color | Tab title text color | `$title-color` |
+| --nutui-tabs-title-gap | Tab title margin | `0px` |
+| --nutui-tabs-titles-item-active-color | Tab selected titles text color | `$title-color` |
+| --nutui-tabs-titles-item-active-font-weight | Tab selected titles font weight | `600` |
+| --nutui-tabs-horizontal-tab-line-color | Horizontal line color | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
+| --nutui-tabs-horizontal-line-bottom | Horizontal line distance | `15%` |
+| --nutui-tabs-horizontal-line-border-radius | rounded corners for horizontal lines | `0px`|
+| --nutui-tabs-horizontal-tab-line-opacity | Opacity of horizontal tabs | `1`|
+| --nutui-tabs-horizontal-titles-height | height of titles in horizontal direction | `46px` |
+| --nutui-tabs-horizontal-titles-item-min-width | Minimum width of horizontal titles | `50px` |
+| --nutui-tabs-horizontal-titles-item-active-background-color | Background color of active tab titles in horizontal direction | `$background-color3` |
+| --nutui-tabs-horizontal-titles-item-active-line-width | Horizontal active tab line width | `40px` |
+| --nutui-tabs-horizontal-titles-item-active-line-height | Height of active tabs line in horizontal direction | `3px` |
+| --nutui-tabs-vertical-tab-line-color | vertical line color | `linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
+| --nutui-tabs-vertical-titles-item-height | height of vertical titles | `40px` |
+| --nutui-tabs-vertical-titles-item-active-line-width | Vertical title line width | `3px` |
+| --nutui-tabs-vertical-titles-item-active-line-height | The height of the vertical title line | `14px` |
+| --nutui-tabs-vertical-titles-width | Width of vertical titles | `100px` |
