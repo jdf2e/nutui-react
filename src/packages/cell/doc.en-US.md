@@ -106,7 +106,7 @@ import { CellGroup, Cell, Switch } from '@nutui/nutui-react'
 const App = () => {
   return (
     <CellGroup title="Customize the right arrow area">
-      <Cell title="Switch" extra={<Switch checked />} />
+      <Cell title="Switch" extra={<Switch defaultChecked />} />
     </CellGroup>
   )
 }

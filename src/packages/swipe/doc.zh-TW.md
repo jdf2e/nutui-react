@@ -179,7 +179,7 @@ const App = () => {
     Dialog.alert({
       title: '提示',
       content: postion === 'left' ? '確定選擇嗎？' : '確定删除嗎？',
-      onOk: () => {
+      onConfirm: () => {
         refDom.current && refDom.current.close()
       },
     })
