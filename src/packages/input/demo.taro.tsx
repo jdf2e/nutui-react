@@ -38,6 +38,7 @@ const InputDemo = () => {
       withForm: '配合表单使用',
       text1: '文本',
       password1: '带密码可见',
+      wordCount: '字数统计',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -70,11 +71,13 @@ const InputDemo = () => {
       withForm: 'With Form',
       text1: 'Text',
       password1: 'Visible with password',
+      wordCount: 'Word count',
     },
   })
   const formatter = (value: string) => value.replace(/\d/g, '')
   const [val, setVal] = useState('NutUI React')
   const [inputType, setInputType] = useState('password')
+  const [currentLength, setCurrentLength] = useState(0)
 
   return (
     <>
@@ -104,6 +107,24 @@ const InputDemo = () => {
         <h2>{translated.title3}</h2>
         <Input clearable placeholder={translated.clear} />
         <Input clearable clearIcon={<Close />} placeholder={translated.clear} />
+        <h2>{translated.wordCount}</h2>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            background: '#fff',
+            padding: '0 10px',
+          }}
+        >
+          <Input
+            type="text"
+            maxLength={20}
+            onChange={(val) => setCurrentLength(val.length)}
+          />
+          <div className="right" style={{ fontSize: '12px' }}>
+            {currentLength} / 20
+          </div>
+        </div>
         <h2>{translated.password1}</h2>
         <div
           style={{
