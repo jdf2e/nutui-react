@@ -113,6 +113,7 @@
 - visible 重命名为 defaultValue，非受控
 - activeVisible 重命名为 value，受控
 - 移除 num，支持传入 Badge Props
+- TabbarItem 使用方式修改为 Tabbar.Item
 #### Tabs
 
 ### 数据录入

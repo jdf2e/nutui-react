@@ -1,7 +1,8 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
+import TabbarItem from '../tabbaritem/index.taro'
 
 export interface TabbarProps extends BasicComponent {
   defaultValue: number
@@ -25,7 +26,9 @@ const defaultProps = {
   onSwitch: (value) => {},
 } as TabbarProps
 
-export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
+export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
+  Item: typeof TabbarItem
+} = (props) => {
   const {
     children,
     defaultValue,
@@ -86,3 +89,4 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
 
 Tabbar.defaultProps = defaultProps
 Tabbar.displayName = 'NutTabbar'
+Tabbar.Item = TabbarItem

@@ -8,7 +8,7 @@
 
 ```ts
 // react
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
+import { Tabbar } from '@nutui/nutui-react';
 ```
 
 ## 代码演示
@@ -18,16 +18,16 @@ import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 :::demo
 ```tsx
 import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import {  Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
 <Tabbar onSwitch={(value) => {console.log(value)}}>
-    <TabbarItem title="首页" icon={<Home width={18} height={18} />} value={9}/>
-    <TabbarItem title="分类" icon={<Category width={18} height={18} dot />} />
-    <TabbarItem title="发现" icon={<Find width={18} height={18} />} />
-    <TabbarItem title="购物车" icon={<Cart width={18} height={18} />} />
-    <TabbarItem title="我的" icon={<My width={18} height={18} />} />
+    <Tabbar.Item title="首页" icon={<Home width={18} height={18} />} value={9}/>
+    <Tabbar.Item title="分类" icon={<Category width={18} height={18} dot />} />
+    <Tabbar.Item title="发现" icon={<Find width={18} height={18} />} />
+    <Tabbar.Item title="购物车" icon={<Cart width={18} height={18} />} />
+    <Tabbar.Item title="我的" icon={<My width={18} height={18} />} />
   </Tabbar>
 )
 
@@ -39,7 +39,7 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
+import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => {
@@ -52,11 +52,11 @@ const App = () => {
       setActiveIndex(value)
     }}
   >
-    <TabbarItem title="首页" icon={<Home width={20} height={20} />} />
-    <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
-    <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
-    <TabbarItem title="购物车" icon={<Cart width={20} height={20} />} />
-    <TabbarItem title="我的" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="首页" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
+    <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} />
+    <Tabbar.Item title="我的" icon={<My width={20} height={20} />} />
   </Tabbar>
 }
 
@@ -68,16 +68,16 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import {  Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem title="首页" icon={<Home width={12} height={12} />} value={11} />
-    <TabbarItem title="分类" icon={<Category width={12} height={12} />} />
-    <TabbarItem title="发现" icon={<Find width={12} height={12} />} />
-    <TabbarItem title="购物车" icon={<Cart width={12} height={12} />} value={110} />
-    <TabbarItem title="我的" icon={<My width={12} height={12} />} />
+    <Tabbar.Item title="首页" icon={<Home width={12} height={12} />} value={11} />
+    <Tabbar.Item title="分类" icon={<Category width={12} height={12} />} />
+    <Tabbar.Item title="发现" icon={<Find width={12} height={12} />} />
+    <Tabbar.Item title="购物车" icon={<Cart width={12} height={12} />} value={110} />
+    <Tabbar.Item title="我的" icon={<My width={12} height={12} />} />
   </Tabbar>
 )
 
@@ -90,16 +90,16 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
+import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem title="首页" icon={<Home width={20} height={20} />} dot />
-    <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
-    <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
-    <TabbarItem title="购物车" icon={<Cart width={20} height={20} />} dot />
-    <TabbarItem title="我的" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="首页" icon={<Home width={20} height={20} />} dot />
+    <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
+    <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} dot />
+    <Tabbar.Item title="我的" icon={<My width={20} height={20} />} />
   </Tabbar>
 )
 
@@ -112,17 +112,17 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import {  Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 
 const App = () => (
   <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem title="首页" icon={<Home width={20} height={20} />} />
-    <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
-    <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
-    <TabbarItem title="购物车" icon={<Cart width={20} height={20} />} />
-    <TabbarItem title="我的" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="首页" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
+    <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} />
+    <Tabbar.Item title="我的" icon={<My width={20} height={20} />} />
   </Tabbar>
 )
 
@@ -134,14 +134,14 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import {  Tabbar } from '@nutui/nutui-react';
 import { Category, Find, Home } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem title="首页" icon={<Home width={20} height={20} />} />
-    <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
-    <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
+    <Tabbar.Item title="首页" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
   </Tabbar>
 )
 
@@ -153,16 +153,16 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
+import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar fixed>
-    <TabbarItem title="首页" href="" icon={<Home width={20} height={20} />} />
-    <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
-    <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
-    <TabbarItem title="购物车" href="https://m.jd.com" icon={<Cart width={20} height={20} />} />
-    <TabbarItem title="我的" href="/" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="首页" href="" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
+    <Tabbar.Item title="购物车" href="https://m.jd.com" icon={<Cart width={20} height={20} />} />
+    <Tabbar.Item title="我的" href="/" icon={<My width={20} height={20} />} />
   </Tabbar>
 )
 
@@ -184,7 +184,7 @@ export default App;
 | safeArea | 是否开启iphone系列全面屏底部安全区适配 | `boolean` | `false`   |
 | onSwitch | 切换页签时触发事件 | `(value) => void` | - |
 
-## TabbarItem
+## Tabbar.Item
 
 ### Props
 
