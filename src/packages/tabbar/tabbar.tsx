@@ -54,25 +54,27 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
   return (
     <div
       className={classNames(classPrefix, className, {
-        [`${classPrefix}__bottom`]: fixed || safeArea,
-        [`${classPrefix}__safebottom`]: safeArea,
+        [`${classPrefix}__fixed`]: fixed,
       })}
       style={style}
     >
-      {React.Children.map(children, (child, idx) => {
-        if (!React.isValidElement(child)) {
-          return null
-        }
-        const childProps = {
-          ...child.props,
-          active: idx === selectIndex,
-          index: idx,
-          inactiveColor,
-          activeColor,
-          handleClick: setSelectIndex,
-        }
-        return React.cloneElement(child, childProps)
-      })}
+      <div className={`${classPrefix}__wrap`}>
+        {React.Children.map(children, (child, idx) => {
+          if (!React.isValidElement(child)) {
+            return null
+          }
+          const childProps = {
+            ...child.props,
+            active: idx === selectIndex,
+            index: idx,
+            inactiveColor,
+            activeColor,
+            handleClick: setSelectIndex,
+          }
+          return React.cloneElement(child, childProps)
+        })}
+      </div>
+      {(fixed || safeArea) && <div className={`${classPrefix}__safe-area`} />}
     </div>
   )
 }
