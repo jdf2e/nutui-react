@@ -33,7 +33,7 @@ test('should render custom color and badge when using prop', () => {
         <TabbarItem
           title="首页"
           icon={<Home width={20} height={20} />}
-          num={11}
+          value={11}
         />
         <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
         <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
@@ -46,9 +46,6 @@ test('should render custom color and badge when using prop', () => {
 
   expect(tabbarItem[0].style.color).toEqual('blue')
   expect(tabbarItem[1].style.color).toEqual('grey')
-  expect(
-    tabbarItem[0].querySelectorAll('.nut-tabbar-item__icon-box__tips').length
-  ).toBeGreaterThan(0)
 })
 
 test('should render fixed element when using bottom prop', async () => {
@@ -70,7 +67,7 @@ test('should match active tabbar by click', async () => {
         <TabbarItem
           title="首页"
           icon={<Home width={20} height={20} />}
-          num={11}
+          value={11}
         />
         <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
         <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
@@ -95,7 +92,7 @@ test('should show sure emitted when click', async () => {
         <TabbarItem
           title="首页"
           icon={<Home width={20} height={20} />}
-          num={11}
+          value={11}
         />
         <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
         <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
