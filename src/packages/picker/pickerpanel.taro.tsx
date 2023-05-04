@@ -35,7 +35,6 @@ const InternalPickerPanel: ForwardRefRenderFunction<
   } = props
 
   const touch = useTouch()
-
   const DEFAULT_DURATION = 200
   // 触发惯性滑动条件:
   // 在手指离开屏幕时，如果和上一次 move 时的间隔小于 `MOMENTUM_TIME` 且 move
@@ -44,7 +43,6 @@ const InternalPickerPanel: ForwardRefRenderFunction<
   const INERTIA_DISTANCE = 15
   const [currIndex, setCurrIndex] = useState(1)
   const lineSpacing = useRef(36)
-
   const [touchTime, setTouchTime] = useState(0)
   const [touchDeg, setTouchDeg] = useState('0deg')
   const rotation = 20

@@ -95,7 +95,7 @@ export const DatePicker: FunctionComponent<
   const [show, setShow] = useState(false)
   const [currentDate, setCurrentDate] = useState<Date | null>(modelValue)
   const [defaultValue, setDefaultValue] = useState<(string | number)[]>([])
-  const [listData, setListData] = useState<PickerOption[][]>([])
+  const [options, setListData] = useState<PickerOption[][]>([])
   const pickerRef = useRef<pickerRefState>(null)
 
   const isDate = (val: Date): val is Date => {
@@ -405,13 +405,13 @@ export const DatePicker: FunctionComponent<
       catchMove
       {...(rest as any)}
     >
-      {listData.length > 0 && (
+      {options.length > 0 && (
         <Picker
           title={title}
           visible={show}
-          listData={listData}
+          options={options}
           onClose={onCloseDatePicker}
-          defaultValueData={defaultValue}
+          defaultValue={defaultValue}
           onConfirm={(values: (string | number)[], options: PickerOption[]) =>
             onConfirmDatePicker && onConfirmDatePicker(values, options)
           }

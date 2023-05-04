@@ -71,10 +71,8 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     if (type !== 'end') {
       nTime = 0
     }
-
     setTouchTime(nTime)
     setTouchDeg(deg)
-
     setScrollDistance(translateY)
   }
 
@@ -96,7 +94,6 @@ const InternalPickerPanel: ForwardRefRenderFunction<
       }deg`
 
       setTransform(endMove, type, time, deg)
-
       setCurrIndex(Math.abs(Math.round(endMove / lineSpacing)) + 1)
     } else {
       let deg = 0
@@ -150,7 +147,6 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     } else {
       setMove(move, 'end')
     }
-
     setTimeout(() => {
       // moving.current = false
       touch.reset()
@@ -286,7 +282,6 @@ const InternalPickerPanel: ForwardRefRenderFunction<
             )
           })}
       </div>
-
       <div className="nut-picker-mask" />
       <div className="nut-picker-indicator" />
     </div>

@@ -5,13 +5,14 @@ import React, {
   RefObject,
   ForwardRefRenderFunction,
 } from 'react'
+import classNames from 'classnames'
 import Taro from '@tarojs/taro'
 import { View, PickerView, PickerViewColumn } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
 import PickerPanel from './pickerpanel.taro'
 import useRefs from '@/utils/use-refs'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import bem from '@/utils/bem'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface PickerOption {
   text: string | number
@@ -20,13 +21,11 @@ export interface PickerOption {
   children?: PickerOption[]
   className?: string | number
 }
-export interface PickerProps {
+export interface PickerProps extends BasicComponent {
   visible: boolean
   title?: string
   options: (PickerOption | PickerOption[])[]
   defaultValue?: (number | string)[]
-  className?: ''
-  style?: React.CSSProperties
   threeDimensional?: boolean
   duration: number | string
   onConfirm?: (
@@ -48,7 +47,15 @@ export interface PickerProps {
     selectedOptions: PickerOption[]
   ) => void
 }
-
+const defaultProps = {
+  ...ComponentDefaults,
+  visible: false,
+  title: '',
+  options: [],
+  defaultValue: [],
+  threeDimensional: true,
+  duration: 1000,
+} as PickerProps
 const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
   (props, ref) => {
     const { locale } = useConfig()
@@ -57,25 +64,23 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       title,
       options = [],
       defaultValue,
-      onConfirm,
-      onClose,
-      afterClose,
-      onChange,
       className,
       style,
       threeDimensional,
       duration,
+      onConfirm,
+      onClose,
+      afterClose,
+      onChange,
       ...rest
-    } = props
-
-    const [chooseValueData, setchooseValueData] = useState<
-      Array<string | number>
-    >([]) // 选择的数据的 value 值, 每一条数据的 value 值
-    const [columnIndex, setcolumnIndex] = useState<number>(0) // 选中列
+    } = { ...defaultProps, ...props }
+    const classPrefix = 'nut-picker'
+    const classes = classNames(classPrefix, className)
+    const [chooseValue, setChooseValue] = useState<Array<string | number>>([]) // 选择的数据的 value 值, 每一条数据的 value 值
+    const [columnIndex, setColumnIndex] = useState<number>(0) // 选中列
     const pickerRef = useRef<any>(null)
     const [refs, setRefs] = useRefs()
     const [columnsList, setColumnsList] = useState<PickerOption[][]>([]) // 格式化后每一列的数据
-    const b = bem('picker')
     const isConfirmEvent = useRef(false)
 
     // 级联数据格式化
@@ -99,11 +104,9 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
         )
         if (index === -1) index = 0
         cursor = cursor.children[index]
-
         columnIndex++
         formatted.push(options)
       }
-
       return formatted
     }
 
@@ -129,7 +132,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
           return options
         case 'cascade':
           // 级联数据处理
-          return formatCascade(options as PickerOption[], chooseValueData)
+          return formatCascade(options as PickerOption[], chooseValue)
         default:
           return [options]
       }
@@ -144,8 +147,8 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       //     return item
       //   })
       // 为何要重置呢？
-      // if (!defaultValue && chooseValueData.length === 0) {
-      //   setchooseValueData([...data])
+      // if (!defaultValue && chooseValue.length === 0) {
+      //   setChooseValue([...data])
       // }
     }
     // 列表格式修改
@@ -158,72 +161,70 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       if (
         defaultValue &&
         defaultValue.length !== 0 &&
-        defaultValue.toString() !== chooseValueData.toString() &&
+        defaultValue.toString() !== chooseValue.toString() &&
         !currentValue.length
       ) {
         const data = [...defaultValue]
-        setchooseValueData(data)
+        setChooseValue(data)
         setColumnsList(normalListData() as PickerOption[][])
       }
     }, [defaultValue])
 
     const selectedOptions = () => {
-      const optins: PickerOption[] = []
+      const options: PickerOption[] = []
       columnsList.map((column: PickerOption[], index: number) => {
         let currOptions = []
-        currOptions = column.filter(
-          (item) => item.value === chooseValueData[index]
-        )
+        currOptions = column.filter((item) => item.value === chooseValue[index])
         if (currOptions[0]) {
-          optins.push(currOptions[0])
+          options.push(currOptions[0])
         } else {
-          column[0] && optins.push(column[0])
+          column[0] && options.push(column[0])
         }
         return column
       })
-      return optins
+      return options
     }
 
     // 选中值进行修改
     useEffect(() => {
       Taro.getEnv() !== 'WEB' && setCurrentValue(defaultValuesConvert())
-      onChange && onChange(columnIndex, chooseValueData, selectedOptions())
+      onChange && onChange(columnIndex, chooseValue, selectedOptions())
       if (isConfirmEvent.current) {
         isConfirmEvent.current = false
-        onConfirm && onConfirm(chooseValueData, selectedOptions())
+        onConfirm && onConfirm(chooseValue, selectedOptions())
       }
-    }, [chooseValueData])
+    }, [chooseValue])
 
     const closeActionSheet = () => {
-      onClose && onClose(chooseValueData, selectedOptions())
-      afterClose && afterClose(chooseValueData, selectedOptions(), pickerRef)
+      onClose && onClose(chooseValue, selectedOptions())
+      afterClose && afterClose(chooseValue, selectedOptions(), pickerRef)
     }
 
     // 选择每一列的数据
     const chooseItem = (option: PickerOption, columnIndex: number) => {
       if (option && Object.keys(option).length) {
         // 是否移动后是否与之前有差异
-        if (chooseValueData[columnIndex] !== option.value) {
+        if (chooseValue[columnIndex] !== option.value) {
           if (columnsType() === 'cascade') {
-            chooseValueData[columnIndex] = option.value ? option.value : ''
-            setchooseValueData([...chooseValueData])
+            chooseValue[columnIndex] = option.value ? option.value : ''
+            setChooseValue([...chooseValue])
 
             let index = columnIndex
             let cursor = option
             while (cursor && cursor.children && cursor.children[0]) {
-              chooseValueData[index + 1] = cursor.children[0].value
-              setchooseValueData([...chooseValueData])
+              chooseValue[index + 1] = cursor.children[0].value
+              setChooseValue([...chooseValue])
               index++
               cursor = cursor.children[0]
             }
             // 当前改变列的下一列 children 值为空
             if (cursor && cursor.children) {
-              chooseValueData[index + 1] = ''
-              setchooseValueData([...chooseValueData])
+              chooseValue[index + 1] = ''
+              setChooseValue([...chooseValue])
             }
             setColumnsList(normalListData() as PickerOption[][])
           } else {
-            setchooseValueData((data) => {
+            setChooseValue((data) => {
               const cdata = [...data]
               cdata[columnIndex] = Object.prototype.hasOwnProperty.call(
                 option,
@@ -234,24 +235,23 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
               return cdata
             })
           }
-          setcolumnIndex(columnIndex)
+          setColumnIndex(columnIndex)
         }
       }
     }
-
     // 点击确定
     const confirm = () => {
       let movings = false
-      refs.forEach((_ref: any) => {
-        if (_ref.moving) movings = true
-        _ref.stopMomentum()
+      refs.forEach((ref: any) => {
+        if (ref.moving) movings = true
+        ref.stopMomentum()
       })
       if (movings) {
         isConfirmEvent.current = true
       } else {
-        onConfirm && onConfirm(chooseValueData, selectedOptions())
+        onConfirm && onConfirm(chooseValue, selectedOptions())
       }
-      onClose && onClose(chooseValueData, selectedOptions())
+      onClose && onClose(chooseValue, selectedOptions())
       setTimeout(() => {
         isConfirmEvent.current = false
       }, 0)
@@ -259,12 +259,20 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
 
     const renderToolbar = () => {
       return (
-        <div className={b('control')}>
-          <span className={b('cancel-btn')} onClick={() => closeActionSheet()}>
+        <div className={classNames(`${classPrefix}__control`)}>
+          <span
+            className={classNames(`${classPrefix}__cancel-btn`)}
+            onClick={() => closeActionSheet()}
+          >
             {locale.cancel}
           </span>
-          <div className={b('title')}>{title || ''}</div>
-          <span className={b('confirm-btn')} onClick={confirm}>
+          <div className={classNames(`${classPrefix}__title`)}>
+            {title || ''}
+          </div>
+          <span
+            className={classNames(`${classPrefix}__confirm-btn`)}
+            onClick={confirm}
+          >
             {locale.confirm}
           </span>
         </div>
@@ -276,8 +284,8 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
 
     const defaultValuesConvert = () => {
       const defaultIndexs: number[] = []
-      if (chooseValueData.length > 0) {
-        chooseValueData.forEach((value, index) => {
+      if (chooseValue.length > 0) {
+        chooseValue.forEach((value, index) => {
           for (let i = 0; i < columnsList[index].length; i++) {
             if (columnsList[index][i].value === value) {
               defaultIndexs.push(i)
@@ -288,7 +296,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       } else if (columnsList && columnsList.length > 0) {
         columnsList.forEach((item) => {
           defaultIndexs.push(0)
-          item.length > 0 && chooseValueData.push(item[0].value)
+          item.length > 0 && chooseValue.push(item[0].value)
         })
       }
 
@@ -329,20 +337,15 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
           closeActionSheet()
         }}
       >
-        <View
-          className={`${b()} ${className || ''}`}
-          style={style}
-          {...rest}
-          catchMove
-        >
+        <View className={classes} style={style} {...rest} catchMove>
           {renderToolbar()}
-          <div className={b('panel')} ref={pickerRef}>
+          <div className={classNames(`${classPrefix}__panel`)} ref={pickerRef}>
             {Taro.getEnv() === 'WEB' ? (
               columnsList?.map((item, index) => {
                 return (
                   <PickerPanel
                     ref={setRefs(index)}
-                    defaultValue={chooseValueData?.[index]}
+                    defaultValue={chooseValue?.[index]}
                     options={item}
                     threeDimensional={threeDimensional}
                     chooseItem={(value: PickerOption, index: number) =>
