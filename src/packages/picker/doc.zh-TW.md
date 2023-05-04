@@ -80,7 +80,7 @@ const App = () => {
   ]
   return ( 
     <>   
-      <Cell  onClick={() => setIsVisible1(!isVisible1)}>
+      <Cell onClick={() => setIsVisible1(!isVisible1)}>
         <span>
           <label>基礎用法</label>
         </span>
@@ -96,7 +96,6 @@ const App = () => {
   );
 };  
 export default App;
-
 ```
 :::
 ### 多列用法
@@ -135,7 +134,6 @@ const App = () => {
   );
 };  
 export default App;
-
 ```
 :::
 ### 多級聯動
@@ -221,13 +219,11 @@ const App = () => {
       },
     ],
   ])
-
   const setChooseValueCustmer = (chooseData: any[]) => {
     const str = chooseData.map((item) => item.value).join('-')
     setCityCustmer(str)
     console.log('多級聯動用法選中項：', str)
   }
-
   const closeUpdateChooseValueCustmer = (chooseData: any[], ref) => {
     // 此處模擬查詢API，如果數據緩存了不需要再重新請求
     setTimeout(() => {
@@ -239,14 +235,12 @@ const App = () => {
           result[1] = resItems?.array || []
           return result
         })
-
         // 復原位置
         ref.current?.updateChooseValue(0, chooseData[0])
         ref.current?.updateChooseValue(1, chooseData[1])
       }
     }, 100)
   }
-
   const updateChooseValueCustmer = (index: number, resValue: IResValue, cacheValueData: any[]) => {
     // 本demo為二級聯動，所以限制只有首列變動的時候觸發事件
     if (index === 0) {
@@ -296,7 +290,6 @@ const App = () => {
   );
 };  
 export default App;
-
 ```
 :::
 
@@ -307,20 +300,14 @@ export default App;
 
 | 字段 | 說明 | 類型 | 默認值
 |----- | ----- | ----- | ----- 
-| visible`v2.0.0` | 是否可見 | boolean | `false`
+| visible | 是否可見 | boolean | `false`
 | title | 設置標題 | string | -
 | listData | 列錶數據 | Array | `[]`
 | defaultValueData | 默認選中 | Array | `[]`
-
-## Events
-
-| 字段 | 說明 | 回調參數 
-|----- | ----- | ----- 
 | onConfirm | 點擊確認按鈕時候回調 | 返回選中值
 | onChoose | 每一列值變更時調用 | 依次返回this、改變的列數，改變值，當前選中值
 | onCloseUpdate | 聯動時，關閉時回調 | 依次返回this、當前選中值
-| onClose | 關閉時觸發 | -
-
+| onClose | 關閉時觸發 | - 
 
 ## 主題定制
 
@@ -338,11 +325,11 @@ export default App;
 | --nutui-picker-bar-title-font-size | `16px` |
 | --nutui-picker-bar-title-color | `$title-color` |
 | --nutui-picker-bar-title-font-weight | `normal` |
-| --nutui-picker-list-height`v1.4.9` | `252px` |
+| --nutui-picker-list-height | `252px` |
 | --nutui-picker-item-height | `36px` |
 | --nutui-picker-item-text-color | `$title-color` |
 | --nutui-picker-item-active-text-color | `inherit` |
 | --nutui-picker-item-text-font-size | `14px` |
 | --nutui-picker-item-active-line-border | `1px solid #d8d8d8` |
 | --nutui-picker-columns-item-color | `$title-color` |
-| --nutui-picker-mask-bg-img`v1.4.9` | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |
+| --nutui-picker-mask-bg-img | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |

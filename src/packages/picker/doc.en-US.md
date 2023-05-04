@@ -61,7 +61,6 @@ const App = () => {
   );
 };  
 export default App;
-
 ```
 :::
 
@@ -112,7 +111,6 @@ const App = () => {
   );
 };  
 export default App;
-
 ```
 :::
 
@@ -163,7 +161,6 @@ const App = () => {
   );
 };  
 export default App;
-
 ```
 :::
 
@@ -214,7 +211,6 @@ const App = () => {
   );
 };  
 export default App;
-
 ```
 :::
 ### Cascade
@@ -223,7 +219,6 @@ export default App;
 ```tsx
 import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
-
 
 const App = () => {
   const [visible, setIsVisible] = useState(false)
@@ -253,7 +248,6 @@ const App = () => {
       ],
     },
   ])
-
   const setChooseValueCustmer = (values: (string | number)[],chooseData: PickerOption[]) => {
     const str = chooseData.map((item) => item.text).join('-')
     setCityCustmer(str)
@@ -277,7 +271,6 @@ const App = () => {
   );
 };  
 export default App;
-
 ```
 :::
 
@@ -310,12 +303,10 @@ const App = () => {
       children: [],
     },
   ])
-
   const setAsyncConfirm = (values: (string | number)[],chooseData: PickerOption[]) => {
     const str = chooseData.map((item) => item.text).join('-')
     setasyncDesc(str)
   }
-
   const updateChooseValueCustmer = ( columnIndex: number, option: PickerOption) => {
     if (columnIndex === 0 && option.value === 2) {
       setTimeout(() => {
@@ -351,7 +342,6 @@ const App = () => {
   );
 };  
 export default App;
-
 ```
 :::
 
@@ -360,31 +350,24 @@ export default App;
 
 ### Props
 
-| Attribute         | Description                             | Type   | Default           |
+| Attribute         | Description | Type   | Default           |
 | ----- | ----- | ----- | ----- |
-| visible`v2.0.0` | Is Show  | boolean | `false`
-| title | Toolbar title | string | -
-| listData |  Columns data | Array | `[]`
-| defaultValueData | Default Index  | Array | `[]`
+| visible | Is Show  | boolean | `false` |
+| title | Toolbar title | string | - |
+| listData |  Columns data | Array | `[]` | 
+| defaultValueData | Default Index  | Array | `[]` |
 | threeDimensional          | Turn on 3D effects                | boolean  | `true`   |
-
-
-## listData 
-| Attribute         | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| text        | Text of column               | string \| number |               |
-| value          | Value of column              | string \| number |            |
-| children         | Cascader Option               | Array | -                |
-
-
-## Events
-
-| Event | Description           | Arguments     |
-|-----          | ----- | ----- |
 | onConfirm     | Emitted when click confirm button. | { selectedValue, selectedOptions } |
 | onChange      | Emitted when current option changed. | { columnIndex, selectedValue, selectedOptions } |
 | onCloseUpdate | Emitted when cascade changed.   | selectedValue |
 | onClose       | Emitted when click close button. | { selectedValue, selectedOptions }  |
+
+## listData 
+| Attribute         | Description | Type   | Default           |
+|--------------|----------------------------------|--------|------------------|
+| text        | Text of column               | string \| number |               |
+| value          | Value of column              | string \| number |            |
+| children         | Cascader Option               | Array | -                |
 
 
 ## Theming
@@ -403,11 +386,11 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-picker-bar-title-font-size | `16px` |
 | --nutui-picker-bar-title-color | `$title-color` |
 | --nutui-picker-bar-title-font-weight | `normal` |
-| --nutui-picker-list-height`v1.4.9` | `252px` |
+| --nutui-picker-list-height  | `252px` |
 | --nutui-picker-item-height | `36px` |
 | --nutui-picker-item-text-color | `$title-color` |
 | --nutui-picker-item-active-text-color | `inherit` |
 | --nutui-picker-item-text-font-size | `14px` |
 | --nutui-picker-item-active-line-border | `1px solid #d8d8d8` |
 | --nutui-picker-columns-item-color | `$title-color` |
-| --nutui-picker-mask-bg-img`v1.4.9` | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |
+| --nutui-picker-mask-bg-img  | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |

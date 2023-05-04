@@ -9,7 +9,6 @@
 import { Picker } from '@nutui/nutui-react-taro';
 ```
 
-
 ## 代码演示
 
 ### 基础用法
@@ -62,7 +61,6 @@ const App = () => {
   );
 };  
 export default App;
-
 ```
 :::
 
@@ -113,7 +111,6 @@ const App = () => {
   );
 };  
 export default App;
-
 ```
 :::
 
@@ -164,7 +161,6 @@ const App = () => {
   );
 };  
 export default App;
-
 ```
 :::
 
@@ -218,7 +214,6 @@ const App = () => {
   );
 };  
 export default App;
-
 ```
 :::
 ### 多级联动
@@ -227,7 +222,6 @@ export default App;
 ```tsx
 import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react-taro';
-
 
 const App = () => {
   const [visible, setIsVisible] = useState(false)
@@ -257,7 +251,6 @@ const App = () => {
       ],
     },
   ])
-
   const setChooseValueCustmer = (values: (string | number)[],chooseData: PickerOption[]) => {
     const str = chooseData.map((item) => item.text).join('-')
     setCityCustmer(str)
@@ -281,7 +274,6 @@ const App = () => {
   );
 };  
 export default App;
-
 ```
 :::
 
@@ -314,12 +306,10 @@ const App = () => {
       children: [],
     },
   ])
-
   const setAsyncConfirm = (values: (string | number)[],chooseData: PickerOption[]) => {
     const str = chooseData.map((item) => item.text).join('-')
     setasyncDesc(str)
   }
-
   const updateChooseValueCustmer = ( columnIndex: number, option: PickerOption) => {
     if (columnIndex === 0 && option.value === 2) {
       setTimeout(() => {
@@ -355,7 +345,6 @@ const App = () => {
   );
 };  
 export default App;
-
 ```
 :::
 
@@ -366,32 +355,23 @@ export default App;
 
 | 字段                     | 说明 | 类型 | 默认值 |
 |------------------------| ----- | ----- | ----- |
-| visible`v2.0.0`              | 是否可见 | boolean | `false` |
+| visible              | 是否可见 | boolean | `false` |
 | title                  | 设置标题 | string | - |
 | listData               | 列表数据 | Array | `[]` |
 | defaultValueData       | 默认选中 | Array | `[]` |
-| threeDimensional | 是否开启3D效果               | boolean  | `true`   |
-| swipeDuration | 快速滑动时惯性滚动的时长，单位 ms               | string \| number | `1000`   |
-
+| threeDimensional  | 是否开启3D效果               | boolean  | `true`   |
+| swipeDuration  | 快速滑动时惯性滚动的时长，单位 ms               | string \| number | `1000`   |
+| onConfirm            | 点击确认按钮时候回调 | 返回选中值 value，选中值对象 |
+| onChange    | 每一列值变更时调用   | 改变的列数，改变值 value，当前选中值 |
+| onCloseUpdate        | 联动时，关闭时回调   | 当前选中值，依次返回this |
+| onClose              | 关闭时触发          | 返回选中值 value，选中值对象 |
 
 ## listData 数据结构
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| text        | 选项的文字内容               | string \| number |               |
-| value          | 选项对应的值，且唯一               | string \| number |            |
-| children        | 用于级联选项               | Array | -                |
-
-
-## Events
-
-| 字段                   | 说明 | 回调参数 |
-|----------------------| ----- | ----- |
-| onConfirm            | 点击确认按钮时候回调 | 返回选中值 value，选中值对象 |
-| onChoose | 每一列值变更时调用 | 依次返回this、改变的列数，改变值，当前选中值 |
-| onChange     | 每一列值变更时调用   | 改变的列数，改变值 value，当前选中值 |
-| onCloseUpdate        | 联动时，关闭时回调   | 当前选中值，依次返回this |
-| onClose              | 关闭时触发          | 返回选中值 value，选中值对象 |
-
+| text       | 选项的文字内容               | string \| number |               |
+| value         | 选项对应的值，且唯一               | string \| number |            |
+| children       | 用于级联选项               | Array | -                |
 
 ## 主题定制
 
@@ -409,11 +389,11 @@ export default App;
 | --nutui-picker-bar-title-font-size | `16px` |
 | --nutui-picker-bar-title-color | `$title-color` |
 | --nutui-picker-bar-title-font-weight | `normal` |
-| --nutui-picker-list-height`v1.4.9` | `252px` |
+| --nutui-picker-list-height | `252px` |
 | --nutui-picker-item-height | `36px` |
 | --nutui-picker-item-text-color | `$title-color` |
 | --nutui-picker-item-active-text-color | `inherit` |
 | --nutui-picker-item-text-font-size | `14px` |
 | --nutui-picker-item-active-line-border | `1px solid #d8d8d8` |
 | --nutui-picker-columns-item-color | `$title-color` |
-| --nutui-picker-mask-bg-img`v1.4.9` | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |
+| --nutui-picker-mask-bg-img | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |
