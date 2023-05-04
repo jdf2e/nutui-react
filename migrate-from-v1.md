@@ -112,8 +112,9 @@
 - safeAreaInsetBottom 重命名为 safeArea
 - visible 重命名为 defaultValue，非受控
 - activeVisible 重命名为 value，受控
-- 移除 num，支持传入 Badge Props
+- 移除 num，支持传入所有 Badge Props
 - TabbarItem 使用方式修改为 Tabbar.Item
+- 移除 href，通过 onSwitch 事件控制链接与路由跳转
 #### Tabs
 
 ### 数据录入

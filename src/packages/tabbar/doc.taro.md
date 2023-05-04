@@ -148,7 +148,7 @@ const App = () => (
 export default App;
 ```
 :::
-### 固定底部，可自由跳转
+### 固定底部
 
 :::demo
 ```tsx
@@ -158,11 +158,11 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar fixed>
-    <Tabbar.Item title="首页" href="" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="首页" icon={<Home width={20} height={20} />} />
     <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
     <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="购物车" href="https://m.jd.com" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="我的" href="/" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} />
+    <Tabbar.Item title="我的" icon={<My width={20} height={20} />} />
   </Tabbar>
 )
 
@@ -192,7 +192,6 @@ export default App;
 |---------------|------------|--------|--------|
 | title | 标签页的标题 | `ReactNode` | -     |
 | icon | 自定义图标 | `ReactNode` | - |
-| href | 标签页的跳转链接； | `string` | -     |
 | value   | 显示的内容，支持数字、字符和自定义内容  | `ReactNode`  | -         |
 | max     | value 为数值时，最大值 | `number`  | `99`   |
 | dot     | 是否为小点 | `boolean` | `false`   |

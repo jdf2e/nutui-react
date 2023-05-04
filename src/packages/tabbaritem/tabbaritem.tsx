@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, useEffect } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import Badge from '../badge'
@@ -7,7 +7,6 @@ import { BadgeProps } from '../badge/badge'
 export interface TabbarItemProps extends BadgeProps {
   title: ReactNode
   icon: ReactNode
-  href: string
   active: boolean
   activeColor: string
   inactiveColor: string
@@ -19,7 +18,6 @@ const defaultProps = {
   ...ComponentDefaults,
   title: '',
   icon: null,
-  href: '',
   active: false,
   index: 0,
   handleClick: (idx) => {},
@@ -33,7 +31,6 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     style,
     title,
     icon,
-    href,
     active,
     activeColor,
     inactiveColor,
@@ -52,12 +49,6 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
   const titleClass = classNames(boxPrefix, `${boxPrefix}--nav-word`, {
     [`${boxPrefix}--big-word`]: !icon,
   })
-
-  useEffect(() => {
-    if (active && href) {
-      window.location.href = href
-    }
-  }, [active, href])
 
   return (
     <div

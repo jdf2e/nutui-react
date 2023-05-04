@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -53,12 +53,6 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
     finalValue: 0,
     onChange: onSwitch,
   })
-
-  useEffect(() => {
-    if (value !== undefined) {
-      setSelectIndex(value)
-    }
-  }, [value])
 
   return (
     <div

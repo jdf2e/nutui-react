@@ -249,7 +249,6 @@ const TabbarDemo = () => {
         <Tabbar safeArea>
           <Tabbar.Item
             title={translated.c3a3a1d2}
-            href=""
             icon={<Home width={20} height={20} />}
           />
           <Tabbar.Item
@@ -262,12 +261,10 @@ const TabbarDemo = () => {
           />
           <Tabbar.Item
             title={translated['7db1a8b2']}
-            href="https://m.jd.com"
             icon={<Cart width={20} height={20} />}
           />
           <Tabbar.Item
             title={translated.e51e4582}
-            href="/"
             icon={<My width={20} height={20} />}
           />
         </Tabbar>

@@ -206,7 +206,7 @@ const App = () => (
 export default App;
 ```
 :::
-### Fixed bottom, free to jump
+### Fixed bottom
 
 :::demo
 ```tsx
@@ -216,11 +216,11 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar fixed>
-    <Tabbar.Item title="Home" href="" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} />
     <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
     <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="Cart" href="https://m.jd.com" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="Mine" to="/" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
+    <Tabbar.Item title="Mine" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -250,7 +250,6 @@ export default App;
 |-----------|--------------|--------|--------|
 | title | the title of the tab | `ReactNode` | -     |
 | icon | Custom icon | `ReactNode` | -     |
-| href | Jump link of tab page;   | `string` | -     |
 | value   | value to show, eg number、charctor and custom content | `ReactNode`  |  | - |
 | max     | when value is number, it's the max size | `number`  | `99`   |
 | dot     | Is dotted    | `boolean` | `false`   |
