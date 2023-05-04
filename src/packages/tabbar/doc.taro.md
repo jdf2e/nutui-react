@@ -178,7 +178,7 @@ export default App;
 |-----------------------------|------------------------|--------|---------|
 | defaultValue                     | 默认选中的标签的索引值            | `number` | `0`       |
 | value         | 选中的标签的索引值            | `number` | -       |
-| fixed                      | 是否固定在页面底部              | `boolean` | `false`   |
+| fixed                      | 是否固定在页面底部，为 true 时默认开启 safeArea              | `boolean` | `false`   |
 | activeColor                 | icon激活的颜色              | `string` | `#1989fa` |
 | inactiveColor               | icon未激活的颜色             | `string` | `#7d7e80` |
 | safeArea | 是否开启iphone系列全面屏底部安全区适配 | `boolean` | `false`   |

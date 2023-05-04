@@ -33,7 +33,7 @@ const TabbarDemo = () => {
       b840c88f: '徽标提示',
       a74a1fd4: '自定义颜色',
       '8dab2f66': '可自定义icon个数的tabbar',
-      cfbdc781: '固定底部，可自由跳转',
+      cfbdc781: '固定底部',
       c3a3a1d2: '首页',
       e51e4582: '我的',
       '7db1a8b2': '购物车',
@@ -49,7 +49,7 @@ const TabbarDemo = () => {
       b840c88f: '徽標提示',
       a74a1fd4: '自定義顏色',
       '8dab2f66': '可自定義icon個數的tabbar',
-      cfbdc781: '固定底部，可自由跳轉',
+      cfbdc781: '固定底部',
       c3a3a1d2: '首頁',
       e51e4582: '我的',
       '7db1a8b2': '購物車',
@@ -65,7 +65,7 @@ const TabbarDemo = () => {
       b840c88f: 'Logo Tips',
       a74a1fd4: 'Custom Color',
       '8dab2f66': 'Tabbar with customizable number of icons',
-      cfbdc781: 'Fixed bottom, free to jump',
+      cfbdc781: 'Fixed bottom',
       c3a3a1d2: 'Home',
       e51e4582: 'Mine',
       '7db1a8b2': 'Cart',
@@ -246,7 +246,7 @@ const TabbarDemo = () => {
         </Tabbar>
 
         <h2 className="bottom-h2">{translated.cfbdc781}</h2>
-        <Tabbar safeArea>
+        <Tabbar fixed>
           <Tabbar.Item
             title={translated.c3a3a1d2}
             icon={<Home width={20} height={20} />}
