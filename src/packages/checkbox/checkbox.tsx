@@ -5,8 +5,8 @@ import React, {
   useState,
 } from 'react'
 import { Checked, CheckDisabled, CheckNormal } from '@nutui/icons-react'
+import classNames from 'classnames'
 import CheckboxGroup from '@/packages/checkboxgroup'
-import bem from '@/utils/bem'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -15,30 +15,27 @@ export interface CheckboxProps extends BasicComponent {
   checked: boolean
   disabled: boolean
   defaultChecked: boolean
-  textPosition: 'left' | 'right'
-  iconSize: string | number
+  labelPosition: 'left' | 'right'
   icon: React.ReactNode
-  checkedIcon: React.ReactNode
+  activeIcon: React.ReactNode
   indeterminateIcon: React.ReactNode
-  iconClassPrefix: string
-  iconFontClassName: string
+  value: string | number
   indeterminate: boolean
   label: string | number
-  onChange: (state: boolean) => void
+  onChange: (value: boolean) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
   disabled: false,
-  textPosition: 'right',
-  iconSize: 18,
-  icon: 'check-normal',
-  checkedIcon: 'checked',
-  iconClassPrefix: 'nut-icon',
-  iconFontClassName: 'nutui-iconfont',
-  indeterminateIcon: 'check-disabled',
-  onChange: (state) => {},
+  labelPosition: 'right',
+  icon: null,
+  activeIcon: null,
+  indeterminateIcon: null,
+  onChange: (value) => {},
 } as CheckboxProps
+
+const classPrefix = 'nut-checkbox'
 export const Checkbox: FunctionComponent<
   Partial<CheckboxProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
@@ -47,25 +44,23 @@ export const Checkbox: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const b = bem('checkbox')
   const {
     icon,
     iconSize,
     label,
     className,
-    checkedIcon,
+    activeIcon,
     checked,
+    value,
     defaultChecked,
     disabled,
     onChange,
     indeterminate,
-    iconClassPrefix,
-    iconFontClassName,
     indeterminateIcon,
     ...others
   } = props as any
   // eslint-disable-next-line prefer-const
-  let { textPosition, ...rest } = others
+  let { labelPosition, ...rest } = others
   const ctx = useContext(Context)
 
   let [_checked, setChecked] = usePropsValue<boolean>({
@@ -79,21 +74,20 @@ export const Checkbox: FunctionComponent<
   const [_indeterminate, setIndeterminate] = useState(indeterminate)
 
   useEffect(() => {
-    !ctx && setChecked(checked)
     setDisabled(disabled)
     setIndeterminate(indeterminate)
   }, [disabled, indeterminate])
 
   if (ctx) {
-    if (ctx.textPosition !== undefined) {
-      textPosition = ctx.textPosition
+    if (ctx.labelPosition !== undefined) {
+      labelPosition = ctx.labelPosition
     }
     innerDisabled = ctx.disabled
-    _checked = ctx.checkedValue.includes(label)
+    _checked = ctx.checkedValue.includes(value)
     setChecked = (checked: boolean) => {
       if (ctx.disabled) return
-      if (checked) ctx.check(label)
-      if (!checked) ctx.uncheck(label)
+      if (checked) ctx.check(value)
+      if (!checked) ctx.uncheck(value)
     }
   }
 
@@ -112,8 +106,8 @@ export const Checkbox: FunctionComponent<
         <CheckDisabled width={iconSize} height={iconSize} className={color()} />
       )
     }
-    return React.isValidElement(checkedIcon) ? (
-      checkedIcon
+    return React.isValidElement(activeIcon) ? (
+      activeIcon
     ) : (
       <Checked width={iconSize} height={iconSize} className={color()} />
     )
@@ -132,7 +126,11 @@ export const Checkbox: FunctionComponent<
   }
   const renderLabel = () => {
     return (
-      <span className={`${b('label', { disabled: innerDisabled })} `}>
+      <span
+        className={classNames({
+          [`${classPrefix}__label--disabled`]: innerDisabled,
+        })}
+      >
         {children || label}
       </span>
     )
@@ -147,16 +145,14 @@ export const Checkbox: FunctionComponent<
     if (ctx && ctx.max !== undefined) {
       if (latestChecked && ctx.checkedValue.length >= ctx.max) return
     }
-    onChange && onChange(latestChecked, label || (children as string))
-    // setInnerChecked(latestChecked)
     setChecked(latestChecked)
   }
 
   return (
     <div
-      className={`${b({ reverse: textPosition === 'left' })} ${
-        className || ''
-      }`}
+      className={classNames(classPrefix, className, {
+        [`${classPrefix}--reverse`]: labelPosition === 'left',
+      })}
       {...rest}
       onClick={handleClick}
     >

@@ -98,7 +98,7 @@ export const CheckboxGroup = React.forwardRef(
     return (
       <Context.Provider
         value={{
-          textPosition: textPosition || 'left',
+          labelPosition: textPosition || 'left',
           disabled,
           max,
           checkedValue: innerValue || [],
