@@ -68,7 +68,7 @@ const TabbarDemo = () => {
       cfbdc781: 'Fixed bottom, free to jump',
       c3a3a1d2: 'Home',
       e51e4582: 'Mine',
-      '7db1a8b2': 'cart',
+      '7db1a8b2': 'Cart',
       a52bef0c: 'Find',
       d04fcbda: 'Category',
       c9e6df49: 'Dot',
