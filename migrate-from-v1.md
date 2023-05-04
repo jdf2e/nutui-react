@@ -45,8 +45,9 @@
 - `overlayClass` 重命名为 `className`
 - `overlayStyle` 重命名为 `style`
 - `closeOnClickOverlay` 重命名为 `closeOnOverlayClick`
-- 增加 afterClose和afterShow，用于完全关闭后触发的回调和完全展示后触发的回调
-- 完善overlay的demo示例
+- 纠正 `lockScroll` 文档说明，默认值应为 `true`
+- 增加 `afterClose` 和 `afterShow`，用于完全关闭后触发的回调和完全展示后触发的回调
+- 完善 `Overlay` 的 demo 示例
 #### Popup
 - `popClass` 重命名为 `className`，统一将组件的样式类名使用 `className`，不再指定特殊名字，减轻用户使用的记忆成本
 - `overlayClass` 重命名为 `OverlayClassName`，继承自`Overlay`
@@ -59,7 +60,6 @@
 #### Divider
 - 删除 `dashed`, 通过 style 属性实现
 - 删除 `hairline`, 默认为true
-- `styles` 重命名为 `style`
 #### Grid
 #### Layout
 #### Sticky
@@ -112,7 +112,21 @@
 #### SideNavBar
 #### Tabbar
 #### Tabs
-
+- 删除 background，通过 className 或 style 控制
+- 删除 titleScroll
+- 删除 ellipsis，默认 flex：1
+- 删除 size，通过 css 变量 --nutui-tabs-titles-item-font-size 实现
+- animatedTime 重命名为 duration
+- titleGutter 重命名为 css 样式变量实现
+- titleNode 重命名为 title
+- color 重命名为 activeColor
+- type 重命名为 activeType
+- leftAlign 重命名为 align
+- onClick 类型改为 (index: string | number) => void
+- onChange 类型改为 (index: string | number) => void
+- 增加 defaultValue
+#### Tabs.Tabpane
+- paneKey 重命名为 value
 ### 数据录入
 #### Calendar
 #### Cascader
@@ -167,16 +181,35 @@
 - distance 重命名为 threshold
 - 移除 isAnimation，通过 duration 设置 0 实现无动画效果
 #### Dialog
+- 修改 okText 为 confirmText，规范命名。
+- 修改 mask 为 overlay，组件库中统一使用 Overlay 组件作为遮罩层，并使用 overlay 作为是否展示遮罩层的属性值。
+- 修改 closeOnClickOverlay 为 closeOnOverlayClick，组件库统一到该属性。
+- 修改 noOkBtn 为 hideConfirmButton，初始值不变，依然表示是否隐藏确认按钮，主要是为了语义化更强。
+- 修改 noCancelBtn 为 hideCancelButton，初始值不变，依然表示是否隐藏取消按钮，主要是为了语义化更强。
+- 修改 okBtnDisabled 为 disableConfirmButton，初始值不变，依然表示是否禁用确认按钮，主要是为了语义化更强。
+- 删除 noFooter，使用 footer 统一处理，当 footer 为空时，及可替代该值。目前 noFooter 也需要手动声明是否为 noFooter；修改后需手动指出 footer={null}
+- 删除 textAlign，改用样式变量 --nutui-dialog-content-text-align 或 SCSS 变量 $dialog-content-text-align 控制，默认值为 center。
+- 删除 `cancelAutoClose`，改为 `beforeCancel` 和 `beforeClose` 来实现，在点击关闭或取消时，可先触发这两个方法，以确定是否要关闭弹框，如返回true，则关闭；否则不关闭。
+- 修改 onOk 为 onConfirm，规范命名。
+- 修改 onClosed 为 onClose，规范命名，关闭时触发。
+- 修改 onClickSelf 为 onClick，语义不变，仍表示点击弹框自身时触发事件。
+- 增加 overlayStyle 和 overlayClassName，用来配置 Overlay 组件样式。
+- 增加 onClickOverlay，支持点击overlay时，触发事件。
+
 #### Drag
 #### Infiniteloading
 #### Notify
 #### PullToRefresh
 #### Swipe
 #### Switch
+- 删除 `isAsync`, 优化新增 `checked`和 `defaultChecked` , 增加默认值和受控
+- 删除 `activeColor` 和 `inactiveColor`, 通过css变量实现
 #### Toast
 
 ### 展示组件
 #### Animate
+- `className` 属性通过继承实现
+- `style` 属性通过继承实现
 #### AnimatingNumbers
 #### Audio
 - url 重命名为 src
@@ -199,6 +232,17 @@
 #### Popover
 #### Price
 #### Progress
+- percentage 重命名为 percent，受控
+- 移除 isShowPercentage，可以自定义传入文案
+- 移除 textWidth，可以自定义传入内容的宽度
+- strokeColor 重命名为 color
+- fillColor 重命名为 background
+- 移除 size，通过 strokeWidth、css 变量实现尺寸自定义
+- status 重命名为 animated，表示是否展示动画效果
+- 移除 textBackground，通过 css 实现
+- 移除 textColor，通过 css 实现
+- 移除 textInside，仅保留内显功能
+- 移除 textType、icon，通过 children 传入自定义 ReactNode，不再区分类型
 #### Skeleton
 #### Steps
 #### Swiper

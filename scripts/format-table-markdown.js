@@ -76,7 +76,13 @@ function convertMdTables(inputFile, outputFile) {
       .map(() => ' --- ')
       .join('|')}|\n`
     const bodyRows = correctTable
-      .map((row) => `| ${Object.values(row).join(' | ')} |`)
+      .map(
+        (row) =>
+          `| ${Object.values(row)
+            .map((val) => val.replace('|', '\\|'))
+            .join(' | ')
+            .replace('&gt;', '>')} |`
+      )
       .join('\n')
 
     return markdownIt.render(`${headerRow}${bodyRows}`)

@@ -105,7 +105,7 @@ import { CellGroup,Cell,Switch  } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <CellGroup title="自定义右侧箭头区域">
-      <Cell title="Switch" extra={<Switch checked />} />
+      <Cell title="Switch" extra={<Switch defaultChecked />} />
     </CellGroup>
   );
 };
