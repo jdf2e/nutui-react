@@ -6,11 +6,11 @@
   flex: 1;
   text-align: center;
   text-decoration: none;
-  color: $gray1;
+  color: $tabbar-inactive-color;
   height: 100%;
 
   &--active {
-    color: $primary-color;
+    color: $tabbar-active-color;
   }
 
   &__icon-box {

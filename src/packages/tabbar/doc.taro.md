@@ -209,12 +209,11 @@ export default App;
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | --nutui-tabbar-height | 高度 | `50px`|
-| --nutui-tabbar-active-color | `$primary-color` |
+| --nutui-tabbar-active-color | 选中颜色 | `$primary-color` |
+| --nutui-tabbar-inactive-color | 未选中颜色 | `$gray1` |
 | --nutui-tabbar-border-top | 上边框 | `1px solid #eee` |
 | --nutui-tabbar-border-bottom | 下边框 | `1px solid #eee` |
 | --nutui-tabbar-box-shadow | 阴影 | `none` |
 | --nutui-tabbar-item-text-font-size | 标题字体大小 | `$font-size-0` |
 | --nutui-tabbar-item-text-line-height | 字体行高 | `initial` |
 | --nutui-tabbar-word-margin-top | 标题上外边距 | `3px` |
-| --nutui-tabbar-dot-right | dot 横向偏移距离 | `12px`|
-| --nutui-tabbar-dot-top | dot 纵向偏移距离 | `0` |

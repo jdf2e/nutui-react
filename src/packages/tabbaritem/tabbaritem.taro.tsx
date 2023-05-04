@@ -22,8 +22,6 @@ const defaultProps = {
   icon: null,
   href: '',
   active: false,
-  activeColor: '',
-  inactiveColor: '',
   index: 0,
   handleClick: (idx) => {},
 } as TabbarItemProps
