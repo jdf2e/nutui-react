@@ -36,7 +36,7 @@ export interface InputProps extends BasicComponent {
   clearable: boolean
   clearIcon: React.ReactNode
   formatTrigger: InputFormatTrigger
-  autofocus: boolean
+  autoFocus: boolean
   confirmType: ConfirmTextType
   formatter?: (value: string) => void
   onChange?: (value: string) => void
@@ -60,7 +60,7 @@ const defaultProps = {
   clearable: false,
   clearIcon: null,
   formatTrigger: 'onChange',
-  autofocus: false,
+  autoFocus: false,
 } as InputProps
 
 export const Input: FunctionComponent<
@@ -82,7 +82,7 @@ export const Input: FunctionComponent<
     clearable,
     clearIcon,
     formatTrigger,
-    autofocus,
+    autoFocus,
     style,
     className,
     onChange,
@@ -91,6 +91,9 @@ export const Input: FunctionComponent<
     formatter,
     onClick,
     confirmType,
+    defaultValue,
+    value: _value,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -190,6 +193,7 @@ export const Input: FunctionComponent<
       }}
     >
       <input
+        {...rest}
         name={name}
         className="nut-input-native"
         ref={inputRef}
@@ -200,7 +204,7 @@ export const Input: FunctionComponent<
         disabled={disabled}
         readOnly={readOnly}
         value={value}
-        autoFocus={autofocus}
+        autoFocus={autoFocus}
         enterKeyHint={confirmType}
         onBlur={(e: any) => {
           handleBlur(e)

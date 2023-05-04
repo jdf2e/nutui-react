@@ -264,7 +264,7 @@ export default App;
 | align | 输入框内容对齐方式，可选值 `left`、`center`、`right` | `string` | `left` |
 | disabled | 是否禁用 | `boolean` | `false` |
 | readOnly | 是否只读 | `boolean` | `false` |
-| autofocus | 是否自动获得焦点，iOS 系统不支持该属性 | `boolean` | `false` |
+| autoFocus | 是否自动获得焦点，iOS 系统不支持该属性 | `boolean` | `false` |
 | maxLength | 限制最长输入字符 | `string \| number` | `-` |
 | clearable | 展示清除 Icon | `boolean` | `false` |
 | clearIcon | 清除图标 Icon <a href="#/icon">可参考 Icon </a> | `ReactNode` | `MaskClose` |

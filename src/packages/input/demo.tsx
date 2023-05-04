@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Ask, Close } from '@nutui/icons-react'
+import { Ask, Close, Eye } from '@nutui/icons-react'
 import { Input } from './input'
+import Form from '@/packages/form'
 import { useTranslate } from '../../sites/assets/locale'
 import Button from '@/packages/button'
 import Toast from '@/packages/toast'
@@ -31,10 +32,13 @@ const InputDemo = () => {
       codeplaceholder: '请输入短信验证码',
       sendCode: '获取验证码',
       border: '边框',
-      formatter: '在输入时执行格式化',
-      formatter2: '在失焦时执行格式化',
+      formatter: '在输入时移除数字',
+      formatter2: '在失焦时移除数字',
       align: '文本内容对齐',
       placeholder5: '输入框内容对齐',
+      withForm: '配合表单使用',
+      text1: '文本',
+      password1: '带密码可见',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -60,14 +64,18 @@ const InputDemo = () => {
       codeplaceholder: 'Please enter the SMS verification code',
       sendCode: 'Get code',
       border: 'border',
-      formatter: 'Perform formatting on input',
-      formatter2: 'Perform formatting when out of focus',
+      formatter: 'Remove numbers on input',
+      formatter2: 'Remove numbers when out of focus',
       align: 'text content alignment',
       placeholder5: 'Input box content alignment',
+      withForm: 'With Form',
+      text1: 'Text',
+      password1: 'Visible with password',
     },
   })
   const formatter = (value: string) => value.replace(/\d/g, '')
   const [val, setVal] = useState('NutUI React')
+  const [inputType, setInputType] = useState('password')
 
   return (
     <>
@@ -93,6 +101,48 @@ const InputDemo = () => {
         <h2>{translated.title3}</h2>
         <Input clearable placeholder={translated.clear} />
         <Input clearable clearIcon={<Close />} placeholder={translated.clear} />
+        <h2>{translated.withForm}</h2>
+        <Form>
+          <Form.Item label={translated.text1} name="username">
+            <Input
+              className="nut-input-text"
+              placeholder={translated.text}
+              type="text"
+              onChange={(val) => {
+                console.log('change value:', val)
+              }}
+            />
+          </Form.Item>
+        </Form>
+        <h2>{translated.password1}</h2>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            background: '#fff',
+            padding: '0 10px',
+          }}
+        >
+          <Input type={inputType} placeholder={translated.password} />
+          <div
+            className="right"
+            onClick={() =>
+              setInputType(inputType === 'text' ? 'password' : 'text')
+            }
+          >
+            {inputType === 'text' ? (
+              <Eye />
+            ) : (
+              <img
+                width="16px"
+                height="16px"
+                style={{ display: 'block' }}
+                src="https://storage.360buyimg.com/imgtools/ac2c6b6b23-a6a8f1d0-ea4b-11ed-8ae6-f73921e8465b.png"
+                alt=""
+              />
+            )}
+          </div>
+        </div>
         <h2>{translated.title6}</h2>
         <Input formatter={formatter} placeholder={translated.formatter} />
         <Input

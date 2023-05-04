@@ -264,10 +264,11 @@ export default App;
 | align | 输入框内容对齐方式，可选值 `left`、`center`、`right` | `string` | `left` |
 | disabled | 是否禁用 | `boolean` | `false` |
 | readOnly | 是否只读 | `boolean` | `false` |
-| autofocus | 是否自动获得焦点，iOS 系统不支持该属性 | `boolean` | `false` |
+| autoFocus | 是否自动获得焦点，iOS 系统不支持该属性 | `boolean` | `false` |
 | maxLength | 限制最长输入字符 | `string \| number` | `-` |
 | clearable | 展示清除 Icon | `boolean` | `false` |
 | clearIcon | 清除图标 Icon <a href="#/icon">可参考 Icon </a> | `ReactNode` | `MaskClose` |
+| confirmType | 键盘右下角按钮的文字，仅在type='text'时生效,可选值 send：发送、search：搜索、next：下一个、go：前往、done：完成 | `string` | `done` |
 | formatter | 输入内容格式化函数 | `(val: string) => string` | `-` |
 | formatTrigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | `string` | `-` |
 | onChange | 输入框内容变化时触发 | `(value: string) => void` | `-` |
@@ -275,6 +276,8 @@ export default App;
 | onFocus | 获得焦点后触发 | `(value: string) => void` | `-` |
 | onClear | 点击清空按钮时触发 | `(value: string) => void` | `-` |
 | onClick | 点击 input 容器触发 | `(value: MouseEvent<HTMLDivElement>) => void` | `-` |
+
+此外还支持以下原生属性：`onCompositionStart` `onCompositionEnd`
 
 ## 主题定制
 

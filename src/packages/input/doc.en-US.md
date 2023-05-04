@@ -264,7 +264,7 @@ export default App;
 | align | Alignment of input box content, optional values `left`, `center`, `right` | `string` | `left` |
 | disabled | Whether to disable | `boolean` | `false` |
 | readOnly | Whether to read only | `boolean` | `false` |
-| autofocus | Whether to automatically get the focus, iOS system does not support this property | `boolean` | `false` |
+| autoFocus | Whether to automatically get the focus, iOS system does not support this property | `boolean` | `false` |
 | maxLength | Limit the longest input characters | `string, number` | `-` |
 | clearable | show clear Icon | `boolean` | `false` |
 | clearIcon | clear icon Icon <a href="#/icon">refer to Icon </a> | `ReactNode` | `MaskClose` |
