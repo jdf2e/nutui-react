@@ -63,6 +63,66 @@ const App = () => {
 export default App;
 ```
 :::
+
+### 只配图标
+
+:::demo
+```tsx
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+
+const App = () => (
+  <Tabbar
+    onSwitch={(value) => {
+      console.log(value)
+    }}
+  >
+    <Tabbar.Item
+      title="首页"
+      icon={<Home width={12} height={12} />}
+    />
+    <Tabbar.Item
+      title="分类"
+      icon={<Category width={12} height={12} />}
+    />
+    <Tabbar.Item icon={<Find width={24} height={24} />} />
+    <Tabbar.Item
+      title="购物车"
+      icon={<Cart width={12} height={12} />}
+    />
+    <Tabbar.Item
+      title="我的"
+      icon={<My width={12} height={12} />}
+    />
+  </Tabbar>
+)
+```
+:::
+
+### 无图标
+
+:::demo
+```tsx
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
+
+const App = () => (
+  <Tabbar
+    onSwitch={(value) => {
+      console.log(value)
+    }}
+  >
+    <Tabbar.Item title="首页" value={9} />
+    <Tabbar.Item title="分类" dot />
+    <Tabbar.Item title="发现" />
+    <Tabbar.Item title="购物车" />
+    <Tabbar.Item title="我的" />
+  </Tabbar>
+)
+```
+:::
+
 ### 徽标提示
 
 :::demo

@@ -31,11 +31,11 @@ const App = () => {
       setActiveIndex(value)
     }}
   >
-    <Tabbar.Item title="first" icon={<Home width={18} height={18} />} value={9} />
-    <Tabbar.Item title="Classification" icon={<Category width={18} height={18} />} dot />
+    <Tabbar.Item title="Home" icon={<Home width={18} height={18} />} value={9} />
+    <Tabbar.Item title="Category" icon={<Category width={18} height={18} />} dot />
     <Tabbar.Item title="Find" icon={<Find width={18} height={18} />} />
-    <Tabbar.Item title="cart" icon={<Cart width={18} height={18} />} />
-    <Tabbar.Item title="mine" icon={<My width={18} height={18} />} />
+    <Tabbar.Item title="Cart" icon={<Cart width={18} height={18} />} />
+    <Tabbar.Item title="Mine" icon={<My width={18} height={18} />} />
   </Tabbar>
 }
 
@@ -52,17 +52,77 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar defaultValue={2}>
-    <Tabbar.Item title="first" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="Classification" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
     <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="cart" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="mine" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
+    <Tabbar.Item title="Mine" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
 export default App;
 ```
 :::
+
+### Only Icon
+
+:::demo
+```tsx
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+
+const App = () => (
+  <Tabbar
+    onSwitch={(value) => {
+      console.log(value)
+    }}
+  >
+    <Tabbar.Item
+      title="Home"
+      icon={<Home width={12} height={12} />}
+    />
+    <Tabbar.Item
+      title="Category"
+      icon={<Category width={12} height={12} />}
+    />
+    <Tabbar.Item icon={<Find width={24} height={24} />} />
+    <Tabbar.Item
+      title="Cart"
+      icon={<Cart width={12} height={12} />}
+    />
+    <Tabbar.Item
+      title="Mine"
+      icon={<My width={12} height={12} />}
+    />
+  </Tabbar>
+)
+```
+:::
+
+### No Icon
+
+:::demo
+```tsx
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
+
+const App = () => (
+  <Tabbar
+    onSwitch={(value) => {
+      console.log(value)
+    }}
+  >
+    <Tabbar.Item title="Home" value={9} />
+    <Tabbar.Item title="Category" dot />
+    <Tabbar.Item title="Find" />
+    <Tabbar.Item title="Cart" />
+    <Tabbar.Item title="Mine" />
+  </Tabbar>
+)
+```
+:::
+
 ### Logo Tips
 
 :::demo
@@ -73,11 +133,11 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar>
-    <Tabbar.Item title="first" icon={<Home width={12} height={12} />} value={11} />
-    <Tabbar.Item title="Classification" icon={<Category width={12} height={12} />} />
+    <Tabbar.Item title="Home" icon={<Home width={12} height={12} />} value={11} />
+    <Tabbar.Item title="Category" icon={<Category width={12} height={12} />} />
     <Tabbar.Item title="Find" icon={<Find width={12} height={12} />} />
-    <Tabbar.Item title="cart" icon={<Cart width={12} height={12} />} value={110} />
-    <Tabbar.Item title="mine" icon={<My width={12} height={12} />} />
+    <Tabbar.Item title="Cart" icon={<Cart width={12} height={12} />} value={110} />
+    <Tabbar.Item title="Mine" icon={<My width={12} height={12} />} />
   </Tabbar>
 );
 
@@ -95,11 +155,11 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar>
-    <Tabbar.Item title="first" icon={<Home width={20} height={20} />} dot />
-    <Tabbar.Item title="Classification" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} dot />
+    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
     <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="cart" icon={<Cart width={20} height={20} />} dot />
-    <Tabbar.Item title="mine" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} dot />
+    <Tabbar.Item title="Mine" icon={<My width={20} height={20} />} />
   </Tabbar>
 )
 
@@ -116,11 +176,11 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
-    <Tabbar.Item title="first" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="Classification" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
     <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="cart" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="mine" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
+    <Tabbar.Item title="Mine" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -137,8 +197,8 @@ import { Category, Find, Home } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
-    <Tabbar.Item title="first" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="Classification" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
     <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
   </Tabbar>
 );
@@ -156,11 +216,11 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar fixed>
-    <Tabbar.Item title="first" href="" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="Classification" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="Home" href="" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
     <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="cart" href="https://m.jd.com" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="mine" to="/" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="Cart" href="https://m.jd.com" icon={<Cart width={20} height={20} />} />
+    <Tabbar.Item title="Mine" to="/" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
