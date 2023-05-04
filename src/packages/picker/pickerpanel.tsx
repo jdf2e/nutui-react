@@ -5,24 +5,21 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
-import { PickerOption } from './picker.taro'
+import { PickerOption } from './picker'
 import { useTouch } from '../../utils/use-touch'
-import { getRectByTaro } from '@/utils/use-client-rect'
-import { passiveSupported } from '@/utils/supports-passive'
 
-interface PickerSlotProps {
+interface PickerPanelProps {
   keyIndex?: number
   defaultValue?: string | number
   options?: PickerOption[]
   threeDimensional: boolean
   duration: number | string
-  itemShow: boolean
   chooseItem?: (val: PickerOption, idx: number) => void
 }
 
-const InternalPickerSlot: ForwardRefRenderFunction<
+const InternalPickerPanel: ForwardRefRenderFunction<
   { stopMomentum: () => void; moving: boolean },
-  Partial<PickerSlotProps>
+  Partial<PickerPanelProps>
 > = (props, ref) => {
   const {
     keyIndex = 0,
@@ -30,12 +27,10 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     options = [],
     threeDimensional = true,
     duration = 1000,
-    itemShow = false,
     chooseItem,
   } = props
 
   const touch = useTouch()
-
   const DEFAULT_DURATION = 200
   // 触发惯性滑动条件:
   // 在手指离开屏幕时，如果和上一次 move 时的间隔小于 `MOMENTUM_TIME` 且 move
@@ -43,17 +38,15 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const INERTIA_TIME = 300
   const INERTIA_DISTANCE = 15
   const [currIndex, setCurrIndex] = useState(1)
-  const lineSpacing = useRef(36)
-
+  const lineSpacing = 36
   const [touchTime, setTouchTime] = useState(0)
   const [touchDeg, setTouchDeg] = useState('0deg')
   const rotation = 20
   const moving = useRef(false)
   let timer: number | undefined
 
-  const listRef = useRef<any>(null)
   const rollerRef = useRef<any>(null)
-  const pickerSlotRef = useRef<any>(null)
+  const PickerPanelRef = useRef<any>(null)
 
   const [startTime, setStartTime] = useState(0)
   const [startY, setStartY] = useState(0)
@@ -78,8 +71,10 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     if (type !== 'end') {
       nTime = 0
     }
+
     setTouchTime(nTime)
     setTouchDeg(deg)
+
     setScrollDistance(translateY)
   }
 
@@ -90,38 +85,39 @@ const InternalPickerSlot: ForwardRefRenderFunction<
       if (updateMove > 0) {
         updateMove = 0
       }
-      if (updateMove < -(options.length - 1) * lineSpacing.current) {
-        updateMove = -(options.length - 1) * lineSpacing.current
+      if (updateMove < -(options.length - 1) * lineSpacing) {
+        updateMove = -(options.length - 1) * lineSpacing
       }
 
       // 设置滚动距离为lineSpacing的倍数值
-      const endMove =
-        Math.round(updateMove / lineSpacing.current) * lineSpacing.current
+      const endMove = Math.round(updateMove / lineSpacing) * lineSpacing
       const deg = `${
-        (Math.abs(Math.round(endMove / lineSpacing.current)) + 1) * rotation
+        (Math.abs(Math.round(endMove / lineSpacing)) + 1) * rotation
       }deg`
 
       setTransform(endMove, type, time, deg)
-      setCurrIndex(Math.abs(Math.round(endMove / lineSpacing.current)) + 1)
+
+      setCurrIndex(Math.abs(Math.round(endMove / lineSpacing)) + 1)
     } else {
       let deg = 0
-      const currentDeg = (-updateMove / lineSpacing.current + 1) * rotation
+      const currentDeg = (-updateMove / lineSpacing + 1) * rotation
 
       // picker 滚动的最大角度
       const maxDeg = (options.length + 1) * rotation
       const minDeg = 0
+
       deg = Math.min(Math.max(currentDeg, minDeg), maxDeg)
 
       if (minDeg < deg && deg < maxDeg) {
         setTransform(updateMove, '', undefined, `${deg}deg`)
-        setCurrIndex(Math.abs(Math.round(updateMove / lineSpacing.current)) + 1)
+        setCurrIndex(Math.abs(Math.round(updateMove / lineSpacing)) + 1)
       }
     }
   }
 
   const setChooseValue = (move: number) => {
     chooseItem &&
-      chooseItem(options?.[Math.round(-move / lineSpacing.current)], keyIndex)
+      chooseItem(options?.[Math.round(-move / lineSpacing)], keyIndex)
   }
 
   // 开始滚动
@@ -154,7 +150,9 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     } else {
       setMove(move, 'end')
     }
+
     setTimeout(() => {
+      // moving.current = false
       touch.reset()
     }, 0)
   }
@@ -189,7 +187,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     }
 
     setCurrIndex(index === -1 ? 1 : index + 1)
-    const move = index === -1 ? 0 : index * lineSpacing.current
+    const move = index === -1 ? 0 : index * lineSpacing
     type && setChooseValue(-move)
     setMove(-move)
   }
@@ -206,22 +204,13 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     isStopPropagation?: boolean
   ) => {
     /* istanbul ignore else */
-    if (
-      !passiveSupported &&
-      (typeof event.cancelable !== 'boolean' || event.cancelable)
-    ) {
+    if (typeof event.cancelable !== 'boolean' || event.cancelable) {
       event.preventDefault()
     }
 
     if (isStopPropagation) {
       event.stopPropagation()
     }
-  }
-
-  const getReference = async () => {
-    const refe = await getRectByTaro(listRef?.current)
-    lineSpacing.current = refe.height ? refe.height : 36
-    modifyStatus(true)
   }
 
   const touchRollerStyle = () => {
@@ -246,14 +235,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     }
   }, [options])
 
-  useEffect(() => {
-    if (itemShow) {
-      setTimeout(() => {
-        getReference()
-      }, 200)
-    }
-  }, [itemShow])
-
   useImperativeHandle(ref, () => ({
     stopMomentum,
     moving: moving.current,
@@ -262,7 +243,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   return (
     <div
       className="nut-picker-list"
-      ref={pickerSlotRef}
+      ref={PickerPanelRef}
       onTouchStart={touchStart}
       onTouchMove={touchMove}
       onTouchEnd={touchEnd}
@@ -285,8 +266,6 @@ const InternalPickerSlot: ForwardRefRenderFunction<
                   transform: `rotate3d(1, 0, 0, ${
                     -rotation * (index + 1)
                   }deg) translate3d(0px, 0px, 104px)`,
-                  height: `${lineSpacing.current}px`,
-                  lineHeight: `${lineSpacing.current}px`,
                 }}
                 key={item.value ? item.value : index}
               >
@@ -301,24 +280,21 @@ const InternalPickerSlot: ForwardRefRenderFunction<
               <div
                 className="nut-picker-roller-item-title"
                 key={item.value ? item.value : index}
-                style={{
-                  height: `${lineSpacing.current}px`,
-                  lineHeight: `${lineSpacing.current}px`,
-                }}
               >
                 <>{item.text ? item.text : item}</>
               </div>
             )
           })}
       </div>
+
       <div className="nut-picker-mask" />
-      <div className="nut-picker-indicator" ref={listRef} />
+      <div className="nut-picker-indicator" />
     </div>
   )
 }
-const PickerSlot =
+const PickerPanel =
   React.forwardRef<
     { stopMomentum: () => void; moving: boolean },
-    Partial<PickerSlotProps>
-  >(InternalPickerSlot)
-export default PickerSlot
+    Partial<PickerPanelProps>
+  >(InternalPickerPanel)
+export default PickerPanel

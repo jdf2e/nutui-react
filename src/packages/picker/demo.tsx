@@ -269,7 +269,7 @@ const PickerDemo = () => {
     console.log('demo 确定')
     let description = ''
     options.forEach((option: any) => {
-      description += option.text
+      description += ` ${option.text}`
     })
     if (type === 'base') {
       setBaseDesc(description)

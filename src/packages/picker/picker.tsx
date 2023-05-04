@@ -6,7 +6,7 @@ import React, {
   ForwardRefRenderFunction,
 } from 'react'
 import Popup from '@/packages/popup'
-import PickerSlot from './pickerSlot'
+import PickerPanel from './pickerpanel'
 import useRefs from '@/utils/use-refs'
 import { useConfig } from '@/packages/configprovider'
 import bem from '@/utils/bem'
@@ -291,7 +291,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
           <div className={b('panel')} ref={pickerRef}>
             {columnsList?.map((item, index) => {
               return (
-                <PickerSlot
+                <PickerPanel
                   ref={setRefs(index)}
                   defaultValue={chooseValueData?.[index]}
                   options={item}

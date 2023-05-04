@@ -8,7 +8,7 @@ import React, {
 import Taro from '@tarojs/taro'
 import { View, PickerView, PickerViewColumn } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
-import PickerSlot from './pickerSlot.taro'
+import PickerPanel from './pickerpanel.taro'
 import useRefs from '@/utils/use-refs'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import bem from '@/utils/bem'
@@ -340,7 +340,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
             {Taro.getEnv() === 'WEB' ? (
               columnsList?.map((item, index) => {
                 return (
-                  <PickerSlot
+                  <PickerPanel
                     ref={setRefs(index)}
                     defaultValue={chooseValueData?.[index]}
                     options={item}
