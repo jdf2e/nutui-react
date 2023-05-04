@@ -10,10 +10,25 @@
   padding: $dialog-padding;
   box-sizing: border-box;
 
+  &__outer {
+    position: fixed;
+    max-height: 100%;
+    overflow-y: auto;
+    background-color: $white;
+    transition: transform 0.2s, -webkit-transform 0.2s;
+    -webkit-overflow-scrolling: touch;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: $dialog-outer-bordder-radius;
+    z-index: $dialog-outer-z-index;
+    animation-duration: 0.3s;
+  }
+
   &__header {
     display: block;
     text-align: center;
-    // height: $dialog-header-height;
     font-size: $font-size-3;
     color: $title-color;
     @include oneline-ellipsis();
@@ -31,6 +46,7 @@
     word-wrap: break-word;
     word-break: break-all;
     white-space: pre-wrap;
+    text-align: $dialog-content-text-align;
   }
 
   &__footer {
@@ -70,67 +86,22 @@
   }
 }
 
-.nut-dialog__mask {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: $dialog-mask-background-color;
-  z-index: $dialog-mask-z-index;
-}
+// .fadeDialog-enter,
+// .fadeDialog-appear {
+//   opacity: 0;
+// }
 
-.nut-dialog__wrap {
-  position: fixed;
-  overflow: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: $dialog-mask-z-index;
-  -webkit-overflow-scrolling: touch;
-  outline: 0;
-}
+// .fadeDialog-enter-active,
+// .fadeDialog-appear-active {
+//   opacity: 1;
+//   transition: opacity 1s cubic-bezier(0.3, 1.3, 0.3, 1);
+// }
 
-.nut-dialog__outer {
-  position: fixed;
-  max-height: 100%;
-  overflow-y: auto;
-  background-color: $white;
-  -webkit-transition: -webkit-transform 0.2s;
-  transition: -webkit-transform 0.2s;
-  transition: transform 0.2s;
-  transition: transform 0.2s, -webkit-transform 0.2s;
-  -webkit-overflow-scrolling: touch;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  border-radius: $dialog-outer-bordder-radius;
-  z-index: $dialog-outer-z-index;
-  animation-duration: 0.3s;
-}
+// .fadeDialog-exit {
+//   opacity: 1;
+// }
 
-.fadeDialog-enter,
-.fadeDialog-appear {
-  opacity: 0;
-}
-
-.fadeDialog-enter-active,
-.fadeDialog-appear-active {
-  opacity: 1;
-  transition: opacity 1s cubic-bezier(0.3, 1.3, 0.3, 1);
-}
-
-.fadeDialog-exit {
-  opacity: 1;
-}
-
-.fadeDialog-exit-active {
-  opacity: 0;
-  transition: opacity 1s cubic-bezier(0.3, 1.3, 0.3, 1);
-}
-
-.nut-overflow-hidden {
-  overflow: hidden !important;
-}
+// .fadeDialog-exit-active {
+//   opacity: 0;
+//   transition: opacity 1s cubic-bezier(0.3, 1.3, 0.3, 1);
+// }

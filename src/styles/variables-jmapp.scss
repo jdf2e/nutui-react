@@ -729,9 +729,16 @@ $avatar-normal-width: var(--nutui-avatar-normal-width, 40px) !default;
 $avatar-normal-height: var(--nutui-avatar-normal-height, 40px) !default;
 
 //switch（✅）
-$switch-close-bg-color: var(--nutui-switch-close-bg-color, #ebebeb) !default;
-$switch-close--line-bg-color: var(
-  --nutui-switch-close--line-bg-color,
+$switch-inactive-background-color: var(
+  --nutui-switch-close-background-color,
+  #ebebeb
+) !default;
+$switch-active-background-color: var(
+  --nutui-switch-open-background-color,
+  $primary-color
+) !default;
+$switch-close-line-background-color: var(
+  --nutui-switch-close-line-bg-color,
   #f0f0f0
 ) !default;
 $switch-width: var(--nutui-switch-width, 36px) !default;
@@ -1598,18 +1605,12 @@ $tabs-titles-background-color: var(
   $background-color
 ) !default;
 $tabs-titles-border-radius: var(--nutui-tabs-titles-border-radius, 0) !default;
-$tabs-titles-item-large-font-size: var(
-  --nutui-tabs-titles-item-large-font-size,
-  $font-size-3
-) !default;
+
 $tabs-titles-item-font-size: var(
   --nutui-tabs-titles-item-font-size,
   $font-size-2
 ) !default;
-$tabs-titles-item-small-font-size: var(
-  --nutui-tabs-titles-item-small-font-size,
-  $font-size-1
-) !default;
+
 $tabs-titles-item-color: var(
   --nutui-tabs-titles-item-color,
   $title-color

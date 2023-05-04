@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Switch } from '../switch'
 
-test('activeColor && inactiveColor &&  activeText && checked && onChange && inactiveText && isAsync && className && style test', () => {
+test('activeColor && inactiveColor &&  activeText && checked && onChange && inactiveText && className && style test', () => {
   const state: any = {
     activeColor: 'rgb(124, 88, 33)',
     inactiveColor: 'rgb(250, 104, 93)',
@@ -11,7 +11,7 @@ test('activeColor && inactiveColor &&  activeText && checked && onChange && inac
     inactiveText: '关',
     checked: false,
     className: 'switch-test',
-    style: { fontSize: '12px' },
+    style: { fontSize: '12px', '--nutui-switch-open-background-color': 'blue' },
   }
   const {
     activeColor,
@@ -26,9 +26,7 @@ test('activeColor && inactiveColor &&  activeText && checked && onChange && inac
     <Switch
       className={className}
       style={style}
-      isAsync
-      activeColor={activeColor}
-      inactiveColor={inactiveColor}
+      defaultChecked
       activeText={activeText}
       checked={false}
       onChange={testFn}
@@ -43,7 +41,7 @@ test('activeColor && inactiveColor &&  activeText && checked && onChange && inac
     )
     expect(el).toHaveAttribute(
       'style',
-      `background-color: ${inactiveColor}; font-size: 12px;`
+      `font-size: 12px; --nutui-switch-open-background-color: blue;`
     )
     expect(el).toHaveTextContent(inactiveText)
     fireEvent.click(el)
@@ -56,8 +54,8 @@ test('activeColor && inactiveColor &&  activeText && checked && onChange && inac
   }
 })
 
-test('disable test', () => {
-  render(<Switch disable />)
-  const el = document.getElementsByClassName('nut-switch-disable')
+test('disabled test', () => {
+  render(<Switch disabled />)
+  const el = document.getElementsByClassName('nut-switch-disabled')
   expect(el.length > 0).toBe(true)
 })

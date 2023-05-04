@@ -105,7 +105,7 @@ import { CellGroup,Cell,Switch } from '@nutui/nutui-react';
 const App = () => {
   return (
     <CellGroup title="自定義右側箭頭區域">
-      <Cell title="Switch" extra={<Switch checked />} />
+      <Cell title="Switch" extra={<Switch defaultChecked />} />
     </CellGroup>
   );
 };
