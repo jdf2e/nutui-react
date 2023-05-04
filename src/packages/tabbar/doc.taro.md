@@ -22,7 +22,7 @@ import { Tabbar } from '@nutui/nutui-react-taro';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro-taro';
 
 const App = () => (
-<Tabbar onSwitch={(child, idx) => {console.log(idx)}}>
+  <Tabbar onSwitch={(child, idx) => {console.log(idx)}}>
     <Tabbar.Item title="首页" icon={<Home width={18} height={18} />} />
     <Tabbar.Item title="分类" icon={<Category width={18} height={18} />} />
     <Tabbar.Item title="发现" icon={<Find width={18} height={18} />} />
@@ -214,6 +214,7 @@ export default App;
 | --nutui-tabbar-border-top | 上边框 | `1px solid #eee` |
 | --nutui-tabbar-border-bottom | 下边框 | `1px solid #eee` |
 | --nutui-tabbar-box-shadow | 阴影 | `none` |
-| --nutui-tabbar-item-text-font-size | 标题字体大小 | `$font-size-0` |
-| --nutui-tabbar-item-text-line-height | 字体行高 | `initial` |
-| --nutui-tabbar-word-margin-top | 标题上外边距 | `3px` |
+| --nutui-tabbar-text-font-size | 标题字体大小 | `$font-size-0` |
+| --nutui-tabbar-text-large-font-size | 无图标时标题字体大小 | `$font-size-large` |
+| --nutui-tabbar-text-line-height | 字体行高 | `initial` |
+| --nutui-tabbar-text-margin-top | 标题上外边距 | `3px` |

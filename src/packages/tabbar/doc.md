@@ -22,8 +22,8 @@ import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
-<Tabbar onSwitch={(value) => {console.log(value)}}>
-    <Tabbar.Item title="首页" icon={<Home width={18} height={18} />} value={9}/>
+  <Tabbar onSwitch={(value) => {console.log(value)}}>
+    <Tabbar.Item title="首页" icon={<Home width={18} height={18} />} value={9} />
     <Tabbar.Item title="分类" icon={<Category width={18} height={18} dot />} />
     <Tabbar.Item title="发现" icon={<Find width={18} height={18} />} />
     <Tabbar.Item title="购物车" icon={<Cart width={18} height={18} />} />
@@ -78,23 +78,11 @@ const App = () => (
       console.log(value)
     }}
   >
-    <Tabbar.Item
-      title="首页"
-      icon={<Home width={12} height={12} />}
-    />
-    <Tabbar.Item
-      title="分类"
-      icon={<Category width={12} height={12} />}
-    />
+    <Tabbar.Item title="首页" icon={<Home width={12} height={12} />} />
+    <Tabbar.Item title="分类" icon={<Category width={12} height={12} />} />
     <Tabbar.Item icon={<Find width={24} height={24} />} />
-    <Tabbar.Item
-      title="购物车"
-      icon={<Cart width={12} height={12} />}
-    />
-    <Tabbar.Item
-      title="我的"
-      icon={<My width={12} height={12} />}
-    />
+    <Tabbar.Item title="购物车" icon={<Cart width={12} height={12} />} />
+    <Tabbar.Item title="我的" icon={<My width={12} height={12} />} />
   </Tabbar>
 )
 ```
@@ -274,6 +262,7 @@ export default App;
 | --nutui-tabbar-border-top | 上边框 | `1px solid #eee` |
 | --nutui-tabbar-border-bottom | 下边框 | `1px solid #eee` |
 | --nutui-tabbar-box-shadow | 阴影 | `none` |
-| --nutui-tabbar-item-text-font-size | 标题字体大小 | `$font-size-0` |
-| --nutui-tabbar-item-text-line-height | 字体行高 | `initial` |
-| --nutui-tabbar-word-margin-top | 标题上外边距 | `3px` |
+| --nutui-tabbar-text-font-size | 标题字体大小 | `$font-size-0` |
+| --nutui-tabbar-text-large-font-size | 无图标时标题字体大小 | `$font-size-large` |
+| --nutui-tabbar-text-line-height | 字体行高 | `initial` |
+| --nutui-tabbar-text-margin-top | 标题上外边距 | `3px` |
