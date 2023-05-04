@@ -299,7 +299,7 @@ const PickerDemo = () => {
         <Picker
           title={translated.chooseCity}
           visible={isVisible1}
-          listData={listData1}
+          options={listData1}
           onConfirm={(values, list) => confirmPicker('base', values, list)}
           onClose={() => setIsVisible1(false)}
           onChange={changePicker}
@@ -313,9 +313,9 @@ const PickerDemo = () => {
         />
         <Picker
           visible={isVisible4}
-          listData={listData1}
+          options={listData1}
           onConfirm={(values, list) => confirmPicker('default', values, list)}
-          defaultValueData={defaultValue}
+          defaultValue={defaultValue}
           onClose={() => setIsVisible4(false)}
           onChange={changePicker}
         />
@@ -328,9 +328,9 @@ const PickerDemo = () => {
         />
         <Picker
           visible={isVisible2}
-          listData={listData2}
+          options={listData2}
           onClose={() => setIsVisible2(false)}
-          defaultValueData={['Wednesday']}
+          defaultValue={['Wednesday']}
           onChange={changePicker}
           onConfirm={(values, list) => confirmPicker('mutil', values, list)}
         />
@@ -342,11 +342,11 @@ const PickerDemo = () => {
         />
         <Picker
           visible={isVisible6}
-          listData={listData1}
+          options={listData1}
           onConfirm={(values, list) => confirmPicker('tile', values, list)}
-          defaultValueData={defaultValue}
+          defaultValue={defaultValue}
           threeDimensional={false}
-          swipeDuration={1000}
+          duration={1000}
           onClose={() => setIsVisible6(false)}
           onChange={changePicker}
         />
@@ -360,7 +360,7 @@ const PickerDemo = () => {
 
         <Picker
           visible={isVisible3}
-          listData={custmerCityData}
+          options={custmerCityData}
           onClose={() => setIsVisible3(false)}
           onConfirm={(values, list: PickerOption[]) =>
             setChooseValueCustmer(values, list)
@@ -389,7 +389,7 @@ const PickerDemo = () => {
 
         <Picker
           visible={isVisible5}
-          listData={custmerCityData}
+          options={custmerCityData}
           onClose={() => setIsVisible5(false)}
           onConfirm={(values, list: PickerOption[]) =>
             setAsyncConfirm(values, list)

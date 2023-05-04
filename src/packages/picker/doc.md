@@ -54,7 +54,7 @@ const App = () => {
       <Cell title="请选择城市" description={baseDesc} onClick={() => setIsVisible1(!isVisible1)}/>
       <Picker
         visible={isVisible1}
-        listData={listData1}
+        options={listData1}
         onConfirm={(values, list) => confirmPicker(values, list)}
         onClose={() => setIsVisible1(false)}
         onChange={changePicker}
@@ -105,7 +105,7 @@ const App = () => {
       <Cell title="请选择城市" description={baseDefault} onClick={() => setIsVisible1(!isVisible1)}/>
       <Picker
         visible={isVisible1}
-        listData={listData1}
+        options={listData1}
         onConfirm={(values, list) => confirmPicker(values, list)}
         onClose={() => setIsVisible1(false)}
        />
@@ -154,9 +154,9 @@ const App = () => {
     <Cell title="多列用法" description={mutilDesc} onClick={() => setIsVisible2(!isVisible2)} />
     <Picker
       visible={isVisible2}
-      listData={listData2}
+      options={listData2}
       onClose={() => setIsVisible2(false)}
-      defaultValueData={['Wednesday']}
+      defaultValue={['Wednesday']}
       onConfirm={(values, list) => confirmPicker(values, list)}
      />
     </>
@@ -168,7 +168,7 @@ export default App;
 
 ### 平铺展示
 
-通过设置 `threeDimensional` 取消 3D 展示效果，并且通过设置 `swipeDuration` 可以控制快速滚动的时长。
+通过设置 `threeDimensional` 取消 3D 展示效果，并且通过设置 `duration` 可以控制快速滚动的时长。
 
 :::demo
 ```tsx
@@ -178,7 +178,7 @@ import { Picker,Cell } from '@nutui/nutui-react';
 const App = () => {
   const [visible, setIsVisible] = useState(false)
   const [tileDesc, settileDesc] = useState('')
-  const listData = [
+  const options = [
     [
       { value: 1, text: '南京市',},
       { value: 2, text: '无锡市',},
@@ -206,9 +206,9 @@ const App = () => {
       <Cell title="请选择城市" description={settileDesc} onClick={() => setIsVisible(!visible)}/>
       <Picker
         visible={visible}
-        listData={listData}
+        options={options}
         threeDimensional={false}
-        swipeDuration={1000}
+        duration={1000}
         onConfirm={(values, list) => confirmPicker(values, list)}
         onClose={() => setIsVisible(false)}
        />
@@ -263,7 +263,7 @@ const App = () => {
       <Cell title="多级联动" description={cityCustmer} onClick={() => setIsVisible(!visible)}/>
       <Picker
         visible={visible}
-        listData={custmerCityData}
+        options={custmerCityData}
         onClose={() => setIsVisible(false)}
         onConfirm={(values, list: PickerOption[]) =>
           setChooseValueCustmer(values, list)
@@ -334,7 +334,7 @@ const App = () => {
       <Cell title="请选择城市" description={asyncDesc} onClick={() => setIsVisible(!visible)}/>
       <Picker
         visible={visible}
-        listData={asyncData}
+        options={asyncData}
         onClose={() => setIsVisible(false)}
         onConfirm={(values, list: PickerOption[]) =>
           setAsyncConfirm(values, list)
@@ -359,16 +359,16 @@ export default App;
 |------------------------| ----- | ----- | ----- |
 | visible              | 是否可见 | boolean | `false` |
 | title                  | 设置标题 | string | - |
-| listData               | 列表数据 | Array | `[]` |
-| defaultValueData       | 默认选中 | Array | `[]` |
+| options               | 列表数据 | Array | `[]` |
+| defaultValue       | 默认选中 | Array | `[]` |
 | threeDimensional | 是否开启3D效果               | boolean  | `true`   |
-| swipeDuration | 快速滑动时惯性滚动的时长，单位 ms | string \| number | `1000`   |
+| duration | 快速滑动时惯性滚动的时长，单位 ms | string \| number | `1000`   |
 | onConfirm            | 点击确认按钮时候回调 | 返回选中值 value，选中值对象 |
 | onChange     | 每一列值变更时调用   | 改变的列数，改变值 value，当前选中值 |
 | onCloseUpdate        | 联动时，关闭时回调   | 当前选中值，依次返回this |
 | onClose              | 关闭时触发          | 返回选中值 value，选中值对象 |
 
-## listData 数据结构
+## options 数据结构
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | text     | 选项的文字内容               | string \| number |               |

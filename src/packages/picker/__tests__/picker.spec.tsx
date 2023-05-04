@@ -87,7 +87,7 @@ const multistageColumns = [
 ]
 
 test('renderLabel works', async () => {
-  const { container } = render(<Picker visible listData={simpleColumns} />)
+  const { container } = render(<Picker visible options={simpleColumns} />)
   expect(container.textContent?.replace(/-/g, '')).toContain(
     '取消确认南京市无锡市海北藏族自治区北京市连云港市'
   )
@@ -98,7 +98,7 @@ test('simple list-data confirm  event', async () => {
   const { container } = render(
     <Picker
       visible
-      listData={simpleColumns}
+      options={simpleColumns}
       onConfirm={(value) => confirm(value)}
     />
   )
@@ -110,7 +110,7 @@ test('simple list-data confirm  event', async () => {
 test('simple list-data close event', async () => {
   const cancel = jest.fn()
   const { container } = render(
-    <Picker visible listData={simpleColumns} onClose={cancel} />
+    <Picker visible options={simpleColumns} onClose={cancel} />
   )
   const cancelBtn = container.querySelectorAll('.nut-picker__cancel-btn')[0]
   fireEvent.click(cancelBtn)
@@ -122,8 +122,8 @@ test('simple list-data default checked item', async () => {
   const { container } = render(
     <Picker
       visible
-      listData={simpleColumns}
-      defaultValueData={['WuXi']}
+      options={simpleColumns}
+      defaultValue={['WuXi']}
       onConfirm={(value) => confirm(value)}
     />
   )
@@ -137,7 +137,7 @@ test('multiple list-data render', async () => {
   const { container } = render(
     <Picker
       visible
-      listData={multipleColumns}
+      options={multipleColumns}
       onConfirm={(value) => confirm(value)}
     />
   )
@@ -153,7 +153,7 @@ test('multistageColumns list-data render', async () => {
   const { container } = render(
     <Picker
       visible
-      listData={multistageColumns}
+      options={multistageColumns}
       onConfirm={(value) => confirm(value)}
     />
   )
@@ -176,7 +176,7 @@ test('async list-data render', async () => {
     return (
       <Picker
         visible
-        listData={asyncColumns}
+        options={asyncColumns}
         onConfirm={(value) => confirm(value)}
       />
     )

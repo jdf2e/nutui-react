@@ -21,12 +21,12 @@ export interface PickerOption {
 export interface PickerProps {
   visible: boolean
   title?: string
-  listData: (PickerOption | PickerOption[])[]
-  defaultValueData?: (number | string)[]
+  options: (PickerOption | PickerOption[])[]
+  defaultValue?: (number | string)[]
   className?: ''
   style?: React.CSSProperties
   threeDimensional?: boolean
-  swipeDuration: number | string
+  duration: number | string
   onConfirm?: (
     selectedValue: (string | number)[],
     selectedOptions: PickerOption[]
@@ -53,8 +53,8 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     const {
       visible,
       title,
-      listData = [],
-      defaultValueData,
+      options = [],
+      defaultValue,
       onConfirm,
       onClose,
       onCloseUpdate,
@@ -62,7 +62,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       className,
       style,
       threeDimensional,
-      swipeDuration,
+      duration,
       ...rest
     } = props
 
@@ -80,15 +80,15 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     // 默认值修改
     useEffect(() => {
       if (
-        defaultValueData &&
-        defaultValueData.length !== 0 &&
-        defaultValueData.toString() !== chooseValueData.toString()
+        defaultValue &&
+        defaultValue.length !== 0 &&
+        defaultValue.toString() !== chooseValueData.toString()
       ) {
-        const data = [...defaultValueData]
+        const data = [...defaultValue]
         setchooseValueData(data)
         setColumnsList(normalListData() as PickerOption[][])
       }
-    }, [defaultValueData])
+    }, [defaultValue])
 
     // 选中值进行修改
     useEffect(() => {
@@ -102,7 +102,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     // 列表格式修改
     useEffect(() => {
       init()
-    }, [listData])
+    }, [options])
 
     const closeActionSheet = () => {
       onClose && onClose(chooseValueData, selectedOptions())
@@ -196,17 +196,17 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
 
       switch (type) {
         case 'multiple':
-          return listData
+          return options
         case 'cascade':
           // 级联数据处理
-          return formatCascade(listData as PickerOption[], chooseValueData)
+          return formatCascade(options as PickerOption[], chooseValueData)
         default:
-          return [listData]
+          return [options]
       }
     }
     // 每一列的类型
     const columnsType = () => {
-      const firstColumn: PickerOption | PickerOption[] = listData[0]
+      const firstColumn: PickerOption | PickerOption[] = options[0]
       if (firstColumn) {
         if (Array.isArray(firstColumn)) {
           return 'multiple'
@@ -261,7 +261,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
           return item
         })
 
-      if (!defaultValueData && chooseValueData.length === 0) {
+      if (!defaultValue && chooseValueData.length === 0) {
         setchooseValueData([...data])
       }
     }
@@ -295,12 +295,12 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
                 <PickerSlot
                   ref={setRefs(index)}
                   defaultValue={chooseValueData?.[index]}
-                  listData={item}
+                  options={item}
                   threeDimensional={threeDimensional}
                   chooseItem={(value: PickerOption, index: number) =>
                     chooseItem(value, index)
                   }
-                  swipeDuration={swipeDuration}
+                  duration={duration}
                   key={index}
                   keyIndex={index}
                 />

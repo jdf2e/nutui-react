@@ -11,9 +11,9 @@ import { useTouch } from '../../utils/use-touch'
 interface PickerSlotProps {
   keyIndex?: number
   defaultValue?: string | number
-  listData?: PickerOption[]
+  options?: PickerOption[]
   threeDimensional: boolean
-  swipeDuration: number | string
+  duration: number | string
   chooseItem?: (val: PickerOption, idx: number) => void
 }
 
@@ -24,9 +24,9 @@ const InternalPickerSlot: ForwardRefRenderFunction<
   const {
     keyIndex = 0,
     defaultValue,
-    listData = [],
+    options = [],
     threeDimensional = true,
-    swipeDuration = 1000,
+    duration = 1000,
     chooseItem,
   } = props
 
@@ -85,8 +85,8 @@ const InternalPickerSlot: ForwardRefRenderFunction<
       if (updateMove > 0) {
         updateMove = 0
       }
-      if (updateMove < -(listData.length - 1) * lineSpacing) {
-        updateMove = -(listData.length - 1) * lineSpacing
+      if (updateMove < -(options.length - 1) * lineSpacing) {
+        updateMove = -(options.length - 1) * lineSpacing
       }
 
       // 设置滚动距离为lineSpacing的倍数值
@@ -103,7 +103,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
       const currentDeg = (-updateMove / lineSpacing + 1) * rotation
 
       // picker 滚动的最大角度
-      const maxDeg = (listData.length + 1) * rotation
+      const maxDeg = (options.length + 1) * rotation
       const minDeg = 0
 
       deg = Math.min(Math.max(currentDeg, minDeg), maxDeg)
@@ -117,7 +117,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
 
   const setChooseValue = (move: number) => {
     chooseItem &&
-      chooseItem(listData?.[Math.round(-move / lineSpacing)], keyIndex)
+      chooseItem(options?.[Math.round(-move / lineSpacing)], keyIndex)
   }
 
   // 开始滚动
@@ -146,7 +146,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     if (moveTime <= INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
       // 惯性滚动
       const distance = momentum(move, moveTime)
-      setMove(distance, 'end', +swipeDuration)
+      setMove(distance, 'end', +duration)
     } else {
       setMove(move, 'end')
     }
@@ -171,7 +171,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     const value = val || defaultValue
     let index = -1
     if (value) {
-      listData.some((item, idx) => {
+      options.some((item, idx) => {
         if (item.value === value) {
           index = idx
           return true
@@ -179,7 +179,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
         return false
       })
     } else {
-      listData.forEach((item, i) => {
+      options.forEach((item, i) => {
         if (item.value === defaultValue) {
           index = i
         }
@@ -233,7 +233,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
     return () => {
       clearTimeout(timer)
     }
-  }, [listData])
+  }, [options])
 
   useImperativeHandle(ref, () => ({
     stopMomentum,
@@ -256,7 +256,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
       >
         {/* 3D 效果 */}
         {threeDimensional &&
-          listData.map((item, index) => {
+          options.map((item, index) => {
             return (
               <div
                 className={`nut-picker-roller-item ${
@@ -275,7 +275,7 @@ const InternalPickerSlot: ForwardRefRenderFunction<
           })}
         {/* 平铺 */}
         {!threeDimensional &&
-          listData.map((item, index) => {
+          options.map((item, index) => {
             return (
               <div
                 className="nut-picker-roller-item-title"

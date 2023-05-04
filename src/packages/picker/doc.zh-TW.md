@@ -87,9 +87,9 @@ const App = () => {
       </Cell>
       <Picker
         visible={isVisible1}
-        listData={listData1}
+        options={listData1}
         onClose={() => setIsVisible1(false)}
-        defaultValueData={[]}
+        defaultValue={[]}
         ref={pickerRef1}
        />
     </>
@@ -124,9 +124,9 @@ const App = () => {
     </Cell>
     <Picker
       visible={isVisible2}
-      listData={listData2}
+      options={listData2}
       onClose={() => setIsVisible2(false)}
-      defaultValueData={['周四', '下午']}
+      defaultValue={['周四', '下午']}
       onConfirm={(list: any[]) => console.log('多列用法選中項：', list)}
       ref={pickerRef2}
      />
@@ -266,7 +266,7 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell  onClick={() => setIsVisible3(!isVisible3)}>
+      <Cell onClick={() => setIsVisible3(!isVisible3)}>
         <span>
           <label>
             多級聯動
@@ -276,9 +276,9 @@ const App = () => {
       </Cell>
       <Picker
         visible={isVisible3}
-        listData={custmerCityData}
+        options={custmerCityData}
         onClose={() => setIsVisible3(false)}
-        defaultValueData={[]}
+        defaultValue={[]}
         onConfirm={(list: any[]) => setChooseValueCustmer(list)}
         onChoose={(index: number, value: IResValue, list: any[]) =>
           updateChooseValueCustmer(index, value, list)
@@ -302,8 +302,8 @@ export default App;
 |----- | ----- | ----- | ----- 
 | visible | 是否可見 | boolean | `false`
 | title | 設置標題 | string | -
-| listData | 列錶數據 | Array | `[]`
-| defaultValueData | 默認選中 | Array | `[]`
+| options | 列錶數據 | Array | `[]`
+| defaultValue | 默認選中 | Array | `[]`
 | onConfirm | 點擊確認按鈕時候回調 | 返回選中值
 | onChoose | 每一列值變更時調用 | 依次返回this、改變的列數，改變值，當前選中值
 | onCloseUpdate | 聯動時，關閉時回調 | 依次返回this、當前選中值

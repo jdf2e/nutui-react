@@ -52,7 +52,7 @@ const App = () => {
       <Cell title="Choose City" description={baseDesc} onClick={() => setIsVisible1(!isVisible1)}/>
       <Picker
         visible={isVisible1}
-        listData={listData1}
+        options={listData1}
         onConfirm={(values, list) => confirmPicker(values, list)}
         onClose={() => setIsVisible1(false)}
         onChange={changePicker}
@@ -103,7 +103,7 @@ const App = () => {
       <Cell title="Choose City" description={baseDefault} onClick={() => setIsVisible1(!isVisible1)}/>
       <Picker
         visible={isVisible1}
-        listData={listData1}
+        options={listData1}
         onConfirm={(values, list) => confirmPicker(values, list)}
         onClose={() => setIsVisible1(false)}
        />
@@ -152,9 +152,9 @@ const App = () => {
     <Cell title="Multiple Columns" description={mutilDesc} onClick={() => setIsVisible2(!isVisible2)} />
     <Picker
       visible={isVisible2}
-      listData={listData2}
+      options={listData2}
       onClose={() => setIsVisible2(false)}
-      defaultValueData={['Wednesday']}
+      defaultValue={['Wednesday']}
       onConfirm={(values, list) => confirmPicker(values, list)}
      />
     </>
@@ -174,7 +174,7 @@ import { Picker,Cell } from '@nutui/nutui-react';
 const App = () => {
   const [visible, setIsVisible] = useState(false)
   const [tileDesc, settileDesc] = useState('')
-  const listData = [
+  const options = [
     [
       { value: 1, text: 'NanJing',},
       { value: 2, text: 'WuXi',},
@@ -202,7 +202,7 @@ const App = () => {
       <Cell title="Choose City" description={settileDesc} onClick={() => setIsVisible(!visible)}/>
       <Picker
         visible={visible}
-        listData={listData}
+        options={options}
         threeDimensional={false}
         onConfirm={(values, list) => confirmPicker(values, list)}
         onClose={() => setIsVisible(false)}
@@ -258,7 +258,7 @@ const App = () => {
       <Cell title="Cascade" description={cityCustmer} onClick={() => setIsVisible(!visible)}/>
       <Picker
         visible={visible}
-        listData={custmerCityData}
+        options={custmerCityData}
         onClose={() => setIsVisible(false)}
         onConfirm={(values, list: PickerOption[]) =>
           setChooseValueCustmer(values, list)
@@ -329,7 +329,7 @@ const App = () => {
       <Cell title="Choose City" description={asyncDesc} onClick={() => setIsVisible(!visible)}/>
       <Picker
         visible={visible}
-        listData={asyncData}
+        options={asyncData}
         onClose={() => setIsVisible(false)}
         onConfirm={(values, list: PickerOption[]) =>
           setAsyncConfirm(values, list)
@@ -354,15 +354,15 @@ export default App;
 | ----- | ----- | ----- | ----- |
 | visible | Is Show  | boolean | `false` |
 | title | Toolbar title | string | - |
-| listData |  Columns data | Array | `[]` | 
-| defaultValueData | Default Index  | Array | `[]` |
+| options |  Columns data | Array | `[]` | 
+| defaultValue | Default Index  | Array | `[]` |
 | threeDimensional          | Turn on 3D effects                | boolean  | `true`   |
 | onConfirm     | Emitted when click confirm button. | { selectedValue, selectedOptions } |
 | onChange      | Emitted when current option changed. | { columnIndex, selectedValue, selectedOptions } |
 | onCloseUpdate | Emitted when cascade changed.   | selectedValue |
 | onClose       | Emitted when click close button. | { selectedValue, selectedOptions }  |
 
-## listData 
+## options 
 | Attribute         | Description | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | text        | Text of column               | string \| number |               |
