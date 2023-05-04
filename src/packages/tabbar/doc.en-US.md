@@ -31,8 +31,8 @@ const App = () => {
       setActiveIndex(value)
     }}
   >
-    <TabbarItem title="first" icon={<Home width={18} height={18} />} />
-    <TabbarItem title="Classification" icon={<Category width={18} height={18} />} />
+    <TabbarItem title="first" icon={<Home width={18} height={18} />} value={9} />
+    <TabbarItem title="Classification" icon={<Category width={18} height={18} />} dot />
     <TabbarItem title="Find" icon={<Find width={18} height={18} />} />
     <TabbarItem title="cart" icon={<Cart width={18} height={18} />} />
     <TabbarItem title="mine" icon={<My width={18} height={18} />} />
@@ -73,10 +73,10 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem title="first" icon={<Home width={12} height={12} />} num={11} />
+    <TabbarItem title="first" icon={<Home width={12} height={12} />} value={11} />
     <TabbarItem title="Classification" icon={<Category width={12} height={12} />} />
     <TabbarItem title="Find" icon={<Find width={12} height={12} />} />
-    <TabbarItem title="cart" icon={<Cart width={12} height={12} />} num={110} />
+    <TabbarItem title="cart" icon={<Cart width={12} height={12} />} value={110} />
     <TabbarItem title="mine" icon={<My width={12} height={12} />} />
   </Tabbar>
 );
@@ -191,8 +191,12 @@ export default App;
 | title | the title of the tab | `ReactNode` | -     |
 | icon | Custom icon | `ReactNode` | -     |
 | href | Jump link of tab page;   | `string` | -     |
-| num | The numerical corner mark in the upper right corner of the tab, if it exceeds 99, it will be 99+     | `number` | -     |
-| dot | Whether to display the little red dot in the upper right corner of the icon   | `boolean` | `false`     |
+| value   | value to show, eg number、charctor and custom content | `ReactNode`  |  | - |
+| max     | when value is number, it's the max size | `number`  | `99`   |
+| dot     | Is dotted    | `boolean` | `false`   |
+| top     | Up and down offset, support unit setting, can be set to: 5, etc. |`number`  | `0`       |
+| right   | Left and right offset, support unit setting, can be set to: 5, etc. | `number`  | `0`       |
+| color   | background color,the default value is the theme primary color | string  | `` |
 
 ## Theming
 

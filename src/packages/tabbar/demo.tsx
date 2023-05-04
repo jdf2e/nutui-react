@@ -84,10 +84,12 @@ const TabbarDemo = () => {
           <TabbarItem
             title={translated.c3a3a1d2}
             icon={<Home width={18} height={18} />}
+            value={9}
           />
           <TabbarItem
             title={translated.d04fcbda}
             icon={<Category width={18} height={18} />}
+            dot
           />
           <TabbarItem
             title={translated.a52bef0c}
@@ -164,8 +166,8 @@ const TabbarDemo = () => {
             console.log(value)
           }}
         >
-          <TabbarItem title={translated.c3a3a1d2} />
-          <TabbarItem title={translated.d04fcbda} />
+          <TabbarItem title={translated.c3a3a1d2} value={9} />
+          <TabbarItem title={translated.d04fcbda} dot />
           <TabbarItem title={translated.a52bef0c} />
           <TabbarItem title={translated['7db1a8b2']} />
           <TabbarItem title={translated.e51e4582} />
@@ -176,7 +178,7 @@ const TabbarDemo = () => {
           <TabbarItem
             title={translated.c3a3a1d2}
             icon={<Home width={20} height={20} />}
-            num={11}
+            value={11}
           />
           <TabbarItem
             title={translated.d04fcbda}
@@ -189,7 +191,7 @@ const TabbarDemo = () => {
           <TabbarItem
             title={translated['7db1a8b2']}
             icon={<Cart width={20} height={20} />}
-            num={110}
+            value={110}
           />
           <TabbarItem
             title={translated.e51e4582}

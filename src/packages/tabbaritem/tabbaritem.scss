@@ -20,51 +20,6 @@
     align-items: center;
     position: relative;
 
-    &__tips {
-      position: absolute;
-      background: $tabbar-active-color;
-      border: 1px solid $white;
-      border-radius: 7px;
-      text-align: center;
-      top: calc(50% - 6px);
-      right: calc(50% - 16px);
-      box-shadow: 0 0 0 1px $white;
-      font-size: $font-size-1;
-      color: $primary-text-color;
-      z-index: 1;
-    }
-
-    &__dot {
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      border: 0;
-      border-radius: 7px;
-      padding: 0px;
-      background: $tabbar-active-color;
-      top: $tabbar-dot-top;
-      right: calc(50% - $tabbar-dot-right);
-      transform: translate(50%, -50%);
-    }
-
-    &__num {
-      line-height: 1;
-      font-size: $tabbar-item-text-font-size;
-      color: $primary-text-color;
-      padding: 1px 2px 2px 3px;
-      top: calc(-50% + 6px);
-      right: calc(-50%);
-    }
-
-    &__nums {
-      line-height: 1;
-      font-size: $tabbar-item-text-font-size;
-      color: $primary-text-color;
-      padding: 2px 1px 2px 2px;
-      top: calc(-50% + 6px);
-      right: calc(-50% - 8px);
-    }
-
     &__icon {
       display: block;
       background-size: 100% 100%;

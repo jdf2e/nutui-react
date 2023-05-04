@@ -64,7 +64,7 @@ const TabbarDemo = () => {
       ce5c5440: 'no icon',
       b840c88f: 'Logo Tips',
       a74a1fd4: 'custom color',
-      '8dab2f66': 'Tabbar with customizable number of icons',
+      '8dab2f66': 'Tabbar with customizable valueber of icons',
       cfbdc781: 'Fixed bottom, free to jump',
       c3a3a1d2: 'first',
       e51e4582: 'mine',
@@ -146,8 +146,8 @@ const TabbarDemo = () => {
             console.log(value)
           }}
         >
-          <TabbarItem title={translated.c3a3a1d2} />
-          <TabbarItem title={translated.d04fcbda} />
+          <TabbarItem title={translated.c3a3a1d2} value={9} />
+          <TabbarItem title={translated.d04fcbda} dot />
           <TabbarItem title={translated.a52bef0c} />
           <TabbarItem title={translated['7db1a8b2']} />
           <TabbarItem title={translated.e51e4582} />
@@ -158,7 +158,7 @@ const TabbarDemo = () => {
           <TabbarItem
             title={translated.c3a3a1d2}
             icon={<Home width={20} height={20} />}
-            num={11}
+            value={11}
           />
           <TabbarItem
             title={translated.d04fcbda}
@@ -171,7 +171,7 @@ const TabbarDemo = () => {
           <TabbarItem
             title={translated['7db1a8b2']}
             icon={<Cart width={20} height={20} />}
-            num={110}
+            value={110}
           />
           <TabbarItem
             title={translated.e51e4582}
@@ -262,12 +262,12 @@ const TabbarDemo = () => {
           />
           <TabbarItem
             title={translated['7db1a8b2']}
-            // href="https://m.jd.com"
+            href="https://m.jd.com"
             icon={<Cart width={20} height={20} />}
           />
           <TabbarItem
             title={translated.e51e4582}
-            to="/pages/index/index"
+            href="/"
             icon={<My width={20} height={20} />}
           />
         </Tabbar>

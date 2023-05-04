@@ -23,8 +23,8 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
 <Tabbar onSwitch={(value) => {console.log(value)}}>
-    <TabbarItem title="首页" icon={<Home width={18} height={18} />} />
-    <TabbarItem title="分类" icon={<Category width={18} height={18} />} />
+    <TabbarItem title="首页" icon={<Home width={18} height={18} />} value={9}/>
+    <TabbarItem title="分类" icon={<Category width={18} height={18} dot />} />
     <TabbarItem title="发现" icon={<Find width={18} height={18} />} />
     <TabbarItem title="购物车" icon={<Cart width={18} height={18} />} />
     <TabbarItem title="我的" icon={<My width={18} height={18} />} />
@@ -73,10 +73,10 @@ import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem title="首页" icon={<Home width={12} height={12} />} num={11} />
+    <TabbarItem title="首页" icon={<Home width={12} height={12} />} value={11} />
     <TabbarItem title="分类" icon={<Category width={12} height={12} />} />
     <TabbarItem title="发现" icon={<Find width={12} height={12} />} />
-    <TabbarItem title="购物车" icon={<Cart width={12} height={12} />} num={110} />
+    <TabbarItem title="购物车" icon={<Cart width={12} height={12} />} value={110} />
     <TabbarItem title="我的" icon={<My width={12} height={12} />} />
   </Tabbar>
 )
@@ -193,8 +193,12 @@ export default App;
 | title | 标签页的标题 | `ReactNode` | -     |
 | icon | 自定义图标 | `ReactNode` | - |
 | href | 标签页的跳转链接； | `string` | -     |
-| num | 页签右上角的数字角标，超出99之后为99+ | `number` | - |
-| dot| 是否显示图标右上角小红点 | `boolean` | `false`     |
+| value   | 显示的内容，支持数字、字符和自定义内容  | `ReactNode`  | -         |
+| max     | value 为数值时，最大值 | `number`  | `99`   |
+| dot     | 是否为小点 | `boolean` | `false`   |
+| top     | 上下偏移量，支持单位设置，可设置为：5 等 | `number`  | `0`       |
+| right   | 左右偏移量，支持单位设置，可设置为：5 等 | `number`  | `0`       |
+| color   | 徽标背景颜色,默认值为当前主题色 | `string`  | `` |
 
 ## 主题定制
 

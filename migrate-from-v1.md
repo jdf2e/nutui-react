@@ -112,6 +112,7 @@
 - safeAreaInsetBottom 重命名为 safeArea
 - visible 重命名为 defaultValue，非受控
 - activeVisible 重命名为 value，受控
+- 移除 num，支持传入 Badge Props
 #### Tabs
 
 ### 数据录入

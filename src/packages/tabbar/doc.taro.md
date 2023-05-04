@@ -8,7 +8,7 @@
 
 ```ts
 // react
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
+import { Tabbar, TabbarItem } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示
@@ -17,9 +17,9 @@ import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 :::demo
 ```tsx
-import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+import React from "react";
+import { Tabbar, TabbarItem } from '@nutui/nutui-react-taro';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro-taro';
 
 const App = () => (
 <Tabbar onSwitch={(child, idx) => {console.log(idx)}}>
@@ -39,8 +39,8 @@ export default App;
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+import { Tabbar, TabbarItem } from '@nutui/nutui-react-taro';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro';
 
 const App = () => {
   const [activeIndex, setActiveIndex] = useState(2)
@@ -52,8 +52,8 @@ const App = () => {
       setActiveIndex(value)
     }}
   >
-    <TabbarItem title="首页" icon={<Home width={20} height={20} />} />
-    <TabbarItem title="分类" icon={<Category width={20} height={20} />} />
+    <TabbarItem title="首页" icon={<Home width={20} height={20} />} value={9} />
+    <TabbarItem title="分类" icon={<Category width={20} height={20} />} dot />
     <TabbarItem title="发现" icon={<Find width={20} height={20} />} />
     <TabbarItem title="购物车" icon={<Cart width={20} height={20} />} />
     <TabbarItem title="我的" icon={<My width={20} height={20} />} />
@@ -68,15 +68,15 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+import {  Tabbar, TabbarItem } from '@nutui/nutui-react-taro-taro';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem title="首页" icon={<Home width={12} height={12} />} num={11} />
-    <TabbarItem title="分类" icon={<Category width={12} height={12} />} />
+    <TabbarItem title="首页" icon={<Home width={12} height={12} />} value={11} />
+    <TabbarItem title="分类" icon={<Category width={12} height={12} />} dot />
     <TabbarItem title="发现" icon={<Find width={12} height={12} />} />
-    <TabbarItem title="购物车" icon={<Cart width={12} height={12} />} num={110} />
+    <TabbarItem title="购物车" icon={<Cart width={12} height={12} />} value={110} />
     <TabbarItem title="我的" icon={<My width={12} height={12} />} />
   </Tabbar>
 )
@@ -90,8 +90,8 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+import { Tabbar, TabbarItem } from '@nutui/nutui-react-taro';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar>
@@ -112,8 +112,8 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+import {  Tabbar, TabbarItem } from '@nutui/nutui-react-taro';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro';
 
 
 const App = () => (
@@ -134,8 +134,8 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
-import { Category, Find, Home } from '@nutui/icons-react';
+import {  Tabbar, TabbarItem } from '@nutui/nutui-react-taro';
+import { Category, Find, Home } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
@@ -153,8 +153,8 @@ export default App;
 :::demo
 ```tsx
 import  React from "react";
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+import { Tabbar, TabbarItem } from '@nutui/nutui-react-taro';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar fixed>
@@ -193,8 +193,12 @@ export default App;
 | title | 标签页的标题 | `ReactNode` | -     |
 | icon | 自定义图标 | `ReactNode` | - |
 | href | 标签页的跳转链接； | `string` | -     |
-| num | 页签右上角的数字角标，超出99之后为99+ | `number` | - |
-| dot| 是否显示图标右上角小红点 | `boolean` | `false`     |
+| value   | 显示的内容，支持数字、字符和自定义内容  | `ReactNode`  | -         |
+| max     | value 为数值时，最大值 | `number`  | `99`   |
+| dot     | 是否为小点 | `boolean` | `false`   |
+| top     | 上下偏移量，支持单位设置，可设置为：5 等 | `number`  | `0`       |
+| right   | 左右偏移量，支持单位设置，可设置为：5 等 | `number`  | `0`       |
+| color   | 徽标背景颜色 | `string`  | `#fa2c19` |
 
 ## 主题定制
 

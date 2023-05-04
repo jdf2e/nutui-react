@@ -1,13 +1,13 @@
 import React, { FunctionComponent, ReactNode, useEffect } from 'react'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
+import Badge from '../badge'
+import { BadgeProps } from '../badge/badge'
 
-export interface TabbarItemProps extends BasicComponent {
-  dot: boolean
+export interface TabbarItemProps extends BadgeProps {
   title: ReactNode
   icon: ReactNode
   href: string
-  num: number
   active: boolean
   activeColor: string
   inactiveColor: string
@@ -17,7 +17,6 @@ export interface TabbarItemProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
-  dot: false,
   title: '',
   icon: null,
   href: '',
@@ -32,18 +31,17 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
   props
 ) => {
   const {
-    dot,
     className,
     style,
     title,
     icon,
     href,
-    num,
     active,
     activeColor,
     inactiveColor,
     index,
     handleClick,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -53,8 +51,6 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     [`${classPrefix}--active`]: active,
   })
   const boxPrefix = `${classPrefix}__icon-box`
-  const numClass = classNames(`${boxPrefix}__tips`, `${boxPrefix}__num`)
-  const dotClass = classNames(`${boxPrefix}__tips`, `${boxPrefix}__dot`)
   const titleClass = classNames(boxPrefix, `${boxPrefix}--nav-word`, {
     [`${boxPrefix}--big-word`]: !icon,
   })
@@ -74,17 +70,18 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
       }}
       onClick={() => handleClick(index)}
     >
-      <div className={boxPrefix}>
-        {!dot ? (
-          <>
-            {num && <div className={numClass}>{num <= 99 ? num : '99+'}</div>}
-          </>
-        ) : (
-          <div className={dotClass} />
-        )}
-        {icon || null}
-      </div>
-      {title && <div className={titleClass}>{title}</div>}
+      {icon ? (
+        <>
+          <Badge {...rest}>
+            <div className={boxPrefix}>{icon}</div>
+          </Badge>
+          <div className={titleClass}>{title}</div>
+        </>
+      ) : (
+        <Badge {...rest}>
+          <div className={titleClass}>{title}</div>
+        </Badge>
+      )}
     </div>
   )
 }
