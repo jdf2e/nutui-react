@@ -143,6 +143,11 @@
 - 新增taro的`formatter`属性开发
 #### NumberKeyboard
 #### Picker
+- `isVisible` 重命名为 `visible`
+- `listData` 重命名为 `options`
+- `defaultValueData` 重命名为 `defaultValue`
+- `swipeDuration` 重命名为 `duration`
+- `onCloseUpdate` 重命名为 `afterClose`
 #### Radio
 #### Range
 #### Rate

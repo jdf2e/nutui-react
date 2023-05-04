@@ -35,7 +35,7 @@ export interface PickerProps {
     selectedValue: (string | number)[],
     selectedOptions: PickerOption[]
   ) => void
-  onCloseUpdate?: (
+  afterClose?: (
     selectedValue: (string | number)[],
     list: PickerOption[],
     pickerRef: RefObject<HTMLDivElement>
@@ -57,7 +57,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       defaultValue,
       onConfirm,
       onClose,
-      onCloseUpdate,
+      afterClose,
       onChange,
       className,
       style,
@@ -106,8 +106,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
 
     const closeActionSheet = () => {
       onClose && onClose(chooseValueData, selectedOptions())
-      onCloseUpdate &&
-        onCloseUpdate(chooseValueData, selectedOptions(), pickerRef)
+      afterClose && afterClose(chooseValueData, selectedOptions(), pickerRef)
     }
     // 点击确定
     const confirm = () => {

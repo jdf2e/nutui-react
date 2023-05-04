@@ -363,7 +363,7 @@ export default App;
 | duration  | 快速滑动时惯性滚动的时长，单位 ms               | string \| number | `1000`   |
 | onConfirm            | 点击确认按钮时候回调 | 返回选中值 value，选中值对象 |
 | onChange    | 每一列值变更时调用   | 改变的列数，改变值 value，当前选中值 |
-| onCloseUpdate        | 联动时，关闭时回调   | 当前选中值，依次返回this |
+| afterClose        | 联动时，关闭时回调   | 当前选中值，依次返回this |
 | onClose              | 关闭时触发          | 返回选中值 value，选中值对象 |
 
 ## options 数据结构

@@ -283,7 +283,7 @@ const App = () => {
         onChoose={(index: number, value: IResValue, list: any[]) =>
           updateChooseValueCustmer(index, value, list)
         }
-        onCloseUpdate={(list: any[]) => closeUpdateChooseValueCustmer(list, pickerRef3)}
+        afterClose={(list: any[]) => closeUpdateChooseValueCustmer(list, pickerRef3)}
         ref={pickerRef3}
        />
     </>
@@ -306,7 +306,7 @@ export default App;
 | defaultValue | 默認選中 | Array | `[]`
 | onConfirm | 點擊確認按鈕時候回調 | 返回選中值
 | onChoose | 每一列值變更時調用 | 依次返回this、改變的列數，改變值，當前選中值
-| onCloseUpdate | 聯動時，關閉時回調 | 依次返回this、當前選中值
+| afterClose | 聯動時，關閉時回調 | 依次返回this、當前選中值
 | onClose | 關閉時觸發 | - 
 
 ## 主題定制

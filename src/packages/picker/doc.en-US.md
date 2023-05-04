@@ -359,7 +359,7 @@ export default App;
 | threeDimensional          | Turn on 3D effects                | boolean  | `true`   |
 | onConfirm     | Emitted when click confirm button. | { selectedValue, selectedOptions } |
 | onChange      | Emitted when current option changed. | { columnIndex, selectedValue, selectedOptions } |
-| onCloseUpdate | Emitted when cascade changed.   | selectedValue |
+| afterClose | Emitted when cascade changed.   | selectedValue |
 | onClose       | Emitted when click close button. | { selectedValue, selectedOptions }  |
 
 ## options 
