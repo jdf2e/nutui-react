@@ -8,7 +8,6 @@ export interface TabbarProps extends BasicComponent {
   defaultValue: number
   value?: number
   fixed: boolean
-  size: string | number
   inactiveColor: string
   activeColor: string
   safeArea: boolean
@@ -19,7 +18,6 @@ const defaultProps = {
   ...ComponentDefaults,
   defaultValue: 0,
   fixed: false,
-  size: 20,
   inactiveColor: '',
   activeColor: '',
   safeArea: false,
@@ -34,7 +32,6 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
     defaultValue,
     value,
     fixed,
-    size,
     activeColor,
     inactiveColor,
     safeArea,
@@ -72,7 +69,6 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
           index: idx,
           inactiveColor,
           activeColor,
-          size,
           handleClick: setSelectIndex,
         }
         return React.cloneElement(child, childProps)
