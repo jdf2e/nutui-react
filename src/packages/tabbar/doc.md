@@ -17,8 +17,8 @@ import { Tabbar } from '@nutui/nutui-react';
 
 :::demo
 ```tsx
-import  React from "react";
-import {  Tabbar } from '@nutui/nutui-react';
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
@@ -67,8 +67,8 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
-import {  Tabbar } from '@nutui/nutui-react';
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
@@ -89,7 +89,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React from "react";
 import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
@@ -111,8 +111,8 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
-import {  Tabbar } from '@nutui/nutui-react';
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 
@@ -133,8 +133,8 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
-import {  Tabbar } from '@nutui/nutui-react';
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
 import { Category, Find, Home } from '@nutui/icons-react';
 
 const App = () => (
@@ -152,7 +152,7 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
+import React from "react";
 import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 

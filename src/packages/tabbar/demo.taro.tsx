@@ -64,7 +64,7 @@ const TabbarDemo = () => {
       ce5c5440: 'no icon',
       b840c88f: 'Logo Tips',
       a74a1fd4: 'custom color',
-      '8dab2f66': 'Tabbar with customizable valueber of icons',
+      '8dab2f66': 'Tabbar with customizable number of icons',
       cfbdc781: 'Fixed bottom, free to jump',
       c3a3a1d2: 'first',
       e51e4582: 'mine',

@@ -20,12 +20,6 @@
     align-items: center;
     position: relative;
 
-    &__icon {
-      display: block;
-      background-size: 100% 100%;
-      background-position: center center;
-    }
-
     &--nav-word {
       display: block;
       font-size: $font-size-0;
