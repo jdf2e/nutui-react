@@ -43,11 +43,11 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
   }
   const classPrefix = 'nut-tabbar-item'
   const tabbarItemClass = classNames(className, classPrefix, {
-    [`${classPrefix}--active`]: active,
+    [`${classPrefix}-active`]: active,
   })
   const boxPrefix = `${classPrefix}__icon-box`
-  const titleClass = classNames(boxPrefix, `${boxPrefix}--nav-word`, {
-    [`${boxPrefix}--big-word`]: !icon,
+  const titleClass = classNames(boxPrefix, `${boxPrefix}-nav`, {
+    [`${boxPrefix}-large`]: !icon,
   })
 
   return (

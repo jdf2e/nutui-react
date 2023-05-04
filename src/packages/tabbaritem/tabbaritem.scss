@@ -9,7 +9,7 @@
   color: $tabbar-inactive-color;
   height: 100%;
 
-  &--active {
+  &-active {
     color: $tabbar-active-color;
   }
 
@@ -20,13 +20,13 @@
     align-items: center;
     position: relative;
 
-    &--nav-word {
+    &-nav {
       display: block;
       font-size: $tabbar-text-font-size;
       margin-top: $tabbar-text-margin-top;
     }
 
-    &--big-word {
+    &-large {
       font-size: $tabbar-text-large-font-size;
       margin-top: 0;
       line-height: $tabbar-text-line-height;
