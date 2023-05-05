@@ -1,10 +1,8 @@
 import React, { useRef, useState } from 'react'
-import { Checklist } from '@nutui/icons-react-taro'
-import { useTranslate } from '../../sites/assets/locale'
-import { Cell } from '../cell/cell.taro'
-import { Checkbox } from './checkbox.taro'
-import Button from '@/packages/button/index.taro'
 import Taro from '@tarojs/taro'
+import { Checklist } from '@nutui/icons-react-taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import { Button, Cell, Checkbox } from '@/packages/nutui.react.taro'
 
 interface T {
   uncontrolled: string
@@ -47,10 +45,10 @@ const CheckboxDemo = () => {
       customSize: '自定义尺寸',
       customIcon: '自定义图标',
       triggerEvent: '点击触发事件',
-      uncheckedx: '您取消了x的勾选',
+      uncheckedx: '取消选中',
       checked: '选中',
       cancel: '取消',
-      selected: '您选中了x',
+      selected: '选中',
       options1: '选项',
       Disabled: '禁用',
       selectAndCancel: '全选和取消',
@@ -73,7 +71,7 @@ const CheckboxDemo = () => {
       customSize: '自定義尺寸',
       customIcon: '自定義圖示',
       triggerEvent: '點擊觸發事件',
-      uncheckedx: '您取消了x的勾選',
+      uncheckedx: '取消选中',
       checked: '選中',
       cancel: '取消',
       selected: '您選取了x',
@@ -121,7 +119,7 @@ const CheckboxDemo = () => {
   const [checkboxgroup1, setCheckboxgroup1] = useState(['1'])
   const [checkboxgroup2] = useState(['1'])
   const [checkboxgroup3] = useState(['1'])
-  const [checkboxgroup4] = useState(['1'])
+  const [checkboxgroup4] = useState([])
   const [checkboxgroup5, setCheckboxgroup5] = useState<string[]>([])
   const checkboxgroup2Ref = useRef(null)
   const checkboxgroup3Ref = useRef(null)
@@ -192,13 +190,12 @@ const CheckboxDemo = () => {
         </Cell>
         <h2>{translated.selective}</h2>
         <Cell>
-          <Checkbox.Group defaultValue={checkboxgroup1}>
-            <Checkbox
-              value="1"
-              label={`${translated.checkbox}1`}
-              indeterminate
-            />
-          </Checkbox.Group>
+          <Checkbox
+            value="1"
+            checked
+            label={`${translated.checkbox}1`}
+            indeterminate
+          />
         </Cell>
         <h2>{translated.disbaled}</h2>
         <Cell className="nut-cell">
@@ -219,10 +216,20 @@ const CheckboxDemo = () => {
         </Cell>
         <h2>{translated.customSize}</h2>
         <Cell className="nut-cell">
-          <Checkbox label={translated.customSize} />
+          <Checkbox
+            style={{
+              '--nut-icon-width': '24px',
+            }}
+            label={translated.customSize}
+          />
         </Cell>
         <Cell className="nut-cell">
-          <Checkbox label={translated.customSize} />
+          <Checkbox
+            style={{
+              '--nut-icon-width': '12px',
+            }}
+            label={translated.customSize}
+          />
         </Cell>
         <h2>{translated.customIcon}</h2>
         <Cell className="nut-cell">
@@ -270,10 +277,7 @@ const CheckboxDemo = () => {
           >
             <Checkbox value="1">{translated.options1}</Checkbox>
             <Checkbox value="2">{translated.options1}</Checkbox>
-            <Checkbox value="3">
-              {translated.options1}
-              {translated.options1}
-            </Checkbox>
+            <Checkbox value="3">{translated.options1}</Checkbox>
             <Checkbox value="4">{translated.options1}</Checkbox>
           </Checkbox.Group>
         </Cell>
@@ -388,7 +392,6 @@ const CheckboxDemo = () => {
             direction="horizontal"
             defaultValue={checkboxgroup4}
             onChange={(value) => {
-              console.log(value)
               if (value.length === 4) {
                 setIndeterminate(false)
                 setCheckbox1(true)
@@ -411,10 +414,6 @@ const CheckboxDemo = () => {
           <Checkbox.Group
             options={optionsDemo1}
             defaultValue={checkboxgroup5}
-            onChange={(val) => {
-              console.log(val)
-              setCheckboxgroup5(val)
-            }}
           />
         </Cell>
       </div>

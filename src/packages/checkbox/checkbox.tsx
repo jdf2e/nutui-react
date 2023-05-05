@@ -46,7 +46,6 @@ export const Checkbox: FunctionComponent<
   }
   const {
     icon,
-    iconSize,
     label,
     className,
     activeIcon,
@@ -82,7 +81,8 @@ export const Checkbox: FunctionComponent<
     if (ctx.labelPosition !== undefined) {
       labelPosition = ctx.labelPosition
     }
-    innerDisabled = ctx.disabled
+    console.log('ctx', ctx.disabled)
+    innerDisabled = ctx.disabled !== undefined ? ctx.disabled : innerDisabled
     _checked = ctx.checkedValue.includes(value)
     setChecked = (checked: boolean) => {
       if (ctx.disabled) return
@@ -96,23 +96,24 @@ export const Checkbox: FunctionComponent<
       return React.isValidElement(icon) ? (
         icon
       ) : (
-        <CheckNormal width={iconSize} height={iconSize} className={color()} />
+        <CheckNormal className={color()} />
       )
     }
     if (_indeterminate) {
       return React.isValidElement(indeterminateIcon) ? (
         indeterminateIcon
       ) : (
-        <CheckDisabled width={iconSize} height={iconSize} className={color()} />
+        <CheckDisabled className={color()} />
       )
     }
     return React.isValidElement(activeIcon) ? (
       activeIcon
     ) : (
-      <Checked width={iconSize} height={iconSize} className={color()} />
+      <Checked className={color()} />
     )
   }
   const color = () => {
+    console.log(innerDisabled)
     if (innerDisabled) {
       return 'nut-checkbox__icon--disable'
     }
@@ -127,7 +128,7 @@ export const Checkbox: FunctionComponent<
   const renderLabel = () => {
     return (
       <span
-        className={classNames({
+        className={classNames(`${classPrefix}__label `, {
           [`${classPrefix}__label--disabled`]: innerDisabled,
         })}
       >

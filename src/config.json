@@ -402,7 +402,7 @@
           "author": "ailululu"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Checkbox",
           "type": "component",
           "cName": "复选按钮",
@@ -413,7 +413,7 @@
           "author": "oasis"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "CheckboxGroup",
           "type": "component",
           "cName": "多选按钮组",

@@ -6,7 +6,7 @@ import React, {
 } from 'react'
 import { Checked, CheckDisabled, CheckNormal } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
-import CheckboxGroup from '@/packages/checkboxgroup'
+import CheckboxGroup from '@/packages/checkboxgroup/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -46,7 +46,6 @@ export const Checkbox: FunctionComponent<
   }
   const {
     icon,
-    iconSize,
     label,
     className,
     activeIcon,
@@ -96,20 +95,20 @@ export const Checkbox: FunctionComponent<
       return React.isValidElement(icon) ? (
         icon
       ) : (
-        <CheckNormal width={iconSize} height={iconSize} className={color()} />
+        <CheckNormal className={color()} />
       )
     }
     if (_indeterminate) {
       return React.isValidElement(indeterminateIcon) ? (
         indeterminateIcon
       ) : (
-        <CheckDisabled width={iconSize} height={iconSize} className={color()} />
+        <CheckDisabled className={color()} />
       )
     }
     return React.isValidElement(activeIcon) ? (
       activeIcon
     ) : (
-      <Checked width={iconSize} height={iconSize} className={color()} />
+      <Checked className={color()} />
     )
   }
   const color = () => {
@@ -127,7 +126,7 @@ export const Checkbox: FunctionComponent<
   const renderLabel = () => {
     return (
       <span
-        className={classNames({
+        className={classNames(`${classPrefix}__label `, {
           [`${classPrefix}__label--disabled`]: innerDisabled,
         })}
       >

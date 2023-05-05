@@ -131,6 +131,18 @@
 #### Calendar
 #### Cascader
 #### Checkbox
+- 新增 defaultChecked，用于非受控，checked 用于受控
+- 新增 value，用于 group 模式 
+- textPosition 重命名为 labelPosition
+- iconName 重命名为 icon，类型为 ReactNode
+- iconAcitveName 重命名为 activeIcon
+- iconIndeterminateName 重命名为 iconIndeterminateIcon
+- 移除 iconSize
+#### Checkbox.Group
+- 新增 defaultValue，用于非受控，value 用于受控
+- textPosition 重命名为 labelPosition
+- toggleAll 重命名为 toggle
+- toggleReverse 重命名为 reverse
 #### DatePicker
 #### Form
 #### Input

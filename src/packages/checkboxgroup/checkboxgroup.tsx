@@ -9,7 +9,7 @@ export type CheckboxLabelPosition = 'left' | 'right'
 export type CheckboxDirection = 'horizontal' | 'vertical'
 
 export interface CheckboxGroupProps {
-  disabled: boolean
+  disabled?: boolean
   value?: string[]
   defaultValue?: string[]
   max: number | undefined
@@ -20,7 +20,6 @@ export interface CheckboxGroupProps {
 }
 
 const defaultProps = {
-  disabled: false,
   max: undefined,
   labelPosition: 'right',
   direction: 'vertical',
@@ -88,6 +87,7 @@ export const CheckboxGroup = React.forwardRef(
           <Checkbox
             key={value?.toString()}
             label={label}
+            disabled={disabled}
             value={value}
             {...rest}
           />
