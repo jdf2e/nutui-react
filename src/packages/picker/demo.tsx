@@ -10,7 +10,7 @@ interface T {
 interface PickerOption {
   text: string | number
   value: string | number
-  disabled?: string
+  disabled?: boolean
   children?: PickerOption[]
   className?: string | number
 }
@@ -55,6 +55,7 @@ const PickerDemo = () => {
       {
         value: 5,
         text: translated.lianYunGang,
+        disabled: true,
       },
       {
         value: 6,
@@ -203,8 +204,8 @@ const PickerDemo = () => {
   ])
 
   const setChooseValueCustmer = (
-    values: (string | number)[],
-    options: PickerOption[]
+    options: PickerOption[],
+    values: (string | number)[]
   ) => {
     console.log(values, options)
     const str = options.map((item) => item.text).join('-')
@@ -212,8 +213,8 @@ const PickerDemo = () => {
   }
 
   const setAsyncConfirm = (
-    values: (string | number)[],
-    options: PickerOption[]
+    options: PickerOption[],
+    values: (string | number)[]
   ) => {
     console.log(values, options)
     const str = options.map((item) => item.text).join('-')
@@ -221,11 +222,11 @@ const PickerDemo = () => {
   }
 
   const updateChooseValueCustmer = (
-    columnIndex: number,
+    options: PickerOption[],
     values: (string | number)[],
-    options: PickerOption[]
+    columnIndex: number
   ) => {
-    console.log(columnIndex, values, options)
+    console.log('updateChooseValueCustmer', columnIndex, values, options)
     if (columnIndex === 0 && values[0] === 2) {
       setTimeout(() => {
         if (asyncData[1].children.length === 0) {
@@ -251,22 +252,19 @@ const PickerDemo = () => {
               text: translated.puDong,
             },
           ]
-
           setAsyncData([...asyncData])
         }
       }, 100)
     }
   }
 
-  // 切换选择项
-  const changePicker = (columnIndex: number, values: any, options: any[]) => {}
   // 确定选择
   const confirmPicker = (
     type: string,
-    values: (string | number)[],
-    options: PickerOption[]
+    options: PickerOption[],
+    values: (string | number)[]
   ) => {
-    console.log('demo 确定')
+    console.log('demo 确定', values, options)
     let description = ''
     options.forEach((option: any) => {
       description += ` ${option.text}`
@@ -300,9 +298,10 @@ const PickerDemo = () => {
           title={translated.chooseCity}
           visible={isVisible1}
           options={listData1}
-          onConfirm={(values, list) => confirmPicker('base', values, list)}
-          onClose={() => setIsVisible1(false)}
-          onChange={changePicker}
+          onConfirm={(list, values) => confirmPicker('base', list, values)}
+          onClose={() => {
+            setIsVisible1(false)
+          }}
         />
 
         <h2>{translated.defaultSelected}</h2>
@@ -314,10 +313,9 @@ const PickerDemo = () => {
         <Picker
           visible={isVisible4}
           options={listData1}
-          onConfirm={(values, list) => confirmPicker('default', values, list)}
+          onConfirm={(list, values) => confirmPicker('default', list, values)}
           defaultValue={defaultValue}
           onClose={() => setIsVisible4(false)}
-          onChange={changePicker}
         />
 
         <h2>{translated.multipleColumns}</h2>
@@ -331,8 +329,7 @@ const PickerDemo = () => {
           options={listData2}
           onClose={() => setIsVisible2(false)}
           defaultValue={['Wednesday']}
-          onChange={changePicker}
-          onConfirm={(values, list) => confirmPicker('mutil', values, list)}
+          onConfirm={(list, values) => confirmPicker('mutil', list, values)}
         />
         <h2>{translated.tileDesc}</h2>
         <Cell
@@ -343,12 +340,11 @@ const PickerDemo = () => {
         <Picker
           visible={isVisible6}
           options={listData1}
-          onConfirm={(values, list) => confirmPicker('tile', values, list)}
+          onConfirm={(list, values) => confirmPicker('tile', list, values)}
           defaultValue={defaultValue}
           threeDimensional={false}
           duration={1000}
           onClose={() => setIsVisible6(false)}
-          onChange={changePicker}
         />
 
         <h2>{translated.cascade}</h2>
@@ -362,13 +358,11 @@ const PickerDemo = () => {
           visible={isVisible3}
           options={custmerCityData}
           onClose={() => setIsVisible3(false)}
-          onConfirm={(values, list: PickerOption[]) =>
-            setChooseValueCustmer(values, list)
-          }
+          onConfirm={(list, values) => setChooseValueCustmer(list, values)}
           onChange={(
-            columnIndex: number,
+            options: PickerOption[],
             value: (string | number)[],
-            options: PickerOption[]
+            columnIndex: number
           ) =>
             console.log(
               asyncData,
@@ -389,16 +383,20 @@ const PickerDemo = () => {
 
         <Picker
           visible={isVisible5}
-          options={custmerCityData}
+          options={asyncData}
           onClose={() => setIsVisible5(false)}
-          onConfirm={(values, list: PickerOption[]) =>
-            setAsyncConfirm(values, list)
-          }
+          onConfirm={(list, values) => setAsyncConfirm(list, values)}
           onChange={(
-            columnIndex: number,
-            value: (string | number)[],
-            options: PickerOption[]
-          ) => updateChooseValueCustmer(columnIndex, value, options)}
+            selectedOptions: PickerOption[],
+            selectedValue: (string | number)[],
+            columnIndex: number
+          ) =>
+            updateChooseValueCustmer(
+              selectedOptions,
+              selectedValue,
+              columnIndex
+            )
+          }
         />
       </div>
     </>

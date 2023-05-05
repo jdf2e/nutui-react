@@ -6,7 +6,7 @@ import Cell from '@/packages/cell'
 interface PickerOption {
   text: string | number
   value: string | number
-  disabled?: string
+  disabled?: boolean
   children?: PickerOption[]
   className?: string | number
 }
@@ -102,25 +102,25 @@ const DatePickerDemo = () => {
   const [show7, setShow7] = useState(false)
   const [show8, setShow8] = useState(false)
 
-  const confirm1 = (values: (string | number)[], options: PickerOption[]) => {
+  const confirm1 = (options: PickerOption[], values: (string | number)[]) => {
     setDesc1(options.map((option) => option.text).join(' '))
   }
 
-  const confirm2 = (values: (string | number)[], options: PickerOption[]) => {
+  const confirm2 = (options: PickerOption[], values: (string | number)[]) => {
     setDesc2(options.map((option) => option.text).join('-'))
   }
 
-  const confirm3 = (values: (string | number)[], options: PickerOption[]) => {
+  const confirm3 = (options: PickerOption[], values: (string | number)[]) => {
     const date = values.slice(0, 3).join('-')
     const time = values.slice(3).join(':')
     setDesc3(`${date} ${time}`)
   }
 
-  const confirm4 = (values: (string | number)[], options: PickerOption[]) => {
+  const confirm4 = (options: PickerOption[], values: (string | number)[]) => {
     setDesc4(options.map((option) => option.text).join(':'))
   }
 
-  const confirm5 = (values: (string | number)[], options: PickerOption[]) => {
+  const confirm5 = (options: PickerOption[], values: (string | number)[]) => {
     const date = options
       .slice(1, 3)
       .map((op) => op.text)
@@ -132,15 +132,15 @@ const DatePickerDemo = () => {
     setDesc5(`${options[0].text}年${date} ${time}`)
   }
 
-  const confirm6 = (values: (string | number)[], options: PickerOption[]) => {
+  const confirm6 = (options: PickerOption[], values: (string | number)[]) => {
     setDesc6(options.map((option) => option.text).join(':'))
   }
 
-  const confirm7 = (values: (string | number)[], options: PickerOption[]) => {
+  const confirm7 = (options: PickerOption[], values: (string | number)[]) => {
     setDesc7(options.map((option) => option.text).join(' '))
   }
 
-  const confirm8 = (values: (string | number)[], options: PickerOption[]) => {
+  const confirm8 = (options: PickerOption[], values: (string | number)[]) => {
     setDesc8(options.map((option) => option.text).join(':'))
   }
 
@@ -254,7 +254,7 @@ const DatePickerDemo = () => {
           isShowChinese
           onCloseDatePicker={() => setShow1(false)}
           threeDimensional={false}
-          onConfirmDatePicker={(values, options) => confirm1(values, options)}
+          onConfirmDatePicker={(options, values) => confirm1(options, values)}
         />
         {/* 选择月日 */}
         <DatePicker
@@ -264,7 +264,7 @@ const DatePickerDemo = () => {
           type="month-day"
           visible={show2}
           onCloseDatePicker={() => setShow2(false)}
-          onConfirmDatePicker={(values, options) => confirm2(values, options)}
+          onConfirmDatePicker={(options, values) => confirm2(options, values)}
         />
         {/* 选择年月日时分 */}
         <DatePicker
@@ -274,7 +274,7 @@ const DatePickerDemo = () => {
           visible={show3}
           type="datetime"
           onCloseDatePicker={() => setShow3(false)}
-          onConfirmDatePicker={(values, options) => confirm3(values, options)}
+          onConfirmDatePicker={(options, values) => confirm3(options, values)}
         />
         {/* 选择时分秒 */}
         <DatePicker
@@ -284,7 +284,7 @@ const DatePickerDemo = () => {
           maxDate={maxDate}
           visible={show4}
           onCloseDatePicker={() => setShow4(false)}
-          onConfirmDatePicker={(values, options) => confirm4(values, options)}
+          onConfirmDatePicker={(options, values) => confirm4(options, values)}
         />
         {/* 选择时分 */}
         <DatePicker
@@ -294,7 +294,7 @@ const DatePickerDemo = () => {
           maxDate={maxDate}
           visible={show8}
           onCloseDatePicker={() => setShow8(false)}
-          onConfirmDatePicker={(values, options) => confirm8(values, options)}
+          onConfirmDatePicker={(options, values) => confirm8(options, values)}
         />
         {/* 格式化选项 */}
         <DatePicker
@@ -305,7 +305,7 @@ const DatePickerDemo = () => {
           visible={show5}
           formatter={formatter}
           onCloseDatePicker={() => setShow5(false)}
-          onConfirmDatePicker={(values, options) => confirm5(values, options)}
+          onConfirmDatePicker={(options, values) => confirm5(options, values)}
         />
         {/* 分钟步长 */}
         <DatePicker
@@ -316,7 +316,7 @@ const DatePickerDemo = () => {
           visible={show6}
           minuteStep={5}
           onCloseDatePicker={() => setShow6(false)}
-          onConfirmDatePicker={(values, options) => confirm6(values, options)}
+          onConfirmDatePicker={(options, values) => confirm6(options, values)}
         />
         {/* 过滤选项 */}
         <DatePicker
@@ -329,7 +329,7 @@ const DatePickerDemo = () => {
           minuteStep={5}
           filter={filter}
           onCloseDatePicker={() => setShow7(false)}
-          onConfirmDatePicker={(values, options) => confirm7(values, options)}
+          onConfirmDatePicker={(options, values) => confirm7(options, values)}
         />
       </div>
     </>

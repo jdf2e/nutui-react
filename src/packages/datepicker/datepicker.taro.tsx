@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
+import { View } from '@tarojs/components'
 import Picker from '@/packages/picker/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { View } from '@tarojs/components'
 
 export interface PickerOption {
   text: string | number
   value: string | number
-  disabled?: string
+  disabled?: boolean
   children?: PickerOption[]
   className?: string | number
 }
@@ -42,13 +42,13 @@ export interface DatePickerProps {
   filter: (type: string, option: PickerOption[]) => PickerOption[]
   onCloseDatePicker: () => void
   onConfirmDatePicker: (
-    values: (string | number)[],
-    options: PickerOption[]
+    selectedOptions: PickerOption[],
+    selectedValue: (string | number)[]
   ) => void
-  onChange: (
-    columnIndex: string | number,
-    values: (string | number)[],
-    options: PickerOption[]
+  onChange?: (
+    selectedOptions: PickerOption[],
+    selectedValue: (string | number)[],
+    columnIndex: number
   ) => void
 }
 const currentYear = new Date().getFullYear()
@@ -231,9 +231,9 @@ export const DatePicker: FunctionComponent<
   }
 
   const updateChooseValueCustmer = (
-    index: number,
+    cacheValueData: PickerOption[],
     selectedValue: (number | string)[],
-    cacheValueData: PickerOption[]
+    index: number
   ) => {
     if (
       ['date', 'datetime', 'datehour', 'month-day', 'year-month'].includes(
@@ -286,7 +286,7 @@ export const DatePicker: FunctionComponent<
         setCurrentDate(formatValue(date as Date))
     }
 
-    props.onChange && props.onChange(index, selectedValue, cacheValueData)
+    props.onChange && props.onChange(cacheValueData, selectedValue, index)
   }
 
   const padZero = (num: number | string, targetLength = 2) => {
@@ -412,14 +412,14 @@ export const DatePicker: FunctionComponent<
           options={options}
           onClose={onCloseDatePicker}
           defaultValue={defaultValue}
-          onConfirm={(values: (string | number)[], options: PickerOption[]) =>
-            onConfirmDatePicker && onConfirmDatePicker(values, options)
+          onConfirm={(options: PickerOption[], values: (string | number)[]) =>
+            onConfirmDatePicker && onConfirmDatePicker(options, values)
           }
           onChange={(
-            index: number,
+            list: PickerOption[],
             value: (number | string)[],
-            list: PickerOption[]
-          ) => updateChooseValueCustmer(index, value, list)}
+            index: number
+          ) => updateChooseValueCustmer(list, value, index)}
           threeDimensional={threeDimensional}
           ref={pickerRef}
         />

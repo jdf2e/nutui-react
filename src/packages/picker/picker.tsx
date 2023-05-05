@@ -15,7 +15,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export interface PickerOption {
   text: string | number
   value: string | number
-  disabled?: string
+  disabled?: boolean
   children?: PickerOption[]
   className?: string | number
 }
@@ -27,22 +27,22 @@ export interface PickerProps extends BasicComponent {
   threeDimensional?: boolean
   duration: number | string
   onConfirm?: (
-    selectedValue: (string | number)[],
-    selectedOptions: PickerOption[]
+    selectedOptions: PickerOption[],
+    selectedValue: (string | number)[]
   ) => void
   onClose?: (
-    selectedValue: (string | number)[],
-    selectedOptions: PickerOption[]
+    selectedOptions: PickerOption[],
+    selectedValue: (string | number)[]
   ) => void
   afterClose?: (
+    selectedOptions: PickerOption[],
     selectedValue: (string | number)[],
-    list: PickerOption[],
     pickerRef: RefObject<HTMLDivElement>
   ) => void
   onChange?: (
-    index: number,
-    value: (string | number)[],
-    selectedOptions: PickerOption[]
+    selectedOptions: PickerOption[],
+    selectedValue: (string | number)[],
+    columnIndex: number
   ) => void
 }
 const defaultProps = {
@@ -61,7 +61,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       visible,
       title,
       options = [],
-      defaultValue,
+      defaultValue = [],
       className,
       style,
       threeDimensional,
@@ -74,7 +74,10 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     } = { ...defaultProps, ...props }
     const classPrefix = 'nut-picker'
     const classes = classNames(classPrefix, className)
-    const [chooseValue, setChooseValue] = useState<Array<string | number>>([]) // 选择的数据的 value 值, 每一条数据的 value 值
+    // 选择的数据的 value 值, 每一条数据的 value 值
+    const [selectedValue, setSelectedValue] = useState<Array<string | number>>([
+      ...defaultValue,
+    ])
     const [columnIndex, setColumnIndex] = useState<number>(0) // 选中列
     const pickerRef = useRef<any>(null)
     const [refs, setRefs] = useRefs()
@@ -84,31 +87,31 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     // 级联数据格式化
     const formatCascade = (
       columns: PickerOption[],
-      defaultValues: (number | string)[]
+      values: (number | string)[]
     ) => {
       const formatted: PickerOption[][] = []
-      let cursor: PickerOption = {
+      let columnOptions: PickerOption = {
         text: '',
         value: '',
         children: columns,
       }
 
       let columnIndex = 0
-      while (cursor && cursor.children) {
-        const options: PickerOption[] = cursor.children
-        const value = defaultValues[columnIndex]
+      while (columnOptions && columnOptions.children) {
+        const options: PickerOption[] = columnOptions.children
+        const value = values[columnIndex]
         let index = options.findIndex(
           (columnItem) => columnItem.value === value
         )
         if (index === -1) index = 0
-        cursor = cursor.children[index]
+        columnOptions = columnOptions.children[index]
         columnIndex++
         formatted.push(options)
       }
       return formatted
     }
 
-    // 每一列的类型
+    // 数据类型：多列、嵌套、单列
     const columnsType = () => {
       const firstColumn: PickerOption | PickerOption[] = options[0]
       if (firstColumn) {
@@ -130,104 +133,72 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
           return options
         case 'cascade':
           // 级联数据处理
-          return formatCascade(options as PickerOption[], chooseValue)
+          return formatCascade(options as PickerOption[], selectedValue)
         default:
           return [options]
       }
     }
     const init = () => {
-      const data: (string | number)[] = []
-      const normalData: PickerOption[][] = normalListData() as PickerOption[][]
-      setColumnsList(normalData)
-      normalData.length > 0 &&
-        normalData.map((item) => {
-          item[0] && data.push(item[0].value)
-          return item
-        })
-
-      if (!defaultValue && chooseValue.length === 0) {
-        setChooseValue([...data])
-      }
+      setColumnsList(normalListData() as PickerOption[][])
     }
-
-    // 列表格式修改
     useEffect(() => {
       init()
     }, [options])
 
-    // 默认值修改
-    useEffect(() => {
-      if (
-        defaultValue &&
-        defaultValue.length !== 0 &&
-        defaultValue.toString() !== chooseValue.toString()
-      ) {
-        const data = [...defaultValue]
-        setChooseValue(data)
-        setColumnsList(normalListData() as PickerOption[][])
-      }
-    }, [defaultValue])
-
-    const selectedOptions = () => {
+    const setSelectedOptions = () => {
       const options: PickerOption[] = []
-      columnsList.map((column: PickerOption[], index: number) => {
-        let currOptions = []
-        currOptions = column.filter((item) => item.value === chooseValue[index])
+      let currOptions = []
+      columnsList.forEach((columnOptions: PickerOption[], index: number) => {
+        currOptions = columnOptions.filter(
+          (item) => item.value === selectedValue[index]
+        )
         if (currOptions[0]) {
           options.push(currOptions[0])
         } else {
-          column[0] && options.push(column[0])
+          columnOptions[0] && options.push(columnOptions[0])
         }
-        return column
       })
       return options
     }
 
     // 选中值进行修改
     useEffect(() => {
-      onChange && onChange(columnIndex, chooseValue, selectedOptions())
+      onChange && onChange(setSelectedOptions(), selectedValue, columnIndex)
       if (isConfirmEvent.current) {
         isConfirmEvent.current = false
-        onConfirm && onConfirm(chooseValue, selectedOptions())
+        onConfirm && onConfirm(setSelectedOptions(), selectedValue)
       }
-    }, [chooseValue])
+    }, [selectedValue])
 
-    const closeActionSheet = () => {
-      onClose && onClose(chooseValue, selectedOptions())
-      afterClose && afterClose(chooseValue, selectedOptions(), pickerRef)
-    }
-
-    // 选择每一列的数据
-    const chooseItem = (option: PickerOption, columnIndex: number) => {
-      if (option && Object.keys(option).length) {
-        // 是否移动后是否与之前有差异
-        if (chooseValue[columnIndex] !== option.value) {
+    // 更新已选择数据
+    const chooseItem = (columnOptions: PickerOption, columnIndex: number) => {
+      if (columnOptions && Object.keys(columnOptions).length) {
+        // 切换数据后，数据有变动才触发。
+        if (selectedValue[columnIndex] !== columnOptions.value) {
           if (columnsType() === 'cascade') {
-            chooseValue[columnIndex] = option.value ? option.value : ''
-            setChooseValue([...chooseValue])
+            selectedValue[columnIndex] = columnOptions.value || ''
+            setSelectedValue([...selectedValue])
 
-            let index = columnIndex
-            let cursor = option
-            while (cursor && cursor.children && cursor.children[0]) {
-              chooseValue[index + 1] = cursor.children[0].value
-              setChooseValue([...chooseValue])
-              index++
-              cursor = cursor.children[0]
+            while (columnOptions?.children?.[0]) {
+              selectedValue[columnIndex + 1] = columnOptions.children[0].value
+              setSelectedValue([...selectedValue])
+              columnIndex++
+              columnOptions = columnOptions.children[0]
             }
             // 当前改变列的下一列 children 值为空
-            if (cursor && cursor.children) {
-              chooseValue[index + 1] = ''
-              setChooseValue([...chooseValue])
+            if (columnOptions?.children?.length) {
+              selectedValue[columnIndex + 1] = ''
+              setSelectedValue([...selectedValue])
             }
             setColumnsList(normalListData() as PickerOption[][])
           } else {
-            setChooseValue((data) => {
+            setSelectedValue((data) => {
               const cdata = [...data]
               cdata[columnIndex] = Object.prototype.hasOwnProperty.call(
-                option,
+                columnOptions,
                 'value'
               )
-                ? option.value
+                ? columnOptions.value
                 : ''
               return cdata
             })
@@ -246,20 +217,25 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       if (movings) {
         isConfirmEvent.current = true
       } else {
-        onConfirm && onConfirm(chooseValue, selectedOptions())
+        onConfirm && onConfirm(setSelectedOptions(), selectedValue)
+        closePicker()
       }
-      onClose && onClose(chooseValue, selectedOptions())
       setTimeout(() => {
         isConfirmEvent.current = false
       }, 0)
     }
 
-    const renderToolbar = () => {
+    const closePicker = () => {
+      onClose && onClose(setSelectedOptions(), selectedValue)
+      afterClose && afterClose(setSelectedOptions(), selectedValue, pickerRef)
+    }
+
+    const renderTitleBar = () => {
       return (
         <div className={classNames(`${classPrefix}__control`)}>
           <span
             className={classNames(`${classPrefix}__cancel-btn`)}
-            onClick={() => closeActionSheet()}
+            onClick={() => closePicker()}
           >
             {locale.cancel}
           </span>
@@ -275,22 +251,23 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
         </div>
       )
     }
+
     return (
       <Popup
         visible={visible}
         position="bottom"
         onClose={() => {
-          closeActionSheet()
+          closePicker()
         }}
       >
         <div className={classes} style={style} {...rest}>
-          {renderToolbar()}
+          {renderTitleBar()}
           <div className={classNames(`${classPrefix}__panel`)} ref={pickerRef}>
             {columnsList?.map((item, index) => {
               return (
                 <PickerPanel
                   ref={setRefs(index)}
-                  defaultValue={chooseValue?.[index]}
+                  defaultValue={selectedValue?.[index]}
                   options={item}
                   threeDimensional={threeDimensional}
                   chooseItem={(value: PickerOption, index: number) =>
