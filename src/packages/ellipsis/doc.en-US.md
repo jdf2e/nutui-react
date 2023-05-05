@@ -146,6 +146,6 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
+| Name | Description | Default Value |
+| --- | --- | --- |
 | --nutui-ellipsis-expand-collapse-color | 展示和收起的按钮颜色 | `#3460fa` |

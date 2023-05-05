@@ -17,7 +17,7 @@ type EllipsisedValue = {
 
 export interface EllipsisProps extends BasicComponent {
   content: string
-  direction: string
+  direction: Direction
   rows: number | string
   expandText: string
   collapseText: string
