@@ -902,7 +902,7 @@
           "author": "songsong"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Ellipsis",
           "type": "component",
           "cName": "文本省略",
@@ -980,7 +980,7 @@
           "author": "ailululu"
         },
         {
-          "version": "3.0.0",
+          "version": "2.0.0",
           "name": "Step",
           "sort": 17,
           "cName": "步骤条子组件",
