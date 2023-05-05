@@ -233,6 +233,16 @@
 - 主题定制的css变量中，去掉和dot有关的其他值，只保留 width。其他值由width计算而来。
 
 #### CircleProgress
+-h5
+- `progress` 重命名为 `percent`
+- `strokeWidth` 改用 css变量控制
+- `circleColor` 重名为 `color`
+- `pathColor` 改用 css变量控制
+
+-taro
+- `progress` 重命名为 `percent`
+- `circleColor` 重名为 `color`
+- `pathColor` 重名为 `background`
 #### Collapse
 #### CountDown
 #### Ellipsis
