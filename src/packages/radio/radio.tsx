@@ -16,31 +16,26 @@ type Shape = 'button' | 'round'
 type Position = 'right' | 'left'
 
 export interface RadioProps extends BasicComponent {
-  className: string
-  style: React.CSSProperties
   disabled: boolean
   checked: boolean
+  defaultChecked: boolean
   shape: Shape
-  textPosition: Position
-  value: string | number | boolean
+  labelPosition: Position
   icon: React.ReactNode
   checkedIcon: React.ReactNode
-  iconSize: string | number
   onChange: MouseEventHandler<HTMLDivElement>
+  value: string | number
 }
 
 const defaultProps = {
   ...ComponentDefaults,
-  className: '',
-  style: {},
   disabled: false,
   checked: false,
   shape: 'round',
   value: '',
-  textPosition: 'right',
-  icon: 'check-normal',
-  checkedIcon: 'check-checked',
-  iconSize: 18,
+  labelPosition: 'right',
+  icon: null,
+  checkedIcon: null,
   onChange: (e) => {},
 } as RadioProps
 export const Radio: FunctionComponent<
@@ -55,11 +50,10 @@ export const Radio: FunctionComponent<
     disabled,
     checked,
     shape,
-    textPosition,
+    labelPosition,
     value,
     icon,
     checkedIcon,
-    iconSize,
     onChange,
     ...rest
   } = props
@@ -108,7 +102,7 @@ export const Radio: FunctionComponent<
     return 'nut-radio__icon--unchecked'
   }
   const renderIcon = () => {
-    const { icon, iconSize, checkedIcon } = props
+    const { icon, checkedIcon } = props
 
     if (!disabledStatement && checkedStatement) {
       return React.isValidElement(checkedIcon) ? (
@@ -117,20 +111,19 @@ export const Radio: FunctionComponent<
           className: color(),
         })
       ) : (
-        <CheckChecked width={iconSize} height={iconSize} className={color()} />
+        <CheckChecked className={color()} />
       )
     }
     return React.isValidElement(icon) ? (
       React.cloneElement<any>(icon, {
         ...icon.props,
-        size: iconSize,
         className: color(),
       })
     ) : (
-      <CheckNormal width={iconSize} height={iconSize} className={color()} />
+      <CheckNormal className={color()} />
     )
   }
-  const reverseState = textPosition === 'left'
+  const reverseState = labelPosition === 'left'
   const renderRadioItem = () => {
     if (shape === 'button') {
       return renderButton()

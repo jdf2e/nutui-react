@@ -1,28 +1,31 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import classNames from 'classnames'
 import { RadioGroupOptionType } from './type'
 import RadioContext from '../radio/context'
 import { Radio } from '../radio/radio'
-
-import bem from '@/utils/bem'
 
 type Position = 'left' | 'right'
 type Direction = 'horizontal' | 'vertical'
 
 export interface RadioGroupProps {
-  value: string | number | boolean | null
-  textPosition: Position
+  value?: string | number
+  defaultValue?: string | number
+  labelPosition: Position
   direction: Direction
+  disabled?: boolean
   onChange: (value: string | number | boolean) => void
   options: RadioGroupOptionType[]
 }
 
 const defaultProps = {
-  value: null,
-  textPosition: 'right',
+  labelPosition: 'right',
   onChange: (value: string | number | boolean) => {},
   direction: 'vertical',
   options: [],
 } as RadioGroupProps
+
+const classPrefix = 'nut-radiogroup'
+
 export const RadioGroup = React.forwardRef(
   (
     props: Partial<RadioGroupProps> &
@@ -30,12 +33,11 @@ export const RadioGroup = React.forwardRef(
     ref
   ) => {
     const { children } = { ...defaultProps, ...props }
-    const b = bem('RadioGroup')
     const {
       className,
       value,
       onChange,
-      textPosition,
+      labelPosition,
       direction,
       options,
       ...rest
@@ -43,39 +45,9 @@ export const RadioGroup = React.forwardRef(
 
     const [val2State, setVal2State] = useState(value)
 
-    // useImperativeHandle(ref, () => ({
-    //   toggleAll(state: boolean) {
-    //     console.log(state)
-    //     if (state === false) {
-    //       setInnerValue([])
-    //     } else {
-    //       const childrenLabel: string[] = []
-    //       React.Children.map(children, (child) => {
-    //         const childProps = (child as any).props
-    //         childrenLabel.push(childProps.label || (child as any).children)
-    //       })
-    //       setInnerValue(childrenLabel)
-    //     }
-    //   },
-    // }))
-
     useEffect(() => {
       setVal2State(value)
     }, [value])
-
-    // function handleChildChange(state: boolean, label: string) {
-    //   if (innerValue) {
-    //     let clippedValue = []
-    //     if (state) {
-    //       clippedValue = [...innerValue, label]
-    //     } else {
-    //       innerValue?.splice(innerValue?.indexOf(label), 1)
-    //       clippedValue = [...innerValue]
-    //     }
-    //     setInnerValue(clippedValue)
-    //     onChange && onChange(clippedValue)
-    //   }
-    // }
 
     function validateChildChecked(child: any) {
       if (val2State === null) return false
@@ -94,9 +66,8 @@ export const RadioGroup = React.forwardRef(
           return React.cloneElement(child)
         }
         return React.cloneElement(child, {
-          textPosition,
+          labelPosition,
           checked: childChecked,
-          // onChange: handleChildChange,
         })
       })
     }
@@ -106,13 +77,13 @@ export const RadioGroup = React.forwardRef(
         const childChecked = validateChecked(value)
         return (
           <Radio
+            {...rest}
             key={value?.toString()}
             children={label}
             value={value}
             disabled={disabled}
             onChange={onChange}
-            {...rest}
-            textPosition={textPosition}
+            labelPosition={labelPosition}
             checked={childChecked}
           />
         )
@@ -129,9 +100,9 @@ export const RadioGroup = React.forwardRef(
         }}
       >
         <div
-          className={`nut-radiogroup nut-radiogroup--${props.direction} ${
-            className || ''
-          }`}
+          className={classNames(classPrefix, className, {
+            [`nut-radiogroup--${props.direction}`]: props.direction,
+          })}
           {...rest}
         >
           {options?.length ? renderOptionsChildren() : cloneChildren()}
