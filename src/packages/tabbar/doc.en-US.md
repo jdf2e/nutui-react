@@ -1,41 +1,41 @@
 #  Tabbar
 
-### introduce
+## Intro
 
 Bottom Navigation Common Scenarios
 
-### Install
+## Install
 
 ```ts
 // react
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
+import { Tabbar } from '@nutui/nutui-react';
 ```
 
-## code demo
+## Demo
 
 ### Basic usage
 
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
+import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => {
   const [activeIndex, setActiveIndex] = useState(2)
 
   return <Tabbar
-    visible={0}
-    activeVisible={activeIndex}
-    onSwitch={(child, id) => {
-      setActiveIndex(id)
+    defaultValue={0}
+    value={activeIndex}
+    onSwitch={(value) => {
+      setActiveIndex(value)
     }}
   >
-    <TabbarItem tabTitle="first" icon={<Home width={18} height={18} />} />
-    <TabbarItem tabTitle="Classification" icon={<Category width={18} height={18} />} />
-    <TabbarItem tabTitle="Find" icon={<Find width={18} height={18} />} />
-    <TabbarItem tabTitle="cart" icon={<Cart width={18} height={18} />} />
-    <TabbarItem tabTitle="mine" icon={<My width={18} height={18} />} />
+    <Tabbar.Item title="Home" icon={<Home width={18} height={18} />} value={9} />
+    <Tabbar.Item title="Category" icon={<Category width={18} height={18} />} dot />
+    <Tabbar.Item title="Find" icon={<Find width={18} height={18} />} />
+    <Tabbar.Item title="Cart" icon={<Cart width={18} height={18} />} />
+    <Tabbar.Item title="Mine" icon={<My width={18} height={18} />} />
   </Tabbar>
 }
 
@@ -46,38 +46,98 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
-  <Tabbar visible={2}>
-    <TabbarItem tabTitle="first" icon={<Home width={20} height={20} />} />
-    <TabbarItem tabTitle="Classification" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="Find" icon={<Find width={20} height={20} />} />
-    <TabbarItem tabTitle="cart" icon={<Cart width={20} height={20} />} />
-    <TabbarItem tabTitle="mine" icon={<My width={20} height={20} />} />
+  <Tabbar defaultValue={2}>
+    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
+    <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
+    <Tabbar.Item title="Mine" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
 export default App;
 ```
 :::
+
+### Only Icon
+
+:::demo
+```tsx
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+
+const App = () => (
+  <Tabbar
+    onSwitch={(value) => {
+      console.log(value)
+    }}
+  >
+    <Tabbar.Item
+      title="Home"
+      icon={<Home width={12} height={12} />}
+    />
+    <Tabbar.Item
+      title="Category"
+      icon={<Category width={12} height={12} />}
+    />
+    <Tabbar.Item icon={<Find width={24} height={24} />} />
+    <Tabbar.Item
+      title="Cart"
+      icon={<Cart width={12} height={12} />}
+    />
+    <Tabbar.Item
+      title="Mine"
+      icon={<My width={12} height={12} />}
+    />
+  </Tabbar>
+)
+```
+:::
+
+### No Icon
+
+:::demo
+```tsx
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
+
+const App = () => (
+  <Tabbar
+    onSwitch={(value) => {
+      console.log(value)
+    }}
+  >
+    <Tabbar.Item title="Home" value={9} />
+    <Tabbar.Item title="Category" dot />
+    <Tabbar.Item title="Find" />
+    <Tabbar.Item title="Cart" />
+    <Tabbar.Item title="Mine" />
+  </Tabbar>
+)
+```
+:::
+
 ### Logo Tips
 
 :::demo
 ```tsx
-import  React from "react";
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem tabTitle="first" icon={<Home width={12} height={12} />} num="11" />
-    <TabbarItem tabTitle="Classification" icon={<Category width={12} height={12} />} />
-    <TabbarItem tabTitle="Find" icon={<Find width={12} height={12} />} />
-    <TabbarItem tabTitle="cart" icon={<Cart width={12} height={12} />} num="110" />
-    <TabbarItem tabTitle="mine" icon={<My width={12} height={12} />} />
+    <Tabbar.Item title="Home" icon={<Home width={12} height={12} />} value={11} />
+    <Tabbar.Item title="Category" icon={<Category width={12} height={12} />} />
+    <Tabbar.Item title="Find" icon={<Find width={12} height={12} />} />
+    <Tabbar.Item title="Cart" icon={<Cart width={12} height={12} />} value={110} />
+    <Tabbar.Item title="Mine" icon={<My width={12} height={12} />} />
   </Tabbar>
 );
 
@@ -89,17 +149,17 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem tabTitle="first" icon={<Home width={20} height={20} />} dot />
-    <TabbarItem tabTitle="Classification" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="Find" icon={<Find width={20} height={20} />} />
-    <TabbarItem tabTitle="cart" icon={<Cart width={20} height={20} />} dot />
-    <TabbarItem tabTitle="mine" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} dot />
+    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
+    <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} dot />
+    <Tabbar.Item title="Mine" icon={<My width={20} height={20} />} />
   </Tabbar>
 )
 
@@ -110,17 +170,17 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
-  <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem tabTitle="first" icon={<Home width={20} height={20} />} />
-    <TabbarItem tabTitle="Classification" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="Find" icon={<Find width={20} height={20} />} />
-    <TabbarItem tabTitle="cart" icon={<Cart width={20} height={20} />} />
-    <TabbarItem tabTitle="mine" icon={<My width={20} height={20} />} />
+  <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
+    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
+    <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
+    <Tabbar.Item title="Mine" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -131,36 +191,36 @@ export default App;
 
 :::demo
 ```tsx
-import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
 import { Category, Find, Home } from '@nutui/icons-react';
 
 const App = () => (
-  <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem tabTitle="first" icon={<Home width={20} height={20} />} />
-    <TabbarItem tabTitle="Classification" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="Find" icon={<Find width={20} height={20} />} />
+  <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
+    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
   </Tabbar>
 );
 
 export default App;
 ```
 :::
-### Fixed bottom, free to jump
+### Fixed bottom
 
 :::demo
 ```tsx
-import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
-  <Tabbar bottom>
-    <TabbarItem tabTitle="first" href="" icon={<Home width={20} height={20} />} />
-    <TabbarItem tabTitle="Classification" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="Find" icon={<Find width={20} height={20} />} />
-    <TabbarItem tabTitle="cart" href="https://m.jd.com" icon={<Cart width={20} height={20} />} />
-    <TabbarItem tabTitle="mine" to="/" icon={<My width={20} height={20} />} />
+  <Tabbar fixed>
+    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
+    <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
+    <Tabbar.Item title="Mine" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -168,45 +228,34 @@ export default App;
 ```
 :::        
 
-## API
+## Tabbar
 
-### Prop
+### Props
 
-### nut-tabbar
-
-| Prop            | Description                                                                          | Type   | Default |
+| Property            | Description                                                                          | Type   | Default |
 |-----------------|--------------------------------------------------------------------------------------|--------|---------|
-| visible | The default index value of the selected label                                        | number | `0`       |
-| activeVisible`1.4.8` | The index value of the selected label                                                | number | -       |
-| bottom          | Whether it is fixed at the bottom of the page                                        | boolean | `false`   |
-| unactiveColor  | Icon inactive color                                                                  | string | `#7d7e80` |
-| activeColor    | icon active color                                                                    | string | `#1989fa` |
-size`v2.0.0废弃`    | icon size for all icons                                                              | string \| boolean | `20`      |
-| safeAreaInsetBottom    | Whether to enable the full screen bottom safety zone adaptation of the iphone series | boolean | `false`   |
-| style    | component style                                                                      | CSSProperties | `{}`      |
-| className    | component class name                                                                 | string | -       |
+| defaultValue | The default index value of the selected label                                        | `number` | `0`       |
+| value | The index value of the selected label                                                | `number` | -       |
+| fixed          | Whether it is fixed at the bottom of the page                                        | `boolean` | `false`   |
+| activeColor    | icon active color                                                                    | `string` | `#1989fa` |
+| inactiveColor  | Icon inactive color                                                                  | `string` | `#7d7e80` |
+| safeArea    | Whether to enable the full screen bottom safety zone adaptation of the iphone series | `boolean` | `false`   |
+| onSwitch    | Trigger an event when switching tabs | `(value) => void` | - |
 
-### tabbar-item
+## Tabbar.Item
 
-| Prop | Description | Type   | Default |
+### Props
+
+| Property | Description | Type   | Default |
 |-----------|--------------|--------|--------|
-| tabTitle | the title of the tab | string | -     |
-| icon | Custom icon | ReactNode | -     |
-| href | Jump link of tab page;   | string | -     |
-| to`v1.4.0 Abandon`              | 	The route object of the tab, equal to React Router's [to Prop](https://v5.reactrouter.com/web/api/Link/to-string) Prop | any | -     |
-| num | The numerical corner mark in the upper right corner of the tab, if it exceeds 99, it will be 99+     | number | -     |
-| iconClassPrefix`v2.0.0废弃`   | Custom icon class name prefix, used to use custom icons | string | `nut-icon` |
-| iconFontClassName`v2.0.0废弃` | Basic class name of custom icon font        | string | `nutui-iconfont` |
-| dot | Whether to display the little red dot in the upper right corner of the icon   | boolean | `false`     |
-| iconSize`v2.0.0废弃`    | icon size for some icon    | string \| boolean | `20` |
-
-
-### Event
-
-| Event               | Description               | callback parameter           |
-|---------------------|--------------------|--------------------|
-| onSwitch    | Trigger an event when switching tabs | Clicked data and index value |
-
+| title | the title of the tab | `ReactNode` | -     |
+| icon | Custom icon | `ReactNode` | -     |
+| value   | value to show, eg number、charctor and custom content | `ReactNode`  |  | - |
+| max     | when value is number, it's the max size | `number`  | `99`   |
+| dot     | Is dotted    | `boolean` | `false`   |
+| top     | Up and down offset, support unit setting, can be set to: 5, etc. |`number`  | `0`       |
+| right   | Left and right offset, support unit setting, can be set to: 5, etc. | `number`  | `0`       |
+| color   | background color,the default value is the theme primary color | string  | `` |
 
 ## Theming
 
@@ -214,18 +263,15 @@ size`v2.0.0废弃`    | icon size for all icons                                 
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-tabbar-height | `50px`|
-| --nutui-tabbar-active-color | `$primary-color` |
-| --nutui-tabbar-unactive-color | `$primary-color` |
-| --nutui-tabbar-border-top | `1px solid #eee` |
-| --nutui-tabbar-border-bottom | `1px solid #eee` |
-| --nutui-tabbar-box-shadow | `none` |
-| --nutui-tabbar-item-text-font-size | `$font-size-0` |
-| --nutui-tabbar-item-text-line-height | `initial` |
-| --nutui-tabbar-height | `50px` |
-| --nutui-tabbar-word-margin-top | `auto` |
-| --nutui-tabbar-dot-right | `12px`|
-| --nutui-tabbar-dot-top | `0` |
-| --nutui-tabbar-word-margin-top | `3px` |
+| Name | Description | Default |
+| --- | --- | --- |
+| --nutui-tabbar-height | tabbar height | `50px`|
+| --nutui-tabbar-active-color | active color | `$primary-color` |
+| --nutui-tabbar-inactive-color | default color | `$gray1` |
+| --nutui-tabbar-border-top | borderTop | `1px solid #eee` |
+| --nutui-tabbar-border-bottom | borderBottom | `1px solid #eee` |
+| --nutui-tabbar-box-shadow | boxShadow | `none` |
+| --nutui-tabbar-text-font-size | title fontSize | `$font-size-0` |
+| --nutui-tabbar-text-large-font-size | title fontSize when icon is null | `$font-size-large` |
+| --nutui-tabbar-text-line-height | title lineHeight | `initial` |
+| --nutui-tabbar-text-margin-top | title marginTop | `3px` |

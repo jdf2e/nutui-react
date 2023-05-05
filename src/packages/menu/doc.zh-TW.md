@@ -183,7 +183,7 @@ const App = () => {
     <>
       <div className="demo full">
         <Menu titleIcon={<TriangleDown />}>
-          <MenuItem options={options} value={0} optionsIcon={<Success />} />
+          <MenuItem options={options} value={0} icon={<Success />} />
           <MenuItem options={options1} value="a" />
         </Menu>
       </div>

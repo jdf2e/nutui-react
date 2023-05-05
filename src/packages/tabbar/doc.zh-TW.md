@@ -1,10 +1,10 @@
 #  Tabbar 標籤欄
 
-### 介紹
+## 介紹
 
 導航最常用場景
 
-### 安裝
+## 安裝
 
 ```ts
 // react
@@ -27,11 +27,11 @@ const App = () => (
       console.log(idx)
     }}
   >
-    <TabbarItem tabTitle="首頁" icon="首頁" />
-    <TabbarItem tabTitle="分類" icon={<Category width={18} height={18} />} />
-    <TabbarItem tabTitle="發現" icon={<Find width={20} height={20} />} />
-    <TabbarItem tabTitle="購物車" icon={<Cart width={20} height={20} />} />
-    <TabbarItem tabTitle="我的" icon="我的" />
+    <TabbarItem title="首頁" icon="首頁" />
+    <TabbarItem title="分類" icon={<Category width={18} height={18} />} />
+    <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
+    <TabbarItem title="購物車" icon={<Cart width={20} height={20} />} />
+    <TabbarItem title="我的" icon="我的" />
   </Tabbar>
 );
 
@@ -55,11 +55,11 @@ const App = () => {
       setActiveIndex(id)
     }}
   >
-    <TabbarItem tabTitle="首頁" icon="首頁" />
-    <TabbarItem tabTitle="分類" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="發現" icon={<Find width={20} height={20} />} />
-    <TabbarItem tabTitle="購物車" icon={<Cart width={20} height={20} />} />
-    <TabbarItem tabTitle="我的" icon="我的" />
+    <TabbarItem title="首頁" icon="首頁" />
+    <TabbarItem title="分類" icon={<Category width={20} height={20} />} />
+    <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
+    <TabbarItem title="購物車" icon={<Cart width={20} height={20} />} />
+    <TabbarItem title="我的" icon="我的" />
   </Tabbar>
 }
 
@@ -75,11 +75,11 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem tabTitle="首頁" icon={<Home width={20} height={20} />} num="11" />
-    <TabbarItem tabTitle="分類" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="發現" icon={<Find width={20} height={20} />} />
-    <TabbarItem tabTitle="購物車" icon={<Cart width={20} height={20} />} num="110" />
-    <TabbarItem tabTitle="我的" icon={<My width={20} height={20} />} />
+    <TabbarItem title="首頁" icon={<Home width={20} height={20} />} num="11" />
+    <TabbarItem title="分類" icon={<Category width={20} height={20} />} />
+    <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
+    <TabbarItem title="購物車" icon={<Cart width={20} height={20} />} num="110" />
+    <TabbarItem title="我的" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -96,11 +96,11 @@ import { Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar>
-    <TabbarItem tabTitle="首頁" icon={<Home width={20} height={20} />} dot />
-    <TabbarItem tabTitle="分類" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="發現" icon={<Find width={20} height={20} />} />
-    <TabbarItem tabTitle="購物車" icon={<Cart width={20} height={20} />} dot />
-    <TabbarItem tabTitle="我的" icon={<My width={20} height={20} />} />
+    <TabbarItem title="首頁" icon={<Home width={20} height={20} />} dot />
+    <TabbarItem title="分類" icon={<Category width={20} height={20} />} />
+    <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
+    <TabbarItem title="購物車" icon={<Cart width={20} height={20} />} dot />
+    <TabbarItem title="我的" icon={<My width={20} height={20} />} />
   </Tabbar>
 )
 
@@ -115,12 +115,12 @@ import  React from "react";
 import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
-  <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem tabTitle="首頁" icon={<Home width={20} height={20} />} />
-    <TabbarItem tabTitle="分類" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="發現" icon={<Find width={20} height={20} />} />
-    <TabbarItem tabTitle="購物車" icon={<Cart width={20} height={20} />} />
-    <TabbarItem tabTitle="我的" icon={<My width={20} height={20} />} />
+  <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
+    <TabbarItem title="首頁" icon={<Home width={20} height={20} />} />
+    <TabbarItem title="分類" icon={<Category width={20} height={20} />} />
+    <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
+    <TabbarItem title="購物車" icon={<Cart width={20} height={20} />} />
+    <TabbarItem title="我的" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -135,10 +135,10 @@ import  React from "react";
 import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
-  <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem tabTitle="首頁" icon={<Home width={20} height={20} />} />
-    <TabbarItem tabTitle="分類" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="發現" icon={<Find width={20} height={20} />} />
+  <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
+    <TabbarItem title="首頁" icon={<Home width={20} height={20} />} />
+    <TabbarItem title="分類" icon={<Category width={20} height={20} />} />
+    <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
   </Tabbar>
 );  
 
@@ -154,11 +154,11 @@ import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
 
 const App = () => (
   <Tabbar bottom>
-    <TabbarItem tabTitle="首頁" href="" icon={<Home width={20} height={20} />} />
-    <TabbarItem tabTitle="分類" icon={<Category width={20} height={20} />} />
-    <TabbarItem tabTitle="發現" icon={<Find width={20} height={20} />} />
-    <TabbarItem tabTitle="購物車" href="https://m.jd.com" icon={<Cart width={20} height={20} />} />
-    <TabbarItem tabTitle="我的" to="/" icon={<My width={20} height={20} />} />
+    <TabbarItem title="首頁" href="" icon={<Home width={20} height={20} />} />
+    <TabbarItem title="分類" icon={<Category width={20} height={20} />} />
+    <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
+    <TabbarItem title="購物車" href="https://m.jd.com" icon={<Cart width={20} height={20} />} />
+    <TabbarItem title="我的" to="/" icon={<My width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -166,45 +166,31 @@ export default App;
 ```
 :::        
 
-## API
+## Tabbar
 
-### Prop
-
-### nut-tabbar
+### Props
 
 | 字段            | 說明                     | 類型   | 默認值  |
 |-----------------|------------------------|--------|---------|
 | visible | 默认選中的標籤的索引值            | number | `0`       |
-| activeVisible`1.4.8` | 選中的標籤的索引值              | number | -       |
+| activeVisible | 選中的標籤的索引值              | number | -       |
 | bottom          | 是否固定在頁面底部              | boolean | `false`   |
-| unactiveColor  | icon未激活的顏色             | string | `#7d7e80` |
+| inactiveColor  | icon未激活的顏色             | string | `#7d7e80` |
 | activeColor    | icon激活的顏色              | string | `#1989fa` |
-| size`v2.0.0废弃`    | icon的统一尺寸              | string \| boolean | `20` |
 | safeAreaInsetBottom    | 是否開啟iphone系列全面屏底部安全區適配 | boolean | `false` |
-| style    | 組件樣式                   | CSSProperties | `{}` |
-| className    | 組件類名                   | string | - |
 
-### tabbar-item
+## TabbarItem
+
+### Props
 
 | 字段 | 說明 | 類型   | 默認值 |
 |-----------|-------------------|--------|--------|
-| tabTitle | 標籤頁的標題 | string | -     |
+| title | 標籤頁的標題 | ReactNode | -     |
 | icon | 自定義圖標 | ReactNode | -     |
 | href | 標籤頁的跳轉鏈接   | string | -     |
-| to`v1.4.0 废弃` | 	標籤頁的路由對象，等於 React Router 的 [to 屬性](https://v5.reactrouter.com/web/api/Link/to-string) 屬性 | any | -     |
 | num | 頁簽右上角的數字角標，超出99之後為99+     | number | -     |
-| iconClassPrefix`v2.0.0废弃`  | 自定義 icon 類名前綴，用於使用自定義圖標 | string | `nut-icon` |
-| iconFontClassName`v2.0.0废弃` | 自定義 icon 字體基礎類名 | string | 
 | dot | 是否顯示圖標右上角小紅點   | boolean | `false`     |
-| iconSize`v2.0.0废弃`   | icon的单个尺寸     | string \| boolean | `20` |
-
-
-### Event
-
-| 事件名稱   | 說明               | 回調參數           |
-|------------|--------------------|--------------------|
 | tabSwitch | 切換頁籤時觸發事件 | 點擊的數據和索引值 |
-
 
 ## 主題定制
 

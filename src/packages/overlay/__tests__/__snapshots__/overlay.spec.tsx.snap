@@ -3,7 +3,7 @@
 exports[`content test 1`] = `
 <div>
   <div
-    class="overlay-fade-enter-active nut-overlay"
+    class="nut-overlay-fade-enter-active nut-overlay"
     style="z-index: 1000; animation-duration: 0.3s;"
   >
     <div

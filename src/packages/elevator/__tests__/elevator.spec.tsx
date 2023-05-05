@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Elevator } from '../elevator'
 
-const indexList = [
+const list = [
   {
     title: 'A',
     list: [
@@ -54,17 +54,17 @@ const onClickIndex = (key: string) => {
   console.log(key)
 }
 test('should render elevator list height after height props to be 200', () => {
-  const { container } = render(<Elevator indexList={indexList} height={200} />)
+  const { container } = render(<Elevator list={list} height={200} />)
   expect(container.querySelector('.nut-elevator__list')).toHaveAttribute(
     'style',
     'height: 200px;'
   )
 })
 
-test('should render list data when indexList props not empty', () => {
-  const { container } = render(<Elevator indexList={indexList} height={200} />)
+test('should render list data when list props not empty', () => {
+  const { container } = render(<Elevator list={list} height={200} />)
   expect(container.querySelectorAll('.nut-elevator__list__item').length).toBe(
-    indexList.length
+    list.length
   )
 })
 
@@ -72,7 +72,7 @@ test('should list item highlight when onClickItem trigger click', () => {
   const testClick = jest.fn()
   const { container } = render(
     <Elevator
-      indexList={indexList}
+      list={list}
       height={200}
       onClickItem={(key: string, item: any) => testClick(key, item)}
     />
@@ -96,7 +96,7 @@ test('onClickIndex trigger click', () => {
   const testClick = jest.fn()
   const { container } = render(
     <Elevator
-      indexList={indexList}
+      list={list}
       height={200}
       onClickIndex={(key: string) => testClick(key)}
     />
@@ -116,9 +116,9 @@ test('index is sticky', () => {
   const testClick = jest.fn()
   const { container } = render(
     <Elevator
-      indexList={indexList}
+      list={list}
       height={200}
-      isSticky
+      sticky
       onClickIndex={(key: string) => testClick(key)}
     />
   )

@@ -59,7 +59,7 @@ interface T {
   three: string
 }
 const ElevatorDemo = () => {
-  const acceptKey = 'num'
+  const floorKey = 'num'
   const [translated] = useTranslate<T>({
     'zh-CN': {
       basic: '基本用法',
@@ -479,7 +479,7 @@ const ElevatorDemo = () => {
         <h2>{translated.basic}</h2>
         <div className="demo-component">
           <Elevator
-            indexList={dataList}
+            list={dataList}
             height="260"
             onClickItem={(key: string, item: any) => onClickItem(key, item)}
             onClickIndex={(key: string) => onClickIndex(key)}
@@ -489,9 +489,9 @@ const ElevatorDemo = () => {
         <div className="demo-component">
           <Elevator
             className="test-elevator1"
-            indexList={dataList2}
+            list={dataList2}
             height="220"
-            acceptKey={acceptKey}
+            floorKey={floorKey}
             onClickItem={(key: string, item: any) => onClickItem(key, item)}
             onClickIndex={(key: string) => onClickIndex(key)}
           />
@@ -500,8 +500,8 @@ const ElevatorDemo = () => {
         <div className="demo-component">
           <Elevator
             className="test-elevator2"
-            indexList={dataList3}
-            isSticky
+            list={dataList3}
+            sticky
             height="220"
             onClickItem={(key: string, item: any) => onClickItem(key, item)}
             onClickIndex={(key: string) => onClickIndex(key)}
@@ -511,7 +511,7 @@ const ElevatorDemo = () => {
         <div className="demo-component">
           <Elevator
             className="test-elevator3"
-            indexList={dataList}
+            list={dataList}
             height="260"
             onClickItem={(key: string, item: unknown) => onClickItem(key, item)}
             onClickIndex={(key: string) => onClickIndex(key)}
@@ -520,7 +520,7 @@ const ElevatorDemo = () => {
               {(value) => {
                 return (
                   <>
-                    <Jd width={12} height={12} />
+                    <Jd size={10} />
                     <span style={{ marginLeft: '15px' }}>{value?.name}</span>
                   </>
                 )

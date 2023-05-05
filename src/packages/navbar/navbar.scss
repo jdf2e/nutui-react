@@ -1,36 +1,3 @@
-.nut-theme-dark {
-  .nut-navbar {
-    background: $dark5;
-    color: $dark1;
-    box-shadow: none;
-
-    .title {
-      color: $dark1;
-    }
-
-    &__left {
-      color: $dark2;
-
-      i {
-        color: $dark2 !important;
-      }
-    }
-
-    &__right {
-      color: $dark1;
-    }
-
-    &--border {
-      border-bottom: none;
-    }
-  }
-
-  .nut-tabs__titles-item__text {
-    background: $dark5;
-    color: $dark1;
-  }
-}
-
 .nut-navbar {
   width: $navbar-width;
   position: relative;
@@ -41,18 +8,10 @@
   padding: $navbar-padding;
   background: $navbar-background;
   box-shadow: $navbar-box-shadow;
-  font-size: $navbar-title-base-font;
+  font-size: $navbar-font-size;
   color: $navbar-color;
   margin-bottom: $navbar-margin-bottom;
   overflow: hidden;
-
-  &:active::before {
-    opacity: 0.1;
-  }
-
-  &--border {
-    border-bottom: 1px solid #eee;
-  }
 
   &--fixed {
     position: fixed;
@@ -71,29 +30,6 @@
     padding-top: env(safe-area-inset-top);
   }
 
-  &--clickable {
-    &::before {
-      position: absolute;
-      content: ' ';
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      background-color: $black;
-      border: inherit;
-      border-color: $black;
-      border-radius: inherit;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-    }
-  }
-
-  .nutui-iconfont {
-    .nut-icon-left {
-      text-align: left;
-    }
-  }
-
   &__title {
     min-width: 53%;
     margin: 0 auto;
@@ -101,35 +37,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    .title {
-      min-width: $navbar-title-width;
-      font-size: $navbar-title-font;
-      font-weight: $navbar-title-font-weight;
-      color: $navbar-title-font-color;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-      overflow: hidden;
-    }
-
-    &.icon {
-      .icon {
-        margin: $navbar-title-icon-margin;
-      }
-    }
-
-    .nut-icon {
-      display: inline;
-    }
-
-    &-description {
-      font-size: $cell-description-font-size;
-    }
-
-    .text__title {
-      display: inline-block;
-    }
+    font-size: $navbar-title-font-size;
+    font-weight: $navbar-title-font-weight;
+    color: $navbar-title-font-color;
 
     .nut-tabs__titles {
       background: $white;
@@ -148,11 +58,9 @@
     display: none;
   }
 
-  &__left {
-    font-size: $cell-extra-font-size;
-    color: $gray2;
+  &__left,
+  &__right {
     position: absolute;
-    left: 0;
     top: 0;
     bottom: 0;
     display: flex;
@@ -161,24 +69,17 @@
     padding: 0 16px;
   }
 
+  &__left {
+    left: 0;
+    &__back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+    }
+  }
+
   &__right {
-    font-size: $cell-extra-font-size;
-    color: $gray2;
-    position: absolute;
     right: 0;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    padding: 0 16px;
-    cursor: pointer;
-
-    .rightIcon {
-      margin-left: 16px;
-    }
-
-    .leftIcon {
-      margin-left: 16px;
-    }
   }
 }
