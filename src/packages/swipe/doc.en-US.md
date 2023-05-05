@@ -188,7 +188,7 @@ const App = () => {
     Dialog.alert({
       Title: 'prompt',
       content: postion === 'left' ? ' Are you sure to choose? ':' Are you sure to delete? ',
-      onOk: () => {
+      onConfirm: () => {
         refDom. current && refDom.current.close()
       },
     })

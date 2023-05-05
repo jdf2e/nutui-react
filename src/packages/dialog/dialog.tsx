@@ -1,12 +1,9 @@
-import React, {
-  ForwardRefRenderFunction,
-  HTMLAttributes,
-  forwardRef,
-} from 'react'
+import React, { ForwardRefRenderFunction, forwardRef } from 'react'
 import classNames from 'classnames'
 import Button from '@/packages/button'
-import { DialogWrapper } from './DialogWrapper'
-import confirm from './Confirm'
+import confirm from './confirm'
+import { DialogWrap } from './dialogwrap'
+import { useConfig } from '@/packages/configprovider'
 import {
   BasicDialogProps,
   DialogReturnProps,
@@ -16,105 +13,103 @@ import {
 
 export type DialogProps = BasicDialogProps
 const defaultProps = {
-  confirmText: '确认',
-  cancelText: '取消',
-  mask: true,
-  closeOnClickOverlay: true,
-  noFooter: false,
-  noOkBtn: false,
-  noCancelBtn: false,
-  okBtnDisabled: false,
-  cancelAutoClose: true,
-  textAlign: 'center',
+  confirmText: '',
+  cancelText: '',
+  overlay: true,
+  closeOnOverlayClick: true,
+  hideConfirmButton: false,
+  hideCancelButton: false,
+  disableConfirmButton: false,
   footerDirection: 'horizontal',
-  lockScroll: false,
+  lockScroll: true,
+  beforeCancel: () => true,
+  beforeClose: () => true,
 } as DialogProps
 
-const BaseDialog: ForwardRefRenderFunction<
-  unknown,
-  Partial<DialogProps> & HTMLAttributes<HTMLDivElement>
-> = (props, ref) => {
+const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
+  props,
+  ref
+) => {
+  const { locale } = useConfig()
   const {
     visible,
     footer,
-    noFooter,
-    noOkBtn,
-    noCancelBtn,
+    hideConfirmButton,
+    hideCancelButton,
     lockScroll,
-    okBtnDisabled,
-    cancelAutoClose,
+    disableConfirmButton,
+    closeOnOverlayClick,
     confirmText,
     cancelText,
-    onClosed,
+    onClose,
     onCancel,
-    onOk,
+    onConfirm,
+    beforeCancel,
+    beforeClose,
     ...restProps
   } = props
+  const classPrefix = 'nut-dialog'
 
-  const renderFooter = function () {
-    if (footer === null || noFooter) return ''
+  const renderFooter = () => {
+    if (footer === null) return ''
 
     const handleCancel = (e: MouseEvent) => {
       e.stopPropagation()
-      if (!cancelAutoClose) return
-
-      onClosed?.()
+      if (!beforeCancel?.()) return
+      if (!beforeClose?.()) return
+      onClose?.()
       onCancel?.()
-      if (lockScroll && visible) {
-        document.body.classList.remove('nut-overflow-hidden')
-      }
     }
 
     const handleOk = (e: MouseEvent) => {
       e.stopPropagation()
-      onClosed?.()
-      onOk?.(e)
-      if (lockScroll && visible) {
-        document.body.classList.remove('nut-overflow-hidden')
-      }
+      onClose?.()
+      onConfirm?.(e)
     }
 
-    const footerContent = footer || (
-      <>
-        {!noCancelBtn && (
-          <Button
-            size="small"
-            fill="outline"
-            type="primary"
-            className="nut-dialog__footer-cancel"
-            onClick={handleCancel}
-          >
-            {cancelText}
-          </Button>
-        )}
-        {!noOkBtn && (
-          <Button
-            size="small"
-            type="primary"
-            className={classNames('nut-dialog__footer-ok', {
-              disabled: okBtnDisabled,
-            })}
-            disabled={okBtnDisabled}
-            onClick={handleOk}
-          >
-            {confirmText}
-          </Button>
-        )}
-      </>
+    return (
+      footer || (
+        <>
+          {!hideCancelButton && (
+            <Button
+              size="small"
+              fill="outline"
+              type="primary"
+              className={`${classPrefix}__footer-cancel`}
+              onClick={(e) => handleCancel(e)}
+            >
+              {cancelText || locale.cancel}
+            </Button>
+          )}
+          {!hideConfirmButton && (
+            <Button
+              size="small"
+              type="primary"
+              className={classNames(`${classPrefix}__footer-ok`, {
+                disabled: disableConfirmButton,
+              })}
+              disabled={disableConfirmButton}
+              onClick={(e) => handleOk(e)}
+            >
+              {confirmText || locale.confirm}
+            </Button>
+          )}
+        </>
+      )
     )
-
-    return footerContent
   }
 
   return (
-    <DialogWrapper
-      {...restProps}
-      visible={visible}
-      lockScroll={lockScroll}
-      footer={renderFooter()}
-      onClosed={onClosed}
-      onCancel={onCancel}
-    />
+    <div style={{ display: visible ? 'block' : 'none' }}>
+      <DialogWrap
+        {...props}
+        visible={visible}
+        lockScroll={lockScroll}
+        footer={renderFooter()}
+        onClose={onClose}
+        onCancel={onCancel}
+      />
+    </div>
   )
 }
 
