@@ -105,8 +105,13 @@ const InputDemo = () => {
         <Input readOnly placeholder={translated.readOnly} />
         <Input disabled placeholder={translated.disabled} />
         <h2>{translated.title3}</h2>
-        <Input clearable placeholder={translated.clear} />
-        <Input clearable clearIcon={<Close />} placeholder={translated.clear} />
+        <Input type="text" clearable placeholder={translated.clear} />
+        <Input
+          type="text"
+          clearable
+          clearIcon={<Close size={14} />}
+          placeholder={translated.clear}
+        />
         <h2>{translated.wordCount}</h2>
         <div
           style={{
@@ -142,7 +147,7 @@ const InputDemo = () => {
             }
           >
             {inputType === 'text' ? (
-              <Eye />
+              <Eye size={14} />
             ) : (
               <img
                 width="16px"
