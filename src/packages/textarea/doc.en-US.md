@@ -18,28 +18,18 @@ import { TextArea } from '@nutui/nutui-react';
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { TextArea } from '@nutui/nutui-react';
 
 const App = () => {
-  const [value1, updateValue1] = useState('')
-  const change = (value: any, event: Event) => {
-    updateValue1(value)
-  }
   return (
     <TextArea
-      defaultValue={value1}
+      defaultValue="Basic Usage"
       className="text-1"
       style={{ fontSize: '12px' }}
-      onChange={(value, event) => {
-        change(value, event)
-      }}
-      onBlur={() => {
-        console.log('blur')
-      }}
-      onFocus={() => {
-        console.log('focus')
-      }}
+      onChange={(value) => console.log('change', value)}
+      onBlur={() => console.log('blur')}
+      onFocus={() => console.log('focus')}
     />
   )
 };
@@ -47,8 +37,7 @@ export default App
 ```
 :::
 
-
-### Display word count
+### Controlled
 
 :::demo
 
@@ -57,9 +46,29 @@ import React, {useState} from "react";
 import { TextArea } from '@nutui/nutui-react';
 
 const App = () => {
-  const [value2, updateValue2] = useState('')
+  const [value, setValue] = useState('');
   return (
-    <TextArea defaultValue={value2} showCount maxLength={20} />
+    <TextArea
+      value={value}
+      onChange={(value) => setValue(value)}
+    />
+  )
+};
+export default App
+```
+:::
+
+### Display word count
+
+:::demo
+
+```tsx
+import React from "react";
+import { TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <TextArea showCount maxLength={20} />
   )
 };
 export default App
@@ -71,13 +80,12 @@ export default App
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { TextArea } from '@nutui/nutui-react';
 
 const App = () => {
-  const [value3, updateValue3] = useState('')
   return (
-    <TextArea defaultValue={value3} rows={1} autoSize />
+    <TextArea rows={1} autoSize />
   )
 };
 export default App
@@ -89,7 +97,7 @@ export default App
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { TextArea } from '@nutui/nutui-react';
 
 const App = () => {
@@ -109,13 +117,13 @@ export default App
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { TextArea } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <TextArea
-      defaultValue={translated.alignRight}
+      defaultValue="TextAlign"
       style={{
         textAlign: "right",
       }}
@@ -132,7 +140,8 @@ export default App
 
 | Property     | Description            | Type   | Default       |
 | ------------ | ----------------------------------- | -------------- | -------------- |
-| defaultValue | input value, support two-way binding              | `string`         | -              |
+| value        | input value, controlled | `string` | - |
+| defaultValue | input default value, uncontrolled              | `string`         | -              |
 | placeholder  | set placeholder prompt text             | `string`         | `please enter content ` |
 | maxLength    | limit the maximum input characters              | `number` | `140`              |
 | rows         | height of textarea, with priority higher than autoSize attribute | `number` | `2`            |

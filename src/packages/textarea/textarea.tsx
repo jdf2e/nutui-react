@@ -1,10 +1,12 @@
-import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export interface TextAreaProps extends BasicComponent {
-  defaultValue: string | number | any
+  value: string
+  defaultValue: string
   showCount: boolean
   maxLength: number
   rows: number
@@ -12,7 +14,7 @@ export interface TextAreaProps extends BasicComponent {
   readOnly: boolean
   disabled: boolean
   autoSize: boolean
-  onChange: (value: any, event: Event) => void
+  onChange: (value: any) => void
   onBlur: (event: Event) => void
   onFocus: (event: Event) => void
 }
@@ -20,7 +22,6 @@ const defaultProps = {
   ...ComponentDefaults,
   defaultValue: '',
   showCount: false,
-  maxLength: 140,
   rows: 2,
   placeholder: '',
   readOnly: false,
@@ -37,6 +38,7 @@ export const TextArea: FunctionComponent<
   const { locale } = useConfig()
   const {
     className,
+    value,
     defaultValue,
     showCount,
     maxLength,
@@ -52,86 +54,56 @@ export const TextArea: FunctionComponent<
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-textarea'
-  const [inputValue, SetInputValue] = useState('')
   const textareaRef = useRef<any>(null)
+  const compositionRef = useRef(false)
 
-  const compositingRef = useRef(false)
+  const format = (value: string) => {
+    if (maxLength !== undefined && value.length > maxLength) {
+      return value.substring(0, maxLength)
+    }
+    return value
+  }
+
+  const [inputValue, setInputValue] = usePropsValue<string>({
+    value,
+    defaultValue,
+    finalValue: format(defaultValue),
+    onChange,
+  })
 
   useEffect(() => {
-    let initValue = defaultValue
-    if (initValue && maxLength && [...initValue].length > maxLength) {
-      initValue = initValue.substring(0, maxLength)
-    }
-    SetInputValue(initValue)
-
     if (autoSize) {
-      setTimeout(() => {
-        setContentHeight()
-      })
+      setContentHeight()
     }
-  }, [defaultValue, autoSize])
-
-  useEffect(() => {
-    if (inputValue) {
-      if (autoSize) {
-        setContentHeight()
-      }
-    }
-  }, [inputValue])
+  }, [autoSize, defaultValue, inputValue])
 
   const setContentHeight = () => {
     const textarea: any = textareaRef.current
     if (textarea) {
       textarea.style.height = 'auto'
-      let height = textarea?.scrollHeight
-
-      if (typeof autoSize === 'object') {
-        const { maxHeight, minHeight } = autoSize
-        if (maxHeight !== undefined) {
-          height = Math.min(height, maxHeight)
-        }
-        if (minHeight !== undefined) {
-          height = Math.max(height, minHeight)
-        }
-      }
+      const height = textarea?.scrollHeight
       if (height) {
         textarea.style.height = `${height}px`
       }
     }
   }
 
-  const textChange = (event: Event) => {
-    const text = event.target as any
-    if (
-      maxLength &&
-      [...text.value].length > maxLength &&
-      !compositingRef.current
-    ) {
-      text.value = text.value.substring(0, maxLength)
-    }
-    SetInputValue(text.value)
-    onChange && onChange(text.value, event)
+  const handleChange = (event: Event) => {
+    const text = event.target as HTMLTextAreaElement
+    const value = compositionRef.current ? text.value : format(text.value)
+    setInputValue(value)
   }
 
-  const textFocus = (event: Event) => {
+  const handleFocus = (event: Event) => {
     if (disabled) return
     if (readOnly) return
     onFocus && onFocus(event)
   }
 
-  const textBlur = (event: Event) => {
+  const handleBlur = (event: Event) => {
     if (disabled) return
     if (readOnly) return
-    const text = event.target as any
-    onChange && onChange(text.value, event)
     onBlur && onBlur(event)
-  }
-
-  const startComposing = () => {
-    compositingRef.current = true
-  }
-  const endComposing = () => {
-    compositingRef.current = false
   }
 
   return (
@@ -143,33 +115,26 @@ export const TextArea: FunctionComponent<
       <textarea
         ref={textareaRef}
         className={`${classPrefix}__textarea`}
-        style={{
-          ...style,
-        }}
+        style={style}
         disabled={disabled}
         readOnly={readOnly}
         value={inputValue}
-        // onInput={(e: any) => {
-        //   textChange(e)
-        // }}
-        onChange={(e: any) => {
-          textChange(e)
+        onChange={(e: any) => handleChange(e)}
+        onBlur={(e: any) => handleBlur(e)}
+        onFocus={(e: any) => handleFocus(e)}
+        onCompositionEnd={() => {
+          compositionRef.current = false
         }}
-        onBlur={(e: any) => {
-          textBlur(e)
+        onCompositionStart={() => {
+          compositionRef.current = true
         }}
-        onFocus={(e: any) => {
-          textFocus(e)
-        }}
-        onCompositionEnd={(e) => endComposing()}
-        onCompositionStart={(e) => startComposing()}
         rows={rows}
         maxLength={maxLength < 0 ? 0 : maxLength}
         placeholder={placeholder || locale.placeholder}
       />
       {showCount && (
         <div className={`${classPrefix}__limit`}>
-          {[...inputValue].length}/{maxLength < 0 ? 0 : maxLength}
+          {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
         </div>
       )}
     </div>
