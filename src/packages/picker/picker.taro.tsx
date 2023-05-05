@@ -164,17 +164,16 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
 
     const setSelectedOptions = () => {
       const options: PickerOption[] = []
-      columnsList.map((column: PickerOption[], index: number) => {
-        let currOptions = []
-        currOptions = column.filter(
+      let currOptions = []
+      columnsList.forEach((columnOptions: PickerOption[], index: number) => {
+        currOptions = columnOptions.filter(
           (item) => item.value === selectedValue[index]
         )
         if (currOptions[0]) {
           options.push(currOptions[0])
         } else {
-          column[0] && options.push(column[0])
+          columnOptions[0] && options.push(columnOptions[0])
         }
-        return column
       })
       return options
     }
@@ -189,26 +188,24 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       }
     }, [selectedValue])
 
-    // 选择每一列的数据
-    const chooseItem = (option: PickerOption, columnIndex: number) => {
-      if (option && Object.keys(option).length) {
-        // 是否移动后是否与之前有差异
-        if (selectedValue[columnIndex] !== option.value) {
+    // 更新已选择数据
+    const chooseItem = (columnOptions: PickerOption, columnIndex: number) => {
+      if (columnOptions && Object.keys(columnOptions).length) {
+        // 切换数据后，数据有变动才触发。
+        if (selectedValue[columnIndex] !== columnOptions.value) {
           if (columnsType() === 'cascade') {
-            selectedValue[columnIndex] = option.value ? option.value : ''
+            selectedValue[columnIndex] = columnOptions.value || ''
             setSelectedValue([...selectedValue])
 
-            let index = columnIndex
-            let cursor = option
-            while (cursor && cursor.children && cursor.children[0]) {
-              selectedValue[index + 1] = cursor.children[0].value
+            while (columnOptions?.children?.[0]) {
+              selectedValue[columnIndex + 1] = columnOptions.children[0].value
               setSelectedValue([...selectedValue])
-              index++
-              cursor = cursor.children[0]
+              columnIndex++
+              columnOptions = columnOptions.children[0]
             }
             // 当前改变列的下一列 children 值为空
-            if (cursor && cursor.children) {
-              selectedValue[index + 1] = ''
+            if (columnOptions?.children?.length) {
+              selectedValue[columnIndex + 1] = ''
               setSelectedValue([...selectedValue])
             }
             setColumnsList(normalListData() as PickerOption[][])
@@ -216,10 +213,10 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
             setSelectedValue((data) => {
               const cdata = [...data]
               cdata[columnIndex] = Object.prototype.hasOwnProperty.call(
-                option,
+                columnOptions,
                 'value'
               )
-                ? option.value
+                ? columnOptions.value
                 : ''
               return cdata
             })
@@ -362,10 +359,10 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
                 onPickEnd={pickerEnd}
                 className="nut-picker-view-panel"
               >
-                {columnsList?.map((column, index) => {
+                {columnsList?.map((columnOptions, index) => {
                   return (
                     <PickerViewColumn key={`col${index}`}>
-                      {column.map((item, index) => {
+                      {columnOptions.map((item, index) => {
                         return (
                           <View
                             key={item.value || index}
