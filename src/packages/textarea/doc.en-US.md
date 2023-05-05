@@ -114,7 +114,12 @@ import { TextArea } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <TextArea defaultValue="TextAlign Right" textAlign="right" /> 
+    <TextArea
+      defaultValue={translated.alignRight}
+      style={{
+        textAlign: "right",
+      }}
+    />
   )
 };
 export default App
@@ -132,8 +137,7 @@ export default App
 | maxLength    | limit the maximum input characters              | `number` | `140`              |
 | rows         | height of textarea, with priority higher than autoSize attribute | `number` | `2`            |
 | showCount    | whether textarea displays the input characters. Use | `boolean`        | `false`        |
-| autoSize     | whether to adapt the content height.          | `boolean`        | `false`    |
-| textAlign    | text position, optional values ` left ,  center,  right `     | `string`         | `left`         |
+| autoSize     | whether to adapt the content height.          | `boolean`        | `false`    |`left`         |
 | readOnly     | read only attribute          | `boolean`        | `false`        |
 | disabled     | disable attribute           | `boolean`        | `false`        |
 | onChange | Triggered when the value of the input box changes | `(val) => void`      | - |

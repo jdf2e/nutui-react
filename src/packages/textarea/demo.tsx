@@ -112,7 +112,12 @@ const TextAreaDemo = () => {
           maxLength={20}
         />
         <h2>{translated.textAlign}</h2>
-        <TextArea defaultValue={translated.alignRight} textAlign="right" />
+        <TextArea
+          defaultValue={translated.alignRight}
+          style={{
+            textAlign: 'right',
+          }}
+        />
       </div>
     </>
   )

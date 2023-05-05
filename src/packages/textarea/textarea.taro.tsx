@@ -5,7 +5,6 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface TextAreaProps extends BasicComponent {
   defaultValue: string | number | any
-  textAlign: string | any
   showCount: boolean
   maxLength: number
   rows: number
@@ -20,7 +19,6 @@ export interface TextAreaProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   defaultValue: '',
-  textAlign: 'left',
   showCount: false,
   maxLength: 140,
   rows: 2,
@@ -40,7 +38,6 @@ export const TextArea: FunctionComponent<
   const {
     className,
     defaultValue,
-    textAlign,
     showCount,
     maxLength,
     rows,
@@ -117,7 +114,6 @@ export const TextArea: FunctionComponent<
       <textarea
         className={`${classPrefix}__textarea`}
         style={{
-          textAlign,
           resize: `${autoSize ? 'vertical' : 'none'}` as any,
           ...style,
         }}

@@ -112,7 +112,12 @@ import { TextArea } from '@nutui/nutui-react-taro';
 
 const App = () => {
   return (
-    <TextArea defaultValue="文本居右" textAlign="right" />
+    <TextArea
+      defaultValue={translated.alignRight}
+      style={{
+        textAlign: "right",
+      }}
+    />
   )
 };
 export default App
@@ -131,7 +136,6 @@ export default App
 | rows         | textarea 的高度                                   | `number` | `2`            |
 | showCount    | textarea 是否展示输入字符。须配合`maxLength`使用 | `boolean`        | `false`        |
 | autoSize     | 高度是否可拉伸                                    | `boolean`        | `false`        |
-| textAlign    | 文本位置,可选值`left`,`center`,`right`            | `string`         | `left`         |
 | readOnly     | 只读属性                                          | `boolean`        | `false`        |
 | disabled     | 禁用属性                                          | `boolean`        | `false`        |
 | onChange           | 输入内容时触发 | `(val) => void`      | - |
