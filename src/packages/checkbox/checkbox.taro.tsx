@@ -5,39 +5,37 @@ import React, {
   useState,
 } from 'react'
 import { Checked, CheckDisabled, CheckNormal } from '@nutui/icons-react-taro'
-import CheckboxGroup from '@/packages/checkboxgroup/index.taro'
-import bem from '@/utils/bem'
+import classNames from 'classnames'
+import CheckboxGroup from '@/packages/checkboxgroup'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export interface CheckboxProps extends BasicComponent {
   checked: boolean
   disabled: boolean
-  textPosition: 'left' | 'right'
-  iconSize: string | number
+  defaultChecked: boolean
+  labelPosition: 'left' | 'right'
   icon: React.ReactNode
-  checkedIcon: React.ReactNode
+  activeIcon: React.ReactNode
   indeterminateIcon: React.ReactNode
-  iconClassPrefix: string
-  iconFontClassName: string
+  value: string | number
   indeterminate: boolean
   label: string | number
-  onChange: (state: boolean, label: string) => void
+  onChange: (value: boolean) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
-  checked: false,
   disabled: false,
-  textPosition: 'right',
-  iconSize: 18,
-  icon: 'check-normal',
-  checkedIcon: 'checked',
-  iconClassPrefix: 'nut-icon',
-  iconFontClassName: 'nutui-iconfont',
-  indeterminateIcon: 'check-disabled',
-  onChange: (state, label) => {},
+  labelPosition: 'right',
+  icon: null,
+  activeIcon: null,
+  indeterminateIcon: null,
+  onChange: (value) => {},
 } as CheckboxProps
+
+const classPrefix = 'nut-checkbox'
 export const Checkbox: FunctionComponent<
   Partial<CheckboxProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
@@ -46,76 +44,79 @@ export const Checkbox: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const b = bem('checkbox')
   const {
     icon,
     iconSize,
     label,
     className,
-    checkedIcon,
+    activeIcon,
     checked,
+    value,
+    defaultChecked,
     disabled,
     onChange,
     indeterminate,
-    iconClassPrefix,
-    iconFontClassName,
     indeterminateIcon,
     ...others
   } = props as any
   // eslint-disable-next-line prefer-const
-  let { textPosition, ...rest } = others
+  let { labelPosition, ...rest } = others
   const ctx = useContext(Context)
 
-  let [innerChecked, setInnerChecked] = useState(checked)
+  let [_checked, setChecked] = usePropsValue<boolean>({
+    value: props.checked,
+    defaultValue: props.defaultChecked,
+    finalValue: defaultChecked,
+    onChange,
+  })
   // eslint-disable-next-line prefer-const
   let [innerDisabled, setDisabled] = useState(disabled)
   const [_indeterminate, setIndeterminate] = useState(indeterminate)
 
   useEffect(() => {
-    !ctx && setInnerChecked(checked)
     setDisabled(disabled)
     setIndeterminate(indeterminate)
-  }, [disabled, checked, indeterminate])
+  }, [disabled, indeterminate])
 
   if (ctx) {
     if (ctx.labelPosition !== undefined) {
-      textPosition = ctx.labelPosition
+      labelPosition = ctx.labelPosition
     }
     innerDisabled = ctx.disabled
-    innerChecked = ctx.checkedValue.includes(label)
-    setInnerChecked = (checked: boolean) => {
+    _checked = ctx.checkedValue.includes(value)
+    setChecked = (checked: boolean) => {
       if (ctx.disabled) return
-      if (checked) ctx.check(label)
-      if (!checked) ctx.uncheck(label)
+      if (checked) ctx.check(value)
+      if (!checked) ctx.uncheck(value)
     }
   }
 
   const renderIcon = () => {
-    if (!innerChecked) {
+    if (!_checked) {
       return React.isValidElement(icon) ? (
         icon
       ) : (
-        <CheckNormal size={iconSize} className={color()} />
+        <CheckNormal width={iconSize} height={iconSize} className={color()} />
       )
     }
     if (_indeterminate) {
       return React.isValidElement(indeterminateIcon) ? (
         indeterminateIcon
       ) : (
-        <CheckDisabled size={iconSize} className={color()} />
+        <CheckDisabled width={iconSize} height={iconSize} className={color()} />
       )
     }
-    return React.isValidElement(checkedIcon) ? (
-      checkedIcon
+    return React.isValidElement(activeIcon) ? (
+      activeIcon
     ) : (
-      <Checked size={iconSize} className={color()} />
+      <Checked width={iconSize} height={iconSize} className={color()} />
     )
   }
   const color = () => {
     if (innerDisabled) {
       return 'nut-checkbox__icon--disable'
     }
-    if (innerChecked) {
+    if (_checked) {
       if (_indeterminate) {
         return 'nut-checkbox__icon--indeterminate'
       }
@@ -125,7 +126,11 @@ export const Checkbox: FunctionComponent<
   }
   const renderLabel = () => {
     return (
-      <span className={`${b('label', { disabled: innerDisabled })} `}>
+      <span
+        className={classNames({
+          [`${classPrefix}__label--disabled`]: innerDisabled,
+        })}
+      >
         {children || label}
       </span>
     )
@@ -135,20 +140,19 @@ export const Checkbox: FunctionComponent<
     // 禁用的时候直接返回
     if (disabled) return
     // 先转换状态
-    const latestChecked = !innerChecked
+    const latestChecked = !_checked
     // 判断是不是有 context 和 max，有的话需要判断是不是超过最大限制
     if (ctx && ctx.max !== undefined) {
       if (latestChecked && ctx.checkedValue.length >= ctx.max) return
     }
-    onChange && onChange(latestChecked, label || (children as string))
-    setInnerChecked(latestChecked)
+    setChecked(latestChecked)
   }
 
   return (
     <div
-      className={`${b({ reverse: textPosition === 'left' })} ${
-        className || ''
-      }`}
+      className={classNames(classPrefix, className, {
+        [`${classPrefix}--reverse`]: labelPosition === 'left',
+      })}
       {...rest}
       onClick={handleClick}
     >
