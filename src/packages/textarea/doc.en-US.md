@@ -77,7 +77,7 @@ import { TextArea } from '@nutui/nutui-react';
 const App = () => {
   const [value3, updateValue3] = useState('')
   return (
-    <TextArea defaultValue={value3} rows={1} autosize />
+    <TextArea defaultValue={value3} rows={1} autoSize />
   )
 };
 export default App
@@ -130,9 +130,9 @@ export default App
 | defaultValue | input value, support two-way binding              | `string`         | -              |
 | placeholder  | set placeholder prompt text             | `string`         | `please enter content ` |
 | maxLength    | limit the maximum input characters              | `number` | `140`              |
-| rows         | height of textarea, with priority higher than autosize attribute `Only H5 is supported`                                  | `number` | `2`            |
+| rows         | height of textarea, with priority higher than autoSize attribute | `number` | `2`            |
 | showCount    | whether textarea displays the input characters. Use | `boolean`        | `false`        |
-| autosize     | whether to adapt the content height. You can also pass in objects, such as {maxheight: 200, minheight: 100}. The unit is PX          | `boolean`        | `false`    |
+| autoSize     | whether to adapt the content height.          | `boolean`        | `false`    |
 | textAlign    | text position, optional values ` left ,  center,  right `     | `string`         | `left`         |
 | readOnly     | read only attribute          | `boolean`        | `false`        |
 | disabled     | disable attribute           | `boolean`        | `false`        |

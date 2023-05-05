@@ -167,6 +167,7 @@
 - maxlength 重命名为 maxLength
 - readonly 重命名为 readOnly
 - limitShow 重命名为 showCount
+- autosize 重命名为 autoSize
 #### Uploader
 
 - `maximize` 重命名为 `maxFileSize`

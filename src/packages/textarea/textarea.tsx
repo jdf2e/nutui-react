@@ -12,7 +12,7 @@ export interface TextAreaProps extends BasicComponent {
   placeholder: string
   readOnly: boolean
   disabled: boolean
-  autosize: boolean
+  autoSize: boolean
   onChange: (value: any, event: Event) => void
   onBlur: (event: Event) => void
   onFocus: (event: Event) => void
@@ -27,7 +27,7 @@ const defaultProps = {
   placeholder: '',
   readOnly: false,
   disabled: false,
-  autosize: false,
+  autoSize: false,
 } as TextAreaProps
 export const TextArea: FunctionComponent<
   Partial<TextAreaProps> &
@@ -47,7 +47,7 @@ export const TextArea: FunctionComponent<
     placeholder,
     readOnly,
     disabled,
-    autosize,
+    autoSize,
     style,
     onChange,
     onBlur,
@@ -67,16 +67,16 @@ export const TextArea: FunctionComponent<
     }
     SetInputValue(initValue)
 
-    if (autosize) {
+    if (autoSize) {
       setTimeout(() => {
         setContentHeight()
       })
     }
-  }, [defaultValue, autosize])
+  }, [defaultValue, autoSize])
 
   useEffect(() => {
     if (inputValue) {
-      if (autosize) {
+      if (autoSize) {
         setContentHeight()
       }
     }
@@ -88,8 +88,8 @@ export const TextArea: FunctionComponent<
       textarea.style.height = 'auto'
       let height = textarea?.scrollHeight
 
-      if (typeof autosize === 'object') {
-        const { maxHeight, minHeight } = autosize
+      if (typeof autoSize === 'object') {
+        const { maxHeight, minHeight } = autoSize
         if (maxHeight !== undefined) {
           height = Math.min(height, maxHeight)
         }

@@ -12,7 +12,7 @@ export interface TextAreaProps extends BasicComponent {
   placeholder: string
   readOnly: boolean
   disabled: boolean
-  autosize: boolean
+  autoSize: boolean
   onChange: (value: any, event: Event) => void
   onBlur: (event: Event) => void
   onFocus: (event: Event) => void
@@ -27,7 +27,7 @@ const defaultProps = {
   placeholder: '',
   readOnly: false,
   disabled: false,
-  autosize: false,
+  autoSize: false,
 } as TextAreaProps
 export const TextArea: FunctionComponent<
   Partial<TextAreaProps> &
@@ -47,7 +47,7 @@ export const TextArea: FunctionComponent<
     placeholder,
     readOnly,
     disabled,
-    autosize,
+    autoSize,
     style,
     onChange,
     onBlur,
@@ -118,7 +118,7 @@ export const TextArea: FunctionComponent<
         className={`${classPrefix}__textarea`}
         style={{
           textAlign,
-          resize: `${autosize ? 'vertical' : 'none'}` as any,
+          resize: `${autoSize ? 'vertical' : 'none'}` as any,
           ...style,
         }}
         readOnly={disabled || readOnly}

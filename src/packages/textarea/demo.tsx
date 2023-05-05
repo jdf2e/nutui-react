@@ -94,7 +94,7 @@ const TextAreaDemo = () => {
         <h2>{translated.numbers}</h2>
         <TextArea defaultValue={value2} showCount maxLength={20} />
         <h2>{translated.autoHeight}</h2>
-        <TextArea defaultValue={value3} rows={1} autosize />
+        <TextArea defaultValue={value3} rows={1} autoSize />
         <h2>{translated.we2312222}</h2>
         <ConfigProvider theme={customTheme}>
           <TextArea defaultValue={value3} showCount maxLength={20} />
