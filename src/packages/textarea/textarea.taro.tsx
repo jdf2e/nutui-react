@@ -1,35 +1,29 @@
-import React, {
-  FunctionComponent,
-  useEffect,
-  useState,
-  CSSProperties,
-  useRef,
-} from 'react'
+import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
+import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import bem from '@/utils/bem'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface TextAreaProps {
-  className?: string
+export interface TextAreaProps extends BasicComponent {
   defaultValue: string | number | any
   textAlign?: string | any
   limitshow?: boolean
-  maxlength?: any
-  rows?: any
+  maxLength: number
+  rows: number
   placeholder?: string
   readonly?: boolean
   disabled?: boolean
   autosize?: boolean
-  style?: CSSProperties
   onChange?: (value: any, event: Event) => void
   onBlur?: (event: Event) => void
   onFocus?: (event: Event) => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   defaultValue: '',
   textAlign: 'left',
   limitshow: false,
-  maxlength: '',
-  rows: '',
+  maxLength: 140,
+  rows: 2,
   placeholder: '',
   readonly: false,
   disabled: false,
@@ -48,7 +42,7 @@ export const TextArea: FunctionComponent<
     defaultValue,
     textAlign,
     limitshow,
-    maxlength,
+    maxLength,
     rows,
     placeholder,
     readonly,
@@ -60,7 +54,7 @@ export const TextArea: FunctionComponent<
     onFocus,
   } = { ...defaultProps, ...props }
 
-  const textareaBem = bem('textarea')
+  const classPrefix = 'nut-textarea'
   const [inputValue, SetInputValue] = useState('')
   const compositingRef = useRef(false)
   const [, updateState] = React.useState({})
@@ -68,8 +62,8 @@ export const TextArea: FunctionComponent<
 
   useEffect(() => {
     let initValue = defaultValue
-    if (initValue && maxlength && [...initValue].length > Number(maxlength)) {
-      initValue = initValue.substring(0, Number(maxlength))
+    if (initValue && maxLength && [...initValue].length > maxLength) {
+      initValue = initValue.substring(0, maxLength)
     }
     SetInputValue(initValue)
   }, [defaultValue])
@@ -79,11 +73,11 @@ export const TextArea: FunctionComponent<
     if (readonly) return
     const text = event.detail ? (event.detail as any) : (event.target as any)
     if (
-      maxlength &&
-      [...text.value].length > Number(maxlength) &&
+      maxLength &&
+      [...text.value].length > maxLength &&
       !compositingRef.current
     ) {
-      text.value = text.value.substring(0, Number(maxlength))
+      text.value = text.value.substring(0, maxLength)
     }
     if (text.value === inputValue) {
       forceUpdate()
@@ -116,12 +110,12 @@ export const TextArea: FunctionComponent<
 
   return (
     <div
-      className={`${textareaBem()} ${disabled ? textareaBem('disabled') : ''} ${
-        className || ''
-      }`}
+      className={classNames(classPrefix, className, {
+        [`${classPrefix}__disabled`]: disabled,
+      })}
     >
       <textarea
-        className={textareaBem('textarea')}
+        className={`${classPrefix}__textarea`}
         style={{
           textAlign,
           resize: `${autosize ? 'vertical' : 'none'}` as any,
@@ -144,14 +138,14 @@ export const TextArea: FunctionComponent<
         onCompositionEnd={(e) => endComposing()}
         onCompositionStart={(e) => startComposing()}
         rows={rows}
-        maxLength={maxlength < 0 ? 0 : maxlength}
+        maxLength={maxLength < 0 ? 0 : maxLength}
         placeholder={placeholder || locale.placeholder}
       />
-      {limitshow ? (
-        <div className={textareaBem('limit')}>
-          {[...inputValue].length}/{maxlength < 0 ? 0 : maxlength}
+      {limitshow && (
+        <div className={`${classPrefix}__limit`}>
+          {[...inputValue].length}/{maxLength < 0 ? 0 : maxLength}
         </div>
-      ) : null}
+      )}
     </div>
   )
 }

@@ -92,12 +92,12 @@ const TextAreaDemo = () => {
           }}
         />
         <h2>{translated.numbers}</h2>
-        <TextArea defaultValue={value2} limitshow maxlength="20" />
+        <TextArea defaultValue={value2} limitshow maxLength={20} />
         <h2>{translated.autoHeight}</h2>
-        <TextArea defaultValue={value3} rows="1" autosize />
+        <TextArea defaultValue={value3} rows={1} autosize />
         <h2>{translated.we2312222}</h2>
         <ConfigProvider theme={customTheme}>
-          <TextArea defaultValue={value3} limitshow maxlength="20" />
+          <TextArea defaultValue={value3} limitshow maxLength={20} />
         </ConfigProvider>
         <h2>{translated.readOnly}</h2>
         <TextArea
@@ -109,7 +109,7 @@ const TextAreaDemo = () => {
           disabled
           defaultValue={`textarea${translated.disabledState}`}
           limitshow
-          maxlength="20"
+          maxLength={20}
         />
         <h2>{translated.textAlign}</h2>
         <TextArea defaultValue={translated.alignRight} textAlign="right" />

@@ -58,7 +58,7 @@ import { TextArea } from '@nutui/nutui-react';
 const App = () => {
   const [value2, updateValue2] = useState('')
   return (
-    <TextArea defaultValue={value2} limitshow maxlength="20" />
+    <TextArea defaultValue={value2} limitshow maxLength={20} />
   )
 };
 export default App
@@ -76,7 +76,7 @@ import { TextArea } from '@nutui/nutui-react';
 const App = () => {
   const [value3, updateValue3] = useState('')
   return (
-    <TextArea defaultValue={value3} rows="1" autosize />
+    <TextArea defaultValue={value3} rows={1} autosize />
   )
 };
 export default App
@@ -95,7 +95,7 @@ const App = () => {
   return (
     <>
       <TextArea readonly defaultValue="textarea只读状态" />
-      <TextArea disabled defaultValue="textarea禁用状态" limitshow maxlength="20" />
+      <TextArea disabled defaultValue="textarea禁用状态" limitshow maxLength={20} />
     </>
   )
 };
@@ -128,8 +128,8 @@ export default App
 | ------------ | ------------------------------------------------- | -------------- | -------------- |
 | defaultValue | 初始默认值，支持双向绑定                          | `string`         | -              |
 | placeholder  | 设置占位提示文字                                  | `string`         | `请输入内容` |
-| maxlength    | 限制最长输入字符                                  | `string` \| `number` | -              |
-| rows         | textarea 的高度                                   | `string` \| `number` | `2`            |
+| maxLength    | 限制最长输入字符                                  | `number` | `140`              |
+| rows         | textarea 的高度                                   | `number` | `2`            |
 | limitshow    | textarea 是否展示输入字符。须配合`max-length`使用 | `boolean`        | `false`        |
 | autosize     | 高度是否可拉伸                                    | `boolean`        | `false`        |
 | textAlign    | 文本位置,可选值`left`,`center`,`right`            | `string`         | `left`         |

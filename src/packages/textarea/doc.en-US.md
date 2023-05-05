@@ -59,7 +59,7 @@ import { TextArea } from '@nutui/nutui-react';
 const App = () => {
   const [value2, updateValue2] = useState('')
   return (
-    <TextArea defaultValue={value2} limitshow maxlength="20" />
+    <TextArea defaultValue={value2} limitshow maxLength={20} />
   )
 };
 export default App
@@ -77,7 +77,7 @@ import { TextArea } from '@nutui/nutui-react';
 const App = () => {
   const [value3, updateValue3] = useState('')
   return (
-    <TextArea defaultValue={value3} rows="1" autosize />
+    <TextArea defaultValue={value3} rows={1} autosize />
   )
 };
 export default App
@@ -96,7 +96,7 @@ const App = () => {
   return (
     <>
       <TextArea readonly defaultValue="textarea readonly" />
-      <TextArea disabled defaultValue="textarea disabled" limitshow maxlength="20" />
+      <TextArea disabled defaultValue="textarea disabled" limitshow maxLength={20} />
     </>
   )
 };
@@ -129,8 +129,8 @@ export default App
 | ------------ | ----------------------------------- | -------------- | -------------- |
 | defaultValue | input value, support two-way binding              | `string`         | -              |
 | placeholder  | set placeholder prompt text             | `string`         | `please enter content ` |
-| maxlength    | limit the maximum input characters              | `string` \| `number` | -              |
-| rows         | height of textarea, with priority higher than autosize attribute `Only H5 is supported`                                  | `string` \| `number` | `2`            |
+| maxLength    | limit the maximum input characters              | `number` | `140`              |
+| rows         | height of textarea, with priority higher than autosize attribute `Only H5 is supported`                                  | `number` | `2`            |
 | limitshow    | whether textarea displays the input characters. Use | `boolean`        | `false`        |
 | autosize     | whether to adapt the content height. You can also pass in objects, such as {maxheight: 200, minheight: 100}. The unit is PX          | `boolean`        | `false`    |
 | textAlign    | text position, optional values ` left ,  center,  right `     | `string`         | `left`         |

@@ -164,6 +164,7 @@
 #### SearchBar
 #### ShortPassword
 #### TextArea
+- maxlength 重命名为 maxLength
 #### Uploader
 
 - `maximize` 重命名为 `maxFileSize`
