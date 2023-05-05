@@ -18,8 +18,8 @@ test('textarea props test', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('textarea readonly test', () => {
-  const { container } = render(<TextArea readonly />)
+test('textarea readOnly test', () => {
+  const { container } = render(<TextArea readOnly />)
   expect(container.querySelector('.nut-textarea__textarea')).toHaveAttribute(
     'readonly'
   )

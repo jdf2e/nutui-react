@@ -94,7 +94,7 @@ import { TextArea } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <TextArea readonly defaultValue="textarea只读状态" />
+      <TextArea readOnly defaultValue="textarea只读状态" />
       <TextArea disabled defaultValue="textarea禁用状态" limitshow maxLength={20} />
     </>
   )
@@ -133,7 +133,7 @@ export default App
 | limitshow    | textarea 是否展示输入字符。须配合`max-length`使用 | `boolean`        | `false`        |
 | autosize     | 高度是否可拉伸                                    | `boolean`        | `false`        |
 | textAlign    | 文本位置,可选值`left`,`center`,`right`            | `string`         | `left`         |
-| readonly     | 只读属性                                          | `boolean`        | `false`        |
+| readOnly     | 只读属性                                          | `boolean`        | `false`        |
 | disabled     | 禁用属性                                          | `boolean`        | `false`        |
 | onChange     | 输入内容时触发 | `(val) => void`      | - |
 | onFocus      | 聚焦时触发     | `(val) => void`      | - |

@@ -103,7 +103,7 @@ const TextAreaDemo = () => {
         </ConfigProvider>
         <h2>{translated.readOnly}</h2>
         <TextArea
-          readonly
+          readOnly
           defaultValue={`textarea${translated.readOnlyState}`}
         />
         <h2>{translated.disabled}</h2>

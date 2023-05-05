@@ -165,6 +165,7 @@
 #### ShortPassword
 #### TextArea
 - maxlength 重命名为 maxLength
+- readonly 重命名为 readOnly
 #### Uploader
 
 - `maximize` 重命名为 `maxFileSize`

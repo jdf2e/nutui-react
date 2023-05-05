@@ -95,7 +95,7 @@ import { TextArea } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <TextArea readonly defaultValue="textarea readonly" />
+      <TextArea readOnly defaultValue="textarea readOnly" />
       <TextArea disabled defaultValue="textarea disabled" limitshow maxLength={20} />
     </>
   )
@@ -134,7 +134,7 @@ export default App
 | limitshow    | whether textarea displays the input characters. Use | `boolean`        | `false`        |
 | autosize     | whether to adapt the content height. You can also pass in objects, such as {maxheight: 200, minheight: 100}. The unit is PX          | `boolean`        | `false`    |
 | textAlign    | text position, optional values ` left ,  center,  right `     | `string`         | `left`         |
-| readonly     | read only attribute          | `boolean`        | `false`        |
+| readOnly     | read only attribute          | `boolean`        | `false`        |
 | disabled     | disable attribute           | `boolean`        | `false`        |
 | onChange | Triggered when the value of the input box changes | `(val) => void`      | - |
 | onFocus  | Triggered when focusing     | `(val) => void`      | - |

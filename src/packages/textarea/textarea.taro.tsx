@@ -10,7 +10,7 @@ export interface TextAreaProps extends BasicComponent {
   maxLength: number
   rows: number
   placeholder?: string
-  readonly?: boolean
+  readOnly?: boolean
   disabled?: boolean
   autosize?: boolean
   onChange?: (value: any, event: Event) => void
@@ -25,7 +25,7 @@ const defaultProps = {
   maxLength: 140,
   rows: 2,
   placeholder: '',
-  readonly: false,
+  readOnly: false,
   disabled: false,
   autosize: false,
 } as TextAreaProps
@@ -45,7 +45,7 @@ export const TextArea: FunctionComponent<
     maxLength,
     rows,
     placeholder,
-    readonly,
+    readOnly,
     disabled,
     autosize,
     style,
@@ -70,7 +70,7 @@ export const TextArea: FunctionComponent<
 
   const textChange = (event: any) => {
     if (disabled) return
-    if (readonly) return
+    if (readOnly) return
     const text = event.detail ? (event.detail as any) : (event.target as any)
     if (
       maxLength &&
@@ -89,13 +89,13 @@ export const TextArea: FunctionComponent<
 
   const textFocus = (event: Event) => {
     if (disabled) return
-    if (readonly) return
+    if (readOnly) return
     onFocus && onFocus(event)
   }
 
   const textBlur = (event: any) => {
     if (disabled) return
-    if (readonly) return
+    if (readOnly) return
     const text = event.detail ? (event.detail as any) : (event.target as any)
     onChange && onChange(text.value, event)
     onBlur && onBlur(event)
@@ -121,7 +121,7 @@ export const TextArea: FunctionComponent<
           resize: `${autosize ? 'vertical' : 'none'}` as any,
           ...style,
         }}
-        readOnly={disabled || readonly}
+        readOnly={disabled || readOnly}
         value={inputValue}
         onInput={(e: any) => {
           textChange(e)
