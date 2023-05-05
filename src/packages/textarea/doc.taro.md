@@ -57,7 +57,7 @@ import { TextArea } from '@nutui/nutui-react-taro';
 const App = () => {
   const [value2, updateValue2] = useState('')
   return (
-    <TextArea defaultValue={value2} limitShow maxLength={20} />
+    <TextArea defaultValue={value2} showCount maxLength={20} />
   )
 };
 export default App
@@ -94,7 +94,7 @@ const App = () => {
   return (
     <>
       <TextArea readOnly defaultValue="textarea只读状态" />
-      <TextArea disabled defaultValue="textarea禁用状态" limitShow maxLength={20} />
+      <TextArea disabled defaultValue="textarea禁用状态" showCount maxLength={20} />
     </>
   )
 };
@@ -129,7 +129,7 @@ export default App
 | placeholder  | 设置占位提示文字                                  | `string`         | `请输入内容` |
 | maxLength    | 限制最长输入字符                                  | `number` | `140`              |
 | rows         | textarea 的高度                                   | `number` | `2`            |
-| limitShow    | textarea 是否展示输入字符。须配合`max-length`使用 | `boolean`        | `false`        |
+| showCount    | textarea 是否展示输入字符。须配合`max-length`使用 | `boolean`        | `false`        |
 | autosize     | 高度是否可拉伸                                    | `boolean`        | `false`        |
 | textAlign    | 文本位置,可选值`left`,`center`,`right`            | `string`         | `left`         |
 | readOnly     | 只读属性                                          | `boolean`        | `false`        |

@@ -5,23 +5,23 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface TextAreaProps extends BasicComponent {
   defaultValue: string | number | any
-  textAlign?: string | any
-  limitshow?: boolean
+  textAlign: string | any
+  showCount: boolean
   maxLength: number
   rows: number
-  placeholder?: string
-  readOnly?: boolean
-  disabled?: boolean
-  autosize?: boolean
-  onChange?: (value: any, event: Event) => void
-  onBlur?: (event: Event) => void
-  onFocus?: (event: Event) => void
+  placeholder: string
+  readOnly: boolean
+  disabled: boolean
+  autosize: boolean
+  onChange: (value: any, event: Event) => void
+  onBlur: (event: Event) => void
+  onFocus: (event: Event) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
   defaultValue: '',
   textAlign: 'left',
-  limitshow: false,
+  showCount: false,
   maxLength: 140,
   rows: 2,
   placeholder: '',
@@ -41,7 +41,7 @@ export const TextArea: FunctionComponent<
     className,
     defaultValue,
     textAlign,
-    limitshow,
+    showCount,
     maxLength,
     rows,
     placeholder,
@@ -171,11 +171,11 @@ export const TextArea: FunctionComponent<
         maxLength={maxLength < 0 ? 0 : maxLength}
         placeholder={placeholder || locale.placeholder}
       />
-      {limitshow ? (
+      {showCount && (
         <div className={`${classPrefix}__limit`}>
           {[...inputValue].length}/{maxLength < 0 ? 0 : maxLength}
         </div>
-      ) : null}
+      )}
     </div>
   )
 }
