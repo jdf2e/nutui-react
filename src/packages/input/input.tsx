@@ -59,180 +59,183 @@ const defaultProps = {
   autoFocus: false,
 } as InputProps
 
-export const Input: FunctionComponent<
-  Partial<InputProps> &
-    Omit<
-      React.HTMLAttributes<HTMLDivElement>,
-      'onChange' | 'onBlur' | 'onFocus' | 'onClick'
-    >
-> = forwardRef((props, ref) => {
-  const { locale } = useConfig()
-  const {
-    type,
-    name,
-    placeholder,
-    align,
-    disabled,
-    readOnly,
-    maxLength,
-    clearable,
-    clearIcon,
-    formatTrigger,
-    autoFocus,
-    style,
-    className,
-    onChange,
-    onFocus,
-    onClear,
-    formatter,
-    onClick,
-    confirmType,
-    defaultValue,
-    value: _value,
-    ...rest
-  } = {
-    ...defaultProps,
-    ...props,
-  }
-  const [value, setValue] = usePropsValue<string>({
-    value: props.value,
-    defaultValue: props.defaultValue,
-    finalValue: '',
-    onChange,
-  })
-  const inputRef = useRef<HTMLInputElement>(null)
-  const composingRef = useRef(false)
-  const [active, setActive] = useState(false)
-
-  useImperativeHandle(ref, () => {
-    return {
-      clear: () => {
-        setValue('')
-      },
-      focus: () => {
-        inputRef.current?.focus()
-      },
-      blur: () => {
-        inputRef.current?.blur()
-      },
-      get nativeElement() {
-        return inputRef.current
-      },
-    }
-  })
-
-  const inputClass = useCallback(() => {
-    const classPrefix = 'nut-input'
-    return [classPrefix, `${disabled ? `${classPrefix}-disabled` : ''}`]
-      .filter(Boolean)
-      .join(' ')
-  }, [disabled])
-
-  const updateValue = (
-    value: any,
-    trigger: InputFormatTrigger = 'onChange'
+export const Input = forwardRef(
+  (
+    props: Partial<InputProps> &
+      Omit<
+        React.HTMLAttributes<HTMLDivElement>,
+        'onChange' | 'onBlur' | 'onFocus' | 'onClick'
+      >,
+    ref
   ) => {
-    let val = value
-
-    if (type === 'number') {
-      val = formatNumber(val, false, true)
+    const { locale } = useConfig()
+    const {
+      type,
+      name,
+      placeholder,
+      align,
+      disabled,
+      readOnly,
+      maxLength,
+      clearable,
+      clearIcon,
+      formatTrigger,
+      autoFocus,
+      style,
+      className,
+      onChange,
+      onFocus,
+      onClear,
+      formatter,
+      onClick,
+      confirmType,
+      defaultValue,
+      value: _value,
+      ...rest
+    } = {
+      ...defaultProps,
+      ...props,
     }
-    if (type === 'digit') {
-      val = formatNumber(val, true, true)
-    }
-    if (formatter && trigger === formatTrigger) {
-      val = formatter(val)
-    }
-    setValue(val)
-    const eventHandler = props[trigger]
-    if (eventHandler && typeof eventHandler === 'function') {
-      eventHandler(val)
-    }
-  }
+    const [value, setValue] = usePropsValue<string>({
+      value: props.value,
+      defaultValue: props.defaultValue,
+      finalValue: '',
+      onChange,
+    })
+    const inputRef = useRef<HTMLInputElement>(null)
+    const composingRef = useRef(false)
+    const [active, setActive] = useState(false)
 
-  const handleFocus = (event: Event) => {
-    const val: any = (event.target as any).value
-    onFocus && onFocus(val)
-    setActive(true)
-  }
+    useImperativeHandle(ref, () => {
+      return {
+        clear: () => {
+          setValue('')
+        },
+        focus: () => {
+          inputRef.current?.focus()
+        },
+        blur: () => {
+          inputRef.current?.blur()
+        },
+        get nativeElement() {
+          return inputRef.current
+        },
+      }
+    })
 
-  const handleInput = (value: string) => {
-    updateValue(value, 'onChange')
-  }
+    const inputClass = useCallback(() => {
+      const classPrefix = 'nut-input'
+      return [classPrefix, `${disabled ? `${classPrefix}-disabled` : ''}`]
+        .filter(Boolean)
+        .join(' ')
+    }, [disabled])
 
-  const handleBlur = (event: Event) => {
-    const val: any = (event.target as any).value
-    updateValue(val, 'onBlur')
-    setActive(false)
-  }
+    const updateValue = (
+      value: any,
+      trigger: InputFormatTrigger = 'onChange'
+    ) => {
+      let val = value
 
-  const inputType = (type: string) => {
-    if (type === 'digit') {
-      return 'text'
+      if (type === 'number') {
+        val = formatNumber(val, false, true)
+      }
+      if (type === 'digit') {
+        val = formatNumber(val, true, true)
+      }
+      if (formatter && trigger === formatTrigger) {
+        val = formatter(val)
+      }
+      setValue(val)
+      const eventHandler = props[trigger]
+      if (eventHandler && typeof eventHandler === 'function') {
+        eventHandler(val)
+      }
     }
-    if (type === 'number') {
-      return 'tel'
-    }
-    return type
-  }
 
-  return (
-    <div
-      className={`${inputClass()}  ${className || ''}`}
-      style={style}
-      onClick={(e) => {
-        onClick && onClick(e)
-      }}
-    >
-      <input
-        {...rest}
-        name={name}
-        className="nut-input-native"
-        ref={inputRef}
-        style={{ textAlign: align }}
-        type={inputType(type)}
-        maxLength={maxLength}
-        placeholder={placeholder || locale.placeholder}
-        disabled={disabled}
-        readOnly={readOnly}
-        value={value}
-        autoFocus={autoFocus}
-        enterKeyHint={confirmType}
-        onBlur={(e: any) => {
-          handleBlur(e)
+    const handleFocus = (event: Event) => {
+      const val: any = (event.target as any).value
+      onFocus && onFocus(val)
+      setActive(true)
+    }
+
+    const handleInput = (value: string) => {
+      updateValue(value, 'onChange')
+    }
+
+    const handleBlur = (event: Event) => {
+      const val: any = (event.target as any).value
+      updateValue(val, 'onBlur')
+      setActive(false)
+    }
+
+    const inputType = (type: string) => {
+      if (type === 'digit') {
+        return 'text'
+      }
+      if (type === 'number') {
+        return 'tel'
+      }
+      return type
+    }
+
+    return (
+      <div
+        className={`${inputClass()}  ${className || ''}`}
+        style={style}
+        onClick={(e) => {
+          onClick && onClick(e)
         }}
-        onFocus={(e: any) => {
-          handleFocus(e)
-        }}
-        onChange={(e: any) => {
-          handleInput(e.currentTarget.value)
-        }}
-        onCompositionStart={(e) => {
-          composingRef.current = true
-          props.onCompositionStart?.(e)
-        }}
-        onCompositionEnd={(e) => {
-          composingRef.current = false
-          props.onCompositionEnd?.(e)
-        }}
-      />
-      {clearable && !readOnly && active && value.length > 0 ? (
-        <span
-          style={{ display: 'flex', alignItems: 'center' }}
-          onClick={() => {
-            if (!disabled) {
-              setValue('')
-              // inputRef.current?.focus()
-              onClear && onClear('')
-            }
+      >
+        <input
+          {...rest}
+          name={name}
+          className="nut-input-native"
+          ref={inputRef}
+          style={{ textAlign: align }}
+          type={inputType(type)}
+          maxLength={maxLength}
+          placeholder={placeholder || locale.placeholder}
+          disabled={disabled}
+          readOnly={readOnly}
+          value={value}
+          autoFocus={autoFocus}
+          enterKeyHint={confirmType}
+          onBlur={(e: any) => {
+            handleBlur(e)
           }}
-        >
-          {clearIcon || <MaskClose className="nut-input-clear" />}
-        </span>
-      ) : null}
-    </div>
-  )
-})
+          onFocus={(e: any) => {
+            handleFocus(e)
+          }}
+          onChange={(e: any) => {
+            handleInput(e.currentTarget.value)
+          }}
+          onCompositionStart={(e) => {
+            composingRef.current = true
+            props.onCompositionStart?.(e)
+          }}
+          onCompositionEnd={(e) => {
+            composingRef.current = false
+            props.onCompositionEnd?.(e)
+          }}
+        />
+        {clearable && !readOnly && active && value.length > 0 ? (
+          <span
+            style={{ display: 'flex', alignItems: 'center' }}
+            onClick={() => {
+              if (!disabled) {
+                setValue('')
+                // inputRef.current?.focus()
+                onClear && onClear('')
+              }
+            }}
+          >
+            {clearIcon || <MaskClose className="nut-input-clear" />}
+          </span>
+        ) : null}
+      </div>
+    )
+  }
+)
 
 Input.defaultProps = defaultProps
 Input.displayName = 'NutInput'
