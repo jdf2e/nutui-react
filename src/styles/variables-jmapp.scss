@@ -470,11 +470,11 @@ $picker-mask-bg-img: var(
 ) !default;
 //input（✅）
 $input-border-bottom: var(--nutui-input-border-bottom, #eaf0fb) !default;
-$input-disabled-color: var(--nutui-input-disabled-color, #c8c9cc) !default;
-$input-required-color: var(
-  --nutui-input-required-color,
-  $required-color
+$input-border-bottom-width: var(
+  --nutui-input-border-bottom-width,
+  0px
 ) !default;
+$input-disabled-color: var(--nutui-input-disabled-color, #c8c9cc) !default;
 $input-font-size: var(--nutui-input-font-size, $font-size-2) !default;
 $input-padding: var(--nutui-input-padding, 10px 25px) !default;
 
