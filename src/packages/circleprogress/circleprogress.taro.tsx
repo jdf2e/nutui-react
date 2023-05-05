@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FunctionComponent } from 'react'
+import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { isObject } from '@/utils'
 
@@ -50,7 +50,7 @@ export const CircleProgress: FunctionComponent<
 
   const classes = classNames(className, classPrefix)
   const refRandomId = Math.random().toString(36).slice(-8)
-  let lastTime = 0
+  const animateIdRef = useRef(0)
 
   const styles: React.CSSProperties = {
     height: `${Number(radius) * 2}px`,
@@ -59,7 +59,6 @@ export const CircleProgress: FunctionComponent<
   }
 
   useEffect(() => {
-    let rafId: number | undefined
     const startTime = Date.now()
     const startRate = Number(oldValue) // 30
     const endRate = Number(percent) // 40
@@ -70,29 +69,12 @@ export const CircleProgress: FunctionComponent<
       const rate = progress * (endRate - startRate) + startRate
       setOldValue(Math.min(Math.max(+rate, 0), 100))
       if (endRate > startRate ? rate < endRate : rate > endRate) {
-        rafId = window.requestAnimationFrame(animate)
+        animateIdRef.current = window.requestAnimationFrame(animate)
       }
     }
-    if (rafId) {
-      cancelAnimationFrame(rafId)
-    }
-    rafId = window.requestAnimationFrame(animate)
+    animateIdRef.current = window.requestAnimationFrame(animate)
+    return () => window.cancelAnimationFrame(animateIdRef.current)
   }, [percent])
-
-  const requestAnimationFrame = function (callback: Function) {
-    const currTime = new Date().getTime()
-    const timeToCall = Math.max(0, 16.7 - (currTime - lastTime))
-    lastTime = currTime + timeToCall
-    const id = setTimeout(function () {
-      callback()
-    }, timeToCall)
-    lastTime = currTime + timeToCall
-    return id
-  }
-
-  const cancelAnimationFrame = function (id: any) {
-    clearTimeout(id)
-  }
 
   const stop = () => {
     if (!isObject(props.color)) {

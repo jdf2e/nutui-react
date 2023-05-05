@@ -173,10 +173,10 @@ export default App;
 | Property | Description | Type | Default
 |----- | ----- | ----- | -----
 | percent | Progress Rate | `number \| string` | `Required, no default value`
-| strokeWidth | 圆弧的宽度 | `number \| string` | `5`
+| strokeWidth | Stroke width | `number \| string` | `5`
 | radius | radius | `number \| string` | `50`
 | color | Progress color, passing object to render gradient | `object \| string` | `#fa2c19`
-| background | 圆环轨道颜色 | `string` | `#d9d9d9`
+| background | Circle track color | `string` | `#d9d9d9`
 | strokeLinecap | Stroke linecap | `'butt' \| 'round' \| 'square' \| 'inherit'` | `round`
 | clockwise | Whether to be clockwise | `boolean` | `true`
 
