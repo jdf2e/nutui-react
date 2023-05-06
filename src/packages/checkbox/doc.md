@@ -533,9 +533,9 @@ export default CheckboxGroupOptions;
 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 说明 |  默认值           |
-| --- |-----------------| --- ｜
-| --nutui-checkbox-label-color | label 的文本颜色 | ` $gray1`       |
-| --nutui-checkbox-label-disable-color | label 的禁用颜色 | `  #999`        |
-| --nutui-checkbox-icon-disable-color | 默认 icon 的禁用颜色 |`  #d6d6d6`     |
-| --nutui-checkbox-label-margin-left | label 的左边距 |`  15px`        |
-| --nutui-checkbox-label-font-size | label 的字号 | ` 14px`         |
+| --- |-----------------| --- |
+| --nutui-checkbox-label-color | label 的文本颜色 | `$gray1`       |
+| --nutui-checkbox-label-disable-color | label 的禁用颜色 | `#999`        |
+| --nutui-checkbox-icon-disable-color | 默认 icon 的禁用颜色 |`#d6d6d6`     |
+| --nutui-checkbox-label-margin-left | label 的左边距 |`15px`        |
+| --nutui-checkbox-label-font-size | label 的字号 | `14px`         |

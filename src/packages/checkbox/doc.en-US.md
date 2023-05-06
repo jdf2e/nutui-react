@@ -525,13 +525,13 @@ export default CheckboxGroupOptions;
 
 ### CSS Variables
 
-组件提供了下列 CSS
-变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+The component provides the following CSS variables, which can be used to customize styles. Please refer
+to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Description |  Default           |
-| --- |-----------------| --- ｜
-| --nutui-checkbox-label-color | text color of label | ` $gray1` |
-| --nutui-checkbox-label-disable-color | disabled color for label | ` #999` |
-| --nutui-checkbox-icon-disable-color | Default icon disable color |` #d6d6d6` |
-| --nutui-checkbox-label-margin-left | left margin of label |` 15px` |
-| --nutui-checkbox-label-font-size | font size of label | ` 14px` |
+| --- |-----------------| --- |
+| --nutui-checkbox-label-color | text color of label | `$gray1` |
+| --nutui-checkbox-label-disable-color | disabled color for label | `#999` |
+| --nutui-checkbox-icon-disable-color | Default icon disable color |`#d6d6d6` |
+| --nutui-checkbox-label-margin-left | left margin of label |`15px` |
+| --nutui-checkbox-label-font-size | font size of label | `14px` |
