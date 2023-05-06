@@ -308,7 +308,7 @@
           "author": "hx"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Tabbar",
           "type": "component",
           "cName": "标签栏",
@@ -342,7 +342,7 @@
           "author": "张晶发"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Tabs",
           "type": "component",
           "cName": "选项卡切换",
@@ -457,7 +457,7 @@
           "author": "hanyuxinting"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Input",
           "type": "component",
           "cName": "输入框",
@@ -858,7 +858,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "CircleProgress",
           "type": "component",
           "cName": "环形进度条",
@@ -980,7 +980,7 @@
           "author": "ailululu"
         },
         {
-          "version": "3.0.0",
+          "version": "2.0.0",
           "name": "Step",
           "sort": 17,
           "cName": "步骤条子组件",

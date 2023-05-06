@@ -111,6 +111,16 @@
 - 移除 pageCount，通过 total 与 pageSize 实现
 #### SideNavBar
 #### Tabbar
+- unactiveColor 重命名为 inactiveColor
+- tabTitle 重命名为 title，改为 ReactNode
+- icon 类型改为 ReactNode，移除其他 icon 关联属性
+- bottom 重命名为 fixed
+- safeAreaInsetBottom 重命名为 safeArea
+- visible 重命名为 defaultValue，非受控
+- activeVisible 重命名为 value，受控
+- 移除 num，支持传入所有 Badge Props
+- TabbarItem 使用方式修改为 Tabbar.Item
+- 移除 href，通过 onSwitch 事件控制链接与路由跳转
 #### Tabs
 - 删除 background，通过 className 或 style 控制
 - 删除 titleScroll
@@ -228,6 +238,16 @@
 - 主题定制的css变量中，去掉和dot有关的其他值，只保留 width。其他值由width计算而来。
 
 #### CircleProgress
+-h5
+- `progress` 重命名为 `percent`
+- `strokeWidth` 改用 css变量控制
+- `circleColor` 重名为 `color`
+- `pathColor` 改用 css变量控制
+
+-taro
+- `progress` 重命名为 `percent`
+- `circleColor` 重名为 `color`
+- `pathColor` 重名为 `background`
 #### Collapse
 #### CountDown
 #### Ellipsis
