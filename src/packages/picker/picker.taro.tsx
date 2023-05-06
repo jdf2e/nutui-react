@@ -78,8 +78,9 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     const classes = classNames(classPrefix, className)
     // 选择的数据的 value 值, 每一条数据的 value 值
     const [selectedValue, setSelectedValue] = useState<Array<string | number>>([
-      // ...defaultValue,
+      ...defaultValue,
     ])
+    const [currentValue, setCurrentValue] = useState<number[]>([])
     const [columnIndex, setColumnIndex] = useState<number>(0) // 选中列
     const pickerRef = useRef<any>(null)
     const [refs, setRefs] = useRefs()
@@ -148,20 +149,6 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       init()
     }, [options])
 
-    // 默认值修改
-    useEffect(() => {
-      if (
-        defaultValue &&
-        defaultValue.length !== 0 &&
-        defaultValue.toString() !== selectedValue.toString() &&
-        !currentValue.length
-      ) {
-        const data = [...defaultValue]
-        setSelectedValue(data)
-        setColumnsList(normalListData() as PickerOption[][])
-      }
-    }, [defaultValue])
-
     const setSelectedOptions = () => {
       const options: PickerOption[] = []
       let currOptions = []
@@ -178,6 +165,27 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       return options
     }
 
+    const defaultValuesConvert = () => {
+      const defaultIndexs: number[] = []
+      if (selectedValue.length > 0) {
+        selectedValue.forEach((value, index) => {
+          for (let i = 0; i < columnsList?.[index]?.length; i++) {
+            if (columnsList[index][i].value === value) {
+              defaultIndexs.push(i)
+              break
+            }
+          }
+        })
+      } else if (columnsList && columnsList.length > 0) {
+        columnsList.forEach((item) => {
+          defaultIndexs.push(0)
+          item.length > 0 && selectedValue.push(item[0].value)
+        })
+      }
+
+      return defaultIndexs
+    }
+
     // 选中值进行修改
     useEffect(() => {
       Taro.getEnv() !== 'WEB' && setCurrentValue(defaultValuesConvert())
@@ -186,7 +194,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
         isConfirmEvent.current = false
         onConfirm && onConfirm(setSelectedOptions(), selectedValue)
       }
-    }, [selectedValue])
+    }, [selectedValue, columnsList])
 
     // 更新已选择数据
     const chooseItem = (columnOptions: PickerOption, columnIndex: number) => {
@@ -270,29 +278,8 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       )
     }
 
-    const [currentValue, setCurrentValue] = useState<number[]>([])
     const [pickingStatus, setPickingStatus] = useState(false)
 
-    const defaultValuesConvert = () => {
-      const defaultIndexs: number[] = []
-      if (selectedValue.length > 0) {
-        selectedValue.forEach((value, index) => {
-          for (let i = 0; i < columnsList[index].length; i++) {
-            if (columnsList[index][i].value === value) {
-              defaultIndexs.push(i)
-              break
-            }
-          }
-        })
-      } else if (columnsList && columnsList.length > 0) {
-        columnsList.forEach((item) => {
-          defaultIndexs.push(0)
-          item.length > 0 && selectedValue.push(item[0].value)
-        })
-      }
-
-      return defaultIndexs
-    }
     const pickerStart = () => {
       setPickingStatus(true)
     }
