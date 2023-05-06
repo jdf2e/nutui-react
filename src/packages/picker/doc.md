@@ -1,15 +1,14 @@
 #  Picker 选择器
 
-### 介绍
+## 介绍
 
 提供多个选项集合供用户选择其中一项。
 
-### 安装
+## 安装
 ```ts
 // react
 import { Picker } from '@nutui/nutui-react';
 ```
-
 
 ## 代码演示
 
@@ -39,10 +38,10 @@ const App = () => {
       { value: 12,text: '乌鲁木齐市'},
     ],
   ]
-  const changePicker = (columnIndex: number, option: any, list: any[]) => {
+  const changePicker = (list: any[], option: any, columnIndex: number) => {
     console.log(columnIndex, option)
   }
-  const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
+  const confirmPicker = (options: PickerOption[], values: (string | number)[]) => {
     let description = ''
     options.forEach((option: any) => {
       description += option.text
@@ -55,7 +54,7 @@ const App = () => {
       <Picker
         visible={isVisible1}
         options={listData1}
-        onConfirm={(values, list) => confirmPicker(values, list)}
+        onConfirm={(list, values) => confirmPicker(list, values)}
         onClose={() => setIsVisible1(false)}
         onChange={changePicker}
        />
@@ -65,7 +64,6 @@ const App = () => {
 export default App;
 ```
 :::
-
 
 ### 默认选中项
 
@@ -93,7 +91,7 @@ const App = () => {
       { value: 12,text: '乌鲁木齐市'},
     ],
   ]
-  const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
+  const confirmPicker = (options: PickerOption[], values: (string | number)[]) => {
     let description = ''
     options.forEach((option: any) => {
       description += option.text
@@ -106,7 +104,7 @@ const App = () => {
       <Picker
         visible={isVisible1}
         options={listData1}
-        onConfirm={(values, list) => confirmPicker(values, list)}
+        onConfirm={(list, values) => confirmPicker(list, values)}
         onClose={() => setIsVisible1(false)}
        />
     </>
@@ -142,7 +140,7 @@ const App = () => {
       { text: '晚上', value: 'Evening' },
     ],
   ]
-  const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
+  const confirmPicker = (options: PickerOption[], values: (string | number)[]) => {
     let description = ''
     options.forEach((option: any) => {
       description += option.text
@@ -157,7 +155,7 @@ const App = () => {
       options={listData2}
       onClose={() => setIsVisible2(false)}
       defaultValue={['Wednesday']}
-      onConfirm={(values, list) => confirmPicker(values, list)}
+      onConfirm={(list, values) => confirmPicker(list, values)}
      />
     </>
   );
@@ -194,7 +192,7 @@ const App = () => {
       { value: 12,text: '乌鲁木齐市'},
     ],
   ]
-  const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
+  const confirmPicker = (options: PickerOption[], values: (string | number)[]) => {
     let description = ''
     options.forEach((option: any) => {
       description += option.text
@@ -209,7 +207,7 @@ const App = () => {
         options={options}
         threeDimensional={false}
         duration={1000}
-        onConfirm={(values, list) => confirmPicker(values, list)}
+        onConfirm={(list, values) => confirmPicker(list, values)}
         onClose={() => setIsVisible(false)}
        />
     </>
@@ -265,12 +263,20 @@ const App = () => {
         visible={visible}
         options={custmerCityData}
         onClose={() => setIsVisible(false)}
-        onConfirm={(values, list: PickerOption[]) =>
-          setChooseValueCustmer(values, list)
-        }
-        onChange={(index: number, value: PickerOption, list: any[]) =>
-          console.log('选择用户')
-        }
+        onConfirm={(list, values) => setChooseValueCustmer(list, values)}
+          onChange={(
+            options: PickerOption[],
+            value: (string | number)[],
+            columnIndex: number
+          ) =>
+            console.log(
+              asyncData,
+              '选择用户',
+              columnIndex,
+              value,
+              options
+            )
+          }
        />
     </>
   );
@@ -308,12 +314,19 @@ const App = () => {
       children: [],
     },
   ])
-  const setAsyncConfirm = (values: (string | number)[],chooseData: PickerOption[]) => {
-    const str = chooseData.map((item) => item.text).join('-')
+  const setAsyncConfirm = (
+    options: PickerOption[],
+    values: (string | number)[]
+  ) => {
+    const str = options.map((item) => item.text).join('-')
     setasyncDesc(str)
   }
-  const updateChooseValueCustmer = ( columnIndex: number, option: PickerOption) => {
-    if (columnIndex === 0 && option.value === 2) {
+  const updateChooseValueCustmer = (
+    options: PickerOption[],
+    values: (string | number)[],
+    columnIndex: number
+  ) => {
+    if (columnIndex === 0 && values[0] === 2) {
       setTimeout(() => {
         if(asyncData[1].children.length === 0){
           asyncData[1].children = [
@@ -336,12 +349,18 @@ const App = () => {
         visible={visible}
         options={asyncData}
         onClose={() => setIsVisible(false)}
-        onConfirm={(values, list: PickerOption[]) =>
-          setAsyncConfirm(values, list)
-        }
-        onChange={(columnIndex: number, option: PickerOption) =>
-          updateChooseValueCustmer(columnIndex, option)
-        }
+        onConfirm={(list, values) => setAsyncConfirm(list, values)}
+          onChange={(
+            selectedOptions: PickerOption[],
+            selectedValue: (string | number)[],
+            columnIndex: number
+          ) =>
+            updateChooseValueCustmer(
+              selectedOptions,
+              selectedValue,
+              columnIndex
+            )
+          }
        />
     </>
   );
@@ -351,30 +370,29 @@ export default App;
 :::
 
 
-## API
+## Picker
 
 ### Props
 
-| 字段                     | 说明 | 类型 | 默认值 |
-|------------------------| ----- | ----- | ----- |
-| visible              | 是否可见 | boolean | `false` |
-| title                  | 设置标题 | string | - |
-| options               | 列表数据 | Array | `[]` |
-| defaultValue       | 默认选中 | Array | `[]` |
-| threeDimensional | 是否开启3D效果               | boolean  | `true`   |
-| duration | 快速滑动时惯性滚动的时长，单位 ms | string \| number | `1000`   |
-| onConfirm            | 点击确认按钮时候回调 | 返回选中值 value，选中值对象 |
-| onChange     | 每一列值变更时调用   | 改变的列数，改变值 value，当前选中值 |
-| afterClose        | 联动时，关闭时回调   | 当前选中值，依次返回this |
-| onClose              | 关闭时触发          | 返回选中值 value，选中值对象 |
+| 属性 | 说明 | 类型 | 默认值 |
+|-------------| ----- | ----- | ----- |
+| visible | 是否可见 | `boolean` | `false` |
+| title | 设置标题 | `string` | - |
+| options | 列表数据 | `Array` | `[]` |
+| defaultValue | 默认选中 | `Array` | `[]` |
+| threeDimensional | 是否开启3D效果 | `boolean`  | `true`   |
+| duration | 快速滑动时惯性滚动的时长，单位 ms | `string \| number` | `1000`   |
+| onConfirm | 点击确认按钮时候回调 | `(options, value) => void`  | - |
+| onChange | 每一列值变更时调用   | `(options, value) => void`  | - |
+| onClose | 关闭时触发| `(options, value) => void` | - |
+| afterClose | 联动时，关闭时回调   | `(options, value) => void`  | - |
 
-## options 数据结构
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| text     | 选项的文字内容               | string \| number |               |
-| value         | 选项对应的值，且唯一               | string \| number |            |
-| children       | 用于级联选项               | Array | -                |
-
+### options 数据结构
+| 属性 | 说明| 类型   | 默认值|
+|------|----------|--------|-------------|
+| text     | 选项的文字内容 | `string \| number` | |
+| value         | 选项对应的值，且唯一 | `string \| number` | |
+| children       | 用于级联选项 | `Array` | - |
 
 ## 主题定制
 
@@ -382,21 +400,20 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-picker-cancel-color | `#808080` |
-| --nutui-picker-ok-color | `$primary-color` |
-| --nutui-picker-bar-cancel-font-size | `14px` |
-| --nutui-picker-bar-ok-font-size | `14px` |
-| --nutui-picker-bar-button-padding | `0 15px` |
-| --nutui-picker-bar-title-font-size | `16px` |
-| --nutui-picker-bar-title-color | `$title-color` |
-| --nutui-picker-bar-title-font-weight | `normal` |
-| --nutui-picker-list-height`v1.4.9` | `252px` |
-| --nutui-picker-item-height | `36px` |
-| --nutui-picker-item-text-color | `$title-color` |
-| --nutui-picker-item-active-text-color | `inherit` |
-| --nutui-picker-item-text-font-size | `14px` |
-| --nutui-picker-item-active-line-border | `1px solid #d8d8d8` |
-| --nutui-picker-columns-item-color | `$title-color` |
-| --nutui-picker-mask-bg-img`v1.4.9` | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-picker-bar-cancel-color | 取消文案的色值 | `#808080` |
+| --nutui-picker-bar-ok-color | 确认文案的色值 | `$primary-color` |
+| --nutui-picker-bar-cancel-font-size | 取消字号 | `14px` |
+| --nutui-picker-bar-ok-font-size | 确认字号 |`14px` |
+| --nutui-picker-bar-button-padding | 取消和确认的padding值 | `0 15px` |
+| --nutui-picker-bar-title-font-size | 标题字号 | `16px` |
+| --nutui-picker-bar-title-color | 标题色值 | `$title-color` |
+| --nutui-picker-bar-title-font-weight | 标题字重 | `normal` |
+| --nutui-picker-list-height | 面板高度 |`252px` |
+| --nutui-picker-item-height | 面板每一条数据高度 | `36px` |
+| --nutui-picker-item-text-color | 面板每一条数据的字色 | `$title-color` |
+| --nutui-picker-item-active-text-color | 面板当前选中数据的字色 | `inherit` |
+| --nutui-picker-item-text-font-size | 面板每条数据字号 | `14px` |
+| --nutui-picker-item-active-line-border | 面板当前选中的border值 | `1px solid #d8d8d8` |
+| --nutui-picker-mask-bg-img | 面板数据区域的遮罩层背景 |`linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |

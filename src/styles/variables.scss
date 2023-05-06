@@ -401,8 +401,8 @@ $uploader-preview-close-top: var(
 ) !default;
 
 // picker（✅）（todo:react版本picker组件dom元素类名变化较大，picker.scss暂不改动）
-$picker-cancel-color: var(--nutui-picker-cancel-color, #808080) !default;
-$picker-ok-color: var(--nutui-picker-ok-color, $primary-color) !default;
+$picker-bar-cancel-color: var(--nutui-picker-cancel-color, #808080) !default;
+$picker-bar-ok-color: var(--nutui-picker-ok-color, $primary-color) !default;
 $picker-bar-cancel-font-size: var(
   --nutui-picker-bar-cancel-font-size,
   14px
@@ -441,10 +441,6 @@ $picker-item-text-font-size: var(
 $picker-item-active-line-border: var(
   --nutui-picker-item-active-line-border,
   1px solid #d8d8d8
-) !default;
-$picker-columns-item-color: var(
-  --nutui-picker-columns-item-color,
-  $title-color
 ) !default;
 $picker-mask-bg-img: var(
   --picker-mask-bg-img,

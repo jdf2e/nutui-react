@@ -1,16 +1,16 @@
 #  Picker
 
-### Intro
+## Intro
 
 The picker component is usually used with Popup Component.
 
-### Install
+## Install
 ```ts
 // react
 import { Picker } from '@nutui/nutui-react';
 ```
 
-
+## Demo
 ### Basic Usage
 
 :::demo
@@ -37,10 +37,10 @@ const App = () => {
       { value: 12,text: 'Urumqi Municipality'},
     ],
   ]
-  const changePicker = (columnIndex: number, option: any, list: any[]) => {
+  const changePicker = (list: any[], option: any, columnIndex: number) => {
     console.log(columnIndex, option)
   }
-  const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
+  const confirmPicker = (options: PickerOption[], values: (string | number)[]) => {
     let description = ''
     options.forEach((option: any) => {
       description += option.text
@@ -53,7 +53,7 @@ const App = () => {
       <Picker
         visible={isVisible1}
         options={listData1}
-        onConfirm={(values, list) => confirmPicker(values, list)}
+        onConfirm={(list, values) => confirmPicker(list, values)}
         onClose={() => setIsVisible1(false)}
         onChange={changePicker}
        />
@@ -91,7 +91,7 @@ const App = () => {
       { value: 12,text: 'Urumqi Municipality'},
     ],
   ]
-  const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
+  const confirmPicker = (options: PickerOption[], values: (string | number)[]) => {
     let description = ''
     options.forEach((option: any) => {
       description += option.text
@@ -104,7 +104,7 @@ const App = () => {
       <Picker
         visible={isVisible1}
         options={listData1}
-        onConfirm={(values, list) => confirmPicker(values, list)}
+        onConfirm={(list, values) => confirmPicker(list, values)}
         onClose={() => setIsVisible1(false)}
        />
     </>
@@ -140,7 +140,7 @@ const App = () => {
       { text: 'Evening', value: 'Evening' },
     ],
   ]
-  const confirmPicker = (values: (string | number)[],options: PickerOption[]) => {
+  const confirmPicker = (options: PickerOption[], values: (string | number)[]) => {
     let description = ''
     options.forEach((option: any) => {
       description += option.text
@@ -155,7 +155,7 @@ const App = () => {
       options={listData2}
       onClose={() => setIsVisible2(false)}
       defaultValue={['Wednesday']}
-      onConfirm={(values, list) => confirmPicker(values, list)}
+      onConfirm={(list, values) => confirmPicker(list, values)}
      />
     </>
   );
@@ -204,7 +204,8 @@ const App = () => {
         visible={visible}
         options={options}
         threeDimensional={false}
-        onConfirm={(values, list) => confirmPicker(values, list)}
+        duration={1000}
+        onConfirm={(list, values) => confirmPicker(list, values)}
         onClose={() => setIsVisible(false)}
        />
     </>
@@ -260,11 +261,19 @@ const App = () => {
         visible={visible}
         options={custmerCityData}
         onClose={() => setIsVisible(false)}
-        onConfirm={(values, list: PickerOption[]) =>
-          setChooseValueCustmer(values, list)
-        }
-        onChange={(index: number, value: PickerOption, list: any[]) =>
-          console.log('选择用户')
+        onConfirm={(list, values) => setChooseValueCustmer(list, values)}
+          onChange={(
+            options: PickerOption[],
+            value: (string | number)[],
+            columnIndex: number
+          ) =>
+            console.log(
+              asyncData,
+              columnIndex,
+              value,
+              options
+            )
+          }
         }
        />
     </>
@@ -303,12 +312,19 @@ const App = () => {
       children: [],
     },
   ])
-  const setAsyncConfirm = (values: (string | number)[],chooseData: PickerOption[]) => {
-    const str = chooseData.map((item) => item.text).join('-')
+  const setAsyncConfirm = (
+    options: PickerOption[],
+    values: (string | number)[]
+  ) => {
+    const str = options.map((item) => item.text).join('-')
     setasyncDesc(str)
   }
-  const updateChooseValueCustmer = ( columnIndex: number, option: PickerOption) => {
-    if (columnIndex === 0 && option.value === 2) {
+  const updateChooseValueCustmer = (
+    options: PickerOption[],
+    values: (string | number)[],
+    columnIndex: number
+  ) => {
+    if (columnIndex === 0 && values[0] === 2) {
       setTimeout(() => {
         if(asyncData[1].children.length === 0){
           asyncData[1].children = [
@@ -331,12 +347,18 @@ const App = () => {
         visible={visible}
         options={asyncData}
         onClose={() => setIsVisible(false)}
-        onConfirm={(values, list: PickerOption[]) =>
-          setAsyncConfirm(values, list)
-        }
-        onChange={(columnIndex: number, option: PickerOption) =>
-          updateChooseValueCustmer(columnIndex, option)
-        }
+        onConfirm={(list, values) => setAsyncConfirm(list, values)}
+          onChange={(
+            selectedOptions: PickerOption[],
+            selectedValue: (string | number)[],
+            columnIndex: number
+          ) =>
+            updateChooseValueCustmer(
+              selectedOptions,
+              selectedValue,
+              columnIndex
+            )
+          }
        />
     </>
   );
@@ -346,28 +368,29 @@ export default App;
 :::
 
 
-## API
+## Picker
 
 ### Props
 
-| Attribute         | Description | Type   | Default           |
+| Property | Description | Type   | Default           |
 | ----- | ----- | ----- | ----- |
-| visible | Is Show  | boolean | `false` |
-| title | Toolbar title | string | - |
-| options |  Columns data | Array | `[]` | 
-| defaultValue | Default Index  | Array | `[]` |
-| threeDimensional          | Turn on 3D effects                | boolean  | `true`   |
-| onConfirm     | Emitted when click confirm button. | { selectedValue, selectedOptions } |
-| onChange      | Emitted when current option changed. | { columnIndex, selectedValue, selectedOptions } |
-| afterClose | Emitted when cascade changed.   | selectedValue |
-| onClose       | Emitted when click close button. | { selectedValue, selectedOptions }  |
+| visible | Is Show  | `boolean` | `false` |
+| title | Toolbar title | `string` | - |
+| options |  Columns data | `Array` | `[]` | 
+| defaultValue | Default Index  | `Array` | `[]` |
+| threeDimensional| Turn on 3D effects| `boolean`  | `true`   |
+| duration | move animation duration, ms | `string \| number` | `1000`   |
+| onConfirm     | Emitted when click confirm button. | `(options, value) => void` | `-` |
+| onChange      | Emitted when current option changed. | `(options, value) => void` | `-` |
+| onClose       | Emitted when click close button. | `(options, value) => void`  | `-` |
+| afterClose | Emitted when cascade changed.   | `(options, value) => void` | `-` |
 
-## options 
-| Attribute         | Description | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| text        | Text of column               | string \| number |               |
-| value          | Value of column              | string \| number |            |
-| children         | Cascader Option               | Array | -                |
+### options 
+| Property | Description | Type   | Default |
+|--------------|-------|--------|------------------|
+| text | Text of column | `string \| number` | | 
+| value | Value of column | `string \| number` | |
+| children | Cascader Option | `Array` | - |
 
 
 ## Theming
@@ -376,21 +399,20 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-picker-cancel-color | `#808080` |
-| --nutui-picker-ok-color | `$primary-color` |
-| --nutui-picker-bar-cancel-font-size | `14px` |
-| --nutui-picker-bar-ok-font-size | `14px` |
-| --nutui-picker-bar-button-padding | `0 15px` |
-| --nutui-picker-bar-title-font-size | `16px` |
-| --nutui-picker-bar-title-color | `$title-color` |
-| --nutui-picker-bar-title-font-weight | `normal` |
-| --nutui-picker-list-height  | `252px` |
-| --nutui-picker-item-height | `36px` |
-| --nutui-picker-item-text-color | `$title-color` |
-| --nutui-picker-item-active-text-color | `inherit` |
-| --nutui-picker-item-text-font-size | `14px` |
-| --nutui-picker-item-active-line-border | `1px solid #d8d8d8` |
-| --nutui-picker-columns-item-color | `$title-color` |
-| --nutui-picker-mask-bg-img  | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |
+| Name | Description | Default |
+| --- | --- | -- |
+| --nutui-picker-bar-cancel-color | picker bar cancel color | `#808080` |
+| --nutui-picker-bar-ok-color | picker bar confirm color | `$primary-color` |
+| --nutui-picker-bar-cancel-font-size | picker bar cancel font size | `14px` |
+| --nutui-picker-bar-ok-font-size | picker bar confirm font size | `14px` |
+| --nutui-picker-bar-button-padding | picker bar button padding | `0 15px` |
+| --nutui-picker-bar-title-font-size | picker bar title font size | `16px` |
+| --nutui-picker-bar-title-color | picker bar title color | `$title-color` |
+| --nutui-picker-bar-title-font-weight | picker bar title font weight | `normal` |
+| --nutui-picker-list-height  | picker pannel list height | `252px` |
+| --nutui-picker-item-height | picker pannel item height | `36px` |
+| --nutui-picker-item-text-color | picker pannel item text color | `$title-color` |
+| --nutui-picker-item-active-text-color | picker pannel item active text color  | `inherit` |
+| --nutui-picker-item-text-font-size | picker pannel item text font size  | `14px` |
+| --nutui-picker-item-active-line-border | picker pannel item active line border | `1px solid #d8d8d8` |
+| --nutui-picker-mask-bg-img  | picker pannel mask background image | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |
