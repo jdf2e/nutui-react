@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
-import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type statusOptions = {
   [key: string]: string
@@ -13,42 +13,47 @@ const defaultStatus: statusOptions = {
   error: 'https://ftcms.jd.com/p/files/61a9e33ee7dcdbcc0ce62736.png',
   network: 'https://static-ftcms.jd.com/p/files/61a9e31de7dcdbcc0ce62734.png',
 }
-export interface EmptyProps {
-  image: ReactNode
+export interface EmptyProps extends BasicComponent {
+  image?: ReactNode
   imageSize: number | string
   description: ReactNode
-  className: string
+  status: 'empty' | 'error' | 'network'
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   description: '',
-  image: 'empty',
   imageSize: '',
-  className: '',
+  status: 'empty',
 } as EmptyProps
 
 export const Empty: FunctionComponent<
   Partial<EmptyProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { locale } = useConfig()
-  // defaultProps.description = locale.noData || defaultProps.description
-  const { image, imageSize, description, children, className, ...rest } = {
+  const {
+    image,
+    imageSize,
+    description,
+    children,
+    className,
+    status,
+    ...rest
+  } = {
     ...defaultProps,
     ...props,
   }
 
   const [imgStyle, setImgStyle] = useState<any>({})
-  const b = bem('empty')
 
-  let imageNode = image
-  if (typeof image === 'string') {
-    const isHttpUrl =
-      image.startsWith('https://') ||
-      image.startsWith('http://') ||
-      image.startsWith('//')
-    const imageUrl = isHttpUrl ? image : defaultStatus[image]
-    imageNode = <img className="img" src={imageUrl} alt="empty" />
-  }
+  const imageUrl = image ?? defaultStatus[status]
+  const imageNode =
+    typeof imageUrl === 'string' ? (
+      <img className="img" src={imageUrl} alt="empty" />
+    ) : (
+      imageUrl
+    )
+
   useEffect(() => {
     setImgStyle(() => {
       if (!imageSize) {
@@ -67,15 +72,17 @@ export const Empty: FunctionComponent<
     })
   }, [imageSize])
   return (
-    <div className={`${b()} ${className}`} {...rest}>
+    <div className={`nut-empty ${className}`} {...rest}>
       <>
-        <div className={b('image')} style={imgStyle}>
+        <div className="nut-empty__image" style={imgStyle}>
           {imageNode}
         </div>
         {typeof description === 'string' ? (
-          <div className={b('description')}>{description || locale.noData}</div>
+          <div className="nut-empty__description">
+            {description || locale.noData}
+          </div>
         ) : (
-          { description }
+          description
         )}
         {children}
       </>

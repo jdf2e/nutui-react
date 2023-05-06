@@ -247,6 +247,8 @@
 #### CountDown
 #### Ellipsis
 #### Empty
+- 新增status属性,默认图片错误类型
+- 优化代码逻辑，包括status和image的逻辑，渲染问题修复以及文档优化
 #### ImagePreview
 #### NoticeBar
 #### Popover
