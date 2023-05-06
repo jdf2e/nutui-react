@@ -5,6 +5,7 @@ import { useTranslate } from '../../sites/assets/locale'
 import Cell from '../cell'
 import CellGroup from '../cellgroup'
 import Toast from '../toast'
+import { camelCase } from '@/utils/camel-case'
 
 interface T {
   '84aa6bce': string
@@ -14,8 +15,9 @@ interface T {
   '7aeb5407': string
   f2e6c6d6: string
 }
+
 const generateCopyText = (name: string) => {
-  return `<IconFont name="${name}"></IconFont>`
+  return `<${camelCase(name, { pascalCase: true })} />`
 }
 const generateAMCopyText = (icon: any) => {
   return `
