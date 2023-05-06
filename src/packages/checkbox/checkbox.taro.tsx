@@ -81,7 +81,7 @@ export const Checkbox: FunctionComponent<
     if (ctx.labelPosition !== undefined) {
       labelPosition = ctx.labelPosition
     }
-    innerDisabled = ctx.disabled
+    innerDisabled = ctx.disabled !== undefined ? ctx.disabled : innerDisabled
     _checked = ctx.checkedValue.includes(value)
     setChecked = (checked: boolean) => {
       if (ctx.disabled) return

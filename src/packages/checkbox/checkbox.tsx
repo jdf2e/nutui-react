@@ -81,7 +81,6 @@ export const Checkbox: FunctionComponent<
     if (ctx.labelPosition !== undefined) {
       labelPosition = ctx.labelPosition
     }
-    console.log('ctx', ctx.disabled)
     innerDisabled = ctx.disabled !== undefined ? ctx.disabled : innerDisabled
     _checked = ctx.checkedValue.includes(value)
     setChecked = (checked: boolean) => {
@@ -113,7 +112,6 @@ export const Checkbox: FunctionComponent<
     )
   }
   const color = () => {
-    console.log(innerDisabled)
     if (innerDisabled) {
       return 'nut-checkbox__icon--disable'
     }

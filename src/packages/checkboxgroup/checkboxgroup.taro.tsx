@@ -105,12 +105,10 @@ export const CheckboxGroup = React.forwardRef(
           check: (value: string) => {
             const combined: string[] = [..._value, value]
             setValue(combined)
-            onChange && onChange(combined)
           },
           uncheck: (value: string) => {
             const reduced = _value.filter((item) => item !== value)
             setValue(reduced)
-            onChange && onChange(reduced)
           },
         }}
       >
