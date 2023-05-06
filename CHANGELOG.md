@@ -1,3 +1,12 @@
+# v2.0.0-alpha.4
+`2023-05-05`
+
+* 🛠 refactor: circleprogress-v2.0 (#949) @junjun666
+* 🛠 refactor: input (#962) @oasis-cloud
+* 🛠 refactor: Tabbar (#935) @Eiinu
+* :bug: fix: badge 组件的默认样式中，去掉 margin-right (#967) @xiaoyatong
+* 🎨 style: fix endLine display error (#964) @HaiTao
+
 # v2.0.0-alpha.3
 `2023-04-28`
 

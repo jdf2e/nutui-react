@@ -4,20 +4,16 @@ import '@testing-library/jest-dom'
 
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react'
 import { Tabbar } from '../tabbar'
-import { TabbarItem } from '../../tabbaritem/tabbaritem'
 
 test('should render tabbar when default', () => {
   const { container } = render(
     <>
       <Tabbar>
-        <TabbarItem tabTitle="首页" icon={<Home width={20} height={20} />} />
-        <TabbarItem
-          tabTitle="分类"
-          icon={<Category width={20} height={20} />}
-        />
-        <TabbarItem tabTitle="发现" icon={<Find width={20} height={20} />} />
-        <TabbarItem tabTitle="购物车" icon={<Cart width={20} height={20} />} />
-        <TabbarItem tabTitle="我的" icon={<My width={20} height={20} />} />
+        <Tabbar.Item title="首页" icon={<Home width={20} height={20} />} />
+        <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
+        <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
+        <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} />
+        <Tabbar.Item title="我的" icon={<My width={20} height={20} />} />
       </Tabbar>
     </>
   )
@@ -32,17 +28,14 @@ test('should render tabbar when default', () => {
 test('should render custom color and badge when using prop', () => {
   const { container } = render(
     <>
-      <Tabbar unactiveColor="grey" activeColor="blue">
-        <TabbarItem
-          tabTitle="首页"
+      <Tabbar inactiveColor="grey" activeColor="blue">
+        <Tabbar.Item
+          title="首页"
           icon={<Home width={20} height={20} />}
-          num="11"
+          value={11}
         />
-        <TabbarItem
-          tabTitle="分类"
-          icon={<Category width={20} height={20} />}
-        />
-        <TabbarItem tabTitle="发现" icon={<Find width={20} height={20} />} />
+        <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
+        <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
       </Tabbar>
     </>
   )
@@ -52,20 +45,14 @@ test('should render custom color and badge when using prop', () => {
 
   expect(tabbarItem[0].style.color).toEqual('blue')
   expect(tabbarItem[1].style.color).toEqual('grey')
-  expect(
-    tabbarItem[0].querySelectorAll('.nut-tabbar-item__icon-box__tips').length
-  ).toBeGreaterThan(0)
 })
 
 test('should render fixed element when using bottom prop', async () => {
   const { container } = render(
     <>
-      <Tabbar bottom safeAreaInsetBottom>
-        <TabbarItem tabTitle="首页" icon={<Home width={20} height={20} />} />
-        <TabbarItem
-          tabTitle="分类"
-          icon={<Category width={20} height={20} />}
-        />
+      <Tabbar fixed safeArea>
+        <Tabbar.Item title="首页" icon={<Home width={20} height={20} />} />
+        <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
       </Tabbar>
     </>
   )
@@ -75,17 +62,14 @@ test('should render fixed element when using bottom prop', async () => {
 test('should match active tabbar by click', async () => {
   const { container } = render(
     <>
-      <Tabbar unactiveColor="grey" activeColor="blue">
-        <TabbarItem
-          tabTitle="首页"
+      <Tabbar inactiveColor="grey" activeColor="blue">
+        <Tabbar.Item
+          title="首页"
           icon={<Home width={20} height={20} />}
-          num="11"
+          value={11}
         />
-        <TabbarItem
-          tabTitle="分类"
-          icon={<Category width={20} height={20} />}
-        />
-        <TabbarItem tabTitle="发现" icon={<Find width={20} height={20} />} />
+        <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
+        <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
       </Tabbar>
     </>
   )
@@ -103,17 +87,14 @@ test('should show sure emitted when click', async () => {
   const onSwitch = jest.fn()
   const { container } = render(
     <>
-      <Tabbar unactiveColor="grey" activeColor="blue" onSwitch={onSwitch}>
-        <TabbarItem
-          tabTitle="首页"
+      <Tabbar inactiveColor="grey" activeColor="blue" onSwitch={onSwitch}>
+        <Tabbar.Item
+          title="首页"
           icon={<Home width={20} height={20} />}
-          num="11"
+          value={11}
         />
-        <TabbarItem
-          tabTitle="分类"
-          icon={<Category width={20} height={20} />}
-        />
-        <TabbarItem tabTitle="发现" icon={<Find width={20} height={20} />} />
+        <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
+        <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
       </Tabbar>
     </>
   )

@@ -1,10 +1,10 @@
 # Input
 
-### Intro
+## Intro
 
 The user can enter content in the text box.
 
-### Install
+## Install
 
 ```javascript
 // react
@@ -12,229 +12,225 @@ import { Input } from '@nutui/nutui-react';
 
 ```
 
+## Demo
+
 ### Basic Usage
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
-    const [value, UpdateValue] = useState('')
   return (
     <>
-      <Input name="text" label="Text" defaultValue={value} placeholder="Text" onChange={(val) => {
-            UpdateValue(val)
-          }}/>
+      <Input placeholder="请输入文本" />
     </>
   );
 };
 export default App;
 ```
+
+:::
+
+### Uncontrolled
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Input } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+       <Input defaultValue="NutUI React" placeholder="请输入文本" />
+    </>
+  )
+}
+export default App;
+```
+
+:::
+
+### Controlled
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Input } from '@nutui/nutui-react';
+
+const App = () => {
+    const [val, setVal] = useState('NutUI React')
+  return (
+    <>
+      <Input
+        value={val}
+        onChange={(val) => setVal(val)}
+        placeholder={translated.text}
+      /> 
+    </>
+  )
+}
+export default App;
+```
+
 :::
 
 ### Custom Type
 
 :::demo
+
 ```tsx
-import  React, { useState } from "react";
+import React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
-    const  [state, setState] = useState({
-        text: '',
-        password: '',
-        number: '',
-        digit: '',
-        tel: ''
-    })
   return (
     <>
-       <Input
-          name="text"
-          label="Text" 
-          placeholder="Text" 
-          defaultValue={state.text}
-        />
-        <Input
-          name="password"
-          label="Password" 
-          placeholder="Password"
-          defaultValue={state.password}
-          type="password"
-        />
-        <Input
-          name="number"
-          label="Number" 
-          placeholder="Number"
-          defaultValue={state.number}
-          type="number"
-        />
-        <Input
-          name="digit"
-          label="Digit" 
-          placeholder="Digit"
-          defaultValue={state.digit}
-          type="digit"
-        />
-        <Input
-          name="tel"
-          label="Tel" 
-          placeholder="Tel"
-          defaultValue={state.tel}
-          type="tel"
-        />
+      <Input type="text" placeholder="请输入文本" />
+      <Input type="password" placeholder="请输入密码" />
+      <Input type="digit" placeholder="请输入数字" />
+      <Input type="number" placeholder="请输入整数" />
     </>
   )
 }
 export default App;
 ```
+
 :::
 
-
-### Readonly And Disabled
+### Disabled and readonly
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
-    const  [state, setState] = useState({
-        readonly:'',
-        disabled: '',
-    })
   return (
     <>
-       <Input
-          label="Text" 
-          placeholder="Readonly" 
-          defaultValue={state.readonly}
-          readonly
-        />
-        <Input
-          label="Text" 
-          placeholder="Disabled"
-          defaultValue={state.disabled}
-          disabled
-        />
+       <Input readOnly placeholder="readOnly" />
+       <Input disabled placeholder="disabled" />
     </>
   )
 }
 export default App;
 ```
+
 :::
 
-### Show Icon
-
-The user can enter content in the text box. Configure the icons on both sides of the input box through `left-icon` and `right-icon`, and display the clear icon during the input process by setting `clearable`. Need to reference the `Icon` component
+### Clear
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
-import { Dongdong, Ask2 } from "@nutui/icons-react";
+import { Close } from '@nutui/icons-react'
 
 const App = () => {
-    const  [state, setState] = useState({
-        showIcon: '',
-        clear: '',
-    })
   return (
     <>
-       <Input
-          label="Text" 
-          placeholder="Show Icon" 
-          defaultValue={state.showIcon}
-          leftIcon={<Dongdong/>}
-          rightIcon={<Ask2/>}
-        />
-        <Input
-          label="Text" 
-          placeholder="Show Clear Icon"
-          defaultValue={state.clear}
-          clearable
-          clearSize="14"
-        />
+       <Input clearable placeholder="clear Icon" />
+       <Input clearable clearIcon={<Close />} placeholder="clear Icon" />
     </>
   )
 }
 export default App;
 ```
+
 :::
 
-### Error Info
+### Formatter
 
-`:::demo
+:::demo
 
 ```tsx
 import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
-    const  [state, setState] = useState({
-        required: '',
-        error1: '',
-        error2: '',
-    })
+  const formatter = (value: string) => value.replace(/\d/g, '')
   return (
     <>
+       <Input formatter={formatter} placeholder="Perform formatting on input" />
        <Input
-          label="Text" 
-          placeholder="Required" 
-          defaultValue={state.required}
-          required
-        />
-        <Input
-          label="Text" 
-          placeholder="Error"
-          defaultValue={state.error1}
-          error
-        />
-         <Input
-          label="Text" 
-          placeholder="Error Message"
-          defaultValue={state.error2}
-          errorMessage="Error Message"
-        />
+         formatter={formatter}
+         formatTrigger="onBlur"
+         placeholder="Perform formatting when out of focus"
+       />
     </>
   )
 }
 export default App;
 ```
+
 :::
 
-### Insert Button
+### Event
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Input, Toast } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+       <Input
+         placeholder="trigger onClick"
+         onClick={() => Toast.text('onClick')}
+       />
+    </>
+  )
+}
+export default App;
+```
+
+:::
+
+### Layout
 
 :::demo
 
 ```tsx
 import  React, { useState } from "react";
 import { Input, Button } from '@nutui/nutui-react';
+import { Ask } from '@nutui/icons-react'
 
 const App = () => {
-    const  [state, setState] = useState({
-        buttonVal: '',
-    })
-  
   return (
     <>
-       <Input
-          label="Code"
-          placeholder="Please enter code"
-          defaultValue={state.buttonVal}
-          clearable
-          center
-          slotButton={<Button size="small" type="primary">Send</Button>}
-        />
+       <div
+         style={{
+           display: 'flex',
+           alignItems: 'center',
+           background: '#fff',
+           padding: '0 10px',
+         }}
+       >
+         <Ask />
+         <Input placeholder="Please enter the SMS verification code" />
+         <div className="right">
+           <Button type="primary" size="small">
+             Get code
+           </Button>
+         </div>
+       </div>
     </>
   )
 }
 export default App;
 ```
+
 :::
 
-### Format Value
+### Border
 
 :::demo
 
@@ -243,272 +239,53 @@ import  React, { useState } from "react";
 import { Input } from '@nutui/nutui-react';
 
 const App = () => {
-    const  [state, setState] = useState({
-        format1: '',
-        format2: '',
-    })
-    const formatter = (value: string) => value.replace(/\d/g, '')
   return (
     <>
-       <Input
-          label="Text"
-          placeholder="Format On Change"
-          defaultValue={state.format1}
-          formatter={formatter}
-        />
-        <Input
-          label="Text"
-          placeholder="Format On Blur"
-          defaultValue={state.format2}
-          formatter={formatter}
-          formatTrigger="onBlur"
-        />
+       <Input style={{'--nutui-input-border-bottom-width': '1px'}} placeholder="with border" />
     </>
   )
 }
 export default App;
 ```
+
 :::
 
-### Show Word Limit
+## Input
 
-:::demo
-
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-    const  [state, setState] = useState({
-        textarea: '',
-    })
-  return (
-    <>
-       <Input
-          label="Message"
-          placeholder="Message"
-          defaultValue={state.textarea}
-          type="textarea"
-          showWordLimit
-          rows="2"
-          maxlength="50"
-        />
-    </>
-  )
-}
-export default App;
-```
-:::
-
-### Input Align
-
-:::demo
-
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-    const  [state, setState] = useState({
-        align1: '',
-        align2: '',
-    })
-  return (
-    <>
-       <Input
-          label="Text"
-          placeholder="Label Align"
-          defaultValue={state.align1}
-          labelAlign="right"
-        />
-        <Input
-          label="Text"
-          placeholder="Input Align"
-          defaultValue={state.align2}
-          labelAlign="right"
-        />
-    </>
-  )
-}
-export default App;
-```
-:::
-
-### No Border
-
-:::demo
-
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-    const  [state, setState] = useState({
-        noBorder1: '',
-        noBorder2: '',
-    })
-  return (
-    <>
-       <Input
-          label="No Border"
-          defaultValue={state.noBorder1}
-          placeholder="No Border"
-          border={false}
-        />
-        <Input
-          label="No Border"
-          defaultValue={state.noBorder2}
-          placeholder="No Border"
-          border={false}
-        />
-    </>
-  )
-}
-export default App;
-```
-:::
-
-### Click Event
-
-:::demo
-
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-import { Dongdong, Ask2 } from '@nutui/icons-react'
-
-const App = () => {
-    const  [state, setState] = useState({
-        event:'',
-    })
-    const change = (value: string | number, event: Event) => {
-        console.log('change: ', value, event)
-    }
-    const focus = (value: string | number, event: Event) => {
-        console.log('focus:', value, event)
-    }
-    const blur = (value: string | number, event: Event) => {
-        console.log('blur:', value, event)
-    }
-    const clear = (value: string | number, event: Event) => {
-        console.log('clear:', value, event)
-    }
-    const click = (value: string | number) => {
-        console.log('click:', value)
-    }
-    const clickInput = (value: string | number) => {
-        console.log('clickInput:', value)
-    }
-    const clickLeftIcon = (value: string | number) => {
-        console.log('clickLeftIcon:', value)
-    }
-    const clickRightIcon = (value: string | number) => {
-        console.log('clickRightIcon:', value)
-    }
-  return (
-    <>
-       <Input
-          label="Click"
-          placeholder="Click"
-          defaultValue={state.event}
-          leftIcon={<Dongdong/>}
-          rightIcon={<Ask2/>}
-          clearable
-          onChange={change}
-          onFocus={focus}
-          onBlur={blur}
-          onClear={clear}
-          onClick={click}
-          onClickInput={clickInput}
-          onClickLeftIcon={clickLeftIcon}
-          onClickRightIcon={clickRightIcon}
-        />
-    </>
-  )
-}
-export default App;
-```
-:::
 ### Prop
 
-| Attribute         | Description                                                               | Type                      | Default     |
-| ------------ |---------------------------------------------------------------------------|---------------------------|-------------|
-| defaultValue | Input value                                                               | String                    | -           |
-| type         | Input type, support all native types and `textarea` `number` `digit` type | String                    | `text`      |
-| name`v1.3.10`  | Used for form submission to obtain data                                   | String                    | -           |
-| ref`v1.3.10`  | Used to obtain internal input instance ref                                | RefAttributes             | -           |
-| placeholder  | Placeholder when the input box is empty                                   | String                    | -           |
-| label        | Left text                                                                 | String                    | -           |
-| labelClass  | Left text extra class name                                                | String                    | -           |
-| labelWidth  | Label width, default unit is `px`                                         | String、Number             | `80`        |
-| labelAlign  | Label align,  eg `left`、`center`、`right`                                  | String                    | `left`      |
-| inputAlign  | Input align, eg `left`、`center`、`right`                                   | String                    | `left`      |
-| colon        | Whether to display colon after label                                      | Boolean                   | `false`     |
-| required     | Whether to show required mark                                             | Boolean                   | `false`     |
-| border       | Whether to show inner borde                                               | Boolean                   | `true`      |
-| disabled     | Whether to disable field                                                  | Boolean                   | `false`     |
-| readonly     | Whether to be readonly                                                    | Boolean                   | `false`     |
-| autofocus    | Whether to auto focus, unsupported in iOS                                 | Boolean                   | `false`     |
-| maxlength   | Max length of value                                                       | String、Number             | -           |
-| clearable    | Whether to be clearable                                                   | Boolean                   | `false`     |
-| clearIcon `v2.0.0`   | Clear Icon name, [icon](#/icon)                                   | ReactNode                 | `MaskClose` |
-| clearSize `v2.0.0`  | Default Clear Icon `font-size`                                            | String                    | `14`        |
-| leftIcon  `v2.0.0`  | Left side Icon name, [icon](#/icon)                               | ReactNode                    | -           |
-| rightIcon `v2.0.0`  | Right side Icon name, [icon](#/icon)                              | ReactNode                    | -           |
-| showWordLimit | Whether to show word limit, need to set the `max-length` prop             | Boolean                   | `false`     |
-| error         | Whether to mark the input content in red                                  | Boolean                   | `false`     |
-| errorMessage | Error message                                                             | String、Number             | -           |
-| errorMessageAlign | Error message align, eg `left`、`center`、`right`                           | String                    | -           |
-| formatter      | Input value formatter                                                     | `(val: string) => string` | -           |
-| formatTrigger | When to format value, eg `onChange`、`onBlur`                              | String                    | -           |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| defaultValue | default value | `string` | `-` |
+| value | input value | `string` | `-` |
+| type | input box type, supports all `type` attributes of native `input` tags, and also supports `number` `digit` | `string` | `text` |
+| name | Component name, used for form submission to get data | `string` | `-` |
+| placeholder | placeholder when the input box is empty | `string` | `-` |
+| align | Alignment of input box content, optional values `left`, `center`, `right` | `string` | `left` |
+| disabled | Whether to disable | `boolean` | `false` |
+| readOnly | Whether to read only | `boolean` | `false` |
+| autoFocus | Whether to automatically get the focus, iOS system does not support this property | `boolean` | `false` |
+| maxLength | Limit the longest input characters | `string, number` | `-` |
+| clearable | show clear Icon | `boolean` | `false` |
+| clearIcon | clear icon Icon <a href="#/icon">refer to Icon </a> | `ReactNode` | `MaskClose` |
+| formatter | input content formatting function | `(val: string) => string` | `-` |
+| formatTrigger | The timing when the format function is triggered, the optional values are `onChange`, `onBlur` | `string` | `-` |
+| onChange | Triggered when the content of the input box changes | `(value: string) => void` | `-` |
+| onBlur | Triggered when focus is lost | `(value: string) => void` | `-` |
+| onFocus | Triggered after gaining focus | `(value: string) => void` | `-` |
+| onClear | Triggered when the clear button is clicked | `(value: string) => void` | `-` |
+| onClick | Triggered when the input container is clicked | `(value: MouseEvent<HTMLDivElement>) => void` | `-` |
 
-### Events
+## 主题定制
 
-| Event   | Description      | Arguments    |
-|--------|----------------|-------------|
-| onChange  | Emitted when input value changed | val ,event  |
-| onFocus   | Emitted when input is focused     | val  ,event |
-| onBlur    | Emitted when input is blurred     | val ,event  |
-| onClear  | Emitted when the clear icon is clicked   | val ,event  |
-| onClick   | Emitted when component is clicked	      | val ,event  |
-| onClickInput       | Emitted when the input is clicked      | val ,event  |
-| onClickLeftIcon   | Emitted when the left icon is clicked      | val ,event  |
-| onClickRightIcon  | Emitted when the right icon is clicked      | val ,event  |
+### 样式变量
 
-### Slots
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| Name  | Description     | 
-|-------|----------|
-| slotButton | Insert button |
-| slotInput `v3.1.22` | Custom input |
-
-## Theming
-
-### CSS Variables
-
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
-
-| Name | Default Value |
-| --- | --- |
-| --nutui-input-border-bottom | ` #eaf0fb` |
-| --nutui-input-disabled-color | ` #c8c9cc` |
-| --nutui-input-required-color | `  $required-color` |
-| --nutui-input-font-size | ` $font-size-2` |
-| --nutui-input-padding | ` 10px 25px` |
-| --nutui-inputnumber-icon-color | `  $title-color` |
-| --nutui-inputnumber-icon-void-color | `  $disable-color` |
-| --nutui-inputnumber-icon-disabled-color | `  $gray2` |
-| --nutui-inputnumber-icon-size | ` 20px` |
-| --nutui-inputnumber-input-font-size | `  12px` |
-| --nutui-inputnumber-input-font-color | `  $gray1` |
-| --nutui-inputnumber-input-background-color | `  $gray4` |
-| --nutui-inputnumber-input-border-radius | `  4px` |
-| --nutui-inputnumber-input-width | ` 40px` |
-| --nutui-inputnumber-input-margin | `  0 6px` |
-| --nutui-inputnumber-input-border | ` 0` |
-| --nutui-inputnumber-border | ` 0` |
-| --nutui-inputnumber-border-radius | ` 0` |
-| --nutui-inputnumber-height | ` auto` |
-| --nutui-inputnumber-line-height | ` normal` |
-| --nutui-inputnumber-border-box | `  content-box` |
-| --nutui-inputnumber-display | ` flex` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-input-border-bottom | 边框颜色 | `#eaf0fb` |
+| \--nutui-input-border-bottom-width | 边框宽度 | `0px` |
+| \--nutui-input-disabled-color | 禁用的文本颜色 | `#c8c9cc` |
+| \--nutui-input-font-size | 文本字号 | `$font-size-2` |
+| \--nutui-input-padding | 输入框容器的内边距 | `10px 25px` |
