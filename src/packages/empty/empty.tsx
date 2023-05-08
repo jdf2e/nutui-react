@@ -27,6 +27,7 @@ const defaultProps = {
   status: 'empty',
 } as EmptyProps
 
+const classPrefix = `nut-empty`
 export const Empty: FunctionComponent<
   Partial<EmptyProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
@@ -46,7 +47,7 @@ export const Empty: FunctionComponent<
 
   const [imgStyle, setImgStyle] = useState<any>({})
 
-  const imageUrl = image ?? defaultStatus[status]
+  const imageUrl = image || defaultStatus[status]
   const imageNode =
     typeof imageUrl === 'string' ? (
       <img className="img" src={imageUrl} alt="empty" />
@@ -72,13 +73,13 @@ export const Empty: FunctionComponent<
     })
   }, [imageSize])
   return (
-    <div className={`nut-empty ${className}`} {...rest}>
+    <div className={`${classPrefix} ${className}`} {...rest}>
       <>
-        <div className="nut-empty__image" style={imgStyle}>
+        <div className={`${classPrefix}__image`} style={imgStyle}>
           {imageNode}
         </div>
         {typeof description === 'string' ? (
-          <div className="nut-empty__description">
+          <div className={`${classPrefix}__description`}>
             {description || locale.noData}
           </div>
         ) : (
