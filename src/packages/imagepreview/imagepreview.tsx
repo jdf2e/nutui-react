@@ -247,14 +247,14 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
         onTouchStart={onTouchStart as any}
       >
         <Swiper
-          autoPlay={autoplay}
+          autoplay={autoplay}
           className="nut-imagepreview-swiper"
           loop
-          isPreventDefault={false}
+          preventDefault={false}
           style={{ display: showPop ? 'block' : 'none' }}
           direction="horizontal"
           onChange={slideChangeEnd}
-          initPage={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
+          defaultValue={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
           paginationColor={paginationColor}
           paginationVisible={paginationVisible}
         >

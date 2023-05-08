@@ -7,6 +7,7 @@ import React, {
   CSSProperties,
 } from 'react'
 import classNames from 'classnames'
+import { useDrag } from '@use-gesture/react'
 import { DataContext } from './UserContext'
 import bem from '@/utils/bem'
 import { getRect } from '../../utils/use-client-rect'
@@ -17,26 +18,20 @@ export type SwiperRef = {
   prev: () => void
 }
 
-interface Style {
-  width?: string
-  height?: string
-  transform?: string
-}
-
 export interface SwiperProps {
   width: number | string
   height: number | string
   duration: number | string
-  initPage: number | string
-  autoPlay: number | string
+  defaultValue: number | string
+  autoplay: number | string
   direction: 'horizontal' | 'vertical'
   paginationColor: string
   paginationBgColor: string
   paginationVisible: boolean
   loop: boolean
   touchable: boolean
-  isPreventDefault: boolean
-  isStopPropagation: boolean
+  preventDefault: boolean
+  stopPropagation: boolean
   isCenter: boolean
   className?: string
   style?: React.CSSProperties
@@ -48,16 +43,16 @@ const defaultProps = {
   width: typeof window === 'object' ? window.innerWidth : 375,
   height: 0,
   duration: 500,
-  initPage: 0,
-  autoPlay: 0,
+  defaultValue: 0,
+  autoplay: 0,
   direction: 'horizontal',
   paginationColor: '#fff',
   paginationBgColor: '#ddd',
   paginationVisible: false,
   loop: true,
   touchable: true,
-  isPreventDefault: true,
-  isStopPropagation: true,
+  preventDefault: true,
+  stopPropagation: true,
   isCenter: false,
   className: '',
 } as SwiperProps
@@ -79,13 +74,13 @@ export const Swiper = React.forwardRef<
     className,
     pageContent,
     onChange,
-    initPage,
+    defaultValue,
     paginationColor,
     paginationVisible,
     touchable,
-    isPreventDefault,
-    isStopPropagation,
-    autoPlay,
+    preventDefault,
+    stopPropagation,
+    autoplay,
     isCenter,
     paginationBgColor,
     ...rest
@@ -102,6 +97,26 @@ export const Swiper = React.forwardRef<
   })
   const isVertical = direction === 'vertical'
 
+  const testRef = useRef<HTMLDivElement>(null)
+  const bind = useDrag(
+    (state: any) => {
+      console.log(state)
+      if (!state.last) {
+        if (testRef.current) {
+          testRef.current.style.transform = `translate(${state.xy[0]}px, 0)`
+          testRef.current.style.height = `30px`
+        }
+      }
+    },
+    {
+      axis: 'x',
+      transform: ([x, y]) => [-x, -y],
+      pointer: {
+        touch: true,
+      },
+    }
+  )
+
   const [rect, setRect] = useState(null as any | null)
   // eslint-disable-next-line prefer-const
   let [active, setActive] = useState(0)
@@ -112,7 +127,7 @@ export const Swiper = React.forwardRef<
   const [ready, setReady] = useState(false)
 
   let size = isVertical ? height : width
-  const [touch, setTouch] = useState({
+  const [touch] = useState({
     startX: 0,
     startY: 0,
     deltaX: 0,
@@ -156,13 +171,13 @@ export const Swiper = React.forwardRef<
     _swiper.current.autoplayTimer = null
   }
   // 定时轮播
-  const autoplay = () => {
-    if (propSwiper.autoPlay <= 0 || childCount <= 1) return
+  const startPlay = () => {
+    if (propSwiper.autoplay <= 0 || childCount <= 1) return
     stopAutoPlay()
     _swiper.current.autoplayTimer = setTimeout(() => {
       next()
-      autoplay()
-    }, Number(propSwiper.autoPlay))
+      startPlay()
+    }, Number(propSwiper.autoplay))
   }
   // 重置首尾位置信息
   const resettPosition = () => {
@@ -368,8 +383,8 @@ export const Swiper = React.forwardRef<
   }
 
   const onTouchStart = (e: TouchEvent) => {
-    if (props.isPreventDefault) e.preventDefault()
-    if (props.isStopPropagation) e.stopPropagation()
+    if (props.preventDefault) e.preventDefault()
+    if (props.stopPropagation) e.stopPropagation()
     if (!props.touchable) return
     touchStart(e)
     touch.touchTime = Date.now()
@@ -414,14 +429,14 @@ export const Swiper = React.forwardRef<
     } else {
       getStyle()
     }
-    autoplay()
+    startPlay()
   }
 
   useEffect(() => {
     _swiper.current.activePagination = (active + childCount) % childCount
   }, [active])
 
-  const init = (active: number = +propSwiper.initPage) => {
+  const init = (active: number = +propSwiper.defaultValue) => {
     const rect = getRect(container?.current)
     const _active = Math.max(Math.min(childCount - 1, active), 0)
     const _width = propSwiper.width ? +propSwiper.width : rect.width
@@ -448,7 +463,7 @@ export const Swiper = React.forwardRef<
   useEffect(() => {
     if (ready) {
       stopAutoPlay()
-      autoplay()
+      startPlay()
     }
     return () => {
       setReady(false)
@@ -456,12 +471,12 @@ export const Swiper = React.forwardRef<
   }, [ready])
   useEffect(() => {
     stopAutoPlay()
-    autoplay()
+    startPlay()
   }, [children])
 
   useEffect(() => {
     init()
-  }, [propSwiper.initPage])
+  }, [propSwiper.defaultValue])
 
   useEffect(() => {
     const target = container.current
@@ -502,6 +517,9 @@ export const Swiper = React.forwardRef<
   }))
   return (
     <DataContext.Provider value={parent}>
+      <div className="t" {...bind()} ref={testRef}>
+        test
+      </div>
       <div className={`${classes} ${className}`} ref={container} {...rest}>
         <div className={contentClass} ref={innerRef}>
           {React.Children.map(childs, (child: any, index: number) => {

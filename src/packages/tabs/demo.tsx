@@ -175,7 +175,7 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 3" />
         </Tabs>
         <Swiper
-          initPage={0}
+          defaultValue={0}
           loop={false}
           ref={swiperRef}
           onChange={(page) => {

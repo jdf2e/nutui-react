@@ -96,8 +96,8 @@ const SwiperDemo = () => {
           height={height}
           paginationColor={paginationColor}
           paginationBgColor={paginationBgColor}
-          autoPlay="2000"
-          initPage={initPage1}
+          autoplay="2000"
+          defaultValue={initPage1}
           onChange={onChange}
           paginationVisible
         >
@@ -115,8 +115,8 @@ const SwiperDemo = () => {
         <Swiper
           height={height}
           paginationColor={paginationColor}
-          autoPlay="2000"
-          initPage={initPage2}
+          autoplay="2000"
+          defaultValue={initPage2}
           onChange={onChange}
           paginationVisible
         >
@@ -134,8 +134,8 @@ const SwiperDemo = () => {
         <Swiper
           height={height}
           paginationColor={paginationColor}
-          autoPlay="2000"
-          initPage={initPage3}
+          autoplay="2000"
+          defaultValue={initPage3}
           onChange={onChange}
           paginationVisible
         >
@@ -151,7 +151,12 @@ const SwiperDemo = () => {
 
       <h2>{translated.size}</h2>
       <div className="demo-box" style={{ height: 150 }}>
-        <Swiper initPage={initPage4} width="300" height={height} loop={false}>
+        <Swiper
+          defaultValue={initPage4}
+          width="300"
+          height={height}
+          loop={false}
+        >
           {list.map((item) => {
             return (
               <SwiperItem key={item}>
@@ -166,7 +171,7 @@ const SwiperDemo = () => {
         <Swiper
           height={height}
           loop
-          initPage={initPage5}
+          defaultValue={initPage5}
           onChange={(e) => setCurrent(e + 1)}
           pageContent={<div className="page"> {current}/4 </div>}
         >
@@ -185,7 +190,7 @@ const SwiperDemo = () => {
           ref={swiperRef}
           height={height}
           loop
-          initPage={initPage6}
+          defaultValue={initPage6}
           onChange={(e) => setCurrent2(e + 1)}
           pageContent={<div className="page"> {current2}/4 </div>}
         >
@@ -210,9 +215,9 @@ const SwiperDemo = () => {
       <div className="demo-box vertical-center" style={{ height: 150 }}>
         <Swiper
           loop
-          initPage={initPage7}
+          defaultValue={initPage7}
           direction="vertical"
-          autoPlay="3000"
+          autoplay="3000"
           height={height}
           paginationVisible
         >
@@ -229,8 +234,8 @@ const SwiperDemo = () => {
       <div className="demo-box " style={{ height: 150 }}>
         <Swiper
           loop={false}
-          initPage={initPage8}
-          autoPlay="0"
+          defaultValue={initPage8}
+          autoplay="0"
           height={height}
           paginationVisible
           width="280"
@@ -249,9 +254,9 @@ const SwiperDemo = () => {
       <div className="demo-box vertical-center">
         <Swiper
           loop={false}
-          initPage={initPage9}
+          defaultValue={initPage9}
           direction="vertical"
-          autoPlay="0"
+          autoplay="0"
           height="220"
           paginationVisible
           isCenter
