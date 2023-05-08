@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { CircleClose, Heart } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import '@/packages/popup/demo.scss'
-import { Cell, Popup, Input, Button } from '@/packages/nutui.react.taro'
+import { Cell, Popup } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import Taro from '@tarojs/taro'
 
@@ -16,6 +16,9 @@ interface T {
   c3a3a1d2: string
   e51e4582: string
   '7db1a8b2': string
+  '7db1a8b3': string
+  '7db1a8b4': string
+  '7db1a8b5': string
   a52bef0c: string
   d04fcbda: string
   '0aaad620': string
@@ -35,6 +38,9 @@ const PopupDemo = () => {
       c3a3a1d2: '左侧弹出',
       e51e4582: '右侧弹出',
       '7db1a8b2': '关闭图标',
+      '7db1a8b3': '阻塞关闭',
+      '7db1a8b4': '阻塞点击 Overlay 关闭',
+      '7db1a8b5': '阻塞点击 close icon 关闭',
       a52bef0c: '图标位置',
       d04fcbda: '自定义图标',
       '0aaad620': '圆角弹框',
@@ -51,6 +57,9 @@ const PopupDemo = () => {
       c3a3a1d2: '左側彈出',
       e51e4582: '右側彈出',
       '7db1a8b2': '關閉圖標',
+      '7db1a8b3': '阻塞關閉',
+      '7db1a8b4': '阻塞点击 Overlay 关闭',
+      '7db1a8b5': '阻塞点击 close icon 关闭',
       a52bef0c: '圖標位置',
       d04fcbda: '自定義圖標',
       '0aaad620': '圓角彈框',
@@ -67,6 +76,9 @@ const PopupDemo = () => {
       c3a3a1d2: 'pop up left',
       e51e4582: 'pop up right',
       '7db1a8b2': 'close icon',
+      '7db1a8b3': 'stop close',
+      '7db1a8b4': 'when click Overlay,stop close',
+      '7db1a8b5': 'when click close icon, stop close',
       a52bef0c: 'Icon position',
       d04fcbda: 'custom icon',
       '0aaad620': 'Rounded popup',
@@ -87,6 +99,8 @@ const PopupDemo = () => {
   const [showMountNode, setShowMountNode] = useState(false)
   const [showMutiple, setShowMutiple] = useState(false)
   const [showMutipleInner, setShowMutipleInner] = useState(false)
+  const [showOverlayStop, setShowOverlayStop] = useState(false)
+  const [showCloseIconStop, setShowCloseIconStop] = useState(false)
 
   return (
     <>
@@ -118,6 +132,7 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showTop}
+          destroyOnClose
           style={{ height: '20%' }}
           position="top"
           round
@@ -138,14 +153,7 @@ const PopupDemo = () => {
           onClose={() => {
             setShowBottom(false)
           }}
-        >
-          <div>
-            <Input placeholder="测试京麦的哦" type="number" />
-          </div>
-          <div>
-            <Button>chuxian</Button>
-          </div>
-        </Popup>
+        />
         <Cell
           title={translated.c3a3a1d2}
           onClick={() => {
@@ -225,6 +233,47 @@ const PopupDemo = () => {
           }}
         />
 
+        <h2>{translated[`7db1a8b3`]}</h2>
+        <Cell
+          title={translated[`7db1a8b4`]}
+          onClick={() => {
+            setShowOverlayStop(true)
+          }}
+        />
+        <Popup
+          visible={showOverlayStop}
+          style={{ padding: '30px 50px' }}
+          onClose={() => {
+            setShowOverlayStop(false)
+          }}
+          onClickOverlay={() => {
+            console.log('onClickOverlay')
+            return false
+          }}
+        >
+          {translated.b840c88f}
+        </Popup>
+        <Cell
+          title={translated[`7db1a8b5`]}
+          onClick={() => {
+            setShowCloseIconStop(true)
+          }}
+        />
+        <Popup
+          closeable
+          closeIcon={<CircleClose width="12px" height="12px" />}
+          visible={showCloseIconStop}
+          closeOnOverlayClick={false}
+          style={{ height: '20%' }}
+          position="bottom"
+          onClose={() => {
+            setShowIcon(false)
+          }}
+          onClickCloseIcon={() => {
+            console.log('onClickCloseIcon')
+          }}
+        />
+
         <h2>{translated['0aaad620']}</h2>
         <Cell
           title={translated['0aaad620']}
@@ -254,7 +303,7 @@ const PopupDemo = () => {
         <Popup
           visible={showMountNode}
           style={{ padding: '30px 50px' }}
-          teleport={document.body}
+          portal={document.body}
           onClose={() => {
             setShowMountNode(false)
           }}

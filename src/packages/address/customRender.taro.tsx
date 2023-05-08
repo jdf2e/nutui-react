@@ -3,7 +3,7 @@ import { createSelectorQuery } from '@tarojs/taro'
 import { Check } from '@nutui/icons-react-taro'
 import bem from '@/utils/bem'
 import Elevator from '@/packages/elevator/index.taro'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/index.taro'
 import { SelectedRegionObj, RegionData, NextListObj } from './type'
 
 interface CustomRegionData {

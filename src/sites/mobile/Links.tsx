@@ -18,7 +18,7 @@ const Links = () => {
             {nav.packages.map((com) =>
               com.show ? (
                 <li key={com.name}>
-                  <Link key={com.name} to={`${com.name}`}>
+                  <Link key={com.name} to={`${lang}/component/${com.name}`}>
                     {com.name}&nbsp;&nbsp;{com.cName}
                   </Link>
                   <Right color="#979797" name="right"></Right>

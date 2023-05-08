@@ -177,7 +177,7 @@ export const NumberKeyboard: FunctionComponent<
       <Popup
         visible={show}
         position="bottom"
-        popClass={popClass}
+        className={popClass}
         onClickOverlay={onClose}
         overlay={overlay}
         onClickCloseIcon={onClose}

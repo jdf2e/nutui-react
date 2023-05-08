@@ -1,18 +1,20 @@
 #  Pagination 分页
 
-### 介绍
+## 介绍
     
 当数据量较多时，采用分页的形式分隔长列表。
     
-### 安装
+## 安装
 ``` javascript
 // react
 import { Pagination } from '@nutui/nutui-react';
 ```    
 
+## 代码演示
+
 ### 基础用法
-通过modelValue来绑定当前页码时，组件为受控状态，分页显示取决于传入的modelValue，一般搭配onChange使用。
-不需要受控时，可通过defaultCurrentPage指定当前页码
+通过 value 来绑定当前页码时，组件为受控状态，分页显示取决于传入的 value ，一般搭配 onChange 使用。
+不需要受控时，可通过 defaultValue 指定当前页码
 :::demo
 ``` tsx
 import React, { useState } from 'react'
@@ -20,15 +22,15 @@ import { Pagination } from '@nutui/nutui-react';
 
 const App = () => {
   const [currentPage1, setCurrentPage1] = useState(1)
-  const pageChange1 = (v: any) => {
+  const pageChange1 = (v: number) => {
     const c = v
     setCurrentPage1(c)
   }
   return (
     <Pagination
-      modelValue={currentPage1}
-      totalItems="25"
-      itemsPerPage="5"
+      value={currentPage1}
+      total={25}
+      pageSize={5}
       onChange={pageChange1}
     />
   )
@@ -45,14 +47,15 @@ import { Pagination } from '@nutui/nutui-react';
 
 const App = () => {
   const [currentPage2, setCurrentPage2] = useState(1)
-  const pageChange2 = (v: any) => {
+  const pageChange2 = (v: number) => {
     const c = v
     setCurrentPage2(c)
   }
   return (
     <Pagination
-      modelValue={currentPage2} 
-      pageCount={12} 
+      value={currentPage2}
+      total={12}
+      pageSize={1}
       mode="simple" 
       onChange={pageChange2} 
     />
@@ -71,16 +74,16 @@ import { Pagination } from '@nutui/nutui-react';
 
 const App = () => {
   const [currentPage3, setCurrentPage3] = useState(1)
-  const pageChange3 = (v: any) => {
+  const pageChange3 = (v: number) => {
     const c = v
     setCurrentPage3(c)
   }
   return (
     <Pagination
-      modelValue={currentPage3}
-      totalItems="125"
-      showPageSize="3"
-      forceEllipses
+      value={currentPage3}
+      total={125}
+      itemSize={2}
+      ellipse
       onChange={pageChange3}
     />
   )
@@ -89,7 +92,7 @@ export default App;
 ```
 :::
 ### 自定义按钮
-通过pageNodeRender传入自定义方法，入参数为page:{ number:页数, text:"文本", active:"选中状态" } 
+通过itemRender传入自定义方法，入参数为page:{ number:页数, text:"文本", active:"选中状态" } 
 :::demo
 ``` tsx
 import React, { useState } from 'react'
@@ -98,22 +101,46 @@ import { Left, Right } from '@nutui/icons-react';
 
 const App = () => {
   const [currentPage4, setCurrentPage4] = useState(1)
-  const pageChange4 = (v: any) => {
+  const pageChange4 = (v: number) => {
     const c = v
     setCurrentPage4(c)
   }
-  const pageNodeRender = (page: any) => {
+  const itemRender = (page: any) => {
     return <div>{page.number === 3 ? 'hot' : page.text}</div>
   }
   return (
     <Pagination
-      modelValue={currentPage4}
-      totalItems="500"
-      showPageSize="5"
+      value={currentPage4}
+      total={500}
+      itemSize={5}
       onChange={pageChange4}
-      pageNodeRender={pageNodeRender} 
-      prevText={<Left />}
-          nextText={<Right />}
+      itemRender={itemRender} 
+      prev={<Left />}
+      next={<Right />}
+    />
+  )
+}
+export default App;
+```
+:::
+
+### 非受控方式
+:::demo
+``` tsx
+import React, { useState } from 'react'
+import { Pagination } from '@nutui/nutui-react'; 
+
+const App = () => {
+  const pageChange5 = (v: number) => {
+    console.log(v)
+  }
+  return (
+    <Pagination
+      defaultValue={15}
+      total={500}
+      pageSize={10}
+      itemSize={3}
+      onChange={pageChange5}
     />
   )
 }
@@ -121,30 +148,23 @@ export default App;
 ```
 :::
     
-## API
+## Pagination
     
 ### Props
     
 | 参数           | 说明                             | 类型                      | 默认值            |
 | -------------- | -------------------------------- | ------------------------- | ----------------- |
-| modelValue     | 当前页码                         | number                    | -                 |
-| defaultValue   | 当前页码                         | number                    | `1`                 |
+| value     | 当前页码，受控值，与 onChange 搭配使用                         | number                    | -                 |
+| defaultValue   | 默认页码，非受控                         | number                    | `1`                 |
 | mode           | 显示模式,可选值为：multi，simple | string                    | `multi`             |
-| prevText       | 自定义上一页按钮内容             | string \| ReactNode | `上一页`            |
-| nextText       | 自定义下一页按钮内容             | string \| ReactNode | `下一页`            |
-| pageCount      | 总页数                           | string \| number          | 传入/根据页数计算 |
-| totalItems     | 总记录数                         | string \| number          | `0`                 |
-| itemsPerPage   | 每页记录数                       | string \| number          | `10`                |
-| showPageSize   | 显示的页码个数                   | string \| number          | `5`                 |
-| forceEllipses  | 是否显示省略号                   | boolean                   | `false`             |
-| pageNodeRender | 用于自定义页码的结构             | (page) => ReactNode | -                 |
-    
-### Events
-    
-| 事件名   | 说明           | 回调参数 |
-| -------- | -------------- | -------- |
-| onChange | 页码改变时触发 | `value`    |
-
+| prev       | 自定义上一页按钮内容             | ReactNode | `上一页`            |
+| next       | 自定义下一页按钮内容             | ReactNode | `下一页`            |
+| total     | 总记录数                         | number          | `50`                 |
+| pageSize   | 每页记录数                       | number          | `10`                |
+| itemSize   | 显示的页码个数                   | number          | `5`                 |
+| ellipse  | 是否显示省略号                   | boolean                   | `false`             |
+| itemRender | 用于自定义页码的结构             | (page: {number, text}) => ReactNode | -                 |
+| onChange | 页码改变时触发 | (value) => void    | - |
 
 ## 主题定制
 

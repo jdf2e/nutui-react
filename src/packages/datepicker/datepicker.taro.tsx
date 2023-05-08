@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
 import Picker from '@/packages/picker/index.taro'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/index.taro'
 import { View } from '@tarojs/components'
 
 export interface PickerOption {

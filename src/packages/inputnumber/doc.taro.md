@@ -1,14 +1,16 @@
 # InputNumber 数字输入框
 
-### 介绍
+## 介绍
 
 通过点击按钮控制数字增减。
 
-### 安装
+## 安装
 
 ``` ts
 import { InputNumber } from '@nutui/nutui-react-taro';
 ```
+
+## 代码演示
 ### 基础用法
 
 初始化一个默认值
@@ -41,7 +43,7 @@ import { InputNumber } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <>
-      <InputNumber defaultValue={0} step="5" />
+      <InputNumber defaultValue={0} min={0} step="5" />
     </>
   )
 }
@@ -246,29 +248,29 @@ export default App;
 ```
 :::
 
-## API
+## InputNumber
 
 ### Props
 
 | 参数           | 说明                       | 类型           | 默认值     |
 |----------------|----------------------------|----------------|------------|
-| allowEmpty        | 是否允许内容为空                     | boolean |   false          |
-| defaultValue        | 默认值                     | string \| number |  0         |
-| value        | 当前值，受控值                   | string \| number | -          |
-| min            | 最小值限制                 | String、Number | `1`        |
-| max            | 最大值限制                 | String、Number | `9999` |
-| step           | 步长                       | String、Number | `1`        |
-| digits | 设置保留的小数位           | String、Number | `0`        |
-| disabled       | 禁用所有功能               | Boolean        | false      |
-| readonly       | 只读状态禁用输入框操作行为 | Boolean        | false      |
-| async       | 支持异步修改 | Boolean        | false      |
-| formatter       | 指定输入框展示值的格式 | function(value: number \| string): string        | -     |
-| onPlus       | 点击增加按钮时触发     | (e: MouseEvent) => void                   | - |
-| onMinus    | 点击减少按钮时触发     | (e: MouseEvent) => void                   | - |
-| onOverlimit  | 点击不可用的按钮时触发 | (e: MouseEvent) => void                   | - |
-| onChange      | 值改变时触发           | (param: string \| number, e: MouseEvent \| ChangeEvent<HTMLInputElement>) => void | - |
-| onFocus      | 输入框获得焦点时触发   | (e: FocusEvent<HTMLInputElement>) => void                   | - |
-| onBlur      | 输入框失去焦点时触发   | (e: ChangeEvent<HTMLInputElement>) => void                   | - |
+| allowEmpty        | 是否允许内容为空                     | `boolean` |   `false`          |
+| defaultValue        | 默认值                     | `string \| number` |  `0`         |
+| value        | 当前值，受控值                   | `string \| number` | `-`          |
+| min            | 最小值限制                 | `string \| number` | `1`        |
+| max            | 最大值限制                 | `string \| number` | `9999` |
+| step           | 步长                       | `string \| number` | `1`        |
+| digits | 设置保留的小数位           | `string \| number` | `0`        |
+| disabled       | 禁用所有功能               | `boolean`        | `false`      |
+| readonly       | 只读状态禁用输入框操作行为 | `boolean`        | `false`      |
+| async       | 支持异步修改 | `boolean`        | `false`      |
+| formatter       | 指定输入框展示值的格式 | `function(value: number \| string): string`        | `-`     |
+| onPlus       | 点击增加按钮时触发     |  `(e: MouseEvent) => void`                   | `-` |
+| onMinus    | 点击减少按钮时触发     | `(e: MouseEvent) => void`                   | `-` |
+| onOverlimit  | 点击不可用的按钮时触发 | `(e: MouseEvent) => void`                   | `-` |
+| onChange      | 值改变时触发           | `(param: string \| number, e: MouseEvent \| ChangeEvent<HTMLInputElement>) => void` | - |
+| onFocus      | 输入框获得焦点时触发   | `(e: FocusEvent<HTMLInputElement>) => void`                   | `-` |
+| onBlur      | 输入框失去焦点时触发   | `(e: ChangeEvent<HTMLInputElement>) => void`                   | `-` |
 
 
 ## 主题定制

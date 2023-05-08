@@ -24,7 +24,7 @@ test('should match max size', () => {
 
 test('should match dot', () => {
   const { container } = render(<Badge value={10} dot />)
-  const badgeContent = container.querySelectorAll('.nut-badge__content.is-dot')
+  const badgeContent = container.querySelectorAll('.nut-badge__dot')
   expect(badgeContent.length).toBe(1)
 })
 
@@ -52,21 +52,7 @@ test('should match custom color', () => {
   expect(badgeContent).toHaveStyle({ 'background-color': 'orange' })
 })
 
-// test('should match custom gradient color', () => {
-//   const { container } = render(
-//     <Badge
-//       value={200}
-//       color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-//     />
-//   )
-//   const badgeContent = container.querySelectorAll('.nut-badge__content')[0]
-//   expect(badgeContent).toHaveStyle({
-//     'background-color':
-//       'linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)',
-//   })
-// })
-
 test('should match custom icon', () => {
-  const { asFragment } = render(<Badge value={200} icon={<Checklist />} />)
+  const { asFragment } = render(<Badge value={<Checklist />} />)
   expect(asFragment()).toMatchSnapshot()
 })

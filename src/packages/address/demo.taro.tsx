@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react'
+import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
 import { Address, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
