@@ -12,17 +12,17 @@ test('Show Chinese', async () => {
       visible
       isShowChinese
       threeDimensional={false}
-      onConfirmDatePicker={confirm}
+      onConfirmDatePicker={(options) => confirm(options)}
     />
   )
 
   const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
   fireEvent.click(confirmBtn)
-  await waitFor(() =>
+  await waitFor(() => {
     expect(
-      confirm.mock.calls[0][1].map((option: any) => option.text).join('')
+      confirm.mock.calls[0][0].map((option: any) => option.text).join('')
     ).toEqual(`${currentYear - 10}年01月01日`)
-  )
+  })
 })
 
 test('Min date & Max date', async () => {
@@ -39,7 +39,7 @@ test('Min date & Max date', async () => {
   )
 
   const columns = container.querySelectorAll('.nut-picker-list')[0]
-  const lists = columns.querySelectorAll('.nut-picker-roller-item-tile')
+  const lists = columns.querySelectorAll('.nut-picker-roller-item-title')
   const years = ['2020', '2021', '2022']
   expect(lists.length).toBe(3)
   lists.forEach((list, i) => {
@@ -56,7 +56,7 @@ test('should pick defaultValue', async () => {
       modelValue={new Date(2021, 2, 1)}
       minDate={new Date(2020, 0, 1)}
       maxDate={new Date(2022, 0, 1)}
-      onConfirmDatePicker={confirm}
+      onConfirmDatePicker={(options, values) => confirm(options)}
     />
   )
 
@@ -64,7 +64,7 @@ test('should pick defaultValue', async () => {
   fireEvent.click(confirmBtn)
   await waitFor(() =>
     expect(
-      confirm.mock.calls[0][1].map((option: any) => option.text).join('')
+      confirm.mock.calls[0][0].map((option: any) => option.text).join('')
     ).toEqual('20210301')
   )
 })

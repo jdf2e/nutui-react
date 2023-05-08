@@ -99,7 +99,7 @@ test('simple list-data confirm  event', async () => {
     <Picker
       visible
       options={simpleColumns}
-      onConfirm={(value) => confirm(value)}
+      onConfirm={(options, value) => confirm(value)}
     />
   )
   const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
@@ -124,7 +124,7 @@ test('simple list-data default checked item', async () => {
       visible
       options={simpleColumns}
       defaultValue={['WuXi']}
-      onConfirm={(value) => confirm(value)}
+      onConfirm={(options, value) => confirm(value)}
     />
   )
   const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
@@ -138,7 +138,7 @@ test('multiple list-data render', async () => {
     <Picker
       visible
       options={multipleColumns}
-      onConfirm={(value) => confirm(value)}
+      onConfirm={(options, value) => confirm(value)}
     />
   )
   const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
@@ -154,7 +154,7 @@ test('multistageColumns list-data render', async () => {
     <Picker
       visible
       options={multistageColumns}
-      onConfirm={(value) => confirm(value)}
+      onConfirm={(options, value) => confirm(value)}
     />
   )
   const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
@@ -177,7 +177,7 @@ test('async list-data render', async () => {
       <Picker
         visible
         options={asyncColumns}
-        onConfirm={(value) => confirm(value)}
+        onConfirm={(options, value) => confirm(value)}
       />
     )
   }

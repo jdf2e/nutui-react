@@ -264,7 +264,7 @@ const PickerDemo = () => {
     options: PickerOption[],
     values: (string | number)[]
   ) => {
-    console.log('demo 确定', values, options)
+    console.log('demo 确定', options, values)
     let description = ''
     options.forEach((option: any) => {
       description += ` ${option.text}`

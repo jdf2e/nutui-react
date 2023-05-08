@@ -139,11 +139,27 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       }
     }
     const init = () => {
-      setColumnsList(normalListData() as PickerOption[][])
+      const normalData: PickerOption[][] = normalListData() as PickerOption[][]
+      setColumnsList(normalData)
+      // 初始化默认选中数据
+      const data: (string | number)[] = []
+      normalData.length > 0 &&
+        normalData.map((item) => {
+          item[0] && data.push(item[0].value)
+          return item
+        })
+
+      if (!defaultValue.length && selectedValue.length === 0) {
+        setSelectedValue([...data])
+      }
     }
+
     useEffect(() => {
+      if (!visible) {
+        return
+      }
       init()
-    }, [options])
+    }, [options, visible])
 
     const setSelectedOptions = () => {
       const options: PickerOption[] = []
@@ -163,12 +179,15 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
 
     // 选中值进行修改
     useEffect(() => {
+      if (!visible) {
+        return
+      }
       onChange && onChange(setSelectedOptions(), selectedValue, columnIndex)
       if (isConfirmEvent.current) {
         isConfirmEvent.current = false
         onConfirm && onConfirm(setSelectedOptions(), selectedValue)
       }
-    }, [selectedValue])
+    }, [selectedValue, columnsList, visible])
 
     // 更新已选择数据
     const chooseItem = (columnOptions: PickerOption, columnIndex: number) => {
