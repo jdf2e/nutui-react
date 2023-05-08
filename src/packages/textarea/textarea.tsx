@@ -23,6 +23,7 @@ const defaultProps = {
   defaultValue: '',
   showCount: false,
   rows: 2,
+  maxLength: 140,
   placeholder: '',
   readOnly: false,
   disabled: false,
@@ -129,7 +130,7 @@ export const TextArea: FunctionComponent<
           compositionRef.current = true
         }}
         rows={rows}
-        maxLength={maxLength < 0 ? 0 : maxLength}
+        maxLength={maxLength === -1 ? undefined : maxLength}
         placeholder={placeholder || locale.placeholder}
       />
       {showCount && (

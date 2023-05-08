@@ -143,8 +143,8 @@ export default App
 | value        | 输入框内容，受控 | `string` | - |
 | defaultValue | 初始默认值，非受控                          | `string`         | -              |
 | placeholder  | 设置占位提示文字                                  | `string`         | `请输入内容` |
-| maxLength    | 限制最长输入字符                                  | `number` | `140`              |
-| rows         | textarea 的高度                                   | `number` | `2`            |
+| maxLength    | 限制最长输入字符，-1 表示无限制                                  | `number` | `140`              |
+| rows         | textarea 的行数                                   | `number` | `2`            |
 | showCount    | textarea 是否展示输入字符。须配合`maxLength`使用 | `boolean`        | `false`        |
 | autoSize     | 高度是否可拉伸                                    | `boolean`        | `false`        |
 | readOnly     | 只读属性                                          | `boolean`        | `false`        |
@@ -159,13 +159,13 @@ export default App
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-textarea-font | `$font-size-2` |
-| --nutui-textarea-height | `100px` |
-| --nutui-textarea-padding | `16px 10px 16px 16px `|
-| --nutui-textarea-limit-color | `$text-color` |
-| --nutui-textarea-text-color | `$title-color` |
-| --nutui-textarea-text-curror-color  | `$title-color`|
-| --nutui-textarea-text-line-height  | `30px` |
-| --nutui-textarea-disabled-color | `$disable-color` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-textarea-font | 字体大小 | `$font-size-2` |
+| --nutui-textarea-height | 高度 | `100px` |
+| --nutui-textarea-padding | 内边距 | `16px 10px 16px 16px `|
+| --nutui-textarea-limit-color | 字数统计颜色 | `$text-color` |
+| --nutui-textarea-text-color | 文本颜色 | `$title-color` |
+| --nutui-textarea-text-curror-color  | 光标颜色 | `$title-color`|
+| --nutui-textarea-text-line-height  | 行高 | `30px` |
+| --nutui-textarea-disabled-color | 禁用颜色 | `$disable-color` |

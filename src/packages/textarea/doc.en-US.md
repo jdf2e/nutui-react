@@ -143,7 +143,7 @@ export default App
 | value        | input value, controlled | `string` | - |
 | defaultValue | input default value, uncontrolled              | `string`         | -              |
 | placeholder  | set placeholder prompt text             | `string`         | `please enter content ` |
-| maxLength    | limit the maximum input characters              | `number` | `140`              |
+| maxLength    | limit the maximum input characters, no limit with `-1`             | `number` | `140`              |
 | rows         | height of textarea, with priority higher than autoSize attribute | `number` | `2`            |
 | showCount    | whether textarea displays the input characters. Use | `boolean`        | `false`        |
 | autoSize     | whether to adapt the content height.          | `boolean`        | `false`    |`left`         |
@@ -159,13 +159,13 @@ export default App
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
+| Name | Description | Default |
 | --- | --- |
-| --nutui-textarea-font | `$font-size-2` |
-| --nutui-textarea-height | `100px` |
-| --nutui-textarea-padding | `16px 10px 16px 16px `|
-| --nutui-textarea-limit-color | `$text-color` |
-| --nutui-textarea-text-color | `$title-color` |
-| --nutui-textarea-text-curror-color  | `$title-color`|
-| --nutui-textarea-text-line-height  | `30px` |
-| --nutui-textarea-disabled-color | `$disable-color` |
+| --nutui-textarea-font | fontSize | `$font-size-2` |
+| --nutui-textarea-height | height | `100px` |
+| --nutui-textarea-padding | padding | `16px 10px 16px 16px `|
+| --nutui-textarea-limit-color | limit color | `$text-color` |
+| --nutui-textarea-text-color | text color | `$title-color` |
+| --nutui-textarea-text-curror-color  | caret color | `$title-color`|
+| --nutui-textarea-text-line-height  | lineHeight | `30px` |
+| --nutui-textarea-disabled-color | disabled color | `$disable-color` |

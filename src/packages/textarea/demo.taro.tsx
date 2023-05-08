@@ -57,21 +57,9 @@ const TextAreaDemo = () => {
     },
   })
 
-  const [value1, updateValue1] = useState('')
-  const [value2] = useState('')
-  const [value3] = useState('')
-
   const customTheme = {
     nutuiTextareaTextCurrorColor: `var(--nutui-brand-color)`,
     nutuiTextareaLimitColor: `var(--nutui-brand-color)`,
-  }
-
-  useEffect(() => {
-    updateValue1(translated.basic)
-  }, [translated])
-
-  const change = (value: any, event: Event) => {
-    updateValue1(value)
   }
 
   return (
@@ -80,12 +68,11 @@ const TextAreaDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <TextArea
-          defaultValue={value1}
+          defaultValue={translated.basic}
+          maxLength={200}
+          showCount
           className="text-1"
           style={{ fontSize: '12px' }}
-          onChange={(value, event) => {
-            change(value, event)
-          }}
           onBlur={() => {
             console.log('blur')
           }}
@@ -94,12 +81,12 @@ const TextAreaDemo = () => {
           }}
         />
         <h2>{translated.numbers}</h2>
-        <TextArea defaultValue={value2} showCount maxLength={20} />
+        <TextArea showCount maxLength={20} />
         <h2>{translated.autoHeight}</h2>
-        <TextArea defaultValue={value3} rows={1} autoSize />
+        <TextArea rows={1} autoSize />
         <h2>{translated.we2312222}</h2>
         <ConfigProvider theme={customTheme}>
-          <TextArea defaultValue={value3} showCount maxLength={20} />
+          <TextArea showCount maxLength={20} />
         </ConfigProvider>
         <h2>{translated.readOnly}</h2>
         <TextArea
