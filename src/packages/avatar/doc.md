@@ -269,7 +269,7 @@ export default App;
 | maxBgColor  | 设置 Icon、字符类型头像的背景色 | `string` | `#eee`   |
 | maxColor    | 设置 Icon、字符类型头像的颜色                   | `string` | `#666`   |
 | gap         | 设置头像之间的间距               | `string` | `-8`     |
-| level       | 头像之间的层级关系，可选值为：left、right  | `'left' \ | 'right'` | `'left'`     |
+| level       | 头像之间的层级关系，可选值为：left、right  | `'left' \| 'right'` | `'left'`     |
 
 ## 主题定制
 

@@ -248,7 +248,7 @@ export default App;
 | maxBgColor  | The colors of Icon and letter types | `string` | `#eee`   |
 | maxColor    | The background colors of Icon and letter types                   | `string` | `#666`   |
 | gap         | Distance between avatars               | `string` | `-8`     |
-| level       | Hierarchy direction between avatar group，eg：`left`、`right`  | `'left' \ | 'right'` | `'left'`     |
+| level       | Hierarchy direction between avatar group，eg：`left`、`right`  | `'left' \| 'right'` | `'left'`     |
 
 
 ## Theming

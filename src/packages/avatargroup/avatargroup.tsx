@@ -1,8 +1,10 @@
 import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
-import { AvatarContext } from './AvatarContext'
+import { AvatarContext } from './avatarcontext'
 
-export interface AvatarGroupProps {
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface AvatarGroupProps extends BasicComponent {
   maxContent: string
   max: string | number
   maxBgColor: string
@@ -11,10 +13,9 @@ export interface AvatarGroupProps {
   shape: 'round' | 'square'
   gap: string
   level: 'left' | 'right'
-  className: string
-  style: React.CSSProperties
 }
 const defaultProps = {
+  ...ComponentDefaults,
   maxContent: '',
   max: '',
   maxBgColor: '#eee',
