@@ -59,7 +59,7 @@
       "enName": "base",
       "packages": [
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Button",
           "type": "component",
           "cName": "按钮",
@@ -70,7 +70,7 @@
           "author": ""
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Cell",
           "type": "component",
           "cName": "单元格",
@@ -81,7 +81,7 @@
           "author": "songsong"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "CellGroup",
           "type": "component",
           "cName": "单元格",
@@ -93,7 +93,7 @@
           "author": "songsong"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "ConfigProvider",
           "type": "component",
           "cName": "全局配置",
@@ -105,7 +105,7 @@
           "author": "hanyuxinting"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Icon",
           "type": "component",
           "cName": "图标",
@@ -117,7 +117,7 @@
           "author": "oasis-cloud"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Image",
           "type": "component",
           "tarodoc": true,
@@ -129,7 +129,7 @@
           "author": "vickyYE"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Overlay",
           "type": "component",
           "cName": "遮罩层",
@@ -138,17 +138,6 @@
           "show": true,
           "taro": true,
           "author": "junjun"
-        },
-        {
-          "version": "0.1.0",
-          "name": "Popup",
-          "sort": 9,
-          "cName": "弹出层",
-          "type": "component",
-          "show": true,
-          "taro": true,
-          "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
-          "author": "szg2008"
         }
       ]
     },
@@ -157,7 +146,7 @@
       "enName": "layout",
       "packages": [
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Col",
           "type": "component",
           "cName": "列",
@@ -168,7 +157,7 @@
           "author": "yushuang24"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Divider",
           "type": "component",
           "cName": "分割线",
@@ -179,7 +168,7 @@
           "author": "vickyYE"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Grid",
           "type": "component",
           "cName": "宫格",
@@ -190,7 +179,7 @@
           "author": "yangxiaolu"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "GridItem",
           "type": "component",
           "cName": "宫格子组件",
@@ -202,7 +191,7 @@
           "author": "yangxiaolu"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Layout",
           "type": "component",
           "cName": "布局",
@@ -213,7 +202,7 @@
           "author": "yushuang24"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Row",
           "type": "component",
           "cName": "行",
@@ -224,7 +213,7 @@
           "author": "yushuang24"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Sticky",
           "type": "component",
           "cName": "粘性布局",
@@ -241,7 +230,19 @@
       "enName": "nav",
       "packages": [
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
+          "name": "BackTop",
+          "type": "component",
+          "cName": "返回顶部",
+          "desc": "提供较长的页面快捷返回顶部功能。",
+          "sort": 2,
+          "tarodoc": true,
+          "show": true,
+          "taro": true,
+          "author": "vickyYe"
+        },
+        {
+          "version": "2.0.0",
           "name": "Elevator",
           "type": "component",
           "cName": "电梯楼层",
@@ -252,7 +253,7 @@
           "author": "songsong"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "FixedNav",
           "type": "component",
           "cName": "悬浮导航",
@@ -263,41 +264,7 @@
           "author": "Ymm0008"
         },
         {
-          "version": "1.0.0",
-          "name": "Indicator",
-          "type": "component",
-          "cName": "指示器",
-          "desc": "显示一个任务或流程的进度，常用于开通流程。",
-          "sort": 16,
-          "show": true,
-          "taro": true,
-          "author": "liukun"
-        },
-        {
-          "version": "1.0.0",
-          "name": "Menu",
-          "type": "component",
-          "cName": "菜单",
-          "desc": "向下弹出的菜单列表",
-          "sort": 13,
-          "show": true,
-          "taro": true,
-          "author": "oasis-cloud"
-        },
-        {
-          "version": "1.0.0",
-          "name": "MenuItem",
-          "type": "component",
-          "cName": "菜单子项",
-          "desc": "菜单子项",
-          "sort": 14,
-          "exportEmpty": true,
-          "show": false,
-          "taro": true,
-          "author": "oasis-cloud"
-        },
-        {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "NavBar",
           "type": "component",
           "cName": "头部导航",
@@ -306,17 +273,6 @@
           "show": true,
           "taro": true,
           "author": "dsj"
-        },
-        {
-          "version": "0.1.0",
-          "name": "Pagination",
-          "type": "component",
-          "cName": "分页",
-          "desc": "当数据量较多时，采用分页的形式分隔长列表。",
-          "sort": 6,
-          "show": true,
-          "taro": true,
-          "author": "lkjh3214"
         },
         {
           "version": "1.0.0",
@@ -352,7 +308,7 @@
           "author": "hx"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Tabbar",
           "type": "component",
           "cName": "标签栏",
@@ -386,7 +342,7 @@
           "author": "张晶发"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Tabs",
           "type": "component",
           "cName": "选项卡切换",
@@ -394,7 +350,7 @@
           "sort": 12,
           "show": true,
           "taro": true,
-          "author": "张晶发"
+          "author": "oasis"
         }
       ]
     },
@@ -403,6 +359,18 @@
       "enName": "dentry",
       "packages": [
         {
+          "version": "0.1.0",
+          "name": "Address",
+          "type": "component",
+          "cName": "地址",
+          "desc": "地址组件",
+          "sort": 3,
+          "show": true,
+          "taro": true,
+          "author": "yangxiaolu"
+        },
+        {
+          "version": "0.1.0",
           "name": "Calendar",
           "type": "component",
           "cName": "日历",
@@ -489,7 +457,7 @@
           "author": "hanyuxinting"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Input",
           "type": "component",
           "cName": "输入框",
@@ -500,7 +468,7 @@
           "author": "VickyYe"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "InputNumber",
           "type": "component",
           "cName": "数字输入框",
@@ -509,6 +477,29 @@
           "show": true,
           "taro": true,
           "author": "swag~jun"
+        },
+        {
+          "version": "2.0.0",
+          "name": "Menu",
+          "type": "component",
+          "cName": "菜单",
+          "desc": "向下弹出的菜单列表",
+          "sort": 13,
+          "show": true,
+          "taro": true,
+          "author": "oasis-cloud"
+        },
+        {
+          "version": "2.0.0",
+          "name": "MenuItem",
+          "type": "component",
+          "cName": "菜单子项",
+          "desc": "菜单子项",
+          "sort": 14,
+          "exportEmpty": true,
+          "show": false,
+          "taro": true,
+          "author": "oasis-cloud"
         },
         {
           "version": "1.0.0",
@@ -566,7 +557,7 @@
           "author": "vickyYe"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Rate",
           "type": "component",
           "cName": "评分",
@@ -600,6 +591,28 @@
         },
         {
           "version": "0.1.0",
+          "name": "Signature",
+          "type": "component",
+          "cName": "签名",
+          "desc": "基于Canvas的签名组件",
+          "sort": 1,
+          "show": true,
+          "taro": true,
+          "author": "songsong"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Switch",
+          "type": "component",
+          "cName": "开关",
+          "desc": "用来打开或关闭选项。",
+          "sort": 11,
+          "show": true,
+          "taro": true,
+          "author": "dsj"
+        },
+        {
+          "version": "0.1.0",
           "name": "TextArea",
           "type": "component",
           "cName": "文本域",
@@ -610,7 +623,7 @@
           "author": "VickyYe"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Uploader",
           "type": "component",
           "tarodoc": true,
@@ -639,16 +652,15 @@
           "author": "dsj"
         },
         {
-          "version": "0.1.0",
-          "name": "BackTop",
+          "version": "2.0.0",
+          "name": "Badge",
           "type": "component",
-          "cName": "返回顶部",
-          "desc": "提供较长的页面快捷返回顶部功能。",
-          "sort": 2,
-          "tarodoc": true,
+          "cName": "徽标",
+          "desc": "在图标或文字右上角的红色圆点、数字或者文字，表示有新内容或者待处理的信息。",
+          "sort": 4,
           "show": true,
           "taro": true,
-          "author": "vickyYe"
+          "author": "lzz"
         },
         {
           "version": "0.1.0",
@@ -662,7 +674,7 @@
           "author": "yangjinjun3"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Drag",
           "type": "component",
           "cName": "拖拽",
@@ -671,6 +683,17 @@
           "show": true,
           "taro": true,
           "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "Empty",
+          "type": "component",
+          "cName": "空状态",
+          "desc": "空状态时的占位提示",
+          "sort": 16,
+          "show": true,
+          "taro": true,
+          "author": "liukun"
         },
         {
           "version": "0.1.0",
@@ -686,6 +709,17 @@
         },
         {
           "version": "0.1.0",
+          "name": "NoticeBar",
+          "type": "component",
+          "cName": "公告栏",
+          "desc": "用于循环播放展示一组消息通知。",
+          "sort": 11,
+          "show": true,
+          "taro": true,
+          "author": "vickyYe"
+        },
+        {
+          "version": "0.1.0",
           "name": "Notify",
           "type": "component",
           "tarodoc": true,
@@ -695,6 +729,17 @@
           "show": true,
           "taro": true,
           "author": "vickyYE"
+        },
+        {
+          "version": "0.1.0",
+          "name": "Popover",
+          "type": "component",
+          "cName": "气泡弹出框",
+          "desc": "气泡弹出框",
+          "sort": 19,
+          "show": true,
+          "taro": true,
+          "author": "lzz"
         },
         {
           "version": "1.0.0",
@@ -708,6 +753,16 @@
           "author": "oasis"
         },
         {
+          "name": "Skeleton",
+          "type": "component",
+          "cName": "骨架屏",
+          "desc": "在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果。",
+          "sort": 15,
+          "show": true,
+          "taro": true,
+          "author": "swag~jun"
+        },
+        {
           "version": "1.0.0",
           "name": "Swipe",
           "type": "component",
@@ -719,15 +774,15 @@
           "author": "Ymm0008"
         },
         {
-          "version": "0.1.0",
-          "name": "Switch",
+          "version": "2.0.0",
+          "name": "Popup",
+          "sort": 9,
+          "cName": "弹出层",
           "type": "component",
-          "cName": "开关",
-          "desc": "用来打开或关闭选项。",
-          "sort": 11,
           "show": true,
           "taro": true,
-          "author": "dsj"
+          "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
+          "author": "szg2008"
         },
         {
           "version": "0.1.0",
@@ -748,7 +803,7 @@
       "enName": "exhibition",
       "packages": [
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Animate",
           "type": "component",
           "cName": "动画/动效",
@@ -770,7 +825,7 @@
           "author": "songsong"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Audio",
           "type": "component",
           "cName": "音频播放器",
@@ -803,18 +858,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "0.1.0",
-          "name": "Badge",
-          "type": "component",
-          "cName": "徽标",
-          "desc": "在图标或文字右上角的红色圆点、数字或者文字，表示有新内容或者待处理的信息。",
-          "sort": 4,
-          "show": true,
-          "taro": true,
-          "author": "lzz"
-        },
-        {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "CircleProgress",
           "type": "component",
           "cName": "环形进度条",
@@ -870,17 +914,6 @@
         },
         {
           "version": "1.0.0",
-          "name": "Empty",
-          "type": "component",
-          "cName": "空状态",
-          "desc": "空状态时的占位提示",
-          "sort": 16,
-          "show": true,
-          "taro": true,
-          "author": "liukun"
-        },
-        {
-          "version": "1.0.0",
           "name": "ImagePreview",
           "type": "component",
           "cName": "图片预览",
@@ -891,26 +924,38 @@
           "author": "yangjinjun3"
         },
         {
-          "version": "0.1.0",
-          "name": "NoticeBar",
+          "version": "2.0.0",
+          "name": "Indicator",
           "type": "component",
-          "cName": "公告栏",
-          "desc": "用于循环播放展示一组消息通知。",
-          "sort": 11,
+          "cName": "指示器",
+          "desc": "显示一个任务或流程的进度，常用于开通流程。",
+          "sort": 16,
           "show": true,
           "taro": true,
-          "author": "vickyYe"
+          "author": "liukun"
         },
         {
-          "version": "0.1.0",
-          "name": "Popover",
+          "version": "1.0.0",
+          "name": "VirtualList",
           "type": "component",
-          "cName": "气泡弹出框",
-          "desc": "气泡弹出框",
-          "sort": 19,
+          "cName": "虚拟列表",
+          "desc": "长列表渲染",
+          "sort": 20,
+          "tarodoc": true,
           "show": true,
           "taro": true,
-          "author": "lzz"
+          "author": "hx"
+        },
+        {
+          "version": "2.0.0",
+          "name": "Pagination",
+          "type": "component",
+          "cName": "分页",
+          "desc": "当数据量较多时，采用分页的形式分隔长列表。",
+          "sort": 6,
+          "show": true,
+          "taro": true,
+          "author": "lkjh3214"
         },
         {
           "version": "0.1.0",
@@ -924,7 +969,7 @@
           "author": "songsong"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Progress",
           "type": "component",
           "cName": "进度条",
@@ -935,17 +980,7 @@
           "author": "ailululu"
         },
         {
-          "name": "Skeleton",
-          "type": "component",
-          "cName": "骨架屏",
-          "desc": "在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果。",
-          "sort": 15,
-          "show": true,
-          "taro": true,
-          "author": "swag~jun"
-        },
-        {
-          "version": "3.0.0",
+          "version": "2.0.0",
           "name": "Step",
           "sort": 17,
           "cName": "步骤条子组件",
@@ -1000,7 +1035,7 @@
           "author": "yangjinjun3"
         },
         {
-          "version": "0.1.0",
+          "version": "1.0.0",
           "name": "Tag",
           "type": "component",
           "cName": "标签",
@@ -1009,17 +1044,6 @@
           "show": true,
           "taro": true,
           "author": "lzz"
-        },
-        {
-          "version": "1.0.0",
-          "name": "TrendArrow",
-          "type": "component",
-          "cName": "趋势箭头",
-          "desc": "带有箭头指示的百分比数字,用以展示指标趋势",
-          "sort": 25,
-          "show": true,
-          "taro": true,
-          "author": "songsong"
         },
         {
           "version": "1.0.0",
@@ -1032,29 +1056,6 @@
           "show": true,
           "taro": false,
           "author": "swag~jun"
-        },
-        {
-          "version": "1.0.0",
-          "name": "VirtualList",
-          "type": "component",
-          "cName": "虚拟列表",
-          "desc": "长列表渲染",
-          "sort": 20,
-          "tarodoc":true,
-          "show": true,
-          "taro": true,
-          "author": "hx"
-        },
-        {
-          "version": "1.0.0",
-          "name": "WaterMark",
-          "type": "component",
-          "cName": "水印",
-          "desc": "页面上添加特定的文字或图案，可用于防止信息盗用。",
-          "sort": 25,
-          "show": true,
-          "taro": true,
-          "author": "swag~jun"
         }
       ]
     },
@@ -1062,17 +1063,6 @@
       "name": "特色组件",
       "enName": "business",
       "packages": [
-        {
-          "version": "0.1.0",
-          "name": "Address",
-          "type": "component",
-          "cName": "地址",
-          "desc": "地址组件",
-          "sort": 3,
-          "show": true,
-          "taro": true,
-          "author": "yangxiaolu"
-        },
         {
           "version": "0.1.0",
           "name": "Barrage",
@@ -1091,17 +1081,6 @@
           "cName": "商品卡片",
           "desc": "商品卡片，用于展示商品的图片、价格等信息",
           "sort": 6,
-          "show": true,
-          "taro": true,
-          "author": "songsong"
-        },
-        {
-          "version": "0.1.0",
-          "name": "Signature",
-          "type": "component",
-          "cName": "签名",
-          "desc": "基于Canvas的签名组件",
-          "sort": 1,
           "show": true,
           "taro": true,
           "author": "songsong"
@@ -1138,6 +1117,28 @@
           "show": true,
           "taro": true,
           "author": "zhaoqian16"
+        },
+        {
+          "version": "1.0.0",
+          "name": "TrendArrow",
+          "type": "component",
+          "cName": "趋势箭头",
+          "desc": "带有箭头指示的百分比数字,用以展示指标趋势",
+          "sort": 25,
+          "show": true,
+          "taro": true,
+          "author": "songsong"
+        },
+        {
+          "version": "1.0.0",
+          "name": "WaterMark",
+          "type": "component",
+          "cName": "水印",
+          "desc": "页面上添加特定的文字或图案，可用于防止信息盗用。",
+          "sort": 25,
+          "show": true,
+          "taro": true,
+          "author": "swag~jun"
         }
       ]
     }

@@ -1,10 +1,10 @@
 # Elevator 电梯楼层
 
-### 介绍
+## 介绍
 
 用于列表快速定位以及索引的显示
 
-### 安装
+## 安装
 
 ```javascript
 import { Elevator } from '@nutui/nutui-react-taro'
@@ -80,7 +80,7 @@ const App = () => {
   }
   return (
     <Elevator
-      indexList={dataList}
+      list={dataList}
       height="260"
       onClickItem={(key: string, item: any) => onClickItem(key, item)}
       onClickIndex={(key: string) => onClickIndex(key)}
@@ -212,9 +212,9 @@ const App = () => {
   }
   return (
     <Elevator
-      indexList={dataList}
+      list={dataList}
       height="220"
-      acceptKey="num"
+      floorKey="num"
       onClickItem={(key: string, item: any) => onClickItem(key, item)}
       onClickIndex={(key: string) => onClickIndex(key)}
     />
@@ -358,9 +358,9 @@ const App = () => {
   }
   return (
     <Elevator
-      indexList={dataList}
+      list={dataList}
       height="220"
-      isSticky
+      sticky
       onClickItem={(key: string, item: any) => onClickItem(key, item)}
       onClickIndex={(key: string) => onClickIndex(key)}
     />
@@ -441,7 +441,7 @@ const App = () => {
   }
   return (
     <Elevator
-      indexList={dataList}
+      list={dataList}
       height="260"
       onClickItem={(key: string, item: any) => onClickItem(key, item)}
       onClickIndex={(key: string) => onClickIndex(key)}
@@ -450,7 +450,7 @@ const App = () => {
         {(value) => {
           return (
             <>
-              <Jd width={12} height={12} />
+              <Jd size={12} />
               <span style={{ marginLeft: '15px' }}>{value?.name}</span>
             </>
           )
@@ -464,70 +464,17 @@ export default App
 
 :::
 
-## API
+## Elevator
 
 ### Props
 
 | 字段                  | 说明           | 类型                                                        | 默认值                |
 |---------------------| -------------- | ----------------------------------------------------------- | --------------------- |
 | height              | 电梯区域的高度 | number \| string                                              | `200px`               |
-| acceptKey           | 索引 key 值    | string                                                      | `title`               |
-| indexList           | 索引列表       | Array（item 需包含 id、name 属性, name 支持传入 html 结构） | `[{id: 0, name: ''}]` |
-| isSticky    | 索引是否吸顶                                                    | boolean  | `false` |
-| spaceHeight | 右侧锚点的上下间距                                                   | number  | `23` |
-| titleHeight   | 左侧索引的高度                                                     | number  | `35` |
-
-### Event
-
-| 名称       | 说明     | 回调参数                               |
-| ---------- | -------- | -------------------------------------- |
-| onClickItem  | 点击内容 | `key: string, item: { id: 0, name: '' }` |
-| onClickIndex | 点击索引 | `key: string`                            |
-| clickItem  | 点击内容 | `key: string, item: { id: 0, name: '' }` |
-| clickIndex | 点击索引 | `key: string`                            |
-
-
-
-## 主题定制
-
-### 样式变量
-
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
-
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-elevator-list-inner-bg-color | `$gray6` |
-| --nutui-elevator-list-item-highcolor | `$primary-color` |
-| --nutui-elevator-list-item-font-size | `12px` |
-| --nutui-elevator-list-item-font-color | `$gray1` |
-| --nutui-elevator-list-item-name-padding | `0 20px` |
-| --nutui-elevator-list-item-name-height | `30px` |
-| --nutui-elevator-list-item-name-line-height | `30px` |
-| --nutui-elevator-list-item-code-font-size | `14px` |
-| --nutui-elevator-list-item-code-font-color | `$gray1` |
-| --nutui-elevator-list-item-code-font-weight | `500` |
-| --nutui-elevator-list-item-code-padding | `0 20px` |
-| --nutui-elevator-list-item-code-height | `35px` |
-| --nutui-elevator-list-item-code-line-height | `35px` |
-| --nutui-elevator-list-item-code-after-height | `1px` |
-| --nutui-elevator-list-item-code-after-bg-color | `#f5f5f5` |
-| --nutui-elevator-list-item-code-current-bg-color | `#fff` |
-| --nutui-elevator-list-item-code-current-width | `45px` |
-| --nutui-elevator-list-item-code-current-height | `45px` |
-| --nutui-elevator-list-item-code-current-line-height | `45px` |
-| --nutui-elevator-list-item-code-current-position | `absolute` |
-| --nutui-elevator-list-item-code-current-right | `60px` |
-| --nutui-elevator-list-item-code-current-text-align | `center` |
-| --nutui-elevator-list-item-bars-position | `absolute` |
-| --nutui-elevator-list-item-bars-right | `8px` |
-| --nutui-elevator-list-item-bars-padding | `15px 0` |
-| --nutui-elevator-list-item-bars-background-color | `#eeeff2` |
-| --nutui-elevator-list-item-bars-border-radius | `6px` |
-| --nutui-elevator-list-item-bars-text-align | `center` |
-| --nutui-elevator-list-item-bars-z-index | `1` |
-| --nutui-elevator-list-item-bars-inner-item-padding | `3px` |
-| --nutui-elevator-list-item-bars-inner-item-font-size | `10px` |
-| --nutui-elevator-list-fixed-color | `$primary-color` |
-| --nutui-elevator-list-fixed-bg-color | `$white` |
-| --nutui-elevator-list-fixed-box-shadow | `0 0 10px #eee` |
-| --nutui-elevator-list-item-bars-inner-item-active-color | `$primary-color` |
+| floorKey           | 索引 key 值    | string                                                      | `title`               |
+| list           | 索引列表       | Array（item 需包含 id、name 属性, name 支持传入 html 结构） | `[{id: 0, name: ''}]` |
+| sticky    | 索引是否吸顶 | boolean  | `false` |
+| spaceHeight | 右侧锚点的上下间距 | number  | `23` |
+| titleHeight   | 左侧索引的高度 | number  | `35` |
+| onClickItem  | 点击内容 | `onClickItem:(key: string, item: { id: number, name: string })=>void` |`false`|
+| onClickIndex | 点击索引 | `onClickIndex:(key: string)=>void`                            |`false`|

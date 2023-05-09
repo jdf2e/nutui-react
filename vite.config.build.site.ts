@@ -14,7 +14,7 @@ if (projectID) {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: 'https://nutui.jd.com/h5/react/1x',
+  base: 'https://nutui.jd.com/h5/react/2x',
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
@@ -45,7 +45,7 @@ export default defineConfig({
   plugins: [reactRefresh()],
   build: {
     target: 'es2015',
-    outDir: './dist/1x/',
+    outDir: './dist/2x/',
     cssCodeSplit: true,
     rollupOptions: {
       input: {

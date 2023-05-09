@@ -1,15 +1,16 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+
 export type ContentPositionType = 'left' | 'center' | 'right'
 export type DirectionType = 'horizontal' | 'vertical'
-export interface DividerProps {
+export interface DividerProps extends BasicComponent {
   contentPosition: ContentPositionType
-  style?: React.CSSProperties
-  className?: string
   direction?: DirectionType
 }
 const defaultProps = {
+  ...ComponentDefaults,
   contentPosition: 'center',
   direction: 'horizontal',
 } as DividerProps

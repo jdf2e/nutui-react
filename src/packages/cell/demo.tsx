@@ -134,7 +134,7 @@ const CellDemo = () => {
           extra={translated.extra}
         />
         <CellGroup title={translated.customRight}>
-          <Cell title="Switch" extra={<Switch checked />} />
+          <Cell title="Switch" extra={<Switch defaultChecked />} />
         </CellGroup>
         <CellGroup
           title={translated.title4}

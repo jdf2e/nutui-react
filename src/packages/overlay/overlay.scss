@@ -6,11 +6,14 @@
   height: 100%;
   background: $overlay-bg-color;
 }
+
 .nut-overflow-hidden {
   overflow: hidden !important;
 }
-.overlay-fade-enter-active {
+
+.nut-overlay-fade-enter-active {
   animation: nut-fade-in;
+
   .wrapper {
     .content {
       background-color: $overlay-content-bg-color;
@@ -18,15 +21,19 @@
     }
   }
 }
-.overlay-fade-leave-active {
+
+.nut-overlay-fade-leave-active {
   animation: nut-fade-out;
 }
-.first-render {
+
+.nut-overlay-first-render {
   display: none;
 }
-.hidden-render {
+
+.nut-overlay-hidden-render {
   display: none;
 }
+
 @keyframes nut-fade-in {
   0% {
     opacity: 0;

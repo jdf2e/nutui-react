@@ -1,9 +1,11 @@
 const path = require('path')
 
 let fileStr = `styles/variables.scss`
+let themeStr = `styles/theme-default.scss`
 const projectID = process.env.VITE_APP_PROJECT_ID
 if (projectID) {
   fileStr = `styles/variables-${projectID}.scss`
+  themeStr = `styles/theme-${projectID}.scss`
 }
 
 const config = {
@@ -30,7 +32,10 @@ const config = {
     '@': path.resolve(__dirname, '../../../../src'),
   },
   sass: {
-    resource: path.resolve(__dirname, '../../../', fileStr),
+    resource: [
+      path.resolve(__dirname, '../../../', fileStr),
+      path.resolve(__dirname, '../../../', themeStr),
+    ],
   },
   defineConstants: {},
   copy: {

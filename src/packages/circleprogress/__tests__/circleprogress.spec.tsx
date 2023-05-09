@@ -8,7 +8,7 @@ test('should change stoke when use width props', () => {
   const { getByTestId } = render(
     <CircleProgress
       data-testid="circle-prop"
-      progress={40}
+      percent={40}
       strokeWidth={10}
       radius={60}
     />
@@ -18,9 +18,7 @@ test('should change stoke when use width props', () => {
 })
 
 test('should change color when use color props', () => {
-  const { container } = render(
-    <CircleProgress progress={40} circleColor="red" />
-  )
+  const { container } = render(<CircleProgress percent={40} color="red" />)
   expect(container.querySelectorAll('path')[1].style.stroke).toBe('red')
 })
 
@@ -30,7 +28,7 @@ test('渐变色', async () => {
     '100%': '#FFA062',
   }
   const { container } = render(
-    <CircleProgress progress={40} clockwise={false} circleColor={color} />
+    <CircleProgress percent={40} clockwise={false} color={color} />
   )
   expect(container.querySelector('stop')).toBeVisible()
 })

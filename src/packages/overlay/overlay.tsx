@@ -1,12 +1,11 @@
 import React, {
   FunctionComponent,
+  MouseEvent,
   MouseEventHandler,
   useEffect,
   useRef,
-  useState,
 } from 'react'
 import classNames from 'classnames'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface OverlayProps extends BasicComponent {
@@ -15,6 +14,7 @@ export interface OverlayProps extends BasicComponent {
   closeOnOverlayClick: boolean
   visible: boolean
   lockScroll: boolean
+  onClick: (event: MouseEvent) => void
   afterShow: () => void
   afterClose: () => void
 }
@@ -25,9 +25,8 @@ export const defaultOverlayProps = {
   closeOnOverlayClick: true,
   visible: false,
   lockScroll: true,
+  onClick: (event: MouseEvent) => {},
 } as OverlayProps
-
-const classPrefix = `nut-overlay`
 export const Overlay: FunctionComponent<
   Partial<OverlayProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
@@ -42,12 +41,13 @@ export const Overlay: FunctionComponent<
     style,
     afterShow,
     afterClose,
+    onClick,
     ...rest
   } = {
     ...defaultOverlayProps,
     ...props,
   }
-  const [show, setShow] = useState(visible)
+  const classPrefix = `nut-overlay`
   const renderRef = useRef(true)
   const intervalCloseRef = useRef(0)
   const intervalShowRef = useRef(0)
@@ -57,7 +57,6 @@ export const Overlay: FunctionComponent<
       intervalShowRef.current = window.setTimeout(() => {
         afterShow && afterShow()
       }, duration * 1000 * 0.8)
-      setShow(visible)
     }
     lock()
   }, [visible])
@@ -72,10 +71,10 @@ export const Overlay: FunctionComponent<
 
   const classes = classNames(
     {
-      'overlay-fade-leave-active': !renderRef.current && !visible,
-      'overlay-fade-enter-active': visible,
-      'first-render': renderRef.current && !visible,
-      'hidden-render': !visible,
+      'nut-overlay-fade-leave-active': !renderRef.current && !visible,
+      'nut-overlay-fade-enter-active': visible,
+      'nut-overlay-first-render': renderRef.current && !visible,
+      'nut-overlay-hidden-render': !visible,
     },
     className,
     classPrefix
@@ -95,13 +94,12 @@ export const Overlay: FunctionComponent<
     }
   }
 
-  const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
+  const handleClick: MouseEventHandler<HTMLDivElement> = (e: MouseEvent) => {
     if (closeOnOverlayClick) {
-      props.onClick && props.onClick(e)
+      onClick && onClick(e)
       renderRef.current = false
       intervalCloseRef.current = window.setTimeout(() => {
         afterClose && afterClose()
-        setShow(!visible)
       }, duration * 1000 * 0.8)
     }
   }

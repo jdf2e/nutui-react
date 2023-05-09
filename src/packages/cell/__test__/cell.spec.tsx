@@ -54,7 +54,7 @@ test('slot default test', () => {
 
 test('slot extra', () => {
   const { container } = render(
-    <Cell title="Switch" extra={<Switch checked />} />
+    <Cell title="Switch" extra={<Switch defaultChecked />} />
   )
   expect(container.querySelector('.nut-switch')).toBeInTheDocument()
   expect(container).toMatchSnapshot()

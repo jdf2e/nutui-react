@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react'
 import { Tabbar } from './tabbar'
-import TabbarItem from '../tabbaritem'
 import './demo.scss'
 import { useTranslate } from '../../sites/assets/locale'
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react'
 
 interface T {
   ce5c5446: string
@@ -32,7 +31,7 @@ const TabbarDemo = () => {
       b840c88f: '徽标提示',
       a74a1fd4: '自定义颜色',
       '8dab2f66': '可自定义icon个数的tabbar',
-      cfbdc781: '固定底部，可自由跳转',
+      cfbdc781: '固定底部',
       c3a3a1d2: '首页',
       e51e4582: '我的',
       '7db1a8b2': '购物车',
@@ -48,7 +47,7 @@ const TabbarDemo = () => {
       b840c88f: '徽標提示',
       a74a1fd4: '自定義顏色',
       '8dab2f66': '可自定義icon個數的tabbar',
-      cfbdc781: '固定底部，可自由跳轉',
+      cfbdc781: '固定底部',
       c3a3a1d2: '首頁',
       e51e4582: '我的',
       '7db1a8b2': '購物車',
@@ -57,20 +56,20 @@ const TabbarDemo = () => {
       c9e6df49: '紅點',
     },
     'en-US': {
-      ce5c5446: 'Basic usage',
-      c38a08ef: 'custom check',
-      ce5c5448: 'some only Icon',
-      ce5c5440: 'no icon',
+      ce5c5446: 'Basic Usage',
+      c38a08ef: 'Custom DefaultValue',
+      ce5c5448: 'Only Icon',
+      ce5c5440: 'No Icon',
       b840c88f: 'Logo Tips',
-      a74a1fd4: 'custom color',
+      a74a1fd4: 'Custom Color',
       '8dab2f66': 'Tabbar with customizable number of icons',
-      cfbdc781: 'Fixed bottom, free to jump',
-      c3a3a1d2: 'first',
-      e51e4582: 'mine',
-      '7db1a8b2': 'cart',
+      cfbdc781: 'Fixed bottom',
+      c3a3a1d2: 'Home',
+      e51e4582: 'Mine',
+      '7db1a8b2': 'Cart',
       a52bef0c: 'Find',
-      d04fcbda: 'Classification',
-      c9e6df49: 'Red dot',
+      d04fcbda: 'Category',
+      c9e6df49: 'Dot',
     },
   })
 
@@ -80,212 +79,211 @@ const TabbarDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
-        <Tabbar visible={0}>
-          <TabbarItem
-            tabTitle={translated.c3a3a1d2}
+        <Tabbar defaultValue={0}>
+          <Tabbar.Item
+            title={translated.c3a3a1d2}
             icon={<Home width={18} height={18} />}
+            value={9}
           />
-          <TabbarItem
-            tabTitle={translated.d04fcbda}
+          <Tabbar.Item
+            title={translated.d04fcbda}
             icon={<Category width={18} height={18} />}
+            dot
           />
-          <TabbarItem
-            tabTitle={translated.a52bef0c}
+          <Tabbar.Item
+            title={translated.a52bef0c}
             icon={<Find width={18} height={18} />}
           />
-          <TabbarItem
-            tabTitle={translated['7db1a8b2']}
+          <Tabbar.Item
+            title={translated['7db1a8b2']}
             icon={<Cart width={18} height={18} />}
           />
-          <TabbarItem
-            tabTitle={translated.e51e4582}
+          <Tabbar.Item
+            title={translated.e51e4582}
             icon={<My width={18} height={18} />}
           />
         </Tabbar>
 
         <h2>{translated.c38a08ef}</h2>
         <Tabbar
-          visible={0}
-          activeVisible={activeIndex}
-          onSwitch={(child, id) => {
-            setActiveIndex(id)
+          defaultValue={0}
+          value={activeIndex}
+          onSwitch={(value) => {
+            setActiveIndex(value)
           }}
         >
-          <TabbarItem
-            tabTitle={translated.c3a3a1d2}
+          <Tabbar.Item
+            title={translated.c3a3a1d2}
             icon={<Home width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated.d04fcbda}
+          <Tabbar.Item
+            title={translated.d04fcbda}
             icon={<Category width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated.a52bef0c}
+          <Tabbar.Item
+            title={translated.a52bef0c}
             icon={<Find width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated['7db1a8b2']}
+          <Tabbar.Item
+            title={translated['7db1a8b2']}
             icon={<Cart width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated.e51e4582}
+          <Tabbar.Item
+            title={translated.e51e4582}
             icon={<My width={20} height={20} />}
           />
         </Tabbar>
 
         <h2>{translated.ce5c5448}</h2>
         <Tabbar
-          onSwitch={(child, idx) => {
-            console.log(idx)
+          onSwitch={(value) => {
+            console.log(value)
           }}
         >
-          <TabbarItem
-            tabTitle={translated.c3a3a1d2}
+          <Tabbar.Item
+            title={translated.c3a3a1d2}
             icon={<Home width={12} height={12} />}
           />
-          <TabbarItem
-            tabTitle={translated.d04fcbda}
+          <Tabbar.Item
+            title={translated.d04fcbda}
             icon={<Category width={12} height={12} />}
           />
-          <TabbarItem icon={<Find width={24} height={24} />} />
-          <TabbarItem
-            tabTitle={translated['7db1a8b2']}
+          <Tabbar.Item icon={<Find width={24} height={24} />} />
+          <Tabbar.Item
+            title={translated['7db1a8b2']}
             icon={<Cart width={12} height={12} />}
           />
-          <TabbarItem
-            tabTitle={translated.e51e4582}
+          <Tabbar.Item
+            title={translated.e51e4582}
             icon={<My width={12} height={12} />}
           />
         </Tabbar>
 
         <h2>{translated.ce5c5440}</h2>
         <Tabbar
-          onSwitch={(child, idx) => {
-            console.log(idx)
+          onSwitch={(value) => {
+            console.log(value)
           }}
         >
-          <TabbarItem tabTitle={translated.c3a3a1d2} />
-          <TabbarItem tabTitle={translated.d04fcbda} />
-          <TabbarItem tabTitle={translated.a52bef0c} />
-          <TabbarItem tabTitle={translated['7db1a8b2']} />
-          <TabbarItem tabTitle={translated.e51e4582} />
+          <Tabbar.Item title={translated.c3a3a1d2} value={9} />
+          <Tabbar.Item title={translated.d04fcbda} dot />
+          <Tabbar.Item title={translated.a52bef0c} />
+          <Tabbar.Item title={translated['7db1a8b2']} />
+          <Tabbar.Item title={translated.e51e4582} />
         </Tabbar>
 
         <h2>{translated.b840c88f}</h2>
         <Tabbar>
-          <TabbarItem
-            tabTitle={translated.c3a3a1d2}
+          <Tabbar.Item
+            title={translated.c3a3a1d2}
             icon={<Home width={20} height={20} />}
-            num="11"
+            value={11}
           />
-          <TabbarItem
-            tabTitle={translated.d04fcbda}
+          <Tabbar.Item
+            title={translated.d04fcbda}
             icon={<Category width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated.a52bef0c}
+          <Tabbar.Item
+            title={translated.a52bef0c}
             icon={<Find width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated['7db1a8b2']}
+          <Tabbar.Item
+            title={translated['7db1a8b2']}
             icon={<Cart width={20} height={20} />}
-            num="110"
+            value={110}
           />
-          <TabbarItem
-            tabTitle={translated.e51e4582}
+          <Tabbar.Item
+            title={translated.e51e4582}
             icon={<My width={20} height={20} />}
           />
         </Tabbar>
 
         <h2>{translated.c9e6df49}</h2>
         <Tabbar>
-          <TabbarItem
-            tabTitle={translated.c3a3a1d2}
+          <Tabbar.Item
+            title={translated.c3a3a1d2}
             icon={<Home width={20} height={20} />}
             dot
           />
-          <TabbarItem
-            tabTitle={translated.d04fcbda}
+          <Tabbar.Item
+            title={translated.d04fcbda}
             icon={<Category width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated.a52bef0c}
+          <Tabbar.Item
+            title={translated.a52bef0c}
             icon={<Find width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated['7db1a8b2']}
+          <Tabbar.Item
+            title={translated['7db1a8b2']}
             icon={<Cart width={20} height={20} />}
             dot
           />
-          <TabbarItem
-            tabTitle={translated.e51e4582}
+          <Tabbar.Item
+            title={translated.e51e4582}
             icon={<My width={20} height={20} />}
           />
         </Tabbar>
 
         <h2>{translated.a74a1fd4}</h2>
-        <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-          <TabbarItem
-            tabTitle={translated.c3a3a1d2}
+        <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
+          <Tabbar.Item
+            title={translated.c3a3a1d2}
             icon={<Home width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated.d04fcbda}
+          <Tabbar.Item
+            title={translated.d04fcbda}
             icon={<Category width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated.a52bef0c}
+          <Tabbar.Item
+            title={translated.a52bef0c}
             icon={<Find width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated['7db1a8b2']}
+          <Tabbar.Item
+            title={translated['7db1a8b2']}
             icon={<Cart width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated.e51e4582}
+          <Tabbar.Item
+            title={translated.e51e4582}
             icon={<My width={20} height={20} />}
           />
         </Tabbar>
 
         <h2>{translated['8dab2f66']}</h2>
-        <Tabbar unactiveColor="#7d7e80" activeColor="#1989fa">
-          <TabbarItem
-            tabTitle={translated.c3a3a1d2}
+        <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
+          <Tabbar.Item
+            title={translated.c3a3a1d2}
             icon={<Home width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated.d04fcbda}
+          <Tabbar.Item
+            title={translated.d04fcbda}
             icon={<Category width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated.a52bef0c}
+          <Tabbar.Item
+            title={translated.a52bef0c}
             icon={<Find width={20} height={20} />}
           />
         </Tabbar>
 
         <h2 className="bottom-h2">{translated.cfbdc781}</h2>
-        <Tabbar bottom>
-          <TabbarItem
-            tabTitle={translated.c3a3a1d2}
-            href=""
+        <Tabbar fixed>
+          <Tabbar.Item
+            title={translated.c3a3a1d2}
             icon={<Home width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated.d04fcbda}
+          <Tabbar.Item
+            title={translated.d04fcbda}
             icon={<Category width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated.a52bef0c}
+          <Tabbar.Item
+            title={translated.a52bef0c}
             icon={<Find width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated['7db1a8b2']}
-            href="https://m.jd.com"
+          <Tabbar.Item
+            title={translated['7db1a8b2']}
             icon={<Cart width={20} height={20} />}
           />
-          <TabbarItem
-            tabTitle={translated.e51e4582}
-            href="/"
+          <Tabbar.Item
+            title={translated.e51e4582}
             icon={<My width={20} height={20} />}
           />
         </Tabbar>
