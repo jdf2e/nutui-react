@@ -3,7 +3,6 @@ import React, {
   forwardRef,
   useState,
   TouchEvent,
-  useMemo,
   useCallback,
   useImperativeHandle,
   useEffect,
@@ -14,7 +13,6 @@ import { useTouch } from '@/utils/use-touch'
 import { getRect } from '@/utils/use-client-rect'
 
 export type SwipeSide = 'left' | 'right'
-export type SwipePosition = SwipeSide | 'cell' | 'outside'
 
 function preventDefault(
   event: TouchEvent | Event,
@@ -38,10 +36,6 @@ export interface SwipeProps {
   style: React.CSSProperties
   /** 标识符，可以在事件参数中获取到 */
   name?: string | number
-  /** 指定左侧滑动区域宽度，单位为px */
-  leftWidth?: string | number
-  /** 指定右侧滑动区域宽度，单位为 px */
-  rightWidth?: string | number
   /** 左侧滑动区域的内容 */
   leftAction?: React.ReactNode
   /** 右侧滑动区域的内容 */
@@ -64,10 +58,10 @@ export interface SwipeProps {
     position,
   }: {
     name: string | number
-    position: SwipePosition
+    position: SwipeSide
   }) => void
   /** 点击时触发 */
-  onActionClick?: (event: Event, position: SwipePosition) => void
+  onActionClick?: (event: Event, position: SwipeSide) => void
   onTouchStart?: (event: Event) => void
   onTouchEnd?: (event: Event) => void
   onTouchMove?: (event: Event) => void
@@ -75,8 +69,6 @@ export interface SwipeProps {
 }
 const defaultProps = {
   name: '',
-  leftWidth: 0,
-  rightWidth: 0,
 } as SwipeProps
 export const Swipe = forwardRef<
   SwipeInstance,
@@ -108,15 +100,9 @@ export const Swipe = forwardRef<
     transform: `translate3d(${state.offset}px, 0, 0)`,
     transitionDuration: state.dragging ? '0s' : '.6s',
   }
-  const leftWidth = useMemo(
-    () => (props.leftWidth ? props.leftWidth : actionWidth.left),
-    [props.leftWidth, actionWidth.left]
-  )
+  const leftWidth = actionWidth.left
 
-  const rightWidth = useMemo(
-    () => (props.rightWidth ? props.rightWidth : actionWidth.right),
-    [props.rightWidth, actionWidth.right]
-  )
+  const rightWidth = actionWidth.right
 
   const onTouchStart = (event: Event) => {
     if (!props.disabled) {
@@ -184,7 +170,7 @@ export const Swipe = forwardRef<
     setState((v) => ({ ...v, offset: Number(offset) || 0 }))
   }
 
-  const close = (position?: SwipePosition) => {
+  const close = (position?: SwipeSide) => {
     if (opened.current) {
       opened.current = false
       props.onClose?.({
@@ -240,7 +226,7 @@ export const Swipe = forwardRef<
     }
     return null
   }
-  const handleOperate = (event: Event, position: SwipePosition) => {
+  const handleOperate = (event: Event, position: SwipeSide) => {
     event.stopPropagation()
     if (props.beforeClose) {
       props.beforeClose(position)
