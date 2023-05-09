@@ -15,8 +15,8 @@ export interface CheckboxGroupProps {
   max: number | undefined
   labelPosition: CheckboxLabelPosition
   direction: CheckboxDirection
-  onChange: (value: string[]) => void
   options: RadioGroupOptionType[]
+  onChange: (value: string[]) => void
 }
 
 const defaultProps = {
@@ -101,7 +101,7 @@ export const CheckboxGroup = React.forwardRef(
           labelPosition: labelPosition || 'right',
           disabled,
           max,
-          checkedValue: _value,
+          value: _value,
           check: (value: string) => {
             const combined: string[] = [..._value, value]
             setValue(combined)

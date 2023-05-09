@@ -497,7 +497,7 @@ export default CheckboxGroupOptions;
 | disabled | Whether to disable selection | `boolean` | `false` |
 | labelPosition | The position of the text, optional values: `left`, `right` | `string` | `right` |
 | icon | [icon](#/icon), before selection (recommended to be modified together with `ActiveIcon`) | `ReactNode` | `'CheckNormal'` |
-| checkedIcon | [icon](#/icon), after selection (it is recommended to modify it together with `iconName`) | `ReactNode` | `'Checked'` |
+| activeIcon | [icon](#/icon), after selection (it is recommended to modify it together with `iconName`) | `ReactNode` | `'Checked'` |
 | indeterminateIcon | [icon](#/icon), half-selected state | `ReactNode` | `'CheckDisabled'` |
 | label | text content of the checkbox | `string` | - |
 | value | identification value, used in Group mode | `string\| number` | - |

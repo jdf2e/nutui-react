@@ -62,7 +62,7 @@ export const Checkbox: FunctionComponent<
   let { labelPosition, ...rest } = others
   const ctx = useContext(Context)
 
-  let [_checked, setChecked] = usePropsValue<boolean>({
+  let [innerChecked, setChecked] = usePropsValue<boolean>({
     value: props.checked,
     defaultValue: props.defaultChecked,
     finalValue: defaultChecked,
@@ -70,19 +70,22 @@ export const Checkbox: FunctionComponent<
   })
   // eslint-disable-next-line prefer-const
   let [innerDisabled, setDisabled] = useState(disabled)
-  const [_indeterminate, setIndeterminate] = useState(indeterminate)
+  const [innerIndeterminate, setIndeterminate] = useState(indeterminate)
 
   useEffect(() => {
     setDisabled(disabled)
+  }, [disabled])
+
+  useEffect(() => {
     setIndeterminate(indeterminate)
-  }, [disabled, indeterminate])
+  }, [indeterminate])
 
   if (ctx) {
     if (ctx.labelPosition !== undefined) {
       labelPosition = ctx.labelPosition
     }
     innerDisabled = ctx.disabled !== undefined ? ctx.disabled : innerDisabled
-    _checked = ctx.checkedValue.includes(value)
+    innerChecked = ctx.value.includes(value)
     setChecked = (checked: boolean) => {
       if (ctx.disabled) return
       if (checked) ctx.check(value)
@@ -91,14 +94,14 @@ export const Checkbox: FunctionComponent<
   }
 
   const renderIcon = () => {
-    if (!_checked) {
+    if (!innerChecked) {
       return React.isValidElement(icon) ? (
         icon
       ) : (
         <CheckNormal className={color()} />
       )
     }
-    if (_indeterminate) {
+    if (innerIndeterminate) {
       return React.isValidElement(indeterminateIcon) ? (
         indeterminateIcon
       ) : (
@@ -113,15 +116,15 @@ export const Checkbox: FunctionComponent<
   }
   const color = () => {
     if (innerDisabled) {
-      return 'nut-checkbox__icon--disable'
+      return `${classPrefix}__icon--disable`
     }
-    if (_checked) {
-      if (_indeterminate) {
-        return 'nut-checkbox__icon--indeterminate'
+    if (innerChecked) {
+      if (innerIndeterminate) {
+        return `${classPrefix}__icon--indeterminate`
       }
-      return 'nut-checkbox__icon'
+      return `${classPrefix}__icon`
     }
-    return 'nut-checkbox__icon--unchecked'
+    return `${classPrefix}__icon--unchecked`
   }
   const renderLabel = () => {
     return (
@@ -139,10 +142,10 @@ export const Checkbox: FunctionComponent<
     // 禁用的时候直接返回
     if (disabled) return
     // 先转换状态
-    const latestChecked = !_checked
+    const latestChecked = !innerChecked
     // 判断是不是有 context 和 max，有的话需要判断是不是超过最大限制
     if (ctx && ctx.max !== undefined) {
-      if (latestChecked && ctx.checkedValue.length >= ctx.max) return
+      if (latestChecked && ctx.value.length >= ctx.max) return
     }
     setChecked(latestChecked)
   }

@@ -140,6 +140,7 @@ const CheckboxDemo = () => {
   ])
 
   const [controlled, setControlled] = useState(false)
+  const [controlledGroup, setControlledGroup] = useState(['2'])
 
   return (
     <>
@@ -162,7 +163,11 @@ const CheckboxDemo = () => {
           />
         </Cell>
         <Cell className="nut-cell">
-          <Checkbox.Group labelPosition="left" defaultValue={['2']}>
+          <Checkbox.Group
+            labelPosition="left"
+            value={controlledGroup}
+            onChange={(value) => setControlledGroup(value)}
+          >
             <span>
               <Checkbox value="1" label={optionsDemo1[0].label} />
             </span>

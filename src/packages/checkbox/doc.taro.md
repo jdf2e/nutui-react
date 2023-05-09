@@ -499,7 +499,7 @@ export default CheckboxGroupOptions;
 | disabled          | 是否禁用选择                                | `boolean` | `false`           |
 | labelPosition     | 文本所在的位置，可选值：`left`,`right`            | `string` | `right`           |
 | icon              | [图标](#/icon)，选中前(建议和`ActiveIcon`一起修改) | `ReactNode` | `'CheckNormal'`   |
-| checkedIcon       | [图标](#/icon)，选中后(建议和`iconName`一起修改)   | `ReactNode` | `'Checked'`       |
+| activeIcon       | [图标](#/icon)，选中后(建议和`iconName`一起修改)   | `ReactNode` | `'Checked'`       |
 | indeterminateIcon | [图标](#/icon)，半选状态                     | `ReactNode` | `'CheckDisabled'` |
 | label             | 复选框的文本内容                              | `string` | -                 |
 | value               | 标识值，用于 Group 模式                       | `string\| number`               | -                 |
