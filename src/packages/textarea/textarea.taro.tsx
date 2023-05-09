@@ -1,9 +1,10 @@
-import React, { FunctionComponent, useEffect, useRef } from 'react'
+import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import { Textarea } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
+import Taro from '@tarojs/taro'
 
 export interface TextAreaProps extends BasicComponent {
   value: string
@@ -56,7 +57,6 @@ export const TextArea: FunctionComponent<
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-textarea'
-
   const compositionRef = useRef(false)
 
   const format = (value: string) => {
@@ -74,8 +74,11 @@ export const TextArea: FunctionComponent<
   })
 
   const handleChange = (event: any) => {
-    const text = event.detail ? (event.detail as any) : (event.target as any)
-    setInputValue(text.value)
+    const text = event?.detail?.value
+    if (text) {
+      const value = compositionRef.current ? text : format(text)
+      setInputValue(value)
+    }
   }
 
   const handleFocus = (event: Event) => {
@@ -99,24 +102,25 @@ export const TextArea: FunctionComponent<
       {/* @ts-ignore */}
       <Textarea
         nativeProps={{
+          readOnly,
           rows,
-          onChange: (e: Event) => handleChange(e),
-          onCompositionEnd: () => {
-            compositionRef.current = false
-          },
           onCompositionStart: () => {
             compositionRef.current = true
+          },
+          onCompositionEnd: () => {
+            compositionRef.current = false
           },
         }}
         className={`${classPrefix}__textarea`}
         style={style}
+        disabled={Taro.getEnv() === 'WEB' ? disabled : disabled || readOnly}
         value={inputValue}
-        disabled={disabled}
-        autoHeight={autoSize}
+        // @ts-ignore
+        onInput={(e: any) => handleChange(e)}
         onBlur={(e: any) => handleBlur(e)}
-        onInput={((e: any) => handleChange(e)) as any}
         onFocus={(e: any) => handleFocus(e)}
-        maxlength={maxLength}
+        autoHeight={autoSize}
+        maxlength={maxLength === -1 ? undefined : maxLength}
         placeholder={placeholder || locale.placeholder}
         {...rest}
       />

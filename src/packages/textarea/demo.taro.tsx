@@ -6,6 +6,7 @@ import Header from '@/sites/components/header'
 
 interface T {
   basic: string
+  controlled: string
   numbers: string
   autoHeight: string
   we2312222: string
@@ -21,6 +22,7 @@ const TextAreaDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
       basic: '基础用法',
+      controlled: '受控方式',
       numbers: '显示字数统计',
       autoHeight: '高度自定义，拉伸',
       we2312222: '修改字数统计样式',
@@ -33,6 +35,7 @@ const TextAreaDemo = () => {
     },
     'zh-TW': {
       basic: '基礎用法',
+      controlled: '受控方式',
       numbers: '顯示數字統計',
       autoHeight: '高度自定義，拉伸',
       we2312222: '修改字数统计样式',
@@ -45,6 +48,7 @@ const TextAreaDemo = () => {
     },
     'en-US': {
       basic: 'Basic usage',
+      controlled: 'Controlled',
       numbers: 'Displays numerical',
       autoHeight: 'Highly adaptive',
       we2312222: 'reset limit color',
@@ -56,6 +60,8 @@ const TextAreaDemo = () => {
       alignRight: 'TextAlign Right',
     },
   })
+
+  const [value, setValue] = useState(translated.controlled)
 
   const customTheme = {
     nutuiTextareaTextCurrorColor: `var(--nutui-brand-color)`,
@@ -69,15 +75,23 @@ const TextAreaDemo = () => {
         <h2>{translated.basic}</h2>
         <TextArea
           defaultValue={translated.basic}
-          maxLength={200}
-          showCount
           className="text-1"
           style={{ fontSize: '12px' }}
+          onChange={(value) => {
+            console.log('change', value)
+          }}
           onBlur={() => {
             console.log('blur')
           }}
           onFocus={() => {
             console.log('focus')
+          }}
+        />
+        <h2>{translated.controlled}</h2>
+        <TextArea
+          value={value}
+          onChange={(value) => {
+            setValue(value)
           }}
         />
         <h2>{translated.numbers}</h2>

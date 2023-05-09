@@ -167,5 +167,4 @@ export default App
 | --nutui-textarea-limit-color | 字数统计颜色 | `$text-color` |
 | --nutui-textarea-text-color | 文本颜色 | `$title-color` |
 | --nutui-textarea-text-curror-color  | 光标颜色 | `$title-color`|
-| --nutui-textarea-text-line-height  | 行高 | `30px` |
 | --nutui-textarea-disabled-color | 禁用颜色 | `$disable-color` |
