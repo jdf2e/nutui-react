@@ -83,10 +83,22 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
       setCurrent(value)
     },
     next: () => {
-      setCurrent((current + 1) % childrenLength.current)
+      if (loop) {
+        setCurrent((current + 1) % childrenLength.current)
+      } else {
+        setCurrent(
+          current + 1 >= childrenLength.current ? current : current + 1
+        )
+      }
     },
     prev: () => {
-      setCurrent((current - 1) % childrenLength.current)
+      if (loop) {
+        let next = current - 1
+        next = next < 0 ? childrenLength.current + next : next
+        setCurrent(next % childrenLength.current)
+      } else {
+        setCurrent(current - 1 <= 0 ? 0 : current - 1)
+      }
     },
   }))
   return (
