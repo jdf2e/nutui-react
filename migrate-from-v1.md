@@ -253,6 +253,10 @@
 - 新增className和style属性的支持
 - 优化H5的代码，去掉useEffect渲染改用useLayoutEffect
 #### Empty
+- 新增status属性,默认图片错误类型
+- 优化代码逻辑，包括status和image的逻辑，渲染问题修复以及文档优化
+- 1）渲染问题修复：之前的description的ReactNode节点存在引入错误，导致传入元素标签失效，2.0版本进行了一个修复。
+- 2）代码逻辑优化：因新增status属性，对一些无用的代码进行了一个精简优化
 #### ImagePreview
 #### NoticeBar
 #### Popover
