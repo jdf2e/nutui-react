@@ -10,7 +10,6 @@ exports[`textarea props test 1`] = `
       maxlength="20"
       placeholder="请输入内容"
       rows="2"
-      style="text-align: left;"
     >
       基本用法
     </textarea>
