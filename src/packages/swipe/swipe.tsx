@@ -3,7 +3,6 @@ import React, {
   forwardRef,
   useState,
   TouchEvent,
-  useMemo,
   useCallback,
   useImperativeHandle,
   useEffect,
@@ -14,7 +13,6 @@ import { useTouch } from '@/utils/use-touch'
 import { getRect } from '@/utils/use-client-rect'
 
 export type SwipeSide = 'left' | 'right'
-export type SwipePosition = SwipeSide | 'cell' | 'outside'
 
 function preventDefault(
   event: TouchEvent | Event,
@@ -60,10 +58,10 @@ export interface SwipeProps {
     position,
   }: {
     name: string | number
-    position: SwipePosition
+    position: SwipeSide
   }) => void
   /** 点击时触发 */
-  onActionClick?: (event: Event, position: SwipePosition) => void
+  onActionClick?: (event: Event, position: SwipeSide) => void
   onTouchStart?: (event: Event) => void
   onTouchEnd?: (event: Event) => void
   onTouchMove?: (event: Event) => void
@@ -172,7 +170,7 @@ export const Swipe = forwardRef<
     setState((v) => ({ ...v, offset: Number(offset) || 0 }))
   }
 
-  const close = (position?: SwipePosition) => {
+  const close = (position?: SwipeSide) => {
     if (opened.current) {
       opened.current = false
       props.onClose?.({
@@ -228,7 +226,7 @@ export const Swipe = forwardRef<
     }
     return null
   }
-  const handleOperate = (event: Event, position: SwipePosition) => {
+  const handleOperate = (event: Event, position: SwipeSide) => {
     event.stopPropagation()
     if (props.beforeClose) {
       props.beforeClose(position)
