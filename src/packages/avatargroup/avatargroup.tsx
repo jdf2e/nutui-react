@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
-import { AvatarContext } from './avatarcontext'
+import { AvatarContext } from './context'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 

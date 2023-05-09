@@ -7,7 +7,7 @@ import React, {
   MouseEventHandler,
 } from 'react'
 import classNames from 'classnames'
-import { AvatarContext } from '@/packages/avatargroup/avatarcontext'
+import { AvatarContext } from '@/packages/avatargroup/context'
 import { My } from '@nutui/icons-react'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'

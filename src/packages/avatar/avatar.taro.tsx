@@ -8,7 +8,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Image } from '@tarojs/components'
-import { AvatarContext } from '@/packages/avatargroup/avatarcontext'
+import { AvatarContext } from '@/packages/avatargroup/context'
 import { My } from '@nutui/icons-react-taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
