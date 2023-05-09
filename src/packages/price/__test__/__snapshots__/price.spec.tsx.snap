@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`props decimalDigits test 1`] = `
+exports[`props digits test 1`] = `
 <div>
   <div
     class="nut-price "
@@ -29,7 +29,7 @@ exports[`props decimalDigits test 1`] = `
 </div>
 `;
 
-exports[`props needSymbol and symbol test 1`] = `
+exports[`props symbol test 1`] = `
 <div>
   <div
     class="nut-price "

@@ -254,7 +254,12 @@
 #### ImagePreview
 #### NoticeBar
 #### Popover
+
 #### Price
+
+- `decimalDigits` 重命名为 `digits`
+- 删除`needSymbol`, 利用 `symbol` 判断是否需要加上 symbol 符号
+  
 #### Progress
 - percentage 重命名为 percent，受控
 - 移除 isShowPercentage，可以自定义传入文案

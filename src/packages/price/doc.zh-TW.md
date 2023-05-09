@@ -25,13 +25,13 @@ const App = () => {
   return (
     <>
         <Cell>
-            <Price price={0} size="small" needSymbol thousands />
+            <Price price={0} size="small"  thousands />
         </Cell>
         <Cell>
-            <Price price={0} size="normal" needSymbol thousands />
+            <Price price={0} size="normal"  thousands />
         </Cell>
         <Cell>
-            <Price price={0} size="large" needSymbol thousands />
+            <Price price={0} size="large"  thousands />
         </Cell>
     </>
   );
@@ -54,8 +54,8 @@ const App = () => {
     <Cell>
         <Price
           price={8888}
-          decimalDigits={0}
-          needSymbol
+          digits={0}
+          
           size="normal"
           thousands
         />
@@ -78,7 +78,7 @@ import { Price, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <Price price={10010.01} size="normal" needSymbol thousands={false} />
+        <Price price={10010.01} size="normal"  thousands={false} />
     </Cell>
   );
 };
@@ -101,8 +101,8 @@ const App = () => {
          <Price
           price={15213.1221}
           size="normal"
-          decimalDigits={3}
-          needSymbol
+          digits={3}
+          
           thousands
         />
     </Cell>
@@ -129,7 +129,7 @@ const App = () => {
           size="normal"
           position="after"
           symbol="元"
-          needSymbol
+          
           thousands
         />
     </Cell>
@@ -163,9 +163,9 @@ const App = () => {
     <Cell>
         <Price
           price={price}
-          decimalDigits={3}
+          digits={3}
           size="normal"
-          needSymbol
+          
           thousands
         />
     </Cell>
@@ -180,16 +180,14 @@ export default App;
 
 ### Props
 
-| 參數           | 說明                     | 類型    | 默認值 |
-| -------------- | ------------------------ | ------- | ------ |
-| price          | 價格數量                 | number  | `0`      |
-| needSymbol    | 是否需要加上 symbol 符號 | boolean | `true`   |
-| symbol         | 符號類型                 | string  | `&yen;`  |
-| decimalDigits | 小數位位數               | number  | `2`      |
-| thousands      | 是否按照千分號形式顯示   | boolean | `false`  |
-| position`v1.3.9`  | 符號顯示在價格前或者後，`before`、`after`  | string           | `before` |
-| size`v1.3.9`   | 價格尺寸，`large`、`normal`、`small`     | string           | `large` |
-
+| 參數 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| price | 價格數量 | `number` | `0` |
+| symbol | 符號類型 | `string` | `&amp;amp;yen;` |
+| digits | 小數位位數 | `number` | `2` |
+| thousands | 是否按照千分號形式顯示 | `boolean` | `false` |
+| position`v1.3.9` | 符號顯示在價格前或者後，`before`、`after` | `string` | `before` |
+| size`v1.3.9` | 價格尺寸，`large`、`normal`、`small` | `string` | `large` |
 
 ## 主題定制
 
@@ -199,12 +197,12 @@ export default App;
 
 | 名稱 | 默認值 |
 | --- | --- |
-| --nutui-price-symbol-big-size | `18px` |
-| --nutui-price-integer-big-size | `24px` |
-| --nutui-price-decimal-big-size | `18px` |
-| --nutui-price-symbol-medium-size | `14px` |
-| --nutui-price-integer-medium-size | `16px` |
-| --nutui-price-decimal-medium-size | `14px` |
-| --nutui-price-symbol-small-size | `10px` |
-| --nutui-price-integer-small-size | `12px` |
-| --nutui-price-decimal-small-size | `10px` |
+| \--nutui-price-symbol-big-size | `18px` |
+| \--nutui-price-integer-big-size | `24px` |
+| \--nutui-price-decimal-big-size | `18px` |
+| \--nutui-price-symbol-medium-size | `14px` |
+| \--nutui-price-integer-medium-size | `16px` |
+| \--nutui-price-decimal-medium-size | `14px` |
+| \--nutui-price-symbol-small-size | `10px` |
+| \--nutui-price-integer-small-size | `12px` |
+| \--nutui-price-decimal-small-size | `10px` |
