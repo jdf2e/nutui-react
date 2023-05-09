@@ -196,7 +196,7 @@ export default App;
 
 :::
 
-## API
+## Price
 
 ### Props
 

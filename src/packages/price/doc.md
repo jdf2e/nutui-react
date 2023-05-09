@@ -1,10 +1,10 @@
 # Price 价格
 
-### 介绍
+## 介绍
 
 用来对商品价格数值的小数点前后部分应用不同样式，还支持人民币符号、千位分隔符、设置小数点位数等功能。
 
-### 安装
+## 安装
 
 ```javascript
 // react
@@ -55,7 +55,6 @@ const App = () => {
         <Price
           price={8888}
           digits={0}
-          
           size="normal"
           thousands
         />
@@ -102,7 +101,6 @@ const App = () => {
           price={15213.1221}
           size="normal"
           digits={3}
-          
           thousands
         />
     </Cell>
@@ -129,7 +127,6 @@ const App = () => {
           size="normal"
           position="after"
           symbol="元"
-          
           thousands
         />
     </Cell>
@@ -185,7 +182,6 @@ const App = () => {
           price={price}
           digits={3}
           size="normal"
-          
           thousands
         />
     </Cell>
@@ -196,7 +192,7 @@ export default App;
 
 :::
 
-## API
+## Price
 
 ### Props
 

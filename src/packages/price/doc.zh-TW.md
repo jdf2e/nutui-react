@@ -140,6 +140,26 @@ export default App;
 
 :::
 
+### 不展示 symbol 符號
+
+:::demo
+
+```tsx
+import  React from "react"
+import { Price, Cell } from '@nutui/nutui-react'
+
+const App = () => {
+  return (
+    <Cell>
+        <Price price={15213.1221} size="normal" symbol="" />
+    </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
 ### 異步隨機變更
 
 :::demo
@@ -186,23 +206,23 @@ export default App;
 | symbol | 符號類型 | `string` | `&amp;amp;yen;` |
 | digits | 小數位位數 | `number` | `2` |
 | thousands | 是否按照千分號形式顯示 | `boolean` | `false` |
-| position`v1.3.9` | 符號顯示在價格前或者後，`before`、`after` | `string` | `before` |
-| size`v1.3.9` | 價格尺寸，`large`、`normal`、`small` | `string` | `large` |
+| position | 符號顯示在價格前或者後，`before`、`after` | `string` | `before` |
+| size | 價格尺寸，`large`、`normal`、`small` | `string` | `large` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| \--nutui-price-symbol-big-size | `18px` |
-| \--nutui-price-integer-big-size | `24px` |
-| \--nutui-price-decimal-big-size | `18px` |
-| \--nutui-price-symbol-medium-size | `14px` |
-| \--nutui-price-integer-medium-size | `16px` |
-| \--nutui-price-decimal-medium-size | `14px` |
-| \--nutui-price-symbol-small-size | `10px` |
-| \--nutui-price-integer-small-size | `12px` |
-| \--nutui-price-decimal-small-size | `10px` |
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| \--nutui-price-symbol-big-size | large 尺寸符號字體大小 | `18px` |
+| \--nutui-price-integer-big-size | large 尺寸整數部分字體大小 | `24px` |
+| \--nutui-price-decimal-big-size | large 尺寸小數部分字體大小 | `18px` |
+| \--nutui-price-symbol-medium-size | normal 尺寸符號字體大小 | `14px` |
+| \--nutui-price-integer-medium-size | normal 尺寸整數部分字體大小 | `16px` |
+| \--nutui-price-decimal-medium-size | normal 尺寸小數部分字體大小 | `14px` |
+| \--nutui-price-symbol-small-size | small 尺寸符號字體大小 | `10px` |
+| \--nutui-price-integer-small-size | small 尺寸整數部分字體大小 | `12px` |
+| \--nutui-price-decimal-small-size | small 尺寸小數部分字體大小 | `10px` |
