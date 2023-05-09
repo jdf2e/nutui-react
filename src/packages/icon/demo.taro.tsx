@@ -21,9 +21,9 @@ const generateCopyText = (name: string) => {
   return `<${camelCase(name, { pascalCase: true })} />`
 }
 const generateAMCopyText = (icon: any) => {
-  return `
-  <IconFont name="${icon.name}"
-    className="${`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}"/>`
+  return `<${camelCase(icon.name, {
+    pascalCase: true,
+  })} className="${`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}" />`
 }
 const copyTag = (text: string) => {
   const input = document.createElement('input')
