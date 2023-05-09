@@ -20,7 +20,6 @@ export interface AvatarProps extends BasicComponent {
   shape: AvatarShape
   background: string
   color: string
-  prefixCls: string
   src: string
   alt: string
   onClick: (e: MouseEvent) => void
@@ -36,7 +35,6 @@ const defaultProps = {
   icon: '',
   background: '#eee',
   color: '#666',
-  prefixCls: 'nut-avatar',
   fit: 'cover',
   src: '',
   alt: '',
@@ -48,7 +46,6 @@ export const Avatar: FunctionComponent<
 > = (props) => {
   const {
     children,
-    prefixCls,
     size,
     shape,
     background,
