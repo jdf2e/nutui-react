@@ -7,7 +7,7 @@ import React, {
   MouseEventHandler,
 } from 'react'
 import classNames from 'classnames'
-import { Image } from '@tarojs/components'
+import Image from '@/packages/image/index.taro'
 import { AvatarContext } from '@/packages/avatargroup/context'
 import { My } from '@nutui/icons-react-taro'
 
@@ -17,13 +17,13 @@ export interface AvatarProps extends BasicComponent {
   size: string
   icon: React.ReactNode
   shape: AvatarShape
-  bgColor: string
+  background: string
   color: string
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
-  prefixCls: string
   src: string
+  alt: string
   onClick: (e: MouseEvent) => void
-  onError: (e: any) => void
+  onError: () => void
 }
 
 export type AvatarShape = 'round' | 'square'
@@ -34,10 +34,10 @@ const defaultProps = {
   shape: 'round',
   icon: '',
   fit: 'cover',
-  bgColor: '#eee',
+  background: '#eee',
   color: '#666',
-  prefixCls: 'nut-avatar',
   src: '',
+  alt: '',
 } as AvatarProps
 
 const classPrefix = `nut-avatar`
@@ -46,14 +46,14 @@ export const Avatar: FunctionComponent<
 > = (props) => {
   const {
     children,
-    prefixCls,
     size,
     shape,
-    bgColor,
+    background,
     color,
     src,
     icon,
     fit,
+    alt,
     className,
     style,
     onClick,
@@ -80,7 +80,7 @@ export const Avatar: FunctionComponent<
   const styles: React.CSSProperties = {
     width: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
     height: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
-    backgroundColor: `${bgColor}`,
+    backgroundColor: `${background}`,
     color: `${color}`,
     marginLeft:
       avatarIndex !== 1 && parent?.propAvatarGroup?.gap
@@ -94,7 +94,7 @@ export const Avatar: FunctionComponent<
   }
 
   const maxStyles: React.CSSProperties = {
-    backgroundColor: `${parent?.propAvatarGroup?.maxBgColor}`,
+    backgroundColor: `${parent?.propAvatarGroup?.maxBackground}`,
     color: `${parent?.propAvatarGroup?.maxColor}`,
   }
 
@@ -129,9 +129,9 @@ export const Avatar: FunctionComponent<
     }
   }
 
-  const errorEvent = (e: any) => {
+  const errorEvent = () => {
     if (props.onError) {
-      props.onError(e)
+      props.onError()
     }
   }
 
@@ -159,6 +159,7 @@ export const Avatar: FunctionComponent<
                   className="avatar-img"
                   src={src}
                   style={{ objectFit: fit }}
+                  alt={alt}
                   onError={errorEvent}
                 />
               )}

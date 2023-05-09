@@ -29,7 +29,7 @@ test('shape props', () => {
 
 test('bgColor props', () => {
   const { getByTestId } = render(
-    <Avatar data-testid="avatar-bgColor" bgColor="#000000" />
+    <Avatar data-testid="avatar-bgColor" background="#000000" />
   )
   expect(getByTestId('avatar-bgColor').style.backgroundColor).toBe(
     'rgb(0, 0, 0)'

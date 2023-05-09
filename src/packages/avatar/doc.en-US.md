@@ -103,10 +103,10 @@ const App = () => {
       <Avatar
         className="demo-avatar"
         color="#fff"
-        bgColor="#FA2C19"
+        background="#FA2C19"
         icon={<My />}
       />
-      <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">U</Avatar>
+      <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">U</Avatar>
     </>
   )
 }
@@ -152,15 +152,15 @@ const App = () => {
       <AvatarGroup gap="-4">
         <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
         <Avatar icon={<My />} />
-        <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
+        <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
           U
         </Avatar>
       </AvatarGroup>
 
-      <AvatarGroup max="3" maxColor="#fff" maxBgColor="#498ff2">
+      <AvatarGroup max="3" maxColor="#fff" maxBackground="#498ff2">
         <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
         <Avatar icon={<My />} />
-        <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
+        <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
           U
         </Avatar>
         <Avatar icon={<My />} />
@@ -186,7 +186,7 @@ const App = () => {
       <AvatarGroup max="3" level="right" maxContent="...">
         <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
         <Avatar icon={<My />} />
-        <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
+        <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
           U
         </Avatar>
         <Avatar icon={<My />} />
@@ -227,14 +227,14 @@ export default App;
 |-------------------------| ---------------------------------------------------------------- |-----------| ------ |
 | size                    | The size of the avatar,eg：`large`、`normal`、`small`,and numbers   | `string`    | `''` |
 | shape                   | The shape of avatar，eg：`square`、`round`           | `'round' \| 'square'`    | `'round'`  |
-| bgColor                 | The colors of Icon and letter types                   | `string`    | `#eee`   |
+| background                 | The colors of Icon and letter types                   | `string`    | `#eee`   |
 | color                   | The background colors of Icon and letter types                     | `string`    | `#666`   |
 | fit | The fill mode of the image | `'contain' \| 'cover' \| 'fill' \| 'none' \| 'scale-down'`    | `'cover'`   |
 | src                     | The address of the image for an image avatar or image element       | `string`    | `''`       |
 | alt                     | This attribute defines the alternative text describing the image    | `string`    | `''` |
 | icon                    | Custom icon type for an icon avatar  | `ReactNode` | `-` |
 | onClick  | Emitted when cell is clicked    | `(e: MouseEvent) => void` | `-` |
-| onError       | Handler when img load error   | `(e: any) => void`        | `-`        |
+| onError       | Handler when img load error   | `() => void`        | `-`        |
 
 ## AvatarGroup
 
@@ -245,7 +245,7 @@ export default App;
 | maxContent  | When the number of avatars exceeds, a avatar folding element will appear，The content of this element can be `...`、`more`、`+N`。。 | `string` | `''`     | 
 | size         | The size of the avatar，eg：`large`、`normal`、`small`，supports direct input of numbers   | `'large' \| 'normal' \| 'small'` | `''`     |
 | shape        | The shape of avatar，eg：`square`、`round`            | `'string' \| 'round'`  |  `''`  |
-| maxBgColor  | The colors of Icon and letter types | `string` | `#eee`   |
+| maxBackground  | The colors of Icon and letter types | `string` | `#eee`   |
 | maxColor    | The background colors of Icon and letter types                   | `string` | `#666`   |
 | gap         | Distance between avatars               | `string` | `-8`     |
 | level       | Hierarchy direction between avatar group，eg：`left`、`right`  | `'left' \| 'right'` | `'left'`     |

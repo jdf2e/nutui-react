@@ -230,7 +230,7 @@ const GridDemo = () => {
             <Avatar
               className="demo-avatar"
               icon={<My color="#fff" />}
-              bgColor="#FA2C19"
+              background="#FA2C19"
             />
           </Grid.Item>
           <Grid.Item>

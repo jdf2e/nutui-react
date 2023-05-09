@@ -103,10 +103,10 @@ const App = () => {
       <Avatar
         className="demo-avatar"
         color="#fff"
-        bgColor="#FA2C19"
+        background="#FA2C19"
         icon={<My />}
       />
-      <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">U</Avatar>
+      <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">U</Avatar>
     </>
   )
 }
@@ -157,10 +157,10 @@ const App = () => {
         </Avatar>
       </AvatarGroup>
 
-      <AvatarGroup max="3" maxColor="#fff" maxBgColor="#498ff2">
+      <AvatarGroup max="3" maxColor="#fff" maxBackground="#498ff2">
         <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
         <Avatar icon={<My />} />
-        <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
+        <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
           U
         </Avatar>
         <Avatar icon={<My />} />
@@ -186,7 +186,7 @@ const App = () => {
       <AvatarGroup max="3" level="right" maxContent="...">
         <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
         <Avatar icon={<My />} />
-        <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
+        <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
           U
         </Avatar>
         <Avatar icon={<My />} />
@@ -228,12 +228,13 @@ export default App;
 |--------------------| ---------------------------------------------------------------- |-------------|----------|
 | size | 设置头像的大小   | `string`    | `''` |
 | shape | 设置头像的形状 | `'round' \| 'square'`    | `'round'`  |
-| bgColor | 设置 Icon、字符类型头像的背景色 | `string`    | `#eee`   |
+| background | 设置 Icon、字符类型头像的背景色 | `string`    | `#eee`   |
 | color | 设置 Icon、字符类型头像的颜色 | `string`    | `#666`   |
 | src | 设置图片类型头像的地址 | `string`    | `''`       |
+| alt | 设置图片类型头像无法显示时的替代文本 | `string`    | `''` |
 | icon | 设置 Icon 类型头像图标  | `ReactNode` | `-` |
 | onClick  | 点击头像触发事件    | `(e: MouseEvent) => void` | `-` |
-| onError       | 图片加载失败的事件   | `(e: any) => void`        | `-`        |
+| onError       | 图片加载失败的事件   | `() => void`        | `-`        |
 
 ## AvatarGroup
 
@@ -244,7 +245,7 @@ export default App;
 | maxContent  | 头像数量超出时，会出现一个头像折叠元素。该元素内容可为...、more、+N。 | `string` | `''`     | 
 | size         | 设置头像的大小，可选值为：large、normal、small，支持直接输入数字   | `'large' \| 'normal' \| 'small'` | `''`     |
 | shape        | 设置头像的形状           | `'string' \| 'round'`  |  `''`  |
-| maxBgColor  | 设置 Icon、字符类型头像的背景色 | `string` | `#eee`   |
+| maxBackground  | 设置 Icon、字符类型头像的背景色 | `string` | `#eee`   |
 | maxColor    | 设置 Icon、字符类型头像的颜色                   | `string` | `#666`   |
 | gap         | 设置头像之间的间距               | `string` | `-8`     |
 | level       | 头像之间的层级关系，可选值为：left、right  | `'left' \| 'right'` | `'left'`     |

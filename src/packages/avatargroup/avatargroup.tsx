@@ -7,7 +7,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export interface AvatarGroupProps extends BasicComponent {
   maxContent: string
   max: string | number
-  maxBgColor: string
+  maxBackground: string
   maxColor: string
   size: 'large' | 'normal' | 'small'
   shape: 'round' | 'square'
@@ -18,7 +18,7 @@ const defaultProps = {
   ...ComponentDefaults,
   maxContent: '',
   max: '',
-  maxBgColor: '#eee',
+  maxBackground: '#eee',
   maxColor: '#666',
   gap: '-8',
   level: 'left',

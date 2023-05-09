@@ -9,6 +9,7 @@ import React, {
 import classNames from 'classnames'
 import { AvatarContext } from '@/packages/avatargroup/context'
 import { My } from '@nutui/icons-react'
+import Image from '@/packages/image'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -17,13 +18,13 @@ export interface AvatarProps extends BasicComponent {
   icon: React.ReactNode
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   shape: AvatarShape
-  bgColor: string
+  background: string
   color: string
   prefixCls: string
   src: string
   alt: string
   onClick: (e: MouseEvent) => void
-  onError: (e: any) => void
+  onError: () => void
 }
 
 export type AvatarShape = 'round' | 'square'
@@ -33,7 +34,7 @@ const defaultProps = {
   size: '',
   shape: 'round',
   icon: '',
-  bgColor: '#eee',
+  background: '#eee',
   color: '#666',
   prefixCls: 'nut-avatar',
   fit: 'cover',
@@ -50,7 +51,7 @@ export const Avatar: FunctionComponent<
     prefixCls,
     size,
     shape,
-    bgColor,
+    background,
     color,
     src,
     alt,
@@ -82,7 +83,7 @@ export const Avatar: FunctionComponent<
   const styles: React.CSSProperties = {
     width: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
     height: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
-    backgroundColor: `${bgColor}`,
+    backgroundColor: `${background}`,
     color: `${color}`,
     marginLeft:
       avatarIndex !== 1 && parent?.propAvatarGroup?.gap
@@ -96,7 +97,7 @@ export const Avatar: FunctionComponent<
   }
 
   const maxStyles: React.CSSProperties = {
-    backgroundColor: `${parent?.propAvatarGroup?.maxBgColor}`,
+    backgroundColor: `${parent?.propAvatarGroup?.maxBackground}`,
     color: `${parent?.propAvatarGroup?.maxColor}`,
   }
 
@@ -130,9 +131,9 @@ export const Avatar: FunctionComponent<
     }
   }
 
-  const errorEvent = (e: any) => {
+  const errorEvent = () => {
     if (props.onError) {
-      props.onError(e)
+      props.onError()
     }
   }
 
@@ -156,7 +157,7 @@ export const Avatar: FunctionComponent<
             avatarIndex <= parent?.propAvatarGroup?.max) && (
             <>
               {src && (
-                <img
+                <Image
                   className="avatar-img"
                   src={src}
                   alt={alt}
