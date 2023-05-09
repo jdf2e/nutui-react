@@ -3,18 +3,16 @@ import React, {
   useEffect,
   useState,
   useRef,
-  CSSProperties,
   useCallback,
 } from 'react'
+import classNames from 'classnames'
 import { useTouch } from '../../utils/use-touch'
 import { getRectByTaro } from '../../utils/use-client-rect'
-import Toast from '@/packages/toast/index.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type SliderValue = number | number[]
-export interface RangeProps {
-  className: string
-  style: CSSProperties
+export interface RangeProps extends BasicComponent {
   range: boolean
   disabled: boolean
   activeColor: string
@@ -39,6 +37,7 @@ export interface RangeProps {
   onDragEnd?: () => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   range: false,
   hiddenRange: false,
   hiddenTag: false,
@@ -81,6 +80,8 @@ export const Range: FunctionComponent<
     curValueDesc,
   } = { ...defaultProps, ...props }
 
+  const classPrefix = 'nut-range'
+
   let { min, max, step } = { ...defaultProps, ...props }
   min = Number(min)
   max = Number(max)
@@ -92,18 +93,11 @@ export const Range: FunctionComponent<
   const root = useRef<HTMLDivElement>(null)
   const [marksList, SetMarksList] = useState([])
 
-  const [show, SetShow] = useState(false)
-  const [toastMsg, SetToastMsg] = useState('')
-  const toastShow = (msg: any) => {
-    SetToastMsg(msg)
-    SetShow(true)
-  }
-
   useEffect(() => {
     if (typeof modelValue === 'number') {
       if (!range && (modelValue < min || modelValue > max)) {
         SetInitValue(0)
-        toastShow(`${modelValue} ${locale.range.rangeText}`)
+        console.warn(`${modelValue} ${locale.range.rangeText}`)
         return
       }
       SetInitValue(modelValue)
@@ -125,24 +119,15 @@ export const Range: FunctionComponent<
     return Number(max) - Number(min)
   }
 
-  const classes = useCallback(() => {
-    const prefixCls = 'nut-range'
-    return [
-      prefixCls,
-      `${disabled ? `${prefixCls}-disabled` : ''}`,
-      `${vertical ? `${prefixCls}-vertical` : ''}`,
-      `${!hiddenRange ? `${prefixCls}-show-number` : ''}`,
-    ]
-      .filter(Boolean)
-      .join(' ')
-  }, [disabled, vertical, hiddenRange])
+  const classes = classNames(classPrefix, {
+    [`${classPrefix}-disabled`]: disabled,
+    [`${classPrefix}-vertical`]: vertical,
+    [`${classPrefix}-show-number`]: !hiddenRange,
+  })
 
-  const containerClasses = useCallback(() => {
-    const prefixCls = 'nut-range-container'
-    return [prefixCls, `${vertical ? `${prefixCls}-vertical` : ''}`, className]
-      .filter(Boolean)
-      .join(' ')
-  }, [vertical, className])
+  const containerClasses = classNames(`${classPrefix}-container`, className, {
+    [`${classPrefix}-container-vertical`]: vertical,
+  })
 
   const markClassName = useCallback(
     (mark: any) => {
@@ -160,20 +145,10 @@ export const Range: FunctionComponent<
       return [
         `${classPrefix}-text`,
         `${isActive ? `${classPrefix}-text-active` : ''}`,
-      ]
-        .filter(Boolean)
-        .join(' ')
+      ].join(' ')
     },
     [range, modelValue, min, max]
   )
-
-  const [rangeName, setRangeName] = useState(classes())
-  const [containerName, setContainerName] = useState(containerClasses())
-
-  useEffect(() => {
-    setRangeName(classes())
-    setContainerName(containerClasses())
-  }, [classes, containerClasses])
 
   const wrapperStyle = () => {
     return {
@@ -375,17 +350,17 @@ export const Range: FunctionComponent<
   }
 
   return (
-    <div className={`${containerName}`}>
-      {!hiddenRange ? <div className="min">{minDesc || +min}</div> : null}
+    <div className={containerClasses}>
+      {!hiddenRange && <div className="min">{minDesc || +min}</div>}
       <div
         ref={root}
         style={wrapperStyle()}
-        className={`${rangeName}`}
+        className={classes}
         onClick={(e) => {
           click(e)
         }}
       >
-        {marksList.length > 0 ? (
+        {marksList.length > 0 && (
           <div className="nut-range-mark">
             {marksList.map((marks: any) => {
               return (
@@ -400,7 +375,7 @@ export const Range: FunctionComponent<
               )
             })}
           </div>
-        ) : null}
+        )}
 
         <div className="nut-range-bar" style={barStyle()}>
           {range ? (
@@ -440,11 +415,11 @@ export const Range: FunctionComponent<
                 >
                   {button || (
                     <div className="nut-range-button" style={buttonStyle()}>
-                      {!hiddenTag ? (
+                      {!hiddenTag && (
                         <div className="number">
                           {curValueDesc || curValue(index)}
                         </div>
-                      ) : null}
+                      )}
                     </div>
                   )}
                 </div>
@@ -477,24 +452,16 @@ export const Range: FunctionComponent<
             >
               {button || (
                 <div className="nut-range-button" style={buttonStyle()}>
-                  {!hiddenTag ? (
+                  {!hiddenTag && (
                     <div className="number">{curValueDesc || curValue()}</div>
-                  ) : null}
+                  )}
                 </div>
               )}
             </div>
           )}
         </div>
       </div>
-      {!hiddenRange ? <div className="max">{maxDesc || +max}</div> : null}
-      <Toast
-        type="text"
-        visible={show}
-        msg={toastMsg}
-        onClose={() => {
-          SetShow(false)
-        }}
-      />
+      {!hiddenRange && <div className="max">{maxDesc || +max}</div>}
     </div>
   )
 }
