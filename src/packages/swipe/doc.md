@@ -255,19 +255,14 @@ export default App;
 | name | 标识符，可以在事件参数中获取到 | `number \| string` | - |
 | leftAction | 左侧滑动区域的内容 | `ReactNode` | - |
 | rightAction | 右侧滑动区域的内容 | `ReactNode` | - |
-| beforeClose | 关闭前的回调函数，返回滑动区域所在方向 `position` | `left \| right` | `left` |
+| beforeClose | 关闭前的回调函数，返回滑动区域所在方向 `position` | `(position: 'left \| 'right') => void` | - |
 | disabled | 是否禁用滑动 | `boolean` | `false` |
-
-### Events
-
-| 事件名           | 说明           | 回调参数     |
-|---------------|--------------|--------------|
-| onOpen        | 打开单元格侧边栏     | `name: string, position: 'left' \| 'right'`      |
-| onClose       | 收起单元格侧边栏     | `name: string, position: 'left' \| 'right'`    |
-| onActionClick | 点击左侧或者右侧时触发  | `event: Event, position: 'left' \| 'right'`     |
-| onTouchStart`v1.4.7` | onTouchStart | `event: Event`      |
-| onTouchMove`v1.4.7`         | onTouchMove  | `event: Event`     |
-| onTouchEnd`v1.4.7`          | onTouchEnd   | `event: Event`     |
+| onOpen | 打开单元格侧边栏 | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | - |
+| onClose | 收起单元格侧边栏 | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | - |
+| onActionClick | 点击左侧或者右侧时触发 | `(event: Event, position: 'left' \| 'right') => void` | - |
+| onTouchStart | onTouchStart | `(event: Event) => void` | - |
+| onTouchMove | onTouchMove | `(event: Event) => void` | - |
+| onTouchEnd | onTouchEnd | `(event: Event) => void` | - |
 
 ### Ref
 
