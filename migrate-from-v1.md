@@ -209,6 +209,8 @@
 #### Drag
 #### Infiniteloading
 #### Notify
+- 删除 `color` 和 `background`, 通过css变量实现
+- 修改 onClosed 为 onClose，规范命名，关闭时触发。
 #### PullToRefresh
 #### Swipe
 
