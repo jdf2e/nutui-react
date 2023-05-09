@@ -31,6 +31,7 @@
 - `desc` 重命名为 `description`
 - `title`、`description` 改为 `React.Node` 类型
 - 删除 `titleSlot` 和 `descSlot`
+- 增加 `divider`, 单元格之间是否有分割线
 #### ConfigProvider
 #### Icon
 #### Image

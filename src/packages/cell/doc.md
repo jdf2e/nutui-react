@@ -114,6 +114,26 @@ export default App;
 
 :::
 
+### 垂直居中
+
+通过 `align` 属性可以让 Cell 的左右内容都垂直居中。
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+     <Cell align="center" title="我是标题" description="我是描述" extra="描述文字" />
+  );
+};
+export default App;
+```
+
+:::
+
 ### 链接 | 分组用法
 
 :::demo
@@ -166,19 +186,26 @@ export default App;
 
 :::
 
-### 垂直居中
+### 分组用法
 
-通过 `align` 属性可以让 Cell 的左右内容都垂直居中。
+通过 `divider` 属性可以让单元格之间不显示下边线。
 
 :::demo
 
 ```tsx
 import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import { CellGroup, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-     <Cell align="center" title="我是标题" description="我是描述" extra="描述文字" />
+     <CellGroup
+        divider={false}
+        title="分组用法"
+        description="单元格之间不显示下边线"
+    >
+        <Cell title="我是标题" extra="描述文字" />
+        <Cell title="我是标题" extra="描述文字" />
+    </CellGroup>
   );
 };
 export default App;
