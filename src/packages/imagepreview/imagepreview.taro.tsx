@@ -244,32 +244,32 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
         onClick={closeOnImg}
         onTouchStart={onTouchStart as any}
       >
-        <Swiper
-          autoPlay={autoplay}
-          className="nut-imagepreview-swiper"
-          loop
-          isPreventDefault={false}
-          style={{ display: showPop ? 'block' : 'none' }}
-          direction="horizontal"
-          onChange={slideChangeEnd}
-          initPage={initNo && (initNo > maxNo ? maxNo - 1 : initNo - 1)}
-          paginationColor={paginationColor}
-          paginationVisible={paginationVisible}
-        >
-          {images && images.length > 0
-            ? images.map((item, index) => {
-                return (
-                  <SwiperItem key={index}>
-                    <img
-                      src={item.src}
-                      alt=""
-                      className="nut-imagepreview-img"
-                    />
-                  </SwiperItem>
-                )
-              })
-            : []}
-        </Swiper>
+        {/*<Swiper*/}
+        {/*  autoPlay={autoplay}*/}
+        {/*  className="nut-imagepreview-swiper"*/}
+        {/*  loop*/}
+        {/*  isPreventDefault={false}*/}
+        {/*  style={{ display: showPop ? 'block' : 'none' }}*/}
+        {/*  direction="horizontal"*/}
+        {/*  onChange={slideChangeEnd}*/}
+        {/*  initPage={initNo && (initNo > maxNo ? maxNo - 1 : initNo - 1)}*/}
+        {/*  paginationColor={paginationColor}*/}
+        {/*  paginationVisible={paginationVisible}*/}
+        {/*>*/}
+        {/*  {images && images.length > 0*/}
+        {/*    ? images.map((item, index) => {*/}
+        {/*        return (*/}
+        {/*          <SwiperItem key={index}>*/}
+        {/*            <img*/}
+        {/*              src={item.src}*/}
+        {/*              alt=""*/}
+        {/*              className="nut-imagepreview-img"*/}
+        {/*            />*/}
+        {/*          </SwiperItem>*/}
+        {/*        )*/}
+        {/*      })*/}
+        {/*    : []}*/}
+        {/*</Swiper>*/}
       </div>
       <div className="nut-imagepreview-index">
         {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}

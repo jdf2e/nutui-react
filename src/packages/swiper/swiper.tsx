@@ -9,9 +9,10 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { DataContext } from './context'
-import { getRect } from '../../utils/use-client-rect'
+import { getRect } from '@/utils/use-client-rect'
 import Indicator from '@/packages/indicator'
 import { BasicComponent } from '@/utils/typings'
+import SwiperItem from '@/packages/swiperitem'
 
 export type SwiperRef = {
   to: (index: number) => void
@@ -166,12 +167,10 @@ export const Swiper = React.forwardRef<
     resetPosition()
     resetTouchDetails()
     requestFrame(() => {
-      requestFrame(() => {
-        swiperRef.current.moving = false
-        move({
-          pace: -1,
-          isEmit: true,
-        })
+      swiperRef.current.moving = false
+      move({
+        pace: -1,
+        isEmit: true,
       })
     })
   }
@@ -180,12 +179,10 @@ export const Swiper = React.forwardRef<
     resetPosition()
     resetTouchDetails()
     requestFrame(() => {
-      requestFrame(() => {
-        swiperRef.current.moving = false
-        move({
-          pace: 1,
-          isEmit: true,
-        })
+      swiperRef.current.moving = false
+      move({
+        pace: 1,
+        isEmit: true,
       })
     })
   }
@@ -194,18 +191,16 @@ export const Swiper = React.forwardRef<
     resetPosition()
     resetTouchDetails()
     requestFrame(() => {
-      requestFrame(() => {
-        swiperRef.current.moving = false
-        let targetIndex
-        if (props.loop && childCount === index) {
-          targetIndex = active === 0 ? 0 : index
-        } else {
-          targetIndex = index % childCount
-        }
-        move({
-          pace: targetIndex - active,
-          isEmit: true,
-        })
+      swiperRef.current.moving = false
+      let targetIndex
+      if (props.loop && childCount === index) {
+        targetIndex = active === 0 ? 0 : index
+      } else {
+        targetIndex = index % childCount
+      }
+      move({
+        pace: targetIndex - active,
+        isEmit: true,
       })
     })
   }
@@ -487,7 +482,7 @@ export const Swiper = React.forwardRef<
   }))
 
   const renderIndicator = () => {
-    if (React.isValidElement(indicator)) return <div>{indicator}</div>
+    if (React.isValidElement(indicator)) return indicator
     if (indicator === true) {
       return (
         <div

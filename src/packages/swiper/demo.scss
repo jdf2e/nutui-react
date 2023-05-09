@@ -1,11 +1,13 @@
 .demo-box {
   position: relative;
+
   .nut-swiper {
     img {
       width: 100%;
       height: 100%;
     }
   }
+
   .page {
     position: absolute;
     bottom: 0;
@@ -18,6 +20,7 @@
     color: #fff;
     font-size: 14px;
   }
+
   .nut-swiper-btns {
     width: 100%;
     position: absolute;
@@ -27,6 +30,7 @@
     display: flex;
     justify-content: space-between;
     height: 0px;
+
     span {
       display: flex;
       align-items: center;
@@ -37,23 +41,28 @@
     }
   }
 }
+
 .vertical-center {
   .nut-swiper {
     height: 150px;
   }
+
   .nut-swiper__pagination-vertical {
     i {
       width: 6px;
       height: 6px;
       border-radius: 50%;
+
       &.active {
         height: 18px;
         border-radius: 5px;
       }
     }
   }
+
   .nut-swiper-item {
     height: 300px;
+
     img {
       width: 100%;
       height: 100%;
