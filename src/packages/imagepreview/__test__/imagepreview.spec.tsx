@@ -91,12 +91,7 @@ test('init page No.', async () => {
 
 test('customize pagination and color', async () => {
   const { container } = render(
-    <ImagePreview
-      images={images}
-      show
-      paginationVisible
-      paginationColor="red"
-    />
+    <ImagePreview images={images} show indicator paginationColor="red" />
   )
 
   const swiperPagination = container.querySelector('.nut-swiper__pagination')

@@ -34,7 +34,7 @@ test('should render width and height', () => {
       autoplay="2000"
       defaultValue={defaultValue}
       onChange={onChange}
-      paginationVisible
+      indicator
     >
       {list.map((item) => {
         return (
@@ -75,7 +75,7 @@ test('should render initpage', () => {
       width={width}
       defaultValue={defaultValue}
       onChange={onChange}
-      paginationVisible
+      indicator
     >
       {list.map((item) => {
         return (
@@ -114,7 +114,7 @@ test('should render direction', () => {
       direction={direction}
       defaultValue={defaultValue}
       onChange={onChange}
-      paginationVisible
+      indicator
     >
       {list.map((item) => {
         return (
@@ -141,9 +141,8 @@ test('should render pagination', () => {
     height: 150,
     defaultValue: 1,
     width: 375,
-    paginationColor: 'red',
   }
-  const { height, defaultValue, width, paginationColor } = state
+  const { height, defaultValue, width } = state
   const onChange = (e: number) => {}
 
   const { container } = render(
@@ -152,8 +151,11 @@ test('should render pagination', () => {
       width={width}
       defaultValue={defaultValue}
       onChange={onChange}
-      paginationVisible
-      paginationColor={paginationColor}
+      indicator
+      style={{
+        '--nutui-indicator-color': '#426543',
+        '--nutui-indicator-dot-color': '#426ddd',
+      }}
     >
       {list.map((item) => {
         return (

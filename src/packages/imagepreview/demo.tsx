@@ -149,7 +149,7 @@ const ImagePreviewDemo = () => {
         <ImagePreview
           images={images}
           show={showPreview3}
-          paginationVisible
+          indicator
           paginationColor="red"
           onClose={hideFn3}
         />

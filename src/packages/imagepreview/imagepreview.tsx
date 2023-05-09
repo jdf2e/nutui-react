@@ -37,7 +37,7 @@ export interface ImagePreviewProps {
   autoplay: number | string
   initNo: number
   contentClose: boolean
-  paginationVisible: boolean
+  indicator: boolean
   style?: CSSProperties
   paginationColor: string
   onClose: () => void
@@ -49,7 +49,7 @@ const defaultProps = {
   autoplay: 3000,
   initNo: 1,
   contentClose: false,
-  paginationVisible: false,
+  indicator: false,
   paginationColor: '#fff',
   onClose: () => {},
 } as ImagePreviewProps
@@ -62,7 +62,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     show,
     initNo,
     paginationColor,
-    paginationVisible,
+    indicator,
     autoplay,
     contentClose,
     onClose,
@@ -255,8 +255,8 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           direction="horizontal"
           onChange={slideChangeEnd}
           defaultValue={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
-          paginationColor={paginationColor}
-          paginationVisible={paginationVisible}
+          // paginationColor={paginationColor}
+          indicator={indicator}
         >
           {(videos && videos.length > 0
             ? videos.map((item, index) => {
