@@ -8,7 +8,7 @@ import React, {
   ReactNode,
 } from 'react'
 import classNames from 'classnames'
-import { DataContext } from './UserContext'
+import { DataContext } from './context'
 import { getRect } from '../../utils/use-client-rect'
 import Indicator from '@/packages/indicator'
 import { BasicComponent } from '@/utils/typings'

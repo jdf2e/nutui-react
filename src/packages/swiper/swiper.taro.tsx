@@ -8,7 +8,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { useReady, createSelectorQuery, nextTick } from '@tarojs/taro'
-import { DataContext } from './UserContext'
+import { DataContext } from './context'
 import bem from '@/utils/bem'
 
 export type SwiperRef = {
