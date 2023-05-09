@@ -902,7 +902,7 @@
           "author": "songsong"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Ellipsis",
           "type": "component",
           "cName": "文本省略",

@@ -250,6 +250,8 @@
 #### Collapse
 #### CountDown
 #### Ellipsis
+- 新增className和style属性的支持
+- 优化H5的代码，去掉useEffect渲染改用useLayoutEffect
 #### Empty
 #### ImagePreview
 #### NoticeBar
