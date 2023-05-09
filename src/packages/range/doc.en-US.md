@@ -1,10 +1,10 @@
 # Range 
 
-### Intro
+## Intro
   
 Slide the input bar to select a value within a given range.
 
-### Install
+## Install
 
 ```javascript
 // react
@@ -509,43 +509,32 @@ export default App;
 ```
 :::
 
-## API
+## Range
 
 ### Props
 
-| Attribute         | Description            |  Type            | Default                   |
+| Property         | Description            |  Type            | Default                   |
 | ------------- | ------------------ | ---------------- | ------------------------ |
-| modelValue    | current progress percentage     | number \| number[] | `0`                      |
-| range         | Whether to enable dual slider mode | boolean          | `false`                  |
-| max           | maximum             | number \| string   | `100`                    |
-| min           | minimum             | number \| string   | `0`                      |
-| maxDesc`v1.3.12`     | maximum  description        | number \| string   | -                    |
-| minDesc`v1.3.12`     | minimum description          | number \| string   | -                      |
-| curValueDesc`v1.3.12` | current progress percentage description  | number \| string |-                    |
-| step          | step size               | number \| string   | `1`                      |
-| disabled      | Whether to disable the slider       | boolean          | `false`                  |
-| vertical      | Whether to display vertically | boolean | `false` |
-| hiddenRange   | whether to hide range values     | boolean          | `false`                  |
-| hiddenTag     | whether to hide the label       | boolean          | `false`                  |
-| activeColor   | progress bar active color   | string           | `rgba(250, 44, 25, 1)`   |
-| inactiveColor | Progress bar inactive color | string           | `rgba(255, 163, 154, 1)` |
-| buttonColor   | button color           | string           | `rgba(250, 44, 25, 1)`   |
-| marks | scale mark | Object{key: number} | `{}` |
-
-### Events
-
-| Event             | Description                     | Arguments        |
-| ------------------ | ------------------------ | --------------- |
-| onChange            | Triggered when the progress changes and the drag is over | value: progress |
+| modelValue    | current progress percentage     | `number \| number[]` | `0`                      |
+| range         | Whether to enable dual slider mode | `boolean`          | `false`                  |
+| max           | maximum             | `number \| string`   | `100`                    |
+| min           | minimum             | `number \| string`   | `0`                      |
+| maxDesc`v1.3.12`     | maximum  description        | `number \| string`   | -                    |
+| minDesc`v1.3.12`     | minimum description          | `number \| string`   | -                      |
+| curValueDesc`v1.3.12` | current progress percentage description  | `number \| string` |-                    |
+| step          | step size               | `number \| string`   | `1`                      |
+| disabled      | Whether to disable the slider       | `boolean`          | `false`                  |
+| vertical      | Whether to display vertically | `boolean` | `false` |
+| hiddenRange   | whether to hide range values     | `boolean`          | `false`                  |
+| hiddenTag     | whether to hide the label       | `boolean`          | `false`                  |
+| activeColor   | progress bar active color   | `string`           | `rgba(250, 44, 25, 1)`   |
+| inactiveColor | Progress bar inactive color | `string`           | `rgba(255, 163, 154, 1)` |
+| buttonColor   | button color           | `string`           | `rgba(250, 44, 25, 1)`   |
+| marks | scale mark | `Object{key: number}` | `{}` |
+| button | custom slide button | `ReactNode` | - |
+| onChange            | Triggered when the progress changes and the drag is over | `(value) => void` | - |
 | onDragStart         | Triggered when dragging starts           | -               |
 | onDragEnd          | Triggered when the drag is over           | -               |
-
-### Slots
-
-| Name   | Description           |
-| ------ | -------------- |
-| button | custom slide button |
-
 
 ## Theming
 

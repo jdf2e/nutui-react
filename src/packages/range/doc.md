@@ -1,10 +1,10 @@
 # Range 区间选择器
 
-### 介绍
+## 介绍
 
 滑动输入条，用于在给定的范围内选择一个值。
 
-### 安装
+## 安装
 
 ```javascript
 // react
@@ -508,43 +508,32 @@ export default App;
 ```
 :::
 
-## API
+## Range
 
 ### Props
 
 | 参数          | 说明                 | 类型             | 默认值                   |
 | ------------- | ------------------- | ---------------- | ------------------------ |
-| modelValue    | 当前进度百分比     | number \| number[] | `0`                      |
-| range         | 是否开启双滑块模式 | boolean          | `false`                  |
-| max           | 最大值             | number \| string   | `100`                    |
-| min           | 最小值             | number \| string   | `0`                      |
-| maxDesc`v1.3.12`     | 最大值描述          | number \| string   | -                    |
-| minDesc`v1.3.12`     | 最小值描述          | number \| string   | -                      |
-| curValueDesc`v1.3.12` | 当前值描述          | number \| string   | -                    |
-| step          | 步长               | number \| string   | `1`                      |
-| disabled      | 是否禁用滑块       | boolean          | `false`                  |
-| vertical | 是否竖向展示 | boolean | `false` |
-| hiddenRange   | 是否隐藏范围值     | boolean          | `false`                  |
-| hiddenTag     | 是否隐藏标签       | boolean          | `false`                  |
-| activeColor   | 进度条激活态颜色   | string           | `rgba(250, 44, 25, 1)`   |
-| inactiveColor | 进度条非激活态颜色 | string           | `rgba(255, 163, 154, 1)` |
-| buttonColor   | 按钮颜色           | string           | `rgba(250, 44, 25, 1)`   |
-| marks | 刻度标示| Object{key: number}    | `{}` |
-
-### Events
-
-| 事件名    | 说明                     | 回调参数        |
-| --------- | ------------------------ | --------------- |
-| onChange    | 进度变化且结束拖动后触发 | value: 当前进度 |
-| onDragStart  | 开始拖动时触发           | -               |
-| onDragEnd   | 结束拖动时触发           | -               |
-
-### Slots
-
-| 名称   | 说明           |
-| ------ | -------------- |
-| button | 自定义滑动按钮 |
-
+| modelValue    | 当前进度百分比     | `number \| number[]` | `0`                      |
+| range         | 是否开启双滑块模式 | `boolean`          | `false`                  |
+| max           | 最大值             | `number \| string`   | `100`                    |
+| min           | 最小值             | `number \| string`   | `0`                      |
+| maxDesc`v1.3.12`     | 最大值描述          | `number \| string`   | -                    |
+| minDesc`v1.3.12`     | 最小值描述          | `number \| string`   | -                      |
+| curValueDesc`v1.3.12` | 当前值描述          | `number \| string`   | -                    |
+| step          | 步长               | `number \| string`   | `1`                      |
+| disabled      | 是否禁用滑块       | `boolean`          | `false`                  |
+| vertical | 是否竖向展示 | `boolean` | `false` |
+| hiddenRange   | 是否隐藏范围值     | `boolean`          | `false`                  |
+| hiddenTag     | 是否隐藏标签       | `boolean`          | `false`                  |
+| activeColor   | 进度条激活态颜色   | `string`           | `rgba(250, 44, 25, 1)`   |
+| inactiveColor | 进度条非激活态颜色 | `string`           | `rgba(255, 163, 154, 1)` |
+| buttonColor   | 按钮颜色           | `string`           | `rgba(250, 44, 25, 1)`   |
+| marks | 刻度标示| `Object{key: number}`    | `{}` |
+| button | 自定义滑动按钮 | `ReactNode` | - |
+| onChange    | 进度变化且结束拖动后触发 | `(value) => void` | - |
+| onDragStart  | 开始拖动时触发           | - | - |
+| onDragEnd   | 结束拖动时触发           | - | - |
 
 ## 主题定制
 
