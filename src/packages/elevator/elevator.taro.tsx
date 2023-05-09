@@ -132,7 +132,7 @@ export const Elevator: FunctionComponent<
     const scrollTop = state.current.listHeight[cacheIndex]
     setScrollTop(scrollTop)
     if (isSticky && scrollY !== scrollTop) {
-      setScrollY(scrollTop > 0 ? scrollTop : 0)
+      setScrollY(Math.floor(scrollTop) > 0 ? 1 : 0)
     }
   }
 
