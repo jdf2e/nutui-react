@@ -4,7 +4,6 @@ import React, {
   useRef,
   useLayoutEffect,
 } from 'react'
-import { useConfig } from '@/packages/configprovider'
 import classNames from 'classnames'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -42,7 +41,6 @@ export const Ellipsis: FunctionComponent<
   Partial<EllipsisProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onChange'>
 > = (props) => {
-  const { locale } = useConfig()
   const {
     children,
     content,
@@ -58,7 +56,7 @@ export const Ellipsis: FunctionComponent<
     ...rest
   } = { ...defaultProps, ...props }
   let container: any = null
-  let maxHeight: any = 0 // 当行的最大高度
+  let maxHeight = 0 // 当行的最大高度
   const [exceeded, setExceeded] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const ellipsis = useRef<EllipsisedValue>()

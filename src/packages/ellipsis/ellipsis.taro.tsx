@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
 import { useReady, nextTick, createSelectorQuery } from '@tarojs/taro'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { getRectByTaro } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import classNames from 'classnames'
@@ -40,7 +39,6 @@ export const Ellipsis: FunctionComponent<
   Partial<EllipsisProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onChange'>
 > = (props) => {
-  const { locale } = useConfig()
   const {
     children,
     content,
@@ -55,7 +53,7 @@ export const Ellipsis: FunctionComponent<
     onChange,
     ...rest
   } = { ...defaultProps, ...props }
-  let maxHeight: any = 0 // 当行的最大高度
+  let maxHeight = 0 // 当行的最大高度
   const [exceeded, setExceeded] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const ellipsis = useRef<EllipsisedValue>({
