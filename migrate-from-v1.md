@@ -211,6 +211,10 @@
 #### Notify
 #### PullToRefresh
 #### Swipe
+
+- 移除 `leftWidth` ，通过 `leftAction` 实现
+- 移除 `rightWidth` ，通过 `rightAction` 实现
+
 #### Switch
 - 删除 `isAsync`, 优化新增 `checked`和 `defaultChecked` , 增加默认值和受控
 - 删除 `activeColor` 和 `inactiveColor`, 通过css变量实现
