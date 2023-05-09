@@ -32,7 +32,7 @@ const defaultProps = {
 export const TextArea: FunctionComponent<
   Partial<TextAreaProps> &
     Omit<
-      React.HTMLAttributes<HTMLDivElement>,
+      React.HTMLAttributes<HTMLTextAreaElement>,
       'onChange' | 'onBlur' | 'onFocus'
     >
 > = (props) => {
@@ -52,6 +52,7 @@ export const TextArea: FunctionComponent<
     onChange,
     onBlur,
     onFocus,
+    ...rest
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-textarea'
@@ -132,6 +133,7 @@ export const TextArea: FunctionComponent<
         rows={rows}
         maxLength={maxLength === -1 ? undefined : maxLength}
         placeholder={placeholder || locale.placeholder}
+        {...rest}
       />
       {showCount && (
         <div className={`${classPrefix}__limit`}>

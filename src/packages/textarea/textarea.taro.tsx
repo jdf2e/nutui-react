@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
+import Taro from '@tarojs/taro'
 import { Textarea } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
-import Taro from '@tarojs/taro'
 
 export interface TextAreaProps extends BasicComponent {
   value: string
@@ -33,7 +33,7 @@ const defaultProps = {
 export const TextArea: FunctionComponent<
   Partial<TextAreaProps> &
     Omit<
-      React.HTMLAttributes<HTMLDivElement>,
+      React.HTMLAttributes<HTMLTextAreaElement>,
       'onChange' | 'onBlur' | 'onFocus'
     >
 > = (props) => {
@@ -99,7 +99,6 @@ export const TextArea: FunctionComponent<
         [`${classPrefix}__disabled`]: disabled,
       })}
     >
-      {/* @ts-ignore */}
       <Textarea
         nativeProps={{
           readOnly,
@@ -120,7 +119,7 @@ export const TextArea: FunctionComponent<
         onBlur={(e: any) => handleBlur(e)}
         onFocus={(e: any) => handleFocus(e)}
         autoHeight={autoSize}
-        maxlength={maxLength === -1 ? undefined : maxLength}
+        maxlength={maxLength}
         placeholder={placeholder || locale.placeholder}
         {...rest}
       />
