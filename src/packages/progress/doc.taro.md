@@ -42,8 +42,9 @@ const App = () => {
     <Cell>
       <Progress
         percent={30}
-        color="rgba(250,44,25,0.47)"
-        strokeWidth="20"
+        background="rgba(250,44,25,0.2)"
+        color="rgba(250,44,25,0.9)"
+        strokeWidth="15"
       />
     </Cell>
   );
