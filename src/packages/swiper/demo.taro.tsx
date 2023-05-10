@@ -84,7 +84,13 @@ const SwiperDemo = () => {
         </Swiper>
 
         <h2>{translated.size}</h2>
-        <Swiper width={300} height={150} defaultValue={0} loop={false}>
+        <Swiper
+          className="swiper-demo-size"
+          width={300}
+          height={150}
+          defaultValue={0}
+          loop={false}
+        >
           {list.map((item) => (
             <SwiperItem key={item}>
               <img width="100%" height="100%" src={item} alt="" />
