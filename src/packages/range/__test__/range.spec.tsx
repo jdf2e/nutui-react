@@ -85,18 +85,18 @@ test('hidden range test', () => {
       modelValue={state.value0}
     />
   )
-  expect(container.querySelector('max')).not.toBeTruthy()
-  expect(container.querySelector('min')).not.toBeTruthy()
+  expect(container.querySelector('.max')).toBeFalsy()
+  expect(container.querySelector('.min')).toBeFalsy()
 })
 
 test('hiddenTag test', () => {
   const state = {
     value0: 40,
   }
-  const { container } = render(<Range hiddenTag modelValue={state.value0} />)
-  expect(container.querySelector('nut-range-button')?.innerHTML).not.toBe(
-    '<div class="number">40</div>'
+  const { container } = render(
+    <Range currentDescription={null} modelValue={state.value0} />
   )
+  expect(container.querySelector('.number')).toBeFalsy()
 })
 
 test('vertical test', () => {

@@ -187,7 +187,7 @@ const RangeDemo = () => {
         <Cell style={cellStyle}>
           <Range
             modelValue={20}
-            hiddenTag
+            currentDescription={null}
             onChange={(value: any) => {
               change(value)
             }}
@@ -253,7 +253,8 @@ const RangeDemo = () => {
         <Cell style={cellStyle}>
           <Range
             modelValue={value5}
-            hiddenRange
+            maxDescription={null}
+            minDescription={null}
             marks={marks}
             onChange={(value: number) => {
               change(value, 'value5')

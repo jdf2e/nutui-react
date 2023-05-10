@@ -519,11 +519,10 @@ export default App;
 | min           | 最小值             | `number \| string`   | `0`                      |
 | maxDescription     | 最大值描述，传 `null` 表示隐藏          | `ReactNode`   | -                    |
 | minDescription     | 最小值描述，传 `null` 表示隐藏          | `ReactNode`   | -                      |
-| currentDescription | 当前值描述          | `(value) => ReactNode`   | -                    |
+| currentDescription | 当前值描述，传 `null` 表示隐藏          | `((value: SliderValue) => ReactNode) | null`   | -                    |
 | step          | 步长               | `number \| string`   | `1`                      |
 | disabled      | 是否禁用滑块       | `boolean`          | `false`                  |
 | vertical | 是否竖向展示 | `boolean` | `false` |
-| hiddenTag     | 是否隐藏标签       | `boolean`          | `false`                  |
 | activeColor   | 进度条激活态颜色   | `string`           | `rgba(250, 44, 25, 1)`   |
 | inactiveColor | 进度条非激活态颜色 | `string`           | `rgba(255, 163, 154, 1)` |
 | buttonColor   | 按钮颜色           | `string`           | `rgba(250, 44, 25, 1)`   |

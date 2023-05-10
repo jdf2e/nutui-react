@@ -522,11 +522,10 @@ export default App;
 | min           | minimum             | `number \| string`   | `0`                      |
 | maxDescription     | maximum description, `null` to hidden        | `ReactNode`   | -                    |
 | minDescription     | minimum description, `null` to hidden          | `ReactNode`   | -                      |
-| currentDescription | current progress percentage description  | `(value) => ReactNode` |-                    |
+| currentDescription | current progress percentage description, `null` to hidden  | `((value: SliderValue) => ReactNode) | null` |-                    |
 | step          | step size               | `number \| string`   | `1`                      |
 | disabled      | Whether to disable the slider       | `boolean`          | `false`                  |
 | vertical      | Whether to display vertically | `boolean` | `false` |
-| hiddenTag     | whether to hide the label       | `boolean`          | `false`                  |
 | activeColor   | progress bar active color   | `string`           | `rgba(250, 44, 25, 1)`   |
 | inactiveColor | Progress bar inactive color | `string`           | `rgba(255, 163, 154, 1)` |
 | buttonColor   | button color           | `string`           | `rgba(250, 44, 25, 1)`   |

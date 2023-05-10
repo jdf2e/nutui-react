@@ -19,7 +19,6 @@ export interface RangeProps extends BasicComponent {
   activeColor: string
   inactiveColor: string
   buttonColor: string
-  hiddenTag: boolean
   min: number | string
   max: number | string
   minDescription: ReactNode
@@ -29,7 +28,7 @@ export interface RangeProps extends BasicComponent {
   button: ReactNode
   vertical: boolean
   marks: Record<string, unknown>
-  currentDescription: (value: SliderValue) => ReactNode
+  currentDescription: ((value: SliderValue) => ReactNode) | null
   onChange: (value: number) => void
   onDragStart: () => void
   onDragEnd: () => void
@@ -37,7 +36,6 @@ export interface RangeProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   range: false,
-  hiddenTag: false,
   min: 0,
   max: 100,
   step: 1,
@@ -61,7 +59,6 @@ export const Range: FunctionComponent<
     activeColor,
     inactiveColor,
     buttonColor,
-    hiddenTag,
     modelValue,
     button,
     vertical,
@@ -408,7 +405,7 @@ export const Range: FunctionComponent<
                 >
                   {button || (
                     <div className="nut-range-button" style={buttonStyle()}>
-                      {!hiddenTag && (
+                      {currentDescription !== null && (
                         <div className="number">
                           {currentDescription
                             ? currentDescription(curValue(index))
@@ -447,7 +444,7 @@ export const Range: FunctionComponent<
             >
               {button || (
                 <div className="nut-range-button" style={buttonStyle()}>
-                  {!hiddenTag && (
+                  {currentDescription !== null && (
                     <div className="number">
                       {currentDescription
                         ? currentDescription(curValue())
