@@ -8,11 +8,10 @@ export interface ToastProps {
   msg: string
   style?: React.CSSProperties
   duration: number
-  center: boolean
+  position?: 'top' | 'bottom' | 'center'
   type: string
   title: string
   customClass?: string
-  bottom: string
   size: string | number
   icon: string | null
   iconSize: string
@@ -30,11 +29,10 @@ const options: ToastProps = {
   id: '',
   style: {},
   duration: 1.5, // 时长,duration为0则一直展示
-  center: true, // toast是否居中展示
+  position: 'center',
   type: 'text',
   title: '',
   customClass: '', // 自定义样式名
-  bottom: '30px', // center为false时生效，距离底部位置
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
   iconSize: '20',

@@ -8,9 +8,8 @@ export interface NotificationProps {
   style?: React.CSSProperties
   icon: React.ReactNode
   msg: string | React.ReactNode
-  bottom: string
   duration: number
-  center: boolean
+  position?: 'top' | 'center' | 'bottom'
   type: string
   title: string
   customClass: string
@@ -65,6 +64,17 @@ export default class Notification extends React.PureComponent<NotificationProps>
     }
   }
 
+  getTop() {
+    switch (this.props.position) {
+      case 'top':
+        return '20%'
+      case 'bottom':
+        return '80%'
+      default:
+        return '50%'
+    }
+  }
+
   componentDidMount() {
     this.startCloseTimer()
   }
@@ -80,8 +90,7 @@ export default class Notification extends React.PureComponent<NotificationProps>
       icon,
       title,
       msg,
-      bottom,
-      center,
+      position,
       bgColor,
       coverColor,
       textAlignCenter,
@@ -93,7 +102,6 @@ export default class Notification extends React.PureComponent<NotificationProps>
     const toastBem = bem('toast')
 
     const classes = classNames({
-      'nut-toast-center': center,
       'nut-toast-has-icon': icon,
       'nut-toast-cover': cover,
       'nut-toast-loading': type === 'loading',
@@ -106,7 +114,6 @@ export default class Notification extends React.PureComponent<NotificationProps>
           className={`${toastBem()} ${classes}`}
           id={`toast-${id}`}
           style={{
-            bottom: center ? 'auto' : `${bottom}`,
             backgroundColor: cover ? coverColor : '',
             ...style,
           }}
@@ -117,6 +124,7 @@ export default class Notification extends React.PureComponent<NotificationProps>
           <div
             className={toastBem('inner')}
             style={{
+              top: this.getTop(),
               textAlign: textAlignCenter ? 'center' : 'left',
               backgroundColor: bgColor,
             }}
