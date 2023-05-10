@@ -5,7 +5,7 @@ import React, {
   useState,
   createContext,
 } from 'react'
-import { nextTick, createSelectorQuery } from '@tarojs/taro'
+import Taro, { nextTick, createSelectorQuery } from '@tarojs/taro'
 
 import { ScrollView } from '@tarojs/components'
 import classNames from 'classnames'
@@ -82,13 +82,10 @@ export const Elevator: FunctionComponent<
   const [scrollStart, setScrollStart] = useState<boolean>(false)
   const state = useRef(initData)
   const [scrollTop, setScrollTop] = useState(0)
+  const [scrollY, setScrollY] = useState(0)
   // 重置滚动参数
   const resetScrollState = () => {
     setScrollStart(false)
-  }
-
-  const clientHeight = () => {
-    return listview.current ? listview.current.clientHeight : 0
   }
 
   const getData = (el: HTMLElement): string | void => {
@@ -134,7 +131,11 @@ export const Elevator: FunctionComponent<
     }
 
     setCodeIndex(cacheIndex)
-    setScrollTop(state.current.listHeight[cacheIndex])
+    const scrollTop = state.current.listHeight[cacheIndex]
+    setScrollTop(scrollTop)
+    if (sticky && scrollY !== scrollTop) {
+      setScrollY(Math.floor(scrollTop) > 0 ? 1 : 0)
+    }
   }
 
   const touchMove = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -196,7 +197,10 @@ export const Elevator: FunctionComponent<
     const target = e.target as Element
     const { scrollTop } = target
     state.current.scrollY = Math.floor(scrollTop)
-    setScrollTop(scrollTop)
+    Taro.getEnv() === 'WEB' && setScrollTop(scrollTop)
+    if (sticky && scrollTop !== scrollY) {
+      setScrollY(Math.floor(scrollTop) > 0 ? 1 : 0)
+    }
     for (let i = 0; i < listHeight.length - 1; i++) {
       const height1 = listHeight[i]
       const height2 = listHeight[i + 1]
@@ -206,7 +210,7 @@ export const Elevator: FunctionComponent<
       }
     }
 
-    setCurrentIndex(listHeight.length - 2)
+    // setCurrentIndex(listHeight.length - 2)
   }
 
   useEffect(() => {
@@ -219,13 +223,6 @@ export const Elevator: FunctionComponent<
 
   return (
     <div className={`${classPrefix} ${className}`} style={style} {...rest}>
-      {sticky && scrollTop > 0 ? (
-        <div className={`${classPrefix}__list__fixed`}>
-          <span className={`${classPrefix}__list__fixed__title`}>
-            {list[currentIndex][floorKey]}
-          </span>
-        </div>
-      ) : null}
       <div
         className={`${classPrefix}__list`}
         style={{ height: Number.isNaN(+height) ? height : `${height}px` }}
@@ -233,6 +230,8 @@ export const Elevator: FunctionComponent<
         <ScrollView
           scrollTop={scrollTop}
           scrollY
+          scrollWithAnimation
+          scrollAnchoring
           className={`${classPrefix}__list__inner`}
           type="list"
           ref={listview}
@@ -314,6 +313,13 @@ export const Elevator: FunctionComponent<
           })}
         </div>
       </div>
+      {sticky && scrollY > 0 ? (
+        <div className={`${classPrefix}__list__fixed`}>
+          <span className={`${classPrefix}__list__fixed__title`}>
+            {list[currentIndex][floorKey]}
+          </span>
+        </div>
+      ) : null}
     </div>
   )
 }
