@@ -745,6 +745,7 @@ $toast-inner-border-radius: var(
 ) !default;
 $toast-cover-bg-color: var(--nutui-toast-cover-bg-color, $gray7) !default;
 $toast-inner-top: var(--toast-inner-top, 50%) !default;
+$toast-inner-text-align: var(--toast-inner-text-align, 'center') !default;
 
 //backtop（✅）
 $backtop-border-color: var(--nutui-backtop-border-color, #e0e0e0) !default;

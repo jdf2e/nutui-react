@@ -14,7 +14,6 @@ export interface ToastProps {
   className?: string
   size: string | number
   icon: string | null
-  textAlignCenter: boolean
   bgColor: string
   onClose: () => void
   cover: boolean
@@ -33,7 +32,6 @@ const options: ToastProps = {
   className: '', // 自定义样式名
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
-  textAlignCenter: true, // 文字是否居中显示,true为居中，false为left
   bgColor: 'rgba(0, 0, 0, .8)',
   onClose: () => {},
   cover: false, // 是否展示透明遮罩层

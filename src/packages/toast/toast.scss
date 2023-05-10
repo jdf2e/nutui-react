@@ -39,7 +39,7 @@
     font-size: $toast-text-font-size;
     min-width: 40%;
     max-width: 65%;
-    text-align: center;
+    text-align: $toast-inner-text-align;
     padding: $toast-inner-padding;
     word-break: break-all;
     background: $toast-inner-bg-color;

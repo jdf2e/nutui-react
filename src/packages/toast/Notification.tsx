@@ -14,7 +14,6 @@ export interface NotificationProps {
   title: string
   className: string
   size: string | number
-  textAlignCenter: boolean
   bgColor: string
   cover: boolean
   coverColor: string
@@ -82,7 +81,6 @@ export default class Notification extends React.PureComponent<NotificationProps>
       position,
       bgColor,
       coverColor,
-      textAlignCenter,
       size,
       className,
       cover,
@@ -112,7 +110,6 @@ export default class Notification extends React.PureComponent<NotificationProps>
           <div
             className={`${toastBem('inner')} nut-toast-${position}`}
             style={{
-              textAlign: textAlignCenter ? 'center' : 'left',
               backgroundColor: bgColor,
             }}
           >
