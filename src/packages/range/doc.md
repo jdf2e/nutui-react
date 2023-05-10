@@ -524,9 +524,6 @@ export default App;
 | step          | 步长               | `number \| string`   | `1`                      |
 | disabled      | 是否禁用滑块       | `boolean`          | `false`                  |
 | vertical | 是否竖向展示 | `boolean` | `false` |
-| activeColor   | 进度条激活态颜色   | `string`           | `rgba(250, 44, 25, 1)`   |
-| inactiveColor | 进度条非激活态颜色 | `string`           | `rgba(255, 163, 154, 1)` |
-| buttonColor   | 按钮颜色           | `string`           | `rgba(250, 44, 25, 1)`   |
 | marks | 刻度标示| `Object{key: number}`    | `{}` |
 | button | 自定义滑动按钮 | `ReactNode` | - |
 | onChange    | 进度变化且结束拖动后触发 | `(value) => void` | - |
@@ -542,8 +539,8 @@ export default App;
 | 名称 | 默认值 |
 | --- | --- |
 | --nutui-range-tip-font-color | `$gray1` |
-| --nutui-range-bg-color | `rgba(#fa2c19, 0.5)` |
-| --nutui-range-bg-color-tick | `#fa958c` |
+| --nutui-range-active-color | `$primary-color` |
+| --nutui-range-inactive-color | `#fa958c` |
 | --nutui-range-bar-btn-bg-color | `$white` |
 | --nutui-range-bar-btn-width | `24px` |
 | --nutui-range-bar-btn-height | `24px` |

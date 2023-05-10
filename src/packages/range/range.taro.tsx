@@ -16,13 +16,11 @@ type SliderValue = number | number[]
 export interface RangeProps extends BasicComponent {
   range: boolean
   disabled: boolean
-  activeColor: string
-  inactiveColor: string
-  min: number | string
-  max: number | string
+  min: number
+  max: number
+  step: number
   minDescription: ReactNode
   maxDescription: ReactNode
-  step: number | string
   modelValue: SliderValue
   button: ReactNode
   vertical: boolean
@@ -55,8 +53,6 @@ export const Range: FunctionComponent<
     className,
     range,
     disabled,
-    activeColor,
-    inactiveColor,
     modelValue,
     button,
     vertical,
@@ -67,14 +63,12 @@ export const Range: FunctionComponent<
     minDescription,
     maxDescription,
     currentDescription,
+    min,
+    max,
+    step,
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-range'
-
-  let { min, max, step } = { ...defaultProps, ...props }
-  min = Number(min)
-  max = Number(max)
-  step = Number(step)
   const [buttonIndex, SetButtonIndex] = useState(0)
   const [initValue, SetInitValue] = useState<number | number[] | any>()
   const [dragStatus, SetDragStatus] = useState('start' || 'draging' || '')
@@ -105,7 +99,7 @@ export const Range: FunctionComponent<
   }, [marks])
 
   const scope = () => {
-    return Number(max) - Number(min)
+    return max - min
   }
 
   const classes = classNames(classPrefix, {
@@ -120,14 +114,13 @@ export const Range: FunctionComponent<
   const markClassName = useCallback(
     (mark: any) => {
       const classPrefix = 'nut-range-mark'
-      let lowerBound: any = Number(min)
-      let upperBound: any = Number(max)
-      if (range) {
-        const [left, right] = modelValue as any
-        lowerBound = left
-        upperBound = right
+      let lowerBound = min
+      let upperBound = max
+      if (range && Array.isArray(modelValue)) {
+        lowerBound = modelValue[0]
+        upperBound = modelValue[1]
       } else {
-        upperBound = modelValue
+        upperBound = modelValue as number
       }
       const isActive = mark <= upperBound && mark >= lowerBound
       return [
@@ -138,12 +131,6 @@ export const Range: FunctionComponent<
     [range, modelValue, min, max]
   )
 
-  const wrapperStyle = () => {
-    return {
-      background: inactiveColor,
-    }
-  }
-
   const isRange = (val: any) => {
     return !!range && Array.isArray(val)
   }
@@ -153,13 +140,13 @@ export const Range: FunctionComponent<
     if (isRange(modelVal)) {
       return `${((modelVal[1] - modelVal[0]) * 100) / scope()}%`
     }
-    return `${((modelVal - Number(min)) * 100) / scope()}%`
+    return `${((modelVal - min) * 100) / scope()}%`
   }
 
   const calcOffset = () => {
     const modelVal = initValue || initValue === 0 ? initValue : modelValue
     if (isRange(modelVal)) {
-      return `${((modelVal[0] - Number(min)) * 100) / scope()}%`
+      return `${((modelVal[0] - min) * 100) / scope()}%`
     }
     return `0%`
   }
@@ -169,43 +156,33 @@ export const Range: FunctionComponent<
       return {
         height: calcMainAxis(),
         top: calcOffset(),
-        background: activeColor,
         transition: dragStatus ? 'none' : undefined,
       }
     }
     return {
       width: calcMainAxis(),
       left: calcOffset(),
-      background: activeColor,
       transition: dragStatus ? 'none' : undefined,
     }
   }
 
   const marksStyle = (mark: any) => {
     let style: any = {
-      left: `${((mark - Number(min)) / scope()) * 100}%`,
+      left: `${((mark - min) / scope()) * 100}%`,
     }
     if (vertical) {
       style = {
-        top: `${((mark - Number(min)) / scope()) * 100}%`,
+        top: `${((mark - min) / scope()) * 100}%`,
       }
     }
     return style
   }
-  const tickStyle = (mark: any) => {
-    let lowerBound: any = Number(min)
-    let upperBound: any = Number(max)
-    if (range) {
-      const [left, right] = modelValue as any
-      lowerBound = left
-      upperBound = right
-    }
-    const isActive = mark <= upperBound && mark >= lowerBound
-    const style: any = {
-      background: !isActive ? inactiveColor : activeColor,
-    }
 
-    return style
+  const tickClass = (mark: any) => {
+    if (range && Array.isArray(initValue)) {
+      return mark <= initValue[1] && mark >= initValue[0]
+    }
+    return mark <= initValue
   }
 
   const format = (value: number) => {
@@ -252,7 +229,7 @@ export const Range: FunctionComponent<
       delta = (event.detail.y ? event.detail.y : event.clientY) - rect.top
       total = rect.height
     }
-    const value = Number(min) + (delta / total) * scope()
+    const value = min + (delta / total) * scope()
     currentValue = initValue || initValue === 0 ? initValue : modelValue
     if (isRange(currentValue)) {
       const [left, right] = currentValue as any
@@ -330,6 +307,24 @@ export const Range: FunctionComponent<
     return value
   }
 
+  const renderButton = (index?: number) => {
+    return (
+      <>
+        {button || (
+          <div className="nut-range-button">
+            {currentDescription !== null && (
+              <div className="number">
+                {currentDescription
+                  ? currentDescription(curValue(index))
+                  : curValue(index)}
+              </div>
+            )}
+          </div>
+        )}
+      </>
+    )
+  }
+
   return (
     <div className={containerClasses}>
       {minDescription !== null && (
@@ -337,7 +332,6 @@ export const Range: FunctionComponent<
       )}
       <div
         ref={root}
-        style={wrapperStyle()}
         className={classes}
         onClick={(e) => {
           click(e)
@@ -353,7 +347,11 @@ export const Range: FunctionComponent<
                   style={marksStyle(marks)}
                 >
                   {marks}
-                  <span className="nut-range-tick" style={tickStyle(marks)} />
+                  <span
+                    className={classNames('nut-range-tick', {
+                      active: tickClass(marks),
+                    })}
+                  />
                 </span>
               )
             })}
@@ -396,17 +394,7 @@ export const Range: FunctionComponent<
                     e.stopPropagation()
                   }}
                 >
-                  {button || (
-                    <div className="nut-range-button">
-                      {currentDescription !== null && (
-                        <div className="number">
-                          {currentDescription
-                            ? currentDescription(curValue(index))
-                            : curValue(index)}
-                        </div>
-                      )}
-                    </div>
-                  )}
+                  {renderButton(index)}
                 </div>
               )
             })
@@ -435,17 +423,7 @@ export const Range: FunctionComponent<
                 e.stopPropagation()
               }}
             >
-              {button || (
-                <div className="nut-range-button">
-                  {currentDescription !== null && (
-                    <div className="number">
-                      {currentDescription
-                        ? currentDescription(curValue())
-                        : curValue()}
-                    </div>
-                  )}
-                </div>
-              )}
+              {renderButton()}
             </div>
           )}
         </div>

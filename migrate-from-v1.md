@@ -160,7 +160,7 @@
 - curValueDesc 重命名为 currentDescription，类型改为 (value) => ReactNode
 - 移除 hiddenRange，通过 max/minDescription 传 null 实现
 - 移除 hiddenTag，通过 currentDescription 传 null 实现
-- 移除 buttonColor，通过 css 变量实现
+- 移除 activeColor、inactiveColor、buttonColor，通过 css 变量实现
 - onDragStart 重命名为 onStart
 - onDragEnd 重命名为 onEnd
 #### Rate

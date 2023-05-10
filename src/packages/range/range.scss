@@ -69,11 +69,6 @@
         word-break: keep-all;
         user-select: none;
         transform: translateY(-50%);
-        &-active {
-          .nut-range-tick {
-            background: $range-bar-bg-color;
-          }
-        }
       }
       &-tick {
         position: absolute;
@@ -83,7 +78,11 @@
         height: 11px;
         margin-left: -0px;
         border-radius: 50%;
-        background-color: $range-bg-color-tick;
+        background: $range-inactive-color;
+
+        &.active {
+          background: $range-active-color;
+        }
       }
     }
   }
@@ -93,7 +92,7 @@
   position: relative;
   width: 100%;
   height: 4px;
-  background-color: $range-bg-color;
+  background-color: $range-inactive-color;
   border-radius: 2px;
   cursor: pointer;
   &::before {
@@ -110,7 +109,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background: $range-bar-bg-color;
+    background: $range-active-color;
     border-radius: inherit;
     transition: all 0.2s;
   }
@@ -187,20 +186,19 @@
     word-break: keep-all;
     user-select: none;
     transform: translateX(-50%);
-    &-active {
-      .nut-range-tick {
-        background: $range-bar-bg-color;
-      }
-    }
   }
+
   &-tick {
     position: absolute;
     top: -20px;
     width: 11px;
     height: 11px;
-    // margin-left: -11px;
     left: 0px;
     border-radius: 50%;
-    background-color: $range-bg-color-tick;
+    background: $range-inactive-color;
+
+    &.active {
+      background: $range-active-color;
+    }
   }
 }

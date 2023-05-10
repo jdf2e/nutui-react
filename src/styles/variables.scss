@@ -885,13 +885,8 @@ $infiniteloading-bottom-color: var(
 
 //range（✅）
 $range-tip-font-color: var(--nutui-range-tip-font-color, $gray1) !default;
-$range-bg-color: var(--nutui-range-bg-color, rgba(#fa2c19, 0.5)) !default;
-$range-bg-color-tick: var(--nutui-range-bg-color-tick, #fa958c) !default;
-$range-bar-bg-color: linear-gradient(
-  135deg,
-  $primary-color 0%,
-  $primary-color-end 100%
-) !default;
+$range-inactive-color: var(--nutui-range-inactive-color, #fa958c) !default;
+$range-active-color: var(--nutui-range-active-color, $primary-color) !default;
 $range-bar-btn-bg-color: var(
   --nutui-range-bar-btn-bg-color,
   $primary-text-color

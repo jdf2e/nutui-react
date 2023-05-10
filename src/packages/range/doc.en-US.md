@@ -526,9 +526,6 @@ export default App;
 | step          | step size               | `number \| string`   | `1`                      |
 | disabled      | Whether to disable the slider       | `boolean`          | `false`                  |
 | vertical      | Whether to display vertically | `boolean` | `false` |
-| activeColor   | progress bar active color   | `string`           | `rgba(250, 44, 25, 1)`   |
-| inactiveColor | Progress bar inactive color | `string`           | `rgba(255, 163, 154, 1)` |
-| buttonColor   | button color           | `string`           | `rgba(250, 44, 25, 1)`   |
 | marks | scale mark | `Object{key: number}` | `{}` |
 | button | custom slide button | `ReactNode` | - |
 | onChange            | Triggered when the progress changes and the drag is over | `(value) => void` | - |
@@ -544,8 +541,8 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Default Value |
 | --- | --- |
 | --nutui-range-tip-font-color | `$gray1` |
-| --nutui-range-bg-color | `rgba(#fa2c19, 0.5)` |
-| --nutui-range-bg-color-tick | `#fa958c` |
+| --nutui-range-active-color | `$primary-color` |
+| --nutui-range-inactive-color | `#fa958c` |
 | --nutui-range-bar-btn-bg-color | `$white` |
 | --nutui-range-bar-btn-width | `24px` |
 | --nutui-range-bar-btn-height | `24px` |

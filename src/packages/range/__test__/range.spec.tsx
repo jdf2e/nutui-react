@@ -5,14 +5,7 @@ import Range from '@/packages/range'
 
 test('range props test', () => {
   const { container } = render(
-    <Range
-      className="test-range"
-      modelValue={40}
-      inactiveColor="rgba(163,184,255,1)"
-      buttonColor="rgba(52,96,250,1)"
-      activeColor="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-      style={{ color: 'red' }}
-    />
+    <Range className="test-range" modelValue={40} style={{ color: 'red' }} />
   )
 
   expect(container.querySelector('.nut-range-container')).toHaveClass(
