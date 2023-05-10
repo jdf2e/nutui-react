@@ -23,8 +23,6 @@ export interface InputNumberProps extends BasicComponent {
   step: string | number
   digits: string | number
   async: boolean
-  className: string
-  style: React.CSSProperties
   formatter?: (displayValue: string | number) => string
   onPlus: (e: MouseEvent) => void
   onMinus: (e: MouseEvent) => void
