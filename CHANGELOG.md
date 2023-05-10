@@ -5,7 +5,7 @@
 
 
 # v1.5.3
-`2023-05-10`
+`2023-04-28`
 
 * :sparkles: feat: dialog 增加函数式调用的demo @hanyuxinting
 * :bug: fix: 移除代码中无用的 console.log (#960) @oasis-cloud
