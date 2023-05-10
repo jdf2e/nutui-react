@@ -81,7 +81,7 @@ import { Progress, Image, Cell } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <Cell>
-      <Progress percent={60}>
+      <Progress percent={60} showText>
         <Image
           width="30px"
           height="30px"
@@ -106,13 +106,13 @@ const App = () => {
   return (
     <>
       <Cell>
-        <Progress percent={30} strokeWidth="5" />
+        <Progress percent={30} strokeWidth="5" showText />
       </Cell>
       <Cell>
-        <Progress percent={50} strokeWidth="10" />
+        <Progress percent={50} strokeWidth="10" showText />
       </Cell>
       <Cell>
-        <Progress percent={70} strokeWidth="15" />
+        <Progress percent={70} strokeWidth="15" showText />
       </Cell>
     </>
   );
@@ -176,7 +176,7 @@ const App = () => {
       <Cell>
         <Button
           type="default"
-          style={{ margin: 8 }} 
+          style={{ margin: 8 }}
           onClick={() => {
             let num = value;
             if (value <= 0) {
@@ -189,7 +189,8 @@ const App = () => {
           减少
         </Button>
         <Button 
-          type="primary" 
+          type="primary"
+          style={{ margin: 8 }}
           onClick={() => {
             let num = value;
             if (value >= 100) {
