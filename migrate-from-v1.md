@@ -31,6 +31,7 @@
 - `desc` 重命名为 `description`
 - `title`、`description` 改为 `React.Node` 类型
 - 删除 `titleSlot` 和 `descSlot`
+- 增加 `divider`, 单元格之间是否有分割线
 #### ConfigProvider
 #### Icon
 #### Image
@@ -218,6 +219,10 @@
 #### Notify
 #### PullToRefresh
 #### Swipe
+
+- 移除 `leftWidth` ，通过 `leftAction` 实现
+- 移除 `rightWidth` ，通过 `rightAction` 实现
+
 #### Switch
 - 删除 `isAsync`, 优化新增 `checked`和 `defaultChecked` , 增加默认值和受控
 - 删除 `activeColor` 和 `inactiveColor`, 通过css变量实现
@@ -233,6 +238,13 @@
 - onFastBack 重命名为 onBack
 - onPlayEnd 重命名为 onEnd
 #### Avatar
+- Avatar `url` 重命名为 `src`
+- Avatar `onActiveAvatar` 重命名为 `onClick`
+- AvatarGroup `maxCount` 重命名为 `max`
+- AvatarGroup `span` 重命名为 `gap`
+- AvatarGroup `zIndex` 重命名为 `level`
+- 新增fit属性，图片填充模式
+- 图片加兜底
 #### Badge
 - 删除zIndex，目前没有用到，也不生效，直接去掉。
 - 删除icon，自定义icon可放在 value 中实现，扩充了value的类型。
@@ -253,7 +265,13 @@
 #### Collapse
 #### CountDown
 #### Ellipsis
+- 新增className和style属性的支持
+- 优化H5的代码，去掉useEffect渲染改用useLayoutEffect
 #### Empty
+- 新增status属性,默认图片错误类型
+- 优化代码逻辑，包括status和image的逻辑，渲染问题修复以及文档优化
+- 1）渲染问题修复：之前的description的ReactNode节点存在引入错误，导致传入元素标签失效，2.0版本进行了一个修复。
+- 2）代码逻辑优化：因新增status属性，对一些无用的代码进行了一个精简优化
 #### ImagePreview
 #### NoticeBar
 #### Popover

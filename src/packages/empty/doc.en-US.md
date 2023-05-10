@@ -1,10 +1,10 @@
 #  Empty
 
-### Introduce
+## Intro
 
 Placeholder prompt when empty
 
-### Install
+## Install
 
 ```javascript
 // react
@@ -52,9 +52,9 @@ import { Empty } from '@nutui/nutui-react';
 const App = () => {
   return (
     <div className="show">
-      <Empty image="empty" description="No Content" />
-      <Empty image="error" description="Load Failed" />
-      <Empty image="network" description="No Network" />
+      <Empty status="empty" description="No Content" />
+      <Empty status="error" description="Load Failed" />
+      <Empty status="network" description="No Network" />
     </div>
   );
 };
@@ -89,7 +89,7 @@ import { Empty, Button } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Empty image="error" description="Failed to load">
+    <Empty status="error" description="Failed to load">
       <div style={{marginTop: "10px"}}>
         <Button icon="refresh" type="primary">重试</Button>
       </div>
@@ -99,15 +99,16 @@ const App = () => {
 export default App;
 ```
 :::
-## API
+## Empty
 
 ### Props
 
-| Props    | Description                             | Type   | Default           |
+| Property    | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| image         | Image type, the optional value is `error` `network` `empty`, which supports incoming image URLs             | string \| ReactNode       | `empty` |
-| imageSize        | Image size, the unit of number type is px                       | number \| string | -       |
-| description         | Description text below the image | ReactNode | No Data                |
+| image         | Image type, supports incoming image URLs              | `ReactNode`       | `-` |
+| imageSize        | Image size, the unit of number type is px                         | `number \| string` | `''`       |
+| description         | Description text below the image | `ReactNode` | `''`                |
+| status         | The Default error type | `'empty' \| 'error' \| 'network'` |  `'empty'`             |
 
 
 
@@ -118,12 +119,12 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-empty-padding | `32px 0` |
-| --nutui-empty-image-size | `170px` |
-| --nutui-empty-description-margin-top | `4px` |
-| --nutui-empty-description-color | `#666666` |
-| --nutui-empty-description-font-size | `14px` |
-| --nutui-empty-description-line-height | `20px` |
-| --nutui-empty-description-padding | `0 40px` |
+| Name | Default Value | Default |
+| --- | --- | --- |
+| --nutui-empty-padding | The padding value of the Empty component image | `32px 0` |
+| --nutui-empty-image-size | The size of the Empty component image | `170px` |
+| --nutui-empty-description-margin-top | Empty component image description margin-top value | `4px` |
+| --nutui-empty-description-color | Empty component image description color value | `#666666` |
+| --nutui-empty-description-font-size | Empty component image description font-size value size | `14px` |
+| --nutui-empty-description-line-height | Empty component image description row height | `20px` |
+| --nutui-empty-description-padding | Empty component picture description padding value | `0 40px` |

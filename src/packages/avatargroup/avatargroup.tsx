@@ -1,42 +1,38 @@
 import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
-import { AvatarContext } from './AvatarContext'
-import bem from '@/utils/bem'
-import { useConfig } from '@/packages/configprovider'
+import { AvatarContext } from './context'
 
-export interface AvatarGroupProps {
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface AvatarGroupProps extends BasicComponent {
   maxContent: string
-  maxCount: string | number
-  maxBgColor: string
+  max: string | number
+  maxBackground: string
   maxColor: string
-  size: string
-  shape: string
-  span: string
-  zIndex: string
-  className: string
-  style: React.CSSProperties
+  size: 'large' | 'normal' | 'small'
+  shape: 'round' | 'square'
+  gap: string
+  level: 'left' | 'right'
 }
 const defaultProps = {
+  ...ComponentDefaults,
   maxContent: '',
-  maxCount: '',
-  maxBgColor: '#eee',
+  max: '',
+  maxBackground: '#eee',
   maxColor: '#666',
-  size: '',
-  shape: '',
-  span: '-8',
-  zIndex: 'left',
+  gap: '-8',
+  level: 'left',
 } as AvatarGroupProps
+
+const classPrefix = `nut-avatar-group`
 export const AvatarGroup: FunctionComponent<
   Partial<AvatarGroupProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { locale } = useConfig()
   const propAvatarGroup = { ...defaultProps, ...props }
   const { className, style, children } = propAvatarGroup
 
   const avatarGroupRef = useRef(null)
-
-  const b = bem('avatar-group')
-  const cls = classNames(b(''), className)
+  const cls = classNames(classPrefix, className)
 
   const parentAvatar = {
     propAvatarGroup,

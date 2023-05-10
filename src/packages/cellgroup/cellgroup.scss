@@ -27,25 +27,29 @@
     overflow: hidden;
     background-color: $cell-group-background-color;
     margin: 10px 0;
+    .nut-cell {
+      margin: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
   }
 
-  .nut-cell {
-    margin: 0;
-    box-shadow: none;
-    border-radius: 0;
-    &__divider {
-      position: absolute;
-      box-sizing: border-box;
-      pointer-events: none;
-      right: $cell-divider-right;
-      bottom: 0;
-      left: $cell-divider-left;
-      transform: scaleY(0.5);
-      border-bottom: $cell-divider-border-bottom;
-    }
-    &:last-child {
+  &__wrap--divider {
+    .nut-cell {
       &__divider {
-        border: 0 !important;
+        position: absolute;
+        box-sizing: border-box;
+        pointer-events: none;
+        right: $cell-divider-right;
+        bottom: 0;
+        left: $cell-divider-left;
+        transform: scaleY(0.5);
+        border-top: $cell-divider-border-bottom;
+      }
+      &:last-child {
+        .nut-cell__divider {
+          border-top: 0 !important;
+        }
       }
     }
   }

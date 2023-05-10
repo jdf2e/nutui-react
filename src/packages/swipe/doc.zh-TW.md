@@ -252,21 +252,21 @@ export default App;
 
 |參數|說明|類型|預設值|
 |--------------|----------------------------------|--------|------------------|
-| name |識別字，可以在事件參數中獲取到| number \| string | - |
-| leftWidth |指定左側滑動區域寬度，組織為`px` | number \| string | `0` |
-| rightWidth |指定右側滑動區域寬度，組織為`px` | number \| string | `0` |
-| leftAction |左側滑動區域的內容| ReactNode | - |
-| rightAction |右側滑動區域的內容| ReactNode | - |
-| beforeClose |關閉前的回呼函數，返回`position` | string | `left` |
-| disabled |是否禁用滑動| boolean | `false` |
+| name |識別字，可以在事件參數中獲取到| `number \| string` | - |
+| leftAction |左側滑動區域的內容| `ReactNode` | - |
+| rightAction |右側滑動區域的內容| `ReactNode` | - |
+| beforeClose |關閉前的回呼函數，返回滑動區域所在的方向 `position` | `(position: 'left \| 'right') => void` | - |
+| disabled |是否禁用滑動| `boolean` | `false` |
+| onOpen |打開儲存格側邊欄| `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | - |
+| onClose |收起儲存格側邊欄| `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | - |
+| onActionClick |點擊左側或者右側時觸發| `(event: Event, position: 'left' \|'right') => void` | - |
+| onTouchStart |onTouchStart| `(event: Event) => void` | - |
+| onTouchMove |onTouchMove| `(event: Event) => void` | - |
+| onTouchEnd |onTouchEnd| `(event: Event) => void` | - |
 
-### Events
+### Ref
 
-| 事件名                 | 說明           |回檔參數|
-|---------------------|--------------|--------------|
-| onOpen              | 打開儲存格側邊欄     | `name: string, position: 'left' \| 'right'` |
-| onClose             | 收起儲存格側邊欄     | `name: string, position: 'left' \| 'right'` |
-| onActionClick       | 點擊左側或者右側時觸發  | `event: Event, position: 'left' \| 'right'` |
-| onTouchStart`v1.4.7` | onTouchStart | `event: Event`      |
-| onTouchMove`v1.4.7`         | onTouchMove  | `event: Event`     |
-| onTouchEnd`v1.4.7`          | onTouchEnd   | `event: Event`     |
+| 属性  | 说明                                      | 回调参数                             |
+| ----- | ----------------------------------------- | ------------------------------------ |
+| open  | 打開儲存格側邊欄，`side`參數默認為`right` | `(side?: 'left' \| 'right') => void` |
+| close | 收起儲存格側邊欄                          | `() => void`                         |
