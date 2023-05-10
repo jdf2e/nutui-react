@@ -79,7 +79,6 @@ export const Image: FunctionComponent<
   } = { ...defaultProps, ...props }
   const [innerLoading, setInnerLoading] = useState(true)
   const [isError, setIsError] = useState(false)
-  const [_src, setSrc] = useState(src)
   const imgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
@@ -90,7 +89,6 @@ export const Image: FunctionComponent<
     ) {
       setInnerLoading(false)
     } else if (src) {
-      setSrc(src)
       setIsError(false)
       setInnerLoading(true)
     }
@@ -98,6 +96,7 @@ export const Image: FunctionComponent<
 
   // 图片加载
   const handleLoad = () => {
+    setIsError(false)
     setInnerLoading(false)
     onLoad && onLoad()
   }
@@ -213,7 +212,7 @@ export const Image: FunctionComponent<
           ref={imgRef}
           className="nut-img lazyload"
           style={imgStyle}
-          data-src={_src}
+          data-src={src}
           alt={alt}
           loading="lazy"
           onLoad={handleLoad}
@@ -224,7 +223,7 @@ export const Image: FunctionComponent<
           ref={imgRef}
           className="nut-img"
           style={imgStyle}
-          src={_src}
+          src={src}
           alt={alt}
           onLoad={handleLoad}
           onError={handleError}
