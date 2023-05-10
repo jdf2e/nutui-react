@@ -11,7 +11,7 @@ export interface ToastProps {
   position?: 'top' | 'bottom' | 'center'
   type: string
   title: string
-  customClass?: string
+  className?: string
   size: string | number
   icon: string | null
   iconSize: string
@@ -32,7 +32,7 @@ const options: ToastProps = {
   position: 'center',
   type: 'text',
   title: '',
-  customClass: '', // 自定义样式名
+  className: '', // 自定义样式名
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
   iconSize: '20',

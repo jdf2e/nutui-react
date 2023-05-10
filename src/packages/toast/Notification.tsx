@@ -12,7 +12,7 @@ export interface NotificationProps {
   position?: 'top' | 'center' | 'bottom'
   type: string
   title: string
-  customClass: string
+  className: string
   size: string | number
   textAlignCenter: boolean
   bgColor: string
@@ -84,7 +84,7 @@ export default class Notification extends React.PureComponent<NotificationProps>
       coverColor,
       textAlignCenter,
       size,
-      customClass,
+      className,
       cover,
       type,
     } = this.props
@@ -94,13 +94,12 @@ export default class Notification extends React.PureComponent<NotificationProps>
       'nut-toast-has-icon': icon,
       'nut-toast-cover': cover,
       'nut-toast-loading': type === 'loading',
-      [`${customClass}`]: true,
       [`nut-toast-${size}`]: true,
     })
     return (
       <>
         <div
-          className={`${toastBem()} ${classes}`}
+          className={`${toastBem()} ${classes} ${className}`}
           id={`toast-${id}`}
           style={{
             backgroundColor: cover ? coverColor : '',
