@@ -1,7 +1,6 @@
 import React, {
   Children,
   forwardRef,
-  // FunctionComponent,
   ReactNode,
   useImperativeHandle,
   useRef,
@@ -53,7 +52,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     ...props,
   }
   const [current, setCurrent] = useState(defaultValue)
-  const childrenLength = useRef(Children.toArray(children).length)
+  const childrenCount = useRef(Children.toArray(children).length)
   const renderIndicator = () => {
     if (React.isValidElement(indicator)) return indicator
     if (indicator === true) {
@@ -66,7 +65,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
         >
           <Indicator
             current={current}
-            total={childrenLength.current}
+            total={childrenCount.current}
             direction={direction}
           />
         </div>
@@ -84,18 +83,16 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     },
     next: () => {
       if (loop) {
-        setCurrent((current + 1) % childrenLength.current)
+        setCurrent((current + 1) % childrenCount.current)
       } else {
-        setCurrent(
-          current + 1 >= childrenLength.current ? current : current + 1
-        )
+        setCurrent(current + 1 >= childrenCount.current ? current : current + 1)
       }
     },
     prev: () => {
       if (loop) {
         let next = current - 1
-        next = next < 0 ? childrenLength.current + next : next
-        setCurrent(next % childrenLength.current)
+        next = next < 0 ? childrenCount.current + next : next
+        setCurrent(next % childrenCount.current)
       } else {
         setCurrent(current - 1 <= 0 ? 0 : current - 1)
       }

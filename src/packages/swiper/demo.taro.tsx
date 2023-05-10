@@ -42,28 +42,6 @@ const SwiperDemo = () => {
       verticalCenter: 'Vertical center display',
     },
   })
-  // const swiperRef = React.useRef<any>(null)
-  // const [height] = useState<any>(150)
-  // const [paginationColor] = useState<string>('#426543')
-  // const [paginationBgColor] = useState<string>('#426ddd')
-  // const [initPage1] = useState<any>(0)
-  // const [initPage2] = useState<any>(0)
-  // const [initPage3] = useState<any>(0)
-  // const [initPage4] = useState<any>(0)
-  // const [initPage5] = useState<any>(0)
-  // const [initPage6] = useState<any>(0)
-  // const [initPage7] = useState<any>(0)
-  // const [initPage8] = useState<any>(0)
-  // const [initPage9] = useState<any>(0)
-  // const [current, setCurrent] = useState(1)
-  // const [current2, setCurrent2] = useState(1)
-  // const [list1, setList1] = useState<string[]>([])
-  // const [list2, setList2] = useState<string[]>([
-  //   'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-  //   'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-  //   'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-  //   'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
-  // ])
 
   const list = [
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
@@ -71,23 +49,7 @@ const SwiperDemo = () => {
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
-  // const onChange = (e: number) => {}
-  // const handlePrev = () => {
-  //   swiperRef.current.prev()
-  // }
-  // const handleNext = () => {
-  //   swiperRef.current.next()
-  // }
-  //
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     const arr: any = list.slice()
-  //     setList1(arr)
-  //     const arr2 = list2.slice()
-  //     arr2.splice(1, 1)
-  //     setList2(arr2)
-  //   }, 3000)
-  // }, [])
+
   const [asyncList, setAsyncList] = useState<string[]>([])
   useEffect(() => {
     setTimeout(() => {
@@ -105,7 +67,7 @@ const SwiperDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} padding`}>
         <h2>{translated.basic}</h2>
-        <Swiper defaultValue={1}>
+        <Swiper defaultValue={1} indicator>
           {list.map((item) => (
             <SwiperItem key={item}>
               <img width="100%" height="100%" src={item} alt="" />
@@ -113,7 +75,7 @@ const SwiperDemo = () => {
           ))}
         </Swiper>
         <h2>{translated.asyc}</h2>
-        <Swiper defaultValue={0}>
+        <Swiper defaultValue={0} indicator>
           {asyncList.map((item) => (
             <SwiperItem key={item}>
               <img width="100%" height="100%" src={item} alt="" />
@@ -122,7 +84,7 @@ const SwiperDemo = () => {
         </Swiper>
 
         <h2>{translated.size}</h2>
-        <Swiper defaultValue={0}>
+        <Swiper width={300} height={150} defaultValue={0} loop={false}>
           {list.map((item) => (
             <SwiperItem key={item}>
               <img width="100%" height="100%" src={item} alt="" />
@@ -163,7 +125,6 @@ const SwiperDemo = () => {
         <h2>{translated.btns}</h2>
         <div className="demo-box" style={{ height: 150 }}>
           <Swiper
-            // loop
             ref={swiperRef}
             defaultValue={0}
             onChange={(e) => {

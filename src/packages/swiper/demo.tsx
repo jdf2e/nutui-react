@@ -175,8 +175,8 @@ const SwiperDemo = () => {
       <h2>{translated.indicator}</h2>
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper
-          height={height}
           loop
+          height={height}
           defaultValue={initPage5}
           onChange={(e) => setCurrent(e + 1)}
           indicator={<div className="page"> {current}/4 </div>}
@@ -245,7 +245,7 @@ const SwiperDemo = () => {
           height={height}
           indicator
           width="280"
-          isCenter
+          center
         >
           {list.map((item) => {
             return (
@@ -265,7 +265,7 @@ const SwiperDemo = () => {
           autoplay="0"
           height="220"
           indicator
-          isCenter
+          center
           style={{ height: '280px' }}
         >
           {list.map((item) => {

@@ -12,7 +12,6 @@ import { DataContext } from './context'
 import { getRect } from '@/utils/use-client-rect'
 import Indicator from '@/packages/indicator'
 import { BasicComponent } from '@/utils/typings'
-import SwiperItem from '@/packages/swiperitem'
 
 export type SwiperRef = {
   to: (index: number) => void
@@ -32,8 +31,8 @@ export interface SwiperProps extends BasicComponent {
   touchable: boolean
   preventDefault: boolean
   stopPropagation: boolean
-  isCenter: boolean
-  onChange?: (currPage: number) => void
+  center: boolean
+  onChange?: (current: number) => void
 }
 
 const defaultProps = {
@@ -48,7 +47,7 @@ const defaultProps = {
   touchable: true,
   preventDefault: true,
   stopPropagation: true,
-  isCenter: false,
+  center: false,
   className: '',
 } as SwiperProps
 
@@ -74,7 +73,7 @@ export const Swiper = React.forwardRef<
     preventDefault,
     stopPropagation,
     autoplay,
-    isCenter,
+    center,
     ...rest
   } = propSwiper
   const container = useRef<any>(null)
@@ -322,7 +321,7 @@ export const Swiper = React.forwardRef<
   const getStyle = (moveOffset = offset) => {
     const target = innerRef.current
     let _offset = 0
-    if (!isCenter) {
+    if (!center) {
       _offset = moveOffset
     } else {
       const _size = isVertical ? height : width
