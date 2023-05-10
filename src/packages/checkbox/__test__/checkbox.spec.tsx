@@ -6,7 +6,7 @@ import { CheckboxGroup } from '../../checkboxgroup/checkboxgroup'
 
 test('should match snapshot', () => {
   const { asFragment } = render(
-    <Checkbox textPosition="left" label="复选框" checked />
+    <Checkbox labelPosition="left" label="复选框" checked />
   )
   expect(asFragment()).toMatchSnapshot()
 })
@@ -18,7 +18,7 @@ test('should props correctly', () => {
       data-testid="checkbox"
       style={{ color: 'red' }}
       className="test"
-      textPosition="left"
+      labelPosition="left"
       label="复选框"
       onChange={handleChange}
       disabled
