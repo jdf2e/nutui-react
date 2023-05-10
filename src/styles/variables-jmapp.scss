@@ -459,10 +459,7 @@ $picker-item-active-line-border: var(
   --nutui-picker-item-active-line-border,
   1px solid #d8d8d8
 ) !default;
-$picker-columns-item-color: var(
-  --nutui-picker-columns-item-color,
-  $title-color
-) !default;
+
 $picker-mask-bg-img: var(
   --picker-mask-bg-img,
   linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),

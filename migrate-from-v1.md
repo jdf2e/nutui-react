@@ -155,6 +155,7 @@
 - toggleAll 重命名为 toggle
 - toggleReverse 重命名为 reverse
 #### DatePicker
+- 因为依赖组件`Picker`的变更，方法 `onConfirmDatePicker`、`onChange`的参数进行了调整，从`(selectedValue, selectedOptions)` 改为 `(selectedOptions, selectedValue)`。
 #### Form
 #### Input
 #### InputNumber
@@ -166,6 +167,13 @@
 - 新增taro的`formatter`属性开发
 #### NumberKeyboard
 #### Picker
+- `isVisible` 重命名为 `visible`
+- `listData` 重命名为 `options`
+- `defaultValueData` 重命名为 `defaultValue`
+- 增加受控 `value`
+- `swipeDuration` 重命名为 `duration`
+- `onCloseUpdate` 重命名为 `afterClose`
+- 方法 `onConfirm`、`onClose`、`afterClose`、`onChange`的参数进行了调整，从`(selectedValue, selectedOptions)` 改为 `(selectedOptions, selectedValue)`。
 #### Radio
 #### Range
 #### Rate
