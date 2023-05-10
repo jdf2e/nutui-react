@@ -6,6 +6,7 @@ export interface IndicatorProps {
   current: number
   direction: string
 }
+
 const defaultProps = {
   total: 3,
   current: 1,
@@ -29,14 +30,12 @@ export const Indicator: FunctionComponent<
     for (let item = 1; item <= total; item++) {
       childs.push(
         item === current ? (
-          <>
-            {children || (
-              <div
-                key={item}
-                className={`${classPrefix}__dot ${classPrefix}__active`}
-              />
-            )}
-          </>
+          children || (
+            <div
+              key={item}
+              className={`${classPrefix}__dot ${classPrefix}__active`}
+            />
+          )
         ) : (
           <div key={item} className={`${classPrefix}__dot`} />
         )
