@@ -82,7 +82,7 @@ import { Progress, Image, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Progress percent={60}>
+      <Progress percent={60} showText>
         <Image
           width="30px"
           height="30px"
@@ -107,13 +107,13 @@ const App = () => {
   return (
     <>
       <Cell>
-        <Progress percent={30} strokeWidth="5" />
+        <Progress percent={30} strokeWidth="5" showText />
       </Cell>
       <Cell>
-        <Progress percent={50} strokeWidth="10" />
+        <Progress percent={50} strokeWidth="10" showText />
       </Cell>
       <Cell>
-        <Progress percent={70} strokeWidth="15" />
+        <Progress percent={70} strokeWidth="15" showText />
       </Cell>
     </>
   );
