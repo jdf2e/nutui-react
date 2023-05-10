@@ -231,6 +231,13 @@
 - onFastBack 重命名为 onBack
 - onPlayEnd 重命名为 onEnd
 #### Avatar
+- Avatar `url` 重命名为 `src`
+- Avatar `onActiveAvatar` 重命名为 `onClick`
+- AvatarGroup `maxCount` 重命名为 `max`
+- AvatarGroup `span` 重命名为 `gap`
+- AvatarGroup `zIndex` 重命名为 `level`
+- 新增fit属性，图片填充模式
+- 图片加兜底
 #### Badge
 - 删除zIndex，目前没有用到，也不生效，直接去掉。
 - 删除icon，自定义icon可放在 value 中实现，扩充了value的类型。
