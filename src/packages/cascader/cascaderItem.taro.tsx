@@ -26,7 +26,7 @@ export interface CascaderItemProps {
     children?: OptiosInfo[]
   }
   checked: boolean
-  checkedIcon: string
+  activeIcon: string
   activeColor: string
   chooseItem: (data: any) => void
 }
@@ -42,7 +42,7 @@ const defaultProps = {
   },
   activeColor: '',
   checked: false,
-  checkedIcon: 'checklist',
+  activeIcon: 'checklist',
   chooseItem: () => {},
 } as CascaderItemProps
 
@@ -50,7 +50,7 @@ const InternalCascaderItem: ForwardRefRenderFunction<
   unknown,
   PropsWithChildren<Partial<CascaderItemProps>>
 > = (props, ref) => {
-  const { data, checked, checkedIcon, chooseItem, activeColor } = {
+  const { data, checked, activeIcon, chooseItem, activeColor } = {
     ...defaultProps,
     ...props,
   }
@@ -71,8 +71,8 @@ const InternalCascaderItem: ForwardRefRenderFunction<
 
   const renderIcon = () => {
     if (checked) {
-      if (isValidElement(checkedIcon)) {
-        return checkedIcon
+      if (isValidElement(activeIcon)) {
+        return activeIcon
       }
       return <Checklist className={`${checked ? b('icon-check') : ''}`} />
     }

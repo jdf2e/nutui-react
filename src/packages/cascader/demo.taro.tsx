@@ -452,7 +452,7 @@ const CascaderDemo = () => {
             title={translated.addressTip}
             options={optionsDemo1}
             closeable
-            checkedIcon="star"
+            activeIcon="star"
             onClose={() => {
               setIsVisibleDemo6(false)
             }}

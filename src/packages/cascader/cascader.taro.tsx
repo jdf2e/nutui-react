@@ -25,9 +25,9 @@ export interface CascaderProps {
   className: string
   style: CSSProperties
   activeColor: string
-  checkedIcon: string
+  activeIcon: string
   tabsColor: string
-  poppable: boolean
+  popup: boolean
   visible: boolean // popup 显示状态
   options: CascaderOption[]
   value: string[]
@@ -50,9 +50,9 @@ const defaultProps = {
   className: '',
   style: {},
   activeColor: '',
-  checkedIcon: 'checklist',
+  activeIcon: 'checklist',
   tabsColor: '',
-  poppable: true,
+  popup: true,
   visible: false,
   options: [],
   value: [],
@@ -79,7 +79,7 @@ const InternalCascader: ForwardRefRenderFunction<
     className,
     style,
     tabsColor,
-    poppable,
+    popup,
     visible,
     options,
     value,
@@ -356,7 +356,7 @@ const InternalCascader: ForwardRefRenderFunction<
   const renderItem = () => {
     return (
       <div className={`${classes} ${className}`} style={style}>
-        {poppable && <div className={b('title')}>{title}</div>}
+        {popup && <div className={b('title')}>{title}</div>}
         <Tabs
           value={tabvalue}
           title={() => {
@@ -418,7 +418,7 @@ const InternalCascader: ForwardRefRenderFunction<
 
   return (
     <>
-      {poppable ? (
+      {popup ? (
         <Popup
           className="cascadar-popup"
           visible={visible}

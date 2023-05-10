@@ -141,6 +141,7 @@
 ### 数据录入
 #### Calendar
 #### Cascader
+- `checkedIcon` 重命名为 `activeIcon`
 #### Checkbox
 - 新增 defaultChecked，用于非受控，checked 用于受控
 - 新增 value，用于 group 模式 

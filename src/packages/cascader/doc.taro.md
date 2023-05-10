@@ -559,10 +559,10 @@ export default App;
 | ------------- | ---------------------------------------------- | -------- | ------ |
 | value         | 选中值                                          | Array    | -      |
 | options       | 级联数据                                         | Array    | -      |
-| poppable      | 是否弹窗状态展示                                  | boolean  | `true`   |
+| popup      | 是否弹窗状态展示                                  | boolean  | `true`   |
 | visible       | 级联显示隐藏状态                                  | boolean  | `false`  |
 | activeColor`1.3.13` | 选中激活颜色                                  | string  | -  |
-| checkedIcon`1.5.0`  | 标记选中的Icon | string | `ReactNode`      |
+| activeIcon`1.5.0`  | 标记选中的Icon | string | `ReactNode`      |
 | tabsColor`1.3.13` | tabs底部选中激活颜色                                    | string  | -  |
 | lazy          | 是否开启动态加载                                  | boolean  | `false`  |
 | lazyLoad      | 动态加载回调，开启动态加载时生效                   | Function | -      |

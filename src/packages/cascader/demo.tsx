@@ -359,6 +359,7 @@ const CascaderDemo = () => {
         <Cascader
           visible={isVisibleDemo2}
           value={value2}
+          popup={false}
           title={translated.addressTip}
           options={optionsDemo2}
           textKey="text1"
@@ -452,7 +453,7 @@ const CascaderDemo = () => {
             title={translated.addressTip}
             options={optionsDemo1}
             closeable
-            checkedIcon="star"
+            activeIcon="star"
             onClose={() => {
               setIsVisibleDemo6(false)
             }}

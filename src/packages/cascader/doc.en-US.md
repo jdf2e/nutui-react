@@ -561,10 +561,10 @@ export default App;
 | ------------- | --------------------------------------------- | -------- | ------ |
 | value         | Selected value                                | Array    | -      |
 | options       | Cascade data                                  | Array    | -      |
-| poppable      | Whether to display the pop-up window status   | boolean  | `true`   |
+| popup      | Whether to display the pop-up window status   | boolean  | `true`   |
 | visible       | Cascading show hidden states                  | boolean  | `false`  |
 | activeColor`1.3.13` | Check the active color                  | string  | -  |
-| checkedIcon`1.5.0`  | Checked Item Icon | string | `ReactNode` |
+| activeIcon`1.5.0`  | Checked Item Icon | string | `ReactNode` |
 | tabsColor`1.3.13`   | Check the active color at the bottom of tabs  | string  | -  |
 | lazy                | Whether to enable dynamic loading             | boolean  | `false`  |
 | lazyLoad            | Dynamic loading callback, which takes effect when dynamic loading is enabled   | Function | -      |

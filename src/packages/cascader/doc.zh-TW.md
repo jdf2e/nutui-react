@@ -560,10 +560,10 @@ export default App;
 |---------------------| ---------------------------------------------- | -------- | ------ |
 | value               | 選中值                                          | Array    | -      |
 | options             | 級聯數據                                         | Array    | -      |
-| poppable            | 是否彈窗狀態展示                                  | boolean  | `true`   |
+| popup            | 是否彈窗狀態展示                                  | boolean  | `true`   |
 | visible             | 級聯顯示隱藏狀態                                  | boolean  | `false`  |
 | activeColor`1.3.13` | 選中啟動態顏色                           | string  | -  |
-| checkedIcon`1.5.0`  | 標記選中的Icon | string | `ReactNode` |
+| activeIcon`1.5.0`  | 標記選中的Icon | string | `ReactNode` |
 | tabsColor`1.3.13`   | tabs底部選中啟動態顏色                                  | string  | -  |
 | lazy                | 是否開啟動態加載                                  | boolean  | `false`  |
 | lazyLoad            | 動態加載回調，開啟動態加載時生效                   | Function | -      |
