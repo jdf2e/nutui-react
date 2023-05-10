@@ -14,7 +14,8 @@ const outputEntries = {}
 
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    const { name, show, type, exportEmpty } = element
+    const { name, show, exclude, exportEmpty } = element
+    if (exclude) return
     if (show || exportEmpty) {
       outputEntries[`./${name.toLowerCase()}`] = `./${name}`
       entries[name] = path.join(

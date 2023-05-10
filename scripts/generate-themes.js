@@ -24,6 +24,7 @@ componentsScss.map((cs) => {
 
 config.nav.map((item) => {
   item.packages.forEach((element) => {
+    if (element.exclude) return
     let folderName = element.name.toLowerCase()
     fileStr += `@import '../../packages/${folderName}/${folderName}.scss';\n`
   })
