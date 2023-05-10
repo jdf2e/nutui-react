@@ -18,7 +18,6 @@ export interface RangeProps extends BasicComponent {
   disabled: boolean
   activeColor: string
   inactiveColor: string
-  buttonColor: string
   min: number | string
   max: number | string
   minDescription: ReactNode
@@ -58,7 +57,6 @@ export const Range: FunctionComponent<
     disabled,
     activeColor,
     inactiveColor,
-    buttonColor,
     modelValue,
     button,
     vertical,
@@ -143,11 +141,6 @@ export const Range: FunctionComponent<
   const wrapperStyle = () => {
     return {
       background: inactiveColor,
-    }
-  }
-  const buttonStyle = () => {
-    return {
-      borderColor: buttonColor,
     }
   }
 
@@ -404,7 +397,7 @@ export const Range: FunctionComponent<
                   }}
                 >
                   {button || (
-                    <div className="nut-range-button" style={buttonStyle()}>
+                    <div className="nut-range-button">
                       {currentDescription !== null && (
                         <div className="number">
                           {currentDescription
@@ -443,7 +436,7 @@ export const Range: FunctionComponent<
               }}
             >
               {button || (
-                <div className="nut-range-button" style={buttonStyle()}>
+                <div className="nut-range-button">
                   {currentDescription !== null && (
                     <div className="number">
                       {currentDescription

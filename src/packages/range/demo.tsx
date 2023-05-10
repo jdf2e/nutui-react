@@ -4,6 +4,7 @@ import { Cell } from '../cell/cell'
 import { useTranslate } from '../../sites/assets/locale'
 import Toast from '../toast'
 import './demo.scss'
+import ConfigProvider from '../configprovider'
 
 interface T {
   title: string
@@ -198,17 +199,22 @@ const RangeDemo = () => {
         </Cell>
         <h2>{translated.title7}</h2>
         <Cell style={cellStyle}>
-          <Range
-            className="test-range"
-            modelValue={40}
-            inactiveColor="rgba(163,184,255,1)"
-            buttonColor="rgba(52,96,250,1)"
-            activeColor="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-            style={{ color: 'red' }}
-            onChange={(value: number) => {
-              change(value)
+          <ConfigProvider
+            theme={{
+              [`--nutui-range-bar-btn-border`]: '1px solid rgba(52,96,250,1)',
             }}
-          />
+          >
+            <Range
+              className="test-range"
+              modelValue={40}
+              inactiveColor="rgba(163,184,255,1)"
+              activeColor="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
+              style={{ color: 'red' }}
+              onChange={(value: number) => {
+                change(value)
+              }}
+            />
+          </ConfigProvider>
         </Cell>
         <h2>{translated.title8}</h2>
         <Cell style={cellStyle}>
@@ -222,7 +228,7 @@ const RangeDemo = () => {
         </Cell>
         <h2>{translated.title9}</h2>
         <Cell style={verticalStyle}>
-          <div style={{ width: '150px' }}>
+          <div style={{ width: '150px', height: '100%' }}>
             <Range
               modelValue={value3}
               vertical
@@ -231,7 +237,7 @@ const RangeDemo = () => {
               }}
             />
           </div>
-          <div style={{ width: '150px' }}>
+          <div style={{ width: '150px', height: '100%' }}>
             <Range
               modelValue={value4}
               vertical
