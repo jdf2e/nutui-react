@@ -258,6 +258,7 @@ const PickerDemo = () => {
     }
   }
 
+  const [val, setVal] = useState<Array<number | string>>([])
   // 确定选择
   const confirmPicker = (
     type: string,
@@ -313,9 +314,29 @@ const PickerDemo = () => {
         <Picker
           visible={isVisible4}
           options={listData1}
-          onConfirm={(list, values) => confirmPicker('default', list, values)}
           defaultValue={defaultValue}
+          onConfirm={(list, values) => confirmPicker('default', list, values)}
           onClose={() => setIsVisible4(false)}
+        />
+
+        <h2>{translated.controlled}</h2>
+        <Cell
+          title={translated.chooseCity}
+          description={baseDesc}
+          onClick={() => setIsVisible1(!isVisible1)}
+        />
+        <Picker
+          title={translated.chooseCity}
+          visible={isVisible1}
+          value={val}
+          options={listData1}
+          onConfirm={(list, values) => {
+            confirmPicker('base', list, values)
+            setVal(values)
+          }}
+          onClose={() => {
+            setIsVisible1(false)
+          }}
         />
 
         <h2>{translated.multipleColumns}</h2>

@@ -11,12 +11,14 @@ import PickerPanel from './pickerpanel'
 import useRefs from '@/utils/use-refs'
 import { useConfig } from '@/packages/configprovider'
 import { PickerOption } from './types'
+import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface PickerProps extends BasicComponent {
   visible: boolean
   title?: string
   options: (PickerOption | PickerOption[])[]
+  value?: (number | string)[]
   defaultValue?: (number | string)[]
   threeDimensional?: boolean
   duration: number | string
@@ -44,6 +46,7 @@ const defaultProps = {
   visible: false,
   title: '',
   options: [],
+  value: [],
   defaultValue: [],
   threeDimensional: true,
   duration: 1000,
@@ -68,10 +71,16 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     } = { ...defaultProps, ...props }
     const classPrefix = 'nut-picker'
     const classes = classNames(classPrefix, className)
-    // 选择的数据的 value 值, 每一条数据的 value 值
-    const [selectedValue, setSelectedValue] = useState<Array<string | number>>([
-      ...defaultValue,
-    ])
+    const [selectedValue, setSelectedValue] = usePropsValue<
+      Array<string | number>
+    >({
+      value: props.value,
+      defaultValue: [...defaultValue],
+      finalValue: [...defaultValue],
+      onChange: (val: (string | number)[]) => {
+        props.onConfirm?.(setSelectedOptions(), val)
+      },
+    })
     const [columnIndex, setColumnIndex] = useState<number>(0) // 选中列
     const pickerRef = useRef<any>(null)
     const [refs, setRefs] = useRefs()
@@ -205,8 +214,9 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
             }
             setColumnsList(normalListData() as PickerOption[][])
           } else {
-            setSelectedValue((data) => {
-              const cdata = [...data]
+            // @ts-ignore
+            setSelectedValue((data: (number | string)[]) => {
+              const cdata: (number | string)[] = [...data]
               cdata[columnIndex] = Object.prototype.hasOwnProperty.call(
                 columnOptions,
                 'value'

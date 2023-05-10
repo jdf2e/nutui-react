@@ -28,12 +28,9 @@ const App = () => {
       { value: 3, text: 'ZangZu',},
       { value: 4, text: 'BeiJing',},
       { value: 5, text: 'LianYunGang',},
-      { value: 6, text: 'ZheJiang',},
-      { value: 7, text: 'JiangSu',},
       { value: 8, text: 'DaQing',},
       { value: 9, text: 'SuiHua',},
       { value: 10,text: 'WeiFang',},
-      { value: 11,text: 'Please Choose',},
       { value: 12,text: 'Urumqi Municipality'},
     ],
   ]
@@ -64,9 +61,7 @@ export default App;
 ```
 :::
 
-
 ### Default Index
-
 :::demo
 ```tsx
 import  React, { useState  } from "react";
@@ -75,6 +70,7 @@ import { Picker,Cell } from '@nutui/nutui-react';
 const App = () => {
   const [isVisible1, setIsVisible1] = useState(false)
   const [baseDefault, setbaseDefault] = useState('')
+  const [defaultValue, setDefaultValue] = useState([2])
   const listData1 = [
     [
       { value: 1, text: 'NanJing',},
@@ -82,12 +78,9 @@ const App = () => {
       { value: 3, text: 'ZangZu',},
       { value: 4, text: 'BeiJing',},
       { value: 5, text: 'LianYunGang',},
-      { value: 6, text: 'ZheJiang',},
-      { value: 7, text: 'JiangSu',},
       { value: 8, text: 'DaQing',},
       { value: 9, text: 'SuiHua',},
       { value: 10,text: 'WeiFang',},
-      { value: 11,text: 'Please Choose',},
       { value: 12,text: 'Urumqi Municipality'},
     ],
   ]
@@ -104,6 +97,7 @@ const App = () => {
       <Picker
         visible={isVisible1}
         options={listData1}
+        defaultValue={defaultValue}
         onConfirm={(list, values) => confirmPicker(list, values)}
         onClose={() => setIsVisible1(false)}
        />
@@ -181,12 +175,9 @@ const App = () => {
       { value: 3, text: 'ZangZu',},
       { value: 4, text: 'BeiJing',},
       { value: 5, text: 'LianYunGang',},
-      { value: 6, text: 'ZheJiang',},
-      { value: 7, text: 'JiangSu',},
       { value: 8, text: 'DaQing',},
       { value: 9, text: 'SuiHua',},
       { value: 10,text: 'WeiFang',},
-      { value: 11,text: 'Please Choose',},
       { value: 12,text: 'Urumqi Municipality'},
     ],
   ]
@@ -274,7 +265,6 @@ const App = () => {
               options
             )
           }
-        }
        />
     </>
   );
@@ -375,14 +365,15 @@ export default App;
 | Property | Description | Type   | Default           |
 | ----- | ----- | ----- | ----- |
 | visible | Is Show  | `boolean` | `false` |
-| title | Toolbar title | `string` | - |
+| title | Toolbar title | `string` | `-` |
 | options |  Columns data | `Array` | `[]` | 
+| value | Controlled Value | `Array` | `[]` |
 | defaultValue | Default Index  | `Array` | `[]` |
 | threeDimensional| Turn on 3D effects| `boolean`  | `true`   |
 | duration | move animation duration, ms | `string \| number` | `1000`   |
-| onConfirm     | Emitted when click confirm button. | `(options, value) => void` | `-` |
-| onChange      | Emitted when current option changed. | `(options, value) => void` | `-` |
-| onClose       | Emitted when click close button. | `(options, value) => void`  | `-` |
+| onConfirm | Emitted when click confirm button. | `(options, value) => void` | `-` |
+| onChange | Emitted when current option changed. | `(options, value) => void` | `-` |
+| onClose | Emitted when click close button. | `(options, value) => void`  | `-` |
 | afterClose | Emitted when cascade changed.   | `(options, value) => void` | `-` |
 
 ### options 
@@ -390,8 +381,7 @@ export default App;
 |--------------|-------|--------|------------------|
 | text | Text of column | `string \| number` | | 
 | value | Value of column | `string \| number` | |
-| children | Cascader Option | `Array` | - |
-
+| children | Cascader Option | `Array` | `-` |
 
 ## Theming
 

@@ -10,7 +10,6 @@ import { Picker } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示
-
 ### 基础用法
 
 :::demo
@@ -28,12 +27,9 @@ const App = () => {
       { value: 3, text: '海北藏族自治区',},
       { value: 4, text: '北京市',},
       { value: 5, text: '连云港市',},
-      { value: 6, text: '浙江市',},
-      { value: 7, text: '江苏市',},
       { value: 8, text: '大庆市',},
       { value: 9, text: '绥化市',},
       { value: 10,text: '潍坊市',},
-      { value: 11,text: '请按市',},
       { value: 12,text: '乌鲁木齐市'},
     ],
   ]
@@ -75,6 +71,7 @@ import { Picker, Cell } from '@nutui/nutui-react-taro';
 const App = () => {
   const [isVisible1, setIsVisible1] = useState(false)
   const [baseDefault, setbaseDefault] = useState('')
+  const [defaultValue, setDefaultValue] = useState([2])
   const listData1 = [
     [
       { value: 1, text: '南京市',},
@@ -82,12 +79,9 @@ const App = () => {
       { value: 3, text: '海北藏族自治区',},
       { value: 4, text: '北京市',},
       { value: 5, text: '连云港市',},
-      { value: 6, text: '浙江市',},
-      { value: 7, text: '江苏市',},
       { value: 8, text: '大庆市',},
       { value: 9, text: '绥化市',},
       { value: 10,text: '潍坊市',},
-      { value: 11,text: '请按市',},
       { value: 12,text: '乌鲁木齐市'},
     ],
   ]
@@ -104,6 +98,7 @@ const App = () => {
       <Picker
         visible={isVisible1}
         options={listData1}
+        defaultValue={defaultValue}
         onConfirm={(list, values) => confirmPicker(list, values)}
         onClose={() => setIsVisible1(false)}
        />
@@ -183,12 +178,9 @@ const App = () => {
       { value: 3, text: '海北藏族自治区',},
       { value: 4, text: '北京市',},
       { value: 5, text: '连云港市',},
-      { value: 6, text: '浙江市',},
-      { value: 7, text: '江苏市',},
       { value: 8, text: '大庆市',},
       { value: 9, text: '绥化市',},
       { value: 10,text: '潍坊市',},
-      { value: 11,text: '请按市',},
       { value: 12,text: '乌鲁木齐市'},
     ],
   ]
@@ -377,22 +369,23 @@ export default App;
 | 属性 | 说明 | 类型 | 默认值 |
 |-------------| ----- | ----- | ----- |
 | visible | 是否可见 | `boolean` | `false` |
-| title | 设置标题 | `string` | - |
+| title | 设置标题 | `string` | `-` |
 | options | 列表数据 | `Array` | `[]` |
+| value | 选中值，受控 | `Array` | `[]` |
 | defaultValue | 默认选中 | `Array` | `[]` |
 | threeDimensional | 是否开启3D效果 | `boolean`  | `true`   |
 | duration | 快速滑动时惯性滚动的时长，单位 ms | `string \| number` | `1000`   |
-| onConfirm | 点击确认按钮时候回调 | `(options, value) => void`  | - |
-| onChange | 每一列值变更时调用   | `(options, value) => void`  | - |
-| onClose | 关闭时触发| `(options, value) => void` | - |
-| afterClose | 联动时，关闭时回调   | `(options, value) => void`  | - |
+| onConfirm | 点击确认按钮时候回调 | `(options, value) => void`  | `-` |
+| onChange | 每一列值变更时调用   | `(options, value) => void`  | `-` |
+| onClose | 关闭时触发| `(options, value) => void` | `-` |
+| afterClose | 联动时，关闭时回调   | `(options, value) => void`  | `-` |
 
 ### options 数据结构
 | 属性 | 说明| 类型   | 默认值|
 |------|----------|--------|-------------|
-| text     | 选项的文字内容 | `string \| number` | |
-| value         | 选项对应的值，且唯一 | `string \| number` | |
-| children       | 用于级联选项 | `Array` | - |
+| text| 选项的文字内容 | `string \| number` |`-` |
+| value| 选项对应的值，且唯一 | `string \| number` | `-`|
+| children| 用于级联选项 | `Array` | `-` |
 
 ## 主题定制
 

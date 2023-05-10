@@ -240,6 +240,7 @@ const PickerDemo = () => {
   const changePicker = (options: any[], values: any, columnIndex: number) => {
     console.log('picker选择change', columnIndex, values, options)
   }
+  const [val, setVal] = useState<Array<number | string>>([])
   // 确定选择
   const confirmPicker = (
     type: string,
@@ -299,6 +300,26 @@ const PickerDemo = () => {
           defaultValue={defaultValue}
           onClose={() => setIsVisible4(false)}
           onChange={changePicker}
+        />
+
+        <h2>受控</h2>
+        <Cell
+          title="请选择城市"
+          description={baseDesc}
+          onClick={() => setIsVisible1(!isVisible1)}
+        />
+        <Picker
+          title="请选择城市"
+          visible={isVisible1}
+          value={val}
+          options={listData1}
+          onConfirm={(list, values) => {
+            confirmPicker('base', list, values)
+            setVal(values)
+          }}
+          onClose={() => {
+            setIsVisible1(false)
+          }}
         />
 
         <h2>多列用法</h2>

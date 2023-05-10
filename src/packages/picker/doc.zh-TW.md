@@ -71,6 +71,7 @@ import { Picker,Cell } from '@nutui/nutui-react';
 const App = () => {
   const [isVisible1, setIsVisible1] = useState(false)
   const [baseDefault, setbaseDefault] = useState('')
+  const [defaultValue, setDefaultValue] = useState([2])
   const listData1 = [
     [
       { value: 1, text: '南京市',},
@@ -97,6 +98,7 @@ const App = () => {
       <Picker
         visible={isVisible1}
         options={listData1}
+        defaultValue={defaultValue}
         onConfirm={(list, values) => confirmPicker(list, values)}
         onClose={() => setIsVisible1(false)}
        />
@@ -367,22 +369,23 @@ export default App;
 | 屬性 | 說明 | 類型 | 預設值 |
 |-------------| ----- | ----- | ----- |
 | visible | 是否可見 | `boolean` | `false` |
-| title | 設定標題 | `string` | - |
+| title | 設定標題 | `string` | `-` |
 | options | 列錶數據 | `Array` | `[]` |
+| value | 选中值，受控 | `Array` | `[]` |
 | defaultValue | 預設選中 | `Array` | `[]` |
 | threeDimensional | 是否開啟3D效果 | `boolean`  | `true`   |
 | duration | 快速滑動時慣性滾動的時長，單位 ms | `string \| number` | `1000`   |
-| onConfirm | 點選確認按鈕時候回調 | `(options, value) => void`  | - |
-| onChange | 每一列值變更時調用   | `(options, value) => void`  | - |
-| onClose | 關閉時觸發| `(options, value) => void` | - |
-| afterClose | 聯動時，關閉時回調   | `(options, value) => void`  | - |
+| onConfirm | 點選確認按鈕時候回調 | `(options, value) => void`  | `-` |
+| onChange | 每一列值變更時調用   | `(options, value) => void`  | `-` |
+| onClose | 關閉時觸發| `(options, value) => void` | `-` |
+| afterClose | 聯動時，關閉時回調   | `(options, value) => void`  | `-` |
 
 ### options 數據結構
 | 屬性 | 說明| 類型   | 預設值|
 |------|----------|--------|-------------|
 | text     | 選項的文字內容 | `string \| number` | |
 | value         | 選項對應的值，且唯一 | `string \| number` | |
-| children       | 用於級聯選項 | `Array` | - |
+| children       | 用於級聯選項 | `Array` | `-` |
 
 ## 主題定制
 
