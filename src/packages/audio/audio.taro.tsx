@@ -193,8 +193,9 @@ export const Audio: FunctionComponent<
           <div className={b('progress-bar-wrapper')}>
             <Range
               modelValue={percent}
-              hiddenTag
-              hiddenRange
+              currentDescription={null}
+              maxDescription={null}
+              minDescription={null}
               inactive-color="#cccccc"
               active-color="#fa2c19"
             />

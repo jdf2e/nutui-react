@@ -121,17 +121,20 @@ const RangeDemo = () => {
       <div className="demo">
         <h2>{translated.title}</h2>
         <Cell style={cellStyle}>
-          <Range modelValue={40} />
+          <Range defaultValue={40} />
         </Cell>
         <h2>{translated.title11}</h2>
         <Cell style={cellStyle}>
           <Range
-            modelValue={value9}
+            value={value9}
             minDescription="0%"
             maxDescription="100%"
             currentDescription={(value) => `${value}%`}
             onChange={(value: any) => {
               change(value, 'value9')
+            }}
+            onEnd={(value: any) => {
+              console.log('onEnd', value)
             }}
           />
         </Cell>
@@ -139,7 +142,7 @@ const RangeDemo = () => {
         <Cell style={cellStyle}>
           <Range
             range
-            modelValue={value0}
+            value={value0}
             onChange={(value: any) => {
               change(value, 'value0')
             }}
@@ -148,7 +151,7 @@ const RangeDemo = () => {
         <h2>{translated.title2}</h2>
         <Cell style={cellStyle}>
           <Range
-            modelValue={0}
+            defaultValue={0}
             max={10}
             min={-10}
             onChange={(value: any) => {
@@ -159,7 +162,7 @@ const RangeDemo = () => {
         <h2>{translated.title3}</h2>
         <Cell style={cellStyle}>
           <Range
-            modelValue={value1}
+            value={value1}
             step={5}
             onChange={(value: any) => {
               change(value, 'value1')
@@ -169,7 +172,7 @@ const RangeDemo = () => {
         <h2>{translated.title4}</h2>
         <Cell style={cellStyle}>
           <Range
-            modelValue={30}
+            defaultValue={30}
             maxDescription={null}
             minDescription={null}
             onChange={(value: any) => {
@@ -180,7 +183,7 @@ const RangeDemo = () => {
         <h2>{translated.title5}</h2>
         <Cell style={cellStyle}>
           <Range
-            modelValue={20}
+            defaultValue={20}
             currentDescription={null}
             onChange={(value: any) => {
               change(value)
@@ -190,7 +193,7 @@ const RangeDemo = () => {
         <h2>{translated.title6}</h2>
         <Cell style={cellStyle}>
           <Range
-            modelValue={50}
+            defaultValue={50}
             disabled
             onChange={(value: any) => {
               change(value)
@@ -214,13 +217,13 @@ const RangeDemo = () => {
           >
             <Range
               className="test-range"
-              modelValue={40}
+              defaultValue={40}
               style={{ color: 'red' }}
               marks={{
                 10: 10,
                 20: 20,
               }}
-              onChange={(value: number) => {
+              onChange={(value: number | number[]) => {
                 change(value)
               }}
             />
@@ -229,9 +232,9 @@ const RangeDemo = () => {
         <h2>{translated.title8}</h2>
         <Cell style={cellStyle}>
           <Range
-            modelValue={value2}
+            value={value2}
             button={<div className="range-custom-button">{value2}</div>}
-            onChange={(value: number) => {
+            onChange={(value: number | number[]) => {
               change(value, 'value2')
             }}
           />
@@ -240,19 +243,19 @@ const RangeDemo = () => {
         <Cell style={verticalStyle}>
           <div style={{ width: '150px', height: '100%' }}>
             <Range
-              modelValue={value3}
+              value={value3}
               vertical
-              onChange={(value: number) => {
+              onChange={(value: number | number[]) => {
                 change(value, 'value3')
               }}
             />
           </div>
           <div style={{ width: '150px', height: '100%' }}>
             <Range
-              modelValue={value4}
+              value={value4}
               vertical
               range
-              onChange={(value: number) => {
+              onChange={(value: number | number[]) => {
                 change(value, 'value4')
               }}
             />
@@ -261,21 +264,21 @@ const RangeDemo = () => {
         <h2>{translated.title10}</h2>
         <Cell style={cellStyle}>
           <Range
-            modelValue={value5}
+            value={value5}
             maxDescription={null}
             minDescription={null}
             marks={marks}
-            onChange={(value: number) => {
+            onChange={(value: number | number[]) => {
               change(value, 'value5')
             }}
           />
         </Cell>
         <Cell style={cellStyle}>
           <Range
-            modelValue={value6}
+            value={value6}
             marks={marks}
             range
-            onChange={(value: number) => {
+            onChange={(value: number | number[]) => {
               change(value, 'value6')
             }}
           />
@@ -283,21 +286,21 @@ const RangeDemo = () => {
 
         <Cell style={verticalStyle}>
           <Range
-            modelValue={value7}
+            value={value7}
             vertical
             maxDescription={null}
             minDescription={null}
             marks={marks}
-            onChange={(value: number) => {
+            onChange={(value: number | number[]) => {
               change(value, 'value7')
             }}
           />
           <Range
-            modelValue={value8}
+            value={value8}
             vertical
             marks={marks}
             range
-            onChange={(value: number) => {
+            onChange={(value: number | number[]) => {
               change(value, 'value8')
             }}
           />

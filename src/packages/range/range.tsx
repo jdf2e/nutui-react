@@ -9,11 +9,13 @@ import React, {
 import classNames from 'classnames'
 import { useTouch } from '../../utils/use-touch'
 import { getRect } from '../../utils/use-client-rect'
-import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
-type SliderValue = number | number[]
+type RangeValue = number | number[]
 export interface RangeProps extends BasicComponent {
+  value: RangeValue
+  defaultValue: RangeValue
   range: boolean
   disabled: boolean
   min: number
@@ -21,14 +23,13 @@ export interface RangeProps extends BasicComponent {
   step: number
   minDescription: ReactNode
   maxDescription: ReactNode
-  modelValue: SliderValue
   button: ReactNode
   vertical: boolean
   marks: Record<string, unknown>
-  currentDescription: ((value: SliderValue) => ReactNode) | null
-  onChange: (value: number) => void
+  currentDescription: ((value: RangeValue) => ReactNode) | null
+  onChange: (value: RangeValue) => void
   onStart: () => void
-  onEnd: () => void
+  onEnd: (value: RangeValue) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -36,24 +37,20 @@ const defaultProps = {
   min: 0,
   max: 100,
   step: 1,
-  modelValue: 0,
   vertical: false,
   marks: {},
 } as RangeProps
 
-let startValue: any
 let currentValue: any
 
 export const Range: FunctionComponent<
   Partial<RangeProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onChange'>
 > = (props) => {
-  const { locale } = useConfig()
   const {
     className,
     range,
     disabled,
-    modelValue,
     button,
     vertical,
     marks,
@@ -66,26 +63,28 @@ export const Range: FunctionComponent<
     min,
     max,
     step,
+    value,
+    defaultValue,
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-range'
   const [buttonIndex, SetButtonIndex] = useState(0)
-  const [initValue, SetInitValue] = useState<number | number[] | any>()
   const [dragStatus, SetDragStatus] = useState('start' || 'draging' || '')
   const touch = useTouch()
   const root = useRef<HTMLDivElement>(null)
-  const [marksList, SetMarksList] = useState([])
+  const [marksList, setMarksList] = useState([])
 
-  useEffect(() => {
-    if (typeof modelValue === 'number') {
-      if (!range && (modelValue < min || modelValue > max)) {
-        SetInitValue(0)
-        console.warn(`${modelValue} ${locale.range.rangeText}`)
-        return
-      }
-      SetInitValue(modelValue)
-    }
-  }, [modelValue])
+  const [startValue, setStartValue] = useState<any>(0)
+
+  const handleChange = (value: RangeValue) => {
+    onChange && onChange(value)
+  }
+  const [current, setCurrent] = usePropsValue<RangeValue>({
+    value,
+    defaultValue,
+    finalValue: 0,
+    onChange: handleChange,
+  })
 
   useEffect(() => {
     if (marks) {
@@ -94,7 +93,7 @@ export const Range: FunctionComponent<
         .map(parseFloat)
         .sort((a, b) => a - b)
         .filter((point) => point >= min && point <= max)
-      SetMarksList(list)
+      setMarksList(list)
     }
   }, [marks])
 
@@ -116,11 +115,11 @@ export const Range: FunctionComponent<
       const classPrefix = 'nut-range-mark'
       let lowerBound = min
       let upperBound = max
-      if (range && Array.isArray(modelValue)) {
-        lowerBound = modelValue[0]
-        upperBound = modelValue[1]
+      if (range && Array.isArray(current)) {
+        lowerBound = current[0]
+        upperBound = current[1]
       } else {
-        upperBound = modelValue as number
+        upperBound = current as number
       }
       const isActive = mark <= upperBound && mark >= lowerBound
       return [
@@ -128,7 +127,7 @@ export const Range: FunctionComponent<
         `${isActive ? `${classPrefix}-text-active` : ''}`,
       ].join(' ')
     },
-    [range, modelValue, min, max]
+    [range, current, min, max]
   )
 
   const isRange = (val: any) => {
@@ -136,7 +135,7 @@ export const Range: FunctionComponent<
   }
 
   const calcMainAxis = () => {
-    const modelVal = initValue || initValue === 0 ? initValue : modelValue
+    const modelVal = current as any
     if (isRange(modelVal)) {
       return `${((modelVal[1] - modelVal[0]) * 100) / scope()}%`
     }
@@ -144,7 +143,7 @@ export const Range: FunctionComponent<
   }
 
   const calcOffset = () => {
-    const modelVal = initValue || initValue === 0 ? initValue : modelValue
+    const modelVal = current as any
     if (isRange(modelVal)) {
       return `${((modelVal[0] - min) * 100) / scope()}%`
     }
@@ -179,10 +178,10 @@ export const Range: FunctionComponent<
   }
 
   const tickClass = (mark: any) => {
-    if (range && Array.isArray(initValue)) {
-      return mark <= initValue[1] && mark >= initValue[0]
+    if (range && Array.isArray(current)) {
+      return mark <= current[1] && mark >= current[0]
     }
-    return mark <= initValue
+    return mark <= current
   }
 
   const format = (value: number) => {
@@ -190,7 +189,7 @@ export const Range: FunctionComponent<
     return Math.round(value / +step) * +step
   }
 
-  const isSameValue = (newValue: SliderValue, oldValue: SliderValue) => {
+  const isSameValue = (newValue: RangeValue, oldValue: RangeValue) => {
     return JSON.stringify(newValue) === JSON.stringify(oldValue)
   }
 
@@ -206,10 +205,8 @@ export const Range: FunctionComponent<
     } else {
       value = format(value)
     }
-    const modelVal = initValue || initValue === 0 ? initValue : modelValue
-
-    if (!isSameValue(value, modelVal)) {
-      SetInitValue(value)
+    if (!isSameValue(value, current)) {
+      setCurrent(value)
     }
 
     if ((marks || end) && !isSameValue(value, startValue)) {
@@ -230,7 +227,7 @@ export const Range: FunctionComponent<
       total = rect.height
     }
     const value = min + (delta / total) * scope()
-    currentValue = initValue || initValue === 0 ? initValue : modelValue
+    currentValue = current as any
     if (isRange(currentValue)) {
       const [left, right] = currentValue as any
       const middle = (left + right) / 2
@@ -249,11 +246,11 @@ export const Range: FunctionComponent<
       return
     }
     touch.start(event)
-    currentValue = initValue || initValue === 0 ? initValue : modelValue
+    currentValue = current as any
     if (isRange(currentValue)) {
-      startValue = currentValue.map(format)
+      setStartValue(currentValue.map(format))
     } else {
-      startValue = format(currentValue)
+      setStartValue(format(currentValue))
     }
 
     SetDragStatus('start')
@@ -296,13 +293,13 @@ export const Range: FunctionComponent<
     }
     if (dragStatus === 'draging') {
       updateValue(currentValue, true)
-      onEnd && onEnd()
+      onEnd && onEnd(currentValue)
     }
     SetDragStatus('')
   }
 
   const curValue = (idx?: number) => {
-    const modelVal = initValue || initValue === 0 ? initValue : modelValue
+    const modelVal = current as any
     const value = typeof idx === 'number' ? modelVal[idx] : modelVal
     return value
   }
