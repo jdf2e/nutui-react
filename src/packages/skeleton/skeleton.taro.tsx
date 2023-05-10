@@ -90,7 +90,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
             {avatar && (
               <Avatar
                 className={avatarClass}
-                bgColor="rgb(239, 239, 239)"
+                background="rgb(239, 239, 239)"
                 shape={avatarShape}
                 style={getStyle()}
               />
