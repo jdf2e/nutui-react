@@ -8,7 +8,6 @@ import React, {
 } from 'react'
 import { Image as ImageIcon, ImageError } from '@nutui/icons-react'
 import classNames from 'classnames'
-import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { pxCheck } from '@/utils/px-check'
 
@@ -80,7 +79,7 @@ export const Image: FunctionComponent<
   } = { ...defaultProps, ...props }
   const [innerLoading, setInnerLoading] = useState(true)
   const [isError, setIsError] = useState(false)
-  const [_src, setSrc] = useState('')
+  const [_src, setSrc] = useState(src)
   const imgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
