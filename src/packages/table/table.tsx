@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { DownArrow } from '@nutui/icons-react'
-import bem from '@/utils/bem'
 import { BasicTableProps, TableColumnProps } from './types'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
@@ -16,7 +15,7 @@ const defaultProps = {
   data: [],
   bordered: true,
   striped: false,
-  noData: '无数据',
+  noData: '',
   sorterIcon: null,
   showHeader: true,
 } as TableProps
@@ -36,9 +35,9 @@ export const Table: FunctionComponent<
     summary,
     striped,
     noData,
-    onSorter,
     sorterIcon,
     showHeader,
+    onSort,
     ...rest
   } = {
     ...defaultProps,
@@ -53,14 +52,14 @@ export const Table: FunctionComponent<
     }
   }, [data])
 
-  const b = bem('table')
+  const classPrefix = 'nut-table'
+  const headerClassPrefix = `nut-table__main__head__tr`
   const classes = classNames({})
-  const cls = classNames(b(), classes, className)
+  const cls = classNames(classPrefix, classes, className)
 
   const handleSorterClick = (item: TableColumnProps) => {
     if (item.sorter) {
-      onSorter && onSorter(item, curData)
-
+      onSort && onSort(item, curData)
       if (typeof item.sorter === 'function') {
         setCurData(curData.sort(item.sorter as (a: any, b: any) => number))
       } else {
@@ -71,8 +70,8 @@ export const Table: FunctionComponent<
 
   const cellClasses = (item: TableColumnProps) => {
     return {
-      'nut-table__main__head__tr--border': props.bordered,
-      [`nut-table__main__head__tr--align${item.align ? item.align : ''}`]: true,
+      [`${headerClassPrefix}--border`]: props.bordered,
+      [`${headerClassPrefix}--align${item.align ? item.align : ''}`]: true,
     }
   }
 
@@ -84,10 +83,7 @@ export const Table: FunctionComponent<
     return columns.map((item, index) => {
       return (
         <span
-          className={classNames(
-            'nut-table__main__head__tr__th',
-            cellClasses(item)
-          )}
+          className={classNames(`${headerClassPrefix}__th`, cellClasses(item))}
           key={item.key}
           onClick={() => handleSorterClick(item)}
         >
@@ -149,17 +145,8 @@ export const Table: FunctionComponent<
         )}
         <div className="nut-table__main__body">{renderBoyTrs()}</div>
       </div>
-      {summary && (
-        <div className="nut-table__summary">
-          <span className="nut-table__summary__text">{summary}</span>
-        </div>
-      )}
-      {curData.length === 0 && (
-        <div className="nut-table__nodata">
-          <div className="nut-table__nodata">
-            <div className="nut-table__nodata__text">{noData}</div>
-          </div>
-        </div>
+      {(summary || curData.length === 0) && (
+        <div className="nut-table__summary">{summary || noData}</div>
       )}
     </div>
   )
