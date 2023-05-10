@@ -24,17 +24,15 @@ export interface RangeProps extends BasicComponent {
   max: number | string
   minDescription: ReactNode
   maxDescription: ReactNode
-  curValueDesc: number | string
   step: number | string
   modelValue: SliderValue
   button: ReactNode
   vertical: boolean
   marks: Record<string, unknown>
-  dragStart?: () => void
-  dragEnd?: () => void
-  onChange?: (value: number) => void
-  onDragStart?: () => void
-  onDragEnd?: () => void
+  currentDescription: (value: SliderValue) => ReactNode
+  onChange: (value: number) => void
+  onDragStart: () => void
+  onDragEnd: () => void
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -68,14 +66,12 @@ export const Range: FunctionComponent<
     button,
     vertical,
     marks,
-    dragStart,
-    dragEnd,
     onChange,
     onDragStart,
     onDragEnd,
     minDescription,
     maxDescription,
-    curValueDesc,
+    currentDescription,
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-range'
@@ -301,7 +297,6 @@ export const Range: FunctionComponent<
       return
     }
     if (dragStatus === 'start') {
-      dragStart && dragStart()
       onDragStart && onDragStart()
     }
 
@@ -334,7 +329,6 @@ export const Range: FunctionComponent<
     }
     if (dragStatus === 'draging') {
       updateValue(currentValue, true)
-      dragEnd && dragEnd()
       onDragEnd && onDragEnd()
     }
     SetDragStatus('')
@@ -416,7 +410,9 @@ export const Range: FunctionComponent<
                     <div className="nut-range-button" style={buttonStyle()}>
                       {!hiddenTag && (
                         <div className="number">
-                          {curValueDesc || curValue(index)}
+                          {currentDescription
+                            ? currentDescription(curValue(index))
+                            : curValue(index)}
                         </div>
                       )}
                     </div>
@@ -452,7 +448,11 @@ export const Range: FunctionComponent<
               {button || (
                 <div className="nut-range-button" style={buttonStyle()}>
                   {!hiddenTag && (
-                    <div className="number">{curValueDesc || curValue()}</div>
+                    <div className="number">
+                      {currentDescription
+                        ? currentDescription(curValue())
+                        : curValue()}
+                    </div>
                   )}
                 </div>
               )}

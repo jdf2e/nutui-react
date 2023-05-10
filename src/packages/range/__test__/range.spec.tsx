@@ -18,10 +18,6 @@ test('range props test', () => {
   expect(container.querySelector('.nut-range-container')).toHaveClass(
     'test-range'
   )
-  expect(container.querySelector('.nut-range-show-number')).toHaveAttribute(
-    'style',
-    'background: rgb(163, 184, 255);'
-  )
   expect(container.querySelector('.nut-range-button')).toHaveAttribute(
     'style',
     'border-color: rgba(52,96,250,1);'
@@ -57,11 +53,10 @@ test('range test', () => {
 
 test('range description test', () => {
   const { container } = render(
-    <Range minDescription="0%" maxDescription="100%" curValueDesc="40%" />
+    <Range minDescription="0%" maxDescription="100%" />
   )
   expect(container.querySelector('.min')?.innerHTML).toBe('0%')
   expect(container.querySelector('.max')?.innerHTML).toBe('100%')
-  expect(container.querySelector('.number')?.innerHTML).toBe('40%')
 })
 
 test('disabled test', () => {
@@ -164,14 +159,14 @@ test('desc test', () => {
     value0: 40,
     minDescription: 'min',
     maxDescription: 'max',
-    curValueDesc: 'value',
+    currentDescription: 'value',
   }
   const { container } = render(
     <Range
       modelValue={state.value0}
       minDescription={state.minDescription}
       maxDescription={state.maxDescription}
-      curValueDesc={state.curValueDesc}
+      currentDescription={(value) => `${value}%`}
     />
   )
   expect(container.querySelector('.nut-range-button-wrapper')).toHaveAttribute(
@@ -180,5 +175,5 @@ test('desc test', () => {
   )
   expect(container.querySelector('.min')?.innerHTML).toBe(state.minDescription)
   expect(container.querySelector('.max')?.innerHTML).toBe(state.maxDescription)
-  expect(container.querySelector('.number')?.innerHTML).toBe(state.curValueDesc)
+  expect(container.querySelector('.number')?.innerHTML).toBe('40%')
 })

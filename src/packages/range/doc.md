@@ -62,7 +62,7 @@ const App = () => {
             modelValue={value}
             minDescription="0%"
             maxDescription="100%"
-            curValueDesc={`${value}%`}
+            currentDescription={`${value}%`}
             onChange={(value) => {
               change(value)
             }}
@@ -520,7 +520,7 @@ export default App;
 | min           | 最小值             | `number \| string`   | `0`                      |
 | maxDescription     | 最大值描述，传 `null` 表示隐藏          | `ReactNode`   | -                    |
 | minDescription     | 最小值描述，传 `null` 表示隐藏          | `ReactNode`   | -                      |
-| curValueDesc | 当前值描述          | `number \| string`   | -                    |
+| currentDescription | 当前值描述          | `(value) => ReactNode`   | -                    |
 | step          | 步长               | `number \| string`   | `1`                      |
 | disabled      | 是否禁用滑块       | `boolean`          | `false`                  |
 | vertical | 是否竖向展示 | `boolean` | `false` |

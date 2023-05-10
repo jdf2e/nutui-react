@@ -64,7 +64,7 @@ const App = () => {
             modelValue={value}
             minDescription="0%"
             maxDescription="100%"
-            curValueDesc={`${value}%`}
+            currentDescription={`${value}%`}
             onChange={(value) => {
               change(value)
             }}
@@ -522,7 +522,7 @@ export default App;
 | min           | minimum             | `number \| string`   | `0`                      |
 | maxDescription     | maximum description, `null` to hidden        | `ReactNode`   | -                    |
 | minDescription     | minimum description, `null` to hidden          | `ReactNode`   | -                      |
-| curValueDesc | current progress percentage description  | `number \| string` |-                    |
+| currentDescription | current progress percentage description  | `(value) => ReactNode` |-                    |
 | step          | step size               | `number \| string`   | `1`                      |
 | disabled      | Whether to disable the slider       | `boolean`          | `false`                  |
 | vertical      | Whether to display vertically | `boolean` | `false` |

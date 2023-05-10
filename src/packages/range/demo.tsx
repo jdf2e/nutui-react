@@ -77,7 +77,8 @@ const RangeDemo = () => {
     100: 100,
   })
   const change = (value: any, name?: string) => {
-    Toast.text(`当前值：${value}`)
+    // Toast.text(`当前值：${value}`)
+    console.log('change', value, name)
     switch (name) {
       case 'value0':
         SetValue0(value)
@@ -127,7 +128,7 @@ const RangeDemo = () => {
             modelValue={value9}
             minDescription="0%"
             maxDescription="100%"
-            curValueDesc={`${value9}%`}
+            currentDescription={(value) => `${value}%`}
             onChange={(value: any) => {
               change(value, 'value9')
             }}

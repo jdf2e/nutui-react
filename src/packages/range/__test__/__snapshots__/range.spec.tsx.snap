@@ -11,7 +11,7 @@ exports[`range props test 1`] = `
       0
     </div>
     <div
-      class="nut-range nut-range-show-number"
+      class="nut-range"
       style="background: rgb(163, 184, 255);"
     >
       <div

@@ -157,6 +157,7 @@
 #### Range
 - maxDesc 重命名为 maxDescription，类型改为 ReactNode
 - minDesc 重命名为 minDescription，类型改为 ReactNode
+- curValueDesc 重命名为 currentDescription，类型改为 (value) => ReactNode
 #### Rate
 - minimizeValue 重命名为 min
 - readonly 重命名为 readOnly
