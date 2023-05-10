@@ -30,8 +30,8 @@ export interface RangeProps extends BasicComponent {
   marks: Record<string, unknown>
   currentDescription: ((value: SliderValue) => ReactNode) | null
   onChange: (value: number) => void
-  onDragStart: () => void
-  onDragEnd: () => void
+  onStart: () => void
+  onEnd: () => void
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -64,8 +64,8 @@ export const Range: FunctionComponent<
     vertical,
     marks,
     onChange,
-    onDragStart,
-    onDragEnd,
+    onStart,
+    onEnd,
     minDescription,
     maxDescription,
     currentDescription,
@@ -294,7 +294,7 @@ export const Range: FunctionComponent<
       return
     }
     if (dragStatus === 'start') {
-      onDragStart && onDragStart()
+      onStart && onStart()
     }
 
     touch.move(event)
@@ -326,7 +326,7 @@ export const Range: FunctionComponent<
     }
     if (dragStatus === 'draging') {
       updateValue(currentValue, true)
-      onDragEnd && onDragEnd()
+      onEnd && onEnd()
     }
     SetDragStatus('')
   }

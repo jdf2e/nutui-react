@@ -530,8 +530,8 @@ export default App;
 | marks | 刻度标示| `Object{key: number}`    | `{}` |
 | button | 自定义滑动按钮 | `ReactNode` | - |
 | onChange    | 进度变化且结束拖动后触发 | `(value) => void` | - |
-| onDragStart  | 开始拖动时触发           | - | - |
-| onDragEnd   | 结束拖动时触发           | - | - |
+| onStart  | 开始拖动时触发           | - | - |
+| onEnd   | 结束拖动时触发           | - | - |
 
 ## 主题定制
 

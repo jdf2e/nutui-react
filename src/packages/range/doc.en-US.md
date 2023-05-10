@@ -532,8 +532,8 @@ export default App;
 | marks | scale mark | `Object{key: number}` | `{}` |
 | button | custom slide button | `ReactNode` | - |
 | onChange            | Triggered when the progress changes and the drag is over | `(value) => void` | - |
-| onDragStart         | Triggered when dragging starts           | -               |
-| onDragEnd          | Triggered when the drag is over           | -               |
+| onStart         | Triggered when dragging starts           | -               |
+| onEnd          | Triggered when the drag is over           | -               |
 
 ## Theming
 
