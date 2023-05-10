@@ -64,17 +64,6 @@ export default class Notification extends React.PureComponent<NotificationProps>
     }
   }
 
-  getTop() {
-    switch (this.props.position) {
-      case 'top':
-        return '20%'
-      case 'bottom':
-        return '80%'
-      default:
-        return '50%'
-    }
-  }
-
   componentDidMount() {
     this.startCloseTimer()
   }
@@ -122,9 +111,8 @@ export default class Notification extends React.PureComponent<NotificationProps>
           }}
         >
           <div
-            className={toastBem('inner')}
+            className={`${toastBem('inner')} nut-toast-${position}`}
             style={{
-              top: this.getTop(),
               textAlign: textAlignCenter ? 'center' : 'left',
               backgroundColor: bgColor,
             }}

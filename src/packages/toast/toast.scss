@@ -47,8 +47,17 @@
     color: $toast-font-color;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: $toast-inner-top;
     transform: translate(-50%, -50%);
+  }
+  &-center {
+    top: var(--toast-inner-top, 50%);
+  }
+  &-bottom {
+    top: var(--toast-inner-top, 80%);
+  }
+  &-top {
+    top: var(--toast-inner-top, 20%);
   }
   &-text {
     font-size: $toast-text-font-size;
@@ -70,17 +79,6 @@
       justify-content: center;
       margin-bottom: 8px;
     }
-  }
-  &-center {
-    top: 50%;
-    transform: translateY(-50%);
-    bottom: auto;
-  }
-  &-bottom {
-    bottom: 20%;
-  }
-  &-top {
-    top: 20%;
   }
   &-loading {
     .nut-toast__inner {
