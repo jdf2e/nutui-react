@@ -14,7 +14,6 @@ export interface ToastProps {
   className?: string
   size: string | number
   icon: string | null
-  bgColor: string
   onClose: () => void
   cover: boolean
   coverColor: string
@@ -32,7 +31,6 @@ const options: ToastProps = {
   className: '', // 自定义样式名
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
-  bgColor: 'rgba(0, 0, 0, .8)',
   onClose: () => {},
   cover: false, // 是否展示透明遮罩层
   coverColor: 'rgba(0, 0, 0, 0)', // 遮罩颜色设定

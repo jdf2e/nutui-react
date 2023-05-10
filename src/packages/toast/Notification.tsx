@@ -14,7 +14,6 @@ export interface NotificationProps {
   title: string
   className: string
   size: string | number
-  bgColor: string
   cover: boolean
   coverColor: string
   closeOnClickOverlay: boolean
@@ -79,7 +78,6 @@ export default class Notification extends React.PureComponent<NotificationProps>
       title,
       msg,
       position,
-      bgColor,
       coverColor,
       size,
       className,
@@ -107,12 +105,7 @@ export default class Notification extends React.PureComponent<NotificationProps>
             this.clickCover()
           }}
         >
-          <div
-            className={`${toastBem('inner')} nut-toast-${position}`}
-            style={{
-              backgroundColor: bgColor,
-            }}
-          >
+          <div className={`${toastBem('inner')} nut-toast-${position}`}>
             {icon ? <p className={toastBem('icon-wrapper')}>{icon}</p> : null}
             {title ? <div className="nut-toast-title">{title}</div> : null}
             <span className={toastBem('text')}>{msg}</span>
