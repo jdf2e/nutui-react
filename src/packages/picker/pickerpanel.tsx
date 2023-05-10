@@ -5,7 +5,7 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
-import { PickerOption } from './picker'
+import { PickerOption } from './types'
 import { useTouch } from '../../utils/use-touch'
 
 interface PickerPanelProps {

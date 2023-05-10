@@ -12,15 +12,9 @@ import Popup from '@/packages/popup/index.taro'
 import PickerPanel from './pickerpanel.taro'
 import useRefs from '@/utils/use-refs'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { PickerOption } from './types'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface PickerOption {
-  text: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
 export interface PickerProps extends BasicComponent {
   visible: boolean
   title?: string

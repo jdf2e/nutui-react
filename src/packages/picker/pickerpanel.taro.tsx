@@ -5,7 +5,7 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
-import { PickerOption } from './picker.taro'
+import { PickerOption } from './types'
 import { useTouch } from '../../utils/use-touch'
 import { getRectByTaro } from '@/utils/use-client-rect'
 import { passiveSupported } from '@/utils/supports-passive'

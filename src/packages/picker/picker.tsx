@@ -10,15 +10,9 @@ import Popup from '@/packages/popup'
 import PickerPanel from './pickerpanel'
 import useRefs from '@/utils/use-refs'
 import { useConfig } from '@/packages/configprovider'
+import { PickerOption } from './types'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface PickerOption {
-  text: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
 export interface PickerProps extends BasicComponent {
   visible: boolean
   title?: string
