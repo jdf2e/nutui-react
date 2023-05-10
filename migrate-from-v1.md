@@ -285,6 +285,8 @@
 #### Steps
 #### Swiper
 #### Table
+- `onSorter` 重命名为 `onSort`
+- 合并 `summary` 与 `noData` 的样式处理
 #### Tag
 #### TrendArrow
 #### Video
