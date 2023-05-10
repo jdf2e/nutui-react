@@ -1,3 +1,18 @@
+# v2.0.0-alpha.5
+`2023-05-10`
+
+* 🛠 refactor: checkbox (#974) @oasis-cloud
+* 🛠 refactor: circleprogress-v2.0 (#949) @junjun666
+* 🛠 refactor: ellipsis-v2.0 (#963) @junjun666
+* 🛠 refactor: empty-v2.0 (#977) @junjun666
+* 🛠 refactor: swipe (#958) @justExplore
+* 🛠 refactor:avatar-v2.0 (#970) @junjun666
+* 📖 docs: 增加 icon 的复制功能 (#973) @oasis-cloud
+* :sparkles: feat: cellgroup组件增加单元格之间是否展示分割线props (#961) @拧巴的猫
+* :bug: fix: tabbar 通过 Tabbar.Item 方式使用未加载 item 的样式 (#972) @oasis-cloud
+* :bug: fix: 修复elevator小程序快速滑动后闪动问题 (#984) @拧巴的猫
+
+
 # v2.0.0-alpha.4
 `2023-05-05`
 
