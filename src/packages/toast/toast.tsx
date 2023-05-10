@@ -14,7 +14,6 @@ export interface ToastProps {
   className?: string
   size: string | number
   icon: string | null
-  iconSize: string
   textAlignCenter: boolean
   loadingRotate: boolean
   bgColor: string
@@ -35,7 +34,6 @@ const options: ToastProps = {
   className: '', // 自定义样式名
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
-  iconSize: '20',
   textAlignCenter: true, // 文字是否居中显示,true为居中，false为left
   loadingRotate: true, // 未实现
   bgColor: 'rgba(0, 0, 0, .8)',
