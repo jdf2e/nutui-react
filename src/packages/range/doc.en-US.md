@@ -62,8 +62,8 @@ const App = () => {
         <Cell style={cellStyle}>
            <Range
             modelValue={value}
-            minDesc="0%"
-            maxDesc="100%"
+            minDescription="0%"
+            maxDescription="100%"
             curValueDesc={`${value}%`}
             onChange={(value) => {
               change(value)
@@ -199,12 +199,13 @@ const App = () => {
     return (
     <>
         <Cell style={cellStyle}>
-        <Range
-            modelValue={30}
-            hiddenRange
-            onChange={(value: any) => {
+            <Range
+                modelValue={30}
+                maxDescription={null}
+                minDescription={null}
+                onChange={(value: any) => {
                 change(value)
-            }}
+                }}
             />
         </Cell>
     </>
@@ -519,13 +520,12 @@ export default App;
 | range         | Whether to enable dual slider mode | `boolean`          | `false`                  |
 | max           | maximum             | `number \| string`   | `100`                    |
 | min           | minimum             | `number \| string`   | `0`                      |
-| maxDesc`v1.3.12`     | maximum  description        | `number \| string`   | -                    |
-| minDesc`v1.3.12`     | minimum description          | `number \| string`   | -                      |
-| curValueDesc`v1.3.12` | current progress percentage description  | `number \| string` |-                    |
+| maxDescription     | maximum description, `null` to hidden        | `ReactNode`   | -                    |
+| minDescription     | minimum description, `null` to hidden          | `ReactNode`   | -                      |
+| curValueDesc | current progress percentage description  | `number \| string` |-                    |
 | step          | step size               | `number \| string`   | `1`                      |
 | disabled      | Whether to disable the slider       | `boolean`          | `false`                  |
 | vertical      | Whether to display vertically | `boolean` | `false` |
-| hiddenRange   | whether to hide range values     | `boolean`          | `false`                  |
 | hiddenTag     | whether to hide the label       | `boolean`          | `false`                  |
 | activeColor   | progress bar active color   | `string`           | `rgba(250, 44, 25, 1)`   |
 | inactiveColor | Progress bar inactive color | `string`           | `rgba(255, 163, 154, 1)` |

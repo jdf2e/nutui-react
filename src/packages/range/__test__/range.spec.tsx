@@ -57,7 +57,7 @@ test('range test', () => {
 
 test('range description test', () => {
   const { container } = render(
-    <Range minDesc="0%" maxDesc="100%" curValueDesc="40%" />
+    <Range minDescription="0%" maxDescription="100%" curValueDesc="40%" />
   )
   expect(container.querySelector('.min')?.innerHTML).toBe('0%')
   expect(container.querySelector('.max')?.innerHTML).toBe('100%')
@@ -79,11 +79,17 @@ test('disabled test', () => {
   expect(screen.queryByRole('slider')).toHaveAttribute('tabindex', '-1')
 })
 
-test('hiddenRange test', () => {
+test('hidden range test', () => {
   const state = {
     value0: 40,
   }
-  const { container } = render(<Range hiddenRange modelValue={state.value0} />)
+  const { container } = render(
+    <Range
+      maxDescription={null}
+      minDescription={null}
+      modelValue={state.value0}
+    />
+  )
   expect(container.querySelector('max')).not.toBeTruthy()
   expect(container.querySelector('min')).not.toBeTruthy()
 })
@@ -156,15 +162,15 @@ test('custom-button test', () => {
 test('desc test', () => {
   const state = {
     value0: 40,
-    minDesc: 'min',
-    maxDesc: 'max',
+    minDescription: 'min',
+    maxDescription: 'max',
     curValueDesc: 'value',
   }
   const { container } = render(
     <Range
       modelValue={state.value0}
-      minDesc={state.minDesc}
-      maxDesc={state.maxDesc}
+      minDescription={state.minDescription}
+      maxDescription={state.maxDescription}
       curValueDesc={state.curValueDesc}
     />
   )
@@ -172,7 +178,7 @@ test('desc test', () => {
     'aria-valuenow',
     '40'
   )
-  expect(container.querySelector('.min')?.innerHTML).toBe(state.minDesc)
-  expect(container.querySelector('.max')?.innerHTML).toBe(state.maxDesc)
+  expect(container.querySelector('.min')?.innerHTML).toBe(state.minDescription)
+  expect(container.querySelector('.max')?.innerHTML).toBe(state.maxDescription)
   expect(container.querySelector('.number')?.innerHTML).toBe(state.curValueDesc)
 })

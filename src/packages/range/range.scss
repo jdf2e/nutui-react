@@ -1,25 +1,3 @@
-@import '../toast/toast.scss';
-
-.nut-theme-dark {
-  .nut-range-container {
-    background: $dark5;
-    .min,
-    .max {
-      color: $dark1;
-    }
-    .nut-range {
-      &-mark-text {
-        color: $dark2;
-      }
-      &-button {
-        .number {
-          color: $dark1;
-        }
-      }
-    }
-  }
-}
-
 .nut-range-container {
   display: flex;
   position: relative;
@@ -31,6 +9,12 @@
     font-size: $font-size-1;
     color: $range-tip-font-color;
     user-select: none;
+  }
+  .min {
+    margin-right: 15px;
+  }
+  .max {
+    margin-left: 15px;
   }
   &-vertical {
     height: 100%;
@@ -183,9 +167,6 @@
     .nut-range-button-wrapper-right {
       cursor: not-allowed;
     }
-  }
-  &-show-number {
-    margin: 0 15px;
   }
 
   &-mark {

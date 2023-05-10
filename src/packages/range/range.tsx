@@ -4,6 +4,7 @@ import React, {
   useState,
   useRef,
   useCallback,
+  ReactNode,
 } from 'react'
 import classNames from 'classnames'
 import { useTouch } from '../../utils/use-touch'
@@ -18,16 +19,15 @@ export interface RangeProps extends BasicComponent {
   activeColor: string
   inactiveColor: string
   buttonColor: string
-  hiddenRange: boolean
   hiddenTag: boolean
   min: number | string
   max: number | string
-  minDesc: number | string
-  maxDesc: number | string
+  minDescription: ReactNode
+  maxDescription: ReactNode
   curValueDesc: number | string
   step: number | string
   modelValue: SliderValue
-  button: React.ReactNode
+  button: ReactNode
   vertical: boolean
   marks: Record<string, unknown>
   dragStart?: () => void
@@ -39,7 +39,6 @@ export interface RangeProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   range: false,
-  hiddenRange: false,
   hiddenTag: false,
   min: 0,
   max: 100,
@@ -64,7 +63,6 @@ export const Range: FunctionComponent<
     activeColor,
     inactiveColor,
     buttonColor,
-    hiddenRange,
     hiddenTag,
     modelValue,
     button,
@@ -75,8 +73,8 @@ export const Range: FunctionComponent<
     onChange,
     onDragStart,
     onDragEnd,
-    minDesc,
-    maxDesc,
+    minDescription,
+    maxDescription,
     curValueDesc,
   } = { ...defaultProps, ...props }
 
@@ -122,7 +120,6 @@ export const Range: FunctionComponent<
   const classes = classNames(classPrefix, {
     [`${classPrefix}-disabled`]: disabled,
     [`${classPrefix}-vertical`]: vertical,
-    [`${classPrefix}-show-number`]: !hiddenRange,
   })
 
   const containerClasses = classNames(`${classPrefix}-container`, className, {
@@ -351,7 +348,9 @@ export const Range: FunctionComponent<
 
   return (
     <div className={containerClasses}>
-      {!hiddenRange && <div className="min">{minDesc || +min}</div>}
+      {minDescription !== null && (
+        <div className="min">{minDescription || min}</div>
+      )}
       <div
         ref={root}
         style={wrapperStyle()}
@@ -461,7 +460,9 @@ export const Range: FunctionComponent<
           )}
         </div>
       </div>
-      {!hiddenRange && <div className="max">{maxDesc || +max}</div>}
+      {maxDescription !== null && (
+        <div className="max">{maxDescription || max}</div>
+      )}
     </div>
   )
 }

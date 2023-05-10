@@ -155,6 +155,8 @@
 #### Picker
 #### Radio
 #### Range
+- maxDesc 重命名为 maxDescription，类型改为 ReactNode
+- minDesc 重命名为 minDescription，类型改为 ReactNode
 #### Rate
 - minimizeValue 重命名为 min
 - readonly 重命名为 readOnly

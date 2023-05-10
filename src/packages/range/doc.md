@@ -60,8 +60,8 @@ const App = () => {
         <Cell style={cellStyle}>
            <Range
             modelValue={value}
-            minDesc="0%"
-            maxDesc="100%"
+            minDescription="0%"
+            maxDescription="100%"
             curValueDesc={`${value}%`}
             onChange={(value) => {
               change(value)
@@ -518,13 +518,12 @@ export default App;
 | range         | 是否开启双滑块模式 | `boolean`          | `false`                  |
 | max           | 最大值             | `number \| string`   | `100`                    |
 | min           | 最小值             | `number \| string`   | `0`                      |
-| maxDesc`v1.3.12`     | 最大值描述          | `number \| string`   | -                    |
-| minDesc`v1.3.12`     | 最小值描述          | `number \| string`   | -                      |
-| curValueDesc`v1.3.12` | 当前值描述          | `number \| string`   | -                    |
+| maxDescription     | 最大值描述，传 `null` 表示隐藏          | `ReactNode`   | -                    |
+| minDescription     | 最小值描述，传 `null` 表示隐藏          | `ReactNode`   | -                      |
+| curValueDesc | 当前值描述          | `number \| string`   | -                    |
 | step          | 步长               | `number \| string`   | `1`                      |
 | disabled      | 是否禁用滑块       | `boolean`          | `false`                  |
 | vertical | 是否竖向展示 | `boolean` | `false` |
-| hiddenRange   | 是否隐藏范围值     | `boolean`          | `false`                  |
 | hiddenTag     | 是否隐藏标签       | `boolean`          | `false`                  |
 | activeColor   | 进度条激活态颜色   | `string`           | `rgba(250, 44, 25, 1)`   |
 | inactiveColor | 进度条非激活态颜色 | `string`           | `rgba(255, 163, 154, 1)` |
