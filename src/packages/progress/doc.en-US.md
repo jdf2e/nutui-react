@@ -177,7 +177,7 @@ const App = () => {
       <Cell>
         <Button
           type="default"
-          style={{ margin: 8 }} 
+          style={{ margin: 8 }}
           onClick={() => {
             let num = value;
             if (value <= 0) {
@@ -191,6 +191,7 @@ const App = () => {
         </Button>
         <Button 
           type="primary" 
+          style={{ margin: 8 }}
           onClick={() => {
             let num = value;
             if (value >= 100) {
