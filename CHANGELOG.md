@@ -1,3 +1,16 @@
+# v1.5.4
+`2023-05-10`
+
+* :bug: fix: 修复elevator小程序快速滑动后闪动问题 (#980) @拧巴的猫
+
+
+# v1.5.3
+`2023-05-10`
+
+* :sparkles: feat: dialog 增加函数式调用的demo @hanyuxinting
+* :bug: fix: 移除代码中无用的 console.log (#960) @oasis-cloud
+
+
 # v1.5.2
 `2023-04-26`
 
