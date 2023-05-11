@@ -355,7 +355,7 @@ exports[`Cascader options 1`] = `
 </div>
 `;
 
-exports[`Cascader options with convertConfig 1`] = `
+exports[`Cascader options with format 1`] = `
 <div>
   <div
     class="first-render hidden-render nut-overlay"
