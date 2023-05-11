@@ -79,8 +79,23 @@ function show(option: ToastProps) {
   })
 }
 
+function config(
+  config: Pick<ToastProps, 'duration' | 'position' | 'maskClickable'>
+) {
+  if (config.duration !== undefined) {
+    options.duration = config.duration
+  }
+  if (config.position !== undefined) {
+    options.position = config.position
+  }
+  if (config.maskClickable !== undefined) {
+    options.maskClickable = config.maskClickable
+  }
+}
+
 export default {
   show,
+  config,
   text(msg: string | React.ReactNode, option = {}) {
     errorMsg(msg)
     return notice({ msg, type: 'text', ...option })
