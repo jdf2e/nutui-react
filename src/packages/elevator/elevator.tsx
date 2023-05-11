@@ -19,6 +19,7 @@ export interface ElevatorProps extends BasicComponent {
   sticky: boolean
   spaceHeight: number
   titleHeight: number
+  navigation: boolean
   children: React.ReactNode
   onClickItem: (key: string, item: ElevatorData) => void
   onClickIndex: (key: string) => void
@@ -31,6 +32,7 @@ const defaultProps = {
   sticky: false,
   spaceHeight: 23,
   titleHeight: 35,
+  navigation: true,
 } as ElevatorProps
 interface ElevatorData {
   name: string
@@ -47,6 +49,7 @@ export const Elevator: FunctionComponent<
     sticky,
     spaceHeight,
     titleHeight,
+    navigation,
     className,
     style,
     onClickItem,
@@ -248,40 +251,44 @@ export const Elevator: FunctionComponent<
           })}
         </div>
       </div>
-      {list.length && scrollStart ? (
-        <div
-          className={classNames({
-            [`${classPrefix}__code--current`]: true,
-            [`${classPrefix}__code--current--current`]: true,
-          })}
-        >
-          {list[codeIndex][floorKey]}
-        </div>
+      {navigation ? (
+        <>
+          {list.length && scrollStart ? (
+            <div
+              className={classNames({
+                [`${classPrefix}__code--current`]: true,
+                [`${classPrefix}__code--current--current`]: true,
+              })}
+            >
+              {list[codeIndex][floorKey]}
+            </div>
+          ) : null}
+          <div className={`${classPrefix}__bars`}>
+            <animated.div
+              className={`${classPrefix}__bars__inner`}
+              {...bind()}
+              style={{ touchAction: 'pan-y' }}
+            >
+              {list.map((item: any, index: number) => {
+                return (
+                  <div
+                    className={classNames({
+                      [`${classPrefix}__bars__inner__item`]: true,
+                      [`${classPrefix}__bars__inner__item--active`]:
+                        item[floorKey] === list[currentIndex][floorKey],
+                    })}
+                    data-index={index}
+                    key={index}
+                    onClick={() => handleClickIndex(item[floorKey])}
+                  >
+                    {item[floorKey]}
+                  </div>
+                )
+              })}
+            </animated.div>
+          </div>
+        </>
       ) : null}
-      <div className={`${classPrefix}__bars`}>
-        <animated.div
-          className={`${classPrefix}__bars__inner`}
-          {...bind()}
-          style={{ touchAction: 'pan-y' }}
-        >
-          {list.map((item: any, index: number) => {
-            return (
-              <div
-                className={classNames({
-                  [`${classPrefix}__bars__inner__item`]: true,
-                  [`${classPrefix}__bars__inner__item--active`]:
-                    item[floorKey] === list[currentIndex][floorKey],
-                })}
-                data-index={index}
-                key={index}
-                onClick={() => handleClickIndex(item[floorKey])}
-              >
-                {item[floorKey]}
-              </div>
-            )
-          })}
-        </animated.div>
-      </div>
     </div>
   )
 }

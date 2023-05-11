@@ -2,7 +2,6 @@
 
 ## Intro
 
-
 It is used to quickly locate the list and display the index
 
 ## Install
@@ -216,6 +215,87 @@ const App = () => {
       list={dataList}
       height="220"
       floorKey="num"
+      onClickItem={(key: string, item: any) => onClickItem(key, item)}
+      onClickIndex={(key: string) => onClickIndex(key)}
+    />
+  )
+}
+export default App
+```
+
+:::
+
+### Right navigation is not displayed
+
+:::demo
+
+```tsx
+import React from 'react'
+import { Elevator } from '@nutui/nutui-react'
+
+const App = () => {
+  const dataList = [
+    {
+      title: 'A',
+      list: [
+        {
+          name: 'AnHui',
+          id: 1,
+        },
+      ],
+    },
+    {
+      title: 'B',
+      list: [
+        {
+          name: 'BeiJing',
+          id: 2,
+        },
+      ],
+    },
+    {
+      title: 'G',
+      list: [
+        {
+          name: 'GuangXi',
+          id: 3,
+        },
+        {
+          name: 'GuangDong',
+          id: 4,
+        },
+      ],
+    },
+    {
+      title: 'H',
+      list: [
+        {
+          name: 'HuNan',
+          id: 5,
+        },
+        {
+          name: 'HuBei',
+          id: 6,
+        },
+        {
+          name: 'Henan',
+          id: 7,
+        },
+      ],
+    },
+  ]
+  const onClickItem = (key: string, item: any) => {
+    console.log(key, JSON.stringify(item))
+  }
+
+  const onClickIndex = (key: string) => {
+    console.log(key)
+  }
+  return (
+    <Elevator
+      pagation={false}
+      list={dataList}
+      height="260"
       onClickItem={(key: string, item: any) => onClickItem(key, item)}
       onClickIndex={(key: string) => onClickIndex(key)}
     />
