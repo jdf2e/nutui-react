@@ -399,22 +399,22 @@ export default App;
 
 | 参数          | 说明                 | 类型             | 默认值                   |
 | ------------- | ------------------- | ---------------- | ------------------------ |
-| value    | 当前进度百分比，受控     | `number \| number[]` | `0`                      |
-| defaultValue    | 默认进度百分比，非受控     | `number \| number[]` | `0`                      |
-| range         | 是否开启双滑块模式 | `boolean`          | `false`                  |
-| max           | 最大值             | `number`   | `100`                    |
-| min           | 最小值             | `number`   | `0`                      |
-| maxDescription     | 最大值描述，传 `null` 表示隐藏          | `ReactNode`   | -                    |
-| minDescription     | 最小值描述，传 `null` 表示隐藏          | `ReactNode`   | -                      |
-| currentDescription | 当前值描述，传 `null` 表示隐藏          | `((value: SliderValue) => ReactNode) | null`   | -                    |
-| step          | 步长               | `number`   | `1`                      |
-| disabled      | 是否禁用滑块       | `boolean`          | `false`                  |
+| defaultValue | 默认进度百分比，非受控 | `number \| number[]` | `0` |
+| value | 当前进度百分比，受控 | `number \| number[]` | `0` |
+| range | 是否开启双滑块模式 | `boolean` | `false` |
+| max | 最大值 | `number`   | `100` |
+| min | 最小值 | `number`   | `0` |
+| maxDescription | 最大值描述，传 `null` 表示隐藏 | `ReactNode` | - |
+| minDescription | 最小值描述，传 `null` 表示隐藏 | `ReactNode` | - |
+| currentDescription | 当前值描述，传 `null` 表示隐藏 | `((value: SliderValue) => ReactNode) \| null` | - |
+| step | 步长 | `number`   | `1` |
+| disabled | 是否禁用滑块 | `boolean` | `false` |
 | vertical | 是否竖向展示 | `boolean` | `false` |
-| marks | 刻度标示| `Object{key: number}`    | `{}` |
+| marks | 刻度标示| `Object{key: number}` | `{}` |
 | button | 自定义滑动按钮 | `ReactNode` | - |
-| onChange    | 进度变化且结束拖动后触发 | `(value) => void` | - |
-| onStart  | 开始拖动时触发           | - | - |
-| onEnd   | 结束拖动时触发           | - | - |
+| onChange | 进度实时变化，通常在受控方式中与 value 一起使用 | `(value) => void` | - |
+| onStart | 开始拖动时触发 | - | - |
+| onEnd | 结束拖动时触发 | `(value) => void` | - |
 
 ## 主题定制
 

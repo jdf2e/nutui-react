@@ -398,22 +398,22 @@ export default App;
 
 | Property         | Description            |  Type            | Default                   |
 | ------------- | ------------------ | ---------------- | ------------------------ |
-| value    | current percentage, controlled     | `number \| number[]` | `0`                      |
-| defaultValue    | default percentage, uncontrolled     | `number \| number[]` | `0`                      |
-| range         | Whether to enable dual slider mode | `boolean`          | `false`                  |
-| max           | maximum             | `number`   | `100`                    |
-| min           | minimum             | `number`   | `0`                      |
-| maxDescription     | maximum description, `null` to hidden        | `ReactNode`   | -                    |
-| minDescription     | minimum description, `null` to hidden          | `ReactNode`   | -                      |
-| currentDescription | current progress percentage description, `null` to hidden  | `((value: SliderValue) => ReactNode) | null` |-                    |
-| step          | step size               | `number`   | `1`                      |
-| disabled      | Whether to disable the slider       | `boolean`          | `false`                  |
-| vertical      | Whether to display vertically | `boolean` | `false` |
+| defaultValue | default percentage, uncontrolled | `number \| number[]` | `0` |
+| value | current percentage, controlled     | `number \| number[]` | `0` |
+| range | Whether to enable dual slider mode | `boolean` | `false` |
+| max | maximum | `number` | `100` |
+| min | minimum | `number` | `0` |
+| maxDescription | maximum description, `null` to hidden | `ReactNode` | - |
+| minDescription | minimum description, `null` to hidden | `ReactNode` | - |
+| currentDescription | current progress percentage description, `null` to hidden  | `((value: SliderValue) => ReactNode) | null` | - |
+| step | step size | `number`   | `1` |
+| disabled | Whether to disable the slider | `boolean` | `false` |
+| vertical | Whether to display vertically | `boolean` | `false` |
 | marks | scale mark | `Object{key: number}` | `{}` |
 | button | custom slide button | `ReactNode` | - |
-| onChange            | Triggered when the progress changes and the drag is over | `(value) => void` | - |
-| onStart         | Triggered when dragging starts           | -               |
-| onEnd          | Triggered when the drag is over           | -               |
+| onChange | Triggered when the progress changes | `(value) => void` | - |
+| onStart | Triggered when dragging starts | - | - |
+| onEnd | Triggered when the drag is over | `(value) => void` | - |
 
 ## Theming
 
