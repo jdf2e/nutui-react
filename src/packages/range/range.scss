@@ -7,7 +7,7 @@
   .min,
   .max {
     font-size: $font-size-1;
-    color: $range-tip-font-color;
+    color: $range-font-color;
     user-select: none;
   }
   .min {
@@ -116,12 +116,12 @@
 
   &-button {
     display: block;
-    width: $range-bar-btn-width;
-    height: $range-bar-btn-height;
-    background-color: $range-bar-btn-bg-color;
+    width: $range-button-width;
+    height: $range-button-height;
+    background: $range-button-background;
     border-radius: 50%;
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
-    border: $range-bar-btn-border;
+    border: $range-button-border;
     outline: none;
 
     &-wrapper,
@@ -153,7 +153,7 @@
       justify-content: center;
       user-select: none;
       font-size: $font-size-1;
-      color: $range-tip-font-color;
+      color: $range-font-color;
       transform: translate3d(0, -100%, 0);
     }
   }

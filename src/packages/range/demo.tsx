@@ -149,7 +149,7 @@ const RangeDemo = () => {
         >
           <ConfigProvider
             theme={{
-              [`--nutui-range-bar-btn-border`]: '1px solid rgba(52,96,250,1)',
+              [`--nutui-range-button-border`]: '1px solid rgba(52,96,250,1)',
               [`--nutui-range-active-color`]:
                 'linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)',
               [`--nutui-range-inactive-color`]: 'rgba(163,184,255,1)',

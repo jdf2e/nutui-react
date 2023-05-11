@@ -884,17 +884,17 @@ $infiniteloading-bottom-color: var(
 ) !default;
 
 //range（✅）
-$range-tip-font-color: var(--nutui-range-tip-font-color, $gray1) !default;
+$range-font-color: var(--nutui-range-font-color, $gray1) !default;
 $range-inactive-color: var(--nutui-range-inactive-color, #fa958c) !default;
 $range-active-color: var(--nutui-range-active-color, $primary-color) !default;
-$range-bar-btn-bg-color: var(
-  --nutui-range-bar-btn-bg-color,
+$range-button-background: var(
+  --nutui-range-button-background,
   $primary-text-color
 ) !default;
-$range-bar-btn-width: var(--nutui-range-bar-btn-width, 24px) !default;
-$range-bar-btn-height: var(--nutui-range-bar-btn-height, 24px) !default;
-$range-bar-btn-border: var(
-  --nutui-range-bar-btn-border,
+$range-button-width: var(--nutui-range-button-width, 24px) !default;
+$range-button-height: var(--nutui-range-button-height, 24px) !default;
+$range-button-border: var(
+  --nutui-range-button-border,
   1px solid $primary-color
 ) !default;
 

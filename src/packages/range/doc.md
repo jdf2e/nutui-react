@@ -250,7 +250,7 @@ const App = () => {
   >
     <ConfigProvider
       theme={{
-        [`--nutui-range-bar-btn-border`]: '1px solid rgba(52,96,250,1)',
+        [`--nutui-range-button-border`]: '1px solid rgba(52,96,250,1)',
         [`--nutui-range-active-color`]:
           'linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)',
         [`--nutui-range-inactive-color`]: 'rgba(163,184,255,1)',
@@ -422,12 +422,12 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-range-tip-font-color | `$gray1` |
-| --nutui-range-active-color | `$primary-color` |
-| --nutui-range-inactive-color | `#fa958c` |
-| --nutui-range-bar-btn-bg-color | `$white` |
-| --nutui-range-bar-btn-width | `24px` |
-| --nutui-range-bar-btn-height | `24px` |
-| --nutui-range-bar-btn-border | `1px solid $primary-color` |
+| 名称 | 描述 | 默认值 |
+| --- | --- | --- |
+| --nutui-range-font-color | 字体颜色 | `$gray1` |
+| --nutui-range-active-color | 激活颜色 | `$primary-color` |
+| --nutui-range-inactive-color | 未激活颜色 | `#fa958c` |
+| --nutui-range-button-background | 按钮背景 | `$white` |
+| --nutui-range-button-width | 按钮宽度 | `24px` |
+| --nutui-range-button-height | 按钮高度 | `24px` |
+| --nutui-range-button-border | 按钮边框 | `1px solid $primary-color` |

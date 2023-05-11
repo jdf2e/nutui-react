@@ -249,7 +249,7 @@ const App = () => {
   >
     <ConfigProvider
       theme={{
-        [`--nutui-range-bar-btn-border`]: '1px solid rgba(52,96,250,1)',
+        [`--nutui-range-button-border`]: '1px solid rgba(52,96,250,1)',
         [`--nutui-range-active-color`]:
           'linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)',
         [`--nutui-range-inactive-color`]: 'rgba(163,184,255,1)',
@@ -421,12 +421,12 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-range-tip-font-color | `$gray1` |
-| --nutui-range-active-color | `$primary-color` |
-| --nutui-range-inactive-color | `#fa958c` |
-| --nutui-range-bar-btn-bg-color | `$white` |
-| --nutui-range-bar-btn-width | `24px` |
-| --nutui-range-bar-btn-height | `24px` |
-| --nutui-range-bar-btn-border | `1px solid $primary-color` |
+| Name | Description | Default |
+| --- | --- | --- |
+| --nutui-range-font-color | font color | `$gray1` |
+| --nutui-range-active-color | active color | `$primary-color` |
+| --nutui-range-inactive-color | inactive color | `#fa958c` |
+| --nutui-range-button-background | button background | `$white` |
+| --nutui-range-button-width | button width | `24px` |
+| --nutui-range-button-height | button height | `24px` |
+| --nutui-range-button-border | button border | `1px solid $primary-color` |
