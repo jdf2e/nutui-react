@@ -41,8 +41,6 @@ const defaultProps = {
   marks: {},
 } as RangeProps
 
-let currentValue: any
-
 export const Range: FunctionComponent<
   Partial<RangeProps> &
     Omit<
@@ -88,6 +86,10 @@ export const Range: FunctionComponent<
     finalValue: 0,
     onChange: handleChange,
   })
+
+  const [exactValue, setEaxctValue] = useState<RangeValue>(
+    () => value || defaultValue || 0
+  )
 
   useEffect(() => {
     if (marks) {
@@ -211,10 +213,6 @@ export const Range: FunctionComponent<
     if (!isSameValue(value, current)) {
       setCurrent(value)
     }
-
-    if ((marks || end) && !isSameValue(value, startValue)) {
-      onChange && onChange(value)
-    }
   }
 
   const click = (event: any) => {
@@ -230,9 +228,9 @@ export const Range: FunctionComponent<
       total = rect.height
     }
     const value = min + (delta / total) * scope()
-    currentValue = current as any
-    if (isRange(currentValue)) {
-      const [left, right] = currentValue as any
+    setEaxctValue(current)
+    if (isRange(current)) {
+      const [left, right] = current as any
       const middle = (left + right) / 2
       if (value <= middle) {
         updateValue([value, right], true)
@@ -249,11 +247,11 @@ export const Range: FunctionComponent<
       return
     }
     touch.start(event)
-    currentValue = current as any
-    if (isRange(currentValue)) {
-      setStartValue(currentValue.map(format))
+    setEaxctValue(current)
+    if (isRange(current)) {
+      setStartValue(current.map(format))
     } else {
-      setStartValue(format(currentValue))
+      setStartValue(format(current))
     }
 
     setDragStatus('start')
@@ -282,12 +280,15 @@ export const Range: FunctionComponent<
       diff = (delta / total) * scope()
     }
 
+    let newValue
     if (isRange(startValue)) {
-      currentValue[buttonIndex] = startValue[buttonIndex] + diff
+      newValue = (exactValue as number[]).slice()
+      newValue[buttonIndex] = startValue[buttonIndex] + diff
     } else {
-      currentValue = startValue + diff
+      newValue = startValue + diff
     }
-    updateValue(currentValue)
+    setEaxctValue(newValue)
+    updateValue(newValue)
   }
 
   const onTouchEnd = (event: TouchEvent) => {
@@ -295,8 +296,8 @@ export const Range: FunctionComponent<
       return
     }
     if (dragStatus === 'draging') {
-      updateValue(currentValue, true)
-      onEnd && onEnd(currentValue)
+      updateValue(current, true)
+      onEnd && onEnd(current)
     }
     setDragStatus('')
   }
