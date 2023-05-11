@@ -94,30 +94,6 @@ function config(
 export default {
   show,
   config,
-  text(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, type: 'text', ...option })
-  },
-  success(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, icon: 'success', type: 'success', ...option })
-  },
-  fail(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, icon: 'failure', type: 'fail', ...option })
-  },
-  loading(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, icon: <Loading />, type: 'loading', ...option })
-  },
-  warn(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, icon: 'tips', type: 'warn', ...option })
-  },
-  customIcon(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, ...option })
-  },
   clear() {
     if (messageInstance) {
       messageInstance.destroy()

@@ -57,37 +57,60 @@ const ToastDemo = () => {
     },
   })
   const textToast = (msg: string) => {
-    Toast.text(msg)
+    Toast.show({
+      content: msg,
+    })
   }
   const titleToast = (msg: string) => {
-    Toast.text(msg, { title: `${translated.toastTitle}` })
+    Toast.show({
+      content: msg,
+      title: `${translated.toastTitle}`,
+    })
   }
   const successToast = (msg: string) => {
-    Toast.success(msg)
+    Toast.show({
+      content: msg,
+      icon: 'success',
+    })
   }
   const errorToast = (msg: string) => {
-    Toast.fail(msg)
+    Toast.show({
+      content: msg,
+      icon: 'fail',
+    })
   }
   const warningToast = (msg: string) => {
-    Toast.warn(msg)
+    Toast.show({
+      content: msg,
+      icon: 'warn',
+    })
   }
   const loadingToast = (msg: string) => {
-    Toast.loading(msg)
+    Toast.show({
+      content: msg,
+      icon: 'loading',
+    })
   }
   const duringToast = (msg: string) => {
-    Toast.text(msg, { duration: 10 })
+    Toast.show({
+      content: msg,
+      duration: 10,
+    })
   }
   const toastBottom = (msg: string) => {
-    Toast.text(msg, {
-      center: false,
-      bottom: '10%',
+    Toast.show({
+      content: msg,
+      maskStyle: { '--toast-inner-top': '90%' },
     })
   }
   const iconToast = (msg: string) => {
-    Toast.loading(msg, {
-      cover: true, // 是否展示透明遮罩层
-      coverColor: '', // 遮罩颜色设定
-      closeOnClickOverlay: true, // 点击遮罩可关闭
+    Toast.show({
+      content: msg,
+      maskStyle: {
+        background: 'rgba(0,0,0,0.7)',
+      },
+      closeOnClickOverlay: true,
+      maskClickable: false,
       onClose: () => {
         console.log('closeToast')
       },
@@ -146,7 +169,7 @@ const ToastDemo = () => {
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
-            Toast.text(translated.toastAll, { duration: 0 })
+            Toast.show({ content: translated.toastAll, duration: 0 })
           }}
         />
         <Button
@@ -154,7 +177,7 @@ const ToastDemo = () => {
           type="primary"
           shape="round"
           onClick={() => {
-            Toast.hide()
+            Toast.clear()
           }}
         >
           {translated.toastHide}
