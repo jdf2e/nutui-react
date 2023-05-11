@@ -32,6 +32,7 @@ test('range test', () => {
     value0: [30, 60],
   }
   const { container } = render(<Range range defaultValue={state.value0} />)
+  expect(container.outerHTML).toMatchSnapshot()
 })
 
 test('range description test', () => {
