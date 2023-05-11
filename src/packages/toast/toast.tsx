@@ -65,7 +65,11 @@ const errorMsg = (msg: any) => {
   }
 }
 
-function show(option: ToastProps) {
+function show(option: ToastProps | string) {
+  if (typeof option === 'string') {
+    errorMsg(option)
+    return notice({ content: option })
+  }
   errorMsg(option.content)
   return notice({
     ...option,
