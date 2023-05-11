@@ -5,13 +5,9 @@ import { Loading } from '@nutui/icons-react'
 let messageInstance: any = null
 export interface ToastProps {
   id?: string
-  // msg: string
-  style?: React.CSSProperties
   duration?: number
   position?: 'top' | 'bottom' | 'center'
-  //   type: string
   title?: string
-  className?: string
   maskClickable?: boolean
   size?: string | number
   icon?: 'success' | 'fail' | 'loading' | 'warn' | React.ReactNode
@@ -20,17 +16,17 @@ export interface ToastProps {
   cover?: boolean
   coverColor?: string
   closeOnClickOverlay?: boolean
+  maskClassName?: string
+  maskStyle?: React.CSSProperties
+  contentClassName?: string
+  contentStyle?: React.CSSProperties
 }
 
 const options: ToastProps = {
-  // msg: '',
   id: '',
-  style: {},
   duration: 1.5, // 时长,duration为0则一直展示
   position: 'center',
-  //   type: 'text',
   title: '',
-  className: '', // 自定义样式名
   maskClickable: true, // 是否允许背景点击
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
@@ -38,6 +34,7 @@ const options: ToastProps = {
   cover: false, // 是否展示透明遮罩层
   coverColor: 'rgba(0, 0, 0, 0)', // 遮罩颜色设定
   closeOnClickOverlay: false, // 是否点击遮罩可关闭
+  contentClassName: '',
 }
 
 function getInstance(
@@ -59,6 +56,7 @@ function notice(opts: any) {
     if (messageInstance) {
       messageInstance.destroy()
       messageInstance = null
+      opts.onClose && opts.onClose()
     }
   }
   const opts2 = { ...options, ...opts, onClose: close }
@@ -120,7 +118,7 @@ export default {
     errorMsg(msg)
     return notice({ msg, ...option })
   },
-  hide() {
+  clear() {
     if (messageInstance) {
       messageInstance.destroy()
       messageInstance = null

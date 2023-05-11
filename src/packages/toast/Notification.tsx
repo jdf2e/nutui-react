@@ -7,19 +7,20 @@ import Icon from '@/packages/icon/index'
 
 export interface NotificationProps {
   id?: string
-  style?: React.CSSProperties
   icon: 'success' | 'fail' | 'loading' | 'warn' | React.ReactNode
   content: string | React.ReactNode
   duration: number
   position?: 'top' | 'center' | 'bottom'
-  //   type: string
   title: string
-  className: string
   maskClickable: boolean
   size: string | number
   cover: boolean
   coverColor: string
   closeOnClickOverlay: boolean
+  maskClassName?: string
+  maskStyle?: React.CSSProperties
+  contentClassName?: string
+  contentStyle?: React.CSSProperties
   onClose: () => void
 }
 
@@ -100,17 +101,17 @@ export default class Notification extends React.PureComponent<NotificationProps>
   render() {
     const {
       id,
-      style,
       icon,
       title,
       content,
       position,
-      coverColor,
       size,
-      className,
       cover,
-      //   type,
       maskClickable,
+      maskStyle,
+      maskClassName,
+      contentClassName,
+      contentStyle,
     } = this.props
     const toastBem = bem('toast')
 
@@ -126,21 +127,20 @@ export default class Notification extends React.PureComponent<NotificationProps>
           style={{
             background: 'rgba(0,0,0,0)',
             pointerEvents: maskClickable ? 'none' : 'auto',
+            ...maskStyle,
+          }}
+          className={maskClassName}
+          onClick={() => {
+            this.clickCover()
           }}
         >
-          <div
-            className={`${toastBem()} ${classes} ${className}`}
-            id={`toast-${id}`}
-            style={{
-              backgroundColor: cover ? coverColor : '',
-              ...style,
-            }}
-            onClick={() => {
-              this.clickCover()
-            }}
-          >
-            <div className={`${toastBem('inner')} nut-toast-${position}`}>
-              {/* {icon ? <p className={toastBem('icon-wrapper')}>{icon}</p> : null} */}
+          <div className={`${toastBem()} ${classes}`} id={`toast-${id}`}>
+            <div
+              className={`${toastBem(
+                'inner'
+              )} nut-toast-${position} ${contentClassName}`}
+              style={contentStyle}
+            >
               {this.renderIcon()}
               {title ? <div className="nut-toast-title">{title}</div> : null}
               <span className={toastBem('text')}>{content}</span>
