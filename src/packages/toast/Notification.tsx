@@ -4,7 +4,6 @@ import bem from '@/utils/bem'
 import { render, unmount } from '@/utils/render'
 import Overlay from '@/packages/overlay/index'
 import { IconFont } from '@nutui/icons-react'
-// import Icon from '@/packages/icon/index'
 
 export interface NotificationProps {
   id?: string
@@ -67,6 +66,7 @@ export default class Notification extends React.PureComponent<NotificationProps>
 
   renderIcon() {
     const { icon } = this.props
+    console.log('icon', icon)
     if (typeof icon === 'string') {
       const toastBem = bem('toast')
       let iconNode = null
