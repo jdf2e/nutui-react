@@ -175,7 +175,7 @@ export default App
 
 ### Props
 
-| 字段 | 說明 | 類型 | 默認值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | type | 提示的信息類型（primary，success ，danger，warning） | `string` | `danger` |
 | duration | 展示時長(ms)，值為 0 時，notify 不會消失 | `string` | `3000` |

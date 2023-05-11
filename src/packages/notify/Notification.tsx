@@ -1,9 +1,7 @@
 import * as React from 'react'
-
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { render as reactRender, unmount } from '@/utils/render'
-
 import { BasicComponent } from '@/utils/typings'
 
 export interface NotificationProps extends BasicComponent {

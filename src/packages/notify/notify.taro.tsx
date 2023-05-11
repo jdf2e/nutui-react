@@ -1,8 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
-
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface NotifyProps extends BasicComponent {

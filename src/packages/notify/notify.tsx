@@ -1,6 +1,5 @@
 import * as React from 'react'
 import Notification, { NotificationProps } from './Notification'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 let messageInstance: any = null

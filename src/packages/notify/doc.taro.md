@@ -211,7 +211,7 @@ export default App
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | visible | 消息框是否展示 | `boolean` | `false` |
 | type | 提示的信息类型（primary，success ，danger，warning） | `string` | `danger` |
