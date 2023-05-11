@@ -45,7 +45,10 @@ let currentValue: any
 
 export const Range: FunctionComponent<
   Partial<RangeProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onChange'>
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      'onClick' | 'onChange' | 'defaultValue'
+    >
 > = (props) => {
   const {
     className,
@@ -68,8 +71,8 @@ export const Range: FunctionComponent<
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-range'
-  const [buttonIndex, SetButtonIndex] = useState(0)
-  const [dragStatus, SetDragStatus] = useState('start' || 'draging' || '')
+  const [buttonIndex, setButtonIndex] = useState(0)
+  const [dragStatus, setDragStatus] = useState('start' || 'draging' || '')
   const touch = useTouch()
   const root = useRef<HTMLDivElement>(null)
   const [marksList, setMarksList] = useState([])
@@ -218,7 +221,7 @@ export const Range: FunctionComponent<
     if (disabled || !root.current) {
       return
     }
-    SetDragStatus('')
+    setDragStatus('')
     const rect = getRect(root.current)
     let delta = event.clientX - rect.left
     let total = rect.width
@@ -253,7 +256,7 @@ export const Range: FunctionComponent<
       setStartValue(format(currentValue))
     }
 
-    SetDragStatus('start')
+    setDragStatus('start')
   }
 
   const onTouchMove = (event: TouchEvent) => {
@@ -266,7 +269,7 @@ export const Range: FunctionComponent<
 
     touch.move(event)
 
-    SetDragStatus('draging')
+    setDragStatus('draging')
 
     const rect = getRect(root.current)
     let delta = touch.deltaX
@@ -295,7 +298,7 @@ export const Range: FunctionComponent<
       updateValue(currentValue, true)
       onEnd && onEnd(currentValue)
     }
-    SetDragStatus('')
+    setDragStatus('')
   }
 
   const curValue = (idx?: number) => {
@@ -374,7 +377,7 @@ export const Range: FunctionComponent<
                   onTouchStart={(e: any) => {
                     if (typeof index === 'number') {
                       // 实时更新当前拖动的按钮索引
-                      SetButtonIndex(index)
+                      setButtonIndex(index)
                     }
                     onTouchStart(e)
                   }}

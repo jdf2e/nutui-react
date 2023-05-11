@@ -163,6 +163,7 @@
 - 移除 activeColor、inactiveColor、buttonColor，通过 css 变量实现
 - onDragStart 重命名为 onStart
 - onDragEnd 重命名为 onEnd
+- modelValue 重命为 value，增加 defaultValue 非受控方式
 #### Rate
 - minimizeValue 重命名为 min
 - readonly 重命名为 readOnly

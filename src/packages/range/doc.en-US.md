@@ -516,14 +516,15 @@ export default App;
 
 | Property         | Description            |  Type            | Default                   |
 | ------------- | ------------------ | ---------------- | ------------------------ |
-| modelValue    | current progress percentage     | `number \| number[]` | `0`                      |
+| value    | current percentage, controlled     | `number \| number[]` | `0`                      |
+| defaultValue    | default percentage, uncontrolled     | `number \| number[]` | `0`                      |
 | range         | Whether to enable dual slider mode | `boolean`          | `false`                  |
-| max           | maximum             | `number \| string`   | `100`                    |
-| min           | minimum             | `number \| string`   | `0`                      |
+| max           | maximum             | `number`   | `100`                    |
+| min           | minimum             | `number`   | `0`                      |
 | maxDescription     | maximum description, `null` to hidden        | `ReactNode`   | -                    |
 | minDescription     | minimum description, `null` to hidden          | `ReactNode`   | -                      |
 | currentDescription | current progress percentage description, `null` to hidden  | `((value: SliderValue) => ReactNode) | null` |-                    |
-| step          | step size               | `number \| string`   | `1`                      |
+| step          | step size               | `number`   | `1`                      |
 | disabled      | Whether to disable the slider       | `boolean`          | `false`                  |
 | vertical      | Whether to display vertically | `boolean` | `false` |
 | marks | scale mark | `Object{key: number}` | `{}` |

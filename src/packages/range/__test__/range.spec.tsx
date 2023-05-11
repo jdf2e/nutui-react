@@ -5,7 +5,7 @@ import Range from '@/packages/range'
 
 test('range props test', () => {
   const { container } = render(
-    <Range className="test-range" modelValue={40} style={{ color: 'red' }} />
+    <Range className="test-range" defaultValue={40} style={{ color: 'red' }} />
   )
 
   expect(container.querySelector('.nut-range-container')).toHaveClass(
@@ -26,7 +26,7 @@ test('range props test', () => {
 })
 
 test('range max and min test', () => {
-  const { container } = render(<Range modelValue={0} max={10} min={-10} />)
+  const { container } = render(<Range defaultValue={0} max={10} min={-10} />)
   expect(container.querySelector('.min')?.innerHTML).toBe('-10')
   expect(container.querySelector('.max')?.innerHTML).toBe('10')
 })
@@ -35,7 +35,7 @@ test('range test', () => {
   const state = {
     value0: [30, 60],
   }
-  const { container } = render(<Range range modelValue={state.value0} />)
+  const { container } = render(<Range range defaultValue={state.value0} />)
   expect(
     container.querySelector('.nut-range-button-wrapper-left')
   ).toHaveAttribute('aria-valuenow', '30')
@@ -56,7 +56,7 @@ test('disabled test', () => {
   const state = {
     value0: 50,
   }
-  const { container } = render(<Range disabled modelValue={state.value0} />)
+  const { container } = render(<Range disabled defaultValue={state.value0} />)
   expect(container.querySelector('.nut-range-button-wrapper')).toHaveAttribute(
     'aria-valuenow',
     '50'
@@ -75,7 +75,7 @@ test('hidden range test', () => {
     <Range
       maxDescription={null}
       minDescription={null}
-      modelValue={state.value0}
+      defaultValue={state.value0}
     />
   )
   expect(container.querySelector('.max')).toBeFalsy()
@@ -87,7 +87,7 @@ test('hiddenTag test', () => {
     value0: 40,
   }
   const { container } = render(
-    <Range currentDescription={null} modelValue={state.value0} />
+    <Range currentDescription={null} defaultValue={state.value0} />
   )
   expect(container.querySelector('.number')).toBeFalsy()
 })
@@ -96,7 +96,7 @@ test('vertical test', () => {
   const state = {
     value0: 40,
   }
-  const { container } = render(<Range vertical modelValue={state.value0} />)
+  const { container } = render(<Range vertical defaultValue={state.value0} />)
   expect(screen.queryByRole('slider')).toHaveAttribute('tabindex', '0')
   expect(screen.queryByRole('slider')).toHaveAttribute(
     'aria-orientation',
@@ -120,7 +120,7 @@ test('marks test', () => {
     },
   }
   const { container } = render(
-    <Range marks={state.marks} modelValue={state.value0} />
+    <Range marks={state.marks} defaultValue={state.value0} />
   )
   expect(container.querySelector('.nut-range-mark')).toBeTruthy()
   expect(container.querySelectorAll('.nut-range-mark-text')?.length).toEqual(
@@ -135,7 +135,7 @@ test('custom-button test', () => {
   const { container } = render(
     <Range
       button={<div className="range-custom-button">{state.value0}</div>}
-      modelValue={state.value0}
+      defaultValue={state.value0}
     />
   )
 
@@ -156,7 +156,7 @@ test('desc test', () => {
   }
   const { container } = render(
     <Range
-      modelValue={state.value0}
+      defaultValue={state.value0}
       minDescription={state.minDescription}
       maxDescription={state.maxDescription}
       currentDescription={(value) => `${value}%`}
