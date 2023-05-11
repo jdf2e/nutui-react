@@ -13,7 +13,7 @@ import { getRectByTaro } from '../../utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 
-type RangeValue = number | number[]
+type RangeValue = number | [number, number]
 export interface RangeProps extends BasicComponent {
   value: RangeValue
   defaultValue: RangeValue
