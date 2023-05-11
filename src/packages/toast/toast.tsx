@@ -21,7 +21,7 @@ export interface ToastProps {
 
 const options: ToastProps = {
   id: '',
-  duration: 1.5, // 时长,duration为0则一直展示
+  duration: 2, // 时长,duration为0则一直展示
   position: 'center',
   title: '',
   maskClickable: true, // 是否允许背景点击
