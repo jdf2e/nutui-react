@@ -12,6 +12,7 @@ export interface ToastProps {
   type: string
   title: string
   className?: string
+  maskClickable?: boolean
   size: string | number
   icon: string | null
   onClose: () => void
@@ -29,6 +30,7 @@ const options: ToastProps = {
   type: 'text',
   title: '',
   className: '', // 自定义样式名
+  maskClickable: true, // 是否允许背景点击
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
   onClose: () => {},

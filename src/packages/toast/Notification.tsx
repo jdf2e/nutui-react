@@ -2,6 +2,7 @@ import * as React from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 import { render, unmount } from '@/utils/render'
+import Overlay from '@/packages/overlay/index'
 
 export interface NotificationProps {
   id?: string
@@ -13,6 +14,7 @@ export interface NotificationProps {
   type: string
   title: string
   className: string
+  maskClickable: boolean
   size: string | number
   cover: boolean
   coverColor: string
@@ -83,6 +85,7 @@ export default class Notification extends React.PureComponent<NotificationProps>
       className,
       cover,
       type,
+      maskClickable,
     } = this.props
     const toastBem = bem('toast')
 
@@ -94,23 +97,31 @@ export default class Notification extends React.PureComponent<NotificationProps>
     })
     return (
       <>
-        <div
-          className={`${toastBem()} ${classes} ${className}`}
-          id={`toast-${id}`}
+        <Overlay
+          visible={true}
           style={{
-            backgroundColor: cover ? coverColor : '',
-            ...style,
-          }}
-          onClick={() => {
-            this.clickCover()
+            background: 'rgba(0,0,0,0)',
+            pointerEvents: maskClickable ? 'none' : 'auto',
           }}
         >
-          <div className={`${toastBem('inner')} nut-toast-${position}`}>
-            {icon ? <p className={toastBem('icon-wrapper')}>{icon}</p> : null}
-            {title ? <div className="nut-toast-title">{title}</div> : null}
-            <span className={toastBem('text')}>{msg}</span>
+          <div
+            className={`${toastBem()} ${classes} ${className}`}
+            id={`toast-${id}`}
+            style={{
+              backgroundColor: cover ? coverColor : '',
+              ...style,
+            }}
+            onClick={() => {
+              this.clickCover()
+            }}
+          >
+            <div className={`${toastBem('inner')} nut-toast-${position}`}>
+              {icon ? <p className={toastBem('icon-wrapper')}>{icon}</p> : null}
+              {title ? <div className="nut-toast-title">{title}</div> : null}
+              <span className={toastBem('text')}>{msg}</span>
+            </div>
           </div>
-        </div>
+        </Overlay>
       </>
     )
   }
