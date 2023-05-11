@@ -78,6 +78,8 @@ export const TextArea: FunctionComponent<
     if (text) {
       const value = compositionRef.current ? text : format(text)
       setInputValue(value)
+    } else {
+      setInputValue('')
     }
   }
 
