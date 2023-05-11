@@ -25,7 +25,7 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const textToast = (msg: string) => {
-        Toast.text(msg)
+      Toast.show(msg);
     }
     return (
         <>
@@ -53,7 +53,10 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const titleToast = (msg: string) => {
-        Toast.text(msg,{title:'标题提示'})
+      Toast.show({
+      	content: msg,
+        title: '标题提示'
+      })
     }
     return (
         <>
@@ -80,7 +83,10 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const successToast = (msg: string) => {
-        Toast.success(msg)
+      Toast.show({
+        content: msg,
+        icon: 'success'
+      });
     }
     return (
         <>
@@ -109,7 +115,10 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const errorToast = (msg: string) => {
-        Toast.fail(msg)
+      Toast.show({
+        content: msg,
+        icon: 'fail'
+      });
     }
     return (
         <>
@@ -138,16 +147,19 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const warningToast = (msg: string) => {
-        Toast.warn(msg)
+      Toast.show({
+        content: msg,
+        icon: 'warn'
+      });
     }
     return (
         <>
             <Cell
-            title=" Warning 警告提示"
-            
-            onClick={(
-                event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => warningToast('警告提示')}
+              title=" Warning 警告提示"
+
+              onClick={(
+                  event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+              ) => warningToast('警告提示')}
             />
         </>
     )
@@ -167,16 +179,19 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const loadingToast = (msg: string) => {
-        Toast.loading(msg)
+      Toast.show({
+        content: msg,
+        icon: 'loading'
+      });
     }
     return (
         <>
             <Cell
-            title=" Loading 加载提示"
-            
-            onClick={(
-                event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => loadingToast('加载中')}
+              title=" Loading 加载提示"
+
+              onClick={(
+                  event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+              ) => loadingToast('加载中')}
             />
         </>
     )
@@ -197,31 +212,42 @@ import { Toast, Cell, Button } from '@nutui/nutui-react';
 
 const App = () => {
     const duringToast = (msg: string) => {
-        Toast.text(msg, { duration: 10 })
+      Toast.show({
+        content: msg,
+        duration: 10
+      });
     }
+    
+    const permanentToast = (msg: string) => {
+      Toast.show({
+        content: msg,
+        duration: 0
+      });
+    }
+    
     return (
         <>
             <Cell
-            title="设置展示时长为10秒提示"
-            
-            onClick={(
-                event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => duringToast('设置展示时长为10秒')}
+              title="设置展示时长为10秒提示"
+
+              onClick={(
+                  event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+              ) => duringToast('设置展示时长为10秒')}
             />
             <Cell
-            title="Toast 不消失"
-            
-            onClick={(
-                event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => {Toast.text('Toast 不消失', { duration: 0 })}}
+              title="Toast 不消失"
+
+              onClick={(
+                  event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+              ) => permanentToast('Toast 不消失') }
             />
             <Button
-            style={{ margin: 8 }}
-            type="primary"
-            shape="round"
-            onClick={() => {
-                Toast.hide()
-            }}
+              style={{ margin: 8 }}
+              type="primary"
+              shape="round"
+              onClick={() => {
+                  Toast.clear()
+              }}
             >隐藏Toast</Button>
         </>
     )
@@ -240,10 +266,13 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const toastBottom = (msg: string) => {
-        Toast.text(msg, {
-            center: false,
-            bottom: '10%',
-        })
+      Toast.show({
+        content: msg,
+        icon: 'loading',
+        maskStyle: {
+          '--toast-inner-top': '90%'
+        }
+      });
     }
     return (
         <Cell
@@ -260,7 +289,7 @@ export default App
 :::
 
 
-#### 加载Loading带透明罩
+#### 加载Loading带非透明罩
 
 :::demo
 
@@ -270,23 +299,26 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const iconToast = (msg: string) => {
-        Toast.loading(msg, {
-        cover: true, // 是否展示透明遮罩层
-        coverColor: 'rgba(0, 0, 0, 0)', // 遮罩颜色设定
-        closeOnClickOverlay: true, // 点击遮罩可关闭
-        onClose: () => {
-            console.log('closeToast')
+      Toast.show({
+        content: msg,
+        maskStyle: {
+          background: 'rgba(0, 0, 0, 0)'
         },
-        })
+        closeOnOverlayClick: true,
+      	maskClickable: false,
+        onClose: () => {
+          console.log('closeToast')
+        },
+      });
     }
     return (
         <>
             <Cell
-            title="Loading状态透明遮罩"
+            title="Loading状态非透明遮罩"
             
             onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => iconToast('加载状态透明遮罩')}
+            ) => iconToast('加载状态非透明遮罩')}
             />
         </>
     )
