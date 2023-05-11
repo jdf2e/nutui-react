@@ -214,6 +214,7 @@ export const Range: FunctionComponent<
     if (!isSameValue(value, current)) {
       setCurrent(value)
     }
+    end && onEnd && onEnd(value)
   }
 
   const click = async (event: any) => {
@@ -298,7 +299,6 @@ export const Range: FunctionComponent<
     }
     if (dragStatus === 'draging') {
       updateValue(current, true)
-      onEnd && onEnd(current)
     }
     setDragStatus('')
   }

@@ -18,6 +18,7 @@ interface T {
   title9: string
   title10: string
   title11: string
+  controlled: string
 }
 
 const RangeDemo = () => {
@@ -35,6 +36,7 @@ const RangeDemo = () => {
       title9: '垂直方向',
       title10: '刻度标记',
       title11: '自定义描述',
+      controlled: '受控方式',
     },
     'en-US': {
       title: 'Basic Usage',
@@ -49,6 +51,7 @@ const RangeDemo = () => {
       title9: 'Vertical',
       title10: 'Marks',
       title11: 'Range Desc',
+      controlled: 'Controlled',
     },
   })
   const cellStyle = {
@@ -58,17 +61,16 @@ const RangeDemo = () => {
     height: '180px',
     padding: '10px',
   }
-  const [value0, SetValue0] = useState([30, 60])
-  const [value1, SetValue1] = useState(30)
-  const [value2, SetValue2] = useState(60)
-  const [value3, SetValue3] = useState(20)
-  const [value4, SetValue4] = useState([20, 80])
-  const [value5, SetValue5] = useState(60)
-  const [value6, SetValue6] = useState([20, 80])
-  const [value7, SetValue7] = useState(60)
-  const [value8, SetValue8] = useState([20, 80])
-  const [value9, SetValue9] = useState(40)
-  const [marks, SetMarks] = useState({
+  const [show, setShow] = useState(false)
+  const [msg, setMsg] = useState('')
+  const showToast = (msg: string) => {
+    setMsg(msg)
+    setShow(true)
+  }
+
+  const [value1, setValue1] = useState(40)
+  const [value2, setValue2] = useState(60)
+  const [marks] = useState({
     0: 0,
     20: 20,
     40: 40,
@@ -76,50 +78,6 @@ const RangeDemo = () => {
     80: 80,
     100: 100,
   })
-  const [show, SetShow] = useState(false)
-  const [toastMsg, SetToastMsg] = useState('')
-  const toastShow = (msg: any) => {
-    SetToastMsg(msg)
-    SetShow(true)
-  }
-  const change = (value: any, name?: string) => {
-    // Toast.text(`当前值：${value}`)
-    toastShow(`当前值：${value}`)
-    switch (name) {
-      case 'value0':
-        SetValue0(value)
-        break
-      case 'value1':
-        SetValue1(value)
-        break
-      case 'value2':
-        SetValue2(value)
-        break
-      case 'value3':
-        SetValue3(value)
-        break
-      case 'value4':
-        SetValue4(value)
-        break
-      case 'value5':
-        SetValue5(value)
-        break
-      case 'value6':
-        SetValue6(value)
-        break
-      case 'value7':
-        SetValue7(value)
-        break
-      case 'value8':
-        SetValue8(value)
-        break
-      case 'value9':
-        SetValue9(value)
-        break
-      default:
-        break
-    }
-  }
 
   return (
     <>
@@ -127,31 +85,28 @@ const RangeDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.title}</h2>
         <Cell style={cellStyle}>
-          <Range defaultValue={40} />
+          <Range defaultValue={40} onEnd={(val) => showToast(`${val}`)} />
+        </Cell>
+        <h2>{translated.controlled}</h2>
+        <Cell style={cellStyle}>
+          <Range value={value1} onChange={(val: any) => setValue1(val)} />
         </Cell>
         <h2>{translated.title11}</h2>
         <Cell style={cellStyle}>
           <Range
-            value={value9}
+            defaultValue={40}
             minDescription="0%"
             maxDescription="100%"
             currentDescription={(value) => `${value}%`}
-            onChange={(value: any) => {
-              change(value, 'value9')
-            }}
-            onEnd={(value: any) => {
-              console.log('onEnd', value)
-            }}
+            onEnd={(val) => showToast(`${val}`)}
           />
         </Cell>
         <h2>{translated.title1}</h2>
         <Cell style={cellStyle}>
           <Range
+            defaultValue={[20, 80]}
             range
-            value={value0}
-            onChange={(value: any) => {
-              change(value, 'value0')
-            }}
+            onEnd={(val) => showToast(`${val}`)}
           />
         </Cell>
         <h2>{translated.title2}</h2>
@@ -160,19 +115,15 @@ const RangeDemo = () => {
             defaultValue={0}
             max={10}
             min={-10}
-            onChange={(value: any) => {
-              change(value)
-            }}
+            onEnd={(val) => showToast(`${val}`)}
           />
         </Cell>
         <h2>{translated.title3}</h2>
         <Cell style={cellStyle}>
           <Range
-            value={value1}
+            defaultValue={30}
             step={5}
-            onChange={(value: any) => {
-              change(value, 'value1')
-            }}
+            onEnd={(val) => showToast(`${val}`)}
           />
         </Cell>
         <h2>{translated.title4}</h2>
@@ -181,9 +132,7 @@ const RangeDemo = () => {
             defaultValue={30}
             maxDescription={null}
             minDescription={null}
-            onChange={(value: any) => {
-              change(value)
-            }}
+            onEnd={(val) => showToast(`${val}`)}
           />
         </Cell>
         <h2>{translated.title5}</h2>
@@ -191,20 +140,12 @@ const RangeDemo = () => {
           <Range
             defaultValue={20}
             currentDescription={null}
-            onChange={(value: any) => {
-              change(value)
-            }}
+            onEnd={(val) => showToast(`${val}`)}
           />
         </Cell>
         <h2>{translated.title6}</h2>
         <Cell style={cellStyle}>
-          <Range
-            defaultValue={50}
-            disabled
-            onChange={(value: any) => {
-              change(value)
-            }}
-          />
+          <Range defaultValue={50} disabled />
         </Cell>
         <h2>{translated.title7}</h2>
         <Cell
@@ -229,9 +170,6 @@ const RangeDemo = () => {
                 10: 10,
                 20: 20,
               }}
-              onChange={(value: number | number[]) => {
-                change(value)
-              }}
             />
           </ConfigProvider>
         </Cell>
@@ -240,83 +178,70 @@ const RangeDemo = () => {
           <Range
             value={value2}
             button={<div className="range-custom-button">{value2}</div>}
-            onChange={(value: number | number[]) => {
-              change(value, 'value2')
-            }}
+            onChange={(val: any) => setValue2(val)}
+            onEnd={(val) => showToast(`${val}`)}
           />
         </Cell>
         <h2>{translated.title9}</h2>
         <Cell style={verticalStyle}>
           <div style={{ width: '150px', height: '100%' }}>
             <Range
-              value={value3}
+              defaultValue={20}
               vertical
-              onChange={(value: number | number[]) => {
-                change(value, 'value3')
-              }}
+              onEnd={(val) => showToast(`${val}`)}
             />
           </div>
           <div style={{ width: '150px', height: '100%' }}>
             <Range
-              value={value4}
+              defaultValue={[20, 80]}
               vertical
               range
-              onChange={(value: number | number[]) => {
-                change(value, 'value4')
-              }}
+              onEnd={(val) => showToast(`${val}`)}
             />
           </div>
         </Cell>
         <h2>{translated.title10}</h2>
         <Cell style={cellStyle}>
           <Range
-            value={value5}
+            defaultValue={60}
             maxDescription={null}
             minDescription={null}
             marks={marks}
-            onChange={(value: number | number[]) => {
-              change(value, 'value5')
-            }}
+            onEnd={(val) => showToast(`${val}`)}
           />
         </Cell>
         <Cell style={cellStyle}>
           <Range
-            value={value6}
+            defaultValue={[20, 80]}
             marks={marks}
             range
-            onChange={(value: number | number[]) => {
-              change(value, 'value6')
-            }}
+            onEnd={(val) => showToast(`${val}`)}
           />
         </Cell>
 
         <Cell style={verticalStyle}>
           <Range
-            value={value7}
+            defaultValue={60}
             vertical
             maxDescription={null}
             minDescription={null}
             marks={marks}
-            onChange={(value: number | number[]) => {
-              change(value, 'value7')
-            }}
+            onEnd={(val) => showToast(`${val}`)}
           />
           <Range
-            value={value8}
+            defaultValue={[20, 80]}
             vertical
             marks={marks}
             range
-            onChange={(value: number | number[]) => {
-              change(value, 'value8')
-            }}
+            onEnd={(val) => showToast(`${val}`)}
           />
         </Cell>
         <Toast
           type="text"
           visible={show}
-          msg={toastMsg}
+          msg={msg}
           onClose={() => {
-            SetShow(false)
+            setShow(false)
           }}
         />
       </div>
