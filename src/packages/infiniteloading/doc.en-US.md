@@ -144,7 +144,7 @@ const App = () => {
 
   const refresh = (done: () => void) => {
     setTimeout(() => {
-      Toast.text('Refresh success!')
+      Toast.show('Refresh success!')
       done()
     }, 1000)
   }

@@ -77,7 +77,7 @@ const RangeDemo = () => {
     100: 100,
   })
   const change = (value: any, name?: string) => {
-    Toast.text(`当前值：${value}`)
+    Toast.show(`当前值：${value}`)
     switch (name) {
       case 'value0':
         SetValue0(value)

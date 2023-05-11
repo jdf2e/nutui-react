@@ -22,10 +22,10 @@ import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`enter:${number}`)
+    Toast.show(`enter:${number}`)
   }
   const onDelete = () => {
-    Toast.text('delete')
+    Toast.show('delete')
   }
   return (
      <>
@@ -59,10 +59,10 @@ import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`enter:${number}`)
+    Toast.show(`enter:${number}`)
   }
   const onDelete = () => {
-    Toast.text('delete')
+    Toast.show('delete')
   }
   return (
      <>
@@ -98,10 +98,10 @@ import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`enter:${number}`)
+    Toast.show(`enter:${number}`)
   }
   const onDelete = () => {
-    Toast.text('delete')
+    Toast.show('delete')
   }
   return (
      <>
@@ -135,10 +135,10 @@ import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`enter:${number}`)
+    Toast.show(`enter:${number}`)
   }
   const onDelete = () => {
-    Toast.text('delete')
+    Toast.show('delete')
   }
   return (
      <>
@@ -173,10 +173,10 @@ import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`enter:${number}`)
+    Toast.show(`enter:${number}`)
   }
   const onDelete = () => {
-    Toast.text('delete')
+    Toast.show('delete')
   }
   return (
      <>

@@ -144,7 +144,7 @@ const SwipeDemo = () => {
 
   const refDom = useRef<SwipeInstance>(null)
   const handleChange = () => {
-    Toast.text(translated.click)
+    Toast.show(translated.click)
   }
   const beforeClose = (postion: string) => {
     Dialog.alert({
@@ -158,7 +158,7 @@ const SwipeDemo = () => {
   }
 
   const handleClose = () => {
-    Toast.text('close')
+    Toast.show('close')
   }
 
   const closeRef = useRef(null)
@@ -246,7 +246,7 @@ const SwipeDemo = () => {
           }
           onActionClick={handleChange}
           onOpen={({ name, position }) => {
-            Toast.text(translated.open)
+            Toast.show(translated.open)
           }}
           onClose={handleClose}
         >

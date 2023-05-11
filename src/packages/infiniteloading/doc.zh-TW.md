@@ -143,7 +143,7 @@ const App = () => {
 
   const refresh = (done: () => void) => {
     setTimeout(() => {
-      Toast.text('刷新成功')
+      Toast.show('刷新成功')
       done()
     }, 1000)
   }

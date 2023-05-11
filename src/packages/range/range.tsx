@@ -96,7 +96,7 @@ export const Range: FunctionComponent<
     if (typeof modelValue === 'number') {
       if (!range && (modelValue < min || modelValue > max)) {
         SetInitValue(0)
-        Toast.text(`${modelValue} ${locale.range.rangeText}`)
+        Toast.show(`${modelValue} ${locale.range.rangeText}`)
         return
       }
       SetInitValue(modelValue)

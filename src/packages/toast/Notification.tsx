@@ -3,7 +3,8 @@ import classNames from 'classnames'
 import bem from '@/utils/bem'
 import { render, unmount } from '@/utils/render'
 import Overlay from '@/packages/overlay/index'
-import Icon from '@/packages/icon/index'
+import { IconFont } from '@nutui/icons-react'
+// import Icon from '@/packages/icon/index'
 
 export interface NotificationProps {
   id?: string
@@ -71,16 +72,16 @@ export default class Notification extends React.PureComponent<NotificationProps>
       let iconNode = null
       switch (icon) {
         case 'success':
-          iconNode = <Icon name="success" />
+          iconNode = <IconFont name="success" />
           break
         case 'loading':
-          iconNode = <Icon name="loading" />
+          iconNode = <IconFont name="loading" />
           break
         case 'fail':
-          iconNode = <Icon name="failure" />
+          iconNode = <IconFont name="failure" />
           break
         case 'warn':
-          iconNode = <Icon name="issue" />
+          iconNode = <IconFont name="issue" />
           break
       }
       return <p className={toastBem('icon-wrapper')}>{iconNode}</p>

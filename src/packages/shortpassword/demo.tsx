@@ -37,7 +37,7 @@ const ShortPasswordDemo = () => {
     setValue(value)
   }
   const onTips = () => {
-    Toast.text(translated.forgetPassword)
+    Toast.show(translated.forgetPassword)
   }
   return (
     <div className="demo">

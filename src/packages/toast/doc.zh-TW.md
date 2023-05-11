@@ -333,7 +333,7 @@ export default App
 
 | 方法名        | 说明                       | 参数            | 返回值     |
 | ---------- | ------------------------ | --------------- | ---------- |
-| Toast.text                | 展示文字提示    |  message｜ options | toast 实例(message支持传入HTML) |
+| Toast.show                | 展示文字提示    |  message｜ options | toast 实例(message支持传入HTML) |
 | Toast.success             | 展示成功提示       | message｜ options| toast 实例 |
 | Toast.fail                | 展示失败提示     | message｜ options| toast 实例 |
 | Toast.warn                | 展示警告提示        | message｜ options | toast 实例 |

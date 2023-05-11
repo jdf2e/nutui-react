@@ -134,7 +134,7 @@ import { Swipe, Cell, Button, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const handleChange = () => {
-    Toast.text('点击');
+    Toast.show('点击');
   }
   return <>
     <Swipe
@@ -154,8 +154,8 @@ const App = () => {
         </>
       }
       onActionClick={handleChange}
-      onOpen={() => Toast.text('打开')}
-      onClose={() => Toast.text('关闭')}
+      onOpen={() => Toast.show('打开')}
+      onClose={() => Toast.show('关闭')}
     >
       <Cell title="事件" />
     </Swipe>

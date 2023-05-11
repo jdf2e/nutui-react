@@ -21,10 +21,10 @@ import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react-taro';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    Toast.show(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    Toast.show('删除')
   }
   return (
      <>
@@ -58,10 +58,10 @@ import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react-taro';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    Toast.show(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    Toast.show('删除')
   }
   return (
      <>
@@ -97,10 +97,10 @@ import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react-taro';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    Toast.show(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    Toast.show('删除')
   }
   return (
      <>
@@ -134,10 +134,10 @@ import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react-taro';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    Toast.show(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    Toast.show('删除')
   }
   return (
      <>
@@ -172,10 +172,10 @@ import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react-taro';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    Toast.show(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    Toast.show('删除')
   }
   return (
      <>

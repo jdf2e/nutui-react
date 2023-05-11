@@ -48,7 +48,7 @@ import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
 const App = () => {
     const [value, SetValue] = useState(40)
     const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
+        Toast.show(`当前值：${value}`)
         SetValue(value)
     }
     const cellStyle = {
@@ -85,7 +85,7 @@ import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
 const App = () => {
     const [value0, SetValue0] = useState([30, 60])
     const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
+        Toast.show(`当前值：${value}`)
         SetValue0(value)
     }
     const cellStyle = {
@@ -119,7 +119,7 @@ import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
 
 const App = () => {
     const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
+        Toast.show(`当前值：${value}`)
     }
     const cellStyle = {
         padding: '40px 18px',
@@ -154,7 +154,7 @@ import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
 const App = () => {
     const [value1, SetValue1] = useState(40)
     const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
+        Toast.show(`当前值：${value}`)
         SetValue1(value)
     }
     const cellStyle = {
@@ -189,7 +189,7 @@ import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
 
 const App = () => {
     const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
+        Toast.show(`当前值：${value}`)
     }
     const cellStyle = {
         padding: '40px 18px',
@@ -223,7 +223,7 @@ import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
 
 const App = () => {
     const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
+        Toast.show(`当前值：${value}`)
     }
     const cellStyle = {
         padding: '40px 18px',
@@ -257,7 +257,7 @@ import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
 
 const App = () => {
     const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
+        Toast.show(`当前值：${value}`)
     }
     const cellStyle = {
         padding: '40px 18px',
@@ -290,7 +290,7 @@ import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
 
 const App = () => {
     const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
+        Toast.show(`当前值：${value}`)
     }
     const cellStyle = {
         padding: '40px 18px',
@@ -328,7 +328,7 @@ import "./demo.scss"
 const App = () => {
     const [value2, SetValue2] = useState(60)
     const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
+        Toast.show(`当前值：${value}`)
         SetValue2(value)
     }
     const cellStyle = {
@@ -364,7 +364,7 @@ const App = () => {
     const [value3, SetValue3] = useState(20)
     const [value4, SetValue4] = useState([20, 80])
     const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
+        Toast.show(`当前值：${value}`)
         switch (name) {
         case 'value3':
             SetValue3(value)
@@ -433,7 +433,7 @@ const App = () => {
         100: 100,
     })
     const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
+        Toast.show(`当前值：${value}`)
         switch (name) {
             case 'value5':
                 SetValue5(value)
