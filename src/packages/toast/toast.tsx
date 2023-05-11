@@ -13,9 +13,6 @@ export interface ToastProps {
   icon?: 'success' | 'fail' | 'loading' | 'warn' | React.ReactNode
   content?: React.ReactNode
   onClose?: () => void
-  cover?: boolean
-  coverColor?: string
-  closeOnClickOverlay?: boolean
   maskClassName?: string
   maskStyle?: React.CSSProperties
   contentClassName?: string
@@ -31,9 +28,7 @@ const options: ToastProps = {
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
   onClose: () => {},
-  cover: false, // 是否展示透明遮罩层
-  coverColor: 'rgba(0, 0, 0, 0)', // 遮罩颜色设定
-  closeOnClickOverlay: false, // 是否点击遮罩可关闭
+  closeOnOverlayClick: false, // 是否点击遮罩可关闭
   contentClassName: '',
 }
 
