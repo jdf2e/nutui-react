@@ -57,9 +57,7 @@ const ToastDemo = () => {
     },
   })
   const textToast = (msg: string) => {
-    Toast.show({
-      content: msg,
-    })
+    Toast.show(msg)
   }
   const titleToast = (msg: string) => {
     Toast.show({
@@ -109,7 +107,7 @@ const ToastDemo = () => {
       maskStyle: {
         background: 'rgba(0,0,0,0.7)',
       },
-      closeOnClickOverlay: true,
+      closeOnOverlayClick: true,
       maskClickable: false,
       onClose: () => {
         console.log('closeToast')
