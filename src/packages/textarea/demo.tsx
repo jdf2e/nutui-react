@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { TextArea } from './textarea'
 import { useTranslate } from '../../sites/assets/locale'
 import ConfigProvider from '@/packages/configprovider'
@@ -23,8 +23,8 @@ const TextAreaDemo = () => {
       basic: '基础用法',
       controlled: '受控方式',
       numbers: '显示字数统计',
-      autoHeight: '高度自定义，拉伸',
-      we2312222: '修改字数统计样式',
+      autoHeight: '自定义行数，设置自动高度',
+      we2312222: '自定义字数统计样式',
       readOnly: '只读',
       readOnlyState: '只读状态',
       disabled: '禁用',
@@ -36,8 +36,8 @@ const TextAreaDemo = () => {
       basic: '基礎用法',
       controlled: '受控方式',
       numbers: '顯示數字統計',
-      autoHeight: '高度自定義，拉伸',
-      we2312222: '修改字数统计样式',
+      autoHeight: '自定義行數，設置自動高度',
+      we2312222: '自定義字数统计样式',
       readOnly: '只讀',
       readOnlyState: '只讀狀態',
       disabled: '禁用',
@@ -49,8 +49,8 @@ const TextAreaDemo = () => {
       basic: 'Basic usage',
       controlled: 'Controlled',
       numbers: 'Displays numerical',
-      autoHeight: 'Highly adaptive',
-      we2312222: 'reset limit color',
+      autoHeight: 'Custom rows, auto height',
+      we2312222: 'Custom limit color',
       readOnly: 'Read only',
       readOnlyState: 'Read-only status',
       disabled: 'Disable',
@@ -63,8 +63,8 @@ const TextAreaDemo = () => {
   const [value, setValue] = useState(translated.controlled)
 
   const customTheme = {
-    nutuiTextareaTextCurrorColor: `var(--nutui-brand-color)`,
-    nutuiTextareaLimitColor: `var(--nutui-brand-color)`,
+    nutuiTextareaTextCurrorColor: `red`,
+    nutuiTextareaLimitColor: `red`,
   }
 
   return (

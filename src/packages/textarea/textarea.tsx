@@ -14,7 +14,7 @@ export interface TextAreaProps extends BasicComponent {
   readOnly: boolean
   disabled: boolean
   autoSize: boolean
-  onChange: (value: any) => void
+  onChange: (value: string) => void
   onBlur: (event: Event) => void
   onFocus: (event: Event) => void
 }

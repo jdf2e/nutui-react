@@ -75,7 +75,7 @@ export default App
 ```
 :::
 
-### 高度自动
+### 自定义行数，设置自动高度
 
 :::demo
 
@@ -90,6 +90,30 @@ const App = () => {
 };
 export default App
 ```
+:::
+
+### 自定义字数统计样式
+
+:::demo
+
+```tsx
+import React from "react";
+import { ConfigProvider, TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+  const customTheme = {
+    nutuiTextareaTextCurrorColor: `red`,
+    nutuiTextareaLimitColor: `red`,
+  }
+  return (
+    <ConfigProvider theme={customTheme}>
+      <TextArea showCount maxLength={20} />
+    </ConfigProvider>
+  )
+};
+export default App
+```
+
 :::
 
 ### 只读、禁用
@@ -138,7 +162,7 @@ export default App
 
 ### Props
 
-| 参数         | 说明                                              | 类型           | 默认值         |
+| 属性         | 说明                                              | 类型           | 默认值         |
 | ------------ | ------------------------------------------------- | -------------- | -------------- |
 | value        | 输入框内容，受控 | `string` | - |
 | defaultValue | 初始默认值，非受控                          | `string`         | -              |
@@ -149,9 +173,9 @@ export default App
 | autoSize     | 高度是否可拉伸                                    | `boolean`        | `false`        |
 | readOnly     | 只读属性                                          | `boolean`        | `false`        |
 | disabled     | 禁用属性                                          | `boolean`        | `false`        |
-| onChange     | 输入内容时触发 | `(val) => void`      | - |
-| onFocus      | 聚焦时触发     | `(val) => void`      | - |
-| onBlur       | 失焦时触发     | `(val) => void`      | - |
+| onChange     | 输入内容时触发 | `(value) => void`      | - |
+| onFocus      | 聚焦时触发     | `(event) => void`      | - |
+| onBlur       | 失焦时触发     | `(event) => void`      | - |
 
 ## 主题定制
 

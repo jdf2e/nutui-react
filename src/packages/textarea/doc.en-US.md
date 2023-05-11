@@ -75,7 +75,7 @@ export default App
 ```
 :::
 
-### Height customization, stretching
+### Custom rows, auto height
 
 :::demo
 
@@ -90,6 +90,30 @@ const App = () => {
 };
 export default App
 ```
+:::
+
+### Custom limit color
+
+:::demo
+
+```tsx
+import React from "react";
+import { ConfigProvider, TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+  const customTheme = {
+    nutuiTextareaTextCurrorColor: `red`,
+    nutuiTextareaLimitColor: `red`,
+  }
+  return (
+    <ConfigProvider theme={customTheme}>
+      <TextArea showCount maxLength={20} />
+    </ConfigProvider>
+  )
+};
+export default App
+```
+
 :::
 
 ### read-only，disabled
@@ -149,9 +173,9 @@ export default App
 | autoSize     | whether to adapt the content height.          | `boolean`        | `false`    |`left`         |
 | readOnly     | read only attribute          | `boolean`        | `false`        |
 | disabled     | disable attribute           | `boolean`        | `false`        |
-| onChange | Triggered when the value of the input box changes | `(val) => void`      | - |
-| onFocus  | Triggered when focusing     | `(val) => void`      | - |
-| onBlur   | Triggered when out of focus     | `(val) => void`      | - |
+| onChange | Triggered when the value of the input box changes | `(value) => void`      | - |
+| onFocus  | Triggered when focusing     | `(event) => void`      | - |
+| onBlur   | Triggered when out of focus     | `(event) => void`      | - |
 
 ## Theming
 
