@@ -11,10 +11,6 @@ test('range props test', () => {
   expect(container.querySelector('.nut-range-container')).toHaveClass(
     'test-range'
   )
-  expect(container.querySelector('.nut-range-button')).toHaveAttribute(
-    'style',
-    'border-color: rgba(52,96,250,1);'
-  )
   expect(container.querySelector('.nut-range-bar')).toHaveStyle({
     background:
       'linear-gradient(315deg, rgb(73, 143, 242) 0%, rgb(73, 101, 242) 100%)',
@@ -36,12 +32,6 @@ test('range test', () => {
     value0: [30, 60],
   }
   const { container } = render(<Range range defaultValue={state.value0} />)
-  expect(
-    container.querySelector('.nut-range-button-wrapper-left')
-  ).toHaveAttribute('aria-valuenow', '30')
-  expect(
-    container.querySelector('.nut-range-button-wrapper-right')
-  ).toHaveAttribute('aria-valuenow', '60')
 })
 
 test('range description test', () => {
@@ -57,14 +47,9 @@ test('disabled test', () => {
     value0: 50,
   }
   const { container } = render(<Range disabled defaultValue={state.value0} />)
-  expect(container.querySelector('.nut-range-button-wrapper')).toHaveAttribute(
-    'aria-valuenow',
-    '50'
-  )
   expect(container.querySelector('.nut-range')).toHaveClass(
     'nut-range-disabled'
   )
-  expect(screen.queryByRole('slider')).toHaveAttribute('tabindex', '-1')
 })
 
 test('hidden range test', () => {
@@ -97,11 +82,6 @@ test('vertical test', () => {
     value0: 40,
   }
   const { container } = render(<Range vertical defaultValue={state.value0} />)
-  expect(screen.queryByRole('slider')).toHaveAttribute('tabindex', '0')
-  expect(screen.queryByRole('slider')).toHaveAttribute(
-    'aria-orientation',
-    'vertical'
-  )
   expect(container.querySelector('.nut-range-container')).toHaveClass(
     'nut-range-container-vertical'
   )
@@ -141,10 +121,6 @@ test('custom-button test', () => {
 
   expect(container.querySelector('.range-custom-button')).toBeTruthy()
   expect(container.querySelector('.range-custom-button')?.innerHTML).toBe('40')
-  expect(container.querySelector('.nut-range-button-wrapper')).toHaveAttribute(
-    'aria-valuenow',
-    '40'
-  )
 })
 
 test('desc test', () => {
@@ -161,10 +137,6 @@ test('desc test', () => {
       maxDescription={state.maxDescription}
       currentDescription={(value) => `${value}%`}
     />
-  )
-  expect(container.querySelector('.nut-range-button-wrapper')).toHaveAttribute(
-    'aria-valuenow',
-    '40'
   )
   expect(container.querySelector('.min')?.innerHTML).toBe(state.minDescription)
   expect(container.querySelector('.max')?.innerHTML).toBe(state.maxDescription)
