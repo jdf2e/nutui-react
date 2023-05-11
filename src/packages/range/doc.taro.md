@@ -312,10 +312,11 @@ import React, {useState} from "react";
 import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
-  const cellStyle = {
-    padding: '40px 18px',
+  const verticalStyle = {
+    height: '180px',
+    padding: '10px',
   }
-  return <Cell style={cellStyle}>
+  return <Cell style={verticalStyle}>
     <div style={{ width: '150px', height: '100%' }}>
       <Range
         defaultValue={20}
