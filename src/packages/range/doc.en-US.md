@@ -398,8 +398,8 @@ export default App;
 
 | Property         | Description            |  Type            | Default                   |
 | ------------- | ------------------ | ---------------- | ------------------------ |
-| defaultValue | default percentage, uncontrolled | `number \| [number, number]` | `0` |
-| value | current percentage, controlled     | `number \| [number, number]` | `0` |
+| defaultValue | default percentage, uncontrolled | `number \| number[]` | `0` |
+| value | current percentage, controlled     | `number \| number[]` | `0` |
 | range | Whether to enable dual slider mode | `boolean` | `false` |
 | max | maximum | `number` | `100` |
 | min | minimum | `number` | `0` |

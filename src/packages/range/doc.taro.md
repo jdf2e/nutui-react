@@ -403,8 +403,8 @@ export default App;
 
 | 参数          | 说明                 | 类型             | 默认值                   |
 | ------------- | ------------------- | ---------------- | ------------------------ |
-| defaultValue | 默认进度百分比，非受控 | `number \| [number, number]` | `0` |
-| value | 当前进度百分比，受控 | `number \| [number, number]` | `0` |
+| defaultValue | 默认进度百分比，非受控 | `number \| number[]` | `0` |
+| value | 当前进度百分比，受控 | `number \| number[]` | `0` |
 | range | 是否开启双滑块模式 | `boolean` | `false` |
 | max | 最大值 | `number`   | `100` |
 | min | 最小值 | `number`   | `0` |
