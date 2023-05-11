@@ -7,10 +7,11 @@ import React, {
   ReactNode,
 } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { useTouch } from '../../utils/use-touch'
 import { getRectByTaro } from '../../utils/use-client-rect'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
 type RangeValue = number | number[]
 export interface RangeProps extends BasicComponent {
@@ -249,9 +250,9 @@ export const Range: FunctionComponent<
     touch.start(event)
     setEaxctValue(current)
     if (isRange(current)) {
-      setStartValue(current.map(format))
+      setStartValue((current as number[]).map(format))
     } else {
-      setStartValue(format(current))
+      setStartValue(format(current as number))
     }
 
     setDragStatus('start')
@@ -331,13 +332,7 @@ export const Range: FunctionComponent<
       {minDescription !== null && (
         <div className="min">{minDescription || min}</div>
       )}
-      <div
-        ref={root}
-        className={classes}
-        onClick={(e) => {
-          click(e)
-        }}
-      >
+      <div ref={root} className={classes} onClick={(e) => click(e)}>
         {marksList.length > 0 && (
           <div className="nut-range-mark">
             {marksList.map((marks: any) => {
@@ -364,17 +359,11 @@ export const Range: FunctionComponent<
             [0, 1].map((item, index) => {
               return (
                 <div
-                  role="slider"
                   key={index}
                   className={`${
                     index === 0 ? 'nut-range-button-wrapper-left' : ''
                   }
                   ${index === 1 ? 'nut-range-button-wrapper-right' : ''}`}
-                  tabIndex={disabled ? -1 : 0}
-                  aria-valuemin={+min}
-                  aria-valuenow={curValue(index)}
-                  aria-valuemax={+max}
-                  aria-orientation={vertical ? 'vertical' : 'horizontal'}
                   onTouchStart={(e: any) => {
                     if (typeof index === 'number') {
                       // 实时更新当前拖动的按钮索引
@@ -382,50 +371,27 @@ export const Range: FunctionComponent<
                     }
                     onTouchStart(e)
                   }}
-                  onTouchMove={(e: any) => {
-                    onTouchMove(e)
-                  }}
-                  onTouchEnd={(e: any) => {
-                    onTouchEnd(e)
-                  }}
-                  onTouchCancel={(e: any) => {
-                    onTouchEnd(e)
-                  }}
-                  onClick={(e) => {
-                    e.stopPropagation()
-                  }}
+                  onTouchMove={(e: any) => onTouchMove(e)}
+                  onTouchEnd={(e: any) => onTouchEnd(e)}
+                  onTouchCancel={(e: any) => onTouchEnd(e)}
+                  onClick={(e) => e.stopPropagation()}
                 >
                   {renderButton(index)}
                 </div>
               )
             })
           ) : (
-            <div
-              role="slider"
+            <View
+              catchMove
               className="nut-range-button-wrapper"
-              tabIndex={disabled ? -1 : 0}
-              aria-valuemin={+min}
-              aria-valuenow={curValue()}
-              aria-valuemax={+max}
-              aria-orientation={vertical ? 'vertical' : 'horizontal'}
-              onTouchStart={(e) => {
-                onTouchStart(e)
-              }}
-              onTouchMove={(e: any) => {
-                onTouchMove(e)
-              }}
-              onTouchEnd={(e: any) => {
-                onTouchEnd(e)
-              }}
-              onTouchCancel={(e: any) => {
-                onTouchEnd(e)
-              }}
-              onClick={(e) => {
-                e.stopPropagation()
-              }}
+              onTouchStart={(e) => onTouchStart(e)}
+              onTouchMove={(e: any) => onTouchMove(e)}
+              onTouchEnd={(e: any) => onTouchEnd(e)}
+              onTouchCancel={(e: any) => onTouchEnd(e)}
+              onClick={(e) => e.stopPropagation()}
             >
               {renderButton()}
-            </div>
+            </View>
           )}
         </div>
       </div>

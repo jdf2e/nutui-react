@@ -179,7 +179,8 @@ export const Audio: FunctionComponent<
           <div className="time">{currentDuration}</div>
           <div className={`${classPrefix}__progress-bar-wrapper`}>
             <Range
-              modelValue={percent}
+              value={percent}
+              onChange={(val: any) => setPercent(val)}
               currentDescription={null}
               maxDescription={null}
               minDescription={null}
