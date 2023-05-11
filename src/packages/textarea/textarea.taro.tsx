@@ -1,12 +1,14 @@
 import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
-import { Textarea } from '@tarojs/components'
+import { Textarea, TextareaProps } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 
-export interface TextAreaProps extends BasicComponent {
+export interface TextAreaProps
+  extends Omit<TextareaProps, 'showCount' | 'onFocus' | 'onBlur'>,
+    Omit<BasicComponent, 'style'> {
   value: string
   defaultValue: string
   showCount: boolean
@@ -30,13 +32,7 @@ const defaultProps = {
   disabled: false,
   autoSize: false,
 } as TextAreaProps
-export const TextArea: FunctionComponent<
-  Partial<TextAreaProps> &
-    Omit<
-      React.HTMLAttributes<HTMLTextAreaElement>,
-      'onChange' | 'onBlur' | 'onFocus'
-    >
-> = (props) => {
+export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
   const { locale } = useConfig()
   const {
     className,
@@ -103,6 +99,7 @@ export const TextArea: FunctionComponent<
     >
       <Textarea
         nativeProps={{
+          style,
           readOnly,
           rows,
           onCompositionStart: () => {
@@ -113,7 +110,7 @@ export const TextArea: FunctionComponent<
           },
         }}
         className={`${classPrefix}__textarea`}
-        style={style}
+        style={Taro.getEnv() === 'WEB' ? undefined : style}
         disabled={Taro.getEnv() === 'WEB' ? disabled : disabled || readOnly}
         value={inputValue}
         // @ts-ignore
