@@ -14,9 +14,7 @@ export interface NotificationProps {
   title: string
   maskClickable: boolean
   size: string | number
-  cover: boolean
-  coverColor: string
-  closeOnClickOverlay: boolean
+  closeOnOverlayClick: boolean
   maskClassName?: string
   maskStyle?: React.CSSProperties
   contentClassName?: string
@@ -60,8 +58,8 @@ export default class Notification extends React.PureComponent<NotificationProps>
   }
 
   clickCover() {
-    const { closeOnClickOverlay } = this.props
-    if (closeOnClickOverlay) {
+    const { closeOnOverlayClick } = this.props
+    if (closeOnOverlayClick) {
       this.close()
     }
   }
@@ -106,7 +104,6 @@ export default class Notification extends React.PureComponent<NotificationProps>
       content,
       position,
       size,
-      cover,
       maskClickable,
       maskStyle,
       maskClassName,
@@ -117,7 +114,6 @@ export default class Notification extends React.PureComponent<NotificationProps>
 
     const classes = classNames({
       'nut-toast-has-icon': icon,
-      'nut-toast-cover': cover,
       [`nut-toast-${size}`]: true,
     })
     return (
@@ -125,7 +121,7 @@ export default class Notification extends React.PureComponent<NotificationProps>
         <Overlay
           visible={true}
           style={{
-            background: 'rgba(0,0,0,0)',
+            '--nutui-overlay-bg-color': 'rgba(0,0,0,0)',
             pointerEvents: maskClickable ? 'none' : 'auto',
             ...maskStyle,
           }}
