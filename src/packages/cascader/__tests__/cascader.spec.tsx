@@ -292,9 +292,11 @@ describe('Cascader', () => {
       <Cascader
         value={['福建', '福州', '鼓楼区']}
         options={mockKeyConfigOptions}
-        valueKey="name"
-        textKey="name"
-        childrenKey="items"
+        optionKey={{
+          valueKey: 'name',
+          textKey: 'name',
+          childrenKey: 'items',
+        }}
       />
     )
     expect(container).toMatchSnapshot()
