@@ -3,15 +3,16 @@ import classNames from 'classnames'
 import bem from '@/utils/bem'
 import { render, unmount } from '@/utils/render'
 import Overlay from '@/packages/overlay/index'
+import Icon from '@/packages/icon/index'
 
 export interface NotificationProps {
   id?: string
   style?: React.CSSProperties
-  icon: React.ReactNode
-  msg: string | React.ReactNode
+  icon: 'success' | 'fail' | 'loading' | 'warn' | React.ReactNode
+  content: string | React.ReactNode
   duration: number
   position?: 'top' | 'center' | 'bottom'
-  type: string
+  //   type: string
   title: string
   className: string
   maskClickable: boolean
@@ -64,6 +65,30 @@ export default class Notification extends React.PureComponent<NotificationProps>
     }
   }
 
+  renderIcon() {
+    const { icon } = this.props
+    if (typeof icon === 'string') {
+      const toastBem = bem('toast')
+      let iconNode = null
+      switch (icon) {
+        case 'success':
+          iconNode = <Icon name="success" />
+          break
+        case 'loading':
+          iconNode = <Icon name="loading" />
+          break
+        case 'fail':
+          iconNode = <Icon name="failure" />
+          break
+        case 'warn':
+          iconNode = <Icon name="issue" />
+          break
+      }
+      return <p className={toastBem('icon-wrapper')}>{iconNode}</p>
+    }
+    return icon
+  }
+
   componentDidMount() {
     this.startCloseTimer()
   }
@@ -78,13 +103,13 @@ export default class Notification extends React.PureComponent<NotificationProps>
       style,
       icon,
       title,
-      msg,
+      content,
       position,
       coverColor,
       size,
       className,
       cover,
-      type,
+      //   type,
       maskClickable,
     } = this.props
     const toastBem = bem('toast')
@@ -92,7 +117,6 @@ export default class Notification extends React.PureComponent<NotificationProps>
     const classes = classNames({
       'nut-toast-has-icon': icon,
       'nut-toast-cover': cover,
-      'nut-toast-loading': type === 'loading',
       [`nut-toast-${size}`]: true,
     })
     return (
@@ -116,9 +140,10 @@ export default class Notification extends React.PureComponent<NotificationProps>
             }}
           >
             <div className={`${toastBem('inner')} nut-toast-${position}`}>
-              {icon ? <p className={toastBem('icon-wrapper')}>{icon}</p> : null}
+              {/* {icon ? <p className={toastBem('icon-wrapper')}>{icon}</p> : null} */}
+              {this.renderIcon()}
               {title ? <div className="nut-toast-title">{title}</div> : null}
-              <span className={toastBem('text')}>{msg}</span>
+              <span className={toastBem('text')}>{content}</span>
             </div>
           </div>
         </Overlay>

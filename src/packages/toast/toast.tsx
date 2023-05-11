@@ -5,29 +5,30 @@ import { Loading } from '@nutui/icons-react'
 let messageInstance: any = null
 export interface ToastProps {
   id?: string
-  msg: string
+  // msg: string
   style?: React.CSSProperties
-  duration: number
+  duration?: number
   position?: 'top' | 'bottom' | 'center'
-  type: string
-  title: string
+  //   type: string
+  title?: string
   className?: string
   maskClickable?: boolean
-  size: string | number
-  icon: string | null
-  onClose: () => void
-  cover: boolean
-  coverColor: string
-  closeOnClickOverlay: boolean
+  size?: string | number
+  icon?: 'success' | 'fail' | 'loading' | 'warn' | React.ReactNode
+  content?: React.ReactNode
+  onClose?: () => void
+  cover?: boolean
+  coverColor?: string
+  closeOnClickOverlay?: boolean
 }
 
 const options: ToastProps = {
-  msg: '',
+  // msg: '',
   id: '',
   style: {},
   duration: 1.5, // 时长,duration为0则一直展示
   position: 'center',
-  type: 'text',
+  //   type: 'text',
   title: '',
   className: '', // 自定义样式名
   maskClickable: true, // 是否允许背景点击
@@ -71,7 +72,15 @@ const errorMsg = (msg: any) => {
   }
 }
 
+function show(option: ToastProps) {
+  errorMsg(option.content)
+  return notice({
+    ...option,
+  })
+}
+
 export default {
+  show,
   text(msg: string | React.ReactNode, option = {}) {
     errorMsg(msg)
     return notice({ msg, type: 'text', ...option })
