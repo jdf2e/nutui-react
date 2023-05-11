@@ -49,7 +49,9 @@ const NavBarDemo = () => {
       e51e4582: 'Browsing history',
     },
   })
-  const [tab1value, setTab1value] = useState('0')
+
+  const [tab1value, setTab1value] = useState<string | number>('0')
+
   return (
     <>
       <Header />
@@ -133,16 +135,21 @@ const NavBarDemo = () => {
           }
           onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
         >
-          <Tabs
-            value={tab1value}
-            onChange={({ paneKey }) => {
-              setTab1value(paneKey)
-            }}
-          >
-            <TabPane title="Tab 1"> Tab 1 </TabPane>
-            <TabPane title="Tab 2"> Tab 2 </TabPane>
-            <TabPane title="Tab 3"> Tab 3 </TabPane>
-          </Tabs>
+          <div slot="content">
+            <Tabs
+              value={tab1value}
+              onChange={(paneKey) => {
+                setTab1value(paneKey)
+              }}
+            >
+              <TabPane title="Tab 1"> Tab 1 </TabPane>
+              <TabPane title="Tab 2"> Tab 2 </TabPane>
+              <TabPane title="Tab 3"> Tab 3 </TabPane>
+            </Tabs>
+          </div>
+          <i slot="right">
+            <MoreX />
+          </i>
         </NavBar>
       </div>
     </>

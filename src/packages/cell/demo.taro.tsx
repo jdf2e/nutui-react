@@ -17,6 +17,8 @@ interface T {
   title4: string
   title5: string
   title6: string
+  title7: string
+  description1: string
   link: string
   urlJump: string
   content: string
@@ -37,6 +39,8 @@ const CellDemo = () => {
       title4: '链接 | 分组用法',
       title5: '垂直居中',
       title6: '自定义标题区域',
+      title7: '分组用法',
+      description1: '单元格之间不显示下边线',
       link: '链接',
       urlJump: 'URL 跳转',
       content: '自定义内容',
@@ -54,6 +58,8 @@ const CellDemo = () => {
       title4: '鏈接 | 分組用法',
       title5: '垂直居中',
       title6: '自定義標題區域',
+      title7: '分組用法',
+      description1: '單元格之間不顯示下邊線',
       link: '鏈接',
       urlJump: 'URL 跳轉',
       content: '自定義內容',
@@ -71,6 +77,8 @@ const CellDemo = () => {
       title4: 'Link | CellGroup Usage',
       title5: 'Vertical Center',
       title6: 'Customize the title area',
+      title7: 'Grouping usage',
+      description1: 'The bottom edge is not displayed between cells',
       link: 'Link',
       urlJump: 'URL Jump',
       content: 'Customize Content',
@@ -134,8 +142,15 @@ const CellDemo = () => {
           extra={translated.extra}
         />
         <CellGroup title={translated.customRight}>
-          <Cell title="Switch" extra={<Switch checked />} />
+          <Cell title="Switch" extra={<Switch defaultChecked />} />
         </CellGroup>
+        <h2>{translated.title5}</h2>
+        <Cell
+          align="center"
+          title={translated.title}
+          description={translated.title1}
+          extra={translated.extra}
+        />
         <CellGroup
           title={translated.title4}
           description={translated.description}
@@ -161,13 +176,14 @@ const CellDemo = () => {
             ) => onJumpclick(event, '/pages/index/index')}
           />
         </CellGroup>
-        <h2>{translated.title5}</h2>
-        <Cell
-          align="center"
-          title={translated.title}
-          description={translated.title1}
-          extra={translated.extra}
-        />
+        <CellGroup
+          divider={false}
+          title={translated.title7}
+          description={translated.description1}
+        >
+          <Cell title={translated.title} extra={translated.extra} />
+          <Cell title={translated.title} extra={translated.extra} />
+        </CellGroup>
       </div>
     </>
   )

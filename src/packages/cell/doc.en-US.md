@@ -106,62 +106,8 @@ import { CellGroup, Cell, Switch } from '@nutui/nutui-react'
 const App = () => {
   return (
     <CellGroup title="Customize the right arrow area">
-      <Cell title="Switch" extra={<Switch checked />} />
+      <Cell title="Switch" extra={<Switch defaultChecked />} />
     </CellGroup>
-  )
-}
-export default App
-```
-
-:::
-
-### Link | CellGroup Usage
-
-:::demo
-
-```tsx
-import React from 'react'
-import { CellGroup, Cell } from '@nutui/nutui-react'
-import { Right } from '@nutui/icons-react'
-
-const App = () => {
-  const onJumpclick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    url: string
-  ) => {
-    const replace = false
-    if (url) {
-      replace ? window.location.replace(url) : (window.location.href = url)
-    }
-  }
-  return (
-    <>
-      <CellGroup
-        title="Link | CellGroup Usage"
-        extra="Usage nut-cell-group support title extra"
-      >
-        <Cell 
-        lassName="nutui-cell--clickable"
-        title="Link Usage"
-        align="center"
-        extra={<Right />}
-        />
-        <Cell
-          className="nutui-cell--clickable"
-          title="URL Jump"
-          extra={
-            <>
-            <span style={{ marginRight: '5px' }}>https://jd.com</span>
-            <Right />
-            </>
-        }
-        align="center"
-        onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => onJumpclick(event, 'https://jd.com')}
-        />
-      </CellGroup>
-    </>
   )
 }
 export default App
@@ -189,6 +135,85 @@ export default App
 
 :::
 
+### Link | CellGroup Usage
+
+:::demo
+
+```tsx
+import React from 'react'
+import { CellGroup, Cell } from '@nutui/nutui-react'
+import { Right } from '@nutui/icons-react'
+
+const App = () => {
+  const onJumpclick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    url: string
+  ) => {
+    const replace = false
+    if (url) {
+      replace ? window.location.replace(url) : (window.location.href = url)
+    }
+  }
+  return (
+      <CellGroup
+        title="Link | CellGroup Usage"
+        extra="Usage nut-cell-group support title extra"
+      >
+        <Cell 
+        lassName="nutui-cell--clickable"
+        title="Link Usage"
+        align="center"
+        extra={<Right />}
+        />
+        <Cell
+          className="nutui-cell--clickable"
+          title="URL Jump"
+          extra={
+            <>
+            <span style={{ marginRight: '5px' }}>https://jd.com</span>
+            <Right />
+            </>
+        }
+        align="center"
+        onClick={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+        ) => onJumpclick(event, 'https://jd.com')}
+        />
+      </CellGroup>
+  )
+}
+export default App
+```
+
+:::
+
+### Grouping usage
+
+The 'divider' property allows you to keep the lower edge from being displayed between cells.
+
+:::demo
+
+```tsx
+import  React from "react"
+import { CellGroup, Cell } from '@nutui/nutui-react'
+
+const App = () => {
+  return (
+     <CellGroup
+        divider={false}
+        title="Grouping usage"
+        description="The bottom edge is not displayed between cells"
+    >
+        <Cell title="Title" extra="extra" />
+        <Cell title="Title" extra="extra" />
+    </CellGroup>
+  );
+};
+export default App;
+```
+
+:::
+
 ## API
 
 
@@ -198,6 +223,7 @@ export default App
 |-------|----------|--------|--------|
 | title | Title | ReactNode | -      |
 | description  | ReactNode | string | -      |
+| divider | Whether there are dividers between cells | boolean | `true`    |
 
 ### Cell Prop
 

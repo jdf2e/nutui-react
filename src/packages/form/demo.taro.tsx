@@ -235,7 +235,7 @@ const FormDemo = () => {
           </Form.Item>
           <Form.Item label={translated.checkbox} name="checkbox">
             <Checkbox
-              textPosition="right"
+              labelPosition="right"
               label={translated.checkbox}
               checked={false}
             />

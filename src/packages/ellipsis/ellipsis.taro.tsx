@@ -1,7 +1,8 @@
 import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
 import { useReady, nextTick, createSelectorQuery } from '@tarojs/taro'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { getRectByTaro } from '@/utils/use-client-rect'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import classNames from 'classnames'
 
 export type Direction = 'start' | 'end' | 'middle'
 
@@ -10,9 +11,9 @@ type EllipsisedValue = {
   tailing?: string | undefined
 }
 
-export interface EllipsisProps {
+export interface EllipsisProps extends BasicComponent {
   content: string
-  direction: string
+  direction: Direction
   rows: number | string
   expandText: string
   collapseText: string
@@ -23,6 +24,7 @@ export interface EllipsisProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   content: '',
   direction: 'end',
   rows: 1,
@@ -31,24 +33,27 @@ const defaultProps = {
   symbol: '...',
   lineHeight: '20',
 } as EllipsisProps
+
+const classPrefix = `nut-ellipsis`
 export const Ellipsis: FunctionComponent<
   Partial<EllipsisProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onChange'>
 > = (props) => {
-  const { locale } = useConfig()
   const {
     children,
     content,
     direction,
     rows,
+    className,
     expandText,
     collapseText,
     symbol,
     lineHeight,
     onClick,
     onChange,
+    ...rest
   } = { ...defaultProps, ...props }
-  let maxHeight: any = 0 // 当行的最大高度
+  let maxHeight = 0 // 当行的最大高度
   const [exceeded, setExceeded] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const ellipsis = useRef<EllipsisedValue>({
@@ -69,6 +74,8 @@ export const Ellipsis: FunctionComponent<
   const digitReg = /^[0-9]+$/ // 数字
   const letterUpperReg = /^[A-Z]+$/ // 字母
   const letterLowerReg = /^[a-z]+$/ // 字母
+
+  const classes = classNames(classPrefix, className)
 
   const init = () => {
     setExceeded(false)
@@ -291,10 +298,11 @@ export const Ellipsis: FunctionComponent<
   return (
     <>
       <div
-        className="nut-ellipsis"
+        className={classes}
         onClick={handleClick}
         ref={root}
         id={`root${refRandomId}`}
+        {...rest}
       >
         <div>
           {!exceeded ? (

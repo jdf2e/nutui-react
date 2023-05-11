@@ -1,3 +1,53 @@
+# v2.0.0-alpha.5
+`2023-05-10`
+
+* 🛠 refactor: checkbox (#974) @oasis-cloud
+* 🛠 refactor: circleprogress-v2.0 (#949) @junjun666
+* 🛠 refactor: ellipsis-v2.0 (#963) @junjun666
+* 🛠 refactor: empty-v2.0 (#977) @junjun666
+* 🛠 refactor: swipe (#958) @justExplore
+* 🛠 refactor:avatar-v2.0 (#970) @junjun666
+* 📖 docs: 增加 icon 的复制功能 (#973) @oasis-cloud
+* :sparkles: feat: cellgroup组件增加单元格之间是否展示分割线props (#961) @拧巴的猫
+* :bug: fix: tabbar 通过 Tabbar.Item 方式使用未加载 item 的样式 (#972) @oasis-cloud
+* :bug: fix: 修复elevator小程序快速滑动后闪动问题 (#984) @拧巴的猫
+
+
+# v2.0.0-alpha.4
+`2023-05-05`
+
+* 🛠 refactor: circleprogress-v2.0 (#949) @junjun666
+* 🛠 refactor: input (#962) @oasis-cloud
+* 🛠 refactor: Tabbar (#935) @Eiinu
+* :bug: fix: badge 组件的默认样式中，去掉 margin-right (#967) @xiaoyatong
+* 🎨 style: fix endLine display error (#964) @HaiTao
+
+# v2.0.0-alpha.3
+`2023-04-28`
+
+* :bug: fix: overlay 属性 onClick 暴露、lockscroll 相关demo 修订 (#959) @xiaoyatong
+* :bug: fix: 修改taro增加主题编译 (#950) @junjun666
+* 🛠 refactor: dialog (#945) @xiaoyatong
+* 🛠 refactor: switch (#941) @拧巴的猫
+* 🛠 refactor: tabs (#939) @oasis-cloud
+* 🔨 chore: website 2.0 (#955) @oasis-cloud
+* 📖 docs: button 文档表格优化 (#956) @oasis-cloud
+
+
+# v2.0.0-alpha.2
+`2023-04-26`
+
+* 🛠 refactor: navbar (#890) @拧巴的猫
+* 🛠 refactor: animate (#940) @junjun666
+* 🛠 refactor: badge (#936) @xiaoyatong
+* 🛠 refactor: drag (#937) @拧巴的猫
+* 🛠 refactor: elevator (#927) @拧巴的猫
+* 🛠 refactor: menu (#923) @oasis-cloud
+* 🛠 refactor: progress (#943) @Eiinu
+* 🔨 chore: sync pnpm-lock @oasis-cloud
+* :bug: fix: 修改taro增加主题编译 (#950) @junjun666
+
+
 # v2.0.0-alpha.1
 `2023-04-21`
 

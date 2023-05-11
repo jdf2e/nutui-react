@@ -76,7 +76,13 @@ function convertMdTables(inputFile, outputFile) {
       .map(() => ' --- ')
       .join('|')}|\n`
     const bodyRows = correctTable
-      .map((row) => `| ${Object.values(row).join(' | ')} |`)
+      .map(
+        (row) =>
+          `| ${Object.values(row)
+            .map((val) => val.replace('|', '\\|'))
+            .join(' | ')
+            .replace('&gt;', '>')} |`
+      )
       .join('\n')
 
     return markdownIt.render(`${headerRow}${bodyRows}`)
@@ -92,7 +98,7 @@ function convertMdTables(inputFile, outputFile) {
   fs.writeFileSync(outputFile, md, 'utf8')
 }
 
-const fileType = ['doc.md', 'doc.en-US.md', 'doc.zh-TW.md']
+const fileType = ['doc.md', 'doc.en-US.md', 'doc.zh-TW.md', 'doc.taro.md']
 const component = process.argv[2]
 const basePath = path.join(
   __dirname,

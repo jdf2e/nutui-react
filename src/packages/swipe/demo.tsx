@@ -151,7 +151,7 @@ const SwipeDemo = () => {
       title: translated.tips,
       content:
         postion === 'left' ? translated.chooseTips : translated.deleteTips,
-      onOk: () => {
+      onConfirm: () => {
         refDom.current && refDom.current.close()
       },
     })
