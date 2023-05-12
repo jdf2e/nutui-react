@@ -1,3 +1,9 @@
+# v2.0.0-alpha.8
+`2023-05-12`
+* :sparkles:feat: cascader支持受控 (#1000) @xiaoyatong
+* :bug: fix: tabs children 变更后需要展示新的 title (#999) @oasis-cloud
+* 🛠 refactor: Range (#991) @Eiinu
+
 # v2.0.0-alpha.7
 `2023-05-12`
 * :bug: fix: tabs children 变化需要更新选中状态 @oasis-cloud
