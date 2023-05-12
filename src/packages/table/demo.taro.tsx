@@ -305,14 +305,14 @@ const TableDemo = () => {
         <Table
           columns={columns5}
           data={data5}
-          onSorter={handleSorter}
+          onSort={handleSorter}
           style={{ background: '#fff' }}
         />
         <h2>{translated.sorterIcon}</h2>
         <Table
           columns={columns5}
           data={data5}
-          onSorter={handleSorter}
+          onSort={handleSorter}
           style={{ background: '#fff' }}
           sorterIcon={<TriangleDown size="12px" />}
         />

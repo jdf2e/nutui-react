@@ -134,6 +134,15 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
 
   useEffect(() => {
     titles.current = getTitles()
+    let current: string | number = ''
+    titles.current.forEach((title) => {
+      if (title.value === value) {
+        current = value
+      }
+    })
+    if (current !== '') {
+      setValue(current)
+    }
   }, [children])
 
   const classes = classNames(

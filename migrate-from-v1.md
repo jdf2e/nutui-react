@@ -142,7 +142,7 @@
 #### Calendar
 #### Cascader
 - 新增 `defaultValue`，其中 `defaultValue` 用于非受控，原 `value` 用于受控。两者的类型都改为 `(number | string | undefined)[]`
--  `checkedIcon` 重命名为 `activeIcon`
+- `checkedIcon` 重命名为 `activeIcon`
 - `poppable` 重命名为 `popup`
 - `lazyLoad` 重命名为 `onLoad`，当启动懒加载 `lazy` 时，动态加载数据
 - `convertConfig` 重命名为 `format`，配置转换规则
@@ -163,6 +163,7 @@
 - toggleAll 重命名为 toggle
 - toggleReverse 重命名为 reverse
 #### DatePicker
+- 因为依赖组件`Picker`的变更，方法 `onConfirmDatePicker`、`onChange`的参数进行了调整，从`(selectedValue, selectedOptions)` 改为 `(selectedOptions, selectedValue)`。
 #### Form
 #### Input
 #### InputNumber
@@ -174,6 +175,13 @@
 - 新增taro的`formatter`属性开发
 #### NumberKeyboard
 #### Picker
+- `isVisible` 重命名为 `visible`
+- `listData` 重命名为 `options`
+- `defaultValueData` 重命名为 `defaultValue`
+- 增加受控 `value`
+- `swipeDuration` 重命名为 `duration`
+- `onCloseUpdate` 重命名为 `afterClose`
+- 方法 `onConfirm`、`onClose`、`afterClose`、`onChange`的参数进行了调整，从`(selectedValue, selectedOptions)` 改为 `(selectedOptions, selectedValue)`。
 #### Radio
 #### Range
 #### Rate
@@ -185,6 +193,12 @@
 #### SearchBar
 #### ShortPassword
 #### TextArea
+- maxlength 重命名为 maxLength
+- readonly 重命名为 readOnly
+- limitShow 重命名为 showCount
+- autosize 重命名为 autoSize
+- 移除 textAlign，可通过 style 传入
+- defaultValue 改为非受控，增加受控值 value
 #### Uploader
 
 - `maximize` 重命名为 `maxFileSize`
@@ -305,6 +319,8 @@
 #### Steps
 #### Swiper
 #### Table
+- `onSorter` 重命名为 `onSort`
+- 合并 `summary` 与 `noData` 的样式处理
 #### Tag
 #### TrendArrow
 #### Video

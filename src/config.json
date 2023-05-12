@@ -513,7 +513,7 @@
           "author": "Drjingfubo"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Picker",
           "type": "component",
           "cName": "选择器",
@@ -612,7 +612,7 @@
           "author": "dsj"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "TextArea",
           "type": "component",
           "cName": "文本域",
@@ -1024,7 +1024,7 @@
           "author": "liukun"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Table",
           "type": "component",
           "cName": "表格",

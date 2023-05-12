@@ -1,10 +1,10 @@
 #  Table组件
 
-### 介绍
+## 介绍
 
 用于展示基础表格
 
-### 安装
+## 安装
 ```ts
 import { Table } from '@nutui/nutui-react-taro';
 ```
@@ -577,7 +577,7 @@ const App = () => {
   return <Table
           columns={columns5}
           data={data5}
-          onSorter={handleSorter}
+          onSort={handleSorter}
           style={{ background: '#fff' }}
         />;
 };
@@ -646,7 +646,7 @@ const App = () => {
   return <Table
           columns={columns5}
           data={data5}
-          onSorter={handleSorter}
+          onSort={handleSorter}
           style={{ background: '#fff' }}
           sorterIcon={<TriangleDown width="12px" height="12px" />}
         />;
@@ -657,38 +657,31 @@ export default App;
 
 
 
-## API
+## Table
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| bordered         | 是否显示边框 | 	boolean | `true`                |
-| columns         | 表头数据 | 	TableColumnProps[] | `[]`                |
-| data         | 表格数据 | 	Object[] | `[]`                |
-| summary         | 是否显示简介 | 	ReactNode | -                |
-| striped         | 条纹是否明暗交替 | 	boolean | false                |
-| showHeader`v1.4.11`         | 是否显示表头 | 	boolean | `true`                |
-| noData         | 自定义无数据 | 	ReactNode | -                |
+| 属性         | 说明 | 类型   | 默认值           |
+|--------------|-------------|--------|------------------|
+| bordered         | 是否显示边框 | 	`boolean` | `true` |
+| columns         | 表头数据 | 	TableColumnProps[] | `[]` |
+| data         | 表格数据 | 	Object[] | `[]` |
+| summary         | 是否显示简介 | 	`ReactNode` | `-` |
+| striped         | 条纹是否明暗交替 | 	`boolean` | `false` |
+| showHeader        | 是否显示表头 | 	`boolean` | `true` |
+| noData         | 自定义无数据 | 	`ReactNode` | `-` |
+| onSort  | 点击排序按钮触发 | `item: TableColumnProps, data: Array<any>` |
 
 ### TableColumnProps
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| key         | 列的唯一标识 | 	string | -                |
-| title         | 表头标题 | 	string | -                |
-| align         | 列的对齐方式，可选值left,center,right | 	string | `left`                |
-| sorter         | 排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法 | 	boolean \| Function \| string | -                |
-| render         | 自定义渲染列数据，优先级高 | 	Function(record) | -                |
-| sorterIcon`v2.0.0`          | 排序 icon | 	ReactNode | `<DownArrow />`               |
-
-
-
-### Events
-
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| onSorter  | 点击排序按钮触发 | `item: TableColumnProps, data: Array<any>` |
+| 属性         | 说明 | 类型   | 默认值           |
+|--------------|---------------|--------|------------------|
+| key | 列的唯一标识 | 	`string` | `-` |
+| title | 表头标题 | 	`string` | `-` |
+| align | 列的对齐方式，可选值left,center,right | 	`string` | `left` |
+| sorter | 排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法 | 	`boolean \| Function \| string` | `- ` |
+| render | 自定义渲染列数据，优先级高 | 	`Function(record)` | `-` |
+| sorterIcon | 排序 icon | 	`ReactNode` | `<DownArrow />` |
 
 
 ## 主题定制
@@ -697,9 +690,9 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-table-border-color | `#ececec` |
-| --nutui-table-cols-padding | `10px` |
-| --nutui-table-tr-even-bg-color | `$gray4` |
-| --nutui-table-tr-odd-bg-color | `$gray6` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-table-border-color | 表格的边框色值 | `#ececec` |
+| --nutui-table-cols-padding | 表格列的padding值 |`10px` |
+| --nutui-table-tr-even-background-color | 表格偶数行的背景色 |`$gray4` |
+| --nutui-table-tr-odd-background-color |表格奇数行的背景色 | `$gray6` |

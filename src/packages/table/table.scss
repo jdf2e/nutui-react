@@ -1,52 +1,3 @@
-.nut-theme-dark {
-  .nut-table {
-    margin-bottom: 3px;
-
-    &__main {
-      color: $dark1;
-      background-color: $dark5;
-
-      &--striped {
-        .nut-table__main__head {
-          &__tr {
-            background-color: $dark6;
-          }
-        }
-
-        .nut-table__main__body {
-          &__tr:nth-child(odd) {
-            background-color: $dark4;
-          }
-        }
-
-        .nut-table__main__body {
-          &__tr:nth-child(even) {
-            background-color: $dark6;
-          }
-        }
-      }
-    }
-
-    .nut-table__nodata {
-      background-color: $dark6;
-
-      .nut-table__nodata {
-        color: $dark1;
-      }
-    }
-
-    &__summary {
-      color: $dark1;
-      background-color: $dark4;
-    }
-
-    &__nodata {
-      color: $dark1;
-      background-color: $dark4;
-    }
-  }
-}
-
 .nut-table {
   display: flex;
   width: 100%;
@@ -133,13 +84,6 @@
   }
 
   &__summary {
-    display: flex;
-    align-items: center;
-    height: 30px;
-    padding: $table-cols-padding;
-  }
-
-  &__nodata {
     color: $title-color;
     background-color: $background-color3;
     display: flex;
