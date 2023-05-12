@@ -141,6 +141,13 @@
 ### 数据录入
 #### Calendar
 #### Cascader
+- `checkedIcon` 重命名为 `activeIcon`
+- `poppable` 重命名为 `popup`
+- `lazyLoad` 重命名为 `onLoad`，当启动懒加载 `lazy` 时，动态加载数据
+- `convertConfig` 重命名为 `format`，配置转换规则
+- 合并 `textKey` `valueKey` `childrenKey` 三个属性为对象属性 `optionKey`
+- 删除 `tabsColor`， 该属性为设置 `Tabs` 当前选中的 `tab` 的下划线色值，但该值最好与文字部分搭配使用，统一处理 CSS 变量。
+
 #### Checkbox
 - 新增 defaultChecked，用于非受控，checked 用于受控
 - 新增 value，用于 group 模式 

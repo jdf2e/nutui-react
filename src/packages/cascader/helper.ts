@@ -1,4 +1,4 @@
-import { CascaderOption, CascaderConfig, convertConfig } from './types'
+import { CascaderOption, CascaderConfig, format } from './types'
 
 export const formatTree = (
   tree: CascaderOption[],
@@ -11,14 +11,12 @@ export const formatTree = (
       text: textKey = 'text',
       children: childrenKey = 'children',
     } = config
-
     const {
       [valueKey]: value,
       [textKey]: text,
       [childrenKey]: children,
       ...others
     } = node
-
     const newNode: CascaderOption = {
       loading: false,
       ...others,
@@ -28,11 +26,9 @@ export const formatTree = (
       children,
       _parent: parent,
     }
-
     if (newNode.children && newNode.children.length) {
       newNode.children = formatTree(newNode.children, newNode, config)
     }
-
     return newNode
   })
 
@@ -46,7 +42,6 @@ export const eachTree = (
     if (cb(node) === true) {
       break
     }
-
     if (node.children && node.children.length) {
       eachTree(node.children, cb)
     }
@@ -61,30 +56,23 @@ const defaultConvertConfig = {
 }
 export const convertListToOptions = (
   list: CascaderOption[],
-  options: convertConfig
+  options: format
 ): CascaderOption[] => {
   const mergedOptions = {
     ...defaultConvertConfig,
     ...(options || {}),
   }
-
   const { topId, idKey, pidKey, sortKey } = mergedOptions
-
   let result: CascaderOption[] = []
   let map: any = {}
-
   list.forEach((node: any) => {
     node = { ...node }
     const { [idKey]: id, [pidKey]: pid } = node
     const children = (map[pid] = map[pid] || [])
-    // const children = map[pid] || []
-
     if (!result.length && pid === topId) {
       result = children
     }
-
     children.push(node)
-
     node.children = map[id] || (map[id] = [])
   })
 
@@ -95,8 +83,6 @@ export const convertListToOptions = (
       }
     })
   }
-
   map = null
-
   return result
 }
