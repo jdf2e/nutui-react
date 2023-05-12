@@ -93,6 +93,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         raf(animate)
       }
     }
+
     animate()
   }
   const scrollIntoView = (index: number, immediate?: boolean) => {
@@ -134,6 +135,13 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
 
   useEffect(() => {
     titles.current = getTitles()
+    let current: string | number = ''
+    titles.current.forEach((title) => {
+      if (title.value === value) {
+        current = value
+      }
+    })
+    setValue(current)
   }, [children])
 
   const classes = classNames(
