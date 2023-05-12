@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-import { useConfig } from '@/packages/configprovider'
 import Icon from '@/packages/icon'
 
 export interface ImageProps {
@@ -56,7 +55,6 @@ export const Image: FunctionComponent<
   Partial<ImageProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onLoad' | 'onError'>
 > = (props) => {
-  const { locale } = useConfig()
   const {
     children,
     className,
@@ -82,12 +80,16 @@ export const Image: FunctionComponent<
   } = { ...defaultProps, ...props }
   const [loading, setLoading] = useState(true)
   const [isError, setIsError] = useState(false)
-  const [_src, setSrc] = useState('')
+  const imgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
-    if (src) {
-      setSrc(src)
-      setIsError(false)
+    if (
+      imgRef.current &&
+      imgRef.current.complete &&
+      imgRef.current.naturalHeight !== 0
+    ) {
+      setLoading(false)
+    } else if (src) {
       setLoading(true)
     }
   }, [src])
@@ -188,9 +190,10 @@ export const Image: FunctionComponent<
     >
       {isLazy ? (
         <img
+          ref={imgRef}
           className="nut-img lazyload"
           style={styles}
-          data-src={_src}
+          data-src={src}
           alt={alt}
           loading="lazy"
           onLoad={load}
@@ -198,9 +201,10 @@ export const Image: FunctionComponent<
         />
       ) : (
         <img
+          ref={imgRef}
           className="nut-img"
           style={styles}
-          src={_src}
+          src={src}
           alt={alt}
           onLoad={load}
           onError={error}
