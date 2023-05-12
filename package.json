@@ -79,7 +79,7 @@
     "dev:taro:weapp:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run dev:weapp:jmapp",
     "replace:taro:types": "node scripts/taro/replace-taro-types-alias.js",
     "build:taro": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run build:taro:es  && npm run build:css && npm run build:loader-style && npm --taro run build:dts && npm run build:locales",
-    "build:taro:es": "npx rollup -c rollup.config.taro.es.js --bundleConfigAsCjs",
+    "build:taro:es": "vite build --config vite.config.build.disperse.taro.ts",
     "build:taro:jmapp": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run build:taro:es  && VITE_APP_PROJECT_ID=jmapp npm run build:css && VITE_APP_PROJECT_ID=jmapp npm run build:loader-style && npm --taro run build:dts && npm run build:locales",
     "build:taro:weapp": "npm run checked:taro && vite build --config vite.config.build.taro.ts && npm run generate:file:taro:pages && cd ./src/sites/mobile-taro && npm run build:weapp",
     "add:taro:config": "node scripts/taro/generate-taro-route.js",
