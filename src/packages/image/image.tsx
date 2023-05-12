@@ -96,6 +96,7 @@ export const Image: FunctionComponent<
 
   // 图片加载
   const load = () => {
+    setIsError(false)
     setLoading(false)
     onLoad && onLoad()
   }
