@@ -10,11 +10,11 @@ import React, {
   useImperativeHandle,
 } from 'react'
 
-import {formatNumber} from './util'
+import { formatNumber } from './util'
 import Icon from '@/packages/icon/index.taro'
-import {useConfig} from '@/packages/configprovider/configprovider.taro'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
-import {BasicComponent, ComponentDefaults} from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type InputAlignType = 'left' | 'center' | 'right' // text-align
 export type InputFormatTrigger = 'onChange' | 'onBlur' // onChange: 在输入时执行格式化 ; onBlur: 在失焦时执行格式化
@@ -114,11 +114,13 @@ const defaultProps = {
 export const Input = forwardRef(
   (
     props: Partial<InputProps> &
-      Omit<React.HTMLAttributes<HTMLDivElement>,
-        'onChange' | 'onBlur' | 'onFocus' | 'onClick'>,
+      Omit<
+        React.HTMLAttributes<HTMLDivElement>,
+        'onChange' | 'onBlur' | 'onFocus' | 'onClick'
+      >,
     ref
   ) => {
-    const {locale} = useConfig()
+    const { locale } = useConfig()
     const {
       children,
       type,
@@ -325,7 +327,7 @@ export const Input = forwardRef(
             {label ? (
               <div
                 className={`nut-input-label ${labelClass}`}
-                style={{width: `${labelWidth}px`, textAlign: labelAlign}}
+                style={{ width: `${labelWidth}px`, textAlign: labelAlign }}
               >
                 <div className="label-string">
                   {label}
@@ -364,7 +366,7 @@ export const Input = forwardRef(
             {label ? (
               <div
                 className={`nut-input-label ${labelClass}`}
-                style={{width: `${labelWidth}px`, textAlign: labelAlign}}
+                style={{ width: `${labelWidth}px`, textAlign: labelAlign }}
               >
                 <div className="label-string">
                   {label}
@@ -411,7 +413,7 @@ export const Input = forwardRef(
                       name={name}
                       className="input-text"
                       ref={inputRef}
-                      style={{textAlign: inputAlign}}
+                      style={{ textAlign: inputAlign }}
                       type={inputType(type)}
                       maxLength={maxlength}
                       placeholder={inputPlaceholder}
@@ -489,7 +491,7 @@ export const Input = forwardRef(
                   {errorMessage}
                 </div>
               ) : (
-                <div/>
+                <div />
               )}
             </div>
           </>
