@@ -7,7 +7,7 @@ import TextArea from '@/packages/textarea'
 
 test('textarea props test', () => {
   const { container } = render(
-    <TextArea defaultValue="基本用法" limitshow maxlength="20" />
+    <TextArea defaultValue="基本用法" showCount maxLength={20} />
   )
   expect(container.querySelector('.nut-textarea__textarea')?.innerHTML).toBe(
     '基本用法'
@@ -18,8 +18,8 @@ test('textarea props test', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('textarea readonly test', () => {
-  const { container } = render(<TextArea readonly />)
+test('textarea readOnly test', () => {
+  const { container } = render(<TextArea readOnly />)
   expect(container.querySelector('.nut-textarea__textarea')).toHaveAttribute(
     'readonly'
   )

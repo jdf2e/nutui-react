@@ -185,6 +185,12 @@
 #### SearchBar
 #### ShortPassword
 #### TextArea
+- maxlength 重命名为 maxLength
+- readonly 重命名为 readOnly
+- limitShow 重命名为 showCount
+- autosize 重命名为 autoSize
+- 移除 textAlign，可通过 style 传入
+- defaultValue 改为非受控，增加受控值 value
 #### Uploader
 
 - `maximize` 重命名为 `maxFileSize`
