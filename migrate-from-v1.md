@@ -183,6 +183,15 @@
 - 方法 `onConfirm`、`onClose`、`afterClose`、`onChange`的参数进行了调整，从`(selectedValue, selectedOptions)` 改为 `(selectedOptions, selectedValue)`。
 #### Radio
 #### Range
+- maxDesc 重命名为 maxDescription，类型改为 ReactNode
+- minDesc 重命名为 minDescription，类型改为 ReactNode
+- curValueDesc 重命名为 currentDescription，类型改为 (value) => ReactNode
+- 移除 hiddenRange，通过 max/minDescription 传 null 实现
+- 移除 hiddenTag，通过 currentDescription 传 null 实现
+- 移除 activeColor、inactiveColor、buttonColor，通过 css 变量实现
+- onDragStart 重命名为 onStart
+- onDragEnd 重命名为 onEnd
+- modelValue 重命为 value，增加 defaultValue 非受控方式
 #### Rate
 - minimizeValue 重命名为 min
 - readonly 重命名为 readOnly
