@@ -89,7 +89,6 @@ export const Image: FunctionComponent<
     ) {
       setInnerLoading(false)
     } else if (src) {
-      setIsError(false)
       setInnerLoading(true)
     }
   }, [src])
