@@ -562,7 +562,8 @@ export default App;
 
 | 属性 | 说明 | 类型     | 默认值 |
 |----------| -------------------- | -------- |-------------|
-| value | 选中值 | `Array`    | `-` |
+| value | 选中值，受控 | `(number | string | undefined)[]`    | `-` |
+| defaultValue | 默认选中值 | `(number | string | undefined)[]`    | `-` |
 | options | 级联数据 | `Array`    | `-` |
 | popup | 是否弹窗状态展示 | `boolean`  | `true`      |
 | visible | 级联显示隐藏状态 | `boolean`  | `false`     |

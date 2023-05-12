@@ -19,6 +19,7 @@ import {
 } from './types'
 import Tree from './tree'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export interface CascaderProps extends BasicComponent {
   popup: boolean
@@ -26,7 +27,8 @@ export interface CascaderProps extends BasicComponent {
   activeColor: string
   activeIcon: string
   options: CascaderOption[]
-  value: string[]
+  value?: CascaderValue
+  defaultValue?: CascaderValue
   title: string
   optionKey: optionKey
   format: Record<string, string | number | null>
@@ -36,8 +38,8 @@ export interface CascaderProps extends BasicComponent {
   lazy: boolean
   onLoad: (node: any, resolve: any) => void
   onClose?: () => void
-  onChange: (value: any, params: any) => void
-  onPathChange: (value: any, params: any) => void
+  onChange: (value: CascaderValue, params?: any) => void
+  onPathChange: (value: CascaderValue, params: any) => void
 }
 
 const defaultProps = {
@@ -47,7 +49,6 @@ const defaultProps = {
   popup: true,
   visible: false,
   options: [],
-  value: [],
   title: '',
   optionKey: { textKey: 'text', valueKey: 'value', childrenKey: 'children' },
   format: {},
@@ -59,7 +60,6 @@ const defaultProps = {
   onClose: () => {},
   onChange: () => {},
   onPathChange: () => {},
-  ...Popup.defaultProps,
 } as CascaderProps
 const InternalCascader: ForwardRefRenderFunction<
   unknown,
@@ -72,6 +72,7 @@ const InternalCascader: ForwardRefRenderFunction<
     visible,
     options,
     value,
+    defaultValue,
     title,
     optionKey,
     format,
@@ -89,6 +90,15 @@ const InternalCascader: ForwardRefRenderFunction<
   const [optionsData, setOptionsData] = useState<CascaderPane[]>([])
   const isLazy = () => state.configs.lazy && Boolean(state.configs.onLoad)
 
+  const [innerValue, setInnerValue] = usePropsValue<CascaderValue>({
+    value,
+    defaultValue,
+    finalValue: defaultValue,
+    onChange: (val: CascaderValue) => {
+      props.onChange?.(val)
+    },
+  })
+
   const [state] = useState({
     optionsData: [] as any,
     panes: [
@@ -98,7 +108,6 @@ const InternalCascader: ForwardRefRenderFunction<
         paneKey: '',
       },
     ],
-    innerValue: value as CascaderValue,
     tree: new Tree([], {}),
     tabsCursor: 0, // 选中的tab项
     initLoading: false,
@@ -119,13 +128,13 @@ const InternalCascader: ForwardRefRenderFunction<
 
   useEffect(() => {
     initData()
-  }, [options])
+  }, [options, format])
 
   useEffect(() => {
-    if (value !== state.innerValue) {
-      state.innerValue = value as CascaderValue
+    if (defaultValue && defaultValue !== innerValue) {
+      setInnerValue(defaultValue)
     }
-  }, [value])
+  }, [defaultValue])
 
   const initData = async () => {
     // 初始化开始处理数据
@@ -163,8 +172,13 @@ const InternalCascader: ForwardRefRenderFunction<
   }
   // 处理有默认值时的数据
   const syncValue = async () => {
-    const currentValue = state.innerValue
-    if (currentValue === undefined || !state.tree.nodes.length) {
+    const currentValue = innerValue
+
+    if (
+      currentValue === undefined ||
+      currentValue !== defaultValue ||
+      !state.tree.nodes.length
+    ) {
       return
     }
 
@@ -203,7 +217,7 @@ const InternalCascader: ForwardRefRenderFunction<
       }
     }
 
-    if (needToSync.length && currentValue === value) {
+    if (needToSync.length && currentValue === defaultValue) {
       const pathNodes = state.tree.getPathNodesByValue(needToSync)
       pathNodes.forEach((node, index) => {
         state.tabsCursor = index
@@ -279,6 +293,7 @@ const InternalCascader: ForwardRefRenderFunction<
         const optionParams = pathNodes.map((item: any) => item.value)
         onChange(optionParams, pathNodes)
         onPathChange(optionParams, pathNodes)
+        setInnerValue(optionParams)
       }
       setOptionsData(state.panes)
       close()
