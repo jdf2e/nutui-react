@@ -563,7 +563,8 @@ export default App;
 
 | Property | Description | Type     | Default |
 | ------------- | ----------------------------- | -------- | ------ |
-| value         | Selected value | `Array`    | `-`      |
+| value | Selected value,Controlled | `(number | string)[]`    | `-` |
+| defaultValue | Default selected value | `(number | string)[]`    | `-` |
 | options       | Cascade data | `Array`    | `-`      |
 | popup      | Whether to display the pop-up window status   | `boolean`  | `true`   |
 | visible       | Cascading show hidden states | `boolean`  | `false`  |

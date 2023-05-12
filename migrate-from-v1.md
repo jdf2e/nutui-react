@@ -141,6 +141,7 @@
 ### 数据录入
 #### Calendar
 #### Cascader
+- 新增 `defaultValue`，其中 `defaultValue` 用于非受控，原 `value` 用于受控。两者的类型都改为 `(number | string | undefined)[]`
 - `checkedIcon` 重命名为 `activeIcon`
 - `poppable` 重命名为 `popup`
 - `lazyLoad` 重命名为 `onLoad`，当启动懒加载 `lazy` 时，动态加载数据
