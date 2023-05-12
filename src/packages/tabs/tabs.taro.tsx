@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { ScrollView, View } from '@tarojs/components'
-import { createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -92,7 +91,16 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   }
 
   const titles = useRef<Title[]>(getTitles())
-
+  useEffect(() => {
+    titles.current = getTitles()
+    let current: string | number = ''
+    titles.current.forEach((title) => {
+      if (title.value === value) {
+        current = value
+      }
+    })
+    setValue(current)
+  }, [children])
   const classes = classNames(
     classPrefix,
     `${classPrefix}--${direction}`,
