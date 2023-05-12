@@ -22,7 +22,7 @@ export interface CascaderConfig {
   children?: string
 }
 
-export type CascaderValue = CascaderOption['value'][]
+export type CascaderValue = Exclude<CascaderOption['value'], undefined>[]
 
 export interface optionKey {
   textKey: string

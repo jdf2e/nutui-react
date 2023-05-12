@@ -5,6 +5,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane'
 import raf from '@/utils/raf'
 import { usePropsValue } from '@/utils/use-props-value'
+import { useForceUpdate } from '@/utils/use-force-update'
 
 type Title = {
   title: string
@@ -93,7 +94,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         raf(animate)
       }
     }
-
     animate()
   }
   const scrollIntoView = (index: number, immediate?: boolean) => {
@@ -111,7 +111,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     } else {
       to = title.offsetLeft - (nav.offsetWidth - title.offsetWidth) / 2
     }
-
     scrollDirection(nav, to, immediate ? 0 : 0.3, props.direction)
   }
 
@@ -132,17 +131,20 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     return titles
   }
   const titles = useRef<Title[]>(getTitles())
-
+  const forceUpdate = useForceUpdate()
   useEffect(() => {
     titles.current = getTitles()
     let current: string | number = ''
     titles.current.forEach((title) => {
-      if (title.value === value) {
+      // eslint-disable-next-line eqeqeq
+      if (title.value == value) {
         current = value
       }
     })
-    if (current !== '') {
+    if (current !== '' && current !== value) {
       setValue(current)
+    } else {
+      forceUpdate()
     }
   }, [children])
 
@@ -162,7 +164,8 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     background: activeType === 'line' ? activeColor : '',
   }
   useEffect(() => {
-    const index = titles.current.findIndex((t) => t.value === value)
+    // eslint-disable-next-line eqeqeq
+    const index = titles.current.findIndex((t) => t.value == value)
     setContentStyle({
       transform:
         direction === 'horizontal'
@@ -170,10 +173,12 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
           : `translate3d( 0,-${index * 100}%, 0)`,
       transitionDuration: `${duration}ms`,
     })
-    scrollIntoView(index)
+    setTimeout(() => {
+      scrollIntoView(index)
+    })
   }, [value])
 
-  const tabChange = (item: Title, index: number) => {
+  const tabChange = (item: Title) => {
     onClick && onClick(item.value)
     if (item.disabled) {
       return
@@ -186,11 +191,11 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
       <div className={classesTitle} style={{ ...tabStyle }} ref={navRef}>
         {!!title && typeof title === 'function'
           ? title()
-          : titles.current.map((item, index) => {
+          : titles.current.map((item) => {
               return (
                 <div
-                  onClick={(e) => {
-                    tabChange(item, index)
+                  onClick={() => {
+                    tabChange(item)
                   }}
                   className={classNames(`${classPrefix}__titles-item`, {
                     [`nut-tabs__titles-item--active`]:

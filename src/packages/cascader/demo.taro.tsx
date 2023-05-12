@@ -360,7 +360,7 @@ const CascaderDemo = () => {
         />
         <Cascader
           visible={isVisibleDemo2}
-          value={value2}
+          defaultValue={value2}
           title={translated.addressTip}
           options={optionsDemo2}
           optionKey={{
@@ -385,7 +385,7 @@ const CascaderDemo = () => {
         />
         <Cascader
           visible={isVisibleDemo3}
-          value={value3}
+          defaultValue={value3}
           title={translated.addressTip}
           closeable
           onClose={() => {
@@ -406,7 +406,7 @@ const CascaderDemo = () => {
         />
         <Cascader
           visible={isVisibleDemo4}
-          value={value4}
+          defaultValue={value4}
           title={translated.addressTip}
           options={optionsDemo4}
           closeable
@@ -428,7 +428,7 @@ const CascaderDemo = () => {
         />
         <Cascader
           visible={isVisibleDemo5}
-          value={value5}
+          defaultValue={value5}
           title={translated.addressTip}
           options={optionsDemo5}
           format={convertConfigDemo5}
@@ -451,7 +451,7 @@ const CascaderDemo = () => {
           <Cascader
             visible={isVisibleDemo6}
             activeColor="#3768FA"
-            value={value6}
+            defaultValue={value6}
             title={translated.addressTip}
             options={optionsDemo1}
             closeable

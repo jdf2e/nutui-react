@@ -5,6 +5,7 @@ import { JoySmile } from '@nutui/icons-react-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
+import { useForceUpdate } from '@/utils/use-force-update'
 
 type Title = {
   title: string
@@ -91,6 +92,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   }
 
   const titles = useRef<Title[]>(getTitles())
+  const forceUpdate = useForceUpdate()
   useEffect(() => {
     titles.current = getTitles()
     let current: string | number = ''
@@ -99,8 +101,10 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         current = value
       }
     })
-    if (current !== '') {
+    if (current !== '' && current !== value) {
       setValue(current)
+    } else {
+      forceUpdate()
     }
   }, [children])
   const classes = classNames(
