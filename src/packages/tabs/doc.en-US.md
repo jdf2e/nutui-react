@@ -514,7 +514,7 @@ const App = () => {
   ]
   return (
     <>
-      <Tabs value={tab7value} titleNode={() => {
+      <Tabs value={tab7value} title={() => {
         return list6.map(item => (
           <div
             onClick={() => setTab7value(item.paneKey)}
