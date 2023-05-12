@@ -99,7 +99,9 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         current = value
       }
     })
-    setValue(current)
+    if (current !== '') {
+      setValue(current)
+    }
   }, [children])
   const classes = classNames(
     classPrefix,
