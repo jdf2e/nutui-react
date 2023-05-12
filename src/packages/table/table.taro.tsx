@@ -9,8 +9,6 @@ export type TableProps = BasicTableProps
 
 const defaultProps = {
   ...ComponentDefaults,
-  className: '',
-  style: {},
   columns: [],
   data: [],
   bordered: true,
@@ -53,9 +51,9 @@ export const Table: FunctionComponent<
   }, [data])
 
   const classPrefix = 'nut-table'
-  const headerClassPrefix = `nut-table__main__head__tr`
-  const classes = classNames({})
-  const cls = classNames(classPrefix, classes, className)
+  const headerClassPrefix = `${classPrefix}__main__head__tr`
+  const bodyClassPrefix = `${classPrefix}__main__body__tr`
+  const cls = classNames(classPrefix, className)
 
   const handleSorterClick = (item: TableColumnProps) => {
     if (item.sorter) {
@@ -105,7 +103,7 @@ export const Table: FunctionComponent<
       return (
         <span
           className={classNames(
-            'nut-table__main__body__tr__td',
+            `${bodyClassPrefix}__td`,
             cellClasses(getColumnItem(value))
           )}
           key={value}
@@ -123,7 +121,7 @@ export const Table: FunctionComponent<
   const renderBoyTrs = () => {
     return curData.map((item, index) => {
       return (
-        <div className="nut-table__main__body__tr" key={index}>
+        <div className={bodyClassPrefix} key={index}>
           {renderBodyTds(item)}
         </div>
       )
@@ -133,19 +131,19 @@ export const Table: FunctionComponent<
   return (
     <div className={cls} style={style} {...rest}>
       <div
-        className={classNames('nut-table__main', {
-          'nut-table__main--striped': striped,
+        className={classNames(`${classPrefix}__main`, {
+          [`${classPrefix}__main--striped`]: striped,
         })}
       >
         {showHeader && (
-          <div className="nut-table__main__head">
-            <div className="nut-table__main__head__tr">{renderHeadCells()}</div>
+          <div className={`${classPrefix}__main__head`}>
+            <div className={headerClassPrefix}>{renderHeadCells()}</div>
           </div>
         )}
-        <div className="nut-table__main__body">{renderBoyTrs()}</div>
+        <div className={`${classPrefix}__main__body`}>{renderBoyTrs()}</div>
       </div>
       {(summary || curData.length === 0) && (
-        <div className="nut-table__summary">{summary || noData}</div>
+        <div className={`${classPrefix}__summary`}>{summary || noData}</div>
       )}
     </div>
   )
