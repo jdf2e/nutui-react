@@ -94,7 +94,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         raf(animate)
       }
     }
-
     animate()
   }
   const scrollIntoView = (index: number, immediate?: boolean) => {
