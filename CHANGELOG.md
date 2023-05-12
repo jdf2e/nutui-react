@@ -1,3 +1,7 @@
+# v2.0.0-alpha.7
+`2023-05-12`
+* :bug: fix: tabs children 变化需要更新选中状态 @oasis-cloud
+
 # v2.0.0-alpha.6
 `2023-05-12`
 
