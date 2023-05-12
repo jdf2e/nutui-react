@@ -1,157 +1,132 @@
-import React, {
-  FunctionComponent,
-  useEffect,
-  useState,
-  CSSProperties,
-  useRef,
-} from 'react'
+import React, { FunctionComponent, useRef } from 'react'
+import classNames from 'classnames'
+import Taro from '@tarojs/taro'
+import { Textarea, TextareaProps } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import bem from '@/utils/bem'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
-export interface TextAreaProps {
-  className?: string
-  defaultValue: string | number | any
-  textAlign?: string | any
-  limitshow?: boolean
-  maxlength?: any
-  rows?: any
-  placeholder?: string
-  readonly?: boolean
-  disabled?: boolean
-  autosize?: boolean
-  style?: CSSProperties
-  onChange?: (value: any, event: Event) => void
-  onBlur?: (event: Event) => void
-  onFocus?: (event: Event) => void
+export interface TextAreaProps
+  extends Omit<TextareaProps, 'showCount' | 'onFocus' | 'onBlur'>,
+    Omit<BasicComponent, 'style'> {
+  value: string
+  defaultValue: string
+  showCount: boolean
+  maxLength: number
+  rows: number
+  placeholder: string
+  readOnly: boolean
+  disabled: boolean
+  autoSize: boolean
+  onChange: (value: string) => void
+  onBlur: (event: Event) => void
+  onFocus: (event: Event) => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   defaultValue: '',
-  textAlign: 'left',
-  limitshow: false,
-  maxlength: '',
-  rows: '',
+  showCount: false,
+  maxLength: 140,
   placeholder: '',
-  readonly: false,
+  readOnly: false,
   disabled: false,
-  autosize: false,
+  autoSize: false,
 } as TextAreaProps
-export const TextArea: FunctionComponent<
-  Partial<TextAreaProps> &
-    Omit<
-      React.HTMLAttributes<HTMLDivElement>,
-      'onChange' | 'onBlur' | 'onFocus'
-    >
-> = (props) => {
+export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
   const { locale } = useConfig()
   const {
     className,
+    value,
     defaultValue,
-    textAlign,
-    limitshow,
-    maxlength,
+    showCount,
+    maxLength,
     rows,
     placeholder,
-    readonly,
+    readOnly,
     disabled,
-    autosize,
+    autoSize,
     style,
     onChange,
     onBlur,
     onFocus,
+    ...rest
   } = { ...defaultProps, ...props }
 
-  const textareaBem = bem('textarea')
-  const [inputValue, SetInputValue] = useState('')
-  const compositingRef = useRef(false)
-  const [, updateState] = React.useState({})
-  const forceUpdate = React.useCallback(() => updateState({}), [])
+  const classPrefix = 'nut-textarea'
+  const compositionRef = useRef(false)
 
-  useEffect(() => {
-    let initValue = defaultValue
-    if (initValue && maxlength && [...initValue].length > Number(maxlength)) {
-      initValue = initValue.substring(0, Number(maxlength))
+  const format = (value: string) => {
+    if (maxLength !== undefined && value.length > maxLength) {
+      return value.substring(0, maxLength)
     }
-    SetInputValue(initValue)
-  }, [defaultValue])
-
-  const textChange = (event: any) => {
-    if (disabled) return
-    if (readonly) return
-    const text = event.detail ? (event.detail as any) : (event.target as any)
-    if (
-      maxlength &&
-      [...text.value].length > Number(maxlength) &&
-      !compositingRef.current
-    ) {
-      text.value = text.value.substring(0, Number(maxlength))
-    }
-    if (text.value === inputValue) {
-      forceUpdate()
-    } else {
-      SetInputValue(text.value)
-    }
-    onChange && onChange(text.value, event)
+    return value
   }
 
-  const textFocus = (event: Event) => {
+  const [inputValue, setInputValue] = usePropsValue<string>({
+    value,
+    defaultValue,
+    finalValue: format(defaultValue),
+    onChange,
+  })
+
+  const handleChange = (event: any) => {
+    const text = event?.detail?.value
+    if (text) {
+      const value = compositionRef.current ? text : format(text)
+      setInputValue(value)
+    } else {
+      setInputValue('')
+    }
+  }
+
+  const handleFocus = (event: Event) => {
     if (disabled) return
-    if (readonly) return
+    if (readOnly) return
     onFocus && onFocus(event)
   }
 
-  const textBlur = (event: any) => {
+  const handleBlur = (event: Event) => {
     if (disabled) return
-    if (readonly) return
-    const text = event.detail ? (event.detail as any) : (event.target as any)
-    onChange && onChange(text.value, event)
+    if (readOnly) return
     onBlur && onBlur(event)
-  }
-
-  const startComposing = () => {
-    compositingRef.current = true
-  }
-  const endComposing = () => {
-    compositingRef.current = false
   }
 
   return (
     <div
-      className={`${textareaBem()} ${disabled ? textareaBem('disabled') : ''} ${
-        className || ''
-      }`}
+      className={classNames(classPrefix, className, {
+        [`${classPrefix}__disabled`]: disabled,
+      })}
     >
-      <textarea
-        className={textareaBem('textarea')}
-        style={{
-          textAlign,
-          resize: `${autosize ? 'vertical' : 'none'}` as any,
-          ...style,
+      <Textarea
+        nativeProps={{
+          style,
+          readOnly,
+          rows,
+          onCompositionStart: () => {
+            compositionRef.current = true
+          },
+          onCompositionEnd: () => {
+            compositionRef.current = false
+          },
         }}
-        readOnly={disabled || readonly}
+        className={`${classPrefix}__textarea`}
+        style={Taro.getEnv() === 'WEB' ? undefined : style}
+        disabled={Taro.getEnv() === 'WEB' ? disabled : disabled || readOnly}
         value={inputValue}
-        onInput={(e: any) => {
-          textChange(e)
-        }}
-        onChange={(e: any) => {
-          textChange(e)
-        }}
-        onBlur={(e: any) => {
-          textBlur(e)
-        }}
-        onFocus={(e: any) => {
-          textFocus(e)
-        }}
-        onCompositionEnd={(e) => endComposing()}
-        onCompositionStart={(e) => startComposing()}
-        rows={rows}
-        maxLength={maxlength < 0 ? 0 : maxlength}
+        // @ts-ignore
+        onInput={(e: any) => handleChange(e)}
+        onBlur={(e: any) => handleBlur(e)}
+        onFocus={(e: any) => handleFocus(e)}
+        autoHeight={autoSize}
+        maxlength={maxLength}
         placeholder={placeholder || locale.placeholder}
+        {...rest}
       />
-      {limitshow ? (
-        <div className={textareaBem('limit')}>
-          {[...inputValue].length}/{maxlength < 0 ? 0 : maxlength}
+      {showCount && (
+        <div className={`${classPrefix}__limit`}>
+          {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
         </div>
-      ) : null}
+      )}
     </div>
   )
 }

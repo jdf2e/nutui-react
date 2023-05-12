@@ -1,18 +1,19 @@
-#  Table
+#  Table組件
 
-## Intro
+## 介紹
 
-Used to display the basic table
+用於展示基礎錶格
 
-## Install
+## 安裝
 ```ts
 // react
 import { Table } from '@nutui/nutui-react';
 ```
 
 
-## Demo
-### Basic Usage
+## 代碼演示
+
+### 基本用法
 
 :::demo
 ```tsx
@@ -28,13 +29,13 @@ interface TableColumnProps {
 }
 
 const App = () => {
-  const [columns1, setColumns1] = useState([
+  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
     },
     {
-      title: '性别',
+      title: '性別',
       key: 'sex',
       render: (record: any) => {
         return (
@@ -45,7 +46,7 @@ const App = () => {
       },
     },
     {
-      title: '学历',
+      title: '學歴',
       key: 'record',
     },
   ])
@@ -54,12 +55,12 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '小学',
+      record: '國小',
     },
     {
       name: 'Lucy',
       sex: '女',
-      record: '本科',
+      record: '大學部',
     },
     {
       name: 'Jack',
@@ -74,7 +75,7 @@ export default App;
 ```
 :::
 
-### Whether to display border and align text
+### 是否顯示邊框，文字對齊
 :::demo
 ```tsx
 import  React, { useState } from "react";
@@ -89,18 +90,18 @@ interface TableColumnProps {
 }
 
 const App = () => {
-  const [columns2, setColumns2] = useState([
+  const [columns2, setColumns2] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
       align: 'center',
     },
     {
-      title: '性别',
+      title: '性別',
       key: 'sex',
     },
     {
-      title: '学历',
+      title: '學歴',
       key: 'record',
     },
   ])
@@ -109,12 +110,12 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '小学',
+      record: '國小',
     },
     {
       name: 'Lucy',
       sex: '女',
-      record: '本科',
+      record: '大學部',
     },
     {
       name: 'Jack',
@@ -134,64 +135,7 @@ export default App;
 :::
 
 
-### Show summary bar
-:::demo
-```tsx
-import  React, { useState } from "react";
-import { Table, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const [columns1, setColumns1] = useState([
-    {
-      title: '姓名',
-      key: 'name',
-    },
-    {
-      title: '性别',
-      key: 'sex',
-      render: (record) => {
-        return (
-          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
-            {record.sex}
-          </span>
-        )
-      },
-    },
-    {
-      title: '学历',
-      key: 'record',
-    },
-  ])
-
-  const [data1, setData1] = useState([
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-    },
-  ])
-
-  return <Table
-    columns={columns1}
-    data={data1}
-    summary="这是总结栏"
-/>;
-};
-export default App;
-```
-:::
-
-### Stripes, alternating light and shade
+### 顯示總結欄
 :::demo
 ```tsx
 import  React, { useState } from "react";
@@ -206,13 +150,13 @@ interface TableColumnProps {
 }
 
 const App = () => {
-  const [columns1, setColumns1] = useState([
+  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
     },
     {
-      title: '性别',
+      title: '性別',
       key: 'sex',
       render: (record: any) => {
         return (
@@ -223,7 +167,7 @@ const App = () => {
       },
     },
     {
-      title: '学历',
+      title: '學歴',
       key: 'record',
     },
   ])
@@ -232,12 +176,77 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '小学',
+      record: '國小',
     },
     {
       name: 'Lucy',
       sex: '女',
-      record: '本科',
+      record: '大學部',
+    },
+    {
+      name: 'Jack',
+      sex: '男',
+      record: '高中',
+    },
+  ])
+
+  return <Table
+    columns={columns1}
+    data={data1}
+    summary="這是總結欄"
+    />;
+};
+export default App;
+```
+:::
+
+### 條紋、明暗交替
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Table } from '@nutui/nutui-react';
+
+interface TableColumnProps {
+  key?: string
+  title?: string
+  align?: string
+  sorter?: ((a: any, b: any) => number) | boolean | string
+  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
+}
+
+const App = () => {
+  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
+    {
+      title: '姓名',
+      key: 'name',
+    },
+    {
+      title: '性別',
+      key: 'sex',
+      render: (record: any) => {
+        return (
+          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
+            {record.sex}
+          </span>
+        )
+      },
+    },
+    {
+      title: '學歴',
+      key: 'record',
+    },
+  ])
+
+  const [data1, setData1] = useState([
+    {
+      name: 'Tom',
+      sex: '男',
+      record: '國小',
+    },
+    {
+      name: 'Lucy',
+      sex: '女',
+      record: '大學部',
     },
     {
       name: 'Jack',
@@ -256,7 +265,7 @@ export default App;
 ```
 :::
 
-### Hide table header
+### 隱藏錶頭
 :::demo
 ```tsx
 import  React, { useState } from "react";
@@ -271,13 +280,13 @@ interface TableColumnProps {
 }
 
 const App = () => {
-  const [columns1, setColumns1] = useState([
+  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
     },
     {
-      title: '性别',
+      title: '性別',
       key: 'sex',
       render: (record: any) => {
         return (
@@ -288,7 +297,7 @@ const App = () => {
       },
     },
     {
-      title: '学历',
+      title: '學歴',
       key: 'record',
     },
   ])
@@ -297,12 +306,12 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '小学',
+      record: '國小',
     },
     {
       name: 'Lucy',
       sex: '女',
-      record: '本科',
+      record: '大學部',
     },
     {
       name: 'Jack',
@@ -321,7 +330,7 @@ export default App;
 ```
 :::
 
-### No data is displayed by default, and customization is supported
+### 無數據預設展示，支援自定義
 :::demo
 ```tsx
 import  React, { useState } from "react";
@@ -336,13 +345,13 @@ interface TableColumnProps {
 }
 
 const App = () => {
-  const [columns1, setColumns1] = useState([
+  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
     },
     {
-      title: '性别',
+      title: '性別',
       key: 'sex',
       render: (record: any) => {
         return (
@@ -353,7 +362,7 @@ const App = () => {
       },
     },
     {
-      title: '学历',
+      title: '學歴',
       key: 'record',
     },
   ])
@@ -366,7 +375,7 @@ const App = () => {
         <Table
           columns={columns1}
           data={data2}
-          noData="这里是自定义展示"
+          noData="這裏是自定義展示"
         />
     </>
   );
@@ -375,7 +384,7 @@ export default App;
 ```
 :::
 
-### Custom cell
+### 自定義單元格
 :::demo
 ```tsx
 import  React, { useState } from "react";
@@ -390,11 +399,11 @@ const App = () => {
       align: 'center',
     },
     {
-      title: '性别',
+      title: '性別',
       key: 'sex',
     },
     {
-      title: '学历',
+      title: '學歴',
       key: 'record',
     },
     {
@@ -407,7 +416,7 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '小学',
+      record: '國小',
       render: () => {
         return (
           <Button
@@ -423,7 +432,7 @@ const App = () => {
     {
       name: 'Lucy',
       sex: '女',
-      record: '本科',
+      record: '大學部',
       render: () => {
         return <Dongdong height="14px" width="14px" />
       },
@@ -439,7 +448,7 @@ const App = () => {
             size="small"
             onClick={() => window.open('https://www.jd.com')}
           >
-            <div>跳转到京东</div>
+            <div>跳轉到京東</div>
           </Button>
         )
       },
@@ -452,7 +461,7 @@ export default App;
 ```
 :::
 
-### Support asynchronous rendering
+### 支援異步渲染(5s之後看效果)
 :::demo
 ```tsx
 import  React, { useState } from "react";
@@ -464,12 +473,12 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '小学',
+      record: '國小',
     },
     {
       name: 'Lucy',
       sex: '女',
-      record: '本科',
+      record: '大學部',
     },
     {
       name: 'Jack',
@@ -484,7 +493,7 @@ const App = () => {
       key: 'name',
     },
     {
-      title: '性别',
+      title: '性別',
       key: 'sex',
       render: (record: any) => {
         return (
@@ -495,7 +504,7 @@ const App = () => {
       },
     },
     {
-      title: '学历',
+      title: '學歴',
       key: 'record',
     },
   ])
@@ -509,23 +518,25 @@ export default App;
 ```
 :::
 
-### Supports sorting 
+### 支援排序
+:::demo
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react';
+
 
 const App = () => {
   const [data5, setData5] = useState([
     {
       name: 'Tom',
       sex: '男',
-      record: '小学',
+      record: '國小',
       age: 10,
     },
     {
       name: 'Lucy',
       sex: '女',
-      record: '本科',
+      record: '大學部',
       age: 30,
     },
     {
@@ -544,15 +555,15 @@ const App = () => {
       sorter: true,
     },
     {
-      title: '性别',
+      title: '性別',
       key: 'sex',
     },
     {
-      title: '学历',
+      title: '學歴',
       key: 'record',
     },
     {
-      title: '年龄',
+      title: '年齡',
       key: 'age',
       sorter: (row1: any, row2: any) => {
         return row1.age - row2.age
@@ -576,9 +587,7 @@ export default App;
 ```
 :::
 
-
-### Supports sorting and changing ICONS
-
+### 支援排序替換ICON
 :::demo
 ```tsx
 import  React, { useState } from "react";
@@ -590,13 +599,13 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '小学',
+      record: '國小',
       age: 10,
     },
     {
       name: 'Lucy',
       sex: '女',
-      record: '本科',
+      record: '大學部',
       age: 30,
     },
     {
@@ -615,15 +624,15 @@ const App = () => {
       sorter: true,
     },
     {
-      title: '性别',
+      title: '性別',
       key: 'sex',
     },
     {
-      title: '学历',
+      title: '學歴',
       key: 'record',
     },
     {
-      title: '年龄',
+      title: '年齡',
       key: 'age',
       sorter: (row1: any, row2: any) => {
         return row1.age - row2.age
@@ -653,36 +662,39 @@ export default App;
 
 ### Props
 
-| Property | Description | Type   | Default           |
-|--------------|-------------------|--------|------------------|
-| bordered         | Show border | 	`boolean` | `true` |
-| columns         | Header data | 	TableColumnProps[] | `[]` |
-| data | Table data | 	Object[] | `[]` |
-| summary | Show profile | 	ReactNode | `-` |
-| striped         | Whether the stripes alternate light and dark | 	`boolean` | `false`                |
-| showHeader   | Show Header | 	`boolean` | `true` |
-| noData | Custom noData | 	ReactNode | `-` |
-| sorterIcon    | Sort icon | 	ReactNode | `<DownArrow />` |
+| 屬性         | 說明 | 類型   | 預設值           |
+|--------------|----------------|--------|------------------|
+| bordered         | 是否顯示邊框 | 	`boolean` | `true`                |
+| columns         | 錶頭數據 | 	TableColumnProps[] | `[]`                |
+| data         | 錶格數據 | 	Object[] | `[]`                |
+| summary         | 是否顯示簡介 | 	`ReactNode` | -                |
+| striped         | 條紋是否明暗交替 | 	`boolean` | `false`                |
+| showHeader      | 是否顯示錶頭 | 	`boolean` | `true`                |
+| noData         | 自定義無數據 | 	`ReactNode` | -                |
+| onSort  | 點選排序按鈕觸發 | `item: TableColumnProps, data: Array<any>` |
 
 ### TableColumnProps
-| Property         | Description | Type   | Default           |
-|--------------|--------------|--------|------------------|
-| key | Unique identification of the column | 	`string` | `-` |
-| title | Header title | 	`string` | `-` |
-| align |Alignment of columns, optional values`left`,`center`,`right`  | 	`string` | `left` |
-| sorter | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | 	`boolean \| Function \| string` | `-` |
-| render | Custom render column data, high priority | 	Function(record) | `-` |
-| onSort  | Click the sort button to trigger | `item: TableColumnProps, data: Array<any>` |
 
-## Theming
+| 屬性         | 說明 | 類型   | 預設值           |
+|--------------|------------------|--------|------------------|
+| key | 列的唯一標識 | 	`string` | `-`                |
+| title | 錶頭標題 | 	`string` | `-`                |
+| align | 列的對齊方式，可選值left,center,right | 	`string` | `left`                |
+| sorter         | 排序，可選值有 true,function, default, 其中 default錶示點選之後可能會依賴接口, function可以返回具體的排序函數, default錶示採用預設的排序算法 | 	`boolean \| Function \| string` | `-`                |
+| render         | 自定義渲染列數據，優先級高 | 	`Function(record)` | `-`                |
+| sorterIcon       | 排序 icon | 	`ReactNode` | `<DownArrow />`               |
 
-### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Description | Default Value |
+## 主題定制
+
+### 樣式變數
+
+組件提供了下列 CSS 變數，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 說明 | 預設值 |
 | --- | --- | --- |
-| --nutui-table-border-color | table border color | `#ececec` |
-| --nutui-table-cols-padding | table columns padding value | `10px` |
-| --nutui-table-tr-even-background-color | table even rows background color | `$gray4` |
-| --nutui-table-tr-odd-background-color | table odd rows background color  | `$gray6` |
+| --nutui-table-border-color | 錶格的邊框色值 | `#ececec` |
+| --nutui-table-cols-padding | 錶格列的padding值 |`10px` |
+| --nutui-table-tr-even-background-color | 錶格偶數行的背景色 |`$gray4` |
+| --nutui-table-tr-odd-background-color |錶格奇數行的背景色 | `$gray6` |

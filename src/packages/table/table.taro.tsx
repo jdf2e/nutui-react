@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { DownArrow } from '@nutui/icons-react-taro'
-import bem from '@/utils/bem'
 import { BasicTableProps, TableColumnProps } from './types'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { ComponentDefaults } from '@/utils/typings'
@@ -10,13 +9,11 @@ export type TableProps = BasicTableProps
 
 const defaultProps = {
   ...ComponentDefaults,
-  className: '',
-  style: {},
   columns: [],
   data: [],
   bordered: true,
   striped: false,
-  noData: '无数据',
+  noData: '',
   sorterIcon: null,
   showHeader: true,
 } as TableProps
@@ -37,8 +34,8 @@ export const Table: FunctionComponent<
     striped,
     noData,
     sorterIcon,
-    onSorter,
     showHeader,
+    onSort,
     ...rest
   } = {
     ...defaultProps,
@@ -53,14 +50,14 @@ export const Table: FunctionComponent<
     }
   }, [data])
 
-  const b = bem('table')
-  const classes = classNames({})
-  const cls = classNames(b(), classes, className)
+  const classPrefix = 'nut-table'
+  const headerClassPrefix = `${classPrefix}__main__head__tr`
+  const bodyClassPrefix = `${classPrefix}__main__body__tr`
+  const cls = classNames(classPrefix, className)
 
   const handleSorterClick = (item: TableColumnProps) => {
     if (item.sorter) {
-      onSorter && onSorter(item, curData)
-
+      onSort && onSort(item, curData)
       if (typeof item.sorter === 'function') {
         setCurData(curData.sort(item.sorter as (a: any, b: any) => number))
       } else {
@@ -71,8 +68,8 @@ export const Table: FunctionComponent<
 
   const cellClasses = (item: TableColumnProps) => {
     return {
-      'nut-table__main__head__tr--border': props.bordered,
-      [`nut-table__main__head__tr--align${item.align ? item.align : ''}`]: true,
+      [`${headerClassPrefix}--border`]: props.bordered,
+      [`${headerClassPrefix}--align${item.align ? item.align : ''}`]: true,
     }
   }
 
@@ -84,10 +81,7 @@ export const Table: FunctionComponent<
     return columns.map((item, index) => {
       return (
         <span
-          className={classNames(
-            'nut-table__main__head__tr__th',
-            cellClasses(item)
-          )}
+          className={classNames(`${headerClassPrefix}__th`, cellClasses(item))}
           key={item.key}
           onClick={() => handleSorterClick(item)}
         >
@@ -109,7 +103,7 @@ export const Table: FunctionComponent<
       return (
         <span
           className={classNames(
-            'nut-table__main__body__tr__td',
+            `${bodyClassPrefix}__td`,
             cellClasses(getColumnItem(value))
           )}
           key={value}
@@ -127,7 +121,7 @@ export const Table: FunctionComponent<
   const renderBoyTrs = () => {
     return curData.map((item, index) => {
       return (
-        <div className="nut-table__main__body__tr" key={index}>
+        <div className={bodyClassPrefix} key={index}>
           {renderBodyTds(item)}
         </div>
       )
@@ -137,28 +131,19 @@ export const Table: FunctionComponent<
   return (
     <div className={cls} style={style} {...rest}>
       <div
-        className={classNames('nut-table__main', {
-          'nut-table__main--striped': striped,
+        className={classNames(`${classPrefix}__main`, {
+          [`${classPrefix}__main--striped`]: striped,
         })}
       >
         {showHeader && (
-          <div className="nut-table__main__head">
-            <div className="nut-table__main__head__tr">{renderHeadCells()}</div>
+          <div className={`${classPrefix}__main__head`}>
+            <div className={headerClassPrefix}>{renderHeadCells()}</div>
           </div>
         )}
-        <div className="nut-table__main__body">{renderBoyTrs()}</div>
+        <div className={`${classPrefix}__main__body`}>{renderBoyTrs()}</div>
       </div>
-      {summary && (
-        <div className="nut-table__summary">
-          <span className="nut-table__summary__text">{summary}</span>
-        </div>
-      )}
-      {curData.length === 0 && (
-        <div className="nut-table__nodata">
-          <div className="nut-table__nodata">
-            <div className="nut-table__nodata__text">{noData}</div>
-          </div>
-        </div>
+      {(summary || curData.length === 0) && (
+        <div className={`${classPrefix}__summary`}>{summary || noData}</div>
       )}
     </div>
   )

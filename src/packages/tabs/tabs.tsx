@@ -70,7 +70,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     onChange,
   })
   const [contentStyle, setContentStyle] = useState({})
-
   const titleItemsRef = useRef<HTMLDivElement[]>([])
   const navRef = useRef<HTMLDivElement>(null)
   const scrollDirection = (
@@ -133,6 +132,19 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     return titles
   }
   const titles = useRef<Title[]>(getTitles())
+
+  useEffect(() => {
+    titles.current = getTitles()
+    let current: string | number = ''
+    titles.current.forEach((title) => {
+      if (title.value === value) {
+        current = value
+      }
+    })
+    if (current !== '') {
+      setValue(current)
+    }
+  }, [children])
 
   const classes = classNames(
     classPrefix,
