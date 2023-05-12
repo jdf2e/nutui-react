@@ -39,7 +39,7 @@ export default App;
 :::demo
 
 ```tsx
-import React from "react";
+import React, { useState } from "react";
 import { Range, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -87,7 +87,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell, Toast } from '@nutui/nutui-react';
 
 const App = () => {
@@ -112,7 +112,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell, Toast } from '@nutui/nutui-react';
 
 const App = () => {
@@ -138,7 +138,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell, Toast } from '@nutui/nutui-react';
 
 const App = () => {
@@ -163,7 +163,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell, Toast } from '@nutui/nutui-react';
 
 const App = () => {
@@ -189,7 +189,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell, Toast } from '@nutui/nutui-react';
 
 const App = () => {
@@ -213,7 +213,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell } from '@nutui/nutui-react';
 
 const App = () => {
@@ -234,7 +234,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, ConfigProvider, Cell, Toast } from '@nutui/nutui-react';
 
 const App = () => {
@@ -249,10 +249,12 @@ const App = () => {
   >
     <ConfigProvider
       theme={{
-        [`--nutui-range-button-border`]: '1px solid rgba(52,96,250,1)',
-        [`--nutui-range-active-color`]:
+        nutuiRangeButtonBorder: '1px solid rgba(52,96,250,1)',
+        nutuiRangeActiveColor:
           'linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)',
-        [`--nutui-range-inactive-color`]: 'rgba(163,184,255,1)',
+        nutuiRangeInactiveColor: 'rgba(163,184,255,1)',
+        nutuiRangeMargin: '20px',
+        nutuiRangeHeight: '6px',
       }}
     >
       <Range
@@ -278,20 +280,29 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Range, Cell, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const cellStyle = {
     padding: '40px 18px',
   }
+  const buttonStyle = {
+    width: '26px',
+    color: 'white',
+    fontSize: '10px',
+    lineHeight: '18px',
+    textAlign: 'center',
+    backgroundColor: 'red',
+    borderRadius: '10px',
+  }
   const [value, setValue] = useState(60)
   return <Cell style={cellStyle}>
     <Range
       value={value}
-      button={<div className="range-custom-button">{value}</div>}
+      button={<div style={buttonStyle}>{value}</div>}
       onChange={(val) => setValue(val)}
-      onEnd={(val) => Toast.text(`${val}`)}
+      onEnd={(val) => console.log(`${val}`)}
     />
   </Cell>
 };
@@ -304,7 +315,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell, Toast } from '@nutui/nutui-react';
 
 const App = () => {
@@ -339,7 +350,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell, Toast } from '@nutui/nutui-react';
 
 const App = () => {
@@ -424,6 +435,8 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | --nutui-range-font-color | font color | `$gray1` |
+| --nutui-range-margin | margin | `15px` |
+| --nutui-range-height | stroke width  | `4px` |
 | --nutui-range-active-color | active color | `$primary-color` |
 | --nutui-range-inactive-color | inactive color | `#fa958c` |
 | --nutui-range-button-background | button background | `$white` |

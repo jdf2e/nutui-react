@@ -149,10 +149,12 @@ const RangeDemo = () => {
         >
           <ConfigProvider
             theme={{
-              [`--nutui-range-button-border`]: '1px solid rgba(52,96,250,1)',
-              [`--nutui-range-active-color`]:
+              nutuiRangeButtonBorder: '1px solid rgba(52,96,250,1)',
+              nutuiRangeActiveColor:
                 'linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)',
-              [`--nutui-range-inactive-color`]: 'rgba(163,184,255,1)',
+              nutuiRangeInactiveColor: 'rgba(163,184,255,1)',
+              nutuiRangeMargin: '20px',
+              nutuiRangeHeight: '6px',
             }}
           >
             <Range

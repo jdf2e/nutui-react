@@ -38,7 +38,7 @@ export default App;
 :::demo
 
 ```tsx
-import React from "react";
+import React, { useState } from "react";
 import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -60,7 +60,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell, Toast } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -87,7 +87,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -112,7 +112,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -138,7 +138,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -163,7 +163,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -190,7 +190,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -216,7 +216,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -237,7 +237,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, ConfigProvider, Cell} from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -252,10 +252,12 @@ const App = () => {
   >
     <ConfigProvider
       theme={{
-        [`--nutui-range-button-border`]: '1px solid rgba(52,96,250,1)',
-        [`--nutui-range-active-color`]:
+        nutuiRangeButtonBorder: '1px solid rgba(52,96,250,1)',
+        nutuiRangeActiveColor:
           'linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)',
-        [`--nutui-range-inactive-color`]: 'rgba(163,184,255,1)',
+        nutuiRangeInactiveColor: 'rgba(163,184,255,1)',
+        nutuiRangeMargin: '20px',
+        nutuiRangeHeight: '6px',
       }}
     >
       <Range
@@ -281,18 +283,27 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const cellStyle = {
     padding: '40px 18px',
   }
+  const buttonStyle = {
+    width: '26px',
+    color: 'white',
+    fontSize: '10px',
+    lineHeight: '18px',
+    textAlign: 'center',
+    backgroundColor: 'red',
+    borderRadius: '10px',
+  }
   const [value, setValue] = useState(60)
   return <Cell style={cellStyle}>
     <Range
       value={value}
-      button={<div className="range-custom-button">{value}</div>}
+      button={<div style={buttonStyle}>{value}</div>}
       onChange={(val) => setValue(val)}
       onEnd={(val) => console.log(`${val}`)}
     />
@@ -308,7 +319,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -344,7 +355,7 @@ export default App;
 :::demo
 
 ```tsx
-import React, {useState} from "react";
+import React from "react";
 import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -401,7 +412,7 @@ export default App;
 
 ### Props
 
-| 参数          | 说明                 | 类型             | 默认值                   |
+| 属性          | 说明                 | 类型             | 默认值                   |
 | ------------- | ------------------- | ---------------- | ------------------------ |
 | defaultValue | 默认进度百分比，非受控 | `number \| number[]` | `0` |
 | value | 当前进度百分比，受控 | `number \| number[]` | `0` |
@@ -429,6 +440,8 @@ export default App;
 | 名称 | 描述 | 默认值 |
 | --- | --- | --- |
 | --nutui-range-font-color | 字体颜色 | `$gray1` |
+| --nutui-range-margin | 进度条外边距 | `15px` |
+| --nutui-range-height | 进度条的宽度 | `4px` |
 | --nutui-range-active-color | 激活颜色 | `$primary-color` |
 | --nutui-range-inactive-color | 未激活颜色 | `#fa958c` |
 | --nutui-range-button-background | 按钮背景 | `$white` |

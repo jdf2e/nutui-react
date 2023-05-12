@@ -2,7 +2,7 @@
   display: flex;
   position: relative;
   width: 100%;
-  height: 4px;
+  height: $range-height;
   align-items: center;
   .min,
   .max {
@@ -10,18 +10,12 @@
     color: $range-font-color;
     user-select: none;
   }
-  .min {
-    margin-right: 15px;
-  }
-  .max {
-    margin-left: 15px;
-  }
   &-vertical {
     height: 100%;
     flex-direction: column;
     padding: 0px 15px;
     .nut-range {
-      width: 4px;
+      width: $range-height;
       height: 100%;
       &-button {
         &-wrapper,
@@ -45,7 +39,7 @@
         transform: translate3d(100%, 0, 0);
       }
       &-vertical {
-        margin: 10px 0px;
+        margin: $range-margin 0px;
       }
       &-mark {
         position: absolute;
@@ -91,7 +85,8 @@
   display: block;
   position: relative;
   width: 100%;
-  height: 4px;
+  height: $range-height;
+  margin: 0 $range-margin;
   background-color: $range-inactive-color;
   border-radius: 2px;
   cursor: pointer;
