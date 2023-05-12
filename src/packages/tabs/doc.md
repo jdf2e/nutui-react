@@ -271,13 +271,12 @@ import React, { useState, useEffect } from "react";
 import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
-  const [tab3value, setTab3value] = useState('0');
-  const [list3, setList3] = useState(Array.from(new Array(2).keys()));
+  const [tab3value, setTab3value] = useState(0);
+  const [list3, setList3] = useState();
   useEffect(() => {
     setTimeout(() => {
-      list3.push(999);
-      setTab3value('2');
-      setList3(list3)
+      setTab3value(2);
+      setList3(Array.from(new Array(3).keys()))
     }, 3000)
   }, [])
   return (
