@@ -24,7 +24,7 @@ const App = () => {
   return (
     <>
       <Audio
-        autoplay={false}
+        autoPlay={false}
         url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="icon"
         loop={false}
@@ -56,7 +56,7 @@ const App = () => {
      <Audio
       className="custom-voice-audio"
       id="custom-voice-audio"
-      autoplay={false}
+      autoPlay={false}
       url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       type="none"
       preload="auto"
@@ -90,7 +90,7 @@ const App = () => {
   return (
     <>
       <Audio
-        autoplay={false}
+        autoPlay={false}
         url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="progress"
         preload="auto"
@@ -124,7 +124,7 @@ const App = () => {
   return (
     <>
       <Audio
-        autoplay={false}
+        autoPlay={false}
         url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="controls"
         preload="auto"
@@ -153,7 +153,7 @@ export default App;
 | style       | css样式               | CSSProperties | {}           |
 | url         | 语音资源链接               | string | ''              |
 | muted        | 是否静音                         | boolean | false             |
-| autoplay         | 是否自动播放 | boolean | false               |
+| autoPlay         | 是否自动播放 | boolean | false               |
 | loop | 是否循环播放     | boolean | false |
 | preload          | 是否预加载语音 枚举值：'none'、'metadata'、'auto'、''   | string | 'auto'              |
 | type         | 展示形式，可选值：controls 控制面板   progress 进度条  icon 图标 none 自定义 | string | 'progress'              |
