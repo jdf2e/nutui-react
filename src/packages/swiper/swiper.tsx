@@ -24,7 +24,7 @@ export interface SwiperProps extends BasicComponent {
   height: number | string
   duration: number | string
   defaultValue: number | string
-  autoplay: number | string
+  autoPlay: number | string
   direction: 'horizontal' | 'vertical'
   indicator: ReactNode
   loop: boolean
@@ -40,7 +40,7 @@ const defaultProps = {
   height: 0,
   duration: 500,
   defaultValue: 0,
-  autoplay: 0,
+  autoPlay: 0,
   direction: 'horizontal',
   indicator: false,
   loop: true,
@@ -72,7 +72,7 @@ export const Swiper = React.forwardRef<
     touchable,
     preventDefault,
     stopPropagation,
-    autoplay,
+    autoPlay,
     center,
     ...rest
   } = propSwiper
@@ -143,12 +143,12 @@ export const Swiper = React.forwardRef<
   }
   // 定时轮播
   const startPlay = () => {
-    if (propSwiper.autoplay <= 0 || childCount <= 1) return
+    if (propSwiper.autoPlay <= 0 || childCount <= 1) return
     stopAutoPlay()
     swiperRef.current.autoplayTimer = setTimeout(() => {
       next()
       startPlay()
-    }, Number(propSwiper.autoplay))
+    }, Number(propSwiper.autoPlay))
   }
   // 重置首尾位置信息
   const resetPosition = () => {

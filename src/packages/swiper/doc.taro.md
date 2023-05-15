@@ -359,7 +359,7 @@ export default App;
 | direction         | 轮播方向,可选值`horizontal`,`vertical` | string  | `horizontal` |
 | indicator | 分页指示器是否展示                     | boolean | `false`  |
 | loop              | 是否循环轮播                           | boolean | `true`       |
-| autoplay          | 自动轮播时长，0表示不会自动轮播        | boolean | `false`      |
+| autoPlay          | 自动轮播时长，0表示不会自动轮播        | boolean | `false`      |
 | defaultValue      | 初始化索引值                           | number | `0`  |
 | onChange | 卡片切换后的回调 | 当前索引值index | `-` |
 

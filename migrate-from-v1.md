@@ -327,6 +327,16 @@
 #### Skeleton
 #### Steps
 #### Swiper
+- 移除 paginationColor，通过 indicator 的 CSS 变量控制
+- 移除 paginationBgColor，通过 indicator 的 CSS 变量控制
+- 移除 pageContent，通过 indicator 实现
+- initPage 重命名为 defaultIndex
+- paginationVisible 重命名为 indicator，类型改为 ReactNode
+- isPreventDefault 重命名为 preventDefault
+- isStopPropagation 重命名为 stopPropagation
+- isCenter 重命名为 center
+-taro
+- 通过封装 Taro 的 Swiper 和 SwiperItem 实现，支持的属性可参考 Taro Swiper 文档。 
 #### Table
 - `onSorter` 重命名为 `onSort`
 - 合并 `summary` 与 `noData` 的样式处理

@@ -31,7 +31,7 @@ test('should render width and height', () => {
     <Swiper
       height={height}
       width={width}
-      autoplay="2000"
+      autoPlay="2000"
       defaultValue={defaultValue}
       onChange={onChange}
       indicator
@@ -196,7 +196,7 @@ test('should render loop and auto-play', async () => {
       width={width}
       defaultValue={defaultValue}
       onChange={onChange}
-      autoplay="100"
+      autoPlay="100"
     >
       {list.map((item) => {
         return (
@@ -275,7 +275,7 @@ test('should not allow to drag when loop is false', async () => {
         width={width}
         defaultValue={defaultValue}
         loop={false}
-        autoplay="100"
+        autoPlay="100"
         data-testid="swiper_container"
       >
         {list.map((item) => {

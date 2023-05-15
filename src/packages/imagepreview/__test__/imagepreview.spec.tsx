@@ -55,11 +55,11 @@ test('basic usage test', () => {
   expect(element.style.display).toEqual('')
 })
 
-test('test autoplay', async () => {
+test('test autoPlay', async () => {
   let _container: any
   act(() => {
     const { container } = render(
-      <ImagePreview images={images} show autoplay={1000} />
+      <ImagePreview images={images} show autoPlay={1000} />
     )
     _container = container
   })

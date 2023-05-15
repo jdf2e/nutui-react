@@ -34,7 +34,7 @@ export interface ImagePreviewProps {
     }
   }>
   show: boolean
-  autoplay: number | string
+  autoPlay: number | string
   initNo: number
   contentClose: boolean
   indicator: boolean
@@ -46,7 +46,7 @@ const defaultProps = {
   images: [],
   videos: [],
   show: false,
-  autoplay: 3000,
+  autoPlay: 3000,
   initNo: 1,
   contentClose: false,
   indicator: false,
@@ -63,7 +63,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     initNo,
     paginationColor,
     indicator,
-    autoplay,
+    autoPlay,
     contentClose,
     onClose,
   } = props
@@ -247,7 +247,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
         onTouchStart={onTouchStart as any}
       >
         <Swiper
-          autoplay={autoplay}
+          autoPlay={autoPlay}
           className="nut-imagepreview-swiper"
           loop
           preventDefault={false}

@@ -29,7 +29,7 @@ const App = () => {
             '--nutui-indicator-color': '#426543',
             '--nutui-indicator-dot-color': '#426ddd',
           }}
-        autoplay="3000"
+        autoPlay="3000"
         defaultValue={defaultValue1}
         indicator
       >
@@ -81,7 +81,7 @@ const App = () => {
             '--nutui-indicator-color': '#426543',
             '--nutui-indicator-dot-color': '#426ddd',
           }}
-        autoplay="3000"
+        autoPlay="3000"
         defaultValue={defaultValue1}
         indicator
       >
@@ -132,7 +132,7 @@ const App = () => {
             '--nutui-indicator-color': '#426543',
             '--nutui-indicator-dot-color': '#426ddd',
           }}
-        autoplay="3000"
+        autoPlay="3000"
         defaultValue={defaultValue1}
         indicator
       >
@@ -346,7 +346,7 @@ const App = () => {
         loop
         defaultValue={defaultValue4}
         direction="vertical"
-        autoplay="3000"
+        autoPlay="3000"
         height="150"
         indicator
       >
@@ -393,7 +393,7 @@ const App = () => {
       <Swiper
         loop={false}
         defaultValue={defaultValue8}
-        autoplay="0"
+        autoPlay="0"
         height="150"
         indicator
         width="280"
@@ -436,7 +436,7 @@ const App = () => {
         loop={false}
         defaultValue={defaultValue9}
         direction="vertical"
-        autoplay="0"
+        autoPlay="0"
         height="220"
         indicator
         center

@@ -29,7 +29,7 @@ const App = () => {
             '--nutui-indicator-color': '#426543',
             '--nutui-indicator-dot-color': '#426ddd',
           }}
-        autoplay="3000"
+        autoPlay="3000"
         defaultValue={defaultValue1}
         indicator
       >
@@ -81,7 +81,7 @@ const App = () => {
             '--nutui-indicator-color': '#426543',
             '--nutui-indicator-dot-color': '#426ddd',
           }}
-        autoplay="3000"
+        autoPlay="3000"
         defaultValue={defaultValue1}
         indicator
       >
@@ -132,7 +132,7 @@ const App = () => {
             '--nutui-indicator-color': '#426543',
             '--nutui-indicator-dot-color': '#426ddd',
           }}
-        autoplay="3000"
+        autoPlay="3000"
         defaultValue={defaultValue1}
         indicator
       >
@@ -346,7 +346,7 @@ const App = () => {
         loop
         defaultValue={defaultValue4}
         direction="vertical"
-        autoplay="3000"
+        autoPlay="3000"
         height="150"
         indicator
       >
@@ -393,7 +393,7 @@ const App = () => {
       <Swiper
         loop={false}
         defaultValue={defaultValue8}
-        autoplay="0"
+        autoPlay="0"
         height="150"
         indicator
         width="280"
@@ -436,7 +436,7 @@ const App = () => {
         loop={false}
         defaultValue={defaultValue9}
         direction="vertical"
-        autoplay="0"
+        autoPlay="0"
         height="220"
         indicator
         center
@@ -469,7 +469,7 @@ export default App;
 | indicator       | 分页指示器是否展示，可传入自定义的 HTML 结构       | `ReactNode`                 | `false`             |
 | loop            | 是否循环轮播                          | `boolean`                   | `true`              |
 | duration        | 动画时长（单位是ms）                     | `number \| string`          | `500`               |
-| autoplay        | 自动轮播时长，0表示不会自动轮播                | `number \| string`          | `0`                 |
+| autoPlay        | 自动轮播时长，0表示不会自动轮播                | `number \| string`          | `0`                 |
 | defaultValue    | 初始化索引值                          | `number \| string`          | `0`                 |
 | touchable       | 是否可触摸滑动                         | `boolean`                   | `true`              |
 | preventDefault  | 滑动过程中是否禁用默认事件                   | `boolean`                   | `true`              |

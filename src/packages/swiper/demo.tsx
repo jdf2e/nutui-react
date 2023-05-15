@@ -96,7 +96,7 @@ const SwiperDemo = () => {
             '--nutui-indicator-dot-color': '#426ddd',
           }}
           height={height}
-          autoplay="2000"
+          autoPlay="2000"
           defaultValue={initPage1}
           onChange={onChange}
           indicator
@@ -118,7 +118,7 @@ const SwiperDemo = () => {
             '--nutui-indicator-color': '#426543',
             '--nutui-indicator-dot-color': '#426ddd',
           }}
-          autoplay="2000"
+          autoPlay="2000"
           defaultValue={initPage2}
           onChange={onChange}
           indicator
@@ -140,7 +140,7 @@ const SwiperDemo = () => {
             '--nutui-indicator-color': '#426543',
             '--nutui-indicator-dot-color': '#426ddd',
           }}
-          autoplay="2000"
+          autoPlay="2000"
           defaultValue={initPage3}
           onChange={onChange}
           indicator
@@ -223,7 +223,7 @@ const SwiperDemo = () => {
           loop
           defaultValue={initPage7}
           direction="vertical"
-          autoplay="3000"
+          autoPlay="3000"
           height={height}
           indicator
         >
@@ -241,7 +241,7 @@ const SwiperDemo = () => {
         <Swiper
           loop={false}
           defaultValue={initPage8}
-          autoplay="0"
+          autoPlay="0"
           height={height}
           indicator
           width="280"
@@ -262,7 +262,7 @@ const SwiperDemo = () => {
           loop={false}
           defaultValue={initPage9}
           direction="vertical"
-          autoplay="0"
+          autoPlay="0"
           height="220"
           indicator
           center

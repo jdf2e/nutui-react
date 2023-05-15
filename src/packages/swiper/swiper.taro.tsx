@@ -21,7 +21,7 @@ export interface SwiperProps extends Omit<TaroSwiperProps, 'ref'> {
   height: number
   direction: 'horizontal' | 'vertical'
   indicator: ReactNode
-  autoplay: boolean
+  autoPlay: boolean
   loop: boolean
   defaultValue: number
 }
@@ -29,7 +29,7 @@ export interface SwiperProps extends Omit<TaroSwiperProps, 'ref'> {
 const defaultProps = {
   direction: 'horizontal',
   indicator: false,
-  autoplay: false,
+  autoPlay: false,
   loop: false,
   defaultValue: 0,
 } as SwiperProps
@@ -43,6 +43,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     children,
     indicator,
     loop,
+    autoPlay,
     duration,
     direction,
     defaultValue,
@@ -116,6 +117,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
         <TaroSwiper
           current={current}
           circular={loop}
+          autoplay={autoPlay}
           vertical={direction === 'vertical'}
           indicatorDots={false}
           onChange={handleOnChange}
