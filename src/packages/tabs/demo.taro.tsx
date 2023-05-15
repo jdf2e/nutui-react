@@ -181,30 +181,30 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 2" />
           <Tabs.TabPane title="Tab 3" />
         </Tabs>
-        <Swiper
-          initPage={0}
-          loop={false}
-          ref={swiperRef}
-          onChange={(page) => {
-            setTabIndex(page)
-          }}
-        >
-          <SwiperItem>
-            <div style={{ backgroundColor: '#fff', padding: '10px' }}>
-              Tab 1
-            </div>
-          </SwiperItem>
-          <SwiperItem>
-            <div style={{ backgroundColor: '#fff', padding: '10px' }}>
-              Tab 2
-            </div>
-          </SwiperItem>
-          <SwiperItem>
-            <div style={{ backgroundColor: '#fff', padding: '10px' }}>
-              Tab 3
-            </div>
-          </SwiperItem>
-        </Swiper>
+        {/*<Swiper*/}
+        {/*  initPage={0}*/}
+        {/*  loop={false}*/}
+        {/*  ref={swiperRef}*/}
+        {/*  onChange={(page) => {*/}
+        {/*    setTabIndex(page)*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  <SwiperItem>*/}
+        {/*    <div style={{ backgroundColor: '#fff', padding: '10px' }}>*/}
+        {/*      Tab 1*/}
+        {/*    </div>*/}
+        {/*  </SwiperItem>*/}
+        {/*  <SwiperItem>*/}
+        {/*    <div style={{ backgroundColor: '#fff', padding: '10px' }}>*/}
+        {/*      Tab 2*/}
+        {/*    </div>*/}
+        {/*  </SwiperItem>*/}
+        {/*  <SwiperItem>*/}
+        {/*    <div style={{ backgroundColor: '#fff', padding: '10px' }}>*/}
+        {/*      Tab 3*/}
+        {/*    </div>*/}
+        {/*  </SwiperItem>*/}
+        {/*</Swiper>*/}
         <h2>{translated.title10}</h2>
         <Tabs
           value={tab5value}

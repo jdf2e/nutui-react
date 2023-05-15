@@ -49,6 +49,11 @@
   display: flex;
   align-items: center;
 }
+.nut-imagepreview-swiper {
+  swiper {
+    width: 100%;
+  }
+}
 .nut-imagepreview-swiper .nut-swiper-item {
   height: 327px;
 }

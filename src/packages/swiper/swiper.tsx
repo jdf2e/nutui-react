@@ -5,11 +5,13 @@ import React, {
   TouchEvent,
   useMemo,
   CSSProperties,
+  ReactNode,
 } from 'react'
 import classNames from 'classnames'
-import { DataContext } from './UserContext'
-import bem from '@/utils/bem'
-import { getRect } from '../../utils/use-client-rect'
+import { DataContext } from './context'
+import { getRect } from '@/utils/use-client-rect'
+import Indicator from '@/packages/indicator'
+import { BasicComponent } from '@/utils/typings'
 
 export type SwiperRef = {
   to: (index: number) => void
@@ -17,48 +19,35 @@ export type SwiperRef = {
   prev: () => void
 }
 
-interface Style {
-  width?: string
-  height?: string
-  transform?: string
-}
-
-export interface SwiperProps {
+export interface SwiperProps extends BasicComponent {
   width: number | string
   height: number | string
   duration: number | string
-  initPage: number | string
+  defaultValue: number | string
   autoPlay: number | string
   direction: 'horizontal' | 'vertical'
-  paginationColor: string
-  paginationBgColor: string
-  paginationVisible: boolean
+  indicator: ReactNode
   loop: boolean
   touchable: boolean
-  isPreventDefault: boolean
-  isStopPropagation: boolean
-  isCenter: boolean
-  className?: string
-  style?: React.CSSProperties
-  pageContent?: React.ReactNode
-  onChange?: (currPage: number) => void
+  preventDefault: boolean
+  stopPropagation: boolean
+  center: boolean
+  onChange?: (current: number) => void
 }
 
 const defaultProps = {
   width: typeof window === 'object' ? window.innerWidth : 375,
   height: 0,
   duration: 500,
-  initPage: 0,
+  defaultValue: 0,
   autoPlay: 0,
   direction: 'horizontal',
-  paginationColor: '#fff',
-  paginationBgColor: '#ddd',
-  paginationVisible: false,
+  indicator: false,
   loop: true,
   touchable: true,
-  isPreventDefault: true,
-  isStopPropagation: true,
-  isCenter: false,
+  preventDefault: true,
+  stopPropagation: true,
+  center: false,
   className: '',
 } as SwiperProps
 
@@ -77,22 +66,19 @@ export const Swiper = React.forwardRef<
     children,
     direction,
     className,
-    pageContent,
     onChange,
-    initPage,
-    paginationColor,
-    paginationVisible,
+    defaultValue,
+    indicator,
     touchable,
-    isPreventDefault,
-    isStopPropagation,
+    preventDefault,
+    stopPropagation,
     autoPlay,
-    isCenter,
-    paginationBgColor,
+    center,
     ...rest
   } = propSwiper
   const container = useRef<any>(null)
   const innerRef = useRef<any>(null)
-  const _swiper = useRef<any>({
+  const swiperRef = useRef<any>({
     moving: false,
     autoplayTimer: null,
     width: 0,
@@ -112,7 +98,7 @@ export const Swiper = React.forwardRef<
   const [ready, setReady] = useState(false)
 
   let size = isVertical ? height : width
-  const [touch, setTouch] = useState({
+  const [touch] = useState({
     startX: 0,
     startY: 0,
     deltaX: 0,
@@ -152,21 +138,21 @@ export const Swiper = React.forwardRef<
   })()
   // 清除定时器
   const stopAutoPlay = () => {
-    clearTimeout(_swiper.current.autoplayTimer)
-    _swiper.current.autoplayTimer = null
+    clearTimeout(swiperRef.current.autoplayTimer)
+    swiperRef.current.autoplayTimer = null
   }
   // 定时轮播
-  const autoplay = () => {
+  const startPlay = () => {
     if (propSwiper.autoPlay <= 0 || childCount <= 1) return
     stopAutoPlay()
-    _swiper.current.autoplayTimer = setTimeout(() => {
+    swiperRef.current.autoplayTimer = setTimeout(() => {
       next()
-      autoplay()
+      startPlay()
     }, Number(propSwiper.autoPlay))
   }
   // 重置首尾位置信息
-  const resettPosition = () => {
-    _swiper.current.moving = true
+  const resetPosition = () => {
+    swiperRef.current.moving = true
     if (active <= -1) {
       move({ pace: childCount })
     }
@@ -177,49 +163,43 @@ export const Swiper = React.forwardRef<
 
   // 上一页
   const prev = () => {
-    resettPosition()
-    touchReset()
+    resetPosition()
+    resetTouchDetails()
     requestFrame(() => {
-      requestFrame(() => {
-        _swiper.current.moving = false
-        move({
-          pace: -1,
-          isEmit: true,
-        })
+      swiperRef.current.moving = false
+      move({
+        pace: -1,
+        isEmit: true,
       })
     })
   }
   // 下一页
   const next = () => {
-    resettPosition()
-    touchReset()
+    resetPosition()
+    resetTouchDetails()
     requestFrame(() => {
-      requestFrame(() => {
-        _swiper.current.moving = false
-        move({
-          pace: 1,
-          isEmit: true,
-        })
+      swiperRef.current.moving = false
+      move({
+        pace: 1,
+        isEmit: true,
       })
     })
   }
   // 前往指定页
   const to = (index: number) => {
-    resettPosition()
-    touchReset()
+    resetPosition()
+    resetTouchDetails()
     requestFrame(() => {
-      requestFrame(() => {
-        _swiper.current.moving = false
-        let targetIndex
-        if (props.loop && childCount === index) {
-          targetIndex = active === 0 ? 0 : index
-        } else {
-          targetIndex = index % childCount
-        }
-        move({
-          pace: targetIndex - active,
-          isEmit: true,
-        })
+      swiperRef.current.moving = false
+      let targetIndex
+      if (props.loop && childCount === index) {
+        targetIndex = active === 0 ? 0 : index
+      } else {
+        targetIndex = index % childCount
+      }
+      move({
+        pace: targetIndex - active,
+        isEmit: true,
       })
     })
   }
@@ -303,7 +283,7 @@ export const Swiper = React.forwardRef<
     return ''
   }
   // 重置 全部位移信息
-  const touchReset = () => {
+  const resetTouchDetails = () => {
     touch.startX = 0
     touch.startY = 0
     touch.deltaX = 0
@@ -317,13 +297,13 @@ export const Swiper = React.forwardRef<
 
   // 触摸事件开始
   const touchStart = (e: TouchEvent) => {
-    touchReset()
+    resetTouchDetails()
     touch.startX = e.touches[0].clientX
     touch.startY = e.touches[0].clientY
   }
 
   // 触摸事件移动
-  const touchMove = (e: TouchEvent) => {
+  const handleTouchMove = (e: TouchEvent) => {
     touch.deltaX = e.touches[0].clientX - touch.startX
     touch.deltaY = e.touches[0].clientY - touch.startY
     touch.offsetX = Math.abs(touch.deltaX)
@@ -333,16 +313,15 @@ export const Swiper = React.forwardRef<
       touch.stateDirection = getDirection(touch.offsetX, touch.offsetY)
     }
   }
-  const b = bem('swiper')
-  const classes = classNames(b(''))
+  const classPrefix = 'nut-swiper'
   const contentClass = classNames({
-    [`${b('inner')}`]: true,
-    [`${b('vertical')}`]: isVertical,
+    [`${classPrefix}__inner`]: true,
+    [`${classPrefix}__vertical`]: isVertical,
   })
   const getStyle = (moveOffset = offset) => {
     const target = innerRef.current
     let _offset = 0
-    if (!isCenter) {
+    if (!center) {
       _offset = moveOffset
     } else {
       const _size = isVertical ? height : width
@@ -354,7 +333,7 @@ export const Swiper = React.forwardRef<
         (active === childCount - 1 && !props.loop ? -val / 2 : val / 2)
     }
     target.style.transitionDuration = `${
-      _swiper.current.moving ? 0 : props.duration
+      swiperRef.current.moving ? 0 : props.duration
     }ms`
     target.style[isVertical ? 'height' : 'width'] = `${
       Number(size) * childCount
@@ -368,18 +347,18 @@ export const Swiper = React.forwardRef<
   }
 
   const onTouchStart = (e: TouchEvent) => {
-    if (props.isPreventDefault) e.preventDefault()
-    if (props.isStopPropagation) e.stopPropagation()
+    if (props.preventDefault) e.preventDefault()
+    if (props.stopPropagation) e.stopPropagation()
     if (!props.touchable) return
     touchStart(e)
     touch.touchTime = Date.now()
     stopAutoPlay()
-    resettPosition()
+    resetPosition()
   }
 
   const onTouchMove = (e: TouchEvent) => {
-    if (props.touchable && _swiper.current.moving) {
-      touchMove(e)
+    if (props.touchable && swiperRef.current.moving) {
+      handleTouchMove(e)
       if (touch.stateDirection === props.direction) {
         move({
           offset: touch.delta,
@@ -388,12 +367,15 @@ export const Swiper = React.forwardRef<
     }
   }
   const onTouchEnd = (e: TouchEvent) => {
-    if (!props.touchable || !_swiper.current.moving) return
+    if (!props.touchable || !swiperRef.current.moving) return
     const speed = touch.delta / (Date.now() - touch.touchTime)
+    // 快速滑动产生的 swipe，和超过阈值的滑动
     const isShouldMove =
-      Math.abs(speed) > 0.3 || Math.abs(touch.delta) > +(size / 2).toFixed(2)
+      Math.abs(speed) > 0.3 ||
+      Math.abs(touch.delta) > Number((size / 2).toFixed(2))
     let pace = 0
-    _swiper.current.moving = false
+    swiperRef.current.moving = false
+
     if (isShouldMove && touch.stateDirection === props.direction) {
       const offset = isVertical ? touch.offsetY : touch.offsetX
       if (props.loop) {
@@ -414,54 +396,53 @@ export const Swiper = React.forwardRef<
     } else {
       getStyle()
     }
-    autoplay()
+    startPlay()
   }
 
   useEffect(() => {
-    _swiper.current.activePagination = (active + childCount) % childCount
+    swiperRef.current.activePagination = (active + childCount) % childCount
   }, [active])
 
-  const init = (active: number = +propSwiper.initPage) => {
+  const init = (active: number = +propSwiper.defaultValue) => {
     const rect = getRect(container?.current)
-    const _active = Math.max(Math.min(childCount - 1, active), 0)
-    const _width = propSwiper.width ? +propSwiper.width : rect.width
-    const _height = propSwiper.height ? +propSwiper.height : rect.height
-    size = isVertical ? _height : _width
+    const currentIndex = Math.max(Math.min(childCount - 1, active), 0)
+    const width = +propSwiper.width || rect.width
+    const height = +propSwiper.height || rect.height
+    size = isVertical ? height : width
     trackSize = childCount * Number(size)
-    const targetOffset = getOffset(_active)
-    _swiper.current.moving = true
+    const targetOffset = getOffset(currentIndex)
+    swiperRef.current.moving = true
     if (ready) {
-      _swiper.current.moving = false
+      swiperRef.current.moving = false
     }
     setRect(rect)
-    setActive(_active)
-    setWidth(_width)
-    setHeight(_height)
+    setActive(currentIndex)
+    setWidth(width)
+    setHeight(height)
     setOffset(targetOffset)
     setReady(true)
   }
+
   useEffect(() => {
     if (ready) {
       getStyle()
     }
   }, [isVertical, width, height, offset, ready])
+
   useEffect(() => {
     if (ready) {
       stopAutoPlay()
-      autoplay()
+      startPlay()
     }
-    return () => {
-      setReady(false)
-    }
+    return () => setReady(false)
   }, [ready])
-  useEffect(() => {
-    stopAutoPlay()
-    autoplay()
-  }, [children])
 
   useEffect(() => {
-    init()
-  }, [propSwiper.initPage])
+    stopAutoPlay()
+    startPlay()
+  }, [children])
+
+  useEffect(() => init(), [propSwiper.defaultValue])
 
   useEffect(() => {
     const target = container.current
@@ -474,22 +455,20 @@ export const Swiper = React.forwardRef<
       target.removeEventListener('touchend', onTouchEnd, false)
     }
   })
+
   useEffect(() => {
-    return () => {
-      stopAutoPlay()
-    }
+    return () => stopAutoPlay()
   }, [])
-  const itemStyle = (index: any) => {
+
+  const getItemStyle = (index: any) => {
     const style: CSSProperties = {}
-    const _direction = propSwiper.direction || direction
-    const _size = size
-    if (_size) {
-      style[_direction === 'horizontal' ? 'width' : 'height'] = `${_size}px`
+    if (size) {
+      style[direction === 'horizontal' ? 'width' : 'height'] = `${size}px`
     }
     const offset = childOffset[index]
     if (offset) {
       style.transform = `translate3D${
-        _direction === 'horizontal' ? `(${offset}px,0,0)` : `(0,${offset}px,0)`
+        direction === 'horizontal' ? `(${offset}px,0,0)` : `(0,${offset}px,0)`
       }`
     }
     return style
@@ -500,52 +479,47 @@ export const Swiper = React.forwardRef<
     prev,
     resize,
   }))
+
+  const renderIndicator = () => {
+    if (React.isValidElement(indicator)) return indicator
+    if (indicator === true) {
+      return (
+        <div
+          className={classNames({
+            [`${classPrefix}__pagination`]: true,
+            [`${classPrefix}__pagination-vertical`]: isVertical,
+          })}
+        >
+          <Indicator
+            current={((active + childCount) % childCount) + 1}
+            total={childs?.length}
+            direction={direction}
+          />
+        </div>
+      )
+    }
+    return null
+  }
+
   return (
     <DataContext.Provider value={parent}>
-      <div className={`${classes} ${className}`} ref={container} {...rest}>
+      <div
+        className={classNames(classPrefix, className)}
+        ref={container}
+        {...rest}
+      >
         <div className={contentClass} ref={innerRef}>
-          {React.Children.map(childs, (child: any, index: number) => {
-            return (
-              <div
-                className={b('item-wrapper')}
-                style={itemStyle(index)}
-                key={index}
-              >
-                {child}
-              </div>
-            )
-          })}
+          {React.Children.map(childs, (child: any, index: number) => (
+            <div
+              className={`${classPrefix}__item-wrapper`}
+              style={getItemStyle(index)}
+              key={index}
+            >
+              {child}
+            </div>
+          ))}
         </div>
-        {propSwiper.paginationVisible && !('pageContent' in propSwiper) ? (
-          <div
-            className={classNames({
-              [`${b('pagination')}`]: true,
-              [`${b('pagination-vertical')}`]: isVertical,
-            })}
-          >
-            {React.Children.map(childs, (item: any, index: number) => {
-              return (
-                <i
-                  style={
-                    (active + childCount) % childCount === index
-                      ? {
-                          backgroundColor: propSwiper.paginationColor,
-                        }
-                      : {
-                          backgroundColor: propSwiper.paginationBgColor,
-                        }
-                  }
-                  className={classNames({
-                    active: (active + childCount) % childCount === index,
-                  })}
-                  key={index}
-                />
-              )
-            })}
-          </div>
-        ) : (
-          <div>{pageContent}</div>
-        )}
+        {renderIndicator()}
       </div>
     </DataContext.Provider>
   )

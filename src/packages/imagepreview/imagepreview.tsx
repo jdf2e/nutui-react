@@ -34,10 +34,10 @@ export interface ImagePreviewProps {
     }
   }>
   show: boolean
-  autoplay: number | string
+  autoPlay: number | string
   initNo: number
   contentClose: boolean
-  paginationVisible: boolean
+  indicator: boolean
   style?: CSSProperties
   paginationColor: string
   onClose: () => void
@@ -46,10 +46,10 @@ const defaultProps = {
   images: [],
   videos: [],
   show: false,
-  autoplay: 3000,
+  autoPlay: 3000,
   initNo: 1,
   contentClose: false,
-  paginationVisible: false,
+  indicator: false,
   paginationColor: '#fff',
   onClose: () => {},
 } as ImagePreviewProps
@@ -62,8 +62,8 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     show,
     initNo,
     paginationColor,
-    paginationVisible,
-    autoplay,
+    indicator,
+    autoPlay,
     contentClose,
     onClose,
   } = props
@@ -247,16 +247,16 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
         onTouchStart={onTouchStart as any}
       >
         <Swiper
-          autoPlay={autoplay}
+          autoPlay={autoPlay}
           className="nut-imagepreview-swiper"
           loop
-          isPreventDefault={false}
+          preventDefault={false}
           style={{ display: showPop ? 'block' : 'none' }}
           direction="horizontal"
           onChange={slideChangeEnd}
-          initPage={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
-          paginationColor={paginationColor}
-          paginationVisible={paginationVisible}
+          defaultValue={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
+          // paginationColor={paginationColor}
+          indicator={indicator}
         >
           {(videos && videos.length > 0
             ? videos.map((item, index) => {
