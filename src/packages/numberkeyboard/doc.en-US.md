@@ -76,7 +76,7 @@ const App = () => {
         <NumberKeyboard
         visible={visible}
         type="rightColumn"
-        customKey={['.', 'x']}
+        custom={['.', 'x']}
         onChange={onChange}
         onDelete={onDelete}
         onClose={() => setVisible(false)}
@@ -152,7 +152,7 @@ const App = () => {
         <NumberKeyboard
         visible={visible}
         title="title"
-        customKey={['.']}
+        custom={['.']}
         onChange={onChange}
         onDelete={onDelete}
         onClose={() => setVisible(false)}
@@ -189,7 +189,7 @@ const App = () => {
        />
         <NumberKeyboard
         visible={visible}
-        customKey={['X']}
+        custom={['X']}
         onChange={onChange}
         onDelete={onDelete}
         onClose={() => setVisible(false)}
@@ -214,7 +214,7 @@ export default App;
 | title | Keyboard title | string | - |
 | type | Keyboard type  | string | `default`, `rightColumn` |
 | random | Whether to shuffle the order of keys  | boolean | `false` |
-| customKey | Content of bottom left key   | string[] |  Array form supports adding up to two |
+| custom | Content of bottom left key   | string[] |  Array form supports adding up to two |
 | confirmText  | Custom done button text,Such as "pay", "next", "submit" | string | `done` |
 | popClass    | Custom bullet box classname     | string         | -             |
 

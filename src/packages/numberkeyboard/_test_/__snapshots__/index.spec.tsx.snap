@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should match customKey snapshot 1`] = `
+exports[`should match custom snapshot 1`] = `
 <div>
   <div>
     <div

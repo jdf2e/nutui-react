@@ -76,7 +76,7 @@ const App = () => {
         <NumberKeyboard
         visible={visible}
         type="rightColumn"
-        customKey={['.', 'x']}
+        custom={['.', 'x']}
         onChange={onChange}
         onDelete={onDelete}
         onClose={() => setVisible(false)}
@@ -152,7 +152,7 @@ const App = () => {
         <NumberKeyboard
         visible={visible}
         title="标题"
-        customKey={['.']}
+        custom={['.']}
         onChange={onChange}
         onDelete={onDelete}
         onClose={() => setVisible(false)}
@@ -189,7 +189,7 @@ const App = () => {
        />
         <NumberKeyboard
         visible={visible}
-        customKey={['X']}
+        custom={['X']}
         onChange={onChange}
         onDelete={onDelete}
         onClose={() => setVisible(false)}
@@ -214,7 +214,7 @@ export default App;
 | title | 键盘标题 | string | - |
 | type | 键盘模式  | string | `default`：默认样式 `rightColumn`：带右侧栏 |
 | random | 随机数  | boolean | `false` |
-| customKey | 自定义键盘额外的键  | string[] | 数组形式最多支持添加2个,超出默认取前2项 |
+| custom | 自定义键盘额外的键  | string[] | 数组形式最多支持添加2个,超出默认取前2项 |
 | confirmText  | 自定义完成按钮文字，如"支付"，"下一步"，"提交"等 | string | `完成` |
 | popClass    | 自定义弹框类名     | string         | -             |
 

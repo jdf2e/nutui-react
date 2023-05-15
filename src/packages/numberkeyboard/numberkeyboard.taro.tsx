@@ -19,7 +19,7 @@ export interface NumberKeyboardProps {
   visible: boolean
   overlay: boolean
   type: string
-  customKey: Array<string>
+  custom: Array<string>
   random: boolean
   popClass: string
   className: string
@@ -34,7 +34,7 @@ const defaultProps = {
   visible: false,
   overlay: false,
   type: 'default',
-  customKey: [],
+  custom: [],
   className: '',
   random: false,
   popClass: '',
@@ -51,7 +51,7 @@ export const NumberKeyboard: FunctionComponent<
     visible,
     overlay,
     type,
-    customKey,
+    custom,
     random,
     popClass,
     style,
@@ -73,10 +73,10 @@ export const NumberKeyboard: FunctionComponent<
       id: 'lock',
       type: 'lock',
     }
-    if (customKey) {
-      const customKeys: Array<string> = Array.isArray(customKey)
-        ? customKey
-        : [customKey]
+    if (custom) {
+      const customKeys: Array<string> = Array.isArray(custom)
+        ? custom
+        : [custom]
       if (customKeys.length > 0) {
         const newCustomKey = customKeys[0]
         leftBottomKey = {
@@ -107,8 +107,8 @@ export const NumberKeyboard: FunctionComponent<
 
   const genCustomKeys = () => {
     const keys = getBasicKeys()
-    if (!customKey) return []
-    let customKeys = Array.isArray(customKey) ? customKey : [customKey]
+    if (!custom) return []
+    let customKeys = Array.isArray(custom) ? custom : [custom]
     if (customKeys.length > 2) {
       customKeys = [customKeys[0], customKeys[1]]
     }
@@ -205,8 +205,8 @@ export const NumberKeyboard: FunctionComponent<
                       'key-board-wrapper-large':
                         item.id === 0 &&
                         type === 'rightColumn' &&
-                        Array.isArray(customKey) &&
-                        customKey.length === 1,
+                        Array.isArray(custom) &&
+                        custom.length === 1,
                     })}
                   >
                     <div

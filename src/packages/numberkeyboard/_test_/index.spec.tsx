@@ -15,28 +15,28 @@ test('should match snapshot', async () => {
   const { container } = render(<NumberKeyboard visible />)
   expect(container).toMatchSnapshot()
 })
-test('should match customKey snapshot', async () => {
+test('should match custom snapshot', async () => {
   const { container } = render(
-    <NumberKeyboard visible type="rightColumn" customKey={['.', 'x', 'r']} />
+    <NumberKeyboard visible type="rightColumn" custom={['.', 'x', 'r']} />
   )
   expect(container.querySelector('.finish')).toHaveTextContent('完成')
   expect(container).toMatchSnapshot()
 })
 test('default keyboard custom keyboard', async () => {
   const { container } = render(
-    <NumberKeyboard visible customKey={['.', 'x', 'r']} />
+    <NumberKeyboard visible custom={['.', 'x', 'r']} />
   )
   expect(container.querySelectorAll('.key')[10]).toHaveTextContent('0')
 })
 test('Has title and custom keyboard length greater than 1', async () => {
   const { container } = render(
-    <NumberKeyboard visible title="标题" customKey={['.', 'x', 'r']} />
+    <NumberKeyboard visible title="标题" custom={['.', 'x', 'r']} />
   )
   expect(container.querySelectorAll('.key')[10]).toHaveTextContent('0')
 })
 test('Has title and custom keyboard length equal 1', async () => {
   const { container } = render(
-    <NumberKeyboard visible title="标题" customKey={['.']} />
+    <NumberKeyboard visible title="标题" custom={['.']} />
   )
   expect(container.querySelectorAll('.key')[9]).toHaveTextContent('.')
 })

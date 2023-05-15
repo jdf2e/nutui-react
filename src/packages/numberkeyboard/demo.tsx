@@ -70,7 +70,7 @@ const NumberKeyboardDemo = () => {
       <NumberKeyboard
         visible={visible2}
         type="rightColumn"
-        customKey={['.', 'x']}
+        custom={['.', 'x']}
         onChange={onChange}
         onDelete={onDelete}
         onClose={() => setVisible2(false)}
@@ -99,7 +99,7 @@ const NumberKeyboardDemo = () => {
       <NumberKeyboard
         visible={visible4}
         title={translated.title}
-        customKey={['.']}
+        custom={['.']}
         onChange={onChange}
         onDelete={onDelete}
         onClose={() => setVisible4(false)}
@@ -113,7 +113,7 @@ const NumberKeyboardDemo = () => {
       />
       <NumberKeyboard
         visible={visible5}
-        customKey={['X']}
+        custom={['X']}
         onChange={onChange}
         onDelete={onDelete}
         onClose={() => setVisible5(false)}
