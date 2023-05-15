@@ -331,7 +331,7 @@
 - 移除 paginationColor，通过 indicator 的 CSS 变量控制
 - 移除 paginationBgColor，通过 indicator 的 CSS 变量控制
 - 移除 pageContent，通过 indicator 实现
-- initPage 重命名为 defaultIndex
+- initPage 重命名为 defaultValue
 - paginationVisible 重命名为 indicator，类型改为 ReactNode
 - isPreventDefault 重命名为 preventDefault
 - isStopPropagation 重命名为 stopPropagation
