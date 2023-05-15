@@ -1,40 +1,5 @@
 @import '../popup/popup.scss';
 
-.nut-theme-dark {
-  .nut-numberkeyboard {
-    background-color: $dark5;
-
-    &__body {
-      background-color: $dark5;
-      color: $dark1;
-
-      .nut-numberkeyboard__body__keys,
-      .nut-numberkeyboard__sidebar {
-        .key-board-wrapper {
-          background-color: $dark5;
-
-          .key {
-            background-color: $dark4;
-            color: $dark1;
-          }
-        }
-      }
-    }
-
-    .nut-numberkeyboard__header {
-      .nut-numberkeyboard__header__tit {
-        color: $dark1;
-      }
-    }
-
-    &__header {
-      &__close {
-        color: $dark1 !important;
-      }
-    }
-  }
-}
-
 .nut-numberkeyboard {
   width: $numberkeyboard-width;
   padding: $numberkeyboard-padding;
@@ -81,7 +46,7 @@
       flex-wrap: wrap;
     }
 
-    .key-board-wrapper {
+    .keyboard-wrapper {
       position: relative;
       flex: 1;
       flex-basis: 33%;
@@ -100,10 +65,9 @@
         color: $numberkeyboard-key-font-color;
         border-radius: $numberkeyboard-key-border-radius;
         cursor: pointer;
-      }
-
-      .active {
-        background-color: $numberkeyboard-key-active-background-color;
+        &:active {
+          background-color: $numberkeyboard-key-active-background-color;
+        }
       }
 
       img {
@@ -112,7 +76,7 @@
       }
     }
 
-    .key-board-wrapper-large {
+    .keyboard-wrapper-large {
       flex-basis: 66%;
     }
 
@@ -121,7 +85,7 @@
       flex: 1;
       flex-direction: column;
 
-      .key-board-wrapper {
+      .keyboard-wrapper {
         .key {
           position: absolute;
           top: 0;

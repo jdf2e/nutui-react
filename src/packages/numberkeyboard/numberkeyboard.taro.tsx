@@ -14,7 +14,7 @@ export interface NumberKeyboardProps extends BasicComponent {
   title?: ReactNode
   confirmText?: string
   overlay?: boolean
-  type: string
+  type: 'default' | 'rightColumn'
   custom: Array<string>
   random: boolean
   popClass?: string
@@ -52,14 +52,8 @@ export const NumberKeyboard: FunctionComponent<
     onClose,
     onConfirm,
   } = props
-  const b = bem('numberkeyboard')
-  const [show, setShow] = useState<boolean | undefined>(visible)
-  const [clickKeyIndex, setClickKeyIndex] =
-    useState<string | undefined>(undefined)
+  const classPrefix = 'nut-numberkeyboard'
   const [keysList, setKeysList] = useState<Array<any> | undefined>([])
-  useEffect(() => {
-    setShow(visible)
-  }, [visible])
   const defaultKey = () => {
     let leftBottomKey = {
       id: 'lock',
@@ -134,19 +128,14 @@ export const NumberKeyboard: FunctionComponent<
     return keys
   }
   useEffect(() => {
-    if (props.type === 'rightColumn' || props.title) {
+    if (type === 'rightColumn') {
       setKeysList(genCustomKeys())
     } else {
       setKeysList(defaultKey())
     }
-  }, [])
+  }, [type])
 
-  const onTouchstart = (
-    item: { id: string; type: string },
-    event: React.TouchEvent<HTMLElement>
-  ) => {
-    event.stopPropagation()
-    setClickKeyIndex(item.id)
+  const handleClick = (item: { id: string; type: string }) => {
     if (item.type === 'number' || item.type === 'custom') {
       onChange && onChange(item.id)
     }
@@ -156,18 +145,15 @@ export const NumberKeyboard: FunctionComponent<
     if (item.type === 'delete') {
       onDelete && onDelete()
     }
-  }
-  const onTouchMove = (event: React.TouchEvent<HTMLElement>) => {
-    event.stopPropagation()
-  }
-  const onTouchEnd = (event: React.TouchEvent<HTMLElement>) => {
-    event.preventDefault()
-    setClickKeyIndex(undefined)
+    if (item.type === 'finish') {
+      onConfirm && onConfirm()
+      onClose && onClose()
+    }
   }
   return (
     <div>
       <Popup
-        visible={show}
+        visible={visible}
         position="bottom"
         className={popClass}
         onClickOverlay={onClose}
@@ -175,26 +161,29 @@ export const NumberKeyboard: FunctionComponent<
         onClickCloseIcon={onClose}
         overlayStyle={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
       >
-        <div className={`${b()} ${className}`} style={{ ...style }}>
+        <div className={classNames(classPrefix, className)} style={style}>
           {title && (
-            <div className={b('header')}>
-              <h3 className={b('header__tit')}>{title}</h3>
+            <div className={`${classPrefix}__header`}>
+              <h3 className={`${classPrefix}__header__tit`}>{title}</h3>
               {type === 'default' && (
-                <span className={b('header__close')} onClick={onClose}>
+                <span
+                  className={`${classPrefix}__header__close`}
+                  onClick={onClose}
+                >
                   {locale.done}
                 </span>
               )}
             </div>
           )}
-          <div className={b('body')}>
-            <div className={b('body__keys')}>
+          <div className={`${classPrefix}__body`}>
+            <div className={`${classPrefix}__body__keys`}>
               {keysList?.map((item: any, index: number) => {
                 return (
                   <div
                     key={index}
                     className={classNames({
-                      'key-board-wrapper': true,
-                      'key-board-wrapper-large':
+                      'keyboard-wrapper': true,
+                      'keyboard-wrapper-large':
                         item.id === 0 &&
                         type === 'rightColumn' &&
                         Array.isArray(custom) &&
@@ -204,13 +193,10 @@ export const NumberKeyboard: FunctionComponent<
                     <div
                       className={classNames({
                         key: true,
-                        active: item.id === clickKeyIndex,
                         lock: item.type === 'lock',
                         delete: item.type === 'delete',
                       })}
-                      onTouchStart={(event) => onTouchstart(item, event)}
-                      onTouchMove={onTouchMove}
-                      onTouchEnd={onTouchEnd}
+                      onClick={() => handleClick(item)}
                     >
                       {(item.type === 'number' || item.type === 'custom') && (
                         <div>{item.id}</div>
@@ -233,18 +219,13 @@ export const NumberKeyboard: FunctionComponent<
               })}
             </div>
             {type === 'rightColumn' && (
-              <div className={b('sidebar')}>
-                <div className="key-board-wrapper">
+              <div className={`${classPrefix}__sidebar`}>
+                <div className="keyboard-wrapper">
                   <div
-                    className={classNames({
-                      key: true,
-                      active: clickKeyIndex === 'delete',
-                    })}
-                    onTouchStart={(event) =>
-                      onTouchstart({ id: 'delete', type: 'delete' }, event)
+                    className={classNames({ key: true })}
+                    onClick={() =>
+                      handleClick({ id: 'delete', type: 'delete' })
                     }
-                    onTouchMove={onTouchMove}
-                    onTouchEnd={onTouchEnd}
                   >
                     <img
                       src="https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png"
@@ -253,14 +234,13 @@ export const NumberKeyboard: FunctionComponent<
                   </div>
                 </div>
                 <div
-                  className="key-board-wrapper key-board-finish"
-                  onClick={onConfirm}
+                  className="keyboard-wrapper keyboard-finish"
+                  onClick={() => handleClick({ id: 'finish', type: 'finish' })}
                 >
                   <div
                     className={classNames({
                       key: true,
                       finish: true,
-                      activeFinsh: clickKeyIndex === 'finish',
                     })}
                   >
                     {confirmText || locale.done}
