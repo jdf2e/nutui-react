@@ -225,7 +225,7 @@ export default App
 
 :::
 
-### Right navigation is not displayed
+### Right guide is not displayed
 
 :::demo
 
@@ -554,6 +554,7 @@ export default App
 | floorKey             | Index key value                                                      | string  | `title` |
 | list             | Index list                                                         | Array（`item` needs to contain `id` and `name` attributes, and `name` supports passing in `html` structure）  | `[{id: 0, name: ''}]` |
 | sticky            | Whether the index is ceiling                                                    | boolean  | `false` |
+| guide| Right guide is not displayed | boolean  | `true` |
 | spaceHeight             | Up and down spacing of right anchor point              | number  | `23` |
 | titleHeight             | Height of left index                                                     | number  | `35` |
 | onClickItem  | Click content | `onClickItem:(key: string, item: { id: number, name: string })=>void` |`false`|

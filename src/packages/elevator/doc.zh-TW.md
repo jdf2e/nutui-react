@@ -556,6 +556,7 @@ export default App
 | floorKey           | 索引 key 值    | string                                                      | `title`               |
 | list           | 索引列表       | Array（item 需包含 id、name 屬性, name 支持傳入 html 結構） | `[{id: 0, name: ''}]` |
 | sticky    | 索引是否吸頂 | boolean  | `false` |
+| guide| 展示右側導航 | boolean  | `true` |
 | spaceHeight | 右側錨點的上下間距 | number  | `23` |
 | titleHeight   | 左側索引的高度 | number  | `35` |
 | onClickItem  | 點擊內容 | `onClickItem:(key: string, item: { id: number, name: string })=>void` |`false`|

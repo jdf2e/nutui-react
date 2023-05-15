@@ -69,6 +69,7 @@
 - `acceptKey` 重命名为 `floorKey`
 - `indexList` 重命名为 `list`
 - `isSticky` 重命名为 `sticky`
+- 新增`guide`, 是否展示右侧导航
 #### FixedNav
 - 删除 fixednavClass，通过 className 实现
 - unActiveText 重命名为 inactiveText

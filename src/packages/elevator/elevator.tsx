@@ -19,7 +19,7 @@ export interface ElevatorProps extends BasicComponent {
   sticky: boolean
   spaceHeight: number
   titleHeight: number
-  navigation: boolean
+  guide: boolean
   children: React.ReactNode
   onClickItem: (key: string, item: ElevatorData) => void
   onClickIndex: (key: string) => void
@@ -32,7 +32,7 @@ const defaultProps = {
   sticky: false,
   spaceHeight: 23,
   titleHeight: 35,
-  navigation: true,
+  guide: true,
 } as ElevatorProps
 interface ElevatorData {
   name: string
@@ -49,7 +49,7 @@ export const Elevator: FunctionComponent<
     sticky,
     spaceHeight,
     titleHeight,
-    navigation,
+    guide,
     className,
     style,
     onClickItem,
@@ -251,7 +251,7 @@ export const Elevator: FunctionComponent<
           })}
         </div>
       </div>
-      {navigation ? (
+      {guide ? (
         <>
           {list.length && scrollStart ? (
             <div
