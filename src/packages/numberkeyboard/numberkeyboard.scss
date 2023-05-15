@@ -7,7 +7,7 @@
   user-select: none;
   background-color: $gray4;
 
-  .nut-numberkeyboard__header {
+  &__header {
     position: relative;
     display: flex;
     align-items: center;
@@ -18,12 +18,12 @@
     color: $numberkeyboard-header-color;
     font-size: $numberkeyboard-header-font-size;
 
-    .nut-numberkeyboard__header__tit {
+    &__tit {
       color: $title-color;
       display: inline-block;
     }
 
-    .nut-numberkeyboard__header__close {
+    &__close {
       position: absolute;
       display: block;
       right: 0;
@@ -36,11 +36,11 @@
     }
   }
 
-  .nut-numberkeyboard__body {
+  &__body {
     display: flex;
     padding: 6px 0 0 6px;
 
-    .nut-numberkeyboard__body__keys {
+    &__keys {
       display: flex;
       flex: 3;
       flex-wrap: wrap;
@@ -75,37 +75,27 @@
         height: 24px;
       }
     }
+  }
 
-    .keyboard-wrapper-large {
-      flex-basis: 66%;
-    }
+  &__sidebar {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
 
-    .nut-numberkeyboard__sidebar {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
+    .keyboard-wrapper {
+      .key {
+        position: absolute;
+        top: 0;
+        right: 6px;
+        bottom: 6px;
+        left: 0;
+        height: auto;
+      }
 
-      .keyboard-wrapper {
-        .key {
-          position: absolute;
-          top: 0;
-          right: 6px;
-          bottom: 6px;
-          left: 0;
-          height: auto;
-        }
-
-        .finish {
-          font-size: $numberkeyboard-key-finish-font-size;
-          color: $numberkeyboard-key-finish-font-color;
-          background-color: $numberkeyboard-key-finish-background-color;
-        }
-
-        .activeFinsh {
-          font-size: $numberkeyboard-key-finish-font-size;
-          color: $numberkeyboard-key-finish-font-color;
-          background-color: $numberkeyboard-key-activeFinsh-background-color;
-        }
+      .finish {
+        font-size: $numberkeyboard-key-finish-font-size;
+        color: $numberkeyboard-key-finish-font-color;
+        background-color: $numberkeyboard-key-finish-background-color;
       }
     }
   }

@@ -65,7 +65,7 @@ export const NumberKeyboard: FunctionComponent<
 
   const getCustomKeys = () => {
     const customKeys = [
-      { id: 'lock', type: 'lock' },
+      { id: 'close', type: 'close' },
       { id: '0', type: 'num' },
       { id: 'delete', type: 'delete' },
     ]
@@ -87,7 +87,7 @@ export const NumberKeyboard: FunctionComponent<
     if (item.type === 'num' || item.type === 'custom') {
       onChange && onChange(item.id)
     }
-    if (item.type === 'lock') {
+    if (item.type === 'close') {
       onClose && onClose()
     }
     if (item.type === 'delete') {
@@ -126,21 +126,11 @@ export const NumberKeyboard: FunctionComponent<
             <div className={`${classPrefix}__body__keys`}>
               {keysList?.map((item: any, index: number) => {
                 return (
-                  <div
-                    key={index}
-                    className={classNames({
-                      'keyboard-wrapper': true,
-                      'keyboard-wrapper-large':
-                        item.id === 0 &&
-                        type === 'rightColumn' &&
-                        Array.isArray(custom) &&
-                        custom.length === 1,
-                    })}
-                  >
+                  <div key={index} className="keyboard-wrapper">
                     <div
                       className={classNames({
                         key: true,
-                        lock: item.type === 'lock',
+                        lock: item.type === 'close',
                         delete: item.type === 'delete',
                       })}
                       onClick={() => handleClick(item)}
@@ -148,7 +138,7 @@ export const NumberKeyboard: FunctionComponent<
                       {(item.type === 'num' || item.type === 'custom') && (
                         <div>{item.id}</div>
                       )}
-                      {item.type === 'lock' && (
+                      {item.type === 'close' && (
                         <img
                           src="https://img11.360buyimg.com/imagetools/jfs/t1/146371/38/8485/738/5f606425Eca239740/14f4b4f5f20d8a68.png"
                           alt=""
@@ -186,14 +176,7 @@ export const NumberKeyboard: FunctionComponent<
                     handleClick({ id: 'confirm', type: 'confirm' })
                   }
                 >
-                  <div
-                    className={classNames({
-                      key: true,
-                      finish: true,
-                    })}
-                  >
-                    {confirmText || locale.done}
-                  </div>
+                  <div className="key finish">{confirmText || locale.done}</div>
                 </div>
               </div>
             )}
