@@ -271,6 +271,7 @@
 #### AnimatingNumbers
 #### Audio
 - url 重命名为 src
+- autoplay 重命名为 autoPlay
 - onFastBack 重命名为 onBack
 - onPlayEnd 重命名为 onEnd
 #### Avatar
