@@ -1,10 +1,10 @@
 # PullToRefresh
 
-### Intro
+## Intro
 
 An interaction to load new content with a finger pull-to-refresh in a list.
 
-### Install
+## Install
 
 ```js
 import { PullToRefresh } from '@nutui/nutui-react';
@@ -40,11 +40,11 @@ export default App
 
 :::
 
-## API
+## PullToRefresh
 
 ### Props
 
-| Field | Description | Type | Default Value |
+| Property | Description | Type | Default |
 |---------------|---------------------------------- |------------|--|
 | canReleaseText | Release prompt text | ReactNode | `Release immediate refresh` |
 | completeText | Prompt text when complete | ReactNode | `Refresh successful` |
@@ -55,9 +55,5 @@ export default App
 | refreshingText | Refresh text when refreshing | ReactNode | `Loading...` |
 | renderText | Customize the drop-down prompt text according to the drop-down state | ReactNode | `-` |
 | threshold | How far to pull down to trigger refresh, the unit is px | number | `60` |
+| onRefresh  | the handler function for triggering a refresh | `() => Promise<any>` | - |
 
-### Events
-
-| 事件名 | 说明           | 类型                   |
-|--------|----------------|----------------------|
-| onRefresh  | 触发刷新时的处理函数 | `() => Promise<any>` |

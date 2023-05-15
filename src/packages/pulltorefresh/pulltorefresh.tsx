@@ -47,6 +47,7 @@ const defaultProps = {
 export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   p
 ) => {
+  const classPrefix = 'nut-pulltorefresh'
   const { locale } = useConfig()
   const props: PullToRefreshProps = {
     ...defaultProps,
@@ -189,18 +190,18 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   return (
     <animated.div
       ref={elementRef}
-      className={`nut-pulltorefresh ${props.className}`}
+      className={`${classPrefix} ${props.className}`}
       style={props.style}
     >
-      <animated.div style={springStyles} className="nut-pulltorefresh-head">
+      <animated.div style={springStyles} className={`${classPrefix}-head`}>
         <div
-          className="nut-pulltorefresh-head-content"
+          className={`${classPrefix}-head-content`}
           style={{ height: headHeight }}
         >
           {renderStatusText()}
         </div>
       </animated.div>
-      <div className="nut-pulltorefresh-content">{props.children}</div>
+      <div className={`${classPrefix}-content`}>{props.children}</div>
     </animated.div>
   )
 }

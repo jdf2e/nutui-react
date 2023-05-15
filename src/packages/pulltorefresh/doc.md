@@ -1,10 +1,10 @@
 # PullToRefresh 下拉刷新
 
-### 介绍
+## 介绍
 
 在列表中通过手指下拉刷新加载新内容的交互操作。
 
-### 安装
+## 安装
 
 ```js
 import { PullToRefresh } from '@nutui/nutui-react';
@@ -41,7 +41,7 @@ export default App
 
 :::
 
-## API
+## PullToRefresh
 
 ### Props
 
@@ -56,9 +56,5 @@ export default App
 | refreshingText | 刷新时的提示文案 | ReactNode | `加载中……` |
 | renderText | 根据下拉状态，自定义下拉提示文案 | ReactNode | `-` |
 | threshold | 触发刷新需要下拉多少距离，单位为 px | number | `60` |
+| onRefresh  | 触发刷新时的处理函数 | `() => Promise<any>` | - |
 
-### Events
-
-| 事件名 | 说明           | 类型                   |
-|--------|----------------|----------------------|
-| onRefresh  | 触发刷新时的处理函数 | `() => Promise<any>` |
