@@ -1,48 +1,39 @@
-import React, {
-  CSSProperties,
-  FunctionComponent,
-  useEffect,
-  useState,
-} from 'react'
+import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import bem from '@/utils/bem'
 import Popup from '@/packages/popup'
 import { useConfig } from '@/packages/configprovider'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface NextListObj {
   type: string
   id: string
 }
-export interface NumberKeyboardProps {
-  confirmText: string
-  title: string
+export interface NumberKeyboardProps extends BasicComponent {
   visible: boolean
-  overlay: boolean
+  title?: ReactNode
+  confirmText?: string
+  overlay?: boolean
   type: string
   custom: Array<string>
   random: boolean
-  popClass: string
-  className: string
-  style?: CSSProperties
+  popClass?: string
   onChange?: (value: string) => void
   onDelete?: () => void
-  onClose: () => void
+  onClose?: () => void
+  onConfirm?: () => void
 }
 const defaultProps = {
-  confirmText: '',
-  title: '',
+  ...ComponentDefaults,
   visible: false,
-  overlay: true,
   type: 'default',
   custom: [],
-  className: '',
   random: false,
-  popClass: '',
-  onClose: () => {},
 } as NumberKeyboardProps
+
 export const NumberKeyboard: FunctionComponent<
   Partial<NumberKeyboardProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'title'>
 > = (props) => {
   const { locale } = useConfig()
   const {
@@ -59,6 +50,7 @@ export const NumberKeyboard: FunctionComponent<
     onChange,
     onDelete,
     onClose,
+    onConfirm,
   } = props
   const b = bem('numberkeyboard')
   const [show, setShow] = useState<boolean | undefined>(visible)
@@ -142,7 +134,7 @@ export const NumberKeyboard: FunctionComponent<
     return keys
   }
   useEffect(() => {
-    if (props.type === 'rightColumn' || props.title !== '') {
+    if (props.type === 'rightColumn' || props.title) {
       setKeysList(genCustomKeys())
     } else {
       setKeysList(defaultKey())
@@ -184,16 +176,16 @@ export const NumberKeyboard: FunctionComponent<
         overlayStyle={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
       >
         <div className={`${b()} ${className}`} style={{ ...style }}>
-          {title ? (
+          {title && (
             <div className={b('header')}>
               <h3 className={b('header__tit')}>{title}</h3>
-              {type === 'default' ? (
+              {type === 'default' && (
                 <span className={b('header__close')} onClick={onClose}>
                   {locale.done}
                 </span>
-              ) : null}
+              )}
             </div>
-          ) : null}
+          )}
           <div className={b('body')}>
             <div className={b('body__keys')}>
               {keysList?.map((item: any, index: number) => {
@@ -220,27 +212,27 @@ export const NumberKeyboard: FunctionComponent<
                       onTouchMove={onTouchMove}
                       onTouchEnd={onTouchEnd}
                     >
-                      {item.type === 'number' || item.type === 'custom' ? (
+                      {(item.type === 'number' || item.type === 'custom') && (
                         <div>{item.id}</div>
-                      ) : null}
-                      {item.type === 'lock' ? (
+                      )}
+                      {item.type === 'lock' && (
                         <img
                           src="https://img11.360buyimg.com/imagetools/jfs/t1/146371/38/8485/738/5f606425Eca239740/14f4b4f5f20d8a68.png"
                           alt=""
                         />
-                      ) : null}
-                      {item.type === 'delete' ? (
+                      )}
+                      {item.type === 'delete' && (
                         <img
                           src="https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png"
                           alt=""
                         />
-                      ) : null}
+                      )}
                     </div>
                   </div>
                 )
               })}
             </div>
-            {type === 'rightColumn' ? (
+            {type === 'rightColumn' && (
               <div className={b('sidebar')}>
                 <div className="key-board-wrapper">
                   <div
@@ -262,7 +254,7 @@ export const NumberKeyboard: FunctionComponent<
                 </div>
                 <div
                   className="key-board-wrapper key-board-finish"
-                  onClick={onClose}
+                  onClick={onConfirm}
                 >
                   <div
                     className={classNames({
@@ -275,7 +267,7 @@ export const NumberKeyboard: FunctionComponent<
                   </div>
                 </div>
               </div>
-            ) : null}
+            )}
           </div>
         </div>
       </Popup>

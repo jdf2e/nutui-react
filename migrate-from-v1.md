@@ -176,6 +176,8 @@
 #### NumberKeyboard
 - randomKeys 重命名为 random
 - customKey 重命名为 custom
+- title 类型变更为 ReactNode
+- 新增 onConfirm 事件
 #### Picker
 - `isVisible` 重命名为 `visible`
 - `listData` 重命名为 `options`

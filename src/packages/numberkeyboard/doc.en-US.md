@@ -1,20 +1,22 @@
-#  NumberKeyboard 
+# NumberKeyboard
 
-### Introduce
+## Intro
 
 Virtual numeric keypad, used for scenarios where payment passwords are entered.
 
-### Install
+## Install
+
 ```ts
 // react
 import { NumberKeyboard } from '@nutui/nutui-react';
 ```
 
-
 ## Demo
 
 ### Default Keyboard
+
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
@@ -48,10 +50,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### Keyboard With Sidebar
+
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
@@ -87,10 +92,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
-###  Random Key Order
+### Random Key Order
+
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
@@ -125,9 +133,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### Show Keyboard With Title
+
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
@@ -163,9 +175,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### Show IdNumber Keyboard
+
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
@@ -200,33 +216,26 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
-
-
-## API
+## NumberKeyboard
 
 ### Props
 
-| Attribute | Description | Type | Default |
-|----- | ----- | ----- | ----- |
-| visible | Whether to show keyboard  | boolean | `false` | 
-| title | Keyboard title | string | - |
-| type | Keyboard type  | string | `default`, `rightColumn` |
-| random | Whether to shuffle the order of keys  | boolean | `false` |
-| custom | Content of bottom left key   | string[] |  Array form supports adding up to two |
-| confirmText  | Custom done button text,Such as "pay", "next", "submit" | string | `done` |
-| popClass    | Custom bullet box classname     | string         | -             |
-
-
-### Event
-
-| Event | Description | Arguments
-|----- | ----- | -----
-| onChange  | Emitted when a key is pressed                   | `value: string` |
-| onDelete | 	Emitted when the delete key is pressed                | -             |
-| onClose  | Emitted when the close button or non-keyboard area is clicked is clicked   | -             |
-
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| visible | Whether to show keyboard | `boolean` | `false` |
+| title | Keyboard title | `ReactNode` | - |
+| type | Keyboard type | `string` | `default, rightColumn` |
+| random | Whether to shuffle the order of keys | `boolean` | `false` |
+| custom | Content of bottom left key | `string[]` | `Array form supports adding up to two` |
+| confirmText | Custom done button text,Such as "pay", "next", "submit" | `string` | `done` |
+| popClass | Custom bullet box classname | `string` | - |
+| onChange | Emitted when a key is pressed | `(value: string) => void` | - |
+| onDelete | Emitted when the delete key is pressed | - | - |
+| onClose | Emitted when the close button or non-keyboard area is clicked is clicked | - | - |
+| onConfirm | Emitted when confirm key is pressed | - | - |
 
 ## Theming
 
