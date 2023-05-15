@@ -84,7 +84,7 @@ const NumberKeyboardDemo = () => {
       />
       <NumberKeyboard
         visible={visible3}
-        randomKeys
+        random
         onChange={onChange}
         onDelete={onDelete}
         onClose={() => setVisible3(false)}

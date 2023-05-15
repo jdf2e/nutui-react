@@ -46,7 +46,7 @@ test('should shuffle key order when using random-key prop', async () => {
     value = Number(v)
   }
   const { container } = render(
-    <NumberKeyboard visible randomKeys onChange={onChange} />
+    <NumberKeyboard visible random onChange={onChange} />
   )
   const keys: number[] = []
   const clickKeys: number[] = []

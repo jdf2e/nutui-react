@@ -114,7 +114,7 @@ const App = () => {
        />
         <NumberKeyboard
         visible={visible}
-        randomKeys
+        random
         onChange={onChange}
         onDelete={onDelete}
         onClose={() => setVisible(false)}
@@ -213,7 +213,7 @@ export default App;
 | visible | Whether to show keyboard  | boolean | `false` | 
 | title | Keyboard title | string | - |
 | type | Keyboard type  | string | `default`, `rightColumn` |
-| randomKeys | Whether to shuffle the order of keys  | boolean | `false` |
+| random | Whether to shuffle the order of keys  | boolean | `false` |
 | customKey | Content of bottom left key   | string[] |  Array form supports adding up to two |
 | confirmText  | Custom done button text,Such as "pay", "next", "submit" | string | `done` |
 | popClass    | Custom bullet box classname     | string         | -             |

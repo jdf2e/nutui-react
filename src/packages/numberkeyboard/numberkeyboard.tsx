@@ -20,7 +20,7 @@ export interface NumberKeyboardProps {
   overlay: boolean
   type: string
   customKey: Array<string>
-  randomKeys: boolean
+  random: boolean
   popClass: string
   className: string
   style?: CSSProperties
@@ -36,7 +36,7 @@ const defaultProps = {
   type: 'default',
   customKey: [],
   className: '',
-  randomKeys: false,
+  random: false,
   popClass: '',
   onClose: () => {},
 } as NumberKeyboardProps
@@ -52,7 +52,7 @@ export const NumberKeyboard: FunctionComponent<
     overlay,
     type,
     customKey,
-    randomKeys,
+    random,
     popClass,
     style,
     className,
@@ -98,7 +98,7 @@ export const NumberKeyboard: FunctionComponent<
     for (let i = 1; i <= 9; i++) {
       keys.push({ id: i, type: 'number' })
     }
-    if (randomKeys) {
+    if (random) {
       return keys.sort(() => (Math.random() > 0.5 ? 1 : -1))
     }
 

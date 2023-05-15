@@ -114,7 +114,7 @@ const App = () => {
        />
         <NumberKeyboard
          visible={visible}
-        randomKeys
+        random
         onChange={onChange}
         onDelete={onDelete}
         onClose={() => setVisible(false)}
@@ -213,7 +213,7 @@ export default App;
 | visible | 是否顯示鍵盤 | boolean | `false` | 
 | title | 鍵盤標題 | string | - |
 | type | 鍵盤模式  | string | `default`：默認樣式 `rightColumn`：帶右側欄 |
-| randomKeys | 隨機數  | boolean | `false` |
+| random | 隨機數  | boolean | `false` |
 | customKey | 自定義鍵盤額外的鍵  | string[] | 數組形式最多支持添加2個,超出默認取前2項 |
 | confirmText  | 自定義完成按鈕文字，如"支付"，"下一步"，"提交"等 | string | `完成` |
 | popClass    | 自定義彈框類名     | string         | -             |

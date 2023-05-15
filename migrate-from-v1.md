@@ -174,6 +174,7 @@
 - 删除 `inputWidth` 和 `buttonSize`, 通过css变量实现
 - 新增taro的`formatter`属性开发
 #### NumberKeyboard
+- randomKeys 重命名为 random
 #### Picker
 - `isVisible` 重命名为 `visible`
 - `listData` 重命名为 `options`
