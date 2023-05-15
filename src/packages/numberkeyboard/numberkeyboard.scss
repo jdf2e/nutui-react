@@ -65,7 +65,7 @@
         color: $numberkeyboard-key-font-color;
         border-radius: $numberkeyboard-key-border-radius;
         cursor: pointer;
-        &:active {
+        &.active {
           background-color: $numberkeyboard-key-active-background-color;
         }
       }
@@ -92,10 +92,13 @@
         height: auto;
       }
 
-      .finish {
+      .confirm {
         font-size: $numberkeyboard-key-finish-font-size;
         color: $numberkeyboard-key-finish-font-color;
         background-color: $numberkeyboard-key-finish-background-color;
+        &.active {
+          background-color: rgba(255, 0, 0, 0.7);
+        }
       }
     }
   }

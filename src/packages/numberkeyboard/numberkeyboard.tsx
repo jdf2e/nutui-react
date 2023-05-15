@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, useMemo } from 'react'
+import React, { FunctionComponent, ReactNode, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import Popup from '@/packages/popup'
 import { useConfig } from '@/packages/configprovider'
@@ -83,20 +83,62 @@ export const NumberKeyboard: FunctionComponent<
     return [...getBasicKeys(), ...getCustomKeys()]
   }, [type, random, custom])
 
-  const handleClick = (item: { id: string; type: string }) => {
-    if (item.type === 'num' || item.type === 'custom') {
-      onChange && onChange(item.id)
+  const NumberKeyboardKey = (props: { item: any }) => {
+    const { item } = props
+    const [active, setActive] = useState(false)
+    const onTouchStart = () => {
+      setActive(true)
     }
-    if (item.type === 'close') {
-      onClose && onClose()
+    const onTouchEnd = (item: { id: string; type: string }) => {
+      setActive(false)
+      if (item.type === 'num' || item.type === 'custom') {
+        onChange && onChange(item.id)
+      }
+      if (item.type === 'close') {
+        onClose && onClose()
+      }
+      if (item.type === 'delete') {
+        onDelete && onDelete()
+      }
+      if (item.type === 'confirm') {
+        onConfirm && onConfirm()
+      }
     }
-    if (item.type === 'delete') {
-      onDelete && onDelete()
-    }
-    if (item.type === 'confirm') {
-      onConfirm && onConfirm()
-    }
+    return (
+      <div key={item.id} className="keyboard-wrapper">
+        <div
+          className={classNames({
+            key: true,
+            active,
+            close: item.type === 'close',
+            delete: item.type === 'delete',
+            confirm: item.type === 'confirm',
+          })}
+          onTouchStart={() => onTouchStart()}
+          onTouchEnd={() => onTouchEnd(item)}
+          onTouchCancel={() => onTouchEnd(item)}
+        >
+          {(item.type === 'num' || item.type === 'custom') && (
+            <div>{item.id}</div>
+          )}
+          {item.type === 'close' && (
+            <img
+              src="https://img11.360buyimg.com/imagetools/jfs/t1/146371/38/8485/738/5f606425Eca239740/14f4b4f5f20d8a68.png"
+              alt=""
+            />
+          )}
+          {item.type === 'delete' && (
+            <img
+              src="https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png"
+              alt=""
+            />
+          )}
+          {item.type === 'confirm' && <>{confirmText || locale.done}</>}
+        </div>
+      </div>
+    )
   }
+
   return (
     <div>
       <Popup
@@ -124,60 +166,26 @@ export const NumberKeyboard: FunctionComponent<
           )}
           <div className={`${classPrefix}__body`}>
             <div className={`${classPrefix}__body__keys`}>
-              {keysList?.map((item: any, index: number) => {
-                return (
-                  <div key={index} className="keyboard-wrapper">
-                    <div
-                      className={classNames({
-                        key: true,
-                        lock: item.type === 'close',
-                        delete: item.type === 'delete',
-                      })}
-                      onClick={() => handleClick(item)}
-                    >
-                      {(item.type === 'num' || item.type === 'custom') && (
-                        <div>{item.id}</div>
-                      )}
-                      {item.type === 'close' && (
-                        <img
-                          src="https://img11.360buyimg.com/imagetools/jfs/t1/146371/38/8485/738/5f606425Eca239740/14f4b4f5f20d8a68.png"
-                          alt=""
-                        />
-                      )}
-                      {item.type === 'delete' && (
-                        <img
-                          src="https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png"
-                          alt=""
-                        />
-                      )}
-                    </div>
-                  </div>
-                )
+              {keysList?.map((item: any) => {
+                return <NumberKeyboardKey key={item.id} item={item} />
               })}
             </div>
             {type === 'rightColumn' && (
               <div className={`${classPrefix}__sidebar`}>
-                <div className="keyboard-wrapper">
-                  <div
-                    className={classNames({ key: true })}
-                    onClick={() =>
-                      handleClick({ id: 'delete', type: 'delete' })
-                    }
-                  >
-                    <img
-                      src="https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div
-                  className="keyboard-wrapper keyboard-finish"
-                  onClick={() =>
-                    handleClick({ id: 'confirm', type: 'confirm' })
-                  }
-                >
-                  <div className="key finish">{confirmText || locale.done}</div>
-                </div>
+                <NumberKeyboardKey
+                  key="delete"
+                  item={{
+                    id: 'delete',
+                    type: 'delete',
+                  }}
+                />
+                <NumberKeyboardKey
+                  key="confirm"
+                  item={{
+                    id: 'confirm',
+                    type: 'confirm',
+                  }}
+                />
               </div>
             )}
           </div>
