@@ -1,85 +1,87 @@
-import React, {
-  FunctionComponent,
-  MouseEventHandler,
-  useContext,
-  useEffect,
-  useState,
-} from 'react'
+import React, { FunctionComponent, MouseEventHandler, useContext } from 'react'
 import { CheckChecked, CheckNormal } from '@nutui/icons-react-taro'
-
-import RadioContext from './context'
+import classNames from 'classnames'
+import RadioContext from '../radiogroup/context'
 import RadioGroup from '@/packages/radiogroup/index.taro'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
 type Shape = 'button' | 'round'
 type Position = 'right' | 'left'
 
 export interface RadioProps extends BasicComponent {
-  className: string
-  style: React.CSSProperties
   disabled: boolean
   checked: boolean
+  defaultChecked: boolean
   shape: Shape
-  textPosition: Position
-  value: string | number | boolean
+  labelPosition: Position
   icon: React.ReactNode
-  checkedIcon: React.ReactNode
-  iconSize: string | number
-  onChange: MouseEventHandler<HTMLDivElement>
+  activeIcon: React.ReactNode
+  value: string | number
+  onChange: (checked: boolean) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
-  className: '',
-  style: {},
   disabled: false,
-  checked: false,
   shape: 'round',
   value: '',
-  textPosition: 'right',
+  labelPosition: 'right',
   icon: null,
-  checkedIcon: null,
-  iconSize: 18,
-  onChange: (e) => {},
+  activeIcon: null,
+  onChange: (checked: boolean) => {},
 } as RadioProps
 export const Radio: FunctionComponent<
-  Partial<RadioProps> & React.HTMLAttributes<HTMLDivElement>
-> & { RadioGroup: typeof RadioGroup } = (props) => {
-  const { children } = {
+  Partial<RadioProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+> & { Group: typeof RadioGroup } = (props) => {
+  const classPrefix = 'nut-radio'
+
+  const {
+    children,
+    className,
+    style,
+    checked,
+    defaultChecked,
+    shape,
+    value,
+    icon,
+    activeIcon,
+    onChange,
+    ...others
+  } = {
     ...defaultProps,
     ...props,
   }
-  const {
-    className,
-    disabled,
-    checked,
-    shape,
-    textPosition,
-    value,
-    icon,
-    checkedIcon,
-    iconSize,
+  // eslint-disable-next-line prefer-const
+  let { labelPosition, disabled, ...rest } = others
+  // eslint-disable-next-line prefer-const
+  let [checkedStatement, setCheckedStatement] = usePropsValue<boolean>({
+    value: checked,
+    defaultValue: defaultChecked,
+    finalValue: false,
     onChange,
-    ...rest
-  } = props
-  const componentName = 'nut-radio'
-  const [checkedStatement, setCheckedStatement] = useState(checked)
-  const [valueStatement, setValueStatement] = useState(value)
-  const [disabledStatement, setDisabledStatement] = useState(disabled)
+  })
   const context = useContext(RadioContext)
-  useEffect(() => {
-    setDisabledStatement(disabled)
-    setValueStatement(value)
-    setCheckedStatement(checked)
-  }, [disabled, value, checked])
+  if (context) {
+    checkedStatement = context.value === value
+    if (context.labelPosition !== undefined) {
+      labelPosition = context.labelPosition
+    }
+    setCheckedStatement = (value: boolean) => {
+      if (value) {
+        context.check(props.value === undefined ? '' : props.value)
+      } else {
+        context.uncheck()
+      }
+    }
+  }
 
   const renderLabel = () => {
     return (
       <div
-        className={`${componentName}__label ${
-          disabledStatement ? `${componentName}__label--disabled` : ''
-        }`}
+        className={classNames(`${classPrefix}__label`, {
+          [`${classPrefix}__label--disabled`]: disabled,
+        })}
       >
         {children}
       </div>
@@ -88,69 +90,75 @@ export const Radio: FunctionComponent<
   const renderButton = () => {
     return (
       <div
-        className={`${componentName}__button ${
-          !disabledStatement &&
-          checkedStatement &&
-          `${componentName}__button--active`
-        } ${disabledStatement ? `${componentName}__button--disabled` : ''}`}
+        className={classNames(`${classPrefix}__button`, {
+          [`${classPrefix}__button--active`]: !disabled && checkedStatement,
+          [`${classPrefix}__button--disabled`]: disabled,
+        })}
       >
         {children}
       </div>
     )
   }
   const color = () => {
-    if (disabledStatement) {
-      return 'nut-radio__icon--disable'
+    return {
+      [`${classPrefix}__icon--disable`]: disabled,
+      [`${classPrefix}__icon`]: checkedStatement,
+      [`${classPrefix}__icon--unchecked`]: !checkedStatement,
     }
-    if (checkedStatement) {
-      return 'nut-radio__icon'
-    }
-    return 'nut-radio__icon--unchecked'
   }
   const renderIcon = () => {
-    const { icon, iconSize, checkedIcon } = props
+    const { icon, activeIcon } = props
 
-    if (!disabledStatement && checkedStatement) {
-      return React.isValidElement(checkedIcon) ? (
-        React.cloneElement<any>(checkedIcon, {
-          ...checkedIcon.props,
-          className: color(),
+    if (checkedStatement) {
+      return React.isValidElement(activeIcon) ? (
+        React.cloneElement<any>(activeIcon, {
+          ...activeIcon.props,
+          className: classNames(color()),
         })
       ) : (
-        <CheckChecked size={iconSize} className={color()} />
+        <CheckChecked className={classNames(color())} />
       )
     }
     return React.isValidElement(icon) ? (
       React.cloneElement<any>(icon, {
         ...icon.props,
-        className: color(),
+        className: classNames(color()),
       })
     ) : (
-      <CheckNormal size={iconSize} className={color()} />
+      <CheckNormal className={classNames(color())} />
     )
   }
-  const reverseState = textPosition === 'left'
+  const reverse = labelPosition === 'left'
   const renderRadioItem = () => {
     if (shape === 'button') {
       return renderButton()
     }
-    if (reverseState) {
-      return [renderLabel(), renderIcon()]
+    if (reverse) {
+      return (
+        <>
+          {renderLabel()}
+          {renderIcon()}
+        </>
+      )
     }
-    return [renderIcon(), renderLabel()]
+    return (
+      <>
+        {renderIcon()}
+        {renderLabel()}
+      </>
+    )
   }
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
-    if (disabledStatement || checkedStatement) return
+    if (disabled || checkedStatement) return
     setCheckedStatement(!checkedStatement)
-    onChange && onChange(e)
-    context && context.onChange(valueStatement)
   }
 
   return (
     <div
-      className={`nut-radio ${className} ${
-        reverseState ? `${componentName}--reverse` : ''
+      className={`${classPrefix} ${className} ${
+        reverse ? `${classPrefix}--reverse` : ''
       }`}
+      style={style}
       onClick={handleClick}
       {...rest}
     >
@@ -161,4 +169,4 @@ export const Radio: FunctionComponent<
 
 Radio.defaultProps = defaultProps
 Radio.displayName = 'NutRadio'
-Radio.RadioGroup = RadioGroup
+Radio.Group = RadioGroup

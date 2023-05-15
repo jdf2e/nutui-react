@@ -4,6 +4,7 @@ import { useTranslate } from '../../sites/assets/locale'
 import Radio from '@/packages/radio'
 import Cell from '@/packages/cell'
 import CellGroup from '@/packages/cellgroup'
+import Toast from '@/packages/toast'
 
 interface T {
   '74fc5d8a': string
@@ -49,11 +50,9 @@ const RadioDemo = () => {
       options: 'Render radios by configuring options',
     },
   })
-
-  const [checked1] = useState(true)
-  const [radioVal, setRadioVal] = useState(1)
-  const [radioVal1, setRadioVal1] = useState('1')
-  const [optionsDemo1, setOptionsDemo1] = useState([
+  const [checkedValue] = useState(1)
+  const [radioVal, setRadioVal] = useState<string | number>('1')
+  const [optionsDemo1] = useState([
     {
       label: '选项1',
       value: '1',
@@ -68,159 +67,121 @@ const RadioDemo = () => {
       value: '3',
     },
   ])
-
-  function handleChange(val: number | string | boolean) {
-    console.log(val)
-    setRadioVal(val as number)
+  const handleChange = (v: string | number) => {
+    setRadioVal(v)
   }
-
-  function handleChange1(val: number | string | boolean) {
-    console.log(val)
-    setRadioVal1(val as string)
-  }
-
   return (
     <>
       <div className="demo">
         <h2>{translated['74fc5d8a']}</h2>
         <CellGroup>
           <Cell>
-            <Radio checked={checked1} value="1">
+            <Radio defaultChecked>{translated.bb7486f4}1</Radio>
+          </Cell>
+          <Cell>
+            <Radio defaultChecked disabled>
               {translated.bb7486f4}1
             </Radio>
           </Cell>
-        </CellGroup>
-        <h2>{translated['74fc5d8a']}</h2>
-        <CellGroup>
           <Cell>
-            <Radio.RadioGroup value="1">
-              <Radio value="1">{translated.bb7486f4}1</Radio>
-              <Radio disabled value="2">
-                {translated.bb7486f4}
-                {translated.bb7486f4}
-                {translated.bb7486f4}2
-              </Radio>
-              <Radio value="3">{translated.bb7486f4}3</Radio>
-            </Radio.RadioGroup>
-          </Cell>
-          <Cell>
-            <Radio.RadioGroup value="2" textPosition="left">
+            <Radio.Group defaultValue="1">
               <Radio value="1">{translated.bb7486f4}1</Radio>
               <Radio disabled value="2">
                 {translated.bb7486f4}2
               </Radio>
               <Radio value="3">{translated.bb7486f4}3</Radio>
-            </Radio.RadioGroup>
+            </Radio.Group>
           </Cell>
           <Cell>
-            <Radio.RadioGroup value="3">
+            <Radio.Group defaultValue="1">
               <Radio shape="button" value="1">
                 {translated.bb7486f4}1
               </Radio>
-              <Radio disabled shape="button" value="2">
+              <Radio shape="button" disabled value="2">
                 {translated.bb7486f4}2
               </Radio>
               <Radio shape="button" value="3">
                 {translated.bb7486f4}3
               </Radio>
-            </Radio.RadioGroup>
+            </Radio.Group>
           </Cell>
         </CellGroup>
         <h2>{translated.c1bae1ec}</h2>
-        <CellGroup>
-          <Cell>
-            <Radio.RadioGroup value="1" direction="horizontal">
-              <Radio value="1">{translated.bb7486f4}1</Radio>
-              <Radio value="2">
-                {translated.bb7486f4}
-                {translated.bb7486f4}
-                {translated.bb7486f4}
-                {translated.bb7486f4}
-                {translated.bb7486f4}2
-              </Radio>
-              <Radio value="3">{translated.bb7486f4}3</Radio>
-            </Radio.RadioGroup>
-          </Cell>
-          <Cell>
-            <Radio.RadioGroup
-              value="2"
-              textPosition="left"
-              direction="horizontal"
-            >
-              <Radio value="1">{translated.bb7486f4}1</Radio>
-              <Radio value="2">{translated.bb7486f4}2</Radio>
-              <Radio value="3">{translated.bb7486f4}3</Radio>
-            </Radio.RadioGroup>
-          </Cell>
-          <Cell>
-            <Radio.RadioGroup value="3" direction="horizontal">
-              <Radio shape="button" value="1">
-                {translated.bb7486f4}1
-              </Radio>
-              <Radio shape="button" value="2">
-                {translated.bb7486f4}2
-              </Radio>
-              <Radio shape="button" value="3">
-                {translated.bb7486f4}3
-              </Radio>
-            </Radio.RadioGroup>
-          </Cell>
-        </CellGroup>
+        <Cell>
+          <Radio.Group defaultValue="1" direction="horizontal">
+            <Radio value="1">{translated.bb7486f4}1</Radio>
+            <Radio disabled value="2">
+              {translated.bb7486f4}2
+            </Radio>
+            <Radio value="3">{translated.bb7486f4}3</Radio>
+          </Radio.Group>
+        </Cell>
+        <Cell>
+          <Radio.Group
+            defaultValue="1"
+            labelPosition="left"
+            direction="horizontal"
+          >
+            <Radio value="1">{translated.bb7486f4}1</Radio>
+            <Radio disabled value="2">
+              {translated.bb7486f4}2
+            </Radio>
+            <Radio value="3">{translated.bb7486f4}3</Radio>
+          </Radio.Group>
+        </Cell>
+        <Cell>
+          <Radio.Group defaultValue="1" direction="horizontal">
+            <Radio shape="button" value="1">
+              {translated.bb7486f4}1
+            </Radio>
+            <Radio shape="button" disabled value="2">
+              {translated.bb7486f4}2
+            </Radio>
+            <Radio shape="button" value="3">
+              {translated.bb7486f4}3
+            </Radio>
+          </Radio.Group>
+        </Cell>
         <h2>{translated['8a2e2847']}</h2>
-        <CellGroup>
-          <Cell>
-            <Radio.RadioGroup value="2">
-              <Radio value="1" iconSize="15">
-                {translated['8a2e2847']}15
-              </Radio>
-              <Radio value="2" iconSize="12">
-                {translated['8a2e2847']}12
-              </Radio>
-            </Radio.RadioGroup>
-          </Cell>
-        </CellGroup>
-        <h2>Radio{translated['70ffa5d8']}</h2>
-        <CellGroup>
-          <Cell>
-            <Radio.RadioGroup value="1">
-              <Radio value="1" icon={<Checklist />} checkedIcon={<Checklist />}>
-                {translated['70ffa5d8']}
-              </Radio>
-              <Radio value="2" icon={<Checklist />} checkedIcon={<Checklist />}>
-                <div>{translated['70ffa5d8']}</div>
-                <div style={{ fontSize: '12px', color: '#8c8c8c' }}>
-                  {translated['70ffa5d8']}
-                </div>
-              </Radio>
-            </Radio.RadioGroup>
-          </Cell>
-        </CellGroup>
+        <Cell>
+          <Radio
+            style={{
+              '--nut-icon-width': '12px',
+              '--nutui-icon-height': '12px',
+            }}
+          >
+            {translated['8a2e2847']}
+          </Radio>
+        </Cell>
+        <h2>{translated['70ffa5d8']}</h2>
+        <Cell>
+          <Radio
+            icon={<Checklist />}
+            activeIcon={<Checklist style={{ color: 'red' }} />}
+          >
+            {translated['70ffa5d8']}
+          </Radio>
+        </Cell>
         <h2>{translated['0f261484']}</h2>
         <CellGroup>
           <Cell>
-            <Radio.RadioGroup
-              value={radioVal}
-              onChange={(e) => handleChange(e)}
+            <Radio.Group
+              defaultValue={checkedValue}
+              onChange={(value) => Toast.text(value)}
             >
               <Radio value={1}>{translated['0f261484']}</Radio>
               <Radio value={2}>{translated['0f261484']}</Radio>
-            </Radio.RadioGroup>
+            </Radio.Group>
           </Cell>
-          <Cell
-            title={translated['6b1f669d']}
-            description={radioVal.toString()}
-          />
         </CellGroup>
         <h2>{translated.options}</h2>
-        <CellGroup>
-          <Cell>
-            <Radio.RadioGroup
-              options={optionsDemo1}
-              value={radioVal1}
-              onChange={(e) => handleChange1(e)}
-            />
-          </Cell>
-        </CellGroup>
+        <Cell>
+          <Radio.Group
+            options={optionsDemo1}
+            value={radioVal}
+            onChange={handleChange}
+          />
+        </Cell>
       </div>
     </>
   )

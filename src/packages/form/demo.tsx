@@ -133,7 +133,7 @@ const FormDemo = () => {
       reset: 'Reset alert state',
       switch: 'Switch',
       checkbox: 'Checkbox',
-      radiogroup: 'RadioGroup',
+      radiogroup: 'Group',
       // option: (v: string) => `Option${v}`,
       rate: 'Rate',
       inputnumber: 'Inputnumber',
@@ -353,11 +353,11 @@ const FormDemo = () => {
             <Input placeholder="请输入标注" type="string" />
           </Form.Item>
           <Form.Item label={translated.radiogroup} name="radiogroup">
-            <Radio.RadioGroup onChange={onMenuChange}>
+            <Radio.Group onChange={onMenuChange}>
               <Radio value="male">male</Radio>
               <Radio value="female">female</Radio>
               <Radio value="other">other</Radio>
-            </Radio.RadioGroup>
+            </Radio.Group>
           </Form.Item>
           <Cell>
             <input type="submit" value={translated.submit} />
@@ -380,11 +380,11 @@ const FormDemo = () => {
             />
           </Form.Item>
           <Form.Item label={translated.radiogroup} name="radiogroup">
-            <Radio.RadioGroup>
+            <Radio.Group>
               <Radio value="1">选项1</Radio>
               <Radio value="2">选项2</Radio>
               <Radio value="3">选项3</Radio>
-            </Radio.RadioGroup>
+            </Radio.Group>
           </Form.Item>
           <Form.Item label={translated.rate} name="rate">
             <Rate defaultValue={0} />

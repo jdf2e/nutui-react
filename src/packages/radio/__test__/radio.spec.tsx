@@ -29,7 +29,7 @@ describe('radio', () => {
 
   test('radio custom icon', () => {
     const { container } = render(
-      <Radio icon="checklist" checkedIcon="checklist">
+      <Radio icon="checklist" activeIcon="checklist">
         自定义图标
       </Radio>
     )

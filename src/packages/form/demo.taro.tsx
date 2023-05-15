@@ -128,7 +128,7 @@ const FormDemo = () => {
       reset: 'Reset prompt status',
       switch: 'Switch',
       checkbox: 'Checkbox',
-      radiogroup: 'RadioGroup',
+      radiogroup: 'Group',
       // option: (v: string) => `Option${v}`,
       rate: 'Rate',
       inputnumber: 'Inputnumber',
@@ -241,11 +241,11 @@ const FormDemo = () => {
             />
           </Form.Item>
           <Form.Item label={translated.radiogroup} name="radiogroup">
-            <Radio.RadioGroup>
+            <Radio.Group>
               <Radio value="1">选项1</Radio>
               <Radio value="2">选项2</Radio>
               <Radio value="3">选项3</Radio>
-            </Radio.RadioGroup>
+            </Radio.Group>
           </Form.Item>
           <Form.Item label={translated.rate} name="rate">
             <Rate defaultValue={0} />
