@@ -191,6 +191,28 @@ export default App;
 
 :::
 
+### 划线价
+
+:::demo
+
+```tsx
+import React, { useState, useEffect } from 'react'
+import { Price, Cell } from '@nutui/nutui-react-taro'
+
+const App = () => {
+  return (
+    <Cell>
+        <Price price={1513.12} size="normal" thousands />
+        <span>&nbsp;</span>
+        <Price price={1513.88} thousands line />
+      </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
 ## Price
 
 ### Props
@@ -198,11 +220,12 @@ export default App;
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | price | 价格数量 | `number` | `0` |
-| symbol | 符号类型 | `string` | `&amp;amp;yen;` |
+| symbol | 符号类型 | `string` | `&yen;` |
 | digits | 小数位位数 | `number` | `2` |
 | thousands | 是否按照千分号形式显示 | `boolean` | `false` |
 | position | 符号显示在价格前或者后，`before`、`after` | `string` | `before` |
 | size | 价格尺寸，`large`、`normal`、`small` | `string` | `large` |
+| line | 是否划线价 | `boolean` | `false` |
 
 ## 主题定制
 
@@ -221,3 +244,5 @@ export default App;
 | \--nutui-price-symbol-small-size | small 尺寸符号字体大小 | `10px` |
 | \--nutui-price-integer-small-size | small 尺寸整数部分字体大小 | `12px` |
 | \--nutui-price-decimal-small-size | small 尺寸小数部分字体大小 | `10px` |
+| \--nutui-price-line-font-size | 划线价字体大小 | `10px` |
+| \--nutui-price-line-color | 划线价颜色 |  `#757575` |

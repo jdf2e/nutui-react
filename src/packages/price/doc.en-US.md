@@ -196,18 +196,41 @@ export default App;
 
 :::
 
+### Line-through price
+
+:::demo
+
+```tsx
+import React, { useState, useEffect } from 'react'
+import { Price, Cell } from '@nutui/nutui-react'
+
+const App = () => {
+  return (
+    <Cell>
+        <Price price={1513.12} size="normal" thousands />
+        <span>&nbsp;</span>
+        <Price price={1513.88} thousands line />
+      </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
 ## Price
 
 ### Props
 
-| Attribute | Description | Type | Default |
+| Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | price | Price | `number` | `0` |
-| symbol | Symbol type | `string` | `&amp;amp;yen;` |
+| symbol | Symbol type | `string` | `&yen;` |
 | digits | Decimal digits | `number` | `2` |
 | thousands | Thousands separation | `boolean` | `false` |
 | position | The symbol appear before or after the price，`before`、`after` | `string` | `before` |
 | size | Size，`large`、`normal`、`small` | `string` | `large` |
+| line | Line-through price | `boolean` | `false` |
 
 ## Theming
 
@@ -226,3 +249,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-price-symbol-small-size | small Size Symbol font size | `10px` |
 | \--nutui-price-integer-small-size | small Size Integer partial font size | `12px` |
 | \--nutui-price-decimal-small-size | small Size Size of the decimal part of the font | `10px` |
+| \--nutui-price-line-font-size | Line-through price Font size | `10px` |
+| \--nutui-price-line-color | Line through price color |  `#757575` |

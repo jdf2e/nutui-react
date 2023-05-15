@@ -259,6 +259,7 @@
 
 - `decimalDigits` 重命名为 `digits`
 - 删除`needSymbol`, 利用 `symbol` 判断是否需要加上 symbol 符号
+- 增加`line`, 用于划线价展示
   
 #### Progress
 - percentage 重命名为 percent，受控

@@ -1,10 +1,10 @@
 # Price 價格
 
-### 介紹
+## 介紹
 
 用來對商品價格數值的小數點前後部分應用不同樣式，還支持人民幣符號、千位分隔符、設置小數點位數等功能。
 
-### 安裝
+## 安裝
 
 ```javascript
 // react
@@ -55,7 +55,6 @@ const App = () => {
         <Price
           price={8888}
           digits={0}
-          
           size="normal"
           thousands
         />
@@ -102,7 +101,6 @@ const App = () => {
           price={15213.1221}
           size="normal"
           digits={3}
-          
           thousands
         />
     </Cell>
@@ -129,7 +127,6 @@ const App = () => {
           size="normal"
           position="after"
           symbol="元"
-          
           thousands
         />
     </Cell>
@@ -185,7 +182,6 @@ const App = () => {
           price={price}
           digits={3}
           size="normal"
-          
           thousands
         />
     </Cell>
@@ -196,18 +192,41 @@ export default App;
 
 :::
 
-## API
+### 劃線價
+
+:::demo
+
+```tsx
+import React, { useState, useEffect } from 'react'
+import { Price, Cell } from '@nutui/nutui-react'
+
+const App = () => {
+  return (
+    <Cell>
+        <Price price={1513.12} size="normal" thousands />
+        <span>&nbsp;</span>
+        <Price price={1513.88} thousands line />
+      </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
+## Price
 
 ### Props
 
 | 參數 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | price | 價格數量 | `number` | `0` |
-| symbol | 符號類型 | `string` | `&amp;amp;yen;` |
+| symbol | 符號類型 | `string` | `&yen;` |
 | digits | 小數位位數 | `number` | `2` |
 | thousands | 是否按照千分號形式顯示 | `boolean` | `false` |
 | position | 符號顯示在價格前或者後，`before`、`after` | `string` | `before` |
 | size | 價格尺寸，`large`、`normal`、`small` | `string` | `large` |
+| line | 是否劃線價 | `boolean` | `false` |
 
 ## 主題定製
 
@@ -226,3 +245,5 @@ export default App;
 | \--nutui-price-symbol-small-size | small 尺寸符號字體大小 | `10px` |
 | \--nutui-price-integer-small-size | small 尺寸整數部分字體大小 | `12px` |
 | \--nutui-price-decimal-small-size | small 尺寸小數部分字體大小 | `10px` |
+| \--nutui-price-line-font-size | 劃線價字體大小 | `10px` |
+| \--nutui-price-line-color | 劃線價顏色 | `#757575` |

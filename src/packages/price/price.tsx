@@ -8,6 +8,7 @@ export interface PriceProps extends BasicComponent {
   thousands: boolean
   position: string
   size: string
+  line: boolean
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -17,6 +18,7 @@ const defaultProps = {
   thousands: false,
   position: 'before',
   size: 'large',
+  line: false,
 } as PriceProps
 export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
   const {
@@ -26,6 +28,7 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     thousands,
     position,
     size,
+    line,
     className,
     style,
     ...rest
@@ -90,7 +93,13 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
   }
 
   return (
-    <div className={`${classPrefix} ${className}`} style={style} {...rest}>
+    <div
+      className={`${classPrefix} ${className} ${
+        line ? `${classPrefix}--line` : ''
+      }`}
+      style={style}
+      {...rest}
+    >
       {symbol && position === 'before' ? renderSymbol() : null}
       <div
         className={`${classPrefix}__integer ${classPrefix}__integer-${size}`}

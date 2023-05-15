@@ -12,6 +12,7 @@ interface T {
   title5: string
   title6: string
   title7: string
+  title8: string
 }
 
 const PriceDemo = () => {
@@ -24,6 +25,7 @@ const PriceDemo = () => {
       title5: '调整 symbol 符号位置',
       title6: '异步随机变更',
       title7: '不展示 symbol 符号',
+      title8: '划线价',
     },
     'zh-TW': {
       title1: '支持三種尺寸：small、normal、large',
@@ -33,6 +35,7 @@ const PriceDemo = () => {
       title5: '調整 symbol 符號位置',
       title6: '異步隨機變更',
       title7: '不展示 symbol 符號',
+      title8: '劃線價',
     },
     'en-US': {
       title1: 'Support three sizes：small、normal、large',
@@ -43,6 +46,7 @@ const PriceDemo = () => {
       title5: 'Adjust the symbol position',
       title6: 'Asynchronous random changes',
       title7: 'Do not display symbol',
+      title8: 'Line-through price',
     },
   })
   const [price, setPrice] = useState(Math.random() * 10000000)
@@ -97,6 +101,12 @@ const PriceDemo = () => {
       <h2>{translated.title6}</h2>
       <Cell>
         <Price price={price} digits={3} size="normal" thousands />
+      </Cell>
+      <h2>{translated.title8}</h2>
+      <Cell>
+        <Price price={1513.12} size="normal" thousands />
+        <span>&nbsp;</span>
+        <Price price={1513.88} thousands line />
       </Cell>
     </div>
   )
