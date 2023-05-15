@@ -1,6 +1,5 @@
-import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react'
+import React, { FunctionComponent, ReactNode, useMemo } from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
 import Popup from '@/packages/popup/index.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -53,90 +52,39 @@ export const NumberKeyboard: FunctionComponent<
     onConfirm,
   } = props
   const classPrefix = 'nut-numberkeyboard'
-  const [keysList, setKeysList] = useState<Array<any> | undefined>([])
-  const defaultKey = () => {
-    let leftBottomKey = {
-      id: 'lock',
-      type: 'lock',
-    }
-    if (custom) {
-      const customKeys: Array<string> = Array.isArray(custom)
-        ? custom
-        : [custom]
-      if (customKeys.length > 0) {
-        const newCustomKey = customKeys[0]
-        leftBottomKey = {
-          id: newCustomKey,
-          type: 'custom',
-        }
-      }
-    }
-    return [
-      ...getBasicKeys(),
-      leftBottomKey,
-      { id: 0, type: 'number' },
-      { id: 'delete', type: 'delete' },
-    ]
-  }
 
   const getBasicKeys = () => {
-    const keys: Array<unknown> = []
-    for (let i = 1; i <= 9; i++) {
-      keys.push({ id: i, type: 'number' })
-    }
-    if (random) {
-      return keys.sort(() => (Math.random() > 0.5 ? 1 : -1))
-    }
-
-    return keys
-  }
-
-  const genCustomKeys = () => {
-    const keys = getBasicKeys()
-    if (!custom) return []
-    let customKeys = Array.isArray(custom) ? custom : [custom]
-    if (customKeys.length > 2) {
-      customKeys = [customKeys[0], customKeys[1]]
-    }
-    if (
-      customKeys.length === 2 &&
-      props.title &&
-      props.type !== 'rightColumn'
-    ) {
-      customKeys = [customKeys[0]]
-    }
-    if (customKeys.length === 1) {
-      if (props.title && props.type !== 'rightColumn') {
-        keys.push(
-          { id: customKeys[0], type: 'custom' },
-          { id: 0, type: 'number' },
-          { id: 'delete', type: 'delete' }
-        )
-      } else {
-        keys.push(
-          { id: 0, type: 'number' },
-          { id: customKeys[0], type: 'custom' }
-        )
+    const keys = new Array(9).fill(0).map((_, index) => {
+      return {
+        id: String(index + 1),
+        type: 'num',
       }
-    } else if (customKeys.length === 2) {
-      keys.push(
-        { id: customKeys[0], type: 'custom' },
-        { id: 0, type: 'number' },
-        { id: customKeys[1], type: 'custom' }
-      )
-    }
-    return keys
+    })
+    return random ? keys.sort(() => (Math.random() > 0.5 ? 1 : -1)) : keys
   }
-  useEffect(() => {
-    if (type === 'rightColumn') {
-      setKeysList(genCustomKeys())
-    } else {
-      setKeysList(defaultKey())
+
+  const getCustomKeys = () => {
+    const customKeys = [
+      { id: 'lock', type: 'lock' },
+      { id: '0', type: 'num' },
+      { id: 'delete', type: 'delete' },
+    ]
+    if (!custom) return customKeys
+    if (custom.length > 0) {
+      customKeys[0] = { id: custom[0], type: 'custom' }
     }
-  }, [type])
+    if (custom.length > 1) {
+      customKeys[2] = { id: custom[1], type: 'custom' }
+    }
+    return customKeys
+  }
+
+  const keysList = useMemo(() => {
+    return [...getBasicKeys(), ...getCustomKeys()]
+  }, [type, random, custom])
 
   const handleClick = (item: { id: string; type: string }) => {
-    if (item.type === 'number' || item.type === 'custom') {
+    if (item.type === 'num' || item.type === 'custom') {
       onChange && onChange(item.id)
     }
     if (item.type === 'lock') {
@@ -145,9 +93,8 @@ export const NumberKeyboard: FunctionComponent<
     if (item.type === 'delete') {
       onDelete && onDelete()
     }
-    if (item.type === 'finish') {
+    if (item.type === 'confirm') {
       onConfirm && onConfirm()
-      onClose && onClose()
     }
   }
   return (
@@ -198,7 +145,7 @@ export const NumberKeyboard: FunctionComponent<
                       })}
                       onClick={() => handleClick(item)}
                     >
-                      {(item.type === 'number' || item.type === 'custom') && (
+                      {(item.type === 'num' || item.type === 'custom') && (
                         <div>{item.id}</div>
                       )}
                       {item.type === 'lock' && (
@@ -235,7 +182,9 @@ export const NumberKeyboard: FunctionComponent<
                 </div>
                 <div
                   className="keyboard-wrapper keyboard-finish"
-                  onClick={() => handleClick({ id: 'finish', type: 'finish' })}
+                  onClick={() =>
+                    handleClick({ id: 'confirm', type: 'confirm' })
+                  }
                 >
                   <div
                     className={classNames({
