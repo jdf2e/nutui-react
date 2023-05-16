@@ -45,15 +45,14 @@ export default App
 ### Props
 
 | Property | Description | Type | Default |
-|---------------|---------------------------------- |------------|--|
-| canReleaseText | Release prompt text | ReactNode | `Release immediate refresh` |
-| completeText | Prompt text when complete | ReactNode | `Refresh successful` |
-| completeDelay | The time for the delay to disappear after completion, in ms | number | `500` |
-| disabled | Whether to disable pull-to-refresh | boolean | `false` |
-| headHeight | The height of the head tip content area, in px | number | `40` |
-| pullingText | Pull down text | ReactNode | `Pull to refresh` |
-| refreshingText | Refresh text when refreshing | ReactNode | `Loading...` |
-| renderText | Customize the drop-down prompt text according to the drop-down state | ReactNode | `-` |
-| threshold | How far to pull down to trigger refresh, the unit is px | number | `60` |
-| onRefresh  | the handler function for triggering a refresh | `() => Promise<any>` | - |
-
+| --- | --- | --- | --- |
+| canReleaseText | Release prompt text | `ReactNode` | `Release immediate refresh` |
+| completeText | Prompt text when complete | `ReactNode` | `Refresh successful` |
+| completeDelay | The time for the delay to disappear after completion, in ms | `number` | `500` |
+| disabled | Whether to disable pull-to-refresh | `boolean` | `false` |
+| headHeight | The height of the head tip content area, in px | `number` | `40` |
+| pullingText | Pull down text | `ReactNode` | `Pull to refresh` |
+| refreshingText | Refresh text when refreshing | `ReactNode` | `Loading...` |
+| renderText | Customize the drop-down prompt text according to the drop-down state | `ReactNode` | `-` |
+| threshold | How far to pull down to trigger refresh, the unit is px | `number` | `60` |
+| onRefresh | the handler function for triggering a refresh | `() => Promise<any>` | `-` |
