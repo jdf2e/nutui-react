@@ -40,8 +40,9 @@ export default App
 ```
 
 :::
+> 在 PullToRefresh 组件内部采用 Selector API 获得父滚动元素的 scrollTop 值会带来下拉卡顿的性能问题。因此需要在 PullRefresh 组件外部判断 scrollTop 值，在页面中使用 usePageScroll() 钩子获得 scrollTop 值，在 ScrollView 组件内监听 onScroll 事件获得 scrollTop 值。
 
-## API
+## PullToRefresh
 
 ### Props
 
@@ -52,6 +53,7 @@ export default App
 | completeDelay | 完成后延迟消失的时间，单位为 ms | number | `500` |
 | disabled | 是否禁用下拉刷新 | boolean | `false` |
 | headHeight | 头部提示内容区的高度，单位为 px | number | `40` |
+| scrollTop | 可滚动的父元素的 scrollTop | number | `0` |
 | pullingText | 下拉的提示文案 | ReactNode | `下拉刷新` |
 | refreshingText | 刷新时的提示文案 | ReactNode | `加载中……` |
 | renderText | 根据下拉状态，自定义下拉提示文案 | ReactNode | `-` |

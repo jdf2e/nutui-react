@@ -749,7 +749,7 @@
           "desc": "",
           "sort": 10,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "oasis"
         },
         {
