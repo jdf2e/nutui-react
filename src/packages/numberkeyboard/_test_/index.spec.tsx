@@ -19,7 +19,7 @@ test('should match custom snapshot', async () => {
   const { container } = render(
     <NumberKeyboard visible type="rightColumn" custom={['.', 'x', 'r']} />
   )
-  expect(container.querySelector('.finish')).toHaveTextContent('完成')
+  expect(container.querySelector('.confirm')).toHaveTextContent('完成')
   expect(container).toMatchSnapshot()
 })
 test('default keyboard custom keyboard', async () => {
@@ -77,10 +77,10 @@ test('should render title and close button correctly', () => {
   expect(title).toHaveTextContent('默认键盘')
 })
 
-test('should render finish button correctly', () => {
+test('should render confirm button correctly', () => {
   const { container } = render(
     <NumberKeyboard visible type="rightColumn" confirmText="支付" />
   )
-  const title = container.querySelector('.finish')
+  const title = container.querySelector('.confirm')
   expect(title).toHaveTextContent('支付')
 })
