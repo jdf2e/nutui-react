@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import classNames from 'classnames'
 import { RadioGroupOptionType } from './type'
 import RadioContext from './context'
@@ -20,7 +20,6 @@ export interface RadioGroupProps {
 
 const defaultProps = {
   labelPosition: 'right',
-  disabled: false,
   onChange: (value: string | number) => {},
   direction: 'vertical',
   options: [],

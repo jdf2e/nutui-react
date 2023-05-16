@@ -67,6 +67,9 @@ export const Radio: FunctionComponent<
     if (context.labelPosition !== undefined) {
       labelPosition = context.labelPosition
     }
+    if (context.disabled !== undefined) {
+      disabled = context.disabled
+    }
     setCheckedStatement = (value: boolean) => {
       if (value) {
         context.check(props.value === undefined ? '' : props.value)
@@ -91,7 +94,7 @@ export const Radio: FunctionComponent<
     return (
       <div
         className={classNames(`${classPrefix}__button`, {
-          [`${classPrefix}__button--active`]: !disabled && checkedStatement,
+          [`${classPrefix}__button--active`]: checkedStatement,
           [`${classPrefix}__button--disabled`]: disabled,
         })}
       >

@@ -30,15 +30,33 @@ const RadioGroupLast = () => {
       选项1
     </Radio>
     <Radio.Group defaultValue="1">
+      <Radio value="1" disabled>
+        选项1
+      </Radio>
+      <Radio value="2">选项2</Radio>
+      <Radio value="3">选项3</Radio>
+    </Radio.Group>
+    <Radio.Group disabled defaultValue="1">
       <Radio value="1">选项1</Radio>
-      <Radio disabled value="2">选项2</Radio>
+      <Radio value="2">选项2</Radio>
       <Radio value="3">选项3</Radio>
     </Radio.Group>
     <Radio.Group defaultValue="1">
+      <Radio shape="button" disabled value="1">
+        选项1
+      </Radio>
+      <Radio shape="button" value="2">
+        选项2
+      </Radio>
+      <Radio shape="button" value="3">
+        选项3
+      </Radio>
+    </Radio.Group>
+    <Radio.Group disabled defaultValue="1">
       <Radio shape="button" value="1">
         选项1
       </Radio>
-      <Radio shape="button" disabled value="2">
+      <Radio shape="button" value="2">
         选项2
       </Radio>
       <Radio shape="button" value="3">
@@ -264,3 +282,5 @@ export default RadioGroupOptions;
 | --nutui-radio-button-font-size | shape为button的字号   | `12px`                    |
 | --nutui-radio-button-padding | shape为button的内边距  | `5px 18px`                |
 | --nutui-radio-icon-disable-color2 | icon 的禁用颜色        | `$gray3`                  |
+| --nutui-radiogroup-radio-margin | Group模式下每个 radio 的外边距  | `0 20px 5px 0`   |
+| --nutui-radiogroup-radio-label-margin | Group模式下每个 radio 中的 label 外边距  | `0 5px 0 5px`   |

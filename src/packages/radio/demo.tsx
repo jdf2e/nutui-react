@@ -14,6 +14,8 @@ interface T {
   '70ffa5d8': string
   '0f261484': string
   '6b1f669d': string
+  disableOne: string
+  disableAll: string
   options: string
 }
 
@@ -27,6 +29,8 @@ const RadioDemo = () => {
       '70ffa5d8': '自定义图标',
       '0f261484': '触发事件',
       '6b1f669d': '当前选中值',
+      disableOne: 'Group 模式下禁用某一项',
+      disableAll: 'Group 模式下禁用全部选项',
       options: '配置 options 渲染单选按钮',
     },
     'zh-TW': {
@@ -37,6 +41,8 @@ const RadioDemo = () => {
       '70ffa5d8': '自定義圖示',
       '0f261484': '觸發事件',
       '6b1f669d': '當前選中值',
+      disableOne: 'Group 模式下禁用某一项',
+      disableAll: 'Group 模式下禁用全部选项',
       options: '配置 options 渲染單選按鈕',
     },
     'en-US': {
@@ -47,6 +53,8 @@ const RadioDemo = () => {
       '70ffa5d8': 'Custom Icon',
       '0f261484': 'Trigger Event',
       '6b1f669d': 'Currently selected',
+      disableOne: 'Disable an item in Group mode',
+      disableAll: 'Disable all options in Group mode',
       options: 'Render radios by configuring options',
     },
   })
@@ -83,29 +91,53 @@ const RadioDemo = () => {
               {translated.bb7486f4}1
             </Radio>
           </Cell>
-          <Cell>
-            <Radio.Group defaultValue="1">
-              <Radio value="1">{translated.bb7486f4}1</Radio>
-              <Radio disabled value="2">
-                {translated.bb7486f4}2
-              </Radio>
-              <Radio value="3">{translated.bb7486f4}3</Radio>
-            </Radio.Group>
-          </Cell>
-          <Cell>
-            <Radio.Group defaultValue="1">
-              <Radio shape="button" value="1">
-                {translated.bb7486f4}1
-              </Radio>
-              <Radio shape="button" disabled value="2">
-                {translated.bb7486f4}2
-              </Radio>
-              <Radio shape="button" value="3">
-                {translated.bb7486f4}3
-              </Radio>
-            </Radio.Group>
-          </Cell>
         </CellGroup>
+        <h2>{translated.disableOne}</h2>
+        <Cell>
+          <Radio.Group defaultValue="1">
+            <Radio value="1" disabled>
+              {translated.bb7486f4}1
+            </Radio>
+            <Radio value="2">{translated.bb7486f4}2</Radio>
+            <Radio value="3">{translated.bb7486f4}3</Radio>
+          </Radio.Group>
+        </Cell>
+        <h2>{translated.disableAll}</h2>
+        <Cell>
+          <Radio.Group disabled defaultValue="1">
+            <Radio value="1">{translated.bb7486f4}1</Radio>
+            <Radio value="2">{translated.bb7486f4}2</Radio>
+            <Radio value="3">{translated.bb7486f4}3</Radio>
+          </Radio.Group>
+        </Cell>
+        <h2>{translated.disableOne}</h2>
+        <Cell>
+          <Radio.Group defaultValue="1">
+            <Radio shape="button" disabled value="1">
+              {translated.bb7486f4}1
+            </Radio>
+            <Radio shape="button" value="2">
+              {translated.bb7486f4}2
+            </Radio>
+            <Radio shape="button" value="3">
+              {translated.bb7486f4}3
+            </Radio>
+          </Radio.Group>
+        </Cell>
+        <h2>{translated.disableAll}</h2>
+        <Cell>
+          <Radio.Group disabled defaultValue="1">
+            <Radio shape="button" value="1">
+              {translated.bb7486f4}1
+            </Radio>
+            <Radio shape="button" value="2">
+              {translated.bb7486f4}2
+            </Radio>
+            <Radio shape="button" value="3">
+              {translated.bb7486f4}3
+            </Radio>
+          </Radio.Group>
+        </Cell>
         <h2>{translated.c1bae1ec}</h2>
         <Cell>
           <Radio.Group defaultValue="1" direction="horizontal">

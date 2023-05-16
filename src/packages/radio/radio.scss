@@ -36,8 +36,13 @@
 
     &--disabled {
       color: $radio-label-disable-color;
-      border: none;
+      border: 1px solid $radio-button-background;
     }
+  }
+  .nut-radio__button--active.nut-radio__button--disabled {
+    background: $gray4;
+    color: $gray3;
+    border: 1px solid $gray4;
   }
 
   &__label {
@@ -57,11 +62,13 @@
     font-size: $radio-icon-font-size;
   }
 
-  &__icon--unchecked {
-    color: $radio-icon-disable-color;
-  }
+  &__icon {
+    &--unchecked {
+      color: $radio-icon-disable-color;
+    }
 
-  &__icon--disable {
-    color: $radio-icon-disable-color2;
+    &--disable {
+      color: $radio-icon-disable-color2;
+    }
   }
 }

@@ -1227,6 +1227,14 @@ $radio-icon-disable-color2: var(
   --nutui-radio-icon-disable-color2,
   $gray3
 ) !default;
+$radiogroup-radio-margin: var(
+  --nutui-radiogroup-radio-margin,
+  0 20px 5px 0
+) !default;
+$radiogroup-radio-label-margin: var(
+  --nutui-radiogroup-radio-label-margin,
+  0 5px 0 5px
+) !default;
 
 // signature（✅）
 $signature-border-color: #dadada;

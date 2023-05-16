@@ -30,19 +30,37 @@ const RadioGroupLast = () => {
       Option 1
     </Radio>
     <Radio.Group defaultValue="1">
-      <Radio value="1">Option 1</Radio>
-      <Radio disabled value="2">Option 2</Radio>
-      <Radio value="3">Option 3</Radio>
+      <Radio value="1" disabled>
+        Option1
+      </Radio>
+      <Radio value="2">Option2</Radio>
+      <Radio value="3">Option3</Radio>
+    </Radio.Group>
+    <Radio.Group disabled defaultValue="1">
+      <Radio value="1">Option1</Radio>
+      <Radio value="2">Option2</Radio>
+      <Radio value="3">Option3</Radio>
     </Radio.Group>
     <Radio.Group defaultValue="1">
-      <Radio shape="button" value="1">
-        Option 1
+      <Radio shape="button" disabled value="1">
+        Option1
       </Radio>
-      <Radio shape="button" disabled value="2">
-        Option 2
+      <Radio shape="button" value="2">
+        Option2
       </Radio>
       <Radio shape="button" value="3">
-        Option 3
+        Option3
+      </Radio>
+    </Radio.Group>
+    <Radio.Group disabled defaultValue="1">
+      <Radio shape="button" value="1">
+        Option1
+      </Radio>
+      <Radio shape="button" value="2">
+        Option2
+      </Radio>
+      <Radio shape="button" value="3">
+        Option3
       </Radio>
     </Radio.Group>
   </>
@@ -247,20 +265,22 @@ export default RadioGroupOptions;
 
 ### CSS Variables
 
-组件提供了下列 CSS
-变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+The component provides the following CSS
+Variables, which can be used for custom styles, please refer to [ConfigProvider Components](#/zh-CN/component/configprovider) for usage methods.
 
 | Name | Description | Default |
 | --- |-------------------|---------------------------|
-| --nutui-radio-label-font-color | 字体颜色              | `$gray1`                  |
-| --nutui-radio-label-font-active-color | 按钮状态下选中字体颜色       | `$primary-color`          |
-| --nutui-radio-label-disable-color | label 的禁用字体颜色     | `$gray3`                  |
-| --nutui-radio-icon-disable-color | label 的禁用字体颜色     | `$gray2`                  |
-| --nutui-radio-label-button-border-color | shape为button的边框颜色 | `$primary-color`          |
-| --nutui-radio-label-button-background | shape为button的背景色  | `rgba(250, 44, 25, 0.05)` |
-| --nutui-radio-label-margin-left | label 的左外边距       | `15px`                    |
-| --nutui-radio-label-font-size | 字号                | `14px`                    |
-| --nutui-radio-button-border-radius | shape为button的圆角   | `15px`                    |
-| --nutui-radio-button-font-size | shape为button的字号   | `12px`                    |
-| --nutui-radio-button-padding | shape为button的内边距  | `5px 18px`                |
-| --nutui-radio-icon-disable-color2 | icon 的禁用颜色        | `$gray3`                  |
+| --nutui-radio-label-font-color | font color | `$gray1` |
+| --nutui-radio-label-font-active-color | The selected font color in the button state | `$primary-color` |
+| --nutui-radio-label-disable-color | disabled font color for label | `$gray3` |
+| --nutui-radio-icon-disable-color | disabled font color for label | `$gray2` |
+| --nutui-radio-label-button-border-color | shape is the border color of the button | `$primary-color` |
+| --nutui-radio-label-button-background | shape is the background color of the button | `rgba(250, 44, 25, 0.05)` |
+| --nutui-radio-label-margin-left | left margin of label | `15px` |
+| --nutui-radio-label-font-size | font size | `14px` |
+| --nutui-radio-button-border-radius | The shape is the rounded corner of the button | `15px` |
+| --nutui-radio-button-font-size | shape is the font size of the button | `12px` |
+| --nutui-radio-button-padding | The shape is the padding of the button | `5px 18px` |
+| --nutui-radio-icon-disable-color2 | disabled color for icon | `$gray3` |
+| --nutui-radiogroup-radio-margin | Margin of each radio in Group mode | `0 20px 5px 0` |
+| --nutui-radiogroup-radio-label-margin | Label margin in each radio in Group mode | `0 5px 0 5px` |
