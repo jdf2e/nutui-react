@@ -1243,6 +1243,18 @@ $radiogroup-radio-label-margin: var(
   --nutui-radiogroup-radio-label-margin,
   0 5px 0 5px
 ) !default;
+$radio-button-disabled-active-background: var(
+  --nutui-radio-button-disabled-active-background,
+  rgba(0, 0, 0, 0.15)
+) !default;
+$radio-button-disabled-active-color: var(
+  --nutui-radio-button-disabled-active-color,
+  rgba(0, 0, 0, 0.25)
+) !default;
+$radio-button-disabled-active-border-color: var(
+  --nutui-radio-button-disabled-active-border-color,
+  rgba(211, 211, 211, 0.15)
+) !default;
 
 // signature（✅）
 $signature-border-color: #dadada;

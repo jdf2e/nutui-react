@@ -284,3 +284,6 @@ Variables, which can be used for custom styles, please refer to [ConfigProvider 
 | --nutui-radio-icon-disable-color2 | disabled color for icon | `$gray3` |
 | --nutui-radiogroup-radio-margin | Margin of each radio in Group mode | `0 20px 5px 0` |
 | --nutui-radiogroup-radio-label-margin | Label margin in each radio in Group mode | `0 5px 0 5px` |
+| --nutui-radio-button-disabled-active-background | Selected and disabled background color in button mode | `rgba(0, 0, 0, 0.15)` |
+| --nutui-radio-button-disabled-active-color | The font color that is selected and disabled in button mode | `rgba(0, 0, 0, 0.25)` |
+| --nutui-radio-button-disabled-active-border-color | Selected and disabled border color in button mode | `rgba(211, 211, 211, 0.15)` |
