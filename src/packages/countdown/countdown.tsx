@@ -1,5 +1,4 @@
 import React, {
-  CSSProperties,
   useState,
   useRef,
   useEffect,
@@ -7,12 +6,10 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
-import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface CountDownProps {
-  className?: string
-  style?: CSSProperties
+export interface CountDownProps extends BasicComponent {
   paused: boolean
   startTime: number
   endTime: number
@@ -20,6 +17,7 @@ export interface CountDownProps {
   format: string
   autoStart: boolean
   time: number
+  destroy: boolean
   onEnd: () => void
   onPaused: (restTime: number) => void
   onRestart: (restTime: number) => void
@@ -28,6 +26,7 @@ export interface CountDownProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   paused: false,
   startTime: Date.now(),
   endTime: Date.now(),
@@ -35,6 +34,7 @@ const defaultProps = {
   format: 'HH:mm:ss',
   autoStart: true,
   time: 0,
+  destroy: false,
 } as CountDownProps
 
 const InternalCountDown: ForwardRefRenderFunction<
@@ -50,6 +50,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     format,
     autoStart,
     time,
+    destroy,
     className,
     style,
     onEnd,
@@ -59,7 +60,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     children,
     ...rest
   } = { ...defaultProps, ...props }
-  const b = bem('countdown')
+  const classPrefix = 'nut-countdown'
   const [restTimeStamp, setRestTime] = useState(0)
   const stateRef = useRef({
     pauseTime: 0,
@@ -275,7 +276,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   }, [])
 
   const componentWillUnmount = () => {
-    clearInterval(stateRef.current.timer)
+    destroy && cancelAnimationFrame(stateRef.current.timer)
   }
 
   const renderTime = (() => {
@@ -283,10 +284,14 @@ const InternalCountDown: ForwardRefRenderFunction<
   })()
 
   return (
-    <div className={`${b()} ${className || ''}`} style={{ ...style }} {...rest}>
+    <div
+      className={`${classPrefix} ${className}`}
+      style={{ ...style }}
+      {...rest}
+    >
       {children || (
         <div
-          className={b('block')}
+          className={`${classPrefix}__block`}
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: `${renderTime}`,

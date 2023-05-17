@@ -1,10 +1,10 @@
-#  CountDown
+# CountDown
 
-### Introduce
+## Introduce
 
 Used to display the countdown value in real time, and precision supports milliseconds.
 
-### Install
+## Install
 
 ```ts
 // react
@@ -38,6 +38,7 @@ export default App;
 ```
 
 :::
+
 ### Custom format
 
 :::demo
@@ -84,7 +85,6 @@ export default App;
 ```
 
 :::
-
 
 ### Server Time Prevails
 
@@ -260,7 +260,7 @@ export default App;
 
 :::
 
-###  Manual Control
+### Manual Control
 
 Paused and restarted the countdown with the paused attribute
 
@@ -320,52 +320,47 @@ export default App;
 
 :::
 
-
-## API
+## CountDowm
 
 ### Props
 
-| Attribute | Description | Type | Default
-| ----- | ----- | ----- | -----
-| startTime | Start Time |  number | `Date.now()`
-| endTime | End Time | number | `Date.now()`
-| paused | Paused | boolean | `false`
-| format `v1.3.3` |  Format Time | string | HH\:mm\:ss
-| millisecond `v1.3.3` |  Whether to enable millisecond render | boolean | `false`
-| autoStart `v1.3.3` |  Whether to auto start count down | boolean | `true`
-| time `v1.3.3` | Total time, unit milliseconds | number | `0`
-| showDays `v1.3.3 Abandon` | Show Text Day | boolean | `false`
-| showPlainText `v1.3.3 Abandon` | Show Text | boolean | `false`
+| Attribute | Description | Type | Default |
+| --- | --- | --- | --- |
+| startTime | Start Time | `number` | `Date.now()` |
+| endTime | End Time | `number` | `Date.now()` |
+| paused | Paused | `boolean` | `false` |
+| format | Format Time | `string` | `HH:mm:ss` |
+| millisecond | Whether to enable millisecond render | `boolean` | `false` |
+| autoStart | Whether to auto start count down | `boolean` | `true` |
+| time | Total time, unit milliseconds | `number` | `0` |
+| showDays | Show Text Day | `boolean` | `false` |
+| showPlainText | Show Text | `boolean` | `false` |
+| destroy | destroy instance | `boolean` | `false` |
+| onPaused | Emitted when count down paused | `onPaused: (restTime: number) => void` | `-` |
+| onRestart | Emitted when count down restart | `onRestart: (restTime: number) => void` | `-` |
+| onUpdate | Real-time update of the countdown data callback function | `onUpdate: (restTime: any) => void` | `-` |
 
 ### Format
 
-| Name | Description | 
-| ----- | ----- | 
-| DD | Day | 
-| HH | Hour | 
-| mm | Minute | 
-| ss | Second | 
-| S | Millisecond, 1-digit | 
-| SS | Millisecond, 2-digits | 
-| SSS | Millisecond, 3-digits | 
+| Name | Description |
+| --- | --- |
+| DD | Day |
+| HH | Hour |
+| mm | Minute |
+| ss | Second |
+| S | Millisecond, 1-digit |
+| SS | Millisecond, 2-digits |
+| SSS | Millisecond, 3-digits |
 
-### Event
+### 方法
 
-| Event | Description | Arguments
-| ----- | ----- | ----- 
-| onEnd | Emitted when count down end | Residual Timestamp
-| onPaused | Emitted when count down paused | Residual Timestamp
-| onRestart | Emitted when count down restart | Residual Timestamp
-| onUpdate | Real-time update of the countdown data callback function | Real-time countdown data
-
-### Ref
+ref allows you to get the CountDown instance and invoke the instance methods.
 
 | Name | Description |
-| ----- | ----- | 
-| start | Count Down Start | 
-| pause | Count Down Pause | 
-| reset | Count Down Reset | 
-
+| --- | --- |
+| start | Count Down Start |
+| pause | Count Down Pause |
+| reset | Count Down Reset |
 
 ## Theming
 
@@ -375,6 +370,6 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-countdown-display | `flex` |
-| --nutui-countdown-color | `inherit` |
-| --nutui-countdown-font-size | `initial` |
+| \--nutui-countdown-display | `flex` |
+| \--nutui-countdown-color | `inherit` |
+| \--nutui-countdown-font-size | `initial` |
