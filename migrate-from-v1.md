@@ -184,6 +184,15 @@
 - `onCloseUpdate` 重命名为 `afterClose`
 - 方法 `onConfirm`、`onClose`、`afterClose`、`onChange`的参数进行了调整，从`(selectedValue, selectedOptions)` 改为 `(selectedOptions, selectedValue)`。
 #### Radio
+- 移除 iconSize，可通过 Icon 的 css 变量设置
+- iconName 重命名为 icon，类型修改为 ReactNode
+- 增加 labelPosition，用于设置 label 的位置
+- 增加 checked 和 defaultChecked ，用于受控和非受控
+- onChange 类型修改为 `(checked: boolean) => void`
+### Radio.Group
+- textPosition 重命名为 labelPosition 
+- 增加 defaultValue ，用于非受控
+- onChange 类型修改为 `(value: string| number) => void`
 #### Range
 - maxDesc 重命名为 maxDescription，类型改为 ReactNode
 - minDesc 重命名为 minDescription，类型改为 ReactNode
