@@ -491,7 +491,7 @@ export const Swiper = React.forwardRef<
           })}
         >
           <Indicator
-            current={((active + childCount) % childCount) + 1}
+            current={(active + childCount) % childCount}
             total={childs?.length}
             direction={direction}
           />

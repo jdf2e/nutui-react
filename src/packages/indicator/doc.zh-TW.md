@@ -20,7 +20,7 @@ const App = () => {
   return (
     <div className="demo">
       <Cell>
-        <Indicator size={3} current={3} />
+        <Indicator size={3} current={2} />
       </Cell>
       <Cell>
         <Row>
@@ -113,7 +113,7 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 預設值           |
 |--------------|----------------------------------|--------|------------------|
-| current  | 當前步驟               | number | `1`              |
+| current  | 當前步驟               | number | `0`              |
 | size       | 步驟長度                         | number | `3`               |
 | block | 是否啟用塊級佈局     | boolean | `false` |
 | align | 對齊方式，僅在block為true時生效, 可選值 'left', 'right', 'center'| string | `left` |
