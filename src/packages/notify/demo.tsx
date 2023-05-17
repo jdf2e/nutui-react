@@ -43,8 +43,8 @@ const NotifyDemo = () => {
       cusBgNotify: 'Customize background and font colors',
     },
   })
-  const baseNotify = (msg: string) => {
-    Notify.text(msg, {
+  const baseNotify = (message: string) => {
+    Notify.text(message, {
       onClose: () => {
         console.log('close')
       },
@@ -53,31 +53,31 @@ const NotifyDemo = () => {
       },
     })
   }
-  const primaryNotify = (msg: string) => {
-    Notify.primary(msg)
+  const primaryNotify = (message: string) => {
+    Notify.primary(message)
   }
-  const successNotify = (msg: string) => {
-    Notify.success(msg)
+  const successNotify = (message: string) => {
+    Notify.success(message)
   }
-  const errorNotify = (msg: string) => {
-    Notify.danger(msg)
+  const errorNotify = (message: string) => {
+    Notify.danger(message)
   }
-  const warningNotify = (msg: string) => {
-    Notify.warn(msg)
+  const warningNotify = (message: string) => {
+    Notify.warn(message)
   }
-  const cusBgNotify = (msg: string) => {
-    Notify.text(msg, {
+  const cusBgNotify = (message: string) => {
+    Notify.text(message, {
       style: {
         '--nutui-notify-text-color': '#ad0000',
         '--nutui-notify-base-background-color': '#ffe1e1',
       },
     })
   }
-  const timeNotify = (msg: string) => {
-    Notify.text(msg, { duration: 100000 })
+  const timeNotify = (message: string) => {
+    Notify.text(message, { duration: 100000 })
   }
-  const positionNotify = (msg: string) => {
-    Notify.text(msg, { position: 'bottom' })
+  const positionNotify = (message: string) => {
+    Notify.text(message, { position: 'bottom' })
   }
   return (
     <>

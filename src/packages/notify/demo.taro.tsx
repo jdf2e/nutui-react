@@ -45,19 +45,19 @@ const NotifyDemo = () => {
   const [showNotify, SetShowNotify] = useState(false)
   const [customShow, SetCustomShow] = useState(false)
   const [states, SetStates] = useState({
-    msg: '',
+    message: '',
     type: 'danger',
     duration: 2000,
     position: 'top',
   })
   const changeNotify = (
-    msg: string,
+    message: string,
     type?: string,
     duration?: number,
     position?: string
   ) => {
     const change = Object.assign(states, {
-      msg,
+      message,
       type,
       duration,
       position,
@@ -84,7 +84,7 @@ const NotifyDemo = () => {
             console.log('click')
           }}
         >
-          {states.msg}
+          {states.message}
         </Notify>
         <h2>{translated.basic}</h2>
         <Cell

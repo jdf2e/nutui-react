@@ -6,7 +6,7 @@ import { BasicComponent } from '@/utils/typings'
 
 export interface NotificationProps extends BasicComponent {
   id: string
-  msg: string | React.ReactNode
+  message: string | React.ReactNode
   duration: number
   type: string
   position: string
@@ -80,7 +80,7 @@ export default class Notification extends React.PureComponent<
   }
 
   render() {
-    const { style, msg, type, className, position } = this.props
+    const { style, message, type, className, position } = this.props
     const { show } = this.state
     const classes = classNames({
       [`${classPrefix}--popup-top`]: position === 'top',
@@ -103,7 +103,7 @@ export default class Notification extends React.PureComponent<
             style={style}
             onClick={this.clickCover}
           >
-            {msg}
+            {message}
           </div>
         </CSSTransition>
       </>

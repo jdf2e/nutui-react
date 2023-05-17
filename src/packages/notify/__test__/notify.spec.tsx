@@ -5,22 +5,22 @@ import { render, waitFor, fireEvent } from '@testing-library/react'
 import Cell from '@/packages/cell'
 import Notify from '@/packages/notify'
 
-const onClickNotify = jest.fn((type, msg, options?) => {
+const onClickNotify = jest.fn((type, message, options?) => {
   switch (type) {
     case 'text':
-      Notify.text(msg, options)
+      Notify.text(message, options)
       break
     case 'primary':
-      Notify.primary(msg, options)
+      Notify.primary(message, options)
       break
     case 'success':
-      Notify.success(msg, options)
+      Notify.success(message, options)
       break
     case 'danger':
-      Notify.danger(msg, options)
+      Notify.danger(message, options)
       break
     case 'warn':
-      Notify.warn(msg, options)
+      Notify.warn(message, options)
       break
     default:
       break

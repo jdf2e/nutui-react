@@ -48,32 +48,32 @@ function notice(opts: any) {
     messageInstance = notification
   })
 }
-const errorMsg = (msg: any) => {
-  if (!msg) {
-    console.warn('[NutUI Notify]: msg不能为空')
+const errorMsg = (message: any) => {
+  if (!message) {
+    console.warn('[NutUI Notify]: message不能为空')
   }
 }
 
 export default {
-  text(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, type: 'base', ...option })
+  text(message: string | React.ReactNode, option = {}) {
+    errorMsg(message)
+    return notice({ message, type: 'base', ...option })
   },
-  success(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, type: 'success', ...option })
+  success(message: string | React.ReactNode, option = {}) {
+    errorMsg(message)
+    return notice({ message, type: 'success', ...option })
   },
-  primary(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, type: 'primary', ...option })
+  primary(message: string | React.ReactNode, option = {}) {
+    errorMsg(message)
+    return notice({ message, type: 'primary', ...option })
   },
-  danger(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, type: 'danger', ...option })
+  danger(message: string | React.ReactNode, option = {}) {
+    errorMsg(message)
+    return notice({ message, type: 'danger', ...option })
   },
-  warn(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, type: 'warning', ...option })
+  warn(message: string | React.ReactNode, option = {}) {
+    errorMsg(message)
+    return notice({ message, type: 'warning', ...option })
   },
   hide() {
     if (messageInstance) {

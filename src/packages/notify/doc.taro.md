@@ -23,11 +23,11 @@ import { Notify, Cell } from '@nutui/nutui-react-taro';
 const App = () => {
     const [showNotify, SetShowNotify] = useState(false)
     const [states, SetStates] = useState({
-        msg: '',
+        message: '',
         type: 'danger',
     })
-    const changeNotify = (msg: string, type?: string) => {
-        const change = Object.assign(states, {msg,type})
+    const changeNotify = (message: string, type?: string) => {
+        const change = Object.assign(states, {message,type})
         SetStates(change)
     }
     return (
@@ -41,7 +41,7 @@ const App = () => {
                 onClick={() => {
                     console.log('click')
                 }}
-            >{states.msg}</Notify>
+            >{states.message}</Notify>
             <Cell
                 title="基础用法"
                 onClick={(event: React.MouseEvent) => {
@@ -68,11 +68,11 @@ import { Notify, Cell } from '@nutui/nutui-react-taro';
 const App = () => {
     const [showNotify, SetShowNotify] = useState(false)
     const [states, SetStates] = useState({
-        msg: '',
+        message: '',
         type: 'danger',
     })
-    const changeNotify = (msg: string, type: string) => {
-        const change = Object.assign(states, {msg,type})
+    const changeNotify = (message: string, type: string) => {
+        const change = Object.assign(states, {message,type})
         SetStates(change)
     }
     return (
@@ -83,7 +83,7 @@ const App = () => {
                 onClose={() => {
                     SetShowNotify(false)
                 }}
-            >{states.msg}</Notify>
+            >{states.message}</Notify>
             <Cell
                 title="主要通知"
                 onClick={(event: React.MouseEvent) => {
@@ -168,12 +168,12 @@ import { Notify, Cell } from '@nutui/nutui-react-taro';
 const App = () => {
     const [showNotify, SetShowNotify] = useState(false)
     const [states, SetStates] = useState({
-        msg: '',
+        message: '',
         duration:3000,
         position:'top'
     })
-    const changeNotify = (msg: string, duration?: string,position?:string) => {
-        const change = Object.assign(states, {msg,duration,position})
+    const changeNotify = (message: string, duration?: string,position?:string) => {
+        const change = Object.assign(states, {message,duration,position})
         SetStates(change)
     }
     return (
@@ -184,7 +184,7 @@ const App = () => {
                 onClose={() => {
                     SetShowNotify(false)
                 }}
-            >{states.msg}</Notify>
+            >{states.message}</Notify>
             <Cell
                 title="自定义时长"
                 onClick={(event: React.MouseEvent) => {
