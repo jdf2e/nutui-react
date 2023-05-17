@@ -673,21 +673,17 @@ $numberkeyboard-key-font-color: var(
   --nutui-numberkeyboard-key-font-color,
   #333
 ) !default;
-$numberkeyboard-key-finish-font-size: var(
-  --nutui-numberkeyboard-key-finish-font-size,
+$numberkeyboard-key-confirm-font-size: var(
+  --nutui-numberkeyboard-key-confirm-font-size,
   16px
 ) !default;
-$numberkeyboard-key-finish-font-color: var(
-  --nutui-numberkeyboard-key-finish-font-color,
+$numberkeyboard-key-confirm-font-color: var(
+  --nutui-numberkeyboard-key-confirm-font-color,
   #fff
 ) !default;
-$numberkeyboard-key-finish-background-color: var(
-  --nutui-numberkeyboard-key-finish-background-color,
+$numberkeyboard-key-confirm-background-color: var(
+  --nutui-numberkeyboard-key-confirm-background-color,
   #1989fa
-) !default;
-$numberkeyboard-key-activeFinsh-background-color: var(
-  --nutui-numberkeyboard-key-activeFinsh-background-color,
-  #0570db
 ) !default;
 
 // countdown（✅）

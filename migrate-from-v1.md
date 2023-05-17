@@ -175,6 +175,11 @@
 - 删除 `inputWidth` 和 `buttonSize`, 通过css变量实现
 - 新增taro的`formatter`属性开发
 #### NumberKeyboard
+- randomKeys 重命名为 random
+- customKey 重命名为 custom
+- title 类型变更为 ReactNode
+- 新增 onConfirm 事件
+- 移除 popClass 定义，默认支持透传 Popup 属性
 #### Picker
 - `isVisible` 重命名为 `visible`
 - `listData` 重命名为 `options`
