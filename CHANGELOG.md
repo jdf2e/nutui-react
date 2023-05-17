@@ -1,3 +1,11 @@
+# v1.5.5
+`2023-05-17`
+
+* :bug: fix: image src 设置空串时候样式错误，以及修复图片缓存后不出发加载事件 (#994) @oasis-cloud
+* :bug: fix: input 设置 clearable 点击清除按钮，并不能清除输入框中的内容 (#992) @oasis-cloud
+* :bug: fix: input 组件 ref 类型修复 (#1013) @oasis-cloud
+
+
 # v1.5.4
 `2023-05-10`
 
