@@ -1,39 +1,30 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
-
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
-import bem from '@/utils/bem'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface NotifyProps {
+export interface NotifyProps extends BasicComponent {
   id?: string
-  style?: React.CSSProperties
-  msg: string
-  color: string
   duration: number
   type: string
-  className: string
-  background: string
   position: string
-  isWrapTeleport: boolean
   visible: boolean
-  onClosed: () => void
+  onClose: () => void
   onClick: () => void
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   id: '',
-  msg: '',
-  color: '',
   duration: 3000, // 时长
   type: 'danger',
-  className: '',
-  background: '',
   position: 'top',
-  isWrapTeleport: true,
   visible: false,
-  onClosed: () => {},
+  onClose: () => {},
   onClick: () => {},
 } as unknown as NotifyProps
+
+const classPrefix = 'nut-notify'
 
 export const Notify: FunctionComponent<
   Partial<NotifyProps> & React.HTMLAttributes<HTMLDivElement>
@@ -42,16 +33,12 @@ export const Notify: FunctionComponent<
     id,
     children,
     style,
-    msg,
-    color,
-    background,
     type,
     className,
     position,
-    isWrapTeleport,
     visible,
     duration,
-    onClosed,
+    onClose,
     onClick,
     ...rest
   } = { ...defaultProps, ...props }
@@ -91,16 +78,14 @@ export const Notify: FunctionComponent<
       const element = document.getElementById(id)
       element && element.parentNode && element.parentNode.removeChild(element)
     }
-    onClosed()
+    onClose()
   }
 
-  const notifyBem = bem('notify')
-
   const classes = classNames({
-    'nut-notify--popup-top': position === 'top',
-    'nut-notify--popup-bottom': position === 'bottom',
-    'nut-notify': true,
-    [`nut-notify--${type}`]: true,
+    [`${classPrefix}--popup-top`]: position === 'top',
+    [`${classPrefix}--popup-bottom`]: position === 'bottom',
+    [`${classPrefix}`]: true,
+    [`${classPrefix}--${type}`]: true,
   })
   return (
     <>
@@ -115,13 +100,10 @@ export const Notify: FunctionComponent<
       >
         <div
           className={`${classes} ${className}`}
-          style={{
-            color: `${color || ''}`,
-            background: `${background || ''}`,
-          }}
+          style={style}
           onClick={clickHandle}
         >
-          {children || msg}
+          {children}
         </div>
       </CSSTransition>
     </>

@@ -254,6 +254,8 @@
 #### Drag
 #### Infiniteloading
 #### Notify
+- 删除 `color` 和 `background`, 通过css变量实现
+- 修改 onClosed 为 onClose，规范命名，关闭时触发。
 #### PullToRefresh
 #### Swipe
 
@@ -313,7 +315,13 @@
 #### ImagePreview
 #### NoticeBar
 #### Popover
+
 #### Price
+
+- `decimalDigits` 重命名为 `digits`
+- 删除`needSymbol`, 利用 `symbol` 判断是否需要加上 symbol 符号
+- 增加`line`, 用于划线价展示
+  
 #### Progress
 - percentage 重命名为 percent，受控
 - 移除 isShowPercentage，可以自定义传入文案
