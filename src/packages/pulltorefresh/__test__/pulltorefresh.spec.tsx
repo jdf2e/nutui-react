@@ -6,19 +6,11 @@ import Cell from '@/packages/cell'
 
 describe('PullToRefresh', () => {
   const originWindowProto = Object.getPrototypeOf(window)
-  // const getBoundingClientRectMock = jest.spyOn(
-  //   HTMLElement.prototype,
-  //   'getBoundingClientRect'
-  // )
   beforeAll(() => {
     Object.setPrototypeOf(window, Window.prototype)
-    // getBoundingClientRectMock.mockReturnValue({
-    //   height: 10,
-    // } as DOMRect)
   })
   afterAll(() => {
     Object.setPrototypeOf(window, originWindowProto)
-    // getBoundingClientRectMock.mockRestore()
   })
   test('initialize render', async () => {
     render(

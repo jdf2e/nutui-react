@@ -1,11 +1,4 @@
-import React, {
-  FunctionComponent,
-  ReactNode,
-  useRef,
-  // useEffect,
-  // useRef,
-  useState,
-} from 'react'
+import React, { FunctionComponent, ReactNode, useRef, useState } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider'
 import { useTouch } from '@/utils/use-touch'
