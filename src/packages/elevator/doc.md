@@ -226,6 +226,87 @@ export default App
 
 :::
 
+### 不展示右侧导航
+
+:::demo
+
+```tsx
+import React from 'react'
+import { Elevator } from '@nutui/nutui-react'
+
+const App = () => {
+  const dataList = [
+    {
+      title: 'A',
+      list: [
+        {
+          name: '安徽',
+          id: 1,
+        },
+      ],
+    },
+    {
+      title: 'B',
+      list: [
+        {
+          name: '北京',
+          id: 2,
+        },
+      ],
+    },
+    {
+      title: 'G',
+      list: [
+        {
+          name: '广西',
+          id: 3,
+        },
+        {
+          name: '广东',
+          id: 4,
+        },
+      ],
+    },
+    {
+      title: 'H',
+      list: [
+        {
+          name: '湖南',
+          id: 5,
+        },
+        {
+          name: '湖北',
+          id: 6,
+        },
+        {
+          name: '河南',
+          id: 7,
+        },
+      ],
+    },
+  ]
+  const onClickItem = (key: string, item: any) => {
+    console.log(key, JSON.stringify(item))
+  }
+
+  const onClickIndex = (key: string) => {
+    console.log(key)
+  }
+  return (
+    <Elevator
+      pagation={false}
+      list={dataList}
+      height="260"
+      onClickItem={(key: string, item: any) => onClickItem(key, item)}
+      onClickIndex={(key: string) => onClickIndex(key)}
+    />
+  )
+}
+export default App
+```
+
+:::
+
 ### 吸顶索引
 
 
@@ -475,6 +556,7 @@ export default App
 | floorKey           | 索引 key 值    | string                                                      | `title`               |
 | list           | 索引列表       | Array（item 需包含 id、name 属性, name 支持传入 html 结构） | `[{id: 0, name: ''}]` |
 | sticky    | 索引是否吸顶 | boolean  | `false` |
+| showKeys| 展示右侧导航 | boolean  | `true` |
 | spaceHeight | 右侧锚点的上下间距 | number  | `23` |
 | titleHeight   | 左侧索引的高度 | number  | `35` |
 | onClickItem  | 点击内容 | `onClickItem:(key: string, item: { id: number, name: string })=>void` |`false`|

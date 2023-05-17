@@ -24,7 +24,7 @@ const App = () => {
   return (
     <>
       <Audio
-        autoplay={false}
+        autoPlay={false}
         src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="icon"
         loop={false}
@@ -52,7 +52,7 @@ const App = () => {
   return (
     <>
       <Audio
-        autoplay={false}
+        autoPlay={false}
         src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="progress"
         preload="auto"
@@ -90,7 +90,7 @@ const App = () => {
      <Audio
       className="custom-voice-audio"
       id="custom-voice-audio"
-      autoplay={false}
+      autoPlay={false}
       src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       type="none"
       preload="auto"
@@ -124,7 +124,7 @@ const App = () => {
   return (
     <>
       <Audio
-        autoplay={false}
+        autoPlay={false}
         src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="controls"
         preload="auto"
@@ -151,7 +151,7 @@ export default App;
 |--------------|----------------------------------|--------|------------------|
 | src         | Voice resource link               | `string` | -              |
 | muted        | Whether it is mute                         | `boolean` | `false`             |
-| autoplay         | Whether to play automatically | `boolean` | `false`               |
+| autoPlay         | Whether to play automatically | `boolean` | `false`               |
 | loop | Whether to circulate     | `boolean` | `false` |
 | preload          | Whether the pronunciation is pre -loaded: 'None', 'Metadata', 'Auto', ''  | `string` | `auto`              |
 | type         | Display form, optional value：controls、panel、progress、icon、none  | `string` | `progress`              |

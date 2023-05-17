@@ -12,12 +12,11 @@ import { getScrollParent } from '@/utils/get-scroll-parent'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
 import { passiveSupported } from '@/utils/supports-passive'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
 
-export interface PullToRefreshProps {
-  className: string
-  style: React.CSSProperties
+export interface PullToRefreshProps extends BasicComponent {
   onRefresh: () => Promise<any>
   pullingText: ReactNode
   canReleaseText: ReactNode
@@ -28,12 +27,10 @@ export interface PullToRefreshProps {
   threshold: number
   disabled: boolean
   renderText: (status: PullStatus) => ReactNode
-  children: React.ReactNode
 }
 
 const defaultProps = {
-  className: '',
-  style: {},
+  ...ComponentDefaults,
   pullingText: '',
   canReleaseText: '',
   refreshingText: '',
@@ -47,6 +44,7 @@ const defaultProps = {
 export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   p
 ) => {
+  const classPrefix = 'nut-pulltorefresh'
   const { locale } = useConfig()
   const props: PullToRefreshProps = {
     ...defaultProps,
@@ -189,18 +187,18 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   return (
     <animated.div
       ref={elementRef}
-      className={`nut-pulltorefresh ${props.className}`}
+      className={`${classPrefix} ${props.className}`}
       style={props.style}
     >
-      <animated.div style={springStyles} className="nut-pulltorefresh-head">
+      <animated.div style={springStyles} className={`${classPrefix}-head`}>
         <div
-          className="nut-pulltorefresh-head-content"
+          className={`${classPrefix}-head-content`}
           style={{ height: headHeight }}
         >
           {renderStatusText()}
         </div>
       </animated.div>
-      <div className="nut-pulltorefresh-content">{props.children}</div>
+      <div className={`${classPrefix}-content`}>{props.children}</div>
     </animated.div>
   )
 }

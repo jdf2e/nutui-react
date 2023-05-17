@@ -70,6 +70,7 @@
 - `acceptKey` 重命名为 `floorKey`
 - `indexList` 重命名为 `list`
 - `isSticky` 重命名为 `sticky`
+- 新增`showKeys`, 是否展示右侧导航
 #### FixedNav
 - 删除 fixednavClass，通过 className 实现
 - unActiveText 重命名为 inactiveText
@@ -271,6 +272,7 @@
 #### AnimatingNumbers
 #### Audio
 - url 重命名为 src
+- autoplay 重命名为 autoPlay
 - onFastBack 重命名为 onBack
 - onPlayEnd 重命名为 onEnd
 #### Avatar
