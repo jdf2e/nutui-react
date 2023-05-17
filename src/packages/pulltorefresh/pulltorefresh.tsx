@@ -12,12 +12,11 @@ import { getScrollParent } from '@/utils/get-scroll-parent'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
 import { passiveSupported } from '@/utils/supports-passive'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
 
-export interface PullToRefreshProps {
-  className: string
-  style: React.CSSProperties
+export interface PullToRefreshProps extends BasicComponent {
   onRefresh: () => Promise<any>
   pullingText: ReactNode
   canReleaseText: ReactNode
@@ -28,12 +27,10 @@ export interface PullToRefreshProps {
   threshold: number
   disabled: boolean
   renderText: (status: PullStatus) => ReactNode
-  children: React.ReactNode
 }
 
 const defaultProps = {
-  className: '',
-  style: {},
+  ...ComponentDefaults,
   pullingText: '',
   canReleaseText: '',
   refreshingText: '',

@@ -11,13 +11,11 @@ import { useConfig } from '@/packages/configprovider'
 import { useTouch } from '@/utils/use-touch'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
-import { useForceUpdate } from '@/utils/use-force-update'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
 
-export interface PullToRefreshProps {
-  className: string
-  style: React.CSSProperties
+export interface PullToRefreshProps extends BasicComponent {
   onRefresh: () => Promise<any>
   pullingText: ReactNode
   canReleaseText: ReactNode
@@ -29,12 +27,10 @@ export interface PullToRefreshProps {
   disabled: boolean
   scrollTop: number
   renderText: (status: PullStatus) => ReactNode
-  children: React.ReactNode
 }
 
 const defaultProps = {
-  className: '',
-  style: {},
+  ...ComponentDefaults,
   pullingText: '',
   canReleaseText: '',
   refreshingText: '',
