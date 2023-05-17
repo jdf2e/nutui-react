@@ -23,10 +23,10 @@ import { Cell, NumberKeyboard } from '@nutui/nutui-react-taro';
 const App = () => {
   const [visible, setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    console.log(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    console.log('删除')
   }
   return (
     <>
@@ -60,10 +60,10 @@ import { Cell, NumberKeyboard } from '@nutui/nutui-react-taro';
 const App = () => {
   const [visible, setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    console.log(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    console.log('删除')
   }
   return (
     <>
@@ -99,10 +99,10 @@ import { Cell, NumberKeyboard } from '@nutui/nutui-react-taro';
 const App = () => {
   const [visible, setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    console.log(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    console.log('删除')
   }
   return (
     <>
@@ -137,10 +137,10 @@ import { Cell, NumberKeyboard } from '@nutui/nutui-react-taro';
 const App = () => {
   const [visible, setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    console.log(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    console.log('删除')
   }
   return (
     <>
@@ -176,10 +176,10 @@ import { Cell, NumberKeyboard } from '@nutui/nutui-react-taro';
 const App = () => {
   const [visible, setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    console.log(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    console.log('删除')
   }
   return (
     <>
@@ -203,14 +203,56 @@ export default App;
 
 :::
 
+### 透传 Popup 属性
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Cell, NumberKeyboard } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  const onChange = (number: string) => {
+    console.log(`enter:${number}`)
+  }
+  const onDelete = () => {
+    console.log('delete')
+  }
+  return (
+    <>
+      <Cell
+        title="Show IdNumber Keyboard"
+        onClick={() => setVisible(true)}
+      />
+      <NumberKeyboard
+        visible={visible}
+        onChange={onChange}
+        onDelete={onDelete}
+        onClose={() => setVisible(false)}
+        duration={1}
+        overlayClassName="number-keyboard-overlay"
+        onOpen={() => {
+          console.log('onOpen')
+        }}
+      />
+    </>
+  )
+}
+export default App;
+
+```
+
+:::
+
 ## NumberKeyboard
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | visible | 是否显示键盘 | `boolean` | `false` |
-| title | 键盘标题 | `ReactNode` | `-` |
+| title | 键盘标题 | `ReactNode` | - |
 | type | 键盘模式 | `string` | `default：默认样式 rightColumn：带右侧栏` |
 | random | 随机数 | `boolean` | `false` |
 | custom | 自定义键盘额外的键 | `string[]` | `数组形式最多支持添加2个,超出默认取前2项` |

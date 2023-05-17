@@ -73,7 +73,7 @@ test('should emit close event after clicking collapse key', () => {
 })
 test('should render title and close button correctly', () => {
   const { container } = render(<NumberKeyboard visible title="默认键盘" />)
-  const title = container.querySelector('.nut-numberkeyboard__header__tit')
+  const title = container.querySelector('.nut-numberkeyboard__header__title')
   expect(title).toHaveTextContent('默认键盘')
 })
 

@@ -204,6 +204,48 @@ export default App;
 
 :::
 
+### 透传 Popup 属性
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  const onChange = (number: string) => {
+    Toast.text(`enter:${number}`)
+  }
+  const onDelete = () => {
+    Toast.text('delete')
+  }
+  return (
+    <>
+      <Cell
+        title="Show IdNumber Keyboard"
+        onClick={() => setVisible(true)}
+      />
+      <NumberKeyboard
+        visible={visible}
+        onChange={onChange}
+        onDelete={onDelete}
+        onClose={() => setVisible(false)}
+        duration={1}
+        overlayClassName="number-keyboard-overlay"
+        onOpen={() => {
+          Toast.text('onOpen')
+        }}
+      />
+    </>
+  )
+}
+export default App;
+
+```
+
+:::
+
 ## NumberKeyboard
 
 ### Props
