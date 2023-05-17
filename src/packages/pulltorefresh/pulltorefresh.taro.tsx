@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode, useRef, useState } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/index.taro'
 import { useTouch } from '@/utils/use-touch'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
