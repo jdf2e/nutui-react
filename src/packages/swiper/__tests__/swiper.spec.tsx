@@ -21,10 +21,10 @@ test('should render width and height', () => {
   ]
   const state: any = {
     height: 150,
-    initPage: 0,
+    defaultValue: 0,
     width: 375,
   }
-  const { height, initPage, width } = state
+  const { height, defaultValue, width } = state
   const onChange = (e: number) => {}
 
   const { container } = render(
@@ -32,9 +32,9 @@ test('should render width and height', () => {
       height={height}
       width={width}
       autoPlay="2000"
-      initPage={initPage}
+      defaultValue={defaultValue}
       onChange={onChange}
-      paginationVisible
+      indicator
     >
       {list.map((item) => {
         return (
@@ -63,19 +63,19 @@ test('should render initpage', () => {
   ]
   const state: any = {
     height: 150,
-    initPage: 1,
+    defaultValue: 1,
     width: 375,
   }
-  const { height, initPage, width } = state
+  const { height, defaultValue, width } = state
   const onChange = (e: number) => {}
 
   const { container } = render(
     <Swiper
       height={height}
       width={width}
-      initPage={initPage}
+      defaultValue={defaultValue}
       onChange={onChange}
-      paginationVisible
+      indicator
     >
       {list.map((item) => {
         return (
@@ -100,11 +100,11 @@ test('should render direction', () => {
   ]
   const state: any = {
     height: 150,
-    initPage: 1,
+    defaultValue: 1,
     width: 375,
     direction: 'vertical',
   }
-  const { height, initPage, width, direction } = state
+  const { height, defaultValue, width, direction } = state
   const onChange = (e: number) => {}
 
   const { container } = render(
@@ -112,9 +112,9 @@ test('should render direction', () => {
       height={height}
       width={width}
       direction={direction}
-      initPage={initPage}
+      defaultValue={defaultValue}
       onChange={onChange}
-      paginationVisible
+      indicator
     >
       {list.map((item) => {
         return (
@@ -139,21 +139,23 @@ test('should render pagination', () => {
   ]
   const state: any = {
     height: 150,
-    initPage: 1,
+    defaultValue: 1,
     width: 375,
-    paginationColor: 'red',
   }
-  const { height, initPage, width, paginationColor } = state
+  const { height, defaultValue, width } = state
   const onChange = (e: number) => {}
 
   const { container } = render(
     <Swiper
       height={height}
       width={width}
-      initPage={initPage}
+      defaultValue={defaultValue}
       onChange={onChange}
-      paginationVisible
-      paginationColor={paginationColor}
+      indicator
+      style={{
+        '--nutui-indicator-color': '#426543',
+        '--nutui-indicator-dot-color': '#426ddd',
+      }}
     >
       {list.map((item) => {
         return (
@@ -182,17 +184,17 @@ test('should render loop and auto-play', async () => {
   ]
   const state: any = {
     height: 150,
-    initPage: 0,
+    defaultValue: 0,
     width: 375,
     direction: 'vertical',
   }
-  const { height, initPage, width, direction } = state
+  const { height, defaultValue, width, direction } = state
   const onChange = (e: number) => {}
   const { container } = render(
     <Swiper
       height={height}
       width={width}
-      initPage={initPage}
+      defaultValue={defaultValue}
       onChange={onChange}
       autoPlay="100"
     >
@@ -223,16 +225,16 @@ test('should not allow to drag when touchable is false', () => {
   ]
   const state: any = {
     height: 150,
-    initPage: 0,
+    defaultValue: 0,
     width: 375,
     direction: 'vertical',
   }
-  const { height, initPage, width, direction } = state
+  const { height, defaultValue, width, direction } = state
   const { container } = render(
     <Swiper
       height={height}
       width={width}
-      initPage={initPage}
+      defaultValue={defaultValue}
       onChange={onChange}
       touchable={false}
     >
@@ -260,18 +262,18 @@ test('should not allow to drag when loop is false', async () => {
   ]
   const state: any = {
     height: 150,
-    initPage: 3,
+    defaultValue: 3,
     width: 375,
     direction: 'vertical',
   }
-  const { height, initPage, width, direction } = state
+  const { height, defaultValue, width, direction } = state
   let _container: any
   act(() => {
     const { container } = render(
       <Swiper
         height={height}
         width={width}
-        initPage={initPage}
+        defaultValue={defaultValue}
         loop={false}
         autoPlay="100"
         data-testid="swiper_container"

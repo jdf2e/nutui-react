@@ -23,7 +23,7 @@ const App = () => {
   return (
     <div className="demo">
       <Cell>
-        <Indicator total={3} current={3} />
+        <Indicator total={3} current={2} />
       </Cell>
     </div>
   );
@@ -108,7 +108,7 @@ export default App;
 
 | 参数         | 说明 | 类型   | 默认值           |
 |--------------|---------------|--------|----|
-| current  | 当前步骤 | number | `1` |
+| current  | 当前步骤 | number | `0` |
 | total | 步骤长度 | number | `3` |
 | direction | 展示方向，默认为水平方向 | `'horizontal' \| 'vertical'` |   `horizontal` |
 

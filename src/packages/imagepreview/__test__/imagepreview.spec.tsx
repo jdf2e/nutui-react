@@ -55,11 +55,11 @@ test('basic usage test', () => {
   expect(element.style.display).toEqual('')
 })
 
-test('test autoplay', async () => {
+test('test autoPlay', async () => {
   let _container: any
   act(() => {
     const { container } = render(
-      <ImagePreview images={images} visible autoplay={1000} />
+      <ImagePreview images={images} visible autoPlay={1000} />
     )
     _container = container
   })
@@ -93,12 +93,7 @@ test('init page No.', async () => {
 
 test('customize pagination and color', async () => {
   const { container } = render(
-    <ImagePreview
-      images={images}
-      visible
-      paginationVisible
-      paginationColor="red"
-    />
+    <ImagePreview images={images} visible indicator paginationColor="red" />
   )
 
   const swiperPagination = container.querySelector('.nut-swiper__pagination')
