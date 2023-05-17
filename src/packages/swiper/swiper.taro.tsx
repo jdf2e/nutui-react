@@ -65,7 +65,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
           })}
         >
           <Indicator
-            current={current}
+            current={current + 1}
             total={childrenCount.current}
             direction={direction}
           />

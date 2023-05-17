@@ -42,6 +42,7 @@ export interface ImagePreviewProps {
   paginationColor: string
   onClose: () => void
 }
+
 const defaultProps = {
   images: [],
   videos: [],
@@ -251,11 +252,13 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           className="nut-imagepreview-swiper"
           loop
           preventDefault={false}
-          style={{ display: showPop ? 'block' : 'none' }}
+          style={{
+            display: showPop ? 'block' : 'none',
+            '--nutui-indicator-color': paginationColor,
+          }}
           direction="horizontal"
           onChange={slideChangeEnd}
           defaultValue={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
-          // paginationColor={paginationColor}
           indicator={indicator}
         >
           {(videos && videos.length > 0
