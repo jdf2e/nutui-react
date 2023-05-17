@@ -16,6 +16,7 @@
   }
   &__symbol {
     font-size: $price-symbol-medium-size;
+    padding-right: $price-symbol-padding-right;
     &-large {
       font-size: $price-symbol-big-size;
     }

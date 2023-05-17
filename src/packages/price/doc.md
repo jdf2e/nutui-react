@@ -247,3 +247,4 @@ export default App;
 | \--nutui-price-decimal-small-size | small 尺寸小数部分字体大小 | `10px` |
 | \--nutui-price-line-font-size | 划线价字体大小 | `10px` |
 | \--nutui-price-line-color | 划线价颜色 |  `#757575` |
+| \--nutui-price-symbol-padding-right | 符号的右内边距 |  `1px` |

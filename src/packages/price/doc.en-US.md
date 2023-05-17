@@ -251,3 +251,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-price-decimal-small-size | small Size Size of the decimal part of the font | `10px` |
 | \--nutui-price-line-font-size | Line-through price Font size | `10px` |
 | \--nutui-price-line-color | Line through price color |  `#757575` |
+| \--nutui-price-symbol-padding-right | Symbol padding right |  `1px` |
