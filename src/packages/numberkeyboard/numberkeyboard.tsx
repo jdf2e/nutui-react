@@ -156,7 +156,7 @@ export const NumberKeyboard: FunctionComponent<
       <div className={classNames(classPrefix, className)} style={style}>
         {title && (
           <div className={`${classPrefix}__header`}>
-            <h3 className={`${classPrefix}__header__tit`}>{title}</h3>
+            <h3 className={`${classPrefix}__header__title`}>{title}</h3>
             {type === 'default' && (
               <span
                 className={`${classPrefix}__header__close`}
