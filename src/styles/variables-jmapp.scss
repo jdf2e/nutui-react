@@ -699,11 +699,17 @@ $countdown-color: var(--nutui-countdown-color, inherit) !default;
 $countdown-font-size: var(--nutui-countdown-font-size, initial) !default;
 
 //large price（✅）
+$price-symbol-padding-right: var(
+  --nutui-price-symbol-padding-right,
+  1px
+) !default;
 $price-symbol-big-size: var(--nutui-price-symbol-big-size, 18px) !default;
 $price-integer-big-size: var(--nutui-price-integer-big-size, 24px) !default;
 $price-decimal-big-size: var(--nutui-price-decimal-big-size, 18px) !default;
 
 //normal price（✅）
+$price-line-color: var(--nutui-price-line-color, $gray2) !default;
+$price-line-font-size: var(--nutui-price-line-font-size, 12px) !default;
 $price-symbol-medium-size: var(--nutui-price-symbol-medium-size, 14px) !default;
 $price-integer-medium-size: var(
   --nutui-price-integer-medium-size,
