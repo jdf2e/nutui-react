@@ -27,8 +27,6 @@ export type InputRule = {
   required?: boolean
 }
 
-export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
-
 export interface InputProps extends BasicComponent {
   type: InputType
   name: string
@@ -272,9 +270,9 @@ export const Input: FunctionComponent<
   }
 
   const handleBlur = (event: Event) => {
-    setTimeout(() => {
-      SetActive(false)
-    }, 200)
+    // setTimeout(() => {
+    SetActive(false)
+    // }, 200)
     let val: any = (event.target as any).value
     if (maxlength && val.length > Number(maxlength)) {
       val = val.slice(0, Number(maxlength))
@@ -309,8 +307,10 @@ export const Input: FunctionComponent<
   }
 
   const handleClear = (event: Event) => {
-    updateValue('')
-    onClear && onClear('', event)
+    setTimeout(() => {
+      updateValue('')
+      onClear && onClear('', event)
+    }, 50)
   }
 
   return (
@@ -431,18 +431,24 @@ export const Input: FunctionComponent<
                     }}
                   />
                 )}
-                {clearable && !readonly && active && inputValue.length > 0 ? (
-                  <Icon
-                    classPrefix={iconClassPrefix}
-                    fontClassName={iconFontClassName}
-                    className="nut-input-clear"
-                    name={clearIcon}
-                    size={clearSize}
-                    onClick={(e) => {
-                      handleClear(e)
-                    }}
-                  />
-                ) : null}
+
+                <Icon
+                  style={{
+                    display:
+                      clearable && !readonly && active && inputValue.length > 0
+                        ? 'inline-flex'
+                        : 'none',
+                    alignItems: 'center',
+                  }}
+                  classPrefix={iconClassPrefix}
+                  fontClassName={iconFontClassName}
+                  className="nut-input-clear"
+                  name={clearIcon}
+                  size={clearSize}
+                  onClick={(e) => {
+                    handleClear(e)
+                  }}
+                />
               </div>
               {rightIcon && rightIcon.length > 0 ? (
                 <div
