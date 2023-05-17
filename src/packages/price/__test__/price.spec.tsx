@@ -6,9 +6,7 @@ import '@testing-library/jest-dom'
 import { Price } from '../price'
 
 test('props test', () => {
-  const { container } = render(
-    <Price price={1010} needSymbol={false} thousands />
-  )
+  const { container } = render(<Price price={1010} symbol="" thousands />)
   expect(container.querySelector('.nut-price__integer')?.innerHTML).toBe(
     '1,010'
   )
@@ -20,7 +18,7 @@ test('props test', () => {
 
 test('props thousands test', () => {
   const { container } = render(
-    <Price price={10010.01} needSymbol symbol="$" thousands={false} />
+    <Price price={10010.01} symbol="$" thousands={false} />
   )
   expect(container.querySelector('.nut-price__integer')?.innerHTML).toBe(
     '10010'
@@ -31,15 +29,15 @@ test('props thousands test', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('props needSymbol and symbol test', () => {
-  const { container } = render(<Price price={10010} needSymbol symbol="$" />)
+test('props symbol test', () => {
+  const { container } = render(<Price price={10010} symbol="$" />)
   expect(container.querySelector('.nut-price__symbol')).toBeInTheDocument()
   expect(container.querySelector('.nut-price__symbol')?.innerHTML).toBe('$')
   expect(container).toMatchSnapshot()
 })
 
-test('props decimalDigits test', () => {
-  const { container } = render(<Price price={15213.1221} decimalDigits={3} />)
+test('props digits test', () => {
+  const { container } = render(<Price price={15213.1221} digits={3} />)
   expect(container.querySelectorAll('.nut-price__decimal')[1]?.innerHTML).toBe(
     '122'
   )
