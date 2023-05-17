@@ -116,7 +116,7 @@ export const NumberKeyboard: FunctionComponent<
       }
     }
     return (
-      <div key={item.id} className="keyboard-wrapper">
+      <div key={item.id} className={`${classPrefix}__body__wrapper`}>
         <div
           className={classNames({
             key: true,
