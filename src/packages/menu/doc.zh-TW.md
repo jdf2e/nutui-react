@@ -290,8 +290,6 @@ export default App
 | columns                          | 可以設置一行展示多少列 options          | number  | `1`                |
 | optionsIcon`v2.0.0`          | 自定義選項圖標                          | React.ReactNode  | `Check`          |
 | direction            | 菜單展開方向，可選值為up                | string  | `down`           |
-| activeClassName    | 選項選中時自定義標題樣式類              | string  | -                |
-| inactiveClassName  | 選項非選中時自定義標題樣式類            | string  | -                |
 
 
 ### MenuItem Events

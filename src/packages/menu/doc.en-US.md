@@ -299,8 +299,6 @@ export default App
 | columns                          | Display how many options in one line          | number  | `1`                |
 | icon          | Custome option icon                          | React.ReactNode  | `Check`          |
 | direction            | Expand direction, can be set to up                | string  | `down`           |
-| activeClassName    | Active custome title class              | string  | -                |
-| inactiveClassName  | Inactive custome title class            | string  | -                |
 | onChange | Emitted select option changed | Selected value | - |
 
 ### Ref

@@ -1,5 +1,4 @@
 import React, {
-  useState,
   useEffect,
   useRef,
   FunctionComponent,
@@ -81,9 +80,9 @@ export const InputNumber: FunctionComponent<
   }
   const inputRef = useRef('')
 
-  let [_checked, setChecked] = usePropsValue<string | number>({
-    value: value,
-    defaultValue: defaultValue,
+  const [_checked, setChecked] = usePropsValue<string | number>({
+    value,
+    defaultValue,
   })
 
   useEffect(() => {
