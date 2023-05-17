@@ -175,6 +175,11 @@
 - 删除 `inputWidth` 和 `buttonSize`, 通过css变量实现
 - 新增taro的`formatter`属性开发
 #### NumberKeyboard
+- randomKeys 重命名为 random
+- customKey 重命名为 custom
+- title 类型变更为 ReactNode
+- 新增 onConfirm 事件
+- 移除 popClass 定义，默认支持透传 Popup 属性
 #### Picker
 - `isVisible` 重命名为 `visible`
 - `listData` 重命名为 `options`
@@ -301,16 +306,16 @@
 - 主题定制的css变量中，去掉和dot有关的其他值，只保留 width。其他值由width计算而来。
 
 #### CircleProgress
--h5
-- `progress` 重命名为 `percent`
-- `strokeWidth` 改用 css变量控制
-- `circleColor` 重名为 `color`
-- `pathColor` 改用 css变量控制
+- h5
+  - `progress` 重命名为 `percent`
+  - `strokeWidth` 改用 css变量控制
+  - `circleColor` 重名为 `color`
+  - `pathColor` 改用 css变量控制
 
--taro
-- `progress` 重命名为 `percent`
-- `circleColor` 重名为 `color`
-- `pathColor` 重名为 `background`
+- taro
+  - `progress` 重命名为 `percent`
+  - `circleColor` 重名为 `color`
+  - `pathColor` 重名为 `background`
 #### Collapse
 #### CountDown
 #### Ellipsis
@@ -322,6 +327,7 @@
 - 1）渲染问题修复：之前的description的ReactNode节点存在引入错误，导致传入元素标签失效，2.0版本进行了一个修复。
 - 2）代码逻辑优化：因新增status属性，对一些无用的代码进行了一个精简优化
 #### ImagePreview
+- paginationVisible 重命名为 indicator
 #### NoticeBar
 #### Popover
 
@@ -346,6 +352,18 @@
 #### Skeleton
 #### Steps
 #### Swiper
+- h5
+  - 移除 paginationColor，通过 indicator 的 CSS 变量控制
+  - 移除 paginationBgColor，通过 indicator 的 CSS 变量控制
+  - 移除 pageContent，通过 indicator 实现
+  - autoplay 重命名为 autoplay
+  - initPage 重命名为 defaultValue
+  - paginationVisible 重命名为 indicator，类型改为 ReactNode
+  - isPreventDefault 重命名为 preventDefault
+  - isStopPropagation 重命名为 stopPropagation
+  - isCenter 重命名为 center
+- taro
+  - 通过封装 Taro 的 Swiper 和 SwiperItem 实现，支持的属性可参考 Taro Swiper 文档。 
 #### Table
 - `onSorter` 重命名为 `onSort`
 - 合并 `summary` 与 `noData` 的样式处理

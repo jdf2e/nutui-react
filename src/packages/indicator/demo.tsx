@@ -44,7 +44,7 @@ const IndicatorDemo = () => {
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
         <Cell>
-          <Indicator total={3} current={3} />
+          <Indicator total={3} current={2} />
         </Cell>
 
         <h2>{translated.c38a08ef}</h2>

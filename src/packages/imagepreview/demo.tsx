@@ -114,7 +114,7 @@ const ImagePreviewDemo = () => {
         <ImagePreview images={images} show={showPreview1} onClose={hideFn1} />
         <Cell title={translated.showPreview} onClick={showFn1} />
         <h2>{translated.thumb}</h2>
-        <Cell style={{ position: 'relative', zIndex: 10000 }}>
+        <Cell style={{ position: 'relative' }}>
           {images.map((image, index) => (
             <span
               key={image.src}
@@ -149,7 +149,7 @@ const ImagePreviewDemo = () => {
         <ImagePreview
           images={images}
           show={showPreview3}
-          paginationVisible
+          indicator
           paginationColor="red"
           onClose={hideFn3}
         />

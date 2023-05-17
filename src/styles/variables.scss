@@ -656,20 +656,16 @@ $numberkeyboard-key-font-color: var(
   --nutui-numberkeyboard-key-font-color,
   #333
 ) !default;
-$numberkeyboard-key-finish-font-size: var(
-  --nutui-numberkeyboard-key-finish-font-size,
+$numberkeyboard-key-confirm-font-size: var(
+  --nutui-numberkeyboard-key-confirm-font-size,
   16px
 ) !default;
-$numberkeyboard-key-finish-font-color: var(
-  --nutui-numberkeyboard-key-finish-font-color,
+$numberkeyboard-key-confirm-font-color: var(
+  --nutui-numberkeyboard-key-confirm-font-color,
   #fff
 ) !default;
-$numberkeyboard-key-finish-background-color: var(
-  --nutui-numberkeyboard-key-finish-background-color,
-  $brand-color
-) !default;
-$numberkeyboard-key-activeFinsh-background-color: var(
-  --nutui-numberkeyboard-key-activeFinsh-background-color,
+$numberkeyboard-key-confirm-background-color: var(
+  --nutui-numberkeyboard-key-confirm-background-color,
   $brand-color
 ) !default;
 
@@ -905,22 +901,6 @@ $swiper-pagination-bottom: var(--nutui-swiper-pagination-bottom, 12px);
 $swiper-pagination-item-background-color: var(
   --nutui-swiper-pagination-item-background-color,
   #ddd
-) !default;
-$swiper-pagination-item-width: var(
-  --nutui-swiper-pagination-item-width,
-  8px
-) !default;
-$swiper-pagination-item-height: var(
-  --nutui-swiper-pagination-item-height,
-  3px
-) !default;
-$swiper-pagination-item-margin-right: var(
-  --nutui-swiper-pagination-item-margin-right,
-  7px
-) !default;
-$swiper-pagination-item-border-radius: var(
-  --nutui-swiper-pagination-item-border-radius,
-  2px
 ) !default;
 
 //address

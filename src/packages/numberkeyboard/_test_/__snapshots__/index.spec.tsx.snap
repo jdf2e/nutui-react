@@ -1,181 +1,189 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should match customKey snapshot 1`] = `
+exports[`should match custom snapshot 1`] = `
 <div>
-  <div>
+  <div
+    class="nut-overlay-fade-enter-active nut-overlay"
+    style="z-index: 1000; animation-duration: 0.3s; background-color: rgba(0, 0, 0, 0);"
+  />
+  <div
+    class="nut-popup nut-popup-bottom "
+    style="z-index: 1000; animation-duration: 0.3s;"
+  >
     <div
-      class="overlay-fade-enter-active nut-overlay"
-      style="background-color: rgba(0, 0, 0, 0); z-index: 1000; animation-duration: 0.3s;"
-    />
-    <div
-      class="nut-popup-bottom  nut-popup"
-      style="z-index: 1000; animation-duration: 0.3s;"
+      class="nut-numberkeyboard"
     >
       <div
-        class="nut-numberkeyboard "
+        class="nut-numberkeyboard__body"
       >
         <div
-          class="nut-numberkeyboard__body"
+          class="nut-numberkeyboard__body__keys"
         >
           <div
-            class="nut-numberkeyboard__body__keys"
+            class="nut-numberkeyboard__body__wrapper"
           >
             <div
-              class="key-board-wrapper"
+              class="key"
             >
-              <div
-                class="key"
-              >
-                <div>
-                  1
-                </div>
-              </div>
-            </div>
-            <div
-              class="key-board-wrapper"
-            >
-              <div
-                class="key"
-              >
-                <div>
-                  2
-                </div>
-              </div>
-            </div>
-            <div
-              class="key-board-wrapper"
-            >
-              <div
-                class="key"
-              >
-                <div>
-                  3
-                </div>
-              </div>
-            </div>
-            <div
-              class="key-board-wrapper"
-            >
-              <div
-                class="key"
-              >
-                <div>
-                  4
-                </div>
-              </div>
-            </div>
-            <div
-              class="key-board-wrapper"
-            >
-              <div
-                class="key"
-              >
-                <div>
-                  5
-                </div>
-              </div>
-            </div>
-            <div
-              class="key-board-wrapper"
-            >
-              <div
-                class="key"
-              >
-                <div>
-                  6
-                </div>
-              </div>
-            </div>
-            <div
-              class="key-board-wrapper"
-            >
-              <div
-                class="key"
-              >
-                <div>
-                  7
-                </div>
-              </div>
-            </div>
-            <div
-              class="key-board-wrapper"
-            >
-              <div
-                class="key"
-              >
-                <div>
-                  8
-                </div>
-              </div>
-            </div>
-            <div
-              class="key-board-wrapper"
-            >
-              <div
-                class="key"
-              >
-                <div>
-                  9
-                </div>
-              </div>
-            </div>
-            <div
-              class="key-board-wrapper"
-            >
-              <div
-                class="key"
-              >
-                <div>
-                  .
-                </div>
-              </div>
-            </div>
-            <div
-              class="key-board-wrapper"
-            >
-              <div
-                class="key"
-              >
-                <div>
-                  0
-                </div>
-              </div>
-            </div>
-            <div
-              class="key-board-wrapper"
-            >
-              <div
-                class="key"
-              >
-                <div>
-                  x
-                </div>
+              <div>
+                1
               </div>
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__sidebar"
+            class="nut-numberkeyboard__body__wrapper"
           >
             <div
-              class="key-board-wrapper"
+              class="key"
             >
-              <div
-                class="key"
-              >
-                <img
-                  alt=""
-                  src="https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png"
-                />
+              <div>
+                2
               </div>
             </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
             <div
-              class="key-board-wrapper key-board-finish"
+              class="key"
             >
-              <div
-                class="key finish"
-              >
-                完成
+              <div>
+                3
               </div>
+            </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
+            <div
+              class="key"
+            >
+              <div>
+                4
+              </div>
+            </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
+            <div
+              class="key"
+            >
+              <div>
+                5
+              </div>
+            </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
+            <div
+              class="key"
+            >
+              <div>
+                6
+              </div>
+            </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
+            <div
+              class="key"
+            >
+              <div>
+                7
+              </div>
+            </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
+            <div
+              class="key"
+            >
+              <div>
+                8
+              </div>
+            </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
+            <div
+              class="key"
+            >
+              <div>
+                9
+              </div>
+            </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
+            <div
+              class="key"
+            >
+              <div>
+                .
+              </div>
+            </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
+            <div
+              class="key"
+            >
+              <div>
+                0
+              </div>
+            </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
+            <div
+              class="key"
+            >
+              <div>
+                x
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="nut-numberkeyboard__sidebar"
+        >
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
+            <div
+              class="key delete"
+            >
+              <svg
+                height="36"
+                viewBox="0 0 1024 1024"
+                width="36"
+              >
+                <path
+                  d="M875.594 186.122H390.803a51.162 51.162 0 0 0-36.18 14.986L79.91 475.821a51.166 51.166 0 0 0 0 72.358l274.714 274.712a51.164 51.164 0 0 0 36.179 14.986h484.791c46.033 0 83.484-37.45 83.484-83.483V269.606c.001-46.033-37.45-83.484-83.483-83.484zm32.32 568.274c0 17.85-14.473 32.318-32.32 32.318H390.803L116.089 512l274.714-274.714h484.791c17.849 0 32.32 14.47 32.32 32.32v484.789z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M753.945 360.214l-121.43 121.429-121.43-121.429s-16.062-8.224-30.356 6.072c-14.295 14.295-6.073 30.357-6.073 30.357l121.43 121.428L486.8 627.357s-8.222 16.062 6.072 30.357c14.297 14.296 30.358 6.072 30.358 6.072l109.286-109.285 109.286 109.285s16.062 8.224 30.357-6.072c14.295-14.295 6.07-30.357 6.07-30.357L668.944 518.072l121.431-121.43s8.22-16.061-6.074-30.356c-14.294-14.296-30.356-6.072-30.356-6.072z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
+            <div
+              class="key confirm"
+            >
+              完成
             </div>
           </div>
         </div>
@@ -187,157 +195,175 @@ exports[`should match customKey snapshot 1`] = `
 
 exports[`should match snapshot 1`] = `
 <div>
-  <div>
+  <div
+    class="nut-overlay-fade-enter-active nut-overlay"
+    style="z-index: 1000; animation-duration: 0.3s; background-color: rgba(0, 0, 0, 0);"
+  />
+  <div
+    class="nut-popup nut-popup-bottom "
+    style="z-index: 1000; animation-duration: 0.3s;"
+  >
     <div
-      class="overlay-fade-enter-active nut-overlay"
-      style="background-color: rgba(0, 0, 0, 0); z-index: 1000; animation-duration: 0.3s;"
-    />
-    <div
-      class="nut-popup-bottom  nut-popup"
-      style="z-index: 1000; animation-duration: 0.3s;"
+      class="nut-numberkeyboard"
     >
       <div
-        class="nut-numberkeyboard "
+        class="nut-numberkeyboard__body"
       >
         <div
-          class="nut-numberkeyboard__body"
+          class="nut-numberkeyboard__body__keys"
         >
           <div
-            class="nut-numberkeyboard__body__keys"
+            class="nut-numberkeyboard__body__wrapper"
           >
             <div
-              class="key-board-wrapper"
+              class="key"
             >
-              <div
-                class="key"
-              >
-                <div>
-                  1
-                </div>
+              <div>
+                1
               </div>
             </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
             <div
-              class="key-board-wrapper"
+              class="key"
             >
-              <div
-                class="key"
-              >
-                <div>
-                  2
-                </div>
+              <div>
+                2
               </div>
             </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
             <div
-              class="key-board-wrapper"
+              class="key"
             >
-              <div
-                class="key"
-              >
-                <div>
-                  3
-                </div>
+              <div>
+                3
               </div>
             </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
             <div
-              class="key-board-wrapper"
+              class="key"
             >
-              <div
-                class="key"
-              >
-                <div>
-                  4
-                </div>
+              <div>
+                4
               </div>
             </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
             <div
-              class="key-board-wrapper"
+              class="key"
             >
-              <div
-                class="key"
-              >
-                <div>
-                  5
-                </div>
+              <div>
+                5
               </div>
             </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
             <div
-              class="key-board-wrapper"
+              class="key"
             >
-              <div
-                class="key"
-              >
-                <div>
-                  6
-                </div>
+              <div>
+                6
               </div>
             </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
             <div
-              class="key-board-wrapper"
+              class="key"
             >
-              <div
-                class="key"
-              >
-                <div>
-                  7
-                </div>
+              <div>
+                7
               </div>
             </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
             <div
-              class="key-board-wrapper"
+              class="key"
             >
-              <div
-                class="key"
-              >
-                <div>
-                  8
-                </div>
+              <div>
+                8
               </div>
             </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
             <div
-              class="key-board-wrapper"
+              class="key"
             >
-              <div
-                class="key"
-              >
-                <div>
-                  9
-                </div>
+              <div>
+                9
               </div>
             </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
             <div
-              class="key-board-wrapper"
+              class="key close"
             >
-              <div
-                class="key lock"
+              <svg
+                aria-labelledby="RectDown"
+                class="nut-icon nut-icon-RectDown"
+                role="presentation"
+                style="width: 25px; height: 25px;"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <img
-                  alt=""
-                  src="https://img11.360buyimg.com/imagetools/jfs/t1/146371/38/8485/738/5f606425Eca239740/14f4b4f5f20d8a68.png"
+                <path
+                  d="M515.072 778.24c-14.336 0-28.672-5.632-39.936-16.384L69.12 356.864c-22.016-22.016-22.016-57.856 0-79.872s57.856-22.016 79.872 0L515.584 642.56 880.64 275.968c22.016-22.016 57.856-22.016 79.872 0s22.016 57.856 0 79.872L555.008 762.368c-10.752 10.752-25.6 15.872-39.936 15.872z"
+                  fill="currentColor"
+                  fill-opacity="0.9"
                 />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
+            <div
+              class="key"
+            >
+              <div>
+                0
               </div>
             </div>
+          </div>
+          <div
+            class="nut-numberkeyboard__body__wrapper"
+          >
             <div
-              class="key-board-wrapper"
+              class="key delete"
             >
-              <div
-                class="key"
+              <svg
+                height="36"
+                viewBox="0 0 1024 1024"
+                width="36"
               >
-                <div>
-                  0
-                </div>
-              </div>
-            </div>
-            <div
-              class="key-board-wrapper"
-            >
-              <div
-                class="key delete"
-              >
-                <img
-                  alt=""
-                  src="https://img11.360buyimg.com/imagetools/jfs/t1/129395/8/12735/2030/5f61ac37E70cab338/fb477dc11f46056c.png"
+                <path
+                  d="M875.594 186.122H390.803a51.162 51.162 0 0 0-36.18 14.986L79.91 475.821a51.166 51.166 0 0 0 0 72.358l274.714 274.712a51.164 51.164 0 0 0 36.179 14.986h484.791c46.033 0 83.484-37.45 83.484-83.483V269.606c.001-46.033-37.45-83.484-83.483-83.484zm32.32 568.274c0 17.85-14.473 32.318-32.32 32.318H390.803L116.089 512l274.714-274.714h484.791c17.849 0 32.32 14.47 32.32 32.32v484.789z"
+                  fill="currentColor"
                 />
-              </div>
+                <path
+                  d="M753.945 360.214l-121.43 121.429-121.43-121.429s-16.062-8.224-30.356 6.072c-14.295 14.295-6.073 30.357-6.073 30.357l121.43 121.428L486.8 627.357s-8.222 16.062 6.072 30.357c14.297 14.296 30.358 6.072 30.358 6.072l109.286-109.285 109.286 109.285s16.062 8.224 30.357-6.072c14.295-14.295 6.07-30.357 6.07-30.357L668.944 518.072l121.431-121.43s8.22-16.061-6.074-30.356c-14.294-14.296-30.356-6.072-30.356-6.072z"
+                  fill="currentColor"
+                />
+              </svg>
             </div>
           </div>
         </div>
