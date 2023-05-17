@@ -82,7 +82,11 @@ const ImagePreviewDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
-        <ImagePreview images={images} show={showPreview1} onClose={hideFn1} />
+        <ImagePreview
+          images={images}
+          visible={showPreview1}
+          onClose={hideFn1}
+        />
         <Cell title={translated.showPreview} onClick={showFn1} />
         <h2>{translated.thumb}</h2>
         <Cell style={{ position: 'relative', zIndex: 10000 }}>
@@ -98,14 +102,14 @@ const ImagePreviewDemo = () => {
         </Cell>
         <ImagePreview
           images={images}
-          show={init}
+          visible={init}
           initNo={init}
           onClose={hideFn2}
         />
         <h2>{translated.withInitNo}</h2>
         <ImagePreview
           images={images}
-          show={showPreview2}
+          visible={showPreview2}
           initNo={3}
           onClose={hideFn2}
         />
@@ -113,7 +117,7 @@ const ImagePreviewDemo = () => {
         <h2>{translated.withPagination}</h2>
         <ImagePreview
           images={images}
-          show={showPreview3}
+          visible={showPreview3}
           paginationVisible
           paginationColor="red"
           onClose={hideFn3}

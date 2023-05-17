@@ -49,7 +49,7 @@ const App = () => {
 
   return (
     <>
-        <ImagePreview images={images} show={showPreview1} onClose={hideFn1} />
+        <ImagePreview images={images} visible={showPreview1} onClose={hideFn1} />
         <Cell title="Show preview"  onClick={showFn1} />
     </>
   );
@@ -102,7 +102,7 @@ const App = () => {
       </Cell>
       <ImagePreview
         images={images}
-        show={init}
+        visible={init}
         initNo={init}
         onClose={hideFn2}
       />
@@ -149,7 +149,7 @@ const App = () => {
 
   return (
     <>
-        <ImagePreview images={images} initNo={3} show={showPreview2} onClose={hideFn2} />
+        <ImagePreview images={images} initNo={3} visible={showPreview2} onClose={hideFn2} />
         <Cell title="With init no"  onClick={showFn2} />
     </>
   );
@@ -192,7 +192,7 @@ const App = () => {
 
   return (
     <>
-        <ImagePreview images={images} show={showPreview3} paginationVisible paginationColor="red" onClose={hideFn3} />
+        <ImagePreview images={images} visible={showPreview3} paginationVisible paginationColor="red" onClose={hideFn3} />
         <Cell title="With pagination"  onClick={showFn3} />
     </>
   );
@@ -258,7 +258,7 @@ const App = () => {
 
   return (
     <>
-        <ImagePreview images={images} videos={videos} show={showPreview4} onClose={hideFn4} />
+        <ImagePreview images={images} videos={videos} visible={showPreview4} onClose={hideFn4} />
         <Cell title="With videos"  onClick={showFn4} />
     </>
   );
@@ -275,7 +275,7 @@ export default App;
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| show | Whether to show preview | boolean | `false` |
+| visible | Whether to show preview | boolean | `false` |
 | videos | Videos Array(Videos are before images, not support in taro) | `Array<Object>` | `[]`
 | images | Images array | `{ src: string }[]` | `[]` |
 | autoplay | Autoplay time, zero means not autoplay | number \| string  | `3000`  |
