@@ -1,32 +1,6 @@
 @import '../popup/popup.scss';
 @import '../tabs/tabs.scss';
 
-.nut-theme-dark {
-  .nut-cascader {
-    .nut-cascader__bar {
-      background: $dark5;
-      color: $dark1;
-    }
-
-    .nut-tabs__titles {
-      background: $dark5;
-    }
-
-    &__title {
-      color: $dark1;
-      background-color: $dark5;
-    }
-
-    .nut-tabpane {
-      background-color: $dark5;
-    }
-
-    .nut-cascader-item {
-      color: $dark1;
-    }
-  }
-}
-
 .nut-cascader {
   width: 100%;
   font-size: $cascader-font-size;

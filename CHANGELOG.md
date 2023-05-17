@@ -1,3 +1,42 @@
+# v2.0.0-alpha.8
+`2023-05-12`
+* :sparkles:feat: cascader支持受控 (#1000) @xiaoyatong
+* :bug: fix: tabs children 变更后需要展示新的 title (#999) @oasis-cloud
+* 🛠 refactor: Range (#991) @Eiinu
+
+# v2.0.0-alpha.7
+`2023-05-12`
+* :bug: fix: tabs children 变化需要更新选中状态 @oasis-cloud
+
+# v2.0.0-alpha.6
+`2023-05-12`
+
+* 🛠 refactor: cascader (#993) @xiaoyatong
+* 🛠 refactor: picker (#975) @xiaoyatong
+* 🛠 refactor: table (#982) @xiaoyatong
+* 🛠 refactor: TextArea (#979) @Eiinu
+* :bug: fix: image src 初始状态未空，导致出发加载失败事件 (#988) @oasis-cloud
+* 📖 docs(progress): demo 代码更新 (#986) @Eiinu
+* 📖 docs(progress): update demo (#987) @Eiinu
+* 📖 docs: tabs 文档中的 titleNode 修改为 title (#995) @oasis-cloud
+* 🔨 chore: taro es 构建移入 vite 配置文件 (#990) @oasis-cloud
+
+
+# v2.0.0-alpha.5
+`2023-05-10`
+
+* 🛠 refactor: checkbox (#974) @oasis-cloud
+* 🛠 refactor: circleprogress-v2.0 (#949) @junjun666
+* 🛠 refactor: ellipsis-v2.0 (#963) @junjun666
+* 🛠 refactor: empty-v2.0 (#977) @junjun666
+* 🛠 refactor: swipe (#958) @justExplore
+* 🛠 refactor:avatar-v2.0 (#970) @junjun666
+* 📖 docs: 增加 icon 的复制功能 (#973) @oasis-cloud
+* :sparkles: feat: cellgroup组件增加单元格之间是否展示分割线props (#961) @拧巴的猫
+* :bug: fix: tabbar 通过 Tabbar.Item 方式使用未加载 item 的样式 (#972) @oasis-cloud
+* :bug: fix: 修复elevator小程序快速滑动后闪动问题 (#984) @拧巴的猫
+
+
 # v2.0.0-alpha.4
 `2023-05-05`
 

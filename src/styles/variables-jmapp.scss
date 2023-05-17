@@ -459,10 +459,7 @@ $picker-item-active-line-border: var(
   --nutui-picker-item-active-line-border,
   1px solid #d8d8d8
 ) !default;
-$picker-columns-item-color: var(
-  --nutui-picker-columns-item-color,
-  $title-color
-) !default;
+
 $picker-mask-bg-img: var(
   --picker-mask-bg-img,
   linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),
@@ -897,25 +894,19 @@ $infiniteloading-bottom-color: var(
 ) !default;
 
 //range（✅）
-$range-tip-font-color: var(--nutui-range-tip-font-color, $gray1) !default;
-$range-bg-color: var(--nutui-range-bg-color, rgba(#3768fa, 0.5)) !default;
-$range-bg-color-tick: var(
-  --nutui-range-bg-color-tick,
-  rgba(#3768fa, 0.9)
-) !default;
-$range-bar-bg-color: linear-gradient(
-  135deg,
-  $primary-color 0%,
-  $primary-color-end 100%
-) !default;
-$range-bar-btn-bg-color: var(
-  --nutui-range-bar-btn-bg-color,
+$range-font-color: var(--nutui-range-font-color, $gray1) !default;
+$range-height: var(--nutui-range-height, 4px) !default;
+$range-margin: var(--nutui-range-margin, 15px) !default;
+$range-inactive-color: var(--nutui-range-inactive-color, #fa958c) !default;
+$range-active-color: var(--nutui-range-active-color, $primary-color) !default;
+$range-button-background: var(
+  --nutui-range-button-background,
   $primary-text-color
 ) !default;
-$range-bar-btn-width: var(--nutui-range-bar-btn-width, 24px) !default;
-$range-bar-btn-height: var(--nutui-range-bar-btn-height, 24px) !default;
-$range-bar-btn-border: var(
-  --nutui-range-bar-btn-border,
+$range-button-width: var(--nutui-range-button-width, 24px) !default;
+$range-button-height: var(--nutui-range-button-height, 24px) !default;
+$range-button-border: var(
+  --nutui-range-button-border,
   1px solid $primary-color
 ) !default;
 

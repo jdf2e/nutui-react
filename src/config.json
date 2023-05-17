@@ -402,7 +402,7 @@
           "author": "ailululu"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Checkbox",
           "type": "component",
           "cName": "复选按钮",
@@ -413,7 +413,7 @@
           "author": "oasis"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "CheckboxGroup",
           "type": "component",
           "cName": "多选按钮组",
@@ -513,7 +513,7 @@
           "author": "Drjingfubo"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Picker",
           "type": "component",
           "cName": "选择器",
@@ -612,7 +612,7 @@
           "author": "dsj"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "TextArea",
           "type": "component",
           "cName": "文本域",
@@ -685,7 +685,7 @@
           "author": "songsong"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Empty",
           "type": "component",
           "cName": "空状态",
@@ -902,7 +902,7 @@
           "author": "songsong"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Ellipsis",
           "type": "component",
           "cName": "文本省略",
@@ -1024,7 +1024,7 @@
           "author": "liukun"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Table",
           "type": "component",
           "cName": "表格",

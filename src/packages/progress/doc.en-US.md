@@ -43,8 +43,9 @@ const App = () => {
     <Cell>
       <Progress
         percent={30}
-        color="rgba(250,44,25,0.47)"
-        strokeWidth="20"
+        background="rgba(250,44,25,0.2)"
+        color="rgba(250,44,25,0.9)"
+        strokeWidth="15"
       />
     </Cell>
   );
@@ -81,7 +82,7 @@ import { Progress, Image, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Progress percent={60}>
+      <Progress percent={60} showText>
         <Image
           width="30px"
           height="30px"
@@ -106,13 +107,13 @@ const App = () => {
   return (
     <>
       <Cell>
-        <Progress percent={30} strokeWidth="5" />
+        <Progress percent={30} strokeWidth="5" showText />
       </Cell>
       <Cell>
-        <Progress percent={50} strokeWidth="10" />
+        <Progress percent={50} strokeWidth="10" showText />
       </Cell>
       <Cell>
-        <Progress percent={70} strokeWidth="15" />
+        <Progress percent={70} strokeWidth="15" showText />
       </Cell>
     </>
   );
@@ -176,7 +177,7 @@ const App = () => {
       <Cell>
         <Button
           type="default"
-          style={{ margin: 8 }} 
+          style={{ margin: 8 }}
           onClick={() => {
             let num = value;
             if (value <= 0) {
@@ -190,6 +191,7 @@ const App = () => {
         </Button>
         <Button 
           type="primary" 
+          style={{ margin: 8 }}
           onClick={() => {
             let num = value;
             if (value >= 100) {

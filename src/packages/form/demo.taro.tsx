@@ -235,7 +235,7 @@ const FormDemo = () => {
           </Form.Item>
           <Form.Item label={translated.checkbox} name="checkbox">
             <Checkbox
-              textPosition="right"
+              labelPosition="right"
               label={translated.checkbox}
               checked={false}
             />
@@ -254,7 +254,7 @@ const FormDemo = () => {
               <InputNumber modelValue={3} min="10" max="20" />
             </Form.Item> */}
           <Form.Item label={translated.range} name="range">
-            <Range modelValue={0} max={10} min={-10} />
+            <Range defaultValue={0} max={10} min={-10} />
           </Form.Item>
           {/* <Form.Item label={translated.uploader} name="uploader">
               <Uploader
