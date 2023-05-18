@@ -1,18 +1,23 @@
-import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode, useCallback } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import CollapseItem from '../collapseitem'
+import CollapseContext from './collapse.context'
+import { usePropsValue } from '@/utils/use-props-value'
+
+type keyType = Array<string> | string
 
 export interface CollapseProps extends BasicComponent {
-  activeKey: Array<number | string> | number | string
+  activeKey: keyType
+  defaultActiveKey: keyType
   accordion: boolean
   expandIcon: ReactNode
   rotate: number
-  onChange: (isOpen: boolean, name: string) => void
+  onChange: (activeKey: keyType, name: string, isOpen: boolean) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
-  activeKey: ['0'],
+  defaultActiveKey: [] as keyType,
   accordion: false,
   expandIcon: null,
   rotate: 180,
@@ -26,6 +31,7 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> & {
     style,
     children,
     activeKey,
+    defaultActiveKey,
     accordion,
     expandIcon,
     rotate,
@@ -35,62 +41,69 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> & {
     ...props,
   }
   const classPrefix = 'nut-collapse'
-  const childrenDom = React.Children.toArray(children)
-  const [defaultOpenIndex, setDefaultOpenIndex] = useState<Array<string>>([])
-  const handleActiveName = () => {
-    let activeArr = []
-    if (!Array.isArray(activeKey)) {
-      activeArr.push(activeKey.toString())
-    } else {
-      // 数组
-      if (accordion && activeKey.length > 1) {
-        console.warn('手风琴模式不支持传递多个打开页签')
-      }
-      const activeNameStr = activeKey.map((item) => {
-        return item.toString()
-      })
-      activeArr = [...activeNameStr]
-    }
-    return activeArr
+
+  const handleChange = (newValue: keyType) => {
+    console.log(newValue)
   }
 
-  useEffect(() => {
-    const activeArr = handleActiveName()
-    setDefaultOpenIndex(activeArr)
-  }, [activeKey])
+  const [value, setValue] = usePropsValue<keyType>({
+    value: activeKey,
+    defaultValue: defaultActiveKey,
+    finalValue: [],
+    onChange: handleChange,
+  })
 
-  const onToggle = (isOpen: boolean, name: string) => {
-    let newOpenIndex = [...defaultOpenIndex]
-    if (isOpen) {
-      // 当前状态为true，则变为false,闭合
-      const removeIndex = newOpenIndex.findIndex((value) => {
-        return value === name
-      })
-      newOpenIndex.splice(removeIndex, 1)
-    } else {
-      // 当前状态为false，变为true，展开
-      // eslint-disable-next-line no-lonely-if
-      if (accordion) {
-        newOpenIndex = [name]
+  const changeVal = (newValue: keyType, name: string, isOpen: boolean) => {
+    setValue(newValue)
+    onChange && onChange(newValue, name, isOpen)
+  }
+
+  const updateValue = (name: string) => {
+    if (accordion) {
+      if (value === name) {
+        changeVal('', name, false)
       } else {
-        newOpenIndex.push(name)
+        changeVal(name, name, true)
       }
+    } else if (Array.isArray(value)) {
+      if (value.includes(name)) {
+        const newValue = value.filter((v: string) => v !== name)
+        changeVal(newValue, name, false)
+      } else {
+        const newValue = value.concat([name])
+        changeVal(newValue, name, true)
+      }
+    } else {
+      console.warn('[NutUI] <Collapse> 未开启手风琴模式时 activeKey 应为数组')
     }
-    setDefaultOpenIndex(newOpenIndex)
-    onChange && onChange(!isOpen, name)
   }
+
+  const isOpen = useCallback(
+    (name: string) => {
+      if (accordion) {
+        return value === name
+      }
+      if (Array.isArray(value)) {
+        return value.includes(name)
+      }
+      return false
+    },
+    [accordion, value]
+  )
+
   return (
-    <div className={classNames(classPrefix, className)} style={style}>
-      {childrenDom.map((item: any) => {
-        return React.cloneElement(item, {
-          isOpen: defaultOpenIndex.includes(item.props.name),
-          onToggle: (isOpen: boolean, name: string) => onToggle(isOpen, name),
-          expandIcon: item.props.expandIcon || expandIcon,
-          rotate,
-          childnull: !!item.props.children,
-        })
-      })}
-    </div>
+    <CollapseContext.Provider
+      value={{
+        isOpen,
+        updateValue,
+        expandIcon,
+        rotate,
+      }}
+    >
+      <div className={classNames(classPrefix, className)} style={style}>
+        {children}
+      </div>
+    </CollapseContext.Provider>
   )
 }
 
