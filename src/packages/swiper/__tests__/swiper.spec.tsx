@@ -75,6 +75,7 @@ test('should render initpage', () => {
       width={width}
       defaultValue={defaultValue}
       onChange={onChange}
+      loop
       indicator
     >
       {list.map((item) => {
@@ -111,6 +112,7 @@ test('should render direction', () => {
     <Swiper
       height={height}
       width={width}
+      loop
       direction={direction}
       defaultValue={defaultValue}
       onChange={onChange}
