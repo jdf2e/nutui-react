@@ -264,13 +264,10 @@ const App = () => {
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| activeKey | Of the currently expanded panel name | `Accordion mode：string \| number Non accordion mode：(string | number)[]` | `-` |
+| activeKey | Of the currently expanded panel name | `Accordion mode：string \| number Non accordion mode：(string | number)[]` | - |
 | accordion | Whether to turn on accordion mode | `boolean` | `false` |
 | rotate | Click the rotation angle of collapse and expansion to take effect in the custom icon mode | `string \| number` | `180` |
-| expandIcon`v2.0.0` | Icon | `ReactNode` | `-` |
-| icon`v2.0.0 deprecated` | use expandIcon | `string` | `-` |
-| iconSize`v2.0.0 deprecated` | Icon size | `string` | `16px` |
-| iconColor`v2.0.0 deprecated` | Icon color | `string` | `-` |
+| expandIcon | Icon | `ReactNode` | - |
 
 ## Collapse.Item
 
@@ -278,10 +275,10 @@ const App = () => {
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| name | unique identifier, required | `string \| number` | `-` |
-| title | the content on the left side of the title bar supports slot incoming (props incoming has higher priority) | `ReactNode` | `-` |
+| name | unique identifier, required | `string \| number` | - |
+| title | the content on the left side of the title bar supports slot incoming (props incoming has higher priority) | `ReactNode` | - |
 | disabled | whether the title bar is disabled | `boolean` | `false` |
-| subTitle | subtitle of title bar, support slot incoming (props incoming has higher priority) | `ReactNode` | `-` |
+| subTitle | subtitle of title bar, support slot incoming (props incoming has higher priority) | `ReactNode` | - |
 | onChange | Triggered when the panel is switched | `(isOpen, name) => void` | - |
 
 ## Theming
