@@ -43,7 +43,7 @@ const defaultProps = {
   autoPlay: 0,
   direction: 'horizontal',
   indicator: false,
-  loop: true,
+  loop: false,
   touchable: true,
   preventDefault: true,
   stopPropagation: true,
