@@ -250,12 +250,12 @@ export default App;
 |-----------|--------------|--------|--------|
 | title | the title of the tab | `ReactNode` | -     |
 | icon | Custom icon | `ReactNode` | -     |
-| value   | value to show, eg number、charctor and custom content | `ReactNode`  |  | - |
+| value   | value to show in Badge, eg number、charctor and custom content | `ReactNode`  |  | - |
 | max     | when value is number, it's the max size | `number`  | `99`   |
-| dot     | Is dotted    | `boolean` | `false`   |
-| top     | Up and down offset, support unit setting, can be set to: 5, etc. |`number`  | `0`       |
-| right   | Left and right offset, support unit setting, can be set to: 5, etc. | `number`  | `0`       |
-| color   | background color,the default value is the theme primary color | string  | `` |
+| dot     | Whther Bagde is dotted    | `boolean` | `false`   |
+| top     | Up and down offset of Badge, support unit setting, can be set to: 5, etc. |`number`  | `0`       |
+| right   | Left and right offset of Badge, support unit setting, can be set to: 5, etc. | `number`  | `0`       |
+| color   | Background color of Badge,the default value is the theme primary color | string  | `` |
 
 ## Theming
 
