@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Taro from '@tarojs/taro'
 import { Checked, DownArrow, HeartFill, Star } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Collapse, CollapseItem, Button } from '@/packages/nutui.react.taro'
+import { Collapse, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
 interface itemObj {
@@ -144,46 +144,46 @@ const CollapseDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>translated.header1</h2>
         <Collapse activeKey={['1', '2']} expandIcon={<DownArrow />}>
-          <CollapseItem title={translated.title1} name="1">
+          <Collapse.Item title={translated.title1} name="1">
             {translated.content1}
-          </CollapseItem>
-          <CollapseItem title={translated.title2} name="2">
+          </Collapse.Item>
+          <Collapse.Item title={translated.title2} name="2">
             {translated.content2}
-          </CollapseItem>
-          <CollapseItem title={translated.title3} name="3" disabled>
+          </Collapse.Item>
+          <Collapse.Item title={translated.title3} name="3" disabled>
             {translated.content3}
-          </CollapseItem>
+          </Collapse.Item>
         </Collapse>
         <h2>{translated.header2}</h2>
         <Collapse
           activeKey={['1', '2']}
           onChange={(isOpen, name) => changeEnv(isOpen, name)}
         >
-          <CollapseItem title={translated.title1} name="1">
+          <Collapse.Item title={translated.title1} name="1">
             {translated.content1}
-          </CollapseItem>
-          <CollapseItem title={translated.title2} name="2">
+          </Collapse.Item>
+          <Collapse.Item title={translated.title2} name="2">
             {translated.content2}
-          </CollapseItem>
-          <CollapseItem title={translated.title3} name="3">
+          </Collapse.Item>
+          <Collapse.Item title={translated.title3} name="3">
             {translated.content3}
-          </CollapseItem>
+          </Collapse.Item>
         </Collapse>
         <h2>{translated.header3}</h2>
         <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />}>
-          <CollapseItem
+          <Collapse.Item
             title={translated.title1}
             name="1"
             subTitle={translated.subTitle}
           >
             {translated.content1}
-          </CollapseItem>
-          <CollapseItem title={translated.title2} name="2">
+          </Collapse.Item>
+          <Collapse.Item title={translated.title2} name="2">
             {translated.content2}
-          </CollapseItem>
-          <CollapseItem title={translated.title3} name="3">
+          </Collapse.Item>
+          <Collapse.Item title={translated.title3} name="3">
             {translated.content3}
-          </CollapseItem>
+          </Collapse.Item>
         </Collapse>
         <h2>{translated.header4}</h2>
         <Collapse
@@ -192,27 +192,27 @@ const CollapseDemo = () => {
           expandIcon={<DownArrow />}
           rotate={90}
         >
-          <CollapseItem
+          <Collapse.Item
             title={translated.title1}
             name="1"
             expandIcon={<Checked />}
           >
             {translated.content1}
-          </CollapseItem>
-          <CollapseItem
+          </Collapse.Item>
+          <Collapse.Item
             title={translated.title2}
             name="2"
             expandIcon={<HeartFill />}
           >
             {translated.content2}
-          </CollapseItem>
-          <CollapseItem title={translated.title3} name="3">
+          </Collapse.Item>
+          <Collapse.Item title={translated.title3} name="3">
             {translated.content3}
-          </CollapseItem>
+          </Collapse.Item>
         </Collapse>
         <h2>{translated.header5}</h2>
         <Collapse activeKey={['1']} accordion expandIcon={<Star />}>
-          <CollapseItem
+          <Collapse.Item
             title={
               <div
                 style={{
@@ -227,8 +227,8 @@ const CollapseDemo = () => {
             name="1"
           >
             {translated.content1}
-          </CollapseItem>
-          <CollapseItem
+          </Collapse.Item>
+          <Collapse.Item
             title={translated.title2}
             subTitle={
               <div
@@ -244,19 +244,19 @@ const CollapseDemo = () => {
             name="2"
           >
             {translated.content2}
-          </CollapseItem>
-          <CollapseItem title={translated.title3} name="3">
+          </Collapse.Item>
+          <Collapse.Item title={translated.title3} name="3">
             {translated.content3}
-          </CollapseItem>
+          </Collapse.Item>
         </Collapse>
 
         <h2>{translated.header6}</h2>
         <Collapse activeKey={currIndex} accordion>
           {domData.map((item: itemObj, index: number) => {
             return (
-              <CollapseItem title={item.title} name={item.name} key={index}>
+              <Collapse.Item title={item.title} name={item.name} key={index}>
                 {item.data}
-              </CollapseItem>
+              </Collapse.Item>
             )
           })}
         </Collapse>

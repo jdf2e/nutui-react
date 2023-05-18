@@ -8,7 +8,7 @@
 
 ```ts
 // react
-import { Collapse, CollapseItem } from 'nutui-react'
+import { Collapse } from 'nutui-react'
 ```
 
 ## 代码演示
@@ -19,22 +19,22 @@ import { Collapse, CollapseItem } from 'nutui-react'
 
 ```jsx
 import  React from "react";
-import { Collapse, CollapseItem } from '@nutui/nutui-react';
+import { Collapse } from '@nutui/nutui-react';
 import { DownArrow } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
     <Collapse activeKey={['1', '2']} expandIcon={<DownArrow />}>
-      <CollapseItem title="标题1" name="1">
+      <Collapse.Item title="标题1" name="1">
         京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-      </CollapseItem>
-      <CollapseItem title="标题2" name="2">
+      </Collapse.Item>
+      <Collapse.Item title="标题2" name="2">
         京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-      </CollapseItem>
-      <CollapseItem title="标题3" name="3" disabled>
+      </Collapse.Item>
+      <Collapse.Item title="标题3" name="3" disabled>
         京东“厂直优品计划”首推“政府优品馆”
-      </CollapseItem>
+      </Collapse.Item>
     </Collapse>
     </>
   );
@@ -50,7 +50,7 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react'
-import { Collapse, CollapseItem} from '@nutui/nutui-react'
+import { Collapse} from '@nutui/nutui-react'
 import { DownArrow } from '@nutui/icons-react'
 
 const App = () => {
@@ -59,15 +59,15 @@ const App = () => {
   }
   return (  
   <Collapse activeKey={['1', '2']} change={(isOpen, name) => changeEnv(isOpen, name)}>
-    <CollapseItem title="标题1" name="1">
+    <Collapse.Item title="标题1" name="1">
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-    </CollapseItem>
-    <CollapseItem title="标题2" name="2">
+    </Collapse.Item>
+    <Collapse.Item title="标题2" name="2">
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-    </CollapseItem>
-    <CollapseItem title="标题3" name="3">
+    </Collapse.Item>
+    <Collapse.Item title="标题3" name="3">
       京东“厂直优品计划”首推“政府优品馆”
-    </CollapseItem>
+    </Collapse.Item>
   </Collapse>
   )
 }
@@ -82,21 +82,21 @@ export default App;
 
 ```tsx
 import React from 'react'
-import { Collapse, CollapseItem} from '@nutui/nutui-react'
+import { Collapse} from '@nutui/nutui-react'
 import { DownArrow } from '@nutui/icons-react'
 
 const App = () => {
   return (  
   <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />}>
-    <CollapseItem title="标题1" name="1" subTitle="文本内容">
+    <Collapse.Item title="标题1" name="1" subTitle="文本内容">
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-    </CollapseItem>
-    <CollapseItem title="标题2" name="2">
+    </Collapse.Item>
+    <Collapse.Item title="标题2" name="2">
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-    </CollapseItem>
-    <CollapseItem title="标题3" name="3">
+    </Collapse.Item>
+    <Collapse.Item title="标题3" name="3">
       京东“厂直优品计划”首推“政府优品馆”
-    </CollapseItem>
+    </Collapse.Item>
   </Collapse>
   )
 }
@@ -111,21 +111,21 @@ export default App;
 
 ```jsx
 import React from 'react'
-import { Collapse, CollapseItem} from '@nutui/nutui-react'
+import { Collapse} from '@nutui/nutui-react'
 import { DownArrow, Checked, HeartFill } from '@nutui/icons-react'
 
 const App = () => {
   return (  
   <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />} rotate={90}>
-    <CollapseItem title="标题1" name="1" expandIcon={<Checked />}>
+    <Collapse.Item title="标题1" name="1" expandIcon={<Checked />}>
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-    </CollapseItem>
-    <CollapseItem title="标题2" name="2" expandIcon={<HeartFill />}>
+    </Collapse.Item>
+    <Collapse.Item title="标题2" name="2" expandIcon={<HeartFill />}>
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-    </CollapseItem>
-    <CollapseItem title="标题3" name="3">
+    </Collapse.Item>
+    <Collapse.Item title="标题3" name="3">
       京东“厂直优品计划”首推“政府优品馆”
-    </CollapseItem>
+    </Collapse.Item>
   </Collapse>
   )
 }
@@ -140,13 +140,13 @@ export default App;
 
 ```jsx
 import React from 'react'
-import { Collapse, CollapseItem, Button} from '@nutui/nutui-react'
+import { Collapse, Button} from '@nutui/nutui-react'
 import { DownArrow, Checked, HeartFill } from '@nutui/icons-react'
 
 const App = () => {
   return (  
     <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />}>
-      <CollapseItem
+      <Collapse.Item
         title={
           <div
             style={{
@@ -160,8 +160,8 @@ const App = () => {
         name="1"
       >
         京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-      </CollapseItem>
-      <CollapseItem
+      </Collapse.Item>
+      <Collapse.Item
         title="标题2"
         name="2"
         subTitle={
@@ -176,10 +176,10 @@ const App = () => {
         }
       >
         京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-      </CollapseItem>
-      <CollapseItem title="标题3" name="3">
+      </Collapse.Item>
+      <Collapse.Item title="标题3" name="3">
         京东“厂直优品计划”首推“政府优品馆”
-      </CollapseItem>
+      </Collapse.Item>
     </Collapse>
   )
 }
@@ -194,7 +194,7 @@ export default App;
 
 ```jsx
 import React, { useState } from 'react'
-import { Collapse, CollapseItem, Button } from '@nutui/nutui-react'
+import { Collapse, Button } from '@nutui/nutui-react'
 
 const oldDate = [
   {
@@ -250,9 +250,9 @@ const App = () => {
       <Collapse activeKey={currIndex} accordion>
         {domData.map((item, index) => {
           return (
-            <CollapseItem title={item.title} name={item.name} key={index}>
+            <Collapse.Item title={item.title} name={item.name} key={index}>
               {item.data}
-            </CollapseItem>
+            </Collapse.Item>
           )
         })}
       </Collapse>

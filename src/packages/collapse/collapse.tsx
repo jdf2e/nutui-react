@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import CollapseItem from '../collapseitem'
 
 export interface CollapseProps extends BasicComponent {
   activeKey: Array<number | string> | number | string
@@ -17,7 +18,9 @@ const defaultProps = {
   rotate: 180,
 } as CollapseProps
 
-export const Collapse: FunctionComponent<Partial<CollapseProps>> = (props) => {
+export const Collapse: FunctionComponent<Partial<CollapseProps>> & {
+  Item: typeof CollapseItem
+} = (props) => {
   const {
     className,
     style,
@@ -93,3 +96,4 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> = (props) => {
 
 Collapse.defaultProps = defaultProps
 Collapse.displayName = 'NutCollapse'
+Collapse.Item = CollapseItem

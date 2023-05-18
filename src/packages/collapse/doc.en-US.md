@@ -8,7 +8,7 @@ Place the content in multiple folded panels, and click the panel title to expand
 
 ```ts
 // react
-import { Collapse, CollapseItem } from 'nutui-react'
+import { Collapse } from 'nutui-react'
 ```
 
 ## Code demonstration
@@ -19,22 +19,22 @@ import { Collapse, CollapseItem } from 'nutui-react'
 
 ```jsx
 import  React from "react";
-import { Collapse, CollapseItem } from '@nutui/nutui-react';
+import { Collapse } from '@nutui/nutui-react';
 import { DownArrow } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
     <Collapse activeKey={['1', '2']} expandIcon={<DownArrow />}>
-      <CollapseItem title="title1" name="1">
+      <Collapse.Item title="title1" name="1">
         Nutui-React is a lightweight React component library with JD style
-      </CollapseItem>
-      <CollapseItem title="title2" name="2">
+      </Collapse.Item>
+      <Collapse.Item title="title2" name="2">
         The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!
-      </CollapseItem>
-      <CollapseItem title="title3" name="3" disabled>
+      </Collapse.Item>
+      <Collapse.Item title="title3" name="3" disabled>
         Full use of typescipt
-      </CollapseItem>
+      </Collapse.Item>
     </Collapse>
     </>
   );
@@ -50,7 +50,7 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react'
-import { Collapse, CollapseItem } from '@nutui/nutui-react'
+import { Collapse } from '@nutui/nutui-react'
 
 const App = () => {
   const changeEnv = (isOpen: boolean, name: string) => {
@@ -58,15 +58,15 @@ const App = () => {
   }
   return (  
   <Collapse activeKey={['1', '2']} change={(isOpen, name) => changeEnv(isOpen, name)}>
-    <CollapseItem title="title1" name="1">
+    <Collapse.Item title="title1" name="1">
       Nutui-React is a lightweight React component library with JD style
-    </CollapseItem>
-    <CollapseItem title="title2" name="2">
+    </Collapse.Item>
+    <Collapse.Item title="title2" name="2">
       The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!
-    </CollapseItem>
-    <CollapseItem title="title3" name="3">
+    </Collapse.Item>
+    <Collapse.Item title="title3" name="3">
       Full use of typescipt
-    </CollapseItem>
+    </Collapse.Item>
   </Collapse>
   )
 }
@@ -81,21 +81,21 @@ export default App;
 
 ```tsx
 import React from 'react'
-import { Collapse, CollapseItem} from '@nutui/nutui-react'
+import { Collapse} from '@nutui/nutui-react'
 import { DownArrow } from '@nutui/icons-react';
 
 const App = () => {
   return (  
   <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />}>
-    <CollapseItem title="title1" name="1" subTitle="文本内容">
+    <Collapse.Item title="title1" name="1" subTitle="文本内容">
       Nutui-React is a lightweight React component library with JD style
-    </CollapseItem>
-    <CollapseItem title="title2" name="2">
+    </Collapse.Item>
+    <Collapse.Item title="title2" name="2">
       The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!
-    </CollapseItem>
-    <CollapseItem title="title3" name="3">
+    </Collapse.Item>
+    <Collapse.Item title="title3" name="3">
       Full use of typescipt
-    </CollapseItem>
+    </Collapse.Item>
   </Collapse>
   )
 }
@@ -110,21 +110,21 @@ export default App;
 
 ```jsx
 import React from 'react'
-import { Collapse, CollapseItem } from '@nutui/nutui-react'
+import { Collapse } from '@nutui/nutui-react'
 import { DownArrow, Checked, HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return (  
   <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />} rotate={90}>
-    <CollapseItem title="title1" name="1" expandIcon={<Checked />}>
+    <Collapse.Item title="title1" name="1" expandIcon={<Checked />}>
       Nutui-React is a lightweight React component library with JD style
-    </CollapseItem>
-    <CollapseItem title="title2" name="2" expandIcon={<HeartFill />}>
+    </Collapse.Item>
+    <Collapse.Item title="title2" name="2" expandIcon={<HeartFill />}>
       The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!
-    </CollapseItem>
-    <CollapseItem title="title3" name="3">
+    </Collapse.Item>
+    <Collapse.Item title="title3" name="3">
       Full use of typescipt
-    </CollapseItem>
+    </Collapse.Item>
   </Collapse>
   )
 }
@@ -139,13 +139,13 @@ export default App;
 
 ```jsx
 import React from 'react'
-import { Collapse, CollapseItem } from '@nutui/nutui-react'
+import { Collapse } from '@nutui/nutui-react'
 import { DownArrow, Checked, HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return (  
     <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />}>
-      <CollapseItem
+      <Collapse.Item
         title={
           <div
             style={{
@@ -159,8 +159,8 @@ const App = () => {
         name="1"
       >
         Nutui-React is a lightweight React component library with JD style
-      </CollapseItem>
-      <CollapseItem
+      </Collapse.Item>
+      <Collapse.Item
         title="title2"
         name="2"
         subTitle={
@@ -175,10 +175,10 @@ const App = () => {
         }
       >
         The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!
-      </CollapseItem>
-      <CollapseItem title="title3" name="3">
+      </Collapse.Item>
+      <Collapse.Item title="title3" name="3">
         Full use of typescipt
-      </CollapseItem>
+      </Collapse.Item>
     </Collapse>
   )
 }
@@ -193,7 +193,7 @@ export default App;
 
 ```jsx
 import React, { useState } from 'react'
-import { Collapse, CollapseItem, Button } from '@nutui/nutui-react'
+import { Collapse, Button } from '@nutui/nutui-react'
 
 const App = () => {
   const [currIndex, setCurrIndex] = useState(2)
@@ -243,9 +243,9 @@ const App = () => {
     <Collapse activeKey={currIndex} accordion>
       {domData.map((item, index) => {
         return (
-          <CollapseItem title={item.title} name={item.name} key={index}>
+          <Collapse.Item title={item.title} name={item.name} key={index}>
             {item.data}
-          </CollapseItem>
+          </Collapse.Item>
         )
       })}
     </Collapse>
