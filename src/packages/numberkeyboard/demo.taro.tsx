@@ -40,11 +40,11 @@ const NumberKeyboardDemo = () => {
   const [visible4, setVisible4] = useState(false)
   const [visible5, setVisible5] = useState(false)
   const onChange = (number: string) => {
-    // Toast.text(`输入：${number}`)
+    // Toast.show(`输入：${number}`)
     toastShow(`输入：${number}`)
   }
   const onDelete = () => {
-    // Toast.text('删除')
+    // Toast.show('删除')
     toastShow('删除')
   }
   const [show, SetShow] = useState(false)
