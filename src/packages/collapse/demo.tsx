@@ -142,7 +142,7 @@ const CollapseDemo = () => {
         <h2>{translated.header1}</h2>
         <Collapse
           className="test"
-          activeName={['1', '2']}
+          activeKey={['1', '2']}
           expandIcon={<DownArrow />}
         >
           <CollapseItem title={translated.title1} name="1">
@@ -157,7 +157,7 @@ const CollapseDemo = () => {
         </Collapse>
         <h2>{translated.header2}</h2>
         <Collapse
-          activeName={['1', '2']}
+          activeKey={['1', '2']}
           onChange={(isOpen, name) => changeEnv(isOpen, name)}
         >
           <CollapseItem title={translated.title1} name="1">
@@ -171,7 +171,7 @@ const CollapseDemo = () => {
           </CollapseItem>
         </Collapse>
         <h2>{translated.header3}</h2>
-        <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
+        <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />}>
           <CollapseItem
             title={translated.title1}
             name="1"
@@ -188,7 +188,7 @@ const CollapseDemo = () => {
         </Collapse>
         <h2>{translated.header4}</h2>
         <Collapse
-          activeName={['1']}
+          activeKey={['1']}
           accordion
           expandIcon={<DownArrow />}
           rotate={90}
@@ -212,7 +212,7 @@ const CollapseDemo = () => {
           </CollapseItem>
         </Collapse>
         <h2>{translated.header5}</h2>
-        <Collapse activeName={['1']} accordion expandIcon={<Star />}>
+        <Collapse activeKey={['1']} accordion expandIcon={<Star />}>
           <CollapseItem
             title={
               <div
@@ -252,7 +252,7 @@ const CollapseDemo = () => {
         </Collapse>
 
         <h2>{translated.header6}</h2>
-        <Collapse activeName={currIndex} accordion>
+        <Collapse activeKey={currIndex} accordion>
           {domData.map((item: itemObj, index: number) => {
             return (
               <CollapseItem title={item.title} name={item.name} key={index}>

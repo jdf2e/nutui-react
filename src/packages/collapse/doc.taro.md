@@ -24,7 +24,7 @@ import { DownArrow } from '@nutui/icons-react-taro'
 const App = () => {
   return (
     <>
-    <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
+    <Collapse activeKey={['1', '2']} expandIcon={<DownArrow />}>
       <CollapseItem title="标题1" name="1">
         京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
       </CollapseItem>
@@ -53,7 +53,7 @@ const App = () => {
     console.log(isOpen, name)
   }
   return (  
-  <Collapse activeName={['1', '2']} change={(isOpen, name) => changeEnv(isOpen, name)}>
+  <Collapse activeKey={['1', '2']} change={(isOpen, name) => changeEnv(isOpen, name)}>
     <CollapseItem title="标题1" name="1">
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
     </CollapseItem>
@@ -80,7 +80,7 @@ import { DownArrow } from '@nutui/icons-react-taro'
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
+  <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />}>
     <CollapseItem title="标题1" name="1" subTitle="文本内容">
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
     </CollapseItem>
@@ -106,7 +106,7 @@ import { DownArrow, Checked, HeartFill } from '@nutui/icons-react-taro'
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion expandIcon={<DownArrow />} rotate={90}>
+  <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />} rotate={90}>
     <CollapseItem title="标题1" name="1" expandIcon={<Checked />}>
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
     </CollapseItem>
@@ -132,7 +132,7 @@ import { DownArrow, Checked, HeartFill } from '@nutui/icons-react-taro'
 
 const App = () => {
   return (  
-    <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
+    <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />}>
       <CollapseItem
         title={
           <div
@@ -232,7 +232,7 @@ const App = () => {
   }
   return (
     <>
-    <Collapse activeName={currIndex} accordion>
+    <Collapse activeKey={currIndex} accordion>
       {domData.map((item, index) => {
         return (
           <CollapseItem title={item.title} name={item.name} key={index}>
@@ -261,7 +261,7 @@ const App = () => {
 
 | 参数         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| activeName   | 当前展开面板的 name               | 手风琴模式：string \| number 非手风琴模式：(string \| number)[] | - |
+| activeKey   | 当前展开面板的 name               | 手风琴模式：string \| number 非手风琴模式：(string \| number)[] | - |
 | accordion    | 是否开启手风琴模式                 | boolean | `false`  |
 | rotate       | 点击折叠和展开的旋转角度,在自定义图标模式下生效| string \| number | `180` |
 | expandIcon`v2.0.0`         | 自定义展开图标      | ReactNode | -                |

@@ -317,6 +317,8 @@
   - `circleColor` 重名为 `color`
   - `pathColor` 重名为 `background`
 #### Collapse
+- activeName 重命名为 activeKey
+- 
 #### CountDown
 #### Ellipsis
 - 新增className和style属性的支持

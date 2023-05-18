@@ -25,7 +25,7 @@ import { DownArrow } from '@nutui/icons-react';
 const App = () => {
   return (
     <>
-    <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
+    <Collapse activeKey={['1', '2']} expandIcon={<DownArrow />}>
       <CollapseItem title="title1" name="1">
         Nutui-React is a lightweight React component library with JD style
       </CollapseItem>
@@ -54,7 +54,7 @@ const App = () => {
     console.log(isOpen, name)
   }
   return (  
-  <Collapse activeName={['1', '2']} change={(isOpen, name) => changeEnv(isOpen, name)}>
+  <Collapse activeKey={['1', '2']} change={(isOpen, name) => changeEnv(isOpen, name)}>
     <CollapseItem title="title1" name="1">
       Nutui-React is a lightweight React component library with JD style
     </CollapseItem>
@@ -81,7 +81,7 @@ import { DownArrow } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
+  <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />}>
     <CollapseItem title="title1" name="1" subTitle="文本内容">
       Nutui-React is a lightweight React component library with JD style
     </CollapseItem>
@@ -107,7 +107,7 @@ import { DownArrow, Checked, HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-  <Collapse activeName={['1']} accordion expandIcon={<DownArrow />} rotate={90}>
+  <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />} rotate={90}>
     <CollapseItem title="title1" name="1" expandIcon={<Checked />}>
       Nutui-React is a lightweight React component library with JD style
     </CollapseItem>
@@ -133,7 +133,7 @@ import { DownArrow, Checked, HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-    <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
+    <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />}>
       <CollapseItem
         title={
           <div
@@ -226,7 +226,7 @@ const App = () => {
   }
   return (
     <>
-    <Collapse activeName={currIndex} accordion>
+    <Collapse activeKey={currIndex} accordion>
       {domData.map((item, index) => {
         return (
           <CollapseItem title={item.title} name={item.name} key={index}>
@@ -250,7 +250,7 @@ const App = () => {
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| activeName   | Of the currently expanded panel name  | Accordion mode：string \| number Non accordion mode：(string \| number)[] | - |
+| activeKey   | Of the currently expanded panel name  | Accordion mode：string \| number Non accordion mode：(string \| number)[] | - |
 | accordion    | Whether to turn on accordion mode | boolean | `false`  |
 | rotate       | Click the rotation angle of collapse and expansion to take effect in the custom icon mode| string \| number | `180` |
 | expandIcon`v2.0.0`         | Icon      | ReactNode | -                |
