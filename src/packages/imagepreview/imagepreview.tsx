@@ -50,7 +50,7 @@ const defaultProps = {
   videos: [],
   visible: false,
   autoPlay: 3000,
-  defaultValue: 1,
+  defaultValue: 0,
   closeOnContentClick: false,
   indicator: false,
   indicatorColor: '#fff',
@@ -192,12 +192,10 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   }, [visible])
 
   useEffect(() => {
-    console.log('defaultvalue', defaultValue, maxNo, innerNo)
     setInnerNo(defaultValue || 1)
   }, [defaultValue])
 
   useEffect(() => {
-    console.log('innerNo', innerNo)
     setActive(innerNo as number)
   }, [innerNo])
 

@@ -4,9 +4,10 @@
 
 .nut-imagepreview {
   width: 100%;
+  height: 100%;
 
   &-swiper {
-    height: 327px;
+    height: 100%;
     width: 100vw;
     background-color: transparent;
   }
@@ -55,9 +56,5 @@
     swiper {
       width: 100%;
     }
-  }
-
-  &-swiper .nut-swiper-item {
-    height: 327px;
   }
 }
