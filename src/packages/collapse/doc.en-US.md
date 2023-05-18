@@ -1,22 +1,22 @@
-#  Collapse 折叠面板
+# Collapse 折叠面板
 
-### Intro
+## Intro
 
 Place the content in multiple folded panels, and click the panel title to expand or shrink the content.
 
-### Install
+## Install
 
 ```ts
 // react
 import { Collapse, CollapseItem } from 'nutui-react'
 ```
 
-
 ## Code demonstration
 
 ### Basic Usage
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Collapse, CollapseItem } from '@nutui/nutui-react';
@@ -41,10 +41,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
+
 ### No icon style
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react'
 import { Collapse, CollapseItem } from '@nutui/nutui-react'
@@ -69,11 +72,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### accordion Mode
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Collapse, CollapseItem} from '@nutui/nutui-react'
@@ -96,10 +101,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### Custom collapse Icon
 
 :::demo
+
 ```jsx
 import React from 'react'
 import { Collapse, CollapseItem } from '@nutui/nutui-react'
@@ -122,10 +130,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### Custom title & subTitle
 
 :::demo
+
 ```jsx
 import React from 'react'
 import { Collapse, CollapseItem } from '@nutui/nutui-react'
@@ -173,10 +184,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### Change Data
 
 :::demo
+
 ```jsx
 import React, { useState } from 'react'
 import { Collapse, CollapseItem, Button } from '@nutui/nutui-react'
@@ -241,45 +255,34 @@ const App = () => {
 }
   export default App;
 ```
+
 :::
 
+## Collapse
 
-## API
+### Props
 
-### Collapse Prop
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| activeKey | Of the currently expanded panel name | `Accordion mode：string \| number Non accordion mode：(string | number)[]` | `-` |
+| accordion | Whether to turn on accordion mode | `boolean` | `false` |
+| rotate | Click the rotation angle of collapse and expansion to take effect in the custom icon mode | `string \| number` | `180` |
+| expandIcon`v2.0.0` | Icon | `ReactNode` | `-` |
+| icon`v2.0.0 deprecated` | use expandIcon | `string` | `-` |
+| iconSize`v2.0.0 deprecated` | Icon size | `string` | `16px` |
+| iconColor`v2.0.0 deprecated` | Icon color | `string` | `-` |
 
-| Attribute         | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| activeKey   | Of the currently expanded panel name  | Accordion mode：string \| number Non accordion mode：(string \| number)[] | - |
-| accordion    | Whether to turn on accordion mode | boolean | `false`  |
-| rotate       | Click the rotation angle of collapse and expansion to take effect in the custom icon mode| string \| number | `180` |
-| expandIcon`v2.0.0`         | Icon      | ReactNode | -                |
-| icon`v2.0.0 deprecated`         | use expandIcon      | string | -                |
-| iconSize`v2.0.0 deprecated`     | Icon size                          | string      | `16px` |
-| iconColor`v2.0.0 deprecated`    | Icon color                          | string | -              |
+## Collapse.Item
 
+### Props
 
-### CollapseItem Prop
-
-| Attribute         | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| name   | unique identifier, required                         |string \| number | - |
-| title    | the content on the left side of the title bar supports slot incoming (props incoming has higher priority)  | ReactNode | -  |
-| disabled    | whether the title bar is disabled                 | boolean | `false`  |
-| subTitle    | subtitle of title bar, support slot incoming (props incoming has higher priority)     | ReactNode | -  |
-| titleIcon`v2.0.0 deprecated`    | Icon link and / or icon using nutui           | string | -  |
-| titleIconColor`v2.0.0 deprecated`    | Icon color  of title     | string | -  |
-| titleIconSize`v2.0.0 deprecated`    | Icon size  of title        | string | -  |
-| titleIconPosition`v2.0.0 deprecated`    | Icon  position of title      | string | -  |
-
-
-
-### Events
-
-| Attribute | Description  | Callback Arguments     |
-|--------|----------------|--------------|
-| change`Abandon`  | Triggered when the panel is switched | isOpen:Whether it is open status；name：Name value currently clicked |
-| onChange  | Triggered when the panel is switched | isOpen:Whether it is open status；name：Name value currently clicked |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| name | unique identifier, required | `string \| number` | `-` |
+| title | the content on the left side of the title bar supports slot incoming (props incoming has higher priority) | `ReactNode` | `-` |
+| disabled | whether the title bar is disabled | `boolean` | `false` |
+| subTitle | subtitle of title bar, support slot incoming (props incoming has higher priority) | `ReactNode` | `-` |
+| onChange | Triggered when the panel is switched | `(isOpen, name) => void` | - |
 
 ## Theming
 
@@ -289,19 +292,18 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-collapse-item-padding`v1.4.8` | `13px 36px 13px 26px` |
-| --nutui-collapse-item-font-size`v1.4.8` | `$font-size-2` |
-| --nutui-collapse-item-line-height`v1.4.8` | `24px` |
-| --nutui-collapse-item-color`v1.4.8` | `#666666` |
-| --nutui-collapse-item-disabled-color`v1.4.8` | `#c8c9cc` |
-| --nutui-collapse-item-icon-color`v1.4.8` | `#666666` |
-| --nutui-collapse-item-icon-margin-right`v1.4.8` | `5px` |
-| --nutui-collapse-item-icon-margin-left`v1.4.8` | `5px` |
-| --nutui-collapse-item-sub-title-color`v1.4.8` | `#666666` |
-| --nutui-collapse-wrapper-content-background-color`v1.4.8` | `$white` |
-| --nutui-collapse-wrapper-content-color`v1.4.8` | `#666666` |
-| --nutui-collapse-wrapper-content-font-size`v1.4.8` | `$font-size-2` |
-| --nutui-collapse-wrapper-content-line-height`v1.4.8` | `1.5` |
-| --nutui-collapse-wrapper-content-padding`v1.4.8` | `12px 26px` |
-| --nutui-collapse-wrapper-empty-content-padding`v1.4.8` | `0 26px` |
-
+| \--nutui-collapse-item-padding | `13px 36px 13px 26px` |
+| \--nutui-collapse-item-font-size | `$font-size-2` |
+| \--nutui-collapse-item-line-height | `24px` |
+| \--nutui-collapse-item-color | `#666666` |
+| \--nutui-collapse-item-disabled-color | `#c8c9cc` |
+| \--nutui-collapse-item-icon-color | `#666666` |
+| \--nutui-collapse-item-icon-margin-right | `5px` |
+| \--nutui-collapse-item-icon-margin-left | `5px` |
+| \--nutui-collapse-item-sub-title-color | `#666666` |
+| \--nutui-collapse-wrapper-content-background-color | `$white` |
+| \--nutui-collapse-wrapper-content-color | `#666666` |
+| \--nutui-collapse-wrapper-content-font-size | `$font-size-2` |
+| \--nutui-collapse-wrapper-content-line-height | `1.5` |
+| \--nutui-collapse-wrapper-content-padding | `12px 26px` |
+| \--nutui-collapse-wrapper-empty-content-padding | `0 26px` |

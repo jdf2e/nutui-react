@@ -1,22 +1,22 @@
-#  Collapse 折叠面板
+# Collapse 折叠面板
 
-### 介绍
+## 介绍
 
 将内容放置在多个折叠面板中，点击面板标题可展开或收缩内容。
 
-### 安装
+## 安装
 
 ```ts
 // react
 import { Collapse, CollapseItem } from 'nutui-react'
 ```
 
-
 ## 代码演示
 
 ### 基础用法
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Collapse, CollapseItem } from '@nutui/nutui-react';
@@ -41,10 +41,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
+
 ### 无icon样式，绑定点击事件
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react'
 import { Collapse, CollapseItem} from '@nutui/nutui-react'
@@ -70,11 +73,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 手风琴模式
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Collapse, CollapseItem} from '@nutui/nutui-react'
@@ -97,10 +102,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### 自定义折叠图标
 
 :::demo
+
 ```jsx
 import React from 'react'
 import { Collapse, CollapseItem} from '@nutui/nutui-react'
@@ -123,10 +131,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### 自定义 title 与 subTitle
 
 :::demo
+
 ```jsx
 import React from 'react'
 import { Collapse, CollapseItem, Button} from '@nutui/nutui-react'
@@ -174,10 +185,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### 动态改变数据
 
 :::demo
+
 ```jsx
 import React, { useState } from 'react'
 import { Collapse, CollapseItem, Button } from '@nutui/nutui-react'
@@ -253,44 +267,31 @@ const App = () => {
 }
   export default App;
 ```
+
 :::
 
+## Collapse
 
-## API
+### Props
 
-### Collapse Prop
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| activeKey | 当前展开面板的 name | `手风琴模式：string \| number 非手风琴模式：(string | number)[]` | - |
+| accordion | 是否开启手风琴模式 | `boolean` | `false` |
+| rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | `string \| number` | `180` |
+| expandIcon | 自定义展开图标 | `ReactNode` | - |
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| activeKey   | 当前展开面板的 name               | 手风琴模式：string \| number 非手风琴模式：(string \| number)[] | - |
-| accordion    | 是否开启手风琴模式                 | boolean | `false`  |
-| rotate       | 点击折叠和展开的旋转角度,在自定义图标模式下生效| string \| number | `180` |
-| expandIcon`v2.0.0`         | 自定义展开图标      | ReactNode | -                |
-| icon`v2.0.0 废弃`         | 使用 expandIcon      | string | -                |
-| iconSize`v2.0.0 废弃`     | 图标大小                          | string      | `16px` |
-| iconColor`v2.0.0 废弃`    | 图标颜色                          | string | -              |
+## Collapse.Item
 
+### Props
 
-### CollapseItem Prop
-
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------|--------|------------------|
-| name   | 唯一标识符，必填                         |string \| number | - |
-| title    | 标题栏左侧内容 | ReactNode | -  |
-| disabled    | 标题栏是否禁用 | boolean | `false`  |
-| subTitle    | 标题栏副标题 | ReactNode | -  |
-| titleIcon`v2.0.0 废弃`    | 标题图标链接/或使用 NutUI 的 icon             | string | -  |
-| titleIconColor`v2.0.0 废弃`    | 标题图标颜色        | string | -  |
-| titleIconSize`v2.0.0 废弃`    | 标题图标大小        | string | -  |
-| titleIconPosition`v2.0.0 废弃`    | 标题图标位置             | string | -  |
-
-### Events
-
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| change`废弃`  | 切换面板时触发 | isOpen:是否打开状态；name：当前点击的name值 |
-| onChange  | 切换面板时触发 | isOpen:是否打开状态；name：当前点击的name值 |
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| name | 唯一标识符，必填 | `string \| number` | - |
+| title | 标题栏左侧内容 | `ReactNode` | - |
+| disabled | 标题栏是否禁用 | `boolean` | `false` |
+| subTitle | 标题栏副标题 | `ReactNode` | - |
+| onChange | 切换面板时触发 | `(isOpen, name) => void` | - |
 
 ## 主题定制
 
@@ -300,19 +301,18 @@ const App = () => {
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-collapse-item-padding`v1.4.8` | `13px 36px 13px 26px` |
-| --nutui-collapse-item-font-size`v1.4.8` | `$font-size-2` |
-| --nutui-collapse-item-line-height`v1.4.8` | `24px` |
-| --nutui-collapse-item-color`v1.4.8` | `#666666` |
-| --nutui-collapse-item-disabled-color`v1.4.8` | `#c8c9cc` |
-| --nutui-collapse-item-icon-color`v1.4.8` | `#666666` |
-| --nutui-collapse-item-icon-margin-right`v1.4.8` | `5px` |
-| --nutui-collapse-item-icon-margin-left`v1.4.8` | `5px` |
-| --nutui-collapse-item-sub-title-color`v1.4.8` | `#666666` |
-| --nutui-collapse-wrapper-content-background-color`v1.4.8` | `$white` |
-| --nutui-collapse-wrapper-content-color`v1.4.8` | `#666666` |
-| --nutui-collapse-wrapper-content-font-size`v1.4.8` | `$font-size-2` |
-| --nutui-collapse-wrapper-content-line-height`v1.4.8` | `1.5` |
-| --nutui-collapse-wrapper-content-padding`v1.4.8` | `12px 26px` |
-| --nutui-collapse-wrapper-empty-content-padding`v1.4.8` | `0 26px` |
-
+| \--nutui-collapse-item-padding | `13px 36px 13px 26px` |
+| \--nutui-collapse-item-font-size | `$font-size-2` |
+| \--nutui-collapse-item-line-height | `24px` |
+| \--nutui-collapse-item-color | `#666666` |
+| \--nutui-collapse-item-disabled-color | `#c8c9cc` |
+| \--nutui-collapse-item-icon-color | `#666666` |
+| \--nutui-collapse-item-icon-margin-right | `5px` |
+| \--nutui-collapse-item-icon-margin-left | `5px` |
+| \--nutui-collapse-item-sub-title-color | `#666666` |
+| \--nutui-collapse-wrapper-content-background-color | `$white` |
+| \--nutui-collapse-wrapper-content-color | `#666666` |
+| \--nutui-collapse-wrapper-content-font-size | `$font-size-2` |
+| \--nutui-collapse-wrapper-content-line-height | `1.5` |
+| \--nutui-collapse-wrapper-content-padding | `12px 26px` |
+| \--nutui-collapse-wrapper-empty-content-padding | `0 26px` |
