@@ -1,10 +1,10 @@
 # ImagePreview组件
 
-### 介绍
+## 介绍
 
 支持全屏预览视频和图片，可函数式调用
 
-### 安装
+## 安装
 
 ```ts
 // react
@@ -103,7 +103,7 @@ const App = () => {
       <ImagePreview
         images={images}
         visible={init}
-        initNo={init}
+        defaultValue={init}
         onClose={hideFn2}
       />
     </>
@@ -149,7 +149,7 @@ const App = () => {
 
   return (
     <>
-        <ImagePreview images={images} initNo={3} visible={showPreview2} onClose={hideFn2} />
+        <ImagePreview images={images} defaultValue={3} visible={showPreview2} onClose={hideFn2} />
         <Cell title="设置初始页码"  onClick={showFn2} />
     </>
   );
@@ -194,7 +194,7 @@ const App = () => {
 
   return (
     <>
-        <ImagePreview images={images} visible={showPreview3} paginationVisible paginationColor="red" onClose={hideFn3} />
+        <ImagePreview images={images} visible={showPreview3} indicator indicatorColor="red" onClose={hideFn3} />
         <Cell title="设置轮播指示器及颜色"  onClick={showFn3} />
     </>
   );
@@ -272,23 +272,19 @@ export default App;
 
 :::
 
-## API
+## ImagePreview
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| 属性         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| visible | 是否展示预览图片 | boolean | `false` |
+| visible | 是否展示预览图片 | `boolean` | `false` |
 | videos | 预览的视频数组（视频自动放到图片之前、taro场景暂不支持） | `Array<Object>` | `[]` |
 | images | 预览图片数组 | `{ src: string }[]` | `[]` |
-| autoplay | 自动轮播时长，0表示不会自动轮播 | number \| string  | `3000`  |
-| initNo | 初始页码 | number | `1` |
-| paginationVisible | 分页指示器是否展示    | boolean | `false` |
-| paginationColor   | 分页指示器选中的颜色    | string  | `#fff`  |
-| contentClose   | 点击图片可以退出预览    | boolean  | `false`  |
-
-### Events
-
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-|onClose|点击遮罩关闭图片预览时触发|无|
+| autoPlay | 自动轮播时长，0表示不会自动轮播 | `number \| string`  | `3000`  |
+| defaultValue | 初始页码 | `number` | `1` |
+| value | 页码，受控 | `number` | `1` |
+| indicator | 分页指示器是否展示    |  `boolean` | `false` |
+| indicatorColor   | 分页指示器选中的颜色    | `string`  | `#fff`  |
+| closeOnContentClick   | 点击图片可以退出预览    |  `boolean`  | `false`  |
+| onClose | 点击遮罩关闭图片预览时触发|无|

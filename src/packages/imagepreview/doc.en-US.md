@@ -1,10 +1,10 @@
 #  ImagePreview
 
-### Intro
+## Intro
 
 Support full screen preview videos and images, support functional call.
 
-### Install
+## Install
 
 
 ```ts
@@ -103,7 +103,7 @@ const App = () => {
       <ImagePreview
         images={images}
         visible={init}
-        initNo={init}
+        defaultValue={init}
         onClose={hideFn2}
       />
     </>
@@ -149,7 +149,7 @@ const App = () => {
 
   return (
     <>
-        <ImagePreview images={images} initNo={3} visible={showPreview2} onClose={hideFn2} />
+        <ImagePreview images={images} defaultValue={3} visible={showPreview2} onClose={hideFn2} />
         <Cell title="With init no"  onClick={showFn2} />
     </>
   );
@@ -192,7 +192,7 @@ const App = () => {
 
   return (
     <>
-        <ImagePreview images={images} visible={showPreview3} paginationVisible paginationColor="red" onClose={hideFn3} />
+        <ImagePreview images={images} visible={showPreview3} indicator indicatorColor="red" onClose={hideFn3} />
         <Cell title="With pagination"  onClick={showFn3} />
     </>
   );
@@ -269,23 +269,19 @@ export default App;
 
 
 
-## API
+## ImagePreview
 
 ### Props
 
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
-| visible | Whether to show preview | boolean | `false` |
+| visible | Whether to show preview |  `boolean` | `false` |
 | videos | Videos Array(Videos are before images, not support in taro) | `Array<Object>` | `[]`
 | images | Images array | `{ src: string }[]` | `[]` |
-| autoplay | Autoplay time, zero means not autoplay | number \| string  | `3000`  |
-| initNo | Init no | number | `1` |
-| paginationVisible | Whether to show pagination    | boolean | `false` |
-| paginationColor   | Pagination color    | string  | `#fff`  |
-| contentClose   | Click image to exit preview    | boolean  | `false`  |
-
-### Events
-
-| Event | Description           | Arguments     |
-|--------|----------------|--------------|
-|onClose|Emitted when closing ImagePreview|-|
+| autoPlay | Autoplay time, zero means not autoplay | `number \| string`  | `3000`  |
+| defaultValue | Init no |  `number` | `1` |
+| value | value,controlled |  `number` | `1` |
+| indicator | Whether to show pagination    |  `boolean` | `false` |
+| indicatorColor   | Pagination color    |  `string`  | `#fff`  |
+| closeOnContentClick   | Click image to exit preview    |  `boolean`  | `false`  |
+| onClose | Emitted when closing ImagePreview|-|

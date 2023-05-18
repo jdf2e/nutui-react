@@ -130,7 +130,7 @@ test('should render direction', () => {
     transform: 'translate3D(0,-150px,0)',
   })
 })
-test('should render pagination', () => {
+test('should render indicator', () => {
   const list = [
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
     'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
@@ -166,11 +166,11 @@ test('should render pagination', () => {
       })}
     </Swiper>
   )
-  const paginationItem = container.querySelectorAll(
-    '.nut-swiper__pagination-item'
+  const indicatorItem = container.querySelectorAll(
+    '.nut-swiper__indicator-item'
   )
-  // expect(paginationItem).toHaveLength(4)
-  // expect(paginationItem[1]).toHaveStyle({
+  // expect(indicatorItem).toHaveLength(4)
+  // expect(indicatorItem[1]).toHaveStyle({
   //   backgroundColor: 'red',
   // })
 })

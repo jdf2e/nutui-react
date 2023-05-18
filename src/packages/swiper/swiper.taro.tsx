@@ -60,8 +60,8 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
       return (
         <div
           className={classNames({
-            [`${classPrefix}__pagination`]: true,
-            [`${classPrefix}__pagination-vertical`]: direction === 'vertical',
+            [`${classPrefix}__indicator`]: true,
+            [`${classPrefix}__indicator-vertical`]: direction === 'vertical',
           })}
         >
           <Indicator

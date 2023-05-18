@@ -10,8 +10,9 @@ import Video from '@/packages/video'
 import Swiper from '@/packages/swiper'
 import SwiperItem from '@/packages/swiperitem'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
-interface IStore {
+interface Store {
   scale: number
   moveable: boolean
   oriDistance: number
@@ -34,10 +35,12 @@ export interface ImagePreviewProps extends BasicComponent {
   }>
   visible: boolean
   autoPlay: number | string
-  initNo: number
-  contentClose: boolean
+  value?: number
+  defaultValue: number
+  closeOnContentClick: boolean
   indicator: boolean
-  paginationColor: string
+  indicatorColor: string
+  onChange: (value: number) => void
   onClose: () => void
 }
 
@@ -47,10 +50,11 @@ const defaultProps = {
   videos: [],
   visible: false,
   autoPlay: 3000,
-  initNo: 1,
-  contentClose: false,
+  defaultValue: 1,
+  closeOnContentClick: false,
   indicator: false,
-  paginationColor: '#fff',
+  indicatorColor: '#fff',
+  onChange: (value: number) => {},
   onClose: () => {},
 } as ImagePreviewProps
 export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
@@ -60,20 +64,27 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     images,
     videos,
     visible,
-    initNo,
-    paginationColor,
+    defaultValue,
+    indicatorColor,
     indicator,
     autoPlay,
-    contentClose,
+    closeOnContentClick,
     onClose,
   } = props
 
-  const nutImagePreview = useRef(null)
+  const ref = useRef(null)
+  const [innerNo, setInnerNo] = usePropsValue<number>({
+    value: props.value,
+    defaultValue,
+    finalValue: defaultValue,
+    onChange: (val: number) => {
+      props.onChange?.(val)
+    },
+  })
 
-  const [innerNo, setInnerNo] = useState(initNo)
-  const [showPop, setShowPop] = useState(false)
-  const [active, setActive] = useState(1)
-  const [maxNo, setMaxNo] = useState(1)
+  const [showPop, setShowPop] = useState(visible)
+  const [active, setActive] = useState(0)
+  const [maxNo] = useState(images?.length || 0 + (videos?.length || 0))
   const [store, setStore] = useState({
     scale: 1,
     moveable: false,
@@ -97,7 +108,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       scaleNow()
     }
 
-    const store1 = store as IStore
+    const store1 = store as Store
     store1.moveable = true
 
     if (events2) {
@@ -125,7 +136,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     if (!store.moveable) {
       return
     }
-    const store1 = store as IStore
+    const store1 = store as Store
 
     // 双指移动
     if (events2) {
@@ -158,13 +169,17 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
 
   const onTouchEnd = () => {
     setLastTouchEndTime(new Date().getTime())
-    const store1 = store as IStore
+    const store1 = store as Store
     store1.moveable = false
     if ((store1.scale < 1.1 && store1.scale > 1) || store1.scale < 1) {
       store1.scale = 1
       scaleNow()
     }
   }
+
+  useEffect(() => {
+    init()
+  }, [])
 
   const init = () => {
     document.addEventListener('touchmove', onTouchMove as any)
@@ -174,42 +189,22 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
 
   useEffect(() => {
     setShowPop(visible as boolean)
-    setInnerNo(initNo)
-    setActive(initNo as number)
-    init()
-  }, [visible, initNo])
+  }, [visible])
 
   useEffect(() => {
-    if (innerNo !== undefined) {
-      setActive(innerNo)
-    }
+    console.log('defaultvalue', defaultValue, maxNo, innerNo)
+    setInnerNo(defaultValue || 1)
+  }, [defaultValue])
 
-    if (visible !== undefined) {
-      setShowPop(visible)
-    }
-
-    if (images && videos) {
-      setMaxNo(images.length + videos.length)
-    }
-  }, [])
+  useEffect(() => {
+    console.log('innerNo', innerNo)
+    setActive(innerNo as number)
+  }, [innerNo])
 
   const scaleNow = () => {
-    if (nutImagePreview.current as any) {
-      ;(
-        nutImagePreview.current as any
-      ).style.transform = `scale(${store.scale})`
+    if (ref.current as any) {
+      ;(ref.current as any).style.transform = `scale(${store.scale})`
     }
-  }
-
-  const onCloseInner = () => {
-    setShowPop(false)
-    setActive(1)
-    scaleNow()
-    onClose && onClose()
-    setStore({
-      ...store,
-      scale: 1,
-    })
   }
 
   // 计算两个点的距离
@@ -226,9 +221,20 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     setActive(page + 1)
   }
 
+  const onCloseInner = () => {
+    setShowPop(false)
+    setActive(1)
+    scaleNow()
+    onClose && onClose()
+    setStore({
+      ...store,
+      scale: 1,
+    })
+  }
+
   const closeOnImg = () => {
     // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
-    if (contentClose) {
+    if (closeOnContentClick) {
       onCloseInner()
     }
   }
@@ -236,13 +242,13 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   return (
     <Popup
       visible={showPop}
-      className="custom-pop"
+      className="nut-imagepreview-pop"
       style={{ width: '100%' }}
       onClick={onCloseInner}
     >
       <div
         className="nut-imagepreview"
-        ref={nutImagePreview}
+        ref={ref}
         onClick={closeOnImg}
         onTouchStart={onTouchStart as any}
       >
@@ -253,10 +259,10 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           preventDefault={false}
           style={{
             display: showPop ? 'block' : 'none',
-            '--nutui-indicator-color': paginationColor,
+            '--nutui-indicator-color': indicatorColor,
           }}
           direction="horizontal"
-          onChange={slideChangeEnd}
+          onChange={(page) => slideChangeEnd(page)}
           defaultValue={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
           indicator={indicator}
         >

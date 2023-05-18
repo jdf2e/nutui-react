@@ -1,6 +1,7 @@
 @import '../popup/popup.scss';
 @import '../swiper/swiper.scss';
 @import '../video/video.scss';
+
 .nut-imagepreview {
   width: 100%;
 
@@ -42,18 +43,21 @@
     overflow: visible;
     background-color: transparent;
   }
-}
-.custom-pop {
-  height: 100%;
-  background: transparent !important;
-  display: flex;
-  align-items: center;
-}
-.nut-imagepreview-swiper {
-  swiper {
-    width: 100%;
+
+  &-pop {
+    height: 100%;
+    background: transparent !important;
+    display: flex;
+    align-items: center;
   }
-}
-.nut-imagepreview-swiper .nut-swiper-item {
-  height: 327px;
+
+  &-swiper {
+    swiper {
+      width: 100%;
+    }
+  }
+
+  &-swiper .nut-swiper-item {
+    height: 327px;
+  }
 }
