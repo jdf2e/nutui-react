@@ -211,6 +211,28 @@ export default App;
 ```
 :::
 
+### 延迟加载数据
+
+:::demo
+
+```jsx
+import  React, {useState} from "react";
+import { Progress, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const [value, setValue] = useState(30);
+  return (
+    <Cell align="center">
+      <Progress percent={value} delay={500} />
+      <span style={{ margin: '0 5px' }}>{value}%</span>
+    </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
 ## Progress
 
 ### Props
@@ -223,6 +245,7 @@ export default App;
 | strokeWidth | 进度条宽度 | `string` | - |
 | showText | 是否显示文字内容 | `boolean` | `false` |
 | animated | 是否展示动画效果 | `boolean` | `false` |
+| delay | 延迟数据加载时长，单位 ms | `number` | `0` |
 
 ## 主题定制
 

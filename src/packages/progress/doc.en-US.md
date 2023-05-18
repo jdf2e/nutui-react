@@ -211,6 +211,28 @@ export default App;
 ```
 :::
 
+### Delay Time
+
+:::demo
+
+```jsx
+import  React, {useState} from "react";
+import { Progress, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const [value, setValue] = useState(30);
+  return (
+    <Cell align="center">
+      <Progress percent={value} delay={500} />
+      <span style={{ margin: '0 5px' }}>{value}%</span>
+    </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
 ## Progress
 
 ### Props
@@ -223,6 +245,7 @@ export default App;
 | strokeWidth | Stroke width | `string` | - |
 | showText | Whether to show text | `boolean` | `false` |
 | animated | Whether to show animation | `boolean` | `false` |
+| delay | Delay time to set percent, ms | `number` | `0` |
 
 ## Theming
 
