@@ -2,47 +2,53 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
 import bem from '@/utils/bem'
+import Overlay from '@/packages/overlay/index'
 
 export interface ToastProps {
   id?: string
-  style?: React.CSSProperties
+  maskStyle?: React.CSSProperties
+  contentStyle?: React.CSSProperties
   icon: string | null
   iconSize: string
   msg: string | React.ReactNode
   bottom: number | string
   duration: number
+  position?: 'top' | 'center' | 'bottom'
   center: boolean
   type: string
   title: string
+  closeOnOverlayClick: boolean
   customClass: string
   size: string | number
   textAlignCenter: boolean
   bgColor: string
   cover: boolean
   coverColor: string
-  closeOnClickOverlay: boolean
+  // closeOnClickOverlay: boolean
   visible: boolean
   onClose: () => void
 }
 
 const defaultProps = {
   id: '',
-  style: {},
+  maskStyle: {},
   icon: null,
   iconSize: '20',
   msg: '',
   bottom: '30px', // center为false时生效，距离底部位置
-  duration: 2, // 时长,duration为0则一直展示
+  duration: 0, // 时长,duration为0则一直展示
+  position: 'center',
   center: true, // toast是否居中展示
   type: 'text',
   title: '',
+  closeOnOverlayClick: true,
   customClass: '', // 自定义样式名
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   textAlignCenter: true, // 文字是否居中显示,true为居中，false为left
   bgColor: 'rgba(0, 0, 0, .8)',
   cover: false, // 是否展示透明遮罩层
   coverColor: 'rgba(0, 0, 0, 0)', // 遮罩颜色设定
-  closeOnClickOverlay: false, // 是否点击遮罩可关闭
+  // closeOnClickOverlay: false, // 是否点击遮罩可关闭
   visible: false,
   onClose: () => {}, // 未实现
 } as unknown as ToastProps
@@ -54,7 +60,9 @@ export const Toast: FunctionComponent<
   const {
     children,
     id,
-    style,
+    position,
+    maskStyle,
+    contentStyle,
     icon,
     iconSize,
     msg,
@@ -63,13 +71,14 @@ export const Toast: FunctionComponent<
     center,
     type,
     title,
+    closeOnOverlayClick,
     customClass,
     size,
     textAlignCenter,
     bgColor,
     cover,
     coverColor,
-    closeOnClickOverlay,
+    // closeOnClickOverlay,
     visible,
     onClose,
     ...rest
@@ -106,7 +115,7 @@ export const Toast: FunctionComponent<
     }
   }
   const clickCover = () => {
-    if (closeOnClickOverlay) {
+    if (closeOnOverlayClick) {
       hide()
     }
   }
@@ -133,42 +142,53 @@ export const Toast: FunctionComponent<
   }
 
   const classes = classNames({
-    'nut-toast-center': center,
+    // 'nut-toast-center': center,
     'nut-toast-has-icon': icon,
     'nut-toast-cover': cover,
-    'nut-toast-loading': type === 'loading',
+    // 'nut-toast-loading': type === 'loading',
     [`${customClass}`]: true,
     [`nut-toast-${size}`]: true,
   })
   return (
     <>
       {openState ? (
-        <div
-          className={`${toastBem()} ${classes}`}
-          id={id}
+        <Overlay
+          visible={openState}
           style={{
-            bottom: center ? 'auto' : `${bottom}`,
-            backgroundColor: cover ? coverColor : '',
-            ...style,
+            '--nutui-overlay-bg-color': 'rgba(0,0,0,0)',
+            ...maskStyle,
           }}
+          closeOnOverlayClick={closeOnOverlayClick}
           onClick={() => {
             clickCover()
           }}
         >
           <div
-            className={toastBem('inner')}
-            style={{
-              textAlign: textAlignCenter ? 'center' : 'left',
-              backgroundColor: bgColor,
-            }}
+            className={`${toastBem()} ${classes}`}
+            id={id}
+            style={
+              {
+                // bottom: center ? 'auto' : `${bottom}`,
+                // backgroundColor: cover ? coverColor : '',
+                // ...style,
+              }
+            }
+            // onClick={() => {
+            //   clickCover()
+            // }}
           >
-            {hasIcon() ? (
-              <p className={toastBem('icon-wrapper')}>{iconName()}</p>
-            ) : null}
-            {title ? <div className="nut-toast-title">{title}</div> : null}
-            <span className={toastBem('text')}>{msg}</span>
+            <div
+              className={`${toastBem('inner')} nut-toast-${position}`}
+              style={contentStyle}
+            >
+              {hasIcon() ? (
+                <p className={toastBem('icon-wrapper')}>{iconName()}</p>
+              ) : null}
+              {title ? <div className="nut-toast-title">{title}</div> : null}
+              <span className={toastBem('text')}>{msg}</span>
+            </div>
           </div>
-        </div>
+        </Overlay>
       ) : null}
     </>
   )
