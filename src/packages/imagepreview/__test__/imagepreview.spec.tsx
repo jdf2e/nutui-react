@@ -98,15 +98,10 @@ test('customize indicator and color', async () => {
     <ImagePreview images={images} visible indicator indicatorColor="red" />
   )
 
-  const swiperIndicator = container.querySelector('.nut-swiper__indicator')
-  expect(swiperIndicator).toBeInTheDocument()
-
-  const swiperIndicatorFirstIcon = container.querySelectorAll(
-    '.nut-swiper__indicator i'
-  )[0]
-  expect(swiperIndicatorFirstIcon).toHaveAttribute(
+  const swiperIndicator = container.querySelector('.nut-imagepreview-swiper')
+  expect(swiperIndicator).toHaveAttribute(
     'style',
-    'background-color: red;'
+    'display: block; --nutui-indicator-color: red;'
   )
 })
 
