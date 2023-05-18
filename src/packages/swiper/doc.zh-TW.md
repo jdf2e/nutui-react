@@ -166,7 +166,6 @@ const App = () => {
       <Swiper
         width={300}
         height={150}
-        loop={false}
         defaultValue={defaultValue2}
       >
         <SwiperItem >
@@ -391,7 +390,6 @@ const App = () => {
   return (
    <div className="demo-box " style={{ height: '150px' }}>
       <Swiper
-        loop={false}
         defaultValue={defaultValue8}
         autoPlay="0"
         height="150"
@@ -433,7 +431,6 @@ const App = () => {
   return (
    <div className="demo-box vertical-center" style={{ height: '150px' }}>
       <Swiper
-        loop={false}
         defaultValue={defaultValue9}
         direction="vertical"
         autoPlay="0"

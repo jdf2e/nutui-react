@@ -89,7 +89,6 @@ const SwiperDemo = () => {
           width={300}
           height={150}
           defaultValue={0}
-          loop={false}
         >
           {list.map((item) => (
             <SwiperItem key={item}>

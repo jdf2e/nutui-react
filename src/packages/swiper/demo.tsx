@@ -157,12 +157,7 @@ const SwiperDemo = () => {
 
       <h2>{translated.size}</h2>
       <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          defaultValue={initPage4}
-          width="300"
-          height={height}
-          loop={false}
-        >
+        <Swiper defaultValue={initPage4} width="300" height={height}>
           {list.map((item) => {
             return (
               <SwiperItem key={item}>
@@ -239,7 +234,6 @@ const SwiperDemo = () => {
       <h2>{translated.horizontalCenter}</h2>
       <div className="demo-box " style={{ height: 150 }}>
         <Swiper
-          loop={false}
           defaultValue={initPage8}
           autoPlay="0"
           height={height}
@@ -259,7 +253,6 @@ const SwiperDemo = () => {
       <h2>{translated.verticalCenter}</h2>
       <div className="demo-box vertical-center">
         <Swiper
-          loop={false}
           defaultValue={initPage9}
           direction="vertical"
           autoPlay="0"
