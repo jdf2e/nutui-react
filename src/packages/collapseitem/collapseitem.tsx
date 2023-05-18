@@ -5,10 +5,8 @@ import React, {
   useCallback,
   ReactNode,
 } from 'react'
-
-import bem from '@/utils/bem'
-
-import { BasicComponent } from '@/utils/typings'
+import classNames from 'classnames'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface CollapseItemProps extends BasicComponent {
   title: ReactNode
@@ -23,6 +21,7 @@ export interface CollapseItemProps extends BasicComponent {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   title: null,
   name: '',
   isOpen: false,
@@ -58,7 +57,7 @@ export const CollapseItem: FunctionComponent<
   const [iconStyle, setIconStyle] = useState({
     transform: 'translateY(-50%)',
   })
-  const colBem = bem('collapse-item')
+  const classPrefix = 'nut-collapse-item'
 
   const measuredRef = useCallback(
     (node: HTMLDivElement) => {
@@ -93,29 +92,29 @@ export const CollapseItem: FunctionComponent<
   }, [children, isOpen])
 
   return (
-    <div className={colBem()} {...rest}>
+    <div className={classPrefix} {...rest}>
       <div
-        className={colBem('header', { disabled })}
+        className={classNames(`${classPrefix}__header`, { disabled })}
         onClick={() => {
           if (disabled) return
           onToggle && onToggle(isOpen, name)
         }}
       >
-        <div className={colBem('title')}>{title}</div>
-        <div className={colBem('sub-title')}>{subTitle}</div>
-        <div className={colBem('icon-box')}>
-          <div className={colBem('icon')} style={iconStyle}>
+        <div className={`${classPrefix}__title`}>{title}</div>
+        <div className={`${classPrefix}__sub-title`}>{subTitle}</div>
+        <div className={`${classPrefix}__icon-box`}>
+          <div className={`${classPrefix}__icon`} style={iconStyle}>
             {expandIcon}
           </div>
         </div>
       </div>
       {childnull && (
         <div
-          className={colBem('content')}
+          className={`${classPrefix}__content`}
           style={{ height: currHeight }}
           ref={measuredRef}
         >
-          <div className={colBem('content-text')}>{children}</div>
+          <div className={`${classPrefix}__content-text`}>{children}</div>
         </div>
       )}
     </div>

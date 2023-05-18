@@ -5,9 +5,7 @@ import React, {
   useCallback,
   ReactNode,
 } from 'react'
-
-import bem from '@/utils/bem'
-
+import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface CollapseItemProps extends BasicComponent {
@@ -18,6 +16,7 @@ export interface CollapseItemProps extends BasicComponent {
   disabled: boolean
   rotate: number
   subTitle: ReactNode
+  childnull: boolean
   onToggle: (isOpen: boolean, name: string) => void
 }
 
@@ -30,6 +29,7 @@ const defaultProps = {
   disabled: false,
   rotate: 180,
   subTitle: null,
+  childnull: true,
 } as CollapseItemProps
 export const CollapseItem: FunctionComponent<
   Partial<CollapseItemProps> &
@@ -45,6 +45,7 @@ export const CollapseItem: FunctionComponent<
     expandIcon,
     rotate,
     subTitle,
+    childnull,
     ...rest
   } = {
     ...defaultProps,
@@ -56,7 +57,7 @@ export const CollapseItem: FunctionComponent<
   const [iconStyle, setIconStyle] = useState({
     transform: 'translateY(-50%)',
   })
-  const colBem = bem('collapse-item')
+  const classPrefix = 'nut-collapse-item'
 
   const measuredRef = useCallback(
     (node: HTMLDivElement) => {
@@ -89,30 +90,33 @@ export const CollapseItem: FunctionComponent<
 
     setUpdate(!update)
   }, [children, isOpen])
+
   return (
-    <div className={colBem()} {...rest}>
+    <div className={classPrefix} {...rest}>
       <div
-        className={colBem('header', { disabled })}
+        className={classNames(`${classPrefix}__header`, { disabled })}
         onClick={() => {
           if (disabled) return
           onToggle && onToggle(isOpen, name)
         }}
       >
-        <div className={colBem('title')}>{title}</div>
-        <div className={colBem('sub-title')}>{subTitle}</div>
-        <div className={colBem('icon-box')}>
-          <div className={colBem('icon')} style={iconStyle}>
+        <div className={`${classPrefix}__title`}>{title}</div>
+        <div className={`${classPrefix}__sub-title`}>{subTitle}</div>
+        <div className={`${classPrefix}__icon-box`}>
+          <div className={`${classPrefix}__icon`} style={iconStyle}>
             {expandIcon}
           </div>
         </div>
       </div>
-      <div
-        className={colBem('content')}
-        style={{ height: currHeight }}
-        ref={measuredRef}
-      >
-        <div className={colBem('content-text')}>{children}</div>
-      </div>
+      {childnull && (
+        <div
+          className={`${classPrefix}__content`}
+          style={{ height: currHeight }}
+          ref={measuredRef}
+        >
+          <div className={`${classPrefix}__content-text`}>{children}</div>
+        </div>
+      )}
     </div>
   )
 }
