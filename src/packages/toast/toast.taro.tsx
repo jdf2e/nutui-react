@@ -6,7 +6,9 @@ import Overlay from '@/packages/overlay/index'
 
 export interface ToastProps {
   id?: string
+  maskClassName?: string
   maskStyle?: React.CSSProperties
+  contentClassName?: string
   contentStyle?: React.CSSProperties
   icon: string | null
   iconSize: string
@@ -16,7 +18,6 @@ export interface ToastProps {
   type: string
   title: string
   closeOnOverlayClick: boolean
-  contentClassName: string
   size: string | number
   visible: boolean
   onClose: () => void
@@ -33,7 +34,8 @@ const defaultProps = {
   type: 'text',
   title: '',
   closeOnOverlayClick: true,
-  contentClassName: '', // 自定义样式名
+  contentClassName: '', // 内容自定义样式名
+  maskClassName: '', // mask自定义样式名
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   visible: false,
   onClose: () => {}, // 未实现
@@ -59,6 +61,7 @@ export const Toast: FunctionComponent<
     contentClassName,
     size,
     visible,
+    maskClassName,
     onClose,
     ...rest
   } = { ...defaultProps, ...props }
@@ -133,6 +136,7 @@ export const Toast: FunctionComponent<
             '--nutui-overlay-bg-color': 'rgba(0,0,0,0)',
             ...maskStyle,
           }}
+          className={maskClassName}
           closeOnOverlayClick={closeOnOverlayClick}
           onClick={() => {
             clickCover()
