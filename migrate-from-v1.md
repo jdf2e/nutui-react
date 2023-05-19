@@ -333,6 +333,7 @@
 - `paginationVisible` 重命名为 `indicator`
 - `paginationColor` 重命名为 `indicatorColor`
 - `contentClose` 重命名为 `closeOnContentClick`
+- 在 `Taro` 下支持视频
 
 #### NoticeBar
 #### Popover

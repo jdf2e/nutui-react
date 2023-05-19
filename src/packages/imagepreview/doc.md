@@ -279,7 +279,7 @@ export default App;
 | 属性         | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | visible | 是否展示预览图片 | `boolean` | `false` |
-| videos | 预览的视频数组（视频自动放到图片之前、taro场景暂不支持） | `Array<Object>` | `[]` |
+| videos | 预览的视频数组（视频自动放到图片之前） | `Array<Object>` | `[]` |
 | images | 预览图片数组 | `{ src: string }[]` | `[]` |
 | autoPlay | 自动轮播时长，0表示不会自动轮播 | `number \| string`  | `3000`  |
 | defaultValue | 初始页码 | `number` | `1` |

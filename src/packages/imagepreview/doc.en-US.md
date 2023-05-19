@@ -276,7 +276,7 @@ export default App;
 | Attribute         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | visible | Whether to show preview |  `boolean` | `false` |
-| videos | Videos Array(Videos are before images, not support in taro) | `Array<Object>` | `[]`
+| videos | Videos Array(Videos are before images) | `Array<Object>` | `[]`
 | images | Images array | `{ src: string }[]` | `[]` |
 | autoPlay | Autoplay time, zero means not autoplay | `number \| string`  | `3000`  |
 | defaultValue | Init no |  `number` | `1` |
