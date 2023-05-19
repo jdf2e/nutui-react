@@ -2,6 +2,7 @@ import React, {
   Children,
   forwardRef,
   ReactNode,
+  useEffect,
   useImperativeHandle,
   useRef,
   useState,
@@ -54,6 +55,9 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
   }
   const [current, setCurrent] = useState(defaultValue)
   const childrenCount = useRef(Children.toArray(children).length)
+  useEffect(() => {
+    setCurrent(defaultValue)
+  }, [defaultValue])
   const renderIndicator = () => {
     if (React.isValidElement(indicator)) return indicator
     if (indicator === true) {

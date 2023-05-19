@@ -95,7 +95,7 @@ import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 
 const App = () => {
   return (
-    <Swiper width={300} height={150} defaultValue={0} loop={false}>
+    <Swiper width={300} height={150} defaultValue={0}>
       <SwiperItem >
         <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
       </SwiperItem>

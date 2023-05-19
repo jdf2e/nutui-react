@@ -60,7 +60,6 @@ const SwiperDemo = () => {
 
   const [current, setCurrent] = useState(0)
   const [current2, setCurrent2] = useState(0)
-
   const swiperRef = useRef<any>(null)
 
   return (
@@ -68,7 +67,7 @@ const SwiperDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} padding`}>
         <h2>{translated.basic}</h2>
-        <Swiper defaultValue={1} indicator>
+        <Swiper defaultValue={1} autoPlay indicator>
           {list.map((item) => (
             <SwiperItem key={item}>
               <img width="100%" height="100%" src={item} alt="" />
@@ -90,7 +89,6 @@ const SwiperDemo = () => {
           width={300}
           height={150}
           defaultValue={0}
-          loop={false}
         >
           {list.map((item) => (
             <SwiperItem key={item}>
