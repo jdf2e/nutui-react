@@ -49,7 +49,7 @@ function sleep(delay = 0): Promise<void> {
 }
 
 test('basic usage test', () => {
-  const { container } = render(<ImagePreview images={images} show />)
+  const { container } = render(<ImagePreview images={images} visible />)
 
   const element = container.querySelector('.custom-pop') as HTMLElement
   expect(element.style.display).toEqual('')
@@ -59,7 +59,7 @@ test('test autoPlay', async () => {
   let _container: any
   act(() => {
     const { container } = render(
-      <ImagePreview images={images} show autoPlay={1000} />
+      <ImagePreview images={images} visible autoPlay={1000} />
     )
     _container = container
   })
@@ -81,7 +81,9 @@ test('test autoPlay', async () => {
 })
 
 test('init page No.', async () => {
-  const { container } = render(<ImagePreview images={images} show initNo={3} />)
+  const { container } = render(
+    <ImagePreview images={images} visible initNo={3} />
+  )
 
   const element = container.querySelector(
     '.custom-pop .nut-imagepreview-index'
@@ -91,7 +93,7 @@ test('init page No.', async () => {
 
 test('customize pagination and color', async () => {
   const { container } = render(
-    <ImagePreview images={images} show indicator paginationColor="red" />
+    <ImagePreview images={images} visible indicator paginationColor="red" />
   )
 
   const swiperPagination = container.querySelector('.nut-swiper__pagination')
@@ -108,7 +110,7 @@ test('customize pagination and color', async () => {
 
 test('video surported in H5 env', async () => {
   const { container } = render(
-    <ImagePreview images={images} videos={videos} show />
+    <ImagePreview images={images} videos={videos} visible />
   )
 
   const nutVideoPlayer = container.querySelector('.nut-video-player')

@@ -1,6 +1,5 @@
 import React, {
   FunctionComponent,
-  CSSProperties,
   useEffect,
   useState,
   useRef,
@@ -10,6 +9,7 @@ import Popup from '@/packages/popup'
 import Video from '@/packages/video'
 import Swiper from '@/packages/swiper'
 import SwiperItem from '@/packages/swiperitem'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 interface IStore {
   scale: number
@@ -18,8 +18,7 @@ interface IStore {
   originScale: number
 }
 
-export interface ImagePreviewProps {
-  className?: string
+export interface ImagePreviewProps extends BasicComponent {
   images: Array<{
     src: string
   }>
@@ -33,20 +32,20 @@ export interface ImagePreviewProps {
       controls: boolean
     }
   }>
-  show: boolean
+  visible: boolean
   autoPlay: number | string
   initNo: number
   contentClose: boolean
   indicator: boolean
-  style?: CSSProperties
   paginationColor: string
   onClose: () => void
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   images: [],
   videos: [],
-  show: false,
+  visible: false,
   autoPlay: 3000,
   initNo: 1,
   contentClose: false,
@@ -60,7 +59,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   const {
     images,
     videos,
-    show,
+    visible,
     initNo,
     paginationColor,
     indicator,
@@ -174,19 +173,19 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   }
 
   useEffect(() => {
-    setShowPop(show as boolean)
+    setShowPop(visible as boolean)
     setInnerNo(initNo)
     setActive(initNo as number)
     init()
-  }, [show, initNo])
+  }, [visible, initNo])
 
   useEffect(() => {
     if (innerNo !== undefined) {
       setActive(innerNo)
     }
 
-    if (show !== undefined) {
-      setShowPop(show)
+    if (visible !== undefined) {
+      setShowPop(visible)
     }
 
     if (images && videos) {

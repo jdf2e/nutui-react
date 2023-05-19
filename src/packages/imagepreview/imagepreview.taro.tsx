@@ -1,6 +1,5 @@
 import React, {
   FunctionComponent,
-  CSSProperties,
   useEffect,
   useState,
   useRef,
@@ -9,6 +8,7 @@ import React, {
 import Popup from '@/packages/popup/index.taro'
 import Swiper from '@/packages/swiper/index.taro'
 import SwiperItem from '@/packages/swiperitem/index.taro'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 interface Store {
   scale: number
@@ -17,8 +17,7 @@ interface Store {
   originScale: number
 }
 
-export interface ImagePreviewProps {
-  className?: string
+export interface ImagePreviewProps extends BasicComponent {
   images: Array<{
     src: string
   }>
@@ -32,20 +31,20 @@ export interface ImagePreviewProps {
       controls: boolean
     }
   }>
-  show: boolean
+  visible: boolean
   autoPlay: boolean
   initNo: number
   contentClose: boolean
   paginationVisible: boolean
-  style?: CSSProperties
   paginationColor: string
   onClose: () => void
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   images: [],
   videos: [],
-  show: false,
+  visible: false,
   autoPlay: false,
   initNo: 1,
   contentClose: false,
@@ -59,7 +58,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   const {
     images,
     videos,
-    show,
+    visible,
     initNo,
     paginationColor,
     paginationVisible,
@@ -172,19 +171,19 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   }
 
   useEffect(() => {
-    if (show !== undefined) {
-      setShowPop(show)
+    if (visible !== undefined) {
+      setShowPop(visible)
       init()
     }
-  }, [show])
+  }, [visible])
 
   useEffect(() => {
     if (initNo !== undefined) {
       setActive(initNo)
     }
 
-    if (show !== undefined) {
-      setShowPop(show)
+    if (visible !== undefined) {
+      setShowPop(visible)
     }
 
     if (images && videos) {
