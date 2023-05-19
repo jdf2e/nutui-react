@@ -1000,12 +1000,12 @@ $steps-base-title-margin-bottom: var(
   --nutui-steps-base-title-margin-bottom,
   10px
 ) !default;
-$steps-base-content-font-size: var(
-  --nutui-steps-base-content-font-size,
+$steps-base-description-font-size: var(
+  --nutui-steps-base-description-font-size,
   12px
 ) !default;
 $steps-base-content-color: var(
-  --nutui-steps-base-content-color,
+  --nutui-steps-base-description-color,
   $title-color2
 ) !default;
 
@@ -1014,17 +1014,12 @@ $steps-wait-icon-bg-color: var(
   #959fb1
 ) !default;
 $steps-wait-icon-color: var(--nutui-steps-wait-icon-color, $white) !default;
-$steps-wait-head-color: var(--nutui-steps-wait-head-color, #909ca4) !default;
-$steps-wait-head-border-color: var(
-  --nutui-steps-wait-head-border-color,
-  #909ca4
-) !default;
 $steps-wait-title-color: var(
   --nutui-steps-wait-title-color,
   $title-color2
 ) !default;
 $steps-wait-content-color: var(
-  --nutui-steps-wait-content-color,
+  --nutui-steps-wait-description-color,
   $title-color2
 ) !default;
 $steps-process-icon-bg-color: var(
@@ -1034,14 +1029,6 @@ $steps-process-icon-bg-color: var(
 $steps-process-icon-color: var(
   --nutui-steps-process-icon-color,
   $white
-) !default;
-$steps-process-head-color: var(
-  --nutui-steps-process-head-color,
-  $primary-color
-) !default;
-$steps-process-head-border-color: var(
-  --nutui-steps-process-head-border-color,
-  $primary-color
 ) !default;
 $steps-process-title-color: var(
   --nutui-steps-process-title-color,
@@ -1056,7 +1043,7 @@ $steps-process-title-font-weight: var(
   400
 ) !default;
 $steps-process-content-color: var(
-  --nutui-steps-process-content-color,
+  --nutui-steps-process-description-color,
   $title-color2
 ) !default;
 
@@ -1068,20 +1055,12 @@ $steps-finish-icon-color: var(
   --nutui-steps-finish-icon-color,
   $primary-color
 ) !default;
-$steps-finish-head-color: var(
-  --nutui-steps-finish-head-color,
-  $primary-color
-) !default;
-$steps-finish-head-border-color: var(
-  --nutui-steps-finish-head-border-color,
-  $primary-color
-) !default;
 $steps-finish-title-color: var(
   --nutui-steps-finish-title-color,
   $primary-color
 ) !default;
 $steps-finish-content-color: var(
-  --nutui-steps-finish-content-color,
+  --nutui-steps-finish-description-color,
   $title-color2
 ) !default;
 $steps-finish-line-background: var(

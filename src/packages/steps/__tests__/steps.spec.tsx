@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-
 import { Steps } from '../steps'
 import Step from '../../step'
 import Button from '../../button'
@@ -15,14 +14,14 @@ test('should render horizontal class when props direction is to be horizontal', 
 
 test('should render horizontal class when props direction is to be horizontal', () => {
   const { container } = render(
-    <Steps current={1}>
-      <Step activeIndex={1} title="步骤一">
+    <Steps value={1}>
+      <Step value={1} title="步骤一">
         1
       </Step>
-      <Step activeIndex={2} title="步骤二">
+      <Step value={2} title="步骤二">
         2
       </Step>
-      <Step activeIndex={3} title="步骤三">
+      <Step value={3} title="步骤三">
         3
       </Step>
     </Steps>
@@ -32,18 +31,16 @@ test('should render horizontal class when props direction is to be horizontal', 
   )
 })
 
-test('should render dot class when props progressDot is to be true', async () => {
-  const { getByTestId } = render(
-    <Steps data-testid="steps-progressDot" progressDot />
-  )
-  expect(getByTestId('steps-progressDot')).toHaveClass('nut-steps-dot')
+test('should render dot class when props dot is to be true', async () => {
+  const { getByTestId } = render(<Steps data-testid="steps-dot" dot />)
+  expect(getByTestId('steps-dot')).toHaveClass('nut-steps-dot')
 })
 
 test('should render horizontal class when props direction is to be horizontal', () => {
   const { container } = render(
     <Steps>
       <Step
-        activeIndex={1}
+        value={1}
         title="已完成"
         content="您的订单已经打包完成，商品已发出"
         icon="service"
@@ -51,7 +48,7 @@ test('should render horizontal class when props direction is to be horizontal', 
         1
       </Step>
       <Step
-        activeIndex={2}
+        value={2}
         title="进行中"
         content="您的订单正在配送途中"
         icon="people"
@@ -59,7 +56,7 @@ test('should render horizontal class when props direction is to be horizontal', 
         2
       </Step>
       <Step
-        activeIndex={3}
+        value={3}
         title="未开始"
         content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
         icon="location2"
@@ -83,31 +80,31 @@ test('should render horizontal class when props direction is to be horizontal', 
   })
 })
 
-test('should props current changes when trigger click', () => {
+test('should props value changes when trigger click', () => {
   const App = () => {
-    const [current, setCurrent] = React.useState(1)
+    const [value, setCurrent] = React.useState(1)
     const handleClick = () => {
-      if (current >= 3) {
+      if (value >= 3) {
         setCurrent(1)
       } else {
-        setCurrent(current + 1)
+        setCurrent(value + 1)
       }
     }
     return (
       <>
-        <Steps current={current}>
+        <Steps value={value}>
           <Step
-            activeIndex={1}
+            value={1}
             title="已完成"
             content="您的订单已经打包完成，商品已发出"
           >
             1
           </Step>
-          <Step activeIndex={2} title="进行中" content="您的订单正在配送途中">
+          <Step value={2} title="进行中" content="您的订单正在配送途中">
             2
           </Step>
           <Step
-            activeIndex={3}
+            value={3}
             title="未开始"
             content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
           >
@@ -134,19 +131,15 @@ test('should props current changes when trigger click', () => {
 test('should emited click when step trigger', () => {
   const handleClickStep = jest.fn()
   const { getByText } = render(
-    <Steps current={1} onClickStep={handleClickStep}>
-      <Step
-        activeIndex={1}
-        title="已完成"
-        content="您的订单已经打包完成，商品已发出"
-      >
+    <Steps value={1} onStepClick={handleClickStep}>
+      <Step value={1} title="已完成" content="您的订单已经打包完成，商品已发出">
         1
       </Step>
-      <Step activeIndex={2} title="进行中" content="您的订单正在配送途中">
+      <Step value={2} title="进行中" content="您的订单正在配送途中">
         2
       </Step>
       <Step
-        activeIndex={3}
+        value={3}
         title="未开始"
         content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
       >
@@ -160,26 +153,22 @@ test('should emited click when step trigger', () => {
 
 test('render step slot', () => {
   const { container, queryByText } = render(
-    <Steps current={1}>
-      <Step
-        activeIndex={1}
-        title="已完成"
-        content="您的订单已经打包完成，商品已发出"
-      >
+    <Steps value={1}>
+      <Step value={1} title="已完成" content="您的订单已经打包完成，商品已发出">
         1
       </Step>
-      <Step activeIndex={2} title="进行中" content="您的订单正在配送途中">
+      <Step value={2} title="进行中" content="您的订单正在配送途中">
         2
       </Step>
       <Step
-        activeIndex={3}
+        value={3}
         title="未开始"
-        renderContent={() => (
+        description={
           <>
             <p>收货地址为：</p>
             <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
           </>
-        )}
+        }
       >
         3
       </Step>
