@@ -73,7 +73,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     closeOnContentClick,
     onClose,
   } = props
-
+  const classPrefix = 'nut-imagepreview'
   const ref = useRef(null)
   const [innerNo, setInnerNo] = usePropsValue<number>({
     value: props.value,
@@ -238,19 +238,19 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   return (
     <Popup
       visible={showPop}
-      className="nut-imagepreview-pop"
+      className={`${classPrefix}-pop`}
       style={{ width: '100%' }}
       onClick={onCloseInner}
     >
       <div
-        className="nut-imagepreview"
+        className={classPrefix}
         ref={ref}
         onClick={closeOnImg}
         onTouchStart={onTouchStart as any}
       >
         <Swiper
           autoPlay={autoPlay}
-          className="nut-imagepreview-swiper"
+          className={`${classPrefix}-swiper`}
           loop
           height="100%"
           style={{
@@ -298,7 +298,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           )}
         </Swiper>
       </div>
-      <div className="nut-imagepreview-index">
+      <div className={`${classPrefix}-index`}>
         {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
       </div>
     </Popup>
