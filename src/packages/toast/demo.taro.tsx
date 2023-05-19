@@ -7,7 +7,6 @@ const ToastDemo = () => {
   const [state, SetState] = useState({
     msg: 'toast',
     type: 'text',
-    cover: false,
     duration: 2,
     closeOnOverlayClick: false,
     title: '',
