@@ -18,8 +18,7 @@ export interface CollapseItemProps extends BasicComponent {
   expandIcon: ReactNode
   disabled: boolean
   rotate: number
-  subTitle: ReactNode
-  onToggle: (isOpen: boolean, name: string) => void
+  extra: ReactNode
 }
 
 const defaultProps = {
@@ -30,7 +29,7 @@ const defaultProps = {
   expandIcon: null,
   disabled: false,
   rotate: 180,
-  subTitle: null,
+  extra: null,
 } as CollapseItemProps
 export const CollapseItem: FunctionComponent<
   Partial<CollapseItemProps> &
@@ -40,22 +39,25 @@ export const CollapseItem: FunctionComponent<
     children,
     title,
     isOpen,
-    onToggle,
     name,
     disabled,
     expandIcon,
     rotate,
-    subTitle,
+    extra,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
 
+  const classPrefix = 'nut-collapse-item'
   const context = useContext(CollapseContext)
   // 获取 Dom 元素
-  const wrapperRef = useRef(null)
+  const wrapperRef: any = useRef(null)
   const contentRef: any = useRef(null)
+  const [iconStyle, setIconStyle] = useState({
+    transform: 'translateY(-50%)',
+  })
 
   const expanded = useMemo(() => {
     if (context) {
@@ -64,68 +66,60 @@ export const CollapseItem: FunctionComponent<
     return false
   }, [name, context.isOpen])
 
-  const [currHeight, setCurrHeight] = useState(() =>
-    expanded ? 'auto' : '0px'
-  )
-
-  const toggle = () => {
+  const handleClick = () => {
     context.updateValue(name)
   }
 
   const onTransitionEnd = () => {
-    console.log('onTransitionEnd')
     if (expanded) {
-      setCurrHeight('auto')
+      if (wrapperRef.current) {
+        wrapperRef.current.style.height = ''
+      }
     }
   }
 
-  const open = () => {
-    setCurrHeight('0px')
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const height = contentRef.current?.offsetHeight
-        setCurrHeight(height ? `${height}px` : 'auto')
-      })
-    })
-  }
-
-  const close = () => {
+  const getOffsetHeight = () => {
     const height = contentRef.current?.offsetHeight
-    setCurrHeight(height ? `${height}px` : 'auto')
+    return height ? `${height}px` : ''
+  }
+
+  const toggle = () => {
+    const start = expanded ? '0px' : getOffsetHeight()
+    if (wrapperRef.current) {
+      wrapperRef.current.style.height = start
+    }
+    const newIconStyle = expanded
+      ? { transform: `translateY(-50%) rotate(${rotate}deg)` }
+      : { transform: 'translateY(-50%)' }
+    setIconStyle(newIconStyle)
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        setCurrHeight('0px')
+        const end = expanded ? getOffsetHeight() : '0px'
+        if (wrapperRef.current) {
+          wrapperRef.current.style.height = end
+        }
       })
     })
   }
 
-  useEffect(() => {
-    expanded ? open() : close()
-  }, [expanded])
-
-  const [iconStyle, setIconStyle] = useState({
-    transform: 'translateY(-50%)',
-  })
-
-  const classPrefix = 'nut-collapse-item'
+  useEffect(toggle, [expanded])
 
   return (
     <div className={classPrefix} {...rest}>
       <div
         className={classNames(`${classPrefix}__header`, { disabled })}
-        onClick={() => toggle()}
+        onClick={handleClick}
       >
         <div className={`${classPrefix}__title`}>{title}</div>
-        <div className={`${classPrefix}__sub-title`}>{subTitle}</div>
+        <div className={`${classPrefix}__extra`}>{extra}</div>
         <div className={`${classPrefix}__icon-box`}>
           <div className={`${classPrefix}__icon`} style={iconStyle}>
-            {expandIcon}
+            {context.expandIcon || expandIcon}
           </div>
         </div>
       </div>
       <div
         className={`${classPrefix}__content`}
-        style={{ height: currHeight }}
         onTransitionEnd={onTransitionEnd}
         ref={wrapperRef}
       >

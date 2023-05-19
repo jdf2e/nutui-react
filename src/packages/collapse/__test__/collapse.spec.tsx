@@ -84,7 +84,7 @@ test('prop accordion', () => {
         <CollapseItem
           title="标题1"
           name="1"
-          subTitle="文本内容"
+          extra="文本内容"
           data-testid="collapse-one"
         >
           第一个内容
@@ -143,13 +143,13 @@ test('prop rotate', () => {
   }, 100)
 })
 
-test('prop title subTitle titleIconColor titleIconSize titleIconPosition', () => {
+test('prop title extra titleIconColor titleIconSize titleIconPosition', () => {
   const { getByTestId, container } = render(
     <>
       <Collapse activeKey={['1']} accordion expandIcon="arrow-right2">
         <CollapseItem
           title="标题1"
-          subTitle="副标题"
+          extra="副标题"
           name="1"
           expandIcon={<DownArrow />}
           data-testid="collapse-one"

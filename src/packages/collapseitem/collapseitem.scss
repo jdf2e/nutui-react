@@ -15,7 +15,7 @@
         }
       }
 
-      .nut-collapse-item__sub-title {
+      .nut-collapse-item__extra {
         color: $dark2;
       }
 
@@ -95,7 +95,7 @@
     }
   }
 
-  &__sub-title {
+  &__extra {
     flex: 1;
     display: flex;
     justify-content: flex-end;
@@ -103,7 +103,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: $collapse-item-sub-title-color;
+    color: $collapse-item-extra-color;
   }
 
   &__icon-box {

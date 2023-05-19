@@ -23,7 +23,7 @@ interface T {
   content1: string
   content2: string
   content3: string
-  subTitle: string
+  extra: string
   buttonTextOne: string
   buttonTextSec: string
 }
@@ -35,7 +35,7 @@ const CollapseDemo = () => {
       header2: '无icon样式，绑定点击事件',
       header3: '手风琴模式',
       header4: '自定义折叠图标',
-      header5: '自定义 title 与 subTitle',
+      header5: '自定义 title 与 extra',
       header6: '动态改变数据',
       title1: '标题1',
       title2: '标题2',
@@ -43,7 +43,7 @@ const CollapseDemo = () => {
       content1: 'NutUI-React是一套拥有京东风格的轻量级的 React 组件库',
       content2: '在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！',
       content3: '全面使用 TypeScipt',
-      subTitle: '文本内容',
+      extra: '文本内容',
       buttonTextOne: '改变数据',
       buttonTextSec: '还原数据',
     },
@@ -53,7 +53,7 @@ const CollapseDemo = () => {
       header2: '無icon樣式，綁定點擊事件',
       header3: '手風琴模式',
       header4: '自定義折疊圖標',
-      header5: '自定義 title 與 subTitle',
+      header5: '自定義 title 與 extra',
       header6: '動態改變數據',
       title1: '標題1',
       title2: '標題2',
@@ -61,7 +61,7 @@ const CollapseDemo = () => {
       content1: 'Nutui-React 是一套擁有京東風格的輕量級的 React 組件庫',
       content2: '在產品的功能、體驗、易用性和靈活性等各個方面做了全面的升級',
       content3: '全面使用 TypeScipt',
-      subTitle: '文本內容',
+      extra: '文本內容',
       buttonTextOne: '改變數據',
       buttonTextSec: '還原數據',
     },
@@ -71,7 +71,7 @@ const CollapseDemo = () => {
       header2: 'No icon style',
       header3: 'accordion Mode',
       header4: 'Custom collapse Icon',
-      header5: 'Custom title and subTitle',
+      header5: 'Custom title and extra',
       header6: 'Change Data',
       title1: 'title1',
       title2: 'title2',
@@ -81,7 +81,7 @@ const CollapseDemo = () => {
       content2:
         'The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!',
       content3: 'Full use of typescipt',
-      subTitle: 'text content',
+      extra: 'text content',
       buttonTextOne: 'change data',
       buttonTextSec: 'return data',
     },
@@ -190,7 +190,7 @@ const CollapseDemo = () => {
           <Collapse.Item
             title={translated.title1}
             name="1"
-            subTitle={translated.subTitle}
+            extra={translated.extra}
           >
             {translated.content1}
           </Collapse.Item>
@@ -246,7 +246,7 @@ const CollapseDemo = () => {
           </Collapse.Item>
           <Collapse.Item
             title={translated.title2}
-            subTitle={
+            extra={
               <div
                 style={{
                   display: 'flex',

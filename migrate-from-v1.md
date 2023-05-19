@@ -318,6 +318,7 @@
   - `pathColor` 重名为 `background`
 #### Collapse
 - activeName 重命名为 activeKey
+- subTitle 重命名为 extra
 - 
 #### CountDown
 #### Ellipsis
