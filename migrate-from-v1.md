@@ -327,7 +327,14 @@
 - 1）渲染问题修复：之前的description的ReactNode节点存在引入错误，导致传入元素标签失效，2.0版本进行了一个修复。
 - 2）代码逻辑优化：因新增status属性，对一些无用的代码进行了一个精简优化
 #### ImagePreview
-- paginationVisible 重命名为 indicator
+- `show` 重命名为 `visible`
+- `autoplay` 重命名为 `autoPlay`
+- `initNo` 重命名为 `defaultValue`，同时增加 `value`，为受控
+- `paginationVisible` 重命名为 `indicator`
+- `paginationColor` 重命名为 `indicatorColor`
+- `contentClose` 重命名为 `closeOnContentClick`
+- 在 `Taro` 下支持视频
+
 #### NoticeBar
 - `direction` 的可选值从`across` 改为 `horizontal`
 - `text` 改为 `content`

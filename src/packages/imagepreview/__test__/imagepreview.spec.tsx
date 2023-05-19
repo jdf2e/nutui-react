@@ -51,7 +51,9 @@ function sleep(delay = 0): Promise<void> {
 test('basic usage test', () => {
   const { container } = render(<ImagePreview images={images} visible />)
 
-  const element = container.querySelector('.custom-pop') as HTMLElement
+  const element = container.querySelector(
+    '.nut-imagepreview-pop'
+  ) as HTMLElement
   expect(element.style.display).toEqual('')
 })
 
@@ -65,7 +67,7 @@ test('test autoPlay', async () => {
   })
 
   const element = _container.querySelector(
-    '.custom-pop .nut-imagepreview-index'
+    '.nut-imagepreview-pop .nut-imagepreview-index'
   ) as HTMLElement
   expect(element).toHaveTextContent('1')
 
@@ -82,29 +84,24 @@ test('test autoPlay', async () => {
 
 test('init page No.', async () => {
   const { container } = render(
-    <ImagePreview images={images} visible initNo={3} />
+    <ImagePreview images={images} visible defaultValue={3} />
   )
 
   const element = container.querySelector(
-    '.custom-pop .nut-imagepreview-index'
+    '.nut-imagepreview-pop .nut-imagepreview-index'
   ) as HTMLElement
   expect(element).toHaveTextContent('3/4')
 })
 
-test('customize pagination and color', async () => {
+test('customize indicator and color', async () => {
   const { container } = render(
-    <ImagePreview images={images} visible indicator paginationColor="red" />
+    <ImagePreview images={images} visible indicator indicatorColor="red" />
   )
 
-  const swiperPagination = container.querySelector('.nut-swiper__pagination')
-  expect(swiperPagination).toBeInTheDocument()
-
-  const swiperPaginationFirstIcon = container.querySelectorAll(
-    '.nut-swiper__pagination i'
-  )[0]
-  expect(swiperPaginationFirstIcon).toHaveAttribute(
+  const swiperIndicator = container.querySelector('.nut-imagepreview-swiper')
+  expect(swiperIndicator).toHaveAttribute(
     'style',
-    'background-color: red;'
+    'display: block; --nutui-indicator-color: red;'
   )
 })
 

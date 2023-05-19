@@ -1,19 +1,15 @@
 @import '../popup/popup.scss';
 @import '../swiper/swiper.scss';
 @import '../video/video.scss';
+
 .nut-imagepreview {
   width: 100%;
+  height: 100%;
 
   &-swiper {
-    height: 327px;
+    height: 100%;
     width: 100vw;
     background-color: transparent;
-  }
-
-  &-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
   }
 
   &-index {
@@ -42,18 +38,53 @@
     overflow: visible;
     background-color: transparent;
   }
-}
-.custom-pop {
-  height: 100%;
-  background: transparent !important;
-  display: flex;
-  align-items: center;
-}
-.nut-imagepreview-swiper {
-  swiper {
+
+  &-pop {
+    height: 100%;
+    background: transparent !important;
+    display: flex;
+    align-items: center;
     width: 100%;
   }
-}
-.nut-imagepreview-swiper .nut-swiper-item {
-  height: 327px;
+
+  &-swiper {
+    swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    swiper-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+      .nut-image-preview-box {
+        width: 100%;
+      }
+
+      .nut-video {
+        video {
+          object-fit: contain;
+        }
+      }
+    }
+
+    .nut-swiper-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+      .nut-image-preview-box {
+        width: 100%;
+      }
+
+      .nut-video {
+        video {
+          object-fit: contain;
+        }
+      }
+    }
+  }
 }
