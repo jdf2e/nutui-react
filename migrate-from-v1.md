@@ -329,6 +329,17 @@
 #### ImagePreview
 - paginationVisible 重命名为 indicator
 #### NoticeBar
+- `direction` 的可选值从`across` 改为 `horizontal`
+- `text` 改为 `content`
+- `closeMode` 改为 `closeable`
+- `leftIcon` 类型扩充，支持 `ReactNode`
+- `rightIcon` 类型扩充，支持 `ReactNode`
+- `color` 删除，使用 CSS 变量，之前已支持
+- `background` 删除，使用 CSS 变量，之前已支持
+- `wrapable` 更名为 `wrap`
+- `standTime` 更名为 `duration`
+- `complexAm ` 废弃
+
 #### Popover
 
 #### Price

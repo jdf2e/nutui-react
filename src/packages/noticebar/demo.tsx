@@ -30,7 +30,7 @@ const NoticeBarDemo = () => {
       basic: 'Basic Usage',
       scrollable: 'Scrollable',
       mode: 'Mode',
-      multiline: 'Wrapable',
+      multiline: 'wrap',
       vertical: 'Vertical Scroll',
       complexAm: 'Vertical Scroll Complex Animation',
       customAm: 'Vertical Scroll Custom Style',
@@ -56,19 +56,19 @@ const NoticeBarDemo = () => {
     <>
       <div className="demo" style={{ paddingBottom: '30px' }}>
         <h2>{translated.basic}</h2>
-        <NoticeBar text={translated.text} leftIcon={null} />
+        <NoticeBar content={translated.text} leftIcon={null} />
 
         <h2>{translated.scrollable}</h2>
-        <NoticeBar text={translated.textShort} scrollable />
+        <NoticeBar content={translated.textShort} scrollable />
         <br />
-        <NoticeBar text={translated.text} scrollable={false} />
+        <NoticeBar content={translated.text} scrollable={false} />
 
         <h2>{translated.mode}</h2>
-        <NoticeBar closeMode onClick={hello}>
+        <NoticeBar closeable onClick={hello}>
           {translated.text}
         </NoticeBar>
         <br />
-        <NoticeBar closeMode rightIcon={<CircleClose />} onClick={hello}>
+        <NoticeBar closeable rightIcon={<CircleClose />} onClick={hello}>
           {translated.text}
         </NoticeBar>
         <br />
@@ -87,7 +87,7 @@ const NoticeBarDemo = () => {
         </NoticeBar>
 
         <h2>{translated.multiline}</h2>
-        <NoticeBar text={translated.text} wrapable />
+        <NoticeBar content={translated.text} wrap />
 
         <h2>{translated.vertical}</h2>
         <div className="interstroll-list">
@@ -95,12 +95,12 @@ const NoticeBarDemo = () => {
             direction="vertical"
             list={horseLamp1}
             speed={10}
-            standTime={1000}
+            duration={1000}
             height={30}
             onClick={(e) => {
               go(e.target.innerHTML)
             }}
-            closeMode
+            closeable
           />
         </div>
 
@@ -110,7 +110,7 @@ const NoticeBarDemo = () => {
             direction="vertical"
             list={horseLamp2}
             speed={10}
-            standTime={2000}
+            duration={2000}
             leftIcon={
               <Image
                 width="16px"
@@ -134,8 +134,8 @@ const NoticeBarDemo = () => {
             direction="vertical"
             height={50}
             speed={10}
-            standTime={1000}
-            closeMode
+            duration={1000}
+            closeable
             onClose={() => {
               console.log('close')
             }}
@@ -164,7 +164,7 @@ const NoticeBarDemo = () => {
             direction="vertical"
             list={horseLamp1}
             speed={10}
-            standTime={1000}
+            duration={1000}
             onClickItem={(e, v) => {
               console.log('onclick-custom', v)
             }}
