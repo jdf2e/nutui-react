@@ -349,6 +349,8 @@
 - 移除 textColor，通过 css 实现
 - 移除 textInside，仅保留内显功能
 - 移除 textType、icon，通过 children 传入自定义 ReactNode，不再区分类型
+- 新增 lazy 属性，支持每次进入可视区时展示进度条动画
+- 新增 delay 属性，表示延迟数据加载时长
 #### Skeleton
 #### Steps
 - current 重命名为 value
