@@ -9,7 +9,7 @@ const ToastDemo = () => {
     type: 'text',
     cover: false,
     duration: 2,
-    closeOnClickOverlay: false,
+    closeOnOverlayClick: false,
     title: '',
     bottom: '',
     icon: '',
@@ -40,10 +40,9 @@ const ToastDemo = () => {
           msg={state.msg}
           visible={showToast}
           type={state.type}
-          cover={state.cover}
           duration={state.duration}
           icon={state.icon}
-          closeOnClickOverlay={state.closeOnClickOverlay}
+          closeOnOverlayClick={state.closeOnOverlayClick}
           onClose={() => {
             SetShowToast(false)
           }}
