@@ -43,6 +43,39 @@ export default App;
 
 :::
 
+### 受控方式
+
+:::demo
+
+```jsx
+import React, {useState} from "react";
+import { Collapse } from '@nutui/nutui-react-taro';
+import { DownArrow } from '@nutui/icons-react-taro';
+
+const App = () => {
+  const [activeName, setActiveName] = useState(['1', '2'])
+  const onChange = (activeName, name, status) => {
+    setActiveName(activeName)
+  }
+  return (
+    <Collapse activeName={activeName} onChange={onChange}>
+      <Collapse.Item title="标题1" name="1">
+        京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+      </Collapse.Item>
+      <Collapse.Item title="标题2" name="2">
+        京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+      </Collapse.Item>
+      <Collapse.Item title="标题3" name="3">
+        京东“厂直优品计划”首推“政府优品馆”
+      </Collapse.Item>
+    </Collapse>
+  );
+};
+export default App;
+```
+
+:::
+
 ### 无icon样式，绑定点击事件
 
 :::demo

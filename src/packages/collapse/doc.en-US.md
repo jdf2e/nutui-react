@@ -44,6 +44,39 @@ export default App;
 
 :::
 
+### 受控方式
+
+:::demo
+
+```jsx
+import React, {useState} from "react";
+import { Collapse } from '@nutui/nutui-react-taro';
+import { DownArrow } from '@nutui/icons-react-taro';
+
+const App = () => {
+  const [activeName, setActiveName] = useState(['1', '2'])
+  const onChange = (activeName, name, status) => {
+    setActiveName(activeName)
+  }
+  return (
+    <Collapse activeName={activeName} onChange={onChange}>
+      <Collapse.Item title="title1" name="1">
+        Nutui-React is a lightweight React component library with JD style
+      </Collapse.Item>
+      <Collapse.Item title="title2" name="2">
+        Nutui-React is a lightweight React component library with JD style
+      </Collapse.Item>
+      <Collapse.Item title="title3" name="3">
+        Nutui-React is a lightweight React component library with JD style
+      </Collapse.Item>
+    </Collapse>
+  );
+};
+export default App;
+```
+
+:::
+
 ### No icon style
 
 :::demo
