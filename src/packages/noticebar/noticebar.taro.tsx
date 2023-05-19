@@ -226,7 +226,6 @@ export const NoticeBar: FunctionComponent<
   /**
    * 点击滚动单元
    */
-
   const handleClickIcon = (event: MouseEvent) => {
     event.stopPropagation()
     SetShowNoticeBar(!closeable)
@@ -272,7 +271,7 @@ export const NoticeBar: FunctionComponent<
     setTimeout(async () => {
       const rects = await getRectByTaro(container?.current)
       const _active = Math.max(Math.min(childCount - 1, active), 0)
-      const _height = rects.height
+      const _height = rects?.height
       trackSize = childCount * Number(_height)
       const targetOffset = getOffset(_active)
       swiperRef.current.moving = true
@@ -364,10 +363,9 @@ export const NoticeBar: FunctionComponent<
 
   const getStyle = (moveOffset = offset) => {
     const target = innerRef.current
-
     let _offset = 0
     // 容器高度-元素高度
-    const val = rect.height - height
+    const val = rect?.height - height
     _offset = moveOffset + Number(active === childCount - 1 && val / 2)
 
     target.style.transitionDuration = `${
@@ -423,13 +421,13 @@ export const NoticeBar: FunctionComponent<
     }
   }
 
-  // const b = bem('noticebar')
   const noticebarClass = classNames({
     'nut-noticebar-page': true,
     withicon: closeable,
     close: closeable,
     wrap,
   })
+
   useEffect(() => {
     return () => {
       stopAutoPlay()
@@ -469,24 +467,22 @@ export const NoticeBar: FunctionComponent<
         >
           {leftIcon ? <div className="left-icon">{leftIcon}</div> : null}
           {children ? (
-            <>
-              <div className="nut-noticebar__inner" ref={innerRef}>
-                {scrollList.current.map((item: string, index: number) => {
-                  return (
-                    <div
-                      className="scroll-inner "
-                      style={itemStyle(index)}
-                      key={index}
-                      onClick={(e) => {
-                        handleItemClick(e, item)
-                      }}
-                    >
-                      {item}
-                    </div>
-                  )
-                })}
-              </div>
-            </>
+            <div className="nut-noticebar__inner" ref={innerRef}>
+              {scrollList.current.map((item: string, index: number) => {
+                return (
+                  <div
+                    className="scroll-inner "
+                    style={itemStyle(index)}
+                    key={index}
+                    onClick={(e) => {
+                      handleItemClick(e, item)
+                    }}
+                  >
+                    {item}
+                  </div>
+                )
+              })}
+            </div>
           ) : (
             <div className="horseLamp_list" style={horseLampStyle}>
               {scrollList.current.map((item: string, index: number) => {

@@ -267,11 +267,11 @@ export default App
 :::
 
 
-## API
+## NoticeBar
 
-### Prop
+### Props
 
-| 字段       | 说明| 类型          | 默认值 |
+| 属性       | 说明| 类型          | 默认值 |
 | ---------- | ------------------------ | ------------- | ------ |
 | direction| 滚动的方向，可选 horizontal、vertical | `string` | `horizontal`     |
 | content       | 提示的信息| `string`        | -     |
@@ -288,9 +288,9 @@ export default App
 | onClose  | 关闭通知栏时触发 | `(event: any) => void` |
 | onClickItem  | 垂直滚动多条数据时，点击当前展示的信息时触发 | `(event: any, value: any) => void` |
 
-### Prop（direction=vertical）
+### Props（direction=vertical）
 
-| 参数         | 说明 | 类型   | 默认值           |
+| 属性         | 说明 | 类型   | 默认值           |
 |--------------|------------|--------|------------------|
 | list         | 纵向滚动数据列表 | `Array` | `[]` |
 | speed        | 滚动的速度 | `number` | `50` |

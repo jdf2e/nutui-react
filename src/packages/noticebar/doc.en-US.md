@@ -256,7 +256,7 @@ export default App
 
 ## NoticeBar
 
-### Prop
+### Props
 
 | Property     | Description | Type          | Default |
 | ---------- | --------------------------- | ------------- | ------ |
@@ -273,7 +273,7 @@ export default App
 | onClose      | Emitted when NoticeBar is closed        | `(event: any) => void` |
 | onClickItem  | Emitted when the currently displayed information is clicked when scrolling multiple pieces of data vertically | `(event: any, value: any) => void` |
 
-### Prop（direction=vertical）
+### Props（direction=vertical）
 
 | Property    | Description | Type     | Default          |
 |--------------|-----------------------|----------|------------------|
