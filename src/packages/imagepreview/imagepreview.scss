@@ -12,12 +12,6 @@
     background-color: transparent;
   }
 
-  &-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
   &-index {
     position: fixed;
     z-index: 2002;
@@ -50,11 +44,47 @@
     background: transparent !important;
     display: flex;
     align-items: center;
+    width: 100%;
   }
 
   &-swiper {
     swiper {
       width: 100%;
+      height: 100%;
+    }
+
+    swiper-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+      .nut-image-preview-box {
+        width: 100%;
+      }
+
+      .nut-video {
+        video {
+          object-fit: contain;
+        }
+      }
+    }
+
+    .nut-swiper-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+      .nut-image-preview-box {
+        width: 100%;
+      }
+
+      .nut-video {
+        video {
+          object-fit: contain;
+        }
+      }
     }
   }
 }

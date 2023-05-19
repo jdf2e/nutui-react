@@ -5,9 +5,12 @@ import React, {
   useRef,
   TouchEvent,
 } from 'react'
+import Taro from '@tarojs/taro'
+import { Image as TaroImage, Video as TaroVideo } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
 import Swiper from '@/packages/swiper/index.taro'
 import SwiperItem from '@/packages/swiperitem/index.taro'
+
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 
@@ -189,12 +192,10 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   }, [visible])
 
   useEffect(() => {
-    console.log('defaultvalue', defaultValue, maxNo, innerNo)
     setInnerNo(defaultValue || 1)
   }, [defaultValue])
 
   useEffect(() => {
-    console.log('innerNo', innerNo)
     setActive(innerNo as number)
   }, [innerNo])
 
@@ -251,6 +252,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           autoPlay={autoPlay}
           className="nut-imagepreview-swiper"
           loop
+          height="100%"
           style={{
             display: showPop ? 'block' : 'none',
             '--nutui-indicator-color': indicatorColor,
@@ -260,19 +262,40 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           defaultValue={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
           indicator={indicator}
         >
-          {images && images.length > 0
-            ? images.map((item, index) => {
+          {(videos && videos.length > 0
+            ? videos.map((item, index) => {
                 return (
                   <SwiperItem key={index}>
-                    <img
-                      src={item.src}
-                      alt=""
-                      className="nut-imagepreview-img"
+                    <TaroVideo
+                      src={item.source.src}
+                      controls={item.options.controls}
+                      autoplay={false}
+                      loop={false}
+                      muted={item.options.muted}
                     />
                   </SwiperItem>
                 )
               })
-            : []}
+            : []
+          ).concat(
+            images && images.length > 0
+              ? images.map((item, index) => {
+                  return (
+                    <SwiperItem key={index}>
+                      {Taro.getEnv() === 'WEB' ? (
+                        <img src={item.src} alt="" />
+                      ) : (
+                        <TaroImage
+                          src={item.src}
+                          mode="aspectFit"
+                          style={{ width: '100%', height: '100%' }}
+                        />
+                      )}
+                    </SwiperItem>
+                  )
+                })
+              : []
+          )}
         </Swiper>
       </div>
       <div className="nut-imagepreview-index">

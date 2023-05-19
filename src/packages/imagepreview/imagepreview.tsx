@@ -6,6 +6,7 @@ import React, {
   TouchEvent,
 } from 'react'
 import Popup from '@/packages/popup'
+import Image from '@/packages/image'
 import Video from '@/packages/video'
 import Swiper from '@/packages/swiper'
 import SwiperItem from '@/packages/swiperitem'
@@ -278,11 +279,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
               ? images.map((item, index) => {
                   return (
                     <SwiperItem key={index}>
-                      <img
-                        src={item.src}
-                        alt=""
-                        className="nut-imagepreview-img"
-                      />
+                      <Image src={item.src} />
                     </SwiperItem>
                   )
                 })

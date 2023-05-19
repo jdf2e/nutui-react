@@ -134,6 +134,7 @@ const ImagePreviewDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <ImagePreview
+          autoPlay={0}
           images={images}
           visible={showPreview0}
           onClose={hideFn0}
@@ -200,6 +201,7 @@ const ImagePreviewDemo = () => {
         <Cell title={translated.withPagination} onClick={showFn3} />
         <h2>{translated.withVideos}</h2>
         <ImagePreview
+          autoPlay={0}
           images={images}
           videos={videos}
           visible={showPreview4}

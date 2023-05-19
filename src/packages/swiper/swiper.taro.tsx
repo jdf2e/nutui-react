@@ -18,7 +18,7 @@ import { Indicator } from '../indicator/indicator.taro'
 
 export interface SwiperProps extends Omit<TaroSwiperProps, 'ref'> {
   width: number
-  height: number
+  height: number | string
   direction: 'horizontal' | 'vertical'
   indicator: ReactNode
   autoPlay: boolean

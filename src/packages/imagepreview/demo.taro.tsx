@@ -29,6 +29,29 @@ const images = [
   },
 ]
 
+const videos = [
+  {
+    source: {
+      src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+      type: 'video/mp4',
+    },
+    options: {
+      muted: true,
+      controls: true,
+    },
+  },
+  {
+    source: {
+      src: 'https://storage.jd.com/about/big-final.mp4?Expires=3730193075&AccessKey=3LoYX1dQWa6ZXzQl&Signature=ViMFjz%2BOkBxS%2FY1rjtUVqbopbJI%3D',
+      type: 'video/mp4',
+    },
+    options: {
+      muted: true,
+      controls: true,
+    },
+  },
+]
+
 const ImagePreviewDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -177,6 +200,15 @@ const ImagePreviewDemo = () => {
           onClose={hideFn3}
         />
         <Cell title={translated.withPagination} onClick={showFn3} />
+        <h2>{translated.withVideos}</h2>
+        <ImagePreview
+          autoPlay={false}
+          images={images}
+          videos={videos}
+          visible={showPreview4}
+          onClose={hideFn4}
+        />
+        <Cell title={translated.withVideos} onClick={showFn4} />
       </div>
     </>
   )
