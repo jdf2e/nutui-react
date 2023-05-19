@@ -64,16 +64,16 @@ export const Progress: FunctionComponent<
   }, [percent])
 
   useEffect(() => {
+    let timer: any = null
     if (delay) {
       setDispalyPercent(0)
-      const timer = setTimeout(() => {
+      timer = setTimeout(() => {
         setDispalyPercent(percent)
       }, delay)
-      return () => {
-        clearTimeout(timer)
-      }
     }
-    setDispalyPercent(percent)
+    return () => {
+      timer && clearTimeout(timer)
+    }
   }, [])
 
   return (
