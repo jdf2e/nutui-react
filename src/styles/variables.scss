@@ -1059,6 +1059,7 @@ $steps-dot-icon-border: var(
   --nutui-steps-dot-icon-border,
   2px solid $primary-text-color
 ) !default;
+$steps-dot-head-margin: var(--nutui-steps-dot-head-margin, 7px 0 0 0) !default;
 
 // dialog（✅）
 $dialog-width: var(--nutui-dialog-width, 296px) !default;

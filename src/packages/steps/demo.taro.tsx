@@ -57,6 +57,9 @@ const customTheme2 = {
 }
 
 const customTheme3 = {
+  nutuiStepsDotHeadMargin: '0 0 12px 0',
+  nutuiBrandColorEnd: '#fff',
+  nutuiStepsDotIconBorder: '0',
   nutuiStepsBaseIconWidth: '6px',
   nutuiStepsBaseIconHeight: '6px',
   nutuiStepsBaseLineBackground: `#ddd`,
@@ -302,8 +305,8 @@ const StepsDemo = () => {
         <h2>{translated['0533b456']}</h2>
         <div className="steps-wrapper">
           <ConfigProvider theme={customTheme3}>
-            <Steps value={2}>
-              <Step value={1} title={translated.f28461bb} icon=" ">
+            <Steps dot value={2}>
+              <Step value={1} title={translated.f28461bb}>
                 1
               </Step>
               <Step

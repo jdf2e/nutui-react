@@ -272,7 +272,62 @@ const App = () => {
 export default App;
 ```
 :::
+### Custom Step Bar: Dot + icon
 
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Steps, Step, Button, ConfigProvider } from '@nutui/nutui-react';
+import { People } from '@nutui/icons-react';
+
+const customTheme3 = {
+  nutuiStepsDotHeadMargin: '0 0 12px 0',
+  nutuiBrandColorEnd: '#fff',
+  nutuiStepsDotIconBorder: '0',
+  nutuiStepsBaseIconWidth: '6px',
+  nutuiStepsBaseIconHeight: '6px',
+  nutuiStepsBaseLineBackground: `#ddd`,
+  nutuiStepsFinishIconBgColor: 'black',
+  nutuiStepsFinishIconColor: 'black',
+  nutuiStepsProcessIconBgColor: 'white',
+  nutuiStepsWaitIconBgColor: '#ddd',
+  nutuiStepsBaseLineWidth: '45px',
+  nutuiStepsBaseLineHeight: '1px',
+  nutuiStepsFinishLineBackground: `black`,
+}
+
+const App = () => {
+  return (
+    <>
+      <ConfigProvider theme={customTheme3}>
+        <Steps dot value={2}>
+          <Step value={1} title="Completed">
+            1
+          </Step>
+          <Step
+            value={2}
+            title="Progressing"
+            icon={
+              <People
+                width={20}
+                height={20}
+                style={{ color: 'red', flex: 'none' }}
+              />
+            }
+          >
+            2
+          </Step>
+          <Step value={3} title="Wating">
+            3
+          </Step>
+        </Steps>
+      </ConfigProvider>
+    </>
+  )
+}
+export default App;
+```
+:::
 ### Custom icon
 
 :::demo
@@ -477,3 +532,4 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-steps-dot-icon-width | Width of dot progress bar dots | `6px` |
 | --nutui-steps-dot-icon-height | Height of dot icon progress bar | `6px` |
 | --nutui-steps-dot-icon-border | Dot progress bar dot border | ` 2px solid $primary-text-color` |
+| --nutui-steps-dot-head-margin | Dot progress bar dot margin |  `  7px 0 0 0` |

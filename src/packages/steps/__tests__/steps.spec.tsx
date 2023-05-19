@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { Location2, People, Service } from '@nutui/icons-react'
 import { Steps } from '../steps'
 import Step from '../../step'
 import Button from '../../button'
@@ -42,24 +43,24 @@ test('should render horizontal class when props direction is to be horizontal', 
       <Step
         value={1}
         title="已完成"
-        content="您的订单已经打包完成，商品已发出"
-        icon="service"
+        description="您的订单已经打包完成，商品已发出"
+        icon={<Service />}
       >
         1
       </Step>
       <Step
         value={2}
         title="进行中"
-        content="您的订单正在配送途中"
-        icon="people"
+        description="您的订单正在配送途中"
+        icon={<People />}
       >
         2
       </Step>
       <Step
         value={3}
         title="未开始"
-        content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
-        icon="location2"
+        description="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
+        icon={<Location2 />}
       >
         3
       </Step>
@@ -68,16 +69,12 @@ test('should render horizontal class when props direction is to be horizontal', 
   expect(container.querySelectorAll('.nut-step-title')[0].innerHTML).toBe(
     '已完成'
   )
-  expect(container.querySelectorAll('.nut-step-content')[1].innerHTML).toBe(
+  expect(container.querySelectorAll('.nut-step-description')[1].innerHTML).toBe(
     '您的订单正在配送途中'
   )
-  expect(container.querySelectorAll('.nutui-iconfont')[2]).toHaveClass(
-    'nut-icon-location2'
+  expect(container.querySelectorAll('.nut-icon')[2]).toHaveClass(
+    'nut-icon-Location2'
   )
-  expect(container.querySelectorAll('.nutui-iconfont')[2]).toHaveStyle({
-    color: 'blue',
-    width: '14px',
-  })
 })
 
 test('should props value changes when trigger click', () => {
@@ -96,17 +93,17 @@ test('should props value changes when trigger click', () => {
           <Step
             value={1}
             title="已完成"
-            content="您的订单已经打包完成，商品已发出"
+            description="您的订单已经打包完成，商品已发出"
           >
             1
           </Step>
-          <Step value={2} title="进行中" content="您的订单正在配送途中">
+          <Step value={2} title="进行中" description="您的订单正在配送途中">
             2
           </Step>
           <Step
             value={3}
             title="未开始"
-            content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
+            description="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
           >
             3
           </Step>
@@ -132,16 +129,20 @@ test('should emited click when step trigger', () => {
   const handleClickStep = jest.fn()
   const { getByText } = render(
     <Steps value={1} onStepClick={handleClickStep}>
-      <Step value={1} title="已完成" content="您的订单已经打包完成，商品已发出">
+      <Step
+        value={1}
+        title="已完成"
+        description="您的订单已经打包完成，商品已发出"
+      >
         1
       </Step>
-      <Step value={2} title="进行中" content="您的订单正在配送途中">
+      <Step value={2} title="进行中" description="您的订单正在配送途中">
         2
       </Step>
       <Step
         value={3}
         title="未开始"
-        content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
+        description="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
       >
         3
       </Step>
@@ -154,10 +155,14 @@ test('should emited click when step trigger', () => {
 test('render step slot', () => {
   const { container, queryByText } = render(
     <Steps value={1}>
-      <Step value={1} title="已完成" content="您的订单已经打包完成，商品已发出">
+      <Step
+        value={1}
+        title="已完成"
+        description="您的订单已经打包完成，商品已发出"
+      >
         1
       </Step>
-      <Step value={2} title="进行中" content="您的订单正在配送途中">
+      <Step value={2} title="进行中" description="您的订单正在配送途中">
         2
       </Step>
       <Step

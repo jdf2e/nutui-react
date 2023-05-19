@@ -128,8 +128,9 @@
 
 .nut-steps-dot {
   .nut-step-head {
-    margin-top: 7px;
-    margin-bottom: 0;
+    margin: $steps-dot-head-margin;
+    //margin-top: 7px;
+    //margin-bottom: 0;
   }
 
   .nut-step-line {

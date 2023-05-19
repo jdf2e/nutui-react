@@ -47,7 +47,7 @@ export const Step: FunctionComponent<
   )
 
   const renderIconClass = () => {
-    if (!dot && icon) {
+    if (icon) {
       return `${classPrefix}-icon is-icon`
     }
     if (!dot && !icon) {

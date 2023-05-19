@@ -271,7 +271,62 @@ const App = () => {
 export default App;
 ```
 :::
+### 自定义步骤条：点状 + icon
 
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Steps, Step, Button, ConfigProvider } from '@nutui/nutui-react';
+import { People } from '@nutui/icons-react';
+
+const customTheme3 = {
+  nutuiStepsDotHeadMargin: '0 0 12px 0',
+  nutuiBrandColorEnd: '#fff',
+  nutuiStepsDotIconBorder: '0',
+  nutuiStepsBaseIconWidth: '6px',
+  nutuiStepsBaseIconHeight: '6px',
+  nutuiStepsBaseLineBackground: `#ddd`,
+  nutuiStepsFinishIconBgColor: 'black',
+  nutuiStepsFinishIconColor: 'black',
+  nutuiStepsProcessIconBgColor: 'white',
+  nutuiStepsWaitIconBgColor: '#ddd',
+  nutuiStepsBaseLineWidth: '45px',
+  nutuiStepsBaseLineHeight: '1px',
+  nutuiStepsFinishLineBackground: `black`,
+}
+
+const App = () => {
+  return (
+    <>
+      <ConfigProvider theme={customTheme3}>
+        <Steps dot value={2}>
+          <Step value={1} title="已完成">
+            1
+          </Step>
+          <Step
+            value={2}
+            title="进行中"
+            icon={
+              <People
+                width={20}
+                height={20}
+                style={{ color: 'red', flex: 'none' }}
+              />
+            }
+          >
+            2
+          </Step>
+          <Step value={3} title="未开始">
+            3
+          </Step>
+        </Steps>
+      </ConfigProvider>
+    </>
+  )
+}
+export default App;
+```
+:::
 ### 自定义图标
 
 :::demo
@@ -477,3 +532,4 @@ export default App;
 | --nutui-steps-dot-icon-width | 点状进度条点的宽度 | `  6px` |
 | --nutui-steps-dot-icon-height | 点状进度条点的高度 | `  6px` |
 | --nutui-steps-dot-icon-border | 点状进度条点的边框 |  `  2px solid $primary-text-color` |
+| --nutui-steps-dot-head-margin | 点状进度条点的外边距 |  `  7px 0 0 0` |
