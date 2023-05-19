@@ -1,48 +1,3 @@
-.nut-theme-dark {
-  .nut-step {
-    &.nut-step-wait {
-      .nut-step-main {
-        .nut-step-title {
-          color: $dark2;
-        }
-
-        .nut-step-content {
-          color: $dark2;
-        }
-      }
-
-      .nut-step-head {
-        color: $dark2;
-      }
-
-      .nut-step-icon.is-text {
-        background-color: $dark5;
-      }
-
-      .nut-step-icon.is-icon {
-        background-color: $dark5;
-
-        .nut-icon {
-          color: $dark2;
-        }
-      }
-
-      .nut-step-content {
-        color: $dark2;
-      }
-    }
-  }
-
-  .nut-step-process,
-  .nut-step-finish {
-    .nut-step-main {
-      .nut-step-content {
-        color: $dark1;
-      }
-    }
-  }
-}
-
 .nut-step {
   flex-grow: 0;
   flex-shrink: 0;
@@ -63,7 +18,6 @@
     position: absolute;
     top: calc($steps-base-icon-height / 2);
     left: calc(50% + (100% - $steps-base-line-width) / 2);
-    // right: calc(0 - $steps-base-line-width / 2);
     height: $steps-base-line-height;
     width: $steps-base-line-width;
     background: $steps-base-line-background;
@@ -107,7 +61,7 @@
     padding-right: 10%;
     text-align: center;
 
-    .nut-step-content {
+    .nut-step-description {
       color: $title-color;
     }
   }
@@ -119,9 +73,9 @@
     color: $steps-base-title-color;
   }
 
-  &-content {
+  &-description {
     display: block;
-    font-size: $steps-base-content-font-size;
+    font-size: $steps-base-description-font-size;
     color: $steps-base-content-color;
   }
 
@@ -143,10 +97,6 @@
       font-size: $steps-process-title-font-size;
       font-weight: $steps-process-title-font-weight;
     }
-
-    .nut-step-content {
-      // color: $steps-process-title-color;
-    }
   }
 
   &.nut-step-wait {
@@ -154,7 +104,7 @@
       color: $steps-wait-title-color;
     }
 
-    .nut-step-content {
+    .nut-step-description {
       color: $steps-wait-content-color;
     }
   }
@@ -173,17 +123,14 @@
     .nut-step-title {
       color: $steps-finish-title-color;
     }
-
-    .nut-step-content {
-      // color: $steps-finish-content-color;
-    }
   }
 }
 
 .nut-steps-dot {
   .nut-step-head {
-    margin-top: 7px;
-    margin-bottom: 0;
+    margin: $steps-dot-head-margin;
+    //margin-top: 7px;
+    //margin-bottom: 0;
   }
 
   .nut-step-line {
@@ -203,7 +150,7 @@
       color: $steps-wait-title-color;
     }
 
-    .nut-step-content {
+    .nut-step-description {
       color: $steps-wait-content-color;
     }
   }
@@ -266,7 +213,7 @@
     padding-left: 6%;
     text-align: left;
 
-    .nut-step-content {
+    .nut-step-description {
       color: $steps-base-content-color;
     }
   }

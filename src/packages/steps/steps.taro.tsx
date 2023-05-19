@@ -1,21 +1,19 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { DataContext } from './UserContext'
-import bem from '@/utils/bem'
+import { DataContext } from './context'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface StepsProps {
-  current: number
+export interface StepsProps extends BasicComponent {
+  value: number
   direction: string
-  progressDot: boolean
-  className: string
-  style: React.CSSProperties
-  clickStep: (index: number) => void
-  onClickStep: (index: number) => void
+  dot: boolean
+  onStepClick: (index: number) => void
 }
 const defaultProps = {
-  current: 0,
+  ...ComponentDefaults,
+  value: 0,
   direction: 'horizontal',
-  progressDot: false,
+  dot: false,
 } as StepsProps
 
 export const Steps: FunctionComponent<
@@ -24,12 +22,11 @@ export const Steps: FunctionComponent<
   const propSteps = { ...defaultProps, ...props }
   const {
     children,
-    current,
+    value,
     direction,
     className,
-    progressDot,
-    clickStep,
-    onClickStep,
+    dot,
+    onStepClick,
     ...restProps
   } = propSteps
 
@@ -37,14 +34,14 @@ export const Steps: FunctionComponent<
     propSteps,
   }
 
-  const b = bem('steps')
+  const classPrefix = `nut-steps`
   const classes = classNames(
     {
-      [`${b('')}-${direction}`]: true,
-      [`${b('')}-dot`]: !!props.progressDot,
+      [`${classPrefix}-${direction}`]: true,
+      [`${classPrefix}-dot`]: !!props.dot,
     },
     className,
-    b('')
+    classPrefix
   )
   return (
     <DataContext.Provider value={parentSteps}>
