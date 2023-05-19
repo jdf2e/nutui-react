@@ -1,23 +1,6 @@
-.nut-theme-dark {
-  .nut-noticebar {
-    .wrap {
-      .content {
-        a {
-          color: $noticebar-color;
-        }
-      }
-    }
-    .nut-noticebar-vertical {
-      .horseLamp_list {
-        .custom-item {
-          color: $noticebar-color;
-        }
-      }
-    }
-  }
-}
 .nut-noticebar {
   width: 100%;
+
   .nut-noticebar-page {
     display: flex;
     padding: $noticebar-box-padding;
@@ -27,11 +10,14 @@
     align-items: center;
     background: $noticebar-background;
     color: $noticebar-color;
+
     &.wrapable {
       height: auto;
-      padding: $noticebar-wrapable-padding;
+      padding: $noticebar-wrap-padding;
+
       .wrap {
         height: auto;
+
         .content {
           position: relative;
           white-space: normal;
@@ -44,12 +30,14 @@
       position: relative;
       padding-right: 40px;
     }
+
     .left-icon {
       height: $noticebar-left-icon-width;
       min-width: $noticebar-left-icon-width;
       margin: $noticebar-lefticon-margin;
       background-size: 100% 100%;
     }
+
     .right-icon {
       display: flex;
       align-items: center;
@@ -57,6 +45,7 @@
       width: $noticebar-right-icon-width;
       margin: $noticebar-righticon-margin;
     }
+
     .wrap {
       display: flex;
       flex: 1;
@@ -65,9 +54,11 @@
       overflow: hidden;
       position: relative;
     }
+
     .content {
       position: absolute;
       white-space: nowrap;
+
       &.nut-ellipsis {
         max-width: 100%;
         white-space: nowrap;
@@ -75,13 +66,16 @@
         text-overflow: ellipsis;
       }
     }
+
     // 只跑一次
     .play {
       animation: nut-notice-bar-play linear both running;
     }
+
     .play-infinite {
       animation: nut-notice-bar-play-infinite linear infinite both running;
     }
+
     .play-vertical {
       animation: nut-notice-bar-play-vertical linear infinite both running;
     }
@@ -98,6 +92,7 @@
       transform: translate3d(-100%, 0, 0);
     }
   }
+
   // 垂直方向的滚动
   @keyframes nut-notice-bar-play-vertical {
     to {
@@ -116,6 +111,7 @@
     padding: $noticebar-box-padding;
     background: $noticebar-background;
     color: $noticebar-color;
+
     .left-icon {
       height: $noticebar-left-icon-width;
       min-width: $noticebar-left-icon-width;
@@ -124,11 +120,13 @@
       display: flex;
       align-self: center;
     }
+
     .horseLamp_list {
       margin: 0;
       padding: 0;
       display: block;
       flex: 1;
+
       .horseLamp_list_item {
         display: flex;
         align-items: center;
@@ -136,6 +134,7 @@
         width: 100%;
       }
     }
+
     .nut-noticebar__inner {
       display: flex;
       height: 100%;

@@ -1,17 +1,17 @@
 # Steps 步骤条
 
-### 介绍
+## 介绍
 
 拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。
 
-### 安装
+## 安装
 
 ```ts
 // react
 import { Steps } from '@nutui/nutui-react';
 
 ```
-
+## 代码演示
 ### 基本用法
 
 :::demo
@@ -38,10 +38,10 @@ const App = () => {
   }
   return (
     <>
-      <Steps current={stepState.current1}>
-        <Step activeIndex={1} title="步骤一">1</Step>
-        <Step activeIndex={2} title="步骤二">2</Step>
-        <Step activeIndex={3} title="步骤三">3</Step>
+      <Steps value={stepState.current1}>
+        <Step value={1} title="步骤一">1</Step>
+        <Step value={2} title="步骤二">2</Step>
+        <Step value={3} title="步骤三">3</Step>
       </Steps>
       <div className="steps-button" style={{ textAlign: 'center' }}>
         <Button type="danger" onClick={() => handleStep('current1')}>
@@ -82,13 +82,13 @@ const App = () => {
   return (
     <>
       <Steps
-        current={stepState.current1}
-        progressDot
-        onClickStep={handleClickStep}
+        value={stepState.current1}
+        dot
+        onStepClick={handleClickStep}
       >
-        <Step activeIndex={1}>1</Step>
-        <Step activeIndex={2}>2</Step>
-        <Step activeIndex={3}>3</Step>
+        <Step value={1}>1</Step>
+        <Step value={2}>2</Step>
+        <Step value={3}>3</Step>
       </Steps>
       <div className="steps-button" style={{ textAlign: 'center' }}>
         <Button type="danger" onClick={() => handleStep('current1')}>
@@ -128,12 +128,12 @@ const App = () => {
   }
   return (
     <>
-      <Steps current={stepState.current2}>
-        <Step activeIndex={1} title="步骤一" content="步骤描述">
+      <Steps value={stepState.current2}>
+        <Step value={1} title="步骤一" description="步骤描述">
           1
         </Step>
-        <Step activeIndex={2} title="步骤二" content="步骤描述" />
-        <Step activeIndex={3} title="步骤三" content="步骤描述" />
+        <Step value={2} title="步骤二" description="步骤描述" />
+        <Step value={3} title="步骤三" description="步骤描述" />
       </Steps>
       <div className="steps-button" style={{ marginTop: '10px', textAlign: 'center' }}>
         <Button type="danger" onClick={() => handleStep('current2')}>
@@ -186,23 +186,23 @@ const App = () => {
   return (
     <>
       <ConfigProvider theme={customTheme}>
-        <Steps current={stepState.current2}>
+        <Steps value={stepState.current2}>
           <Step
-            activeIndex={1}
+            value={1}
             title={translated['606ae3f5']}
-            content={translated.db1b4ed6}
+            description={translated.db1b4ed6}
           >
             1
           </Step>
           <Step
-            activeIndex={2}
+            value={2}
             title={translated['3c6225eb']}
-            content={translated.db1b4ed6}
+            description={translated.db1b4ed6}
           />
           <Step
-            activeIndex={3}
+            value={3}
             title={translated['979df428']}
-            content={translated.db1b4ed6}
+            description={translated.db1b4ed6}
           />
         </Steps>
       </ConfigProvider>
@@ -251,13 +251,13 @@ const App = () => {
     <>
       <ConfigProvider theme={customTheme2}>
         <Steps
-          current={stepState.current1}
-          progressDot
-          onClickStep={handleClickStep}
+          value={stepState.current1}
+          dot
+          onStepClick={handleClickStep}
         >
-          <Step activeIndex={1}>1</Step>
-          <Step activeIndex={2}>2</Step>
-          <Step activeIndex={3}>3</Step>
+          <Step value={1}>1</Step>
+          <Step value={2}>2</Step>
+          <Step value={3}>3</Step>
         </Steps>
       </ConfigProvider>
       <div className="steps-button" style={{ marginTop: '10px', textAlign: 'center' }}>
@@ -271,13 +271,69 @@ const App = () => {
 export default App;
 ```
 :::
+### 自定义步骤条：点状 + icon
 
+:::demo
+```tsx
+import React, { useState } from "react";
+import { Steps, Step, Button, ConfigProvider } from '@nutui/nutui-react';
+import { People } from '@nutui/icons-react';
+
+const customTheme3 = {
+  nutuiStepsDotHeadMargin: '0 0 12px 0',
+  nutuiBrandColorEnd: '#fff',
+  nutuiStepsDotIconBorder: '0',
+  nutuiStepsBaseIconWidth: '6px',
+  nutuiStepsBaseIconHeight: '6px',
+  nutuiStepsBaseLineBackground: `#ddd`,
+  nutuiStepsFinishIconBgColor: 'black',
+  nutuiStepsFinishIconColor: 'black',
+  nutuiStepsProcessIconBgColor: 'white',
+  nutuiStepsWaitIconBgColor: '#ddd',
+  nutuiStepsBaseLineWidth: '45px',
+  nutuiStepsBaseLineHeight: '1px',
+  nutuiStepsFinishLineBackground: `black`,
+}
+
+const App = () => {
+  return (
+    <>
+      <ConfigProvider theme={customTheme3}>
+        <Steps dot value={2}>
+          <Step value={1} title="已完成">
+            1
+          </Step>
+          <Step
+            value={2}
+            title="进行中"
+            icon={
+              <People
+                width={20}
+                height={20}
+                style={{ color: 'red', flex: 'none' }}
+              />
+            }
+          >
+            2
+          </Step>
+          <Step value={3} title="未开始">
+            3
+          </Step>
+        </Steps>
+      </ConfigProvider>
+    </>
+  )
+}
+export default App;
+```
+:::
 ### 自定义图标
 
 :::demo
 ```tsx
 import React, { useState } from "react";
 import { Steps, Step, Button } from '@nutui/nutui-react';
+import { Service, People, Location2 } from '@nutui/icons-react';
 
 const App = () => {
   const [stepState, setStepState] = useState<any>({
@@ -298,14 +354,14 @@ const App = () => {
   }
   return (
     <>
-      <Steps current={1}>
-        <Step activeIndex={1} title="已完成" icon="service">
+      <Steps value={1}>
+        <Step value={1} title="已完成" icon={<Service />}>
           1
         </Step>
-        <Step activeIndex={2} title="进行中" icon="people">
+        <Step value={2} title="进行中" icon={<People />}>
           2
         </Step>
-        <Step activeIndex={3} title="未开始" icon="location2">
+        <Step value={3} title="未开始" icon={<Location2 />}>
           3
         </Step>
       </Steps>
@@ -341,17 +397,17 @@ const App = () => {
   }
   return (
     <div className="steps-wrapper" style={{ height: '300px', padding: '15px 30px' }}>
-      <Steps direction="vertical" current={2}>
-        <Step activeIndex={1} title="已完成" content="您的订单已经打包完成，商品已发出">
+      <Steps direction="vertical" value={2}>
+        <Step value={1} title="已完成" description="您的订单已经打包完成，商品已发出">
           1
         </Step>
-        <Step activeIndex={2} title="进行中" content="您的订单正在配送途中">
+        <Step value={2} title="进行中" description="您的订单正在配送途中">
           2
         </Step>
         <Step
-          activeIndex={3}
+          value={3}
           title="未开始"
-          content="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
+          description="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
         >
           3
         </Step>
@@ -388,17 +444,17 @@ const App = () => {
   }
   return (
     <div className="steps-wrapper" style={{ height: '300px', padding: '15px 30px' }}>
-      <Steps direction="vertical" progressDot current={2}>
-        <Step activeIndex={1} title="已完成" content="您的订单已经打包完成，商品已发出">
+      <Steps direction="vertical" dot value={2}>
+        <Step value={1} title="已完成" description="您的订单已经打包完成，商品已发出">
           1
         </Step>
-        <Step activeIndex={2} title="进行中" content="您的订单正在配送途中">
+        <Step value={2} title="进行中" description="您的订单正在配送途中">
           2
         </Step>
         <Step
-          activeIndex={3}
+          value={3}
           title="未开始"
-          renderContent={() => (
+          description={() => (
             <>
               <p>收货地址为：</p>
               <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
@@ -416,37 +472,27 @@ export default App;
 :::
 
 
-## API
+## Steps
 
 ### Props
 
-#### Steps
-
-| 参数                   | 说明                                                        | 类型           | 默认值      |
+| 属性                   | 说明                                                        | 类型           | 默认值      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
 | direction	             | 	显示方向，`horizontal`,`vertical`  | `string`        | `horizontal`  | 
-| current	               | 	当前所在的步骤           | `number`        | `0`      |
-| progressDot            |  点状步骤条     | `boolean` | `false`       |
+| value	               | 	当前所在的步骤           | `number`        | `0`      |
+| dot            |  点状步骤条     | `boolean` | `false`       |
 
+## Step
+### Props
 
-#### nut-steps events
-
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| clickStep  | 点击步骤的标题或图标时触发 | `index: number` |
-| onClickStep   | 点击步骤的标题或图标时触发 | `index: number` |
-
-#### Step
-
-| 参数           | 说明                | 类型                | 默认值 |
+| 属性           | 说明                | 类型                | 默认值 |
 | ---------------- |-------------------|-------------------|-----|
 | title            | 流程步骤的标题           | `string`          | ''  |
-| content          | 流程步骤的描述性文字        | `string`          | ''  |
+| description          | 流程步骤的描述性文字        | `string`          | ''  |
 | icon          | 图标(来自Icon组件的name属性)       | `ReactNode`       | ''  |
-| iconColor`v2.0.0废弃`          | 图标颜色       | `string`          | -   |
-| size`v2.0.0废弃`          | 图标尺寸大小(来自Icon组件的size属性)       | `string`              | ''  |
-| activeIndex          | 流程步骤的索引           | `number`          | 0   |
-| renderContent         | 流程步骤的描述性文字的html结构 | `React.ReactNode` | -   |
+| value          | 流程步骤的索引           | `number`          | 0   |
+| description         | 流程步骤的描述性文字的html结构 | `React.ReactNode` | -   |
+| onStepClick   | 点击步骤的标题或图标时触发 | `(index: number) => void` | - |
 
 ## 主题定制
 
@@ -454,42 +500,36 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-steps-base-icon-width | ` 25px` |
-| --nutui-steps-base-icon-height | ` 25px` |
-| --nutui-steps-base-icon-line-height | `  25px` |
-| --nutui-steps-base-icon-margin-bottom`v1.4.8` | ` 12px`|
-| --nutui-steps-base-icon-font-size | `  13px` |
-| --nutui-steps-base-line-width`v1.4.8` | ` 100%`|
-| --nutui-steps-base-line-color`废弃 v1.4.8` | ` #909ca4` |
-| --nutui-steps-base-line-background`v1.4.8` | ` #909ca4`|
-| --nutui-steps-base-title-font-size | `  14px` |
-| --nutui-steps-base-title-color | `  $title-color` |
-| --nutui-steps-base-title-margin-bottom | `  10px` |
-| --nutui-steps-base-content-font-size | `  14px` |
-| --nutui-steps-base-content-color | `  $title-color2` |
-| --nutui-steps-wait-icon-bg-color | `  #959fb1` |
-| --nutui-steps-wait-icon-color | ` $white` |
-| --nutui-steps-wait-head-color | ` #909ca4` |
-| --nutui-steps-wait-head-border-color | `  #909ca4` |
-| --nutui-steps-wait-title-color`v1.4.8` | `  $title-color2` |
-| --nutui-steps-wait-content-color | `  $title-color2` |
-| --nutui-steps-process-icon-bg-color`v1.4.8` | `  $primary-color` |
-| --nutui-steps-process-icon-color`v1.4.8` | ` $white` |
-| --nutui-steps-process-head-color | ` $primary-color` |
-| --nutui-steps-process-head-border-color | ` $primary-color` |
-| --nutui-steps-process-title-color | `  $primary-color` |
-| --nutui-steps-process-title-font-size`v1.4.8` | ` 14px`|
-| --nutui-steps-process-title-font-weight`v1.4.8` | ` 400`|
-| --nutui-steps-process-content-color`v1.4.8` | `  $primary-color` |
-| --nutui-steps-finish-icon-bg-color`v1.4.8` | `  $primary-text-color` |
-| --nutui-steps-finish-icon-color`v1.4.8` | ` $primary-color` |
-| --nutui-steps-finish-head-color | ` $primary-color` |
-| --nutui-steps-finish-head-border-color | ` $primary-color` |
-| --nutui-steps-finish-title-color | `  $primary-color` |
-| --nutui-steps-finish-content-color`v1.4.8` | `  $title-color2` |
-| --nutui-steps-finish-line-background | `  $primary-color` |
-| --nutui-steps-dot-icon-width`v1.4.8` | `  6px` |
-| --nutui-steps-dot-icon-height`v1.4.8` | `  6px` |
-| --nutui-steps-dot-icon-border`v1.4.8` | `  2px solid $primary-text-color` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-steps-base-icon-width | icon 容器的宽度 | ` 25px` |
+| --nutui-steps-base-icon-height | icon 容器的高度 | ` 25px` |
+| --nutui-steps-base-icon-line-height |  icon 容器的行高 |`  25px` |
+| --nutui-steps-base-icon-margin-bottom | icon 容器的底部外边距 | ` 12px`|
+| --nutui-steps-base-icon-font-size | icon 容器的字号 | `  13px` |
+| --nutui-steps-base-line-width | 分割线的宽度 | ` 100%`|
+| --nutui-steps-base-line-background | 分割线的背景色 | ` #909ca4`|
+| --nutui-steps-base-title-font-size | 标题的字号 | `  14px` |
+| --nutui-steps-base-title-color | 标题的颜色 |`  $title-color` |
+| --nutui-steps-base-title-margin-bottom | 标题底部外边距 | `  10px` |
+| --nutui-steps-base-description-font-size | 描述文案的字号 | `  14px` |
+| --nutui-steps-base-description-color | 描述文案的字体颜色 |`  $title-color2` |
+| --nutui-steps-wait-icon-bg-color | 等待状态的 icon 容器的背景色 | `  #959fb1` |
+| --nutui-steps-wait-icon-color | 等待状态的 icon 容器的字体颜色 | ` $white` |
+| --nutui-steps-wait-title-color | 等待状态标题字体颜色 | `  $title-color2` |
+| --nutui-steps-wait-description-color | 等待状态描述字体颜色 | `  $title-color2` |
+| --nutui-steps-process-icon-bg-color | 进行中icon容器背景色 | `  $primary-color` |
+| --nutui-steps-process-icon-color | 进行中icon容器字体颜色 | ` $white` |
+| --nutui-steps-process-title-color | 进行中标题字体颜色 | `  $primary-color` |
+| --nutui-steps-process-title-font-size | 进行中标题字号 | ` 14px`|
+| --nutui-steps-process-title-font-weight | 进行中标题字重 | ` 400`|
+| --nutui-steps-process-description-color | 进行中描述字体颜色 | `  $primary-color` |
+| --nutui-steps-finish-icon-bg-color | 完成状态icon 容器的背景色 | `  $primary-text-color` |
+| --nutui-steps-finish-icon-color | 完成状态icon 容器的字体颜色 | ` $primary-color` |
+| --nutui-steps-finish-title-color | 完成状态标题的字体颜色 | `  $primary-color` |
+| --nutui-steps-finish-description-color | 完成状态描述的字体颜色 | `  $title-color2` |
+| --nutui-steps-finish-line-background | 完成状态分割线的颜色 | `  $primary-color` |
+| --nutui-steps-dot-icon-width | 点状进度条点的宽度 | `  6px` |
+| --nutui-steps-dot-icon-height | 点状进度条点的高度 | `  6px` |
+| --nutui-steps-dot-icon-border | 点状进度条点的边框 |  `  2px solid $primary-text-color` |
+| --nutui-steps-dot-head-margin | 点状进度条点的外边距 |  `  7px 0 0 0` |

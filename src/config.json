@@ -710,7 +710,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "NoticeBar",
           "type": "component",
           "cName": "公告栏",
@@ -993,7 +993,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Steps",
           "type": "component",
           "cName": "步骤条",
