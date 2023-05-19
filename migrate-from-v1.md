@@ -351,6 +351,17 @@
 - 移除 textType、icon，通过 children 传入自定义 ReactNode，不再区分类型
 #### Skeleton
 #### Steps
+- current 重命名为 value
+- onClickStep 重命名为 onStepClick
+- progressDot 重命名为 dot
+#### Step
+- 移除 iconColor，可通过 icon 属性传入自定义 icon 或借助 CSS Variables 修改 icon 颜色
+- 移除 size，可通过 icon 属性传入自定义 icon 或借助 CSS Variables 修改 icon 大小
+- 移除 renderContent ，可通过 description 实现
+- title 类型修改为 ReactNode
+- content 重命名为 description，类型改为 ReactNode
+- icon 类型修改为 ReactNode
+- activeIndex 重命名为 value
 #### Swiper
 - h5
   - 移除 paginationColor，通过 indicator 的 CSS 变量控制

@@ -1,89 +1,72 @@
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
-import { DataContext } from '@/packages/steps/UserContext'
-import bem from '@/utils/bem'
-
+import { DataContext } from '@/packages/steps/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface StepProps extends BasicComponent {
-  title: string
-  content: string
-  activeIndex: number
+  title: ReactNode
+  description: ReactNode
+  value: number
   icon: ReactNode
-  className: string
-  style: React.CSSProperties
-  renderContent: () => React.ReactNode
 }
 
 const defaultProps = {
   ...ComponentDefaults,
   title: '',
-  content: '',
-  activeIndex: 0,
-  icon: '',
+  description: '',
+  value: 0,
+  icon: null,
 } as StepProps
 export const Step: FunctionComponent<
-  Partial<StepProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<StepProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
-  const {
-    children,
-    title,
-    content,
-    activeIndex,
-    icon,
-    className,
-    renderContent,
-    ...restProps
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  const { children, title, description, value, icon, className, ...restProps } =
+    {
+      ...defaultProps,
+      ...props,
+    }
   const parent: any = useContext(DataContext)
 
-  const dot = parent.propSteps.progressDot
+  const dot = parent.propSteps.dot
   const getCurrentStatus = () => {
-    const index = activeIndex
-    if (index < +parent.propSteps.current) return 'finish'
-    return index === +parent.propSteps.current ? 'process' : 'wait'
+    const index = value
+    if (index < +parent.propSteps.value) return 'finish'
+    return index === +parent.propSteps.value ? 'process' : 'wait'
   }
   const handleClickStep = () => {
-    parent.propSteps?.onClickStep && parent.propSteps?.onClickStep(activeIndex)
-    parent.propSteps?.clickStep && parent.propSteps?.clickStep(activeIndex)
+    parent.propSteps?.onStepClick && parent.propSteps?.onStepClick(value)
   }
 
-  const b = bem('step')
+  const classPrefix = `nut-step`
   const classes = classNames(
     {
-      [`${b('')}-${getCurrentStatus()}`]: true,
+      [`${classPrefix}-${getCurrentStatus()}`]: true,
     },
     className,
-    b('')
+    classPrefix
   )
 
   const renderIconClass = () => {
-    if (!dot && icon) {
-      return 'nut-step-icon is-icon'
+    if (icon) {
+      return `${classPrefix}-icon is-icon`
     }
     if (!dot && !icon) {
-      return 'nut-step-icon is-text'
+      return `${classPrefix}-icon is-text`
     }
-    return 'nut-step-icon'
+    return `${classPrefix}-icon`
   }
   return (
     <div className={classes} {...restProps} onClick={handleClickStep}>
       <div className="nut-step-head">
         <div className="nut-step-line" />
         <div className={renderIconClass()}>
-          {React.isValidElement(icon)
-            ? icon
-            : !dot && <span className="nut-step-inner">{activeIndex}</span>}
+          {icon || (!dot && <span className="nut-step-inner">{value}</span>)}
         </div>
       </div>
       <div className="nut-step-main">
         <span className="nut-step-title">{title}</span>
-        {content && <span className="nut-step-content">{content}</span>}
-        {renderContent && (
-          <span className="nut-step-content">{renderContent()}</span>
+        {description && (
+          <span className="nut-step-description">{description}</span>
         )}
       </div>
     </div>
