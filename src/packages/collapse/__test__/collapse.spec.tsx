@@ -10,7 +10,7 @@ import { CollapseItem } from '../../collapseitem/collapseitem'
 test('should match snapshot', () => {
   const { asFragment } = render(
     <>
-      <Collapse activeKey={['1', '2']} expandIcon={<DownArrow />}>
+      <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
         <CollapseItem title="标题1" name="1">
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
@@ -29,7 +29,7 @@ test('should match snapshot', () => {
 test('prop icon iconSize iconColor', () => {
   const { getByTestId, container } = render(
     <>
-      <Collapse activeKey={['1', '2']} expandIcon={<DownArrow />}>
+      <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
         <CollapseItem title="标题1" name="1">
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
@@ -53,10 +53,10 @@ test('prop icon iconSize iconColor', () => {
   )
 })
 
-test('prop activeKey', () => {
+test('prop activeName', () => {
   const { container } = render(
     <>
-      <Collapse activeKey={['1', '2']} expandIcon={<DownArrow />}>
+      <Collapse activeName={['1', '2']} expandIcon={<DownArrow />}>
         <CollapseItem title="标题1" name="1">
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
@@ -80,7 +80,7 @@ test('prop activeKey', () => {
 test('prop accordion', () => {
   const { getByTestId, container } = render(
     <>
-      <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />}>
+      <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
         <CollapseItem
           title="标题1"
           name="1"
@@ -113,7 +113,7 @@ test('prop rotate', () => {
   const { getByTestId, container } = render(
     <>
       <Collapse
-        activeKey={['1']}
+        activeName={['1']}
         accordion
         expandIcon={<ArrowRight2 />}
         rotate={180}
@@ -146,7 +146,7 @@ test('prop rotate', () => {
 test('prop title extra titleIconColor titleIconSize titleIconPosition', () => {
   const { getByTestId, container } = render(
     <>
-      <Collapse activeKey={['1']} accordion expandIcon="arrow-right2">
+      <Collapse activeName={['1']} accordion expandIcon="arrow-right2">
         <CollapseItem
           title="标题1"
           extra="副标题"

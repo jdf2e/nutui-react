@@ -8,6 +8,7 @@ import React, {
   useMemo,
 } from 'react'
 import classNames from 'classnames'
+import Taro from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import CollapseContext from '../collapse/collapse.context.taro'
 
@@ -58,6 +59,8 @@ export const CollapseItem: FunctionComponent<
   const [iconStyle, setIconStyle] = useState({
     transform: 'translateY(-50%)',
   })
+  const [refRandomId] = useState(() => Math.random().toString(36).slice(-8))
+  const target = `#nut-collapse__content-${refRandomId}`
 
   const expanded = useMemo(() => {
     if (context) {
@@ -70,36 +73,68 @@ export const CollapseItem: FunctionComponent<
     context.updateValue(name)
   }
 
-  const onTransitionEnd = () => {
-    if (expanded) {
-      if (wrapperRef.current) {
-        wrapperRef.current.style.height = ''
-      }
-    }
+  const [timer, setTimer] = useState<any>(null)
+  const [currentHeight, setCurrentHeight] = useState<string>('auto')
+  const inAnimation = useRef(false)
+  const [wrapperHeight, setWrapperHeight] = useState(() =>
+    expanded ? 'auto' : '0px'
+  )
+
+  const getRect = (selector: string) => {
+    return new Promise((resolve) => {
+      Taro.createSelectorQuery()
+        .select(selector)
+        .boundingClientRect()
+        .exec((rect = []) => {
+          resolve(rect[0])
+        })
+    })
   }
 
-  const getOffsetHeight = () => {
-    const height = contentRef.current?.offsetHeight
-    return height ? `${height}px` : ''
-  }
+  useEffect(() => {
+    setTimeout(() => {
+      getRect(target).then((res: any) => {
+        if (res?.height) {
+          setCurrentHeight(`${res.height}px`)
+        }
+      })
+    }, 200)
+  }, [children])
+
+  useEffect(() => {
+    setTimeout(() => {
+      getRect(target).then((res: any) => {
+        if (res?.height) {
+          setCurrentHeight(`${res.height}px`)
+        }
+      })
+    }, 100)
+  }, [])
 
   const toggle = () => {
-    const start = expanded ? '0px' : getOffsetHeight()
-    if (wrapperRef.current) {
-      wrapperRef.current.style.height = start
+    // 连续切换状态时，清除打开的后续操作
+    if (timer) {
+      clearTimeout(timer)
+      setTimer(timer)
     }
+    const start = expanded ? '0px' : currentHeight
+    const end = expanded ? currentHeight : '0px'
+    inAnimation.current = true
+    setWrapperHeight(start)
     const newIconStyle = expanded
       ? { transform: `translateY(-50%) rotate(${rotate}deg)` }
       : { transform: 'translateY(-50%)' }
     setIconStyle(newIconStyle)
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const end = expanded ? getOffsetHeight() : '0px'
-        if (wrapperRef.current) {
-          wrapperRef.current.style.height = end
-        }
-      })
-    })
+    setTimeout(() => {
+      setWrapperHeight(end)
+      inAnimation.current = false
+      if (expanded) {
+        const timer = setTimeout(() => {
+          setWrapperHeight('auto')
+        }, 300)
+        setTimer(timer)
+      }
+    }, 100)
   }
 
   useEffect(toggle, [expanded])
@@ -114,16 +149,23 @@ export const CollapseItem: FunctionComponent<
         <div className={`${classPrefix}__extra`}>{extra}</div>
         <div className={`${classPrefix}__icon-box`}>
           <div className={`${classPrefix}__icon`} style={iconStyle}>
-            {context.expandIcon || expandIcon}
+            {expandIcon || context.expandIcon}
           </div>
         </div>
       </div>
       <div
         className={`${classPrefix}__content`}
-        onTransitionEnd={onTransitionEnd}
         ref={wrapperRef}
+        style={{
+          willChange: 'height',
+          height: wrapperHeight,
+        }}
       >
-        <div ref={contentRef} className={`${classPrefix}__content-text`}>
+        <div
+          ref={contentRef}
+          className={`${classPrefix}__content-text`}
+          id={`nut-collapse__content-${refRandomId}`}
+        >
           {children}
         </div>
       </div>

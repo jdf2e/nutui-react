@@ -125,7 +125,10 @@ const CollapseDemo = () => {
   const [currIndex, setCurrIndex] = useState('2')
   const [domData, setDomData] = useState(oldDate)
 
-  const [activeKey, setActiveKey] = useState<Array<string> | string>(['1', '2'])
+  const [activeName, setActiveKey] = useState<Array<string> | string>([
+    '1',
+    '2',
+  ])
 
   useEffect(() => {
     setDomData(oldDate)
@@ -145,7 +148,7 @@ const CollapseDemo = () => {
         <h2>{translated.header1}</h2>
         <Collapse
           className="test"
-          defaultActiveKey={['1', '2']}
+          defaultActiveName={['1', '2']}
           expandIcon={<DownArrow />}
         >
           <Collapse.Item title={translated.title1} name="1">
@@ -160,8 +163,8 @@ const CollapseDemo = () => {
         </Collapse>
         <h2>{translated.controll}</h2>
         <Collapse
-          activeKey={activeKey}
-          onChange={(activeKey, name, isOpen) => setActiveKey(activeKey)}
+          activeName={activeName}
+          onChange={(activeName, name, isOpen) => setActiveKey(activeName)}
         >
           <Collapse.Item title={translated.title1} name="1">
             {translated.content1}
@@ -174,7 +177,7 @@ const CollapseDemo = () => {
           </Collapse.Item>
         </Collapse>
         <h2>{translated.header2}</h2>
-        <Collapse defaultActiveKey={['1', '2']}>
+        <Collapse defaultActiveName={['1', '2']}>
           <Collapse.Item title={translated.title1} name="1">
             {translated.content1}
           </Collapse.Item>
@@ -186,7 +189,11 @@ const CollapseDemo = () => {
           </Collapse.Item>
         </Collapse>
         <h2>{translated.header3}</h2>
-        <Collapse defaultActiveKey={['1']} accordion expandIcon={<DownArrow />}>
+        <Collapse
+          defaultActiveName={['1']}
+          accordion
+          expandIcon={<DownArrow />}
+        >
           <Collapse.Item
             title={translated.title1}
             name="1"
@@ -203,7 +210,7 @@ const CollapseDemo = () => {
         </Collapse>
         <h2>{translated.header4}</h2>
         <Collapse
-          defaultActiveKey={['1']}
+          defaultActiveName={['1']}
           accordion
           expandIcon={<DownArrow />}
           rotate={90}
@@ -227,7 +234,7 @@ const CollapseDemo = () => {
           </Collapse.Item>
         </Collapse>
         <h2>{translated.header5}</h2>
-        <Collapse defaultActiveKey={['1']} accordion expandIcon={<Star />}>
+        <Collapse defaultActiveName={['1']} accordion expandIcon={<Star />}>
           <Collapse.Item
             title={
               <div
@@ -267,7 +274,7 @@ const CollapseDemo = () => {
         </Collapse>
 
         <h2>{translated.header6}</h2>
-        <Collapse defaultActiveKey={currIndex} accordion>
+        <Collapse defaultActiveName={currIndex} accordion>
           {domData.map((item: itemObj, index: number) => {
             return (
               <Collapse.Item title={item.title} name={item.name} key={index}>

@@ -114,7 +114,7 @@ export const CollapseItem: FunctionComponent<
         <div className={`${classPrefix}__extra`}>{extra}</div>
         <div className={`${classPrefix}__icon-box`}>
           <div className={`${classPrefix}__icon`} style={iconStyle}>
-            {context.expandIcon || expandIcon}
+            {expandIcon || context.expandIcon}
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@ import { DownArrow } from '@nutui/icons-react';
 const App = () => {
   return (
     <>
-    <Collapse activeKey={['1', '2']} expandIcon={<DownArrow />}>
+    <Collapse defaultActiveName={['1', '2']} expandIcon={<DownArrow />}>
       <Collapse.Item title="标题1" name="1">
         京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
       </Collapse.Item>
@@ -54,11 +54,11 @@ import { Collapse} from '@nutui/nutui-react'
 import { DownArrow } from '@nutui/icons-react'
 
 const App = () => {
-  const changeEnv = (isOpen: boolean, name: string) => {
-    console.log(isOpen, name)
+  const handleChange = (activeName, name, status) => {
+    console.log(activeName, name, status)
   }
   return (  
-  <Collapse activeKey={['1', '2']} change={(isOpen, name) => changeEnv(isOpen, name)}>
+  <Collapse defaultActiveName={['1', '2']} onChange={handleChange}>
     <Collapse.Item title="标题1" name="1">
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
     </Collapse.Item>
@@ -87,7 +87,7 @@ import { DownArrow } from '@nutui/icons-react'
 
 const App = () => {
   return (  
-  <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />}>
+  <Collapse defaultActiveName={['1']} accordion expandIcon={<DownArrow />}>
     <Collapse.Item title="标题1" name="1" extra="文本内容">
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
     </Collapse.Item>
@@ -116,7 +116,7 @@ import { DownArrow, Checked, HeartFill } from '@nutui/icons-react'
 
 const App = () => {
   return (  
-  <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />} rotate={90}>
+  <Collapse defaultActiveName={['1']} accordion expandIcon={<DownArrow />} rotate={90}>
     <Collapse.Item title="标题1" name="1" expandIcon={<Checked />}>
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
     </Collapse.Item>
@@ -145,7 +145,7 @@ import { DownArrow, Checked, HeartFill } from '@nutui/icons-react'
 
 const App = () => {
   return (  
-    <Collapse activeKey={['1']} accordion expandIcon={<DownArrow />}>
+    <Collapse defaultActiveName={['1']} accordion expandIcon={<DownArrow />}>
       <Collapse.Item
         title={
           <div
@@ -247,7 +247,7 @@ const App = () => {
   }
   return (
     <>
-      <Collapse activeKey={currIndex} accordion>
+      <Collapse defaultActiveName={currIndex} accordion>
         {domData.map((item, index) => {
           return (
             <Collapse.Item title={item.title} name={item.name} key={index}>
@@ -276,8 +276,8 @@ const App = () => {
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| defaultActiveKey | 默认展开面板的 name，非受控 | `Array<string> \| string` | - |
-| activeKey | 当前展开面板的 name，受控 | `Array<string> \| string` | - |
+| defaultActiveName | 默认展开面板的 name，非受控 | `Array<string> \| string` | - |
+| activeName | 当前展开面板的 name，受控 | `Array<string> \| string` | - |
 | accordion | 是否开启手风琴模式 | `boolean` | `false` |
 | rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | `string \| number` | `180` |
 | expandIcon | 自定义展开图标 | `ReactNode` | - |
@@ -292,7 +292,7 @@ const App = () => {
 | title | 标题栏左侧内容 | `ReactNode` | - |
 | disabled | 标题栏是否禁用 | `boolean` | `false` |
 | extra | 标题栏副标题 | `ReactNode` | - |
-| onChange | 切换面板时触发 | `(activeKey, name, status) => void` | - |
+| onChange | 切换面板时触发 | `(activeName, name, status) => void` | - |
 
 ## 主题定制
 
