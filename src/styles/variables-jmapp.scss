@@ -1252,10 +1252,7 @@ $noticebar-right-icon-width: var(
   16px
 ) !default;
 $noticebar-box-padding: var(--nutui-noticebar-box-padding, 0 16px) !default;
-$noticebar-wrapable-padding: var(
-  --nutui-noticebar-wrapable-padding,
-  16px
-) !default;
+$noticebar-wrap-padding: var(--nutui-noticebar-wrapable-padding, 16px) !default;
 $noticebar-lefticon-margin: var(
   --nutui-noticebar-lefticon-margin,
   0px 10px
