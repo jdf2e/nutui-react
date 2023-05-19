@@ -211,6 +211,26 @@ export default App;
 ```
 :::
 
+### Delay Time
+
+:::demo
+
+```jsx
+import  React from "react";
+import { Progress, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Cell align="center">
+      <Progress percent={30} lazy delay={500} />
+    </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
 ## Progress
 
 ### Props
@@ -223,6 +243,8 @@ export default App;
 | strokeWidth | Stroke width | `string` | - |
 | showText | Whether to show text | `boolean` | `false` |
 | animated | Whether to show animation | `boolean` | `false` |
+| lazy | Show animation when intersect | `boolean` | `false` |
+| delay | Delay time to set percent, ms | `number` | `0` |
 
 ## Theming
 
