@@ -11,19 +11,19 @@ export interface ToastProps {
   icon: string | null
   iconSize: string
   msg: string | React.ReactNode
-  bottom: number | string
+  // bottom: number | string
   duration: number
   position?: 'top' | 'center' | 'bottom'
-  center: boolean
+  // center: boolean
   type: string
   title: string
   closeOnOverlayClick: boolean
-  customClass: string
+  contentClassName: string
   size: string | number
-  textAlignCenter: boolean
-  bgColor: string
-  cover: boolean
-  coverColor: string
+  // textAlignCenter: boolean
+  // bgColor: string
+  // cover: boolean
+  // coverColor: string
   // closeOnClickOverlay: boolean
   visible: boolean
   onClose: () => void
@@ -35,19 +35,19 @@ const defaultProps = {
   icon: null,
   iconSize: '20',
   msg: '',
-  bottom: '30px', // center为false时生效，距离底部位置
+  // bottom: '30px', // center为false时生效，距离底部位置
   duration: 0, // 时长,duration为0则一直展示
   position: 'center',
-  center: true, // toast是否居中展示
+  // center: true, // toast是否居中展示
   type: 'text',
   title: '',
   closeOnOverlayClick: true,
-  customClass: '', // 自定义样式名
+  contentClassName: '', // 自定义样式名
   size: 'base', // 设置字体大小，默认base,可选large\small\base
-  textAlignCenter: true, // 文字是否居中显示,true为居中，false为left
-  bgColor: 'rgba(0, 0, 0, .8)',
-  cover: false, // 是否展示透明遮罩层
-  coverColor: 'rgba(0, 0, 0, 0)', // 遮罩颜色设定
+  // textAlignCenter: true, // 文字是否居中显示,true为居中，false为left
+  // bgColor: 'rgba(0, 0, 0, .8)',
+  // cover: false, // 是否展示透明遮罩层
+  // coverColor: 'rgba(0, 0, 0, 0)', // 遮罩颜色设定
   // closeOnClickOverlay: false, // 是否点击遮罩可关闭
   visible: false,
   onClose: () => {}, // 未实现
@@ -66,18 +66,18 @@ export const Toast: FunctionComponent<
     icon,
     iconSize,
     msg,
-    bottom,
+    // bottom,
     duration,
-    center,
+    // center,
     type,
     title,
     closeOnOverlayClick,
-    customClass,
+    contentClassName,
     size,
-    textAlignCenter,
-    bgColor,
-    cover,
-    coverColor,
+    // textAlignCenter,
+    // bgColor,
+    // cover,
+    // coverColor,
     // closeOnClickOverlay,
     visible,
     onClose,
@@ -144,9 +144,9 @@ export const Toast: FunctionComponent<
   const classes = classNames({
     // 'nut-toast-center': center,
     'nut-toast-has-icon': icon,
-    'nut-toast-cover': cover,
+    // 'nut-toast-cover': cover,
     // 'nut-toast-loading': type === 'loading',
-    [`${customClass}`]: true,
+    // [`${customClass}`]: true,
     [`nut-toast-${size}`]: true,
   })
   return (
@@ -178,7 +178,9 @@ export const Toast: FunctionComponent<
             // }}
           >
             <div
-              className={`${toastBem('inner')} nut-toast-${position}`}
+              className={`${toastBem(
+                'inner'
+              )} nut-toast-${position} ${contentClassName}`}
               style={contentStyle}
             >
               {hasIcon() ? (
