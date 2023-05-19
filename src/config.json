@@ -319,7 +319,7 @@
           "author": "dsj"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "TabbarItem",
           "sort": 2,
           "cName": "标签栏子组件",
@@ -331,7 +331,7 @@
           "author": "dsj"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "TabPane",
           "sort": 2,
           "cName": "选项卡切换子组件",
@@ -359,7 +359,7 @@
       "enName": "dentry",
       "packages": [
         {
-          "version": "0.1.0",
+          "version": "1.0.0",
           "name": "Address",
           "type": "component",
           "cName": "地址",
@@ -370,7 +370,7 @@
           "author": "yangxiaolu"
         },
         {
-          "version": "0.1.0",
+          "version": "1.0.0",
           "name": "Calendar",
           "type": "component",
           "cName": "日历",
@@ -381,6 +381,7 @@
           "author": "szg2008"
         },
         {
+          "version": "1.0.0",
           "name": "CalendarItem",
           "type": "component",
           "cName": "日历",
@@ -391,7 +392,7 @@
           "author": "szg2008"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Cascader",
           "type": "component",
           "cName": "级联选择器",
@@ -424,6 +425,7 @@
           "author": "oasis"
         },
         {
+          "version": "1.0.0",
           "name": "DatePicker",
           "type": "component",
           "cName": "日期选择器",
@@ -535,7 +537,7 @@
           "author": "oasis"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "RadioGroup",
           "type": "component",
           "cName": "单选按钮组",
@@ -546,7 +548,7 @@
           "author": "oasis"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Range",
           "type": "component",
           "cName": "区间选择器",
@@ -579,7 +581,7 @@
           "author": "Ymm0008"
         },
         {
-          "version": "0.1.0",
+          "version": "1.0.0",
           "name": "ShortPassword",
           "type": "component",
           "cName": "短密码",
@@ -590,7 +592,7 @@
           "author": "Drjingfubo"
         },
         {
-          "version": "0.1.0",
+          "version": "1.0.0",
           "name": "Signature",
           "type": "component",
           "cName": "签名",
@@ -601,7 +603,7 @@
           "author": "songsong"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Switch",
           "type": "component",
           "cName": "开关",
@@ -641,7 +643,7 @@
       "enName": "feedback",
       "packages": [
         {
-          "version": "0.1.0",
+          "version": "1.0.0",
           "name": "ActionSheet",
           "type": "component",
           "cName": "动作面板",
@@ -663,7 +665,7 @@
           "author": "lzz"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Dialog",
           "type": "component",
           "cName": "对话框",
@@ -696,7 +698,7 @@
           "author": "liukun"
         },
         {
-          "version": "0.1.0",
+          "version": "1.0.0",
           "name": "Infiniteloading",
           "type": "component",
           "tarodoc": true,
@@ -708,7 +710,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "NoticeBar",
           "type": "component",
           "cName": "公告栏",
@@ -731,7 +733,7 @@
           "author": "vickyYE"
         },
         {
-          "version": "0.1.0",
+          "version": "1.0.0",
           "name": "Popover",
           "type": "component",
           "cName": "气泡弹出框",
@@ -763,7 +765,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Swipe",
           "type": "component",
           "cName": "滑动手势",
@@ -785,7 +787,7 @@
           "author": "szg2008"
         },
         {
-          "version": "0.1.0",
+          "version": "1.0.0",
           "name": "Toast",
           "type": "component",
           "tarodoc": true,
@@ -814,7 +816,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "0.1.0",
+          "version": "1.0.0",
           "name": "AnimatingNumbers",
           "type": "component",
           "cName": "数字动画",
@@ -836,7 +838,7 @@
           "author": "libin"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Avatar",
           "type": "component",
           "cName": "头像",
@@ -847,7 +849,7 @@
           "author": "junjun"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "AvatarGroup",
           "type": "component",
           "cName": "头像组合子组件",
@@ -869,7 +871,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "0.1.0",
+          "version": "1.0.0",
           "name": "Collapse",
           "type": "component",
           "cName": "折叠面板",
@@ -880,7 +882,7 @@
           "author": "zhenyulei"
         },
         {
-          "version": "0.1.0",
+          "version": "1.0.0",
           "name": "CollapseItem",
           "type": "component",
           "cName": "折叠面板子组件",
@@ -913,7 +915,7 @@
           "author": "vickyYE"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "ImagePreview",
           "type": "component",
           "cName": "图片预览",
@@ -1013,7 +1015,7 @@
           "author": "liukun"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "SwiperItem",
           "type": "component",
           "cName": "轮播子组件",
@@ -1064,7 +1066,7 @@
       "enName": "business",
       "packages": [
         {
-          "version": "0.1.0",
+          "version": "1.0.0",
           "name": "Barrage",
           "type": "component",
           "cName": "弹幕",

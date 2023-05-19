@@ -19,15 +19,15 @@
     flex-direction: column;
   }
 
-  &__pagination {
+  &__indicator {
     display: flex;
     position: absolute;
     left: 50%;
-    bottom: $swiper-pagination-bottom;
+    bottom: $swiper-indicator-bottom;
     transform: translateX(-50%);
   }
 
-  &__pagination-vertical {
+  &__indicator-vertical {
     top: 50%;
     left: 12px;
     bottom: auto;

@@ -406,7 +406,7 @@ export const Swiper = React.forwardRef<
   }
 
   useEffect(() => {
-    swiperRef.current.activePagination = (active + childCount) % childCount
+    swiperRef.current.activeIndicator = (active + childCount) % childCount
   }, [active])
 
   const init = (active: number = +propSwiper.defaultValue) => {
@@ -492,8 +492,8 @@ export const Swiper = React.forwardRef<
       return (
         <div
           className={classNames({
-            [`${classPrefix}__pagination`]: true,
-            [`${classPrefix}__pagination-vertical`]: isVertical,
+            [`${classPrefix}__indicator`]: true,
+            [`${classPrefix}__indicator-vertical`]: isVertical,
           })}
         >
           <Indicator

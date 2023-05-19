@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import { SwiperItem as TaroSwiperItem } from '@tarojs/components'
 import { BasicComponent } from '@/utils/typings'
 
 export interface SwiperItemProps extends BasicComponent {
