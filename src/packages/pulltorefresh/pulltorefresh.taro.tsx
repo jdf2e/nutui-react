@@ -54,9 +54,9 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
 
   const headHeight = props.headHeight
   const threshold = props.threshold
-  const heightRef = useRef(0)
   const pullingRef = useRef(false)
   const [status, setStatus] = useState<PullStatus>('pulling')
+  const [height, setHeight] = useState(0)
 
   const renderStatusText = () => {
     if (props.renderText) {
@@ -82,29 +82,31 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     touch.move(e as any)
     if (touch.isVertical()) {
       pullingRef.current = true
-      heightRef.current = Math.max(
-        rubberbandIfOutOfBounds(touch.deltaY, 0, 0, headHeight * 5, 0.5),
-        0
+      setHeight(
+        Math.max(
+          rubberbandIfOutOfBounds(touch.deltaY, 0, 0, headHeight * 5, 0.5),
+          0
+        )
       )
-      setStatus(heightRef.current > threshold ? 'canRelease' : 'pulling')
+      setStatus(height > threshold ? 'canRelease' : 'pulling')
     }
   }
 
   async function doRefresh() {
-    heightRef.current = headHeight
+    setHeight(headHeight)
     setStatus('refreshing')
     try {
       await props.onRefresh()
       setStatus('complete')
     } catch (e) {
-      heightRef.current = 0
+      setHeight(0)
       setStatus('pulling')
       throw e
     }
     if (props.completeDelay > 0) {
       await sleep(props.completeDelay)
     }
-    heightRef.current = 0
+    setHeight(0)
     setStatus('pulling')
   }
 
@@ -113,12 +115,14 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     if (status === 'canRelease') {
       doRefresh()
     } else {
-      heightRef.current = 0
+      // 时序问题，可能会先setStatus再修改heightRef，导致下拉不到位后组件不会自动回弹
+      setHeight(0)
+      // heightRef.current = 0
       setStatus('pulling')
     }
   }
   const springStyles = {
-    height: `${heightRef.current}px`,
+    height: `${height}px`,
     ...(!pullingRef.current ? { transition: 'height .3s ease' } : {}),
   }
   return (
