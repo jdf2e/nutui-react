@@ -184,3 +184,4 @@ export default App
 | --nutui-toast-inner-padding | `24px 30px` |
 | --nutui-toast-inner-bg-color | `$gray7` |
 | --nutui-toast-inner-border-radius | `12px` |
+| --nutui-overlay-bg-color | `rgba(0, 0, 0, 0)` |
