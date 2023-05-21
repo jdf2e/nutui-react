@@ -98,17 +98,15 @@ const ToastDemo = () => {
   const toastBottom = (msg: string) => {
     Toast.show({
       content: msg,
-      maskStyle: { '--nutui-toast-inner-top': '90%' },
     })
   }
   const iconToast = (msg: string) => {
     Toast.show({
       content: msg,
-      maskStyle: {
-        background: 'rgba(0,0,0,0.7)',
+      style: {
+        '--nutui-overlay-bg-color': 'rgba(0,0,0,0.7)',
       },
       closeOnOverlayClick: true,
-      maskClickable: false,
       onClose: () => {
         console.log('closeToast')
       },
@@ -167,7 +165,11 @@ const ToastDemo = () => {
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
-            Toast.show({ content: translated.toastAll, duration: 0 })
+            Toast.show({
+              content: translated.toastAll,
+              duration: 0,
+              closeOnOverlayClick: true,
+            })
           }}
         />
         <Button

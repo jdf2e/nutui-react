@@ -3,11 +3,11 @@ import classNames from 'classnames'
 import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
 import bem from '@/utils/bem'
 import Overlay from '@/packages/overlay/index'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface ToastProps {
+export interface ToastProps extends BasicComponent {
   id?: string
   maskClassName?: string
-  maskStyle?: React.CSSProperties
   contentClassName?: string
   contentStyle?: React.CSSProperties
   icon: string | null
@@ -24,8 +24,8 @@ export interface ToastProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   id: '',
-  maskStyle: {},
   icon: null,
   iconSize: '20',
   msg: '',
@@ -35,7 +35,6 @@ const defaultProps = {
   title: '',
   closeOnOverlayClick: true,
   contentClassName: '', // 内容自定义样式名
-  maskClassName: '', // mask自定义样式名
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   visible: false,
   onClose: () => {}, // 未实现
@@ -49,7 +48,6 @@ export const Toast: FunctionComponent<
     children,
     id,
     position,
-    maskStyle,
     contentStyle,
     icon,
     iconSize,
@@ -61,7 +59,8 @@ export const Toast: FunctionComponent<
     contentClassName,
     size,
     visible,
-    maskClassName,
+    className,
+    style,
     onClose,
     ...rest
   } = { ...defaultProps, ...props }
@@ -132,11 +131,8 @@ export const Toast: FunctionComponent<
       {openState ? (
         <Overlay
           visible={openState}
-          style={{
-            // '--nutui-overlay-bg-color': 'rgba(0,0,0,0)',
-            ...maskStyle,
-          }}
-          className={`nut-toast-overlay-default ${maskClassName}`}
+          style={style}
+          className={`${toastBem('overlay-default')} ${className}`}
           closeOnOverlayClick={closeOnOverlayClick}
           onClick={() => {
             clickCover()

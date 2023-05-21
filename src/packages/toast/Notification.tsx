@@ -4,19 +4,17 @@ import bem from '@/utils/bem'
 import { render, unmount } from '@/utils/render'
 import Overlay from '@/packages/overlay/index'
 import { Check, Loading, Failure, Issue } from '@nutui/icons-react'
+import { BasicComponent } from '@/utils/typings'
 
-export interface NotificationProps {
+export interface NotificationProps extends BasicComponent {
   id?: string
   icon: 'success' | 'fail' | 'loading' | 'warn' | React.ReactNode
   content: string | React.ReactNode
   duration: number
   position?: 'top' | 'center' | 'bottom'
   title: string
-  maskClickable: boolean
   size: string | number
   closeOnOverlayClick: boolean
-  maskClassName?: string
-  maskStyle?: React.CSSProperties
   contentClassName?: string
   contentStyle?: React.CSSProperties
   onClose: () => void
@@ -66,7 +64,6 @@ export default class Notification extends React.PureComponent<NotificationProps>
 
   renderIcon() {
     const { icon } = this.props
-    console.log('icon', icon)
     if (typeof icon === 'string') {
       const toastBem = bem('toast')
       let iconNode = null
@@ -105,9 +102,9 @@ export default class Notification extends React.PureComponent<NotificationProps>
       content,
       position,
       size,
-      maskClickable,
-      maskStyle,
-      maskClassName,
+      closeOnOverlayClick,
+      style,
+      className,
       contentClassName,
       contentStyle,
     } = this.props
@@ -121,15 +118,13 @@ export default class Notification extends React.PureComponent<NotificationProps>
       <>
         <Overlay
           visible={true}
-          style={{
-            // '--nutui-overlay-bg-color': 'rgba(0,0,0,0)',
-            pointerEvents: maskClickable ? 'none' : 'auto',
-            ...maskStyle,
-          }}
-          className={`nut-toast-overlay-default ${maskClassName}`}
+          style={style}
+          className={`${toastBem('overlay-default')} ${className}`}
           onClick={() => {
+            console.log('onclick')
             this.clickCover()
           }}
+          closeOnOverlayClick={closeOnOverlayClick}
         >
           <div className={`${toastBem()} ${classes}`} id={`toast-${id}`}>
             <div

@@ -1,30 +1,28 @@
 import * as React from 'react'
 import Notification, { NotificationProps } from './Notification'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 let messageInstance: any = null
-export interface ToastProps {
+export interface ToastProps extends BasicComponent {
   id?: string
   duration?: number
   position?: 'top' | 'bottom' | 'center'
   title?: string
-  maskClickable?: boolean
   closeOnOverlayClick?: boolean
   size?: string | number
   icon?: 'success' | 'fail' | 'loading' | 'warn' | React.ReactNode
   content?: React.ReactNode
   onClose?: () => void
-  maskClassName?: string
-  maskStyle?: React.CSSProperties
   contentClassName?: string
   contentStyle?: React.CSSProperties
 }
 
 const options: ToastProps = {
+  ...ComponentDefaults,
   id: '',
   duration: 2, // 时长,duration为0则一直展示
   position: 'center',
   title: '',
-  maskClickable: true, // 是否允许背景点击
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
   onClose: () => {},
@@ -77,7 +75,7 @@ function show(option: ToastProps | string) {
 }
 
 function config(
-  config: Pick<ToastProps, 'duration' | 'position' | 'maskClickable'>
+  config: Pick<ToastProps, 'duration' | 'position' | 'closeOnOverlayClick'>
 ) {
   if (config.duration !== undefined) {
     options.duration = config.duration
@@ -85,8 +83,8 @@ function config(
   if (config.position !== undefined) {
     options.position = config.position
   }
-  if (config.maskClickable !== undefined) {
-    options.maskClickable = config.maskClickable
+  if (config.closeOnOverlayClick !== undefined) {
+    options.closeOnOverlayClick = config.closeOnOverlayClick
   }
 }
 
