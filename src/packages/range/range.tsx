@@ -93,12 +93,17 @@ export const Range: FunctionComponent<
   const [marksList, SetMarksList] = useState([])
 
   useEffect(() => {
-    if (typeof modelValue === 'number') {
-      if (!range && (modelValue < min || modelValue > max)) {
+    if (!range && typeof modelValue === 'number') {
+      if (modelValue < min || modelValue > max) {
         SetInitValue(0)
         Toast.text(`${modelValue} ${locale.range.rangeText}`)
         return
       }
+    } else if (
+      range &&
+      Array.isArray(modelValue) &&
+      [0, 1].every((i) => typeof modelValue[i] === 'number')
+    ) {
       SetInitValue(modelValue)
     }
   }, [modelValue])
@@ -362,8 +367,11 @@ export const Range: FunctionComponent<
   }
 
   const curValue = (idx?: number) => {
+    console.log('idx:', idx)
+    console.log('initValue:', initValue)
     const modelVal = initValue || initValue === 0 ? initValue : modelValue
     const value = typeof idx === 'number' ? modelVal[idx] : modelVal
+    console.log('idx:value', value)
     return value
   }
 

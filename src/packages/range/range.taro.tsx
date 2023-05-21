@@ -100,12 +100,17 @@ export const Range: FunctionComponent<
   }
 
   useEffect(() => {
-    if (typeof modelValue === 'number') {
-      if (!range && (modelValue < min || modelValue > max)) {
+    if (!range && typeof modelValue === 'number') {
+      if (modelValue < min || modelValue > max) {
         SetInitValue(0)
         toastShow(`${modelValue} ${locale.range.rangeText}`)
         return
       }
+    } else if (
+      range &&
+      Array.isArray(modelValue) &&
+      [0, 1].every((i) => typeof modelValue[i] === 'number')
+    ) {
       SetInitValue(modelValue)
     }
   }, [modelValue])
