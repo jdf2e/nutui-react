@@ -98,6 +98,9 @@ const ToastDemo = () => {
   const toastBottom = (msg: string) => {
     Toast.show({
       content: msg,
+      style: {
+        '--nutui-toast-inner-top': '90%',
+      },
     })
   }
   const iconToast = (msg: string) => {

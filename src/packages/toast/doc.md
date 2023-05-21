@@ -269,7 +269,7 @@ const App = () => {
       Toast.show({
         content: msg,
         icon: 'loading',
-        maskStyle: {
+        style: {
           '--nutui-toast-inner-top': '90%'
         }
       });
@@ -301,11 +301,10 @@ const App = () => {
     const iconToast = (msg: string) => {
       Toast.show({
         content: msg,
-        maskStyle: {
-          background: 'rgba(0, 0, 0, 0)'
+        style: {
+          '--nutui-overlay-bg-color': 'rgba(0, 0, 0, 0)'
         },
         closeOnOverlayClick: true,
-      	maskClickable: false,
         onClose: () => {
           console.log('closeToast')
         },
@@ -345,11 +344,10 @@ export default App
 | duration            | 展示时长（秒）<br>值为 0 时，toast 不会自动消失      | `number`     | `2`       |
 | position | toast展示位置 | `'top' \| 'center' \| 'bottom'` | `'center'` |
 | title             | 标题      | `'string'`    | -            |
-| maskClickable | 遮罩层背景是否可点击 | `boolean` | `true` |
 | icon                | 自定义图标              | `'success' \| 'fail' \| 'loading' \| 'warn' \| React.ReactNode` | -           |
 | size                | 文案尺寸，**small**/**base**/**large**三选一           | `string`      | `base`         |
-| maskClassName  | 自定义遮罩层类名                                   | `string` | - |
-| maskStyle | 自定义遮罩层样式 | `React.CSSProperties` | - |
+| className | 自定义遮罩层类名                                   | `string` | - |
+| style | 自定义遮罩层样式 | `React.CSSProperties` | - |
 | contentClassName | 自定义内容区类名 | `string` | - |
 | contentStyle | 自定义内容区样式 | `React.CSSProperties` | - |
 | onClose             | 关闭时触发的事件                                      | `() => void` | `() => void`  |
@@ -363,10 +361,10 @@ export default App
 
 ### Toast.config
 
-`Toast`全局配置，支持配置项`duration`、`position`、`maskClickable`，使用方法如下：
+`Toast`全局配置，支持配置项`duration`、`position`、`closeOnOverlayClick`，使用方法如下：
 
 ```typescript
-Toast.config({ duration: 1.5, position: 'top', maskClickable: false });
+Toast.config({ duration: 1.5, position: 'top', closeOnOverlayClick: false });
 ```
 
 ## 主题定制

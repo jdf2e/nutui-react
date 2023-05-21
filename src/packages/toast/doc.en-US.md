@@ -268,7 +268,7 @@ const App = () => {
       Toast.show({
         content: msg,
         icon: 'loading',
-        maskStyle: {
+        style: {
           '--nutui-toast-inner-top': '90%'
         }
       });
@@ -301,11 +301,10 @@ const App = () => {
     const iconToast = (msg: string) => {
       Toast.show({
         content: msg,
-        maskStyle: {
-          background: 'rgba(0, 0, 0, 0)'
+        style: {
+          '--nutui-overlay-bg-color': 'rgba(0, 0, 0, 0)'
         },
         closeOnOverlayClick: true,
-      	maskClickable: false,
         onClose: () => {
           console.log('closeToast')
         },
@@ -347,8 +346,8 @@ The `show` method supports passing in a `props` object, which contains the follo
 | title            | title     | `string`      |           -             |
 | icon | Toast icon | `'success' \|'fail' \|'loading' \|'warn' \|React.ReactNode` | - |
 | size        | Text Size **small**/**base**/**large**          | `string`      | `base`      |
-| maskClassName | Toast mask class name | `string` | - |
-| maskStyle |  Toast mask style  | `React.CSSProperties` | -            |
+| className | Toast mask class name | `string` | - |
+| style |  Toast mask style  | `React.CSSProperties` | -            |
 | contentClassName | Toast content class name | `string` | -                         |
 | contentStyle | Toast content style | `React.CSSProperties` | - |
 | onClose             |Callback function after close             | `() => void` | `null`         |
@@ -362,10 +361,10 @@ Turn off `Toast` in all displays.
 
 ### Toast.config
 
-Methods for global configuration. Support `duration`, `position` and `maskClickable`. The configuration method is as follows:
+Methods for global configuration. Support `duration`, `position` and `closeOnOverlayClick`. The configuration method is as follows:
 
 ```typescript
-Toast.config({ duration: 1.5, position: 'top', maskClickable: false });
+Toast.config({ duration: 1.5, position: 'top', closeOnOverlayClick: false });
 ```
 
 ## Theming
