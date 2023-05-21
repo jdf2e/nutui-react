@@ -33,7 +33,7 @@ const defaultProps = {
   position: 'center',
   type: 'text',
   title: '',
-  closeOnOverlayClick: true,
+  closeOnOverlayClick: false,
   contentClassName: '', // 内容自定义样式名
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   visible: false,

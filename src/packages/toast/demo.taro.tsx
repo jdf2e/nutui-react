@@ -20,13 +20,15 @@ const ToastDemo = () => {
     type: string,
     msg: string,
     duration?: number,
-    icon?: string
+    icon?: string,
+    closeOnOverlayClick?: boolean
   ) => {
     const changeState = Object.assign(state, {
       msg,
       type,
       duration,
       icon,
+      closeOnOverlayClick,
     })
     SetState(changeState)
   }
@@ -107,7 +109,7 @@ const ToastDemo = () => {
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
-            openToast('text', '设置展示时长为10秒', 10)
+            openToast('text', '设置展示时长为10秒', 10, '', true)
             SetShowToast(true)
           }}
         />
