@@ -270,7 +270,7 @@ const App = () => {
         content: msg,
         icon: 'loading',
         maskStyle: {
-          '--toast-inner-top': '90%'
+          '--nutui-toast-inner-top': '90%'
         }
       });
     }

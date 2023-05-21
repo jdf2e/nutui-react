@@ -51,13 +51,13 @@
     transform: translate(-50%, -50%);
   }
   &-center {
-    top: var(--toast-inner-top, 50%);
+    top: var(--nutui-toast-inner-top, 50%);
   }
   &-bottom {
-    top: var(--toast-inner-top, 80%);
+    top: var(--nutui-toast-inner-top, 80%);
   }
   &-top {
-    top: var(--toast-inner-top, 20%);
+    top: var(--nutui-toast-inner-top, 20%);
   }
   &-text {
     font-size: $toast-text-font-size;
