@@ -16,6 +16,9 @@
   text-align: center;
   pointer-events: none;
   z-index: 9999;
+  &-overlay-default {
+    --nutui-overlay-bg-color: rgba(0, 0, 0, 0);
+  }
   &-small {
     .nut-toast__inner {
       font-size: $font-size-small;

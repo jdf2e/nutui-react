@@ -133,10 +133,10 @@ export const Toast: FunctionComponent<
         <Overlay
           visible={openState}
           style={{
-            '--nutui-overlay-bg-color': 'rgba(0,0,0,0)',
+            // '--nutui-overlay-bg-color': 'rgba(0,0,0,0)',
             ...maskStyle,
           }}
-          className={maskClassName}
+          className={`nut-toast-overlay-default ${maskClassName}`}
           closeOnOverlayClick={closeOnOverlayClick}
           onClick={() => {
             clickCover()

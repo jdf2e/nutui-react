@@ -122,11 +122,11 @@ export default class Notification extends React.PureComponent<NotificationProps>
         <Overlay
           visible={true}
           style={{
-            '--nutui-overlay-bg-color': 'rgba(0,0,0,0)',
+            // '--nutui-overlay-bg-color': 'rgba(0,0,0,0)',
             pointerEvents: maskClickable ? 'none' : 'auto',
             ...maskStyle,
           }}
-          className={maskClassName}
+          className={`nut-toast-overlay-default ${maskClassName}`}
           onClick={() => {
             this.clickCover()
           }}
