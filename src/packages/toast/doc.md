@@ -381,4 +381,5 @@ Toast.config({ duration: 1.5, position: 'top', closeOnOverlayClick: false });
 | --nutui-toast-inner-padding | `24px 30px` |
 | --nutui-toast-inner-bg-color | `$gray7` |
 | --nutui-toast-inner-border-radius | `12px` |
+| --nutui-toast-inner-text-align | `center` |
 | --nutui-overlay-bg-color | `rgba(0, 0, 0, 0)` |

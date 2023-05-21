@@ -155,10 +155,8 @@ export default App
 | duration               | 展示时长（秒）<br>值为 0 时，toast 不会自动消失（loading类型默认为0） | `number`    | `2`                         |
 | title                  | 标题                                                                    | `string`     | -                            |
 | position            | toast展示位置                                                | `'top' \| 'center' \| 'bottom'` | `'center'`                          |
-| textAlignCenter      | 多行文案是否居中                                                        | `boolean`    | `true`                          |
-| bgColor               | 背景颜色（透明度）                                                      | `string`     | `rgba(0, 0, 0, 0.8)`          |
-| maskClassName | 自定义遮罩层类名 | `string` | - |
-| maskStyle | 自定义遮罩层样式 | `React.CSSProperties` | - |
+| className | 自定义遮罩层类名 | `string` | - |
+| style | 自定义遮罩层样式 | `React.CSSProperties` | - |
 | contentClassName | 自定义内容区类名 | `string` | - |
 | contentStyle | 自定义内容区样式 | `React.CSSProperties` | - |
 | icon                   | 自定义图标，**对应icon组件，支持图片链接**                              | `string`     | -                            |
