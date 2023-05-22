@@ -39,6 +39,29 @@ export default App;
 
 :::
 
+### 剩余時間用法
+
+:::demo
+
+```tsx
+import  React, {useRef }from "react";
+import { Cell, CountDown } from '@nutui/nutui-react';
+
+const App = () => {
+  const stateRef = useRef({
+    remainingTime:  60 * 1000,
+  })
+  return (
+     <Cell>
+         <CountDown remainingTime={stateRef.current.remainingTime} />
+    </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
 ### 自定義格式
 
 :::demo
@@ -324,17 +347,18 @@ export default App;
 
 ### Props
 
-| 字段 | 說明 | 類型 | 默認值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | startTime | 開始時間 | `number` | `Date.now()` |
 | endTime | 結束時間 | `number` | `Date.now()` |
+| remainingTime| 剩余時間，單位是毫秒|  `number` | `0` |
 | paused | 是否暫停 | `boolean` | `false` |
 | format | 時間格式 | `string` | `HH:mm:ss` |
 | millisecond | 是否開啟毫秒級渲染 | `boolean` | `false` |
 | autoStart | 是否自動開始倒計時 | `boolean` | `true` |
 | time | 倒計時顯示時間，單位是毫秒。autoStart 為 false 時生效 | `number` | `0` |
-| showDays\` | 是否顯示天 | `boolean` | `false` |
-| showPlainText\` | 顯示為純文本 | `boolean` | `false` |
+| showDays | 是否顯示天 | `boolean` | `false` |
+| showPlainText | 顯示為純文本 | `boolean` | `false` |
 | destroy | 銷毀實例 | `boolean` | `false` |
 | onEnd | 倒計時結束時回調函數 | `無` | `-` |
 | onPaused | 暫停倒計時回調函數 | `onPaused: (restTime: number) => void` | `-` |
@@ -369,8 +393,8 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
+| 名稱 | 說明 | 默認值 |
 | --- | --- |
-| \--nutui-countdown-display | `flex` |
-| \--nutui-countdown-color | `inherit` |
-| \--nutui-countdown-font-size | `initial` |
+| \--nutui-countdown-display | 倒計時的布局方式 | `flex` |
+| \--nutui-countdown-color | 倒計時的文字顏色 | `$gray1` |
+| \--nutui-countdown-font-size | 倒計時的字體大小 | `14px` |

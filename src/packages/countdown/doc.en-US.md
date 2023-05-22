@@ -39,6 +39,29 @@ export default App;
 
 :::
 
+### Remaining Time Usage
+
+:::demo
+
+```tsx
+import  React, {useRef }from "react";
+import { Cell, CountDown } from '@nutui/nutui-react';
+
+const App = () => {
+  const stateRef = useRef({
+    remainingTime:  60 * 1000,
+  })
+  return (
+     <Cell>
+         <CountDown remainingTime={stateRef.current.remainingTime} />
+    </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
 ### Custom format
 
 :::demo
@@ -328,6 +351,7 @@ export default App;
 | --- | --- | --- | --- |
 | startTime | Start Time | `number` | `Date.now()` |
 | endTime | End Time | `number` | `Date.now()` |
+| remainingTime| Remaining time, unit milliseconds|  `number` | `0` |
 | paused | Paused | `boolean` | `false` |
 | format | Format Time | `string` | `HH:mm:ss` |
 | millisecond | Whether to enable millisecond render | `boolean` | `false` |
@@ -368,8 +392,8 @@ ref allows you to get the CountDown instance and invoke the instance methods.
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
+| Name | Description | Default |
 | --- | --- |
-| \--nutui-countdown-display | `flex` |
-| \--nutui-countdown-color | `inherit` |
-| \--nutui-countdown-font-size | `initial` |
+| \--nutui-countdown-display | display mode of countdown | `flex` |
+| \--nutui-countdown-color | Countdown text color | `$gray1` |
+| \--nutui-countdown-font-size | The font size of the countdown | `14px` |

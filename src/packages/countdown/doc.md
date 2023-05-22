@@ -39,6 +39,29 @@ export default App;
 
 :::
 
+### 剩余时间用法
+
+:::demo
+
+```tsx
+import  React, {useRef }from "react";
+import { Cell, CountDown } from '@nutui/nutui-react';
+
+const App = () => {
+  const stateRef = useRef({
+    remainingTime:  60 * 1000,
+  })
+  return (
+     <Cell>
+         <CountDown remainingTime={stateRef.current.remainingTime} />
+    </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
 ### 自定义格式
 
 :::demo
@@ -324,10 +347,11 @@ export default App;
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | startTime | 开始时间 | `number` | `Date.now()` |
 | endTime | 结束时间 | `number` | `Date.now()` |
+| remainingTime| 剩余时间，单位是毫秒|  `number` | `0` |
 | paused | 是否暂停 | `boolean` | `false` |
 | format | 时间格式 | `string` | `HH:mm:ss` |
 | millisecond | 是否开启毫秒级渲染 | `boolean` | `false` |
@@ -369,8 +393,8 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
+| 名称 | 说明 | 默认值 |
 | --- | --- |
-| \--nutui-countdown-display | `flex` |
-| \--nutui-countdown-color | `inherit` |
-| \--nutui-countdown-font-size | `initial` |
+| \--nutui-countdown-display | 倒计时的布局方式 | `flex` |
+| \--nutui-countdown-color | 倒计时的文字颜色 | `$gray1` |
+| \--nutui-countdown-font-size | 倒计时的字体大小 | `14px` |

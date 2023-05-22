@@ -248,7 +248,11 @@
 - `circleColor` 重名为 `color`
 - `pathColor` 重名为 `background`
 #### Collapse
+
 #### CountDown
+
+- 新增 `remainingTime`, 支持剩余毫秒时间倒计时。
+
 #### Ellipsis
 #### Empty
 #### ImagePreview
