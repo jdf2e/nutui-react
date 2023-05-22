@@ -72,11 +72,17 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Skeleton } from '@nutui/nutui-react-taro';
+import { Skeleton, ConfigProvider } from '@nutui/nutui-react-taro';
 
 const App = () => {
   return (
-    <Skeleton width="250px" height="15px" animated round />
+    <ConfigProvider
+      theme={{
+        nutuiSkeletonLineBorderRadius: '10px',
+      }}
+    >
+      <Skeleton rows={3} animated />
+    </ConfigProvider>
   )
 }
 export default App;
@@ -135,7 +141,6 @@ export default App;
 | avatar | 是否显示头像 | `boolean` | `false` |
 | avatarShape | 头像形状：正方形/圆形 | `string` | `round` |
 | avatarSize | 头像大小 | `string` | `50px` |
-| round | 标题/段落是否采用圆角风格 | `boolean` | `false` |
 | rows | 设置段落行数 | `string` | `1` |
 | title | 是否显示段落标题 | `boolean` | `true` |
 
@@ -150,3 +155,4 @@ export default App;
 | \--nutui-skeleton-content-line-title-background-color | `#efefef` |
 | \--nutui-skeleton-line-width | 线条宽度 | `100%` |
 | \--nutui-skeleton-line-height | 线条高度 | `15px` |
+| \--nutui-skeleton-line-border-radius | 线条边框圆角 | `0` |

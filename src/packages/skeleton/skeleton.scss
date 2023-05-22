@@ -15,19 +15,16 @@
       background: rgb(239, 239, 239);
     }
 
-    .block {
+    .nut-skeleton__block {
       width: $skeleton-line-width;
       height: $skeleton-line-height;
       background: rgb(239, 239, 239);
       margin-top: 10px;
+      border-radius: $skeleton-line-border-radius;
 
       &:last-child {
         width: 70%;
       }
-    }
-
-    .block--round {
-      border-radius: 10px;
     }
 
     &-line {

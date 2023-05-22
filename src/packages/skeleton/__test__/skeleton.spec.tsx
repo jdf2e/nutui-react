@@ -22,8 +22,3 @@ test('should change avatar shape when using avatarShape prop', () => {
   const { container } = render(<Skeleton avatar avatarShape="square" />)
   expect(container.querySelector('.avatarClass')).toMatchSnapshot()
 })
-
-test('should be round when using round prop', () => {
-  const { container } = render(<Skeleton title round avatar />)
-  expect(container.querySelector('.avatarClass')).toBeTruthy()
-})

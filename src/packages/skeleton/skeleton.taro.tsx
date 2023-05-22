@@ -10,7 +10,6 @@ export interface SkeletonProps extends BasicComponent {
   title: boolean
   avatar: boolean
   avatarSize: string
-  round: boolean
   visible: boolean
   avatarShape: avatarShape
 }
@@ -20,7 +19,6 @@ const defaultProps = {
   animated: false,
   title: false,
   avatar: false,
-  round: false,
   avatarSize: '50px',
   visible: false,
   avatarShape: 'round',
@@ -33,7 +31,6 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
     title,
     avatar,
     avatarSize,
-    round,
     visible,
     children,
     avatarShape,
@@ -45,10 +42,6 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
 
   const classPrefix = 'nut-skeleton'
   const classes = classNames(className, classPrefix)
-  const blockClass = classNames({
-    block: true,
-    'block--round': round,
-  })
   const avatarClass = classNames({
     avatar: true,
     [`avatar--${avatarShape}`]: avatarShape,
@@ -89,12 +82,12 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
               />
             )}
             {rows === 1 ? (
-              <div className={blockClass} />
+              <div className={`${classPrefix}__block`} />
             ) : (
               <div className={`${classPrefix}__content-line`}>
                 {title && <div className={`${classPrefix}__title`} />}
                 {repeatLines(rows).map((item, index) => {
-                  return <div className={blockClass} key={index} />
+                  return <div className={`${classPrefix}__block`} key={index} />
                 })}
               </div>
             )}

@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Skeleton, Switch, Avatar, Cell } from '@/packages/nutui.react.taro'
+import {
+  Skeleton,
+  Switch,
+  Avatar,
+  Cell,
+  ConfigProvider,
+} from '@/packages/nutui.react.taro'
 import '@/packages/skeleton/demo.scss'
 import Header from '@/sites/components/header'
 
@@ -82,7 +88,13 @@ const SkeletonDemo = () => {
 
         <h2>{translated['0a001122']}</h2>
         <Cell className="ske-cell-single">
-          <Skeleton rows={3} animated round />
+          <ConfigProvider
+            theme={{
+              nutuiSkeletonLineBorderRadius: '10px',
+            }}
+          >
+            <Skeleton rows={3} animated />
+          </ConfigProvider>
         </Cell>
 
         <h2>{translated.a4ed11b5}</h2>

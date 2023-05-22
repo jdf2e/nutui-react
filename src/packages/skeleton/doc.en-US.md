@@ -73,11 +73,17 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Skeleton } from '@nutui/nutui-react';
+import { Skeleton, ConfigProvider } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Skeleton width={250} height={15} animated round />
+    <ConfigProvider
+      theme={{
+        nutuiSkeletonLineBorderRadius: '10px',
+      }}
+    >
+      <Skeleton rows={3} animated />
+    </ConfigProvider>
   )
 }
 export default App;
@@ -136,7 +142,6 @@ export default App;
 | avatar | Show avatar | `boolean` | `false` |
 | avatarShape | Avatar shape: square / round | `string` | `round` |
 | avatarSize | Avatar size | `string` | `50px` |
-| round | Is the title / paragraph rounded | `boolean` | `false` |
 | rows | Set the number of paragraph lines | `number` | `1` |
 | title | Show paragraph titles | `boolean` | `false` |
 
@@ -151,3 +156,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-skeleton-content-line-title-background-color | `#efefef` |
 | \--nutui-skeleton-line-width | line width | `100%` |
 | \--nutui-skeleton-line-height | line height | `15px` |
+| \--nutui-skeleton-line-border-radius | line borderRadius | `0` |

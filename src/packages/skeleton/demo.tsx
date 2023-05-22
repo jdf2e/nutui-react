@@ -6,6 +6,7 @@ import Avatar from '@/packages/avatar'
 import Cell from '@/packages/cell'
 import Image from '@/packages/image'
 import './demo.scss'
+import ConfigProvider from '../configprovider'
 
 interface T {
   '3b02fdee': string
@@ -83,7 +84,13 @@ const SkeletonDemo = () => {
 
         <h2>{translated['0a001122']}</h2>
         <Cell className="ske-cell-single">
-          <Skeleton rows={3} animated round />
+          <ConfigProvider
+            theme={{
+              nutuiSkeletonLineBorderRadius: '10px',
+            }}
+          >
+            <Skeleton rows={3} animated />
+          </ConfigProvider>
         </Cell>
 
         <h2>{translated.a4ed11b5}</h2>
