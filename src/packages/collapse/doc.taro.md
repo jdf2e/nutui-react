@@ -226,7 +226,6 @@ export default App;
 ```jsx
 import React, { useState } from 'react'
 import { Collapse, Button} from '@nutui/nutui-react-taro'
-import { DownArrow } from '@nutui/icons-react-taro'
 
 const oldDate = [
   {
@@ -256,44 +255,33 @@ const newDate = [
     name: '2',
     data: '京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府',
   },
-  {
-    title: '标题23',
-    name: '3',
-    data: '京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府',
-  },
 ]
 
 const App = () => {
-  const [currIndex, setCurrIndex] = useState(2)
   const [domData, setDomData] = useState(oldDate)
-  const changeEnv = (isOpen: boolean, name: string) => {
-    console.log(isOpen, name)
-  }
   const changeNewData = () => {
     setDomData(newDate)
-    setCurrIndex(3)
   }
   const changeOldData = () => {
     setDomData(oldDate)
-    setCurrIndex(2)
   }
   return (
     <>
-    <Collapse defaultActiveName={currIndex} accordion>
-      {domData.map((item, index) => {
-        return (
-          <Collapse.Item title={item.title} name={item.name} key={index}>
-            {item.data}
-          </Collapse.Item>
-        )
-      })}
-    </Collapse>
-    <Button type="primary" size="small" onClick={() => changeNewData()}>
-          改变数据
-        </Button>
-        <Button type="info" size="small" onClick={() => changeOldData()}>
-          还原数据
-        </Button>
+      <Collapse defaultActiveName="2" accordion>
+        {domData.map((item, index) => {
+          return (
+            <Collapse.Item title={item.title} name={item.name} key={index}>
+              {item.data}
+            </Collapse.Item>
+          )
+        })}
+      </Collapse>
+      <Button type="primary" size="small" onClick={() => changeNewData()}>
+        改变数据
+      </Button>
+      <Button type="info" size="small" onClick={() => changeOldData()}>
+        还原数据
+      </Button>
     </>
   )
 }

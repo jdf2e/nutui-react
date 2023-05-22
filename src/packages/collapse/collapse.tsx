@@ -42,15 +42,10 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> & {
   }
   const classPrefix = 'nut-collapse'
 
-  const handleChange = (newValue: keyType) => {
-    console.log(newValue)
-  }
-
   const [value, setValue] = usePropsValue<keyType>({
     value: activeName,
     defaultValue: defaultActiveName,
     finalValue: [],
-    onChange: handleChange,
   })
 
   const changeVal = (newValue: keyType, name: string, isOpen: boolean) => {

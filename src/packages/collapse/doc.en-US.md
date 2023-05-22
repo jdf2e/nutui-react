@@ -228,61 +228,61 @@ export default App;
 import React, { useState } from 'react'
 import { Collapse, Button } from '@nutui/nutui-react'
 
+const oldDate = [
+  {
+    title: 'title1',
+    name: '1',
+    data: 'Nutui-React is a lightweight React component library with JD style',
+  },
+  {
+    title: 'title12',
+    name: '2',
+    data: 'Nutui-React is a lightweight React component library with JD style',
+  },
+  {
+    title: 'title13',
+    name: '3',
+    data: 'Nutui-React is a lightweight React component library with JD style',
+  },
+]
+const newDate = [
+  {
+    title: 'title21',
+    name: '1',
+    data: 'Nutui-React is a lightweight React component library with JD style',
+  },
+  {
+    title: 'title22',
+    name: '2',
+    data: 'Nutui-React is a lightweight React component library with JD style',
+  },
+]
+
 const App = () => {
-  const [currIndex, setCurrIndex] = useState(2)
-  const [domData, setDomData] = useState([
-    {
-      title: 'title1',
-      name: '1',
-      data: 'Nutui-React is a lightweight React component library with JD style',
-    },
-    {
-      title: 'title2',
-      name: '2',
-      data: 'Nutui-React is a lightweight React component library with JD style',
-    },
-    {
-      title: 'title3',
-      name: '3',
-      data: 'Nutui-React is a lightweight React component library with JD style',
-    },
-  ])
-  const changeEnv = (isOpen: boolean, name: string) => {
-    console.log(isOpen, name)
+  const [domData, setDomData] = useState(oldDate)
+  const changeNewData = () => {
+    setDomData(newDate)
   }
-  const changeData = () => {
-    const newData = [
-      {
-        title: 'title21',
-        name: '1',
-        data: 'The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!',
-      },
-      {
-        title: 'title22',
-        name: '2',
-        data: 'The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!',
-      },
-      {
-        title: 'title23',
-        name: '3',
-        data: 'The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!',
-      },
-    ]
-    setDomData(newData)
-    setCurrIndex(3)
+  const changeOldData = () => {
+    setDomData(oldDate)
   }
   return (
     <>
-    <Collapse defaultActiveName={currIndex} accordion>
-      {domData.map((item, index) => {
-        return (
-          <Collapse.Item title={item.title} name={item.name} key={index}>
-            {item.data}
-          </Collapse.Item>
-        )
-      })}
-    </Collapse>
-    <Button type="button" onClick={() => changeData()}>点击我</Button>
+      <Collapse defaultActiveName="2" accordion>
+        {domData.map((item, index) => {
+          return (
+            <Collapse.Item title={item.title} name={item.name} key={index}>
+              {item.data}
+            </Collapse.Item>
+          )
+        })}
+      </Collapse>
+      <Button type="primary" size="small" onClick={() => changeNewData()}>
+        change
+      </Button>
+      <Button type="info" size="small" onClick={() => changeOldData()}>
+        reset
+      </Button>
     </>
   )
 }

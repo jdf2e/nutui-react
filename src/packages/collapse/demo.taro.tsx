@@ -117,13 +117,7 @@ const CollapseDemo = () => {
       name: '2',
       data: translated.content2,
     },
-    {
-      title: `${translated.title3}3`,
-      name: '3',
-      data: translated.content2,
-    },
   ]
-  const [currIndex, setCurrIndex] = useState('2')
   const [domData, setDomData] = useState(oldDate)
 
   const [activeName, setActiveKey] = useState<Array<string> | string>([
@@ -136,11 +130,9 @@ const CollapseDemo = () => {
   }, [translated])
   const changeNewData = () => {
     setDomData(newDate)
-    setCurrIndex('3')
   }
   const changeOldData = () => {
     setDomData(oldDate)
-    setCurrIndex('2')
   }
 
   return (
@@ -272,7 +264,7 @@ const CollapseDemo = () => {
         </Collapse>
 
         <h2>{translated.header6}</h2>
-        <Collapse defaultActiveName={currIndex} accordion>
+        <Collapse defaultActiveName="2" accordion>
           {domData.map((item: itemObj, index: number) => {
             return (
               <Collapse.Item title={item.title} name={item.name} key={index}>
