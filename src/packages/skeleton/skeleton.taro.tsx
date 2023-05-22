@@ -5,8 +5,6 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type avatarShape = 'round' | 'square'
 export interface SkeletonProps extends BasicComponent {
-  width: string
-  height: string
   animated: boolean
   rows: number
   title: boolean
@@ -18,8 +16,6 @@ export interface SkeletonProps extends BasicComponent {
 }
 const defaultProps = {
   ...ComponentDefaults,
-  width: '100px',
-  height: '100px',
   rows: 1,
   animated: false,
   title: false,
@@ -32,8 +28,6 @@ const defaultProps = {
 export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
   const {
     className,
-    width,
-    height,
     animated,
     rows,
     title,
@@ -43,7 +37,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
     visible,
     children,
     avatarShape,
-    ...restProps
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -52,12 +46,12 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
   const classPrefix = 'nut-skeleton'
   const classes = classNames(className, classPrefix)
   const blockClass = classNames({
-    blockClass: true,
-    'blockClass--round': round,
+    block: true,
+    'block--round': round,
   })
   const avatarClass = classNames({
-    avatarClass: true,
-    [`avatarClass--${avatarShape}`]: avatarShape,
+    avatar: true,
+    [`avatar--${avatarShape}`]: avatarShape,
   })
 
   const repeatLines = (num: number) => {
@@ -82,9 +76,9 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
       {visible ? (
         <div>{children}</div>
       ) : (
-        <div className={classes} {...restProps}>
-          {animated && <div className="skeleton-animation" />}
-          <div className="nut-skeleton-content">
+        <div className={classes} {...rest}>
+          {animated && <div className={`${classPrefix}__animation`} />}
+          <div className={`${classPrefix}__content`}>
             {avatar && (
               <Avatar
                 className={avatarClass}
@@ -94,23 +88,16 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
                 icon="null"
               />
             )}
-
-            {rows === 1 && (
-              <div className={blockClass} style={{ width, height }} />
+            {rows === 1 ? (
+              <div className={blockClass} />
+            ) : (
+              <div className={`${classPrefix}__content-line`}>
+                {title && <div className={`${classPrefix}__title`} />}
+                {repeatLines(rows).map((item, index) => {
+                  return <div className={blockClass} key={index} />
+                })}
+              </div>
             )}
-
-            <div className="skeleton-content-line">
-              {title && <div className="skeleton-title" />}
-              {repeatLines(rows).map((item, index) => {
-                return (
-                  <div
-                    className={blockClass}
-                    key={index}
-                    style={{ width, height }}
-                  />
-                )
-              })}
-            </div>
           </div>
         </div>
       )}

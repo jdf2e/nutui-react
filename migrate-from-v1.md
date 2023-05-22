@@ -372,6 +372,7 @@
 #### Skeleton
 - loading 重命名为 visible
 - row 重命名为 rows
+- 移除 width、height，通过 css 变量实现
 #### Steps
 - current 重命名为 value
 - onClickStep 重命名为 onStepClick

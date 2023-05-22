@@ -1973,6 +1973,8 @@ $skeleton-content-line-title-background-color: var(
   --nutui-skeleton-content-line-title-background-color,
   #efefef
 ) !default;
+$skeleton-line-width: var(--nutui-skeleton-line-width, 100%) !default;
+$skeleton-line-height: var(--nutui-skeleton-line-height, 15px) !default;
 
 // sku（✅ todo：react版本该组件暂无，将变量先迁过来）
 $sku-item-border: var(

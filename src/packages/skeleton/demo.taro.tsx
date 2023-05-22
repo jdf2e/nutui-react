@@ -66,68 +66,38 @@ const SkeletonDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated['84aa6bce']}</h2>
         <Cell className="ske-cell-single">
-          <Skeleton width="250px" height="15px" animated />
-          <Skeleton width="250px" height="15px" />
+          <Skeleton animated />
+          <Skeleton />
         </Cell>
 
         <h2>{translated.ea3bc18a}</h2>
         <Cell className="ske-cell-double">
-          <Skeleton width="250px" height="15px" rows={3} title animated />
+          <Skeleton rows={3} title animated />
         </Cell>
 
         <h2>{translated['02a53df5']}</h2>
         <Cell>
-          <Skeleton
-            width="250px"
-            height="15px"
-            rows={3}
-            title
-            animated
-            avatar
-            avatarSize="100px"
-          />
+          <Skeleton rows={3} title animated avatar avatarSize="100px" />
         </Cell>
 
         <h2>{translated['0a001122']}</h2>
         <Cell className="ske-cell-single">
-          <Skeleton width="250px" height="15px" animated round />
+          <Skeleton rows={3} animated round />
         </Cell>
 
         <h2>{translated.a4ed11b5}</h2>
         <Cell className="ske-cell-double">
           <div className="pic-compose">
-            <Skeleton
-              width="250px"
-              height="15px"
-              title
-              animated
-              rows={3}
-              className="item"
-            />
-            <Skeleton
-              width="250px"
-              height="15px"
-              title
-              animated
-              rows={3}
-              className="item"
-            />
+            <Skeleton title animated rows={3} className="item" />
+            <Skeleton title animated rows={3} className="item" />
           </div>
         </Cell>
 
         <h2>{translated['07d62d5c']}</h2>
         <Cell>
-          <div className="content">
+          <div className="content" style={{ width: '100%' }}>
             <Switch onChange={(value, event) => changeStatus(value, event)} />
-            <Skeleton
-              width="250px"
-              height="15px"
-              title
-              animated
-              avatar
-              rows={3}
-              visible={checked}
-            >
+            <Skeleton title animated avatar rows={3} visible={checked}>
               <div className="container">
                 <Avatar
                   size="50"

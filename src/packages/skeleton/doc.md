@@ -132,8 +132,6 @@ export default App;
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | visible | 是否显示骨架屏(true不显示骨架屏，false显示骨架屏) | `boolean` | `true` |
-| width | 每行宽度(px单位) | `string` | `100px` |
-| height | 每行高度(px单位) | `string` | `100px` |
 | animated | 是否开启骨架屏动画 | `boolean` | `false` |
 | avatar | 是否显示头像 | `boolean` | `false` |
 | avatarShape | 头像形状：正方形/圆形 | `string` | `round` |
@@ -148,6 +146,8 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
+| 名称 | 描述 | 默认值 |
+| --- | --- | --- |
 | \--nutui-skeleton-content-line-title-background-color | `#efefef` |
+| \--nutui-skeleton-line-width | 线条宽度 | `100%` |
+| \--nutui-skeleton-line-height | 线条高度 | `15px` |

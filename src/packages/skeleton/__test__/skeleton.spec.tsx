@@ -4,11 +4,6 @@ import '@testing-library/jest-dom'
 
 import { Skeleton } from '../skeleton'
 
-test('should render with rows width array correctly', () => {
-  const { container } = render(<Skeleton width="100px" />)
-  expect(container.querySelector('.blockClass')).toHaveStyle({ width: '100px' })
-})
-
 test('should allow to disable animation', () => {
   const { container } = render(<Skeleton rows={1} animated={false} />)
   expect(container.querySelector('.skeleton-animation')).toBeFalsy()

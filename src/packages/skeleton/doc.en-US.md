@@ -132,8 +132,6 @@ export default App;
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | visible | Whether to display skeleton screen | `boolean` | `false` |
-| width | Width per row | `number` | `100` |
-| height | Height of each row | `number` | `100` |
 | animated | Whether to turn on skeleton screen animation | `boolean` | `false` |
 | avatar | Show avatar | `boolean` | `false` |
 | avatarShape | Avatar shape: square / round | `string` | `round` |
@@ -148,6 +146,8 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
+| Name | Description | Default |
+| --- | --- | --- |
 | \--nutui-skeleton-content-line-title-background-color | `#efefef` |
+| \--nutui-skeleton-line-width | line width | `100%` |
+| \--nutui-skeleton-line-height | line height | `15px` |

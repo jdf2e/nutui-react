@@ -5,36 +5,37 @@
   position: relative;
   overflow: hidden;
   vertical-align: middle;
+  width: 100%;
 
-  .nut-skeleton-content {
+  &__content {
     display: flex;
 
-    .avatarClass {
+    .avatar {
       margin-right: 20px;
       background: rgb(239, 239, 239);
     }
 
-    .blockClass,
-    .blockClass--round {
-      width: 100%;
-      height: 100%;
+    .block {
+      width: $skeleton-line-width;
+      height: $skeleton-line-height;
       background: rgb(239, 239, 239);
       margin-top: 10px;
 
       &:last-child {
-        width: 70% !important;
+        width: 70%;
       }
     }
 
-    .blockClass--round {
+    .block--round {
       border-radius: 10px;
     }
 
-    .skeleton-content-line {
+    &-line {
+      width: 100%;
       display: flex;
       flex-direction: column;
 
-      .skeleton-title {
+      .nut-skeleton__title {
         width: 30%;
         height: 15px;
         background: $skeleton-content-line-title-background-color;
@@ -42,7 +43,7 @@
     }
   }
 
-  .skeleton-animation {
+  &__animation {
     position: absolute;
     top: 0;
     left: 0;
@@ -56,10 +57,10 @@
       hsla(0, 0%, 100%, 0) 80%
     );
     background-repeat: no-repeat;
-    animation: backpos 2s ease-in-out 0s infinite;
+    animation: nut-skeleton 2s ease-in-out 0s infinite;
   }
 
-  @keyframes backpos {
+  @keyframes nut-skeleton {
     0% {
       background-position-x: -500px;
     }
