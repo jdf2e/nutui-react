@@ -357,6 +357,7 @@ export default App;
 | onPaused | Emitted when count down paused | Residual Timestamp
 | onRestart | Emitted when count down restart | Residual Timestamp
 | onUpdate | Real-time update of the countdown data callback function | Real-time countdown data
+| destroy `v1.5.2`|  destroy instance | boolean | `false`
 
 ### Ref
 

@@ -434,8 +434,8 @@ export default App;
 | onStart     | 文件上传开始| `options`   |
 | onProgress  | 文件上传的进度         | `event, options, percentage`        |
 | onOversize  | 文件大小超过限制时触发 | `files` |
-| onSuccess   | 上传成功| `responseText, options` |
-| onFailure   | 上传失败| `responseText, options` |
+| onSuccess   | 上传成功| `responseText, options, fileList, file` |
+| onFailure   | 上传失败| `responseText, options, fileList, file` |
 | onChange    | 上传文件改变时的状态   | `fileList, event`       |
 | onRemove    | 文件删除之前的状态     | `files, fileList`       |
 | onFileItemClick    | 文件上传成功后点击触发     | `fileItem`       |
