@@ -8,7 +8,7 @@ export interface SkeletonProps extends BasicComponent {
   width: string
   height: string
   animated: boolean
-  row: number
+  rows: number
   title: boolean
   avatar: boolean
   avatarSize: string
@@ -20,7 +20,7 @@ const defaultProps = {
   ...ComponentDefaults,
   width: '100px',
   height: '100px',
-  row: 1,
+  rows: 1,
   animated: false,
   title: false,
   avatar: false,
@@ -35,7 +35,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
     width,
     height,
     animated,
-    row,
+    rows,
     title,
     avatar,
     avatarSize,
@@ -94,13 +94,13 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
               />
             )}
 
-            {row === 1 && (
+            {rows === 1 && (
               <div className={blockClass} style={{ width, height }} />
             )}
 
             <div className="skeleton-content-line">
               {title && <div className="skeleton-title" />}
-              {repeatLines(row).map((item, index) => {
+              {repeatLines(rows).map((item, index) => {
                 return (
                   <div
                     className={blockClass}

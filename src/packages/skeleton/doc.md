@@ -44,7 +44,7 @@ import { Skeleton } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Skeleton width="250px" height="15px" row={3} title animated />
+      <Skeleton width="250px" height="15px" rows={3} title animated />
     </>
   )
 }
@@ -64,7 +64,7 @@ import { Skeleton } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Skeleton width="250px" height="15px" row={3} title animated avatar avatarSize="100px" />
+      <Skeleton width="250px" height="15px" rows={3} title animated avatar avatarSize="100px" />
     </>
   )
 }
@@ -112,7 +112,7 @@ const App = () => {
     <>
       <div className="content">
         <Switch size="15px" change={(value, event) => changeStatus(value, event)} />
-        <Skeleton width="250px" height="15px" title animated avatar row={3} visible={checked}>
+        <Skeleton width="250px" height="15px" title animated avatar rows={3} visible={checked}>
           <div className="container">
             <Avatar
               size="50"
@@ -149,7 +149,7 @@ export default App;
 | avatarShape | 头像形状：正方形/圆形 | `string` | `round` |
 | avatarSize | 头像大小 | `string` | `50px` |
 | round | 标题/段落是否采用圆角风格 | `boolean` | `false` |
-| row | 设置段落行数 | `string` | `1` |
+| rows | 设置段落行数 | `string` | `1` |
 | title | 是否显示段落标题 | `boolean` | `true` |
 
 ## 主题定制

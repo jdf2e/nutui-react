@@ -44,7 +44,7 @@ import { Skeleton } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Skeleton width={250} height={15} row={3} title animated />
+      <Skeleton width={250} height={15} rows={3} title animated />
     </>
   )
 }
@@ -64,7 +64,7 @@ import { Skeleton } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Skeleton width={250} height={15} row={3} title animated avatar />
+      <Skeleton width={250} height={15} rows={3} title animated avatar />
     </>
   )
 }
@@ -112,7 +112,7 @@ const App = () => {
     <>
       <div className="content">
         <Switch size="15px" change={(value, event) => changeStatus(value, event)} />
-        <Skeleton width="250px" height="15px" title animated avatar row={3} visible={checked}>
+        <Skeleton width="250px" height="15px" title animated avatar rows={3} visible={checked}>
           <div className="container">
             <Avatar
               size="50"
@@ -149,7 +149,7 @@ export default App;
 | avatarShape | Avatar shape: square / round | `string` | `round` |
 | avatarSize | Avatar size | `string` | `50px` |
 | round | Is the title / paragraph rounded | `boolean` | `false` |
-| row | Set the number of paragraph lines | `number` | `1` |
+| rows | Set the number of paragraph lines | `number` | `1` |
 | title | Show paragraph titles | `boolean` | `false` |
 
 ## Theming

@@ -72,7 +72,7 @@ const SkeletonDemo = () => {
 
         <h2>{translated.ea3bc18a}</h2>
         <Cell className="ske-cell-double">
-          <Skeleton width="250px" height="15px" row={3} title animated />
+          <Skeleton width="250px" height="15px" rows={3} title animated />
         </Cell>
 
         <h2>{translated['02a53df5']}</h2>
@@ -80,7 +80,7 @@ const SkeletonDemo = () => {
           <Skeleton
             width="250px"
             height="15px"
-            row={3}
+            rows={3}
             title
             animated
             avatar
@@ -101,7 +101,7 @@ const SkeletonDemo = () => {
               height="15px"
               title
               animated
-              row={3}
+              rows={3}
               className="item"
             />
             <Skeleton
@@ -109,7 +109,7 @@ const SkeletonDemo = () => {
               height="15px"
               title
               animated
-              row={3}
+              rows={3}
               className="item"
             />
           </div>
@@ -125,7 +125,7 @@ const SkeletonDemo = () => {
               title
               animated
               avatar
-              row={3}
+              rows={3}
               visible={checked}
             >
               <div className="container">
