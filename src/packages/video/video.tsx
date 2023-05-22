@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, FunctionComponent } from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface VideoProps {
+export interface VideoProps extends BasicComponent {
   source: {
     type: string
     src: string
@@ -15,16 +15,12 @@ export interface VideoProps {
     playsinline?: boolean
     loop?: boolean
   }
-  className: string
-  style: React.CSSProperties
-  play: (e: HTMLVideoElement) => void
-  pause: (e: HTMLVideoElement) => void
-  playend: (e: HTMLVideoElement) => void
   onPlay: (e: HTMLVideoElement) => void
   onPause: (e: HTMLVideoElement) => void
   onPlayEnd: (e: HTMLVideoElement) => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   source: {
     type: {},
     src: '',
@@ -38,6 +34,8 @@ const defaultProps = {
     loop: false,
   },
 } as VideoProps
+
+const classPrefix = `nut-video`
 export const Video: FunctionComponent<
   Partial<VideoProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onPause' | 'onPlay'>
@@ -47,9 +45,6 @@ export const Video: FunctionComponent<
     source,
     options,
     className,
-    play,
-    pause,
-    playend,
     onPlay,
     onPause,
     onPlayEnd,
@@ -59,8 +54,7 @@ export const Video: FunctionComponent<
     ...props,
   }
   const rootRef = useRef<HTMLVideoElement>(null)
-  const b = bem('video')
-  const classes = classNames(className, b(''))
+  const classes = classNames(className, classPrefix)
 
   useEffect(() => {
     init()
@@ -82,16 +76,13 @@ export const Video: FunctionComponent<
       }
       videoRef.addEventListener('play', () => {
         onPlay && onPlay(videoRef)
-        play && play(videoRef)
       })
       videoRef.addEventListener('pause', () => {
         onPause && onPause(videoRef)
-        pause && pause(videoRef)
       })
       videoRef.addEventListener('ended', () => {
         videoRef.currentTime = 0
         onPlayEnd && onPlayEnd(videoRef)
-        playend && playend(videoRef)
       })
     }
   }

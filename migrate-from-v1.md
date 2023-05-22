@@ -401,6 +401,8 @@
 #### Tag
 #### TrendArrow
 #### Video
+- 调整中英文文档规范
+- 调整组件书写规范
 #### VirtualList
 #### WaterMark
 
