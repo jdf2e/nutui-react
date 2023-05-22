@@ -153,7 +153,7 @@ export default App;
 
 | 名称 | 描述 | 默认值 |
 | --- | --- | --- |
-| \--nutui-skeleton-content-line-title-background-color | `#efefef` |
+| \--nutui-skeleton-background | 背景 | `rgb(239, 239, 239)` |
 | \--nutui-skeleton-line-width | 线条宽度 | `100%` |
 | \--nutui-skeleton-line-height | 线条高度 | `15px` |
 | \--nutui-skeleton-line-border-radius | 线条边框圆角 | `0` |

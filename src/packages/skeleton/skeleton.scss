@@ -12,13 +12,13 @@
 
     .avatar {
       margin-right: 20px;
-      background: rgb(239, 239, 239);
+      background: $skeleton-background !important;
     }
 
     .nut-skeleton__block {
       width: $skeleton-line-width;
       height: $skeleton-line-height;
-      background: rgb(239, 239, 239);
+      background: $skeleton-background;
       margin-top: 10px;
       border-radius: $skeleton-line-border-radius;
 
@@ -34,8 +34,8 @@
 
       .nut-skeleton__title {
         width: 30%;
-        height: 15px;
-        background: $skeleton-content-line-title-background-color;
+        height: $skeleton-line-height;
+        background: $skeleton-background;
       }
     }
   }
