@@ -11,7 +11,7 @@ test('should allow to disable animation', () => {
 
 test('should change avatar size when using avatarSize prop', () => {
   const { container } = render(<Skeleton avatar avatarSize="20px" />)
-  expect(container.querySelector('.avatarClass')).toHaveStyle({
+  expect(container.querySelector('.avatar')).toHaveStyle({
     width: '20px',
     height: '20px',
   })
@@ -20,5 +20,5 @@ test('should change avatar size when using avatarSize prop', () => {
 
 test('should change avatar shape when using avatarShape prop', () => {
   const { container } = render(<Skeleton avatar avatarShape="square" />)
-  expect(container.querySelector('.avatarClass')).toMatchSnapshot()
+  expect(container.querySelector('.avatar')).toMatchSnapshot()
 })
