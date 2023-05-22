@@ -333,20 +333,16 @@ const App = () => {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| \--nutui-collapse-item-padding | `13px 36px 13px 26px` |
-| \--nutui-collapse-item-font-size | `$font-size-2` |
-| \--nutui-collapse-item-line-height | `24px` |
-| \--nutui-collapse-item-color | `#666666` |
-| \--nutui-collapse-item-disabled-color | `#c8c9cc` |
-| \--nutui-collapse-item-icon-color | `#666666` |
-| \--nutui-collapse-item-icon-margin-right | `5px` |
-| \--nutui-collapse-item-icon-margin-left | `5px` |
-| \--nutui-collapse-item-sub-title-color | `#666666` |
-| \--nutui-collapse-wrapper-content-background-color | `$white` |
-| \--nutui-collapse-wrapper-content-color | `#666666` |
-| \--nutui-collapse-wrapper-content-font-size | `$font-size-2` |
-| \--nutui-collapse-wrapper-content-line-height | `1.5` |
-| \--nutui-collapse-wrapper-content-padding | `12px 26px` |
-| \--nutui-collapse-wrapper-empty-content-padding | `0 26px` |
+| 名称 | 描述 | 默认值 |
+| --- | --- | --- |
+| \--nutui-collapse-item-padding | 内边距 | `13px 36px 13px 26px` |
+| \--nutui-collapse-item-font-size | 字体大小 | `$font-size-2` |
+| \--nutui-collapse-item-line-height | 行高 | `24px` |
+| \--nutui-collapse-item-color | 字体颜色 | `#666666` |
+| \--nutui-collapse-item-disabled-color | 禁用颜色 | `#c8c9cc` |
+| \--nutui-collapse-item-extra-color | Extra 字体颜色 | `#666666` |
+| \--nutui-collapse-wrapper-content-background-color | 背景颜色 | `$white` |
+| \--nutui-collapse-wrapper-content-color | 内容字体颜色 | `#666666` |
+| \--nutui-collapse-wrapper-content-font-size | 内容字体大小 | `$font-size-2` |
+| \--nutui-collapse-wrapper-content-line-height | 内容行高 | `1.5` |
+| \--nutui-collapse-wrapper-content-padding | 内容内边距 | `12px 26px` |
