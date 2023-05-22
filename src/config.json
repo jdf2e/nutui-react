@@ -869,7 +869,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "Collapse",
           "type": "component",
           "cName": "折叠面板",
@@ -880,7 +880,7 @@
           "author": "zhenyulei"
         },
         {
-          "version": "0.1.0",
+          "version": "2.0.0",
           "name": "CollapseItem",
           "type": "component",
           "cName": "折叠面板子组件",
