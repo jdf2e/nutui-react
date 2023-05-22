@@ -10,7 +10,7 @@ import React, {
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import CollapseContext from '../collapse/collapse.context.taro'
+import CollapseContext from '../collapse/context'
 
 export interface CollapseItemProps extends BasicComponent {
   title: ReactNode

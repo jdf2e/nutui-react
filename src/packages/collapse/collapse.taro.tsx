@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode, useCallback } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import CollapseItem from '../collapseitem/index.taro'
-import CollapseContext from './collapse.context.taro'
+import CollapseContext from './context'
 import { usePropsValue } from '@/utils/use-props-value'
 
 type keyType = Array<string> | string

@@ -9,7 +9,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import CollapseContext from '../collapse/collapse.context'
+import CollapseContext from '../collapse/context'
 
 export interface CollapseItemProps extends BasicComponent {
   title: ReactNode
