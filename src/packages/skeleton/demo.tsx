@@ -4,6 +4,7 @@ import { Skeleton } from './skeleton'
 import Switch from '@/packages/switch'
 import Avatar from '@/packages/avatar'
 import Cell from '@/packages/cell'
+import Image from '@/packages/image'
 import './demo.scss'
 
 interface T {
@@ -131,7 +132,12 @@ const SkeletonDemo = () => {
               <div className="container">
                 <Avatar
                   size="50"
-                  icon="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
+                  icon={
+                    <Image
+                      loading={false}
+                      src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
+                    />
+                  }
                 />
                 <div className="right-content">
                   <span className="title">NutUI-React</span>

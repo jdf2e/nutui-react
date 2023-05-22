@@ -91,6 +91,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
                 background="rgb(239, 239, 239)"
                 shape={avatarShape}
                 style={getStyle()}
+                icon="null"
               />
             )}
 
