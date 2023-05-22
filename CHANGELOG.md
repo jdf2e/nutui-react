@@ -1,3 +1,14 @@
+# v2.0.0-alpha.10
+`2023-05-19`
+
+* :sparkles: feat(progress): 添加 lazy、delay 属性 (#1023) @Eiinu
+* :bug: fix: swiper loop 模式位置计算错误 (#1018) @oasis-cloud
+* 🛠 refactor: imagepreview (#1019) @xiaoyatong
+* 🛠 refactor: noticebar (#1024) @xiaoyatong
+* 🛠 refactor: steps (#1021) @oasis-cloud
+* 📖 docs: icon 文档修订 (#1022) @oasis-cloud
+
+
 # v2.0.0-alpha.9
 `2023-05-17`
 

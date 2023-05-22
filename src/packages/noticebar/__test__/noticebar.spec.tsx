@@ -7,7 +7,7 @@ test('noticebar base test', () => {
   const text =
     'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
 
-  const { container } = render(<NoticeBar text={text} />)
+  const { container } = render(<NoticeBar content={text} />)
   expect(container.querySelector('.content')?.innerHTML).toBe(
     'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
   )
@@ -19,7 +19,7 @@ test('scrollable test', () => {
   const text =
     'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
 
-  const { container } = render(<NoticeBar text={text} scrollable={false} />)
+  const { container } = render(<NoticeBar content={text} scrollable={false} />)
   setTimeout(() => {
     expect(container.querySelector('.content')).toHaveClass('nut-ellipsis')
     expect(container.querySelector('.content')).toHaveAttribute(
@@ -31,14 +31,14 @@ test('scrollable test', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('closeMode & rightIcon test', () => {
+test('closeable & rightIcon test', () => {
   const text =
     'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
   const handleClick = jest.fn()
   const { container } = render(
     <NoticeBar
-      text={text}
-      closeMode
+      content={text}
+      closeable
       onClick={handleClick}
       rightIcon="circle-close"
     />
@@ -71,10 +71,10 @@ test('customer leftIcon test', () => {
   }, 300)
 })
 
-test('wrapable test', () => {
+test('wrap test', () => {
   const text =
     'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
-  const { container } = render(<NoticeBar text={text} wrapable />)
+  const { container } = render(<NoticeBar content={text} wrap />)
   expect(container.querySelector('.nut-noticebar-page')).toHaveClass('wrapable')
 })
 
@@ -90,8 +90,8 @@ test('vertical test', () => {
       direction="vertical"
       list={horseLamp1}
       speed={10}
-      standTime={1000}
-      closeMode
+      duration={1000}
+      closeable
     />
   )
   expect(container.querySelector('.nut-noticebar-vertical')).toBeTruthy
@@ -106,7 +106,7 @@ test('vertical test', () => {
     'CheckBox 复选按钮',
   ]
   const { container } = render(
-    <NoticeBar direction="vertical" height={50} speed={10} standTime={1000}>
+    <NoticeBar direction="vertical" height={50} speed={10} duration={1000}>
       {horseLamp1.map((item, index) => {
         return (
           <div
