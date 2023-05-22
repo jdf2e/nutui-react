@@ -1,21 +1,22 @@
-#  Skeleton 骨架屏组件
+# Skeleton 骨架屏组件
 
-### 介绍
+## 介绍
 
 在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果。
 
-### 安装
-``` ts
+## 安装
+
+```ts
 // react
 import { Skeleton } from '@nutui/nutui-react';
 ```
-
 
 ## 代码演示
 
 ### 基础用法
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Skeleton } from '@nutui/nutui-react';
@@ -29,11 +30,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 传入多行
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Skeleton } from '@nutui/nutui-react';
@@ -47,11 +50,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 显示头像
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Skeleton } from '@nutui/nutui-react';
@@ -65,11 +70,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 标题段落圆角风格
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Skeleton } from '@nutui/nutui-react';
@@ -83,11 +90,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 显示子组件
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react'
 import { Skeleton, Switch, Avatar } from '@nutui/nutui-react';
@@ -123,28 +132,25 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
+## Skeleton
 
+### Props
 
-
-## API
-
-### Prop  
-
-| 字段       | 说明                                             | 类型    | 默认值    |
-|------------|-------------------------------------------------|---------|----------|
-| loading    | 是否显示骨架屏(true不显示骨架屏，false显示骨架屏)                                    | boolean | `true`    | 
-| width       | 每行宽度(px单位)                                       | string  | `100px` |
-| height      | 每行高度(px单位)                                        | string  | `100px`   |
-| animated    | 是否开启骨架屏动画                                | boolean  | `false`  |
-| avatar      | 是否显示头像                                     | boolean | `false`   |
-| avatarShape      | 头像形状：正方形/圆形                        | string | `round`   |
-| avatarSize       | 头像大小                                   | string | `50px`    |
-| round  | 标题/段落是否采用圆角风格                                | boolean | `false`  |
-| row    | 设置段落行数                                           | string | `1`       |
-| title  | 是否显示段落标题                                        | boolean | `true`   |
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| loading | 是否显示骨架屏(true不显示骨架屏，false显示骨架屏) | `boolean` | `true` |
+| width | 每行宽度(px单位) | `string` | `100px` |
+| height | 每行高度(px单位) | `string` | `100px` |
+| animated | 是否开启骨架屏动画 | `boolean` | `false` |
+| avatar | 是否显示头像 | `boolean` | `false` |
+| avatarShape | 头像形状：正方形/圆形 | `string` | `round` |
+| avatarSize | 头像大小 | `string` | `50px` |
+| round | 标题/段落是否采用圆角风格 | `boolean` | `false` |
+| row | 设置段落行数 | `string` | `1` |
+| title | 是否显示段落标题 | `boolean` | `true` |
 
 ## 主题定制
 
@@ -154,4 +160,4 @@ export default App;
 
 | 名称 | 默认值 |
 | --- | --- |
-| --nutui-skeleton-content-line-title-background-color | `#efefef` |
+| \--nutui-skeleton-content-line-title-background-color | `#efefef` |

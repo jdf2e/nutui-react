@@ -1,25 +1,23 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import Avatar from '@/packages/avatar'
-import bem from '@/utils/bem'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type avatarShape = 'round' | 'square'
-export interface SkeletonProps {
+export interface SkeletonProps extends BasicComponent {
   width: string
   height: string
   animated: boolean
   row: number
   title: boolean
   avatar: boolean
-  className?: string
-  style?: React.CSSProperties
   avatarSize: string
   round: boolean
   loading: boolean
   avatarShape: avatarShape
-  children?: React.ReactNode
 }
 const defaultProps = {
+  ...ComponentDefaults,
   width: '100px',
   height: '100px',
   row: 1,
@@ -51,8 +49,8 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
     ...props,
   }
 
-  const b = bem('skeleton')
-  const classes = classNames(className, b())
+  const classPrefix = 'nut-skeleton'
+  const classes = classNames(className, classPrefix)
   const blockClass = classNames({
     blockClass: true,
     'blockClass--round': round,

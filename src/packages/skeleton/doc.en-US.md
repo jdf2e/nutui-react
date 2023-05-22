@@ -1,21 +1,22 @@
-#  Skeleton
+# Skeleton
 
-### Intro
+## Intro
 
 Filling gray bitmap in the area to be loaded on the page is essentially the transition effect in the process of interface loading.
 
-### Install
-``` ts
+## Install
+
+```ts
 // react
 import { Skeleton } from '@nutui/nutui-react';
 ```
-
 
 ## Code demonstration
 
 ### Basic usage
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Skeleton } from '@nutui/nutui-react';
@@ -29,11 +30,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Incoming multiline
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Skeleton } from '@nutui/nutui-react';
@@ -47,11 +50,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Show Faces
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Skeleton } from '@nutui/nutui-react';
@@ -65,11 +70,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Title paragraph fillet style
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Skeleton } from '@nutui/nutui-react';
@@ -83,11 +90,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Display subcomponents
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react'
 import { Skeleton, Switch, Avatar } from '@nutui/nutui-react';
@@ -123,28 +132,25 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
+## Skeleton
 
+### Props
 
-
-## API
-
-### Prop  
-
-| Attribute       | Description                                             | Type    | Default    |
-|------------|-------------------------------------------------|---------|----------|
-| loading    | Whether to display skeleton screen                                    | boolean | `false`    | 
-| width       | Width per row                                        | number  | `100` |
-| height      | Height of each row                                        | number  | `100`   |
-| animated    | Whether to turn on skeleton screen animation                                | boolean  | `false`  |
-| avatar      | Show avatar                                     | boolean | `false`   |
-| avatarShape      | Avatar shape: square / round                        | string | `round`   |
-| avatarSize       | Avatar size                                   | string | `50px`    |
-| round  | Is the title / paragraph rounded                                | boolean | `false`  |
-| row    | Set the number of paragraph lines                                           | number | `1`       |
-| title  | Show paragraph titles                                        | boolean | `false`   |
-
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| loading | Whether to display skeleton screen | `boolean` | `false` |
+| width | Width per row | `number` | `100` |
+| height | Height of each row | `number` | `100` |
+| animated | Whether to turn on skeleton screen animation | `boolean` | `false` |
+| avatar | Show avatar | `boolean` | `false` |
+| avatarShape | Avatar shape: square / round | `string` | `round` |
+| avatarSize | Avatar size | `string` | `50px` |
+| round | Is the title / paragraph rounded | `boolean` | `false` |
+| row | Set the number of paragraph lines | `number` | `1` |
+| title | Show paragraph titles | `boolean` | `false` |
 
 ## Theming
 
@@ -154,4 +160,4 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-skeleton-content-line-title-background-color | `#efefef` |
+| \--nutui-skeleton-content-line-title-background-color | `#efefef` |
