@@ -126,7 +126,7 @@ const SkeletonDemo = () => {
               animated
               avatar
               row={3}
-              loading={checked}
+              visible={checked}
             >
               <div className="container">
                 <Avatar

@@ -112,7 +112,7 @@ const App = () => {
     <>
       <div className="content">
         <Switch size="15px" change={(value, event) => changeStatus(value, event)} />
-        <Skeleton width="250px" height="15px" title animated avatar row={3} loading={checked}>
+        <Skeleton width="250px" height="15px" title animated avatar row={3} visible={checked}>
           <div className="container">
             <Avatar
               size="50"
@@ -141,7 +141,7 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| loading | Whether to display skeleton screen | `boolean` | `false` |
+| visible | Whether to display skeleton screen | `boolean` | `false` |
 | width | Width per row | `number` | `100` |
 | height | Height of each row | `number` | `100` |
 | animated | Whether to turn on skeleton screen animation | `boolean` | `false` |

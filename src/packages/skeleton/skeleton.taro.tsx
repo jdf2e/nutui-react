@@ -13,7 +13,7 @@ export interface SkeletonProps extends BasicComponent {
   avatar: boolean
   avatarSize: string
   round: boolean
-  loading: boolean
+  visible: boolean
   avatarShape: avatarShape
 }
 const defaultProps = {
@@ -26,7 +26,7 @@ const defaultProps = {
   avatar: false,
   round: false,
   avatarSize: '50px',
-  loading: false,
+  visible: false,
   avatarShape: 'round',
 } as SkeletonProps
 export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
@@ -40,7 +40,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
     avatar,
     avatarSize,
     round,
-    loading,
+    visible,
     children,
     avatarShape,
     ...restProps
@@ -79,7 +79,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
 
   return (
     <>
-      {loading ? (
+      {visible ? (
         <div>{children}</div>
       ) : (
         <div className={classes} {...restProps}>

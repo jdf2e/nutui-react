@@ -370,6 +370,7 @@
 - 新增 lazy 属性，支持每次进入可视区时展示进度条动画
 - 新增 delay 属性，表示延迟数据加载时长
 #### Skeleton
+- loading 重命名为 visible
 #### Steps
 - current 重命名为 value
 - onClickStep 重命名为 onStepClick

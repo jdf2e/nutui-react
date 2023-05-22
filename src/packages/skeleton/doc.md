@@ -112,7 +112,7 @@ const App = () => {
     <>
       <div className="content">
         <Switch size="15px" change={(value, event) => changeStatus(value, event)} />
-        <Skeleton width="250px" height="15px" title animated avatar row={3} loading={checked}>
+        <Skeleton width="250px" height="15px" title animated avatar row={3} visible={checked}>
           <div className="container">
             <Avatar
               size="50"
@@ -141,7 +141,7 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| loading | 是否显示骨架屏(true不显示骨架屏，false显示骨架屏) | `boolean` | `true` |
+| visible | 是否显示骨架屏(true不显示骨架屏，false显示骨架屏) | `boolean` | `true` |
 | width | 每行宽度(px单位) | `string` | `100px` |
 | height | 每行高度(px单位) | `string` | `100px` |
 | animated | 是否开启骨架屏动画 | `boolean` | `false` |

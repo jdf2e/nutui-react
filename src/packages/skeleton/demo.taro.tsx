@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Skeleton, Switch, Avatar, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/skeleton/demo.scss'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface T {
   '3b02fdee': string
@@ -126,7 +126,7 @@ const SkeletonDemo = () => {
               animated
               avatar
               row={3}
-              loading={checked}
+              visible={checked}
             >
               <div className="container">
                 <Avatar
