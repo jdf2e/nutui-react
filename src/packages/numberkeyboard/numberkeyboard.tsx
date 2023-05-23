@@ -6,10 +6,6 @@ import { PopupProps } from '@/packages/popup/popup'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
 
-export interface NextListObj {
-  type: string
-  id: string
-}
 export interface NumberKeyboardProps extends PopupProps {
   visible: boolean
   title?: ReactNode
