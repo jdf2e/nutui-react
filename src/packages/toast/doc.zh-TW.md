@@ -326,13 +326,9 @@ export default App
 ```
 :::
 
-## API
+## Toast
 
 `Toast`只支持指令式調用
-
-### Toast.show
-
-`show`方法支持傳入`props`對象，對應屬性如下：
 
 ### Props
 
@@ -353,17 +349,12 @@ export default App
 
 如果传入的参数是字符串类型，`Toast.show`会自动把它作为`content`
 
-### Toast.clear
+### Ref
 
-关闭所有显示中的`Toast`
-
-### Toast.config
-
-`Toast`全局配置，支持配置项`duration`、`position`、`closeOnOverlayClick`，使用方法如下：
-
-```typescript
-Toast.config({ duration: 1.5, position: 'top', closeOnOverlayClick: false });
-```
+| 方法名 | 说明                    | 参数                                                         |
+| ------ | ----------------------- | ------------------------------------------------------------ |
+| clear  | 关闭所有显示中的`Toast` | -                                                            |
+| config | `Toast`全局配置         | `{ duration: number, position: 'top' \| 'center' \| 'bottom', closeOnOverlayClick: boolean }` |
 
 ## 主題定制
 

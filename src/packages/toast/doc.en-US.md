@@ -332,10 +332,6 @@ export default App
 
 `Toast` only supports Imperative calls.
 
-### Toast.show
-
-The `show` method supports passing in a `props` object, which contains the following props:
-
 ### Props
 
 | Attribute                | Description              |  Type         | Default                        |
@@ -355,17 +351,12 @@ The `show` method supports passing in a `props` object, which contains the follo
 
 You can also pass in a string directly, and `Toast.show` will automatically use it as `content`.
 
-### Toast.clear
+### Ref
 
-Turn off `Toast` in all displays.
-
-### Toast.config
-
-Methods for global configuration. Support `duration`, `position` and `closeOnOverlayClick`. The configuration method is as follows:
-
-```typescript
-Toast.config({ duration: 1.5, position: 'top', closeOnOverlayClick: false });
-```
+| Property | Description                       | Parameters                                                   |
+| -------- | --------------------------------- | ------------------------------------------------------------ |
+| clear    | Turn off `Toast` in all displays. | -                                                            |
+| config   | Methods for global configuration  | `{ duration: number, position: 'top' \| 'center' \| 'bottom', closeOnOverlayClick: boolean }` |
 
 ## Theming
 

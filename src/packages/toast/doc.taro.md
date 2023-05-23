@@ -166,8 +166,6 @@ export default App
 | type                   | 弹框类型 可选值（text、success、fail、warn、loading）                   | `string`     | -                            |
 | visible                   | 弹窗是否显示开关                   | `boolean`     | `false`                            |
 
-
-
 ## 主题定制
 
 ### 样式变量
