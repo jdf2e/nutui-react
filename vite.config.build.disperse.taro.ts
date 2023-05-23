@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react'
 import path from 'path'
-import config from './src/config.json'
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
+import config from './src/config.json'
 
 const entries: any = {
   'nutui-react.es': path.join(
