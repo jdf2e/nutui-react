@@ -82,8 +82,8 @@ const DatePickerDemo = () => {
     },
   })
 
-  const minDate = new Date(2020, 0, 1)
-  const maxDate = new Date(2025, 10, 1)
+  const startDate = new Date(2020, 0, 1)
+  const endDate = new Date(2025, 10, 1)
   const [desc1, setDesc1] = useState(`2012-01-01`)
   const [desc2, setDesc2] = useState('05-10')
   const [desc3, setDesc3] = useState('2022-05-10 10:10')
@@ -251,85 +251,85 @@ const DatePickerDemo = () => {
         <DatePicker
           title={translated.basic}
           visible={show1}
-          isShowChinese
-          onCloseDatePicker={() => setShow1(false)}
+          showChinese
+          onClose={() => setShow1(false)}
           threeDimensional={false}
-          onConfirmDatePicker={(options, values) => confirm1(options, values)}
+          onConfirm={(options, values) => confirm1(options, values)}
         />
         {/* 选择月日 */}
         <DatePicker
           title={translated.basic}
-          minDate={new Date(2022, 0, 1)}
-          maxDate={new Date(2022, 7, 1)}
+          startDate={new Date(2022, 0, 1)}
+          endDate={new Date(2022, 7, 1)}
           type="month-day"
           visible={show2}
-          onCloseDatePicker={() => setShow2(false)}
-          onConfirmDatePicker={(options, values) => confirm2(options, values)}
+          onClose={() => setShow2(false)}
+          onConfirm={(options, values) => confirm2(options, values)}
         />
         {/* 选择年月日时分 */}
         <DatePicker
           title={translated.chooseDate}
-          minDate={minDate}
-          maxDate={maxDate}
+          startDate={startDate}
+          endDate={endDate}
           visible={show3}
           type="datetime"
-          onCloseDatePicker={() => setShow3(false)}
-          onConfirmDatePicker={(options, values) => confirm3(options, values)}
+          onClose={() => setShow3(false)}
+          onConfirm={(options, values) => confirm3(options, values)}
         />
         {/* 选择时分秒 */}
         <DatePicker
           title={translated.chooseTime}
           type="time"
-          minDate={minDate}
-          maxDate={maxDate}
+          startDate={startDate}
+          endDate={endDate}
           visible={show4}
-          onCloseDatePicker={() => setShow4(false)}
-          onConfirmDatePicker={(options, values) => confirm4(options, values)}
+          onClose={() => setShow4(false)}
+          onConfirm={(options, values) => confirm4(options, values)}
         />
         {/* 选择时分 */}
         <DatePicker
           title={translated.chooseTime}
           type="hour-minutes"
-          minDate={minDate}
-          maxDate={maxDate}
+          startDate={startDate}
+          endDate={endDate}
           visible={show8}
-          onCloseDatePicker={() => setShow8(false)}
-          onConfirmDatePicker={(options, values) => confirm8(options, values)}
+          onClose={() => setShow8(false)}
+          onConfirm={(options, values) => confirm8(options, values)}
         />
         {/* 格式化选项 */}
         <DatePicker
           title={translated.chooseTime}
           type="datetime"
-          minDate={new Date(2022, 0, 1)}
-          maxDate={new Date(2022, 10, 1)}
+          startDate={new Date(2022, 0, 1)}
+          endDate={new Date(2022, 10, 1)}
           visible={show5}
           formatter={formatter}
-          onCloseDatePicker={() => setShow5(false)}
-          onConfirmDatePicker={(options, values) => confirm5(options, values)}
+          onClose={() => setShow5(false)}
+          onConfirm={(options, values) => confirm5(options, values)}
         />
         {/* 分钟步长 */}
         <DatePicker
           title={translated.chooseTime}
           type="time"
-          minDate={minDate}
-          maxDate={maxDate}
+          startDate={startDate}
+          endDate={endDate}
           visible={show6}
           minuteStep={5}
-          onCloseDatePicker={() => setShow6(false)}
-          onConfirmDatePicker={(options, values) => confirm6(options, values)}
+          onClose={() => setShow6(false)}
+          onConfirm={(options, values) => confirm6(options, values)}
         />
         {/* 过滤选项 */}
         <DatePicker
           title={translated.chooseTime}
           type="datehour"
-          minDate={minDate}
-          maxDate={maxDate}
+          startDate={startDate}
+          endDate={endDate}
           visible={show7}
           formatter={formatter1}
           minuteStep={5}
           filter={filter}
-          onCloseDatePicker={() => setShow7(false)}
-          onConfirmDatePicker={(options, values) => confirm7(options, values)}
+          onClose={() => setShow7(false)}
+          onConfirm={(options, values) => confirm7(options, values)}
         />
       </div>
     </>

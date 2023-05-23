@@ -1,6 +1,8 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
 import Picker from '@/packages/picker'
 import { useConfig } from '@/packages/configprovider'
+import { usePropsValue } from '@/utils/use-props-value'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface PickerOption {
   text: string | number
@@ -18,8 +20,9 @@ interface pickerRefState {
   ) => void
 }
 
-export interface DatePickerProps {
-  modelValue: Date | null
+export interface DatePickerProps extends BasicComponent {
+  value?: Date | null
+  defaultValue?: Date | null
   visible: boolean
   title: string
   type:
@@ -30,17 +33,15 @@ export interface DatePickerProps {
     | 'datehour'
     | 'datetime'
     | 'hour-minutes'
-  isShowChinese: boolean
+  showChinese: boolean
   minuteStep: number
-  minDate: Date
-  maxDate: Date
+  startDate: Date
+  endDate: Date
   threeDimensional: boolean
-  className?: string
-  style?: React.CSSProperties
   formatter: (type: string, option: PickerOption) => PickerOption
   filter: (type: string, option: PickerOption[]) => PickerOption[]
-  onCloseDatePicker: () => void
-  onConfirmDatePicker: (
+  onClose: () => void
+  onConfirm: (
     selectedOptions: PickerOption[],
     selectedValue: (string | number)[]
   ) => void
@@ -52,33 +53,33 @@ export interface DatePickerProps {
 }
 const currentYear = new Date().getFullYear()
 const defaultProps = {
-  modelValue: null,
+  ...ComponentDefaults,
   visible: false,
   title: '',
   type: 'date',
-  isShowChinese: false,
+  showChinese: false,
   threeDimensional: true,
   minuteStep: 1,
-  minDate: new Date(currentYear - 10, 0, 1),
-  maxDate: new Date(currentYear + 10, 11, 31),
+  startDate: new Date(currentYear - 10, 0, 1),
+  endDate: new Date(currentYear + 10, 11, 31),
 } as DatePickerProps
 
 export const DatePicker: FunctionComponent<
   Partial<DatePickerProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'>
 > = (props) => {
   const {
-    minDate,
-    maxDate,
+    startDate,
+    endDate,
     type,
-    isShowChinese,
+    showChinese,
     minuteStep,
-    modelValue,
     visible,
     title,
+    defaultValue,
     formatter,
-    onCloseDatePicker,
-    onConfirmDatePicker,
+    onClose,
+    onConfirm,
     filter,
     onChange,
     threeDimensional,
@@ -90,10 +91,10 @@ export const DatePicker: FunctionComponent<
     ...props,
   }
   const { locale } = useConfig()
-  const [show, setShow] = useState(false)
-  const [currentDate, setCurrentDate] = useState<Date | null>(modelValue)
-  const [defaultValue, setDefaultValue] = useState<(string | number)[]>([])
-  const [options, setListData] = useState<PickerOption[][]>([])
+  const [defaultValueOfPicker, setDefaultValueOfPicker] = useState<
+    (string | number)[]
+  >([])
+  const [options, setOptions] = useState<PickerOption[][]>([])
   const pickerRef = useRef<pickerRefState>(null)
   const isDate = (val: Date): val is Date => {
     return (
@@ -114,19 +115,29 @@ export const DatePicker: FunctionComponent<
   const formatValue = (value: Date | null) => {
     let cvalue = value
     if (!cvalue || (cvalue && !isDate(cvalue))) {
-      cvalue = minDate
+      cvalue = startDate
     }
-    let timestmp = Math.max(cvalue.getTime(), minDate.getTime())
-    timestmp = Math.min(timestmp, maxDate.getTime())
+    let timestmp = Math.max(cvalue.getTime(), startDate.getTime())
+    timestmp = Math.min(timestmp, endDate.getTime())
 
     return new Date(timestmp)
   }
+
+  const [currentDate, setCurrentDate] = usePropsValue<Date | null>({
+    value: props.value && formatValue(props.value),
+    defaultValue: props.defaultValue && formatValue(props.defaultValue),
+    finalValue: null,
+    onChange: (val: Date | null) => {
+      // console.log('2', val)
+      // props.onConfirm?.(setSelectedOptions(), val)
+    },
+  })
 
   function getMonthEndDay(year: number, month: number): number {
     return new Date(year, month, 0).getDate()
   }
   const getBoundary = (type: string, value: Date) => {
-    const boundary = type === 'min' ? minDate : maxDate
+    const boundary = type === 'min' ? startDate : endDate
     const year = boundary.getFullYear()
     let month = 1
     let date = 1
@@ -169,10 +180,8 @@ export const DatePicker: FunctionComponent<
     if (!curDate) return []
     const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } =
       getBoundary('max', curDate)
-
     const { minYear, minDate, minMonth, minHour, minMinute, minSeconds } =
       getBoundary('min', curDate)
-
     let result = [
       {
         type: 'year',
@@ -217,6 +226,7 @@ export const DatePicker: FunctionComponent<
         result = result.slice(3, 5)
         break
       case 'month-day':
+        // console.log('result', result)
         result = result.slice(1, 3)
         break
       case 'datehour':
@@ -244,12 +254,14 @@ export const DatePicker: FunctionComponent<
       })
       if (type.toLocaleLowerCase() === 'month-day' && formatDate.length < 3) {
         formatDate.unshift(
-          new Date(modelValue || minDate || maxDate).getFullYear()
+          new Date(defaultValue || startDate || endDate).getFullYear()
         )
       }
 
       if (type.toLocaleLowerCase() === 'year-month' && formatDate.length < 3) {
-        formatDate.push(new Date(modelValue || minDate || maxDate).getDate())
+        formatDate.push(
+          new Date(defaultValue || startDate || endDate).getDate()
+        )
       }
 
       const year = Number(formatDate[0])
@@ -304,7 +316,7 @@ export const DatePicker: FunctionComponent<
       })
     } else {
       const padMin = padZero(value, 2)
-      const fatter = isShowChinese ? zhCNType[type] : ''
+      const fatter = showChinese ? zhCNType[type] : ''
       fOption = { text: padMin + fatter, value: padMin }
     }
 
@@ -335,8 +347,8 @@ export const DatePicker: FunctionComponent<
       }
     }
 
-    defaultValue[columnIndex] = arr[index].value
-    setDefaultValue([...defaultValue])
+    defaultValueOfPicker[columnIndex] = arr[index]?.value
+    setDefaultValueOfPicker([...defaultValueOfPicker])
 
     if (props.filter && props.filter(type, arr)) {
       return props.filter(type, arr)
@@ -361,7 +373,6 @@ export const DatePicker: FunctionComponent<
     } else if (type === 'seconds') {
       d = (currentDate as Date).getSeconds()
     }
-
     return d
   }
 
@@ -379,20 +390,16 @@ export const DatePicker: FunctionComponent<
   }
 
   useEffect(() => {
-    setCurrentDate(formatValue(modelValue))
+    setCurrentDate(formatValue(defaultValue || null))
   }, [])
 
   useEffect(() => {
-    setCurrentDate(formatValue(modelValue))
-  }, [modelValue])
-
-  useEffect(() => {
-    setShow(visible)
-  }, [visible])
+    setCurrentDate(formatValue(defaultValue || null))
+  }, [defaultValue])
 
   useEffect(() => {
     if (currentDate) {
-      setListData(columns())
+      setOptions(columns())
     }
   }, [currentDate])
 
@@ -405,12 +412,12 @@ export const DatePicker: FunctionComponent<
       {options.length > 0 && (
         <Picker
           title={title}
-          visible={show}
+          visible={visible}
           options={options}
-          onClose={onCloseDatePicker}
-          defaultValue={defaultValue}
+          onClose={onClose}
+          defaultValue={defaultValueOfPicker}
           onConfirm={(options: PickerOption[], values: (string | number)[]) =>
-            onConfirmDatePicker && onConfirmDatePicker(options, values)
+            onConfirm && onConfirm(options, values)
           }
           onChange={(
             list: PickerOption[],

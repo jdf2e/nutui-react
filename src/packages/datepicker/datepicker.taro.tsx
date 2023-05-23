@@ -31,17 +31,17 @@ export interface DatePickerProps {
     | 'datehour'
     | 'datetime'
     | 'hour-minutes'
-  isShowChinese: boolean
+  showChinese: boolean
   minuteStep: number
-  minDate: Date
-  maxDate: Date
+  startDate: Date
+  endDate: Date
   threeDimensional: boolean
   className?: string
   style?: React.CSSProperties
   formatter: (type: string, option: PickerOption) => PickerOption
   filter: (type: string, option: PickerOption[]) => PickerOption[]
-  onCloseDatePicker: () => void
-  onConfirmDatePicker: (
+  onClose: () => void
+  onConfirm: (
     selectedOptions: PickerOption[],
     selectedValue: (string | number)[]
   ) => void
@@ -57,11 +57,11 @@ const defaultProps = {
   visible: false,
   title: '',
   type: 'date',
-  isShowChinese: false,
+  showChinese: false,
   threeDimensional: true,
   minuteStep: 1,
-  minDate: new Date(currentYear - 10, 0, 1),
-  maxDate: new Date(currentYear + 10, 11, 31),
+  startDate: new Date(currentYear - 10, 0, 1),
+  endDate: new Date(currentYear + 10, 11, 31),
 } as DatePickerProps
 
 export const DatePicker: FunctionComponent<
@@ -69,17 +69,17 @@ export const DatePicker: FunctionComponent<
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const {
-    minDate,
-    maxDate,
+    startDate,
+    endDate,
     type,
-    isShowChinese,
+    showChinese,
     minuteStep,
     modelValue,
     visible,
     title,
     formatter,
-    onCloseDatePicker,
-    onConfirmDatePicker,
+    onClose,
+    onConfirm,
     filter,
     onChange,
     threeDimensional,
@@ -91,13 +91,11 @@ export const DatePicker: FunctionComponent<
     ...props,
   }
   const { locale } = useConfig()
-
   const [show, setShow] = useState(false)
   const [currentDate, setCurrentDate] = useState<Date | null>(modelValue)
   const [defaultValue, setDefaultValue] = useState<(string | number)[]>([])
   const [options, setListData] = useState<PickerOption[][]>([])
   const pickerRef = useRef<pickerRefState>(null)
-
   const isDate = (val: Date): val is Date => {
     return (
       Object.prototype.toString.call(val) === '[object Date]' &&
@@ -117,10 +115,10 @@ export const DatePicker: FunctionComponent<
   const formatValue = (value: Date | null) => {
     let cvalue = value
     if (!cvalue || (cvalue && !isDate(cvalue))) {
-      cvalue = minDate
+      cvalue = startDate
     }
-    let timestmp = Math.max(cvalue.getTime(), minDate.getTime())
-    timestmp = Math.min(timestmp, maxDate.getTime())
+    let timestmp = Math.max(cvalue.getTime(), startDate.getTime())
+    timestmp = Math.min(timestmp, endDate.getTime())
 
     return new Date(timestmp)
   }
@@ -129,7 +127,7 @@ export const DatePicker: FunctionComponent<
     return new Date(year, month, 0).getDate()
   }
   const getBoundary = (type: string, value: Date) => {
-    const boundary = type === 'min' ? minDate : maxDate
+    const boundary = type === 'min' ? startDate : endDate
     const year = boundary.getFullYear()
     let month = 1
     let date = 1
@@ -169,10 +167,10 @@ export const DatePicker: FunctionComponent<
   const ranges = (date?: Date) => {
     const curDate = date || currentDate
     if (!curDate) return []
-    const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } =
+    const { maxYear, endDate, maxMonth, maxHour, maxMinute, maxSeconds } =
       getBoundary('max', curDate)
 
-    const { minYear, minDate, minMonth, minHour, minMinute, minSeconds } =
+    const { minYear, startDate, minMonth, minHour, minMinute, minSeconds } =
       getBoundary('min', curDate)
 
     let result = [
@@ -186,7 +184,7 @@ export const DatePicker: FunctionComponent<
       },
       {
         type: 'day',
-        range: [minDate, maxDate],
+        range: [startDate, endDate],
       },
       {
         type: 'hour',
@@ -246,12 +244,12 @@ export const DatePicker: FunctionComponent<
       })
       if (type.toLocaleLowerCase() === 'month-day' && formatDate.length < 3) {
         formatDate.unshift(
-          new Date(modelValue || minDate || maxDate).getFullYear()
+          new Date(modelValue || startDate || endDate).getFullYear()
         )
       }
 
       if (type.toLocaleLowerCase() === 'year-month' && formatDate.length < 3) {
-        formatDate.push(new Date(modelValue || minDate || maxDate).getDate())
+        formatDate.push(new Date(modelValue || startDate || endDate).getDate())
       }
 
       const year = Number(formatDate[0])
@@ -306,7 +304,7 @@ export const DatePicker: FunctionComponent<
       })
     } else {
       const padMin = padZero(value, 2)
-      const fatter = isShowChinese ? zhCNType[type] : ''
+      const fatter = showChinese ? zhCNType[type] : ''
       fOption = { text: padMin + fatter, value: padMin }
     }
 
@@ -410,10 +408,10 @@ export const DatePicker: FunctionComponent<
           title={title}
           visible={show}
           options={options}
-          onClose={onCloseDatePicker}
+          onClose={onClose}
           defaultValue={defaultValue}
           onConfirm={(options: PickerOption[], values: (string | number)[]) =>
-            onConfirmDatePicker && onConfirmDatePicker(options, values)
+            onConfirm && onConfirm(options, values)
           }
           onChange={(
             list: PickerOption[],
