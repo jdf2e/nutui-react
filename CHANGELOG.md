@@ -12,7 +12,7 @@
 # v2.0.0-alpha.9
 `2023-05-17`
 
-* :sparkles: feat: add createProperties.js (#1001) @Eiinu
+* :sparkles: feat: add create-properties.js (#1001) @Eiinu
 * :sparkles: feat: cascader支持受控 (#1000) @xiaoyatong
 * :sparkles: feat: elevator 支持右侧索引是否展示 (#1006) @拧巴的猫
 * :bug: fix(image): lazy 优化观察对象数量 (#1015) @Eiinu

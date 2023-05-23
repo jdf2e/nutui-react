@@ -13,7 +13,7 @@ function exportComponentProps(isTaro) {
   const fileExt = isTaro ? '.taro' : ''
   config.nav.map((item) => {
     item.packages.forEach((element) => {
-      let { name, show, type, exportEmpty, exclude } = element
+      let { name, show, exportEmpty, exclude } = element
       if (exclude) return
       if (show || exportEmpty) {
         if (isTaro) {
