@@ -351,7 +351,7 @@ export default App;
 | --- | --- | --- | --- |
 | startTime | Start Time | `number` | `Date.now()` |
 | endTime | End Time | `number` | `Date.now()` |
-| remainingTime| Remaining time, unit milliseconds|  `number` | `0` |
+| remainingTime | Remaining time, unit milliseconds | `number` | `0` |
 | paused | Paused | `boolean` | `false` |
 | format | Format Time | `string` | `HH:mm:ss` |
 | millisecond | Whether to enable millisecond render | `boolean` | `false` |
@@ -393,7 +393,7 @@ ref allows you to get the CountDown instance and invoke the instance methods.
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Description | Default |
-| --- | --- |
+| --- | --- | --- |
 | \--nutui-countdown-display | display mode of countdown | `flex` |
 | \--nutui-countdown-color | Countdown text color | `$gray1` |
 | \--nutui-countdown-font-size | The font size of the countdown | `14px` |

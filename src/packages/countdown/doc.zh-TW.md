@@ -351,7 +351,7 @@ export default App;
 | --- | --- | --- | --- |
 | startTime | 開始時間 | `number` | `Date.now()` |
 | endTime | 結束時間 | `number` | `Date.now()` |
-| remainingTime| 剩余時間，單位是毫秒|  `number` | `0` |
+| remainingTime | 剩余時間，單位是毫秒 | `number` | `0` |
 | paused | 是否暫停 | `boolean` | `false` |
 | format | 時間格式 | `string` | `HH:mm:ss` |
 | millisecond | 是否開啟毫秒級渲染 | `boolean` | `false` |
@@ -394,7 +394,7 @@ export default App;
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
 | 名稱 | 說明 | 默認值 |
-| --- | --- |
+| --- | --- | --- |
 | \--nutui-countdown-display | 倒計時的布局方式 | `flex` |
 | \--nutui-countdown-color | 倒計時的文字顏色 | `$gray1` |
 | \--nutui-countdown-font-size | 倒計時的字體大小 | `14px` |
