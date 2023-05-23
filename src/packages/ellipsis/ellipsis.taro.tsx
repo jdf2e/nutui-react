@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
 import { useReady, nextTick, createSelectorQuery } from '@tarojs/taro'
+import classNames from 'classnames'
 import { getRectByTaro } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import classNames from 'classnames'
 
 export type Direction = 'start' | 'end' | 'middle'
 
@@ -19,6 +19,7 @@ export interface EllipsisProps extends BasicComponent {
   collapseText: string
   symbol: string
   lineHeight: number | string
+  width: number | string
   onClick: () => void
   onChange: (type: string) => void
 }
@@ -32,6 +33,7 @@ const defaultProps = {
   collapseText: '',
   symbol: '...',
   lineHeight: '20',
+  width: 'auto',
 } as EllipsisProps
 
 const classPrefix = `nut-ellipsis`
@@ -49,6 +51,7 @@ export const Ellipsis: FunctionComponent<
     collapseText,
     symbol,
     lineHeight,
+    width,
     onClick,
     onChange,
     ...rest
@@ -68,6 +71,8 @@ export const Ellipsis: FunctionComponent<
   let originHeight = 0 // 原始高度
   const refRandomId = Math.random().toString(36).slice(-8)
   const widthRef: any = useRef('auto')
+  const widthControlRef: any = useRef(`${width ? `${width}px` : 'auto'}`)
+
   let widthBase = [14, 10, 7, 8.4, 10] // 中、英(大)、英(小)、数字、其他字符的基础宽度
   let symbolTextWidth: any = widthBase[0] * 0.7921
   const chineseReg = /^[\u4e00-\u9fa5]+$/ // 汉字
@@ -75,7 +80,11 @@ export const Ellipsis: FunctionComponent<
   const letterUpperReg = /^[A-Z]+$/ // 字母
   const letterLowerReg = /^[a-z]+$/ // 字母
 
-  const classes = classNames(classPrefix, className)
+  const classes = classNames(
+    classPrefix,
+    className,
+    width ? `${classPrefix}-width` : ''
+  )
 
   const init = () => {
     setExceeded(false)
@@ -306,11 +315,19 @@ export const Ellipsis: FunctionComponent<
       >
         <div>
           {!exceeded ? (
-            <div className="nut-ellipsis-wordbreak">{content}</div>
+            <div
+              className="nut-ellipsis-wordbreak"
+              style={{ width: `${widthControlRef.current}` }}
+            >
+              {content}
+            </div>
           ) : null}
           {exceeded && !expanded ? (
             <>
-              <div className="nut-ellipsis-wordbreak">
+              <div
+                className="nut-ellipsis-wordbreak"
+                style={{ width: `${widthControlRef.current}` }}
+              >
                 {ellipsis.current?.leading}
                 {ellipsis.current?.leading && symbol}
                 {expandText ? (
@@ -331,7 +348,9 @@ export const Ellipsis: FunctionComponent<
           ) : null}
           {exceeded && expanded ? (
             <>
-              {content}
+              <div style={{ width: `${widthControlRef.current}` }}>
+                {content}
+              </div>
               {expandText ? (
                 <span
                   className="nut-ellipsis-text"
