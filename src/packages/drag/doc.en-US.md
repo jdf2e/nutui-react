@@ -161,7 +161,7 @@ export default App;
 ### Props
 
 
-| Attribute            | Description               | Type   | Default  |
+| Property | Description               | Type   | Default  |
 | :-------- | :------------------------------------------------ | :------------- | :---------------------------------- |
 | attract   | Whether to enable automatic edge suction  | boolean        | `false`                                |
 | direction | The drag direction limit of the dragged element **x**/**y**/**all**| string   | `all`         |

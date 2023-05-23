@@ -280,7 +280,7 @@ export default App
 
 ### Props
 
-| 参数                  | 说明                           | 类型                    | 默认值  |
+| 属性 | 说明                           | 类型                    | 默认值  |
 |---------------------|--------------------------------|-------------------------|---------|
 | activeColor         | Active color of title and option           | string                  | `#F2270C` |
 | closeOnOverlayClick | Whether to close when overlay is clicked     | boolean                 | `true`    |
@@ -291,7 +291,7 @@ export default App
 ## MenuItem
 ### Props
 
-| 参数                          | 说明                                    | 类型    | 默认值           |
+| 属性 | 说明                                    | 类型    | 默认值           |
 |-------------------------------|-----------------------------------------|---------|------------------|
 | title                         | Item title                              | string  | Current selected value   |
 | options                       | Options                                | Array   | -                |

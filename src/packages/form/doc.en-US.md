@@ -264,7 +264,7 @@ export default App;
 
 ### Form Props
 
-| Attribute        | Description | TYPE   | DEFAULT |
+| Property | Description | TYPE   | DEFAULT |
 |-------------|--------------------------|--------|--------|
 | form`v1.4.8` | The form control instance created by Form.useForm() will be created automatically if not provided | FormInstance |        |
 | labelPosition | label's position，the default value is Right，can be Top、Left、Right | string |        |
@@ -279,7 +279,7 @@ export default App;
 
 ### Form.Item Props
 
-| Attribute | Description | TYPE | DEFAULT  |
+| Property | Description | TYPE | DEFAULT  |
 |-----------|-------------|------------------|---------|
 | required | Is it a required field | boolean | `false` |
 | name | the field of the form field is required when the form verification function is used | string | - |
@@ -291,7 +291,7 @@ export default App;
 
 Use the `rules` attribute of Form.Item to define verification rules. The optional attributes are as follows:
 
-| Attribute      | Description                   | TYPE |
+| Property | Description                   | TYPE |
 |-----------|------------------------|----------|
 | required  | Is it a required field       | boolean |
 | message   | Error prompt copy           | string |

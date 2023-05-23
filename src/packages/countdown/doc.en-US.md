@@ -325,7 +325,7 @@ export default App;
 
 ### Props
 
-| Attribute | Description | Type | Default
+| Property | Description | Type | Default
 | ----- | ----- | ----- | -----
 | startTime | Start Time |  number | `Date.now()`
 | endTime | End Time | number | `Date.now()`

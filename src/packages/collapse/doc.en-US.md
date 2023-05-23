@@ -248,7 +248,7 @@ const App = () => {
 
 ### Collapse Prop
 
-| Attribute         | Description                             | Type   | Default           |
+| Property | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | activeName   | Of the currently expanded panel name  | Accordion mode：string \| number Non accordion mode：(string \| number)[] | - |
 | accordion    | Whether to turn on accordion mode | boolean | `false`  |
@@ -261,7 +261,7 @@ const App = () => {
 
 ### CollapseItem Prop
 
-| Attribute         | Description                             | Type   | Default           |
+| Property | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | name   | unique identifier, required                         |string \| number | - |
 | title    | the content on the left side of the title bar supports slot incoming (props incoming has higher priority)  | ReactNode | -  |
@@ -276,7 +276,7 @@ const App = () => {
 
 ### Events
 
-| Attribute | Description  | Callback Arguments     |
+| Property | Description  | Callback Arguments     |
 |--------|----------------|--------------|
 | change`Abandon`  | Triggered when the panel is switched | isOpen:Whether it is open status；name：Name value currently clicked |
 | onChange  | Triggered when the panel is switched | isOpen:Whether it is open status；name：Name value currently clicked |
