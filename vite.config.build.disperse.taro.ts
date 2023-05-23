@@ -15,6 +15,8 @@ const outputEntries: any = {}
 
 config.nav.forEach((item) => {
   item.packages.forEach((element) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const { name, show, exportEmpty, exclude } = element
     if (exclude) return
     if (show || exportEmpty) {
