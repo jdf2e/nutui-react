@@ -10,7 +10,7 @@ export interface ToastProps extends BasicComponent {
   maskClassName?: string
   contentClassName?: string
   contentStyle?: React.CSSProperties
-  icon: string | null
+  icon: string | React.ReactNode
   iconSize: string
   msg: string | React.ReactNode
   duration: number

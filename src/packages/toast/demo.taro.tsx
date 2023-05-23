@@ -20,7 +20,7 @@ const ToastDemo = () => {
     type: string,
     msg: string,
     duration?: number,
-    icon?: string,
+    icon?: string | React.ReactNode,
     closeOnOverlayClick?: boolean
   ) => {
     const changeState = Object.assign(state, {
