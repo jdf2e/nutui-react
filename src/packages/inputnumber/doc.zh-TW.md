@@ -240,7 +240,7 @@ export default App;
 
 ### Props
 
-| 參數         | 說明                       | 類型           | 默認值     |
+| 屬性 | 說明                       | 類型           | 默認值     |
 |----------------|----------------------------|----------------|------------|
 | allowEmpty        | 是否允許內容為空                     | boolean |   false          |
 | defaultValue        | 默認值                     | string \| number |  0         |

@@ -588,7 +588,7 @@ export default App;
 
 # API
 
-| 字段 | 說明 | 類型 | 默認值 |
+| 属性 | 說明 | 類型 | 默認值 |
 |----- | ----- | ----- | -----  |
 | modelValue | 是否打開地址選擇 | string | - |
 | modelSelect`v1.2.3` | 設置默認選中地址 | string[] \| number[] | `[]` |
@@ -617,7 +617,7 @@ export default App;
   * selectedAddress 字段用於判斷當前地址列錶的選中項。
 
 ## Event
-| 字段 | 說明 | 回調參數 |
+| 属性 | 說明 | 回調參數 |
 |----- | ----- | -----  |
 | onChange | 自定義選擇地址時，選擇地區時觸發 |  參考 onChange |
 | onSelected | 選擇已有地址列錶時觸發 | 參考 selected |
@@ -627,21 +627,21 @@ export default App;
 
 
 ## change 回調參數
-| 參數 | 說明 | 可能值  |
+| 屬性 | 說明 | 可能值  |
 |----- | ----- | ----- |
 | custom | 當前點擊的行政區域  |  `province`(省) \| `city`(市) \| `country`(縣) \| `town`(鄉) |
 | next | 當前點擊的行政區域的下一級 | `province`(省) \| `city`(市) \| `country`(縣) \| `town`(鄉) |
 | value | 當前點擊的行政區域的值（返回傳入的值） | `{}` |
 
 ## selected 回調參數
-| 參數 | 說明 | 可能值  |
+| 屬性 | 說明 | 可能值  |
 |----- | ----- | ----- |
 | 第一個參數（prevExistAdd） |  選擇前選中的地址 |  `{}` |
 | 第二個參數（nowExistAdd） |  當前選中的地址 |  `{}` |
 | 第三個參數（arr） |  選擇完之後的已有地址列錶（selectedAddress 值發生改變） |  `{}` |
 
 ## close 回調參數
-| 參數 | 說明 | 可能值 |
+| 屬性 | 說明 | 可能值 |
 |----- | ----- | ----- |
 | type | 地址選擇類型 exist/custom/custom2  |  `exist` \| `custom` \| `custom2` |
 | data | 選擇地址的值,custom 時，addressStr 為選擇的地址組合 | `{}`  |

@@ -492,7 +492,7 @@ export default CheckboxGroupOptions;
 
 ## Checkbox
 ### props
-| 字段                | 说明                                    | 类型      | 默认值               | 
+| 属性 | 说明                                    | 类型      | 默认值               | 
 |-------------------|---------------------------------------|---------|-------------------|
 | checked           | 是否选中                                  | `boolean` | `false`           |
 | defaultChecked    | 初始是否选中                                | `boolean` | `false`           |
@@ -507,7 +507,7 @@ export default CheckboxGroupOptions;
 
 ## Checkbox.Group
 ### Props
-| 字段 | 说明 | 类型 | 默认值|
+| 属性 | 说明 | 类型 | 默认值|
 |--------------| ----- |-------------| -- |
 | value | 当前选中项的标识符 | `string\|number`      | -|
 | defaultValue | 初始选中项的标识符 | `string\|number`      | -|

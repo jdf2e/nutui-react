@@ -1,10 +1,10 @@
 # Button 按鈕
 
-### 介紹
+## 介紹
 
 按鈕用於觸發一個操作，如提交表單。
 
-### 安裝
+## 安裝
 
 ``` javascript
 // react
@@ -250,7 +250,7 @@ export default App;
 
 ### Props
 
-| 參數       | 說明                            | 類型          | 默認值      |
+| 屬性 | 說明                            | 類型          | 默認值      |
 |----------|-------------------------------|-------------|----------|
 | type     | 按鈕的樣式                         | `'default' \| 'primary' \| 'info' \| 'warning' \| 'danger' \| 'success'` | `'default'` |
 | size     | 按鈕的尺寸                         | `'normal' \| 'large' \| 'small'` | `'normal'`  |

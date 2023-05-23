@@ -436,7 +436,7 @@ export default App;
 
 ### FileItem
 
-| Attribute     | Description| Default|
+| Property | Description| Default|
 |----------|--------------|-------------|
 | status   | File status value, optional ‘ready,uploading,success,error’' | `ready`|
 | uid      | Unique ID of the file| `new Date().getTime().toString()` |

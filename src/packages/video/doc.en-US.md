@@ -297,7 +297,7 @@ export default App;
 
 ### Props
 
-| Attribute                | Description                                       | Type    | Default   |
+| Property | Description                                       | Type    | Default   |
 | ------------------- | ------------------------------------------ | ------- | -------- |
 | source             | Video url and type settings                         | Object   | -        |
 | options             | Control video playback properties                          | Object  | - |
