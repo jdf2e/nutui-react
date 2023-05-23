@@ -1,6 +1,5 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
 import { render, unmount } from '@/utils/render'
 import Overlay from '@/packages/overlay/index'
 import { Check, Loading, Failure, Issue } from '@nutui/icons-react'
@@ -19,6 +18,8 @@ export interface NotificationProps extends BasicComponent {
   contentStyle?: React.CSSProperties
   onClose: () => void
 }
+
+const classPrefix = 'nut-toast'
 
 export default class Notification extends React.PureComponent<NotificationProps> {
   static newInstance: (properties: NotificationProps, callback: any) => void
@@ -65,7 +66,6 @@ export default class Notification extends React.PureComponent<NotificationProps>
   renderIcon() {
     const { icon } = this.props
     if (typeof icon === 'string') {
-      const toastBem = bem('toast')
       let iconNode = null
       switch (icon) {
         case 'success':
@@ -81,7 +81,7 @@ export default class Notification extends React.PureComponent<NotificationProps>
           iconNode = <Issue />
           break
       }
-      return <p className={toastBem('icon-wrapper')}>{iconNode}</p>
+      return <p className={`${classPrefix}__icon-wrapper`}>{iconNode}</p>
     }
     return icon
   }
@@ -108,7 +108,6 @@ export default class Notification extends React.PureComponent<NotificationProps>
       contentClassName,
       contentStyle,
     } = this.props
-    const toastBem = bem('toast')
 
     const classes = classNames({
       'nut-toast-has-icon': icon,
@@ -119,23 +118,21 @@ export default class Notification extends React.PureComponent<NotificationProps>
         <Overlay
           visible={true}
           style={style}
-          className={`${toastBem('overlay-default')} ${className}`}
+          className={`${classPrefix}__overlay-default ${className}`}
           onClick={() => {
             console.log('onclick')
             this.clickCover()
           }}
           closeOnOverlayClick={closeOnOverlayClick}
         >
-          <div className={`${toastBem()} ${classes}`} id={`toast-${id}`}>
+          <div className={`${classPrefix} ${classes}`} id={`toast-${id}`}>
             <div
-              className={`${toastBem(
-                'inner'
-              )} nut-toast-${position} ${contentClassName}`}
+              className={`${classPrefix}__inner nut-toast-${position} ${contentClassName}`}
               style={contentStyle}
             >
               {this.renderIcon()}
               {title ? <div className="nut-toast-title">{title}</div> : null}
-              <span className={toastBem('text')}>{content}</span>
+              <span className={`${classPrefix}__text`}>{content}</span>
             </div>
           </div>
         </Overlay>
