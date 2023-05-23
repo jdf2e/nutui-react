@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
-import bem from '@/utils/bem'
 import Overlay from '@/packages/overlay/index'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -39,6 +38,8 @@ const defaultProps = {
   visible: false,
   onClose: () => {}, // 未实现
 } as unknown as ToastProps
+
+const classPrefix = 'nut-toast'
 
 // export default class Notification extends React.PureComponent<NotificationProps> {
 export const Toast: FunctionComponent<
@@ -101,8 +102,6 @@ export const Toast: FunctionComponent<
     }
   }
 
-  const toastBem = bem('toast')
-
   const hasIcon = () => {
     if (type !== 'text') {
       return true
@@ -132,24 +131,24 @@ export const Toast: FunctionComponent<
         <Overlay
           visible={openState}
           style={style}
-          className={`${toastBem('overlay-default')} ${className}`}
+          className={`${classPrefix}__overlay-default ${className}`}
           closeOnOverlayClick={closeOnOverlayClick}
           onClick={() => {
             clickCover()
           }}
         >
-          <div className={`${toastBem()} ${classes}`} id={id}>
+          <div className={`${classPrefix} ${classes}`} id={id}>
             <div
-              className={`${toastBem(
-                'inner'
-              )} nut-toast-${position} ${contentClassName}`}
+              className={`${classPrefix}__inner ${classPrefix}-${position} ${contentClassName}`}
               style={contentStyle}
             >
               {hasIcon() ? (
-                <p className={toastBem('icon-wrapper')}>{iconName()}</p>
+                <p className={`${classPrefix}__icon-wrapper`}>{iconName()}</p>
               ) : null}
-              {title ? <div className="nut-toast-title">{title}</div> : null}
-              <span className={toastBem('text')}>{msg}</span>
+              {title ? (
+                <div className={`${classPrefix}-title`}>{title}</div>
+              ) : null}
+              <span className={`${classPrefix}-text`}>{msg}</span>
             </div>
           </div>
         </Overlay>
