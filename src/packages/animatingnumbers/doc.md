@@ -1,10 +1,10 @@
 # AnimatingNumbers 数字动画
 
-### 介绍
+## 介绍
 
 数字动画集合
 
-### 安装
+## 安装
 
 ```javascript
 // react
@@ -22,7 +22,7 @@ import React from 'react'
 import { AnimatingNumbers } from '@nutui/nutui-react'
 
 const App = () => {
-  return <AnimatingNumbers.CountUp endNumber="678.94" />
+  return <AnimatingNumbers.CountUp value="678.94" />
 }
 export default App
 ```
@@ -38,7 +38,7 @@ import React, { useEffect, useState } from 'react'
 import { AnimatingNumbers } from '@nutui/nutui-react'
 
 const App = () => {
-  const [endNumber, setEndNumer] = useState('1570.99')
+  const [value, setEndNumer] = useState('1570.99')
   useEffect(() => {
     setInterval(() => {
       setEndNumer(
@@ -50,9 +50,9 @@ const App = () => {
   }, [])
   return (
     <AnimatingNumbers.CountUp
-      endNumber={endNumber}
-      easeSpeed={1.2}
-      maxLen={6}
+      value={value}
+      duration={1.2}
+      length={6}
       className="custom-coutup"
     />
   )
@@ -62,14 +62,14 @@ export default App
 
 :::
 
-## API
+## AnimatingNumbers
 
 ### AnimatingNumbers.CountUp Props
 
-| 参数       | 说明                               | 类型    | 默认值 |
-| ---------- | ---------------------------------- | ------- | ------ |
-| maxLen     | 设置最大展示长度，长度不够按位补 0 | number  | `0`      |
-| endNumer   | 结束值,必填项                      | string  | -     |
-| delaySpeed | 等待动画执行时间，单位 ms          | number  | `300`    |
-| easeSpeed  | 动画执行时间，单位 s               | number  | `1`      |
-| thousands  | 是否有千位分隔符                   | boolean | `false`  |
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| length | 设置最大展示长度，数值位数不够，数值前面按位补 0 | `number` | `0` |
+| value | 结束值,必填项 | `string` | `number` |
+| delay | 等待动画执行时间，单位 ms | `number` | `300` |
+| duration | 动画执行时间，单位 s | `number` | `1` |
+| thousands | 是否有千位分隔符 | `boolean` | `false` |
