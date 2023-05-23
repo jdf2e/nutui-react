@@ -86,7 +86,7 @@ const App = () => {
           tipsIcon={<HeartFill1 />}
           iconSize={16}
           onClose={() => close()}
-          noButton={false}
+          hideFooter={false}
           onChange={(value) => setValue(value)}
           onOk={() => setVisible(false)}
           onCancel={() => setVisible(false)}
@@ -197,8 +197,8 @@ export default App;
 | title | title | `string` | `Please input a password` |
 | description | description | `string` | `Verify` |
 | tips | tips | `string` | `Forget password` |
-| noButton | whether to hide the bottom button | `boolean` | `true` |
-| length | ShortPassword lenght The value is 4~6 | `string \| number` | `6` |
+| hideFooter | whether to hide the bottom button | `boolean` | `true` |
+| length | ShortPassword lenght The value is 4~6 | `number` | `6` |
 | errorMsg | Error message | `string` | - |
 | autoFocus | Be focused when ShortPassword is displayed | `boolean` | `false` |
 | tipsIcon | icon of forget tips | `ReactNode` | - |

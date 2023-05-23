@@ -217,6 +217,7 @@
 #### SearchBar
 #### ShortPassword
 - 移除 closeOnOverlayClick，默认支持透传 Popup 属性
+- noButton 重命名为 hideFooter
 #### TextArea
 - maxlength 重命名为 maxLength
 - readonly 重命名为 readOnly

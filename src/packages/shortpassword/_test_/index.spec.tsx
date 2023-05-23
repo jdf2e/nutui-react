@@ -14,7 +14,7 @@ test('should render shortpassword when visible is true', async () => {
   expect(psdLength.length).toBe(6)
   expect((input as HTMLInputElement).value).toBe('123')
 })
-test('should render buttonShortpassword and error msg when noButton is false ', () => {
+test('should render buttonShortpassword and error msg when hideFooter is false ', () => {
   let value = 0
   let inputValue: number | string = ''
   const onCancel = () => {
@@ -28,7 +28,7 @@ test('should render buttonShortpassword and error msg when noButton is false ', 
       visible
       modelValue={123}
       length={4}
-      noButton={false}
+      hideFooter={false}
       errorMsg="错误信息"
       onCancel={onCancel}
       onOk={onOk}

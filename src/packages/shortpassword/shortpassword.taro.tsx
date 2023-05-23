@@ -21,9 +21,9 @@ export interface ShortPasswordProps extends PopupProps {
   visible: boolean
   modelValue: string | number
   errorMsg: string
-  noButton: boolean
-  length: string | number
-  autoFocus?: boolean
+  hideFooter: boolean
+  length: number
+  autoFocus: boolean
   onChange: (value: string | number) => void
   onOk: (value: string | number) => void
   onCancel: () => void
@@ -34,15 +34,9 @@ export interface ShortPasswordProps extends PopupProps {
 
 const defaultProps = {
   ...ComponentDefaults,
-  title: '',
-  description: '',
-  tips: '',
-  tipsIcon: null,
   iconSize: 11,
   visible: false,
-  modelValue: '',
-  errorMsg: '',
-  noButton: true,
+  hideFooter: true,
   length: 6, // 1~6
   autoFocus: false,
   onChange: (value: number | string) => {},
@@ -65,7 +59,7 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
     visible,
     modelValue,
     errorMsg,
-    noButton,
+    hideFooter,
     length,
     style,
     className,
@@ -83,7 +77,7 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
   const range = (val: number) => {
     return Math.min(Math.max(4, val), 6)
   }
-  const [comLen, setComLen] = useState<number>(range(Number(length)))
+  const [comLen, setComLen] = useState<number>(range(length as number))
   const [inputValue, setInputValue] = useState<number | string>('')
   useEffect(() => {
     if (typeof modelValue !== 'undefined') {
@@ -198,7 +192,7 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
             </div>
           ) : null}
         </div>
-        {!noButton ? (
+        {!hideFooter ? (
           <div className={`${classPrefix}__footer`}>
             <div
               className={`${classPrefix}__footer__cancel`}

@@ -73,7 +73,7 @@ const ShortPasswordDemo = () => {
           setVisible2(false)
           setValue('')
         }}
-        noButton={false}
+        hideFooter={false}
         onOk={() => setVisible2(false)}
         onCancel={() => setVisible2(false)}
       />

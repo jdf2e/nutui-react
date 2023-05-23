@@ -86,7 +86,7 @@ const App = () => {
           tipsIcon={<HeartFill1 />}
           iconSize={16}
           onClose={() => close()}
-          noButton={false}
+          hideFooter={false}
           onChange={(value) => setValue(value)}
           onOk={() => setVisible(false)}
           onCancel={() => setVisible(false)}
@@ -197,8 +197,8 @@ export default App;
 | title | 标题 | `string` | `请输入密码` |
 | description | 密码框描述 | `string` | `您使用了虚拟资产，请进行验证` |
 | tips | 提示语 | `string` | `忘记密码` |
-| noButton | 是否隐藏底部按钮 | `boolean` | `true` |
-| length | 密码长度，取值为4~6 | `string \| number` | `6` |
+| hideFooter | 是否隐藏底部按钮 | `boolean` | `true` |
+| length | 密码长度，取值为4~6 | `number` | `6` |
 | errorMsg | 错误信息提示 | `string` | - |
 | autoFocus | 自动聚焦 | `boolean` | `false` |
 | tipsIcon | 忘记密碼提示icon | `ReactNode` | - |
