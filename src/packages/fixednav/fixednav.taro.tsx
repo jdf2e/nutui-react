@@ -75,7 +75,7 @@ export const FixedNav: FunctionComponent<
   )
 
   const handleClick = (item: any, event: MouseEvent): void => {
-    onSelect(event, item)
+    onSelect(item, event)
   }
 
   const onUpdateValue = (value = !visible): void => {
