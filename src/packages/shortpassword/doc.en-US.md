@@ -88,7 +88,7 @@ const App = () => {
           onClose={() => close()}
           hideFooter={false}
           onChange={(value) => setValue(value)}
-          onOk={() => setVisible(false)}
+          onConfirm={() => setVisible(false)}
           onCancel={() => setVisible(false)}
         />
       </>
@@ -209,7 +209,7 @@ export default App;
 | Event | Description | Arguments |
 | --- | --- | --- |
 | onChange | Trigger event when password is entered | value |
-| onOk | Trigger event when true is clicked | value |
+| onConfirm | Trigger event when true is clicked | value |
 | onCancel | Trigger an event when the popup layer is clicked or canceled | \- |
 | onClose | Trigger an event when the close icon is clicked | \- |
 | onTips | Trigger an event when the forget password is clicked | \- |

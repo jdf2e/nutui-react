@@ -25,7 +25,7 @@ export interface ShortPasswordProps extends PopupProps {
   length: number
   autoFocus: boolean
   onChange: (value: string | number) => void
-  onOk: (value: string | number) => void
+  onConfirm: (value: string | number) => void
   onCancel: () => void
   onClose: () => void
   onTips: () => void
@@ -40,7 +40,7 @@ const defaultProps = {
   length: 6, // 1~6
   autoFocus: false,
   onChange: (value: number | string) => {},
-  onOk: (value: number | string) => {},
+  onConfirm: (value: number | string) => {},
   onCancel: () => {},
   onClose: () => {},
   onTips: () => {},
@@ -64,7 +64,7 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
     style,
     className,
     onChange,
-    onOk,
+    onConfirm,
     onTips,
     onCancel,
     onClose,
@@ -119,7 +119,7 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
     }
   }
   const sure = () => {
-    onOk && onOk(inputValue)
+    onConfirm && onConfirm(inputValue)
   }
 
   const renderIcon = (size: string | number = '11px') => {

@@ -87,7 +87,7 @@ const App = () => {
           onClose={() => close()}
           hideFooter={false}
           onChange={(value) => setValue(value)}
-          onOk={() => setVisible(false)}
+          onConfirm={() => setVisible(false)}
           onCancel={() => setVisible(false)}
         />
       </>
@@ -208,7 +208,7 @@ export default App;
 | 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
 | onChange | 输入密码时触发事件 | 当前输入框值value |
-| onOk | 点击确认时触发事件 | 当前输入框值value |
+| onConfirm | 点击确认时触发事件 | 当前输入框值value |
 | onCancel | 点击取消时触发事件 | \- |
 | onClose | 点击关闭图标和遮罩时触发事件 | \- |
 | onTips | 点击忘记密码时触发事件 | \- |

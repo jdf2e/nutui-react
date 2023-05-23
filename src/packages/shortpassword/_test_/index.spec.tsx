@@ -20,7 +20,7 @@ test('should render buttonShortpassword and error msg when hideFooter is false '
   const onCancel = () => {
     value = 1
   }
-  const onOk = (value: number | string) => {
+  const onConfirm = (value: number | string) => {
     inputValue = value
   }
   const { container } = render(
@@ -31,7 +31,7 @@ test('should render buttonShortpassword and error msg when hideFooter is false '
       hideFooter={false}
       errorMsg="错误信息"
       onCancel={onCancel}
-      onOk={onOk}
+      onConfirm={onConfirm}
     />
   )
   const input = container.querySelector('.nut-shortpassword__input-real')
