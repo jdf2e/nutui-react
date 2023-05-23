@@ -216,6 +216,7 @@
 - 增加受控 value 与非受控 defaultValue，移除 modelValue
 #### SearchBar
 #### ShortPassword
+- 移除 closeOnOverlayClick，默认支持透传 Popup 属性
 #### TextArea
 - maxlength 重命名为 maxLength
 - readonly 重命名为 readOnly
