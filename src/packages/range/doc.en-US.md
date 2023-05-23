@@ -65,31 +65,6 @@ import React from "react";
 import { Range, Cell, Toast } from '@nutui/nutui-react';
 
 const App = () => {
-<<<<<<< HEAD
-    const [value, SetValue] = useState(40)
-    const change = (value: number, name?: string) => {
-        Toast.show(`value：${value}`)
-        SetValue(value)
-    }
-    const cellStyle = {
-        padding: '40px 18px',
-    }
-    return (
-    <>
-        <Cell style={cellStyle}>
-           <Range
-            modelValue={value}
-            minDesc="0%"
-            maxDesc="100%"
-            curValueDesc={`${value}%`}
-            onChange={(value) => {
-              change(value)
-            }}
-          />
-        </Cell>
-    </>
-    )
-=======
   const cellStyle = {
     padding: '40px 18px',
   };
@@ -102,7 +77,6 @@ const App = () => {
       onEnd={(val) => Toast.show(`${val}`)}
     />
   </Cell>
->>>>>>> next
 };
 export default App;
 ```

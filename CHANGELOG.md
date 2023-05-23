@@ -1,3 +1,34 @@
+# v2.0.0-alpha.10
+`2023-05-19`
+
+* :sparkles: feat(progress): 添加 lazy、delay 属性 (#1023) @Eiinu
+* :bug: fix: swiper loop 模式位置计算错误 (#1018) @oasis-cloud
+* 🛠 refactor: imagepreview (#1019) @xiaoyatong
+* 🛠 refactor: noticebar (#1024) @xiaoyatong
+* 🛠 refactor: steps (#1021) @oasis-cloud
+* 📖 docs: icon 文档修订 (#1022) @oasis-cloud
+
+
+# v2.0.0-alpha.9
+`2023-05-17`
+
+* :sparkles: feat: add create-properties.js (#1001) @Eiinu
+* :sparkles: feat: cascader支持受控 (#1000) @xiaoyatong
+* :sparkles: feat: elevator 支持右侧索引是否展示 (#1006) @拧巴的猫
+* :bug: fix(image): lazy 优化观察对象数量 (#1015) @Eiinu
+* :bug: fix: tabs children 变更后需要展示新的 title (#999) @oasis-cloud
+* :bug: fix: 格式化，删掉某些无用代码 (#1014) @xiaoyatong
+* 🛠 refactor: notify (#983) @拧巴的猫
+* 🛠 refactor: NumberKeyboard (#1012) @Eiinu
+* 🛠 refactor: price (#989) @拧巴的猫
+* 🛠 refactor: pulltorefresh (#1011) @oasis-cloud
+* 🛠 refactor: radio (#1009) @oasis-cloud
+* 🛠 refactor: Range (#991) @Eiinu
+* 🛠 refactor: swiper 重构；indcator 的索引计算改为从 0 开始 (#1008) @oasis-cloud
+* 🔨 chore: autoplay -> autoPlay (#1007) @Eiinu
+* 📖 docs(tabbar): update description (#1004) @Eiinu
+
+
 # v2.0.0-alpha.8
 `2023-05-12`
 * :sparkles:feat: cascader支持受控 (#1000) @xiaoyatong

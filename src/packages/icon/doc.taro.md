@@ -1,14 +1,17 @@
 # Icon 图标
 
-### 介绍
+## 介绍
 
 独立安装 @nutui/icons-react-taro 图标组件包。基于字体的图标集。
-### 安装
+## 安装
 
 ```bash
 npm i --save @nutui/icons-react-taro
 ```
 
+> 在 taro 项目中使用，需要将 prebundle 关闭。
+
+## 代码演示
 ### 方式一： 按需使用
 按需加载组件使用方式，可选项见 @nutui/icons-react-taro/dist/types/index.d.ts
 
@@ -31,13 +34,13 @@ import { IconFont } from '@nutui/icons-react-taro'
 :::demo
 ```tsx
 import React from "react";
-import { Icon } from '@nutui/nutui-react';
+import { IconFont } from '@nutui/icons-react-taro'
 
 const App = () => {
   return <>
-    <Icon name="dongdong" />
-    <Icon name="JD"/>
-    <Icon size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"/>
+    <IconFont name="dongdong" />
+    <IconFont name="JD"/>
+    <IconFont size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"/>
   </>
 }
 export default App;
@@ -157,24 +160,19 @@ const App = () => {
 export default App;
 ```
 
-## API
+## IconFont
 
 ### Props
 
-| 参数          | 说明                             | 类型             | 默认值           |
+| 属性        | 说明                             | 类型             | 默认值           |
 |-------------|----------------------------------|------------------|------------------|
-| name        | 图标名称或图片链接               | string           | -                |
-| color       | 图标颜色                         | string           | -                |
-| size        | 图标大小，如 `20px` `2em` `2rem` | string \| number | -                |
-| classPrefix | 类名前缀，用于使用自定义图标     | string           | `nut-iconfont` |
-| fontClassName           | 自定义 icon 字体基础类名                        | string           | `nutui-iconfont`              |
-| tag         | tsx 标签                        | string           | `i`              |
-
-### Events
-
-| 事件名           | 说明           | 回调参数     |
-|---------------|----------------|--------------|
-| onClick | 点击图标时触发 | `event: Event` |
+| name        | 图标名称或图片链接               | `string`         | -                |
+| color       | 图标颜色                         | `string`         | -                |
+| size        | 图标大小，如 `20px` `2em` `2rem` | `string \| number` | -                |
+| classPrefix | 类名前缀，用于使用自定义图标     | `string`           | `nut-iconfont` |
+| fontClassName | 自定义 icon 字体基础类名 | `string`  | `nutui-iconfont`  |
+| tag  | tsx 标签 | string | `i` |
+| onClick | 点击图标时触发 | `event: Event` | `-` |
 
 
 ## 主题定制
@@ -183,8 +181,8 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-icon-height | `20px` |
-| --nutui-icon-width | `20px` |
-| --nutui-icon-line-height | `20px` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-icon-height | iconfont 容器的高度 | `16px` |
+| --nutui-icon-width | iconfont 容器的宽度 | `16px` |
+| --nutui-icon-line-height | iconfont 的行高 | `16px` |

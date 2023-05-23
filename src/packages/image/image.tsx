@@ -123,7 +123,6 @@ export const Image: FunctionComponent<
   // 图片懒加载
   const observer: any = useRef(null)
   const initObserver = () => {
-    const images = document.querySelectorAll('.nut-img.lazyload')
     const options = {
       threshold: [0], // 交会处
       rootMargin: '0px', // 对视口进行收缩和扩张
@@ -141,14 +140,12 @@ export const Image: FunctionComponent<
               img.removeAttribute('data-src')
             }
             // 资源加载后停止监听
-            observer.current.unobserve(item.target)
+            resetObserver()
           }, 300)
         }
       })
     }, options)
-    images.forEach((item) => {
-      observer.current.observe(item)
-    })
+    observer.current.observe(imgRef.current)
   }
 
   // 使用disconnect将取消的Observer实例中的所有监听

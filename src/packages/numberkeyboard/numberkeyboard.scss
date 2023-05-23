@@ -1,40 +1,5 @@
 @import '../popup/popup.scss';
 
-.nut-theme-dark {
-  .nut-numberkeyboard {
-    background-color: $dark5;
-
-    &__body {
-      background-color: $dark5;
-      color: $dark1;
-
-      .nut-numberkeyboard__body__keys,
-      .nut-numberkeyboard__sidebar {
-        .key-board-wrapper {
-          background-color: $dark5;
-
-          .key {
-            background-color: $dark4;
-            color: $dark1;
-          }
-        }
-      }
-    }
-
-    .nut-numberkeyboard__header {
-      .nut-numberkeyboard__header__tit {
-        color: $dark1;
-      }
-    }
-
-    &__header {
-      &__close {
-        color: $dark1 !important;
-      }
-    }
-  }
-}
-
 .nut-numberkeyboard {
   width: $numberkeyboard-width;
   padding: $numberkeyboard-padding;
@@ -42,7 +7,7 @@
   user-select: none;
   background-color: $gray4;
 
-  .nut-numberkeyboard__header {
+  &__header {
     position: relative;
     display: flex;
     align-items: center;
@@ -53,12 +18,12 @@
     color: $numberkeyboard-header-color;
     font-size: $numberkeyboard-header-font-size;
 
-    .nut-numberkeyboard__header__tit {
+    &__title {
       color: $title-color;
       display: inline-block;
     }
 
-    .nut-numberkeyboard__header__close {
+    &__close {
       position: absolute;
       display: block;
       right: 0;
@@ -71,17 +36,17 @@
     }
   }
 
-  .nut-numberkeyboard__body {
+  &__body {
     display: flex;
     padding: 6px 0 0 6px;
 
-    .nut-numberkeyboard__body__keys {
+    &__keys {
       display: flex;
       flex: 3;
       flex-wrap: wrap;
     }
 
-    .key-board-wrapper {
+    &__wrapper {
       position: relative;
       flex: 1;
       flex-basis: 33%;
@@ -100,47 +65,34 @@
         color: $numberkeyboard-key-font-color;
         border-radius: $numberkeyboard-key-border-radius;
         cursor: pointer;
-      }
-
-      .active {
-        background-color: $numberkeyboard-key-active-background-color;
-      }
-
-      img {
-        width: 30px;
-        height: 24px;
+        &.active {
+          background-color: $numberkeyboard-key-active-background-color;
+        }
       }
     }
+  }
 
-    .key-board-wrapper-large {
-      flex-basis: 66%;
-    }
+  &__sidebar {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
 
-    .nut-numberkeyboard__sidebar {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
+    .nut-numberkeyboard__body__wrapper {
+      .key {
+        position: absolute;
+        top: 0;
+        right: 6px;
+        bottom: 6px;
+        left: 0;
+        height: auto;
+      }
 
-      .key-board-wrapper {
-        .key {
-          position: absolute;
-          top: 0;
-          right: 6px;
-          bottom: 6px;
-          left: 0;
-          height: auto;
-        }
-
-        .finish {
-          font-size: $numberkeyboard-key-finish-font-size;
-          color: $numberkeyboard-key-finish-font-color;
-          background-color: $numberkeyboard-key-finish-background-color;
-        }
-
-        .activeFinsh {
-          font-size: $numberkeyboard-key-finish-font-size;
-          color: $numberkeyboard-key-finish-font-color;
-          background-color: $numberkeyboard-key-activeFinsh-background-color;
+      .confirm {
+        font-size: $numberkeyboard-key-confirm-font-size;
+        color: $numberkeyboard-key-confirm-font-color;
+        background-color: $numberkeyboard-key-confirm-background-color;
+        &.active {
+          background-color: rgba(255, 0, 0, 0.7);
         }
       }
     }

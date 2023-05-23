@@ -1,139 +1,96 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback } from 'react'
+import classNames from 'classnames'
 import { RadioGroupOptionType } from './type'
-import RadioContext from '../radio/context'
-import Radio from '../radio/index.taro'
-import bem from '@/utils/bem'
+import RadioContext from './context'
+import { Radio } from '../radio/radio.taro'
+import { usePropsValue } from '@/utils/use-props-value'
 
 type Position = 'left' | 'right'
 type Direction = 'horizontal' | 'vertical'
 
 export interface RadioGroupProps {
-  value: string | number | boolean | null
-  textPosition: Position
+  value?: string | number
+  defaultValue?: string | number
+  labelPosition: Position
   direction: Direction
-  onChange: (value: string | number | boolean) => void
+  disabled?: boolean
   options: RadioGroupOptionType[]
+  onChange: (value: string | number) => void
 }
 
 const defaultProps = {
-  value: null,
-  textPosition: 'right',
-  onChange: (value: string | number | boolean) => {},
+  labelPosition: 'right',
+  onChange: (value: string | number) => {},
   direction: 'vertical',
   options: [],
 } as RadioGroupProps
+
+const classPrefix = 'nut-radiogroup'
+
 export const RadioGroup = React.forwardRef(
   (
     props: Partial<RadioGroupProps> &
       Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
     ref
   ) => {
-    const { children } = { ...defaultProps, ...props }
-    const b = bem('RadioGroup')
     const {
+      children,
       className,
       value,
+      defaultValue,
       onChange,
-      textPosition,
+      labelPosition,
       direction,
       options,
+      disabled,
       ...rest
-    } = props
+    } = { ...defaultProps, ...props }
 
-    const [val2State, setVal2State] = useState(value)
-
-    // useImperativeHandle(ref, () => ({
-    //   toggleAll(state: boolean) {
-    //     console.log(state)
-    //     if (state === false) {
-    //       setInnerValue([])
-    //     } else {
-    //       const childrenLabel: string[] = []
-    //       React.Children.map(children, (child) => {
-    //         const childProps = (child as any).props
-    //         childrenLabel.push(childProps.label || (child as any).children)
-    //       })
-    //       setInnerValue(childrenLabel)
-    //     }
-    //   },
-    // }))
-
-    useEffect(() => {
-      setVal2State(value)
-    }, [value])
-
-    // function handleChildChange(state: boolean, label: string) {
-    //   if (innerValue) {
-    //     let clippedValue = []
-    //     if (state) {
-    //       clippedValue = [...innerValue, label]
-    //     } else {
-    //       innerValue?.splice(innerValue?.indexOf(label), 1)
-    //       clippedValue = [...innerValue]
-    //     }
-    //     setInnerValue(clippedValue)
-    //     onChange && onChange(clippedValue)
-    //   }
-    // }
-
-    function validateChildChecked(child: any) {
-      if (val2State === null) return false
-      return val2State === child.props.value
-    }
-
-    function validateChecked(value: any) {
-      if (val2State === null) return false
-      return val2State === value
-    }
-
-    function cloneChildren() {
-      return React.Children.map(children, (child: any, index) => {
-        const childChecked = validateChildChecked(child)
-        if ((child as any).type.displayName !== 'NutRadio') {
-          return React.cloneElement(child)
-        }
-        return React.cloneElement(child, {
-          textPosition,
-          checked: childChecked,
-          // onChange: handleChildChange,
-        })
-      })
-    }
+    const [val2State, setVal2State] = usePropsValue<string | number>({
+      defaultValue: props.defaultValue,
+      value: props.value,
+      finalValue: '',
+      onChange,
+    })
 
     const renderOptionsChildren = useCallback(() => {
       return options?.map(({ label, value, disabled, onChange, ...rest }) => {
-        const childChecked = validateChecked(value)
         return (
           <Radio
+            {...rest}
             key={value?.toString()}
             children={label}
             value={value}
             disabled={disabled}
             onChange={onChange}
-            {...rest}
-            textPosition={textPosition}
-            checked={childChecked}
+            labelPosition={labelPosition}
+            checked={value === val2State}
           />
         )
       })
-    }, [val2State, options])
+    }, [options])
 
     return (
       <RadioContext.Provider
         value={{
-          onChange: (val) => {
-            setVal2State(val)
-            onChange && onChange(val)
+          labelPosition: labelPosition || 'right',
+          disabled,
+          value: val2State,
+          check: (value: string | number) => {
+            setVal2State(value)
+          },
+          uncheck: () => {
+            setVal2State('')
           },
         }}
       >
         <div
-          className={`nut-radiogroup nut-radiogroup--${props.direction} ${
-            className || ''
-          }`}
+          className={classNames(classPrefix, className, {
+            [`${classPrefix}--${props.direction}`]: props.direction,
+          })}
           {...rest}
         >
-          {options?.length ? renderOptionsChildren() : cloneChildren()}
+          {options?.length ? renderOptionsChildren() : children}
         </div>
       </RadioContext.Provider>
     )

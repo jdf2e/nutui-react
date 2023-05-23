@@ -3,10 +3,7 @@ import Radio from '@/packages/radio'
 import Cell from '@/packages/cell'
 import CellGroup from '@/packages/cellgroup'
 import { useTranslate } from '../../sites/assets/locale'
-
 import VirtualList from './index'
-
-const { RadioGroup } = Radio
 
 const ListDemo = () => {
   const [translated] = useTranslate<any>({
@@ -140,7 +137,7 @@ const ListDemo = () => {
       <div className="demo">
         <CellGroup>
           <Cell>
-            <RadioGroup
+            <Radio.Group
               value={radioVal}
               onChange={handleChange}
               direction="horizontal"
@@ -149,7 +146,7 @@ const ListDemo = () => {
               <Radio value="2">{translated.text2}</Radio>
               <Radio value="3">{translated.text3}</Radio>
               <Radio value="4">{translated.text4}</Radio>
-            </RadioGroup>
+            </Radio.Group>
           </Cell>
         </CellGroup>
         <div key={radioVal} className="nut-virtualList-demo-box hideScrollbar">
