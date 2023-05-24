@@ -761,6 +761,7 @@
           "author": "oasis"
         },
         {
+          "version": "2.0.0",
           "name": "Skeleton",
           "type": "component",
           "cName": "骨架屏",

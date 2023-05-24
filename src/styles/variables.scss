@@ -1939,9 +1939,15 @@ $form-item-tip-font-size: var(--nutui-form-item-tip-font-size, 10px) !default;
 $form-item-tip-text-align: var(--nutui-form-item-tip-text-align, left) !default;
 
 // skeleton（✅）
-$skeleton-content-line-title-background-color: var(
-  --nutui-skeleton-content-line-title-background-color,
-  #efefef
+$skeleton-background: var(
+  --nutui-skeleton-background,
+  rgb(239, 239, 239)
+) !default;
+$skeleton-line-width: var(--nutui-skeleton-line-width, 100%) !default;
+$skeleton-line-height: var(--nutui-skeleton-line-height, 15px) !default;
+$skeleton-line-border-radius: var(
+  --nutui-skeleton-line-border-radius,
+  0
 ) !default;
 
 // sku（✅ todo：react版本该组件暂无，将变量先迁过来）

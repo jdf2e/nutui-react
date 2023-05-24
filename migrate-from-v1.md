@@ -374,6 +374,11 @@
 - 新增 lazy 属性，支持每次进入可视区时展示进度条动画
 - 新增 delay 属性，表示延迟数据加载时长
 #### Skeleton
+- loading 重命名为 visible
+- row 重命名为 rows
+- 移除 width，通过 css 变量 skeleton-line-width 实现
+- 移除 height，通过 css 变量 skeleton-line-height 实现
+- 移除 round，通过 css 变量 skeleton-line-border-radius 实现
 #### Steps
 - current 重命名为 value
 - onClickStep 重命名为 onStepClick
