@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react-taro",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "京东风格的轻量级移动端 React 组件库，支持一套代码生成 H5 和小程序",
   "title": "NutUI-React",
   "keywords": [
