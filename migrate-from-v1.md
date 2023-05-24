@@ -222,6 +222,8 @@
 - errorMsg 重命名为 error
 - 移除 closeOnClickOverlay，默认支持透传 Popup 属性
 - title、description、tips、error 类型修改为 ReactNode
+- modelValue 重命名为 value，受控模式
+- 新增 onFoucs 事件
 #### TextArea
 - maxlength 重命名为 maxLength
 - readonly 重命名为 readOnly

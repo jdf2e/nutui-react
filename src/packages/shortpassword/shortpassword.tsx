@@ -1,10 +1,4 @@
-import React, {
-  FunctionComponent,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react'
 import { Tips } from '@nutui/icons-react'
 import classNames from 'classnames'
 import Popup from '@/packages/popup'
@@ -17,11 +11,12 @@ export interface ShortPasswordProps extends PopupProps {
   description: ReactNode
   tips: ReactNode
   visible: boolean
-  modelValue: string | number
+  value: string | number
   error: ReactNode
   hideFooter: boolean
   length: number
   autoFocus: boolean
+  onFocus: () => void
   onChange: (value: string | number) => void
   onConfirm: (value: string | number) => void
   onCancel: () => void
@@ -36,12 +31,6 @@ const defaultProps = {
   hideFooter: true,
   length: 6, // 1~6
   autoFocus: false,
-  onChange: (value: number | string) => {},
-  onConfirm: (value: number | string) => {},
-  onCancel: () => {},
-  onClose: () => {},
-  onTips: () => {},
-  onComplete: (value: number | string) => {},
 } as ShortPasswordProps
 export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
   props
@@ -52,12 +41,13 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
     description,
     tips,
     visible,
-    modelValue,
+    value,
     error,
     hideFooter,
     length,
     style,
     className,
+    onFocus,
     onChange,
     onConfirm,
     onTips,
@@ -68,51 +58,16 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
     ...rest
   } = props
   const classPrefix = 'nut-shortpassword'
-  const textInput = useRef<HTMLInputElement>(null)
   const range = (val: number) => {
     return Math.min(Math.max(4, val), 6)
   }
   const [comLen, setComLen] = useState<number>(range(length as number))
   const [inputValue, setInputValue] = useState<number | string>('')
   useEffect(() => {
-    if (typeof modelValue !== 'undefined') {
-      setInputValue(modelValue)
+    if (typeof value !== 'undefined') {
+      setInputValue(value)
     }
-  }, [modelValue])
-  const changeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let inputValue = e.target.value
-    if (String(inputValue).length > comLen) {
-      inputValue = inputValue.slice(0, comLen)
-    }
-    setInputValue(inputValue)
-    if (String(inputValue).length === comLen) {
-      onComplete && onComplete(inputValue)
-    }
-    onChange && onChange(inputValue)
-  }
-  const systemStyle = () => {
-    const u = navigator.userAgent
-    const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1 // g
-    const isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) // ios终端
-    let style = {}
-    if (isIOS) {
-      style = {
-        paddingRight: '1200px',
-      }
-    }
-    if (isAndroid) {
-      style = {
-        opacity: 0,
-        zIndex: 10,
-      }
-    }
-    return style
-  }
-  const focus = () => {
-    if (textInput.current) {
-      textInput.current.focus()
-    }
-  }
+  }, [value])
   const sure = () => {
     onConfirm && onConfirm(inputValue)
   }
@@ -134,23 +89,13 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
         <div className={`${classPrefix}__title`}>
           {title || locale.shortpassword.title}
         </div>
-        <div className={`${classPrefix}__subtitle`}>
+        <div className={`${classPrefix}__description`}>
           {description || locale.shortpassword.description}
         </div>
 
-        <div className={`${classPrefix}__input`}>
-          <input
-            ref={textInput}
-            className={`${classPrefix}__input-real`}
-            type="number"
-            style={systemStyle()}
-            maxLength={6}
-            value={inputValue}
-            autoFocus={autoFocus}
-            onChange={(e) => changeValue(e)}
-          />
+        <div className={`${classPrefix}__input`} onClick={onFocus}>
           <div className={`${classPrefix}__input-site`} />
-          <div className={`${classPrefix}__input-fake`} onClick={() => focus()}>
+          <div className={`${classPrefix}__input-fake`}>
             {[...new Array(comLen).keys()].map((item, index) => {
               return (
                 <div className={`${classPrefix}__input-fake__li`} key={index}>

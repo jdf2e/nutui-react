@@ -3,6 +3,7 @@ import { HeartFill1 } from '@nutui/icons-react'
 import Cell from '../cell'
 import Toast from '../toast'
 import { ShortPassword } from './shortpassword'
+import NumberKeyboard from '../numberkeyboard/index'
 import { useTranslate } from '@/sites/assets/locale'
 
 const ShortPasswordDemo = () => {
@@ -39,6 +40,12 @@ const ShortPasswordDemo = () => {
   const onTips = () => {
     Toast.text(translated.forgetPassword)
   }
+  const onChange1 = (v: string) => {
+    setValue((value) => value + v)
+  }
+  const onDelete1 = () => {
+    setValue((value) => String(value).slice(0, -1))
+  }
   return (
     <div className="demo">
       <h2>{translated.basic}</h2>
@@ -50,12 +57,19 @@ const ShortPasswordDemo = () => {
       />
       <ShortPassword
         visible={visible1}
-        modelValue={value}
+        value={value}
+        onFocus={() => setVisible2(true)}
         onClose={() => {
           setVisible1(false)
           setValue('')
         }}
         onChange={(value) => change(value)}
+      />
+      <NumberKeyboard
+        visible={visible2}
+        onClose={() => setVisible2(false)}
+        onChange={onChange1}
+        onDelete={onDelete1}
       />
       <h2>{translated.displayButton}</h2>
       <Cell
@@ -65,8 +79,8 @@ const ShortPasswordDemo = () => {
         }}
       />
       <ShortPassword
-        visible={visible2}
-        modelValue={value}
+        visible={visible3}
+        value={value}
         tips={
           <>
             <HeartFill1 width={11} height={11} />
@@ -90,7 +104,7 @@ const ShortPasswordDemo = () => {
       />
       <ShortPassword
         visible={visible3}
-        modelValue={value}
+        value={value}
         onClose={() => {
           setVisible3(false)
           setValue('')
@@ -106,7 +120,7 @@ const ShortPasswordDemo = () => {
       />
       <ShortPassword
         visible={visible4}
-        modelValue={value}
+        value={value}
         onClose={() => {
           setVisible4(false)
           setValue('')
@@ -122,7 +136,7 @@ const ShortPasswordDemo = () => {
       />
       <ShortPassword
         visible={visible5}
-        modelValue={value}
+        value={value}
         onClose={() => {
           setVisible5(false)
           setValue('')

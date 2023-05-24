@@ -5,7 +5,7 @@ import '@testing-library/jest-dom'
 import { ShortPassword } from '../shortpassword'
 
 test('should render shortpassword when visible is true', async () => {
-  const { container } = render(<ShortPassword visible modelValue={123} />)
+  const { container } = render(<ShortPassword visible value={123} />)
   const input = container.querySelector('.nut-shortpassword__input-real')
   expect(input).toBeTruthy()
   const psdLength = container.querySelectorAll(
@@ -26,7 +26,7 @@ test('should render buttonShortpassword and error msg when hideFooter is false '
   const { container } = render(
     <ShortPassword
       visible
-      modelValue={123}
+      value={123}
       length={4}
       hideFooter={false}
       errorMsg="错误信息"
@@ -59,7 +59,7 @@ test('should limit input value when input', async () => {
     value = Number(v)
   }
   const { container } = render(
-    <ShortPassword visible modelValue={123} length={4} onChange={onChange} />
+    <ShortPassword visible value={123} length={4} onChange={onChange} />
   )
   container.querySelector('input')?.focus()
   fireEvent.change(container.querySelector('input')!, {
