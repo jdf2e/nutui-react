@@ -1,3 +1,17 @@
+# v2.0.0-alpha.11
+`2023-05-24`
+
+* 🛠 refactor: collapse (#1027) @Eiinu
+* 🛠 refactor: Skeleton (#1036) @Eiinu
+* :sparkles: feat: 添加土耳其语 (#1028) @manin
+* :bug: fix(fixednav): 修改 onSelect 参数顺序 (#1035) @Eiinu
+* :bug: fix: 修复taro下拉刷新组件偶发未触发canRelease状态时松手，组件不会自动回弹的问题 (#1029) @Z-Bokle
+* 🔨 chore: 增加同步升级文档到 docs 仓库的脚本 (#1044) @oasis-cloud
+* 🔨 chore: 完善组件导出的类型 (#1039) @oasis-cloud
+* 🔨 chore: 构建每个组件的 css 文件 (#1037) @oasis-cloud
+* 📖 docs: 文档 props 标题统一修复 (#1041) @oasis-cloud
+
+
 # v2.0.0-alpha.10
 `2023-05-19`
 
