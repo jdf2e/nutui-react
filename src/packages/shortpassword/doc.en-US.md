@@ -19,31 +19,85 @@ import { ShortPassword } from '@nutui/nutui-react';
 
 ```tsx
 import React, { useState } from "react";
-import { Cell,ShortPassword } from '@nutui/nutui-react';
+import { Cell, ShortPassword, NumberKeyboard } from '@nutui/nutui-react';
 
 const App = () => {
-  const [visible,setVisible] = useState(false)
-  const [value,setValue] = useState('')
-  const close = ()=>{
-    setVisible(false)
-    setValue('')
+  const [visible1, setVisible1] = useState(false)
+  const [visible, setVisible] = useState(false)
+  const [value, setValue] = useState('')
+  const onChange = (v: string) => {
+    setValue((value) => value + v)
+  }
+  const onDelete = () => {
+    setValue((value) => value.slice(0, -1))
   }
   return (
-     <>
-       <Cell
-        title="Basic Usage"
-        
-        onClick={() => {
-          setVisible(true)
-        }}
-       />
-        <ShortPassword
-        visible={visible}
+    <>
+      <Cell title="Basic Usage" onClick={() => setVisible1(true)} />
+      <ShortPassword
+        visible={visible1}
         value={value}
-        onClose={() => close()}
+        onFocus={() => setVisible(true)}
+        onClose={() => {
+          setVisible1(false)
+          setValue('')
+        }}
         onChange={(value) => setValue(value)}
-       />
-     </>
+      />
+      <NumberKeyboard
+        visible={visible}
+        onClose={() => setVisible(false)}
+        onChange={onChange}
+        onDelete={onDelete}
+      />
+    </>
+  )
+}
+export default App;
+
+```
+
+:::
+
+### Display Plaintext
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Cell, ShortPassword, NumberKeyboard } from '@nutui/nutui-react';
+
+const App = () => {
+  const [visible2, setVisible2] = useState(false)
+  const [visible, setVisible] = useState(false)
+  const [value, setValue] = useState('')
+  const onChange = (v: string) => {
+    setValue((value) => value + v)
+  }
+  const onDelete = () => {
+    setValue((value) => value.slice(0, -1))
+  }
+  return (
+    <>
+      <Cell title="Display Plaintext" onClick={() => setVisible2(true)} />
+      <ShortPassword
+        visible={visible2}
+        value={value}
+        plain
+        onFocus={() => setVisible(true)}
+        onClose={() => {
+          setVisible2(false)
+          setValue('')
+        }}
+        onChange={(value) => setValue(value)}
+      />
+      <NumberKeyboard
+        visible={visible}
+        onClose={() => setVisible(false)}
+        onChange={onChange}
+        onDelete={onDelete}
+      />
+    </>
   )
 }
 export default App;
@@ -58,40 +112,48 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Cell,ShortPassword } from '@nutui/nutui-react';
+import { Cell, ShortPassword, NumberKeyboard } from '@nutui/nutui-react';
 import { HeartFill1 } from '@nutui/icons-react';
 
 const App = () => {
-  const [visible,setVisible] = useState(false)
-  const [value,setValue] = useState('')
-  const change = (value)=>{
-     setValue(value)
+  const [visible3, setVisible3] = useState(false)
+  const [visible, setVisible] = useState(false)
+  const [value, setValue] = useState('')
+  const onChange = (v: string) => {
+    setValue((value) => value + v)
   }
-   const close = ()=>{
-    setVisible(false)
-    setValue('')
+  const onDelete = () => {
+    setValue((value) => value.slice(0, -1))
   }
   return (
-     <>
-       <Cell
-        title="Show Button Group"
-        
-        onClick={() => {
-          setVisible(true)
+    <>
+      <Cell title="显示按钮组" onClick={() => setVisible3(true)} />
+      <ShortPassword
+        visible={visible3}
+        value={value}
+        tips={
+          <>
+            <HeartFill1 width={11} height={11} />
+            自定义提示语
+          </>
+        }
+        hideFooter={false}
+        onFocus={() => setVisible(true)}
+        onClose={() => {
+          setVisible3(false)
+          setValue('')
         }}
-       />
-        <ShortPassword
-          visible={visible}
-          value={value}
-          tipsIcon={<HeartFill1 />}
-          iconSize={16}
-          onClose={() => close()}
-          hideFooter={false}
-          onChange={(value) => setValue(value)}
-          onConfirm={() => setVisible(false)}
-          onCancel={() => setVisible(false)}
-        />
-      </>
+        onChange={(value) => setValue(value)}
+        onConfirm={() => setVisible3(false)}
+        onCancel={() => setVisible3(false)}
+      />
+      <NumberKeyboard
+        visible={visible}
+        onClose={() => setVisible(false)}
+        onChange={onChange}
+        onDelete={onDelete}
+      />
+    </>
   )
 }
 export default App;
@@ -106,35 +168,39 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Cell,ShortPassword } from '@nutui/nutui-react';
+import { Cell, ShortPassword, NumberKeyboard } from '@nutui/nutui-react';
 
 const App = () => {
-  const [visible,setVisible] = useState(false)
-  const [value,setValue] = useState('')
-  const change = (value)=>{
-     setValue(value)
+  const [visible4, setVisible4] = useState(false)
+  const [visible, setVisible] = useState(false)
+  const [value, setValue] = useState('')
+  const onChange = (v: string) => {
+    setValue((value) => value + v)
   }
-   const close = ()=>{
-    setVisible(false)
-    setValue('')
+  const onDelete = () => {
+    setValue((value) => value.slice(0, -1))
   }
   return (
-     <>
-       <Cell
-        title="Custom Password Length"
-        
-        onClick={() => {
-          setVisible(true)
-        }}
-       />
-        <ShortPassword
-        visible={visible}
+    <>
+      <Cell title="Custom Password Length" onClick={() => setVisible4(true)} />
+      <ShortPassword
+        visible={visible4}
         value={value}
+        onFocus={() => setVisible(true)}
+        onClose={() => {
+          setVisible4(false)
+          setValue('')
+        }}
         onChange={(value) => setValue(value)}
-        onClose={() => close()}
         length={4}
-       />
-     </>
+      />
+      <NumberKeyboard
+        visible={visible}
+        onClose={() => setVisible(false)}
+        onChange={onChange}
+        onDelete={onDelete}
+      />
+    </>
   )
 }
 export default App;
@@ -149,35 +215,89 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Cell,ShortPassword,Toast } from '@nutui/nutui-react';
+import { Cell, ShortPassword, NumberKeyboard } from '@nutui/nutui-react';
 
 const App = () => {
-  const [visible,setVisible] = useState(false)
-  const [value,setValue] = useState('')
-   const onTips = () => {
-    Toast.text('Execute forgotten password logic')
+  const [visible5, setVisible5] = useState(false)
+  const [visible, setVisible] = useState(false)
+  const [value, setValue] = useState('')
+  const onChange = (v: string) => {
+    setValue((value) => value + v)
   }
-   const close = ()=>{
-    setVisible(false)
-    setValue('')
+  const onDelete = () => {
+    setValue((value) => value.slice(0, -1))
+  }
+  const onTips = () => {
+    console.log("Forget password callback")
   }
   return (
-     <>
-       <Cell
-        title="Forget password"
-        
-        onClick={() => {
-          setVisible(true)
-        }}
-       />
-        <ShortPassword
-        visible={visible}
+    <>
+      <Cell title="Forget password callback" onClick={() => setVisible5(true)} />
+      <ShortPassword
+        visible={visible5}
         value={value}
+        onFocus={() => setVisible(true)}
+        onClose={() => {
+          setVisible5(false)
+          setValue('')
+        }}
         onChange={(value) => setValue(value)}
-        onClose={() => close()}
         onTips={() => onTips()}
-       />
-     </>
+      />
+      <NumberKeyboard
+        visible={visible}
+        onClose={() => setVisible(false)}
+        onChange={onChange}
+        onDelete={onDelete}
+      />
+    </>
+  )
+}
+export default App;
+
+```
+
+:::
+
+### Auto Focus
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Cell, ShortPassword, NumberKeyboard } from '@nutui/nutui-react';
+
+const App = () => {
+  const [visible6, setVisible6] = useState(false)
+  const [visible, setVisible] = useState(false)
+  const [value, setValue] = useState('')
+  const onChange = (v: string) => {
+    setValue((value) => value + v)
+  }
+  const onDelete = () => {
+    setValue((value) => value.slice(0, -1))
+  }
+  return (
+    <>
+      <Cell title="Auto Focus" onClick={() => setVisible6(true)} />
+      <ShortPassword
+        visible={visible6}
+        value={value}
+        onFocus={() => setVisible(true)}
+        onClose={() => {
+          setVisible6(false)
+          setValue('')
+        }}
+        onChange={(value) => setValue(value)}
+        autoFocus
+      />
+      <NumberKeyboard
+        visible={visible}
+        onClose={() => setVisible(false)}
+        onChange={onChange}
+        onDelete={onDelete}
+      />
+    </>
   )
 }
 export default App;
@@ -190,7 +310,7 @@ export default App;
 
 ### Props
 
-| Attribute | Description | Type | Default |
+| Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | value | password value | `string` | - |
 | visible | Whether to show shortpassword | `boolean` | `false` |

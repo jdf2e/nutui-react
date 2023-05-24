@@ -77,10 +77,10 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
   }
   const [inputValue, setInputValue] = usePropsValue<string>({ value, onChange })
   useEffect(() => {
-    if (autoFocus) {
+    if (visible && autoFocus) {
       onFocus && onFocus()
     }
-  }, [])
+  }, [visible])
   useEffect(() => {
     const val = format(value)
     if (val.length >= comLen) {
