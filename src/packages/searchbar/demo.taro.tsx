@@ -115,12 +115,11 @@ const SearchBarDemo = () => {
         />
         <h2>{translated.title5}</h2>
         <SearchBar
-          left={<HeartFill1 width={14} height={14} />}
-          right={<StarFill width={14} height={14} />}
+          left={<HeartFill1 size={14} />}
+          right={<StarFill size={14} />}
           rightIn={
             <StarFill
-              width={14}
-              height={14}
+              size={14}
               onClick={() => {
                 console.log('StarFill right in')
               }}
@@ -138,9 +137,16 @@ const SearchBarDemo = () => {
               }}
               list={itemList}
             >
-              <div style={{ fontSize: '12px', width: '50px', display: 'flex' }}>
+              <div
+                style={{
+                  fontSize: '12px',
+                  width: '50px',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
                 更多
-                <ArrowDown />
+                <ArrowDown size={8} style={{ marginLeft: '5px' }} />
               </div>
             </Popover>
           }

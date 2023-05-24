@@ -107,12 +107,11 @@ import { HeartFill1, StarFill, ArrowDown } from '@nutui/icons-react-taro'
 const App = () => {
   return <>
     <SearchBar
-      left={<HeartFill1 width={14} height={14} />}
-      right={<StarFill width={14} height={14} />}
+      left={<HeartFill1 size={14}/>}
+      right={<StarFill size={14} />}
       rightIn={
         <StarFill
-          width={14}
-          height={14}
+          size={14}
           onClick={() => {
             console.log('StarFill right in')
           }}
@@ -150,7 +149,7 @@ const App = () => {
         >
           <div style={{ fontSize: '12px', width: '50px', display: 'flex' }}>
             更多
-            <ArrowDown />
+            <ArrowDown size={8}/>
           </div>
         </PopOver>
       }
@@ -213,7 +212,6 @@ export default App;
 | onBlur  | 失焦时触发 | `(value: string, event: Event) => void` |
 | onSearch  | 确定搜索时触发 | `(val: string) => void` |
 | onClickInput |	点击输入区域时触发	 | `(event: Event) => void` |
-
 
 ## 主题定制
 
