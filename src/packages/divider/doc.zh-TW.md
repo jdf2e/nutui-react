@@ -149,7 +149,7 @@ export default App;
 
 ### Props
 
-| 参数            | 说明                          | 类型    | 默认值 |
+| 属性 | 说明                          | 类型    | 默认值 |
 | --------------- | ----------------------------- | ------- | ------ |
 | contentPosition | 内容位置，可选值为 left right | string  | `center` |
 | style          | 修改自定义样式                | CSSProperties     | -      |

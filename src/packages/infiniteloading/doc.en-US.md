@@ -265,7 +265,7 @@ export default App;
 
 ### Props
 
-| Attribute         | Description                             | Type   | Default           |
+| Property | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | hasMore         | Has more data               | boolean | `true`                |
 | threshold         | The loadMore event will be Emitted when the distance between the scrollbar and the bottom is less than threshold | number| `200`               |

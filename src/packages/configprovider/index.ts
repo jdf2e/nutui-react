@@ -5,5 +5,6 @@ import {
   getDefaultConfig,
 } from './configprovider'
 
+export type { ConfigProviderProps } from './configprovider'
 export { useConfig, setDefaultConfig, getDefaultConfig }
 export default ConfigProvider

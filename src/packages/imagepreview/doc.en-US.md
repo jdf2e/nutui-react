@@ -333,7 +333,7 @@ export default App;
 
 ### Props
 
-| Attribute         | Description                             | Type   | Default           |
+| Property | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | visible | Whether to show preview |  `boolean` | `false` |
 | videos | Videos Array(Videos are before images) | `Array<Object>` | `[]`

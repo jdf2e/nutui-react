@@ -1,10 +1,10 @@
 # Swipe組件
 
-### 介紹
+## 介紹
 
 常用於儲存格左右滑删除等手勢操作
 
-### 安裝
+## 安裝
 
 ```javascript
 // react
@@ -246,7 +246,7 @@ export default App;
 ```
 :::
 
-## API
+## Swipe
 
 ### Props
 

@@ -150,7 +150,7 @@ export default App;
 
 ### Props
 
-| 参数              | 说明                          | 类型    | 默认值 |
+| 属性 | 说明                          | 类型    | 默认值 |
 |-----------------| ----------------------------- | ------- | ------ |
 | contentPosition | 内容位置，可选值为 left right center | `'left'  \|  'center'  \|  'right'`  | `center` |
 | direction   | 水平还是垂直类型,可选值为 horizontal vertical               | `'horizontal'  \|  'vertical'`     | `horizontal`      |

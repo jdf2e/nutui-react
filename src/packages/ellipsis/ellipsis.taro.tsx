@@ -1,19 +1,19 @@
 import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
 import { useReady, nextTick, createSelectorQuery } from '@tarojs/taro'
+import classNames from 'classnames'
 import { getRectByTaro } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import classNames from 'classnames'
 
-export type Direction = 'start' | 'end' | 'middle'
+export type EllipsisDirection = 'start' | 'end' | 'middle'
 
-type EllipsisedValue = {
+type EllipsisValue = {
   leading?: string | undefined
   tailing?: string | undefined
 }
 
 export interface EllipsisProps extends BasicComponent {
   content: string
-  direction: Direction
+  direction: EllipsisDirection
   rows: number | string
   expandText: string
   collapseText: string
@@ -56,7 +56,7 @@ export const Ellipsis: FunctionComponent<
   let maxHeight = 0 // 当行的最大高度
   const [exceeded, setExceeded] = useState(false)
   const [expanded, setExpanded] = useState(false)
-  const ellipsis = useRef<EllipsisedValue>({
+  const ellipsis = useRef<EllipsisValue>({
     leading: '',
     tailing: '',
   })

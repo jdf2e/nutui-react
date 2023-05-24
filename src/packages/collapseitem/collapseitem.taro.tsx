@@ -2,13 +2,15 @@ import React, {
   FunctionComponent,
   useEffect,
   useState,
-  useCallback,
   ReactNode,
+  useContext,
+  useRef,
+  useMemo,
 } from 'react'
-
-import bem from '@/utils/bem'
-
+import classNames from 'classnames'
+import Taro from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import CollapseContext from '../collapse/context'
 
 export interface CollapseItemProps extends BasicComponent {
   title: ReactNode
@@ -17,8 +19,7 @@ export interface CollapseItemProps extends BasicComponent {
   expandIcon: ReactNode
   disabled: boolean
   rotate: number
-  subTitle: ReactNode
-  onToggle: (isOpen: boolean, name: string) => void
+  extra: ReactNode
 }
 
 const defaultProps = {
@@ -29,7 +30,7 @@ const defaultProps = {
   expandIcon: null,
   disabled: false,
   rotate: 180,
-  subTitle: null,
+  extra: null,
 } as CollapseItemProps
 export const CollapseItem: FunctionComponent<
   Partial<CollapseItemProps> &
@@ -39,79 +40,134 @@ export const CollapseItem: FunctionComponent<
     children,
     title,
     isOpen,
-    onToggle,
     name,
     disabled,
     expandIcon,
     rotate,
-    subTitle,
+    extra,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
-  const [domHeight, setDomHeight] = useState(-1) // 保存content的高度
-  const [currHeight, setCurrHeight] = useState('auto') // 设置content的高度
-  const [update, setUpdate] = useState(false)
+
+  const classPrefix = 'nut-collapse-item'
+  const context = useContext(CollapseContext)
+  // 获取 Dom 元素
+  const wrapperRef: any = useRef(null)
+  const contentRef: any = useRef(null)
   const [iconStyle, setIconStyle] = useState({
     transform: 'translateY(-50%)',
   })
-  const colBem = bem('collapse-item')
+  const [refRandomId] = useState(() => Math.random().toString(36).slice(-8))
+  const target = `#nut-collapse__content-${refRandomId}`
 
-  const measuredRef = useCallback(
-    (node: HTMLDivElement) => {
-      if (node !== null) {
-        setDomHeight(node.getBoundingClientRect().height)
-      }
-    },
-    [update]
+  const expanded = useMemo(() => {
+    if (context) {
+      return context.isOpen(name)
+    }
+    return false
+  }, [name, context.isOpen])
+
+  const handleClick = () => {
+    context.updateValue(name)
+  }
+
+  const [timer, setTimer] = useState<any>(null)
+  const [currentHeight, setCurrentHeight] = useState<string>('auto')
+  const inAnimation = useRef(false)
+  const [wrapperHeight, setWrapperHeight] = useState(() =>
+    expanded ? 'auto' : '0px'
   )
 
+  const getRect = (selector: string) => {
+    return new Promise((resolve) => {
+      Taro.createSelectorQuery()
+        .select(selector)
+        .boundingClientRect()
+        .exec((rect = []) => {
+          resolve(rect[0])
+        })
+    })
+  }
+
   useEffect(() => {
-    // 一开始content都有高度，在这里根据isOpen，改变其高度
     setTimeout(() => {
-      if (domHeight !== -1) {
-        isOpen ? setCurrHeight(`${domHeight}px`) : setCurrHeight('0px')
-      }
-      const newIconStyle = isOpen
-        ? { transform: `translateY(-50%) rotate(${rotate}deg)` }
-        : { transform: 'translateY(-50%)' }
-      setIconStyle(newIconStyle)
-    }, 10)
-  }, [isOpen, domHeight, rotate])
+      getRect(target).then((res: any) => {
+        if (res?.height) {
+          setCurrentHeight(`${res.height}px`)
+        }
+      })
+    }, 200)
+  }, [children])
 
   useEffect(() => {
-    if (!isOpen) {
-      setCurrHeight('0px')
-    } else {
-      setCurrHeight('auto')
-    }
+    setTimeout(() => {
+      getRect(target).then((res: any) => {
+        if (res?.height) {
+          setCurrentHeight(`${res.height}px`)
+        }
+      })
+    }, 100)
+  }, [])
 
-    setUpdate(!update)
-  }, [children, isOpen])
+  const toggle = () => {
+    // 连续切换状态时，清除打开的后续操作
+    if (timer) {
+      clearTimeout(timer)
+      setTimer(timer)
+    }
+    const start = expanded ? '0px' : currentHeight
+    const end = expanded ? currentHeight : '0px'
+    inAnimation.current = true
+    setWrapperHeight(start)
+    const newIconStyle = expanded
+      ? { transform: `translateY(-50%) rotate(${rotate}deg)` }
+      : { transform: 'translateY(-50%)' }
+    setIconStyle(newIconStyle)
+    setTimeout(() => {
+      setWrapperHeight(end)
+      inAnimation.current = false
+      if (expanded) {
+        const timer = setTimeout(() => {
+          setWrapperHeight('auto')
+        }, 300)
+        setTimer(timer)
+      }
+    }, 100)
+  }
+
+  useEffect(toggle, [expanded])
+
   return (
-    <div className={colBem()} {...rest}>
+    <div className={classPrefix} {...rest}>
       <div
-        className={colBem('header', { disabled })}
-        onClick={() => {
-          if (disabled) return
-          onToggle && onToggle(isOpen, name)
-        }}
+        className={classNames(`${classPrefix}__header`, { disabled })}
+        onClick={handleClick}
       >
-        <div className={colBem('title')}>{title}</div>
-        <div className={colBem('sub-title')}>{subTitle}</div>
-        <div className={colBem('icon-box')}>
-          <div className={colBem('icon')} style={iconStyle}>
-            {expandIcon}
+        <div className={`${classPrefix}__title`}>{title}</div>
+        <div className={`${classPrefix}__extra`}>{extra}</div>
+        <div className={`${classPrefix}__icon-box`}>
+          <div className={`${classPrefix}__icon`} style={iconStyle}>
+            {expandIcon || context.expandIcon}
           </div>
         </div>
       </div>
       <div
-        className={colBem('content')}
-        style={{ height: currHeight }}
-        ref={measuredRef}
+        className={`${classPrefix}__content`}
+        ref={wrapperRef}
+        style={{
+          willChange: 'height',
+          height: wrapperHeight,
+        }}
       >
-        <div className={colBem('content-text')}>{children}</div>
+        <div
+          ref={contentRef}
+          className={`${classPrefix}__content-text`}
+          id={`nut-collapse__content-${refRandomId}`}
+        >
+          {children}
+        </div>
       </div>
     </div>
   )

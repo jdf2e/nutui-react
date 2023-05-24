@@ -6,15 +6,15 @@ import RadioGroup from '@/packages/radiogroup'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 
-type Shape = 'button' | 'round'
-type Position = 'right' | 'left'
+export type RadioShape = 'button' | 'round'
+export type RadioPosition = 'right' | 'left'
 
 export interface RadioProps extends BasicComponent {
   disabled: boolean
   checked: boolean
   defaultChecked: boolean
-  shape: Shape
-  labelPosition: Position
+  shape: RadioShape
+  labelPosition: RadioPosition
   icon: React.ReactNode
   activeIcon: React.ReactNode
   value: string | number

@@ -1,10 +1,10 @@
 # ConfigProvider
 
-### Intro
+## Intro
 
 Used to configure NutUI-React components globally, provide theme customization, internationalization support.
 
-### Install
+## Install
 
 ```ts
 // react
@@ -154,11 +154,11 @@ export default App;
 
 If you can't find the language pack you need, you are welcome to create a new language pack based on [English Language Pack]() and send us a pull request.
 
-## API
+## ConfigProvider
 
 ### Props
 
-| Attribute | Description      | Type | Default  |
+| Property | Description      | Type | Default  |
 |--------|------------------|---------|------|
 | locale | set the language | BaseLang | zhCN |
 | theme      | set the theme    |    Record<string, string>     | -    |

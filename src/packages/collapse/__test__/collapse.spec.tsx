@@ -42,15 +42,9 @@ test('prop icon iconSize iconColor', () => {
       </Collapse>
     </>
   )
-  expect(container.querySelector('.nut-collapse .nutui-iconfont')).toHaveClass(
-    'nut-icon-arrow-down'
-  )
-  expect(container.querySelector('.nut-collapse .nutui-iconfont')).toHaveStyle(
-    'width: 16px'
-  )
-  expect(container.querySelector('.nut-collapse .nutui-iconfont')).toHaveStyle(
-    'color: rgb(153, 153, 153)'
-  )
+  expect(
+    container.querySelector('.nut-collapse-item__icon .nut-icon')
+  ).toHaveClass('nut-icon-DownArrow')
 })
 
 test('prop activeName', () => {
@@ -84,7 +78,7 @@ test('prop accordion', () => {
         <CollapseItem
           title="标题1"
           name="1"
-          subTitle="文本内容"
+          extra="文本内容"
           data-testid="collapse-one"
         >
           第一个内容
@@ -143,15 +137,14 @@ test('prop rotate', () => {
   }, 100)
 })
 
-test('prop title subTitle titleIconColor titleIconSize titleIconPosition', () => {
+test('prop title extra titleIconColor titleIconSize titleIconPosition', () => {
   const { getByTestId, container } = render(
     <>
-      <Collapse activeName={['1']} accordion expandIcon="arrow-right2">
+      <Collapse activeName={['1']} accordion expandIcon={<ArrowRight2 />}>
         <CollapseItem
           title="标题1"
-          subTitle="副标题"
+          extra="副标题"
           name="1"
-          expandIcon={<DownArrow />}
           data-testid="collapse-one"
         >
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
@@ -169,12 +162,9 @@ test('prop title subTitle titleIconColor titleIconSize titleIconPosition', () =>
     getByTestId('collapse-one').querySelector('.nut-collapse-item__title')
   ).toHaveTextContent('标题1')
   expect(
-    getByTestId('collapse-one').querySelector('.nut-collapse-item__sub-title')
+    getByTestId('collapse-one').querySelector('.nut-collapse-item__extra')
   ).toHaveTextContent('副标题')
-  expect(
-    getByTestId('collapse-one').querySelector('.nut-collapse-item__title b')
-  ).toHaveClass('nut-collapse-item__title-icon-left')
-  expect(
-    getByTestId('collapse-one').querySelector('.nutui-iconfont')
-  ).toHaveStyle('color: red; font-size: 16px; width: 16px; height: 16px;')
+  expect(getByTestId('collapse-one').querySelector('.nut-icon')).toHaveClass(
+    'nut-icon-ArrowRight2'
+  )
 })

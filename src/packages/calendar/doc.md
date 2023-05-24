@@ -469,7 +469,7 @@ export default App;
 | onYearMonthChange`v1.4.11`  | 年月子标题到达顶部时触发              |  日期数组（包含年月）                          |
 
 ### Day
-| 字段              | 类型            |
+| 属性 | 类型            |
 |-------------------|-----------------|
 | day   | string \| number           |
 | type   | string          |

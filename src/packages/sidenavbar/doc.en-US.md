@@ -133,7 +133,7 @@ export default App;
 
 ### 1、SideNavBar
 
-| Attribute    | Description                      | Type   | Default          |
+| Property | Description                      | Type   | Default          |
 |--------------|----------------------------------|--------|------------------|
 | visible      | Whether the current component is displayed | boolean | `false`   |
 | title        | Navigation title                           | string  | -               |
@@ -143,14 +143,14 @@ export default App;
 
 ### 2、SubSideNavBar
 
-| Attribute    | Description                      | Type   | Default         |
+| Property | Description                      | Type   | Default         |
 |--------------|----------------------------------|--------|------------------|
 | key `v2.0.0`        | Navigation unique identifier     | string \| number |          |
 | title        | Navigation title                 | string  | -              |
 | open         | Whether navigation is expanded by default | boolean  | `true`  |
 ### 3、SideNavBarItem
 
-| Attribute    | Description                      | Type   | Default          |
+| Property | Description                      | Type   | Default          |
 |--------------|----------------------------------|--------|------------------|
 | key `v2.0.0`        | Navigation unique identifier     | string \| number |          |
 | title        | Navigation title                 | string  | -               |

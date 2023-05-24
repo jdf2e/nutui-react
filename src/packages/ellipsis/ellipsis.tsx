@@ -5,18 +5,17 @@ import React, {
   useLayoutEffect,
 } from 'react'
 import classNames from 'classnames'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export type Direction = 'start' | 'end' | 'middle'
-type EllipsisedValue = {
+export type EllipsisDirection = 'start' | 'end' | 'middle'
+type EllipsisValue = {
   leading?: string | undefined
   tailing?: string | undefined
 }
 
 export interface EllipsisProps extends BasicComponent {
   content: string
-  direction: Direction
+  direction: EllipsisDirection
   rows: number | string
   expandText: string
   collapseText: string
@@ -59,7 +58,7 @@ export const Ellipsis: FunctionComponent<
   let maxHeight = 0 // 当行的最大高度
   const [exceeded, setExceeded] = useState(false)
   const [expanded, setExpanded] = useState(false)
-  const ellipsis = useRef<EllipsisedValue>()
+  const ellipsis = useRef<EllipsisValue>()
   const root = useRef<HTMLDivElement>(null)
 
   const classes = classNames(classPrefix, className)
@@ -127,7 +126,7 @@ export const Ellipsis: FunctionComponent<
     }
   }
   // 计算 start/end 省略
-  const tailor: (left: number, right: number) => EllipsisedValue = (
+  const tailor: (left: number, right: number) => EllipsisValue = (
     left: number,
     right: number
   ) => {
@@ -166,7 +165,7 @@ export const Ellipsis: FunctionComponent<
   const tailorMiddle: (
     leftPart: [number, number],
     rightPart: [number, number]
-  ) => EllipsisedValue = (
+  ) => EllipsisValue = (
     leftPart: [number, number],
     rightPart: [number, number]
   ) => {

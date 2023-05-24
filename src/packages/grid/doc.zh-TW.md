@@ -240,7 +240,7 @@ export default App
 
 ### Grid Props
 
-| 參數 | 說明 | 類型 | 默認值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 |-|-|-|-|
 | columns | 列數 | number \| string | `4` |
 | gap | 格子之間的間距，默認單位為`px` | number \| string | `0` |
@@ -251,19 +251,19 @@ export default App
 
 ### Grid Events
 
-| 字段 | 說明 | 回調參數 |
+| 属性 | 說明 | 回調參數 |
 |-|-|-|
 | onClick | 宮格子項點擊事件 | 點擊當前項數據, 索引 |
 
 ### Grid.Item Props
 
-| 參數 | 說明 | 類型 | 默認值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 |-|-|-|-|
 | text | 文字 | string \| ReactNode | - |
 
 ### Grid.Item Events
 
-| 參數 | 說明 | 回調參數 |
+| 屬性 | 說明 | 回調參數 |
 |-|-|-|
 | onClick | 點擊格子時觸發 | `event: Event` |
 

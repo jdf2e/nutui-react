@@ -311,7 +311,7 @@ export default App
 
 ### Props
 
-| Attribute                | Description              |  Type         | Default                        |
+| Property | Description              |  Type         | Default                        |
 | ------------------- | -------------- | ------------- | ----------------------------- |
 | id                  | Identifier, share one instance at the same time, default to multiple instances| string \| number | -            |
 | duration            | Toast duration(s), won't disappear if value is 0      | number       | `2`                          |
