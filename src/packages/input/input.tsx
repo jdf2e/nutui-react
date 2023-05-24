@@ -1,5 +1,4 @@
 import React, {
-  FunctionComponent,
   useCallback,
   useRef,
   HTMLInputTypeAttribute,

@@ -315,7 +315,7 @@ export default App;
 
 ### Props
 
-| Attribute        | Description                            | Type    | Default |
+| Property | Description                            | Type    | Default |
 | ----------- | ------------------------------- | ------- | ------ |
 | target        | The listening element          | string  | -      |
 | threshold    | How high to scroll the page vertically          | number | `200`  |

@@ -548,7 +548,7 @@ export default App
 
 ### Props
 
-| Attribute                   | Description                                                             | Type    | Default |
+| Property | Description                                                             | Type    | Default |
 |------------------------|----------------------------------------------------------------|---------|------|
 | height                 | Height of elevator area                                                    | number \| string  | `200px`
 | floorKey             | Index key value                                                      | string  | `title` |

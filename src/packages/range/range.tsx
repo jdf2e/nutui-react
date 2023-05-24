@@ -12,7 +12,8 @@ import { getRect } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 
-type RangeValue = number | number[]
+export type RangeValue = number | number[]
+
 export interface RangeProps extends BasicComponent {
   value: RangeValue
   defaultValue: RangeValue
@@ -31,6 +32,7 @@ export interface RangeProps extends BasicComponent {
   onStart: () => void
   onEnd: (value: RangeValue) => void
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   range: false,

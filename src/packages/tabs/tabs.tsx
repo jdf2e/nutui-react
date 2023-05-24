@@ -7,13 +7,12 @@ import raf from '@/utils/raf'
 import { usePropsValue } from '@/utils/use-props-value'
 import { useForceUpdate } from '@/utils/use-force-update'
 
-type Title = {
+export type TabsTitle = {
   title: string
   disabled: boolean
   active?: boolean
   value: string | number
 }
-export type TabsSize = 'large' | 'normal' | 'small'
 
 export interface TabsProps extends BasicComponent {
   tabStyle: React.CSSProperties
@@ -115,7 +114,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   }
 
   const getTitles = () => {
-    const titles: Title[] = []
+    const titles: TabsTitle[] = []
     React.Children.forEach(children, (child: any, idx) => {
       if (React.isValidElement(child)) {
         const props: any = child?.props
@@ -130,7 +129,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     })
     return titles
   }
-  const titles = useRef<Title[]>(getTitles())
+  const titles = useRef<TabsTitle[]>(getTitles())
   const forceUpdate = useForceUpdate()
   useEffect(() => {
     titles.current = getTitles()
@@ -178,7 +177,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     })
   }, [value])
 
-  const tabChange = (item: Title) => {
+  const tabChange = (item: TabsTitle) => {
     onClick && onClick(item.value)
     if (item.disabled) {
       return

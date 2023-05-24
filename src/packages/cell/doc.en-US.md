@@ -1,10 +1,10 @@
 # Cell 
 
-### Intro
+## Intro
 
 The cell is a single display item in the list.
 
-### Install
+## Install
 
 ```ts
 import { Cell, CellGroup } from '@nutui/nutui-react'
@@ -219,7 +219,7 @@ export default App;
 
 ### CellGroup Prop
 
-| Attribute | Description | Type   | Default |
+| Property | Description | Type   | Default |
 |-------|----------|--------|--------|
 | title | Title | ReactNode | -      |
 | description  | ReactNode | string | -      |
@@ -227,7 +227,7 @@ export default App;
 
 ### Cell Prop
 
-| Attribute         | Description                                                                                              | Type             | Default          |
+| Property | Description                                                                                              | Type             | Default          |
 |-------------------|----------------------------------------------------------------------------------------------------------|------------------|------------------|
 | title             | Title                      |  ReactNode           | -      |
 | description          | Description                           |  ReactNode           | -      |

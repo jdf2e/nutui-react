@@ -189,7 +189,7 @@ export default App;
 
 ### Props
 
-| 字段       | 說明                                             | 類型         | 默認值       |
+| 属性 | 說明                                             | 類型         | 默認值       |
 |------------|--------------------------------------------------|------------|-----------|
 | type       | 標籤类型，可选值为primary success danger warning | `string`   | `default` |
 | color      | 標籤颜色                                         | `string`   | -         |

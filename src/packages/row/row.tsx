@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { DataContext } from './UserContext'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-type EventType = 'row' | 'col'
+export type RowEventType = 'row' | 'col'
 
 export interface RowProps extends BasicComponent {
   type: string
@@ -11,7 +11,7 @@ export interface RowProps extends BasicComponent {
   align: string
   wrap: string
   gutter: string | number
-  onClick: (e: any, type: EventType) => void
+  onClick: (e: any, type: RowEventType) => void
 }
 const classPrefix = 'nut-row'
 
