@@ -225,6 +225,7 @@
 - 删除 `rightoutIcon` 和 `actionText`，使用 `right` 实现
 - 删除 `leftinIcon`，使用 `leftIn` 实现
 - 删除 `rightinIcon`，使用 `rightIn` 实现
+- 删除 `onCancel`，使用 `right` 来实现事件处理
 - 删除 `onClickLeftinIcon`，用户可使用 `left` 来实现事件处理
 - 删除 `onClickLeftoutIcon`，用户可使用 `left` 来实现事件处理
 - 删除 `onClickRightinIcon`，用户可使用 `right` 来实现事件处理

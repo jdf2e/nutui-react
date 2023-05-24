@@ -34,8 +34,6 @@ export interface SearchBarProps extends BasicComponent {
   onBlur?: (value: string, event: Event) => void
   /** 点击清除按钮后触发	 */
   onClear?: (event: Event) => void
-  /** 点击取消按钮后触发	 */
-  onCancel?: () => void
   /** 点击输入区域时触发	 */
   onClickInput?: (event: Event) => void
 }
@@ -84,7 +82,6 @@ export const SearchBar: FunctionComponent<
     onFocus,
     onBlur,
     onClear,
-    onCancel,
     onSearch,
     onClickInput,
   } = {

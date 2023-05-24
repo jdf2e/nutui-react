@@ -210,7 +210,6 @@ export default App;
 |onFocus | triggered when focusing |  `(value: string, event: Event) => void` |
 |onBlur | triggered when out of focus |  `(value: string, event: Event) => void` |
 |onClear | triggered when clicking clear | `(event: Event) => void` |
-|onCancel | Fired when the cancel button is clicked | `() => void` |
 |onSearch | trigger when confirming search | `(val: string) => void`|
 |onClickInput | triggered when clicking the input area | `(event: Event) => void` |
 

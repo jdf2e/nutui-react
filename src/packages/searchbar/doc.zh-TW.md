@@ -208,7 +208,6 @@ export default App;
 | onFocus  | 聚焦時觸發 | `(value: string, event: Event) => void` |
 | onBlur  | 失焦時觸發 | `(value: string, event: Event) => void` |
 | onClear  | 點選清空時觸發 | `(event: Event) => void` |
-| onCancel | 點選取消按鈕時觸發 | `() => void` |
 | onSearch  | 確定搜索時觸發 | `(val: string) => void` |
 | onClickInput |	點選輸入區域時觸發	 | `(event: Event) => void` |
 
