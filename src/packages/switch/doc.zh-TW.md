@@ -156,7 +156,7 @@ export default App;
 
 ### Props
 
-| 參數 | 說明 | 類型 | 默認值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | defaultChecked | 開關狀態，非受控 | `boolean` | `false` |
 | checked | 開關狀態，受控 | `boolean` | `false` |

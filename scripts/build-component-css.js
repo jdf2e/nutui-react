@@ -4,6 +4,7 @@
 const path = require('path')
 const vite = require('vite')
 const glob = require('glob')
+const fse = require('fs-extra')
 const atImport = require('postcss-import')
 const projectID = process.env.VITE_APP_PROJECT_ID
 
@@ -34,19 +35,32 @@ function viteConfig(file) {
     build: {
       emptyOutDir: false,
       outDir: file.replace('index.js', ''),
+      rollupOptions: {
+        output: [
+          {
+            format: 'es',
+            entryFileNames: 'css.js',
+          },
+        ],
+      },
       lib: {
         entry: file,
         formats: ['es'],
-        name: 'style',
-        fileName: 'style',
       },
     },
   }
 }
 
 function build(files) {
-  files.forEach((file) => {
-    vite.build(viteConfig(file))
+  Promise.all(
+    files.map((file) => {
+      return vite.build(viteConfig(file))
+    })
+  ).then(() => {
+    const fileList = glob.sync('./dist/esm/**/style.css')
+    fileList.forEach((file) => {
+      fse.writeFile(file.replace('style.css', 'css.js'), `import './style.css'`)
+    })
   })
 }
 

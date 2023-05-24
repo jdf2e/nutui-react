@@ -241,7 +241,7 @@ export default App;
 ### Props
 
 
-| Attribute            | Description               | Type   | Default  |
+| Property | Description               | Type   | Default  |
 |---------|--------------------------------------------|---------|-----------|
 | imgUrl   | Left thumb image                                  | string  | -         |
 | title     | Title                   | string  | -    |

@@ -334,7 +334,7 @@ export default App
 
 ### Props
 
-| Attribute                | Description              |  Type         | Default                        |
+| Property | Description              |  Type         | Default                        |
 | ------------------- | -------------- | ------------- | ----------------------------- |
 | content | Toast content | `React.ReactNode` | - |
 | duration            | Toast duration(s), won't disappear if value is 0      | `number`     | `2`                          |

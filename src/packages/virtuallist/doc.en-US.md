@@ -196,7 +196,7 @@ export default App;
 
 ### Props
 
-| 参数           | 说明                               | 类型       | 默认值                                   |
+| 属性 | 说明                               | 类型       | 默认值                                   |
 |---------------|----------------------------------|----------|---------------------------------------|
 | sourceData    | source data | Array    | - |
 | containerSize | container height | number   | Get the element offsetWidth or offsetHeight, which is given by CSS |

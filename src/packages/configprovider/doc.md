@@ -1,10 +1,10 @@
 # ConfigProvider 全局配置
 
-### 介绍
+## 介绍
 
 用于全局配置 NutUI-React 组件，提供主题定制，国际化支持。
 
-### 安装
+## 安装
 
 ```ts
 // react
@@ -154,11 +154,11 @@ export default App;
 
 如果你找不到你需要的语言包，欢迎你在 [英文语言包]() 的基础上创建一个新的语言包，并给我们发一个 Pull Request。
 
-## API
+## ConfigProvider
 
 ### Props
 
-| 参数     | 说明     | 类型      | 默认值  |
+| 属性 | 说明     | 类型      | 默认值  |
 |--------|--------|---------|------|
 | locale | 设置多语言包 | BaseLang | zhCN |
 | theme      | 设置主题   |    Record<string, string>     | -    |

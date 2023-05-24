@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite'
-import reactRefresh from '@vitejs/plugin-react'
-import autoprefixer from 'autoprefixer'
+import dts from 'vite-plugin-dts'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import fse from 'fs-extra'
 
 const path = require('path')
 const config = require('./package.json')
@@ -24,51 +26,65 @@ export default defineConfig({
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        charset: false,
-        // example : additionalData: `@import "./src/design/styles/variables";`
-        // dont need include file extend .scss
-        additionalData: fileStr,
+  plugins: [
+    dts({
+      outputDir: 'dist/types',
+      clearPureImport: false,
+      exclude: [
+        'node_modules/**',
+        'src/sites/**',
+        'src/**/demo.tsx',
+        'src/**/demo.taro.tsx',
+        'src/**/*.spec.tsx',
+      ],
+      afterBuild: () => {
+        fse
+          .readFile(
+            './dist/types/packages/nutui.taro.react.build.d.ts',
+            'utf-8'
+          )
+          .then((data: string) => {
+            fse.remove('./dist/types/packages/nutui.taro.react.build.d.ts')
+            fse.outputFile(
+              './dist/types/index.d.ts',
+              data.replace(/\.\.\//g, './')
+            )
+          })
       },
-      postcss: {
-        plugins: [
-          autoprefixer({
-            overrideBrowserslist: [
-              '> 0.5%',
-              'last 2 versions',
-              'ie > 11',
-              'iOS >= 10',
-              'Android >= 5',
-            ],
-          }),
-        ],
-      },
-    },
-  },
-  plugins: [reactRefresh()],
+    }),
+  ],
   build: {
     minify: false,
     emptyOutDir: true,
     rollupOptions: {
       // 请确保外部化那些你的库中不需要的依赖
       external: ['react', 'react-dom', '@tarojs/taro', '@tarojs/components'],
-      output: {
-        banner,
-        // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          '@tarojs/taro': 'Taro',
+      output: [
+        {
+          banner,
+          // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
+          globals: {
+            react: 'React',
+            'react-dom': 'ReactDOM',
+          },
+          format: 'es',
+          entryFileNames: 'nutui.react.es.js',
         },
-      },
+        {
+          banner,
+          // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
+          globals: {
+            react: 'React',
+            'react-dom': 'ReactDOM',
+          },
+          name: 'nutui.react',
+          format: 'umd',
+          entryFileNames: 'nutui.react.umd.js',
+        },
+      ],
     },
     lib: {
       entry: 'src/packages/nutui.taro.react.build.ts',
-      name: 'nutui.react',
-      fileName: 'nutui.react',
-      formats: ['es', 'umd'],
     },
   },
 })

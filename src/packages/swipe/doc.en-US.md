@@ -1,16 +1,16 @@
 # Swipe 
 
-### introduce
+## Intro
 It is often used for gesture operations such as sliding left and right to delete cells
 
-### Install
+## Install
 
 ```javascript
 // react
 import { Swipe } from '@nutui/nutui-react';
 ```
 
-## Code demonstration
+## Demo
 
 ### Basic usage
 
@@ -257,7 +257,7 @@ export default App;
 ```
 :::
 
-## API
+## Swipe
 
 ### Props
 
