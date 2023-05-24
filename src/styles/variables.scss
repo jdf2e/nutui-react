@@ -2456,10 +2456,7 @@ $invoice-padding: var(--nutui-invoice-padding, 10px 10px 20px) !default;
 
 // TrendArrow（✅ todo：react版本该组件暂无，将变量先迁过来）
 $trendarrow-font-size: var(--nutui-trendarrow-font-size, 14px) !default;
-$trendarrow-before-icon-margin: var(
-  --nutui-trendarrow-before-icon-margin,
-  4px
-) !default;
+$trendarrow-icon-margin: var(--nutui-trendarrow-icon-margin, 4px) !default;
 
 // animatingnumbers（✅）
 $countup-height: var(--nutui-countup-height, 32px) !default;
@@ -2493,7 +2490,4 @@ $col-default-margin-bottom: var(
 
 // TrendArrow
 $trendarrow-font-size: var(--nutui-trendarrow-font-size, 14px) !default;
-$trendarrow-before-icon-margin: var(
-  --nutui-trendarrow-before-icon-margin,
-  4px
-) !default;
+$trendarrow-icon-margin: var(--nutui-trendarrow-icon-margin, 4px) !default;

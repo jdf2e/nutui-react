@@ -1,61 +1,58 @@
 import React, { FunctionComponent, useRef } from 'react'
 import { TriangleDown, TriangleUp } from '@nutui/icons-react-taro'
-import bem from '@/utils/bem'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface TrendArrowProps {
-  rate: number
+export interface TrendArrowProps extends BasicComponent {
+  value: number
   digits: number
-  showSign: boolean
-  showZero: boolean
+  symbol: boolean
+  zero: boolean
   arrowLeft: boolean
-  syncTextColor: boolean
-  textColor: string
+  syncColor: boolean
+  color: string
   riseColor: string
   dropColor: string
-  iconSize: string
-  upIcon: React.ReactNode
+  riseIcon: React.ReactNode
   downIcon: React.ReactNode
-  className: string
-  style: React.CSSProperties
 }
 const defaultProps = {
-  rate: 0,
+  ...ComponentDefaults,
+  value: 0,
   digits: 2,
-  showSign: false,
-  showZero: false,
+  symbol: false,
+  zero: false,
   arrowLeft: false,
-  syncTextColor: true,
-  textColor: '#333',
+  syncColor: true,
+  color: '#333',
   riseColor: '#fa2c19',
   dropColor: '#64b578',
-  upIcon: null,
+  riseIcon: null,
   downIcon: null,
-  className: '',
 } as TrendArrowProps
 
 export const TrendArrow: FunctionComponent<
   Partial<TrendArrowProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
-    rate,
+    value,
     digits,
-    showSign,
-    showZero,
+    symbol,
+    zero,
     arrowLeft,
-    syncTextColor,
-    textColor,
+    syncColor,
+    color,
     riseColor,
     dropColor,
-
-    upIcon,
+    riseIcon,
     downIcon,
     className,
+    style,
     children,
     ...rest
   } = { ...defaultProps, ...props }
-  const b = bem('trendarrow')
+  const classPrefix = 'nut-trendarrow'
   const handleClick = () => {}
-  const rateTrend = useRef(rate > 0)
+  const rateTrend = useRef(value > 0)
 
   const myFixed = (num: any, digit = 2) => {
     if (Object.is(parseFloat(num), NaN)) {
@@ -69,22 +66,22 @@ export const TrendArrow: FunctionComponent<
 
   const calcStyle = (() => {
     const arrowColor = rateTrend.current ? riseColor : dropColor
-    const textEquArrowColor = syncTextColor ? arrowColor : textColor
+    const textEquArrowColor = syncColor ? arrowColor : color
     const style = {
-      color: rate === 0 ? textColor : textEquArrowColor,
+      color: value === 0 ? color : textEquArrowColor,
     }
     return style
   })()
 
   const calcRate = (() => {
-    rateTrend.current = rate > 0
-    const absRate = Math.abs(rate)
-    if (!showZero && rate === 0) {
+    rateTrend.current = value > 0
+    const absRate = Math.abs(value)
+    if (!zero && value === 0) {
       return '--'
     }
     const resultRate = `${
       // eslint-disable-next-line no-nested-ternary
-      showSign && rate !== 0 ? (rateTrend.current ? '+' : '-') : ''
+      symbol && value !== 0 ? (rateTrend.current ? '+' : '-') : ''
     }${myFixed(Number(absRate), digits)}%`
 
     return resultRate
@@ -100,24 +97,27 @@ export const TrendArrow: FunctionComponent<
   const renderContent = (arrowLeft: boolean) => {
     const classNameSuffix = !arrowLeft ? 'icon-after' : 'icon-before'
     return (
-      <span className={`${b(classNameSuffix)} ${b('rate')}`} style={calcStyle}>
+      <span
+        className={`${classPrefix}__${classNameSuffix} ${classPrefix}__value`}
+        style={calcStyle}
+      >
         {calcRate}
       </span>
     )
   }
   return (
-    <div className={`${b()} ${className}`} {...rest} onClick={handleClick}>
+    <div
+      className={`${classPrefix} ${className}`}
+      {...rest}
+      onClick={handleClick}
+    >
       {!arrowLeft && renderContent(!arrowLeft)}
-      {children || (
+      {Number(value) !== 0 && (
         <>
-          {Number(rate) !== 0 && (
-            <>
-              {rateTrend ? (
-                <TriangleUp color={calcIconProps.color} />
-              ) : (
-                <TriangleDown color={calcIconProps.color} />
-              )}
-            </>
+          {rateTrend.current ? (
+            <>{riseIcon || <TriangleUp color={calcIconProps.color} />}</>
+          ) : (
+            <>{downIcon || <TriangleDown color={calcIconProps.color} />}</>
           )}
         </>
       )}
