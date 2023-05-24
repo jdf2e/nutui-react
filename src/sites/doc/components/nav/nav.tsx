@@ -38,10 +38,10 @@ const Nav = () => {
                       <li>
                         {cp.name}&nbsp;&nbsp;
                         <b>{lang === 'zh-CN' && cp.cName}</b>
-                        {cp.version == '2.0.0' ? (
+                        {cp.version !== '2.0.0' ? (
                           <b
                             style={{
-                              background: 'rgb(250, 44, 25)',
+                              background: 'rgb(250, 205, 205)',
                               padding: '0px 5px',
                               borderRadius: '5px',
                               color: 'rgb(255, 255, 255)',
@@ -51,7 +51,7 @@ const Nav = () => {
                               display: 'inline-block',
                             }}
                           >
-                            2.0
+                            🛠
                           </b>
                         ) : null}
                       </li>

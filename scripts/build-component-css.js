@@ -1,24 +1,53 @@
-const sass = require('sass')
-const glob = require('glob')
-const fsExtra = require('fs-extra')
-const fs = require('fs/promises')
+/*
+ * 通过 dist 目录下的 style/index.js 构建每个组件的 css 文件
+ * */
 const path = require('path')
-const shelljs = require('shelljs')
-const componentScss = glob.sync('dist/packages/**/*.scss')
+const vite = require('vite')
+const glob = require('glob')
+const atImport = require('postcss-import')
+const projectID = process.env.VITE_APP_PROJECT_ID
 
-componentScss.map(async (cs) => {
-  const filename = path.basename(cs).replace('.scss', '')
-  const dirname = path.dirname(cs)
+function scannerFiles() {
+  const prefix = './dist/esm/'
+  const list = glob.sync(prefix + '**/style/index.js')
+  return list
+}
 
-  if (dirname.indexOf(filename) === -1) return
+function viteConfig(file) {
+  return {
+    resolve: {
+      alias: [{ find: '@', replacement: path.resolve(process.cwd(), './src') }],
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          charset: false,
+          additionalData: `@import "@/styles/variables${
+            projectID ? `-${projectID}` : ''
+          }.scss";`,
+        },
+        postcss: {
+          plugins: [atImport({ path: path.join(__dirname, 'src`') })],
+        },
+      },
+    },
+    build: {
+      emptyOutDir: false,
+      outDir: file.replace('index.js', ''),
+      lib: {
+        entry: file,
+        formats: ['es'],
+        name: 'style',
+        fileName: 'style',
+      },
+    },
+  }
+}
 
-  const res = await fs.readFile(path.join(process.cwd(), cs))
-  fsExtra.outputFileSync(
-    path.join(process.cwd(), cs + '.1.scss'),
-    `@import "../../styles/variables";\n` + res.toString()
-  )
-  shelljs.exec(
-    `sass dist/packages/${filename}/${filename}.scss.1.scss dist/packages/${filename}/${filename}.css`
-  )
-  fsExtra.removeSync(path.join(process.cwd(), `dist/packages/${filename}/${filename}.scss.1.scss`))
-})
+function build(files) {
+  files.forEach((file) => {
+    vite.build(viteConfig(file))
+  })
+}
+
+build(scannerFiles())

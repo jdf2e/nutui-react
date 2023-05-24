@@ -132,7 +132,7 @@ export default App;
 
 ### Prop  
 
-| Attribute       | Description                                             | Type    | Default    |
+| Property | Description                                             | Type    | Default    |
 |------------|-------------------------------------------------|---------|----------|
 | loading    | Whether to display skeleton screen                                    | boolean | `false`    | 
 | width       | Width per row                                        | number  | `100` |

@@ -350,7 +350,7 @@ export default App;
     
 ### Props
     
-| Attribute         | Description                             | Type   | Default           |
+| Property | Description                             | Type   | Default           |
 |---------------------------|---------------------------------------------------|---------|----------|
 | modelValue                | Default Date | Date    | `null`   |
 | visible                   | Is Show | boolean | `false`  |

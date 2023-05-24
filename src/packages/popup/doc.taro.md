@@ -1,10 +1,10 @@
 # Popup 弹出层
 
-### 介绍
+## 介绍
 
 弹出层容器，用于展示弹窗、信息提示等内容
 
-### 安装
+## 安装
 
 ``` javascript
 import { Popup } from '@nutui/nutui-react-taro';
@@ -179,11 +179,11 @@ export default App;
 ```
 :::
 
-## API
+## Popup
 
 ### Props
 
-| 参数                      | 说明 | 类型            | 默认值        |
+| 属性 | 说明 | 类型            | 默认值        |
 |-------------------------|----------------|---------------|---------------|
 | visible                 | 当前组件是否显示 | `boolean`       | `false`       |
 | zIndex                  | 遮罩层级 | `string \| number` | `2000`        |

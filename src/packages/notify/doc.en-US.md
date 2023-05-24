@@ -176,7 +176,7 @@ export default App
 
 ### Props
 
-| Attribute | Description | Type | Default |
+| Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | type | Display Type（primary,success ,danger,warning） | `string` | `danger` |
 | duration | Display duration (ms),value is 0 ,notify not disappear | `string` | `3000` |

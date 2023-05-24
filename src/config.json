@@ -27,6 +27,12 @@
         "show": true
       },
       {
+        "name": "migrate-from-v1",
+        "cName": "从 v1 升级到 v2",
+        "eName": "Migrate-from-v1",
+        "show": true
+      },
+      {
         "name": "international-react",
         "cName": "国际化",
         "eName": "Internationalization",
