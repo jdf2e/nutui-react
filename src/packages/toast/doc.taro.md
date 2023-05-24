@@ -172,13 +172,13 @@ export default App
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-toast-title-font-size | `16px` |
-| --nutui-toast-text-font-size | `14px` |
-| --nutui-toast-font-color | `#fff` |
-| --nutui-toast-inner-padding | `24px 30px` |
-| --nutui-toast-inner-bg-color | `$gray7` |
-| --nutui-toast-inner-border-radius | `12px` |
-| --nutui-toast-inner-text-align | `center` |
-| --nutui-overlay-bg-color | `rgba(0, 0, 0, 0)` |
+| 名称                              | 说明                      | 默认值             |
+| --------------------------------- | ------------------------- | ------------------ |
+| --nutui-toast-title-font-size     | `toast`标题文字大小       | `16px`             |
+| --nutui-toast-text-font-size      | `toast`内容文字大小       | `14px`             |
+| --nutui-toast-font-color          | `toast`文字颜色           | `#fff`             |
+| --nutui-toast-inner-padding       | `toast`内容区padding值    | `24px 30px`        |
+| --nutui-toast-inner-bg-color      | `toast`内容区背景色       | `$gray7`           |
+| --nutui-toast-inner-border-radius | `toast`内容区圆角值       | `12px`             |
+| --nutui-toast-inner-text-align    | `toast`内容区文本对齐方式 | `center`           |
+| --nutui-overlay-bg-color          | `toast`遮罩背景色         | `rgba(0, 0, 0, 0)` |

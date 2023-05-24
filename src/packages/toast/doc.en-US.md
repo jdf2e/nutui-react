@@ -328,7 +328,7 @@ export default App
 
 
 
-## API
+## Toast
 
 `Toast` only supports Imperative calls.
 
@@ -364,13 +364,13 @@ You can also pass in a string directly, and `Toast.show` will automatically use 
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-toast-title-font-size | `16px` |
-| --nutui-toast-text-font-size | `14px` |
-| --nutui-toast-font-color | `#fff` |
-| --nutui-toast-inner-padding | `24px 30px` |
-| --nutui-toast-inner-bg-color | `$gray7` |
-| --nutui-toast-inner-border-radius | `12px` |
-| --nutui-toast-inner-text-align | `center` |
-| --nutui-overlay-bg-color | `rgba(0, 0, 0, 0)` |
+| 名称                              | 说明                                     | 默认值             |
+| --------------------------------- | ---------------------------------------- | ------------------ |
+| --nutui-toast-title-font-size     | the title font-size of toast             | `16px`             |
+| --nutui-toast-text-font-size      | the content font-size of toast           | `14px`             |
+| --nutui-toast-font-color          | the text color of toast                  | `#fff`             |
+| --nutui-toast-inner-padding       | the padding value of toast content       | `24px 30px`        |
+| --nutui-toast-inner-bg-color      | the background color of toast content    | `$gray7`           |
+| --nutui-toast-inner-border-radius | the border-radius value of toast content | `12px`             |
+| --nutui-toast-inner-text-align    | the text alignment of toast              | `center`           |
+| --nutui-overlay-bg-color          | the background color of toast mask       | `rgba(0, 0, 0, 0)` |
