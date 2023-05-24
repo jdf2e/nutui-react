@@ -1,6 +1,6 @@
 # CountDown
 
-## Introduce
+## Intro
 
 Used to display the countdown value in real time, and precision supports milliseconds.
 
@@ -347,7 +347,7 @@ export default App;
 
 ### Props
 
-| Attribute | Description | Type | Default |
+| Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | startTime | Start Time | `number` | `Date.now()` |
 | endTime | End Time | `number` | `Date.now()` |
@@ -376,15 +376,13 @@ export default App;
 | SS | Millisecond, 2-digits |
 | SSS | Millisecond, 3-digits |
 
-### 方法
+### Ref
 
-ref allows you to get the CountDown instance and invoke the instance methods.
-
-| Name | Description |
-| --- | --- |
-| start | Count Down Start |
-| pause | Count Down Pause |
-| reset | Count Down Reset |
+| Property | Description | Type |
+| --- | --- | --- |
+| start | Count Down Start | `() => void` |
+| pause | Count Down Pause | `() => void` |
+| reset | Count Down Reset | `() => void` |
 
 ## Theming
 

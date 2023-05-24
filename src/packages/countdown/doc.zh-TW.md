@@ -377,15 +377,13 @@ export default App;
 | SS | 毫秒（2位） |
 | SSS | 毫秒（3位） |
 
-### 方法
+### Ref
 
-通過 ref 可以獲取到 CountDown 實例並調用實例方法。
-
-| 方法名 | 說明 |
-| --- | --- |
-| start | 開始倒計時 |
-| pause | 暫停倒計時 |
-| reset | 重設倒計時，若 auto-start 為 true，重設後會自動開始倒計時 |
+| 屬性 | 說明 | 類型 |
+| --- | --- | --- |
+| start | 開始倒計時 | `() => void` |
+| pause | 暫停倒計時 | `() => void` |
+| reset | 重設倒計時，若 auto-start 為 true，重設後會自動開始倒計時 | `() => void` |
 
 ## 主題定製
 
